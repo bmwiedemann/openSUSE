@@ -27,23 +27,36 @@
 %bcond_with lto
 %endif
 
-# Enable KDE integration with QT6 support on Tumbleweed/SLFO
+# When Tumbleweed or SLOF
+# Enable QT6/QT5 support
 %if 0%{?suse_version} >= 1600
+%bcond_without qt
 %bcond_without qt6
-%bcond_without kdeintegration
-%bcond_with qt5
-%else
-# Enable the KDE integration with QT5 support on openSUSE Leap and SLE15-SP4 or newer
-%if 0%{?is_opensuse} || 0%{?sle_version} >= 150400
 %bcond_without qt5
-%bcond_without kdeintegration
+%else
+# When Leap or SLE15-SP4 or newer
+# Enable QT5 support
+# Disable QT6 support
+%if 0%{?is_opensuse} || 0%{?sle_version} >= 150400
+%bcond_without qt
+%bcond_without qt5
 %bcond_with qt6
 %else
-# Disable KDE integration and QT support
-%bcond_with kdeintegration
+# Disable QT5/QT6 support
+%bcond_with qt
 %bcond_with qt5
 %bcond_with qt6
 %endif
+%endif
+
+# When Leap 15.X or SLE15 (any service pack)
+# Enable firebird support
+%if 0%{?suse_version} >= 1500 && 0%{?suse_version} < 1600
+%bcond_without firebird
+%else
+# Otherwise
+# Disable Firebird support
+%bcond_with firebird
 %endif
 
 # Use system gpgme and curl on TW and SLE15-SP4 or newer
@@ -61,7 +74,6 @@
 %bcond_with system_curl
 %bcond_with system_harfbuzz
 %endif
-%bcond_with firebird
 %if 0%{?gcc_version} < 12
 %global with_gcc 12
 %endif
@@ -279,11 +291,8 @@ Requires:       libreoffice-l10n-en = %{version}
 Requires:       python3
 Recommends:     dejavu-fonts
 Recommends:     google-carlito-fonts
-%if %{with kdeintegration} && %{with qt5}
+%if %{with qt5}
 Recommends:     libreoffice-qt5
-%endif
-%if %{with kdeintegration} && %{with qt6}
-Recommends:     libreoffice-qt6
 %endif
 Provides:       %{name}-draw-extensions = %{version}
 Obsoletes:      %{name}-draw-extensions < %{version}
@@ -363,7 +372,7 @@ Provides:       bundled(libgpg-error) = 1.47
 %if %{with firebird}
 BuildRequires:  pkgconfig(fbclient)
 %endif
-%if %{with kdeintegration} && %{with qt5}
+%if %{with qt5}
 BuildRequires:  libqt5-qtbase-common-devel
 BuildRequires:  cmake(KF5Config)
 BuildRequires:  cmake(KF5CoreAddons)
@@ -382,7 +391,7 @@ Obsoletes:      %{name}-kde4 < %{version}
 Provides:       %{name}-qt5 = %{version}
 Obsoletes:      %{name}-qt5 < %{version}
 %endif
-%if %{with kdeintegration} && %{with qt6}
+%if %{with qt6}
 BuildRequires:  qt6-base-common-devel
 BuildRequires:  qt6-base-devel
 BuildRequires:  cmake(KF6Config)
@@ -652,14 +661,14 @@ Requires:       %{name}-gnome = %{version}
 Supplements:    packageand(libreoffice:gnome-session)
 Supplements:    packageand(libreoffice:mate-session-manager)
 Supplements:    packageand(libreoffice:xfce4-session)
-%if !%{with kdeintegration}
+%if !%{with qt}
 Supplements:    packageand(libreoffice:plasma5-workspace)
 %endif
 %else
 Supplements:    (libreoffice and gnome-session)
 Supplements:    (libreoffice and mate-session-manager)
 Supplements:    (libreoffice and xfce4-session)
-%if !%{with kdeintegration}
+%if !%{with qt}
 Supplements:    (libreoffice and plasma5-workspace)
 %endif
 %endif
@@ -691,10 +700,18 @@ Supplements:    packageand(libreoffice:plasma6-workspace)
 %else
 Supplements:    (libreoffice and plasma6-workspace)
 %endif
-Obsoletes:      %{name}-qt5 <= %{version}
 
 %description qt6
 This package contains Qt6/KDE Frameworks interface rendering options for LibreOffice.
+
+%package kdeintegration
+Summary:        KDE integration support for LibreOffice
+Group:          Productivity/Office/Suite
+Requires:       %{name} = %{version}
+BuildArch:      noarch
+
+%description kdeintegration
+This package contains the necessary files to enable proper KDE integration for LibreOffice.
 
 %package sdk
 Summary:        LibreOffice SDK
@@ -1193,24 +1210,20 @@ export NOCONFIGURE=yes
         --disable-online-update \
         --enable-gstreamer-1-0 \
         --enable-gtk3 \
-%if %{with kdeintegration} && %{with qt6}
+%if %{with qt6}
         --enable-kf6 \
         --enable-qt6 \
-        --disable-kf5 \
-        --disable-qt5 \
 %else
-%if %{with kdeintegration} && %{with qt5}
-        --enable-gtk3-kde5 \
-        --enable-kf5 \
-        --enable-qt5 \
-        --disable-kf6 \
-        --disable-qt6 \
-%else
-        --disable-kf5 \
-        --disable-qt5 \
         --disable-kf6 \
         --disable-qt6 \
 %endif
+%if %{with qt5}
+        --enable-gtk3-kde5 \
+        --enable-kf5 \
+        --enable-qt5 \
+%else
+        --disable-kf5 \
+        --disable-qt5 \
 %endif
         --enable-introspection \
         --with-doxygen \
@@ -1457,9 +1470,8 @@ for appdata in base calc draw impress writer; do
   echo "%dir %{_datadir}/metainfo/" >>file-lists/${appdata}_list.txt
 %endif
 done
-%if %{with kdeintegration}
-echo "%{_datadir}/metainfo/org.libreoffice.kde.metainfo.xml" >>file-lists/kde4_list.txt
-%else
+
+%if !%{with qt}
 rm -f %{buildroot}%{_datadir}/metainfo/org.libreoffice.kde.metainfo.xml
 %endif
 
@@ -1683,8 +1695,8 @@ exit 0
 %files gtk3
 %{_libdir}/libreoffice/program/libvclplug_gtk3lo.so
 
-%if %{with kdeintegration} && %{with qt5}
-%files -f file-lists/kde4_list.txt qt5
+%if %{with qt5}
+%files qt5
 %{_libdir}/libreoffice/program/libkf5be1lo.so
 %{_libdir}/libreoffice/program/libvclplug_kf5lo.so
 %{_libdir}/libreoffice/program/libvclplug_qt5lo.so
@@ -1692,10 +1704,15 @@ exit 0
 %{_libdir}/libreoffice/program/lo_kde5filepicker
 %endif
 
-%if %{with kdeintegration} && %{with qt6}
-%files -f file-lists/kde4_list.txt qt6
+%if %{with qt6}
+%files qt6
 %{_libdir}/libreoffice/program/libvclplug_kf6lo.so
 %{_libdir}/libreoffice/program/libvclplug_qt6lo.so
+%endif
+
+%if %{with qt}
+%files kdeintegration
+%{_datadir}/metainfo/org.libreoffice.kde.metainfo.xml
 %endif
 
 %files -f file-lists/officebean_list.txt officebean

@@ -3543,4 +3543,16 @@ Petr</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1183080</requestid>
   </revision>
+  <revision rev="294" vrev="4">
+    <srcmd5>887550a9c3e063a6b3adfad068b5d732</srcmd5>
+    <version>24.2.4.2</version>
+    <time>1720201414</time>
+    <user>anag+factory</user>
+    <comment>- libreoffice no longer recommends libreoffice-qt6 (bsc#1227145).
+  Add libreoffice-kdeintegration: a common package for KDE
+  integration, depended upon by both libreoffice-qt6 and
+  libreoffice-qt5.
+- Re-enable Firebird support for Leap 15.X and SLE-15 (bsc#1225597).</comment>
+    <requestid>1185243</requestid>
+  </revision>
 </revisionlist>

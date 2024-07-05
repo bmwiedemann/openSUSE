@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jul  2 19:16:57 UTC 2024 - Martin Schreiner <martin.schreiner@suse.com>
+
+- libreoffice no longer recommends libreoffice-qt6 (bsc#1227145).
+  Add libreoffice-kdeintegration: a common package for KDE
+  integration, depended upon by both libreoffice-qt6 and
+  libreoffice-qt5.
+- Re-enable Firebird support for Leap 15.X and SLE-15 (bsc#1225597).
+
+-------------------------------------------------------------------
 Mon Jun 17 19:22:02 UTC 2024 - Martin Schreiner <martin.schreiner@suse.com>
 
 - Add QT6 support to Tumbleweed/SLFO.
