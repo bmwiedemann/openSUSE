@@ -1383,4 +1383,12 @@ build with uclibc</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1171230</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>1aba4b0aef86efcb6b7649889bdc424a</srcmd5>
+    <version>3.1+20240614</version>
+    <time>1720201850</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1185734</requestid>
+  </revision>
 </revisionlist>

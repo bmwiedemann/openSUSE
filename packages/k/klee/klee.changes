@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jun 28 07:39:18 UTC 2024 - jslaby@suse.cz
+
+- Update to version 3.1+20240614:
+  * Mark variadic argument tests as requiring x86_64
+  * Mark inline assembly tests as requiring x86_64
+  * Add handler for _Exit(3)
+
+-------------------------------------------------------------------
 Thu Apr 25 06:08:03 UTC 2024 - jslaby@suse.cz
 
 - Update to version 3.1+20240418:
