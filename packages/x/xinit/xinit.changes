@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jul  4 12:02:51 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- xinitrc.common: no longer start nvidia-settings in background in
+  order to avoid a zombie process under certain circumstances 
+  (boo#1227313)
+
+-------------------------------------------------------------------
 Mon Feb 26 12:17:30 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.

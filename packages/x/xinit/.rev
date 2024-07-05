@@ -335,4 +335,14 @@
     <comment></comment>
     <requestid>1151682</requestid>
   </revision>
+  <revision rev="31" vrev="3">
+    <srcmd5>6f6d8532dbcae86cf5c0f9ec45c5395b</srcmd5>
+    <version>1.4.2</version>
+    <time>1720201507</time>
+    <user>anag+factory</user>
+    <comment>- xinitrc.common: no longer start nvidia-settings in background in
+  order to avoid a zombie process under certain circumstances 
+  (boo#1227313)</comment>
+    <requestid>1185381</requestid>
+  </revision>
 </revisionlist>
