@@ -17,11 +17,11 @@
 
 %define kf6_version 6.0.0
 %define qt6_version 6.6.0
-%define kpim6_version 6.1.1
+%define kpim6_version 6.1.2
 
 %bcond_without released
 Name:           kgpg
-Version:        24.05.1
+Version:        24.05.2
 Release:        0
 Summary:        Encryption Tool
 License:        GPL-2.0-or-later
