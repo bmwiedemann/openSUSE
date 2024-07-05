@@ -26,15 +26,13 @@
 %bcond_with test
 %endif
 Name:           python-scikit-image%{psuffix}
-Version:        0.23.2
+Version:        0.24.0
 Release:        0
 Summary:        Collection of algorithms for image processing in Python
 License:        BSD-3-Clause
 URL:            https://scikit-image.org/
 # SourceRepository: https://github.com/scikit-image/scikit-image
 Source0:        https://files.pythonhosted.org/packages/source/s/scikit-image/%{srcname}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM skimage-pr7414-np2.patch gh#scikit-image/scikit-image#7414
-Patch0:         https://github.com/scikit-image/scikit-image/pull/7414.patch#/skimage-pr7414-np2.patch
 BuildRequires:  %{python_module Cython >= 3.0.4}
 BuildRequires:  %{python_module devel >= 3.10}
 BuildRequires:  %{python_module meson-python >= 0.15}

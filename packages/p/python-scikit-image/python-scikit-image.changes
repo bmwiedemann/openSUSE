@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Wed Jun 26 08:27:58 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.24.0
+  ## Highlights
+  * Add new class ``skimage.transform.ThinPlateSplineTransform``, which can estimate
+    and model non-linear transforms with thin-plate splines and allows image warping
+    with ``skimage.transform.warp`` (#7040)
+  ## New Features
+  * Add new class ``skimage.transform.ThinPlateSplineTransform``, which can estimate
+    and model non-linear transforms with thin-plate splines and allows image warping
+    with ``skimage.transform.warp`` (#7040)
+  * Add ``skimage.morphology.remove_objects_by_distance``, which removes labeled objects,
+    ordered by size (default), until the remaining objects are a given distance apart (#4165)
+  ## Performance
+  * In ``skimage.feature.corner_fast``, test four directions earlier, which should more
+    than half the computation time for most cases (#7394)
+  ## Documentation
+  * Remove obsolete instruction about documenting changes (#7321)
+  * Clarify description of ``data_range`` parameter in
+    ``skimage.metrics.structural_similarity`` (#7345)
+  * Update release process notes (#7402)
+  * Fix typo in docstring of ``skimage.measure.regionprops`` (#7405)
+  * Fix typos in ``skimage.measure.find_contours`` (#7411)
+  * Add algorithmic complexity description + suggested alternatives to
+    ``skimage.restoration.rolling_ball`` docstring (#7424)
+  * Remove ineffective PR contribution clause (#7429)
+  * Clarify objection period for lazy consensus in SKIP 1 (#7020)
+  * Add a new gallery example "Use thin-plate splines for image warping" (#7040)
+  * Add a new gallery example on "Removing objects" based on their size or distance (#4165)
+  ## Infrastructure
+  * Escape user-controlled variables in GA workflow (#7415)
+  * Add generation of GitHub artifact attestations to built
+    sdist and wheels before upload to PyPI (#7427)
+  * For publishing actions use the full length commit SHA (#7433)
+  * Be mindful of resources by canceling in-progress workflows (#7436)
+  * Add out-of-tree Pyodide builds in CI for ``scikit-image`` (#7350)
+  ## Maintenance
+  * Replace deprecated nose style setup/teardown with autouse fixtures (#7343)
+  * Temporarily pin macos-12 runner in CI (#7408)
+  * Fix NumPy2 dtype promotion issues in pywt dependent code (#7414)
+  * In ``skimage.util.compare_images``, deprecate the parameter ``image2``.
+    Instead use ``image0``, ``image1`` to pass the compared images. Furthermore,
+    all other parameters will be turned into keyword-only parameters once the
+    deprecation is complete (#7322)
+  * Add support back for Python 3.9 to enhance compatibility with Numpy 2 (#7412)
+  * Disable ruff/pyupgrade rule UP038 (#7430)
+  * Stop verifying wheel attestations temporarily (#7444)
+- Drop patches for issues fixed upstream
+  * skimage-pr7414-np2.patch
+
+-------------------------------------------------------------------
 Thu Jun  6 17:13:16 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Add skimage-pr7414-np2.patch gh#scikit-image/scikit-image#7414
