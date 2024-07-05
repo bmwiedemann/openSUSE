@@ -283,4 +283,13 @@
   support the slices modules which is now used by Keybase.</comment>
     <requestid>1181798</requestid>
   </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>fd474bc20ba9a6fec6206c9d0ec933e4</srcmd5>
+    <version>6.3.1</version>
+    <time>1720201817</time>
+    <user>anag+factory</user>
+    <comment>- Update the image dependency to address CVE-2024-24792 /
+  boo#1227158. This is done via the new update-golang-x-image.patch.</comment>
+    <requestid>1185695</requestid>
+  </revision>
 </revisionlist>

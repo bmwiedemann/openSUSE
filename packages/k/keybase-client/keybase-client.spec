@@ -32,6 +32,7 @@ Source4:        README.git.SUSE
 Source5:        README.tool.SUSE
 Patch1:         ensure-mount-dir-exists.patch
 Patch2:         ensure-service-stop-unmounts-filesystem.patch
+Patch3:         update-golang-x-image.patch
 BuildRequires:  fdupes
 BuildRequires:  go1.21
 BuildRequires:  golang-packaging
