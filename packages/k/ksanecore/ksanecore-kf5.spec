@@ -22,7 +22,7 @@
 %define rname ksanecore
 %bcond_without released
 Name:           ksanecore-kf5
-Version:        24.05.1
+Version:        24.05.2
 Release:        0
 Summary:        Qt interface for the SANE library for scanner hardware
 License:        LGPL-2.1-only OR LGPL-3.0-only
