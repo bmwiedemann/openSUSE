@@ -13,8 +13,10 @@ Fedora Change: https://fedoraproject.org/wiki/Changes/Making_sudo_pip_safe
  Lib/site.py                      |    9 ++++++++-
  2 files changed, 21 insertions(+), 3 deletions(-)
 
---- a/Lib/distutils/command/install.py
-+++ b/Lib/distutils/command/install.py
+Index: Python-3.10.14/Lib/distutils/command/install.py
+===================================================================
+--- Python-3.10.14.orig/Lib/distutils/command/install.py
++++ Python-3.10.14/Lib/distutils/command/install.py
 @@ -441,8 +441,19 @@ class install(Command):
                      raise DistutilsOptionError(
                            "must not supply exec-prefix without prefix")
@@ -37,8 +39,10 @@ Fedora Change: https://fedoraproject.org/wiki/Changes/Making_sudo_pip_safe
  
              else:
                  if self.exec_prefix is None:
---- a/Lib/site.py
-+++ b/Lib/site.py
+Index: Python-3.10.14/Lib/site.py
+===================================================================
+--- Python-3.10.14.orig/Lib/site.py
++++ Python-3.10.14/Lib/site.py
 @@ -390,8 +390,15 @@ def getsitepackages(prefixes=None):
      return sitepackages
  
@@ -56,3 +60,128 @@ Fedora Change: https://fedoraproject.org/wiki/Changes/Making_sudo_pip_safe
      for sitedir in getsitepackages(prefixes):
          if os.path.isdir(sitedir):
              addsitedir(sitedir, known_paths)
+Index: Python-3.10.14/Lib/sysconfig.py
+===================================================================
+--- Python-3.10.14.orig/Lib/sysconfig.py
++++ Python-3.10.14/Lib/sysconfig.py
+@@ -117,6 +117,19 @@ if _HAS_USER_BASE:
+             },
+     }
+ 
++# This is used by distutils.command.install in the stdlib
++# as well as pypa/distutils (e.g. bundled in setuptools).
++# The self.prefix value is set to sys.prefix + /local/
++# if neither RPM build nor virtual environment is
++# detected to make distutils install packages
++# into the separate location.
++# https://fedoraproject.org/wiki/Changes/Making_sudo_pip_safe
++if (not (hasattr(sys, 'real_prefix') or
++    sys.prefix != sys.base_prefix) and
++    'RPM_BUILD_ROOT' not in os.environ):
++    _prefix_addition = '/local'
++
++
+ _SCHEME_KEYS = ('stdlib', 'platstdlib', 'purelib', 'platlib', 'include',
+                 'scripts', 'data')
+ 
+@@ -136,6 +149,16 @@ _variable_rx = r"([a-zA-Z][a-zA-Z0-9_]+)
+ _findvar1_rx = r"\$\(([A-Za-z][A-Za-z0-9_]*)\)"
+ _findvar2_rx = r"\${([A-Za-z][A-Za-z0-9_]*)}"
+ 
++# For a brief period of time in the Fedora 36 life cycle,
++# this installation scheme existed and was documented in the release notes.
++# For backwards compatibility, we keep it here (at least on 3.10 and 3.11).
++_INSTALL_SCHEMES['rpm_prefix'] = _INSTALL_SCHEMES['posix_prefix']
++
++# For a brief period of time in the Fedora 36 life cycle,
++# this installation scheme existed and was documented in the release notes.
++# For backwards compatibility, we keep it here (at least on 3.10 and 3.11).
++_INSTALL_SCHEMES['rpm_prefix'] = _INSTALL_SCHEMES['posix_prefix']
++
+ 
+ def _safe_realpath(path):
+     try:
+@@ -211,11 +234,39 @@ def _extend_dict(target_dict, other_dict
+         target_dict[key] = value
+ 
+ 
++_CONFIG_VARS_LOCAL = None
++
++
++def _config_vars_local():
++    # This function returns the config vars with prefixes amended to /usr/local
++    # https://fedoraproject.org/wiki/Changes/Making_sudo_pip_safe
++    global _CONFIG_VARS_LOCAL
++    if _CONFIG_VARS_LOCAL is None:
++        _CONFIG_VARS_LOCAL = dict(get_config_vars())
++        _CONFIG_VARS_LOCAL['base'] = '/usr/local'
++        _CONFIG_VARS_LOCAL['platbase'] = '/usr/local'
++    return _CONFIG_VARS_LOCAL
++
++
+ def _expand_vars(scheme, vars):
+     res = {}
+     if vars is None:
+         vars = {}
+-    _extend_dict(vars, get_config_vars())
++
++    # when we are not in a virtual environment or an RPM build
++    # we change '/usr' to '/usr/local'
++    # to avoid surprises, we explicitly check for the /usr/ prefix
++    # Python virtual environments have different prefixes
++    # we only do this for posix_prefix, not to mangle the venv scheme
++    # posix_prefix is used by sudo pip install
++    # we only change the defaults here, so explicit --prefix will take precedence
++    # https://fedoraproject.org/wiki/Changes/Making_sudo_pip_safe
++    if (scheme == 'posix_prefix' and
++        _PREFIX == '/usr' and
++        'RPM_BUILD_ROOT' not in os.environ):
++            _extend_dict(vars, _config_vars_local())
++    else:
++        _extend_dict(vars, get_config_vars())
+ 
+     for key, value in _INSTALL_SCHEMES[scheme].items():
+         if os.name in ('posix', 'nt'):
+Index: Python-3.10.14/Lib/test/test_sysconfig.py
+===================================================================
+--- Python-3.10.14.orig/Lib/test/test_sysconfig.py
++++ Python-3.10.14/Lib/test/test_sysconfig.py
+@@ -105,8 +105,19 @@ class TestSysConfig(unittest.TestCase):
+         for scheme in _INSTALL_SCHEMES:
+             for name in _INSTALL_SCHEMES[scheme]:
+                 expected = _INSTALL_SCHEMES[scheme][name].format(**config_vars)
++                tested = get_path(name, scheme)
++                # https://fedoraproject.org/wiki/Changes/Making_sudo_pip_safe
++                if tested.startswith('/usr/local'):
++                    # /usr/local should only be used in posix_prefix
++                    self.assertEqual(scheme, 'posix_prefix')
++                    # Fedora CI runs tests for venv and virtualenv that check for other prefixes
++                    self.assertEqual(sys.prefix, '/usr')
++                    # When building the RPM of Python, %check runs this with RPM_BUILD_ROOT set
++                    # Fedora CI runs this with RPM_BUILD_ROOT unset
++                    self.assertNotIn('RPM_BUILD_ROOT', os.environ)
++                    tested = tested.replace('/usr/local', '/usr')
+                 self.assertEqual(
+-                    os.path.normpath(get_path(name, scheme)),
++                    os.path.normpath(tested),
+                     os.path.normpath(expected),
+                 )
+ 
+@@ -263,7 +274,7 @@ class TestSysConfig(unittest.TestCase):
+         self.assertTrue(os.path.isfile(config_h), config_h)
+ 
+     def test_get_scheme_names(self):
+-        wanted = ['nt', 'posix_home', 'posix_prefix']
++        wanted = ['nt', 'posix_home', 'posix_prefix', 'rpm_prefix']
+         if HAS_USER_BASE:
+             wanted.extend(['nt_user', 'osx_framework_user', 'posix_user'])
+         self.assertEqual(get_scheme_names(), tuple(sorted(wanted)))
+@@ -274,6 +285,8 @@ class TestSysConfig(unittest.TestCase):
+             cmd = "-c", "import sysconfig; print(sysconfig.get_platform())"
+             self.assertEqual(py.call_real(*cmd), py.call_link(*cmd))
+ 
++    @unittest.skipIf('RPM_BUILD_ROOT' not in os.environ,
++                     "Test doesn't expect Fedora's paths")
+     def test_user_similar(self):
+         # Issue #8759: make sure the posix scheme for the users
+         # is similar to the global posix_prefix one

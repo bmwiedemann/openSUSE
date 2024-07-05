@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jul  2 10:31:26 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update F00251-change-user-install-location.patch to make pip and
+  modern tools install directly in /usr/local when used by the user.
+  bsc#1225660
+
+-------------------------------------------------------------------
 Tue Jun 25 21:57:40 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Add CVE-2024-4032-private-IP-addrs.patch to fix bsc#1226448
