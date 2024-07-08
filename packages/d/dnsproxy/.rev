@@ -293,4 +293,13 @@
   * The quic-go dependency has been updated to v0.44.0. (forwarded request 1178187 from VaiTon)</comment>
     <requestid>1178200</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>705f67066e2fdd63c78c40e5dca9a17a</srcmd5>
+    <version>0.72.0</version>
+    <time>1720458503</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.72.0:
+  * Package API changes (forwarded request 1186031 from VaiTon)</comment>
+    <requestid>1186035</requestid>
+  </revision>
 </revisionlist>
