@@ -156,4 +156,15 @@
     itself. (forwarded request 1135526 from dirkmueller)</comment>
     <requestid>1136154</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>d42b7ec36f39a8b258644581ec5dd1b6</srcmd5>
+    <version>2.6</version>
+    <time>1720458502</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.6:
+  * This release re-adds the “mad” (“append”) command, and fixes how 
+    the program name is checked when deciding which mode to run in.
+  * There is also a build system fix. (forwarded request 1185860 from amanzini)</comment>
+    <requestid>1186034</requestid>
+  </revision>
 </revisionlist>

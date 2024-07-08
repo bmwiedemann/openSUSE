@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jul  6 08:17:50 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to 2.6:
+  * This release re-adds the “mad” (“append”) command, and fixes how 
+    the program name is checked when deciding which mode to run in.
+  * There is also a build system fix.
+
+-------------------------------------------------------------------
 Thu Dec 28 18:14:30 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.5.1:
