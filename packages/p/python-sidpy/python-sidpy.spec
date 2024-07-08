@@ -37,7 +37,7 @@ BuildRequires:  %{python_module ipywidgets >= 5.2.2}
 BuildRequires:  %{python_module joblib >= 0.11.0}
 BuildRequires:  %{python_module matplotlib >= 2.0.0}
 BuildRequires:  %{python_module mpi4py}
-BuildRequires:  %{python_module numpy >= 1.10}
+BuildRequires:  %{python_module numpy >= 1.10 with %python-numpy < 2}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module pytest}
@@ -55,15 +55,17 @@ Requires:       python-dask >= 0.10
 Requires:       python-dask-array >= 0.10
 Requires:       python-distributed >= 2
 Requires:       python-h5py >= 2.6.0
+Requires:       python-ipykernel
+Requires:       python-ipympl
 Requires:       python-ipython >= 6
 Requires:       python-ipywidgets >= 5.2.2
 Requires:       python-joblib >= 0.11.0
 Requires:       python-matplotlib >= 2.0.0
-Requires:       python-numpy >= 1.10
 Requires:       python-psutil
 Requires:       python-scikit-learn
 Requires:       python-scipy
 Requires:       python-toolz
+Requires:       (python-numpy >= 1.10 with python-numpy < 2)
 Recommends:     python-mpi4py
 Recommends:     python-qt5
 BuildArch:      noarch

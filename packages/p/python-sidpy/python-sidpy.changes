@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jul  8 04:52:26 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Limit numpy to < 2 due to dask-array. 
+
+-------------------------------------------------------------------
 Thu Mar 14 10:10:54 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - skip python 3.9 due to missing ipython

@@ -154,4 +154,12 @@
     <comment>- skip python 3.9 due to missing ipython</comment>
     <requestid>1157931</requestid>
   </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>327db54b62b4dd7617cf2677a147730e</srcmd5>
+    <version>0.12.3</version>
+    <time>1720458517</time>
+    <user>anag+factory</user>
+    <comment>- Limit numpy to &lt; 2 due to dask-array.</comment>
+    <requestid>1186067</requestid>
+  </revision>
 </revisionlist>
