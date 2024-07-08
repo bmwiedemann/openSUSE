@@ -143,4 +143,20 @@
     <comment></comment>
     <requestid>1179849</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>aad13ea1be77f670ac01efd95ea8ff97</srcmd5>
+    <version>0.23.0</version>
+    <time>1720458443</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.23.0:
+  * Fix preserving collapsed JSX whitespace (#3818)
+- includes 0.22.0:
+  * Update await using behavior to match TypeScript
+  * Allow es2024 as a target environment
+  * Warn about onResolve plugins not setting a path (#3790)
+  * Add a new Go API for running the CLI with plugins (#3539)
+- change notes related to removed bundling experiment are omitted
+</comment>
+    <requestid>1185902</requestid>
+  </revision>
 </revisionlist>

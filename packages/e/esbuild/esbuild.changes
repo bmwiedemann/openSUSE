@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Jul  6 03:27:34 UTC 2024 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 0.23.0:
+  * Fix preserving collapsed JSX whitespace (#3818)
+- includes 0.22.0:
+  * Update await using behavior to match TypeScript
+  * Allow es2024 as a target environment
+  * Warn about onResolve plugins not setting a path (#3790)
+  * Add a new Go API for running the CLI with plugins (#3539)
+- change notes related to removed bundling experiment are omitted
+
+-------------------------------------------------------------------
 Mon Jun 10 20:15:09 UTC 2024 - Bruno Pitrus <brunopitrus@hotmail.com>
 
 - Use correct optflags for generated C code

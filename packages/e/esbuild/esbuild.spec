@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150600
 # Go source packages are horribly broken on Leap (mismatching versions between libraries and compiler)
 %bcond_with vendor
@@ -27,7 +28,7 @@
 %global tag   v%{version}
 %global extractdir0 esbuild-%{version}
 Name:           esbuild
-Version:        0.21.5
+Version:        0.23.0
 Release:        0
 Summary:        A JavaScript bundler written for speed
 License:        MIT
@@ -47,9 +48,9 @@ BuildRequires:  golang(API)
 
 %if %{without vendor}
 %if 0%{?fedora}
-BuildRequires: golang-ipath(golang.org/x/sys)
+BuildRequires:  golang-ipath(golang.org/x/sys)
 %else
-BuildRequires: golang-org-x-sys
+BuildRequires:  golang-org-x-sys
 %endif
 %endif
 
@@ -82,7 +83,6 @@ export GOFLAGS='-ldflags=-compressdwarf=false' #fix broken debuginfo bsc#1215402
 export GO111MODULE=off
 %endif
 %gobuild ./cmd/esbuild
-
 
 %install
 install -pvDm755 \
