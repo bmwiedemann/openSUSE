@@ -34,7 +34,11 @@ Source0:        https://github.com/nmeum/android-tools/releases/download/%{versi
 Source2:        man-pages.tar.gz
 # PATCH-FIX-OPENSUSE fix-install-completion.patch boo#1185883 munix9@googlemail.com -- Simplify completion
 Patch0:         fix-install-completion.patch
+%if 0%{?suse_version} < 1600
+BuildRequires:  clang15
+%else
 BuildRequires:  clang
+%endif
 BuildRequires:  cmake >= 3.12
 BuildRequires:  go
 BuildRequires:  llvm-gold
@@ -95,17 +99,23 @@ Bash command line completion support for android-tools.
 %define __builder ninja
 export GOFLAGS="-buildmode=pie -trimpath -ldflags=-buildid="
 
+CMAKE_C_COMPILER=clang
+CMAKE_CXX_COMPILER=clang++
+%if 0%{?suse_version} < 1600
+CMAKE_C_COMPILER=clang-15
+CMAKE_CXX_COMPILER=clang++-15
+%endif
 %cmake \
 	-DBUILD_SHARED_LIBS=OFF		\
-	-DCMAKE_C_COMPILER=clang	\
-	-DCMAKE_CXX_COMPILER=clang++
+	-DCMAKE_C_COMPILER=${CMAKE_C_COMPILER}	\
+	-DCMAKE_CXX_COMPILER=${CMAKE_CXX_COMPILER}
 %cmake_build
 
 %install
 %cmake_install
 
 # fix env-script-interpreter (Leap requires special handling)
-%if 0%{?suse_version} <= 1500
+%if 0%{?suse_version} < 1600
 %define python3_fix_shebang_path(+abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_-=) \
 myargs="%{**}" \
 for f in ${myargs}; do \
