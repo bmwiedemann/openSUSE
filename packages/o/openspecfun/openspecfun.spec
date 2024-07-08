@@ -1,7 +1,7 @@
 #
 # spec file for package openspecfun
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,10 @@
 #
 
 
-%define so_ver  1
+%define so_ver  2
 %define libname lib%{name}%{so_ver}
 Name:           openspecfun
-Version:        0.5.5
+Version:        0.5.6
 Release:        0
 Summary:        A collection of special mathematical functions
 License:        MIT
