@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-sphinxcontrib-autoprogram
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,11 +22,9 @@
 %define psuffix      -%{flavor}
 %endif
 %global short_name autoprogram
-# https://github.com/sphinx-contrib/autoprogram/commit/457822502b71a449d97dfece63e77dbee910b581
-%define skip_python36 1
-%define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-sphinxcontrib-%{short_name}%{psuffix}
-Version:        0.1.8
+Version:        0.1.9
 Release:        0
 %if "%{flavor}" == "" || "%{flavor}" == "test"
 Summary:        Sphinx extension to document CLI programs
@@ -40,10 +38,6 @@ Source0:        %{URL}/archive/%{version}/python-sphinxcontrib-%{short_name}-%{v
 # PATCH-FIX-UPSTREAM skip-failing-test.patch gh#sphinx-contrib/autoprogram#54 mcepl@suse.com
 # Switch off failing tests by the environmental variable SKIPTESTS
 Patch1:         skip-failing-test.patch
-# PATCH-FIX-UPSTREAM sphinx6.patch gh#sphinx-contrib/autoprogram#62
-Patch2:         sphinx6.patch
-# https://github.com/sphinx-contrib/autoprogram/issues/63
-Patch3:         python-sphinxcontrib-autoprogram-no-six.patch
 BuildRequires:  %{python_module Sphinx >= 1.2}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
