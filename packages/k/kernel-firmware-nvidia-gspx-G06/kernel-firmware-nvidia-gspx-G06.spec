@@ -49,7 +49,10 @@ License:        GPL-2.0-only AND SUSE-Firmware AND GPL-2.0-or-later AND MIT
 Group:          System/Kernel
 Source0:        http://download.nvidia.com/XFree86/Linux-x86_64/%{version}/NVIDIA-Linux-x86_64-%{version}.run
 Source1:        http://download.nvidia.com/XFree86/Linux-aarch64/%{version}/NVIDIA-Linux-aarch64-%{version}.run
-%if %{with factory_auto}
+# This is defined at build, not for 'osc service run download_files` or
+# factory_auto. This both sources are seen outside of the build but only
+# the matching one will be included in the srpm for the respective flavor.
+%if %{undefined linux_arch}
 Source2:        http://download.nvidia.com/XFree86/Linux-x86_64/%{cuda_version}/NVIDIA-Linux-x86_64-%{cuda_version}.run
 Source3:        http://download.nvidia.com/XFree86/Linux-aarch64/%{cuda_version}/NVIDIA-Linux-aarch64-%{cuda_version}.run
 %endif
@@ -57,6 +60,8 @@ Source4:        kernel-firmware-nvidia-gspx-G06-rpmlintrc
 Source5:        kernel-firmware-nvidia-gspx-G06-cuda-rpmlintrc
 NoSource:       0
 NoSource:       1
+# Only required to distinguish between build and factor-auto
+BuildRequires:  kernel-macros
 %if 0%{simpletest} == 0
 Provides:       multiversion(kernel)
 %endif

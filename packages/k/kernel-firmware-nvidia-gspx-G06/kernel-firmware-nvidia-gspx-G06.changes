@@ -1,8 +1,17 @@
 -------------------------------------------------------------------
+Mon Jul  8 14:10:27 UTC 2024 - Egbert Eich <eich@suse.com>
+
+- Use macro which is set during build but not when running
+  `osc service run download_files` to make sure both source versions
+  are visible for download. This way, only the correct source
+  tarball will be included in the source package of its respective
+  flavor but both can be downloaded (updated) simultaniously.
+
+-------------------------------------------------------------------
 Fri Jul  5 10:58:50 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - make buildservice happy; all sources need to be mentioned as such
-  in specfile 
+  in specfile
 
 -------------------------------------------------------------------
 Thu Jul  4 13:56:54 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
