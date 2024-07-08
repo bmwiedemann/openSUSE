@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Mon Jul  8 04:34:30 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.1.6: 
+  * Patch release for Dask 2024.6.2
+  * Fix resample divisions propagation
+  * Fix categorize if columns are dropped
+  * Fix projection to empty from_pandas
+  * Fix meta for string accessors
+  * Use is_categorical_dtype dispatch for sort_values
+  * Fix read_csv with positional usecols
+  * Fix isin for head computation
+  * Fix isin with strings
+  * Use ensure_deterministic kwarg instead of config
+  * Add cache argument to lower_once
+  * Fix non-integer divisions in FusedIO
+  * Fix dropna before merge
+  * Fix sort_values for unordered categories
+  * Fix to_parquet in append mode
+  * reduce pickle size of parquet fragments
+  * Generalize get_dummies
+  * Add support for DataFrame.melt
+  * Fix default name conversion in ToFrame
+  * Optimize when from-delayed is called
+  * Fix delayed in fusing with multipled dependencies
+  * Fix None min/max statistics and missing statistics generally
+  * Fix xarray integration with scalar columns
+  * Fix shape returning integer
+  * Fix bug in Series reductions
+
+-------------------------------------------------------------------
 Mon Apr 29 12:43:13 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Remove extra source file

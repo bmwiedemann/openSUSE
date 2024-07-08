@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define psuffix %{nil}
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
@@ -24,28 +25,28 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
-
 Name:           python-dask-expr%{psuffix}
-Version:        1.0.13
+Version:        1.1.6
 Release:        0
 Summary:        High Level Expressions for Dask
 License:        BSD-3-Clause
 URL:            https://github.com/dask/dask-expr
 Source0:        https://github.com/dask/dask-expr/archive/refs/tags/v%{version}.tar.gz#/dask_expr-%{version}-gh.tar.gz
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 62.6}
 BuildRequires:  %{python_module versioneer-toml}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-dask = 2024.4.2
+Requires:       python-dask = 2024.6.2
 Requires:       python-pandas >= 2
 Requires:       python-pyarrow >= 7.0.0
 Provides:       python-dask_expr = %{version}-%{release}
 BuildArch:      noarch
 %if %{with test}
-BuildRequires:  %{python_module dask-expr = %{version}}
 BuildRequires:  %{python_module dask-dataframe}
+BuildRequires:  %{python_module dask-expr = %{version}}
 BuildRequires:  %{python_module distributed}
 BuildRequires:  %{python_module pandas >= 2}
 BuildRequires:  %{python_module pyarrow >= 7.0.0}
