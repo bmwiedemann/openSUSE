@@ -18,4 +18,17 @@
   * extend reserved identifiers test to include various property name positions</comment>
     <requestid>1170886</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>dee71aa4de73874e4e90bde5afdb6336</srcmd5>
+    <version>0.1.2.41.febf48a</version>
+    <time>1720458500</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.1.2.41.febf48a:
+  * remove queries from rust binding
+  * bump rust binding dependencies and reorder highlights queries accordingly
+  * don't mark my Makefile as linguist-generated
+  * include package-lock.json in version control
+  * include tree_sitter/parser.h as local header</comment>
+    <requestid>1186016</requestid>
+  </revision>
 </revisionlist>

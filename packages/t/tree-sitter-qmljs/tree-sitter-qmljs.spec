@@ -19,7 +19,7 @@
 %define _name qmljs
 Summary:        QML grammar for tree-sitter
 Name:           tree-sitter-%{_name}
-Version:        0.1.2.27.239f262
+Version:        0.1.2.41.febf48a
 Release:        0
 License:        MIT
 Group:          Development/Tools/Other
@@ -41,6 +41,8 @@ BuildRequires:  treesitter_grammar_src(tree-sitter-typescript)
 
 %install
 %treesitter_install
+
+%check
 
 %files
 %{treesitter_files}
