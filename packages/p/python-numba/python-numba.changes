@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Jul  1 05:10:03 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.60.0:
+  * NumPy 2.0 Binary Support
+  * New Features
+    + IEnhance guvectorize support in JIT code
+    + IAdd experimental support for ufunc.at
+    + IAdd float(<string literal>) ctor
+    + IAdd support for math.log2.
+    + IAdd math.nextafter support for nopython mode.
+    + IAdd support for parfor binop reductions.
+  * Improvements
+    + Expand isinstance() support for NumPy datetime types
+    + Python 3.12 sys.monitoring support is added to Numba's dispatcher.
+  * NumPy Support
+    + Added support for np.size()
+  * CUDA API Changes
+    + Support for compilation to LTO-IR
+    + Support math.log, math.log2 and math.log10 in CUDA
+  * Bug Fixes
+    + Fix parfor variable hoisting analysis.
+
+-------------------------------------------------------------------
 Tue May 28 09:30:26 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Skip broken test on ppc64le

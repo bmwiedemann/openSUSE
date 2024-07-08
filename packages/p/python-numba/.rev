@@ -460,4 +460,12 @@ Python2 support was turned off by accident.  I don't go out of my way to support
     <comment></comment>
     <requestid>1177314</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>bf79f57f8c365eb30a613f8a5a65c295</srcmd5>
+    <version>0.60.0</version>
+    <time>1720458521</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1186082</requestid>
+  </revision>
 </revisionlist>

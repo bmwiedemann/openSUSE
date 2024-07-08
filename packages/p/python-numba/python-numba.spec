@@ -19,7 +19,7 @@
 %define plainpython python
 # upper bound is exclusive: min-numpy_ver <= numpy < max_numpy_ver
 %define min_numpy_ver 1.22
-%define max_numpy_ver 1.27
+%define max_numpy_ver 2.1
 
 %{?sle15_python_module_pythons}
 
@@ -55,7 +55,7 @@ ExcludeArch:    s390x ppc64 %ix86 %arm
 %endif
 
 Name:           python-numba%{?psuffix}
-Version:        0.59.1
+Version:        0.60.0
 Release:        0
 Summary:        NumPy-aware optimizing compiler for Python using LLVM
 License:        BSD-2-Clause
@@ -73,7 +73,7 @@ BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  python-rpm-macros
 BuildRequires:  (tbb-devel >= 2021)
-Requires:       (python-llvmlite >= 0.42 with python-llvmlite < 0.43)
+Requires:       (python-llvmlite >= 0.43 with python-llvmlite < 0.44)
 Requires:       (python-numpy >= %{min_numpy_ver} with python-numpy < %{max_numpy_ver})
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
