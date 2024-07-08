@@ -17,29 +17,29 @@
 
 
 Name:           python-Bottleneck
-Version:        1.3.8
+Version:        1.4.0
 Release:        0
 Summary:        A collection of fast NumPy array functions
 License:        BSD-2-Clause AND BSD-3-Clause
 URL:            https://github.com/pydata/bottleneck
-Source0:        https://files.pythonhosted.org/packages/source/B/Bottleneck/Bottleneck-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/b/bottleneck/bottleneck-%{version}.tar.gz
 Source99:       python-Bottleneck.rpmlintrc
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module numpy-devel >= 1.16.0 with %python-numpy-devel < 2}
+BuildRequires:  %{python_module numpy-devel >= 1.16.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       (python-numpy >= 1.16.0 with python-numpy < 2)
+Requires:       python-numpy >= 1.16.0
 %python_subpackages
 
 %description
 Bottleneck is a collection of fast NumPy array functions written in C.
 
 %prep
-%setup -q -n Bottleneck-%{version}
+%setup -q -n bottleneck-%{version}
 
 %build
 export CFLAGS="%{optflags} -fno-strict-aliasing"
@@ -50,9 +50,7 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
-# https://github.com/pydata/bottleneck/issues/423
-donttest="(move_test and test_move)"
-%pytest_arch --pyargs bottleneck -k "not ($donttest)"
+%pytest_arch --pyargs bottleneck
 
 %files %{python_files}
 %license LICENSE

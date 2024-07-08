@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jul  1 04:19:18 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.4.0:
+  * Building against numpy 2.0, which ships new backwards compatible ABI
+  * Update CI config
+- Remove numpy upper bound.
+
+-------------------------------------------------------------------
 Fri Apr 19 11:14:59 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 1.3.8

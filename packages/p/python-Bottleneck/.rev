@@ -133,4 +133,12 @@ This is a dependency of python-pandas.</comment>
     on it.</comment>
     <requestid>1169288</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>8c7b9bf11aeabaef776bfeed238aae9f</srcmd5>
+    <version>1.4.0</version>
+    <time>1720458519</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1186069</requestid>
+  </revision>
 </revisionlist>
