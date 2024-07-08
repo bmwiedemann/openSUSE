@@ -17,20 +17,18 @@
 
 
 Name:           python-netCDF4
-Version:        1.6.5
+Version:        1.7.1.post1
 Release:        0
 Summary:        Python interface to netCDF 3 and 4
 License:        HPND AND MIT
 URL:            https://github.com/Unidata/netcdf4-python
-Source:         https://files.pythonhosted.org/packages/source/n/netCDF4/netCDF4-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/n/netcdf4/netcdf4-%{version}.tar.gz
 Source99:       python-netCDF4.rpmlintrc
-# PATCH-FIX-UPSTREAM Fix incompatbile pointer argument to nc_put_att_string()
-Patch0:         https://github.com/Unidata/netcdf4-python/pull/1322.patch
-BuildRequires:  %{python_module Cython >= 0.29 with %python-Cython < 3}
+BuildRequires:  %{python_module Cython >= 0.29}
 BuildRequires:  %{python_module certifi}
 BuildRequires:  %{python_module cftime}
 BuildRequires:  %{python_module devel >= 3.7}
-BuildRequires:  %{python_module numpy-devel >= 1.10.0}
+BuildRequires:  %{python_module numpy-devel >= 1.10.0 with %python-numpy-devel < 2}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 61}
 BuildRequires:  %{python_module wheel}
@@ -44,7 +42,7 @@ Requires:       hdf5 >= 1.8.4
 Requires:       netcdf >= 4.2
 Requires:       python-certifi
 Requires:       python-cftime
-Requires:       python-numpy >= 1.10.0
+Requires:       (python-numpy >= 1.10.0 with python-numpy < 2)
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 # SECTION tests
@@ -69,7 +67,7 @@ types are not. Mixtures of compound and vlen data types (compound types
 containing vlens, and vlens containing compound types) are not supported.
 
 %prep
-%autosetup -p1 -n netCDF4-%{version}
+%autosetup -p1 -n netcdf4-%{version}
 
 %build
 export CFLAGS="%{optflags} -fno-strict-aliasing"

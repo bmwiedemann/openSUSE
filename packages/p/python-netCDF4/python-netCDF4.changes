@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Jul  8 07:19:47 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.7.1.post1:
+ * include nc_complex source code from v0.2.0 tag
+ * add aarch64 wheels
+ * add support for complex numbers via `auto_complex` keyword to `Dataset`
+ * fix for deprecated Cython `DEF` and `IF` statements using compatibility
+   header with shims for unavailable functionality
+ * add support for MS-MPI `MPI_Message` detection
+ * fix surprising result when indexing vlen str with non-contiguous
+   indices.
+ * Fix bug in set_collective
+- Remove upper bound on Cython.
+- Restrict numpy to < 2.
+- Drop patch 1322.patch, included upstream.
+
+-------------------------------------------------------------------
 Thu Jun  6 08:39:24 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Re-download 1322.patch: ensure it matches the contant as provided
