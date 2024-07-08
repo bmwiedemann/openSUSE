@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-rtmidi
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,10 +21,9 @@ Version:        1.5.8
 Release:        0
 Summary:        Python binding for the RtMidi C++ library
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://spotlightkid.github.io/python-rtmidi/
 Source:         https://files.pythonhosted.org/packages/source/p/python-rtmidi/python_rtmidi-%{version}.tar.gz
-BuildRequires:  %{python_module Cython <= 1.0.0}
+BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module Sphinx}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module meson-python}
@@ -73,6 +72,6 @@ rm src/_rtmidi.cpp
 %doc AUTHORS.md CHANGELOG.md README.md
 %doc examples
 %{python_sitearch}/rtmidi
-%{python_sitearch}/python_rtmidi-%{version}*-info
+%{python_sitearch}/python_rtmidi-%{version}.dist-info
 
 %changelog

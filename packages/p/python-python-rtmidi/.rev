@@ -146,4 +146,12 @@ Changes:
     docstrings.</comment>
     <requestid>1132507</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>3d225f4e92f582534d59675b938e3c52</srcmd5>
+    <version>1.5.8</version>
+    <time>1720458525</time>
+    <user>anag+factory</user>
+    <comment>- Remove upper bound on Cython.</comment>
+    <requestid>1186087</requestid>
+  </revision>
 </revisionlist>

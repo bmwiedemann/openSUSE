@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jul  8 06:42:00 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Remove upper bound on Cython. 
+
+-------------------------------------------------------------------
 Mon Dec 11 13:56:06 UTC 2023 - Mia Herkt <mia@0x0.st>
 
 - Update to 1.5.8
