@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jul  6 11:22:52 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Add upstream change (boo#1227426, CVE-2024-39936)
+  * 0001-HTTP2-Delay-any-communication-until-encrypted-can-be.patch
+
+-------------------------------------------------------------------
 Wed Jun 19 07:25:37 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.7.2:

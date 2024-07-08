@@ -481,4 +481,13 @@
     <comment>Qt 6.7.1 + pyside 6.7.1 (forwarded request 1181766 from krop)</comment>
     <requestid>1182584</requestid>
   </revision>
+  <revision rev="59" vrev="2">
+    <srcmd5>a4d1440d22a9de47d228303f14ca096f</srcmd5>
+    <version>6.7.2</version>
+    <time>1720458401</time>
+    <user>anag+factory</user>
+    <comment>- Add upstream change (boo#1227426, CVE-2024-39936)
+  * 0001-HTTP2-Delay-any-communication-until-encrypted-can-be.patch</comment>
+    <requestid>1185879</requestid>
+  </revision>
 </revisionlist>

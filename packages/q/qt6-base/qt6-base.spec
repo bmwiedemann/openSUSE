@@ -49,6 +49,7 @@ Patch100:       0001-CMake-Install-objects-files-into-ARCHDATADIR.patch
 Patch101:       0001-Use-newer-GCC-on-Leap.patch
 %endif
 Patch102:       0001-Don-t-strip-binaries-when-building-with-qmake.patch
+Patch103:       0001-HTTP2-Delay-any-communication-until-encrypted-can-be.patch
 ##
 BuildRequires:  cmake >= 3.18.3
 BuildRequires:  cups-devel
