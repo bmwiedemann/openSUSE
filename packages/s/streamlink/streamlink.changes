@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jul  5 07:25:07 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 6.8.2:
+  * douyin: new plugin
+  * huya: fixed stream URLs
+  * pluzz: fixed API URL, stream tokens and validation schemas
+  * twitch: added info log messages about ad break durations
+  * twitch: fixed clip URLs
+  * twitch: fixed discontinuity warning spam in certain circumstances
+  * vidio: fixed stream tokens, added metadata
+
+-------------------------------------------------------------------
 Mon Jun 17 20:55:32 UTC 2024 - Richard Rahl <rrahl0@disroot.org>
 
 - update to 6.8.1:
