@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Sat Jun 29 17:39:00 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 2.1.5+git20240629.af9c834:
+  * chore: update versions
+  * chore: changelogs for v2.1.5
+  * ci/release: adapt release note generation to the new script
+  * resources,scripts: use gh cli to fetch the correct release tags
+  * refactor(mac): adapt `LITE_USE_SDL_RENDERER` scaling to new windowing system
+  * core/doc: fix wrong table index in Doc:merge_cursors
+  * Fix window memory allocation bug.
+  * fix(doc): convert `Doc:merge_cursors` parameter from "selection index" to table index
+  * core/rootview: fix dnd multiple folders into dock (#1828)
+  * fix(autoreload): wait a second before automatically reloading a file (#1823)
+  * fix(dirmonitor): avoid calling the change callback multiple times in the same notification (#1824)
+  * move window creation and management to Lua (#1751)
+  * Expand Process API (#1757)
+  * Handle static constexpr in language_cpp (#1806)
+  * macos: support drag-and-drop and default file associations (#1822)
+  * Update font scale on monitor scale change for `RENDERER` backend (macOS) (#1650)
+  * Update language_python.lua (#1723)
+  * Add support for binary integer literals. (#1819)
+  * language_cpp: backport number highlighting from c (#1818)
+  * improve number highlighting for c (#1752)
+  * resources/macos: better macos installer background (#1816)
+  * ci: dependabot updates (#1814)
+  * subprojects: update lua,pcre2,sdl2 (#1812)
+  * Update macOS copyright notice (#1815)
+  * ci: use latest macos images (#1804)
+  * Update labeler config for new version (#1805)
+  * Update action dependencies (#1724)
+  * ci: fix typo in release note template (#1801)
+  * fix: avoid iterating over a changing table in `run_threads` (#1794)
+  * Change co_wait to co_await in language_cpp (#1800)
+  * api/system: fix newlines returned by get_clipboard (#1788)
+  * Generate release notes (#1774)
+  * build: fix dirmonitor backend selection (#1790)
+
+-------------------------------------------------------------------
 Tue Apr 16 14:36:30 UTC 2024 - scott.bradnick@suse.com
 
 - Update to version 2.1.4+git20240416.7fdb35a:

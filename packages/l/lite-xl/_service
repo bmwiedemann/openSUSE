@@ -2,17 +2,18 @@
   <service name="obs_scm" mode="manual">
     <param name="url">https://github.com/lite-xl/lite-xl</param>
     <param name="scm">git</param>
-    <!-- 
+    <param name="revision">release/v2.1.x</param>
+    <!--
     <param name="revision"></param>
     <param name="parent-tag">v2.0.5</param>
     <param name="parent-tag">v2.1.0</param>
     -->
     <param name="versionformat">@PARENT_TAG@+git%cd.%h</param>
-    <param name="versionrewrite-pattern">v2.1.1</param>
-    <param name="versionrewrite-replacement">2.1.4</param>
     <!--
-    <param name="versionrewrite-pattern">v(.*)</param>
+    <param name="versionrewrite-pattern">v2.1.1</param>
+    <param name="versionrewrite-replacement">2.1.5</param>
     -->
+    <param name="versionrewrite-pattern">v(.*)</param>
     <param name="changesgenerate">enable</param>
   </service>
   <service name="set_version" mode="manual"/>

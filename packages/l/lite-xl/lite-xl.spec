@@ -17,7 +17,7 @@
 
 
 Name:           lite-xl
-Version:        2.1.4+git20240416.7fdb35a
+Version:        2.1.5+git20240629.af9c834
 Release:        0
 Summary:        A lightweight text editor written in Lua
 Group:          Productivity/Text/Editors
@@ -31,6 +31,9 @@ BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(libpcre2-8)
 BuildRequires:  pkgconfig(lua) >= 5.4
 BuildRequires:  pkgconfig(sdl2)
+%if 0%{?sle_version} == 150500
+BuildRequires:  python311-base
+%endif
 Requires:       %{name}-plugin-manager
 # These can be managed by 'lite-xl-plugin-manager' (lpm)
 Conflicts:      %{name}-colors <= %{version}
@@ -67,13 +70,13 @@ rm -rfv %{buildroot}%{_datadir}/doc/%{name}
 %dir %{_datadir}/%{name}
 %{_bindir}/%{name}
 ### Seems to bounce between these depending on release cycle - 20240122, smb.
-#%%{_datadir}/applications/org.lite_xl.lite_xl.desktop
-%{_datadir}/applications/com.lite_xl.LiteXL.desktop
+%{_datadir}/applications/org.lite_xl.lite_xl.desktop
+#%%{_datadir}/applications/com.lite_xl.LiteXL.desktop
 #####
 %{_datadir}/icons/hicolor/scalable/apps/lite-xl.svg
 %{_datadir}/%{name}/*
 ### Seems to bounce between these depending on release cycle - 20240122, smb.
-#%%{_datadir}/metainfo/org.lite_xl.lite_xl.appdata.xml
-%{_datadir}/metainfo/com.lite_xl.LiteXL.appdata.xml
+%{_datadir}/metainfo/org.lite_xl.lite_xl.appdata.xml
+#%%{_datadir}/metainfo/com.lite_xl.LiteXL.appdata.xml
 ######
 %changelog
