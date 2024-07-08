@@ -2,8 +2,8 @@
   <service name="obs_scm" mode="manual">
     <param name="url">https://github.com/openSUSE/product-composer</param>
     <param name="scm">git</param>
-    <param name="version">0.4.8</param>
-    <param name="revision">0.4.8</param>
+    <param name="revision">0.4.12</param>
+    <param name="version">0.4.12</param>
   </service>
   <service name="set_version" mode="manual" />
   <service name="tar" mode="buildtime" />

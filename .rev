@@ -140,4 +140,29 @@
   * Allow to override product directory per flavor</comment>
     <requestid>1176757</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>fb88116e2353e1df863c3a4791de2313</srcmd5>
+    <version>0.4.12</version>
+    <time>1720458546</time>
+    <user>anag+factory</user>
+    <comment>- update to version 0.4.12
+  * fixed susedata generation (only a single language translation was generated)
+  * Added option to include all available packages
+
+- update to version 0.4.11
+  * canonized filenames (get rid of ::import prefixes)
+
+- update to version 0.4.10
+  * support building on 15.6, using python311 stack (added sle-15-defaults.patch)
+  * changing createrepo defaults for SLE 15 only
+  * crash fix on incomplete generated groups by pkglistgen
+
+- update to version 0.4.9
+  * Introduce &quot;extension&quot; product-type as alias for &quot;module&quot;
+    Technical the same, but handled different in user accounting
+  * fix for building without debug or source media
+
+- Set service to manual run: server side execution not permitted in</comment>
+    <requestid>1186131</requestid>
+  </revision>
 </revisionlist>

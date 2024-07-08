@@ -16,26 +16,34 @@
 #
 
 
+%if "%{?sle_version}" == "150600"
+%define used_python python311
+%else
+%define used_python python3
+%endif
+
 Name:           product-composer
-Version:        0.4.8
+Version:        0.4.12
 Release:        0
 Summary:        Product Composer
 License:        GPL-2.0-or-later
 Group:          Development/Tools/Building
 URL:            https://github.com/openSUSE/product-composer
 Source:         %name-%{version}.tar.xz
-BuildRequires:  python3-pip
-BuildRequires:  python3-poetry-core
-BuildRequires:  python3-setuptools
-BuildRequires:  python3-wheel
-Requires:       python3-PyYAML
-Requires:       python3-pydantic
-Requires:       python3-rpm
-Requires:       python3-zstandard
+# Should become a build option
+Patch1:         sle-15-defaults.patch
+BuildRequires:  %{used_python}-pip
+BuildRequires:  %{used_python}-poetry-core
+BuildRequires:  %{used_python}-setuptools
+BuildRequires:  %{used_python}-wheel
+Requires:       %{used_python}-PyYAML
+Requires:       %{used_python}-pydantic
+Requires:       %{used_python}-rpm
+Requires:       %{used_python}-zstandard
 # build for signdummy
 Requires:       build
 Requires:       checkmedia
-Requires:       createrepo
+Requires:       createrepo_c
 Requires:       inst-source-utils
 Requires:       mkisofs
 BuildArch:      noarch
@@ -46,18 +54,33 @@ WARNING: please be aware that the code is still on the move and is
          likely to break with productcompose file syntax changes.
 
 %prep
-%autosetup -n %name-%version -p1
+%setup -q -n %name-%version
+%if "%{?sle_version}" == "150600"
+%patch -P 1 -p1
+%endif
 
 %build
+%if "%{?sle_version}" == "150600"
+%python311_pyproject_wheel
+%else
 %python3_pyproject_wheel
+%endif
 
 %install
+%if "%{?sle_version}" == "150600"
+%python311_pyproject_install
+%else
 %python3_pyproject_install
+%endif
 mv %buildroot/usr/bin/productcomposer %buildroot%_bindir/product-composer
 
 %files
 %doc README.rst docs examples
 %_bindir/product-composer
+%if "%{?sle_version}" == "150600"
+%{python311_sitelib}/*
+%else
 %{python3_sitelib}/*
+%endif
 
 %changelog
