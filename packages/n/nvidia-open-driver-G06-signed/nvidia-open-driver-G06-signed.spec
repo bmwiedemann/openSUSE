@@ -26,7 +26,6 @@ ExclusiveArch:  do_not_build
  %endif
 %{bcond_without cuda}
 %endif
-
 %if %{undefined kernel_module_directory}
 %if 0%{?suse_version} >= 1550
 %define kernel_module_directory /usr/lib/modules
@@ -53,8 +52,11 @@ License:        GPL-2.0-only AND MIT
 Group:          System/Kernel
 URL:            https://github.com/NVIDIA/open-gpu-kernel-modules/
 Source0:        https://github.com/NVIDIA/open-gpu-kernel-modules/archive/refs/tags/%{version}.tar.gz#/open-gpu-kernel-modules-%{version}.tar.gz
-%if %{with please_fix_factory_auto}
-Source16:       https://github.com/NVIDIA/open-gpu-kernel-modules/archive/refs/tags/%cuda_version}.tar.gz#/open-gpu-kernel-modules-%{cuda_version}.tar.gz
+# This is defined at build, not for 'osc service run download_files` or
+# factory_auto. This both sources are seen outside of the build but only
+# the matching one will be included in the srpm for the respective flavor.
+%if %{undefined linux_arch}
+Source16:       https://github.com/NVIDIA/open-gpu-kernel-modules/archive/refs/tags/%{cuda_version}.tar.gz#/open-gpu-kernel-modules-%{cuda_version}.tar.gz
 Source17:       pci_ids-supported-%{cuda_version}
 Source18:       pci_ids-%{cuda_version}
 %endif
