@@ -1,0 +1,6 @@
+<package name="phraze" project="openSUSE:Factory">
+  <title>Generate random passphrases</title>
+  <description>Generate random passphrases.</description>
+  <devel project="security" package="phraze"/>
+  <url>https://github.com/sts10/phraze</url>
+</package>

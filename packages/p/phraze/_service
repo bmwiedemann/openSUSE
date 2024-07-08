@@ -1,0 +1,24 @@
+<services>
+  <service mode="disabled" name="obs_scm">
+    <param name="url">https://github.com/sts10/phraze.git</param>
+    <param name="scm">git</param>
+    <param name="revision">v0.3.10</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="versionrewrite-pattern">.*v(\d+\.\d+\.\d+)</param>
+    <param name="versionrewrite-replacement">\1</param>
+	<param name="changesgenerate">enable</param>
+  </service>
+  <service name="tar" mode="buildtime"/>
+  <service name="recompress" mode="buildtime">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service mode="disabled" name="set_version"/>
+  <service name="cargo_audit" mode="disabled"/>
+  <service name="cargo_vendor" mode="disabled">
+     <param name="srcdir">phraze</param>
+     <param name="compression">xz</param>
+     <param name="update">false</param>
+  </service>
+</services>
+
