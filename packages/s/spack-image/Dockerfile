@@ -14,10 +14,10 @@
 # You can contact the BCI team via https://github.com/SUSE/bci/discussions
 
 #!ExclusiveArch: aarch64 x86_64
+#!BuildTag: opensuse/bci/spack:0.22
+#!BuildTag: opensuse/bci/spack:0.22-%RELEASE%
 #!BuildTag: opensuse/bci/spack:0.22.0
 #!BuildTag: opensuse/bci/spack:0.22.0-%RELEASE%
-#!BuildTag: opensuse/bci/spack:%%spack_minor%%
-#!BuildTag: opensuse/bci/spack:%%spack_minor%%-%RELEASE%
 #!BuildTag: opensuse/bci/spack:latest
 
 FROM opensuse/tumbleweed:latest
@@ -28,12 +28,12 @@ MAINTAINER openSUSE (https://www.opensuse.org/)
 # labelprefix=org.opensuse.bci.spack
 LABEL org.opencontainers.image.title="openSUSE Tumbleweed BCI Spack development"
 LABEL org.opencontainers.image.description="Spack is a flexible package manager for supercomputers, based on the openSUSE Tumbleweed Base Container Image."
-LABEL org.opencontainers.image.version="0.22.0"
+LABEL org.opencontainers.image.version="0.22"
 LABEL org.opencontainers.image.url="https://www.opensuse.org"
 LABEL org.opencontainers.image.created="%BUILDTIME%"
 LABEL org.opencontainers.image.vendor="openSUSE Project"
 LABEL org.opencontainers.image.source="%SOURCEURL%"
-LABEL org.opensuse.reference="registry.opensuse.org/opensuse/bci/spack:0.22.0-%RELEASE%"
+LABEL org.opensuse.reference="registry.opensuse.org/opensuse/bci/spack:0.22-%RELEASE%"
 LABEL org.openbuildservice.disturl="%DISTURL%"
 LABEL org.opensuse.lifecycle-url="https://en.opensuse.org/Lifetime"
 LABEL org.opensuse.release-stage="released"
