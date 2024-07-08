@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Jul  5 17:49:06 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patch from upstream to fix proxy multiplexing mode:
+  * 0001-upstream-fix-proxy-multiplexing-mode_-broken-when-keystroke.patch
+- Add patch from upstream to restore correctly sigprocmask
+  * 0001-upstream-correctly-restore-sigprocmask-around-ppoll.patch
+- Add patch from upstream to fix a logic error in
+  ObscureKeystrokeTiming that rendered this feature ineffective,
+  allowing a passive observer to detect which network packets
+  contained real keystrokes (bsc#1227318, CVE-2024-39894):
+  * 0001-upstream-when-sending-ObscureKeystrokeTiming-chaff-packets_.patch
+
+-------------------------------------------------------------------
+Wed Jul  3 16:53:53 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add obsoletes for openssh-server-config-rootlogin since that
+  package existed for a brief period of time during SLE 15 SP6/
+  Leap 15.6 development but even if it was removed from the
+  repositories before GM, some users might have it in their
+  systems from having tried a beta/RC release (boo#1227350).
+
+-------------------------------------------------------------------
 Mon Jul  1 07:50:28 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
 
 - Add patch to fix a race condition in a signal handler by removing
@@ -131,7 +153,8 @@ Sun Feb 25 18:26:23 UTC 2024 - Hans Petter Jansson <hpj@suse.com>
     user or hostname via %u, %h or similar expansion token, then
     an attacker who could supply arbitrary user/hostnames to ssh(1)
     could potentially perform command injection depending on what
-    quoting was present in the user-supplied ssh_config(5) directive.
+    quoting was present in the user-supplied ssh_config(5) directive
+    (bsc#1218215, CVE-2023-51385).
 
   = Potentially incompatible changes
   * ssh(1), sshd(8): the RFC4254 connection/channels protocol provides
