@@ -2513,7 +2513,7 @@
     <package name="libopenconnect5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libopencore-amrnb0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libopencore-amrwb0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libopencv409" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="libopencv410" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libopeniscsiusr0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libopenjp2-7" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libopenjp2-7-x86-64-v3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->

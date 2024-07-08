@@ -7970,6 +7970,7 @@ unsorted:
   - gstreamer-plugins-good-jack 
   - gstreamer-plugins-good-jack-32bit 
   - gstreamer-plugins-good-qtqml 
+  - gstreamer-plugins-good-qtqml6 
   - gstreamer-plugins-libav-32bit 
   - gstreamer-plugins-libcamera 
   - gstreamer-plugins-rs 
@@ -14777,17 +14778,17 @@ unsorted:
   - libopencsd_c_api1 
   - libopencsg1 
   - libopencv3_4 
-  - libopencv_aruco409 
-  - libopencv_face409 
-  - libopencv_gapi409 
-  - libopencv_highgui409 
-  - libopencv_imgcodecs409 
-  - libopencv_objdetect409 
-  - libopencv_optflow409 
-  - libopencv_superres409 
-  - libopencv_videoio409 
-  - libopencv_videostab409 
-  - libopencv_ximgproc409 
+  - libopencv_aruco410 
+  - libopencv_face410 
+  - libopencv_gapi410 
+  - libopencv_highgui410 
+  - libopencv_imgcodecs410 
+  - libopencv_objdetect410 
+  - libopencv_optflow410 
+  - libopencv_superres410 
+  - libopencv_videoio410 
+  - libopencv_videostab410 
+  - libopencv_ximgproc410 
   - libopendkim11 
   - libopenhpi4 
   - libopenjp2-7-32bit 
@@ -14811,7 +14812,7 @@ unsorted:
   - libopenslide-devel 
   - libopenslide0 
   - libopensm9 
-  - libopenspecfun1 
+  - libopenspecfun2 
   - libopenssl-1_0_0-devel 
   - libopenssl-1_0_0-devel-32bit 
   - libopenssl-1_1-devel 
@@ -22461,6 +22462,7 @@ unsorted:
   - phpMyAdmin-lang 
   - phpPgAdmin 
   - phpPgAdmin-apache 
+  - phraze 
   - physlock 
   - pia 
   - pianobar 
@@ -26406,6 +26408,7 @@ unsorted:
   - python310-pysrt 
   - python310-pyssim 
   - python310-pystache 
+  - python310-pysubs2 
   - python310-pysvn 
   - python310-pytaglib 
   - python310-pyte 
@@ -26968,6 +26971,7 @@ unsorted:
   - python310-sqlitedict 
   - python310-sqlparse 
   - python310-srcinfo 
+  - python310-srt 
   - python310-ssdeep 
   - python310-sseclient 
   - python310-sshpubkeys 
@@ -29910,6 +29914,7 @@ unsorted:
   - python311-pysrt 
   - python311-pyssim 
   - python311-pystache 
+  - python311-pysubs2 
   - python311-pysvn 
   - python311-pytaglib 
   - python311-pyte 
@@ -30455,6 +30460,7 @@ unsorted:
   - python311-sqlitedict 
   - python311-sqlparse 
   - python311-srcinfo 
+  - python311-srt 
   - python311-ssdeep 
   - python311-sseclient 
   - python311-sshpubkeys 
@@ -33486,6 +33492,7 @@ unsorted:
   - python312-pysrt 
   - python312-pyssim 
   - python312-pystache 
+  - python312-pysubs2 
   - python312-pysvn 
   - python312-pytaglib 
   - python312-pyte 
@@ -34045,6 +34052,7 @@ unsorted:
   - python312-sqlitedict 
   - python312-sqlparse 
   - python312-srcinfo 
+  - python312-srt 
   - python312-ssdeep 
   - python312-sseclient 
   - python312-sshpubkeys 
