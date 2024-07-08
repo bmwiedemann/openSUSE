@@ -828,4 +828,41 @@
     <comment>- drop unmaintained apache-rex usage</comment>
     <requestid>1181895</requestid>
   </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>50da6b672ef8f3de47b13c25cd9d1049</srcmd5>
+    <version>8.3.9</version>
+    <time>1720458422</time>
+    <user>anag+factory</user>
+    <comment>- version update to 8.3.9
+    Core:
+        Fixed bug GH-14315 (Incompatible pointer type warnings).
+        Fixed bug GH-12814 (max_execution_time reached too early on MacOS 14 when running on Apple Silicon).
+        Fixed bug GH-14387 (Crash when stack walking in destructor of yielded from values during Generator-&gt;throw()).
+        Fixed bug GH-14456 (Attempting to initialize class with private constructor calls destructor).
+        Fixed bug GH-14510 (memleak due to missing pthread_attr_destroy()-call).
+        Fixed bug GH-14549 (Incompatible function pointer type for fclose).
+    BCMatch:
+        Fixed bug (bcpowmod() with mod = -1 returns 1 when it must be 0).
+    Curl:
+        Fixed bug GH-14307 (Test curl_basic_024 fails with curl 8.8.0).
+    DOM:
+        Fixed bug GH-14343 (Memory leak in xml and dom).
+    FPM:
+        Fixed bug GH-14037 (PHP-FPM ping.path and ping.response config vars are ignored in status pool).
+    GD:
+        Fix parameter numbers for imagecolorset().
+    Intl:
+        Fix reference handling in SpoofChecker.
+    MySQLnd:
+        Partially fix bug GH-10599 (Apache crash on Windows when using a self-referencing anonymous function inside a class with an active mysqli connection).
+    Opcache:
+        Fixed bug GH-14267 (opcache.jit=off does not allow enabling JIT at runtime).
+        Fixed TLS access in JIT on FreeBSD/amd64.
+        Fixed bug GH-11188 (Error when building TSRM in ARM64).
+    PDO ODBC:
+        Fixed bug GH-14367 (incompatible SDWORD type with iODBC).
+    PHPDBG:
+        Fixed bug GH-13681 (segfault on watchpoint addition failure).</comment>
+    <requestid>1186042</requestid>
+  </revision>
 </revisionlist>
