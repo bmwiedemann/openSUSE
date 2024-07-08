@@ -68,4 +68,14 @@
 - Update to version 8.13.23: (forwarded request 1149395 from alarrosa)</comment>
     <requestid>1149426</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>300e916069ef340990abb140968d9926</srcmd5>
+    <version>8.13.40</version>
+    <time>1720458405</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 8.13.40:
+  * Updated metadata
+- Use mode=&quot;manual&quot; in _service (forwarded request 1185721 from favogt)</comment>
+    <requestid>1185722</requestid>
+  </revision>
 </revisionlist>

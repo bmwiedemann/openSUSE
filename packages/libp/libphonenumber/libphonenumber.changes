@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jul  5 06:17:16 UTC 2024 - Fabian Vogt <fvogt@suse.com>
+
+- Update to version 8.13.40:
+  * Updated metadata
+- Use mode="manual" in _service
+
+-------------------------------------------------------------------
 Thu Feb 22 11:07:23 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to version 8.13.30:
