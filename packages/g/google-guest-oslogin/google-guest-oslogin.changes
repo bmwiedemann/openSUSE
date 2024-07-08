@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul  2 13:28:13 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20240701.00
+  * Don't retry bad request responses (#137)
+
+-------------------------------------------------------------------
 Thu May 16 12:29:28 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 20240415.00

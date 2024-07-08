@@ -276,4 +276,12 @@
   * Log clearly when the initial parsing of a JSON object fails (#132) (forwarded request 1174486 from glaubitz)</comment>
     <requestid>1174489</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>fab8ff22051d3c4fb739ad556defa7fd</srcmd5>
+    <version>20240701.00</version>
+    <time>1720458552</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1186150</requestid>
+  </revision>
 </revisionlist>
