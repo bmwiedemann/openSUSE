@@ -46,7 +46,7 @@
 %{?sle15_python_module_pythons}
 Name:           python-dask%{psuffix}
 # ===> Note: python-dask MUST be updated in sync with python-distributed! <===
-Version:        2024.4.2
+Version:        2024.6.2
 Release:        0
 Summary:        Minimal task scheduling abstraction
 License:        BSD-3-Clause
@@ -181,7 +181,8 @@ This package pulls in all the optional dask components.
 Summary:        Numpy-like array data structure for dask
 Requires:       %{name} = %{version}
 Requires:       %{name}-delayed = %{version}
-Requires:       python-numpy >= 1.21
+# Requires both pyarrow and tables to be built against numpy 2
+Requires:       (python-numpy >= 1.21 with python-numpy < 2)
 Recommends:     python-scipy
 
 %description array
@@ -207,7 +208,7 @@ Requires:       %{name} = %{version}
 Requires:       %{name}-array = %{version}
 Requires:       %{name}-bag = %{version}
 # This is an extra package
-Requires:       (python-dask-expr >= 1.0 with python-dask-expr < 1.1)
+Requires:       (python-dask-expr >= 1.1 with python-dask-expr < 1.2)
 Requires:       python-pandas >= 1.3
 
 %description dataframe

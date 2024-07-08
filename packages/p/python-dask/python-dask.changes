@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Mon Jul  8 04:34:30 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2024.6.2:
+  * profile._f_lineno: handle next_line being None in Python 3.13
+  * Cache global query-planning config
+  * Python 3.13 fixes
+  * Fix test_map_freq_to_period_start for pandas=3
+  * Tokenizing memmap arrays will now avoid materializing the array into
+    memory.
+  * Fix test_dt_accessor with query planning disabled
+  * Remove deprecated dask.compatibility module
+  * Ensure compatibility for xarray.NamedArray
+  * Avoid rounding error in
+    test_prometheus_collect_count_total_by_cost_multipliers
+  * Log key collision count in update_graph log event
+  * Rename safe to expected in Scheduler.remove_worker
+  * Eagerly update aggregate statistics for TaskPrefix instead of
+    calculating them on-demand
+  * Improve graph submission time for P2P rechunking by avoiding unpack
+    recursion into indices
+  * Add safe keyword to remove-worker event
+  * Improved errors and reduced logging for P2P RPC calls
+  * Adjust P2P tests for dask-expr
+  * Iterate over copy of Server.digests_total_since_heartbeat to avoid
+    RuntimeError
+  * Add Prometheus gauge for task groups
+  * Fix too strict assertion in shuffle code for pandas subclasses
+  * Reduce noise from erring tasks that are not supposed to be running
+
+-------------------------------------------------------------------
 Fri Apr 26 17:53:31 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2024.4.2
