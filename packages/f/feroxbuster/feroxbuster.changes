@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jun 18 18:59:57 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.10.4
+  * --filter-regex now looks at headers in addition to response
+    body.
+  * clarified wording for headers in ferox-config.toml
+  * scan management menu now shows the estimated time left to scan.
+  * made --cookies parsing more robust.
+  * fixed an issue where estimated time to complete would show 0s
+    before the scan was finished.
+
+-------------------------------------------------------------------
 Sat Apr 27 15:54:14 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.10.3

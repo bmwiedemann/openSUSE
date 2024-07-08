@@ -1,6 +1,7 @@
 #
 # spec file for package feroxbuster
 #
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2022-2024, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,7 +18,7 @@
 
 
 Name:           feroxbuster
-Version:        2.10.3
+Version:        2.10.4
 Release:        0
 Summary:        A recursive content discovery tool
 License:        MIT
@@ -27,8 +28,8 @@ URL:            https://epi052.github.io/feroxbuster-docs/
 Source:         https://github.com/epi052/feroxbuster/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
 BuildRequires:  cargo
-BuildRequires:  rust
 BuildRequires:  cargo-packaging
+BuildRequires:  rust
 Suggests:       seclists
 
 %description

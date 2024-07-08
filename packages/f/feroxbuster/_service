@@ -1,5 +1,5 @@
 <services>
   <service name="cargo_vendor" mode="manual">
-    <param name="srcdir">feroxbuster-2.10.3</param>
+    <param name="srcdir">feroxbuster-2.10.4</param>
   </service>
 </services>
