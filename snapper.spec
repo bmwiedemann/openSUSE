@@ -35,7 +35,7 @@
 %bcond_with coverage
 
 Name:           snapper
-Version:        0.11.0
+Version:        0.11.1
 Release:        0
 Summary:        Tool for filesystem snapshot management
 License:        GPL-2.0-only
