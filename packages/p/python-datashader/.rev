@@ -312,4 +312,15 @@
   * Included upstream.</comment>
     <requestid>1182955</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>ed9f6bc73148ce1057ef8f6d945e336f</srcmd5>
+    <version>0.16.3</version>
+    <time>1720458534</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.16.3:
+  * Add fail-fast for datasets outside the visible extent
+  * Compatibility with cudf 2024.06
+  * Compatibility with geopandas 1.0 and dask-geopandas 0.4.0</comment>
+    <requestid>1186117</requestid>
+  </revision>
 </revisionlist>

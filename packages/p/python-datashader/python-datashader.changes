@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jul  8 09:03:05 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.16.3:
+  * Add fail-fast for datasets outside the visible extent
+  * Compatibility with cudf 2024.06
+  * Compatibility with geopandas 1.0 and dask-geopandas 0.4.0
+
+-------------------------------------------------------------------
 Mon Jun 24 06:28:33 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.16.2:
