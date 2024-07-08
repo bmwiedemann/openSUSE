@@ -21,13 +21,13 @@
 %{?sle15_python_module_pythons}
 Name:           python-llvmlite
 # Note: this has to be in sync with Numba releases
-Version:        0.42.0
+Version:        0.43.0
 Release:        0
 Summary:        Lightweight wrapper around basic LLVM functionality
 License:        BSD-2-Clause
 URL:            https://llvmlite.pydata.org
 Source:         https://github.com/numba/llvmlite/archive/v%{version}.tar.gz#/llvmlite-%{version}.tar.gz
-BuildRequires:  %{python_module devel >= 3.8}
+BuildRequires:  %{python_module devel >= 3.9}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -83,6 +83,6 @@ popd
 %doc README.rst
 %doc examples/
 %{python_sitearch}/llvmlite/
-%{python_sitearch}/llvmlite-%{version}*-info
+%{python_sitearch}/llvmlite-%{version}.dist-info
 
 %changelog
