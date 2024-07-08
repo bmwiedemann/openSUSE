@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Jul  6 17:25:03 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 4.2:
+  * Handle `strdup' error correctly in mmap IO device.
+  * developer visible fixes
+  * Diagnostics for invalid casts has been improved.
+  * Improve diagnostics of `.ios' command.
+  * `diff_structured' function in `diff' pickle has been fixed to
+    detect "simple types" correctly (types that have value
+    semantics instead of reference semantics).
+ * Documentation updates
+
+-------------------------------------------------------------------
 Fri May 31 21:15:09 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 4.1:
