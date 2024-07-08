@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jul  5 06:21:35 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.9.1 (boo#1227393, CVE-2024-39844)
+  * This is a security release to fix CVE-2024-39844: remote code
+    execution vulnerability in modtcl.
+    To mitigate this for existing installations, simply unload the
+    modtcl module for every user, if it's loaded. Note that only
+    users with admin rights can load modtcl at all.
+  * Improve tooltips in webadmin.
+
+-------------------------------------------------------------------
 Thu May  2 19:46:23 UTC 2024 - David Mulder <dmulder@suse.com>
 
 - Update to version 1.9.0:
