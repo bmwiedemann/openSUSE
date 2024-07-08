@@ -367,4 +367,19 @@
   * Move SIGCHLD handler #391</comment>
     <requestid>1157426</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>bff2d033825a33621ebc74bf76337b0e</srcmd5>
+    <version>0.6.22</version>
+    <time>1720458524</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.6.22:
+  * Clipboard fixes/improvements #405
+  * Fix: Transparency on the filter reveals a rectangle behind it
+    that shouldn't be there. #404
+  * Fix osx build failing. #406
+  * Correctness fixes (memory leaks, compiler warning, out-of-bounds
+    read) #411
+  * Border fixes (fixes: #399) #407</comment>
+    <requestid>1186089</requestid>
+  </revision>
 </revisionlist>

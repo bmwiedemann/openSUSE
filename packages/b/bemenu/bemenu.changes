@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jul  8 07:02:19 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.6.22:
+  * Clipboard fixes/improvements #405
+  * Fix: Transparency on the filter reveals a rectangle behind it
+    that shouldn't be there. #404
+  * Fix osx build failing. #406
+  * Correctness fixes (memory leaks, compiler warning, out-of-bounds
+    read) #411
+  * Border fixes (fixes: #399) #407
+
+-------------------------------------------------------------------
 Wed Mar 13 06:56:27 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.6.21:
