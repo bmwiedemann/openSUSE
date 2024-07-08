@@ -1,7 +1,7 @@
 #
 # spec file for package libndp
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,8 @@ License:        LGPL-2.1-or-later
 Group:          Productivity/Networking/Other
 URL:            http://libndp.org/
 Source:         http://libndp.org/files/libndp-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM libndp-CVE-2024-5564.patch bsc#1225771 mgorse@suse.com -- add a check on the route information option length field.
+Patch0:         libndp-CVE-2024-5564.patch
 BuildRequires:  pkgconfig
 
 %description
@@ -49,7 +51,7 @@ The libndp-devel package contains the header files necessary for developing
 programs using libndp.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %configure \

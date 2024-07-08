@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun 27 20:52:57 UTC 2024 - Michael Gorse <mgorse@suse.com>
+
+- Add libndp-CVE-2024-5564.patch: add a check on the route
+  information option length field (bsc#1225771 CVE-2024-5564).
+
+-------------------------------------------------------------------
 Tue Jan  4 22:49:20 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.8:
