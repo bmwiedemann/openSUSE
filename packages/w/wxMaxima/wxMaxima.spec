@@ -70,6 +70,10 @@ based on wxWidgets.
 %install
 %cmake_install
 
+# Manually install mimetype icons
+mkdir -p %{buildroot}%{_datadir}/icons/hicolor/scalable/mimetypes
+install -m0644 -t %{buildroot}%{_datadir}/icons/hicolor/scalable/mimetypes data/text-x-wx*.svg
+
 # Remove unnecessary icons out of pixmaps
 rm %{buildroot}%{_datadir}/pixmaps/*
 
@@ -101,6 +105,7 @@ popd
 %{_bindir}/*
 %{_datadir}/wxMaxima/
 %{_datadir}/icons/hicolor/*/apps/io.github.wxmaxima_developers.wxMaxima.*
+%{_datadir}/icons/hicolor/*/mimetypes/text-x-wx*.svg
 %{_datadir}/applications/*.desktop
 %{_datadir}/bash-completion/completions/wxmaxima
 %{_datadir}/metainfo/*.appdata.xml
