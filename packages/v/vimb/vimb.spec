@@ -1,7 +1,7 @@
 #
 # spec file for package vimb
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,35 +17,42 @@
 
 
 Name:           vimb
-Version:        3.6.0
+Version:        3.7.0
 Release:        0
 Summary:        The vim-like browser
 License:        GPL-3.0-or-later
 Group:          Productivity/Networking/Web/Browsers
 URL:            https://fanglingsu.github.io/vimb/
 Source:         https://github.com/fanglingsu/vimb/archive/%{version}.tar.gz
+BuildRequires:  desktop-file-utils
+BuildRequires:  appstream-glib
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(gtk+-3.0)
-BuildRequires:  pkgconfig(webkit2gtk-4.0) >= 2.20
+BuildRequires:  pkgconfig(webkit2gtk-4.1)
 
 %description
 vimb is a WebKit-based web browser that behaves like the vimperator
 plugin for Firefox, and has usage paradigms from the editor vim.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
-make %{?_smp_mflags} PREFIX=%{_prefix}
+%make_build PREFIX=%{_prefix}
 
 %install
 %make_install PREFIX=%{_prefix}
 
+%check
+make test
+desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
+appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/vimb.metainfo.xml
+ 
 %files
 %{_bindir}/vimb
 %dir %{_prefix}/lib/vimb
 %{_prefix}/lib/vimb/webext_main.so
 %{_datadir}/applications/vimb.desktop
+%{_datadir}/metainfo/vimb.metainfo.xml
 %{_mandir}/man1/vimb.1%{?ext_man}
 
 %changelog
