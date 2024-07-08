@@ -138,4 +138,15 @@
     <comment></comment>
     <requestid>585197</requestid>
   </revision>
+  <revision rev="21" vrev="163">
+    <srcmd5>bd46f39dca83aed896083d7a157a5049</srcmd5>
+    <version>0.7.1</version>
+    <time>1720458429</time>
+    <user>anag+factory</user>
+    <comment>- Added patches for support gcc14:
+  * wol-0.7.1-Fix-config.h-test-consumption.patch
+  * wol-0.7.1-Fix-malloc-detection.patch
+  * wol-0.7.1-linux-headers.patch</comment>
+    <requestid>1186107</requestid>
+  </revision>
 </revisionlist>

@@ -1,11 +1,19 @@
 -------------------------------------------------------------------
-Sat Mar 10 02:06:37 UTC 2018 - ilya@ilya.pp.ua
+Mon Jul  8 07:08:42 UTC 2024 - Friedrich Haubensak <hsk17@mail.de>
+
+- Added patches for support gcc14:
+  * wol-0.7.1-Fix-config.h-test-consumption.patch
+  * wol-0.7.1-Fix-malloc-detection.patch
+  * wol-0.7.1-linux-headers.patch
+  
+-------------------------------------------------------------------
+Sat Mar 10 02:06:37 UTC 2018 - Илья Индиго <ilya@ilya.top>
 
 - Refresh spec-file via spec-cleaner.
 - Add %license macro.
 
 -------------------------------------------------------------------
-Mon Nov 13 10:06:34 UTC 2017 - ilya@ilya.pp.ua
+Mon Nov 13 10:06:34 UTC 2017 - Илья Индиго <ilya@ilya.top>
 
 - Refresh spec-file via spec-cleaner.
 - Add package wol-udev-rules for activation wol via magic packet on ethernet devices.
@@ -50,4 +58,3 @@ Sat Jan 10 22:12:00 CET 2004 - adrian@suse.de
 Tue Dec  9 04:56:59 CET 2003 - nashif@suse.de
 
 - Initial Release ( Version 0.7.0 )
-

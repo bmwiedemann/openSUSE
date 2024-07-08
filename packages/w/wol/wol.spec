@@ -1,7 +1,7 @@
 #
 # spec file for package wol
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,8 +12,9 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via https://bugs.opensuse.org
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 Name:           wol
 Version:        0.7.1
@@ -24,6 +25,11 @@ Group:          Productivity/Networking/Boot/Utilities
 URL:            https://sourceforge.net/projects/wake-on-lan
 Source0:        %{name}-%{version}.tar.gz
 Source1:        %{name}.rules
+Patch0:         wol-0.7.1-Fix-config.h-test-consumption.patch
+Patch1:         wol-0.7.1-Fix-malloc-detection.patch
+Patch2:         wol-0.7.1-linux-headers.patch
+BuildRequires:  autoconf
+BuildRequires:  automake
 Requires(post): %{install_info_prereq}
 Requires(preun): %{install_info_prereq}
 
@@ -46,15 +52,16 @@ This package contains the udev rule file for configuring ethernet devices for ac
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
+autoreconf -fiv
 %configure --disable-rpath
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
-install -Dm 644 %{SOURCE1} %{buildroot}%{_udevrulesdir}/90-%{name}.rules
+install -Dpm0644 %{SOURCE1} %{buildroot}%{_udevrulesdir}/90-%{name}.rules
 %find_lang %{name}
 
 %post
@@ -64,15 +71,13 @@ install -Dm 644 %{SOURCE1} %{buildroot}%{_udevrulesdir}/90-%{name}.rules
 %install_info_delete --info-dir=%{_infodir} %{_infodir}/%{name}.info%{ext_info}
 
 %files
-%defattr(0644,root,root,-)
 %license COPYING
 %doc ABOUT-NLS AUTHORS ChangeLog NEWS README TODO
-%attr(0755,root,root) %{_bindir}/%{name}*
+%{_bindir}/%{name}*
 %{_infodir}/%{name}.info%{?ext_info}
 %{_mandir}/man?/%{name}.?%{ext_man}
 
 %files udev-rules
-%defattr(0644,root,root,-)
 %dir %{_udevrulesdir}
 %{_udevrulesdir}/90-%{name}.rules
 
