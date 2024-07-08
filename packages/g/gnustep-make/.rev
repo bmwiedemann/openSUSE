@@ -56,4 +56,78 @@ Disable LTO for Objective-C.</comment>
     <comment></comment>
     <requestid>1088512</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>6313f19d8d4ba22798a34af81ba7a42e</srcmd5>
+    <version>2.9.2</version>
+    <time>1720458423</time>
+    <user>anag+factory</user>
+    <comment>- Accecpted request to update to version 2.9.2
+  * Update for newer versions of Java
+  * Various minor bugfixes.
+- update the upstream source URLs
+- update to version 2.9.1
+  * Add workaround for Clang bug on Windows MSVC when tests contain no Objective-C constructs.
+  * Various fixes for minor issues introduced in the test framework by parallelisation mof testcase execution.
+- update to version 2.9.0
+  * Better check for objc runtime on Windows.
+  * Split linker flags to better support partial linking: 'ALL_LDFLAGS'
+    is now a combination of 'FINAL_LDFLAGS' and 'ALL_LDFLAGS'.
+  * Better support for newer gcc versions.
+  * Add support for storyboard files.
+  * Increase autoconf version to 2.65 and make autoconf handle
+    Objective-C++ and OBJCXX variables directly.
+  * Fix bug that prevented ARC from getting used.
+  * Link subproject object files directly instead of first merging them
+    into 'subproject.o'.
+  * Support building on Windows with Clang MSVC target.
+  * Improve mingw64 support: for instance, adopt the triplet used by
+    the mingw-w64 project rather than using the one returned by
+    autoconf.  Fixes building Gorm.
+- add keyring for source validation
+- Update to version 2.8.0
+  * Better library combo and ABI detection: gnustep-make will now
+    attempt to detect the optimal library combo and ABI
+    supported by the installed compiler and Objective-C runtime
+    library. Explicit selection of the runtime ABI is now
+    possible using the '--with-runtime-abi' configure option.
+  * Full support for the gnustep-2.0 Objective-C ABI.
+  * Support for creating a Git tag and creating a tarball from a
+    git tag using the 'git-tag' and 'git-dist' targets.
+  * Support for creating a Mercurial tag and creating a tarball
+    from a hg tag using the 'hg-tag' and 'hg-dist' targets.
+- Spec cleanup
+- Disable LTO as this isn't working for Objective-C projects.
+- update to 2.7.0
+  o for more info please see ChangeLog file
+- Added gnustep-make-rpmlintrc
+- Spec cleanup
+- Removed _service file and added tarball so that
+  the package can be accepted into Factory
+- Fixed library path for s390x 
+- update to 2.6.8
+  o for more info please see ChangeLog file
+- update to 2.6.7
+  o for more info please see ChangeLog file
+- update to 2.6.6
+  o for more info please see ChangeLog file
+- update to 2.6.5
+  o for more info please see ChangeLog file
+- update to 2.6.4
+  o for more info please see ChangeLog file
+- update to 2.6.3
+  o for more info please see ChangeLog file
+- update to 2.6.2
+  o for more info please see ChangeLog file
+- update to 2.4.0
+  o for more info please see ChangeLog file
+- fix fhs (library path)
+  (see WindowMaker pkg: /usr/lib/GNUstep/Applications)
+  o GNUSTEP_SYSTEM_APPS=/usr/lib/GNUstep/Applications
+  o GNUSTEP_SYSTEM_LIBRARIES={_libdir}
+- spec mods
+  o add header
+- initial version
+</comment>
+    <requestid>1186043</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package gnustep-make
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,14 +24,14 @@
 # Disable debug package as rpm > 4.13 does not allow for empty debug file list.
 %global debug_package %{nil}
 Name:           gnustep-make
-Version:        2.9.1
+Version:        2.9.2
 Release:        0
 Summary:        GNUstep Makefile package
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later
 Group:          System/GUI/Other
 URL:            http://www.gnustep.org/
-Source:         https://github.com/gnustep/tools-make/releases/download/make-2_9_1/%{name}-%{version}.tar.gz
-Source1:        https://github.com/gnustep/tools-make/releases/download/make-2_9_1/%{name}-%{version}.tar.gz.sig
+Source:         https://github.com/gnustep/tools-make/releases/download/make-2_9_2/%{name}-%{version}.tar.gz
+Source1:        https://github.com/gnustep/tools-make/releases/download/make-2_9_2/%{name}-%{version}.tar.gz.sig
 Source2:        %{name}-rpmlintrc
 Source3:        gnustep-make.keyring
 BuildRequires:  gcc-objc
@@ -67,7 +67,7 @@ make DESTDIR=%{buildroot} \
 
 %files
 %license COPYING
-%doc ANNOUNCE ChangeLog FAQ GNUstep-HOWTO NEWS README RELEASENOTES
+%doc ANNOUNCE ChangeLog FAQ NEWS README RELEASENOTES
 %dir %{_sysconfdir}/GNUstep
 %dir %{_datadir}/GNUstep
 %{_bindir}/debugapp
