@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jul  8 04:38:44 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Pin numpy's upper bound to < 2, due to python-tables. 
+
+-------------------------------------------------------------------
 Wed Mar  6 14:08:59 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Add unittest.patch to fix assert calls on Python 3.12

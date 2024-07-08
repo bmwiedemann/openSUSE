@@ -40,15 +40,16 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 %if %{with test}
 BuildRequires:  %{python_module dill}
-BuildRequires:  %{python_module numpy >= 1.6.1}
+# Due to tables
+BuildRequires:  %{python_module numpy >= 1.6.1 with %python-numpy < 2}
 BuildRequires:  %{python_module pandas >= 0.15.0}
 BuildRequires:  %{python_module scipy >= 0.9.0}
 BuildRequires:  %{python_module tables >= 3.1.1}
 %endif
-Requires:       python-numpy >= 1.6.1
-Requires:       python-pandas >= 0.15.0
+Requires:       python-pandas >= 0.150
 Requires:       python-scipy >= 0.9.0
 Requires:       python-tables >= 3.1.1
+Requires:       (python-numpy >= 1.6.1 with python-numpy < 2)
 Recommends:     python-GitPython >= 0.2.1
 Recommends:     python-Sumatra >= 0.7.1
 Recommends:     python-dill >= 0.2.1

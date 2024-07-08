@@ -83,4 +83,12 @@
     <comment></comment>
     <requestid>1156123</requestid>
   </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>24b3e132e9be6a998ff410adcd012d50</srcmd5>
+    <version>0.6.1</version>
+    <time>1720458517</time>
+    <user>anag+factory</user>
+    <comment>- Pin numpy's upper bound to &lt; 2, due to python-tables.</comment>
+    <requestid>1186066</requestid>
+  </revision>
 </revisionlist>
