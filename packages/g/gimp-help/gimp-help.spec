@@ -29,6 +29,7 @@ Patch0:         gimp-help-2.10.0-python3.patch
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  fdupes
 BuildRequires:  libxslt
+BuildRequires:  memory-constraints
 BuildRequires:  pngcrush
 BuildRequires:  python3-libxml2-python
 Requires:       gimp
@@ -311,6 +312,7 @@ This package provides Chinese data for gimp-help.
 find . -iname \*.py -exec sed -i -e '1 s@env python.\?@python3@' '{}' \;
 
 %build
+%limit_build -m 3400
 # We install the help to the same prefix as gimp itself, so no
 # need to query gimp for the prefix at build time
 %configure \

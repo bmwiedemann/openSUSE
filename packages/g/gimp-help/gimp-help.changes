@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jun 27 13:55:38 UTC 2024 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add %limit_build to avoid OOM
+
+-------------------------------------------------------------------
 Tue Feb 27 11:00:20 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

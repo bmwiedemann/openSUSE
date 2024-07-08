@@ -375,4 +375,12 @@ Nobody knows why gimpmode would even be needed... (forwarded request 151527 from
     <comment>Prepare for RPM 4.20 (forwarded request 1152144 from dimstar)</comment>
     <requestid>1152252</requestid>
   </revision>
+  <revision rev="35" vrev="4">
+    <srcmd5>4fa551e86c3d4b0949fc4fba249bc828</srcmd5>
+    <version>2.10.0</version>
+    <time>1720458487</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1185981</requestid>
+  </revision>
 </revisionlist>
