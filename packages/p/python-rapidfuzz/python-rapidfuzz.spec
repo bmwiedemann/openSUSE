@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-rapidfuzz
-Version:        3.7.0
+Version:        3.9.4
 Release:        0
 Summary:        Rapid fuzzy string matching
 License:        MIT

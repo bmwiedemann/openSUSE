@@ -125,4 +125,29 @@
   * reduce importtime</comment>
     <requestid>1165774</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>cb1e4746d3601ef5426036adb99eed7b</srcmd5>
+    <version>3.9.4</version>
+    <time>1720458470</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.9.4:
+  * fix bug in Levenshtein.editops and Levenshtein.opcodes which
+    could lead to incorrect results and crashes for some inputs
+  * fix None handling for queries in process.cdist for scorers
+    not supporting SIMD
+  * fix supported versions of taskflow in cmake to be in the
+    range v3.3 - v3.7
+  * disable AVX2 on MacOS since it did lead to illegal
+    instructions being generated
+  * significantly improve type hints for the library
+  * fix cmake version parsing
+  * use the correct version of rapidfuzz-cpp when building
+    against a system installed version
+  * added process.cpdist which allows pairwise comparison of two
+    collection of inputs
+  * fix some minor errors in the type hints
+  * fix potentially incorrect results of JaroWinkler when using
+    high prefix weights</comment>
+    <requestid>1185906</requestid>
+  </revision>
 </revisionlist>
