@@ -22,7 +22,6 @@ Version:        0.15.4
 Release:        0
 Summary:        Sparse n-dimensional arrays for Python
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/pydata/sparse
 Source:         https://files.pythonhosted.org/packages/source/s/sparse/sparse-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.8}
@@ -33,15 +32,15 @@ BuildRequires:  %{python_module wheel}
 # SECTION test requirements
 BuildRequires:  %{python_module dask-array}
 BuildRequires:  %{python_module numba >= 0.49}
-BuildRequires:  %{python_module numpy >= 1.17}
+BuildRequires:  %{python_module numpy >= 1.17 with %python-numpy < 2}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module scipy >= 0.19}
 # /SECTION
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-numba >= 0.49
-Requires:       python-numpy >= 1.17
 Requires:       python-scipy >= 0.19
+Requires:       (python-numpy >= 1.17 with python-numpy < 2)
 BuildArch:      noarch
 
 %python_subpackages

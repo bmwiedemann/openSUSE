@@ -121,4 +121,12 @@
     <comment></comment>
     <requestid>1179166</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>204329799cab4eadcc1fa8595269d412</srcmd5>
+    <version>0.15.4</version>
+    <time>1720458519</time>
+    <user>anag+factory</user>
+    <comment>- Limit numpy to &lt; 2.</comment>
+    <requestid>1186068</requestid>
+  </revision>
 </revisionlist>

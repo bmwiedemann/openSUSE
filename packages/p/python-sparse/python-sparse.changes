@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jul  8 05:01:00 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Limit numpy to < 2. 
+
+-------------------------------------------------------------------
 Thu Jun  6 18:03:14 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.15.4
