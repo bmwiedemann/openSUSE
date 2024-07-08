@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 29 09:48:47 UTC 2024 - Max Lin <mlin@suse.com>
+
+- BuildRequire kf5-filesystem on Leap 15
+
+-------------------------------------------------------------------
 Fri Jan  5 10:48:20 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire rpm_macro(_kf5_kxmlguidir): Fix build after recent

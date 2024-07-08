@@ -39,7 +39,11 @@ BuildRequires:  libqt5-qtwebengine-devel
 BuildRequires:  python3-Pygments
 BuildRequires:  python3-devel
 BuildRequires:  update-desktop-files
+%if 0%{?suse_version} > 1500
 BuildRequires:  rpm_macro(_kf5_kxmlguidir)
+%else
+BuildRequires:  kf5-filesystem
+%endif
 
 %description
 Semantik (previously Kdissert) is a mindmapping-like tool to help students
