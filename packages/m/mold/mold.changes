@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Thu Jun 27 06:56:15 UTC 2024 - Martin Liška <martin.liska@hey.com>
 
-- Update to version 2.32.0
+- Update to version 2.32.1
   * Previously, shared libraries specified with --as-needed were not considered as
     "needed" if they were referenced only by weak undefined symbols. Such weak
     symbols were converted to absolute symbols at address zero at link-time.

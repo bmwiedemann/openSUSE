@@ -862,4 +862,12 @@
   * LTO now works on MinGW. (50bf031)</comment>
     <requestid>1183534</requestid>
   </revision>
+  <revision rev="45" vrev="2">
+    <srcmd5>c6f2f72a0cdea49fac171d3b38544f76</srcmd5>
+    <version>2.32.1</version>
+    <time>1720458494</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1185859</requestid>
+  </revision>
 </revisionlist>
