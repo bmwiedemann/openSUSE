@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Jul 03 15:13:22 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.23.1:
+  * Version 0.23.1
+  * Remove atty
+  * Update dependencies
+  * look up ns only once (#237)
+  * Bump rustls from 0.22.2 to 0.22.4 (#223)
+  * Bump the all group across 1 directory with 10 updates (#239)
+  * Bump which from 5.0.0 to 6.0.0 (#215)
+  * Bump the all group with 9 updates (#214)
+  * Group dependabot updates
+
+-------------------------------------------------------------------
 Tue Dec 12 17:08:13 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.23.0:

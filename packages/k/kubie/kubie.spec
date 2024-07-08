@@ -1,7 +1,7 @@
 #
 # spec file for package kubie
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
 
 Name:           kubie
-Version:        0.23.0
+Version:        0.23.1
 Release:        0
 Summary:        A Kubernetes context switcher
 License:        Zlib
