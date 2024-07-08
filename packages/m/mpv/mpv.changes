@@ -1,4 +1,554 @@
 -------------------------------------------------------------------
+Sat Jul 06 15:51:42 UTC 2024 - llyyr@yukari.in
+
+- Update to version 0.38.0+git20240706.00f43e0916fa:
+  * wayland: fix missed int -> double conversion for cursor scaling
+  * stats.lua: active key bindings: identify prefix nonrepeatable
+  * console.lua: restore the order of items after clearing the input line
+  * console.lua: minor tweaks
+  * console.lua: remove the scale script-opt
+  * player/loadfile: enable streams in order of types when loading file
+  * demux: avoid seeking video streams for refresh seek
+  * demux: don't log if track isn't refreshed
+  * video/out/gpu/context: convert --gpu-api to object settings list
+  * video/out/gpu/context: simplify --gpu-context's check_unknown_entry
+  * ytdl_hook: strip quotes from cookie values
+  * input/cmd: move m_option_type_cycle_dir to m_option.c
+  * player/lua: restore original lua allocator before close
+  * wayland: add a --wayland-present option
+  * stats.lua: fix codec-profile position for audio
+  * misc/natural_sort: avoid implementation-defined behavior in comparison
+  * fuzzers: wait for file start event before idle
+  * filters/f_lavfi: fix null dereference on empty graph
+  * demux_playlist: don't add base path to self-expanding protocols
+  * test/paths: add tests for mp_basename and mp_dirname
+  * test/paths: use helper functions for result testing
+  * bstr: change memcpy to memmove to allow aliased copies
+  * fuzzer_set_property: fix setting audio-files list
+  * mac/menu: add option to disable default shortcuts
+  * m_option: parse the timestamp as unsigned value
+  * various: add more format specifiers checks
+  * playlist: let playlist-next go to first item if player is idle
+  * playlist: let playlist-prev go to last item in playlist
+  * options: remove some options with .deprecation_message
+  * options: remove various OPT_REMOVED usage
+  * options: remove some deprecated OPT_REPLACED option mapping
+  * fuzzer_load: seal the input fd after writing the data
+  * console.lua: assume non-ASCII characters span 2 cells for truncation
+  * console.lua: let libass clip lines in select mode
+  * console.lua: subtract --osd-margin-x in the max width calculation
+  * fuzzer_set_property: destroy mpv also on error
+  * meson: add fuzzers alias for all fuzzer targets
+  * player/playloop: fix null dereference if filter_root does not exist
+  * loadfile: update the format of terminal track information
+  * DOCS/input: document undocumented track-list sub-properties
+  * m_option: add a way for aliases to use sub option prefix
+  * fuzzer_set_property: don't run mpv if set property failed
+  * fuzzer_load_{config_file,input_conf}: take into account file size limit
+  * m_option: ignore excessive elements only for obj_settings_list
+  * player/command: limit user-data name splits to 100
+  * m_config_frontend: disallow profile=default in config files
+  * misc/random: set constant seed for fuzzing
+  * fuzzers: disallow include command in more principal way
+  * ad_{lavc,spdif}: initialize channel layout
+  * options: add secondary-{sid,sub-delay} to watch_later_options
+  * fuzzer_load: disallow include option in config files
+  * input/keycodes: validate parsed value to avoid overflow
+  * m_option: do float multiplication to avoid integer overflow
+  * common: validate parsed unicode codepoints value
+  * m_options: fix obj settings list leak on error
+  * vo_gpu: optimize pass_info_reset
+  * demux: allow refresh seek for non-video streams
+  * av_log: sort library version print and add missing libavdevice
+  * ad_spdif: fix lavf version check
+  * various: remove no longer needed availability checks
+  * misc/uuid: remove no longer needed vendored implementation
+  * various: remove av channel layout check
+  * ci/openbsd: bump to 7.5 and remove libplacebo subproject
+  * meson: increase FFmpeg minimum required version to 6.1
+  * select.lua: consider --sub-delay for the subtitle line selector
+  * select.lua: don't use sub-start to preselect subtitle lines
+  * vo_tct: clear backbuffer on reconfig
+  * options: remove deprecated auto choice for --mute
+  * player/command: alias playback-time to time-pos
+  * test/libmpv_test: fix some stray tabs
+  * ao_pipewire: fix some stray tabs
+  * test/libmpv_encode: avoid mktemp warning
+  * osc.lua: don't use legacy argument for seeking
+  * ao_avfoundation: guard features only available on macOS 11.3 and 12
+  * cocoa-cb: guard color spaces that are only available on 10.15.4 upwards
+  * mac/compat: fix broken CGColorSpace declaration on SDK 11 only
+  * mac/event: remove swift 5.6 language feature that is mandatory with 6.0
+  * mac/compat: add withLock fallback for xcode older than 14
+  * mac/log: properly guard logger usage behind platform version check
+  * bash-completion: remove hashbang
+  * fuzzers: enable edl, file and lavf protocols
+  * m_options: limit list entries to 100
+  * m_options: fix mark_del leak on error
+  * fuzzer_set_property: force untimed and pause state
+  * demux_edl: fix infinite loop on empty EDL files
+  * fuzzers: disable some targets as we hit out of space errors
+  * osc.lua: add script message to show up the OSC
+  * stream: don't exit on first iteration if there is no match
+  * ad_spdif: add an assert for lavf_ctx
+  * editorconfig: punish tab usage
+  * osc.lua: replace tabs with spaces
+  * fuzzers/meson: set link language to cpp
+  * demux_lavf: fix null derefence of stream variable
+  * d3d11: return minimum bitdepth for display output and swapchain
+  * demux_lavf: add format hack entry for jpeg metadata frames
+  * demux_lavf: fix null derefence in io_open callback
+  * stats.lua: align 100% correctly on page 2
+  * vf_vapoursynth: upgrade to VapourSynth API v4
+  * demux_lavf: drop jpeg frames that are at a nonzero pos
+  * Revert "demux_lavf: pass jpg filenames to ffmpeg for probing"
+  * input: map Num 5 to distinct value when numlock is off
+  * input.conf: make Alt+BS reset panscan
+  * console.lua: don't enable the console-input input section
+  * osc.lua: fix timetotal and timems settings
+  * stats.lua: display file tags
+  * input: don't resolve double clicks on the active mouse section
+  * lua: don't pass nil as the second argument of mp.get_property_number
+  * DOCS/interface-changes: fix formatting
+  * TOOLS/gen-interface-changes.py: sort interface changes by file content
+  * DOCS/contribute.md: require interface change begin with type
+  * stats.lua: remove print_perfdata_passes
+  * stats.lua: add page 5 for currently selected tracks information
+  * stats.lua: make the append function increment index only on newline
+  * sub: update codec info
+  * osc.lua: add option to use display fps for update interval
+  * osc.lua: unify observe_property style
+  * osc.lua: add option to make rendering smoother
+  * opengl: add --egl-output-format
+  * opengl: add --egl-config-id
+  * vf_vapoursynth: add parameter to pass arbitrary string to script
+  * options: add --osd-playlist-entry
+  * DOCS/compile-windows.md: improve Windows build documentation
+  * console.lua: prettify unselected track log messages
+  * select.lua: support extracting ytdl_hook subtitles
+  * select.lua: hide the hour when it's 0
+  * select.lua: seek to the currect subtitle line when paused without video
+  * select.lua: preselect the correct sub line with duration >= 100 minutes
+  * loadfile: improve the format of terminal track information
+  * ci/mingw: install wine optionally
+  * ci/mingw: use Ubuntu 24.04
+  * ci/msys2: compact build script
+  * ci/msys2: re-enable 32-bit builds
+  * ci/mingw: don't run test on 32-bit binary
+  * hwdec_vaapi: suppress comparision warning
+  * wayland_common: properly handle modifiers for keyboard enter keys
+  * meson: add -fno-trapping-math to default flags
+  * meson: add -fno-signed-zeros to default flags
+  * ci/mingw: enable javascript support
+  * osc.lua: fix user configurable colors
+  * ra_d3d11: make cache header constant size regardless of the build
+  * ao_wasapi: don't limit the scope of execution context
+  * w32_common: stop IME initialization timer after first try
+  * default.js: handle canceled key bindings
+  * defaults.lua: handle canceled key bindings
+  * command: add canceled state to key-binding client message
+  * input: mark a command as canceled if it is explicitly dropped
+  * bstr: use memchr and memrchr for bstrchr and bstrrchr
+  * terminal-win: use proper NTAPI callback for FLS
+  * DOCS/compile-windows.md: update Windows compilation documentation
+  * common: clang supports __builtin_clz also in non-GNU modes
+  * parse_commandline: fix incorrect win32 check
+  * misc/thread_tools: fix incorrect win32 check
+  * ao_pcm: fix incorrect win32 check
+  * player/main: concat string at compile time
+  * sub/sd_ass: rewrite is_animated()
+  * meson: clear flags used for build
+  * {x11_common,context_x11egl}: suppress Wundef warning
+  * ao_pipewire: fix access to undefined byte order definitions
+  * osdep/endian: add missing byte order defines
+  * ao_coreaudio_chmap: fix shadowed variable
+  * stream_cdda: suppress Wundef warning
+  * fuzzers/common: add prototype for LLVMFuzzerTestOneInput
+  * input: fix grammar errors and typo
+  * input: only begin VO dragging if the section allows
+  * autoload.lua: always accept current file as a valid file
+  * autoload.lua: match also image extension
+  * autoload.lua: cosmetic changes
+  * autoload.lua: fix options update
+  * sub: avoid unneeded calls to is_animated
+  * input: reset doubleclick timer when dragging begins
+  * input: un-hardcode VO dragging
+  * input: prevent MBTN_LEFT conflict with VO dragging
+  * input: implement VO dragging deadzone
+  * input: fix mouse position equality check
+  * input: begin VO dragging when moving mouse while left button is down
+  * DOCS/man/options.rst: remove DVD menu reference for --input-cursor
+  * test/meson: remove unneded sources
+  * ci/mingw: resolve pkgconfig deprecation warning in meson
+  * ci/mingw: run meson tests
+  * ci/mingw: add exe_wrapper to cross file
+  * ci/mingw: support encode mode
+  * ci/mingw: use ninja for cmake builds
+  * test/paths: skip normalize tests if pathcch library is not available
+  * test_utils: don't use subprocess for diffing test results
+  * test/libmpv_encode: print logs also during initialize
+  * test/libmpv_encode: don't use mpv internals for test
+  * player/playloop: remove now unused get_percent_pos()
+  * win32: quantize taskbar playback position into uint8 range
+  * Revert "d3d11: calc vsync interval on real stats, not just last interval"
+  * TOOLS/autoload.lua: fix directory_mode and ext options
+  * osd: don't use get_percent_pos function
+  * command: simplify printing floats as integers
+  * README: link to discussions
+  * osc.lua: fix lint warnings
+  * TOOLS/test-hooks.lua: fix lint warning
+  * TOOLS/status-line.lua: fix lint warnings
+  * TOOLS/osd-test.lua: fix lint warning
+  * TOOLS/observe-all.lua: fix lint warning
+  * TOOLS/nan-test.lua: fix lint warnings
+  * TOOLS/cycle-deinterlace-pullup.lua: fix lint warnings
+  * TOOLS/command-test.lua: fix lint warnings
+  * TOOLS/autoload.lua: fix lint warnings
+  * TOOLS/autodeint.lua: fix lint warnings
+  * TOOLS/autocrop.lua: fix lint warnings
+  * TOOLS/ao-null-reload.lua: fix lint warnings
+  * ytdl_hook.lua: fix lint warnings
+  * console.lua: fix lint warnings
+  * mpv.desktop: fix capitalization error
+  * mpv.desktop: add Arabic translation
+  * TOOLS/gen-interface-changes: wrap long lines to 80 col
+  * input.conf: change 'u' binding to cycle between 'force' and default
+  * options: make sub-ass-override default to 'scale'
+  * options: move sub-ass-override 'scale' above 'force'
+  * sd_ass: only set sub-scale for 'scale', 'force' or 'strip'
+  * DOCS/input: clarify the difference between audio-pts and time-pos
+  * player: replace get_current_time with get_playback_time in some spots
+  * player/playloop: force get_playback_time to be at least 0
+  * player: put speed adjustment back into playing_audio_pts
+  * player/video: fix incorrect VO frame duration and frame drops
+  * x11: correct position coordinates if mpv was launched with --fs
+  * vo_vaapi: remove redundant function call
+  * vo_vaapi: fix use-after-free when quitting
+  * vo_vaapi: fix use-after-free of current frame
+  * console.lua: fix crash with set ;<Tab>
+  * console.lua: fix crash if no completions exist
+  * Revert "ao_pipewire: add EOF handling"
+  * Revert "ao_pipewire: wait for draining finishes before restart ao"
+  * playloop: don't loop when seeking to the end of cover art while paused
+  * ao_pipewire: wait for draining finishes before restart ao
+  * ao_pipewire: add EOF handling
+  * ao_avfoundation: use blocking ao_read_data
+  * ao_avfoundation: add EOF handling
+  * ao: add ao_stop_streaming
+  * ao: add eof, pad_silence, and blocking arguments for ao_read_data
+  * ao_coreaudio: set ao->device_buffer base on hardware latency
+  * osxbundle: refactor Information Property List
+  * wayland_common: ignore unknown key states
+  * wayland_common: handle pressed keys in keyboard_enter event
+  * DOCS/man: replace legacy option syntax usage
+  * Revert "fuzzers/load: clear old temp files if they exist"
+  * ad_spdif: check return value of av_parser_parse2
+  * ad_spdif: check for AC3 if parser fails to detect profile
+  * ad_spdif: set codec params
+  * stream_lavf: don't add ffmpeg bluray or dvd protocols
+  * build: dynamically generate mpv.desktop file protocols
+  * stream: implement get_protocols method for stream_lavf
+  * av_common: parent mp_get_lavf_demuxer contents to the list
+  * wayland: use wl->callback_surface for idle inhibitor creation
+  * fuzzers/load: clear old temp files if they exist
+  * DOCS/man/console.rst: remove extraneous words
+  * mp_image: remove unneeded PL_HAVE_LIBDOVI check
+  * fuzzers: always return 0
+  * DOCS/options: --sub-scale-by-window doesn't affect ASS subtitles
+  * ci/lint: only allow specific characters in subjects
+  * ci/lint: allow the first word after : to be an option with --
+  * ci/lint: only allow space instead of \s or \s+
+  * workflows/comment: more newline fixes to make formatting work
+  * workflows/comment: add missing escape fix
+  * ci/mac: silence unnecessary reinstall warnings
+  * select.lua: allow ffmpeg to print errors if it fails
+  * osc.lua: handle osd-scale-by-window runtime update
+  * stats.lua: handle osd-scale-by-window runtime update
+  * {stats,osc}.lua: respect --osd-scale-by-window by default
+  * stats.lua: add add auto value to vidscale option
+  * osc.lua: add auto value to vidscale option
+  * DOCS/man/options.rst: recommend --osd-scale-by-window for UI scale
+  * meson: limit concurrent link jobs to 16
+  * ao: don't call driver->set_paused after reset
+  * osdep/path-win: fix leak of portable_path
+  * osdep/io: fix leak of environment strings on win32
+  * DOCS/interface-changes.rst: document loadfile breaking change
+  * DOCS/man/input.rst: document breaking change of loadfile index argument
+  * DOCS/man: note that default autoprobe order is unrealiable
+  * DOCS/compatibility.rst: add requirement when changing default values
+  * DOCS/compatibility.rst: add provision for dealing with severe breakages
+  * DOCS/compatibility.rst: require more details about breaking changes
+  * DOCS/compatibility.rst: fix formatting
+  * ci: save cache also on failures
+  * playloop: don't redraw without subs on quit
+  * workflows/cleanup_caches: minor cosmetic changes
+  * workflows/comment: refactor comment workflow to not use github-script
+  * console.lua: fix completing change-list ao/vo/gpu-context remove
+  * input: prioritize builtin bindings matching longer key sequences
+  * console.lua: fix the max log lines calculation
+  * stats.lua: prevent freeze in certain cases with vidscale=no
+  * console.lua: use all available lines for selection
+  * select.lua: strip trailing zeros from FPS values
+  * select.lua: handle sub-start being earlier than ffmpeg's timestamps
+  * select.lua: don't needlessly initialize default_item
+  * select.lua: preselect the previous sub line without a current line
+  * select.lua: fix preselecting the current subtitle line
+  * console.lua: add nonrepeatable prefix to command_prefixes
+  * input/cmd: add nonrepeatable prefix
+  * ad_spdif: add missing codec_desc initialization
+  * ci/cleanup_caches: group by cache prefixes too
+  * ci: clear old caches to avoid master branch cache trashing
+  * msg: clear status line only if needed
+  * msg: split mp_msg_flush_status_line into private and public variant
+  * msg: check target stream before printing
+  * ci: don't pin Ubuntu version where it doesn't matter
+  * ci/mingw: clean installed packages
+  * ci/mingw: use meson for libass build
+  * ci/mingw: remove non-existent cmake option
+  * wayland: also log version numbers with protocol interface names
+  * ci/win32: override link args only for the target that needs them
+  * ci/win32: add Vulkan-Loader
+  * meson: assume vkCreateDisplayPlaneSurfaceKHR is available when internal
+  * ci/win32: build shaderc
+  * ci/win32: use ccache
+  * ci/win32: enable all available projects from meson's wrapdb
+  * ci/win32: add spirv-cross
+  * ci/win32: add shaderc
+  * ci/win32: remove Strawberry Perl from path
+  * github/issue_template: ask for possible sample files on feature request
+  * github/issue_template: rework system info section and provide commands
+  * github/issue_template: move mpv information into its own section
+  * github/issue_template: add information on how to create backtraces
+  * github/issue_template: mention (nightly) builds and packages for testing
+  * github/issue_template: reword file upload instruction
+  * github/issue_template: reword log file instructions
+  * github/issue_template: be more specific about performance-related issues
+  * github/issue_template: add checkboxes as instruction check
+  * github/issue_template: rework issue templates with github forms
+  * github/issue_template: mention github Discussions for questions
+  * wayland: cap xdg_wm_base at 4 if wm_capabilities aren't supported
+  * Revert "player: do not exit when a seek gets queued"
+  * stream: remove directory playlist hint
+  * stream: check file descriptor passed to fd:// or fdclose://
+  * various: add missing checks for directory streams
+  * {options,player}: fix stream leaks
+  * stream: disallow reading or writing to directories
+  * fuzzer: add dedicated fuzzers for each demuxer
+  * fuzzer_load: use memfd_create instead of real file
+  * fuzzer_load: merge file and config load into one file
+  * fuzzers: don't build binaries for disabled protocols
+  * av_common: fix integer overflow when adjusting timebase
+  * select.lua: strip brackets in select-subtitle-line
+  * select.lua: add this script
+  * console.lua: close when pressing enter with input.select
+  * console.lua: fix ctrl+f and ctrl+b keybindings
+  * console.lua: don't crash when scrolling without matches
+  * console.lua: truncate lines longer than the maximum width
+  * console.lua: don't convert integers for mp.input to string
+  * input: fix builtin sequence bindings
+  * console.lua: implement a command parser to complete more things
+  * player: add option-info/<name>/expects-file
+  * osc.lua: remove scaleforcedwindow
+  * autocrop.lua: fix some lint warnings
+  * ytdl_hook.lua: fix some lint warnings
+  * stats.lua: fix some lint warnings
+  * osc.lua: fix some lint warnings
+  * options.lua: fix some lint warnings
+  * defaults.lua: fix some lint warnings
+  * console.lua: fix some lint warnings
+  * auto_profiles.lua: fix some lint warnings
+  * test-hooks.lua: fix variable shadowing warning
+  * status-line.lua: fix unused variable warning
+  * skip-logo.lua: fix some lint warnings
+  * pause-when-minimize.lua: fix unused variable warning
+  * ontop-playback.lua: fix unused variable warning
+  * observe-all.lua: fix some lint warnings
+  * cycle-deinterlace-pullup.lua: fix unused variable warnings
+  * command-test.lua: fix some lint warnings
+  * autoload.lua: fix some lint warnings
+  * autodeint.lua: fix some lint warnings
+  * audio-hotplug-test.lua: fix some lint warnings
+  * acompressor.lua: break long lines
+  * github/workflows: add lua linting
+  * Revert "stream: don't try to read from all-sparse/no-data files"
+  * vf_vapoursynth: pass image properties from input
+  * vf_vapoursynth: fix _ChromaLocation
+  * hwdec_cuda_vk: add missing io.h include
+  * audio: report EOF also for untimed AO mode
+  * console.lua: increase margins from the bottom-left corner
+  * vo_gpu_next: check if existing cache file has correct size
+  * test: test mp_guess_lang_from_filename with [] and ()
+  * meson: add link flags also to cpp
+  * audio: change bps format to int64_t
+  * fuzzers: set network-timeout to 1 second
+  * command: add dolby-vision-profile and dolby-vision-level to track-list
+  * demux_mkv: inject AV_PKT_DATA_DOVI_CONF to demuxed packets
+  * demux_mkv: demux Block Additional Mappings
+  * test: test mp_guess_lang_from_filename()
+  * misc/language: move mp_guess_lang_from_filename() here
+  * external_files: detect language tags with hyphens
+  * external_files: rename variables in guess_lang_from_filename()
+  * lcms: check for null arg in gl_parse_3dlut_size
+  * misc/language: store string length instead of null terminator
+  * player/loadfile: match language and subcodes
+  * Revert "misc: add language-matching utilities"
+  * Revert "loadfile: use mp_match_lang_single"
+  * Revert "loadfile: compute audio lang for sub selection when using lavfi-complex"
+  * fuzzer_loadfile_direct: exclude paths also for file://
+  * demux_edl: make protocol comparison case insensitive
+  * fuzzer_set_property: fix for other types than string
+  * dmabuf: fix warnings on 320-bit build
+  * filter/vf_gpu_vulkan: fix Vulkan handle type
+  * player/client: fix typo in description of MPV_ERROR_UNINITIALIZED
+  * fuzzers: add fuzzer for config parsers
+  * Revert "ao: in ao_play_data, wakeup core for untimed AO as well"
+  * ao: in ao_play_data, wakeup core for untimed AO as well
+  * af_scaletempo: optimize overlap search
+  * af_scaletempo: use taxicab distance for offset search
+  * af_scaletempo: don't use a window for offset search
+  * af_scaletempo: use Hann function for overlap window
+  * af_scaletempo: add comment to overlap calculation
+  * js: fix defaults.js
+  * scripting: add mp.input.select()
+  * drm_prime: remove off by one when allocating new ref counter
+  * drm_prime: fix issue detected by valgrind
+  * stream: don't try to read from all-sparse/no-data files
+  * various: fix comma style
+  * various: fix indentation
+  * various: fix tabs in code
+  * various: fix trailing whitespace
+  * hwdec_cuda: reduce nesting in check functions
+  * hwdec_cuda: avoid gpu wakeup by deferring cuInit
+  * msg: print all messages to one stream
+  * player/main: select msg output stream early
+  * github/workflows: link MSVC artifacts in comments
+  * ci: add Windows native build
+  * test: mark libmpv as expected fail if OSC is not available
+  * test/libmpv_encode: minor adjustments for win32 build fix
+  * win32: add WinMain
+  * player/configfiles: fix utime.h include for Windows SDK
+  * stream_file: declare structures available only in Windows DDK
+  * osdep/mpv.rc: fix encoding of MPVCOPYRIGHT
+  * common: define some bits for Windows SDK
+  * ao_wasapi_utils: define missing GUIDs for C
+  * ao_wasapi_changenotify: fix IsEqualPropertyKey for C
+  * various: remove unused sys/time.h include
+  * osdep/compiler: clang also recognizes those attributes
+  * osdep/main-fn-win: add struct typedef for compatibility
+  * osdep/semaphore: don't include files if they are not used
+  * win32: fix platform checks
+  * io_utils: use mp_mkostemps instead of mkstemp
+  * osdep/dirent: add implementation for Windows SDK build
+  * ao_wasapi: fix include order
+  * various: move strings.h inclusion to common.h
+  * various: move unistd.h inclusion to common.h
+  * meson: add defines for Windows build to avoid warnings
+  * meson: remove Windows subsystem version, it is 6.0 by default
+  * command: add normalize-path command
+  * DOCS/lua: fix some argument names
+  * DOCS/input: move escape-ass documentation
+  * misc/path_utils: normalize win32 paths
+  * player: normalize paths for resuming playback
+  * cocoa-cb: add support for macOS color space transformation (EDR/HDR)
+  * github/workflows: add swift linting
+  * test: fflush between printf and abort
+  * powershell-completion: add PowerShell command line completion
+  * DOCS/input: document sub-seek 0
+  * docs: mention Cache section in sub-seek
+  * command: return lavfi filters in option-info/[av]f/choices
+  * osc: remove trailing space
+  * demux_mkv: fix image detection
+  * demux: keep track of ts information per stream type
+  * win32: fix maximize state with --border=no
+  * sd_ass: don't log if subtitles have unknown duration
+  * ci/lint: use long commit hash
+  * demux_mkv: make V_QUICKTIME codec detection generic
+  * osd: show left arrow when playing backwards
+  * tools: add narrow left arrow glyph for OSD
+  * osc: show left arrow when paused while playing backwards
+  * f_lavfi: reject filters with too many in/outs
+  * f_decoder_wrapper: clear decoder info on deinit
+  * ci/mingw: update dependency versions
+  * OSC: implemented user configurable colors
+  * win32: make context menu items accessible from the window menu
+  * win32: move context menu init/uninit to GUI thread
+  * wayland: set wl->scaling if there is no wl->current_output yet
+  * sub/osd: fix rounding when rescaling bitmap subtitle rects
+  * win32: support multitouch
+  * options: add --native-touch option
+  * wayland_common: support multitouch
+  * input: add MP_TOUCH_RELEASE_ALL
+  * input: add --input-touch-emulate-mouse option
+  * command: add touch-pos property
+  * input: add multitouch support functions
+  * sd_lavc: reduce unnecessary error log on probing nonexistent codecs
+  * sd_lavc: fix null dereference on error
+  * wayland: log if cursor shape support is missing
+  * DOCS: fix spelling of environment and corresponding/corresponds
+  * demux/packet: add support for ITU T.35 metadata in Matroska
+  * demux: support VVC Matroska demux
+  * mac: properly handle regular expressions without force unwrap
+  * mac: code cleanup and consistency changes, fix linting issues
+  * mac/helper: make wakeup callback declaration consistent
+  * mac/touchbar: use KVO block API instead of old obj-c instance method
+  * TOOLS/lua/autoload: make ignore_patterns more generic
+  * TOOLS/lua/autoload: allow multiple ignore_patterns
+  * TOOLS/lua/autoload: add ignore_pattern option
+  * w32_common: fix show-in-taskbar toggling after explorer is restarted
+  * zsh-completion: complete --gpu-context
+  * ci: add fuzzers build test
+  * fuzzers: add new fuzzer targets
+  * player/command: mark sub-text-ass as deprecated
+  * player/command: add sub-text/ass-full sub-property
+  * player/command: move sub-text-ass to a sub-property
+  * sd_ass: allow get_text to return more than 500 bytes
+  * stats.lua: show osd-dimensions property
+  * sub/lavc_conv: don't override style of converted teletext pages
+  * sub/lavc_conv: don't strip ASS style header
+  * DOCS/vf: update vf_gpu options
+  * vf_gpu: vulkan and egl implementations
+  * af_scaletempo2: migrate to internals to talloc
+  * af_scaletempo2: remove redundant buffer zeroing
+  * ao_wasapi: fix player core lockup when avoiding premature buffer fills
+  * Revert "ao_wasapi: address premature buffer fills in exclusive mode"
+  * m_config_core: fix forced option notification with m_config_cache
+  * mac/input: add support for dead key reporting
+  * mac: make display-names unique to allow specific selection
+  * dec_sub: fix locking for sub_ass_get_extradata
+  * test: make libmpv_test abort if an error is logged
+  * vo_dmabuf_wayland: use wl_fixed_from_int when setting viewport source
+  * vo_dmabuf_wayland: fix scaling for subsurface positioning
+  * DOCS/man: refer to "mp.options functions" for script config docs
+  * player/loadfile: check if forced track is also tagged as default first
+  * ao/avfoundation: optimise preprocessors for included coreaudio code
+  * ao/audiounit: fix building for iOS
+  * ao_coreaudio: add a comment for ignoring returned sample count
+  * Revert "ao_coreaudio: signal buffer underruns"
+  * input: fix deadlock in adding gamepad input src
+  * d3d11: disable IDXGIInfoQueue usage if dxgidebug.h is incomplete
+  * d3d11: use IDXGIInfoQueue instead ID3D11InfoQueue
+  * demux: also read "CUESHEET" tag from stream metadata
+  * ao_wasapi: set 0 buffer duration on initialization for shared mode
+  * ao_wasapi: add `--wasapi-exclusive-buffer` option
+  * context_drm_egl: guard gbm_device on uninit
+  * x11: always do a reset_size if geometry/autofit is updated at runtime
+  * options: flag geometry/autofit options with force_update
+  * player: always notify when writing window-scale option
+  * m_option: add a force_update boolean
+  * stats.lua: add option to disable scale with video size
+  * stats.lua: add option to control plot border width
+  * stats.lua: remove redundant style override
+  * demux_lavf: pass jpg filenames to ffmpeg for probing
+  * m_option: change confusing error messages for obj_settings_list
+  * DOCS/man/options: mention the new priority list usage of --gpu-context
+  * various: add GPU context description
+  * video/out/gpu/context: add auto dummy context
+  * video/out/gpu/context: convert --gpu-context to use obj_settings_list
+  * video/out/gpu/context: don't use hidden flag for contexts
+  * DOCS/client-api-changes.rst: fix formatting
+  * command: use property_time() for sub-start and sub-end
+
+-------------------------------------------------------------------
 Thu Apr 18 05:19:14 UTC 2024 - llyyr@yukari.in
 
 - Update to version 0.38.0+git20240418.2f8038c59885:

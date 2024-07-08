@@ -21,7 +21,7 @@
 
 %define lname   libmpv2
 Name:           mpv
-Version:        0.38.0+git20240418.2f8038c59885
+Version:        0.38.0+git20240706.00f43e0916fa
 Release:        0
 Summary:        Advanced general-purpose multimedia player
 License:        GPL-2.0-or-later
@@ -49,40 +49,40 @@ BuildRequires:  pkgconfig(dri)
 BuildRequires:  pkgconfig(dvdnav) >= 4.2.0
 BuildRequires:  pkgconfig(dvdread) >= 4.1.0
 BuildRequires:  pkgconfig(egl) >= 1.4
-BuildRequires:  pkgconfig(ffnvcodec) >= 8.2.15.7
+BuildRequires:  pkgconfig(ffnvcodec) >= 11.1.5.1
 BuildRequires:  pkgconfig(gbm) >= 17.1.0
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(jack)
 BuildRequires:  pkgconfig(lcms2) >= 2.6
 BuildRequires:  pkgconfig(libarchive) >= 3.4.0
 BuildRequires:  pkgconfig(libass) >= 0.12.2
-BuildRequires:  pkgconfig(libavcodec) >= 58.12.100
-BuildRequires:  pkgconfig(libavdevice) >= 57.0.0
-BuildRequires:  pkgconfig(libavfilter) >= 7.14.100
-BuildRequires:  pkgconfig(libavformat) >= 59.27.100
+BuildRequires:  pkgconfig(libavcodec) >= 60.31.102
+BuildRequires:  pkgconfig(libavdevice) >= 60.3.100
+BuildRequires:  pkgconfig(libavfilter) >= 9.12.100
+BuildRequires:  pkgconfig(libavformat) >= 60.16.100
 BuildRequires:  pkgconfig(libavif) >= 0.11.1
-BuildRequires:  pkgconfig(libavutil) >= 57.24.100
+BuildRequires:  pkgconfig(libavutil) >= 58.29.100
 BuildRequires:  pkgconfig(libbluray) >= 0.3.0
 BuildRequires:  pkgconfig(libcdio)
 BuildRequires:  pkgconfig(libcdio_cdda)
 BuildRequires:  pkgconfig(libcdio_paranoia)
-BuildRequires:  pkgconfig(libdrm) >= 2.4.75
+BuildRequires:  pkgconfig(libdrm) >= 2.4.105
 BuildRequires:  pkgconfig(libiso9660)
 BuildRequires:  pkgconfig(libjpeg)
 BuildRequires:  pkgconfig(libjxl)
 BuildRequires:  pkgconfig(libjxl_threads)
 BuildRequires:  pkgconfig(libpulse) >= 1.0
 BuildRequires:  pkgconfig(libsixel) >= 1.5
-BuildRequires:  pkgconfig(libswresample) >= 3.0.100
-BuildRequires:  pkgconfig(libswscale) >= 5.0.101
+BuildRequires:  pkgconfig(libswresample) >= 4.12.100
+BuildRequires:  pkgconfig(libswscale) >= 7.5.100
 BuildRequires:  pkgconfig(libva) >= 1.1.0
 BuildRequires:  pkgconfig(lua5.1)
 BuildRequires:  pkgconfig(openal) >= 1.13
 BuildRequires:  pkgconfig(python3)
 BuildRequires:  pkgconfig(rubberband) >= 3.0.0
 BuildRequires:  pkgconfig(uchardet)
-BuildRequires:  pkgconfig(vapoursynth) >= 24
-BuildRequires:  pkgconfig(vapoursynth-script) >= 23
+BuildRequires:  pkgconfig(vapoursynth) >= 56
+BuildRequires:  pkgconfig(vapoursynth-script) >= 56
 BuildRequires:  pkgconfig(vdpau) >= 0.2
 BuildRequires:  pkgconfig(x11) >= 1.0.0
 BuildRequires:  pkgconfig(xext) >= 1.0.0
@@ -105,11 +105,11 @@ Conflicts:      mpv-plugin-mpris < 0.4
 Provides:       mplayer2 = 20140101
 Obsoletes:      mplayer2 < 20140101
 BuildRequires:  pkgconfig(libpipewire-0.3) >= 0.3.48
-BuildRequires:  pkgconfig(libplacebo) >= 6.338.0
+BuildRequires:  pkgconfig(libplacebo) >= 6.338.2
 BuildRequires:  pkgconfig(libva-wayland) >= 1.1.0
 BuildRequires:  pkgconfig(mujs)
 BuildRequires:  pkgconfig(shaderc)
-BuildRequires:  pkgconfig(vulkan) >= 1.0.61
+BuildRequires:  pkgconfig(vulkan) >= 1.1.70
 BuildRequires:  pkgconfig(wayland-client) >= 1.20.0
 BuildRequires:  pkgconfig(wayland-cursor) >= 1.20.0
 BuildRequires:  pkgconfig(wayland-egl) >= 9.0.0
