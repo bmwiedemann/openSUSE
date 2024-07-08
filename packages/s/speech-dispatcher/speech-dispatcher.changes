@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jul  5 17:34:04 UTC 2024 - Michael Gorse <mgorse@suse.com>
+
+- Add speech-dispatcher-pulseaudio-samples.patch: fix for losing
+  samples with pulseaudio.
+
+-------------------------------------------------------------------
 Wed May 22 18:40:02 UTC 2024 - Michael Gorse <mgorse@suse.com>
 
 - Update to version 0.12.0~rc3:

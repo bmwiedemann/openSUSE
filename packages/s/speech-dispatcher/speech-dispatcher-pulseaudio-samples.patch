@@ -1,0 +1,33 @@
+From c954bcb6d054ea2f61dfaf15a4b71ef35438235e Mon Sep 17 00:00:00 2001
+From: Mike Gorse <mgorse@suse.com>
+Date: Fri, 5 Jul 2024 12:33:01 -0500
+Subject: [PATCH] Revert "pulse: Set prebuf to min_audio_length instead of
+ tlength"
+
+May not be the right fix for upstream, but this commit can result in losing
+audio.
+
+This reverts commit 2ea44ed0c44c4e5ed8987c0c50559cab1fe2c9ee.
+---
+ src/audio/pulse.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/src/audio/pulse.c b/src/audio/pulse.c
+index 12810f67..65776c47 100644
+--- a/src/audio/pulse.c
++++ b/src/audio/pulse.c
+@@ -554,8 +554,9 @@ static int _pulse_open(spd_pulse_id_t * id, int sample_rate,
+ 
+ 	/* Set prebuf to one sample so that keys are spoken as soon as typed rather than delayed until the next key pressed */
+ 	buffAttr.maxlength = (uint32_t) - 1;
+-	buffAttr.tlength = (uint32_t) -1;
+-	buffAttr.prebuf = (uint32_t) id->pa_min_audio_length * sample_rate * num_channels * bytes_per_sample / 1000;
++	//buffAttr.tlength = (uint32_t)-1; - this is the default, which causes key echo to not work properly.
++	buffAttr.tlength = id->pa_min_audio_length * sample_rate * num_channels * bytes_per_sample / 1000;
++	buffAttr.prebuf = (uint32_t) - 1;
+ 	buffAttr.minreq = (uint32_t) - 1;
+ 	buffAttr.fragsize = (uint32_t) - 1;
+ 
+-- 
+2.45.2
+

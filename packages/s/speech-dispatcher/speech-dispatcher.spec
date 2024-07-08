@@ -60,6 +60,8 @@ Source0:        https://github.com/brailcom/speechd/releases/download/0.12.0-rc3
 Patch0:         harden_speech-dispatcherd.service.patch
 # PATCH-FIX-UPSTREAM speech-dispatcher-missing-return-vals.patch
 Patch1:         speech-dispatcher-missing-return-vals.patch
+# PATCH-FIX-OPENSUSE speech-dispatcher-pulseaudio-samples.patch
+Patch2:         speech-dispatcher-pulseaudio-samples.patch
 # Logrotate file taken from Debian
 Source2:        speech-dispatcher.logrotate
 Source99:       baselibs.conf

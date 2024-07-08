@@ -390,4 +390,13 @@ Now as requested only for Leap (forwarded request 1096175 from ecsos)</comment>
   return statements. (forwarded request 1175928 from mgorse)</comment>
     <requestid>1175929</requestid>
   </revision>
+  <revision rev="48" vrev="2">
+    <srcmd5>7458c5431cf89a42ae20fddbeb4927a2</srcmd5>
+    <version>0.12.0~rc3</version>
+    <time>1720458400</time>
+    <user>anag+factory</user>
+    <comment>- Add speech-dispatcher-pulseaudio-samples.patch: fix for losing
+  samples with pulseaudio. (forwarded request 1185817 from mgorse)</comment>
+    <requestid>1185818</requestid>
+  </revision>
 </revisionlist>
