@@ -58,6 +58,8 @@ Summary:        Distribution-building parts of Flit
 License:        BSD-3-Clause AND MIT
 URL:            https://github.com/pypa/flit
 Source0:        https://files.pythonhosted.org/packages/source/f/flit_core/flit_core-%{version}.tar.gz
+Patch1:         https://github.com/pypa/flit/commit/915fa612e227fb4bf67f8484af5c8a399f108526.patch#/py312-avoid-using-utcfromtimestamp.patch
+Patch2:         https://github.com/pypa/flit/commit/6ab62c91d0db451b5e9ab000f0dba5471550b442.patch#/py314-avoid-using-ast-str.patch
 BuildRequires:  %{python_module base >= 3.6}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -88,7 +90,7 @@ This provides a PEP 517 build backend for packages using Flit.
 The only public interface is the API specified by PEP 517, at flit_core.buildapi.
 
 %prep
-%setup -q -n flit_core-%{version}
+%autosetup -p2 -n flit_core-%{version}
 
 %if "%{flavor}" != "test"
 %build

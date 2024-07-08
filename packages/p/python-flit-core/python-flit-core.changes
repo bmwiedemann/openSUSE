@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jun 30 19:09:04 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- add py312-avoid-using-utcfromtimestamp.patch,
+  py314-avoid-using-ast-str.patch
+
+-------------------------------------------------------------------
 Fri Feb 23 12:20:15 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use newly supported shrink{} on OBS to exclude python flavors
@@ -58,8 +64,8 @@ Fri Jan 27 15:43:53 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
 -------------------------------------------------------------------
 Tue Nov  8 00:36:32 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to v3.8.0 
- 
+- Update to v3.8.0
+
   * Merge pull request #607 from pypa/relnotes-3.8
     Add release notes for version 3.8
   * Add --only-deps option to release notes

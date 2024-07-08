@@ -1,0 +1,33 @@
+From 915fa612e227fb4bf67f8484af5c8a399f108526 Mon Sep 17 00:00:00 2001
+From: Wim Jeantine-Glenn <hey@wimglenn.com>
+Date: Mon, 13 May 2024 23:48:47 -0500
+Subject: [PATCH] datetime.utcfromtimestamp is deprecated in Python 3.12, avoid
+ using it
+
+https://docs.python.org/3/library/datetime.html#datetime.datetime.utcfromtimestamp
+---
+ flit_core/flit_core/wheel.py | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/flit_core/flit_core/wheel.py b/flit_core/flit_core/wheel.py
+index b4a44b0d..dbf77372 100644
+--- a/flit_core/flit_core/wheel.py
++++ b/flit_core/flit_core/wheel.py
+@@ -2,6 +2,7 @@
+ from base64 import urlsafe_b64encode
+ import contextlib
+ from datetime import datetime
++from datetime import timezone
+ import hashlib
+ import io
+ import logging
+@@ -42,7 +43,8 @@ def zip_timestamp_from_env() -> Optional[tuple]:
+     try:
+         # If SOURCE_DATE_EPOCH is set (e.g. by Debian), it's used for
+         # timestamps inside the zip file.
+-        d = datetime.utcfromtimestamp(int(os.environ['SOURCE_DATE_EPOCH']))
++        t = int(os.environ['SOURCE_DATE_EPOCH'])
++        d = datetime.fromtimestamp(t, timezone.utc)
+     except (KeyError, ValueError):
+         # Otherwise, we'll use the mtime of files, and generated files will
+         # default to 2016-1-1 00:00:00
