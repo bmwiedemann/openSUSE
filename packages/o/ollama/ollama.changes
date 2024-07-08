@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sun Jul 07 19:18:11 UTC 2024 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Update to version 0.1.48:
+  * Fixed issue where Gemma 2 would continuously output when 
+    reaching context limits
+  * Fixed out of memory and core dump errors when running Gemma 2
+  * /show info will now show additional model information in
+    ollama run
+  * Fixed issue where ollama show would result in an error on 
+    certain vision models
+
+- Update to version 0.1.48:
+  * Added support for Google Gemma 2 models (9B and 27B)
+  * Fixed issues with ollama create when importing from Safetensors
+  
+-------------------------------------------------------------------
+Mon Jun 24 10:11:17 UTC 2024 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Update to version 0.1.46:
+  * Docs (#5149)
+  * fix: quantization with template
+  * Fix use_mmap parsing for modelfiles
+  * Refine mmap default logic on linux
+  * Bump latest fedora cuda repo to 39
+
+-------------------------------------------------------------------
 Sat Jun 22 10:08:00 UTC 2024 - Eyad Issa <eyadlorenzo@gmail.com>
 
 - Update to version 0.1.45:
