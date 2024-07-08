@@ -19,11 +19,11 @@
 %bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-ruff
-Version:        0.5.0
+Version:        0.5.1
 Release:        0
 Summary:        An extremely fast Python linter, written in Rust
 License:        MIT
-URL:            https://docs.astral.sh/ruff
+URL:            https://github.com/astral-sh/ruff
 Source:         https://files.pythonhosted.org/packages/source/r/ruff/ruff-%{version}.tar.gz
 Source1:        vendor.tar.zst
 BuildRequires:  %{python_module maturin}

@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Jul  8 09:48:47 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.5.1:
+  * Enable token-based rules on source with syntax errors
+  * \[`flake8-bandit`\] Detect `httpx` for `S113`
+  * \[`numpy`\] Update `NPY201` to include exception deprecations
+  * \[`pylint`\] Generate autofix for `duplicate-bases`
+    (`PLE0241`)
+  * Avoid syntax error notification for source code actions
+  * Consider the content of the new cells during notebook sync
+  * Fix replacement edit range computation
+  * Disable auto-fix when source has syntax errors
+  * Fix cache key collisions for paths with separators
+  * Make `requires-python` inference robust to `==`
+  * Use char-wise width instead of `str`-width
+  * \[`pycodestyle`\] Avoid `E275` if keyword followed by comma
+  * \[`pycodestyle`\] Avoid `E275` if keyword is followed by a
+    semicolon
+  * \[`pylint`\] Skip dummy variables for `PLR1704`
+
+-------------------------------------------------------------------
 Mon Jul  1 08:21:42 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.5.0:

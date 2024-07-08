@@ -1052,4 +1052,28 @@
   * Defer notebook cell deletion to avoid an error message</comment>
     <requestid>1184226</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>d331931a2de8e0bd1206bd15fdbad50b</srcmd5>
+    <version>0.5.1</version>
+    <time>1720458433</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.5.1:
+  * Enable token-based rules on source with syntax errors
+  * \[`flake8-bandit`\] Detect `httpx` for `S113`
+  * \[`numpy`\] Update `NPY201` to include exception deprecations
+  * \[`pylint`\] Generate autofix for `duplicate-bases`
+    (`PLE0241`)
+  * Avoid syntax error notification for source code actions
+  * Consider the content of the new cells during notebook sync
+  * Fix replacement edit range computation
+  * Disable auto-fix when source has syntax errors
+  * Fix cache key collisions for paths with separators
+  * Make `requires-python` inference robust to `==`
+  * Use char-wise width instead of `str`-width
+  * \[`pycodestyle`\] Avoid `E275` if keyword followed by comma
+  * \[`pycodestyle`\] Avoid `E275` if keyword is followed by a
+    semicolon
+  * \[`pylint`\] Skip dummy variables for `PLR1704`</comment>
+    <requestid>1186130</requestid>
+  </revision>
 </revisionlist>
