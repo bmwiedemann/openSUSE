@@ -23,7 +23,7 @@
 %endif
 
 Name:           stellarium
-Version:        24.1
+Version:        24.2
 Release:        0
 Summary:        Astronomical Sky Simulator
 License:        GPL-2.0-or-later
@@ -35,6 +35,9 @@ Source2:        %{name}.keyring
 # PATCH-FIX-UPSTREAM https://github.com/Stellarium/stellarium/pull/3269
 Patch0:         indi2_support.patch
 BuildRequires:  cmake >= 3.16.0
+%if 0%{?suse_version} <= 1600
+BuildRequires:  cmake(FastFloat)
+%endif
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++ >= 7
 BuildRequires:  hicolor-icon-theme
