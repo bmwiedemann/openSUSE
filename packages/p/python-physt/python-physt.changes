@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jul  8 04:37:02 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add upper bound on numpy of < 2. 
+
+-------------------------------------------------------------------
 Tue Mar  5 19:09:36 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Build PEP517 wheel

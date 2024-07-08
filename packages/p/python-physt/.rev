@@ -73,4 +73,12 @@
     <comment></comment>
     <requestid>1155343</requestid>
   </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>184ec77dfabfa6302392d4d13f62dbbb</srcmd5>
+    <version>0.5.3</version>
+    <time>1720458515</time>
+    <user>anag+factory</user>
+    <comment>- Add upper bound on numpy of &lt; 2.</comment>
+    <requestid>1186065</requestid>
+  </revision>
 </revisionlist>

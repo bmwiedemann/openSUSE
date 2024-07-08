@@ -29,9 +29,9 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-numpy >= 1.20
 Requires:       python-packaging
 Requires:       python-typing-extensions
+Requires:       (python-numpy >= 1.20 with python-numpy < 2)
 Recommends:     python-dask
 Recommends:     python-folium
 Recommends:     python-matplotlib
@@ -42,8 +42,9 @@ Recommends:     python-vega3
 Recommends:     python-xarray
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module numpy >= 1.20}
+BuildRequires:  %{python_module dask-array}
 BuildRequires:  %{python_module matplotlib}
+BuildRequires:  %{python_module numpy >= 1.20 with %python-numpy < 2}
 BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pandas}
 BuildRequires:  %{python_module plotly if %python-base >= 3.10}
