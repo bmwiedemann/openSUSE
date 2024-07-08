@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Jul  8 14:09:41 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Add new "v" prefix to tag in URL
+- Update to 0.54.0:
+  * Implemented line wrap of long items
+  * Updated shell integration scripts to leverage line wrap
+  * Added --info-command option for customizing the info line
+  * Pointer and marker signs can be set to empty strings
+  * Better cache management and improved rendering for --tail
+  * Improved --sync behavior: When --sync is provided, fzf will not
+    render the interface until the initial filtering and the
+    associated actions (bound to any of start, load, result, or
+    focus) are complete.
+  * GET endpoint is now available from execute and transform
+    actions (it used to timeout due to lock conflict)
+  * Added offset-middle action to place the current item is in the
+    middle of the screen
+  * fzf will not start the initial reader when reload or
+    reload-sync is bound to start event. fzf < /dev/null or : | fzf
+    are no longer required and extraneous load event will not fire
+    due to the empty list.
+  * Fixed crash when using --tiebreak=end with very long items
+  * zsh 5.0 compatibility
+  * Fixed --walker-skip to also skip symlinks to directories
+  * Fixed result event not fired when input stream is not complete
+  * New tags will have v prefix
+
+-------------------------------------------------------------------
 Thu Jun  6 13:47:28 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Update to 0.53.0:

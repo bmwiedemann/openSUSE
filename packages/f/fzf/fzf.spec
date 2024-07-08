@@ -18,13 +18,13 @@
 
 %global _lto_cflags %{nil}
 Name:           fzf
-Version:        0.53.0
+Version:        0.54.0
 Release:        0
 Summary:        A command-line fuzzy finder
 License:        MIT
 Group:          Productivity/File utilities
 URL:            https://github.com/junegunn/fzf
-Source0:        https://github.com/junegunn/fzf/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        https://github.com/junegunn/fzf/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
 BuildRequires:  zstd
 BuildRequires:  golang(API) >= 1.19
