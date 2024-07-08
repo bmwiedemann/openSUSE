@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Jul  5 19:53:53 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 2024.8:
+  + Added:
+    - Ability to open irc:// and ircs:// URL schemes
+    - Ability to overwrite nickname colors by providing a hex
+      string.
+    - Ability to overwrite server & internal message colors by
+      providing a hex string.
+    - Configurable shortcuts for "Leave Buffer" and
+      "Toggle Sidebar" actions.
+    - Ability to remember window position and size when reopened.
+    - Ability to hide unread indicators in sidebar.
+  + Fixed:
+    - UTF-8 channel name rendering in sidebar and in pane title bars.
+
+-------------------------------------------------------------------
 Sun May  5 19:38:44 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 2024.7:
