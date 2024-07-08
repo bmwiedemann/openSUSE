@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jul  4 08:38:21 UTC 2024 - pgajdos@suse.com
+
+- fix build with gcc14
+- added patches
+  + 0004-gcc14.patch
+
+-------------------------------------------------------------------
 Thu Feb 29 16:34:29 UTC 2024 - pgajdos@suse.com
 
 - Use %patch -P N instead of deprecated %patchN.

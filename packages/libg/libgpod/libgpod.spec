@@ -1,7 +1,7 @@
 #
 # spec file for package libgpod
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,6 +37,7 @@ Patch1:         0001-Fix-spelling-errors-in-comments-and-strings-using-co.patch
 Patch2:         0002-323-Segmentation-fault-when-opening-ipod.patch
 Patch3:         0003-Fixed-PList-deprication.patch
 Patch4:         libgpod-Use-libplist-2.0.patch
+Patch5:         0004-gcc14.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  glib2-devel
@@ -126,6 +127,7 @@ This package includes support tools for libgpod.
 %if %{libplist2}
 %patch -P 4 -p1
 %endif
+%patch -P 5 -p1
 
 %build
 %if %{libplist2}
