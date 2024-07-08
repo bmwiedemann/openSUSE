@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Jul 07 13:16:50 UTC 2024 - Björn Bidar <bjorn.bidar@thaodan.de>
+
+- Rebase p0001-Only-export-necessary-symbols.-Fixes-105.patch
+  against version 1.9.
+- Update to version 1.9:
+  * Expose (jinx-correct-all t) via C-u C-u C-u M-x jinx-correct
+  * jinx-correct-all: Add ONLY-CHECK argument.
+  * A better fix for #156
+  * Revert "Fix bug in jinx--find-visible-pending (See #156)"
+  * Fix bug in jinx--find-visible-pending (See #156)
+  * correct link to enchant manual (#185)
+
+-------------------------------------------------------------------
 Wed Jun 26 19:05:01 UTC 2024 - Björn Bidar <bjorn.bidar@thaodan.de>
 
 - Rebase p0001-Only-export-necessary-symbols.-Fixes-105.patch

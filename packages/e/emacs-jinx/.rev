@@ -72,4 +72,20 @@
   * jinx--word-valid-p: Do not error on invalid characters (Fix #93, #164)</comment>
     <requestid>1183481</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>fd9da62880d69db2d3a1066aa2307ac1</srcmd5>
+    <version>1.9</version>
+    <time>1720458498</time>
+    <user>anag+factory</user>
+    <comment>- Rebase p0001-Only-export-necessary-symbols.-Fixes-105.patch
+  against version 1.9.
+- Update to version 1.9:
+  * Expose (jinx-correct-all t) via C-u C-u C-u M-x jinx-correct
+  * jinx-correct-all: Add ONLY-CHECK argument.
+  * A better fix for #156
+  * Revert &quot;Fix bug in jinx--find-visible-pending (See #156)&quot;
+  * Fix bug in jinx--find-visible-pending (See #156)
+  * correct link to enchant manual (#185)</comment>
+    <requestid>1186010</requestid>
+  </revision>
 </revisionlist>
