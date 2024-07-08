@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Jun 30 20:36:08 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.0.67:
+  * Add tool to check which languages, scripts, and territories
+    available in CLDR are missing in langtable
+  * Add all missing scripts and languages: yrl, xnr, wbp, vmw,
+    vec, trw, trv, skr, sdh, quc, pis, pcm, myv, mus, moh, mic,
+    mhn, ltg, lmo, lld, kxv, kpe, kgp, ken, kcg, kaj, jbo, gaa,
+    cic, cho, ceb, cch, cad, bss, blt, Tavt blo, bgn, bgc, rhg,
+    Rohg hnj, Hmnp Shaw, Dsrt bew, bal, arn, apc, ann, scn
+  * Drop Python < 3 support (using pyupgrade --py3-plus
+    langtable.py)
+  * Fix some ruff and pylint warnings
+
+-------------------------------------------------------------------
 Tue Jun  4 21:02:39 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.0.66:

@@ -123,4 +123,12 @@
   * Fix Makefile twine-upload target for new authentification</comment>
     <requestid>1178619</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>a24d636525d2f08476411727c5cf39f9</srcmd5>
+    <version>0.0.67</version>
+    <time>1720458425</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1186047</requestid>
+  </revision>
 </revisionlist>
