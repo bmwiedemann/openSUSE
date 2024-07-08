@@ -17,14 +17,18 @@
 
 
 Name:           kew
-Version:        2.5.1
+Version:        2.6.0
 Release:        0
 Summary:        A command-line music player
 License:        GPL-2.0-only
 URL:            https://github.com/ravachol/kew
 Source:         %{url}/archive/v%{version}/kew-%{version}.tar.gz
 BuildRequires:  freeimage-devel
+%if 0%{?suse_version} < 1600
+BuildRequires:  clang >= 17
+%else
 BuildRequires:  gcc >= 13
+%endif
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(chafa)
 BuildRequires:  pkgconfig(fftw3)
@@ -37,6 +41,9 @@ Listen to music in the terminal.
 
 %prep
 %autosetup
+%if 0%{?suse_version} < 1600
+sed -i '1s|gcc|clang|' Makefile
+%endif
 
 %build
 %make_build

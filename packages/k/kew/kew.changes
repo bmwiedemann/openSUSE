@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Jul  6 09:53:39 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 2.6.0
+  * New command: "kew albums", similar to "kew all" but it queues
+    one album randomly after the other. Thank you @the-boar for the
+    suggestion.
+  * Fixed bug where sometimes kew couldn't find a suitable name for
+    a playlist file (created by pressing x).
+  * Made it so that seeking jumps in more reasonable smaller
+    increments when not in song view. Previously it could jump 30
+    seconds at a time.
+  * Rolled back code related to symlinked directories, it didn't
+    work with freebsd, possibly others.
+- Add clang BuildRequires: build for leap
+
+-------------------------------------------------------------------
 Tue Jul  2 11:23:54 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 2.5.1
