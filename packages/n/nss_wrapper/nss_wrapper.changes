@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jul  5 09:35:44 UTC 2024 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 1.1.16
+  * Fixed segfault on FreeBSD
+  * Fixed copy&paste error in the destructor
+  * Fixed thread sanitizer on modern Linux Kernels
+  * Fixed building with newer cmocka versions
+- Removed nss_wrapper-fix-cmocka-1.1.6+-support.patch
+- Update rpmlintrc
+
+-------------------------------------------------------------------
 Thu Mar  2 11:00:33 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Actually apply nss_wrapper-fix-cmocka-1.1.6+-support.patch (use

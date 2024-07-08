@@ -237,4 +237,19 @@
     <comment></comment>
     <requestid>1068982</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>c5c996e1d412d732812b83f8a6ae1cdc</srcmd5>
+    <version>1.1.16</version>
+    <time>1720458412</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.1.16
+  * Fixed segfault on FreeBSD
+  * Fixed copy&amp;paste error in the destructor
+  * Fixed thread sanitizer on modern Linux Kernels
+  * Fixed building with newer cmocka versions
+- Removed nss_wrapper-fix-cmocka-1.1.6+-support.patch
+- Update rpmlintrc
+</comment>
+    <requestid>1185771</requestid>
+  </revision>
 </revisionlist>
