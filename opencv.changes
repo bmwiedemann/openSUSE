@@ -1,4 +1,118 @@
 -------------------------------------------------------------------
+Sun Jun  9 01:48:55 UTC 2024 - Alessandro de Oliveira Faria <cabelo@opensuse.org>
+
+- update to 4.10.0,  highlights below, for details check
+  https://github.com/opencv/opencv/wiki/ChangeLog#version4100
+  * Core Module:
+    + Added CV_FP16 data type for cv::Mat #24892, #24918.
+      Deprecated convertFp16 function, added FP16 support to
+      cv::Mat::convertTo and analogs.
+    + Fixed undefined behaviour in some cases related to FP16
+      arithmetic #25598 + Extended HAL API for minMaxIdx #25563,
+      LUT #25554, meanStdDev #25483, moments 25490, 
+      normHamming #25491. HAL entries for transpose #25342, 
+      some arithmetic functions #25574, #25506
+    + Persistence: output reals as human-friendly expression.
+      #25351
+    + Added cgroups v2 support to parallel framework #25285
+    + Added in-place support for cartToPolar and polarToCart 
+      #24893
+  * Imgproc Module:
+    + Added relative displacement field option to cv::remap #24621
+    + Added new findContours implementation #25146, #25680, #25385
+    + Refactored EMD algorithm to get rid of C-API usage #25469
+    + Fixed bug in stackBlur with large kernels #25513
+    + Extended HAL for projectPoints #25511, equalizeHist #25565,
+      Otsu threshold #25509. Added new HAL entries for 
+      gaussianBlur#25397, remap #25399, bilaterialFilter #25343.
+  * Calib3d Module:
+    + Fixed several bugs in hand-eye calibration methods #24897,
+      #25423
+    + Fixed several bugs in findHomography implementation 
+      #25308, #25665
+    + Multiple improvements in findChessboardCorners 
+      implementation: #25365, 25195, 25177, 25182, 25145, 24779,
+       24710, 24833, 25090
+    + Improved symmetric circles grid pattern detection #25258
+    + Fixed possible infinite loop in USAC #24987
+    + Changed approach for initial estimation for focal length in
+      fisheye calibration #25030
+    + Added solvePnP implementation for Fisheye camera model #25028
+  * DNN module:
+    + Significantly improved DNN memory consumption #25181, 25163
+    + Added Net::dumpToPbtxt method to review optimized graph with
+      Netron #25582
+    + Added support for several TFLite layers: Global_Pool_2D
+      #25613, Transpose #25297, HardSwishInt8 #24985, split, fully
+      connected, SoftMax, Cast #25273.
+    + Fixed bugs in several ONNX layers: Slice #25660, Range 
+      #25414, Clip #25319, ReduceMean #25120, Einsum #25100, 
+      Norm #24808, negative axis support in Concat #24865.
+    + Added new ONNX layers: Mod #24765, GroupNorm layer #24610.
+    + Added more DNN layers with OpenVINO #25524, #25291, 25518.
+    + Optimized fastDepthwiseConv #25361 and int8 layers 25230 for
+      RISC-V with RVV extension
+    + Optimized fastDepthwiseConv for RISC-V P Packed SIMD 
+      Extension v0.5.2 #24556
+    + Optimized Attention #24476, #25271, #25238, #24613, 25076.
+    + Added parallel version for scatter and scatterND #24813
+    + Added broadcasting if a.rank() != b.rank() with 
+      CuDNN backend #24834
+    + Tuned Winograd algorithm usage for convolutions #24709
+    + Added Raft model support and tracking sample with it #24913
+    + Added Vulkan backend for NaryEltwiseLayer in DNN 
+      module #24768
+    + Imporved modern Yolo detectors support. Added sample and
+      documentation #24898, #24611
+    + Added CuDNN 9+ support #25412
+    + Added OpenVINO 2024 support #25199
+  * G-API module:
+    + Ported G-API ONNXRT backend into V2 API #25662
+    + Implement concurrent executor #24845
+    + A quick value-initialization support GMat #25055
+    + Fixed support of mean/scale preprocessing in OV backend for
+      non-real types #24704
+  * Objdetect module:
+    + Fixed inaccurate Charuco board generation in some cases
+      (.generateImage()) #24873, #25673
+    + Fixed Aruco detector thread safety issue #24807, made Aruco
+      detector more deterministic #24829
+    + Added QR codes Structured Append decoding mode #24548
+    + Several bug fixes in QR code detector and decoder #25026
+    + Fixed barcode detectAndDecode #25035
+    + Ported remaning Aruco and Charuco documentation and samples
+      to modern API #23018
+  * VideoIO:
+    + Fix race condition in InternalFFMpegRegister initialization.
+      #25419
+    + Orbbec Camera supports MacOS，Gemini2 and Gemini2L support Y16
+      format #24877
+    + Added V4L2_PIX_FMT_SGRBG8 pixel format support to V4L2 backend
+      #25249
+    + Fix incorrect timestamps returned by VideoCapture when
+      CAP_PROP_FORMAT == -1 #24828
+  * Python Bindings:
+    + Experimental NumPy 2.0 support
+    + Added python bindings for Rect2f and Point3i #24919
+    + Switched to numeric dtype for MatLike instead of generic
+      #25406
+    + Added path-like objects support wherever file names are
+      expected #24773
+  * Platforms support:
+    + CUDA 12.4+ support #25658
+    + Wayland back-end for Linux #25551, #25510, #25502
+    + New LAPACK interface support on MacOS and derivatives 
+      #24804, #25625
+    + Added initial version of HAL for RISC-V processors with
+      P-extension (v0.5.2, Andes platforms) #25167
+    + Added ARM KleidiCV as HAL for ARM v8 and v9 processors
+      (-DWITH_KLEIDICV=ON CMake option) #25443, #25618, ARM
+      announcement.
+    + Added zlib-ng as alternative to classic zlib
+      (-DWITH_ZLIB_NG=ON CMake option) #24782
+    + OneAPI 2024 support (IPP, TBB)
+
+-------------------------------------------------------------------
 Fri Jan 19 20:01:43 UTC 2024 - Axel Braun <axel.braun@gmx.de>
 
 - Add %{?sle15allpythons} and build python bindings for all
