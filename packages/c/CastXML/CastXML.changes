@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jul  8 07:50:09 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.6.7:
+  * Add support for GNU builtin __float80 type.
+
+-------------------------------------------------------------------
 Tue May 14 02:10:58 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 0.6.6:
