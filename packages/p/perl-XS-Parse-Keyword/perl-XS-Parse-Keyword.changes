@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jul  3 16:51:11 UTC 2024 - Tina Müller <tina.mueller@suse.com>
+
+- updated to 0.430.0 (0.43)
+   see /usr/share/doc/packages/perl-XS-Parse-Keyword/Changes
+
+  0.43    2024-07-03
+          [CHANGES]
+           * Use `File::ShareDir` for storing .h include files, rather than
+             storing the contents in the `__DATA__` section of the build helpers
+           * Support a new naming model for infix operators that supports
+             lexical-aliases and renaming at import time
+
+-------------------------------------------------------------------
 Wed May  1 03:08:54 UTC 2024 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.42

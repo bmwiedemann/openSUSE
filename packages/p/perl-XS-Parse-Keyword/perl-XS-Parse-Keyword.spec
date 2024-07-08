@@ -18,10 +18,10 @@
 
 %define cpan_name XS-Parse-Keyword
 Name:           perl-XS-Parse-Keyword
-Version:        0.420.0
+Version:        0.430.0
 Release:        0
-# 0.42 -> normalize -> 0.420.0
-%define cpan_version 0.42
+# 0.43 -> normalize -> 0.430.0
+%define cpan_version 0.43
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        XS functions to assist in parsing keyword syntax
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -32,8 +32,10 @@ BuildRequires:  perl-macros
 BuildRequires:  perl(ExtUtils::CBuilder)
 BuildRequires:  perl(ExtUtils::CChecker) >= 0.11
 BuildRequires:  perl(ExtUtils::ParseXS) >= 3.16
+BuildRequires:  perl(File::ShareDir) >= 1.00
 BuildRequires:  perl(Module::Build) >= 0.4004
 BuildRequires:  perl(Test2::V0)
+Requires:       perl(File::ShareDir) >= 1.00
 Provides:       perl(XS::Parse::Infix) = %{version}
 Provides:       perl(XS::Parse::Infix::Builder) = %{version}
 Provides:       perl(XS::Parse::Keyword) = %{version}
