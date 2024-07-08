@@ -15,10 +15,11 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define _name regex
 Summary:        Regex grammar for tree-sitter
 Name:           tree-sitter-%{_name}
-Version:        0.20.0
+Version:        0.21.0
 Release:        0
 License:        MIT
 Group:          Development/Tools/Other
@@ -38,6 +39,8 @@ BuildRequires:  tree-sitter
 
 %install
 %treesitter_install
+
+%check
 
 %files
 %{treesitter_files}

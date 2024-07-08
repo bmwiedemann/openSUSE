@@ -7,4 +7,15 @@
     <comment>New package for tree-sitter grammar regex</comment>
     <requestid>1162331</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>313b1ee0e0ad58d2363d41d739d9efc3</srcmd5>
+    <version>0.21.0</version>
+    <time>1720458501</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.21.0:
+  * ci: update workflows
+  * build: update bindings and manifests
+  * docs: update badges</comment>
+    <requestid>1186017</requestid>
+  </revision>
 </revisionlist>
