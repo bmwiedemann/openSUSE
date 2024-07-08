@@ -1,0 +1,11 @@
+<package name="python-pysubs2" project="openSUSE:Factory">
+  <title>Python library for editing subtitle files</title>
+  <description>pysubs2 is a Python library for editing subtitle files. It’s based on
+SubStation Alpha, the native format of Aegisub; it also supports SubRip (SRT),
+MicroDVD, MPL2, TMP and WebVTT formats and OpenAI Whisper captions.
+
+There is a small CLI tool for batch conversion and retiming.
+</description>
+  <devel project="devel:languages:python" package="python-pysubs2"/>
+  <url>https://pysubs2.readthedocs.io </url>
+</package>
