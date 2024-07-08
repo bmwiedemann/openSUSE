@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sun Jul  7 22:36:48 UTC 2024 - Mia Herkt <mia@0x0.st>
+
+- Update to 1.7.0
+  * Expose env variable to suppress build backend warning
+    gh#PyO3/maturin#2099
+  * Canonicalize base executable path in PEP 517 build
+    gh#PyO3/maturin#2100
+  * Initial iOS support
+    gh#PyO3/maturin#2102
+  * Remove old import hook
+    gh#PyO3/maturin#2105
+  * Bump MSRV to 1.74.0
+    gh#PyO3/maturin#2108
+  * Upgrade pyo3 to 0.22.0, uniffi to 0.28.0
+    gh#PyO3/maturin#2121
+  * Override wheel tag with _PYTHON_HOST_PLATFORM
+    gh#PyO3/maturin#2122
+  * Update cargo-xwin to 0.16.5
+    gh#PyO3/maturin#2123
+  * Don't add duplicate files
+    gh#PyO3/maturin#2125
+  * Docs: Fix Typo in Verb Conjugation
+    gh#PyO3/maturin#2129
+  * pep517: only use base python when
+    MATURIN_PEP517_USE_BASE_PYTHON env var is set
+    gh#PyO3/maturin#2134
+
+-------------------------------------------------------------------
 Tue Jun  4 23:02:42 UTC 2024 - Mia Herkt <mia@0x0.st>
 
 - Update to 1.6.0

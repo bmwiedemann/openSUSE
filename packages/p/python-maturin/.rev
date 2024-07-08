@@ -1084,4 +1084,35 @@
   * Add support for wasm32-wasip1 and wasm32-wasip2 targets</comment>
     <requestid>1178629</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>95d774b900637b40e5076a88f1caa965</srcmd5>
+    <version>1.7.0</version>
+    <time>1720458426</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.7.0
+  * Expose env variable to suppress build backend warning
+    gh#PyO3/maturin#2099
+  * Canonicalize base executable path in PEP 517 build
+    gh#PyO3/maturin#2100
+  * Initial iOS support
+    gh#PyO3/maturin#2102
+  * Remove old import hook
+    gh#PyO3/maturin#2105
+  * Bump MSRV to 1.74.0
+    gh#PyO3/maturin#2108
+  * Upgrade pyo3 to 0.22.0, uniffi to 0.28.0
+    gh#PyO3/maturin#2121
+  * Override wheel tag with _PYTHON_HOST_PLATFORM
+    gh#PyO3/maturin#2122
+  * Update cargo-xwin to 0.16.5
+    gh#PyO3/maturin#2123
+  * Don't add duplicate files
+    gh#PyO3/maturin#2125
+  * Docs: Fix Typo in Verb Conjugation
+    gh#PyO3/maturin#2129
+  * pep517: only use base python when
+    MATURIN_PEP517_USE_BASE_PYTHON env var is set
+    gh#PyO3/maturin#2134</comment>
+    <requestid>1186052</requestid>
+  </revision>
 </revisionlist>
