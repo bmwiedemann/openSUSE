@@ -1,6 +1,5 @@
 <package name="000update-repos" project="openSUSE:Factory">
   <title>Just a source container to keep old repo's metadata</title>
   <description></description>
-  <person userid="coolo" role="maintainer"/>
   <person userid="staging-bot" role="maintainer"/>
 </package>
