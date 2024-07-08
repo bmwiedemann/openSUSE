@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Jul  7 11:23:55 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to version 9.0.0:
+  + Speed up “AAT” shaping for short words by up to 4%
+  + Ignore unknown “CFF” operators
+  + “hb_subset_input_keep_everything()” now keeps also non-unicode
+    “name” table records.
+  + Update the IANA and OpenType language tag registries
+  + Support composite glyphs with very large number of points in
+    hb-draw API
+  + Various build fixes
+
+-------------------------------------------------------------------
 Thu May 16 04:51:28 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to version 8.5.0:
