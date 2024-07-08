@@ -1,7 +1,7 @@
 #
 # spec file for package rbenv
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           rbenv
-Version:        1.2.0
+Version:        1.3.0
 Release:        0
 BuildArch:      noarch
 License:        MIT
@@ -76,7 +76,8 @@ The official zsh completion script for %{name}.
 install -Dm0755 libexec/* -t %{buildroot}%{_bindir}
 
 install -Dm0644 completions/rbenv.bash %{buildroot}%{_datadir}/bash-completion/completions/%{name}
-install -Dm0644 completions/rbenv.zsh %{buildroot}%{_datadir}/zsh/site-functions/_%{name}
+install -Dm0644 completions/_rbenv %{buildroot}%{_datadir}/zsh/site-functions/_%{name}
+install -Dm0644 share/man/man1/rbenv.1 %{buildroot}%{_mandir}/man1/%{name}.1
 
 mkdir -p %{buildroot}/usr/lib/rbenv
 cp -r rbenv.d/* %{buildroot}/usr/lib/rbenv
@@ -93,6 +94,7 @@ bats test
 %doc README.md
 %{_bindir}/rbenv*
 /usr/lib/rbenv
+%{_mandir}/man1/%{name}*
 
 %files bash-completion
 %{_datadir}/bash-completion

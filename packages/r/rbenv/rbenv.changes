@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Jul  6 19:10:02 UTC 2024 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 1.3.0.
+  Full changelog: https://github.com/rbenv/rbenv/releases/tag/v1.3.0
+  * The `rbenv init` command now modifies shell initialization files instead of printing instructions by @mislav in #1568
+    This solves one of the most common pitfalls rbenv users were experiencing: many did not understand that `rbenv init` only printed instructions intended for humans but did not change anything in their shell environment. Now, `rbenv init` actually modifies the environment, which seems to be what most users expected in the first place.
+    * rbenv init in setup mode defaults to no auto-rehashing by @mislav in #1579
+    * Init script automatically adds rbenv to PATH if necessary by @mislav in #1432
+  * Simplify resolving symlinks, remove native bash extension by @mislav in #1428
+    This solves a GPL license compliance issue where a GPL-licensed script was distributed with this project, which was not compatible with this project's license (MIT). https://github.com/rbenv/rbenv/issues/1395
+  * Support GEM_HOME by @mislav in #1436
+  * Add man page for rbenv by @mislav in #1438
+    Preview the man page in HTML form here: https://rbenv.org/man/rbenv.1
+  * Simplify `.ruby-version` file read by @scop in #1393
+  * Ignore shell builtins and functions when looking up commands in PATH by @mislav in #1448
+  * Use the newer “compsys” completion system for zsh completions by @Farid-NL in #1569
+  * Ensure zsh user's prior shell options don't interfere with indexing into an array of arguments by @richiethomas in #1422
+  * rbenv shell: properly declare global variables for zsh by @mislav in #1566
+  * Support ksh versions by @kpschoedel in #1504
+
+-------------------------------------------------------------------
 Tue May 24 00:17:27 UTC 2022 - Lukas Müller <expeehaa@outlook.com>
 
 - Run "osc service runall format_spec_file".
