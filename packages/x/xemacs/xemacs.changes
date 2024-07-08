@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jul  3 07:21:18 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop dependency on fwnndev: fwnn is dead and unmaintained.
+
+-------------------------------------------------------------------
 Mon Feb 26 12:05:17 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.

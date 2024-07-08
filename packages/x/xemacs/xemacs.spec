@@ -1,7 +1,7 @@
 #
 # spec file for package xemacs
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,6 @@ BuildRequires:  autoconf
 BuildRequires:  compface
 BuildRequires:  db-devel
 BuildRequires:  fdupes
-BuildRequires:  fwnndev
 BuildRequires:  gcc-c++
 BuildRequires:  gdbm-devel
 BuildRequires:  info
