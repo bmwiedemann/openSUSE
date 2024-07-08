@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jul 06 09:14:22 UTC 2024 - okurz@suse.com
+
+- Update to version 4.6.1720189080.136b92a5:
+  * Disable all kinds of CSS animations in tests to increase stability
+  * Modify BUGREF_REGEX to accept all but hash and spaces
+  * Fix URL rendering in job tests' comment
+
+-------------------------------------------------------------------
 Thu Jul 04 01:14:15 UTC 2024 - okurz@suse.com
 
 - Update to version 4.6.1720013336.c526246d:
