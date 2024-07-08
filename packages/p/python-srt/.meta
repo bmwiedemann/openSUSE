@@ -1,0 +1,8 @@
+<package name="python-srt" project="openSUSE:Factory">
+  <title>Python library for handling SRT files, plus tools</title>
+  <description>srt is a Python library for parsing, modifying, and composing SRT files.
+
+It also includes related tools.</description>
+  <devel project="devel:languages:python" package="python-srt"/>
+  <url>https://github.com/cdown/srt</url>
+</package>
