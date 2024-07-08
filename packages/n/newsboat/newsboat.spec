@@ -44,6 +44,10 @@ BuildRequires:  rust >= 1.68.2
 BuildRequires:  sqlite3-devel >= 3.5
 BuildRequires:  zlib-devel
 BuildRequires:  rubygem(asciidoctor)
+# Replacements of vendored C++ libraries
+BuildRequires:  nlohmann_json-devel
+BuildRequires:  expected-lite-devel
+BuildRequires:  optional-lite-devel
 Recommends:     %{name}-lang
 Recommends:     web_browser
 Provides:       newsbeuter = %{version}
@@ -60,16 +64,18 @@ text terminals.
 %prep
 %autosetup -a3 -p1
 mkdir cargo-home
-sed -i 's/#!\/usr\/bin\/env perl/#!\/usr\/bin\/perl/' ./contrib/pinboard.pl
-sed -i 's/#!\/usr\/bin\/env python3/#!\/usr\/bin\/python3/' ./doc/examples/example-exec-script.py
-sed -i 's/#!\/usr\/bin\/env python3/#!\/usr\/bin\/python3/' ./contrib/exportOPMLWithTags.py
-sed -i 's/#!\/usr\/bin\/env python3/#!\/usr\/bin\/python3/' ./contrib/move_url.py
-sed -i 's/#!\/usr\/bin\/env python/#!\/usr\/bin\/python3/' ./contrib/newsboat_reorganize.py
-sed -i 's/#!\/bin\/sh/#!\/usr\/bin\/bash/' ./doc/examples/example-bookmark-plugin.sh
-sed -i 's/#!\/usr\/bin\/env bash/#!\/usr\/bin\/bash/' ./contrib/image-preview/nbrun
-sed -i 's/#!\/usr\/bin\/env bash/#!\/usr\/bin\/bash/' ./contrib/image-preview/vifmimg
-sed -i 's/#!\/usr\/bin\/env bash/#!\/usr\/bin\/bash/' ./contrib/bookmark-buku.sh
-sed -i 's/#!\/usr\/bin\/env bash/#!\/usr\/bin\/bash/' ./contrib/kitty-img-pager.sh
+
+# Fix badness by replacing the env interpreter
+sed -i 's|/bin/env |/bin/|' contrib/*.{pl,py,rb,sh} contrib/*/* doc/examples/*
+sed -i 's|/bin/sh|/bin/bash|' ./doc/examples/example-bookmark-plugin.sh
+
+# Replace vendored C++ libraries with system ones
+for lib in nlohmann/json nonstd/optional nonstd/expected
+do
+    shortlib=$(echo ${lib} | sed 's|.*/||')
+    sed -i "s|3rd-party/${shortlib}.hpp|${lib}.hpp|" include/*.h src/*.cpp
+    rm 3rd-party/${shortlib}.hpp
+done
 
 %build
 export CARGO_HOME=`pwd`/cargo-home/

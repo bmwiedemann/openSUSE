@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jun 22 19:07:30 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Rework shebang script to reduce env-script-interpreter badness
+- Replace most vendored C++ libraries with system ones
+
+-------------------------------------------------------------------
 Sat Jun 22 12:36:54 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Update to 2.36:
