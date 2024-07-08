@@ -1,18 +1,18 @@
-Index: libksba-1.6.4/autogen.sh
+Index: libksba-1.6.7/autogen.sh
 ===================================================================
---- libksba-1.6.4.orig/autogen.sh
-+++ libksba-1.6.4/autogen.sh
-@@ -222,7 +222,7 @@ if [ "$myhost" = "find-version" ]; then
-     esac
+--- libksba-1.6.7.orig/autogen.sh
++++ libksba-1.6.7/autogen.sh
+@@ -244,7 +244,7 @@ if [ "$myhost" = "find-version" ]; then
+     fi
  
      beta=no
--    if [ -d .git ]; then
+-    if [ -e .git ]; then
 +    if false; then
        ingit=yes
        tmp=$(git describe --match "${matchstr1}" --long 2>/dev/null)
        if [ -n "$tmp" ]; then
-@@ -236,8 +236,8 @@ if [ "$myhost" = "find-version" ]; then
-       rvd=$((0x$(echo ${rev} | head -c 4)))
+@@ -269,8 +269,8 @@ if [ "$myhost" = "find-version" ]; then
+       rvd=$((0x$(echo ${rev} | dd bs=1 count=4 2>/dev/null)))
      else
        ingit=no
 -      beta=yes

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jul  5 09:14:56 UTC 2024 - Angel Yankov <angel.yankov@suse.com>
+
+- Update to 1.6.7:
+  * Allow for an empty Subject in certs.  [T7171]
+  * Release-info: https://dev.gnupg.org/T7173 
+  * Rebase libksba-nobetasuffix.patch
+
+-------------------------------------------------------------------
 Mon Feb 26 10:49:23 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 1.6.6:
