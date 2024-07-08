@@ -41,4 +41,14 @@
   * Support Django 5.0.</comment>
     <requestid>1131219</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>0f41d13e7b8a5e45d85669e9fc300286</srcmd5>
+    <version>4.26.0</version>
+    <time>1720458533</time>
+    <user>anag+factory</user>
+    <comment>- update to 4.26.0:
+  * Support Django 5.1.
+  * Optimize sql_fingerprint() a bit, yielding ~2% savings.</comment>
+    <requestid>1186116</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jul  8 09:00:43 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.26.0:
+  * Support Django 5.1.
+  * Optimize sql_fingerprint() a bit, yielding ~2% savings.
+
+-------------------------------------------------------------------
 Tue Dec  5 22:02:44 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.25.0:
