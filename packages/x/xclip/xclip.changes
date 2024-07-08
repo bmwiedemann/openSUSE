@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Jun 21 14:30:07 UTC 2024 - Manfred Schwarb <manfred99@gmx.ch>
+
+- use git hash in download URL, not branch name.
+
+-------------------------------------------------------------------
+Tue Jun 18 23:07:13 UTC 2024 - Manfred Schwarb <manfred99@gmx.ch>
+
+- Update to master checkout b372f73:
+  * add -sensitive option
+  * works reliably for large data streams
+  * improved debug and checking facilities
+  * when pasting, don't clear selection unless -sensitive is given
+  * if stdin is a tty, choose appropriate -i or -o option as default mode
+  * numerous bug fixes (segfaults, resource leaks, null pointer dereference)
+
+-------------------------------------------------------------------
 Fri Mar 12 22:37:21 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - modernise spec-file (move license to licensedir) 

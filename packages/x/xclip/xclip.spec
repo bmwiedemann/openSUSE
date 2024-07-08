@@ -1,7 +1,7 @@
 #
 # spec file for package xclip
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,20 +16,24 @@
 #
 
 
+%define rversion 0.13
+%define gitdate 20220129
+%define githash b372f73579d30f9ba998ffd0a73694e7abe2c313
+
 Name:           xclip
-Version:        0.13
+Version:        %{rversion}+git%{gitdate}
 Release:        0
 Summary:        Command Line Interface to the X11 Clipboard
 License:        GPL-2.0-or-later
 Group:          System/X11/Utilities
 URL:            https://github.com/astrand/xclip
-Source:         https://github.com/astrand/%{name}/archive/%{version}.tar.gz#./%{name}-%{version}.tar.gz
+Source:         https://github.com/astrand/xclip/archive/%{githash}.tar.gz#/%{name}-%{githash}.tar.gz
 BuildRequires:  autoconf
 BuildRequires:  automake
-BuildRequires:  xorg-x11-libICE-devel
-BuildRequires:  xorg-x11-libX11-devel
-BuildRequires:  xorg-x11-libXext-devel
-BuildRequires:  xorg-x11-libXmu-devel
+BuildRequires:  pkgconfig(ice)
+BuildRequires:  pkgconfig(x11)
+BuildRequires:  pkgconfig(xext)
+BuildRequires:  pkgconfig(xmu)
 
 %description
 xclip is a command line interface to the X11 clipboard. It can also be used
@@ -37,7 +41,7 @@ for copying files, as an alternative to sftp/scp, thus avoiding password
 prompts when X11 forwarding has already been setup.
 
 %prep
-%setup -q
+%autosetup -n %{name}-%{githash}
 
 %build
 bash ./bootstrap
@@ -50,6 +54,8 @@ bash ./bootstrap
 %install
 %make_install
 
+%check
+
 %files
 %license COPYING
 %doc ChangeLog README
@@ -57,7 +63,7 @@ bash ./bootstrap
 %{_bindir}/xclip-copyfile
 %{_bindir}/xclip-cutfile
 %{_bindir}/xclip-pastefile
-%{_mandir}/man1/xclip.1%{?ext_man}
-%{_mandir}/man1/xclip-copyfile.1%{?ext_man}
+%{_mandir}/man1/xclip.1%{?ext_man}*
+%{_mandir}/man1/xclip-copyfile.1%{?ext_man}*
 
 %changelog
