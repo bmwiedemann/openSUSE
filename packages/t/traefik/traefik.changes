@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jul  4 08:50:50 UTC 2024 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Update to version 3.0.4
+  * Bug fixes:
+    [ecs] Fix ECS config for OIDC + IRSA (gh#traefik/traefik#10814 by mmatur)
+    [http3] Disable QUIC 0-RTT (gh#traefik/traefik#10867 by mmatur)
+    [middleware,server] Remove interface names from IPv6 (gh#traefik/traefik#10813 by JeroenED)
+
+-------------------------------------------------------------------
 Wed Jun 19 15:45:49 UTC 2024 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
 - Update to version 3.0.3

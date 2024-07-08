@@ -23,7 +23,7 @@
 %define buildmode pie
 %endif
 Name:           traefik
-Version:        3.0.3
+Version:        3.0.4
 Release:        0
 Summary:        The Cloud Native Application Proxy
 License:        MIT
