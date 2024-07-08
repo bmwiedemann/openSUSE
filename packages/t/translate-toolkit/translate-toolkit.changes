@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jul  4 13:04:05 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Update to 3.13.1
+  * Added support for FormatJS
+  * Several improvements to the PO, XML and Properties formats.
+  * Updated language definitions to include CLDR aliases.
+  * Dropped unmatained Mozilla l10n scripts.
+- Drop merged 0001-tests-Adjust-to-changed-aeidon-behavior.patch
+
+-------------------------------------------------------------------
 Mon Apr  8 13:28:24 UTC 2024 - Ana Guerrero <ana.guerrero@suse.com>
 
 - Add patch 0001-tests-Adjust-to-changed-aeidon-behavior.patch for
