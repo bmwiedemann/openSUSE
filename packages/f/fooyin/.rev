@@ -69,4 +69,15 @@ https://github.com/ludouzi/fooyin/releases/tag/v0.5.0
 </comment>
     <requestid>1184125</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>042b5a5204b85f80a7bb7ca2d7af3c88</srcmd5>
+    <version>0.5.3</version>
+    <time>1720458591</time>
+    <user>anag+factory</user>
+    <comment>- Update to upstream 0.5.3
+- Release notes for interim release 0.5.2 can be found here:
+https://github.com/fooyin/fooyin/releases/tag/v0.5.2
+</comment>
+    <requestid>1186215</requestid>
+  </revision>
 </revisionlist>

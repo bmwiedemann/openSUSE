@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jul  8 15:00:54 UTC 2024 - Julius Enriquez <win8linux@gmail.com>
+
+- Update to upstream 0.5.3
+    * Fixes
+        * LibraryScanner
+            * Fix reading file properties for external files
+            * Fix reading duration for cue tracks
+        * Playlist: Fix start playback on send to new playlist failing
+- Release notes for interim release 0.5.2 can be found here:
+https://github.com/fooyin/fooyin/releases/tag/v0.5.2
+
+-------------------------------------------------------------------
 Sun Jun 30 19:09:08 UTC 2024 - Julius Enriquez <win8linux@gmail.com>
 - Update to upstream 0.5.1
     * Improvements
