@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul  2 13:00:54 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20240701.00
+  * Update google-startup-scripts.service to enable logging (#399)
+
+-------------------------------------------------------------------
 Fri Jun 14 09:27:31 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 20240611.01

@@ -470,4 +470,12 @@
   * Create wicked network service implementation and its respective unit (#356) (forwarded request 1180854 from glaubitz)</comment>
     <requestid>1180855</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>cdb75c234b16b4213d540050a99d81de</srcmd5>
+    <version>20240701.00</version>
+    <time>1720458550</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1186149</requestid>
+  </revision>
 </revisionlist>
