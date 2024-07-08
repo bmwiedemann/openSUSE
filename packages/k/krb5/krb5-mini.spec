@@ -24,7 +24,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           krb5-mini
-Version:        1.21.2
+Version:        1.21.3
 Release:        0
 Summary:        MIT Kerberos5 implementation and libraries with minimal dependencies
 License:        MIT
@@ -44,6 +44,7 @@ Patch5:         0005-krb5-1.6.3-ktutil-manpage.patch
 Patch6:         0006-krb5-1.12-api.patch
 Patch7:         0007-SELinux-integration.patch
 Patch8:         0008-krb5-1.9-debuginfo.patch
+Patch9:         0009-Fix-three-memory-leaks.patch
 BuildRequires:  autoconf
 BuildRequires:  bison
 BuildRequires:  pkgconfig

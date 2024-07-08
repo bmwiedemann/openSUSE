@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Jul  1 07:50:59 UTC 2024 - Samuel Cabrero <scabrero@suse.de>
+
+- Update to 1.21.3
+  * Fix vulnerabilities in GSS message token handling:
+    * CVE-2024-37370, bsc#1227186
+    * CVE-2024-37371, bsc#1227187
+  * Fix a potential bad pointer free in krb5_cccol_have_contents()
+  * Fix a memory leak in the macOS ccache type
+- Update patch 0009-Fix-three-memory-leaks.patch
+
+-------------------------------------------------------------------
+Fri Mar 22 09:19:41 UTC 2024 - Samuel Cabrero <scabrero@suse.de>
+
+- Fix memory leaks, add patch 0009-Fix-three-memory-leaks.patch
+  * CVE-2024-26458, bsc#1220770
+  * CVE-2024-26461, bsc#1220771
+  * CVE-2024-26462, bsc#1220772
+
+-------------------------------------------------------------------
 Thu Feb 29 10:07:57 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
 
 - Add crypto-policies support [bsc#1211301]

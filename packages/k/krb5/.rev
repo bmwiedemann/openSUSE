@@ -1611,4 +1611,30 @@ Administrator experience:
     <comment></comment>
     <requestid>1175448</requestid>
   </revision>
+  <revision rev="174" vrev="1">
+    <srcmd5>359cd3b1e0d86779682f96066cf143d2</srcmd5>
+    <version>1.21.3</version>
+    <time>1720458410</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.21.3
+  * Fix vulnerabilities in GSS message token handling:
+    * CVE-2024-37370, bsc#1227186
+    * CVE-2024-37371, bsc#1227187
+  * Fix a potential bad pointer free in krb5_cccol_have_contents()
+  * Fix a memory leak in the macOS ccache type
+- Update patch 0009-Fix-three-memory-leaks.patch
+- Fix memory leaks, add patch 0009-Fix-three-memory-leaks.patch
+  * CVE-2024-26458, bsc#1220770
+  * CVE-2024-26461, bsc#1220771
+  * CVE-2024-26462, bsc#1220772
+- Update to 1.21.3
+  * Fix vulnerabilities in GSS message token handling:
+    * CVE-2024-37370, bsc#1227186
+    * CVE-2024-37371, bsc#1227187
+  * Fix a potential bad pointer free in krb5_cccol_have_contents()
+  * Fix a memory leak in the macOS ccache type
+- Update patch 0009-Fix-three-memory-leaks.patch
+</comment>
+    <requestid>1185764</requestid>
+  </revision>
 </revisionlist>
