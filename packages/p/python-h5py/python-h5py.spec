@@ -55,7 +55,7 @@ License:        BSD-3-Clause
 Group:          Development/Libraries/Python
 URL:            https://github.com/h5py/h5py
 Source:         https://files.pythonhosted.org/packages/source/h/h5py/h5py-%{version}.tar.gz
-BuildRequires:  %{python_module Cython >= 0.29 with %python-Cython < 1}
+BuildRequires:  %{python_module Cython >= 0.29 with %python-Cython < 4}
 BuildRequires:  %{python_module devel >= 3.8}
 BuildRequires:  %{python_module numpy-devel >= 1.17.3}
 BuildRequires:  %{python_module pip}

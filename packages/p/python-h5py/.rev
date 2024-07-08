@@ -322,4 +322,12 @@
   bsc#1225381</comment>
     <requestid>1177282</requestid>
   </revision>
+  <revision rev="31" vrev="3">
+    <srcmd5>160b826847574d54ff370ea475aa7534</srcmd5>
+    <version>3.11.0</version>
+    <time>1720458527</time>
+    <user>anag+factory</user>
+    <comment>- Fix Cython upper bound to match upstream.</comment>
+    <requestid>1186088</requestid>
+  </revision>
 </revisionlist>
