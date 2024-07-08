@@ -78,10 +78,10 @@ for Maliit Virtual Keyboard.
 %{__rm} -rf %{buildroot}%{_datadir}/doc/%{name}
 %fdupes %{buildroot}%{_prefix}
 
+%find_lang %{name} --with-qt
+
 %check
 %ctest
-
-%find_lang %{name} --with-qt
 
 %files layouts
 %{_libdir}/maliit/keyboard2/languages/

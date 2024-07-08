@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jul  4 03:54:51 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Fix build without checks (boo#1227364)
+
+-------------------------------------------------------------------
 Thu Jun 27 16:41:48 UTC 2024 - Shawn Dunn <sfalken@opensuse.org>
 
 - Added %check section
