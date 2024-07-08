@@ -52,21 +52,22 @@ sed -e '1d' -i pysrt/commands.py
 
 %install
 %pyproject_install
-%python_clone -a %{buildroot}%{_bindir}/srt
+mv %{buildroot}%{_bindir}/srt %{buildroot}%{_bindir}/pysrt-srt
+%python_clone -a %{buildroot}%{_bindir}/pysrt-srt
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %pytest
 
 %post
-%python_install_alternative srt
+%python_install_alternative pysrt-srt
 
 %postun
-%python_uninstall_alternative srt
+%python_uninstall_alternative pysrt-srt
 
 %files %{python_files}
 %doc README.rst
-%python_alternative %{_bindir}/srt
+%python_alternative %{_bindir}/pysrt-srt
 %{python_sitelib}/pysrt
 %{python_sitelib}/pysrt-%{version}.dist-info
 

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jul  7 13:50:02 UTC 2024 - Luigi Baldoni <aloisio@gmx.com>
+
+- Prepend executable name with pysrt- to avoid clash with
+  the python-srt package
+
+-------------------------------------------------------------------
 Wed Feb 14 04:41:27 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch use-assertequal.patch:
