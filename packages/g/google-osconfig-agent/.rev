@@ -445,4 +445,12 @@
     to-pull-osconfig-agent-pkg-from-new-ar-repos (forwarded request 1180865 from glaubitz)</comment>
     <requestid>1180948</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>787b01895fc3ebcd819e5bb3785d9fba</srcmd5>
+    <version>20240702.01</version>
+    <time>1720458552</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1186151</requestid>
+  </revision>
 </revisionlist>

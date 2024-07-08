@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Jul  2 14:09:01 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20240702.01
+  * Use Debian-11 img in googet pkg build workflow (#632)
+- from version 20240702.00
+  * Pipeline testing 00 (#631)
+- from version 20240701.00
+  * update readme file (#628)
+- from version 20240625.01
+  * Updating yum install to support multi architecture based packages
+  * Revert "Adding Architecture to the packages being installed/updated in yum repo"
+- from version 20240625.00
+  * Update old SLES images urls (#627)
+- from version 20240620.00
+  * Merge pull request #626 from GoogleCloudPlatform/yum-multiarch-fix
+  * Adding Architecture to the packages being installed/updated in yum repo
+- from version 20240618.01
+  * Extract source_name(source_rpm) for rpm packages (#624)
+- from version 20240618.00
+  * update README.md file (#625)
+- from version 20240615.00
+  * Fix(dpkg) return onlt installed items as inventory (#623)
+  * Extract source name and version for dpkg packages. (#622)
+
+-------------------------------------------------------------------
 Fri Jun 14 10:12:06 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 20240607.00
