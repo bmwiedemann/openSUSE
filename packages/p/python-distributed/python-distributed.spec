@@ -47,7 +47,7 @@
 
 Name:           python-distributed%{psuffix}
 # ===> Note: python-dask MUST be updated in sync with python-distributed! <===
-Version:        2024.4.2
+Version:        2024.6.2
 Release:        0
 Summary:        Library for distributed computing with Python
 License:        BSD-3-Clause
