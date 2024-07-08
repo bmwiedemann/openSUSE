@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jul  8 10:51:00 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to version 1.2.3+1:
+  + Update rpmprep to handle %patchN for rpm >= 4.20
+  + Do not embrace macros inside %python_module
+  + Use python-rpm-spec instead of calling rpmspec command
+  + Add %dnl to excludes-bracketing.txt
+- Fix version number in package from github master
+
+-------------------------------------------------------------------
 Tue Apr  2 13:21:00 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.2.2+5:

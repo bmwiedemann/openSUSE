@@ -18,7 +18,7 @@
 
 
 Name:           spec-cleaner
-Version:        1.2.2+5
+Version:        1.2.3+1
 Release:        0
 Summary:        .spec file cleaner
 License:        BSD-3-Clause
@@ -28,7 +28,9 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-pip
 BuildRequires:  python3-pytest
+BuildRequires:  python3-python-rpm-spec
 BuildRequires:  python3-wheel
+Requires:       python3-python-rpm-spec
 # For the pkg_resources used in the binary loader
 BuildArch:      noarch
 
@@ -48,6 +50,8 @@ user to use spec-cleaner rather than to stick to perl based format_spec_file.
 
 %prep
 %autosetup -p1
+# Set correct package version, upstream has the next release number
+sed -i 's/1\.2\.4/%{version}/g' spec_cleaner/__init__.py
 rm pytest.ini
 
 %build
@@ -59,7 +63,12 @@ rm pytest.ini
 
 %check
 export LANG=en_US.UTF-8
-python3 -m pytest -k "not webtest" tests/*-tests.py
+# Tests that requires network
+donttest="webtest or url_https.spec"
+# Tests that requires network because of make_secure_url checking that
+# the secure url exists
+donttest+=" or source_https or rpmpreamble.spec or replace_pwdutils.spec or mingw32-clutter.spec"
+python3 -m pytest -k "not ($donttest)" tests/*-tests.py
 
 %install
 %if 0%{?mageia}

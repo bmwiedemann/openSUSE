@@ -761,4 +761,17 @@
     <comment></comment>
     <requestid>1166628</requestid>
   </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>fb488077822e675b927f46928ce944e3</srcmd5>
+    <version>1.2.3+1</version>
+    <time>1720458547</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.2.3+1:
+  + Update rpmprep to handle %patchN for rpm &gt;= 4.20
+  + Do not embrace macros inside %python_module
+  + Use python-rpm-spec instead of calling rpmspec command
+  + Add %dnl to excludes-bracketing.txt
+- Fix version number in package from github master</comment>
+    <requestid>1186143</requestid>
+  </revision>
 </revisionlist>
