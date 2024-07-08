@@ -17,7 +17,7 @@
 
 
 Name:           yubikey-manager
-Version:        5.4.0
+Version:        5.5.1
 Release:        0
 Summary:        Python 3 library and command line tool for configuring a YubiKey
 License:        BSD-2-Clause
