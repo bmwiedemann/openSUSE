@@ -38,7 +38,11 @@ Source99:       baselibs.conf
 
 BuildRequires:  Mesa-libGLESv2-devel
 BuildRequires:  Mesa-libGLESv3-devel
+%if 0%{?suse_version} < 1600
+BuildRequires:  gcc13-c++
+%else
 BuildRequires:  gcc-c++
+%endif
 BuildRequires:  libICE-devel
 BuildRequires:  libQt5PlatformHeaders-devel
 BuildRequires:  libSM-devel
@@ -65,14 +69,15 @@ BuildRequires:  pkgconfig(Qt5Quick)
 BuildRequires:  pkgconfig(Qt5WaylandClient)
 BuildRequires:  pkgconfig(Qt5X11Extras)
 
-# Disable qt6 for now (see -Dqt6=disabled passed to meson)
-#BuildRequires:  pkgconfig(Qt6Core)
-#BuildRequires:  pkgconfig(Qt6Gui)
-#BuildRequires:  pkgconfig(Qt6Linguist)
-#BuildRequires:  pkgconfig(Qt6Qml)
-#BuildRequires:  pkgconfig(Qt6Quick)
-#BuildRequires:  pkgconfig(Qt6ShaderTools)
-#BuildRequires:  pkgconfig(Qt6WaylandClient)
+BuildRequires:  qt6-gui-private-devel
+BuildRequires:  pkgconfig(Qt6Core)
+BuildRequires:  pkgconfig(Qt6Gui)
+BuildRequires:  pkgconfig(Qt6Linguist)
+BuildRequires:  pkgconfig(Qt6Qml)
+BuildRequires:  pkgconfig(Qt6Quick)
+BuildRequires:  pkgconfig(Qt6ShaderTools)
+BuildRequires:  pkgconfig(Qt6WaylandClient)
+BuildRequires:  pkgconfig(Qt6Widgets)
 
 BuildRequires:  pkgconfig(caca)
 BuildRequires:  pkgconfig(cairo) >= 1.10.0
@@ -168,12 +173,25 @@ Enhances:       gstreamer-plugins-good
 %description qtqml
 This package provides the qmlglsink output plugin for gstreamer-plugins-good.
 
+%package qtqml6
+Summary:        Qml6glsink plugin for gstreamer-plugins-good
+Group:          Productivity/Multimedia/Other
+Requires:       %{name} = %{version}
+Enhances:       gstreamer-plugins-good
+
+%description qtqml6
+This package provides the qml6glsink output plugin for gstreamer-plugins-good.
+
 %lang_package
 
 %prep
 %autosetup -n %{_name}-%{version} -p1
 
 %build
+%if 0%{?suse_version} < 1600
+export CC=%{_bindir}/gcc-13
+export CXX=%{_bindir}/g++-13
+%endif
 export PYTHON=%{_bindir}/python3
 %meson \
 	-Dpackage-name='openSUSE GStreamer-plugins-good package' \
@@ -184,7 +202,6 @@ export PYTHON=%{_bindir}/python3
 	-Ddoc=disabled \
 	-Drpicamsrc=disabled \
 	-Dv4l2-probe=true \
-	-Dqt6=disabled \
 	-Dqt-egl=disabled \
 	%{nil}
 %meson_build
@@ -296,6 +313,9 @@ fi
 
 %files qtqml
 %{_libdir}/gstreamer-%{gst_branch}/libgstqmlgl.so
+
+%files qtqml6
+%{_libdir}/gstreamer-%{gst_branch}/libgstqml6.so
 
 %files lang -f %{_name}-%{gst_branch}.lang
 

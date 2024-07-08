@@ -862,4 +862,17 @@ From the patch header
     <comment></comment>
     <requestid>1184250</requestid>
   </revision>
+  <revision rev="103" vrev="2">
+    <srcmd5>c5a95feb6a584baf726f898e75c80962</srcmd5>
+    <version>1.24.5</version>
+    <time>1720458403</time>
+    <user>anag+factory</user>
+    <comment>- Enable qt6 support:
+  + Add subpackage for qml6glsink
+  + BuildRequires: add qt6-gui-private-devel (same as Qt5)
+  + BuildRequires: add pkgconfig(Qt6Widgets) (additionally required
+    for Qt6)
+  + Leap: use compiler supporting c++17 by default</comment>
+    <requestid>1185897</requestid>
+  </revision>
 </revisionlist>
