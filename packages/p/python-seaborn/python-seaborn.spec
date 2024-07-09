@@ -21,9 +21,10 @@ Version:        0.13.2
 Release:        0
 Summary:        Statistical data visualization for python
 License:        BSD-2-Clause AND BSD-3-Clause AND MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/mwaskom/seaborn
 Source:         https://files.pythonhosted.org/packages/source/s/seaborn/seaborn-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM gh#mwaskom/seaborn#3685
+Patch0:         support-numpy-2.patch
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module flit-core >= 3.2}
 BuildRequires:  %{python_module matplotlib >= 3.6.2}
