@@ -1,0 +1,6 @@
+<package name="perl-CPAN-Requirements-Dynamic" project="openSUSE:Factory">
+  <title>Dynamic prerequisites in meta files</title>
+  <description>This module implements a format for describing dynamic prerequisites of a distribution.</description>
+  <devel project="devel:languages:perl" package="perl-CPAN-Requirements-Dynamic"/>
+  <url>Dynamic prerequisites in meta files</url>
+</package>
