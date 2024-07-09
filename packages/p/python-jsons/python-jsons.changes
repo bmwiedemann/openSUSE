@@ -1,0 +1,11 @@
+-------------------------------------------------------------------
+Thu Jul  4 17:41:51 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Add gh187-test_dump_load_parameterized_collections-fails.patch
+  to skip failing test test_dump_load_parameterized_collections
+  (gh#ramonhagenaars/jsons#187).
+
+-------------------------------------------------------------------
+Thu Jun 20 09:40:46 UTC 2024 - Andreas Färber <afaerber@suse.de>
+
+- Initial (v1.6.3)

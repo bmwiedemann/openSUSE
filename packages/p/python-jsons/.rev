@@ -1,0 +1,17 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>664646d6409cb9a4866acd59e1201b96</srcmd5>
+    <version>1.6.3</version>
+    <time>1720548215</time>
+    <user>anag+factory</user>
+    <comment>New package python-jsons for Factory.
+
+A dependency of multiple Tenstorrent AI accelerator tools.
+
+@a_faerber See [what I am doing
+here](https://build.opensuse.org/package/rdiff/devel:languages:python/python-jsons?linkrev=base&amp;rev=2).
+When nothing else is possible we download tarball from GitHub,
+those often contain tests even when the PyPI’s one don’t.</comment>
+    <requestid>1185433</requestid>
+  </revision>
+</revisionlist>
