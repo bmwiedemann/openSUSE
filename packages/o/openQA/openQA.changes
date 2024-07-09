@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jul 08 17:14:25 UTC 2024 - okurz@suse.com
+
+- Update to version 4.6.1720446867.5cfa922b:
+  * Add test for `show_job_info` test helper
+  * Fix synchronization in fullstack test
+  * Improve coding style in `websocket_api_version` function
+
+-------------------------------------------------------------------
 Sat Jul 06 09:14:22 UTC 2024 - okurz@suse.com
 
 - Update to version 4.6.1720189080.136b92a5:
