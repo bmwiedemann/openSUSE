@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jul  5 04:56:59 UTC 2024 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.4.6
+
+- Update to 2.4.6:
+  - CI: push MacOS jobs to MacOS 13 and 14 in #3002
+  - Add 3.13.0b3t and exclude it from pyenv latest in #3001
+  - Speed up pyenv prefix by not constructing advice text when
+    it would be discarded in #3005
+
+Full Changelog: https://github.com/pyenv/pyenv/compare/v2.4.5...v2.4.6
+
+-------------------------------------------------------------------
 Sun Jun 30 21:48:24 UTC 2024 - Dirk Müller <dmueller@suse.com> - 2.4.5 
 
 - update to 2.4.5:
