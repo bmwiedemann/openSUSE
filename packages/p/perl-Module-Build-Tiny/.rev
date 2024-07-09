@@ -105,4 +105,15 @@
 </comment>
     <requestid>1156494</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>c9cd0d5d013773e847bc027c59289efa</srcmd5>
+    <version>0.48.0</version>
+    <time>1720548190</time>
+    <user>anag+factory</user>
+    <comment>- updated to 0.48.0 (0.048)
+   see /usr/share/doc/packages/perl-Module-Build-Tiny/Changes
+  0.048     2024-04-28 14:58:04+02:00 Europe/Brussels
+            - Implement dynamic prerequisites (forwarded request 1185765 from tinita)</comment>
+    <requestid>1186037</requestid>
+  </revision>
 </revisionlist>

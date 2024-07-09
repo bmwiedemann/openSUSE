@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jun 23 16:31:32 UTC 2024 - Tina Müller <tina.mueller@suse.com>
+
+- updated to 0.48.0 (0.048)
+   see /usr/share/doc/packages/perl-Module-Build-Tiny/Changes
+
+  0.048     2024-04-28 14:58:04+02:00 Europe/Brussels
+            - Implement dynamic prerequisites
+
+-------------------------------------------------------------------
 Fri Mar  8 22:43:09 UTC 2024 - Tina Müller <tina.mueller@suse.com>
 
 - Fix disabling of __perllib_provides
