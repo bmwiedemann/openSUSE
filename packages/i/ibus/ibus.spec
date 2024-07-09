@@ -35,13 +35,13 @@
 
 %define _name   ibus
 Name:           %{_name}%{?nsuffix}
-Version:        1.5.29
+Version:        1.5.30
 Release:        0
 Summary:        The "Intelligent Input Bus" input method
 License:        LGPL-2.1-or-later
 Group:          System/I18n/Chinese
 URL:            https://github.com/ibus/
-Source:         https://github.com/ibus/ibus/releases/download/%{version}/%{_name}-%{version}-rc2.tar.gz
+Source:         https://github.com/ibus/ibus/releases/download/%{version}/%{_name}-%{version}.tar.gz
 Source2:        README.SUSE
 Source3:        xim.ibus.suse.template
 Source4:        xim.d-ibus-121
@@ -76,14 +76,9 @@ Patch15:        ibus-socket-name-compatibility.patch
 # PATCH-FIX-UPSTREAM ibus-ui-gtk3-restart-via-systemd.patch
 # Allow ibus-ui-gtk3 to restart ibus-daemon when it is launched by systemd
 Patch16:        ibus-ui-gtk3-restart-via-systemd.patch
-# PATCH-FIX-UPSTREAM ibus-complete-preedit-signals-for-postprocesskeyevent.patch
-# Fix dead keys on non-English keyboards for some applications (boo#1218135)
-Patch17:        ibus-complete-preedit-signals-for-postprocesskeyevent.patch
-# PATCH-FIX-UPSTREAM ibus-enginesimple-dont-commit-any-characters.patch
-# Fix dead keys on non-English keyboards for Wine (boo#1218135)
-Patch18:        ibus-enginesimple-dont-commit-any-characters.patch
 BuildRequires:  pkgconfig(dbusmenu-glib-0.4)
 BuildRequires:  pkgconfig(dbusmenu-gtk3-0.4)
+BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(iso-codes)
 BuildRequires:  pkgconfig(libnotify)
 BuildRequires:  pkgconfig(systemd)
@@ -221,7 +216,7 @@ This package contains ibus im module for use by gtk4.
 %endif
 
 %prep
-%setup -q -n %{_name}-%{version}-rc2
+%setup -q -n %{_name}-%{version}
 %patch -P 4 -p1
 %patch -P 8 -p1
 %if 0%{?sle_version} < 150200 && 0%{?suse_version} <=1500
@@ -242,8 +237,6 @@ cp -r %{SOURCE11} .
 %patch -P 15 -p1
 %endif
 %patch -P 16 -p1
-%patch -P 17 -p1
-%patch -P 18 -p1
 
 %build
 %configure --disable-static \
@@ -259,6 +252,7 @@ cp -r %{SOURCE11} .
            --disable-python2 \
 %if ! 0%{?with_gtk4}
            --enable-gtk3 \
+           --disable-gtk4 \
            --enable-vala \
            --enable-appindicator \
            --with-python=python3 \

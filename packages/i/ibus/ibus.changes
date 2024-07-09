@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sun Jul  7 09:23:53 UTC 2024 - Fuminobu Takeyama <ftake@geeko.jp> - 1.5.30
+
+- Upstream update to 1.5.30
+  * Fix Super key is not handled in GTK 4 applications
+  * ui/gtk3: Fix SEGV with Super-space in Wayland
+  * tools: Fix ibus start/restart in Plasma Wayland 5696033
+  * ui/gtk3: Fix ibus-daemon timeout in Plasma Wayland
+  * ui/gtk3: Set Indicator status at launching time
+  * Implement preedit color in Plasma Wayland
+  * Implement ibus start/restart for Plasma Wayland
+  * Show preferences menu item in activate menu
+  * Fix control keys with game application
+  * Fix typing freeze with barcode reader
+  * Fix preedit issue with X applications
+  * setup/enginedialog: Improve the search for engines
+- Refresh ibus-ui-gtk3-restart-via-systemd.patch
+- Drop patches merged by the upstream
+  * ibus-complete-preedit-signals-for-postprocesskeyevent.patch
+  * ibus-enginesimple-dont-commit-any-characters.patch
+
+-------------------------------------------------------------------
 Thu Feb 22 13:34:27 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.

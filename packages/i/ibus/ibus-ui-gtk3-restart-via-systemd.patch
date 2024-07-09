@@ -1,16 +1,15 @@
-diff -Nur ibus-1.5.29/ui/gtk3/panel.vala ibus-1.5.29-new/ui/gtk3/panel.vala
---- ibus-1.5.29/ui/gtk3/panel.vala	2023-12-02 16:13:18.091542008 +0800
-+++ ibus-1.5.29-new/ui/gtk3/panel.vala	2023-12-02 16:19:05.450810285 +0800
-@@ -1459,7 +1459,7 @@
-         m_sys_menu.append(new Gtk.SeparatorMenuItem());
+--- ibus-1.5.30/ui/gtk3/panel.vala.orig	2024-05-02 12:24:21.000000000 +0900
++++ ibus-1.5.30/ui/gtk3/panel.vala	2024-06-20 00:40:40.904145726 +0900
+@@ -1506,7 +1506,7 @@
+             if (m_is_kde && !BindingCommon.default_is_xdisplay())
+                 run_ibus_command("restart");
+             else
+-                m_bus.exit(true);
++                restart_daemon();
+         });
+         m_sys_menu.insert(item, -1);
  
-         item = new Gtk.MenuItem.with_label(_("Restart"));
--        item.activate.connect((i) => m_bus.exit(true));
-+        item.activate.connect((i) => restart_daemon());
-         m_sys_menu.append(item);
- 
-         item = new Gtk.MenuItem.with_label(_("Quit"));
-@@ -1474,6 +1474,144 @@
+@@ -1527,6 +1527,144 @@
          return m_sys_menu;
      }
  
