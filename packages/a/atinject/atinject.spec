@@ -16,13 +16,14 @@
 #
 
 
+%global artifactversion 1.0.5
 Name:           atinject
-Version:        1.0.5
+Version:        1+20211017gitd06ce18
 Release:        0
 Summary:        Dependency injection specification for Java (JSR-330)
 License:        Apache-2.0
 URL:            https://github.com/jakartaee/inject/
-Source0:        https://github.com/jakartaee/inject/archive/%{version}.tar.gz
+Source0:        %{name}-%{version}.tar.xz
 Source1:        %{name}-build.xml
 BuildRequires:  ant
 BuildRequires:  fdupes
@@ -46,7 +47,7 @@ Group:          Documentation/HTML
 This package contains the API documentation for %{name}.
 
 %prep
-%setup -q -n inject-%{version}
+%setup -q
 cp %{SOURCE1} build.xml
 
 %build
@@ -55,9 +56,9 @@ cp %{SOURCE1} build.xml
 %install
 # jars
 install -dm 755 %{buildroot}%{_javadir}/javax.inject
-install -m 0644 target/javax.inject-%{version}.jar %{buildroot}%{_javadir}/%{name}.jar
+install -m 0644 target/javax.inject-%{artifactversion}.jar %{buildroot}%{_javadir}/%{name}.jar
 (cd %{buildroot}%{_javadir}/javax.inject && ln -s ../%{name}.jar .)
-%add_maven_depmap javax.inject:javax.inject:%{version} %{name}.jar
+%add_maven_depmap javax.inject:javax.inject:%{artifactversion} %{name}.jar
 
 # javadoc
 install -dm 755 %{buildroot}%{_javadocdir}/%{name}

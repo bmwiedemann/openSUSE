@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul  9 08:20:48 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Revert to versioning 1+<date>git<git short hash> to avoid upgrade
+  problems in SLE
+
+-------------------------------------------------------------------
 Fri Jun  7 12:10:33 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Don't distribute as jakarta.inject:jakarta-inject-api artifact

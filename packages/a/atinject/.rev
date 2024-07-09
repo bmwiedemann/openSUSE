@@ -47,4 +47,12 @@
     <comment>Avoid conflicts with upcoming jakarta-inject package</comment>
     <requestid>1179402</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b53259572c7c81b26436cda8e48da03b</srcmd5>
+    <version>1+20211017gitd06ce18</version>
+    <time>1720548307</time>
+    <user>anag+factory</user>
+    <comment>Revert to previous version format to accomodate sle updates</comment>
+    <requestid>1186337</requestid>
+  </revision>
 </revisionlist>
