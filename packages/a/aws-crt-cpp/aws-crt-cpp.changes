@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul  4 12:06:19 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.27.2
+  * Make variant index casts more explicit by @DmitriyMusatkin in (#635)
+
+-------------------------------------------------------------------
 Wed Jun 26 11:47:43 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.27.1
