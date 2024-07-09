@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Jul  1 20:39:02 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- update to 4.36.0:
+  * Built-in Event For Action Chains plugin
+  * Catch bad href searches during internal link anchor search.
+  * adapter_spiritfanfictioncom: use_basic_cache:true
+  * adapter_spiritfanfictioncom: Cheesy fix for py2 not knowing
+    %z in dates.
+  * New Site: SpiritFanfiction.com Portuguese language site
+    (#1078) thanks kilandra
+  * XF2: SB/SV changed the header for thread_status
+  * adapter_ficbooknet: adapter_ficbooknet: Better fixes for py2
+    from dbhmw
+  * adapter_ficbooknet: Fix breakage for proxies & add covers
+    #1077 - #1076, thanks dbhmw
+
+-------------------------------------------------------------------
 Fri Jun  7 14:10:06 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.35.0:
