@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Jul  5 11:30:50 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 2.2.0
+    - Visual adjustments and optimization of the graphical user interface.
+    - Display of the old and new device name when using "Smartphone as card
+      reader" if the name of a device has changed.
+    - An information page has been added at the end of an authentication before
+      forwarding to the service provider.
+    - Increased the time allowed to respond to card commands on Android to support
+      badges that have switched to a safe slow mode after too many incorrect CAN entries.
+    - Improved accessibility options.
+    - Support for Android 8 has been discontinued.
+    - The "Smartphone as card reader" function now requires at least version 2.1.0.
+    - Support for ChromeOS has been added.
+    - Support for key lengths smaller than 3000 bits has been discontinued.
+    - Changelog added to the documentation for the SDK.
+    - Functional extension of the SDK (see changelog).
+    - Update of Qt to version 6.7.2.
+    - Update of OpenSSL to version 3.3.1.
+
+-------------------------------------------------------------------
 Thu Apr 11 08:16:20 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - New upstream release
