@@ -127,7 +127,7 @@ Source99:       python.keyring
 Source100:      PACKAGING-NOTES
 # PATCH-FEATURE-UPSTREAM F00251-change-user-install-location.patch bsc#[0-9]+ mcepl@suse.com
 # Fix installation in /usr/local (boo#1071941), originally from Fedora
-# https://src.fedoraproject.org/rpms/python3/blob/master/f/00251-change-user-install-location.patch
+# https://src.fedoraproject.org/rpms/python3.12/blob/rawhide/f/00251-change-user-install-location.patch
 # Set values of prefix and exec_prefix in distutils install command
 # to /usr/local if executable is /usr/bin/python* and RPM build
 # is not detected to make pip and distutils install into separate location

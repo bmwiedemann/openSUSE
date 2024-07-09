@@ -1307,4 +1307,12 @@ C API
       multiple threads (bsc#1226447, CVE-2024-0397).</comment>
     <requestid>1183510</requestid>
   </revision>
+  <revision rev="36" vrev="4">
+    <srcmd5>d8912a7437834983b0412202b1e560e8</srcmd5>
+    <version>3.11.9</version>
+    <time>1720548171</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1185397</requestid>
+  </revision>
 </revisionlist>
