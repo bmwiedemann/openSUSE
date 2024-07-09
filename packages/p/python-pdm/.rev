@@ -419,4 +419,12 @@
     * Use env PDM_NO_EDITABLE as the default value for --no-editable option.</comment>
     <requestid>1153131</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>3c7e502ba11f9948d49cd505d1bcedaf</srcmd5>
+    <version>2.16.1</version>
+    <time>1720548220</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1185400</requestid>
+  </revision>
 </revisionlist>

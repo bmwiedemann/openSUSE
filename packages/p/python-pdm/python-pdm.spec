@@ -27,7 +27,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-pdm%{psuffix}
-Version:        2.12.4
+Version:        2.16.1
 Release:        0
 Summary:        Python Development Master
 License:        MIT
@@ -44,8 +44,10 @@ Requires:       python-cachecontrol >= 0.12.11
 Requires:       python-certifi
 Requires:       python-dep-logic
 Requires:       python-findpython >= 0.4
+Requires:       python-hishel
 Requires:       python-installer
 Requires:       python-packaging >= 20.9
+Requires:       python-pbs-installer
 Requires:       python-pdm-backend
 Requires:       python-platformdirs
 Requires:       python-pyproject-hooks
@@ -74,11 +76,15 @@ Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 %if %{with test}
+BuildRequires:  %{python_module hishel}
+BuildRequires:  %{python_module httpx}
+BuildRequires:  %{python_module pbs-installer}
 BuildRequires:  %{python_module pdm = %{version}}
 BuildRequires:  %{python_module pytest-httpserver}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module unearth}
 %endif
 # /SECTION
 %python_subpackages
@@ -121,6 +127,27 @@ donttest="$donttest or test_list_dependency_graph_include_exclude or test_list_c
 donttest="$donttest or test_list_csv_include_exclude or test_remove_editable_packages_while_keeping_normal or test_project_backend"
 # Requires network
 donttest="$donttest or test_build_with_no_isolation"
+# Requires network
+donttest="$donttest or test_find_candidates_from_find_links"
+donttest="$donttest or test_build_single_module"
+donttest="$donttest or test_build_single_module_with_readme"
+donttest="$donttest or test_build_package"
+donttest="$donttest or test_build_src_package"
+donttest="$donttest or test_build_package_include"
+donttest="$donttest or test_build_src_package_by_include"
+donttest="$donttest or test_build_with_config_settings"
+donttest="$donttest or test_cli_build_with_config_settings"
+donttest="$donttest or test_build_ignoring_pip_environment"
+donttest="$donttest or test_find_interpreters_with_PDM_IGNORE_ACTIVE_VENV"
+donttest="$donttest or test_hooks[build] or test_hooks[publish]"
+donttest="$donttest or test_skip_option_from_signal"
+donttest="$donttest or test_skip_all_option_from_signal"
+donttest="$donttest or test_skip_pre_post_option_from_signal"
+donttest="$donttest or test_build_distributions"
+donttest="$donttest or test_show_self_package"
+donttest="$donttest or test_publish_and_build_in_one_run"
+donttest="$donttest or test_expand_project_root_in_url"
+
 %pytest -v -k "not ($donttest)"
 %endif
 
