@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jul  8 13:50:50 UTC 2024 - Johannes Meixner <jsmeix@suse.com>
+
+- Replaced avoid_C99_mode_for_loop_initial_declarations.patch
+  which is now the upstream fix
+  https://github.com/OpenPrinting/cups/commit/a2b8872ea95564e065e3a08e2aa12a15515bc993
+  see https://github.com/OpenPrinting/cups/issues/1000
+  and https://github.com/OpenPrinting/cups/pull/1004
+
+-------------------------------------------------------------------
 Tue Jul  2 11:45:58 UTC 2024 - Johannes Meixner <jsmeix@suse.com>
 
 - Version upgrade to 2.4.10:

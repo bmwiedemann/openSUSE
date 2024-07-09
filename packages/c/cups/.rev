@@ -1329,4 +1329,12 @@ Apple grant an openssl linking exception (and an exception for linking on Apple 
     <comment>CUPS version upgrade to 2.4.10 that provides the fixed upstream fix for CVE-2024-35235 in CUPS 2.4.9 (forwarded request 1185107 from jsmeix)</comment>
     <requestid>1185108</requestid>
   </revision>
+  <revision rev="175" vrev="2">
+    <srcmd5>de37ac82c4d482476436a49cef0ca02c</srcmd5>
+    <version>2.4.10</version>
+    <time>1720548205</time>
+    <user>anag+factory</user>
+    <comment>Replaced avoid_C99_mode_for_loop_initial_declarations.patch with the upstream fix, see https://github.com/OpenPrinting/cups/pull/1004 (forwarded request 1186192 from jsmeix)</comment>
+    <requestid>1186193</requestid>
+  </revision>
 </revisionlist>

@@ -68,6 +68,14 @@ Source106:      Postscript-level2.ppd.gz
 Source108:      cups-client.conf
 Source109:      baselibs.conf
 # Patch0...Patch9 is for patches from upstream:
+# Patch1 avoid_C99_mode_for_loop_initial_declarations.patch is
+# https://github.com/OpenPrinting/cups/commit/a2b8872ea95564e065e3a08e2aa12a15515bc993
+# to avoid "error: 'for' loop initial declarations are only allowed in C99 mode"
+# that happens when building for SLE12 at "for (char *start = ..." since
+# https://github.com/OpenPrinting/cups/commit/a7eda84da73126e40400e05dd27d57f8c92d5b0d
+# see https://github.com/OpenPrinting/cups/issues/1000
+# and https://github.com/OpenPrinting/cups/pull/1004
+Patch1:         avoid_C99_mode_for_loop_initial_declarations.patch
 # Source10...Source99 is for sources from SUSE which are intended for upstream:
 # Patch10...Patch99 is for patches from SUSE which are intended for upstream:
 # Patch10 cups-2.1.0-choose-uri-template.patch adds 'smb://...' URIs to templates/choose-uri.tmpl:
@@ -77,12 +85,6 @@ Patch10:        cups-2.1.0-choose-uri-template.patch
 # because the files of the CUPS web content are no documentation, see CUPS STR #3578
 # and https://bugzilla.suse.com/show_bug.cgi?id=546023#c6 and subsequent comments:
 Patch11:        cups-2.1.0-default-webcontent-path.patch
-# Patch12 avoid_C99_mode_for_loop_initial_declarations.patch
-# avoids "error: 'for' loop initial declarations are only allowed in C99 mode"
-# that happens when building for SLE12 at "for (char *start = ..." since
-# https://github.com/OpenPrinting/cups/commit/a7eda84da73126e40400e05dd27d57f8c92d5b0d
-# see https://github.com/OpenPrinting/cups/issues/1000
-Patch12:        avoid_C99_mode_for_loop_initial_declarations.patch
 # Patch100...Patch999 is for private patches from SUSE which are not intended for upstream:
 # Patch100 cups-pam.diff adds conf/pam.suse regarding support for PAM for SUSE:
 Patch100:       cups-pam.diff
@@ -303,6 +305,14 @@ printer drivers for CUPS.
 %prep
 %setup -q
 # Patch0...Patch9 is for patches from upstream:
+# Patch1 avoid_C99_mode_for_loop_initial_declarations.patch is
+# https://github.com/OpenPrinting/cups/commit/a2b8872ea95564e065e3a08e2aa12a15515bc993
+# to avoid "error: 'for' loop initial declarations are only allowed in C99 mode"
+# that happens when building for SLE12 at "for (char *start = ..." since
+# https://github.com/OpenPrinting/cups/commit/a7eda84da73126e40400e05dd27d57f8c92d5b0d
+# see https://github.com/OpenPrinting/cups/issues/1000
+# and https://github.com/OpenPrinting/cups/pull/1004
+%patch -P 1 -b avoid_C99_mode_for_loop_initial_declarations.orig
 # Patch10...Patch99 is for patches from SUSE which are intended for upstream:
 # Patch10 cups-2.1.0-choose-uri-template.patch adds 'smb://...' URIs to templates/choose-uri.tmpl:
 %patch -P 10 -b choose-uri-template.orig
@@ -336,12 +346,6 @@ printer drivers for CUPS.
 # Patch112 cups-2.4.2-additional_policies.patch adds the 'allowallforanybody' policy to cupsd.conf
 # see SUSE FATE 303515 and https://bugzilla.suse.com/show_bug.cgi?id=936309
 %patch -P 112 -b cups-2.4.2-additional_policies.orig
-# Patch12 avoid_C99_mode_for_loop_initial_declarations.patch
-# avoids "error: 'for' loop initial declarations are only allowed in C99 mode"
-# that happens when building for SLE12 at "for (char *start = ..." since
-# https://github.com/OpenPrinting/cups/commit/a7eda84da73126e40400e05dd27d57f8c92d5b0d
-# see https://github.com/OpenPrinting/cups/issues/1000
-%patch -P 12 -b avoid_C99_mode_for_loop_initial_declarations.orig
 
 %build
 # Remove ".SILENT" rule for verbose build output
