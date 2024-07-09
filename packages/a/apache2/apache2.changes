@@ -1,4 +1,150 @@
 -------------------------------------------------------------------
+Thu Jul  4 20:58:39 UTC 2024 - Arjen de Korte <suse+build@de-korte.org>
+
+- Update to 2.4.61
+
+  *) SECURITY: CVE-2024-39884: Apache HTTP Server: source code
+     disclosure with handlers configured via AddType (cve.mitre.org)
+     [boo#1227353]
+     A regression in the core of Apache HTTP Server 2.4.60 ignores
+     some use of the legacy content-type based configuration of
+     handlers.   "AddType" and similar configuration, under some
+     circumstances where files are requested indirectly, result in
+     source code disclosure of local content. For example, PHP
+     scripts may be served instead of interpreted.
+     Users are recommended to upgrade to version 2.4.61, which fixes
+     this issue.
+
+- Update to 2.4.60
+
+  *) SECURITY: CVE-2024-39573: Apache HTTP Server: mod_rewrite proxy
+     handler substitution (cve.mitre.org) [boo#1227271]
+     Potential SSRF in mod_rewrite in Apache HTTP Server 2.4.59 and
+     earlier allows an attacker to cause unsafe RewriteRules to
+     unexpectedly setup URL's to be handled by mod_proxy.
+     Credits: Orange Tsai (@orange_8361) from DEVCORE
+
+  *) SECURITY: CVE-2024-38477: Apache HTTP Server: Crash resulting in
+     Denial of Service in mod_proxy via a malicious request
+     (cve.mitre.org) [boo#1227270]
+     null pointer dereference in mod_proxy in Apache HTTP Server
+     2.4.59 and earlier allows an attacker to crash the server via a
+     malicious request.
+     Credits: Orange Tsai (@orange_8361) from DEVCORE
+
+  *) SECURITY: CVE-2024-38476: Apache HTTP Server may use
+     exploitable/malicious backend application output to run local
+     handlers via internal redirect (cve.mitre.org) [boo#1227269]
+     Vulnerability in core of Apache HTTP Server 2.4.59 and earlier
+     are vulnerably to information disclosure, SSRF or local script
+     execution via backend applications whose response headers are
+     malicious or exploitable.
+
+     Note: Some legacy uses of the 'AddType' directive to connect a
+     request to a handler must be ported to 'AddHandler' after this fix.
+
+     Credits: Orange Tsai (@orange_8361) from DEVCORE
+
+  *) SECURITY: CVE-2024-38475: Apache HTTP Server weakness in
+     mod_rewrite when first segment of substitution matches
+     filesystem path. (cve.mitre.org) [boo#1227268]
+     Improper escaping of output in mod_rewrite in Apache HTTP Server
+     2.4.59 and earlier allows an attacker to map URLs to filesystem
+     locations that are permitted to be served by the server but are
+     not intentionally/directly reachable by any URL, resulting in
+     code execution or source code disclosure.
+     Substitutions in server context that use a backreferences or
+     variables as the first segment of the substitution are affected.
+     Some unsafe RewiteRules will be broken by this change and the
+     rewrite flag "UnsafePrefixStat" can be used to opt back in once
+     ensuring the substitution is appropriately constrained.
+     Credits: Orange Tsai (@orange_8361) from DEVCORE
+
+  *) SECURITY: CVE-2024-38474: Apache HTTP Server weakness with
+     encoded question marks in backreferences (cve.mitre.org)
+     [boo#1227278]
+     Substitution encoding issue in mod_rewrite in Apache HTTP Server
+     2.4.59 and earlier allows attacker to execute scripts in
+     directories permitted by the configuration but not directly
+     reachable by any URL or source disclosure of scripts meant to
+     only to be executed as CGI.
+
+     Note: Some RewriteRules that capture and substitute unsafely will now
+     fail unless rewrite flag "UnsafeAllow3F" is specified.
+
+     Credits: Orange Tsai (@orange_8361) from DEVCORE
+
+  *) SECURITY: CVE-2024-38473: Apache HTTP Server proxy encoding
+     problem (cve.mitre.org) [boo#1227276]
+     Encoding problem in mod_proxy in Apache HTTP Server 2.4.59 and
+     earlier allows request URLs with incorrect encoding to be sent
+     to backend services, potentially bypassing authentication via
+     crafted requests.
+     Credits: Orange Tsai (@orange_8361) from DEVCORE
+
+  *) SECURITY: CVE-2024-38472: Apache HTTP Server on WIndows UNC SSRF
+     (cve.mitre.org) [boo#1227267]
+     SSRF in Apache HTTP Server on Windows allows to potentially leak
+     NTML hashes to a malicious server via SSRF and malicious
+     requests or content
+
+     Note: Existing configurations that access UNC paths
+     will have to configure new directive "UNCList" to allow access
+     during request processing.
+
+     Credits: Orange Tsai (@orange_8361) from DEVCORE
+
+  *) SECURITY: CVE-2024-36387: Apache HTTP Server: DoS by Null
+     pointer in websocket over HTTP/2 (cve.mitre.org) [boo#1227272]
+     Serving WebSocket protocol upgrades over a HTTP/2 connection
+     could result in a Null Pointer dereference, leading to a crash
+     of the server process, degrading performance.
+     Credits: Marc Stern (<marc.stern AT approach-cyber.com>)
+
+  *) mod_proxy: Fix DNS requests and connections closed before the
+     configured addressTTL.  BZ 69126.  [Yann Ylavic]
+
+  *) core: On Linux, log the real thread ID in error logs.  [Joe Orton]
+
+  *) core: Support zone/scope in IPv6 link-local addresses in Listen and
+     VirtualHost directives (requires APR 1.7.x or later).  PR 59396
+     [Joe Orton]
+
+  *) mod_ssl: Reject client-initiated renegotiation with a TLS alert
+     (rather than connection closure).  [Joe Orton, Yann Ylavic]
+
+  *) Updated mime.types.  [Mohamed Akram <mohd.akram outlook.com>,
+     Adam Silverstein <adamsilverstein earthboundhosting.com>]
+
+  *) mod_ssl: Fix a regression that causes the default DH parameters for a key
+     no longer set and thus effectively disabling DH ciphers when no explicit
+     DH parameters are set. PR 68863 [Ruediger Pluem]
+
+  *) mod_cgid: Optional support for file descriptor passing, fixing
+     error log handling (configure --enable-cgid-fdpassing) on Unix
+     platforms. PR 54221.  [Joe Orton]
+
+  *) mod_cgid/mod_cgi: Distinguish script stderr output clearly in
+     error logs.  PR 61980.  [Hank Ibell <hwibell gmail.com>]
+
+  *) mod_tls: update version of rustls-ffi to v0.13.0.
+     [Daniel McCarney (@cpu}]
+
+  *) mod_md:
+     - Using OCSP stapling information to trigger certificate renewals. Proposed
+       by @frasertweedale.
+     - Added directive `MDCheckInterval` to control how often the server checks
+       for detected revocations. Added proposals for configurations in the
+       README.md chapter "Revocations".
+     - OCSP stapling: accept OCSP responses without a `nextUpdate` entry which is
+       allowed in RFC 6960. Treat those as having an update interval of 12 hours.
+       Added by @frasertweedale.
+     - Adapt OpenSSL usage to changes in their API. By Yann Ylavic.
+
+- removed patches (upstreamed)
+  - apache2-issue-444.patch
+
+-------------------------------------------------------------------
 Thu Jun 13 13:34:23 UTC 2024 - pgajdos@suse.com
 
 - added patches [bsc#1226217]

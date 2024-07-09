@@ -107,7 +107,7 @@
 %define build_http2 1
 
 Name:           apache2%{psuffix}
-Version:        2.4.59
+Version:        2.4.61
 Release:        0
 Summary:        The Apache HTTPD Server
 License:        Apache-2.0
@@ -190,8 +190,6 @@ Patch100:       apache-test-application-xml-type.patch
 # even if in live system I do not experience this inconsistency, let's turn off
 # these variables from the test
 Patch101:       apache-test-turn-off-variables-in-ssl-var-lookup.patch
-# https://github.com/apache/httpd/pull/444/commits/c2fffd29b0f58bdc9caaaff4fec68e17a676f182
-Patch102:       apache2-issue-444.patch
 BuildRequires:  apache-rpm-macros-control
 #Since 2.4.7 the event MPM requires apr 1.5.0 or later.
 BuildRequires:  apr-devel >= 1.5.0
