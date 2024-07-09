@@ -1,0 +1,5 @@
+<package name="system-user-openbao" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="security" package="system-user-openbao"/>
+</package>
