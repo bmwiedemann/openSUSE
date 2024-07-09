@@ -1,7 +1,7 @@
 #
 # spec file for package brltty
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -50,7 +50,7 @@ BuildRequires:  ncurses-devel
 BuildRequires:  ocaml
 BuildRequires:  ocaml-rpm-macros >= 20231101
 BuildRequires:  pkg-config
-BuildRequires:  python-rpm-macros
+BuildRequires:  python-rpm-macros > 20240101
 BuildRequires:  python3
 BuildRequires:  python3-Cython
 BuildRequires:  python3-devel
@@ -379,6 +379,8 @@ rm -f %buildroot%_datadir/gdm/greeter/autostart/xbrlapi.desktop
 
 install -Dm0644 Autostart/AppStream/org.a11y.brltty.metainfo.xml \
                 %buildroot%_datadir/metainfo/org.a11y.brltty.metainfo.xml
+
+%python3_fix_shebang_path %{buildroot}%{_datadir}/brltty/Contraction/latex-access.ctb
 
 %fdupes -s %buildroot%_mandir
 %fdupes -s %buildroot

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun 10 22:17:14 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Add %python3_fix_shebang_path to fix binaries dependency on
+  /usr/bin/python3
+
+-------------------------------------------------------------------
 Wed Dec 13 11:10:22 UTC 2023 - Matthias Gerstner <matthias.gerstner@suse.com>
 
 - README.SUSE: add documentation about the state of security of the brltty

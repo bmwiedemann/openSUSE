@@ -614,4 +614,12 @@
 - Reduce amount of rpmlint warnings with brltty.rpmlintrc</comment>
     <requestid>1132864</requestid>
   </revision>
+  <revision rev="65" vrev="4">
+    <srcmd5>78695d9405fb966d2e6d8967a8e5acee</srcmd5>
+    <version>6.6</version>
+    <time>1720548207</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1186212</requestid>
+  </revision>
 </revisionlist>
