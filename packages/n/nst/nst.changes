@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Tue Jul 02 09:32:04 UTC 2024 - matthias.gerstner@suse.com
+
+- some stability and other bugfixes
+- change of selection handling: addition full line selection mode and changed
+  modifier keys.
+- Update to version 1.0+git56dd2cb:
+  * Selection: only extend to end position for range modes
+  * Selection: properly render selection upon initial update()
+  * README.md: fix punctuation, grammar, clarity and update to current state
+  * TermWindow: reset only non-window-system related state
+  * XEventHandler: address FIXME by clarifying the situation
+  * interactive.py: support enabling mouse-report
+  * TTY: drop FIXME that cannot be fixed (at least not here)
+  * README: document new selection features and project situation
+  * Selection: harmonize and simplify interface and logic
+  * Selection: use Mode enum instead of Snap plus Flags
+  * Selection: further renaming of constants; use accessors more consistently
+  * Selection: rename context to flags and Context to Flags
+  * Selection: cleanup, improve and fix logic for all selection modes
+  * types: returns absolute Height(), not negative values
+  * README.md: document fuzzing efforts
+  * WindowSystem: also reset TermWindow WinMode state
+  * Term: deleteColsAfterCursor(): fix wide character deletion
+  * Term: improve reset() completeness
+  * Term::reset(): properly reset terminal mode
+  * CSIEscape: fix some typos
+  * .gitignore: ignore all kinds of install trees
+  * CSIEscape: implement clear screen + scrollback buffer sequence
+  * Term::repeatChar: cap maximum number of character repeats
+  * StringEscape: fix possible assertion trying to access null-byte in string_view
+  * global: remove unnecessary nst:: namespace qualifications
+  * libcosmos: update to version with better compiler support (for AFL)
+  * TTY: further fix bad SIGCHILD handling logic
+  * Term: remove not applicable TODO about autowrap mode disabling
+  * interactive: better command mode on/off parsing; support autowrap setting
+  * Term: better compatibility to Xterm regarding alt screen escape codes
+  * interactive: support more altscreen operations
+  * bugfix: correctly clear window borders when required
+  * Line: clarify TODO, this logic has proven robust so far
+  * codecs: fix some typos and clarify TODO
+  * ColorManager: address TODO by moving code into a separate member function
+  * font: evaluate FcFontSort result
+  * interactive.py: usability improvements
+  * Term: fix insert mode when entering a wide character at the end of a row
+  * interactive.py: support setting insert mode
+  * interactive.py: support three separate VIM like modes
+  * Selection: don't scroll selection from the other screen
+
+-------------------------------------------------------------------
 Thu Mar 14 09:21:28 UTC 2024 - matthias.gerstner@suse.com
 
 - Update to version 1.0+git3df8353:

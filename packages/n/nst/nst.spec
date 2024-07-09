@@ -16,10 +16,10 @@
 #
 
 
-%define commit 3df8353
+%define commit 56dd2cb
 
 Name:           nst
-Version:        0.2
+Version:        1.0
 Release:        0
 Summary:        C++ port of suckless.org st (simple-terminal) emulator
 License:        MIT

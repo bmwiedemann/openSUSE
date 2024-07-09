@@ -92,8 +92,6 @@ constexpr float CH_SCALE = 1.0;
 
 /// Double click selection timeout.
 constexpr std::chrono::milliseconds DOUBLE_CLICK_TIMEOUT{300};
-/// Triple click selectin timeout.
-constexpr std::chrono::milliseconds TRIPLE_CLICK_TIMEOUT{600};
 
 /// Automatically clear selection when selection ownership is lost.
 /**
@@ -102,16 +100,17 @@ constexpr std::chrono::milliseconds TRIPLE_CLICK_TIMEOUT{600};
  **/
 constexpr bool SEL_CLEAR = false;
 
-/// Keep trailing newlines in Selection::Snap::LINE selections.
+/// Keep trailing newlines in Selection::Flag::LINES style selections.
 /**
- * When selecting a line via LINE snap mode keep trailing newlines. Upon
- * pasting this causes a complete line plus newline to be pasted. This can be
- * undesirable when pasting e.g. in a shell prompt.
+ * When selecting a range of full lines, keep trailing newlines. Upon
+ * pasting this causes a final newline to be pasted, as well. This can be
+ * undesirable when pasting e.g. a single line in a shell prompt (which you
+ * want to edit, before executing it).
  *
  * If disabled then trailing newline characters will be skipped during
  * pasting.
  **/
-constexpr bool SEL_LINE_SNAP_KEEP_NEWLINE = false;
+constexpr bool LINE_PASTE_KEEP_NEWLINE = false;
 
 /// Minimum draw latency.
 /*
@@ -490,9 +489,9 @@ inline constexpr std::string_view ASCII_PRINTABLE{
  * ButtonRelease and MotionNotify.
  * If no match is found, regular selection is used.
  **/
-constexpr std::array<std::pair<Selection::Type, xpp::InputMask>, 2> SEL_MASKS = {
-	std::pair{Selection::Type::REGULAR,     xpp::InputMask{}},
-	         {Selection::Type::RECTANGULAR, xpp::InputMask{xpp::InputModifier::MOD1}}
+constexpr std::array<std::pair<Selection::Mode, xpp::InputMask>, 2> SEL_MASKS = {
+	std::pair{Selection::Mode::RECT_RANGE, xpp::InputMask{xpp::InputModifier::CONTROL}},
+	std::pair{Selection::Mode::LINE_RANGE, xpp::InputMask{xpp::InputModifier::CONTROL, xpp::InputModifier::MOD1}}
 };
 
 /// Modifier used for alternative selection behaviour.
