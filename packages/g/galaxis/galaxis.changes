@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Jun 30 01:48:05 UTC 2024 - jun wang <jgwang@suse.com>
+
+- Update to version 1.11 
+  * Clean up code to assume SUSv2
+  * Documentation moved to asciidoctor
+  * Update galaxis-galaxis.c.patch because of source code change
+  * Update galaxis-Makefile.patch because of source code change
+  * Update galaxis.spec to remove galaxis.xml and to add
+    galaxis.adoc
+
+-------------------------------------------------------------------
 Tue Feb 27 10:51:21 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

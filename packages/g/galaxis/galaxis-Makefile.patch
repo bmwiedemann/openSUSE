@@ -1,7 +1,7 @@
---- Makefile.orig	2014-05-22 23:38:47.000000000 +0200
-+++ Makefile	2014-12-15 12:47:49.942567993 +0100
-@@ -21,13 +21,22 @@
- 	xmlto html-nochunks galaxis.xml
+--- Makefile.orig	2024-06-30 09:09:15.631522825 +0800
++++ Makefile	2024-06-30 09:14:38.004724948 +0800
+@@ -25,13 +25,20 @@
+ 	asciidoctor -D. -a nofooter -a webfonts! $<
  
  install: galaxis.6 uninstall
 -	install -m 755 -o 0 -g 0 -d $(ROOT)/usr/bin/
@@ -17,14 +17,12 @@
 +	install -m 0644 galaxis.6 $(DESTDIR)/usr/share/man/man6/
 +	install -m 0644 galaxis.desktop $(DESTDIR)/usr/share/applications/
 +	install -m 0644 galaxis.png $(DESTDIR)/usr/share/pixmaps/
-+	install -m 0644 galaxis.xml $(DESTDIR)/usr/share/appdata/
  
  uninstall:
 -	rm -f ${ROOT}/usr/bin/galaxis ${ROOT}/usr/share/man/man6/galaxis.6
 +	rm -f /usr/bin/galaxis /usr/share/man/man6/galaxis.6
 +	rm -f /usr/share/applications/galaxis.desktop
 +	rm -f /usr/share/pixmaps/galaxis.png
-+	rm -f /usr/share/appdata/galaxis.xml
  
  clean:
  	rm -f galaxis galaxis.6 galaxis-*.tar.gz *~ *.html

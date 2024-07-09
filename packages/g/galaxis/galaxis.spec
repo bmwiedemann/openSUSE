@@ -1,7 +1,7 @@
 #
 # spec file for package galaxis
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           galaxis
-Version:        1.10
+Version:        1.11
 Release:        0
 Summary:        Clone of the nifty little Macintosh game
 License:        BSD-3-Clause
@@ -67,11 +67,9 @@ cp -af %{SOURCE1} .
 
 %files
 %license COPYING
-%doc NEWS README
+%doc NEWS.adoc README.adoc galaxis.adoc
 %{_bindir}/%{name}
 %{_mandir}/man6/%{name}.6%{?ext_man}
-%dir %{_datadir}/appdata
-%{_datadir}/appdata/%{name}.xml
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/pixmaps/%{name}.png
 
