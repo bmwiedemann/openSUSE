@@ -266,4 +266,12 @@
     <comment>- Add %{?sle15_python_module_pythons}</comment>
     <requestid>1092380</requestid>
   </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>442b35cccc0b8bc25866af330a8a000b</srcmd5>
+    <version>2.2.1</version>
+    <time>1720548183</time>
+    <user>anag+factory</user>
+    <comment>- Disable tests against scipy/numpy for SLFO:Main</comment>
+    <requestid>1186365</requestid>
+  </revision>
 </revisionlist>

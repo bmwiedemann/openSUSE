@@ -1,7 +1,7 @@
 #
 # spec file for package python-cloudpickle
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,7 +34,7 @@ BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module py}
 BuildRequires:  %{python_module tornado}
-%if 0%{?suse_version} >= 1550
+%if 0%{?suse_version} > 1600
 BuildRequires:  %{python_module numpy >= 1.18.5}
 BuildRequires:  %{python_module scipy}
 %endif

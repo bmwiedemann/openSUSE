@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jul  9 10:27:54 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Disable tests against scipy/numpy for SLFO:Main
+
+-------------------------------------------------------------------
 Sun Jun 11 13:52:47 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}
