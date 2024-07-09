@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jul  2 07:52:23 UTC 2024 - Dr. Werner Fink <werner@suse.de>
+
+- The release 29.4 does fix boo#1226957 -- CVE-2024-39331
+
+-------------------------------------------------------------------
 Mon Jun 24 09:34:03 UTC 2024 - Dr. Werner Fink <werner@suse.de>
 
 - Update to GNU Emacs version 29.4

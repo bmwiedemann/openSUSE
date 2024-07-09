@@ -1974,4 +1974,12 @@ Now one could consider building emacs with gsettings support (both debian and fe
      malicious commands.</comment>
     <requestid>1182997</requestid>
   </revision>
+  <revision rev="187" vrev="2">
+    <srcmd5>bcade0da79f723b49fe4cc166001a470</srcmd5>
+    <version>29.4</version>
+    <time>1720548271</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1186323</requestid>
+  </revision>
 </revisionlist>
