@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jul  9 10:23:09 UTC 2024 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 20240709.1.
+  Changelog: https://github.com/rbenv/ruby-build/releases/tag/v20240709.1
+  * Use LTS version of OpenSSL 3 by @hsbt in #2422
+- Update to version 20240709.
+  Changelog: https://github.com/rbenv/ruby-build/releases/tag/v20240709
+  * Add JRuby 9.4.8.0 by @headius in #2419
+  * Add Ruby 3.3.4 by @yahonda in #2421
+
+-------------------------------------------------------------------
 Wed Jul  3 00:27:09 UTC 2024 - Lukas Müller <expeehaa@outlook.com>
 
 - Update to version 20240702.
