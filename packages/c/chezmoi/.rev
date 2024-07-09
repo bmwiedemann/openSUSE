@@ -478,4 +478,20 @@
 </comment>
     <requestid>1183046</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>acde4113c1a26b1bd76b568a17bc30bb</srcmd5>
+    <version>2.50.0</version>
+    <time>1720548369</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.50.0:
+  - Features
+    * feat: Add tempDir configuration variable
+    * feat: Allow private_ and readonly_ attrs to be set for externals
+    * feat: Add --no-network flag to doctor command
+    * feat: Embed fallback X.509 trusted roots
+  - Fixes
+    * fix: Prevent chezmoi add from adding chezmoi's own executable
+</comment>
+    <requestid>1186431</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jul  9 14:41:51 UTC 2024 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 2.50.0:
+  - Features
+    * feat: Add tempDir configuration variable
+    * feat: Allow private_ and readonly_ attrs to be set for externals
+    * feat: Add --no-network flag to doctor command
+    * feat: Embed fallback X.509 trusted roots
+  - Fixes
+    * fix: Prevent chezmoi add from adding chezmoi's own executable
+
+-------------------------------------------------------------------
 Mon Jun 24 17:01:13 UTC 2024 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 2.49.1:

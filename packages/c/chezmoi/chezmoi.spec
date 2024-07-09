@@ -17,7 +17,7 @@
 
 
 Name:           chezmoi
-Version:        2.49.1
+Version:        2.50.0
 Release:        0
 Summary:        A multi-host manager for dotfiles
 License:        MIT
