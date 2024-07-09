@@ -31,4 +31,12 @@
     <comment></comment>
     <requestid>1082127</requestid>
   </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>286a9dcb63a53933fabe6c48e62dd99e</srcmd5>
+    <version>8.8.2</version>
+    <time>1720548180</time>
+    <user>anag+factory</user>
+    <comment>- Do not depend on nbformat for SLES or SLFO:Main for tests</comment>
+    <requestid>1186344</requestid>
+  </revision>
 </revisionlist>

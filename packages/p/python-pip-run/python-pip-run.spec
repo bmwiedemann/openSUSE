@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-pip-run
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,8 @@
 # Disables installing nbformat for tests in Ring1 (see also Patch1)
 %bcond_with ringdisabled
 
-%if 0%{?suse_version} == 1500 && 0%{?sle_version} >= 150400
+# Do not depend on nbformat for SLES or SLFO:Main
+%if ( 0%{?suse_version} == 1500 && 0%{?sle_version} >= 150400 ) || 0%{?suse_version} == 1600
 %bcond_without ringdisabled
 %endif
 
@@ -56,7 +57,7 @@ Requires:       python-packaging
 Requires:       python-path >= 15.1
 Requires:       python-pip >= 19.3
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 %if 0%{?python_version_nodots} < 38
 Requires:       python-importlib-metadata
 %endif
@@ -90,7 +91,7 @@ readily address the on-demand needs.
 %prep
 %autosetup -p1 -n pip-run-%{version}
 
-%if 0%{?suse_version} == 1500 && 0%{?sle_version} >= 150400
+%if %{without ringdisabled}
 sed -i -e '/nbformat/d' setup.cfg
 %endif
 
@@ -110,9 +111,6 @@ mkdir -p wheels
 cp %{SOURCE10} %{SOURCE11} wheels/
 export PIP_FIND_LINKS=$PWD/wheels/
 dont_test=""
-%if 0%{?suse_version} == 1500 && 0%{?sle_version} >= 150400
-dont_test+=""
-%endif
 %pytest -k "$dont_test"
 %endif
 

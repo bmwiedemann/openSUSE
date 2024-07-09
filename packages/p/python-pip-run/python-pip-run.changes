@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jul  9 09:32:49 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Do not depend on nbformat for SLES or SLFO:Main for tests
+
+-------------------------------------------------------------------
 Fri Apr 21 12:29:22 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)
