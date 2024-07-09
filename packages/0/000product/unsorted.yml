@@ -21057,6 +21057,7 @@ unsorted:
   - perl-CPAN-Meta-Requirements 
   - perl-CPAN-Mini 
   - perl-CPAN-Perl-Releases 
+  - perl-CPAN-Requirements-Dynamic 
   - perl-CPAN-Uploader 
   - perl-CSS-Minifier-XS 
   - perl-CSS-Tiny 
@@ -21324,6 +21325,7 @@ unsorted:
   - perl-ExtUtils-CppGuess 
   - perl-ExtUtils-Depends 
   - perl-ExtUtils-F77 
+  - perl-ExtUtils-HasCompiler 
   - perl-ExtUtils-Helpers 
   - perl-ExtUtils-InstallPaths 
   - perl-ExtUtils-LibBuilder 
@@ -22564,8 +22566,6 @@ unsorted:
   - plantri 
   - plantuml 
   - plantuml-javadoc 
-  - plasma-applet-weather-widget 
-  - plasma-applet-weather-widget-lang 
   - plasma-branding-MicroOS 
   - plasma-framework-desktoptheme 
   - plasma-framework-devel 
@@ -23733,7 +23733,6 @@ unsorted:
   - python3-sss_nss_idmap 
   - python3-sssd-config 
   - python3-stp 
-  - python3-subliminal 
   - python3-susepubliccloudinfo 
   - python3-sushy 
   - python3-swiftclient 
@@ -25478,6 +25477,7 @@ unsorted:
   - python310-jsonpointer 
   - python310-jsonref 
   - python310-jsonrpclib-pelix 
+  - python310-jsons 
   - python310-jsonschema 
   - python310-jsonschema-format 
   - python310-jsonschema-format-nongpl 
@@ -26028,6 +26028,7 @@ unsorted:
   - python310-patsy 
   - python310-pbkdf2 
   - python310-pbr 
+  - python310-pbs-installer 
   - python310-pcodedmp 
   - python310-pdd 
   - python310-pdfminer.six 
@@ -26989,6 +26990,7 @@ unsorted:
   - python310-stripe 
   - python310-structlog 
   - python310-subgrab 
+  - python310-subliminal 
   - python310-subprocess-tee 
   - python310-subprocrunner 
   - python310-subscene-api 
@@ -27139,6 +27141,7 @@ unsorted:
   - python310-types-python-dateutil 
   - python310-typing-inspect 
   - python310-typing_extensions 
+  - python310-typish 
   - python310-typogrify 
   - python310-tzdata 
   - python310-tzlocal 
@@ -29026,6 +29029,7 @@ unsorted:
   - python311-jsonpickle 
   - python311-jsonref 
   - python311-jsonrpclib-pelix 
+  - python311-jsons 
   - python311-jsonschema-format 
   - python311-jsonschema-format-nongpl 
   - python311-jsonschema-path 
@@ -29553,6 +29557,7 @@ unsorted:
   - python311-patsy 
   - python311-pbkdf2 
   - python311-pbr 
+  - python311-pbs-installer 
   - python311-pcodedmp 
   - python311-pdd 
   - python311-pdfminer.six 
@@ -30478,6 +30483,7 @@ unsorted:
   - python311-stripe 
   - python311-structlog 
   - python311-subgrab 
+  - python311-subliminal 
   - python311-subprocess-tee 
   - python311-subprocrunner 
   - python311-subscene-api 
@@ -30625,6 +30631,7 @@ unsorted:
   - python311-types-humanfriendly 
   - python311-types-python-dateutil 
   - python311-typing-inspect 
+  - python311-typish 
   - python311-typogrify 
   - python311-tzdata 
   - python311-tzlocal 
@@ -32567,6 +32574,7 @@ unsorted:
   - python312-jsonpointer 
   - python312-jsonref 
   - python312-jsonrpclib-pelix 
+  - python312-jsons 
   - python312-jsonschema 
   - python312-jsonschema-format 
   - python312-jsonschema-format-nongpl 
@@ -33114,6 +33122,7 @@ unsorted:
   - python312-patsy 
   - python312-pbkdf2 
   - python312-pbr 
+  - python312-pbs-installer 
   - python312-pcodedmp 
   - python312-pdd 
   - python312-pdfminer.six 
@@ -34070,6 +34079,7 @@ unsorted:
   - python312-stripe 
   - python312-structlog 
   - python312-subgrab 
+  - python312-subliminal 
   - python312-subprocess-tee 
   - python312-subprocrunner 
   - python312-subscene-api 
@@ -34220,6 +34230,7 @@ unsorted:
   - python312-types-python-dateutil 
   - python312-typing-inspect 
   - python312-typing_extensions 
+  - python312-typish 
   - python312-typogrify 
   - python312-tzdata 
   - python312-tzlocal 
@@ -37014,6 +37025,7 @@ unsorted:
   - system-user-msr 
   - system-user-nagios 
   - system-user-ntp 
+  - system-user-openbao 
   - system-user-orthos 
   - system-user-osc-collab 
   - system-user-parsec 
