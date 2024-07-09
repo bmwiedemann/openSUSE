@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Jul  4 19:16:58 UTC 2024 - Tina Müller <tina.mueller@suse.com>
+
+- updated to 2.40012
+   see /usr/share/doc/packages/perl-Net-AMQP-RabbitMQ/Changes
+
+  2.40012 - 2024-07-03
+      - Updated to remove deprecated ssl_init functionality
+      - Updated all tests to make them skip tests which use RMQ when RMQ isn't available
+      - Lots of formatting changes
+      - Updated documentation to reflect new test-specific env vars
+      - Updated GitHub Actions to use latest RMQ service
+      - Added a test for the purge function.
+
+  2.40011 - 2024-06-22
+      - Updated `ppport.h`
+      - Fixed a problem where the SSL port defaulted to 5672 incorrectly.
+      - Updated tests so they let the `RabbitMQ.xs` defaults to play a role.
+      - We're now friendly to folks who want to use Carton when contributing.
+      - Discontinuing use of Vagrant for licensing reasons
+      - Updating `rabbitmq-c` to `v0.14.0`
+      - Discontinuing use of CloudAMQP hard-coded in tests for vendor security reasons
+
+  2.40010 - 2022-06-11
+      - Fixed SSL tests
+
+-------------------------------------------------------------------
 Thu Aug 25 09:23:41 UTC 2022 - Dirk Stoecker <opensuse@dstoecker.de>
 
 - updated to 2.40010
