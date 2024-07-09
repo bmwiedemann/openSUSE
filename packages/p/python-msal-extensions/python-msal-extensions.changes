@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jul  9 07:08:18 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.2.0
+  + Remove mentions of Travis CI by @akx in (#126)
+  + Set proper lower bound for portalocker dependency,
+    drop packaging dependency by @akx in (#125)
+  + Switch to MSAL 1.29+'s TokenCache.search()
+    by @rayluo in (#131)
+- Remove temporary version override
+- Update BuildRequires and Requires from setup.py
+
+-------------------------------------------------------------------
 Mon May  6 09:11:54 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 1.2.0b1

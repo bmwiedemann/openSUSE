@@ -115,4 +115,12 @@
 - Update Requires from setup.py (forwarded request 1172130 from glaubitz)</comment>
     <requestid>1172159</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>4bf8b13b8833bd315f1317b97fbeb8b2</srcmd5>
+    <version>1.2.0</version>
+    <time>1720548346</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1186393</requestid>
+  </revision>
 </revisionlist>
