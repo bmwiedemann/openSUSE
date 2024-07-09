@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Jul  9 07:02:22 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.29.0
+  * New feature: Supports Managed Identity for Azure VM, App Service
+    (including Azure Functions, Azure Automation), Service Fabric,
+    Azure Machine Learning, Arc, etc.. Comes with a sample, its
+    configuration via ENV VAR, and its API documentation.
+    (#58, #480, #634, #674)
+  * New feature: Support reading ConfidentialClientApplication's
+    cert from a pfx file (#684, #699)
+  * New feature: TokenCache class has a new search() method which will
+    return a generator of tokens. The old find() method still exists and
+    returns a list, but MSAL 1.27+ will not call find() anymore. (#693, #644)
+  * Change: Re-enable the username password flow to go through broker,
+    if available. (#712)
+- from version 1.28.1
+  * Change: pip install msal[broker] will now pick up the latest PyMsalRuntime
+    0.16.x which contains a bugfix for being run as administrator. This release
+    fixes #707.
+
+-------------------------------------------------------------------
 Tue Apr  9 06:30:00 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 1.28.0

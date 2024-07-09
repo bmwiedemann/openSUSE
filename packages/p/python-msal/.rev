@@ -298,4 +298,12 @@
   * Improvement: Reduce a bare except clause (#667) (forwarded request 1166290 from glaubitz)</comment>
     <requestid>1166433</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>d02fd500c2dcd93857335eb660b4d0da</srcmd5>
+    <version>1.29.0</version>
+    <time>1720548348</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1186394</requestid>
+  </revision>
 </revisionlist>
