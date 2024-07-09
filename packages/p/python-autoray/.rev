@@ -121,4 +121,12 @@
   * fix `&quot;diag&quot;` for tensorflow.</comment>
     <requestid>1178963</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>cef73e09a36f90943309c56926b2c365</srcmd5>
+    <version>0.6.12</version>
+    <time>1720548267</time>
+    <user>anag+factory</user>
+    <comment>- Restrict numpy to &lt; 2.</comment>
+    <requestid>1186295</requestid>
+  </revision>
 </revisionlist>

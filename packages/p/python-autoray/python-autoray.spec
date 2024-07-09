@@ -16,7 +16,6 @@
 #
 
 
-%define skip_python2 1
 Name:           python-autoray
 Version:        0.6.12
 Release:        0
@@ -26,7 +25,7 @@ URL:            https://github.com/jcmgray/autoray
 Source:         https://files.pythonhosted.org/packages/source/a/autoray/autoray-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.6}
 BuildRequires:  %{python_module dask-array}
-BuildRequires:  %{python_module numpy}
+BuildRequires:  %{python_module numpy < 2}
 BuildRequires:  %{python_module opt-einsum}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest-cov}
