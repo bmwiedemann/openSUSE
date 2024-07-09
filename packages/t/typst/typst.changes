@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jul  8 19:48:59 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Rust 1.79 wants gcc 13
+
+-------------------------------------------------------------------
+Mon Jul  8 16:08:35 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Actually build and install the correct binary for hayagriva
+
+-------------------------------------------------------------------
 Fri Jun 14 17:42:46 UTC 2024 - Gordon Leung <pirateclip@protonmail.com>
 
 - Update to version 0.11.1

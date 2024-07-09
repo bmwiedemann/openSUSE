@@ -20,7 +20,7 @@
 
 %if 0%{?sle_version} && 0%{?sle_version} < 160000
 # We have to use the same gcc-version that Rust was being built with
-%define force_gcc_version 12
+%define force_gcc_version 13
 %endif
 
 Name:           typst
@@ -93,7 +93,7 @@ cargo update --offline --manifest-path=vendor/hayagriva/Cargo.toml
 # (Matters in the check-section below)
 echo "[patch.crates-io.hayagriva]" >> Cargo.toml
 echo "path = \"vendor/hayagriva\"" >> Cargo.toml
-RUSTFLAGS=%{rustflags} %{cargo_build} --manifest-path=vendor/hayagriva/Cargo.toml
+RUSTFLAGS=%{rustflags} %{cargo_build} --manifest-path=vendor/hayagriva/Cargo.toml --features cli
 
 %check
 %if 0%{?force_gcc_version}
@@ -105,7 +105,7 @@ export CXX="g++-%{?force_gcc_version}"
 %install
 install -d -m 0755 %{buildroot}%{_bindir}
 install -m 0755 target/release/typst %{buildroot}%{_bindir}/%{name}
-install -m 0755 target/release/typst %{buildroot}%{_bindir}/hayagriva
+install -m 0755 vendor/hayagriva/target/release/hayagriva %{buildroot}%{_bindir}/hayagriva
 
 # Shell completions
 install -Dm644 -T %{_builddir}/%{name}-%{version}/artifacts/%{name}.bash %{buildroot}%{_datadir}/bash-completion/completions/%{name}
