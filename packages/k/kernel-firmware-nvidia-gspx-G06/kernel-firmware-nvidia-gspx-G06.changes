@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jul  9 12:46:11 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to 550.100 (boo#1227575)
+
+-------------------------------------------------------------------
 Mon Jul  8 14:10:27 UTC 2024 - Egbert Eich <eich@suse.com>
 
 - Use macro which is set during build but not when running
