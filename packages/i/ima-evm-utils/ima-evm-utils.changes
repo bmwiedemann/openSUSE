@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Jul  8 09:43:58 UTC 2024 - Petr Vorel <pvorel@suse.cz>
+
+- Update to version 1.6
+  https://lore.kernel.org/linux-integrity/20240703164454.61614-1-zohar@linux.ibm.com/
+- Upstream bumped soname to 5.0.0
+- Upstream changed license to GPL-2.0-or-later (evmctl), LGPL-2.0-or-later
+  (libimaevm + devel package), and GPL-2.0-or-later WITH Linux-syscall-note
+  exception (both)
+  https://github.com/linux-integrity/ima-evm-utils/issues/4
+  (mention both GPL and LGPL and add specific license to subpackages)
+- Remove patch from upstream (0001-fsverity.test-Add-usr-sbin-into-PATH.patch)
+
+-------------------------------------------------------------------
 Fri Dec 15 10:55:12 UTC 2023 - Frederic Crozat <fcrozat@suse.com>
 
 - Update download url.

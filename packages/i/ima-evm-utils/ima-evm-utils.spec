@@ -1,7 +1,7 @@
 #
 # spec file for package ima-evm-utils
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,17 +16,16 @@
 #
 
 
-%define sover 4
+%define sover 5
 %define libname libimaevm%{sover}
 Name:           ima-evm-utils
-Version:        1.5
+Version:        1.6
 Release:        0
 Summary:        IMA/EVM control utility
-License:        LGPL-2.1-or-later
+License:        GPL-2.0-or-later AND LGPL-2.0-or-later AND GPL-2.0-or-later WITH Linux-syscall-note
 Group:          System/Base
 URL:            https://sourceforge.net/projects/linux-ima/
 Source0:        https://github.com/mimizohar/ima-evm-utils/releases/download/v%{version}/%{name}-%{version}.tar.gz
-Patch1:         0001-fsverity.test-Add-usr-sbin-into-PATH.patch
 BuildRequires:  asciidoc
 BuildRequires:  attr
 BuildRequires:  autoconf
@@ -49,6 +48,7 @@ Measurement Architecture/ Linux Extended Verification Module).
 
 %package devel
 Summary:        Development files for the IMA/EVM control utility library
+License:        LGPL-2.0-or-later AND GPL-2.0-or-later WITH Linux-syscall-note
 Group:          Development/Libraries/C and C++
 Requires:       %{libname} = %{version}
 Requires:       openssl-devel
@@ -58,6 +58,7 @@ This package contains the header files and the utilities for %{name}.
 
 %package -n %{libname}
 Summary:        IMA/EVM control utility libary
+License:        LGPL-2.0-or-later AND GPL-2.0-or-later WITH Linux-syscall-note
 Group:          System/Libraries
 
 %description -n %{libname}
@@ -66,6 +67,7 @@ Measurement Architecture/Extended Verification Module).
 
 %package -n evmctl
 Summary:        IMA/EVM signing utility
+License:        GPL-2.0-or-later AND GPL-2.0-or-later WITH Linux-syscall-note
 Group:          System/Kernel
 Provides:       ima-evm-utils = %{version}
 Obsoletes:      ima-evm-utils < %{version}
@@ -103,7 +105,7 @@ make %{?_smp_mflags} check
 
 %files -n %{libname}
 %doc README NEWS AUTHORS
-%license COPYING
+%license LICENSES.txt
 %{_libdir}/libimaevm.so.%{sover}*
 
 %files -n evmctl
