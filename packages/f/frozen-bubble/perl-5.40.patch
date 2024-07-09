@@ -1,0 +1,12 @@
+diff -Nraub a/inc/My/Builder.pm b/inc/My/Builder.pm
+--- a/inc/My/Builder.pm	2024-07-05 14:58:12.281058474 -0400
++++ b/inc/My/Builder.pm	2024-07-05 14:59:33.198132707 -0400
+@@ -9,7 +9,7 @@
+ use File::Spec::Functions qw(catdir catfile rootdir);
+ use IO::File qw();
+ use Alien::SDL;
+-use Module::Build '0.36' => qw();
++use Module::Build qw();
+ use autodie qw(:all move read_file write_file);
+ use parent 'Module::Build';
+ use Locale::Maketext::Extract;

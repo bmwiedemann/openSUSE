@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jul  5 19:03:51 UTC 2024 - Giacomo Comes <gcomes.obs@gmail.com>
+
+- add patch perl-5.40.patch
+  * fix build with perl 5.40
+
+-------------------------------------------------------------------
 Mon Feb 26 08:47:07 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.

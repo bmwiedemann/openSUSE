@@ -1,7 +1,7 @@
 #
 # spec file for package frozen-bubble
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,6 +39,8 @@ Patch4:         desktop.patch
 Patch5:         appdata.patch
 # PATCH-FIX-OPENSUSE get a strange check silent - what's the sense of checking snprintf when the buffer size is correct
 Patch6:         silencebadsnprintfcheck.patch
+# PATCH-FIX-OPENSUSE fix build with perl 5.40
+Patch7:         perl-5.40.patch
 BuildRequires:  Mesa-devel
 BuildRequires:  SDL_Pango-devel
 BuildRequires:  SDL_image-devel
@@ -109,6 +111,7 @@ cp server/init/README server/README.init
 %patch -P 4 -p1
 %patch -P 5 -p1
 %patch -P 6 -p1
+%patch -P 7 -p1
 
 %build
 perl Build.PL destdir=%{buildroot} installdirs=vendor --prefix=%{_prefix}

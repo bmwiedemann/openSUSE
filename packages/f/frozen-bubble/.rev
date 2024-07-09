@@ -244,4 +244,12 @@ In my opinion the check is wrong. snprintf already checks target buffer overflow
     <comment></comment>
     <requestid>1156095</requestid>
   </revision>
+  <revision rev="35" vrev="17">
+    <srcmd5>4e6c8be77582e9b04d16a4cdf3655aea</srcmd5>
+    <version>2.212</version>
+    <time>1720548395</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1186435</requestid>
+  </revision>
 </revisionlist>
