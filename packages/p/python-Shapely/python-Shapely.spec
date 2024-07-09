@@ -26,7 +26,7 @@ URL:            https://github.com/shapely/shapely
 Source:         https://files.pythonhosted.org/packages/source/s/shapely/shapely-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM Fix incompatible pointer type passed to GEOSPolygonize_r
 Patch:          https://github.com/shapely/shapely/pull/1945.patch
-BuildRequires:  %{python_module Cython >= 0.29 with %python-Cython < 3}
+BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel >= 3.8}
 BuildRequires:  %{python_module numpy-devel >= 1.25}
 BuildRequires:  %{python_module pip}

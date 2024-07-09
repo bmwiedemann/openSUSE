@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jul  9 03:00:45 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Remove upper bound on Cython, Cython 3 is supported. 
+
+-------------------------------------------------------------------
 Wed May 29 13:21:52 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Cherry-pick upstream patch to fix build with GCC 14
