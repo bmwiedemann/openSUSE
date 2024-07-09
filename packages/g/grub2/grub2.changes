@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jul  5 12:23:06 UTC 2024 - Michael Chang <mchang@suse.com>
+
+- Fix error if dash shell script is used (bsc#1226453)
+  * 0007-grub-switch-to-blscfg-adapt-to-openSUSE.patch
+  * 0009-10_linux-Some-refinement-for-BLS.patch
+- Fix input handling in ppc64le grub2 has high latency (bsc#1223535)
+  * 0001-net-drivers-ieee1275-ofnet-Remove-200-ms-timeout-in-.patch
+
+-------------------------------------------------------------------
 Fri Jun  7 02:13:08 UTC 2024 - Michael Chang <mchang@suse.com>
 
 - Add blscfg support

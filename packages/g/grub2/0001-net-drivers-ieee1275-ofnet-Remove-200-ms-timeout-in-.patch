@@ -1,0 +1,60 @@
+From d35ff22516b161f6d472f7f5371a89597b072d04 Mon Sep 17 00:00:00 2001
+From: Michael Chang <mchang@suse.com>
+Date: Mon, 6 May 2024 10:34:22 +0800
+Subject: [PATCH] net/drivers/ieee1275/ofnet: Remove 200 ms timeout in
+ get_card_packet() to reduce input latency
+
+When GRUB image is netbooted on ppc64le, the keyboard input exhibits
+significant latency, reports even say that characters are processed
+about once per second. This issue makes interactively trying to debug
+a ppc64le config very difficult.
+
+It seems that the latency is largely caused by a 200 ms timeout in the
+idle event loop, during which the network card interface is consistently
+polled for incoming packets. Often, no packets arrive during this
+period, so the timeout nearly always expires, which blocks the response
+to key inputs.
+
+Furthermore, this 200 ms timeout might not need to be enforced at this
+basic layer, considering that GRUB performs synchronous reads and its
+timeout management is actually handled by higher layers, not directly in
+the card instance. Additionally, the idle polling, which reacts to
+unsolicited packets like ICMP and SLAAC, would be fine at a less frequent
+polling interval, rather than needing a timeout for receiving a response.
+
+For these reasons, we believe the timeout in get_card_packet() should be
+effectively removed. According to test results, the delay has disappeared,
+and it is now much easier to use interactively.
+
+Signed-Off-by: Michael Chang <mchang@suse.com>
+Tested-by: Tony Jones <tonyj@suse.com>
+Reviewed-by: Daniel Kiper <daniel.kiper@oracle.com>
+---
+ grub-core/net/drivers/ieee1275/ofnet.c | 8 ++------
+ 1 file changed, 2 insertions(+), 6 deletions(-)
+
+diff --git a/grub-core/net/drivers/ieee1275/ofnet.c b/grub-core/net/drivers/ieee1275/ofnet.c
+index 78f03df8e..3bf48b3f0 100644
+--- a/grub-core/net/drivers/ieee1275/ofnet.c
++++ b/grub-core/net/drivers/ieee1275/ofnet.c
+@@ -82,15 +82,11 @@ get_card_packet (struct grub_net_card *dev)
+   grub_ssize_t actual;
+   int rc;
+   struct grub_ofnetcard_data *data = dev->data;
+-  grub_uint64_t start_time;
+   struct grub_net_buff *nb;
+ 
+-  start_time = grub_get_time_ms ();
+-  do
+-    rc = grub_ieee1275_read (data->handle, dev->rcvbuf, dev->rcvbufsize, &actual);
+-  while ((actual <= 0 || rc < 0) && (grub_get_time_ms () - start_time < 200));
++  rc = grub_ieee1275_read (data->handle, dev->rcvbuf, dev->rcvbufsize, &actual);
+ 
+-  if (actual <= 0)
++  if (actual <= 0 || rc < 0)
+     return NULL;
+ 
+   nb = grub_netbuff_alloc (actual + 2);
+-- 
+2.45.2
+
