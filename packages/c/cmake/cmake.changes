@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Wed Jul  3 05:50:53 UTC 2024 - Christoph G <foss@grueninger.de>
+
+- udate to 3.30.0
+  * "cmake-presets(7)" files now support schema version "9".
+    "include"  fields now expand all macros except "$env{}" and
+    preset-specific macros, i.e., those derived from the fields
+    inside a preset's definition.
+  * The "Compile Features" functionality now implements support
+    for the "cxx_std_26" and "cuda_std_26" meta-features to
+    indicate that the compiler mode must be at least C++26.
+  * The "CMAKE_<LANG>_STANDARD_LATEST" variable was added to
+    describe the latest "<LANG>" language standard CMake supports
+    for the selected compiler.
+  * The "CMAKE_TLS_VERSION" variable and "CMAKE_TLS_VERSION"
+    environment variable were added to specify a default minimum
+    TLS version for connections to "https://" URLs by the
+    "file(DOWNLOAD)" and "file(UPLOAD)" commands.
+  * The "GENERATED" source file property is now visible in all
+    directories.  See policy "CMP0163".  Policy "CMP0118"'s
+    documentation has been revised to describe its actual effects.
+  * The "TARGET_PROPERTY" generator expression learned to evaluate
+    custom transitive properties.
+  * The "CPack WIX Generator" gained support for WiX Toolset v4.
+    See the "CPACK_WIX_VERSION" variable.
+  * The "FindBoost" module has been removed by policy "CMP0167".
+    Port projects to upstream Boost's "BoostConfig.cmake" package
+    configuration file, for which "find_package(Boost)" now
+    searches.
+- Add cmake-fix-test-without-git.patch to fix test #567 to be run
+  conditionally when Git is found, upstream planned for 3.30.1
+
+-------------------------------------------------------------------
 Wed Jun 19 07:56:40 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.29.6:

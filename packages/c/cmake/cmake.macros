@@ -77,6 +77,6 @@
     DESTDIR=%{buildroot} %__builder install -C %__builddir
 
 %ctest(:-:) \
-    cd %__builddir \
-    %__ctest --output-on-failure --force-new-ctest-process %{?_smp_mflags} %** \
+    cd %__builddir && \
+    %__ctest --output-on-failure --force-new-ctest-process %{?_smp_mflags} %** ; \
     cd ..

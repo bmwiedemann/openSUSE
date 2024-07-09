@@ -1,0 +1,43 @@
+From fe8dc3012eca70ed1ecc1774466c7eb5bee6e8c1 Mon Sep 17 00:00:00 2001
+From: Brad King <brad.king@kitware.com>
+Date: Wed, 3 Jul 2024 10:40:07 -0400
+Subject: [PATCH] Tests: Fix RunCMake.ExternalProject when git is not available
+
+Move Git-dependent test cases added by commit 2ef3bd9186
+(ExternalProject: Add TLS version options for https connections,
+2024-02-26, v3.30.0-rc1~471^2) into the block of cases that run only
+when Git is found.
+
+Fixes: #26104
+---
+ Tests/RunCMake/ExternalProject/RunCMakeTest.cmake | 9 +++++----
+ 1 file changed, 5 insertions(+), 4 deletions(-)
+
+diff --git a/Tests/RunCMake/ExternalProject/RunCMakeTest.cmake b/Tests/RunCMake/ExternalProject/RunCMakeTest.cmake
+index 3c7cd68e7e7..98e3996c892 100644
+--- a/Tests/RunCMake/ExternalProject/RunCMakeTest.cmake
++++ b/Tests/RunCMake/ExternalProject/RunCMakeTest.cmake
+@@ -15,9 +15,6 @@ endif()
+ 
+ run_cmake(BadIndependentStep1)
+ run_cmake(BadIndependentStep2)
+-run_cmake(TLSVersionBadArg)
+-run_cmake(TLSVersionBadVar)
+-run_cmake(TLSVersionBadEnv)
+ run_cmake(NoOptions)
+ run_cmake(SourceEmpty)
+ run_cmake(SourceMissing)
+@@ -256,5 +253,9 @@ if(GIT_EXECUTABLE)
+   # on some platforms. It may go to stdout or stderr, so force it to be merged.
+   set(RunCMake_TEST_OUTPUT_MERGE TRUE)
+   run_cmake(FetchGitRefs)
+-  set(RunCMake_TEST_OUTPUT_MERGE FALSE)
++  unset(RunCMake_TEST_OUTPUT_MERGE)
++
++  run_cmake(TLSVersionBadArg)
++  run_cmake(TLSVersionBadVar)
++  run_cmake(TLSVersionBadEnv)
+ endif()
+-- 
+GitLab
+

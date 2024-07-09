@@ -45,14 +45,14 @@
 %else
 %bcond_with full
 %endif
-%define shortversion 3.29
+%define shortversion 3.30
 %if 0%{?suse_version} && 0%{?suse_version} <= 1500
 %define pyver 311
 %else
 %define pyver 3
 %endif
 Name:           cmake%{?psuffix}
-Version:        3.29.6
+Version:        3.30.0
 Release:        0
 Summary:        Cross-platform make system
 License:        BSD-3-Clause
@@ -70,6 +70,8 @@ Patch0:         cmake-fix-ruby-test.patch
 # Search for python interpreters from newest to oldest rather then picking up /usr/bin/python as first choice
 Patch1:         feature-suse-python-interp-search-order.patch
 Patch2:         cmake-zerojvm.patch
+# Fix test #567 to be run conditionally when Git is found, upstream, planned for 3.30.1
+Patch3:         cmake-fix-test-without-git.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig

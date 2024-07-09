@@ -2251,4 +2251,39 @@ Adjust cmake-gui.spec so it uses 2.8.12.1 (forwarded request 208241 from sumski)
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1183322</requestid>
   </revision>
+  <revision rev="253" vrev="1">
+    <srcmd5>42c083afcfb51304a04d8f9d7d055bc2</srcmd5>
+    <version>3.30.0</version>
+    <time>1720548163</time>
+    <user>anag+factory</user>
+    <comment>- udate to 3.30.0
+  * &quot;cmake-presets(7)&quot; files now support schema version &quot;9&quot;.
+    &quot;include&quot;  fields now expand all macros except &quot;$env{}&quot; and
+    preset-specific macros, i.e., those derived from the fields
+    inside a preset's definition.
+  * The &quot;Compile Features&quot; functionality now implements support
+    for the &quot;cxx_std_26&quot; and &quot;cuda_std_26&quot; meta-features to
+    indicate that the compiler mode must be at least C++26.
+  * The &quot;CMAKE_&lt;LANG&gt;_STANDARD_LATEST&quot; variable was added to
+    describe the latest &quot;&lt;LANG&gt;&quot; language standard CMake supports
+    for the selected compiler.
+  * The &quot;CMAKE_TLS_VERSION&quot; variable and &quot;CMAKE_TLS_VERSION&quot;
+    environment variable were added to specify a default minimum
+    TLS version for connections to &quot;https://&quot; URLs by the
+    &quot;file(DOWNLOAD)&quot; and &quot;file(UPLOAD)&quot; commands.
+  * The &quot;GENERATED&quot; source file property is now visible in all
+    directories.  See policy &quot;CMP0163&quot;.  Policy &quot;CMP0118&quot;'s
+    documentation has been revised to describe its actual effects.
+  * The &quot;TARGET_PROPERTY&quot; generator expression learned to evaluate
+    custom transitive properties.
+  * The &quot;CPack WIX Generator&quot; gained support for WiX Toolset v4.
+    See the &quot;CPACK_WIX_VERSION&quot; variable.
+  * The &quot;FindBoost&quot; module has been removed by policy &quot;CMP0167&quot;.
+    Port projects to upstream Boost's &quot;BoostConfig.cmake&quot; package
+    configuration file, for which &quot;find_package(Boost)&quot; now
+    searches.
+- Add cmake-fix-test-without-git.patch to fix test #567 to be run
+  conditionally when Git is found, upstream planned for 3.30.1</comment>
+    <requestid>1186108</requestid>
+  </revision>
 </revisionlist>
