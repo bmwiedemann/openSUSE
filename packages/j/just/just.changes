@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Sun Jul  7 20:51:34 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Update to version 1.30.1:
+  Fixes
+  * Fix function argument count mismatch error message
+- Update to version 1.30.0:
+  Fixed
+  * Allow comments after mod statements
+  Changed
+  * Allow unstable features with --summary
+  * Don't analyze comments when ignore-comments is set
+  * List recipes by group in group justfile order with just
+    --list --unsorted
+  * List groups in source order with just --groups --unsorted
+  Added
+  * Avoid install and add 32-bit arm targets to install.sh
+  * Give modules doc comments for --list
+  * Add datetime() and datetime_utc() functions
+  * Allow setting more command-line options with environment
+    variables
+  Library
+  * Don't exit process in run() on argument parse error
+  * Allow passing command-line arguments into run()
+  * Ignore env_logger initialization errors
+  Misc
+  * Tweak readme
+  * Add development guide to readme
+  * Add shell-expanded string syntax to grammar
+  * Add recipe for testing bash completion script
+  * Fix use of justfile_directory() in readme
+  * Use default values for --list-heading and --list-prefix
+  * Use clap::ValueParser
+  * Document module doc comments in readme
+  * Use -and instead of && in PowerShell completion script
+  * Fix readme formatting
+  * Link to justfiles on GitHub in readme
+  * Link to modules when first introduced in readme
+  * Update softprops/action-gh-release
+  * Document remote justfile workaround
+  * Document library interface
+  * Remove dependency on cradle
+  * Add note to readme about quoting paths on Windows
+  * Add missing changelog credits
+  * Credit myself in changelog
+
+-------------------------------------------------------------------
 Mon Jun 17 02:09:18 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
 
 - Various shell completion packages are needed for tests
