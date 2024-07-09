@@ -39,7 +39,7 @@ Name:           azure-cli
 Name:           azure-cli%{?name_ext}
 %endif
 %define         short_name azure-cli
-Version:        2.61.0
+Version:        2.62.0
 Release:        0
 Summary:        Microsoft Azure CLI 2.0
 License:        MIT
@@ -87,9 +87,8 @@ Requires:       %{pythons}-azure-mgmt-compute >= 31.0.0
 Requires:       %{pythons}-azure-mgmt-containerinstance >= 10.1.0
 Requires:       %{pythons}-azure-mgmt-containerregistry >= 10.3.0
 Requires:       %{pythons}-azure-mgmt-containerservice >= 30.0.0
-Requires:       %{pythons}-azure-mgmt-cosmosdb >= 9.4.0
+Requires:       %{pythons}-azure-mgmt-cosmosdb >= 9.5.1
 Requires:       %{pythons}-azure-mgmt-databoxedge >= 1.0.0
-Requires:       %{pythons}-azure-mgmt-datalake-store >= 0.5.0
 Requires:       %{pythons}-azure-mgmt-datamigration >= 10.0.0
 Requires:       %{pythons}-azure-mgmt-devtestlabs >= 2.2
 Requires:       %{pythons}-azure-mgmt-dns >= 8.0.0
@@ -128,9 +127,9 @@ Requires:       %{pythons}-azure-mgmt-servicefabric >= 2.1.0
 Requires:       %{pythons}-azure-mgmt-servicefabricmanagedclusters >= 2.0.0~b6
 Requires:       %{pythons}-azure-mgmt-servicelinker >= 1.2.0~b2
 Requires:       %{pythons}-azure-mgmt-signalr >= 2.0.0~b1
-Requires:       %{pythons}-azure-mgmt-sql >= 4.0.0b16
+Requires:       %{pythons}-azure-mgmt-sql >= 4.0.0b17
 Requires:       %{pythons}-azure-mgmt-sqlvirtualmachine >= 1.0.0b5
-Requires:       %{pythons}-azure-mgmt-storage >= 21.1.0
+Requires:       %{pythons}-azure-mgmt-storage >= 21.2.0
 Requires:       %{pythons}-azure-mgmt-synapse >= 2.1.0b5
 Requires:       %{pythons}-azure-mgmt-trafficmanager >= 1.0.0
 Requires:       %{pythons}-azure-mgmt-web >= 7.2.0
@@ -138,7 +137,7 @@ Requires:       %{pythons}-azure-monitor-query >= 1.2.0
 Requires:       %{pythons}-azure-multiapi-storage >= 1.2.0
 Requires:       %{pythons}-azure-storage-common >= 1.4
 Requires:       %{pythons}-azure-synapse-accesscontrol >= 0.5.0
-Requires:       %{pythons}-azure-synapse-artifacts >= 0.18.0
+Requires:       %{pythons}-azure-synapse-artifacts >= 0.19.0
 Requires:       %{pythons}-azure-synapse-managedprivateendpoints >= 0.4.0
 Requires:       %{pythons}-azure-synapse-spark >= 0.2.0
 Requires:       %{pythons}-chardet >= 5.2.0
