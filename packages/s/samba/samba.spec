@@ -160,7 +160,7 @@ BuildRequires:  liburing-devel
 %endif
 BuildRequires:  sysuser-tools
 
-Version:        4.20.2+git.345.1e3d47bbda6
+Version:        4.20.2+git.348.4fb6af61307
 Release:        0
 URL:            https://www.samba.org/
 Obsoletes:      samba-32bit < %{version}
@@ -930,6 +930,7 @@ install -m 0644 examples/LDAP/samba.schema %{buildroot}/%{_sysconfdir}/openldap/
 install -m 0644 examples/LDAP/samba-nds.schema %{buildroot}/%{_datadir}/samba/LDAP/samba-nds.schema
 # Hardlink duplicate files
 %fdupes %{buildroot}
+%python3_fix_shebang
 
 %pre -f samba.pre
 %service_add_pre nmb.service smb.service samba-bgqd.service

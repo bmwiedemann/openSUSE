@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jul  4 10:34:20 UTC 2024 - Samuel Cabrero <scabrero@suse.de>
+
+- Fix named crash when using samba's DLZ plugin; (bsc#1224003);
+  (bso#15643);
+
+-------------------------------------------------------------------
+Thu Jul  4 10:30:10 UTC 2024 - pgajdos@suse.com
+
+- remove dependency on /usr/bin/python3 using
+  %python3_fix_shebang macro, [bsc#1212476]
+
+-------------------------------------------------------------------
 Wed Jun 19 15:02:44 UTC 2024 - Noel Power <nopower@suse.com>
 
 - Update to 4.20.2
