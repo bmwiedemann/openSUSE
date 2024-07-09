@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Fri Jun 28 06:45:28 UTC 2024 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 2.2.1
+  * Relax the version bounds on platformdirs to >= 3
+  * Show config message only in debug mode in CLI
+  * Add example subliminal.toml to docs and various docs fixes
+
+-------------------------------------------------------------------
+Tue Jun 25 09:34:51 UTC 2024 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 2.2.0
+  * Drop python2 support, the supported versions are
+    >=3.8,<=3.12.
+  * Load CLI options from a configuration file with the
+    --config/-c option
+  * Change default encoding of downloaded subtitles to 'utf-8'
+    (not the original encoding). Use the --original-encoding cli
+    option to recover the previous default behavior
+  * Add opensubtitlescom provider
+  * Add gestdown provider
+  * Add tmdb refiner (requires a personal API key)
+  * Fix tvsubtitles provider
+  * Fix opensubtitles provider
+  * Fix napiprojekt provider
+  * Fix podnapisi provider to use JSON API
+  * Fix addic7ed provider
+  * Remove thesubdb provider
+  * Remove argenteam provider
+  * Remove shooter provider
+  * Remove legendastv provider
+  * Use pyproject.toml to specify the package configurations.
+  * Add pre-commit hook
+  * Use ruff to lint and format
+  * Use mypy to check types
+  * Add type annotations
+  * Drop dependencies: pysrt, appdirs, six, pytz
+  * Add dependencies:
+    + click-option-group>=0.5.6
+    + platformdirs>=4.2
+    + pysubs2>=1.7
+    + srt>=3.5
+    + tomli>=2
+  * Bump dependency versions:
+    + babelfish>=0.6.1
+    + chardet>=5.0
+    + click>=8.0
+    + dogpile.cache>=1.0
+    + enzyme>=0.5.0
+    + stevedore>=3.0
+
+-------------------------------------------------------------------
 Wed Mar 30 09:41:55 UTC 2022 - Luigi Baldoni <aloisio@gmx.com>
 
 - Build only for default python3 version

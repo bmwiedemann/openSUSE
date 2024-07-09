@@ -39,4 +39,55 @@
     <comment></comment>
     <requestid>965866</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>adaff0f12beb6cd0dc4b723fc82adaf1</srcmd5>
+    <version>2.2.1</version>
+    <time>1720548323</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.2.1
+  * Relax the version bounds on platformdirs to &gt;= 3
+  * Show config message only in debug mode in CLI
+  * Add example subliminal.toml to docs and various docs fixes
+- Update to version 2.2.0
+  * Drop python2 support, the supported versions are
+    &gt;=3.8,&lt;=3.12.
+  * Load CLI options from a configuration file with the
+    --config/-c option
+  * Change default encoding of downloaded subtitles to 'utf-8'
+    (not the original encoding). Use the --original-encoding cli
+    option to recover the previous default behavior
+  * Add opensubtitlescom provider
+  * Add gestdown provider
+  * Add tmdb refiner (requires a personal API key)
+  * Fix tvsubtitles provider
+  * Fix opensubtitles provider
+  * Fix napiprojekt provider
+  * Fix podnapisi provider to use JSON API
+  * Fix addic7ed provider
+  * Remove thesubdb provider
+  * Remove argenteam provider
+  * Remove shooter provider
+  * Remove legendastv provider
+  * Use pyproject.toml to specify the package configurations.
+  * Add pre-commit hook
+  * Use ruff to lint and format
+  * Use mypy to check types
+  * Add type annotations
+  * Drop dependencies: pysrt, appdirs, six, pytz
+  * Add dependencies:
+    + click-option-group&gt;=0.5.6
+    + platformdirs&gt;=4.2
+    + pysubs2&gt;=1.7
+    + srt&gt;=3.5
+    + tomli&gt;=2
+  * Bump dependency versions:
+    + babelfish&gt;=0.6.1
+    + chardet&gt;=5.0
+    + click&gt;=8.0
+    + dogpile.cache&gt;=1.0
+    + enzyme&gt;=0.5.0
+    + stevedore&gt;=3.0
+</comment>
+    <requestid>1186349</requestid>
+  </revision>
 </revisionlist>

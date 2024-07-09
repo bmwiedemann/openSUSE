@@ -1,7 +1,7 @@
 #
 # spec file for package python-subliminal
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,34 +16,36 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%global pythons python3
+%{?sle15_python_module_pythons}
 Name:           python-subliminal
-Version:        2.1.0
+Version:        2.2.1
 Release:        0
 Summary:        Python library to search and download subtitles
 License:        MIT
 URL:            https://github.com/Diaoul/subliminal
 Source:         https://files.pythonhosted.org/packages/source/s/subliminal/subliminal-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools  >= 18.0.1}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-appdirs >= 1.3
-Requires:       python-babelfish >= 0.5.4
+Requires:       python-babelfish >= 0.6.1
 Requires:       python-beautifulsoup4 >= 4.4.0
-Requires:       python-chardet >= 2.3.0
-Requires:       python-click >= 4.1
-Requires:       python-dogpile.cache >= 0.6.0
-Requires:       python-enzyme >= 0.4.1
+Requires:       python-chardet >= 5.0
+Requires:       python-click >= 8.0
+Requires:       python-click-option-group >= 0.5.6
+Requires:       python-dogpile.cache >= 1.0
+Requires:       python-enzyme >= 0.5.0
 Requires:       python-guessit >= 3.0.0
-Requires:       python-pysrt >= 1.0.1
-Requires:       python-pytz >= 2012c
+Requires:       python-platformdirs >= 3
+Requires:       python-pysubs2 >= 1.7
 Requires:       python-rarfile >= 2.7
 Requires:       python-requests >= 2.7.0
-Requires:       python-six >= 1.9.0
-Requires:       python-stevedore >= 1.20.0
+Requires:       python-srt >= 3.5
+Requires:       python-stevedore >= 3.0
+Requires:       python-tomli >= 2
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Recommends:     python-colorlog >= 2.6.0
 Provides:       subliminal = %{version}
 Obsoletes:      subliminal < %{version}
@@ -58,12 +60,14 @@ It comes with an easy to use CLI suitable for direct use or cron jobs.
 %autosetup -n subliminal-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/subliminal
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+%check
 
 %post
 %python_install_alternative subliminal
@@ -76,6 +80,6 @@ It comes with an easy to use CLI suitable for direct use or cron jobs.
 %doc HISTORY.rst README.rst
 %python_alternative %{_bindir}/subliminal
 %{python_sitelib}/subliminal
-%{python_sitelib}/subliminal-%{version}-py%{python_version}.egg-info
+%{python_sitelib}/subliminal-%{version}.dist-info
 
 %changelog
