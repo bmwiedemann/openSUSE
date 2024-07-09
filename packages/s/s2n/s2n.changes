@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Tue Jul  9 06:55:17 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.4.17
+  * bug: Fixing bash error (#4624)
+  * chore: make cbmc proof build more strict by adding -Werror flag (#4606)
+  * Perform 2-RTT Handshake to upgrade to PQ when possible (#4526)
+  * test(bindings/s2n-tls): refactor testing::s2n-tls tests (#4613)
+  * docs: add timeout note to blinding delay docs (#4621)
+  * docs: Add back suggested FIPS + TLS1.3 policy (#4605)
+  * ci: shallow clone musl repo (#4611)
+  * example(bindings): add async ConfigResolver (#4477)
+  * chore: use CBMC version 5.95.1 (#4586)
+  * s2n-tls rust binding: expose selected application protocol (#4599)
+  * test: add pcap testing crate (#4604)
+  * testing(bindings): add new test helper (#4596)
+  * chore(bindings): fix shebang in generate.sh (#4603)
+  * fix(s2n_session_ticket_test): correct clock mocking (#4602)
+  * Fix: update default cert chain for unit tests (#4582)
+  * refactor(binding): more accurate naming for const str helper (#4601)
+  * fix: error rather than empty cipher suites (#4597)
+  * chore: update s2n_stuffer_printf CBMC harness (#4531)
+  * ci(nix): Fix integ pq test in a devShell (#4576)
+  * feature: new compatibility-focused security policy preferring ECDSA (#4579)
+  * compliance: update generate_report.sh to point to compliance directory (#4588)
+  * ci: fix cppcheck errors (#4589)
+  * chore: cleanup duplicate duvet citations (#4587)
+
+-------------------------------------------------------------------
 Tue Jun 11 07:33:04 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 1.4.16
