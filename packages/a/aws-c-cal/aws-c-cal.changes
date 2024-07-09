@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jul  4 11:32:42 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.7.1
+  * Revert lc pin by @DmitriyMusatkin in (#190)
+  * Revert "Implement runtime check on libcrypto linkage (#186)"
+    by @graebm in (#191)
+
+-------------------------------------------------------------------
 Wed Jun 26 11:51:44 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.7.0
