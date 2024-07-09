@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Jul 04 04:50:41 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 20240703T201725Z:
+  * honor bucket-key S3 feature (#4976)
+  * Add ability to update tier credentials for Azure svc principal
+    accounts (#4975)
+  * Simplify go.mod (#4977)
+  * update govulncheck 1.22.5
+  * Use new batch status api `/status-job` (#4930)
+  * heal: Add hidden --pool and --set to heal a particular ES
+    (#4971)
+
+-------------------------------------------------------------------
+Wed Jul 03 16:34:21 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 20240629T190846Z:
+  * remove unused code
+  * provide a overall summary along with call-wise (#4970)
+
+-------------------------------------------------------------------
 Wed Jun 26 05:08:53 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 20240624T194033Z:
