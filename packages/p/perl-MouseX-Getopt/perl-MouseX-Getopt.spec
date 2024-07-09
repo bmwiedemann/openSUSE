@@ -1,7 +1,7 @@
 #
 # spec file for package perl-MouseX-Getopt
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,17 +20,19 @@
 Name:           perl-MouseX-Getopt
 Version:        0.38
 Release:        0
-Summary:        Mouse role for processing command line options
 License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        Mouse role for processing command line options
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/G/GF/GFUJI/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
+# PATCH-FIX-UPSTREAM https://github.com/gfx/mousex-getopt/pull/15
 Patch0:         pr-15.patch
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Getopt::Long) >= 2.37
 BuildRequires:  perl(Getopt::Long::Descriptive) >= 0.091
+BuildRequires:  perl(Module::Build)
 BuildRequires:  perl(Module::Build::Tiny) >= 0.035
 BuildRequires:  perl(Mouse) >= 0.64
 BuildRequires:  perl(Mouse::Meta::Attribute)
@@ -39,7 +41,7 @@ BuildRequires:  perl(Mouse::Role)
 BuildRequires:  perl(Mouse::Util::TypeConstraints)
 BuildRequires:  perl(MouseX::ConfigFromFile)
 BuildRequires:  perl(MouseX::SimpleConfig)
-BuildRequires:  perl(Test::Exception) >= 0.210000
+BuildRequires:  perl(Test::Exception) >= 0.21
 BuildRequires:  perl(Test::More) >= 0.88
 BuildRequires:  perl(Test::Mouse)
 BuildRequires:  perl(Test::Warn) >= 0.21
@@ -50,10 +52,6 @@ Requires:       perl(Mouse::Meta::Attribute)
 Requires:       perl(Mouse::Role)
 Requires:       perl(Mouse::Util::TypeConstraints)
 %{perl_requires}
-# MANUAL BEGIN
-Provides:       perl-mousex-getopt = %{version}
-Obsoletes:      perl-mousex-getopt <= 0.37
-# MANUAL END
 
 %description
 This is a role which provides an alternate constructor for creating objects
@@ -111,7 +109,7 @@ perl Build.PL --installdirs=vendor
 %perl_gen_filelist
 
 %files -f %{name}.files
-%doc Changes minil.toml README.md
+%doc Changes README.md
 %license LICENSE
 
 %changelog

@@ -1,6 +1,3 @@
 ---
-preamble: |-
- Provides: perl-mousex-getopt = %{version}
- Obsoletes: perl-mousex-getopt <= 0.37
 patches:
-  pr-15.patch: -p1
+  pr-15.patch: -p1 PATCH-FIX-UPSTREAM https://github.com/gfx/mousex-getopt/pull/15
