@@ -1,4 +1,76 @@
 -------------------------------------------------------------------
+Tue Jul  9 02:28:22 UTC 2024 - Holden Fried <holdenrf2021@gmail.com>
+
+- Fixing broken build. Needs rustc >= 1.77 and protobuf-devel 
+
+-------------------------------------------------------------------
+Sat Jun 29 14:46:09 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
+- Update to version 18.3.0:
+  * *(bash)* Fix a workaround for bash-5.2 keybindings
+  * *(ci)* Release workflow
+  * *(client)* Better error reporting on login/registration
+  * *(config)* Add quotes for strategy value in comment
+  * *(daemon)* Do not try to sync if logged out
+  * *(deps)* Replace parse_duration with humantime
+  * *(dotfiles)* Alias import with init output
+  * *(dotfiles)* Fish alias import
+  * *(dotfiles)* More fish alias import
+  * *(dotfiles)* Unquote aliases before quoting
+  * *(dotfiles)* Allow clearing aliases, disable import
+  * *(stats)* Generation for commands starting with a pipe
+  * *(ui)* Handle being logged out gracefully
+  * *(ui)* Fix mistake in last pr
+  * Support not-mac for default shell
+  * Adapt help to `enter_accept` config
+  * Add protobuf compiler to docker image
+  * Add incremental rebuild to daemon loop
+  * Alias enable/enabled in settings
+  * Bogus error message wording
+  * Save sync time in daemon
+  * Redact password in database URI when logging
+  * Save sync time in daemon
+  * Replace serde_yaml::to_string with serde_json::to_string_yaml
+  * Fix "From source" `cd` command
+  * Add docs for store subcommand
+  * *(daemon)* Add support for daemon on windows
+  * *(doctor)* Detect active preexec framework
+  * *(doctor)* Report sqlite version
+  * *(dotfiles)* Support syncing shell/env vars
+  * *(gui)* Work on home page, sort state
+  * *(history)* Create atuin-history, add stats to it
+  * *(install)* Add Tuxedo OS
+  * *(server)* Add me endpoint
+  * *(ui)* Scroll history infinitely
+  * *(ui)* Add history explore
+  * *(ui)* Use correct username on welcome screen
+  * *(ui)* Add login/register dialog
+  * *(ui)* Setup single-instance
+  * *(ui/dotfiles)* Add vars
+  * Allow ignoring failed commands
+  * Show preview auto
+  * Add background daemon
+  * Support importing from replxx history files
+  * Move crates into crates/ dir
+  * Fix atuin crate readme
+  * Add some more logging to handlers
+  * Add some more debug logs
+  * Clarify default config file
+  * Handle rate limited responses
+  * Add Systemd config for self-hosted server
+  * Switch to cargo dist for releases
+  * Update email, gitignore, tweak ui
+  * *(nushell)* Use version.(major|minor|patch) if available
+  * Only open the database for commands if strictly required
+  * Preview_auto to use enum and different option
+
+-------------------------------------------------------------------
+Mon Jun  3 06:55:01 UTC 2024 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Update specfile
+  * rust+cargo -> cargo
+  * set --locked flag
+
+-------------------------------------------------------------------
 Fri Apr 19 10:31:25 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Update to 18.2.0:
