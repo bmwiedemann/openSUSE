@@ -407,4 +407,28 @@ This package is included in Debian.
     <comment></comment>
     <requestid>1170297</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>7e79b655fae442d2f547f5b3b4298ab8</srcmd5>
+    <version>9.4.1</version>
+    <time>1720548371</time>
+    <user>anag+factory</user>
+    <comment>- * add gcc11 to build with Leap
+- update to 9.4.1:
+  o Database: update to EPSG v11.006 (#4086)
+  o Database: update ESRI dataset to ArcGIS Pro 3.3 (#4143)
+  * DatabaseContext::lookForGridInfo(): do not trigger network
+    activity in PROJ_GRID_AVAILABILITY_KNOWN_AVAILABLE mode when
+    all grids are known (#4090)
+  * Retry &quot;Connection reset by peer&quot; (#4107)
+  * Use unique names for NKG transformations (#4111)
+  * proj_create()/proj_create_from_database(): recall CRS
+    AUTH:CODE in error message (#4114)
+  * DerivedProjectedCRS: deal with lack of explicit CS in
+    BASEPROJCRS in WKT (#4139)
+  * proj_symbol_rename.h: update with current symbols (#4145)
+  * Improve detection of compatible/incompatible celestial
+    bodies (#4150)
+</comment>
+    <requestid>1186448</requestid>
+  </revision>
 </revisionlist>

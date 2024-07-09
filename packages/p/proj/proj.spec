@@ -16,11 +16,11 @@
 #
 
 
-%define data_version 1.17
+%define data_version 1.18
 %define sover   25
 %define libname lib%{name}%{sover}
 Name:           proj
-Version:        9.4.0
+Version:        9.4.1
 Release:        0
 Summary:        Cartographic projection software
 License:        MIT
@@ -29,7 +29,11 @@ URL:            https://proj.org/
 Source0:        https://github.com/OSGeo/PROJ/releases/download/%{version}/%{name}-%{version}.tar.gz
 Source1:        https://github.com/OSGeo/PROJ-data/releases/download/%{data_version}.0/%{name}-data-%{data_version}.tar.gz
 BuildRequires:  cmake >= 3.16
+%if 0%{?suse_version} <= 1650
+BuildRequires:  gcc11-c++
+%else
 BuildRequires:  gcc-c++
+%endif
 BuildRequires:  pkgconfig >= 0.9.0
 BuildRequires:  sqlite3
 BuildRequires:  pkgconfig(gtest)
@@ -116,6 +120,10 @@ License:        MIT
 %autosetup
 
 %build
+%if 0%{?suse_version} <= 1650
+export CC=gcc-11
+export CXX=g++-11
+%endif
 # c++14 needed to build tests using gtest >= 1.14
 %cmake \
 %if 0%{?suse_version} >= 1650
