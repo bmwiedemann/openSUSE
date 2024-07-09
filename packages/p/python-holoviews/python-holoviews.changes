@@ -1,4 +1,80 @@
 -------------------------------------------------------------------
+Mon Jul  8 06:23:11 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.19.1:
+  * New features
+    + Add support for popups on selection streams
+    + Add scalebar support
+  * Enhancements
+    + Add color to bars for Plotly backend
+    + Override Curve's count aggregator default to self_intersect=False
+    + Zoom tools automatically vertically scaled on subcoordinate_y overlays
+    + Use tsdownsample library for downsampling if available
+    + Add viewport downsample algorithm
+    + Optimize downsample1d when data is shared between layers
+    + Support dictionary cmaps for ImageStack
+    + Expose hit_dilation in PointPlot
+    + Improve autocompletion for lazy module
+    + Subcoordinate_y: reverse the renderers by default
+    + Add hover_tooltips, hover_mode, hover_formatters opts to easily modify
+      hover
+    + Expose setting hard navigable bounds
+    + Add a zoom tool per subcoordinate_y group
+    + Support all Bokeh Text style opts in hv.Labels and hv.Text
+    + Implement support for retaining Pandas index
+    + Add operation for group-wise normalisation
+    + Allow Bars to be plotted on continuous axes
+    + Add min_interval and max_interval to the RangeToolLink
+    + Add support for rasterizing geopandas dataframes directly
+    + Allow options for non-enabled backends
+    + Support ImageStack in dynspread
+    + Add support for cticks
+    + Support title font size in Plotly backend
+    + Hold rendering until a plot has been fully updated
+    + Make Dimension.label source of truth for Dimension identity
+    + Allow subcoordinates to be drawn from NdOverlay dimensions
+    + Add stream transform
+  * Bug fixes
+    + Ensure no auto index is created when a kdim is part of a multi index
+    + Fix hv.Bars with only one value in it
+    + Set zIndex of Popup to 1000
+    + Handle boolean input in categorically grouped Bars plots
+    + Also check for pd.NA in is_nan
+    + Don't show figures toolbar on GridSpace
+    + Update merge_tool
+    + Don't raise KeyError if options don't contain None
+    + Force vdims to strings for ImageStack
+    + Fixes to Bokeh BoxWhisker
+    + Improve groupby behavior for operation histogram
+    + Ensure plot ranges for all renderers are combined in auto-ranging
+    + Ensure that the downsample algorithm m4 n_out is always a multiple of 4
+    + Subcoordinate_y: respect ylim
+    + Bug fix for player example pause button
+    + Clone if a Tool is as Bokeh model
+    + Fix violin plot in Plotly
+    + Don't error on TypeError in DaskInterface when sorting
+    + Fix hv.help if Info.store is None
+    + Change how upper limit is taken for color_levels
+    + Fix vectorfield hover
+    + Ensure Range streams and RangeToolLink respect subcoordinate axis range
+    + Fix pickling state
+    + Fix colab rendering
+    + Disable batching when subcoordinate_y is enabled
+    + Ensure downsample works with non-contiguous arrays
+    + Fix issue with range lookups in (y)-axis creation
+  * Compatibility
+    + Compatibility with Bokeh 3.5
+    + Compatibility with Matplotlib 3.9
+    + pandas: Fix observed FutureWarning for categorial groupby
+    + Lazy load dask.dataframe in operations.datashader
+    + Numpy 2.0 compatibility
+    + Update to support cudf 2024.06
+- Remove rpmlintrc, no longer needed.
+- Add patch ignore-pandas-warning.patch:
+  * Ignore warning from Pandas.
+- Limit numpy to < 2.
+
+-------------------------------------------------------------------
 Sat Mar  2 09:44:23 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Skip python39: no xarray anymore

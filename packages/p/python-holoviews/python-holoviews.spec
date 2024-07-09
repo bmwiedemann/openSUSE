@@ -19,37 +19,37 @@
 %bcond_without  test
 %define skip_python39 1
 Name:           python-holoviews
-Version:        1.18.3
+Version:        1.19.1
 Release:        0
 Summary:        Composable, declarative visualizations for Python
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/holoviz/holoviews
 Source0:        https://files.pythonhosted.org/packages/source/h/holoviews/holoviews-%{version}.tar.gz
-Source99:       python-holoviews-rpmlintrc
+Patch0:         ignore-pandas-warning.patch
 BuildRequires:  %{python_module colorcet}
-BuildRequires:  %{python_module numpy >= 1.0}
+BuildRequires:  %{python_module hatch_vcs}
+BuildRequires:  %{python_module hatchling}
+BuildRequires:  %{python_module numpy >= 1.21 with %python-numpy < 2}
 BuildRequires:  %{python_module packaging}
-BuildRequires:  %{python_module pandas >= 0.20}
+BuildRequires:  %{python_module pandas >= 1.3}
 BuildRequires:  %{python_module panel >= 1.0}
 BuildRequires:  %{python_module param >= 1.12 with %python-param < 3}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pyct >= 0.4.4}
-BuildRequires:  %{python_module pyviz-comms >= 0.7.4}
-BuildRequires:  %{python_module setuptools >= 30.3.0}
+BuildRequires:  %{python_module pyviz-comms >= 2.1}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-bokeh >= 3.1
 Requires:       python-colorcet
-Requires:       python-numpy >= 1.0
 Requires:       python-packaging
-Requires:       python-pandas >= 0.20
-Requires:       python-panel >= 0.13.1
-Requires:       python-pyviz-comms >= 0.7.4
+Requires:       python-pandas >= 1.3
+Requires:       python-panel >= 1.0
+Requires:       python-pyviz-comms >= 2.1
+Requires:       (python-numpy >= 1.21 with python-numpy < 2)
 Requires:       (python-param >= 1.12 with python-param < 3)
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
-Recommends:     python-bokeh >= 3.1
 Recommends:     python-ipython >= 5.4.0
 Recommends:     python-matplotlib >= 3
 Recommends:     python-notebook
@@ -89,6 +89,7 @@ BuildRequires:  %{python_module networkx}
 BuildRequires:  %{python_module notebook}
 BuildRequires:  %{python_module plotly >= 4.0}
 BuildRequires:  %{python_module pscript >= 0.7.1}
+BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest-rerunfailures}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
@@ -184,7 +185,7 @@ fi
 
 %files %{python_files}
 %license LICENSE.txt
-%doc CHANGELOG.md README.md
+%doc README.md
 %python_alternative %{_bindir}/holoviews
 %{python_sitelib}/holoviews-%{version}.dist-info
 %{python_sitelib}/holoviews/

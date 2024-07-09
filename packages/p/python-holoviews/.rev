@@ -399,4 +399,41 @@
     <comment></comment>
     <requestid>1155036</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>833495d2d790eaf75be61cd676e26eed</srcmd5>
+    <version>1.19.1</version>
+    <time>1720548228</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.19.1:
+  * New features
+    + Add support for popups on selection streams
+    + Add scalebar support
+  * Enhancements
+    + Add color to bars for Plotly backend
+    + Override Curve's count aggregator default to self_intersect=False
+    + Zoom tools automatically vertically scaled on subcoordinate_y overlays
+    + Use tsdownsample library for downsampling if available
+    + Add viewport downsample algorithm
+    + Optimize downsample1d when data is shared between layers
+    + Support dictionary cmaps for ImageStack
+    + Expose hit_dilation in PointPlot
+    + Improve autocompletion for lazy module
+    + Subcoordinate_y: reverse the renderers by default
+    + Add hover_tooltips, hover_mode, hover_formatters opts to easily modify
+      hover
+    + Expose setting hard navigable bounds
+    + Add a zoom tool per subcoordinate_y group
+    + Support all Bokeh Text style opts in hv.Labels and hv.Text
+    + Implement support for retaining Pandas index
+    + Add operation for group-wise normalisation
+    + Allow Bars to be plotted on continuous axes
+    + Add min_interval and max_interval to the RangeToolLink
+    + Add support for rasterizing geopandas dataframes directly
+    + Allow options for non-enabled backends
+    + Support ImageStack in dynspread
+    + Add support for cticks
+    + Support title font size in Plotly backend
+    + Hold rendering until a plot has been fully updated</comment>
+    <requestid>1186084</requestid>
+  </revision>
 </revisionlist>
