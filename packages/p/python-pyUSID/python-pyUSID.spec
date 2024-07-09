@@ -33,7 +33,7 @@ BuildRequires:  %{python_module h5py >= 2.6.0}
 BuildRequires:  %{python_module ipywidgets >= 5.2.2}
 BuildRequires:  %{python_module joblib >= 0.11.0}
 BuildRequires:  %{python_module matplotlib >= 2.0.0}
-BuildRequires:  %{python_module numpy >= 1.20}
+BuildRequires:  %{python_module numpy >= 1.20 with %python-numpy < 2}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module pytest}
@@ -47,10 +47,10 @@ Requires:       python-Pillow
 Requires:       python-cytoolz
 Requires:       python-dask >= 0.10
 Requires:       python-h5py >= 2.6.0
-Requires:       python-numpy >= 1.20
 Requires:       python-psutil
 Requires:       python-sidpy >= 0.10
 Requires:       python-toolz
+Requires:       (python-numpy >= 1.20 with python-numpy < 2)
 BuildArch:      noarch
 %python_subpackages
 

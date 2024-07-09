@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jul  9 05:28:41 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Restrict numpy to < 2. 
+
+-------------------------------------------------------------------
 Thu Mar 14 10:09:41 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - skip python3.9 (numeric stack dependencies are gone)

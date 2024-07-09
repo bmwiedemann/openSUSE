@@ -114,4 +114,12 @@
 - Remove fix_tests_dir_in_site_package.patch</comment>
     <requestid>1157930</requestid>
   </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>73282c98a07c00f5e9bb7e6ffc5444cf</srcmd5>
+    <version>0.0.12</version>
+    <time>1720548271</time>
+    <user>anag+factory</user>
+    <comment>- Restrict numpy to &lt; 2.</comment>
+    <requestid>1186296</requestid>
+  </revision>
 </revisionlist>
