@@ -1,8 +1,19 @@
---- apache-tomcat-9.0.75-src/build.xml	2023-05-22 18:12:16.995658642 +0200
-+++ apache-tomcat-9.0.75-src/build.xml	2023-05-22 19:41:42.051370923 +0200
-@@ -215,10 +215,10 @@
+--- apache-tomcat-9.0.91-src/build.xml	2024-07-08 18:21:26.161496515 +0200
++++ apache-tomcat-9.0.91-src/build.xml	2024-07-08 18:30:43.722334075 +0200
+@@ -226,11 +226,21 @@
+   <!--<defaultexcludes echo="true" />-->
  
    <!-- Classpaths -->
++  <path id="bnd.classpath">
++    <fileset file="${bnd.jar}" />
++    <fileset dir="${bnd.dir}">
++      <include name="**/*.jar"/>
++    </fileset>
++    <fileset file="${osgiannotation.jar}" />
++    <fileset file="${osgicmpn.jar}" />
++    <fileset file="${slf4j-api.jar}" />
++  </path>
++
    <path id="compile.classpath">
 -    <pathelement location="${bnd.jar}"/>
      <pathelement location="${jdt.jar}"/>
@@ -12,16 +23,14 @@
    </path>
  
    <path id="tomcat.classpath">
-@@ -3845,6 +3845,12 @@
-     <!-- Add bnd tasks to project -->
-     <path id="bnd.classpath">
-       <fileset file="${bnd.jar}" />
-+      <fileset dir="${bnd.dir}">
-+        <include name="**/*.jar"/>
-+      </fileset>
-+      <fileset file="${osgiannotation.jar}" />
-+      <fileset file="${osgicmpn.jar}" />
-+      <fileset file="${slf4j-api.jar}" />
-     </path>
+@@ -3960,10 +3970,6 @@
  
+   <target name="setup-bnd" depends="download-bnd" unless="skip.build.java.version">
+     <!-- Add bnd tasks to project -->
+-    <path id="bnd.classpath">
+-      <fileset file="${bnd.jar}" />
+-    </path>
+-
      <taskdef resource="aQute/bnd/ant/taskdef.properties" classpathref="bnd.classpath" />
+   </target>
+ 

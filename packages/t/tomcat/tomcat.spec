@@ -22,7 +22,7 @@
 %define elspec 3.0
 %define major_version 9
 %define minor_version 0
-%define micro_version 87
+%define micro_version 91
 %define packdname apache-tomcat-%{version}-src
 # FHS 2.3 compliant tree structure - http://www.pathname.com/fhs/2.3/
 %global basedir /srv/%{name}
