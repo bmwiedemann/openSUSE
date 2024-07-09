@@ -30,4 +30,13 @@
    array. (Giacomo Cavalieri)</comment>
     <requestid>1177808</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>5da07c14be4546e7c6ad9c7da535c128</srcmd5>
+    <version>1.3.0</version>
+    <time>1720548389</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.3.0:
+ * Changelog: https://gleam.run/news/auto-imports-and-tolerant-expressions/</comment>
+    <requestid>1186440</requestid>
+  </revision>
 </revisionlist>
