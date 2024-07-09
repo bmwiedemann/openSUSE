@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Jul  9 06:36:13 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Refresh patches python-certifi-shipped-requests-cabundle.patch and
+  two-basic-unit-tests.patch
+- Remove executable bit from core.py file
+- Update to 2024.7.4 (CVE-2024-39689, bsc#1227519):
+  Removed certs:
+  * Subject: CN=GLOBALTRUST 2020 O=e-commerce monitoring GmbH
+
+- 2024.06.02
+  Added certs:
+  * Subject: CN=FIRMAPROFESIONAL CA ROOT-A WEB O=Firmaprofesional SA
+
+- 2024.02.02
+  Added certs:
+  * Subject: CN=Telekom Security TLS ECC Root 2020 O=Deutsche Telekom Security GmbH
+  * Subject: CN=Telekom Security TLS RSA Root 2023 O=Deutsche Telekom Security GmbH
+  Removed certs:
+  * Subject: O=SECOM Trust.net OU=Security Communication RootCA1
+
+  * Fix leaking certificate issue
+
+-------------------------------------------------------------------
 Tue Nov 28 09:10:25 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2023.11.17:

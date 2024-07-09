@@ -1,21 +1,28 @@
-diff -Nru certifi-2022.9.24.orig/certifi/core.py certifi-2022.9.24/certifi/core.py
---- certifi-2022.9.24.orig/certifi/core.py	2022-09-13 22:15:32.000000000 +0200
-+++ certifi-2022.9.24/certifi/core.py	2022-11-15 12:56:32.415823730 +0100
-@@ -3,106 +3,18 @@
+Index: certifi-2024.7.4/certifi/core.py
+===================================================================
+--- certifi-2024.7.4.orig/certifi/core.py
++++ certifi-2024.7.4/certifi/core.py
+@@ -3,112 +3,19 @@ certifi.py
  ~~~~~~~~~~
  
  This module returns the installation location of cacert.pem or its contents.
--"""
--import sys
--
- 
--if sys.version_info >= (3, 11):
 +Patched by openSUSE: return the system bundle
-+"""
- 
--    from importlib.resources import as_file, files
+ """
+-import sys
+-import atexit
 +import io
  
+-def exit_cacert_ctx() -> None:
+-    _CACERT_CTX.__exit__(None, None, None)  # type: ignore[union-attr]
+ 
++def read_text(_module=None, _path=None, encoding="ascii"):
++    with io.open(where(), "r", encoding=encoding) as data:
++        return data.read()
+ 
+-if sys.version_info >= (3, 11):
+ 
+-    from importlib.resources import as_file, files
+-
 -    _CACERT_CTX = None
 -    _CACERT_PATH = None
 -
@@ -40,6 +47,7 @@ diff -Nru certifi-2022.9.24.orig/certifi/core.py certifi-2022.9.24/certifi/core.
 -            # we will also store that at the global level as well.
 -            _CACERT_CTX = as_file(files("certifi").joinpath("cacert.pem"))
 -            _CACERT_PATH = str(_CACERT_CTX.__enter__())
+-            atexit.register(exit_cacert_ctx)
 -
 -        return _CACERT_PATH
 -
@@ -75,6 +83,7 @@ diff -Nru certifi-2022.9.24.orig/certifi/core.py certifi-2022.9.24/certifi/core.
 -            # we will also store that at the global level as well.
 -            _CACERT_CTX = get_path("certifi", "cacert.pem")
 -            _CACERT_PATH = str(_CACERT_CTX.__enter__())
+-            atexit.register(exit_cacert_ctx)
 -
 -        return _CACERT_PATH
 -
@@ -106,13 +115,10 @@ diff -Nru certifi-2022.9.24.orig/certifi/core.py certifi-2022.9.24/certifi/core.
 -    # of assuming we're on the filesystem and munge the path directly.
 -    def where() -> str:
 -        f = os.path.dirname(__file__)
-+def read_text(_module=None, _path=None, encoding="ascii"):
-+    with io.open(where(), "r", encoding=encoding) as data:
-+        return data.read()
- 
--        return os.path.join(f, "cacert.pem")
 +def where():
 +    return "/etc/ssl/ca-bundle.pem"
+ 
+-        return os.path.join(f, "cacert.pem")
  
 -    def contents() -> str:
 -        return read_text("certifi", "cacert.pem", encoding="ascii")

@@ -1,7 +1,7 @@
 #
 # spec file for package python-certifi
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %{?sle15_python_module_pythons}
 Name:           python-certifi
-Version:        2023.11.17
+Version:        2024.7.4
 Release:        0
 Summary:        Python package for providing Mozilla's CA Bundle
 License:        MPL-2.0
@@ -57,8 +56,7 @@ Note that on SUSE packages the used CA bundle is actually the system bundle
 %install
 %python_install
 
-%{python_expand chmod +x %{buildroot}%{$python_sitelib}/certifi/core.py
- sed -i "s|#!%{_bindir}/env python|#!%__$python|" %{buildroot}/%{$python_sitelib}/certifi/core.py
+%{python_expand #
  rm %{buildroot}%{$python_sitelib}/certifi/cacert.pem
 }
 
