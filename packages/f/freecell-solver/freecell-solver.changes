@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jul  9 12:25:07 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.12.0
+  * Avoid packaging .tidyall.d
+  * Renames to "global_instance" and clean-ups
+
+-------------------------------------------------------------------
 Fri Jun 28 07:25:41 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.10.0
