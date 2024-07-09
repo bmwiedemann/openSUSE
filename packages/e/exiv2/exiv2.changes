@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jul  8 08:28:26 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- use --parallel as single-dash parameters are eaten by
+  ctest's rpm macro
+
+-------------------------------------------------------------------
 Wed Mar  6 12:31:04 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Fix build with --nochecks

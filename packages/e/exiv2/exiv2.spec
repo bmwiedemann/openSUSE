@@ -175,7 +175,7 @@ done
 # See: https://github.com/Exiv2/exiv2/issues/933
 export disabled_tests="-E bugfixTests"
 %endif
-%ctest -- -j1 $disabled_tests
+%ctest --parallel 1 $disabled_tests
 
 %post -n libexiv2-28 -p /sbin/ldconfig
 %postun -n libexiv2-28 -p /sbin/ldconfig

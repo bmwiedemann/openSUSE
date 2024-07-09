@@ -876,4 +876,13 @@
     <comment></comment>
     <requestid>1155832</requestid>
   </revision>
+  <revision rev="82" vrev="3">
+    <srcmd5>ac5228a7e4b5e80ab625e6b9c029e79a</srcmd5>
+    <version>0.28.2</version>
+    <time>1720548164</time>
+    <user>anag+factory</user>
+    <comment>- use --parallel as single-dash parameters are eaten by
+  ctest's rpm macro</comment>
+    <requestid>1186110</requestid>
+  </revision>
 </revisionlist>
