@@ -41,6 +41,8 @@ Patch1:         cmake.patch
 %else
 Patch0:         options-cxx17.patch
 %endif
+# upstream patch to prevent GTest error with CMake 3.30
+Patch2:         abseil-cmake-gtest-testonly.patch
 
 %description
 Abseil is a collection of C++11 libraries which augment the C++
