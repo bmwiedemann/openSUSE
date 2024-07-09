@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jul  9 12:57:07 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to 550.100 (boo#1227575)
+  * Fixed a bug that caused OpenGL triple buffering to behave like
+    double buffering.
+
+-------------------------------------------------------------------
 Mon Jul  8 11:29:07 UTC 2024 - Egbert Eich <eich@suse.com>
 
 - Use macro which is set during build but not when running

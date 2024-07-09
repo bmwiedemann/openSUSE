@@ -398,4 +398,14 @@
     <comment></comment>
     <requestid>1186206</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>b723d7d8e64a61a2d23b622bd172d9a3</srcmd5>
+    <version>550.100</version>
+    <time>1720548424</time>
+    <user>anag+factory</user>
+    <comment>- Update to 550.100 (boo#1227575)
+  * Fixed a bug that caused OpenGL triple buffering to behave like
+    double buffering.</comment>
+    <requestid>1186454</requestid>
+  </revision>
 </revisionlist>
