@@ -260,4 +260,12 @@
   * feat(releases): Add support for direct_asset_path</comment>
     <requestid>1157785</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>514b13484f3bb8938f9c412862c2cbd7</srcmd5>
+    <version>4.6.0</version>
+    <time>1720548232</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1186239</requestid>
+  </revision>
 </revisionlist>

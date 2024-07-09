@@ -1,4 +1,91 @@
 -------------------------------------------------------------------
+Mon Jun  3 14:25:21 UTC 2024 - Srinidhi B S <srinidhi.bs@gmail.com>
+
+- Update to 4.6.0:
+  * chore(deps): update python-semantic-release/upload-to-gh-release digest to 673709c (1b550ac)
+  * chore(deps): update all non-major dependencies (4c7014c)
+  * chore: update commit reference in git-blame-ignore-revs (d0fd5ad)
+  * chore(cli): add ability to not add _id_attr as an argument
+  * chore: create a CustomAction dataclass (61d8679)
+  * chore: add an initial .git-blame-ignore-revs
+  * chore: require keyword arguments for register_custom_action
+  * chore: remove typing-extensions from requirements.txt
+  * chore(deps): update dependency requests to v2.32.0 [security] (1bc788c)
+  * chore(deps): update all non-major dependencies (ba1eec4)
+  * chore(deps): update gitlab/gitlab-ee docker tag to v17 (5070d07)
+  * chore(cli): on the CLI help show the API endpoint of resources
+  * chore(cli): add some simple help for the standard operations
+  * chore: correct type-hint for job.trace()
+  * chore: add type info for ProjectFile.content
+  * feat(api): add additional parameter to project/group iteration search (#2796)
+  * feat(api): add support for gitlab service account (#2851)
+  * feat: more usernames support for MR approvals
+  * fix(deps): update minimum dependency versions in pyproject.toml
+  * fix(cli): don't require --id when enabling a deploy key
+  * fix: don't raise RedirectError for redirected HEAD requests (8fc13b9)
+  * fix: handle large number of approval rules
+  * fix(projects): fix 'import_project' file argument type for typings
+- Update to 4.5.0:
+  * build: Add "--no-cache-dir" to pip commands in Dockerfile
+  * chore(deps): update all non-major dependencies (4f338ae)
+  * chore(deps): update gitlab/gitlab-ee docker tag to v16.11.2-ee.0 (9be48f0)
+  * chore(deps): update dependency myst-parser to v3 (9289189)
+  * chore(deps): update all non-major dependencies (65d0e65)
+  * chore(deps): update dependency jinja2 to v3.1.4 [security] (8ea10c3)
+  * chore(deps): update all non-major dependencies (1f0343c)
+  * chore(deps): update gitlab/gitlab-ee docker tag to v16.11.1-ee.0 (1ed8d6c)
+  * chore(deps): update all non-major dependencies (0e9f4da)
+  * chore(deps): update gitlab/gitlab-ee docker tag to v16 (ea8c4c2)
+  * chore(deps): update all non-major dependencies (d5b5fb0)
+  * chore(deps): update dependency pytest-cov to v5 (db32000)
+  * chore: update mypy to 1.9.0 and resolve one issue
+  * chore(deps): update dependency black to v24.3.0 [security] (f6e8692)
+  * chore(deps): update all non-major dependencies (14a3ffe)
+  * chore(deps): update all non-major dependencies (3c4dcca)
+  * chore(deps): update all non-major dependencies (04c569a)
+  * chore: add tox labels to enable running groups of environments
+  * chore: add py312 & py313 to tox environment list
+  * chore(deps): update python-semantic-release/python-semantic-release action to v9 (e11d889)
+  * chore(deps): update all non-major dependencies (3c4b27e)
+  * chore(deps): update dependency furo to v2024 (f6fd02d)
+  * chore(deps): update dependency pytest to v8 (253babb)
+  * chore(deps): update dependency pytest-docker to v3 (35d2aec)
+  * chore: update version of black for pre-commit
+  * chore(deps): update all non-major dependencies (7dc2fa6)
+  * chore(deps): update codecov/codecov-action action to v4 (d2be1f7)
+  * chore: adapt style for black v24 (4e68d32)
+  * chore(deps): update dependency black to v24 (f59aee3)
+  * chore(deps): update all non-major dependencies (48726fd)
+  * docs: add FAQ about conflicting parameters
+  * docs(README): tweak GitLab CI usage docs (d9aaa99)
+  * docs: how to run smoke tests
+  * docs(objects): minor rst formatting typo
+  * docs: correct rotate token example
+  * docs: Note how to use the Docker image from within GitLab CI
+  * docs(artifacts): Fix argument indentation (c631eeb)
+  * feat(job_token_scope): support Groups in job token allowlist API (#2816)
+  * feat(job_token_scope): support job token access allowlist API
+  * feat(cli): allow skipping initial auth calls (001e596)
+  * feat(api): allow updating protected branches (#2771)
+  * feat(api): allow updating protected branches
+  * fix: Consider scope an ArrayAttribute in PipelineJobManager
+  * fix(test): use different ids for merge request, approval rule, project
+  * fix(api): fix saving merge request approval rules
+  * fix: user.warn() to show correct filename of issue
+  * fix(api): update manual job status when playing it (9440a32)
+  * fix(cli): allow exclusive arguments as optional (#2770)
+  * fix(cli): allow exclusive arguments as optional
+  * fix(cli): inform argument parser that options are mutually exclusive
+  * fix(cli): use correct exclusive options, add unit test
+  * test: remove approve step
+  * test: tidy up functional tests
+  * test: update api tests for GL 16.10
+  * test(functional): enable bulk import feature flag before test (b81da2e)
+  * test: don't use weak passwords
+  * test: update tests for gitlab 16.8 functionality
+  * test(smoke): normalize all dist titles for smoke tests (ee013fe)
+
+-------------------------------------------------------------------
 Thu Mar 14 04:30:21 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 4.4.0:
