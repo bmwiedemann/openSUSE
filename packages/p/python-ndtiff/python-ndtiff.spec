@@ -1,7 +1,7 @@
 #
 # spec file for package python-ndtiff
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,11 +31,11 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-dask-array >= 2022.2.0
-Requires:       python-numpy
+Requires:       (python-numpy with python-numpy < 2)
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module dask-array >= 2022.2.0}
-BuildRequires:  %{python_module numpy}
+BuildRequires:  %{python_module numpy with %python-numpy < 2}
 BuildRequires:  %{python_module pytest}
 # /SECTION
 %python_subpackages

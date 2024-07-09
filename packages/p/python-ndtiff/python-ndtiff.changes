@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jul  9 04:49:50 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Restrict numpy to < 2. 
+
+-------------------------------------------------------------------
 Sat Apr  1 09:32:43 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Initial specfile

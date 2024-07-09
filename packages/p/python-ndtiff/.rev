@@ -7,4 +7,12 @@
     <comment>required by python-tifffile 2023.3.15</comment>
     <requestid>1076983</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>cd50666cc715229541d346ecf970c847</srcmd5>
+    <version>1.12.0</version>
+    <time>1720548251</time>
+    <user>anag+factory</user>
+    <comment>- Restrict numpy to &lt; 2.</comment>
+    <requestid>1186292</requestid>
+  </revision>
 </revisionlist>
