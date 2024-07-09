@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jul  7 12:31:47 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Limit to numpy <2: Not compatible
+
+-------------------------------------------------------------------
 Wed Apr  5 07:07:55 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.1.19 Bugfix release:

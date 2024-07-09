@@ -27,7 +27,7 @@ Source:         https://files.pythonhosted.org/packages/source/h/hdf5storage/hdf
 # uses pytest instead of nose
 Patch0:         nose-to-pytest.patch
 BuildRequires:  %{python_module h5py >= 3.3}
-BuildRequires:  %{python_module numpy}
+BuildRequires:  %{python_module numpy < 2}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -38,7 +38,7 @@ BuildRequires:  %{python_module parameterized}
 BuildRequires:  %{python_module scipy}
 # /SECTION
 Requires:       python-h5py >= 3.3
-Requires:       python-numpy
+Requires:       python-numpy < 2
 Recommends:     python-scipy
 # This pure python package uses ctypes only suited for 64-bit. The tests segfault on 32-bit in libc memmove
 # gh#frejanordsiek/hdf5storage#109
