@@ -1,7 +1,7 @@
 #
 # spec file for package extreme-tuxracer
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define oname   etr
 Name:           extreme-tuxracer
-Version:        0.8.3
+Version:        0.8.4
 Release:        0
 Summary:        Racing game featuring Tux the Linux Penguin
 License:        GPL-2.0-or-later
