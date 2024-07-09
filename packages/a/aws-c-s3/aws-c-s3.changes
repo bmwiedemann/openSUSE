@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jul  4 12:09:57 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.6.0
+  * Auto - Update S3 Ruleset & Partition by @waahm7 in (#436)
+  * clang-format 18 by @graebm in (#438)
+  * BREAKING CHANGE: operation_name must be set for DEFAULT
+    meta-requests by @graebm in (#439)
+  * Fix shutdown_callback or returning NULL contract for
+    meta_request by @waahm7 in (#440)
+  * test_helper.py improvements by @graebm in (#442)
+
+-------------------------------------------------------------------
 Tue Jun  4 13:13:31 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.5.10
