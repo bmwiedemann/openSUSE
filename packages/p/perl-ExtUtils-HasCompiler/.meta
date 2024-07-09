@@ -1,0 +1,6 @@
+<package name="perl-ExtUtils-HasCompiler" project="openSUSE:Factory">
+  <title>Check for the presence of a compiler</title>
+  <description>This module tries to check if the current system is capable of compiling, linking and loading an XS module.</description>
+  <devel project="devel:languages:perl" package="perl-ExtUtils-HasCompiler"/>
+  <url>https://metacpan.org/pod/ExtUtils::HasCompiler</url>
+</package>
