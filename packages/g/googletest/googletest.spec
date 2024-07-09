@@ -101,7 +101,7 @@ mkdir -p %{buildroot}%{_includedir}/gtest/src && install -m 0644 googletest/src/
 %if %{with tests}
 %ifnarch %ix86
 # googletest-port-test is checking the threadcount which is incorrect under user mode emulation
-%ctest -- %{?qemu_user_space_build: -E googletest-port-test}
+%ctest %{?qemu_user_space_build: -- -E googletest-port-test}
 %endif
 %endif
 

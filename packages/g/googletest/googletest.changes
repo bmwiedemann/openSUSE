@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jul  5 09:31:26 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- avoid extra '--' which newer ctests don't like anymore
+
+-------------------------------------------------------------------
 Tue Mar 12 16:43:25 UTC 2024 - Takashi Iwai <tiwai@suse.com>
 
 - Exclude test for 32bit x86 that is broken for now
@@ -32,7 +37,7 @@ Fri Mar  8 18:32:03 UTC 2024 - Richard Rahl <rrahl0@proton.me>
 Sun Mar 26 16:17:32 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
 
 - update to 1.13.0:
-  * Floating point prints full precision by default to aid in debugging 
+  * Floating point prints full precision by default to aid in debugging
   * GTEST_FAIL_AT now terminates the test (like ASSERT_*), rather than failing and continuing (like EXPECT_*)
   * Added testing::SrcDir(), which returns the configured directory for test data files
 
@@ -72,7 +77,7 @@ Wed Jan  5 09:15:53 UTC 2022 - Dirk Müller <dmueller@suse.com>
   * Uninstantiated TEST_P and TYPED_TEST_P now fail unless allowlisted using
     GTEST_ALLOW_UNINSTANTIATED_PARAMETERIZED_TEST
   * new matchers and mocking behavior, see
-    https://github.com/google/googletest/releases/tag/release-1.11.0 
+    https://github.com/google/googletest/releases/tag/release-1.11.0
 
 -------------------------------------------------------------------
 Mon May 17 17:35:26 UTC 2021 - Matej Cepl <mcepl@suse.com>
@@ -249,5 +254,5 @@ Tue Aug  9 15:36:41 CEST 2011 - tiwai@suse.de
 Sat Jul  9 07:29:10 UTC 2011 - ftake@geeko.jp
 
 - Initial import
- * Upstream version: 1.6.0 
+ * Upstream version: 1.6.0
 
