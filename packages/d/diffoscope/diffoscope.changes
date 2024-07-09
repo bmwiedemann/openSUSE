@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Tue Jul  9 13:21:55 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 272:
+  * Move away from using DSA OpenSSH keys in tests; support has
+    been removed in OpenSSH 9.8p1.
+  * Move to assert_diff helper in test_openssh_pub_key.py
+  * Update tests to support zipdetails version 4.004 shipped with
+    Perl 5.40.
+  * Drop apktool from Build-Depends; we can still test our APK
+    code via autopkgtests. (Closes: #1071410)
+  * Fix tests for 7zip version 24.05.
+  * Add a versioned dependency for at least version 5.4.5 for the
+    xz tests; they fail under (at least xz 5.2.8).
+  * Relax Chris' versioned xz test dependency (5.4.5) to also
+    allow version 5.4.1.
+  * Include "xz --verbose --verbose" (ie. double --verbose)
+    output, not just the single --verbose. (Closes: #1069329)
+  * Only include "xz --list" output if the xz has no other
+    differences.
+  * Use "xz --list" to supplement the output when comparing .xz
+    archives; essential when some underlying metadata differs.
+  * Actually append the xz --list after the container
+    differences, as it simplifies tests and the output.
+  * Maintain an in-header boolean state to determine whether to
+    drop from-file/to-file lines. This fixes an issue where HTML
+    differences were being inadvertendly neglected.
+
+-------------------------------------------------------------------
 Mon Apr 22 21:12:38 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Update to 265:
