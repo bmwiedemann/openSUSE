@@ -1958,7 +1958,6 @@ BuildFlags: onlybuild:gssdp
 BuildFlags: onlybuild:gstreamer
 BuildFlags: onlybuild:gstreamer-plugins-bad
 BuildFlags: onlybuild:gstreamer-plugins-base
-BuildFlags: onlybuild:gstreamer-plugins-good
 BuildFlags: onlybuild:gstreamer-plugins-libav
 BuildFlags: onlybuild:gstreamer-plugins-ugly
 BuildFlags: onlybuild:gtk-doc
