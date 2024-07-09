@@ -74,6 +74,7 @@
     <package name="ca-certificates-mozilla"/>
     <package name="coreutils"/>
     <package name="cracklib-dict-small"/>
+    <package name="libcurl-mini4"/>
     <package name="curl"/>
     <package name="filesystem"/>
     <package name="glibc-locale-base"/>
