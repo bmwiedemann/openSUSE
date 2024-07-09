@@ -19,7 +19,7 @@
 %{?sle15_python_module_pythons}
 %bcond_without tests
 Name:           python-pylint
-Version:        3.1.0
+Version:        3.2.5
 Release:        0
 Summary:        Syntax and style checker for Python code
 License:        GPL-2.0-or-later
@@ -27,6 +27,8 @@ Group:          Development/Languages/Python
 URL:            https://github.com/pycqa/pylint
 # Tests are no longer packaged in the PyPI sdist, use GitHub archive
 Source:         https://github.com/PyCQA/pylint/archive/refs/tags/v%{version}.tar.gz#/pylint-%{version}-gh.tar.gz
+# PATCH-FIX-UPSTREAM pytest-8.patch gh#pylint-dev/pylint#9576
+Patch1:         pytest-8.patch
 BuildRequires:  %{python_module base >= 3.7.2}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
@@ -36,7 +38,7 @@ BuildRequires:  python-rpm-macros
 Requires:       python-dill >= 0.3.6
 Requires:       python-platformdirs >= 2.2
 Requires:       python-tomlkit >= 0.10.1
-Requires:       (python-astroid >= 3.1.0 with python-astroid < 3.2.0~dev0)
+Requires:       (python-astroid >= 3.2.2 with python-astroid < 3.3.0~dev0)
 Requires:       (python-isort >= 4.2.5 with python-isort < 6)
 Requires:       (python-mccabe >= 0.6 with python-mccabe < 0.8)
 %if 0%{?python_version_nodots} < 311
@@ -45,7 +47,7 @@ Requires:       python-tomli >= 1.1.0
 Requires:       python-typing-extensions >= 4.9
 %if %{with tests}
 # SECTION pylint deps
-BuildRequires:  %{python_module astroid >= 3.1.0 with %python-astroid < 3.2.0~dev0}
+BuildRequires:  %{python_module astroid >= 3.2.2 with %python-astroid < 3.3.0~dev0}
 BuildRequires:  %{python_module dill >= 0.3.6}
 BuildRequires:  %{python_module isort >= 4.2.5 with %python-isort < 6}
 BuildRequires:  %{python_module mccabe >= 0.6 with %python-mccabe < 0.8}
@@ -104,7 +106,12 @@ done
 %check
 export LC_ALL="en_US.UTF-8"
 # reruns: tests/pyreverse is incredibly non-deterministic in failures
-%pytest -n auto --ignore tests/benchmark --reruns 5 -rsfER -k "not test_linter_with_unpickleable_plugins_is_pickleable"
+donttest="test_linter_with_unpickleable_plugins_is_pickleable"
+# Fails with pytest-8 gh#pylint-dev/pylint#9545
+donttest+=" or recursion_error_3159"
+# Fails with python 3.12
+donttest+=" or test_functional_relation_extraction"
+%pytest -n auto --ignore tests/benchmark --reruns 5 -rsfER -k "not ($donttest)"
 %endif
 
 %post

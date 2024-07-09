@@ -639,4 +639,64 @@
     why pylint has issued the message and guidence to the</comment>
     <requestid>1160816</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>f69722487fad270f2136d0a61be25439</srcmd5>
+    <version>3.2.5</version>
+    <time>1720548339</time>
+    <user>anag+factory</user>
+    <comment>- Add new patch to fix failing tests with pytest 8, pytest-8.patch
+  gh#pylint-dev/pylint#9576
+- Skip some tests that still are failing with pytest 8,
+  gh#pylint-dev/pylint#9545
+- update to 3.2.5:
+  * Fixed a false positive ``unreachable-code`` when using
+    ``typing.Any`` as return type in python 3.8, the
+    ``typing.NoReturn`` are not taken into account
+    anymore for python 3.8 however.
+  * Prevent emitting ``possibly-used-before-assignment`` when
+    relying on names only potentially not defined in conditional
+    blocks guarded by functions annotated with ``typing.Never``
+    or ``typing.NoReturn``.
+- update to 3.2.3:
+  * Classes with only an Ellipsis (``...``) in their body do not
+    trigger 'multiple-statements' anymore if they are inlined
+  * Fix a false positive for ``redefined-outer-name`` when there
+    is a name defined in an exception-handling block which shares
+    the same name as a local variable that has been defined in a
+    function body.
+  * Fix a false positive for ``use-yield-from`` when using the
+    return value from the ``yield`` atom.
+- update to 3.2.2:
+  * Fix multiple false positives for generic class syntax added
+    in Python 3.12 (PEP 695).
+  * Exclude context manager without cleanup from
+    ``contextmanager-generator-missing-cleanup`` checks.
+- update to 3.2.1:
+  * Exclude if/else branches containing terminating functions
+    (e.g. `sys.exit()`) from `possibly-used-before-assignment`
+    checks.
+  * Don't emit ``typevar-name-incorrect-variance`` warnings for
+    PEP 695 style TypeVars.
+  * The variance is inferred automatically by the type checker.
+  * Adding ``_co`` or ``_contra`` suffix can help to reason about
+    TypeVar.
+- update to 3.2.0:
+  * Understand `six.PY2` and `six.PY3` for conditional imports.
+  * Github can use to automatically annotate code. Use it with
+    `pylint --output-format=github` on your Github Workflows.
+  * Add check ``possibly-used-before-assignment`` when relying on
+    names after an ``if/else`` switch when one branch failed to
+    define the name, raise, or return.
+  * Checks for generators that use contextmanagers that don't
+    handle cleanup properly.
+  * Is meant to raise visibilty on the case that a generator is
+    not fully exhausted and the contextmanager is not cleaned up
+    properly.
+  * A contextmanager must yield a non-constant value and not
+    handle cleanup for GeneratorExit.
+  * The using generator must attempt to use the yielded context
+    value `with x() as y` and not just `with x()`.
+</comment>
+    <requestid>1186384</requestid>
+  </revision>
 </revisionlist>

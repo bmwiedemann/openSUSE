@@ -1,0 +1,206 @@
+Index: pylint-3.2.5/pylint/testutils/configuration_test.py
+===================================================================
+--- pylint-3.2.5.orig/pylint/testutils/configuration_test.py
++++ pylint-3.2.5/pylint/testutils/configuration_test.py
+@@ -12,7 +12,6 @@ import logging
+ import unittest
+ from pathlib import Path
+ from typing import Any, Dict
+-from unittest.mock import Mock
+ 
+ from pylint.lint import Run
+ 
+@@ -135,18 +134,15 @@ def get_expected_output(
+ 
+ def run_using_a_configuration_file(
+     configuration_path: Path | str, file_to_lint: str = __file__
+-) -> tuple[Mock, Mock, Run]:
++) -> Run:
+     """Simulate a run with a configuration without really launching the checks."""
+     configuration_path = str(configuration_path)
+     args = ["--rcfile", configuration_path, file_to_lint]
+-    # We do not capture the `SystemExit` as then the `runner` variable
+-    # would not be accessible outside the `with` block.
+-    with unittest.mock.patch("sys.exit") as mocked_exit:
+-        # Do not actually run checks, that could be slow. We don't mock
+-        # `PyLinter.check`: it calls `PyLinter.initialize` which is
+-        # needed to properly set up messages inclusion/exclusion
+-        # in `_msg_states`, used by `is_message_enabled`.
+-        check = "pylint.lint.pylinter.check_parallel"
+-        with unittest.mock.patch(check) as mocked_check_parallel:
+-            runner = Run(args)
+-    return mocked_exit, mocked_check_parallel, runner
++    # Do not actually run checks, that could be slow. We don't mock
++    # `PyLinter.check`: it calls `PyLinter.initialize` which is
++    # needed to properly set up messages inclusion/exclusion
++    # in `_msg_states`, used by `is_message_enabled`.
++    check = "pylint.lint.pylinter.check_parallel"
++    with unittest.mock.patch(check):
++        runner = Run(args, exit=False)
++    return runner
+Index: pylint-3.2.5/requirements_test_min.txt
+===================================================================
+--- pylint-3.2.5.orig/requirements_test_min.txt
++++ pylint-3.2.5/requirements_test_min.txt
+@@ -3,7 +3,7 @@
+ astroid==3.2.2  # Pinned to a specific version for tests
+ typing-extensions~=4.11
+ py~=1.11.0
+-pytest~=7.4
++pytest~=8.2
+ pytest-benchmark~=4.0
+ pytest-timeout~=2.3
+ towncrier~=23.11
+Index: pylint-3.2.5/tests/config/test_config.py
+===================================================================
+--- pylint-3.2.5.orig/tests/config/test_config.py
++++ pylint-3.2.5/tests/config/test_config.py
+@@ -55,10 +55,8 @@ reports = "yes"
+     )
+     env_var = "tmp_path_env"
+     os.environ[env_var] = str(config_file)
+-    mock_exit, _, runner = run_using_a_configuration_file(
+-        f"${env_var}", file_to_lint_path
+-    )
+-    mock_exit.assert_called_once_with(0)
++    runner = run_using_a_configuration_file(f"${env_var}", file_to_lint_path)
++    assert runner.linter.msg_status == 0
+     check_configuration_file_reader(runner)
+ 
+ 
+@@ -226,7 +224,7 @@ def test_disable_before_enable_all_takes
+     runner = Run(["--disable=fixme", "--enable=all", str(FIXME_MODULE)], exit=False)
+     assert not runner.linter.stats.by_msg
+ 
+-    _, _, toml_runner = run_using_a_configuration_file(
++    toml_runner = run_using_a_configuration_file(
+         HERE
+         / "functional"
+         / "toml"
+@@ -239,7 +237,7 @@ def test_enable_before_disable_all_takes
+     runner = Run(["--enable=fixme", "--disable=all", str(FIXME_MODULE)], exit=False)
+     assert runner.linter.stats.by_msg
+ 
+-    _, _, toml_runner = run_using_a_configuration_file(
++    toml_runner = run_using_a_configuration_file(
+         HERE
+         / "functional"
+         / "toml"
+Index: pylint-3.2.5/tests/config/test_functional_config_loading.py
+===================================================================
+--- pylint-3.2.5.orig/tests/config/test_functional_config_loading.py
++++ pylint-3.2.5/tests/config/test_functional_config_loading.py
+@@ -57,10 +57,8 @@ def default_configuration(
+ ) -> PylintConfiguration:
+     empty_pylintrc = tmp_path / "pylintrc"
+     empty_pylintrc.write_text("")
+-    mock_exit, _, runner = run_using_a_configuration_file(
+-        str(empty_pylintrc), file_to_lint_path
+-    )
+-    mock_exit.assert_called_once_with(0)
++    runner = run_using_a_configuration_file(str(empty_pylintrc), file_to_lint_path)
++    assert runner.linter.msg_status == 0
+     return runner.linter.config.__dict__
+ 
+ 
+@@ -88,10 +86,8 @@ def test_functional_config_loading(
+         warnings.filterwarnings(
+             "ignore", message="The use of 'MASTER'.*", category=UserWarning
+         )
+-        mock_exit, _, runner = run_using_a_configuration_file(
+-            configuration_path, file_to_lint_path
+-        )
+-    mock_exit.assert_called_once_with(expected_code)
++        runner = run_using_a_configuration_file(configuration_path, file_to_lint_path)
++    assert runner.linter.msg_status == expected_code
+     out, err = capsys.readouterr()
+     # 'rstrip()' applied, so we can have a final newline in the expected test file
+     assert expected_output.rstrip() == out.rstrip(), msg
+Index: pylint-3.2.5/tests/lint/unittest_lint.py
+===================================================================
+--- pylint-3.2.5.orig/tests/lint/unittest_lint.py
++++ pylint-3.2.5/tests/lint/unittest_lint.py
+@@ -20,6 +20,7 @@ from pathlib import Path
+ from shutil import copy, rmtree
+ from unittest import mock
+ 
++import astroid
+ import platformdirs
+ import pytest
+ from astroid import nodes
+@@ -1053,7 +1054,9 @@ def test_finds_pyi_file() -> None:
+         exit=False,
+     )
+     assert run.linter.current_file is not None
+-    assert run.linter.current_file.endswith("foo.pyi")
++    assert run.linter.current_file.endswith(
++        "a_module_that_we_definitely_dont_use_in_the_functional_tests.pyi"
++    )
+ 
+ 
+ def test_recursive_finds_pyi_file() -> None:
+@@ -1068,7 +1071,9 @@ def test_recursive_finds_pyi_file() -> N
+         exit=False,
+     )
+     assert run.linter.current_file is not None
+-    assert run.linter.current_file.endswith("foo.pyi")
++    assert run.linter.current_file.endswith(
++        "a_module_that_we_definitely_dont_use_in_the_functional_tests.pyi"
++    )
+ 
+ 
+ def test_no_false_positive_from_pyi_stub() -> None:
+@@ -1126,6 +1131,9 @@ def test_recursive_ignore(ignore_paramet
+     ):
+         module = os.path.abspath(join(REGRTEST_DATA_DIR, *regrtest_data_module))
+     assert module in linted_file_paths
++    # We lint the modules in `regrtest` in other tests as well. Prevent test pollution by
++    # explicitly clearing the astroid caches.
++    astroid.MANAGER.clear_cache()
+ 
+ 
+ def test_source_roots_globbing() -> None:
+Index: pylint-3.2.5/tests/regrtest_data/pyi/a_module_that_we_definitely_dont_use_in_the_functional_tests.pyi
+===================================================================
+--- /dev/null
++++ pylint-3.2.5/tests/regrtest_data/pyi/a_module_that_we_definitely_dont_use_in_the_functional_tests.pyi
+@@ -0,0 +1,5 @@
++# This module is named in a particular way to prevent test pollution. It was previously named 'foo' and
++# all mentions of 'foo' were wrongly resolved to this stub file.
++foo = 1
++
++def three_item_iterable(): ...
+Index: pylint-3.2.5/tests/regrtest_data/pyi/foo.pyi
+===================================================================
+--- pylint-3.2.5.orig/tests/regrtest_data/pyi/foo.pyi
++++ /dev/null
+@@ -1,4 +0,0 @@
+-foo = 1
+-
+-def three_item_iterable():
+-    ...
+Index: pylint-3.2.5/tests/regrtest_data/uses_module_with_stub.py
+===================================================================
+--- pylint-3.2.5.orig/tests/regrtest_data/uses_module_with_stub.py
++++ pylint-3.2.5/tests/regrtest_data/uses_module_with_stub.py
+@@ -1,5 +1,5 @@
+ """If the stub is preferred over the .py, this might emit not-an-iterable"""
+-from pyi.foo import three_item_iterable
++from pyi.a_module_that_we_definitely_dont_use_in_the_functional_tests import three_item_iterable
+ 
+ for val in three_item_iterable():
+     print(val)
+Index: pylint-3.2.5/tests/regrtest_data/pyi/a_module_that_we_definitely_dont_use_in_the_functional_tests.py
+===================================================================
+--- /dev/null
++++ pylint-3.2.5/tests/regrtest_data/pyi/a_module_that_we_definitely_dont_use_in_the_functional_tests.py
+@@ -0,0 +1,2 @@
++def three_item_iterable():
++    return [1, 2, 3]
+Index: pylint-3.2.5/tests/regrtest_data/pyi/foo.py
+===================================================================
+--- pylint-3.2.5.orig/tests/regrtest_data/pyi/foo.py
++++ /dev/null
+@@ -1,2 +0,0 @@
+-def three_item_iterable():
+-    return [1, 2, 3]
