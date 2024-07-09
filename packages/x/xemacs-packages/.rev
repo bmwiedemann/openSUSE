@@ -346,4 +346,12 @@
     <comment>Prepare for RPM 4.20 (forwarded request 1151274 from dimstar)</comment>
     <requestid>1151317</requestid>
   </revision>
+  <revision rev="47" vrev="15">
+    <srcmd5>f38e0feab87cf856337181b47d077719</srcmd5>
+    <version>20130822</version>
+    <time>1720548337</time>
+    <user>anag+factory</user>
+    <comment>- Drop dependency on fwnndev, fwnn is dead and unmaintained. (forwarded request 1186336 from anag+factory)</comment>
+    <requestid>1186380</requestid>
+  </revision>
 </revisionlist>
