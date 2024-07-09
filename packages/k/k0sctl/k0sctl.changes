@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Jul 03 16:17:58 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.18.1:
+  * Update all dependencies (#735)
+  * Hide kubeconfig content from logs
+  * Reusable workflow steps for smoke tests and docker downgrade
+    workaround
+  * Replace reading admin.conf with reading output of "k0s
+    kubeconfig admin"
+  * Revert "Simplify kubeconfig retrieval by using k0s kubeconfig
+    command (#720)"
+  * Bump github.com/go-playground/validator/v10 from 10.21.0 to
+    10.22.0 (#733)
+  * go v1.22.4 (#730)
+
+-------------------------------------------------------------------
 Mon Jun 10 13:33:22 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.18.0:
