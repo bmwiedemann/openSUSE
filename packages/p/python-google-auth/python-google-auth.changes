@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jul  5 10:08:50 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 2.31.0
+  * Adds X509 workload cert logic (#1527)
+  * Added py.typed to MANIFEST.in (#1526)
+  * Pass trust_env kwarg to ClientSession (#1533)
+
+-------------------------------------------------------------------
 Thu Jul  4 08:13:30 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 2.30.0
