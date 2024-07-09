@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Jul  5 13:21:48 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Replace deprecated %setup with %autosetup
+- Fix source URL -- pythonhosted no longer includes setup.py
+- Update to 0.12.1:
+  * Flexmock Pytest plugin entrypoint missing from setup.py.
+- Updates from 0.12.0:
+  * Add tox.ini to sdist to make the downstream testing easier.
+  * Add Python 3.12 and 3.13 support.
+  * Drop Python 3.6 and 3.7 support.
+  * Drop Pytest 5.x support.
+  * Fixed the pytest integration by switching from wrapping of the
+    test runner to the pytest plugin system.
+
+-------------------------------------------------------------------
 Mon Nov 27 18:51:02 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.11.3:

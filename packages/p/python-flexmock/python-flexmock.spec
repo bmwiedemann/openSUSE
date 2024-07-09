@@ -1,7 +1,7 @@
 #
 # spec file for package python-flexmock
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-flexmock
-Version:        0.11.3
+Version:        0.12.1
 Release:        0
 Summary:        Testing library for creating mocks, stubs and fakes
 License:        BSD-2-Clause
 URL:            https://github.com/bkabrda/flexmock
-Source:         https://files.pythonhosted.org/packages/source/f/flexmock/flexmock-%{version}.tar.gz
+Source:         %{url}/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -39,7 +39,7 @@ redundancies in the Ruby flexmock API, alters some defaults, and introduces
 a number of Python-only features.
 
 %prep
-%setup -q -n flexmock-%{version}
+%autosetup -n flexmock-%{version}
 
 %build
 %python_build
