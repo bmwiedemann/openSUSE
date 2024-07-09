@@ -71,4 +71,13 @@
     <comment></comment>
     <requestid>1183277</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>1473b042952a9908366ac322c5ab1570</srcmd5>
+    <version>20240624.1ee2eca</version>
+    <time>1720548194</time>
+    <user>anag+factory</user>
+    <comment>BuildRequire selinux-policy-targeted explicitly to allow building
+on SELinux-enabled projects e.g. SLFO. (forwarded request 1186132 from danishprakash)</comment>
+    <requestid>1186134</requestid>
+  </revision>
 </revisionlist>

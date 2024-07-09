@@ -55,8 +55,10 @@ Source:         %{name}-%{version}.tar.zst
 BuildRequires:  zstd
 BuildRequires:  gcc, make
 %if %{with selinux}
-BuildRequires:  checkpolicy, selinux-policy-devel
 Requires:       (%{name}-selinux = %{version}-%{release} if selinux-policy-targeted)
+BuildRequires:  checkpolicy
+BuildRequires:  selinux-policy-devel
+BuildRequires:  selinux-policy-targeted
 %endif
 %if %{with apparmor}
 BuildRequires:  apparmor-abstractions, apparmor-rpm-macros, libapparmor-devel

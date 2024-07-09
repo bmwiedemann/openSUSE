@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul  4 16:34:45 UTC 2024 - Danish Prakash <danish.prakash@suse.com>
+
+- BuildRequire selinux-policy-targeted explicitly to allow building
+  on SELinux-enabled projects e.g. SLFO.
+
+-------------------------------------------------------------------
 Tue Jun 25 07:56:25 UTC 2024 - dcermak@suse.com
 
 - Update to version 20240624.1ee2eca:
