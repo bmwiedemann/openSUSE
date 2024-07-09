@@ -1,4 +1,96 @@
 -------------------------------------------------------------------
+Tue Jul  9 06:39:46 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 3.44.1
+  * OCI Operations Insights Service
+    * Support in OPSI Host Capacity Planning to analyze disabled/deleted resources
+      * ``oci opsi host-insights list-host-configurations --status``
+      * ``oci opsi host-insights list-hosted-entities --status``
+      * ``oci opsi host-insights summarize-host-insight-disk-statistics --status``
+      * ``oci opsi host-insights summarize-host-insight-network-usage-trend --status``
+      * ``oci opsi host-insights summarize-host-insight-resource-capacity-trend --status``
+      * ``oci opsi host-insights summarize-host-insight-resource-forecast-trend --status``
+      * ``oci opsi host-insights summarize-host-insight-resource-statistics --status``
+      * ``oci opsi host-insights summarize-host-insight-resource-usage --status``
+      * ``oci opsi host-insights summarize-host-insight-resource-usage-trend --status``
+      * ``oci opsi host-insights summarize-host-insight-resource-utilization-insight --status``
+      * ``oci opsi host-insights summarize-host-insight-storage-usage-trend --status``
+      * ``oci opsi host-insights summarize-host-insight-top-processes-usage --status``
+      * ``oci opsi host-insights summarize-host-insight-top-processes-usage-trend --status``
+  * OCI File Storage Service
+    * Support for deleting file system by first detaching child file system
+      * ``oci fs file-system delete --can-detach-child-file-system``
+    * Support for determining whether the file system is attached to its parent file system
+      * ``oci fs file-system create --clone-attach-status``
+    * Support for detaching a file sys from parent file system
+      * ``oci fs file-system detach --file-system-id``
+  * OCI Database Migration Service
+    * Support for dynamic list of ZDM parameters for Oracle<>Oracle migrations
+      * ``oci database-migration migration-parameter-summary list-migration-parameters``
+  * OCI Exadata Database Service
+    * Support for managing Exascale Database Storage Vault resources
+      * ``oci db exascale-db-storage-vault``
+    * Support for managing VM Cluster resources on Exascale Infrastructure
+      * ``oci db exadb-vm-cluster``
+    * Support for getting available updates and updating histories for a Exadb VM cluster
+      * ``oci db exadb-vm-cluster get-update``
+      * ``oci db exadb-vm-cluster list-updates``
+      * ``oci db exadb-vm-cluster get-update-history``
+      * ``oci db exadb-vm-cluster list-update-histories``
+    * Support for getting a list of supported minor GI versions for VM Cluster
+      * ``oci db gi-minor-version-summary list-gi-version-minor-versions``
+    * Support for getting a list of supported GI versions for VM Cluster
+      * ``oci db gi-version list``
+    * Support for getting a list of backups based on shape-family
+      * ``oci db backup list``
+    * Support for new optional parameter is-thin-clone for Pluggable Database resource
+      * ``oci db pluggable-database create-local-clone``
+      * ``oci db pluggable-database create-remote-clone``
+- from version 3.44.0
+  * [BREAKING] OCI Database Migration Service
+    * Deprecation of Agent resource for `database-migration`. Following commands have changed:
+      * ``oci database-migration agent``
+      * ``oci database-migration agent-image-summary``
+      * ``oci database-migration agent-summary``
+      * ``oci database-migration migration create-migration-aws-s3-data-transfer-medium-details``
+      * ``oci database-migration migration create-migration-db-link-data-transfer-medium-details``
+      * ``oci database-migration migration create-migration-nfs-data-transfer-medium-details``
+      * ``oci database-migration migration create-migration-object-storage-data-transfer-medium-details``
+      * ``oci database-migration migration update-migration-aws-s3-data-transfer-medium-details``
+      * ``oci database-migration migration update-migration-db-link-data-transfer-medium-details``
+      * ``oci database-migration migration update-migration-nfs-data-transfer-medium-details``
+      * ``oci database-migration migration update-migration-object-storage-data-transfer-medium-details``
+      * ``oci database-migration connection create``
+      * ``oci database-migration connection update``
+      * ``oci database-migration migration add``
+      * ``oci database-migration migration clone``
+      * ``oci database-migration migration create``
+      * ``oci database-migration migration remove``
+      * ``oci database-migration migration update``
+      * ``oci database-migration migration-object-type-summary list``
+  * OCI Database Migration Service
+    * Support for MySQL to MySQL homogeneous migration
+      * ``oci database-migration connection create-mysql-connection``
+      * ``oci database-migration connection create-oracle-connection``
+      * ``oci database-migration connection update-mysql-connection``
+      * ``oci database-migration connection update-oracle-connection``
+      * ``oci database-migration migration add-mysql-objects``
+      * ``oci database-migration migration add-oracle-objects``
+      * ``oci database-migration migration clone-mysql-migration``
+      * ``oci database-migration migration clone-oracle-migration``
+      * ``oci database-migration migration create-mysql-migration``
+      * ``oci database-migration migration create-oracle-migration``
+      * ``oci database-migration migration remove-mysql-objects``
+      * ``oci database-migration migration remove-oracle-objects``
+      * ``oci database-migration migration update-mysql-migration``
+      * ``oci database-migration migration update-oracle-migration``
+  * Support for manual cross-region backup copy in the HeatWave MySQL Service
+    * ``oci mysql backup copy``
+- Refresh patches for new version
+  * oc_relax-python-depends.patch
+- Update BuildRequires and Requires from setup.py
+
+-------------------------------------------------------------------
 Mon Jun 24 11:11:22 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 3.43.2
