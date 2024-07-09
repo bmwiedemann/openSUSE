@@ -30,7 +30,7 @@ BuildRequires:  %{python_module aioftp}
 BuildRequires:  %{python_module astropy >= 5.0.6}
 BuildRequires:  %{python_module base => 3.9}
 BuildRequires:  %{python_module devel >= 3.9}
-BuildRequires:  %{python_module numpy-devel >= 1.25}
+BuildRequires:  %{python_module numpy-devel >= 1.25 with %python-numpy-devel < 2}
 BuildRequires:  %{python_module packaging >= 19}
 BuildRequires:  %{python_module parfive >= 2.0.0}
 BuildRequires:  %{python_module pip}
@@ -41,10 +41,10 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-astropy >= 5.0.1
-Requires:       python-numpy > 1.25
 Requires:       python-packaging >= 19
 Requires:       python-parfive >= 2.0.0
 Requires:       python-pyerfa
+Requires:       (python-numpy > 1.25 with python-numpy < 2)
 # pafived[ftp], ignore rpmlint's python-leftover-require
 Requires:       python-aioftp >= 0.17.1
 # SECTION extras_require:asdf

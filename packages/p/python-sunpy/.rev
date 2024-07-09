@@ -313,4 +313,12 @@
     <comment></comment>
     <requestid>1179909</requestid>
   </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>833bd19f65f2226fb5f79cedd67eafa8</srcmd5>
+    <version>5.1.4</version>
+    <time>1720548262</time>
+    <user>anag+factory</user>
+    <comment>- Restrict numpy to &lt; 2.</comment>
+    <requestid>1186294</requestid>
+  </revision>
 </revisionlist>

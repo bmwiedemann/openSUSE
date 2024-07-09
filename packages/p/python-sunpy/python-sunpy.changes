@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jul  9 05:13:08 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Restrict numpy to < 2. 
+
+-------------------------------------------------------------------
 Mon Jun 10 19:26:13 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 5.1.4
