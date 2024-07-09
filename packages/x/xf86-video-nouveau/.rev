@@ -217,4 +217,13 @@
     <comment></comment>
     <requestid>1151660</requestid>
   </revision>
+  <revision rev="23" vrev="6">
+    <srcmd5>a2a8eff30b152813fdad57f31164003e</srcmd5>
+    <version>1.0.17</version>
+    <time>1720548210</time>
+    <user>anag+factory</user>
+    <comment>- added &quot;-fpermissive&quot; to optflags to workaround fatal warnings
+  with gcc14 (boo#1225956)</comment>
+    <requestid>1186217</requestid>
+  </revision>
 </revisionlist>
