@@ -1,4 +1,73 @@
 -------------------------------------------------------------------
+Tue Jul  9 07:54:07 UTC 2024 - Andrei Dziahel <develop7@develop7.info>
+
+- Mercurial 6.8
+  Regularly scheduled major release.
+
+  + New Features or performance improvements
+    * Phases have been reworked to improve their general performance
+      * revset: stop serializing node when using "%ln"
+      * phases: convert remote phase root to node while reading them
+      * phases: use revision number in new_heads
+      * phases: use revision number in analyze_remote_phases
+      * phases: stop using `repo.set` in `remotephasessummary`
+      * phases: move RemotePhasesSummary to revision number
+      * phases: use revision number in `_pushdiscoveryphase`
+      * phases: introduce a performant efficient way to access 
+        revision in a set
+      * phases: rework the logic of _pushdiscoveryphase to bound complexity
+    * The Rust working copy code is being used by more places now:
+       * matchers: support patternmatcher in rust
+       * dirstate: remove the python-side whitelist of allowed matchers
+    * stream-clone: disable gc for `_entries_walk` duration
+    * stream-clone: disable gc for the initial section for the v3 format
+    * postincoming: avoid computing branchhead if no report will be posted
+    * stream-clone: disable gc for the entry listing section for the v2 format
+    * perf: allow profiling of more than one run
+    * perf: run the gc before each run
+    * perf: start recording total time after warming
+    * perf: clear vfs audit_cache before each run
+    * outgoing: rework the handling of the `missingroots` case to be faster
+    * outgoing: add a simple fastpath when there is no common
+    * tags-cache: skip the filternode step if we are not going to use it
+    * tags-cache: directly operate on rev-num warming hgtagsfnodescache
+    * tags-cache: directly perform a monimal walk for hgtagsfnodescache warming
+
+  + New Experimental Features
+    * Introduce a new experimental branch cache "v3":
+      * branchcache: add more test for the logic around 
+        obsolescence and branch heads
+      * branchcache: skip entries that are topological 
+        heads in the on disk file
+      * branchcache: add a "pure topological head" fast path
+      * branchcache: allow to detect "pure topological case" for branchmap
+
+  + Bug Fixes
+    * rust: use `cpython` 0.7.2 crate to add support for Python 3.12
+    * perf-stream-locked-section: actually use v1 generation when requested
+    * perf-stream-locked-section: fix the call to the v3 generator
+    * perf-stream-locked-section: advertise the right version key in the help
+    * stream: in v3, skip the "size" fast path if the entries have some 
+      unknown size
+    * stream-clone: stop getting the file size of all file in v3
+    * streamclone: stop listing files for entries that have no volatile files
+    * perf-stream-consume: use the source repository config when applying
+    * bundle: do no check the changegroup version if no changegroup is included
+    * perf: create the temporary target next to the source in stream-consume
+    * bundlespec: fix the "streamv2" and "streamv3-exp" variant
+    * push: rework the computation of fallbackheads to be correct
+    * profiler: flush after writing the profiler output
+    * base-revsets: use an author that actually exercises a lot of changesets
+    * hgrc: search XDG_CONFIG_HOME on mac
+    * clonebundles: add missing newline to legacy response
+    * narrow: add a test for linkrev computation done during widen
+    * Multiple fixes to guard against mmap issues
+    * portability: fix build on Solaris-derived systemd
+
+  + Miscellaneous
+    * obsolete: quote the feature name
+
+-------------------------------------------------------------------
 Mon Jun 17 20:23:06 UTC 2024 - Lukas Müller <expeehaa@outlook.com>
 
 - Build with Python 3.11 on Leap 15.6.
