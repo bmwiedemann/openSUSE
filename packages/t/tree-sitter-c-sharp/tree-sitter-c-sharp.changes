@@ -1,4 +1,103 @@
 -------------------------------------------------------------------
+Sun Jul 07 13:56:35 UTC 2024 - Björn Bidar <bjorn.bidar@thaodan.de>
+
+- Update to version 0.21.2:
+  * fix: properly handle raw strings
+  * feat: parse arguments in base lists
+  * fix: add back 'base' literal to `non_lvalue_expression`
+  * feat: expose literal content in the parse tree
+  * fix: missing `>` in email
+  * fix: correct repository field
+  * fix: update node-gyp-build
+  * build: update bindings and manifests
+  * test: update tests
+  * feat: update queries
+  * feat!: rewrite the grammar to support missing features & reduce state count
+  * build: update bindings
+  * chore: regenerate with latest cli
+  * refactor: move and flatten tests to `test/`
+  * fix highlight raw_string_literal
+  * Support for do and while loops named fields (#324)
+  * Highlight improvements for variables
+  * Remove `type` field names from simple lists and add more test cases
+  * Simplify highlighting queries
+  * Add `type` fields
+  * Add missing operators to highlight query (#315)
+  * Adjust non-parenthesized lambda parameter list
+  * Change `parameters` field name in lambda expression
+  * Add field names to test files
+  * Remove unnecessary conflict rules (#311)
+  * fix: make optional semicolons external to avoid intensive build times (#309)
+  * Highlight lambda expressions with specified return values (C# 10). (#308)
+  * Ensure method invocations are highlighted. (#307)
+  * Fix unhandled parameter modifier combination
+  * Add test case with multiple parameter modifiers on the same parameter
+  * Highlight a few extra keywords. (#305)
+  * Modernize and expand syntax highlighting (#304)
+  * Fix grammar to handle explicitly implemented conversion operators
+  * Add test case for explicitly implemented conversion operator
+  * Fix grammar to handle checked operators
+  * Add test case for checked operators
+  * Fix grammar to handle explicitly implemented operators
+  * Add test case for explicitly implemented operator
+  * Fix record base type
+  * Add test case for non-identifier record base type
+  * Fix "logical and" Parsed as "cast + deref" While Preserving Generic Invocations (#299)
+  * Add coverage for generic method invocations
+  * Revert "Fix "logical and" parsed as "cast + dereference" (#294)"
+  * Remove deprecated actions (#297)
+  * Extract character literal contents (#296)
+  * Extract string literal contents and encoding (#295)
+  * Fix "logical and" parsed as "cast + dereference" (#294)
+  * Fix C# raw_string_literal (#293)
+  * Add test for `var` highlighting
+  * Add sample generated highlight test file
+  * Add syntax highlight generator
+  * Adds GH tags queries (#291)
+  * Add `nameof` contextual keyword test cases
+  * Add `commaSep2` helper
+  * Add file_sizes.txt
+  * Fix implicit type and named type conflict
+  * Add `var` to contextual keywords
+  * Add test cases with `var` identifiers
+  * Remove contextual keyword `set`, `get`, `init`, `add`, `remove`
+  * Remove impossible types from object creation expression
+  * Remove impossible base types for nullable and pointer types
+  * Fix `scoped` as parameter type
+  * Add `scoped` as a contextual keyword
+  * Add test cases with `scoped` identifiers
+  * Add file size checking to prevent large unintended growth (#284)
+  * Remove `dynamic` and `nameof` from contextual keywords
+  * Specify associativity for pointer indirection
+  * Update copyright notice
+  * Add test cases with `file` identifiers
+  * Add missing contextual keywords to `_contextual_keywords`
+  * Order contextual keywords alphabetically
+  * Fix `_lvalue_expression` to include pointer indirection
+  * Add test case for assignment with pointer indirection
+  * Split expression rule to improve parsing conflicting input
+  * Add test case for declaration parsed as expression
+  * Update corpus files to match formatting of `tree-sitter test -u`
+  * Align build/test/node with tree-sitter-javascript (#267)
+  * Add C#11 >>> operator and >>>= assignment (#266)
+  * Improve operator and operator overload coverage (#265)
+  * Allow records primary constructor base to be generic (#262)
+  * Add support for `scoped` types (#261)
+  * Update readme to tick off file scoped types (#260)
+  * Add optional lambda return type (#259)
+  * Remove all precedence from type system (#256)
+  * Add support for `file` scoped classes (#257)
+  * Remove some unnecessary conflicts (#255)
+  * Fix ambiguity between cast and parenthesized invocation (#250)
+  * Add test for `ref` and `ref readonly` in `delegate` declaration (#246)
+  * Add `ref`/`ref readonly` types to the type system (#251)
+  * Add CSX preprocessor directives (#248)
+  * Add `void` to predefined types (#249)
+  * Add support for enhanced `#line` directives (#245)
+  * Add support for `static` modifier on anonymous method expressions (#244)
+  * First stab at raw string literals (#240)
+
+-------------------------------------------------------------------
 Tue Mar 26 22:56:02 UTC 2024 - Björn Bidar <bjorn.bidar@thaodan.de>
 
 - Also don't build on Arm 32bit as memory isn't enough for tree-sitter generate
