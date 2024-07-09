@@ -1,16 +1,16 @@
-Index: pydantic_settings-2.2.1/tests/test_settings.py
+Index: pydantic_settings-2.3.4/tests/test_settings.py
 ===================================================================
---- pydantic_settings-2.2.1.orig/tests/test_settings.py
-+++ pydantic_settings-2.2.1/tests/test_settings.py
-@@ -6,6 +6,7 @@ import uuid
- from datetime import datetime, timezone
+--- pydantic_settings-2.3.4.orig/tests/test_settings.py
++++ pydantic_settings-2.3.4/tests/test_settings.py
+@@ -10,6 +10,7 @@ from datetime import datetime, timezone
+ from enum import IntEnum
  from pathlib import Path
- from typing import Any, Callable, Dict, Generic, List, Optional, Set, Tuple, Type, TypeVar, Union
+ from typing import Any, Callable, Dict, Generic, Hashable, List, Optional, Set, Tuple, Type, TypeVar, Union
 +from unittest import mock
  
  import pytest
- from annotated_types import MinLen
-@@ -1050,7 +1051,8 @@ def test_multiple_env_file(tmp_path):
+ import typing_extensions
+@@ -1116,7 +1117,8 @@ def test_multiple_env_file(tmp_path):
  
          model_config = SettingsConfigDict(env_file=[base_env, prod_env])
  
@@ -20,7 +20,7 @@ Index: pydantic_settings-2.2.1/tests/test_settings.py
      assert s.debug_mode is False
      assert s.host == 'https://example.com/services'
      assert s.port == 8000
-@@ -1069,7 +1071,8 @@ def test_model_env_file_override_model_c
+@@ -1135,7 +1137,8 @@ def test_model_env_file_override_model_c
  
          model_config = SettingsConfigDict(env_file=prod_env)
  

@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pydantic-settings
-Version:        2.2.1
+Version:        2.3.4
 Release:        0
 Summary:        Settings management using Pydantic
 License:        MIT
