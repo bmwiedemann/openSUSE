@@ -1,0 +1,18 @@
+<services>
+  <service name="obs_scm" mode="disabled">
+   <param name="changesgenerate">enable</param>
+   <param name="versionformat">5.15.14+kde@TAG_OFFSET@</param>
+   <param name="url">https://invent.kde.org/qt/qt/qtbase.git</param>
+   <param name="scm">git</param>
+   <param name="filename">qtbase-everywhere-src</param>
+   <param name="revision">kde/5.15</param>
+   <param name="parent-tag">v5.15.14-lts-lgpl</param>
+   <param name="changesgenerate">enable</param>
+  </service>
+  <service name="set_version" mode="disabled"/>
+  <service name="tar" mode="buildtime"/>
+  <service name="recompress" mode="buildtime">
+   <param name="file">*.tar</param>
+   <param name="compression">xz</param>
+  </service>
+</services>

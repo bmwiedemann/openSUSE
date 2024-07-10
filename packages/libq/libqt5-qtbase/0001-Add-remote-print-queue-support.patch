@@ -1,0 +1,282 @@
+From f39caba21d60cb55d0c807dccd8af8578ed6c8e8 Mon Sep 17 00:00:00 2001
+From: Antonio Larrosa <larrosa@kde.org>
+Date: Tue, 6 Jun 2017 16:34:32 +0200
+Subject: [PATCH] Add remote print queue support
+
+Cups servers which announce themselves on avahi will be shown in
+the printer dialog. This adds a delay the first time the print dialog
+is opened in order to search for print queues . Because of this delay,
+the remote print queue discovery is disabled by default and can be enabled
+by setting the QT_ENABLE_PRINTER_DISCOVERY environment variable to 1.
+
+The commit to Qt (which enabled the discovery by default) has
+a Change-Id: Ib70715d331e8f380a3c9039011bb8521986652aa
+---
+ .../printsupport/cups/qcupsprintengine.cpp    | 35 ++++++-
+ .../printsupport/cups/qcupsprintersupport.cpp | 95 +++++++++++++++++--
+ .../printsupport/cups/qcupsprintersupport_p.h |  8 ++
+ .../printsupport/cups/qppdprintdevice.cpp     | 30 +++++-
+ 4 files changed, 157 insertions(+), 11 deletions(-)
+
+diff --git a/src/plugins/printsupport/cups/qcupsprintengine.cpp b/src/plugins/printsupport/cups/qcupsprintengine.cpp
+index 1f9cbc4565..522cfc81b6 100644
+--- a/src/plugins/printsupport/cups/qcupsprintengine.cpp
++++ b/src/plugins/printsupport/cups/qcupsprintengine.cpp
+@@ -48,6 +48,7 @@
+ #include <qbuffer.h>
+ #include "private/qcups_p.h" // Only needed for PPK_CupsOptions
+ #include <QtGui/qpagelayout.h>
++#include "qcupsprintersupport_p.h"
+ 
+ #include <cups/cups.h>
+ 
+@@ -254,8 +255,40 @@ void QCupsPrintEnginePrivate::closePrintDevice()
+         const auto parts = printerName.splitRef(QLatin1Char('/'));
+         const auto printerOriginalName = parts.at(0);
+         cups_option_t* optPtr = cupsOptStruct.size() ? &cupsOptStruct.first() : 0;
+-        cupsPrintFile(printerOriginalName.toLocal8Bit().constData(), tempFile.toLocal8Bit().constData(),
++
++        bool fallbackToLocal = false;
++        cups_dest_t *cupsDest = NULL;
++
++        if (!qEnvironmentVariableIsSet("QT_ENABLE_PRINTER_DISCOVERY")) {
++            fallbackToLocal = true;
++        } else {
++            cupsDest = cupsGetDest(printerOriginalName.toLocal8Bit(), NULL, QCupsPrinterSupport::cupsPrintersCount(), QCupsPrinterSupport::cupsPrinters());
++        }
++
++        if (cupsDest) {
++            char resource[HTTP_MAX_URI];
++            http_t *http = cupsConnectDest (cupsDest, 0, -1, 0,
++                                         resource, sizeof (resource),
++                                         0, 0);
++            if (http) {
++                char *name = strrchr (resource, '/');
++                qDebug() << "resource:" << resource << "," << name;
++                if (name)
++                    cupsPrintFile2 (http, ++name, tempFile.toLocal8Bit().constData(),
+                       title.toLocal8Bit().constData(), cupsOptStruct.size(), optPtr);
++                httpClose(http);
++            } else {
++                fallbackToLocal=true;
++            }
++        }
++        else {
++            fallbackToLocal=true;
++        }
++
++        if (fallbackToLocal) {
++            cupsPrintFile(printerOriginalName.toLocal8Bit().constData(), tempFile.toLocal8Bit().constData(),
++                          title.toLocal8Bit().constData(), cupsOptStruct.size(), optPtr);
++        }
+ 
+         QFile::remove(tempFile);
+     }
+diff --git a/src/plugins/printsupport/cups/qcupsprintersupport.cpp b/src/plugins/printsupport/cups/qcupsprintersupport.cpp
+index 42a7a821f2..3fbfcd2425 100644
+--- a/src/plugins/printsupport/cups/qcupsprintersupport.cpp
++++ b/src/plugins/printsupport/cups/qcupsprintersupport.cpp
+@@ -61,6 +61,35 @@
+ # include <cups/language.h>
+ #endif
+ 
++typedef struct
++{
++    cups_dest_t *printers;
++    int num_printers;
++} EnumDestsContext;
++
++static int enum_dest_cb2 (void *user_data, unsigned flags, cups_dest_t *dest)
++{
++   EnumDestsContext *context = (EnumDestsContext *) user_data;
++   if ((flags & (CUPS_DEST_FLAGS_UNCONNECTED |
++                 CUPS_DEST_FLAGS_REMOVED |
++                 CUPS_DEST_FLAGS_ERROR |
++                 CUPS_DEST_FLAGS_RESOLVING |
++                 CUPS_DEST_FLAGS_CONNECTING |
++                 CUPS_DEST_FLAGS_CANCELED)) == 0) {
++
++       context->num_printers = cupsCopyDest (dest, context->num_printers,
++                                              &context->printers);
++
++       // Also copy whether this is the local default /
++       cups_dest_t *the_dest;
++       the_dest = cupsGetDest(dest->name, dest->instance,
++                               context->num_printers, context->printers);
++       the_dest->is_default = dest->is_default;
++       qDebug() << dest->name << "_" << dest->instance << "_" << context->num_printers;
++   }
++   return 1;
++}
++
+ QT_BEGIN_NAMESPACE
+ 
+ #if QT_CONFIG(dialogbuttonbox)
+@@ -159,17 +188,35 @@ QPrintDevice QCupsPrinterSupport::createPrintDevice(const QString &id)
+ 
+ QStringList QCupsPrinterSupport::availablePrintDeviceIds() const
+ {
+-    QStringList list;
++/*  // Reset cache disabled for now
++    if (qt_cups_printers) {
++        cupsFreeDests( qt_cups_num_printers, qt_cups_printers );
++        qt_cups_printers = NULL;
++        qt_cups_num_printers = 0;
++    }
++*/
+     cups_dest_t *dests;
+-    int count = cupsGetDests(&dests);
+-    list.reserve(count);
+-    for (int i = 0; i < count; ++i) {
++    bool enablePrinterDiscovery = qEnvironmentVariableIsSet("QT_ENABLE_PRINTER_DISCOVERY");
++    if (!enablePrinterDiscovery) {
++        qt_cups_num_printers = cupsGetDests(&dests);
++    } else {
++        if (qt_cups_num_printers == 0)
++            QCupsPrinterSupport::fillCupsPrinters();
++
++        dests = qt_cups_printers;
++    }
++    QStringList list;
++    list.reserve(qt_cups_num_printers);
++    for (int i = 0; i < qt_cups_num_printers; ++i) {
+         QString printerId = QString::fromLocal8Bit(dests[i].name);
+         if (dests[i].instance)
+             printerId += QLatin1Char('/') + QString::fromLocal8Bit(dests[i].instance);
+         list.append(printerId);
+     }
+-    cupsFreeDests(count, dests);
++    if (!enablePrinterDiscovery) {
++        cupsFreeDests(qt_cups_num_printers, dests);
++    }
++
+     return list;
+ }
+ 
+@@ -182,8 +229,18 @@ QString QCupsPrinterSupport::staticDefaultPrintDeviceId()
+ {
+     QString printerId;
+     cups_dest_t *dests;
+-    int count = cupsGetDests(&dests);
+-    for (int i = 0; i < count; ++i) {
++
++    bool enablePrinterDiscovery = qEnvironmentVariableIsSet("QT_ENABLE_PRINTER_DISCOVERY");
++    if (!enablePrinterDiscovery) {
++        qt_cups_num_printers = cupsGetDests(&dests);
++    } else {
++        if (qt_cups_num_printers == 0)
++            QCupsPrinterSupport::fillCupsPrinters();
++
++        dests = qt_cups_printers;
++    }
++
++    for (int i = 0; i < qt_cups_num_printers; ++i) {
+         if (dests[i].is_default) {
+             printerId = QString::fromLocal8Bit(dests[i].name);
+             if (dests[i].instance) {
+@@ -192,8 +249,30 @@ QString QCupsPrinterSupport::staticDefaultPrintDeviceId()
+             }
+         }
+     }
+-    cupsFreeDests(count, dests);
++    if (!enablePrinterDiscovery) {
++        cupsFreeDests(qt_cups_num_printers, dests);
++    }
+     return printerId;
+ }
+ 
++void QCupsPrinterSupport::fillCupsPrinters()
++{
++    EnumDestsContext context;
++    context.printers = 0;
++    context.num_printers = 0;
++
++    qDebug() << "begin enumerating printers";
++
++    cupsEnumDests(CUPS_DEST_FLAGS_NONE, 4000, NULL, 0, 0,
++                   enum_dest_cb2, &context);
++
++    qDebug() << "end enumerating printers";
++    qt_cups_printers = context.printers;
++    qt_cups_num_printers = context.num_printers;
++}
++
++cups_dest_t *QCupsPrinterSupport::qt_cups_printers = NULL;
++int QCupsPrinterSupport::qt_cups_num_printers = 0;
++
++
+ QT_END_NAMESPACE
+diff --git a/src/plugins/printsupport/cups/qcupsprintersupport_p.h b/src/plugins/printsupport/cups/qcupsprintersupport_p.h
+index c2b4895c7f..9531a0c368 100644
+--- a/src/plugins/printsupport/cups/qcupsprintersupport_p.h
++++ b/src/plugins/printsupport/cups/qcupsprintersupport_p.h
+@@ -56,6 +56,8 @@
+ 
+ #include <QtCore/qstringlist.h>
+ 
++#include <cups/cups.h>
++
+ QT_BEGIN_NAMESPACE
+ 
+ class QCupsPrinterSupport : public QPlatformPrinterSupport
+@@ -73,8 +75,14 @@ public:
+ 
+     static QString staticDefaultPrintDeviceId();
+ 
++    static void fillCupsPrinters();
++    static cups_dest_t *cupsPrinters() { return qt_cups_printers; };
++    static int cupsPrintersCount() { return qt_cups_num_printers; };
+ private:
+     QString cupsOption(int i, const QString &key) const;
++
++    static cups_dest_t *qt_cups_printers;
++    static int qt_cups_num_printers;
+ };
+ 
+ QT_END_NAMESPACE
+diff --git a/src/plugins/printsupport/cups/qppdprintdevice.cpp b/src/plugins/printsupport/cups/qppdprintdevice.cpp
+index 8bfa239dbe..b38a2081bc 100644
+--- a/src/plugins/printsupport/cups/qppdprintdevice.cpp
++++ b/src/plugins/printsupport/cups/qppdprintdevice.cpp
+@@ -65,10 +65,36 @@ QPpdPrintDevice::QPpdPrintDevice(const QString &id)
+         if (parts.size() > 1)
+             m_cupsInstance = parts.at(1).toUtf8();
+ 
++        bool enablePrinterDiscovery = qEnvironmentVariableIsSet("QT_ENABLE_PRINTER_DISCOVERY");
++
+         // Get the print instance and PPD file
+-        m_cupsDest = cupsGetNamedDest(CUPS_HTTP_DEFAULT, m_cupsName, m_cupsInstance.isNull() ? nullptr : m_cupsInstance.constData());
++        if (!enablePrinterDiscovery) {
++            m_cupsDest = cupsGetNamedDest(CUPS_HTTP_DEFAULT, m_cupsName, m_cupsInstance.isNull() ? nullptr : m_cupsInstance.constData());
++        } else {
++            cups_dest_t *cupsDest = cupsGetDest( m_cupsName,
++                                             (m_cupsInstance.isEmpty() ? nullptr : m_cupsInstance.data()),
++                                             QCupsPrinterSupport::cupsPrintersCount(),
++                                             QCupsPrinterSupport::cupsPrinters() );
++            cupsCopyDest(cupsDest, 0, &m_cupsDest);
++        }
+         if (m_cupsDest) {
+-            const char *ppdFile = cupsGetPPD(m_cupsName);
++            char resource[HTTP_MAX_URI];
++            http_t *http = NULL;
++            const char *ppdFile = NULL;
++
++            if (enablePrinterDiscovery) {
++                http = cupsConnectDest (m_cupsDest, 0, -1, 0,
++                                 resource, sizeof (resource),
++                                 0, 0);
++            }
++            if (http) {
++                char *name = strrchr (resource, '/');
++                if (name)
++                    ppdFile = cupsGetPPD2 (http, ++name);
++                httpClose(http);
++            } else {
++                ppdFile = cupsGetPPD(m_cupsName);
++            }
+             if (ppdFile) {
+                 m_ppd = ppdOpenFile(ppdFile);
+                 unlink(ppdFile);
+-- 
+2.36.1
+
