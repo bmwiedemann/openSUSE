@@ -1,0 +1,34 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c60fa5e97837cce12eb04c65b405e382</srcmd5>
+    <version>1.0.0</version>
+    <time>1587467102</time>
+    <user>dimstar_suse</user>
+    <comment>Please stage with all the other kubernetes multi-version stuff</comment>
+    <requestid>793837</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>6260f2ba719a841dfdbfa0ba650f811e</srcmd5>
+    <version>1.0.0</version>
+    <time>1587659947</time>
+    <user>dimstar_suse</user>
+    <comment>- Add LICENSE</comment>
+    <requestid>796531</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>8c85f6dcea088aab5e8ba9b2f2d81da2</srcmd5>
+    <version>1.0.0</version>
+    <time>1659034723</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>991407</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>010b7fe410f3e170b9cfd59b11234a43</srcmd5>
+    <version>1.0.0</version>
+    <time>1713546955</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1169107</requestid>
+  </revision>
+</revisionlist>
