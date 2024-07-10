@@ -1,0 +1,400 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>327c1ea37e446bd18c1dd334fd9019c7</srcmd5>
+    <version>1.0.0</version>
+    <time>1271934155</time>
+    <user>autobuild</user>
+    <comment>Copy from mobile:synchronization:FACTORY/libimobiledevice based on submit request 36503 from user FunkyM
+</comment>
+    <requestid>36503</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>72cd8c1838dd753281dddf944b92e66b</srcmd5>
+    <version>1.0.1</version>
+    <time>1275259765</time>
+    <user>autobuild</user>
+    <comment>Copy from mobile:synchronization:FACTORY/libimobiledevice based on submit request 40854 from user FunkyM
+</comment>
+    <requestid>40854</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>0cdc0271c0e722f40d02f6ba575a0be9</srcmd5>
+    <version>1.0.2</version>
+    <time>1277194538</time>
+    <user>autobuild</user>
+    <comment>Copy from mobile:synchronization:FACTORY/libimobiledevice based on submit request 41851 from user FunkyM
+</comment>
+    <requestid>41851</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>0cdc0271c0e722f40d02f6ba575a0be9</srcmd5>
+    <version>1.0.2</version>
+    <time>1278667359</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>0cdc0271c0e722f40d02f6ba575a0be9</srcmd5>
+    <version>1.0.2</version>
+    <time>1278678590</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>bb9b8d5cdfd6691f15261bd627d9ac59</srcmd5>
+    <version>1.0.3</version>
+    <time>1286399557</time>
+    <user>autobuild</user>
+    <comment>Copy from mobile:synchronization:FACTORY/libimobiledevice based on submit request 49866 from user coolo
+</comment>
+    <requestid>49866</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>09732b04dd88433150849c32d63ee0c2</srcmd5>
+    <version>1.0.4</version>
+    <time>1294389394</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 57221 from user coolo
+</comment>
+    <requestid>57221</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>c3e5663ab36461f39ab736b65fc4f976</srcmd5>
+    <version>1.0.4</version>
+    <time>1294389407</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 57221
+</comment>
+  </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>c3e5663ab36461f39ab736b65fc4f976</srcmd5>
+    <version>1.0.4</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>447c1a96a6b85f355cf1c5d92c688e58</srcmd5>
+    <version>1.1.1</version>
+    <time>1305895690</time>
+    <user>saschpe</user>
+    <comment>For dimstar, because he asked so nicely.</comment>
+    <requestid>70132</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>eb88f33a8966f862f9359b61d04d8331</srcmd5>
+    <version>1.1.1</version>
+    <time>1305895701</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 70132
+</comment>
+  </revision>
+  <revision rev="12" vrev="4">
+    <srcmd5>89cec81a076236e963bec02b77a55573</srcmd5>
+    <version>1.1.1</version>
+    <time>1306764407</time>
+    <user>saschpe</user>
+    <comment>Support swig 2.x (forwarded request 71395 from namtrac)</comment>
+    <requestid>71929</requestid>
+  </revision>
+  <revision rev="13" vrev="5">
+    <srcmd5>6221e82137ff18a2cc601527013a3f40</srcmd5>
+    <version>1.1.1</version>
+    <time>1306764420</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 71929
+</comment>
+  </revision>
+  <revision rev="14" vrev="6">
+    <srcmd5>cf1df716abfd00a2bd406c71d60b0c5b</srcmd5>
+    <version>1.1.1</version>
+    <time>1311753175</time>
+    <user>saschpe</user>
+    <comment>- add baselibs.conf for libgpod to use (forwarded request 77034 from coolo)</comment>
+    <requestid>77142</requestid>
+  </revision>
+  <revision rev="15" vrev="7">
+    <srcmd5>7051646f99446917966166ef36392311</srcmd5>
+    <version>1.1.1</version>
+    <time>1311753182</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 77142
+</comment>
+  </revision>
+  <revision rev="16" vrev="9">
+    <srcmd5>7051646f99446917966166ef36392311</srcmd5>
+    <version>1.1.1</version>
+    <time>1319182103</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="17" vrev="10">
+    <srcmd5>2d1047abdb95ad3f64a7589ac81da503</srcmd5>
+    <version>1.1.1</version>
+    <time>1321886772</time>
+    <user>coolo</user>
+    <comment>- add libtool as buildrequire to avoid implicit dependency (forwarded request 92533 from coolo)</comment>
+    <requestid>92576</requestid>
+  </revision>
+  <revision rev="18" vrev="11">
+    <srcmd5>d461bb0a2f5bd6bce901856fecd88bcb</srcmd5>
+    <version>1.1.1</version>
+    <time>1323192256</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>47b1801e41155554a1f41b4ce07c7f8e</srcmd5>
+    <version>1.1.4</version>
+    <time>1334759308</time>
+    <user>coolo</user>
+    <comment>- Allow compilation on 11.4 by disabling cython bindings
+
+- Update to 1.1.4:
+  - Fix a bug in idevicesyslog causing the connection to close after timeout
+  - Bump soname revision
+  - Bump libusbmuxd dependency to 1.0.8
+  - Fix reading from syslog_relay and remove null characters
+  - Relicense ideviceimagemounter and idevicescreenshot to LGPL
+  - Fix a crash when using restored_client_free()
+  - API: Add sbservices_get_interface_orientation()
+  - Update man pages and code comments for documentation
+  - Minor cleanup
+  - Add Python bindings generated by Cython
+  - Bump libplist requirement to latest 1.8
+  - Add support for OpenSSL with fallback to GNUTLS
+  - Improvements and various fixes for Win32 and OS X build
+  - Remove glib dependency
+  - Improve restored implementation
+  - Fix various memory leaks
+  - Fix support for iOS 5 and later
+- Remove swig patch as bindings have been removed
+- Remove gstatbuf patch as it is obselete now</comment>
+    <requestid>114396</requestid>
+  </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>47b1801e41155554a1f41b4ce07c7f8e</srcmd5>
+    <version>1.1.4</version>
+    <time>1340183597</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="21" vrev="4">
+    <srcmd5>c4c0a7d2542dbda1eb281ef39aca6868</srcmd5>
+    <version>1.1.4</version>
+    <time>1340621332</time>
+    <user>coolo</user>
+    <comment>ix build with Cython 1.16 (forwarded request 125547 from dimstar)</comment>
+    <requestid>125548</requestid>
+  </revision>
+  <revision rev="22" vrev="5">
+    <srcmd5>ba11f22eef622e4622188401651931f0</srcmd5>
+    <version>1.1.4</version>
+    <time>1342082819</time>
+    <user>namtrac</user>
+    <comment>- Fix segfault without $XDG_CONFIG_HOME and $HOME set
+  (bnc#768537, libiphone#273). (forwarded request 127502 from sbrabec)</comment>
+    <requestid>127522</requestid>
+  </revision>
+  <revision rev="23" vrev="6">
+    <srcmd5>936b49be11aaa95343b675ed838c4dc6</srcmd5>
+    <version>1.1.4</version>
+    <time>1358786327</time>
+    <user>coolo</user>
+    <comment>Fix build in Factory - for now disable thepython bindings... nothing uses them anyway. (forwarded request 149172 from dimstar)</comment>
+    <requestid>149174</requestid>
+  </revision>
+  <revision rev="24" vrev="8">
+    <srcmd5>936b49be11aaa95343b675ed838c4dc6</srcmd5>
+    <version>1.1.4</version>
+    <time>1359109290</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="25" vrev="9">
+    <srcmd5>3c0a4cee900976d0f589147e7db136a1</srcmd5>
+    <version>1.1.4</version>
+    <time>1366632529</time>
+    <user>coolo</user>
+    <comment>- Added url as source.
+  Please see http://en.opensuse.org/SourceUrls (forwarded request 164123 from m_meister)</comment>
+    <requestid>171135</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>20c693aedd8226344d0165d34a5b3ea7</srcmd5>
+    <version>1.1.5</version>
+    <time>1373542184</time>
+    <user>coolo</user>
+    <comment>- Update to version 1.1.5:
+  + An improved idevicebackup2 tool.
+  + Various new tools.
+  + Better cross-platform building.
+  + Crash fixes.
+  + iOS 6+ compatibility fixes.
+  + An important API change related to service lifecycle
+    management. 
+- Drop libimobiledevice-cython1.16-detection.patch: fixed upstream.
+- Drop libimobiledevice-segfault-fix.patch: fixed upstream.
+- Change _lname defines to libimobiledevice4, following upstreams
+  soname change.
+- Update baselibs.conf to follow the soname change. (forwarded request 182574 from dimstar)</comment>
+    <requestid>182620</requestid>
+  </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>73277d966457c277fb43733e70c1ba5a</srcmd5>
+    <version>1.1.5</version>
+    <time>1374490856</time>
+    <user>coolo</user>
+    <comment>Make actually the -doc package contain the documentation (forwarded request 183802 from dimstar)</comment>
+    <requestid>183893</requestid>
+  </revision>
+  <revision rev="28" vrev="4">
+    <srcmd5>73277d966457c277fb43733e70c1ba5a</srcmd5>
+    <version>1.1.5</version>
+    <time>1379662980</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>1f2cab54d18cbdc55fc38da7eafc73c5</srcmd5>
+    <version>1.1.6</version>
+    <time>1405573074</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>240998</requestid>
+  </revision>
+  <revision rev="30" vrev="3">
+    <srcmd5>1f2cab54d18cbdc55fc38da7eafc73c5</srcmd5>
+    <version>1.1.6</version>
+    <time>1409301593</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>8999a8726b2eceaceac0d277174a4565</srcmd5>
+    <version>1.1.7</version>
+    <time>1414218784</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>258244</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>f9567a30b2ac139dd892ca389619f077</srcmd5>
+    <version>1.2.0</version>
+    <time>1425377574</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>288315</requestid>
+  </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>e43327ace69470205dfd9699ad7cc4e6</srcmd5>
+    <version>1.2.0</version>
+    <time>1439190890</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>320517</requestid>
+  </revision>
+  <revision rev="34" vrev="3">
+    <srcmd5>ab287e81908f4ba4ba17c830bb4658f2</srcmd5>
+    <version>1.2.0</version>
+    <time>1464863871</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>398370</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>85e10e4c6655346e13962c8a500cf2a0</srcmd5>
+    <version>1.2.0+git20170122.45fda81</version>
+    <time>1485380150</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>451848</requestid>
+  </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>f2a80e4474cafe0293fa8ca911043d08</srcmd5>
+    <version>1.2.0+git20170122.45fda81</version>
+    <time>1486546987</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>454121</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>ca2b1865f559fda4be30951b093c983a</srcmd5>
+    <version>1.2.0+git20180427.26373b3</version>
+    <time>1529666018</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>616171</requestid>
+  </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>1d4c1efbc2a24956b88508d561091f43</srcmd5>
+    <version>1.2.0+git20180427.26373b3</version>
+    <time>1575106767</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>751837</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>3502bb279c064a13e6afc24c0a0ab44a</srcmd5>
+    <version>1.2.0+git20200220.3d8d13f</version>
+    <time>1585264988</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix not needed requires
+
+- Switch python bindings to base on python3
+- Update version to 1.2.0+git20200220.3d8d13f:
+  * Many fixes all around
+  * support for py3</comment>
+    <requestid>784788</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>a991aff08af276cad77adf7354702465</srcmd5>
+    <version>1.2.0+git.20200330</version>
+    <time>1586247947</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>791497</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>c3a60f92ad61206097583bac0f0a1723</srcmd5>
+    <version>1.3.0+git.20200910</version>
+    <time>1611928499</time>
+    <user>dimstar_suse</user>
+    <comment>- Use the new library name in baselibs.conf.
+
+- Remove unnecessary provides/obsoletes
+
+- Update to verison 1.3.0+git.20200910
+  * Fix service startup for iOS 14b4
+  * Add more lockdown error codes
+  * Add new lockdownd_pair_with_options() function
+  * Make sure sockets only listen locally due to security reasons
+  * Plug various memory leaks
+  * Store application information in Info.plist using idevicebackup2
+  * Various other bugfixes and improvements</comment>
+    <requestid>864023</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>109599db8c4986d5ad415b49b07cc9bf</srcmd5>
+    <version>1.3.0+git.20210921</version>
+    <time>1643321776</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>948940</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>7bc0e331161701b006f28fc553637dfd</srcmd5>
+    <version>1.3.0+179git.20230430</version>
+    <time>1686335826</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1091444</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>b3a68ecbbdc4b4351dd0581f4e5573e1</srcmd5>
+    <version>1.3.0+190git.20230705</version>
+    <time>1692379654</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1103811</requestid>
+  </revision>
+</revisionlist>
