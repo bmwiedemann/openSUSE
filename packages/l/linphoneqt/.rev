@@ -1,0 +1,204 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>43e5902294dcb4e3ca7d93b488d2ee35</srcmd5>
+    <version>4.2.5</version>
+    <time>1632849388</time>
+    <user>dimstar_suse</user>
+    <comment>Packages has been fixed and build without errors, can go back to Factory</comment>
+    <requestid>920223</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c196d21d438dd7c9cb45bcb8cadece32</srcmd5>
+    <version>4.2.5</version>
+    <time>1633644383</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>923808</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>62ad5995bb6195a41b57f566fab7a8ca</srcmd5>
+    <version>4.2.5</version>
+    <time>1635877118</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>927662</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>cd6a8edcff3f1d8cd3c59ab9dde14985</srcmd5>
+    <version>4.3.1</version>
+    <time>1637108014</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>931481</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b0485eccbf6f5f567eacf6bc62bc1ebb</srcmd5>
+    <version>4.3.2</version>
+    <time>1637701832</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>933176</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>f2f15102b318e83304e385fe0c73441e</srcmd5>
+    <version>4.3.2</version>
+    <time>1643838068</time>
+    <user>dimstar_suse</user>
+    <comment>- fix license tag
+</comment>
+    <requestid>950591</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>121e2aca60a3cf758c6ba5875c136230</srcmd5>
+    <version>4.4.1</version>
+    <time>1652634022</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>977253</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>ffa0db3f6dfb33181790d83859d67dd4</srcmd5>
+    <version>4.4.5</version>
+    <time>1655396407</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>982691</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>8cbe2e8c73d071a831bafd02716e3776</srcmd5>
+    <version>4.4.8</version>
+    <time>1658857527</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>991193</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>03f438c339cacdbcf543f306818ed9bd</srcmd5>
+    <version>4.4.11</version>
+    <time>1669385834</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1038208</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>b020778e52b4c5ffe474cfde14870aaa</srcmd5>
+    <version>5.0.5</version>
+    <time>1673973302</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.0.5:
+  * Fixed crash at startup
+  * Update SDK to 5.2.10
+- Update to version 5.0.4:
+  * Fixed volume gauge in multimedia parameters while being in call
+  * Update SDK to 5.2.6
+- Update to version 5.0.3:
+  * Fixed crash at startup about missing contact address on account
+- Update to version 5.0.2:
+  * Default Language didn't match with the system language
+- Update to version 5.0.1:
+  * Fixed image display in chats from an URL
+  * Fixed display a notification of all kind of messages
+- Update to version 5.0.0:
+  * Video conference and iCalendars
+  * Make a meeting directly from a group chat
+  * New call layouts
+  * Display a waiting room before going into a conference
+  * Display a waiting room before going into a conference\
+  * Post quantum ZRTP
+  * Merge messages into one notification to avoid spam
+  * Design overhaul on calls
+  * Audio devices can be changed while being in call
+- added linphoneqt_fix_gcc12_error.patch
+  * fix build error with gcc12
+</comment>
+    <requestid>1058090</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>7db8123105e69a040ecea9730413b853</srcmd5>
+    <version>5.0.16</version>
+    <time>1685212665</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1089252</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>ee0f1e2e1f451b43a3d3bbeababda74e</srcmd5>
+    <version>5.1.2</version>
+    <time>1696964353</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1116372</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>72b604ea5e999d388b927f65bd2364cb</srcmd5>
+    <version>5.1.2</version>
+    <time>1699183159</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1123315</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>e94348c3332b78755c606e20b1991fdc</srcmd5>
+    <version>5.2.4</version>
+    <time>1716221734</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 5.2.4.
+  ### Fixed
+   - File permission after auto downloading a file.
+   - Update SDK to 5.3.41
+  ### Added
+    - Option to mute chat reactions.
+    - Notify reactions only on local accounts messages.
+- Update to version 5.2.3.
+  ### Fixed
+    - Call logs : incoming filter will not display missed calls.
+    - Call logs synchronization.
+    - URI handlers when mixing remote provisioning and call.
+    - Blinking on resize or Ui updates on screen that have low frame rates.
+    - Timezones and Windows fix.
+    - Update SDK to 5.3.39.
+- Update to version 5.2.2.
+  ### Fixed
+    - Audio latency and bad echo behavior when going to media settings while being in call.
+    - About panel in readonly
+    - Wrong day offset in start date when scheduling a conference.
+    - Empty route can now be set in account settings.
+    - Network remote file can be used in chat attachment on Windows.
+    - Crash on forwarding a message to a new secure chat room.
+    - URI handlers and remote provisioning.
+    - Avoid to remove file on cancelling upload and fix cancelling file transfers.
+    - Update SDK to 5.3.34.
+  ### Added
+    - '[ui] logs_max_size' : option to set the max size of one log file.
+    - '[ui] notification_origin' : option to specify where to display notifications (only supported: 0=bottom-right and 1=top-right).
+    - '[ui] systray_notification_blink' : option to activate/deactivate the blinking systray on unread notifications.
+    - '[ui] systray_notification_global' : option to display notification number from all accounts or only selected.
+    - '[ui] systray_notification_filtered' : option to filter the notification number (not count if chat room is muted).
+    - Keyboard shortcuts:
+        * 'Ctrl+Shift+W' (or V): accept with video the last incoming call.
+        * 'Ctrl+Shift+A': accept without video the last incoming call.
+        * 'Ctrl+Shift+D': terminate the last call.
+        * 'Ctrl+Shift+E': Enable/disable echo cancellation.
+        * 'Ctrl+Shift+L': Unmute/Mute speaker.
+        * 'Ctrl+Shift+M': Unmute/Mute microphone.
+    - Request application focus when hovering a call notification.
+- removed fix for wrong namespace for the enum ConfiguringState
+- adapt SR#1155718 to linphoneqt
+  * fix boo#1221909
+- Update to version 5.2.1.
+  Changelog:
+  * Fixed
+    * URI handlers when no domain are provided like tel:number.
+    * Empty page on first date in date picker.
+    * Ephemeral deactivation while restarting it.
+    * Fix rates on capture audio (SDK).
+    * Update SDK to 5.3.14.
+  * Added
+    * Remove trailing newlines in smart search bar.
+- Remove patch linphoneqt-fix-no-git.patch.
+- Remove patch linphoneqt-0002-remove-bc_compute_full_version-usage.patch.
+- Add patches fix_cmakelists.patch, fix_ispell_return_type_error.patch.
+</comment>
+    <requestid>1175249</requestid>
+  </revision>
+</revisionlist>

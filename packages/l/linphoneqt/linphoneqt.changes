@@ -1,0 +1,476 @@
+-------------------------------------------------------------------
+Sat May 18 17:54:53 UTC 2024 - Giacomo Comes <gcomes.obs@gmail.com>
+
+- Update to version 5.2.4.
+  ### Fixed
+   - File permission after auto downloading a file.
+   - Update SDK to 5.3.41
+  ### Added
+    - Option to mute chat reactions.
+    - Notify reactions only on local accounts messages.
+- Update to version 5.2.3.
+  ### Fixed
+    - Call logs : incoming filter will not display missed calls.
+    - Call logs synchronization.
+    - URI handlers when mixing remote provisioning and call.
+    - Blinking on resize or Ui updates on screen that have low frame rates.
+    - Timezones and Windows fix.
+    - Update SDK to 5.3.39.
+- Update to version 5.2.2.
+  ### Fixed
+    - Audio latency and bad echo behavior when going to media settings while being in call.
+    - About panel in readonly
+    - Wrong day offset in start date when scheduling a conference.
+    - Empty route can now be set in account settings.
+    - Network remote file can be used in chat attachment on Windows.
+    - Crash on forwarding a message to a new secure chat room.
+    - URI handlers and remote provisioning.
+    - Avoid to remove file on cancelling upload and fix cancelling file transfers.
+    - Update SDK to 5.3.34.
+  ### Added
+    - '[ui] logs_max_size' : option to set the max size of one log file.
+    - '[ui] notification_origin' : option to specify where to display notifications (only supported: 0=bottom-right and 1=top-right).
+    - '[ui] systray_notification_blink' : option to activate/deactivate the blinking systray on unread notifications.
+    - '[ui] systray_notification_global' : option to display notification number from all accounts or only selected.
+    - '[ui] systray_notification_filtered' : option to filter the notification number (not count if chat room is muted).
+    - Keyboard shortcuts:
+        * 'Ctrl+Shift+W' (or V): accept with video the last incoming call.
+        * 'Ctrl+Shift+A': accept without video the last incoming call.
+        * 'Ctrl+Shift+D': terminate the last call.
+        * 'Ctrl+Shift+E': Enable/disable echo cancellation.
+        * 'Ctrl+Shift+L': Unmute/Mute speaker.
+        * 'Ctrl+Shift+M': Unmute/Mute microphone.
+    - Request application focus when hovering a call notification.
+- removed fix for wrong namespace for the enum ConfiguringState
+
+-------------------------------------------------------------------
+Sat May 18 16:53:42 UTC 2024 - Giacomo Comes <gcomes.obs@gmail.com>
+
+- adapt SR#1155718 to linphoneqt
+  * fix boo#1221909
+
+-------------------------------------------------------------------
+Wed Feb 21 12:25:40 UTC 2024 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 5.2.1.
+  Changelog:
+  * Fixed
+    * URI handlers when no domain are provided like tel:number.
+    * Empty page on first date in date picker.
+    * Ephemeral deactivation while restarting it.
+    * Fix rates on capture audio (SDK).
+    * Update SDK to 5.3.14.
+  * Added
+    * Remove trailing newlines in smart search bar.
+- Remove patch linphoneqt-fix-no-git.patch.
+- Remove patch linphoneqt-0002-remove-bc_compute_full_version-usage.patch.
+- Add patches fix_cmakelists.patch, fix_ispell_return_type_error.patch.
+
+-------------------------------------------------------------------
+Sat Nov  4 06:50:32 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Move the "linphone" Obsoletes/Provides from linphone.spec
+  (provider of linphone-cli) to linphoneqt.spec (provider of
+  /usr/bin/linphone), and rename the BRPM accordingly to
+  linphone-desktop.
+  https://forums.opensuse.org/t/tumbleweed-zypper-dup-wants-to-replace-linphone-with-linphone-cli/170249
+
+-------------------------------------------------------------------
+Thu Oct  5 06:40:30 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 5.1.2 (fix boo#1213754):
+  * VFS Encryption.
+  * File viewer in chats (Image/Animated Image/Video/Texts/Pdf) with the option to export the file for VFS mode.
+  * Accept/decline CLI commands.
+  * Colored Emojis with its own font family.
+  * Option to set RLS URI in settings.
+  * Option to display only usernames when showing SIP addresses.
+  * Option to change the max results of the Magic Search bar.
+  * OAuth2 connection to retrieve remote provisioning (Experimental and not usable without configuration).
+  * Create an account with a manual validation (external captcha as of 5.1.0).
+  * Add/View contact from a message.
+  * Mute option for each chatrooms.
+  * New Chat Layout.
+  * Display last seen for contacts.
+  * New language support: Czech
+  * An option to set dial prefix and its use on numbers.
+  * Fetch remote provisioning from URI handler and with confirmation.
+  * Emojis picker.
+  * Text edit in chat can now understand rich texts.
+  * Create thumbnails into memory instead of disk.
+  * Display video thumbnails.
+  * Crop thumbnail and pictures if distored.
+  * Enable registration from accounts list.
+  * Update SDK to 5.2.95
+
+-------------------------------------------------------------------
+Fri May 19 21:11:29 UTC 2023 - Giacomo Comes <gcomes.obs@gmail.com> - 5.0.16
+
+- Update to version 5.0.16:
+  * Fix Section date timezone in chat
+  * Use custom font for chat compose area
+  * Fix Speaking border display
+  * Replace double click on avatar by a simple click for copying address into the SmartSearchBar
+  * Update SDK to 5.2.60 (Active Speaker fix)
+- Update to version 5.0.15:
+  * Fix using only username in URI handlers
+  * Fix Portait thumbnails
+  * Fix Chat flickering on load
+  * Update SDK to 5.2.50
+- Update to version 5.0.14:
+  * Show file extension image instead of thumbnails if image's size factor is too low/high
+  * Update SDK to 5.2.35 (ZLib vulnerability)
+- Update to version 5.0.13:
+  * Fix Update SDK to 5.2.35 (ZLib vulnerability)
+  * Fix Crash and display of local conferences
+  * Show display name for local accounts
+  * Update SDK to 5.2.32
+- Update to version 5.0.12:
+  * Fix Some case of unwanted settings folders creation
+  * Replace black thumbnails that contains transparency by white color
+  * Update SDK to 5.2.28
+- Update to version 5.0.11:
+  * Fix Crash on ending call in conference
+  * Deactivate action buttons and menus if chat room has been left
+  * Remove duplicated nat policies
+  * Save Stun/Turn proxy configuration
+  * Switch off camera at startup
+  * Update SDK to 5.2.25
+- Update to version 5.0.10:
+  * Crash when editing contacts from chat
+  * Remove blank page when opening calls window and add a waiting step while connecting to call
+  * Fix Crash when editing contacts from chat
+  * Remove FFMPEG from dependencies as it is no more needed
+- Update to version 5.0.9:
+  * Fix Display hidden scrollbars
+  * Fix Display hidden error icon on messages
+  * Update SDK to 5.2.19 (fix crash)
+- Update to version 5.0.8:
+  * Fix Qt 5.12 compatibility on recordings
+- Update to version 5.0.7:
+  * Hide the active speaker from the mini views
+  * Display recordings list from the burger menu
+  * Update SDK to 5.2.15
+- Update to version 5.0.6:
+  * Fix URI Handlers to a conference
+
+-------------------------------------------------------------------
+Wed Jan 11 03:06:54 UTC 2023 - Giacomo Comes <gcomes.obs@gmail.com> - 5.0.5
+
+- Update to version 5.0.5:
+  * Fixed crash at startup
+  * Update SDK to 5.2.10
+- Update to version 5.0.4:
+  * Fixed volume gauge in multimedia parameters while being in call
+  * Update SDK to 5.2.6
+- Update to version 5.0.3:
+  * Fixed crash at startup about missing contact address on account
+- Update to version 5.0.2:
+  * Default Language didn't match with the system language
+- Update to version 5.0.1:
+  * Fixed image display in chats from an URL
+  * Fixed display a notification of all kind of messages
+- Update to version 5.0.0:
+  * Video conference and iCalendars
+  * Make a meeting directly from a group chat
+  * New call layouts
+  * Display a waiting room before going into a conference
+  * Display a waiting room before going into a conference\
+  * Post quantum ZRTP
+  * Merge messages into one notification to avoid spam
+  * Design overhaul on calls
+  * Audio devices can be changed while being in call
+- added linphoneqt_fix_gcc12_error.patch
+  * fix build error with gcc12
+
+-------------------------------------------------------------------
+Fri Nov 18 12:45:00 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 4.4.11:
+  + Uninstall wasn't correctly checking for running application:
+    replace FindWindow by tasklist.
+
+-------------------------------------------------------------------
+Sat Oct 01 12:21:42 UTC 2022 - thod_@gmx.de
+
+- Update to version 4.4.10
+  + Lime exceptions because of unknown boundaries.
+  + AppimageTool update for code signing.
+
+-------------------------------------------------------------------
+Sat Sep 10 12:21:42 UTC 2022 - thod_@gmx.de
+
+- Update to version 4.4.9:
+  * Update SDK to fix a crash on startup due to a test on a removed participant device.
+  * Use default values for new accounts in settings panel.
+  * Add 'sip' scheme in authentication popup.
+
+-------------------------------------------------------------------
+Sun Aug 14 12:21:42 UTC 2022 - thod_@gmx.de
+
+- Allow build on Fedora
+
+-------------------------------------------------------------------
+Mon Jul 25 12:03:34 UTC 2022 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 4.4.8:
+  * Set version checker to linphone.org instead of download.linphone.org
+  * Change priority on display name display based on caller address (instead of call logs)
+  * Update SDK
+  * Display terminated chat rooms and hide empty conferences.
+  * Version checker : fix on synchronization between version type and url.
+  * Update Changelog  Update SDK to prepare video conference and improve DTLS handshakes.
+  * Avoid openning a conversation on sip url and copy the URL into the smartsearchbar.
+  * Remove fallback displayname on logs and chat rooms.
+  * Fix running application detection for uninstalling.
+  * Update download state on automatic/manual file downloads.
+  * Fix premission denied when downloading file in secure chat room (SDK fix).
+- Fix some rpmlint failures.
+  * Create devel package for devel files.
+  * Remove RUNPATH settings from binaries.
+
+-------------------------------------------------------------------
+Wed Jun  8 03:08:22 UTC 2022 - Giacomo Comes <gcomes.obs@gmail.com> - 4.4.5
+
+- Update to version 4.4.5:
+  * Chat rooms may be mark as read while hidden
+- Update to version 4.4.4:
+  * Revert ordering messages from receiving time
+- Update to version 4.4.3:
+  * Crash on searchs with special characters
+- Update to version 4.4.2:
+  * Add Sanitizer build
+  * Add Sanitizer build
+  * Order messages from receiving time
+  * Fix H264 download URL
+  * Hide Admin status in One-to-one chats
+
+-------------------------------------------------------------------
+Sat May  7 15:05:16 UTC 2022 - Giacomo Comes <gcomes.obs@gmail.com>
+
+- Update to version 4.4.1:
+  * Messages features : Reply, forward (to contact, to a SIP address or to a timeline), 
+    Vocal record and play, multi contents, preview.
+  * Add a feedback on fetching remote provisioning when it failed.
+  * Option to enable message notifications.
+  * CPIM on basic chat rooms.
+  * Device name can be changed from settings.
+  * New event on new messages in chat and a shortcut to go to the end of chat if last 
+    message is not shown.
+  * Shortcut in Reply to message's origin.
+  * Allow redirected downloads (bzip2/OpenH264)
+  * Auto-download message files, editable in settings (10Mb as default)
+  * Simplify filtering timelines with 2 modes (minimal or exhaustive) and on 3 kind of 
+    search : security level, simple/group chats, ephemerals.
+  * Sort timelines by taken account of unread events in chat rooms.
+  * Fix systemTrayIcon that could be cloned on each restart.
+  * Fix thumbnails display in notification.
+  * Fix errors on Action-Buttons on restart.
+  * Enable G729 on public builds.
+  * Take account of return key on Numpad.
+  * Huge messages are better shown and with less flickering.
+  * High CPU consumption on idle state.
+  * Hide deleted/terminated chat rooms.
+  * Adapt UserAgent with device name.
+  * Video freeze on network change.
+  * Support OpenGL 4.1 and GLSL 4.10.
+  * Audio errors in settings when using different audio format between input and output.
+  * Set default log size to 50MB
+  * Crash on the smart search bar.
+- revert license tag change
+
+-------------------------------------------------------------------
+Tue Feb  1 20:56:27 UTC 2022 - Giacomo Comes <gcomes.obs@gmail.com> - 4.3.2
+
+- fix license tag
+
+-------------------------------------------------------------------
+Mon Nov 22 15:31:13 UTC 2021 - Klaus Kämpf <kkaempf@suse.com>
+
+- Require liblinphone-data (bsc#1181746)
+
+-------------------------------------------------------------------
+Sun Nov 21 01:45:50 UTC 2021 - Giacomo Comes <gcomes.obs@gmail.com> - 4.3.2
+
+- Update to version 4.3.2:
+  * ALSA volumes can be view/changed while being in call.
+  * Remove constraints on actions (call/chat) that were based on friends capabilities.
+  * Unblock secure group chat activation.
+  * Unselect current contact if history call view is displayed.
+  * Show chat actions in history view
+
+-------------------------------------------------------------------
+Mon Nov  8 07:13:06 UTC 2021 - Giacomo Comes <gcomes.obs@gmail.com> - 4.3.1
+
+- Update to 4.3.1:
+  * A banner is shown when copying text.
+  * Options to enable standard and secure chats.
+  * Add tunnel support if build.
+  * Overhaul of color managment and use monochrome images.
+  * Change Contact Edit and SIP Addresses selections to start a standard chat or a secure one.
+  * Call history button in the timeline panel.
+  * Timeout of incoming call notification is now based on `inc_timeout`
+  * More actions in contact edit panel (call/video call).
+  * Allow to make a readonly variable in configuration (only for enabling chats yet).
+
+-------------------------------------------------------------------
+Tue Nov  2 23:37:54 UTC 2021 - Giacomo Comes <gcomes.obs@gmail.com> - 4.3.0
+
+- Update to 4.3.0:
+  * Chat groups with administrator mode, participants management and devices display
+  * Secure chat rooms for 1-1 and group chat using LIME end-to-end encryption
+  * Ephemerals Chat rooms
+  * LDAP integration: settings allow remote LDAP servers to be configured
+  * Show subject in notifications for group chats
+  * Chat area is no more fixed but adapts to content
+  * Allow to hide or show the timeline panel
+  * Allow to hide or show empty chat rooms in settings
+  * Messages font can now be changed in settings
+  * Echo calibration in settings view
+  * Options to audio codec can be used and stored
+  * A silence file have been added : `silence.mkv` and can be used to switch off some musics
+
+-------------------------------------------------------------------
+Tue Oct 19 23:57:57 UTC 2021 - Giacomo Comes <gcomes.obs@gmail.com> - 4.2.5
+
+- allow to build linphone-desktop-4.2.5 with liblinphone 5.0.x
+
+-------------------------------------------------------------------
+Thu Sep 30 13:19:44 UTC 2021 - Giacomo Comes <gcomes.obs@gmail.com> - 4.2.5
+
+- add BuildRequires:  pkgconfig(Qt5TextToSpeech)
+
+-------------------------------------------------------------------
+Fri Jul 30 05:47:12 UTC 2021 - Giacomo Comes <gcomes.obs@gmail.com> - 4.2.5
+
+- add BuildRequires:  Mesa-libGLESv2-devel
+- add CMAKE_CXX_FLAGS=-fpermissive
+
+-------------------------------------------------------------------
+Sun Jul 4 2021 Giacomo Comes <gcomes.obs@gmail.com> - 4.2.5
+
+- fixed several RPMLINT warning
+
+-------------------------------------------------------------------
+Thu Apr 15 20:20:19 UTC 2021 - Luiz Angelo Daros de Luca <luizluca@tre-sc.jus.br>
+
+- Added linphoneqt-0002-remove-bc_compute_full_version-usage.patch
+  * Patch from ArchLinux to fix build without .git or linphone SDK
+
+- Update to 4.2.5:
+  * No changelog available.
+
+- Update to 4.2.4:
+  * Play DTMF when receiving it and show the Dialpad on outgoing
+    call to allow sending DTMF
+  * Update settings view to not deactivate transport but allow not
+    binding port
+  * Show all call logs by clicking on previously bar
+  * Displaying names in UTF8
+  * Keep unsend typed message in memory when changing of chat room
+  * Log files have Qt logs
+  * Add SOCI Sqlite3 library in Appimage
+  * Use the more generic linphone folder and not Linphone for
+    installation
+  * Simplify build process to use install keyword
+
+- Update to 4.2.3:
+  * Add support to tel and callto protocols
+  * Allow Pulseaudio to switch devices automatically. For example,
+    it will mute all applications that have music when receive a
+    call from Linphone.
+  * Contact name can contain special characters
+  * Avoid to reduce window if it is currently maximized when
+    clicking on contacts
+  * Cleaner use of Windows registries
+ 
+- Update to 4.2.2:
+  * Crash on Opus
+
+-------------------------------------------------------------------
+Tue Oct  6 22:18:20 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- CMake Release build type to remove QML debugging boo#1140595
+
+-------------------------------------------------------------------
+Wed Jul 29 14:46:36 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 4.2.1:
+  * See https://gitlab.linphone.org/BC/public/linphone-desktop/blob/4.2.1/CHANGELOG.md
+- Update licence to GPLv3+.
+- Rebase linphoneqt-fix-no-git.patch.
+- Drop linphoneqt-fix-cmake-i18n.patch,
+  linphoneqt-fix-qt-5.11.patch, fix-qm-generation.patch,
+  linphoneqt-force-default-style.patch: fixed upstream.
+- Drop linphoneqt-qt-5.9-fix-buttons.patch: no longer supported.
+
+-------------------------------------------------------------------
+Sat Aug 31 12:09:47 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add fix-qm-generation.patch to fix abort on startup (boo#1140595)
+
+-------------------------------------------------------------------
+Wed Aug 15 14:36:31 UTC 2018 - sor.alexei@meowr.ru
+
+- Add linphoneqt-fix-no-git.patch: Fix building out-of-git.
+
+-------------------------------------------------------------------
+Tue Aug 14 15:45:18 UTC 2018 - sor.alexei@meowr.ru
+
+- Change the RPM group to the more appropriate and precise
+  Productivity/Telephony/SIP/Clients.
+
+-------------------------------------------------------------------
+Sun Aug 12 19:44:07 UTC 2018 - sor.alexei@meowr.ru
+
+- Add linphoneqt-force-default-style.patch: Force default theme
+  style (commit 313aa68).
+  This fixes issues with tabs reported in boo#1095273.
+
+-------------------------------------------------------------------
+Sat Aug  4 15:23:14 UTC 2018 - sor.alexei@meowr.ru
+
+- Add linphoneqt-qt-5.9-fix-buttons.patch: Fix button invisibility
+  with Qt 5.9 (boo#1095273).
+- Improve linphoneqt-fix-qt-5.11.patch: Add a fix for
+  DefaultTranslator dealing with Qt 5.9 (commit d95f523).
+
+-------------------------------------------------------------------
+Thu Aug  2 20:00:29 UTC 2018 - sor.alexei@meowr.ru
+
+- Replace linphoneqt-fix-qt-5.10.patch with
+  linphoneqt-fix-qt-5.11.patch, adding more fixes:
+  * Try to support menu bar on Qt 5.10 (commit 5dd0161).
+  * Fix ComboBox by importing named QtQuick.Controls (commit
+    7f62ae9).
+  * Do not use SignalSpy as click is emitted twice instead of one
+    in Qt 5.11 (commit 8720931), 
+  * Avoid a crash in Calls with a bad binding (Qt 5.11) on
+    ConferenceControls (commit 4f908ef).
+- Do not bother installing the appstream file to
+  /usr/share/appdata/ on openSUSE Leap 42.x or older.
+
+-------------------------------------------------------------------
+Thu Mar  8 15:19:49 UTC 2018 - sor.alexei@meowr.ru
+
+- Add linphoneqt-fix-qt-5.10.patch: Rename the icon property of
+  TabButton to iconName (an issue with Qt 5.10 and the new icon
+  property, commit ecaab0f, boo#1083654).
+
+-------------------------------------------------------------------
+Sun Sep 10 14:23:13 UTC 2017 - sor.alexei@meowr.ru
+
+- Add the missing libqt5-qtquickcontrols dependency (boo#1065173).
+- Install the appstream file to the /usr/share/metainfo/ directory
+  on openSUSE Leap 15.x or newer.
+
+-------------------------------------------------------------------
+Sun Sep 10 14:23:13 UTC 2017 - sor.alexei@meowr.ru
+
+- Add linphoneqt-fix-cmake-i18n.patch: Support new CMake versions
+  for translations (commit e70c077).
+
+-------------------------------------------------------------------
+Fri Jul 21 13:30:37 UTC 2017 - sor.alexei@meowr.ru
+
+- Initial package.
