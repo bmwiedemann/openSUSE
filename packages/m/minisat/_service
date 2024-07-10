@@ -1,0 +1,19 @@
+<services>
+  <service mode="disabled" name="obs_scm">
+    <param name="url">https://github.com/stp/minisat</param>
+    <param name="scm">git</param>
+    <param name="filename">minisat</param>
+    <param name="changesgenerate">enable</param>
+    <param name="versionformat">@PARENT_TAG@+%cd</param>
+    <param name="versionrewrite-pattern">releases/(.*)</param>
+    <param name="versionrewrite-replacement">\1</param>
+  </service>
+  <service mode="disabled" name="set_version"/>
+
+  <service name="tar" mode="buildtime"/>
+  <service name="recompress" mode="buildtime">
+    <param name="file">minisat-*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+
+</services>

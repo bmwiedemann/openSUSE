@@ -1,0 +1,60 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>bc232da43fdc821dce5ea4372924567b</srcmd5>
+    <version>2.2.0+20130925</version>
+    <time>1489178757</time>
+    <user>dimstar_suse</user>
+    <comment>minisat is needed for stp and klee.</comment>
+    <requestid>458670</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>977727ab010108a8b21a60ee3a3b63aa</srcmd5>
+    <version>2.2.0+20130925</version>
+    <time>1564576583</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>719993</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>4446b457d7e9744335279eaf83b16c7a</srcmd5>
+    <version>2.2.1+20180702</version>
+    <time>1572884178</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.2.1+20180702:
+  * fixed GCC 6.3 warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+  * Specify default argument in the declaration not the friend declaration
+  * Fix declaration of Minisat::memUsedPeak for non-Linux systems
+  * Remove illegal (and not neccesary) friend definition to fix compilation under clang.
+  * Fixing problems with compilation with C++11 compilers
+- switch to cmake
+  * add 0001-CMakeLists-support-different-lib-dirs.patch
+  * add 0001-CMakeLists-make-static-lib-optional.patch
+- remove friend-declaration.patch (in upstream now)
+- remove Makefile_lib_rule.patch (not needed -- cmake)</comment>
+    <requestid>745123</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>1e1394377db594491237797bb8438f74</srcmd5>
+    <version>2.2.1+20200902</version>
+    <time>1605124085</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>847751</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>1414c5e1ce9937b13ff303834e392221</srcmd5>
+    <version>2.2.1+20200902</version>
+    <time>1658857523</time>
+    <user>RBrownFactory</user>
+    <comment>- fix rpath (don't use relative lib64)</comment>
+    <requestid>991175</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>9ae7f09d89725c4426d126ed3897c3f5</srcmd5>
+    <version>2.2.1+20200902</version>
+    <time>1659554213</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>992468</requestid>
+  </revision>
+</revisionlist>

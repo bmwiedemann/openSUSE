@@ -1,0 +1,81 @@
+-------------------------------------------------------------------
+Wed Jul 27 07:30:00 UTC 2022 - Jiri Slaby <jslaby@suse.cz>
+
+- add CMakeLists-use-absolute-libdir-in-rpath-handling.patch
+  (fix rpath (don't use relative lib64))
+
+-------------------------------------------------------------------
+Wed Nov 04 09:03:48 UTC 2020 - jslaby@suse.cz
+
+- Update to version 2.2.1+20200902:
+  * Fixing exported definitions
+  * Adding uninstall capability
+  * Revert "CMakeLists: support different lib dirs"
+  * Removing second STATICCOMPILE
+  * CMakeLists: support different lib dirs
+  * Updating to fix build
+  * Export minisat project for other cmake builds
+  * Fixing static vs. dynamic compile
+  * Quell some clang warnings
+- switch to obs_scm
+- drop 0001-CMakeLists-make-static-lib-optional.patch (in upstream)
+
+-------------------------------------------------------------------
+Mon Nov 04 08:39:23 UTC 2019 - jslaby@suse.com
+
+- Update to version 2.2.1+20180702:
+  * Fix linking of minisat as dependency library on MacOSX
+  * fixed GCC 6.3 warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+  * Specify default argument in the declaration not the friend declaration
+  * Fix declaration of Minisat::memUsedPeak for non-Linux systems
+  * Remove illegal (and not neccesary) friend definition to fix compilation under clang.
+  * Fixing problems with compilation with C++11 compilers
+- switch to cmake
+  * add 0001-CMakeLists-support-different-lib-dirs.patch
+  * add 0001-CMakeLists-make-static-lib-optional.patch
+- remove friend-declaration.patch (in upstream now)
+- remove Makefile_lib_rule.patch (not needed -- cmake)
+
+-------------------------------------------------------------------
+Mon Jul 29 01:10:45 UTC 2019 - Simon Puchert <simonpuchert@alice.de>
+
+- Add friend-declaration.patch:
+  * Fix the illegal friend declaration that caused a build failure.
+
+-------------------------------------------------------------------
+Fri Feb 17 11:47:53 UTC 2017 - jslaby@suse.com
+
+- make the version the same as for stp, klee and others
+
+-------------------------------------------------------------------
+Thu Feb 16 12:58:57 UTC 2017 - mpluskal@suse.com
+
+- Adjust _service
+
+-------------------------------------------------------------------
+Thu Feb 16 08:52:46 UTC 2017 - jengelh@inai.de
+
+- Trim description
+- Use version numbers based on those used by upstream
+
+-------------------------------------------------------------------
+Thu Oct 15 10:00:40 UTC 2015 - jslaby@suse.com
+
+- add LICENSE and README
+
+-------------------------------------------------------------------
+Fri Oct  9 12:19:51 UTC 2015 - jslaby@suse.com
+
+- add Makefile_lib_rule.patch: fix parallel build
+
+-------------------------------------------------------------------
+Tue Apr 14 12:30:42 UTC 2015 - jslaby@suse.com
+
+- switch to the git version
+- update to 20130925
+
+-------------------------------------------------------------------
+Thu Mar 19 15:33:00 UTC 2015 - jslaby@suse.com
+
+- initial package
+
