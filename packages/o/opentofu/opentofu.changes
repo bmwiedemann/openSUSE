@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jul 10 08:12:23 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.7.3:
+  * Updating the VERSION file to 1.7.3. (#1783)
+  * Adding 1.7.3 changelog as released (#1780)
+  * Backporting release workflow changes (#1764)
+  * [Backports/1.7] Support lower-case http/https_proxy env
+    variables in S3 backend (#1741)
+
+-------------------------------------------------------------------
 Mon Jun 03 15:17:31 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.7.2:
