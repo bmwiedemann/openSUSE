@@ -1,0 +1,507 @@
+-------------------------------------------------------------------
+Thu Feb 29 14:47:06 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.
+
+-------------------------------------------------------------------
+Fri Oct 27 13:30:22 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Use SOURCE_DATE_EPOCH for reproducible timestamps
+
+-------------------------------------------------------------------
+Fri Oct 27 11:36:14 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Build using maven and install as maven artifact
+- Generate the javadoc and package it in a separate sub-package
+- Craft the script using the %%jpackage_script macro
+- Added patch:
+  * pdftk-bc175.patch
+    + fix build with bouncycastle 1.75+ with some deprecated methods
+      now removed
+    + fixes build in Factory after bouncycastle upgrade
+
+-------------------------------------------------------------------
+Fri Sep 23 06:23:29 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- update to version 3.3.3:
+  + Added
+    - Support UTF-8 encoded FDF files
+  + Changed
+     - Preserve external links originating from stamps
+  + Fixed
+    - Crash reading invalid bookmarks
+    - Detect invalid parent entries in root form fields
+    - Crash reading invalid XFDF forms
+    - Crashes with non-conforming inputs
+
+-------------------------------------------------------------------
+Tue Dec 21 07:24:42 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 3.3.2:
+ - Fixed
+  - Crash with inputs that contain null pointers
+  - Support reading xfdf forms from stdin
+  - Crash with xdf forms with no catalog
+  - Compatibility with bcprov 1.70
+  - Crash with non-conforming inputs
+
+-------------------------------------------------------------------
+Mon Oct 25 18:53:13 UTC 2021 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 3.3.1:
+  - Fixed
+    - Crash when using OpenType fonts as replacements
+    - Detect forms that contain null pointers
+    - Regression: include fonts in native image build
+- Update to version 3.3.0:
+   - Added
+     - Support filling multi-valued list fields
+     - Support replacing fonts in form fields
+   - Changed
+     - Renamed namespace of internal iText library
+     - Partially updated internal iText library code to 4.2.0
+       NB: might introduce regressions!
+   - Fixed
+     - Crashes with non-conforming inputs
+
+-------------------------------------------------------------------
+Sun Aug  1 09:41:33 UTC 2021 - Carsten Ziepke <kieltux@gmail.com>
+
+- update to version 3.2.3:
+ - Added
+  - Support excluding pages from a page range with ~
+  - Support TextLeading parameter in form field appearances
+ - Changed
+  - update_info adds a new Info dictionary if none is found
+ - Fixed
+  - Crash with non-conforming encrypted inputs
+  - Misleading URL in producer string
+  - Better detection of xref table in non-conforming inputs
+  - Better form detection (in particular forms created by pdftk cat)
+
+-------------------------------------------------------------------
+Sat Jan  9 14:46:13 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 3.2.2:
+ - Fixed
+  - Build error with latest bcprov
+  - Crash when flattening forms
+  - Proper error message with missing passwords
+ - Changed
+  - Better handling of long and non-ASCII form options
+  - Report more annotation types
+
+-------------------------------------------------------------------
+Mon Dec 28 14:07:38 UTC 2020 - Carsten Ziepke <kieltux@gmail.com>
+
+- Pass arguments to pdftk individually quoted (replaced $* with
+  "$@")
+
+-------------------------------------------------------------------
+Tue Oct 27 07:05:52 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 3.2.1:
+ - Added:
+  - Allow specifying attachment metadata
+  - Support AES encryption
+ - Changed:
+  - Attachments compatible with PDF/A-3u
+  - Default encryption AES-128
+ - Fixed:
+  - Regression: allow reading background/stamp from stdin
+  - Crash with incomplete files
+  - Crash with invalid forms
+  - Flatten form fields in order
+
+-------------------------------------------------------------------
+Mon Jul 27 19:34:47 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 3.1.3:
+ - Fixed:
+  - Crash when reading FDF files
+- update to version 3.1.2:
+ - Changed
+  - Add a pattern if missing from burst output
+ - Fixed:
+  - Allow outputting pages read from stdin more than once
+  - Do not warn if PageMediaDimensions is given in update_info
+  - Crash when opening output files in burst fails
+- update to version 3.1.1:
+ - Fixed:
+  - Do not escape form fields if UTF-8 output selected
+- update to version 3.1.0:
+ - Added:
+  - update_info handles page metrics (media, rotation and labels)
+ - Fixed:
+  - Report page label indices correctly
+- update to version 3.0.10:
+ - Fixed:
+  - Crash in dump_data_annots
+  - Load commons-lang-3 only if needed
+  - Crash when copying malformed inputs
+
+-------------------------------------------------------------------
+Mon Feb 18 09:53:00 UTC 2020 - Markus S <kamikazow@web.de>
+
+- update to version 3.0.9:
+ - Added:
+  - Native image build option
+ - Fixed:
+  - Print an informative error if missing dependencies
+  - Crash with newlines in arguments
+- update to version 3.0.8:
+ - Changed
+  - Build for JRE version 1.7
+- update to version 3.0.7:
+ - Fixed:
+  - Crash involving passwords and file handles (java.lang.NullPointerException).
+- update to version 3.0.6:
+ - Fixed:
+  - Crash in burst with invalid file patterns.
+  - Do not report some spurious form fields.
+  - Escape more characters on XML-encoded reports.
+- update to version 3.0.5:
+ - Fixed:
+  - Do not print error if PdfID is missing.
+  - Crash in burst with certain inputs (java.lang.NullPointerException).
+- update to version 3.0.4:
+ - Fixed:
+  - Crashes with type casting (java.lang.ClassCastException)
+- update to version 3.0.3:
+ - Fixed:
+  - Bug that corrupts images in PDF files with (de)compress option
+  - Crash with incomplete records
+- update to version 3.0.2:
+ - Fixed:
+  - Issue with rotation not being applied.
+  - Do not require owner password when user password is given.
+
+-------------------------------------------------------------------
+Mon Dec  9 10:26:36 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Pass command-line parameters to program
+
+-------------------------------------------------------------------
+Sat Oct 27 08:42:46 UTC 2018 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 3.0.1 (java version)
+- Dropped bug-427046_pdftk.cc.patch and Makefile.SUSE
+- Spec cleanup
+
+-------------------------------------------------------------------
+Sun Sep 24 22:19:05 UTC 2017 - seife+obs@b1-systems.com
+
+- remove -fstack-clash-protection from optflags, gcc6 does choke
+  on this parameter
+
+-------------------------------------------------------------------
+Sun Jun  4 16:32:16 UTC 2017 - seife+obs@b1-systems.com
+
+- require gcc*-6 because gcc7 dropped gcj
+
+-------------------------------------------------------------------
+Wed Apr  9 10:57:31 UTC 2014 - schwab@suse.de
+
+- Don't strip the binary
+- Use %optflags also for gcj
+
+-------------------------------------------------------------------
+Mon Jan 13 2014 - brian@aljex.com
+
+- Remove obsolete references to %%jarv & $LIBGCJ from .spec
+  
+-------------------------------------------------------------------
+Fri Aug 02 2013 - joerg.lorenzen@ki.tng.de
+
+- update to version 2.02
+  o Added drop_xmp output option for removing the document XMP metadata
+    stream from a PDF.
+  o Added dump_data output of custom page data embedded by STAMPtk
+    tool. See the embed option in STAMPtk for more information.
+  o Improved PDF bookmark merging logic so it can handle more input
+    cases.
+  o Fixed a password bug where some 'upper-ASCII' characters weren't
+    being mapped to the correct code points.
+  o Fixed a 40-bit decryption bug introduced in version 2.00.
+  o Fixed a bug in the bookmark merging logic that caused bookmarks to
+    be omitted from the merged PDF.
+  o Added a test to ensure that encryption passwords use permitted
+    characters only. (Decryption attempts still allow a larger set of
+    input characters.)
+  o Rewrote the wide-to-utf8 code for Windows to make it more rigorous.
+  o Organized our calls of JvInitClass() in main().
+  o Added descriptions to some exception reports.
+  o Reviewed some code from pdftk.cc, PdfReader.java, PdfWriter.java
+    and friends.
+-------------------------------------------------------------------
+Thu Jun 06 2013 - joerg.lorenzen@ki.tng.de
+
+- update to version 2.01
+  o Fixed an uncompress bug introduced in 2.00 that corrupted some
+    image streams.
+  o Updated the Windows pdftk.exe compiler settings to remedy an
+    elusive NullPointerException reported in the field. This problem
+    first appeared in version 2.00.
+-------------------------------------------------------------------
+Sat May 25 2013 - joerg.lorenzen@ki.tng.de
+
+- update to version 2.00
+  o Added AES decryption of input PDFs. The 'owner' password is still
+    required when decrypting any PDF.
+  o Added merging of bookmarks/outlines when merging full PDFs.
+  o Added new rotate operation, which is a convenient way of rotating
+    select pages of a single PDF.
+  o Added new dump_data_annots operation. Currently it reports only
+    link annotation information.
+  o Added new need_appearances output option. Use this when filling a
+    form with non-ASCII text to ensure the best presentation in Adobe
+    Reader/Acrobat. It won't work when combined with the flatten
+    option.
+  o Improved the compress option so that output PDFs are more compact
+    and efficient.
+  o Added page media information to dump_data output: page rotation,
+    page media bounds and page crop bounds.
+  o Improved the performance of dump_data so it works better with very
+    large PDFs.
+  o Improved the memory management in the Windows binary. This fixes
+    the rare "Too many heap sections" error.
+  o Fixed a bug where form fields with multiple values were not being
+    properly reported by dump_data_fields.
+  o Fixed a_burst_bug that was corrupting the output PDF pages.
+  o Fixed an_input_bug to allow interactive prompting of both the user
+    and owner passwords.
+  o Fixed a burst bug so that doc_data.txt is now output to the same
+    directory as the PDF's pages when an output directory is given.
+  o Fixed a bug where indirect references to the PDF ID in the trailer
+    would cause a crash.
+  o Added a test to fill_form so it checks that an input PDF is a form
+    before trying to fill it with data.
+  o Added a return value of 3 for warnings 'PDF information not added'
+    or 'PDF form not filled.'
+  o Improved the error message for cat page range errors.
+  o Fixed the error report when an input page number is out of range.
+  o Fixed a burst bug where document metadata wasn't being copied
+    properly to the output PDFs.
+  o Updated the Bouncy Castle library to 1.48.
+  o When using the cat operation, the output PDF version number is now
+    set to the maximum PDF version of all of the input PDFs. If any of
+    the input PDFs have PDF extension levels, then the greatest
+    extension level is also copied to the output PDF.
+-------------------------------------------------------------------
+Wed Feb  6 10:35:12 UTC 2013 - seife+obs@b1-systems.com
+
+- update to version 1.45
+  o You can now add or change a PDF's bookmarks using update_info.
+  o Added record delimiters to dump_data output to help make parsing
+    more reliable.
+  o The changes to dump_data output (described above) are also now
+    required for the input to update_info.
+  o You can now use multi-character input handles. Prior versions were
+    limited to a single character, imposing an arbitrary limitation on
+    the number of input PDFs when using handles. Handles still must be
+    all upper-case ASCII.
+  o Added means of referring to PDF pages in reverse order. By
+    prefixing a page number with an r, it counts from the end of the
+    document. For example, r1 is the last page, r2 is the next-to-last
+    page, etc.
+  o Changed the syntax for page rotation. Instead of N, S, E, W, L, R
+    and D, now use: north, south, east, west, left, right and down.
+  o Fixed a stream parsing issue with troublesome PDFs that don't
+    strictly follow the PDF specification.
+
+-------------------------------------------------------------------
+Sun Dec 16 14:55:21 UTC 2012 - seife+obs@b1-systems.com
+
+- fix build on Factory (no unversioned libgcj available anymore)
+
+-------------------------------------------------------------------
+Thu Jun  7 17:49:09 UTC 2012 - seife+obs@b1-systems.com
+
+- simplify the java-gcj-compat buildrequire
+- fix build for opensuse 10.0, it does not have nor need java-gcj
+
+-------------------------------------------------------------------
+Mon Jun  4 08:00:04 UTC 2012 - seife+obs@b1-systems.com
+
+- remove specfile hacks to find out current gcj version
+
+-------------------------------------------------------------------
+Sat May 26 06:25:22 UTC 2012 - seife+obs@b1-systems.com
+
+- do not set LIBGCJ but instead require java-<VER>-gcj-compat
+  this avoids lots of specfile hacks to define current gcj version
+
+-------------------------------------------------------------------
+Thu May 24 07:55:59 UTC 2012 - seife+obs@b1-systems.com
+
+- fix build for Factory's gcc-4.7
+
+-------------------------------------------------------------------
+Wed May 18 12:17:47 UTC 2011 - seife+obs@b1-systems.com
+
+- fix build for FACTORY's gcc-4.6 (just increase version in spec)
+
+-------------------------------------------------------------------
+Thu Mar 17 22:17:27 UTC 2011 - brian@aljex.com
+
+- created new spec and makefile that builds on a wide range of SUSE versions (at least 10.0 to current)
+- use the native/highest version of gcc/gcj on each version of SUSE, not forcing gcj41
+- removed unnecessary dos2unix
+- use rpm macros where possible
+- created Makefile.SUSE
+  allow for inconsistent names of executables and libgcj.jar
+  allow rpm to supply %%optflags
+  remove unrecognized -Wextra
+  fastjar has no suffix on any version of SUSE
+  un-hardcode "/usr/share/java", get from rpm macro(s) instead.
+  allow using "make -f Makefile.SUSE VERSUFF=-4.5", so Makefile.SUSE
+  can also be used manually following the same directions found in the source
+  for the other makefiles.
+
+-------------------------------------------------------------------
+Tue Mar  8 16:12:52 UTC 2011 - seife+obs@b1-systems.com
+
+- use my original -p1 patch for bnc#427046
+
+-------------------------------------------------------------------
+Fri Jan 21 20:18:05 UTC 2011 - mrdocs@opensuse.org
+
+- update to version 1.44
+- run spec-file cleaner
+   o Added new feature for collating PDF page scans: shuffle. Please see
+   the man page for usage details.
+   o Introduced update_info_utf8, dump_data_utf8 and
+     dump_data_fields_utf8 to provide UTF-8 companions to update_info,
+     dump_data and dump_data_fields. These latter operations use XML
+     numerical entities to encode non-ASCII characters. In version 1.43,
+     we changed the encoding for update_info to UTF-8, but that made it
+     incompatible with dump_data and also broke some downstream
+     applications. By introducing these UTF-8 operations, we can revert
+     update_info to its original behavior.
+   o Burst feature now copies the metadata (including XMP) from the
+     input file to the output pages.
+   o Updated Bouncy Castle library to 1.45.
+   o Removed or replaced third-party code that wasn't compatible with
+     pdftk's GPL license.
+   o Updated third-party license information. 
+
+-------------------------------------------------------------------
+Tue Oct 26 14:30:14 UTC 2010 - seife@opensuse.org
+
+- update to version 1.43:
+  o Improved input handle detection to reduce false hits.
+  o Improved keyword detection logic to eliminate false hits if
+    filenames happen to include pdftk keywords even, odd and end
+  o Added option of prompting the user for the output when bursting
+    a PDF. Also reviewed other filename prompting code.
+  o Changed the PDF parser to accept name tokens longer than 127
+    characters - the PDF Specification says that 127 is the limit.
+    This isn't related to file names. The issue arose with PDFs
+    created by Acrobat Web Capture 9.0.
+  o Fixed a problem with filling form choice fields in some PDFs
+    where the old form value was 'sticking.'
+  o Changed pdftk behavior when handling subset fonts so it doesn't
+    alter font name "tags." This was causing printing problems
+    with Acrobat 3.01 on Windows.
+  o Fixed a stream parsing bug that was causing page content to
+    disappear after merge of PDFs generated by Microsoft Reporting
+    Services PDF Rendering Extension 10.0.0.0.
+  o Added multistamp and multibackground features provided by a
+    Debian patch - thanks!
+  o Clear the signal mask as workaround to environments that turn
+    off signals before calling pdftk. This problem is known to
+    cause pdftk hangs in some Python web setups as well as in PHP.
+  o Set locale to C as workaround to an unusual exception. This is
+    a Debian_patch. Please let me know if it causes any troubles.
+  o Improved reporting of output errors via Debian patch
+  o Added support for UTF-8 data in update_info via Debian patch
+  o Added support for UTF-8 filenames via Debian patch
+  o Updated build procedure to work better with newer versions of
+    GCC. Maintained compatibility with older versions of GCC.
+  o Added license information to the source tree for the third-
+    party libraries that pdftk uses.
+- removed obsolete patches
+- small specfile cleanup
+
+-------------------------------------------------------------------
+Mon Oct 27 23:09:53 CET 2008 - ro@suse.de
+
+- fix patch to apply (directory depth) 
+
+-------------------------------------------------------------------
+Sun Oct 26 22:18:49 CET 2008 - bwalle@suse.de
+
+- Add another JvInitClass() to last patch.
+
+-------------------------------------------------------------------
+Mon Oct 13 08:28:00 CET 2008 - toms@suse.de
+
+- Integrated patch bnc#427046 from Bernhard Walle. Thanks, Bernhard!
+
+-------------------------------------------------------------------
+Mon Jan 14 17:19:57 CET 2008 - ro@suse.de
+
+- took some of the current debian patch to make it build 
+
+-------------------------------------------------------------------
+Tue Aug 21 15:35:53 CEST 2007 - toms@suse.de
+
+- Removed java_libs/com/lowagie/text/pdf/HyphenationAuto.java
+  due to licensing issues
+
+-------------------------------------------------------------------
+Fri Aug 17 11:11:49 CEST 2007 - toms@suse.de
+
+- Removed pdftk-1.41/java_libs/com/lowagie/text/pdf/codec/postscript/
+  due to licensing issues
+
+-------------------------------------------------------------------
+Fri Aug  3 11:16:07 CEST 2007 - bwalle@suse.de
+
+- update to 1.41 (#294793)
+  o changes from 1.40 to 1.41
+    · Fixed a bug that corrupted output PDF xref tables. 
+    · Fixed a bug that prevented XFDF form data from being passed
+      to pdftk via stdin.
+  o changes from 1.12 to 1.40
+    · Added the stamp operation
+    · Added the page rotating patch
+    · Added the generate_fdf patch
+    · The fill_form operation can now take XFDF data as well as FDF
+      data.
+    · Added the drop_xfa option
+    · Added the keep_first_id and keep_final_id options
+    · Upgraded the iText library
+    · Added the -O2 optimizing switch to Makefile 
+    · Fixed a bug that caused pdftk to create bloated PDFs when
+      input PDF pages had links on their pages.
+    · Added License-Adobe.txt to the fonts folder
+- fix line endings in pdftk.1.notes (rpmlint)
+
+-------------------------------------------------------------------
+Wed Jun 27 22:23:05 CEST 2007 - rguenther@suse.de
+
+- remove libgcj requires
+
+-------------------------------------------------------------------
+Wed Jan 25 21:39:23 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Nov  2 22:11:05 CET 2005 - dmueller@suse.de
+
+- don't build as root 
+
+-------------------------------------------------------------------
+Mon Aug 22 13:57:59 CEST 2005 - skh@suse.de
+
+- Fix build.
+
+-------------------------------------------------------------------
+Wed Jan 26 16:57:57 CET 2005 - ke@suse.de
+
+- New package proposed by Thomas Schraitle; version 1.12.
+
+

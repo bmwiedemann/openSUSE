@@ -1,0 +1,92 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7a80808deda63624bd8b8f1fd41e1eb3</srcmd5>
+    <version>3.1.3</version>
+    <time>1597751690</time>
+    <user>dimstar_suse</user>
+    <comment>was removed in the past because of issues, new versions are now available upstream</comment>
+    <requestid>823996</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c1f65aa5ae6ed34bcc0483b8d4276af5</srcmd5>
+    <version>3.2.1</version>
+    <time>1603821610</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>844220</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>e351a7eb7b52342b245f1107fdee2657</srcmd5>
+    <version>3.2.1</version>
+    <time>1609253571</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>859083</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>1a678ea85b15d4459131996b922b7edf</srcmd5>
+    <version>3.2.2</version>
+    <time>1610965721</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>863663</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>1d8861f0b63fcf58c8ba390554f7e103</srcmd5>
+    <version>3.2.3</version>
+    <time>1627847503</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 3.2.3:
+ - Added
+  - Support excluding pages from a page range with ~
+  - Support TextLeading parameter in form field appearances
+ - Changed
+  - update_info adds a new Info dictionary if none is found
+ - Fixed
+  - Crash with non-conforming encrypted inputs
+  - Misleading URL in producer string
+  - Better detection of xref table in non-conforming inputs
+  - Better form detection (in particular forms created by pdftk cat) (forwarded request 909595 from Kieltux)</comment>
+    <requestid>909603</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>4b6cc236993b66bed526e0d9de2abd0a</srcmd5>
+    <version>3.3.1</version>
+    <time>1635801661</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>928580</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e3dd8555e664dd099738ed640c0bb8a7</srcmd5>
+    <version>3.3.2</version>
+    <time>1640690791</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>942887</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>79c8784d2671a054ff61f9b70d5c53f4</srcmd5>
+    <version>3.3.3</version>
+    <time>1663935329</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1005572</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>28a85e23e22180be1febb810333df22d</srcmd5>
+    <version>3.3.3</version>
+    <time>1698438552</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1120810</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>a8817e42b889a349a401b258a33d426f</srcmd5>
+    <version>3.3.3</version>
+    <time>1709239916</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1153449</requestid>
+  </revision>
+</revisionlist>
