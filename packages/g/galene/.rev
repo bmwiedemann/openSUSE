@@ -1,0 +1,230 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>fbdd4e77c46e8dda1560547568eee7f1</srcmd5>
+    <version>0.2</version>
+    <time>1611068589</time>
+    <user>dimstar_suse</user>
+    <comment>Please add this to Factory. It's a WebRTC server for giving lectures, IMO useful as light-weight alternative to Jitsi and BBB.</comment>
+    <requestid>864241</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>e0a7a604e4974fb4ff527190f5d678a6</srcmd5>
+    <version>0.3</version>
+    <time>1613774642</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>873575</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>44ba4c21e3b1e0fd7cf26f95eadc3117</srcmd5>
+    <version>0.3</version>
+    <time>1614274037</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>874701</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>df71aaa31f900c52c11cfcf42f3175dc</srcmd5>
+    <version>0.3.1</version>
+    <time>1614684725</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>875522</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>6d3b68d3f11918324ae1857eebe63737</srcmd5>
+    <version>0.3.2</version>
+    <time>1614792877</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>876313</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>e866a070a8fb1802b2981f1889c3aecc</srcmd5>
+    <version>0.3.2</version>
+    <time>1614948423</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>876594</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>59c87601b85ada5e34bead2b13e11022</srcmd5>
+    <version>0.3.3</version>
+    <time>1618694688</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>886128</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>93bd6eaaf3ce909e411cd5a6ae09ee19</srcmd5>
+    <version>0.3.4</version>
+    <time>1619552129</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>888869</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>c18bb7a2884e95c522feceb6d0f66287</srcmd5>
+    <version>0.3.5</version>
+    <time>1621034633</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>892975</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>88bda14812d7ac14ec6bf24d8cb7f70d</srcmd5>
+    <version>0.3.5</version>
+    <time>1623268330</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>898197</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>148b5b7827f240509bbb32d9512be213</srcmd5>
+    <version>0.4</version>
+    <time>1630936677</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>917080</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>6af42e41403a4414c09a51ee9d96bd6d</srcmd5>
+    <version>0.4.1</version>
+    <time>1636149543</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>929717</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>b40d787ee8cdf9759d8e76180e3017ed</srcmd5>
+    <version>0.4.2</version>
+    <time>1638480614</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>935084</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>0a7ad76d5c8c59f570dadf695f4c2876</srcmd5>
+    <version>0.4.3</version>
+    <time>1643321822</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>949529</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>da19323d7a82c2b072ba4614f5e73230</srcmd5>
+    <version>0.4.4</version>
+    <time>1643838048</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>950560</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>89cba0b42e07528a06b79596de3d4af1</srcmd5>
+    <version>0.5</version>
+    <time>1646948752</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>960830</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>935cc1d9cedcfbe3c150bd174a3de676</srcmd5>
+    <version>0.5.1</version>
+    <time>1648241697</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>964830</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>f01bb5163e0e00054c002a920796fb29</srcmd5>
+    <version>0.5.2</version>
+    <time>1650548550</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>971264</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>69284f917adc41395d5244b3331f8a69</srcmd5>
+    <version>0.5.4</version>
+    <time>1652634028</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>977310</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>c5c2d5ddb915759648e760daa8ffe0de</srcmd5>
+    <version>0.5.5</version>
+    <time>1658857433</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>990861</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>984809a3ff9bc689b705117f878e6195</srcmd5>
+    <version>0.6</version>
+    <time>1662926243</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1002447</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>a83b33a72b5c458258ca25dd4ee7164f</srcmd5>
+    <version>0.6.1</version>
+    <time>1671564058</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1043878</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>270b9fa443af639e0337d23a097d85f4</srcmd5>
+    <version>0.7.1</version>
+    <time>1686927354</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.7.1:
+  * Fix incorrect error-handling in token parsing, which could cause
+    Galene to crash after receiving a mis-formatted token.
+  * Implement a dialog for creating tokens.
+  * Tweak peer-to-peer file transfer to more reliably return an error
+    message to the user.
+  * Fix the workaround for non-standard simulcast in older Firefox
+    versions.
+- Update to version 0.7.0:
+  * Updated the protocol version to 2.  Dates are now represented in
+    ISO 8601 format, and there is a new &quot;error&quot; field in error messages
+    that contains a machine-readable identifier.
+  * Implemented stateful tokens (&quot;invitations&quot;).
+  * Made more errors non-fatal, which makes it possible for the client
+    to recover in more situations.
+  * Reworked the progress indicator used during file transfer.
+  * Added Referrer-Policy and X-Content-Type-Options headers to HTTP
+    responses (Galene was already generating HTML links with the
+    &quot;noreferrer&quot; option).  Thanks to Alexandre Iooss.
+  * Fixed a bug in the handling of leave messages.  (The bundled client
+    never sends leave, it just disconnects, so the bug never triggerred.)
+  * Changed the way simulcast tracks are selected to not depend on the rid.
+- Update to version 0.6.2:
+  * Disable simulcast for screensharing; this didn't work well with many
+    browsers.
+  * Fix parsing of VP8 packets with degenerate headers.
+  * Fix computation of group URL when running in insecure mode.
+  * Add configuration option &quot;proxyURL&quot;, which makes it easier to run
+    Galene behind a reverse proxy. (forwarded request 1093432 from amanzini)</comment>
+    <requestid>1093470</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>776f94647a4a60f7943c1b86af32011b</srcmd5>
+    <version>0.7.1</version>
+    <time>1697657143</time>
+    <user>anag+factory</user>
+    <comment>- Require /usr/sbin/groupadd explicitly</comment>
+    <requestid>1118393</requestid>
+  </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>ac90d1036d948e0d9c6a586b954b3b02</srcmd5>
+    <version>0.7.1</version>
+    <time>1709070550</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1152276</requestid>
+  </revision>
+</revisionlist>

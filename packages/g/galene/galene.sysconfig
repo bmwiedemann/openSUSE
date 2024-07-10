@@ -1,0 +1,41 @@
+## Fillup template for Galène video conference server
+##
+
+## Type:        string
+## Default:     ""
+## ServiceRestart: galene
+# Configure command-line arguments for Galène video conference server
+# see https://galene.org/README.html
+ARGS="-http :8443 -data /etc/galene -groups /var/lib/galene/groups -static /usr/share/galene/static -recordings /var/lib/galene/recordings"
+
+# pion debug messages set by env vars
+
+## Type:        string
+## Default:     ""
+## ServiceRestart: galene
+# items to log for log level TRACE
+PION_LOG_TRACE=""
+
+## Type:        string
+## Default:     ""
+## ServiceRestart: galene
+# items to log for log level DEBUG
+PION_LOG_DEBUG=""
+
+## Type:        string
+## Default:     ""
+## ServiceRestart: galene
+# items to log for log level INFO
+PIONS_LOG_INFO="ice"
+
+## Type:        string
+## Default:     ""
+## ServiceRestart: galene
+# items to log for log level WARNING
+PIONS_LOG_WARNING="all"
+
+## Type:        string
+## Default:     ""
+## ServiceRestart: galene
+# items to log for log level ERROR
+PIONS_LOG_ERROR="all"

@@ -1,0 +1,6 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">git://github.com/jech/galene.git</param>
+              <param name="changesrevision">ba75bfeb3acd33f92084fa0eb88be9aee824badf</param></service><service name="tar_scm">
+                <param name="url">https://github.com/jech/galene.git</param>
+              <param name="changesrevision">6e7a5f8cc615fece358066207546170b4bc890aa</param></service></servicedata>

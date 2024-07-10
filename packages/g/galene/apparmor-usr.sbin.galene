@@ -1,0 +1,42 @@
+abi <abi/3.0>,
+
+#include <tunables/global>
+
+profile galene /usr/sbin/galene {
+
+  #include <abstractions/base>
+  #include <abstractions/nameservice>
+
+  # for local NTP access
+  network inet dgram,
+  network inet6 dgram,
+
+  network inet  stream,
+  network inet6 stream,
+
+  /usr/sbin/galene mr,
+
+  # Grant read access to config files
+  /etc/mime.types r,
+  /etc/galene/ r,
+  /etc/galene/cert.pem r,
+  /etc/galene/key.pem r,
+  /etc/galene/ice-servers.json r,
+  /etc/galene/config.json r,
+
+  # Grant read access to static web content
+  /usr/share/galene/static/ r,
+  /usr/share/galene/static/** r,
+
+  # Grant read access to some process parameters
+  /sys/kernel/mm/transparent_hugepage/hpage_pmd_size r,
+  @{PROC}/sys/net/core/somaxconn r,
+
+  # Grant read access to group files
+  /var/lib/galene/groups/ r,
+  /var/lib/galene/groups/*.json r,
+
+  # Grant read-write access to recordings
+  /var/lib/galene/recordings/** rw,
+
+}

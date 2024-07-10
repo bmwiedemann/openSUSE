@@ -1,0 +1,45 @@
+[Unit]
+Description=Galene Videoconferencing Server
+Requires=local-fs.target network.target
+After=local-fs.target nss-lookup.target time-sync.target
+
+[Service]
+Type=simple
+EnvironmentFile=-/etc/sysconfig/galene
+ExecStart=/usr/sbin/galene $ARGS
+User=galene
+Group=galene
+Restart=on-failure
+LimitNOFILE=65536
+
+# various hardening options
+ReadWritePaths=/var/lib/galene/recordings
+CapabilityBoundingSet=
+AmbientCapabilities=
+PrivateTmp=yes
+PrivateDevices=yes
+DevicePolicy=closed
+ProtectSystem=strict
+ProtectHome=yes
+ProtectKernelModules=yes
+ProtectKernelTunables=yes
+ProtectKernelLogs=yes
+ProtectControlGroups=yes
+ProtectHostname=yes
+ProtectClock=yes
+NoNewPrivileges=yes
+MountFlags=private
+LockPersonality=yes
+RestrictRealtime=yes
+RestrictNamespaces=yes
+RestrictSUIDSGID=yes
+KeyringMode=private
+MemoryDenyWriteExecute=yes
+RemoveIPC=yes
+SystemCallArchitectures=native
+SystemCallFilter=~ @clock @cpu-emulation @debug @keyring @module @mount @raw-io @reboot @swap @obsolete @timer @resources @privileged @pkey @obsolete @setuid
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+UMask=0077
+
+[Install]
+WantedBy=multi-user.target
