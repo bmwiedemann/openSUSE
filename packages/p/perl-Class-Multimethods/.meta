@@ -1,0 +1,6 @@
+<package name="perl-Class-Multimethods" project="openSUSE:Factory">
+  <title>This Package Supports Multimethods and Subroutine Overloading in Perl.</title>
+  <description>Class::Multimethods -- Supports multimethods and subroutine overloading
+in Perl.</description>
+  <devel project="devel:languages:perl" package="perl-Class-Multimethods"/>
+</package>
