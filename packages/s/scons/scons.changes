@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Jul  8 21:25:32 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- SCons 4.8.0:
+  * GetSConsVersion() added to retrieve the SCons version
+  * Python 3.6 support marked as deprecated
+    Build with Python 3.11 on Leap.
+  * Improved Dump() json format detail
+  * Possibly incompatible change: All exceptions during the
+    execution of an Action are now returned by value rather than by
+    raising an exception, for more consistent behavior.
+    With this change, user created Actions should now catch and
+    handle expected exceptions (whereas previously many of these
+    were silently caught and suppressed by the SCons Action
+    exection code).
+  * AddOption and the internal add_local_option which AddOption
+    calls now recognize a "settable" keyword argument to indicate a
+    project-added option can also be modified using SetOption.
+    If you were using ninja and using SetOption() for ninja options
+    in your SConscripts prior to loading the ninja tool, you will
+    now see an error. The fix is to move the SetOption() to after
+    you've loaded the ninja tool.
+  * Bug fixes and compatible improvements
+
+-------------------------------------------------------------------
 Tue Mar 19 07:07:00 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - SCons 4.7.0

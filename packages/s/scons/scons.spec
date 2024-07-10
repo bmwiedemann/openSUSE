@@ -18,8 +18,9 @@
 
 
 %define pythons python3
+%{?sle15_python_module_pythons}
 Name:           scons
-Version:        4.7.0
+Version:        4.8.0
 Release:        0
 Summary:        Replacement for Make
 License:        MIT
@@ -39,7 +40,7 @@ provides itself as well as the features. SCons allows you to use the
 full power of Python to control compilation.
 
 %prep
-%autosetup -p1 -n SCons-%{version}
+%autosetup -p1
 
 sed -i -e '/QT3_LIBPATH = os.path.join.*QT3DIR/s/lib/%{_lib}/' \
     SCons/Tool/qt3.py
@@ -50,14 +51,11 @@ sed -i -e '/QT3_LIBPATH = os.path.join.*QT3DIR/s/lib/%{_lib}/' \
 %install
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
-mkdir -p %{buildroot}%{_mandir}/man1
-mv -v %{buildroot}%{_prefix}/*.1 %{buildroot}%{_mandir}/man1
 
 %files
 %license LICENSE
 %{_bindir}/*
 %{python_sitelib}/SCons
 %{python_sitelib}/SCons-%{version}-py*.egg-info
-%{_mandir}/man1/*.1%{?ext_man}
 
 %changelog
