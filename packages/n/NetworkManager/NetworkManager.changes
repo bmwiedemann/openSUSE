@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jul  5 15:36:31 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.48.4:
+  + Support matching a OVS system interface by MAC address.
+  + When looking up the system hostname from the reverse DNS lookup
+    of addresses configured on interfaces, NetworkManager now takes
+    into account the content of /etc/hosts.
+
+-------------------------------------------------------------------
 Mon Jun 24 08:58:21 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.48.2:

@@ -64,7 +64,7 @@
 %endif
 
 Name:           NetworkManager
-Version:        1.48.2
+Version:        1.48.4
 Release:        0
 Summary:        Standard Linux network configuration tool suite
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later

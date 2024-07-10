@@ -2340,4 +2340,12 @@ New stable release</comment>
     used anymore. (forwarded request 1183344 from dimstar)</comment>
     <requestid>1183421</requestid>
   </revision>
+  <revision rev="270" vrev="1">
+    <srcmd5>b504f8b146014bb3ae06162bee3f5eda</srcmd5>
+    <version>1.48.4</version>
+    <time>1720622885</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1186465</requestid>
+  </revision>
 </revisionlist>
