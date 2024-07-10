@@ -1,0 +1,148 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>21a15cbc4826ca1ed32b562d90b41687</srcmd5>
+    <version>0.6.1</version>
+    <time>1600180001</time>
+    <user>dimstar_suse</user>
+    <comment>- Initial v0.6.1 greetd package
+* includes greetd service
+* includes agreety text-based greeter </comment>
+    <requestid>834573</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>23022e1ce139350498f981c50d0fd415</srcmd5>
+    <version>0.6.1</version>
+    <time>1604609756</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>846308</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>4dc787b2c56e1830d81bc50fc1194bf6</srcmd5>
+    <version>0.7.0</version>
+    <time>1612182561</time>
+    <user>dimstar_suse</user>
+    <comment>- Version bump to 0.7.0
+  * Use additional pam service config for greeter
+  * greetd: Added tuigreet to known greeters list.
+  * terminal: Use direct open, proper errors
+  * worker: Unconditionally set up tty
+  * terminal: Forcibly take terminal
+  * session: Do not log pam_conv after start
+  * ci: Build both arch and alpine
+  * Use per-pid socket paths
+  * Terminate cleanly on SIGINT
+  * Use stdin as VT for current/none vt selections
+  * config: Skip reading config in session worker
+  * config: Add general.source_profile
+  * config: Fix tests for general section
+  * docs: Document new general section
+  * ci: Disable automatic github mirroring
+  * Add installation instructions on Gentoo
+  * Make sure to require codec in tokio-codec feature
+</comment>
+    <requestid>868338</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>c82ba399c3c172abce03d5f9afa1c819</srcmd5>
+    <version>0.7.0</version>
+    <time>1619031592</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>886916</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>4f4c5d813e64c3a1ed95fdcdd49aebe3</srcmd5>
+    <version>0.7.0</version>
+    <time>1621269938</time>
+    <user>dimstar_suse</user>
+    <comment>- provide real shell in example conf
+  * fixes # https://github.com/openSUSE/openSUSEway/issues/37
+</comment>
+    <requestid>893781</requestid>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>22ed13e8fd0a4e1196d21c5da67c5ffc</srcmd5>
+    <version>0.7.0</version>
+    <time>1633466033</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>923166</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>6a33eea37acc7bf6a4ad84c70a7f9297</srcmd5>
+    <version>0.8.0</version>
+    <time>1635788145</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>928516</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>bf667f3af6061b46dd4d711f6a2c7bb0</srcmd5>
+    <version>0.8.0</version>
+    <time>1641556017</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>944669</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>e6b6a634642bce6b641c41047f86a961</srcmd5>
+    <version>0.8.0</version>
+    <time>1648159111</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>964668</requestid>
+  </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>7d7650bed08e05e4bf14b11ec54d2010</srcmd5>
+    <version>0.8.0</version>
+    <time>1653503688</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>979115</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>3d3169ff0d88316659f32701e509b8b5</srcmd5>
+    <version>0.9.0</version>
+    <time>1675177748</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1062088</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>c8b770ee3fa44789997b57da89d92f31</srcmd5>
+    <version>0.9.0</version>
+    <time>1707328134</time>
+    <user>anag+factory</user>
+    <comment>- Remove dependencies getent, groupadd, useradd, group(video), now taken care
+  of in system-user-greeter
+- Remove stale dependency diffutils
+- Do not create greeter user, rely on system-user-greeter
+</comment>
+    <requestid>1144865</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>bba35a8eb1c1d7ec27e641b57aa3061f</srcmd5>
+    <version>0.10.0</version>
+    <time>1715097857</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1172338</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>890fe261370b9e67d09260a0d6d7fd78</srcmd5>
+    <version>0.10.0</version>
+    <time>1716803781</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1177026</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>a194b8a788d078e85a8fb66142a3b48c</srcmd5>
+    <version>0.10.3</version>
+    <time>1717957236</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1179244</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,5 @@
+<package name="greetd" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="X11:Wayland" package="greetd"/>
+</package>

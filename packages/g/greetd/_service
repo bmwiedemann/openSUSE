@@ -1,0 +1,23 @@
+<services>
+  <service name="obs_scm" mode="manual">
+    <param name="url">https://git.sr.ht/~kennylevinsen/greetd</param>
+    <param name="scm">git</param>
+    <param name="revision">0.10.3</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="versionrewrite-pattern">v(.*)</param>
+  </service>
+  <service mode="manual" name="set_version"/>
+  <service name="tar" mode="buildtime"/>
+  <service name="recompress" mode="buildtime">
+    <param name="compression">gz</param>
+    <param name="file">*.tar</param>
+  </service>
+  <service name="cargo_vendor" mode="manual">
+    <param name="srcdir">greetd</param>
+    <param name="compression">gz</param>
+    <param name="update">true</param>
+  </service>
+  <service name="cargo_audit" mode="manual">
+    <param name="srcdir">greetd</param>
+  </service>
+</services>

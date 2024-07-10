@@ -1,0 +1,207 @@
+-------------------------------------------------------------------
+Fri Jun  7 13:06:46 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Update to 0.10.3:
+  * fixes an incorrect cast in the PAM ffi code that could lead
+    to periodic failures.
+- Update to 0.10.2:
+  * fixes builds on stable rust toolchains
+  * greetd_ipc: Only set feature flag for docsrs
+
+-------------------------------------------------------------------
+Thu Jun  6 02:19:14 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Update to 0.10.1:
+  * Reintroduce the XDG_VTNR environment variable which some X11
+    sessions were relying on
+  * context: Error on unexpected auth message response
+  * greetd: Scramble response texts after use
+  * greetd_ipc: Fix docs.rs build
+  * greetd_ipc: Show required codec features in docs
+
+-------------------------------------------------------------------
+Thu May 23 05:52:57 UTC 2024 - Richard Rahl <rrahl0@disroot.org>
+
+- create /var/lib/greetd by default
+
+-------------------------------------------------------------------
+Tue May  7 06:27:12 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Move PAM to /usr -- Fixes filelist-forbidden-move-to-usr badness
+- Enable tests
+- Service to use manual instead of deprecated disabled
+- Remove deprecated cargo_config (now part of vendor)
+- Update to version 0.10.0:
+  Breaking:
+  * Support for the old configuration format, superseded in 0.5.0,
+    has been removed. Please ensure that the new INI format
+    documented in `man 5 greetd` is used before upgrading.
+  * Support for falling back to the `login` PAM service when the
+    `greetd` PAM service is missing has been removed. Ensure that a
+    `greetd` PAM service is present in `/etc/pam.d/` or
+    `/usr/lib/pam.d` before upgrading. The file for `login` can be
+    copied if the fallback was used previously.
+  * Fewer environment variables are exposed to user sessions. In
+    particular, GREETD_SOCK is only shown to greeter sessions, and
+    XDG_SESSION_CLASS and XDG_VTNR is only shown to PAM.
+  Other:
+  * Update deprecated SPDX identifier for GPL-3.0-only
+  * Add ReGreet to list of known greetd greeters
+  * Drop unmaintained `users` crate
+  * Remove no-op question mark and Ok()
+  * Remove references that are implicitly dereferenced
+  * Remove pointless copying of string before copying it
+  * Use strip_prefix to strip prefix
+  * Derive VtSelection::default
+  * Deduplicate parsing of VtSelection
+  * Allow overriding VT via arguments
+  * agreety: Return error if no input when prompted
+  * config: Fix tests for service config
+  * server: cargo fmt
+  * pam: Remove fallback to the login service
+  * pam: Swap /etc/pam.d and /usr/lib/pam.d
+  * man: Document VT switch
+  * readme: Add two greeter implementations
+  * readme: Add Phog greeter implementation
+
+-------------------------------------------------------------------
+Wed Feb  7 09:53:18 UTC 2024 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Remove dependencies getent, groupadd, useradd, group(video), now taken care
+  of in system-user-greeter
+- Remove stale dependency diffutils
+
+-------------------------------------------------------------------
+Tue Feb  6 16:37:49 UTC 2024 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Do not create greeter user, rely on system-user-greeter
+
+-------------------------------------------------------------------
+Mon Jan 30 15:18:48 UTC 2023 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 0.9.0:
+  * Revert "Remove 'env' from start_session"
+  * ipc: ensure backward compatibility of the protocol
+  * Change order of setting pam environment variables
+  * fakegreet: reset state on errors
+  * For FUSE-based home folders, chdir into them as the user instead of root
+  * Use /bin/sh instead of $SHELL
+  * cargo: Update dependencies
+
+-------------------------------------------------------------------
+Tue Aug  2 21:12:29 UTC 2022 - llyyr <llyyr.public@gmail.com>
+
+- Put greetd.pam in the right directory.
+  greetd checks for the pam file in /etc/pam.d/, not in /lib/pam.d/
+
+-------------------------------------------------------------------
+Wed May 25 02:00:37 UTC 2022 - William Brown <william.brown@suse.com>
+
+- Update vendored dependencies
+- Correct ordering of _service entries due to a recompress confusion
+
+-------------------------------------------------------------------
+Wed Mar 23 07:33:52 UTC 2022 - Franck Bui <fbui@suse.com>
+
+- spec: /etc/pam.d/greetd should be %config(noreplace) on SLE
+
+-------------------------------------------------------------------
+Mon Mar 14 15:41:18 UTC 2022 - Franck Bui <fbui@suse.com>
+
+- spec: don't directly use %{_distconfdir}, it's broken on SLE
+
+  We should instead make use of %_pam_vendordir but its definition is also
+  broken on SLE... hence let define our own macro for now.
+
+-------------------------------------------------------------------
+Fri Jan  7 01:22:46 UTC 2022 - William Brown <william.brown@suse.com>
+
+- resolve bsc#1194119 (CVE-2021-45710)
+
+-------------------------------------------------------------------
+Sun Oct 24 13:46:49 UTC 2021 - Denys Kondratenko <stdden@opensuse.org>
+
+- Version bump to 0.8.0
+  * deps: update tokio to 1.0
+  * deps: update nix and other dependencies
+  * Ensure initial session is only run once.
+  * recommend making config world readable rather than setting owner
+  * Update lock file
+  * readme: Add discuss section
+  * docs: Fix scdoc syntax for greetd.5
+  * rustfmt: Change merge_imports to imports_granularity
+  * ipc: Fix tokio codec
+  * Add makefile for man pages
+  * greetd: add terminal switch flag configuration option
+
+-------------------------------------------------------------------
+Tue Sep 28 05:35:48 UTC 2021 - William Brown <william.brown@suse.com>
+
+- Replace rust-packaging with cargo-packaging
+
+-------------------------------------------------------------------
+Mon May 17 14:47:55 UTC 2021 - Denys Kondratenko <stdden@opensuse.org>
+
+- provide real shell in example conf
+  * fixes # https://github.com/openSUSE/openSUSEway/issues/37
+
+-------------------------------------------------------------------
+Tue Mar 23 23:28:41 UTC 2021 - Michal Hrusecky <michal.hrusecky@opensuse.org>
+
+- avoid restarts on update by using %service_del_postun_without_restart 
+
+-------------------------------------------------------------------
+Sat Jan 30 18:46:49 UTC 2021 - Andrés Barrantes Silman <andresbs@opensuse.org>
+
+- Version bump to 0.7.0
+  * Use additional pam service config for greeter
+  * greetd: Added tuigreet to known greeters list.
+  * terminal: Use direct open, proper errors
+  * worker: Unconditionally set up tty
+  * terminal: Forcibly take terminal
+  * session: Do not log pam_conv after start
+  * ci: Build both arch and alpine
+  * Use per-pid socket paths
+  * Terminate cleanly on SIGINT
+  * Use stdin as VT for current/none vt selections
+  * config: Skip reading config in session worker
+  * config: Add general.source_profile
+  * config: Fix tests for general section
+  * docs: Document new general section
+  * ci: Disable automatic github mirroring
+  * Add installation instructions on Gentoo
+  * Make sure to require codec in tokio-codec feature
+
+-------------------------------------------------------------------
+Thu Nov  5 16:47:30 UTC 2020 - Denis Kondratenko <denis.kondratenko@suse.com>
+
+- add missed group requirement (issue could be seen during installation)
+- correct home directory for the greeter user
+
+-------------------------------------------------------------------
+Tue Sep 15 10:03:45 UTC 2020 - Denis Kondratenko <denis.kondratenko@suse.com>
+
+- fix /etc/greetd dir permissions
+- relocate pam file to /usr/etc
+
+-------------------------------------------------------------------
+Wed Sep  9 14:39:12 UTC 2020 - Denis Kondratenko <denis.kondratenko@suse.com>
+
+- add missing state and run dirs
+
+-------------------------------------------------------------------
+Wed Sep  9 14:17:50 UTC 2020 - Denis Kondratenko <denis.kondratenko@suse.com>
+
+- fix file permissions to correct greeter user
+
+-------------------------------------------------------------------
+Tue Sep  8 13:00:24 UTC 2020 - Denis Kondratenko <denis.kondratenko@suse.com>
+
+- Add greetd.pam file and fixed directory permission in etc
+
+-------------------------------------------------------------------
+Mon Sep  7 15:35:35 UTC 2020 - Denis Kondratenko <denis.kondratenko@suse.com>
+
+- Initial v0.6.1 greetd package
+  * includes greetd service
+  * includes agreety text-based greeter 
