@@ -1,0 +1,892 @@
+-------------------------------------------------------------------
+Wed Dec 13 14:54:54 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
+Tue Mar  7 17:21:40 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Drop BuildRequires mupdf-devel-static, this is not used
+  and the build always relies on the bundled copy.
+
+-------------------------------------------------------------------
+Mon Mar  6 21:22:33 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Drop BuildRequires pkgconfig(gumbo), the package never used it
+  and used its bundled copy.
+
+-------------------------------------------------------------------
+Thu Jan  5 18:47:38 UTC 2023 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 1.21.1: 
+  Bug fixes:
+  * Fixed #2110: Fully embedded font is extracted only partially if it occupies more than one object
+  * Fixed #2094: Rectangle Detection Logic
+  * Fixed #2088: Destination point not set for named links in toc
+  * Fixed #2087: Image with Filter “[/FlateDecode/JPXDecode]” not extracted
+  * Fixed #2086: Document.save() owner_pw & user_pw has buffer overflow bug
+  * Fixed #2076: Segfault in fitz.py
+  * Fixed #2057: Document.save garbage parameter not working in PyMuPDF 1.21.0
+  * Fixed #2051: Missing DPI Parameter
+  * Fixed #2048: Invalid size of TextPage and bbox with newest version 1.21.0
+  * Fixed #2045: SystemError: <built-in function Page_get_texttrace> returned a result with an error set
+  * Fixed #2039: 1.21.0 fails to build against system libmupdf
+  * Fixed #2036: Archive::Archive defined twice
+  Other
+  * Swallow “&zoom=nan” in link uri strings.
+  * Add new Page utility methods Page.replace_image() and Page.delete_image().
+  Documentation:
+  #2040: Added note about test failure with non-default build of MuPDF, to tests/README.md.
+  #2037: In docs/installation.rst, mention incompatibility with chocolatey.org on Windows.
+  #2061: Fixed description of Annot.file_info.
+  #2065: Show how to insert internal PDF link.
+  Improved description of building from source without an sdist.
+  Added information about running tests.
+  #2084: Fixed broken link to PyMuPDF-Utilities.
+
+-------------------------------------------------------------------
+Thu Dec  1 18:51:43 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 1.21.0
+  * This release uses MuPDF-1.21.0.
+    New feature: Stories.
+    Added wheels for Python-3.11.
+  * Bug fixes:
+    Fixed #1701: Broken custom image insertion.
+    Fixed #1854: Document.delete_pages() declines keyword arguments.
+    Fixed #1868: Access Violation Error at page.apply_redactions().
+    Fixed #1909: Adding text with fontname=”Helvetica” can silently fail.
+    Fixed #1913: draw_rect(): does not respect width if color is not specified.
+    Fixed #1917: subset_fonts(): make it possible to silence the stdout.
+    Fixed #1936: Rectangle detection can be incorrect producing wrong output.
+    Fixed #1945: Segmentation fault when saving with clean=True.
+    Fixed #1965: pdfocr_save() Hard Crash.
+    Fixed #1971: Segmentation fault when using get_drawings().
+    Fixed #1946: block_no and block_type switched in get_text() docs.
+    Fixed #2013: AttributeError: ‘Widget’ object has no attribute ‘_annot’ in delete
+    widget.
+  * Misc changes to core code:
+    Fixed various compiler warnings and a sequence-point bug.
+    Added support for Memento builds.
+    Fixed leaks detected by Memento in test suite.
+    Fixed handling of exceptions in set_name() and set_rect().
+    Allow build with latest MuPDF, for regular testing of PyMuPDF master.
+    Cope with new MuPDF exceptions when setting rect for some Annot types.
+    Reduced cosmetic differences between MuPDF’s config.h and PyMuPDF’s _config.h.
+    Cope with various changes to MuPDF API.
+  * Other:
+    Fixed various broken links and typos in docs.
+    Mention install of swig-python on MacOS for #875.
+    Added (untested) wheels for macos-arm64. 
+
+-------------------------------------------------------------------
+Fri Sep  9 10:00:51 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to v1.20.2
+  * This release uses MuPDF-1.20.3
+  * Fix linking issues on Unix systems.
+  * Fixed SegFault when applying redactions overlapping a transparent image.
+  * Improvements to documentation
+  * Removed some unused files and directories
+- from v1.20.1
+  * Fix for building on FreeBSD.
+  * Fixed linkDest() had a broken call to re.match(), introduced in 1.20.0.
+  * Fixed get_drawings() and get_cdrawings() previously always returned
+    with closePath=False.
+  * Default FreeText annotation text color is now black.
+  * Improvements to sphinx-generated documentation
+- from v1.20.0
+  * This release uses MuPDF-1.20.0
+  * Cope with new MuPDF link uri format, changed from #<int>,<int>,<int>
+    to #page=<int>&zoom=<float>,<float>,<float>.
+  * In tests/test_insertpdf.py, use new reference output joined-1.20.pdf.
+    We also check that new output values are approximately the same as the old ones.
+  * Fixed Leak of pdf_graft_map. Also fixed a SEGV issue that this seemed
+    to expose, caused by incorrect freeing of underlying fz_document.
+  * Fixed ownership of Annotation.get_pixmap().
+  * If pip builds from source because an appropriate wheel is not available,
+    we no longer require MuPDF to be pre-installed. Instead the required
+    MuPDF source is embedded in the sdist and automatically built into PyMuPDF.
+  * Various changes to setup.py to download the required MuPDF release
+    as required. See comments at start of setup.py for details.
+
+-------------------------------------------------------------------
+Tue May 10 00:26:53 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Clean up SPEC file.
+- Switch to pip/wheel-based build.
+
+-------------------------------------------------------------------
+Sun Mar  6 12:27:52 UTC 2022 - Hsiu-Ming Chang <cges30901@gmail.com>
+
+- Update to v1.19.6
+  * Fixed #1620. The TextPage created by Page.get_textpage() will
+    now be freed correctly (removed memory leak).
+  * Fixed #1601. Document open errors should now be more concise
+    and easier to interpret. In the course of this, two
+    PyMuPDF-specific Python exceptions have been added:
+    EmptyFileError – raised when trying to create a Document
+    (fitz.open()) from an empty file or zero-length memory.
+    FileDataError – raised when MuPDF encounters irrecoverable
+    document structure issues.
+  * Added Page.load_widget() given a PDF field’s xref.
+  * Added Dictionary pdfcolor which provide the about 500 colors
+    defined as PDF color values with the lower case color name as
+    key.
+  * Added algebra functionality to the Quad class. These objects
+    can now also be added and subtracted among themselves, and be
+    multiplied by numbers and matrices.
+  * Added new constants defining the default text extraction flags
+    for more comfortable handling. Their naming convention is like
+    TEXTFLAGS_WORDS for page.get_text("words"). See Text Extraction
+    Flags Defaults.
+  * Changed Page.annots() and Page.widgets() to detect and prevent
+    reloading the page (illegally) inside the iterator loops via
+    Document.reload_page(). Doing this brings down the interpretor.
+    Documented clean ways to do annotation and widget mass updates
+    within properly designed loops.
+  * Changed several internal utility functions to become
+    standalone (“SWIG inline”) as opposed to be part of the Tools
+    class. This, among other things, increases the performance of
+    geometry object creation.
+  * Changed Document.update_stream() to always accept stream
+    updates - whether or not the dictionary object behind the xref
+    already is a stream. Thus the former new parameter is now
+    ignored and will be removed in v1.20.0.
+
+-------------------------------------------------------------------
+Sun Feb  6 14:02:23 UTC 2022 - Hsiu-Ming Chang <cges30901@gmail.com>
+
+- Update to v1.19.5
+  * Fixed #1518. A limited “fix”: in some cases, rectangles and
+    quadrupels were not correctly encoded to support re-drawing by
+    Shape.
+  * Fixed #1521. This had the same ultimate reason behind issue
+    #1510.
+  * Fixed #1513. Some Optional Content functions did not support
+    non-ASCII characters.
+  * Fixed #1510. Support more soft-mask image subtypes.
+  * Fixed #1507. Immunize against items in the outlines chain,
+    that are "null" objects.
+  * Fixed re-opened #1417. (“too many open files”). This was due
+    to insufficient calls to MuPDF’s fz_drop_document(). This also
+    fixes #1550.
+  * Fixed several undocumented issues in relation to incorrectly
+    setting the text span origin point_like.
+  * Fixed undocumented error computing the character bbox in
+    method Page.get_texttrace() when text is flipped (as opposed to
+    just rotated).
+  * Added items to the dictionary returned by image_properties():
+    orientation and transform report the natural image orientation
+    (EXIF data).
+  * Added method Document.xref_copy(). It will make a given target
+    PDF object an exact copy of a source object.
+
+-------------------------------------------------------------------
+Mon Jan 10 12:52:19 UTC 2022 - Hsiu-Ming Chang <cges30901@gmail.com>
+
+- Update to v1.19.4
+  * Fixed #1505. Immunize against circular outline items.
+  * Fixed #1484. Correct CropBox coordinates are now returned in
+    all situations.
+  * Fixed #1479.
+  * Fixed #1474. TextPage objects are now properly deleted again.
+  * Added Page methods and attributes for PDF /ArtBox, /BleedBox,
+    /TrimBox.
+  * Added global attribute TESSDATA_PREFIX for easy checking of OCR
+    support.
+  * Changed Document.xref_set_key() such that dictionary keys will
+    physically be removed if set to value "null".
+  * Changed Document.extract_font() to optionally return a
+    dictionary (instead of a tuple).
+
+-------------------------------------------------------------------
+Fri Dec 17 13:03:20 UTC 2021 - Hsiu-Ming Chang <cges30901@gmail.com>
+
+- Update to v1.19.3
+  * Fixed #1351. Reverted code that introduced the memory growth
+    in v1.18.15.
+  * Fixed #1417. Developped circumvention for growth of open file
+    handles using Document.insert_pdf().
+  * Fixed #1418. Developped circumvention for memory growth using
+    Document.insert_pdf().
+  * Fixed #1430. Developped circumvention for mass pixmap
+    generations of document pages.
+  * Fixed #1433. Solves a bbox error for some Type 3 font in
+    PyMuPDF text processing.
+  * Added Pixmap.color_topusage() to determine the share of the
+    most frequently used color. Solves #1397.
+  * Added Pixmap.warp() which makes a new pixmap from a given
+    arbitrary convex quad inside the pixmap.
+  * Added Annot.irt_xref and Annot.set_irt_xref() to inquire or
+    set the /IRT (“In Responde To”) property of an annotation.
+    Implements #1450.
+  * Added Rect.torect() and IRect.torect() which compute a matrix
+    that transforms to a given other rectangle.
+  * Changed Pixmap.color_count() to also return the count of each
+    color.
+  * Changed Page.get_texttrace() to also return correct span and
+    character bboxes if span["dir"] != (1, 0).
+
+-------------------------------------------------------------------
+Mon Nov 22 10:33:01 UTC 2021 - Hsiu-Ming Chang <cges30901@gmail.com>
+
+- Update to v1.19.2
+  * Fixed #1388. Fixed intermittent memory corruption when insert or
+    updating annotations.
+  * Fixed #1375. Inconsistencies between line numbers as returned
+    by the “words” and the “dict” options of `Page.get_text()` have
+    been corrected.
+  * Fixed #1364. The check for being a "rawdict" span in
+    `recover_span_quad()` now works correctly.
+  * Fixed #1342. Corrected the check for rectangle infiniteness in
+    `Page.show_pdf_page()`.
+  * Changed `Page.get_drawings()`, `Page.get_cdrawings()` to return
+    an indicator on the area orientation covered by a rectangle. This
+    implements #1355. Also, the recognition rate for rectangles and
+    quads has been significantly improved.
+  * Changed all text search and extraction methods to set the new
+    flags option TEXT_MEDIABOX_CLIP to ON by default. That bit causes
+    the automatic suppression of all characters that are completely
+    outside a page’s mediabox (in as far as that notion is supported
+    for a document type). This eliminates the need for using
+    clip=page.rect or similar for omitting text outside the visible
+    area.
+  * Added parameter "dpi" to `Page.get_pixmap()` and
+    `Annot.get_pixmap()`. When given, parameter "matrix" is ignored,
+    and a Pixmap with the desired dots per inch is created.
+  * Added attributes `Pixmap.is_monochrome` and `Pixmap.is_unicolor`
+    allowing fast checks of pixmap properties. Addresses #1397.
+  * Added method `Pixmap.color_count()` to determine the unique
+    colors in the pixmap.
+  * Added boolean parameter "compress" to PDF document method
+    `Document.update_stream()`. Addresses / enables solution for
+    #1408.
+- from v1.19.1
+  * Fixed #1328. “words” text extraction again returns correct (x0,
+    y0) coordinates.
+  * Changed `Page.get_textpage_ocr()`: it now supports parameter
+    dpi to control OCR quality. It is also possible to choose whether
+    the full page should be OCRed or only the images displayed by the
+    page.
+  * Changed `Page.get_drawings()` and `Page.get_cdrawings()` to
+    automatically convert colors to RGB color tuples. Implements
+    #1332. Similar change was applied to `Page.get_texttrace()`.
+  * Changed `Page.get_text()` to support a parameter sort. If set
+    to True the output is conveniently sorted.
+- from v1.19.0
+  * Supports MuPDF 1.19.*
+  * Changed terminology and meaning of important geometry concepts:
+    Rectangles are now characterized as finite, valid or empty, while
+    the definitions of these terms have also changed. Rectangles
+    specifically are now thought of being “open”: not all corners
+    and sides are considered part of the retangle. Please do read
+    the Rect section for details.
+  * Added new parameter “no_new_id” to `Document.save()` /
+    `Document.tobytes()` methods. Use it to suppress updating the
+    second item of the document /ID which in PDF indicates that the
+    original file has been updated. If the PDF has no /ID at all yet,
+    then no new one will be created either.
+  * Added a journalling facility for PDF updates. This allows logging
+    changes, undoing or redoing them, or saving the journal for later
+    use. Refer to `Document.journal_enable()` and friends.
+  * Added new Pixmap methods `Pixmap.pdfocr_save()` and
+    `Pixmap.pdfocr_tobytes()`, which generate a 1-page PDF containing
+    the pixmap as PNG image with OCR text layer.
+  * Added `Page.get_textpage_ocr()` which executes optical character
+    recognition for the page, then extracts the results and stores
+    them together with “normal” page content in a TextPage. Use or
+    reuse this object in subsequent text extractions and text
+    searches to avoid multiple efforts. The existing text search
+    and text extraction methods have been extended to support a
+    separately created textpage – see next item.
+  * Added a new parameter textpage to text extraction and text search
+    methods. This allows reuse of a previously created TextPage and
+    thus achieves significant runtime benefits – which is especially
+    important for the new OCR features. But “normal” text extractions
+    can definitely also benefit.
+  * Added `Page.get_texttrace()`, a technical method delivering
+    low-level text character properties. It was present before as a
+    private method, but the author felt it now is mature enough to be
+    officially available. It specifically includes a “sequence
+    number” which indicates the page appearance build operation that
+    painted the text.
+  * Added `Page.get_bboxlog()` which delivers the list of
+    rectangles of page objects like text, images or drawings. Its
+    significance lies in its sequence: rectangles intersecting areas
+    with a lower index are covering or hiding them.
+  * Changed methods `Page.get_drawings()` and
+    `Page.get_cdrawings()` to include a “sequence number” indicating
+    the page appearance build operation that created the drawing.
+  * Fixed #1311. Field values in comboboxes should now be handled
+    correctly.
+  * Fixed #1290. Error was caused by incorrect rectangle emptiness
+    check, which is fixed due to new geometry logic of this version.
+  * Fixed #1286. Text alignment for redact annotations is working
+    again.
+  * Fixed #1287. Infinite loop issue for non-Windows systems when
+    applying some redactions has been resolved.
+  * Fixed #1284. Text layout destruction after applying redactions in
+    some cases has been resolved.
+- from v1.18.19
+  * Fixed issue #1266. Failure to set `Pixmap.samples` in important
+    cases, was hotfixed in a new version 1.18.19.
+- from v1.18.18
+  * Fixed issue #1257. Removing the read-only flag from PDF fields
+    is now possible.
+  * Fixed issue #1252. Now correctly specifying the zoom value for
+    PDF link annotations.
+  * Fixed issue #1244. Now correctly computing the transform matrix
+    in `Page.get_image__bbox()`.
+  * Fixed issue #1241. Prevent returning artifact characters in
+    `Page.get_textbox()`, which happened in certain constellations.
+  * Fixed issue #1234. Avoid creating infinite rectangles in corner
+    cases – `Page.get_drawings()`, `Page.get_cdrawings()`.
+  * Added test data and test scripts to the source PyPI source
+    distribution.
+- from v1.18.17
+  * Fixed issue #1199. Using a non-existing page number in
+    `Document.get_page_images()` and friends will no longer lead to
+    segfaults.
+  * Changed `Page.get_drawings()` to now differentiate between
+    “stroke”, “fill” and combined paths. Paths containing more than
+    one rectangle (i.e. “re” items) are now supported. Extracting
+    “clipped” paths is now available as an option.
+  * Added `Page.get_cdrawings()`, performance-optimized version of
+    `Page.get_drawings()`.
+  * Added `Pixmap.samples_mv`, memoryview of a pixmap’s pixel area.
+    Does not copy and thus always accesses the current state of that
+    area.
+  * Added `Pixmap.samples_ptr`, Python “pointer” to a pixmap’s pixel
+    area. Allows much faster creation (factor 800+) of Qt images.
+- from v1.18.16
+  * Fixed issue #1184. Existing PDF widget fonts in a PDF are now
+    accepted (i.e. not forcedly changed to a Base-14 font).
+  * Fixed issue #1154. Text search hits should now be correct when
+    clip is specified.
+  * Fixed issue #1152.
+  * Fixed issue #1146.
+  * Added `Link.flags` and `Link.set_flags()` to the Link class.
+    Implements enhancement requests #1187.
+  * Added option to simulate `TextWriter.fill_textbox() output for
+    predicting the number of lines, that a given text would occupy in
+    the textbox.
+  * Added text output support as subcommand gettext to the fitz CLI
+    module. Most importantly, original physical text layout
+    reproduction is now supported.
+- from v1.18.15
+  * Fixed issue #1088. Removing an annotation’s fill color should now
+    work again both ways, using the fill_color=[] argument in
+    `Annot.update()` as well as fill=[] in `Annot.set_colors()`.
+  * Fixed issue #1081. `Document.subset_fonts()`: fixed an error
+    which created wrong character widths for some fonts.
+  * Fixed issue #1078. `Page.get_text()` and other methods related to
+    text extraction: changed the default value of the TextPage flags
+    parameter. All whitespace and ligatures are now preserved.
+  * Fixed issue #1085. The old snake_cased alias of
+    `fitz.detTextlength` is now defined correctly.
+  * Changed `Document.subset_fonts()` will now correctly prefix font
+    subsets with an appropriate six letter uppercase tag, complying
+    with the PDF specification.
+  * Added new method `Widget.button_states()` which returns the
+    possible values that a button-type field can have when being set
+    to “on” or “off”.
+  * Added support of text with Small Capital letters to the Font and
+    TextWriter classes. This is reflected by an additional bool
+    parameter small_caps in various of their methods.
+- from v1.18.14
+  * Finished implementing new, “snake_cased” names for methods and
+    properties, that were “camelCased” and awkward in many aspects.
+    At the end of this documentation, there is section Deprecated
+    Names with more background and a mapping of old to new names.
+  * Fixed issue #1053. `Page.insert_image()`: when given, include
+    image mask in the hash computation.
+  * Fixed issue #1043. Added `Pixmap.getPNGdata` to the aliases of
+    `Pixmap.tobytes()`.
+  * Fixed an internal error when computing the envelopping
+    rectangle of drawn paths as returned by `Page.get_drawings()`.
+  * Fixed an internal error occasionally causing loops when
+    outputting text via `TextWriter.fill_textbox()`.
+  * Added `Font.char_lengths()`, which returns a tuple of character
+    widths of a string.
+  * Added more ways to specify pages in `Document.delete_pages()`.
+    Now a sequence (list, tuple or range) can be specified, and the
+    Python del statement can be used. In the latter case, Python
+    slices are also accepted.
+  * Changed `Document.del_toc_item()`, which disables a single item
+    of the TOC: previously, the title text was removed. Instead, now
+    the complete item will be shown grayed-out by supporting viewers.
+- from v1.18.13
+  * Fixed issue #1014
+  * Fixed an internal memory leak when computing image bboxes –
+    `Page.get_image_bbox()`.
+  * Added support for low-level access and modification of the PDF
+    trailer. Applies to `Document.xref_get_keys()`,
+    `Document.xref_get_key(), and Document.xref_set_key()`.
+  * Added documentation for maintaining private entries in PDF
+    metadata.
+  * Added documentation for handling transparent image insertions,
+    `Page.insert_image()`.
+  * Added `Page.get_image_rects()`, an improved version of
+    `Page.get_image_bbox()`.
+  * Changed `Document.delete_pages()` to support various ways of
+    specifying pages to delete.
+  * Changed `Page.insert_image()` to also accept the xref of an
+    existing image in the file. This allows “copying” images between
+    pages, and extremely fast mutiple insertions.
+  * Changed `Page.insert_image()` to also accept the integer
+    parameter alpha. To be used for performance improvements.
+  * Changed `Pixmap.set_alpha()` to support new parameters for
+    pre-multiplying colors with their alpha values and setting a
+    specific color to fully transparent (e.g. white).
+  * Changed `Document.embfile_add()` to automatically set creation
+    and modification date-time. Correspondingly,
+    `Document.embfile_upd()` automatically maintains modification
+    date-time (/ModDate PDF key), and `Document.embfile_info()`
+    correspondingly reports these data. In addition, the embedded
+    file’s associated “collection item” is included via its xref.
+    This supports the development of PDF portfolio applications.
+
+-------------------------------------------------------------------
+Sat Apr 10 12:56:40 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to v1.18.11
+  * Improved layout of source distribution material.
+  * Stabilized Linux distribution detection for generating PyMuPDF
+    from sources.
+  * Page.get_xobjects delivers the result of Document.get_page_xobjects.
+  * Page.get_image_info delivers meta information for all images shown
+    on the page.
+  * Tools.mupdf_display_warnings allows setting on / off the display
+    of MuPDF-generated warnings. The default is off.
+  * Document.ez_save convenience alias of :meth:`Document.save`
+    with some different defaults.
+  * Image extractions of document pages now also contain the image's
+    **transformation matrix**. This concerns `Page.get_image_bbox`
+    and the DICT, JSON, RAWDICT, and RAWJSON variants of `Page.get_text`.
+- from v1.18.10
+  * Added old aliases for `DisplayList.get_pixmap` and
+    `DisplayList.get_textpage`.
+  * Stabilized removal of JavaScript objects with `Document.scrub`.
+  * Removed a loop in the reworked `TextWriter.fill_textbox`.
+  * `Document.xref_get_keys` and `Document.xref_get_key` to also allow
+    accessing the PDF trailer dictionary. This can be done by using
+    `-1` as the xref number argument.
+  * Added a number of functions for reconstructing the quads for text
+    lines, spans and characters extracted by `Page.get_text` options
+    "dict" and "rawdict".
+  * Added `Tools.unset_quad_corrections` to suppress character quad
+    corrections (occasionally required for erroneous fonts).
+
+--------------------------------------------------------------------
+Sat Feb 27 00:04:25 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
+
+- Revised License to be AGPL-3.0-only
+- Add %doc
+- Remove COPYING now provided in tarball
+- Update to v1.18.9
+  * Removed ambiguous statements concerning PyMuPDF's license,
+    which is now clearly stated to be GNU AGPL V3
+  * Fixed issue 895
+  * Since v1.17.6 PyMuPDF suppresses the font subset tags and only
+    reports the base fontname in text extraction outputs
+    "dict" / "json" / "rawdict" / "rawjson".
+    Now a new global parameter can request the old behaviour,
+    `Tools.set_subset_fontnames`.
+  * Pixmap creation now also works with filenames given as pathlib.
+  * Changed `Document.subset_fonts`: Text is not rewritten any more
+    and should therefore retain all its origial properties -- like
+    being hidden or being controlled by Optional Content mechanisms.
+  * `TextWriter.fill_textbox`, `TextWriter.append` now accept a new
+    boolean parameter `right_to_left`, which is *False* by default.
+  * Changed `TextWriter.fill_textbox` to return all lines of text,
+    that did not fit in the given rectangle. Also changed the default
+    of the `warn` parameter to no longer print a warning message
+    in overflow situations.
+  * Added a utility function `recover_quad`, which computes the
+    quadrilateral of a span. This function can be used when
+    quadrilaterals for text extracted with the "dict" or "rawdict"
+    options of `Page.get_text`.
+
+-------------------------------------------------------------------
+Mon Feb  8 06:24:36 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
+
+- Remove doc sub-package, fixing builds
+- Switch to using PyPI, adding COPYING from upstream
+- Update URL
+- Add build dependency openSUSE-release, needed by setup.py
+- Remove fix-library-linking.patch no longer needed
+- Fix %check for single-spec
+- Update to v1.18.8
+  * Fixed a memory leak in Page.insert_image when inserting
+    images from files or memory
+  * pathlib.Path objects should now correctly handle file path
+    hierarchies
+- from v1.18.7
+  * Added an experimental Document.subset_fonts which reduces
+    the size of eligible fonts based on their use by text in the PDF
+  * Document.convert_to_pdf now also supports PDF documents
+  * Renamed Document.write to Document.tobytes for greater clarity.
+    But the deprecated name remains available for some time.
+  * Document.tobytes` now supports linearized PDF output
+  * Document.save` now also supports writing to Python file objects.
+    In addition, the open function now supports Python file objects.
+  * Fixed issue #844.
+  * Fixed issue #838.
+  * More logic for better support of OCR-ed text output
+    (Tesseract, ABBYY).
+  * Fixed issue #818.
+  * Fixed issue #814.
+  * Added Document.get_page_labels which returns a list of page
+    label definitions of a PDF.
+  * Added :meth:`Document.has_annots and Document.has_links to check
+    whether these object types are present anywhere in a PDF.
+  * Added expert low-level functions to simplify inquiry and
+    modification of PDF object sources: 
+    + Document.xref_get_keys lists the keys of object `xref`
+    + Document.xref_get_key returns type and content of a key
+    + Document.xref_set_key modifies the key's value
+  * Added parameter thumbnails to Document.scrub to also allow
+    removing page thumbnail images
+  * Improved documentation for how to add valid text marker
+    annotations for non-horizontal text
+- from v1.18.6
+  * Introduced Python type hinting
+  * Fixed issue #812.
+  * Invalid document metadata previously prevented opening some
+    documents at all. This error has been removed.
+  * Text search and text extraction will make no rectangle
+    containment checks at all if the default clip=None is used.
+  * Fixed issue #785.
+  * Corrected a parameter check error.
+  * Added an option to set the desired line height for text boxes
+  * Changed text position retrieval to better cope with Tesseract's
+    glyphless font.
+  * Added an option to choose the prefix of new annotations,
+    fields and links for providing unique annotation ids
+  * Added getting and setting color and text properties for
+    Table of Contents items for PDFs
+  * Added PDF page label handling: Page.get_label() returns the
+    page label, Document.get_page_numbers return all page numbers
+    having a specified label, and Document.set_page_labels adds
+    or updates a PDF's page label definition.
+- from v1.18.5
+  * Apart from several fixes, this version also focusses on several
+    minor, but important feature improvements.
+    Among the latter is a more precise computation of proper line
+    heights and insertion points for writing / inserting text.
+    As opposed to using font-agnostic constants, these values are
+    now taken from the font's properties.
+  * By using "small glyph heights" option, the full page text can
+    be extracted.
+  * Fixed issue #768.
+  * Fixed issue #750.
+  * The "dict", "rawdict" and corresponding JSON output variants
+    now have two new span keys: "ascender" and "descender".
+    These floats represent special font properties which can be
+    used to compute bboxes of spans or characters of exactly
+    fontsize height (as opposed to the default line height).
+    An example algorithm is shown in section "Span Dictionary"
+    here. Also improved the detection and correction of
+    ill-specified ascender / descender values encountered
+    in some fonts.
+  * Added a new, experimental Tools.set_small_glyph_heights. This
+    method sets or unsets a global parameter to always compute
+    bboxes with fontsize height. If "on", text searching and all
+    text extractions will returned rectangles, bboxes and quads
+    with a smaller height.
+  * Fixed issue #728.
+  * Changed fill color logic of 'Polyline' annotations: this
+    parameter now only pertains to line end symbols --
+    the annotation itself can no longer have a fill color
+  * Changed Page.getImageBbox to also compute the bbox if the image
+    is contained in an XObject.
+  * Changed Shape.insertTextbox, resp. Page.insertTextbox, resp.
+    TextWriter.fillTextbox to respect font's properties "ascender" /
+    "descender" when computing line height and insertion point.
+    This should no longer lead to line overlaps for multi-line output.
+    These methods used to ignore font specifics and used constant
+    values instead.
+- from v1.18.4
+  * Adds several features to support PDF Optional Content, including
+    OCMDs (Optional Content Membership Dictionaries) with the full
+    scope of "visibility expressions" (PDF key /VE), text insertions
+    (including the TextWriter class) and drawings.
+  * Freetext annotations now support an uncolored rectangle when
+    fill_color=None.
+  * UTF-8 encoding errors are now handled for HTML / XML Page.getText.
+  * Empty values are no longer stored in the PDF /Info metadata
+    dictionary.
+  * Added new methods Document.set_oc and Document.get_oc to set or
+    get optional content references for existing image and form
+    XObjects. These methods are similar to the same-named methods
+    of Annot.
+  * Added Document.set_ocmd, Document.get_ocmd for handling OCMDs.
+  * Added Optional Content support for text insertion and drawing.
+  * Added new method Page.deleteWidget, which deletes a form field
+    from a page. This is analogous to deleting annotations.
+  * Added support for Popup annotations. This includes defining
+    the Popup rectangle and setting the Popup to open or closed.
+    Methods / attributes Annot.set_popup, Annot.set_open,
+    Annot.has_popup, Annot.is_open, Annot.popup_rect, Annot.popup_xref
+  * Annot methods and attributes converted to lower case with
+    underscores, while keeping UPPERCASE for the constants.
+    Old names will remain available to prevent code breaks, but they
+    will no longer be mentioned in the documentation.
+- from v1.18.3
+  * Introduces support for PDF's Optional Content concept.
+    This includes several new Document methods for inquiring and setting
+    optional content status and adding optional content
+    configurations and groups. In addition, images, form XObjects
+    and annotations now can be bound to optional content specifications.
+  * Fixed issue #714.
+  * Fixed issue #711.
+  * If a PDF user password, but no owner password is supplied nor
+    present, then the user password is also used as the owner password.
+  * Fixed expand and deflate parameters of methodsDocument.save
+    and Document.write. Individual image and font compression should
+    now finally work.
+- from v1.18.2
+  * Contains some interesting improvements for text searching: any
+    number of search hits is now returned and the hit_max parameter
+    was removed. The new clip parameter in addition allows to restrict
+    the search area. Searching now detects hyphenations at line breaks
+    and accordingly finds hyphenated words.
+  * If using quads=False in text searching, then overlapping rectangles
+    on the same line are joined. Previously, parts of the search string,
+    which belonged to different "marked content" items, each generated
+    their own rectangle -- just as if occurring on separate lines.
+  * Added Document.isRepaired, which is true if the PDF was
+    repaired on open.
+  * Added Document.setXmlMetadata which either updates or creates
+    PDF XML metadata
+  * Added Document.getXmlMetadata returns PDF XML metadata.
+  * Changed creation of PDF documents: they will now always carry a
+    PDF identification (/ID field) in the document trailer
+  * Changed Page.searchFor: a new parameter clip is accepted to
+    restrict the search to this rectangle. Correspondingly, the
+    attribute TextPage.rect is now respected by TextPage.search.
+  * Changed parameter hit_max in Page.searchFor and TextPage.search
+    is now obsolete: methods will return all hits.
+  * Changed character selection criteria in Page.getText: a character
+    is now considered to be part of a clip if its bbox is fully
+    contained. Before this, a non-empty intersection was sufficient.
+  * Changed Document.scrub to support a new option redact_images.
+- from v1.18.1
+  * Detects and recovers from more cyclic resource dependencies
+    in PDF pages and for the first time reports them in the
+    MuPDF warnings store.
+  * Fixed issue #686.
+  * Added opacity options for the Shape class: Stroke and fill
+    colors can now be set to some transparency value.
+    This means that all Page draw methods, methods
+    Page.insertText, Page.insertTextbox, Shape.finish,
+    Shape.insertText, and Shape.insertTextbox support two
+    new parameters: stroke_opacity and fill_opacity.
+  * Added new parameter mask to Page.insertImage for
+    optionally providing an external image mask
+  * Added Annot.soundGet for extracting the sound of an audio
+    annotation.
+- from v1.18.0
+  * Supports MuPDF v1.18
+  * An upstream bug occurred occasionally for some pages only
+    and seems to be fixed now: page layout should no longer
+    be ruined in these cases.
+  * Unsuccessful storage allocations should now always lead to
+    exceptions (circumvention of an upstream bug intermittently
+    crashing the interpreter).
+  * Pixmap size is now based on size_t instead of int in C and
+    should be correct even for extremely large pixmaps
+  * Specification of dashes for PDF drawing insertion should now
+    correctly reflect the PDF spec
+  * A memory leakage in Page.insert_pdf has been removed
+  * Added keyword "images" to Page.apply_redactions for
+    fine-controlling the handling of images
+  * Added Annot.getText and Annot.getTextbox, which offer
+    the same functionality as the Page versions
+  * Added key "number" to the block dictionaries of Page.getText /
+    Annot.getText for options "dict" and "rawdict"
+  * Added glyph_name_to_unicode and unicode_to_glyph_name.
+    Both functions do not really connect to a specific font and
+    are now independently available, too.
+    The data are now based on the Adobe Glyph List.
+  * Added convenience functions adobe_glyph_names and
+    adobe_glyph_unicodes which return the respective available data
+  * Added Page.getDrawings which returns details of drawing
+    operations on a document page. Works for all document types
+  * Improved performance of Document.insert_pdf.
+    Multiple object copies are now also suppressed across multiple
+    separate insertions from the same source. This saves time,
+    memory and target file size. Previously this mechanism was only
+    active within each single method execution. The feature can also
+    be suppressed with the new method bool parameter final=1,
+    which is the default.
+  * For PNG images created from pixmaps, the resolution (dpi) is
+    now automatically set from the respective Pixmap.xres and
+    Pixmap.yres values
+
+-------------------------------------------------------------------
+Sat Dec 12 13:56:56 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- update to 1.18.4:
+  - Improved PDF Optional Content support
+  - Started overhaul of method and attribute naming
+  - Introduced support of Popup annotations
+  - Implemented other bug fixes.
+
+-------------------------------------------------------------------
+Wed Sep 23 12:34:51 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.17.4:
+  * 4th bugfix release over 1.17, which provided these highlights:
+  **Added** extended language support for annotations and widgets: a mixture of
+  Latin, Greece, Russian, Chinese, Japanese and Korean characters can now be
+  used in 'FreeText' annotations and text widgets. No special arrangement is
+  required to use it.
+  * Faster page access is implemented for documents supporting a "chapter"
+  structure. This applies to EPUB documents currently. This comes with several
+  new :ref:`Document` methods and changes for :meth:`Document.loadPage` and the
+  "indexed" page access *doc[n]*: In addition to specifying a page number as
+  before, a tuple *(chaper, pno)* can be specified to identify the desired
+  page.
+
+  * **Changed:** Improved support of redaction annotations: images overlapped by
+  redactions are **permanantly modified** by erasing the overlap areas. Also
+  links are removed if overlapped by redactions. This is now fully in sync with
+  PDF specifications.
+
+
+-------------------------------------------------------------------
+Fri Mar 27 09:27:34 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 1.16.14
+  * Added JavaScript support to PDF form fields
+  * Added a new form field method, which resets the field value to its default.
+  * Added :meth:`Page.setMediaBox` for changing the physical PDF page size.
+  * Added method which returns a list of Form XObjects of the page.
+  * Added advanced graphics features to control the anti-aliasing values
+  * Added :meth:`Document.scrub` which removes potentially sensitive data from a PDF.
+  * Changed text marker annotations to accept parameters beyond just 
+    quadrilaterals such that now text lines between two given points can be marked.
+  * Added :meth:`Annot.setBlendMode` to set the annotation's blend mode.
+
+-------------------------------------------------------------------
+Tue Feb 25 12:22:02 UTC 2020 - Yunhe Guo <i@guoyunhe.me>
+
+- Version update to 1.16.11
+  * Add redact/replace support
+  * Fix PolygonAnnotation
+
+-------------------------------------------------------------------
+Wed Jan 15 11:54:42 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 1.16.10
+  * PyMuPDF can also be used as a module in the commandline using 
+    "python -m fitz"
+  * Support for Python 3.4 has been dropped.
+
+-------------------------------------------------------------------
+Wed Oct  2 11:25:50 UTC 2019 - Yunhe Guo <i@guoyunhe.me>
+
+- Version update to 1.16.3
+  * significant performance improvements for dict / rawdict text
+    extraction
+  * Page.getText() now support text extraction for "blocks" and
+    "words" 
+
+-------------------------------------------------------------------
+Tue Sep 17 21:26:39 UTC 2019 - Yunhe Guo <i@guoyunhe.me>
+
+- Version update to 1.16.2
+  * Fix memory leak with getText(“rawDICT”)
+
+-------------------------------------------------------------------
+Sat Sep  7 14:06:18 UTC 2019 - Yunhe Guo <i@guoyunhe.me>
+
+- Add %check step
+- Change category to Development/Libraries/Python
+- python-PyMuPDF-doc should be noarch
+
+-------------------------------------------------------------------
+Fri Sep  6 09:07:26 UTC 2019 - Yunhe Guo <i@guoyunhe.me>
+
+- Version update to 1.16.1
+  * Minor Enhancements and Fixes
+  * Full PDF Password Protection
+  * Fixing issues #352, #353 and #354
+- Split doc package
+
+-------------------------------------------------------------------
+Tue Jul 30 11:17:47 UTC 2019 - pgajdos@suse.com
+
+- version update to 1.14.19
+  * minor fixes
+  * added method to check PDF signature status (#326)
+
+-------------------------------------------------------------------
+Thu Jul 18 08:02:49 UTC 2019 - Yunhe Guo <i@guoyunhe.me>
+
+- Version 1.14.18
+  * Update README.md
+
+-------------------------------------------------------------------
+Sat Jul  6 07:58:25 UTC 2019 - Yunhe Guo <i@guoyunhe.me>
+
+- Version 1.14.17
+  * Added method Document.fullcopyPage to make full page copies within
+    a PDF (not just copied references as Document.copyPage does).
+  * Changed methods Page.getPixmap, Document.getPagePixmap to now use
+    alpha=False as default.
+  * Changed text extraction: the span dictionary now (again) contains
+    its rectangle under the bbox key.
+  * Changed methods Document.movePage and Document.copyPage to use
+    direct functions instead of wrapping Document.select - similar to
+    Document.deletePage in v1.14.16.
+  * The GitHub repo no longer contains interface files generated by SWIG
+    (fitz.py, fitz_wrap.c). This allows easier tracking of inter-version
+    source differences which is needed by providers of various Linux
+    platforms. The PyPI source distribution still has the previous
+    structure which includes those generated files.
+- Add swig and libpng16 build requires
+- Removed Python2 package since upstream doesn't support it anymore.
+
+-------------------------------------------------------------------
+Sun Jun  2 12:38:08 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim bias and conjecture from descriptions.
+
+-------------------------------------------------------------------
+Wed May 29 10:18:57 UTC 2019 - Yunhe Guo <i@guoyunhe.me>
+
+- Version 1.14.16
+  * Recode PDF delete page
+
+-------------------------------------------------------------------
+Thu May 23 07:28:09 UTC 2019 - Yunhe Guo <i@guoyunhe.me>
+
+- Version 1.14.15
+  * Fix utils.updateRect exception
+  * Draw a shape without outlines
+  * Fix Line cap and Line join
+
+-------------------------------------------------------------------
+Thu Apr 11 07:52:40 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Run spec-cleaner
+- Use freetype2 not old freetype1
+
+-------------------------------------------------------------------
+Wed Apr 10 13:17:25 UTC 2019 - Yunhe Guo <i@guoyunhe.me>
+
+- Version 1.14.14
+  * Fix bug in Link target point calculation
+
+-------------------------------------------------------------------
+Mon Apr  8 18:38:22 UTC 2019 - Yunhe Guo <i@guoyunhe.me>
+
+- Version 1.14.13
+  * For binary, memory-based input to most methods, now alsoio.BytesIO objects
+    are accepted.
+  * Fixed a bug not correctly showing inserted images with maintained aspect
+    ratio.
+- For earlier changelog, see https://github.com/pymupdf/PyMuPDF/releases
