@@ -1,0 +1,85 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>11891a11951f6201359e19229469da99</srcmd5>
+    <version>1.2.10</version>
+    <time>1422636502</time>
+    <user>dimstar_suse</user>
+    <comment>- Rename the spfquery binary to spf_query to avoid a conflict with the
+  perl-Mail-SPF package.
+
+- Exclude static binaries and shift the remaining into the spf2 package.
+
+- Add -n libspf2-2 as arguments to post and postun.
+
+- initial package (version 1.2.10)</comment>
+    <requestid>283437</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>adeaf43b2ccd434dea08c8f3b69c4106</srcmd5>
+    <version>1.2.10</version>
+    <time>1433832542</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>310293</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>9552406fd0830641d49ab3bacb720fd6</srcmd5>
+    <version>1.2.10</version>
+    <time>1435053547</time>
+    <user>dimstar_suse</user>
+    <comment>Use -std=gnu89, logging macros are broken when __STDC_VERSION__ &gt;= 199901L
+is true, which is the case when using GCC5.</comment>
+    <requestid>312850</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>885e1d005580f9f98a31dc2a17bd8cbc</srcmd5>
+    <version>unknown</version>
+    <time>1629101487</time>
+    <user>RBrownSUSE</user>
+    <comment>- 0001-spf_compile.c-Correct-size-of-ds_avail.patch: Fixed a remote stack
+  overflow (CVE-2021-20314 bsc#1189104)
+- reworked version for openSUSE, based on Fedora version
+  * libspf2-1.2.10-format.patch
+  * libspf2-1.2.10-libreplace.patch
+- Use -std=gnu89, logging macros are broken when __STDC_VERSION__ &gt;= 199901L
+  is true, which is the case when using GCC5.
+- Rename spf2 to libspf2-tools (like we do for e.g. libwmf-tools)
+- Move README file to tools subpackage. Trim description of SRPM
+  a bit.
+- Package LICENSES file as doc.
+- Rename the spfquery binary to spf_query to avoid a conflict with the
+  perl-Mail-SPF package.
+- Exclude static binaries and shift the remaining into the spf2 package.
+- Add -n libspf2-2 as arguments to post and postun.
+- initial package (version 1.2.10)
+</comment>
+    <requestid>911940</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>c225b7e3ea5944bf3c82a6bf24b16f88</srcmd5>
+    <version>unknown</version>
+    <time>1629706069</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>912577</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>9cfd46bb795bacb0ea6242a9f3e4e1e9</srcmd5>
+    <version>unknown</version>
+    <time>1642724731</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.2.11 - no changelog available, bugfixes
+- Drop 0001-spf_compile.c-Correct-size-of-ds_avail.patch
+- Remove comment change from libspf2-1.2.10-libreplace.patch
+</comment>
+    <requestid>947658</requestid>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>abd4bfc699d641b84ac11405b8e6616b</srcmd5>
+    <version>unknown</version>
+    <time>1709332675</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1153875</requestid>
+  </revision>
+</revisionlist>

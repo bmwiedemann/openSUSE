@@ -1,0 +1,69 @@
+-------------------------------------------------------------------
+Fri Mar  1 09:57:29 UTC 2024 - pgajdos@suse.com
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
+Thu Jan 20 08:35:18 UTC 2022 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- update to 1.2.11 - no changelog available, bugfixes
+- Drop 0001-spf_compile.c-Correct-size-of-ds_avail.patch
+- Remove comment change from libspf2-1.2.10-libreplace.patch
+
+-------------------------------------------------------------------
+Sat Aug 14 22:14:58 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim unnecessary intermediate steps with /usr/bin/find.
+
+-------------------------------------------------------------------
+Fri Aug 13 08:27:13 UTC 2021 - Marcus Meissner <meissner@suse.com>
+
+- 0001-spf_compile.c-Correct-size-of-ds_avail.patch: Fixed a remote stack
+  overflow (CVE-2021-20314 bsc#1189104)
+
+-------------------------------------------------------------------
+Sat Apr 16 20:18:36 UTC 2016 - opensuse@dstoecker.de
+
+- reworked version for openSUSE, based on Fedora version
+  * libspf2-1.2.10-format.patch
+  * libspf2-1.2.10-libreplace.patch
+
+-------------------------------------------------------------------
+Thu Jun 18 16:40:07 UTC 2015 - crrodriguez@opensuse.org
+
+- Use -std=gnu89, logging macros are broken when __STDC_VERSION__ >= 199901L
+  is true, which is the case when using GCC5.
+
+-------------------------------------------------------------------
+Thu May 14 21:52:05 UTC 2015 - jengelh@inai.de
+
+- Rename spf2 to libspf2-tools (like we do for e.g. libwmf-tools)
+- Move README file to tools subpackage. Trim description of SRPM
+  a bit.
+
+-------------------------------------------------------------------
+Fri Jan 30 12:23:33 UTC 2015 - lmuelle@suse.com
+
+- Package LICENSES file as doc.
+
+-------------------------------------------------------------------
+Thu Jan 29 15:24:44 UTC 2015 - lmuelle@suse.com
+
+- Rename the spfquery binary to spf_query to avoid a conflict with the
+  perl-Mail-SPF package.
+
+-------------------------------------------------------------------
+Thu Jan 29 14:17:40 UTC 2015 - lmuelle@suse.com
+
+- Exclude static binaries and shift the remaining into the spf2 package.
+
+-------------------------------------------------------------------
+Wed Jan 28 12:52:26 UTC 2015 - lmuelle@suse.com
+
+- Add -n libspf2-2 as arguments to post and postun.
+
+-------------------------------------------------------------------
+Sun Dec 21 12:10:05 UTC 2014 - michal.hrusecky@opensuse.org
+
+- initial package (version 1.2.10)
