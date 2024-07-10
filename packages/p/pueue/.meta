@@ -1,0 +1,8 @@
+<package name="pueue" project="openSUSE:Factory">
+  <title>Command-line task management tool</title>
+  <description>Pueue is a command-line task management tool for sequential and parallel execution of long-running tasks. It's a tool that processes a queue of shell commands.
+Since Pueue is not bound to any terminal, you can control your tasks from any terminal on the same machine. The queue will be continuously processed, even if you no longer have any active ssh sessions.
+</description>
+  <devel project="utilities" package="pueue"/>
+  <url>https://github.com/Nukesor/pueue</url>
+</package>
