@@ -1,0 +1,675 @@
+-------------------------------------------------------------------
+Thu Feb 29 15:28:39 UTC 2024 - pgajdos@suse.com
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
+Mon Mar 26 12:34:28 UTC 2018 - alarrosa@suse.com
+
+- Remove the without-ffmpeg path in the spec file. We just support
+  building libav-tools with libraries from ffmpeg (in fact, we remove
+  the code of the libav libraries in the %setup section). So now
+  use-ffmpeg-libs.patch is applied unconditionally. Also removed
+  unused configure options.
+
+-------------------------------------------------------------------
+Wed Mar 21 16:55:41 UTC 2018 - alarrosa@suse.com
+
+- Disable the building of libav* libraries and use the ones
+  from ffmpeg instead. As a result, only the libav-tools package
+  is built. To go back to building libav "as intended by upstream"
+  (generating all packages) just use --without-ffmpeg . Add patch to
+  change the Makefiles accordingly:
+  * use-ffmpeg-libs.patch
+
+-------------------------------------------------------------------
+Wed Mar 21 11:08:30 UTC 2018 - alarrosa@suse.com
+
+- Recreate package from Leap 42.1's package.
+
+- Update to 12.3
+  * See https://libav.org/releases/libav-12.3.changelog
+
+- Increase soversions to follow upstream's soversions
+
+- Drop patches already provided by upstream:
+  * CVE-2015-5479.patch
+  * CVE-2016-3062.patch
+
+-------------------------------------------------------------------
+Fri Jun 17 07:04:05 UTC 2016 - mpluskal@suse.com
+
+- Add fix for CVE-2016-3062 (boo#984487)
+  * CVE-2016-3062.patch
+
+-------------------------------------------------------------------
+Fri Oct  9 22:09:09 UTC 2015 - mpluskal@suse.com
+
+- Add fix for CVE-2015-5479 (boo#949760)
+  * CVE-2015-5479.patch
+
+-------------------------------------------------------------------
+Tue Jun 16 09:10:41 UTC 2015 - mpluskal@suse.com
+
+- Update to 11.4
+  * h264: Make sure reinit failures mark the context as not 
+    initialized (CVE-2015-3417)
+  * msrle: Use FFABS to determine the frame size in 
+    msrle_decode_pal4 (CVE-2015-3395)
+  * cavs: Remove an unneeded scratch buffer
+  * configure: Disable i686 for i586 and lower CPUs (debian/783082)
+  * mjpegenc: Fix JFIF header byte ordering (bug/808)
+  * nut: Make sure to clean up on read_header failure
+  * png: Set the color range as full range
+  * avi: Validate sample_size
+  * nut: Check chapter creation in decode_info_header
+  * alac: Reject rice_limit 0 if compression is used
+  * ape: Support _0000 files with nblock smaller than 64
+  * mux: Do not leave stale side data pointers in 
+    ff_interleave_add_packet()
+  * avresample: Reallocate the internal buffer to the correct size 
+    (bug/825)
+  * mpegts: Update the PSI/SI table only if the version change
+  * rtsp: Make sure we don't write too many transport entries into 
+    a fixed-size array
+  * rtpenc_jpeg: Handle case of picture dimensions not dividing 
+    by 8
+  * mov: Fix little endian audio detection
+  * x86: Put COPY3_IF_LT under HAVE_6REGS (gentoo/541930)
+  * roqvideoenc: set enc->avctx in roq_encode_init
+  * mp3: Properly use AVCodecContext API
+  * libvpx: Fix mixed use of av_malloc() and av_reallocp()
+  * Revert "lavfi: always check av_expr_parse_and_eval() return 
+    value"
+  * alsdec: only adapt order for positive max_order
+  * alsdec: check sample pointer range in 
+    revert_channel_correlation
+  * aacpsy: correct calculation of minath in psy_3gpp_init
+  * alsdec: limit avctx->bits_per_raw_sample to 32
+  * aasc: return correct buffer size from aasc_decode_frame
+  * matroskadec: fix crash when parsing invalid mkv
+  * avconv: do not overwrite the stream codec context for 
+    streamcopy
+  * webp: ensure that each transform is only used once
+  * h264_ps: properly check cropping parameters against overflow
+  * hevc: zero the correct variables on invalid crop parameters
+  * hevc: make the crop sizes unsigned
+
+-------------------------------------------------------------------
+Mon Apr 20 07:56:59 UTC 2015 - mpluskal@suse.com
+
+- Update to 11.3
+  * utvideodec: Handle slice_height being zero (CVE-2014-9604)
+  * adxdec: set avctx->channels in adx_read_header
+  * rmenc: limit packet size
+  * webp: validate the distance prefix code
+  * rv10: check size of s->mb_width * s->mb_height
+  * eamad: check for out of bounds read (CID/1257500)
+  * mdec: check for out of bounds read (CID/1257501)
+  * configure: Properly fail when libcdio/cdparanoia is not found
+  * tiff: Check that there is no aliasing in pixel format selection 
+    (CVE-2014-8544)
+  * aic: Fix decoding files with odd dimensions
+  * vorbis: Check the vlc value in setup_classifs
+  * arm: Suppress tags about used cpu arch and extensions
+  * prores: Extend the padding check to 16bit
+  * icecast: Do not use chunked post, allows feeding to icecast 
+    properly
+  * img2dec: correctly use the parsed value from -start_number
+  * h264_cabac: Break infinite loops
+  * hevc_deblock: Fix compilation with nasm (libav #795)
+  * h264: initialize H264Context.avctx in init_thread_copy
+  * h264: Do not share rbsp_buffer across threads
+  * h264: only ref cur_pic in update_thread_context if it is 
+    initialized
+  * matroskadec: Fix read-after-free in matroska_read_seek() 
+    (chromium #427266)
+  * log: Unbreak no-tty support on 256color terminals
+- Swith to pkgconfig style dependencies
+
+-------------------------------------------------------------------
+Mon Mar 16 18:14:45 UTC 2015 - mpluskal@suse.com
+
+- Add conflict with libswscale-devel
+
+-------------------------------------------------------------------
+Wed Mar 11 12:16:02 UTC 2015 - mpluskal@suse.com
+
+- Update to 11.2
+  * A number of additional APIs have been introduced and some 
+    existing functionshave been deprecated and are scheduled for 
+    removal in the next release. Significant API changes include:
+  + Added the avcodec_copy_context() function that must from now 
+    on be used for freeing codec contexts.
+  + Added a new VDA hardware acceleration API, since the old one 
+    was broken and not fixable in a compatible way. Deprecated the 
+    old VDA API.
+  + Added support for exporting stream-global (as opposed to 
+    per-packet) side data. This feature is now used by some 
+    demuxers to export ReplayGain or display transformation matrix 
+    (aka rotation) or stereoscopic 3D mode.
+  + Added an API for live metadata updates through event flags.
+  + Changed the way to provide a hint about the desired timebase 
+    to muxers. Previously it was done by setting 
+    AVStream.codec.time_base. Now callers should set 
+    AVStream.time_base.
+  + Added an API for working with AVFrames.
+
+-------------------------------------------------------------------
+Sun Jan  4 17:23:42 UTC 2015 - jengelh@inai.de
+
+- Rename libav*.so.N to libav*-libav.so.N (similar to what Debian
+  did) to make room for original ffmpeg libav*.so.N files.
+
+-------------------------------------------------------------------
+Mon Dec  8 08:57:57 UTC 2014 - tchvatal@suse.com
+
+- Spec-cleaner run
+
+-------------------------------------------------------------------
+Sat Dec  6 19:09:25 UTC 2014 - tchvatal@suse.com
+
+- Slight spec-file cleanups
+- Version bump to 11.1:
+  * Small cleanups
+  * Various bugfixes
+
+-------------------------------------------------------------------
+Sun Oct 12 09:11:34 UTC 2014 - tchvatal@suse.com
+
+- Version bump to 11:
+  * Next api compatible branch
+  * Various small improvements all around
+  +  Added the avcodec_copy_context() function that must from now on be used for
+     freeing codec contexts.
+  +- Added a new VDA hardware acceleration API, since the old one was broken and
+     not fixable in a compatible way. Deprecated the old VDA API.
+  +  Added support for exporting stream-global (as opposed to per-packet) side
+     data. This feature is now used by some demuxers to export ReplayGain or
+     display transformation matrix (aka rotation) or stereoscopic 3D mode.
+  +  Added an API for live metadata updates through event flags.
+  +- Changed the way to provide a hint about the desired timebase to muxers.
+     Previously it was done by setting AVStream.codec.time_base. Now callers
+     should set AVStream.time_base.
+  + Added an API for working with AVFrames.
+
+-------------------------------------------------------------------
+Tue Sep  9 14:19:33 UTC 2014 - tchvatal@suse.com
+
+- Version bump to 10.3:
+  - huffyuv: Check and propagate function return values (CVE-2013-0868)
+  - h264: prevent theoretical infinite loop in SEI parsing (CVE-2011-3946)
+  - pgssubdec: Check RLE size before copying (CVE-2013-0852)
+  - video4linux2: Avoid a floating point exception
+  - vf_select: Drop a debug av_log with an unchecked double to enum conversion
+  - librtmp: Don't free the temp url at the end of rtmp_open
+  - arm: Avoid using the 'setend' instruction on ARMv7 and newer
+  - avplay: Handle pixel aspect ratio properly
+  - eamad: use the bytestream2 API instead of AV_RL (CVE-2013-0851)
+  - pg2meet: allow size changes within original sizes
+  - af_compand: make sure request_frame always outputs at least one frame
+
+-------------------------------------------------------------------
+Sat Jul 12 09:24:06 UTC 2014 - tchvatal@suse.com
+
+- Version bump to 10.2:
+  - adpcm: Write the proper predictor in trellis mode in IMA QT
+  - adpcm: Avoid reading out of bounds in the IMA QT trellis encoder
+  - oggenc: Set the right AVOption size for the pref_duration option
+  - avpacket: fix copying side data in av_packet_copy_props()
+  - jpeg2000: fix dereferencing invalid pointers during cleanup
+  - Check mp3 header before calling avpriv_mpegaudio_decode_header() (bug/705)
+  - Check if an mp3 header is using a reserved sample rate
+  - lzo: Handle integer overflow (bug/704)
+  - avconv: make -shortest work with streamcopy
+  - ppc: Fix compilation for ppc64le (ELFv2) (ubuntu/1263802)
+  - aarch64: Use the correct syntax for relocations (debian/751856, ubuntu/1323144)
+
+-------------------------------------------------------------------
+Tue May 13 08:27:32 UTC 2014 - tchvatal@suse.com
+
+- Version bump to 10.1:
+  - pcm-dvd: Fix 20bit decoding (bug/592)
+  - avi: Improve non-interleaved detection (bug/666)
+  - arm: hpeldsp: fix put_pixels8_y2_{,no_rnd_}armv6
+  - arm: hpeldsp: prevent overreads in armv6 asm (bug/646)
+  - avfilter: Add missing emms_c when needed
+  - rtmpproto: Check the buffer sizes when copying app/playpath strings
+  - swscale: Fix an undefined behaviour
+  - vp9: Read the frame size as unsigned
+  - dcadec: Use correct channel count in stereo downmix check
+  - dcadec: Do not decode the XCh extension when downmixing to stereo
+  - matroska: add the Opus mapping
+  - matroskadec: read the CodecDelay element
+  - rtmpproto: Make sure to pass on the error code if read_connect failed
+  - lavr: allocate the resampling buffer with a positive size
+  - mp3enc: Properly write bitrate value in XING header (debian/736088)
+  - golomb: Fix the implementation of get_se_golomb_long
+
+-------------------------------------------------------------------
+Thu Apr 17 18:09:44 UTC 2014 - tchvatal@suse.com
+
+- Version bump to 10:
+  - compand audio filter
+  - av_strnstr
+  - support ID3v2 tags in ASF files
+  - reference-counting for AVFrame and AVPacket data
+  - avconv now fails when input options are used for output file
+    or vice versa
+  - avconv options -filter_script and -filter_complex_script, which allow a
+    filtergraph description to be read from a file
+  - uniform options syntax across all filters
+  - interlace filter
+  - JPEG 2000 decoder
+  - asetpts filter (same as setpts, but for audio)
+  - trim and atrim filters
+  - avconv -t and -ss (output-only) options are now sample-accurate when
+    transcoding audio
+  - Matroska muxer can now put the index at the beginning of the file.
+  - avconv -deinterlace option removed, the yadif filter should be used instead
+  - Apple Intermediate Codec decoder
+  - Escape 130 video decoder
+  - support for slice multithreading in libavfilter
+  - VC-1 interlaced B-frame support
+  - support for WavPack muxing (raw and in Matroska)
+  - Go2Webinar decoder
+  - WavPack encoding through libwavpack
+  - Added the -n parameter to avconv
+  - RTMP seek support
+  - when transcoding with avconv (i.e. not streamcopying), -ss is now accurate
+    even when used as an input option. Previous behavior can be restored with
+    the -noaccurate_seek option.
+  - avconv -t option can now be used for inputs, to limit the duration of
+    data read from an input file
+  - Voxware MetaSound decoder
+  - WebP decoder
+  - Error Resilient AAC syntax (ER AAC LC) decoding
+  - Low Delay AAC (ER AAC LD) decoding
+  - mux chapters in ASF files
+  - Opus in Ogg demuxing
+  - Enhanced Low Delay AAC (ER AAC ELD) decoding (no LD SBR support)
+  - F4V muxer
+  - HNM version 4 demuxer and video decoder
+  - HEVC decoder
+  - raw HEVC, HEVC in MOV/MP4, HEVC in Matroska, HEVC in MPEG-TS demuxing
+  - remove avplay -vismv option, which has not worked for a long time
+  - Live HDS muxer
+  - setsar/setdar filters now support variables in ratio expressions
+  - dar variable in the scale filter now returns the actual DAR (i.e. a * sar)
+  - VP9 decoder
+  - support for decoding through VDPAU in avconv (the -hwaccel option)
+  - remove mp3_header_(de)compress bitstream filters
+  - stereoscopic 3d metadata handling
+  - png standalone parser
+  - WebP encoding via libwebp
+  - ATRAC3+ decoder
+  - framepack filter
+  - Mirillis FIC video decoder
+  - Support DNx444
+
+-------------------------------------------------------------------
+Fri Mar 14 12:22:47 UTC 2014 - tchvatal@suse.com
+
+- Version bump to 9.12:
+  - configure: Update freetype check to follow upstream
+  - drawtext: Drop pointless header
+  - configure: Support preprocessor macros as header names
+  - arm: hpeldsp: fix put_pixels8_y2_{,no_rnd_}armv6
+  - qt-faststart: Check offset_count before reading from the moov_atom buffer
+  - arm: hpeldsp: prevent overreads in armv6 asm
+  - configure: enable PIC on s390(x)
+  - ituh263: reject b-frame with pp_time = 0
+  - lagarith: reallocate rgb_planes when needed
+  - truemotion1: check the header size
+  - shorten: pad the internal bitstream buffer
+  - samplefmt: avoid integer overflow in av_samples_get_buffer_size()
+  - h264: Fix a typo from the previous commit
+  - h264: Lower bound check for slice offsets
+  - Add missing header to fix compilation after d2a0654
+  - configure: Add missing dependency of Snow decoder on videodsp
+  - rpza: limit the number of blocks to the total remaining blocks in the frame
+  - oggparseogm: check timing variables
+  - mathematics: remove asserts from av_rescale_rnd()
+  - vc1: Always reset numref when parsing a new frame header.
+  - h264: reset num_reorder_frames if it is invalid
+  - h264: check that an IDR NAL only contains I slices
+  - mov: Free an earlier allocated array if allocating a new one
+  - mov: Free intermediate arrays in the normal cleanup function
+  - segafilm: fix leaks if reading the header fails
+  - h264_cavlc: check the size of the intra PCM data.
+  - h263: Check init_get_bits return value
+  - cavsdec: check ff_get_buffer() return value
+  - cavs: Check for negative cbp
+  - avi: DV in AVI must be considered single stream
+  - vmnc: Check the cursor dimensions
+  - vmnc: Port to bytestream2
+  - vmnc: K&R formatting cosmetics
+  - flashsv: Check diff_start diff_height values
+  - dsputil/pngdsp: fix signed/unsigned type in end comparison (CVE-2013-7010, CVE-2013-7014)
+  - lavf: make av_probe_input_buffer more robust (CVE-2012-6618)
+  - lavf: use a fixed width type
+  - lavf: simplify handling of offset in av_probe_input_buffer()
+  - prores: Error out only on surely incomplete ac_coeffs
+  - shorten: Fix out-of-array read
+  - prores: Add a codepath for decoding errors
+  - nut: Fix unchecked allocations
+  - avi: directly resync on DV in AVI read failure
+  - mov: Don't allocate arrays with av_malloc that will be realloced
+  - shorten: Extend fixed_coeffs to properly support pred_order 0
+
+- Remove libav-use-recommended-freetype-include.patch:
+  * included upstream
+
+-------------------------------------------------------------------
+Sun Jan 19 00:00:14 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Added libav-use-recommended-freetype-include.patch:
+  Freetype upstream recommends using their macros together with
+  ft2build include. Positive sideeffect is that this patch makes it
+  build with both freetype2 2.5.1, and older versions
+
+-------------------------------------------------------------------
+Sat Oct 12 08:24:04 UTC 2013 - tchvatal@suse.com
+
+- Provide also devels from other ffmpeg names for compat.
+
+-------------------------------------------------------------------
+Sat Oct 12 08:16:07 UTC 2013 - tchvatal@suse.com
+
+- Version 9.10:
+ - alac: Do bounds checking of lpc_order read from the bitstream
+ - ape: Don't allow the seektable to be omitted
+ - asfdec: Check the return value of asf_read_stream_properties
+ - asvdec: Verify the amount of extradata
+ - avidec: Make sure a packet is large enough before reading its data
+ - bfi: Add some very basic sanity checks for input packet sizes
+ - bfi: Avoid divisions by zero
+ - cavsdec: Make sure a sequence header has been decoded before decoding pictures
+ - dcadec: Validate the lfe parameter
+ - dsicin: Add some basic sanity checks for fields read from the file
+ - eacmv: Make sure a reference frame exists before referencing it
+ - electronicarts: Add more sanity checking for the number of channels
+ - electronicarts: Check packet sizes before reading
+ - ffv1: Make sure at least one slice context is initialized
+ - fraps: Make the input buffer size checks more strict
+ - h263dec: Remove a hack that can cause infinite loops
+ - idroqdec: Make sure a video stream has been allocated before returning packets
+ - ivi_common: Make sure color planes have been initialized
+ - lavf: Avoid setting avg_frame_rate if delta_dts is negative
+ - mace: Make sure that the channel count is set to a valid value
+ - matroskadec: Verify realaudio codec parameters
+ - mov: Don't use a negative duration for setting other fields
+ - mov: Make sure the read sample count is nonnegative
+ - mpc8: Check the seek table size parsed from the bitstream
+ - mpc8: Make sure the first stream exists before parsing the seek table
+ - mpeg4videodec: Check the width/height in mpeg4_decode_sprite_trajectory
+ - mpegaudiodec: Validate that the number of channels fits at the given offset
+ - mpegvideo: Initialize chroma_*_shift and codec_tag even if the size is 0
+ - mvi: Add sanity checking for the audio frame size
+ - mxfdec: set audio timebase to 1/samplerate
+ - oggparseogm: Convert to use bytestream2
+ - omadec: Properly check lengths before incrementing the position
+ - pcx: Check the packet size before assuming it fits a palette
+ - pcx: Consume the whole packet if giving up due to missing palette
+ - pngdec: Stop trying to decode once inflate returns Z_STREAM_END
+ - qpeg: Add checks for running out of rows in qpeg_decode_inter
+ - r3d: Add more input value validation
+ - riffdec: Add sanity checks for the sample rate
+ - rl2: Avoid a division by zero
+ - rmdec: Validate the fps value
+ - rpza: Fix a buffer size check
+ - rv10: Validate the dimensions set from the container
+ - rv34: Check the return value from ff_rv34_decode_init
+ - segafilm: Validate the number of audio channels
+ - shorten: Break out of loop looking for fmt chunk if none is found
+ - shorten: Use a checked bytestream reader for the wave header
+ - sierravmd: Do sanity checking of frame sizes
+ - smacker: Avoid integer overflow when allocating packets
+ - smacker: Don't return packets in unallocated streams
+ - smacker: Make sure we don't fill in huffman codes out of range
+ - svq3: Avoid a division by zero
+ - svq3: Check for any negative return value from ff_h264_check_intra_pred_mode
+ - truemotion2: Use av_freep properly in an error path
+ - twinvqdec: Check the ibps parameter separately
+ - vc1dec: Don't decode slices when the latest slice header failed to decode
+ - vc1dec: Fix leaks in ff_vc1_decode_init_alloc_tables on errors
+ - vc1dec: Make sure last_picture is initialized in vc1_decode_skip_blocks
+ - vc1dec: Undo mpegvideo initialization if unable to allocate tables
+ - vocdec: Don't update codec parameters mid-stream
+ - vp3: Check the framerate for validity
+ - vqf: Make sure sample_rate is set to a valid value
+ - vqf: Make sure the bitrate is in the valid range
+ - wnv1: Make sure the input packet is large enough
+ - wtv: Add more sanity checks for a length read from the file
+ - xan: Only read within the data that actually was initialized
+ - xan: Use bytestream2 to limit reading to within the buffer
+ - xmv: Add more sanity checks for parameters read from the bitstream
+ - xwma: Avoid division by zero
+ - xxan: Disallow odd width
+ - zmbvdec: Check the buffer size for uncompressed data
+
+- version 9.9:
+ - 4xm: check that bits per sample is strictly positive
+ - 4xm: Check that the read track value is non-negative
+ - 4xm: Reject not a multiple of 16 dimension
+ - 8bps: Bound-check the input buffer
+ - aac: Check init_get_bits return value
+ - aac: return meaningful errors
+ - ac3: Clean up the error paths
+ - ac3dec: Don't consume more data than the actual input packet size
+ - ac3dec: Increment channel pointers only once per channel
+ - ac3: Do not clash with normal AVERROR
+ - ac3: Return proper error codes
+ - adpcm: Write the correct number of samples for ima-dk4
+ - alac: Check that the channels fit at the given offset
+ - alac: Limit max_samples_per_frame
+ - alsdec: Clean up error paths
+ - alsdec: Fix the clipping range
+ - ape demuxer: check for EOF in potentially long loops
+ - atrac3: Error on impossible encoding/channel combinations
+ - atrac3: fix error handling
+ - atrac3: set the getbits context the right buffer_end
+ - avconv: do not use lavfi direct rendering with -deinterlace
+ - avidec: Let the inner dv demuxer take care of discarding
+ - avio: Handle AVERROR_EOF in the same way as the return value 0
+ - bink: Bound check the quantization matrix.
+ - dca: Error out on missing DSYNC
+ - dca: Respect the current limits in the downmixing capabilities
+ - dsicinav: Bound-check the source buffer when needed
+ - dsicinav: Clip the source size to the expected maximum
+ - dv: Add a guard to not overread the ppcm array
+ - dxa: Make sure the reference frame exists
+ - h261: check the mtype index
+ - iff: Do not read over the source buffer
+ - imc: Catch a division by zero
+ - indeo4: Check the quantization matrix index
+ - indeo4: Do not access missing reference MV
+ - indeo4: Validate scantable dimension
+ - indeo5: return proper error codes
+ - indeo: Bound-check before applying motion compensation
+ - indeo: Bound-check before applying transform
+ - indeo: Do not reference mismatched tiles
+ - indeo: Reject impossible FRAMETYPE_NULL
+ - indeo: Sanitize ff_ivi_init_planes fail paths
+ - lavf: avoid integer overflow when estimating bitrate
+ - lavf: Make sure avg_frame_rate can be calculated without integer overflow
+ - matroskadec: Check that .lang was allocated and set before reading it
+ - mjpegb: Detect changing number of planes in interlaced video
+ - mlpdec: Do not set invalid context in read_restart_header
+ - mov: Do not allow updating the time scale after it has been set
+ - mov: Seek back if overreading an individual atom
+ - mpegvideo: Avoid 32-bit wrapping of linesize multiplications
+ - nuv: check ff_rtjpeg_decode_frame_yuv420 return value
+ - nuv: Do not ignore lzo decompression failures
+ - nuv: Pad the lzo outbuf
+ - nuv: Reset the frame on resize
+ - nuv: return meaningful error codes.
+ - nuv: Use av_fast_realloc
+ - ogg: Always alloc the private context in vorbis_header
+ - ogg: Fix potential infinite discard loop
+ - oma: check geob tag boundary
+ - oma: correctly mark and decrypt partial packets
+ - oma: refactor seek function
+ - pcm: always use codec->id instead of codec_id
+ - pcx: Do not overread source buffer in pcx_rle_decode
+ - pictordec: break out of both decoding loops when y drops below 0
+ - pictordec: pass correct context to avpriv_request_sample
+ - qdm2: check and reset dithering index per channel
+ - qdm2: Conceal broken samples
+ - qdm2: refactor joined stereo support
+ - qdm2: use init_static_data
+ - rmdec: Use the AVIOContext given as parameter in rm_read_metadata()
+ - rtjpeg: Use init_get_bits8
+ - rtmp: Do not misuse memcmp
+ - rtmp: rename data_size to size
+ - segafilm: Error out on impossible packet size
+ - vc1: check mb_height validity.
+ - vc1: check the source buffer in vc1_mc functions
+ - vcr1: add sanity checks
+ - vqavideo: check the version
+ - westwood_vqa: do not free extradata on error in read_header
+ - wmavoice: conceal clearly corrupted blocks
+ - wtv: Mark attachment with a negative stream id
+ - xl: Make sure the width is valid
+
+-------------------------------------------------------------------
+Mon Jul 29 11:42:40 CEST 2013 - mhrusecky@suse.cz
+
+- enable gif an jpeg
+- sort enabled stuff alphabetically
+
+-------------------------------------------------------------------
+Sat Jul 27 11:30:27 UTC 2013 - tchvatal@suse.com
+
+- version 9.8:
+ - kmvc: Clip pixel position to valid range
+ - kmvc: Use fixed sized arrays in the context
+ - indeo: Reject negative array indexes
+ - indeo: Check for reference when inheriting motion vectors
+ - indeo: Properly forward the error codes
+ - mjpeg: Check the unescaped size for overflows
+ - wmapro: Error out on impossible scale factor offsets
+ - wmapro: Check the min_samples_per_subframe
+ - wmapro: Return early on unsupported condition
+ - wmapro: Check num_vec_coeffs against the actual available buffer
+ - wmapro: Make sure there is room to store the current packet
+ - lavc: Move put_bits_left in put_bits.h
+ - 4xm: Do not overread the source buffer in decode_p_block
+ - 4xm: Check bitstream_size boundary before using it
+
+-------------------------------------------------------------------
+Thu Jul  4 22:51:02 UTC 2013 - tchvatal@suse.com
+
+- Enable pic
+
+-------------------------------------------------------------------
+Thu Jul  4 22:44:21 UTC 2013 - tchvatal@suse.com
+
+- Use the date sed same way like on other pkgs.
+
+-------------------------------------------------------------------
+Thu Jul  4 21:56:34 UTC 2013 - tchvatal@suse.com
+
+- Enable opus as it is used in chromium.
+
+-------------------------------------------------------------------
+Mon Jun 17 07:24:15 UTC 2013 - tchvatal@suse.com
+
+- Version bump to 9.7:
+ - 4xm: fix several programming errors to avoid crashes, etc.
+ - apetag: use int64_t for filesize
+ - jpegls: Fix invalid writes to memory
+ - ljpeg: use the correct number of components in YUV
+ - mjpeg: Validate sampling factors
+ - mjpegdec: properly report unsupported disabled features
+ - mjpegdec: validate parameters in mjpeg_decode_scan_progressive_ac
+ - mpegvideo: allocate sufficiently large scratch buffer for interlaced vid
+ - pixdesc: mark gray8 as pseudopal
+ - smacker: fix several programming errors to avoid crashes, etc.
+ - tiff: do not overread the source buffer
+ - vmd: drop incomplete chunks and spurious samples
+ - vmdav: convert to bytestream2 to avoid invalid reads and writes
+ - wavpack: check packet size early
+ - wavpack: use bytestream2 in wavpack_decode_block
+ - wavpack: validate samples size parsed in wavpack_decode_block
+ - aac: check the maximum number of channels to avoid invalid writes
+ - indeo3: fix off by one in MV validity check
+ - id3v2: check for end of file while unescaping tags to avoid invalid
+   writes, reported by Google Security Team
+ - afifo: fix request_samples on the last frame in certain cases
+ - hls, segment: fix splitting for audio-only streams
+ - wav: Always seek to an even offset, Bug #500, LP: #1174737
+ - swscale: Use alpha from the right row in yuva2rgba_c, Bug #504
+ - indeo3: use unaligned reads on reference blocks, Bug #503
+ - oma: properly forward errors in oma_read_packet
+ - af_asyncts: fix offset calculation
+ - proresdec: support mixed interlaced/non-interlaced content
+
+-------------------------------------------------------------------
+Mon Apr 22 11:44:56 UTC 2013 - tchvatal@suse.com
+
+- Version bump to 9.5.
+  - remove patch applied upstream.
+  - Following fixes by upstream:
+- af_channelmap: sanity check input channel indices in all cases
+- avfiltergraph: check for sws opts being non-NULL before using them
+- bmv: check for len being valid in bmv_decode_frame()
+- configure: Enable hwaccels without external dependencies by default
+- dfa: check for invalid access in decode_wdlt()
+- id3v2: pad the APIC packets as required by lavc
+- indeo3: check motion vectors
+- indeo3: fix data size check
+- indeo3: switch parsing the header to bytestream2
+- lavf: make sure stream probe data gets freed
+- matroska: Update the available size after lace parsing
+- matroska: fix a corner case in ebml-lace parsing
+- matroska: pass the lace size to the matroska_parse_rm_audio
+- mp3dec: fallback to generic seeking when a TOC is not present
+- oggdec: fix faulty cleanup prototype
+- oma: Validate sample rates
+- qdm2: check that the FFT size is a power of 2
+- riff: check for eof if chunk size and code are 0 to prevent an infinite loop
+- rv10: check that extradata is large enough
+- svq1dec: check that the reference frame has the same dimensions as the current one
+- svq1dec: clip motion vectors to the frame size
+- xmv: check audio track parameters validity
+- xmv: do not leak memory in the error paths in xmv_read_header()
+
+-------------------------------------------------------------------
+Sat Apr 20 17:40:43 UTC 2013 - tchvatal@suse.com
+
+- Freetype2 is requred, not freetype1.
+
+-------------------------------------------------------------------
+Sat Apr 20 17:30:06 UTC 2013 - tchvatal@suse.com
+
+- Adjust few options as recommended by upstream.
+- Do not enable gpl3 as we do not link to such libs.
+- Remove default options from configure.
+
+-------------------------------------------------------------------
+Sat Apr 20 11:56:23 UTC 2013 - tchvatal@suse.com
+
+- Update url to use macros and update patch comment.
+
+-------------------------------------------------------------------
+Fri Apr 12 13:36:38 UTC 2013 - tchvatal@suse.com
+
+- Try to silence date/time warning from rpmlint.
+
+-------------------------------------------------------------------
+Fri Apr 12 12:18:37 UTC 2013 - tchvatal@suse.com
+
+- Fix rpmlint code error. Upstream notified.
+
+-------------------------------------------------------------------
+Fri Apr 12 11:41:41 UTC 2013 - tchvatal@suse.com
+
+- Format the spec file with the hook.
+
+-------------------------------------------------------------------
+Fri Apr 12 10:27:59 UTC 2013 - tchvatal@suse.com
+
+- Initial package. Needs muxers cleanup to match SUSE reqs.
+

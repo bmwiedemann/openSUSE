@@ -1,0 +1,20 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>558a0c2ee52efc2b0172e387790ff193</srcmd5>
+    <version>12.3</version>
+    <time>1523615748</time>
+    <user>maxlin_factory</user>
+    <comment>Note this is not the full libav. The build just generates the libav-tools
+package using the libraries from the ffmpeg package so we don't duplicate
+libraries to maintain.</comment>
+    <requestid>593396</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>aade5d3ff5eec486f7b44be854525754</srcmd5>
+    <version>12.3</version>
+    <time>1709239922</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1153477</requestid>
+  </revision>
+</revisionlist>
