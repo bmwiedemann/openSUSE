@@ -1,0 +1,234 @@
+-------------------------------------------------------------------
+Wed Apr  3 11:18:24 UTC 2024 - pgajdos@suse.com
+
+- version update to 2.6.11
+  * liboath: Handle invalid base32 encoded secrets.  Fixes: #41.
+  * Various build fixes including updated gnulib files.
+  * Improve compatibility with recent libxmlsec.
+
+-------------------------------------------------------------------
+Sun Jul  9 12:03:29 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.6.8
+  * libpskc: Fixes for recent libxmlsec releases.
+  * pam_oath: Provide fallback pam_modutil_getpwnam implementation.
+  * pam_oath: Don't fail authentication when pam_modutil_getpwnam
+   doesn't ** know the user when usersfile don't include ${USER}
+   or ${HOME}.
+  * pam_oath: Self-test improvements.
+
+-------------------------------------------------------------------
+Tue Aug  2 20:39:41 UTC 2022 - Torsten Gruner <simmphonie@opensuse.org>
+
+- Use %_pam_moduledir instead of hardcoding %{_lib}/security
+- Define macro _pam_moduledir if not set to fix builds for Leap and SLE
+
+-------------------------------------------------------------------
+Thu Apr 21 09:52:55 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- url -> https
+
+-------------------------------------------------------------------
+Sun May  2 14:36:13 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.6.7
+  * pam_oath: Support variables in usersfile string parameter.
+    These changes introduce the ${USER} and ${HOME} placeholder
+    values for the usersfile string in the pam_oath configuration
+    file. The placeholder values allow the user credentials file
+    to be stored in a file path that is relative to the user, and
+    mimics similar behavior found in google-authenticator-libpam.
+    The motivation for these changes is to allow for
+    non-privileged processes to use pam_oath (e.g., for 2FA with
+    xscreensaver). Non-privileged and non-suid programs are
+    unable to use pam_oath. These changes are a proposed
+    alternative to a suid helper binary as well.
+  * doc: Fix project URL in man pages.
+  * build: Drop use of libxml's AM_PATH_XML2 in favor of pkg-config.
+  * build: Modernize autotools usage.
+    Most importantly, no longer use -Werror with AM_INIT_AUTOMAKE
+    to make rebuilding from source more safe with future automake
+    versions.
+  * Updated gnulib files.
+
+-------------------------------------------------------------------
+Wed Jan 20 21:40:44 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.6.6
+  * oathtool: Support for reading KEY and OTP from standard input
+    or filename.  KEY and OTP may now be given as '-' to mean
+    stdin, or @FILE to read from a particular file.  This is
+    recommended on multi-user systems, since secrets as command
+    line parameters leak.
+  * pam_oath: Fix unlikely logic fail on out of memory conditions.
+
+-------------------------------------------------------------------
+Tue Dec 29 11:58:14 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.6.5
+  * oathtool: Support for reading KEY and OTP from standard input
+    or filename.
+    KEY and OTP may now be given as '-' to mean stdin, or @FILE to
+    read from a particular file.  This is recommended on multi-user
+    systems, since secrets as command line parameters leak.
+  * pam_oath: Fix unlikely logic fail on out of memory conditions.
+  * Doc fixes.
+- Update to version 2.6.4
+  * libpskc: New --with-xmlsec-crypto-engine to hard-code crypto
+    engine.  Use it like --with-xmlsec-crypto-engine=gnutls or
+    --with-xmlsec-crypto-engine=openssl if the default dynamic
+    loading fails because of runtime linker search path issues.
+  * oathtool --totp --verbose now prints TOTP hash mode.
+  * oathtool: Hash names (e.g., SHA256) for --totp are now upper
+    case.  Lower/mixed case hash names are supported for
+    compatibility.
+  * pam_oath: Fail gracefully for missing users.
+    This allows you to incrementally add support for OATH
+    authentication instead of forcing it on all users.
+  * Fix libpskc memory corruption bug.
+  * Fix man pages.
+  * Build fixes.
+- Update to version 2.6.3
+  * pam_oath: Fix self-tests.
+- Drop not longer needed patches:
+  * 0001-Fix-no-return-in-nonvoid-function-errors-reported-by.patch
+  * 0003-pam_oath-assign-safe-default-to-alwaysok-config-memb.patch
+  * 0002-update_gnulibs_files.patch
+  * gnulib-libio.patch
+- Use source verification
+- Use proper source URLs
+
+-------------------------------------------------------------------
+Mon Aug  6 07:59:16 UTC 2018 - schwab@suse.de
+
+- gnulib-libio.patch: Update gnulib for libio.h removal
+
+-------------------------------------------------------------------
+Thu Jul  5 17:00:51 UTC 2018 - matthias.gerstner@suse.com
+
+- Add patch 0003-pam_oath-assign-safe-default-to-alwaysok-config-memb.patch:
+   - fix potential security issue in low memory situation (bsc#1089114)
+
+-------------------------------------------------------------------
+Sun May 20 21:40:32 UTC 2018 - julio@juliogonzalez.es
+
+- Fix build for openSUSE Leap 42.2 and 42.3
+
+-------------------------------------------------------------------
+Wed Apr 18 07:32:43 UTC 2018 - jengelh@inai.de
+
+- Trim/update descriptions. Fix RPM groups. Remove useless
+  --with-pic.
+
+-------------------------------------------------------------------
+Fri Apr 13 13:26:47 UTC 2018 - mpluskal@suse.com
+
+- Run spe-cleaner
+- Drop useless conditions
+
+-------------------------------------------------------------------
+Wed Apr 11 12:18:59 UTC 2018 - ncutler@suse.com
+
+- bring License line into closer accordance with actual licenses
+  mentioned in the tarball
+- split off xml/pskc/ directory/files from liboath0 into a separate
+  "oath-toolkit-xml" subpackage to prevent conflicts if two versions of the
+  liboath library were ever installed at the same time
+
+-------------------------------------------------------------------
+Wed Apr 11 11:26:36 UTC 2018 - ncutler@suse.com
+
+- use %license instead of %doc to package license-related files 
+
+-------------------------------------------------------------------
+Tue Jan 16 11:18:53 UTC 2018 - dmarcoux@posteo.de
+
+- Add patch (last commit which changed source, not released in 2.6.2):
+  - 0002-update_gnulibs_files.patch
+
+-------------------------------------------------------------------
+Mon Aug 29 20:03:11 UTC 2016 - mardnh@gmx.de
+
+- Update to Version 2.6.2
+  - no changes in upstream code
+- Fix RPM groups for -devel packages
+- build with libpskc on supported suse-versions
+- Add patch:
+  - 0001-Fix-no-return-in-nonvoid-function-errors-reported-by.patch
+
+-------------------------------------------------------------------
+Wed Sep  9 14:31:24 UTC 2015 - t.gruner@katodev.de
+
+- Update to Version 2.6.1 (released 2015-07-31)
+  - liboath: Fix 'make check' on 32-bit systems.
+
+- Version 2.6.0 (released 2015-05-19)
+  - liboath: Support TOTP with HMAC-SHA256 and HMAC-SHA512.
+    This adds new APIs oath_totp_generate2, oath_totp_validate4 and
+    oath_totp_validate4_callback.
+  - oathtool: The --totp parameter now take an optional argument to specify MAC.
+    For example use --totp=sha256 to use HMAC-SHA256.  When --totp is used
+    the default HMAC-SHA1 is used, as before.
+  - pam_oath: Mention in README that you shouldn't use insecure keys.
+  - pam_oath: Check return value from strdup.
+  - The files 'gdoc' and 'expect.oath' are now included in the tarball.
+
+-------------------------------------------------------------------
+Sat Jan 24 10:29:53 UTC 2015 - mardnh@gmx.de
+
+- Update to version 2.4.1:
+  + liboath: Fix usersfile bug that caused it to update the wrong line.
+    When an usersfile contain multiple lines for the same user but with an
+    unparseable token type (e.g., HOTP vs TOTP), the code would update the
+    wrong line of the file.  Since the then updated line could be a
+    commented out line, this can lead to the same OTP being accepted
+    multiple times which is a security vulnerability.  Reported by Bas van
+    Schaik <bas@sj-vs.net> and patch provided by Ilkka Virta
+    <itvirta@iki.fi>.  CVE-2013-7322
+
+-------------------------------------------------------------------
+Fri Jul 11 18:14:17 UTC 2014 - darin@darins.net
+
+- Ran through spec-cleaner 
+
+-------------------------------------------------------------------
+Wed Oct 23 09:41:19 UTC 2013 - vuntz@opensuse.org
+
+- Update to version 2.4.0:
+  + liboath: Add new API methods for validating TOTP OTPs
+- Changes from version 2.2.0:
+  + libpskc: Add functions for setting PSKC data.
+  + liboath: Permit different passwords for different tokens for
+    the same user.
+  + liboath: Make header file usable from C++ (extern "C" guard).
+  + build: Improve building from git with most recent automake and
+    gengetopt.
+  + build: Valgrind is not enabled by default.
+- Fix license: libraries are LGPL-2.1+ and everything else is
+  GPL-3.0+. Also properly package the COPYING files.
+- Prepare build libpskc, hidden under a %{build_pskc} define:
+  + Add libxml2-devel and pkgconfig(xmlsec1) BuildRequires.
+  + Create libpskc0 and libpskc-devel subpackages.
+  + Define %{build_pskc} to 0 since we don't have libxmlsec1 yet.
+- Rework summaries and descriptions.
+
+-------------------------------------------------------------------
+Sat Jun 15 18:46:27 UTC 2013 - bwiedemann@suse.com
+
+- Update to version 2.0.2
+
+-------------------------------------------------------------------
+Fri Feb 11 00:04:02 UTC 2011 - cristian.rodriguez@opensuse.org
+
+- Update to version 1.4.6 
+
+-------------------------------------------------------------------
+Sat Feb  5 18:41:54 UTC 2011 - cristian.rodriguez@opensuse.org
+
+- Use libgcrypt for crypto 
+
+-------------------------------------------------------------------
+Sat Feb  5 14:46:45 UTC 2011 - cristian.rodriguez@opensuse.org
+
+- Initial version 
+

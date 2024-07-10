@@ -1,0 +1,110 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1883b31494b31dbcb37855f8499b48eb</srcmd5>
+    <version>2.6.2</version>
+    <time>1523616591</time>
+    <user>maxlin_factory</user>
+    <comment>- bring License line into closer accordance with actual licenses
+  mentioned in the tarball
+- split off xml/pskc/ directory/files from liboath0 into a separate
+  &quot;oath-toolkit-xml&quot; subpackage to prevent conflicts if two versions of the
+  liboath library were ever installed at the same time</comment>
+    <requestid>595675</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>68076e7aef361b0436859ebd779e53a1</srcmd5>
+    <version>2.6.2</version>
+    <time>1523875755</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>596420</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>e920623add5ac12e832f2c4b02d54218</srcmd5>
+    <version>2.6.2</version>
+    <time>1524144729</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>597884</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>0d7765fdf5b550486b0667ef340b3bd0</srcmd5>
+    <version>2.6.2</version>
+    <time>1527276989</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>611219</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>0cc1adab6efa1fc32bc7df7370772a7e</srcmd5>
+    <version>2.6.2</version>
+    <time>1531469739</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>621209</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>017a5e3eb5a464a4c13d34d6f755ef50</srcmd5>
+    <version>2.6.2</version>
+    <time>1534321755</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>627660</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>3429d782b2d114f1ff11958cfc5c2fdb</srcmd5>
+    <version>2.6.5</version>
+    <time>1609405144</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>859433</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>798a29daf1ba2e8994dcfb5a90d9665d</srcmd5>
+    <version>2.6.6</version>
+    <time>1611595371</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>865336</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>c852313eeddc30cc6a32f61f64d7e334</srcmd5>
+    <version>2.6.7</version>
+    <time>1620653769</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>889852</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>ff651b773c78033aa7e8cee5f6ce96d3</srcmd5>
+    <version>2.6.7</version>
+    <time>1650996889</time>
+    <user>dimstar_suse</user>
+    <comment>- url -&gt; https</comment>
+    <requestid>972310</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>4e8426bdfa7149349d4fede822b87f72</srcmd5>
+    <version>2.6.7</version>
+    <time>1659612182</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>992582</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>ebf6da874eed8feb70585a81dd37b1e6</srcmd5>
+    <version>2.6.8</version>
+    <time>1688999973</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1097833</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>f71b11e4e12fc862eed57ea69cf3524e</srcmd5>
+    <version>2.6.11</version>
+    <time>1712673969</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1166217</requestid>
+  </revision>
+</revisionlist>
