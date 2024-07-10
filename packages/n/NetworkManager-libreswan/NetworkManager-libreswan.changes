@@ -1,0 +1,120 @@
+-------------------------------------------------------------------
+Wed May 22 09:07:30 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.2.22:
+  + Add IPv6 support.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Apr 18 13:12:46 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.2.20:
+  + Support setting "leftmodecfgclient" to "no"
+  + Support for the "type", "hostaddrfamily" and
+    "clientaddrfamily", "leftsubnet" and "rightcert" parameters.
+- Changes from version 1.2.18:
+  + Drop libnm-glib compatibility (NetworkManager < 1.0).
+  + Add support for the "authby", "dpdaction", "dpddelay",
+    "dpdtimeout", "ipsec-interface" parameters.
+  * Updated translations.
+
+-------------------------------------------------------------------
+Thu Mar 28 07:55:28 UTC 2024 - Jonathan Kang <songchuan.kang@suse.com>
+
+- Add missing supplements(bsc#1220391):
+  + NMA subpackage: Main package and gnome-control-center
+
+-------------------------------------------------------------------
+Thu Nov  2 14:34:19 UTC 2023 - Callum Farmer <gmbr3@opensuse.org>
+
+- Rename gnome subpackage to NetworkManager-applet-libreswan
+  to more accurately reflect its usage
+- Add missing requires: NetworkManager
+- Add missing supplements:
+  - NM and /usr/sbin/ipsec
+  - NMA subpackage: Main package and NMA
+
+-------------------------------------------------------------------
+Wed Dec 28 12:12:49 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- Move dbus-1 system.d conf file to /usr (bsc#1206757)
+
+-------------------------------------------------------------------
+Sat Mar 12 17:25:47 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.2.16:
+  + Gtk4 version of the editor plugin is now available (for use
+    with Control Center of GNOME 42 or later).
+  + Updated translations.
+- Add pkgconfig(gtk4) and pkgconfig(libnma-gtk4) BuildRequires and
+  pass --with-gtk4=yes to configure, build the gtk4 version.
+- Pass --enable-lto=yes to configure, build using LTO support.
+- Add optional libxml2-tools BuildRequires, build runs
+  xml-stripblanks preprocessing if available.
+
+-------------------------------------------------------------------
+Tue Jan 12 09:19:26 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.2.14:
+  + Support Libreswan 4, which changed the name of some
+    configuration parameters. Now the plugin can detect the
+    Libreswan version and use the appropriate parameter names.
+  + The auth helper in external UI mode can now be run without a
+    display server. Future nmcli version will utilize this for
+    handling the secrets without a graphical desktop.
+  + Update strings for new dialog design in gnome-shell.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri May  1 09:07:10 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Set the path for the VPN service name file correctly to
+  %_vpnservicedir (provided by macros.NetworkManager).
+
+-------------------------------------------------------------------
+Sat Jan 25 14:04:30 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- No longer recommend -lang: supplements are in use
+
+-------------------------------------------------------------------
+Wed Jul 31 10:51:55 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.2.12:
+  + libnm-glib compatibility (NetworkManager < 1.0) is disabled by
+    default. It can be enabled by passing --with-libnm-glib to
+    configure script. Nobody should need it by now. Users that
+    still use this are encourage to let us know before the
+    libnm-glib support is removed for good.
+  + Fixed the advanced dialog not working in Gnome.
+  + Updated translations.
+- Stop passing --without-libnm-glib to configure, no longer needed.
+
+-------------------------------------------------------------------
+Mon Oct 15 11:08:16 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 1.2.10:
+  + Fixed import/export feature.
+  + Added support to the 'pfs' Libreswan option.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 25 10:36:17 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 1.2.8:
+  + GUI allows to set the remote id also for IKEv1 connections.
+  + GUI "advanced" section as been moved to a separate dialog.
+  + GUI allows to select IKEv2 certificate-based config.
+  + Added support to many new Libreswan options: "'rightid',
+    'narrowing', 'rekey', 'fragmentation', mobike' ... see man page
+    for full list.
+  + Added support for IKEv2.
+  + Added nm-settings-libreswan man page to document supported
+    options.
+  + Added 'ikelifetime', 'salifetime' and 'rightsubnet' settings.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Apr 10 10:10:10 UTC 2018 - bjorn.lie@gmail.com
+
+- Initial packaging of NetworkManager-libreswan, version 1.2.6.
+

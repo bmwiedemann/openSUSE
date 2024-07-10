@@ -1,0 +1,125 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>378e33ab09e155eb93dd8bac5a47bba5</srcmd5>
+    <version>1.2.6</version>
+    <time>1530087648</time>
+    <user>dimstar_suse</user>
+    <comment>- Initial packaging of NetworkManager-libreswan, version 1.2.6.
+
+This depends on recently checked into tw rpmlint whitelisting - should be &quot;fine&quot; shortly.</comment>
+    <requestid>618698</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>104eff333ccc26661ac340d1374a2b22</srcmd5>
+    <version>1.2.8</version>
+    <time>1537964676</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>638281</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>39ca6147f7cc315ac2467fc191fdd100</srcmd5>
+    <version>1.2.10</version>
+    <time>1539758607</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>642511</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>62d5c74d21e6ca46ea3f28eb77ccde88</srcmd5>
+    <version>1.2.12</version>
+    <time>1564994145</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>720103</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>02c3b920997dfbb451632846680e68ec</srcmd5>
+    <version>1.2.12</version>
+    <time>1580152384</time>
+    <user>dimstar_suse</user>
+    <comment>Eliminate the -lang recommends (forwarded request 767087 from dimstar)</comment>
+    <requestid>767326</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>c607234a499d6b08c51a5e50ba8c0289</srcmd5>
+    <version>1.2.12</version>
+    <time>1588538783</time>
+    <user>dimstar_suse</user>
+    <comment>- Set the path for the VPN service name file correctly to
+  %_vpnservicedir (provided by macros.NetworkManager). (forwarded request 799446 from dimstar)</comment>
+    <requestid>799486</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>7ee5c6abbe810b6c9128b65b069b9c23</srcmd5>
+    <version>1.2.14</version>
+    <time>1610558597</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>862708</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>4842227d78255c8fc86f38753bc2d87d</srcmd5>
+    <version>1.2.16</version>
+    <time>1647282946</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>961667</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>7e5906ddd77e12a378661753197f8a7b</srcmd5>
+    <version>1.2.16</version>
+    <time>1674232662</time>
+    <user>dimstar_suse</user>
+    <comment>- Move dbus-1 system.d conf file to /usr (bsc#1206757) (forwarded request 1045904 from gmbr3)</comment>
+    <requestid>1057042</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>fda0ce94e39af278ac678791dd64fc96</srcmd5>
+    <version>1.2.16</version>
+    <time>1701792124</time>
+    <user>anag+factory</user>
+    <comment>- Rename gnome subpackage to NetworkManager-applet-libreswan
+  to more accurately reflect its usage
+- Add missing requires: NetworkManager
+- Add missing supplements:
+  - NM and /usr/sbin/ipsec
+  - NMA subpackage: Main package and NMA (forwarded request 1130476 from gmbr3)</comment>
+    <requestid>1130774</requestid>
+  </revision>
+  <revision rev="11" vrev="4">
+    <srcmd5>56f54a98592e13a148cfd8b9ab3d0bef</srcmd5>
+    <version>1.2.16</version>
+    <time>1712068793</time>
+    <user>anag+factory</user>
+    <comment>- Add missing supplements(bsc#1220391):
+  + NMA subpackage: Main package and gnome-control-center (forwarded request 1163469 from JonathanKang)</comment>
+    <requestid>1163504</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>3df89ebbed3029ce1c254b4ddb032043</srcmd5>
+    <version>1.2.20</version>
+    <time>1713546797</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.2.20:
+  + Support setting &quot;leftmodecfgclient&quot; to &quot;no&quot;
+  + Support for the &quot;type&quot;, &quot;hostaddrfamily&quot; and
+    &quot;clientaddrfamily&quot;, &quot;leftsubnet&quot; and &quot;rightcert&quot; parameters.
+- Changes from version 1.2.18:
+  + Drop libnm-glib compatibility (NetworkManager &lt; 1.0).
+  + Add support for the &quot;authby&quot;, &quot;dpdaction&quot;, &quot;dpddelay&quot;,
+    &quot;dpdtimeout&quot;, &quot;ipsec-interface&quot; parameters.
+  * Updated translations. (forwarded request 1168860 from dimstar)</comment>
+    <requestid>1168888</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>bfd92b17fd1a249adb603b3c70813267</srcmd5>
+    <version>1.2.22</version>
+    <time>1716406162</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.2.22:
+  + Add IPv6 support.
+  + Updated translations. (forwarded request 1175725 from dimstar)</comment>
+    <requestid>1175726</requestid>
+  </revision>
+</revisionlist>
