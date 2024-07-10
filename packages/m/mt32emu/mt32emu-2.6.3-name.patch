@@ -1,0 +1,34 @@
+Index: munt-libmt32emu_2_7_1/mt32emu_qt/CMakeLists.txt
+===================================================================
+--- munt-libmt32emu_2_7_1.orig/mt32emu_qt/CMakeLists.txt
++++ munt-libmt32emu_2_7_1/mt32emu_qt/CMakeLists.txt
+@@ -376,8 +376,8 @@ install(TARGETS
+ 
+ if(UNIX AND NOT APPLE)
+   install(FILES res/mt32emu-qt.desktop DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/applications)
+-  foreach(${PROJECT_NAME}_ICON_RESOLUTION 16x16;24x24;32x32;48x48;64x64;72x72;96x96;128x128;256x256)
+-    install(FILES res/icons/${${PROJECT_NAME}_ICON_RESOLUTION}/munt.png DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/icons/hicolor/${${PROJECT_NAME}_ICON_RESOLUTION}/apps)
++  foreach(${PROJECT_NAME}_ICON_RESOLUTION 16x16;32x32;48x48;64x64;128x128)
++    install(FILES res/icons/${${PROJECT_NAME}_ICON_RESOLUTION}/munt.png DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/icons/hicolor/${${PROJECT_NAME}_ICON_RESOLUTION}/apps RENAME mt32emu.png)
+     # These directories pre-exist on a freedesktop-conforming system and cause conflict if not excluded
+     list(APPEND CPACK_RPM_EXCLUDE_FROM_AUTO_FILELIST_ADDITION ${CMAKE_INSTALL_FULL_DATAROOTDIR}/icons/hicolor/${${PROJECT_NAME}_ICON_RESOLUTION})
+     list(APPEND CPACK_RPM_EXCLUDE_FROM_AUTO_FILELIST_ADDITION ${CMAKE_INSTALL_FULL_DATAROOTDIR}/icons/hicolor/${${PROJECT_NAME}_ICON_RESOLUTION}/apps)
+Index: munt-libmt32emu_2_7_1/mt32emu_qt/res/mt32emu-qt.desktop
+===================================================================
+--- munt-libmt32emu_2_7_1.orig/mt32emu_qt/res/mt32emu-qt.desktop
++++ munt-libmt32emu_2_7_1/mt32emu_qt/res/mt32emu-qt.desktop
+@@ -1,10 +1,9 @@
+ [Desktop Entry]
+ Name=MT-32 Emulator
+-Comment=Munt - MT-32 sound module emulator
++Name[ru]=MT-32 эмулятор
++Comment=An emulator of the Roland MT-32, CM-32L and LAPC-I synthesiser modules.
++Comment[ru]=Эмулятор Roland MT-32, CM-32L and LAPC-I синтезаторных модулей.
+ Exec=mt32emu-qt
+-Icon=munt
+-NoDisplay=false
+-StartupNotify=true
+-Terminal=false
++Icon=mt32emu
+ Type=Application
+ Categories=Qt;AudioVideo;Midi;
