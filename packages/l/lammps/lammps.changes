@@ -1,0 +1,621 @@
+-------------------------------------------------------------------
+Mon May 15 01:02:12 UTC 2023 - Christoph Junghans <junghans@votca.org>
+
+- Disable kokkos support until the next release will support
+  kokkos-4
+
+-------------------------------------------------------------------
+Wed Dec  7 18:33:03 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Add Conflicts and Provides to allow upgrade of python package
+  without conflict.
+- Reenable Fortran tests.
+- Cleanup spec file.
+- Ignore test failures on ix86.
+
+-------------------------------------------------------------------
+Wed Dec  7 03:39:24 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Do not provide Python 2 package names for Python 3 packages.
+- Skip Fortran tests for now. 
+
+-------------------------------------------------------------------
+Tue Nov 23 01:19:02 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to Python 3:
+  * Rename package to python3-lammps.
+
+-------------------------------------------------------------------
+Fri Oct  8 15:43:45 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Disable kokkos on %{arm}
+
+-------------------------------------------------------------------
+Fri Oct  1 06:08:29 UTC 2021 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Use openmpi macros to always build with the default openmpi version.
+
+-------------------------------------------------------------------
+Wed Nov  4 16:11:48 UTC 2020 - Christoph Junghans <junghans@votca.org>
+
+- dropped 9cdde97863825e4fdce449920d39b25414b2b0b3.patch merged upsteam
+- dropped 61ce73273b3290083c01e6a2fadfb3db0889b9ba.patch merged upstream
+- bump version to 20201029 (stable)
+- General changes:
+  - Significant refactoring of the core LAMMPS code to increase
+    code reuse, simplify new additions, improve thread safety, and
+    benefit from C++11 features. In particular the following
+    changes were incorporated:
+    - Refactoring of the AtomVec classes to simplify adding new
+      atom styles to the code. Also adding support for writing
+      complete data files for atom styles ellipsoid, line, tri,
+      and body, which had been previously missing.
+    - Implementation of string tokenizer and potential file reader
+      classes to improve parsing of text files and avoid the
+      strtok() function. This has lead to substantial reduction in
+      the lines of code used for those cases.
+    - Transferring of utility function from class members to
+      standalone functions in the utils namespace. Several new
+additions of such convenience functions
+    - Using const std::string & instead char * or const char * as
+      function argument in many places to simplify string
+      processing and replacing C style string functions with their
+      equivalent or expanded functionality of std::string member
+      functions
+    - Incorporation of fmtlib to replace and simplify many cases
+      of output formatting. This avoids many complications with
+      printf() style functions since no special treatment is
+      required for processing bigint or tagint arguments. Since
+      fmtlib has been accepted as a C++20 feature, this is also
+      future proofing the code base.
+    - Avoiding use of temporary local buffers for output
+      formatting and thus lowering the risk of buffer overflows.
+      This was enabled by the previous two changed.
+    - Replacing NULL with nullptr where applicable for better
+      detection of incorrect use.
+  - Major reorganization and significant expansion of the manual:
+    - The manual is now split into two parts: a User Guide and a
+      Programmer Guide
+    - Most of the content related to using the library interfaces,
+      the Python module (and Python in general) have been moved to
+      the Programmer Guide
+    - The content of the external Developer Guide PDF has been
+      incorporated into the Programmer Guide section and expanded
+    - The documentation of the C-library interface and Python
+      module has been expanded and the documentation of the
+      individual APIs are now imported from the source code by
+      means of using doxygen (for C/C++) and docstrings (for
+      Python).
+    - Redundancies have been reduced, cross-links added, and links
+      to external websites checked, updated or removed.
+  - Addition of a unit test facility which is integrated into
+    building LAMMPS with CMake and using the ctest tool that comes
+    with CMake. Tests for a variety of features and styles are
+    included with a code coverage close to 40%. The added tests
+    have exposed a significant number of previously unknown bugs
+    and inconsistencies (e.g. between plain pair styles and
+    suffixed versions or between Pair::compute() and
+    Pair::single()) in the code base, which have been fixed.
+  - Significant refactoring of the LAMMPS C-library interface and
+    Python module: several new functions were added, especially
+    for introspection, ad-hoc numerical constants were replaced by
+    symbolic constants defined in enumerators and synchronized
+    betwee C and Python, where possible and needed. Most
+     modifications were
+    done in a backward compatible way.
+  - Add support for a "UNITS:" metadata tag to potential and
+    tabulation files and code to error out if the value does not
+    match with the current setting. For some potentials, mainly
+    manybody potentials, support for on-the-fly conversion between
+    "metal" and "real" units was added, so that a file with
+    parameters for "metal" units can be used in a simulation with
+    "real" units, if the pair style supports it.
+  - Ordering of #include "" statements has been revised and the
+    lists updated where possible after analyzing with the IWYU
+    tool.
+  - Significant refactoring of CMake scripts enabled by moving the
+    minimum required CMake version from 2.8.x to 3.10.x. CMake
+    build support is more reliable, portable to different host
+    operating systems and efficient.
+  - Conventional build system now always builds the LAMMPS library
+    and the executable, so the available modes are reduced from 4
+    to 2: mode=static and mode=shared. The CMake build behaves
+    equivalently.
+  - Use pre-processor macros (requiring C++11) to provide
+    compatibility with OpenMP 4.x and later semantics
+  - Many small fixes and improvements.
+  - Removal of outdated or obsolete makefiles. Removal of obsolete
+    files and folder in the bench folder.
+- Updates and new commands or styles or packages:
+  - New MLIAP package providing a generalized framework for
+    machine-learning potentials. This currently includes an
+    implementation of the SNAP potential
+  - New USER-MESONT package for mesoscale modeling of nanotubes.
+  - New command reset_mol_ids
+  - New fix widom for modeling Widom insertions
+  - New fix pafi to perform langevin or brownian dynamics time
+    integration constrained to a potential hyperplane. Intended to
+    be coupled to the PAFI C++ code.
+  - Bugfixes, improved documentation, and new functionality for
+    fix bond/react in particular RMSD based constraints.
+  - New fix accelerate/cos and compute viscosity/cos in USER-MISC
+    as yet another method to compute viscosity.
+  - New fix momentum/chunk to remove per chunk momentum
+  - New bond style special to provide a mechanism to implement
+    special bond exclusions beyond 1-4.
+  - Ports of more functionality to the KOKKOS package and several
+    performance optimizations. Support for AMD GPUs via HIP.
+    Update of the bundled Kokkos library to version 3.2.
+  - Support for triclinic cells when using "tiled" communication
+    style.
+  - New pair style for charge-dipole damping with Tang-Toennies
+    function in the USER-DRUDE package
+  - Updates, bugfixes and adjustments to LAMMPS requiring C++11 in
+    the USER-COLVARS package (now at version 2020-09-17).
+  - Support for building triclinic neighbor lists on the GPU in
+    the GPU package. Bugfixes and performance improvements for GPU
+    styles.
+  - Updates to writing binary dump files and binary2atom tool to
+    become consistent with current text mode custom dumps
+  - Updates to the user supported examples/COUPLE/fortran and
+    examples/COUPLE/fortran2 wrappers to become compatible with
+    updates to the C-library interface. Also work on a new,
+    "object oriented" Fortran interface has started.
+  - New LAMMPS shell command as alternative to the regular LAMMPS
+    executable for improved interactive use.
+  - Interface file for use with SWIG to create bindings to the
+    LAMMPS library interface for a wide variety of (mostly
+    scripted) programming languages (like Java, JavaScript, Lua,
+    Perl, Ruby, Tcl and more).
+  - Improved support for cross-compiling binaries for Windows on
+    Linux. This enables building a liblammps.dll file and loading
+    the LAMMPS Python module also on Windows.
+  - Improved CMake support for building with "ninja" instead of
+    "make".
+
+-------------------------------------------------------------------
+Sun Sep 20 14:56:09 UTC 2020 - Christoph Junghans <junghans@votca.org>
+
+- dropped disable_noopt.patch, merged upstream
+- added 9cdde97863825e4fdce449920d39b25414b2b0b3.patch from 
+  https://github.com/lammps/lammps/pull/2381 fix a failing test
+- added 61ce73273b3290083c01e6a2fadfb3db0889b9ba.patch from 
+  https://github.com/lammps/lammps/pull/2381 fix another failing test
+- bump version to 20200918 (patch)
+  - New fix pafi to perform langevin or brownian dynamics time
+    integration constrained to a potential hyperplane. Intended to
+    be coupled to the PAFI C++ code (Thomas Swinburne, CNRS /CINaM
+    Marseille and Mihai-Cosmin Marinica, SRMP/CEA Saclay) PR
+    [gh#lammps/lammps#1472]
+  - Update of the Kokkos library to version 3.2 (Stand Moore, SNL
+    and the Kokkos developers), PR [gh#lammps/lammps#2311]
+  - Updates to KOKKOS package to improve usability with the HIP
+    backend for AMD GPUs (Nick Curtis) PR [gh#lammps/lammps#2371]
+  - Update of the USER-COLVARS package to version 2020-09-17
+    (Giacomo Fiorin, NIH and other Colvars developers) PR
+    [gh#lammps/lammps#2356], PR [gh#lammps/lammps#2376]
+  - Change behavior of fix bond/react to update all charges by
+    default which is the more intuitive behavior. Keywords have
+    been updated to be more intuitive as well (Jake Gissinger, U
+    Colorado) PR [gh#lammps/lammps#2368]
+  - Update of dump styles in the COMPRESS package to be consistent
+    with recent changes elsewhere, added support for Zstd
+    compression and the option to set the compression level (Richard
+    Berger, Temple U), PR [gh#lammps/lammps#2331]
+  - Use eigensolver contributed to USER-REACTION package to
+    replace the old "jacobi" function to avoid licensing issues.
+    Implement wrapper functions around templated implementation
+    (Andrew Jewett, Scripps), PR [gh#lammps/lammps#2347]
+  - Small refactor of fix qeq/reax and its USER-OMP and KOKKOS
+    variants to reduce code replication and allow to add features
+    (Stan Moore, SNL) PR [gh#lammps/lammps#2354]
+  - Replace the use of the C-style NULL with the C++11 nullptr
+    keyword, where meaningful. (E. Anne Gunn, Sheridan College) PR
+    [gh#lammps/lammps#2358]
+  - Replace numeric constants in Atom and AtomVec classes by
+    symbolic ones via enumerators (Axel Kohlmeyer, Temple U) PR
+    [gh#lammps/lammps#2360]
+  - Bugfixes for the GPU package and related CMake/make files
+    (Vsevolod Nikolskiy, HSE University Moscow and Trung Nguyen,
+    Northwestern U), PR [gh#lammps/lammps#2307], PR
+    [gh#lammps/lammps#2313], PR [gh#lammps/lammps#2322], PR
+    [gh#lammps/lammps#2326]
+  - Bugfix for Langevin thermostatting inside of multiple fix
+    rigid variants (Trung Nguyen, Northwestern U) PR
+    [gh#lammps/lammps#2367]
+  - Refactoring of the C library interface and the Python wrapper
+    for consistency and maintainability, unit test support for the
+    interfaces, decoration of library functions with Doxygen comments
+    for semi-automatic documentation in the manual (Axel Kohlmeyer and
+    Richard Berger, Temple U) PR [gh#lammps/lammps#2310], PR
+    [gh#lammps/lammps#2318], PR [gh#lammps/lammps#2320], PR
+    [gh#lammps/lammps#2357], PR [gh#lammps/lammps#2359], PR
+    [gh#lammps/lammps#2362]
+  - Update of documentation build system to include Doxygen
+    processing and integration of that output via the "breathe"
+    Sphinx extension inclusion of the Developer Guide in the
+    manual, update and corrections to the CMake support (Axel
+    Kohlmeyer and Richard Berger, Temple U) PR
+    [gh#lammps/lammps#2309], PR [gh#lammps/lammps#2312], PR
+    [gh#lammps/lammps#2327]
+  - Update headers in the documentation of LAMMPS style commands
+    to be more compact and check for missing index entries
+    (Richard Berger, Temple U) PR [gh#lammps/lammps#2335]
+  - Update the compilation related documentation to use the
+    sphinx-tabs extension (in HTML mode only) to make it more
+    compact (Axel Kohlmeyer, Temple U) PR [gh#lammps/lammps#2348]
+  - Revised internal and external links in the documentation (Matt
+    Mansell and others) PR [gh#lammps/lammps#2341]
+  - Move more convenience functions from classes to the utils
+    namespace, update the code to consistently use the new
+    versions and remove the old, update the manual to include the
+    documentation of those APIs into the developer guide (Axel
+    Kohlmeyer, Temple U) PR [gh#lammps/lammps#2319], PR
+    [gh#lammps/lammps#2349]
+  - Start of a new (and "official") Fortran library interface and
+    corresponding sphinx API documentation in the programmer guide
+    plus unit tests for implemented APIs (Axel Kohlmeyer, Temple U) PR
+    [gh#lammps/lammps#2325]
+  - Update include file conventions and update lists of include
+    files accordingly, add make iwyu target to run the
+    include-what-you-use tool (Axel Kohlmeyer, Temple U) PR
+    [gh#lammps/lammps#2338]
+  - Make internal memory usage reporting consistently use the same
+    data type (Axel Kohlmeyer, Temple U) PR
+    [gh#lammps/lammps#2363]
+  - Add support to call reset_mol_ids internally from fix
+    bond/react (Jake Gissinger, U Colorado), PR
+    [gh#lammps/lammps#2240]
+  - Add RMSD based constraint to fix bond/react (Jake Gissinger, U
+    Collorado, and Andrew Jewett, Scripps, and Yuya Kurebayashi,
+    Tohoku U) PR [gh#lammps/lammps#2314]
+  - Refactor of USER-BOCS code to fix memory leaks and memory
+    access issues (E. Anne Gunn, Sheridan College) PR
+    [gh#lammps/lammps#2274]
+  - Implementation of force history for Mindlin variants of the
+    granular pair style (Jibril B. Coulibaly, Northwestern U), PR
+    [gh#lammps/lammps#2196]
+  - Updated singularity container description files to better
+    support the upcoming stable release (Richard Berger, Temple U)
+    PR [gh#lammps/lammps#2340]
+  - Various small updates and corrections (multiple authors) PR
+    [gh#lammps/lammps#2315], PR [gh#lammps/lammps#2317], PR
+    [gh#lammps/lammps#2336], PR [gh#lammps/lammps#2344], PR
+    [gh#lammps/lammps#2353], PR [gh#lammps/lammps#2364], PR
+    [gh#lammps/lammps#2366], PR [gh#lammps/lammps#2373], PR
+    [gh#lammps/lammps#2369], PR [gh#lammps/lammps#2375]
+
+-------------------------------------------------------------------
+Sun Jun 14 20:44:26 UTC 2020 - Christoph Junghans <junghans@votca.org>
+
+- disable march=native optimization by setting empty 
+  CMAKE_TUNE_FLAGS
+
+-------------------------------------------------------------------
+Wed May 13 13:42:58 UTC 2020 - Christoph Junghans <junghans@votca.org>
+
+- fix build on ppc64le by enabling gnu extensions, see
+  [gh#lammps/lammps#2079], this is a bug in older version of the
+  ocl package, compare [GCC#58241].
+
+-------------------------------------------------------------------
+Sun May 10 16:59:26 UTC 2020 - Christoph Junghans <junghans@votca.org>
+
+- gcc flags an issue on leap 15.1 that is a false positive, see
+  [gh#lammps/lammps#2078], so disabling lammps custom no optimzation 
+  flags, using disable_noopt.patch
+
+-------------------------------------------------------------------
+Wed May  6 14:54:14 UTC 2020 - Christoph Junghans <junghans@votca.org>
+
+- bump version to 20200505 (patch)
+  - update of the bundled Kokkos library to version 3.1 (Stan
+    Moore and the Kokkos developers, SNL) [gh#lammps/lammps#2004],
+    [gh#lammps/lammps#2054]
+  - new Kokkos styles compute orientorder/atom and coord/atom and
+    some related bugfixes/improvements (Stan Moore, SNL)
+    [gh#lammps/lammps#1895], [gh#lammps/lammps#1902],
+    [gh#lammps/lammps#1906], [gh#lammps/lammps#2033]
+  - new fix accelerate/cos and compute viscosity/cos in USER-MISC
+    as yet another method to compute viscosity (Zheng Gong, École
+    normale supérieure de Lyon) [gh#lammps/lammps#2019]
+  - update of the polymorphic pair style with bug fixes and a new
+    feature (Xiaoweng Zhou, SNL) [gh#lammps/lammps#2000]
+  - added option to create a dummy fix as a placeholder early in
+    an input to guarantee placement at the top of the list of
+    fixes. (Steve Plimpton, SNL) [gh#lammps/lammps#1760]
+  - update to fix bond/react to allow using equal style variables
+    a probability input (Wolfgang Verestek, U Stuttgart)
+    [gh#lammps/lammps#2013]
+  - small update to internal commands in kim_interactions to
+    improve KIM simulator model handling (Ronald Miller Carleton
+    U, Ryan S. Elliott U Minn), [gh#lammps/lammps#2014]
+  - many small fixes and updates to source code (mainly for the
+    KOKKOS package), cmake scripts, and documentation to address
+    issues with recent changes and minor long-standing issues.
+    (multiple authors) [gh#lammps/lammps#2003],
+    [gh#lammps/lammps#2006], [gh#lammps/lammps#2010],
+    [gh#lammps/lammps#2015], [gh#lammps/lammps#2022],
+    [gh#lammps/lammps#2023], [gh#lammps/lammps#2026],
+    [gh#lammps/lammps#2027], [gh#lammps/lammps#2030],
+    [gh#lammps/lammps#2032], [gh#lammps/lammps#2035],
+    [gh#lammps/lammps#2036], [gh#lammps/lammps#2041],
+    [gh#lammps/lammps#2043], [gh#lammps/lammps#2044],
+    [gh#lammps/lammps#2045], [gh#lammps/lammps#2046],
+    [gh#lammps/lammps#2047], [gh#lammps/lammps#2048],
+    [gh#lammps/lammps#2049], [gh#lammps/lammps#2051],
+    [gh#lammps/lammps#2053], [gh#lammps/lammps#2055]
+- enable kokkos and OpenMP
+
+-------------------------------------------------------------------
+Wed Mar  4 21:56:52 UTC 2020 - Christoph Junghans <junghans@votca.org>
+
+- bump versoin to 20200303 (stable)
+  * General changes
+   * The documentation file format has been changed from the custom txt2html markup to using reStructuredText (rst). 
+   * Many file read operations are now monitored for read errors and thus allowing to detect damaged or incomplete files like potential parameter files and restart files
+   * Updates and improvements to the CMake build system to more closely match all the functionality provided by the conventional make based build system
+   * Support for threaded FFTs from FFTW and MKL, support for cuFFT and KISSFFT on the GPU with KOKKOS
+   * Expose neighbor lists to the library interface and the Python wrapper
+   * Documentation of installing LAMMPS via conda
+   * Many small improvements or bugfixes
+ * Updates and new commands or styles
+   * new dump_modify options to embed ITEM: UNITS and ITEM: TIME with information about units and accumulated simulation time
+   * new pair styles cosine/squared, local/density, mesocnt
+   * new fix styles wall/reflect/stochastic, propel/self, 'npt/cauchy`
+   * new compute gyration/shape/chunk
+   * new compute hma for fast, high-precision computation of certain thermodynamic properties of solids
+   * new compute style centroid/stress/atom for computing per atom stress in a way allowing for more accurate heat flux computations with interactions involving more than two atoms
+   * new third_order command, a companion command to dynamical_matrix, for computing the third order force tensor from finite differences
+   * new options ratio and subset for create_atoms and similarly new options type/ratio and type/subset to the set command
+   * new tool for post-processing parallel tempering trajectories
+   * multiple updates, bugfixes, and improvements to fix bond/react
+   * improved implementation of minimization style fire
+   * support to run NWChem along with LAMMPS in client/server mode
+ * Updates for packages
+   * KOKKOS now supports minimization (limited to minimization styles cg and quadratic), updates to the KOKKOS library, general improvements and bugfixes, more styles ported to KOKKOS
+   * several new SNAP potentials
+   * tweaks to USER-INTEL to compile correctly with too aggressively optimizing compilers, corrections and improvements
+   * bugfixes and improvements for the GRANULAR package
+   * several new SNAP potentials and a new compute snap for training SNAP potentials
+   * bugfixes and improvements to the KIM package, new command kim_param for accessing KIM model parameters
+   * updates to the USER-COLVARS package with updates to the included Lepton library
+   * updates to the USER-PLUMED package with bugfixes and support for recent releases
+   * updates to the USER-CGDNA package including a new coarse grained RNA model (oxRNA2)
+   * improvements and updates to the SPIN package, L-BFGS minimizer added
+   * updates, extensions, and improvements to the USER-MEAMC package
+   * memory leaks fixed when using styles from the GPU with multiple run commands, new pair style lj/cut/tip4p/long/gpu
+   * updates to fix rigid variants to add gravity to rigid objects with overlapping (granular) particles
+   * support for rerun and read_dump with USER-ADIOS
+ * Backward compatibility notices
+   * building the USER-COLVARS package with all features enabled now requires a C++-11 compatible compiler
+  * due to changes in the random number generator initialization, results when using fix pour, fix deposit, fix evaporate or create_atoms random will not match with previous versions of LAMMPS. see PR #1569
+  * the gjf keyword for fix langevin no longer supports the option yes. Instead you have to use either vhalf or vfull
+  * the FIRE minimizer has been replaced with an improved implementation. The previous implementation is available as fire/old.
+  * new documentation has to be written in reStructuredText format
+  
+-------------------------------------------------------------------
+Fri Nov  1 02:45:27 UTC 2019 - Christoph Junghans <junghans@votca.org>
+
+- generify used mpi version
+
+-------------------------------------------------------------------
+Thu Aug 15 21:43:19 UTC 2019 - Christoph Junghans <junghans@votca.org>
+
+- bump versoin to 20190807 (stable)
+  * General changes:
+    * further tweaks, refactoring, and improvements to building LAMMPS with CMake
+    * refactoring of header file handling for improved consistency and removal of cross dependencies
+    * refactoring of include keyword processing to lift some limitations and to enable KIM simulator models (see below)
+  * Updates for packages:
+    * major update of the KIM package to use KIM-API v2.1.x with support for Simulator models and new commands to generate variables for transparent unit conversion in input files
+    * optimizations and corrections to the KOKKOS packages, especially when used with CUDA, update of KOKKOS library included in LAMMPS to version 2.9.0
+    * updates and bugfixes of the USER-COLVARS package bringing it up to version 2019-08-05
+    * new PPPM and Ewald solvers for electric dipoles and nuclear spins
+    * optimizations and improvements to pair style and computes in the SNAP package
+    * updates, bugfixes and portability improvements for USER-PLUMED package (supports plumed 2.5.2)
+    * update to USER-CGDNA package in preparation of supporting an RNA coarse grain force field
+    * new keyword hybrid/pair for compute pressure
+    * new compute gyration/shape to compute eigenvalues and shape parameters from gyration radius tensor
+    * new compute momentum command
+
+-------------------------------------------------------------------
+Thu Jun  6 01:58:04 UTC 2019 - Christoph Junghans <junghans@votca.org>
+
+- bump version to 20190605 (stable)
+  * General changes:
+    + further tweaks and improvements to building LAMMPS with CMake.
+    + improved error messages
+    + refactoring of Install.py scripts in the lib folders to use the argparse module
+   + better checking for style compatibility with suffixed styles
+ * New packages:
+   + USER-YAFF providing styles for force fields using QuickFF used for simulation of MOFs
+   + USER-ADIOS package to provide Exascale compatible I/O support for dump files through the ADIOS v2.x library
+ * Updates for packages:
+   + consolidation of "soft" pair styles in USER-FEP package and addition of CLASS2 pair style variants.
+   + KOKKOS package bugfixes and enhancements (Stan Moore, SNL)
+   + new generalized pair style granular (Dan S. Bolintineanu, Ishan Srivastava, Jeremy B. Lechman, SNL)
+   + new pair style drip for dihedral-angle-corrected registry-dependent interlayer potential (DRIP)
+   + new pair style e3b for adding option to model the E3B water potential (Steven E. Strong, U Chicago)
+   + new fix style electron/stopping for modeling energy loss through interactions high speed atoms with electrons
+   + update to USER-COLVARS package to version 2019-04-26
+   + update of the KIM package to use KIM-API v2.0 (Ryan Elliot, UMN)
+   + update to USER-INTEL package to enable use of the package with -DLAMMPS_BIGBIG
+   + update to USER-PTM package. examples added, license info updated, documentation updates (Peter Larsen, MIT)
+   + updates and additions to the SPIN package (Julien Tranchida, SNL)
+   + updates to hyper-dynamics support (Steve Plimpton, SNL)
+   + updates, improvements, and bugfixes to fix bond/react (Jake Gissinger, U Colorado)
+   + bugfix/refactoring of REBO pair style to correctly implement what is advertised in the documentation.
+- enable support for kim through kim-api package
+
+-------------------------------------------------------------------
+Tue Dec 11 21:27:58 UTC 2018 - Christoph Junghans <junghans@votca.org>
+
+- bump version to 20181212 (stable)
+  * general:
+    + major improvements to building LAMMPS with CMake.
+    + significant consolidation and improved consistency of the manual after the refactoring for the last stable release
+    + reduced risk of memory/buffer overflows by replacing most uses of sprintf() by snprintf()
+  * new packages
+    + USER-PLUMED package with a native interface (no more patching)
+    + USER-SDPD package for smoothed dissipative particle dynamics (SDPD)
+    + USER-PTM package for polyhedral template matching analysis to characterize local structure
+    + new kspace style scafacos, which interfaces to the ScaFaCoS library of long-range coulomb solvers.
+  * updates for packages:
+    + USER-COLVARS: updates and bugfixes
+    + REPLICA: added support for (local and global) hyperdynamics
+    + KOKKOS: updated Kokkos library, added several KOKKOS versions of styles from the GRANULAR package
+    + USER-INTEL: updates, bugfixes and improved support for using
+    + USER-MISC: new styles, compute pressure/cylinder, fix ffl (fast forward langevin), bugfixes and improvements
+    + Many small bugfixes, corrections for memory leaks and memory management inconsistencies and general improvements.
+  * Backward compatibility notices:
+    + the command line flags -restart and -r are no longer available. 
+    + the naming conventions for the group name of groups maintained by fix bond/react have changed. 
+    + pair styles in the USER-SPH package no longer support Pair::single().
+    + the meaning of the sign of mu in fix atom/swap has been reversed to be consistent with usual conventions.
+    + the default installation prefix for CMake based compilation has been changed from /usr/local to $HOME/.local
+
+-------------------------------------------------------------------
+Wed Aug 22 18:56:58 UTC 2018 - junghans@votca.org
+
+- bump version to 20180822 (stable)
+  * New CMake option for building LAMMPS and all of its packages, as an alternative to traditional make
+  * Restructured documentation
+  * DEM polygonal and polyhedron particles
+  * new compute entropy/atom command
+  * New SPIN package for modeling the dynamics of magnetic atomic spins
+  * New fix bond/react command to enable simulation of one or more complex heuristic reactions
+  * New USER-BOCS package
+  * Fixes memory leaks caused when using the GPU package and OpenCL
+  * Various other small updates and bugfixes
+- drop 858.patch - merged upstream
+
+-------------------------------------------------------------------
+Wed Mar 28 16:57:22 UTC 2018 - junghans@votca.org
+
+- bump version to 20180316 (stable)
+- many little bugfxes: http://lammps.sandia.gov/bug.html
+  * A potentially harmful bug was found and fixed in the pair_style reax/c command
+- Added 858.patch to fix return value on ppc64
+
+-------------------------------------------------------------------
+Thu Mar  8 20:21:43 UTC 2018 - junghans@votca.org
+
+- bump version to 20180308
+- many little bugfxes: http://lammps.sandia.gov/bug.html
+  * Various small changes and bug fixes in preparation for a new stable version release
+
+-------------------------------------------------------------------
+Mon Mar  5 17:58:23 UTC 2018 - junghans@votca.org
+
+- bump version to 20180222
+- many little bugfxes: http://lammps.sandia.gov/bug.html
+  * added a pair lj/cut/coul/wolf command to enable Wolf treatment of Coulombic
+  * added a new USER-MOFFF package which is an implementation of the MOF-FF (MOF force field)
+  * added a new pair_style ufm command
+
+-------------------------------------------------------------------
+Sat Jan 27 02:57:30 UTC 2018 - junghans@votca.org
+
+- bump version 20180117
+- many little bugfxes: http://lammps.sandia.gov/bug.html
+  * new pair yukawa/kk command
+  * new fix python/move command for time integration in Python
+  * new pair extep command
+  * tools/doxygen directory to build a Doxygen style call graph and API lists for LAMMPS
+  * new pair snap/kk and pair zbl/kk commands
+  * update of Kokkos library
+  * improvements to pair reax/c command
+  * new info coeffs command option
+  * much faster replicate command for large systems when using many processors
+  * improved setup performance for large systems on many processors with molecules and pppm
+  * more informative error messages when evaluating variables
+- dropped 30b482975a6a29db2265b44c4f27d6293eacb72f.patch, got merged
+
+-------------------------------------------------------------------
+Fri Jan 19 22:34:55 UTC 2018 - junghans@votca.org
+
+- fix python install for openSUSE Factory
+
+-------------------------------------------------------------------
+Sat Nov  4 00:21:36 UTC 2017 - junghans@votca.org
+
+- enable GPU support via OpenCL
+- added 30b482975a6a29db2265b44c4f27d6293eacb72f.patch
+
+-------------------------------------------------------------------
+Wed Oct 25 23:32:43 UTC 2017 - junghans@votca.org
+
+- bump version 20171023
+- many little bugfxes: http://lammps.sandia.gov/bug.html
+  * added a new USER-UEF package
+  * added a fix rhok command
+  * added a bond_style gromos command compatible with the GROMOS force field.
+  * added coreshell variants of the pair born/coul/wolf and pair coul/wolf potentials to the CORESHELL package.
+
+-------------------------------------------------------------------
+Wed Oct 25 12:45:13 UTC 2017 - junghans@votca.org
+
+- adapt to new openlmi package - source mpivars.h during build
+
+-------------------------------------------------------------------
+Mon Sep 11 13:13:20 UTC 2017 - junghans@votca.org
+
+- changes license to GPL-2.0 and GPL-3.0+ (#522368)
+
+-------------------------------------------------------------------
+Fri Sep  8 15:44:59 UTC 2017 - junghans@votca.org
+
+- bump version to 20170901
+- drop 573.diff, got merge upstream
+- many little bugfxes: http://lammps.sandia.gov/bug.html
+  * added USER-MESO package
+  * new compute aggregate/atom and compute fragment/atom commands
+
+-------------------------------------------------------------------
+Tue Aug 15 16:47:20 UTC 2017 - junghans@votca.org
+
+- bump version to 20170811
+- many little bugfxes: http://lammps.sandia.gov/bug.html
+
+-------------------------------------------------------------------
+Mon Jul 24 23:15:46 UTC 2017 - jengelh@inai.de
+
+- RPM group fix.
+
+-------------------------------------------------------------------
+Fri Jul 21 14:47:34 UTC 2017 - junghans@votca.org
+
+- bump version of 20170706 and move to cmake (upstream 573.diff)
+- Notable new features in this release are:
+  * refactoring of the neighbor list construction to be more modular and extensible from packages. active neighbor list modules
+    are reported in the output
+  * updates, performance improvements and new styles for the KOKKOS and USER-INTEL packages
+  * bugfixes and refactoring of parts of AIREBO and AIREBO-M addressing some of the occasionally observed instabilities with the
+    LAMMPS implementation
+  * new interface to Multi-Scale Coarse-Graining tools of the Voth group via new MSCG package with fix mscg
+  * new pair styles lj/charmmfsw/coul/charmmfsh and lj/charmmfsw/coul/long and dihedral style charmmfsh for improved
+    compatibility with the CHARMM code using recent versions of the CHARMM force field
+  * several new styles in the USER-MISC package
+  * improved compatibility with Python 3 (now only the PYTHON package is still Python 2 only), improvements to PyLammps and its
+    documentation
+  * various updates and performance improvements for USER-DPD package
+  * updates and bugfixes to USER-COLVARS
+  * new package USER-CGDNA for coarse grained DNA simulations
+  * new support for generalized replica exchange (gREM) via temper/grem and fix grem commands
+  * support for treating spherical particles as 2d discs
+  * improvements for load balancing via recursive bisectioning
+  * new SNAP potential for tungsten and tungsten/helium systems
+  * updated version of the bundled moltemplate tool
+  * updated tutorial for submitting additions and changes to LAMMPS via GitHub
+  * improvements to the documentation build tools
+  * ambiguous hyperlinks in documentation are made unique
+  * spellchecked documentation and comments
+  * removed the obsolete xmovie software
+  * many little cleanups, bug fixes and removal of dead or obsolete code, including in the tools folder
+
+-------------------------------------------------------------------
+Tue Apr 23 21:30:46 UTC 2013 - scorot@free.fr
+
+- first package 
+
