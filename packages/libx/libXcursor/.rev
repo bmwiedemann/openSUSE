@@ -1,0 +1,122 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b7fc105b991441506d4230c777fc4ef0</srcmd5>
+    <version>1.1.11</version>
+    <time>1329476574</time>
+    <user>coolo</user>
+    <comment>- Split xorg-x11-libs into separate packages</comment>
+    <requestid>105449</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>e7d2a61f19f15817f75d2c4878ac700a</srcmd5>
+    <version>1.1.13</version>
+    <time>1336471042</time>
+    <user>coolo</user>
+    <comment>Pushing X11:XOrg</comment>
+    <requestid>115349</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>e7d2a61f19f15817f75d2c4878ac700a</srcmd5>
+    <version>1.1.13</version>
+    <time>1340183556</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>e7d2a61f19f15817f75d2c4878ac700a</srcmd5>
+    <version>1.1.13</version>
+    <time>1359109231</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>eff820c01c8c940d809e1099c01bf01c</srcmd5>
+    <version>1.1.13</version>
+    <time>1363949667</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>160087</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>25a33a5222bc89deef57df1ff21edba6</srcmd5>
+    <version>1.1.14</version>
+    <time>1370431776</time>
+    <user>coolo</user>
+    <comment>update to version 1.1.14 (forwarded request 177131 from tobijk)</comment>
+    <requestid>177133</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>25a33a5222bc89deef57df1ff21edba6</srcmd5>
+    <version>1.1.14</version>
+    <time>1379662881</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>fc1e01d349b3f6f91f76b5c54c87fb5c</srcmd5>
+    <version>1.1.14</version>
+    <time>1399316995</time>
+    <user>coolo</user>
+    <comment>- added missing pkgconfig(xextproto)</comment>
+    <requestid>231625</requestid>
+  </revision>
+  <revision rev="9" vrev="6">
+    <srcmd5>fc1e01d349b3f6f91f76b5c54c87fb5c</srcmd5>
+    <version>1.1.14</version>
+    <time>1409301484</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="7">
+    <srcmd5>91c87505b9f21379325bfafe608dc19b</srcmd5>
+    <version>1.1.14</version>
+    <time>1512292136</time>
+    <user>dimstar_suse</user>
+    <comment>-  U_Avoid-heap-overflows-due-to-integer-overflow-signedn.patch 
+  * It is possible to trigger heap overflows due to an integer
+    overflow while parsing images and a signedness issue while
+    parsing comments. [CVE-2017-16612] (bsc#1065386)</comment>
+    <requestid>546296</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>fa2db6c2a9228761618c83163a63564a</srcmd5>
+    <version>1.1.15</version>
+    <time>1513014890</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>555663</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>cd2e03e71526de896899ab322c4222c5</srcmd5>
+    <version>1.2.0</version>
+    <time>1560337173</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>705953</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>53f649beb056565b7f20d3ff00d886e4</srcmd5>
+    <version>1.2.1</version>
+    <time>1649181326</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.2.1
+  * This release provides bug fixes, code cleanups, and some
+    significant documentation improvements.</comment>
+    <requestid>966672</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>303acfff036e2edb2a946ad02678b6b2</srcmd5>
+    <version>1.2.2</version>
+    <time>1709493508</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.2.2
+  * gitlab CI: stop requiring Signed-off-by in commits
+  * configure: Use LT_INIT from libtool 2 instead of deprecated
+    AC_PROG_LIBTOOL
+  * If O_CLOEXEC is defined, add &quot;e&quot; to fopen modes
+  * Add comment about keeping libxcb-cursor copy of code in sync
+  * XcursorXcFileLoad: plug memory leak in error paths
+  * Remove superfluous and unguarded config.h include</comment>
+    <requestid>1154345</requestid>
+  </revision>
+</revisionlist>
