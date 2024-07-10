@@ -1,0 +1,74 @@
+--- Makefile
++++ Makefile
+@@ -1,3 +1,9 @@
++DISTDIR = 
++prefix = /usr
++bindir = $(prefix)/bin
++docdir = $(prefix)/share/doc/gramofile
++
++
+ PROG = gramofile
+ 
+ SRCS = boxes.c buttons.c checkfile.c dirfilemenu.c errorwindow.c 	\
+@@ -10,6 +16,9 @@
+         tracksplit_parammenu.c signpr_cmf2.c signpr_rms.c signpr_copy.c	\
+         signpr_exper.c endian.c signpr_mono.c signpr_l1fit.c
+ 
++DOCS = README COPYING ChangeLog TODO Signproc.txt Tracksplit.txt \
++       Tracksplit2.txt
++
+ OBJS = $(SRCS:.c=.o)
+ SHELL = /bin/sh
+ 
+@@ -19,7 +28,7 @@
+ ########## CHOOSE YOUR ARCHITECTURE:    (NOTE: also see bplaysrc/Makefile!)
+ 
+ # For Linux (and maybe others), use these:
+-CFLAGS = -Wall -O2 -DTURBO_MEDIAN -DTURBO_BUFFER
++CFLAGS = $(RPM_OPT_FLAGS) -W -Wall -DTURBO_MEDIAN -DTURBO_BUFFER
+ DEPS = $(OBJS) makebplay
+ LIBS = -lncurses -lm
+ COPY_A = -a
+@@ -41,16 +50,11 @@
+ 
+ $(PROG): $(DEPS)
+ 	$(CC) $(LDFLAGS) $(OBJS) -o $(PROG) $(LIBS)
+-	@echo ''
+-	@echo ''
+-	@echo ''
+-	@echo "  If you're one of those that didn't read the README, please do so now."
+-	@echo ''
+ 
+ makebplay: yesnowindow.o boxes.o buttons.o textwindow.o errorwindow.o \
+            clrscr.o secshms.o
+ 	$(MAKE) -C bplaysrc
+-	-rm bplay_gramo brec_gramo
++	-rm -f bplay_gramo brec_gramo
+ 	cp $(COPY_A) bplaysrc/bplay ./bplay_gramo
+ 	ln -s bplay_gramo brec_gramo
+ 
+@@ -63,6 +67,13 @@
+ indent:
+ 	indent *.c *.h
+ 
++install: $(PROG)
++	install -d -m 755 $(DESTDIR)$(bindir)
++	install $(PROG) bplay_gramo $(DESTDIR)$(bindir)
++	(cd $(DESTDIR)$(bindir); ln -s bplay_gramo brec_gramo)
++	install -d -m 755 $(DESTDIR)$(docdir)
++	install -m 644 $(DOCS) $(DESTDIR)$(docdir)
++
+ #%.d: %.c   - according to 'info make', doesn't work
+ #	$(SHELL) -ec '$(CC) -MM $(CPPFLAGS) $< \
+ #		      | sed '\''s/\($*\)\.o[ :]*/\1 $@/g'\'' > $@'
+--- bplaysrc/Makefile
++++ bplaysrc/Makefile
+@@ -12,7 +12,7 @@
+ ########## CHOOSE YOUR ARCHITECTURE:    (NOTE: also see ../Makefile!)
+ 
+ # For Linux (and maybe others), use these:
+-CFLAGS = -Wall -O2 -DUSEBUFFLOCK -DREDHAT50 -DLP2CD -DVUMETER # -DDEBUG
++CFLAGS = $(RPM_OPT_FLAGS) -Wall -DUSEBUFFLOCK -DREDHAT50 -DLP2CD -DVUMETER -D_GNU_SOURCE # -DDEBUG
+ LIBS = -lncurses
+ 
+ # For FreeBSD (and maybe others), use these:

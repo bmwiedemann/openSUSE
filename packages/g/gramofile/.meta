@@ -1,0 +1,9 @@
+<package name="gramofile" project="openSUSE:Factory">
+  <title>Digitize Audio Records</title>
+  <description>Gramofile is a program to digitize audio records. Through the
+application of several filters, it is possible to accomplish a
+significant reduction of disturbances like ticks and scratches. Data is
+saved in WAV format, making it easy to record on CD with programs like
+cdrecord or xcdroast.</description>
+  <devel project="multimedia:apps" package="gramofile"/>
+</package>
