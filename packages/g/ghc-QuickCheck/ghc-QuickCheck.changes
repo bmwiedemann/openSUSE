@@ -1,0 +1,452 @@
+-------------------------------------------------------------------
+Wed May 31 15:38:24 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update QuickCheck to version 2.14.3.
+  QuickCheck 2.14.3 (released 2023-05-31)
+  	* Add shrinkBoundedEnum (thanks to Jonathan Knowles)
+  	* Add discardAfter for discarding tests on timeout (thanks to Justus Sagemüller)
+  	* Add assertWith for monadic testing (thanks to KtorZ)
+  	* Add functionElements to Test.QuickCheck.Function (thanks to Oleg Grenrus)
+  	* Add Arbitrary instance for Newline (thanks to Daniel Bramucci)
+  	* Improve Arbitrary instances for Float and Double (thanks to Oleg Grenrus)
+  	* Improve arbitrarySizedFractional (thanks to Bodigrim)
+  	* Fix shrinkRealFrac and shrinkDecimal, which were broken
+  	* Speed up printing of progress messages (thanks to Bodigrim)
+  	* Add COMPLETE pragmas for Fn and family (thanks to ilkecan)
+  	* Make templateHaskell flag manual (thanks to Oleg Grenrus)
+
+-------------------------------------------------------------------
+Thu Mar 30 17:08:00 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
+Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+ 
+- disable %{ix86} build
+ 
+-------------------------------------------------------------------
+Sun Nov 15 12:26:19 UTC 2020 - psimons@suse.com
+
+- Update QuickCheck to version 2.14.2.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/QuickCheck-2.14.2/src/changelog
+
+-------------------------------------------------------------------
+Tue Aug 18 10:43:50 UTC 2020 - Peter Simons <psimons@suse.com>
+
+- Replace %setup -q with the more modern %autosetup macro.
+
+-------------------------------------------------------------------
+Mon Jul  6 13:51:01 UTC 2020 - psimons@suse.com
+
+- Update QuickCheck to version 2.14.1.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/QuickCheck-2.14.1/src/changelog
+
+-------------------------------------------------------------------
+Tue Jun  9 09:10:57 UTC 2020 - psimons@suse.com
+
+- Update QuickCheck to version 2.14.
+  QuickCheck 2.14 (release 2020-03-28)
+  	* QuickCheck is now much faster at generating test data!
+  	  As a result, many properties can now be tested a lot faster;
+  	  the examples distributed with QuickCheck run about twice as
+  	  fast as before, for example. Of course, your mileage may vary.
+
+  	  The reason for this is that there are now specialised versions
+  	  of the 'choose' combinator for various types. These are:
+  	  chooseInt, chooseInteger, chooseBoundedIntegral, and chooseEnum.
+  	  These combinators are identical to 'choose' but much faster.
+  	  All QuickCheck combinators, with the exception of 'choose'
+  	  itself, use the new combinators behind the scenes.
+
+  	  You should see a speedup without doing anything, but to get a
+  	  further speedup, consider replacing any uses of 'choose' in your
+  	  own generators with the new combinators.
+
+  	  We are hoping that future releases of the 'random' library may
+  	  speed up 'choose', in which case these combinators may no longer
+  	  be needed.
+
+  	  Thanks to Oleg Grenrus for suggesting to bypass 'choose' for
+  	  random number generation, and providing the appropriate
+  	  primitive in his 'splitmix' random number library.
+
+  	* Smaller changes and bugfixes:
+  		- RecursivelyShrink and GSubterms are exported from
+  		  Test.QuickCheck.Test (thanks to Tom Mortiboy).
+  		- Don't generate invalid unicode characters
+  		  (thanks to Boris Stepanov).
+  		- When a call to 'within' fails, include the duration of the
+  		  timeout in the failure report (thanks to William Rusnack).
+  		- In Gen, avoid splitting the seed in the implementation of
+  		  >>, *> and <- (thanks to David Feuer).
+  		- Fix a couple of bugs with shrinking of floating-point
+  		  numbers.
+  		- Export functionMapWith, functionEitherWith and
+  		  functionPairWith from Test.QuickCheck.Function
+  		  (thanks to Oleg Grenrus).
+  		- Remove redundant RealFloat constraint from
+  		  Arbitrary/CoArbitrary instances for Complex
+  		  (thanks to Bodigrim).
+
+-------------------------------------------------------------------
+Fri Nov  8 16:14:29 UTC 2019 - Peter Simons <psimons@suse.com>
+
+- Drop obsolete group attributes.
+
+-------------------------------------------------------------------
+Mon Jul  1 02:02:25 UTC 2019 - psimons@suse.com
+
+- Update QuickCheck to version 2.13.2.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/QuickCheck-2.13.2/src/changelog
+
+-------------------------------------------------------------------
+Tue Jun 11 14:29:07 UTC 2019 - Peter Simons <psimons@suse.com>
+
+- Update Cabal file for more accurate build dependencies.
+
+-------------------------------------------------------------------
+Sat Mar 30 19:21:39 UTC 2019 - psimons@suse.com
+
+- Update QuickCheck to version 2.13.1.
+  QuickCheck 2.13.1 (release 2019-03-29)
+  	* A couple of bug fixes
+
+  QuickCheck 2.13 (released 2019-03-26)
+  	* Properties with multiple arguments now shrink better.
+  	  Previously, the first argument was shrunk, then the second, and
+  	  so on. Now, the arguments are shrunk as a whole, so shrink steps
+  	  for different arguments can be interleaved.
+
+  	* New features:
+  		- New modifiers Negative and NonPositive
+  		- A Testable instance for Maybe prop (where Nothing means 'discard
+  		  the test case')
+  	* Dependencies on C code removed:
+  		- Use splitmix instead of tf-random for random number generation
+  		- Remove dependency on 'erf' package
+  	* Small changes:
+  		- Say 'Falsified' instead of 'Falsifiable' when a property fails
+  	* Compatibility improvements:
+  		- Explicitly derive instance Typeable Args
+  		- Lower bound on deepseq
+  		- A script for building Hugs packages
+
+-------------------------------------------------------------------
+Wed Oct 10 19:24:03 UTC 2018 - psimons@suse.com
+
+- Update QuickCheck to version 2.12.6.1.
+  QuickCheck 2.12.6 (released 2018-10-02)
+  	* Make arbitrarySizedBoundedIntegral handle huge sizes correctly.
+  	* Add changelog for QuickCheck 2.12.5 :)
+
+  QuickCheck 2.12.5 (released 2018-09-30)
+  	* Export isSuccess from Test.QuickCheck.
+  	* Export CoArbitrary even when generics are disabled (bugfix).
+  	* Fix bug in shrinkDecimal.
+  	* Include Test.QuickCheck.Gen in exposed modules for Haddock.
+
+  QuickCheck 2.12.3, 2.12.4 (released 2018-09-12)
+  	* Shrinking for Float and Decimal now works by reducing the number
+  	  of digits in the number. The new function shrinkDecimal
+  	  implements this shrinking behaviour.
+  	* Shrinking for Rational now tries to make the numerator and
+  	  denominator of the number smaller. Previously it tried to reduce
+  	  the magnitude of the number.
+
+  QuickCheck 2.12.2 (released 2018-09-10)
+  	* Fix infinite shrinking loop for fractional types.
+  	* Add SortedList modifier.
+
+  QuickCheck 2.12.1 (released 2018-09-06)
+  	* Fix bug in 'classify'.
+
+  QuickCheck 2.12 (released 2018-09-03)
+  	* Silently breaking changes!
+  		- The Arbitrary instance for Word now generates only small
+  		  values, the same as Int
+  		- cover no longer causes a property failure if coverage is
+  		  insufficient. It just prints a warning. (But see next item!)
+
+  	* Overhaul of label/cover family of combinators:
+  		- New property combinator checkCoverage, which checks coverage
+  		  requirements in a statistically sound way, and *does* fail if
+  		  they are not met.
+  		- Order of arguments to cover swapped, to make it easier to
+  		  switch between classify and cover
+  		- New combinators tabulate and coverTable, for reporting test
+  		  case distribution more flexibly than label.
+  		- When label is called multiple times in a property, each call
+  		  produces a separate table of frequencies.
+
+  	* New functions:
+  		- (=/=): like (/=), but prints a counterexample
+  		  (thanks to tom-bop)
+  		- forAllShow/forAllShrinkShow: quantification using an
+  		  explicit show function (thanks to Stevan Andjelkovic)
+  		- forAllBlind/forAllShrinkBlind: quantification without
+  		  printing anything
+  		- verboseShrinking: see how a counterexample is shrunk
+  		- labelledExamples: given a property which uses label,
+  		  generate an example test case for each label
+  		- idempotentIOProperty: a variant of ioProperty which shrinks
+  		  better but only works for idempotent I/O actions
+
+  	* Other improvements:
+  		- MonadFix Gen instance (thanks to Jon Fowler)
+  		- Rational numbers shrink using continued fractions
+  		  (thanks to Justus Sagemüller)
+  		- Function instances for Const, Identity, and the types in
+  		  Data.Monoid; instance Functor Fun (thanks to Erik Schnetter
+  		  and Xia Li-yao)
+  		- More of Test.QuickCheck.Function is exported from
+  		  Test.QuickCheck
+  		- Semantics of .||. changed to improve short-circuiting:
+  		  if the left argument's precondition is false, the right
+  		  argument is not evaluated and the whole disjunction is
+  		  considered to have a false precondition
+  		- Bug fix: suchThatMaybe always increased size to at least 1
+
+  	* Miscellaneous API changes:
+  		- Result type has changed a bit:
+  			- InsufficientCovered constructor is gone
+  			- Type of labels has changed
+  			- New fields classes, tables
+
+-------------------------------------------------------------------
+Wed Jul 18 14:26:10 UTC 2018 - psimons@suse.com
+
+- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.
+
+-------------------------------------------------------------------
+Mon May 14 17:02:11 UTC 2018 - psimons@suse.com
+
+- Update QuickCheck to version 2.11.3.
+  * New features:
+          - InfiniteList modifier generates infinite lists and shows
+            only the relevant part.
+          - applyArbitrary2/3/4 for applying a function to random
+            arguments.
+          - Template Haskell function allProperties returns all
+            properties in a module.
+  * Applicative Gen instances do less splitting.
+  * Property now has a Typeable instance.
+  * (===) now prints correct output when the property is true.
+  * Test.QuickCheck now exports Fun constructor.
+  * verboseCheck output is now slightly less confusing.
+  * Arbitrary instances for Foreign.C.Types are available in more
+    GHC versions.
+  * Fixed a bug where withMaxSuccess didn't adjust the allowed
+    number of discarded tests.
+  * Remove quadratic behaviour in terminal output.
+  * New combinators:
+          - withMaxSuccess sets the maximum number of test cases for a property.
+          - shrinkMap/shrinkMapBy are helpers for defining shrink functions.
+          - total checks that a value is non-crashing.
+          - suchThatMap is similar to 'suchThat'
+            but takes a Maybe-returning function instead of a predicate.
+          - getSize returns the current test case size.
+  * Random strings and characters now include Unicode characters by
+    default. To generate only ASCII characters, use the new
+    ASCIIString modifier or arbitraryASCIIChar generator.
+    The following modifiers and generators also control the
+    kind of strings generated: UnicodeString, PrintableString,
+    arbitraryUnicodeChar, arbitraryPrintableChar.
+  * QuickCheck no longer catches asynchronous exceptions, which
+    means that pressing ctrl-C will now cancel testing without
+    printing a counterexample. If you are debugging an infinite loop,
+    please use the 'within' combinator or 'verboseCheck' instead.
+    ('within' is better as it allows the counterexample to be
+    shrunk.)
+  * Much of Test.QuickCheck.Function (showable random functions)
+    is now exported from Test.QuickCheck.
+          - Test.QuickCheck.Function now defines functions and
+            pattern synonyms which simplify testing functions of
+            more than one argument: apply2, apply3, Fn2, Fn3.
+  * New typeclasses Arbitrary1 and Arbitrary2 which lift Arbitrary
+    to unary/binary type constructors, like in Data.Functor.Classes.
+  * Some Arbitrary instances have been removed: NonEmpty, Natural.
+    This is because they resulted in a lot of extra dependencies.
+    You can now find them in the quickcheck-instances package.
+    Alternatively, use the NonEmptyList and NonNegative modifiers.
+  * New Arbitrary instances for the following types: Proxy, ExitCode,
+    WrappedMonad, WrappedArrow, QCGen, and the types in
+    Foreign.C.Types and Data.Functor.{Product,Compose}.
+    Also a Function instance for Word.
+  * The functions in Test.QuickCheck.Monadic which take an argument
+    of type PropertyM m a now expect that 'a' to be Testable, and test it.
+    To reduce breakage from this, () is now an instance of Testable which
+    always succeeds.
+          - PropertyM now has a MonadFail instance on recent GHCs.
+            Furthermore, the constraints on some instances were loosened.
+  * Miscellaneous API changes:
+          - Result now returns the counterexample as a list of strings.
+            See the "failingTestCase" field.
+          - Args now has a `maxShrinks` argument, the maximum number of
+            shrinks to try before giving up shrinking.
+          - The 'labels' field of Result now encodes frequencies as Doubles
+            rather than Ints.
+  * Bugfixes:
+          - 'Test.QuickCheck.Function', 'Test.QuickCheck.Poly', and
+            'Test.QuickCheck.Monadic' are now Safe modules.
+          - Result.theException and Result.reason were taken from
+            the pre-shrunk counterexample, not the shrunk one.
+          - The Testable Property instance improperly used 'again'.
+          - Gen.>>= is strict in the result of split, fixing a space leak.
+          - within now gives a better error message on timeout
+  * Some more examples and links have been added to the documentation.
+
+-------------------------------------------------------------------
+Sun Feb 12 14:13:28 UTC 2017 - psimons@suse.com
+
+- Update to version 2.9.2 with cabal2obs.
+
+-------------------------------------------------------------------
+Sun Jul 10 17:17:25 UTC 2016 - psimons@suse.com
+
+- Update to version 2.8.2 revision 0 with cabal2obs.
+
+-------------------------------------------------------------------
+Thu May 26 06:22:16 UTC 2016 - mimi.vx@gmail.com
+
+- update to 2.8.2
+* GHC 8 support
+* Add Arbitrary and CoArbitrary instances for types in containers package
+* Improve speed of shuffle combinator
+* Only print to stderr if it's a terminal.
+* Small changes: slightly improve documentation, remove redundant constraints
+    from some functions' types, small improvements to Test.QuickCheck.All.
+
+-------------------------------------------------------------------
+Tue May 12 14:26:30 UTC 2015 - mimi.vx@gmail.com
+
+- update to 2.8.1
+* Fix bug where exceptions thrown printing counterexamples weren't
+    being caught when terminal output was disabled
+* Don't export Test.QuickCheck.Property.result
+* Support for GHC 7.10
+* Arbitrary instance for Natural
+* New generators shuffle and sublistOf
+* Support for generic coarbitrary
+* When using the cover combinator, insufficient coverage now
+    causes the property to fail
+* Test.QuickCheck.Function: new pattern synonym Fn
+* genericShrink no longer requires Typeable
+* Result has a new constructor InsufficientCoverage
+* resize throws an error if the size is negative
+* Fix memory leaks
+* Exceptions thrown by callbacks now cause the test to fail
+* Fixed a bug where the cover combinator wouldn't give a
+    warning if coverage was 0%
+
+-------------------------------------------------------------------
+Fri Apr 10 13:41:57 UTC 2015 - mimi.vx@gmail.com
+
+- update to 2.7.6
+* Add annotations for Safe Haskell.
+* Fix bug in cabal file which broke cabal test
+* Fixed bug - the Small modifier didn't work on unsigned types
+* Changed arbitrarySizedIntegral to have an Integral constraint
+  instead of just Num
+        * New genericShrink function provides generic shrinking with GHC.
+        * New combinator x === y: fails if x /= y, but also prints their values
+        * New function generate :: Gen a -> IO a for running a generator.
+        * New combinators infiniteList and infiniteListOf for generating infinite lists.
+        * Several combinators added to the main Test.QuickCheck module which
+          were previously languishing in other modules. Of particular interest:
+          quickCheckAll, ioProperty.
+        * New combinators delay and capture which can be used (unsafely!)
+          to reuse the random number seed. Useful for generating
+          polymorphic (rank-2) values.
+        * A new Discard data type and a Testable instance for discarding test cases.
+        * All modifiers now have Functor instances and accessor functions.
+        * Pressing ctrl-C during shrinking now shows the last failed
+          test case, rather than the current shrinking candidate.
+        * Experimental support for UHC. You will need the latest version of Cabal from git.
+* Better distribution of test data:
+        * The Int generator now only generates fairly small numbers.
+        * The new Small and Large modifiers control the distribution of integers
+          (Small generates small numbers, Large from the whole range).
+        * Floating-point numbers shrink better.
+* Improved random number generation:
+        * QuickCheck now uses TFGen rather than StdGen on newer versions
+          of GHC, because StdGen's random numbers aren't always random.
+        * 'variant' now uses a prefix code. This should prevent some
+          potential bananaskins with coarbitrary.
+* API changes:
+        * The Gen monad now uses an abstract type QCGen rather than StdGen.
+        * The Result type now returns the thrown exception and number
+          of failed shrink attempts.
+        * Property is now a newtype rather than Gen Prop as it was before.
+        * promote is moved into the new module Test.QuickCheck.Gen.Unsafe.
+        * 'printTestCase' is deprecated - its new name is 'counterexample'
+        * 'morallyDubiousIOProperty' is deprecated - its new name is
+          'ioProperty', no moral judgement involved :)
+
+-------------------------------------------------------------------
+Tue Sep  2 08:30:25 UTC 2014 - peter.trommler@ohm-hochschule.de
+
+- regenerate spec file
+
+-------------------------------------------------------------------
+Sat Aug 23 00:00:20 UTC 2014 - peter.trommler@ohm-hochschule.de
+
+- enable PowerPC builds
+
+-------------------------------------------------------------------
+Mon May  6 11:31:28 UTC 2013 - peter.trommler@ohm-hochschule.de
+
+- update to 2.6 from upstream
+* convenience instances for up to 7-tupels
+* stderr unbuffered
+* flag to say whether test case was interrupted
+- BR ghc-extensible-exceptions-devel no longer required
+- more transparent packaging (fewer macros)
+
+-------------------------------------------------------------------
+Mon Jan  7 09:07:46 UTC 2013 - peter.trommler@ohm-hochschule.de
+
+- expand macro in name tag to help source validator
+
+-------------------------------------------------------------------
+Sat Nov 17 14:15:15 UTC 2012 - peter.trommler@ohm-hochschule.de
+
+- make service localonly for Factory submission
+
+-------------------------------------------------------------------
+Tue Oct  2 15:59:59 UTC 2012 - peter.trommler@ohm-hochschule.de
+
+- update to 2.5.1.1 from upstream (no changelog)
+- required by Haskell Platform 2012.4.0.0
+
+-------------------------------------------------------------------
+Sun Jun  3 17:36:02 UTC 2012 - peter.trommler@ohm-hochschule.de
+
+- update to 2.4.2 from upstream (no changelog)
+- required by Haskell Platform 2012.2.0.0
+
+-------------------------------------------------------------------
+Thu Feb 23 13:58:27 UTC 2012 - peter.trommler@ohm-hochschule.de
+
+- Added BuildRoot for sle11-sp1
+
+-------------------------------------------------------------------
+Thu Dec 29 11:52:59 UTC 2011 - peter.trommler@ohm-hochschule.de
+
+- Enable hscolour
+- Add rpmlinrc
+
+-------------------------------------------------------------------
+Mon Dec  5 15:15:52 UTC 2011 - peter.trommler@ohm-hochschule.de
+
+- Initial packaging.
