@@ -1,0 +1,455 @@
+-------------------------------------------------------------------
+Wed Mar 27 12:55:16 UTC 2024 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 1.28.0
+  * Translations update
+  * configure.ac: The macro 'AC_HELP_STRING' is obsolete
+
+-------------------------------------------------------------------
+Mon May 15 18:48:33 UTC 2023 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.26.2:
+  * mate-screensaver-preferences: Fix memory leak.
+  * Update translations.
+
+-------------------------------------------------------------------
+Fri Jan 13 17:29:22 UTC 2023 - Stefan Schubert <schubi@suse.com>
+
+- Migration of PAM settings to /usr/lib/pam.d. 
+
+-------------------------------------------------------------------
+Sat Nov 20 19:39:20 UTC 2021 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.26.1:
+  * gs-theme-manager: Reload on menu_tree changed.
+  * Prompt-driven auth. helper.
+  * Update translations.
+
+-------------------------------------------------------------------
+Fri Aug 13 11:49:21 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 1.26.0
+  * update translations
+  * Allow change of time and date formats on lock screen v4
+  * update copyright to 2021
+  * xdg-user-dir-lookup: missing include guard
+  * i18n: Do not collect the translation for Icon (data folder)
+  * i18n: Do not collect the translation for Icon
+  * i18n: Do not prepend 'GNU ' prefix to the package name
+  * Removed translation for icon file name
+  * mate-screensaver.directory.desktop: The Encoding key is deprecated
+  * Remove warning -Wshadow
+  * lock-dialog-default: fix deprecations reported by glade
+  * Add Show/Hide password emblem in password entry
+  * mate-screensaver-preferences: Show lock image preview on file chooser 
+
+-------------------------------------------------------------------
+Mon Apr 26 20:12:08 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 1.24.2:
+  * Translations update
+  * i18n: Do not collect the translation for Icon
+  * Removed translation for icon file name
+
+-------------------------------------------------------------------
+Wed Jan  6 16:13:50 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.24.1:
+  * Translations update
+  * Fix invalid gnome-logo-white.svg
+  * Custom background image for lock screen
+  * build: silent build warnings for distcheck
+ 
+-------------------------------------------------------------------
+Wed Feb 26 19:38:40 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.24.0 (changes since 1.23.0):
+  * Set compiler debug flags / logging with MATE_DEBUG_CHECK.
+  * Use WARN_CFLAGS which are only set with
+    --enable-compiler-warnings.
+  * Add keywords key to .desktop files.
+  * Avoid g_type_class_add_private.
+  * Remove old HAL remnants.
+  * Ensure lock on suspend and unlock on resume.
+  * Use gresources for mate-screensaver-preferences.ui.
+  * lock-dialog: Add style_provider to current screen globally.
+  * Replace deprecated gtk_css_provider_get_default.
+  * Drop libXxf86 dependency.
+  * Avoid redundant redeclarations.
+  * Migrate from intltool to gettext.
+  * Update translations.
+- Remove drop-libXxf89-dependency.patch: fixed upstream.
+- Drop support for old openSUSE versions.
+
+-------------------------------------------------------------------
+Thu Jul 18 11:59:21 UTC 2019 - Jonathan Brielmaier <jbrielmaier@suse.de>
+
+- Update to version 1.23.0:
+  * Update translations
+- add patches:
+  * drop-libXxf89-dependency.patch: drop the dependency on libXxf89
+    as it got removed from TW, fixes boo#1139857
+- remove patches:
+  * mate-screensaver-gtk-3.20.patch: we don't support gtk3.20 and
+    glib3.28 anymore
+- remove xxf86misc and xxf86vm from BuildRequires
+- require gtk >= 3.22 and glib >= 3.50
+
+-------------------------------------------------------------------
+Sun May 12 18:13:56 UTC 2019 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.22.1:
+  * Add elogind support.
+  * Update translations.
+
+-------------------------------------------------------------------
+Tue Mar  5 15:19:33 UTC 2019 - sor.alexei@meowr.ru
+
+- Update to version 1.22.0:
+  * Bump required version of mate-menus.
+  * Support new mate-menus api.
+  * Fix some GDK deprecations.
+  * Fix a gdk_flush warning.
+  * Avoid deprecated GtkStock.
+  * Make translatable the auth-username-label in
+    lock-dialog-default.ui.
+  * mate-screensaver-command: Support unlocking (--unlock) the
+    screensaver via CLI.
+  * fade: Fix fade computation math.
+  * gs-grab-x11: Replace deprecated gdk_error_trap_push/pop.
+  * gs-visual-gl: Replace deprecated gdk_error_trap_push/pop.
+  * gs-lock-plug: Avoid deprecated gdk_keymap_get_default.
+  * Update translations.
+- Rebase mate-screensaver-gtk-3.20.patch.
+
+-------------------------------------------------------------------
+Sat Dec 22 20:48:48 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 1.20.3:
+  * Disable deprecation warnings for distcheck.
+  * Remove "monitor" pointer from debug information.
+  * Update translations.
+- Rebase mate-screensaver-gtk-3.20.patch.
+
+-------------------------------------------------------------------
+Sat Sep 8 21:47:07 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 1.20.2:
+  * Fix more GdkScreen related deprecations (fixes boo#1098985).
+  * lock-plug: Only scale lock-screen widgets on older versions of
+    GTK+.
+  * Update translations.
+- Rebase mate-screensaver-gtk-3.20.patch.
+
+-------------------------------------------------------------------
+Sat Jun 16 15:48:41 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 1.20.1:
+  * Update translations.
+
+-------------------------------------------------------------------
+Wed Mar 14 20:18:42 UTC 2018 - jengelh@inai.de
+
+- Remove future aims from description.
+
+-------------------------------------------------------------------
+Wed Mar 14 19:53:44 UTC 2018 - crrodriguez@opensuse.org
+
+- Remove buildrequires on xorg-x11-devel, dependencies
+  were adjusted according to what configure requests and 
+  what libraries are used by the final executable.
+
+-------------------------------------------------------------------
+Fri Mar  9 19:10:07 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 1.20.0:
+  * Require GTK+ 3.22 and GLib 2.50.
+  * Avoid deprecated gdk_screen_get_width/height().
+  * Don't use deprecated gtk_show_uri().
+  * Implement OpenBSD authentication using bsd_auth(3).
+  * copy theme dialogue: Fix the build warning about a wrong
+    variable type.
+  * An implementation of WidthOfScreen and HeightOfScreen.
+  * Restore the correct mate-screensaver-command man page.
+  * Add HiDPI support for the lock screen.
+  * gs-lock-plug.c: Fix a build warning.
+  * Update translations.
+- Add mate-screensaver-gtk-3.20.patch: Restore GLib 2.48 and
+  GTK+ 3.20 support.
+
+-------------------------------------------------------------------
+Wed Nov  8 17:56:12 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 1.18.2:
+  * Fix loop initial declarations.
+  * Drop required max version of glib.
+  * Fix idle slider display in all languages.
+  * Update translations.
+
+-------------------------------------------------------------------
+Mon Apr 17 11:47:10 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 1.18.1:
+  * lock-dialog UI: Fix some deprecations.
+  * g_get_real_name will never return NULL pointer.
+  * screensaver and lock screen not correctly displayed in
+    configurations with overlapping monitor geometries.
+  * [GTK+3.20] Switch to GdkSeat.
+  * Set input purpose for the password entry widget.
+  * Update translations.
+
+-------------------------------------------------------------------
+Tue Mar 14 10:11:47 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 1.18.0:
+  * NEWS: Use consistent, project wide, markdown-like formatting to
+    make generating release announcements easier.
+  * Build: Require libmate-menu >= 1.10.
+  * Build: Require libmatekbd and libmate-desktop >= 1.17.
+  * Move to GTK+3 (require GTK+ >= 3.14), drop the GTK+2 code and
+    --with-gtk build option.
+  * Lock screen: Load user's background instead of the system one.
+  * Preferences: Fix some GTK+ deprecations.
+  * Update translations.
+
+-------------------------------------------------------------------
+Sun Feb  5 21:04:12 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 1.16.1:
+  * Fix build breakage with GTK+ 3.14.
+  * Fix "Blank screen" theme with GTK+ 3.22.
+  * GTK+2: Fix switching to "Blank screen" theme in the full screen
+    preview.
+  * Properly restore the password dialogue position after a wrong
+    password attempt.
+  * Check for a gdm-binary process when switching the user.
+
+-------------------------------------------------------------------
+Tue Sep 20 20:50:25 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 1.16.0:
+  * Fix locking when screensaver is already active.
+  * GTK+3: Fix background and locking in multi-monitor setup.
+  * GTK+3: Fix several deprecations.
+  * Some more fixes and cleanups.
+  * Make distcheck use a currently selected GTK+ version
+  * Update translations.
+
+-------------------------------------------------------------------
+Sun May 22 15:13:43 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 1.14.1:
+  * GTK+-3: Fix assertion 'GTK_IS_WIDGET (widget)' failed.
+  * GTK+-3: Add style class lock-dialog.
+  * Update translations.
+
+-------------------------------------------------------------------
+Sat Apr  9 11:24:53 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 1.14.0:
+  * Update translations.
+  * Add Changelog generation.
+
+-------------------------------------------------------------------
+Tue Jan 26 12:23:53 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 1.13.0:
+  * Gtk3: fix several deprecations.
+  * Some more fixes and cleanups.
+  * Drop MateConf migration script.
+
+-------------------------------------------------------------------
+Mon Jan 11 15:30:48 UTC 2016 - sor.alexei@meowr.ru
+
+- Add missing mate-session-manager-gschemas dependency.
+
+-------------------------------------------------------------------
+Mon Nov 23 20:34:07 UTC 2015 - sor.alexei@meowr.ru
+
+- Use authentication directly via PAM.
+- Do not require xscreensaver-data but recommend.
+
+-------------------------------------------------------------------
+Thu Nov  5 20:43:01 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 1.12.0:
+  * Retrieve strings directly from gschema (requires intltool
+    0.50.1).
+  * Add support for libsystemd (in addition to libsystemd-login).
+  * Some more fixes and cleanups.
+
+-------------------------------------------------------------------
+Wed Oct 21 14:05:01 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 1.11.1:
+  * Fix systemd event handling.
+
+-------------------------------------------------------------------
+Fri Oct  9 22:04:39 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 1.11.0:
+  * Switch to org.gnome.SessionManager.
+  * Do not fade to black when locking the screen.
+  * manager: fade out explicitly locks more quickly.
+  * More improvements.
+
+-------------------------------------------------------------------
+Mon Jul 13 21:12:12 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 1.10.2:
+  * Fix segfault due to wrong object being destroyed.
+  * Update translations.
+
+-------------------------------------------------------------------
+Fri Jun 12 09:04:38 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 1.10.1:
+  * Check for running display manager when user switching.
+
+-------------------------------------------------------------------
+Mon May  4 20:23:43 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 1.10.0:
+  * Update translations.
+- Spec cleanup.
+
+-------------------------------------------------------------------
+Thu Jan 22 10:09:42 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 1.9.2 (unstable)
+  * Update to api changes for MateRR* in mate-desktop
+
+-------------------------------------------------------------------
+Sun Nov 23 17:15:50 UTC 2014 - p.drouand@gmail.com
+
+- Update to version 1.9.1 (unstable)
+  + Minor bug fixes
+
+-------------------------------------------------------------------
+Sun Oct 26 20:33:41 UTC 2014 - p.drouand@gmail.com
+
+- Update to version 1.9.0 (unstable)
+  + No changelog available
+- Fix version requirements
+
+-------------------------------------------------------------------
+Fri Oct  3 14:04:34 UTC 2014 - p.drouand@gmail.com
+
+- Update to version 1.8.1
+  + Prevent SegFault in the absence of XRANDR
+
+-------------------------------------------------------------------
+Wed Apr  2 15:18:59 UTC 2014 - p.drouand@gmail.com
+
+- Fix again the patch; uncomment SUSE lines on pam config file
+
+-------------------------------------------------------------------
+Sun Mar 30 14:06:45 UTC 2014 - p.drouand@gmail.com
+
+- Fix mate-screensaver-1.7.1-vendor_pam_integration.patch; it only
+  added new lines instead of comment existing ones
+
+-------------------------------------------------------------------
+Wed Mar  5 11:41:44 UTC 2014 - p.drouand@gmail.com
+
+- Update to version 1.8.0
+  + no changes since version 1.7.90
+
+-------------------------------------------------------------------
+Mon Feb 10 18:45:24 UTC 2014 - p.drouand@gmail.com
+
+- Update to version 1.7.1 (unstable)
+  + pam: Use pam_gnome-keyring.so 
+  + fix issues when using systemd
+  + show date and time in lock dialog
+    closes #18 (https://github.com/mate-desktop/mate-screensaver/issues/18)
+  + update translations
+- Changes from version 1.7.0
+  + re-add erroneously removed opening semicolon 
+  + initial GTK3 support
+  + replace mate-open with gvfs-open
+- Update mate-screensaver-1.7.1-vendor_pam_integration.patch to upstream
+  changes
+- Build with systemd support only; remove consolekit workaround
+- Remove pkgconfig(libsystemd-daemon) require; only libsystemd-login is
+  needed to build
+
+-------------------------------------------------------------------
+Sat Aug  3 14:33:15 UTC 2013 - p.drouand@gmail.com
+
+- Update to version 1.6.1
+  + fixes for make dist and make distcheck
+  + add xscrnsaver in configure
+  + use idle-delay key in org.mate.session schema
+    closes #17 https://github.com/mate-desktop/mate-screensaver/issues/17
+  + use GDK to detect caps lock state
+    closes #16 https://github.com/mate-desktop/mate-screensaver/issues/16
+  + update makefiles for automake 1.13
+  + add support to switch user with LightDM
+
+-------------------------------------------------------------------
+Thu Apr  4 00:09:10 UTC 2013 - p.drouand@gmail.com
+
+- Update to version 1.6.0
+  + no changes since 1.5.2
+
+-------------------------------------------------------------------
+Thu Mar 14 19:19:29 UTC 2013 - p.drouand@gmail.com
+
+- Update to version 1.5.2:
+  + Use libnotify instead of libmatenotify
+  + AC_CONFIG_HEADERS to please automake 1.13
+  + Fix indentation
+  + Prevent mate-screensaver to launch a 2nd instance
+- Replace libmatenotify BuildRequires with libnotify BuildRequires to
+  follow upstream changes
+- Remove 0001-prevent-mate-screensaver-to-launch-a-2nd-instance.patch
+  Fixed and merged on upstream release
+
+-------------------------------------------------------------------
+Sun Feb 24 14:31:32 UTC 2013 - p.drouand@gmail.com
+
+- Fix permissions for /etc/xdg
+
+-------------------------------------------------------------------
+Mon Dec  3 15:58:50 UTC 2012 - nmo.marques@gmail.com
+
+- Use systemd-login for >= 12.3 and ConsoleKit for previous,
+  hopefully fixing hibernate
+
+-------------------------------------------------------------------
+Fri Nov 23 17:44:13 UTC 2012 - nmo.marques@gmail.com
+
+- Update to version 1.5.1
+  + Fix FSF address in several files
+  + Fix some typos
+  + Fix gschema paths
+  + Add support for systemd-login
+- Remove 2 temporary patches used for testing, merged upstream
+
+-------------------------------------------------------------------
+Sat Nov  3 22:18:18 UTC 2012 - nmo.marques@gmail.com
+
+- Update to version 1.5.0
+  + migration to glib-2.0 gsettings
+- Remove mate-screensaver-pam_suse.patch, reworked
+- Add mate-screensaver-1.5.0-vendor_pam_integration.patch, vendor
+  integration with PAM
+- Add %post/%postun desktop database macros
+
+-------------------------------------------------------------------
+Tue Sep 18 22:36:04 UTC 2012 - nmo.marques@gmail.com
+
+- Fix typo in %configure instructions and add xscreensavers stuff
+
+-------------------------------------------------------------------
+Tue Sep 18 16:27:53 UTC 2012 - nmo.marques@gmail.com
+
+- Add mate-screensaver-pam_suse.patch: fix pam interaction for
+  opensuse
+
+-------------------------------------------------------------------
+Fri Sep 14 22:17:46 UTC 2012 - nmo.marques@gmail.com
+
+- Initial package from version 1.4.0
+
