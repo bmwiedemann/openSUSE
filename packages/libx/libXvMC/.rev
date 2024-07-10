@@ -1,0 +1,141 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d25774d3e0da878c52b102f386c90258</srcmd5>
+    <version>1.0.6</version>
+    <time>1329476732</time>
+    <user>coolo</user>
+    <comment>- Split xorg-x11-libs into separate packages</comment>
+    <requestid>105476</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>0e0e49876a3e53c55df2d527f936321d</srcmd5>
+    <version>1.0.7</version>
+    <time>1336471103</time>
+    <user>coolo</user>
+    <comment>Pushing X11:XOrg</comment>
+    <requestid>115366</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>0e0e49876a3e53c55df2d527f936321d</srcmd5>
+    <version>1.0.7</version>
+    <time>1340183561</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>0e0e49876a3e53c55df2d527f936321d</srcmd5>
+    <version>1.0.7</version>
+    <time>1359109237</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>f506a6093bcef750dce15e3b86fb83fa</srcmd5>
+    <version>1.0.7</version>
+    <time>1363950014</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>160108</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>884cfdfea058e8e6bc6af4aaa8086ce5</srcmd5>
+    <version>1.0.8</version>
+    <time>1371561753</time>
+    <user>coolo</user>
+    <comment>update to version 1.0.8 (forwarded request 178974 from tobijk)</comment>
+    <requestid>178978</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>884cfdfea058e8e6bc6af4aaa8086ce5</srcmd5>
+    <version>1.0.8</version>
+    <time>1379662891</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="5">
+    <srcmd5>884cfdfea058e8e6bc6af4aaa8086ce5</srcmd5>
+    <version>1.0.8</version>
+    <time>1409301494</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>02de0376a965b27d43d6296b098e4188</srcmd5>
+    <version>1.0.9</version>
+    <time>1427273666</time>
+    <user>dimstar_suse</user>
+    <comment>- added baselibs.conf as source to specfile
+
+- Update to version 1.0.9:
+  + Require ANSI C89 pre-processor, drop pre-C89 token pasting support
+  + Rename local err variable in XW_RSYM macro to avoid shadow warnings
+  + Remove fallback for _XEatDataWords, require libX11 1.6 for it
+  + Fix linking with -Wl,--no-undefined on Linux</comment>
+    <requestid>292265</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>dabb3fcb49e1a27d497a0df30471f5e9</srcmd5>
+    <version>1.0.10</version>
+    <time>1478377307</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>438257</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>b20461a08b2c6744c23213475b0efb57</srcmd5>
+    <version>1.0.11</version>
+    <time>1553635770</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.11
+  * autogen: add default patch prefix
+  * autogen.sh: use quoted string variables
+  * autogen.sh: use exec instead of waiting for configure to finish
+  * Update configure.ac bug URL for gitlab migration
+  * Need to check for -1, not 0, to determine if shmat() failed
+  * Fix sign comparison warnings for loop indexes
+  * Fix handling of shmKey in XvMCGetDRInfo
+  * Update README for gitlab migration</comment>
+    <requestid>687590</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>8786521955c070fc5633db4d0825c79c</srcmd5>
+    <version>1.0.12</version>
+    <time>1571950858</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>741456</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>efbc5d9cee5d4981121be33216e2500b</srcmd5>
+    <version>1.0.13</version>
+    <time>1648570433</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.13
+  * autotools: fix Requires and Requires.Private in pkgconfig
+  * meson: Add a meson build system
+  * meson: Fix typo
+  * editorconfig: add meson
+  * Fix spelling/wording issues
+  * Build xz tarballs instead of bzip2
+- supersedes n_bring-back-libXv-dep.patch</comment>
+    <requestid>965074</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>56e513a47d10ec60cf4ac5d716139d51</srcmd5>
+    <version>1.0.14</version>
+    <time>1707233574</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.0.14
+  * Make doc install path from meson match autotools
+  * gitlab CI: add a basic build test
+  * gitlab CI: Add libtool to required packages
+  * gitlab CI: stop requiring Signed-off-by in commits
+  * configure: Use LT_INIT from libtool 2 instead of deprecated AC_PROG_LIBTOOL
+  * Convert to X.Org standard code style
+  * Variable scope reductions as recommended by cppcheck
+  * Replace custom copy of GetReq macro with call to Xlib 1.5's _XGetRequest
+  * Handle implicit conversion warnings from clang
+- switched to meson build system</comment>
+    <requestid>1144234</requestid>
+  </revision>
+</revisionlist>
