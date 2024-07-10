@@ -1,0 +1,1011 @@
+<revisionlist>
+  <revision rev="1" vrev="80">
+    <srcmd5>802ba3a8ff35ca2b34bcaa288333ef8b</srcmd5>
+    <version>1.12</version>
+    <time>1166483810</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="92">
+    <srcmd5>410547f597cb2f3cdab019ef4d8eb28b</srcmd5>
+    <version>1.12</version>
+    <time>1170873448</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="99">
+    <srcmd5>f67de1451063f8b1e3add49bbf9c0349</srcmd5>
+    <version>1.12</version>
+    <time>1175181207</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="105">
+    <srcmd5>0157b9c2971e3a182222f655c729b716</srcmd5>
+    <version>1.12</version>
+    <time>1178891102</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="116">
+    <srcmd5>0a769b6afd4797d02d429b388e839a13</srcmd5>
+    <version>1.12</version>
+    <time>1182178389</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="117">
+    <srcmd5>abcb5f0cc700eadae0b1c4f2306bbc2c</srcmd5>
+    <version>1.12</version>
+    <time>1182456617</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="122">
+    <srcmd5>c9c8b499ed7b5ce7b59dcc2ef2b4e8e4</srcmd5>
+    <version>1.12</version>
+    <time>1184786717</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="128">
+    <srcmd5>8997a49e354a7ab0c222a08e76e4d3ca</srcmd5>
+    <version>1.12</version>
+    <time>1187202295</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="129">
+    <srcmd5>9f3b08cd65bd11f0b74a37b3591aeba8</srcmd5>
+    <version>1.12</version>
+    <time>1187265986</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="132">
+    <srcmd5>ade56285b614dd17daa6f5f56792e8d3</srcmd5>
+    <version>1.12</version>
+    <time>1187910899</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="147">
+    <srcmd5>a461708578e55425115685ea22a64414</srcmd5>
+    <version>1.12</version>
+    <time>1196720218</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="163">
+    <srcmd5>99f63c08f2bae092adbf3b2124e0a1a4</srcmd5>
+    <version>1.12</version>
+    <time>1205114244</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="166">
+    <srcmd5>f976247bdaa2e20057d5c745bd37d744</srcmd5>
+    <version>1.12</version>
+    <time>1206544600</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="173">
+    <srcmd5>091d8c5323a479875f27795feb181915</srcmd5>
+    <version>1.12</version>
+    <time>1209133699</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="176">
+    <srcmd5>83d80d43a08522a40d2ef3f4842717aa</srcmd5>
+    <version>1.12</version>
+    <time>1210030227</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="178">
+    <srcmd5>bffb1bcd4cdb86f9b094b2e7e1d49eee</srcmd5>
+    <version>1.12</version>
+    <time>1210194812</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="182">
+    <srcmd5>acb54aeb79f5181a3a133161d5e8fc0f</srcmd5>
+    <version>1.12</version>
+    <time>1211240952</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="186">
+    <srcmd5>f0d6c1324d978b7d17aea9af6527ca93</srcmd5>
+    <version>1.12</version>
+    <time>1212679912</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="19" vrev="201">
+    <srcmd5>f17d5d40a04eb5d5a5a02d8fe360042e</srcmd5>
+    <version>1.12</version>
+    <time>1219077844</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>8dc926b64db1a80245a44a7c07ee5503</srcmd5>
+    <version>1.14.1</version>
+    <time>1219355809</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="21" vrev="5">
+    <srcmd5>828e91c853b6661a703fd38c4b9c9b75</srcmd5>
+    <version>1.14.1</version>
+    <time>1220648796</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="22" vrev="9">
+    <srcmd5>38cbb06a5a95eb1f7a63b8bba7b0feef</srcmd5>
+    <version>1.14.1</version>
+    <time>1220991071</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="23" vrev="13">
+    <srcmd5>593806ef8c8d6a8204f27ef5200afaa2</srcmd5>
+    <version>1.14.1</version>
+    <time>1223312178</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="24" vrev="14">
+    <srcmd5>7621a5fc9dccbe76cb22f656dc9a72f4</srcmd5>
+    <version>1.14.1</version>
+    <time>1224691515</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="25" vrev="15">
+    <srcmd5>9a005815a3ce8d528fe3e00b9ae73094</srcmd5>
+    <version>1.14.1</version>
+    <time>1225816928</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="26" vrev="16">
+    <srcmd5>e79c4803669c5894cf41cc933267c8f1</srcmd5>
+    <version>1.14.1</version>
+    <time>1226326922</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="27" vrev="17">
+    <srcmd5>3543223ba8e6060f8bceebaf30756dea</srcmd5>
+    <version>1.14.1</version>
+    <time>1244592996</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="28" vrev="18">
+    <srcmd5>ad76046ef18e9495a43aa885e76c734b</srcmd5>
+    <version>1.14.1</version>
+    <time>1252110522</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/kbd based on submit request 19931 from user michal-m
+</comment>
+  </revision>
+  <revision rev="29" vrev="19">
+    <srcmd5>4d68893f652376983a9d5eae5de6e7f1</srcmd5>
+    <version>1.14.1</version>
+    <time>1254530066</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/kbd based on submit request 21486 from user michal-m
+</comment>
+  </revision>
+  <revision rev="30" vrev="21">
+    <srcmd5>4d68893f652376983a9d5eae5de6e7f1</srcmd5>
+    <version>1.14.1</version>
+    <time>1254530066</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/kbd based on submit request 21486 from user michal-m
+</comment>
+  </revision>
+  <revision rev="31" vrev="22">
+    <srcmd5>0e0b45828c56647c34a282d4b8782d8f</srcmd5>
+    <version>1.14.1</version>
+    <time>1257174491</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/kbd based on submit request 23586 from user michal-m
+</comment>
+  </revision>
+  <revision rev="32" vrev="23">
+    <srcmd5>417051a9c57adcc7dc9aceca3416899e</srcmd5>
+    <version>1.14.1</version>
+    <time>1263826018</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/kbd based on submit request 29905 from user coolo
+</comment>
+  </revision>
+  <revision rev="33" vrev="24">
+    <srcmd5>d128b1a1b53ee8b3eee603f01673a83a</srcmd5>
+    <version>1.14.1</version>
+    <time>1265917347</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/kbd based on submit request 31700 from user msmeissn
+</comment>
+  </revision>
+  <revision rev="34" vrev="25">
+    <srcmd5>7e4da5d1f1eb79c5de1f55133048c197</srcmd5>
+    <version>1.14.1</version>
+    <time>1266502574</time>
+    <user>autobuild</user>
+    <comment>Copy from IBS home:gabrielburt:branches:SUSE:Factory:Head/kbd based on submit request 4681 from user gabrielburt
+</comment>
+  </revision>
+  <revision rev="35" vrev="26">
+    <srcmd5>8694138939e3269f683d1e94931af6c6</srcmd5>
+    <version>1.14.1</version>
+    <time>1266973849</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/kbd based on submit request 32965 from user anicka
+</comment>
+    <requestid>32965</requestid>
+  </revision>
+  <revision rev="36" vrev="27">
+    <srcmd5>1c1405a2cd2cefc49c25480722701aa8</srcmd5>
+    <version>1.14.1</version>
+    <time>1268924163</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="37" vrev="28">
+    <srcmd5>79b66b76f0b8d9cee303387a4c9e1bd1</srcmd5>
+    <version>1.14.1</version>
+    <time>1270040658</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/kbd based on submit request 36003 from user anicka
+</comment>
+    <requestid>36003</requestid>
+  </revision>
+  <revision rev="38" vrev="29">
+    <srcmd5>0593df80c534339c188333c9580409be</srcmd5>
+    <version>1.14.1</version>
+    <time>1275064154</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/kbd based on submit request 40719 from user prusnak
+</comment>
+    <requestid>40719</requestid>
+  </revision>
+  <revision rev="39" vrev="31">
+    <srcmd5>0593df80c534339c188333c9580409be</srcmd5>
+    <version>1.14.1</version>
+    <time>1278667354</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="40" vrev="32">
+    <srcmd5>0593df80c534339c188333c9580409be</srcmd5>
+    <version>1.14.1</version>
+    <time>1278678585</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="41" vrev="33">
+    <srcmd5>d931148f96c8050c0d4492d38f4e479b</srcmd5>
+    <version>unknown</version>
+    <time>1284377119</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/kbd based on submit request 47377 from user anicka
+</comment>
+    <requestid>47377</requestid>
+  </revision>
+  <revision rev="42" vrev="34">
+    <srcmd5>ec79347b0253df57281a158c9f753ce5</srcmd5>
+    <version>1.15.2</version>
+    <time>1295015849</time>
+    <user>darix</user>
+    <comment>Accepted submit request 58179 from user coolo
+</comment>
+    <requestid>58179</requestid>
+  </revision>
+  <revision rev="43" vrev="35">
+    <srcmd5>b4be133261e39c742af25696004e20a1</srcmd5>
+    <version>1.15.2</version>
+    <time>1295015857</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 58179
+</comment>
+  </revision>
+  <revision rev="44" vrev="36">
+    <srcmd5>f7c7e3e2cf436c4f15e2a3d6f71dcd79</srcmd5>
+    <version>1.15.2</version>
+    <time>1296694094</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 59822 from user sbrabec
+</comment>
+    <requestid>59822</requestid>
+  </revision>
+  <revision rev="45" vrev="37">
+    <srcmd5>74e3889390761feb1aa814248df9a8af</srcmd5>
+    <version>1.15.2</version>
+    <time>1296694106</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 59822
+</comment>
+  </revision>
+  <revision rev="46" vrev="40">
+    <srcmd5>74e3889390761feb1aa814248df9a8af</srcmd5>
+    <version>1.15.2</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="47" vrev="41">
+    <srcmd5>63d31ff6ef89cd6d4cdce23bf42f8ccf</srcmd5>
+    <version>1.15.2</version>
+    <time>1298028374</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 61586 from user WernerFink
+</comment>
+    <requestid>61586</requestid>
+  </revision>
+  <revision rev="48" vrev="42">
+    <srcmd5>c47c32643b0544e36bf15fb4bec855f5</srcmd5>
+    <version>1.15.2</version>
+    <time>1298028383</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 61586
+</comment>
+  </revision>
+  <revision rev="49" vrev="43">
+    <srcmd5>df204e7af62958944728910e729429f1</srcmd5>
+    <version>1.15.2</version>
+    <time>1300716956</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 64643 from user WernerFink
+</comment>
+    <requestid>64643</requestid>
+  </revision>
+  <revision rev="50" vrev="44">
+    <srcmd5>6d4d396c54c7f5e07e1a60e6b5407dde</srcmd5>
+    <version>1.15.2</version>
+    <time>1300716967</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 64643
+</comment>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>4b8ed5338cc75983464b8b1ee0bd3f77</srcmd5>
+    <version>1.15.3</version>
+    <time>1316082187</time>
+    <user>saschpe</user>
+    <comment>- Update to version 1.15.3:
+  * kbdinfo: New utility to obtain information about console.
+  * setvtrgb: New utility to set the virtual terminal RGB colors.
+  * loadkeys: Add LOADKEYS_KEYMAP_PATH env variable.
+  * loadkeys: Fix some memory leaks.
+  * loadkeys: Do not set prefer_unicode for iso-8859-1.
+  * loadkeys -a: Switch to ASCII mode.
+  * loadkeys: Fix &quot;compose as usual&quot; for Unicode diacritics.
+  * Add dvorak-ru keymap.
+  * Add LatGrkCyr fonts.
+Added bnc#:
+  (bnc#463801)</comment>
+    <requestid>82136</requestid>
+  </revision>
+  <revision rev="52" vrev="2">
+    <srcmd5>98ccdd20f698484931ce2deafc3ae25a</srcmd5>
+    <version>1.15.3</version>
+    <time>1316082194</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 82136
+</comment>
+  </revision>
+  <revision rev="53" vrev="3">
+    <srcmd5>7e79847f7ecfef3777e2469a9c8917e2</srcmd5>
+    <version>1.15.3</version>
+    <time>1317744745</time>
+    <user>oertel</user>
+    <comment>- cross-build fix: use %__cc, %configure macros
+- configure: explicitly set bindir (forwarded request 86405 from uli_suse)</comment>
+    <requestid>86426</requestid>
+  </revision>
+  <revision rev="54" vrev="4">
+    <srcmd5>6d44294a0ecaf12f3ea198776933c85a</srcmd5>
+    <version>1.15.3</version>
+    <time>1318248667</time>
+    <user>oertel</user>
+    <comment>- fix loadkeys -C option (bnc#720486)</comment>
+    <requestid>87235</requestid>
+  </revision>
+  <revision rev="55" vrev="6">
+    <srcmd5>6d44294a0ecaf12f3ea198776933c85a</srcmd5>
+    <version>1.15.3</version>
+    <time>1319182023</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="56" vrev="7">
+    <srcmd5>38d47115cb59138996ac3c58114eb552</srcmd5>
+    <version>1.15.3</version>
+    <time>1322814424</time>
+    <user>coolo</user>
+    <comment>add automake to buildrequires (forwarded request 94544 from coolo)</comment>
+    <requestid>94552</requestid>
+  </revision>
+  <revision rev="57" vrev="8">
+    <srcmd5>1fcce286e5e32a355420d2035750bbee</srcmd5>
+    <version>1.15.3</version>
+    <time>1323192065</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="58" vrev="9">
+    <srcmd5>11e94cfff6197db58558c9c35d915c0f</srcmd5>
+    <version>1.15.3</version>
+    <time>1324475810</time>
+    <user>coolo</user>
+    <comment>- Enable resizecons on x86_64 (bnc#737631).</comment>
+    <requestid>97297</requestid>
+  </revision>
+  <revision rev="59" vrev="10">
+    <srcmd5>726e63b80d65971473826787a2d33007</srcmd5>
+    <version>1.15.3</version>
+    <time>1336472848</time>
+    <user>coolo</user>
+    <comment>usrMerge project - move files from toplevel to /usr (forwarded request 114875 from rjschwei)</comment>
+    <requestid>116698</requestid>
+  </revision>
+  <revision rev="60" vrev="12">
+    <srcmd5>726e63b80d65971473826787a2d33007</srcmd5>
+    <version>1.15.3</version>
+    <time>1340183498</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>32a3fa8de1174564e156876b4ddc2e60</srcmd5>
+    <version>1.15.5</version>
+    <time>1354886248</time>
+    <user>namtrac</user>
+    <comment>Update to upstream version 0.15.5. (forwarded request 144353 from DarkSS)</comment>
+    <requestid>144368</requestid>
+  </revision>
+  <revision rev="62" vrev="3">
+    <srcmd5>32a3fa8de1174564e156876b4ddc2e60</srcmd5>
+    <version>1.15.5</version>
+    <time>1359109138</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="63" vrev="4">
+    <srcmd5>2820b06fbec95c51d22542fdf05e1525</srcmd5>
+    <version>1.15.5</version>
+    <time>1365139967</time>
+    <user>coolo</user>
+    <comment>- disable vlock build, which is in vlock package.
+
+- Remove sysvinit support, init scripts from this package 
+  are masked by systemd and only serve for confusion.
+
+- sysconfig.keyboard: Updated description of KBD_NUMLOCK
+  (bnc#746595#c74).</comment>
+    <requestid>162636</requestid>
+  </revision>
+  <revision rev="64" vrev="6">
+    <srcmd5>2820b06fbec95c51d22542fdf05e1525</srcmd5>
+    <version>1.15.5</version>
+    <time>1379662738</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>9b576f7245b940417f326ddfff2ae77d</srcmd5>
+    <version>2.0.1</version>
+    <time>1394953507</time>
+    <user>coolo</user>
+    <comment>- Update to version 2.0.1:
+  * Disable arch-specific tests.
+  * Fix regression in processing alt_is_meta keyword.
+  * Rename Bepo keymaps:
+    dvorak-fr-bepo.map -&gt; fr-bepo-latin9.map
+    dvorak-fr-bepo-utf8.map -&gt; fr-bepo.map.
+- Deleted kbd-1.15.2-dumpkeys-ppc.patch as obsolete:
+  http://lists.opensuse.org/opensuse-factory/2013-08/msg00347.html
+  k0da also thinks so ;) 
+- gcc 4.6+ became required to prevent compilling error:
+  &quot;expected declaration specifiers or '...' before 'va_list'&quot;.
+
+- Update to version 2.0.0:
+  * Add bepo keyboard layout;
+  * Add libkeymap;
+  * The loadkeys and dumpkeys always use the libkeymap.
+- Updated patches because of docs moved:
+  * kbd-1.15.2-chvt-userwait.patch
+  * kbd-1.15.2-docu-X11R6-xorg.patch
+- Disabled patche because of dumpkeys rewritten:
+  * kbd-1.15.2-dumpkeys-C-opt.patch
+    May be someone could update it. (forwarded request 205647 from sbrabec)</comment>
+    <requestid>225623</requestid>
+  </revision>
+  <revision rev="66" vrev="2">
+    <srcmd5>000bd63135c25eb9071b1f736080ba98</srcmd5>
+    <version>2.0.1</version>
+    <time>1406366873</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>242282</requestid>
+  </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>722014cedcf668541afad9a16f97e24b</srcmd5>
+    <version>2.0.2</version>
+    <time>1408960473</time>
+    <user>coolo</user>
+    <comment>- drop kbd-1.15.2-chvt-userwait.patch [bnc#830805] (internal)
+  (--userwait seems to not be used anywhere)
+
+- remove testutf8 stub (2009: testutf8 will be soon removed completely, 
+  it's kept only not to break /etc/profile currently)
+
+- Update to version 2.0.2: 
+      libkeymap: fix kmap on big-endian machines
+      Add functions to get the total number of elements
+      Add functions to convert ksyms
+      eurlatgr - new Linux console font
+      Hide syms array
+      Add information about the total number of elements
+      Add function to obtain items from the diacritical table
+      Change the API for working with the diacritical table
+      Change API for working with list of functions
+      Add functions to check diacr/func existance
+      Add pancyrillic font
+      po: Update translations (from translationproject.org)
+      vlock: implement PAM account and password management
+      vlock: rename ERROR_TIMEOUT macro to LONG_DELAY
+      vlock: introduce short delays after non-fatal PAM errors
+      Added Latvian keymap
+  (changelog taken from 
+   http://lists.altlinux.org/pipermail/kbd/2014-July/000476.html)
+- add kbd-2.0.2-comment-typo-qwerty.patch [bnc#825385]
+
+- SuSE -&gt; SUSE [bnc#889035]</comment>
+    <requestid>246036</requestid>
+  </revision>
+  <revision rev="68" vrev="3">
+    <srcmd5>722014cedcf668541afad9a16f97e24b</srcmd5>
+    <version>2.0.2</version>
+    <time>1409301308</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="69" vrev="4">
+    <srcmd5>b40e7ef8afa334c33466328ca9c69f62</srcmd5>
+    <version>2.0.2</version>
+    <time>1410981816</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>249571</requestid>
+  </revision>
+  <revision rev="70" vrev="5">
+    <srcmd5>2b0b1ee4ecdd852a7eed2a7cef08edf2</srcmd5>
+    <version>2.0.2</version>
+    <time>1411190800</time>
+    <user>coolo</user>
+    <comment>- port dumpkeys-C-opt.patch
+- modified patches:
+  * kbd-1.15.2-dumpkeys-C-opt.patch
+
+- kbd-2.0.2-doshell-reference.patch: 
+  drop doshell reference from openvt.1 man page [bnc#675317]</comment>
+    <requestid>250104</requestid>
+  </revision>
+  <revision rev="71" vrev="6">
+    <srcmd5>821164d2354a1cf299f019845dc0a93c</srcmd5>
+    <version>2.0.2</version>
+    <time>1411927000</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>252277</requestid>
+  </revision>
+  <revision rev="72" vrev="7">
+    <srcmd5>42ad6b6c6899bf8b74ad7edcf5b69af1</srcmd5>
+    <version>2.0.2</version>
+    <time>1422026243</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>282299</requestid>
+  </revision>
+  <revision rev="73" vrev="8">
+    <srcmd5>c1078c60e87172b209c74280fa7bea2e</srcmd5>
+    <version>2.0.2</version>
+    <time>1424432568</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>286521</requestid>
+  </revision>
+  <revision rev="74" vrev="9">
+    <srcmd5>f628fd2ba7bda0bebb21757c39d76e31</srcmd5>
+    <version>2.0.2</version>
+    <time>1428272606</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>294067</requestid>
+  </revision>
+  <revision rev="75" vrev="10">
+    <srcmd5>f5ccd052fe334ad0017d15a5af91ebfc</srcmd5>
+    <version>2.0.2</version>
+    <time>1428652153</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>295126</requestid>
+  </revision>
+  <revision rev="76" vrev="11">
+    <srcmd5>99490b0dc3bd19d28e36872cb48b556e</srcmd5>
+    <version>2.0.2</version>
+    <time>1443357106</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>324932</requestid>
+  </revision>
+  <revision rev="77" vrev="12">
+    <srcmd5>71e1940e9efaf3e5f2de9ad4cac1a5b2</srcmd5>
+    <version>2.0.2</version>
+    <time>1450471798</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>349065</requestid>
+  </revision>
+  <revision rev="78" vrev="13">
+    <srcmd5>bd6c6af322b0a8b0785089f3c197d87b</srcmd5>
+    <version>2.0.2</version>
+    <time>1468169189</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix data/keymaps/i386/querty/br-abnt2.map
+  (boo#984958, kbd-1.15.5-br-abnt2-slash-question.patch)</comment>
+    <requestid>403058</requestid>
+  </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>f86a2f1db57bef5a13c7a91d8a0b37bd</srcmd5>
+    <version>2.0.3</version>
+    <time>1469628448</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>412256</requestid>
+  </revision>
+  <revision rev="80" vrev="2">
+    <srcmd5>6cc6279183636606627f33a95451fdca</srcmd5>
+    <version>2.0.3</version>
+    <time>1487259991</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>456806</requestid>
+  </revision>
+  <revision rev="81" vrev="3">
+    <srcmd5>63967b6cf44123efe3eb157e8a1f86c1</srcmd5>
+    <version>2.0.3</version>
+    <time>1490965289</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>483842</requestid>
+  </revision>
+  <revision rev="82" vrev="4">
+    <srcmd5>615e719e4e35a248979a386c2f7e4710</srcmd5>
+    <version>2.0.3</version>
+    <time>1494087919</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>492633</requestid>
+  </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>32ca3b6dc483c3c47b5936d28b777b09</srcmd5>
+    <version>2.0.4</version>
+    <time>1506678740</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>529011</requestid>
+  </revision>
+  <revision rev="84" vrev="2">
+    <srcmd5>5eb81ea0489e7c3f189c3a723f3ae4d4</srcmd5>
+    <version>2.0.4</version>
+    <time>1509193013</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>535163</requestid>
+  </revision>
+  <revision rev="85" vrev="3">
+    <srcmd5>084e2622e3d3443fe1cf2333541c6404</srcmd5>
+    <version>2.0.4</version>
+    <time>1512546997</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>545115</requestid>
+  </revision>
+  <revision rev="86" vrev="4">
+    <srcmd5>6812b0ac49659057814708d6763bd56b</srcmd5>
+    <version>2.0.4</version>
+    <time>1512926068</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop from some fill-up templates, a couple of sysconfig variables no
+  more read by systemd (fate#319454)
+  So the relevant settings can be defined in only one place.
+Fix version typo:
+- Version update to 2.0.4:</comment>
+    <requestid>555068</requestid>
+  </revision>
+  <revision rev="87" vrev="5">
+    <srcmd5>5215926532c2534f7fa2874dde654d84</srcmd5>
+    <version>2.0.4</version>
+    <time>1517323079</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>569978</requestid>
+  </revision>
+  <revision rev="88" vrev="6">
+    <srcmd5>485754ee950daf3bfbfc342dc3fa4644</srcmd5>
+    <version>2.0.4</version>
+    <time>1521904216</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>590384</requestid>
+  </revision>
+  <revision rev="89" vrev="7">
+    <srcmd5>5b078b93b0e591fae58f1fcb5b5509e1</srcmd5>
+    <version>2.0.4</version>
+    <time>1523875427</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>595699</requestid>
+  </revision>
+  <revision rev="90" vrev="8">
+    <srcmd5>d7f50d1e29ff7d9fe84ca824b49ae030</srcmd5>
+    <version>2.0.4</version>
+    <time>1527673436</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>612692</requestid>
+  </revision>
+  <revision rev="91" vrev="9">
+    <srcmd5>3e634136b93f73b3da8580a52f3ecaea</srcmd5>
+    <version>2.0.4</version>
+    <time>1533549173</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>627150</requestid>
+  </revision>
+  <revision rev="92" vrev="10">
+    <srcmd5>915c88237663d36bcbe08a4cf935b8ef</srcmd5>
+    <version>2.0.4</version>
+    <time>1569522942</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>731996</requestid>
+  </revision>
+  <revision rev="93" vrev="11">
+    <srcmd5>7d6360837be036becdeaeea8413c6c10</srcmd5>
+    <version>2.0.4</version>
+    <time>1578322925</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>760513</requestid>
+  </revision>
+  <revision rev="94" vrev="12">
+    <srcmd5>0c1fcb507e435936fec962a02bf1142c</srcmd5>
+    <version>2.0.4</version>
+    <time>1579556899</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>764374</requestid>
+  </revision>
+  <revision rev="95" vrev="1">
+    <srcmd5>2eaae5a7c7920ddff74ea6a270c4d295</srcmd5>
+    <version>2.2.0</version>
+    <time>1583702598</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>781687</requestid>
+  </revision>
+  <revision rev="96" vrev="2">
+    <srcmd5>7a90cc77c7dff1284ec2a2aa0fe7b273</srcmd5>
+    <version>2.2.0</version>
+    <time>1588022965</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>796365</requestid>
+  </revision>
+  <revision rev="97" vrev="3">
+    <srcmd5>9646ee3a4c10e918917d51a988d246c5</srcmd5>
+    <version>2.2.0</version>
+    <time>1599770821</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>832929</requestid>
+  </revision>
+  <revision rev="98" vrev="4">
+    <srcmd5>a710e5455c1cfc1df1c5e7f3552337dc</srcmd5>
+    <version>2.2.0</version>
+    <time>1600700753</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>835310</requestid>
+  </revision>
+  <revision rev="99" vrev="202">
+    <srcmd5>a2440fef476a4e519d2496de8015390e</srcmd5>
+    <version>1.12</version>
+    <time>1600858753</time>
+    <user>dimstar_suse</user>
+    <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1176854</comment>
+  </revision>
+  <revision rev="100" vrev="5">
+    <srcmd5>372811558a079fe199c6bf1cdc17911b</srcmd5>
+    <version>2.2.0</version>
+    <time>1600858844</time>
+    <user>dimstar_suse</user>
+    <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1176854</comment>
+  </revision>
+  <revision rev="101" vrev="6">
+    <srcmd5>f6f1cd926de09e096e681224135397e3</srcmd5>
+    <version>2.2.0</version>
+    <time>1600858871</time>
+    <user>dimstar_suse</user>
+    <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1176854</comment>
+  </revision>
+  <revision rev="102" vrev="1">
+    <srcmd5>0bc3aef67e22d279683d1cc7fc8ab395</srcmd5>
+    <version>2.3.0</version>
+    <time>1601744030</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>838620</requestid>
+  </revision>
+  <revision rev="103" vrev="2">
+    <srcmd5>454d7e6e5c4604e8da6a5a9ee7d23553</srcmd5>
+    <version>2.3.0</version>
+    <time>1606648831</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>850974</requestid>
+  </revision>
+  <revision rev="104" vrev="1">
+    <srcmd5>1ae0c4a5f44080d28a760410ca90c088</srcmd5>
+    <version>2.4.0</version>
+    <time>1613677093</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>871605</requestid>
+  </revision>
+  <revision rev="105" vrev="2">
+    <srcmd5>89a52b8e522ed72c9b788cb9e051da99</srcmd5>
+    <version>2.4.0</version>
+    <time>1623767807</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>899376</requestid>
+  </revision>
+  <revision rev="106" vrev="3">
+    <srcmd5>3dd58139727161353c5212ed7b4a5725</srcmd5>
+    <version>2.4.0</version>
+    <time>1632173501</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>917972</requestid>
+  </revision>
+  <revision rev="107" vrev="4">
+    <srcmd5>38bc49c973fdd2e5a09e6611b0746873</srcmd5>
+    <version>2.4.0</version>
+    <time>1634754160</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>925618</requestid>
+  </revision>
+  <revision rev="108" vrev="5">
+    <srcmd5>ea9a3b17fae6c8ca19c949a7a08c16c3</srcmd5>
+    <version>2.4.0</version>
+    <time>1642724711</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>947422</requestid>
+  </revision>
+  <revision rev="109" vrev="6">
+    <srcmd5>d1afdbb1c64835a3eac90b319066bb9d</srcmd5>
+    <version>2.4.0</version>
+    <time>1643931943</time>
+    <user>dimstar_suse</user>
+    <comment>- use bash for invoking bash scripts</comment>
+    <requestid>950354</requestid>
+  </revision>
+  <revision rev="110" vrev="7">
+    <srcmd5>b5e6c58458b6ab6ffdaceb1e6b33f39a</srcmd5>
+    <version>2.4.0</version>
+    <time>1645629955</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>956870</requestid>
+  </revision>
+  <revision rev="111" vrev="8">
+    <srcmd5>de741083b2eb2f3d22b9c681cd64e797</srcmd5>
+    <version>2.4.0</version>
+    <time>1646487829</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>958755</requestid>
+  </revision>
+  <revision rev="112" vrev="9">
+    <srcmd5>7939f5e9fd7d10db9e68f66364a07e30</srcmd5>
+    <version>2.4.0</version>
+    <time>1647031190</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>960241</requestid>
+  </revision>
+  <revision rev="113" vrev="10">
+    <srcmd5>5c88c7fd21cd3a5bbf33569080909bbd</srcmd5>
+    <version>2.4.0</version>
+    <time>1661346649</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>998803</requestid>
+  </revision>
+  <revision rev="114" vrev="11">
+    <srcmd5>4dba9a6f11f2727619e9404a234430f0</srcmd5>
+    <version>2.4.0</version>
+    <time>1672668096</time>
+    <user>dimstar_suse</user>
+    <comment>- rebased cz-map.patch for console-setup 1.215 update; apparently
+  'U+00b0' needs to be 'dead_abovering' and not 'dead_grave' as we
+  assumed before</comment>
+    <requestid>1045923</requestid>
+  </revision>
+  <revision rev="115" vrev="12">
+    <srcmd5>41b757df609a1a041fc257dd6eda54f1</srcmd5>
+    <version>2.4.0</version>
+    <time>1673801863</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1058140</requestid>
+  </revision>
+  <revision rev="116" vrev="1">
+    <srcmd5>ebbb8861e4b6016f99e4c6f6affaaa50</srcmd5>
+    <version>2.5.1</version>
+    <time>1678814149</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1071152</requestid>
+  </revision>
+  <revision rev="117" vrev="2">
+    <srcmd5>76239d1dccc0cc59340834145194fcac</srcmd5>
+    <version>2.5.1</version>
+    <time>1686752933</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1083972</requestid>
+  </revision>
+  <revision rev="118" vrev="1">
+    <srcmd5>994dadc5781152a87ddc8f0cbb061eee</srcmd5>
+    <version>2.6.1</version>
+    <time>1688398895</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1096363</requestid>
+  </revision>
+  <revision rev="119" vrev="1">
+    <srcmd5>4fb65dffc7a39e5534a58a2462d834dd</srcmd5>
+    <version>2.6.2</version>
+    <time>1693383458</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1105485</requestid>
+  </revision>
+  <revision rev="120" vrev="1">
+    <srcmd5>2faae7fb456135dbc05ef2b12fa8c241</srcmd5>
+    <version>2.6.3</version>
+    <time>1696269846</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1114601</requestid>
+  </revision>
+  <revision rev="121" vrev="1">
+    <srcmd5>6b424ac7988a8f1f47764622e2f0e359</srcmd5>
+    <version>2.6.4</version>
+    <time>1705255279</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1138333</requestid>
+  </revision>
+  <revision rev="122" vrev="2">
+    <srcmd5>a5924ff2cc515d499adf3c9561944568</srcmd5>
+    <version>2.6.4</version>
+    <time>1709493527</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1153962</requestid>
+  </revision>
+  <revision rev="123" vrev="3">
+    <srcmd5>3e51c6a3c67f24f8090de48446a300fc</srcmd5>
+    <version>2.6.4</version>
+    <time>1709917705</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1156140</requestid>
+  </revision>
+  <revision rev="124" vrev="4">
+    <srcmd5>5715fe24c4cea3e1c9f4b9d3bfc0da56</srcmd5>
+    <version>2.6.4</version>
+    <time>1712764128</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1166466</requestid>
+  </revision>
+</revisionlist>

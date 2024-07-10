@@ -1,0 +1,10 @@
+<package name="kbd" project="openSUSE:Factory">
+  <title>Keyboard and Font Utilities</title>
+  <description>Load and save keyboard mappings. This is needed if you are not using
+the US keyboard map. This package also contains utilities for changing
+your console fonts. If you install this package, YaST includes an extra
+menu to allow you to choose between the different fonts. This package
+also includes fonts from the kbd_fonts.tar.gz package (by Paul
+Gortmaker) on Sunsite.</description>
+  <devel project="Base:System" package="kbd"/>
+</package>

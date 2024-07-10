@@ -1,0 +1,45 @@
+--- a/src/unicode_start
++++ b/src/unicode_start
+@@ -72,6 +72,17 @@
+ # have a Unicode map attached, or explicitly specified, e.g.,
+ # by giving `def.uni' as a second argument.
+ 
++DEFAULT_UNICODE_FONT='LatArCyrHeb-16'
++# Also drdos8x16 is a good candidate.
++
++# Fonts with 512 glyphs like LatArCyrHeb-16 make it impossible to use bold
++# on the console, which makes YaST2 unusable. To be able to use bold,
++# only fonts with 256 glyphs can be used. Therefore we prefer
++# the font specified in /etc/sysconfig/console. This should be OK because
++# the default font written to /etc/sysconfig/console by YaST2
++# is currently always a font with 256 glyphs and a Unicode map
++# which is suitable for the language used during the installation.
++
+ case "$#" in
+ 	2)
+ 		setfont "$1" -u "$2"
+@@ -80,6 +91,24 @@
+ 		setfont "$1"
+ 		;;
+ 	0)
++		if [ -f /etc/sysconfig/console ] ; then
++		    . /etc/sysconfig/console
++		fi
++		if [ -n "$CONSOLE_FONT" ] ; then
++			SETFONT_ARGS="$CONSOLE_FONT"
++		    if [ -n "$CONSOLE_UNICODEMAP" ] ; then
++			SETFONT_ARGS="$SETFONT_ARGS -u $CONSOLE_UNICODEMAP"
++		    fi
++		    if [ -n "$CONSOLE_SCREENMAP" ] ; then
++			SETFONT_ARGS="$SETFONT_ARGS -m $CONSOLE_SCREENMAP"
++		    fi
++		    setfont $SETFONT_ARGS
++		    if [ -n "$CONSOLE_MAGIC" -a "$CONSOLE_MAGIC" != "none" ] ; then
++			printf "\033$CONSOLE_MAGIC"
++		    fi
++		else
++		    setfont $DEFAULT_UNICODE_FONT
++		fi
+ 		;;
+ 	*)
+ 		echo "usage: unicode_start [font [unicode map]]"

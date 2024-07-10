@@ -1,0 +1,33 @@
+Index: data/keymaps/i386/include/euro.map
+===================================================================
+--- a/data/keymaps/i386/include/euro.map.orig	2012-02-27 11:27:10.000000000 +0100
++++ b/data/keymaps/i386/include/euro.map	2014-09-25 12:31:37.594749095 +0200
+@@ -2,5 +2,5 @@
+ # [Say: "loadkeys euro" to get Euro and cent with Alt on the positions
+ #  where many keyboards have E and C.
+ #  To get it displayed, use a latin0 (i.e., latin9) font.]
+-alt keycode  18 = currency
++alt keycode  18 = euro
+ alt keycode  46 = cent
+Index: data/keymaps/i386/include/euro1.map
+===================================================================
+--- a/data/keymaps/i386/include/euro1.map.orig	2012-02-27 11:27:10.000000000 +0100
++++ b/data/keymaps/i386/include/euro1.map	2014-09-25 12:31:20.218749689 +0200
+@@ -2,5 +2,5 @@
+ # [Say: "loadkeys euro1" to get Euro and cent with AltGr (right alt)
+ #  on the positions where many keyboards have 5 and C.
+ #  To get it displayed, use a latin0 (i.e., latin9) font.]
+-altgr keycode   6 = currency
++altgr keycode   6 = euro
+ altgr keycode  46 = cent
+Index: data/keymaps/i386/include/euro2.map
+===================================================================
+--- a/data/keymaps/i386/include/euro2.map.orig	2012-02-27 11:27:10.000000000 +0100
++++ b/data/keymaps/i386/include/euro2.map	2014-09-25 12:31:52.098748600 +0200
+@@ -2,5 +2,5 @@
+ # [Say: "loadkeys euro2" to get Euro and cent with AltGr (right alt)
+ #  on the positions where many keyboards have E and C.
+ #  To get it displayed, use a latin0 (i.e., latin9) font.]
+-altgr keycode  18 = currency
++altgr keycode  18 = euro
+ altgr keycode  46 = cent

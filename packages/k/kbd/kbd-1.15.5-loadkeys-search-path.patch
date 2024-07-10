@@ -1,0 +1,26 @@
+Index: b/src/loadkeys.c
+===================================================================
+--- a/src/loadkeys.c
++++ b/src/loadkeys.c
+@@ -26,6 +26,8 @@
+ #include "keymap.h"
+ 
+ static const char *const dirpath1[] = {
++	DATADIR "/" XKBKEYMAPDIR "/",
++	DATADIR "/" LEGACYKEYMAPDIR "/**",
+ 	DATADIR "/" KEYMAPDIR "/**",
+ 	KERNDIR "/",
+ 	NULL
+Index: b/src/paths.h
+===================================================================
+--- a/src/paths.h
++++ b/src/paths.h
+@@ -5,6 +5,8 @@
+  * The following five subdirectories are defined:
+  */
+ #define KEYMAPDIR "keymaps"
++#define XKBKEYMAPDIR "keymaps/xkb"
++#define LEGACYKEYMAPDIR "keymaps/legacy"
+ #define UNIMAPDIR "unimaps"
+ #define TRANSDIR "consoletrans"
+ #define VIDEOMODEDIR "videomodes"

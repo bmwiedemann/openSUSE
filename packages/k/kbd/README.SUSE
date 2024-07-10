@@ -1,0 +1,42 @@
+Handling of composition of characters
+=====================================
+
+Most of the fonts have much more characters than you can reach directly
+through the keyboard. To access all of them you may use showconsolefont,
+deduce the decimal code and enter it by holding down <alt> and entering
+the code via the keypad. There's a much better way, though:
+Most characters may be entered via composition. Many characters are just
+consisting of a standard character with some sort of accent or change.
+Such characters can be composed by composition. Just press the <compose>
+key, let it go again, enter the accent and then the letter.
+Some examples: (Assuming Iso-Latin-1/9 character set:)
+<compose> " a => ä
+<compose> , c => ç
+<compose> | S => $
+
+Support for composition is unfortunately not contained in most keymaps.
+Most lack two things:
+(a) The <compose> key is not mapped
+(b) The compose tables are not included
+
+Look at the compose.* files in /usr/share/kbd/keymaps/include/:
+(a) You find there two files for having the <compose> key mapped.
+(b) You find there compose tables which are suitable for different
+    character sets.
+
+ad (a): winkeys:   The compose key will be mapped on the W*n menu key
+        shiftctrl: The compose key will be mapped to Shift Ctrl.
+        You can use both, if you like.
+ad (b): latin, latinX, latin1.add, 8859_X: Contains the compose
+	combinations suitable for the respective character set.
+	Many people will want to use latin1 or latin1.add. Just
+	using latin is also sort of an acceptable compromise for
+	many Latin character sets.
+	YOU MAY ONLY USE ONE OF THOSE.
+	If you want the combination of more than one table, you
+	have to create a file which includes what you want.
+
+Please keep in mind, that all these settings only affect the console,
+i.e. text mode.
+
+				Your SuSE team

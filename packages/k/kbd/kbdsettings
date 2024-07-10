@@ -1,0 +1,55 @@
+#! /bin/sh
+
+. /etc/sysconfig/keyboard
+
+[ $KBD_DELAY ] && /usr/bin/kbdrate -s -d $KBD_DELAY
+[ $KBD_RATE ] && /usr/bin/kbdrate -s -r $KBD_RATE
+
+for i in NUM SCR CAPS; do
+	conf=$(eval echo KBD_${i}LOCK)
+	eval confval=\"\$$conf\"
+	[ -z "$confval" ] && continue
+	param=$(echo $i | tr A-Z a-z | sed 's/scr/scroll/')
+
+	for tty in ${KBD_TTY:-tty1 tty2 tty3 tty4 tty5 tty6}; do
+		case "$confval" in
+		yes)
+			if [ $param = "num" ]; then
+				touch /run/numlock-on
+			fi
+			/usr/bin/setleds -D +$param < /dev/$tty
+			;;
+		no)
+			if [ $param = "num" ]; then
+				rm -f /run/numlock-on
+			fi
+			/usr/bin/setleds -D -$param < /dev/$tty
+			;;
+		bios)
+			if [ -x /usr/libexec/kbd/numlockbios ]; then
+				bios=$(/usr/libexec/kbd/numlockbios 2>/dev/null)
+			else
+				bios=$(/usr/lib/kbd/numlockbios 2>/dev/null)
+			fi
+			if [ $param = "num" ]; then
+				if [ "$bios" = "on" ]; then
+					touch /run/numlock-on
+					/usr/bin/setleds -D +$param < /dev/$tty
+				elif [ "$bios" = "off" -o "$bios" = "unknown" ]; then
+					rm -f /run/numlock-on
+					/usr/bin/setleds -D -$param < /dev/$tty
+				fi
+			else
+				echo "Value $confval invalid for $conf"
+			fi
+			;;
+		*)
+			echo "error: unknown value $confval in $conf"
+			;;
+		esac
+	done
+done
+
+if [ "$KBD_DISABLE_CAPS_LOCK" = "yes" ]; then
+	/usr/bin/dumpkeys | sed 's/ *58 *= *Caps_Lock/ 58 = Control/' | /usr/bin/loadkeys -q -
+fi

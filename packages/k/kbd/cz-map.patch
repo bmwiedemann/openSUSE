@@ -1,0 +1,52 @@
+--- cz.map.orig	2021-10-04 21:08:13.000000000 +0200
++++ cz.map	2021-10-04 21:13:29.969027000 +0200
+@@ -108,3 +108,49 @@
+ keycode 127 = VoidSymbol VoidSymbol VoidSymbol VoidSymbol VoidSymbol VoidSymbol VoidSymbol VoidSymbol VoidSymbol VoidSymbol VoidSymbol VoidSymbol VoidSymbol VoidSymbol VoidSymbol VoidSymbol VoidSymbol VoidSymbol VoidSymbol VoidSymbol VoidSymbol VoidSymbol VoidSymbol VoidSymbol VoidSymbol VoidSymbol VoidSymbol VoidSymbol VoidSymbol VoidSymbol VoidSymbol VoidSymbol VoidSymbol VoidSymbol VoidSymbol VoidSymbol VoidSymbol VoidSymbol VoidSymbol VoidSymbol VoidSymbol VoidSymbol VoidSymbol VoidSymbol VoidSymbol VoidSymbol VoidSymbol VoidSymbol VoidSymbol VoidSymbol VoidSymbol VoidSymbol VoidSymbol VoidSymbol VoidSymbol VoidSymbol VoidSymbol VoidSymbol VoidSymbol VoidSymbol VoidSymbol VoidSymbol VoidSymbol VoidSymbol VoidSymbol VoidSymbol VoidSymbol VoidSymbol VoidSymbol VoidSymbol VoidSymbol VoidSymbol VoidSymbol VoidSymbol VoidSymbol VoidSymbol VoidSymbol VoidSymbol VoidSymbol VoidSymbol VoidSymbol VoidSymbol VoidSymbol VoidSymbol VoidSymbol VoidSymbol VoidSymbol VoidSymbol VoidSymbol VoidSymbol VoidSymbol VoidSymbol VoidSymbol VoidSymbol VoidSymbol VoidSymbol VoidSymbol VoidSymbol VoidSymbol VoidSymbol VoidSymbol VoidSymbol VoidSymbol VoidSymbol VoidSymbol VoidSymbol VoidSymbol VoidSymbol VoidSymbol VoidSymbol VoidSymbol VoidSymbol VoidSymbol VoidSymbol VoidSymbol VoidSymbol VoidSymbol VoidSymbol VoidSymbol VoidSymbol VoidSymbol VoidSymbol VoidSymbol VoidSymbol VoidSymbol VoidSymbol VoidSymbol VoidSymbol
+ keycode 121 = KP_Period KP_Period KP_Period KP_Period KP_Period KP_Period KP_Period KP_Period KP_Period KP_Period KP_Period KP_Period KP_Period KP_Period KP_Period KP_Period KP_Period KP_Period KP_Period KP_Period KP_Period KP_Period KP_Period KP_Period KP_Period KP_Period KP_Period KP_Period KP_Period KP_Period KP_Period KP_Period KP_Period KP_Period KP_Period KP_Period KP_Period KP_Period KP_Period KP_Period KP_Period KP_Period KP_Period KP_Period KP_Period KP_Period KP_Period KP_Period KP_Period KP_Period KP_Period KP_Period KP_Period KP_Period KP_Period KP_Period KP_Period KP_Period KP_Period KP_Period KP_Period KP_Period KP_Period KP_Period KP_Period KP_Period KP_Period KP_Period KP_Period KP_Period KP_Period KP_Period KP_Period KP_Period KP_Period KP_Period KP_Period KP_Period KP_Period KP_Period KP_Period KP_Period KP_Period KP_Period KP_Period KP_Period KP_Period KP_Period KP_Period KP_Period KP_Period KP_Period KP_Period KP_Period KP_Period KP_Period KP_Period KP_Period KP_Period KP_Period KP_Period KP_Period KP_Period KP_Period KP_Period KP_Period KP_Period KP_Period KP_Period KP_Period KP_Period KP_Period KP_Period KP_Period KP_Period KP_Period KP_Period KP_Period KP_Period KP_Period KP_Period KP_Period KP_Period KP_Period KP_Period KP_Period KP_Period KP_Period
+ strings as usual
++# dead_grave
++compose '`' 'u' to U+016F
++compose '`' 'U' to U+016E
++compose '`' 'z' to U+00B0
++compose '`' 'Z' to U+00B0
++# dead_acute
++compose '\'' 'a' to U+00E1
++compose '\'' 'A' to U+00C1
++compose '\'' 'e' to U+00E9
++compose '\'' 'E' to U+00C9
++compose '\'' 'i' to U+00ED
++compose '\'' 'I' to U+00CD
++compose '\'' 'o' to U+00F3
++compose '\'' 'O' to U+00D3
++compose '\'' 'u' to U+00FA
++compose '\'' 'U' to U+00DA
++compose '\'' 'y' to U+00FD
++compose '\'' 'Y' to U+00DD
++# dead_caron
++compose '^' 'u' to U+016F
++compose '^' 'U' to U+016E
++compose '^' 'c' to U+010D
++compose '^' 'C' to U+010C
++compose '^' 'd' to U+010F
++compose '^' 'D' to U+010E
++compose '^' 'e' to U+011B
++compose '^' 'E' to U+011A
++compose '^' 'n' to U+0148
++compose '^' 'N' to U+0147
++compose '^' 'r' to U+0159
++compose '^' 'R' to U+0158
++compose '^' 's' to U+0161
++compose '^' 'S' to U+0160
++compose '^' 't' to U+0165
++compose '^' 'T' to U+0164
++compose '^' 'z' to U+017E
++compose '^' 'Z' to U+017D
++# dead_diaeresis
++compose '"' 'a' to U+00E4
++compose '"' 'A' to U+00C4
++compose '"' 'e' to U+00EB
++compose '"' 'E' to U+00CB
++compose '"' 'o' to U+00F6
++compose '"' 'O' to U+00D6
++compose '"' 'u' to U+00FC
++compose '"' 'U' to U+00DC
