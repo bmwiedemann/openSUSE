@@ -1,0 +1,118 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1791060611d3304afda1ea4c89ba39be</srcmd5>
+    <version>1.0.1</version>
+    <time>1700598701</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1127906</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>8823fa3a0c2261d8cc72883b6ad3203e</srcmd5>
+    <version>1.1.0</version>
+    <time>1704280988</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.1.0:
+  * Extract ngtcp2_frame_chain to its own file
+  * Refactor ringbuf
+  * Fix typo
+  * Rename reset stream flags
+  * Remove unused ngtcp2_conn_resched_frames
+  * crypto: Fix bug that retry token AAD does not include QUIC version
+  * cmake: re-add two missing includes
+  * Bump clang to 15
+  * quictls: Prefetch objects to workaround 3.x perf regression
+  * Bump clang-format to 15
+  * Bump quictls to 3.1.4+quic
+  * Deprecate NGTCP2_PROTO_VER_MIN and NGTCP2_PROTO_VER_MAX
+  * ngtcp2_conn_write_datagram conveniently accepts single buffer
+  * windows: Fix warnings
+  * ptlsclient, ptlsserver: Support hq
+  * h09client: Use util::write_token
+  * Cpp ext
+  * Use __FILE_NAME__ instead of __FILE__
+  * examples: Rename extend_max_streams_bidi to extend_max_local_streams_bidi
+  * Define varint identifiers as macros
+  * Limit the number of NEW_CONNECTION_ID frames that are in-flight
+  * Make frame type of type uint64_t
+  * Fix doc
+  * Fix assertion failure
+  * Eliminate floating point computations
+  * Bump actions/github-script from 6 to 7
+  * client: Optimize a bit
+  * Revert ignoring loss signal during startup
+  * Rework app_limited</comment>
+    <requestid>1135547</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>90cd15c351f59840c469578340581f9b</srcmd5>
+    <version>1.2.0</version>
+    <time>1706563721</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.2.0:
+  * Remove sample_offset field from ngtcp2_ppe
+  * wolfssl: Just use QUIC v1 transport parameter codepoint
+  * Do not send STOP_SENDING if RESET_STREAM has been
+    received
+  * Return early when STOP_SENDING is received more than once
+  * Do not send STOP_SENDING if RESET_STREAM has been
+    received
+  * Fix persistent congestion
+  * ngtcp2_pkt_adjust_pkt_num: Take bytes rather than bits
+  * Remove use of SSL_set_quic_transport_version
+  * Switch interop client/server to wolfssl because OpenSSL
+    1.1.1 has been EOLed and OpenSSL 3.x has the various
+    performance issues due to its design decision.
+    wolfssl has been chosen because it has the ability
+    to specify chacha cipher suite and it is also relatively
+    easy to build compared to GnuTLS.
+  * Avoid detecting OpenSSL 3.2 as quictls
+  * cmake: Require nghttp3 &gt;= v1.0.0</comment>
+    <requestid>1142109</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>6aa7e0b055ccb84708e88172913151b3</srcmd5>
+    <version>1.6.0</version>
+    <time>1718743885</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.6.0:
+  * examples: Print negotiated group if TLS stack gives that
+    information
+  * Remove ngtcp2_min and ngtcp2_max
+  * Keep-alive packet should trigger PTO
+  * Fix ngtcp2_conn_stat.max_tx_udp_payload_size update
+  * Adjust memory pool allocation units to reduce allocation size
+  * Adjust NGTCP2_ACKTR_MAX_ENT to match NGTCP2_MAX_ACK_RANGES +
+    1
+  * Allocate ngtcp2_acktr_entry at once not to waste memory
+  * Fix memory leak when stream datacnt gets below allocation
+    threshold
+  * Refactor ngtcp2_frame_chain allocation for ngtcp2_stream
+- update to 1.5.0:
+  * Pack more QUIC packets on large PMTUD probes
+  * Drop UDP datagram if it comes from a well-known port
+  * Rework transmitting empty STREAM frame
+  * Take into account SCID length when computing minimum packet
+    size
+  * More prohibited ports
+  * client: Handle error from feed_data
+  * server: Send stateless reset
+  * crypto: Adjust token stack buffer sizes
+  * crypto: Reduce NGTCP2_CRYPTO_TOKEN_RAND_DATALEN to 16
+  * Adopt std::to_array
+  * server: Use std::span for sized binary data
+  * client: Use std::span for sized binary data
+  * examples: More std::span
+  * std::unordered_map lookup by std::string_view
+  * Refactor format_hex</comment>
+    <requestid>1181358</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>cd404d93db25397b2bbc8bbceceb63f3</srcmd5>
+    <version>1.6.0</version>
+    <time>1720103238</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1185323</requestid>
+  </revision>
+</revisionlist>

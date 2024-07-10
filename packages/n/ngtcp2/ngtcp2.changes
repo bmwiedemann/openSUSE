@@ -1,0 +1,163 @@
+-------------------------------------------------------------------
+Mon Jul  1 22:03:43 UTC 2024 - Michal Hrusecky <michal.hrusecky@opensuse.org>
+
+- make devel package require also gnutls variant of the library
+
+-------------------------------------------------------------------
+Mon Jun 17 18:14:22 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.6.0:
+  * examples: Print negotiated group if TLS stack gives that
+    information
+  * Remove ngtcp2_min and ngtcp2_max
+  * Keep-alive packet should trigger PTO
+  * Fix ngtcp2_conn_stat.max_tx_udp_payload_size update
+  * Adjust memory pool allocation units to reduce allocation size
+  * Adjust NGTCP2_ACKTR_MAX_ENT to match NGTCP2_MAX_ACK_RANGES +
+    1
+  * Allocate ngtcp2_acktr_entry at once not to waste memory
+  * Fix memory leak when stream datacnt gets below allocation
+    threshold
+  * Refactor ngtcp2_frame_chain allocation for ngtcp2_stream
+- update to 1.5.0:
+  * Pack more QUIC packets on large PMTUD probes
+  * Drop UDP datagram if it comes from a well-known port
+  * Rework transmitting empty STREAM frame
+  * Take into account SCID length when computing minimum packet
+    size
+  * More prohibited ports
+  * client: Handle error from feed_data
+  * server: Send stateless reset
+  * crypto: Adjust token stack buffer sizes
+  * crypto: Reduce NGTCP2_CRYPTO_TOKEN_RAND_DATALEN to 16
+  * Adopt std::to_array
+  * server: Use std::span for sized binary data
+  * client: Use std::span for sized binary data
+  * examples: More std::span
+  * std::unordered_map lookup by std::string_view
+  * Refactor format_hex
+- update to 1.4.0:
+  * Erase sensitive data before freeing memory
+  * Fix compile error with libstdc++6-14
+  * Make congestion controller use the current path MTU
+  * Reduce malloc call in conn_new
+  * Add missing FindJemalloc.cmake to EXTRA_DIST
+  * Automate release process
+  * Make Path MTU Discovery probes configurable
+  * examples: Add --pmtud-probes option
+  * Accept zero length UDP datagram payload and just return 0
+  * Deal with the case that send_quantum < max_udp_payload_size
+  * Adjust simpleclient buffer to have default
+    max_tx_udp_payload_size
+  * Cleanup free functions called from conn_new
+  * Make functions that discard pkns callable from the other
+    source files
+  * Add typed ngtcp2_min and ngtcp2_max functions
+  * Avoid setting 0 after memset
+  * Move ngtcp2_transport_params functions to its own file
+  * Remove unused ngtcp2_conversion_test.c
+  * Move struct version to the last argument
+  * git clone recursive
+  * Update README.rst
+  * ngtcp2_conn_write_connection_close: Fix assertion failure
+  * Fix assertion failure because of failing dup Connection ID
+    check
+- update to 1.3.0:
+  * Do not run docker-build on tag
+  * Speed up git clone
+  * Use cmake -B consistently
+  * Bump actions/cache from 3 to 4
+  * Optimize STOP_SENDING
+  * Fix retransmit frames on stream
+  * Set NGTCP2_STRM_FLAG_RESET_STREAM when RESET_STREAM is sent
+  * Add helper functions to encode/decode zero length transport
+    parameter
+  * Verify decoding truncated frames
+  * Use typed frame type rather than ngtcp2_frame
+  * Verify decoding truncated packet headers
+  * Open a remote stream if RESET_STREAM is received
+  * nghttp3 now requires git submodule
+  * Migrate to munit from cunit
+  * Rewrite ngtcp2_cbrt
+  * Add missing munit header file to HFILES
+  * Bump munit
+  * Fix typo
+  * hexdump: Add an extra whitespace after address
+  * hexdump: Fix the last address is not shown
+  * examples: Add include in GnuTLS example
+  * Use assert_stdsv_equal and print title
+  * examples: Minor fixup
+  * Bump aws-lc to v1.21.0
+  * Add security policy
+  * Bump boringssl
+  * Bump openssl
+  * examples: Fix operator precedence error
+  * Bump munit
+- drop cunit
+- update keyring
+
+-------------------------------------------------------------------
+Sun Jan 28 17:13:30 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.2.0:
+  * Remove sample_offset field from ngtcp2_ppe
+  * wolfssl: Just use QUIC v1 transport parameter codepoint
+  * Do not send STOP_SENDING if RESET_STREAM has been
+    received
+  * Return early when STOP_SENDING is received more than once
+  * Do not send STOP_SENDING if RESET_STREAM has been
+    received
+  * Fix persistent congestion
+  * ngtcp2_pkt_adjust_pkt_num: Take bytes rather than bits
+  * Remove use of SSL_set_quic_transport_version
+  * Switch interop client/server to wolfssl because OpenSSL
+    1.1.1 has been EOLed and OpenSSL 3.x has the various
+    performance issues due to its design decision.
+    wolfssl has been chosen because it has the ability
+    to specify chacha cipher suite and it is also relatively
+    easy to build compared to GnuTLS.
+  * Avoid detecting OpenSSL 3.2 as quictls
+  * cmake: Require nghttp3 >= v1.0.0
+
+-------------------------------------------------------------------
+Thu Dec 28 21:08:21 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.1.0:
+  * Extract ngtcp2_frame_chain to its own file
+  * Refactor ringbuf
+  * Fix typo
+  * Rename reset stream flags
+  * Remove unused ngtcp2_conn_resched_frames
+  * crypto: Fix bug that retry token AAD does not include QUIC version
+  * cmake: re-add two missing includes
+  * Bump clang to 15
+  * quictls: Prefetch objects to workaround 3.x perf regression
+  * Bump clang-format to 15
+  * Bump quictls to 3.1.4+quic
+  * Deprecate NGTCP2_PROTO_VER_MIN and NGTCP2_PROTO_VER_MAX
+  * ngtcp2_conn_write_datagram conveniently accepts single buffer
+  * windows: Fix warnings
+  * ptlsclient, ptlsserver: Support hq
+  * h09client: Use util::write_token
+  * Cpp ext
+  * Use __FILE_NAME__ instead of __FILE__
+  * examples: Rename extend_max_streams_bidi to extend_max_local_streams_bidi
+  * Define varint identifiers as macros
+  * Limit the number of NEW_CONNECTION_ID frames that are in-flight
+  * Make frame type of type uint64_t
+  * Fix doc
+  * Fix assertion failure
+  * Eliminate floating point computations
+  * Bump actions/github-script from 6 to 7
+  * client: Optimize a bit
+  * Revert ignoring loss signal during startup
+  * Rework app_limited
+  * Remove unused strmq_nretrans
+  * autotools: Check wolfSSL_is_quic is available
+  * wolfSSL: Add more build options
+  * h09client: Fix uninitialized variable
+
+-------------------------------------------------------------------
+Tue Nov  7 12:58:47 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- Initial package (v1.0.1)
