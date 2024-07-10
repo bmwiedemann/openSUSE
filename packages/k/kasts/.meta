@@ -1,0 +1,16 @@
+<package name="kasts" project="openSUSE:Factory">
+  <title>Kirigami-based podcast player</title>
+  <description>Kasts is a convergent podcast application.
+Its main features are:
+
+- Episode management through play queue
+- Sync playback positions with other clients through gpodder.net or
+  gpodder-nextcloud
+- Variable playback speed
+- Search for podcasts
+- Full system integration: e.g. inhibit system suspend while listening
+
+</description>
+  <devel project="KDE:Applications" package="kasts"/>
+  <url>https://apps.kde.org/kasts</url>
+</package>
