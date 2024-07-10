@@ -1,0 +1,100 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c30e1581cac1a4b77d5f78c9e56805c3</srcmd5>
+    <version>1.0.0</version>
+    <time>1675177793</time>
+    <user>dimstar_suse</user>
+    <comment>log file generator</comment>
+    <requestid>1062230</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>16c1eacecee090c5ef83222e84971074</srcmd5>
+    <version>1.0.0</version>
+    <time>1675265956</time>
+    <user>dimstar_suse</user>
+    <comment>- fix build for openSUSE Leap
+- package examples and more documentation
+</comment>
+    <requestid>1062335</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>703c486452e6b981816e4cf3edc4a0c6</srcmd5>
+    <version>1.1.0</version>
+    <time>1675792139</time>
+    <user>dimstar_suse</user>
+    <comment>logfilegen 1.1.0</comment>
+    <requestid>1063467</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>1a96610d7e04f96a843ee2be9babf788</srcmd5>
+    <version>1.2.0</version>
+    <time>1675956143</time>
+    <user>dimstar_suse</user>
+    <comment>logfilegen 1.2.0</comment>
+    <requestid>1063871</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>f69ef6d409c01458fd17652e58f1a37d</srcmd5>
+    <version>2.0.0</version>
+    <time>1677166149</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1067207</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>318e83b19565b5b72010ec913693e750</srcmd5>
+    <version>2.1.0</version>
+    <time>1677258524</time>
+    <user>dimstar_suse</user>
+    <comment> logfilegen 2.1.0</comment>
+    <requestid>1067624</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>add4a9340f52d12884e2d676e18f82b3</srcmd5>
+    <version>2.2.0</version>
+    <time>1677498948</time>
+    <user>dimstar_suse</user>
+    <comment>logfilegen 2.2.0</comment>
+    <requestid>1067847</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>dd99c64efd391ffad169de7c721f0429</srcmd5>
+    <version>2.3.0</version>
+    <time>1677794686</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1069028</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>0effb12b924ba9d19ca0d3da917515c2</srcmd5>
+    <version>3.0.0</version>
+    <time>1680968373</time>
+    <user>dimstar_suse</user>
+    <comment>logfilegen 3.0.0</comment>
+    <requestid>1078021</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>db3e8b2fe89c3cb4414e5842e1b05e86</srcmd5>
+    <version>3.0.1</version>
+    <time>1681058490</time>
+    <user>dimstar_suse</user>
+    <comment>logfilegen 3.0.1</comment>
+    <requestid>1078164</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>9374b02b55caaa0badfd1bdae1452d60</srcmd5>
+    <version>3.0.2</version>
+    <time>1681151666</time>
+    <user>dimstar_suse</user>
+    <comment>logfilegen 3.0.2</comment>
+    <requestid>1078261</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>c011fa0b297709f0d12d6a3e424ef487</srcmd5>
+    <version>3.0.3</version>
+    <time>1681996495</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1080761</requestid>
+  </revision>
+</revisionlist>

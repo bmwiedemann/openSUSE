@@ -1,0 +1,79 @@
+-------------------------------------------------------------------
+Thu Apr 20 09:58:18 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- logfilegen 3.0.3
+  * seq macros fix, including syntax change
+
+-------------------------------------------------------------------
+Mon Apr 10 13:51:49 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- logfilegen 3.0.2:
+  * seq macro fix, including a syntax change
+
+-------------------------------------------------------------------
+Sun Apr  9 10:18:35 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- logfilegen 3.0.1:
+  * macro fixes and randomizer code improvements
+
+-------------------------------------------------------------------
+Sat Apr  8 13:55:32 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- logfilegen 3.0.0:
+  * multithreading support for improved performance
+
+-------------------------------------------------------------------
+Thu Mar  2 19:20:36 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- logfilegen 2.3.0:
+  * randomization engine take less resources
+
+-------------------------------------------------------------------
+Sun Feb 26 21:31:22 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- logfilegen 2.2.0:
+  * C++11 compatibility fixes (down from C++17)
+
+-------------------------------------------------------------------
+Fri Feb 24 15:36:57 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- logfilegen 2.1.0:
+  * fix console overflow
+  * ENV variables now in the UPPER CASE only
+
+-------------------------------------------------------------------
+Wed Feb 22 18:42:21 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- logfilegen 2.0.0:
+  * exposes metrics in Prometheus format at 
+    http://localhost:8080/metrics and a self-hosted statistics page
+    at http://localhost:8080
+  * can write final statistics to the file or stdout in a
+    configurable format
+    
+-------------------------------------------------------------------
+Wed Feb  8 15:50:26 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- logfilegen 1.2.0:
+  * The log rotation queue minimal length is 1 now, i.e. one log
+    file + at least one rotation file, if needed.
+  * Add a new, simpler version of the benchmark: --test
+
+-------------------------------------------------------------------
+Mon Feb  6 16:37:10 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- logfilegen 1.1.0:
+  * slightly faster
+  * Adds new macros for combining several commands into one (@meta) and
+    for using sequences as a macro (@seq).
+
+-------------------------------------------------------------------
+Tue Jan 31 19:38:58 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- fix build for openSUSE Leap
+- package examples and more documentation
+
+-------------------------------------------------------------------
+Mon Jan 30 20:57:47 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Initial package, 1.0.0
