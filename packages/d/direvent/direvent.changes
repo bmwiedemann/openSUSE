@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jul  7 07:28:13 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- direvent 5.4:
+  * Support simultaneous execution limits
+  * Restore the nowait default
+  * Fix bug in generic to system event translation
+  * Fix sentinel code
+
+-------------------------------------------------------------------
 Thu Dec 30 21:35:17 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - direvent 5.3:
