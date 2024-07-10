@@ -232,4 +232,12 @@ required by mycroft-core</comment>
     occurred with certain CPython patch releases</comment>
     <requestid>1179085</requestid>
   </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>ec626b9bae06ef1af44f8533d38e800c</srcmd5>
+    <version>0.23.7</version>
+    <time>1720622880</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1186442</requestid>
+  </revision>
 </revisionlist>

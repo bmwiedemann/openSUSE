@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul  9 13:43:10 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Add duplicated-markers.patch to fix some testsuites broken by
+  that issue.
+
+-------------------------------------------------------------------
 Thu Jun  6 20:26:26 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.23.7:

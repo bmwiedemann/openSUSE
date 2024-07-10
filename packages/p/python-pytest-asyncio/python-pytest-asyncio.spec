@@ -32,6 +32,8 @@ Summary:        Pytest support for asyncio
 License:        Apache-2.0
 URL:            https://github.com/pytest-dev/pytest-asyncio
 Source:         https://github.com/pytest-dev/pytest-asyncio/archive/v%{version}.tar.gz#/pytest-asyncio-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM https://github.com/pytest-dev/pytest-asyncio/pull/838 Fix duplication of markers in async tests
+Patch:          duplicated-markers.patch
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}

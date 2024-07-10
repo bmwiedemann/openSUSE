@@ -1,0 +1,86 @@
+From b646cc18a222c8043433c38a42c07245fe9735ce Mon Sep 17 00:00:00 2001
+From: Michael Seifert <m.seifert@digitalernachschub.de>
+Date: Sun, 19 May 2024 14:00:57 +0200
+Subject: [PATCH] [fix] Fixed a bug that causes markers to be duplicated for
+ async test functions.
+
+Signed-off-by: Michael Seifert <m.seifert@digitalernachschub.de>
+---
+ docs/source/reference/changelog.rst  |  9 ++++++++
+ pytest_asyncio/plugin.py             |  3 ++-
+ tests/markers/test_function_scope.py | 31 ++++++++++++++++++++++++++++
+ 3 files changed, 42 insertions(+), 1 deletion(-)
+
+diff --git a/docs/source/reference/changelog.rst b/docs/source/reference/changelog.rst
+index a55fb9a8..5f0de0a1 100644
+--- a/docs/source/reference/changelog.rst
++++ b/docs/source/reference/changelog.rst
+@@ -2,6 +2,15 @@
+ Changelog
+ =========
+ 
++0.23.8 (UNRELEASED)
++===================
++- Fixes a bug that caused duplicate markers in async tests `#813 <https://github.com/pytest-dev/pytest-asyncio/issues/813>`_
++
++Known issues
++------------
++As of v0.23, pytest-asyncio attaches an asyncio event loop to each item of the test suite (i.e. session, packages, modules, classes, functions) and allows tests to be run in those loops when marked accordingly. Pytest-asyncio currently assumes that async fixture scope is correlated with the new event loop scope. This prevents fixtures from being evaluated independently from the event loop scope and breaks some existing test suites (see `#706`_). For example, a test suite may require all fixtures and tests to run in the same event loop, but have async fixtures that are set up and torn down for each module. If you're affected by this issue, please continue using the v0.21 release, until it is resolved.
++
++
+ 0.23.7 (2024-05-19)
+ ===================
+ - Silence deprecation warnings about unclosed event loops that occurred with certain CPython patch releases `#817 <https://github.com/pytest-dev/pytest-asyncio/pull/817>`_
+diff --git a/pytest_asyncio/plugin.py b/pytest_asyncio/plugin.py
+index cd4c4ede..d3d1fcf7 100644
+--- a/pytest_asyncio/plugin.py
++++ b/pytest_asyncio/plugin.py
+@@ -405,7 +405,8 @@ def _from_function(cls, function: Function, /) -> Function:
+             keywords=function.keywords,
+             originalname=function.originalname,
+         )
+-        subclass_instance.own_markers.extend(function.own_markers)
++        subclass_instance.own_markers = function.own_markers
++        assert subclass_instance.own_markers == function.own_markers
+         subclassed_function_signature = inspect.signature(subclass_instance.obj)
+         if "event_loop" in subclassed_function_signature.parameters:
+             subclass_instance.warn(
+diff --git a/tests/markers/test_function_scope.py b/tests/markers/test_function_scope.py
+index 2057a128..eded4552 100644
+--- a/tests/markers/test_function_scope.py
++++ b/tests/markers/test_function_scope.py
+@@ -197,3 +197,34 @@ async def test_anything():
+     )
+     result = pytester.runpytest_subprocess("--asyncio-mode=strict")
+     result.assert_outcomes(warnings=0, passed=1)
++
++
++def test_asyncio_mark_does_not_duplicate_other_marks_in_auto_mode(
++    pytester: Pytester,
++):
++    pytester.makeconftest(
++        dedent(
++            """\
++            def pytest_configure(config):
++                config.addinivalue_line(
++                    "markers", "dummy_marker: mark used for testing purposes"
++                )
++            """
++        )
++    )
++    pytester.makepyfile(
++        dedent(
++            """\
++            import pytest
++
++            @pytest.mark.dummy_marker
++            async def test_markers_not_duplicated(request):
++                markers = []
++                for node, marker in request.node.iter_markers_with_node():
++                    markers.append(marker)
++                assert len(markers) == 2
++            """
++        )
++    )
++    result = pytester.runpytest_subprocess("--asyncio-mode=auto")
++    result.assert_outcomes(warnings=0, passed=1)
