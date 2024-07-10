@@ -1,0 +1,99 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0a03ecae7d4e7dd4c03a63c77dfada8c</srcmd5>
+    <version>0.1.1</version>
+    <time>1616168614</time>
+    <user>RBrownSUSE</user>
+    <comment>This is required for datovka.</comment>
+    <requestid>880072</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>27e3e9defa7a2c33de04b0435e9d02f1</srcmd5>
+    <version>0.1.2</version>
+    <time>1619298531</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.1.2
+  * Added support for the new PFO_ZNALEC and PFO_TLUMOCNIK data-box types.
+  * Fixed found typos in documentation and commentaries in sources.</comment>
+    <requestid>887987</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>92a89aa3e83b3f9f6aa480e956024e29</srcmd5>
+    <version>0.2.0</version>
+    <time>1630617621</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>915766</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>694aef4cfad31ad91619ed74eef30e58</srcmd5>
+    <version>0.2.1</version>
+    <time>1637108004</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.2.1
+  * Added function isds_DTInfo() which implements the DTInfo ISDS operation
+    and corresponding data structures.
+</comment>
+    <requestid>931484</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>592c73fdc9e17083cbcaada82c8eee2b</srcmd5>
+    <version>0.3.0</version>
+    <time>1677878910</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.3.0
+ * Added idLevel member into struct isds_envelope.
+ * Added function isds_GetMessageAuthor2() which implements the
+   GetMessageAuthor2 ISDS operation and corresponding data structures.
+ * Modified the interface of function isds_set_opt() because of an ambiguity or
+   undefined behaviour in variable argument handling in C.
+ * Function isds_check_func_timegm() also checks time conversion using
+   struct tm containing negative hour values.
+ * Added support for the new PFO_REQ data-box type
+   introduced in the version 2.36 of the XSD and WSDL definitions.
+ * Disabled fatal warnings by default.</comment>
+    <requestid>1069080</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b9e715e360458103705aed37a331dd84</srcmd5>
+    <version>0.4.0</version>
+    <time>1695209503</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.4.0
+ * Added functions for new ISDS services
+ * Added variants of function for services
+ * Added new elements dmVODZ and attsNum into struct isds_envelope.
+ * Added new element ext_files into struct isds_message.
+ * Fixed compilation of simline/server_cli with musl libc.
+ * Favouring xmlBufferDetach() over setting XML_BUFFER_ALLOC_IMMUTABLE.</comment>
+    <requestid>1112484</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>be3ba17fb3ed481aa6201309e4f414a6</srcmd5>
+    <version>0.5.1</version>
+    <time>1701727315</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.5.1
+</comment>
+    <requestid>1130721</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>1ecf895bf56a55c7ec31acc36a77fb10</srcmd5>
+    <version>0.6.0</version>
+    <time>1704558596</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.6.0:
+  * Added isds_set_xferinfo_callback() as a replacement for
+    isds_set_progress_callback(). Marked
+    isds_set_progress_callback() as deprecated.</comment>
+    <requestid>1137218</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>3ad84189ac270c122fd78407000f68bc</srcmd5>
+    <version>0.6.2</version>
+    <time>1711397402</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1161101</requestid>
+  </revision>
+</revisionlist>
