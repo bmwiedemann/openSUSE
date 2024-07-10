@@ -1,0 +1,617 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>de62b924fb5d02463b323d4793f6619b</srcmd5>
+    <version>1.8.0~pre5</version>
+    <time>1522503407</time>
+    <user>dimstar_suse</user>
+    <comment>renamed binary &quot;backup&quot; and other trivial fixes in specfile</comment>
+    <requestid>591860</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>4959ff76138e507e28c31b2ebf3ce11a</srcmd5>
+    <version>1.8.0~pre5</version>
+    <time>1524144670</time>
+    <user>dimstar_suse</user>
+    <comment>- fdupes: use symlinks instead of hardlinks. Do not fdupe
+  /etc and /var
+
+- fix dependencies between packages, so that fuse-client
+  can be installed.
+- cleanup old sys-v sysconfig files and other minor fixes
+- fix unit file for fuse-client
+
+- build fuse-client unconditionally.
+- do not build KMP on unsupported architectures so that overall
+  build succeeds.</comment>
+    <requestid>597537</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>6c0f20a140fc9bddea72d9e21fecc028</srcmd5>
+    <version>1.8.0~pre5</version>
+    <time>1524400794</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>598777</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>edb97ff0dbaf2a767fe297bb1196d671</srcmd5>
+    <version>1.8.0</version>
+    <time>1525779444</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>604661</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>ac16a687d3891db8509fef0f4b25aaf2</srcmd5>
+    <version>1.8.0</version>
+    <time>1530191690</time>
+    <user>dimstar_suse</user>
+    <comment>minor cleanups (forwarded request 619531 from hauky)</comment>
+    <requestid>619532</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>10a1815e44fc78bdffa6e54c22301c24</srcmd5>
+    <version>1.8.1</version>
+    <time>1534774793</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>630333</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>7d08ac36c038ab6b61e8b9260e1ceabd</srcmd5>
+    <version>1.8.2</version>
+    <time>1536876061</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>635326</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>ad9c52a198721c29a4cab0586410e02e</srcmd5>
+    <version>1.8.2</version>
+    <time>1538502470</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>639353</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>e38d1760d3d867e34cf5f47d1fe53a39</srcmd5>
+    <version>1.8.2</version>
+    <time>1548335552</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>667635</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>9b9584a9e06f947e4dd0736680bf8be1</srcmd5>
+    <version>1.8.3~pre1</version>
+    <time>1553635991</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>688258</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>60e489fefbc7c3879ab5a6bfe7b1965d</srcmd5>
+    <version>1.8.3</version>
+    <time>1556916426</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.8.3
+- Require krb5-client for package openafs-client 
+- fix broken directory layout
+- fix broken post-install script
+- allow crypt to be set/unset on startup of client
+- clean up source-filenames
+</comment>
+    <requestid>700218</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>3e3bcbf8092dac5d622783ff05966cea</srcmd5>
+    <version>1.8.3</version>
+    <time>1564414229</time>
+    <user>dimstar_suse</user>
+    <comment>- disable compilation with LTO, does not work yet. 
+- update to 1.8.3
+- Require krb5-client for package openafs-client 
+- fix broken directory layout
+- fix broken post-install script
+- allow crypt to be set/unset on startup of client
+- clean up source-filenames
+- Use source URLs.
+- update to pre-release 1.8.3pre1
+  * fix builds for Linux-kernels 4.20 and 5.0 
+  * other fixes, see RELNOTES-1.8.3pre1
+  * remove obsolete Linux-4.20.patch
+- Fix build for Lunux-4.20: Linux-4.20.patch
+- use proper log-directory: dir_layout.patch
+- Fix build for aarch64
+- Quote &quot;*.c&quot;, and avoid unnecessary pass through xargs.
+- update to security-release 1.8.2
+  * fix CVE-2018-16947 (OPENAFS-SA-2018-001)
+  * fix CVE-2018-16948 (OPENAFS-SA-2018-002)
+  * fix CVE-2018-16949 (OPENAFS-SA-2018-003)
+- add retpoline support
+- update to version 1.8.1.1
+- Remove use_timespec64_for_kernel_4.18.patch. It is now integrated. 
+- Fix 32Bit build by adding 
+  commit 554176bd236d772d670df9bdd2496facd5a4209a as
+  use_timespec64_for_kernel_4.18.patch
+- Update to 1.8.1 
+- Remove backporting patches for AArch64 build:
+  * add_support_fo_arm64_linux26.patch
+  * dont_require_AFS_SYSCALL.patch
+  * add_AFS_STRINGIZE_macro.patch
+  * avoid_double_param_in_arm64_kernel.patch
+- adjust building of KMP to new kernels (see boo 1098050)
+  add patch add_arch_to_linux_kernel_make.patch for this
+- add libtirpc-devel to BuildRequires:
+- minor cleanups 
+- Update to 1.8.0
+- Fix AArch64 build by updating spec and backporting patches:
+  * add_support_fo_arm64_linux26.patch
+  * dont_require_AFS_SYSCALL.patch
+  * add_AFS_STRINGIZE_macro.patch
+  * avoid_double_param_in_arm64_kernel.patch
+- remove package krb5-mit. It contained binaries for server and client.
+  Besides, client and server already had an implicit dependency on krb5.
+  Put the binaries to client and server-package respectively.
+- Remove openafs-1.8.x.heimdal.patch and everything heimdal-related.
+  SUSE does not provide a proper heimdal and it's untested for a long
+  time.
+- fdupes: use symlinks instead of hardlinks. Do not fdupe
+  /etc and /var
+- fix dependencies between packages, so that fuse-client
+  can be installed.
+- cleanup old sys-v sysconfig files and other minor fixes
+- fix unit file for fuse-client
+- build fuse-client unconditionally.
+- do not build KMP on unsupported architectures so that overall
+  build succeeds. 
+- rename binary backup to afs_backup.
+  - rename man pages and prefix &quot;backup&quot; in content
+- prefix &quot;scout&quot; by &quot;afs_&quot; in man-page     
+- remove unnecessary macro indirection %ARCH
+- replace hard-coded paths by macros 
+- make whitespace more consistent
+- minor syntax and typo fixes
+- Replace old $RPM_* vars (most of them) by macros.
+- Replace unnecessary macro indirections like %bindir by %_bindir.
+- cleanup last cleanup: also remove rc.* files
+- cleanup package for Factory:
+   - rename package to openafs.
+   - remove sys-v init stuff.
+   - apply recommendations given in Request 581009
+- add compat macro for new _fillupdir macro introduced in Nov 2017
+- update to 1.8.0pre5 
+- update to 1.8.0pre4
+- add patch for ncurses detection 
+- update to 1.8.0pre3
+- add integrity check of tar-balls 
+- do not strip binaries on install
+- fix %postun server 
+- update to 1.8.0pre2
+- use a preamble-file for KMP
+- sort/cleanup/beautify spec-file 
+- spec-file: 
+  + use hardlinks for fdupes to provide correct header files in
+             kernel-source
+  + minor bugfixes, reorganization 
+- rename changes file to openafs18.changes
+- rename package to openafs18-* so they don't override 
+  stable openafs-1.6 ones
+- move ld.so to main package -- was in server-packages 
+- enable building of KMP
+- make openafs-krb5-mit package dependend on openafs-client package
+- add ld.so - config to main package 
+- remove pam, is not build on x86_64 and i596 
+- first version of 1.8
+- remove docs package, put man pages in induvidual packets  
+- remove layout-patch, deal with this in spec file directly
+- add new ChangeLog 
+- update to version 1.6.20 
+- add missing RemainAfterExit=true to client-systemd unit. 
+- update to version 1.6.19 
+- Update README: Change SuSE to SUSE.
+- update to version 1.6.18.2 
+- update to version 1.6.18.1 
+- update to version 1.6.18 
+- update to version 1.6.17 
+- cleanup
+- update to version 1.6.16
+- remove fix for configure for new ncurses, now dealt with in 
+  shipped package
+- start using change.log again
+- fix configure test for new ncurses 
+- update to version 1.4.12.1 
+- converted neededforbuild to BuildRequires
+- fixed kernel module to compile
+- add openafs.SuidCells and openafs.CellServDB
+- cleanup SPEC-file(s)
+- finally adopt
+	sysconfig.transarcmode.openafs-client
+	rc.transarcmode.afs-server
+	rc.transarcmode.afs-client
+  to transarc mode; and fix a small typo in
+	rc.defaultmode.afs-client
+- set &quot;%defattr(-,root,root)&quot; for transarcmode-file-lists
+- fix lib64 build problem in transarcmode
+- introduce transarc-mode and default-mode
+- introduce &quot;options&quot;
+- build for SLES 9
+- with heimdal krb5 support
+- enable-largefile-fileserver
+- updated to 1.4.0
+- fixed dangerous compiler warnings
+- don't build as root 
+- fixed kernel module to build
+- fixed sysconfig file name
+- updated to 1.3.85
+- used LSB conforming init script names
+- Update for linux 2.6.13.
+- gcc4 fixes in kernel module
+- fixed to compile with gcc4
+- fixed memory leaks and 64bit fixes backported from 1.3.79
+- updated README.SUSE
+- updated to 1.3.78 
+- fixed afs.h to be usable from userspace [#50283]
+- updated to latest snapshot
+- added requres: kernel-nongpl [#45167]
+- fixed kernel module oops [#44618]
+- use kernel module from openafs 1.3.70 to support kernel 2.6
+- updated to 1.2.11
+- added note that client for kernel 2.6 is not available
+- added pam-devel to neededforbuild 
+- Added hack if no MTU came from userspace.
+- Removed superflous ppc64 patch part.
+- ppc64 port added (status: no longer crashes, talks to the network,
+  but not successfully).
+- Change headerfiles to make it possible to do a ppc -&gt; ppc64 crosscompile. 
+- build with -fPIC on ppc32
+- patch from cvs to use AllocLargeSpace for struct osi_file to prevent
+  oopses with some kernel configurations
+- added option DYNROOT to sysconfig and enabled it by default [#27205]
+- added cleanup before module build [#29649]
+- fixed possible segfault
+- set permissions of /var/lib/openafs to 700
+- README.SuSE fixes
+- use ghost for /afs, the directory is created by init-script
+- fixed README.SuSE
+- moved all static libraries to /usr/lib/afs, fixes conflict with libdes
+- used default value for THIS_CELL_SERVER_NAME
+- removed old patches
+- fixed a bug in init script
+- updated to final 1.2.10
+- updated to 1.2.10-rc4
+- do not destroy CellServDB even if REGENERATE_CELL_INFO=yes
+- fixed to compile on x86_64
+-  use %_lib where it was missing
+- fixed conflicts in filelist
+- improved init scripts
+- added README.SuSE
+- fixed init scripts [#27426]
+- installed man pages
+- add /usr/src/kernel-modules to the file list
+- Fix SMP configuration detection.
+- rework filelists:
+  - package/remove unpackaged files
+  - move some files into the server &amp; client subpackages
+  - use %defattr
+- fix deprecated tail -1 syntax (fixes building the kernel module)
+- updated to 1.2.9
+- added DATA_ENCRYPTION option to sysconfig
+- x86_64: add -lresolv, -fPIC
+- fix lib path on all 64 bit platforms
+- added sysconfig metadata
+- added dirs /afs, /etc/openafs, /var/lib/openafs to filelist
+- workaround broken -lresolv detection, lib64 fixes
+- fixed multiline strings in kernel module
+- updated to 1.2.8
+- improved init script
+- included errno.h
+- fixed multiline strings
+- first version of init scripts
+- initial draft of a package. Lots of stuff missing, like init
+  scripts, or the kerberos 5 migration toolkit. 
+</comment>
+    <requestid>719428</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>12163d63735f1ac25eeb786f3f7ef40b</srcmd5>
+    <version>1.8.4~pre2</version>
+    <time>1570010272</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>734081</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>9485451aba285c2ac91781d09c94169c</srcmd5>
+    <version>1.8.4</version>
+    <time>1570799815</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>736843</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>ea12467260f94ca3a4f826acf0fe987e</srcmd5>
+    <version>1.8.5</version>
+    <time>1571951451</time>
+    <user>dimstar_suse</user>
+    <comment>security update 1.8.5</comment>
+    <requestid>742532</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>db999f4b92b1faf40f1e033cfd748461</srcmd5>
+    <version>1.8.6~pre1a</version>
+    <time>1586555618</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>792910</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>517bca0c2e08bcf1bdbc314f391fd9d7</srcmd5>
+    <version>1.8.6~pre2a</version>
+    <time>1592398383</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>815312</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>d77921dc1d36c3effaf615ecfe2e314b</srcmd5>
+    <version>1.8.6</version>
+    <time>1593727854</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>818145</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>1127091e7528a8b5e12202791b388719</srcmd5>
+    <version>1.8.6.1</version>
+    <time>1597744811</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>827361</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>65c39291879d4f4092c2f90d80172937</srcmd5>
+    <version>1.8.6.1</version>
+    <time>1602682731</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>841588</requestid>
+  </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>c19ffdf3488b35d8e25e9813dbb10fc8</srcmd5>
+    <version>1.8.6.1</version>
+    <time>1605644491</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>845591</requestid>
+  </revision>
+  <revision rev="22" vrev="4">
+    <srcmd5>b9ab3b19e5ce42187351c1245aeec64f</srcmd5>
+    <version>1.8.6.1</version>
+    <time>1610558378</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>862419</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>8d7dc7ede45a73d782b7bdac6ffea92b</srcmd5>
+    <version>1.8.7</version>
+    <time>1610965738</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>863771</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>7e13e48181b7bf4bb9c56dca61012663</srcmd5>
+    <version>1.8.7</version>
+    <time>1612707666</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>869710</requestid>
+  </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>e69fadea2ab7799aa728b97be6609f28</srcmd5>
+    <version>1.8.7</version>
+    <time>1614108052</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>874346</requestid>
+  </revision>
+  <revision rev="26" vrev="4">
+    <srcmd5>230bee8672c97082ecea8aedd99162e5</srcmd5>
+    <version>1.8.7</version>
+    <time>1614274188</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>874978</requestid>
+  </revision>
+  <revision rev="27" vrev="5">
+    <srcmd5>032f60d25524012d7aa0d1d9b5be2324</srcmd5>
+    <version>1.8.7</version>
+    <time>1615489832</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>878121</requestid>
+  </revision>
+  <revision rev="28" vrev="6">
+    <srcmd5>33044c0d8f828957bf81d592e059ce46</srcmd5>
+    <version>1.8.7</version>
+    <time>1619729197</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>889242</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>7a21a4ce7d637487e3f1e7a82234fae6</srcmd5>
+    <version>1.8.8</version>
+    <time>1628189282</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>910195</requestid>
+  </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>c3e188bad448439e8087644fa32b9b98</srcmd5>
+    <version>1.8.8</version>
+    <time>1633365628</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>922940</requestid>
+  </revision>
+  <revision rev="31" vrev="3">
+    <srcmd5>73a4748f8cb306862756fde634702345</srcmd5>
+    <version>1.8.8</version>
+    <time>1638310558</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>934617</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>ac700ff13586c4466411062ea5fbc5bd</srcmd5>
+    <version>1.8.8.1</version>
+    <time>1643062177</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>948297</requestid>
+  </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>6cfd1d2db2b9c872ae53b94c9e4b797e</srcmd5>
+    <version>1.8.8.1</version>
+    <time>1650466634</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>970995</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>588cf96356971bd1bf90f0f985c092dd</srcmd5>
+    <version>1.8.8.2~rc1</version>
+    <time>1656053146</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>984721</requestid>
+  </revision>
+  <revision rev="35" vrev="2">
+    <srcmd5>451fd5040edef452ca320f2e1b2fd120</srcmd5>
+    <version>1.8.8.2~rc1</version>
+    <time>1660662527</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>997369</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>5e94d2618a008c94ed771961630a8440</srcmd5>
+    <version>1.8.9~pre1</version>
+    <time>1665754926</time>
+    <user>dimstar_suse</user>
+    <comment>- update to openafs-1.8.9~pre1 
+- remove obsolete patches:
+  * 05b722d.diff
+  * cc8edf7.diff
+  * 6348262.diff
+- apply patch for kernel 6.0:
+  * 79f03c2.diff
+</comment>
+    <requestid>1010499</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>09ab91c47bda5188bdab01d0cc67483c</srcmd5>
+    <version>1.8.9~pre2</version>
+    <time>1670954111</time>
+    <user>dimstar_suse</user>
+    <comment>- update to openafs-1.8.9pre2
+  * Support mainline kernels up to 6.0
+  * Support for building with more recent compilers
+  * some bugfixes, more see RELNOTES
+- remove obsolete patches:
+  * 79f03c2.diff 
+</comment>
+    <requestid>1042678</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>ef84e74cc19a8d4084ad3b622e5511bf</srcmd5>
+    <version>1.8.9</version>
+    <time>1672851178</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1047127</requestid>
+  </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>240897c69fe4e3a299587520de99339d</srcmd5>
+    <version>1.8.9</version>
+    <time>1677878925</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1069164</requestid>
+  </revision>
+  <revision rev="40" vrev="3">
+    <srcmd5>c35305e5556c881c142070897b8ad183</srcmd5>
+    <version>1.8.9</version>
+    <time>1684162480</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1087206</requestid>
+  </revision>
+  <revision rev="41" vrev="4">
+    <srcmd5>385fac18b5cfb885235db0198064d8b4</srcmd5>
+    <version>1.8.9</version>
+    <time>1685476994</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1089819</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>3e27f5b9c827cd00a614a8b0d7125928</srcmd5>
+    <version>1.8.10</version>
+    <time>1689083833</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1098043</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>a0a003bf20d2429d4e74c130bcd412d7</srcmd5>
+    <version>1.8.10.1</version>
+    <time>1696269890</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1114721</requestid>
+  </revision>
+  <revision rev="44" vrev="2">
+    <srcmd5>9fe7ec8010ee870ae1a83da7ac90d83b</srcmd5>
+    <version>1.8.10.1</version>
+    <time>1700078936</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1126553</requestid>
+  </revision>
+  <revision rev="45" vrev="3">
+    <srcmd5>9cec8204295670cf1bc8c23a0210c1ed</srcmd5>
+    <version>1.8.10.1</version>
+    <time>1702327867</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1132415</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>29231dd32b0fcf9864e0389d862e883c</srcmd5>
+    <version>1.8.11~pre1</version>
+    <time>1706563961</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1142227</requestid>
+  </revision>
+  <revision rev="47" vrev="2">
+    <srcmd5>7d9bd264a56b5aed1391fcf5dbd2645a</srcmd5>
+    <version>1.8.11~pre1</version>
+    <time>1708973376</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1151811</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>3a3ab034a6e5e4c5a02edb100427e5ab</srcmd5>
+    <version>1.8.11.g20240530</version>
+    <time>1718384578</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1180888</requestid>
+  </revision>
+</revisionlist>

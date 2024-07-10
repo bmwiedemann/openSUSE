@@ -1,0 +1,11 @@
+[Unit]
+Description=OpenAFS Server
+After=syslog.target network.target
+
+[Service]
+EnvironmentFile=-/etc/sysconfig/openafs-server
+ExecStart=/usr/sbin/bosserver -nofork $BOSSERVER_ARGS
+ExecStop=/usr/sbin/bos shutdown localhost -wait -localauth
+
+[Install]
+WantedBy=multi-user.target
