@@ -1,0 +1,43 @@
+-------------------------------------------------------------------
+Thu Feb 22 09:57:57 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.
+
+-------------------------------------------------------------------
+Thu Feb 18 15:55:03 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Use %lua_provides macro for default lua versioning
+
+-------------------------------------------------------------------
+Fri Oct  9 02:58:43 UTC 2020 - Emil Biserov <biserov@gmail.com>
+
+- updated for 0.7.2
+- tests-modules-load.lua added
+
+-------------------------------------------------------------------
+Mon Jul  6 19:04:27 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Add lua54 as new build target
+
+-------------------------------------------------------------------
+Wed Jun 12 11:24:33 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix build after the postgresql package gained two devel packages
+
+-------------------------------------------------------------------
+Mon Oct 30 14:45:32 UTC 2017 - jmatejek@suse.com
+
+- do not build for Lua 5.2
+
+-------------------------------------------------------------------
+Thu Jul 13 19:07:55 UTC 2017 - tchvatal@suse.com
+
+- Switch to multibuild layout to compile for all lua variants
+
+-------------------------------------------------------------------
+Sat Jun 29 00:33:08 UTC 2013 - i@marguerite.su
+
+- initial version 0.5
+- add new patch: luadbi-postgresql-headers.patch
+
