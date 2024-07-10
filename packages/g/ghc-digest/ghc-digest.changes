@@ -1,0 +1,139 @@
+-------------------------------------------------------------------
+Sat Feb 10 14:26:08 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update digest to version 0.0.2.1.
+  ## 0.0.2.1 — 10th Febraury 2024
+  - Make pkg-config an automatic flag: <https://github.com/TeofilC/digest/pull/21>
+
+-------------------------------------------------------------------
+Wed Dec 13 11:48:35 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update digest to version 0.0.2.0.
+  ## 0.0.2.0 — 13th December 2023
+  - Add CRC32C (Thanks to @4eUep): <https://github.com/TeofilC/digest/pull/18>
+  - Support latest GHC versions: <https://github.com/TeofilC/digest/pull/19>
+
+-------------------------------------------------------------------
+Sun Sep  3 19:18:40 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update digest to version 0.0.1.7 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Thu Mar 30 17:06:36 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
+Sun Mar 12 14:11:03 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update digest to version 0.0.1.7.
+  ## 0.0.1.7 — 5th March 2023
+
+  - Don't use 'pkg-config' to locate zlib on FreeBSD (Thanks to @arrowd): <https://github.com/TeofilC/digest/pull/13>
+
+-------------------------------------------------------------------
+Sun Mar  5 21:35:54 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update digest to version 0.0.1.6.
+  ## 0.0.1.6 — 5th March 2023
+
+  - Introduce 'pkg-config' cabal flag (Thanks to @jonathanlking): <https://github.com/TeofilC/digest/pull/11>
+
+-------------------------------------------------------------------
+Tue Jan 24 15:49:59 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update digest to version 0.0.1.5.
+  Upstream added a new change log file in this release. With no
+  previous version to compare against, the automatic updater cannot
+  reliable determine the relevante entries for this release.
+
+-------------------------------------------------------------------
+Wed Jan 11 19:16:03 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update digest to version 0.0.1.4 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Mon Dec 12 11:22:19 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update digest to version 0.0.1.4.
+  Upstream does not provide a change log file.
+
+-------------------------------------------------------------------
+Sat Jul 10 13:39:50 UTC 2021 - psimons@suse.com
+
+- Update digest to version 0.0.1.3.
+  Upstream does not provide a change log file.
+
+-------------------------------------------------------------------
+Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+ 
+- disable %{ix86} build
+ 
+-------------------------------------------------------------------
+Tue Aug 18 10:44:38 UTC 2020 - Peter Simons <psimons@suse.com>
+
+- Replace %setup -q with the more modern %autosetup macro.
+
+-------------------------------------------------------------------
+Tue Jun 16 11:14:01 UTC 2020 - Peter Simons <psimons@suse.com>
+
+- Re-generate file with latest version of spec-cleaner.
+
+-------------------------------------------------------------------
+Fri Nov  8 16:13:36 UTC 2019 - Peter Simons <psimons@suse.com>
+
+- Drop obsolete group attributes.
+
+-------------------------------------------------------------------
+Sat Oct 20 11:31:25 UTC 2018 - Peter Simons <psimons@suse.com>
+
+- Use https URL to refer to bugs.opensuse.org.
+
+-------------------------------------------------------------------
+Wed Jul 18 14:26:21 UTC 2018 - psimons@suse.com
+
+- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.
+
+-------------------------------------------------------------------
+Wed May 16 13:06:54 UTC 2018 - psimons@suse.com
+
+- Prefer the new %license attribute over %doc.
+
+-------------------------------------------------------------------
+Thu Aug  3 15:38:38 UTC 2017 - psimons@suse.com
+
+- Updated with latest spec-cleaner version 0.9.8-8-geadfbbf.
+
+-------------------------------------------------------------------
+Sun Jul 10 17:12:53 UTC 2016 - psimons@suse.com
+
+- Update to version 0.0.1.2 revision 0 with cabal2obs.
+
+-------------------------------------------------------------------
+Wed Mar 26 15:43:11 UTC 2014 - peter.trommler@ohm-hochschule.de
+
+- fix license tag
+
+-------------------------------------------------------------------
+Mon May 13 15:17:05 UTC 2013 - peter.trommler@ohm-hochschule.de
+
+- update to 0.0.1.2 from upstream (no changelog)
+* minor change in cabal flag default
+
+-------------------------------------------------------------------
+Wed Oct  3 07:45:23 UTC 2012 - peter.trommler@ohm-hochschule.de
+
+- update to 0.0.1.1 from upstream (no changelog)
+
+-------------------------------------------------------------------
+Thu Jun  7 08:15:13 UTC 2012 - peter.trommler@ohm-hochschule.de
+
+- cabal2spec 0.25.5 spec file template
+
+-------------------------------------------------------------------
+Wed Jan 18 20:38:15 UTC 2012 - herbert@graeber-clan.de
+
+- initial packaging for Fedora automatically generated by cabal2spec-0.24.1
