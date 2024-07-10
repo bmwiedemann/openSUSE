@@ -1,0 +1,62 @@
+-------------------------------------------------------------------
+Wed Jun  5 10:11:35 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.3.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.3.0/
+- Changes since 6.2.0:
+  * Remove explicit maintainer from metainfo
+
+-------------------------------------------------------------------
+Mon May  6 12:22:33 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.2.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/6.2.0/
+- No code change since 6.1.0
+
+-------------------------------------------------------------------
+Fri Apr  5 12:52:37 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.1.0
+  * New feature release
+- Changes since 6.0.0:
+  * update version for new release
+  * Fixes compile problem for projects which uses older cmake versions
+  * kdoctools_create_handbook/manpage: check INSTALL_DESTINATION for empty value
+  * Replace user.entities
+  * Upload New File bg.xml
+  * Update user.entities in bg
+
+-------------------------------------------------------------------
+Wed Feb 21 19:27:55 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.0.0
+  * New bugfix release
+  * Release announcement not available yet
+- Changes since 5.249.0:
+  * update version for new release
+  * Add myself as a contributor entity
+  * Update Turkish entities
+  * update version for new release
+
+-------------------------------------------------------------------
+Wed Jan 31 17:50:15 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.249.0 (6.0 RC 2):
+  * New bugfix release
+  * For more details see https://kde.org/announcements/megarelease/6/rc2/
+
+-------------------------------------------------------------------
+Mon Jan 15 20:00:58 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.248.0 (6.0 RC 1)
+  * For more details please see:
+    https://kde.org/announcements/megarelease/6/rc1/
+
+-------------------------------------------------------------------
+Sat May 27 11:18:19 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Init kf6-kdoctools
