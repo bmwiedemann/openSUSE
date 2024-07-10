@@ -1,0 +1,768 @@
+From 66422f7144b23123020e1d7a64b66ee70c77bb63 Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fabian@ritter-vogt.de>
+Date: Tue, 2 Jul 2024 21:02:15 +0200
+Subject: [PATCH] Revert "Added setting for battery conservation mode (Lenovo)"
+
+This reverts commit 7da820f5ba64766b15c1451ad0fbed3b714ed307.
+This reverts commit 53f688de8eff37a52efed55b52d9e51f5217a185.
+---
+ daemon/chargethreshold_helper_actions.actions | 124 --------------
+ daemon/chargethresholdhelper.cpp              |  52 ------
+ daemon/chargethresholdhelper.h                |   4 -
+ daemon/dbus/org.kde.Solid.PowerManagement.xml |   6 -
+ daemon/powerdevilcore.cpp                     |  30 ----
+ daemon/powerdevilcore.h                       |   4 -
+ kcmodule/profiles/ExternalServiceSettings.cpp | 158 +++++-------------
+ kcmodule/profiles/ExternalServiceSettings.h   |  20 ---
+ kcmodule/profiles/PowerKCM.cpp                |   6 -
+ kcmodule/profiles/PowerKCM.h                  |   3 -
+ kcmodule/profiles/ui/GlobalConfig.qml         |  16 +-
+ 11 files changed, 43 insertions(+), 380 deletions(-)
+
+diff --git a/daemon/chargethreshold_helper_actions.actions b/daemon/chargethreshold_helper_actions.actions
+index 19587346..ff5299e8 100644
+--- a/daemon/chargethreshold_helper_actions.actions
++++ b/daemon/chargethreshold_helper_actions.actions
+@@ -235,127 +235,3 @@ Description[zh_CN]=请进行身份验证以设置电池充电限制。
+ Description[zh_TW]=認證以設定電池充電限制。
+ Policy=auth_admin
+ Persistence=session
+-
+-[org.kde.powerdevil.chargethresholdhelper.getconservationmode]
+-Name=Check battery conservation mode
+-Name[ar]=تحقق من وضع الحفاظ على البطارية
+-Name[bg]=Проверка на режима за пестене на батерията
+-Name[ca]=Comprova el mode de conservació de la bateria
+-Name[ca@valencia]=Comprova el mode de conservació de la bateria
+-Name[cs]=Zkontrolovat režim šetření baterie
+-Name[en_GB]=Check battery conservation mode
+-Name[eo]=Kontroli baterikonservan reĝimon
+-Name[es]=Comprobar el modo de conservación de la batería
+-Name[eu]=Egiaztatu bateriaren kontserbazio-modua
+-Name[fr]=Vérifier le mode d'économie d'énergie
+-Name[he]=בדיקת מצב שימור סוללה
+-Name[hu]=Akkumulátorkíméló mód ellenőrzése
+-Name[ia]=Verifica le modo de conservation de batteria
+-Name[is]=Athuga sparnaðarsnið rafhlöðu
+-Name[it]=Controlla la modalità di risparmio della batteria
+-Name[ka]=ელემენტის შენახვის რეჟიმის შემოწმება
+-Name[lt]=Tikrinti akumuliatoriaus saugojimo veikseną
+-Name[nl]=Conserveringsmodus van batterij controleren
+-Name[pl]=Odczytaj tryb zarządzania baterią
+-Name[sk]=Skontrolovať režim ochrany batérie
+-Name[sl]=Preverite način varčevanja z baterijo
+-Name[sv]=Kontrollera batteriets konserveringsläge
+-Name[ta]=மின்கல சேமிப்பு பயன்முறையின் நிலைகாண்
+-Name[tr]=Pil Tasarrufu Kipini Denetle
+-Name[uk]=Перевірка режиму консервації акумулятора
+-Name[x-test]=xxCheck battery conservation modexx
+-Name[zh_CN]=检查节电模式模式
+-Name[zh_TW]=查看電池保護模式
+-Description=Authenticate to check the current state of battery conservation mode.
+-Description[ar]=استوثق للتحقق من الحالة الحالية لوضع الحفاظ على البطارية.
+-Description[bg]=Удостоверете автентичността си, за да проверите текущото състояние на режима за пестене на батерията.
+-Description[ca]=Autenticació per a comprovar l'estat actual del mode de conservació de la bateria.
+-Description[ca@valencia]=Autenticació per a comprovar l'estat actual del mode de conservació de la bateria.
+-Description[cs]=Ověřte totožnost abyste zjistili stav režimu šetření baterie.
+-Description[en_GB]=Authenticate to check the current state of battery conservation mode.
+-Description[eo]=Aŭtentiĝu por kontroli la aktualan staton de bateriokonserva reĝimo.
+-Description[es]=Debe autenticarse para comprobar el estado actual del modo de conservación de la batería.
+-Description[eu]=Kautotu bateriaren kontserbazio-moduaren uneko egoera egiaztatzeko.
+-Description[fr]=S'authentifier pour vérifier l'état courant  à la limite actuelle de charge de la batterie
+-Description[he]=יש לעבור אימות כדי לבדוק את מה המצב הנוכחי של מצב שימור הסוללה.
+-Description[hu]=Hitelesítés szükséges az akkumulátorkímélő mód jelenlegi állapotának ellenőrzéséhez.
+-Description[ia]=Authentica per verificar le stato currente del modo de conservation de batteria.
+-Description[is]=Auðkenndu þig til að sjá núverandi sparnaðarsnið rafhlöðu.
+-Description[it]=Autenticati per controllare lo stato attuale della modalità di risparmio della batteria.
+-Description[ka]=გაიარეთ ავთენტიკაცია ელემენტის შენახვის მიმდინარე რეჟიმის მისაღებად.
+-Description[lt]=Norint tikrinti akumuliatoriaus saugojimo veikseną, turi būti nustatyta tapatybė.
+-Description[nl]=Authenticeren om de huidige status van de conserveringsmodus van de batterij te controleren.
+-Description[pl]=Uwierzytelnij, aby odczytaj tryb zarządzania baterią.
+-Description[sk]=Overenie totožnosti na zobrazenie aktuálneho režimu ochrany batérie.
+-Description[sl]=Avtenticirajte se, da preverite trenutno stanje načina varčevanja baterije.
+-Description[sv]=Ange behörighet för att se nuvarande tillstånd hos batteriets konserveringsläge.
+-Description[ta]=மின்கல சேமிப்பு பயன்முறையின் தற்போதைய நிலையைக் காண சான்றளிக்கவும்.
+-Description[tr]=Pil tasarrufu kipinin geçerli durumunu denetlemek için kimliğinizi doğrulayın.
+-Description[uk]=Пройдіть розпізнавання для перевірки поточного стану режиму консервації акумулятора.
+-Description[x-test]=xxAuthenticate to check the current state of battery conservation mode.xx
+-Description[zh_CN]=进行身份验证以检查节电模式的当前状态。
+-Description[zh_TW]=認證以查看目前的電池保護模式。
+-Policy=yes
+-PolicyInactive=yes
+-
+-[org.kde.powerdevil.chargethresholdhelper.setconservationmode]
+-Name=Set battery conservation mode
+-Name[ar]=عيّن وضع الحفاظ على البطارية
+-Name[bg]=Задаване на режим за пестене на батерията
+-Name[ca]=Estableix el mode de conservació de la bateria
+-Name[ca@valencia]=Establix el mode de conservació de la bateria
+-Name[cs]=Nastavte režim šetření baterie
+-Name[en_GB]=Set battery conservation mode
+-Name[eo]=Agordi baterikonservan reĝimon
+-Name[es]=Definir el modo de conservación de la batería
+-Name[eu]=Ezarri bateriaren kontserbazio-modua
+-Name[fr]=Définir le mode d'économie de la batterie
+-Name[he]=הגדרת מצב שימור סוללה
+-Name[hu]=Akkumulátorkímélő mód beállítása
+-Name[ia]=Fixa le modo de conservation del batteria
+-Name[is]=Stilla sparnaðarsnið rafhlöðu
+-Name[it]=Imposta la modalità di risparmio della batteria
+-Name[ka]=ელემენტის შენახვის რეჟიმის დაყენება
+-Name[lt]=Nustatyti akumuliatoriaus saugojimo veikseną
+-Name[nl]=De conserveringsmodus van de batterij instellen
+-Name[pl]=Ustaw tryb zarządzania baterią
+-Name[sk]=Nastaviť režim ochrany batérie
+-Name[sl]=Nastavi način varčevanja baterije
+-Name[sv]=Ställ in batteriets konserveringsläge
+-Name[ta]=மின்கல சேமிப்பு பயன்முறையை அமை
+-Name[tr]=Pil Tasarrufu Kipini Ayarla
+-Name[uk]=Встановлення режиму консервації акумулятора
+-Name[x-test]=xxSet battery conservation modexx
+-Name[zh_CN]=设置节电模式
+-Name[zh_TW]=設定電池保護模式
+-Description=Authenticate to set the battery conservation mode.
+-Description[ar]=استوثق لتعيين وضع الحفاظ على البطارية.
+-Description[bg]=Удостоверете автентичността си, за да зададете режима за пестене на батерията.
+-Description[ca]=Autenticació per a establir el mode de conservació de la bateria.
+-Description[ca@valencia]=Autenticació per a establir el mode de conservació de la bateria.
+-Description[cs]=Ověřte totožnost pro nastavení režimu šetření baterie.
+-Description[en_GB]=Authenticate to set the battery conservation mode.
+-Description[eo]=Aŭtentiĝu por meti la bateriokonservan reĝimon.
+-Description[es]=Debe autenticarse para definir el modo de conservación de la batería.
+-Description[eu]=Kautotu bateriaren kontserbazio-modua ezartzeko.
+-Description[fr]=S'authentifier pour définir l'état d'économie de la batterie
+-Description[he]=יש לעבור אימות כדי להגדיר את מצב שימור הסוללה.
+-Description[hu]=Hitelesítés szükséges az akkumulátorkímélő mód beállításához.
+-Description[ia]=Authentica per fixar le modo de conservation de batteria.
+-Description[is]=Auðkenndu þig til að stilla sparnaðarsnið rafhlöðu.
+-Description[it]=Autenticati per impostare la modalità di risparmio della batteria.
+-Description[ka]=გაიარეთ ავთენტიკაცია ელემენტის შენახვის დონის დასაყენებლად.
+-Description[lt]=Norint nustatyti akumuliatoriaus saugojimo veikseną, turi būti nustatyta tapatybė.
+-Description[nl]=Authenticeren om de conserveringsmodus van de batterij in te stellen.
+-Description[pl]=Uwierzytelnij, aby ustawić tryb zarządzania baterią.
+-Description[sk]=Overenie totožnosti na nastavenie režimu ochrany batérie.
+-Description[sl]=Avtenticirajte se, da bi nastavili način varčevanje baterije.
+-Description[sv]=Ange behörighet för att ställa in batteriets konserveringsläge.
+-Description[ta]=மின்கல சேமிப்பு பயன்முறையை அமைக்க சான்றளிக்கவும்.
+-Description[tr]=Pil tasarrufu kipini ayarlamak için kimliğinizi doğrulayın.
+-Description[uk]=Пройдіть розпізнавання для встановлення режиму консервації акумулятора.
+-Description[x-test]=xxAuthenticate to set the battery conservation mode.xx
+-Description[zh_CN]=进行身份验证以设置节电模式。
+-Description[zh_TW]=認證以設定電池保護模式。
+-Policy=auth_admin
+-Persistence=session
+diff --git a/daemon/chargethresholdhelper.cpp b/daemon/chargethresholdhelper.cpp
+index fb801d92..6c4e0afe 100644
+--- a/daemon/chargethresholdhelper.cpp
++++ b/daemon/chargethresholdhelper.cpp
+@@ -1,6 +1,5 @@
+ /*
+  * SPDX-FileCopyrightText: 2020 Kai Uwe Broulik <kde@broulik.de>
+- * SPDX-FileCopyrightText: 2023 Fabian Arndt <fabian.arndt@root-core.net>
+  *
+  * SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
+  */
+@@ -17,7 +16,6 @@
+ #include <QFile>
+ 
+ static const QString s_powerSupplySysFsPath = QStringLiteral("/sys/class/power_supply");
+-static const QString s_conservationModeSysFsPath = QStringLiteral("/sys/bus/platform/drivers/ideapad_acpi/VPC2004:00/conservation_mode");
+ 
+ static const QString s_chargeStartThreshold = QStringLiteral("charge_control_start_threshold");
+ static const QString s_chargeEndThreshold = QStringLiteral("charge_control_end_threshold");
+@@ -177,56 +175,6 @@ ActionReply ChargeThresholdHelper::setthreshold(const QVariantMap &args)
+     return ActionReply();
+ }
+ 
+-// This handles Lenovo's "battery conservation mode" that limits the threshold to a fixed value
+-// This value differs from model to model (most 55-60%, others ~80%) and is unknown (last checked in Kernel 6.3)
+-ActionReply ChargeThresholdHelper::getconservationmode(const QVariantMap &args)
+-{
+-    Q_UNUSED(args);
+-
+-    QFile file(s_conservationModeSysFsPath);
+-    if (!file.open(QIODevice::ReadOnly)) {
+-        auto reply = ActionReply::HelperErrorReply();
+-        reply.setErrorDescription(QStringLiteral("Battery conservation mode is not supported"));
+-        return reply;
+-    }
+-
+-    int state = 0;
+-    QTextStream stream(&file);
+-    stream >> state;
+-
+-    if (state < 0 || state > 1) {
+-        auto reply = ActionReply::HelperErrorReply();
+-        reply.setErrorDescription(QStringLiteral("Battery conservation mode is in an invalid state"));
+-        return reply;
+-    }
+-
+-    ActionReply reply;
+-    reply.setData({
+-        {QStringLiteral("batteryConservationModeEnabled"), !!state}
+-    });
+-    return reply;
+-}
+-
+-ActionReply ChargeThresholdHelper::setconservationmode(const QVariantMap &args)
+-{
+-    const bool enabled = args.value(QStringLiteral("batteryConservationModeEnabled"), 0).toBool();
+-    QFile file(s_conservationModeSysFsPath);
+-
+-    if (!file.open(QIODevice::WriteOnly)) {
+-        auto reply = ActionReply::HelperErrorReply();
+-        reply.setErrorDescription(QStringLiteral("Failed to open battery conservation mode file"));
+-        return reply;
+-    }
+-
+-    if (file.write(QByteArray::number(enabled)) == -1) {
+-        auto reply = ActionReply::HelperErrorReply();
+-        reply.setErrorDescription(QStringLiteral("Failed to set battery conservation mode"));
+-        return reply;
+-    }
+-
+-    return ActionReply();
+-}
+-
+ KAUTH_HELPER_MAIN("org.kde.powerdevil.chargethresholdhelper", ChargeThresholdHelper)
+ 
+ #include "moc_chargethresholdhelper.cpp"
+diff --git a/daemon/chargethresholdhelper.h b/daemon/chargethresholdhelper.h
+index b0f93722..fd5a8221 100644
+--- a/daemon/chargethresholdhelper.h
++++ b/daemon/chargethresholdhelper.h
+@@ -1,6 +1,5 @@
+ /*
+  * SPDX-FileCopyrightText: 2020 Kai Uwe Broulik <kde@broulik.de>
+- * SPDX-FileCopyrightText: 2023 Fabian Arndt <fabian.arndt@root-core.net>
+  *
+  * SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
+  */
+@@ -22,7 +21,4 @@ public:
+ public Q_SLOTS:
+     ActionReply getthreshold(const QVariantMap &args);
+     ActionReply setthreshold(const QVariantMap &args);
+-
+-    ActionReply getconservationmode(const QVariantMap &args);
+-    ActionReply setconservationmode(const QVariantMap &args);
+ };
+diff --git a/daemon/dbus/org.kde.Solid.PowerManagement.xml b/daemon/dbus/org.kde.Solid.PowerManagement.xml
+index 18240feb..5cb5a0ac 100644
+--- a/daemon/dbus/org.kde.Solid.PowerManagement.xml
++++ b/daemon/dbus/org.kde.Solid.PowerManagement.xml
+@@ -31,9 +31,6 @@
+     <method name="hasDualGpu">
+       <arg type="b" direction="out" />
+     </method>
+-    <method name="isBatteryConservationModeEnabled">
+-      <arg type="b" direction="out" />
+-    </method>
+     <method name="chargeStartThreshold">
+       <arg type="i" direction="out" />
+     </method>
+@@ -108,9 +105,6 @@
+     <signal name="lidClosedChanged">
+       <arg type="b" direction="out" />
+     </signal>
+-    <signal name="batteryConservationModeChanged">
+-      <arg type="b" direction="out" />
+-    </signal>
+     <signal name="chargeStartThresholdChanged">
+       <arg type="i" direction="out" />
+     </signal>
+diff --git a/daemon/powerdevilcore.cpp b/daemon/powerdevilcore.cpp
+index 915ca0ad..dec3aa41 100644
+--- a/daemon/powerdevilcore.cpp
++++ b/daemon/powerdevilcore.cpp
+@@ -70,7 +70,6 @@ Core::Core(QObject *parent)
+     discreteGpuJob->start();
+ 
+     readChargeThreshold();
+-    readBatteryConservationMode();
+ }
+ 
+ Core::~Core()
+@@ -266,7 +265,6 @@ void Core::reparseConfiguration()
+     }
+ 
+     readChargeThreshold();
+-    readBatteryConservationMode();
+ }
+ 
+ QString Core::currentProfile() const
+@@ -949,29 +947,6 @@ void Core::readChargeThreshold()
+     job->start();
+ }
+ 
+-void Core::readBatteryConservationMode()
+-{
+-    KAuth::Action action(QStringLiteral("org.kde.powerdevil.chargethresholdhelper.getconservationmode"));
+-    action.setHelperId(QStringLiteral("org.kde.powerdevil.chargethresholdhelper"));
+-    KAuth::ExecuteJob *job = action.execute();
+-    connect(job, &KJob::result, this, [this, job] {
+-        if (job->error()) {
+-            qCWarning(POWERDEVIL) << "org.kde.powerdevil.chargethresholdhelper.getconservationmode failed" << job->errorText();
+-            return;
+-        }
+-
+-        const auto data = job->data();
+-        const bool enabled = data.value(QStringLiteral("batteryConservationModeEnabled")).toBool();
+-        if (m_batteryConservationModeEnabled != enabled) {
+-            m_batteryConservationModeEnabled = enabled;
+-            Q_EMIT batteryConservationModeChanged(enabled);
+-        }
+-
+-        qCDebug(POWERDEVIL) << "Battery conservation mode is" << (enabled ? "enabled" : "disabled");
+-    });
+-    job->start();
+-}
+-
+ SuspendController *Core::suspendController()
+ {
+     return m_suspendController.get();
+@@ -1017,11 +992,6 @@ bool Core::hasDualGpu() const
+     return m_hasDualGpu;
+ }
+ 
+-bool Core::isBatteryConservationModeEnabled() const
+-{
+-    return m_batteryConservationModeEnabled;
+-}
+-
+ int Core::chargeStartThreshold() const
+ {
+     return m_chargeStartThreshold;
+diff --git a/daemon/powerdevilcore.h b/daemon/powerdevilcore.h
+index 02fe8430..634ee7ff 100644
+--- a/daemon/powerdevilcore.h
++++ b/daemon/powerdevilcore.h
+@@ -106,7 +106,6 @@ public Q_SLOTS:
+     bool isLidPresent() const;
+     bool isActionSupported(const QString &actionName);
+     bool hasDualGpu() const;
+-    bool isBatteryConservationModeEnabled() const;
+     int chargeStartThreshold() const;
+     int chargeStopThreshold() const;
+ 
+@@ -125,7 +124,6 @@ Q_SIGNALS:
+     void batteryRemainingTimeChanged(qulonglong time);
+     void smoothedBatteryRemainingTimeChanged(qulonglong time);
+     void lidClosedChanged(bool closed);
+-    void batteryConservationModeChanged(bool enabled);
+     void chargeStartThresholdChanged(int threshold);
+     void chargeStopThresholdChanged(int threshold);
+ 
+@@ -139,7 +137,6 @@ private:
+     void triggerCriticalBatteryAction();
+ 
+     void readChargeThreshold();
+-    void readBatteryConservationMode();
+ 
+     /**
+      * Computes the current global charge percentage.
+@@ -150,7 +147,6 @@ private:
+     friend class Action;
+ 
+     bool m_hasDualGpu;
+-    bool m_batteryConservationModeEnabled = false;
+     int m_chargeStartThreshold = 0;
+     int m_chargeStopThreshold = 100;
+ 
+diff --git a/kcmodule/profiles/ExternalServiceSettings.cpp b/kcmodule/profiles/ExternalServiceSettings.cpp
+index 70f2953b..7e704cc2 100644
+--- a/kcmodule/profiles/ExternalServiceSettings.cpp
++++ b/kcmodule/profiles/ExternalServiceSettings.cpp
+@@ -1,7 +1,6 @@
+ /*
+  *  SPDX-FileCopyrightText: 2008-2010 Dario Freddi <drf@kde.org>
+  *  SPDX-FileCopyrightText: 2023 Jakob Petsovits <jpetso@petsovits.com>
+- *  SPDX-FileCopyrightText: 2024 Fabian Arndt <fabian.arndt@root-core.net>
+  *
+  *  SPDX-License-Identifier: GPL-2.0-or-later
+  */
+@@ -23,9 +22,6 @@
+ #include <QDBusServiceWatcher>
+ #include <QPointer>
+ 
+-// debug category for qCInfo()
+-#include <powerdevil_debug.h>
+-
+ namespace
+ {
+ constexpr int ChargeThresholdUnsupported = -1;
+@@ -36,138 +32,81 @@ namespace PowerDevil
+ 
+ ExternalServiceSettings::ExternalServiceSettings(QObject *parent)
+     : QObject(parent)
+-    , m_batteryConservationMode(false)
+     , m_chargeStartThreshold(ChargeThresholdUnsupported)
+     , m_chargeStopThreshold(ChargeThresholdUnsupported)
+-    , m_savedBatteryConservationMode(false)
+     , m_savedChargeStartThreshold(ChargeThresholdUnsupported)
+     , m_savedChargeStopThreshold(ChargeThresholdUnsupported)
+-    , m_isBatteryConservationModeSupported(false)
+     , m_chargeStopThresholdMightNeedReconnect(false)
+ {
+ }
+ 
+-void ExternalServiceSettings::executeChargeThresholdHelperAction(const QString &actionName,
+-                                                                 QWindow *parentWindowForKAuth,
+-                                                                 const QVariantMap &arguments,
+-                                                                 const std::function<void(KAuth::ExecuteJob *job)> callback)
++void ExternalServiceSettings::load(QWindow *parentWindowForKAuth)
+ {
+-    KAuth::Action action(QStringLiteral("org.kde.powerdevil.chargethresholdhelper.") + actionName);
++    KAuth::Action action(QStringLiteral("org.kde.powerdevil.chargethresholdhelper.getthreshold"));
+     action.setHelperId(QStringLiteral("org.kde.powerdevil.chargethresholdhelper"));
+     action.setParentWindow(parentWindowForKAuth);
+-    action.setArguments(arguments);
+-
+     KAuth::ExecuteJob *job = action.execute();
++
+     QPointer thisAlive(this);
+     QPointer jobAlive(job);
+     job->exec();
+ 
+-    if (!thisAlive || !jobAlive) {
+-        qCInfo(POWERDEVIL) << action.name() << "failed: was deleted during job execution";
+-        return;
+-    }
+-
+-    if (job->error()) {
+-        qCInfo(POWERDEVIL) << "KAuth action" << action.name() << "failed:" << job->errorText();
+-    }
+-    callback(job);
+-}
+-
+-void ExternalServiceSettings::load(QWindow *parentWindowForKAuth)
+-{
+-    // Battery thresholds (start / stop)
+-    executeChargeThresholdHelperAction("getthreshold", parentWindowForKAuth, {}, [&](KAuth::ExecuteJob *job) {
+-        if (job->error()) {
++    if (thisAlive && jobAlive) {
++        if (!job->error()) {
++            const auto data = job->data();
++            setSavedChargeStartThreshold(data.value(QStringLiteral("chargeStartThreshold")).toInt());
++            setSavedChargeStopThreshold(data.value(QStringLiteral("chargeStopThreshold")).toInt());
++            setChargeStopThreshold(m_savedChargeStopThreshold);
++            setChargeStartThreshold(m_savedChargeStartThreshold);
++        } else {
++            qWarning() << "org.kde.powerdevil.chargethresholdhelper.getthreshold failed:" << job->errorText();
+             setSavedChargeStartThreshold(ChargeThresholdUnsupported);
+             setSavedChargeStopThreshold(ChargeThresholdUnsupported);
+-            return;
+-        }
+-
+-        const auto data = job->data();
+-        setSavedChargeStartThreshold(data.value(QStringLiteral("chargeStartThreshold")).toInt());
+-        setSavedChargeStopThreshold(data.value(QStringLiteral("chargeStopThreshold")).toInt());
+-        setChargeStopThreshold(m_savedChargeStopThreshold);
+-        setChargeStartThreshold(m_savedChargeStartThreshold);
+-    });
+-
+-    // Battery Conservation Mode (fixed)
+-    executeChargeThresholdHelperAction("getconservationmode", parentWindowForKAuth, {}, [&](KAuth::ExecuteJob *job) {
+-        if (job->error()) {
+-            setSavedBatteryConservationMode(false);
+-            m_isBatteryConservationModeSupported = false;
+-            return;
+         }
+-
+-        const auto data = job->data();
+-        setSavedBatteryConservationMode(data.value(QStringLiteral("batteryConservationModeEnabled")).toBool());
+-        setBatteryConservationMode(m_savedBatteryConservationMode);
+-        m_isBatteryConservationModeSupported = true;
+-    });
++    } else {
++        qWarning() << "org.kde.powerdevil.chargethresholdhelper.getthreshold failed: was deleted during job execution";
++    }
+ }
+ 
+ void ExternalServiceSettings::save(QWindow *parentWindowForKAuth)
+ {
+-    // Battery threshold (start / stop)
+     if ((isChargeStartThresholdSupported() && m_chargeStartThreshold != m_savedChargeStartThreshold)
+         || (isChargeStopThresholdSupported() && m_chargeStopThreshold != m_savedChargeStopThreshold)) {
+         int newChargeStartThreshold = isChargeStartThresholdSupported() ? m_chargeStartThreshold : ChargeThresholdUnsupported;
+         int newChargeStopThreshold = isChargeStopThresholdSupported() ? m_chargeStopThreshold : ChargeThresholdUnsupported;
+ 
+-        executeChargeThresholdHelperAction("setthreshold",
+-                                           parentWindowForKAuth,
+-                                           {
+-                                               {QStringLiteral("chargeStartThreshold"), newChargeStartThreshold},
+-                                               {QStringLiteral("chargeStopThreshold"), newChargeStopThreshold},
+-                                           },
+-                                           [&](KAuth::ExecuteJob *job) {
+-                                               if (job->error()) {
+-                                                   setChargeStopThreshold(m_savedChargeStopThreshold);
+-                                                   setChargeStartThreshold(m_savedChargeStartThreshold);
+-                                                   return;
+-                                               }
+-
+-                                               setSavedChargeStartThreshold(newChargeStartThreshold);
+-                                               setSavedChargeStopThreshold(newChargeStopThreshold);
+-                                           });
+-    }
+-
+-    // Battery Conservation Mode (fixed)
+-    if (isBatteryConservationModeSupported() && m_batteryConservationMode != m_savedBatteryConservationMode) {
+-        executeChargeThresholdHelperAction("setconservationmode",
+-                                           parentWindowForKAuth,
+-                                           {
+-                                               {QStringLiteral("batteryConservationModeEnabled"), m_batteryConservationMode},
+-                                           },
+-                                           [&](KAuth::ExecuteJob *job) {
+-                                               if (job->error()) {
+-                                                   setBatteryConservationMode(m_savedBatteryConservationMode);
+-                                                   return;
+-                                               }
+-
+-                                               setSavedBatteryConservationMode(m_batteryConservationMode);
+-                                           });
++        KAuth::Action action(QStringLiteral("org.kde.powerdevil.chargethresholdhelper.setthreshold"));
++        action.setHelperId(QStringLiteral("org.kde.powerdevil.chargethresholdhelper"));
++        action.setArguments({
++            {QStringLiteral("chargeStartThreshold"), newChargeStartThreshold},
++            {QStringLiteral("chargeStopThreshold"), newChargeStopThreshold},
++        });
++        action.setParentWindow(parentWindowForKAuth);
++        KAuth::ExecuteJob *job = action.execute();
++
++        QPointer thisAlive(this);
++        QPointer jobAlive(job);
++        job->exec();
++
++        if (thisAlive && jobAlive) {
++            if (!job->error()) {
++                setSavedChargeStartThreshold(newChargeStartThreshold);
++                setSavedChargeStopThreshold(newChargeStopThreshold);
++            } else {
++                qWarning() << "org.kde.powerdevil.chargethresholdhelper.setthreshold failed:" << job->errorText();
++            }
++            setChargeStopThreshold(m_savedChargeStopThreshold);
++            setChargeStartThreshold(m_savedChargeStartThreshold);
++        } else {
++            qWarning() << "org.kde.powerdevil.chargethresholdhelper.setthreshold failed: was deleted during job execution";
++        }
+     }
+ }
+ 
+ bool ExternalServiceSettings::isSaveNeeded() const
+ {
+     return (isChargeStartThresholdSupported() && m_chargeStartThreshold != m_savedChargeStartThreshold)
+-        || (isChargeStopThresholdSupported() && m_chargeStopThreshold != m_savedChargeStopThreshold)
+-        || (isBatteryConservationModeSupported() && m_batteryConservationMode != m_savedBatteryConservationMode);
+-}
+-
+-bool ExternalServiceSettings::isBatteryConservationModeSupported() const
+-{
+-    return m_isBatteryConservationModeSupported;
+-}
+-
+-void ExternalServiceSettings::setSavedBatteryConservationMode(bool enabled)
+-{
+-    bool wasSavedBatteryConservationModeSupported = isBatteryConservationModeSupported();
+-    m_savedBatteryConservationMode = enabled;
+-    if (wasSavedBatteryConservationModeSupported != isBatteryConservationModeSupported()) {
+-        Q_EMIT isBatteryConservationModeSupportedChanged();
+-    }
++        || (isChargeStopThresholdSupported() && m_chargeStopThreshold != m_savedChargeStopThreshold);
+ }
+ 
+ bool ExternalServiceSettings::isChargeStartThresholdSupported() const
+@@ -198,21 +137,6 @@ void ExternalServiceSettings::setSavedChargeStopThreshold(int threshold)
+     }
+ }
+ 
+-bool ExternalServiceSettings::batteryConservationMode() const
+-{
+-    return m_batteryConservationMode;
+-}
+-
+-void ExternalServiceSettings::setBatteryConservationMode(bool enabled)
+-{
+-    if (enabled == m_batteryConservationMode) {
+-        return;
+-    }
+-    m_batteryConservationMode = enabled;
+-    Q_EMIT batteryConservationModeChanged();
+-    Q_EMIT settingsChanged();
+-}
+-
+ int ExternalServiceSettings::chargeStartThreshold() const
+ {
+     return m_chargeStartThreshold;
+diff --git a/kcmodule/profiles/ExternalServiceSettings.h b/kcmodule/profiles/ExternalServiceSettings.h
+index c9205273..01f3525f 100644
+--- a/kcmodule/profiles/ExternalServiceSettings.h
++++ b/kcmodule/profiles/ExternalServiceSettings.h
+@@ -1,6 +1,5 @@
+ /*
+  *  SPDX-FileCopyrightText: 2023 Jakob Petsovits <jpetso@petsovits.com>
+- *  SPDX-FileCopyrightText: 2024 Fabian Arndt <fabian.arndt@root-core.net>
+  *
+  *  SPDX-License-Identifier: GPL-2.0-or-later
+  */
+@@ -8,7 +7,6 @@
+ #pragma once
+ 
+ #include <QObject>
+-#include <KAuth/ExecuteJob>
+ 
+ class QWindow;
+ 
+@@ -21,28 +19,23 @@ class ExternalServiceSettings : public QObject
+ 
+     Q_PROPERTY(int chargeStartThreshold READ chargeStartThreshold WRITE setChargeStartThreshold NOTIFY chargeStartThresholdChanged)
+     Q_PROPERTY(int chargeStopThreshold READ chargeStopThreshold WRITE setChargeStopThreshold NOTIFY chargeStopThresholdChanged)
+-    Q_PROPERTY(int batteryConservationMode READ batteryConservationMode WRITE setBatteryConservationMode NOTIFY batteryConservationModeChanged)
+ 
+ public:
+     explicit ExternalServiceSettings(QObject *parent);
+ 
+     bool isSaveNeeded() const;
+ 
+-    bool batteryConservationMode() const;
+     int chargeStartThreshold() const;
+     int chargeStopThreshold() const;
+ 
+-    bool isBatteryConservationModeSupported() const;
+     bool isChargeStartThresholdSupported() const;
+     bool isChargeStopThresholdSupported() const;
+-
+     bool chargeStopThresholdMightNeedReconnect() const;
+ 
+ public Q_SLOTS:
+     void load(QWindow *parentWindowForKAuth = nullptr);
+     void save(QWindow *parentWindowForKAuth = nullptr);
+ 
+-    void setBatteryConservationMode(bool);
+     void setChargeStartThreshold(int);
+     void setChargeStopThreshold(int);
+ 
+@@ -50,36 +43,23 @@ Q_SIGNALS:
+     void settingsChanged();
+ 
+     // settings, which in addition to their own signal also trigger settingsChanged()
+-    void batteryConservationModeChanged();
+     void chargeStartThresholdChanged();
+     void chargeStopThresholdChanged();
+ 
+     // not settings per se, so these don't trigger settingsChanged()
+-    void isBatteryConservationModeSupportedChanged();
+     void isChargeStartThresholdSupportedChanged();
+     void isChargeStopThresholdSupportedChanged();
+     void chargeStopThresholdMightNeedReconnectChanged();
+ 
+ private:
+-    void setSavedBatteryConservationMode(bool);
+     void setSavedChargeStartThreshold(int);
+     void setSavedChargeStopThreshold(int);
+     void setChargeStopThresholdMightNeedReconnect(bool);
+ 
+-    void executeChargeThresholdHelperAction(const QString &actionName,
+-                                            QWindow *parentWindowForKAuth,
+-                                            const QVariantMap &arguments,
+-                                            const std::function<void(KAuth::ExecuteJob *job)> callback);
+-
+-    bool m_batteryConservationMode;
+     int m_chargeStartThreshold;
+     int m_chargeStopThreshold;
+-
+-    bool m_savedBatteryConservationMode;
+     int m_savedChargeStartThreshold;
+     int m_savedChargeStopThreshold;
+-
+-    bool m_isBatteryConservationModeSupported;
+     bool m_chargeStopThresholdMightNeedReconnect;
+ };
+ 
+diff --git a/kcmodule/profiles/PowerKCM.cpp b/kcmodule/profiles/PowerKCM.cpp
+index bd999ff8..85184994 100644
+--- a/kcmodule/profiles/PowerKCM.cpp
++++ b/kcmodule/profiles/PowerKCM.cpp
+@@ -151,7 +151,6 @@ PowerKCM::PowerKCM(QObject *parent, const KPluginMetaData &metaData)
+             this,
+             &PowerKCM::isChargeStartThresholdSupportedChanged);
+     connect(m_externalServiceSettings, &ExternalServiceSettings::isChargeStopThresholdSupportedChanged, this, &PowerKCM::isChargeStopThresholdSupportedChanged);
+-    connect(m_externalServiceSettings, &ExternalServiceSettings::isBatteryConservationModeSupportedChanged, this, &PowerKCM::isBatteryConservationModeSupportedChanged);
+     connect(m_externalServiceSettings,
+             &ExternalServiceSettings::chargeStopThresholdMightNeedReconnectChanged,
+             this,
+@@ -291,11 +290,6 @@ void PowerKCM::setSupportsBatteryProfiles(bool supportsBatteryProfiles)
+     Q_EMIT supportsBatteryProfilesChanged();
+ }
+ 
+-bool PowerKCM::isBatteryConservationModeSupported() const
+-{
+-    return m_externalServiceSettings->isBatteryConservationModeSupported();
+-}
+-
+ bool PowerKCM::isChargeStartThresholdSupported() const
+ {
+     return m_externalServiceSettings->isChargeStartThresholdSupported();
+diff --git a/kcmodule/profiles/PowerKCM.h b/kcmodule/profiles/PowerKCM.h
+index 36814ad0..efcfcb18 100644
+--- a/kcmodule/profiles/PowerKCM.h
++++ b/kcmodule/profiles/PowerKCM.h
+@@ -65,7 +65,6 @@ class PowerKCM : public KQuickManagedConfigModule
+     Q_PROPERTY(bool isLidPresent READ isLidPresent NOTIFY isLidPresentChanged)
+     Q_PROPERTY(bool isPowerButtonPresent READ isPowerButtonPresent NOTIFY isPowerButtonPresentChanged)
+ 
+-    Q_PROPERTY(bool isBatteryConservationModeSupported READ isBatteryConservationModeSupported NOTIFY isBatteryConservationModeSupportedChanged)
+     Q_PROPERTY(bool isChargeStartThresholdSupported READ isChargeStartThresholdSupported NOTIFY isChargeStartThresholdSupportedChanged)
+     Q_PROPERTY(bool isChargeStopThresholdSupported READ isChargeStopThresholdSupported NOTIFY isChargeStopThresholdSupportedChanged)
+     Q_PROPERTY(bool chargeStopThresholdMightNeedReconnect READ chargeStopThresholdMightNeedReconnect NOTIFY chargeStopThresholdMightNeedReconnectChanged)
+@@ -97,7 +96,6 @@ public:
+     bool isLidPresent() const;
+     bool isPowerButtonPresent() const;
+ 
+-    bool isBatteryConservationModeSupported() const;
+     bool isChargeStartThresholdSupported() const;
+     bool isChargeStopThresholdSupported() const;
+     bool chargeStopThresholdMightNeedReconnect() const;
+@@ -127,7 +125,6 @@ Q_SIGNALS:
+     void isLidPresentChanged();
+     void isPowerButtonPresentChanged();
+ 
+-    void isBatteryConservationModeSupportedChanged();
+     void isChargeStartThresholdSupportedChanged();
+     void isChargeStopThresholdSupportedChanged();
+     void chargeStopThresholdMightNeedReconnectChanged();
+diff --git a/kcmodule/profiles/ui/GlobalConfig.qml b/kcmodule/profiles/ui/GlobalConfig.qml
+index 454f6326..511824ac 100644
+--- a/kcmodule/profiles/ui/GlobalConfig.qml
++++ b/kcmodule/profiles/ui/GlobalConfig.qml
+@@ -221,18 +221,7 @@ Kirigami.ScrollablePage {
+             id: chargeLimitHeader
+             Kirigami.FormData.label: i18nc("@title:group", "Charge Limit")
+             Kirigami.FormData.isSection: true
+-            visible: chargeStopThresholdSpin.visible || chargeStartThresholdSpin.visible || batteryConservationModeCheck.visible
+-        }
+-
+-        QQC2.CheckBox {
+-            id: batteryConservationModeCheck
+-            visible: kcm.isBatteryConservationModeSupported
+-            checked: externalSettings.batteryConservationMode
+-            onToggled: externalSettings.batteryConservationMode = checked
+-
+-            Kirigami.FormData.label: i18nc("@label:checkbox", "&Battery protection:")
+-            text: i18nc("@text:checkbox", "Limit the maximum battery charge")
+-            Accessible.name: text
++            visible: chargeStopThresholdSpin.visible || chargeStartThresholdSpin.visible
+         }
+ 
+         QQC2.SpinBox {
+@@ -330,8 +319,7 @@ Kirigami.ScrollablePage {
+             Kirigami.FormData.isSection: true
+             // iFixit suggests keeping the charge between 40-80%, Battery University lists 25-85% as a decent tradeoff.
+             // Show this reminder only when high charge thresholds are configured.
+-            visible: (chargeLimitHeader.visible && !chargeStopThresholdReconnectMessage.visible && chargeStopThresholdSpin.value > 85)
+-                  || (batteryConservationModeCheck.visible && !batteryConservationModeCheck.checked)
++            visible: chargeLimitHeader.visible && !chargeStopThresholdReconnectMessage.visible && chargeStopThresholdSpin.value > 85
+             implicitWidth: Kirigami.Units.gridUnit * 16
+             text: i18nc("@info", "Regularly charging the battery close to 100%, or fully discharging it, may accelerate deterioration of battery health. By limiting the maximum battery charge, you can help extend the battery lifespan.")
+         }
+-- 
+2.45.2
+

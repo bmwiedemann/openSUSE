@@ -1,0 +1,74 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5a19c103d20455668404b774a6ef5929</srcmd5>
+    <version>6.0.1</version>
+    <time>1710167346</time>
+    <user>anag+factory</user>
+    <comment>Plasma 6.0.1</comment>
+    <requestid>1155705</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>dae6507162c1091ea2addc56d530e4ab</srcmd5>
+    <version>6.0.2</version>
+    <time>1710434631</time>
+    <user>anag+factory</user>
+    <comment>Plasma 6.0.2 + libksysguard5-helper upgrade fix + icon upgrade fix + gtk theme fix (forwarded request 1157674 from Vogtinator)</comment>
+    <requestid>1157736</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8adc974f6e95d7461830d2108c70d361</srcmd5>
+    <version>6.0.3</version>
+    <time>1711630443</time>
+    <user>anag+factory</user>
+    <comment>Plasma 6.0.3. The release actually builds this time! (After other distros already found major issues...) (forwarded request 1162359 from Vogtinator)</comment>
+    <requestid>1162462</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>9b257ad28a3e861ff6b0b878ed689c57</srcmd5>
+    <version>6.0.4</version>
+    <time>1713471112</time>
+    <user>anag+factory</user>
+    <comment>Plasma 6.0.4(.1) (forwarded request 1168499 from Vogtinator)</comment>
+    <requestid>1168777</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>ceb5dc7aead90155a344f44a5632e416</srcmd5>
+    <version>6.0.4</version>
+    <time>1715872393</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1174191</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>82e4c382cbdd1c64e4bde497e696735a</srcmd5>
+    <version>6.0.5</version>
+    <time>1716803178</time>
+    <user>anag+factory</user>
+    <comment>Plasma 6.0.5(.1) (forwarded request 1176041 from Vogtinator)</comment>
+    <requestid>1176140</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>87a0aec85c09235db4a3685d3cb58457</srcmd5>
+    <version>6.1.0</version>
+    <time>1719055361</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1181277</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>125090245e3ba8ecd15409d463374e4f</srcmd5>
+    <version>6.1.1</version>
+    <time>1719496773</time>
+    <user>anag+factory</user>
+    <comment>Plasma 6.1.1 (forwarded request 1183337 from Vogtinator)</comment>
+    <requestid>1183406</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>1dba8e0f2e7cf2458f51e454d9b176e3</srcmd5>
+    <version>6.1.2</version>
+    <time>1720102878</time>
+    <user>anag+factory</user>
+    <comment>Plasma 6.1.2 (forwarded request 1184925 from Vogtinator)</comment>
+    <requestid>1185035</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,160 @@
+-------------------------------------------------------------------
+Tue Jul  2 17:34:34 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.1.2:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.1.2
+- Changes since 6.1.1:
+  * daemon/controllers: Reintroduce a mutex around ddca_open_display2() (kde#489169)
+  * update version for new release
+  * ddcutildisplay: give some time before changing brightness after the monitor resumes
+  * core: reload actions on brightness controller changes
+  * update version for new release
+- Rebase 0001-Revert-Added-setting-for-battery-conservation-mode-L.patch
+
+-------------------------------------------------------------------
+Tue Jun 25 17:15:54 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.1.1:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.1.1
+- Changes since 6.1.0:
+  * update version for new release
+  * Fix initial UI state of Battery protection setting (kde#488954)
+  * daemon: Limit KAuth backlighthelper calls to only one at a time (kde#481003)
+  * skip ddcutil initialization when POWERDEVIL_NO_DDCUTIL is set
+  * update version for new release
+- Rebase 0001-Revert-Added-setting-for-battery-conservation-mode-L.patch
+
+-------------------------------------------------------------------
+Mon Jun 17 09:43:38 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to revert feature until new polkit rules got whitelisted:
+  * 0001-Revert-Added-setting-for-battery-conservation-mode-L.patch
+
+-------------------------------------------------------------------
+Thu Jun 13 10:58:59 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.1.0:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.1.0
+- Changes since 6.0.90:
+  * update version for new release
+  * daemon/controllers/kwinbrightness: remove brightness control of disabled screens
+  * daemon: Don't disconnect from a null object (kde#487647)
+  * OSD: Close on focus lost
+  * OSD: start cleanup timer
+
+-------------------------------------------------------------------
+Sat May 25 11:20:12 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.0.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.0.90
+- Too many changes to list here
+
+-------------------------------------------------------------------
+Wed May 22 07:43:21 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.0.5:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.0.5
+- Changes since 6.0.4:
+  * update version for new release
+  * kcmodule: Hide profile load/unload fields if battery profiles are absent
+  * [osd] Force Plasma styling (kde#480254)
+
+-------------------------------------------------------------------
+Wed May 15 08:13:04 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Recommend ddcutil-i2c-udev-rules (boo#1224197)
+
+-------------------------------------------------------------------
+Wed Apr 17 08:13:55 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.0.4:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.0.4
+- Changes since 6.0.3:
+  * update version for new release
+  * actions/dimdisplay: Improve log messages
+  * actions/dimdisplay: Don't dim when screen changes are inhibited
+  * daemon: Avoid constantly locking ddcutil display handles (kde#481793)
+  * daemon: Store label for DDCutilBrightness as QString directly
+  * actions/handlebuttonevents: Require lid-open again to track kb brightness (kde#482306)
+  * update version for new release
+
+-------------------------------------------------------------------
+Tue Mar 26 18:06:58 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.0.3:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.0.3
+- Changes since 6.0.2:
+  * update version for new release
+  * kcmodule: Don't crash when a configured button action is unsupported (kde#482668)
+
+-------------------------------------------------------------------
+Wed Mar 13 09:10:38 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.0.2:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.0.2
+- Changes since 6.0.1:
+  * update version for new release
+  * actions/dpms: Ignore turn-off triggers when action is disabled (kde#481308,kde#482077)
+  * actions/powerprofile: guard against empty profiles list in readProperties (kde#483216)
+  * Check if idle inhibitor is active before blanking the screen (kde#482141)
+  * Make OSD labels translatable
+  * update version for new release
+
+-------------------------------------------------------------------
+Wed Mar  6 08:40:34 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.0.1:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.0.1
+- Changes since 6.0.0:
+  * update version for new release
+  * [dimdisplay] Respect profile configurations
+
+-------------------------------------------------------------------
+Mon Mar  4 18:52:31 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Add Provides/Obsoletes to replace Plasma 5
+
+-------------------------------------------------------------------
+Wed Feb 21 18:36:41 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.0.0:
+  * New bugfix release
+  * Release announcement not available yet
+- Changes since 5.93.0:
+  * update version for new release
+  * kcmodule: Remove separator line now that NavigationTabBar provides it
+  * kbd backlight: Fix double brightness restore on LidOpen-resume
+  * update version for new release
+
+-------------------------------------------------------------------
+Wed Jan 31 17:38:28 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.93.0 (6.0 RC 2):
+  * New bugfix release
+  * See https://kde.org/announcements/megarelease/6/rc2/ for details
+- Changes since 5.92.0:
+  * RC 1 version dep
+  * add a version for dependencies so it does not break CI https://invent.kde.org/plasma/bluedevil/-/merge_requests/156
+  * Allow disabling DDC brightness via env variable
+  * ddcutil: skip invalid displays (kde#476375)
+
+-------------------------------------------------------------------
+Mon Jan 15 21:09:14 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.92.0 (6.0 RC 1)
+  * For more details please see:
+    https://kde.org/announcements/megarelease/6/rc1/
+
+-------------------------------------------------------------------
+Mon Jul 10 09:53:19 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Init powerdevil6
