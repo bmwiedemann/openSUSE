@@ -1,0 +1,45 @@
+-------------------------------------------------------------------
+Tue Aug  1 05:05:45 UTC 2017 - coolo@suse.com
+
+- updated to 0.22
+   see /usr/share/doc/packages/perl-B-Hooks-OP-Check/Changes
+
+  0.22      2017-07-31 16:25:05Z
+    * Use cleaner wrap_op_checker() API to control op checking.
+    * Use core's Perl_check_t typedef instead of inventing our own.
+
+-------------------------------------------------------------------
+Fri May 12 05:06:39 UTC 2017 - coolo@suse.com
+
+- updated to 0.21
+   see /usr/share/doc/packages/perl-B-Hooks-OP-Check/Changes
+
+-------------------------------------------------------------------
+Wed Dec 21 09:26:03 UTC 2011 - coolo@suse.de
+
+- regenerate with cpanspec
+
+-------------------------------------------------------------------
+Wed Dec 21 09:24:17 UTC 2011 - coolo@suse.com
+
+- update to 0.19
+  * Fix hooking protocol, which was broken in a way that could result in losing
+    checkers hooked in by other modules.
+  * Add MYMETA.{json,yml} to MANIFEST.SKIP and .gitignore.
+  * New repository location for release by Zefram.
+
+-------------------------------------------------------------------
+Wed Dec  1 06:55:31 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Nov 29 18:29:22 UTC 2010 - coolo@novell.com
+
+- remove /var/adm/perl-modules
+
+-------------------------------------------------------------------
+Thu Nov  4 17:30:57 UTC 2010 - pascal.bleser@opensuse.org
+
+- initial package (0.18)
+
