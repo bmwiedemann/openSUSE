@@ -115,7 +115,7 @@ mkdir -p %{buildroot}/%{_defaultdocdir}/%{name}
 cp -av ANNOUNCE AUTHORS COPYING INSTALL NEWS README %{buildroot}/%{_defaultdocdir}/%{name}
 cd ../aview-1.3.0
 PATH=%{buildroot}/%{_bindir}:$PATH \
-   CFLAGS="%{optflags} -I%{buildroot}/usr/include" \
+   CFLAGS="%{optflags} -fpermissive -I%{buildroot}/usr/include" \
    LDFLAGS="-L%{buildroot}/%{_libdir}" \
    LD_LIBRARY_PATH="%{buildroot}/%{_libdir}" \
    ./configure --prefix=/usr --mandir=%{_mandir}
@@ -125,7 +125,7 @@ mkdir -p %{buildroot}/%{_defaultdocdir}/%{name}/aview
 cp -av README* ANNOUNCE COPYING TODO *.lsm %{buildroot}/%{_defaultdocdir}/%{name}/aview
 cd -
 cd aavga-1.0
-make CFLAGS="%{optflags}"
+make CFLAGS="%{optflags} -fpermissive"
 cp -av aavga.so %{buildroot}/%_libdir
 mkdir -p %{buildroot}/%{_defaultdocdir}/%{name}/aavga
 cp -av aavga.lsm COPYING README %{buildroot}/%{_defaultdocdir}/%{name}/aavga

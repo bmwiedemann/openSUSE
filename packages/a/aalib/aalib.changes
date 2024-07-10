@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jul  4 14:25:46 UTC 2024 - Martin Jambor <mjambor@suse.com>
+
+- Add -fpermissive to the remaining uses of optflags. [boo#1223910]
+
+-------------------------------------------------------------------
 Thu May  9 11:39:03 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Remove conditionals for SUSE 11.3
