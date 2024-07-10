@@ -1,0 +1,77 @@
+-------------------------------------------------------------------
+Sat Oct 10 09:09:05 UTC 2015 - coolo@suse.com
+
+- updated to 0.49
+   see /usr/share/doc/packages/perl-MooseX-Method-Signatures/Changes
+
+  0.49      2015-10-07 01:07:44Z
+    - added x_deprecated to metadata
+
+-------------------------------------------------------------------
+Mon Apr 13 19:24:50 UTC 2015 - coolo@suse.com
+
+- updated to 0.48
+   see /usr/share/doc/packages/perl-MooseX-Method-Signatures/Changes
+
+  0.48      2014-09-20 17:46:45Z
+    - fix tests that fail on altered warning messages in perl 5.21.4 (see perl
+      RT#121638)
+
+-------------------------------------------------------------------
+Mon Mar 10 06:30:46 UTC 2014 - coolo@suse.com
+
+- updated to 0.47
+ - update configure_requires checking in Makefile.PL, add CONTRIBUTING file
+
+-------------------------------------------------------------------
+Fri Oct  4 09:15:24 UTC 2013 - coolo@suse.com
+
+- updated to 0.46
+  - re-release with fixed compile test
+  - removed use of deprecated Class::MOP::load_class
+  - documentation reference added, pointing to the WARNING section in
+    MooseX::Declare, regarding future utility of this module
+  - repository migrated to the github moose organization
+
+-------------------------------------------------------------------
+Wed Jun  5 18:57:11 UTC 2013 - coolo@suse.com
+
+- updated to 0.44
+  * Fix broken test in 5.17.6, where hash ordering is now randomized
+    (RT#81388, Karen Etheridge)
+
+-------------------------------------------------------------------
+Wed May 30 12:26:17 UTC 2012 - coolo@suse.com
+
+- updated to 0.43
+  * Bump dependency on MooseX::Types to 0.35 to resolve issues with recent
+    MooseX::Types releases.
+
+  * Mark failing test due to Eval::Closure/Devel::Declare issues as TODO until
+    things are fixed, to at least allow recent versions to install without
+    errors.
+
+  * Add explicit dependency on Eval::Closure, in an effort to get more
+    diagnostics from failing cpantesters reports.  No functionality changes.
+
+  * Loosen a regexp in a test, to handle the new format emitted by Carp 1.25.
+
+  * The test suite now uses Test::Fatal instead of Test::Exception (Karen
+    Etheridge).
+  * Bump dependency on MooseX::Types::Structured to 0.24, which contains
+    more detailed error messages as well as some performance enhancements.
+
+  * Require B::Hooks::EndOfScope 0.10 and Module::Runtime 0.012, fixing various
+    perl 5.8 breakages.
+
+-------------------------------------------------------------------
+Sun Dec 25 16:24:46 UTC 2011 - coolo@suse.com
+
+- update to 0.37
+  * Don't look in the stash for traits or types that contain 
+
+-------------------------------------------------------------------
+Thu Feb 17 01:08:48 CET 2011 - pascal.bleser@opensuse.org
+
+- initial version (0.36)
+
