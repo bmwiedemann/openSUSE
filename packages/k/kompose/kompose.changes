@@ -1,0 +1,330 @@
+-------------------------------------------------------------------
+Mon Jun 03 06:19:45 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.34.0:
+  * 1.34.0 Release (#1890)
+  * docs: update user guide (#1882)
+  * cleanup: removes uneeded annotation when not using network
+    policy (#1884)
+  * bug: fix annotation bug (#1887)
+  * tests: fix flakey tests (#1886)
+  * chore: fix test file names (#1889)
+  * update owners (#1888)
+  * fix: expose container to host only with labels (#1880)
+  * feature: change example to use non-root (#1879)
+  * update references to just compose (#1869)
+
+-------------------------------------------------------------------
+Fri Apr 26 05:36:46 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.33.0:
+  * docs: update readme by @cdrage in #1807
+  * docs(cli): introduce examples in the kompose command by
+    @martinjirku in #1808
+  * chore: update kompose convert --help by @leovct in #1813
+  * docs(1815): add trademarks link ref to linux foundation by
+    @martinjirku in #1816
+  * fix issue 1793 by @sosan in #1798
+  * fix client/convert (issue
+    https://github.com/kubernetes/kompose/issue… by @realgam3 in
+    #1819
+  * Cleanup README.md by @utkarsh-singh1 in #1823
+  * fix issue 1778 by @sosan in #1799
+  * #1821 update Dockerfile to alwyas use head Alpine by @thelamer
+    in #1824
+  * fix issue 1778 update1 by @sosan in #1826
+  * fix issues #1829, #1830 by @realgam3 in #1831
+  * chore: replace AhmedGrati with TessaIO by @TessaIO in #1835
+  * chore: unify e2e tests to compose yaml by @TessaIO in #1834
+  * chore(deps)(deps): bump golang.org/x/tools from 0.16.1 to
+    0.19.0 by @dependabot in #1836
+  * Adds ability to specify the stage/target of a multistage
+    dockerfile by @sosan in #1841
+  * adds a label for initContainers, test and user-guide by @sosan
+    in #1840
+  * chore(deps): bump Go version and
+    github.com/compose-spec/compose-go by @microsec-ambrose in
+    #1838
+  * chore: fix function name in comment by @racequite in #1861
+  * Feature 1635 - added labels to generate HPA by @sosan in #1847
+  * chore: fix some typos in comments by @cuiyourong in #1863
+  * customize resource name individually via labels
+    kompose.service.name_override by @sosan in #1837
+  * add configmaps derived from file and dir by @sosan in #1852
+  * add networkmode service: by @sosan in #1848
+  * fix 1853 by @sosan in #1854
+  * update dependencies to last version and go 1.22 by @sosan in
+    #1865
+  * 1.33.0 Release by @cdrage in #1866
+
+-------------------------------------------------------------------
+Thu Apr 04 05:52:39 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.32.0:
+  * docs: update installation page to have arm64 mention by @cdrage
+    in #1736
+  * chore(deps)(deps): bump golang.org/x/net from 0.15.0 to 0.17.0
+    by @dependabot in #1734
+  * chore(deps)(deps): bump github.com/google/go-cmp from 0.5.9 to
+    0.6.0 by @dependabot in #1733
+  * fix e2e test by @AhmedGrati in #1737
+  * chore(deps)(deps): bump k8s.io/apimachinery from 0.28.2 to
+    0.28.3 by @dependabot in #1742
+  * fix: make transforming more deterministic by @AhmedGrati in
+    #1744
+  * fix: env_file configmap name length by @ThijsBroersen in #1743
+  * chore(deps)(deps): bump github.com/docker/docker from
+    23.0.3+incompatible to 24.0.7+incompatible by @dependabot in
+    #1747
+  * chore(deps)(deps): bump github.com/compose-spec/compose-go from
+    1.19.0 to 1.20.0 by @dependabot in #1740
+  * chore(deps)(deps): bump golang.org/x/tools from 0.13.0 to
+    0.14.0 by @dependabot in #1723
+  * remove status field from generated yaml by @shubhindia in #1746
+  * chore: add warning when no service is selected by @AhmedGrati
+    in #1750
+  * chore(deps)(deps): bump github.com/spf13/cobra from 1.7.0 to
+    1.8.0 by @dependabot in #1756
+  * test: add unit-test for PR 1743 v2 by @AhmedGrati in #1752
+  * feat: Add COMPOSE_FILE env variable by @AhmedGrati in #1753
+  * fix: disable annotations when flag
+    --with-kompose-annotation=false is specified by @AhmedGrati in
+    #1754
+  * fix: lowercase resources names by @AhmedGrati in #1755
+  * chore(deps)(deps): bump k8s.io/api from 0.28.2 to 0.28.4 by
+    @dependabot in #1762
+  * chore(deps)(deps): bump golang.org/x/tools from 0.14.0 to
+    0.15.0 by @dependabot in #1760
+  * chore(deps)(deps): bump github.com/compose-spec/compose-go from
+    1.20.0 to 1.20.1 by @dependabot in #1761
+  * deleted CHANGELOG.md by @kundan2707 in #1765
+  * updated link for daemonset by @kundan2707 in #1767
+  * chore(deps)(deps): bump github.com/compose-spec/compose-go from
+    1.20.1 to 1.20.2 by @dependabot in #1768
+  * Removed fedora installation instruction from installation.md by
+    @utkarsh-singh1 in #1774
+  * chore(deps)(deps): bump github.com/containerd/containerd from
+    1.6.18 to 1.6.26 by @dependabot in #1791
+  * chore(ci)(deps): bump actions/upload-artifact from 3 to 4 by
+    @dependabot in #1784
+  * chore(deps)(deps): bump golang.org/x/tools from 0.15.0 to
+    0.16.1 by @dependabot in #1781
+  * chore(ci)(deps): bump actions/setup-go from 4 to 5 by
+    @dependabot in #1776
+  * chore(deps)(deps): bump github.com/spf13/cast from 1.5.1 to
+    1.6.0 by @dependabot in #1769
+  * fix issue #1683 by @realgam3 in #1684
+  * feat(1765): remove useless keys from the output yml by
+    @martinjirku in #1775
+  * Initialize OpenVEX feed by @dipesh-rawat in #1787
+  * test: fix e2e tests for configmap pod test by @AhmedGrati in
+    #1801
+  * Add new examples to kompose by @cdrage in #1803
+  * 2024 copyright change by @cdrage in #1805
+  * change wording for redis leader by @cdrage in #1804
+  * Add Labels for CronJob #1795 by @realgam3 in #1806
+  * 1.32.0 Release by @cdrage in #1811
+
+-------------------------------------------------------------------
+Thu Apr 04 05:39:50 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.31.2:
+  * 1.31.2 Release (#1735)
+  * only add namespace if specified (#1731)
+
+-------------------------------------------------------------------
+Thu Apr 04 05:34:37 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.31.1:
+  * 1.31.1 Release (#1726)
+  * bug: fixes bug with error out with using kompose convert with
+    no -f (#1725)
+
+-------------------------------------------------------------------
+Thu Apr 04 05:01:56 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.31.0:
+  * 1.31.0 Release (#1714)
+  * Apply suggestions from code review
+  * chore(deps)(deps): bump gotest.tools/v3 from 3.5.0 to 3.5.1
+    (#1710)
+  * fix: typo
+  * fix: removing unused property
+  * test: adding tests for convert
+  * Delete output.yaml
+  * Adding support for --profile cmd option
+
+-------------------------------------------------------------------
+Tue Jul 18 13:53:42 UTC 2023 - Stefan Weiberg <opensuse@hibiki.eu>
+
+- Fix spec to require go >= 1.18
+
+-------------------------------------------------------------------
+Tue Jul 18 13:42:50 UTC 2023 - Stefan Weiberg <opensuse@hibiki.eu>
+
+- Update to version 1.30.0:
+  * 1.30.0 Release (#1672)
+  * Feat add ns generation (#1667)
+  * Feat: add read only containers support (#1670)
+  * test: add functional tests for read only fs support
+  * test: add unit-test for read only fs support
+  * feat: add read only fs support
+  * fix: remove lower case of the host generation
+  * fix missing image pull secrets
+
+-------------------------------------------------------------------
+Thu Jun 29 07:03:43 UTC 2023 - opensuse@hibiki.eu
+
+- Update to version 1.28.0:
+  * 1.28.0 Release (#1562)
+  * remove unused js files (#1561)
+  * owners: Remove surajssd (#1555)
+  * chore: require go >=1.18, bump deps and get rid of replace directives (#1552)
+  * Fix CI (#1550)
+  * Remove old scripts, modify manual syncing doc script (#1549)
+  * feat: migrate from libcompose to compose-go (#1547)
+  * fix: update match output function (#1546)
+  * Fix: Make the out flag print to one file using seperator (#1541)
+  * chore: add AhmedGrati as owner of Kompose (#1540)
+
+-------------------------------------------------------------------
+Thu Apr 07 16:06:48 UTC 2022 - sweiberg@suse.com
+
+- Update to version 1.26.1:
+  * 1.26.1 Release (#1470)
+  * Added more installation instructions (#1468)
+  * Fix ImageStream tags in openshift provider mode (#1461)
+  * 1.26.0 Release (#1460)
+  * Infer storage type using label (#1456)
+  * Add make rule for darwin arm64 in cross target (#1455)
+  * Add support for placement preferences docker-compose v3.3+ (#1425)
+  * Add  support for statefulset controller. (#1452)
+  * Support tcp/http liveness/readiness probe (#1449)
+  * Update windows bin ext (#1451)
+
+-------------------------------------------------------------------
+Mon Jun 07 09:07:46 UTC 2021 - sweiberg@suse.com
+
+- Update to version 1.22.0:
+  * 1.22.0 Release (gh#kubernetes/kompose#1329)
+  * Update Dockerfile (gh#kubernetes/kompose#1320)
+  * Update networkpolicy version (gh#kubernetes/kompose#1307)
+  * Remove vendor (gh#kubernetes/kompose#1306)
+  * Go mod (gh#kubernetes/kompose#1305)
+  * Add missing pod ano (gh#kubernetes/kompose#1303)
+  * Remove networkpolicy dup (gh#kubernetes/kompose#1302)
+  * fix stop_grace_period in v3 (gh#kubernetes/kompose#1300)
+  * Update user guide (gh#kubernetes/kompose#1299)
+  * Remove up and down cmd (gh#kubernetes/kompose#1297)
+- Updated package build to now use go mod instead of glide
+- packaging bash-completion for kompose
+- dropping kompose-make-pie.patch:
+  * not using the Makefile for compiling anymore
+  * pie build mode is now part of the %build step
+
+-------------------------------------------------------------------
+Wed Jan 27 11:45:28 UTC 2021 - Jan Baier <jbaier@suse.com>
+
+- Update to version 1.21.0:
+  * Ingress path names are now supported (gh#kubernetes/kompose#1245)
+  * V2 restart unless-stopped is not supported (gh#kubernetes/kompose#1244)
+  * You're now able to provide an external apiserver for Kubernetes (gh#kubernetes/kompose#1243)
+  * MacPorts support has been added to the documentation (gh#kubernetes/kompose#1242)
+  * deploy.update_config will now convert to rolling update within Kubernetes (gh#kubernetes/kompose#1232)
+  * Deployment labels are now supported (gh#kubernetes/kompose#1231)
+  * Config short syntax bug fixes (gh#kubernetes/kompose#1230)
+  * Code refactoring (gh#kubernetes/kompose#1228)
+  * Support port expose (gh#kubernetes/kompose#1227)
+  * Updated documentation regarding push image (gh#kubernetes/kompose#1225)
+  * Fix duplicate in container spec (gh#kubernetes/kompose#1223)
+  * Fixed v3 hostpath path error (gh#kubernetes/kompose#1222)
+  * Fixed hostpath path translate error (gh#kubernetes/kompose#1221)
+  * Added notes regarding windows (gh#kubernetes/kompose#1220)
+  * Fixed YAML indentation (gh#kubernetes/kompose#1219)
+  * Dep update (gh#kubernetes/kompose#1218)
+  * Added support for configmap as a volume (gh#kubernetes/kompose#1216)
+  * Fixed configmap name case error (gh#kubernetes/kompose#1215)
+  * Merge will include deploy resources (gh#kubernetes/kompose#1214)
+  * User a service name when image name is empty when built (gh#kubernetes/kompose#1213)
+  * Fixed build (gh#kubernetes/kompose#1212)
+  * Support assign nodeport port in labels (gh#kubernetes/kompose#1212)
+  * Use new go version for build (gh#kubernetes/kompose#1209)
+  * Add flag to support store manifest when using kompose up (gh#kubernetes/kompose#1208)
+  * Updated API versioning (gh#kubernetes/kompose#1207)
+  * Removed duplicated entries of configmap (gh#kubernetes/kompose#1206)
+  * Fixed chart lint (gh#kubernetes/kompose#1205)
+  * Modify default kubernetes client apiserver URL (gh#kubernetes/kompose#1204)
+- Update to version 1.20.0:
+  * Added flag to push an imaging when using kompose up (gh#kubernetes/kompose#1147)
+  * Top level non-service keys are now merged in correctly when converting (gh#kubernetes/kompose#1187)
+  * networks is now an officially supported key (gh#kubernetes/kompose#1195)
+  * Added support for file based secrets (gh#kubernetes/kompose#1159)
+  * Multiple tests have been fixed (gh#kubernetes/kompose#1175) (gh#kubernetes/kompose#1197) (gh#kubernetes/kompose#1198)
+  * Updated documentation on endpoint_mode (gh#kubernetes/kompose#1151)
+  * Updated OWNERS (gh#kubernetes/kompose#1177)
+  * Fixed golint error (gh#kubernetes/kompose#1178)
+  * Binaries are now statically built (gh#kubernetes/kompose#1193)
+
+-------------------------------------------------------------------
+Mon Jul 27 10:45:49 UTC 2020 - Richard Brown <rbrown@suse.com>
+
+- Require python3-PyYAML
+
+-------------------------------------------------------------------
+Wed Nov 27 09:32:58 UTC 2019 - Stefan Weiberg <sweiberg@suse.com>
+
+- Update to version 1.19.0:
+  * Updated dependencies for Docker Compose 3.5+ (gh#kubernetes/kompose#1120)
+  * Fixed parser bug (gh#kubernetes/kompose#1121)
+  * Made Kompose go get-able again (gh#kubernetes/kompose#1139)
+  * Bug fix for container name (gh#kubernetes/kompose#1141)
+  * Includes the ability to build a Snap (gh#kubernetes/kompose#1153)
+  * Added Dockerfile (gh#kubernetes/kompose#1101)
+  * Copied Service Labels to Deployment Pod Spec thanks to @alanjds (gh#kubernetes/kompose#1166)
+  * Binaries are now statically built (gh#kubernetes/kompose#1169)
+  * Updated help output for kompose convert (gh#kubernetes/kompose#1171)
+
+-------------------------------------------------------------------
+Mon Apr  1 14:30:50 UTC 2019 - limux <sweiberg@suse.com>
+
+- Update to version 1.18.0:
+  * 1.18.0 Release (gh#kubernetes/kompose#1108)
+  * Add kompose.image-pull-secret and kompose.image-pull-policy (gh#kubernetes/kompose#1091)
+  * Support multiple hostnames on expose label in service for Kubernetes (gh#kubernetes/kompose#1092)
+  * Update introduction.md (gh#kubernetes/kompose#1090)
+  * Add label support to named volumes in docker compose v3 to Kubernetes (gh#kubernetes/kompose#1083)
+  * Fix log output specific warning info (gh#kubernetes/kompose#1084)
+  * fix typo: generting -> generating
+  * delete excess code
+  * Fix typos: accecpts -> accepts
+
+-------------------------------------------------------------------
+Thu Sep 13 09:43:07 UTC 2018 - Stefan Weiberg <sweiberg@suse.com>
+
+- Update to version 1.16.0:
+  * 1.16.0 Release (gh#kubernetes/kompose#1055)
+  * Add installation instructions for openSUSE/SLE (gh#kubernetes/kompose#1050)
+  * Fix environment with env_file bug
+  * Add surajnarwade in OWNER file (gh#kubernetes/kompose#1047)
+  * Unit Test added to Placement Constraints Custom Labels
+  * 1.15.0 Release (gh#kubernetes/kompose#1044)
+  * Typo fix in maven-example.md (gh#kubernetes/kompose#1021)
+  * support node.labels at placement
+
+-------------------------------------------------------------------
+Tue Jul 10 08:30:51 UTC 2018 - sweiberg@suse.com
+
+- applying fixes for building package in Virtualization:containers
+- drop set_version in obs-scm to support SLE
+
+-------------------------------------------------------------------
+Mon Jul  9 13:28:13 UTC 2018 - sweiberg@suse.com
+
+- following packaging guidelines for openSUSE
+- still based on kompose-v1.15.0
+
+-------------------------------------------------------------------
+Mon Jul  9 13:09:17 UTC 2018 - sweiberg@suse.com
+
+- initial package for openSUSE
+- kompose v1.15.0
