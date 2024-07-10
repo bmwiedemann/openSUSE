@@ -1,0 +1,102 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6329cf249253ae44260484a09756478f</srcmd5>
+    <version>0.019</version>
+    <time>1326141795</time>
+    <user>coolo</user>
+    <comment>new perl package</comment>
+    <requestid>99464</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>6329cf249253ae44260484a09756478f</srcmd5>
+    <version>0.019</version>
+    <time>1340183814</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>6329cf249253ae44260484a09756478f</srcmd5>
+    <version>0.019</version>
+    <time>1359109625</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>0642ade9e283639faae817c255f11091</srcmd5>
+    <version>0.020</version>
+    <time>1374932976</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>184386</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>0642ade9e283639faae817c255f11091</srcmd5>
+    <version>0.020</version>
+    <time>1379663596</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>e8de70fdf9c55533e30cbc7a92215ac9</srcmd5>
+    <version>0.021</version>
+    <time>1385490278</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>208453</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>0f12e1bfcef5bdddca682bcc54d6594f</srcmd5>
+    <version>0.022</version>
+    <time>1393610291</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>223898</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>179c6bee20befd3e5b44faf1f041b81b</srcmd5>
+    <version>0.023</version>
+    <time>1395147430</time>
+    <user>coolo</user>
+    <comment>update</comment>
+    <requestid>226355</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>179c6bee20befd3e5b44faf1f041b81b</srcmd5>
+    <version>0.023</version>
+    <time>1409302215</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>ae39a6ee314b503471dee838ad81b01b</srcmd5>
+    <version>0.025</version>
+    <time>1429346367</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>297251</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>a17677f8f95e2daf3a9b248c2daf6944</srcmd5>
+    <version>0.027</version>
+    <time>1626208659</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>906085</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>a64af0b6a220dee96d4f0328a1ce6e4a</srcmd5>
+    <version>0.028</version>
+    <time>1672851253</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1055907</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>42824a034ca4dc1f7d589d96c18e0c06</srcmd5>
+    <version>0.029</version>
+    <time>1675177827</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1062267</requestid>
+  </revision>
+</revisionlist>

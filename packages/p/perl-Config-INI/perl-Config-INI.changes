@@ -1,0 +1,92 @@
+-------------------------------------------------------------------
+Sun Jan 15 03:06:44 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.029
+   see /usr/share/doc/packages/perl-Config-INI/Changes
+
+  0.029     2023-01-13 20:57:41-05:00 America/New_York
+          - fix typo in Pod
+          - slightly clean up some archaicisms in source
+
+-------------------------------------------------------------------
+Mon Jan  2 03:07:30 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.028
+   see /usr/share/doc/packages/perl-Config-INI/Changes
+
+  0.028     2022-12-31 21:02:59-05:00 America/New_York
+          - update author contact info
+          - this library now requires perl v5.12
+
+-------------------------------------------------------------------
+Thu Jun 24 03:06:13 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.027
+   see /usr/share/doc/packages/perl-Config-INI/Changes
+
+  0.027     2021-06-22 22:27:53-04:00 America/New_York
+          - require Mixin::Linewise v0.110 to cope with new error message
+
+  0.026     2021-06-20 17:14:32-04:00 America/New_York
+          - update author contact info
+
+-------------------------------------------------------------------
+Thu Apr 16 17:27:26 UTC 2015 - coolo@suse.com
+
+- updated to 0.025
+   see /usr/share/doc/packages/perl-Config-INI/Changes
+
+  0.025     2014-11-16 14:29:37-05:00 America/New_York
+          - run preprocess_line before can_ignore
+          - bump up required Mixin::Linewise to help out Win32 users
+  
+  0.024     2014-04-05 21:31:54-04:00 America/New_York
+          - MIGHT BREAK YOUR CODE (but probably won't):
+            handle_unparsed_line now receives its arguments in reversed order
+          - new methods exist and more methods now receive the filehandle to make
+            subclassing more flexible
+
+-------------------------------------------------------------------
+Mon Mar 17 08:29:47 UTC 2014 - coolo@suse.com
+
+- updated to 0.023
+ - specify minimum Mixin::Linewise requirement (thanks, Andreas Koenig
+   and Smylers)
+
+-------------------------------------------------------------------
+Mon Feb 24 06:10:54 UTC 2014 - coolo@suse.com
+
+- updated to 0.022
+ - remove the last few places IO::String was used (thanks, Graham Knop)
+
+-------------------------------------------------------------------
+Tue Nov 26 07:35:04 UTC 2013 - coolo@suse.com
+
+- updated to 0.021
+     - throw an exception if line 1 appears to start with a UTF-8 BOM
+     - typo fixes in docs (thanks, David Steinbrunner!)
+
+-------------------------------------------------------------------
+Wed Jul 24 07:27:31 UTC 2013 - coolo@suse.com
+
+- updated to 0.020
+  * update bugtracker
+
+-------------------------------------------------------------------
+Mon Jan  9 12:01:31 UTC 2012 - coolo@suse.de
+
+- updated to 0.019
+  * provide handle_unparsed_line
+
+-------------------------------------------------------------------
+Mon Jan  9 11:59:46 UTC 2012 - coolo@suse.com
+
+- update to bump 0.018
+  * up version of IO::File required (thanks, ABH!)
+
+-------------------------------------------------------------------
+Mon Jan 17 18:09:42 UTC 2011 - coolo@novell.com
+
+- initial package 0.017
+  * created by cpanspec 1.78.03
+
