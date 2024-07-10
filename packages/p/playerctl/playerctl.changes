@@ -1,0 +1,195 @@
+-------------------------------------------------------------------
+Sat Sep 25 16:21:35 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 2.4.1
+  * Fix a crash in playerctld when players use TrackList and
+    Playlists interfaces
+  * Add the trunc() template function
+  * Allow to use playerctl as a subproject and cpp linking
+  * bugfix: subscribe to all signals when multiple template
+    functions are used
+  * bugfix: workaround for players that use uint64 values in the
+    formatter
+
+-------------------------------------------------------------------
+Tue Dec  1 14:42:17 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Obsolete typelib-1_0-Playerctl-2_0_1: the package was wrongly
+  named. With the correct name now provided, we have to ensure the
+  users can cleanly upgrade.
+
+-------------------------------------------------------------------
+Tue Dec  1 11:50:54 CET 2020 - tiwai@suse.de
+
+- Fix dependencies of bash and zsh completion subpackages
+
+-------------------------------------------------------------------
+Mon Nov 30 19:18:18 UTC 2020 - Avindra Goolcharan <avindra@opensuse.org>
+
+- Update to version 2.3.1
+  * Add option to toggle shuffle
+  * Add -s, quiet flag to supress some messages from stderr
+  * Add math operations to the formatter
+  * Change instance delimiter to "."
+  * Use playerctld to get players in order of activation when it
+    is running
+  * Remove warning message when the system bus isn't found
+  * playerctld: add daemon activation command
+  * playerctld: add unshift command
+  * bugfix: improve property setter reliability
+- add zsh shell completion package
+
+-------------------------------------------------------------------
+Thu Oct 15 16:16:28 UTC 2020 - aloisio@gmx.com
+
+- Update to version 2.2.1
+  * Fix a crash when the `emoji()` template function is used
+  * Add a `shift` command to `playerctld` to shift the active
+    player
+  * Fix a crash when system players are present
+  version 2.1.1
+  * Playerctl now has a test suite that covers most features of
+    the CLI.
+  playerctld:
+  * Add `playerctld`: an activatable DBus service for selecting
+    the most recently active player
+  CLI:
+  * Add the `markup_escape()` formatter function
+  * Mark the `emoji()` formatter function as no longer
+    experimental
+  * Add the `default()` formatter function
+  * Add the special `%any` player token for prioritizing player
+    selection
+  * Add bash completions
+  * Add debug logging
+  * Rewrite and expand manpage with `mdoc(7)`
+  * Attempt to autostart `playerctld` if it is present in players
+  * bugfix: incorrect error message for shuffle command
+  * bugfix: don't crash if no system bus is present
+  * bugfix: don't crash if given a nonexistent format function
+  Build:
+  * Required meson version is now `0.50.0`.
+  version 2.0.2
+  CLI:
+  * Regression: exit 1 when no players are found
+  * Regression: fix sort order for `--player` command
+  * Handle nonfile uris in the `open` command
+  Build:
+  * Fix documentation of the `--follow` flag
+  * Update manpage release date at build time
+  * fix gir build on cross compilation
+- Added bash-completion subpackage
+
+-------------------------------------------------------------------
+Fri Jan 25 11:41:33 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 2.0.1
+  CLI:
+  * Add `--ignore-player` flag to ignore specific players (#2)
+  * Add `--follow` flag to block and print updated values when
+    they change (#37, #98, #101)
+  * The `--player` command acts on the first player without
+    `--all-players` (breaking) (#54)
+  * Accept multiple keys for `metadata [key]` command (#68)
+  * `metadata` command has tabular output. (breaking) (#72)
+  * Add `--format [fmt]` for metadata formatting (#73)
+  * Add `duration()` template formatter for formatting durations
+    (#75)
+  * Print player name and instance with format strings (#90)
+  * Add command to get and set `shuffle` status (#92)
+  * Add a command to get and set `loop` status (#99)
+  * Add the `open` command to open a URI with the player (#79)
+  * Fix some errors with utf8 printing (#80)
+  * Skip players from selection when they don't support a
+    command (determined by the `can-*` properties)
+  * Select all player instances with the `--player` and
+    `--ignore-player` command
+  * Print help information to stdout (not stderr) when no
+    arguments are passed
+  Library:
+  * add `playerctl_list_players()` to public api for listing
+    players (#47)
+  * Implement the "seeked" signal on the player (#94)
+  * Add the "volume" signal on the player (#95)
+  * Deprecate the "play", "pause", and "stopped" signal for a
+    single "status" signal (#96)
+  * Add the `PlayerctlPlayerManager()` class (#100)
+  * Cache and compute the position property (#102)
+  * Remove chaining abilities from the library (breaking)
+  * Library query functions return `NULL` instead of empty
+    string when properties aren't found (breaking)
+  * Deprecate `status` property in favor of the
+    `playback-status` property as an enum
+  * Add library functions for `shuffle` and `loop` status (#92,
+    #99)
+  * Deprecate setting volume via the object properties interface
+  * Fix the "exit" signal
+  * Add properties "can-control", "can-play", "can-pause",
+    "can-seek", "can-go-next", "can-go-previous"
+  * Add the "source" property to determine the source of the
+    player (session or system bus)
+  * Change first keyword arg for `playerctl_player_new()` from
+    `name` to `player_name` (breaking)
+  * Add `playerctl_player_new_for_source()` to select players
+    based on the source (session or system bus)
+  * Add `playerctl_player_new_from_name()` to create a player
+    from a PlayerManager name
+  * `playerctl_player_new()` selects an instance of the
+    `player_name` if found
+  * Add documentation for the entire public library API
+  Build:
+  * Remove autotools and switch to the meson build system
+    (breaking) (#57)
+  * Fix various compiler warnings (#97)
+  * Remove library version from pkg-config name and add it to
+    the so in the standard way (new pkg-config name is just
+    `playerctl`).
+  version 0.6.1
+  * Bugfix: unref of a null player when no players are present
+  * Playerctl now searches the system bus for players
+  * Parse trackid as a string as a workaround for noncompliant
+    players
+  * Various meson fixes
+  version 0.6.0
+  * control multiple players at once by putting commas between
+    the names
+  * add the --all-players option to control all players at once
+  * lib: better cache invalidation strategy for getting
+    properties
+  * bugfix: Set position in fractional seconds
+  * Fix various memory leaks and errors
+
+- Dropped playerctl-0.5.0-fix-parallel-build.patch (no longer
+  compatible)
+
+- Switched build to meson
+
+- Added -doc subpackage
+
+-------------------------------------------------------------------
+Thu Sep  7 09:58:24 UTC 2017 - mpluskal@suse.com
+
+- Cleanup spec file with spec-cleaner
+- Drop static-devel package
+
+-------------------------------------------------------------------
+Fri Sep  1 17:28:22 UTC 2017 - raineforest@raineforest.me
+
+- Added comment to indicate lib subpackage requirement by main package 
+
+-------------------------------------------------------------------
+Thu Aug 31 23:03:04 UTC 2017 - raineforest@raineforest.me
+
+- Added library subpackages
+
+-------------------------------------------------------------------
+Tue Aug 22 21:31:39 UTC 2017 - raineforest@raineforest.me
+
+- Backport patch from upstream to fix parallel build
+  * Added patch:
+    - playerctl-0.5.0-fix-parallel-build.patch
+
+-------------------------------------------------------------------
+Tue Aug 22 21:25:58 UTC 2017 - raineforest@raineforest.me
+
+- Initial release
