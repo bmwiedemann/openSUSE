@@ -1,0 +1,21 @@
+From 69b0df86aaa63ee75725e62049f0d9c3ea782874 Mon Sep 17 00:00:00 2001
+From: Sertonix <sertonix@posteo.net>
+Date: Tue, 11 Jun 2024 12:08:40 +0000
+Subject: [PATCH] Add missing include
+
+---
+ source/dynv/Types.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/source/dynv/Types.cpp b/source/dynv/Types.cpp
+index 8163077..d2b1d64 100644
+--- a/source/dynv/Types.cpp
++++ b/source/dynv/Types.cpp
+@@ -21,6 +21,7 @@
+ #include "Color.h"
+ #include <algorithm>
+ #include <boost/endian/conversion.hpp>
++#include <boost/version.hpp>
+ namespace dynv {
+ namespace xml {
+ bool serialize(std::ostream &stream, const Map &map, bool addRootElement = true);

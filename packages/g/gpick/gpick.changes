@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Jun 13 18:11:36 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Switch to CMake
+- Enable tests
+- Remove patches that are fixed upstream:
+  * 0001-build-support-scons-python3.patch
+  * reproducible.patch
+- Add fix-boost-184.patch: Fix builds with boost 184
+  (gh#thezbyg/gpick#227)
+- Add fix-version-check.patch: Fix path in build
+  (gh#thezbyg/gpick#215)
+- Add import-missing-scons.patch: Fix import of SCons in SConscript
+  (gh#thezbyg/gpick#216)
+- Add revert-cpp-lua.patch: Use system lua-c instead of lua-c++
+  (gh#thezbyg/gpick#217)
+- Update to 0.3:
+  Bug Fixes
+  * Fix layout switching
+  * Prevent wrong data directory selection
+  * Fix crash due to zero-length string access
+  Features
+  * Add alpha channel support
+  * Add additional converters
+
+-------------------------------------------------------------------
 Thu Feb  8 16:01:27 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Prepare for RPM 4.20: use autosetup.

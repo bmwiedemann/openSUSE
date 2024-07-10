@@ -139,4 +139,12 @@ summarize licenses - bulk are BSD-3-Clause (forwarded request 137821 from dimsta
     <comment>Prepare for RPM 4.20</comment>
     <requestid>1145234</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>28e7d6cd353d1e4bc1c005b37aaa7fa8</srcmd5>
+    <version>0.3</version>
+    <time>1720622986</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1186464</requestid>
+  </revision>
 </revisionlist>

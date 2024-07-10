@@ -1,0 +1,12 @@
+diff --git a/SConscript b/SConscript
+index 79b3b30..20fb81b 100644
+--- a/SConscript
++++ b/SConscript
+@@ -1,6 +1,6 @@
+ #!/usr/bin/env python
+ # coding: utf-8
+-import os, string, sys, shutil, math
++import os, string, sys, shutil, math, SCons.Util
+ from tools import *
+ 
+ env = GpickEnvironment(ENV = os.environ)
