@@ -1,0 +1,13 @@
+Index: gst-devtools-1.22.2/debug-viewer/data/meson.build
+===================================================================
+--- gst-devtools-1.22.2.orig/debug-viewer/data/meson.build
++++ gst-devtools-1.22.2/debug-viewer/data/meson.build
+@@ -1,6 +1,6 @@
+ install_data('about-dialog.ui', 'main-window.ui', 'menus.ui', 'gst-debug-viewer.png',
+     install_dir: join_paths(get_option('datadir'), 'gst-debug-viewer'))
+ install_data('gst-debug-viewer.png',
+-    install_dir: join_paths(get_option('datadir'), 'icons/hicolor/48x48/apps'))
++    install_dir: join_paths(get_option('datadir'), 'icons/hicolor/64x64/apps'))
+ install_data('gst-debug-viewer.svg',
+     install_dir: join_paths(get_option('datadir'), 'icons/hicolor/scalable/apps'))
+\ No newline at end of file
