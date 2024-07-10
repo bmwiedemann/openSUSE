@@ -1,0 +1,120 @@
+-------------------------------------------------------------------
+Sun Mar 17 06:51:39 UTC 2024 - Sebastian Wagner <sebix@sebix.at>
+
+- Update to version 1.14.1:
+ - Bugfix: fix argument parsing, `"foo\nbar"` will be parsed to `foo` and `\` 
+   and `n` and `bar`, the `\` and `n` should be one character `\n` instead.
+- Ignore test_trasaction_syntax_error and test_subscribe because of timeouts (too slow) on s390x
+
+-------------------------------------------------------------------
+Mon Dec 18 10:46:00 UTC 2023 - Sebastian Wagner <sebix@sebix.at>
+
+- skip test_timer and test_command_completion_when_a_command_is_another_command_substring because of timeouts (too slow) on s390x
+
+-------------------------------------------------------------------
+Tue Oct 31 19:01:41 UTC 2023 - Sebastian Wagner <sebix@sebix.at>
+
+- switch to pyproject
+- tests: disable redis snapshots, seem to be the default now
+- update to version 1.14.0:
+ - Dependency: upgrade redis-py to 5 (thanks to [chayim])
+ - Feature: porting to redis-server 7.2 now
+ - Feature: supports python 3.10, 3.11 now
+ - Doc: update commands.json from redis-doc to latest version
+
+-------------------------------------------------------------------
+Fri Sep 15 15:10:08 UTC 2023 - Sebastian Wagner <sebix@sebix.at>
+
+- update to version 1.3.2:
+ - upgrade mistune to v3
+ - deprecate importlib_resources. use buildin now.
+ - fix: fix data types changes in redis 7
+ - fix restore command
+
+-------------------------------------------------------------------
+Thu Aug 10 14:59:35 UTC 2023 - Sebastian Wagner <sebix@sebix.at>
+
+- update to version 1.13.1:
+ * fix slowlog get render: ms -> us (#463)
+
+-------------------------------------------------------------------
+Mon Jan  2 15:45:15 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.13:
+  * Drop Python 3.6 support
+- includes changes from 1.12.2:
+  * honor ssl_cert_reqs strategy via --verify-ssl or a rediss://
+    URL parameter ssl_cert_reqs 
+
+-------------------------------------------------------------------
+Wed Aug 31 19:09:37 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- Update to version 1.12.1:
+ - support HRANDFIELD. by @laixintao in #431
+ - add testing on redis 7. by @laixintao in #433
+ - bugfix: fix error when pop multiple elements by @Mr3h1v in #436
+ - Allow to provide a custom prompt via --prompt by @aymericbeaumet in #437
+ - support username for client connection by @laixintao in #438
+ - support client_addr and client_id in prompt string, add some tests. by @laixintao in #440
+ - support prompt in iredisrc config file by @laixintao in #441
+
+-------------------------------------------------------------------
+Wed Jun 29 08:48:41 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- disable some failing tests (reported upstream) to fix the build.
+
+-------------------------------------------------------------------
+Wed Jun 29 08:36:26 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 1.12:
+ - Feature: CLIENT KILL now support LADDR argument.
+ - Feature: CLIENT LIST now support ID argument.
+ - Feature: CLIENT PAUSE support options and added CLIENT UNPAUSE command.
+ - Feature: CLIENT TRACKING support multiple prefixes.
+ - Feature: support new command: CLIENT TRACKINGINFO.
+ - Feature: support new command: COPY.
+ - Feature: support new command: EVAL_RO and EVALSHA_RO.
+ - Feature: support new command: EXPIRETIME.
+ - Feature: support new command: FAILOVER.
+ - Feature: support new command: GEOSEARCH.
+ - Feature: support new command: GEOSEARCHRESTORE.
+ - Feature: support new command: GETDEL.
+ - Feature: support new command: GETEX.
+ - Feature: FLUSHDB and FLUSHALL supports SYNC option.
+ - Feature: GEOADD supports CH XX NX options.
+ - Feature: Timestamp Completers are now support completion for timestamp fields and milliseconds timestamp fields.
+ - Deprecate: GEORADIUS is deprecated, no auto-complete for this command anymore.
+ - Deprecate: GEORADIUSBYMEMBER is deprecated, no auto-complete for this command anymore.
+- update to version 1.11.1:
+ - Bugfix: Switch distutils.version to packaging.version to fix the version parse for windows. (new dependency: pypi's python-packaging.
+
+-------------------------------------------------------------------
+Fri Jan 28 16:08:08 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- Skip a few failings tests (bugs upstream).
+
+-------------------------------------------------------------------
+Tue Jan 25 16:25:16 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- Update to version 1.11.0:
+ - Introduce codespell to find typos by @tssujt in #411
+  - upgrade mistune to ^2.0 by @laixintao in #416
+
+-------------------------------------------------------------------
+Mon Jan 10 21:44:27 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- Update to version 1.10.0:
+ - Feature: more human readable output for HELP command like ACL HELP and MEMORY HELP.
+ - Feature: you can use Ctrl + C to cancel a blocking command like BLPOP.
+ - Test: IRedis now tested under ubuntu-latest (before is ubuntu-16.04)
+ - Dependency: Support Python 3.10 now, thanks to tssujt.
+
+-------------------------------------------------------------------
+Mon Nov 22 08:28:55 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim filler wording from description.
+
+-------------------------------------------------------------------
+Sun Nov 21 15:24:39 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- initial package for version 1.9.4.

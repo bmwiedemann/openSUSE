@@ -1,0 +1,14 @@
+<package name="iredis" project="openSUSE:Factory">
+  <title>Terminal client for Redis with auto-completion and syntax highlighting</title>
+  <description>A terminal client for redis with auto-completion and syntax
+highlighting. IRedis lets you type Redis commands smoothly, and displays results
+in a user-friendly format.
+
+IRedis is an alternative for redis-cli. In most cases, IRedis behaves exactly
+the same as redis-cli. Besides, it is safer to use IRedis on production servers
+than redis-cli: IRedis will prevent accidentally running dangerous commands
+
+</description>
+  <devel project="server:database" package="iredis"/>
+  <url>https://iredis.io/</url>
+</package>
