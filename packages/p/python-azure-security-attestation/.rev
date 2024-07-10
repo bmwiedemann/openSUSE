@@ -1,0 +1,36 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>932efa2eff7a3476aeedc98c7385f767</srcmd5>
+    <version>1.0.0</version>
+    <time>1637618667</time>
+    <user>dimstar_suse</user>
+    <comment>- Initial build
+  + Version 1.0.0</comment>
+    <requestid>933081</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>66e33addfd8bc1ceed495d27eebfeb0f</srcmd5>
+    <version>1.0.0</version>
+    <time>1712520617</time>
+    <user>anag+factory</user>
+    <comment>- Switch package to modern Python Stack on SLE-15
+  + Use Python 3.11 on SLE-15 by default
+  + Add Obsoletes for old python3 package on SLE-15
+  + Drop support for older Python versions
+- Switch build system from setuptools to pyproject.toml
+  + Add python-pip and python-wheel to BuildRequires
+  + Replace %python_build with %pyproject_wheel
+  + Replace %python_install with %pyproject_install
+  + Update name for dist directory in %files section
+- Use modern RPM macros to express version dependencies (forwarded request 1164932 from glaubitz)</comment>
+    <requestid>1165329</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>ac17e7fdcd7b61adb517c5c7feca5ddd</srcmd5>
+    <version>1.0.0</version>
+    <time>1715444591</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1173338</requestid>
+  </revision>
+</revisionlist>
