@@ -1,0 +1,5 @@
+<package name="lxgw-wenkai-fonts" project="openSUSE:Factory">
+  <title>An open-source Chinese font derived from Fontworks' Klee One.</title>
+  <description></description>
+  <devel project="M17N:fonts" package="lxgw-wenkai-fonts"/>
+</package>
