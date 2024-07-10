@@ -1,0 +1,23 @@
+From: Alessandro de Oliveira Faria <cabelo@opensuse.org>
+Subject: disable -pedantic
+Patch-mainline: no
+
+-pedantic generates 3623 warnings at the moment. Disable it for now, so
+that we can see more important warnings.
+---
+ CMake/unix_config.cmake |    4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+--- a/CMake/unix_config.cmake	2023-09-07 11:05:08.000000000 -0300
++++ b/CMake/unix_config.cmake	2023-10-10 16:42:30.551153632 -0300
+@@ -13,8 +13,8 @@
+     set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/${CMAKE_BUILD_TYPE})
+ 
+     set(CMAKE_POSITION_INDEPENDENT_CODE ON)
+-    set(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS}   -pedantic -D_DEFAULT_SOURCE")
+-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pedantic -Wno-missing-field-initializers")
++    set(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS}   -D_DEFAULT_SOURCE")
++    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-missing-field-initializers")
+     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-switch -Wno-multichar -Wsequence-point -Wformat -Wformat-security")
+ 
+     execute_process(COMMAND ${CMAKE_C_COMPILER} -dumpmachine OUTPUT_VARIABLE MACHINE)

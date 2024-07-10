@@ -1,0 +1,35 @@
+From: Jiri Slaby <jslaby@suse.cz>
+Date: Tue, 28 Mar 2023 06:48:50 +0200
+Subject: (gcc-13) include cstdint for *int*_t
+Patch-mainline: https://github.com/IntelRealSense/librealsense/pull/11622
+References: gcc13
+
+Otherwise we see errors like this with gcc13:
+common/sw-update/http-downloader.h:16:47: error: 'uint64_t' was not declared in this scope
+
+Signed-off-by: Jiri Slaby <jslaby@suse.cz>
+---
+ common/sw-update/http-downloader.h            |    1 +
+ third-party/rsutils/include/rsutils/version.h |    1 +
+ 2 files changed, 2 insertions(+)
+
+--- a/common/sw-update/http-downloader.h
++++ b/common/sw-update/http-downloader.h
+@@ -7,6 +7,7 @@
+ #include <string>
+ #include <functional>
+ #include <vector>
++#include <cstdint>
+ 
+ namespace rs2
+ {
+--- a/third-party/rsutils/include/rsutils/version.h
++++ b/third-party/rsutils/include/rsutils/version.h
+@@ -3,6 +3,7 @@
+ 
+ #pragma once
+ 
++#include <cstdint>
+ #include <string>
+ #include <iosfwd>
+ 

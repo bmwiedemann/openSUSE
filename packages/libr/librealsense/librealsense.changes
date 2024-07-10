@@ -1,0 +1,139 @@
+-------------------------------------------------------------------
+Wed Oct  4 02:58:09 UTC 2023 - Alessandro de Oliveira Faria <cabelo@opensuse.org>
+
+- Update to 2.54.2
+  * see release notes here:
+    https://github.com/IntelRealSense/librealsense/releases/tag/v2.54.2
+
+-------------------------------------------------------------------
+Tue Jul 11 08:00:01 UTC 2023 - Jiri Slaby <jslaby@suse.cz>
+
+- Update to 2.54.1
+  * see release notes here:
+    https://github.com/IntelRealSense/librealsense/releases/tag/v2.54.1
+
+-------------------------------------------------------------------
+Tue Mar 28 04:53:45 UTC 2023 - Jiri Slaby <jslaby@suse.cz>
+
+- add gcc-13-include-cstdint-for-int-_t.patch
+
+-------------------------------------------------------------------
+Mon Jan  9 07:36:02 UTC 2023 - Jiri Slaby <jslaby@suse.cz>
+
+- Update to 2.53.1
+  * see release notes here:
+    https://github.com/IntelRealSense/librealsense/releases/tag/v2.53.1
+- Drop old "Obsoletes" -- no current distro provides that.
+
+-------------------------------------------------------------------
+Mon Sep  5 02:09:26 UTC 2022 - Alessandro de Oliveira Faria <cabelo@opensuse.org>
+
+- Update to 2.51.1
+  * see release notes here:
+    https://github.com/IntelRealSense/librealsense/releases/tag/v2.51.1
+
+-------------------------------------------------------------------
+Thu Apr 28 05:40:43 UTC 2022 - Jiri Slaby <jslaby@suse.cz>
+
+- Update to 2.50.0
+  * see release notes here:
+    https://github.com/IntelRealSense/librealsense/releases/tag/v2.50.0
+- add
+  * disable-pedantic.patch
+  * presets_path.patch
+
+-------------------------------------------------------------------
+Wed Apr 27 12:38:39 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Resolve rpmlint report "librealsense2.x86_64: E:
+  shlib-policy-name-error SONAME: librealsense2-gl.so.2.44,
+  expected package suffix: 2_44"
+
+-------------------------------------------------------------------
+Tue May 25 05:08:40 UTC 2021 - Alessandro de Oliveira Faria <cabelo@opensuse.org>
+
+- Update to 2.44.0
+  * see release notes here:
+    https://github.com/IntelRealSense/librealsense/releases/tag/v2.44.0
+
+-------------------------------------------------------------------
+Tue Mar 30 05:25:02 UTC 2021 - Jiri Slaby <jslaby@suse.cz>
+
+- Update to 2.43.0
+  * see release notes here:
+    https://github.com/IntelRealSense/librealsense/releases/tag/v2.43.0
+
+-------------------------------------------------------------------
+Mon Feb 22 11:36:51 UTC 2021 - Jiri Slaby <jslaby@suse.cz>
+
+- Update to 2.42.0
+  * see release notes here:
+    https://github.com/IntelRealSense/librealsense/releases/tag/v2.42.0
+
+-------------------------------------------------------------------
+Fri Sep 25 09:29:58 UTC 2020 - Jiri Slaby <jslaby@suse.cz>
+
+- Update to 2.38.1
+  * see release notes here:
+    https://github.com/IntelRealSense/librealsense/releases/tag/v2.38.1
+- Drop 0001-Fix-aarch64-arm-detection.patch as it is upstream
+- Switch from snapshots to releases 
+
+-------------------------------------------------------------------
+Wed Apr 29 10:08:35 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Fix build on %arm and aarch64:
+  * 0001-Fix-aarch64-arm-detection.patch
+
+-------------------------------------------------------------------
+Wed Mar 11 09:38:06 UTC 2020 - christophe@krop.fr
+
+- Update to version 2.33.1+git20200305.ge0b160f01:
+  * Promote D4xx firmware version to 5.12.3.0
+  * Comment on the wrappers
+  * Rectify license of the INF file
+  * Reverting merge mistake
+  * Bump version to v2.33.1
+  * Fix memory leak in v4l2 backend on kernel 5.3
+  * lines reordered in rder to log before exception throw
+  * using log instead of LOGGER_ERROR because of linkage correction in windows
+  * minor changes from code review
+  * fw update crash fix
+  * revert void*->char* change to preserve backwards compat
+  * and much more...
+
+-------------------------------------------------------------------
+Wed Mar 11 09:26:17 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Require freeglut-devel instead of pkgconfig(freeglut).
+  The pkgconfig name changed in Tumbleweed.
+
+-------------------------------------------------------------------
+Fri Feb  7 07:14:03 UTC 2020 - Jiri Slaby <jslaby@suse.com>
+
+- drop src/win* files as they contain weird license
+
+-------------------------------------------------------------------
+Thu Feb  6 06:57:18 UTC 2020 - Jiri Slaby <jslaby@suse.com>
+
+- add _constraints (4G of RAM)
+
+-------------------------------------------------------------------
+Wed Feb 05 12:30:08 UTC 2020 - jslaby@suse.com
+
+- Update to version 2.32.1+git20200123.g83f952a4b:
+  * Promote the recommended FW to v5.12.2.100
+  * Re-enable back light compensation for the D465 - adding to this branch to not forget to merge
+  * fix possible bug in device-hid detection
+  * Add support for remove_static_node
+  * Update readme.md
+  * Add heuristic to drop UVC overflow frames with v4l kernel prior to v4.16
+  * use ts.global_ts for update
+  * chrono::abs() not supported on pre-c++17
+  * image time sync code update
+  * and much more...
+
+-------------------------------------------------------------------
+Thu Dec 12 13:00:55 UTC 2019 - Jiri Slaby <jslaby@suse.com>
+
+- initial commit

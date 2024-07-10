@@ -1,0 +1,119 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>92e0a55c59bc0a791abc5d427d059397</srcmd5>
+    <version>2.32.1+git20200123.g83f952a4b</version>
+    <time>1581087231</time>
+    <user>dimstar_suse</user>
+    <comment>add librealsense which is a library for Intel RealSense depth cameras like
+D435.</comment>
+    <requestid>770779</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>1756b07aa7aeb0205805624489960174</srcmd5>
+    <version>2.33.1+git20200305.ge0b160f01</version>
+    <time>1583949244</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>783734</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>a64beba14931479e0976db2d5d153b99</srcmd5>
+    <version>2.33.1+git20200305.ge0b160f01</version>
+    <time>1588186385</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build on %arm and aarch64:
+  * 0001-Fix-aarch64-arm-detection.patch (forwarded request 798849 from Guillaume_G)</comment>
+    <requestid>798860</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c0b906c2610fc19974a86588fd709c2e</srcmd5>
+    <version>2.38.1</version>
+    <time>1601653348</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>839133</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>769d2330234eb6813df1166f21238239</srcmd5>
+    <version>2.42.0</version>
+    <time>1614684908</time>
+    <user>RBrownSUSE</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>875972</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>35d471aa67c202ffc213f47ccac752dc</srcmd5>
+    <version>2.43.0</version>
+    <time>1617723056</time>
+    <user>RBrownSUSE</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>883159</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>d3948f27ff0d5637d0410163167c82aa</srcmd5>
+    <version>2.44.0</version>
+    <time>1622536514</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>895239</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>df9a729b5eb90937e01291c9c0747bac</srcmd5>
+    <version>2.50.0</version>
+    <time>1651180078</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.50.0
+  * see release notes here:
+    https://github.com/IntelRealSense/librealsense/releases/tag/v2.50.0
+- add
+  * disable-pedantic.patch
+  * presets_path.patch
+
+- Resolve rpmlint report &quot;librealsense2.x86_64: E:
+  shlib-policy-name-error SONAME: librealsense2-gl.so.2.44,
+  expected package suffix: 2_44&quot;</comment>
+    <requestid>973447</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>65d036fdf1109fc0c053d2bd92875775</srcmd5>
+    <version>2.51.1</version>
+    <time>1662405700</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.51.1
+  * see release notes here:
+    https://github.com/IntelRealSense/librealsense/releases/tag/v2.51.1</comment>
+    <requestid>1001165</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>bf95ac63bd0d27b6c903aafaf9e0803f</srcmd5>
+    <version>2.53.1</version>
+    <time>1673888369</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1058622</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>d689d61e7fa77a7ad8f246944a200948</srcmd5>
+    <version>2.53.1</version>
+    <time>1680018629</time>
+    <user>dimstar_suse</user>
+    <comment>- add gcc-13-include-cstdint-for-int-_t.patch</comment>
+    <requestid>1074819</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>13670fd3d0030b499094ceb2f827ee60</srcmd5>
+    <version>2.54.1</version>
+    <time>1689710917</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1099213</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>0b32239ad87c54eaf7cc162bad3a1ae4</srcmd5>
+    <version>2.54.2</version>
+    <time>1697657131</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1118366</requestid>
+  </revision>
+</revisionlist>
