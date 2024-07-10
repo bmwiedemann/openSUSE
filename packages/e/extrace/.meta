@@ -1,0 +1,8 @@
+<package name="extrace" project="openSUSE:Factory">
+  <title>extrace</title>
+  <description>extrace traces all program executions occurring on a system and prints the process call hierarchy in a human-readable form.
+
+While process tracing is exact, looking up all information is inherently sensitive to race conditions. In doubt, you can only trust the PID was written correctly.</description>
+  <devel project="security" package="extrace"/>
+  <url>https://github.com/leahneukirchen/extrace</url>
+</package>

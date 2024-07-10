@@ -1,0 +1,24 @@
+-------------------------------------------------------------------
+Wed Feb  1 09:51:26 UTC 2023 - Wolfgang Frisch <wolfgang.frisch@suse.com>
+
+- Update to version 0.9:
+  * Add option -Q to suppress runtime errors
+  * With -t, print time when process execed
+  * Quit when parent specified in -p exits
+  * Fix likely root cause for pid_db overflow
+
+-------------------------------------------------------------------
+Tue May 11 17:10:37 UTC 2021 - Wolfgang Frisch <wolfgang.frisch@suse.com>
+
+- Fix build on SLE-15-SP1
+
+-------------------------------------------------------------------
+Wed Apr 28 12:59:40 UTC 2021 - Wolfgang Frisch <wolfgang.frisch@suse.com>
+
+- Moved binaries to /usr/sbin.
+- Renamed pwait to extrace-pwait to avoid conflicts with the procps package.
+
+-------------------------------------------------------------------
+Wed Apr 28 09:57:47 UTC 2021 - Wolfgang Frisch <wolfgang.frisch@suse.com>
+
+- Initial package (git master f02ef88edf617245cbd33813561b46ccadcabfb3)
