@@ -1,0 +1,217 @@
+-------------------------------------------------------------------
+Wed Jun 19 10:05:25 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to snapshot 0.9.2+git203 (43b262bd)
+  * another potential multiplication overflows
+  * build: upgrade to C++17 when ICU is used
+  * Fix a test failure in testNewFromString and
+    pathTest::testGenerate
+
+-------------------------------------------------------------------
+Tue May 21 14:25:12 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to snapshot 0.9.2+git196 (d296c2d)
+  * vmime: prevent loss of a space when a multi-word mailbox name
+    contains an umlaut
+
+-------------------------------------------------------------------
+Wed Apr 24 17:39:08 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to snapshot 0.9.2+git191 (d03ad5f0)
+  * url: fix an off-by-one error in parsing hostnames
+  * url: strip leading slash from url-path
+  * Support FIPS under OpenSSL 3
+
+-------------------------------------------------------------------
+Sun Feb 25 23:52:52 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Reinstate %optflags
+
+-------------------------------------------------------------------
+Sun Dec 31 16:19:00 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to snapshot 0.9.2+git188 (c3c6242ed)
+  * Fix emission of bugs Envelope-From to sendmail:// transports.
+  * Add parsing feedback via parsingContext
+- Drop 0001-Avoid-generating-illegal-Envelope-From-with-sendmail.patch
+  (merged)
+
+-------------------------------------------------------------------
+Mon Dec 18 03:46:09 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Add 0001-Avoid-generating-illegal-Envelope-From-with-sendmail.patch
+
+-------------------------------------------------------------------
+Sun Sep 25 18:34:03 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Force-add -fPIC under RHEL and derivatives
+
+-------------------------------------------------------------------
+Sat Jun 11 14:40:34 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to snapshot 0.9.2.175 (fc69321d)
+  * Added utility function to convert byteArray to HEX string.
+  * Added support for digest algorithm SHA256 (in certificates).
+
+-------------------------------------------------------------------
+Sat Jan  8 12:56:59 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Add BuildRequires for RH/CentOS
+
+-------------------------------------------------------------------
+Sat Dec  4 16:08:42 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Wrap a number of build dependencies into %{?with_pdf}
+
+-------------------------------------------------------------------
+Wed Nov 24 09:49:33 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to snapshot 0.9.2.165 (edcb4b4b1f1f)
+  * imap: Added support for pipelined and out-of-order replies.
+  * smtp: Add basic support for delivery status notifications (DSN)
+  * mime: Reply-To is now an addressList in accordance with the RFC
+    (API change)
+- Add libvmime-soname.diff
+
+-------------------------------------------------------------------
+Sun Oct  6 14:21:40 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to 0.9.2k4 (0.9.2.96)
+  * Skip delimiter lines that are not exactly equal to the boundary
+
+-------------------------------------------------------------------
+Tue May 28 10:38:46 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to Kopano branch of vmime, 0.9.2k2 (0.9.2.85)
+  * Unbreak own hostname qualification on POSIX systems
+
+-------------------------------------------------------------------
+Mon Jun 25 12:21:09 UTC 2018 - jengelh@inai.de
+
+- Update to new git snapshot v0.9.2-50-ga9b8221
+  * Dropped support for boost::shared_ptr<>, enabled exclusive
+    C++11 use of std::shared_ptr.
+  * Handle parsing of (RFC-nonconforming) address lines containing
+    bare at signs, like "a@b.c <e@f.g>" or
+    "=?UTF-8?Q?a=c2=a0recipient_=28foo@bar.com=29?= <e@f.g>".
+  * Add SMTPS with AUTH PLAIN without SASL.
+
+-------------------------------------------------------------------
+Mon Apr 23 07:58:00 UTC 2018 - jengelh@inai.de
+
+- Add no-override-cflags.diff so that vmime becomes externally
+  buildable with other -O/-g levels.
+
+-------------------------------------------------------------------
+Thu Jul 13 14:11:54 UTC 2017 - jengelh@inai.de
+
+- Update description
+
+-------------------------------------------------------------------
+Thu Jul 13 11:48:42 UTC 2017 - olaf@aepfle.de
+
+- Remove openssl because gnutls is preferd already
+
+-------------------------------------------------------------------
+Wed Mar  8 09:43:48 UTC 2017 - bosim@opensuse.org
+
+- Don't stop the build due to SLES missing GSASL.
+
+-------------------------------------------------------------------
+Mon Jan 23 22:44:49 UTC 2017 - jengelh@inai.de
+
+- Resolve wrong name of cmake variable:
+  CMAKE_RELEASE_TYPE -> CMAKE_BUILD_TYPE
+
+-------------------------------------------------------------------
+Tue Jan  3 11:51:36 UTC 2017 - jengelh@inai.de
+
+- Update to final release 0.9.2
+* Always ignore newlines between words.
+- Drop dont-fixup.diff (issue fixed upstream),
+  drop libvmime-sotag.diff (no longer needed).
+
+-------------------------------------------------------------------
+Sun Oct 30 18:36:29 UTC 2016 - jengelh@inai.de
+
+- Update to new git snapshot
+  047cacb1dba516ca902b36a290f2b81555658c1e [0.9.2~g500]
+* Skip multiple (bogus) colons after header field name
+- Add dont-fixup.diff
+
+-------------------------------------------------------------------
+Wed Jun 22 17:05:17 UTC 2016 - jengelh@inai.de
+
+- Update to new git snapshot
+  4d1a6ad2f267e3b83f7c04122af8d8e7ee9a2113 [0.9.2~g490]
+* handle "x-uuencode" type
+* Skip word on unexpected error when fixing broken words.
+* XOAUTH2 auth mechanism support
+
+-------------------------------------------------------------------
+Wed May 13 07:33:44 UTC 2015 - jengelh@inai.de
+
+- Ship COPYING file
+
+-------------------------------------------------------------------
+Mon Aug 25 05:27:53 UTC 2014 - dap@open.by, jengelh@inai.de
+
+- Update to new git snapshot
+  30ea54f269efa673a1eb5bc07e71715b67607dbc
+* No upstream changelog was provided
+- Turn on SASL, TLS support
+- Remove vmime-0.9.2-header-value-on-next-line.diff
+  (no longer applies)
+
+-------------------------------------------------------------------
+Thu Dec 19 13:53:29 UTC 2013 - jengelh@inai.de
+
+- Use existing postscript fonts as BuildRequires
+  (suggestion by user WernerFink)
+
+-------------------------------------------------------------------
+Mon Aug  5 17:48:54 CEST 2013 - ro@suse.de
+
+- BuildRequire texlive-bin-latex only for <= 12.3 
+
+-------------------------------------------------------------------
+Wed Mar 27 18:26:20 UTC 2013 - jengelh@inai.de
+
+- Update to new git snapshot (54b5fe13f7e7cb6c4f63884e91ff472b42b63147)
+- Removed because merged: vmime-0.8.1-charset-catch.diff,
+  vmime-mixed-qp-in-parameter.diff, vmime-0.9.2-qp-in-buffers.diff
+- Removed because they no longer apply: vmime-automake1_13.diff,
+  vmime-noansiflag.patch
+
+-------------------------------------------------------------------
+Sun Mar  3 19:47:40 UTC 2013 - jengelh@inai.de
+
+- Add vmime-automake1_13.diff to fix up ancient autotools constructs
+
+-------------------------------------------------------------------
+Sat Aug 11 14:44:08 UTC 2012 - jengelh@inai.de
+
+- Make the package build on RHEL6
+
+-------------------------------------------------------------------
+Thu Jul 12 16:40:45 UTC 2012 - jengelh@inai.de
+
+- Enable always generating 7-bit parameters
+  (https://jira.zarafa.com/browse/ZCP-9475)
+
+-------------------------------------------------------------------
+Thu May 10 00:13:33 UTC 2012 - crrodriguez@opensuse.org
+
+- Use RPM_OPT_FLAGS
+- Do not use -ansi gcc flag.
+
+-------------------------------------------------------------------
+Fri Mar 16 12:33:11 UTC 2012 - jengelh@medozas.de
+
+- Update to new SVN snapshot rev 603 (ZCP 7.0.6 dependency)
+* Set Diffie-Hellman prime size (bug SF#3434852)
+
+-------------------------------------------------------------------
+Thu Jun 30 14:59:15 UTC 2011 - jengelh@medozas.de
+
+- Initial package for build.opensuse.org

@@ -1,0 +1,270 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>cf042e647b835833a75e5be2d5a7c566</srcmd5>
+    <version>0.9.2</version>
+    <time>1331037529</time>
+    <user>coolo</user>
+    <comment>MIME message parser</comment>
+    <requestid>105595</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>7b19ee04fba3a133e5f3e74c803036f4</srcmd5>
+    <version>0.9.2</version>
+    <time>1332416078</time>
+    <user>coolo</user>
+    <comment>- Update to new SVN snapshot rev 603 (ZCP 7.0.6 dependency)
+* Set Diffie-Hellman prime size (bug SF#3434852)</comment>
+    <requestid>110162</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>89ae3f42b0756c825dc4e08729ace963</srcmd5>
+    <version>0.9.2</version>
+    <time>1336653205</time>
+    <user>coolo</user>
+    <comment>- Use RPM_OPT_FLAGS
+- Do not use -ansi gcc flag. (forwarded request 120535 from elvigia)</comment>
+    <requestid>120555</requestid>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>89ae3f42b0756c825dc4e08729ace963</srcmd5>
+    <version>0.9.2</version>
+    <time>1340183650</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>c5c791c8f2300294167092782a27babc</srcmd5>
+    <version>0.9.2</version>
+    <time>1347618567</time>
+    <user>namtrac</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>134065</requestid>
+  </revision>
+  <revision rev="6" vrev="8">
+    <srcmd5>c5c791c8f2300294167092782a27babc</srcmd5>
+    <version>0.9.2</version>
+    <time>1359109372</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="9">
+    <srcmd5>7735f9606c4f9ff2f50d3c66434aedd8</srcmd5>
+    <version>0.9.2</version>
+    <time>1362993547</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>158228</requestid>
+  </revision>
+  <revision rev="8" vrev="10">
+    <srcmd5>4f0ed0bf1e0bed32c991e4537165d466</srcmd5>
+    <version>0.9.2</version>
+    <time>1365425599</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>162613</requestid>
+  </revision>
+  <revision rev="9" vrev="11">
+    <srcmd5>fc8acf5f299cf351fd35b8ee536a7563</srcmd5>
+    <version>0.9.2</version>
+    <time>1375728476</time>
+    <user>coolo</user>
+    <comment>- BuildRequire texlive-bin-latex only for &amp;lt;= 12.3 (forwarded request 185971 from oertel)</comment>
+    <requestid>185974</requestid>
+  </revision>
+  <revision rev="10" vrev="13">
+    <srcmd5>fc8acf5f299cf351fd35b8ee536a7563</srcmd5>
+    <version>0.9.2</version>
+    <time>1379663127</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="14">
+    <srcmd5>fc7374477f90fb2ad21bab7f0405092b</srcmd5>
+    <version>0.9.2</version>
+    <time>1388395346</time>
+    <user>coolo</user>
+    <comment>- Use existing postscript fonts as BuildRequires</comment>
+    <requestid>212228</requestid>
+  </revision>
+  <revision rev="12" vrev="16">
+    <srcmd5>fc7374477f90fb2ad21bab7f0405092b</srcmd5>
+    <version>0.9.2</version>
+    <time>1409301756</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="17">
+    <srcmd5>9a045efb6dbeb69f14a6e33408422c21</srcmd5>
+    <version>0.9.2</version>
+    <time>1410361330</time>
+    <user>coolo</user>
+    <comment>- Update to new git snapshot
+  30ea54f269efa673a1eb5bc07e71715b67607dbc
+* No upstream changelog was provided
+- Turn on SASL, TLS support
+- Remove vmime-0.9.2-header-value-on-next-line.diff
+  (no longer applies)</comment>
+    <requestid>246371</requestid>
+  </revision>
+  <revision rev="14" vrev="18">
+    <srcmd5>c0735b2e9356c9b455466f82606e3eeb</srcmd5>
+    <version>0.9.2</version>
+    <time>1432159043</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>308081</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>21accbd85f1400c301b8612d36e075c2</srcmd5>
+    <version>0.9.2~g490</version>
+    <time>1467360046</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>405535</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>f738a2f2fd1f981cc3c371f7f8630c07</srcmd5>
+    <version>0.9.2~g500</version>
+    <time>1479150796</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>437939</requestid>
+  </revision>
+  <revision rev="17" vrev="19">
+    <srcmd5>dcbbee00aa02cdbebb70cada7c03a8b9</srcmd5>
+    <version>0.9.2</version>
+    <time>1484914045</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>449725</requestid>
+  </revision>
+  <revision rev="18" vrev="20">
+    <srcmd5>43d979d11ea10afb6244865a223e5d30</srcmd5>
+    <version>0.9.2</version>
+    <time>1485939195</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>453535</requestid>
+  </revision>
+  <revision rev="19" vrev="21">
+    <srcmd5>e9032c13f34f67e399bd8d2fa3f57022</srcmd5>
+    <version>0.9.2</version>
+    <time>1491567566</time>
+    <user>maxlin_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>483181</requestid>
+  </revision>
+  <revision rev="20" vrev="22">
+    <srcmd5>bfe3e2a00c8caa54fe69a44800b07612</srcmd5>
+    <version>0.9.2</version>
+    <time>1500670227</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>511678</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>b984aa42488618d7933a340b83ccbca6</srcmd5>
+    <version>0.9.2.50</version>
+    <time>1530866889</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>621114</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>3b210b4e4426d7b2b6f9e8ef3d30e59d</srcmd5>
+    <version>0.9.2.85</version>
+    <time>1562925584</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to Kopano branch of vmime, 0.9.2k2</comment>
+    <requestid>706373</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>35fbd9f963a6eda8ce95184b0502b7f1</srcmd5>
+    <version>0.9.2.96</version>
+    <time>1590506481</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to 0.9.2k4 (0.9.2.96)</comment>
+    <requestid>808477</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>717014f25b7c1af045983054f9f13773</srcmd5>
+    <version>0.9.2.165</version>
+    <time>1637970686</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to snapshot 0.9.2.165 (edcb4b4b1f1f)</comment>
+    <requestid>933957</requestid>
+  </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>f297843fa523f20df91844aedf551c19</srcmd5>
+    <version>0.9.2.165</version>
+    <time>1638831621</time>
+    <user>dimstar_suse</user>
+    <comment>- Wrap a number of build dependencies into %{?with_pdf}
+(Add DEB recipe for own uses)</comment>
+    <requestid>936075</requestid>
+  </revision>
+  <revision rev="26" vrev="3">
+    <srcmd5>94415b61f88f0b742892cf735c1a70a2</srcmd5>
+    <version>0.9.2.165</version>
+    <time>1642273511</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>946609</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>836c6edd997113e73e1a183c19fd1996</srcmd5>
+    <version>0.9.2.175</version>
+    <time>1655665868</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to snapshot 0.9.2.175 (fc69321d)</comment>
+    <requestid>983638</requestid>
+  </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>f8e5bec5448130c35fcf55a101f00469</srcmd5>
+    <version>0.9.2.175</version>
+    <time>1664797597</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1007587</requestid>
+  </revision>
+  <revision rev="29" vrev="3">
+    <srcmd5>389541bd8689d68974c37a94c0b5a27d</srcmd5>
+    <version>0.9.2.175</version>
+    <time>1702936634</time>
+    <user>anag+factory</user>
+    <comment>- Add 0001-Avoid-generating-illegal-Envelope-From-with-sendmail.patch</comment>
+    <requestid>1133882</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>de3e7f815e25b40729574e9d9729d783</srcmd5>
+    <version>0.9.2+g188</version>
+    <time>1708460139</time>
+    <user>anag+factory</user>
+    <comment>- Update to snapshot 0.9.2+git188 (c3c6242ed)</comment>
+    <requestid>1147996</requestid>
+  </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>2abd9a4de916a93a8e097da4f239accf</srcmd5>
+    <version>0.9.2+g188</version>
+    <time>1708973118</time>
+    <user>anag+factory</user>
+    <comment>- Reinstate %optflags</comment>
+    <requestid>1150529</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>1982febbb1560d94e286837f2042c6ba</srcmd5>
+    <version>0.9.2+g191</version>
+    <time>1714686438</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1171168</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>0c296841587a1dd070855d73f7e3117b</srcmd5>
+    <version>0.9.2+g203</version>
+    <time>1718894878</time>
+    <user>anag+factory</user>
+    <comment>- Update to snapshot 0.9.2+git203 (43b262bd)</comment>
+    <requestid>1181792</requestid>
+  </revision>
+</revisionlist>
