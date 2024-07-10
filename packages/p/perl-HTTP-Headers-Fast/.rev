@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1a14a6227a1eccf13faf291944aa2f91</srcmd5>
+    <version>0.20</version>
+    <time>1468049003</time>
+    <user>dimstar_suse</user>
+    <comment>needed for Plack</comment>
+    <requestid>406666</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>401da59a8b6b58b51ae69d04ab37525e</srcmd5>
+    <version>0.21</version>
+    <time>1487260974</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>456908</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>338b3217fa9e48de5ef7023feff75209</srcmd5>
+    <version>0.22</version>
+    <time>1555488550</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>694712</requestid>
+  </revision>
+</revisionlist>
