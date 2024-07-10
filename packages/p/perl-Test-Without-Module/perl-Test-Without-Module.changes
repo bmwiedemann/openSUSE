@@ -1,0 +1,53 @@
+-------------------------------------------------------------------
+Sat Jul  6 05:29:00 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.220.0 (0.22)
+   see /usr/share/doc/packages/perl-Test-Without-Module/Changes
+
+  0.22 2024-07-05
+    - Fix test suite to not skip a failing test
+
+-------------------------------------------------------------------
+Sun Dec 11 03:07:14 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.21
+   see /usr/share/doc/packages/perl-Test-Without-Module/Changes
+
+-------------------------------------------------------------------
+Mon Apr 10 06:48:44 UTC 2017 - coolo@suse.com
+
+- updated to 0.20
+   see /usr/share/doc/packages/perl-Test-Without-Module/Changes
+
+-------------------------------------------------------------------
+Fri Mar 31 06:51:57 UTC 2017 - coolo@suse.com
+
+- updated to 0.19
+   see /usr/share/doc/packages/perl-Test-Without-Module/Changes
+
+-------------------------------------------------------------------
+Tue Apr 14 19:28:49 UTC 2015 - coolo@suse.com
+
+- updated to 0.18
+   see /usr/share/doc/packages/perl-Test-Without-Module/Changes
+
+-------------------------------------------------------------------
+Mon Aug  5 18:43:54 UTC 2013 - coolo@suse.com
+
+- regenerate with current template
+
+-------------------------------------------------------------------
+Wed Dec  1 06:55:45 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Nov 29 18:31:16 UTC 2010 - coolo@novell.com
+
+- remove /var/adm/perl-modules
+
+-------------------------------------------------------------------
+Sun Jul 25 07:45:50 UTC 2010 - pascal.bleser@opensuse.org
+
+- initial version (0.17)
+
