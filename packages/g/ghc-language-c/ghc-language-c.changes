@@ -1,0 +1,83 @@
+-------------------------------------------------------------------
+Sat Jan 20 15:44:41 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update language-c to version 0.9.3.
+  Upstream has renamed and modified the change log file(s) in this
+  release. Unfortunately, the automatic updater cannot reliable
+  determine relevant entries for this release.
+
+-------------------------------------------------------------------
+Tue Nov  7 17:32:33 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update language-c to version 0.9.2 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Thu Apr  6 12:23:52 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
+Tue Jan 10 13:52:16 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update language-c to version 0.9.2.
+  ## 0.9.2
+
+  - Add support for 128 bit builtin integer types
+
+-------------------------------------------------------------------
+Wed Apr  6 09:31:53 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update language-c to version 0.9.1.
+  ## 0.9.1
+
+    - Support parsing an empty list of clobbers after a colon in `asm` statements
+
+-------------------------------------------------------------------
+Wed Mar 16 08:39:25 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update language-c to version 0.9.0.2.
+  ## 0.9.0.2
+
+  	- Correct lower bound on GHC
+
+-------------------------------------------------------------------
+Sat Feb  5 00:26:26 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update language-c to version 0.9.0.1 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Sun Dec 20 13:15:08 UTC 2020 - psimons@suse.com
+
+- Update language-c to version 0.9.0.1.
+  ## 0.9.0.1
+
+  	- Scrap dependency on syb
+
+  Thanks to @vmchale
+
+-------------------------------------------------------------------
+Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+ 
+- disable %{ix86} build
+ 
+-------------------------------------------------------------------
+Fri Sep  4 17:21:42 UTC 2020 - psimons@suse.com
+
+- Update language-c to version 0.9.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/language-c-0.9/src/ChangeLog
+
+-------------------------------------------------------------------
+Tue Aug 18 10:45:17 UTC 2020 - Peter Simons <psimons@suse.com>
+
+- Replace %setup -q with the more modern %autosetup macro.
+
+-------------------------------------------------------------------
+Tue Jun  9 10:27:02 UTC 2020 - psimons@suse.com
+
+- Add language-c at version 0.8.3.
+
