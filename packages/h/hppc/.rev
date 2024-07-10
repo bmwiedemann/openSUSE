@@ -1,0 +1,58 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3041317feed77ac9974c062c1d902031</srcmd5>
+    <version>0.7.1</version>
+    <time>1582899680</time>
+    <user>dimstar_suse</user>
+    <comment>new package</comment>
+    <requestid>780169</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>20ef62d6e2bcf09e40b2d0efa231ed26</srcmd5>
+    <version>0.7.1</version>
+    <time>1648159069</time>
+    <user>dimstar_suse</user>
+    <comment>Standalone annotation-api</comment>
+    <requestid>964409</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>c5df099223bc2ed0ee9241dec52e8144</srcmd5>
+    <version>0.7.1</version>
+    <time>1648665368</time>
+    <user>dimstar_suse</user>
+    <comment>Standalone JavaEE inconditionally</comment>
+    <requestid>965948</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>9e4a4173eb85cf7999e842d55eb2f1a2</srcmd5>
+    <version>0.7.1</version>
+    <time>1694808309</time>
+    <user>anag+factory</user>
+    <comment>reproducible</comment>
+    <requestid>1111421</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>319cff52fc7681d54346abd5a808af06</srcmd5>
+    <version>0.7.1</version>
+    <time>1698333258</time>
+    <user>anag+factory</user>
+    <comment>source/target 8 == build with jdk 21</comment>
+    <requestid>1120415</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>14ef635583d4dec3ab44dcb8ef950fba</srcmd5>
+    <version>0.7.1</version>
+    <time>1708534792</time>
+    <user>anag+factory</user>
+    <comment>rpm 4.20 compat</comment>
+    <requestid>1148576</requestid>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>4bac657693a0c38c0370b274102ee5ab</srcmd5>
+    <version>0.7.1</version>
+    <time>1715872575</time>
+    <user>anag+factory</user>
+    <comment>Fix build with maven-plugin-plugin &gt;= 3.11</comment>
+    <requestid>1174398</requestid>
+  </revision>
+</revisionlist>
