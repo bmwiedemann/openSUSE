@@ -1,0 +1,34 @@
+-------------------------------------------------------------------
+Wed Jan 24 02:11:04 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pyproject macros.
+- Clean up Python 2 leftovers.
+- Use pytest to run the testsuite.
+
+-------------------------------------------------------------------
+Thu Dec 24 00:35:44 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Support multiple python3 flavors
+  gh#openSUSE/python-rpm-macros#66
+
+-------------------------------------------------------------------
+Tue Sep 24 09:15:23 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.0.1:
+  * no upstream changelog
+
+-------------------------------------------------------------------
+Tue Dec  4 12:48:51 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package, but
+  keep testsuite working.
+
+-------------------------------------------------------------------
+Wed Aug  9 18:59:38 UTC 2017 - toddrme2178@gmail.com
+
+- Fix building on SLE
+
+-------------------------------------------------------------------
+Wed May 17 15:29:30 UTC 2017 - toddrme2178@gmail.com
+
+- Initial version
