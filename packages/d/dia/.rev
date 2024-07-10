@@ -380,4 +380,12 @@ https://bugzilla.redhat.com/996759) (forwarded request 224089 from mgorse)</comm
     <comment>Prepare for RPM 4.20</comment>
     <requestid>1145230</requestid>
   </revision>
+  <revision rev="52" vrev="13">
+    <srcmd5>a9b1e5d1f0abd5476ec9ecca33d22777</srcmd5>
+    <version>0.97.3</version>
+    <time>1720622882</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1186461</requestid>
+  </revision>
 </revisionlist>

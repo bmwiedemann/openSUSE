@@ -38,6 +38,17 @@ Patch17:        dia-remove-datetime.patch
 Patch20:        dia-libemf-64bit.patch
 # PATCH-FIX-OPENSUSE dia-enable-html-doc.patch mgorse@suse.com -- Always enable html docs if xsltproc present.
 Patch23:        dia-enable-html-doc.patch
+# PATCH-FIX-OPENSUSE dia-configure-c99.patch boo#1224536 mjambor@suse.cz -- Fix configure issue with GCC 14, from https://src.fedoraproject.org/rpms/dia/c/0a14169fc36b959598074065678e0126830317f8?branch=rawhide
+Patch30:        dia-configure-c99.patch
+# PATCH-FIX-UPSTREAM dia-0.97.3-get_data_size.patch boo#1224536 mjambor@suse.cz -- One of upstream patches for -Wincompatible-pointer-types
+Patch31:        dia-0.97.3-get_data_size.patch
+# PATCH-FIX-UPSTREAM dia-0.97.3-const-ft_vector.patch boo#1224536 mjambor@suse.cz -- One of upstream patches for -Wincompatible-pointer-types
+Patch32:        dia-0.97.3-const-ft_vector.patch
+# PATCH-FIX-UPSTREAM dia-0.97.3-g_test_add_data_func_1.patch boo#1224536 mjambor@suse.cz -- One of upstream patches for -Wincompatible-pointer-types
+Patch33:        dia-0.97.3-g_test_add_data_func_1.patch
+# PATCH-FIX-UPSTREAM dia-0.97.3-g_test_add_data_func_2.patch boo#1224536 mjambor@suse.cz -- One of upstream patches for -Wincompatible-pointer-types
+Patch34:        dia-0.97.3-g_test_add_data_func_2.patch
+
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -89,6 +100,12 @@ pages).
 %patch -P 17 -p1
 %patch -P 20 -p1
 %patch -P 23 -p1
+%patch -P 30 -p1
+%patch -P 31 -p1
+%patch -P 32 -p1
+%patch -P 33 -p1
+%patch -P 34 -p1
+
 cp $RPM_SOURCE_DIR/font-test*dia .
 
 %build

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jul  8 14:01:36 UTC 2024 - Martin Jambor <mjambor@suse.com>
+
+- Added patches dia-configure-c99.patch,
+  dia-0.97.3-get_data_size.patch, dia-0.97.3-const-ft_vector.patch,
+  dia-0.97.3-g_test_add_data_func_1.patch and
+  dia-0.97.3-g_test_add_data_func_2.patch to address C99 compliance
+  issues (mainly use of incompatible pointer types) that are errors by
+  default with GCC 14 [boo#1224536].  All of these patches were taken
+  from the Fedora dia package.
+
+-------------------------------------------------------------------
 Thu Feb  8 16:04:53 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Prepare for RPM 4.20: patchN -> patch -P N.

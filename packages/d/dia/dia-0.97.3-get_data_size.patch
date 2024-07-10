@@ -1,0 +1,128 @@
+Backport from https://gitlab.gnome.org/GNOME/dia/-/commit/f57ea2685034ddbafc19f35d9b525a12283d7c24
+
+--- dia-0.97.3/lib/prop_geomtypes.c				2014-08-24 17:46:01.000000000 +0200
++++ dia-0.97.3/lib/prop_geomtypes.c.get_data_size		2024-03-02 22:11:06.700789662 +0100
+@@ -129,9 +129,10 @@
+ }
+ 
+ static int 
+-realprop_get_data_size(RealProperty *prop)
++realprop_get_data_size(void)
+ {
+-  return sizeof (prop->real_data);
++  RealProperty prop;
++  return sizeof (prop.real_data);
+ }
+ 
+ static const PropertyOps realprop_ops = {
+@@ -242,9 +243,10 @@
+ }
+ 
+ static int 
+-lengthprop_get_data_size(LengthProperty *prop)
++lengthprop_get_data_size(void)
+ {
+-  return sizeof (prop->length_data);
++  LengthProperty prop;
++  return sizeof (prop.length_data);
+ }
+ 
+ static const PropertyOps lengthprop_ops = {
+@@ -358,9 +360,10 @@
+ }
+ 
+ static int 
+-fontsizeprop_get_data_size(FontsizeProperty *prop)
++fontsizeprop_get_data_size(void)
+ {
+-  return sizeof (prop->fontsize_data);
++  FontsizeProperty prop;
++  return sizeof (prop.fontsize_data);
+ }
+ 
+ static const PropertyOps fontsizeprop_ops = {
+--- dia-0.97.3/lib/prop_inttypes.c				2014-08-24 17:46:01.000000000 +0200
++++ dia-0.97.3/lib/prop_inttypes.c.get_data_size		2024-03-02 22:12:01.683149664 +0100
+@@ -122,9 +122,10 @@
+ }
+ 
+ static int 
+-charprop_get_data_size(CharProperty *prop)
++charprop_get_data_size(void)
+ {
+-  return sizeof (prop->char_data);
++  CharProperty prop;
++  return sizeof (prop.char_data);
+ }
+ 
+ 
+@@ -229,9 +230,10 @@
+ }
+ 
+ static int 
+-boolprop_get_data_size(BoolProperty *prop)
++boolprop_get_data_size(void)
+ {
+-  return sizeof (prop->bool_data);
++  BoolProperty prop;
++  return sizeof (prop.bool_data);
+ }
+ 
+ 
+@@ -339,9 +341,10 @@
+ }
+ 
+ static int 
+-intprop_get_data_size(IntProperty *prop)
++intprop_get_data_size(void)
+ {
+-  return sizeof (prop->int_data);
++  IntProperty prop;
++  return sizeof (prop.int_data);
+ }
+ 
+ static const PropertyOps intprop_ops = {
+--- dia-0.97.3/lib/prop_text.c					2014-08-24 17:46:01.000000000 +0200
++++ dia-0.97.3/lib/prop_text.c.get_data_size			2024-03-02 22:12:46.741444615 +0100
+@@ -208,9 +208,10 @@
+ }
+ 
+ static int 
+-stringprop_get_data_size(StringProperty *prop)
++stringprop_get_data_size(void)
+ {
+-  return sizeof (prop->string_data); /* only the pointer */
++  StringProperty prop;
++  return sizeof (prop.string_data); /* only the pointer */
+ }
+ 
+ static StringListProperty *
+--- dia-0.97.3/lib/properties.h					2014-08-24 17:46:01.000000000 +0200
++++ dia-0.97.3/lib/properties.h.get_data_size			2024-03-02 22:13:08.051584089 +0100
+@@ -116,7 +116,7 @@
+                                          void *base, guint offset, guint offset2);
+ typedef void (*PropertyType_SetFromOffset)(Property *prop,
+                                          void *base, guint offset, guint offset2);
+-typedef int (*PropertyType_GetDataSize)(Property *prop);
++typedef int (*PropertyType_GetDataSize)(void);
+ 
+ 
+ struct _PropertyOps {
+--- dia-0.97.3/objects/custom/custom_object.c			2014-08-24 17:46:01.000000000 +0200
++++ dia-0.97.3/objects/custom/custom_object.c.get_data_size	2024-03-02 22:13:29.153722188 +0100
+@@ -372,14 +372,7 @@
+       info->prop_offsets[i].name = info->props[i].name;
+       info->prop_offsets[i].type = info->props[i].type;
+       info->prop_offsets[i].offset = offs;
+-      /* FIXME:
+-	 custom_object.c:328: warning: passing arg 1 of pointer to function 
+-	 from incompatible pointer type
+-	 We don't have a Property* here so there is not much we can do about.
+-	 Maybe it even works cause the sizeof() in *_get_data_size can be
+-	 calculated at compile time. Anyway, a mess ;) --hb
+-      */
+-      size = info->props[i].ops->get_data_size (&info->props[i]);
++      size = info->props[i].ops->get_data_size ();
+       info->ext_attr_size += size;
+       offs += size;
+     }
