@@ -1,0 +1,126 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ead49784288c1fc7abf92af066f5817e</srcmd5>
+    <version>1.0.10</version>
+    <time>1359452952</time>
+    <user>coolo</user>
+    <comment>New package for Factory; see http://lists.opensuse.org/opensuse-factory/2013-01/msg00433.html</comment>
+    <requestid>149729</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>ead49784288c1fc7abf92af066f5817e</srcmd5>
+    <version>1.0.10</version>
+    <time>1379663189</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5847df124554f32c812c85de62b30e0a</srcmd5>
+    <version>1.0.11</version>
+    <time>1389606917</time>
+    <user>coolo</user>
+    <comment>Update to version 1.0.11</comment>
+    <requestid>213646</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>5847df124554f32c812c85de62b30e0a</srcmd5>
+    <version>1.0.11</version>
+    <time>1409301815</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>6434170264f62563423ec55a65a3ee7a</srcmd5>
+    <version>1.0.11</version>
+    <time>1416823703</time>
+    <user>dimstar_suse</user>
+    <comment>- Pass BASH=/bin/bash to ./configure (variant of SR261868)
+- Apply check-logwarn-bash.patch fixing ${BASH} def'n in check_logwarn</comment>
+    <requestid>262100</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>33573223981af40538495d7e63cbda59</srcmd5>
+    <version>1.0.12</version>
+    <time>1464484410</time>
+    <user>dimstar_suse</user>
+    <comment>- Update project homepage URL
+- Update source file URL
+
+- Upgrade to release 1.0.12
+  + Added note to man page that the default behavior is to match
+  + Fix substitution for @BASH_SHELL@ in check_logwarn script
+    - Remove temporary fix check-logwarn-bash.patch
+  + Moved project hosing from Google code to GitHub
+  + Added `-R' flag (issue #24)</comment>
+    <requestid>398396</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b075131b614da5a086f61b78266b2d70</srcmd5>
+    <version>1.0.13</version>
+    <time>1466413658</time>
+    <user>dimstar_suse</user>
+    <comment>- Upgrade to release 1.0.13
+  + Added `-T' flag for frequency filtering</comment>
+    <requestid>403604</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>3d81492065338554008e1c5ae90ed725</srcmd5>
+    <version>1.0.14</version>
+    <time>1466977947</time>
+    <user>dimstar_suse</user>
+    <comment>- Upgrade to release 1.0.14
+  + Fix bug where `-T' suppressed everything when used with `-p'
+  + Fix bug where `-T' would also count negative patterns
+  + Fix segfault parsing `-T' in certain cases
+
+- Add 7eac274.patch
+  + Fixes bug where `-T' would also count negative patterns
+- Add 3a874b0.patch
+  + Fixes bug where `-T' suppressed everything when used with `-p'</comment>
+    <requestid>404510</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>26de54ca83b583e35f62a92e49a21e98</srcmd5>
+    <version>1.0.15</version>
+    <time>1584745107</time>
+    <user>dimstar_suse</user>
+    <comment>- Upgrade to release 1.0.15
+  + Added &quot;-C&quot; flag to Nagios plugin (issue #28).
+  + Allow &quot;-T X/Y&quot; flag as the final command line argument
+</comment>
+    <requestid>786611</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>303f896f5aff23128a8b8823a861b608</srcmd5>
+    <version>1.0.15</version>
+    <time>1636038589</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>929069</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>b71ca1f9011392b2d959a312a029fe4c</srcmd5>
+    <version>1.0.16</version>
+    <time>1637535144</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix bug with spec file - source shouldn't be using URL 
+
+- Upgrade to release 1.0.16 
+  + Store repeated timestamps more efficiently in state file
+  + Fixed infinite loop in Nagios plugin '-C' flag (issue #29)
+  + Fixed crash when &quot;-T X/Y&quot; flag was the last command line argument
+
+- Replace source tarball with _service file pulling from github</comment>
+    <requestid>932830</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>936dbae7c5c40951e93104cbe321ff06</srcmd5>
+    <version>1.0.17</version>
+    <time>1653769015</time>
+    <user>dimstar_suse</user>
+    <comment>- Upgrade to release 1.0.17
+  + Use fstat(2) instead of stat(2) to avoid tiny race condition
+  + Fix bug when parsing consecutive &quot;-T&quot; flags</comment>
+    <requestid>979595</requestid>
+  </revision>
+</revisionlist>
