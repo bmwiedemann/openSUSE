@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<constraints>
+  <hardware>
+    <disk>
+      <size unit="G">8</size>
+    </disk>
+  </hardware>
+  <overwrite>
+    <conditions>
+      <arch>ppc64</arch>
+      <arch>ppc64le</arch>
+      <arch>x86_64</arch>
+    </conditions>
+    <hardware>
+      <memory>
+        <size unit="G">9</size>
+      </memory>
+    </hardware>
+  </overwrite>
+</constraints>

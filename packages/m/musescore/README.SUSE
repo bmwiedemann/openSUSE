@@ -1,0 +1,63 @@
+## Get Muse Hub working
+
+MuseScore4 is much more fun if you can use the Muse-Hub extensions.
+There are two ways to get it work at present:
+
+I. Use beta version of Muse Sounds Manager https://muse-cdn.com/Muse_Sounds_Manager_Beta.rpm
+
+II. Use Muse-Hub:
+
+Hopefully, the instructions presented here will soon be obsolete, but until they are, they
+serve as a step-by-step guide to activating Muse-Hub.
+
+
+1. Fetch debian package
+
+   At the time of this writing, this is version 1.0.0.392, available at:
+
+   `wget https://pub-c7a32e5b5d834ec9aeef400105452a42.r2.dev/Muse_Hub.deb`
+
+
+2. Convert to rpm
+
+    `sudo alien -r --scripts Muse_Hub.deb`
+    
+
+3.  For Tumbleweed, you need an additional library `lttng-ust0`, the distribution
+    went on to `lttng-ust1` already. A build is available in `home:frispete:musescore`.
+
+
+4.  Install rpm
+
+    `sudo zypper in muse-hub-1.0.0.392-2.x86_64.rpm`
+    
+
+5.  Create a compatibility symlink
+
+    `sudo ln -s /var/lib/ca-certificates/ca-bundle.pem /etc/ssl/certs/ca-certificates.crt`
+    
+
+6.  Restart the muse-hub service
+
+    `sudo systemctl restart muse-hub`
+    
+
+Now, the muse-hub client should work, but the musescore sampler does not yet.
+Install one of the muse-sounds at least. This will also install the necessary
+library `libMuseSamplerCoreLib.so` behind the scenes. But unfortunately in the
+wrong directory: `/usr/lib`. The easiest work around for this is creating a
+compatibility symlink again:
+
+`ln -s /usr/lib/libMuseSamplerCoreLib.so /usr/lib64/libMuseSamplerCoreLib.so`
+
+
+## Get VSTs working
+
+Only available for the -git build. Install the `vst3sdk` package. Again, you
+need to provide a compatibility symlink to make it work:
+
+`ln -s /usr/lib64/VST3 /usr/lib/`
+
+Now, some standard `VSTs` should be available in the git build of MS4.
+
+## Happy composing!
