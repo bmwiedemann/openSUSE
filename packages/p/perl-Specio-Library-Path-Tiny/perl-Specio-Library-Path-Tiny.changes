@@ -1,0 +1,15 @@
+-------------------------------------------------------------------
+Tue Jun 21 03:08:38 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.05
+   see /usr/share/doc/packages/perl-Specio-Library-Path-Tiny/Changes
+
+  0.05     2022-06-20
+
+  - Fixed failing tests on msys. Fixed by Paulo Custodio. PR #1.
+
+-------------------------------------------------------------------
+Wed Oct 21 05:53:19 UTC 2020 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- initial package 0.04
+ * created by cpanspec 1.78.09
