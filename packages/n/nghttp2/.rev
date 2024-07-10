@@ -1,0 +1,906 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4ed982e6367133b65ce86410559e5ad1</srcmd5>
+    <version>0.7.4</version>
+    <time>1424430059</time>
+    <user>dimstar_suse</user>
+    <comment>New cool package</comment>
+    <requestid>286322</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>0af90d3d8f7afea97051a0b1c183cb91</srcmd5>
+    <version>0.7.5</version>
+    <time>1425566536</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>288767</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>a8590cc9d9aca29b99c40f96854b88be</srcmd5>
+    <version>0.7.5</version>
+    <time>1426680265</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>290711</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>a70ddf3960fdd98d3ed1e756ca2a2d3b</srcmd5>
+    <version>0.7.5</version>
+    <time>1426796460</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>291365</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>1cb74b2168d5ad39daabc3e7463d1449</srcmd5>
+    <version>0.7.9</version>
+    <time>1428272783</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>294507</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>21360d7429a6c021c160e1cd37f075bd</srcmd5>
+    <version>0.7.11</version>
+    <time>1428949868</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>295590</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>9faeb1c3079cda0a28f1562def07797f</srcmd5>
+    <version>0.7.12</version>
+    <time>1429606390</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>298140</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>dd862009fc34b832b44d0edb3518f2b5</srcmd5>
+    <version>0.7.13</version>
+    <time>1430576112</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.7.13</comment>
+    <requestid>304933</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>2631328ba7277241aad987314dbda693</srcmd5>
+    <version>0.7.14</version>
+    <time>1431668646</time>
+    <user>coolo</user>
+    <comment>- Update to 0.7.14</comment>
+    <requestid>306805</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>df133d2557bc39d4669a684e9eeec007</srcmd5>
+    <version>1.0.0</version>
+    <time>1432379260</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>308386</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>4d690636457fe8e283e31e3871256fe9</srcmd5>
+    <version>1.0.1</version>
+    <time>1432588510</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.0.1</comment>
+    <requestid>308631</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>a3ca4a6607b9395335e58279be02c532</srcmd5>
+    <version>1.0.2</version>
+    <time>1434456363</time>
+    <user>coolo</user>
+    <comment>- Update to 1.0.2</comment>
+    <requestid>312230</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>ccdc746074ec1f2771e91b26339cd398</srcmd5>
+    <version>1.0.4</version>
+    <time>1435172764</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.0.4</comment>
+    <requestid>313404</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>1854ff0635b7d9b02a0f9dc834118191</srcmd5>
+    <version>1.0.5</version>
+    <time>1435870173</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.0.5
+  * Add STREAM_DEP_DEBUG macro switch to enable runtime validation 
+    of depedency tree
+  * Fix another bug in priority handling; sibling's item is not 
+    queued when ancestor's item is detached
+  * nghttpx: Fix crash with --http2-bridge and both frontend and 
+    backend TLS</comment>
+    <requestid>314504</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>b264b209dfa423f94f23c4528d32cf1b</srcmd5>
+    <version>1.1.1</version>
+    <time>1437299141</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>317162</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>61f4f5975d53303c6a16bcbb7c17b6ac</srcmd5>
+    <version>1.2.0</version>
+    <time>1439274431</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.2.0
+- Changes for 1.1.2
+  * Fix linker error with libnghttp2_asio
+  * Allow custom installation location for Python bindings
+- Drop no longer needed missing_nghttp2_timegm.patch</comment>
+    <requestid>321636</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>e3d856bd9b1820410b2169a97c9035b3</srcmd5>
+    <version>1.2.1</version>
+    <time>1439818530</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.2.
+  * doc: Reword the HPACK tutorial (Patch from Tom Harwood)
+  * nghttpx: Fix stability issues
+  * h2load: Fix crash if -r &gt; -n</comment>
+    <requestid>323619</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>b0d09c3ca35cc1f3a4e8b3507195438c</srcmd5>
+    <version>1.3.0</version>
+    <time>1441146991</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.3.
+- Fix typo in changelog
+
+- Update to 1.2.1</comment>
+    <requestid>328245</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>b40ab0cf0ae4882d6466686794e46da8</srcmd5>
+    <version>1.3.1</version>
+    <time>1442474424</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.3.1
+- Fix typo in previous changelog entry</comment>
+    <requestid>330904</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>f83bc593c81493e0cf189db7f90bf676</srcmd5>
+    <version>1.3.4</version>
+    <time>1443585153</time>
+    <user>coolo</user>
+    <comment>- Update to 1.3.4</comment>
+    <requestid>334030</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>ef0c4cf8d12e3950644c6266bdb0f547</srcmd5>
+    <version>1.4.0</version>
+    <time>1446719725</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>341962</requestid>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>bca8da8341bca64e3c98c33934b5f0c9</srcmd5>
+    <version>1.4.0</version>
+    <time>1448400789</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>344787</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>82d00f9d144745651e547785715ef69c</srcmd5>
+    <version>1.5.0</version>
+    <time>1450284071</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.5.0</comment>
+    <requestid>347107</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>4c5e2621644f7ce801d96d6aecc8b431</srcmd5>
+    <version>1.6.0</version>
+    <time>1451177999</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.6.0</comment>
+    <requestid>350718</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>5fcf6a2b746541246546acf057a989f2</srcmd5>
+    <version>1.7.0</version>
+    <time>1453997976</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.7.0</comment>
+    <requestid>356118</requestid>
+  </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>bf09f1c76409d693a211bae7f4f92a9f</srcmd5>
+    <version>1.7.0</version>
+    <time>1454628600</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>356635</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>a11400641aef172e62ccdae86df6bac3</srcmd5>
+    <version>1.7.1</version>
+    <time>1456242846</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.7.1
+  * Fix CVE-2016-1544 (boo#966514)</comment>
+    <requestid>359072</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>ad7c8010981e954200b0384702ab6b84</srcmd5>
+    <version>1.8.0</version>
+    <time>1456821230</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.8.0</comment>
+    <requestid>361793</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>dc76ee84ce672837dc3cb7f5ff1eb0b3</srcmd5>
+    <version>1.9.1</version>
+    <time>1459508480</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.9.1</comment>
+    <requestid>380487</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>e1947cbeca90177ee01955def3e29588</srcmd5>
+    <version>1.10.0</version>
+    <time>1462051733</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.10.0
+- Update to 1.9.2</comment>
+    <requestid>391801</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>0d45c2996334fd08342c362e35004286</srcmd5>
+    <version>1.11.1</version>
+    <time>1465847342</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.11.1
+  * lib: Add nghttp2_hd_inflate_hd2() and deprecate
+    nghttp2_hd_inflate_hd()
+  * lib: Avoid 0-length DATA if NGHTTP2_DATA_FLAG_NO_END_STREAM is set
+  * lib: Fix bug that PING flags are ignored in nghttp2_submit_ping
+  * integration: Workaround runtime error: cgo argument has Go pointer
+    to Go pointer
+  * nghttp: Eliminate zero length DATA frame at the end if possible
+  * nghttpd: Set content-length in status response
+  * nghttpx: Add sni keyword to --backend option
+  * nghttpx: Allow mixed protocol and TLS settings among backends under
+    same pattern
+  * nghttpx: Don't add 0-length DATA when response HEADERS bears
+    END_STREAM flag
+  * nghttpx: Don't add chunked encoded response body for HEAD request
+  * nghttpx: Don't use CN if we have dNSName or iPAddress field
+  * nghttpx: Just call execv instead of execve to pass environ
+  * nghttpx: Make SETTINGS timeout value configurable
+  * nghttpx: Save PID file after it is ready to accept connections
+  * nghttpx: Treat backend failure if SETTINGS is not received within
+    timeout
+  * nghttpx: Wait for SETTINGS ACK to make sure that backend h2 server
+    is alive</comment>
+    <requestid>400634</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>96b696a47c3bb4c7e56c319cccb1d940</srcmd5>
+    <version>1.12.0</version>
+    <time>1469080386</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.12.0:</comment>
+    <requestid>408510</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>67acbdf96428c8075fcdff856928f61d</srcmd5>
+    <version>1.13.0</version>
+    <time>1471009065</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.13.0:</comment>
+    <requestid>417369</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>f679c30a5a9df23b93826e0e2779dac9</srcmd5>
+    <version>1.14.0</version>
+    <time>1473679419</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.14.0:
+  * lib: Make emit_header() return void since it always succeed
+  * lib: Add nghttp2_hd_deflate_hd_vec() deflate API to support
+    multiple buffer input
+  * lib: since hd_inflate_commit_indexed() always return 0,
+    remove the return value check in nghttp2_hd_inflate_hd_nv()
+  * lib: Use memeq() instead of lstreq() in lookup_token()
+  * lib: More strict stream state handling
+  * lib: Modify genlibtokenlookup.py to remove redundant header
+    comparisons and remove inline qualifier of lookup_token()
+    in genlibtokenlookup.py
+  * lib: Fix wrong tree operation to avoid cycle
+  * lib: Make get_max_index() return the max index in frame,
+    so we don't need to do extra calculation
+  * lib: Add nghttp2_on_invalid_header_callback
+  * lib: Log frame's stream ID for header debug logging
+  * doc: Remove old doc about differential encoding in HPACK
+  * doc: Document about ALPN in nghttpx howto
+  * nghttpx: Log error code from getsockopt(SO_ERROR) on first
+    write event
+  * nghttpx: Don't change pushed stream's priority
+  * nghttpx: Log backend connection failure in WARN level
+  * nghttpx: Fix bug that api and healthmon parameters do not work
+    with http2 proxy
+  * nghttpx: Add access log variable for backend host and port
+  * nghttpx: Use copy instead of const reference of backend group
+  * nghttpx: Reload configuration with SIGHUP
+  * nghttp: Adjust weight according to Firefox stable
+  * nghttp: Call error callback when invalid header field is
+    received and ignored</comment>
+    <requestid>425620</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>9d8eaafcde5d798fa3cf16134d0a3c47</srcmd5>
+    <version>1.15.0</version>
+    <time>1475241666</time>
+    <user>dimstar_suse</user>
+    <comment>update to version 1.15.0</comment>
+    <requestid>430223</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>77d90f982b56867df097d023d81e8401</srcmd5>
+    <version>1.16.1</version>
+    <time>1480420051</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.16.1:</comment>
+    <requestid>441810</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>e067445aff0bca736f5b13d4c0a20391</srcmd5>
+    <version>1.17.0</version>
+    <time>1481885119</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.17.0:</comment>
+    <requestid>445733</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>895b1c310a1f7713b62b99194a39e8e8</srcmd5>
+    <version>1.18.0</version>
+    <time>1483959052</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.18.0:</comment>
+    <requestid>448600</requestid>
+  </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>75894ba821ae315c511cc21dfb4735b9</srcmd5>
+    <version>1.18.0</version>
+    <time>1486547004</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>454123</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>872512d499263e9faac4992a6ea86169</srcmd5>
+    <version>1.20.0</version>
+    <time>1490965501</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to version 1.20.0:</comment>
+    <requestid>482362</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>f152f86960592947ade38d90fdf86d01</srcmd5>
+    <version>1.21.1</version>
+    <time>1493819553</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.21.1:</comment>
+    <requestid>489784</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>7b8dc804b3d012d2c2a905eb30774877</srcmd5>
+    <version>1.22.0</version>
+    <time>1495267591</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.22.0:</comment>
+    <requestid>494216</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>3773a11160249ef0bc40142b1d3d9586</srcmd5>
+    <version>1.24.0</version>
+    <time>1500669475</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.24.0:</comment>
+    <requestid>511041</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>fbf063c5df3d74ad605197eb9273ec16</srcmd5>
+    <version>1.25.0</version>
+    <time>1504520753</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.25.0:
+  * lib: add nghttp2_rcbuf_is_static() (Patch from Anna Henningsen) (GH-983)
+  * nghttpx: Fix bug that forwarded for is not affected by proxy protocol (GH-979)
+  * nghttpx: Update mruby to 1.3.0 (GH-957)</comment>
+    <requestid>519099</requestid>
+  </revision>
+  <revision rev="45" vrev="2">
+    <srcmd5>d348af218ae7205e0c6f231084cacf36</srcmd5>
+    <version>1.25.0</version>
+    <time>1507896523</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>532804</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>af7d63a843f75b34206682e4d24abcb2</srcmd5>
+    <version>1.27.0</version>
+    <time>1509193249</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.27.0:
+  * h2load: Print out h2 header fields with --verbose option
+  * nghttpx: Send non-final response to HTTP/1.1 or HTTP/2 client
+    only
+- Changes for version 1.26.0:
+  * docs: Fix some typos in the nghttpx how-to
+  * h2load: Fix bug that timing script stalls with -m1
+  * h2load: Reservoir sampling (GH-984)
+  * h2load: Add timing-based load-testing in h2load
+- Switch to python3 support</comment>
+    <requestid>536838</requestid>
+  </revision>
+  <revision rev="47" vrev="2">
+    <srcmd5>33822122a70a01a8ac676e51a2c73b16</srcmd5>
+    <version>1.27.0</version>
+    <time>1511086035</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>542107</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>e472e39ab95e3bbc0b16e17f5b3e4894</srcmd5>
+    <version>1.28.0</version>
+    <time>1513245065</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>556050</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>ea7f52b9515b4664aaa4be4631ee94ac</srcmd5>
+    <version>1.29.0</version>
+    <time>1516091068</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.29.0:
+  * lib: Use NGHTTP2_REFUSED_STREAM for streams which are closed by
+    GOAWAY
+  * build: Remove SPDY
+  * build: Fix CMAKE_MODULE_PATH
+  * nghttpx: Revert &quot;nghttpx: Use an existing h2 backend connection
+    as much as possible&quot;
+  * nghttpx: Write API request body in temporary file
+  * nghttpx: Increase api-max-request-body
+  * nghttpx: Faster configuration loading with lots of backends
+  * nghttpx: Fix crash with --backend-http-proxy-uri option</comment>
+    <requestid>561884</requestid>
+  </revision>
+  <revision rev="50" vrev="2">
+    <srcmd5>99fa75aeb90aa31fee297adffb743b79</srcmd5>
+    <version>1.29.0</version>
+    <time>1519902367</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>580194</requestid>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>3b460d7e0546454eaeb43d1d4231e9c0</srcmd5>
+    <version>1.31.1</version>
+    <time>1523956412</time>
+    <user>dimstar_suse</user>
+    <comment>- Version umpdate to 1.31.1:
+  * Fix bsc#1088639 CVE-2018-1000168
+  * https://nghttp2.org/blog/2018/04/12/nghttp2-v1-31-1/
+
+- Version update to 1.31.0:
+  * lib: Add nghttp2_session_set_user_data() public API function (GH-1137)
+  * src: Define nghttp2_inet_pton wrapper to avoid inet_pton macro (GH-1128)
+  * nghttpx: Close listening socket on graceful shutdown
+  * nghttpx: Add an option to accept expired client certificate (GH-1126)
+  * nghttpx: Add mruby tls_client_not_before, and tls_client_not_after (GH-1123)
+  * nghttpx: Fix potential memory leak
+  * lib: Allow PING frame to be sent after GOAWAY (GH-1103)
+  * nghttpx: Fix bug that h1 backend idle timeout expires sooner
+  * nghttpx: Stop overwrite of first header on mruby call to env.req.set_header(..) (Patch from Dylan Plecki) (GH-1119)
+  * nghttpx: Add upgrade-scheme parameter to backend option (GH-1099)
+  * nghttpx: Fix missing ALPN validation (--npn-list) (GH-1094)
+  * nghttpx: Remember which resource is pushed for RFC 8297 (GH-1101)
+
+- Drop spdylay dependency as it is deprecated since version 1.28.0
+  and removed from cofnigure.ac since 1.29.0</comment>
+    <requestid>596227</requestid>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>1a913af5fedafcac751fdc10d70a97c1</srcmd5>
+    <version>1.32.0</version>
+    <time>1531469914</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.32.0:</comment>
+    <requestid>621740</requestid>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>f3a0205e8b8551a89a15fb5c9115aad5</srcmd5>
+    <version>1.33.0</version>
+    <time>1538502280</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>638345</requestid>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>5965f4f1de08291c30e006825f6651f6</srcmd5>
+    <version>1.34.0</version>
+    <time>1539342567</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>640688</requestid>
+  </revision>
+  <revision rev="55" vrev="2">
+    <srcmd5>9baf817c7f692f0a361b9ed65781d283</srcmd5>
+    <version>1.34.0</version>
+    <time>1540200161</time>
+    <user>dimstar_suse</user>
+    <comment>Add bug and tracking numbers only</comment>
+    <requestid>642981</requestid>
+  </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>2497c98a82a7278ef72c711830017849</srcmd5>
+    <version>1.36.0</version>
+    <time>1548704817</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>667027</requestid>
+  </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>62046a5ee6ef871d96b172e6e1dd70af</srcmd5>
+    <version>1.38.0</version>
+    <time>1557832288</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.38.0:
+  * This release fixes the bug that authority and path altered by per-pattern mruby script can affect backend selection on retry.
+  * It also fixes the bug that HTTP/1.1 chunked request stalls.
+  * Now nghttpx does not log authorization request header field value with -LINFO.
+  * This release fixes possible backend stall when header and request body are sent in their own packets.
+  * The backend option gets weight parameter to influence backend selection.
+  * This release fixes compile error with BoringSSL.
+- Add patch from upstream to build with new boost bsc#1134616:
+  * boost170.patch</comment>
+    <requestid>701941</requestid>
+  </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>da36b2adffdebf11fa85d10cc4a74fdf</srcmd5>
+    <version>1.39.1</version>
+    <time>1565962208</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.39.1:
+  * This release fixes the bug that log-level is not set with
+    cmd-line or configuration file. It also fixes FPE with default
+    backend.
+- Changes for version 1.39.0:
+  * libnghttp2 now ignores content-length in 200 response to
+    CONNECT request as per RFC 7230.
+  * mruby has been upgraded to 2.0.1.
+  * libnghttp2-asio now supports boost-1.70.
+  * http-parser has been replaced with llhttp.
+  * nghttpx now ignores Content-Length and Transfer-Encoding in 1xx
+    or 200 to CONNECT.
+- Drop no longer needed boost170.patch</comment>
+    <requestid>723082</requestid>
+  </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>d3b636c656e6e50efeb1037326fbcd3f</srcmd5>
+    <version>1.39.2</version>
+    <time>1566912111</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>724584</requestid>
+  </revision>
+  <revision rev="60" vrev="2">
+    <srcmd5>f791cfcefa37b096ed96e1a4d439e747</srcmd5>
+    <version>1.39.2</version>
+    <time>1567580237</time>
+    <user>dimstar_suse</user>
+    <comment>- Conditionally remove dependecy on jemalloc for SLE-12</comment>
+    <requestid>727112</requestid>
+  </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>10bc3c506f3f18c4478b75a2cb3dadc9</srcmd5>
+    <version>1.40.0</version>
+    <time>1579792088</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>765254</requestid>
+  </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>1aa70c633833744716d8a78de6523228</srcmd5>
+    <version>1.41.0</version>
+    <time>1591380394</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>811142</requestid>
+  </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>9d0fc2e137d0577f2e897ff32ea95e14</srcmd5>
+    <version>1.42.0</version>
+    <time>1610123579</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>860739</requestid>
+  </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>6e7401577191253de4cfec4ea5643d48</srcmd5>
+    <version>1.43.0</version>
+    <time>1613043999</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>869212</requestid>
+  </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>db2a6a4f44a82fa65782d1a12b59726e</srcmd5>
+    <version>1.46.0</version>
+    <time>1640200668</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>941803</requestid>
+  </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>21d6410181e1ef4797b13caffda06b8a</srcmd5>
+    <version>1.47.0</version>
+    <time>1648062927</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>963481</requestid>
+  </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>e00c1e457be3a5907d56386717d67c00</srcmd5>
+    <version>1.48.0</version>
+    <time>1657712684</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>988699</requestid>
+  </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>62b8866453bc14fbe93eb99c814899ad</srcmd5>
+    <version>1.49.0</version>
+    <time>1661346640</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>998783</requestid>
+  </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>af1a8a0e638ed621e9a62b8f433e4c01</srcmd5>
+    <version>1.50.0</version>
+    <time>1664638901</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>1006322</requestid>
+  </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>d574a6bd0a9d49029f70a9f21b13a77f</srcmd5>
+    <version>1.51.0</version>
+    <time>1669288934</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1037477</requestid>
+  </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>25dd015196aa55be301ce0fcc9cdf536</srcmd5>
+    <version>1.52.0</version>
+    <time>1681665181</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1079718</requestid>
+  </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>f823c178c382500be418f2de9b283f49</srcmd5>
+    <version>1.53.0</version>
+    <time>1684490081</time>
+    <user>dimstar_suse</user>
+    <comment> Update to version 1.53.0:
+  * https://nghttp2.org/blog/2023/05/10/nghttp2-v1-53-0/</comment>
+    <requestid>1087728</requestid>
+  </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>79ddbae496c17fc2154e8e5a7a55255a</srcmd5>
+    <version>1.54.0</version>
+    <time>1687469088</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1094238</requestid>
+  </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>8c0b8d067cf35dc1668f5aa9600a10ab</srcmd5>
+    <version>1.55.1</version>
+    <time>1690215122</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.55.1:
+  * Fix memory leak
+    This commit fixes memory leak that happens when
+    PUSH_PROMISE or HEADERS frame cannot be sent, and
+    nghttp2_on_stream_close_callback fails with a fatal error.
+    For example, if GOAWAY frame has been received, a 
+    HEADERS frame that opens new stream cannot be sent.
+    This issue has already been made public via CVE-2023-35945
+    by envoyproxy/envoy project.  During embargo period, the
+    patch to fix this bug was accidentally submitted to
+    nghttp2/nghttp2 repository [2]. And they decided to
+    disclose CVE early.  I was notified just 1.5 hours
+    before disclosure.  I had no time to respond.
+    PoC described in [1] is quite simple, but I think it is
+    not enough to trigger this bug.  While it is true that
+    receiving GOAWAY prevents a client from opening new stream,
+    and nghttp2 enters error handling branch, in order to cause
+    the memory leak, nghttp2_session_close_stream function
+    must return a fatal error.
+    NGHTTP2_ERR_NOMEM, as its name suggests, indicates out of
+    memory.  It is unlikely that a process gets short of
+    memory with this simple PoC scenario unless application
+    does something memory heavy processing.
+  * NGHTTP2_ERR_CALLBACK_FAILURE is returned from application
+    defined callback function (nghttp2_on_stream_close_callback, in
+    this case), which indicates something fatal happened inside a
+    callback, and a connection must be closed immediately without
+    any further action.  As nghttp2_on_stream_close_error_callback
+    documentation says, any error code other than 0 or
+    NGHTTP2_ERR_CALLBACK_FAILURE is treated as fatal</comment>
+    <requestid>1099190</requestid>
+  </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>df6cd813239126481dee93f6b767acc8</srcmd5>
+    <version>1.57.0</version>
+    <time>1697566947</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1118015</requestid>
+  </revision>
+  <revision rev="76" vrev="2">
+    <srcmd5>1e14ed3045ab614bc3be868460494e2a</srcmd5>
+    <version>1.57.0</version>
+    <time>1699478204</time>
+    <user>anag+factory</user>
+    <comment>- add keyring for gpg validation
+- spec file cleanups
+
+    For example, if GOAWAY frame has been received, a
+  * https://nghttp2.org/blog/2023/05/10/nghttp2-v1-53-0/
+  checking leading and trailing white spaces against HTTP field value.
+  * https://nghttp2.org/blog/2022/08/22/nghttp2-v1-49-0/
+  * third-party: Bump neverbleed based on the latest head (GH-1708)
+  * see https://nghttp2.org/blog/2022/02/23/nghttp2-v1-47-0/
+  * see https://nghttp2.org/blog/2021/10/19/nghttp2-v1-46-0/
+  * nghttpx: Fix logging integer
+- Conditionally remove dependecy on jemalloc for SLE-12
+    if table size is changed from default
+  * Add nghttp2_option_set_max_send_header_block_length API
+  * Fix warning: declaration of 'free' shadows a global declaration
+  * nghttpx: Add healthmon parameter to -f option to enable health
+  * nghttpx: Add --api-max-request-body option to set maximum API
+  * nghttpx: Add api parameter to --frontend option to mark API
+  * h2load: Add content-length header field for HTTP/2 and SPDY as
+  * Run error callback when peer does not send initial SETTINGS
+  * nghttpx: Fix bug that server push from mruby script did not
+  * nghttpx: Try next HTTP/1 backend address when connection
+  * nghttpx: Retry next HTTP/2 backend address when connection
+  * nghttpx: Enable link header field based push for non-final
+  * nghttpx: Fix bug that logger wrote string which was not
+  * nghttpx: Fix bug that backend tls keyword did not work with -s
+  * lib: Add nghttp2_error_callback to tell application human
+  * lib: Add nghttp2_http2_strerror() to return HTTP/2 error code
+  * integration: Disable tests that sometimes break randomly on
+  * h2load: Fix bug that initial max concurrent streams was too</comment>
+    <requestid>1123980</requestid>
+  </revision>
+  <revision rev="77" vrev="3">
+    <srcmd5>a72727013ba5aef81328a21f32c5ac09</srcmd5>
+    <version>1.57.0</version>
+    <time>1700675654</time>
+    <user>anag+factory</user>
+    <comment>- fix unversioned provides to be in sync with nghttp3</comment>
+    <requestid>1127896</requestid>
+  </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>eddb104470914cdd8162cd744efc15b8</srcmd5>
+    <version>1.58.0</version>
+    <time>1701121357</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1128913</requestid>
+  </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>a283779fc12b7f5b8cf02c48ee2834cc</srcmd5>
+    <version>1.59.0</version>
+    <time>1706563613</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1142173</requestid>
+  </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>7b1966e105fff25f21e65d290bd722e1</srcmd5>
+    <version>1.60.0</version>
+    <time>1710965426</time>
+    <user>dimstar_suse</user>
+    <comment>- Update keyring with current key 
+
+- version update to 1.60.0
+  * makerelease.sh: Speed up git submodule
+  * Speed up git clone
+  * build(deps): bump actions/cache from 3 to 4
+  * Fixing the build and install trees
+  * build(deps): bump microsoft/setup-msbuild from 1 to 2
+  * nghttpx: Set ocsp response to SSL in case of boringssl
+  * Run with python3
+  * src: Certificate Compression with boringssl
+  * Fix missing newline
+  * Switch to aws lc
+  * Libbrotli fixup
+  * Deprecate RFC 7540 priorities (aka stream dependencies)
+  * Let dependabot manage go modules
+  * build(deps): bump golang.org/x/net from 0.20.0 to 0.21.0
+  * integration-tests: Omit unused parameters
+  * Munit
+  * Introduce nghttp2_ssize API
+  * Move deprecated warning upfront
+  * Describe RFC 7540 priorities deprecation plan
+  * Apps migrate nghttp2 ssize
+  * src: Remove unused functions
+  * Reconsider ssize t usage in src
+  * Use GitHub private vulnerability reporting
+  * Move security policy to GitHub standard location
+  * Bump mruby to 3.3.0
+  * Bump llhttp to 48588093ca4219b5f689acfc9ebea9e4c8c37663
+  * h2load: Add --sni option</comment>
+    <requestid>1159004</requestid>
+  </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>f5635dc3f449567fa1445691fbfb267e</srcmd5>
+    <version>1.61.0</version>
+    <time>1712262273</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1164560</requestid>
+  </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>5b9bef5780e58ec701179c337c07ebb0</srcmd5>
+    <version>1.62.1</version>
+    <time>1718743865</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.62.1:
+  * nghttpx: Fix batch UDP QUIC packet dropped on GRO read
+- update to 1.62.0:
+  * nghttpx: Fix QUIC stateless reset stack buffer overflow
+  * Require c-ares &gt;= 1.16.0 for ares_getaddrinfo
+  * Require C++20 compiler
+  * Adopt std::to_array and remove make_array
+  * nghttpx: Define APIEndpoints separately
+  * nghttpx: Do not send error/status body when method is HEAD
+  * nghttpx: Fix alignment issues in BlockAllocator
+  * nghttpx: Simplify parameter declaration for ipc_fd functions
+  * nghttpx: Add extent to ipc_fd explicitly
+  * Make make_byte_ref return std::span
+  * Make util::decode_hex return std::span
+  * Rewrite util::parse_uint
+  * Let base64::decode return std::span
+  * Refactor StringRef
+  * Stringref refactor c str and str
+  * Add StringRef literal operator and remove StringRef::from_lit
+  * Make StringRef(const std::string&amp;) implicit
+  * Add http2::make_field family functions
+  * Remove std::string conversion operator from StringRef
+  * Optimize StringRef comparisons against c-string
+  * Pack more quic pkt
+  * nghttpx: Dynamic GSO failover
+  * Refactor ImmutableString
+  * nghttpx: Refactor QUIC data path
+  * nghttpx: Fix inherited TCP port comparison
+  * make_websocket_accept_token: Lesser conversions
+  * Add http3::make_field family functions</comment>
+    <requestid>1181357</requestid>
+  </revision>
+</revisionlist>
