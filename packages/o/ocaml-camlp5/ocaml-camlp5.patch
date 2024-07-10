@@ -1,0 +1,8 @@
+--- a/etc/mkcamlp5.pl
++++ b/etc/mkcamlp5.pl
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env perl
++#!/usr/bin/perl
+ 
+ use strict ;
+ 
