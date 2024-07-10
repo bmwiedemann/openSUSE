@@ -1,0 +1,425 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>549a2bff703dfce84b0cb01e6c74e880</srcmd5>
+    <version>0.3.0</version>
+    <time>1415199295</time>
+    <user>coolo</user>
+    <comment>fixed license tag</comment>
+    <requestid>258888</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>489c446dba41b4b40c9bcbcf92ef571d</srcmd5>
+    <version>0.5.0</version>
+    <time>1475750625</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>432275</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5374eec59fd41a1538f3c8cf949bb257</srcmd5>
+    <version>0.5.1</version>
+    <time>1489415561</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>460521</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>efb16b83113c558b7ba83fb8703faad9</srcmd5>
+    <version>0.6.0</version>
+    <time>1508876685</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.6.0:
+  * Add ImageShack upload provider.
+  * Fix warnings issued by GCC and Clang.
+  * Ensure file is closed when upload finishes.
+  * Make image URL read-only.
+  * Update copyright in initial file comment for new additions.
+  * Make QNetworkAccessManager static and fix initialization order in UploadDialog.
+  * Add support for uploading files (fixes #98).
+  * Bump versions
+  * Don't export github templates
+  * Don't use hardcoded install dir
+  * Update CMakeLists.txt
+  * Fix regression in thumbnail view
+  * Add Lithuanian .desktop files
+  * liblxqt don't fit here
+  * Copied issue-template
+  * Drops Qt5Core_VERSION_STRING
+  * set Qt::AA_UseHighDpiPixmaps to true
+  * MainWindow: Fix crash for quick image changes
+  * Use GNUInstallDirs
+  * jobs: Do proper error handling
+  * Adapt to changes in libfm-qt(the c++11 port)
+  * Use the new lxqt-build-tools new FindExif CMake module
+  * Simpler code for ScreenshotSelectAreaGraphicsView class.
+  * Change Screenshot select area green color by actual hightlight color. Use lximage-qt private variables style.
+  * Adapt to C++11 and RAM improvements.
+  * Screenshot captures an area of the screen.
+  * Use const iterators
+  * Bump year
+  * File and folder DND Fixes https://github.com/lxde/lximage-qt/issues/69.
+- Remove post and postun section because icon and desktop cache is now done automatically
+- Change group to Productivity/Graphics/Viewers
+- Update to 0.5.1:
+  * Bump patch version and (#82)
+  * Create lximage-qt-screenshot_it.desktop (#83)
+  * Add *da.desktop files
+  * Desktop entry files: Fix typo in French translation
+  * [MRG] Display first image when loading a directory (v2) (#75)
+  * Desktop entry files: Add French translation
+  * Use lxqt-build-tools
+  * Use the new lxqt-build-tools package
+  * Fixed A Cast (#71)
+  * Remove cpack (#70)
+- Update to 0.5.0:
+  * Bump version to 0.5.0 (#67)
+  * Remove Core and Qt from Categories in desktop file (#64)
+  * Extend README.md
+  * Fix broken compatibility introduced by libfm-qt API changes. This closes lxde/lximage-qt#63.
+  * Add Catalan translations
+  * Quieten compiler warning
+  * Code cleanup
+  * Use LXQtCompilerSettings cmake module
+  * Treat SVG files separately as SVG images
+  * build: Update translations based on *.ui
+  * Fix typo in Portuguese translation for desktop file
+  * Fix typo in German translation for desktop file (#55)
+  * build: Use external translations (#54)
+  * ts-files removal (#53)
+  * Hide cursor smartly in fullscreen mode
+  * build: Use liblxqt's TranslateDesktop module
+  * Adds support for GIF animation.
+  * Implement an EOG-like behavior on starting By clicking on an image for the first time, the user wants to see it clearly with lximage-qt. So, the following behavior is implemented here:
+  * Add --version command line option
+  * Fix missing Russian translation in desktop file
+  * Fix memory leak if taking screenshot with cursor
+  * Polish translation updated
+  * Another update
+  * Improved Russian translation - thanks to uazure
+  * Fix typo
+  * Add Russian translation
+  * Italian translation update
+  * CMake: Adapt to libfm-qt Targets
+  * Turn on C++11 support. This closes bug lxde/lximage-qt #36.
+  * Exec should have an argument
+  * all GPL files are (or any later)
+  * Add release script
+  * Update translations
+  * Set the color table properly for scaled images
+  * Add Greek (el) translation Remove needless country variant from language code
+  * Corrected language code (de_DE -&gt; de) of german translation, marked translations as done.
+  * replace tabs with spaces
+  * remove trailing spaces
+  * replace glib with Qt for command-line parsing
+  * Don't save file in private mode
+  * Prevents the slideshow timeout to be set to 0 in the UI
+  * Correctly include CMake modules in intree/superbuild mode
+  * Remove lximage-qt from the Utilities category
+  * Update README
+  * Update .gitignore
+  * Hungarian translations added
+  * save and restore window size and maximized state
+- Add keyring
+- Remove lximage-qt-0.2.0-fix_desktop_file.patch: got upstreamed
+- Fixed license tag according to legal team review
+- new upstream version 0.3.0
+- spec file clean up 
+- Removed fedora spec, split into seperate subproject
+  Del:  lximage-qt-Fedora_20.spec 
+- Ran spec-cleaner on openSUSE specfile 
+- Added specfile for Fedora_20
+  Add: lximage-qt-Fedora_20.spec 
+- Reapplied desktop file patch
+  Add: 0001-fix_desktop_file.patch 
+- Removed desktop file patch (upstream changes)
+  Del:  0001-lximage_qt_screenshot_desktop.patch 
+- Added tarball for new stable release
+  Add:  lximage-qt-0.2.0.tar.xz
+  Del:  _service 
+- Updated patch to correct both desktop files
+  Del: 0001-lximage_qt_screenshot_desktop.patch
+  Add: 0001-lximage_qt_desktop_files.patch 
+- Added patch to correct screenshot desktop file Categories
+  Add: 0001-lximage_qt_screenshot_desktop.patch 
+- Initial Source Upload
+  Add: _service
+  Add: lximage-qt.spec
+  Add: lximage-qt.changes 
+</comment>
+    <requestid>536267</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>7e1726a0e2f0af011ffc2c2c189d5375</srcmd5>
+    <version>0.7.0</version>
+    <time>1530304268</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.7.0:
+  * Bumped minor version to 7
+  * Spanish translation update
+  * Just made it compilable again
+  * Removed not needed release.sh
+  * CMake: Prevent in-source builds
+  * fix some http-&gt;https
+  * Fix some mentions of LXDE
+  * Drop Qt foreach
+  * cmake: Handle CMP0071
+  * Add Spanish desktop entries
+- Update to 0.6.0:
+  * Add ImageShack upload provider.
+  * Fix warnings issued by GCC and Clang.
+  * Ensure file is closed when upload finishes.
+  * Make image URL read-only.
+  * Update copyright in initial file comment for new additions.
+  * Make QNetworkAccessManager static and fix initialization order in UploadDialog.
+  * Add support for uploading files (fixes #98).
+  * Bump versions
+  * Don't export github templates
+  * Don't use hardcoded install dir
+  * Update CMakeLists.txt
+  * Fix regression in thumbnail view
+  * Add Lithuanian .desktop files
+  * liblxqt don't fit here
+  * Copied issue-template
+  * Drops Qt5Core_VERSION_STRING
+  * set Qt::AA_UseHighDpiPixmaps to true
+  * MainWindow: Fix crash for quick image changes
+  * Use GNUInstallDirs
+  * jobs: Do proper error handling
+  * Adapt to changes in libfm-qt(the c++11 port)
+  * Use the new lxqt-build-tools new FindExif CMake module
+  * Simpler code for ScreenshotSelectAreaGraphicsView class.
+  * Change Screenshot select area green color by actual hightlight color. Use lximage-qt private variables style.
+  * Adapt to C++11 and RAM improvements.
+  * Screenshot captures an area of the screen.
+  * Use const iterators
+  * Bump year
+  * File and folder DND Fixes https://github.com/lxde/lximage-qt/issues/69.
+- Remove post and postun section because icon and desktop cache is now done automatically
+- Change group to Productivity/Graphics/Viewers
+- Update to 0.5.1:
+  * Bump patch version and (#82)
+  * Create lximage-qt-screenshot_it.desktop (#83)
+  * Add *da.desktop files
+  * Desktop entry files: Fix typo in French translation
+  * [MRG] Display first image when loading a directory (v2) (#75)
+  * Desktop entry files: Add French translation
+  * Use lxqt-build-tools
+  * Use the new lxqt-build-tools package
+  * Fixed A Cast (#71)
+  * Remove cpack (#70)
+- Update to 0.5.0:
+  * Bump version to 0.5.0 (#67)
+  * Remove Core and Qt from Categories in desktop file (#64)
+  * Extend README.md
+  * Fix broken compatibility introduced by libfm-qt API changes. This closes lxde/lximage-qt#63.
+  * Add Catalan translations
+  * Quieten compiler warning
+  * Code cleanup
+  * Use LXQtCompilerSettings cmake module
+  * Treat SVG files separately as SVG images
+  * build: Update translations based on *.ui
+  * Fix typo in Portuguese translation for desktop file
+  * Fix typo in German translation for desktop file (#55)
+  * build: Use external translations (#54)
+  * ts-files removal (#53)
+  * Hide cursor smartly in fullscreen mode
+  * build: Use liblxqt's TranslateDesktop module
+  * Adds support for GIF animation.
+  * Implement an EOG-like behavior on starting By clicking on an image for the first time, the user wants to see it clearly with lximage-qt. So, the following behavior is implemented here:
+  * Add --version command line option
+  * Fix missing Russian translation in desktop file
+  * Fix memory leak if taking screenshot with cursor
+  * Polish translation updated
+  * Another update
+  * Improved Russian translation - thanks to uazure
+  * Fix typo
+  * Add Russian translation
+  * Italian translation update
+  * CMake: Adapt to libfm-qt Targets
+  * Turn on C++11 support. This closes bug lxde/lximage-qt #36.
+  * Exec should have an argument
+  * all GPL files are (or any later)
+  * Add release script
+  * Update translations
+  * Set the color table properly for scaled images
+  * Add Greek (el) translation Remove needless country variant from language code
+  * Corrected language code (de_DE -&gt; de) of german translation, marked translations as done.
+  * replace tabs with spaces
+  * remove trailing spaces
+  * replace glib with Qt for command-line parsing
+  * Don't save file in private mode
+  * Prevents the slideshow timeout to be set to 0 in the UI
+  * Correctly include CMake modules in intree/superbuild mode
+  * Remove lximage-qt from the Utilities category
+  * Update README
+  * Update .gitignore
+  * Hungarian translations added
+  * save and restore window size and maximized state
+- Add keyring
+- Remove lximage-qt-0.2.0-fix_desktop_file.patch: got upstreamed
+- Fixed license tag according to legal team review
+- new upstream version 0.3.0
+- spec file clean up 
+- Removed fedora spec, split into seperate subproject
+  Del:  lximage-qt-Fedora_20.spec 
+- Ran spec-cleaner on openSUSE specfile 
+- Added specfile for Fedora_20
+  Add: lximage-qt-Fedora_20.spec 
+- Reapplied desktop file patch
+  Add: 0001-fix_desktop_file.patch 
+- Removed desktop file patch (upstream changes)
+  Del:  0001-lximage_qt_screenshot_desktop.patch 
+- Added tarball for new stable release
+  Add:  lximage-qt-0.2.0.tar.xz
+  Del:  _service 
+- Updated patch to correct both desktop files
+  Del: 0001-lximage_qt_screenshot_desktop.patch
+  Add: 0001-lximage_qt_desktop_files.patch 
+- Added patch to correct screenshot desktop file Categories
+  Add: 0001-lximage_qt_screenshot_desktop.patch 
+- Initial Source Upload
+  Add: _service
+  Add: lximage-qt.spec
+  Add: lximage-qt.changes 
+</comment>
+    <requestid>618052</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>9ba1e2c353c5ffd5dfea0851c68eee12</srcmd5>
+    <version>0.14.0</version>
+    <time>1551113335</time>
+    <user>coolo</user>
+    <comment>- Update to 0.14.0:
+  * Render image EXIF data (by Rndevfx)
+  * Added confirmation dialog when using “Save as” with a filename without extension.
+  * Add ImgBB upload provider
+  * Add ability to annotate images
+  * Add copy button to upload dialog
+  * Implement MRU list
+  * Update copyright block in source files
+  * Fixed thumbnail selection (with deletion)
+- Move translation from lxqt-l10n into package
+</comment>
+    <requestid>670380</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>bf52f2f83189faba28912664a12bb3ae</srcmd5>
+    <version>0.14.1</version>
+    <time>1551455378</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.14.1:
+  * Only translations was changed</comment>
+    <requestid>680439</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>35f22cc1b6450b0a75d39c273d5d268f</srcmd5>
+    <version>0.15.0</version>
+    <time>1588610318</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>798551</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>129c1c5de1ade9d0f7580a724a9f3a83</srcmd5>
+    <version>0.16.0</version>
+    <time>1604510937</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove deprecated recommends on lang package
+
+- Update to 0.16.0:
+  * Added image size and path to statusbar.
+  * Added copy Path action.
+  * Fixed memory leaks in annotations.
+  * Show error message if saving with a format is not supported.
+  * Added resize image feature.
+  * Use QFlags default constructor.
+  * Prevent users from defining ambiguous shortcuts.
+  * Consult Qt for supported mimetypes.
+  * Start app on screen with mouse cursor when opening image.
+  * Added depreciation notice to screenshot command line options.</comment>
+    <requestid>846027</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>72fa347b653bc09e76c0b93d28a0eb3f</srcmd5>
+    <version>0.17.0</version>
+    <time>1618610509</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.17.0:
+  * Fitting images while navigating is made optional.
+  * Options are added to Preferences dialog for thumbnails.</comment>
+    <requestid>885935</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>e10978826e44ed9e9194a44c3b4ef9ee</srcmd5>
+    <version>1.0.0</version>
+    <time>1636498459</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.0.0:
+  * Fixed bugs in image fitting, flipping and rotation.
+  * Added options to hide/show main toolbar and/or menubar.
+  * Added option to use system Trash.
+  * Added option to change Thumbnail dimensions.
+  * Added option to change the position of thumbnails dock.
+  * Fixed wheel scrolling on image with touchpad.
+  * Allowed direct image renaming (with shortcut).
+  * Remember EXIF dock width.
+  * Added command-line option for starting in fullscreen.
+  * Allowed custom shortcuts to override hard-coded shortcuts.
+  * Added option to disable image smoothing on zooming.</comment>
+    <requestid>930096</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>73050754b73653384820dce1c70d655a</srcmd5>
+    <version>1.1.0</version>
+    <time>1651431081</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.1.0:
+  * Restore maximized state (if any) on un-fullscreening.
+  * Fixed capturing of an area of a screen that isn't positioned
+    at the top left.
+  * Removed the desktop file for taking screenshots (the screenshot
+    functionality is kept, but LXQt's screenshot utility is Screengrab).
+</comment>
+    <requestid>973872</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>ff11647d2994910fb5887bd2f3e5b097</srcmd5>
+    <version>1.2.0</version>
+    <time>1667734946</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1033795</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>c2ac941604a6977fecf3a394c55ddcd2</srcmd5>
+    <version>1.3.0</version>
+    <time>1681996442</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1080357</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>b3221713d5f113921867371937c38620</srcmd5>
+    <version>1.4.0</version>
+    <time>1699388744</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1123543</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>34b0913a45386cd7dc9088021cc3a153</srcmd5>
+    <version>1.4.0</version>
+    <time>1704753941</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1137499</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>2a0bc948357cbd16013a80bb1b0b98cf</srcmd5>
+    <version>2.0.1</version>
+    <time>1717601909</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1174630</requestid>
+  </revision>
+</revisionlist>
