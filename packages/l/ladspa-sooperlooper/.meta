@@ -1,0 +1,5 @@
+<package name="ladspa-sooperlooper" project="openSUSE:Factory">
+  <title>LADSPA sooperlooper plugin</title>
+  <description></description>
+  <devel project="multimedia:libs" package="ladspa-sooperlooper"/>
+</package>

@@ -1,0 +1,25 @@
+-------------------------------------------------------------------
+Thu Feb 29 13:08:43 UTC 2024 - pgajdos@suse.com
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
+Mon Mar  3 14:02:48 CET 2014 - tiwai@suse.de
+
+- Run spec-cleaner
+- Remove obsoleted autoreq/autoprov tags
+
+-------------------------------------------------------------------
+Wed Feb 26 10:59:04 CET 2014 - tiwai@suse.de
+
+- correct the license to GPL-2.0+
+
+-------------------------------------------------------------------
+Mon Dec 16 15:08:56 CET 2013 - tiwai@suse.de
+
+- Initial version 0.93: split from ladspa package
+- Patches carried from the original ladspa package:
+  sooperlooper-0.9.dif
+  sooperlooper-0.93-gcc4-fix.diff
+

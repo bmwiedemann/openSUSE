@@ -1,0 +1,66 @@
+--- Makefile
++++ Makefile	2002/05/07 12:45:23
+@@ -21,7 +21,7 @@
+ 
+ SooperLooper.so: SooperLooper.c
+ 	gcc -c $(CFLAGS) -DSAMPLE_MEMORY=$(SAMPLE_MEMORY) $(DEBUG) -o SooperLooper.o SooperLooper.c
+-	ld -o SooperLooper.so SooperLooper.o -shared
++	gcc -o SooperLooper.so SooperLooper.o -shared
+ 
+ install: SooperLooper.so
+ 	cp -f SooperLooper.so $(LADSPA_PATH)
+--- SooperLooper.c
++++ SooperLooper.c	2002/05/07 13:00:11
+@@ -2083,8 +2083,8 @@
+ 		 loop->dCurrPos = loop->dCurrPos + fRate;
+ 	      
+ 
+-		 if (slCurrPos > 0 && (unsigned)(loop->pLoopStart + slCurrPos)
+-		     > (unsigned)(pLS->pSampleBuf + pLS->lBufferSize)) {
++		 if (slCurrPos > 0 && (char *)(loop->pLoopStart + slCurrPos)
++		     > (pLS->pSampleBuf + pLS->lBufferSize)) {
+ 		    // out of space! give up for now!
+ 		    // undo!
+ 		    pLS->state = STATE_PLAY;
+@@ -2214,8 +2214,8 @@
+ 		 
+ 		 if ((lCurrPos % loop->lCycleLength) == ((loop->lInsPos-1) % loop->lCycleLength)) {
+ 
+-		    if ((unsigned)(loop->pLoopStart + loop->lLoopLength + loop->lCycleLength)
+-			> (unsigned)(pLS->pSampleBuf + pLS->lBufferSize))
++		    if ((char *)(loop->pLoopStart + loop->lLoopLength + loop->lCycleLength)
++			> (pLS->pSampleBuf + pLS->lBufferSize))
+ 		    {
+ 		       // out of space! give up for now!
+ 		       pLS->state = STATE_PLAY;
+@@ -2495,7 +2495,7 @@
+   if (pLS->pfSecsFree) {
+      *pLS->pfSecsFree = ((LADSPA_Data)SAMPLE_MEMORY) -
+ 	(pLS->headLoopChunk ?
+-	 ((((unsigned)pLS->headLoopChunk->pLoopStop - (unsigned)pLS->pSampleBuf)
++	 ((((char *)pLS->headLoopChunk->pLoopStop - pLS->pSampleBuf)
+ 	  / sizeof(LADSPA_Data)) / pLS->fSampleRate)   :
+ 	 0);
+   }
+@@ -2547,8 +2547,8 @@
+ 
+ /* _init() is called automatically when the plugin library is first
+    loaded. */
+-void 
+-_init() {
++static void __attribute__ ((constructor))
++init() {
+ 
+   char ** pcPortNames;
+   LADSPA_PortDescriptor * piPortDescriptors;
+@@ -2811,8 +2811,8 @@
+ /*****************************************************************************/
+ 
+ /* _fini() is called automatically when the library is unloaded. */
+-void 
+-_fini() {
++static void __attribute__ ((destructor))
++fini() {
+   long lIndex;
+   if (g_psDescriptor) {
+     free((char *)g_psDescriptor->Label);
