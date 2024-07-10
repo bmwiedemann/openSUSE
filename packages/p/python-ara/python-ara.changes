@@ -1,0 +1,488 @@
+-------------------------------------------------------------------
+Wed Apr  3 14:32:36 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Update to 1.7.1
+  * Address deprecation of yaml.dump in ruamel.yaml when generating
+    the default server settings.yaml file (#524)
+  * Don't use setuptools/pkg_resources to retrieve the version of ara
+    since it is not always installed by default.
+
+-------------------------------------------------------------------
+Sat Nov 25 14:02:22 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.7.0:
+  * Update bootstrap CSS from 4.6.0 to 5.3.0 and fix broken layout
+    and components as a result of the update
+  * Removed separate light/dark themes via bootstrap-darkly and
+    bootstrap-flatly: bootstrap 5.3 features a new built-in dark
+    theme
+  * Re-worked the dark/light theme selection to match the new
+    bootstrap built-in dark theme including pygments highlighting
+    for pretty-printed output
+  * Removed jquery, it is no longer required with bootstrap
+  * Re-worked implementation of file line highlighting since it
+    relied on jquery
+  * Fixed tooltip implementation (i.e, for task tags) since the
+    implementation in bootstrap had changed
+  * Large chunks of templating were moved out to partials/tables and
+    partials/search in order to improve readability.
+  * Round of template cleanups and fixes as reported by djlint
+  * Will continue to be a work in progress to simplify and standardize
+    templates.
+  * Raised the requirement on django from >=3.2,<3.3 to >=3.2,<4.3 to
+    allow installation with the latest LTS release of django.
+   * Raised the requirement on python from >=3.6 to >=3.8 to accomodate
+    django 4.2.
+  * Ignored Django warning about the lack of a STATIC_ROOT directory.
+    ara uses whitenoise for serving static files which makes the warning
+    superfluous. (#492)
+
+-------------------------------------------------------------------
+Tue Jul 18 15:42:54 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Update to 1.6.1 (2022-12-12):
+  - callback: Changed how ANSIBLE_TMP is found to work around a
+    behavior change in ansible-core 2.14 that ended up creating a
+    directory named {{ ANSIBLE_HOME ~ "
+  - Added a mysql extra to the python packaging for installing
+    the mysqlclient library. This is in addition to the existing
+    server and postgresql extra. They are used like this: pip
+    install ara[server,mysql,postgresql]
+- Update 1.6.0 (2022-12-01):
+  It features a new "tasks" page to browse and search for
+  tasks across playbook runs as well as many updates, fixes and
+  improvements.
+  - UI
+    - Added a new "Tasks" page similar to the existing pages
+      for Playbooks and Hosts. It provides a browseable and
+      searchable overview of tasks across playbook runs.
+    - Refreshed the host index page:
+      - Added a column as well as search arguments for playbook
+        name (or path)
+      - Replaced the playbook status by a concise summary of task
+        status for the host
+    - Updated the playbook summary card to include the playbook
+      id, the version of ara as well as the version of python.
+    - Re-ordered and resized columns in tables to optimize width
+      and improve consistency
+    - Resized and aligned fields in search forms to use the full
+      width available
+    - Improved how task tags are displayed
+    - Updated HTML page titles to be consistent across pages
+    - Replaced fields for searching by task ID and host ID by
+      task name and host name
+    - Truncate name fields to prevent exceedinly large names to
+      distort entire tables
+    - Corrected card header font sizes in the host report page
+  - callback plugin
+    - Added support for recording the user who ran the playbook
+    - Added support for recording the version of ara as well as
+      the version of python used when running the playbook
+    - Added options ARA_RECORD_USER and ARA_RECORD_CONTROLLER
+      that can be set to false to avoid recording the user and
+      controller hostname
+    - Added support for specifying a SSL key, certificate and
+      certificate authority for authenticating with a remote ara
+      API server using ARA_API_KEY, ARA_API_CERT and ARA_API_CA
+      respectively.
+    - Fixed host fact recording to ensure it works when using
+      FQCN-style tasks (ex: setup & ansible.builtin.setup)
+    - Increased reliability and accuracy when recording results
+      that can arrive out of order when using multi-threading
+      or the free strategy by using the task uuid provided by
+      Ansible
+    - Truncate playbook, play, host and label names in
+      circumstances where their length exceeds 255 characters
+    - Ignore and don't record files in ~/.ansible/tmp by default
+  - API Server
+    - Bumped django requirement from 2.2 LTS to 3.2 LTS and
+      removed the pin on the version of psycopg2 accordingly
+    - Added a new configuration option, ARA_BASE_PATH, to let
+      the server listen on an alternate path. It will continue
+      to default to "/" but it could, for example, be set to
+      "/ara/".
+    - Lifted requirement on tzlocal, improve timezone detection
+      and mitigate when the timezone can't be found by defaulting
+      to UTC
+  - Several new database model and API fields:
+    - Added client_version and server_version fields to
+      playbooks, meant to represent the version of the ara
+      callback and server used in recording the playbook
+    - Added python_version field to playbooks to save the version
+      of python used by Ansible and the callback plugin when
+      recording a playbook
+    - Added a new "failed" status for tasks that is used by the
+      callback plugin when there is at least one failed result
+      for a given task
+    - Added a new "uuid" field for tasks which is the uuid
+      provided by Ansible for a task. It is used by the callback
+      plugin to increase the reliability and accuracy when
+      recording results even if they arrive out of order.
+  - Several fixes and improvements for the distributed sqlite
+    database backend:
+    - Added a new index page for listing and linking to available
+      databases. This is a work in progress that is intended to
+      be improved in the future.
+    - Return a HTTP 405 error when trying to write to read-only
+      endpoints
+    - Fixed the /healthcheck/ endpoint to make sure it is routed
+      properly
+    - Improved database engine settings and WSGI application
+      configuration The WSGI application should now always
+      be "ara.server.wsgi" instead of needing to specify
+      "ara.server.wsgi.distributed_sqlite"
+  - API client
+    - Added support for specifying a SSL key, certificate and
+      certificate authority for authenticating with a remote ara
+      API server
+    - Remove InsecureRequestWarning for insecure requests when
+      SSL verification is not enabled.
+  - CLI
+    - Fixed wrong parsing of durations longer than 24 hours
+    - Added support for searching playbooks by user
+    - Added support for specifying a SSL key, certificate and
+      certificate authority for authenticating with a remote ara
+      API server using ARA_API_KEY, ARA_API_CERT and ARA_API_CA
+      respectively.
+  - Docs
+    - Refreshed and improved the README, reformatted it from rst
+      to markdown
+    - Added a CONTRIBUTING.md file and refreshed contribution
+      documentation
+    - Explicitly call out and recommend setting up authentication
+      for production use in order to prevent leaking sensitive
+      information
+    - Improved troubleshooting documentation and tips to improve
+      playbook recording performance
+
+-------------------------------------------------------------------
+Wed Jul 12 16:43:03 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Clean up the SPEC file.
+
+-------------------------------------------------------------------
+Thu Aug  4 08:41:00 UTC 2022 - Otto Hollmann <otto.hollmann@suse.com>
+
+- Update to 1.5.8:
+  Callback plugin
+  ---------------
+  - Improved debug logging to include some hooks that were missing (#374)
+  - Added a localhost_to_hostname toggle in the callback (#336)
+    This adds two configuration parameters to the callback:
+    - ARA_LOCALHOST_AS_HOSTNAME
+    - ARA_LOCALHOST_AS_HOSTNAME_FORMAT
+    These are useful in use cases where playbooks are run against localhost,
+    whether directly (with ansible-playbook) or indirectly (via
+    ansible-pull).
+    When enabled, ara will save results under the hostname (or fqdn) of
+    'localhost' instead of associating every result to localhost.
+    This is meant to make it easier to distinguish results between different
+    hosts even though the playbooks may have all run against 'localhost'.
+  Server
+  ------
+  - Added a setting for CSRF_TRUSTED_ORIGINS (#345)
+  - Fixed logging configuration to avoid conflicting with ansible (#367)
+    See upgrade notes for changes to the server's settings.yaml.
+  UI
+  --
+  - API browser: disable forms to improve performance (#323)
+  - Include the version of ara when generating static reports (#318)
+  - Add a column in task results for displaying the task's tags (#281,#375)
+  CLI
+  ---
+  - Added "--latest" to "ara host list" to show only the latest playbook (#327)
+  Docs
+  ----
+  - Refreshed authentication docs and recommend using EXTERNAL_AUTH
+    with nginx or apache in front (#319)
+  - Add database and authentication tips to troubleshooting (#355)
+  Packaging and dependencies
+  --------------------------
+  - API Server container images have been bumped to fedora35 and centos8-stream
+  - Updated setup.cfg to fix a deprecation warning for python 3.10 (#371)
+  - Fixed distutils.sysconfig deprecation warning on python 3.10 (#369)
+  - Fixed dynaconf deprecation warning when loading settings (#369)
+  - psycopg2 has been pinned to <2.9 due to incompatibility with django 2.2 (#321,#326)
+  - dynaconf has been pinned to <3.0 when using python3.5 (#372)
+    dynaconf>=3.0 supports python>=3.6.
+  Misc
+  ----
+  - General CI maintenance
+  - Updated Zuul to test the latest versions of ansible and ansible-core
+  - Re-enabled container image updates on DockerHub and Quay.io
+  - Added an example script with ansible-runner (#343)
+  Upgrade notes
+  -------------
+  - There have been fixes to logging which requires changes to the
+    server's settings.yaml or LOGGING configuration. (#367)
+    A warning will be printed if the configuration file must be updated
+    and it can be updated manually or by generating a new configuration file.
+  - ara 1.5.8 is the last release that will support python3.5.
+    Python 3.5 reached the end of its life on September 13th, 2020.
+    An upcoming release will update the version of django to the next LTS (2.2 to 3.2)
+    which will bump the requirement to python>=3.6.
+
+-------------------------------------------------------------------
+Tue Aug 24 08:35:20 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.5.7:
+  UI
+  --
+  - Added a new "hosts" page to browse and search reports by host name
+  - Improved page HTML titles to be dynamic based on the context
+  - Added a note highlighting if a task has been delegated to another host
+    (https://github.com/ansible-community/ara/issues/282)
+  - Improved how long file paths or playbook names are truncated and displayed
+  API
+  ---
+  - Added a new read-only API endpoint: /api/v1/latesthosts
+    It provides the latest playbook result for each host name.
+    Under the hood, it implements the machinery for updating the latest host
+    every time a host is created or deleted and includes a SQL migration to
+    initially populate a new database table with the latest hosts.
+  - Added a `delegated_to` field to results in order to record a host id to which
+    a task has been delegated.
+  - Added support for finding results delegated to a specific host:
+    /api/v1/results?delegated_to=<host_id>
+  Callback plugin
+  ---------------
+  - Fixed tasks and results being recorded out of order when using "strategy: free"
+    (https://github.com/ansible-community/ara/issues/260)
+  - Added support for recording 'delegate_to' on tasks
+  Documentation
+  -------------
+  - Removed an unused sphinx lexer to allow recent versions of sphinx>=4
+  - Created a new troubleshooting guide with common issues:
+    https://ara.readthedocs.io/en/latest/troubleshooting.html
+  - Added a database relationship graph to the endpoint documentation:
+    https://ara.readthedocs.io/en/latest/api-documentation.html#relationship-between-objects
+  Upgrade notes
+  -------------
+  It is always recommended to take a backup of your database before upgrading.
+  This release includes two database migrations that must be run:
+  - One for populating the data for the new /api/v1/latesthosts endpoint as well
+    as the new 'hosts' page
+  - One for adding a `delegated_to` field in the results.
+    Note that delegated tasks will only be recorded as such from 1.5.7 on.
+  - After upgrading to 1.5.7, database migrations can be run manually with the
+    `ara-manage migrate` command if they are not taken care of automatically by the
+    callback plugin.
+  Known issues
+  ------------
+  - ara will not record task delegation for tasks that are skipped or for
+    items in a loop that are skipped because Ansible doesn't provide the
+    necessary information in those cases.
+- from version 1.5.6
+  UI
+  --
+  - Refactored the built-in reporting UI with the bootstrap CSS framework using themes from bootswatch
+  - Added a dark theme in addition to the default light theme (toggle at the top right)
+  - Improved the mobile version of the reporting interface
+  - Improved the playbook and task result tables
+  - Revamped search forms for playbook and playbook results
+  - Revamped hosts table in playbook reports
+  - Added task results to the host details page that includes host facts
+  - Moved ansible-playbook CLI arguments to a modal
+  - Added an "about" modal with the version of ara and links to resources
+  - Moved the link to the documentation to the "about" modal
+  - Clicking on a host or task name in a playbook report will now filter results for that host or task
+  - bugfix: Links to files including a lineno will now highlight that line (https://github.com/ansible-community/ara/issues/154)
+  - bugfix: Fixed broken documentation link to ara_record (https://github.com/ansible-community/ara/issues/219)
+  API
+  ---
+  - Playbook references will now always include CLI arguments, for example:
+    /api/v1/tasks/1 ->
+    {
+      "id": 1,
+      "playbook": {
+        "id": 1,
+        "arguments": {
+          #...
+        }
+      }
+    }
+  Callback plugin
+  ---------------
+  - bugfix: Truncate play UUIDs given back by ansible-runner when running
+    in serial (https://github.com/ansible-community/ara/issues/211)
+- from version 1.5.5
+  API
+  ---
+  - Added support for searching playbooks by ansible_version, for example:
+    /api/v1/playbooks?ansible_version=2.10
+  UI
+  --
+  - Added syntax highlighting to task results
+  - Added support for rendering nested results for tasks with loops
+  - Added support for rendering diffs provided by "ansible-playbook --diff"
+  - Added support for searching playbooks by ansible_version
+  - The playbook links in the index no longer filter to changed results
+  - Ordering by date or duration no longer discards existing search arguments
+  - Clicking on the logo or the "playbooks" link now discards existing search arguments
+  CLI
+  ---
+  - Added support for searching playbooks by ansible_version
+  - Added missing argument for --controller to "ara playbook metrics"
+
+-------------------------------------------------------------------
+Mon Mar 15 08:27:33 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.5.4:
+  - ara playbook metrics: provides stats aggregated by name, path, ansible version or controller
+  - ara host metrics: provides task result stats for hosts across playbooks
+  - ara task metrics: provides duration stats aggregated by task name, action/module or path
+  - Threading is now disabled by default to avoid running into sqlite locking contention
+    For details, see: https://github.com/ansible-community/ara/issues/195
+  - The callback didn't provide a timezone for timestamps which could result in a wrong
+    interpretation by the API server. Timestamps are now provided as UTC.
+  - The hostname of the controller that ran the playbook is now recorded by ara
+  - ARA API server container images are now published to quay.io/recordsansible/ara-api
+    in addition to hub.docker.com/r/recordsansible/ara-api.
+  - The 'which' package is now installed as a dependency
+  - Removed a temporary workaround for dynaconf switching from PyYAML to ruamel.yaml
+  - Added missing information about the play when browsing details for a task result
+- switch to single build, this is a ansible plugin and cli tool
+
+-------------------------------------------------------------------
+Thu Nov 12 03:36:12 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.5.3:
+  * Significant performance improvement by running non-blocking API calls in threads
+  * Handler tasks are now also recorded in addition to regular tasks
+  * API
+    + Add support for searching handler tasks (ex: /api/v1/tasks?handler=true)
+  * UI
+    + Hosts in the playbook report are now sorted alphabetically by hostname
+    + Added a column to display the number of tasks in the playbook summary
+
+-------------------------------------------------------------------
+Wed Sep 30 04:12:22 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.5.1:
+  * A new 'ara' CLI API client is now available.
+  * New settings have been added:
+    + ARA_EXTERNAL_AUTH for enabling Django's external authentication.
+    + ARA_DATABASE_OPTIONS for passing options to the Django database
+      backend such as SSL.
+  * Nested children resources are no longer returned, improving performance
+    considerably for larger playbooks.
+  * A new status was added for playbooks, plays and tasks: "expired".
+  * URLs have been pluralized to match the endpoints provided by the API.
+  * The introduction of the new CLI adds a requirement on the cliff python
+    library.
+  * ara 1.5.0 introduces significant API changes, some of which aren't
+    backwards compatible such as no longer returning nested resources.
+  * Two small SQL migrations have been added to remove result statuses and
+    add the expired status for playbooks, plays and tasks. Run them with
+    "ara-manage migrate".
+
+-------------------------------------------------------------------
+Tue Sep 15 06:02:23 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.4.3:
+  * Improvements to the interface scaling and rendering for mobile devices
+  * The playbook index has been refactored from a list of cards to a table view
+  * and searching/filtering controls are no longer hidden in a submenu
+  * Sorting by playbook date and duration is now built into the table headers
+  * The Ansible CLI arguments are now available from the playbook index
+  * The host stats summary now displays colors and icons for the different
+    statuses
+  * Task result columns were re-ordered and statuses now have colors and icons
+  * Long task results or host facts should no longer render off-screen
+  * Added search for ignore_errors in results
+  * Added search for task by action
+  * Adjusted search for file paths to be partial
+  * Added search for task by path
+
+-------------------------------------------------------------------
+Wed May 27 09:36:03 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
+
+- %python3_only -> %python_alternative
+
+-------------------------------------------------------------------
+Thu May  7 05:28:19 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.4.0:
+  * Added support for searching plays, tasks and hosts by name
+  * Added support for searching playbooks by label
+  * Fixed label representation to be consistent through different calls
+  * Reversed the default sort order for playbooks, plays, tasks and results
+  * Validate that settings.yaml (or ARA_SETTINGS) exists before launching (thank you @zswanson!)
+  * Template the default settings file without objects generated by python-box
+  * Added a default robots.txt to prevent crawling
+  * Added support for searching by label
+  * Improved the display of labels in the playbook list
+  * Added pagination support when browsing the playbook report list
+  * Use relative links for pagination (thank you @flowerysong !)
+  * Bumped included patternfly CSS from 2.21.5 to 2.56.3
+  * Provide sensible PATH defaults when virtualenvs are not used
+  * Added support for installing from Fedora packages
+  * Only run SQL migrations once when necessary
+  * Allow retries when attempting to run SQL migrations
+  * Ensure settings.yaml permissions are 0640
+  * Added "ara_api_secure_logging" variable to control behavior of sensitive tasks with no_log
+  * Properly default to IPv6 when no IPv4 is available
+  * Default gunicorn worker count based on number of available CPU cores
+  * Added support for deploying on EL8
+  * New Ansible plugins: ara_playbook and ara_api
+  * Improved consistency of stored task results (thank you @flowerysong!)
+  * Fix bad logic when determining if labels should be updated
+  * Added support for not saving files based on patterns (thank you @LaurentDumont!)
+  * Added support for specifying default playbook labels
+  * 1.4 introduces a new SQL migration to ensure labels are unique. If upgrading
+    from a previous version, you will need to run SQL migrations with ``ara-manage migrate``.
+
+-------------------------------------------------------------------
+Fri Jan 17 15:45:50 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 1.3.2
+  * ara_api role: add support for installing from fedora packages
+  * ara_api role: provide sensible PATH defaults without venv
+  * api: Use basename instead of base_name in URL mapping
+  * Bump Ansible versions in CI tests
+  * callback: recover host facts for setup *and* gather_facts
+  * cli: Add ara-manage prune to delete old playbooks
+  * Remove f-strings to remove requirement on py36
+  * api: Add support for ordering objects by fields
+  * API client: Add support for disabling SSL verification
+  * add django-healthcheck and /healthcheck/ endpoint
+  * Ensure endpoint doesn't contain trailing slash
+  * API: Use local timezone by default instead of UTC
+  * UI: Autoescape untrusted content
+  * Add a simple built-in web interface
+
+-------------------------------------------------------------------
+Tue Sep 24 07:42:45 UTC 2019 - pgajdos@suse.com
+
+- version update to 1.1.0
+  * Added support for dynamically serving multiple sqlite databases
+    dynamically from a single API server instance [1]
+  * ara_record no longer instanciates it's own API client and will
+    instead retrieve the client instance used by the callback.
+  * Django's CONN_MAX_AGE database setting for configuring the
+    duration of a database connection is now exposed [2]
+  * The ARA API client timeout as configured by Ansible through the
+    callback plugin is now always an integer.
+  * The offline API client now has an argument to prevent SQL
+    migrations from running automatically [3]
+- test package (multibuild)
+
+-------------------------------------------------------------------
+Wed Jul  3 14:57:08 UTC 2019 - Itxaka serrano <igarcia@suse.com>
+
+- Move some requirements into recommends.
+  Ara has changed and its no longer bundling the server with the
+  main package, so most of the requirements related to the
+  django server can be moved into recommends. Ara will raise a
+  message if a user tries to execute the server part but the
+  requirements are missing.
+
+-------------------------------------------------------------------
+Sun Jun 30 12:12:16 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update descriptions.
+
+-------------------------------------------------------------------
+Wed Jun 19 11:28:57 UTC 2019 - Thomas Bechtold <tbechtold@suse.com>
+
+- Initial packaging (version 1.0.1)
