@@ -1,0 +1,13 @@
+diff --git a/configure.ac b/configure.ac
+index c0b7d039..e968e56f 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -51,6 +51,8 @@ PKG_CHECK_MODULES(LIBOSMOVTY, libosmovty >= 1.6.0)
+ PKG_CHECK_MODULES(LIBOSMONETIF, libosmo-netif >= 1.1.0)
+ PKG_CHECK_MODULES(LIBOSMOABIS, libosmoabis >= 1.2.0)
+ PKG_CHECK_MODULES(LIBOSMOTRAU, libosmotrau >= 1.2.0)
++PKG_CHECK_MODULES(LIBOSMOCODING, libosmocodec >= 1.6.0)
++
+ 
+ CFLAGS="$CFLAGS -pthread"
+ LDFLAGS="$LDFLAGS -pthread"

@@ -1,0 +1,22 @@
+Index: osmo-mgw-1.7.0/contrib/systemd/osmo-mgw.service
+===================================================================
+--- osmo-mgw-1.7.0.orig/contrib/systemd/osmo-mgw.service
++++ osmo-mgw-1.7.0/contrib/systemd/osmo-mgw.service
+@@ -2,6 +2,17 @@
+ Description=Osmocom Media Gateway (MGW)
+ 
+ [Service]
++# added automatically, for details please see
++# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
++ProtectSystem=full
++ProtectHome=true
++ProtectHostname=true
++ProtectKernelTunables=true
++ProtectKernelModules=true
++ProtectKernelLogs=true
++ProtectControlGroups=true
++RestrictRealtime=true
++# end of automatic additions 
+ Type=simple
+ Restart=always
+ ExecStart=/usr/bin/osmo-mgw -s -c /etc/osmocom/osmo-mgw.cfg

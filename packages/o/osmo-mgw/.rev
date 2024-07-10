@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>673c1f8b85bf85b541d5503b5aa0c50f</srcmd5>
+    <version>1.5.0</version>
+    <time>1551386529</time>
+    <user>coolo</user>
+    <comment>I want to maintain osmo-mgw in Factory</comment>
+    <requestid>678091</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c4d3732ba0c2429433764013cf78f9bd</srcmd5>
+    <version>1.7.0</version>
+    <time>1578606598</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>761694</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>2f729ba38ffa53b23a5f593a84d1388e</srcmd5>
+    <version>1.7.0</version>
+    <time>1634331817</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>925168</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>3c50defa8dca473774d6bd9bb34171b9</srcmd5>
+    <version>1.9.0</version>
+    <time>1637535117</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>932636</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>aa95ba328fa6c4437c7f51d0057d49f8</srcmd5>
+    <version>1.9.0</version>
+    <time>1709070450</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1151922</requestid>
+  </revision>
+</revisionlist>
