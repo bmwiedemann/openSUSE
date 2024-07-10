@@ -1,0 +1,221 @@
+-------------------------------------------------------------------
+Fri Sep  2 03:12:20 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 3.480
+   see /usr/share/doc/packages/perl-Verilog-Perl/Changes
+
+  * Verilog-Perl 3.480 2022-09-01
+
+  ****  Fix vrename ignoring % (#1674). [Wenjun]
+
+-------------------------------------------------------------------
+Mon Jun  7 03:09:20 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 3.478
+   see /usr/share/doc/packages/perl-Verilog-Perl/Changes
+
+  * Verilog-Perl 3.478 2021-06-06
+
+  ****  Fix ${ENVVAR} expansion (#1671). [Henry Hsieh]
+
+-------------------------------------------------------------------
+Wed Apr 14 03:10:44 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 3.476
+   see /usr/share/doc/packages/perl-Verilog-Perl/Changes
+
+  * Verilog-Perl 3.476 2021-04-13
+
+  ****  Fix parameter type = struct. [Nathan Chrisman]
+
+-------------------------------------------------------------------
+Fri Oct 30 03:11:40 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 3.474
+   see /usr/share/doc/packages/perl-Verilog-Perl/Changes
+
+  * Verilog-Perl 3.474 2020-10-29
+
+  ****  Add filenames in vhier --xml cells.
+
+  ****  Fix duplicates in vhier --includes. [Gregory Pierce]
+
+-------------------------------------------------------------------
+Mon Oct 19 03:13:05 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 3.472
+   see /usr/share/doc/packages/perl-Verilog-Perl/Changes
+
+-------------------------------------------------------------------
+Tue Jan  7 03:12:14 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 3.470
+   see /usr/share/doc/packages/perl-Verilog-Perl/Changes
+
+  * Verilog::Language 3.470 2020-01-06
+  
+  ****    Fix capital S for signed numbers, [Piotr Binkowski]
+  
+  ****    Fix // in filenames, bug1610. [Peter Nelson]
+
+-------------------------------------------------------------------
+Fri Sep 13 07:46:19 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 3.468
+   see /usr/share/doc/packages/perl-Verilog-Perl/Changes
+
+  * Verilog::Language 3.468 2019-09-12
+  
+  ****    Support ${} for env vars in file lists, msg3065.
+  
+  ****    Fix multidimensional cell/interfaces, bug1505. [Anderson Ignacio Da Silva]
+
+-------------------------------------------------------------------
+Sat Aug 31 00:05:16 UTC 2019 - Tina Mueller <tina.mueller@suse.com>
+
+- Add bison, flex and gcc requirements
+
+-------------------------------------------------------------------
+Sun May  5 05:35:49 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 3.466
+   see /usr/share/doc/packages/perl-Verilog-Perl/Changes
+
+  * Verilog::Language 3.466 2019-05-04
+  
+  ****    Fix Mac OS-X Perl 5.26.3 issues, bug1428. [Jack Langsdorf]
+
+-------------------------------------------------------------------
+Thu May  2 05:40:34 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 3.464
+   see /usr/share/doc/packages/perl-Verilog-Perl/Changes
+
+  * Verilog::Language 3.464 2019-05-01
+  
+  ****    Fix vrename with escaped names, bug1420. [Kerry Imming]
+
+-------------------------------------------------------------------
+Wed Apr 10 05:31:42 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 3.462
+   see /usr/share/doc/packages/perl-Verilog-Perl/Changes
+
+  * Verilog::Language 3.462 2019-04-09
+  
+  ***     Fix legacy $pin->netlist accessor.
+  
+  ***	Fix nettype declarations, msg2931.  [Andreas Sunardi]
+
+-------------------------------------------------------------------
+Wed Apr  3 07:43:46 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 3.460
+   see /usr/share/doc/packages/perl-Verilog-Perl/Changes
+
+-------------------------------------------------------------------
+Sat Oct  6 13:16:01 UTC 2018 - Dirk Stöcker <opensuse@dstoecker.de>
+
+- updated to 3.454
+  * Verilog::Language 3.454 2018-08-21
+  ****  Support parsing around Cadence protected meta-comments.
+  ****  Fix define argument stringification (`"), broke since 3.446. [Joe DErrico]
+  ****  Fix to ignore Unicode UTF-8 BOM sequences, msg2576. [HyungKi Jeong]
+
+-------------------------------------------------------------------
+Fri Apr 13 06:04:52 UTC 2018 - coolo@suse.com
+
+- updated to 3.452
+   see /usr/share/doc/packages/perl-Verilog-Perl/Changes
+
+  * Verilog::Language 3.452 2018-04-12
+  ****	Fix parsing "output signed" in V2K port list, msg2540. [James Jung]
+  ****	Fix GLIBC assertion failure, bug1299. [Filipe Rosset]
+
+  * Verilog::Language 3.450 2018-03-12
+  **    Support SystemVerilog 1800-2017.
+  **    Moving forward, use the git "stable" branch to track the latest release,
+        and git "v#.###" tags for specific releases.
+
+-------------------------------------------------------------------
+Wed Feb  7 17:31:51 UTC 2018 - coolo@suse.com
+
+- updated to 3.448
+   see /usr/share/doc/packages/perl-Verilog-Perl/Changes
+
+  * Verilog::Language 3.448 2018-01-02
+  ****  Workaround comment bug in flex 2.6.4, bug1252. [Rob Stoddard]
+
+  * Verilog::Language 3.446 2017-11-08
+  ****	Fix `` expansion of `defines, bug1225, bug1227, bug1228. [Odd Magne Reitan]
+
+  * Verilog::Language 3.444 2017-09-21
+  ****	Fix replication handling error, bug1205. [Leon Medpum]
+  ****	Fix compile error on MAC OS X/clang 8.1.0, msg2337. [Kunal Bansal]
+
+  * Verilog::Language 3.442 2017-09-08
+  ****	Fix new concatenation handling error, bug1200. [by Stefan Tauner]
+  ****	Fix unreferenced scalar warning, bug1200. [by Stefan Tauner]
+
+  * Verilog::Language 3.440 2017-08-31
+  **	Support for buses and concats in Netlist, msg1626. [by Stefan Tauner]
+  **	Support pragma protect begin_protected/end_protected, msg2313. [George Cuan]
+
+  * Verilog::Language 3.430 2017-07-24
+  **	Support Verilog::SigParser pin select parsing, msg1626. [by Stefan Tauner]
+
+  * Verilog::Language 3.426 2017-06-06
+  ****	Fix lineno with class callbacks, bug1162. [Dave Storrar]
+
+  * Verilog::Language 3.423 2017-04-26
+  ****	Fix tests '.' for Perl 5.26.0, rt121025.  [Dan Collins]
+
+  * Verilog::Language 3.422 2016-11-24
+  ****  Add additional tests, msg1982. [by Stefan Tauner]
+  ****	Fix passing enum types in SigParser, bug1107. [by Lalit Chhabra]
+
+  * Verilog::Language 3.420 2016-07-30
+  ***   Add vhier --skiplist option. [John Busco]
+  ****  Fix duplicate cells when delete cells, bug1049.  [by Stefan Tauner]
+  ****  Fix core dump on Storable store/retrieve, bug1063. [G Aydos]
+
+  * Verilog::Language 3.418 2016-02-02
+  ****  Fix Flex 2.6.0 warnings.
+
+  * Verilog::Language 3.416 2015-10-02
+  ****  Fix dumpcheck test false failures, bug939. [Gene Sullivan]
+  ****  Fix vrename missing first quote symbol msg1684. [Josef Wells]
+
+  * Verilog::Language 3.414 2015-06-26
+  ****	Add Parser useProtected argument to aid runtime, bug899. [Corey Teffetalor]
+  ****	Fix Preproc loop under Perl-Tk, bug913. [Stefan Tauner]
+  ****	Fix vhier infinite loop on recursive modules.
+  ****	Fix preprocessing stringified newline escapes, bug915. [Anton Rapp]
+  ****	Fix building for Mac 10.10 with Perl 5.18.2, bug923. [S Liu]
+  ****	Fix parsing comments before signal end, bug917. [Raj G, Jeffrey Huynh]
+
+  * Verilog::Language 3.412 2015-03-16
+  ****    Fix len error in 3.410, bug896. [Jon Nall]
+
+  * Verilog::Language 3.410 2015-03-14
+  ****	Fix non-ANSI modport instantiations, bug868. [Kevin Thompson]
+  ****  Fix extra text in delay-number callback, bug893. [Greg Waters]
+  ****	Fix virtual modport without interface in classes, bug778. [Jon Nall]
+
+  * Verilog::Language 3.408 2014-11-15
+  ***	Fix +define+A+B to define A and B to match other simulators, bug847. [Adam Krolnik]
+  ***	Show old and new value when redefining a define, bug846. [Adam Krolnik]
+  ****	Fix loss of trireg on output signals, msg1491. [Matt Lanahan]
+  ****	Fix quoted comment slashes in defines, bug845. [Adam Krolnik]
+
+  * Verilog::Language 3.406 2014-09-21
+  ***   Add Verilog::Preproc->parent() method, bug813. [Ed Carstens]
+  ***   Add Verilog::Netlist::File->preproc() method, bug813. [Ed Carstens]
+  ****	Pass CFLAGS/CPPFLAGS for easier packaging, bug786. [Florian Schlichting]
+  ****	Fix width of byte, bug812. [Ed Carstens]
+  ****  Fix interfaces with variable dimension, bug818. [Glen Gibb]
+
+-------------------------------------------------------------------
+Sun Aug 17 17:23:35 UTC 2014 - dmitry_r@opensuse.org
+
+- Initial package, version 3.404
