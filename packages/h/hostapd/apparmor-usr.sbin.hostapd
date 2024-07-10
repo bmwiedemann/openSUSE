@@ -1,0 +1,33 @@
+abi <abi/3.0>,
+
+#include <tunables/global>
+
+profile hostapd /usr/sbin/hostapd {
+  #include <abstractions/base>
+  #include <abstractions/nameservice>
+
+  capability net_admin,
+  capability net_raw,
+  network packet,
+  network raw,
+
+  # for RADIUS
+  network inet dgram,
+  network inet6 dgram,
+
+  # grant read access to config files
+  /etc/hostapd.* r,
+  /etc/ssl/openssl.cnf r,
+  /etc/libnl/classid r,
+
+  @{PROC}/sys/net/ipv*/conf/*/arp_accept w,
+  /sys/devices/platform/**/net/**/proxyarp_wifi w,
+  /sys/devices/platform/**/net/**/hairpin_mode w,
+
+  # grant access to RFKILL control device
+  /dev/rfkill rw,
+
+  /run/hostapd/ rw,
+  /run/hostapd/* rw,
+
+}
