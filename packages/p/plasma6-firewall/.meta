@@ -1,0 +1,8 @@
+<package name="plasma6-firewall" project="openSUSE:Factory">
+  <title>Config Module for the System Firewall</title>
+  <description>Config Module for the System Firewall
+
+</description>
+  <devel project="KDE:Frameworks" package="plasma6-firewall"/>
+  <url>https://www.kde.org</url>
+</package>

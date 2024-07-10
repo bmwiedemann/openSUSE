@@ -1,0 +1,66 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b8e601e8d2ef460e7227fd1772f29ed5</srcmd5>
+    <version>6.0.1</version>
+    <time>1710167337</time>
+    <user>anag+factory</user>
+    <comment>Plasma 6.0.1</comment>
+    <requestid>1155687</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>2f61085647d9cf602ffdde8c89083fb1</srcmd5>
+    <version>6.0.2</version>
+    <time>1710434621</time>
+    <user>anag+factory</user>
+    <comment>Plasma 6.0.2 + libksysguard5-helper upgrade fix + icon upgrade fix + gtk theme fix (forwarded request 1157674 from Vogtinator)</comment>
+    <requestid>1157719</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ba66d50447b7180b23765a16ef65d802</srcmd5>
+    <version>6.0.3</version>
+    <time>1711630470</time>
+    <user>anag+factory</user>
+    <comment>Plasma 6.0.3. The release actually builds this time! (After other distros already found major issues...) (forwarded request 1162359 from Vogtinator)</comment>
+    <requestid>1162445</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>8f66814950a75ac785980b040f1afeac</srcmd5>
+    <version>6.0.4</version>
+    <time>1713471173</time>
+    <user>anag+factory</user>
+    <comment>Plasma 6.0.4(.1) (forwarded request 1168499 from Vogtinator)</comment>
+    <requestid>1168760</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>059fafe5753c165168ac87c949eb9c02</srcmd5>
+    <version>6.0.5</version>
+    <time>1716803320</time>
+    <user>anag+factory</user>
+    <comment>Plasma 6.0.5(.1) (forwarded request 1176041 from Vogtinator)</comment>
+    <requestid>1176121</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>697ab79e036e0ca06bffe9af259c3799</srcmd5>
+    <version>6.1.0</version>
+    <time>1719055392</time>
+    <user>anag+factory</user>
+    <comment>Plasma 6.1</comment>
+    <requestid>1181140</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>8000d3b205bdfac53237b0333cea4ead</srcmd5>
+    <version>6.1.1</version>
+    <time>1719496903</time>
+    <user>anag+factory</user>
+    <comment>Plasma 6.1.1 (forwarded request 1183337 from Vogtinator)</comment>
+    <requestid>1183389</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>cf6a359427fc009fc8408be9efa8d941</srcmd5>
+    <version>6.1.2</version>
+    <time>1720103000</time>
+    <user>anag+factory</user>
+    <comment>Plasma 6.1.2 (forwarded request 1184925 from Vogtinator)</comment>
+    <requestid>1185018</requestid>
+  </revision>
+</revisionlist>
