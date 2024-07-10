@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jul  6 05:29:00 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.220.0 (0.22)
+   see /usr/share/doc/packages/perl-Test-Without-Module/Changes
+
+  0.22 2024-07-05
+    - Fix test suite to not skip a failing test
+
+-------------------------------------------------------------------
 Sun Dec 11 03:07:14 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.21
