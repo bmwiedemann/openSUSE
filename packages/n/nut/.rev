@@ -1,0 +1,743 @@
+<revisionlist>
+  <revision rev="1" vrev="3">
+    <srcmd5>1b207ee6cc5095aee2ce42729b34ab42</srcmd5>
+    <version>2.0.4</version>
+    <time>1168903628</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="41">
+    <srcmd5>0673a11b35ad689c4b4f58c5f23b2e87</srcmd5>
+    <version>2.0.4</version>
+    <time>1172442765</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="59">
+    <srcmd5>04e9ea12b8f58d14a9440f7a0943fbd5</srcmd5>
+    <version>2.0.4</version>
+    <time>1179395363</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ccd3feae57a553b50c646de34b9f7c77</srcmd5>
+    <version>2.2.0</version>
+    <time>1186701868</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="28">
+    <srcmd5>23ca65b74fb1b8d4876fbd330ae54a88</srcmd5>
+    <version>2.2.0</version>
+    <time>1193070763</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="30">
+    <srcmd5>8ef155f34cdb439da3ba4bff68448559</srcmd5>
+    <version>2.2.0</version>
+    <time>1193182912</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="33">
+    <srcmd5>b531b0cad71a70ac68f3720bb4b6c088</srcmd5>
+    <version>2.2.0</version>
+    <time>1193356179</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="92">
+    <srcmd5>da105bc9872f61091c1c6b82898f64df</srcmd5>
+    <version>2.2.0</version>
+    <time>1208197157</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>4385c90704af217a0b50e9c35d553c90</srcmd5>
+    <version>2.2.1</version>
+    <time>1209134059</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>263c3fcd5513b6cdca64fa3a72544aaf</srcmd5>
+    <version>2.2.1.9.3</version>
+    <time>1210283256</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>e20af596d96cfdedad7aa5f8ed6d0e62</srcmd5>
+    <version>2.2.2</version>
+    <time>1210363982</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="7">
+    <srcmd5>0028b1756e46b820096d549b9b2422e5</srcmd5>
+    <version>2.2.2</version>
+    <time>1211836646</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="9">
+    <srcmd5>44de1b4f3cfbc4be304d10b5176c38e8</srcmd5>
+    <version>2.2.2</version>
+    <time>1212447996</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="63">
+    <srcmd5>36da595fd81bfb582df25b920f838de1</srcmd5>
+    <version>2.2.2</version>
+    <time>1222435202</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="64">
+    <srcmd5>36da595fd81bfb582df25b920f838de1</srcmd5>
+    <version>2.2.2</version>
+    <time>1222435202</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="65">
+    <srcmd5>6fcf643db9b3fe99b49b095dcea7a8cd</srcmd5>
+    <version>2.2.2</version>
+    <time>1229349464</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="66">
+    <srcmd5>e27fadf6a94ab211735d991344e37977</srcmd5>
+    <version>2.2.2</version>
+    <time>1229609868</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="67">
+    <srcmd5>6518074a87bcb844b5e6e5d28759ac40</srcmd5>
+    <version>2.2.2</version>
+    <time>1233019431</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="19" vrev="68">
+    <srcmd5>93be84b12ce7fc95a163b399cbe091f6</srcmd5>
+    <version>2.2.2</version>
+    <time>1233269033</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="20" vrev="70">
+    <srcmd5>057035b9717bcad8a15df32ea880eba6</srcmd5>
+    <version>2.2.2</version>
+    <time>1234026705</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="21" vrev="71">
+    <srcmd5>445ab6ace5c719bed05df30807918113</srcmd5>
+    <version>2.2.2</version>
+    <time>1248965396</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>1c5e65911e52f33368a140919adf26b4</srcmd5>
+    <version>2.4.1</version>
+    <time>1249921229</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>1c5e65911e52f33368a140919adf26b4</srcmd5>
+    <version>2.4.1</version>
+    <time>1249921229</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="24" vrev="4">
+    <srcmd5>1b7689ac013082c184b6fecd73d03b87</srcmd5>
+    <version>2.4.1</version>
+    <time>1268925123</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="25" vrev="6">
+    <srcmd5>1b7689ac013082c184b6fecd73d03b87</srcmd5>
+    <version>2.4.1</version>
+    <time>1278667371</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="26" vrev="7">
+    <srcmd5>1b7689ac013082c184b6fecd73d03b87</srcmd5>
+    <version>2.4.1</version>
+    <time>1278678601</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>611d93f1a509a39d39199098f63a61bb</srcmd5>
+    <version>2.6.0</version>
+    <time>1297387875</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 60282 from user coolo
+</comment>
+    <requestid>60282</requestid>
+  </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>f1db52e1b7c479cb7a7f81b1cd4aad0e</srcmd5>
+    <version>2.6.0</version>
+    <time>1297387880</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 60282
+</comment>
+  </revision>
+  <revision rev="29" vrev="5">
+    <srcmd5>f1db52e1b7c479cb7a7f81b1cd4aad0e</srcmd5>
+    <version>2.6.0</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="30" vrev="6">
+    <srcmd5>66f0c8f3c69d78b3392923554d58ecd3</srcmd5>
+    <version>2.6.0</version>
+    <time>1303300924</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 66973 from user coolo
+</comment>
+    <requestid>66973</requestid>
+  </revision>
+  <revision rev="31" vrev="7">
+    <srcmd5>00b3834e457757b11b7a37e3b1f9a17d</srcmd5>
+    <version>2.6.0</version>
+    <time>1303300933</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 66973
+</comment>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>98b2ae8bbdb7b347aad204af100bf21d</srcmd5>
+    <version>2.6.1</version>
+    <time>1308571990</time>
+    <user>darix</user>
+    <comment>- Upgrade to version 2.6.1 (bnc#698152):
+  * NUT now propose a variable to expose UPS efficiency.
+  * Various recent USB regressions have been definitely fixed.
+  * NUT now propose a variable to expose UPS efficiency.
+  * Support for new devices: Eaton Ellipse ECO, Powerware 9140,
+    Eaton 5 PX, and ambient sensor on Eaton ePDU managed, GE EP
+    series, Inform Sinus SS 210, IPAR Mini Energy ME 800, Mustek
+    Yukai PowerMust 1000 USB, Numeric 3000 SW, SVEN Power Pro+
+    series (recent models), Vivaldi EA200 LED.
+  * Improved Liebert ESP II support, PowerCom BNT 1500A and
+    BNT-other, blazer
+  * apcsmart has more improved UPS poweroff support and options.
+  * usbhid-ups has completed a bit supported variables for APC and
+    Eaton/MGE.
+  * Documentation updates.
+- Drop nut-hal and merge nut-classic back to nut (bnc#697028).
+
+- Fixed command order during hibernate to prevent UPS communication
+  locks and failures (bnc#660236).</comment>
+    <requestid>74044</requestid>
+  </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>ae24567eccfedaa17886f003374c04e6</srcmd5>
+    <version>2.6.1</version>
+    <time>1308572004</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 74044
+</comment>
+  </revision>
+  <revision rev="34" vrev="4">
+    <srcmd5>ae24567eccfedaa17886f003374c04e6</srcmd5>
+    <version>2.6.1</version>
+    <time>1319182206</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>50746d3d4713696fd3ae9cb96b485aab</srcmd5>
+    <version>2.6.2</version>
+    <time>1320232159</time>
+    <user>coolo</user>
+    <comment>- Added missing USB devices (bnc#719292).
+- Build without IPMI (openSUSE 12.1 does not contain freeipmi).
+- Build without powerman for older products.
+- Trigger udev to apply newly installed rules (bnc#727396).
+- Build without IPMI for older products.
+- Upgrade to version 2.6.2 (requested by christoph.walter@countr.de)
+  * NUT can now monitor power supply units (PSU) in servers
+  * NUT now provides 'nut-scanner', to discover supported devices
+  * NUT now provides a Java interface called 'jNut'.
+  * support for: Eaton 3S ; Cyber Power Systems CP1000AVRLCD ; 
+    various APC models equiped with APC AP9618 management card, including APC
+    Smart-UPS RT XL ;  Orvaldi 750 / 900SP ; POWEREX VI 1000 LED ; PowerWalker
+    VI 850 LCD ; SVEN Power Pro+ series (USB ID ffff:0000).
+  * Avahi support has been added
+  * many updates and fixes.</comment>
+    <requestid>89896</requestid>
+  </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>ac505915831f4e5590e04444ac0d19c5</srcmd5>
+    <version>2.6.2</version>
+    <time>1320672200</time>
+    <user>coolo</user>
+    <comment>- Patch real source files to get missing devices (bnc#719292#c7).</comment>
+    <requestid>89986</requestid>
+  </revision>
+  <revision rev="37" vrev="3">
+    <srcmd5>2ceeac651fdd2191d3016194110fcc69</srcmd5>
+    <version>2.6.2</version>
+    <time>1321886896</time>
+    <user>coolo</user>
+    <comment>- add libtool as buildrequire to avoid implicit dependency (forwarded request 92622 from coolo)</comment>
+    <requestid>92704</requestid>
+  </revision>
+  <revision rev="38" vrev="4">
+    <srcmd5>8d6d467bb30b9755dbb067e359196419</srcmd5>
+    <version>2.6.2</version>
+    <time>1323192774</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>fa51cf873f8008cf690e14bb5b5d76a5</srcmd5>
+    <version>2.6.3</version>
+    <time>1338528117</time>
+    <user>coolo</user>
+    <comment>- Upgrade to version 2.6.3:
+  * nut-scanner is now improved and more portable.
+  * pkg-config support
+  * Cupport for new devices: Cyber Power Systems with SNMP RMCARD
+    (100, 201, 202 and 301); Dynamix 650VA USB; LDLC UPS-1200D;
+    Tecnoware UPS ERA LCD 0.65; Powercom BNT-xxxAP (USB ID
+    0d9f:0004); Various USB devices using UPSilon 2000 software.
+  * bcmxcp_usb now handles disconnection and reconnection.
+  * blazer_usb enables again inclusion of buggy IDs.
+  * upsd doesn't anymore fail where either IPv4 or IPv6 is
+    disabled, and no explicit LISTEN directive has been specified.
+  * Avahi support is now automatically enabled, upon detection.
+  * jNut (NUT Java interface) adds device discovery support.
+  * Many bugfixes, cleanup and improvements.</comment>
+    <requestid>122965</requestid>
+  </revision>
+  <revision rev="40" vrev="3">
+    <srcmd5>fa51cf873f8008cf690e14bb5b5d76a5</srcmd5>
+    <version>2.6.3</version>
+    <time>1340183740</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="41" vrev="4">
+    <srcmd5>7eca37c7fbd68c88b063f6fe2d821ff2</srcmd5>
+    <version>2.6.3</version>
+    <time>1345630468</time>
+    <user>namtrac</user>
+    <comment>- Fix random network data crash (bnc#764699, CVE-2012-2944). (forwarded request 131064 from sbrabec)</comment>
+    <requestid>131065</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>6fd284dab491d5935773aa844ca58675</srcmd5>
+    <version>2.6.5</version>
+    <time>1346831148</time>
+    <user>coolo</user>
+    <comment>- Update to version 2.6.5. (forwarded request 132541 from sbrabec)</comment>
+    <requestid>132542</requestid>
+  </revision>
+  <revision rev="43" vrev="2">
+    <srcmd5>dfc241fb9ba00b98804b6b2b8c673105</srcmd5>
+    <version>2.6.5</version>
+    <time>1353266762</time>
+    <user>namtrac</user>
+    <comment>Fix useradd invocation. (forwarded request 141617 from a_jaeger)</comment>
+    <requestid>141623</requestid>
+  </revision>
+  <revision rev="44" vrev="3">
+    <srcmd5>dae177a11e0eef518ab2b4d07650dd53</srcmd5>
+    <version>2.6.5</version>
+    <time>1354712470</time>
+    <user>namtrac</user>
+    <comment>Verify GPG signature: Perform build-time offline GPG verification.
+Please verify that included keyring matches your needs.
+For manipulation with the offline keyring, please use gpg-offline tool from openSUSE:Factory, devel-tools-building or Base:System.
+See the man page and/or /usr/share/doc/packages/gpg-offline/PACKAGING.HOWTO.
+
+If you need to build your package for older products and don't want to mess spec file with ifs, please follow PACKAGING.HOWTO:
+you can link or aggregate gpg-offline from
+devel:tools:building or use following trick with &quot;osc meta prjconf&quot;:
+
+--- Cut here ----
+%if 0%{?suse_version} &amp;lt;= 1220
+Substitute: gpg-offline
+%endif
+
+Macros:
+%gpg_verify(dnf) \
+%if 0%{?suse_version} &amp;gt; 1220\
+echo &quot;WARNING: Using %%gpg_verify macro from prjconf, not from gpg-offline package.&quot;\
+gpg-offline --directory=&quot;%{-d:%{-d*}}%{!-d:%{_sourcedir}}&quot; --package=&quot;%{-n:%{-n*}}%{!-n:%{name}}&quot;&quot;%{-f: %{-f*}}&quot; --verify %{**}\
+%else\
+echo &quot;WARNING: Dummy prjconf macro. gpg-offline is not available, skipping %{**} GPG signature verification!&quot;\
+%endif\
+%nil
+----------------- (forwarded request 143877 from sbrabec)</comment>
+    <requestid>143879</requestid>
+  </revision>
+  <revision rev="45" vrev="5">
+    <srcmd5>dae177a11e0eef518ab2b4d07650dd53</srcmd5>
+    <version>2.6.5</version>
+    <time>1359109520</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="46" vrev="7">
+    <srcmd5>dae177a11e0eef518ab2b4d07650dd53</srcmd5>
+    <version>2.6.5</version>
+    <time>1379663391</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>e372bae0ee55dbbb899df971b30ead00</srcmd5>
+    <version>2.7.1</version>
+    <time>1392736736</time>
+    <user>coolo</user>
+    <comment>- Update to version 2.7.1:
+  For more see NEWS and UPGRADING in /usr/share/doc/packages/nut.
+  Potentially incompatible changes:
+  * First release after the transition from Subversion to Git.
+  * The linkman:apcsmart[8] driver has been replaced by a new
+    implementation. There is a new parameter, 'ttymode'.  In case
+    of issues with this new version, users can revert to
+    apcsmart-old.
+  * The linkman:nutdrv_qx[8] driver will eventually supersede
+    blazer_ser and blazer_usb.  Options are not exactly the same,
+    but are documented in the nutdrv_qx man page.
+  * Mozilla NSS support has been added.
+  * linkman:upsrw[8] now prints out the maximum size of
+    variables.
+  Other changes:
+  * Added a new driver, nutdrv_qx, for Megatec/Qx devices. This
+    driver will eventually replace the blazer_ser and blazer_usb
+    drivers. In particular, it adds support for Voltronic Power
+    devices.
+  * Increased USB_TIMEOUT to standards-compliant 5.000 seconds in
+    most drivers.  This should reduce the number of timeouts on
+    low-speed USB 1.1 devices.
+  * Added many devices to the HCL. Of particular note are many
+    Tripp Lite USB HID PDC models which were tested against NUT by
+    Tripp Lite.
+  * Reworked some visual elements of the HCL.
+  * Also increased timeouts and added redundant commands to improve
+    reliability of mge-utalk driver.
+  * Added the apcupsd-ups driver to interoperate with apcupsd
+    installations.
+  * Added documentation on creating subdrivers for snmp-ups and
+    nutdrv_qx.
+  * Added new drivers for the Riello UPS product line
+    (riello_ser/riello_usb).
+  * Many improvements to the BCM/XCP.
+  * Added a few variables to the Powercom HID mappings.
+  * Updated the apcsmart driver, and renamed the previous driver to
+    apcsmart-old.
+  * Fixed the battery percentage calculation in the bestfcom
+    driver.
+  * libnutclient has been added as a C++ alternative to
+    libupsclient.
+  * Fix shutdown of Eaton HID, using usbhid-ups and mge-shut
+  * usbhid-ups: final fix for APC Back UPS ES.
+  * nut-scanner: fix crash
+  * IPMI support can handle more different versions of FreeIPMI
+  * Support power supplies scan over the network nut-scanner can
+    now scan for power supplies with IPMI over LAN.  This is
+    currently limited to IPMI 1.5 only
+  * Improve systemd integration
+  * snmp-ups: Fixed a crash on outlet management, and added
+    delta_ups MIB support. Also fixed mappings for
+    upsBypassVoltage, upsBypassCurrent, and upsBypassPower in
+    three-phase IETF MIB.
+- Enable FreeIPMI.
+- Turn systemd integration on (nut-systemd-dirs.patch).
+- Fix README.SUSE.
+- nut-preconfig.patch: Fix UID recommendation.
+
+This is exactly like request 221664, just Source URI was fixed and ENABLE_IPMI was replaced by the correct distro+arch version and, since request 222080, only changelog was fixed.</comment>
+    <requestid>222607</requestid>
+  </revision>
+  <revision rev="48" vrev="2">
+    <srcmd5>1e9c8400c0e3a5a6b9d555b44f9a0ef1</srcmd5>
+    <version>2.7.1</version>
+    <time>1396622370</time>
+    <user>coolo</user>
+    <comment>- Replace powersave support by systemd (bnc#871406).
+
+- explicitly require udev to fix buildenvironment issues 
+
+- Replace pm-utils support by systemd (FATE#316824). (forwarded request 228899 from sbrabec)</comment>
+    <requestid>228900</requestid>
+  </revision>
+  <revision rev="49" vrev="3">
+    <srcmd5>a11c241618cc877da3ca824ce0169da0</srcmd5>
+    <version>2.7.1</version>
+    <time>1402946955</time>
+    <user>coolo</user>
+    <comment>- Fix Summary.</comment>
+    <requestid>237253</requestid>
+  </revision>
+  <revision rev="50" vrev="5">
+    <srcmd5>a11c241618cc877da3ca824ce0169da0</srcmd5>
+    <version>2.7.1</version>
+    <time>1409302004</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>b8c62962e39875aeea689854fb7f184e</srcmd5>
+    <version>2.7.2</version>
+    <time>1415748110</time>
+    <user>dimstar_suse</user>
+    <comment>- fix bashisms in post script
+
+- Update to version 2.7.2: 
+  For more see NEWS and UPGRADING in /usr/share/doc/packages/nut.
+  * upsdrvctl is now installed to $prefix/sbin rather than
+    $driverexec. This usually means moving from /bin to /sbin, apart
+    from few exceptions.
+  * FreeDesktop Hardware Abstraction Layer (HAL) support was removed.
+  * This is a good time to point out that for stricter packaging
+    systems, it may be beneficial to add &quot;--enable-option-checking=fatal&quot;
+    to the ./configure command line, in order to quickly pick up any
+    other removed option flags.
+  Other changes:
+  * libupsclient had undefined references related to functions of
+    libcommon.This issue was reported on Debian (bug #731156) and
+    is now fixed
+  * support for new devices:
+    + CABAC UPS-1700DV2
+    + Eaton Powerware 3105
+    + Emerson Network Power Liebert PSI 1440
+    + MicroDowell B.Box LP 500
+    + Numeric Digital 800 plus
+    + OptiUPS VS 575C
+    + Tripp Lite SU10KRT3/1X
+  * nutdrv_atcl_usb: new driver for 'ATCL FOR UPS'
+  * al175: re-introduced this driver (actually, it was in 2.7.1)
+  * upsdrvctl now provides retry options for upsdrvctl and driver(s)
+  * snmp-ups: add support for XPPC-MIB and Tripp Lite SU10KRT3/1X.
+    Also fix erroneous status in HP/Compaq SNMP MIB (with the most
+    recent HP firmware (1.76) ;</comment>
+    <requestid>260845</requestid>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>b8d28a03411309e6358cd345cdbe1279</srcmd5>
+    <version>2.7.3</version>
+    <time>1433145217</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>309346</requestid>
+  </revision>
+  <revision rev="53" vrev="2">
+    <srcmd5>3c3fee54bdd4cbe1960a84702032c41a</srcmd5>
+    <version>2.7.3</version>
+    <time>1454491174</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>357076</requestid>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>54a2565fd408e1d45d54297226a9d6ab</srcmd5>
+    <version>2.7.4</version>
+    <time>1494938295</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>493054</requestid>
+  </revision>
+  <revision rev="55" vrev="2">
+    <srcmd5>41644658a81170d876584418227c42d9</srcmd5>
+    <version>2.7.4</version>
+    <time>1495268021</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>496334</requestid>
+  </revision>
+  <revision rev="56" vrev="3">
+    <srcmd5>cc864a25e9c9c0b5a1ddfc84b2a28e3c</srcmd5>
+    <version>2.7.4</version>
+    <time>1502562532</time>
+    <user>maxlin_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>516209</requestid>
+  </revision>
+  <revision rev="57" vrev="4">
+    <srcmd5>fe4bc45a56a838ef6deac60f8108872d</srcmd5>
+    <version>2.7.4</version>
+    <time>1503061616</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>517542</requestid>
+  </revision>
+  <revision rev="58" vrev="5">
+    <srcmd5>25de26b73ded13450c1057d86f6507e6</srcmd5>
+    <version>2.7.4</version>
+    <time>1506594894</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>528832</requestid>
+  </revision>
+  <revision rev="59" vrev="6">
+    <srcmd5>5e5974d55ff9c23ddd62352f7368c885</srcmd5>
+    <version>2.7.4</version>
+    <time>1507280630</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>531564</requestid>
+  </revision>
+  <revision rev="60" vrev="7">
+    <srcmd5>8747348ced013a8b686e5410cbfe0f48</srcmd5>
+    <version>2.7.4</version>
+    <time>1508434375</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>534893</requestid>
+  </revision>
+  <revision rev="61" vrev="8">
+    <srcmd5>0e5cef944631a2134e1893fee7d565a4</srcmd5>
+    <version>2.7.4</version>
+    <time>1512216751</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>547154</requestid>
+  </revision>
+  <revision rev="62" vrev="9">
+    <srcmd5>3d93bde7066209a4ed0bc01a0dcf4e75</srcmd5>
+    <version>2.7.4</version>
+    <time>1517424711</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>571097</requestid>
+  </revision>
+  <revision rev="63" vrev="10">
+    <srcmd5>50253f74398ad5d6312175ebb130c286</srcmd5>
+    <version>2.7.4</version>
+    <time>1534146880</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>628814</requestid>
+  </revision>
+  <revision rev="64" vrev="11">
+    <srcmd5>cd919800a22581d7da3b6493d660f37c</srcmd5>
+    <version>2.7.4</version>
+    <time>1543400009</time>
+    <user>dimstar_suse</user>
+    <comment>- Give up on packaging the tex docu as it fails to build with
+  latest texlive
+
+- Add missing tex dependencies so we can generate the pdf with
+  newer releases of texlive
+
+- Drop patch docs-destination-dir.patch which is quite pointless
+
+- Remove invalid option 'destination-dir' when generating PDF
+  files (docs-destination-dir.patch)</comment>
+    <requestid>652114</requestid>
+  </revision>
+  <revision rev="65" vrev="12">
+    <srcmd5>83c98bb4d46afcd97587bc6c6889d7f2</srcmd5>
+    <version>2.7.4</version>
+    <time>1563994251</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to fix build on TW:
+  * nutscanner-ftbfs.patch
+
+- removal of SuSEfirewall2 service, since SuSEfirewall2 has been replaced by
+  firewalld, see [1].</comment>
+    <requestid>718293</requestid>
+  </revision>
+  <revision rev="66" vrev="13">
+    <srcmd5>d663b53736fabe1da059fd5c239bd50f</srcmd5>
+    <version>2.7.4</version>
+    <time>1582725948</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>779298</requestid>
+  </revision>
+  <revision rev="67" vrev="14">
+    <srcmd5>37e8d1772360161e1b5526dd1f539c7f</srcmd5>
+    <version>2.7.4</version>
+    <time>1589579509</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>805684</requestid>
+  </revision>
+  <revision rev="68" vrev="15">
+    <srcmd5>6597963c74eb19ac87fdbea33827ddd6</srcmd5>
+    <version>2.7.4</version>
+    <time>1610965776</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>863888</requestid>
+  </revision>
+  <revision rev="69" vrev="16">
+    <srcmd5>712f432629e45afe5a941cd3b3e517dd</srcmd5>
+    <version>2.7.4</version>
+    <time>1624887227</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>902791</requestid>
+  </revision>
+  <revision rev="70" vrev="17">
+    <srcmd5>dba3a801b8bc65d4b1fcf26b1e9f2d44</srcmd5>
+    <version>2.7.4</version>
+    <time>1635272063</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>927573</requestid>
+  </revision>
+  <revision rev="71" vrev="18">
+    <srcmd5>805ccf89c87600b065ecf35421d4586c</srcmd5>
+    <version>2.7.4</version>
+    <time>1640808645</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>942925</requestid>
+  </revision>
+  <revision rev="72" vrev="19">
+    <srcmd5>594fc45803871293cf8a787c1a4e4a77</srcmd5>
+    <version>2.7.4</version>
+    <time>1652717341</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>977547</requestid>
+  </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>b6fb9e812f8dcd227f815d6abb12a9ee</srcmd5>
+    <version>2.8.0</version>
+    <time>1675792123</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1063449</requestid>
+  </revision>
+  <revision rev="74" vrev="2">
+    <srcmd5>5b67d2621309cc37a289150e4b6b4b9c</srcmd5>
+    <version>2.8.0</version>
+    <time>1681590755</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1079467</requestid>
+  </revision>
+  <revision rev="75" vrev="3">
+    <srcmd5>06b8fca7bafb0864511364ee09ce0900</srcmd5>
+    <version>2.8.0</version>
+    <time>1688660955</time>
+    <user>favogt_factory</user>
+    <comment></comment>
+    <requestid>1097023</requestid>
+  </revision>
+  <revision rev="76" vrev="4">
+    <srcmd5>38fe52067e0bb5a896995faf99cf5e50</srcmd5>
+    <version>2.8.0</version>
+    <time>1689083811</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1097962</requestid>
+  </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>daacb99e7f9b17f6fd6886d4e3b7bb6c</srcmd5>
+    <version>2.8.1</version>
+    <time>1700511588</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1127576</requestid>
+  </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>ec22fe74125f6c8d73cc0b80f2ddf3f0</srcmd5>
+    <version>2.8.2</version>
+    <time>1712764140</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1166465</requestid>
+  </revision>
+</revisionlist>

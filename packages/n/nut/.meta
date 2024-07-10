@@ -1,0 +1,11 @@
+<package name="nut" project="openSUSE:Factory">
+  <title>Network UPS Tools Core (Unbreakable Power Supply Monitoring)</title>
+  <description>Core package of Network UPS Tools.
+
+Network UPS Tools is a collection of programs which provide a common
+interface for monitoring and administering UPS hardware.
+
+Detailed information about supported hardware can be found in
+/usr/share/doc/packages/nut.</description>
+  <devel project="hardware" package="nut"/>
+</package>

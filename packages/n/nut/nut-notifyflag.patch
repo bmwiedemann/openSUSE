@@ -1,0 +1,19 @@
+diff -purN a/conf/upsmon.conf.sample.in b/conf/upsmon.conf.sample.in
+--- a/conf/upsmon.conf.sample.in	2023-10-28 23:36:02.000000000 +0200
++++ b/conf/upsmon.conf.sample.in	2023-11-03 19:38:24.015393331 +0100
+@@ -364,6 +364,15 @@ POWERDOWNFLAG "@POWERDOWNFLAG@"
+ #
+ # If you use IGNORE, don't use any other flags on the same line.
+ 
++NOTIFYFLAG ONLINE   SYSLOG
++NOTIFYFLAG COMMOK   SYSLOG
++NOTIFYFLAG SHUTDOWN SYSLOG
++NOTIFYFLAG ONBATT   SYSLOG+WALL
++NOTIFYFLAG LOWBATT  SYSLOG+WALL
++NOTIFYFLAG FSD      SYSLOG+WALL
++NOTIFYFLAG NOCOMM   SYSLOG+WALL
++NOTIFYFLAG COMMBAD  SYSLOG+WALL
++
+ # --------------------------------------------------------------------------
+ # OFFDURATION - put "OFF" state into effect if it persists for this many seconds
+ #

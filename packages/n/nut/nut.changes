@@ -1,0 +1,1273 @@
+-------------------------------------------------------------------
+Sat Apr  6 20:59:56 UTC 2024 - Arjen de Korte <suse+build@de-korte.org>
+
+- Update to version 2.8.2
+  For more see NEWS.adoc and UPGRADING.adoc in /usr/share/doc/packages/nut
+  (the list of changes is too long to list).
+
+-------------------------------------------------------------------
+Sat Nov  4 16:30:32 UTC 2023 - Arjen de Korte <suse+build@de-korte.org>
+
+- Update to version 2.8.1
+  For more see NEWS.adoc and UPGRADING.adoc in /usr/share/doc/packages/nut
+  (the list of changes is too long to list).
+- Remove obsolete patch:
+  * nut-Solaris-init-files.patch
+
+-------------------------------------------------------------------
+Thu Jul  6 20:29:12 UTC 2023 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Fix nut.system-sleep script to allow NUT usage with sleep and
+  hibernation (bsc#1188990)
+
+-------------------------------------------------------------------
+Fri Jun 30 21:03:35 UTC 2023 - Arjen de Korte <suse+build@de-korte.org>
+
+- Rerelease of package and switch to GPG signed package
+  + add nut.keyring
+
+-------------------------------------------------------------------
+Wed Mar  1 19:11:17 UTC 2023 - Arjen de Korte <suse+build@de-korte.org>
+
+- Fix reproducible build (remove files only needed for packaging)
+
+-------------------------------------------------------------------
+Mon Jan 23 22:09:31 UTC 2023 - Arjen de Korte <suse+build@de-korte.org>
+
+- Update to version 2.8.0
+  For more see NEWS and UPGRADING in /usr/share/doc/packages/nut.
+  * NUT now supports more i2c and modbus devices, as well as libusb-1.0
+    support as an alternative to earlier libusb-0.1 (so new
+    dependency-based categories of packages for drivers may be due).
+  * NUT Python modules and scripts (e.g. NUT-Monitor variants) should
+    work with python-2.7 and with python-3.x, so covering historic
+    distro releases as well as new ones (and so your distro can deliver
+    one or both, probably in several packages with different
+    dependencies in the latter case).
+  * NUT provides revised reference systemd and SMF service unit
+    definitions, including support of drivers wrapped into individual
+    service instances with varying dependencies based on different
+    media required (networked stack, USB stack, etc.), and many daemons
+    include -F option for running "in foreground" to avoid extra
+    forking after one already done by a service framework - you may
+    want to use those in your packaged deliverables.
+  * NUT newly provides the "nut-driver-enumerator" script and service,
+    which allows it to follow edition of ups.conf and dynamically
+    define+(re)start and stop+undefine service instances for drivers -
+    there are several ways it can be integrated for different
+    use-cases.
+  * Yhere are several new configuration keywords and CLI options - so
+    while new NUT builds should work with old configs and scripts, the
+    opposite is not necessarily true (old binaries may reject
+    configurations taking advantage of new features).
+  * There are several new protocol keywords - but old and new NUT
+    daemons (data server and clients) should be able to communicate
+    both ways.
+  * It is assumed that API/ABI changes may require third-party NUT
+    clients (library consumers of libnutclient, libupsclient,
+    libnutscan... -- their version info was bumped accordingly) to get
+    rebuilt, in order to work with the new NUT release in a stable
+    fashion.
+  * The dummy-ups driver used in automated testing now processes *.dev
+    filename patterns once and does not loop, like it still does for
+    *.seq and other files (by default).
+  * USB code is now more strict about logical minimum/maximum ranges
+    for data reported from devices, and some devices were already found
+    to make mistakes - so there is also a mechanism for turning a blind
+    eye to known issues and fix-up such report descriptors to produce
+    intended sane values.
+  * New documentation page docs/config-prereqs.txt highlights packaged
+    dependencies installable on a large range of platforms to build as
+    much of NUT as possible (incidentally, ones NUT CI farm uses to
+    test every iteration).
+- Remove upstreamed and obsolete patches:
+  * nut-doc-cables.patch
+  * nut-systemd-dirs.patch
+  * nut-upssched.patch
+  * nutscanner-ftbfs.patch
+  * openssl-1_1.patch
+  * reproducible.patch
+  * use-pkg-config-gdlib.diff
+- Source is no longer GPG signed, so keyring is not needed anymore
+  * nut.keyring
+- Unused additional source file removed (was added as a source, but
+  not packaged)
+  * nut.sleep
+- Don't install Solaris init files univited (PR#
+  * nut-Solaris-init-files.patch
+
+-------------------------------------------------------------------
+Wed May 11 23:01:34 UTC 2022 - Stanislav Brabec <sbrabec@suse.com>
+
+- Build the basic documentation again (bsc#1197789#c7).
+- Make possible to build PDF documentation.
+
+-------------------------------------------------------------------
+Wed Apr 27 12:54:07 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Resolve rpmlit reports
+  * libupsclient1.x86_64: E: shlib-policy-name-error SONAME:
+    libnutclient.so.0, expected package suffix: 0
+  * libupsclient1.x86_64: E: shlib-policy-name-error SONAME:
+    libupsclient.so.4, expected package suffix: 4
+
+-------------------------------------------------------------------
+Fri Dec 24 08:09:40 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Use --with-pidpath to set PIDFile to /run in the service file and
+  get rid of a systemd warning about using the legacy directory
+  /var/run.
+
+-------------------------------------------------------------------
+Fri Oct 15 07:26:53 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
+  * harden_nut-driver.service.patch
+  * harden_nut-monitor.service.patch
+  * harden_nut-server.service.patch
+
+-------------------------------------------------------------------
+Sun Jun 27 11:43:12 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
+
+- Fix build with GCC11 (as default in GCC11 is now -std=gnu++17)
+
+-------------------------------------------------------------------
+Mon Dec 21 21:34:16 UTC 2020 - Arjen de Korte <suse+build@de-korte.org>
+
+- use pkg-config to determine version of libgd
+- use apache-rpm-macros
+
+-------------------------------------------------------------------
+Wed May  6 10:45:51 UTC 2020 - pgajdos@suse.com
+
+- use /usr/lib instead of %{_libexecdir} for systemd and udev
+  rules, %{_libexecdir} is dedicated for internal binaries
+
+-------------------------------------------------------------------
+Tue Feb 25 20:40:40 CET 2020 - sbrabec@suse.com
+
+- Remove obsolete chown from %post. We no more support upgrade from
+  SUSE Linux 9 (bsc#1157325).
+
+-------------------------------------------------------------------
+Wed Jul 24 14:16:00 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add patch to fix build on TW:
+  * nutscanner-ftbfs.patch
+
+-------------------------------------------------------------------
+Wed Jul 24 13:25:06 UTC 2019 - matthias.gerstner@suse.com
+
+- removal of SuSEfirewall2 service, since SuSEfirewall2 has been replaced by
+  firewalld, see [1].
+
+-------------------------------------------------------------------
+Tue Nov 27 09:19:23 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Give up on packaging the tex docu as it fails to build with
+  latest texlive
+
+-------------------------------------------------------------------
+Tue Nov 13 09:36:13 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add missing tex dependencies so we can generate the pdf with
+  newer releases of texlive
+
+-------------------------------------------------------------------
+Tue Nov 13 09:24:40 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Drop patch docs-destination-dir.patch which is quite pointless
+
+-------------------------------------------------------------------
+Sun Oct  7 18:53:54 UTC 2018 - suse+build@de-korte.org
+
+- Remove invalid option 'destination-dir' when generating PDF
+  files (docs-destination-dir.patch)
+
+-------------------------------------------------------------------
+Wed Aug  1 13:35:20 UTC 2018 - bwiedemann@suse.com
+
+- Add reproducible.patch to sort input file list
+  to make package build reproducible (boo#1041090)
+
+-------------------------------------------------------------------
+Sun Jan 21 20:17:50 UTC 2018 - suse+build@de-korte.org
+
+- Fix clash between Group and %define GROUP by renaming the latter
+  to NUT_GROUP (and USER to NUT_USER)
+- Replace duplicate man files by soft links
+
+-------------------------------------------------------------------
+Fri Dec  1 14:59:25 UTC 2017 - suse+build@de-korte.org
+
+- Add support for OpenSSL 1.1.0 library, allow TLSv1 and higher
+  (not just TLSv1) and report TLS version used in debug mode level
+  3 and higher (boo#1069988, openssl-1_1.patch)
+- Fix missing pointer dereference in upssched (nut-upssched.patch)
+- Support for allowfrom parameter was removed in version 2.4.0
+  (nut-preconfig.patch)
+
+-------------------------------------------------------------------
+Thu Nov 30 18:01:31 CET 2017 - sbrabec@suse.com
+
+- No more conflict with apcupsd (boo#1070373).
+- Remove smartups references. It is dropped since 2001.
+
+-------------------------------------------------------------------
+Tue Oct 17 19:18:03 UTC 2017 - dimstar@opensuse.org
+
+- BuildRequire tex(upquote.sty): Generally seen, this dependency
+  is inaccurate, as our sources do not reference upquote.sty, but
+  asciidoc does. Adding the dep there though makes asciidoc too
+  expensive, and recommends are not interpreted when building the
+  buildroot (boo#1063897).
+
+-------------------------------------------------------------------
+Tue Oct 17 12:42:32 UTC 2017 - dimstar@opensuse.org
+
+- Buildrequire libnsl-devel for suse_version >= 1330: libnsl was
+  split out of glibc and needs to be explcitly required if needed.
+
+-------------------------------------------------------------------
+Mon Oct  2 08:25:15 UTC 2017 - tchvatal@suse.com
+
+- Fix rpm groups
+- Reduce the supported distros by keeping sle12+ only
+- Convert to pkgconfig style dependencies
+
+-------------------------------------------------------------------
+Tue Sep 26 09:13:30 UTC 2017 - tchvatal@suse.com
+
+- Drop the aspell dependency, it is only used for verification
+  of the mans and it is more for devs to do than during the build
+  wrt fate#323578
+
+-------------------------------------------------------------------
+Fri Aug 18 08:21:49 UTC 2017 - alarrosa@suse.com
+
+- Add use-pkg-config-gdlib.diff to fix a build failure due to the
+  configure scripts using gdlib-config (which is deprecated) to
+  obtain the CFLAGS/LDFLAGS/LIBS to use when building with gd. With
+  the patch, nut now uses pkg-config which returns the right values
+
+-------------------------------------------------------------------
+Tue May  9 09:06:52 UTC 2017 - jengelh@inai.de
+
+- Fix RPM groups and the HTML description
+- Do not suppress errors from useradd
+- Remove --with-pic that's only for static libs
+
+-------------------------------------------------------------------
+Wed Apr 19 15:28:14 CEST 2017 - sbrabec@suse.com
+
+- Update to version 2.7.4:
+  For more see NEWS and UPGRADING in /usr/share/doc/packages/nut.
+  * New class of device supported: ATS - Automatic Transfer Switch
+  * NUT command and variable naming scheme changes.
+  * support for new devices: AEG PROTECT B / NAS APC ATS AP7724
+    (should be supported) Asium P700 Eaton ATS Eaton 5E 1100iUSB
+    Eaton E Series DX UPS 1-20 kVA Eaton Powerware 9125-5000g
+    Electrys UPS 2500 Fideltronic INIGO Viper 1200 Legrand Keor
+    Multiplug LYONN CTB-800V Micropower LCD 1000 NHS Laser Senoidal
+    5000VA Sweex model P220 TS Shara Various APCUPSD-controlled APC
+    devices
+  * snmp-ups improvements.
+  * Eaton: improvements and fixes of 3ph SNMP, ePDU (G2 and G3) and
+    XML/PDC.
+  * Further fixes and improvements of bcmxcp_usb, dummy-ups,
+    libnutclient, nutdrv_atcl_usb, nutdrv_qx, nut-ipmipsu, solis,
+    tripplitesu, usbhid-ups.
+  * nut-scanner: Don't depend on development libraries
+    (boo#963505).
+  * Improved SSL support through Mozilla NSS, Augeas support.
+  * Fixed UPower device matching in recent kernels.
+  * nut-server.service: Restore systemd relationship (boo#907387, drop
+    0001-Restore-systemd-relationship-with-nut-driver-service.patch).
+  * Network protocol information change.
+- Drop dummy init scripts. They are not needed any more
+  (nut-monitor, nut-server, nut-driver, boo#801542#c2).
+- Build and package documentation
+  (nut-doc-fixed-date.patch, nut-doc-cables.patch).
+- Fix dependencies.
+- Fix bash-completion path.
+
+-------------------------------------------------------------------
+Tue Jan 19 09:33:47 UTC 2016 - tchvatal@suse.com
+
+- Cleanup a bit with spec-cleaner
+- Install init or systemd files not both at once
+- Remove patches used only on sle10:
+  * nut-powersave.patch
+  * nut-udev.patch
+
+-------------------------------------------------------------------
+Mon May 18 10:11:40 UTC 2015 - mvyskocil@opensuse.org
+
+- fix https://github.com/networkupstools/nut/issues/200
+  * 0001-Restore-systemd-relationship-with-nut-driver-service.patch
+
+-------------------------------------------------------------------
+Fri May 15 15:10:48 UTC 2015 - mvyskocil@opensuse.org
+
+- update to 2.7.3 (bugfixes and new devices support)
+  see NEWS and UPGRADING in /usr/share/doc/packages/nut
+- refreshed patches:
+  * nut-notifyflag.patch: rename of upsmon.conf.sample.in
+  * nut-preconfig.patch: rename of upsmon.conf.sample.in
+  * nut-systemd-dirs.patch: refresh to 2.7.3
+- changed keyring to new key 55CA5976 (Arnaud Quette <arnaud.quette@free.fr>)
+
+-------------------------------------------------------------------
+Sun Nov 09 19:50:00 UTC 2014 - Led <ledest@gmail.com>
+
+- fix bashisms in post script
+
+-------------------------------------------------------------------
+Thu Oct 30 07:22:38 UTC 2014 - mvyskocil@opensuse.org
+
+- Update to version 2.7.2: 
+  For more see NEWS and UPGRADING in /usr/share/doc/packages/nut.
+  * upsdrvctl is now installed to $prefix/sbin rather than
+    $driverexec. This usually means moving from /bin to /sbin, apart
+    from few exceptions.
+  * Fix service files paths (boo#907387).
+  * FreeDesktop Hardware Abstraction Layer (HAL) support was removed.
+  * This is a good time to point out that for stricter packaging
+    systems, it may be beneficial to add "--enable-option-checking=fatal"
+    to the ./configure command line, in order to quickly pick up any
+    other removed option flags.
+  Other changes:
+  * libupsclient had undefined references related to functions of
+    libcommon.This issue was reported on Debian (bug #731156) and
+    is now fixed
+  * support for new devices:
+    + CABAC UPS-1700DV2
+    + Eaton Powerware 3105
+    + Emerson Network Power Liebert PSI 1440
+    + MicroDowell B.Box LP 500
+    + Numeric Digital 800 plus
+    + OptiUPS VS 575C
+    + Tripp Lite SU10KRT3/1X
+  * nutdrv_atcl_usb: new driver for 'ATCL FOR UPS'
+  * al175: re-introduced this driver (actually, it was in 2.7.1)
+  * upsdrvctl now provides retry options for upsdrvctl and driver(s)
+  * snmp-ups: add support for XPPC-MIB and Tripp Lite SU10KRT3/1X.
+    Also fix erroneous status in HP/Compaq SNMP MIB (with the most
+    recent HP firmware (1.76) ;
+    improved various MIBs (APC, HP/Compaq, ...) 
+  * nutdrv_qx: add new 'fallback' Q1 subdriver, with minimal
+    'Q1' support. General improvements on all subdrivers.
+  * mge-shut: partially revert PnP/RTS change, for initializing
+    the communication with the UPS. Note that nut-scanner similar
+    function was not modified however.
+- dropped nut-hal.patch
+- use _smp_mflags macro for make
+- build with --enable-option-checking=fatal and remove obsoleted --with-hal
+  and --with-linux-hiddev configure options
+
+-------------------------------------------------------------------
+Fri Jun 13 18:52:58 CEST 2014 - sbrabec@suse.cz
+
+- Fix Summary.
+
+-------------------------------------------------------------------
+Thu Apr  3 16:19:56 CEST 2014 - sbrabec@suse.cz
+
+- Replace powersave support by systemd (bnc#871406).
+
+-------------------------------------------------------------------
+Thu Mar 27 11:20:30 CET 2014 - ro@suse.de
+
+- explicitly require udev to fix buildenvironment issues 
+
+-------------------------------------------------------------------
+Fri Feb 14 20:15:04 CET 2014 - sbrabec@suse.cz
+
+- Replace pm-utils support by systemd (FATE#316824).
+
+-------------------------------------------------------------------
+Tue Nov 26 20:48:34 CET 2013 - sbrabec@suse.cz
+
+- Update to version 2.7.1:
+  For more see NEWS and UPGRADING in /usr/share/doc/packages/nut.
+  Potentially incompatible changes:
+  * First release after the transition from Subversion to Git.
+  * The linkman:apcsmart[8] driver has been replaced by a new
+    implementation. There is a new parameter, 'ttymode'.  In case
+    of issues with this new version, users can revert to
+    apcsmart-old.
+  * The linkman:nutdrv_qx[8] driver will eventually supersede
+    blazer_ser and blazer_usb.  Options are not exactly the same,
+    but are documented in the nutdrv_qx man page.
+  * Mozilla NSS support has been added.
+  * linkman:upsrw[8] now prints out the maximum size of
+    variables.
+  Other changes:
+  * Added a new driver, nutdrv_qx, for Megatec/Qx devices. This
+    driver will eventually replace the blazer_ser and blazer_usb
+    drivers. In particular, it adds support for Voltronic Power
+    devices.
+  * Increased USB_TIMEOUT to standards-compliant 5.000 seconds in
+    most drivers.  This should reduce the number of timeouts on
+    low-speed USB 1.1 devices.
+  * Added many devices to the HCL. Of particular note are many
+    Tripp Lite USB HID PDC models which were tested against NUT by
+    Tripp Lite.
+  * Reworked some visual elements of the HCL.
+  * Also increased timeouts and added redundant commands to improve
+    reliability of mge-utalk driver.
+  * Added the apcupsd-ups driver to interoperate with apcupsd
+    installations.
+  * Added documentation on creating subdrivers for snmp-ups and
+    nutdrv_qx.
+  * Added new drivers for the Riello UPS product line
+    (riello_ser/riello_usb).
+  * Many improvements to the BCM/XCP.
+  * Added a few variables to the Powercom HID mappings.
+  * Updated the apcsmart driver, and renamed the previous driver to
+    apcsmart-old.
+  * Fixed the battery percentage calculation in the bestfcom
+    driver.
+  * libnutclient has been added as a C++ alternative to
+    libupsclient.
+  * Fix shutdown of Eaton HID, using usbhid-ups and mge-shut
+  * usbhid-ups: final fix for APC Back UPS ES.
+  * nut-scanner: fix crash
+  * IPMI support can handle more different versions of FreeIPMI
+  * Support power supplies scan over the network nut-scanner can
+    now scan for power supplies with IPMI over LAN.  This is
+    currently limited to IPMI 1.5 only
+  * Improve systemd integration
+  * snmp-ups: Fixed a crash on outlet management, and added
+    delta_ups MIB support. Also fixed mappings for
+    upsBypassVoltage, upsBypassCurrent, and upsBypassPower in
+    three-phase IETF MIB.
+- Enable FreeIPMI.
+
+-------------------------------------------------------------------
+Tue Jan 29 21:14:30 CET 2013 - sbrabec@suse.cz
+
+- Turn systemd integration on (nut-systemd-dirs.patch).
+- Fix README.SUSE.
+- nut-preconfig.patch: Fix UID recommendation.
+
+-------------------------------------------------------------------
+Mon Nov 19 21:22:52 CET 2012 - sbrabec@suse.cz
+
+- Verify GPG signature.
+
+-------------------------------------------------------------------
+Sat Nov 17 09:54:35 UTC 2012 - aj@suse.de
+
+- Fix useradd invocation: -o is useless without -u and newer
+  versions of pwdutils/shadowutils fail on this now.
+- Fix provides/obsoletes
+
+-------------------------------------------------------------------
+Tue Sep  4 12:06:57 CEST 2012 - sbrabec@suse.cz
+
+- Update to version 2.6.5:
+  * Fix regression in upssched.
+  * Support for new devices: Eaton ePDU Switched, Online Zinto A,
+    REDi Blazer 400VA / 600VA / 800VA, UNITEK Alpha650ipF and
+    Alpha650ipE, AEG Power Solutions PROTECT HOME, more APC SNMP
+    cards, ATEK Defensor range, all Borri models, all COVER ENERGY
+    SA, CyberPower OR700LCDRM1U, PR6000LCDRTXL5U and CP1000PFCLCD,
+    Dell UPS Network Management Card, Dynamix 1000VA USB, Eaton
+    Management Card Contact (ref 66104), EVER POWERLINE RT / 11 /
+    31 and DUO II Pro, GE Digital Energy GT Series 1000-3000 VA,
+    Gtec models, all recent HP serial / USB UPS (G2, G3 and R/T
+    models) and HP UPS Management Module, Ippon INNOVA RT, KOLFF
+    BLACK NOVA, Lexis X-power Tigra 1kVA, Microline C-Lion Innova,
+    Online Yunto YQ450, PowerShield Defender 1200VA, PowerWalker
+    Online VFI LCD, Line-Interactive VI LCD and Line-Interactive
+    VI, Riello Netman Plus 102 SNMP Card, Tripp-Lite OMNISMART500.
+  * mge-shut driver has been replaced by a new implementation.
+  * Support for integration with VMware ESXI 5.0.
+  * IPMI support.
+  * snmp-ups: high precision values for APC, more variables.
+  * The NUT variables and commands namespace has been fixed and
+    completed.
+  * Support of ranges of values for writable variables added.
+  * Static source code analysis fixes by RedHat using Coverity.
+  * Add new "LIST CLIENTS" and "NETVER" commands to NUT network
+    protocol.
+  * bcmxcp has improved support for battery status, and better
+    supports PW9120 units.
+  * bestfortress has improved Best Fortress LI675VA support.
+  * blazer_ser and blazer_usb now try to automatically estimate high
+    and low voltages; support for online Innova UPS (T, RT and 3/1
+    T); Best UPS support has been improved.
+  * bestups fixes, but will soon be deprecated.
+  * newmge-shut has been heavilly improved.
+  * oneac 0.80 improves support for all families of Oneac.
+  * usbhid-ups: for Eaton devices, ups.start.auto is now
+    automatically adjusted for shutdown.{return,stayoff}; Liebert
+    firmwares with incorrect exponents have also been addressed.
+  * snmp-ups now provides support for UPS shutdown. Composite
+    commands are also supported now; Eaton/MGE MIB has been cleaned
+    and completed; 3-phases support has been added to Socomec
+    Netvision MIB; HP/Compaq MIB has been completed.
+  * nut-scanner now also has libupsclient has a weak runtime
+    dependency.
+  * Provide an Uncomplicated Firewall (UFW) profile.
+  * Riello protocols have been officially published in NUT
+    protocols library.
+  * Duplicate instances of upsd / upsmon are now detected.
+  * upslog now comes with logrotate configuration.
+  * more devices embed NUT for power protection, now including
+    Thecus NAS range.
+  * PyNUT.py has been updated to version 1.2.2.
+  * Bugfixes, cleanup and improvements.
+
+-------------------------------------------------------------------
+Thu May 31 17:36:17 CEST 2012 - sbrabec@suse.cz
+
+- Fix random network data crash (bnc#764699, CVE-2012-2944).
+
+-------------------------------------------------------------------
+Wed May 30 20:19:10 CEST 2012 - sbrabec@suse.cz
+
+- Upgrade to version 2.6.3:
+  * nut-scanner is now improved and more portable.
+  * pkg-config support
+  * Support for new devices: Cyber Power Systems with SNMP RMCARD
+    (100, 201, 202 and 301); Dynamix 650VA USB; LDLC UPS-1200D;
+    Tecnoware UPS ERA LCD 0.65; Powercom BNT-xxxAP (USB ID
+    0d9f:0004); Various USB devices using UPSilon 2000 software.
+  * bcmxcp_usb now handles disconnection and reconnection.
+  * blazer_usb enables again inclusion of buggy IDs.
+  * upsd doesn't anymore fail where either IPv4 or IPv6 is
+    disabled, and no explicit LISTEN directive has been specified.
+  * Avahi support is now automatically enabled, upon detection.
+  * jNut (NUT Java interface) adds device discovery support.
+  * Many bugfixes, cleanup and improvements.
+
+-------------------------------------------------------------------
+Sun Nov 20 06:26:37 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Wed Nov  2 18:45:31 CET 2011 - sbrabec@suse.cz
+
+- Patch real source files to get missing devices (bnc#719292#c7).
+
+-------------------------------------------------------------------
+Tue Nov  1 20:56:52 CET 2011 - sbrabec@suse.cz
+
+- Added missing USB devices (bnc#719292).
+- Build without IPMI (openSUSE 12.1 does not contain freeipmi).
+- Build without powerman for older products.
+- Trigger udev to apply newly installed rules (bnc#727396).
+
+-------------------------------------------------------------------
+Wed Sep 21 19:00:42 CEST 2011 - sbrabec@suse.cz
+
+- Build without IPMI for older products.
+
+-------------------------------------------------------------------
+Mon Sep 19 19:09:52 UTC 2011 - jw@suse.com
+
+- Upgrade to version 2.6.2 (requested by christoph.walter@countr.de)
+  * NUT can now monitor power supply units (PSU) in servers
+  * NUT now provides 'nut-scanner', to discover supported devices
+  * NUT now provides a Java interface called 'jNut'.
+  * support for: Eaton 3S ; Cyber Power Systems CP1000AVRLCD ; 
+    various APC models equiped with APC AP9618 management card, including APC
+    Smart-UPS RT XL ;  Orvaldi 750 / 900SP ; POWEREX VI 1000 LED ; PowerWalker
+    VI 850 LCD ; SVEN Power Pro+ series (USB ID ffff:0000).
+  * Avahi support has been added
+  * many updates and fixes.
+
+-------------------------------------------------------------------
+Thu Jun 16 18:47:47 CEST 2011 - sbrabec@suse.cz
+
+- Upgrade to version 2.6.1 (bnc#698152):
+  * NUT now propose a variable to expose UPS efficiency.
+  * Various recent USB regressions have been definitely fixed.
+  * NUT now propose a variable to expose UPS efficiency.
+  * Support for new devices: Eaton Ellipse ECO, Powerware 9140,
+    Eaton 5 PX, and ambient sensor on Eaton ePDU managed, GE EP
+    series, Inform Sinus SS 210, IPAR Mini Energy ME 800, Mustek
+    Yukai PowerMust 1000 USB, Numeric 3000 SW, SVEN Power Pro+
+    series (recent models), Vivaldi EA200 LED.
+  * Improved Liebert ESP II support, PowerCom BNT 1500A and
+    BNT-other, blazer
+  * apcsmart has more improved UPS poweroff support and options.
+  * usbhid-ups has completed a bit supported variables for APC and
+    Eaton/MGE.
+  * Documentation updates.
+- Drop nut-hal and merge nut-classic back to nut (bnc#697028).
+
+-------------------------------------------------------------------
+Tue Jun 14 20:10:53 CEST 2011 - sbrabec@suse.cz
+
+- Fixed command order during hibernate to prevent UPS communication
+  locks and failures (bnc#660236).
+
+-------------------------------------------------------------------
+Wed Feb  9 15:21:54 CET 2011 - sbrabec@suse.cz
+
+- Do not force move hal addons - fix configure check instead -
+  different SUSE versions need different path.
+
+-------------------------------------------------------------------
+Tue Feb  8 10:16:54 UTC 2011 - coolo@novell.com
+
+- do not hardcode location of lsusb
+
+-------------------------------------------------------------------
+Sat Jan 29 11:46:57 UTC 2011 - poletti.marco@gmail.com
+
+- Upgrade to 2.6.0.
+  * WARNING: Users of the megatec and megatec_usb drivers must respectively
+    switch to blazer_ser and blazer_usb.
+  * WARNING: Users of the liebertgxt2 driver are advised that the driver name
+    has changed to liebert-esp2.
+  * Greatly improve documentation.
+  * Add Augeas support.
+  * Added support for new devices.
+  * Many other fixes and improvements.
+
+-------------------------------------------------------------------
+Fri Aug  7 15:13:55 CEST 2009 - sbrabec@suse.cz
+
+- Updated to version 2.4.1:
+  * Support for new devices: MicroDowell Enterprise B8, B10, N8,
+   N11, N15, N20, N22, N30, N40, N50, N60 and HiBox ST.
+  * NUT-Monitor now better handles the ups.status field.
+  * Support for Power Distribution Units (PDUs), including: Eaton
+    ePDUs (Managed and Monitored), some Aphel models, some Raritan
+    PDUs, and the whole list of Powerman supported devices,
+    Chloride Desk Power 650, Cyber Power Systems Value
+    400E/600E/800E (USB models), Delta GES602N, Digitus DN-170020,
+    the whole Eaton ranges (mostly composed of MGE Office
+    Protection Systems and Powerware units) including BladeUPS,
+    Forza Power Technologies SL-1001, HP PowerTrust 2997A, HP R/T
+    2200 G2, Infosec XP 1000 and XP 500, Ippon Back Power Pro
+    (serial and USB), Kebo 1200D/D Series, Liebert PowerSure
+    Personal XT, MGE Office Protection Systems Protection Station,
+    Neus 400va and 600va, Phasak 400VA and 600VA, Plexus 500VA,
+    Powercom Black Knight PRO / King PRO and Imperial,
+    PowerKinetics BlackOut Buster, Sweex 1000 USB, UNITEK Alpha
+    500, WinPower CPM-800.
+   * NUT now embeds Python client support through the PyNUTClient
+     module and the NUT-Monitor application.
+   * The dummy-ups driver now support a "repeater" mode.
+   * tcp-wrappers support has been added to the upsd server.
+   * The nut.conf file has been introduced.
+   * NUT now ships a bash completion function for 'upsc' command.
+   * Many internal changes to improve maintenability:
+     * the USB information automatic extraction to generate the
+       various USB helper files,
+     * the upsdrv_info_t structure to track more driver
+       information, and remove the need for the upsdrv_banner()
+       function,
+     * common USB code refactoring, as it is done for the serial
+       functions.
+   * Tons of bugfixes, cleanup and improvements.
+
+-------------------------------------------------------------------
+Tue Jul 14 10:03:39 CEST 2009 - coolo@novell.com
+
+- fix hal directories
+
+-------------------------------------------------------------------
+Mon Feb  2 14:38:25 CET 2009 - sbrabec@suse.cz
+
+- Removed obsolete dbus configuration for powersave (bnc#468391).
+
+-------------------------------------------------------------------
+Wed Jan 28 15:51:40 CET 2009 - crrodriguez@suse.de
+
+- remove static libraries and "la" files
+- add missing openssl-devel to Requires of -devel package 
+
+-------------------------------------------------------------------
+Tue Jan 27 00:37:47 CET 2009 - ro@suse.de
+
+- pass --with-udev-dir to configure to fix build
+  (hal does not own /etc/udev anymore) 
+
+-------------------------------------------------------------------
+Wed Dec 17 18:51:44 CET 2008 - sbrabec@suse.cz
+
+- Fixed Suspend to Disc documentation (bnc#449861).
+- Support Suspend to Disc in scriptlets.
+- Turn UPS down during emergency Suspend to Disc (bnc#449862).
+- Fixed locations of pm-utils stuff (bnc#449866).
+- upssched-cmd moved to /bin (bnc#449828).
+- Fixed incorrect path to upssched-cmd (bnc#449869).
+- Fixed files listed twice.
+
+-------------------------------------------------------------------
+Tue Dec  9 12:26:59 CET 2008 - ro@suse.de
+
+- add pre script for classic package to add the user also
+  before this package is installed 
+
+-------------------------------------------------------------------
+Fri Sep 26 14:58:20 CEST 2008 - sbrabec@suse.cz
+
+- Fixed PreReq, useradd must be installed for %pre (bnc#429557).
+- Sync permissions in scriptlets and file list.
+
+-------------------------------------------------------------------
+Wed May 28 15:56:12 CEST 2008 - sbrabec@suse.cz
+
+- nut-cgi: Fixed and documented URLs (bnc#354388#c10).
+- README.SUSE: Fixed name of the most common USB HID driver.
+
+-------------------------------------------------------------------
+Mon May 26 15:09:50 CEST 2008 - sbrabec@suse.cz
+
+- Provide and Require nut-package (bnc#337059#c3).
+
+-------------------------------------------------------------------
+Fri May  9 16:07:28 CEST 2008 - sbrabec@suse.cz
+
+- Added suspend hook (bnc#230267).
+- Updated to final version 2.2.2 (bnc#385133):
+  * added two models supported by megatec
+  * includes build fixes from patches
+
+-------------------------------------------------------------------
+Wed Apr 30 14:28:33 CEST 2008 - sbrabec@suse.cz
+
+- Added hardware modaliases for solver.
+- Fixed generating of NUT firewall rule (bnc#385111).
+- Installed HAL FDI to disable hald-addon-hid-ups (bnc#385253).
+- Split nut-classic and hut-hal variants to separate subpackages
+  (bnc#337059).
+- Split networking drivers and web server into separate packages to
+  reduce dependencies (bnc#156614).
+- Split shared library according to shared library policy.
+- Updated README.SuSE.
+- Updated to version 2.2.2-pre3 (bnc#385133):
+  * support for new devices: APC BACK-UPS XS LCD, Atlantis Land,
+    Mustek Powermust Office 650, Oneac XAU models, Powerware PW5115
+    and PW9120 (USB), Nitram Elite 2005.
+  * Advanced Integrated Power Management (NUT HAL integration).
+  * Shutdown handling has been reworked.
+  * Support for MGE UPS SYSTEMS 3 phases units has been added.
+  * snmp-ups now supports MGE* Environment Sensor (ref 66 846).
+  * The ambient.temperature reporting has also been fixed for units
+    other than APC.
+  * the netxml-ups driver has appeared to support MGE* network
+    HTTP/XML cards.
+  * The shared library installed by default.
+  * powerpanel has reach a new step toward the replacement of
+    nitram and cpsups drivers.
+  * many changes, cleanup and fixes to the NUT core and various
+    drivers.
+
+-------------------------------------------------------------------
+Thu Apr 24 17:03:22 CEST 2008 - sbrabec@suse.cz
+
+- Updated to version 2.2.1:
+  * support for new devices: all MGE Office Protection Systems
+    units, Advice TopGuard 2000, Belkin F6H375-USB, Dynamix
+    UPS1700D, Effekta RM2000MH, Jageson Technology Jasuny USPS,
+    Powercom SMK-1500A and SXL-1500A, PowerWalker Line-Interactive
+    VI 400/800 and 600, Powerware 9110, UNITEK Alpha 2600, UPSonic
+    CXR1000, some vintage serial APC UPSs.
+  * Improvements, fixes and backports to usbhid-ups.
+  * Updated udev rules.
+  * megatec and megatec_usb drivers backported.
+  * development files improved.
+
+-------------------------------------------------------------------
+Mon Apr 14 16:28:56 CEST 2008 - schwab@suse.de
+
+- Work around misuse of libtool.
+
+-------------------------------------------------------------------
+Thu Oct 25 18:35:53 CEST 2007 - sbrabec@suse.cz
+
+- Fixed use of uninitialized memory (#331749#c13).
+
+-------------------------------------------------------------------
+Tue Oct 23 17:46:28 CEST 2007 - sbrabec@suse.cz
+
+- Renamed web pages to prevent conflicts.
+
+-------------------------------------------------------------------
+Mon Oct 22 17:39:41 CEST 2007 - sbrabec@suse.cz
+
+- Fixed udev USB rules for current kernels (#331749).
+- Added SuSEfirewall2 rule and fixed documentation (#335466).
+
+-------------------------------------------------------------------
+Tue Aug  7 19:08:04 CEST 2007 - sbrabec@suse.cz
+
+- Updated to version 2.2.0:
+  * New build infrastructure, with shared library.
+  * Support for HAL and Plug and Play.
+  * New drivers.
+  * Support for many new devices.
+  * IPv6 support.
+  * Client commands now defaults to localhost.
+  * Driver improvements.
+  * Documentation improvements.
+
+-------------------------------------------------------------------
+Wed May 16 21:32:29 CEST 2007 - olh@suse.de
+
+- Buildrequires libusb -> libusb-devel
+
+-------------------------------------------------------------------
+Tue Feb 20 16:57:57 CET 2007 - mvaner@suse.cz
+
+- Comparison with string literal (bug #232417)
+  - setcmd-literal.patch
+
+-------------------------------------------------------------------
+Mon Sep 18 15:24:30 CEST 2006 - anosek@suse.cz
+
+- fixed compiler warning: array subscript out of range [#204417]
+  (overflow.patch)
+
+-------------------------------------------------------------------
+Fri Sep  1 10:19:07 CEST 2006 - anosek@suse.cz
+
+- updated to 2.0.4
+  * A bug has been fixed in NUT core to support resuming from
+    suspend-to-disk. This should also fix other similar issues,
+    like time synchronisation through the NTP.
+  * The mge-shut driver now better detects the Low Battery status,
+    support new models and fixes some wrong status and data.
+    It also fixes some issue where the UPS wasn't restarting
+    (refer to mge-shut manpage).
+  * The genericups custom configuration through ups.conf
+    is working again
+  * The genericups driver type 22 also support CyberPower 725SL
+    (and maybe others SL models)
+  * The new megatec driver, which will replace a bunch of drivers
+    by nut 2.2 (refer to docs/megatec.txt and UPGRADING) has been
+    backported from the trunk (Development tree). The powermust
+    driver has also received some attention.
+  * The new rhino driver was added to support Microsol Rhino UPS
+    hardware. The solis has also been improved for solaris
+    compatibility, and internal / external shutdown programming.
+    Solis can now save external shutdown programming to ups,
+    and support new cables for solis 3
+- dropped obsolete patch (nut-2.0.4-memset.patch)
+- fixed subscript out of range [#185610] (overflow.patch)
+
+-------------------------------------------------------------------
+Fri Jun 23 11:18:12 CEST 2006 - sbrabec@suse.cz
+
+- Typo fix in the init script.
+
+-------------------------------------------------------------------
+Thu Apr 27 13:40:30 CEST 2006 - sbrabec@suse.cz
+
+- Work correctly, if port is a symlink (168611#c6).
+
+-------------------------------------------------------------------
+Tue Apr 25 19:16:15 CEST 2006 - sbrabec@suse.cz
+
+- Fixed init script to behave correctly for port = auto (#168611).
+
+-------------------------------------------------------------------
+Fri Mar 24 13:56:16 CET 2006 - sbrabec@suse.cz
+
+- Typo fixes.
+
+-------------------------------------------------------------------
+Tue Mar 21 11:39:44 CET 2006 - sbrabec@suse.cz
+
+- Added D-BUS policy file (#159668).
+
+-------------------------------------------------------------------
+Mon Mar 20 17:56:33 CET 2006 - sbrabec@suse.cz
+
+- Support for UPS powerdown using HALT_POWERDOWN_INSERT.
+- Added upsd-early-powerdown template and improved README.SUSE.
+- Remove obsolete /etc/sysconfig/smartups in %post.
+
+-------------------------------------------------------------------
+Fri Mar 17 13:28:10 CET 2006 - sbrabec@suse.cz
+
+- README.SUSE fixes (Marius Tomaschewski).
+- Init script fix.
+- Install all driver manual pages.
+- Use new powersave-notify path.
+
+-------------------------------------------------------------------
+Wed Mar 15 18:01:35 CET 2006 - sbrabec@suse.cz
+
+- Build all available drivers.
+
+-------------------------------------------------------------------
+Tue Mar 14 19:31:14 CET 2006 - sbrabec@suse.cz
+
+- Improved README.SUSE and predefined configuration.
+- Checks and fixes in the init script.
+- Improved notify flags, integrate with powersave.
+  (Some fixes provided by Marius Tomaschewski.)
+
+-------------------------------------------------------------------
+Fri Mar 10 17:25:00 CET 2006 - sbrabec@suse.cz
+
+- Fixed memset error in upsrw.c.
+- Fixed upsmon typo in the init script.
+- Preconfigure upsd with one local UPS as default.
+
+-------------------------------------------------------------------
+Thu Mar  9 19:01:50 CET 2006 - sbrabec@suse.cz
+
+- Updated to version 2.0.3.
+- Removed SuSEconfig, wrote new init script
+  (#27721, #141948, #156614).
+
+-------------------------------------------------------------------
+Mon Feb 20 15:27:51 CET 2006 - mmarek@suse.cz
+
+- fix array index out of range
+  [#133610] (overflow.patch)
+
+-------------------------------------------------------------------
+Wed Jan 25 21:38:51 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Thu Jan 12 20:23:43 CET 2006 - sbrabec@suse.cz
+
+- Updated to version 2.0.3-pre2.
+
+-------------------------------------------------------------------
+Wed Nov  2 23:04:50 CET 2005 - dmueller@suse.de
+
+- don't build as root 
+
+-------------------------------------------------------------------
+Mon Aug  1 15:58:42 CEST 2005 - sbrabec@suse.cz
+
+- Updated to version 2.0.2.
+
+-------------------------------------------------------------------
+Fri Jan 21 15:48:35 CET 2005 - sbrabec@suse.cz
+
+- Updated to version 2.0.1-pre4.
+
+-------------------------------------------------------------------
+Mon Aug 23 15:17:12 CEST 2004 - sbrabec@suse.cz
+
+- Updated to version 2.0.0.
+
+-------------------------------------------------------------------
+Mon Apr 19 01:45:49 CEST 2004 - ro@suse.de
+
+- build with apache2
+
+-------------------------------------------------------------------
+Wed Apr 14 08:23:44 CEST 2004 - aj@suse.de
+
+- build without kernel-source.
+
+-------------------------------------------------------------------
+Tue Mar 23 14:53:43 CET 2004 - sbrabec@suse.cz
+
+- Force-define HID_MAX_USAGES (kernel 2.6.4 include file bug, should
+  be fixed in later kernels).
+
+-------------------------------------------------------------------
+Mon Feb 09 16:24:35 CET 2004 - sbrabec@suse.cz
+
+- Updated to version 1.4.1.
+
+-------------------------------------------------------------------
+Thu Oct  2 11:14:28 CEST 2003 - stark@suse.de
+
+- adapted pre-configuration and startscript to reflect changes
+  in 1.4.0 
+- changed file-permissions
+
+-------------------------------------------------------------------
+Mon Sep 29 13:13:17 CEST 2003 - stark@suse.de
+
+- update to 1.4.0 
+
+-------------------------------------------------------------------
+Tue Aug 19 11:29:46 CEST 2003 - mmj@suse.de
+
+- Add sysconfig metadata [#28939]
+
+-------------------------------------------------------------------
+Thu Jun 26 13:54:30 CEST 2003 - stark@suse.de
+
+- update to 1.2.2 
+- removed config-check in init-script
+
+-------------------------------------------------------------------
+Fri Jun 20 23:45:07 CEST 2003 - ro@suse.de
+
+- added directories to filelist
+
+-------------------------------------------------------------------
+Tue May 13 15:02:19 CEST 2003 - mmj@suse.de
+
+- use %defattr
+
+-------------------------------------------------------------------
+Thu Feb 20 19:53:03 CET 2003 - mmj@suse.de
+
+- Add sysconfig metadata [#22688]
+
+-------------------------------------------------------------------
+Tue Aug  6 10:53:57 CEST 2002 - olh@suse.de
+
+- use X-UnitedLinux-Should-Start
+
+-------------------------------------------------------------------
+Mon Aug  5 14:30:12 CEST 2002 - olh@suse.de
+
+- Required-start: setserial, add Prereq
+
+-------------------------------------------------------------------
+Fri Aug  2 01:06:47 CEST 2002 - ro@suse.de
+
+- adapt server-root 
+
+-------------------------------------------------------------------
+Sat Jul 27 21:52:59 CEST 2002 - kukuk@suse.de
+
+- fix SuSEconfig.nut:
+  - don't include rc.config [Bug #17267]
+  - use correct path to sysconfig directory
+
+-------------------------------------------------------------------
+Fri Jul 26 23:03:11 CEST 2002 - adrian@suse.de
+
+- fix neededforbuild
+
+-------------------------------------------------------------------
+Tue May 28 15:20:18 CEST 2002 - stark@suse.de
+
+- update to 0.50.0
+- changed init-script to use upsdrvctl
+  (make it possible to change config-files manually without
+  changing /etc/sysconfig/smartups) 
+
+-------------------------------------------------------------------
+Tue Apr  9 12:35:40 CEST 2002 - stark@suse.de
+
+- update to 0.45.5
+- fixed SuSEconfig.nut to sysconfig scheme 
+
+-------------------------------------------------------------------
+Fri Feb  1 00:26:13 CET 2002 - ro@suse.de
+
+- changed neededforbuild <libpng> to <libpng-devel-packages>
+
+-------------------------------------------------------------------
+Sat Jan 12 11:02:37 CET 2002 - stark@suse.de
+
+- little ifarch fix again :-( 
+
+-------------------------------------------------------------------
+Fri Jan 11 09:54:37 CET 2002 - stark@suse.de
+
+- changed rc.config.d leftover in rcups
+- build hidups on all archs excluding s390 (finally)
+
+-------------------------------------------------------------------
+Tue Jan  8 10:19:59 CET 2002 - stark@suse.de
+
+- build hidups only on i386
+
+-------------------------------------------------------------------
+Thu Jan  3 11:00:43 CET 2002 - stark@suse.de
+
+- build hidups driver for EXPERIMENTAL USB usage 
+
+-------------------------------------------------------------------
+Wed Dec 12 09:46:49 CET 2001 - stark@suse.de
+
+- updated to 0.45.3
+- removed START_SMARTUPS
+- renamed package to nut
+- b2zipped sources
+- moved rc.config.d/smartups.rc.config -> sysconfig/smartups 
+
+-------------------------------------------------------------------
+Mon Oct 22 09:16:58 CEST 2001 - stark@suse.de
+
+- fixed init-script to POWERDOWN correctly (#11909) 
+- added rc.config variable UPSLOG_INTERVAL
+
+-------------------------------------------------------------------
+Tue Sep 18 07:24:17 CEST 2001 - stark@suse.de
+
+- changed STATEPATH to /var/lib/ups according to FHS (#8678)
+
+-------------------------------------------------------------------
+Fri Sep  7 11:40:27 CEST 2001 - stark@suse.de
+
+- added Conflicts: apcupsd
+  (/usr/local/httpd/cgi-bin/multimon.cgi is in both packages) 
+
+-------------------------------------------------------------------
+Mon Sep  3 10:17:32 CEST 2001 - stark@suse.de
+
+- added a patch to be able to write the POWERDOWNFLAG to 
+  only-root-writable directories 
+
+-------------------------------------------------------------------
+Mon Aug 13 11:26:17 CEST 2001 - stark@suse.de
+
+- update to 0.45.1 
+
+-------------------------------------------------------------------
+Mon Jun 18 09:12:25 CEST 2001 - stark@suse.de
+
+- update to 0.45.0 
+
+-------------------------------------------------------------------
+Fri Apr 27 12:29:36 CEST 2001 - stark@suse.de
+
+- minor changes in init-script to avoid premature aborts 
+
+-------------------------------------------------------------------
+Thu Apr 19 07:44:34 CEST 2001 - stark@suse.de
+
+- minor changes on %config-files and %clean
+- changed upsd-exec-group to uucp
+- added libjpeg freetype2 freetype2-devel xf86 
+  to neededforbuild
+
+-------------------------------------------------------------------
+Tue Apr 17 09:11:58 CEST 2001 - stark@suse.de
+
+- init-script cleanup: try-restart and exitcodes 
+
+-------------------------------------------------------------------
+Fri Mar 23 10:18:32 CET 2001 - stark@suse.de
+
+- update to 0.44.3 
+
+-------------------------------------------------------------------
+Fri Mar 16 09:17:56 CET 2001 - stark@suse.de
+
+- minor changes in init-script and documentation 
+
+-------------------------------------------------------------------
+Thu Jan  4 09:31:34 CET 2001 - stark@suse.de
+
+- update to 0.44.2 
+
+-------------------------------------------------------------------
+Thu Dec 14 08:26:53 CET 2000 - stark@suse.de
+
+- fixed case in rc-script
+- move SuSE scripts and configs out of the diff
+- minor changes in config for insserv (use macros) 
+
+-------------------------------------------------------------------
+Mon Nov 27 12:41:28 CET 2000 - stark@suse.de
+
+- moved /sbin/init.d -> /etc/init.d 
+
+-------------------------------------------------------------------
+Fri Nov 24 08:26:23 CET 2000 - stark@suse.de
+
+- init script more LSB compliant 
+
+-------------------------------------------------------------------
+Wed Nov 22 09:54:41 CET 2000 - stark@suse.de
+
+- improved runlevel position
+- spec now uses %{_tmppath} 
+
+-------------------------------------------------------------------
+Tue Nov 21 10:04:07 CET 2000 - stark@suse.de
+
+- removed runlevel-links from spec-file and moved to insserv
+- added init information to rc-script 
+
+-------------------------------------------------------------------
+Mon Nov 20 11:15:26 CET 2000 - stark@suse.de
+
+- minor changes in rc-script (status) 
+
+-------------------------------------------------------------------
+Wed Nov 15 18:29:49 CET 2000 - ro@suse.de
+
+- fixed neededforbuild gdlib -> gd gd-devel
+
+-------------------------------------------------------------------
+Thu Nov  9 10:00:17 CET 2000 - ro@suse.de
+
+- neededforbuild gd -> perl-GD 
+
+-------------------------------------------------------------------
+Wed Nov  8 12:31:00 CET 2000 - stark@suse.de
+
+- adapted rc-script to use rc.status 
+
+-------------------------------------------------------------------
+Thu Oct  5 13:46:46 CEST 2000 - stark@suse.de
+
+- fixed typo in SuSEconfig.smartups
+
+-------------------------------------------------------------------
+Mon Sep 18 10:27:20 CEST 2000 - stark@suse.de
+
+- update to 0.44.1
+- new spec-file (with buildroot etc.)
+- fixed rc-script for server/client  
+- added SuSEconfig.smartups
+
+-------------------------------------------------------------------
+Thu Sep 14 13:16:49 CEST 2000 - stark@suse.de
+
+- fixed rc-script (added . /etc/rc.config) 
+
+-------------------------------------------------------------------
+Tue Jul 11 20:47:27 CEST 2000 - lemsi@suse.de
+
+- bugfix in ups start-script 
+- changed /etc/rc.config to /etc/rc.config.d/smartups.rc.config
+
+-------------------------------------------------------------------
+Mon Feb 28 15:30:35 CET 2000 - kukuk@suse.de
+
+- Move most variables from rc.config -> rc.config.d
+
+-------------------------------------------------------------------
+Thu Feb 24 10:08:44 CET 2000 - lemsi@suse.de
+
+- new version
+- the orginal source is renamed, new name is nut-0.XX.X.tar.gz
+- added 2 new variables in rc.config; GENERICUPS_MODEL; SMARTUPS_MASTER
+- model check in rcups for genericups
+- starting all 4 deamons in rcups
+- new binary-installpath /usr/sbin 
+-------------------------------------------------------------------
+Wed Nov 10 12:29:40 CET 1999 - ro@suse.de
+
+- fixed postinstall: (its post and not pre)
+
+-------------------------------------------------------------------
+Tue Oct 26 15:19:09 CEST 1999 - lemsi@suse.de
+
+- added 2 new variables in rc.config; SMARTUPS_DEVICE; SMARTUPS_MODEL
+- modified rcups and smartups.spec
+- sending mail after instalation
+-------------------------------------------------------------------
+Fri Oct 15 02:02:34 CEST 1999 - ro@suse.de
+
+- added libpng to neededforbuild (now needed for libgd) 
+
+-------------------------------------------------------------------
+Fri Oct 15 00:26:28 CEST 1999 - ro@suse.de
+
+- fixed patch arg
+
+-------------------------------------------------------------------
+Thu Oct 14 16:45:15 CEST 1999 - ray@suse.de
+
+- new package

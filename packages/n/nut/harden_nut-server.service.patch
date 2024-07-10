@@ -1,0 +1,21 @@
+diff -purN a/scripts/systemd/nut-server.service.in b/scripts/systemd/nut-server.service.in
+--- a/scripts/systemd/nut-server.service.in	2023-10-07 16:06:44.000000000 +0200
++++ b/scripts/systemd/nut-server.service.in	2023-11-03 19:49:51.496940092 +0100
+@@ -26,6 +26,17 @@ Before=nut-monitor.service
+ PartOf=nut.target
+ 
+ [Service]
++# added automatically, for details please see
++# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
++ProtectSystem=full
++ProtectHome=true
++ProtectHostname=true
++ProtectKernelTunables=true
++ProtectKernelModules=true
++ProtectKernelLogs=true
++ProtectControlGroups=true
++RestrictRealtime=true
++# end of automatic additions 
+ # A busy server can be monitoring a lot of devices as well as replying
+ # to many clients. The "infinity" definition is actually capped by OS
+ # settings and hardcoded defaults; typically can be 65535+ nowadays.

@@ -1,0 +1,48 @@
+diff -purN a/conf/hosts.conf.sample b/conf/hosts.conf.sample
+--- a/conf/hosts.conf.sample	2023-02-28 13:49:32.000000000 +0100
++++ b/conf/hosts.conf.sample	2023-11-03 19:28:46.048488997 +0100
+@@ -27,3 +27,5 @@
+ # MONITOR myups@localhost "Local UPS"
+ # MONITOR su2200@10.64.1.1 "Finance department"
+ # MONITOR matrix@shs-server.example.edu "Sierra High School data room #1"
++
++MONITOR myups@localhost "Local UPS"
+diff -purN a/conf/ups.conf.sample b/conf/ups.conf.sample
+--- a/conf/ups.conf.sample	2023-10-28 23:02:42.000000000 +0200
++++ b/conf/ups.conf.sample	2023-11-03 19:29:35.641548694 +0100
+@@ -214,3 +214,8 @@ maxretry = 3
+ #
+ # To find out if your driver supports any extra settings, start it with
+ # the -h option and/or read the driver's documentation.
++
++[myups]
++       driver = undefined
++       port = /dev/undefined
++       desc = "Local UPS"
+diff -purN a/conf/upsd.conf.sample b/conf/upsd.conf.sample
+--- a/conf/upsd.conf.sample	2023-09-17 16:34:05.000000000 +0200
++++ b/conf/upsd.conf.sample	2023-11-03 19:30:18.374644467 +0100
+@@ -183,3 +183,11 @@
+ # or CLI options, regardless of older logging level being higher or lower
+ # than the newly found number; a missing (or commented away) value however
+ # does not change the previously active logging verbosity.
++
++[upsmaster]
++       password = @UPSD_INITIAL_MASTER_PASSWORD@
++       upsmon master
++
++[upsslave]
++       password = @UPSD_INITIAL_SLAVE_PASSWORD@
++       upsmon slave
+diff -purN a/conf/upsmon.conf.sample.in b/conf/upsmon.conf.sample.in
+--- a/conf/upsmon.conf.sample.in	2023-10-28 23:36:02.000000000 +0200
++++ b/conf/upsmon.conf.sample.in	2023-11-03 19:25:57.482732658 +0100
+@@ -117,6 +117,8 @@
+ # MONITOR su700@server.example.com 1 monuser secretpass secondary
+ # MONITOR myups@localhost 1 monuser pass primary	# (or secondary)
+ 
++MONITOR myups@localhost 1 upsmaster @UPSD_INITIAL_MASTER_PASSWORD@ master
++
+ # --------------------------------------------------------------------------
+ # MINSUPPLIES <num>
+ #

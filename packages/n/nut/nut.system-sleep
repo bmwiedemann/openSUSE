@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# Always stop nut before sleep, but do not initiate powerdown for hybrid-sleep.
+if [ "$1" = pre ] && ( [ "$2" = hibernate ] || [ "$2" = hybrid-sleep ] ) ; then
+	/usr/bin/systemctl stop nut-server.service
+fi
+if [ "$1" = pre ] && [ "$2" = hibernate ] ; then
+	# FIXME: All hibernate quirks are called in parallel. To be on a safest side, we should initiate powerdown grace period when they terminate.
+	sleep 5
+	if test -n "$POWERDOWNFLAG" -a -f "$POWERDOWNFLAG" ; then
+		export UPSD_POWERDOWN_CONDITION=1
+		/usr/sbin/upsdrvctl shutdown
+	fi
+fi
+if [ "$1" = post ] && ( [ "$2" = hibernate ] || [ "$2" = hybrid-sleep ] ) ; then
+	/usr/bin/systemctl start nut-server.service
+fi

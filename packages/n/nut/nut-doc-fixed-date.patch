@@ -1,0 +1,28 @@
+diff -purN a/docs/Makefile.am b/docs/Makefile.am
+--- a/docs/Makefile.am	2023-10-16 10:06:18.000000000 +0200
++++ b/docs/Makefile.am	2023-11-03 19:40:55.360576893 +0100
+@@ -248,8 +248,8 @@ solaris-usb.html solaris-usb.chunked sol
+ A2X_COMMON_OPTS = $(ASCIIDOC_VERBOSE) \
+     --attribute=icons \
+     --xsltproc-opts="--nonet" \
+-    --xsltproc-opts="--stringparam nut.localdate \"`TZ=UTC date +%Y-%m-%d`\"" \
+-    --xsltproc-opts="--stringparam nut.localtime \"`TZ=UTC date +%H:%M:%S`\"" \
++    --xsltproc-opts "--stringparam nut.localdate \"`TZ=UTC date +%Y-%m-%d -r $(top_srcdir)/ChangeLog`\"" \
++    --xsltproc-opts "--stringparam nut.localtime \"`TZ=UTC date +%H:%M:%S -r $(top_srcdir)/ChangeLog`\"" \
+     --xsltproc-opts="--stringparam nut.nutversion \"@PACKAGE_VERSION@\"" \
+     --attribute=docinfodir="$(builddir)" \
+     --attribute=iconsdir="$(srcdir)/images" \
+diff -purN a/docs/man/Makefile.am b/docs/man/Makefile.am
+--- a/docs/man/Makefile.am	2023-10-24 10:45:21.000000000 +0200
++++ b/docs/man/Makefile.am	2023-11-03 19:41:55.114481978 +0100
+@@ -999,8 +999,8 @@ DOCBUILD_END = { \
+ 	 echo "  DOC-MAN-HTML Generating $@"; \
+ 	 $(DOCBUILD_BEGIN) ; RES=0; \
+ 	 $(ASCIIDOC) --backend=xhtml11 $${A2X_VERBOSE} \
+-		--attribute localdate="`TZ=UTC date +%Y-%m-%d`" \
+-		--attribute localtime="`TZ=UTC date +%H:%M:%S`" \
++		--attribute localdate=`TZ=UTC date +%Y-%m-%d -r $(top_srcdir)/ChangeLog` \
++		--attribute localtime=`TZ=UTC date +%H:%M:%S -r $(top_srcdir)/ChangeLog` \
+ 		--attribute nutversion="@PACKAGE_VERSION@" \
+ 		--attribute srcdir="$(abs_srcdir)/" \
+ 		--attribute builddir="$(abs_builddir)/" \
