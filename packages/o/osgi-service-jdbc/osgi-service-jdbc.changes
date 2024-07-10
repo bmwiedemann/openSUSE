@@ -1,0 +1,9 @@
+-------------------------------------------------------------------
+Mon Sep 11 10:45:35 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Reproducible builds: use SOURCE_DATE_EPOCH for timestamp
+
+-------------------------------------------------------------------
+Tue Sep  8 16:48:09 UTC 2020 - Matthias Mailänder <mailaender@opensuse.org>
+
+- initial packaging of version 1.0.0
