@@ -1,0 +1,121 @@
+-------------------------------------------------------------------
+Thu Feb 22 13:46:45 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
+Mon Nov  6 16:15:05 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix build with RPM 4.19: unnumbered patches are no longer
+  supported.
+
+-------------------------------------------------------------------
+Tue Aug 25 03:06:55 UTC 2015 - opensuse-packaging@opensuse.org
+
+- update to version 3.1.1+git20130112.a4c2796
+  * see NEWS (Korean)
+- drop imhangul-0.9.14-gtk-deprecated.patch, upstreamed
+- add deprecated-gtkalignment-gtk3.14.patch
+  * don't use deprecated gtk_alignment_new() and
+    gtk_alignment_set_padding() functions
+
+-------------------------------------------------------------------
+Sun May 22 11:06:27 UTC 2011 - idonmez@novell.com
+
+- Add imhangul-0.9.14-gtk-deprecated.patch: replace deprecated
+  gdk_drawable_get_screen with gdk_window_get_screen 
+
+-------------------------------------------------------------------
+Wed Mar  9 12:30:08 CET 2011 - tiwai@suse.de
+
+- Fix post scripts to use new gtk2_immodule_* macros (bnc#678080)
+
+-------------------------------------------------------------------
+Wed Dec 29 13:02:24 UTC 2010 - aj@suse.de
+
+- Fix packagelist.
+
+-------------------------------------------------------------------
+Sun Jan 31 23:46:46 UTC 2010 - jengelh@medozas.de
+
+- package baselibs.conf
+
+-------------------------------------------------------------------
+Wed Jan 14 17:29:27 CET 2009 - mfabian@suse.de
+
+- bnc#464044: update to 0.9.14.
+  (changelog is in Korean only).
+- use /sbin/ldconfig instead of deprecated macro run_ldconfig
+- specify gtk input module directory with configure option
+  instead of patch (remove imhangul-0.9.6.dif).
+- add libhangul-devel to BuildRequires.
+
+-------------------------------------------------------------------
+Tue Nov 25 17:22:20 CET 2008 - sbrabec@suse.cz
+
+- Supplement gtk2-32bit/gtk2-64bit in baselibs.conf (bnc#354164).
+
+-------------------------------------------------------------------
+Mon Jan  8 00:10:22 CET 2007 - ro@suse.de
+
+- GNOME moved to /usr 
+
+-------------------------------------------------------------------
+Tue Feb 28 19:29:49 CET 2006 - mfabian@suse.de
+
+- add "Provides: locale(gtk2:ko)".
+
+-------------------------------------------------------------------
+Wed Jan 25 21:36:36 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue Sep  7 11:59:10 CEST 2004 - mfabian@suse.de
+
+- update to 0.9.11.
+  (now supports converting already inputed text to hanja).
+
+-------------------------------------------------------------------
+Wed Aug 25 14:07:09 CEST 2004 - mfabian@suse.de
+
+- Bugzilla #44155: add /usr/bin/touch to PreReq:.
+
+-------------------------------------------------------------------
+Tue Feb  3 20:41:42 CET 2004 - mfabian@suse.de
+
+- update to 0.9.9.
+
+-------------------------------------------------------------------
+Sat Jan 10 22:36:46 CET 2004 - adrian@suse.de
+
+- build as user
+
+-------------------------------------------------------------------
+Fri Sep 12 12:21:46 CEST 2003 - mfabian@suse.de
+
+- Bugzilla #30620: don't try to call in gtk-query-immodules-2.0
+  in %post and %postun, just trigger a run of SuSEconfig.gtk2
+  which will then call gtk-query-immodules-2.0.
+
+-------------------------------------------------------------------
+Tue Aug 12 15:20:30 CEST 2003 - ro@suse.de
+
+- fix build on lib64 platforms 
+
+-------------------------------------------------------------------
+Wed Jul 16 16:47:30 CEST 2003 - sbrabec@suse.cz
+
+- GNOME prefix change to /opt/gnome.
+- Require gtk2.
+
+-------------------------------------------------------------------
+Sun Jun 15 12:28:12 CEST 2003 - mfabian@suse.de
+
+- fix "directory not owned by any package".
+
+-------------------------------------------------------------------
+Mon May 19 10:52:31 CEST 2003 - mfabian@suse.de
+
+- new package, version 0.20030519
