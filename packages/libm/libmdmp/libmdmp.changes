@@ -1,0 +1,16 @@
+-------------------------------------------------------------------
+Tue Jan  3 15:57:49 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Add missing Require on libbfio-devel.
+
+-------------------------------------------------------------------
+Mon Aug  8 11:37:44 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Add forced symvers
+
+-------------------------------------------------------------------
+Tue May 18 10:24:29 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Initial package for build.opensuse.org
+  (version 20210420/commit c3129cca)
+- Add system-libs.patch

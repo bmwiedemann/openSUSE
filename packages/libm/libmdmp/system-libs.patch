@@ -1,0 +1,79 @@
+From: Jan Engelhardt <jengelh@inai.de>
+Date: 2021-05-12 17:36:02.536572543 +0200
+
+Some dirs are not present in snapshots directly generated from git
+(nor are they marked as a submodule). Patch it out, since we have
+them as system libs.
+---
+ Makefile.am  |   26 --------------------------
+ configure.ac |   13 -------------
+ 2 files changed, 39 deletions(-)
+
+Index: libmdmp/Makefile.am
+===================================================================
+--- libmdmp.orig/Makefile.am
++++ libmdmp/Makefile.am
+@@ -3,19 +3,6 @@ ACLOCAL_AMFLAGS = -I m4
+ SUBDIRS = \
+ 	include \
+ 	common \
+-	libcerror \
+-	libcthreads \
+-	libcdata \
+-	libclocale \
+-	libcnotify \
+-	libcsplit \
+-	libuna \
+-	libcfile \
+-	libcpath \
+-	libbfio \
+-	libfcache \
+-	libfdata \
+-	libfdatetime \
+ 	libmdmp \
+ 	mdmptools \
+ 	po \
+@@ -68,19 +55,6 @@ lib: library
+ 
+ library:
+ 	(cd $(srcdir)/common && $(MAKE) $(AM_MAKEFLAGS))
+-	(cd $(srcdir)/libcerror && $(MAKE) $(AM_MAKEFLAGS))
+-	(cd $(srcdir)/libcthreads && $(MAKE) $(AM_MAKEFLAGS))
+-	(cd $(srcdir)/libcdata && $(MAKE) $(AM_MAKEFLAGS))
+-	(cd $(srcdir)/libclocale && $(MAKE) $(AM_MAKEFLAGS))
+-	(cd $(srcdir)/libcnotify && $(MAKE) $(AM_MAKEFLAGS))
+-	(cd $(srcdir)/libcsplit && $(MAKE) $(AM_MAKEFLAGS))
+-	(cd $(srcdir)/libuna && $(MAKE) $(AM_MAKEFLAGS))
+-	(cd $(srcdir)/libcfile && $(MAKE) $(AM_MAKEFLAGS))
+-	(cd $(srcdir)/libcpath && $(MAKE) $(AM_MAKEFLAGS))
+-	(cd $(srcdir)/libbfio && $(MAKE) $(AM_MAKEFLAGS))
+-	(cd $(srcdir)/libfcache && $(MAKE) $(AM_MAKEFLAGS))
+-	(cd $(srcdir)/libfdata && $(MAKE) $(AM_MAKEFLAGS))
+-	(cd $(srcdir)/libfdatetime && $(MAKE) $(AM_MAKEFLAGS))
+ 	(cd $(srcdir)/libmdmp && $(MAKE) $(AM_MAKEFLAGS))
+ 	(cd $(srcdir)/po && $(MAKE) $(AM_MAKEFLAGS))
+ 
+Index: libmdmp/configure.ac
+===================================================================
+--- libmdmp.orig/configure.ac
++++ libmdmp/configure.ac
+@@ -144,19 +144,6 @@ dnl Generate Makefiles
+ AC_CONFIG_FILES([Makefile])
+ AC_CONFIG_FILES([include/Makefile])
+ AC_CONFIG_FILES([common/Makefile])
+-AC_CONFIG_FILES([libcerror/Makefile])
+-AC_CONFIG_FILES([libcthreads/Makefile])
+-AC_CONFIG_FILES([libcdata/Makefile])
+-AC_CONFIG_FILES([libclocale/Makefile])
+-AC_CONFIG_FILES([libcnotify/Makefile])
+-AC_CONFIG_FILES([libcsplit/Makefile])
+-AC_CONFIG_FILES([libuna/Makefile])
+-AC_CONFIG_FILES([libcfile/Makefile])
+-AC_CONFIG_FILES([libcpath/Makefile])
+-AC_CONFIG_FILES([libbfio/Makefile])
+-AC_CONFIG_FILES([libfcache/Makefile])
+-AC_CONFIG_FILES([libfdata/Makefile])
+-AC_CONFIG_FILES([libfdatetime/Makefile])
+ AC_CONFIG_FILES([libmdmp/Makefile])
+ AC_CONFIG_FILES([mdmptools/Makefile])
+ AC_CONFIG_FILES([po/Makefile.in])

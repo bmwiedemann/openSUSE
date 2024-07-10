@@ -1,0 +1,5 @@
+<package name="libmdmp" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="security:forensics" package="libmdmp"/>
+</package>

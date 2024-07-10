@@ -1,0 +1,14 @@
+<services>
+	<service name="tar_scm" mode="disabled">
+		<param name="scm">git</param>
+		<param name="url">https://github.com/libyal/libmdmp</param>
+		<param name="revision">c3129ccaac58c603b90944d5663936fc5c0c1c4b</param>
+		<!-- see configure.ac -->
+		<param name="versionformat">20210420</param>
+	</service>
+	<service name="recompress" mode="disabled">
+		<param name="file">*.tar</param>
+		<param name="compression">xz</param>
+	</service>
+	<service name="set_version" mode="disabled"/>
+</services>
