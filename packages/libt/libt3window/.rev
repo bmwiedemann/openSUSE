@@ -1,0 +1,73 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>cf307b8d26e0b77984064096ae65e7d5</srcmd5>
+    <version>0.2.1</version>
+    <time>1372760743</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>180937</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>cf307b8d26e0b77984064096ae65e7d5</srcmd5>
+    <version>0.2.1</version>
+    <time>1379663108</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>3d900dffd53ffb7c8651bb60214e3d3b</srcmd5>
+    <version>0.2.1</version>
+    <time>1392638568</time>
+    <user>coolo</user>
+    <comment>- Declare CC=gcc to ensure we build with gcc; seems make falls back
+  to 'c99' otherwise (instead of requiring posix_cc). (forwarded request 221346 from dimstar)</comment>
+    <requestid>221630</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>1d4dbf32797315e3d7c89146a7d1eb97</srcmd5>
+    <version>0.2.2</version>
+    <time>1406645309</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>242777</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>1d4dbf32797315e3d7c89146a7d1eb97</srcmd5>
+    <version>0.2.2</version>
+    <time>1409301732</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>19729c24e7321546022a0413c2c424c7</srcmd5>
+    <version>0.2.3</version>
+    <time>1424430107</time>
+    <user>dimstar_suse</user>
+    <comment>Update (forwarded request 286829 from posophe)</comment>
+    <requestid>286838</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>c7ddfd4e604e5d100d77efd19c3904e0</srcmd5>
+    <version>0.3.2</version>
+    <time>1546946971</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 0.3.2</comment>
+    <requestid>663387</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>5e48499606c883811cd7a88f74ad4b35</srcmd5>
+    <version>0.4.0</version>
+    <time>1576927938</time>
+    <user>dimstar_suse</user>
+    <comment>- Update eto release 0.4.0</comment>
+    <requestid>758357</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>0a997ee435c6bd2a09b49e3a11d66d0a</srcmd5>
+    <version>0.4.1</version>
+    <time>1661778993</time>
+    <user>dimstar_suse</user>
+    <comment>update</comment>
+    <requestid>999938</requestid>
+  </revision>
+</revisionlist>
