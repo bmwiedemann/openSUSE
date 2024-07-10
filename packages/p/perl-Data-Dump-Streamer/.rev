@@ -1,0 +1,142 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>969e9e238e9be1db15e83a5e62000cdd</srcmd5>
+    <version>2.32</version>
+    <time>1324483229</time>
+    <user>coolo</user>
+    <comment>needed for Task-CLI</comment>
+    <requestid>97217</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>e039058531c34250040e17b8bf5d38b6</srcmd5>
+    <version>2.32</version>
+    <time>1329242695</time>
+    <user>coolo</user>
+    <comment>patch license to follow spdx.org standard (forwarded request 104445 from coolo)</comment>
+    <requestid>104588</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>fc29e97a0507ee6acc9c7d30102b74d1</srcmd5>
+    <version>2.33</version>
+    <time>1338569701</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>123177</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>fc29e97a0507ee6acc9c7d30102b74d1</srcmd5>
+    <version>2.33</version>
+    <time>1340183824</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>fc29e97a0507ee6acc9c7d30102b74d1</srcmd5>
+    <version>2.33</version>
+    <time>1359109637</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>7606cb470e6c25e8e734620473bd8c27</srcmd5>
+    <version>2.34</version>
+    <time>1371561976</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>179336</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>7606cb470e6c25e8e734620473bd8c27</srcmd5>
+    <version>2.34</version>
+    <time>1371808683</time>
+    <user>coolo</user>
+    <comment>not yet ported to 5.18</comment>
+    <requestid>180403</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>7606cb470e6c25e8e734620473bd8c27</srcmd5>
+    <version>2.34</version>
+    <time>1371819490</time>
+    <user>coolo</user>
+    <comment>oops, still needed</comment>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>d3620fb2fee636324c60428919b1df0b</srcmd5>
+    <version>2.34</version>
+    <time>1372413116</time>
+    <user>coolo</user>
+    <comment>- add rt_79127.diff and rt_82958.diff from rt.cpan.org
+  to fix build with perl 5.18</comment>
+    <requestid>181000</requestid>
+  </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>d3620fb2fee636324c60428919b1df0b</srcmd5>
+    <version>2.34</version>
+    <time>1379663619</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>809e272356921be10b8de58faf0e4ba4</srcmd5>
+    <version>2.37</version>
+    <time>1392111849</time>
+    <user>coolo</user>
+    <comment>- updated to 2.37
+  Various changes. See github log for changes.
+- fixes build in factory
+  
+
+- updated to 2.36
+  Should work on 5.18 now.
+- obsoleting rt_79127.diff and rt_82958.diff</comment>
+    <requestid>221597</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>9a805b1bbf86cc7e5cf822b02a36ab04</srcmd5>
+    <version>2.38</version>
+    <time>1405846207</time>
+    <user>coolo</user>
+    <comment>- updated to 2.38
+  Only github log</comment>
+    <requestid>241618</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>9a805b1bbf86cc7e5cf822b02a36ab04</srcmd5>
+    <version>2.38</version>
+    <time>1409302239</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>b7367a56ca98bf640295d66898cd1e43</srcmd5>
+    <version>2.39</version>
+    <time>1453416262</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>354809</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>50ac30292626fff726cb6e43e3da2ac7</srcmd5>
+    <version>2.40</version>
+    <time>1474886174</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>424238</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>de41b5bd7139931e4a856b2df2c9edb3</srcmd5>
+    <version>2.41</version>
+    <time>1676562959</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1066002</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>568d8589fb639eaeec87bad0a92d214d</srcmd5>
+    <version>2.42</version>
+    <time>1678482521</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1070665</requestid>
+  </revision>
+</revisionlist>
