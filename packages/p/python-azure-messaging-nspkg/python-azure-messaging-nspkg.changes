@@ -1,0 +1,25 @@
+-------------------------------------------------------------------
+Fri May  3 16:42:40 UTC 2024 - Robert Schweikert <rjschwei@suse.com>
+
+- Change version setting of Obsoletes to <= to trigger python3
+  binary removal since there was no source version bump
+
+-------------------------------------------------------------------
+Thu Apr  4 12:53:06 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Switch package to modern Python Stack on SLE-15
+  + Use Python 3.11 on SLE-15 by default
+  + Add Obsoletes for old python3 package on SLE-15
+  + Drop support for older Python versions
+- Switch build system from setuptools to pyproject.toml
+  + Add python-pip and python-wheel to BuildRequires
+  + Replace %python_build with %pyproject_wheel
+  + Replace %python_install with %pyproject_install
+  + Update name for dist directory in %files section
+- Drop setting default file attributes in %files section
+
+-------------------------------------------------------------------
+Wed Nov  3 15:43:16 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Initial build
+  + Version 1.0.0
