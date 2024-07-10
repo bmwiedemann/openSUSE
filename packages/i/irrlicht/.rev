@@ -1,0 +1,52 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>20effeffaf474373b12013c3c666a4dd</srcmd5>
+    <version>1.8.3</version>
+    <time>1479150678</time>
+    <user>dimstar_suse</user>
+    <comment>push updated rpm groups to factory so we can proceed</comment>
+    <requestid>415459</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>0a9c538a99ca4a56881979ea36d2ee41</srcmd5>
+    <version>1.8.4</version>
+    <time>1483555070</time>
+    <user>lnussel_factory</user>
+    <comment>1</comment>
+    <requestid>448333</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>bc22189740b80648bf514b0aab8fba2f</srcmd5>
+    <version>1.8.4</version>
+    <time>1519844590</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>580959</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>ead22d338aac0b7520c6c5f2565dc6ff</srcmd5>
+    <version>1.8.4</version>
+    <time>1613774724</time>
+    <user>dimstar_suse</user>
+    <comment>- fix build (irrlicht-1.8.4-remove-sys-sysctl.h.patch)
+- fix library link versions
+</comment>
+    <requestid>873705</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b575b744c963cb5b39f4a893b3336984</srcmd5>
+    <version>1.8.5</version>
+    <time>1638052955</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>934261</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>08113bb15ecbcc375d7cd4f08932683a</srcmd5>
+    <version>1.8.5</version>
+    <time>1709845318</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1156084</requestid>
+  </revision>
+</revisionlist>
