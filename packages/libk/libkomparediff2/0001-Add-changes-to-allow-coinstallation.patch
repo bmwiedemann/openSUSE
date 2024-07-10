@@ -1,0 +1,75 @@
+From 851f2fc1bf33dd61a6a07aeaf5e1ae22c742783a Mon Sep 17 00:00:00 2001
+From: Christophe Marin <christophe@krop.fr>
+Date: Sat, 10 Feb 2024 17:31:47 +0100
+Subject: [PATCH] Add changes to allow coinstallation
+
+kompare and kdevelop need different libkomparediff versions, we need a couple changes:
+- Bump soversion to 5.95 (upstream will use 6 in release gear 24.05)
+- Bump version to 5.95.0
+- rename CMake config files (https://invent.kde.org/sdk/libkomparediff2/-/commit/f7e9f9ef2)
+---
+ CMakeLists.txt                                              | 2 +-
+ metainfo.yaml                                               | 2 +-
+ src/CMakeLists.txt                                          | 6 +++---
+ ...pareDiff2Config.cmake.in => KompareDiff2Config.cmake.in} | 0
+ 4 files changed, 5 insertions(+), 5 deletions(-)
+ rename src/{LibKompareDiff2Config.cmake.in => KompareDiff2Config.cmake.in} (100%)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 98c9352..bc563e6 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,6 +1,6 @@
+ cmake_minimum_required(VERSION 3.16)
+ 
+-project(LibKompareDiff2 VERSION "5.4.0")
++project(LibKompareDiff2 VERSION "5.95.0")
+ 
+ set(QT_MIN_VERSION "5.15.2")
+ set(KF_MIN_VERSION "5.91.0")
+diff --git a/metainfo.yaml b/metainfo.yaml
+index 7008ea5..8f9b330 100644
+--- a/metainfo.yaml
++++ b/metainfo.yaml
+@@ -11,4 +11,4 @@ platforms:
+ release: true
+ libraries:
+     - cmake: "KompareDiff2"
+-cmakename: LibKompareDiff2
++cmakename: KompareDiff2
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index de1d480..6be2171 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -1,5 +1,5 @@
+ set(KOMPAREDIFF2_INSTALL_INCLUDEDIR "${KDE_INSTALL_INCLUDEDIR}/KompareDiff2")
+-set(KOMPAREDIFF2_CMAKECONFIG_NAME "LibKompareDiff2")
++set(KOMPAREDIFF2_CMAKECONFIG_NAME "KompareDiff2")
+ 
+ add_definitions(-DTRANSLATION_DOMAIN=\"libkomparediff2\")
+ 
+@@ -8,7 +8,7 @@ ecm_setup_version(PROJECT
+     VERSION_HEADER       "komparediff2_version.h"
+     PACKAGE_VERSION_FILE "${CMAKE_CURRENT_BINARY_DIR}/${KOMPAREDIFF2_CMAKECONFIG_NAME}ConfigVersion.cmake"
+     COMPATIBILITY        SameMajorVersion
+-    SOVERSION            5
++    SOVERSION            5.95
+ )
+ 
+ add_library(komparediff2 SHARED)
+@@ -177,7 +177,7 @@ ecm_qt_install_logging_categories(
+ set(_LibKompareDiff2_CONFIG_DEST "${KDE_INSTALL_CMAKEPACKAGEDIR}/${KOMPAREDIFF2_CMAKECONFIG_NAME}")
+ 
+ configure_package_config_file(
+-    "${CMAKE_CURRENT_SOURCE_DIR}/LibKompareDiff2Config.cmake.in"
++    "${CMAKE_CURRENT_SOURCE_DIR}/KompareDiff2Config.cmake.in"
+     "${CMAKE_CURRENT_BINARY_DIR}/${KOMPAREDIFF2_CMAKECONFIG_NAME}Config.cmake"
+     INSTALL_DESTINATION  "${_LibKompareDiff2_CONFIG_DEST}"
+ )
+diff --git a/src/LibKompareDiff2Config.cmake.in b/src/KompareDiff2Config.cmake.in
+similarity index 100%
+rename from src/LibKompareDiff2Config.cmake.in
+rename to src/KompareDiff2Config.cmake.in
+-- 
+2.43.0
+
