@@ -1,0 +1,91 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>efa62114e7c50509c3a3c0da6d1261c0</srcmd5>
+    <version>1.1.0</version>
+    <time>1448553741</time>
+    <user>dimstar_suse</user>
+    <comment>gitrev: Compile git revision info into Haskell projects</comment>
+    <requestid>345699</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>94d847e34c13b0546c7d3af05837ceda</srcmd5>
+    <version>1.2.0</version>
+    <time>1468999292</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>411774</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>0c05b8ff1573335f35e70441694a3bed</srcmd5>
+    <version>1.3.1</version>
+    <time>1504205468</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>513254</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>87f11433d17418d20da92bddb9131922</srcmd5>
+    <version>1.3.1</version>
+    <time>1505504516</time>
+    <user>dimstar_suse</user>
+    <comment>re-format spec file with latest spec-cleaner and cabal2obs</comment>
+    <requestid>524578</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>9759c9498867be94926825e761972396</srcmd5>
+    <version>1.3.1</version>
+    <time>1527675539</time>
+    <user>dimstar_suse</user>
+    <comment>Update to support new ghc-rpm-macros.</comment>
+    <requestid>609786</requestid>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>177c5ea9f536b640f14746063101cece</srcmd5>
+    <version>1.3.1</version>
+    <time>1532445544</time>
+    <user>dimstar_suse</user>
+    <comment>- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.</comment>
+    <requestid>623778</requestid>
+  </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>c27b964535f344433b20c359aedc9804</srcmd5>
+    <version>1.3.1</version>
+    <time>1540448760</time>
+    <user>dimstar_suse</user>
+    <comment>trivial cosmetic change in comments</comment>
+    <requestid>643399</requestid>
+  </revision>
+  <revision rev="8" vrev="6">
+    <srcmd5>f8865db6e50220b7608189977e9fecc4</srcmd5>
+    <version>1.3.1</version>
+    <time>1578069317</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>760283</requestid>
+  </revision>
+  <revision rev="9" vrev="7">
+    <srcmd5>a1c5b01cae756572b5b00e1b6e4a9fa8</srcmd5>
+    <version>1.3.1</version>
+    <time>1600179478</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>833283</requestid>
+  </revision>
+  <revision rev="10" vrev="8">
+    <srcmd5>7fc10bc0dc2f121922f8b9cd48f10bc0</srcmd5>
+    <version>1.3.1</version>
+    <time>1608633600</time>
+    <user>dimstar_suse</user>
+    <comment>update haskell stack in openSUS</comment>
+    <requestid>857375</requestid>
+  </revision>
+  <revision rev="11" vrev="9">
+    <srcmd5>7952d9be52b01c24afa18832a0a602aa</srcmd5>
+    <version>1.3.1</version>
+    <time>1680636009</time>
+    <user>dimstar_suse</user>
+    <comment>update for ghc-9.4.4</comment>
+    <requestid>1075884</requestid>
+  </revision>
+</revisionlist>
