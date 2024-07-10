@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Jul  8 21:30:57 UTC 2024 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to v1.14.18
+  * Changes of v1.14.18
+    + Avoid verification error if constructor advice meats dropped
+      implicit this frame and throw exception during
+      instrumentation instead.
+    + Add support to resolve ByteBuddyAgent from non-obfuscated
+      name if obfuscation is used.
+    + Make sure CircularityLock implementations never load classes
+      during locking.
+    + Offer use of istat if stat command is not available for
+      emulated attachment.
+    + Avoid locking entire class loader when child-first class
+      loader loads shadowed class and parallel class loading is
+      supported.
+  * Changes of v1.14.17
+    + Avoid crashing of Android plugin when there are duplicate
+      files for licenses or license notices.
+
+-------------------------------------------------------------------
 Thu May 23 05:28:12 UTC 2024 - Anton Shvetz <shvetz.anton@gmail.com>
 
 - Update to v1.14.16

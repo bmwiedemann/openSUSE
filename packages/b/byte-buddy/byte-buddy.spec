@@ -17,7 +17,7 @@
 
 
 Name:           byte-buddy
-Version:        1.14.16
+Version:        1.14.18
 Release:        0
 Summary:        Runtime code generation for the Java virtual machine
 License:        Apache-2.0
