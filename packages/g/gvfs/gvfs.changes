@@ -1,0 +1,3764 @@
+-------------------------------------------------------------------
+Fri Jun 28 21:30:03 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.54.2:
+  + ftp:
+    - Change cwd to root before renaming to prevent failures
+    - Use timegm instead of mktime to not shift dates by timezone
+    - Preserve mtime when copying to local
+  + udisks2: Ignore autofs mounts to prevent duplicated entries
+  + build:
+    - Add deprecated_apis option to control installation of headers
+    - Disable burn backend by default
+  + dav: Disable query_info_on_read method to fix mtime
+    preservation
+  + network: Disable usage of smbbrowse backend by default
+  + smbbrowse: Don't enforce NT1 to fix mounting in certain cases
+  + onedrive: Fix various memory leaks
+  + Updated translations.
+- Pass burn=true to meson, we still want to build the burn backend,
+  at least for now.
+
+-------------------------------------------------------------------
+Fri May 24 12:18:26 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.54.1:
+  + network: Request content-type attribute to suppress critical
+    errors.
+  + metadata: Check g_stat result to avoid using of uninitialized
+    value.
+  + ftp: Fix data connection to IPv6 link-local address.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Apr  8 14:17:00 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Move the recently added onedrive provider to the backend-goa
+  subpackage: onedrive support is integrated into the g-o-a
+  provider.
+
+-------------------------------------------------------------------
+Fri Mar 15 08:03:31 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.54.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar  5 13:51:57 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Enable onedrive support: msgraph is now packaged and works.
+
+-------------------------------------------------------------------
+Fri Mar  1 11:57:26 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.53.91:
+  + onedrive: Fix several issues.
+  + wsdd: List just devices of pub:Computer type to filter out
+    unwanted devices.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Feb 12 15:17:30 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.53.90:
+  + daemon: Add OneDrive support based on msgraph library.
+  + client: Reduce synchronous metadata methods calls to improve
+    performance.
+  + network: Provide standard::content-type and access::can-rename
+    attributes.
+  + build: Fix unknown arguments error on systems that don't use
+    GNU C library.
+  + udisks2: Fix unmounting of mount paths that contain non-ASCII
+    characters.
+  + Updated translations.
+- Add pkgconfig(msgraph-0.1) BuildRequires conditionally, guarded
+  with bcond: new dependency for OneDrive support, but the
+  dependency does not yet exist in Tumbleweed.
+
+-------------------------------------------------------------------
+Tue Jan 16 11:15:13 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.53.1:
+  + daemon:
+    - Add WS-Discovery support based on wsdd daemon.
+    - Port to gcr4.
+  + network:
+    - Hide Windows Network folder and show the servers merged by
+      default.
+    - Variousother fixes and enhancements.
+  + smb:
+    - Fix livelock when mounting share without enough permissions.
+    - Fix moving files across filesystem boundaries.
+  + Updated translations.
+- Convert to source service for easier updating.
+
+-------------------------------------------------------------------
+Wed Jan 10 08:51:39 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.52.2:
+  + smb: Fix livelock when mounting share without enough
+    permissions.
+  + smb: Fi moving files across filesystem boundaries.
+  + Updated transltions.
+
+-------------------------------------------------------------------
+Tue Nov 28 11:54:51 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -p N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
+Fri Oct 27 07:45:47 UTC 2023 - Yifan Jiang <yfjiang@suse.com>
+
+- Use older way than autopatch on SLE/Leap, which is not ready for
+  the macro.
+- Rebase gvfs-nvvfs.patch.
+
+-------------------------------------------------------------------
+Fri Oct 20 13:43:06 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.52.1:
+  + client: Prevent returning invalid mount cache entries.
+  + dav: Fix authentication issues when DNS-SD URIs are used.
+  + nfs: Fix IPv6 URI handling.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Sep 15 13:23:10 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.52.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Sep  3 00:04:03 UTC 2023 - Luciano Santos <luc14n0@opensuse.org>
+
+- Update to version 1.51.91:
+  + sftp/ftp: Ensure that is-symlink is always set to avoid
+    warnings.
+  + Updated translations.
+- Make devel sub-package as noarch. It doesn't contain any
+  binaries.
+
+-------------------------------------------------------------------
+Sun Aug  6 10:44:09 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.51.90:
+  + Fix various memory leaks
+  + udisks2: Disconnect signal handlers to fix crashes when
+    unmounting
+  + fuse: Include missing locale.h header
+  + Some other fixes and improvements
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jul 11 12:14:51 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.51.1:
+  + smbbrowse: Fix empty device listing after unrelated mount
+    failure
+  + udisks: Fix missing unmount notifications
+  + trash:
+    - Run blocking methods on a thread to avoid hangs
+    - Fix nfs4 and cifs monitoring
+    - Fix wrongly reported item-count
+  + smb: Allow renaming a file to the same name with a different
+    case
+  + mtp:
+    - Add support for incremental enumeration
+    - Emit delete event on device disconnection
+  + Some other fixes and improvements
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Jun 30 12:49:52 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.50.5:
+  + smbbrowse: Fix empty device listing after unrelated mount
+    failure.
+  + udisks: Fix missing unmount notifications.
+  + trash:
+    - Fix nfs4 and cifs monitoring.
+    - Fix wrongly reported item-count.
+  + smb: Allow renaming a file to the same name with a different
+    case.
+  + mtp: Emit delete event on device disconnection.
+  + Some other fixes and improvements.
+  + Updated translations.
+- Drop patches fixed upstream:
+  + fc2669f63c5def1528dda2e7833db5774aa08e22.patch
+  + 85bfb701fc95abeaa8a8ca3d9059378a9490f738.patch
+  + 41862c0179f834d8bc3bd84ce78ee495050f2676.patch
+
+-------------------------------------------------------------------
+Sun Jun 11 20:55:10 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add upstream fixes from the stable branch:
+  + fc2669f63c5def1528dda2e7833db5774aa08e22.patch: mtp: Emit
+    delete event on device when disconnected
+  + 85bfb701fc95abeaa8a8ca3d9059378a9490f738.patch: smb: Allow
+    renaming a file to the same name with a different case
+
+-------------------------------------------------------------------
+Wed Apr 12 08:23:53 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add 41862c0179f834d8bc3bd84ce78ee495050f2676.patch: trash: Sync
+  trash dir items when files change.
+- Use auto(setup|patch) macros.
+
+-------------------------------------------------------------------
+Fri Mar 17 15:33:35 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.50.4:
+  + dav: Prevent usage of NULL for nonexistent source file
+  + client: Fix copy/move operation from/to Flatpak sandbox
+  + http: Report original sizes regardless of compression usage
+  + Fix string comparison on various places
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Mar  8 18:23:45 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Split out a new sub-package gvfs-backend-goa. This allows
+  end-users to remove last remains of soup2 and gdata dependencies.
+  Add a Supplements on gvfs and gnome-online-accounts to pull it in
+  for most of our users.
+- Add explicit pkgconfig(libxml-2.0) BuildRequires: Meson checks
+  for it.
+
+-------------------------------------------------------------------
+Fri Jan  6 19:21:26 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.50.3:
+  + dav: Prevent usage of NULL when user is not specified.
+  + ftp: Fix hangs when the connection is released.
+  + fuse: Decrease file handle reference when open file fail.
+  + sftp: PATH-expand the ssh client.
+  + test: Several smaller enhancements.
+  + backend: Add support for xx-large and x-large thumbnails.
+  + goa: Prevent automounts when resuming from suspension.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Aug  3 07:14:18 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- recommend pkexec in gvfs-backends. (not requires to allow customers
+  to remove pkexec) (bsc#1202070)
+
+-------------------------------------------------------------------
+Mon May 30 11:33:43 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.50.2:
+  + smb: Rework anonymous handling to avoid EINVAL.
+  + http: Unescape prefix to fix handling of encoded URIs.
+  + build: Fix build without Avahi support.
+
+-------------------------------------------------------------------
+Mon Apr 25 08:54:10 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.50.1:
+  + dav:
+    - Drop user from URI as a workaround for Nextcloud bug.
+    - Port DNS-SD resolver to async API to fix hangs when mounting.
+    - Rewrite to libsoup async API to fix crashes.
+    - Do not lose userinfo when copying URIs.
+  + smb: Ignore EINVAL for kerberos/ccache login.
+- Drop gvfs-smb-ignore-EINVAL-kerberos-ccache.patch: fixed
+  upstream.
+
+-------------------------------------------------------------------
+Thu Apr 21 15:34:47 UTC 2022 - Michael Gorse <mgorse@suse.com>
+
+- Add gvfs-smb-ignore-EINVAL-kerberos-ccache.patch: ignore EINVAL
+  for kerberos/ccache login. Fixes inability to mount smb shares
+  with samba 4.16 (boo#1198718).
+
+-------------------------------------------------------------------
+Fri Mar 18 12:27:54 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.50.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Feb 11 09:25:12 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.49.90:
+  + http/dav: Port to libsoup3.
+  + http: Do not silently accept invalid certificates.
+  + build: Remove incorrect i18n.merge_file argument to fix build.
+  + Updated translations.
+- Drop 17a067b9b823a0d54e061eae45ff8e2c7e4a88d0.patch: Fixed
+  upstream.
+- Replace pkgconfig(libsoup-2.4) with pkgconfig(libsoup-3.0)
+  BuildRequires following upstreams port.
+
+-------------------------------------------------------------------
+Tue Feb  8 17:41:08 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Rebase 17a067b9b823a0d54e061eae45ff8e2c7e4a88d0.patch: Use
+  upstream commit.
+
+-------------------------------------------------------------------
+Tue Feb  8 17:40:08 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add 17a067b9b823a0d54e061eae45ff8e2c7e4a88d0.patch: Fix build
+  with meson 0.61 and newer. Backported to apply on stable version.
+
+-------------------------------------------------------------------
+Sat Jan 15 20:57:06 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Modernize and fix our Supplements.
+- Package org.gtk.vfs.file-operations.rules polkit rules file as an
+  example in docs, previously it was just nuked.
+
+-------------------------------------------------------------------
+Fri Jan  7 18:12:26 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.49.1:
+  + sftp: Adapt on new OpenSSH password prompts
+  + build: Set of improvements for meson
+  + Add PartOf=graphical-session.target to all systemd units
+  + Move systemd services to session slice
+  + Updated translations.
+- Pass systemduserunitdir=%%{_userunitdir} to meson, ensure we
+  set the correct dir for systemduserunitdir.
+
+-------------------------------------------------------------------
+Thu Sep 16 01:56:26 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
+
+- Remove obsolete translation-update-upstream support
+  (jsc#SLE-21105).
+
+-------------------------------------------------------------------
+Fri Apr 30 16:17:10 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.48.1:
+  + build: Use install prefix in systemd files paths.
+  + client: Prevent socket leaks if socket dir is inaccessible from
+    client.
+  + admin: Fix regressions caused by port to named sockets.
+  + udisks2: Report unmount progress after showing blocking
+    processes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Apr 16 04:51:53 UTC 2021 - QK ZHU <qkzhu@suse.com>
+
+- Rebase SLE patches gvfs-nds.patch and gvfs-nvvfs.patch for version
+  1.48.0:
+  + Use meson summary function instead of custom output(boo#1184104).
+
+-------------------------------------------------------------------
+Sat Mar 20 07:08:17 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.48.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Mar 18 09:25:39 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.47.91:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Feb 17 09:50:20 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.47.90:
+  + google: Add Shared drives folder.
+  + google: Add Shared with me folder.
+  + google: Improve performance for folders with large number of
+    files.
+  + daemon: Set filesystem::use-preview explicitly and
+    consistently.
+  + daemon: Unify and shorten strings for prompt dialog titles.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jan 12 10:01:58 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.47.1:
+  + mtp: Fix crashes when storage descriptions are not provided.
+  + trash: Explicitly cancel file monitor to prevent deadlock.
+  + admin: Add copy and push implementations for better
+    performance.
+  + client: Add fallback to session bus for synchronous API.
+  + daemon: Use named sockets to avoid network permission
+    requirement.
+  + smb: Set fast content type independently of other attributes.
+
+-------------------------------------------------------------------
+Fri Jan  8 13:56:03 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.46.2:
+  + ftp: Prevent source file removal in case of transfer failure.
+  + trash: Explicitly cancel file monitor to prevent deadlock.
+  + smb:
+    - Set fast content type independently of other attributes.
+    - smb: Report progress when move operation is done.
+  + google: Set the display name for the root folder also.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Oct  5 15:28:29 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 1.46.1:
+  + trash: Do not fail when G_FILE_COPY_NO_FALLBACK_FOR_MOVE is
+    used.
+  + dav: Be sure that enumeration is possible when looking for a
+    root.
+ 
+-------------------------------------------------------------------
+Fri Sep 11 17:33:16 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 1.46.0:
+  + No changes.
+
+-------------------------------------------------------------------
+Fri Sep  4 17:47:18 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 1.45.92:
+  + build: Link libgvfscommon to libmetadata.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Sep  4 11:48:11 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 1.45.90:
+  + trash: Add support for x-gvfs-notrash option to ignore mounts.
+  + recent: Port to GDateTime.
+- Changes from version 1.45.3:
+  + client: Add support for zone identifiers in IPv6 addresses.
+  + afc: Add support for libplist-2.2.
+- Changes from version 1.45.2:
+  + metadata: Emit D-Bus signal when metadata are modified.
+  + sftp: Preserve timestamps during copy and move operations.
+  + dav: Add support for Negotiate and NTLM authentication.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Apr 30 15:03:43 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %{_tmpfilesdir} instead of %{_libexecdir}/tmpfiles.d which
+  just happened to coincide to be the same.
+
+-------------------------------------------------------------------
+Fri Mar 27 12:46:31 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.44.1:
+  + udisks2: Fix several memory leaks.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 16 02:25:18 UTC 2020 - Yifan Jiang <yfjiang@suse.com>
+
+- Enable gvfs-nds.patch and gvfs-nvvfs.patch for Leap to remove
+  difference between Leap and SLE.
+
+-------------------------------------------------------------------
+Fri Mar  6 10:19:47 UTC 2020 - bjorn.lie@gmail.com
+
+- Update to version 1.44.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Feb 28 19:16:21 UTC 2020 - bjorn.lie@gmail.com
+
+- Update to version 1.43.92:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb 18 16:20:32 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.43.91:
+  + build: Fix login_tty detection on systems without libutil.
+  + afc: Handle permission denied error.
+  + Test: Several smaller fixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Feb 12 17:21:27 CET 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.43.90:
+  + google: Add support for move and copy operations.
+  + google: Several smaller bugfixes and enhancements.
+  + goa: Add support for certificate prompts.
+  + sftp: Fix file ownership when replacing.
+  + dnssd: Prevent crashes after releasing resolver.
+  + fuse: Prevent abortions if modified time is not set.
+- Changes from version 1.43.2:
+  + smb: Improve enumeration performance.
+  + test: Port to python3-twisted.
+- Changes from version 1.43.1:
+  + Don't set a content-type that isn't certain.
+  + Replace usage of deprecated GTimeVal by GDateTime.
+  + dav: Add support for services with IPv6 link-local addresses.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Jan 25 14:15:22 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- No longer recommend -lang: supplements are in use
+
+-------------------------------------------------------------------
+Fri Dec 27 10:02:01 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire pkgconfig(systemd): meson.build tries to inspect
+  systemd.pc to find the right unit-directories.
+
+-------------------------------------------------------------------
+Fri Nov 22 10:57:07 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.42.2:
+  + gdbus: Add workaround for deadlocks when cancelling jobs.
+
+-------------------------------------------------------------------
+Tue Nov 19 08:05:54 UTC 2019 - QK ZHU <qkzhu@suse.com>
+
+- Drop fixed upstream patches by version 1.40.2:
+  + gvfs-CVE-2019-12447.patch.
+  + gvfs-CVE-2019-12448.patch.
+  + gvfs-CVE-2019-12449.patch.
+  + gvfs-CVE-2019-12795.patch.
+
+-------------------------------------------------------------------
+Mon Oct 21 07:45:59 UTC 2019 - QK ZHU <qkzhu@suse.com>
+
+- Rebase SLE patches gvfs-nds.patch and gvfs-nvvfs.patch for version
+  1.42.1:
+  + Add daemon/nds.mount.in.
+  + Add daemon/nvvfs.mount.in.
+  + meson porting fixes.
+
+-------------------------------------------------------------------
+Mon Oct 14 07:17:45 UTC 2019 - QK ZHU <qkzhu@suse.com>
+
+- Rebase SLE patches for version 1.42.1:
+  + gvfs-nds.patch
+  + gvfs-nvvfs.patch
+
+-------------------------------------------------------------------
+Mon Oct  7 07:47:29 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.42.1:
+  + dav: Fix mounting when 403 is returned for the parent folder.
+  + Revert "sftp: Always use port 22 if not specified".
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Sep 15 19:24:28 UTC 2019 - Michael Gorse <mgorse@suse.com>
+
+- Fix Requires on -fuse package: now needs fuse3, not fuse. 
+
+-------------------------------------------------------------------
+Tue Sep 10 17:40:44 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.42.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Aug 30 19:56:41 CDT 2019 - mgorse@suse.com
+
+- Update to version 1.41.91:
+  + fuse: Remove max_write limit.
+  + Several smaller bugfixes.
+  + Updated translations.
+- Changes from version 1.41.90:
+  + udisks2: Change display name for crypto_unknown devices.
+  + google: Disable deletion of non-empty directories.
+  + google: Fix crashes when deleting if the file isn't found.
+  + google: Fix issue with stale entries remaining after rename
+    operation.
+  + build: Define gvfs_rpath for libgvfsdaemon.so.
+  + proxy: Don't leak a GVfsDBusDaemon.
+  + Updated translations.
+- Changes from version 1.41.4:
+  + google: Do not enumerate volatile entries if title matches id.
+  + build: Add dependency on gsettings-desktop-schemas.
+  + daemon/udisks2: Handle lockdown option to disable writing.
+  + fuse: Define RENAME_* macros when they are not defined.
+  + google: Check ownership in is_owner() without additional HTTP
+    request.
+  + Several smaller bugfixes.
+  + Updated translations.
+- Changes from version 1.41.3:
+  + Updated translations.
+- Changes from version 1.41.2:
+  + build: Several meson improvements.
+  + build: Bump required meson version to 0.50.0.
+  + google: Support deleting shared Google Drive files.
+  + admin: Prevent core dumps when daemon is manually started.
+  + Several smaller bugfixes.
+  + Updated translations.
+- Changes from version 1.41.1:
+  + fuse: Adapt gvfsd-fuse to use fuse 3.x.
+  + daemon: Unify some translatable strings.
+  + Updated translations.
+- Specify meson version requirement.
+- Require fuse >= 3.0.0.
+- Require gsettings-desktop-schemas: new dependency.
+
+-------------------------------------------------------------------
+Wed Jul 17 10:07:09 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.40.2:
+  + daemon:
+    - Only accept EXTERNAL authentication (CVE-2019-12795).
+    - Check that the connecting client is the same user
+      (CVE-2019-12795).
+  + admin:
+    - Ensure correct ownership when moving to file:// uri
+      (CVE-2019-12449).
+    - Use fsuid to ensure correct file ownership (CVE-2019-12447).
+    - Allow changing file owner (CVE-2019-12447).
+    - Add query_info_on_read/write functionality (CVE-2019-12448).
+  + afc: Remove assumptions about length of device UUID to support
+    new devices.
+  + gmountsource: Fix deadlocks in synchronous API.
+  + afp: Fix afp backend crash when no username supplied.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Jun 21 06:32:04 UTC 2019 - Qiang Zheng <qzheng@suse.com>
+
+- Add gvfs-CVE-2019-12795.patch: Backport from upstream commit
+  70dbfc68 to check that the connecting client is the same user
+  (boo#1137930, CVE-2019-12795).
+
+-------------------------------------------------------------------
+Fri Jun 21 06:13:59 UTC 2019 - Qiang Zheng <qzheng@suse.com>
+
+- Add gvfs-CVE-2019-12447.patch: Backport from upstream commit
+  3895e09d and daf1163a to fix a mishandles file ownership issue
+  (boo#1136986, CVE-2019-12447).
+
+-------------------------------------------------------------------
+Tue Jun 18 09:07:16 UTC 2019 - Qiang Zheng <qzheng@suse.com>
+
+- Add gvfs-CVE-2019-12448.patch: Backport from upstream commit
+  5cd76d62 to add query_info_on_read/write functionality
+  (boo#1136981, CVE-2019-12448).
+
+-------------------------------------------------------------------
+Tue Jun 18 08:18:18 UTC 2019 - Qiang Zheng <qzheng@suse.com>
+
+- Add gvfs-CVE-2019-12449.patch: Backport from upstream commit
+  d5dfd823 to ensure correct ownership when moving to file:// uri
+  (boo#1136992, CVE-2019-12449).
+
+-------------------------------------------------------------------
+Fri May 17 09:26:43 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop polkit rules files, only relevant for wheel group
+  (boo#1125433).
+
+-------------------------------------------------------------------
+Tue Apr  9 09:07:24 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.40.1:
+  + Revert "sftp: Always use port 22 if not specified".
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 12 01:40:00 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.40.0:
+  + Stable release version bump.
+
+-------------------------------------------------------------------
+Tue Mar 12 01:39:22 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.39.92:
+  + client: Fix mount info cache invalidation.
+  + Several smaller bugfixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 12 01:39:19 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 1.39.91:
+  + smb: Do not show password prompt when using winbind ccache.
+  + Several smaller bugfixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 12 01:39:09 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 1.39.90:
+  + sftp: Always use port 22 if not specified.
+  + mtp: Don't retry reading an event after failure.
+  + admin: Prevent access if any authentication agent isn't
+    available.
+  + build: Several meson improvements.
+  + Several smaller bugfixes.
+  + Updated translations.
+- Drop gvfs-CVE-2019-3827.patch: Fixed upstream.
+
+-------------------------------------------------------------------
+Tue Mar 12 01:39:04 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 1.39.4:
+  + keyring: Prefer the most recent item.
+  + afp: Try to find credentials even if user is not specified.
+  + dav: Try authenticate again even if 403 was returned.
+  + Several smaller bugfixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 12 01:39:03 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 1.39.3:
+  + udisks2:
+    - Improve handling of mounts which doesn't point into fs root.
+    - Restore support of comment=x-gvfs-* option.
+  + daemon: Prevent spawning new daemons if outgoing operation
+    exists.
+  + common: Prevent crashes on invalid autorun file.
+  + Several smaller bugfixes.
+  + Updated translations.
+- Changes from version 1.39.1:
+  + google:
+    - Rework cache for better performance.
+    - Add support for files with multiple parents.
+  + udisks2: Add a new volume class `loop`.
+
+-------------------------------------------------------------------
+Mon Mar 11 15:19:51 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.38.2:
+  + mtp: Don't retry reading an event after failure.
+  + admin: Prevent access if any authentication agent isn't
+    available (CVE-2019-3827).
+  + udisks2: Restore support of comment=x-gvfs-* option.
+  + common: Prevent crashes on invalid autorun file.
+  + Several smaller bugfixes.
+  + Updated translations.
+- Drop gvfs-CVE-2019-3827.patch: Fixed upstream.
+
+-------------------------------------------------------------------
+Thu Feb 14 10:18:27 UTC 2019 - qkzhu@suse.com
+
+- Add gvfs-CVE-2019-3827.patch: Prevent access if any authentication
+  agent isn't available (glgo#GNOME/gvfs#355, bsc#1125084, 
+  CVE-2019-3827). 
+
+-------------------------------------------------------------------
+Wed Sep 26 16:31:00 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 1.38.1:
+  + gphoto2: Fix mounting for devices with special chars in
+    ID_SERIAL.
+  + mtp: Fix mounting for devices with special chars in ID_SERIAL.
+  + smbbrowse: Force NT1 protocol version for workgroup support.
+  + Several smaller bugfixes.
+  + Updated translations.
+- Changes from version 1.38.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Aug 28 22:51:08 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 1.37.92:
+  + udisks2: Use loop backing file as description for unlock.
+  + Remove workaround for directory / folder icons.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jul 31 06:35:14 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 1.37.90:
+  + ftp: Add implicit TLS mode.
+  + dav: Increase max number of connections to prevent lockups.
+  + smb: Do not claim that mountable can be unmounted.
+  + build: Add proper linker support check.
+  + Several smaller bugfixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Jul 23 11:11:40 UTC 2018 - dimstar@opensuse.org
+
+- Help translation-update-upstream finding the right gettext domain
+  name: pass "po %{name}" to the call.
+
+-------------------------------------------------------------------
+Sat Jun  9 03:05:53 UTC 2018 - luc14n0@linuxmail.org
+
+- Update to version 1.37.2:
+  + smb: Fix removal of non-empty dir.
+  + programs: Remove deprecated gvfs utils.
+  + gdu: Remove libgdu support.
+  + gphoto2: Switch to a stable device uri
+  + mtp: Switch to a stable device uri.
+  + Several smaller bugfixes.
+  + Updated translation.
+- Drop:
+  + pkgconfig(gdu) BuildRequires and gdu/udisks2-related
+    conditionals to follow upstream changes.
+  + gvfs-smb-Use-O_RDWR-to-fix-fstat-when-writing.patch: fixed
+    upstream.
+
+-------------------------------------------------------------------
+Fri Jun  8 09:38:55 UTC 2018 - fezhang@suse.com
+
+- Add gvfs-smb-Use-O_RDWR-to-fix-fstat-when-writing.patch: Fix
+  failures copying files on smb mounts (bgo#795805 boo#1096476).
+
+-------------------------------------------------------------------
+Sun May 13 22:51:51 UTC 2018 - luc14n0@linuxmail.org
+
+- Update to version 1.37.1:
+  + udisks2: Remove optical disc volumes/mounts if drive
+    disappears.
+  + daemon: Prevent deadlock and invalid read when closing
+    channels.
+  + metadata: Prevent usage of NULL if GUdevDevice is not found.
+  + mtp: Implement support for move and copy operations.
+  + backend: Fix crashes when "Volume is busy" prompt is shown.
+  + Several smaller bugfixes.
+  + Updated translation.
+- Drop pkgconfig(gmodule-no-export-2.0) BuildRequires to follow
+  upstream changes.
+- Add:
+  + pkgconfig(dbus-1) BuildRequires to avoid implicit dependencies.
+  + pkgconfig(gdu) BuildRequires under the without-udisks
+    condition: gnome disk utility package is built with udisks2
+    support and the former requires the last.
+- Switch fuse, libavahi-glib, libarchive, libimobiledevice,
+  libgphoto2, libgdu and libsoup devel package BuildRequires to
+  their pkconfig module counterparts: they are what meson actually
+  is looking for.
+
+-------------------------------------------------------------------
+Mon May  7 09:55:50 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 1.36.2:
+  + udisks2: Remove optical disc volumes/mounts if drive
+    disappears.
+  + daemon: Prevent deadlock and invalid read when closing
+    channels.
+  + metadata: Prevent usage of NULL if GUdevDevice is not found.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Apr  9 17:23:53 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 1.36.1:
+  + backend: Fix crashes when "Volume is busy" prompt is shown.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 20 17:07:14 UTC 2018 - dimstar@opensuse.org
+
+- Unconditionally enable translation-update-upstream: on
+  Tumbleweed, this results in a NOP and for Leap in SLE paid
+  translations being used (boo#1086036).
+
+-------------------------------------------------------------------
+Mon Mar 12 15:16:12 UTC 2018 - dimstar@opensuse.org
+
+- Update to version 1.36.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Mar  7 18:27:01 UTC 2018 - dimstar@opensuse.org
+
+- Update to version 1.35.92:
+  + build: Print summary of the options in meson.
+  + smb: Avoid "Error: Success" failure messages.
+  + Several smaller bugfixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Mar  7 01:35:51 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Wed Mar  7 01:35:51 UTC 2018 - dimstar@opensuse.org
+
+- Update to version 1.35.91:
+  + mtp: Prevent crashes if device is unplugged during mount
+    operation.
+  + daemon: Fix admin backend spawning on some systems.
+  + google: Return error properly when trying to replace native
+    files.
+  + Several smaller bugfixes.
+  + Updated translations.
+- Add permissions PreReq on gvfs-backend: used to apply the correct
+  permission set on the nfs daemon.
+
+-------------------------------------------------------------------
+Wed Mar  7 01:35:50 UTC 2018 - dimstar@opensuse.org
+
+- Update to version 1.35.90:
+  + build: Several FreeBSD related fixes
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Mar  7 01:35:04 UTC 2018 - dimstar@opensuse.org
+
+- Update to version 1.35.4:
+  + recent: Prevent crash when recent file changed.
+  + trash: Fix trash::orig-path for relative paths.
+  + Several smaller bugfixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Mar  7 01:35:03 UTC 2018 - fezhang@suse.com
+
+- Update to version 1.35.3:
+  + mtp: Handle read-past-EOF ourselves to prevent hangs.
+  + Port several parts to GTask.
+  + Several smaller bugfixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Mar  7 01:35:02 UTC 2018 - luc14n0@linuxmail.org
+
+- Update to version 1.35.2:
+  + metadata: Remove udev dependency in favor of gudev.
+  + build:
+    - Enable elogind support in meson;
+    - Port to meson build system.
+  + gphoto2: Fix volume removal with current udev behavior.
+  + mtp: Fix volume removal with current udev behavior.
+  + Several smaller bugfixes.
+  + Updated translations.
+- Update Url to https://wiki.gnome.org/Projects/gvfs: current GVfs'
+  web page.
+- Drop fixed upstream patches:
+  + gvfs-fix-mtp-volume-removal.patch and;
+  + gvfs-mtp-handle-read-past-eof.patch.
+- Port the following patches from autotools to meson:
+  + gvfs-nvvfs.patch and;
+  + gvfs-nds.patch.
+- Drop autoconf, libtool BuildRequires and add meson. Following,
+  drop configure, make and make_install macros and adopt meson,
+  meson_build and meson_install macros. And pass the due parameters
+  to meson. All of these changes reflect the upstream porting to
+  Meson Build System.
+- %glib2_gsettings_schema_requires macro as it's no longer needed
+  since RPM file triggers.
+- Drop intltool BuildRequires once upstream did the migration to
+  gettext long ago and deviations are not desired to avoid
+  unexpected bugs.
+- Add pkgconfig(gmodule-no-export-2.0) BuildRequires: it was
+  already being pulled with pkgconfig(glib-2.0) and used, since
+  they live in the same devel package.
+- Add openssh BuildRequires: missing ssh program dependency that
+  meson checks brought up while autotool's configure was being too
+  permissive when letting libssh2 satisfy its checks.
+
+-------------------------------------------------------------------
+Wed Mar  7 01:35:01 UTC 2018 - dimstar@opensuse.org
+
+- Update to version 1.35.1:
+  + sftp: Add support for setting timestamps.
+  + Several smaller bugfixes.
+
+-------------------------------------------------------------------
+Tue Mar  6 13:50:21 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 1.34.2.1:
+  + mtp: Prevent crashes if device is unplugged during mount
+    operation.
+
+-------------------------------------------------------------------
+Tue Feb  6 20:30:28 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 1.34.2:
+  + Recent: Prevent crash when recent file changed.
+  + Trash: Fix trash::orig-path for relative paths.
+  + Mtp:
+    - Handle read-past-EOF ourselves to prevent hangs.
+    - Fix volume removal with current udev behavior.
+  + Gphoto2: Fix volume removal with current udev behavior.
+  + Updated translations.
+- Drop gvfs-fix-mtp-volume-removal.patch and
+  gvfs-mtp-handle-read-past-eof.patch: Fixed upstream.
+
+-------------------------------------------------------------------
+Wed Jan 17 07:47:46 UTC 2018 - qzheng@suse.com
+
+- Enable libnfs support also on SLE: BuildRequire pkgconfig(libnfs)
+  unconditionally (bsc#1074978).
+
+-------------------------------------------------------------------
+Sat Dec  2 16:53:11 UTC 2017 - dimstar@opensuse.org
+
+- Re-enable caps(cap_net_bind_service=+ep) for gvfsd-nfs: the
+  permissions package was updated to reflect this change.
+- Add appropriate post/verifyscripts to set the capabilities as
+  defined in the permissions package.
+
+-------------------------------------------------------------------
+Wed Nov 22 11:01:59 UTC 2017 - dimstar@opensuse.org
+
+- Disable caps(cap_net_bind_service=+ep) from gvfsd-nfs: this is
+  not acceptable from a security PoV, see boo#1065864#c6).
+
+-------------------------------------------------------------------
+Mon Nov 20 19:41:56 UTC 2017 - mgorse@suse.com
+
+- Add gvfs-mtp-handle-read-past-eof.patch: fix hang when
+  transferring on some Android devices (boo#1069030 bgo#784477).
+
+-------------------------------------------------------------------
+Wed Nov 15 12:23:18 UTC 2017 - zaitor@opensuse.org
+
+- Add gvfs-fix-mtp-volume-removal.patch: Fix various mtp issues
+  with volume management (bgo#789491).
+
+-------------------------------------------------------------------
+Tue Oct 31 14:31:25 UTC 2017 - tbechtold@suse.com
+
+- Set caps(cap_net_bind_service=+ep) for gvfds-nfs: Many NFS
+  servers default to a mode where they do not allow non-system
+  ports from connecting. These servers require to use the
+  "insecure" export option in /etc/exports in order to allow libnfs
+  clients to be able to connect. Allow the usage of privileged
+  ports for the gvfsd-nfs executable to not require the "insecure"
+  option on the server (bsc#1065864).
+
+-------------------------------------------------------------------
+Mon Oct  2 18:26:16 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 1.34.1:
+  + dav: Prevent usage of uninitialized variables.
+  + afp: Prevent usage of uninitialized variables.
+  + programs: Remove bashism from gvfs-* wrapper script.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 25 12:43:44 UTC 2017 - fcrozat@suse.com
+
+- No longer recommends gvfs-backend-afc from gvfs-backends, use
+  packageand(gvfs:libimobiledevice6) on gvfs-backend-afc
+  instead.
+
+-------------------------------------------------------------------
+Fri Sep 15 09:01:05 UTC 2017 - fcrozat@suse.com
+
+- Rebase gvfs-nds.patch for gvfs 1.34.0, including identations and
+  warnings fixes.
+
+-------------------------------------------------------------------
+Mon Sep 11 16:31:55 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 1.34.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 11 15:50:41 UTC 2017 - jengelh@inai.de
+
+- Package description updates. Enable parallel build.
+
+-------------------------------------------------------------------
+Wed Sep  6 08:40:47 UTC 2017 - dimstar@opensuse.org
+
+- License: LGPL-2.1+ AND GPL-3.0: gvfsd-trash links against
+  trashlib, which is licensed GPL-3.0.
+
+-------------------------------------------------------------------
+Mon Sep  4 18:44:26 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 1.33.92:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Aug 21 20:05:20 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 1.33.91:
+  + daemon: Avoid overflowing when querying for filesystem info.
+  + proxy: Fix shadow mount handling for equal paths.
+  + gdaemonfile:
+    - Fix g_file_equal for different mount_prefix.
+    - Fix relative path handling.
+  + client: Fix crash when calculating a relative path.
+  + channel: Set sockets as nonblocking to prevent deadlocks when
+    copying.
+  + google: Report FS total size and free space.
+  + Several smaller bugfixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Aug  7 12:10:51 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 1.33.90:
+  + admin: Require mounting for each client explicitly.
+  + dav: Fix DAV implementation stripping spaces.
+  + gdaemonfileenumerator: Fix crashes in synchronous enumerator
+    code.
+  + goa: Fix password-based authentication.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jun 20 08:42:54 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 1.33.3:
+  + Do not send user invisible mounts in order to speed up
+    g_volume_monitor_get.
+  + mtp: Remove avoidance of file push for big files for better
+    performance.
+  + Various build fixes and cleanups.
+  + Port several parts to GTask.
+  + Several smaller bugfixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat May 20 21:47:25 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 1.33.1:
+  + Port several parts to GTask.
+  + recent: Port from GtkRecentManager to GBookmarkFile (drop
+    GTK+ dependency).
+  + sftp: Handle SecurID password prompt.
+  + Several smaller bugfixes.
+- Drop pkgconfig(gtk+-3.0) BuildRequires: No longer needed.
+- Drop no longer needed post(un) handling of glib2_gsettings_schema
+  for backends and backend-samba, file-triggers takes care of this
+  now.
+
+-------------------------------------------------------------------
+Fri May  5 10:00:59 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 1.32.1:
+  + common: Fix potential crash caused by missing g_strdup.
+  + fuse: Prevent potential crash if file handle is not set.
+  + sftp: Prevent potential crash in case of parsing error.
+  + google:
+    - Prevent potential crashes if resolve_dir fails.
+    - Fix reported file size.
+  + gphoto2: Fix x-content-types setup.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 20 15:15:09 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 1.32.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 13 17:50:10 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 1.31.92:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Feb 27 16:52:02 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 1.31.91:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Feb 15 09:14:43 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 1.31.90:
+  + recent: Set G_FILE_ATTRIBUTE_RECENT_MODIFED attribute.
+  + client: Ignore everything after first colon in userinfo.
+  + Stability improvements for force unmount procedure.
+  + Port several parts to GTask.
+  + Various logging improvements.
+  + Several smaller bugfixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Jan 19 21:04:59 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 1.31.4:
+  + sftp: Limit writes to 32768 bytes.
+  + udisks2: Improve unmount notifications.
+  + daemon: Bump maximum read channel buffer size.
+  + recent: Fix crashes when DISPLAY is not set.
+  + Several smaller bugfixes.
+  + Updated translations.
+- Drop gvfs-silence-log-spam.patch: Fixed upstream.
+
+-------------------------------------------------------------------
+Thu Jan 19 21:03:59 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 1.31.3:
+  + dnssd: Fix crashes for uris with colons.
+  + trash: Correctly determine fs type for paths with symlinks.
+  + gdaemonfile: Pass GFileCreateFlags in write operations.
+  + metadata: Various performance improvements.
+  + Several smaller bugfixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Jan 19 21:02:59 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 1.31.2:
+  + admin: Fix polkit errors caused by redundant translations.
+  + dnssd: Fix crashes and leaks when mount fails.
+  + network: Fix crashes when mount fails.
+  + Port several parts to GTask.
+  + Several smaller bugfixes.
+  + smb: Fix IPv6 uri handling and Improve read performance.
+  + trash: Do not crash if home mount isn't found.
+  + udisks2: Add support for uuid and fix misleading notification
+    when unmounting.
+  + Updated translations.
+- Add pkgconfig(libusb-1.0) BuildRequires: new dependency.
+
+-------------------------------------------------------------------
+Thu Jan 19 21:01:59 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 1.31.1:
+  + udisks2: Improve handling of volumes with multiple mountpoints.
+  + man: Various man page updates.
+  + hal: Drop hal volume monitor.
+  + programs: Deprecate gvfs utils in favour of new gio tool.
+  + Several smaller bugfixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Jan 19 21:00:59 UTC 2017 - zaitor@opensuse.org
+
+- Add gvfs-silence-log-spam.patch: Remove some logspam from
+  journald logs, patch from upstream git.
+
+-------------------------------------------------------------------
+Fri Dec 16 13:11:20 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 1.30.3:
+  + recent: Fix crashes when DISPLAY is not set.
+  + metadata: Various performance improvements.
+  + dnssd: Fix crashes and leaks when mount fails.
+  + network: Fix crashes when mount fails.
+  + udisks2: Fix misleading notification when unmounting.
+  + smb: Fix IPv6 uri handling.
+
+-------------------------------------------------------------------
+Mon Nov  7 13:47:43 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 1.30.2:
+  + Trash: Do not crash if home mount isn't found.
+  + Admin: Fix polkit errors caused by redundant translations.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Oct 17 07:43:17 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 1.30.1.1:
+  + Revert udisks2 patches causing unwanted regressions.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Oct 10 14:24:44 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 1.30.1:
+  + udisks2:
+    - Fix handling of volumes with multiple mountpoints.
+    - Filter out system mounts.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 19 15:10:19 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 1.30.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 12 13:05:08 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 1.29.91:
+  + Several smaller bugfixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Aug 29 16:08:13 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 1.29.91:
+  + dav: Various mount operation fixes.
+  + Several smaller bugfixes.
+  + Updated translations.
+- Replace libcap-devel for pkgconfig(libcap) BuildRequires.
+
+-------------------------------------------------------------------
+Thu Aug 25 08:10:20 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 1.29.90:
+  + build:
+    - Use upstream gettext instead intltool.
+    - Use autoreconf instead custom script.
+  + dnssd: Fix crashes when mount failed.
+  + Several smaller bugfixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Aug 25 08:10:19 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 1.29.4:
+  + Introduce an admin gvfs backend based on polkit.
+  + gvfs-open: Fix spawning of applications with dashses in their
+    app IDs.
+  + daemon:
+    - Fix crashes caused by NULL certificates.
+    - Set G_FILE_ATTRIBUTE_FILESYSTEM_REMOTE attribute.
+  + Several smaller bugfixes and improvements.
+  + Updated translations.
+- Add pkgconfig(polkit-gobject-1) and libcap-devel BuildRequires:
+  New dependencies.
+
+-------------------------------------------------------------------
+Thu Aug 25 08:10:18 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 1.29.3:
+  + afc: Many improvements and fixes for iOS support.
+  + fuse: Add possibility to enable debug output.
+  + test: Skip tests if dependencies are missing.
+  + Several smaller bugfixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Aug 25 08:10:17 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 1.29.2:
+  + client: Fix missing mount prefix in cached fuse paths.
+  + monitor: Add g_drive_is_removable() support.
+  + dav: Fix IPv6 address handling.
+  + Several smaller bugfixes.
+  + Updated translations.
+- Changes from version 1.29.1:
+  + udisks2: Fix crashes when mounting encrypted volume.
+  + mtp: Refactor event handling in order to fix unmount crashes.
+  + Several smaller bugfixes.
+- Drop obsolete clean section.
+- Conditionally apply gvfs-nds.patch and gvfs-nvvfs.patch for
+  non-opensuse only: The usefulness on openSUSE is questionable, so
+  lets see if anyone complains. Follwing this, conditionally apply
+  autoconf BuildRequires and autoreconf call.
+- Conditionally apply translations-update-upstream BuildRequires
+  and macro for non-openSUSE only.
+- Tweak descriptions to silence rpmlint.
+- Handle tmpfiles created in post.
+- Conditionally apply libgfscommon0 Obsolete for non-openSUSE: All
+  supported openSUSE releases have moved on, so it's only needed
+  for SLE.
+
+-------------------------------------------------------------------
+Thu Aug 25 08:10:16 UTC 2016 - fezhang@suse.com
+
+- Drop gvfs-support-nop-ftruncate.patch (bnc#466794, bgo#573837),
+  gvfs-no-useless-x-flags.patch (bnc#538069),
+  gvfs-monitor-proxy-debug.patch (bnc#903858):
+  Fixed upstream.
+
+-------------------------------------------------------------------
+Thu Aug 11 17:26:27 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 1.28.3:
+  + dnssd: Fix crashes when mount failed.
+  + gvfs-open: Fix spawning of applications with dashses in their
+    app IDs.
+  + daemon: Fix crashes caused by NULL certificates.
+  + afc: Many fixes for iOS support.
+  + client: Fix missing mount prefix in cached fuse paths.
+  + dav: Fix IPv6 address handling.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Jul 23 12:37:34 UTC 2016 - jengelh@inai.de
+
+- Ensure systemd-tmpfiles runs:
+  + Add %tmpfiles_create to post script of -fuse subpackage.
+  + Add %{?systemd_requires} to -fuse subpackage.
+
+-------------------------------------------------------------------
+Thu Jul 21 14:12:45 UTC 2016 - fcrozat@suse.com
+
+- Fix supplements on gvfs-backend-samba, since we don't have
+  libsmbclient provides anymore (bsc#988921).
+
+-------------------------------------------------------------------
+Wed Jul  6 06:47:22 UTC 2016 - fbui@suse.com
+
+- Replace pkgconfig(libsystemd-login) with pkgconfig(libsystemd):
+  Nowadays pkgconfig(libsystemd) replaces all libsystemd-* libs,
+  which are obsolete.
+
+-------------------------------------------------------------------
+Tue Jul  5 06:50:12 UTC 2016 - tyang@suse.com
+
+- Fix "gvfs-smb timeout by message bus issue" (bsc#983992):
+  + Add %glib2_gsettings_schema_require to preamble.
+  + Add %glib2_gsettings_schema_post/postun to respective scripts
+    of -backend-samba subpackage.
+
+-------------------------------------------------------------------
+Tue May 10 07:05:41 UTC 2016 - fcrozat@suse.com
+
+- Disable libnfs support on SLE.
+
+-------------------------------------------------------------------
+Mon May  9 20:11:13 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 1.28.2:
+  + udisks2: Fix crash when mounting encrypted volume.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Apr 22 15:19:38 UTC 2016 - zaitor@opensuse.org
+
+- Enable pkgconfig(libnfs) BuildRequires, we now have it in
+  openSUSE, also package the new nfs support.
+
+-------------------------------------------------------------------
+Thu Apr 14 08:53:06 UTC 2016 - tyang@suse.com
+
+- Update to GNOME 3.20 Fate#318572
+- Drop:
+   * 0001-afp-Don-t-crash-when-opening-the-root-directory.patch
+   * 0001-archive-fix-segfault-when-libarchive-fails.patch
+   * 0001-gphoto2-Don-t-release-the-device-multiple-times.patch
+   * 0001-gphoto2-Return-the-correct-offset-when-seeking.patch
+   * 0001-http-Allow-seek-past-end-of-file.patch
+   * 0001-http-Ensure-the-range-header-is-updated.patch
+   * 0001-http-Fix-segfault-when-seeking-on-read.patch
+   * 0001-http-Fix-the-SEEK_END-offset-calculation.patch
+   * 0001-MTP-Fail-fast-if-in-the-middle-of-an-unmount.patch
+   * gvfs-hal-volume-monitor-memory-leak.patch
+   * gvfs-obexftp-allow-push-cancel.patch
+
+-------------------------------------------------------------------
+Tue Apr 12 11:31:31 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 1.28.1:
+  + udisks2:
+    - Abort mount operation if volume is unlocked.
+    - Lock unlocked volumes on eject/stop.
+  + trash:
+    - Check modification time to avoid rereading.
+    - Rescan trash dirs before operations with files.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 21 20:17:53 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 1.28.0:
+  + afc: Several fixes for recent iOS versions.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 15 10:48:00 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 1.27.92:
+  + fuse: Avoid crashes when exiting.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Feb 29 20:27:47 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 1.27.91:
+  + udisks2: Send unmount notification only once when stopping.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Feb 19 08:58:19 UTC 2016 - zaitor@opensuse.org
+
+- Split out samba backend in own subpackage, make samba removable.
+- Drop superfluous libsmbclient-devel BuildRequires as we already
+  have pkgconfig(smbclient) BuildRequires that covers it.
+
+-------------------------------------------------------------------
+Fri Feb 19 01:27:57 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 1.27.90:
+  + udisks2: Avoid crashes during unmount.
+  + ftp: Fix cache invalidation after writing.
+  + network: Fix crashes when mount failed.
+  + mtp: Allow reading on more devices.
+  + Several smaller bugfixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Feb 19 01:27:04 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 1.27.4:
+  + dns-sd: Add support for nfs shares.
+  + Do not print anything from daemons unless debug mode is
+    enabled.
+  + Several other logging improvements.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Feb 19 01:27:03 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 1.27.3:
+  + sftp:
+    - Fail cancelled jobs.
+    - Handle "Too many authentication failures" error.
+  + metadata: Avoid endless recursion when copying meta files.
+  + mtp: Use phone icon for MTP devices.
+  + udisks2: Do not show notification if unmount failed.
+  + completion: Allow bash completion for gvfs-mount.
+  + http: Return error if seek was not successful.
+  + Several smaller bugfixes.
+  + Updated translations.
+- Add disabled pkgconfig(libnfs) BuildRequires, needed for nfs
+  backedend, but the needed underlying libs is not available for
+  openSUSE yet.
+
+-------------------------------------------------------------------
+Thu Feb 18 13:22:35 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 1.26.3:
+  + udisks2: Avoid crashes during unmount.
+  + ftp: Fix cache invalidation after writing.
+  + network: Fix crashes when mount failed.
+  + metadata: Avoid endless recursion when copying meta files.
+  + udisks2: Do not show notification if unmount failed.
+  + Several smaller bugfixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Nov  9 12:51:58 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 1.26.2:
+  + Accept XDG_RUNTIME_DIR/bus as a valid D-Bus session/user bus.
+  + Google:
+    - Fail in-fs copy/move if it leads to display name loss.
+    - Mark files you can't see on the web as hidden.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Oct 27 10:49:52 UTC 2015 - zaitor@opensuse.org
+
+- Change patch-tags from PATCH-FEATURE-OPENSUSE to
+  PATCH-FEATURE-SLE, lets use the tag where they actually are
+  wanted.
+
+-------------------------------------------------------------------
+Fri Oct 23 19:19:16 UTC 2015 - mgorse@suse.com
+
+- Rebase gvfs-nds.patch and gvfs-nvvfs.patch. Also run
+  autoreconf, since patches modify daemon/Makefile.am.
+- Replace gnome-common for autoconf BuildRequires.
+
+-------------------------------------------------------------------
+Thu Oct 15 09:28:18 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 1.26.1.1:
+  + file monitor: Fix crashes caused by invalid read.
+
+-------------------------------------------------------------------
+Wed Oct 14 08:54:19 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 1.26.1:
+  + proxyvolumemonitor: Fix crashes when drives/volumes/mounts
+    caches are changed.
+  + Add a corresponding systemd user service for every D-Bus
+    session service.
+  + google: Report progress when copying and moving.
+  + ftp: Return correct file info for absolute symlink paths.
+  + sftp:
+    - Fix crashes when force unmount is proceeded.
+    - Fix crashes when data connection setup failed.
+  + Several smaller bugfixes.
+  + Updated translations.
+- Disable gvfs-nds.patch & gvfs-nvvfs.patch: Needs rebase, also
+  disable gnome-common BuildRequires and stop passing NOCONFIGURE.
+
+-------------------------------------------------------------------
+Tue Sep 22 07:02:24 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 1.26.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 15 14:00:27 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 1.25.92:
+  + Add Google Drive backend based on libgdata.
+  + Make all gvfs daemons own a name under org.gtk.vfs.*.
+  + Several smaller bugfixes.
+  + Updated translations.
+- Add pkgconfig(libgdata) BuildRequires, new dependency.
+
+-------------------------------------------------------------------
+Wed Sep  2 08:35:45 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 1.25.91:
+  + afp: Change g_error to g_warning for read errors to prevent
+    crash reports.
+  + dav: Mark files as untrashable to offer correct action in
+    Nautilus.
+  + gdaemonfile: Fix cancelling of g_file_mount_enclosing_volume.
+  + Several smaller bugfixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Aug 20 14:10:17 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 1.25.90:
+  + Several bash-completion fixes and improvements.
+  + mtp: Return ENOTEMPTY if trying to delete a non-empty
+    directory.
+  + Set filesystem::type for all backends.
+  + build: Make EXTRA_DIST independent of configure results.
+  + Several smaller bugfixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Aug 20 14:09:17 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 1.25.4.1:
+  + monitor: Fix memory leak.
+
+-------------------------------------------------------------------
+Thu Aug 20 14:08:17 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 1.25.4:
+  + udisks2:
+    - Fix a crash when unmounting.
+    - Handle libsecret errors properly to avoid a crash.
+  + afc: Fix a crash when unmounting and unplugging.
+  + cdda: Use UTF-8 with libcdio >= 0.84.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Aug 20 14:07:17 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 1.25.3:
+  + common: Fix crashes with blank disks.
+  + gvfs-open: Fix launching applications over d-bus.
+  + monitor: Show notification always when device is unmounted.
+  + sftp: Use separate data connection for pulling and pushing
+    data.
+  + Several smaller bugfixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Aug 20 14:06:17 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 1.25.2:
+  + gvfs-open: Do not alter uris before use.
+  + mtp: Refresh storage information in query_info.
+  + dav: Emit progress callbacks when copying and moving.
+  + Several smaller bugfixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Aug 20 14:05:17 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 1.25.1:
+  + dav: Verify TLS certificates.
+  + ftp:
+    - Use TCP_NODELAY.
+    - Implement TLS support.
+  + sftp: Handle host key / IP mismatch.
+  + Several smaller bugfixes.
+- Add pkgconfig(gcr-base-3) BuildRequires: new dependency for TLS
+  certificate verification.
+
+-------------------------------------------------------------------
+Thu Aug 20 14:04:17 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 1.24.2:
+  + udisks2:
+    - Fix a crash when unmounting.
+    - Handle libsecret errors properly to avoid a crash.
+  + afc: Fix a crash when unmounting and unplugging.
+  + monitor: Show notification always when device is unmounted.
+  + gvfs-open:
+    - Fix launching applications over d-bus.
+    - Do not alter uris before use.
+  + mtp: Refresh storage information in query_info.
+  + Several smaller bugfixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun May  3 05:35:08 UTC 2015 - dimstar@opensuse.org
+
+- Add gnome-common BuildRequires and use gnome-autogen.sh to
+  bootstrap. Fixes build with new libtool version.
+
+-------------------------------------------------------------------
+Tue Apr 14 00:28:56 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 1.24.1:
+  + hal: Fix compilation error and memory leak (bgo#747221).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Apr  9 01:18:49 UTC 2015 - dliang@suse.com
+
+- Add gvfs-hal-volume-monitor-memory-leak.patch (bnc#924621)
+  gvfs-hal-volume-monitor memory issue
+
+-------------------------------------------------------------------
+Tue Mar 24 22:18:17 UTC 2015 - dliang@suse.com
+
+- Add gvfs-monitor-proxy-debug.patch:
+  Disable the monitor proxy debug by default (bnc#903858).
+
+-------------------------------------------------------------------
+Mon Mar 23 13:08:10 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 1.24.0:
+  + Fix g-ir-compiler failures.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 16 09:10:46 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 1.23.92:
+  + Remove obsolete obexftp code.
+  + metadata: Reliability improvements.
+  + afc, gphoto2: Fix force unmount when device is removed.
+  + ftp: Prevent segfault when unmounting.
+  + ftp: Bug fixes for directory parsing.
+  + dav: Fix crash on mount when using dns-sd.
+  + common: Increase mount timeout to 30 minutes.
+  + Several smaller bugfixes.
+  + Update man pages.
+  + Updated translations.
+- Drop bluez-devel, libexpat-devel and pkgconfig(dbus-glib-1)
+  BuildRequires: no longer needed after the obexftp removal.
+- Drop obex-data-server recommends from the -backend subpackage.
+
+-------------------------------------------------------------------
+Sat Feb 14 00:58:23 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 1.23.90:
+  + ftp:
+    - Implement backups for replace.
+    - Implement G_FILE_COPY_NOFOLLOW_SYMLINKS.
+  + Add an nfs backend based on libnfs.
+  + test: Various improvements and fixes.
+  + ftp: Implement G_FILE_COPY_NOFOLLOW_SYMLINKS
+  + programs: Fix bash completion.
+  + dav: Add support for server-side copying.
+  + mtp: Set MTP filetype from mime type when uploading files.
+  + gvfs-mount: Allow mounting as an anonymous user.
+  + smb: Handle the anonymous flag.
+  + Several smaller bugfixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Jan 28 16:00:38 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 1.23.4:
+  + gproxymount: Fix crashes if eject callback isn't specified.
+  + metadata: Fix crashes if tree initilization failed.
+  + Several smaller bugfixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Jan  8 20:56:53 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 1.23.3:
+  + Fix reported size for http and dav.
+  + Several smaller bugfixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Jan  8 19:41:48 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 1.23.2:
+  + Try copy and delete fallback for move if backup couldn't be
+    created.
+  + mtp: Do not crash when device is unplugged.
+  + tests: Several fixes.
+  + Several smaller bugfixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Jan  8 16:30:03 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 1.23.1:
+  + Several improvements to unmounting reliability.
+  + fuse: Several fixes to prevent data corruption and improve
+    stat() results.
+  + Improve root dir name and icon handling for gphoto2 and mtp.
+  + Add bash completion support for gvfs-rename and
+    gvfs-set-attribute.
+  + client: Check for G_FILE_COPY_NO_FALLBACK_FOR_MOVE when
+    push/pulling.
+  + Add -C flag to gvfs-move.
+  + sftp: Don't spin during connection.
+  + goa: Pass "password" as ID when fetching the password.
+  + tests: Some cleanups and reliability fixes.
+  + Several smaller bugfixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Jan  7 13:07:32 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 1.22.3:
+  + Fix metadata deamon crashes.
+  + Several improvements to unmounting reliability.
+  + Several smaller bugfixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Nov 11 21:33:25 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 1.22.2:
+  + sftp: Correctly retrieve the username from the secret store.
+  + mtp: Fix crashes when device is unplugged.
+  + Several smaller bugfixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Oct 13 20:21:44 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 1.22.1:
+  + mtp: Improve transfer speed for large files.
+  + trash: Do not poll mount points without read access.
+  + afp: Fix volume names encoding.
+  + gvfs-set-attribute: "-n" flag implementation.
+  + Improvements to avoid crashes during unmount.
+  + Several smaller bugfixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 22 08:16:21 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 1.22.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 15 16:23:00 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 1.21.92:
+  + metatree: Avoid endless looping when the entry is too large.
+  + archive: Allow reading files with '/./' in the path.
+  + Several smaller bugfixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Aug 29 13:42:50 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 1.21.91:
+  + ftp: Fix crashing with latest glib.
+  + tests: Gnome desktop testing integration.
+  + dav: Force unmount when dns-sd data changes.
+  + Several smaller bugfixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Aug 15 19:09:27 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 1.21.90:
+  + gvfs-save: Allow specifying G_FILE_CREATE_REPLACE_DESTINATION.
+  + dav: Send infos incrementally.
+  + ftp: Timeouted and closed connection handling improvements.
+  + fuse: Error mapping fixes.
+  + daemon: Wait to finish all jobs before unmount.
+  + afp: Timeouted and closed connection handling improvements.
+  + http:
+    - Limit maximal number of connections.
+    - Reuse idle connections.
+  + mtp:
+    - Error semantics and handling fixes.
+    - Fix icon handling.
+    - Support for create and delete events.
+    - Use unique storage name.
+    - Various fixes.
+  + Several smaller bugfixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Jul 18 20:40:01 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 1.21.4:
+  + afp:
+    - Fix hangs while enumerating large directories.
+    - Performance improvement.
+  + dav: Fix mounting multiple shares on the same host with
+    different paths.
+  + Several smaller bugfixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Jul 12 22:35:27 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 1.21.3:
+  + afc:
+    - Implement standard::allocated-size.
+    - Work-around mounts not disappearing when disconnecting
+      device.
+    - Add version detection for iOS 6, 7 and 8.
+  + afp: Report number of bytes copied.
+  + smb: Implement standard::allocated-size.
+  + metadata: Fix misaligned accesses to 64bit data.
+  + Several smaller bugfixes.
+- Changes from version 1.21.2:
+  + gvfs-mount: Handle the ask-question signal.
+  + dav: Implement push support.
+  + recent: Implement query_info_on_read ().
+  + trash: Implement query_info_on_read ().
+  + tests: Various fixes.
+  + Several smaller bugfixes and portability fixes.
+- Changes from version 1.21.1:
+  + gvfs-move: Improve the interactive move and progress output.
+  + gvfs-copy: Improve the interactive copy and progress output.
+  + afc: Check for iOS >= 3.1.2 to enable house arrest.
+  + dav: Use the native move operation.
+  + fuse: Set permissions from UNIX mode when available.
+  + dav: Unescape URIs before comparing them for equality.
+  + Report gvfs version when --version is used.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri May  9 15:19:48 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 1.20.2:
+  + afc: Fix problems when mount devices with older iOS.
+  + fuse: Fix settings file permissions.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Apr 11 14:14:31 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 1.20.1:
+  + smb: Give correct error when unlink fails while closing files.
+  + dav: Fix problem with names with non-ascii characters.
+  + Several smaller bugfixes and portability fixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Apr  2 23:11:17 UTC 2014 - mgorse@suse.com
+
+- Add 0001-http-Ensure-the-range-header-is-updated.patch,
+    0001-MTP-Fail-fast-if-in-the-middle-of-an-unmount.patch,
+    0001-gphoto2-Return-the-correct-offset-when-seeking.patch,
+    0001-gphoto2-Don-t-release-the-device-multiple-times.patch,
+    0001-http-Fix-segfault-when-seeking-on-read.patch,
+    0001-http-Fix-the-SEEK_END-offset-calculation.patch,
+    0001-http-Allow-seek-past-end-of-file.patch,
+    0001-http-Ensure-the-range-header-is-updated.patch,
+    0001-archive-fix-segfault-when-libarchive-fails.patch,
+    0001-afp-Don-t-crash-when-opening-the-root-directory.patch:
+    Fix several crashes, from upstream gnome-3-10 branch.
+
+-------------------------------------------------------------------
+Sat Mar 22 16:55:57 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 1.20.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Mar 21 11:52:35 UTC 2014 - cxiong@novell.com
+
+- Port valid patches from SLE-11
+  see bnc#832386
+  patches and their related bugs:
+  gvfs-support-nop-ftruncate.patch: bnc#466794 bgo#573837
+  gvfs-no-useless-x-flags.patch: bnc#538069
+  gvfs-obexftp-allow-push-cancel.patch: bnc#656452
+
+-------------------------------------------------------------------
+Mon Feb 17 20:05:26 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 1.19.90:
+  + mtp:
+    - Symbolic icons implementation.
+    - Volume name improvements.
+    - Various fixes.
+  + Several smaller bugfixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Jan 30 18:11:20 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 1.19.5:
+  + gvfsdaemon: properly remove socket_dir.
+  + ftp: Set etag::value.
+  + daemon:
+    - Rate limit progress callbacks.
+    - Set infinite timeout for enumerate response.
+  + client: remove GVfsUriMountInfo.
+  + sftp: force openpty(3) on BSD.
+  + Several smaller bugfixes.
+  + Updated translations.
+- Rebase gvfs-nds.patch and gvfs-nvvfs.patch: adjust to build
+  system fixes.
+
+-------------------------------------------------------------------
+Mon Jan 13 17:59:39 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 1.19.4:
+  + dav: Implement truncate for output streams.
+  + dav: Implement seek for output streams.
+  + gphoto2: Implement pull support.
+  + Several smaller bugfixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Dec 13 18:55:35 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 1.19.3:
+  + Truncate support for output streams in various backends.
+  + Convert libgvfscommon and libdaemon to a private shared
+    library.
+  + afp: Don't free the handle if truncate fails.
+  + dav:
+    - Set the is_hidden property for files starting with a '.'.
+    - dav: Report number of bytes used on the filesystem.
+  + gphoto2:
+    - Don't release the device multiple times.
+    - Return the correct offset when seeking.
+  + http:
+    - Allow seek past end of file.
+    - Various fixes.
+  + mtp:
+    - fix segfault when device not found.
+    - Fail fast if in the middle of an unmount.
+  + sftp:
+    - Implement try_query_fs_info using the OpenSSH statvfs
+      extension.
+    - Implement pull support.
+  + smb: Require libsmbclient from Samba 3.4.0 or higher.
+  + Several smaller bugfixes and cleanups.
+  + Updated translations.
+- Drop libgvfscommon0 subpackage: the library was converted to a
+  private library, now installed in %{_libdir}/gvfs.
+- Obsolete libgvfscommon0 from the gvfs main package. No consumer
+  outside of gvfs is known and supposed to use this library, so
+  cleaning up, despite the SLPP contradiction, is accepted (also
+  removed from baselibs.conf).
+
+-------------------------------------------------------------------
+Tue Nov 19 20:12:35 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 1.19.2:
+  + sftp:
+    - Implement GFileCreateFlags and improve permission handling.
+    - Implement push support.
+    - Various fixes.
+  + smb:
+    - Report number of bytes used on the filesystem.
+    - Various fixes.
+  + daemon: Make progress callbacks work with try methods.
+  + afp: Report number of bytes used on the filesystem.
+  + archive:
+    - Set filesystem size information.
+    - Set the is_hidden attribute when appropriate.
+    - Various fixes.
+  + trash:
+    - Add " (invalid encoding)" to files with invalid encoding.
+    - Support enumerating non-UTF-8 filenames.
+  + tests: Various fixes.
+  + recent:
+    - Don't mark filesystem as read-only.
+    - Prevent spurious monitor notifications.
+  + Several smaller bugfixes and cleanups.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Nov 17 20:07:00 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 1.19.1:
+  + Fix seeking past end of file for various backends.
+  + archive: Set file executable bit from archive contents.
+  + http: Set error to NULL to possibly prevent crash on close.
+  + dav: Set file type to regular by default.
+  + build: Remove unnecessary trailing slashes in path.
+  + client: Fix usage of incorrect enum constant.
+  + gvfs-info: Show URI.
+  + gvfs-ls: Added option to output URIs.
+  + fuse: Use the big_writes option to speed up writes.
+  + Updated translations.
+- Drop gvfs-webdav_file_types.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Mon Nov 11 20:58:59 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 1.18.3 (bnc#849913):
+  + Fix seeking past end of file for various backends.
+  + fuse: Improve write performance.
+  + archive: Handle open failure.
+- Drop gvfs-webdav_file_types.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Sat Oct 26 17:57:13 UTC 2013 - stefan.bruens@rwth-aachen.de
+
+- Add gvfs-webdav_file_types.patch: fix webdav access over
+  gvfsd-fuse, resulting in Input/output error (bnc#848129).
+
+-------------------------------------------------------------------
+Thu Oct  3 12:50:22 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 1.18.2:
+  + Fix a client side regression in 1.18.1 where apps would stop
+    responding.
+  + Fix a race condition in job handling that could cause large
+    copies to hang.
+  + Various fixes to the fuse implementation.
+
+-------------------------------------------------------------------
+Fri Sep 27 07:58:08 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 1.18.1:
+  + GVfsDaemon: Don't deadlock on cliend disconnect.
+  + GDaemonFileMonitor: Only recieve events on one dbus connection.
+  + GDaemonFileEnumerator: Only listen to messages one connection.
+  + Several compilation warnings fixes and code cleanup.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 24 07:48:52 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 1.18.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep  3 09:18:19 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 1.17.91:
+  + Handle large thumbnails as well as normal ones.
+
+-------------------------------------------------------------------
+Thu Aug 22 08:32:02 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 1.17.90:
+  + archive: Update to latest libarchive API.
+  + http: Stop using deprecated apis.
+
+-------------------------------------------------------------------
+Mon Jul  8 22:28:56 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 1.17.3:
+  + Clean shutdown implementation for various backends.
+  + tests: Various fixes.
+  + afc: Update to libimobiledevice new api.
+
+-------------------------------------------------------------------
+Sun Jun 16 11:38:57 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 1.17.2:
+  + metadata: Fix write regression.
+  + smb: Allow specifying custom port.
+  + tests: Various fixes.
+  + http: Don't do network i/o when reading just the thumbnail
+    path.
+  + goa: Make shadowed mounts work.
+
+-------------------------------------------------------------------
+Mon May 27 11:25:04 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 1.17.1:
+  + metadata:
+    - Downgrade journal short-read to debug.
+    - Flush all scheduled writeouts on daemon exit.
+    - Use shorter writeout timeout on NFS.
+    - Put journal in $XDG_RUNTIME_DIR for shared NFS homedir case.
+    - Create new journal if it doesn't exist.
+    - Be more resistive to broken journal files.
+    - Force tree re-read after successful flush.
+  + ccda: Adds remaining shutdown infrastructure and call from cdda
+    backend.
+  + Updated translations.
+- Drop gvfs-mtp-build.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Wed May  1 08:17:16 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 1.17.0:
+  + daemon:
+    - Tweak read sizes.
+    - Close channels belonging to the active mount only.
+    - Add infrastructure for the backends to exit cleanly.
+  + channel:
+    - Unqueue cancelled requests.
+    - Verify that replies are for the right serial.
+  + mtp:
+    - Refactor read path in preparation for supporting normal
+      files.
+    - Use Android extensions to support in place read and write of
+      files.
+    - Use normal filenames in paths.
+    - When removing cache entries, remove children too.
+    - Clear previous cache entries when refreshing a directory.
+    - Clear cache and emit delete events when an object is removed.
+    - Handle overwriting of files in do_push and do_pull correctly.
+    - Use standard name for SD Card icon.
+  + GVfsIcon: support icon serialisation.
+  + Man pages typo fixes.
+  + Updated translations.
+- Add gvfs-mtp-build.patch: fix signature of add_cache_entry().
+
+-------------------------------------------------------------------
+Tue Apr 16 14:08:43 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 1.16.1:
+  + daemon: Ensure file monitors are not prematurally finalized.
+  + gvfschannel:
+    - Return proper error if we're out of free fds.
+    - Fix daemon crash when cancelling channel operations.
+    - Fix readahead behaviour.
+  + obexftp: Fix crasher due to missing D-Bus threads support.
+  + Fix compiler warnings.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 25 14:47:24 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 1.16.0:
+  + cdda:
+    - Fix warnings for each track on the CD.
+    - Remove unneeded function argument.
+    - Remove leading '/' from the filenames.
+  + mtp: Switch to version based checks for new libmtp features.
+  + trash:
+    - Use the symbolic names for trash:: attributes.
+    - Update expected gvfs-mount -li output.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar  4 16:26:50 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 1.15.4:
+  + gdu,udisks2: Make use of new ID_FS_BOOT_SYSTEM_ID udev property
+  + fuse: Install systemd tmpfiles.d exclusion file
+  + mtp:
+    - Fix crash when libmtp operations fails without error message
+    - Respect remove_source when pulling a file
+    - Respect remove_source in do_push
+  + tests:
+    - Add gvfs-testbed to enable tests which need root
+    - Check for URI string presence on CLI unmount
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb  5 18:35:27 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 1.15.3:
+  + New gnome-online-accounts volume monitor.
+  + Various test suite fixes and improvements.
+  + daemon: Implement proper
+    org.gtk.vfs.MountTracker.UnregisterMount().
+  + mtp: Fix race between on_uevent and do_unmount.
+  + mtp: Fix leaked weak reference on monitors.
+  + cdda: Adapt to new paranoia.h location.
+  + smb: Implement proper unmount method.
+  + computer: Fix volume monitoring.
+  + build: Replace deprecated autoconf macros.
+  + Updated translations.
+- Add pkgconfig(goa-1.0) BuildRequires: dependency for the new
+  goa-volume-monitor.
+
+-------------------------------------------------------------------
+Tue Jan 15 15:04:34 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 1.15.2:
+  + New MTP backend and volume monitor.
+  + Tests:
+    - Add Drive tests
+    - Drop genisoimage dependency
+    - Include */sbin in PATH
+  + Updated translations.
+- Add pkgconfig(libmtp) BuildRequires: dependency to the new MTP
+  backend.
+
+-------------------------------------------------------------------
+Tue Jan  8 17:31:01 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 1.15.1:
+  + client: Set default timeout to infinite for all
+    GDaemonFile methods
+  + http, dav: Port to SoupRequest
+  + sftp: Fix symlink target in query_info_reply()
+  + smb: Report proper error on do_query_fs_info()
+  + proxy volume monitor:
+    - Don't disable exit_on_close on session bus
+    - Get session bus on demand
+  + udisks2:
+    - Use udisks 2.0.90 API for symbolic icons
+    - Fix symbolic icons for devices without an UDisksDrive
+    - Don't leak GIcon when applying hints
+    - Get icons via UDisksObjectInfo for block devices that are not
+      drives
+    - Add support for mount option x-gvfs-symbolic-icon
+    - If a drive is hotplugged and CanPowerOff is TRUE, set
+      can_stop to TRUE
+    - Don't set GDrive.can_stop to TRUE if drive has removable
+      media
+  + Added and fixed tests
+  + programs:
+    - Add a cmdline way to empty the trash
+    - Print out symbolic-icon in gvfs-info
+  + Removed calls to g_type_init()
+  + Updated translations.
+- Rebase gvfs-nvvfs.patch.
+
+-------------------------------------------------------------------
+Wed Nov 14 21:46:16 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 1.15.0:
+  + New testing framework
+  + daemon:
+    - Check for a NULL GMountOperation when unmounting
+    - Allow specifying directory and extensions for mount files
+  + proxy volume monitor: Don't emit connected/added signals at
+    object creation
+  + proxy volume monitor: Allow specifying the dir for .monitor
+    files
+  + smb: Fix libsmbclient samba 4 support
+  + Updated translations.
+- Add pkgconfig(smbclient) BuildRequires: samba 4 can be detected
+  based on pkg-config now.
+- Rebase gvfs-nvvfs.patch.
+
+-------------------------------------------------------------------
+Tue Nov 13 12:17:25 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 1.14.2:
+  + proxy volume monitor:
+    - Don't emit connected/added signals at object creation
+    - Don't disable exit_on_close on session bus
+    - Don't force-close the session bus
+  + gdaemonmount: Check for a NULL GMountOperation when unmounting
+  + smb: Find libsmbclient with samba 4
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Oct 15 19:43:14 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 1.14.1:
+  + client: Don't disable exit_on_close on session bus.
+  + fuse: Don't crash on unmount.
+  + udisks2: Add appropriate content type for media players.
+  + gphoto2: Make sure to not call g_mutex_clear twice, causing a
+    crash.
+  + Fix OpenBSD portability issues.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 24 14:30:15 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 1.14.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 17 15:41:44 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 1.13.9:
+  + build: Use tar-ustar instead of tar-pax
+  + daemon: Fix some memory leaks
+  + file monitor: Try to unsubscribe from the proxy used for
+    subscription
+  + hal volume monitor: Fix compilation
+  + gdu volume monitor: Handle gdu_pool_new() returning NULL
+    gracefully
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep  4 19:23:53 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 1.13.8:
+  + Added support for symbolic icons
+  + Removed favicon support
+  + Various build fixes and cleanup
+  + afc:
+    - Improve idevice error handling
+    - Unpair an idevice if it was already paired and refuses to
+      connect
+    - Use the correct choice index for "Cancel"
+  + afp:
+    - fix g_vfs_afp_connection_get_max_request() not returning any
+      value
+    - Use human friendly error messages
+  + daemon:
+    - Return correct error for invalid backends
+    - Fix races when mounting the same mount in parallel
+    - Don't warn when running against an older gvfs-daemon
+  + gdbus: Don't g_warn about getting the dbus name
+  + gmountspec: Make sure to free the GVariantIter
+  + network:
+    - Don't set a file size for the network:// shortcuts
+    - Append the service name when needed to help differentiate
+  + recent: Honor the private hint
+  + Don't use the display name to make the unique mount point
+  + Don't include jargon in mount display names and messages
+  + Added more hints for translators
+  + Updated translations.
+- Drop upstream fixed patches:
+  + gvfs-afp-return.patch
+  + gvfs-gphoto2.patch
+
+-------------------------------------------------------------------
+Mon Aug 20 17:30:48 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 1.13.7:
+  + Use libsecret instead of gnome-keyring
+  + afp: Lots of robustness work
+  + cdda: Support libcdio >= 0.84
+  + Updated translations.
+- Replace gnome-keyring-devel BuildRequires with
+  pkgconfig(libsecret-unstable), following upstreams switch.
+- Drop gvfs-cdda.patch: fixed upstream.
+- Add gvfs-afp-return.patch: fix
+  g_vfs_afp_connection_get_max_request() not returning any value.
+
+-------------------------------------------------------------------
+Wed Aug  8 12:27:03 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 1.13.6:
+  + gphoto: suppor libgphoto 2.5 API.
+- Add gvfs-gphoto2.patch: Support, but do not require gphoto 2.5.
+
+-------------------------------------------------------------------
+Wed Aug  8 11:44:52 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 1.13.5:
+  + cdda: Fix abort with non-ASCII text
+  + Add more man pages
+  + Upadted translations.
+- Rebase gvfs-cdda.patch.
+
+-------------------------------------------------------------------
+Tue Aug  7 13:55:25 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 1.13.4:
+  + Core daemon and backends GDBus port
+  + FSF Address has been updated
+  + gvfs-fuse-daemon has been renamed to gvfsd-fuse
+  + Spelling correction "filesystem" -> "file system"
+  + programs: Return proper exit value when something fails
+  + afc: Use consistent debug env var
+  + computer: Mark items as not renamable
+  + proxyvolumemonitor: Use GDBusProxy's name owner change
+    notification
+  + udisks2:
+    - Work around Linux bug for lingering partitions of cleared
+      loop device
+    - set should_automount to TRUE for loop devices set up by the
+      user
+    - ensure that encrypted loop devices also get padlock emblem
+  + Updated translations.
+- Rebase gvfs-cdda.patch.
+
+-------------------------------------------------------------------
+Tue Aug  7 12:51:08 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 1.13.3:
+  + Added man pages for all gvfs utilities
+  + Added a recent files backend (using GtkRecentManager)
+  + Support for new GMountOperation::show-unmount-progress signal
+  + daemon: Updated to use XDG Cache Home for thumbnails
+  + daemon/sftp: Support allocating PTYs through openpty on BSD
+  + trash: Make it possible to get to real URI
+  + udisks2: Plug a memory leak
+  + Updated translations.
+- Add pkgconfig(gtk+-3.0) BuildRequires: new dependency.
+- Add xsltproc and docbook-xsl-stylesheets BuildRequires: new
+  dependencies for building the man pages.
+
+-------------------------------------------------------------------
+Tue Aug  7 11:54:24 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 1.13.2:
+  + dav:
+    - Ignore empty tags in multistatus responses
+    - Abort finding the root on error or auth info change
+  + fuse: Support ftruncate() where requested size > current size
+  + gdbus: Use stable metadata proxy
+  + gvfs-open: Use g_app_info_launch_default_for_uri()
+  + build: Install bash completion files in /usr/share/
+  + Some more build fixes
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Aug  7 10:40:55 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 1.13.1:
+  + Volume monitoring and metadata GDBus port
+  + gvfs-mount: Add new -e option to eject a mount
+  + udisks2:
+    - Couple of multiseat fixes
+    - Don't call g_simple_async_result_take_error() twice
+    - Also check for umount(8) saying "target is busy"
+    - Set timeout to INTMAX when unmounting a filesystem
+    - Show "Eject Anyway" (not "Unmount Anyway") if ejecting
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Aug  7 09:58:12 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 1.13.0:
+  + afp:
+    - Convert pascal strings into utf-8
+    - Use the UTF-8 server name for password dialogs when it's
+      available
+  + udisks2:
+    - Don't set should_automount to TRUE for devices on other seats
+    - Set should_automount correctly when starting up
+    - Don't show drives from other seats and special-case seat
+      "all"
+    - Don't automount if drive is shared across all seats
+    - Support getting/storing LUKS encryption passphrase from
+      keyring
+  + build:
+    - Include udisks2/what-is-shown.txt in the tarball
+    - Bail if gphoto support is requested but not available
+  + Updated translations.
+- Add pkgconfig(libsystemd-login) BuildRequires for the new seat
+  based comparisons.
+- Change dbus-1-glib-devel and glib2-devel BuildRequires to
+  pkgconfig() BuildRequires: dbus-glib-1, glib-2.0, gobject-2.0,
+  gio-unix-2.0, gio-2.0.
+
+-------------------------------------------------------------------
+Mon Aug  6 19:30:09 UTC 2012 - dimstar@opensuse.org
+
+- Add gvfs-cdda.patch: Fix build with libcdio_paranoia 0.83
+  (bnc#774636).
+- Re-enable cdda backend by setting with_cdda %define to 1
+- Replace libcdio-devel BuildRequires with
+  pkgconfig(libdio_paranoia), which is what configure checks for.
+
+-------------------------------------------------------------------
+Mon Aug  6 18:40:31 CEST 2012 - sbrabec@suse.cz
+
+- Move autoreconf to %build, where it belongs.
+
+-------------------------------------------------------------------
+Thu May 24 09:48:58 UTC 2012 - vuntz@opensuse.org
+
+- Disable the build of cdda backend with a with_cdda %define (set
+  to 0 for now), as libcdio-paranoia got split from libcdio. If
+  %with_cdda is set to 0, just don't use the libcdio-devel
+  BuildRequires.
+
+-------------------------------------------------------------------
+Wed May 16 06:11:51 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 1.12.3:
+  + build: Include udisks2/what-is-shown.txt in the tarball
+  + afp: Use g_clear_object properly
+  + udisks2:
+    - Also check for umount(8) saying "target is busy"
+    - Set timeout to INTMAX when unmounting a filesystem
+    - Set can_eject correctly
+
+-------------------------------------------------------------------
+Sat Apr 28 12:20:47 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 1.12.2:
+  + udisks2: Set should_automount correctly when starting up
+  + afp: Convert pascal strings into utf-8
+  + afp: Use the UTF-8 server name for password dialogs when it's
+    available
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Apr 17 06:17:06 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 1.12.1:
+  + afc: Fix building against libimobiledevice-1.1.2
+  + afp: Prevent redefinition of GVfsAfpServer
+  + gphoto2: Initialize mutex early enough
+  + udisks2: Fix some memory leaks
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Mar 30 09:06:34 UTC 2012 - vuntz@opensuse.org
+
+- Add udisks2 Recommends to backends subpackage when udisks2
+  support is enabled: we need udisks2 for the volume monitor to
+  work.
+
+-------------------------------------------------------------------
+Wed Mar 28 09:43:22 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 1.12.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 19 17:48:44 UTC 2012 - zaitor@opensuse.org
+
+- Update to version 1.11.5:
+  + fuse: Keep using ~/.gvfs as fallback.
+  + udisks2: Set G_VOLUME_IDENTIFIER_KIND_CLASS identifier for
+    volumes.
+  + Updated translations.
+- Enable udisks2 support in gvfs.
+
+-------------------------------------------------------------------
+Sat Feb 25 10:25:32 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 1.11.4:
+  + dav: Fix free space reporting
+  + udisks2: Only show /run/media/$USER mounts instead of
+    $XDG_RUNTIME_DIR
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb  7 15:17:07 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 1.11.3:
+  + Brand new udisks2 volume monitor
+  + AFP backend fixes and enhancements
+  + User runtime dir is now used for gvfs mounts and the burn
+    backend
+  + Fixed backends segfaulting on unmount
+  + Updated translations.
+- Remove xz BuildRequires now that it comes for free in the build
+  system.
+- Get ready for switch to udisks2:
+  + Add a with_udisk2 macro, currently set to 0 as udisk2 is still
+    waiting for security review (bnc#742751).
+  + This will enable the use of the udisks2 volume monitor, instead
+    of the gdu volume monitor.
+  + If with_udisk2 is set to 1:
+    - Use pkgconfig(udisks2) BuildRequires.
+    - Pass --enable-udisks2 --disable-gdu to configure.
+  + If with_udisk2 is set to 0:
+    - Use libgdu-devel BuildRequires.
+    - Pass --disable-udisks2 --enable-gdu to configure.
+
+-------------------------------------------------------------------
+Wed Jan 18 17:43:27 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 1.11.2:
+  + daemon: Spawn fuse daemon in foreground for uClibc
+    compatibility
+  + ftp: Make ftp.mount no longer conditionally built
+  + fuse: Remove the unused sys/vfs.h include
+  + gvfs-mime: List recommended applications
+  + build: Check for util.h to prevent implicit declaration
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Dec 20 10:08:57 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 1.11.1:
+  + Fixed several crashes from recent mutex API changes
+  + afc:
+    - Invert the choices order for the device passcode dialog
+    - Tweak the text used to report a device locked error
+    - Add support for iOS5 thumbnails
+  + http: Automatically decompress gzip'ed streams
+  + Updated translations.
+- Add xz BuildRequires because we can't build a package for a
+  xz-compressed tarball without explicitly specifying that... See
+  bnc#697467 for more details.
+
+-------------------------------------------------------------------
+Thu Nov 17 16:42:06 UTC 2011 - dimstar@opensuse.org
+
+- Add pkgconfig(libbluray) BuildRequires. The newly available
+  library eases access to Blu-Ray disks.
+
+-------------------------------------------------------------------
+Fri Oct 28 07:41:25 UTC 2011 - dimstar@opensuse.org
+
+- Update to version 1.11.0:
+  + volume monitors:
+    - Keep remote volume monitor proxies alive forever
+    - Support get_sort_key() in out-of-process volume monitors and
+      gvfs-mount(1)
+  + daemon: Grab a pointer to the GvfsBackend before unref'ing a
+    job source, preventing a crash
+  + build: Purge hardcoded -DG_DISABLE_DEPRECATED
+  + Adapt to GLib 2.31.0 deprecations and new API
+  + Updated translations.
+- Update gvfs-nvvfs.patch: only glib.h can be included directly.
+
+-------------------------------------------------------------------
+Mon Oct 17 20:25:38 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 1.10.1:
+  + daemon: Fix a crash on unmount, unref'ing a job source
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Oct 15 04:47:08 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to make the spec file more reliable
+
+-------------------------------------------------------------------
+Mon Sep 26 14:39:21 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 1.10.0:
+  + gdu volume monitor: Mark bootable mounts as such
+  + smb: Ignore read-only attribute for directories
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep  5 18:38:39 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 1.9.5:
+  + dav: Fix small memory leak
+  + gdu: Don't ignore fstab mounts belonging to crypto volumes
+  + smb: Always check for existing file on rename
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Aug 31 16:25:58 CEST 2011 - vuntz@opensuse.org
+
+- Update to version 1.9.4:
+  + Brand new AFP backend
+  + Fixed several leaks of GSimpleAsyncResult objects
+  + Added simple gvfs-mime test application
+  + daemon: Ignore SIGPIPE signals to avoid process termination on
+    cancelled transfer
+  + computer: Use 'drive-harddisk-system' as File System icon
+  + ftp: Fix return value of try_get_settable_attributes() on
+    failure
+  + gvfs-open: Exit with error code > 0 when open fails
+  + String tweaks
+  + Updated translations.
+- Add libgcrypt-devel BuildRequires: new dependency for the AFP
+  backend.
+- Rebase gvfs-nvvfs.patch.
+
+-------------------------------------------------------------------
+Mon Aug 15 19:37:07 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 1.9.3:
+  + gvfs-copy: Do not use deprecated g_format_size_for_display()
+  + fuse: Bring back real statfs()
+  + Fixed several obvious programming errors found during code
+    analysis
+  + Updated translations.
+- Drop gvfs-g_format_size.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Thu Jul 28 09:03:07 CEST 2011 - vuntz@opensuse.org
+
+- Update to version 1.9.2:
+  + ftp: Fix stupid proxy servers disconnecting on FEAT
+  + gdu: Respect UDISKS_AUTOMOUNT_HINT available in recent udisks
+    and gnome-disk-utility
+  + build: Lower AC_PREREQ requirement
+  + Updated translations.
+- Add gvfs-g_format_size.patch: do not use deprecated API to fix
+  build.
+
+-------------------------------------------------------------------
+Fri Jul  1 11:10:33 CEST 2011 - vuntz@opensuse.org
+
+- Drop gvfs-dice-backend.patch: the dice features are not getting
+  maintained by anyone, and we do not want to support them in that
+  case.
+
+-------------------------------------------------------------------
+Tue Jun 14 14:20:38 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 1.9.1:
+  + client:
+    - Handle error events when polling _g_vfs_daemon_call_sync ()
+    - Don't leak the GCancellable's fd in case of an g_poll error
+  + daemon:
+    - New logic to the backend to block requests
+    - Add logic to force close active channels
+    - Implement auto-busy on unmount
+  + daemonfile: Re-root the path in set_display_name ()
+  + afc: Better error messages
+  + dav:
+    - Correctly encode URLs
+    - Unescape the path when setting the mount_prefix of the
+      GMountSpec
+    - Include username and/or port in the backend's display-name
+    - Decode the paths of the multistatus response before comparing
+      them
+    - Check for empty but present displayname dav-property
+    - Implement query_fs_info and report used and free space
+    - Use default unmount logic
+  + gphoto2: Use new default auto-busy code
+  + http:
+    - Add http_backend_get_mount_base ()
+    - Get rid of unnecessary calls to uri_for_filename ()
+  + build: Change default tarball compression format to xz
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Jun  6 10:05:48 UTC 2011 - dimstar@opensuse.org
+
+- Use 0%%{suse_version} instead of %%{suse_version} only to make
+  sure we have a value, even when suse_version is not defined.
+
+-------------------------------------------------------------------
+Wed May 18 03:40:29 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 1.9.0:
+  + afc:
+    - Fix renaming files moving them to the root dir
+    - Use a better display name for jailbroken device access
+  + common: Use libbluray to get Blu-Ray metadata
+  + daemon:
+    - Fix threadsafety of closing channels
+    - Don't leak dbus messages
+  + fuse:
+    - Make created files visible immediately on WebDAV
+    - Pretend created file exists even if backend didn't create it
+  + gdu volume monitor:
+    - Fix setting the BDMV name
+    - Fix check for symlinks in /dev
+    - Automount flash card readers
+  + gphoto2:
+    - Recognize cameras which don't implement get storageinfo
+  + dav:
+    - Fix copying of remote folders to disk
+    - Correctly handle usernames supplied in the url
+  + http/dav: Send Accept-Language header
+  + http: Use Content-Disposition filename if available
+  + Updated translations.
+- Drop gvfs-dav-recursive-directory-ops.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Tue Apr 26 15:16:06 UTC 2011 - fcrozat@novell.com
+
+- Update to version 1.8.1:
+  + Fix threadsafety of closing channels.
+  + Don't leak dbus messages.
+  + gdu:
+    - Fix setting the BDMV name.
+    - Fix check for symlinks in /dev, was reversed.
+  + Updated translations.
+- Version libimobiledevice-devel BuildRequires with >= 1.1.0, to
+  make sure we don't even try to build if we don't have the right
+  version. New libimobiledevice will reach Factory soon.
+
+-------------------------------------------------------------------
+Tue Apr  5 11:55:02 UTC 2011 - fcrozat@novell.com
+
+- Update to version 1.8.0:
+  + afc: Fix renaming files moving them to the root dir
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 21 16:49:05 UTC 2011 - fcrozat@novell.com
+
+- Update to version 1.7.3!
+  + client: Fix wrong assignment before dbus_connection_unref()
+  + archive:
+    - Prevent assertion failure on duplicate mount
+    - Skip leading "./" from pathnames if present
+    - Propagate entry index as inode no. for files
+  + smb: Add support for default location
+  + Build fixes.
+  + Updated translations.
+- Rebase gvfs-dav-recursive-directory-ops.patch.
+
+-------------------------------------------------------------------
+Thu Mar 10 11:09:26 CET 2011 - vuntz@opensuse.org
+
+- Move gvfsd-metadata daemon to the main gvfs package, and ship
+  dbus .service files with their appropriate daemons, to avoid
+  declaring a dbus service if the binary is not installed.
+
+-------------------------------------------------------------------
+Mon Feb 28 11:11:32 UTC 2011 - fcrozat@novell.com
+
+- Update to version 1.7.2:
+  + ftp: Parse mode, user and group for unix listings
+  + ftp: Implement chmod
+  + sftp: Catch invalid argument type for chmod command
+  + smb: Catch invalid argument type when setting mtime
+  + Updated translations.
+- Changes from version 1.7.1:
+  + ftp: Fix refcounting of addresses when connecting
+  + ftp: Detect TLS and SSL support
+  + afc: Add ability to mount the house-arrest service
+  + afc: Add support for House Arrest protocol to access
+         the Documents/ folder within applications
+  + Fix gvfs client code on ARM platform
+  + Various build issues fixed
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Jan 13 18:31:47 CET 2011 - hpj@novell.com
+
+- Add gvfs-dav-recursive-directory-ops.patch (bnc#395225). This
+  makes copying directories over WebDAV work.
+
+-------------------------------------------------------------------
+Thu Dec 16 17:40:53 CET 2010 - vuntz@opensuse.org
+
+- Update to version 1.7.0:
+  + sftp: Close pty master in child process to prevent SELinux
+    denial
+  + fuse: Add proper truncate support for open()
+  + Port to GSettings
+  + gdu: Treat mounts as hidden if they have a path element
+    that starts with a dot
+  + Updated translations.
+- Drop gvfs-glib-2.27.patch: this is not needed anymore.
+- Rebase gvfs-dice-backend.patch, gvfs-nds.patch and
+  gvfs-nvvfs.patch.
+- Remove gconf2-devel BuildRequires.
+- Remove check for openSUSE 11.1 and earlier: we won't support 11.1
+  anymore.
+- Handle gsettings schemas: add %glib2_gsettings_schema_requires
+  for gvfs-backends, and %glib2_gsettings_schema_post(un) in the
+  gvfs-backends scriptlets.
+
+-------------------------------------------------------------------
+Mon Dec  6 16:10:56 CET 2010 - vuntz@opensuse.org
+
+- Change license of gvfs-backends from LGPLv2.0+ to "LGPLv2.0+ ;
+  GPLv3": gvfsd-trash has some GPLv3-only code. Fix bnc#653023.
+
+-------------------------------------------------------------------
+Fri Nov 19 10:07:00 CET 2010 - vuntz@opensuse.org
+
+- Add gvfs-glib-2.27.patch: only build the app lookup extension for
+  glib <= 2.27.1, else the build fails.
+
+-------------------------------------------------------------------
+Mon Nov 15 11:35:14 CET 2010 - dimstar@opensuse.org
+
+- Update to version 1.6.6:
+  + Revert removal of app lookup extension for stable Gnome 2.32
+    line
+  + sftp: Close pty master in child process to prevent selinux
+    denials
+  + fuse: Add O_TRUNC support for open() to prevent data loss.
+
+-------------------------------------------------------------------
+Fri Nov  5 19:05:35 CET 2010 - vuntz@opensuse.org
+
+- Update to version 1.6.5:
+  + Remove app lookup extension (now handled internally in GIO)
+  + gphoto: Use correct address for GPhoto mounts with gudev
+  + sftp: Fix poll() timeout
+- Drop gvfs-429959-handle-blank-schemas.patch: this was removed
+  since schemas are now handled in GIO directly.
+
+-------------------------------------------------------------------
+Mon Oct 11 21:32:43 CEST 2010 - vuntz@opensuse.org
+
+- Add missing Requires for glib2-tools to gvfs in baselibs.conf.
+
+-------------------------------------------------------------------
+Wed Sep 29 02:14:23 UTC 2010 - aj@suse.de
+
+- Change lang package Requires to Recommends since it is not
+  mandatory at runtime.
+
+-------------------------------------------------------------------
+Mon Sep 27 18:32:59 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 1.6.4:
+  + daemons: Move GConf initialization from backend constructor
+  + afc: Add support for photo thumbnails on iOS4
+  + sftp: Use poll() to cope with openssh-5.6 changes
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep 22 07:37:09 UTC 2010 - coolo@novell.com
+
+- fix baselibs.conf
+
+-------------------------------------------------------------------
+Fri Jul 23 12:45:38 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 1.6.3:
+  + fix the build against recent glib
+  + afc: remove com.apple.afc dependency
+  + afc: add password dialog
+  + ftp: fix undeclared variable
+  + ssh: improve password dialog
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Jul 22 16:31:25 CEST 2010 - vuntz@opensuse.org
+
+- Use %glib2_gio_module_* macros that have been added to glib2,
+  to make sure we always execute the right commands.
+- Add baselibs.conf.
+
+-------------------------------------------------------------------
+Mon Jun 21 12:48:22 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 1.6.2:
+  + bgo#619537: conflicts with GIO / recent glib
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu May 27 14:28:11 UTC 2010 - dimstar@opensuse.org
+
+- fate#308282: BuildRequire libimobiledevice-devel to enable afc
+  support of gvfs. Split out in gvfs-backend-afc package, which is
+  recommended by gvfs-backends.
+
+-------------------------------------------------------------------
+Mon May  3 22:13:55 CEST 2010 - captain.magnus@opensuse.org
+
+- Update to version 1.6.1:
+  + client: Always return ERROR_CANCELLED for cancelled operations
+  + afc: Don't handle jailbroken phones
+  + afc: Detect ipad with right name and icon
+  + ftp: Better handling of some PWD results
+  + gdu: Support eject of blank cdroms
+  + client: Don't loop on problematic dbus input
+  + Translation updates
+
+-------------------------------------------------------------------
+Mon Mar 29 11:57:09 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 1.6.0:
+  + afc: Allow copy of folders
+  + gphoto2: Don't access things accessible via afc too
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar  8 17:28:55 CET 2010 - dimstar@opensuse.org
+
+- Update to version 1.5.5:
+  + Fix with-dbus-service-dir configure switch
+  + ftp: Cleanup (close the data connection unconditionally)
+  + archive: Use archive_errno() the correct way
+  + Correct return values on error for programs
+  + Translation updates.
+- Rebase gvfs-dice-backend.patch.
+
+-------------------------------------------------------------------
+Wed Feb 24 12:15:22 CET 2010 - dimstar@opensuse.org
+
+- Update to version 1.5.4:
+  + gphoto2: Better support for devices that are read-only + delete
+  + gdu: Various fixes and preparation for LVM
+  + ftp: fix asserts
+  + sftp: remember to save password if username changed
+  + gio module: don't call g_file_find_enclosing_mount_async
+    callback directly
+  + gvfs-monitor: Track moves if availible
+  + Translation updates
+- Rebase gvfs-dice-backend.patch, gvfs-nds.patch and
+  gvfs-429959-handle-blank-schemas.patch
+- Drop gvfs-no-querymodule-on-install.patch, upstream included.
+
+-------------------------------------------------------------------
+Sun Feb 14 18:39:40 CET 2010 - vuntz@opensuse.org
+
+- Add gvfs-no-querymodule-on-install.patch to fix build.
+
+-------------------------------------------------------------------
+Fri Feb 12 14:17:13 CET 2010 - dimstar@opensuse.org
+
+- Update to version 1.5.3:
+  + afc: Update for libimobiledevice (rename of libiphone)
+  + ftp: Handle cases where symlink target is not defined
+  + ftp: Prefer PASV/PORT to EPSV/EPRT for IPv4, the latter for
+    IPv6
+  + Translation updates.
+
+-------------------------------------------------------------------
+Thu Jan 28 12:13:09 CET 2010 - vuntz@opensuse.org
+
+- Remove en@shaw translation on openSUSE 11.2 and earlier.
+
+-------------------------------------------------------------------
+Mon Jan 25 14:19:37 CET 2010 - vuntz@opensuse.org
+
+- Update to version 1.5.2:
+  + Support new "default location" gio mount attribute
+  + Enable support for lazy loading of gio modules
+  + Don't build hal if building gdu
+  + daemon: Finalize backend on unmount
+  + metadata: stability and leak fixes
+  + metadata: fix data loss on i/o error
+  + fuse: Don't support readlink
+  + fuse: Allow setting mtime
+  + fuse: Fix permissions
+  + smb: Fix free space reporting on some servers
+  + gdu: handle mounts better
+  + trash: Fix crash/assert
+- Use libexecdir instead of libdir. Fix bnc#545011.
+- Remove hal-devel BuildRequires.
+- Use gio-querymodules to update information about gio modules:
+  + add post/postun scriptlets
+  + add Requires(post)/Requires(postun) on glib2 to make sure we
+    have gio-querymodules installed for the scriptlets
+
+-------------------------------------------------------------------
+Wed Dec 23 10:31:35 CET 2009 - vuntz@opensuse.org
+
+- Change gnome-keyring-devel BuildRequires to
+  libgnome-keyring-devel, following the module split upstream.
+
+-------------------------------------------------------------------
+Wed Dec  2 14:23:58 CET 2009 - vuntz@opensuse.org
+
+- Update to version 1.5.1:
+  + FreeBSD support for the gphoto2 backend
+  + Don't show ssh dns-sd items in dns-sd:, only sftp ones
+  + New AFC backend, providing access to Apple's iPhone, and iPod
+    Touch devices
+  + Don't silently overwrite when restoring from trash
+  + Don't subscribe to unnecessary HAL D-Bus events
+  + Avoid error dialogs when the user canceled
+  + Don't confuse media players for cameras
+  + Support for loading icon and title on Blu-ray video discs
+  + gdu:
+    - Consider logical partitions when determining if a drive
+      should be ignored
+    - Separated "Safely Remove Drive" from "Eject"
+    - Disallow mounting/ejecting empty drives
+    - Handle NULL device objects
+  + obexftp:
+    - Fix a crash in the backend
+    - Delete source file after move (remove_source switch)
+  + http:
+    - Support querying input streams
+    - Store and use cookies
+  + smb:
+    - Support querying filesystem size and free space
+  + ftp:
+    - Fixed parsing of CMU/VMS-IP FTP style listing
+  + Bugs fixed: bgo#595981, bgo#596867, bgo#517014, bgo#593045,
+    bgo#594928, bgo#586724, bgo#586729, bgo#597104, bgo#580825
+  + Translation updates
+- Rebase gvfs-dice-backend.patch and gvfs-nvvfs.patch.
+
+-------------------------------------------------------------------
+Sat Nov 14 16:48:41 CET 2009 - vuntz@opensuse.org
+
+- Update to version 1.4.1:
+  + FreeBSD support for the gphoto2 backend
+  + Don't silently overwrite when restoring from trash
+  + Avoid error dialogs when the user canceled
+  + Fix a crash in the obexftp backend
+  + Don't confuse media players for cameras
+  + Translation updates
+
+-------------------------------------------------------------------
+Wed Sep 30 10:34:06 CEST 2009 - vuntz@opensuse.org
+
+- Update to version 1.4.0:
+  + metadata: fix leaks
+  + fix some uninitialized memory reads
+  + Always return metadata:: as a writable namespace for all
+    backends
+  + Translation updates
+
+-------------------------------------------------------------------
+Wed Sep  9 03:52:19 CEST 2009 - vuntz@opensuse.org
+
+- Update to version 1.3.6:
+  + ftp: robustness fixes
+  + gdu: Avoid unnecessary authentication dialogs
+  + Translation updates.
+- Do not package gvfs-fuse-daemon twice.
+
+-------------------------------------------------------------------
+Tue Aug 25 13:27:08 CEST 2009 - vuntz@novell.com
+
+- Update to version 1.3.5:
+  + Properly translate gvfs-* programs
+  + Implement support for g_cancellable_release_fd
+  + sftp: Handle existing file on mkdir
+  + smb: Better performance when reading files
+  + ftp: Fix memory leaks
+  + Make dav mounts work be accessible with fuse (bgo#590730,
+    bgo#590862)
+  + metadata: Fix memory leaks in daemon
+  + metadata: Fix rare write error on journal wrapover
+  + gphoto: Handle removal of camera with multiple storage heads
+  + hal: Fix crash for volumes with no HAL UDI
+- Reorder preamble.
+
+-------------------------------------------------------------------
+Mon Aug 10 21:28:38 CEST 2009 - vuntz@novell.com
+
+- Update to version 1.3.4:
+  + ftp: Make large FTP transfers work
+  + gphoto: use udev instead of hal
+  + Fix build on FreeBSD
+  + Bugs fixed: bgo#588187, bgo#589915, bgo#573994, bgo#590793,
+    bgo#576229, bgo#589434
+
+-------------------------------------------------------------------
+Thu Aug 06 17:07:56 CEST 2009 - opensuse@sukimashita.com
+
+- Make gvfs 1.3.3 still build for openSUSE 11.1 by making the
+  libgdu-devel and libgudev-1_0-devel BuildRequires occur only for
+  11.2.
+
+-------------------------------------------------------------------
+Wed Jul 29 23:21:33 CEST 2009 - vuntz@novell.com
+
+- Update to version 1.3.3:
+  + Call dbus_threads_init_default before doing any other dbus
+    calls.
+  + Always build gvfsd-ftp.
+  + When a p2p connection is closed, cancel all pending jobs.
+  + Improve debut output.
+  + Code cleanup.
+  + Updated translations.
+- Uncomment the libgdu-devel BuildRequires now that we have a
+  recent enough version.
+- Respin gvfs-dice-backend.patch.
+
+-------------------------------------------------------------------
+Mon Jul 20 14:49:24 CEST 2009 - dominique-obs@leuenberger.net
+
+- Update to version 1.3.2:
+  + metadata-store: initial implementation
+  + gvfs-ls: add a -n option to gvfs-ls for nofollow-symlinks
+  + gvfsd-computer: better handling of PC floppy drives
+  + ftp: EPTR support
+  + cdda: Support gudev (and prefer it instead of hal)
+  + Add support user interaction when unmounting mounts
+    (gdu, gphoto2)
+  + Add support starting/stopping drives (gdu monitor)
+  + Fix 'make distcheck'
+  + Bugs fixed: bgo#582175, bgo#516704, bgo#586280, vgo#585853,
+    bgo#582772, bgo#585591, bgo#587484
+- New backend gvfsd-metadata
+- New dependency to libgudev-1_0-devel
+
+-------------------------------------------------------------------
+Mon Jun 15 23:33:22 CEST 2009 - vuntz@novell.com
+
+- Update to version 1.3.1:
+  + Add Gnome Disk utility based volume monitor
+  + Emit pre-unmount signal on GMounts
+  + Use new race-free cancellation connect APIs
+  + fix crash with newer glib
+  + avoid sending progress info if not needed
+  + ftp: Convert to use gio network APIs
+  + ftp: Restructure code significantly
+  + ftp: Fix logging in to a FTP server only works for the 2nd
+    attempt
+  + ftp: Handle files > 4 gig
+  + gphoto: Fix support for Canon EOS 5D
+  + sftp: Pick up SSH_AUTH_SOCK from gnome-keyring
+  + sftp: Don't trust remote permissions for uids other than user
+  + cdda: verify filenames before using
+  + gvfs-copy: Show speed when copying
+
+-------------------------------------------------------------------
+Tue May 19 05:15:35 CEST 2009 - vuntz@novell.com
+
+- Update to version 1.2.3:
+  + Pick up SSH_AUTH_SOCK from gnome-keyring
+  + sftp: Don't trust remote permissions for uids other than user
+  + ftp: Fix logging in to a FTP server only works for the 2nd
+    attempt
+  + ftp: Handle files > 4 gig
+  + fix crash with newer glib
+- Drop gvfs-no-shebang.patch: fixed upstream.
+- Remove useless part of gvfs-dice-backend.patch.
+
+-------------------------------------------------------------------
+Tue Apr 14 15:16:19 CEST 2009 - vuntz@novell.com
+
+- Update to version 1.2.2:
+  + ftp: Fix error handling in some cases
+  + proxy monitor: Fix warning spew
+
+-------------------------------------------------------------------
+Tue Apr  7 17:28:15 CEST 2009 - vuntz@novell.com
+
+- Update to version 1.2.1:
+  + Fix duplicate CD audio icons after remount
+  + Fix problems mounting encrypted volumes
+  + Handle usernames with @ in them better in uris
+  + trash: handle weird filenames correctly
+  + sftp: Fix various error conditions
+  + volume monitors: emit pre-unmount signals
+  + smb: Fix various error conditions
+  + fuse: Make sure closing a file flushed the file on the backend
+
+-------------------------------------------------------------------
+Fri Apr  3 20:34:29 IST 2009 - msuman@suse.de
+
+- Re-based gvfs-nds.patch to make it compile with gvfs-1.2.0
+- Patched gvfs-nvvfs.patch and gvfs-nds.patch with fixes from
+  SLE11
+
+-------------------------------------------------------------------
+Mon Mar 16 14:33:57 CET 2009 - mboman@suse.de
+
+- Update to version 1.2.0:
+  + sftp: Don't hang if ssh no authentication method availible
+  + Don't leak file monitors
+  + computer: don't show shadowed mounts
+
+-------------------------------------------------------------------
+Tue Mar 10 21:10:10 CET 2009 - vuntz@novell.com
+
+- Update to version 1.1.8:
+  + Fix crashers and leaks
+  + Handle file:// uris with anchors in gvfs-open
+  + fuse: Support ftruncate to the current file size
+  + escape/unescape hostname part in uris, allowing spaces in e.g.
+    smb domains
+  + hal: Fix "No mount object" error on mount
+  + Change details of the new .xdg-volume-info file format
+  + Fix races in cancellation of gvfs streams
+  + Remove debug spew from backends
+  + ftp: Fix anonymous login
+  + gphoto2: Ignore broken storages with no capacity
+  + Don't globally modify COMP_WORDBREAKS in bash completion script
+  + Don't ask for username when getting ssh key passphrase
+
+-------------------------------------------------------------------
+Fri Mar  6 02:48:39 CET 2009 - vuntz@novell.com
+
+- Update to version 1.1.7:
+  + Fix build on some platforms
+  + ftp: Fix short read errors
+  + gphoto2: Make it work on iphone
+  + sftp: Fix symlink creation
+  + fuse: Better support of truncation, fixing OOo save
+  + proxy monitors: Support mount operations, etc
+  + gvfs-mount: add --device commandline support
+  + sftp: Fix protocol bug that made some servers not work
+  + general support for query_info over streams, implemented for
+    smb, sftp
+  + Initial support for .xdg-volume-info reading
+- Remove -fno-strict-aliasing from CFLAGS.
+- Remove AutoReqProv: it's default now.
+
+-------------------------------------------------------------------
+Mon Feb 16 17:49:47 CET 2009 - sbrabec@suse.cz
+
+- Added support for translation-update-upstream (FATE#301344).
+
+-------------------------------------------------------------------
+Mon Feb 16 16:35:01 CET 2009 - mboman@suse.de
+
+- Update to version 1.1.6:
+  + Fix crashes
+  + trash: Better messages
+  + Clean up glib and gtk includes
+  + archive: Build with later versions of libarchive
+  + dav: Fix folder creation
+  + dav: Fix redirection when user is specified in url
+  + http: fix error propagation
+  + sftp: Try to preserve ownership when replacing a file
+
+-------------------------------------------------------------------
+Tue Feb  3 08:24:38 EST 2009 - mboman@suse.de
+
+- Update to version 1.1.5:
+  + network: Pick up SMB shares from zeroconf
+  + obexftp: Write support for
+  + obexftp: Support obexftp over usb
+  + trash: Don't follow symlinks on delete
+  + fix crashes
+
+-------------------------------------------------------------------
+Sun Feb  1 19:47:13 EST 2009 - mboman@suse.de
+
+- Update to version 1.1.4:
+  + Trash performance fixes
+  + Fuse performance fixes
+
+-------------------------------------------------------------------
+Thu Jan 29 12:59:36 CET 2009 - vuntz@novell.com
+
+- Disable gvfs-nds.patch for now, since it needs to be reworked to
+  actually compile.
+
+-------------------------------------------------------------------
+Fri Jan 23 10:19:55 CET 2009 - vuntz@novell.com
+
+- Merge packages from GNOME:Factory:Next and openSUSE:Factory.
+- Rename gvfs-novell-nautilus-plugin-filesystem.patch to
+  gvfs-nvvfs.patch
+- Integrate gvfs-nds-no-vfs-init.patch in gvfsd-nds.patch, and
+  rename gvfsd-nds.patch to gvfs-nds.patch
+
+-------------------------------------------------------------------
+Fri Jan 16 20:09:06 CET 2009 - ksamrat@novell.com
+
+- gvfs-nds-no-vfs-init.patch - Avoid issues with vfs initialization
+
+-------------------------------------------------------------------
+Thu Jan 15 07:55:22 CET 2009 - ksamrat@novell.com
+
+- gvfsd-nds.patch
+- gvfs-novell-nautilus-plugin-filesystem.patch
+- Provide the Nautilus backend for NDS and Novell File system browsing
+- Solves bugs bnc#420155 , bnc#449396
+
+-------------------------------------------------------------------
+Fri Jan 09 01:04:01 CET 2009 - mboman@suse.de
+
+- Remove gvfs-smb-browse-auth.patch. Fixed upstream
+
+-------------------------------------------------------------------
+Thu Jan  8 01:04:01 CET 2009 - hpj@novell.com
+
+- Added gvfs-429959-handle-blank-schemas.patch (bnc#429959).
+
+-------------------------------------------------------------------
+Wed Jan  7 11:57:20 EST 2009 - mboman@suse.de
+
+- Update to version 1.1.3:
+  + ftp: fix limited number of connections causes commands to fail
+    (bgo#565504)
+  + trash: fix parallel build doesn't work (bgo#562955)
+  + trash: add trash::orig-path and trash::deletion-date info
+  + trash: set files to mode 700 before deleting to deal with users
+    trashing read-only directories
+  + smb-browse: browsing authentication support (bgo#524485)
+  + smb-browse: make backend not automounted anymore
+
+-------------------------------------------------------------------
+Sat Dec 20 11:14:02 EST 2008 - mboman@suse.de
+
+- Update to version 1.1.2:
+  + New trash backend
+  + Use the new shadow mount facility in gio
+  + gphoto2: Use shadow mounts
+  + obex: Fix icon for root directory
+  + http: Fix major memory leak
+  + http: Support proxies
+
+-------------------------------------------------------------------
+Sun Dec 14 19:04:33 EST 2008 - mboman@suse.de
+
+- Update to version 1.1.1:
+  + Reverse map FUSE pathnames to gvfs locations
+  + Fix crashes
+  + Show better icon info in gvfs-info
+  + Support custom icons for gvfs backends
+  + dav: support uris (dav+sd://) which specify dns-sd services instead of
+    resolved ip+port
+  + ftp: Fix time parsing
+  + ftp: Show username in auth dialog if specified in uri
+  + ftp: Support UTF8 server feature
+  + ftp: Use LIST -a instead of LIST on unix servers
+  + fuse: Fix major race in that caused crashes
+  + fuse: Set st_blocks so that e.g. the "du" command works
+  + gphoto: use custom icons for faster thumbnails
+  + obexftp: Port to bluez 4 API
+  + sftp: If name specified in mount, use in name too so that fuse paths
+    are unique
+  + sftp: Support /etc/favicon.png
+  + smb: Don't ask for password twice if cancelled
+  + smb: support setting timestamp
+- Remove gvfs-obexftp-updated-apis-3.patch. Fixed upstream
+- Add gvfs-enable-deprecated.patch (bgo#564464)
+
+-------------------------------------------------------------------
+Thu Dec  4 20:12:13 CST 2008 - hpj@novell.com
+
+- Added gvfs-smb-browse-auth.patch (bnc#437780).
+
+-------------------------------------------------------------------
+Tue Nov 11 07:32:52 CST 2008 - maw@suse.de
+
+- Apply gvfs-dice-backend.patch correctly.
+
+-------------------------------------------------------------------
+Fri Nov 7 19:40:15 EDT 2008 - banderso@novell.com
+
+- updated gvfs-dice-backend.patch - feature complete for Beta 5
+
+-------------------------------------------------------------------
+Mon Oct 27 10:40:15 EDT 2008 - jpr@novell.com
+
+- Use bluez-devel not bluez in the BuildRequires (bnc#436950)
+- List each backend individually so we know when one breaks
+- Add gvfs-obexftp-update-apis-3.patch for bluez 4.x
+
+-------------------------------------------------------------------
+Tue Oct 21 19:24:32 EST 2008 - mboman@suse.de
+
+- Update to version 1.0.2:
+  + Make sure mount-added is always emitted when a mount operation is
+    completed
+  + Crash fixes
+  + Set st_blocks to make du and ls -s work
+  + Stability fix with concurrent close and reads (made amarok2 crash)
+
+-------------------------------------------------------------------
+Fri Oct  3 11:26:25 WST 2008 - mboman@suse.de
+
+- Update to version 1.0.1:
+  + bgo#547568 - gvfsd-trash crash due to race condition
+
+-------------------------------------------------------------------
+Wed Sep 24 00:37:04 CDT 2008 - hpj@suse.de
+
+- Add gvfs-dice-backend.patch, which implements the Novell
+  IceDesktop backend.
+
+-------------------------------------------------------------------
+Mon Sep 22 08:53:34 CDT 2008 - maw@suse.de
+
+- Update to version 1.0.0:
+  + Bug fixed: bgo#524498.
+
+-------------------------------------------------------------------
+Wed Sep 17 11:21:30 CEST 2008 - vuntz@novell.com
+
+- Update to version 0.99.8:
+  + Fix leak of GSimpleAsyncResult
+  + Fix crash while browsing ssh locations
+  + Fix --enable/disable-keyring configure switch
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep 17 00:28:45 CEST 2008 - dmueller@suse.de
+
+- update buildrequires
+
+-------------------------------------------------------------------
+Wed Sep 10 11:41:52 CDT 2008 - maw@suse.de
+
+- Update to version 0.99.7.1:
+  + Revert to using powers of 10 instead of powers of 2 for
+    display sizes; this means we will agree with printed sizes for
+    most devices; for example, memory sticks will now correctly
+    report "64MB volume" instead of "61.7MB volume" as previously
+  + Bugs fixed: bgo#546971 and bgo#550858
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep  8 16:07:02 CEST 2008 - kukuk@suse.de
+
+- Make obex-data-server really a recommends as requested initialy
+  in bugzilla.
+
+-------------------------------------------------------------------
+Tue Sep 02 01:04:21 CEST 2008 - mboman@novell.com
+
+- Update to version 0.99.6:
+  + Better cross-backend copy/move logic.
+  + Bugs fixed: bgo#548841, bgo#547133, bgo#538573, bgo#549253,
+    bgo#549553, bgo#550100, bgo#529971, rh#460223
+  + Translation updates
+
+-------------------------------------------------------------------
+Mon Sep  1 01:04:21 CEST 2008 - ro@suse.de
+
+- add libexpat-devel to buildrequires so that obex backend
+  is built
+
+-------------------------------------------------------------------
+Thu Aug 28 19:15:50 CEST 2008 - maw@suse.de
+
+- Update to version 0.93.5:
+  + Support und update serialization of GEmblem and GEmblemedIcon
+  + Add x-content/* support to daemon mounts
+  + Use standard icon names
+  + FTP backend now restores file permissions when replacing a
+    file
+  + Miscellaneous unreported bug fixes
+  + Bugs fixed: bgo#545695, bgo#545489, bgo#544008, bgo#543552,
+    bgo#528891, bgo#525779, bgo#545968, bgo#545966, bgo#509740,
+    bgo#539167, bgo#528848, bgo#518284, bgo#41852, and bgo#546300
+  + Updated translations
+- Drop gvfs-bnc382172-home-trash-monitoring.patch, because it has
+  been upstreamed (see bgo#509740 and bnc#382172).
+
+-------------------------------------------------------------------
+Fri Aug  1 14:24:14 CDT 2008 - maw@suse.de
+
+- Update to version 0.99.3:
+  + Move hal and gphoto volume monitors out of process
+  + Fix recursive copying
+  + Make the fuse daemon more reliable
+  + Many smaller bugfixes
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Jun  6 20:12:07 CEST 2008 - maw@suse.de
+
+- Update to versino 0.99.1:
+  + Fix directory copy/delete problems
+  + Fuse daemon robustness fixes
+  + Allow mounting non-standard ISO images
+  + Better username/domain tests on mount spec
+  + Require gphoto >= 2.4.0
+  + Fix strdup()/g_free() confusion
+  + Use consistent translatable strings for mount and volume
+  + Plug some memory leaks
+  + Many smaller bug fixes
+  + Updated translations
+- Remove upstreamed patch: gvfs-bnc368628-fuse-robustness.patch.
+
+-------------------------------------------------------------------
+Sat May 24 03:17:59 CEST 2008 - hpj@suse.de
+
+- Merge gvfs-bgo531516-fuse-cleanup-when-killed.patch into
+  gvfs-bnc368628-fuse-robustness.patch so as to avoid overlapping
+  patches.
+- Add upstream fixes to thread locking and file handle life-cycles
+  to gvfs-bnc368628-fuse-robustness.patch. Prevents more crashes.
+- Depend on libcdio-devel for building, so we get the CDDA backend.
+
+-------------------------------------------------------------------
+Thu May 22 00:05:26 CEST 2008 - hpj@suse.de
+
+- Add gvfs-bgo531516-fuse-cleanup-when-killed.patch, which fixes
+  the remaining issues covered by BNC #368628.
+
+-------------------------------------------------------------------
+Tue May 13 07:38:54 CEST 2008 - hpj@suse.de
+
+- Add gvfs-bnc382172-home-trash-monitoring.patch, which fixes
+  BNC #382172.
+
+-------------------------------------------------------------------
+Thu May  8 08:10:49 CEST 2008 - hpj@suse.de
+
+- Add gvfs-bnc368628-fuse-robustness.patch, which probably fixes
+  BNC #368628.
+
+-------------------------------------------------------------------
+Wed Apr  9 23:32:06 CEST 2008 - maw@suse.de
+
+- Update to version 0.2.3:
+  + WebDAV: implement set_display_name
+  + WebDAV fixes
+  + Proper fallback icons for encrypted volumes
+  + Sftp: Fix make_directory calls
+  + Ftp: various fixes
+  + Minor bug were fixed and leaks plugged.
+
+-------------------------------------------------------------------
+Wed Apr  9 14:01:09 CEST 2008 - sbrabec@suse.cz
+
+- Directory ownership of %{_libdir}/gio/modules moved to glib2,
+  where it logically belongs.
+
+-------------------------------------------------------------------
+Tue Apr  1 17:56:21 CEST 2008 - rodrigo@suse.de
+
+- Update to version 0.2.2:
+  * Respect the giomoduledir provided in gio package config file
+  * Better mount icon and name for archive backend
+  * Fix crashes with cancelled stream ops
+  * Fix race that caused a mount to hang for a client
+  * Implement async query_filesystem_info
+  * Fix minor leaks
+  * trash: Correct display names for directories
+  * sftp: Kerberos support
+  * smb: Port to new samba 3.2.0 API (backwards compat)
+  * sftp: Handle overwrites correctly (was silent overwrite)
+
+-------------------------------------------------------------------
+Wed Mar 26 02:22:12 CET 2008 - maw@suse.de
+
+- gvfs now recommends gvfs-backends (bnc#373477).
+
+-------------------------------------------------------------------
+Wed Mar 19 18:26:29 CET 2008 - maw@suse.de
+
+- Reduce build requirements
+- Split out a shared library package, libgnomevfscommon0, and two
+  module subpackages, gvfs-backends and gvfs-fuse.
+
+-------------------------------------------------------------------
+Tue Mar 18 19:05:18 CET 2008 - jpr@suse.de
+
+- Update to version 0.2.1
+* Added archive backend
+* Implement most of the async functions in GDaemonFile
+* Correctly handle usernames in uris for ftp://
+* Ftp fixes
+* Webdav fixes
+* Add gvfs-rename command line utility
+* Fix cancellation
+* OpenBSD fixes
+* smb: hide dot files
+* Enviroment variable to disable fuse backend at runtime
+
+-------------------------------------------------------------------
+Mon Mar 17 14:30:10 CET 2008 - jpr@suse.de
+
+- Add recommends for obex-data-server (bnc #368776)
+
+-------------------------------------------------------------------
+Fri Mar 14 02:59:50 CET 2008 - maw@suse.de
+
+- Update to version 0.2.0.1:
+  + Fix crashes
+  + Build and portability fixes
+  + Better mime icons for remote shares
+  + Don't show mounts and volumes outside /media
+  + Don't automount gphoto mounts
+  + Translate cd disc names
+  + ftp: Updates
+  + obex: Give better error message on broken phones
+  + sftp: Allow setting permissions
+  + dav: Correct mount name, file icons and file types.
+
+-------------------------------------------------------------------
+Wed Mar  5 01:30:36 CET 2008 - jpr@suse.de
+
+- Update to version 0.1.11
+* Correctly free mounts
+* Disable debug log
+* Fix volume monitor change reporting
+* Fix timeout during automount
+- enable obex backend
+
+-------------------------------------------------------------------
+Tue Mar  4 20:09:15 CET 2008 - maw@suse.de
+
+- Update to version 0.1.9:
+  + Added ftp backend
+  + Added obexftp backend
+  + Locking fixed for volume monitors
+  + Better bash completion
+  + Better webdav support
+  + Allow backends to specify uri details in .mount file
+  + Fix leaks and crashes
+  + Fix icon for audio cds.
+
+-------------------------------------------------------------------
+Fri Feb 29 18:23:46 CET 2008 - jpr@suse.de
+
+- Update to 0.1.8
+* Update for gio API changes
+* Add gphoto2 backend
+* Add network: and dns-sd: backend support
+* Http and webdav backend updates
+* Keyring support
+* Fix crashes and deadlocks
+* Add trash::item-count attribute to trash:///
+* Fix smb reads > 65535 bytes breaking on some servers
+* Fix cancellation race in reading
+* Fill in thumbnail info for backends
+* sftp: Handle host identity changes
+* Enable translations everywhere
+* Add bash completion support for command line apps
+* Fix handling of blank cds and audio cds
+* Support port in sftp uris
+
+-------------------------------------------------------------------
+Fri Feb 29 02:18:10 CET 2008 - jpr@suse.de
+
+- Move the gio modules into the main package (#358748)
+- Enable gconf backend
+
+-------------------------------------------------------------------
+Mon Feb 18 18:25:03 CET 2008 - maw@suse.de
+
+- Update to version 0.1.7:
+  + Update for gio API changes
+  + Add gconf based implementation of
+    g_app_info_get_default_for_uri_scheme
+  + Fix crashes
+  + Allow navigation with http uris
+  + Better file read performance with readahead and large block
+    reads
+  + Lots of bugs fixed in trash backend
+  + Pick up cdrom icons from autorun.inf
+  + Add "filesystem" file to computer://
+  + Fix renaming in sftp and smb.
+
+-------------------------------------------------------------------
+Fri Feb  8 16:19:18 CET 2008 - maw@suse.de
+
+- Recomend fuse (bnc#359928).
+
+-------------------------------------------------------------------
+Wed Jan 30 10:01:34 CST 2008 - maw@suse.de
+
+- Update to version 0.1.6:
+  + Updates to work with more recent glib
+  + Fix sftp error handling on reading directories
+  + Use correct file info attribute name style
+  + Add gvfs-mkdir app
+  + hal: Don't show drives if all volumes are hidden
+  + Enable translations
+  + Plus some files that were missing in 0.1.5.
+
+-------------------------------------------------------------------
+Tue Jan 22 13:06:03 CST 2008 - maw@suse.de
+
+- Initial package, version 0.1.4.
+
