@@ -2456,6 +2456,7 @@ BuildFlags: onlybuild:perl-Business-ISBN-Data
 BuildFlags: onlybuild:perl-Business-ISMN
 BuildFlags: onlybuild:perl-Business-ISSN
 BuildFlags: onlybuild:perl-CGI
+BuildFlags: onlybuild:perl-CPAN-Requirements-Dynamic
 BuildFlags: onlybuild:perl-CPAN-Meta-Check
 BuildFlags: onlybuild:perl-CPAN-Meta-Requirements
 BuildFlags: onlybuild:perl-Capture-Tiny
@@ -2508,6 +2509,7 @@ BuildFlags: onlybuild:perl-Exception-Class
 BuildFlags: onlybuild:perl-Exporter-Tiny
 BuildFlags: onlybuild:perl-ExtUtils-CChecker
 BuildFlags: onlybuild:perl-ExtUtils-Config
+BuildFlags: onlybuild:perl-ExtUtils-HasCompiler
 BuildFlags: onlybuild:perl-ExtUtils-Helpers
 BuildFlags: onlybuild:perl-ExtUtils-InstallPaths
 BuildFlags: onlybuild:perl-ExtUtils-LibBuilder
