@@ -1,0 +1,9 @@
+-------------------------------------------------------------------
+Sun Apr 21 11:15:38 UTC 2024 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
+Sun Apr  7 09:23:17 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- Initial package
