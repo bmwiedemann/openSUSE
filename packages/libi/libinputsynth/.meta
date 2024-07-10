@@ -1,0 +1,5 @@
+<package name="libinputsynth" project="openSUSE:Factory">
+  <title>Synthesize keyboard and mouse input on X11 and Wayland with various backends</title>
+  <description>Synthesize keyboard and mouse input on X11 and Wayland with various backends.</description>
+  <devel project="X11:Wayland" package="libinputsynth"/>
+</package>
