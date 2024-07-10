@@ -1,0 +1,140 @@
+<revisionlist>
+  <revision rev="1" vrev="5">
+    <srcmd5>83a9dfcd8b0251911bace6d403b78f5e</srcmd5>
+    <version>0.5</version>
+    <time>1172778694</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="46">
+    <srcmd5>f7492a769e0f9a77daf81a16779b0f46</srcmd5>
+    <version>0.5</version>
+    <time>1186702038</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="68">
+    <srcmd5>369eed1ab599d49ee54d70e6af80c060</srcmd5>
+    <version>0.5</version>
+    <time>1192128532</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="142">
+    <srcmd5>5e3b437d2c7a485985338cbf372329e8</srcmd5>
+    <version>0.5</version>
+    <time>1215621001</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="182">
+    <srcmd5>f816321e882e4e04d36204f732ae8f1c</srcmd5>
+    <version>0.5</version>
+    <time>1245363609</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="184">
+    <srcmd5>f816321e882e4e04d36204f732ae8f1c</srcmd5>
+    <version>0.5</version>
+    <time>1245363609</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="185">
+    <srcmd5>59c772a65bbe34d6c723be2d2422dbf3</srcmd5>
+    <version>0.5</version>
+    <time>1268923702</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="8" vrev="187">
+    <srcmd5>59c772a65bbe34d6c723be2d2422dbf3</srcmd5>
+    <version>0.5</version>
+    <time>1278667346</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="188">
+    <srcmd5>59c772a65bbe34d6c723be2d2422dbf3</srcmd5>
+    <version>0.5</version>
+    <time>1278678577</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="191">
+    <srcmd5>59c772a65bbe34d6c723be2d2422dbf3</srcmd5>
+    <version>0.5</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="11" vrev="192">
+    <srcmd5>98dbb60ac469d61fe50ce6ef3e3ba204</srcmd5>
+    <version>0.5</version>
+    <time>1317626391</time>
+    <user>lrupp</user>
+    <comment>add libtool as buildrequires so we no longer rely on libtool in the project config of factory - it's only needed by &lt;10% of all packages (forwarded request 86027 from coolo)</comment>
+    <requestid>86119</requestid>
+  </revision>
+  <revision rev="12" vrev="194">
+    <srcmd5>98dbb60ac469d61fe50ce6ef3e3ba204</srcmd5>
+    <version>0.5</version>
+    <time>1319181902</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="13" vrev="195">
+    <srcmd5>b20c00fb7550160e941cb1e76b4457ab</srcmd5>
+    <version>0.5</version>
+    <time>1323191537</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="14" vrev="197">
+    <srcmd5>b20c00fb7550160e941cb1e76b4457ab</srcmd5>
+    <version>0.5</version>
+    <time>1340183362</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="15" vrev="199">
+    <srcmd5>b20c00fb7550160e941cb1e76b4457ab</srcmd5>
+    <version>0.5</version>
+    <time>1359108923</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="201">
+    <srcmd5>b20c00fb7550160e941cb1e76b4457ab</srcmd5>
+    <version>0.5</version>
+    <time>1379662419</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="202">
+    <srcmd5>68fa8e638e03c1ac21b75f0ff0c29ef1</srcmd5>
+    <version>0.5</version>
+    <time>1401644481</time>
+    <user>coolo</user>
+    <comment>Cleanup</comment>
+    <requestid>235838</requestid>
+  </revision>
+  <revision rev="18" vrev="204">
+    <srcmd5>68fa8e638e03c1ac21b75f0ff0c29ef1</srcmd5>
+    <version>0.5</version>
+    <time>1409300949</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="205">
+    <srcmd5>cd96d3eab37167d2516d09e4a08e961c</srcmd5>
+    <version>0.5</version>
+    <time>1699301707</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1123666</requestid>
+  </revision>
+  <revision rev="20" vrev="206">
+    <srcmd5>5cc720128b0edafe063bc15ada8ececb</srcmd5>
+    <version>0.5</version>
+    <time>1708631957</time>
+    <user>anag+factory</user>
+    <comment>- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.
+- Remove %clean section</comment>
+    <requestid>1149081</requestid>
+  </revision>
+</revisionlist>
