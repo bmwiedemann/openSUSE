@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1659e7a9f20ff2b8e606d16c53a8f946</srcmd5>
+    <version>1.2.1</version>
+    <time>1451045163</time>
+    <user>dimstar_suse</user>
+    <comment>New package, used by some projects such as sysdig</comment>
+    <requestid>348821</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>75fd0e82f89f7680d3ed7334a82517d0</srcmd5>
+    <version>1.2.1</version>
+    <time>1456924897</time>
+    <user>dimstar_suse</user>
+    <comment>- Small spec file cleanups</comment>
+    <requestid>363314</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>5b86b47c2ee726877835c961c2ff941a</srcmd5>
+    <version>1.2.1</version>
+    <time>1568900995</time>
+    <user>maxlin_factory</user>
+    <comment>- Small spec file cleanup</comment>
+    <requestid>730129</requestid>
+  </revision>
+</revisionlist>
