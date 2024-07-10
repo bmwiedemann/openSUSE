@@ -1,0 +1,563 @@
+-------------------------------------------------------------------
+Sat Feb 10 06:29:09 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.63.3:
+  * bumping go build, linter related changes, prep release, adding
+    a test to check coverage is working and increased (#886)
+  * Bump golang.org/x/net from 0.20.0 to 0.21.0 (#887)
+  * Bump github.com/google/uuid from 1.5.0 to 1.6.0 (#882)
+  * Bump google.golang.org/grpc from 1.60.1 to 1.61.0 (#883)
+  * Bump codecov/codecov-action from 3.1.4 to 4.0.1 (#885)
+
+-------------------------------------------------------------------
+Wed Jan 17 07:23:47 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.63.2:
+  * re-enable ifElseChain in go critic (#881)
+  * go 1.21.6 (#880)
+  * Bump golang.org/x/net from 0.19.0 to 0.20.0 (#878)
+
+-------------------------------------------------------------------
+Wed Dec 20 12:57:29 UTC 2023 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.63.1:
+  * fix timeout not used by proxy client in fetch2 (#875)
+  * Bump google.golang.org/grpc from 1.60.0 to 1.60.1 (#877)
+  * Bump actions/setup-go from 4.1.0 to 5.0.0 (#869)
+  * Bump github.com/google/uuid from 1.4.0 to 1.5.0 (#872)
+  * Bump google.golang.org/grpc from 1.59.0 to 1.60.0 (#871)
+
+-------------------------------------------------------------------
+Sat Dec 09 19:51:07 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.63.0:
+  * Use the default http config for all server UI and rapi
+    operations + Indicate when the UI/echo server is using https
+    (#868)
+  * go 1.21.5 (#867)
+  * Bump golang.org/x/net from 0.18.0 to 0.19.0 (#864)
+
+-------------------------------------------------------------------
+Thu Nov 23 06:25:09 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.62.1:
+  * Bump fortio.org/scli from 1.13.0 to 1.13.1 (#863)
+
+-------------------------------------------------------------------
+Thu Nov 23 06:23:49 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.62.0:
+  * use new logger (#861)
+  * Bump docker/build-push-action from 5.0.0 to 5.1.0 (#859)
+
+-------------------------------------------------------------------
+Thu Nov 16 14:25:59 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.61.0:
+  * Updated build image with go1.21.4, dep updates, linter related
+    fixes (#858)
+  * Bump actions/checkout from 4.1.0 to 4.1.1 (#853)
+
+-------------------------------------------------------------------
+Thu Oct 12 05:15:54 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.60.3:
+  * rebuilding with go1.20.10 and updating deps, prep for 1.60.3
+    (#849)
+  * Bump golang.org/x/net from 0.15.0 to 0.16.0 (#846)
+
+-------------------------------------------------------------------
+Fri Sep 29 08:45:54 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.60.2:
+  * add new -pprof on flag to explictly allow pprof, off by
+    default. (#845)
+  * Bump google.golang.org/grpc from 1.58.1 to 1.58.2 (#842)
+  * Bump actions/checkout from 4.0.0 to 4.1.0 (#843)
+
+-------------------------------------------------------------------
+Fri Sep 15 09:29:21 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.60.1:
+  * Bump google.golang.org/grpc from 1.58.0 to 1.58.1 (#841)
+  * Bump fortio.org/version from 1.0.2 to 1.0.3 (#840)
+
+-------------------------------------------------------------------
+Thu Sep 14 05:02:09 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.60.0:
+  * Bump actions/checkout from 3.5.3 to 4.0.0 (#828)
+  * Bump docker/setup-buildx-action from 2.9.1 to 3.0.0 (#835)
+  * Bump docker/setup-qemu-action from 2.2.0 to 3.0.0 (#839)
+  * Bump docker/login-action from 2.2.0 to 3.0.0 (#838)
+  * close the cpu profile file right after stop cpu profile (#823)
+  * Bump docker/build-push-action from 4.2.1 to 5.0.0 (#836)
+  * go 1.20.8 build image (and thus govulncheck will stop
+    complaining) (#837)
+  * Bump docker/build-push-action from 4.1.1 to 4.2.1 (#832)
+  * Bump actions/setup-go from 4.0.1 to 4.1.0 (#821)
+  * grpc ping support compression option (#819)
+  * cli grpc support profile option (#820)
+  * Bump fortio.org/cli from 1.3.3 to 1.4.2 (#822)
+  * Remove the empty file .gitmodules (#818)
+
+-------------------------------------------------------------------
+Tue Aug 08 14:09:16 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.59.0:
+  * [jrpc] Add support for optional custom allowed http status
+    codes and custom TLS options (#817)
+  * Bump golang.org/x/net from 0.13.0 to 0.14.0 (#816)
+
+-------------------------------------------------------------------
+Sun Aug 06 07:52:20 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.58.0:
+  * Plug in the ErrorHandlers for JSON/color compatibility of http
+    lib logging (#812)
+
+-------------------------------------------------------------------
+Fri Aug 04 06:23:00 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.57.5:
+  * Go 1.20.7 build image + log/cli/scli output improvements +
+    other deps (#811)
+  * Bump golang.org/x/net from 0.12.0 to 0.13.0 (#807)
+
+-------------------------------------------------------------------
+Tue Jul 25 05:27:58 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.57.4:
+  * Save the async result file even on init error (like invalid
+    host/target) (#797)
+  * Bump docker/setup-buildx-action from 2.9.0 to 2.9.1 (#795)
+
+-------------------------------------------------------------------
+Thu Jul 13 04:58:52 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.57.3:
+  * fix #793, ppc64le is back (#794)
+
+-------------------------------------------------------------------
+Thu Jul 13 04:55:08 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.57.2:
+  * fix workflow too (#792)
+
+-------------------------------------------------------------------
+Thu Jul 13 04:52:35 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.57.1:
+  * update to go1.20.6 - had to drop linux/ppc64le for now as there
+  * was some download corruption for these (#791)
+  * Bump docker/setup-buildx-action from 2.8.0 to 2.9.0 (#790)
+
+-------------------------------------------------------------------
+Sat Jul 08 19:37:04 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.57.0:
+  * update to color supporting version of log/cli/scli (#789)
+  * Bump golang.org/x/net from 0.11.0 to 0.12.0 (#788)
+
+-------------------------------------------------------------------
+Tue Jul 04 04:35:40 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.56.0:
+  * do abort early even with stdclient on bad urls/hosts. allow
+    most same query args on fetchers. (#785)
+  * add -X to override method. treat content-type in header as
+    ContentType on options (#783)
+  * Bump docker/setup-buildx-action from 2.7.0 to 2.8.0 (#786)
+
+-------------------------------------------------------------------
+Tue Jun 27 04:50:07 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.55.2:
+  * switch to sec.usec JSON logging format (#782)
+  * Bump google.golang.org/grpc from 1.56.0 to 1.56.1 (#779)
+
+-------------------------------------------------------------------
+Thu Jun 22 05:07:24 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.55.1:
+  * change all the http client logs (info level and up) to
+    structured (#778)
+  * use fixed log package for log.Printf, remove bogus \n in
+    log.Printf (#775)
+  * Bump google.golang.org/grpc from 1.55.0 to 1.56.0 (#771)
+  * Bump docker/setup-buildx-action from 2.6.0 to 2.7.0 (#773)
+  * Bump docker/build-push-action from 4.1.0 to 4.1.1 (#772)
+  * Bump docker/login-action from 2.1.0 to 2.2.0 (#774)
+
+-------------------------------------------------------------------
+Thu Jun 15 06:23:21 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.55.0:
+  * using json structured logging, add `log-errors` option setting
+    to rapi and UI (#768)
+  * Bump golang.org/x/net from 0.10.0 to 0.11.0 (#769)
+  * Bump docker/build-push-action from 4.0.0 to 4.1.0 (#764)
+  * Bump docker/setup-buildx-action from 2.5.0 to 2.6.0 (#765)
+  * Bump docker/setup-qemu-action from 2.1.0 to 2.2.0 (#767)
+  * Bump actions/checkout from 3.5.2 to 3.5.3 (#766)
+  * Bump github/codeql-action from 2.3.6 to 2.13.4 (#763)
+  * go1.20.5 build image (#762)
+  * Bump github/codeql-action from 2.3.3 to 2.3.6 (#761)
+  * Bump golang.org/x/net from 0.9.0 to 0.10.0 (#759)
+  * Bump github/codeql-action from 2.3.2 to 2.3.3 (#757)
+  * Bump google.golang.org/grpc from 1.54.0 to 1.55.0 (#756)
+
+-------------------------------------------------------------------
+Wed May 03 04:44:21 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.54.3:
+  * Go 1.20.4 (#755)
+  * Bump github/codeql-action from 2.3.0 to 2.3.2 (#754)
+  * Bump fortio.org/scli from 1.3.1 to 1.4.0 (#753)
+  * Bump github/codeql-action from 2.2.12 to 2.3.0 (#752)
+  * remove non idiomatic use of new() and use recomended var buf
+    bytes.Buffer instead of pointer/new (#751)
+  * Bump actions/checkout from 3.5.0 to 3.5.2 (#750)
+  * Bump github/codeql-action from 2.2.11 to 2.2.12 (#749)
+
+-------------------------------------------------------------------
+Fri Apr 14 06:47:33 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.54.2:
+  * Fixing a long standing bug with histogram buckets and payload
+    file error should abort (#746)
+  * Bump github/codeql-action from 2.2.9 to 2.2.11 (#745)
+
+-------------------------------------------------------------------
+Thu Apr 13 07:33:09 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.54.1:
+  * use newer go 1.20.3 and corresponding new lints (#743)
+  * Bump actions/checkout from 3.4.0 to 3.5.0 (#742)
+  * Bump github/codeql-action from 2.2.7 to 2.2.9 (#741)
+  * Bump google.golang.org/grpc from 1.53.0 to 1.54.0 (#738)
+
+-------------------------------------------------------------------
+Mon Mar 20 19:16:58 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.54.0:
+  * New Dns debug endpoint (#735)
+  * Bump actions/checkout from 3.3.0 to 3.4.0 (#736)
+  * Bump github/codeql-action from 2.2.6 to 2.2.7 (#737)
+  * Bump docker/setup-buildx-action from 2.4.1 to 2.5.0 (#731)
+  * Bump github.com/golang/protobuf from 1.5.2 to 1.5.3 (#729)
+  * Bump github/codeql-action from 2.2.5 to 2.2.6 (#732)
+
+-------------------------------------------------------------------
+Thu Mar 09 05:46:34 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.53.1:
+  * bump release (#728)
+  * go1.19.7 + codeOK fix + streaming misses (#727)
+  * Bump golang.org/x/net from 0.7.0 to 0.8.0 (#725)
+
+-------------------------------------------------------------------
+Sun Mar 05 12:39:48 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.53.0:
+  * Stream input back in echo h2 + h2c curl streaming payload
+    + minimal prometheus metrics (number of fd) (#721)
+  * Bump github/codeql-action from 2.2.4 to 2.2.5 (#722)
+
+-------------------------------------------------------------------
+Sun Feb 26 15:08:32 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.52.0:
+  * mtls support (#720)
+  * Bump fortio.org/dflag from 1.4.2 to 1.5.1 (#716)
+
+-------------------------------------------------------------------
+Tue Feb 21 09:25:46 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.51.0:
+  * refactor to use fortio.org/cli and scli (#713)
+  * Bump fortio.org/dflag from 1.4.1 to 1.4.2 (#712)
+  * use Deprecated: for log and dflag
+
+-------------------------------------------------------------------
+Sat Feb 18 08:06:56 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.50.1:
+  * use go 1.19.6 (#711)
+  * Bump golang.org/x/net from 0.6.0 to 0.7.0 (#710)
+  * Bump fortio.org/log from 1.2.0 to 1.2.2 (#709)
+
+-------------------------------------------------------------------
+Tue Feb 14 08:37:50 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.50.0:
+  * Bump docker/build-push-action from 3.3.0 to 4.0.0 (#702)
+  * Bump docker/setup-buildx-action from 2.4.0 to 2.4.1 (#703)
+  * Bump github/codeql-action from 2.2.1 to 2.2.4 (#707)
+  * moved logger to toplevel fortio.org/log, dflag and version - avoid flags in library modules (#706)
+
+-------------------------------------------------------------------
+Sat Feb 04 12:24:53 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.40.1:
+  * fix special grpc metadata handling (#697)
+  * Bump docker/setup-buildx-action from 2.2.1 to 2.4.0 (#698)
+  * Bump github/codeql-action from 2.1.39 to 2.2.1 (#699)
+  * Bump google.golang.org/grpc from 1.52.1 to 1.52.3 (#694)
+  * Always initialize DebugHandler's startTime + misc cleanup (#693)
+
+-------------------------------------------------------------------
+Thu Jan 26 06:37:36 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.40.0:
+  * Add support for echo server https when cert/key are provided (like for grpc server) and h2 (http/2.0) option for client (#688)
+  * Bump google.golang.org/grpc from 1.52.0 to 1.52.1 (#691)
+  * log.FErrf like log.Fatalf but without the panic nor exit (#686)
+  * Bump github/codeql-action from 2.1.38 to 2.1.39 (#689)
+  * correct readme to match current 1.39.1 release. also fix #680 - pass the fortio useragent to grpc (#685)
+
+-------------------------------------------------------------------
+Fri Jan 20 09:55:47 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.39.1:
+  * switch build image to 1.19.5 (#684)
+  * Bump docker/build-push-action from 3.2.0 to 3.3.0 (#682)
+  * Bump github/codeql-action from 2.1.37 to 2.1.38 (#683)
+
+-------------------------------------------------------------------
+Sat Jan 14 10:05:55 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.39.0:
+  * adding optional ClientTrace and Context to jrpc and fhttp; extend access log api to be usable for tracing; add optional Transport chaining for otelhttp (#661)
+  * add support for setting grpc metadata (#671)
+  * Bump google.golang.org/grpc from 1.51.0 to 1.52.0 (#678)
+  * Bump actions/checkout from 3.2.0 to 3.3.0 (#677)
+  * Bump golang.org/x/net from 0.4.0 to 0.5.0 (#674)
+  * Adding flag to disable panic (stack trace) on log.Fatalf … (#675)
+  * Bump actions/checkout from 3.1.0 to 3.2.0 (#672)
+  * Bump github/codeql-action from 2.1.36 to 2.1.37 (#673)
+  * Bump github/codeql-action from 2.1.32 to 2.1.36 (#669)
+  * use -healthservice flag for server start and ping as default, allow change in rapi and web UI (#667)
+  * switch to go 1.19.4 (#668)
+  * Bump golang.org/x/net from 0.2.0 to 0.4.0 (#665)
+  * Bump google.golang.org/grpc from 1.50.0 to 1.51.0 (#660)
+  * Generalize and clarify/simplify a bit Occurrence type (#655)
+  * don't normalize URL too early as this could be a tcp or udp runner (for web ui/rapi calls) (#657)
+  * Bump github/codeql-action from 2.1.31 to 2.1.32 (#656)
+
+-------------------------------------------------------------------
+Tue Nov 15 09:21:44 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.38.4:
+  * added test for #652, stepped on #653 while testing the test, added test for that too (#654)
+
+-------------------------------------------------------------------
+Tue Nov 15 09:19:08 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.38.3:
+  * support User-Agent change and deletion from -H, simplify UI for headers (#649)
+  * codeql v2 and a lot of github actions update, sha pinning in dockerfile etc (#647)
+  * Bump docker/setup-buildx-action from 1.7.0 to 2.2.1 (#646)
+  * Bump docker/setup-qemu-action from 1.2.0 to 2.1.0 (#645)
+  * Bump docker/login-action from 1.10.0 to 2.1.0 (#644)
+  * Bump docker/build-push-action from 2.5.0 to 3.2.0 (#643)
+  * bump build image (go 1.19.3), added govulncheck, fix permissions in /go - also stop using /go/src (#641)
+  * README formatting and links correction (#636)
+
+-------------------------------------------------------------------
+Tue Oct 25 18:45:32 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.38.2:
+  * Tests for slice/array returned from jrpc calls as well as a cleaner shortcut: `jrpc.GetArray()` (#634)
+
+-------------------------------------------------------------------
+Fri Oct 14 04:52:48 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.38.1:
+  * build with go1.19.2 - new linters changes/fixes - dep updates, incl. security fixes (#630)
+  * Bump google.golang.org/grpc from 1.49.0 to 1.50.0 (#628)
+  * Bump github.com/fsnotify/fsnotify from 1.5.4 to 1.6.0 (#629)
+
+-------------------------------------------------------------------
+Wed Sep 21 08:29:20 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.38.0:
+  * only do compression if requested explictly when forwarding/fetching  (#625)
+  * add connection times histogram (#626)
+
+-------------------------------------------------------------------
+Wed Sep 14 05:40:27 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.37.1:
+  * Allow empty body to be valid for jrpc.HandleCall/Deserialize; allow method override in client (#623)
+
+-------------------------------------------------------------------
+Tue Sep 13 12:43:10 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.37.0:
+  * Better names for CallNoPayload -> Get and CallWithPayload -> Fetch (#622)
+
+-------------------------------------------------------------------
+Thu Sep 08 05:44:52 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.36.0:
+  * support passing headers and timeout in jrpc calls (#621)
+  * moved testify compatible code to its own package so it can be reused (#620)
+  * Bump google.golang.org/grpc from 1.48.0 to 1.49.0 (#618)
+
+-------------------------------------------------------------------
+Wed Sep 07 10:57:18 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.35.0:
+  * new jrpc package, and tests/rework for rest handler (#611)
+  * Add flag to resolve dns name on each new connection (#610)
+  * Bump google.golang.org/grpc from 1.47.0 to 1.48.0 (#607)
+  * switch to golang 1.18.4 build (#609)
+  * validate that percentiles are >0 and <100.  (#606)
+  * put the per connection socket count and ip on the normal out (#602)
+
+-------------------------------------------------------------------
+Thu Jun 30 06:05:18 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.34.1:
+  * fix the report mode broken in refactor (#600)
+
+-------------------------------------------------------------------
+Wed Jun 29 11:18:13 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.34.0:
+  * moved rest api and tsv to rapi/ package, restore linters and fix lints (#597)
+  * add echo back to the connection reuse flag and revert readme  (#598)
+  * Max connection reuse (#594)
+  * Cleanup in generics implementation, clarity on DynValueTypes (#596)
+
+-------------------------------------------------------------------
+Wed Jun 22 07:37:06 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.33.0:
+  * dflags generics - added WithInputMutator and WithValueMutator too (#593)
+  * exit with status 1 if grpcping -health isn't SERVING. (#589)
+
+-------------------------------------------------------------------
+Sat Jun 04 18:59:38 UTC 2022 - kastl@b1-systems.de
+
+- BuildRequire go1.18
+- Update to version 1.32.3:
+  * golang 1.18.3, go get -u + keep latest yaml + pin github actions + ... (#585)
+
+-------------------------------------------------------------------
+Mon May 30 14:32:03 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.32.2:
+  * fixing missing write timeout (#584)
+  * removing testify dependency, fixing security issue in dep (#582)
+
+-------------------------------------------------------------------
+Mon May 30 14:31:04 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.32.1:
+  * use h2c fixed version of x/net (#581)
+  * blind fix/attempt for transient build process failure to upload artifacts (#579)
+
+-------------------------------------------------------------------
+Tue May 24 07:50:11 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.32.0:
+  * dns cache lock fix, tls grpc test restoration, bug fix for -sync error case and increased timeout (#578)
+
+-------------------------------------------------------------------
+Fri May 20 14:57:26 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.31.0:
+  * add configurable `-dns-method` to resolve dns (#576)
+  * fix fortio version when used as libray/module (#574)
+
+-------------------------------------------------------------------
+Wed May 18 09:06:42 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.30.1:
+  * prep for 1.30.1 + fix installation order leftover (#573)
+  * Fix that TLS servername should be port-less (#572)
+  * Reusable version code (#569)
+  * document how to do multarch tag copy
+
+-------------------------------------------------------------------
+Sat May 14 11:44:13 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.30.0:
+  Same release as 1.29.0 to avoid a change in binary URLs (there was an extra v in 1.29.0 release)
+
+-------------------------------------------------------------------
+Sat May 14 11:40:59 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.29.0:
+  * 1.29 and go 1.18 base + #566 (round robin dns) + #564 (revamp of build through go install module buildinfo) (#560)
+  * fix spurious dns change message when dns isn't changing (#565)
+  * no need to put :8079 for default grpc port without TLS
+  * also allow main echo/http port to be disabled; so a server can be sta… (#559)
+  * Switch to demo.fortio.org for live demo, use new logo for browse/report mode
+  * Add more visibility to IP address resolution when using DNS and stdclient socket count (#556)
+  * fix up the tag name used
+  * fixing manual build try #2
+  * adding manual build for next time ci fails in the middle mysteriously (#555)
+
+-------------------------------------------------------------------
+Tue Apr 26 06:15:12 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.28.0:
+  * Track success vs failure, add that and details string for richer access log, visualize new errors histogram (#552)
+
+-------------------------------------------------------------------
+Wed Apr 20 05:47:11 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.27.0:
+  * Multiarch enablement on Dockerfile and Dockerfile.build (#538)
+
+-------------------------------------------------------------------
+Sat Apr 16 09:03:30 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.26.0:
+  * Fix tcp load with larger than buffer (32k) payload (#549)
+  * no catchup mode (fixed/set maximum qps; skip requests when falling behind) (#544)
+
+-------------------------------------------------------------------
+Tue Apr 05 06:52:14 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.25.0:
+  * support for gzip with new gzip=true echo param (or gzip=10 for 10%) (#541)
+
+-------------------------------------------------------------------
+Mon Mar 28 07:10:20 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.24.0:
+  * Fix #535: echo debug path normalization needed depending on whether debug path ends with / or not. also fix pprof link which is hardcoded to /debug/pprof/ (#537)
+  * refactor tlsoptions to common struct and share setup for both http and grpc (#536)
+  * Create SECURITY.md
+  * code scanning
+
+-------------------------------------------------------------------
+Fri Mar 25 09:05:18 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.23.0:
+  * Fast client support for https/TLS (#529)
+  * Be consistent with precedence, query args H= will overwrite a json
+
+-------------------------------------------------------------------
+Sun Mar 20 10:22:45 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.22.0:
+  * allow a headers json array in json rest api payload ... (#523)
+  * Echo prefix after /debug/ (#525)
+  * `-server-idle-timeout` and close=x as a % instead of just true/false for all echo requests, `-calc-qps` client side (#522)
+
+-------------------------------------------------------------------
+Fri Mar 18 10:22:11 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.21.2:
+  * readying for v1.21.2 (#521)
+  * Fix the empty body content error (#519)
+
+-------------------------------------------------------------------
+Wed Mar  9 14:29:33 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- new package fortio: Fortio (Φορτίο) started as, and is, Istio's load testing tool and now graduated to be its own project
