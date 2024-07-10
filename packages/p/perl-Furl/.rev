@@ -1,0 +1,154 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6ea4be2a72c0d7583c755e935fbaacc9</srcmd5>
+    <version>3.13</version>
+    <time>1563790819</time>
+    <user>dimstar_suse</user>
+    <comment>- Patch out Mozilla::CA dependency to rely on system-wide certificates
+- updated to 3.13
+   see /usr/share/doc/packages/perl-Furl/Changes
+  3.13 2017-09-19T06:31:34Z
+  
+      - Fixed test code(skaji++)
+  
+  3.12 2017-09-13T06:58:15Z
+  
+      commit 88cd747c78d80675c1aa4953083af16f70085252
+      Author: Shoichi Kaji &lt;skaji@cpan.org&gt;
+      Date:   
+  
+          check whether sockets are readable or not before reusing them
+  
+      commit 90f3e48ce20845e0f11be40bb975f9c23c86ad8a
+      Author: ktat &lt;ktat.is@gmail.com&gt;
+      Date:   
+  
+          uri_unescape user &amp; password for Basic auth
+- updated to 3.11
+   see /usr/share/doc/packages/perl-Furl/Changes
+  3.11 2017-05-16T23:54:24Z
+  
+      - added docs
+- updated to 3.10
+   see /usr/share/doc/packages/perl-Furl/Changes
+  3.10 2017-04-05T16:52:32Z
+      - Fix tests for newer Perl @INC issue
+- updated to 3.09
+   see /usr/share/doc/packages/perl-Furl/Changes
+  3.09 2016-07-21T14:10:52Z
+  
+      - Support 1xx status
+      - Fix test on Windows issue
+      - Fix httpoxy
+- updated to 3.08
+   see /usr/share/doc/packages/perl-Furl/Changes
+  3.08 2015-08-06T09:32:19Z
+  
+      - Handle cookies while redirection.
+        (tokuhirom)
+      - delete method accept message body
+        (kimoto)
+- updated to 3.07
+   see /usr/share/doc/packages/perl-Furl/Changes
+  3.07 2015-04-21T03:42:39Z
+  
+      - Depends on latest Test::TCP
+        https://github.com/tokuhirom/Test-TCP/issues/31#issuecomment-94378132
+- updated to 3.06
+   see /usr/share/doc/packages/perl-Furl/Changes
+- update to 0.38:
+  * added -&gt;agent method
+- changes from 0.37:
+  * fixed SSL closing issue
+- changes from 0.35:
+  * compensate for slash of path-query
+- changes from 0.34:
+  * accept the domain using '_' character
+- changes from 0.33:
+  * support url doesn't have trailing slash like
+    'http://example.com?gfx=isogashi'
+- update to 0.32:
+  * remove duplicated Host header on high level API(xaicron)
+- update to 0.31:
+  * CarpLevel++
+- update to 0.30:
+  * allow '0000000' as end of chunked response
+- update to 0.29:
+  * fixed bug on proxy with redirect
+  * add support for 307 (it was not handled as a redirect), with tests for all
+    redirects (307 is implemented the same as 301, preserving the original
+    requesting method)
+- update to 0.26: tiny pod fix
+- update to 0.25 (no user-visible changes)
+- update to 0.24 (no user-visible changes)
+- changes from 0.23:
+  * properly implement Furl::env_proxy as a delegate to Furl::HTTP::env_proxy
+    (as was already documented)
+- update to 0.22:
+  * remove default ports from the Host header
+- changes from 0.21:
+  * use keep-alive on redirection, do not activate the &quot;write_code&quot; or the
+    &quot;write_func&quot; feature when redirection
+  * silently try to resend a request only when the server returned no respnose
+    at all
+- changes from 0.20:
+  * add internal error response message to status message
+- changes from 0.19:
+  * errorneously returned 500 error when closing of the socket was used to
+    indicate eof (i.e. no Content-Encoding or Content-Length)
+- changes from 0.18:
+  * fixed testing issue
+- changes from 0.17:
+  * only send the connection header with the highest precedence (Furl::request
+    =&gt; Furl::new)
+  * close the connection when furl requested as such, even if the server sent
+    &quot;connection: keep-alive&quot;
+  * support keep-alive for $furl-&gt;request(method =&gt; 'HEAD', headers =&gt; [
+    qw(connection keep-alive) ])
+  * always send the connection header (support for automatic keep-alive with
+    HTTP/1.0 servers)
+- add new Requires: perl(Net::DNS::Lite) (dependency was introduced in 0.14)
+- update to 0.16:
+  * support for status codes wo. content
+- changes from 0.15:
+  * doc enhancements
+- changes from 0.14:
+  * changed the semantics of the &quot;timeout&quot; parameter from per-IO timeout to request timeout
+  * optional support for name resolution timeouts using Net::DNS::Lite
+  * make blocking operations cancellable (through the &quot;stop_if&quot; callback)
+- switch to perl_requires macro
+- remove /var/adm/perl-modules
+- update to 0.13:
+  * do not die when $content is empty string
+- changes from 0.12:
+  * fixed testing issue
+- update to 0.11 (no user-visible changes)
+- update to 0.10:
+  * change request() to accept HTTP::Request, and remove request_with_http_request
+  * Furl::ConnPool.pm was renamed to Furl::ConnectionCache.pm
+- update to 0.09: no user-visible changes
+- changes from 0.08:
+  * rewrote connection pooling strategy
+  * updated docs
+  * support relative url in redirection
+- initial package (0.07)
+</comment>
+    <requestid>717182</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>3ba5894ad5be922e5c847063c885738d</srcmd5>
+    <version>3.13</version>
+    <time>1563993466</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>718253</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>36e817322ad0347d56b0d7f9271a8b96</srcmd5>
+    <version>3.14</version>
+    <time>1621531527</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>894572</requestid>
+  </revision>
+</revisionlist>
