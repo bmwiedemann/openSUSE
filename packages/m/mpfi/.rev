@@ -1,0 +1,47 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d1dfffc1a970b8a4ae3caef8ee1344b8</srcmd5>
+    <version>1.5.1</version>
+    <time>1356731141</time>
+    <user>namtrac</user>
+    <comment></comment>
+    <requestid>145850</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>d1dfffc1a970b8a4ae3caef8ee1344b8</srcmd5>
+    <version>1.5.1</version>
+    <time>1359109464</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>d1dfffc1a970b8a4ae3caef8ee1344b8</srcmd5>
+    <version>1.5.1</version>
+    <time>1379663315</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>d1dfffc1a970b8a4ae3caef8ee1344b8</srcmd5>
+    <version>1.5.1</version>
+    <time>1409301932</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>6a774c457e4d0430255ac66ab2c4b978</srcmd5>
+    <version>1.5.3</version>
+    <time>1516444057</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 1.5.3</comment>
+    <requestid>567531</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b60eb99330d10468118d92921e74cf23</srcmd5>
+    <version>1.5.4</version>
+    <time>1566894105</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 1.5.4</comment>
+    <requestid>725975</requestid>
+  </revision>
+</revisionlist>
