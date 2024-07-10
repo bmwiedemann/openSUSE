@@ -1,0 +1,1093 @@
+-------------------------------------------------------------------
+Sat Jan 13 14:41:55 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 4.2.0:
+  Enhancements:
+  * Add --location-trusted option #2296
+  * Add --unix-socket option #2291
+  * Export entry source line number in JSON output #2273
+  * Use Template for filename type #2259 #1731 #464
+  * Add dark mode support for HTML report #2254
+  * Add --output option per request #2184 #1326
+  * Add filter jsonpath #2134 #1632 #440
+  * Improve JSON body parsing error reporting #2056
+  * Support template in option values #2041
+  * Support conda-forge installation #2018
+  * Add timestamps to the HTML reports #1983
+  * Log only non-default options in verbose mode #1927
+  * Support template in key string #1877 #1710 #898
+  * Add skip option #1815
+  * Add --ipv4/--ipv6 option #1727
+  * Add --http3 option #1155
+  * Add --http2 option #1155
+  * Add --http1.0/-0 option #1155
+  * Add --http1.1 option #1155
+  Bugs Fixed:
+  * Add short name -v for verbose option #2310
+  * Fix unicode surrogate pair decoding in JSON request body #2235
+  * Better error description for some parse error #2187
+  * Fix undefined error for various I/O error using --output. #2156
+  * TAP reports can't be appended if there are failed tests #2099
+  * Support HTTP/2 on Windows #2072
+  * Support key password in --cert option (certificate[:password]) #2047
+  * Keep initial request headers when following redirects #1990
+
+-------------------------------------------------------------------
+Sat Jan 13 14:41:20 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 4.1.0:
+  Breaking Changes:
+  * Change GitHub released binaries filenames #1951
+  * Fix typo in option --path_as_is to --path-as-is
+  Enhancements:
+  * Print host architecture with --version #1893
+  * Add the aws-sigv4 option to generate AWS SigV4 signed requests #1840
+  * Add --delay Option #1832
+  * Support RFC-7807 application/problem+json for response body logging as text #1766
+  * Rename fail-at-end option with continue-on-error option #1739
+  * Add connect-to per request option #1736
+  * Add support for --resolve option per request #1711
+  * Add TAP report #1666 #601
+  * Implement isDate predicate #1520
+  * Add docker arm64 build #536
+  Bugs Fixed:
+  * IsEmpty doesn't seem to work on object collections #1788
+  * Fix Cookie Query Parsing error #1784
+  * Support empty BasicAuth section #1772
+  * Fix standalone option for hurlfmt HTML output #1759
+  * Support IPv4/IPv6 address in proxy [Options] #1756
+  * Reuse same HTTP method on redirect for appropriate HTTP status codes #1719
+  * Fix URL runtime evaluation #1716
+- Cleanup spec and service file
+- Disable changesgenerate - the project has a good changelog
+- Switch to zst tarball
+
+-------------------------------------------------------------------
+Thu Jun 29 11:51:39 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 4.0.0:
+  * Create 4.0.0 release
+  * Update docs for 4.0.0
+  * Update crates
+  * Add test-docker-x64-package on package ci
+  * Update CHANGELOG
+  * Fix hurlfmt in Dockerfile
+  * Update crates
+  * Update crates
+  * Update crates
+  * Export [Options] to JSON
+  * Update crates
+  * Fix HTML report for retried requests.
+  * Add test integ for option --path-as-is
+  * Update CHANGELOG and fix CONTRIBUTING typo.
+  * fix: fix clippy issue
+  * feat: introduce curl `--path-as-is` option
+  * Add timings explanation in request doc.
+  * Add README explaining integration tests.
+  * Update crates
+  * Update section order for hurlfmt
+  * Add missing section
+  * Deprecate word predicate when operator is available
+  * hurlfmt failed tests
+  * Make hurlfmt support several input files (like Hurl)
+  * Improve output integration test and add --no-output.
+  * Update changelog.
+  * Add xpath filter
+  * Use CURLOPT_COPYPOSTFIELDS instead of CURLOPT_READFUNCTION/CURLOPT_READDATA.
+  * Fix crash when no timings (no SSL on http for instance)
+  * Add integration test for --report-html
+  * Fix extra request headers logs with large body.
+  * Use --data-binary for curl command when posting file.
+  * Rename large.* to get_large.*.
+  * Update crates
+  * Add timings info to very verbose mode.
+  * Add proxy in Options section
+  * Update crates
+  * Rename integration tests option_foo* to foo_option*.
+  * Fix typo in JSON export (pre_transfert vs pre_transfer, start_transfert vs start_transfer).
+  * Make regex query/filter consistent with each other
+  * Improve CSS timeline.
+  * Print error message when no file is found with --glob option
+  * Improve waterfall.
+  * Update crates
+  * Make filters return an optional value
+  * Improve error message
+  * Update crates
+  * Fix netcat and pip install
+  * Update crates
+  * Update crates
+  * Update 3.0.1 install link.
+  * Add decode filter
+  * Update crates
+  * Support arbitrary HTTP methods
+  * Update launching tests units in CONTRIBUTING.md
+  * Delete Rust integ Test for libcurl/HTTP module
+  * Update crates
+  * Improves fix for advisories/GHSA-82rp-4vmv-54wg
+  * Update crates
+  * Add waterfall to HTML report for a Hurl file.
+  * Update crates
+  * Add HurlResult export to svg.
+  * Make curl import retry more explicit
+  * Fix advisory GHSA-vf82-g995-949v
+  * Update Rust sample dependencies.
+  * Update crates
+  * Fix Hurl snippet.
+  * Update crates
+  * Update crates
+  * Import --retry option from curl
+  * Add integ test for retry on HTTP status
+  * Update crates
+  * Update npm package for 3.0.1
+  * Improves release workflow
+  * Update crates
+  * Fix docker contrib
+  * Fix chocolatey contrib
+  * Fix clippy warnings
+  * Update Rust to 1.70.0
+  * Rebuild Cargo.lock from scratch.
+  * Fix RELEASING.md for hotfix
+  * hurlfmt Hurl files in tests_ok
+  * Remove whitespace after comma
+  * Fix Lint for GraphQL
+  * Fix --in-place option for hurlfmt
+  * Update crates
+  * Add Retry Type
+  * Update --retry option to match curl option
+  * Upgrade Hurl version to 4.0.0 due to runner::run API change.
+  * Create LoggerOptions to configure a logger in runner::run method.
+  * Update CHANGELOG
+  * Add more charset tests.
+  * Add integration tests with GB2312 encoding.
+  * Add integration tests for --error-format long.
+  * Take error_format option into account.
+  * Add new option `error-format` to enable HTTP request/response output when there are errors.
+  * Fix very-verbose taken into account only if verbose is true.
+  * Update crates
+  * Bump requests from 2.28.1 to 2.31.0 in /bin
+  * Support additional dot in jsonpath expression
+  * Make Call, Certificate, Cookie, Header, Request, Response, Timings, Version public.
+  * Update hurl sample to 3.0.0.
+  * Fix output of hurlfmt for version/help
+  * Refacto cli options
+  * Print actual/expected lines when number of lines does not match
+  * Add version integ test
+  * Fix arguments in integration test utf8.hurl.
+  * Add unit text for eval_html / encoding.
+  * Update hurlfmt FAQ.
+  * Update doc on toDate.
+  * Update doc for jsonpath module
+  * Split jsonpath eval module into query/selector
+  * Split jsonpath index selector (unique/multiple index)
+  * Update npm publication.
+  * Change API in jsonpath / remove single-entry coercion
+  * Add JSON and HTML exports to ssl integration tests.
+  * Improve Dockerfile contrib using bin/*sh
+  * Fix doc typos.
+  * Add quotes around certificate attribute in HTML export.
+  * Add date filters documentation.
+  * Delete --rebase option from /accept workflow
+  * Update releasing doc.
+  * Fix GitHub spelling in hurl-bot talking.
+  * Update hurl version to 3.1.0-SNAPSHOT
+  * Fix accept workflow when using --release option
+
+-------------------------------------------------------------------
+Fri Jun 02 11:36:53 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 3.0.1:
+  * Create 3.0.1 release
+  * Update version to 3.0.1
+  * Support different error messages
+  * Update CHANGELOG
+  * Fix hurlfmt less predicate
+  * Patch encoding issue with xpath and libxml 2.11.1+
+  * Update test integ
+  * Do not try to parse key/value in certificate subject/issuer any more
+  * Add tests external websites
+  * Update to version 3.0.1
+
+-------------------------------------------------------------------
+Thu May 11 12:52:10 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 3.0.0:
+  * Create 3.0.0 release
+  * Update changelog.
+  * Update changelog.
+  * Update help/man for hurlfmt
+  * Update docs with certificate.
+  * Improve PR comment when /accept executes a rebase
+  * Update crates
+  * Bump Flask to 2.3.2
+  * Update crates
+  * Update crates
+  * Update crates
+  * Clean functions docs.
+  * Update crates
+  * Update crates
+  * Add timing info for libcurl < 7.61 (using second function timings).
+  * Add test unit on JUnit report.
+  * Protect ci configuration by CODEOWNERS
+  * Update crates
+  * Add more integ tests for hurlfmt --in curl
+  * Add curl input to hurlfmt
+  * Fix security/advisories/GHSA-vf82-g995-949v
+  * Refacto passing reference rather than owned value
+  * Update crates
+  * Add escaping in $'...'
+  * Add test attributes to junit XML
+  * Update crates
+  * Update to Rust 1.69.
+  * Parse more curl options
+  * Update crates
+  * Add --cookie-jar integration test.
+  * Add module curl to parse curl command-line
+  * Update crates
+  * Add JUnit integration test.
+  * Update crates
+  * Update crates
+  * Update crates
+  * Add options --in and --out in hurlfmt
+  * Update docs.
+  * Setting Content-Length header explicitly in the request
+  * Fix multiline export when used as predicate value.
+  * Remove uncessay span around : and =.
+  * Rework Hurl HTML export.
+  * Add exit code 0 in manual
+  * Documents Reader and use idiomatic naming for methods.
+  * Fix performance issue in Reader reamaining method.
+  * Clean issue template
+  * Full vcpkg cache for windows ci
+  * Add --fail-at-end integration tests
+  * Fix ad_hoc.sh comments
+  * Update crates
+  * Parse empty JSON array
+  * Update crates
+  * Auto rebase from target branch when /accept on PR
+  * Update changelog.
+  * Update HTML exports.
+  * Add errors in HTML report.
+  * Update crates
+  * Rebuild Python dependencies from removing mitm.
+  * Update crates
+  * Use squid instead of mitmproxy on ci
+  * Update crates
+  * Update crates
+  * Update crates
+  * Simplify text summary.
+  * Update crates
+  * Delete unused script
+  * Migrate integ tests to unit scripts
+  * Add raw multipart form data sample.
+  * Update crates
+  * Update crates
+  * Disable Alpine test until we find a new proxy for tests
+  * Update crates
+  * Migrate integ test to unit scripts
+  * Do not test exact serial number because its changes for every renewal
+  * Update crates
+  * Update crates
+  * Migrate integ tests to unit scripts
+  * Start update_crates.sh at 3 am instead of 8 am
+  * Update crates
+  * Reduce Expire-Date check to 15 days
+  * Update crates
+  * Add integration/tests_ok/hurlfmt.ps1
+  * Update crates
+  * Add stdin.ps1 to integration tests
+  * Fix integration *.ps1 tests
+  * Migrate test integ SSL
+  * Enable ci cache to accelerate vcpkg install
+  * Update crates
+  * Update crates
+  * Update crates
+  * Update changelog
+  * Refactoring test integ
+  * Fix python to 3.9.13 version in Windows contrib
+  * Update crates
+  * Add meta utf-8 charset to HTML report
+  * Update crates
+  * Improve HTML export.
+  * Check if current Rust version is below official latest version
+  * Update crates
+  * Update crates
+  * Update crates
+  * Update crates
+  * add daysAfterNow/DaysBeforeNow filters
+  * Update crates
+  * Update crates
+  * Update crates
+  * Update crates
+  * Update crates
+  * Fix warning unsused import.
+  * Implement isEmpty predicate
+  * Update crates
+  * Install Rust with explicit version
+  * Remove option --no-format in hurlfmt
+  * Update crates
+  * Update crates
+  * Refacto options im hurlfmt
+  * Update integration tests.
+  * Add timings to HTTP calls.
+  * Update cargo config file for Alpine.
+  * Delete -t option.
+  * Update crates
+  * Update crates
+  * Update crates
+  * Fix Typos
+  * Fix doc typos
+  * Update crates
+  * Add HTTP transfer timing info.
+  * Update crates
+  * Clean logger api.
+  * Remove hurl_file from run api
+  * Invert %M and %m in date format.
+  * Add certificate query
+  * Update crates
+  * Reorganize import.
+  * Clean package integration tests.
+  * Remove public visibility of mod http.
+  * Move integration tests to unit tests.
+  * Normalize Certificate Subject/Issuer value
+  * Clean winget contrib
+  * Fix HTML attribute
+  * Splits eval_query function in multiple functions.
+  * Normalize Certificate Serial Number
+  * Update crates
+  * Update crates
+  * Add certificate in HTTP response
+  * Update crates
+  * Increment major version to 3.0.0 (compatibility break)
+  * Work on run api.
+  * Update crates
+  * Remove Lintable traits (replaced by dedicated functions).
+  * Update crates
+  * Update mitmproxy to 9.0.1
+  * Display server log in case of error
+  * Update CircleCi Workflow
+  * Add extension function on Easy for getting certinfo.
+  * Update crates
+  * resolves #1303 : Add support for -t as an alias to --test
+  * Update to curl-sys 0.4.60
+  * Use an uuid as identifier for the HTML Hurl file run report
+  * Update image from ubuntu-18.04 to ubuntu-20.04.
+  * Do not read Cargo.toml comments in update_crates.sh
+  * Remove cli module from public modules.
+  * Clean ouput module interfaces.
+  * Fix visibility Logger.
+  * Update werkzeug from 2.0.3 to 2.2.3
+  * Patch GitHub macOS build.
+  * Clean visibilty and public structures of html module.
+  * Update crates
+  * Update crates
+  * Fix import name for path utilities.
+  * Fix report module visibility.
+  * Update crates
+  * Add associated function to create a Header.
+  * Add Default impl for http::Response
+  * Add Certificate model for HTTP response.
+  * Add certificate query to grammar.
+  * Update crates
+  * Fix bad renaming.
+  * Implements Default trait for RequestSpec.
+  * Simplify execute HTTP client method.
+  * Clean HTTP client fields.
+  * Make jsonpath module private.
+  * Add progress bar for tests.
+  * Update crates
+  * Fix visibility of module html.
+  * Fix Markdown links.
+  * Remove dead code.
+  * Update crates
+  * Update home with star links.
+  * Update crates
+  * Use long options for curl command
+  * Fix focal mirror repo for ci
+  * Use Date for cookie Expires query
+  * Finalize cleaning main structure.
+  * Update crates
+  * Fix variables-file example
+  * Reorganize Hurl output.
+  * Delete Progress and parse Hurl file before execution.
+  * Update crates
+  * Update Hurl snippet in FAQ.
+  * Update crates
+  * Replace google.fr by hurl.dev
+  * Add README for Homebrew publication.
+  * Fix https://www.hurl.dev to https://hurl.dev
+  * Update npm publish scripts for 2.0.1
+  * Update installation.md when releasing
+  * Update installation with 2.0.1 links.
+  * Fix docker contrib readme
+  * Add Date value/filters
+  * Update hurl version to 2.1.0-SNAPSHOT
+
+-------------------------------------------------------------------
+Sat Feb 04 12:43:11 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.0.1:
+  * Create 2.0.1 release
+  * Update hurl version to 2.0.1-SNAPSHOT
+  * Fix push create release commits on ci
+  * Fix windows package artifacts
+  * Update change log.
+  * Update Rust sample with hurl/hurl_core 2.0.0
+  * Fix GraphQL query with variables to HTTP body request
+  * Fix some Hurl samples newlines.
+  * Update crates
+  * Update FAQ with curl/Hurl features interaction.
+  * Precise that --color does not affect HTTP response output.
+  * Update cast poster for README.
+  * Update crates
+  * Fix servers log artifacts
+  * Fix clippy 1.67
+  * Update winget contrib doc
+  * Update chocolatey contrib
+  * Update winget contrib doc
+  * Update docker contrib doc
+  * Move from docker-hub to github-container-registry
+  * Fix hurl test on chocolatey contrib section
+  * Add get sum to chocolatey contrib section
+  * Publish Hurl 2.0.0 to npm.
+  * Update hurl version to 2.1.0-SNAPSHOT
+
+-------------------------------------------------------------------
+Thu Jan 26 06:38:41 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.0.0:
+  * Create 2.0.0 release
+  * Disable doc install check
+  * Install BeautifulSoup
+  * Update Check CHANGELOG
+  * Add log
+  * Update CHANGELOG
+  * Set release date
+  * Update docs for Hurl 2.0.0.
+  * Update crates
+  * Update crates
+  * Do not add newline at eof with --no-format option
+  * Move .logs to build/
+  * Update crates
+  * Update changelog.
+  * Update crates
+  * Update changelog.
+  * Update crates
+  * Accept mutiple --variables-file options
+  * Pass whether filters are applied in assert or not
+  * Update crates
+  * Support '-' in jsonpath dot notation
+  * Fix allowfailure
+  * Add option ssl-no-revoke
+  * Update crates
+  * Update vcpkg before installing libxml2 and curl
+  * Add builder pattern for logger (for future evolution).
+  * Update crates
+  * Fixes various issues on HTML export.
+  * Add Test integ SSL client Authentication
+  * Refacto Test integ SSL
+  * Add number class for nth filter argument in HTML format.
+  * Update crates
+  * Fix update crates when removing from Cargo.lock
+  * Update base64 0.20.0 => 0.21.0
+  * Update crates
+  * Add nth/replace/split filters
+  * Update crates
+  * Add filters
+  * Add pip upgrade to windows contrib doc
+  * Update variables.hurl integration test.
+  * Update LICENSE copyright.
+  * Update contributong guide.
+  * Update copyrights for 2023.
+  * update: test commnad to run doc tests
+  * Fix cargo test --doc on Alpine
+  * Update crates
+  * Separates build prerequisites on windows contrib doc
+  * Self-signed error test less flexible
+  * Use project ps1 scripts in windows contrib doc
+  * Revert Use openssl3 for libcurl on windows
+  * Add SSL Test with trusted CA
+  * Fix ssl tests for windows
+  * Add succeed output for check/ad_hoc.sh
+  * Add PS1 checks on error handling
+  * Use openssl3 for libcurl on windows
+  * Fix update_crates.sh when there is no cargo lock updates
+  * Beautify update_crates.sh
+  * Update crates
+  * Update CHANGELOG.md
+  * Update crates
+  * Update crates
+  * Add startup checks on test servers
+  * Update CHANGELOG.md
+  * Update crates
+  * Fix default value for argument.
+  * Add RunnerOptionsBuilder to create instance of RunnerOptions.
+  * Update emacs mode installation
+  * Update CONTRIBUTING.md
+  * Update crates.
+  * Add emacs mode
+  * Fix Clippy warnings 1.66.0
+  * Clean ci docker jobs
+  * Add debug sh functions
+  * Fix false negatives on dockerised tests
+  * Add shell checks on shebang and error handling
+  * Standardised shell scripts shebang and error handling
+  * Link to GitLab CI/CD Hurl tutorial.
+  * Update crates
+  * Implement html_escape and html_unescape.
+  * Standardised shell scripts shebang
+  * Remove unnessary empty struct.
+  * Add issue templates: Bug report, feature proposal
+  * Update crates
+  * Add connect-to option
+  * Harden integration test on GraphQL.
+  * Update crate base64
+  * Fix key-string parser
+  * Check HTTP version and status first, then other asserts.
+  * Update README with installation instruction for .deb
+  * Add jcamiel's suggestions
+  * Update commit signing docs in Contributing guide
+  * Docs: Use apt to install the Debian/Ubuntu package to resolve dependencies
+  * Add name attribute to JUnit report
+  * Normalize curl command line debug with the url at the end.
+  * Add --resolve options
+  * Bump certifi from 2022.9.24 to 2022.12.7 in /bin
+  * Support new one line string format.
+  * Display warning when legacy syntax for one line string is used.
+  * Add check changelog to release workflow
+  * Remove Check CHANGELOG
+  * Update CHANGELOG and CONTRIBUTING.md
+  * Take only PRs from Hurl main repos
+  * Update CHANGELOG
+  * Add integration tests for htmlEscape and htmlUnescape filters
+  * Add support for htmlEscape and htmlUnescape in hurlfmt
+  * Add htmlEscape and htmlUnescape filters
+  * Add grammar to support htmlEscape and htmlUnescape
+  * Update CONTRIBUTING.md
+  * Change struct Bytes with tupple instead of anonymous struct.
+  * Delete unused directory.
+  * Fix print event issue title on accept workflow
+  * Change Template struct using delimiter: Option<char> field instead of quotes: bool.
+  * Update crates
+  * Harden bom integration test.
+  * Modify one line string grammar for ```xxx```to `x`.
+  * Fix error message case.
+  * Update all installation docs.
+  * Hurl is now available on FreeBSD
+  * Add toInt filter
+  * Update integration tests.
+  * Update variables hash while iterating and evaluating the capture section (instead of updating it once with all the variables).
+  * Fix Parsing / compliant with grammar
+  * Add support for LINK, UNLINK, PURGE, LOCK, UNLOCK, PROPFIND and VIEW HTTP method
+  * Update grammar with more HTTP methods.
+  * Fix hadolint warnings on Dockerfile
+  * Add hadolint check
+  * Use gitleaks from ghcr.io instead of docker.io
+  * Update 1.9.0-SNAPSHOT to 2.0.0 due to major breaking change.
+  * Add check for binary compatibility by building a small sample.
+  * Update crates
+  * Update crates
+  * This PR adds support for configuring the client cert and private key for establishing a mutual TLS connection to a server.
+  * Fix badges on generated README
+  * Fix installation.md on update-branch-version.yml workflow
+  * Fix release links instead of snapshots.
+  * Update crates
+  * Add support for GraphQL variables.
+  * Change "type": "multiline-string" for "type": "text" in JSON export.
+  * Update crates
+  * Add application/json Content-Type header for GraphQL queries.
+  * Rename TextOneLine to OneLineText.
+  * Use real type Value instead of public alias JsonValue in implementation.
+  * Forbid dependencies that have GPL* licenses.
+  * Add GraphQL simple query support.
+  * Update crates
+  * Fix test badge
+  * Fix Dockerfile LABEL quotes
+  * Update crates
+  * Remove HTML ast for HTML report generation.
+  * Add opencontainers labels to Dockerfile
+  * Delete raw string wording everywhere.
+  * Update Dockerfile to alpine:3.17
+  * Add dependencies licenses check.
+  * Update crates
+  * Add lang identifier to multiline.
+  * Update crates
+  * Update crates
+  * Reorder check ci
+  * Add gitleaks on ci
+  * Update CONTRIBUTING.md
+  * Sign hurl bot commits
+  * Update crates
+  * Change choice parser function signature to take a slice as argument.
+  * Update crates
+  * Welcome to hurl-bot the new ci bot account
+  * Update grammar doc.
+  * Update vim syntax.
+  * Update IntelliJ IDE syntax files.
+  * Update crates
+  * Update crates
+  * Use HTTP keyword in integration tests.
+  * Use HTTP instead of HTTP/* for any HTTP version match
+  * Fix occasional ci fail on windows package
+  * Add hotfixing workflow
+  * Use HTTP instead of HTTP/* for all HTTP version.
+  * Update crates
+  * Update npm install for 1.8.0.
+  * Fix occasional ci fail on windows test units
+  * Fix accept-pull-request ci fork mode
+  *  Reorder accept-pull-request ci steps
+  * Fix ci typo
+  * Update crates
+  * whitespace
+  * improve vim syntax
+  * Update hurl version to 1.9.0-SNAPSHOT
+
+-------------------------------------------------------------------
+Wed Nov 16 07:41:46 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.8.0:
+  * Create 1.8.0 release
+  * Change raw string body for multiline string body.
+  * Update crates
+  * Replace lxml.HTMLParser with BeautifulSoup parser.
+  * Fix hurlfmt --color crash.
+  * Update crates
+  * Add title to draft release.
+  * Fix release workflow.
+  * Add releasing workflow
+  * Fix clippy warnings (Rust 1.65.0)
+  * Update npm install.
+  * Update/Check CHANGELOG
+  * Fix docs.
+  * Add filters urlEncode/urlDecode
+  * Force python 3.8 for macOS (mimtm 8.0.0 crashes on python 3.11)
+  * Fix missing line in HTML output
+  * Fix case url -> URL.
+  * Delete subquery dead code.
+  * Fix webscrapping of the issue HTML page
+  * Update crates
+  * Move filters outside query
+  * Update README.
+  * Extract filter from query
+  * Add/Check copyright in source files
+  * Add grouping log lines on docker jobs
+  * Update error messages
+  * Update JSON/HTML export
+  * Replace Subquery by Filter
+  * Update docs for 1.8.0
+  * Reorg curl and python ci prerequisites
+  * Newline added at the end of the files
+  * Update crates
+  * Update crates
+  * Move code from core.rs to runner_options.rs.
+  * Fix max-time help.
+  * Improve header ouputs with --include.
+  * Add retry-max-count request option.
+  * Add retry-interval request option.
+  * Add retry request option.
+  * Update grammar.
+  * Update crates
+  * Output curl logs in very-verbose.
+  * Update test self-signed certificate.
+  * Add filters in spec
+  * Update crates
+  * Fix HTTP HEAD
+  * Add retry-max-count option.
+  * Clean `hurl --help`.
+  * Update crates
+  * Fix test curl commands
+  * Add comment.
+  * Update integration tests.
+  * Add --retry and --retry-interval options.
+  * Add url query
+  * Add field url to HTTP response
+  * Update crates
+  * Update crates
+  * Update header docs when a same header has multiple values.
+  * Update crates
+  * Clean image docs.
+  * Update crates
+  * Add Demo placeholder.
+  * Update macOS binary installations.
+  * Add MacPorts instruction.
+  * Add integration test.
+  * Change EntryResult structure to have a list of calls property.
+  * Fix relative redirect
+  * Block /accept ci concurrency based on issue number
+  * Use generic foo.out.pattern instead of foo.output.json
+  * Update crates
+  * Update crates
+  * Run test integ on generic linux package over docker fedora
+  * Run test integ on generic linux package over docker archlinux
+  * Run test integ on generic linux package over docker debian
+  * Reorg release ci
+  * Run test integ on generic macos package
+  * Rename version.sh to get_version.sh
+  * Run test integ on generic linux package
+  * Run test integ on deb package
+  * Split generic linux and deb package creation
+  * Update crates
+  * Update crates
+  * Simplify option parsing using clap apis.
+  * Update crates
+  * Make compact help.
+  * Fix typos
+  * Update crates
+  * Delete --progress and --summary from docs.
+  * Remove --progress and --summary option.
+  * Update crates
+  * Run test integ on windows packages
+  * Update to clap 4.0
+  * Fix coverage ci
+  * Homogenizes ci scripts
+  * Add new ssl error to ci test_error_ssl
+  * Schedules ci coverage
+  * change "api" to "API" in docs
+  * fix grammar in docs
+  * fix typos in docs
+  * Reorg test ci
+  * Convert windows ci jobs commands to powershell scripts
+  * Bump protobuf from 3.19.4 to 3.19.5 in /bin
+  * Update crates
+  * List all libcurl features with --version.
+  * Update version to SNAPSHOT
+  * Fix clippy warnings
+  * Fix chocolatey doc
+  * Clean useless commands for windows ci
+  * Add begin PR comment when /accept
+  * Add libcurl.dll to windows package
+  * Clean ci integration bindings
+  * Update releasing
+  * Remove snapshot when releasing
+  * Remove hardcoded channel in Nix installation link.
+  * Add archive check for npm installer.
+  * Update crates
+
+-------------------------------------------------------------------
+Fri Sep 30 05:31:24 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.7.0:
+  * Install curl 7.68 for ubuntu 18.04 ci test
+  * Install python 3.8 on ubuntu 18.04.
+  * Build release on ubuntu-18.04
+  * Rename 'osx' => 'macos'.
+  * Update version to 1.7.0
+  * Update CHANGELOG for release 1.7.0
+  * Update crates
+  * Indicates deprecated options in hurl help.
+  * Be more restrictive on first char for url parsing.
+  * Don't print error when hurl display help because of no inputs.
+  * Add support for strings comparison.
+  * Hunts clones.
+  * Update IntelliJ contrib README.
+  * Update crates
+  * Add basic syntax highlighting for IntelliJ.
+  * Add comment for HURL_xxx variable.
+  * Update crates
+  * Use release build for unit tests and integration tests.
+  * Accept expression in comparison predicate
+  * Reduces Hurl release binary size.
+  * Update test integ
+  * Add option variable in Hurl file
+  * Update grammar with md5 query.
+  * Remove variables field from RunnerOptions
+  * Create ClientOptions from RunnerOptions
+  * Constructing the HTTP client with cookie file only
+  * Use only the RunnerOptions struct when running a Hurl File/Entry
+  * Fix minot typos.
+  * Update crates
+  * Rename manual-page.md to manual.md
+  * Rename manual-page.md to manual.md
+  * Changing naming from Manual Page to just Manual
+  * Adding pluralization to scenerio and documentation
+  * Changing to manual vs man in documenation
+  * Add option variable
+  * Update crates
+  * Do not re-canonicalize Hurl file in an existing HTML report
+  * Add ci concurrency rule to update-crates.yml
+  * Add ci concurrency rule to accept-pull-request.yml
+  * Update crates
+  * Update crates
+  * Fix minor typo on docs.
+  * Group checks into one job
+  * Recreate clean env from scratch
+  * Delete os customisation for .err in favor of .err.pattern
+  * Generate Release Note from Github Issues/Pull Request
+  * Add support for multiple Hurl file in the same test.
+  * Add color on capture in verbose mode.
+  * Move/Update requirements.txt
+  * Update tutorial's snippets.
+  * Improve text summary.
+  * Update crates
+  * Update crates
+  * Begin documenting npm distribution.
+  * Add doc on Xml namespaces.
+  * Fix assets colors.
+  * Update READMEs.
+  * Update snippet with compressed option.
+  * Add --compressed entry option.
+  * Log number bytes received and duration.
+  * Minor docs change.
+  * Add Netscape cookie format comment.
+  * Update shell Hurl snippets with colored output.
+  * Rename init to new to be more conventionnal.
+  * Fix colored error string (ansi escape code where interleaved).
+  * Update man and document documentation generation.
+  * Update man and README.
+  * Add max-redirs entry option.
+  * Add follow location entry option.
+  * Add very-verbose entry option.
+  * Add verbose entry option.
+  * Add --to-entry integration test.
+  * Fix code attribution.
+  * Fix function doc comment.
+  * Update crates
+  * Make pre_entry and post_entry optional to remove clone on each entry when not interactive.
+  * Add support for cacert entry option.
+  * Remove context_dir field from ClientOptions.
+  * Add integration test.
+  * Override client option at the entry level.
+  * Fix comments.
+  * Parse option section.
+  * Update grammar.
+  * Update crates
+  * Run integration tests only for coverage.
+  * Add coverage report and badge to ci
+  * Update clippy for rust 1.63.0.
+  * Hunt clones and uses references as possible.
+  * Add test for string variable render in double quiotes.
+  * Change `add_tokens(&mut tokens` for `tokens.append(`
+  * Pass client_options in execute and executes_with_redirect HTTP client methods.
+  * Fix regression in chrono 0.4.20 https://github.com/chronotope/chrono/issues/755.
+  * Update crates
+  * Display deprecated warning when using --progress and --summary option.
+  * Normalize acronym case in errors.
+  * Support NO_COLOR env variable (https://no-color.org)
+  * Run apt update before apt install
+  * Add integration test for --test.
+  * Use default exit code 0 for tests_ok integration tests.
+  * Make --test colored.
+  * Make verbose and very-verbose logs more colored.
+  * Patches chrono 0.4.20 regression on ArchLinux / Alpine docker image.
+  * Add specific check/crates.sh script
+  * Always wait for checks when /accept a PR
+  * Convert bash script to Python
+  * Add Python version
+  * Add comment - Test fails only when output is decompressed
+  * Make sure that tests ok are ok
+  * Install python modules with requirements.txt
+  * Add glibc dependency to ArchLinux prerequisites.
+  * Make error more colorfull.
+  * Update crates
+  * Delete emulated arm tests from ci
+  * Fix bin dir for update-crates.yml
+  * Create bas logger for basic error and logger for a run file.
+  * Uses references when possible.
+  * Remove unnecessary prefix.
+  * Use raw content instead of lines for high level api (run Hurl file etc...)
+  * Rationalize log functions usages.
+  * Refacto workflow scripts
+  * Update crates
+  * Move xmllint check to check workflow
+  * Escape \ when transforming pattern to regex.
+  * Fix curl output for very-verbose.
+  * Update very_verbose integration test.
+  * Log body request if very_verbose.
+  * Modify variable name to be more specific (response_headers vs headers, request_body vs data, response_body vs body)
+  * Fixes file access authorization.
+  * Update crates
+  * Update crates
+  * Decrease update crates frequency to once a day
+  * Update crates
+  * Update crates
+  * Update crates
+  * Use references when possible.
+  * clean update crates bot commit message
+  * Clean title for update crates pull request
+  * Fix exit code when use as module.
+  * Update crates on 22/07/21 08:21
+  * Update crates on 22/07/20 17:52
+  * Only run check, release and test ci on pull request trigger
+  * Rename update crates pull request on ci
+  * Fix broken stdin.
+  * ˉᵇᵒᵗˉUpdate crates on 22/07/19 20:17
+  * ˉᵇᵒᵗˉUpdate crates on 22/07/18 08:21
+  * Fix update_crates.yml tmp files
+  * Fix update_crates.yml when there is no updates
+  * ˉᵇᵒᵗˉUpdate crates on 22/07/17 08:18
+  * Untrack ${update_crates_output} on update_crates.yml action
+  * Add labels to update_crates.yml action
+  * ˉᵇᵒᵗˉUpdate crates on 22/07/15 13:19
+  * Use personal token to create pull request for update_crates.yml action
+  * Fix update_crates job into check.yml
+  * Add scheduled crates updates by PR on ci
+  * Improve crates_update.sh compatibility
+  * Update regex 1.6.0.
+  * Update once_cell to 1.13.0.
+  * Add test for charset
+  * Update crypto-common 0.1.4 and one_cell 1.12.1.
+  * Add test for multiple Hurl files
+  * Fix #652.
+  * Update serde 1.0.138.
+  * Add additional script for ad-hoc tests
+  * Add filename in error message
+  * Add integration test on --very-verbose.
+  * Fix clippy is_digit_ascii_radix
+  * Add type hints to test_hurl.py
+  * Update clap 3.2.8.
+  * Remove additional spaces in verbose mode
+  * Use expected pattern to compare textual stdout/stderr
+  * Move method between Request / Response.
+  * Update serde-json 1.0.82.
+  * Update clap 3.2.7.
+  * Clean contrib/windows/windows_package_managers/chocolatey/README.md
+  * Disable pr comment when deleting local branch fails on pr /accept
+  * Clean contrib/docker/README.md
+  * Updates READMEs.
+  * Add --test option in usage and links to captures and asserts.
+  * Create accept-pull-request.yml
+  * Reactivate ArchLinux integration tests.
+  * Support regex literal in query/subquery
+  * Fix  typo: somment --> comment
+  * Create http::header module.
+  * Update indexmap.
+  * Update clap 3.2.6.
+  * Encode string variable in JSON body
+  * Delete legacy grammar.
+  * Extends disk to 12288m for emulated arm test job
+  * Validate Grammar and generate HTML
+  * Log response body if very verbose option is used.
+  * Add very-verbose option.
+  * Update comments.
+  * Use reference in function signatures.
+  * Add new grammar
+  * Use minimal chrono features (to remove potential CVE in time crate)
+  * Update dependencies.
+  * Update clap 3.2.4.
+  * Fix crates_update.sh to be supported on macOS.
+  * Update READMEs
+  * Use Template type for cookie value
+  * Support template in vim syntax highlighting
+  * Emphasize --test mode in tutorial.
+  * Format function docs.
+  * Move ResponseCookie, CookieAttribute to http module.
+  * Rename http/response_decoding/Encoding to http/response_decoding/ContentEncoding.
+  * Rename http/http_decoding to http/response_decoding.
+  * Update running tests doc.
+  * Fix shebang to work on macOS.
+  * Move encoding, is_html, text funtcion from runner/http_response to http/content_decoding.
+  * Use HttpError as error model for http package.
+  * Clean test.yml
+  * Rewrite dependency_age.sh to crates_update.sh
+  * Add workflow check
+  * Remove duplicate line in snippet.
+  * Add basic Syntax highlighting for VIM
+  * Add licence.md in docs.
+  * Update openssl-sys 0.9.74.
+  * Updated README from the canonical doc.
+  * Add scripts to construct GitHub and crates.io README, and to construct grammar and man canonical document from the source.
+  * Import of the canonical docs (raw Markdown, without ant Jekyll specificities.)
+  * Update dependencies.
+  * Standardize example.org for Hurl snippet.
+  * Fix typo in man.
+  * Delete renovate.json
+  * Fix windows-x64 ci cache
+  * Fix test-emulated-raspios-arm-x64 ci cache
+  * Fix rustup on windows contrib
+  * Clean windows contrib (only powershell)
+  * Delete dependabot conf
+  * Optimize windows ci jobs
+  * Move docs.
+  * Use art ressources and delete svg ressources from docs.
+  * Update minor dependencies.
+  * Fix rustup default-host for powershell contrib
+  * Fix NSIS powershell contrib
+  * Uses only command line for powershell contrib
+  * Test specific error message for Fedora
+  * Fix certificate test message.
+  * Modify unwrap_or_exit arguments order.
+  * Renovate only scans cargo, dockerfile and actions
+  * Update actions/checkout action to v3
+  * Update actions/upload-artifact action to v3
+  * Update renovate.json
+  * Update man.
+  * Create renovate.json
+  * Update READMEs.
+  * Fix Brotli response body decoding.
+  * Double the timeout of the large test for ci compatibility with emulated arm64
+  * Add emulated arm64 job to test ci
+  * Fix implicit body asserts on compressed response body.
+  * Update clap 3.1.18.
+  * Fix sha256, md5, bytes query on compressed body.
+  * Update to Rust edition 2021.
+  * Fix redirection not followed with 'location' header.
+  * Move Content_encoding related functions from runner to http.
+  * Fix log verbose case.
+  * Update Cargo.toml (lock is already up-to-date).
+  * Update dependencies.
+  * Update all depedencies with `cargo update`.
+  * Fix lib version update in dependency_age.sh
+  * Fix lib version extraction in dependency_age.sh
+  * Remove useless logs.
+  * Install Hurl with npm.
+  * Update serde 1.0.81.
+  * Rename osx to macos in GitHub actions files.
+  * Update serde 1.0.137
+  * Add missing prefix for Hurl version output.
+  * Use canonical relative path for generating html Hurl file
+  * Update README.
+  * Add build-essential to Debian build doc
+  * Fix shell escape encoding for curl export
+  * Update Tests integ
+  * Update ubuntu fixed version to current on Circleci
+  * Fix clippy 1.60 warnings
+  * Add test log files to .gitignore
+  * Update GitHub and crates.io README.
+  * Use shorthand syntax in integration tests.
+  * Update brotli 3.3.4.
+  * Update indexmap 1.8.1.
+  * Fixe Flask version for integration tests.
+  * Update libxml 0.3.1.
+  * Update CHANGELOG
+  * Fix panicking while processing expected Regex value.
+  * Add integration test for failed regex predicate.
+  * Update libflate 1.2.0.
+  * Add test for debugging
+  * Support @ for the username in [BasicAuth] section
+  * Using latest ubuntu-2004, preinstalled git, and libcurl4-openssl-dev for Circleci arm64 ci
+  * Use curl-dev package for Alpine test.
+  * Update curl 0.4.43.
+  * Test build are done with --release and --locked.
+  * Add todo comments.
+  * Generalize tests for curl timeout error codes
+  * Update README with macos build deps
+  * Fix format.
+  * Add integration tests on XPath/namespaces.
+  * Add namespace support for XPath query against XML document.
+  * Fix curl command check error output.
+  * Skip Tests on Archlinux
+  * Use scripts in Github jobs
+  * Allow different types in JSON array
+  * Uniformize Rust Install
+  * Update crate regex to 1.5.5
+  * Fix clippy 1.59 warnings.
+  * Update cc 1.0.73
+  * Update sha2 0.10.2
+  * Update GitHub and crates.io README.
+  * Add support for HURL_foo environment variable.
+  * Fix man sample.
+  * Update crate README.
+  * Sort options alphabetically in -h/man.
+  * Fix CI integration tests.
+  * Split integration tests between tests_ok / tests_failed repository.
+  * Update serde_json 1.0.79.
+  * Add doc for Releasing process
+  * Update README.md.
+  * Update html export.
+  * Add comment on basic auth integration sample.
+  * Update readme for 1.6.0.
+  * Increment version to 1.7.0-snapshot
+
+-------------------------------------------------------------------
+Tue Apr 19 14:10:59 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- first version of package hurl: Hurl is a command line tool that runs HTTP requests defined in a simple plain text format. 
