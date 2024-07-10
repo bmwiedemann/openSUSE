@@ -1,0 +1,5 @@
+<package name="primecount" project="openSUSE:Factory">
+  <title>Count the number of primes</title>
+  <description>primecount is a command-line program and C/C++ library that counts the primes below an integer x ≤ 10^31 using highly optimized implementations of the combinatorial prime counting algorithms.</description>
+  <devel project="devel:libraries:c_c++" package="primecount"/>
+</package>

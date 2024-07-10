@@ -1,0 +1,158 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a907ae9ab40a5579779e3a639300913f</srcmd5>
+    <version>6.1</version>
+    <time>1601398843</time>
+    <user>dimstar_suse</user>
+    <comment>Update to primecount-6.1.
+The initial package submission request was: https://build.opensuse.org/request/show/827765
+</comment>
+    <requestid>834913</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>8070034a8821492ba2e67406950ba7e2</srcmd5>
+    <version>6.2</version>
+    <time>1610558355</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to primecount-6.2
+</comment>
+    <requestid>861749</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>707fd790c5f3c71943ae62c23db60ea0</srcmd5>
+    <version>6.4</version>
+    <time>1616598811</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to primecount-6.4.
+- Fixed an integer overflow in the B formula.
+- Reduced memory usage of SegmentedPiTable by 1.5x.
+</comment>
+    <requestid>880575</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>6f192d2325382f89a1225c9e31df228c</srcmd5>
+    <version>7.0</version>
+    <time>1619822831</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to primecount-7.0 (API &amp; ABI are backwards compatible).
+- AC.cpp: New algorithm with improved scaling.
+- AC_libdivide.cpp: New algorithm with improved scaling.
+- B.cpp: Improved scaling due to independent threads.
+- P2.cpp: Improved scaling due to independent threads.
+- LoadBalancerAC.cpp: New thread scheduler for AC algorithm.
+- LoadBalancerS2.cpp: Improve load balancing of S2_hard &amp; D.
+- LoadBalancerP2.cpp: Rewritten, now similar to other load balancers.
+- SegmentedPiTable.cpp: Decrease size to x^(1/4).
+- util.cpp: Improve scaling using larger default alpha_z = 2.
+- imath.hpp: Optimize ilog2() &amp; next_power_of_2() using __builtin_clzll().
+</comment>
+    <requestid>889623</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>1c97bbff06502d694b824021ae3f4085</srcmd5>
+    <version>7.1</version>
+    <time>1629269758</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to primecount-7.1 (API &amp; ABI are backwards compatible).
+- Minor pi(x) &amp; phi(x, a) speed improvements.
+- PhiTiny.cpp: Use compressed phi(x, a) lookup table.
+- phi.cpp: More correct usage of recursive phi(x, a) formula.
+- PiTable.cpp: Add PrimePi(x) lookup table for x &lt; 64 * 240.
+- generate_phi.hpp: More correct usage of recursive phi(x, a) formula.
+- nth_prime.cpp: Cache small primes &lt;= 1009.
+- nth_prime.cpp: Improve error handling, n must be &gt;= 1.
+- appveyor.yml: Fix debug build.
+</comment>
+    <requestid>912453</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>deb4726105d07959e5ead5ed3c708023</srcmd5>
+    <version>7.2</version>
+    <time>1638997762</time>
+    <user>dimstar_suse</user>
+    <comment>Update to primecount-7.2</comment>
+    <requestid>936435</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>982aa17f5b99febc643ba17233d4beab</srcmd5>
+    <version>7.3</version>
+    <time>1651669850</time>
+    <user>dimstar_suse</user>
+    <comment>Update to primecount-7.3</comment>
+    <requestid>974777</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>79eef667cebeca46de136d003b78f589</srcmd5>
+    <version>7.4</version>
+    <time>1657379008</time>
+    <user>dimstar_suse</user>
+    <comment>Update to primesieve-7.4</comment>
+    <requestid>987964</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>dee797116a0303eedbd731cd111252d5</srcmd5>
+    <version>7.6</version>
+    <time>1670514724</time>
+    <user>dimstar_suse</user>
+    <comment>Update to primecount-7.6</comment>
+    <requestid>1041326</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>6941a3cf827f1ce96a6dca71a13d28c4</srcmd5>
+    <version>7.7</version>
+    <time>1683991086</time>
+    <user>dimstar_suse</user>
+    <comment>Update to primecount-7.7.
+
+This should fix my previously declined package submission: https://build.opensuse.org/request/show/1074966?notification_id=39187688</comment>
+    <requestid>1086890</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>d1656f9583bf53eb43423895d41536ce</srcmd5>
+    <version>7.8</version>
+    <time>1684846448</time>
+    <user>dimstar_suse</user>
+    <comment>Update to latest primecount-7.8</comment>
+    <requestid>1088399</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>cbc8a9558691b1e5b7117fda4c375475</srcmd5>
+    <version>7.9</version>
+    <time>1688476970</time>
+    <user>dimstar_suse</user>
+    <comment>Update to latest primecount-7.9</comment>
+    <requestid>1096682</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>527d775377d789d2794ccae63caf5986</srcmd5>
+    <version>7.10</version>
+    <time>1705099513</time>
+    <user>anag+factory</user>
+    <comment>Update to latest primecount-7.10 release</comment>
+    <requestid>1138168</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>7be1891dd4c3e649d4a36fc53df3b2b1</srcmd5>
+    <version>7.11</version>
+    <time>1711397254</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1160728</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>e0cefa6ba96748a2d274cf7e62cd17aa</srcmd5>
+    <version>7.12</version>
+    <time>1712674120</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1166457</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>7335f6822354b09d3a0e229eca7ab81c</srcmd5>
+    <version>7.13</version>
+    <time>1713724131</time>
+    <user>anag+factory</user>
+    <comment>Update to latest primecount-7.13</comment>
+    <requestid>1169460</requestid>
+  </revision>
+</revisionlist>
