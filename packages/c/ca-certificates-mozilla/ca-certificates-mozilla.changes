@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jul  8 15:19:02 UTC 2024 - Marcus Meissner <meissner@suse.com>
+
+- Updated to 2.68 state of Mozilla SSL root CAs (bsc#1227525)
+  - Added: FIRMAPROFESIONAL CA ROOT-A WEB
+  - Distrust: GLOBALTRUST 2020
+
+-------------------------------------------------------------------
 Mon Feb 26 12:09:12 UTC 2024 - Marcus Meissner <meissner@suse.com>
 
 - Updated to 2.66 state of Mozilla SSL root CAs (bsc#1220356)

@@ -804,4 +804,14 @@
 - use rpm 4.20 compatible patch syntax</comment>
     <requestid>1152964</requestid>
   </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>44e5527ef1126901549cffef9cd7999b</srcmd5>
+    <version>2.68</version>
+    <time>1720622870</time>
+    <user>anag+factory</user>
+    <comment>- Updated to 2.68 state of Mozilla SSL root CAs (bsc#1227525)
+  - Added: FIRMAPROFESIONAL CA ROOT-A WEB
+  - Distrust: GLOBALTRUST 2020</comment>
+    <requestid>1186335</requestid>
+  </revision>
 </revisionlist>
