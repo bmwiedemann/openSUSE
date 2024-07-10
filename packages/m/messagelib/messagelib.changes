@@ -1,0 +1,1723 @@
+-------------------------------------------------------------------
+Tue Jul  2 13:55:11 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.05.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.05.2/
+- No code change since 24.05.1
+
+-------------------------------------------------------------------
+Wed Jun 12 07:34:46 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.05.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.05.1/
+- Changes since 24.05.0:
+  * Revert "Mark encrypted part as mime" (kde#487029)
+
+-------------------------------------------------------------------
+Sun May 19 09:57:35 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.05.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.05.0/
+- No code change since 24.04.80
+
+-------------------------------------------------------------------
+Fri May  3 09:17:20 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.04.80
+  * New feature release
+- Too many changes since 24.02.2, only listing bugfixes:
+  * Save recent address with full name (kde#301448)
+  * Don't make member variables const (kde#481877)
+
+-------------------------------------------------------------------
+Tue Apr  9 18:09:43 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.02.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.02.2/
+- Changes since 24.02.1:
+  * Fix bug 485186:  Message Preview Pane Headers Area Lost Background (kde#485186)
+  * fix change layout when we print message
+  * Allow to change print layout when we export as pdf
+  * Rename methods
+  * Fix extract message (kde#484186)
+
+-------------------------------------------------------------------
+Tue Mar 19 15:27:53 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.02.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.02.1/
+- Changes since 24.02.0:
+  * Fix update color
+  * Fix update DkimWidgetInfo color
+  * Fix update color when we change theme
+  * Fix bug 483283:  KMail unexpectedly trying to connect to safebrowsing.googleapis.com (kde#483283)
+
+-------------------------------------------------------------------
+Fri Feb 23 14:00:51 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.02.0
+  * New feature release
+- Changes since 24.01.95:
+  * Convert datetime to locale
+  * Fix bug 479932: Mail display eat spaces after quote characters (kde#479932)
+
+-------------------------------------------------------------------
+Fri Feb  9 16:09:59 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.01.95
+  * https://kde.org/announcements/megarelease/6/rc2/
+
+-------------------------------------------------------------------
+Tue Dec  5 14:20:33 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.4
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.4/
+- No code change since 23.08.3
+
+-------------------------------------------------------------------
+Tue Nov  7 17:05:34 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.3/
+- No code change since 23.08.2
+
+-------------------------------------------------------------------
+Tue Oct 10 18:28:20 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.2/
+- Changes since 23.08.1:
+  * Fix crash when switching signed/encrypted emails very fast (kde#463083)
+
+-------------------------------------------------------------------
+Tue Sep 12 11:56:48 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.1/
+- No code change since 23.08.0
+
+-------------------------------------------------------------------
+Sun Aug 20 14:00:21 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.0/
+- No code change since 23.07.90
+
+-------------------------------------------------------------------
+Mon Aug 14 08:03:37 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.07.90
+  * New feature release
+- Changes since 23.07.80:
+  * Fix Do not change color from original HTML mail" also makes plain text mail not adhere to color scheme (kde#471857)
+
+-------------------------------------------------------------------
+Tue Aug  1 10:14:33 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.07.80
+  * New feature release
+- Too many changes since 23.04.3, only listing bugfixes:
+  * Fix references to message parts in encrypted messages (kde#469383)
+  * Look for matching subkey if no key was found for fingerprint (kde#469304)
+
+-------------------------------------------------------------------
+Tue Jul  4 10:20:36 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.04.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.04.3/
+- No code change since 23.04.2
+
+-------------------------------------------------------------------
+Tue Jun  6 20:01:52 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.04.2/
+- Changes since 23.04.1:
+  * Use QuoteHtmlChars
+  * Fix email comparison (some email are written "<foo@kde.org>"
+  * convert quote as html otherwise we can't see info
+  * Remove unused includes
+  * Fix typo
+  * Fix crash when switching signed/encrypted emails very fast (kde#463083)
+  * Align descript message and lock icon
+  * Debug--
+  * Const'ify variable. Initialize variable
+  * Add more autotests
+
+-------------------------------------------------------------------
+Tue May  9 10:47:50 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.04.1/
+- Changes since 23.04.0:
+  * Fix references to message parts in encrypted messages (kde#469383)
+  * install config file
+  * Fix search lib
+  * Adapt to build against last ktextaddons (autocorrection split)
+  * Look for matching subkey if no key was found for fingerprint (kde#469304)
+  * Use LC_ALL
+  * Use QStandardPaths
+  * Fix Bug 468801: org.kde.pim.mimetreeparser: unknown mimetype "text/x-moz-deleted" (kde#468801)
+  * Use correct INSTALL_TARGETS_DEFAULT_ARGS
+
+-------------------------------------------------------------------
+Sat Apr 15 08:46:38 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.04.0/
+
+-------------------------------------------------------------------
+Fri Mar 31 16:42:43 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.03.90
+  * New feature release
+
+-------------------------------------------------------------------
+Fri Mar 17 20:44:30 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.03.80
+  * New feature release
+- Drop patch, merged upstream:
+  * 0001-Fix-fallback-path-in-MessageFactoryNG-applyCharset.patch
+
+-------------------------------------------------------------------
+Thu Mar  9 13:16:20 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix encoding of replies (kde#447297, kde#443009, kde#298349):
+  * 0001-Fix-fallback-path-in-MessageFactoryNG-applyCharset.patch
+
+-------------------------------------------------------------------
+Tue Feb 28 09:46:56 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 22.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.12.3/
+
+-------------------------------------------------------------------
+Tue Jan 31 10:34:52 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 22.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.12.2/
+
+-------------------------------------------------------------------
+Tue Jan  3 10:21:17 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 22.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.12.1/
+
+-------------------------------------------------------------------
+Fri Dec  2 12:26:39 UTC 2022 - Christophe Marin <christophe@krop.fr>
+
+- Update to 22.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.12.0/
+
+-------------------------------------------------------------------
+Sat Nov 26 16:46:16 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.11.90
+  * New feature release
+
+-------------------------------------------------------------------
+Sat Nov 12 08:55:22 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.11.80
+  * New feature release
+
+-------------------------------------------------------------------
+Tue Nov  1 11:21:42 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.08.3/
+
+-------------------------------------------------------------------
+Tue Oct 11 14:33:49 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.08.2/
+
+-------------------------------------------------------------------
+Tue Sep  6 15:21:18 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.08.1/
+
+-------------------------------------------------------------------
+Sun Aug 14 09:43:59 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.08.0/
+
+-------------------------------------------------------------------
+Sun Aug  7 07:22:40 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.07.90
+  * New feature release
+- Drop patches, fixed upstream:
+  * 0001-Add-missing-find_dependency-calls.patch
+  * 0001-Use-WebEngineWidgets-as-WebEngine-is-not-define-in-q.patch
+
+-------------------------------------------------------------------
+Sun Aug  7 07:17:34 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add upstream changes to fix issues detected by CMake 3.24:
+  * 0001-Add-missing-find_dependency-calls.patch
+  * 0001-Use-WebEngineWidgets-as-WebEngine-is-not-define-in-q.patch
+
+-------------------------------------------------------------------
+Sat Jul 16 08:28:58 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.07.80
+  * New feature release
+
+-------------------------------------------------------------------
+Tue Jul  5 17:04:05 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.04.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.04.3/
+
+-------------------------------------------------------------------
+Wed Jun  8 09:57:20 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.04.2/
+
+-------------------------------------------------------------------
+Tue May 10 16:30:59 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.04.1/
+
+-------------------------------------------------------------------
+Mon Apr 18 07:52:44 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.04.0/
+
+-------------------------------------------------------------------
+Fri Apr  8 18:21:56 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.03.90
+  * New feature release
+
+-------------------------------------------------------------------
+Wed Mar 23 08:15:06 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.03.80
+  * New feature release
+- Too many changes since 21.12.3, only listing bugfixes:
+  * Fix MS Word attachments being detected as encrypted (kde#390002)
+  * Fix Bug 446675: Crash upon sending or saving message as draft (kde#446675)
+
+-------------------------------------------------------------------
+Tue Mar  1 09:58:11 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.12.3/
+- Changes since 21.12.2:
+  * [messagecomposer] Do not sign long headers. (kde#439958)
+  * Fix Bug 449809 KMail2 does not resize images (kde#449809)
+
+-------------------------------------------------------------------
+Tue Feb  1 13:03:57 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.12.2/
+- Changes since 21.12.1:
+  * Fix Passing a PGP message via KToolInvocation::invokeMailer() it will not show up in the composer (kde#332368)
+  * Fix build with GCC 12 (standard attributes in middle of decl-specifiers)
+  * Fix  Spam false-positive, because KMail mis-parses some links (kde#448029)
+
+-------------------------------------------------------------------
+Tue Jan  4 10:26:40 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.12.1/
+- No code change since 21.12.0
+
+-------------------------------------------------------------------
+Fri Dec  3 19:22:59 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.12.0/
+- Changes since 21.11.90:
+  * Enable new GitLab CI on stable branch.
+
+-------------------------------------------------------------------
+Sat Nov 27 10:11:55 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.11.90
+  * New feature release
+- No code change since 21.11.80
+
+-------------------------------------------------------------------
+Sat Nov 13 17:56:38 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.11.80
+  * New feature release
+- Too many changes since 21.08.3, only listing bugfixes:
+  * BUG 442884: Fix DSN support (kde#442884)
+
+-------------------------------------------------------------------
+Tue Nov  2 21:34:56 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.08.3/
+- Changes since 21.08.2:
+  * Make sure that index is valid
+  * Fix Bug 419978 - KMail missing line break in blockquote when showing as HTML mail (kde#419978)
+
+-------------------------------------------------------------------
+Tue Oct  5 16:29:10 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.08.2/
+- Changes since 21.08.1:
+  * Fix Bug 443108 - Ability to copy tables with original formatting (kde#443108)
+  * Store in completion list too
+  * Set RUN_SERIAL test property for all add_gpg_crypto_test tests
+
+-------------------------------------------------------------------
+Wed Sep  1 12:39:31 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.08.1
+- Changes since 21.08.0:
+  * Fix build with the CI now using the standard Akonadi test controls
+  * Adapt MessageFactoryTest::test_multipartAlternative to new replyAsHtml flag
+  * AutocryptHeadersJob: ensure reproducable order of Autocrypt-Gossip headers
+  * Fix MainTextJobTest::testHtmlWithImages
+  * MessageFactoryNG: also replace ${} wrapper from MDN templates
+  * Fix false positive for url "https://www.google.com/search?q=%5C"
+  * Fix autotest
+
+-------------------------------------------------------------------
+Fri Aug  6 09:42:41 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.08.0
+- Changes since 21.07.90:
+  * Fix Bug 440541 - resetting quick filter if set during folder processing (kde#440541)
+  * Use qCDebug
+  * Fix Bug 439218 - Quoted strings containing comma or brackets are not parsed
+    correctly, causes message sending to fail (kde#439218)
+  * Add more autotest
+  * Try to reduce duplicate code with akonadisender
+  * Return error when we can't get "To" info
+  * Use qCWarning here
+  * Move method to util.h file
+
+-------------------------------------------------------------------
+Fri Jul 30 10:05:53 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.07.90
+  * New feature release
+- Changes since 21.07.80:
+  * Fix QStringView porting mistake
+
+-------------------------------------------------------------------
+Sat Jul 17 20:07:03 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.07.80
+  * New feature release
+- Too many changes since 21.04.3, only listing bugfixes:
+  * Fix deletion of two (or more) attachments (kde#282792)
+  * Allow deletion of attachments from message structure view (kde#287177)
+  * Allow the message structure view to grow/shrink as much as sensible (kde#436044)
+- Only install the license files once
+
+-------------------------------------------------------------------
+Wed Jul  7 08:59:03 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.04.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.04.3
+- No code change since 21.04.2
+
+-------------------------------------------------------------------
+Tue Jun  8 12:41:18 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.04.2
+- Changes since 21.04.1:
+  * Fix bug 206269 "An escaping problem also occurs with '&' in subject or body" (kde#206269)
+
+-------------------------------------------------------------------
+Wed May 12 06:09:01 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/21.04.1
+- Changes since 21.04.0:
+  * Fix CVE-2021-31855
+  * Minor: Fix compiler warning
+- Drop 0001-Fix-CVE-2021-31855.patch. Merged upstream.
+
+-------------------------------------------------------------------
+Fri Apr 30 07:09:07 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add upstream change to fix a misbehaviour when deleting
+  attachments from encrypted messages:
+  * 0001-Fix-CVE-2021-31855.patch (CVE-2021-31855)
+
+-------------------------------------------------------------------
+Fri Apr 16 16:13:17 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.04
+- No code change since 21.03.90
+
+-------------------------------------------------------------------
+Fri Apr  9 17:41:43 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.03.90
+  * New feature release
+- Changes since 21.03.80:
+  * Fix BUG 435431 Edit menu (Variables submenu) doesn't work as advertised (kde#435431)
+  * It's debug not warning
+
+-------------------------------------------------------------------
+Sun Mar 21 13:29:46 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.03.80
+  * New feature release
+- Too many changes since 20.12.3, only listing bugfixes:
+  * Fix Bug 434392 - message/global type, can't view it, must be associated to kmail --view (kde#434392)
+  * Fix Bug 430678 - Allow to only enable specific external images (kde#430678)
+  * Fix[messagecomposer]: Do copy all mail headers instad of reference them. (kde#427091)
+
+-------------------------------------------------------------------
+Thu Mar  4 06:11:53 UTC 2021 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/20.12.3
+- Changes since 20.12.2:
+  * mail-thread-ignored and mail-thread-watched exist in breeze-icons.
+  * Use "enter" for searching next element
+  * Exclude loading stylesheet
+  * Fix Bug 431218 - mail viewer loads external fonts even with external refs disabled (kde#431218)
+- Dropped patches, now upstream:
+  * 0001-Fix-Bug-431218-mail-viewer-loads-external-fonts-even.patch
+  * 0002-Exclude-loading-stylesheet.patch
+
+-------------------------------------------------------------------
+Wed Feb  3 08:30:05 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2021-02-apps-update
+- Changes since 20.12.1:
+  * Connect before calling code
+- Add upstream patches:
+  * 0001-Fix-Bug-431218-mail-viewer-loads-external-fonts-even.patch
+  * 0002-Exclude-loading-stylesheet.patch
+
+-------------------------------------------------------------------
+Tue Jan  5 12:27:17 UTC 2021 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2021-01-apps-update
+- Changes since 20.12.0:
+  * Add Protected Header tests for SignEncryptJob
+  * Messagecomposer: Move protected headers to signed part
+  * Fix[messagecomposer]: Do copy all mail headers instad of reference them (kde#427091)
+  * Fix Bug 431153 - Crash in MessageComposer::MessageFactoryNG::createForwardDigestMIME() when trying to forward a group of emails (kde#431153)
+  * storagemodel.cpp - collectionForId() improve
+  * Remove setRunExecutables(true), it serves no purpose with a text/html mimetype
+  * cleanup EncryptedJobTest.
+  * FIX[messagecomposer/cryptocomposertests]: Use EncryptJob exec instead of async variant to pass tests.
+
+-------------------------------------------------------------------
+Sun Dec 13 14:30:41 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Drop obsolete build requirements
+
+-------------------------------------------------------------------
+Sat Dec  5 23:17:54 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-12-apps-update
+- No code change since 20.11.90
+
+-------------------------------------------------------------------
+Fri Nov 27 15:18:06 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.11.90
+  * New feature release
+- Changes since 20.11.80:
+  * Fix assert when deleting a folder in kmail
+  * Fix compilation with recent Qt 5.15
+  * Fix Bug 429224 - Enabling undo send results in empty return path breaking DKIM (kde#429224)
+  * Start to fix print to pdf
+
+-------------------------------------------------------------------
+Sat Nov 14 00:03:08 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.11.80
+  * New feature release
+- Too many changes to list here.
+
+-------------------------------------------------------------------
+Thu Nov  5 22:47:53 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-11-apps-update
+- Changes since 20.08.2:
+  * Fix typo :)
+  * Fix Bug 391030 (anarchotaoist) - KMail does not print images in emails (kde#391030)
+  * Fix Bug 427792 - Crash on exit (kde#427792)
+  * Fix Bug 427697 - KMail did not apply data from mailto information. (kde#427697)
+
+-------------------------------------------------------------------
+Fri Oct  9 05:45:23 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-10-apps-update
+- Changes since 20.08.1:
+  * Fix crash xdg-email foo@kde.org bar@kde.org baz@kde.org
+  * Fix Bug 426639 - Kmail Undo Send option doesn't work (kde#426639)
+  * Fix crash when we forward inline a message
+  * Fix here too: We need to show action when we can see selected item
+  * Hide actions if we don't show item
+  * Warning--
+  * Fix Bug 425161 - Default keyboard shortcut for adding attachments (kde#425161)
+
+-------------------------------------------------------------------
+Tue Sep  1 20:51:23 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-09-apps-update
+- Changes since 20.08.0:
+  * Fix Bug 425219 - suspicious URL warning system gives false positive for URL with port number (kde#425219)
+  * use no deprecated enum Qt::MiddleButton
+  * Add name when we forward as attachment
+
+-------------------------------------------------------------------
+Sun Aug  9 09:10:44 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-08-apps-update
+- Changes since 20.07.90:
+  * Fix some SPDX license identifiers
+
+-------------------------------------------------------------------
+Sun Aug  2 08:01:03 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.07.90
+  * New feature release
+- Changes since 20.07.80:
+  * Make sure that url is not empty
+  * Fix crash
+  * Fix size threshold for "big email" codepath (kde#387061)
+  * Only search for KF5AkonadiContact once
+  * Use KF5_MIN_VERSION to find KF5NewStuff, not KMIME_LIB_VERSION
+  * Fix crash when we reply to an invalid email
+
+-------------------------------------------------------------------
+Sun Jul 19 10:06:08 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.07.80
+  * New feature release
+- Too many changes since 20.04.3, only listing bugfixes:
+  * Add field "Folder" to theme content items and to message tool tip (kde#420644)
+
+-------------------------------------------------------------------
+Thu Jul  9 20:11:04 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.04.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-07-apps-update
+- Changes since 20.04.2:
+  * Fix mem leak found by ASAN
+  * Make sure that we don"t see [vcard] when we don't have it
+  * Fix crash when node is empty
+  * Add more check about css imported from message
+  * Don't allow to use div in head
+  * We don't need to add all testcase when we use qt >= 5.14
+  * NavigationTypeRedirect was added to qt5.14
+  * Exclude redirect too
+
+-------------------------------------------------------------------
+Tue Jun  9 12:16:24 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-06-apps-update
+- Changes since 20.04.1:
+  * Fix save keys. We can't have multi keys
+  * Allow to load cid element
+  * Add cidschemehandler
+  * Continue to fix loading image from cid scheme
+  * Make sure that resourceType is a QWebEngineUrlRequestInfo::ResourceTypeImage
+  * Fix Start to fix HTML content - mangled generation
+  * Disable line too
+  * Fix load header with qt5.15
+
+-------------------------------------------------------------------
+Fri May 15 15:42:19 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-05-apps-update
+- Changes since 20.04.0:
+  * Store infoResult too
+  * Fix Bug 420766 - Envelope From is empty on outgoing mails (kde#420766)
+  * Fix display correct charset
+  * Fix Bug 420740 - adding of inline images broken (kde#420740)
+  * Don't duplicate text in tooltip
+  * Fix minimum size in warning message. Otherwise in hdpi we can have
+    icon which is too big for red rect.
+
+-------------------------------------------------------------------
+Thu Apr 23 12:23:14 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-04-apps-update
+- Too many changes since 20.03.90, only listing bugfixes:
+  * Fix Bug 419949 - KMail only partly shows HTML mail (kde#419949)
+  * Fix Bug 419448 - MS Exchange sqeeze spaces in HTML messages (kde#419448)
+
+-------------------------------------------------------------------
+Sun Apr  5 20:30:44 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.03.90
+  * New feature release
+- Too many changes since 20.03.80, only listing bugfixes:
+  * Fix Bug 416306 - send later agent wrongly store sended message to local storage (kde#416306)
+
+-------------------------------------------------------------------
+Sun Mar 22 09:17:41 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.03.80
+  * New feature release
+- Too many changes since 19.12.3, only listing bugfixes:
+  * Fix Bug 418482 - KMail does not display answer (in HTML-mode) (kde#418482)
+  * Fix Bug 416758 - Encoding broken (kde#416758)
+  * Fix Bug 387061 - Large messages don't display in the viewer pane (eg. New Tumbleweed snapshot 20171117 released!) (kde#387061)
+- Dropped patches, now upstream:
+  * 0001-Fix-Bug-387061-Large-messages-don-t-display-in-the-v.patch
+  * 0002-Initialize-variable.patch
+  * 0001-Revert-Disable-reply-with-quote-text-as-this-bug-is-.patch
+
+-------------------------------------------------------------------
+Thu Mar  5 20:36:48 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-03-apps-update
+- Changes since 19.12.2:
+  * Fix setting translation domain on the Grantlee localizer
+  * Fix using "Qt" in search line. Test flag was incorrect before
+  * initialize value in header class
+  * Fix pri file generation
+  * Replace \n by '_' in filename. otherwise mail will be broken
+
+-------------------------------------------------------------------
+Thu Mar  5 07:25:12 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Add patch to reenable the "Only quote selected text when
+  replying" feature, openSUSE's QtWebEngine package includes the
+  fix for QTBUG-81574 meanwhile (boo#1163369, kde#394784)
+  * 0001-Revert-Disable-reply-with-quote-text-as-this-bug-is-.patch
+
+-------------------------------------------------------------------
+Fri Feb  7 08:38:27 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Replace %make_jobs with %cmake_build.
+
+-------------------------------------------------------------------
+Wed Feb  5 06:29:50 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-02-apps-update
+- Changes since 19.12.1:
+  * Replace \n by '_' in filename. otherwise mail will be broken
+  * Use correct ProvideUrl as requested
+  * Disable reply with quote text as this bug is back in qt5.14.x
+  * Fix Bug 416369 - attachments lost draft message (kde#416369)
+  * Fix check signature size
+- Dropped patches, now upstream:
+  * 0001-Fix-Bug-416369-attachments-lost-draft-message.patch
+- Update build requirements
+
+-------------------------------------------------------------------
+Fri Jan 17 15:29:39 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Add upstream patch to prevent attachments from being lost when
+  saving a message as a draft (kde#416369):
+  * 0001-Fix-Bug-416369-attachments-lost-draft-message.patch
+
+-------------------------------------------------------------------
+Mon Jan 13 14:33:13 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add upstream patch to fix display of large messages (kde#387061)
+  * 0001-Fix-Bug-387061-Large-messages-don-t-display-in-the-v.patch
+  * 0002-Initialize-variable.patch
+
+-------------------------------------------------------------------
+Tue Jan  7 10:36:30 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 19.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/releases/19.12.1
+- Too many changes since 19.12.0, only listing bugfixes:
+  * Fix Bug 415254 - [regression] HTML viewer complains about "external references to images etc." when there are no images (kde#415254)
+
+-------------------------------------------------------------------
+Tue Dec 10 06:39:13 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.12.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/releases/19.12
+- Changes since 19.11.90:
+  * fix split element
+  * Fix some autotest
+  * Fix autotest. Code for showing "we have external ref" was fixed
+  * Fetch DKIMResultAttribute too
+  * Make basicobjecttreeparsertest independent of host timezone
+  * Move mQcaInitializer directly in dkimmanagerkey. Not necessary to create
+  * Fix Bug 414825 - saving dialog does not propose a file name (kde#414825)
+  * Add new autotest. It will help us to port to qregularexpression
+  * Don't use nullptr as flag value
+  * Minor optimization
+
+-------------------------------------------------------------------
+Sat Nov 30 09:12:32 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.11.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/19.12-rc
+- Too many changes to list here.
+
+-------------------------------------------------------------------
+Sun Nov 24 15:54:27 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.11.80
+  * New feature release
+- Too many changes to list here.
+- Remove obsolete version requirements
+
+-------------------------------------------------------------------
+Thu Nov  7 23:13:37 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.08.3.php
+- Changes since 19.08.2:
+  * Fix search external reference
+
+-------------------------------------------------------------------
+Fri Oct 11 07:43:26 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.08.2.php
+- Changes since 19.08.1:
+  * Fix Bug 411822 - "Save As" option on email message does not show KIO Remote Folders (kde#411822)
+  * Fix Bug 411769 - Enter more recipients than permitted - error message for each recipient (kde#411769)
+
+-------------------------------------------------------------------
+Thu Sep  5 14:01:21 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.08.1.php
+- Changes since 19.08.0:
+  * Include KDE* cmake macros before any others
+  * Fix memory leak in PluginEditorGrammar
+  * Fix crash when viewer is null
+  * Allow to wrap attachment text (as diff)
+
+-------------------------------------------------------------------
+Fri Aug  9 08:32:21 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 19.08.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.08.0.php
+- Changes since 19.07.90:
+  * Fix crash when viewer is null
+  * Allow to wrap attachment text (as diff)
+  * Add/Remove includes
+
+-------------------------------------------------------------------
+Tue Aug 06 16:50:52 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.07.90
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.08-rc.php
+- Changes since 19.07.80:
+  * Adapt to KCalendarCore namespace change
+  * Fix runtime warning "QFSFileEngine::open: No file name specified"
+  * Use system codepage when reading from piped command
+
+-------------------------------------------------------------------
+Tue Jul 23 11:59:07 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.07.80
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.08-beta.php
+- Changes since 19.04.3:
+  * Too many changes to list here
+
+-------------------------------------------------------------------
+Fri Jul 19 08:48:47 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Use %_kf5_debugdir for logging categories.
+
+-------------------------------------------------------------------
+Sat Jul 13 07:26:38 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.04.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.04.3.php
+- Changes since 19.04.2:
+  * Use QTWEBENGINEWIDGETS_VERSION
+  * Add missing include files
+  * Use QTWEBENGINE_VERSION not QT_VERSION for WebEngine feature detection
+  * i18n: use rc.cpp for extra sources
+  * Use default value == date + 1
+  * Don't save not necessary info
+  * Restore popup menu position
+  * Fix check url when zoom != 100
+  * Fix Bug 390900 - Import vcf from email does not work (kde#390900)
+  * Fix infinite loop when mThreadingCache is 'corrupted'
+  * Use CTRL+ALT+Q for lock/unlock search
+
+-------------------------------------------------------------------
+Fri Jun 07 12:51:57 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.04.2.php
+- Changes since 19.04.1:
+  * It's not necessary to create a view.
+  * enable TemplateParserJobTest::test_replyPlain again.
+  * Refresh TemplateParserJobTest::test_convertedHtml logic
+  * Decryption Oracle based on forwarding PGP or S/MIME mails (CVE-2019-10732) (kde#404698)
+  * Make unexpected data leak harder via reply. (kde#404698)
+  * Rename convertedHtmlContent-> convertedHtmlContent for reply_Plain
+  * TemplateParser: test htmlReply.
+  * Add test cases for a Decryption Oracle based on PGP inline.
+  * templateparserjobtest: HTML mime parts are handled differently
+  * Add test for a normal encrypted message, to make sure decryption works.
+  * Test mails for Decryption Oracle based on replying to PGP or S/MIME. (kde#404698)
+  * MimeTreeParser returns wrong content for inline messages with multiple encrypted blocks.
+  * Distinguish between mMsg and mOrigMsg.
+
+-------------------------------------------------------------------
+Fri May 10 05:37:19 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.04.1.php
+- Changes since 19.04.0:
+  * Improve scam detection
+  * Fix Bug 407086 - Scam detection is too sensitive for URLs that trivially differ and are not a scam (kde#407086)
+  * Remove debug
+  * Don't use qAsConst over a temporary variable
+
+-------------------------------------------------------------------
+Sat Apr 20 06:51:59 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.04.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.04.0.php
+- Changes since 19.03.90:
+  * We need GUI support
+  * Fix crash in autotest
+
+-------------------------------------------------------------------
+Tue Apr 09 20:54:45 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.03.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/announce-applications-19.04-rc.php
+- Changes since 19.03.80:
+  * Fix Bug 406208 - "#" in a title news then only a part of the
+  	title is transmitted in subject of a mail (kde#406208)
+  * Try to fix string
+  * Add signal when we want to insert text
+  * Convert to camelcase include
+  * AttachmentUpdateJob needs to be exported even without BUILD_TESTING
+  * Fix includes
+  * Fix: no install not exported class
+  * Remove unused includes
+  * Don't install debug files + fix build
+  * Remove bad includes
+  * Don't install/export class when not necessary
+  * Don't install not exported symbol
+  * Make Attributes const in preparation for changes in akonadi
+
+-------------------------------------------------------------------
+Wed Mar 27 06:41:11 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.03.80
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/announce-applications-19.04-beta.php
+- Changes since 18.12.3:
+  * Too many changes to list here
+
+-------------------------------------------------------------------
+Sat Mar 09 08:03:25 UTC 2019 - lbeltrame@kde.org
+
+- Update to 18.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.12.3.php
+- Changes since 18.12.2:
+  * Fix runtime warning when calling deleteLater on a null object.
+
+-------------------------------------------------------------------
+Sat Feb 09 08:25:27 UTC 2019 - lbeltrame@kde.org
+
+- Update to 18.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.12.2.php
+- Changes since 18.12.1:
+  * Fix Bug 403460 - Expand BCC list of emails button is oriented in non-intuitive direction (kde#403460)
+  * Disable code for the moment
+  * Don't show "Attachment:" when there is a mail embedded
+  * Avoid to wrap word
+  * It was fixed in kmime
+  * Fix show attachment as reported by David.
+
+-------------------------------------------------------------------
+Fri Jan 11 05:42:44 UTC 2019 - lbeltrame@kde.org
+
+- Update to 18.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.12.1.php
+- Changes since 18.12.0:
+  * api.longurl.org doesn't work now. Use lengthenurl.info
+  * inform when we can't expand url
+  * Don't generate string when it's not necessary
+  * Fix Bug 402378 - mailto staement , uncomplete url past to kmail composer (kde#402378)
+
+-------------------------------------------------------------------
+Fri Dec 14 06:09:21 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.12.0
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.12.0.php
+- Changes since 18.11.90:
+  * Make sure to not update when not necessary
+  * Add autotests for excluding some "head"
+
+-------------------------------------------------------------------
+Mon Dec 03 20:56:25 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.11.90
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.12-rc.php
+- Changes since 18.11.80:
+  * templateparserextracthtmlinfo.cpp - deleteLater in dtor (kde#401337)
+  * Fix return value
+  * Remove unused variable
+  * Already initialized in header
+  * Fix mem leak
+  * Add parent to menu (Fix potential mem leak)
+  * Fix export class
+  * Clean icon theme when we delete theme class
+  * Exclude Refresh from MetaData (Not necessary)
+  * Fix mem leak found by asan
+  * Fix API (need for fixing mem leak found by asan)
+
+-------------------------------------------------------------------
+Tue Nov 20 06:23:02 UTC 2018 - Luca Beltrame <lbeltrame@kde.org>
+
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Tue Nov 20 05:57:33 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.11.80
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.12-beta.php
+- Changes since 18.08.3:
+  * Too many changes to list here
+
+-------------------------------------------------------------------
+Thu Nov 08 20:43:50 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.08.3.php
+- Changes since 18.08.2:
+  * Fix Bug 377708 - KMail doesn't remember to render in HTML (kde#377708)
+  * Fix Bug 396398 - KMail 5.8.2 displays HTML formatting on top of message (kde#396398)
+  * Check QtWebEngine version instead of Qt's (kde#397349)
+- Dropped patches, now upstream:
+  * 0001-Check-QtWebEngine-version-instead-of-Qt-s.patch
+
+-------------------------------------------------------------------
+Wed Oct 24 10:20:18 UTC 2018 - wbauer@tmo.at
+
+- Add 0001-Check-QtWebEngine-version-instead-of-Qt-s.patch to fix
+  behavior of the PgUp/PgDown and Space keys in the messageviewer
+  when QtWebEngine 5.10+ is used in combination with Qt 5.9 as in
+  Leap 15 (boo#1105461, kde#397349)
+
+-------------------------------------------------------------------
+Thu Oct 11 20:07:17 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.08.2.php
+- Changes since 18.08.1:
+  * Relicense my code from GPLv2 to GPLv2+
+  * Define color for openpgp signature
+  * Store transport name and identity name
+  * Don't save X-KMail-Fcc it's redundant
+  * We need theses header when we resend file
+
+-------------------------------------------------------------------
+Sat Sep  8 17:35:53 UTC 2018 - fabian@ritter-vogt.de
+
+- Remove unnecessary kdewebkit-devel BuildReq
+
+-------------------------------------------------------------------
+Thu Sep 06 18:43:13 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.08.1.php
+- Changes since 18.08.0:
+  * Make sure that we can create a followupreminder
+  * Show info debug
+  * Fix Bug 397011 - Add Followup Reminder doesn't create reminder correctly (kde#397011)
+  * Run UrlHandlerManagerTest inside the Akonad isolated environment
+  * Fix block tracking url
+  * Allow to close dialog
+  * Make CI happy
+  * Warning--
+  * Avoid warning about "device not open"
+  * Fix autotest
+  * Fix autotest
+  * Fix false positive
+
+-------------------------------------------------------------------
+Thu Aug 16 22:08:01 UTC 2018 - christophe@krop.fr
+
+- Update to 18.08.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.08.0.php
+- Changes since 18.07.80:
+  * It seems that we need to register it
+  * Make sure that we load "disable emoticon" for header too
+  * Save "disable emoticon" when we change this value
+  * Don't show "Show detail" when we print mail
+  * We need to add isPrinting variable (otherwise it will not work)
+  * Fix link color/style text when we print mail
+  * Fix indent
+  * Fix rendering text. We can have Utf8 text
+  * Fix printing support in signedmessage.
+  * avoid crash by initializing pointer
+  * Significant performance increase for specific use conditions
+
+-------------------------------------------------------------------
+Thu Jul 26 13:01:05 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.07.80
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.08-beta.php
+- Changes since 18.04.3:
+  * Too many changes to list here
+
+-------------------------------------------------------------------
+Fri Jul 13 04:50:18 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.04.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.04.3.php
+- Changes since 18.04.2:
+  * Avoid to display all message in preview
+  * Fix dnd attachment with qt5.11
+- Dropped patches, now upstream:
+  * 0001-Fix-dnd-attachment-with-qt5.11.patch
+
+-------------------------------------------------------------------
+Thu Jun 14 11:04:43 UTC 2018 - lbeltrame@kde.org
+
+- Add upstream patch 0001-Fix-dnd-attachment-with-qt5.11.patch:
+  * Fixes drag-and-drop of attachments between message windows
+
+-------------------------------------------------------------------
+Fri Jun 08 05:07:03 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.04.2.php
+- Changes since 18.04.1:
+  * Ensure we always reset the external reference override (kde#394554)
+  * QtWebEngine 5.11 can intercept more messages include local and data ones
+- Dropped patches, now upstream:
+  * always-reset-external-reference-override.patch
+
+-------------------------------------------------------------------
+Sat May 26 09:29:28 UTC 2018 - lbeltrame@kde.org
+
+- Add upstream patch always-reset-external-reference-override.patch:
+  * Fix regression causing KMail to load external references
+    in HTML messages without asking (kde#394554)
+
+-------------------------------------------------------------------
+Fri May 11 05:18:22 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.04.1.php
+- Changes since 18.04.0:
+  * Now when we use ESC we force focus on viewer
+  * Use >=
+  * Fix Bug 393688 - DND Attachments from one existing message to new message (kde#393688)
+  * Distinguish between settings and explicit override for external content
+  * Load external references in encrypted emails only on explicit request
+  * Remove unused variable
+  * Clean up css
+  * Fix expand/collapse addresslist
+  * Fix size
+  * Cache value
+  * Use directly css. Remove script for show full address. I know that some autotests are broken
+  * Clean up
+  * Cache number of identity
+  * Cache string
+  * Add comment
+  * Minor optimization
+  * Add comment
+  * initialize value
+  * Warning--
+  * Minor optimization
+  * Don't use injection code for attachment
+  * Return attachmentHtml directly
+  * Remove show/hide method
+  * Remove hide/show attachment as discussed this WE.
+
+-------------------------------------------------------------------
+Wed Apr 18 07:50:03 CEST 2018 - lbeltrame@kde.org
+
+- Update to 18.04.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.04.0.php
+- Changes since 18.03.90:
+  * None
+
+-------------------------------------------------------------------
+Fri Apr 06 07:10:14 CEST 2018 - lbeltrame@kde.org
+
+- Update to 18.03.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.04-rc.php
+- Changes since 17.12.3:
+  * Too many changes to list here
+- Dropped patches, now upstream:
+  * kde389592.patch
+
+-------------------------------------------------------------------
+Thu Mar 08 23:52:26 CET 2018 - lbeltrame@kde.org
+
+- Update to 17.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.12.3.php
+- Changes since 17.12.2:
+  * Reactivate code now
+  * Reactivate scroll to
+  * Remove some yellow style
+  * Activate it
+  * Fix add/remove yellow mark
+  * Workaround bug found by David.
+  * Patch from aleksejshilin
+
+-------------------------------------------------------------------
+Fri Feb 16 10:08:01 UTC 2018 - wbauer@tmo.at
+
+- Add kde389592.patch to fix "Disable Emoticons" option not being
+  remembered (boo#1078174, kde#389592)
+
+-------------------------------------------------------------------
+Wed Feb 07 08:49:07 CET 2018 - lbeltrame@kde.org
+
+- Update to 17.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.12.2.php
+- Changes since 17.12.1:
+  * Add normal text too. So we can switch from html to normal text too
+
+-------------------------------------------------------------------
+Thu Jan 11 23:41:26 CET 2018 - lbeltrame@kde.org
+
+- Update to 17.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.12.1.php
+- Changes since 17.12.0:
+  * Repair Page Down with Qt 5.9, there documentElement.scrollTop doesn't work.
+  * Fix Bug 388440 - scrolling in KMail: "page down" only works once (kde#388440)
+  * Add the values of the Inotify find call to the appropriate lists
+  * Not necessary to use private class here
+  * Hide widget when we change message
+- Dropped patches, now upstream:
+  * 0001-Fix-Bug-388440-scrolling-in-KMail-page-down-only-wor.patch
+
+-------------------------------------------------------------------
+Tue Jan  2 14:12:55 UTC 2018 - fabian@ritter-vogt.de
+
+- Add patch to fix scrolling with Qt >= 5.10 (boo#1074271):
+  * 0001-Fix-Bug-388440-scrolling-in-KMail-page-down-only-wor.patch
+
+-------------------------------------------------------------------
+Sat Dec 09 14:59:11 CET 2017 - lbeltrame@kde.org
+
+- Update to 17.12.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.12.0.php
+- Changes since 17.11.90:
+  * None
+
+-------------------------------------------------------------------
+Sat Dec 02 10:12:38 CET 2017 - lbeltrame@kde.org
+
+- Update to 17.11.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.12-rc.php
+- Changes since 17.11.80:
+  * Fix crash when we delete attachment
+  * fix x-kmail links with arguments
+
+-------------------------------------------------------------------
+Tue Nov 21 22:59:39 CET 2017 - lbeltrame@kde.org
+
+- Update to 17.11.80
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.12-beta.php
+- Changes since 17.08.3:
+  * Too many changes to list here
+- Dropped patches, now upstream:
+  * fix-richtext-saving.patch
+
+-------------------------------------------------------------------
+Tue Nov 21 21:58:32 UTC 2017 - lbeltrame@kde.org
+
+- Add fix-richtext-saving.patch: fix the state of rich text saving
+  in KMail's composer (kde#386660)
+
+-------------------------------------------------------------------
+Thu Nov 09 23:13:00 CET 2017 - lbeltrame@kde.org
+
+- Update to 17.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.08.3.php
+- Changes since 17.08.2:
+  * Fix Bug 386368 - Links in HTML emails broken by escaped ampersands (kde#386368)
+
+-------------------------------------------------------------------
+Tue Oct 17 00:32:59 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.08.2.php
+- Changes since 17.08.1:
+  * Allow to show html source even if we have build as release
+  * Add parent to qdialogbuttonbox
+
+-------------------------------------------------------------------
+Thu Sep 07 07:02:37 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.08.1.php
+- Changes since 17.08.0:
+  * Hide "to:" if "to" is empty
+  * Fix potential crash
+  * Fix url
+  * Fix setting custom header color in message list theme editor
+  * Fix 'lambda-expression in unevaluated context' error
+  * Allow to react when we click on url and other
+  * Improve default color
+
+-------------------------------------------------------------------
+Fri Aug 11 22:46:27 UTC 2017 - christophe@krop.fr
+
+- Update to KDE Applications 17.08.0
+  * New feature release
+  * https://www.kde.org/announcements/announce-applications-17.08.0.php
+- Changes since 17.04.3 :
+- Too many changes to list here
+
+-------------------------------------------------------------------
+Sat Aug  5 18:19:36 UTC 2017 - christophe@krop.fr
+
+- Update to KDE Applications 17.07.90
+  * KDE Applications 17.07.90
+  * https://www.kde.org/announcements/announce-applications-17.08-rc.php
+
+
+-------------------------------------------------------------------
+Sun Jul 16 08:49:49 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.04.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.04.3.php
+- Changes since 17.04.2:
+  * Don't create link when path is empty
+  * Use floating point calculations for column sizes to avoid accumulating rounding errors
+  * messagelist: fix horizontal scrollbar when applying column sizes
+  * Fix Bug 380297 - Recipients counter miscounts number of message recipients (kde#380297)
+  * Remove include
+
+-------------------------------------------------------------------
+Wed Jun 07 17:43:02 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.04.2.php
+- Changes since 17.04.1:
+  * Make sure to sign/encrypt message when we send later
+  * Change encryption too
+  * Fix potential crash as david reported
+  * Workaround assert in QtWebEngine 5.9 (ASSERT: "m_updateHttpCache")
+  * Fix runtime warning about application/x-pkcs7-signature.
+  * Use QTemporaryDir as discussed with David
+  * Fix Bug 378526 - KMail 5.4.3: Attachment displayed with wrong filename (kde#378526)
+
+-------------------------------------------------------------------
+Wed May 17 20:37:36 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.04.1.php
+- Changes since 17.04.0:
+  * Use base64 encoding for all non-text attachments (kde#95733)
+  * crypto unittests can't be run in parallel since they start/stop gpg-agent
+  * Don't break i18n
+  * Fix Bug 379066 - Bug in Grantlee template when viewing SMIME Msg: plain HTML code is shown (kde#379066)
+  * Handle help:/ URLs through QDesktopServices
+  * [autotests] repair mailwebenginescripttest after my changes in 37b99257
+
+-------------------------------------------------------------------
+Sun Apr 16 10:45:24 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.04.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.04.0.php
+- Changes since 17.03.90:
+  * Port isScrolledToBottom from jQuery to standard DOM, so it works even when jQuery isn't loaded
+  * Rework timing of script injection for showing attachments in message viewer.
+  * Use QFileInfo::exists(...) static method here
+  * [autotests] more work towards stable autotests
+  * [autotests] Let's see if this fixes the flakiness of the test
+  * [autotests] Enable test mode in QStandardPaths to avoid interference from user settings.
+  * Avoid timeout
+  * Don't continue when we have error during compression.
+  * Use QByteArrayLiteral here
+  * [autotest] avoid timeout due to waiting for klauncher to exit
+  * Use the same name as filename and name. It's more logical as discussed with David
+  * Const'ify here
+  * Use QByteArrayLiteral here
+  * Use nullptr
+  * Fix typo as reported by David
+
+-------------------------------------------------------------------
+Wed Apr 12 20:26:08 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.03.90
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.04-rc.php
+- Changes since 17.03.80:
+  * Minor optimization
+  * Minor optimization
+  * Fix html here too
+  * Fix i18n(...) it's a "block" variable here.
+  * Reduce number of toUpper calling
+  * Fix gpgsm processes being leaked due to QGpgME::KeyListJob not being deleted
+  * Add metainfo.yaml
+
+-------------------------------------------------------------------
+Sat Mar 25 23:10:52 CET 2017 - lbeltrame@kde.org
+
+- Update to 17.03.80
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.04-beta.php
+- Changes since 16.12.3:
+  * Too many changes to list here
+
+-------------------------------------------------------------------
+Thu Mar  9 12:43:59 CET 2017 - lbeltrame@kde.org
+
+- Update to 16.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-16.12.3.php
+- Changes since 16.12.2:
+  * Fix Bug 377247 - kMail 2 does not properly escape header (kde#377247)
+  * Use correct variable for date direction
+  * Finish removing the user agent from sent emails.
+  * Rename method as requested by David
+  * Keep "disable emoticon" state even if we switch message
+
+
+-------------------------------------------------------------------
+Thu Feb  9 07:20:30 UTC 2017 - lbeltrame@kde.org
+
+- Update to KDE Applications 16.12.2
+   * KDE Applications 16.12.2
+   * https://www.kde.org/announcements/announce-applications-16.12.2.php
+
+
+-------------------------------------------------------------------
+Sat Jan 14 09:07:05 UTC 2017 - lbeltrame@kde.org
+
+- - Update to KDE Applications 16.12.1
+   * KDE Applications 16.12.1
+   * https://www.kde.org/announcements/announce-applications-16.12.1.php
+
+-------------------------------------------------------------------
+Tue Dec 13 20:03:06 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.12.0
+   * KDE Applications 16.12.0
+   * https://www.kde.org/announcements/announce-applications-16.12.0.php
+
+
+-------------------------------------------------------------------
+Sat Dec  3 16:46:28 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.11.90
+   * KDE Applications 16.12.0 RC
+   * https://www.kde.org/announcements/announce-applications-16.12-rc.php
+
+
+-------------------------------------------------------------------
+Tue Nov 29 12:42:37 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.11.80
+   * KDE Applications 16.12.0 Beta
+   * https://www.kde.org/announcements/announce-applications-16.12-beta.php
+
+
+-------------------------------------------------------------------
+Wed Nov  9 06:12:14 UTC 2016 - lbeltrame@kde.org
+
+- Update to KDE Applications 16.08.3
+  * KDE Applications 16.08.3
+  * https://www.kde.org/announcements/announce-applications-16.08.3.php
+
+-------------------------------------------------------------------
+Tue Oct 11 20:49:01 UTC 2016 - lbeltrame@kde.org
+
+- KDE Applications 16.08.2
+https://www.kde.org/announcements/announce-applications-16.08.2.php
+
+-------------------------------------------------------------------
+Fri Sep  9 08:09:51 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.08.1
+   * KDE Applications 16.08.1
+   * https://www.kde.org/announcements/announce-applications-16.08.1.php
+
+
+-------------------------------------------------------------------
+Tue Aug 23 13:49:10 UTC 2016 - fabian@ritter-vogt.de
+
+- Build only on architectures supported by libqt5-qtwebengine
+
+-------------------------------------------------------------------
+Fri Aug 12 10:07:14 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.08.0
+   * KDE Applications 16.08.0
+   * https://www.kde.org/announcements/announce-applications-16.08.0.php
+
+
+-------------------------------------------------------------------
+Mon Aug  8 14:42:28 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.07.90
+   * KDE Applications 16.07.90 (16.08-RC)
+   * https://www.kde.org/announcements/announce-applications-16.08-rc.php
+
+
+-------------------------------------------------------------------
+Thu Jul 21 19:00:46 UTC 2016 - wbauer@tmo.at
+
+- Cleanup build requirements
+- Add necessary dependencies to the devel package
+
+-------------------------------------------------------------------
+Thu Jul  7 23:29:45 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.04.3
+   * KDE Applications 16.04.3
+   * https://www.kde.org/announcements/announce-applications-16.04.3.php
+
+
+-------------------------------------------------------------------
+Fri Jun 10 17:49:53 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.04.2
+   * KDE Applications 16.04.2
+   * https://www.kde.org/announcements/announce-applications-16.04.2.php
+
+
+-------------------------------------------------------------------
+Sat May  7 10:14:01 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.04.1
+   * KDE Applications 16.04.1
+   * https://www.kde.org/announcements/announce-applications-16.04.1.php
+
+
+-------------------------------------------------------------------
+Sun Apr 17 05:54:09 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.04.0
+   * KDE Applications 16.04.0
+   * https://www.kde.org/announcements/announce-applications-16.04.0.php
+
+
+-------------------------------------------------------------------
+Mon Apr 11 07:15:14 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.03.90
+   * KDE Applications 16.04.0 RC
+   * https://www.kde.org/announcements/announce-applications-16.04-rc.php
+
+
