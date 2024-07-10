@@ -1,0 +1,6 @@
+<package name="perl-UUID-Tiny" project="openSUSE:Factory">
+  <title>Pure Perl UUID Support With Functional Interface</title>
+  <description>UUID::Tiny is a lightweight, low dependency Pure Perl module for UUID creation and testing. This module provides the creation of version 1 time based UUIDs (using random multicast MAC addresses), version 3 MD5 based UUIDs, version 4 random UUIDs, and version 5 SHA-1 based UUIDs.</description>
+  <devel project="devel:languages:perl" package="perl-UUID-Tiny"/>
+  <url>https://metacpan.org/dist/UUID-Tiny</url>
+</package>
