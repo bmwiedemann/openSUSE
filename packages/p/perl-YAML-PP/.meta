@@ -1,0 +1,5 @@
+<package name="perl-YAML-PP" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:languages:perl" package="perl-YAML-PP"/>
+</package>
