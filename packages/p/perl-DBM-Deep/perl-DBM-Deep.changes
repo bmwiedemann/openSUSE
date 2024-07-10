@@ -1,0 +1,191 @@
+-------------------------------------------------------------------
+Mon Nov 13 03:06:19 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.0019
+   see /usr/share/doc/packages/perl-DBM-Deep/Changes
+
+  2.0019    2023-11-12
+  - improvement so that when you try to put too much data in you get a
+    useful error, and don't corrupt the db
+  2.0018    2023-11-08
+  - tiny documentation and metadata fixes to make sure people go to the
+    correct issue tracker
+
+-------------------------------------------------------------------
+Tue Sep 26 19:20:20 UTC 2023 - Tina Müller <tina.mueller@suse.com>
+
+- Remove package-separator-perl5.38.patch, fixed upstream
+
+-------------------------------------------------------------------
+Tue Sep  5 16:45:07 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.0017
+   see /usr/share/doc/packages/perl-DBM-Deep/Changes
+
+  2.0017    2023-09-01
+
+  - get rid of old perl4-style ' package separator and use :: instead
+    for compatibility with perl 5.38
+
+-------------------------------------------------------------------
+Wed Aug  9 10:39:24 UTC 2023 - Tina Müller <tina.mueller@suse.com>
+
+- Add package-separator-perl5.38.patch, see
+  https://rt.cpan.org/Public/Bug/Display.html?id=148417
+
+-------------------------------------------------------------------
+Tue May 22 05:12:36 UTC 2018 - coolo@suse.com
+
+- updated to 2.0016
+   see /usr/share/doc/packages/perl-DBM-Deep/Changes
+
+-------------------------------------------------------------------
+Sat Jul 29 05:19:41 UTC 2017 - coolo@suse.com
+
+- updated to 2.0014
+   see /usr/share/doc/packages/perl-DBM-Deep/Changes
+
+  2.0014 Jul 27 22:15:00 2017 EDT
+      - Fix for tests failing on 5.26 (Thanks, DrHyde!)
+
+-------------------------------------------------------------------
+Sat Jan  2 09:38:27 UTC 2016 - coolo@suse.com
+
+- updated to 2.0013
+   see /usr/share/doc/packages/perl-DBM-Deep/Changes
+
+  2.0013 Jan 01 20:30:00 2016 EDT
+      - Updates to documentation by garu (Thanks!, GH#14, GH#15, GH#16)
+
+-------------------------------------------------------------------
+Mon Jun 22 08:16:08 UTC 2015 - coolo@suse.com
+
+- updated to 2.0012
+   see /usr/share/doc/packages/perl-DBM-Deep/Changes
+
+  2.0012 Jun 17 20:30:00 2015 PDT
+      - Improved transaction validation and warnings (GH#12)
+
+-------------------------------------------------------------------
+Mon Mar 17 08:29:24 UTC 2014 - coolo@suse.com
+
+- fix spec file to build
+
+-------------------------------------------------------------------
+Sun Jan 26 16:51:56 UTC 2014 - lars@linux-schulserver.de
+
+- update to 2.0011
+  + POD fixes by H. Merijn Brandt (The X<> tag - Thanks!)
+
+-------------------------------------------------------------------
+Sat Jan  4 12:57:11 UTC 2014 - lars@linux-schulserver.de
+
+- fix upstream URL
+
+-------------------------------------------------------------------
+Tue Nov 26 07:33:47 UTC 2013 - coolo@suse.com
+
+- updated to 2.0010
+ - Can push undefined values onto arrays.
+- remove unmaintained perl-DBM-Deep_Build_n_Test.patch
+
+-------------------------------------------------------------------
+Sat Jul 27 11:58:59 UTC 2013 - coolo@suse.com
+
+- updated to 2.0009, no changelog
+
+-------------------------------------------------------------------
+Tue Jun  4 07:24:32 UTC 2013 - coolo@suse.com
+
+- updated to 2.0008
+   - Arrays and hashes retrieved from a database no longer create
+     circular references (RT#77746).
+
+   - Include one-line descriptions of each POD page after the name.
+     Thanks to Yves Agostini for the patch and Gregor Herrmann for
+     submitting it (RT#76378).
+   - t/98_pod.t: Skip tests if Pod::Simple 3.21 is installed
+     (RT#77419).
+
+   - Er, try harder to get t/27_filehandle.t to work under TB2. The
+     extra ‘TAP version 13’ line was causing a TAP parse error.
+
+   - t/27_filehandle.t has been fixed again. It no longer violates
+     Test::Builder’s encapsulation.
+
+-------------------------------------------------------------------
+Wed Feb 29 16:01:17 CET 2012 - ro@suse.de
+
+- update Build_n_Test patch 
+
+-------------------------------------------------------------------
+Fri Nov 18 12:59:35 UTC 2011 - coolo@suse.com
+
+- update to 2.0004, tons of changes - see Changes
+
+-------------------------------------------------------------------
+Wed Dec  1 13:31:57 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Jul 12 12:50:14 UTC 2010 - chris@computersalat.de
+
+- recreated by cpanspec 1.78
+- noarch pkg
+- fixed deps
+- added Build_n_Test patch
+  o otherwise Test::More 0.88 would be needed
+
+-------------------------------------------------------------------
+Mon Jun  7 08:36:13 UTC 2010 - lars@linux-schulserver.de
+
+- update to 1.0025:
+  + Fixed t/39_singletons.t to work on Windows
+  + Stale references (objects blessed into DBM::Deep::Null), which
+    have always supposed to act like undef, now compare equal to
+    undef, "" and 0. $stale_ref eq "" used to return false, even
+    though "$stale_ref" was the empty string.
+  + If you assign a stale reference to a database location,
+    DBM::Deep now warns and assigns undef, instead of dying with
+    obscure error messages
+  + Using a stale reference as a hash or array ref now causes an
+    error with a more helpful message
+
+-------------------------------------------------------------------
+Mon May 10 11:43:50 UTC 2010 - lars@linux-schulserver.de
+
+- update to 1.0023:
+  + The DBI back end no longer dies with ‘Use of uninitialized value
+    $_ in lc’ in perl 5.12.0.
+  + Singleton support has been re-enabled in the File back end
+  + Correct spelling mistakes in the documentation
+  + MANIFEST now lists the test libs so they get included in the
+    distribution
+
+-------------------------------------------------------------------
+Mon Apr 12 08:48:05 UTC 2010 - lars@linux-schulserver.de
+
+- update to 1.0020:
+  + Improved code coverage
+  + Fixed speed regression with keys in the File backend
+  + Had to turn off singleton support in the File backend because 
+    the caching was causing havoc with transactions. Turning on fatal 
+    warnings does give apparently important information.
+  + Added support for DBD::SQLite
+  ++ Build.PL has been extended to support sqlite vs. mysql
+  ++ Storage::DBI now detects between the two DBDs
+  + DBM::Deep has been refactored to allow for multiple engines. 
+    There are two engines built so far:
+  ++ File (the original engine)
+  ++ DBI (an engine based on DBI)
+  + documentation updates/fixes
+  + Fix deep recursion errors (RT#53575)
+  + Avoid leaving temp files lying around (RT#32462)
+  + Fixed bug with localized $ (RT #48031)
+
+-------------------------------------------------------------------
+Sat Dec 26 22:10:27 UTC 2009 - lars@linux-schulserver.de
+
+- initial version 1.0014 
+
