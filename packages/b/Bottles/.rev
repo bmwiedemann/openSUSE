@@ -7,4 +7,26 @@
     <comment></comment>
     <requestid>1156968</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>b4dd152a55e52635ce258b43639a473f</srcmd5>
+    <version>51.12</version>
+    <time>1720622997</time>
+    <user>anag+factory</user>
+    <comment>- update version 51.12:
+  * Support d3d8 via dxvk
+  * Removed @lru_cache decorator from the Paths class, plus minor typing fixes
+  * Fixed crash on startup
+  * Updated GNOME runtime in manifest
+  * Moved chattr_f function to appropriate class
+  * Improved performance by using case-fold for drive_c when available
+  * Fixed Gamescope options arguments
+  * Added option to skip checksum when installing dependencies
+  * Fixed issue where bottles with spaces in name couldn't be run through bottle picker
+  * Fixed issue where kgx Launch with terminal was not working
+  * Repaired SyntaxWarning in generic.py (invalid escape sequence '\d') when starting bottles from CLI
+  * Fixed misspelled media type (application/x-ms-dos-executable)
+  * Switched to add_pattern from add_mime_type to resolve file filter issues on certain Linux distributions
+  * Added TryExec to desktop entry (forwarded request 1186486 from rrahl0)</comment>
+    <requestid>1186487</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Jul 10 00:32:46 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update version 51.12:
+  * Support d3d8 via dxvk
+  * Removed @lru_cache decorator from the Paths class, plus minor typing fixes
+  * Fixed crash on startup
+  * Updated GNOME runtime in manifest
+  * Moved chattr_f function to appropriate class
+  * Improved performance by using case-fold for drive_c when available
+  * Fixed Gamescope options arguments
+  * Added option to skip checksum when installing dependencies
+  * Fixed issue where bottles with spaces in name couldn't be run through bottle picker
+  * Fixed issue where kgx Launch with terminal was not working
+  * Repaired SyntaxWarning in generic.py (invalid escape sequence '\d') when starting bottles from CLI
+  * Fixed misspelled media type (application/x-ms-dos-executable)
+  * Switched to add_pattern from add_mime_type to resolve file filter issues on certain Linux distributions
+  * Added TryExec to desktop entry
+
+-------------------------------------------------------------------
 Sat Mar  9 21:16:30 UTC 2024 - Richard Rahl <rrahl0@proton.me>
 
 - add versioned provides and obsolete

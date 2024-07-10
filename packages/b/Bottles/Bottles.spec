@@ -1,7 +1,7 @@
 #
-# spec file for package bottles
+# spec file for package Bottles
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,9 +15,10 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %global appid com.usebottles.bottles
 Name:           Bottles
-Version:        51.11
+Version:        51.12
 Release:        0
 Summary:        Easily manage wineprefix using environments
 License:        GPL-3.0-or-later
@@ -25,19 +26,19 @@ Group:          System/Emulators/Other
 URL:            https://usebottles.com/
 Source0:        https://github.com/bottlesdevs/Bottles/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Patch0:         disable-core-preferences.patch
-BuildRequires:  glib2-devel
+BuildRequires:  blueprint-compiler
+BuildRequires:  fdupes
+BuildRequires:  gtk4-tools
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  meson
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  update-desktop-files
-BuildRequires:  blueprint-compiler
-BuildRequires:  pkgconfig(python3)
+BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gtk4)
-BuildRequires:  libadwaita-devel
-BuildRequires:  gtk4-tools
-BuildRequires:  fdupes
+BuildRequires:  pkgconfig(libadwaita-1)
+BuildRequires:  pkgconfig(python3)
 Requires:       ImageMagick
 Requires:       cabextract
 Requires:       dconf
@@ -47,14 +48,14 @@ Requires:       p7zip
 Requires:       patool
 Requires:       python3-Markdown
 Requires:       python3-PyYAML
+Requires:       python3-chardet
+Requires:       python3-fvs
 Requires:       python3-gobject
 Requires:       python3-icoextract
-Requires:       python3-pefile
-Requires:       python3-requests
-Requires:       python3-fvs
-Requires:       python3-pycurl
-Requires:       python3-chardet
 Requires:       python3-pathvalidate
+Requires:       python3-pefile
+Requires:       python3-pycurl
+Requires:       python3-requests
 Requires:       typelib-1_0-Adw-1 >= 1.2
 Requires:       typelib-1_0-GtkSource-4
 Requires:       typelib-1_0-GtkSource-5
@@ -78,7 +79,6 @@ Suggests:       vkbasalt
 BuildArch:      noarch
 Obsoletes:      bottles >= 2022
 Provides:       bottles = %{version}-%{release}
-
 %lang_package
 
 %description
@@ -96,7 +96,7 @@ Runners are compatibility layers capable of running Windows applications on Linu
 
 %install
 %meson_install
-%suse_update_desktop_file -i %{appid}
+%suse_update_desktop_file %{appid}
 %find_lang bottles
 
 %fdupes %{buildroot}
