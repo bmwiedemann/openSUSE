@@ -1,0 +1,88 @@
+-------------------------------------------------------------------
+Tue Sep 28 13:19:54 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Modified:
+  * knockd.service
+
+-------------------------------------------------------------------
+Wed May 19 08:49:35 UTC 2021 - Daniel Donisa <daniel.donisa@suse.com>
+
+- Update to version 0.8
+  * Multiple fixes (#67, #77)
+  * IPv6 support (Sebastien Valat) 
+- dropped knock-0.5.patch, knock-include.patch
+
+-------------------------------------------------------------------
+Wed Jul 10 08:48:00 CET 2019 - brassh@web.de
+
+- fix uninitialized tcpflags variables in knockd.c
+  (Bug#1138376: Knockd unable to start after upgrade to LEAP 15.1) 
+
+-------------------------------------------------------------------
+Thu Nov 23 13:46:18 UTC 2017 - rbrown@suse.com
+
+- Replace references to /var/adm/fillup-templates with new 
+  %_fillupdir macro (boo#1069468)
+  
+-------------------------------------------------------------------
+Tue Dec  1 14:49:38 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 0.7
+  * Document the 'target' configuration directive.
+  * Merging OS-specific networking code to reduce LOCs and the
+    sea of #ifdefs.
+  * Added 50ms timeout to pcap_open_live() to reduce CPU usage
+    on network-heavy hosts. Pcap recommends we not use zero.
+- Changes from version 0.6
+  * Cleanup: Don't null-check before free
+  * Cleanup: Consolidate flag-check logic
+  * Accept single-knock sequences
+  * Introduce a 'target' configuration directive, enabling knockd to 
+    react to connect attempts to a target host. Useful in cases where 
+    knockd is on a router and you want to send a target a wakeup packet.
+- Add systemd support for openSUSE > 12.1
+- Update knock-include.patch > knock-0.5-include.patch
+- Remove obsolete AUTHORS section
+- Use download Url as source
+- Perform a spec-cleaner
+
+-------------------------------------------------------------------
+Mon Jun 15 11:53:12 CEST 2009 - aj@suse.de
+
+- Add knock-0.5-include.patch to fix build failure.
+
+-------------------------------------------------------------------
+Thu Jul 26 16:55:09 CEST 2007 - prusnak@suse.cz
+
+- changed libpcap to libpcap-devel in BuildRequires
+
+-------------------------------------------------------------------
+Tue Nov 14 15:07:38 CET 2006 - mskibbe@suse.de
+
+- fix bug #220355 (iptables call is wrong) 
+
+-------------------------------------------------------------------
+Wed Oct  4 13:23:02 CEST 2006 - mskibbe@suse.de
+
+- fix bug in iptables call 
+
+-------------------------------------------------------------------
+Mon Sep 25 11:20:44 CEST 2006 - mskibbe@suse.de
+
+- fix iptables call in config
+
+-------------------------------------------------------------------
+Fri Sep 22 13:00:46 CEST 2006 - mskibbe@suse.de
+
+- fix sysconfig file 
+
+-------------------------------------------------------------------
+Wed Jan 25 21:37:14 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Thu Jun 30 16:12:57 CEST 2005 - hvogel@suse.de
+
+- Initial Package, Version 0.5
+

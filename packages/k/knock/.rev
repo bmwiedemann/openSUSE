@@ -1,0 +1,138 @@
+<revisionlist>
+  <revision rev="1" vrev="31">
+    <srcmd5>7118c8d019be07ce4ed74b141741a47a</srcmd5>
+    <version>0.5</version>
+    <time>1168903224</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="66">
+    <srcmd5>5db60299e61eff056c0603b4964d20b3</srcmd5>
+    <version>0.5</version>
+    <time>1185493904</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="139">
+    <srcmd5>5db60299e61eff056c0603b4964d20b3</srcmd5>
+    <version>0.5</version>
+    <time>1185493904</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="140">
+    <srcmd5>f9c2466992285d1fbef8c13fc441ddb9</srcmd5>
+    <version>0.5</version>
+    <time>1245165601</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="142">
+    <srcmd5>f9c2466992285d1fbef8c13fc441ddb9</srcmd5>
+    <version>0.5</version>
+    <time>1245165601</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="143">
+    <srcmd5>d611e9be2e09a243e24f86482699f5e9</srcmd5>
+    <version>0.5</version>
+    <time>1268924298</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="7" vrev="145">
+    <srcmd5>d611e9be2e09a243e24f86482699f5e9</srcmd5>
+    <version>0.5</version>
+    <time>1278667355</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="146">
+    <srcmd5>d611e9be2e09a243e24f86482699f5e9</srcmd5>
+    <version>0.5</version>
+    <time>1278678587</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="149">
+    <srcmd5>d611e9be2e09a243e24f86482699f5e9</srcmd5>
+    <version>0.5</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="10" vrev="151">
+    <srcmd5>d611e9be2e09a243e24f86482699f5e9</srcmd5>
+    <version>0.5</version>
+    <time>1319182052</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="11" vrev="152">
+    <srcmd5>b2ea2e483b62a71868f0c5d156b36bcf</srcmd5>
+    <version>0.5</version>
+    <time>1323192114</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="12" vrev="154">
+    <srcmd5>b2ea2e483b62a71868f0c5d156b36bcf</srcmd5>
+    <version>0.5</version>
+    <time>1340183532</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="13" vrev="156">
+    <srcmd5>b2ea2e483b62a71868f0c5d156b36bcf</srcmd5>
+    <version>0.5</version>
+    <time>1359109197</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="158">
+    <srcmd5>b2ea2e483b62a71868f0c5d156b36bcf</srcmd5>
+    <version>0.5</version>
+    <time>1379662823</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="160">
+    <srcmd5>b2ea2e483b62a71868f0c5d156b36bcf</srcmd5>
+    <version>0.5</version>
+    <time>1409301406</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>ddd45b06116206ec1f1d098c059f111a</srcmd5>
+    <version>0.7</version>
+    <time>1449687031</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>347257</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>9adac4536b2148247734c6e452a3fafc</srcmd5>
+    <version>0.7</version>
+    <time>1511817412</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>545407</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>613ffe854ab1d6e1351f23e617e543b6</srcmd5>
+    <version>0.8</version>
+    <time>1622839438</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.8
+  * Multiple fixes (#67, #77)
+  * IPv6 support (Sebastien Valat) 
+- dropped knock-0.5.patch, knock-include.patch
+
+- fix uninitialized tcpflags variables in knockd.c
+  (Bug#1138376: Knockd unable to start after upgrade to LEAP 15.1)</comment>
+    <requestid>897367</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>268001654efc1aefb496c4f067fd2e0a</srcmd5>
+    <version>0.8</version>
+    <time>1633466032</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>923171</requestid>
+  </revision>
+</revisionlist>
