@@ -1,0 +1,17 @@
+<services>
+  <service name="tar_scm" mode="manual">
+    <param name="scm">git</param>
+    <param name="url">https://github.com/open-mpi/ompi.git</param>
+    <param name="package-meta">no</param>
+    <param name="exclude">.git</param>
+    <param name="filename">openmpi</param>
+    <param name="versionformat">@PARENT_TAG@.@TAG_OFFSET@.%h</param>
+    <param name="versionrewrite-pattern">v(.*)</param>
+    <param name="versionrewrite-replacement">\1</param>
+    <param name="revision">9cc951b192bf5064cc71a91fd93ab3af21a29994</param>
+  </service>
+  <service name="recompress" mode="manual">
+    <param name="file">openmpi*.tar</param>
+    <param name="compression">bz2</param>
+  </service>
+</services>

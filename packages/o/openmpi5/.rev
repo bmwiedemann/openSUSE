@@ -1,0 +1,73 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a776884a70c41a0fdba38d3f63889d71</srcmd5>
+    <version>5.0.0</version>
+    <time>1664823228</time>
+    <user>dimstar_suse</user>
+    <comment>Initial packaging of openmpi5.
+
+Factory config should be update from :
+Prefer: -openmpi3-config -openmpi2-config -openmpi1-config
+to:
+Prefer: -openmpi5-config -openmpi3-config -openmpi2-config -openmpi1-config
+
+as the default openmpi implementation is still openmpi4.</comment>
+    <requestid>1007727</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>24dbd6fcc7771ac8a9f5a12fa6afc4d3</srcmd5>
+    <version>5.0.0</version>
+    <time>1666978294</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1031840</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>f6dad7c61e945ae9fe98bf1d914306ea</srcmd5>
+    <version>5.0.0</version>
+    <time>1690469579</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1101003</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>79bed467a8457db82a9ab0c8d319648e</srcmd5>
+    <version>5.0.0</version>
+    <time>1691502905</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1102782</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>dcdb69ed5ebef09980a229a58e4bd988</srcmd5>
+    <version>5.0.0</version>
+    <time>1698700274</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1121157</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>8499247e29e1e23c061c6a83b9124db2</srcmd5>
+    <version>5.0.0</version>
+    <time>1709583945</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1154677</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b1add1816c3f962023734d2d06b3d219</srcmd5>
+    <version>5.0.2</version>
+    <time>1711397548</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1161341</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>a0174ae171238945ea6ae201bd63a781</srcmd5>
+    <version>5.0.3</version>
+    <time>1719496962</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1183457</requestid>
+  </revision>
+</revisionlist>
