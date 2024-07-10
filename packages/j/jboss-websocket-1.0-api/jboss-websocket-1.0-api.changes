@@ -1,0 +1,14 @@
+-------------------------------------------------------------------
+Sat Sep  9 14:18:52 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Reproducible builds: use SOURCE_DATE_EPOCH for timestamp
+
+-------------------------------------------------------------------
+Tue Mar 22 12:29:54 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Build with java source and target levels 8
+
+-------------------------------------------------------------------
+Fri Nov  8 10:29:33 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Intial packaging of jboss-websocket-1.0-api

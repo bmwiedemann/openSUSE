@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e1bea50dee1d1ab44d59a20b01ef1fc6</srcmd5>
+    <version>1.0.0</version>
+    <time>1573338657</time>
+    <user>dimstar_suse</user>
+    <comment>new package</comment>
+    <requestid>746547</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f4176b81b7381f7c8fec6c61ea69b126</srcmd5>
+    <version>1.0.0</version>
+    <time>1647974435</time>
+    <user>dimstar_suse</user>
+    <comment>Build with source/target levels 8</comment>
+    <requestid>963929</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>efbd24b5ac593fec8f803aa18dcabd7c</srcmd5>
+    <version>1.0.0</version>
+    <time>1694344239</time>
+    <user>anag+factory</user>
+    <comment>Reproducible builds improvement</comment>
+    <requestid>1109968</requestid>
+  </revision>
+</revisionlist>
