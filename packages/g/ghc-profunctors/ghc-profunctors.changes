@@ -1,0 +1,208 @@
+-------------------------------------------------------------------
+Thu Mar 30 17:07:59 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
+Sun Mar  5 22:17:29 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update profunctors to version 5.6.2 revision 3.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Tue Nov 16 19:52:36 UTC 2021 - psimons@suse.com
+
+- Update profunctors to version 5.6.2 revision 2.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Wed Aug  4 08:16:43 UTC 2021 - psimons@suse.com
+
+- Update profunctors to version 5.6.2 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Fri Feb 19 23:06:08 UTC 2021 - psimons@suse.com
+
+- Update profunctors to version 5.6.2.
+  5.6.2 [2021.02.17]
+  ------------------
+  * Add `Semigroup` and `Monoid` instances for `Forget`
+
+-------------------------------------------------------------------
+Mon Jan  4 11:06:21 UTC 2021 - psimons@suse.com
+
+- Update profunctors to version 5.6.1.
+  5.6.1 [2020.12.31]
+  ------------------
+  * Add `Functor` instances for `PastroSum`, `CopastroSum`, `Environment`,
+    `FreeMapping`, `Pastro`, `Copastro`, `FreeTraversing`, and `Coyoneda`.
+  * Explicitly mark modules as `Safe`.
+
+-------------------------------------------------------------------
+Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+ 
+- disable %{ix86} build
+ 
+-------------------------------------------------------------------
+Tue Oct  6 08:56:05 UTC 2020 - psimons@suse.com
+
+- Update profunctors to version 5.6.
+  5.6 [2020.10.01]
+  ----------------
+  * Enable the `PolyKinds` extension. The following datatypes now have
+    polymorphic kinds: `(:->)`, `Cayley`, `Procompose`, `Rift`,
+    `ProfunctorFunctor`, `Ran`, `Codensity`, `Prep`, `Coprep`, `Star`, `Costar`,
+    `WrappedArrow`, `Forget`.
+  * Allow building with GHC 9.0.
+
+-------------------------------------------------------------------
+Tue Aug 18 10:45:48 UTC 2020 - Peter Simons <psimons@suse.com>
+
+- Replace %setup -q with the more modern %autosetup macro.
+
+-------------------------------------------------------------------
+Tue Jun 16 11:14:29 UTC 2020 - Peter Simons <psimons@suse.com>
+
+- Re-generate file with latest version of spec-cleaner.
+
+-------------------------------------------------------------------
+Thu Feb 27 14:17:45 UTC 2020 - psimons@suse.com
+
+- Update profunctors to version 5.5.2.
+  5.5.2 [2020.02.13]
+  ------------------
+  * Add `Cochoice`, `Costrong`, `Closed`, `Traversing`, and `Mapping` instances
+    for `Cayley`.
+  * Add `Mapping` and `Traversing` instances for `Tannen`.
+
+-------------------------------------------------------------------
+Wed Nov 27 03:00:49 UTC 2019 - psimons@suse.com
+
+- Update profunctors to version 5.5.1.
+  5.5.1 [2019.11.26]
+  ------------------
+  * Add `Choice`, `Cochoice`, `Closed`, `Strong`, and `Costrong` instances for
+    `Data.Bifunctor.Sum`.
+
+-------------------------------------------------------------------
+Fri Nov  8 16:14:28 UTC 2019 - Peter Simons <psimons@suse.com>
+
+- Drop obsolete group attributes.
+
+-------------------------------------------------------------------
+Sat Sep  7 02:01:38 UTC 2019 - psimons@suse.com
+
+- Update profunctors to version 5.5.
+  5.5 [2019.09.06]
+  ----------------
+  * Change the type of `roam` to make it actually useful.
+  * Add a `Cochoice` instance for `Forget`.
+
+-------------------------------------------------------------------
+Sat May 11 02:00:37 UTC 2019 - psimons@suse.com
+
+- Update profunctors to version 5.4.
+  5.4 [2019.05.10]
+  ----------------
+  * Add `wander`-like combinator `roam` to `Mapping`.
+  * Remove illegal `instance Choice (Costar w)`.
+  * Add `strong` combinator #62.
+  * Only depend on `semigroups` before GHC 8.0.
+  * Add `Contravariant` instances for `Star` and `Forget`.
+
+-------------------------------------------------------------------
+Sat Oct 20 11:31:52 UTC 2018 - Peter Simons <psimons@suse.com>
+
+- Use https URL to refer to bugs.opensuse.org.
+
+-------------------------------------------------------------------
+Wed Jul 18 14:26:37 UTC 2018 - psimons@suse.com
+
+- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.
+
+-------------------------------------------------------------------
+Fri Jul 13 14:31:49 UTC 2018 - psimons@suse.com
+
+- Update profunctors to version 5.3.
+  5.3 [2018.07.02]
+  ----------------
+  * Generalize the types of `(#.)` and `(.#)`. Before, they were:
+
+    ```haskell
+    (#.) :: (Profunctor p, Coercible c b) => (b -> c) -> p a b    -> p a c
+    (.#) :: (Profunctor p, Coercible b a) => p b c    -> (a -> b) -> p a c
+    ```
+
+    Now, they are:
+
+    ```haskell
+    (#.) :: (Profunctor p, Coercible c b) => q b c    -> p a b    -> p a c
+    (.#) :: (Profunctor p, Coercible b a) => p b c    -> q a b    -> p a c
+    ```
+  * Drop support for GHC < 7.8.
+  * Add a `Profunctor` instance for `Data.Bifunctor.Sum`.
+
+-------------------------------------------------------------------
+Mon May 14 17:02:11 UTC 2018 - psimons@suse.com
+
+- Update profunctors to version 5.2.2 revision 1.
+  * Add `Semigroup` instances for `Closure` and `Tambara`
+  * Allow `base-orphans-0.6`.
+  * Add `Traversing` instance for `Forget`
+  * Add `Traversing` and `Mapping` instances for `Procompose`
+  * Add `Category` instance for `Star`
+  * Add `mapCayley` to `Data.Profunctor.Cayley`
+  * Add `pastro` and `unpastro` to `Data.Profunctor.Strong`.
+  * Add `dimapWandering`, `lmapWandering`, and `rmapWandering` to `Data.Profunctor.Traversing`
+  * Add documentation stating the laws for various profunctors.
+  * Introduce the `Data.Profunctor.Yoneda` module.
+
+-------------------------------------------------------------------
+Wed Apr 19 13:32:29 UTC 2017 - psimons@suse.com
+
+- Update to version 5.2 revision 1 with cabal2obs.
+
+-------------------------------------------------------------------
+Sun Jul 10 17:13:10 UTC 2016 - psimons@suse.com
+
+- Update to version 5.2 revision 0 with cabal2obs.
+
+-------------------------------------------------------------------
+Wed Jan 20 11:55:47 UTC 2016 - mimi.vx@gmail.com
+
+- update to 5.2
+* Renamed Cotambara to TambaraChoice and Pastro to PastroChoice.
+* Added a true Cotambara and Copastro construction for (co)freely generating
+    costrength, along with CotambaraSum and CopastroSum variants.
+* Engaged in a fair bit of bikeshedding about the module structure for lesser used
+    modules in this package.
+
+-------------------------------------------------------------------
+Mon Dec  7 11:19:56 UTC 2015 - mimi.vx@gmail.com
+
+- update to 5.1.2
+* Added Prep and Coprep along with witnesses to the adjunctions
+  Prep -| Star : [Hask,Hask] -> Prof and Coprep -| Costar : [Hask,Hask]^op -> Prof.
+
+-------------------------------------------------------------------
+Thu Aug  6 19:30:53 UTC 2015 - mimi.vx@gmail.com
+
+- update to 5.1.1
+* Add proper support for GHC 7.0+.
+* instance Costrong (Cokleisli f).
+* instance Cochoice (Star f).
+*  Changed the instance for Cochoice (Costar f).
+* MINIMAL pragma for Costrong and Cochoice.
+* More Costrong and Cochoice instances.
+* UpStar and DownStar have become Star and Costar. Star is analogous to Kleisli,
+  Costar is analogous to Cokleisli.
+* Split representability into sieves and representability.
+* Moved Data.Profunctor.Collage to semigroupoids 5, and removed the semigroupoids
+  dependency.
+
+-------------------------------------------------------------------
+Sun Apr 26 17:37:38 UTC 2015 - mimi.vx@gmail.com
+
+- initial commit
