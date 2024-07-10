@@ -1,0 +1,274 @@
+-------------------------------------------------------------------
+Thu Feb  8 15:10:11 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to 1.2.8:
+  * Rename option '--verify-on-error' to '--check-on-error'.
+    Rename option '--verify-input-size' to '--check-input-size'.
+    Remove synonym '--exit-on-error'.
+  * Issue a final fsync to prevent early exit if kernel caches
+    writes.
+  * Show mapfile names at verbosity == 0.
+
+-------------------------------------------------------------------
+Tue Jan 24 07:21:18 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- update to 1.2.7:
+  * New option '-W, --compare-before-write'.
+  * Remove synonym option '--direct'.
+
+-------------------------------------------------------------------
+Sat May  7 12:20:13 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- use https source urls
+
+-------------------------------------------------------------------
+Sat Apr  2 15:27:55 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.26
+  * Domain mapfiles may now contain unordered and overlapping
+    blocks when '-L, --loose-domain' is specified as long as no
+    block overlaps with other block of different status.
+  * ddrescue now exits with status 1 on fatal read errors.
+  * The option synonyms '--*-logfile' and '--pause' have been
+    removed and are no longer recognized.
+
+-------------------------------------------------------------------
+Sun Apr 26 20:09:21 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.25:
+  * Large numbers in messages (like device sizes) are now printed
+    in groups of 3 digits separated by underscore '_' characters to
+    make them more readable
+
+-------------------------------------------------------------------
+Fri Feb 14 08:28:43 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.25~rc1
+  * In rescue mode, join non-finished subsectors read from mapfile.
+
+-------------------------------------------------------------------
+Thu Feb 13 15:50:01 UTC 2020 - Stanislav Brabec <sbrabec@suse.com>
+
+- Fix invalid RPM group.
+
+-------------------------------------------------------------------
+Thu Oct 17 09:18:36 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.25~pre1
+  * Make use of ftruncate if the output file supports it.
+
+-------------------------------------------------------------------
+Fri Mar  8 21:01:57 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update descriptions
+
+-------------------------------------------------------------------
+Fri Mar  8 20:47:33 UTC 2019 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.24:
+  * new option '--command-mode'
+  * create backup copie of the mapfiles
+
+-------------------------------------------------------------------
+Fri Feb 16 18:13:35 UTC 2018 - astieger@suse.com
+
+- update to 1.23:
+  * A bug has been fixed that sometimes marked the wrong block as
+    non-scraped when running in reverse direction>
+  * The new option '--same-file' has been added. It allows infile
+    and outfile to be the same file or device.
+  * The new option '--shift' has been added to ddrescuelog. It
+    shifts the positions of all the blocks in 'mapfile' by the
+    offset ('--output-position' - '--input-position'), and writes
+    the resulting mapfile to standard output.
+  * In fill mode, the location data is now written as one line
+    without final newline to ease finding it with simple text
+    search tools.
+  * Fill mode no longer requires a seekable infile. Commands like
+    ddrescue -F- <(printf "BAD-SECTOR ") outfile mapfile are now
+    possible.
+  * The new chapter "Meaning of ddrescue's screen output" has been
+    added to the manual.
+
+-------------------------------------------------------------------
+Thu Jul  6 00:17:55 UTC 2017 - jengelh@inai.de
+
+- Update to new upstream release 1.22
+  * The -X option now stands for --max-read-errors instead of
+    --exit-on-error and therefore requires an argument now.
+  * New options: --max-slow-reads, --delay-slow, --reset-slow,
+    --log-events, --mapfile-interval, --pause-on-error
+  * The option '--pause' has been renamed to '--pause-on-pass'.
+  * The option '--max-errors' has been renamed to '--max-bad-areas'.
+  * ddrescue now shows the number of read errors, the error rate and
+    (if a --min-read-rate is specified) the number of slow reads.
+  * The 'current_pass' field has been added to the mapfile. This
+    allows the copying phase to resume instead of restart from
+    pass 1. It also allows the retrying phase to resume in the
+    same direction it was interrupted.
+  * (More option changes; see the full changelog in the "NEWS"
+    file shipped inside the package.)
+
+-------------------------------------------------------------------
+Sat Mar 19 07:48:21 UTC 2016 - mpluskal@suse.com
+
+- Update to 1.21
+  * A bug in the alignment of the I/O buffer has been (hopefully)
+    fixed.
+  * Ddrescue now exits with status 1 in case of unaligned read in
+    direct mode (because of a wrong sector size, for example).
+  * Short option names '-1' and '-2' have been removed to avoid
+    mistakes in the command line.
+  * Only regular files are now allowed as arguments of options
+    '--log-rates' and '--log-reads'.
+  * Option '-D, --odirect' now works also in fill mode.
+  * Option '-J, --verify-on-error' now marks blocks as failed on
+    any error, and exits with status 1 if a read error happens
+    before a good sector is found.
+  * Option '-X, --exit-on-error' has been extended to all phases.
+  * The short name '-Z' has been assigned to option
+    '--max-read-rate'.
+  * The mapfile is now "fsync'ed" every 5 minutes because some
+    systems seem to never write the mapfile to disc.
+  * Ddrescue now shows all sizes in rescue mode; non-tried,
+    non-trimmed, non-scraped, bad-sector and finished.
+  * Ddrescue now shows the percentage of the domain rescued in
+    rescue mode.
+
+-------------------------------------------------------------------
+Fri Sep 11 20:00:37 UTC 2015 - mpluskal@suse.com
+
+- Update to 1.20
+* "logfile" has been renamed to "mapfile" everywhere, even in long
+  option names. ("--domain-logfile" is now "--domain-mapfile",
+  etc).
+* The short name of option "--synchronous" has been changed to "-y".
+* The long name of option "-d" has been changed to "--idirect".
+* The new option "-D, --odirect" has been added. This introduces
+  a subtle backward incompatibility because "-D" was the short
+  name of option "--synchronous".
+* The new option "-J, --verify-on-error" has been added. It
+  verifies, after each read error, that the input device is still
+  returning consistent data.
+* The new option "--max-read-rate" has been added.
+* "direct disc access" now can copy arbitrary domains by reading
+  whole sectors and writing only the requested part.
+* Accounting change; only bad_sector blocks are now included in
+  "errsize".
+* The estimated remaining rescue time is now shown on the screen.
+* Times are now shown in days, hours, minutes and seconds, instead
+  of as a fraction of the appropriate unit.
+* Fill mode has been extended to write location data into each
+  sector.
+* An emergency save of the mapfile has been added. It can be
+  activated in case of ddrescue having trouble writing the mapfile.
+* Device name is now shown with "--ask" or "-vv" on Haiku.
+* Read-only mapfiles, like domain mapfiles or input mapfiles for
+  ddrescuelog, can now be read from standard input if a hyphen '-'
+  is used as mapfile name.
+* Ddrescuelog can now show the status of more than one mapfile.
+* "ddrescuelog --create-mapfile -" now writes the mapfile to
+  standard output.
+* The new chapter "Optical media" has been added to the manual.
+* The configure option "--enable-linux" has been renamed to
+  "--enable-non-posix".
+* The targets "install-compress", "install-strip-compress",
+  "install-info-compress" and "install-man-compress" have been
+  added to the Makefile.
+- Update download url
+
+-------------------------------------------------------------------
+Sat Oct 11 13:59:40 UTC 2014 - jengelh@inai.de
+
+- Update to new upstream release 1.19
+* A race condition at start of run with "--timeout=0" has been
+  fixed.
+* The new option -P (--data-preview) which makes ddrescue show a
+  few lines of the latest data read, has been added.
+* The new option -u (--unidirectional), which runs all passes in
+  the same direction (forwards or backwards), has been added.
+* The new option -X (--exit-on-error), which makes ddrescue exit
+  after the first read error is encountered during the copying
+  phase, has been added.
+* New options --ask, --cpass, --pause were added.
+* The option -l (--logfile-size) has been removed.
+* Ddrescue now skips on the first error during the copying phase.
+* Trimming is now done in one pass and may be run in reverse.
+* The splitting phase has been replaced by a "scraping" phase that
+  scrapes together the data not recovered by the copying or trimming
+  phases. Scraping reads each non-scraped block forwards, one sector
+  at a time.
+* The long name of option "-n" has been changed to "--no-scrape".
+* During the retrying phase, the direction is now reversed after
+  each pass. Use --unidirectional to override.
+* The license has been changed to GPL version 2 or later.
+- Remove %gpg_verify; verification is now handled by
+  source validator.
+
+-------------------------------------------------------------------
+Thu Jun 12 12:06:50 UTC 2014 - jengelh@inai.de
+
+- Update to new upstream release 1.18.1
+* A bug has been fixed in the "or" and "xor" operations of
+  ddrescuelog.
+* New "-H, --test-mode", "-L, --loose-domain", "-N, --no-trim",
+  "-O, --reopen-on-error", "-1, --log-rates", and "-2, --log-reads"
+  options have been added.
+* The "-K, --skip-size" option has been extended.
+* If ddrescue is interrupted by a signal, it now terminates by
+  raising that signal.
+* The algorithm of the copying phase has been changed.
+* The "-B, --binary-prefixes", "-C, --complete-logfile", and
+  "-P, --compare-as-domain" options have been added to ddrescuelog.
+* Many improvements have been made to the documentation.
+
+-------------------------------------------------------------------
+Tue Jul 16 08:02:33 UTC 2013 - jengelh@inai.de
+
+- Update to new upstream release 1.17
+* The new options "-l, --logfile-size", and "-w,
+  --ignore-write-errors" have been added.
+* Trimming is now done from both edges of each non-trimmed block.
+* The largest blocks are trimmed first.
+* The largest blocks are now split first until logfile reaches
+  "--logfile-size" entries. Ddrescue now terminates with an error
+  if an unexpected EOF would discard any successfully-read data.
+* ddrescue now automatically adjusts the logfile to shrinking input
+  devices, like CD-ROMs written in Track-At-Once mode.
+* A bug has been fixed which prevented the status from updating
+  after the system clock had been put back.
+- Optional signature verification on local builds
+
+-------------------------------------------------------------------
+Mon Jun 18 22:52:56 UTC 2012 - jengelh@inai.de
+
+- Update to new upstream release 1.16
+* The new options "-K, --skip-size" and "-T, --timeout" have been
+  added. The short name of option "--try-again" has been changed to
+  "-A". Maximum skip size is now limited to 1% of infile size or 1
+  GiB (whichever is smaller). The current position is now set to
+  the end of the block when reading backwards, allowing perfect
+  resumability also in reverse mode. The "-E, --max-error-rate"
+  option now checks the rate of actually failed reads, not the
+  growth of error size, and shows the error rate in the error
+  message. The -v option increases verbosity if repeated.
+
+-------------------------------------------------------------------
+Thu Jan 12 04:59:50 UTC 2012 - jengelh@medozas.de
+
+- Update to new upstream release 1.15
+* The new options "-a, --min-read-rate", "-I, --verify-input-size",
+  and "-x, --extend-outfile" have been added.
+* ddrescue now verifies that infile, outfile and logfile are all
+  different.
+* Non-tried blocks are now read aligned to cluster-size sectors.
+* A spurious warning about "-D" being ignored in fill mode has been
+  removed.
+* ddrescuelog, a tool for manipulation, display, conversion,
+  comparison and testing of ddrescue logfiles, has been added.
+
+-------------------------------------------------------------------
+Sun Mar  6 13:35:24 UTC 2011 - jengelh@medozas.de
+
+- Initial package
+
