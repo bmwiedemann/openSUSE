@@ -1,0 +1,35 @@
+-------------------------------------------------------------------
+Thu Feb 22 15:11:38 UTC 2024 - pgajdos@suse.com
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
+Fri Sep 15 16:07:54 UTC 2023 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 0.3
+  * use boost::signals2 instead of old boost::signals
+  * integrate Debian patches
+  * GSettings instead of GConfig
+- Drop boost-signals.patch and gsettings-port.patch, included 
+  upstream
+- Add BuildRequires libtool
+- Add BuildRequires libicu-devel, fix for openSUSE Leap have 
+  choice for pkgconfig(icu-uc) needed by harfbuzz-devel
+  
+-------------------------------------------------------------------
+Sun Mar 29 09:55:51 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Remove "BuildRequires: gconf2"
+  * Not longer needed since GSettings is used when patch
+    gsettings-port.patch is applied.
+
+-------------------------------------------------------------------
+Sat Mar 28 09:48:14 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Initial package, version 0.2
+  Add patches:
+  * boost-signals.patch 
+  * gsettings-port.patch
+  * localedir.patch
+  * workaround_autotools.patch

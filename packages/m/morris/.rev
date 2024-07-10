@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8350fa1adf3a56b544bbc71c9c1effe7</srcmd5>
+    <version>0.2</version>
+    <time>1585602130</time>
+    <user>dimstar_suse</user>
+    <comment>I want to maintain morris in Factory</comment>
+    <requestid>789528</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>758d32dace166a019c417d276fc10e4b</srcmd5>
+    <version>0.3</version>
+    <time>1695209221</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1112000</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>c281cfd5a19ed85183727944993abf19</srcmd5>
+    <version>0.3</version>
+    <time>1708703254</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1149989</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,131 @@
+.\"
+.TH "morris" "6" "0.2" "" "Games"
+.SH "NAME"
+morris \-  Nine Men's Morris game for the Gnome desktop
+.SH "SYNOPSIS"
+.B morris
+.SH "DESCRIPTION"
+Morris is an implementation of the board game "Nine Men's Morris". Other names for this game are: Mills, Merrills, Morris, or Mühle in German. Nine Men's Morris, being probably 2000-3000 years old, appears to be one of the oldest board games, much older than chess. From the 12th to the 18th century, Nine Men's Morris was one of the most popular board games in Europe. However, it is still actively played today and exists in several variants, e.g., Morabaraba, which is particularly popular in South Africa.
+
+This implementation of Nine Men's Morris supports not only the standard game, but also several rule-variants and different board layouts. You can play against the computer, or simply use the program to present the board, but play against another human opponent. The computer opponent learns from previous games and tries not to make the same mistake twice. This ensures enough variation in game-play, should you once have managed to beat the program.
+
+.SH "FEATURES"
+.P
+Among others, the game plays the following variants:
+.TP
+    - Lasker variant (moves are also allowed in the set-phase)
+.TP
+    - The Möbius board (invented by Ingo Althöfer)
+.TP
+    - The Windmill board
+.TP
+    - The Windmill board
+.TP
+    - Pentagon and Hexagon boards
+.TP
+    - Morabaraba
+.TP
+    - Six and Seven Men's Morris
+.TP
+    - Tapatan, Achi, Nine Holes
+.P
+Furthermore, the game supports:
+.TP
+    - Advanced AI controls to tweak AI playing style
+.TP
+    - Giving hints for good moves
+.TP
+    - Showing the principal variation
+.TP
+    - Move takeback (undo and redo)
+.TP
+    - Internationalization (English, German, Chinese)
+.TP
+    - Many board and rule variations
+.TP
+    - Free customization of rules
+.TP
+    - Configurable display
+
+.SH "STANDARD RULES"
+
+Each player has nine pieces (hence the name, Nine Men's Morris) which are placed and moved on the line crossings of the board. Whenever three pieces of the same color are placed in a straight row, a mill is closed and one opponent piece may be removed. The goal of the game is to reduce the opponent to only two pieces (such that he cannot form a mill anymore), or to surround the opponent pieces in such a way that there are no valid moves for the opponent.
+
+The game proceeds in three distinct phases (opening, midgame, and endgame). Unlike chess, these phases are distinguished by special rules for each phase.
+
+.TP
+.B Opening - Setting pieces
+The white player begins. Each player places one piece on an unoccupied position on the board in turns. If a mill is closed by setting a piece, the player may take one of the opponent's pieces. Once all pieces are set, the midgame starts.
+.PP
+
+.TP
+.B Midgame - Moving pieces
+Each player moves one piece along the lines to a free, neighboring position. Again, if the move results in closing a mill, one of the opponent's pieces may be removed. Note that a player must move a piece in each turn. If there is no legal move, the player has lost.
+.PP
+
+.TP
+.B Endgame - Flying
+If a player has only three pieces left, he my jump (or fly) with one piece to any unoccupied position instead of moving only along the board lines.
+.PP
+
+.SH "RULE DETAILS AND GAME VARIATIONS"
+
+Some of these rules are often interpreted differently, such that a variety of rule variants exist. This game tries to support most of them. In particular, the following rule variations are supported:
+
+.TP
+.B Taking from opponent mills
+When a mill is closed, one opponent stone may be taken. However, usually, it is
+not allowed to take a piece from an opponent's mill, if he still has pieces that are not part of a mill. If you want, you can also allow players to take pieces from an opponent's mill. Note that you can always take pieces from an opponent's mill, if all of his pieces are within mills.
+.PP
+
+.TP
+.B Multiple mills
+In the setting phase, it may happen that two mills are closed simultaneously. In the multiple-mills variations, the player may take two opponent pieces, in this case.
+.PP
+
+.TP
+.B Flying
+Some people prefer to omit the flying rule, such that only standard moves may be conducted, even when a player is down to only three pieces.
+.PP
+
+.TP
+.B Lasker variant (proposed by the chess grandmaster Emanuel Lasker)
+There is no difference between opening and midgame. I.e., a player may decide to move a piece instead of setting a new piece. Usually, this variant is played with 10 pieces instead of only 9.
+.PP
+
+.TP
+.B Remis
+If the same board situation appeared for N times (with N usually 3), the game is declared remis.
+.PP
+
+.SH "AI ALGORITHM"
+
+ The AI algorithm is a standard alpha-beta search in a NegaMax implementation using iterative deepening. It employs a transposition table to quickly find previously computed positions.
+
+A special feature is the automatic learning capability: whenever the computer wins or loses a game, it will prefer to obtain or avoid similar situations in the future. This results in a better long-term motivation, since the computer will not make the same mistake twice and the gameplay will be more randomized.
+
+The evaluation function is still quite basic and consists of four parts:
+.TP
+.B Material
+The number of pieces each player has left
+.PP
+
+.TP
+.B Freedom
+The number of possible moves a player can conduct
+.PP
+
+.TP
+.B Mills
+The number of closed mills
+.PP
+
+.TP
+.B Experience
+The learning-bias from previous games.
+.PP
+
+.SH "SEE ALSO"
+You can find more information at http://nine-mens-morris.net/
+
+For bug reports, patches, or any kind of discussion, contact Dirk Farin <dirk.farin@gmail.com>
