@@ -1,0 +1,2143 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>683b85dfe0c354434b3677e318fccf3b</srcmd5>
+    <version>2.43</version>
+    <time>1168903482</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="20">
+    <srcmd5>21de0ad32436107c1db301a391ab838d</srcmd5>
+    <version>2.43</version>
+    <time>1180639686</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>1314216046371b0d69d2423b5ffc57e5</srcmd5>
+    <version>2.60</version>
+    <time>1183469073</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="21">
+    <srcmd5>6067efc8c466876b4d9df20352e7a5ed</srcmd5>
+    <version>2.43</version>
+    <time>1183516633</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b7f79188bcd3c24e3eae8e6bd49869fe</srcmd5>
+    <version>9]*</version>
+    <time>1183689375</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>2ebc94313ff77d9a552a19352cce4e37</srcmd5>
+    <version>9]*</version>
+    <time>1183775794</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>5a07a0cade90a6302b5ec26b8fc0f348</srcmd5>
+    <version>9]*</version>
+    <time>1183862133</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>5b4f33fa05b4576ed91500d3930d822f</srcmd5>
+    <version>9]*</version>
+    <time>1183948572</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>a8564a9b6332826db669295126e6b060</srcmd5>
+    <version>9]*</version>
+    <time>1184035004</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>e1952657f465f0fb4f1e63abfabea459</srcmd5>
+    <version>2.61</version>
+    <time>1184207832</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>cfd1cd01ae4ea07cf7b1c60fba9ac315</srcmd5>
+    <version>2.62</version>
+    <time>1184380661</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>05713901082ed68d05ea05714e44ff00</srcmd5>
+    <version>2.63</version>
+    <time>1184985445</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>48f559c168619b789fa970b57721d8fe</srcmd5>
+    <version>2.63</version>
+    <time>1185098535</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>d76b37aa90cef842cb841afb0889d4ec</srcmd5>
+    <version>2.64</version>
+    <time>1186757886</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="8">
+    <srcmd5>dbfb62034fa3a88ed575f19680bc2668</srcmd5>
+    <version>2.64</version>
+    <time>1189778593</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="11">
+    <srcmd5>476abd1285b63d917370ee2931d86db1</srcmd5>
+    <version>2.64</version>
+    <time>1190381251</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="11">
+    <srcmd5>9338dce6d911d3241ea9e9273b0c8028</srcmd5>
+    <version>2.65</version>
+    <time>1190428767</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="12">
+    <srcmd5>9e6f6c6c033ef7ced9234ef319d7c1a6</srcmd5>
+    <version>2.65</version>
+    <time>1190497212</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>62b7814d24c276fc939017b9771fd872</srcmd5>
+    <version>2.66</version>
+    <time>1191897727</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>49350858777b24a765e1fc5fe9a9167b</srcmd5>
+    <version>2.67</version>
+    <time>1193107060</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>9e84fad27e18f229ef7c1558135e44eb</srcmd5>
+    <version>2.67</version>
+    <time>1195529957</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>a5c9cc7390affc730638bb29d19f0e50</srcmd5>
+    <version>2.68</version>
+    <time>1195702665</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>0add674c1c98d13fb3f2055fb32f71fa</srcmd5>
+    <version>2.68</version>
+    <time>1195750407</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>beedf4cdd1a890240ae61365e9e7123f</srcmd5>
+    <version>2.79</version>
+    <time>1207858752</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>bf65a01bcb389cdf274e7b8e76b7b1aa</srcmd5>
+    <version>2.68</version>
+    <time>1207881847</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>8e0c1b3a5393a3b3b813a4358f097961</srcmd5>
+    <version>2.79</version>
+    <time>1208227778</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="27" vrev="8">
+    <srcmd5>67ffc4d829508ee03f606468073b85a3</srcmd5>
+    <version>2.79</version>
+    <time>1210687640</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="28" vrev="18">
+    <srcmd5>1434c516b45fff081f8ef9da07d618bc</srcmd5>
+    <version>2.79</version>
+    <time>1216156490</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>5320771d97153d2ae97da30b982de081</srcmd5>
+    <version>3.07</version>
+    <time>1220890040</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="30" vrev="19">
+    <srcmd5>fd7afb21ab89dcb3ac524537b3c08468</srcmd5>
+    <version>2.79</version>
+    <time>1220928353</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>da06d216a0c1845ed01209445dfe8b3c</srcmd5>
+    <version>3.09</version>
+    <time>1221277713</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="32" vrev="3">
+    <srcmd5>561d1620ea986afe62a858440d357ca6</srcmd5>
+    <version>3.09</version>
+    <time>1222704046</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>cf9ef1fcd8f1fa89cac39181f0a5f1e5</srcmd5>
+    <version>3.10</version>
+    <time>1223766228</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>c9e3ea5d5ea6f55d4424664844623dd9</srcmd5>
+    <version>3.11</version>
+    <time>1224000264</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>f88fb3e9ccfa10002060faab691aa69d</srcmd5>
+    <version>3.13</version>
+    <time>1227011426</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>882c5b754563a3b250d165b257ded1eb</srcmd5>
+    <version>3.13</version>
+    <time>1227539330</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>f877c43785cf0ea510006d27ec3dafb6</srcmd5>
+    <version>3.15</version>
+    <time>1229439277</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>7bee7f6a1ec8630f916d6fc318f0a528</srcmd5>
+    <version>3.17</version>
+    <time>1232501637</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>d66ef5eab3cdb1061f45f4af2b07e057</srcmd5>
+    <version>3.19</version>
+    <time>1236815623</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>ef477a80c8fbad2967191a46cf28a322</srcmd5>
+    <version>3.21</version>
+    <time>1245460672</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>f932dc2122bfe287164621d17c6e075c</srcmd5>
+    <version>3.22</version>
+    <time>1249655765</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>6a5f7a7ccdee806ca196deb1c4f8d016</srcmd5>
+    <version>3.22</version>
+    <time>1250868020</time>
+    <user>autobuild</user>
+    <comment>Copy from Documentation/man-pages based on submit request 18112 from user pgajdos
+</comment>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>95acb64dac3c81544c605bb8217e974a</srcmd5>
+    <version>3.23</version>
+    <time>1254785071</time>
+    <user>autobuild</user>
+    <comment>Copy from Documentation/man-pages based on submit request 21679 from user pgajdos
+</comment>
+  </revision>
+  <revision rev="44" vrev="3">
+    <srcmd5>95acb64dac3c81544c605bb8217e974a</srcmd5>
+    <version>3.23</version>
+    <time>1254785071</time>
+    <user>autobuild</user>
+    <comment>Copy from Documentation/man-pages based on submit request 21679 from user pgajdos
+</comment>
+  </revision>
+  <revision rev="45" vrev="4">
+    <srcmd5>b561fd99269d7a2d6e23a647a166ec11</srcmd5>
+    <version>3.23</version>
+    <time>1263293217</time>
+    <user>autobuild</user>
+    <comment>Copy from Documentation/man-pages based on submit request 29159 from user coolo
+</comment>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>2d94061126aa1a8eb0b4dca5cddd64d7</srcmd5>
+    <version>3.24</version>
+    <time>1267462988</time>
+    <user>autobuild</user>
+    <comment>Copy from Documentation/man-pages based on submit request 33673 from user pgajdos
+</comment>
+    <requestid>33673</requestid>
+  </revision>
+  <revision rev="47" vrev="2">
+    <srcmd5>3bfbdadf02eb40d40c63df8cd91f1477</srcmd5>
+    <version>3.24</version>
+    <time>1268924905</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>cd36067684464dd818bee55675738264</srcmd5>
+    <version>3.25</version>
+    <time>1277717213</time>
+    <user>autobuild</user>
+    <comment>Copy from Documentation/man-pages based on submit request 41919 from user pgajdos
+</comment>
+    <requestid>41919</requestid>
+  </revision>
+  <revision rev="49" vrev="2">
+    <srcmd5>cd36067684464dd818bee55675738264</srcmd5>
+    <version>3.25</version>
+    <time>1278667366</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="50" vrev="3">
+    <srcmd5>cd36067684464dd818bee55675738264</srcmd5>
+    <version>3.25</version>
+    <time>1278678596</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>32e921400dbb71fd7bac1e0fc1bc29b4</srcmd5>
+    <version>3.26</version>
+    <time>1284990791</time>
+    <user>autobuild</user>
+    <comment>Copy from Documentation/man-pages based on submit request 48130 from user pgajdos
+</comment>
+    <requestid>48130</requestid>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>34bca63c74ffb0449cc24164b8fbd7d4</srcmd5>
+    <version>3.27</version>
+    <time>1285280191</time>
+    <user>autobuild</user>
+    <comment>Copy from Documentation/man-pages based on submit request 48873 from user pgajdos
+</comment>
+    <requestid>48873</requestid>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>e0474b1333656ad7433a113c763ee947</srcmd5>
+    <version>3.28</version>
+    <time>1287009930</time>
+    <user>autobuild</user>
+    <comment>Copy from Documentation/man-pages based on submit request 50296 from user pgajdos
+</comment>
+    <requestid>50296</requestid>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>3f804fb3bcc587b5d695e175356e3c47</srcmd5>
+    <version>3.29</version>
+    <time>1287645864</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 51181 from user pgajdos
+</comment>
+    <requestid>51181</requestid>
+  </revision>
+  <revision rev="55" vrev="2">
+    <srcmd5>673f8e6d5abc9573d0c53c2b85f29909</srcmd5>
+    <version>3.29</version>
+    <time>1287645870</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 51181
+</comment>
+  </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>1e851fc8d137583cb08ecf4c547974ce</srcmd5>
+    <version>3.30</version>
+    <time>1288964673</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 52124 from user pgajdos
+</comment>
+    <requestid>52124</requestid>
+  </revision>
+  <revision rev="57" vrev="2">
+    <srcmd5>ed6c50e68bf6dba37f3e17c09780329a</srcmd5>
+    <version>3.30</version>
+    <time>1288964681</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 52124
+</comment>
+  </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>35c7131e3b8e682b6edf77dd736e40e8</srcmd5>
+    <version>3.32</version>
+    <time>1291740437</time>
+    <user>darix</user>
+    <comment>Accepted submit request 54858 from user pgajdos
+</comment>
+    <requestid>54858</requestid>
+  </revision>
+  <revision rev="59" vrev="2">
+    <srcmd5>c1593865c15c896b646bbd9274cb01e3</srcmd5>
+    <version>3.32</version>
+    <time>1291740461</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 54858
+</comment>
+  </revision>
+  <revision rev="60" vrev="5">
+    <srcmd5>c1593865c15c896b646bbd9274cb01e3</srcmd5>
+    <version>3.32</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="61" vrev="6">
+    <srcmd5>3dcbf1bb13ce1cbb203dee66d9665103</srcmd5>
+    <version>3.32</version>
+    <time>1312442565</time>
+    <user>saschpe</user>
+    <comment>Remove crypt.3 and crypt_r.3 since they are part of glibc now. (forwarded request 77682 from a_jaeger)</comment>
+    <requestid>77894</requestid>
+  </revision>
+  <revision rev="62" vrev="7">
+    <srcmd5>b9fdb925fb644f58ef7ea5094dd4a14b</srcmd5>
+    <version>3.32</version>
+    <time>1312442597</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 77894
+</comment>
+  </revision>
+  <revision rev="63" vrev="6">
+    <srcmd5>3bad21978e5c5a9bb031bd120faacdf4</srcmd5>
+    <version>3.33</version>
+    <time>1317024550</time>
+    <user>saschpe</user>
+    <comment>- updated to 3.33</comment>
+    <requestid>84387</requestid>
+  </revision>
+  <revision rev="64" vrev="6">
+    <srcmd5>96b20027b2bad035df72cc70908b861a</srcmd5>
+    <version>3.34</version>
+    <time>1317049553</time>
+    <user>oertel</user>
+    <comment>- update to version 3.34
+  * New and rewritten pages
+      rt_sigqueueinfo.2
+        New page for rt_sigqueueinfo(2) and rt_tgsigqueueinfo(2)
+            This replaces the previous '.so' man page link file for
+            rt_sigqueueinfo.2, which linked to this sigqueue() man page.
+      cciss.4
+        New man page for cciss driver
+            I obtained the information in this man page as a consequence
+            of having worked on the cciss driver for the past several years,
+            and having written considerable portions of it.
+        Copyedit by mtk
+      hpsa.4
+        New man page for the hpsa driver
+            I obtained the information in this man page as a consequence
+            of being the main author of the hpsa driver
+        Copyedits my mtk
+  * Newly documented interfaces in existing pages
+      fstatat.2
+        Document AT_NO_AUTOMOUNT
+      lseek.2
+        Document SEEK_HOLE and SEEK_DATA
+            These flags, designed for discovering holes in a file,
+            were added in Linux 3.1. Included comments from Eric
+            Blake and Sunil Mushran.
+      madvise.2
+        Add MADV_HUGEPAGE and MADV_NOHUGEPAGE
+            Document the MADV_HUGEPAGE and MADV_NOHUGEPAGE flags added to
+            madvise() in Linux 2.6.38.
+  * New and changed links</comment>
+    <requestid>84811</requestid>
+  </revision>
+  <revision rev="65" vrev="7">
+    <srcmd5>32d96fe435cabb75ff9e951ff0c4d431</srcmd5>
+    <version>3.34</version>
+    <time>1317049561</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 84811
+</comment>
+  </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>f9183a299a43cbb21218497ba5da3a45</srcmd5>
+    <version>3.35</version>
+    <time>1317829585</time>
+    <user>lrupp</user>
+    <comment>- update to version 3.35
+  * New and rewritten pages
+      recvmmsg.2
+        New man page for recvmmsg(2)
+      setns.2
+        New manual page for setns(2)
+        Various improvements
+  * Global changes
+  * Various pages
+        Global fix: remove spaces around em-dash
+            Normal English typographical convention is not to have
+            spaces around em dashes.
+  * Various pages
+        Global fix: s/null pointer/NULL pointer/
+  * Various pages
+        Global fix: use ORing
+            Use &quot;ORing&quot;, not &quot;OR'ing&quot;, nor an italic &quot;.IR OR ing&quot;.
+  * Various pages
+        Global fix: consistent use of &quot;null wide character&quot;
+            Bring more consistency to the discussion of
+            &quot;[terminating] null wide character&quot;
+            by writing (at least in the initial use in a page)
+            &quot;[terminating] null wide character (L'\0')&quot;.
+  * Various pages
+        Global fix: consistent use of &quot;null byte&quot;
+            Bring more consistency to the discussion of
+            &quot;[terminating] null byte&quot;
+            by writing (at least in the initial use in a page)
+            &quot;[terminating] null byte ('\0')&quot;.
+      mount.2, prctl.2</comment>
+    <requestid>86637</requestid>
+  </revision>
+  <revision rev="67" vrev="3">
+    <srcmd5>f9183a299a43cbb21218497ba5da3a45</srcmd5>
+    <version>3.35</version>
+    <time>1319182170</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>b97bd3dcb21731bb35dbde352560f15f</srcmd5>
+    <version>3.37</version>
+    <time>1332769046</time>
+    <user>coolo</user>
+    <comment>- license update: BSD-3-Clause and GPL-2.0+ and MIT
+  SPDX
+
+- update to version 3.37
+  * New and rewritten pages
+      getent.1
+        New page to document 'getent' binary provided by glibc
+  * Changes to individual pages
+      bdflush.2
+        Note that bdflush() is deprecated, and does nothing
+      nfsservctl.2
+        Note that this system call was removed in Linux 3.1
+      ptrace.2
+        add extended description of various ptrace quirks
+            Changes include:
+            s/parent/tracer/g, s/child/tracee/g - ptrace interface now
+            is sufficiently cleaned up to not treat tracing process
+            as parent.
+            Deleted several outright false statements:
+            - pid 1 can be traced
+            - tracer is not shown as parent in ps output
+            - PTRACE_ATTACH is not &quot;the same behavior as if tracee had done
+              a PTRACE_TRACEME&quot;: PTRACE_ATTACH delivers a SIGSTOP.
+            - SIGSTOP _can_ be injected.
+            - Removed mentions of SunOS and Solaris as irrelevant.
+            - Added a few more known bugs.
+            Added a large block of text in DESCRIPTION which doesn't focus
+            on mechanical description of each flag and operation, but rather
+            tries to describe a bigger picture. The targeted audience is
+            a person which is reasonably knowledgeable in Unix but did not</comment>
+    <requestid>111095</requestid>
+  </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>ad5281da1ce576cf548a04f24edae98e</srcmd5>
+    <version>3.38</version>
+    <time>1334692788</time>
+    <user>coolo</user>
+    <comment>- update to version 3.38
+  * New and rewritten pages
+      get_nprocs_conf.3
+        New page documenting get_nprocs_conf(3) and get_nprocs(3)
+        Some additions and improvements
+      malloc_get_state.3
+        New page documenting malloc_get_state(3) and malloc_set_state(3)
+      mallopt.3
+        New man page for mallopt(3)
+      mtrace.3
+        Complete rewrite of page, adding much more detail
+      scandirat.3
+        New page for scandirat(3) (new in glibc 2.15)
+  * Newly documented interfaces in existing pages
+      posix_memalign.3
+        Document aligned_alloc(3)
+            aligned_alloc() is new in C11.
+        Document pvalloc(3)
+      qsort.3
+        Add documentation of qsort_r(3)
+        Improvements to Mark R Bannister's qsort_r() patch
+        Add VERSIONS section for qsort_r()
+  * New and changed links
+      aligned_alloc.3
+        New link to posix_memalign.3
+      get_nprocs.3
+        Link to new get_nprocs_conf.3 page
+      malloc_set_state.3
+        Link to new malloc_get_state.3 page
+      pvalloc.3</comment>
+    <requestid>113305</requestid>
+  </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>032cd3a04b78725c3acd999c56cc343c</srcmd5>
+    <version>3.39</version>
+    <time>1335259366</time>
+    <user>coolo</user>
+    <comment>- update to version 3.39
+  * New and rewritten pages
+      malloc_trim.3
+        New man page for malloc_trim(3)
+      malloc_usable_size.3
+        New man page for malloc_usable_size(3)
+  * Newly documented interfaces in existing pages
+      prctl.2
+        Document PR_SET_MM (new in Linux 3.3)
+        Various edits and improvements to Cyrill's patch
+  * Changes to individual pages
+      epoll_create.2
+        Rework discussion of 'size' argument
+        Add .SS for description of epoll_create1()
+      epoll_wait.2
+        Another thread can add to epoll instance while epoll_wait is blocked
+            See https://bugzilla.kernel.org/show_bug.cgi?id=43072
+        Clarify that epoll_pwait() blocks calling *thread*
+        A few wording improvements
+      fchmodat.2
+        Note difference between glibc wrapper and underlying system call
+            The wrapper function has a 'flags' argument (which currently
+            serves no purpose), while the underlying system call does not.
+      fcntl.2
+        Explain behaviour of F_GETLEASE during lease break
+        Change type of arg from &quot;long&quot; to &quot;int&quot;
+            Various fcntl(2) commands require an integral 'arg'.
+            The man page said it must be &quot;long&quot; in all such cases.
+            However, for the cases covered by POSIX, there is an
+            explicit requirement that these arguments be &quot;int&quot;.</comment>
+    <requestid>115156</requestid>
+  </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>bcc6b21062ac5b49121b90f637c5db49</srcmd5>
+    <version>3.40</version>
+    <time>1336468511</time>
+    <user>coolo</user>
+    <comment>- update to version 3.40
+  * New and rewritten pages
+      process_vm_readv.2
+        New page for process_vm_readv(2) and process_vm_writev(2)
+      mcheck.3
+        New man page for mcheck(3) and related functions
+            Also describes mcheck_check_all(3), mcheck_pedantic(3),
+            and mprobe(3)
+  * Newly documented interfaces in existing pages
+      rcmd.3
+        Document &quot;_af&quot; variants of these functions
+            Document rcmd_af(), rresvport_af(), iruserok_af(), ruserok_af().
+            Also some restructuring and other clarifications.
+      rexec.3
+        Document rexec_af()
+  * New and changed links
+      iruserok_af.3
+      rcmd_af.3
+      rresvport_af.3
+      ruserok_af.3
+        New links to rcmd.3
+      rexec_af.3
+        New link to rexec.3
+  * Changes to individual pages
+      clock_getres.2
+        Clarify difference between CLOCK_MONOTONIC and CLOCK_MONOTONIC_RAW
+            Note interactions of these two clocks with discontinuous
+            adjustments to the system time and NTP/adjtime(2).
+      fallocate.2
+        Fix description of ENOSYS and EOPNOTSUP errors</comment>
+    <requestid>116325</requestid>
+  </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>aee80629358477bccaec1114b42420fb</srcmd5>
+    <version>3.41</version>
+    <time>1338476824</time>
+    <user>coolo</user>
+    <comment>- update to version 3.41
+  * New and rewritten pages
+      get_robust_list.2
+        New page documenting get_robust_list(2) and set_robust_list(2)
+      mallinfo.3
+        New page for mallinfo(3)
+      malloc_info.3
+        New page for malloc_info(3)
+      malloc_stats.3
+        New man page for malloc_stats(3)
+  * Newly documented interfaces in existing pages
+      madvise.2
+        Document MADV_DONTDUMP and MADV_DODUMP
+  * New and changed links
+      set_robust_list.2
+        New link to new get_robust_list.2 page
+      LIST_ENTRY.3
+      LIST_HEAD.3
+      LIST_INIT.3
+      LIST_INSERT_AFTER.3
+      LIST_INSERT_HEAD.3
+      LIST_REMOVE.3
+      TAILQ_ENTRY.3
+      TAILQ_HEAD.3
+      TAILQ_INIT.3
+      TAILQ_INSERT_AFTER.3
+      TAILQ_INSERT_HEAD.3
+      TAILQ_INSERT_TAIL.3
+      TAILQ_REMOVE.3
+      CIRCLEQ_ENTRY.3</comment>
+    <requestid>122858</requestid>
+  </revision>
+  <revision rev="73" vrev="3">
+    <srcmd5>aee80629358477bccaec1114b42420fb</srcmd5>
+    <version>3.41</version>
+    <time>1340183689</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>66eb4d304ab8007814e134de67a9ba27</srcmd5>
+    <version>3.42</version>
+    <time>1346399038</time>
+    <user>coolo</user>
+    <comment>- update to version 3.42
+  * Global changes
+  * Various pages
+        Global fix: use UR macro where applicable
+            The syntax .UR http://example.com paired with .UE will create
+            links which one can interact, if the pager allows that.  One
+            way to see the effect is ask the man(1) command to use browser
+            display, e.g.:
+                man -H man7/uri.7
+            (&quot;\:&quot; is optional groff syntax to permit hyphenless line breaks.)
+  * Changes to individual pages
+      ldd.1
+        Add security note on untrusted executables
+            See also http://www.catonmat.net/blog/ldd-arbitrary-code-execution/
+            and
+            http://tldp.org/HOWTO/Program-Library-HOWTO/shared-libraries.html
+      clone.2
+        Rewrite discussion of sys_clone
+      futex.2
+        Consolidate error descriptions to ERRORS
+        Various wording fix-ups
+        Fix description of EINVAL error
+            The current text seems incorrect. Replace with a more general
+            description.
+      getdents.2
+      select_tut.2
+      atof.3
+      atoi.3
+      pthread_create.3
+      pthread_sigmask.3</comment>
+    <requestid>131917</requestid>
+  </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>9602072d42346031dec359399e3a21b5</srcmd5>
+    <version>3.43</version>
+    <time>1352407844</time>
+    <user>namtrac</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>140619</requestid>
+  </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>7ed6954254025c9b6a1a03387fe885e4</srcmd5>
+    <version>3.44</version>
+    <time>1353952751</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>142586</requestid>
+  </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>6dc1d2281ca21e102a22929dba6bd95b</srcmd5>
+    <version>3.45</version>
+    <time>1357575920</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>147365</requestid>
+  </revision>
+  <revision rev="78" vrev="3">
+    <srcmd5>6dc1d2281ca21e102a22929dba6bd95b</srcmd5>
+    <version>3.45</version>
+    <time>1359109429</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>92cd2405f939dfd7cc5b36e3abb001ce</srcmd5>
+    <version>3.46</version>
+    <time>1360007621</time>
+    <user>coolo</user>
+    <comment>- update to version 3.46
+  * New and rewritten pages
+      kcmp.2
+        New page for kcmp(2)
+  * Newly documented interfaces in existing pages
+      init_module.2
+        Document finit_module(2)
+        Document finit_module() 'flags' argument
+            Document MODULE_INIT_IGNORE_MODVERSIONS and
+            MODULE_INIT_IGNORE_VERMAGIC. (Some edits by mtk.)
+  * New and changed links
+      finit_module.2
+        New link to init_module.2
+      __after_morecore_hook.3
+      __free_hook.3
+      __malloc_initialize_hook.3
+      __memalign_hook.3
+      __realloc_hook.3
+        New link to malloc_hook.3
+  * Global changes
+  * Various pages
+        Global fix: s/tty/terminal/
+  * Changes to individual pages
+      clone.2
+        Add kernel versions for various CLONE_* constants
+        CLONE_NEWIPC governs mechanisms that don't have filesystem pathnames
+        CLONE_NEWIPC doesn't mount the POSIX MQ file system
+        Add an example program (CLONE_NEWUTS)
+        Some reworking of CLONE_NEWIPC text
+            No substantial content changes.</comment>
+    <requestid>150917</requestid>
+  </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>77e6461deb17d5fea8b84d77ec7bef21</srcmd5>
+    <version>3.47</version>
+    <time>1362736464</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>157663</requestid>
+  </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>299f0459cbf02ad6f6a5120a462ba7ba</srcmd5>
+    <version>3.48</version>
+    <time>1363105020</time>
+    <user>coolo</user>
+    <comment>- update to version 3.48
+  * New and rewritten pages
+      getunwind.2
+        New page documenting getunwind(2)
+            Taken from Red Hat downstream man pages set
+        Much rewriting
+            Some text taken from arch/ia64/kernel/unwind.c.
+      perfmonctl.2
+        New page documenting IA-64-specific perfmonctl(2)
+            Taken from Red Hat downstream man pages
+        Rework discussion of PFM_CREATE_CONTEXT
+        Add VERSIONS and CONFORMING TO
+        Note that there is no glibc wrapper
+        Remove PFM_CREATE_EVTSETS, PFM_DELETE_EVTSETS, PFM_GETINFO_EVTSETS
+            These don't exist, and it appears they never have.
+        Fix argument types for PFM_WRITE_PMCS, PFM_WRITE_PMDS, PFM_READ_PMDS
+            The types that were being used don't exist!
+        Briefly document PFM_GET_FEATURES, PFM_DEBUG, PFM_GET_PMC_RESET_VAL
+      gai.conf.5
+        New page documenting gai.conf
+            Taken from Red Hat downstream pages
+      nss.conf.5
+        New page describing nss.conf
+  * Newly documented interfaces in existing pages
+      clock_getres.2
+        Document CLOCK_REALTIME_COARSE and CLOCK_MONOTONIC_COARSE
+        Document CLOCK_BOOTTIME
+        Some improvements to CLOCK_BOOTTIME description
+      ptrace.2
+        Document PTRACE_GETREGSET, PTRACE_SETREGSET, PTRACE_SEIZE, and friends</comment>
+    <requestid>158617</requestid>
+  </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>11aebbf348b6a42d552638f9578852ad</srcmd5>
+    <version>3.50</version>
+    <time>1364240310</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>160861</requestid>
+  </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>1a73413af9a541c84b497b7059b148ed</srcmd5>
+    <version>3.51</version>
+    <time>1369648322</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>174883</requestid>
+  </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>b794fde1106e6943914d1609965d21e4</srcmd5>
+    <version>3.52</version>
+    <time>1373982138</time>
+    <user>coolo</user>
+    <comment>- update to version 3.52
+  * Various pages that formerly lacked the information now have 
+    a note under RETURN VALUE that errno is set on error.
+  * Peng Haitao has submitted patches to around 50 pages that note 
+    functions that are thread-safe or thread-unsafe. For this 
+    purpose, the man-pages add a new section, ATTRIBUTES, as 
+    described in the man-pages(7) manual page. Peng Haitao's 
+    substantial work is ongoing, and more pages will add this 
+    information in the future.</comment>
+    <requestid>183137</requestid>
+  </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>b0019104d288039288b064ab534f15c6</srcmd5>
+    <version>3.53</version>
+    <time>1375901795</time>
+    <user>coolo</user>
+    <comment>- update to version 3.53
+  * New and rewritten pages
+      restart_syscall.2
+        New page for restart_syscall(2) system call
+  * Newly documented interfaces in existing pages
+      fchownat.2
+        Document AT_EMPTY_PATH
+      fstatat.2
+        Document AT_EMPTY_PATH
+      linkat.2
+        Document AT_EMPTY_PATH
+      open.2
+        Document O_PATH
+            See also https://bugzilla.redhat.com/show_bug.cgi?id=885740
+  * Changes to individual pages
+      clock_nanosleep.2
+      futex.2
+      nanosleep.2
+      poll.2
+      sigaction.2
+      sigreturn.2
+      signal.7
+        SEE ALSO: add restart_syscall(2)
+      open.2
+        Remove warning that O_DIRECTORY is only for use with opendir(3)
+            O_DIRECTORY can also be used with, for example, O_PATH.
+      perf_event_open.2
+        Improve PERF_SAMPLE_BRANCH_STACK documentation
+        Fix indentation of the MMAP layout section
+            The indentation of the MMAP layout section wasn't quite right.</comment>
+    <requestid>186262</requestid>
+  </revision>
+  <revision rev="86" vrev="3">
+    <srcmd5>b0019104d288039288b064ab534f15c6</srcmd5>
+    <version>3.53</version>
+    <time>1379663253</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="87" vrev="1">
+    <srcmd5>b3042566a87e5a7a09d3f654e949b3c8</srcmd5>
+    <version>3.55</version>
+    <time>1389099431</time>
+    <user>coolo</user>
+    <comment>- fix conflict with time(1) from package time
+- remove update.sh, get_version_number.sh packaging scripts (forwarded request 212958 from AndreasStieger)</comment>
+    <requestid>212968</requestid>
+  </revision>
+  <revision rev="88" vrev="1">
+    <srcmd5>fd18afeabece83b0a418eb89a6223954</srcmd5>
+    <version>3.56</version>
+    <time>1389606921</time>
+    <user>coolo</user>
+    <comment>man-pages 3.56 (forwarded request 213630 from AndreasStieger)</comment>
+    <requestid>213664</requestid>
+  </revision>
+  <revision rev="89" vrev="1">
+    <srcmd5>674a3091ff8cc8634ac01bb9bf6d0cf1</srcmd5>
+    <version>3.57</version>
+    <time>1391077941</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 3.57 (forwarded request 215132 from jengelh)</comment>
+    <requestid>215207</requestid>
+  </revision>
+  <revision rev="90" vrev="1">
+    <srcmd5>0dcfcc1043c52a263aba9cfafa954d3b</srcmd5>
+    <version>3.60</version>
+    <time>1392797425</time>
+    <user>coolo</user>
+    <comment>- update to version 3.60:
+  * bugfix previous change
+
+- man-pages 3.59:
+  * Convert pages contain non-ASCII in source code comments to use
+    UTF-8
+
+- update to version 3.58
+  * Document the pipe2() O_DIRECT
+  * Document PACKET_QDISC_BYPASS 
+  * etc. see Changes for details</comment>
+    <requestid>222734</requestid>
+  </revision>
+  <revision rev="91" vrev="1">
+    <srcmd5>35ae02fc6225ac1bf9413957eb38baf0</srcmd5>
+    <version>3.61</version>
+    <time>1393568657</time>
+    <user>coolo</user>
+    <comment>- update to version 3.61:
+  * added notes on thread-safety to various manual pages
+  * see Changes for details</comment>
+    <requestid>224044</requestid>
+  </revision>
+  <revision rev="92" vrev="1">
+    <srcmd5>deff48ede25cf9c5ec9740dba944cbff</srcmd5>
+    <version>3.62</version>
+    <time>1395147328</time>
+    <user>coolo</user>
+    <comment>man-pages 3.62 (forwarded request 226057 from AndreasStieger)</comment>
+    <requestid>226348</requestid>
+  </revision>
+  <revision rev="93" vrev="1">
+    <srcmd5>1a41ee8fba99e8800c2e88481486ab36</srcmd5>
+    <version>3.63</version>
+    <time>1395295617</time>
+    <user>coolo</user>
+    <comment>- update to version 3.63:
+  * new and rewritten pages:
+    - duplocale.3, newlocale.3, towlower.3, towupper.3, uselocale.3
+  * for more information, see Changes</comment>
+    <requestid>226664</requestid>
+  </revision>
+  <revision rev="94" vrev="1">
+    <srcmd5>d254ef627077c6e9c6c33700f30a26aa</srcmd5>
+    <version>3.64</version>
+    <time>1396989436</time>
+    <user>coolo</user>
+    <comment>- update to version 3.64:
+  * new and rewritten pages: 
+     + open_by_handle_at.2 
+     +inotify.7
+  * newly documented interfaces in existing pages:
+     + PERF_FLAG_FD_CLOEXEC flag (perf_event_open.2)
+     + Document _LARGEFILE_SOURCE (feature_test_macros.7) 
+  * see Changes for details</comment>
+    <requestid>229234</requestid>
+  </revision>
+  <revision rev="95" vrev="2">
+    <srcmd5>ec0117b71361d62dff0a5e991b22f7dd</srcmd5>
+    <version>3.64</version>
+    <time>1397387725</time>
+    <user>coolo</user>
+    <comment>- complete description of /proc/[pid]/smaps fields 
+  *  [bnc#782157] (internal)
+  * added proc.5.patch</comment>
+    <requestid>229712</requestid>
+  </revision>
+  <revision rev="96" vrev="3">
+    <srcmd5>2126d0e52456a5a1002e2dd85e8fa0e2</srcmd5>
+    <version>3.64</version>
+    <time>1397736506</time>
+    <user>scarabeus_factory</user>
+    <comment>- package getent.1 [bnc#873645]</comment>
+    <requestid>230282</requestid>
+  </revision>
+  <revision rev="97" vrev="1">
+    <srcmd5>3dc10ac4637d914c4c31069de12d333a</srcmd5>
+    <version>3.65</version>
+    <time>1398174430</time>
+    <user>coolo</user>
+    <comment>- update to version 3.65:
+  * new and rewritten pages: 
+     inet_net_pton.3
+  * newly documented interfaces in existing pages
+     fallocate.2: Document FALLOC_FL_COLLAPSE_RANGE
+     prctl.2: Document PR_SET_THP_DISABLE and PR_GET_THP_DISABLE
+     proc.5: Document /proc/[pid]/stack
+             Document /proc/[pid]/clear_refs
+- dropped proc.5.patch (upstreamed)</comment>
+    <requestid>230987</requestid>
+  </revision>
+  <revision rev="98" vrev="1">
+    <srcmd5>5c4dfee7d4037a473d02b1c8e5066029</srcmd5>
+    <version>3.66</version>
+    <time>1400055968</time>
+    <user>coolo</user>
+    <comment>- removed obsoleted man-pages-addons
+
+- man-pages 3.66
+- New and rewritten pages:
+  fanotify_init.2
+  fanotify_mark.2
+  sched_setscheduler.2
+  fanotify.7
+  sched.7
+- Newly documented interfaces in existing pages:
+  * fallocate.2 FALLOC_FL_ZERO_RANGE
+  * rename.2 renameat2()
+  * shmop.2 SHM_EXEC
+- Further updates to individual pages, see Changes for details</comment>
+    <requestid>233560</requestid>
+  </revision>
+  <revision rev="99" vrev="1">
+    <srcmd5>60df4e411841e2acfaf8cbfd00636452</srcmd5>
+    <version>3.67</version>
+    <time>1401126789</time>
+    <user>coolo</user>
+    <comment>man-pages 3.67 (forwarded request 235051 from AndreasStieger)</comment>
+    <requestid>235341</requestid>
+  </revision>
+  <revision rev="100" vrev="1">
+    <srcmd5>a70973af44e07bee709700853b948609</srcmd5>
+    <version>3.69</version>
+    <time>1403689638</time>
+    <user>coolo</user>
+    <comment>Accept together with new glibc package, otherwise you will get file conflicts on locale.1, localedef.1 and iconvconfig.8.</comment>
+    <requestid>238368</requestid>
+  </revision>
+  <revision rev="101" vrev="3">
+    <srcmd5>a70973af44e07bee709700853b948609</srcmd5>
+    <version>3.69</version>
+    <time>1409301853</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="102" vrev="1">
+    <srcmd5>8ef035f1e4ece34926421c2625eb667f</srcmd5>
+    <version>3.74</version>
+    <time>1413382781</time>
+    <user>coolo</user>
+    <comment>- remove ioctl_list (2) reference from ioctl.2 man page [bnc#900141]
+  * man-pages-remove-ioctl_list-reference.patch
+
+- update to 3.74:
+  - new and rewritten pages
+    * pldd.1, cp1252.7
+  - newly documented interfaces in existing pages
+    * mq_overview.7: /proc/sys/fs/mqueue/msgsize_default
+                     /proc/sys/fs/mqueue/msg_default
+
+- update to 3.73:
+  - new and rewritten pages
+    * namespaces.7, pid_namespaces.7, user_namespaces.7
+  - newly documented interfaces in existing pages
+    * clone.2: Document CLONE_NEWUSER for creating a new user namespace
+    * setns.2: Document the PID, user, and mount namespace support
+    * unshare.2: Document CLONE_NEWPID, CLONE_NEWUSER, CLONE_THREAD, 
+                 CLONE_SIGHAND, and CLONE_VM
+  - see Changes for details
+
+- update to 3.72:
+  - new and rewritten pages:
+    * memusage.1, memusagestat.1, mtrace.1
+   see Changes for details
+
+- man-pages 3.71:
+  - new and rewritten pages:
+    * group_member.3
+    * isfdtype.3
+  - see Changes for details</comment>
+    <requestid>255543</requestid>
+  </revision>
+  <revision rev="103" vrev="1">
+    <srcmd5>9499e7a2252c2f70d14aac52db5e96a1</srcmd5>
+    <version>3.75</version>
+    <time>1414613335</time>
+    <user>coolo</user>
+    <comment>- update to 3.75:
+  - new and rewritten pages
+    * pthread_rwlockattr_setkind_np.3
+  - see Changes for details</comment>
+    <requestid>258061</requestid>
+  </revision>
+  <revision rev="104" vrev="1">
+    <srcmd5>0ef99479fcc6884968210edb51da6fe7</srcmd5>
+    <version>3.76</version>
+    <time>1420429461</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.76:
+  - new and rewritten pages
+    * adjtimex.2, sigreturn.2
+  - newly documented interfaces in existing pages
+    * proc.5
+        Document /proc/thread-self
+        Document &quot;VmSwap&quot; field of /proc/[pid]/status
+        Document /proc/net/netfilter/nfnetlink_queue</comment>
+    <requestid>267014</requestid>
+  </revision>
+  <revision rev="105" vrev="1">
+    <srcmd5>6f214cc53d1bc351bff5037eb47e4535</srcmd5>
+    <version>3.77</version>
+    <time>1421959681</time>
+    <user>dimstar_suse</user>
+    <comment>- add info to return value of adjtimex() [bnc#910082](internal)
+  + man-pages-adjtimex.2.patch
+
+- update to 3.77:
+  - new or rewritten pages:
+    * seccomp.2
+  - newly documented interfaces in existing pages
+    * netlink.7:
+        Add NETLINK_CRYPTO</comment>
+    <requestid>281511</requestid>
+  </revision>
+  <revision rev="106" vrev="1">
+    <srcmd5>9d8442224c3d6a3afa9baa275d9c039f</srcmd5>
+    <version>3.78</version>
+    <time>1422790147</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>283429</requestid>
+  </revision>
+  <revision rev="107" vrev="1">
+    <srcmd5>f2d60a02bcdacc98a37a7b0a2485e4d7</srcmd5>
+    <version>3.79</version>
+    <time>1423216182</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.79:
+  - new and rewritten pages
+    * getrandom.2, kexec_load.2
+  - etc., see Changes for details</comment>
+    <requestid>283727</requestid>
+  </revision>
+  <revision rev="108" vrev="1">
+    <srcmd5>5697030c785a798eb6681c21074290bc</srcmd5>
+    <version>3.80</version>
+    <time>1425031758</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.80:
+  - new and rewritten pages
+    * ioctl_fat.2, madvise.2
+  - newly documented interfaces in existing pages
+    * proc.5
+        (Briefly) document /proc/PID/attr/socketcreate
+        (Briefly) document /proc/PID/attr/keycreate
+        Document /proc/PID/attr/{current,exec,fscreate,prev}
+        Document /proc/sys/kernel/auto_msgmni
+    * socket.7
+        Document SO_REUSEPORT socket option</comment>
+    <requestid>287283</requestid>
+  </revision>
+  <revision rev="109" vrev="1">
+    <srcmd5>d482da7f24c01f535315ed003b8c7e53</srcmd5>
+    <version>3.81</version>
+    <time>1425566022</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.81:
+  - new and rewritten pages
+     * attributes.7
+  - global changes
+     * Reformat existing thread-safety information to use a
+       tabular format, rather than plain text.</comment>
+    <requestid>288562</requestid>
+  </revision>
+  <revision rev="110" vrev="1">
+    <srcmd5>c76e854072b91326aa6688f425cc243f</srcmd5>
+    <version>3.82</version>
+    <time>1428651976</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>294709</requestid>
+  </revision>
+  <revision rev="111" vrev="1">
+    <srcmd5>5ba0a0608e42329f835d2d0ecd14840c</srcmd5>
+    <version>3.83</version>
+    <time>1429658145</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.83:
+  - new and rewritten pages
+    * posix_madvise.3
+    * ftw.3
+  - newly documented interfaces in existing pages
+    * getdents.2
+        Document getdents64()
+    * mount.2
+        Document MS_LAZYTIME
+    * proc.5
+        Document /proc/sys/kernel/randomize_va_space
+        Document /proc/PID/fdinfo epoll format
+        Describe /proc/PID/fdinfo eventfd format
+        Document /proc/PID/fdinfo signalfd format</comment>
+    <requestid>298120</requestid>
+  </revision>
+  <revision rev="112" vrev="1">
+    <srcmd5>5714753531a406695dea86d172c0b58e</srcmd5>
+    <version>4.00</version>
+    <time>1431676448</time>
+    <user>coolo</user>
+    <comment>- update to 4.00:
+  - new and rewritten pages
+    * get_phys_pages.3
+    * loop.4
+    * xattr.7
+  - newly documented interfaces in existing pages
+    * mmap.2
+        Document MAP_HUGE_2MB, MAP_HUGE_1GB, and MAP_HUGE_SHIFT
+    * shmget.2
+        Document SHM_HUGE_2MB, SHM_HUGE_1GB, and SHM_HUGE_SHIFT
+    * resolver.3
+        Add descriptions of some other resolver functions
+            Add res_ninit(), res_nquery(), res_nsearch(),
+            and res_nquerydomain(), res_nmkquery(), res_nsend().
+    * tty_ioctl.4
+        Document TIOCMIWAIT and TIOCGICOUNT
+        Document TIOCGEXCL
+        Document TIOGCPKT
+        Document TIOCSPTLCK
+        Document TIOCGPTLCK</comment>
+    <requestid>305730</requestid>
+  </revision>
+  <revision rev="113" vrev="1">
+    <srcmd5>b2449828abb382a0106276584c71c367</srcmd5>
+    <version>4.01</version>
+    <time>1438899429</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>320094</requestid>
+  </revision>
+  <revision rev="114" vrev="1">
+    <srcmd5>36d3cdfcd6dc297209043d3c85b932af</srcmd5>
+    <version>4.02</version>
+    <time>1439274303</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.02:
+  - new and rewritten pages
+    * dladdr.3
+    * dlerror.3
+    * dlinfo.3
+    * dlopen.3
+    * dlsysm.3
+  - newly documented interfaces in existing pages
+    * dlopen.3
+        Document dlmopen(3)
+    * nl_langinfo.3
+        Add documentation for nl_langinfo_l(3)
+    * __ppc_set_ppr_med.3
+        Document PPC functions providing access to PPR
+    * __ppc_yield.3
+        Document PPC performance-hint functions</comment>
+    <requestid>321542</requestid>
+  </revision>
+  <revision rev="115" vrev="1">
+    <srcmd5>3861838c9113083bfe3778c446840be5</srcmd5>
+    <version>4.03</version>
+    <time>1449995885</time>
+    <user>coolo</user>
+    <comment>- update to 4.03:
+  - newly documented interfaces in existing pages
+    *  perf_event_open.2
+        4.1 adds AUX sample support
+        4.1 data_offset and data_size fields
+        Document aux_{head,tail,offset,size} support
+        4.0 update rdpmc documentation
+        4.1 adds PERF_RECORD_ITRACE_START
+        Document 4.1 clockid support
+        4.1 PERF_EVENT_IOC_SET_BPF support
+        4.1 adds AUX_FLAG_OVERWRITE support
+        4.1 PERF_SAMPLE_BRANCH_CALL_STACK
+        4.1 adds aux_watermark
+        Add possibility of EBUSY error
+    * prctl.2
+        Document operations for ambient capabilities
+        Rework PR_CAP_AMBIENT text
+        Note that arg4 and arg5 must be zero for CAP_AMBIENT
+        RETURN VALUE: Add PR_CAP_AMBIENT + PR_CAP_AMBIENT_IS_SET case
+        ERRORS: document PR_CAP_AMBIENT error cases
+    * __ppc_set_ppr_med.3
+        Document PPC functions providing access to PPR
+            GNU C Library commit 1747fcda4902a3b46183d93fb16ed9b436b2608b
+            extends the priorities that can be set to the Program Priority
+            Register (PPR), with the functions: __ppc_set_ppr_very_low(3)
+            and __ppc_set_ppr_med_high(3).
+    * capabilities.7
+        Document ambient capabilities
+        Various additions and reworkings for ambient capability text</comment>
+    <requestid>347707</requestid>
+  </revision>
+  <revision rev="116" vrev="1">
+    <srcmd5>352fe4598adc2dc522aca6caa284c42d</srcmd5>
+    <version>4.04</version>
+    <time>1452850788</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>353000</requestid>
+  </revision>
+  <revision rev="117" vrev="2">
+    <srcmd5>095b463d342e7f39b03f8d5087c2b000</srcmd5>
+    <version>4.04</version>
+    <time>1456924742</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>362876</requestid>
+  </revision>
+  <revision rev="118" vrev="1">
+    <srcmd5>bb3c222f3a35e0006ce781e9c56aaf6f</srcmd5>
+    <version>4.05</version>
+    <time>1459001337</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.05:
+  * new and rewritten pages
+    + copy_file_range.2
+    + personality.2
+    + fmemopen.3
+    + ntp_gettime.3
+    + open_memstream.3
+    + posix_spawn.3
+    + readdir.3
+    + readdir_r.3
+    + lirc.4
+  * newly documented interfaces in existing pages
+    + adjtimex.2
+        Document ntp_adjtime(3)
+    + epoll_ctl.2
+        Document EPOLLEXCLUSIVE
+    + madvise.2
+        Document MADV_FREE
+    + +proc.5
+        Document CmaTotal and CmaFree fields of /proc/meminfo
+        Document additional /proc/meminfo fields
+            Document DirectMap4k, DirectMap4M, DirectMap2M, DirectMap1G
+        Document MemAvailable /proc/meminfo field
+        Document inotify /proc/PID/fdinfo entries
+        Document fanotify /proc/PID/fdinfo entries
+        Add some kernel version numbers for /proc/PID/fdinfo entries
+        /proc/PID/fdinfo displays the setting of the close-on-exec flag
+    socket.7
+        Document some BPF-related socket options
+- removed upstreamed patches</comment>
+    <requestid>373125</requestid>
+  </revision>
+  <revision rev="119" vrev="1">
+    <srcmd5>8b338749c18572ff0d5c67aeeaa12f29</srcmd5>
+    <version>4.06</version>
+    <time>1463392877</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.06:
+  * New and rewritten pages
+    cgroups.7
+    cgroup_namespaces.7
+  * Newly documented interfaces in existing pages
+    clone.2
+        Document CLONE_NEWCGROUP
+    readv.2
+        Document preadv2() and pwritev2()
+    setns.2
+        Document CLONE_NEWCGROUP
+    unshare.2
+        Document CLONE_NEWCGROUP</comment>
+    <requestid>394762</requestid>
+  </revision>
+  <revision rev="120" vrev="1">
+    <srcmd5>cc7aa4b25e796de855f12e587f8e17db</srcmd5>
+    <version>4.07</version>
+    <time>1470773634</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.07:
+  * New and rewritten pages
+    ioctl_fideduperange.2
+    ioctl_ficlonerange.2
+    nextup.3
+    mount_namespaces.7
+  * Newly documented interfaces in existing pages
+    mount.2
+        Document flags used to set propagation type
+            Document MS_SHARED, MS_PRIVATE, MS_SLAVE, and MS_UNBINDABLE.
+        Document the MS_REC flag
+    ptrace.2
+        Document ptrace access modes
+    proc.5
+        Document /proc/[pid]/timerslack_ns
+        Document /proc/PID/status 'Ngid' field
+        Document /proc/PID/status fields: 'NStgid', 'NSpid', 'NSpgid', 'NSsid'
+        Document /proc/PID/status 'Umask' field</comment>
+    <requestid>416331</requestid>
+  </revision>
+  <revision rev="121" vrev="1">
+    <srcmd5>edae8b1bec31f6d59857d2566df4bd40</srcmd5>
+    <version>4.09</version>
+    <time>1481708907</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.09:
+  * New and rewritten pages
+    pkey_alloc.2
+    pthread_getattr_default_np.3
+    strfromd.3
+    fuse.4
+    tmpfs.5
+    pkeys.7
+    random.7
+    sock_diag.7
+    close.2
+    getpriority.2
+    nice.2
+    timer_create.2
+    timerfd_create.2
+    random.4
+    elf.5
+    proc.5
+    sched.7
+  * Newly documented interfaces in existing pages
+    mmap.2
+        Add (much) more detail on MAP_GROWSDOWN
+    mprotect.2
+        Document the new pkey_mprotect() system call
+        Document PROT_SEM, PROT_SAO, PROT_GROWSUP, and PROT_GROWSDOWN
+    prctl.2
+        Document PR_SET_FP_MODE and PR_GET_FP_MODE
+    perf_event_open.2
+        PERF_RECORD_SWITCH support
+        Add PERF_SAMPLE_BRANCH_CALL branch sample type</comment>
+    <requestid>445410</requestid>
+  </revision>
+  <revision rev="122" vrev="1">
+    <srcmd5>5d97a989beaa3e2034af7ffffaed8571</srcmd5>
+    <version>4.11</version>
+    <time>1495010783</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.11:
+  * New and rewritten pages
+    ioctl_userfaultfd.2
+    statx.2
+    userfaultfd.2
+    pthread_atfork.3
+    slabinfo.5
+    inode.7
+  * Renamed pages
+    ioctl_console.2 (from console_ioctl.4)
+    ioctl_tty.2 (from tty_ioctl.4)
+  * Newly documented interfaces in existing page
+     ioctl_ns.2
+        Document the NS_GET_NSTYPE operation added in Linux 4.11
+        Document the NS_GET_OWNER_UID operation added in Linux 4.11
+     proc.5
+        Document /proc/sys/kernel/sched_child_runs_first
+  * see Changes for details; for 4.10 changes, see Changes.old
+  * do not package explicit_bzero.3 .so link to bzero.3</comment>
+    <requestid>493688</requestid>
+  </revision>
+  <revision rev="123" vrev="1">
+    <srcmd5>f0a740f67b5b5b4a8af9209c57956997</srcmd5>
+    <version>4.12</version>
+    <time>1502559681</time>
+    <user>maxlin_factory</user>
+    <comment>- update to 4.12:
+  * Newly documented interfaces in existing page
+      namespaces.7
+        Document the /proc/[pid]/ns/pid_for_children file
+  * see Changes for details</comment>
+    <requestid>514843</requestid>
+  </revision>
+  <revision rev="124" vrev="1">
+    <srcmd5>b47accb719e6a1faf6e54dd113130327</srcmd5>
+    <version>4.13</version>
+    <time>1505757075</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.13:
+  see Changes for upstream change log</comment>
+    <requestid>526403</requestid>
+  </revision>
+  <revision rev="125" vrev="1">
+    <srcmd5>56cc3ed4cabbc9fdf7e7d9d89c811b1c</srcmd5>
+    <version>4.14</version>
+    <time>1512433661</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.14:
+  * new or rewritten pages:
+    pthread_spin_init.3, pthread_spin_lock.3, smartpqi.4,
+    veth.4
+  * removed pages: 
+    infnan.3
+- see Changes for detailed upstream change log</comment>
+    <requestid>545829</requestid>
+  </revision>
+  <revision rev="126" vrev="1">
+    <srcmd5>48f2a66e909a41abc8476411ba65e7f3</srcmd5>
+    <version>4.16</version>
+    <time>1525779106</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.16:
+  * new and rewritten pages:
+    s390_sthyi.2, network_namespaces.7, vsock.7
+  * newly documented interfaces:
+    cgroups.7
+        Document cgroups v2 &quot;thread mode&quot;
+        Document cgroup v2 delegation via the 'nsdelegate' mount 
+                 option
+        Document the cgroup.max.depth and cgroup.max.descendants
+                 files
+        Document 'release_agent' mount option
+        Document /sys/kernel/cgroup/delegate
+        Document /sys/kernel/cgroup/features
+        Document cgroups v2 cgroup.stat file
+    membarrier.2
+        Document new membarrier commands introduced in Linux 4.16
+            Document the following membarrier commands introduced
+            in Linux 4.16:
+                MEMBARRIER_CMD_GLOBAL_EXPEDITED
+                MEMBARRIER_CMD_REGISTER_GLOBAL_EXPEDITED
+                MEMBARRIER_CMD_PRIVATE_EXPEDITED_SYNC_CORE
+                MEMBARRIER_CMD_REGISTER_PRIVATE_EXPEDITED_SYNC_CORE
+    mmap.2
+        Add description of MAP_SHARED_VALIDATE and MAP_SYNC
+        Document new MAP_FIXED_NOREPLACE flag
+            4.17+ kernels offer a new MAP_FIXED_NOREPLACE flag which
+            allows the caller to atomically probe for a given address
+            range.
+    readv.2
+    io_submit.2</comment>
+    <requestid>603939</requestid>
+  </revision>
+  <revision rev="127" vrev="2">
+    <srcmd5>d02329f78a3497626cd7f620515d297c</srcmd5>
+    <version>4.16</version>
+    <time>1547211629</time>
+    <user>dimstar_suse</user>
+    <comment>- supplements man [bsc#1116987]</comment>
+    <requestid>662802</requestid>
+  </revision>
+  <revision rev="128" vrev="1">
+    <srcmd5>ce8158abff2d82aa69ed1fa7c53f18cf</srcmd5>
+    <version>5.00</version>
+    <time>1552380439</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.00:
+  * new or rewritten pages:
+    s390_guarded_storage.2 
+    address_families.7
+    bpf-helpers.7
+  * newly documented interfaces:
+    fanotify_init.2
+    fanotify.7
+        Document FAN_REPORT_TID
+            fanotify_init.2: add new flag FAN_REPORT_TID
+            fanotify.7: update description of member pid in
+                struct fanotify_event_metadata
+        Document FAN_MARK_FILESYSTEM
+            Monitor fanotify events on the entire filesystem.
+        Document FAN_OPEN_EXEC and FAN_OPEN_EXEC_PERM
+    io_submit.2
+        Document IOCB_FLAG_IOPRIO
+    msgctl.2
+    semctl.2
+    shmctl.2
+        Document STAT_ANY commands
+    prctl.2
+        Document PR_SET_SPECULATION_CTRL and PR_GET_SPECULATION_CTRL
+    sched_setattr.2
+        Document SCHED_FLAG_DL_OVERRUN and SCHED_FLAG_RECLAIM
+    socket.2
+        Document AF_XDP
+            Document AF_XDP added in Linux 4.18.
+    inotify.7
+        Document IN_MASK_CREATE</comment>
+    <requestid>682446</requestid>
+  </revision>
+  <revision rev="129" vrev="1">
+    <srcmd5>4765bff2c4bfe38511bf917f40b73ff5</srcmd5>
+    <version>5.01</version>
+    <time>1558036534</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 5.01
+  * Newly documented interfaces in existing pages
+    tsearch.3
+      Document the twalk_r() function added in glibc 2.30
+  * see Changes for more details</comment>
+    <requestid>701801</requestid>
+  </revision>
+  <revision rev="130" vrev="1">
+    <srcmd5>17f635957e57c479c1886937641fec12</srcmd5>
+    <version>5.02</version>
+    <time>1565179138</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 5.02
+  * Newly documented interfaces in existing pages
+    fanotify.7
+    fanotify_init.2
+    fanotify_mark.2
+        Matthew Bobrowski  [Amir Goldstein, Jan Kara]
+            Document FAN_REPORT_FID and directory modification events
+    vdso.7
+        Tobias Klauser  [Palmer Dabbelt]
+            Document vDSO for RISCV
+   * see Changes for more details</comment>
+    <requestid>720567</requestid>
+  </revision>
+  <revision rev="131" vrev="1">
+    <srcmd5>3e2de23d5f02c794f67280da9c74d8e1</srcmd5>
+    <version>5.03</version>
+    <time>1571307427</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 5.03
+  * New and rewritten pages
+    pidfd_open.2
+    pidfd_send_signal.2
+    pivot_root.2
+    ipc_namespaces.7
+    uts_namespaces.7
+  * Newly documented interfaces in existing pages
+    clone.2
+        Document CLONE_PIDFD
+    fanotify_mark.2
+        Document FAN_MOVE_SELF
+    ptrace.2
+        Document PTRACE_GET_SYSCALL_INFO
+    regex.3
+        Document REG_STARTEND
+  * see Changes for other changes</comment>
+    <requestid>738175</requestid>
+  </revision>
+  <revision rev="132" vrev="2">
+    <srcmd5>efcdfc79713bfa6c13a97b6acbe97323</srcmd5>
+    <version>5.03</version>
+    <time>1572883258</time>
+    <user>dimstar_suse</user>
+    <comment>- tcp.7: correct documentation of tcp_fack, document tcp_recovery
+- added patches
+  [bsc#1154701]
+  + man-pages-tcp_fack.patch</comment>
+    <requestid>742829</requestid>
+  </revision>
+  <revision rev="133" vrev="1">
+    <srcmd5>f7e1106f0460102627b94e81d38fa348</srcmd5>
+    <version>5.04</version>
+    <time>1575282691</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>751218</requestid>
+  </revision>
+  <revision rev="134" vrev="2">
+    <srcmd5>e77346ef5027b37684116f47972ad17a</srcmd5>
+    <version>5.04</version>
+    <time>1576062208</time>
+    <user>dimstar_suse</user>
+    <comment>- Set up %{_mandir}/man7/man.7%{?ext_man} as an alternative for
+  the man-page specific document. The other package providing
+  this man page is mandoc, which is meant as an alternative
+  lightweight faster replacement for man-pages package. It does
+  not have that many dependencies, it is written in C, see
+  http://mandoc.bsd.lv/ for more. (forwarded request 754656 from mcepl)</comment>
+    <requestid>754699</requestid>
+  </revision>
+  <revision rev="135" vrev="3">
+    <srcmd5>d8b2c83f16a5c90090e94b107fdd731f</srcmd5>
+    <version>5.04</version>
+    <time>1578867495</time>
+    <user>dimstar_suse</user>
+    <comment>- do not install man7/bpf-helpers.7 as it is already part of
+  bpftool package
+
+- don't use alternatives for man.7, just move it to a different directory
+  (boo#1160568)
+- use packageand to supplement the documentation pattern instead of
+  unconditionally hooking on man.</comment>
+    <requestid>762803</requestid>
+  </revision>
+  <revision rev="136" vrev="4">
+    <srcmd5>319ba8b85490324b188e2cd496781e55</srcmd5>
+    <version>5.04</version>
+    <time>1581278493</time>
+    <user>dimstar_suse</user>
+    <comment>- added patches
+  [bsc#1162464]
+  + man-pages-somaxconn-default-value.patch</comment>
+    <requestid>769510</requestid>
+  </revision>
+  <revision rev="137" vrev="1">
+    <srcmd5>f3ce48eb6b083e2591f59f15a402b8e8</srcmd5>
+    <version>5.05</version>
+    <time>1582206811</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>774804</requestid>
+  </revision>
+  <revision rev="138" vrev="1">
+    <srcmd5>bcf8a00dde5aed90e5b779a2eff721d2</srcmd5>
+    <version>5.06</version>
+    <time>1586973187</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 5.06
+  New and rewritten pages
+  -----------------------
+  * openat2.2
+  * pidfd_getfd.2
+  * select.2
+  * select_tut.2
+  * sysvipc.7
+  * time_namespaces.7
+  Newly documented interfaces in existing pages
+  ---------------------------------------------
+    arch_prctl.2
+        Add ARCH_SET_CPUID subcommand
+    clock_getres.2
+        Document CLOCK_TAI
+        Add CLOCK_REALTIME_ALARM and CLOCK_BOOTTIME_ALARM
+    prctl.2
+        Document PR_SETIO_FLUSHER/GET_IO_FLUSHER
+    setns.2
+        Document CLONE_NEWTIME
+    statx.2
+        Document STATX_ATTR_VERITY
+    unshare.2
+        Document CLONE_NEWTIME
+    socket.7
+        Add description of SO_SELECT_ERR_QUEUE
+        Document SO_TIMESTAMPNS
+  etc., see Changes</comment>
+    <requestid>793754</requestid>
+  </revision>
+  <revision rev="139" vrev="1">
+    <srcmd5>87201f5b5c2c3f804e70ea1b17f815aa</srcmd5>
+    <version>5.07</version>
+    <time>1591879386</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 5.07
+  New and rewritten pages
+  -----------------------
+  ioctl_fslabel.2
+          New page documenting filesystem get/set label ioctl(2) operations
+  Removed pages
+  -------------
+  ioctl_list.2
+          This page was first added more than 20 years ago. Since
+          that time it has seen hardly any update, and is by now
+          very much out of date, as reported by Heinrich Schuchardt
+          and confirmed by Eugene Syromyatnikov.
+  Newly documented interfaces in existing pages
+  ---------------------------------------------
+  adjtimex.2
+          Document clock_adjtime(2)
+  
+  clock_getres.2
+          Explain dynamic clocks
+  clone.2
+          Document the clone3() CLONE_INTO_CGROUP flag
+  mremap.2
+          Document MREMAP_DONTUNMAP
+  open.2
+          Document fs.protected_fifos and fs.protected_regular
+  prctl.2
+          Add PR_SPEC_INDIRECT_BRANCH for SPECULATION_CTRL prctls
+          Add PR_SPEC_DISABLE_NOEXEC for SPECULATION_CTRL prctls
+          Add PR_PAC_RESET_KEYS (arm64)
+  ptrace.2</comment>
+    <requestid>813102</requestid>
+  </revision>
+  <revision rev="140" vrev="2">
+    <srcmd5>f54674532a8f0d6cfaedffcbfc8b563b</srcmd5>
+    <version>5.07</version>
+    <time>1593620554</time>
+    <user>dimstar_suse</user>
+    <comment>- added patches
+  fix [bsc#1173382]
+  + man-pages-openat2.h-location.patch</comment>
+    <requestid>817898</requestid>
+  </revision>
+  <revision rev="141" vrev="1">
+    <srcmd5>9fc7fb582b5b82e01747566eefb5148d</srcmd5>
+    <version>5.08</version>
+    <time>1597519125</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 5.08
+  Newly documented interfaces in existing pages
+  ---------------------------------------------
+  prctl.2
+      Dave Martin
+          Add SVE prctls (arm64)
+              Add documentation for the the PR_SVE_SET_VL and PR_SVE_GET_VL
+              prctls added in Linux 4.15 for arm64.
+      Dave Martin  [Catalin Marinas]
+          Add tagged address ABI control prctls (arm64)
+              Add documentation for the the PR_SET_TAGGED_ADDR_CTRL and 
+              PR_GET_TAGGED_ADDR_CTRL prctls added in Linux 5.4 for arm64.
+  setns.2
+      Michael Kerrisk
+          Document the use of PID file descriptors with setns()
+              Starting with Linux 5.8, setns() can take a PID file descriptor as
+              an argument, and move the caller into or more of the namespaces of
+              the thread referred to by that descriptor.
+  capabilities.7
+      Michael Kerrisk
+          Document CAP_BPF
+      Michael Kerrisk
+          Add CAP_PERFMON
+  symlink.7
+      Aleksa Sarai
+          Document magic links more completely
+  etc. see Changes
+- modified patches
+  % man-pages-openat2.h-location.patch (refreshed)</comment>
+    <requestid>826284</requestid>
+  </revision>
+  <revision rev="142" vrev="1">
+    <srcmd5>cacb30ae4cddd448247cace653704fc9</srcmd5>
+    <version>5.09</version>
+    <time>1604702612</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 5.09
+  http://linux-man-pages.blogspot.com/2020/11/man-pages-509-is-released.html
+- modified patches
+  % man-pages-openat2.h-location.patch (refreshed)</comment>
+    <requestid>845372</requestid>
+  </revision>
+  <revision rev="143" vrev="1">
+    <srcmd5>3edf7e6a8bd95e7636734038f03e80f3</srcmd5>
+    <version>5.10</version>
+    <time>1609344671</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 5.10
+  * added documentation of the faccessat2() system call
+  * added a new subsection to the signal(7) manual page that provides
+    a &quot;big picture&quot; of what happens when a signal handler is executed
+- deleted patches
+  - man-pages-openat2.h-location.patch (upstreamed)</comment>
+    <requestid>858974</requestid>
+  </revision>
+  <revision rev="144" vrev="1">
+    <srcmd5>2f1c5509a33c9b6e48fb5826559e0fdc</srcmd5>
+    <version>5.11</version>
+    <time>1616598642</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 5.11
+  http://linux-man-pages.blogspot.com/2021/03/man-pages-511-is-released.html
+- modified patches
+  % man-pages-tty_ioctl.patch (refreshed)</comment>
+    <requestid>880505</requestid>
+  </revision>
+  <revision rev="145" vrev="1">
+    <srcmd5>af7ddfbfdc58959350843cd1a4ab2629</srcmd5>
+    <version>5.12</version>
+    <time>1624626035</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 5.12
+  http://linux-man-pages.blogspot.com/2021/06/man-pages-512-released.html
+- deleted patches
+  - man-pages-tty_ioctl.patch (upstreamed)</comment>
+    <requestid>901280</requestid>
+  </revision>
+  <revision rev="146" vrev="2">
+    <srcmd5>cd730dc7af66180321fffb02cbd20e7f</srcmd5>
+    <version>5.12</version>
+    <time>1628189270</time>
+    <user>dimstar_suse</user>
+    <comment>- do not package man5/motd.5, it is provided by pam package
+  [bsc#1188724]</comment>
+    <requestid>909932</requestid>
+  </revision>
+  <revision rev="147" vrev="1">
+    <srcmd5>0fd574657c6a521324c159a2e50c7a8e</srcmd5>
+    <version>5.13</version>
+    <time>1631129795</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 5.13 [bsc#1189908]
+  http://linux-man-pages.blogspot.com/2021/06/man-pages-512-released.html</comment>
+    <requestid>917211</requestid>
+  </revision>
+  <revision rev="148" vrev="1">
+    <srcmd5>a6cf5382ea127dd1ca9c34af2e77edd3</srcmd5>
+    <version>6.02</version>
+    <time>1672851032</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 6.00
+  * Updated manual pages and interface documentation
+  * Move definitions of types to separate pages in man2type/ and
+    man3type/.  Previously, they were spread (and duplicated) in other
+    pages, or in system_data_types.7 (with links in man3/).
+  * Add man3head/ for pages that document header files.
+  * Add man3const/ for pages that document constants.
+  * Improve consistency of man(7) source
+  * Manual pages sections:
+    * Title (.TH):
+    * Remove 5th argument to TH (middle-header).
+    * Specify &quot;Linux man-pages&quot; and the version in the 4th argument
+      (left-footer).
+  * Add the LIBRARY section.  This section standardizes a way to
+    document the library that provides a given interface.
+  * Add the CAVEATS section.  BUGS and NOTES were serving that purpose
+    before, but CAVEATS is more appropriate.
+  * Rename the CONFORMING TO section to STANDARDS for consistency with
+    other projects, such as the BSDs.
+  * SYNOPSIS:  Add the ISO C2X [[deprecated]] attribute for functions
+    that have been deprecated or removed.
+  * EXAMPLES:  Improve consistency of C source code.  Also, reduce the
+    number of warnings that several linting tools emit.
+  * COLOPHON:  Remove section (its purpose is now served by the title).
+- Update to version 6.01
+  * Updated interface documentation
+  * Manual pages' sections:
+    * Title (.TH):
+    * Remove the hardcoded date (TH 3rd argument), and replace it by a
+      placeholder that should be changed when creating the tarball.
+      This removes the need for a tstamp commit before each release.
+- Update to version 6.02
+  * Updated manual pages and interface documentation, noteable:
+    * copy_file_range.2: Fix wrong kernel version information
+    * process_madvise.2: Fix capability and ptrace requirements
+    * madvise.2: Update Transparent Huge Pages file/shmem documentation
+      for Linux 5.4+.
+  * Use correct letter case in manual page titles, instead of uppercase.
+  * Use \&quot; t comments when appropriate (Lintian needs this).
+  * SYNOPSIS:
+    * Add _Nullable for functions that receive NULL as a meaningful
+      input.
+    * Use VLA syntax to clarify the meaning of size parameters, rather
+      than hiding it in possibly-confusing text.
+    * Use [[noreturn]] instead of noreturn, which will be deprecated
+      soon.
+- Rebased man-pages-tcp_fack.patch
+- Added keyring and signed source (forwarded request 1045577 from susnux)</comment>
+    <requestid>1046140</requestid>
+  </revision>
+  <revision rev="149" vrev="1">
+    <srcmd5>f38b81f989e4dbc1d040b28325239623</srcmd5>
+    <version>6.04</version>
+    <time>1685632728</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 6.04:
+  * Newly documented interfaces in existing pages
+  * proc.5
+    KPF_PGTABLE                     (Linux 4.18)
+  * landlock.7
+    LANDLOCK_ACCESS_FS_REFER        (Linux 5.19)
+  * udp.7
+    UDP_GRO                         (Linux 5.0)
+    UDP_SEGMENT                     (Linux 4.18)
+  * Changes to individual pages (forwarded request 1089646 from dirkmueller)</comment>
+    <requestid>1089673</requestid>
+  </revision>
+  <revision rev="150" vrev="2">
+    <srcmd5>1a1db366799f1deb11423b2f9c2297ca</srcmd5>
+    <version>6.04</version>
+    <time>1695412182</time>
+    <user>anag+factory</user>
+    <comment>- [bsc#1185534]
+- jsc#SLE-16566 jsc#SLE-15188</comment>
+    <requestid>1112967</requestid>
+  </revision>
+  <revision rev="151" vrev="1">
+    <srcmd5>807b1199ef3c8139e7cf116c627af149</srcmd5>
+    <version>6.05.01</version>
+    <time>1699615730</time>
+    <user>anag+factory</user>
+    <comment>- update to 6.05.01:
+  * Ignore dot-dirs within $MANDIR
+
+              Add documentation for the the PR_SET_TAGGED_ADDR_CTRL and
+    s390_guarded_storage.2
+        Document cgroup v2 delegation via the 'nsdelegate' mount
+  * removed pages:
+    * unshare.2: Document CLONE_NEWPID, CLONE_NEWUSER, CLONE_THREAD,
+  * new and rewritten pages:
+- complete description of /proc/[pid]/smaps fields
+  * new and rewritten pages:
+     + open_by_handle_at.2
+     + Document _LARGEFILE_SOURCE (feature_test_macros.7)
+  * Document PACKET_QDISC_BYPASS
+- added fanotify_init.2, fanotify_mark.2, open_by_handle_at.2,
+  * Various pages that formerly lacked the information now have
+  * Peng Haitao has submitted patches to around 50 pages that note
+    functions that are thread-safe or thread-unsafe. For this
+    purpose, the man-pages add a new section, ATTRIBUTES, as
+    described in the man-pages(7) manual page. Peng Haitao's
+    substantial work is ongoing, and more pages will add this
+- update to 2.60 [#288732]
+- workaround in spec file: remove deprecated
+- Auto-Update to version
+- updated specfile
+- fix test
+- don't stop for missing man-pages present in system
+- no COPYING file in source anymore, adapt specfile
+- Rename ldpman to man-pages
+- ready for autobuild (forwarded request 1124364 from dirkmueller)</comment>
+    <requestid>1124374</requestid>
+  </revision>
+  <revision rev="152" vrev="2">
+    <srcmd5>f0c3ec381e4b4ace689c060c4f9170a7</srcmd5>
+    <version>6.05.01</version>
+    <time>1705255283</time>
+    <user>anag+factory</user>
+    <comment>- Do not remove bpf-helpers.7, as this is not provided by the bpftool
+  package any more. (forwarded request 1137719 from ailiopoulos)</comment>
+    <requestid>1138338</requestid>
+  </revision>
+  <revision rev="153" vrev="3">
+    <srcmd5>c6c0bbac0ea575ff2dd38edcb06dbc6b</srcmd5>
+    <version>6.05.01</version>
+    <time>1708866288</time>
+    <user>anag+factory</user>
+    <comment>- use %autosetup macro (forwarded request 1149825 from pgajdos)</comment>
+    <requestid>1149826</requestid>
+  </revision>
+  <revision rev="154" vrev="1">
+    <srcmd5>fe7e438edb7467678a5a085c7c3c566e</srcmd5>
+    <version>6.7</version>
+    <time>1711036804</time>
+    <user>anag+factory</user>
+    <comment>- version update to 6.7
+  New and rewritten pages
+  -----------------------
+  man3/
+          TIMEVAL_TO_TIMESPEC.3
+  Newly documented interfaces in existing pages
+  ---------------------------------------------
+  man2/
+          process_madvise.2
+                  process_madvise() glibc wrapper
+  New and changed links
+  ---------------------
+  man3/
+          TIMESPEC_TO_TIMEVAL.3           (TIMEVAL_TO_TIMESPEC(3))
+- modified patches
+  % man-pages_gai.conf-reference.patch (refreshed)</comment>
+    <requestid>1159803</requestid>
+  </revision>
+  <revision rev="155" vrev="1">
+    <srcmd5>a5bf112d196917bb39d4b0710f00abe8</srcmd5>
+    <version>6.8</version>
+    <time>1716309276</time>
+    <user>anag+factory</user>
+    <comment>- version update to 6.8
+  New and rewritten pages
+  -----------------------
+  man3type/
+          locale_t.3type
+          mbstate_t.3type
+          wchar_t.3type
+          wint_t.3type
+  Newly documented interfaces in existing pages
+  ---------------------------------------------
+  man2/
+          init_module.2
+                  MODULE_INIT_COMPRESS_FILE
+  
+          get_mempolicy.2
+          mbind.2
+          set_mempolicy.2
+                  MPOL_WEIGHTED_INTERLEAVE
+  
+          mount_setattr.2
+                  squashfs
+                  tmpfs
+                  cephfs
+                  hugetlbfs
+  man5/
+  man8/
+          proc.5
+                  subset
+  
+          elf.5</comment>
+    <requestid>1175310</requestid>
+  </revision>
+  <revision rev="156" vrev="1">
+    <srcmd5>df519c4ab8ebed974d6745fe5b7ef51c</srcmd5>
+    <version>6.9</version>
+    <time>1718645232</time>
+    <user>anag+factory</user>
+    <comment>- version update to 6.9
+  * Split several huge pages into smaller pages.
+  * Rename some ioctl_*(2) pages for consistency.
+  * new dir man2const/</comment>
+    <requestid>1181301</requestid>
+  </revision>
+  <revision rev="157" vrev="1">
+    <srcmd5>95e3653954e431f2be3797ac190f8284</srcmd5>
+    <version>6.9.1</version>
+    <time>1718743845</time>
+    <user>anag+factory</user>
+    <comment>- version update to 6.9.1
+  * remove broken .so link</comment>
+    <requestid>1181447</requestid>
+  </revision>
+</revisionlist>

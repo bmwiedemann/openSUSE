@@ -1,0 +1,4366 @@
+-------------------------------------------------------------------
+Tue Jun 18 09:28:18 UTC 2024 - pgajdos@suse.com
+
+- version update to 6.9.1
+  * remove broken .so link
+
+-------------------------------------------------------------------
+Mon Jun 17 10:24:06 UTC 2024 - pgajdos@suse.com
+
+- version update to 6.9
+  * Split several huge pages into smaller pages.
+  * Rename some ioctl_*(2) pages for consistency.
+  * new dir man2const/
+
+-------------------------------------------------------------------
+Mon May 20 07:13:02 UTC 2024 - pgajdos@suse.com
+
+- version update to 6.8
+  New and rewritten pages
+  -----------------------
+  man3type/
+          locale_t.3type
+          mbstate_t.3type
+          wchar_t.3type
+          wint_t.3type
+  Newly documented interfaces in existing pages
+  ---------------------------------------------
+  man2/
+          init_module.2
+                  MODULE_INIT_COMPRESS_FILE
+  
+          get_mempolicy.2
+          mbind.2
+          set_mempolicy.2
+                  MPOL_WEIGHTED_INTERLEAVE
+  
+          mount_setattr.2
+                  squashfs
+                  tmpfs
+                  cephfs
+                  hugetlbfs
+  man5/
+  man8/
+          proc.5
+                  subset
+  
+          elf.5
+          ld.so.8
+                  Updeprecate and explain DT_RPATH
+  man7/
+          string_copying.7
+                  strndup()
+
+-------------------------------------------------------------------
+Wed Mar 20 09:11:23 UTC 2024 - pgajdos@suse.com
+
+- version update to 6.7
+  New and rewritten pages
+  -----------------------
+  man3/
+          TIMEVAL_TO_TIMESPEC.3
+  Newly documented interfaces in existing pages
+  ---------------------------------------------
+  man2/
+          process_madvise.2
+                  process_madvise() glibc wrapper
+  New and changed links
+  ---------------------
+  man3/
+          TIMESPEC_TO_TIMEVAL.3           (TIMEVAL_TO_TIMESPEC(3))
+- modified patches
+  % man-pages_gai.conf-reference.patch (refreshed)
+
+-------------------------------------------------------------------
+Fri Feb 23 11:18:05 UTC 2024 - pgajdos@suse.com
+
+- use %autosetup macro
+
+-------------------------------------------------------------------
+Tue Jan  9 12:29:35 UTC 2024 - Anthony Iliopoulos <ailiop@suse.com>
+
+- Do not remove bpf-helpers.7, as this is not provided by the bpftool
+  package any more.
+
+-------------------------------------------------------------------
+Thu Nov  9 09:07:11 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.05.01:
+  * Ignore dot-dirs within $MANDIR
+
+-------------------------------------------------------------------
+Mon May 29 19:52:12 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.04:
+  * Newly documented interfaces in existing pages
+  * proc.5
+    KPF_PGTABLE                     (Linux 4.18)
+  * landlock.7
+    LANDLOCK_ACCESS_FS_REFER        (Linux 5.19)
+  * udp.7
+    UDP_GRO                         (Linux 5.0)
+    UDP_SEGMENT                     (Linux 4.18)
+  * Changes to individual pages
+
+-------------------------------------------------------------------
+Tue Dec 27 23:29:32 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 6.00
+  * Updated manual pages and interface documentation
+  * Move definitions of types to separate pages in man2type/ and
+    man3type/.  Previously, they were spread (and duplicated) in other
+    pages, or in system_data_types.7 (with links in man3/).
+  * Add man3head/ for pages that document header files.
+  * Add man3const/ for pages that document constants.
+  * Improve consistency of man(7) source
+  * Manual pages sections:
+    * Title (.TH):
+    * Remove 5th argument to TH (middle-header).
+    * Specify "Linux man-pages" and the version in the 4th argument
+      (left-footer).
+  * Add the LIBRARY section.  This section standardizes a way to
+    document the library that provides a given interface.
+  * Add the CAVEATS section.  BUGS and NOTES were serving that purpose
+    before, but CAVEATS is more appropriate.
+  * Rename the CONFORMING TO section to STANDARDS for consistency with
+    other projects, such as the BSDs.
+  * SYNOPSIS:  Add the ISO C2X [[deprecated]] attribute for functions
+    that have been deprecated or removed.
+  * EXAMPLES:  Improve consistency of C source code.  Also, reduce the
+    number of warnings that several linting tools emit.
+  * COLOPHON:  Remove section (its purpose is now served by the title).
+- Update to version 6.01
+  * Updated interface documentation
+  * Manual pages' sections:
+    * Title (.TH):
+    * Remove the hardcoded date (TH 3rd argument), and replace it by a
+      placeholder that should be changed when creating the tarball.
+      This removes the need for a tstamp commit before each release.
+- Update to version 6.02
+  * Updated manual pages and interface documentation, noteable:
+    * copy_file_range.2: Fix wrong kernel version information
+    * process_madvise.2: Fix capability and ptrace requirements
+    * madvise.2: Update Transparent Huge Pages file/shmem documentation
+      for Linux 5.4+.
+  * Use correct letter case in manual page titles, instead of uppercase.
+  * Use \" t comments when appropriate (Lintian needs this).
+  * SYNOPSIS:
+    * Add _Nullable for functions that receive NULL as a meaningful
+      input.
+    * Use VLA syntax to clarify the meaning of size parameters, rather
+      than hiding it in possibly-confusing text.
+    * Use [[noreturn]] instead of noreturn, which will be deprecated
+      soon.
+- Rebased man-pages-tcp_fack.patch
+- Added keyring and signed source
+
+-------------------------------------------------------------------
+Mon Sep  6 13:40:10 UTC 2021 - pgajdos@suse.com
+
+- version update to 5.13 [bsc#1189908]
+  http://linux-man-pages.blogspot.com/2021/06/man-pages-512-released.html
+
+-------------------------------------------------------------------
+Tue Aug  3 09:32:32 UTC 2021 - pgajdos@suse.com
+
+- do not package man5/motd.5, it is provided by pam package
+  [bsc#1188724]
+
+-------------------------------------------------------------------
+Tue Jun 22 06:30:59 UTC 2021 - pgajdos@suse.com
+
+- version update to 5.12
+  http://linux-man-pages.blogspot.com/2021/06/man-pages-512-released.html
+- deleted patches
+  - man-pages-tty_ioctl.patch (upstreamed)
+
+-------------------------------------------------------------------
+Mon Mar 22 11:06:52 UTC 2021 - pgajdos@suse.com
+
+- version update to 5.11
+  http://linux-man-pages.blogspot.com/2021/03/man-pages-511-is-released.html
+- modified patches
+  % man-pages-tty_ioctl.patch (refreshed)
+
+-------------------------------------------------------------------
+Mon Dec 28 09:11:48 UTC 2020 - pgajdos@suse.com
+
+- version update to 5.10
+  * added documentation of the faccessat2() system call
+  * added a new subsection to the signal(7) manual page that provides
+    a "big picture" of what happens when a signal handler is executed
+- deleted patches
+  - man-pages-openat2.h-location.patch (upstreamed)
+
+-------------------------------------------------------------------
+Mon Nov  2 08:57:55 UTC 2020 - pgajdos@suse.com
+
+- version update to 5.09
+  http://linux-man-pages.blogspot.com/2020/11/man-pages-509-is-released.html
+- modified patches
+  % man-pages-openat2.h-location.patch (refreshed)
+- [bsc#1185534]
+
+-------------------------------------------------------------------
+Thu Aug 13 12:46:18 UTC 2020 - pgajdos@suse.com
+
+- version update to 5.08
+  Newly documented interfaces in existing pages
+  ---------------------------------------------
+  prctl.2
+      Dave Martin
+          Add SVE prctls (arm64)
+              Add documentation for the the PR_SVE_SET_VL and PR_SVE_GET_VL
+              prctls added in Linux 4.15 for arm64.
+      Dave Martin  [Catalin Marinas]
+          Add tagged address ABI control prctls (arm64)
+              Add documentation for the the PR_SET_TAGGED_ADDR_CTRL and
+              PR_GET_TAGGED_ADDR_CTRL prctls added in Linux 5.4 for arm64.
+  setns.2
+      Michael Kerrisk
+          Document the use of PID file descriptors with setns()
+              Starting with Linux 5.8, setns() can take a PID file descriptor as
+              an argument, and move the caller into or more of the namespaces of
+              the thread referred to by that descriptor.
+  capabilities.7
+      Michael Kerrisk
+          Document CAP_BPF
+      Michael Kerrisk
+          Add CAP_PERFMON
+  symlink.7
+      Aleksa Sarai
+          Document magic links more completely
+  etc. see Changes
+- modified patches
+  % man-pages-openat2.h-location.patch (refreshed)
+
+-------------------------------------------------------------------
+Tue Jun 30 14:10:19 UTC 2020 - pgajdos@suse.com
+
+- added patches
+  fix [bsc#1173382]
+  + man-pages-openat2.h-location.patch
+
+-------------------------------------------------------------------
+Wed Jun 10 06:37:13 UTC 2020 - pgajdos@suse.com
+
+- version update to 5.07
+  New and rewritten pages
+  -----------------------
+  ioctl_fslabel.2
+          New page documenting filesystem get/set label ioctl(2) operations
+  Removed pages
+  -------------
+  ioctl_list.2
+          This page was first added more than 20 years ago. Since
+          that time it has seen hardly any update, and is by now
+          very much out of date, as reported by Heinrich Schuchardt
+          and confirmed by Eugene Syromyatnikov.
+  Newly documented interfaces in existing pages
+  ---------------------------------------------
+  adjtimex.2
+          Document clock_adjtime(2)
+
+  clock_getres.2
+          Explain dynamic clocks
+  clone.2
+          Document the clone3() CLONE_INTO_CGROUP flag
+  mremap.2
+          Document MREMAP_DONTUNMAP
+  open.2
+          Document fs.protected_fifos and fs.protected_regular
+  prctl.2
+          Add PR_SPEC_INDIRECT_BRANCH for SPECULATION_CTRL prctls
+          Add PR_SPEC_DISABLE_NOEXEC for SPECULATION_CTRL prctls
+          Add PR_PAC_RESET_KEYS (arm64)
+  ptrace.2
+          Document PTRACE_SET_SYSCALL
+  proc.5
+          Document /proc/sys/fs/protected_regular
+          Document /proc/sys/fs/protected_fifos
+          Document /proc/sys/fs/aio-max-nr and /proc/sys/fs/aio-nr
+- deleted patches
+  - man-pages-remove-ioctl_list-reference.patch (upstreamed)
+- jsc#SLE-16566 jsc#SLE-15188
+
+-------------------------------------------------------------------
+Tue Apr 14 07:52:12 UTC 2020 - pgajdos@suse.com
+
+- version update to 5.06
+  New and rewritten pages
+  -----------------------
+  * openat2.2
+  * pidfd_getfd.2
+  * select.2
+  * select_tut.2
+  * sysvipc.7
+  * time_namespaces.7
+  Newly documented interfaces in existing pages
+  ---------------------------------------------
+    arch_prctl.2
+        Add ARCH_SET_CPUID subcommand
+    clock_getres.2
+        Document CLOCK_TAI
+        Add CLOCK_REALTIME_ALARM and CLOCK_BOOTTIME_ALARM
+    prctl.2
+        Document PR_SETIO_FLUSHER/GET_IO_FLUSHER
+    setns.2
+        Document CLONE_NEWTIME
+    statx.2
+        Document STATX_ATTR_VERITY
+    unshare.2
+        Document CLONE_NEWTIME
+    socket.7
+        Add description of SO_SELECT_ERR_QUEUE
+        Document SO_TIMESTAMPNS
+  etc., see Changes
+
+-------------------------------------------------------------------
+Mon Feb 10 08:44:31 UTC 2020 - pgajdos@suse.com
+
+- version update to 5.05
+  * Newly documented interfaces in existing pages
+    clone.2
+        Add clone3() set_tid information
+        Document CLONE_CLEAR_SIGHAND
+    fcntl.2
+        Update manpage with new memfd F_SEAL_FUTURE_WRITE seal
+    memfd_create.2
+        Update manpage with new memfd F_SEAL_FUTURE_WRITE seal
+    loop.4
+        Document LOOP_SET_BLOCK_SIZE
+        Document LOOP_SET_DIRECT_IO
+    proc.5
+        Document /proc/sys/vm/unprivileged_userfaultfd
+- deleted patches
+  - man-pages-somaxconn-default-value.patch (upstreamed)
+
+-------------------------------------------------------------------
+Mon Feb  3 10:36:58 UTC 2020 - pgajdos@suse.com
+
+- added patches
+  [bsc#1162464]
+  + man-pages-somaxconn-default-value.patch
+
+-------------------------------------------------------------------
+Fri Jan 10 11:31:23 UTC 2020 - pgajdos@suse.com
+
+- do not install man7/bpf-helpers.7 as it is already part of
+  bpftool package
+
+-------------------------------------------------------------------
+Fri Jan 10 10:42:38 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- don't use alternatives for man.7, just move it to a different directory
+  (boo#1160568)
+- use packageand to supplement the documentation pattern instead of
+  unconditionally hooking on man.
+
+-------------------------------------------------------------------
+Wed Dec  4 22:09:23 CET 2019 - Matej Cepl <mcepl@suse.com>
+
+- Set up %{_mandir}/man7/man.7%{?ext_man} as an alternative for
+  the man-page specific document. The other package providing
+  this man page is mandoc, which is meant as an alternative
+  lightweight faster replacement for man-pages package. It does
+  not have that many dependencies, it is written in C, see
+  http://mandoc.bsd.lv/ for more.
+
+-------------------------------------------------------------------
+Wed Nov 20 08:13:59 UTC 2019 - pgajdos@suse.com
+
+- version update to 5.04
+  * clone.2
+        Document clone3()
+  * wait.2
+        Add P_PIDFD for waiting on a child referred to by a PID file descriptor
+  * bpf-helpers.7
+        Refresh against kernel v5.4-rc7
+  * see Changes for other changes
+
+-------------------------------------------------------------------
+Fri Oct 25 07:39:55 UTC 2019 - pgajdos@suse.com
+
+- tcp.7: correct documentation of tcp_fack, document tcp_recovery
+- added patches
+  [bsc#1154701]
+  + man-pages-tcp_fack.patch
+
+-------------------------------------------------------------------
+Mon Oct 14 06:47:17 UTC 2019 - pgajdos@suse.com
+
+- version update to 5.03
+  * New and rewritten pages
+    pidfd_open.2
+    pidfd_send_signal.2
+    pivot_root.2
+    ipc_namespaces.7
+    uts_namespaces.7
+  * Newly documented interfaces in existing pages
+    clone.2
+        Document CLONE_PIDFD
+    fanotify_mark.2
+        Document FAN_MOVE_SELF
+    ptrace.2
+        Document PTRACE_GET_SYSCALL_INFO
+    regex.3
+        Document REG_STARTEND
+  * see Changes for other changes
+
+-------------------------------------------------------------------
+Fri Aug  2 10:26:12 UTC 2019 - pgajdos@suse.com
+
+- version update to 5.02
+  * Newly documented interfaces in existing pages
+    fanotify.7
+    fanotify_init.2
+    fanotify_mark.2
+        Matthew Bobrowski  [Amir Goldstein, Jan Kara]
+            Document FAN_REPORT_FID and directory modification events
+    vdso.7
+        Tobias Klauser  [Palmer Dabbelt]
+            Document vDSO for RISCV
+   * see Changes for more details
+
+-------------------------------------------------------------------
+Thu May  9 13:08:34 UTC 2019 - pgajdos@suse.com
+
+- version update to 5.01
+  * Newly documented interfaces in existing pages
+    tsearch.3
+      Document the twalk_r() function added in glibc 2.30
+  * see Changes for more details
+
+-------------------------------------------------------------------
+Thu Mar  7 12:24:16 UTC 2019 - Petr Gajdos <pgajdos@suse.com>
+
+- update to 5.00:
+  * new or rewritten pages:
+    s390_guarded_storage.2
+    address_families.7
+    bpf-helpers.7
+  * newly documented interfaces:
+    fanotify_init.2
+    fanotify.7
+        Document FAN_REPORT_TID
+            fanotify_init.2: add new flag FAN_REPORT_TID
+            fanotify.7: update description of member pid in
+                struct fanotify_event_metadata
+        Document FAN_MARK_FILESYSTEM
+            Monitor fanotify events on the entire filesystem.
+        Document FAN_OPEN_EXEC and FAN_OPEN_EXEC_PERM
+    io_submit.2
+        Document IOCB_FLAG_IOPRIO
+    msgctl.2
+    semctl.2
+    shmctl.2
+        Document STAT_ANY commands
+    prctl.2
+        Document PR_SET_SPECULATION_CTRL and PR_GET_SPECULATION_CTRL
+    sched_setattr.2
+        Document SCHED_FLAG_DL_OVERRUN and SCHED_FLAG_RECLAIM
+    socket.2
+        Document AF_XDP
+            Document AF_XDP added in Linux 4.18.
+    inotify.7
+        Document IN_MASK_CREATE
+    unix.7
+        Document SO_PASSSEC
+        Document SCM_SECURITY ancillary data
+
+-------------------------------------------------------------------
+Fri Jan  4 13:09:01 UTC 2019 - Petr Gajdos <pgajdos@suse.com>
+
+- supplements man [bsc#1116987]
+
+-------------------------------------------------------------------
+Fri May  4 08:13:02 UTC 2018 - pgajdos@suse.com
+
+- update to 4.16:
+  * new and rewritten pages:
+    s390_sthyi.2, network_namespaces.7, vsock.7
+  * newly documented interfaces:
+    cgroups.7
+        Document cgroups v2 "thread mode"
+        Document cgroup v2 delegation via the 'nsdelegate' mount
+                 option
+        Document the cgroup.max.depth and cgroup.max.descendants
+                 files
+        Document 'release_agent' mount option
+        Document /sys/kernel/cgroup/delegate
+        Document /sys/kernel/cgroup/features
+        Document cgroups v2 cgroup.stat file
+    membarrier.2
+        Document new membarrier commands introduced in Linux 4.16
+            Document the following membarrier commands introduced
+            in Linux 4.16:
+                MEMBARRIER_CMD_GLOBAL_EXPEDITED
+                MEMBARRIER_CMD_REGISTER_GLOBAL_EXPEDITED
+                MEMBARRIER_CMD_PRIVATE_EXPEDITED_SYNC_CORE
+                MEMBARRIER_CMD_REGISTER_PRIVATE_EXPEDITED_SYNC_CORE
+    mmap.2
+        Add description of MAP_SHARED_VALIDATE and MAP_SYNC
+        Document new MAP_FIXED_NOREPLACE flag
+            4.17+ kernels offer a new MAP_FIXED_NOREPLACE flag which
+            allows the caller to atomically probe for a given address
+            range.
+    readv.2
+    io_submit.2
+        Document RWF_APPEND added in Linux 4.16
+    capabilities.7
+        Describe file capability versioning
+        Document namespaced-file capabilities
+- see Changes and Changes.old for detailed upstream change log
+
+-------------------------------------------------------------------
+Mon Nov 27 07:50:13 UTC 2017 - pgajdos@suse.com
+
+- update to 4.14:
+  * new or rewritten pages:
+    pthread_spin_init.3, pthread_spin_lock.3, smartpqi.4,
+    veth.4
+  * removed pages:
+    infnan.3
+- see Changes for detailed upstream change log
+
+-------------------------------------------------------------------
+Fri Sep 15 16:04:29 UTC 2017 - pgajdos@suse.com
+
+- update to 4.13:
+  see Changes for upstream change log
+
+-------------------------------------------------------------------
+Mon Aug  7 07:34:39 UTC 2017 - pgajdos@suse.com
+
+- update to 4.12:
+  * Newly documented interfaces in existing page
+      namespaces.7
+        Document the /proc/[pid]/ns/pid_for_children file
+  * see Changes for details
+
+-------------------------------------------------------------------
+Fri May  5 06:31:01 UTC 2017 - pgajdos@suse.com
+
+- update to 4.11:
+  * New and rewritten pages
+    ioctl_userfaultfd.2
+    statx.2
+    userfaultfd.2
+    pthread_atfork.3
+    slabinfo.5
+    inode.7
+  * Renamed pages
+    ioctl_console.2 (from console_ioctl.4)
+    ioctl_tty.2 (from tty_ioctl.4)
+  * Newly documented interfaces in existing page
+     ioctl_ns.2
+        Document the NS_GET_NSTYPE operation added in Linux 4.11
+        Document the NS_GET_OWNER_UID operation added in Linux 4.11
+     proc.5
+        Document /proc/sys/kernel/sched_child_runs_first
+  * see Changes for details; for 4.10 changes, see Changes.old
+  * do not package explicit_bzero.3 .so link to bzero.3
+
+-------------------------------------------------------------------
+Mon Dec 12 11:46:06 UTC 2016 - pgajdos@suse.com
+
+- update to 4.09:
+  * New and rewritten pages
+    pkey_alloc.2
+    pthread_getattr_default_np.3
+    strfromd.3
+    fuse.4
+    tmpfs.5
+    pkeys.7
+    random.7
+    sock_diag.7
+    close.2
+    getpriority.2
+    nice.2
+    timer_create.2
+    timerfd_create.2
+    random.4
+    elf.5
+    proc.5
+    sched.7
+  * Newly documented interfaces in existing pages
+    mmap.2
+        Add (much) more detail on MAP_GROWSDOWN
+    mprotect.2
+        Document the new pkey_mprotect() system call
+        Document PROT_SEM, PROT_SAO, PROT_GROWSUP, and PROT_GROWSDOWN
+    prctl.2
+        Document PR_SET_FP_MODE and PR_GET_FP_MODE
+    perf_event_open.2
+        PERF_RECORD_SWITCH support
+        Add PERF_SAMPLE_BRANCH_CALL branch sample type
+        PERF_SAMPLE_BRANCH_IND_JUMP branch_sample_type
+        Document PERF_RECORD_MISC_PROC_MAP_PARSE_TIMEOUT
+        Document sample_max_stack and /proc/sys/kernel/perf_event_max_stack
+        PERF_RECORD_LOST_SAMPLES record type
+    ptrace.2
+        Document PTRACE_SECCOMP_GET_FILTER
+        Document PTRACE_GET_THREAD_AREA and PTRACE_SET_THREAD_AREA
+    namespaces.7
+        Document the NS_GET_USERNS and NS_GET_PARENT ioctl() operations
+    sched.7
+        Document the autogroup feature
+        Autogrouping breaks traditional semantics of nice in many cases
+    Michael Kerrisk
+        Add a subsection on nice value and group scheduling
+
+-------------------------------------------------------------------
+Mon Oct 10 06:38:59 UTC 2016 - pgajdos@suse.com
+
+- update to 4.08:
+  * New and rewritten pages
+    quotactl.2
+    bswap.3
+    cgroups.7
+  * Newly documented interfaces in existing pages
+    readv.2
+        Document the pwritev2() RWF_SYNC  and RWF_DSYNC flags
+    proc.5
+        Document /proc/PID/seccomp
+        Document /proc/[pid]/task/[tid]/children
+            Document the /proc/[pid]/task/[tid]/children interface from
+            CRIU, and more importantly, document why it's usually not
+            a good interface.
+
+-------------------------------------------------------------------
+Mon Aug  1 07:37:35 UTC 2016 - pgajdos@suse.com
+
+- update to 4.07:
+  * New and rewritten pages
+    ioctl_fideduperange.2
+    ioctl_ficlonerange.2
+    nextup.3
+    mount_namespaces.7
+  * Newly documented interfaces in existing pages
+    mount.2
+        Document flags used to set propagation type
+            Document MS_SHARED, MS_PRIVATE, MS_SLAVE, and MS_UNBINDABLE.
+        Document the MS_REC flag
+    ptrace.2
+        Document ptrace access modes
+    proc.5
+        Document /proc/[pid]/timerslack_ns
+        Document /proc/PID/status 'Ngid' field
+        Document /proc/PID/status fields: 'NStgid', 'NSpid', 'NSpgid', 'NSsid'
+        Document /proc/PID/status 'Umask' field
+
+-------------------------------------------------------------------
+Wed May 11 07:19:18 UTC 2016 - pgajdos@suse.com
+
+- update to 4.06:
+  * New and rewritten pages
+    cgroups.7
+    cgroup_namespaces.7
+  * Newly documented interfaces in existing pages
+    clone.2
+        Document CLONE_NEWCGROUP
+    readv.2
+        Document preadv2() and pwritev2()
+    setns.2
+        Document CLONE_NEWCGROUP
+    unshare.2
+        Document CLONE_NEWCGROUP
+
+-------------------------------------------------------------------
+Tue Mar 15 09:11:08 UTC 2016 - pgajdos@suse.com
+
+- update to 4.05:
+  * new and rewritten pages
+    + copy_file_range.2
+    + personality.2
+    + fmemopen.3
+    + ntp_gettime.3
+    + open_memstream.3
+    + posix_spawn.3
+    + readdir.3
+    + readdir_r.3
+    + lirc.4
+  * newly documented interfaces in existing pages
+    + adjtimex.2
+        Document ntp_adjtime(3)
+    + epoll_ctl.2
+        Document EPOLLEXCLUSIVE
+    + madvise.2
+        Document MADV_FREE
+    + +proc.5
+        Document CmaTotal and CmaFree fields of /proc/meminfo
+        Document additional /proc/meminfo fields
+            Document DirectMap4k, DirectMap4M, DirectMap2M, DirectMap1G
+        Document MemAvailable /proc/meminfo field
+        Document inotify /proc/PID/fdinfo entries
+        Document fanotify /proc/PID/fdinfo entries
+        Add some kernel version numbers for /proc/PID/fdinfo entries
+        /proc/PID/fdinfo displays the setting of the close-on-exec flag
+    socket.7
+        Document some BPF-related socket options
+- removed upstreamed patches
+  * man-pages-adjtimex.2.patch
+  * man-pages-open-btrfs.patch
+
+-------------------------------------------------------------------
+Mon Feb 22 09:12:24 UTC 2016 - pgajdos@suse.com
+
+- open.2: O_TMPFILE support was added to btrfs [bsc#967488]
+  + man-pages-open-btrfs.patch
+
+-------------------------------------------------------------------
+Mon Jan  4 07:30:01 UTC 2016 - pgajdos@suse.com
+
+- update to 4.04:
+  * new and rewritten pages
+    + futex.2
+       Rewrite and massively expand page
+    + membarrier.2
+       New page documenting membarrier() system call
+  * newly documented interfaces in existing pages
+    + mlock.2
+       Document mlock2(2) and MCL_ONFAULT
+
+-------------------------------------------------------------------
+Mon Dec  7 07:22:59 UTC 2015 - pgajdos@suse.com
+
+- update to 4.03:
+  - newly documented interfaces in existing pages
+    *  perf_event_open.2
+        4.1 adds AUX sample support
+        4.1 data_offset and data_size fields
+        Document aux_{head,tail,offset,size} support
+        4.0 update rdpmc documentation
+        4.1 adds PERF_RECORD_ITRACE_START
+        Document 4.1 clockid support
+        4.1 PERF_EVENT_IOC_SET_BPF support
+        4.1 adds AUX_FLAG_OVERWRITE support
+        4.1 PERF_SAMPLE_BRANCH_CALL_STACK
+        4.1 adds aux_watermark
+        Add possibility of EBUSY error
+    * prctl.2
+        Document operations for ambient capabilities
+        Rework PR_CAP_AMBIENT text
+        Note that arg4 and arg5 must be zero for CAP_AMBIENT
+        RETURN VALUE: Add PR_CAP_AMBIENT + PR_CAP_AMBIENT_IS_SET case
+        ERRORS: document PR_CAP_AMBIENT error cases
+    * __ppc_set_ppr_med.3
+        Document PPC functions providing access to PPR
+            GNU C Library commit 1747fcda4902a3b46183d93fb16ed9b436b2608b
+            extends the priorities that can be set to the Program Priority
+            Register (PPR), with the functions: __ppc_set_ppr_very_low(3)
+            and __ppc_set_ppr_med_high(3).
+    * capabilities.7
+        Document ambient capabilities
+        Various additions and reworkings for ambient capability text
+
+-------------------------------------------------------------------
+Mon Aug 10 07:00:09 UTC 2015 - pgajdos@suse.com
+
+- update to 4.02:
+  - new and rewritten pages
+    * dladdr.3
+    * dlerror.3
+    * dlinfo.3
+    * dlopen.3
+    * dlsysm.3
+  - newly documented interfaces in existing pages
+    * dlopen.3
+        Document dlmopen(3)
+    * nl_langinfo.3
+        Add documentation for nl_langinfo_l(3)
+    * __ppc_set_ppr_med.3
+        Document PPC functions providing access to PPR
+    * __ppc_yield.3
+        Document PPC performance-hint functions
+
+-------------------------------------------------------------------
+Mon Jul 27 06:40:42 UTC 2015 - pgajdos@suse.com
+
+- update to 4.01:
+  - new and rewritten pages
+    * bpf.2
+    * __ppc_get_timebase.3
+    * queue.3
+  - newly documented interfaces in existing pages
+    * rename.2
+         Document RENAME_WHITEOUT
+
+-------------------------------------------------------------------
+Thu May  7 11:29:38 UTC 2015 - pgajdos@suse.com
+
+- update to 4.00:
+  - new and rewritten pages
+    * get_phys_pages.3
+    * loop.4
+    * xattr.7
+  - newly documented interfaces in existing pages
+    * mmap.2
+        Document MAP_HUGE_2MB, MAP_HUGE_1GB, and MAP_HUGE_SHIFT
+    * shmget.2
+        Document SHM_HUGE_2MB, SHM_HUGE_1GB, and SHM_HUGE_SHIFT
+    * resolver.3
+        Add descriptions of some other resolver functions
+            Add res_ninit(), res_nquery(), res_nsearch(),
+            and res_nquerydomain(), res_nmkquery(), res_nsend().
+    * tty_ioctl.4
+        Document TIOCMIWAIT and TIOCGICOUNT
+        Document TIOCGEXCL
+        Document TIOGCPKT
+        Document TIOCSPTLCK
+        Document TIOCGPTLCK
+
+-------------------------------------------------------------------
+Mon Apr 20 07:37:12 UTC 2015 - pgajdos@suse.com
+
+- update to 3.83:
+  - new and rewritten pages
+    * posix_madvise.3
+    * ftw.3
+  - newly documented interfaces in existing pages
+    * getdents.2
+        Document getdents64()
+    * mount.2
+        Document MS_LAZYTIME
+    * proc.5
+        Document /proc/sys/kernel/randomize_va_space
+        Document /proc/PID/fdinfo epoll format
+        Describe /proc/PID/fdinfo eventfd format
+        Document /proc/PID/fdinfo signalfd format
+
+-------------------------------------------------------------------
+Tue Mar 31 07:22:31 UTC 2015 - pgajdos@suse.com
+
+- update to 3.82:
+  - new and rewritten pages
+     * nptl.7
+  - newly documented interfaces in existing pages
+     * user_namespaces.7
+       Document /proc/[pid]/setgroups
+
+-------------------------------------------------------------------
+Mon Mar  2 19:39:09 UTC 2015 - pgajdos@suse.com
+
+- update to 3.81:
+  - new and rewritten pages
+     * attributes.7
+  - global changes
+     * Reformat existing thread-safety information to use a
+       tabular format, rather than plain text.
+
+-------------------------------------------------------------------
+Mon Feb 23 07:38:42 UTC 2015 - pgajdos@suse.com
+
+- update to 3.80:
+  - new and rewritten pages
+    * ioctl_fat.2, madvise.2
+  - newly documented interfaces in existing pages
+    * proc.5
+        (Briefly) document /proc/PID/attr/socketcreate
+        (Briefly) document /proc/PID/attr/keycreate
+        Document /proc/PID/attr/{current,exec,fscreate,prev}
+        Document /proc/sys/kernel/auto_msgmni
+    * socket.7
+        Document SO_REUSEPORT socket option
+
+-------------------------------------------------------------------
+Mon Feb  2 09:05:48 UTC 2015 - pgajdos@suse.com
+
+- update to 3.79:
+  - new and rewritten pages
+    * getrandom.2, kexec_load.2
+  - etc., see Changes for details
+
+-------------------------------------------------------------------
+Fri Jan 23 09:55:10 UTC 2015 - pgajdos@suse.com
+
+- update to 3.78:
+  - new and rewritten pages
+    * execveat.2, memfd_create.2, s390_pci_mmio_write.2
+  - newly documented interfaces in existing pages
+    * fcntl.2:
+        Document F_ADD_SEALS and F_GET_SEALS commands
+    * proc.5:
+        Document /proc/sys/vm/compact_memory
+        Document /proc/sys/fs/nr_open
+  - etc. see Changes for details
+
+-------------------------------------------------------------------
+Thu Jan 15 13:24:18 UTC 2015 - pgajdos@suse.com
+
+- add info to return value of adjtimex() [bnc#910082](internal)
+  + man-pages-adjtimex.2.patch
+
+-------------------------------------------------------------------
+Mon Jan 12 10:14:56 UTC 2015 - pgajdos@suse.com
+
+- update to 3.77:
+  - new or rewritten pages:
+    * seccomp.2
+  - newly documented interfaces in existing pages
+    * netlink.7:
+        Add NETLINK_CRYPTO
+
+-------------------------------------------------------------------
+Fri Jan  2 08:31:37 UTC 2015 - pgajdos@suse.com
+
+- update to 3.76:
+  - new and rewritten pages
+    * adjtimex.2, sigreturn.2
+  - newly documented interfaces in existing pages
+    * proc.5
+        Document /proc/thread-self
+        Document "VmSwap" field of /proc/[pid]/status
+        Document /proc/net/netfilter/nfnetlink_queue
+
+-------------------------------------------------------------------
+Thu Oct 16 11:05:11 UTC 2014 - pgajdos@suse.com
+
+- update to 3.75:
+  - new and rewritten pages
+    * pthread_rwlockattr_setkind_np.3
+  - see Changes for details
+
+-------------------------------------------------------------------
+Mon Oct 13 07:40:36 UTC 2014 - pgajdos@suse.com
+
+- remove ioctl_list (2) reference from ioctl.2 man page [bnc#900141]
+  * man-pages-remove-ioctl_list-reference.patch
+
+-------------------------------------------------------------------
+Tue Oct  7 07:46:17 UTC 2014 - pgajdos@suse.com
+
+- update to 3.74:
+  - new and rewritten pages
+    * pldd.1, cp1252.7
+  - newly documented interfaces in existing pages
+    * mq_overview.7: /proc/sys/fs/mqueue/msgsize_default
+                     /proc/sys/fs/mqueue/msg_default
+
+-------------------------------------------------------------------
+Mon Sep 22 06:02:23 UTC 2014 - pgajdos@suse.com
+
+- update to 3.73:
+  - new and rewritten pages
+    * namespaces.7, pid_namespaces.7, user_namespaces.7
+  - newly documented interfaces in existing pages
+    * clone.2: Document CLONE_NEWUSER for creating a new user namespace
+    * setns.2: Document the PID, user, and mount namespace support
+    * unshare.2: Document CLONE_NEWPID, CLONE_NEWUSER, CLONE_THREAD,
+                 CLONE_SIGHAND, and CLONE_VM
+  - see Changes for details
+
+-------------------------------------------------------------------
+Tue Sep  9 08:03:34 UTC 2014 - pgajdos@suse.com
+
+- update to 3.72:
+  - new and rewritten pages:
+    * memusage.1, memusagestat.1, mtrace.1
+   see Changes for details
+
+-------------------------------------------------------------------
+Tue Aug 19 22:40:54 UTC 2014 - andreas.stieger@gmx.de
+
+- man-pages 3.71:
+  - new and rewritten pages:
+    * group_member.3
+    * isfdtype.3
+  - see Changes for details
+
+-------------------------------------------------------------------
+Thu Jul 17 09:20:25 UTC 2014 - pgajdos@suse.com
+
+- update to 3.70:
+  - new and rewritten pages:
+    * sprof.1
+  - newly documented interfaces in existing pages
+    * epoll_ctl.2: EPOLLWAKEUP
+    * epoll.7: EPOLLWAKEUP
+  - see Changes for details
+
+-------------------------------------------------------------------
+Mon Jun 23 12:12:11 UTC 2014 - pgajdos@suse.com
+
+- ship localedef.1, iconvconfig.8 and locale.1 as they will
+  be removed from glibc package
+
+-------------------------------------------------------------------
+Wed Jun 18 13:38:01 UTC 2014 - pgajdos@suse.com
+
+- cleanup removing man-pages
+- ship time.1 again [bnc#878057]
+- do not ship localedef.1 and (really do not ship) iconvconfig.8
+  for now, but requested removal from glibc package
+
+-------------------------------------------------------------------
+Mon Jun 16 05:01:42 UTC 2014 - pgajdos@suse.com
+
+- removed upstreamed man-pages-bootparam.7.patch (obsoleted by
+  last update)
+
+-------------------------------------------------------------------
+Sat Jun 14 22:04:41 UTC 2014 - andreas.stieger@gmx.de
+
+- update to 3.69:
+  - new and rewritten pages:
+    * iconv.1 New page for the iconv(1) command
+  - Newly documented interfaces in existing pages
+   * fcntl.2 Document open file description locks
+- refresh man-pages-bootparam.7.patch for context changes
+- Further updates to individual pages, see Changes for details
+- do not install iconvconfig.8 to prevent conflict with glibc
+
+-------------------------------------------------------------------
+Fri May 30 06:28:20 UTC 2014 - pgajdos@suse.com
+
+- updated to 3.68
+  * many fixes in existing manpages
+  * new page: localedef.1
+
+-------------------------------------------------------------------
+Wed May 28 11:59:19 UTC 2014 - pgajdos@suse.com
+
+- document rootflags and rootdelay parameters [bnc#874149]
+  * added man-pages-bootparam.7.patch
+
+-------------------------------------------------------------------
+Wed May 21 20:14:14 UTC 2014 - andreas.stieger@gmx.de
+
+- man-pages 3.67
+- New and rewitten pages
+  - sched_setattr.2
+  - system.3
+- Newly documented interfaces in existing pages
+  - sched.7 Document SCHED_DEADLINE
+- New and changed links
+  - renameat2.2 -> rename.2
+  - sched_getattr.2 -> sched_setattr.
+- Further updates to individual pages, see Changes for details
+
+-------------------------------------------------------------------
+Mon May 12 10:50:46 UTC 2014 - pgajdos@suse.com
+
+- removed obsoleted man-pages-addons
+
+-------------------------------------------------------------------
+Thu May  8 22:35:13 UTC 2014 - andreas.stieger@gmx.de
+
+- man-pages 3.66
+- New and rewritten pages:
+  fanotify_init.2
+  fanotify_mark.2
+  sched_setscheduler.2
+  fanotify.7
+  sched.7
+- Newly documented interfaces in existing pages:
+  * fallocate.2 FALLOC_FL_ZERO_RANGE
+  * rename.2 renameat2()
+  * shmop.2 SHM_EXEC
+- Further updates to individual pages, see Changes for details
+
+-------------------------------------------------------------------
+Tue Apr 22 07:15:29 UTC 2014 - pgajdos@suse.com
+
+- update to version 3.65:
+  * new and rewritten pages:
+     inet_net_pton.3
+  * newly documented interfaces in existing pages
+     fallocate.2: Document FALLOC_FL_COLLAPSE_RANGE
+     prctl.2: Document PR_SET_THP_DISABLE and PR_GET_THP_DISABLE
+     proc.5: Document /proc/[pid]/stack
+             Document /proc/[pid]/clear_refs
+- dropped proc.5.patch (upstreamed)
+
+-------------------------------------------------------------------
+Wed Apr 16 06:35:18 UTC 2014 - pgajdos@suse.com
+
+- package getent.1 [bnc#873645]
+
+-------------------------------------------------------------------
+Fri Apr 11 09:20:11 UTC 2014 - pgajdos@suse.com
+
+- complete description of /proc/[pid]/smaps fields
+  *  [bnc#782157] (internal)
+  * added proc.5.patch
+
+-------------------------------------------------------------------
+Mon Apr  7 06:32:28 UTC 2014 - pgajdos@suse.com
+
+- update to version 3.64:
+  * new and rewritten pages:
+     + open_by_handle_at.2
+     +inotify.7
+  * newly documented interfaces in existing pages:
+     + PERF_FLAG_FD_CLOEXEC flag (perf_event_open.2)
+     + Document _LARGEFILE_SOURCE (feature_test_macros.7)
+  * see Changes for details
+
+-------------------------------------------------------------------
+Wed Mar 19 06:23:20 UTC 2014 - pgajdos@suse.com
+
+- update to version 3.63:
+  * new and rewritten pages:
+    - duplocale.3, newlocale.3, towlower.3, towupper.3, uselocale.3
+  * for more information, see Changes
+
+-------------------------------------------------------------------
+Sat Mar 15 11:27:14 UTC 2014 - andreas.stieger@gmx.de
+
+- update to version 3.62:
+  * Newly documented interfaces in existing pages
+    + locale.5 Document LC_*
+  * Further updates to invidivial pages, see Changes for details
+- new page locale.1 owned by glibc, not installing
+
+-------------------------------------------------------------------
+Thu Feb 27 07:20:42 UTC 2014 - pgajdos@suse.com
+
+- update to version 3.61:
+  * added notes on thread-safety to various manual pages
+  * see Changes for details
+
+-------------------------------------------------------------------
+Tue Feb 18 14:45:24 UTC 2014 - pgajdos@suse.com
+
+- update to version 3.60:
+  * bugfix previous change
+
+-------------------------------------------------------------------
+Mon Feb 17 18:55:32 UTC 2014 - andreas.stieger@gmx.de
+
+- man-pages 3.59:
+  * Convert pages contain non-ASCII in source code comments to use
+    UTF-8
+
+-------------------------------------------------------------------
+Mon Feb 17 07:37:43 UTC 2014 - pgajdos@suse.com
+
+- update to version 3.58
+  * Document the pipe2() O_DIRECT
+  * Document PACKET_QDISC_BYPASS
+  * etc. see Changes for details
+
+-------------------------------------------------------------------
+Sat Jan 25 15:29:02 UTC 2014 - jengelh@inai.de
+
+- Update to new upstream release 3.57
+* The open(2) manual page adds documentation of the O_TMPFILE flag,
+  which provides a race-free method of creating unnamed temporary
+  files.
+* Documentation for the PTRACE_PEEKSIGINFO, PTRACE_GETSIGMASK, and
+  PTRACE_SETSIGMASK operations was added  to the ptrace(2) page
+* Documentation for the SO_BUSY_POLL socket option to the socket(7)
+  page.
+* Documentation for the TCP_USER_TIMEOUT and TCP_CONGESTION socket
+  options to the tcp(7) page.
+- Feed specfile through formatter; kill redundant %clean section;
+  %fdupes ought not to be called across directories that potentially
+  live across standard partitions
+
+-------------------------------------------------------------------
+Sun Jan 12 12:51:44 UTC 2014 - andreas.stieger@gmx.de
+
+- update to version 3.56:
+- New and rewritten pages:
+  * fgetc.3, gets.3, vdso.7
+- Newly documented interfaces in existing pages:
+  * reboot.2 LINUX_REBOOT_SW_SUSPEND
+- Further updates and global changes listed in changelog:
+  http://git.kernel.org/cgit/docs/man-pages/man-pages.git/tree/Changes?id=man-pages-3.56
+- switch to upstream xz archive
+
+-------------------------------------------------------------------
+Mon Jan  6 23:36:22 UTC 2014 - andreas.stieger@gmx.de
+
+- fix conflict with time(1) from package time
+- remove update.sh, get_version_number.sh packaging scripts
+
+-------------------------------------------------------------------
+Sat Jan  4 19:14:15 UTC 2014 - andreas.stieger@gmx.de
+
+- update to version 3.55
+  with a large number of new and updated manual pages as listed in
+  http://git.kernel.org/cgit/docs/man-pages/man-pages.git/tree/Changes?id=man-pages-3.55
+- includes changes from version 3.54
+  with a large number of new and updated manual pages as listed in
+  http://git.kernel.org/cgit/docs/man-pages/man-pages.git/tree/Changes?id=man-pages-3.54
+- packaging changes:
+  * add source URL, see https://en.opensuse.org/SourceUrls
+
+-------------------------------------------------------------------
+Wed Aug  7 10:31:34 CEST 2013 - pgajdos@suse.cz
+
+- update to version 3.53
+  * New and rewritten pages
+      restart_syscall.2
+        New page for restart_syscall(2) system call
+  * Newly documented interfaces in existing pages
+      fchownat.2
+        Document AT_EMPTY_PATH
+      fstatat.2
+        Document AT_EMPTY_PATH
+      linkat.2
+        Document AT_EMPTY_PATH
+      open.2
+        Document O_PATH
+            See also https://bugzilla.redhat.com/show_bug.cgi?id=885740
+  * Changes to individual pages
+      clock_nanosleep.2
+      futex.2
+      nanosleep.2
+      poll.2
+      sigaction.2
+      sigreturn.2
+      signal.7
+        SEE ALSO: add restart_syscall(2)
+      open.2
+        Remove warning that O_DIRECTORY is only for use with opendir(3)
+            O_DIRECTORY can also be used with, for example, O_PATH.
+      perf_event_open.2
+        Improve PERF_SAMPLE_BRANCH_STACK documentation
+        Fix indentation of the MMAP layout section
+            The indentation of the MMAP layout section wasn't quite right.
+            I think this improves things but I admit I'm not an expert at the
+            low-level indentation directives.
+        Update PERF_IOC_FLAG_GROUP info
+            It turns out PERF_IOC_FLAG_GROUP was broken from 75f937f24bd9
+            (in Linux 2.6.31, the initial perf_event release) until
+            724b6daa1 (Linux 3.4).
+            I've done some extensive kernel source code digging plus
+            running tests of various kernels and I hope the info
+            presented is accurate now.
+            (Patch edited somewhat by mtk.)
+        Improve sysfs files documentation
+            This improves the documentation of the various
+            perf_event_open()-related sysfs files.
+      ptrace.2
+        If SEIZE was used, initial auto-attach stop is EVENT_STOP
+            For every PTRACE_O_TRACEfoo option, mention that old-style SIGSTOP
+            is replaced by PTRACE_EVENT_STOP if PTRACE_SEIZE attach was used.
+            Mention the same thing again in the description of
+            PTRACE_EVENT_STOP.
+        Mention that PTRACE_PEEK* libc API and kernel API are different
+        Clarify PTRACE_INTERRUPT, PTRACE_LISTEN, and group-stop behavior
+      readlink.2
+        Document use of empty 'pathname' argument
+        Change error check in example program from "< 0" to "== -1"
+      setpgid.2
+        s/SIGTSTP/SIGTTIN/ when discussing reads from terminal
+            See https://bugzilla.kernel.org/show_bug.cgi?id=60504
+      clog2.3
+        Note that these functions are still not present in glibc 2.17
+      dirfd.3
+        ATTRIBUTES: Note function that is thread-safe
+            The function dirfd() is thread safe.
+      div.3
+        ATTRIBUTES: Note functions that are thread-safe
+            The functions div(), ldiv(), lldiv() and imaxdiv() are thread
+            safe.
+      fabs.3
+        ATTRIBUTES: Note functions that are thread-safe
+            The functions fabs(), fabsf() and fabsl() are thread safe.
+      fdim.3
+        ATTRIBUTES: Note functions that are thread-safe
+            The functions fdim(), fdimf() and fdiml() are thread safe.
+      fflush.3
+        ATTRIBUTES: Note function that is thread-safe
+            The function fflush() is thread safe.
+      finite.3
+        ATTRIBUTES: Note functions that are thread-safe
+            The functions finite(), finitef(), finitel(), isinf(), isinff(),
+            isinfl(), isnan(), isnanf() and isnanl() are thread safe.
+      flockfile.3
+        ATTRIBUTES: Note functions that are thread-safe
+            The functions flockfile(), ftrylockfile() and funlockfile() are
+            thread safe.
+      floor.3
+        ATTRIBUTES: Note functions that are thread-safe
+            The functions floor(), floorf() and floorl() are thread safe.
+      resolv.conf.5
+        Explain how to set empty domain
+            See http://bugs.debian.org/463575
+      capabilities.7
+        Add open_by_handle_at(2) under CAP_DAC_READ_SEARCH
+      inotify.7
+        Clarify description of IN_MOVED_FROM and IN_MOVED_TO
+      man-pages.7
+        DESCRIPTION should note versions for new interface features or behavior
+      udp.7
+        Add missing #include directive
+            Using the UDP_CORK socket option documented in udp.7 requires
+            including <netinet/udp.h>.
+      ld.so.8
+        Rework rpath token expansion text
+        Describe $PLATFORM rpath token
+        Describe $LIB rpath token
+        Document LD_BIND_NOT
+        Add reference to pthreads(7) in discussion of LD_ASSUME_KERNEL
+      readlink.2
+        Fix possible race condition in readlink.2 example
+            I noticed that the example in the readlink.2 man pages does error
+            checking for a race condition that would cause the value of the
+            symbolic link to get larger.  However, it doesn't handle the
+            opposite case, in which the value gets shorter.  (The NULL
+            terminator is always set at the old, longer offset.)  This could
+            cause the program to operate on uninitialized data.
+- removed source gai.conf.5 as upstream provides it yet
+- added fanotify_init.2, fanotify_mark.2, open_by_handle_at.2,
+  name_to_handle_at.2
+
+-------------------------------------------------------------------
+Mon Jul 15 13:28:05 CEST 2013 - pgajdos@suse.cz
+
+- update to version 3.52
+  * Various pages that formerly lacked the information now have
+    a note under RETURN VALUE that errno is set on error.
+  * Peng Haitao has submitted patches to around 50 pages that note
+    functions that are thread-safe or thread-unsafe. For this
+    purpose, the man-pages add a new section, ATTRIBUTES, as
+    described in the man-pages(7) manual page. Peng Haitao's
+    substantial work is ongoing, and more pages will add this
+    information in the future.
+
+-------------------------------------------------------------------
+Thu May  2 10:14:33 CEST 2013 - pgajdos@suse.cz
+
+- update to version 3.51
+  * Newly documented interfaces in existing pages
+      sched_rr_get_interval.2
+        Document /proc/sys/kernel/sched_rr_timeslice_ms
+      proc.5
+        Document /proc/[pid]/map_files directory
+            This directory was added in Linux v3.3 and provides info about
+            files being mmap-ed in a way very similar to how /proc/[pid]/fd
+            works.
+            v2: Added examples of how links look like and noted dependency
+            on kernel config option CONFIG_CHECKPOINT_RESTORE.
+        Document /proc/sys/kernel/shm_rmid_forced
+      capabilities.7
+        Document /proc/sys/kernel/cap_last_cap
+  * Global changes
+  * Various pages
+        Global fix: fix placement of word "only"
+  * Various pages
+        License headers: consistent format
+  * Various pages
+        Global fix: s/since kernel/since Linux/
+  * Various System V IPC pages in Section 2
+        Add "System V" to .TH line and text
+            Make it clear that these pages relate to System V IPC,
+            not POSIX IPC.
+  * Changes to individual pages
+      access.2
+        Clarify RETURN VALUE for F_OK
+            See http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=705293
+      alarm.2
+        Correct the description of behavior when 'seconds' is 0
+      clone.2
+        Add prototype for syscall to SYNOPSIS
+            And further clarify the distinction between the system call
+            and the wrapper function in the introductory text.
+        Update feature test macro requirements
+            The requirements quietly changed changed in glibc 2.14
+            See also http://www.sourceware.org/bugzilla/show_bug.cgi?id=4749
+        Clarify differences between clone2() syscall and wrapper function
+        Note those architectures where the sys_clone argument order differs
+        Add short subsection noting that blackfin, m68k, and sparc are different
+        Move clone2() text to subsection in description
+            The description of ia64 clone2() should follow the discussion
+            of the raw system call interface.
+        Change subhead for ia64 discussion
+      getcpu.2
+        Recommend that 'tcache' should be specified as NULL nowadays
+      io_cancel.2
+        Improve description
+      io_destroy.2
+        Improve description
+            The description was rather vague, citing a "list of I/O contexts"
+            and stating that it "can" cancel outstanding requests.  This
+            update makes things more concrete so that the reader knows exactly
+            what's going on.
+      io_getevents.2
+        The 'timeout' argument is not updated
+            I looked back through the kernel code, and the timeout was
+            never updated in any case.  I've submitted a patch upstream
+            to change the comment above io_getevents.
+      io_setup.2
+        Clarify nr_events
+            nr_events is technically the number of completion events that can
+            be stored in the completion ring.  The wording of the man page:
+            "capable of receiving at least nr_events" seems dubious to me,
+            only because I worry that folks might interpret that to mean
+            'nr_events' total, instead of 'nr_events' concurrently.
+            Further, I've added information on where to find the per-user
+            limit on 'nr_events', /proc/sys/fs/aio-max-nr.  Let me know if
+            you think that is not relevant.
+      listxattr.2
+        Explain use of 'size' argument
+      lseek.2
+        _GNU_SOURCE must be defined to get SEEK_DATE and SEEK_HOLE definitions
+            See http://sourceware.org/bugzilla/show_bug.cgi?id=15312
+      mmap.2
+        Add pointers to relevant /proc files described in proc(5)
+      posix_fadvise.2
+      pread.2
+      readahead.2
+      sync_file_range.2
+      truncate.2
+        Refer to syscall(2) for ABI semantics on certain 32-bit architectures
+            Also: in sync_file_range.2 and posix_fadvise.2 remove description
+            of conventional calling signature as flawed, and in
+            posix_fadvise.2, de-emphasize focus on ARM, and rather phrase
+            as a more general discussion of certain architectures.
+      readdir.2
+        readdir(2) doesn't exist on x86-64
+      semop.2
+        Clarify the discussion of 'semadj'
+      shmctl.2
+        Refer to proc(5) for description of /proc/sys/kernel/shm_rmid_forced
+      syscall.2
+        Add notes that caution users when passing arguments to syscall()
+            For example, passing 'long long' on ARM-32 requires special
+            treatment.
+        Document the exact calling convention for architecture system calls
+        Add PA-RISC details under calling conventions
+        Refine discussion of ARM and other ABIs
+      syscalls.2
+        Update kernel version number at start of list
+      umask.2
+        SEE ALSO: add acl(5)
+      unshare.2
+        Update feature test macro requirements
+            The requirements quietly changed changed in glibc 2.14
+            See also http://www.sourceware.org/bugzilla/show_bug.cgi?id=4749
+      fopencookie.3
+        Correct definition of cookie_io_functions_t
+      pthread_setname_np.3
+        The thread argument is passed in by value
+      readir.3
+      seekdir.3
+      telldir.3
+        Eliminate the implication that these functions deal with "offsets"
+            The directory position dealt with by the readdir() and
+            friends is not a simple file offset in modern file systems.
+            Typically, it is some kind of cookie value. Add text and
+            make other changes to these pages to eliminate the
+            implication that this is an offset, and warn the reader
+            that directory positions should be treated strictly as
+            opaque values.
+            In the process, rename the 'offset' argument of seekdir(3)
+            to 'loc', and add some text to readdir(3) to note that
+            the 'd_off' field is the same value returned by telldir(3)
+            at the current directory position.
+            See also https://lwn.net/Articles/544298/
+      scalb.3
+        Fix prototypes for scalbf() and scalbl()
+      sched_getcpu.3
+        Update feature test macro requirements
+            The requirements quietly changed changed in glibc 2.14
+            See also http://www.sourceware.org/bugzilla/show_bug.cgi?id=4749
+      ualarm.3
+        Add note on the behavior when 'usecs' is zero
+            POSIX.1-2001 does not specify the behavior in this case
+            and no other system that I checked documented the behavior.
+            Probably, most or all systems do what Linux does in this
+            case: cancel any pending alarm, just as alarm(0) does.
+            Add that info in NOTES.
+      elf.5
+        Add byte positions for all EI_xxx fields
+            When describing e_ident, most of the EI_xxx defines mention the
+            exact byte number.  This is useful when manually hacking an ELF
+            with a hex editor.  However, the last few fields don't do this,
+            which means you have to count things up yourself.
+            Add a single word to each so you don't have to do that.
+      proc.5
+        Refer to sched_rr_get_interval(2) for info on sched_rr_timeslice_ms
+            Since Linux 3.9, /proc/sys/kernel/sched_rr_timeslice_ms can
+            be used to change the SCHED_RR quantum.
+        SEE ALSO: Add sysctl(8)
+        Simplify the example of printing out environ
+            The binutils package contains a very handy utility to
+            print out null-byte delimited strings from a file.  This
+            can replace a rather complex expression with cat(1)
+            provided as an example for printing out /proc/[pid]/environ.
+        Update /proc/PID/maps example
+            Update to 64-bit example that includes "[heap]", "[stack],
+            and "[vdso]"
+        Formatting fixes for /proc/PID/maps
+        Document the "pathname" field of /proc/PID/maps
+        Add reference to capabilities(7) for /proc/sys/kernel/cap_last_cap
+        /proc/PID/maps: add a reference to mmap(2)
+      ip.7
+        Document IP_MULTICAST_ALL
+            This commit adds documentation for the IP_MULTICAST_ALL socket
+            option.
+            The option was added to the Linux kernel in 2.6.31:
+                Author Nivedita Singhvi <niv@us.ibm.com>
+                Commit f771bef98004d9d141b085d987a77d06669d4f4f
+            The description is based on a previous one [3] posted by the
+            original author of the code -- Nivedita, but it is slightly
+            re-worded.
+            I tested it myself and it works as described.
+            References:
+                [1] http://lxr.free-electrons.com/source/net/ipv4/ip_sockglue.c#L972
+                [2] http://lxr.free-electrons.com/source/net/ipv4/igmp.c#L2267
+                [3] http://patchwork.ozlabs.org/patch/28902/
+      units.7
+        units should use an actual µ
+            The units(7) man page uses an ASCII u in place of the actual Greek
+            letter mu.  Since we're in the twenty-first century, with
+            UTF-8-compatible terminals and terminal emulators, we should use
+            the actual letter µ instead of an ASCII approximation.
+            See http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=704787
+
+-------------------------------------------------------------------
+Mon Mar 18 08:29:56 CET 2013 - pgajdos@suse.cz
+
+- update to version 3.50
+  * New and rewritten pages
+      canonicalize_file_name.3
+        Rewrite page, adding much more detail
+  * Global changes
+  * Various pages
+        Global fix: s/END_LICENSE/LICENSE_END/
+  * Various pages
+        Global fix: s/bitmask/bit mask/
+  * Changes to individual pages
+      getent.1
+        netgroup description incorrectly refers to initgroups
+      capget.2
+        Update URL for libcap
+      fork.2
+        Port access permission bits (ioperm()) are turned off in the child
+      futex.2
+        'timeout' is a minimum duration that the call will wait, not a maximum
+      ioperm.2
+        Note that iopl() level of 3 is needed to access ports
+        'num' is *bits* not bytes!
+        Linux 2.6.8 lifted the port limit to 65,536
+            See http://article.gmane.org/gmane.linux.kernel/202624/
+            From: Stas Sergeev <stsp <at> aknet.ru>
+            Subject: [patch][rfc] Larger IO bitmap
+            Date: 2004-05-07 19:55:03 GMT
+        ioperm() operates on the calling *thread* (not process)
+        Clarify meaning of 'turn_on' argument
+            Plus form formatting fixes.
+        Clarify that default state of permission bits in child is off
+        NOTES: add mention of /proc/ioports
+        SEE ALSO: add outb(2)
+      iopl.2
+        CAP_SYS_RAWIO is required to *raise* the I/O privilege level
+        Clarify that the two least significant bits of 'level' are what matter
+        SEE ALSO: add outb(2)
+      syscalls.2
+        Add version information for all (other) syscalls
+        Add perfmonctl(2)
+      futimes.3
+        ERRORS: Add ENOSYS for lutimes()
+            See http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=620746
+      getpass.3
+        Suggest use of the ECHO flag as an alternative
+            See http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=644261
+      realpath.3
+        Document GNU extensions for EACCES and ENOENT errors
+      stdarg.3
+        Describe va_copy()
+            See http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=575077
+      termios.3
+        Mention that noncanonical mode does not do input processing
+            See http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=643854
+      random.4
+        Document write and document the ioctl interface of /dev/random
+            The update consists out of two parts:
+             - a minor thing which just documents what happens if a write to
+               /dev/(u)random is performed, which is used in the example
+               script but not explicitly mentioned.
+             - the other (biggest) part is the documentation of the ioctl()
+               interface which /dev/(u)random exposes. This ioctl() lives in
+               drivers/char/random.c and the primitives can be found in
+               include/linux/random.h
+            One comment remains, there used to be an RNDGETPOOL ioctl() which
+            disappeared in v2.6.9. I found two patches on the net:
+            - http://www.kernel.org/pub/linux/kernel/people/akpm/patches/2.6/2.6.8.1/2.6.8.1-mm4/broken-out/dev-random-remove-rndgetpool-ioctl.patch
+            - https://lkml.org/lkml/2004/3/25/168
+            But as far as I can tell the first one got applied but the 2nd
+            one seems more correct. The result is that even today one can
+            still find traces of the RNDGETPOOL ioctl() in the header files.
+            Is this there for historical reasons or because it might break
+            userspace, even though using it will just give an EINVAL.
+      bootparam.7
+        Document 'rootfstype' option
+            See http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=182014
+      capabilities.7
+        Add various pieces under CAP_SYS_RAWIO
+            Info obtained by grepping the kernel source.
+        Add CAP_SYS_RESOURCE /proc/PID/oom_score_adj case
+      netlink.7
+        Add a note about broadcast messages to multiple groups
+      socket.7
+        Define _GNU_SOURCE to obtain the definition of 'struct ucred'
+            See http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=572210
+
+-------------------------------------------------------------------
+Tue Mar 12 07:35:34 CET 2013 - pgajdos@suse.cz
+
+- update to version 3.48
+  * New and rewritten pages
+      getunwind.2
+        New page documenting getunwind(2)
+            Taken from Red Hat downstream man pages set
+        Much rewriting
+            Some text taken from arch/ia64/kernel/unwind.c.
+      perfmonctl.2
+        New page documenting IA-64-specific perfmonctl(2)
+            Taken from Red Hat downstream man pages
+        Rework discussion of PFM_CREATE_CONTEXT
+        Add VERSIONS and CONFORMING TO
+        Note that there is no glibc wrapper
+        Remove PFM_CREATE_EVTSETS, PFM_DELETE_EVTSETS, PFM_GETINFO_EVTSETS
+            These don't exist, and it appears they never have.
+        Fix argument types for PFM_WRITE_PMCS, PFM_WRITE_PMDS, PFM_READ_PMDS
+            The types that were being used don't exist!
+        Briefly document PFM_GET_FEATURES, PFM_DEBUG, PFM_GET_PMC_RESET_VAL
+      gai.conf.5
+        New page documenting gai.conf
+            Taken from Red Hat downstream pages
+      nss.conf.5
+        New page describing nss.conf
+  * Newly documented interfaces in existing pages
+      clock_getres.2
+        Document CLOCK_REALTIME_COARSE and CLOCK_MONOTONIC_COARSE
+        Document CLOCK_BOOTTIME
+        Some improvements to CLOCK_BOOTTIME description
+      ptrace.2
+        Document PTRACE_GETREGSET, PTRACE_SETREGSET, PTRACE_SEIZE, and friends
+            Document PTRACE_GETREGSET, PTRACE_SETREGSET,
+            PTRACE_SEIZE, PTRACE_INTERRUPT, and PTRACE_LISTEN.
+  * New and changed links
+      fattach.2
+      fdetach.2
+      getmsg.2
+      isastream.2
+      putmsg.2
+        New link to unimplemented.2
+            Taken from Red Hat downstream.
+            See https://bugzilla.redhat.com/show_bug.cgi?id=436407
+  * Global changes
+  * Many pages
+        Global fix: remove unneeded double quotes in .SH headings
+  * Many pages
+        Global fix: remove unneeded double quotes in .SS headings
+  * Many pages
+        Global fix: use consistent capitalization in .SS headings
+            Capitalization in .SS sections across pages (and sometimes even
+            within a single page) is wildly inconsistent. Make it consistent.
+            Capitalize first word in heading, but otherwise use lower case,
+            except where English usage (e.g., proper nouns) or programming
+            language requirements (e.g., identifier names) dictate otherwise.
+  * Many pages
+        Remove double blank lines in output
+  * Various pages
+        Fix order of SH sections
+  * Changes to individual pages
+      accept.2
+        NAME: Add "accept4"
+      access.2
+        Note that access() may also fail for FUSE
+            Since in some cases (e.g. libguestfs's guestmount) it also has the
+            semantics where files can appear owned by root, but are actually
+            mutable by the user, despite what one might infer from the Unix
+            permissions.
+      getpeername.2
+        Clarify semantics of getpeername() for datagram sockets
+            See http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=674034
+      getuid.2
+        Remove duplicate section heading
+      mmap.2
+        Add note about partial page in BUGS section
+            This adds a note about Linux behavior with partial page at the end
+            of the object. The problem here is that a page that contains only
+            part of a file (because the file size is not multiple of PAGE_SIZE)
+            stays in page cache even after the mapping is unmapped and the file
+            is closed. So if some process dirties such page, other mappings
+            will see the changes rather than zeroes.
+        Some 'flags' values require a feature test macro to be defined
+            Add text to NOTES noting that some MAP_* constants are
+            defined only if a suitable feature test macro is defined.
+            See http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=542601
+        Document EOVERFLOW error
+      open.2
+        Clarify list of file creation flags
+            POSIX.1-2008 TC1 clarified this, so that O_CLOEXEC,
+            O_DIRECTORY, and O_NOFOLLOW are also in this list.
+      prctl.2
+        Add some details for PR_GET_TID_ADDRESS
+      read.2
+        Clarify interaction of count==0 and error checking
+            POSIX deliberately leaves this case open, so the man
+            page should be less specific about what happens.
+            See http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=533232
+        Remove crufty text about O_NONBLOCK on files
+            See http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=700529
+        Clarify details for seekable files
+      unimplemented.2
+        Add various STREAMS interfaces to NAME
+            Taken from Red Hat downstream.
+            See https://bugzilla.redhat.com/show_bug.cgi?id=436407
+      cexp2.3
+        Still does not exist in glibc 2.17
+      exit.3
+        Note that a call to execve() clears exit handler registrations
+      getaddrinfo.3
+        SEE ALSO: Add gai.conf(5)
+      malloc_trim.3
+        Remove duplicate section title
+      printf.3
+        Fix error handling in example code
+            See https://bugzilla.kernel.org/show_bug.cgi?id=23282
+      pthread_yield.3
+        Add _GNU_SOURCE feature test macro to SYNOPSIS
+      resolver.3
+      resolv.conf.5
+        RES_DEBUG is only available if glibc is compiled with debug support
+            See http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=692136
+            and https://bugzilla.kernel.org/show_bug.cgi?id=43061
+      strtol.3
+        Remove crufty text from previous fix
+      core.5
+        Document CONFIG_COREDUMP
+      capabilities.7
+        Nonexistent bits are no longer shown as set in /proc/PID/status Cap*
+      inotify.7
+        A monitoring process can't easily distinguish events triggered by itself
+      ip.7
+        Improve explanation about calling listen() or connect()
+      man-pages.7
+        Describe rules for capitalization in .SS headings
+      rtnetlink.7
+        Add info about ability to create links with given index
+            Since kernel v3.7 the RTM_NEWLINK message now accepts nonzero
+            values in ifi_index field. Mention this fact in the respective
+            rtnetlink.7 section.
+      socket.7
+        SO_BINDTODEVICE is now readable
+            SO_BINDTODEVICE is readable since since kernel 3.8.
+
+-------------------------------------------------------------------
+Thu Feb 28 13:25:33 CET 2013 - pgajdos@suse.cz
+
+- update to version 3.47
+  * New and rewritten pages
+      perf_event_open.2
+        New page documenting perf_event_open(2)
+      pthread_setname_np.3
+        New page for pthread_setname_np(3) and pthread_getname_np(3)
+  * Newly documented interfaces in existing pages
+      prctl.2
+        Document PR_SET_CHILD_SUBREAPER and PR_GET_CHILD_SUBREAPER
+      ip.7
+        Add source-specific multicast sockopts
+            This patch adds documentation of several source-specific multicast
+            socket options that were added to kernel with implementation
+            of IGMPv3 in 2.5.68.
+            The following socket options were added:
+              IP_ADD_SOURCE_MEMBERSHIP
+              IP_DROP_SOURCE_MEMBERSHIP
+              IP_BLOCK_SOURCE
+              IP_UNBLOCK_SOURCE
+              IP_MSFILTER
+  * Pages moved across sections
+      getcontext.3
+        This page really belongs in Section 3 (moved from Section 2)
+      getdtablesize.3
+        Move from Section 2
+      sln.8
+        New page documenting the 'sln' command provided by glibc
+            Inspired by a Red Hat downstream page, but with rather
+            more detail.
+  * New and changed links
+      getcontext.2
+        Make link to page moved into Section 3
+      getdtablesize.2
+        Link to renamed getdtablesize.3
+      setcontext.2
+        Modify link to point to Section 3
+      pthread_getname_np.3
+        New link to new pthread_setname_np.3
+      setcontext.3
+        Link to getcontext page renamed into Section 3
+  * Global changes
+  * Changes to individual pages
+      fallocate.2
+        SEE ALSO: add fallocate(1)
+      flock.2
+        SEE ALSO: add flock(1)
+      fork.2
+        SEE ALSO: add exit(2)
+      getpriority.2
+        BUGS: note that nice value is per-thread on Linux
+      getrlimit.2
+        SEE ALSO: add prlimit(1)
+      gettid.2
+        SEE ALSO: add various system calls that use thread IDs
+      ioprio_set.2
+        SEE ALSO: add ionice(1)
+      sched_setaffinity.2
+        SEE ALSO: add taskset(1)
+      sched_setparam.2
+        Scheduling policy and parameters are per-thread on Linux
+            Direct the reader to the discussion in sched_setscheduler(2).
+      sched_setscheduler.2
+        Scheduling policy and parameters are per-thread on Linux
+      sched_setscheduler.2
+        SEE ALSO: add chrt(1)
+      setsid.2
+        SEE ALSO: add setsid(1)
+      shmop.2
+        ERRORS: Add EIDRM
+            Taken from Red Hat downstream patch
+      sigaction.2
+      makecontext.3
+        Change getcontext/setcontext page ref to Section 3
+      signal.2
+        Clarify System V vs BSD semantics for signal()
+      syscalls.2
+        The list on this page is not just syscalls common to all platforms
+        Add perfctr(2)
+        Add ppc_rtas(2)
+        Add kernel version number of utrap_install(2)
+      unimplemented.2
+        Remove mention of kernel version number in DESCRIPTION
+      inet.3
+        Fix error in EXAMPLE using inet_aton()
+            See https://bugzilla.redhat.com/show_bug.cgi?id=837090
+            Patch taken from Red Hat downstream.
+      posix_fallocate.3
+        SEE ALSO: add fallocate(1)
+      regex.3
+        Clarify details of matching
+            The first is that it's far from clear that the end points of the
+            complete string match are stored in the zero'th element of the
+            regmatch_t array; secondly, the phrase "next largest substring
+            match" is positively misleading, implying some sort of size
+            ordering, whereas in fact they are ordered according to their
+            appearance in the regex pattern.
+      scanf.3
+        Clarify meaning of "string conversions" for 'm' modifier
+        Update %a vs %m documentation
+            POSIX.1-2008 adopted the 'm' flag for dynamic allocation. Update
+            page to cover it and relegate the glibc-specific 'a' flag to
+            NOTES.
+      strtol.3
+        Replace some bogus text about "thousands separator"
+            See https://bugzilla.redhat.com/show_bug.cgi?id=652870
+      sysconf.3
+        Use "_SC_PAGESIZE" consistently on page
+            s/_SC_PAGE_SIZE/_SC_PAGESIZE/ in one instance.
+            From Red Hat downstream patch.
+      nscd.conf.5
+        Add max-db-size and auto-propagate descriptions, default values, + misc
+             * added missing valid services (services and netgroup)
+             * added many default values for options
+             * reordered options according to the nscd.conf file
+               (logical order)
+             * added 2 missing options: max-db-size and auto-propagate
+      nsswitch.conf.5
+        Mention initgroups db
+      proc.5
+        Document /proc/profile
+        Update /proc/sys/fs/file-nr to include Linux 2.6 details
+        Clarify relationship between file-max and file-nr
+            The third value in /proc/sys/fs/file-nr is the same as
+            the value in /proc/sys/fs/file-max.
+        Note message written to kernel log when file-max limit is hit
+            Info from Documentation/sysctl/fs.txt.
+        Mention lscpu(1) under discussion of /proc/cpuinfo
+      resolv.conf.5
+        Document "single-request-reopen" option
+            Taken from Red Hat downstream patch
+            See https://bugzilla.redhat.com/show_bug.cgi?id=717770
+            See http://thread.gmane.org/gmane.linux.man/3161
+      utmp.5
+        SEE ALSO: add utmpdump(1)
+      cpuset.7
+        Add missing 'cpuset.' prefix for some flags
+            See kernel commit e21a05cb408bb9f244f11a0813d4b355dad0822e
+      svipc.7
+        SEE ALSO: add ipcmk(1), ipcrm(1), ipcs(1)
+      termio.7
+        SEE ALSO: add reset(1), setterm(1), stty(1), tty(4)
+      ld.so.8
+        LD_VERBOSE does not work with ld.so --list and --verify
+            From Red Hat downstream package
+            See https://bugzilla.redhat.com/show_bug.cgi?id=532629
+        SEE ALSO: add sln(8)
+      zdump.8
+        Bring up to date with zdump --help
+            Patch taken from Red Hat downstream.
+
+-------------------------------------------------------------------
+Mon Feb  4 07:33:41 CET 2013 - pgajdos@suse.cz
+
+- update to version 3.46
+  * New and rewritten pages
+      kcmp.2
+        New page for kcmp(2)
+  * Newly documented interfaces in existing pages
+      init_module.2
+        Document finit_module(2)
+        Document finit_module() 'flags' argument
+            Document MODULE_INIT_IGNORE_MODVERSIONS and
+            MODULE_INIT_IGNORE_VERMAGIC. (Some edits by mtk.)
+  * New and changed links
+      finit_module.2
+        New link to init_module.2
+      __after_morecore_hook.3
+      __free_hook.3
+      __malloc_initialize_hook.3
+      __memalign_hook.3
+      __realloc_hook.3
+        New link to malloc_hook.3
+  * Global changes
+  * Various pages
+        Global fix: s/tty/terminal/
+  * Changes to individual pages
+      clone.2
+        Add kernel versions for various CLONE_* constants
+        CLONE_NEWIPC governs mechanisms that don't have filesystem pathnames
+        CLONE_NEWIPC doesn't mount the POSIX MQ file system
+        Add an example program (CLONE_NEWUTS)
+        Some reworking of CLONE_NEWIPC text
+            No substantial content changes.
+        SEE ALSO: add kcmp(2)
+        SEE ALSO: add setns(2)
+      fallocate.2
+        FALLOC_FL_* flags are defined in glibc only since 2.18
+      getxattr.2
+      removexattr.2
+      setxattr.2
+        Note that ENOATTR is a synonym for ENODATA
+            Various people have pointed out that strace(1) shows ENODATA
+            for the case where the named attribute does not exist, or
+            the process has no access to this attribute. ENODATA
+            and ENOATTR are in fact defined as synonyms. Point this out
+            in the man page, so that people understand the strace(1) info.
+            See https://bugzilla.kernel.org/show_bug.cgi?id=51871
+      getxattr.2
+      listxattr.2
+      removexattr.2
+      setxattr.2
+        Put errors under ERRORS section
+            The errno values on these pages were listed in a nonstandard
+            way under the RETURN VALUE section. Put them in ERRORS sections.
+      init_module.2
+        ERRORS: Add errors for module signatures (EBADMSG, ENOKEY)
+      link.2
+      mkdir.2
+      mknod.2
+      open.2
+      rename.2
+      symlink.2
+      write.2
+      mkfifo.3
+        Document EDQUOT error
+            The return error EDQUOT is not documented in open(2), write(2),
+            symlink(2) etc.
+            Whether inodes or disk blocks are required for each function
+            is something I based on received wisdom and BSD documentation,
+            rather than tracing the code to the kernel. For symlink(2)
+            this certainly depends on the file system type.
+      listxattr.2
+        Fix RETURN VALUE description
+            On success, 0 may be returned, so change wording from
+            "positive number" to "nonnegative number".
+      outb.2
+        Add SYNOPSIS
+      prctl.2
+        Document PR_SET_PTRACER
+            Document the Yama LSM's prctl handler that allows processes to
+            declare ptrace restriction exception relationships via
+            PR_SET_PTRACER.
+        Make it explicit that PR_SET_PTRACER replaces previous setting
+            The attribute is a scalar, not a list.
+        Document EINVAL error for PR_SET_PTRACER
+        Document PR_GET_TID_ADDRESS
+      ptrace.2
+        Document PTRACE_O_EXITKILL
+        Place PTRACE_SETOPTIONS list in alphabetical order
+      query_module.2
+        Must be called using syscall(2)
+            Yes, the call is way obsolete, but add this info
+            for completeness.
+      recvmmsg.2
+        Add/correct kernel version info for recvmmsg() and MSG_WAITFORNONE
+            This patch isolates the since/version related fixes as requested.
+            This change introduces the following delta:
+             * The page states it was added in 2.6.32 but it is only added
+                2.6.33 (ref: http://kernelnewbies.org/Linux_2_6_33)
+             * The MSG_WAITFORONE flag was in turn only added in 2.6.34
+               (ref: http://kernelnewbies.org/Linux_2_6_34)
+        Add an example program
+      setns.2
+        Add example program
+      sigaction.2
+        Note feature test macro requirements for 'siginfo_t'
+            See https://bugzilla.kernel.org/show_bug.cgi?id=52931
+      syscalls.2
+        Add kern_features(2)
+        Add utrap_install(2)
+            Sparc-specific, present since ancient times
+        Add finit_module(2)
+      sysctl.2
+        ERRORS: EACCES as a synonym for EPRM
+            See https://bugzilla.kernel.org/show_bug.cgi?id=46731
+            and http://thread.gmane.org/gmane.linux.ltp/11413/focus=957635
+                From: Garrett Cooper <yanegomi <at> gmail.com>
+                Subject: Re: [LTP] [PATCH] sysctl03: sysctl returns EACCES after 2.6.33-rc1
+                Newsgroups: gmane.linux.kernel, gmane.linux.ltp
+                Date: 2010-03-04 18:35:33 GMT
+      unshare.2
+        Update NOTES on unimplemented flags
+        Fix text problems in description of CLONE_FS
+        SEE ALSO: add kcmp(2)
+        SEE ALSO: add setns(2)
+        Reorder CLONE_NEWUTS entry in list
+      difftime.3
+        Remove crufty text about 'time_t' on "other systems"
+            Back in 2006, some text came in via Debian patches that seems
+            crufty. Remove it.
+            See https://bugzilla.kernel.org/show_bug.cgi?id=46731
+      getaddrinfo.3
+      getnameinfo.3
+        Fix some confused references to function names
+            See https://bugzilla.kernel.org/show_bug.cgi?id=52741
+      getspnam.3
+        ERRORS: Add EACCES
+            See https://bugzilla.kernel.org/show_bug.cgi?id=52681
+      __setfpucw.3
+        Add proper page cross refs for alternate functions
+      core.5
+      proc.5
+        Clarify suid_dumpable versus core_pattern
+            In Linux 3.6, additional requirements were placed on core_pattern
+            when suid_dumpable is set to 2. Document this and include commit
+            references.
+      proc.5
+        statm's "shared" field refers to pages backed by files
+            I noticed that statm's "shared" field doesn't match the sum of
+            all the "shared" entries in smaps [1].
+            The kernel docs explain that statm's "shared" field is "number of
+            pages that are shared (i.e. backed by a file)" [2].  smaps appears
+            to call a page shared if it's mapped by at least two processes,
+            which explains this discrepancy.
+            I'm not a kernel hacker, but it appears to me they do mean "i.e."
+            and not "e.g." in the statm description: In
+            fs/proc/task_mmu.c::task_statm, I see
+                *shared = get_mm_counter(mm, MM_FILEPAGES);
+            Here's a patch which updates the man page to match the (hopefully
+            correct) kernel docs.
+            [1] https://bugzilla.mozilla.org/show_bug.cgi?id=807181
+            [2] http://git.kernel.org/?p=linux/kernel/git/torvalds/linux.git;a=blob;f=Documentation/filesystems/proc.txt;h=a1793d670cd01bd374eddf54ffdfc768504291ff;hb=HEAD
+      proc.5
+        Put /proc/sys/kernel/hotplug in alphabetical order
+        Document /proc/sys/kernel/dmesg_restrict
+        Linux 3.4 changed permissions needed to change kptr_restrict
+        Add field numbers for /proc/PID/stat
+            See http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=553413
+        Add numbering to /proc/stat "cpu" fields
+            See http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=553413
+        Reorganize text describing /proc/stat "cpu" fields
+        Rewording of suid_dumpable text after comments from Kees Cook
+        Add field numbers for /proc/[pid]/statm
+            See http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=553413
+        Document /proc/stat "cpu" "nice_guest" field
+            Info taken from commit ce0e7b28fb75cb003cfc8d0238613aaf1c55e797
+        Document /prod/[pid]/oom_score_adj
+            Text taken directly from Documentation/filesystems/proc.txt,
+            with some light editing.
+            See https://bugzilla.kernel.org/show_bug.cgi?id=50421
+      shells.5
+        Add /etc/bash to list of example shells
+      ttytype.5
+        Add proper xref for termcap and terminfo pages
+      capabilities.7
+        Add kcmp(2) under CAP_SYS_PTRACE
+      man-pages.7
+        Update description of Section 7
+
+-------------------------------------------------------------------
+Mon Dec 31 08:49:14 CET 2012 - pgajdos@suse.cz
+
+- update to version 3.45
+  * New and rewritten pages
+      s390_runtime_instr.2
+        New page for s390-specific s390_runtime_instr(2)
+      if_nameindex.3
+        Document if_nameindex(3) and if_freenameindex(3)
+        Edits, improvements and corrections to Hideaki's page
+        Add an example program
+      if_nametoindex.3
+        New page documenting if_nametoindex(3) and if_indextoname(3)
+  * Newly documented interfaces in existing pages
+  * New and changed links
+      if_freenameindex.3
+        New link to if_nameindex.3
+      if_indextoname.3
+        New link to if_nametoindex.3
+  * Global changes
+      sysconf.3
+      cciss.4
+        Global fix: s/runtime/run time/
+  * Changes to individual pages
+      clone.2
+        Since 2.6.30, CLONE_NEWIPC also supports POSIX message queues
+      delete_module.2
+        Small rewording of description of effect of O_TRUNC
+      getrlimit.2
+        Document Linux's nonstandard treatment or RLIMIT_CPU soft limit
+            Upon encountering the RLIMIT_CPU soft limit when a SIGXCPU handler
+            has been installed, Linux invokes the signal handler *and* raises
+            the soft limit by one second. This behavior repeats until the
+            limit is encountered.  No other implementation that I tested
+            (Solaris 10, FreeBSD 9.0, OpenBSD 5.0) does this, and it seems
+            unlikely to be POSIX-conformant. The (Linux-specific)
+            RLIMIT_RTTIME soft limit exhibits similar behavior.
+        Point reader at discussion of /proc/[pid]/limits in proc(5)
+      io_getevents.2
+        io_getevents() may cause segfault when called with invalid ctx_id
+            For reference see: http://marc.info/?l=linux-aio&m=130089887002435&w=2
+      recv.2
+        UNIX domain sockets support MSG_TRUNC since 3.4
+      sendmmsg.2
+        Add example program for sendmmsg()
+      stat.2
+        Clarify description of EOVERFLOW error
+            The EOVERFLOW error is not only for st_size, but also
+            inode and block size fields. See glibc source file
+            sysdeps/unix/sysv/linux/xstatconv.c and kernel source
+            file fs/stat.c. Also, fix bit/byte confusion
+            See http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=604928
+      syscalls.2
+        Update various references to "i386" to "x86"
+        Add s390_runtime_instr(2)
+      sysctl.2
+        Mention CONFIG_SYSCTL_SYSCALL
+        Calls to sysctl() log warnings to the kernel log since 2.6.24
+      syslog.2
+        Substantially reorganize discussion of commands
+            Make the layout of the discussion of the commands
+            more readable.
+        Add kernel symbolic 'type' names
+        Clarify SYSLOG_ACTION_SIZE_UNREAD semantics
+            SYSLOG_ACTION_SIZE_UNREAD returns the number of bytes
+            available for reading via SYSLOG_ACTION_READ.
+        Clarify where SYSLOG_ACTION_READ_ALL places data it reads
+        Clarify semantics of SYSLOG_ACTION_CLEAR
+            The SYSLOG_ACTION_CLEAR command (5) does not really clear
+            the ring buffer; rather it affects the semantics of what
+            is returned by commands 3 (SYSLOG_ACTION_READ_ALL) and
+            4 (SYSLOG_ACTION_READ_CLEAR).
+        Clarify discussion of privileges for commands 3 and 10
+        Add mention of CONFIG_LOG_BUF_SHIFT
+      wait.2
+        BUGS: Document odd waitid() behavior when 'infop' is NULL
+      getifaddrs.3
+        Update description of ifa_data to Linux 2.6+ reality
+            See http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=526778
+      memcmp.3
+        Enhance RETURN VALUE text and remove redundant text from DESCRIPTION
+            Note that sign of result equals sign of difference between
+            first two bytes that differ (treated as "unsigned char")."
+      mkstemp.3
+        Deemphasize discussion of mode 066 in glibc 2.0.6
+            Glibc 2.0.6 is now so ld that the discussion of details
+            of that version can be deemphasized placing just under
+            NOTES.
+            See https://bugzilla.kernel.org/show_bug.cgi?id=51811
+      strcmp.3
+        Enhance RETURN VALUE text and remove redundant text from DESCRIPTION
+            Note that sign of result equals sign of difference between
+            first two bytes that differ (treated as "unsigned char")."
+      ttyname.3
+        Fix confused text in ERRORS
+            The existing text suggested that the ERRORS applied
+            only for ttyname_r(). However, 2 of the 3 errors
+            can occur for ttyname().
+      undocumented.3
+        Remove some now documented functions
+      proc.5
+        Correct description of SwapFree in /proc/meminfo
+        Note change of /proc/[pid]/limits file permissions in 2.6.36
+      resolv.conf.5
+        Document IPv6 format for nameserver
+            See: http://bugs.debian.org/610036
+      capabilities.7
+        Correct URL for POSIX.1e draft
+      ipv6.7
+        Add description of getsockopt() for IPV6_MTU
+            In IPv4,IP_MTU is only supported by getsockopt.
+            In IPv6, we can use IPV6_MTU to set socket's MTU,
+            but the return value of getsockopt() is the path MTU.
+      rtnetlink.7
+        Update description of IFLA_STATS to Linux 2.6+ reality
+            See http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=526778
+      socket.7
+        Document 'sockaddr' and 'sockaddr_storage' types
+        Explain effect of SO_SNDTIMEO for connect()
+            When SO_SNDTIMEO is set before connect(), then connect()
+            may return EWOULDBLOCK when the timeout fires.
+
+-------------------------------------------------------------------
+Fri Nov 16 10:25:25 CET 2012 - pgajdos@suse.cz
+
+- update to version 3.44
+  * New and rewritten pages
+      delete_module.2
+        Rewrite to Linux 2.6+ reality
+        Change license and copyright
+            There is now nothing left of the original FSF-copyrighted
+            page. So, change the copyright and license.
+        Substantial reorganization after comments from Rusty Russell
+            Rusty notes that O_NONBLOCK is almost always used in
+            practice. Therefore, it would be better to reorganize
+            the page to consider that "the default".
+      init_module.2
+        Rewrite to Linux 2.6+ reality
+        Change copyright and license
+            Little of the original page now remains. Change
+            copyright and license
+        Changes after review comments from Rusty Russell
+        Add various pieces describing Linux 2.6+ behavior
+            Pieces take from, or inspired by, a patch sent by Kees.
+      getauxval.3
+        Document getauxval() function added in glibc 2.16
+  * Global changes
+  * Various pages
+        Global fix: Use consistent capitalization in NAME section
+            The line(s) in the NAME section should only use capitals
+            where English usage dictates that. Otherwise, use
+            lowercase throughout.
+  * Various pages
+        Global fix: "userspace" ==> "user space" or "user-space"
+            Existing pages variously use "userspace or "user space".
+            But, "userspace" is not quite an English word.
+            So change "userspace" to "user space" or, when used
+            attributively, "user-space".
+  * Changes to individual pages
+      clock_getres.2
+      clock_nanosleep.2
+        Linking with -lrt is no longer needed from glibc 2.17 onward
+      create_module.2
+        Note that this system call is present only in kernels before 2.6
+        Note that ENOSYS probably indicates kernel 2.6+
+      execve.2
+        Document treatment of PR_SET_PDEATHSIG on execve()
+        Document treatment of SECBIT_KEEP_CAPS securebits flag on execve()
+      fork.2
+        Note treatment of default timer slack value on fork()
+      getdomainname.2
+        Point out that these calls relate to NIS, not DNS
+            See http://bugs.debian.org/295635
+      get_kernel_syms.2
+        Note that this system call is present only in kernels before 2.6
+      ipc.2
+        Update note on architectures that don't have ipc()
+            Replace mention of ia64 with x86-64 and ARM.
+      link.2
+        Add EPERM error triggered by /proc/sys/fs/protected_hardlink
+      prctl.2
+        Mention Documentation/prctl/no_new_privs.txt for PR_SET_NO_NEW_PRIVS
+        update seccomp sections for mode 2 (BPF)
+            This adds a short summary of the arguments used
+            for "mode 2" (BPF) seccomp.
+        Small improvements to PR_SET_SECCOMP discussion
+            Note type of 'arg3' for SECCOMP_MODE_FILTER.
+            Add pointer to Documentation/prctl/seccomp_filter.txt.
+        Note 'seccomp' semantics with respect to fork(), execve(), and prctl()
+        Document PR_SET_TIMERSLACK and PR_GET_TIMERSLACK
+        Reword PR_SET_NAME and PR_GET_NAME in terms of threads
+            Plus tfix
+        document PR_SET_NO_NEW_PRIVS, PR_GET_NO_NEW_PRIVS
+            This adds a short description of the no_new_privs bit,
+            as described in Documentation/prctl/no_new_privs.txt.
+      ptrace.2
+        Clarify that some operations are not present on all architectures
+            PTRACE_GETREGS, PTRACE_SETGREFS, PTRACE_GETFPREGS,
+            and PTRACE_GETSPREGS are not present on all architectures.
+            PTRACE_SYSEMU and PTRACE_SYSEMU_SINGLESTEP are present only
+            on x86.
+            See http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=122383
+      query_module.2
+        Add a few words clarifying reference to /sys/module
+        Note that this system call is present only in kernels before 2.6
+        Note that ENOSYS probably indicates kernel 2.6+
+        SEE ALSO: Add modinfo(8) and lsinfo(8)
+        Move some information in NOTES to VERSIONS
+      socketcall.2
+        Update note on architectures that don't have socketcall()
+            Replace mention of ia64 with x86-64 and ARM.
+      times.2
+        Recommend clock_gettime(2) as alternative to times(2)
+      clock_getcpuclockid.3
+        Linking with -lrt is no longer needed from glibc 2.17 onward
+      fts.3
+        Improve description of physical vs. logical tree walking
+            See http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=633505
+      getenv.3
+        SEE ALSO: add getauxval(3)
+      proc.5
+        Document /proc/meminfo
+            Info mostly taken from Documentation/filesystems/proc.txt
+            and Documentation/vm/hugetlbpage.txt.
+        Default for /proc/sys/fs/protected_{hardlinks,symlinks} is now 0
+            The default setting of 1 in/proc/sys/fs/protected_hardlinks
+            and /proc/sys/fs/protected_symlinks caused one too many
+            breakages for Linus's taste, so commit 561ec64ae67e changed
+            the default for both files to 0.
+        Note system call error yielded by /proc/sys/fs/protected_symlinks
+            Note that violating 'protected_symlinks' restrictions
+            causes system calls to fail with the error EACCES.
+        Since Linux 2.6.27, /proc/sys/kernel/modprobe depends on CONFIG_MODULES
+      ipv6.7
+        Document IPV6_RECVPKTINFO
+      man-pages.7
+        Note rules for capitalization in NAME section
+      time.7
+        Add a subsection on timer slack
+      ld.so.8
+        SEE ALSO: add getauxval(3)
+
+-------------------------------------------------------------------
+Thu Nov  1 09:41:20 CET 2012 - pgajdos@suse.cz
+
+- update to version 3.43
+  * Newly documented interfaces in existing pages
+      getenv.3
+        Document secure_getenv(3)
+  * New and changed links
+      phys.2
+        New link to unimplemented.2
+      secure_getenv.3
+        New link to getenv.3
+  * Global changes
+  * Various pages
+        Global fix: s/-/\\-/ when real hyphen is required (e.g., in code)
+  * Various pages
+        Global fix: Various consistency fixes for SEE ALSO
+  * Various pages
+        Global fix: use "Linux kernel source" consistently
+            Rather than "kernel source".
+  * Various pages
+        Global fix: disable justification and hyphenation in SEE ALSO
+            For a better visual result, disable justification and hyphenation
+            in SEE ALSO where page names are long.
+  * Changes to individual pages
+      epoll_wait.2
+        Describe timeout limitation in kernels < 2.6.37
+            As reported by Fredrik (and as far as I can tell the problem
+            went back to 2.6.0):
+            The timeout argument has an upper limit. Any values above that
+            limit are treated the same as -1, i.e. to wait indefinitely.
+            The limit is given by:
+                #define EP_MAX_MSTIMEO min(1000ULL * MAX_SCHEDULE_TIMEOUT / HZ, \
+                (LONG_MAX - 999ULL) / HZ)
+            That is, the limit depends on the size of a long and the timer
+            frequency.  Assuming the a long is never smaller than 32 bits
+            and HZ never larger than 1000, the worst case is 35 minutes.
+            I think this should be mentioned under "BUGS".
+            Although this is likely to be fixed in the future
+            (http://lkml.org/lkml/2010/8/8/144), the problem exists in
+            at least 2.6.14 - 2.6.35. I don't know if select(2) and poll(2)
+            are affected.
+            https://bugzilla.kernel.org/show_bug.cgi?id=20762
+        Add pointer to select(2) for discussion of close in another thread
+      getitimer.2
+        Note Linux's odd handling of the new_value==NULL case
+        Fix types used to declare fields in timeval struct
+      keyctl.2
+        Reorder SEE ALSO, without .br
+      poll.2
+        Add pointer to select(2) for discussion of close in another thread
+      select.2
+        Note behavior if monitored file descriptor is closed in another thread
+            Executive summary: a sane application can't rely on any
+            particular behavior if another thread closes a file descriptor
+            being monitored by select().
+            See https://bugzilla.kernel.org/show_bug.cgi?id=40852
+        Clarify equivalent pselect() code in terms of threads
+            s/sigprogmask/pthread_sigmask/
+      semop.2
+        Recast discussion of blocking behavior in terms of threads
+            semop() blocks the calling thread, not the process.
+        SEE ALSO: Add clone(2)
+            Give reader a clue about CLONE_SYSVSEM.
+      shutdown.2
+        Document EINVAL error (and associated bug)
+            Eric Dumazet noted that EINVAL was not documented. Some further
+            digging shows that it's also not diagnosed consistently.
+            See https://bugzilla.kernel.org/show_bug.cgi?id=47111.
+      sigaction.2
+        Tweak SA_RESETHAND description
+      syscalls.2, uname.2, boot.7
+        Global fix: s/OS/operating system/
+      timer_settime.2
+        Small rewording around discussion of pointer arguments
+      wait4.2
+        Note that these functions are nonstandard and recommend alternatives
+            Some edits to Adrian's path by mtk.
+        CONFORMING TO: Note SUS details for wait3()
+      gnu_get_libc_version.3
+        Remove unneeded "#define _GNU_SOURCE" from SYNOPSIS
+      pthread_kill.3, pthread_sigqueue.3
+        Remove wording "another"
+            Writing "another thread" in these pages implies that these
+            functions can't be used to send a signal to the calling thread
+            itself, which is of course untrue.
+      sigvec.3
+        Add "int" arg to sv_handler definition in sigvec structure
+        Fix small error in discussion of blocking of signals
+            The signal that causes the handler to be invoked is blocked,
+            but saying "by default" implies that this can be changed via
+            the API. It cannot. (One needs sigaction(2) for that.)
+      syslog.3
+        Remove (apparently bogus) text claiming LOG_AUTH is deprecated
+            LOG_AUTH is in POSIX, and widely available. There
+            seems to be no basis to the claim it is deprecated.
+            Quoting Simon:
+                I cannot find any other source that claim LOG_AUTH is
+                deprecated in any way.  LOG_AUTH is distinct from
+                LOG_AUTHPRIV.  The GNU C Library manual only documents
+                LOG_AUTH.  The header files contains both without any
+                comment.  Common systems like Debian appear to refer to
+                both auth and authpriv facilities in syslog configurations.
+                Popular daemons appear to use both facilities.
+                Both facilities are discussed in several RFCs.
+            See https://bugzilla.kernel.org/show_bug.cgi?id=46091
+      ttyname.3
+        SEE ALSO: Add ctermid(3)
+      proc.5
+        Clarify header file related to 'flags' field of /proc/PID/stat
+        Update description of 'starttime' field of /proc/PID/stat
+            The unit of measurement changed from jiffies to clock ticks in
+            Linux 2.6.
+            See http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=675891
+        Document /proc/sys/kernel/kptr_restrict
+        Document /proc/sys/fs/protected_symlinks
+            Based on text in Documentation/sysctl/fs.txt by Kees Cook
+        Document /proc/sys/fs/protected_hardlinks
+            Based on text in Documentation/sysctl/fs.txt by Kees Cook
+      capabilities.7
+        Document interaction of CAP_SYSLOG and /proc/sys/kernel/kptr_restrict
+      ip.7
+        SEE ALSO: Add ipv6(7)
+        SEE ALSO: Add icmp(7)
+      man-pages.7
+        Add some advice about disabling hyphenation in SEE ALSO
+      ld.so.8
+        Describe interpretation of slashes in dependency strings
+        Repeat note that LD_LIBRARY_PATH is ignored in privileged programs
+            This point is already noted when discussing search order for
+            libraries, but it's worth repeating under the specific discussion
+            of LD_LIBRARY_PATH further down the page.
+        Add some details for LD_PRELOAD
+        Note that LD_PRELOAD list separator can be space or colon
+
+-------------------------------------------------------------------
+Mon Aug 27 09:10:27 CEST 2012 - pgajdos@suse.cz
+
+- update to version 3.42
+  * Global changes
+  * Various pages
+        Global fix: use UR macro where applicable
+            The syntax .UR http://example.com paired with .UE will create
+            links which one can interact, if the pager allows that.  One
+            way to see the effect is ask the man(1) command to use browser
+            display, e.g.:
+                man -H man7/uri.7
+            ("\:" is optional groff syntax to permit hyphenless line breaks.)
+  * Changes to individual pages
+      ldd.1
+        Add security note on untrusted executables
+            See also http://www.catonmat.net/blog/ldd-arbitrary-code-execution/
+            and
+            http://tldp.org/HOWTO/Program-Library-HOWTO/shared-libraries.html
+      clone.2
+        Rewrite discussion of sys_clone
+      futex.2
+        Consolidate error descriptions to ERRORS
+        Various wording fix-ups
+        Fix description of EINVAL error
+            The current text seems incorrect. Replace with a more general
+            description.
+      getdents.2
+      select_tut.2
+      atof.3
+      atoi.3
+      pthread_create.3
+      pthread_sigmask.3
+      rtime.3
+      setbuf.3
+      tsearch.3
+      netlink.7
+        Remove unneeded casts
+      get_robust_list.2
+      get_thread_area.2
+      getcpu.2
+      getdents.2
+      gettid.2
+      io_cancel.2
+      io_destroy.2
+      io_getevents.2
+      io_setup.2
+      io_submit.2
+      ioprio_set.2
+      kexec_load.2
+      llseek.2
+      modify_ldt.2
+      mq_getsetattr.2
+      pivot_root.2
+      readdir.2
+      rt_sigqueueinfo.2
+      set_thread_area.2
+      sgetmask.2
+      spu_create.2
+      spu_run.2
+      subpage_prot.2
+      sysctl.2
+      tkill.2
+        Add note to SYNOPSIS that there is no glibc wrapper for system call
+            Reduce the chance that the reader may be misled into thinking
+            that there is a wrapper function for this system call by noting
+            explicitly in the SYNOPSIS that there is no glibc wrapper and
+            pointing the reader to NOTES for further details.
+      ioprio_set.2
+        Clarify the multithreaded behavior of ioprio_set(2)
+        Document who==0 for IOPRIO_WHO_PROCESS and IOPRIO_WHO_PGRP
+            For IOPRIO_WHO_PROCESS, who==0 means operate on the caller.
+            For IOPRIO_WHO_PGRP, who==0 means operate on the caller's
+            process group.
+            See http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=652443
+      migrate_pages.2
+        Fix description of return value
+      mount.2
+        For MS_REMOUNT, source is ignored
+      mprotect.2
+        'addr' argument is not const
+            As reported by Rasmus:
+                Both my system's man-pages (3.22) and the latest online
+                (3.41) show:
+                    int mprotect(const void *addr, size_t len, int prot);
+                as the prototype for mprotect(2). However, POSIX [1] and the
+                actual sys/mman.h (on all the systems I checked) do not have
+                the const qualifier on the first argument.
+      msgctl.2
+      semctl.2
+      shmctl.2
+      svipc.7
+        Don't mention that ipc_perm is defined in <sys/ipc.h>
+            There's no need to mention that the 'ipc_perm' structure
+            is defined in <sys/ipc.h>. That's an implementation detail,
+            and furthermore <sys/ipc.h> is itself included by the other
+            System V IPC header files. The current text might lead the
+            reader to conclude that they must include <sys/ipc.h>, which
+            is not the case (it is required neither on Linux, nor by the
+            standards).
+      msgctl.2
+      msgget.2
+      msgop.2
+      semctl.2
+      semget.2
+      semop.2
+      shmctl.2
+      shmget.2
+        NOTES: <sys/types.h> and <sys/ipc.h> aren't strictly needed
+            Add text to NOTES to say that the <sys/types.h> and <sys/ipc.h>
+            header files aren't required by Linux or the standards, but may
+            be needed for portability to old systems.
+      ptrace.2
+        Explain WNOHANG behavior and EINTR bug
+            I didn't like ithe "SIGKILL operates similarly, with exceptions"
+            phrase (if it's different, then it's not "similar", right?),
+            and now I got around to changing it. Now it says simply:
+            "SIGKILL does not generate signal-delivery-stop and therefore
+            the tracer can't suppress it."
+            Replaced "why WNOHANG is not reliable" example with a more
+            realistic one (the one which actually inspired to add this
+            information to man page in the first place): we got
+            ESRCH - process is gone! - but waitpid(WNOHANG) can still
+            confusingly return 0 "no processes to wait for".
+            Replaced "This means that unneeded trailing arguments may
+            be omitted" part with a much better recommendation
+            to never do that and to supply zero arguments instead.
+            (The part about "undocumentedness" of gcc behavior was bogus,
+            btw - deleted).
+            Expanded BUGS section with the explanation and an example
+            of visible strace behavior on the buggy syscalls which
+            exit with EINTR on ptrace attach. I hope this will lead
+            to people submitting better bug reports to lkml about
+            such syscalls.
+      seteuid.2
+        Note glibc version where setegid() implementation changed
+            In glibc 2.2/2.3, setegid() switched from setregid() to setresgid().
+      set_tid_address.2
+        Rename 'ctid' argument for consistency with clone(2) page
+        Some rewordings and minor clarifications
+      sigwaitinfo.2
+        Some wording clarifications
+            Mainly rewording things like "is delivered" to "becomes pending",
+            which is more accurate terminology.
+      syscall.2
+        Add some more details to the description of syscall(2)
+            And add another example of using syscall() to the program example.
+      syscalls.2
+        Add kcmp(2)
+        Move discussion of set_zone_reclaim(2) out of main table
+            This system call was never visible to user space, so it makes
+            sense to move it out of the main table of system calls into
+            the notes below the table.
+      getifaddrs.3
+        Note that ifa_addr and ifa_netmask can be NULL
+      readdir.3
+        Handle -1 error from pathconf() in example code snippet
+            Improve the example demonstrating allocation of a buffer
+            for readdir_r() to handle -1 error return from pathconf().
+            Otherwise, naive readers may think that pathconf() return
+            value can be used without checking.
+      realpath.3
+        Use past tense with ancient history (libc4, libc5)
+      regex.3
+        Correct SEE ALSO reference to glibc manual "regex" section
+      rtime.3
+        Fix broken pointer cast in example code
+      sem_close.3
+      sem_destroy.3
+      sem_getvalue.3
+      sem_init.3
+      sem_open.3
+      sem_post.3
+      sem_unlink.3
+      sem_wait.3
+      sem_overview.7
+        Note that "cc -pthread" is required; "-lrt" no longer works
+            See https://bugs.launchpad.net/ubuntu/+source/manpages/+bug/874418
+      sigwait.3
+        Reword "is delivered" to "becomes pending"
+      strcat.3
+        Add some text to emphasize the dangers of buffer overruns
+        NOTES: Add discussion of strlcat()
+      strcpy.3
+        Note that info is lost when strncpy() doesn't null terminate
+        Add some text to emphasize possibility of buffer runs with strcpy()
+        NOTES: Add a discussion of strlcpy()
+            Inspired by https://lwn.net/Articles/506530/
+        Fix description of the null-byte padding performed by strncpy()
+      tsearch.3
+        NOTES: remove redundant discussion of unorthodox use of term "postorder"
+            This point is already covered at greater length in the main
+            text of the page (See the piece "More commonly, ...").
+        Clarify use for first argument to the twalk() 'action' function
+            There's a number of details in POSIX that are omitted in
+            the current version of this page.
+        Some wording fixes
+      core.5
+        Note effect of madvise(2) MADV_DONTDUMP flag
+      capabilities.7
+        Document CAP_BLOCK_SUSPEND
+      glob.7
+        Change 8 bit characters to 7 bit representation
+            Fixes rendering errors for accented 'a' characters.
+        Update bash(1) command used to obtain classical globbing behavior
+            The man page formerly noted the bash(1) v1 command to do this.
+      iso_8859-1.7
+        Explanation of SOFT HYPHEN and the code for it
+            <groff: iso_8859-2.7>:89: warning: can't find special character `shc'
+            This is the only "iso_8859-*.7" file that has this (now)
+            undefined character.  The code in column four in "iso_8859-1.7" is
+            "0x2D" ("HYPHEN, MINUS SIGN" or "HYPHEN-MINUS") instead of "0xAD".
+            See Debian bug 156154 (or package "manpages").
+            There should be an explanation for this graphic character and the
+            code should be 0xAD in iso_8859-1.7 (as in all others), even
+            though "[gn]roff" does not display a "HYPHEN" in that position of
+            the table.
+            The line with "SOFT HYPHEN" gets a footnote and a short
+            explanation.
+      mdoc.7
+        Fixing a warning and a table
+            Fis warning from "groff -ww ..." (or "man --warnings=w ..."):
+                <groff: mdoc.7>:294: warning:
+                tab character in unquoted macro argument
+            In one table the distance between columns is too small in the
+            "ps" output.  (Bug in the groff "doc.tmac" macro?)
+      mdoc.samples.7
+        Fix warnings from [ng]roff, corrections
+            From "man -ww ..." (groff -ww ...):
+                <standard input>:541: warning:
+                tab character in unquoted macro argument
+                [+3 similar warnings]
+                <standard input>:813: warning: macro `Pu' not defined
+                Usage: .Rv -std in sections 2 and 3 only (#1669)
+                mdoc warning: A .Bl directive has no matching .El (#1821)
+            String "Pu" defined as a row of punctuation characters.
+            ".Bl" and ".El" fixed.
+            Some arguments, that start with a period or are the name of a
+            macro, protected with "\&".
+            Variable name for macro ".Rv" corrected.
+      netdevice.7
+        Line in table too long
+            Fix warning from "man ..." ("nroff -ww ..."):
+                nroff: netdevice.7: warning: around line 98:
+                table wider than line width
+            Fix: No right adjustment in text blocks in tables.
+            See http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=673873
+      netlink.7
+        Line in table is too long
+            Fix warning from "man ..." ("nroff -ww ..."):
+                nroff: netlink.7: warning: around line 195:
+                table wider than line width
+            Horizontal line incorporated into table.
+            No right adjustment of text blocks in tables.
+            See http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=673875
+        Change description of "*_pid" fields to "Port ID"
+            As reported by Herbert Xu, these should not be considered as PIDs.
+            See http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=383296
+      rtnetlink.7
+        Line in table too long
+            Fix warning from "man ..." ("nroff -ww ..."):
+                nroff: rtnetlink.7: warning: around line 415:
+                table wider than line width
+            Column gutter reduced to fit line length.
+            Right adjustment in text blocks removed in tables.
+            Some header made centered in tables.
+            One table put on same page.
+            See http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=674051
+      socket.7
+        Document SO_MARK socket option
+            Commit 4a19ec5800fc3bb64e2d87c4d9fdd9e636086fe0 in Jan 2008 added
+            the new SO_MARK socket option.
+            This patch is based on text from the commit message.
+            See https://bugzilla.kernel.org/show_bug.cgi?id=16461.
+      svipc.7
+        SYNOPSIS: Remove include of <sys/types.h> and <sys/ipc.h>
+            Including <sys/types.h> and <sys/ipc.h> isn't needed on Linux
+            and isn't really relevant for the explanation on this page.
+
+-------------------------------------------------------------------
+Wed May 30 10:16:04 CEST 2012 - pgajdos@suse.cz
+
+- update to version 3.41
+  * New and rewritten pages
+      get_robust_list.2
+        New page documenting get_robust_list(2) and set_robust_list(2)
+      mallinfo.3
+        New page for mallinfo(3)
+      malloc_info.3
+        New page for malloc_info(3)
+      malloc_stats.3
+        New man page for malloc_stats(3)
+  * Newly documented interfaces in existing pages
+      madvise.2
+        Document MADV_DONTDUMP and MADV_DODUMP
+  * New and changed links
+      set_robust_list.2
+        New link to new get_robust_list.2 page
+      LIST_ENTRY.3
+      LIST_HEAD.3
+      LIST_INIT.3
+      LIST_INSERT_AFTER.3
+      LIST_INSERT_HEAD.3
+      LIST_REMOVE.3
+      TAILQ_ENTRY.3
+      TAILQ_HEAD.3
+      TAILQ_INIT.3
+      TAILQ_INSERT_AFTER.3
+      TAILQ_INSERT_HEAD.3
+      TAILQ_INSERT_TAIL.3
+      TAILQ_REMOVE.3
+      CIRCLEQ_ENTRY.3
+      CIRCLEQ_HEAD.3
+      CIRCLEQ_INIT.3
+      CIRCLEQ_INSERT_AFTER.3
+      CIRCLEQ_INSERT_BEFORE.3
+      CIRCLEQ_INSERT_HEAD.3
+      CIRCLEQ_INSERT_TAIL.3
+      CIRCLEQ_REMOVE.3
+        New link to queue.3
+            The queue(3) page documents these macros, so it makes sense to
+            have links for the names.
+      DES_FAILED.3
+        New link to des_crypt.3
+            The des_crypt(3) page documents this macro, so it makes sense
+            to have a link for the name.
+      qsort_r.3
+        New link to qsort.3
+            Overlooked to add this link in 3.38, when documentation of
+            qsort_r() was added to the qsort.3 page.
+  * Global changes
+      faccessat.2
+      fchmodat.2
+      fchownat.2
+      fstatat.2
+      futimesat.2
+      inotify_init.2
+      linkat.2
+      mkdirat.2
+      mknodat.2
+      openat.2
+      readlinkat.2
+      renameat.2
+      setns.2
+      splice.2
+      symlinkat.2
+      sync.2
+      tee.2
+      unlinkat.2
+      vmsplice.2
+        Global fix: note glibc version that added library support
+      confstr.3
+      strcasecmp.3
+      strcat.3
+      strcmp.3
+      strcpy.3
+      strdup.3
+      strftime.3
+      strlen.3
+      strnlen.3
+      strpbrk.3
+      strspn.3
+      strtok.3
+      strxfrm.3
+        Clarify that these functions operate on bytes, not (wide) characters
+            Change 'character(s)' to 'byte(s)' to make clear that these
+            functions operate on bytes, not wide / UTF8 characters.
+            (POSIX uses 'byte(s)' similarly, to make this point.)
+      icmp.7
+      ipv6.7
+      packet.7
+      raw.7
+      rtnetlink.7
+      unix.7
+      x25.7
+        Remove names of constants from NAME line
+            Some of the sockets/network protocol pages included names of
+            the corresponding address family constants in the NAME line,
+            but this wasn't done consistently across all pages, and probably
+            it adds little value in those pages that did do this. So, remove
+            these constants from those pages that have them in the NAME
+            section.
+  * Changes to individual pages
+      clock_getres.2
+        Expand description of CLOCK_REALTIME
+            Make it clear that this clock may be discontinuous, and is
+            affected my incremental NTP and clock-adjtime(2) adjustments.
+            See http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=540872
+      epoll_wait.2
+        Clarify that 'timeout' is a *minimum* interval
+            Make it clear that 'timeout' is a minimum interval; the actual
+            interval will be rounded up to the system clock granularity,
+            and may overrun because of kernel scheduling delays.
+      execve.2
+        Rewording to deemphasize libc5 details
+      fork.2
+        ERRORS: add ENOSYS
+            Can occur on, for example, non-MMU hardware.
+      getcpu.2
+        Add RETURN VALUE and ERRORS sections
+        Refer reader to NOTES for more info about 'tcache'
+        DESCRIPTION: reword a sentence to be clearer
+      io_cancel.2
+      io_destroy.2
+      io_getevents.2
+      io_setup.2
+      io_submit.2
+        Rewrite to focus on system call API
+            Rewrite to focus on the system call interface, adding
+            some notes on the libaio wrapper differences.
+            See the following mail:
+            2012-05-07 "aio manuals", linux-man@vger.kernel.org
+            http://thread.gmane.org/gmane.linux.man/1935/focus=2910
+            Other minor rewrites.
+      mount.2
+        Comment out an old Linux libc detail
+      open.2
+        Describe race of direct I/O and fork()
+            Rework 04cd7f64, which didn't capture the details correctly.
+            See the April/May 2012 linux-man@ mail thread "[PATCH]
+            Describe race of direct read and fork for unaligned buffers"
+            http://thread.gmane.org/gmane.linux.kernel.mm/77571
+      poll.2
+        Clarify that 'timeout' is a *minimum* interval
+            Make it clear that 'timeout' is a minimum interval; the actual
+            interval will be rounded up to the system clock granularity,
+            and may overrun because of kernel scheduling delays.
+        Clarify discussion of wrapper function emulation
+            Clarify that glibc (as well as old libc) provides emulation
+            using select(2) on older kernels that don't have a poll()
+            system call.
+        Make the meaning of a zero timeout explicit
+            Clarify that timeout==0 causes an immediate return, even if
+            no file descriptors are ready.
+      pread.2
+        BUGS: Note O_APPEND + pwrite() does the wrong thing
+            See https://bugzilla.kernel.org/show_bug.cgi?id=43178
+      recvmmsg.2
+        Clarify that 'timeout' is a *minimum* interval
+            Make it clear that 'timeout' interval will be rounded up to the
+            system clock granularity, and may overrun because of kernel
+            scheduling delays.
+      select.2
+        Clarify that 'timeout' is a *minimum* interval
+            Make it clear that 'timeout' is a minimum interval; the actual
+            interval will be rounded up to the system clock granularity,
+            and may overrun because of kernel scheduling delays.
+        Expand description of the self-pipe trick
+        Add further details on pselect6() system call that underlies pselect()
+      semop.2
+        Clarify that 'timeout' of semtimedop() is a *minimum* interval
+            Make it clear that 'timeout' interval will be rounded up to the
+            system clock granularity, and may overrun because of kernel
+            scheduling delays.
+      signal.2
+        Note that 'sig_t' requires _BSD_SOURCE
+            Also remove some old Linux libc details
+      sigwaitinfo.2
+        Clarify that 'timeout' of sigtimedwait() is a *minimum* interval
+            Make it clear that 'timeout' is a minimum interval; the actual
+            interval will be rounded up to the system clock granularity,
+            and may overrun because of kernel scheduling delays.
+      stat.2
+        Formatting fixes
+            From "groff -ww" (or "man --warnings=w ..."):
+                warning: around line 442: table wider than line width
+            GNU man uses line length of 78.
+            Use text blocks.  Two spaces between sentences or better: start
+            each sentence in a new line.
+      syscalls.2
+        Formatting fixes
+            From "groff -ww ..." (or "man --warnings=w ..."):
+                warning: around line 157: table wider than line width
+            Have to use text blocks.  Move some text to its correct column.
+            Split text to two columns to avoid hyphenation.
+      sysinfo.2
+        Remove reference to obsolete libc5
+      syslog.2
+        Remove some details about obsolete Linux libc
+      aio_cancel.3
+      aio_error.3
+      aio_fsync.3
+      aio_read.3
+      aio_return.3
+      aio_suspend.3
+      aio_write.3
+        ERRORS: Add/update ENOSYS error
+      aio_cancel.3
+        Clarify what happens when a request isn't successfully canceled
+        Add pointers to aio(7) and sigevent(7)
+      dbopen.3
+        SYNOPSIS: Add header file <fcntl.h>
+            Upstreamed from Debian, and consistent with FreeBSD
+            dbopen(3) man page.
+      fmemopen.3
+        Note details of POSIX.1-2008 specification of 'b' in 'mode'
+        BUGS: fmemopen() doesn't correctly set file position in some cases
+            If 'mode' is append, but 'size' does not cover a null byte
+            in 'buf', then fmemopen() incorrectly sets the initial file
+            position to -1, rather than the next byte after the end of
+            the buffer.
+            See http://sourceware.org/bugzilla/show_bug.cgi?id=13151
+        BUGS: fmemopen() incorrectly handles size==0 case
+            If size is zero, fmemopen() fails, This is surprising behavior,
+            and not specified in POSIX.1-2008.
+            See http://sourceware.org/bugzilla/show_bug.cgi?id=11216
+            Reported-by; Alex Shinn <alexshinn@gmail.com>
+        BUGS: Note silent ABI change for fmemopen() in glibc 2.9
+        BUGS: Append mode does not force writes to append
+            Append mode correctly sets the initial offset but does
+            not force subsequent writes to append at end of stream.
+            See http://sourceware.org/bugzilla/show_bug.cgi?id=13152
+        BUGS: Note inconsistent treatment of 'b' in 'mode'
+            fopen() permits, for example, both "w+b" and "wb+",
+            but only the latter is meaningful to fmemopen().
+            See http://sourceware.org/bugzilla/show_bug.cgi?id=12836
+      fopencookie.3
+        Correct description of return for user-supplied 'write' function
+            See http://sourceware.org/bugzilla/show_bug.cgi?id=2074
+      getaddrinfo.3
+        Note that AI_ADDRCONFIG is not affected by loopback addresses
+            See http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=660479
+      iconv.3
+        Upstream useful NOTE from Debian
+            Warn the reader that the pointer arguments can't be
+            interpreted as C style strings. Also, note possible
+            alignment requirements for the referenced bytes sequences,
+        Write a better paragraph introducing iconv() and its arguments
+      isgreater.3
+        Clarify that the arguments to these macros must be real-floating
+            See http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=609033
+      lio_listio.3
+        Clarify that async notification occurs when *all* I/Os complete
+      makedev.3
+        SYNOPSIS: Correct return types of major() and minor()
+            See https://bugzilla.redhat.com/show_bug.cgi?id=754188
+            Reported-by; Zdenek Kabelac <zkabelac@redhat.com>
+      malloc.3
+        SEE ALSO: Add malloc_info(3)
+      malloc_get_state.3
+        Fix wordos in function names in NAME line
+      mallopt.3
+        Fix example program
+            The example code was a version that was not consistent with
+            the shell output shown on the page.
+            Reported-bY: Simon Paillard <spaillard@debian.org>
+        Restore accidentally omitted line in shell session
+        SEE ALSO: Add malloc_stats(3)
+      mmap64.3
+        Change target of link to mmap.2 (was mmap2.2)
+            Upstreamed from Red Hat / Fedora
+      realpath.3
+        Remove note about Solaris possibly returning a relative path
+      syslog.3
+        Document behavior when 'ident' argument to openlog() is NULL
+            See https://bugs.launchpad.net/ubuntu/+source/manpages/+bug/382096
+        Update CONFORMING TO for POSIX.1-2008
+            POSIX.1-2008 doesn't change any details, but make
+            that more explicit.
+      undocumented.3
+        Remove some functions that have been documented
+      sd.4
+        Remove reference to nonexistent scsi(4) page
+            Upstreamed from RedHat / Fedora
+      sk98lin.4
+        Note that this driver was removed in 2.6.28
+            See https://bugs.launchpad.net/ubuntu/+source/manpages/+bug/528020
+      passwd.5
+        Upstream pieces from Red Hat/Fedora
+            Note mention of empty password field.
+            Add description of "*NP*" in password field.
+        Various minor fixes and improvements
+      proc.5
+        Note that CAP_SYS_ADMIN processes can override file-max
+            Upstreamed from red Hat / Fedora
+        Document  /proc/[pid]/cgroup
+            Upstreamed from Red Hat / Fedora
+      resolv.conf.5
+        Take a Debian improvement into upstream
+      tzfile.5
+        Mention timezone directories in DESCRIPTION
+            Note that timezone files are usually in /usr/lib/zoneinfo
+            or /usr/share/zoneinfo.
+        Drop SYNOPSIS
+            The SYNOPSIS doesn't correspond to a user-visible file.
+        SEE ALSO: Add pointer to glibc source file timezone/tzfile.h
+        SEE ALSO: add tzset(3) and tzselect(8)
+      ascii.7
+        Indent for "troff" makes table too wide
+            Fix following from "groff -t -ww ...":
+                warning: around line 53: table wider than line width
+            Extra indent for "troff" makes the table look misplaced
+            (default "ps" output).
+      cp1251.7
+        table too wide
+            From "nroff -ww -t ...":
+                warning: around line 44: table wider than line width
+            Columns are made narrower (column gutter decreased).
+      ipv6.7
+        Add ENODEV error for bind() to link-local IPv6 address
+      signal.7
+        Clarify that SIGLOST is unused
+        Comment out crufty BUGS text on SIGLOST
+            It must be a very long time since the statement there
+            about SIGLOST was true. (The text seems to date back to
+            1996.)
+        Update architectures for tables of signal numbers
+      utf-8.7
+        Two clarifications
+            This patch clarifies that 0xc0 and 0xc1 are not valid in any UTF-8
+            encoding[0], and it also references RFC 3629 instead of RFC 2279.
+            [0] In order to have 0xc0, you'd have to have a two-byte encoding
+            with all the data bits zero in the first byte (and thus only six
+            bits of data), which would be an ASCII character encoded in the
+            non-shortest form.  Similarly with 0xc1.
+            See http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=538641
+      ldconfig.8
+      nscd.8
+        Remove path prefix from NAME line
+            Command names shown in NAME are normally just the basename,
+            not the full pathname of the command.
+
+-------------------------------------------------------------------
+Thu May  3 10:47:45 CEST 2012 - pgajdos@suse.cz
+
+- update to version 3.40
+  * New and rewritten pages
+      process_vm_readv.2
+        New page for process_vm_readv(2) and process_vm_writev(2)
+      mcheck.3
+        New man page for mcheck(3) and related functions
+            Also describes mcheck_check_all(3), mcheck_pedantic(3),
+            and mprobe(3)
+  * Newly documented interfaces in existing pages
+      rcmd.3
+        Document "_af" variants of these functions
+            Document rcmd_af(), rresvport_af(), iruserok_af(), ruserok_af().
+            Also some restructuring and other clarifications.
+      rexec.3
+        Document rexec_af()
+  * New and changed links
+      iruserok_af.3
+      rcmd_af.3
+      rresvport_af.3
+      ruserok_af.3
+        New links to rcmd.3
+      rexec_af.3
+        New link to rexec.3
+  * Changes to individual pages
+      clock_getres.2
+        Clarify difference between CLOCK_MONOTONIC and CLOCK_MONOTONIC_RAW
+            Note interactions of these two clocks with discontinuous
+            adjustments to the system time and NTP/adjtime(2).
+      fallocate.2
+        Fix description of ENOSYS and EOPNOTSUP errors
+            As reported in https://bugzilla.redhat.com/show_bug.cgi?id=680214
+      fchmodat.2
+        Improve discussion of difference between wrapper and underlying syscall
+      gettimeofday.2
+        gettimeofday() is affected by discontinuous jumps in the system time
+            Advise reader to use clock_gettime(2), if they need a
+            monotonically increasing time source.
+        SEE ALSO: Add clock_gettime(2)
+      prctl.2
+        Add PR_TASK_PERF_EVENTS_DISABLE and PR_TASK_PERF_EVENTS_ENABLE
+            Add some basic documentation of these operations, with a pointer to
+            tools/perf/design.txt for more information.
+        Amend details of PR_SET_PDEATHSIG
+      ptrace.2
+        Note SPARC deviation with respect to get/set regs
+            SPARC reverses the use of 'addr' and 'data' for
+            PTRACE_GETREGS, PTRACE_GETFPREGS, PTRACE_SETREGS,
+            and PTRACE_SETFPREGS.
+      send.2
+        Document EACCES error case for UDP
+      sigaction.2
+        Remove mention of raise(3) for SI_USER
+            For a long time now, glibc's raise(3) didn't yield SI_USER
+            for the signal receiver, so remove mention of raise(3)
+            here. The user can deduce the details, if needed, by looking
+            at the recently updated raise(3) page.
+      aio_cancel.3
+        Rewrite RETURN VALUE section to be clearer
+      aio_init.3
+        Remove extraneous "POSIX" from NAME section
+      btree.3
+      dbopen.3
+      hash.3
+      mpool.3
+      recno.3
+        Note that glibc no longer provides these interfaces
+            glibc stopped providing these interfaces with v2.2.
+            Nowadays, the user that finds these pages probably wants
+            the libdb API, so note this in the page.
+            See http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=337581
+      fopen.3
+        BUGS: Note limitation on number of flag characters parsed in 'mode'
+        Note that 'c' and 'e' flags are ignored for fdopen()
+            Determined from reading libio/iofdopen.c.
+        Document ",ccs=string" feature of 'mode' for fopen()/freopen()
+      getgrnam.3
+        Fix discussion of _SC_GETGR_R_SIZE_MAX
+            The value is not meant to be a maximum (as was specified in
+            SUSv3) but an initial guess at the required size
+            (as specified in SUSv4).
+      getpwnam.3
+        Fix discussion of _SC_GETPW_R_SIZE_MAX
+            The value is not meant to be a maximum (as was specified in
+            SUSv3) but an initial guess at the required size
+            (as specified in SUSv4).
+      malloc.3
+      mallopt.3
+      mtrace.3
+        SEE ALSO: add mcheck(3)
+      memchr.3
+        Clarify description, omitting mention of "strings" and "characters"
+            The existing text slipped into talking about characters and
+            strings, which could mislead readers into thing that, for
+            example, searches for the byte '\0' are treated specially.
+            Therefore, rewrite in terms of "bytes" and "memory areas".
+            At the same time, make a few source file clean-ups.
+      mkstemp.3
+        Add "mkstemps" and "mkostemps" to NAME line
+      posix_openpt.3
+        Add some details on use of the slave pathname
+            An explicit pointer to ptsname(3) is useful, as is a note
+            of the fact that the slave device pathname exists only as
+            long as the master device is held open.
+      raise.3
+        Add some notes on underlying system call that is used
+      rcmd.3
+        Add some details of the rresvport() 'port' argument
+      resolver.3
+        Note that many options are documented in resolv.conf(5)
+      scandir.3
+        Improve EXAMPLE source code: s/0/NULL/ in scandir() call
+      strchr.3
+        Explain behavior when searching for '\0'
+      strerror.3
+        Improve strerror_r() description
+            POSIX requires that perror() not modify the static storage
+            returned by strerror().  POSIX 2008 and C99 both require that
+            strerror() never return NULL (a strerror() that always
+            returns "" for all inputs is valid for C99, but not for POSIX).
+            http://sourceware.org/bugzilla/show_bug.cgi?id=12204
+            documents glibc's change to come into compliance with POSIX
+            regarding strerror_r() return value.  The GNU strerror_r() use
+            of 'buf' was confusing - I ended up writing a test program that
+            proves that 'buf' is unused for valid 'errnum', but contains
+            truncated "unknown message" for out-of-range 'errnum'.
+            See also http://austingroupbugs.net/view.php?id=382
+        Correct description of error return for XSI strerror_r()
+        Note how to use 'errno' to detect errors when calling strerror()
+        Add an example of the kind of string returned by strerror()
+      resolv.conf.5
+        Document "single-request" option
+      inotify.7
+        Note buffer size that guarantees being able to read at least one event
+        Correct description of size of inotify_event structure
+      iso_8859-1.7
+        Add "-" for SOFT HYPHEN
+            See http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=156154
+      netdevice.7
+        Document some SIOC configuration ioctls
+            This patch adds common but missing SIOC configuration ioctls to
+            the netdevice.7 manual pages that are not documented anywhere
+            else. SIOCSIFPFLAGS and SIOCGIFPFLAGS are linux-specific. Flag
+            values come from Linux 2.6.25 kernel headers for sockios. The
+            others are standard BSD ioctls that have always been implemented
+            by Linux and were verified from inspecting netdevice.c kernel
+            code.
+      socket.7
+        Correct description of SO_BROADCAST
+      tcp.7
+    lepton
+        Correct description for TCP_MAXSEG on modern kernel
+- obsoletes upstreamed resolv.conf.patch
+
+-------------------------------------------------------------------
+Tue Apr 24 08:44:57 CEST 2012 - pgajdos@suse.cz
+
+- update to version 3.39
+  * New and rewritten pages
+      malloc_trim.3
+        New man page for malloc_trim(3)
+      malloc_usable_size.3
+        New man page for malloc_usable_size(3)
+  * Newly documented interfaces in existing pages
+      prctl.2
+        Document PR_SET_MM (new in Linux 3.3)
+        Various edits and improvements to Cyrill's patch
+  * Changes to individual pages
+      epoll_create.2
+        Rework discussion of 'size' argument
+        Add .SS for description of epoll_create1()
+      epoll_wait.2
+        Another thread can add to epoll instance while epoll_wait is blocked
+            See https://bugzilla.kernel.org/show_bug.cgi?id=43072
+        Clarify that epoll_pwait() blocks calling *thread*
+        A few wording improvements
+      fchmodat.2
+        Note difference between glibc wrapper and underlying system call
+            The wrapper function has a 'flags' argument (which currently
+            serves no purpose), while the underlying system call does not.
+      fcntl.2
+        Explain behaviour of F_GETLEASE during lease break
+        Change type of arg from "long" to "int"
+            Various fcntl(2) commands require an integral 'arg'.
+            The man page said it must be "long" in all such cases.
+            However, for the cases covered by POSIX, there is an
+            explicit requirement that these arguments be "int".
+            Update the man page to reflect. Probably, all of the
+            other "long" cases (not specified in POSIX) should
+            be "int", and this patch makes them so. Based on a
+            note fromEric Blake, relating to F_DUPFD_CLOEXEC.
+      gettimeofday.2
+        Reorganize content
+            The main change is to move the historical information about
+            the 'tz_dsttime' to NOTES.
+        Note that compiler issues warnings if 'tv' is NULL
+      mmap.2
+        Clarify that this system call should not be invoked directly
+            See https://bugzilla.kernel.org/show_bug.cgi?id=42892
+        Clarify NOTES discussion of mmap() versus mmap2()
+      poll.2
+        Document negative value in 'fd' field
+        Document semantics of passing zero in 'events' field
+      ptrace.2
+        Various fixes
+            For some reason, the PTRACE_TRACEME paragraph talks about some
+            general aspects of ptraced process behavior. It repeats the
+            "tracee stops on every signal" information even though that was
+            already explained just a few paragraphs before. Then it describes
+            legacy SIGTRAP on execve().
+            This patch deletes the first part, and moves the second part up,
+            into the general ptrace description. It also adds
+            "If PTRACE_O_TRACEEXEC option is not in effect" to the description
+            of the legacy SIGTRAP on execve().
+            The patch also amends the part which says "For requests other
+            than PTRACE_KILL, the tracee must be stopped." - PTRACE_ATTACH
+            also doesn't require that.
+      sigaction.2
+        Clarify that the use of SI_SIGIO is for Linux 2.2 only
+            See also http://sourceware.org/bugzilla/show_bug.cgi?id=6745
+      sigprocmask.2
+        ERRORS: add EFAULT
+      times.2
+        ERRORS: Add EFAULT
+      div.3
+        CONFORMING TO: Add C99
+      fread.3
+        Clarify further that return value is number of items, not bytes
+            See also http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=665780
+      getaddrinfo.3
+        Correct type of ai_addrlen field
+      malloc.3
+        SEE ALSO: add malloc_usable_size(3)
+        SEE ALSO: Add malloc_trim(3)
+      mallopt.3
+        Fix text describing M_PERTURB and free()
+        SEE ALSO: Add malloc_trim(3)
+      memchr.3
+        Remove mention of terminating null in description of rawmemchr()
+      perror.3
+        Note that use of 'sys_errlist' is deprecated
+      rcmd.3
+        glibc eventually added a declaration of iruserok() in version 2.12
+      sysconf.3
+        Add mention of _SC_SYMLOOP_MAX
+      nologin.5
+        nologin must not only exist, but *be readable* to be effective
+      nsswitch.conf.5
+        Significant rewrites and improvements
+            This patch applies to nsswitch.conf.5 in man-pages-3.36.
+            My changes almost completely rewrite large sections of the
+            man page. They are needed to add clarity, correct grammar,
+            reduce confusion, and bring up-to-date with the latest glibc.
+            I have checked the man page against the nss source code in
+            glibc 2.14.90.
+            Historical notes are demoted to the footer.
+            The rewrite makes the man page much clearer to
+            understand, more authoratitive, and easier to read.
+        Light edits to Mark Bannister's changes
+      capabilities.7
+        Add prctl(PR_SET_MM) to CAP_SYS_RESOURCE
+      epoll.7
+        Some minor clarifications at start of DESCRIPTION
+      netlink.7
+        Note cases where nonprivileged users can use netlink multicast groups
+            See also https://bugzilla.novell.com/show_bug.cgi?id=754611
+      unix.7
+        Add a detail on autobind feature
+      ld.so.8
+        Document effect of hwcaps on search path
+            Wording by Aurelien Jarno from Debian glibc's r4701 (2011-06-04).
+            Addresses http://bugs.debian.org/622385
+- removed upstreamed netlink.patch
+
+-------------------------------------------------------------------
+Thu Apr 12 08:35:01 CEST 2012 - pgajdos@suse.cz
+
+- update to version 3.38
+  * New and rewritten pages
+      get_nprocs_conf.3
+        New page documenting get_nprocs_conf(3) and get_nprocs(3)
+        Some additions and improvements
+      malloc_get_state.3
+        New page documenting malloc_get_state(3) and malloc_set_state(3)
+      mallopt.3
+        New man page for mallopt(3)
+      mtrace.3
+        Complete rewrite of page, adding much more detail
+      scandirat.3
+        New page for scandirat(3) (new in glibc 2.15)
+  * Newly documented interfaces in existing pages
+      posix_memalign.3
+        Document aligned_alloc(3)
+            aligned_alloc() is new in C11.
+        Document pvalloc(3)
+      qsort.3
+        Add documentation of qsort_r(3)
+        Improvements to Mark R Bannister's qsort_r() patch
+        Add VERSIONS section for qsort_r()
+  * New and changed links
+      aligned_alloc.3
+        New link to posix_memalign.3
+      get_nprocs.3
+        Link to new get_nprocs_conf.3 page
+      malloc_set_state.3
+        Link to new malloc_get_state.3 page
+      pvalloc.3
+        New link to posix_memalign.3
+  * Global changes
+  * Various pages
+        Global formatting fix: balance .nf/.fi pairs
+  * Various pages
+        Global fix: place sections in correct order
+  * Various pages
+        Global fix: Remove duplicated words
+            Remove instances of duplicate words found using Justin's
+            grep-fu:
+                for f in man?/*.[1-9]; do
+                    grep -HE ' ([[:alpha:]]{2,} +)\1' "$f" |
+                        grep -Evw '(proc|hugetlbfs|XXX*|root|long) *\1';
+                done | grep -E --colo ' ([[:alpha:]]{2,} +)\1'
+  * Various pages
+        Correct order of SEE ALSO entries
+  * Changes to individual pages
+      futimesat.2
+        PROTOTYPE: Correct header file and feature test macro requirements
+      keyctl.2
+        Strip trailing tabs from source line
+            See http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=664688
+      ptrace.2
+        Document PTRACE_GETEVENTMSG for PTRACE_EVENT_EXEC
+        Various fixes to recent updates of this page
+      symlinkat.2
+        PROTOTYPE: Correct header file
+      syscalls.2
+        Remove unimplemented system calls from main syscall list
+            The unimplemented system calls are in any case noted lower down
+            in the page. Also: rearrange the text describing the unimplemented
+            system calls.
+        Note a few system calls that were removed in Linux 2.6
+        Add process_vm_readv(2) and process_vm_writev(2)
+      unlinkat.2
+        PROTOTYPE: Correct header file
+        PROTOTYPE: Add <fcntl.h> for AT_* constants
+      utimensat.2
+        PROTOTYPE: Add <fcntl.h> for AT_* constants
+      copysign.3
+        DESCRIPTION: Add a couple of examples
+      malloc.3
+        NOTES: Add a short discussion of arenas
+        Replace discussion of MALLOC_CHECK_ with pointer to mallopt(3)
+        SEE ALSO: Add mtrace(3)
+        SEE ALSO: add malloc_get_state(3)
+      posix_memalign.3
+        Rename memalign() argument
+            Rename "boundary" to "alignment" for consistency
+            with posix_memalign().
+        Improve discussion of feature test macros and header files for valloc(3)
+      rtnetlink.3
+        Fix example code, rta_len assignment should use RTA_LENGTH()
+            See also http://bugs.debian.org/655088
+      scandir.3
+        SEE ALSO: Add scandirat(3)
+      sigqueue.3
+        Remove rt_sigqueueinfo from TH line
+            rt_sigqueueinfo() now has its own manual page, so should not
+            be listed in the .TH line of this page.
+      tzset.3
+        Correct description for Julian 'n' date format
+            The Julian 'n' date format counts starting from 0, not 1.
+        Add some clarifying remarks to discussion of Julian day formats
+      packet.7
+        Fix comment on 'sll_hatype' field
+      tcp.7
+        Correct RFC for TIME_WAIT assassination hazards
+
+-------------------------------------------------------------------
+Fri Apr  6 07:10:45 UTC 2012 - pgajdos@suse.com
+
+- amend netlink.7 man page [bnc#754611]
+
+-------------------------------------------------------------------
+Fri Mar 23 11:26:27 UTC 2012 - cfarrell@suse.com
+
+- license update: BSD-3-Clause and GPL-2.0+ and MIT
+  SPDX
+
+-------------------------------------------------------------------
+Mon Mar 12 08:27:51 CET 2012 - pgajdos@suse.cz
+
+- update to version 3.37
+  * New and rewritten pages
+      getent.1
+        New page to document 'getent' binary provided by glibc
+  * Changes to individual pages
+      bdflush.2
+        Note that bdflush() is deprecated, and does nothing
+      nfsservctl.2
+        Note that this system call was removed in Linux 3.1
+      ptrace.2
+        add extended description of various ptrace quirks
+            Changes include:
+            s/parent/tracer/g, s/child/tracee/g - ptrace interface now
+            is sufficiently cleaned up to not treat tracing process
+            as parent.
+            Deleted several outright false statements:
+            - pid 1 can be traced
+            - tracer is not shown as parent in ps output
+            - PTRACE_ATTACH is not "the same behavior as if tracee had done
+              a PTRACE_TRACEME": PTRACE_ATTACH delivers a SIGSTOP.
+            - SIGSTOP _can_ be injected.
+            - Removed mentions of SunOS and Solaris as irrelevant.
+            - Added a few more known bugs.
+            Added a large block of text in DESCRIPTION which doesn't focus
+            on mechanical description of each flag and operation, but rather
+            tries to describe a bigger picture. The targeted audience is
+            a person which is reasonably knowledgeable in Unix but did not
+            spend years working with ptrace, and thus may be unaware of its
+            quirks. This text went through several iterations of review by
+            Oleg Nesterov and Tejun Heo.
+            This block of text intentionally uses as little markup as possible,
+            otherwise future modifications to it will be very hard to make.
+        Global clean-up of page
+            * Wording and formatting fixes to existing text and
+              Denys Vlasenko's new text.
+            * Various technical amendments and improvements to
+              Denys Vlasenko's new text.
+            * Added FIXME for various problems with the current text.
+        Integrated changes after further review from Denys Vlasenko
+      syscalls.2
+        Note that nfsservctl(2) was removed in Linux 3.1
+        Note that bdflush(2) is deprecated
+      capabilities.7
+        Add CAP_WAKE_ALARM
+        Add various operations under CAP_SYS_ADMIN
+        Add perf_event_open(2) to CAP_SYS_ADMIN
+        Add VM86_REQUEST_IRQ vm86(2) command to CAP_SYS_ADMIN
+        Update CAP_NET_ADMIN with notes from include/linux/capability.h
+        Add nfsservctl(2) to CAP_SYS_ADMIN
+        Add ioctl(FIBMAP) under CAP_SYS_RAWIO
+        Add virtual terminal ioctl()s under CAP_SYS_TTY_CONFIG
+        Update CAP_NET_RAW with notes from include/linux/capability.h
+        Add F_SETPIPE_SZ case to CAP_SYS_RESOURCE
+        Add POSIX messages queues queues_max case to CAP_SYS_RESOURCE
+        Update CAP_SYS_RESOURCE with notes from include/linux/capability.h
+        SEE ALSO: Add libcap(3)
+      ld.so.8
+        Add --adit command-line option
+
+-------------------------------------------------------------------
+Mon Mar  5 08:37:01 CET 2012 - pgajdos@suse.cz
+
+- update to version 3.36
+  * New and rewritten pages
+      sendmmsg.2
+        New page for sendmmsg(2)
+            Some pieces inspired by an initial attempt by Stephan Mueller.
+  * Newly documented interfaces in existing pages
+      fallocate.2
+        Document FALLOC_FL_PUNCH_HOLE
+            FALLOC_FL_PUNCH_HOLE was added in Linux 2.6.38,
+            for punching holes in the allocated space in a file.
+  * Changes to individual pages
+      dup.2
+        SYNOPSIS: Add "#include <fntl.h>" for O_* constants
+      fallocate.2
+        Substantial restructuring of DESCRIPTION
+            The addition of a second class of operation ("hole punching")
+            to the man page made it clear that some significant restructuring
+            is required. So I substantially reworked the page, including the
+            preexisting material on the default "file allocation" operation.
+        Add further details for FALLOC_FL_PUNCH_HOLE
+        ERRORS: Add EPERM error case for FALLOC_FL_PUNCH_HOLE
+      fork.2
+        NOTES: Describe clone() call equivalent to fork()
+      fsync.2
+        Various improvements
+            - explain the situation with disk caches better
+            - remove the duplicate fdatasync() explanation in the NOTES
+              section
+            - remove an incorrect note about fsync() generally requiring two
+              writes
+            - remove an obsolete ext2 example note
+            - fsync() works on any file descriptor (doesn't need to be
+              writable); correct the EBADF error code explanation
+        Note that some systems require a writable file descriptor
+            An edited version of Guillem Jover's comments:
+            [While the file descriptor does not need to be writable on Linux]
+            that's not a safe portable assumption to make on POSIX in general
+            as that behavior is not specified and as such is
+            implementation-specific. Some Unix systems do actually fail on
+            read-only file descriptors, for example [HP-UX and AIX].
+      mount.2
+        Removed erroneous statement about MS_RDONLY and bind mounts
+      open.2
+        Fix grammar in O_DIRECT description
+            Some small grammar fixes to the O_DIRECT description.
+      pipe.2
+        SYNOPSIS: Add "#include <fntl.h>" for O_* constants
+            See http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=659750
+      sched_rr_get_interval.2
+        Update notes on modifying quantum
+            Since Linux 2.6.24, it is no longer possible to
+            modify the SCHED_RR quantum using setpriority(2).
+            (Slight edits to Clemens' patch by mtk.)
+        Reordered various pieces of text
+        Reworded text of ESRCH error
+      send.2
+        Add mention of sendmmsg(2)
+      sync.2
+        PROTOTYPE: Fix return type of syncfs()
+      vfork.2
+        Clarify what is duplicated in the child
+            Add some words to make it clear to the reader that vfork(),
+            like fork(), creates duplicates of process attributes
+            in the child.
+        Note clone() flags equivalent to vfork()
+        Add some notes on reasons why vfork() still exists
+        Clarify that calling *thread* is suspended during vfork()
+        CONFORMING TO: Note that POSIX.1-2001 marked vfork() obsolete
+      gets.3
+        Document C11 and glibc 2.16 changes affecting gets()
+      pthread_sigmask.3
+        Fix comment that was inconsistent with code in example program
+      sem_wait.3
+        EXAMPLE: Remove extraneous line of output from shell session
+      wcsnrtombs.3
+      wcsrtombs.3
+      wcstombs.3
+        Fix-ups for e9c23bc636426366d659809bc99cd84661e86464
+      core.5
+        Document %E specifier for core_pattern
+      passwd.5
+        s/asterisk/asterisk (*)/ to improve clarity
+        Correct note on passwd field value when shadowing is enabled
+            When password shadowing is enabled, the password field
+            contains an 'x' (not a "8').
+      proc.5
+        Fix description of fourth field of /proc/loadavg
+            SIgned-off-by: Elie De Brauwer <eliedebrauwer@gmail.com>
+      resolv.conf.5
+        Describe syntax used for comments
+            See http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=656994
+      feature_test_macros.7
+        Document _ISOC11_SOURCE
+      inotify.7
+        Note that 'cookie' field is set to zero when unused
+      man.7
+        Various fixes for description of NAME section
+            As noted by reporter:
+            * The code sample given for the NAME section is incomplete because
+              the actual content sample is not given.
+            * Additionally, the description assumes that the item described is
+              a command, which need not be the case.
+            * The command makewhatis is not present on my system; the
+              documented tool to create the whatis database is called mandb.
+            * The description on .SH NAME in man(7) should either copy the
+              relevant paragraph of lexgrog(1) or refer to it.
+            Reported by: Kristof Zelechovski <giecrilj@stegny.2a.pl>
+
+-------------------------------------------------------------------
+Thu Jan 19 10:00:03 UTC 2012 - pgajdos@suse.com
+
+- fix url tag
+
+-------------------------------------------------------------------
+Wed Oct  5 11:23:28 CEST 2011 - pgajdos@suse.cz
+
+- update to version 3.35
+  * New and rewritten pages
+      recvmmsg.2
+        New man page for recvmmsg(2)
+      setns.2
+        New manual page for setns(2)
+        Various improvements
+  * Global changes
+  * Various pages
+        Global fix: remove spaces around em-dash
+            Normal English typographical convention is not to have
+            spaces around em dashes.
+  * Various pages
+        Global fix: s/null pointer/NULL pointer/
+  * Various pages
+        Global fix: use ORing
+            Use "ORing", not "OR'ing", nor an italic ".IR OR ing".
+  * Various pages
+        Global fix: consistent use of "null wide character"
+            Bring more consistency to the discussion of
+            "[terminating] null wide character"
+            by writing (at least in the initial use in a page)
+            "[terminating] null wide character (L'\0')".
+  * Various pages
+        Global fix: consistent use of "null byte"
+            Bring more consistency to the discussion of
+            "[terminating] null byte"
+            by writing (at least in the initial use in a page)
+            "[terminating] null byte ('\0')".
+      mount.2, prctl.2
+        s/task/thread/ for consistency with other pages
+  * Changes to individual pages
+      lseek.2
+        CONFORMING TO: Note other systems that have SEEK_HOLE+SEEK_DATA
+      recv.2
+        Add mention of recvmmsg(2)
+      recvmmsg.2
+        SEE ALSO: add sendmmsg(2)
+      send.2
+        CONFORMING TO: POSIX.1-2008 adds MSG_NOSIGNAL
+      sigwaitinfo.2
+        Note that attempts to wait for SIGKILL and SIGSTOP are silently ignored
+      stat.2
+        Note POSIX.1-2001 and POSIX.1-2008 requirements for lstat()
+        Regarding automounter action, add a reference to fstatat(2)
+        Clean up text describing which POSIX describes S_IF* constants
+      aio_cancel.3
+        Clarify meaning of "return status" and "error status"
+      gets.3
+        POSIX.1-2008 marks gets() obsolescent
+            The page formerly erroneously stated that POSIX.1-2008
+            removed the specification of this function.
+      mbsnrtowcs.3
+        CONFORMING TO: Add POSIX.1-2008
+            This function is specified in the POSIX.1-2008 revision.
+      regex.3
+        Change "terminating null" to "terminating null byte"
+      stpcpy.3
+      stpncpy.3
+        Note that these functions are in POSIX.1-2008
+            Update the "CONFORMING TO" sections of these functions to
+            note that they are now part of the POSIX.1-2008 standard.
+      stpncpy.3
+        Change "terminating null" to "terminating null byte"
+      strcpy.3
+        SEE ALSO: Add stpncpy(3)
+      strdup.3
+        CONFORMING TO: strndup() is in POSIX.1-2008
+      wcpcpy.3
+      wcpncpy.3
+      wcsnlen.3
+      wcsnrtombs.3
+        CONFORMING TO: Add POSIX.1-2008
+            These functions are specified in the POSIX.1-2008 revision.
+      proc.5
+        Document /proc/[pid]/ns/
+        Some edit's to Eric Biederman's /proc/[pid]/ns/ additions
+      capabilities.7
+        List setns(2) as an operation allowed by CAP_SYS_ADMIN
+
+-------------------------------------------------------------------
+Mon Sep 26 10:45:25 CEST 2011 - pgajdos@suse.cz
+
+- update to version 3.34
+  * New and rewritten pages
+      rt_sigqueueinfo.2
+        New page for rt_sigqueueinfo(2) and rt_tgsigqueueinfo(2)
+            This replaces the previous '.so' man page link file for
+            rt_sigqueueinfo.2, which linked to this sigqueue() man page.
+      cciss.4
+        New man page for cciss driver
+            I obtained the information in this man page as a consequence
+            of having worked on the cciss driver for the past several years,
+            and having written considerable portions of it.
+        Copyedit by mtk
+      hpsa.4
+        New man page for the hpsa driver
+            I obtained the information in this man page as a consequence
+            of being the main author of the hpsa driver
+        Copyedits my mtk
+  * Newly documented interfaces in existing pages
+      fstatat.2
+        Document AT_NO_AUTOMOUNT
+      lseek.2
+        Document SEEK_HOLE and SEEK_DATA
+            These flags, designed for discovering holes in a file,
+            were added in Linux 3.1. Included comments from Eric
+            Blake and Sunil Mushran.
+      madvise.2
+        Add MADV_HUGEPAGE and MADV_NOHUGEPAGE
+            Document the MADV_HUGEPAGE and MADV_NOHUGEPAGE flags added to
+            madvise() in Linux 2.6.38.
+  * New and changed links
+      rt_tgsigqueueinfo.2
+        New link to new rt_sigqueueinfo.2 page
+      sigqueue.2
+        Create link to page that was relocated to section 3
+  * Global changes
+  * Various pages
+        Change reference to "sigqueue(2)" to "sigqueue(3)"
+  * Changes to individual pages
+      fallocate.2
+        ERRORS: Add EPERM and ESPIPE errors
+      lseek.2
+        Remove suspect note about 'whence' being incorrect English.
+      prctl.2
+        PR_SET_DUMPABLE makes process non-ptrace-attachable
+      readlink.2
+        Document using st_size to allocate the buffer
+        Added copyright text + changelog note for Guillem Jover's patch
+      sched_setscheduler.2
+        Document 2.6.39 changes to rules governing changes from SCHED_IDLE policy
+            Since Linux 2.6.39, unprivileged processes under the
+            SCHED_IDLE policy can switch to another nonrealtime
+            policy if their nice value falls within the range
+            permitted by their RLIMIT_NICE limit.
+      tkill.2
+        SEE ALSO: Add rt_sigqueueinfo (2)
+      btowc.3, wctob.3
+        Add pointers to better, thread-safe alternative functions
+            See http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=606899
+      fwide.3
+        Add _ISOC95_SOURCE to feature test macro requirements
+            Since glibc 2.12, _ISOC95_SOURCE can also be used to expose
+            prototype of this function.
+      index.3
+        Fix text mentioning terminating null
+      pthread_sigqueue.3
+        Replace explicit mention of rt_tgsigqueueinfo() with SEE ALSO reference
+      sigqueue.3
+        Move this page to section 3
+            Now that the underlying system call rt_sigqueueinfo(2) is
+            properly documented, move sigqueue() to Section 3, since
+            it is really a library function.
+        Update text in line with existence of new rt_sigqueueinfo.2 page
+      wcsnlen.3
+        Improve description of 'maxlen' argument
+            It's worth clarifying 'maxlen' is in wide-char units, not bytes.
+      wprintf.3
+        Add _ISOC95_SOURCE to feature test macro requirements
+            Since glibc 2.12, _ISOC95_SOURCE can also be used to expose
+            prototype of these functions.
+      feature_test_macros.7
+        Document _ISOC95_SOURCE
+            _ISOC95_SOURCE was added in glibc 2.12 as a means
+            to expose C90 Amendment 1 definitions.
+      ip.7
+        Improve description of IP_MTU_DISCOVER
+      signal.7
+        SEE ALSO: Add rt_sigqueueinfo(2)
+
+-------------------------------------------------------------------
+Tue Sep 20 14:20:27 UTC 2011 - pgajdos@suse.com
+
+- updated to 3.33
+
+-------------------------------------------------------------------
+Tue Aug  2 13:30:46 UTC 2011 - aj@suse.de
+
+- Remove man3/crypt.3 and crypt_r.3 since those are now provided
+  by glibc-devel.
+
+-------------------------------------------------------------------
+Mon Dec  6 11:02:39 CET 2010 - pgajdos@suse.cz
+
+- updated to 3.32
+
+-------------------------------------------------------------------
+Mon Nov 15 13:10:58 CET 2010 - pgajdos@suse.cz
+
+- updated to 3.31
+
+-------------------------------------------------------------------
+Thu Nov  4 09:04:13 CET 2010 - pgajdos@suse.cz
+
+- updated ot 3.30
+
+-------------------------------------------------------------------
+Thu Oct 21 08:59:23 CEST 2010 - pgajdos@suse.cz
+
+- updated to 3.29
+
+-------------------------------------------------------------------
+Tue Oct 12 07:06:13 UTC 2010 - pgajdos@novell.com
+
+- updated to 3.28
+
+-------------------------------------------------------------------
+Thu Sep 23 09:44:29 CEST 2010 - pgajdos@suse.cz
+
+- updated to 3.27
+
+-------------------------------------------------------------------
+Tue Sep 14 15:16:38 CEST 2010 - pgajdos@suse.cz
+
+- updated to 3.26
+
+-------------------------------------------------------------------
+Tue Jun 22 17:47:32 CEST 2010 - pgajdos@suse.cz
+
+- updated to 3.25
+- quotactl.2 manual page was moved from quota to man-pages
+  [bnc#587393]
+
+-------------------------------------------------------------------
+Mon Mar  1 13:15:57 CET 2010 - pgajdos@suse.cz
+
+- updated to 3.24
+- refreshed tty_ioctl.patch
+
+-------------------------------------------------------------------
+Thu Nov 19 11:52:52 CET 2009 - pgajdos@suse.cz
+
+- added iconv.1 man-page from debian [bnc#480353]
+
+-------------------------------------------------------------------
+Mon Oct  5 08:55:44 CEST 2009 - pgajdos@suse.cz
+
+- updated to 3.23
+
+-------------------------------------------------------------------
+Tue Aug 18 12:20:49 CEST 2009 - pgajdos@suse.cz
+
+- added description of single-request into resolv.conf [bnc#531855]
+  * resolv.conf.patch
+
+-------------------------------------------------------------------
+Thu Aug  6 12:31:42 CEST 2009 - pgajdos@suse.cz
+
+- updated to 3.22
+
+-------------------------------------------------------------------
+Thu Jun 18 12:01:54 CEST 2009 - pgajdos@suse.cz
+
+- updated to 3.21
+
+-------------------------------------------------------------------
+Tue Mar 10 16:00:04 CET 2009 - pgajdos@suse.cz
+
+- updated to 3.19
+
+-------------------------------------------------------------------
+Tue Jan 20 11:53:28 CET 2009 - pgajdos@suse.cz
+
+- updated to 3.17
+
+-------------------------------------------------------------------
+Mon Dec 15 15:47:01 CET 2008 - pgajdos@suse.cz
+
+- updated to 3.15, fixes [bnc#441558]
+
+-------------------------------------------------------------------
+Mon Nov 24 14:39:56 CET 2008 - pgajdos@suse.cz
+
+- removed host.conf.patch, command mdns on/off no longer available
+  [bnc#446017]
+
+-------------------------------------------------------------------
+Tue Nov 18 10:32:46 CET 2008 - pgajdos@suse.cz
+
+- updated to 3.13
+
+-------------------------------------------------------------------
+Tue Oct 14 10:32:52 CEST 2008 - pgajdos@suse.cz
+
+- updated to 3.11
+  * removed dirent-h.patch, issue fixed upstream
+
+-------------------------------------------------------------------
+Tue Oct  7 10:14:05 CEST 2008 - pgajdos@suse.cz
+
+- updated to 3.10
+
+-------------------------------------------------------------------
+Mon Sep 29 16:54:54 CEST 2008 - pgajdos@suse.cz
+
+- <linux/dirent.h> -> <dirent.h> [bnc#429420]
+  * dirent-h.patch
+
+-------------------------------------------------------------------
+Thu Sep 11 17:22:38 CEST 2008 - pgajdos@suse.cz
+
+- updated to 3.09
+
+-------------------------------------------------------------------
+Mon Sep  8 18:40:02 CEST 2008 - pgajdos@suse.de
+
+- Auto-Update to version 2.79
+
+-------------------------------------------------------------------
+Wed Aug 20 12:46:35 CEST 2008 - pgajdos@suse.cz
+
+- updated to 3.07:
+  * core.patch removed because was merged upstream
+  * splitted man-pages-posix to follow upstream
+
+-------------------------------------------------------------------
+Tue Jul 15 11:15:13 CEST 2008 - pgajdos@suse.cz
+
+- added missing include in tty_ioctl.4 [bnc#408439]
+  (tty_ioctl.patch)
+
+-------------------------------------------------------------------
+Tue May 13 13:55:24 CEST 2008 - pgajdos@suse.cz
+
+- modified man-pages_core.patch according to upstream
+
+-------------------------------------------------------------------
+Mon Apr 14 17:55:00 CEST 2008 - pgajdos@suse.de
+
+- Auto-Update to version 2.79
+
+-------------------------------------------------------------------
+Thu Apr 10 22:40:02 CEST 2008 - pgajdos@suse.de
+
+- Auto-Update to version 2.68
+
+-------------------------------------------------------------------
+Thu Apr 10 13:29:04 CEST 2008 - pgajdos@suse.cz
+
+- updated to 2.79
+- added information about piping core dump to the command
+  [#377861] (man-pages_core.patch)
+- adjusted man-pages_gai.conf-reference.patch
+
+-------------------------------------------------------------------
+Thu Nov 22 14:51:37 CET 2007 - pgajdos@suse.cz
+
+- adjusted man-pages_gai.conf-reference.patch after auto-update
+
+-------------------------------------------------------------------
+Wed Nov 21 18:40:02 CET 2007 - pgajdos@suse.de
+
+- Auto-Update to version 2.68
+
+-------------------------------------------------------------------
+Tue Nov 20 01:57:43 CET 2007 - pgajdos@suse.de
+
+- Auto-Update to version 2.67
+
+-------------------------------------------------------------------
+Tue Nov 20 01:40:05 CET 2007 - pgajdos@suse.de
+
+- Auto-Update to version 9]*
+
+-------------------------------------------------------------------
+Tue Nov 20 00:40:06 CET 2007 - pgajdos@suse.de
+
+- Auto-Update to version 9]*
+
+-------------------------------------------------------------------
+Mon Nov 19 21:40:11 CET 2007 - pgajdos@suse.de
+
+- Auto-Update to version 9]*
+
+-------------------------------------------------------------------
+Mon Nov 19 20:40:05 CET 2007 - pgajdos@suse.de
+
+- Auto-Update to version 9]*
+
+-------------------------------------------------------------------
+Mon Nov 19 19:40:05 CET 2007 - pgajdos@suse.de
+
+- Auto-Update to version 9]*
+
+-------------------------------------------------------------------
+Mon Oct 22 11:40:05 CEST 2007 - pgajdos@suse.de
+
+- Auto-Update to version 2.67
+
+-------------------------------------------------------------------
+Mon Oct  8 11:40:05 CEST 2007 - pgajdos@suse.de
+
+- Auto-Update to version 2.66
+
+-------------------------------------------------------------------
+Fri Sep 21 17:38:49 CEST 2007 - pgajdos@suse.cz
+
+- removed redundant patch after auto-update
+- removed getaddrinfo.3.orig
+
+-------------------------------------------------------------------
+Fri Sep 21 15:40:02 CEST 2007 - pgajdos@suse.de
+
+- Auto-Update to version 2.65
+
+-------------------------------------------------------------------
+Fri Sep 21 11:07:11 CEST 2007 - pgajdos@suse.cz
+
+- man1p/ipcs.1p was returned back [#274338]
+
+-------------------------------------------------------------------
+Fri Sep 14 09:40:59 CEST 2007 - pgajdos@suse.cz
+
+- added gai.conf(5) [#310290]
+- added reference to it in getaddrinfo(3) (gai.conf-reference.patch)
+
+-------------------------------------------------------------------
+Fri Aug 10 11:57:42 CEST 2007 - pgajdos@suse.cz
+
+- shortened wrong_references.patch
+- added fdupes stuff
+
+-------------------------------------------------------------------
+Fri Aug 10 09:40:02 CEST 2007 - pgajdos@suse.de
+
+- Auto-Update to version 2.64
+
+-------------------------------------------------------------------
+Sat Jul 21 21:08:05 CEST 2007 - pgajdos@suse.cz
+
+- repared some wrong .so references
+  * wrong_references.patch
+- some minor spec file changes
+
+-------------------------------------------------------------------
+Fri Jul 20 10:40:01 CEST 2007 - pgajdos@suse.de
+
+- Auto-Update to version 2.63
+
+-------------------------------------------------------------------
+Fri Jul 13 13:40:02 CEST 2007 - pgajdos@suse.de
+
+- Auto-Update to version 2.62
+
+-------------------------------------------------------------------
+Tue Jul 10 09:37:35 CEST 2007 - kukuk@suse.de
+
+- Auto-Update to version 2.61
+
+-------------------------------------------------------------------
+Tue Jul  3 13:04:26 CEST 2007 - pgajdos@suse.cz
+
+- update to 2.60 [#288732]
+
+-------------------------------------------------------------------
+Thu May 31 10:58:59 CEST 2007 - pgajdos@suse.cz
+
+- workaround in spec file: remove deprecated
+  man1p/ipcs.1p [#274338]
+
+-------------------------------------------------------------------
+Fri Dec  1 08:40:08 CET 2006 - kukuk@suse.de
+
+- Auto-Update to version 2.43
+
+-------------------------------------------------------------------
+Sat Nov 25 16:40:16 CET 2006 - kukuk@suse.de
+
+- Auto-Update to version 2.42
+
+-------------------------------------------------------------------
+Sat Oct 14 14:40:07 CEST 2006 - kukuk@suse.de
+
+- Auto-Update to version 2.41
+
+-------------------------------------------------------------------
+Wed Oct 11 17:40:06 CEST 2006 - kukuk@suse.de
+
+- Auto-Update to version 2.40
+
+-------------------------------------------------------------------
+Sun Aug  6 08:40:05 CEST 2006 - kukuk@suse.de
+
+- Auto-Update to version 2.39
+
+-------------------------------------------------------------------
+Fri Aug  4 12:40:05 CEST 2006 - kukuk@suse.de
+
+- Auto-Update to version 2.38
+
+-------------------------------------------------------------------
+Thu Aug  3 14:40:07 CEST 2006 - kukuk@suse.de
+
+- Auto-Update to version 2.37
+
+-------------------------------------------------------------------
+Thu Jul 27 17:09:02 CEST 2006 - kukuk@suse.de
+
+- Remove nscd.conf(5) patch, is now upstream
+
+-------------------------------------------------------------------
+Mon Jul 17 02:40:05 CEST 2006 - kukuk@suse.de
+
+- Auto-Update to version
+
+-------------------------------------------------------------------
+Tue Jul  4 11:28:48 CEST 2006 - jreuter@suse.de
+
+- Adding previously undocumented nscd options to nscd.conf(5)
+  (#173228)
+
+-------------------------------------------------------------------
+Tue Jun 20 17:40:06 CEST 2006 - kukuk@suse.de
+
+- Auto-Update to version 2.34
+
+-------------------------------------------------------------------
+Tue May 30 18:40:21 CEST 2006 - kukuk@suse.de
+
+- Auto-Update to version 2.33
+
+-------------------------------------------------------------------
+Wed May 17 11:28:49 CEST 2006 - kukuk@suse.de
+
+- Update to version 2.32
+  - document all *at() functions
+  - lot of small corrections about error handling in various places
+
+-------------------------------------------------------------------
+Mon Apr 24 11:26:21 CEST 2006 - kukuk@suse.de
+
+- Auto-Update to version 2.29
+
+-------------------------------------------------------------------
+Sat Mar 25 06:44:12 CET 2006 - autobuild@suse.de
+
+- Auto-Update to version 2.27
+
+-------------------------------------------------------------------
+Tue Mar 21 00:40:11 CET 2006 - autobuild@suse.de
+
+- Auto-Update to version 2.26
+
+-------------------------------------------------------------------
+Fri Mar  3 12:02:45 CET 2006 - kukuk@suse.de
+
+- Update to version 2.25
+  - New pages describing POSIX message queue API
+
+-------------------------------------------------------------------
+Tue Feb 14 16:07:51 CET 2006 - kukuk@suse.de
+
+- Update to version 2.23
+
+-------------------------------------------------------------------
+Tue Jan 31 12:27:13 CET 2006 - kukuk@suse.de
+
+- Remove quotactl.2 (is part of quota package)
+- Update to version 2.21
+
+-------------------------------------------------------------------
+Wed Jan 25 21:25:07 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue Jan 17 08:11:36 CET 2006 - kukuk@suse.de
+
+- Make it a not nearly-all package (and really noarch)
+
+-------------------------------------------------------------------
+Tue Jan 17 08:09:45 CET 2006 - kukuk@suse.de
+
+- Auto-Update to version 2.20
+
+-------------------------------------------------------------------
+Tue Mar 29 09:24:09 CEST 2005 - kukuk@suse.de
+
+- Add shadow.5 manual page
+
+-------------------------------------------------------------------
+Thu Oct 14 01:04:42 CEST 2004 - ro@suse.de
+
+- make patches apply again
+
+-------------------------------------------------------------------
+Fri Sep 24 15:08:51 CEST 2004 - kukuk@suse.de
+
+- host.conf: document mdns option
+
+-------------------------------------------------------------------
+Wed May 26 02:03:25 CEST 2004 - ro@suse.de
+
+- remove .orig files
+
+-------------------------------------------------------------------
+Tue May 25 16:29:13 CEST 2004 - thomas@suse.de
+
+- added changes from SLES8 for EAL3+ needed for EAL4+ too
+
+
+-------------------------------------------------------------------
+Fri May 21 10:57:54 CEST 2004 - kukuk@suse.de
+
+- Update to manual page 1.67 (Update POSIX copyright)
+
+-------------------------------------------------------------------
+Mon Apr  5 16:45:59 CEST 2004 - kukuk@suse.de
+
+- Remove ioctl_list.2 manual page for kernel 1.3 to not confuse
+  ISVs [Bug #38208]
+
+-------------------------------------------------------------------
+Mon Feb 23 09:53:11 CET 2004 - kukuk@suse.de
+
+- Fix .so reference for strtoull.3p
+
+-------------------------------------------------------------------
+Thu Jan 29 09:59:19 CET 2004 - kukuk@suse.de
+
+- Add man?p directories to filelist
+
+-------------------------------------------------------------------
+Wed Jan 28 17:08:23 CET 2004 - kukuk@suse.de
+
+- Cleanup specfile
+
+-------------------------------------------------------------------
+Tue Jan 27 10:46:31 CET 2004 - kukuk@suse.de
+
+- Install POSIX manual pages, too
+
+-------------------------------------------------------------------
+Fri Aug 29 00:58:49 CEST 2003 - ro@suse.de
+
+- updated specfile
+
+-------------------------------------------------------------------
+Wed Aug 13 09:45:49 CEST 2003 - kukuk@suse.de
+
+- Revert last change
+
+-------------------------------------------------------------------
+Tue Aug  5 22:34:20 CEST 2003 - ro@suse.de
+
+- fix test
+
+-------------------------------------------------------------------
+Tue Aug  5 19:02:39 CEST 2003 - ro@suse.de
+
+- don't stop for missing man-pages present in system
+
+-------------------------------------------------------------------
+Thu Feb 13 20:11:49 CET 2003 - olh@suse.de
+
+- correct example in dlopen manpage
+
+-------------------------------------------------------------------
+Fri Mar  1 09:47:22 CET 2002 - ro@suse.de
+
+- no COPYING file in source anymore, adapt specfile
+
+-------------------------------------------------------------------
+Mon Apr  9 17:48:34 CEST 2001 - kukuk@suse.de
+
+- Next try.
+
+-------------------------------------------------------------------
+Sat Apr  7 14:19:17 CEST 2001 - kukuk@suse.de
+
+- Fix compression of manual pages
+
+-------------------------------------------------------------------
+Thu Mar 29 16:31:40 CEST 2001 - kukuk@suse.de
+
+- Make sure we don't have manual pages with a .so refernce to a
+  non-existing manual page [Bug #5061]
+
+-------------------------------------------------------------------
+Sun Dec 10 08:39:47 CET 2000 - kukuk@suse.de
+
+- Fix use of RPM macro
+
+-------------------------------------------------------------------
+Tue Oct 31 09:31:50 CET 2000 - kukuk@suse.de
+
+- Rename ldpman to man-pages
+- Use bzip2 version
+
+-------------------------------------------------------------------
+Wed Jan  5 19:13:36 CET 2000 - kukuk@suse.de
+
+- Mark COPYING and README.FSF as doc
+- Move from /usr/man to /usr/share/man
+
+-------------------------------------------------------------------
+Mon Jun  7 17:07:24 MEST 1999 - bs@suse.de
+
+- made package "noarch"
+
+-------------------------------------------------------------------
+Thu Jan 14 11:27:10 MET 1999 - bs@suse.de
+
+- don't include those man pages, that are already in the system.
+
+-------------------------------------------------------------------
+Wed Oct 15 12:35:20 MEST 1997 - ro@suse.de
+
+- ready for autobuild

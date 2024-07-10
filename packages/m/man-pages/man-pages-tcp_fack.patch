@@ -1,0 +1,37 @@
+Index: man-pages-6.05.01/man7/tcp.7
+===================================================================
+--- man-pages-6.05.01.orig/man7/tcp.7
++++ man-pages-6.05.01/man7/tcp.7
+@@ -486,9 +486,31 @@ When enabled, outgoing ECN-setup SYNs th
+ normal SYN retransmission timeout will be resent with CWR and
+ ECE cleared.
+ .TP
+-.IR tcp_fack " (Boolean; default: enabled; since Linux 2.2)"
++.IR tcp_fack " (integer; default: see below; since Linux 2.2)"
+ .\" Since Linux 2.1.92
+ Enable TCP Forward Acknowledgement support.
++
++Prior to Linux 4.11, this option was enabled by default.
++In Linux 4.11, it was disabled by default in favor of RACK (see
++tcp_recovery).
++In Linux 4.15 it was deprecated entirely and its value is ignored.
++.TP
++.IR tcp_recovery " (integer; default: 0x1; since Linux 4.4)"
++Enable various experimental loss recovery features.
++
++This field is a bitmap to enable various loss recovery features.
++.RS
++.IP 0x1
++enables the RACK loss detection for fast detection of lost
++retransmissions and tail drops. It also subsumes and disables
++RFC6675 recovery for SACK connections. (Since Linux 4.4)
++.IP 0x2
++makes RACK's reordering window static (min_rtt/4). (Since
++Linux 4.15)
++.IP 0x4
++disables RACK's DUPACK threshold heuristic (Since Linux
++4.18).
++.RE
+ .TP
+ .IR tcp_fin_timeout " (integer; default: 60; since Linux 2.2)"
+ .\" Since Linux 2.1.53
