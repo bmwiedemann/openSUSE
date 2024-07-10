@@ -1,0 +1,61 @@
+-------------------------------------------------------------------
+Fri Mar 22 16:39:06 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.18
+   see /usr/share/doc/packages/perl-Spreadsheet-XLSX/Changes
+
+  0.18
+
+      - fix RT #117166: unformatted date values can no longer be retrieved, thx to lherschi
+
+-------------------------------------------------------------------
+Thu Nov  4 03:06:26 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.17
+   see /usr/share/doc/packages/perl-Spreadsheet-XLSX/Changes
+
+  0.17
+
+  	- fix RT #139898: missing file from MANIFEST
+  	- fix RT #127829, #80565, #79016: [Warning] Argument "#N/A" isn't numeric in int
+
+-------------------------------------------------------------------
+Tue Oct 26 03:06:40 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.16
+   see /usr/share/doc/packages/perl-Spreadsheet-XLSX/Changes
+
+  0.16
+
+  	- added GitHub repository
+  	- fix RT #125112: Update module name in comments and POD
+  	- improve POD
+  	- improve kwalitee test
+
+-------------------------------------------------------------------
+Wed Nov  4 10:29:57 UTC 2015 - coolo@suse.com
+
+- updated to 0.15
+   see /usr/share/doc/packages/perl-Spreadsheet-XLSX/Changes
+
+  0.15
+  
+  	- revert a numeric formatting change which caused isssues with Spreadsheet::Read.
+
+-------------------------------------------------------------------
+Sat Oct 31 11:07:27 UTC 2015 - coolo@suse.com
+
+- updated to 0.14
+   see /usr/share/doc/packages/perl-Spreadsheet-XLSX/Changes
+
+  0.14  
+  
+  	- change default date format to yyyy-mm-dd.  This matches Spreadsheet::ParseExcel.
+  	- handle xml tag attributes in varying order (RT #86667, et.al.)
+
+-------------------------------------------------------------------
+Thu Sep  1 21:37:50 UTC 2011 - chris@computersalat.de
+
+- initial package 0.13
+  * created by cpanspec 1.78.04
+
