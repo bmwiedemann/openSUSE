@@ -1,0 +1,38 @@
+-------------------------------------------------------------------
+Thu Feb 29 13:58:44 UTC 2024 - pgajdos@suse.com
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
+Sun Nov 26 10:58:47 UTC 2017 - mpluskal@suse.com
+
+- Cleanup spec file with spec-clenaer
+- Split graphical version of package
+
+-------------------------------------------------------------------
+Thu Sep 13 00:05:33 CEST 2012 - dsterba@suse.cz
+
+- add patch to behave like 'vmstat 1'
+
+-------------------------------------------------------------------
+Thu Apr  1 12:06:14 UTC 2010 - schlomo.schapiro@novell.com
+
+- Added pkgconfig to BuildRequires to enable building on SLES9
+
+-------------------------------------------------------------------
+Wed Mar 10 11:20:40 CET 2010 - hpj@urpla.net
+
+- relocate gtk version of latencytop to xlatencytop
+- restore console build
+
+-------------------------------------------------------------------
+Thu Jun 18 13:57:00 CEST 2009 - tiwai@suse.de
+
+- updated to version 0.5:
+  support gtk interface
+
+-------------------------------------------------------------------
+Tue May 27 15:27:58 CEST 2008 - tiwai@suse.de
+
+- initial version: 0.4
+
