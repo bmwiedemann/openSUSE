@@ -1,0 +1,5 @@
+<package name="feedbackd" project="openSUSE:Factory">
+  <title>feedbackd</title>
+  <description></description>
+  <devel project="GNOME:Factory" package="feedbackd"/>
+</package>

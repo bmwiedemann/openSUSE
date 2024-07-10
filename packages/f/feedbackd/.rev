@@ -1,0 +1,50 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5ab9d471bfe741898b168ce467ee5451</srcmd5>
+    <version>0.0.0+git20211018</version>
+    <time>1661434261</time>
+    <user>dimstar_suse</user>
+    <comment>Ready for factory? Needed by callaudiod</comment>
+    <requestid>998671</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>aa1b72e198cdf778b5dbc43aebf248c1</srcmd5>
+    <version>0.0.1</version>
+    <time>1670259740</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 1040312 from iznogood)</comment>
+    <requestid>1040323</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>7433c826b5c631f377d5c7362cd02d66</srcmd5>
+    <version>0.0.2</version>
+    <time>1676389659</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1065734</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c5e10a70b5196345b13f9c12420cff83</srcmd5>
+    <version>0.1.0</version>
+    <time>1679069107</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1072600</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>7384067b204b1565ba4c4b19e7fb3808</srcmd5>
+    <version>0.1.0</version>
+    <time>1679520687</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1073757</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>e40eeb2565445b0ca9990eed4c1b19d9</srcmd5>
+    <version>0.2.1</version>
+    <time>1694200536</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1109641</requestid>
+  </revision>
+</revisionlist>
