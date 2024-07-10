@@ -1,0 +1,78 @@
+<revisionlist>
+  <revision rev="1" vrev="216">
+    <srcmd5>3363015625060ae2bfeaabe8e93d8eed</srcmd5>
+    <version>0.4.2</version>
+    <time>1334215279</time>
+    <user>coolo</user>
+    <comment>Moving M17N/efont-unicode to M17N:fonts/efont-unicode-bitmap-fonts.</comment>
+    <requestid>112321</requestid>
+  </revision>
+  <revision rev="2" vrev="217">
+    <srcmd5>f15ffdcc4662181ddc0c3c32010006d0</srcmd5>
+    <version>0.4.2</version>
+    <time>1338016974</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>122124</requestid>
+  </revision>
+  <revision rev="3" vrev="219">
+    <srcmd5>f15ffdcc4662181ddc0c3c32010006d0</srcmd5>
+    <version>0.4.2</version>
+    <time>1340183301</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="4" vrev="220">
+    <srcmd5>dc859170d32d399788f260c252149fcf</srcmd5>
+    <version>0.4.2</version>
+    <time>1347617761</time>
+    <user>namtrac</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>133928</requestid>
+  </revision>
+  <revision rev="5" vrev="222">
+    <srcmd5>dc859170d32d399788f260c252149fcf</srcmd5>
+    <version>0.4.2</version>
+    <time>1359108842</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="224">
+    <srcmd5>dc859170d32d399788f260c252149fcf</srcmd5>
+    <version>0.4.2</version>
+    <time>1379662281</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="226">
+    <srcmd5>dc859170d32d399788f260c252149fcf</srcmd5>
+    <version>0.4.2</version>
+    <time>1409300818</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="227">
+    <srcmd5>368145146127b18016249d222db565d9</srcmd5>
+    <version>0.4.2</version>
+    <time>1498045957</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>504857</requestid>
+  </revision>
+  <revision rev="9" vrev="228">
+    <srcmd5>ed92eae70cb40e46117784d502e7d9f7</srcmd5>
+    <version>0.4.2</version>
+    <time>1575282348</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>752331</requestid>
+  </revision>
+  <revision rev="10" vrev="229">
+    <srcmd5>6e574fc93d38d8c5c40abcb93dd0977c</srcmd5>
+    <version>0.4.2</version>
+    <time>1708702877</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1149352</requestid>
+  </revision>
+</revisionlist>

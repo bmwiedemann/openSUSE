@@ -1,0 +1,7 @@
+<package name="efont-unicode-bitmap-fonts" project="openSUSE:Factory">
+  <title>Unicode Font by /efont/</title>
+  <description>Unicode fonts developed by /efont/ openlab. This font package includes
+12,14, 16, and 24 pixel ISO-10646 fonts.
+</description>
+  <devel project="M17N:fonts" package="efont-unicode-bitmap-fonts"/>
+</package>
