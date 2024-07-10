@@ -1,0 +1,121 @@
+-------------------------------------------------------------------
+Thu Apr  4 13:03:39 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Switch package to modern Python Stack on SLE-15
+  + Use Python 3.11 on SLE-15 by default
+  + Add Obsoletes for old python3 package on SLE-15
+  + Drop support for older Python versions
+- Switch build system from setuptools to pyproject.toml
+  + Add python-pip and python-wheel to BuildRequires
+  + Replace %python_build with %pyproject_wheel
+  + Replace %python_install with %pyproject_install
+  + Update name for dist directory in %files section
+- Drop setting default file attributes in %files section
+- Use modern RPM macros to express version dependencies
+
+-------------------------------------------------------------------
+Thu Oct 26 08:46:15 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 9.1.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Remove unzip package from BuildRequires
+- Switch source archive format to TAR.GZ
+- Update Requires from setup.py
+
+-------------------------------------------------------------------
+Thu Feb 16 10:23:00 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 9.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py
+
+-------------------------------------------------------------------
+Mon Jan 11 15:24:54 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 8.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py
+
+-------------------------------------------------------------------
+Thu Nov 26 11:07:08 UTC 2020 - Robert Schweikert <rjschwei@suse.com>
+
+- Only build Python3 flavors for distributions 15 and greater
+
+-------------------------------------------------------------------
+Mon Oct  5 12:12:43 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 3.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Rename HISTORY.rst to CHANGELOG.md in %files section
+- Rename README.rst to README.md in %files section
+
+-------------------------------------------------------------------
+Fri Oct  4 12:19:47 UTC 2019 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 2.1.0
+  + For detailed information about changes see the
+    HISTORY.txt file provided with this package
+- Drop patch to support older versions of setuptools as
+  SLE-12 is now shipping with a recent enough version
+  + ams_drop-compatible-releases-operator.patch
+- Update Requires from setup.py
+- Update %description from setup.py
+
+-------------------------------------------------------------------
+Mon Apr 15 09:11:18 UTC 2019 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Bump minimum version for namespace packages
+  to 3.0.0 in BuildRequires and Requires
+- Remove python-devel package from BuildRequires
+- Run fdupes to hardlink duplicate files
+  + Add fdupes to BuildRequires
+  + Add %fdupes invocation to %install
+
+-------------------------------------------------------------------
+Wed Sep  5 12:22:44 UTC 2018 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release 2.0.0
+  * For detailed information about changes, see the
+    HISTORY.txt file provided with this package
+- Move LICENSE.txt from %doc to %license section
+- Refresh patches for new version
+  + ams_drop-compatible-releases-operator.patch
+- Update Requires from setup.py
+- Update %description from setup.py
+
+-------------------------------------------------------------------
+Tue Jan 30 12:06:04 UTC 2018 - adrian.glaubitz@suse.com
+
+- Install HISTORY.rst into doc directory
+
+-------------------------------------------------------------------
+Wed Oct  4 15:29:48 UTC 2017 - adrian.glaubitz@suse.com
+
+- Remove versioning for namespace packages in Requires
+- Add namespace packages to BuildRequires
+- Remove namespace files in %install target
+- Explicitly specify Python files of the package in %files
+
+-------------------------------------------------------------------
+Fri Jul 14 12:05:15 UTC 2017 - adrian.glaubitz@suse.com
+
+- Add python-azure-nspkg to Requires
+- Add python-azure-mgmt-nspkg to Requires
+
+-------------------------------------------------------------------
+Tue Jun 27 15:57:16 UTC 2017 - adrian.glaubitz@suse.com
+
+- Initial build                                                                                                                                                             
+  + Version 1.0.0                                                                                                                                                           
+- Add patch to drop compatible releases operator from setup.py,
+  required for SLES12 as the setuptools version is too old
+  + ams_drop-compatible-releases-operator.patch
