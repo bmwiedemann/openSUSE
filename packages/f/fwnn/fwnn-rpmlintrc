@@ -1,5 +1,0 @@
-# This line is mandatory to access the configuration functions
-from Config import *
-
-addFilter(".*shlib-policy-name-error.*")
-addFilter(".*devel-file-in-non-devel-package.*")
