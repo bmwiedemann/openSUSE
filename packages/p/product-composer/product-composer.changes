@@ -1,0 +1,151 @@
+-------------------------------------------------------------------
+Mon Jul  8 09:37:08 UTC 2024 - Adrian Schröter <adrian@suse.de>
+
+- update to version 0.4.12
+  * fixed susedata generation (only a single language translation was generated)
+  * Added option to include all available packages
+
+-------------------------------------------------------------------
+Wed Jun 26 11:55:22 UTC 2024 - Adrian Schröter <adrian@suse.de>
+
+- update to version 0.4.11
+  * canonized filenames (get rid of ::import prefixes)
+
+-------------------------------------------------------------------
+Wed Jun 26 10:36:50 UTC 2024 - Adrian Schröter <adrian@suse.de>
+
+- update to version 0.4.10
+  * support building on 15.6, using python311 stack (added sle-15-defaults.patch)
+  * changing createrepo defaults for SLE 15 only
+  * crash fix on incomplete generated groups by pkglistgen
+
+-------------------------------------------------------------------
+Wed Jun 26 07:57:25 UTC 2024 - Adrian Schröter <adrian@suse.de>
+
+- update to version 0.4.9
+  * Introduce "extension" product-type as alias for "module"
+    Technical the same, but handled different in user accounting
+  * fix for building without debug or source media
+
+-------------------------------------------------------------------
+Fri May 24 13:54:21 UTC 2024 - Adrian Schröter <adrian@suse.de>
+
+- update to version 0.4.8
+  * Support export of slsa.provenance files
+  * Allow to override product directory per flavor
+
+-------------------------------------------------------------------
+Fri May 17 13:36:46 UTC 2024 - Adrian Schröter <adrian@suse.de>
+
+- update to version 0.4.7
+  * Support aborting on embargo updates in future
+  * Clean updateinfo.xml from OBS internal elements
+  * Add tagmedia for iso files to support checkmedia command
+
+-------------------------------------------------------------------
+Fri May 17 07:58:33 UTC 2024 - Adrian Schröter <adrian@suse.de>
+
+- update to version 0.4.6
+  * fixing signature creation for -Source and -Debug media
+  * added option to allow to specify an updateinfo id prefix
+
+-------------------------------------------------------------------
+Thu May 16 09:04:27 UTC 2024 - Adrian Schröter <adrian@suse.de>
+
+- update to version 0.4.5
+  * generate .sha256 files for .iso files
+
+-------------------------------------------------------------------
+Thu Apr 11 12:17:13 UTC 2024 - Adrian Schröter <adrian@suse.de>
+
+- update to version 0.4.4
+  * supports also schema version 0.2 now
+  * supports specifing add-on media product builds (versus OS)
+  * supports overwriting package (from) information in updatinfo
+
+-------------------------------------------------------------------
+Wed Mar 27 16:28:27 UTC 2024 - Adrian Schröter <adrian@suse.de>
+
+- update to version 0.4.3
+  * Allow product builds without meta packages
+  * improve disk-usage in susedata output
+
+-------------------------------------------------------------------
+Fri Mar  8 10:40:48 UTC 2024 - Adrian Schröter <adrian@suse.de>
+
+- update to version 0.4.2
+  * generate also diskusage data now (done by mls)
+  * code cleanup
+- add missing dependency to python-zstandard
+
+-------------------------------------------------------------------
+Thu Mar  7 15:49:18 UTC 2024 - Adrian Schröter <adrian@suse.de>
+
+- update to version 0.4.1
+  * write translations of package descriptions
+
+-------------------------------------------------------------------
+Wed Mar  6 15:11:10 UTC 2024 - Adrian Schröter <adrian@suse.de>
+
+- update to version 0.4.0
+  Replacement of susedata tool, first part
+  
+  - Add supportstatus
+  - Add gpg trusted keys
+  - switch to SHA512 checksum
+  
+  Missing:
+  - diskusage data
+  - package translations
+
+-------------------------------------------------------------------
+Fri Feb 23 10:58:49 UTC 2024 - Adrian Schröter <adrian@suse.de>
+
+- update to version 0.3.4
+  - support basic iso generation, not for bootable images yet
+
+-------------------------------------------------------------------
+Tue Feb  6 15:13:11 UTC 2024 - Adrian Schröter <adrian@suse.de>
+
+- update to version 0.3.3
+  - fixes incorrect data inside of repomd.xml
+
+-------------------------------------------------------------------
+Mon Feb  5 12:04:37 UTC 2024 - Adrian Schröter <adrian@suse.de>
+
+- update to version 0.3.2
+  * crash fixes
+
+-------------------------------------------------------------------
+Thu Jan 11 08:17:38 UTC 2024 - Adrian Schröter <adrian@suse.de>
+
+- update to version 0.3.1
+  * Supporting new 0.1 schema with extended functionality
+  * signature handling fix
+  * refactoring and code cleanup and documentation updates
+
+-------------------------------------------------------------------
+Tue Dec  5 14:46:55 UTC 2023 - Adrian Schröter <adrian@suse.de>
+
+- update to version 0.2
+  * Support .report file generation
+
+-------------------------------------------------------------------
+Mon Dec  4 15:27:14 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Set service to manual run: server side execution not permitted in
+  products.
+- Do not use python-single-spec magic, but use python3 directly
+  (the main python version).
+
+-------------------------------------------------------------------
+Mon Dec  4 14:52:21 UTC 2023 - Adrian Schröter <adrian@suse.de>
+
+- roll version 0.1
+  Kind of a beta version for ALP based products.
+
+-------------------------------------------------------------------
+Wed Nov 15 10:37:22 UTC 2023 - Adrian Schröter <adrian@suse.de>
+
+- initial package
+

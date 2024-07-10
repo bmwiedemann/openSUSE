@@ -1,0 +1,168 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>bb6cc95fb5dd13263f4007d313dd59c9</srcmd5>
+    <version>0.1</version>
+    <time>1701727350</time>
+    <user>anag+factory</user>
+    <comment>Initial version of new product builder</comment>
+    <requestid>1130816</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>b7e651cb5538facce9c7221a036df191</srcmd5>
+    <version>0.2</version>
+    <time>1701902845</time>
+    <user>anag+factory</user>
+    <comment>- update to version 0.2
+  * Support .report file generation</comment>
+    <requestid>1130998</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e00dc5ffb906247142a1e67364ab8665</srcmd5>
+    <version>0.3.1</version>
+    <time>1705099595</time>
+    <user>anag+factory</user>
+    <comment>- update to version 0.3.1
+  * Supporting new 0.1 schema with extended functionality
+  * signature handling fix
+  * refactoring and code cleanup and documentation updates</comment>
+    <requestid>1138326</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f063fb66ce9f50a925c80bbb282dca13</srcmd5>
+    <version>0.3.3</version>
+    <time>1707328189</time>
+    <user>anag+factory</user>
+    <comment>- update to version 0.3.3
+  - fixes incorrect data inside of repomd.xml
+
+- update to version 0.3.2
+  * crash fixes</comment>
+    <requestid>1144804</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>ffcbc95783a097cbefb76bb5f4452809</srcmd5>
+    <version>0.3.4</version>
+    <time>1708703198</time>
+    <user>anag+factory</user>
+    <comment>- update to version 0.3.4
+  - support basic iso generation, not for bootable images yet</comment>
+    <requestid>1149811</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>08c4379f3d441dda9a45910dcd094615</srcmd5>
+    <version>0.4.0</version>
+    <time>1709762803</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.4.0
+  Replacement of susedata tool, first part
+  
+  - Add supportstatus
+  - Add gpg trusted keys
+  - switch to SHA512 checksum
+  
+  Missing:
+  - diskusage data
+  - package translations</comment>
+    <requestid>1155607</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>8c126a368567ab55b67bfc8f6564de8b</srcmd5>
+    <version>0.4.1</version>
+    <time>1709832714</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.4.1
+  * write translations of package descriptions</comment>
+    <requestid>1156038</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>2e8a05b1c7a1d422960495ec3b96d343</srcmd5>
+    <version>0.4.2</version>
+    <time>1709917823</time>
+    <user>anag+factory</user>
+    <comment>- update to version 0.4.2
+  * generate also diskusage data now (done by mls)
+  * code cleanup
+- add missing dependency to python-zstandard</comment>
+    <requestid>1156330</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>3af729fffacca422e8ba036d72fc75bf</srcmd5>
+    <version>0.4.3</version>
+    <time>1711568632</time>
+    <user>anag+factory</user>
+    <comment>- update to version 0.4.3
+  * Allow product builds without meta packages
+  * improve disk-usage in susedata output</comment>
+    <requestid>1162949</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>1e780dfaba9a75728dfc8400f3a65fd6</srcmd5>
+    <version>0.4.4</version>
+    <time>1712936051</time>
+    <user>anag+factory</user>
+    <comment>- update to version 0.4.4
+  * supports also schema version 0.2 now
+  * supports specifing add-on media product builds (versus OS)
+  * supports overwriting package (from) information in updatinfo</comment>
+    <requestid>1166882</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>a9a163c63e3da1a13eccfa4c94464064</srcmd5>
+    <version>0.4.5</version>
+    <time>1715872585</time>
+    <user>anag+factory</user>
+    <comment>- update to version 0.4.5
+  * generate .sha256 files for .iso files</comment>
+    <requestid>1174414</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>cd415ea4ace95599a040086778fdc464</srcmd5>
+    <version>0.4.7</version>
+    <time>1715969190</time>
+    <user>anag+factory</user>
+    <comment>- update to version 0.4.7
+  * Support aborting on embargo updates in future
+  * Clean updateinfo.xml from OBS internal elements
+  * Add tagmedia for iso files to support checkmedia command
+
+- update to version 0.4.6
+  * fixing signature creation for -Source and -Debug media
+  * added option to allow to specify an updateinfo id prefix</comment>
+    <requestid>1174868</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>6f20abdae68d8ba8644fa5ac9911a16a</srcmd5>
+    <version>0.4.8</version>
+    <time>1716573215</time>
+    <user>anag+factory</user>
+    <comment>- update to version 0.4.8
+  * Support export of slsa.provenance files
+  * Allow to override product directory per flavor</comment>
+    <requestid>1176757</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>fb88116e2353e1df863c3a4791de2313</srcmd5>
+    <version>0.4.12</version>
+    <time>1720458546</time>
+    <user>anag+factory</user>
+    <comment>- update to version 0.4.12
+  * fixed susedata generation (only a single language translation was generated)
+  * Added option to include all available packages
+
+- update to version 0.4.11
+  * canonized filenames (get rid of ::import prefixes)
+
+- update to version 0.4.10
+  * support building on 15.6, using python311 stack (added sle-15-defaults.patch)
+  * changing createrepo defaults for SLE 15 only
+  * crash fix on incomplete generated groups by pkglistgen
+
+- update to version 0.4.9
+  * Introduce &quot;extension&quot; product-type as alias for &quot;module&quot;
+    Technical the same, but handled different in user accounting
+  * fix for building without debug or source media
+
+- Set service to manual run: server side execution not permitted in</comment>
+    <requestid>1186131</requestid>
+  </revision>
+</revisionlist>

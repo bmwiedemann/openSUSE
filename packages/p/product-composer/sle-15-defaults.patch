@@ -1,0 +1,12 @@
+diff --git a/src/productcomposer/defaults.py b/src/productcomposer/defaults.py
+index 4493328..1b351ef 100644
+--- a/src/productcomposer/defaults.py
++++ b/src/productcomposer/defaults.py
+@@ -7,5 +7,5 @@ and explicitly pass them to the programs.
+ """
+ 
+ 
+-CREATEREPO_CHECKSUM_TYPE: str = "sha512"
+-CREATEREPO_GENERAL_COMPRESS_TYPE: str = "zstd"
++CREATEREPO_CHECKSUM_TYPE: str = "sha256"
++CREATEREPO_GENERAL_COMPRESS_TYPE: str = "gz"
