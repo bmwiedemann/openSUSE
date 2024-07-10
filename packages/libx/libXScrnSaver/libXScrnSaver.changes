@@ -1,0 +1,67 @@
+-------------------------------------------------------------------
+Mon Dec  5 10:32:25 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.2.3:
+  * Update README for gitlab migration
+  * Update configure.ac bug URL for gitlab migration
+  * Fix spelling/wording issues
+  * gitlab CI: add a basic build test
+  * Whitespace fixes
+  * Add .git-blame-ignore-revs to hide whitespace commits from git blame
+  * Handle implicit conversion warnings from clang
+
+-------------------------------------------------------------------
+Fri Jul  6 10:25:16 UTC 2018 - sndirsch@suse.com
+
+- Update to version 1.2.3:
+  * Fixes a 25+-year-old bug in correctly filling in the ::root
+    member of the ScreenSaverNotify event.
+  * supersedes U_libXScrnSaver_copy_root_field.patch
+
+-------------------------------------------------------------------
+Tue May  8 14:28:39 UTC 2018 - sndirsch@suse.com
+
+- added "Provides: %name = %version-%release" in order to work-
+  around hard requires for wrongly packaged 3rd party package Slack
+  (boo#1090514)
+
+-------------------------------------------------------------------
+Wed Nov 22 09:54:36 UTC 2017 - zaitor@opensuse.org
+
+- Add U_libXScrnSaver_copy_root_field.patch: Copy root field from
+  wire event into root, not window, of Xlib event.
+
+-------------------------------------------------------------------
+Wed May 18 08:55:20 UTC 2016 - sndirsch@suse.com
+
+- tagged baselibs.conf as source in specfile
+- renamed -devel package to libXss-devel, so one can find it easier
+  (provides/obsoletes added accordingly)
+
+-------------------------------------------------------------------
+Tue May 17 10:28:16 UTC 2016 - sndirsch@suse.com
+
+- rename devel package to libXss-devel 
+
+-------------------------------------------------------------------
+Sun Feb 17 17:21:53 UTC 2013 - jengelh@inai.de
+
+- Use more robust make install call
+- Avoid calling fdupes outside of /usr
+
+-------------------------------------------------------------------
+Wed Apr 11 15:11:10 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 1.2.2:
+  + Janitorial cleanups
+  + Build configuration improvements
+
+-------------------------------------------------------------------
+Sat Feb 11 21:47:21 UTC 2012 - jengelh@medozas.de
+
+- Provide package descriptions and update homepage URL
+
+-------------------------------------------------------------------
+Tue Feb  7 22:17:49 UTC 2012 - jengelh@medozas.de
+
+- Split xorg-x11-libs into separate packages
