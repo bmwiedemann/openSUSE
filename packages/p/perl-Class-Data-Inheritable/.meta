@@ -1,0 +1,50 @@
+<package name="perl-Class-Data-Inheritable" project="openSUSE:Factory">
+  <title>Inheritable, overridable class data</title>
+  <description>Class::Data::Inheritable is for creating accessor/mutators to class data.
+That is, if you want to store something about your class as a whole
+(instead of about a single object). This data is then inherited by your
+subclasses and can be overriden.
+
+For example:
+
+  Pere::Ubu-&gt;mk_classdata('Suitcase');
+
+will generate the method Suitcase() in the class Pere::Ubu.
+
+This new method can be used to get and set a piece of class data.
+
+  Pere::Ubu-&gt;Suitcase('Red');
+  $suitcase = Pere::Ubu-&gt;Suitcase;
+
+The interesting part happens when a class inherits from Pere::Ubu:
+
+  package Raygun;
+  use base qw(Pere::Ubu);
+  
+  # Raygun's suitcase is Red.
+  $suitcase = Raygun-&gt;Suitcase;
+
+Raygun inherits its Suitcase class data from Pere::Ubu.
+
+Inheritance of class data works analogous to method inheritance. As long as
+Raygun does not &quot;override&quot; its inherited class data (by using Suitcase() to
+set a new value) it will continue to use whatever is set in Pere::Ubu and
+inherit further changes:
+
+  # Both Raygun's and Pere::Ubu's suitcases are now Blue
+  Pere::Ubu-&gt;Suitcase('Blue');
+
+However, should Raygun decide to set its own Suitcase() it has now
+&quot;overridden&quot; Pere::Ubu and is on its own, just like if it had overriden a
+method:
+
+  # Raygun has an orange suitcase, Pere::Ubu's is still Blue.
+  Raygun-&gt;Suitcase('Orange');
+
+Now that Raygun has overridden Pere::Ubu futher changes by Pere::Ubu no
+longer effect Raygun.
+
+  # Raygun still has an orange suitcase, but Pere::Ubu is using Samsonite.
+  Pere::Ubu-&gt;Suitcase('Samsonite');</description>
+  <devel project="devel:languages:perl" package="perl-Class-Data-Inheritable"/>
+</package>
