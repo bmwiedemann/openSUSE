@@ -1,0 +1,365 @@
+From 86e379aa22ba5e77ba0c6fa26588c5fd1d9e6abe Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Mon, 19 Feb 2024 09:59:15 +0100
+Subject: [PATCH 13/48] [gdb/exp] Fix printing of out of bounds struct members
+
+When building gdb with -O0 -fsanitize=address, and running test-case
+gdb.ada/uninitialized_vars.exp, I run into:
+...
+(gdb) info locals
+a = 0
+z = (a => 1, b => false, c => 2.0)
+=================================================================
+==66372==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x602000097f58 at pc 0xffff52c0da1c bp 0xffffc90a1d40 sp 0xffffc90a1d80
+READ of size 4 at 0x602000097f58 thread T0
+    #0 0xffff52c0da18 in memmove (/lib64/libasan.so.8+0x6da18)
+    #1 0xbcab24 in unsigned char* std::__copy_move_backward<false, true, std::random_access_iterator_tag>::__copy_move_b<unsigned char const, unsigned char>(unsigned char const*, unsigned char const*, unsigned char*) /usr/include/c++/13/bits/stl_algobase.h:748
+    #2 0xbc9bf4 in unsigned char* std::__copy_move_backward_a2<false, unsigned char const*, unsigned char*>(unsigned char const*, unsigned char const*, unsigned char*) /usr/include/c++/13/bits/stl_algobase.h:769
+    #3 0xbc898c in unsigned char* std::__copy_move_backward_a1<false, unsigned char const*, unsigned char*>(unsigned char const*, unsigned char const*, unsigned char*) /usr/include/c++/13/bits/stl_algobase.h:778
+    #4 0xbc715c in unsigned char* std::__copy_move_backward_a<false, unsigned char const*, unsigned char*>(unsigned char const*, unsigned char const*, unsigned char*) /usr/include/c++/13/bits/stl_algobase.h:807
+    #5 0xbc4e6c in unsigned char* std::copy_backward<unsigned char const*, unsigned char*>(unsigned char const*, unsigned char const*, unsigned char*) /usr/include/c++/13/bits/stl_algobase.h:867
+    #6 0xbc2934 in void gdb::copy<unsigned char const, unsigned char>(gdb::array_view<unsigned char const>, gdb::array_view<unsigned char>) gdb/../gdbsupport/array-view.h:223
+    #7 0x20e0100 in value::contents_copy_raw(value*, long, long, long) gdb/value.c:1239
+    #8 0x20e9830 in value::primitive_field(long, int, type*) gdb/value.c:3078
+    #9 0x20e98f8 in value_field(value*, int) gdb/value.c:3095
+    #10 0xcafd64 in print_field_values gdb/ada-valprint.c:658
+    #11 0xcb0fa0 in ada_val_print_struct_union gdb/ada-valprint.c:857
+    #12 0xcb1bb4 in ada_value_print_inner(value*, ui_file*, int, value_print_options const*) gdb/ada-valprint.c:1042
+    #13 0xc66e04 in ada_language::value_print_inner(value*, ui_file*, int, value_print_options const*) const (/home/vries/gdb/build/gdb/gdb+0xc66e04)
+    #14 0x20ca1e8 in common_val_print(value*, ui_file*, int, value_print_options const*, language_defn const*) gdb/valprint.c:1092
+    #15 0x20caabc in common_val_print_checked(value*, ui_file*, int, value_print_options const*, language_defn const*) gdb/valprint.c:1184
+    #16 0x196c524 in print_variable_and_value(char const*, symbol*, frame_info_ptr, ui_file*, int) gdb/printcmd.c:2355
+    #17 0x1d99ca0 in print_variable_and_value_data::operator()(char const*, symbol*) gdb/stack.c:2308
+    #18 0x1dabca0 in gdb::function_view<void (char const*, symbol*)>::bind<print_variable_and_value_data>(print_variable_and_value_data&)::{lambda(gdb::fv_detail::erased_callable, char const*, symbol*)#1}::operator()(gdb::fv_detail::erased_callable, char const*, symbol*) const gdb/../gdbsupport/function-view.h:305
+    #19 0x1dabd14 in gdb::function_view<void (char const*, symbol*)>::bind<print_variable_and_value_data>(print_variable_and_value_data&)::{lambda(gdb::fv_detail::erased_callable, char const*, symbol*)#1}::_FUN(gdb::fv_detail::erased_callable, char const*, symbol*) gdb/../gdbsupport/function-view.h:299
+    #20 0x1dab34c in gdb::function_view<void (char const*, symbol*)>::operator()(char const*, symbol*) const gdb/../gdbsupport/function-view.h:289
+    #21 0x1d9963c in iterate_over_block_locals gdb/stack.c:2240
+    #22 0x1d99790 in iterate_over_block_local_vars(block const*, gdb::function_view<void (char const*, symbol*)>) gdb/stack.c:2259
+    #23 0x1d9a598 in print_frame_local_vars gdb/stack.c:2380
+    #24 0x1d9afac in info_locals_command(char const*, int) gdb/stack.c:2458
+    #25 0xfd7b30 in do_simple_func gdb/cli/cli-decode.c:95
+    #26 0xfe5a2c in cmd_func(cmd_list_element*, char const*, int) gdb/cli/cli-decode.c:2735
+    #27 0x1f03790 in execute_command(char const*, int) gdb/top.c:575
+    #28 0x1384080 in command_handler(char const*) gdb/event-top.c:566
+    #29 0x1384e2c in command_line_handler(std::unique_ptr<char, gdb::xfree_deleter<char> >&&) gdb/event-top.c:802
+    #30 0x1f731e4 in tui_command_line_handler gdb/tui/tui-interp.c:104
+    #31 0x1382a58 in gdb_rl_callback_handler gdb/event-top.c:259
+    #32 0x21dbb80 in rl_callback_read_char readline/readline/callback.c:290
+    #33 0x1382510 in gdb_rl_callback_read_char_wrapper_noexcept gdb/event-top.c:195
+    #34 0x138277c in gdb_rl_callback_read_char_wrapper gdb/event-top.c:234
+    #35 0x1fe9b40 in stdin_event_handler gdb/ui.c:155
+    #36 0x35ff1bc in handle_file_event gdbsupport/event-loop.cc:573
+    #37 0x35ff9d8 in gdb_wait_for_event gdbsupport/event-loop.cc:694
+    #38 0x35fd284 in gdb_do_one_event(int) gdbsupport/event-loop.cc:264
+    #39 0x1768080 in start_event_loop gdb/main.c:408
+    #40 0x17684c4 in captured_command_loop gdb/main.c:472
+    #41 0x176cfc8 in captured_main gdb/main.c:1342
+    #42 0x176d088 in gdb_main(captured_main_args*) gdb/main.c:1361
+    #43 0xb73edc in main gdb/gdb.c:39
+    #44 0xffff519b09d8 in __libc_start_call_main (/lib64/libc.so.6+0x309d8)
+    #45 0xffff519b0aac in __libc_start_main@@GLIBC_2.34 (/lib64/libc.so.6+0x30aac)
+    #46 0xb73c2c in _start (/home/vries/gdb/build/gdb/gdb+0xb73c2c)
+
+0x602000097f58 is located 0 bytes after 8-byte region [0x602000097f50,0x602000097f58)
+allocated by thread T0 here:
+    #0 0xffff52c65218 in calloc (/lib64/libasan.so.8+0xc5218)
+    #1 0xcbc278 in xcalloc gdb/alloc.c:97
+    #2 0x35f21e8 in xzalloc(unsigned long) gdbsupport/common-utils.cc:29
+    #3 0x20de270 in value::allocate_contents(bool) gdb/value.c:937
+    #4 0x20edc08 in value::fetch_lazy() gdb/value.c:4033
+    #5 0x20dadc0 in value::entirely_covered_by_range_vector(std::vector<range, std::allocator<range> > const&) gdb/value.c:229
+    #6 0xcb2298 in value::entirely_optimized_out() gdb/value.h:560
+    #7 0x20ca6fc in value_check_printable gdb/valprint.c:1133
+    #8 0x20caa8c in common_val_print_checked(value*, ui_file*, int, value_print_options const*, language_defn const*) gdb/valprint.c:1182
+    #9 0x196c524 in print_variable_and_value(char const*, symbol*, frame_info_ptr, ui_file*, int) gdb/printcmd.c:2355
+    #10 0x1d99ca0 in print_variable_and_value_data::operator()(char const*, symbol*) gdb/stack.c:2308
+    #11 0x1dabca0 in gdb::function_view<void (char const*, symbol*)>::bind<print_variable_and_value_data>(print_variable_and_value_data&)::{lambda(gdb::fv_detail::erased_callable, char const*, symbol*)#1}::operator()(gdb::fv_detail::erased_callable, char const*, symbol*) const gdb/../gdbsupport/function-view.h:305
+    #12 0x1dabd14 in gdb::function_view<void (char const*, symbol*)>::bind<print_variable_and_value_data>(print_variable_and_value_data&)::{lambda(gdb::fv_detail::erased_callable, char const*, symbol*)#1}::_FUN(gdb::fv_detail::erased_callable, char const*, symbol*) gdb/../gdbsupport/function-view.h:299
+    #13 0x1dab34c in gdb::function_view<void (char const*, symbol*)>::operator()(char const*, symbol*) const gdb/../gdbsupport/function-view.h:289
+    #14 0x1d9963c in iterate_over_block_locals gdb/stack.c:2240
+    #15 0x1d99790 in iterate_over_block_local_vars(block const*, gdb::function_view<void (char const*, symbol*)>) gdb/stack.c:2259
+    #16 0x1d9a598 in print_frame_local_vars gdb/stack.c:2380
+    #17 0x1d9afac in info_locals_command(char const*, int) gdb/stack.c:2458
+    #18 0xfd7b30 in do_simple_func gdb/cli/cli-decode.c:95
+    #19 0xfe5a2c in cmd_func(cmd_list_element*, char const*, int) gdb/cli/cli-decode.c:2735
+    #20 0x1f03790 in execute_command(char const*, int) gdb/top.c:575
+    #21 0x1384080 in command_handler(char const*) gdb/event-top.c:566
+    #22 0x1384e2c in command_line_handler(std::unique_ptr<char, gdb::xfree_deleter<char> >&&) gdb/event-top.c:802
+    #23 0x1f731e4 in tui_command_line_handler gdb/tui/tui-interp.c:104
+    #24 0x1382a58 in gdb_rl_callback_handler gdb/event-top.c:259
+    #25 0x21dbb80 in rl_callback_read_char readline/readline/callback.c:290
+    #26 0x1382510 in gdb_rl_callback_read_char_wrapper_noexcept gdb/event-top.c:195
+    #27 0x138277c in gdb_rl_callback_read_char_wrapper gdb/event-top.c:234
+    #28 0x1fe9b40 in stdin_event_handler gdb/ui.c:155
+    #29 0x35ff1bc in handle_file_event gdbsupport/event-loop.cc:573
+
+SUMMARY: AddressSanitizer: heap-buffer-overflow (/lib64/libasan.so.8+0x6da18) in memmove
+...
+
+The error happens when trying to print either variable y or y2:
+...
+   type Variable_Record (A : Boolean := True) is record
+      case A is
+         when True =>
+            B : Integer;
+         when False =>
+            C : Float;
+            D : Integer;
+      end case;
+   end record;
+   Y  : Variable_Record := (A => True, B => 1);
+   Y2 : Variable_Record := (A => False, C => 1.0, D => 2);
+...
+when the variables are uninitialized.
+
+The error happens only when printing the entire variable:
+...
+(gdb) p y.a
+$2 = 216
+(gdb) p y.b
+There is no member named b.
+(gdb) p y.c
+$3 = 9.18340949e-41
+(gdb) p y.d
+$4 = 1
+(gdb) p y
+<AddressSanitizer: heap-buffer-overflow>
+...
+
+The error happens as follows:
+- field a functions as discriminant, choosing either the b, or c+d variant.
+- when y.a happens to be set to 216, as above, gdb interprets this as the
+  variable having the c+d variant (which is why trying to print y.b fails).
+- when printing y, gdb allocates a value, copies the bytes into it from the
+  target, and then prints the value.
+- gdb allocates the value using the type size, which is 8.  It's 8 because
+  that's what the DW_AT_byte_size indicates.  Note that for valid values of a,
+  it gives correct results: if a is 0 (c+d variant), size is 12, if a is 1
+  (b variant), size is 8.
+- gdb tries to print field d, which is at an 8 byte offset, and that results
+  in a out-of-bounds access for the allocated 8-byte value.
+
+Fix this by handling this case in value::contents_copy_raw, such that we have:
+...
+(gdb) p y
+$1 = (a => 24, c => 9.18340949e-41,
+      d => <error reading variable: access outside bounds of object>)
+...
+
+An alternative (additional) fix could be this: in compute_variant_fields_inner
+gdb reads the discriminant y.a to decide which variant is active.  It would be
+nice to detect that the value (y.a == 24) is not a valid Boolean, and give up
+on choosing a variant altoghether.  However, the situation regarding the
+internal type CODE_TYPE_BOOL is currently ambiguous (see PR31282) and it's not
+possible to reliably decide what valid values are.
+
+The test-case source file gdb.ada/uninitialized-variable-record/parse.adb is
+a reduced version of gdb.ada/uninitialized_vars/parse.adb, so it copies the
+copyright years.
+
+Note that the test-case needs gcc-12 or newer, it's unsupported for older gcc
+versions. [ So, it would be nice to rewrite it into a dwarf assembly
+test-case. ]
+
+The test-case loops over all languages.  This is inherited from an earlier
+attempt to fix this, which had language-specific fixes (in print_field_values,
+cp_print_value_fields, pascal_object_print_value_fields and
+f_language::value_print_inner).  I've left this in, but I suppose it's not
+strictly necessary anymore.
+
+Tested on x86_64-linux.
+
+PR exp/31258
+Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=31258
+---
+ .../gdb.ada/uninitialized-variable-record.exp | 122 ++++++++++++++++++
+ .../uninitialized-variable-record/parse.adb   |  33 +++++
+ gdb/value.c                                   |   3 +
+ 3 files changed, 158 insertions(+)
+ create mode 100644 gdb/testsuite/gdb.ada/uninitialized-variable-record.exp
+ create mode 100644 gdb/testsuite/gdb.ada/uninitialized-variable-record/parse.adb
+
+diff --git a/gdb/testsuite/gdb.ada/uninitialized-variable-record.exp b/gdb/testsuite/gdb.ada/uninitialized-variable-record.exp
+new file mode 100644
+index 00000000000..7fc72395edf
+--- /dev/null
++++ b/gdb/testsuite/gdb.ada/uninitialized-variable-record.exp
+@@ -0,0 +1,122 @@
++# Copyright 2024 Free Software Foundation, Inc.
++#
++# This program is free software; you can redistribute it and/or modify
++# it under the terms of the GNU General Public License as published by
++# the Free Software Foundation; either version 3 of the License, or
++# (at your option) any later version.
++#
++# This program is distributed in the hope that it will be useful,
++# but WITHOUT ANY WARRANTY; without even the implied warranty of
++# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++# GNU General Public License for more details.
++#
++# You should have received a copy of the GNU General Public License
++# along with this program.  If not, see <http://www.gnu.org/licenses/>.
++
++load_lib "ada.exp"
++
++require allow_ada_tests
++
++standard_ada_testfile parse
++
++if {[gdb_compile_ada "${srcfile}" "${binfile}" executable {debug}] != "" } {
++  return -1
++}
++
++clean_restart ${testfile}
++
++set bp_location [gdb_get_line_number "START" ${testdir}/parse.adb]
++runto "parse.adb:$bp_location"
++
++# Check that we have the expected value for variable y2.
++
++gdb_test "p y2" [string_to_regexp " = (a => false, c => 1.0, d => 2)"]
++
++# Shorthand.
++
++proc set_lang { lang } {
++    gdb_test_multiple "set language $lang" "" {
++	-re -wrap "" {
++	}
++    }
++}
++
++# Calculate the offset of y2.d.
++
++set re_cast [string_to_regexp "(access integer)"]
++gdb_test_multiple "print &y2.d - &y2" "" {
++    -re -wrap " = $re_cast ($hex)" {
++	set offset_d $expect_out(1,string)
++	pass $gdb_test_name
++    }
++}
++
++# Try to find a interesting discriminator value, such that at the same time:
++# - the d field is part of the variable, and
++# - the type size is too small to contain d.
++
++set interesting_discriminator -1
++set_lang c
++for { set i 0 } { $i < 256 } { incr i } {
++    with_test_prefix $i {
++
++	# Patch in the discriminator value.
++	gdb_test_multiple "set var *(unsigned char *)(&y2.a)=$i" "" {
++	    -re -wrap "" {
++	    }
++	}
++
++	# Check that we have the variant with fields c+d instead of b.
++	set have_b 0
++	gdb_test_multiple "with language ada -- print y2.b" "" {
++	    -re -wrap " = $decimal" {
++		set have_b 1
++	    }
++	    -re -wrap "" {
++	    }
++	}
++	if { $have_b } {
++	    # This is the variant with field b.
++	    continue
++	}
++
++	set size 0
++	gdb_test_multiple "print sizeof (y2)" "" {
++	    -re -wrap " = (.*)" {
++		set size $expect_out(1,string)
++	    }
++	}
++
++	if { ! $size } {
++	    continue
++	}
++
++	if { [expr $size > $offset_d] } {
++	    # Field d fits in the size.
++	    continue
++	}
++
++	set interesting_discriminator $i
++	break
++    }
++}
++
++require {expr $interesting_discriminator != -1}
++
++foreach lang [gdb_supported_languages] {
++    with_test_prefix $lang {
++	set_lang $lang
++
++	gdb_test_multiple "print y2" "" {
++	    -re -wrap ", d => $decimal.*" {
++		fail $gdb_test_name
++	    }
++	    -re -wrap ", d = $decimal.*" {
++		fail $gdb_test_name
++	    }
++	    -re -wrap "" {
++		pass $gdb_test_name
++	    }
++	}
++    }
++}
+diff --git a/gdb/testsuite/gdb.ada/uninitialized-variable-record/parse.adb b/gdb/testsuite/gdb.ada/uninitialized-variable-record/parse.adb
+new file mode 100644
+index 00000000000..f00c75ca2dc
+--- /dev/null
++++ b/gdb/testsuite/gdb.ada/uninitialized-variable-record/parse.adb
+@@ -0,0 +1,33 @@
++--  Copyright 2009-2024 Free Software Foundation, Inc.
++--
++--  This program is free software; you can redistribute it and/or modify
++--  it under the terms of the GNU General Public License as published by
++--  the Free Software Foundation; either version 3 of the License, or
++--  (at your option) any later version.
++--
++--  This program is distributed in the hope that it will be useful,
++--  but WITHOUT ANY WARRANTY; without even the implied warranty of
++--  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++--  GNU General Public License for more details.
++--
++--  You should have received a copy of the GNU General Public License
++--  along with this program.  If not, see <http://www.gnu.org/licenses/>.
++
++-- Based on gdb.ada/uninitialized_vars/parse.adb.
++
++procedure Parse is
++
++   type Variable_Record (A : Boolean := True) is record
++      case A is
++         when True =>
++            B : Integer;
++         when False =>
++            C : Float;
++            D : Integer;
++      end case;
++   end record;
++   Y2 : Variable_Record := (A => False, C => 1.0, D => 2);
++
++begin
++   null;  -- START
++end Parse;
+diff --git a/gdb/value.c b/gdb/value.c
+index 1cc32625629..56ae9db6603 100644
+--- a/gdb/value.c
++++ b/gdb/value.c
+@@ -1188,6 +1188,9 @@ value::contents_copy_raw (struct value *dst, LONGEST dst_offset,
+   gdb_assert (!dst->bits_any_optimized_out (TARGET_CHAR_BIT * dst_offset,
+ 					    TARGET_CHAR_BIT * length));
+ 
++  if ((src_offset + copy_length) * unit_size > enclosing_type ()-> length ())
++    error (_("access outside bounds of object"));
++
+   /* Copy the data.  */
+   gdb::array_view<gdb_byte> dst_contents
+     = dst->contents_all_raw ().slice (dst_offset * unit_size,
+-- 
+2.35.3
+

@@ -1,0 +1,49 @@
+From dba128204017c9a12b3b6840bf1e3a6fec83f3e4 Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Mon, 26 Feb 2024 15:59:47 +0100
+Subject: [PATCH 42/48] [gdb/testsuite] Further handle long filenames in
+ gdb.base/startup-with-shell.exp
+
+In commit 52498004a34 ("gdb/testsuite: handle long filenames in
+gdb.base/startup-with-shell.exp") we fixed a FAIL reported by the Linaro CI:
+...
+(gdb) print argv[1]
+$1 = 0xfffed978 "<snip>/startup-with-shell/unique-file.unique-e"...
+(gdb) FAIL: gdb.base/startup-with-shell.exp: startup_with_shell = on; \
+  run_args = *.unique-extension: first argument expanded
+...
+
+PR testsuite/31410 reports a similar failure:
+...
+(gdb) print argv[1]
+$1 = 0xfffeda96 "<snip>/startup-with-shell/*.unique-extens"...
+(gdb) FAIL: gdb.base/startup-with-shell.exp: startup_with_shell = off; \
+  run_args = *.unique-extension: first argument not expanded
+...
+
+Fix this in the same way, using "set print characters unlimited".
+
+Tested on x86_64-linux.
+
+Approved-By: Tom Tromey <tom@tromey.com>
+
+Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=31410
+---
+ gdb/testsuite/gdb.base/startup-with-shell.exp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/gdb/testsuite/gdb.base/startup-with-shell.exp b/gdb/testsuite/gdb.base/startup-with-shell.exp
+index 51b1e4fa922..24135972b72 100644
+--- a/gdb/testsuite/gdb.base/startup-with-shell.exp
++++ b/gdb/testsuite/gdb.base/startup-with-shell.exp
+@@ -65,6 +65,7 @@ with_test_prefix "startup_with_shell = on; run_args = *.unique-extension" {
+ 
+ with_test_prefix "startup_with_shell = off; run_args = *.unique-extension" {
+     initial_setup_simple "off" "$unique_file_dir/*.unique-extension"
++    gdb_test_no_output "set print characters unlimited"
+     gdb_test "print argv\[1\]" "\\\$$decimal = $hex \"$unique_file_dir/\\\*\.unique-extension\"" \
+ 	"first argument not expanded"
+ }
+-- 
+2.35.3
+

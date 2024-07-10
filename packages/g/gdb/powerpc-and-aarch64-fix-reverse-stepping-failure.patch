@@ -1,0 +1,478 @@
+From b826313e55938c8cf83b0889e2f6bdf8129bc004 Mon Sep 17 00:00:00 2001
+From: Carl Love <cel@linux.ibm.com>
+Date: Tue, 2 Jan 2024 17:46:02 -0500
+Subject: [PATCH 07/48] PowerPC and aarch64: Fix reverse stepping failure
+
+When running GDB's testsuite on aarch64-linux/Ubuntu 20.04 (also spotted on
+the ppc backend), there are failures in gdb.reverse/solib-precsave.exp and
+gdb.reverse/solib-reverse.exp.
+
+The failure happens around the following code:
+
+38  b[1] = shr2(17);          /* middle part two */
+40  b[0] = 6;   b[1] = 9;     /* generic statement, end part two */
+42  shr1 ("message 1\n");     /* shr1 one */
+
+Normal execution:
+
+- step from line 38 will land on line 40.
+- step from line 40 will land on line 42.
+
+Reverse execution:
+- step from line 42 will land on line 40.
+- step from line 40 will land on line 40.
+- step from line 40 will land on line 38.
+
+The problem here is that line 40 contains two contiguous but distinct
+PC ranges in the line table, like so:
+
+Line 40 - [0x7ec ~ 0x7f4]
+Line 40 - [0x7f4 ~ 0x7fc]
+
+The two distinct ranges are generated because GCC started outputting source
+column information, which GDB doesn't take into account at the moment.
+
+When stepping forward from line 40, we skip both of these ranges and land on
+line 42. When stepping backward from line 42, we stop at the start PC of the
+second (or first, going backwards) range of line 40.
+
+Since we've reached ecs->event_thread->control.step_range_start, we stop
+stepping backwards.
+
+The above issues were fixed by introducing a new function that looks for
+adjacent PC ranges for the same line, until we notice a line change. Then
+we take that as the start PC of the range.  The new start PC for the range
+is used for the control.step_range_start when setting up a step range.
+
+The test case gdb.reverse/map-to-same-line.exp is added to test the fix
+for the above reverse step issues.
+
+Patch has been tested on PowerPC, X86 and AArch64 with no regressions.
+---
+ gdb/infrun.c                                  |  57 +++++++
+ gdb/symtab.c                                  |  50 ++++++
+ gdb/symtab.h                                  |  17 ++
+ gdb/testsuite/gdb.reverse/map-to-same-line.c  |  58 +++++++
+ .../gdb.reverse/map-to-same-line.exp          | 153 ++++++++++++++++++
+ 5 files changed, 335 insertions(+)
+ create mode 100644 gdb/testsuite/gdb.reverse/map-to-same-line.c
+ create mode 100644 gdb/testsuite/gdb.reverse/map-to-same-line.exp
+
+diff --git a/gdb/infrun.c b/gdb/infrun.c
+index 4730d290442..069ef144a76 100644
+--- a/gdb/infrun.c
++++ b/gdb/infrun.c
+@@ -114,6 +114,8 @@ static struct async_event_handler *infrun_async_inferior_event_token;
+ /* Stores whether infrun_async was previously enabled or disabled.
+    Starts off as -1, indicating "never enabled/disabled".  */
+ static int infrun_is_async = -1;
++static CORE_ADDR update_line_range_start (CORE_ADDR pc,
++					  struct execution_control_state *ecs);
+ 
+ /* See infrun.h.  */
+ 
+@@ -6886,6 +6888,27 @@ handle_signal_stop (struct execution_control_state *ecs)
+   process_event_stop_test (ecs);
+ }
+ 
++/* Return the address for the beginning of the line.  */
++
++CORE_ADDR
++update_line_range_start (CORE_ADDR pc, struct execution_control_state *ecs)
++{
++  /* The line table may have multiple entries for the same source code line.
++     Given the PC, check the line table and return the PC that corresponds
++     to the line table entry for the source line that PC is in.  */
++  CORE_ADDR start_line_pc = ecs->event_thread->control.step_range_start;
++  std::optional<CORE_ADDR> real_range_start;
++
++  /* Call find_line_range_start to get the smallest address in the
++     linetable for multiple Line X entries in the line table.  */
++  real_range_start = find_line_range_start (pc);
++
++  if (real_range_start.has_value ())
++    start_line_pc = *real_range_start;
++
++  return start_line_pc;
++}
++
+ /* Come here when we've got some debug event / signal we can explain
+    (IOW, not a random signal), and test whether it should cause a
+    stop, or whether we should resume the inferior (transparently).
+@@ -7687,6 +7710,29 @@ process_event_stop_test (struct execution_control_state *ecs)
+ 
+       if (stop_pc_sal.is_stmt)
+ 	{
++	  if (execution_direction == EXEC_REVERSE)
++	    {
++	      /* We are stepping backwards make sure we have reached the
++		 beginning of the line.  */
++	      CORE_ADDR stop_pc = ecs->event_thread->stop_pc ();
++	      CORE_ADDR start_line_pc
++		= update_line_range_start (stop_pc, ecs);
++
++	      if (stop_pc != start_line_pc)
++		{
++		  /* Have not reached the beginning of the source code line.
++		     Set a step range.  Execution should stop in any function
++		     calls we execute back into before reaching the beginning
++		     of the line.  */
++		  ecs->event_thread->control.step_range_start
++		    = start_line_pc;
++		  ecs->event_thread->control.step_range_end = stop_pc;
++		  set_step_info (ecs->event_thread, frame, stop_pc_sal);
++		  keep_going (ecs);
++		  return;
++		}
++	    }
++
+ 	  /* We are at the start of a statement.
+ 
+ 	     So stop.  Note that we don't stop if we step into the middle of a
+@@ -7749,6 +7795,17 @@ process_event_stop_test (struct execution_control_state *ecs)
+     set_step_info (ecs->event_thread, frame, stop_pc_sal);
+ 
+   infrun_debug_printf ("keep going");
++
++  if (execution_direction == EXEC_REVERSE)
++    {
++      CORE_ADDR stop_pc = ecs->event_thread->stop_pc ();
++
++      /* Make sure the stop_pc is set to the beginning of the line.  */
++      if (stop_pc != ecs->event_thread->control.step_range_start)
++	ecs->event_thread->control.step_range_start
++	  = update_line_range_start (stop_pc, ecs);
++    }
++
+   keep_going (ecs);
+ }
+ 
+diff --git a/gdb/symtab.c b/gdb/symtab.c
+index e9bc7b2c933..ef63ec93c5a 100644
+--- a/gdb/symtab.c
++++ b/gdb/symtab.c
+@@ -73,6 +73,7 @@
+ #include "gdbsupport/gdb_string_view.h"
+ #include "gdbsupport/pathstuff.h"
+ #include "gdbsupport/common-utils.h"
++#include <optional>
+ 
+ /* Forward declarations for local functions.  */
+ 
+@@ -3311,6 +3312,55 @@ find_pc_line (CORE_ADDR pc, int notcurrent)
+   return sal;
+ }
+ 
++/* Compare two symtab_and_line entries.  Return true if both have
++   the same line number and the same symtab pointer.  That means we
++   are dealing with two entries from the same line and from the same
++   source file.
++
++   Return false otherwise.  */
++
++static bool
++sal_line_symtab_matches_p (const symtab_and_line &sal1,
++			   const symtab_and_line &sal2)
++{
++  return sal1.line == sal2.line && sal1.symtab == sal2.symtab;
++}
++
++/* See symtah.h.  */
++
++std::optional<CORE_ADDR>
++find_line_range_start (CORE_ADDR pc)
++{
++  struct symtab_and_line current_sal = find_pc_line (pc, 0);
++
++  if (current_sal.line == 0)
++    return {};
++
++  struct symtab_and_line prev_sal = find_pc_line (current_sal.pc - 1, 0);
++
++  /* If the previous entry is for a different line, that means we are already
++     at the entry with the start PC for this line.  */
++  if (!sal_line_symtab_matches_p (prev_sal, current_sal))
++    return current_sal.pc;
++
++  /* Otherwise, keep looking for entries for the same line but with
++     smaller PC's.  */
++  bool done = false;
++  CORE_ADDR prev_pc;
++  while (!done)
++    {
++      prev_pc = prev_sal.pc;
++
++      prev_sal = find_pc_line (prev_pc - 1, 0);
++
++      /* Did we notice a line change?  If so, we are done searching.  */
++      if (!sal_line_symtab_matches_p (prev_sal, current_sal))
++	done = true;
++    }
++
++  return prev_pc;
++}
++
+ /* See symtab.h.  */
+ 
+ struct symtab *
+diff --git a/gdb/symtab.h b/gdb/symtab.h
+index 365743384e1..e17d15c595b 100644
+--- a/gdb/symtab.h
++++ b/gdb/symtab.h
+@@ -38,6 +38,7 @@
+ #include "gdb-demangle.h"
+ #include "split-name.h"
+ #include "frame.h"
++#include <optional>
+ 
+ /* Opaque declarations.  */
+ struct ui_file;
+@@ -2362,6 +2363,22 @@ extern struct symtab_and_line find_pc_line (CORE_ADDR, int);
+ extern struct symtab_and_line find_pc_sect_line (CORE_ADDR,
+ 						 struct obj_section *, int);
+ 
++/* Given PC, and assuming it is part of a range of addresses that is part of
++   a line, go back through the linetable and find the starting PC of that
++   line.
++
++   For example, suppose we have 3 PC ranges for line X:
++
++   Line X - [0x0 - 0x8]
++   Line X - [0x8 - 0x10]
++   Line X - [0x10 - 0x18]
++
++   If we call the function with PC == 0x14, we want to return 0x0, as that is
++   the starting PC of line X, and the ranges are contiguous.
++*/
++
++extern std::optional<CORE_ADDR> find_line_range_start (CORE_ADDR pc);
++
+ /* Wrapper around find_pc_line to just return the symtab.  */
+ 
+ extern struct symtab *find_pc_line_symtab (CORE_ADDR);
+diff --git a/gdb/testsuite/gdb.reverse/map-to-same-line.c b/gdb/testsuite/gdb.reverse/map-to-same-line.c
+new file mode 100644
+index 00000000000..3086e849231
+--- /dev/null
++++ b/gdb/testsuite/gdb.reverse/map-to-same-line.c
+@@ -0,0 +1,58 @@
++/* Copyright 2023 Free Software Foundation, Inc.
++
++   This program is free software; you can redistribute it and/or modify
++   it under the terms of the GNU General Public License as published by
++   the Free Software Foundation; either version 3 of the License, or
++   (at your option) any later version.
++
++   This program is distributed in the hope that it will be useful,
++   but WITHOUT ANY WARRANTY; without even the implied warranty of
++   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++   GNU General Public License for more details.
++
++   You should have received a copy of the GNU General Public License
++   along with this program.  If not, see <https://urldefense.proofpoint.com/v2/url?u=http-3A__www.gnu.org_licenses_&d=DwIDAg&c=jf_iaSHvJObTbx-siA1ZOg&r=RFEmMkZAk--_wFGN5tkM_A&m=hvslrRyYSFfiB2uOFjd7I62ZBKNJkGFWTdsHWVjwDIkK3MWESdWS4tI89FoblXn9&s=Ety3VhMg8aZcBncPPcPCS5XzUde9hjKVulkt8r7mD2k&e= >.  */
++
++/* The purpose of this test is to create a DWARF line table that contains two
++   or more entries for the same line.  When stepping (forwards or backwards),
++   GDB should step over the entire line and not just a particular entry in
++   the line table.  */
++
++int
++main (void)
++{     /* TAG: main prologue */
++  asm ("main_label: .globl main_label");
++  int i = 1, j = 2, k;
++  float f1 = 2.0, f2 = 4.1, f3;
++  const char *str_1 = "foo", *str_2 = "bar", *str_3;
++
++  asm ("line1: .globl line1");
++  k = i; f3 = f1; str_3 = str_1;    /* TAG: line 1 */
++
++  asm ("line2: .globl line2");
++  k = j; f3 = f2; str_3 = str_2;    /* TAG: line 2 */
++
++  asm ("line3: .globl line3");
++  k = i; f3 = f1; str_3 = str_1;    /* TAG: line 3 */
++
++  asm ("line4: .globl line4");
++  k = j; f3 = f2; str_3 = str_2;    /* TAG: line 4 */
++
++  asm ("line5: .globl line5");
++  k = i; f3 = f1; str_3 = str_1;    /* TAG: line 5 */
++
++  asm ("line6: .globl line6");
++  k = j; f3 = f2; str_3 = str_2;    /* TAG: line 6 */
++
++  asm ("line7: .globl line7");
++  k = i; f3 = f1; str_3 = str_1;    /* TAG: line 7 */
++
++  asm ("line8: .globl line8");
++  k = j; f3 = f2; str_3 = str_2;    /* TAG: line 8 */
++
++  asm ("main_return: .globl main_return");
++  k = j; f3 = f2; str_3 = str_2;    /* TAG: main return */
++
++  asm ("end_of_sequence: .globl end_of_sequence");
++  return 0; /* TAG: main return */
++}
+diff --git a/gdb/testsuite/gdb.reverse/map-to-same-line.exp b/gdb/testsuite/gdb.reverse/map-to-same-line.exp
+new file mode 100644
+index 00000000000..63f8c9c76b3
+--- /dev/null
++++ b/gdb/testsuite/gdb.reverse/map-to-same-line.exp
+@@ -0,0 +1,153 @@
++# Copyright 2023 Free Software Foundation, Inc.
++
++# This program is free software; you can redistribute it and/or modify
++# it under the terms of the GNU General Public License as published by
++# the Free Software Foundation; either version 3 of the License, or
++# (at your option) any later version.
++#
++# This program is distributed in the hope that it will be useful,
++# but WITHOUT ANY WARRANTY; without even the implied warranty of
++# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++# GNU General Public License for more details.
++#
++# You should have received a copy of the GNU General Public License
++# along with this program.  If not, see <https://urldefense.proofpoint.com/v2/url?u=http-3A__www.gnu.org_licenses_&d=DwIDAg&c=jf_iaSHvJObTbx-siA1ZOg&r=RFEmMkZAk--_wFGN5tkM_A&m=hvslrRyYSFfiB2uOFjd7I62ZBKNJkGFWTdsHWVjwDIkK3MWESdWS4tI89FoblXn9&s=Ety3VhMg8aZcBncPPcPCS5XzUde9hjKVulkt8r7mD2k&e= >.
++
++# When stepping (forwards or backwards), GDB should step over the entire line
++# and not just a particular entry in the line table. This test was added to
++# verify the find_line_range_start function properly sets the step range for a
++# line that consists of multiple statements, i.e. multiple entries in the line
++# table.  This test creates a DWARF line table that contains two entries for
++# the same line to do the needed testing.
++
++# This test can only be run on targets which support DWARF-2 and use gas.
++load_lib dwarf.exp
++require dwarf2_support
++
++# The DWARF assembler requires the gcc compiler.
++require is_c_compiler_gcc
++
++# This test suitable only for process that can do reverse execution
++require supports_reverse
++
++standard_testfile .c .S
++
++if { [prepare_for_testing "failed to prepare" ${testfile} ${srcfile}] } {
++    return -1
++}
++
++set asm_file [standard_output_file $srcfile2]
++Dwarf::assemble $asm_file {
++    global srcdir subdir srcfile
++    declare_labels integer_label L
++
++    # Find start address and length of program
++    lassign [function_range main [list ${srcdir}/${subdir}/$srcfile]] \
++	main_start main_len
++    set main_end "$main_start + $main_len"
++
++    cu {} {
++	compile_unit {
++	    {language @DW_LANG_C}
++	    {name map-to-same-line.c}
++	    {stmt_list $L DW_FORM_sec_offset}
++	    {low_pc 0 addr}
++	} {
++	    subprogram {
++		{external 1 flag}
++		{name main}
++		{low_pc $main_start addr}
++		{high_pc $main_len DW_FORM_data4}
++	    }
++	}
++    }
++
++    lines {version 2 default_is_stmt 1} L {
++	include_dir "${srcdir}/${subdir}"
++	file_name "$srcfile" 1
++
++	# Generate the line table program with distinct source lines being
++	# mapped to the same line entry. Line 1, 5 and 8 contain 1 statement
++	# each.  Line 2 contains 2 statements.  Line 3 contains 3 statements.
++	program {
++	    DW_LNE_set_address $main_start
++	    line [gdb_get_line_number "TAG: main prologue"]
++	    DW_LNS_copy
++	    DW_LNE_set_address line1
++	    line [gdb_get_line_number "TAG: line 1" ]
++	    DW_LNS_copy
++	    DW_LNE_set_address line2
++	    line [gdb_get_line_number "TAG: line 2" ]
++	    DW_LNS_copy
++	    DW_LNE_set_address line3
++	    line [gdb_get_line_number "TAG: line 2" ]
++	    DW_LNS_copy
++	    DW_LNE_set_address line4
++	    line [gdb_get_line_number "TAG: line 3" ]
++	    DW_LNS_copy
++	    DW_LNE_set_address line5
++	    line [gdb_get_line_number "TAG: line 3" ]
++	    DW_LNS_copy
++	    DW_LNE_set_address line6
++	    line [gdb_get_line_number "TAG: line 3" ]
++	    DW_LNS_copy
++	    DW_LNE_set_address line7
++	    line [gdb_get_line_number "TAG: line 5" ]
++	    DW_LNS_copy
++	    DW_LNE_set_address line8
++	    line [gdb_get_line_number "TAG: line 8" ]
++	    DW_LNS_copy
++	    DW_LNE_set_address main_return
++	    line [gdb_get_line_number "TAG: main return"]
++	    DW_LNS_copy
++	    DW_LNE_set_address end_of_sequence
++	    DW_LNE_end_sequence
++	}
++    }
++}
++
++if { [prepare_for_testing "failed to prepare" ${testfile} \
++	[list $srcfile $asm_file] {nodebug} ] } {
++    return -1
++}
++
++if { ![runto_main] } {
++    return
++}
++
++# Print the line table
++gdb_test_multiple "maint info line-table ${testfile}" "" {
++    -re "\r\n$decimal\[ \t\]+$decimal\[ \t\]+($hex)\[ \t\]+Y\[^\r\n\]*" {
++	lappend is_stmt $expect_out(1,string)
++	exp_continue
++    }
++    -re -wrap "" {
++    }
++}
++
++# Do the reverse-step and reverse-next tests
++foreach_with_prefix cmd {step next} {
++    gdb_test_no_output "record" "turn on process record, test $cmd"
++
++    set bp_main_return [gdb_get_line_number "TAG: main return" $srcfile]
++    gdb_breakpoint $srcfile:$bp_main_return
++    gdb_continue_to_breakpoint  "run to end of main, reverse-$cmd test" ".*$srcfile:$bp_main_return.*"
++    gdb_test "display \$pc" ".*pc =.*" "display pc, reverse-$cmd test"
++
++    # At this point, GDB has already recorded the execution up until the return
++    # statement.  Reverse and test if GDB transitions between lines in the
++    # expected order.  It should reverse-step or reverse-next across lines 8,
++    # 5, 3, 2 and 1.
++    foreach line {8 5 3 2 1} {
++	gdb_test "reverse-$cmd" ".*TAG: line $line.*" "reverse $cmd to line $line"
++    }
++
++    if {$cmd =="step"} {
++	## Clean restart, test reverse-next command
++	clean_restart ${testfile}
++
++	if { ![runto_main] } {
++	    return
++	}
++    }
++}
+-- 
+2.35.3
+

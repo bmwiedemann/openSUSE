@@ -1,0 +1,19 @@
+From FEDORA_PATCHES Mon Sep 17 00:00:00 2001
+From: Fedora GDB patches <invalid@email.com>
+Date: Fri, 27 Oct 2017 21:07:50 +0200
+Subject: gdb-6.6-buildid-locate-rpm-librpm-workaround.patch
+
+;; Workaround librpm BZ 643031 due to its unexpected exit() calls (BZ 642879).
+;;=push+jan
+
+diff --git a/gdb/proc-service.list b/gdb/proc-service.list
+--- a/gdb/proc-service.list
++++ b/gdb/proc-service.list
+@@ -37,4 +37,7 @@
+   ps_pstop;
+   ps_ptread;
+   ps_ptwrite;
++
++  /* gdb-6.6-buildid-locate-rpm.patch */
++  rpmsqEnable;
+ };

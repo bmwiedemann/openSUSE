@@ -1,0 +1,120 @@
+From 3b2f2b376bb80edadacc582161c362612947e3a6 Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Sun, 24 Sep 2023 11:43:24 +0200
+Subject: [PATCH 09/13] [gdb/symtab] Resolve deferred entries, intra-shard case
+
+In patch "[gdb/symtab] Resolve deferred entries, inter-shard case" we've
+solved the generic case of handling deferred entries.
+
+Now add an optimization that handles deferred entries with an intra-shard
+dependency in the parallel for.
+
+Tested on x86_64-linux.
+---
+ gdb/dwarf2/cooked-index.c | 35 +++++++++++++++++++++++++++++++++++
+ gdb/dwarf2/cooked-index.h |  7 +++++++
+ gdb/dwarf2/read.c         | 10 ++++++++++
+ 3 files changed, 52 insertions(+)
+
+diff --git a/gdb/dwarf2/cooked-index.c b/gdb/dwarf2/cooked-index.c
+index c096da57d62..ebed21d510c 100644
+--- a/gdb/dwarf2/cooked-index.c
++++ b/gdb/dwarf2/cooked-index.c
+@@ -452,6 +452,7 @@ cooked_index_shard::wait (bool allow_quit) const
+ cooked_index::cooked_index (vec_type &&vec)
+   : m_vector (std::move (vec))
+ {
++  /* Handle deferred entries, inter-cu case.  */
+   handle_deferred_entries ();
+ 
+   for (auto &idx : m_vector)
+@@ -659,6 +660,40 @@ cooked_index::maybe_write_index (dwarf2_per_bfd *per_bfd,
+ 
+ /* See cooked-index.h.  */
+ 
++const cooked_index_entry *
++cooked_index_shard::find_parent_deferred_entry
++  (const cooked_index_shard::deferred_entry &entry) const
++{
++  return find_parent (entry.spec_offset);
++}
++
++/* See cooked-index.h.  */
++
++void
++cooked_index_shard::handle_deferred_entries ()
++{
++  for (auto it = m_deferred_entries->begin (); it != m_deferred_entries->end (); )
++    {
++      const deferred_entry & deferred_entry = *it;
++      if (!parent_valid (deferred_entry.spec_offset))
++	{
++	  it++;
++	  continue;
++	}
++      const cooked_index_entry *parent_entry
++	= find_parent_deferred_entry (deferred_entry);
++      if (parent_entry == &parent_map::deferred)
++	{
++	  it++;
++	  continue;
++	}
++      resolve_deferred_entry (deferred_entry, parent_entry);
++      it = m_deferred_entries->erase (it);
++    }
++}
++
++/* See cooked-index.h.  */
++
+ const cooked_index_entry *
+ cooked_index_shard::resolve_deferred_entry
+   (const deferred_entry &de, const cooked_index_entry *parent_entry)
+diff --git a/gdb/dwarf2/cooked-index.h b/gdb/dwarf2/cooked-index.h
+index fa895233035..106e3091a90 100644
+--- a/gdb/dwarf2/cooked-index.h
++++ b/gdb/dwarf2/cooked-index.h
+@@ -408,6 +408,13 @@ class cooked_index_shard
+   const cooked_index_entry *resolve_deferred_entry
+     (const deferred_entry &entry, const cooked_index_entry *parent_entry);
+ 
++  /* Find the parent entry for deferred_entry ENTRY.  */
++  const cooked_index_entry *find_parent_deferred_entry
++    (const cooked_index_shard::deferred_entry &entry) const;
++
++  /* Create cooked_index_entries for the deferred entries.  */
++  void handle_deferred_entries ();
++
+   /* Mark parents in range [START, END] as valid .  */
+   void set_parent_valid (CORE_ADDR start, CORE_ADDR end)
+   {
+diff --git a/gdb/dwarf2/read.c b/gdb/dwarf2/read.c
+index 09598e702bc..a97f738a54e 100644
+--- a/gdb/dwarf2/read.c
++++ b/gdb/dwarf2/read.c
+@@ -4697,6 +4697,12 @@ class cooked_index_storage
+     m_index->defer_entry (de);
+   }
+ 
++  /* Handle deferred entries, intra-cu case.  */
++  void handle_deferred_entries ()
++  {
++    m_index->handle_deferred_entries ();
++  }
++
+   /* Mark parents in range [START, END] as valid .  */
+   void set_parent_valid (CORE_ADDR start, CORE_ADDR end)
+   {
+@@ -5183,6 +5189,10 @@ dwarf2_build_psymtabs_hard (dwarf2_per_objfile *per_objfile)
+ 		errors.push_back (std::move (except));
+ 	      }
+ 	  }
++
++	/* Handle deferred entries, intra-cu case.  */
++	thread_storage.handle_deferred_entries ();
++
+ 	return result_type (thread_storage.release (), std::move (errors));
+       }, task_size);
+ 
+-- 
+2.35.3
+

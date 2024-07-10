@@ -1,0 +1,19 @@
+fixup-gdb-glibc-strstr-workaround.patch
+
+---
+ gdb/testsuite/gdb.base/gnu-ifunc-strstr-workaround.exp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/gdb/testsuite/gdb.base/gnu-ifunc-strstr-workaround.exp b/gdb/testsuite/gdb.base/gnu-ifunc-strstr-workaround.exp
+index 889f8c6f584..052bd84d420 100644
+--- a/gdb/testsuite/gdb.base/gnu-ifunc-strstr-workaround.exp
++++ b/gdb/testsuite/gdb.base/gnu-ifunc-strstr-workaround.exp
+@@ -68,7 +68,7 @@ gdb_test_multiple $test $test {
+ 	set addr $expect_out(1,string)
+ 	pass "$test (fixed glibc)"
+     }
+-    -re " = {char \\*\\(const char \\*, const char \\*\\)} 0x\[0-9a-f\]+ <strstr>\r\n$gdb_prompt $" {
++    -re " = {char \\*\\(const char \\*, const char \\*\\)} 0x\[0-9a-f\]+ <(__GI_)?strstr>\r\n$gdb_prompt $" {
+ 	untested "$test (gnu-ifunc not in use by glibc)"
+ 	return 0
+     }

@@ -1,0 +1,103 @@
+From 2235f362eba0387f0404620676dd29637ff17738 Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Sun, 17 Mar 2024 16:48:43 +0100
+Subject: [PATCH 39/48] [gdb/testsuite] Fix gdb.base/list-no-debug.exp on
+ debian
+
+On debian 12, aarch64-linux I run into:
+...
+(gdb) list .^M
+No symbol table is loaded.  Use the "file" command.^M
+(gdb) FAIL: gdb.base/list-nodebug.exp: first 'list .'
+...
+
+The test-case expects some debug info, but none for main.  Instead, there's no
+debug info at all.
+
+Fix this by adding another source file to the test-case, and compiling it with
+debug info.
+
+Tested on aarch64-linux.
+
+Approved-By: Andrew Burgess <aburgess@redhat.com>
+
+PR testsuite/31290
+Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=31290
+---
+ gdb/testsuite/gdb.base/list-nodebug-2.c | 24 ++++++++++++++++++++++++
+ gdb/testsuite/gdb.base/list-nodebug.c   |  7 +++++--
+ gdb/testsuite/gdb.base/list-nodebug.exp |  9 ++++++---
+ 3 files changed, 35 insertions(+), 5 deletions(-)
+ create mode 100644 gdb/testsuite/gdb.base/list-nodebug-2.c
+
+diff --git a/gdb/testsuite/gdb.base/list-nodebug-2.c b/gdb/testsuite/gdb.base/list-nodebug-2.c
+new file mode 100644
+index 00000000000..861e6149071
+--- /dev/null
++++ b/gdb/testsuite/gdb.base/list-nodebug-2.c
+@@ -0,0 +1,24 @@
++/* This testcase is part of GDB, the GNU debugger.
++
++   Copyright 2024 Free Software Foundation, Inc.
++
++   This program is free software; you can redistribute it and/or modify
++   it under the terms of the GNU General Public License as published by
++   the Free Software Foundation; either version 3 of the License, or
++   (at your option) any later version.
++
++   This program is distributed in the hope that it will be useful,
++   but WITHOUT ANY WARRANTY; without even the implied warranty of
++   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++   GNU General Public License for more details.
++
++   You should have received a copy of the GNU General Public License
++   along with this program.  If not, see <http://www.gnu.org/licenses/>.  */
++
++extern int foo (void);
++
++int
++foo (void)
++{
++  return 0;
++}
+diff --git a/gdb/testsuite/gdb.base/list-nodebug.c b/gdb/testsuite/gdb.base/list-nodebug.c
+index 078517c011e..d4ae6787310 100644
+--- a/gdb/testsuite/gdb.base/list-nodebug.c
++++ b/gdb/testsuite/gdb.base/list-nodebug.c
+@@ -15,7 +15,10 @@
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.  */
+ 
+-int main ()
++extern int foo (void);
++
++int
++main (void)
+ {
+-    return 0;
++  return foo ();
+ }
+diff --git a/gdb/testsuite/gdb.base/list-nodebug.exp b/gdb/testsuite/gdb.base/list-nodebug.exp
+index 08de05423af..942a282083a 100644
+--- a/gdb/testsuite/gdb.base/list-nodebug.exp
++++ b/gdb/testsuite/gdb.base/list-nodebug.exp
+@@ -16,10 +16,13 @@
+ # Test that using the command "list" in a file with no debug information
+ # will not crash GDB and will give reasonable output.
+ 
+-standard_testfile .c
++standard_testfile .c -2.c
+ 
+-if {[prepare_for_testing "failed to prepare" ${testfile} ${srcfile} \
+-    {nodebug}]} {
++if { [prepare_for_testing_full "failed to prepare" \
++	  [list \
++	       $testfile {} \
++	       $srcfile {nodebug} \
++	       $srcfile2 {debug}]] } {
+     return -1
+ }
+ 
+-- 
+2.35.3
+

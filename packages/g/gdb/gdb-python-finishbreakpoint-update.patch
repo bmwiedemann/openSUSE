@@ -1,0 +1,447 @@
+From adfcabe4cc43766996a61bdf08ce1e9db7f18dcc Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Thu, 18 Apr 2024 14:27:04 +0200
+Subject: [PATCH] gdb-python-finishbreakpoint-update
+
+[gdb/python] FinishBreakPoint update
+
+I.
+
+Consider the python gdb.FinishBreakpoint class, an extension of the
+gdb.Breakpoint class.
+
+It sets a temporary breakpoint on the return address of a frame.
+
+This type of breakpoints is thread-specific.
+
+II.
+
+If the FinishBreakpoint is hit, it is deleted, and the method return_value
+can be used to get the value returned by the function.
+
+Let's demonstrate this:
+...
+$ cat -n test.c
+     1  int foo (int a) { return a + 2; }
+     2  int main () { return foo (1); }
+$ gcc -g test.c
+$ gdb -q -batch a.out -ex "set trace-commands on" -ex "tbreak foo" -ex run \
+  -ex "python bp = gdb.FinishBreakpoint()" -ex "info breakpoints" \
+  -ex continue -ex "info breakpoints" -ex "python print (bp.return_value)"
++tbreak foo
+Temporary breakpoint 1 at 0x40049e: file test.c, line 1.
++run
+
+Temporary breakpoint 1, foo (a=1) at test.c:1
+1       int foo (int a) { return a + 2; }
++python bp = gdb.FinishBreakpoint()
+Temporary breakpoint 2 at 0x4004b4: file test.c, line 2.
++info breakpoints
+Num     Type           Disp Enb Address    What
+2       breakpoint     del  y   0x004004b4 in main at test.c:2 thread 1
+        stop only in thread 1
++continue
+
+Temporary breakpoint 2, 0x004004b4 in main () at test.c:2
+2       int main () { return foo (1); }
++info breakpoints
+No breakpoints or watchpoints.
++python print (bp.return_value)
+3
+...
+
+III.
+
+Another possibility is that the FinishBreakpoint is not hit, because the
+function did not terminate, f.i. because of longjmp, C++ exceptions, or GDB
+return command.
+
+Let's demonstrate this, using C++ exceptions:
+...
+$ cat -n test.c
+     1  int foo (int a) { throw 1; return a + 2; }
+     2  int main () {
+     3    try { return foo (1); } catch (...) {};
+     4    return 1;
+     5  }
+$ g++ -g test.c
+$ gdb -q -batch a.out -ex "set trace-commands on" -ex "tbreak foo" -ex run \
+  -ex "python bp = gdb.FinishBreakpoint()" -ex "info breakpoints" \
+  -ex continue -ex "info breakpoints" -ex "python print (bp.return_value)"
++tbreak foo
+Temporary breakpoint 1 at 0x400712: file test.c, line 1.
++run
+
+Temporary breakpoint 1, foo (a=1) at test.c:1
+1       int foo (int a) { throw 1; return a + 2; }
++python bp = gdb.FinishBreakpoint()
+Temporary breakpoint 2 at 0x400742: file test.c, line 3.
++info breakpoints
+Num     Type           Disp Enb Address    What
+2       breakpoint     del  y   0x00400742 in main() at test.c:3 thread 1
+        stop only in thread 1
++continue
+[Inferior 1 (process 25269) exited with code 01]
+Thread-specific breakpoint 2 deleted - thread 1 no longer in the thread list.
++info breakpoints
+No breakpoints or watchpoints.
++python print (bp.return_value)
+None
+...
+
+Indeed, we do not hit the FinishBreakpoint.  Instead, it's deleted when the
+thread disappears, like any other thread-specific breakpoint.
+
+I think this is a bug: the deletion is meant to be handled by FinishBreakpoint
+itself.
+
+IV.
+
+Fix aforementioned bug by:
+- adding an observer of the thread_exit event in FinishBreakpoint
+- making sure that this observer is called before the
+  remove_threaded_breakpoints observer of that same event.
+
+This changes the behaviour to:
+...
++continue
+[Inferior 1 (process 30256) exited with code 01]
++info breakpoints
+No breakpoints or watchpoints.
++python print (bp.return_value)
+None
+...
+
+V.
+
+An out_of_scope callback can be defined to make this more verbose:
+...
+$ cat fbp.py
+class FBP(gdb.FinishBreakpoint):
+    def __init__(self):
+        gdb.FinishBreakpoint.__init__(self)
+
+    def out_of_scope(self):
+        try:
+            frame = gdb.selected_frame ()
+            sal = frame.find_sal ()
+            print ("out_of_scope triggered at %s:%s"
+                   % (sal.symtab.fullname(), sal.line))
+        except gdb.error as e:
+            print ("out_of_scope triggered at thread/inferior exit")
+...
+and using that gets us:
+...
++continue
+[Inferior 1 (process 30742) exited with code 01]
+out_of_scope triggered at thread/inferior exit
++info breakpoints
+No breakpoints or watchpoints.
++python print (bp.return_value)
+None
+...
+
+VI.
+
+This out_of_scope event can be triggered earlier than inferior/thread exit.
+
+Let's demonstrate this:
+...
+$ cat -n test.c
+     1  int bar (int a) { throw 1; return a + 2; }
+     2  int foo (int a) {
+     3    int res = a;
+     4    try
+     5      {
+     6        res += bar (1);
+     7      }
+     8    catch (...)
+     9      {
+    10      }
+    11    return res;
+    12  }
+    13  int main () {
+    14    int res = 0;
+    15    res += foo (1);
+    16    res += 2;
+    17    return res * 2;
+    18  }
+$ g++ -g test.c
+$ gdb -q -batch -ex "source fbp.py" a.out -ex "set trace-commands on" \
+  -ex "tbreak bar" -ex run -ex "python bp = FBP()" -ex "info breakpoints" \
+  -ex "tbreak 16" -ex continue -ex "info breakpoints" \
+  -ex "python print (bp.return_value)"
++tbreak bar
+Temporary breakpoint 1 at 0x400712: file test.c, line 1.
++run
+
+Temporary breakpoint 1, bar (a=1) at test.c:1
+1       int bar (int a) { throw 1; return a + 2; }
++python bp = FBP()
+Temporary breakpoint 2 at 0x40074f: file test.c, line 6.
++info breakpoints
+Num     Type           Disp Enb Address    What
+2       breakpoint     del  y   0x0040074f in foo(int) at test.c:6 thread 1
+        stop only in thread 1
++tbreak 16
+Temporary breakpoint 3 at 0x400784: file test.c, line 16.
++continue
+
+Temporary breakpoint 3, main () at test.c:16
+16        res += 2;
+out_of_scope triggered at /home/vries/gdb_versions/devel/test.c:16
++info breakpoints
+No breakpoints or watchpoints.
++python print (bp.return_value)
+None
+...
+
+Note that the out_of_scope event triggers at the breakpoint we set at
+test.c:16.  If we'd set that breakpoint at line 17, the out_of_scope event
+would trigger at line 17 instead.
+
+Also note that it can't be triggered earlier, say by setting the breakpoint in
+foo at line 11.  We would get instead "out_of_scope triggered at
+thread/inferior exit".
+
+VII.
+
+Now consider a reduced version of
+src/gdb/testsuite/gdb.python/py-finish-breakpoint2.cc:
+...
+$ cat -n test.c
+     1  #include <iostream>
+     2
+     3  void
+     4  throw_exception_1 (int e)
+     5  {
+     6    throw new int (e);
+     7  }
+     8
+     9  int
+    10  main (void)
+    11  {
+    12    int i;
+    13    try
+    14      {
+    15        throw_exception_1 (10);
+    16      }
+    17    catch (const int *e)
+    18      {
+    19          std::cerr << "Exception #" << *e << std::endl;
+    20      }
+    21    i += 1;
+    22
+    23    return i;
+    24  }
+$ g++ -g test.c
+...
+
+Now let's try to see if the FinishBreakPoint triggers:
+...
+$ gdb -q -batch -ex "source fbp.py" a.out -ex "set trace-commands on" \
+  -ex "tbreak throw_exception_1" -ex run -ex "python bp = FBP()" \
+  -ex "info breakpoints" -ex continue -ex "info breakpoints" \
+  -ex "python print (bp.return_value)"
++tbreak throw_exception_1
+Temporary breakpoint 1 at 0x400bd5: file test.c, line 6.
++run
+
+Temporary breakpoint 1, throw_exception_1 (e=10) at test.c:6
+6         throw new int (e);
++python bp = FBP()
+Temporary breakpoint 2 at 0x400c2f: file test.c, line 21.
++info breakpoints
+Num     Type           Disp Enb Address    What
+2       breakpoint     del  y   0x00400c2f in main() at test.c:21 thread 1
+        stop only in thread 1
++continue
+Exception #10
+
+Temporary breakpoint 2, main () at test.c:21
+21        i += 1;
++info breakpoints
+No breakpoints or watchpoints.
++python print (bp.return_value)
+None
+...
+
+Surprisingly, it did.  The explanation is that FinishBreakPoint is really a
+frame-return-address breakpoint, and that address happens to be at line 21,
+which is still executed after the throw in throw_exception_1.
+
+Interestingly, with -m32 the FinishBreakPoint doesn't trigger, because the
+frame-return-address happens to be an instruction which is part of line 15.
+
+VIII.
+
+In conclusion, the FinishBreakpoint is a frame-return-address breakpoint.
+
+After being set, either:
+- it triggers, or
+- an out-of-scope event will be generated.
+
+If an out-of-scope event is generated, it will be due to incomplete function
+termination.
+
+OTOH, incomplete function termination does not guarantee an out-of-scope event
+instead of hitting the breakpoint.
+
+IX.
+
+The documentation states that 'A finish breakpoint is a temporary breakpoint
+set at the return address of a frame, based on the finish command'.
+
+It's indeed somewhat similar to the finish command, at least in the sense that
+both may stop at the frame-return-address.
+
+But the finish command can accurately detect function termination.
+
+And the finish command will stop at any other address that is the first
+address not in the original function.
+
+The documentation needs updating to accurately describe what it does.
+
+X.
+
+A better implementation of a finish breakpoint would be one that borrows from
+the finish command implementation.  That one:
+- installs a thread_fsm, and
+- continues
+
+A finish breakpoint would do the same minus the continue, but it requires gdb
+to handle multiple thread_fsms at a time (because other commands may wish to
+install their own thread_fsm), which AFAICT is not supported yet.
+
+XI.
+
+This patch repairs a minor part of the functionality, and updates
+documentation and test-cases to match actual behaviour.
+
+The question remains how useful the functionality is, as it is now
+( see f.i. discussion at
+https://sourceware.org/pipermail/gdb-patches/2021-January/175290.html ).
+Perhaps it would be better to deprecate this in a follow-up patch in some form
+or another, say by disabling it by default and introducing a maintenance
+command that switches it on, with the warning that it is deprecated.
+
+Tested on x86_64-linux with native and target board unix/-m32, by rebuilding
+and running the test-cases:
+- gdb.python/py-finish-breakpoint.exp
+- gdb.python/py-finish-breakpoint2.exp
+---
+ gdb/breakpoint.c                              | 10 ++++++++++
+ gdb/doc/python.texi                           |  6 ++++--
+ gdb/python/py-finishbreakpoint.c              | 20 +++++++++++++++++++
+ .../gdb.python/py-finish-breakpoint2.exp      |  1 +
+ 4 files changed, 35 insertions(+), 2 deletions(-)
+
+diff --git a/gdb/breakpoint.c b/gdb/breakpoint.c
+index db7d2e6a8e5..01f187ca4fe 100644
+--- a/gdb/breakpoint.c
++++ b/gdb/breakpoint.c
+@@ -14683,6 +14683,10 @@ breakpoint_free_objfile (struct objfile *objfile)
+ 
+ static struct cmd_list_element *enablebreaklist = NULL;
+ 
++#if HAVE_PYTHON
++extern gdb::observers::token bpfinishpy_handle_thread_exit_observer_token;
++#endif
++
+ /* See breakpoint.h.  */
+ 
+ cmd_list_element *commands_cmd_element = nullptr;
+@@ -15243,8 +15247,14 @@ This is useful for formatted output in user-defined commands."));
+ 
+   gdb::observers::about_to_proceed.attach (breakpoint_about_to_proceed,
+ 					   "breakpoint");
++#if HAVE_PYTHON
++  gdb::observers::thread_exit.attach
++    (remove_threaded_breakpoints, "breakpoint",
++     { &bpfinishpy_handle_thread_exit_observer_token });
++#else
+   gdb::observers::thread_exit.attach (remove_threaded_breakpoints,
+ 				      "breakpoint");
++#endif
+   gdb::observers::inferior_removed.attach (remove_inferior_breakpoints,
+ 					   "breakpoint");
+ }
+diff --git a/gdb/doc/python.texi b/gdb/doc/python.texi
+index 99670cca025..ba414b4e2c3 100644
+--- a/gdb/doc/python.texi
++++ b/gdb/doc/python.texi
+@@ -6648,7 +6648,7 @@ is not writable.
+ @tindex gdb.FinishBreakpoint
+ 
+ A finish breakpoint is a temporary breakpoint set at the return address of
+-a frame, based on the @code{finish} command.  @code{gdb.FinishBreakpoint}
++a frame.  @code{gdb.FinishBreakpoint}
+ extends @code{gdb.Breakpoint}.  The underlying breakpoint will be disabled 
+ and deleted when the execution will run out of the breakpoint scope (i.e.@: 
+ @code{Breakpoint.stop} or @code{FinishBreakpoint.out_of_scope} triggered).
+@@ -6667,7 +6667,9 @@ details about this argument.
+ In some circumstances (e.g.@: @code{longjmp}, C@t{++} exceptions, @value{GDBN} 
+ @code{return} command, @dots{}), a function may not properly terminate, and
+ thus never hit the finish breakpoint.  When @value{GDBN} notices such a
+-situation, the @code{out_of_scope} callback will be triggered.
++situation, the @code{out_of_scope} callback will be triggered.  Note
++though that improper function termination does not guarantee that the
++finish breakpoint is not hit.
+ 
+ You may want to sub-class @code{gdb.FinishBreakpoint} and override this
+ method:
+diff --git a/gdb/python/py-finishbreakpoint.c b/gdb/python/py-finishbreakpoint.c
+index 42a7e0706d2..fa7ec43fbb4 100644
+--- a/gdb/python/py-finishbreakpoint.c
++++ b/gdb/python/py-finishbreakpoint.c
+@@ -433,6 +433,24 @@ bpfinishpy_handle_exit (struct inferior *inf)
+     bpfinishpy_detect_out_scope_cb (&bp, nullptr, true);
+ }
+ 
++/* Attached to `thread_exit' notifications, triggers all the necessary out of
++   scope notifications.  */
++
++static void
++bpfinishpy_handle_thread_exit (struct thread_info *tp, gdb::optional<ULONGEST>, bool)
++{
++  gdbpy_enter enter_py (target_gdbarch (), current_language);
++
++  for (breakpoint &bp : all_breakpoints_safe ())
++    {
++      if (tp->global_num == bp.thread)
++	bpfinishpy_detect_out_scope_cb (&bp, nullptr, true);
++    }
++}
++
++extern gdb::observers::token bpfinishpy_handle_thread_exit_observer_token;
++gdb::observers::token bpfinishpy_handle_thread_exit_observer_token;
++
+ /* Initialize the Python finish breakpoint code.  */
+ 
+ static int CPYCHECKER_NEGATIVE_RESULT_SETS_EXCEPTION
+@@ -452,6 +470,8 @@ gdbpy_initialize_finishbreakpoints (void)
+ 				      "py-finishbreakpoint");
+   gdb::observers::inferior_exit.attach (bpfinishpy_handle_exit,
+ 					"py-finishbreakpoint");
++  gdb::observers::thread_exit.attach
++    (bpfinishpy_handle_thread_exit, "py-finishbreakpoint");
+ 
+   return 0;
+ }
+diff --git a/gdb/testsuite/gdb.python/py-finish-breakpoint2.exp b/gdb/testsuite/gdb.python/py-finish-breakpoint2.exp
+index 66587b8b9a0..31479a05e6f 100644
+--- a/gdb/testsuite/gdb.python/py-finish-breakpoint2.exp
++++ b/gdb/testsuite/gdb.python/py-finish-breakpoint2.exp
+@@ -87,6 +87,7 @@ if { $need_continue } {
+     gdb_test "continue" ".*Breakpoint.* throw_exception_1.*" \
+ 	"continue to second exception"
+ }
++
+ gdb_test "python ExceptionFinishBreakpoint(gdb.newest_frame())" \
+     "init ExceptionFinishBreakpoint" "set FinishBP after the exception again"
+ 
+
+base-commit: 6de9111c512de99fd8cb3ea89f9890b1d72f6ef0
+-- 
+2.35.3
+

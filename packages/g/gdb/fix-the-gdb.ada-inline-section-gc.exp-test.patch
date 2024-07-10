@@ -1,0 +1,80 @@
+From c21fd9f7d5911fce0c17af7094d8861d1195dfda Mon Sep 17 00:00:00 2001
+From: Carl Love <cel@linux.ibm.com>
+Date: Mon, 13 Nov 2023 14:14:08 -0500
+Subject: [PATCH 01/48] Fix the gdb.ada/inline-section-gc.exp test
+
+The original intention of the test appears to be checking to make sure
+setting a breakpoint in an inlined function didn't set multiple
+breakpoints where one of them was at address 0.
+
+The gdb.ada/inline-section-gc.exp test may pass or fail depending on the
+version of gnat.  Per the discussion on IRC, the ada inlining appears to
+have some target dependencies.  In this test there are two functions,
+callee and caller. Function calee is inlined into caller.  The test sets
+a breakpoint in function callee.  The reported location where the
+breakpoint is set may be at the requested location in callee or the
+location in caller after callee has been inlined.  The test needs to
+accept either location as correct provided the breakpoint address is not
+zero.
+
+This patch checks to see if the reported breakpoint is in function callee
+or function caller and fails if the breakpoint address is 0x0.  The line
+number where the breakpoint is set will match the requested line if the
+breakpoint location is reported is callee.adb.  If the breakpoint is
+reported in caller.adb, the line number in caller is the breakpoint
+location in callee where it is inlined into caller.
+
+This patch fixes the single regression failure for the test on PowerPC.
+It does not introduce any failures on X86-64.
+---
+ gdb/testsuite/gdb.ada/inline-section-gc.exp   | 21 ++++++++++++++++---
+ .../gdb.ada/inline-section-gc/caller.adb      |  3 ++-
+ 2 files changed, 20 insertions(+), 4 deletions(-)
+
+diff --git a/gdb/testsuite/gdb.ada/inline-section-gc.exp b/gdb/testsuite/gdb.ada/inline-section-gc.exp
+index b707335eb04..4f8b8c95395 100644
+--- a/gdb/testsuite/gdb.ada/inline-section-gc.exp
++++ b/gdb/testsuite/gdb.ada/inline-section-gc.exp
+@@ -34,8 +34,23 @@ if {[gdb_compile_ada "${srcfile}" "${binfile}" executable $options] != ""} {
+ 
+ clean_restart ${testfile}
+ 
+-set bp_location [gdb_get_line_number "BREAK" ${testdir}/callee.adb]
++
++# Depending on the version of gnat, the location of the set breakpoint may
++# be reported as being at the requested location in file callee.adb or in
++# file caller.adb where the callee function was inlined.  Either way, only
++# one breakpoint should be reported and its address should not be at 0x0.
++set bp_location1 [gdb_get_line_number "BREAK" ${testdir}/callee.adb]
++set bp_location2 [gdb_get_line_number "CALLEE_LOC" ${testdir}/caller.adb]
++set test "break callee.adb:$bp_location1"
++set message "Breakpoint set"
++
+ # The bug here was that gdb would set a breakpoint with two locations,
+ # one of them at 0x0.
+-gdb_test "break callee.adb:$bp_location" \
+-    "Breakpoint $decimal at $hex: file .*callee.adb, line $bp_location."
++gdb_test_multiple $test $message {
++    -re "Breakpoint $decimal at $hex: file .*callee.adb, line $bp_location1." {
++	pass $test
++    }
++    -re "Breakpoint $decimal at $hex: file .*caller.adb, line $bp_location2." {
++	pass $test
++    }
++}
+diff --git a/gdb/testsuite/gdb.ada/inline-section-gc/caller.adb b/gdb/testsuite/gdb.ada/inline-section-gc/caller.adb
+index 66eb2d9a910..161f3e85542 100644
+--- a/gdb/testsuite/gdb.ada/inline-section-gc/caller.adb
++++ b/gdb/testsuite/gdb.ada/inline-section-gc/caller.adb
+@@ -18,4 +18,5 @@ with Callee;
+ procedure Caller is
+ begin
+    Callee;
+-end Caller;
++end Caller;    -- CALLEE_LOC, this is where the inlined callee breakpoint
++               -- is located.
+
+base-commit: 582fc35843fdf71b82d645d83d2903e2546cc21a
+-- 
+2.35.3
+

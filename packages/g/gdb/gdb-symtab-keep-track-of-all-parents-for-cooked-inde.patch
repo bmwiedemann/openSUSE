@@ -1,0 +1,38 @@
+From 0e706742f37ee90629350780263b573f326f1a5f Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Thu, 7 Dec 2023 10:38:05 +0100
+Subject: [PATCH 12/13] [gdb/symtab] Keep track of all parents for cooked index
+
+Keep track of all parents for cooked index.
+
+Tested on x86_64-linux.
+---
+ gdb/dwarf2/read.c | 12 +++++++++---
+ 1 file changed, 9 insertions(+), 3 deletions(-)
+
+diff --git a/gdb/dwarf2/read.c b/gdb/dwarf2/read.c
+index de7b655d26c..93708ef11b9 100644
+--- a/gdb/dwarf2/read.c
++++ b/gdb/dwarf2/read.c
+@@ -16718,9 +16718,15 @@ cooked_indexer::index_dies (cutu_reader *reader,
+ 		});
+ 	    }
+ 	  else
+-	    this_entry = m_index_storage->add (this_die, abbrev->tag, flags,
+-					       name, this_parent_entry,
+-					       m_per_cu);
++	    {
++	      CORE_ADDR addr
++		= parent_map::form_addr (this_die, reader->cu->per_cu->is_dwz,
++					 reader->cu->per_cu->is_debug_types);
++	      set_parent (addr, addr, this_parent_entry);
++	      this_entry = m_index_storage->add (this_die, abbrev->tag, flags,
++						 name, this_parent_entry,
++						 m_per_cu);
++	    }
+ 	}
+ 
+       if (linkage_name != nullptr)
+-- 
+2.35.3
+

@@ -1,0 +1,76 @@
+From 1e64a66f72c79874016e78a4672b85cdeb506b9f Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Tue, 4 Jun 2024 09:30:03 +0000
+Subject: [PATCH] [gdb/tdep] Fix gdb.base/watchpoint-running on
+ {arm,ppc64le}-linux
+
+When running test-case gdb.base/watchpoint-running on ppc64le-linux, we get:
+...
+(gdb) watch global_var^M
+warning: Error when detecting the debug register interface. \
+  Debug registers will be unavailable.^M
+Watchpoint 2: global_var^M
+(gdb) FAIL: $exp: all-stop: hardware: watch global_var
+FAIL: $exp: all-stop: hardware: watchpoint hit (timeout)
+...
+
+The problem is that ppc_linux_dreg_interface::detect fails to detect the
+hardware watchpoint interface, because the calls to ptrace return with errno
+set to ESRCH.
+
+This is a feature of ptrace: if a call is done while the tracee is not
+ptrace-stopped, it returns ESRCH.
+
+Indeed, in the test-case "watch global_var" is executed while the inferior is
+running, and that triggers the first call to ppc_linux_dreg_interface::detect.
+
+And because the detection failure is cached, subsequent attempts at setting
+hardware watchpoints will also fail, even if the tracee is ptrace-stopped.
+
+Fix this by calling target_can_use_hardware_watchpoint from
+linux_init_ptrace_procfs, which is called from both:
+- linux_nat_target::post_attach, and
+- linux_nat_target::post_startup_inferior.
+
+By fixing this here, we also fix the same problem for arm-linux.
+
+Tested on ppc64le-linux and arm-linux.
+
+PR tdep/31834
+Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=31834
+PR tdep/31705
+Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=31705
+
+(cherry picked from commit bbc92bfbf25ad42548100e31e491ed3c32fbfa3e)
+---
+ gdb/linux-nat.c | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
+
+diff --git a/gdb/linux-nat.c b/gdb/linux-nat.c
+index c8991cc3da4..47d74d27e11 100644
+--- a/gdb/linux-nat.c
++++ b/gdb/linux-nat.c
+@@ -385,6 +385,18 @@ linux_init_ptrace_procfs (pid_t pid, int attached)
+   linux_ptrace_init_warnings ();
+   linux_proc_init_warnings ();
+   proc_mem_file_is_writable ();
++
++  /* Some targets (for instance ppc and arm) may call ptrace to answer a
++     target_can_use_hardware_watchpoint query, and cache the result.  However,
++     the ptrace call will fail with errno ESRCH if the tracee is not
++     ptrace-stopped, making the query fail.  And if the caching mechanism does
++     not disregard an ESRCH result, all subsequent queries will also fail.
++     Call it now, where we known the tracee is ptrace-stopped.
++
++     Other targets (for instance aarch64) do the relevant ptrace call and
++     caching in their implementation of post_attach and post_startup_inferior,
++     in which case this call is expected to have no effect.  */
++  target_can_use_hardware_watchpoint (bp_hardware_watchpoint, 1, 0);
+ }
+ 
+ linux_nat_target::~linux_nat_target ()
+
+base-commit: a6800d9c8145f25001dd39afc3571e3350573e81
+-- 
+2.35.3
+

@@ -1,0 +1,16 @@
+# This line is mandatory to access the configuration functions
+from Config import *
+
+# The testresult logs contain part of the build log and thus
+# necessarily mention the buildroot
+addFilter ("gdb-testresults.*file-contains-buildroot")
+
+# Historically libinproctrace was always in gdbserver.  It's
+# LD_PRELOADed into processes, so there are no direct ELF
+# dependencies to it.  It's required on the remote side (where
+# gdbserver is) so it makes sense to put it in the same package.
+# This never was a problem for rpmlint before because libinproctrace
+# had no SONAME, so the check wasn't active.  Now it has, so it's checked
+# and because the gdbserver binary has no direct ELF visible dependency
+# it's thought to be necessary to follow shlib policy.  That's not the case.
+addFilter ("gdbserver.*shlib-policy-name-error.*libinproctrace")

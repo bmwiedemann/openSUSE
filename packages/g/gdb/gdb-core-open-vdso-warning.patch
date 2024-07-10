@@ -1,0 +1,58 @@
+From FEDORA_PATCHES Mon Sep 17 00:00:00 2001
+From: Fedora GDB patches <invalid@email.com>
+Date: Fri, 27 Oct 2017 21:07:50 +0200
+Subject: gdb-core-open-vdso-warning.patch
+
+;; Fix GNU/Linux core open: Can't read pathname for load map: Input/output error.
+;; Fix regression of undisplayed missing shared libraries caused by a fix for.
+;;=fedoratest: It should be in glibc: libc-alpha: <20091004161706.GA27450@.*>
+
+http://sourceware.org/ml/gdb-patches/2009-10/msg00142.html
+Subject: [patch] Fix GNU/Linux core open: Can't read pathname for load map:  Input/output error.
+
+[ New patch variant.  ]
+
+commit 7d760051ffb8a23cdc51342d4e6243fbc462f73f
+Author: Ulrich Weigand <uweigand@de.ibm.com>
+Date:   Wed Sep 25 11:52:50 2013 +0000
+
+diff --git a/gdb/testsuite/gdb.base/solib-symbol.exp b/gdb/testsuite/gdb.base/solib-symbol.exp
+--- a/gdb/testsuite/gdb.base/solib-symbol.exp
++++ b/gdb/testsuite/gdb.base/solib-symbol.exp
+@@ -27,6 +27,7 @@ set testfile "solib-symbol-main"
+ set srcfile ${srcdir}/${subdir}/${testfile}.c
+ set binfile [standard_output_file ${testfile}]
+ set bin_flags [list debug shlib=${binfile_lib}]
++set executable ${testfile}
+ 
+ if { [gdb_compile_shlib ${srcfile_lib} ${binfile_lib} $lib_flags] != ""
+      || [gdb_compile ${srcfile} ${binfile} executable $bin_flags] != "" } {
+@@ -61,4 +62,28 @@ gdb_test "br foo2" \
+ 	 "Breakpoint.*: foo2. .2 locations..*" \
+ 	 "foo2 in mdlib"
+ 
++# Test GDB warns for shared libraris which have not been found.
++
++gdb_test "info sharedlibrary" "/${libname}.*"
++
++clean_restart ${executable}
++gdb_breakpoint "main"
++gdb_run_cmd
++set test "no warning for missing libraries"
++gdb_test_multiple "" $test {
++    -re "warning: Could not load shared library symbols for \[0-9\]+ libraries,.*\r\n$gdb_prompt $" {
++	fail $test
++    }
++    -re "Breakpoint \[0-9\]+, main .*\r\n$gdb_prompt $" {
++	pass $test
++    }
++}
++
++clean_restart ${executable}
++gdb_test_no_output "set solib-absolute-prefix /doESnotEXIST"
++gdb_breakpoint "main"
++gdb_run_cmd
++gdb_test "" "warning: Could not load shared library symbols for \[0-9\]+ libraries,.*\r\nBreakpoint \[0-9\]+, main .*" \
++	 "warning for missing libraries"
++
+ gdb_exit

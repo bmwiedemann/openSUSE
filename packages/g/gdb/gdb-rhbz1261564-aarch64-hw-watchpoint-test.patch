@@ -1,0 +1,104 @@
+From FEDORA_PATCHES Mon Sep 17 00:00:00 2001
+From: Fedora GDB patches <invalid@email.com>
+Date: Fri, 27 Oct 2017 21:07:50 +0200
+Subject: gdb-rhbz1261564-aarch64-hw-watchpoint-test.patch
+
+;; [aarch64] Fix hardware watchpoints (RH BZ 1261564).
+;;=fedoratest
+
+diff --git a/gdb/testsuite/gdb.base/rhbz1261564-aarch64-watchpoint.c b/gdb/testsuite/gdb.base/rhbz1261564-aarch64-watchpoint.c
+new file mode 100644
+--- /dev/null
++++ b/gdb/testsuite/gdb.base/rhbz1261564-aarch64-watchpoint.c
+@@ -0,0 +1,33 @@
++/* This testcase is part of GDB, the GNU debugger.
++
++   Copyright 2016 Free Software Foundation, Inc.
++
++   This program is free software; you can redistribute it and/or modify
++   it under the terms of the GNU General Public License as published by
++   the Free Software Foundation; either version 3 of the License, or
++   (at your option) any later version.
++
++   This program is distributed in the hope that it will be useful,
++   but WITHOUT ANY WARRANTY; without even the implied warranty of
++   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++   GNU General Public License for more details.
++
++   You should have received a copy of the GNU General Public License
++   along with this program.  If not, see <http://www.gnu.org/licenses/>.  */
++
++__attribute__((aligned(16))) struct
++{
++  int var0, var4, var8;
++} aligned;
++
++int
++main (void)
++{
++  aligned.var0 = 1;
++  aligned.var4 = 2;
++  aligned.var8 = 3;
++
++  aligned.var4 = aligned.var0;
++
++  return 0;
++}
+diff --git a/gdb/testsuite/gdb.base/rhbz1261564-aarch64-watchpoint.exp b/gdb/testsuite/gdb.base/rhbz1261564-aarch64-watchpoint.exp
+new file mode 100644
+--- /dev/null
++++ b/gdb/testsuite/gdb.base/rhbz1261564-aarch64-watchpoint.exp
+@@ -0,0 +1,53 @@
++# Copyright (C) 2016 Free Software Foundation, Inc.
++
++# This program is free software; you can redistribute it and/or modify
++# it under the terms of the GNU General Public License as published by
++# the Free Software Foundation; either version 3 of the License, or
++# (at your option) any later version.
++#
++# This program is distributed in the hope that it will be useful,
++# but WITHOUT ANY WARRANTY; without even the implied warranty of
++# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++# GNU General Public License for more details.
++#
++# You should have received a copy of the GNU General Public License
++# along with this program.  If not, see <http://www.gnu.org/licenses/>.
++
++if { [prepare_for_testing rhbz1261564-aarch64-watchpoint.exp "rhbz1261564-aarch64-watchpoint"] } {
++    return -1
++}
++
++if { ! [ runto main ] } then { return 0 }
++
++set test "rwatch aligned.var4"
++if [istarget "s390*-*-*"] {
++    gdb_test $test {Target does not support this type of hardware watchpoint\.}
++    untested "s390* does not support hw read watchpoint"
++    return
++}
++gdb_test $test "Hardware read watchpoint \[0-9\]+: aligned.var4"
++
++proc checkvar { address } {
++    global gdb_prompt
++
++    set test "p &aligned.var$address"
++    gdb_test_multiple $test $test {
++	-re " = \\(int \\*\\) 0x\[0-9a-f\]+$address <aligned(\\+\[0-9\]+)?>\r\n$gdb_prompt $" {
++	    pass $test
++	}
++	-re "\r\n$gdb_prompt $" {
++	    untested "$test (unexpected ELF layout)"
++	    return 0
++	}
++    }
++    return 1
++}
++if ![checkvar "0"] { return }
++if ![checkvar "4"] { return }
++if ![checkvar "8"] { return }
++
++# Assumes: PPC_PTRACE_GETHWDBGINFO::data_bp_alignment == 8
++# 'lwz' does read only 4 bytes but the hw watchpoint is 8 bytes wide.
++setup_xfail "powerpc*-*-*"
++
++gdb_continue_to_end

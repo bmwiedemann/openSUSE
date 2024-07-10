@@ -1,0 +1,52 @@
+From 22655d76bc767d938dc9a72e0f50816a2f97f4c0 Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Sun, 31 Dec 2023 09:39:45 +0100
+Subject: [PATCH 47/48] [gdb/testsuite] Fix typo in gdb.base/catch-syscall.exp
+
+On aarch64-linux with a gdb build without libexpat, I run into:
+...
+(gdb) PASS: gdb.base/catch-syscall.exp: determine pipe syscall: \
+  catch syscall 59
+continue
+Continuing.
+
+Catchpoint 5 (call to syscall 59), 0x0000fffff7e04578 in pipe () from \
+  /lib64/libc.so.6
+(gdb) FAIL: gdb.base/catch-syscall.exp: determine pipe syscall: continue
+...
+
+In the test-case, this pattern handles either the syscall name or number for
+the pipe syscall:
+...
+  -re -wrap "Catchpoint $decimal \\(call to syscall (pipe|$SYS_pipe)\\).*" {
+...
+but the pattern for the pipe2 syscall mistakenly uses SYS_pipe instead of
+SYS_pipe2:
+...
+  -re -wrap "Catchpoint $decimal \\(call to syscall (pipe2|$SYS_pipe)\\).*" {
+...
+and consequently doesn't handle the pipe2 syscall number.
+
+Fix the typo by using SYS_pipe2 instead.
+
+Tested on aarch64-linux.
+---
+ gdb/testsuite/gdb.base/catch-syscall.exp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/gdb/testsuite/gdb.base/catch-syscall.exp b/gdb/testsuite/gdb.base/catch-syscall.exp
+index 0588cb35d87..f7d499cb10b 100644
+--- a/gdb/testsuite/gdb.base/catch-syscall.exp
++++ b/gdb/testsuite/gdb.base/catch-syscall.exp
+@@ -752,7 +752,7 @@ proc setup_all_syscalls {} {
+ 		pass $gdb_test_name
+ 		set ok 1
+ 	    }
+-	    -re -wrap "Catchpoint $decimal \\(call to syscall (pipe2|$SYS_pipe)\\).*" {
++	    -re -wrap "Catchpoint $decimal \\(call to syscall (pipe2|$SYS_pipe2)\\).*" {
+ 		lappend all_syscalls pipe2
+ 		pass $gdb_test_name
+ 		set ok 1
+-- 
+2.35.3
+

@@ -1,0 +1,68 @@
+From 81f752e905f9ef4d0f2e046acf3fabcddf952057 Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Sat, 4 May 2024 10:41:09 +0200
+Subject: [PATCH 17/48] [gdb/testsuite] Make portnum a persistent global
+
+When instrumenting get_portnum using:
+...
+    puts "PORTNUM: $res"
+...
+and running:
+...
+$ cd build/gdb
+$ make check TESTS=gdb.server/*.exp
+...
+we get:
+...
+Running gdb.server/target-exec-file.exp ...
+PORTNUM: 2345
+Running gdb.server/stop-reply-no-thread-multi.exp ...
+PORTNUM: 2345
+PORTNUM: 2346
+PORTNUM: 2347
+PORTNUM: 2348
+PORTNUM: 2349
+PORTNUM: 2350
+...
+
+So, while get_portnum does return increasing numbers in a single test-case, it
+restarts at each test-case.
+
+This is a regression since the introduction of persistent globals.
+
+Fix this by using "gdb_persistent_global portnum", such that we get:
+...
+Running gdb.server/target-exec-file.exp ...
+PORTNUM: 2345
+Running gdb.server/stop-reply-no-thread-multi.exp ...
+PORTNUM: 2346
+PORTNUM: 2347
+PORTNUM: 2348
+PORTNUM: 2349
+PORTNUM: 2350
+PORTNUM: 2351
+...
+
+Tested on aarch64-linux.
+
+Approved-By: Tom Tromey <tom@tromey.com>
+---
+ gdb/testsuite/lib/gdbserver-support.exp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/gdb/testsuite/lib/gdbserver-support.exp b/gdb/testsuite/lib/gdbserver-support.exp
+index 8aaca946b7d..4f7effaacf7 100644
+--- a/gdb/testsuite/lib/gdbserver-support.exp
++++ b/gdb/testsuite/lib/gdbserver-support.exp
+@@ -142,7 +142,7 @@ proc get_portnum {} {
+     set initial_portnum 2345
+ 
+     # Currently available port number.
+-    global portnum
++    gdb_persistent_global portnum
+ 
+     # Initialize, if necessary.
+     if { ![info exists portnum] } {
+-- 
+2.35.3
+

@@ -1,0 +1,117 @@
+From 7357f73483cfe8f3e8ec2dd9ca2fb3d52206055a Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Wed, 17 Apr 2024 11:45:02 +0200
+Subject: [PATCH 28/48] [gdb/testsuite] Fix gdbserver pid in
+ gdb.server/server-kill-python.exp
+
+The commit ed32754a8c7 ("[gdb/testsuite] Fix gdb.server/multi-ui-errors.exp for
+remote target") intended to addresss the problem that this command:
+...
+set gdbserver_pid [exp_pid -i $server_spawn_id]
+...
+does not return the pid of the gdbserver for remote target, but rather the one
+of the ssh client session.
+
+To fix this, it added another way of getting the gdbserver_pid.
+
+For the trivial case of non-remote target, the PID found by either method
+should be identical, but if we compare those by adding
+"puts [exec ps -p $gdbserver_pid]" we get:
+...
+  PID TTY          TIME CMD
+31711 pts/8    00:00:00 gdbserver
+  PID TTY          TIME CMD
+31718 pts/8    00:00:00 server-kill-pyt
+...
+
+The problem is that while the gdbserver PID is supposed to be read from the
+result of "gdb.execute ('p server_pid')" in the python script, instead it's
+taken from:
+...
+Process server-kill-python created; pid = 31718^M
+...
+
+Fix this by moving the printing of the gdbserver PID out of the python script.
+
+Also double-check the two methods against each other, in the cases that they
+should match.
+
+Tested on x86_64-linux.
+
+PR testsuite/31633
+https://sourceware.org/bugzilla/show_bug.cgi?id=31633
+---
+ .../gdb.server/server-kill-python.exp         | 37 +++++++++++--------
+ 1 file changed, 21 insertions(+), 16 deletions(-)
+
+diff --git a/gdb/testsuite/gdb.server/server-kill-python.exp b/gdb/testsuite/gdb.server/server-kill-python.exp
+index dcb6eddd6eb..778880984ec 100644
+--- a/gdb/testsuite/gdb.server/server-kill-python.exp
++++ b/gdb/testsuite/gdb.server/server-kill-python.exp
+@@ -37,7 +37,7 @@ set host_binfile [gdb_remote_download host $binfile]
+ set res [gdbserver_spawn "${target_binfile}"]
+ set gdbserver_protocol [lindex $res 0]
+ set gdbserver_gdbport [lindex $res 1]
+-set gdbserver_pid [exp_pid -i $server_spawn_id]
++set gdbserver_pid_check [exp_pid -i $server_spawn_id]
+ 
+ set break_linenr [gdb_get_line_number "@@XX@@ Inferior Starting @@XX@@"]
+ 
+@@ -48,9 +48,6 @@ puts $fd \
+ "import gdb
+ 
+ def do_gdb_stuff ():
+-    gdb.execute ('break $srcfile:$break_linenr')
+-    gdb.execute ('continue')
+-    gdb.execute ('p server_pid')
+     gdb.execute ('continue')
+ 
+ do_gdb_stuff()"
+@@ -68,24 +65,32 @@ if {[gdb_spawn_with_cmdline_opts \
+ 
+ gdb_load $binfile
+ gdb_target_cmd $gdbserver_protocol $gdbserver_gdbport
+-send_gdb "source $host_file1\n"
++
++gdb_test "break $srcfile:$break_linenr"
+ 
+ # Get the gdbserver PID.
+ set gdbserver_pid 0
+-
+-# Wait for the inferior to start up.
+-with_spawn_id $server_spawn_id {
+-    gdb_test_multiple "" "get gdbserver PID" {
+-	-re " = ($decimal)\r\n" {
+-	    set gdbserver_pid $expect_out(1,string)
+-	    pass $gdb_test_name
+-	}
++gdb_test "continue"
++gdb_test_multiple "print server_pid" "get gdbserver PID" {
++    -re -wrap " = ($decimal)" {
++	set gdbserver_pid $expect_out(1,string)
++	pass $gdb_test_name
+     }
++}
+ 
+-    if { $gdbserver_pid == 0 } {
+-	return
+-    }
++if { $gdbserver_pid == 0 } {
++    return
++}
++
++if { ![is_remote target] && $gdbserver_pid != $gdbserver_pid_check } {
++    error "Failed to get correct gdbserver pid"
++}
+ 
++send_gdb "source $host_file1\n"
++
++
++# Wait for the inferior to start up.
++with_spawn_id $server_spawn_id {
+     gdb_test_multiple "" "ensure inferior is running" {
+ 	-re "@@XX@@ Inferior Starting @@XX@@" {
+ 	    pass $gdb_test_name
+-- 
+2.35.3
+

@@ -1,0 +1,102 @@
+From c8bf6704e64be92816527e9f3f3b582046e214c9 Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Sat, 4 May 2024 10:41:09 +0200
+Subject: [PATCH 21/48] [gdb/testsuite] Use unique portnum in parallel testing
+
+When instrumenting get_portnum using:
+...
+puts "PORTNUM: $res"
+...
+and running:
+...
+$ cd build/gdb
+$ make check-parallel -j2 TESTS=gdb.server/*.exp
+...
+we run into:
+...
+Running gdb.server/abspath.exp ...
+PORTNUM: 2345
+...
+and:
+...
+Running gdb.server/bkpt-other-inferior.exp ...
+PORTNUM: 2345
+...
+
+This is because the test-cases are run in independent runtest invocations.
+
+Fix this by handling the parallel case in get_portnum using:
+- a file $objdir/cache/portnum to keep the portnum variable, and
+- a file $objdir/cache/portnum.lock to serialize access to it.
+
+Tested on aarch64-linux.
+
+Approved-By: Tom Tromey <tom@tromey.com>
+---
+ gdb/testsuite/lib/gdbserver-support.exp | 47 ++++++++++++++++++++-----
+ 1 file changed, 38 insertions(+), 9 deletions(-)
+
+diff --git a/gdb/testsuite/lib/gdbserver-support.exp b/gdb/testsuite/lib/gdbserver-support.exp
+index 4f7effaacf7..a3cccf54a72 100644
+--- a/gdb/testsuite/lib/gdbserver-support.exp
++++ b/gdb/testsuite/lib/gdbserver-support.exp
+@@ -141,18 +141,47 @@ proc get_portnum {} {
+     # starting at $initial_portnum, to avoid conflicts with hung ports.
+     set initial_portnum 2345
+ 
+-    # Currently available port number.
+-    gdb_persistent_global portnum
++    if { ![info exists ::GDB_PARALLEL] } {
++	# Sequential case.
+ 
+-    # Initialize, if necessary.
+-    if { ![info exists portnum] } {
+-	set portnum $initial_portnum
++	# Currently available port number.
++	gdb_persistent_global portnum
++
++	# Initialize, if necessary.
++	if { ![info exists portnum] } {
++	    set portnum $initial_portnum
++	}
++
++	# Return currently available port number, and update it.
++	set res $portnum
++	incr portnum
++	return $res
++    }
++
++    # Parallel case.
++    with_lock portnum.lock {
++	# Keep portnum file alongside the lock that guards it.
++	set portnum_file [lock_dir]/portnum
++
++	if { [file exists $portnum_file] } {
++	    set fd [open $portnum_file r]
++	    set portnum [read $fd]
++	    close $fd
++
++	    set portnum [string trim $portnum]
++	} else {
++	    # Initialize.
++	    set portnum $initial_portnum
++	}
++
++	set next_portnum [expr $portnum + 1]
++
++	set fd [open $portnum_file w]
++	puts $fd $next_portnum
++	close $fd
+     }
+ 
+-    # Return currently available port number, and update it.
+-    set res $portnum
+-    incr portnum
+-    return $res
++    return $portnum
+ }
+ 
+ # Locate the gdbserver binary.  Returns "" if gdbserver could not be found.
+-- 
+2.35.3
+

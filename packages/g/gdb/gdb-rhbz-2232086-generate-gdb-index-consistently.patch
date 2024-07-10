@@ -1,0 +1,230 @@
+From FEDORA_PATCHES Mon Sep 17 00:00:00 2001
+From: Andrew Burgess <aburgess@redhat.com>
+Date: Fri, 24 Nov 2023 12:04:36 +0000
+Subject: gdb-rhbz-2232086-generate-gdb-index-consistently.patch
+
+;; Back-port upstream commit aff250145af as part of a fix for
+;; non-deterministic gdb-index generation (RH BZ 2232086).
+
+gdb: generate gdb-index identically regardless of work thread count
+
+It was observed that changing the number of worker threads that GDB
+uses (maintenance set worker-threads NUM) would have an impact on the
+layout of the generated gdb-index.
+
+The cause seems to be how the CU are distributed between threads, and
+then symbols that appear in multiple CU can be encountered earlier or
+later depending on whether a particular CU moves between threads.
+
+I certainly found this behaviour was reproducible when generating an
+index for GDB itself, like:
+
+  gdb -q -nx -nh -batch \
+      -eiex 'maint set worker-threads NUM' \
+      -ex 'save gdb-index /tmp/'
+
+And then setting different values for NUM will change the generated
+index.
+
+Now, the question is: does this matter?
+
+I would like to suggest that yes, this does matter.  At Red Hat we
+generate a gdb-index as part of the build process, and we would
+ideally like to have reproducible builds: for the same source,
+compiled with the same tool-chain, we should get the exact same output
+binary.  And we do .... except for the index.
+
+Now we could simply force GDB to only use a single worker thread when
+we build the index, but, I don't think the idea of reproducible builds
+is that strange, so I think we should ensure that our generated
+indexes are always reproducible.
+
+To achieve this, I propose that we add an extra step when building the
+gdb-index file.  After constructing the initial symbol hash table
+contents, we will pull all the symbols out of the hash, sort them,
+then re-insert them in sorted order.  This will ensure that the
+structure of the generated hash will remain consistent (given the same
+set of symbols).
+
+I've extended the existing index-file test to check that the generated
+index doesn't change if we adjust the number of worker threads used.
+Given that this test is already rather slow, I've only made one change
+to the worker-thread count.  Maybe this test should be changed to use
+a smaller binary, which is quicker to load, and for which we could
+then try many different worker thread counts.
+
+Approved-By: Tom Tromey <tom@tromey.com>
+
+diff --git a/gdb/dwarf2/index-write.c b/gdb/dwarf2/index-write.c
+--- a/gdb/dwarf2/index-write.c
++++ b/gdb/dwarf2/index-write.c
+@@ -210,6 +210,13 @@ struct mapped_symtab
+   void add_index_entry (const char *name, int is_static,
+ 			gdb_index_symbol_kind kind, offset_type cu_index);
+ 
++  /* When entries are originally added into the data hash the order will
++     vary based on the number of worker threads GDB is configured to use.
++     This function will rebuild the hash such that the final layout will be
++     deterministic regardless of the number of worker threads used.  */
++
++  void sort ();
++
+   /* Access the obstack.  */
+   struct obstack *obstack ()
+   { return &m_string_obstack; }
+@@ -296,6 +303,65 @@ mapped_symtab::hash_expand ()
+       }
+ }
+ 
++/* See mapped_symtab class declaration.  */
++
++void mapped_symtab::sort ()
++{
++  /* Move contents out of this->data vector.  */
++  std::vector<symtab_index_entry> original_data = std::move (m_data);
++
++  /* Restore the size of m_data, this will avoid having to expand the hash
++     table (and rehash all elements) when we reinsert after sorting.
++     However, we do reset the element count, this allows for some sanity
++     checking asserts during the reinsert phase.  */
++  gdb_assert (m_data.size () == 0);
++  m_data.resize (original_data.size ());
++  m_element_count = 0;
++
++  /* Remove empty entries from ORIGINAL_DATA, this makes sorting quicker.  */
++  auto it = std::remove_if (original_data.begin (), original_data.end (),
++			    [] (const symtab_index_entry &entry) -> bool
++			    {
++			      return entry.name == nullptr;
++			    });
++  original_data.erase (it, original_data.end ());
++
++  /* Sort the existing contents.  */
++  std::sort (original_data.begin (), original_data.end (),
++	     [] (const symtab_index_entry &a,
++		 const symtab_index_entry &b) -> bool
++	     {
++	       /* Return true if A is before B.  */
++	       gdb_assert (a.name != nullptr);
++	       gdb_assert (b.name != nullptr);
++
++	       return strcmp (a.name, b.name) < 0;
++	     });
++
++  /* Re-insert each item from the sorted list.  */
++  for (auto &entry : original_data)
++    {
++      /* We know that ORIGINAL_DATA contains no duplicates, this data was
++	 taken from a hash table that de-duplicated entries for us, so
++	 count this as a new item.
++
++	 As we retained the original size of m_data (see above) then we
++	 should never need to grow m_data_ during this re-insertion phase,
++	 assert that now.  */
++      ++m_element_count;
++      gdb_assert (!this->hash_needs_expanding ());
++
++      /* Lookup a slot.  */
++      symtab_index_entry &slot = this->find_slot (entry.name);
++
++      /* As discussed above, we should not find duplicates.  */
++      gdb_assert (slot.name == nullptr);
++
++      /* Move this item into the slot we found.  */
++      slot = std::move (entry);
++    }
++}
++
+ /* See class definition.  */
+ 
+ void
+@@ -1311,6 +1377,9 @@ write_gdbindex (dwarf2_per_bfd *per_bfd, cooked_index *table,
+   for (auto map : table->get_addrmaps ())
+     write_address_map (map, addr_vec, cu_index_htab);
+ 
++  /* Ensure symbol hash is built domestically.  */
++  symtab.sort ();
++
+   /* Now that we've processed all symbols we can shrink their cu_indices
+      lists.  */
+   symtab.minimize ();
+diff --git a/gdb/testsuite/gdb.gdb/index-file.exp b/gdb/testsuite/gdb.gdb/index-file.exp
+--- a/gdb/testsuite/gdb.gdb/index-file.exp
++++ b/gdb/testsuite/gdb.gdb/index-file.exp
+@@ -38,6 +38,9 @@ with_timeout_factor $timeout_factor {
+     clean_restart $filename
+ }
+ 
++# Record how many worker threads GDB is using.
++set worker_threads [gdb_get_worker_threads]
++
+ # Generate an index file.
+ set dir1 [standard_output_file "index_1"]
+ remote_exec host "mkdir -p ${dir1}"
+@@ -116,3 +119,41 @@ proc check_symbol_table_usage { filename } {
+ 
+ set index_filename_base [file tail $filename]
+ check_symbol_table_usage "$dir1/${index_filename_base}.gdb-index"
++
++# If GDB is using more than 1 worker thread then reduce the number of
++# worker threads, regenerate the index, and check that we get the same
++# index file back.  At one point the layout of the index would vary
++# based on the number of worker threads used.
++if { $worker_threads > 1 } {
++    # Start GDB, but don't load a file yet.
++    clean_restart
++
++    # Adjust the number of threads to use.
++    set reduced_threads [expr $worker_threads / 2]
++    gdb_test_no_output "maint set worker-threads $reduced_threads"
++
++    with_timeout_factor $timeout_factor {
++	# Now load the test binary.
++	gdb_file_cmd $filename
++    }
++
++    # Generate an index file.
++    set dir2 [standard_output_file "index_2"]
++    remote_exec host "mkdir -p ${dir2}"
++    with_timeout_factor $timeout_factor {
++	gdb_test_no_output "save gdb-index $dir2" \
++	    "create second gdb-index file"
++    }
++
++    # Close GDB.
++    gdb_exit
++
++    # Now check that the index files are identical.
++    foreach suffix { gdb-index  } {
++	set result \
++	    [remote_exec host \
++		 "cmp -s \"$dir1/${index_filename_base}.${suffix}\" \"$dir2/${index_filename_base}.${suffix}\""]
++	gdb_assert { [lindex $result 0] == 0 } \
++	    "$suffix files are identical"
++    }
++}
+diff --git a/gdb/testsuite/lib/gdb.exp b/gdb/testsuite/lib/gdb.exp
+--- a/gdb/testsuite/lib/gdb.exp
++++ b/gdb/testsuite/lib/gdb.exp
+@@ -10033,6 +10033,21 @@ proc is_target_non_stop { {testname ""} } {
+     return $is_non_stop
+ }
+ 
++# Return the number of worker threads that GDB is currently using.
++
++proc gdb_get_worker_threads { {testname ""} } {
++    set worker_threads "UNKNOWN"
++    gdb_test_multiple "maintenance show worker-threads" $testname {
++	-wrap -re "The number of worker threads GDB can use is unlimited \\(currently ($::decimal)\\)\\." {
++	    set worker_threads $expect_out(1,string)
++	}
++	-wrap -re "The number of worker threads GDB can use is ($::decimal)\\." {
++	    set worker_threads $expect_out(1,string)
++	}
++    }
++    return $worker_threads
++}
++
+ # Check if the compiler emits epilogue information associated
+ # with the closing brace or with the last statement line.
+ #

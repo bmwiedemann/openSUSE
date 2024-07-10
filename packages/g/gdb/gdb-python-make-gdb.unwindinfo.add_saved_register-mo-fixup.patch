@@ -1,0 +1,70 @@
+From fc73000faa1798573090994167b7e2d451c211db Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Fri, 10 May 2024 08:46:21 +0200
+Subject: [PATCH] [gdb/python] Make gdb.UnwindInfo.add_saved_register more
+ robust (fixup)
+
+In commit 2236c5e384d ("[gdb/python] Make gdb.UnwindInfo.add_saved_register
+more robust") I added this code in unwind_infopy_add_saved_register:
+...
+  if (value->optimized_out () || !value->entirely_available ())
+...
+which may throw c++ exceptions.
+
+This needs to be caught and transformed into a python exception.
+
+Fix this by using GDB_PY_HANDLE_EXCEPTION.
+
+Tested on x86_64-linux.
+
+Approved-By: Tom Tromey <tom@tromey.com>
+
+Fixes: 2236c5e384d ("[gdb/python] Make gdb.UnwindInfo.add_saved_register more robust")
+(cherry picked from commit 408bc9c5fc757bd4b8adb1c3d54ecd672beaedb7)
+---
+ gdb/python/py-unwind.c | 26 +++++++++++++++++---------
+ 1 file changed, 17 insertions(+), 9 deletions(-)
+
+diff --git a/gdb/python/py-unwind.c b/gdb/python/py-unwind.c
+index 471eb851674..e57c8c1adcf 100644
+--- a/gdb/python/py-unwind.c
++++ b/gdb/python/py-unwind.c
+@@ -354,16 +354,24 @@ unwind_infopy_add_saved_register (PyObject *self, PyObject *args, PyObject *kw)
+       return nullptr;
+     }
+ 
+-  if (value->optimized_out () || !value->entirely_available ())
++
++  try
++    {
++      if (value->optimized_out () || !value->entirely_available ())
++	{
++	  /* If we allow this value to be registered here, pyuw_sniffer is going
++	     to run into an exception when trying to access its contents.
++	     Throwing an exception here just puts a burden on the user to
++	     implement the same checks on the user side.  We could return False
++	     here and True otherwise, but again that might require changes in
++	     user code.  So, handle this with minimal impact for the user, while
++	     improving robustness: silently ignore the register/value pair.  */
++	  Py_RETURN_NONE;
++	}
++    }
++  catch (const gdb_exception &except)
+     {
+-      /* If we allow this value to be registered here, pyuw_sniffer is going
+-	 to run into an exception when trying to access its contents.
+-	 Throwing an exception here just puts a burden on the user to
+-	 implement the same checks on the user side.  We could return False
+-	 here and True otherwise, but again that might require changes in user
+-	 code.  So, handle this with minimal impact for the user, while
+-	 improving robustness: silently ignore the register/value pair.  */
+-      Py_RETURN_NONE;
++      GDB_PY_HANDLE_EXCEPTION (except);
+     }
+ 
+   gdbpy_ref<> new_value = gdbpy_ref<>::new_reference (pyo_reg_value);
+
+base-commit: a6f598be3d0477c5c59bd490573a5d457949658e
+-- 
+2.35.3
+

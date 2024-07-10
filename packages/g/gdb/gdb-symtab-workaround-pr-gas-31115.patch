@@ -1,0 +1,122 @@
+From d25e3f4ed05c3a6c207263d7e532f829860b83f0 Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Wed, 20 Mar 2024 09:57:49 +0100
+Subject: [PATCH 1/7] [gdb/symtab] Workaround PR gas/31115
+
+On arm-linux, with gas 2.40, I run into:
+...
+(gdb) x /i main+8^M
+   0x4e1 <main+7>:      vrhadd.u16      d14, d14, d31^M
+(gdb) FAIL: gdb.arch/pr25124.exp: disassemble thumb instruction (1st try)
+...
+
+This is a regression due to PR gas/31115, which makes gas produce a low_pc
+with the thumb bit set (0x4d8 & 0x1):
+...
+ <1><24>: Abbrev Number: 2 (DW_TAG_subprogram)
+    <25>   DW_AT_name        : main
+    <29>   DW_AT_external    : 1
+    <29>   DW_AT_type        : <0x2f>
+    <2a>   DW_AT_low_pc      : 0x4d9
+    <2e>   DW_AT_high_pc     : 12
+...
+
+The regression was introduced in 2.39, and is also present in 2.40 and 2.41,
+and hasn't been fixed yet.
+
+Work around this in read_func_scope, by using gdbarch_addr_bits_remove on
+low_pc and high_pc.
+
+Tested on arm-linux and x86_64-linux.
+
+PR tdep/31453
+Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=31453
+---
+ gdb/dwarf2/cu.c   |  1 +
+ gdb/dwarf2/cu.h   |  1 +
+ gdb/dwarf2/read.c | 22 ++++++++++++++++++++++
+ 3 files changed, 24 insertions(+)
+
+diff --git a/gdb/dwarf2/cu.c b/gdb/dwarf2/cu.c
+index f9b05dfc709..7f89500effd 100644
+--- a/gdb/dwarf2/cu.c
++++ b/gdb/dwarf2/cu.c
+@@ -42,6 +42,7 @@ dwarf2_cu::dwarf2_cu (dwarf2_per_cu_data *per_cu,
+     producer_is_clang (false),
+     producer_is_gas_lt_2_38 (false),
+     producer_is_gas_2_39 (false),
++    producer_is_gas_ge_2_40 (false),
+     processing_has_namespace_info (false),
+     load_all_dies (false)
+ {
+diff --git a/gdb/dwarf2/cu.h b/gdb/dwarf2/cu.h
+index ef8db480e3f..1b02f89ed2f 100644
+--- a/gdb/dwarf2/cu.h
++++ b/gdb/dwarf2/cu.h
+@@ -267,6 +267,7 @@ struct dwarf2_cu
+   bool producer_is_clang : 1;
+   bool producer_is_gas_lt_2_38 : 1;
+   bool producer_is_gas_2_39 : 1;
++  bool producer_is_gas_ge_2_40 : 1;
+ 
+   /* When true, the file that we're processing is known to have
+      debugging info for C++ namespaces.  GCC 3.3.x did not produce
+diff --git a/gdb/dwarf2/read.c b/gdb/dwarf2/read.c
+index a4f982962ae..8f2d7a34aef 100644
+--- a/gdb/dwarf2/read.c
++++ b/gdb/dwarf2/read.c
+@@ -148,6 +148,7 @@ static int dwarf2_loclist_block_index;
+ static int ada_block_index;
+ 
+ static bool producer_is_gas_lt_2_38 (struct dwarf2_cu *cu);
++static bool producer_is_gas_ge_2_39 (struct dwarf2_cu *cu);
+ 
+ /* Size of .debug_loclists section header for 32-bit DWARF format.  */
+ #define LOCLIST_HEADER_SIZE32 12
+@@ -10223,6 +10224,15 @@ read_func_scope (struct die_info *die, struct dwarf2_cu *cu)
+   lowpc = per_objfile->relocate (unrel_low);
+   highpc = per_objfile->relocate (unrel_high);
+ 
++  if (gdbarch_bfd_arch_info (gdbarch)->arch == bfd_arch_arm
++      && producer_is_gas_ge_2_39 (cu))
++    {
++      /* Gas version 2.39 produces DWARF for a Thumb subprogram with a low_pc
++	 attribute with the thumb bit set (PR gas/31115).  Work around this.  */
++      lowpc = gdbarch_addr_bits_remove (gdbarch, lowpc);
++      highpc = gdbarch_addr_bits_remove (gdbarch, highpc);
++    }
++
+   /* If we have any template arguments, then we must allocate a
+      different sort of symbol.  */
+   for (child_die = die->child; child_die; child_die = child_die->sibling)
+@@ -11507,6 +11517,7 @@ check_producer (struct dwarf2_cu *cu)
+     {
+       cu->producer_is_gas_lt_2_38 = major < 2 || (major == 2 && minor < 38);
+       cu->producer_is_gas_2_39 = major == 2 && minor == 39;
++      cu->producer_is_gas_ge_2_40 = major > 2 || (major == 2 && minor >= 40);
+     }
+   else
+     {
+@@ -11561,6 +11572,17 @@ producer_is_gas_2_39 (struct dwarf2_cu *cu)
+   return cu->producer_is_gas_2_39;
+ }
+ 
++/* Return true if CU is produced by GAS 2.39 or later.  */
++
++static bool
++producer_is_gas_ge_2_39 (struct dwarf2_cu *cu)
++{
++  if (!cu->checked_producer)
++    check_producer (cu);
++
++  return cu->producer_is_gas_2_39 || cu->producer_is_gas_ge_2_40;
++}
++
+ /* Return the accessibility of DIE, as given by DW_AT_accessibility.
+    If that attribute is not available, return the appropriate
+    default.  */
+
+base-commit: c79ecacd3f75cfb0ec1a3afc49ca3f30b1759009
+-- 
+2.35.3
+

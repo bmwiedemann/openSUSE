@@ -1,0 +1,57 @@
+From 0f2bdd8648e47e10334f8cc8e47b277d4064d0a2 Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Mon, 13 Nov 2023 09:31:20 +0100
+Subject: [PATCH 3/6] [gdb/tui] Fix Wmaybe-uninitialized in
+ tui_find_disassembly_address
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+When building gdb with -O2, we run into:
+...
+gdb/tui/tui-disasm.c: In function ‘CORE_ADDR tui_find_disassembly_address \
+  (gdbarch*, CORE_ADDR, int)’:
+gdb/tui/tui-disasm.c:293:7: warning: ‘last_addr’ may be used uninitialized \
+  in this function [-Wmaybe-uninitialized]
+       if (last_addr < pc)
+       ^~
+...
+
+The warning triggers since commit 72535eb14bd ("[gdb/tui] Fix segfault in
+tui_find_disassembly_address").
+
+Fix the warning by ensuring that last_addr is initialized at the point of
+use:
+...
++      last_addr = asm_lines.back ().addr;
+       if (last_addr < pc)
+...
+
+Tested on x86_64-linux.
+---
+ gdb/tui/tui-disasm.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/gdb/tui/tui-disasm.c b/gdb/tui/tui-disasm.c
+index 03c78aa1291..bbbc92c8183 100644
+--- a/gdb/tui/tui-disasm.c
++++ b/gdb/tui/tui-disasm.c
+@@ -281,7 +281,6 @@ tui_find_disassembly_address (struct gdbarch *gdbarch, CORE_ADDR pc, int from)
+ 	  /* Take the best possible match we have.  */
+ 	  new_low = *possible_new_low;
+ 	  next_addr = tui_disassemble (gdbarch, asm_lines, new_low, max_lines);
+-	  last_addr = asm_lines.back ().addr;
+ 	  gdb_assert (asm_lines.size () >= max_lines);
+ 	}
+ 
+@@ -290,6 +289,7 @@ tui_find_disassembly_address (struct gdbarch *gdbarch, CORE_ADDR pc, int from)
+ 	 We keep the disassembled instructions in the 'lines' window
+ 	 and shift it downward (increasing its addresses).  */
+       int pos = max_lines - 1;
++      last_addr = asm_lines.back ().addr;
+       if (last_addr < pc)
+ 	do
+ 	  {
+-- 
+2.35.3
+

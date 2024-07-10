@@ -1,0 +1,219 @@
+From 7973eaf11e33ddd405830b9bd29495991db5901d Mon Sep 17 00:00:00 2001
+From: Thiago Jung Bauermann <thiago.bauermann@linaro.org>
+Date: Mon, 26 Feb 2024 19:11:45 -0300
+Subject: [PATCH 2/7] gdb/arm: Remove tpidruro register from non-FreeBSD target
+ descriptions
+
+Commit 92d48a1e4eac ("Add an arm-tls feature which includes the tpidruro
+register from CP15.") introduced the org.gnu.gdb.arm.tls feature, which
+adds the tpidruro register, and unconditionally enabled it in
+aarch32_create_target_description.
+
+In Linux, the tpidruro register isn't available via ptrace in the 32-bit
+kernel but it is available for an aarch32 program running under an arm64
+kernel via the ptrace compat interface.  This isn't currently implemented
+however, which causes GDB on arm-linux with 64-bit kernel to list the
+register but show it as unavailable, as reported by Tom de Vries:
+
+  $ gdb -q -batch a.out -ex start -ex 'p $tpidruro'
+  Temporary breakpoint 1 at 0x512
+
+  Temporary breakpoint 1, 0xaaaaa512 in main ()
+  $1 = <unavailable>
+
+Simon Marchi then clarified:
+
+> The only time we should be seeing some "unavailable" registers or memory
+> is in the context of tracepoints, for things that are not collected.
+> Seeing an unavailable register here is a sign that something is not
+> right.
+
+Therefore, disable the TLS feature in aarch32 target descriptions for Linux
+and NetBSD targets (the latter also doesn't seem to support accessing
+tpidruro either, based on a quick look at arm-netbsd-nat.c).
+
+This patch fixes the following tests:
+
+Running gdb.base/inline-frame-cycle-unwind.exp ...
+FAIL: gdb.base/inline-frame-cycle-unwind.exp: cycle at level 3: backtrace when the unwind is broken at frame 3
+FAIL: gdb.base/inline-frame-cycle-unwind.exp: cycle at level 5: backtrace when the unwind is broken at frame 5
+FAIL: gdb.base/inline-frame-cycle-unwind.exp: cycle at level 1: backtrace when the unwind is broken at frame 1
+
+Tested with Ubuntu 22.04.3 on armv8l-linux-gnueabihf in native,
+native-gdbserver and native-extended-gdbserver targets with no regressions.
+
+PR tdep/31418
+Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=31418
+
+Approved-By: John Baldwin <jhb@FreeBSD.org>
+---
+ gdb/aarch32-tdep.c               | 15 ++++++++++-----
+ gdb/aarch32-tdep.h               |  2 +-
+ gdb/aarch64-linux-nat.c          |  2 +-
+ gdb/arch/aarch32.c               |  5 +++--
+ gdb/arch/aarch32.h               |  2 +-
+ gdb/arm-fbsd-tdep.c              |  2 +-
+ gdb/arm-linux-nat.c              |  2 +-
+ gdb/arm-linux-tdep.c             |  2 +-
+ gdb/arm-netbsd-nat.c             |  2 +-
+ gdbserver/linux-aarch32-tdesc.cc |  2 +-
+ 10 files changed, 21 insertions(+), 15 deletions(-)
+
+diff --git a/gdb/aarch32-tdep.c b/gdb/aarch32-tdep.c
+index bfa88a96522..395328936e4 100644
+--- a/gdb/aarch32-tdep.c
++++ b/gdb/aarch32-tdep.c
+@@ -22,15 +22,20 @@
+ #include "gdbsupport/common-regcache.h"
+ #include "arch/aarch32.h"
+ 
+-static struct target_desc *tdesc_aarch32;
++static struct target_desc *tdesc_aarch32_list[2];
+ 
+ /* See aarch32-tdep.h.  */
+ 
+ const target_desc *
+-aarch32_read_description ()
++aarch32_read_description (bool tls)
+ {
+-  if (tdesc_aarch32 == nullptr)
+-    tdesc_aarch32 = aarch32_create_target_description ();
++  struct target_desc *tdesc = tdesc_aarch32_list[tls];
+ 
+-  return tdesc_aarch32;
++  if (tdesc == nullptr)
++    {
++      tdesc = aarch32_create_target_description (tls);
++      tdesc_aarch32_list[tls] = tdesc;
++    }
++
++  return tdesc;
+ }
+diff --git a/gdb/aarch32-tdep.h b/gdb/aarch32-tdep.h
+index bee4d4e9fc0..efc93351298 100644
+--- a/gdb/aarch32-tdep.h
++++ b/gdb/aarch32-tdep.h
+@@ -22,6 +22,6 @@ struct target_desc;
+ 
+ /* Get the AArch32 target description.  */
+ 
+-const target_desc *aarch32_read_description ();
++const target_desc *aarch32_read_description (bool tls);
+ 
+ #endif /* aarch32-tdep.h.  */
+diff --git a/gdb/aarch64-linux-nat.c b/gdb/aarch64-linux-nat.c
+index 768748a20db..c680d6de0c9 100644
+--- a/gdb/aarch64-linux-nat.c
++++ b/gdb/aarch64-linux-nat.c
+@@ -887,7 +887,7 @@ aarch64_linux_nat_target::read_description ()
+ 
+   ret = ptrace (PTRACE_GETREGSET, tid, NT_ARM_VFP, &iovec);
+   if (ret == 0)
+-    return aarch32_read_description ();
++    return aarch32_read_description (false);
+ 
+   CORE_ADDR hwcap = linux_get_hwcap ();
+   CORE_ADDR hwcap2 = linux_get_hwcap2 ();
+diff --git a/gdb/arch/aarch32.c b/gdb/arch/aarch32.c
+index 5be2cc0156e..b7510ee41e9 100644
+--- a/gdb/arch/aarch32.c
++++ b/gdb/arch/aarch32.c
+@@ -25,7 +25,7 @@
+ /* See aarch32.h.  */
+ 
+ target_desc *
+-aarch32_create_target_description ()
++aarch32_create_target_description (bool tls)
+ {
+   target_desc_up tdesc = allocate_target_description ();
+ 
+@@ -39,7 +39,8 @@ aarch32_create_target_description ()
+   /* Create a vfpv3 feature, then a blank NEON feature.  */
+   regnum = create_feature_arm_arm_vfpv3 (tdesc.get (), regnum);
+   tdesc_create_feature (tdesc.get (), "org.gnu.gdb.arm.neon");
+-  regnum = create_feature_arm_arm_tls (tdesc.get (), regnum);
++  if (tls)
++    regnum = create_feature_arm_arm_tls (tdesc.get (), regnum);
+ 
+   return tdesc.release ();
+ }
+diff --git a/gdb/arch/aarch32.h b/gdb/arch/aarch32.h
+index 6b24ae94335..e06e260e370 100644
+--- a/gdb/arch/aarch32.h
++++ b/gdb/arch/aarch32.h
+@@ -22,6 +22,6 @@
+ 
+ /* Create the AArch32 target description.  */
+ 
+-target_desc *aarch32_create_target_description ();
++target_desc *aarch32_create_target_description (bool tls);
+ 
+ #endif /* aarch32.h.  */
+diff --git a/gdb/arm-fbsd-tdep.c b/gdb/arm-fbsd-tdep.c
+index b46fa91d0a0..a4cea77f388 100644
+--- a/gdb/arm-fbsd-tdep.c
++++ b/gdb/arm-fbsd-tdep.c
+@@ -228,7 +228,7 @@ arm_fbsd_read_description_auxv (const gdb::optional<gdb::byte_vector> &auxv,
+   if (arm_hwcap & HWCAP_VFP)
+     {
+       if (arm_hwcap & HWCAP_NEON)
+-	return aarch32_read_description ();
++	return aarch32_read_description (tls);
+       else if ((arm_hwcap & (HWCAP_VFPv3 | HWCAP_VFPD32))
+ 	       == (HWCAP_VFPv3 | HWCAP_VFPD32))
+ 	return arm_read_description (ARM_FP_TYPE_VFPV3, tls);
+diff --git a/gdb/arm-linux-nat.c b/gdb/arm-linux-nat.c
+index 70c6bc684fa..07af23d3881 100644
+--- a/gdb/arm-linux-nat.c
++++ b/gdb/arm-linux-nat.c
+@@ -568,7 +568,7 @@ arm_linux_nat_target::read_description ()
+       /* NEON implies VFPv3-D32 or no-VFP unit.  Say that we only support
+ 	 Neon with VFPv3-D32.  */
+       if (arm_hwcap & HWCAP_NEON)
+-	return aarch32_read_description ();
++	return aarch32_read_description (false);
+       else if ((arm_hwcap & (HWCAP_VFPv3 | HWCAP_VFPv3D16)) == HWCAP_VFPv3)
+ 	return arm_read_description (ARM_FP_TYPE_VFPV3, false);
+ 
+diff --git a/gdb/arm-linux-tdep.c b/gdb/arm-linux-tdep.c
+index dfa816990ff..33748731cfd 100644
+--- a/gdb/arm-linux-tdep.c
++++ b/gdb/arm-linux-tdep.c
+@@ -740,7 +740,7 @@ arm_linux_core_read_description (struct gdbarch *gdbarch,
+       /* NEON implies VFPv3-D32 or no-VFP unit.  Say that we only support
+ 	 Neon with VFPv3-D32.  */
+       if (arm_hwcap & HWCAP_NEON)
+-	return aarch32_read_description ();
++	return aarch32_read_description (false);
+       else if ((arm_hwcap & (HWCAP_VFPv3 | HWCAP_VFPv3D16)) == HWCAP_VFPv3)
+ 	return arm_read_description (ARM_FP_TYPE_VFPV3, false);
+ 
+diff --git a/gdb/arm-netbsd-nat.c b/gdb/arm-netbsd-nat.c
+index d83714a46c3..018964b010d 100644
+--- a/gdb/arm-netbsd-nat.c
++++ b/gdb/arm-netbsd-nat.c
+@@ -350,7 +350,7 @@ arm_netbsd_nat_target::read_description ()
+ 
+   len = sizeof(flag);
+   if (sysctlbyname("machdep.neon_present", &flag, &len, NULL, 0) == 0 && flag)
+-    return aarch32_read_description ();
++    return aarch32_read_description (false);
+ 
+   return arm_read_description (ARM_FP_TYPE_VFPV3, false);
+ }
+diff --git a/gdbserver/linux-aarch32-tdesc.cc b/gdbserver/linux-aarch32-tdesc.cc
+index e1380fa2a40..443f91e3585 100644
+--- a/gdbserver/linux-aarch32-tdesc.cc
++++ b/gdbserver/linux-aarch32-tdesc.cc
+@@ -32,7 +32,7 @@ aarch32_linux_read_description ()
+ {
+   if (tdesc_aarch32 == nullptr)
+     {
+-      tdesc_aarch32 = aarch32_create_target_description ();
++      tdesc_aarch32 = aarch32_create_target_description (false);
+ 
+       static const char *expedite_regs[] = { "r11", "sp", "pc", 0 };
+       init_target_desc (tdesc_aarch32, expedite_regs);
+-- 
+2.35.3
+

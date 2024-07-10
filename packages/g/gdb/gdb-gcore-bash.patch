@@ -1,0 +1,10 @@
+diff --git a/gdb/gcore.in b/gdb/gcore.in
+index b9770ea415..3149f6e1fe 100644
+--- a/gdb/gcore.in
++++ b/gdb/gcore.in
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env bash
++#!/bin/bash
+ 
+ #   Copyright (C) 2003-2023 Free Software Foundation, Inc.
+ 

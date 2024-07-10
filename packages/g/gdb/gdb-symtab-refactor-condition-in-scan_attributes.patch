@@ -1,0 +1,70 @@
+From f72f115b4c012e3748a2e702d7b970be19974885 Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Mon, 11 Dec 2023 15:41:26 +0100
+Subject: [PATCH 01/13] [gdb/symtab] Refactor condition in scan_attributes
+
+In scan_attributes there's code:
+...
+	  if (new_reader->cu == reader->cu
+	      && new_info_ptr > watermark_ptr
+	      && *parent_entry == nullptr)
+	    ...
+	  else if (*parent_entry == nullptr)
+	    ...
+...
+that uses the "*parent_entry == nullptr" condition twice.
+
+Make this somewhat more readable by factoring out the condition:
+...
+	  if (*parent_entry == nullptr)
+	    {
+	      if (new_reader->cu == reader->cu
+		  && new_info_ptr > watermark_ptr)
+		...
+	      else
+		...
+	    }
+...
+
+This also allows us to factor out "form_addr (origin_offset, origin_is_dwz)".
+
+Tested on x86_64-linux.
+---
+ gdb/dwarf2/read.c | 18 ++++++++++--------
+ 1 file changed, 10 insertions(+), 8 deletions(-)
+
+diff --git a/gdb/dwarf2/read.c b/gdb/dwarf2/read.c
+index 50fa302b43a..466d3e59878 100644
+--- a/gdb/dwarf2/read.c
++++ b/gdb/dwarf2/read.c
+@@ -16410,15 +16410,17 @@ cooked_indexer::scan_attributes (dwarf2_per_cu_data *scanning_per_cu,
+ 	  const gdb_byte *new_info_ptr = (new_reader->buffer
+ 					  + to_underlying (origin_offset));
+ 
+-	  if (new_reader->cu == reader->cu
+-	      && new_info_ptr > watermark_ptr
+-	      && *parent_entry == nullptr)
+-	    *maybe_defer = form_addr (origin_offset, origin_is_dwz);
+-	  else if (*parent_entry == nullptr)
++	  if (*parent_entry == nullptr)
+ 	    {
+-	      CORE_ADDR lookup = form_addr (origin_offset, origin_is_dwz);
+-	      void *obj = m_die_range_map.find (lookup);
+-	      *parent_entry = static_cast <cooked_index_entry *> (obj);
++	      CORE_ADDR addr = form_addr (origin_offset, origin_is_dwz);
++	      if (new_reader->cu == reader->cu
++		  && new_info_ptr > watermark_ptr)
++		*maybe_defer = addr;
++	      else
++		{
++		  void *obj = m_die_range_map.find (addr);
++		  *parent_entry = static_cast <cooked_index_entry *> (obj);
++		}
+ 	    }
+ 
+ 	  unsigned int bytes_read;
+
+base-commit: 3490f51a80a10d46dc1885ba672d9390a8221170
+-- 
+2.35.3
+

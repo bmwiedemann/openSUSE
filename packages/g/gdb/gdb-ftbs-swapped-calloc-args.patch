@@ -1,0 +1,42 @@
+From FEDORA_PATCHES Mon Sep 17 00:00:00 2001
+From: Kevin Buettner <kevinb@redhat.com>
+Date: Wed, 17 Jan 2024 12:53:53 -0700
+Subject: gdb-ftbs-swapped-calloc-args.patch
+
+Backport upstream commit 54195469c18ec9873cc5ba6907f768509473fa9b
+which fixes a build problem in which arguments to calloc were swapped.
+
+[opcodes] ARC + PPC: Fix -Walloc-size warnings
+
+Recently, -Walloc-size warnings started to kick in. Fix these two
+calloc() calls to match the intended usage pattern.
+
+opcodes/ChangeLog:
+
+	* arc-dis.c (init_arc_disasm_info): Fix calloc() call.
+	* ppc-dis.c (powerpc_init_dialect): Ditto.
+
+diff --git a/opcodes/arc-dis.c b/opcodes/arc-dis.c
+--- a/opcodes/arc-dis.c
++++ b/opcodes/arc-dis.c
+@@ -147,7 +147,7 @@ static bool
+ init_arc_disasm_info (struct disassemble_info *info)
+ {
+   struct arc_disassemble_info *arc_infop
+-    = calloc (sizeof (*arc_infop), 1);
++    = calloc (1, sizeof (*arc_infop));
+ 
+   if (arc_infop == NULL)
+     return false;
+diff --git a/opcodes/ppc-dis.c b/opcodes/ppc-dis.c
+--- a/opcodes/ppc-dis.c
++++ b/opcodes/ppc-dis.c
+@@ -348,7 +348,7 @@ powerpc_init_dialect (struct disassemble_info *info)
+ {
+   ppc_cpu_t dialect = 0;
+   ppc_cpu_t sticky = 0;
+-  struct dis_private *priv = calloc (sizeof (*priv), 1);
++  struct dis_private *priv = calloc (1, sizeof (*priv));
+ 
+   if (priv == NULL)
+     return;

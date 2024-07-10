@@ -1,0 +1,76 @@
+From 56ab56c61f7cba5ed919dfae49c4c8671be8e6b5 Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Fri, 31 May 2024 10:19:35 +0200
+Subject: [PATCH] [gdb/testsuite] Fix timeout in gdb.tui/resize-2.exp
+
+When running test-case gdb.tui/resize-2.exp with taskset -c 0, I sometimes run
+into:
+...
+tui disable^[[40;1H^M(gdb) PASS: $exp: tui disable
+^M^[[K(gdb) FAIL: $exp: two prompt redisplays after resize (timeout)
+...
+
+The test-case does "Term::resize 24 80 0" while having the settings of an
+earlier "Term::resize 40 90", so both dimensions change.
+
+When TUI is enabled, we call Term::resize with wait_for_msg == 1, and the proc:
+- calls stty to change one dimension,
+- waits for the message (enabled by "maint set tui-resize-message on")
+  confirming the resize has happened,
+- calls stty to change the other dimension, and again
+- waits for the message confirming the resize has happened.
+
+Since TUI is disabled, we call Term::resize with wait_for_msg == 0 because the
+message is not printed, so stty is called twice, and afterwards we check for
+the results of the two resizes, which is the test that is failing.
+
+The problem is that not waiting for a response after each stty call opens up
+the possibility of the responses being merged.
+
+Fix this by calling Term::resize twice, changing one dimension at a time, and
+waiting for a single prompt redisplay after each one.
+
+Tested on x86_64-linux.
+
+PR testsuite/31822
+Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=31822
+---
+ gdb/testsuite/gdb.tui/resize-2.exp | 18 +++++++++++++++---
+ 1 file changed, 15 insertions(+), 3 deletions(-)
+
+diff --git a/gdb/testsuite/gdb.tui/resize-2.exp b/gdb/testsuite/gdb.tui/resize-2.exp
+index 0f1f0b9eb1e..729e1ee23f9 100644
+--- a/gdb/testsuite/gdb.tui/resize-2.exp
++++ b/gdb/testsuite/gdb.tui/resize-2.exp
+@@ -59,11 +59,23 @@ gdb_test_multiple "tui disable" "" {
+     }
+ }
+ 
+-# Resize with TUI disabled, so don't wait for the resize message.
++# Resize with TUI disabled, so don't wait for the resize message.  Instead,
++# do it in two steps, and wait for a prompt redisplay for each.  If we do
++# this in one step, it's unpredictable how may prompt redisplays we'll get.
++Term::resize 24 90 0
++set screen_dim { 0 0 90 24 }
++
++gdb_test_multiple "" "prompt redisplays after first resize" {
++    -re "\r.*$gdb_prompt $" {
++	pass $gdb_test_name
++    }
++}
++
+ Term::resize 24 80 0
+ set screen_dim { 0 0 80 24 }
+-gdb_test_multiple "" "two prompt redisplays after resize" {
+-    -re "\r.*$gdb_prompt \r.*$gdb_prompt $" {
++
++gdb_test_multiple "" "prompt redisplays after second resize" {
++    -re "\r.*$gdb_prompt $" {
+ 	pass $gdb_test_name
+     }
+ }
+
+base-commit: 9736d941f271a6c3c14dcbeb5ad03a5fc4106b45
+-- 
+2.35.3
+

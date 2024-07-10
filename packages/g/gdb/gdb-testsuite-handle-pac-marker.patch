@@ -1,0 +1,213 @@
+From f70536d3f72601b286967ed3031a3fb1ce0c834f Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Thu, 4 Jan 2024 13:42:45 +0100
+Subject: [PATCH 02/48] [gdb/testsuite] Handle PAC marker
+
+On aarch64-linux, I run into:
+...
+FAIL: gdb.base/annota1.exp: backtrace from shlibrary (timeout)
+...
+due to the PAC marker showing up:
+...
+^Z^Zframe-address^M
+0x000000000041025c [PAC]^M
+^Z^Zframe-address-end^M
+...
+
+In the docs the marker is documented as follows:
+...
+When GDB is debugging the AArch64 architecture, and the program is using the
+v8.3-A feature Pointer Authentication (PAC), then whenever the link register
+$lr is pointing to an PAC function its value will be masked.  When GDB prints
+a backtrace, any addresses that required unmasking will be postfixed with the
+marker [PAC].  When using the MI, this is printed as part of the addr_flags
+field.
+...
+
+Update the test-case to allow the PAC marker.
+
+Likewise in a few other test-cases.
+
+While we're at it, rewrite the affected pattern pat_begin in annota1.exp into
+a more readable form.  Likewise for the corresponding pat_end.
+
+Tested on aarch64-linux.
+
+Approved-By: Luis Machado <luis.machado@arm.com>
+
+PR testsuite/31202
+Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=31202
+---
+ gdb/testsuite/gdb.base/annota1.exp            | 47 ++++++++++++++++++-
+ gdb/testsuite/gdb.cp/exception.exp            |  8 ++--
+ .../gdb.dwarf2/entry-value-typedef.exp        |  2 +-
+ .../gdb.mi/mi-catch-cpp-exceptions.exp        |  2 +-
+ gdb/testsuite/gdb.mi/mi-syn-frame.exp         |  2 +-
+ .../gdb.threads/pthread_cond_wait.exp         |  2 +-
+ gdb/testsuite/gdb.threads/tls.exp             |  2 +-
+ 7 files changed, 54 insertions(+), 11 deletions(-)
+
+diff --git a/gdb/testsuite/gdb.base/annota1.exp b/gdb/testsuite/gdb.base/annota1.exp
+index 3c2bbb43761..d8552b5be85 100644
+--- a/gdb/testsuite/gdb.base/annota1.exp
++++ b/gdb/testsuite/gdb.base/annota1.exp
+@@ -286,9 +286,52 @@ gdb_test_multiple "continue" "continue to printf" {
+ # annotate-frame-address
+ # annotate-frame-address-end
+ #
+-set pat_begin "\r\n\032\032post-prompt\r\n\r\n\032\032frame-begin 0 $hex\r\n.0  \r\n(\032\032frame-address\r\n$hex\r\n\032\032frame-address-end\r\n in \r\n)*\032\032frame-function-name\r\n.*printf(@.*)?\r\n\032\032frame-args\r\n \\(.*frame-end\r\n\r\n\032\032frame-begin 1 $hex\r\n.1  \r\n\032\032frame-address\r\n$hex\r\n\032\032frame-address-end\r\n in \r\n\032\032frame-function-name\r\nmain\r\n\032\032frame-args\r\n \\(\\)\r\n\032\032frame-source-begin\r\n at \r\n\032\032frame-source-file\r\n"
++set pat_begin \
++    [list \
++	 "\r\n\032\032post-prompt\r\n" \
++	 "\r\n\032\032frame-begin 0 $hex\r\n" \
++	 ".0  \r\n" \
++	 "(" \
++	 "\032\032frame-address\r\n" \
++	 "${hex}( \\\[PAC\\\])?" \
++	 "\r\n\032\032frame-address-end\r\n" \
++	 " in \r\n" \
++	 ")*" \
++	 "\032\032frame-function-name\r\n" \
++	 ".*printf(@.*)?" \
++	 "\r\n\032\032frame-args\r\n" \
++	 " \\(.*frame-end\r\n" \
++	 "\r\n\032\032frame-begin 1 $hex\r\n" \
++	 ".1  " \
++	 "\r\n\032\032frame-address\r\n" \
++	 "${hex}( \\\[PAC\\\])?" \
++	 "\r\n\032\032frame-address-end\r\n" \
++	 " in " \
++	 "\r\n\032\032frame-function-name\r\n" \
++	 "main" \
++	 "\r\n\032\032frame-args\r\n" \
++	 " \\(\\)" \
++	 "\r\n\032\032frame-source-begin\r\n" \
++	 " at " \
++	 "\r\n\032\032frame-source-file\r\n"]
++
++set pat_begin [join $pat_begin ""]
++
++set pat_end \
++    [list \
++	 "\r\n\032\032frame-source-file-end\r\n" \
++	 ":" \
++	 "\r\n\032\032frame-source-line\r\n" \
++	 ".*" \
++	 "\r\n\032\032frame-source-end\r\n\r\n" \
++	 "\r\n\032\032frame-end\r\n" \
++	 "(" \
++	 "\r\n\032\032frame-begin .*\r\n" \
++	 "\r\n\032\032frame-end\r\n" \
++	 ")*" \
++	 "$gdb_prompt$"]
+ 
+-set pat_end "\r\n\032\032frame-source-file-end\r\n:\r\n\032\032frame-source-line\r\n.*\r\n\032\032frame-source-end\r\n\r\n\r\n\032\032frame-end\r\n(\r\n\032\032frame-begin .*\r\n\r\n\032\032frame-end\r\n)*$gdb_prompt$"
++set pat_end [join $pat_end ""]
+ 
+ gdb_test_multiple "backtrace" "backtrace from shlibrary" {
+     -re "$pat_begin$escapedsrcfile$pat_end" {
+diff --git a/gdb/testsuite/gdb.cp/exception.exp b/gdb/testsuite/gdb.cp/exception.exp
+index 2c7ef7793ee..03dd0cb3aeb 100644
+--- a/gdb/testsuite/gdb.cp/exception.exp
++++ b/gdb/testsuite/gdb.cp/exception.exp
+@@ -111,7 +111,7 @@ gdb_test "continue"  \
+ 
+ set name "backtrace after first throw"
+ gdb_test_multiple "backtrace" $name {
+-    -re ".*#\[0-9\]+.*\[\[:<:\]\]__cxa_throw\[\[:>:\]\].*#\[0-9\]+${ws}$hex in foo \\(i=20\\) at .*${srcfile}:\[0-9\]+\r\n#\[0-9\]+${ws}$hex in main \\(.*\\) at .*${srcfile}:\[0-9\]+\r\n$gdb_prompt $" {
++    -re ".*#\[0-9\]+.*\[\[:<:\]\]__cxa_throw\[\[:>:\]\].*#\[0-9\]+${ws}$hex (\\\[PAC\\\] )?in foo \\(i=20\\) at .*${srcfile}:\[0-9\]+\r\n#\[0-9\]+${ws}$hex in main \\(.*\\) at .*${srcfile}:\[0-9\]+\r\n$gdb_prompt $" {
+ 	# Either __cxxabiv1::__cxa_throw or __cxa_throw can be printed
+ 	# depending on debug info presence.
+ 	pass $name
+@@ -129,7 +129,7 @@ gdb_test "continue" \
+ 
+ set name "backtrace after first catch"
+ gdb_test_multiple "backtrace" $name {
+-    -re ".*#\[0-9\]+.*\[\[:<:\]\]__cxa_begin_catch\[\[:>:\]\].*#\[0-9\]+${ws}$hex in main \\(.*\\) at .*$srcfile:\[0-9\]+\r\n$gdb_prompt $" {
++    -re ".*#\[0-9\]+.*\[\[:<:\]\]__cxa_begin_catch\[\[:>:\]\].*#\[0-9\]+${ws}$hex (\\\[PAC\\\] )?in main \\(.*\\) at .*$srcfile:\[0-9\]+\r\n$gdb_prompt $" {
+ 	pass $name
+     }
+ }
+@@ -148,7 +148,7 @@ gdb_test "continue" \
+ 
+ set name "backtrace after second throw"
+ gdb_test_multiple "backtrace" $name {
+-    -re ".*#\[0-9\]+.*\[\[:<:\]\]__cxa_throw\[\[:>:\]\].*#\[0-9\]+${ws}$hex in foo \\(i=20\\) at .*${srcfile}:\[0-9\]+\r\n#\[0-9\]+${ws}$hex in main \\(.*\\) at .*${srcfile}:\[0-9\]+\r\n$gdb_prompt $" {
++    -re ".*#\[0-9\]+.*\[\[:<:\]\]__cxa_throw\[\[:>:\]\].*#\[0-9\]+${ws}$hex (\\\[PAC\\\] )?in foo \\(i=20\\) at .*${srcfile}:\[0-9\]+\r\n#\[0-9\]+${ws}$hex in main \\(.*\\) at .*${srcfile}:\[0-9\]+\r\n$gdb_prompt $" {
+ 	pass $name
+     }
+ }
+@@ -164,7 +164,7 @@ gdb_test "continue" \
+ 
+ set name "backtrace after second catch"
+ gdb_test_multiple "backtrace" $name {
+-    -re ".*#\[0-9\]+.*\[\[:<:\]\]__cxa_begin_catch\[\[:>:\]\].*#\[0-9\]+${ws}$hex in main \\(.*\\) at .*$srcfile:\[0-9\]+\r\n$gdb_prompt $" {
++    -re ".*#\[0-9\]+.*\[\[:<:\]\]__cxa_begin_catch\[\[:>:\]\].*#\[0-9\]+${ws}$hex (\\\[PAC\\\] )?in main \\(.*\\) at .*$srcfile:\[0-9\]+\r\n$gdb_prompt $" {
+ 	pass $name
+     }
+ }
+diff --git a/gdb/testsuite/gdb.dwarf2/entry-value-typedef.exp b/gdb/testsuite/gdb.dwarf2/entry-value-typedef.exp
+index b56c9ceab6a..3d25e2a50b9 100644
+--- a/gdb/testsuite/gdb.dwarf2/entry-value-typedef.exp
++++ b/gdb/testsuite/gdb.dwarf2/entry-value-typedef.exp
+@@ -42,4 +42,4 @@ gdb_test "continue" "Catchpoint $::decimal \\(exception thrown\\).*"
+ 
+ # Without the corresponding fix, GDB would hit an internal error before
+ # printing the frame for main.
+-gdb_test "backtrace" " $::hex in func \\(t=t@entry=@$::hex: 1234\\).* $::hex in main .*"
++gdb_test "backtrace" " $::hex (\\\[PAC\\\] )?in func \\(t=t@entry=@$::hex: 1234\\).* $::hex in main .*"
+diff --git a/gdb/testsuite/gdb.mi/mi-catch-cpp-exceptions.exp b/gdb/testsuite/gdb.mi/mi-catch-cpp-exceptions.exp
+index 595ae929e9a..1f119ec3a87 100644
+--- a/gdb/testsuite/gdb.mi/mi-catch-cpp-exceptions.exp
++++ b/gdb/testsuite/gdb.mi/mi-catch-cpp-exceptions.exp
+@@ -68,7 +68,7 @@ proc continue_to_next_exception { func line testname } {
+     mi_expect_stop "exception-caught" ".*" ".*" ".*" ".*" \
+ 	{} "run until an exception is caught: $testname"
+     mi_gdb_test "-stack-list-frames 1 1" \
+-	"\\^done,stack=\\\[frame=\{level=\"1\",addr=\"$hex\",func=\"${func}\",.*,line=\"${line}\".*\}\\\]" \
++	"\\^done,stack=\\\[frame=\{level=\"1\",addr=\"$hex\",(addr_flags=\"PAC\",)?func=\"${func}\",.*,line=\"${line}\".*\}\\\]" \
+ 	"check previous frame: $testname"
+ }
+ 
+diff --git a/gdb/testsuite/gdb.mi/mi-syn-frame.exp b/gdb/testsuite/gdb.mi/mi-syn-frame.exp
+index 40df312a1cc..dd484cd80fa 100644
+--- a/gdb/testsuite/gdb.mi/mi-syn-frame.exp
++++ b/gdb/testsuite/gdb.mi/mi-syn-frame.exp
+@@ -76,7 +76,7 @@ mi_gdb_test "406-data-evaluate-expression have_a_very_merry_interrupt()" \
+ # in this next output.
+ 
+ mi_gdb_test "407-stack-list-frames" \
+-  "407\\^done,stack=\\\[frame=\{level=\"0\",addr=\"$hex\",func=\"subroutine\",file=\".*mi-syn-frame.c\",fullname=\"${fullname_syntax}${srcfile}\",line=\"$decimal\",arch=\"$any\"\},frame=\{level=\"1\",addr=\"$hex\",func=\"handler\",file=\".*mi-syn-frame.c\",fullname=\"${fullname_syntax}${srcfile}\",line=\"$decimal\",arch=\"$any\"\},frame=\{level=\"2\",addr=\"$hex\",func=\"<signal handler called>\"\},.*frame=\{level=\"$decimal\",addr=\"$hex\",func=\"have_a_very_merry_interrupt\",file=\".*mi-syn-frame.c\",fullname=\"${fullname_syntax}${srcfile}\",line=\"$decimal\",arch=\"$any\"\},frame=\{level=\"$decimal\",addr=\"$hex\",func=\"<function called from gdb>\"\},frame=\{level=\"$decimal\",addr=\"$hex\",func=\"main\",file=\".*mi-syn-frame.c\",fullname=\"${fullname_syntax}${srcfile}\",line=\"$decimal\",arch=\"$any\"\}.*\\\]" \
++    "407\\^done,stack=\\\[frame=\{level=\"0\",addr=\"$hex\",func=\"subroutine\",file=\".*mi-syn-frame.c\",fullname=\"${fullname_syntax}${srcfile}\",line=\"$decimal\",arch=\"$any\"\},frame=\{level=\"1\",addr=\"$hex\",func=\"handler\",file=\".*mi-syn-frame.c\",fullname=\"${fullname_syntax}${srcfile}\",line=\"$decimal\",arch=\"$any\"\},frame=\{level=\"2\",addr=\"$hex\",func=\"<signal handler called>\"\},.*frame=\{level=\"$decimal\",addr=\"$hex\",(addr_flags=\"PAC\",)?func=\"have_a_very_merry_interrupt\",file=\".*mi-syn-frame.c\",fullname=\"${fullname_syntax}${srcfile}\",line=\"$decimal\",arch=\"$any\"\},frame=\{level=\"$decimal\",addr=\"$hex\",func=\"<function called from gdb>\"\},frame=\{level=\"$decimal\",addr=\"$hex\",func=\"main\",file=\".*mi-syn-frame.c\",fullname=\"${fullname_syntax}${srcfile}\",line=\"$decimal\",arch=\"$any\"\}.*\\\]" \
+   "list stack frames, with signal handler and dummy frame"
+ 
+ 
+diff --git a/gdb/testsuite/gdb.threads/pthread_cond_wait.exp b/gdb/testsuite/gdb.threads/pthread_cond_wait.exp
+index ff3097cb519..b29be9e4191 100644
+--- a/gdb/testsuite/gdb.threads/pthread_cond_wait.exp
++++ b/gdb/testsuite/gdb.threads/pthread_cond_wait.exp
+@@ -51,7 +51,7 @@ global decimal
+ #
+ # This is a "backtrace break" ("btb"):
+ #
+-set btb "\[^\r\n\]+\[\r\n\]+\#${decimal}\[ \t\]+${hex} in "
++set btb "\[^\r\n\]+\[\r\n\]+\#${decimal}\[ \t\]+${hex} (\\\[PAC\\\] )?in "
+ 
+ # One of the threads is blocked on a call to pthread_cond_wait, and
+ # we want to verify that we are able to get a sensible backtrace for
+diff --git a/gdb/testsuite/gdb.threads/tls.exp b/gdb/testsuite/gdb.threads/tls.exp
+index 89f6fb89bac..91a7f80b438 100644
+--- a/gdb/testsuite/gdb.threads/tls.exp
++++ b/gdb/testsuite/gdb.threads/tls.exp
+@@ -132,7 +132,7 @@ proc check_thread_stack {number spin_threads spin_threads_level} {
+     }
+     send_gdb "where\n"
+     gdb_expect {
+-	-re ".*(\[0-9\]+)\[ \t\]+$hex in spin \\(vp=(0x\[0-9a-f\]+).*\r\n$gdb_prompt $" {
++	-re ".*(\[0-9\]+)\[ \t\]+$hex (\\\[PAC\\\] )?in spin \\(vp=(0x\[0-9a-f\]+).*\r\n$gdb_prompt $" {
+ 	    if {[info exists tarr($number)]} {
+ 		fail "backtrace of thread number $number in spin"
+ 	    } else {
+-- 
+2.35.3
+

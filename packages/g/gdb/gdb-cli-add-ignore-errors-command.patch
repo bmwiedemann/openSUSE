@@ -1,0 +1,201 @@
+From 0bb6f49bb9ad577667075550ca2ad4cb49931078 Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Thu, 18 Apr 2024 14:27:04 +0200
+Subject: [PATCH 2/2] gdb-cli-add-ignore-errors-command
+
+[gdb/cli] Add ignore-errors command
+
+While trying to reproduce a failing test-case from the testsuite on the
+command line using a gdb command script, I ran into the problem that a command
+failed which stopped script execution.
+
+I could work around this by splitting the script at each error, but I realized
+it would be nice if I could tell gdb to ignore the error.
+
+A python workaround ignore-errors exists, mentioned here (
+https://sourceware.org/legacy-ml/gdb/2010-06/msg00100.html ), which is
+already supplied by distros like Fedora and openSUSE.
+
+FTR, a more elaborate try-catch solution was posted here (
+https://sourceware.org/bugzilla/show_bug.cgi?id=8487 ).
+
+This patch adds native ignore-errors support (so no python needed).
+
+So with this script:
+...
+$ cat script.gdb
+ignore-errors run
+echo here
+...
+we have:
+...
+$ gdb -q -batch -x script.gdb
+No executable file specified.
+Use the "file" or "exec-file" command.
+here$
+...
+
+Note that quit is not caught:
+...
+$ gdb -q
+(gdb) ignore-errors quit
+$
+...
+which is the same behaviour as with the python implementation.
+
+Tested on x86_64-linux.
+
+gdb/ChangeLog:
+
+2021-05-18  Tom de Vries  <tdevries@suse.de>
+
+	* cli/cli-cmds.c (ignore_errors_command_completer)
+	(ignore_errors_command): New function.
+	(_initialize_cli_cmds): Add "ignore-errors" cmd.
+
+gdb/doc/ChangeLog:
+
+2021-05-18  Tom de Vries  <tdevries@suse.de>
+
+	* gdb.texinfo (Command Files): Document command ignore-errors.
+
+gdb/testsuite/ChangeLog:
+
+2021-05-18  Tom de Vries  <tdevries@suse.de>
+
+	* gdb.base/ignore-errors.exp: New test.
+	* gdb.base/ignore-errors.gdb: New command file.
+---
+ gdb/cli/cli-cmds.c                       | 35 ++++++++++++++++++++++++
+ gdb/doc/gdb.texinfo                      |  8 +++++-
+ gdb/testsuite/gdb.base/ignore-errors.exp | 24 ++++++++++++++++
+ gdb/testsuite/gdb.base/ignore-errors.gdb |  2 ++
+ 4 files changed, 68 insertions(+), 1 deletion(-)
+ create mode 100644 gdb/testsuite/gdb.base/ignore-errors.exp
+ create mode 100644 gdb/testsuite/gdb.base/ignore-errors.gdb
+
+diff --git a/gdb/cli/cli-cmds.c b/gdb/cli/cli-cmds.c
+index cfe7b71b0b7..0ae5530c558 100644
+--- a/gdb/cli/cli-cmds.c
++++ b/gdb/cli/cli-cmds.c
+@@ -40,6 +40,7 @@
+ #include "location.h"
+ #include "block.h"
+ #include "valprint.h"
++#include "event-top.h"
+ 
+ #include "ui-out.h"
+ #include "interps.h"
+@@ -2544,6 +2545,34 @@ shell_internal_fn (struct gdbarch *gdbarch,
+     return value::allocate_optimized_out (int_type);
+ }
+ 
++/* Completer for "ignore-errors".  */
++
++static void
++ignore_errors_command_completer (cmd_list_element *ignore,
++				 completion_tracker &tracker,
++				 const char *text, const char * /*word*/)
++{
++  complete_nested_command_line (tracker, text);
++}
++
++/* Implementation of the ignore-errors command.  */
++
++static void
++ignore_errors_command (const char *args, int from_tty)
++{
++  try
++    {
++      execute_command (args, from_tty);
++    }
++  catch (const gdb_exception_error &ex)
++    {
++      exception_print (gdb_stderr, ex);
++
++      /* See also execute_gdb_command.  */
++      async_enable_stdin ();
++    }
++}
++
+ void _initialize_cli_cmds ();
+ void
+ _initialize_cli_cmds ()
+@@ -2942,4 +2971,10 @@ when GDB is started."), GDBINIT).release ();
+   c = add_cmd ("source", class_support, source_command,
+ 	       source_help_text, &cmdlist);
+   set_cmd_completer (c, filename_completer);
++
++  c = add_cmd ("ignore-errors", class_support, ignore_errors_command,
++	       _("Execute a single command, ignoring all errors.\n"
++		 "Only one-line commands are supported.\n"
++		 "This is primarily useful in scripts."), &cmdlist);
++  set_cmd_completer (c, ignore_errors_command_completer);
+ }
+diff --git a/gdb/doc/gdb.texinfo b/gdb/doc/gdb.texinfo
+index 1abf91c4470..c277c16297c 100644
+--- a/gdb/doc/gdb.texinfo
++++ b/gdb/doc/gdb.texinfo
+@@ -29250,7 +29250,8 @@ The lines in a command file are generally executed sequentially,
+ unless the order of execution is changed by one of the
+ @emph{flow-control commands} described below.  The commands are not
+ printed as they are executed.  An error in any command terminates
+-execution of the command file and control is returned to the console.
++execution of the command file and control is returned to the console,
++unless the line is prefixed with the @code{ignore-errors} command.
+ 
+ @value{GDBN} first searches for @var{filename} in the current directory.
+ If the file is not found there, and @var{filename} does not specify a
+@@ -29345,6 +29346,11 @@ the controlling expression.
+ @item end
+ Terminate the block of commands that are the body of @code{if},
+ @code{else}, or @code{while} flow-control commands.
++
++@kindex ignore-errors
++@item ignore-errors
++This command executes the command specified by its arguments, but
++doesn't stop execution of the script if the command fails.
+ @end table
+ 
+ 
+diff --git a/gdb/testsuite/gdb.base/ignore-errors.exp b/gdb/testsuite/gdb.base/ignore-errors.exp
+new file mode 100644
+index 00000000000..30dac7a94e2
+--- /dev/null
++++ b/gdb/testsuite/gdb.base/ignore-errors.exp
+@@ -0,0 +1,24 @@
++# Copyright 2021 Free Software Foundation, Inc.
++
++# This program is free software; you can redistribute it and/or modify
++# it under the terms of the GNU General Public License as published by
++# the Free Software Foundation; either version 3 of the License, or
++# (at your option) any later version.
++#
++# This program is distributed in the hope that it will be useful,
++# but WITHOUT ANY WARRANTY; without even the implied warranty of
++# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++# GNU General Public License for more details.
++#
++# You should have received a copy of the GNU General Public License
++# along with this program.  If not, see <http://www.gnu.org/licenses/>.  */
++
++# Check command ignore-errors.
++
++clean_restart
++
++gdb_test "source ignore-errors.gdb" \
++    [multi_line \
++	 "No executable file specified\\." \
++	 "Use the \"file\" or \"exec-file\" command\\." \
++	 "here"]
+diff --git a/gdb/testsuite/gdb.base/ignore-errors.gdb b/gdb/testsuite/gdb.base/ignore-errors.gdb
+new file mode 100644
+index 00000000000..5962ff49b11
+--- /dev/null
++++ b/gdb/testsuite/gdb.base/ignore-errors.gdb
+@@ -0,0 +1,2 @@
++ignore-errors run
++echo here\n
+-- 
+2.35.3
+

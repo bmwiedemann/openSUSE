@@ -1,0 +1,67 @@
+From 7658c4d52562eef199e30fcd2da7da9a56d5d9b3 Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Tue, 27 Feb 2024 16:18:32 +0100
+Subject: [PATCH 41/48] [gdb/testsuite] Fix test in
+ gdb.python/py-finish-breakpoint.exp
+
+With test-case gdb.python/py-finish-breakpoint.exp, we run into:
+...
+(gdb) python print (finishbp_default.hit_count)
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+RuntimeError: Breakpoint 3 is invalid.
+Error while executing Python code.
+(gdb) PASS: gdb.python/py-finish-breakpoint.exp: normal conditions: \
+  check finishBP on default frame has been hit
+...
+
+The test producing the pass is:
+...
+    gdb_test "python print (finishbp_default.hit_count)" "1.*" \
+      "check finishBP on default frame has been hit"
+...
+so the pass is produced because the 1 in "line 1" matches "1.*".
+
+Temporary breakpoints are removed when hit, and consequently accessing the
+hit_count attribute of a temporary python breakpoint (gdb.Breakpoint class) is
+not possible, and as per spec we get a RuntimeError.
+
+So the RuntimeError is correct, and not specific to finish breakpoints.
+
+The test presumably attempts to match:
+...
+(gdb) python print (finishbp_default.hit_count)
+1
+...
+but most likely this output was never produced by any gdb version.
+
+Fix this by checking whether the finishbp_default breakpoint has hit by
+checking that finishbp_default.is_valid() is False.
+
+Tested on aarch64-linux.
+
+Approved-By: Tom Tromey <tom@tromey.com>
+
+PR testsuite/31391
+Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=31391
+---
+ gdb/testsuite/gdb.python/py-finish-breakpoint.exp | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/gdb/testsuite/gdb.python/py-finish-breakpoint.exp b/gdb/testsuite/gdb.python/py-finish-breakpoint.exp
+index e5a46874afd..687b9ad38cb 100644
+--- a/gdb/testsuite/gdb.python/py-finish-breakpoint.exp
++++ b/gdb/testsuite/gdb.python/py-finish-breakpoint.exp
+@@ -73,7 +73,8 @@ with_test_prefix "normal conditions" {
+ 	"check MyFinishBreakpoint hit"
+     gdb_test "python print (finishbp.return_value)" "-5.*" "check return_value"
+ 
+-    gdb_test "python print (finishbp_default.hit_count)" "1.*" "check finishBP on default frame has been hit"
++    gdb_test "python print (finishbp_default.is_valid())" "False" \
++	"check finishBP on default frame has been hit"
+     gdb_test "python print (finishbp.is_valid())" "False.*"\
+ 	"ensure that finish bp is invalid afer normal hit"
+ 
+-- 
+2.35.3
+

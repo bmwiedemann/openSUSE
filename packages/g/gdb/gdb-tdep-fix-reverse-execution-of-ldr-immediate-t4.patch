@@ -1,0 +1,80 @@
+From b8a8f319b30149f94823302d9120d83b9eee01a4 Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Tue, 13 Feb 2024 09:10:54 +0100
+Subject: [PATCH 23/48] [gdb/tdep] Fix reverse execution of LDR(immediate) T4
+
+When running test-case gdb.reverse/func-map-to-same-line.exp on arm-linux with
+target board unix/-mthumb, we run into:
+...
+(gdb) reverse-step
+func2 () at func-map-to-same-line.c:26
+26	{
+(gdb) FAIL: gdb.reverse/func-map-to-same-line.exp: \
+  column_info_flag=column-info: step-test: reverse-step into func2
+...
+
+The FAIL is caused by incorrect recording of this insn:
+...
+4f6:   f85d 7b04       ldr.w   r7, [sp], #4
+...
+
+The insn updates the sp, but we don't record this:
+...
+$ gdb -q -batch func-map-to-same-line \
+  -ex "b *func2+8" \
+  -ex run \
+  -ex record \
+  -ex "set debug record 2" \
+  -ex stepi
+Breakpoint 1 at 0x4f6: file func-map-to-same-line.c, line 27.
+
+Breakpoint 1, 0xaaaaa4f6 in func2 () at func-map-to-same-line.c:27
+27	} /* END FUNC2 */
+Process record: arm_process_record addr = 0xaaaaa4f6
+Process record: add register num = 15 to record list.
+Process record: record_full_arch_list_add 0xabc6c460.
+Process record: add register num = 7 to record list.
+Process record: record_full_arch_list_add 0xabc3b868.
+Process record: add register num = 25 to record list.
+...
+[ Note that sp is r13, and we see here only r15 (pc), r7, and r25 (ps). ]
+
+The problem is that the specific insn, an LDR(immediate) T4, is not handled in
+thumb2_record_ld_word.
+
+Fix this by detecting the insn in thumb2_record_ld_word, and recording the
+updated base register.
+
+Tested on arm-linux.
+
+Reported-By: Thiago Jung Bauermann <thiago.bauermann@linaro.org>
+Approved-By: Luis Machado <luis.machado@arm.com>
+
+PR tdep/31278
+Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=31278
+---
+ gdb/arm-tdep.c | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+diff --git a/gdb/arm-tdep.c b/gdb/arm-tdep.c
+index 04392115848..3b1682a2aea 100644
+--- a/gdb/arm-tdep.c
++++ b/gdb/arm-tdep.c
+@@ -14156,6 +14156,14 @@ thumb2_record_ld_word (arm_insn_decode_record *thumb2_insn_r)
+   record_buf[1] = ARM_PS_REGNUM;
+   thumb2_insn_r->reg_rec_count = 2;
+ 
++  if ((thumb2_insn_r->arm_insn & 0xfff00900) == 0xf8500900)
++    {
++      /* Detected LDR(immediate), T4, with write-back bit set.  Record Rn
++	 update.  */
++      record_buf[2] = bits (thumb2_insn_r->arm_insn, 16, 19);
++      thumb2_insn_r->reg_rec_count++;
++    }
++
+   REG_ALLOC (thumb2_insn_r->arm_regs, thumb2_insn_r->reg_rec_count,
+ 	    record_buf);
+   return ARM_RECORD_SUCCESS;
+-- 
+2.35.3
+

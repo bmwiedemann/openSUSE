@@ -1,0 +1,47 @@
+From a2889f1e3f71589fee9454c0aa772ce1bc540db3 Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Thu, 28 Mar 2024 06:51:59 +0100
+Subject: [PATCH 35/48] [gdb/testsuite] Add missing include in
+ gdb.base/rtld-step.exp
+
+On fedora rawhide, with test-case gdb.base/rtld-step.exp I get:
+...
+static-pie-static-libc.c: In function '_start':^M
+static-pie-static-libc.c:1:22: error: \
+  implicit declaration of function '_exit' [-Wimplicit-function-declaration]^M
+    1 | void _start (void) { _exit (0); }^M
+      |                      ^~~~~^M
+compiler exited with status 1
+  ...
+UNTESTED: gdb.base/rtld-step.exp: failed to compile \
+  (-static-pie not supported or static libc missing)
+...
+
+Fix this by adding the missing include.
+
+Tested on aarch64-linux.
+
+Approved-by: Kevin Buettner <kevinb@redhat.com>
+---
+ gdb/testsuite/gdb.base/rtld-step.exp | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/gdb/testsuite/gdb.base/rtld-step.exp b/gdb/testsuite/gdb.base/rtld-step.exp
+index 9a6c76d191a..bd3f89769b8 100644
+--- a/gdb/testsuite/gdb.base/rtld-step.exp
++++ b/gdb/testsuite/gdb.base/rtld-step.exp
+@@ -86,7 +86,10 @@ set rtld_flags [list debug additional_flags=[list -static-pie -fPIE \
+ 						  -nostdlib -static -lc]]
+ 
+ if { ![gdb_can_simple_compile static-pie-static-libc \
+-	   "void _start (void) { _exit (0); }" \
++	   {
++	       #include <unistd.h>
++	       void _start (void) { _exit (0); }
++	   } \
+ 	   executable $rtld_flags] } {
+     set reason "-static-pie not supported or static libc missing"
+     untested "failed to compile ($reason)"
+-- 
+2.35.3
+

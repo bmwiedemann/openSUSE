@@ -1,0 +1,74 @@
+From 0218e033b415df76be0a14871447bbd94dce62a3 Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Sat, 16 Sep 2023 04:07:22 +0200
+Subject: [PATCH 10/13] [gdb/symtab] Don't defer backward refs, inter-cu
+ intra-shard case
+
+In patch "[gdb/symtab] Resolve deferred entries, inter-shard case" we've
+solved the generic case of handling deferred entries.
+
+Add an optimization that doesn't defer inter-CU intra-shard dependencies that
+are present in the shard's parent map.
+
+Tested on x86_64-linux.
+---
+ gdb/dwarf2/read.c | 29 ++++++++++++++++++++++++++++-
+ 1 file changed, 28 insertions(+), 1 deletion(-)
+
+diff --git a/gdb/dwarf2/read.c b/gdb/dwarf2/read.c
+index a97f738a54e..e7904532434 100644
+--- a/gdb/dwarf2/read.c
++++ b/gdb/dwarf2/read.c
+@@ -4709,6 +4709,12 @@ class cooked_index_storage
+     m_index->set_parent_valid (start, end);
+   }
+ 
++  /* Return true if find_parents can be relied upon.  */
++  bool parent_valid (CORE_ADDR addr)
++  {
++    return m_index->parent_valid (addr);
++  }
++
+ private:
+ 
+   /* Hash function for a cutu_reader.  */
+@@ -4857,6 +4863,12 @@ class cooked_indexer
+   {
+     m_index_storage->set_parent_valid (start, end);
+   }
++
++  /* Return true if find_parents can be relied upon.  */
++  bool parent_valid (CORE_ADDR addr)
++  {
++    return m_index_storage->parent_valid (addr);
++  }
+ };
+ 
+ /* Subroutine of dwarf2_build_psymtabs_hard to simplify it.
+@@ -16482,7 +16494,22 @@ cooked_indexer::scan_attributes (dwarf2_per_cu_data *scanning_per_cu,
+ 	      else
+ 		{
+ 		  /* Inter-CU case.  */
+-		  *maybe_defer = addr;
++		  if (parent_valid (addr))
++		    {
++		      auto tmp = find_parent (addr);
++		      if (tmp == &parent_map::deferred)
++			{
++			  /* Defer because origin is deferred.  */
++			  *maybe_defer = addr;
++			}
++		      else
++			*parent_entry = tmp;
++		    }
++		  else
++		    {
++		      /* Defer because origin is in other shard.  */
++		      *maybe_defer = addr;
++		    }
+ 		}
+ 	    }
+ 
+-- 
+2.35.3
+

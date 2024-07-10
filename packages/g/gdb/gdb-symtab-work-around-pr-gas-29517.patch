@@ -1,0 +1,256 @@
+From 7a2731d9d1c0926d22905b9d07e32a7b63c43b34 Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Thu, 28 Sep 2023 13:55:07 +0200
+Subject: [PATCH 57/65] Work around PR gas/29517
+
+When using glibc debuginfo generated with gas 2.39, we run into PR gas/29517:
+...
+$ gdb -q -batch a.out -ex start -ex "p (char *)strstr (\"haha\", \"ah\")"
+Temporary breakpoint 1 at 0x40051b: file hello.c, line 6.
+
+Temporary breakpoint 1, main () at hello.c:6
+6	  printf ("hello\n");
+Invalid cast.
+...
+while without glibc debuginfo installed we get the expected result:
+...
+$n = 0x7ffff7daa1b1 "aha"
+...
+and likewise with glibc debuginfo generated with gas 2.40.
+
+The strstr ifunc resolves to __strstr_sse2_unaligned.  The problem is that gas
+generates dwarf that states that the return type is void:
+...
+<1><3e1e58>: Abbrev Number: 2 (DW_TAG_subprogram)
+    <3e1e59>   DW_AT_name        : __strstr_sse2_unaligned
+    <3e1e5d>   DW_AT_external    : 1
+    <3e1e5e>   DW_AT_low_pc      : 0xbbd2e
+    <3e1e66>   DW_AT_high_pc     : 0xbc1c3
+...
+while the return type should be a DW_TAG_unspecified_type, as is the case
+with gas 2.40.
+
+We can still use the workaround of casting to another function type for both
+__strstr_sse2_unaligned:
+...
+(gdb) p ((char * (*) (const char *, const char *))__strstr_sse2_unaligned) \
+  ("haha", "ah")
+$n = 0x7ffff7daa211 "aha"
+...
+and strstr (which requires using *strstr to dereference the ifunc before we
+cast):
+...
+gdb) p ((char * (*) (const char *, const char *))*strstr) ("haha", "ah")
+$n = 0x7ffff7daa251 "aha"
+...
+but that's a bit cumbersome to use.
+
+Work around this in the dwarf reader, such that we have instead:
+...
+(gdb) p (char *)strstr ("haha", "ah")
+$n = 0x7ffff7daa1b1 "aha"
+...
+
+This also requires fixing producer_is_gcc to stop returning true for
+producer "GNU AS 2.39.0".
+
+Tested on x86_64-linux.
+
+PR symtab/30911
+Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=30911
+---
+ gdb/dwarf2/cu.c                               |  1 +
+ gdb/dwarf2/cu.h                               |  1 +
+ gdb/dwarf2/read.c                             | 23 ++++++++++++
+ gdb/producer.c                                |  8 ++++-
+ .../gdb.dwarf2/dw2-unspecified-type.c         |  9 ++++-
+ .../gdb.dwarf2/dw2-unspecified-type.exp       | 36 +++++++++++++++----
+ 6 files changed, 69 insertions(+), 9 deletions(-)
+
+diff --git a/gdb/dwarf2/cu.c b/gdb/dwarf2/cu.c
+index 89de40daab0..a908ec908cd 100644
+--- a/gdb/dwarf2/cu.c
++++ b/gdb/dwarf2/cu.c
+@@ -40,6 +40,7 @@ dwarf2_cu::dwarf2_cu (dwarf2_per_cu_data *per_cu,
+     producer_is_icc_lt_14 (false),
+     producer_is_codewarrior (false),
+     producer_is_clang (false),
++    producer_is_gas_2_39 (false),
+     processing_has_namespace_info (false),
+     load_all_dies (false)
+ {
+diff --git a/gdb/dwarf2/cu.h b/gdb/dwarf2/cu.h
+index 0c15d8b02db..6c611710503 100644
+--- a/gdb/dwarf2/cu.h
++++ b/gdb/dwarf2/cu.h
+@@ -265,6 +265,7 @@ struct dwarf2_cu
+   bool producer_is_icc_lt_14 : 1;
+   bool producer_is_codewarrior : 1;
+   bool producer_is_clang : 1;
++  bool producer_is_gas_2_39 : 1;
+ 
+   /* When true, the file that we're processing is known to have
+      debugging info for C++ namespaces.  GCC 3.3.x did not produce
+diff --git a/gdb/dwarf2/read.c b/gdb/dwarf2/read.c
+index a5c48baa6f8..e5e557c17d3 100644
+--- a/gdb/dwarf2/read.c
++++ b/gdb/dwarf2/read.c
+@@ -11426,6 +11426,8 @@ check_producer (struct dwarf2_cu *cu)
+     cu->producer_is_codewarrior = true;
+   else if (producer_is_clang (cu->producer, &major, &minor))
+     cu->producer_is_clang = true;
++  else if (startswith (cu->producer, "GNU AS 2.39.0"))
++    cu->producer_is_gas_2_39 = true;
+   else
+     {
+       /* For other non-GCC compilers, expect their behavior is DWARF version
+@@ -11461,6 +11463,15 @@ producer_is_codewarrior (struct dwarf2_cu *cu)
+   return cu->producer_is_codewarrior;
+ }
+ 
++static bool
++producer_is_gas_2_39 (struct dwarf2_cu *cu)
++{
++  if (!cu->checked_producer)
++    check_producer (cu);
++
++  return cu->producer_is_gas_2_39;
++}
++
+ /* Return the accessibility of DIE, as given by DW_AT_accessibility.
+    If that attribute is not available, return the appropriate
+    default.  */
+@@ -14635,6 +14646,18 @@ read_subroutine_type (struct die_info *die, struct dwarf2_cu *cu)
+ 
+   type = die_type (die, cu);
+ 
++  if (type->code () == TYPE_CODE_VOID
++      && !type->is_stub ()
++      && die->child == nullptr
++      && producer_is_gas_2_39 (cu))
++    {
++      /* Work around PR gas/29517, pretend we have an DW_TAG_unspecified_type
++	 return type.  */
++      type = (type_allocator (cu->per_objfile->objfile, cu->lang ())
++	      .new_type (TYPE_CODE_VOID, 0, nullptr));
++      type->set_is_stub (true);
++    }
++
+   /* The die_type call above may have already set the type for this DIE.  */
+   ftype = get_die_type (die, cu);
+   if (ftype)
+diff --git a/gdb/producer.c b/gdb/producer.c
+index 655eb971283..9fcf749e3d4 100644
+--- a/gdb/producer.c
++++ b/gdb/producer.c
+@@ -54,13 +54,19 @@ producer_is_gcc (const char *producer, int *major, int *minor)
+       if (minor == NULL)
+ 	minor = &min;
+ 
++      /* Skip GNU.  */
++      cs = &producer[strlen ("GNU ")];
++
++      /* Bail out for GNU AS.  */
++      if (startswith (cs, "AS "))
++	return 0;
++
+       /* Skip any identifier after "GNU " - such as "C11" "C++" or "Java".
+ 	 A full producer string might look like:
+ 	 "GNU C 4.7.2"
+ 	 "GNU Fortran 4.8.2 20140120 (Red Hat 4.8.2-16) -mtune=generic ..."
+ 	 "GNU C++14 5.0.0 20150123 (experimental)"
+       */
+-      cs = &producer[strlen ("GNU ")];
+       while (*cs && !isspace (*cs))
+ 	cs++;
+       if (*cs && isspace (*cs))
+diff --git a/gdb/testsuite/gdb.dwarf2/dw2-unspecified-type.c b/gdb/testsuite/gdb.dwarf2/dw2-unspecified-type.c
+index 1df09214d4a..e07d9517ff2 100644
+--- a/gdb/testsuite/gdb.dwarf2/dw2-unspecified-type.c
++++ b/gdb/testsuite/gdb.dwarf2/dw2-unspecified-type.c
+@@ -17,9 +17,16 @@
+ 
+ extern int foo (void);
+ 
++int
++bar (void)
++{
++  asm ("bar_label: .globl bar_label");
++  return 0;
++}
++
+ int
+ main (void)
+ {
+-  int res = foo ();
++  int res = foo () + bar ();
+   return res;
+ }
+diff --git a/gdb/testsuite/gdb.dwarf2/dw2-unspecified-type.exp b/gdb/testsuite/gdb.dwarf2/dw2-unspecified-type.exp
+index 5fa6ee544b2..a6f2a57e33e 100644
+--- a/gdb/testsuite/gdb.dwarf2/dw2-unspecified-type.exp
++++ b/gdb/testsuite/gdb.dwarf2/dw2-unspecified-type.exp
+@@ -27,10 +27,18 @@ lassign $foo_res \
+     foo_start foo_len
+ set foo_end "$foo_start + $foo_len"
+ 
++set bar_res \
++    [function_range bar \
++	 [list ${srcdir}/${subdir}/$srcfile ${srcdir}/${subdir}/$srcfile2]]
++lassign $bar_res \
++    bar_start bar_len
++set bar_end "$bar_start + $bar_len"
++
+ # Create the DWARF.
+ set asm_file [standard_output_file $srcfile3]
+ Dwarf::assemble $asm_file {
+     global foo_start foo_end
++    global bar_start bar_end
+     declare_labels unspecified_type_label
+ 
+     cu {} {
+@@ -45,7 +53,19 @@ Dwarf::assemble $asm_file {
+ 		{high_pc $foo_end addr}
+ 		{type :$unspecified_type_label}
+ 	    }
++	}
++    }
+ 
++    cu {} {
++	compile_unit {
++	    {language @DW_LANG_Mips_Assembler}
++	    {producer "GNU AS 2.39.0"}
++	} {
++	    DW_TAG_subprogram {
++		{name bar}
++		{low_pc $bar_start addr}
++		{high_pc $bar_end addr}
++	    }
+ 	}
+     }
+ }
+@@ -59,12 +79,14 @@ if ![runto_main] {
+     return -1
+ }
+ 
+-# Print the function type.  Return type should be stub type, which is printed
+-# as void.
+-gdb_test "ptype foo" "type = void \\(void\\)"
++foreach f {foo bar} {
++    # Print the function type.  Return type should be stub type, which is printed
++    # as void.
++    gdb_test "ptype $f" "type = void \\(void\\)"
+ 
+-# Call the function, casting the function to the correct function type.
+-gdb_test "p ((int (*) ()) foo) ()" " = 0"
++    # Call the function, casting the function to the correct function type.
++    gdb_test "p ((int (*) ()) $f) ()" " = 0"
+ 
+-# Call the function, casting the function result to the correct type.
+-gdb_test "p (int) foo ()" " = 0"
++    # Call the function, casting the function result to the correct type.
++    gdb_test "p (int) $f ()" " = 0"
++}
+-- 
+2.35.3
+

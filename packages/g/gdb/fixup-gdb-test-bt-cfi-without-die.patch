@@ -1,0 +1,38 @@
+fixup-gdb-test-bt-cfi-without-die.patch
+
+---
+ gdb/testsuite/gdb.base/cfi-without-die.exp | 13 ++++++++-----
+ 1 file changed, 8 insertions(+), 5 deletions(-)
+
+diff --git a/gdb/testsuite/gdb.base/cfi-without-die.exp b/gdb/testsuite/gdb.base/cfi-without-die.exp
+index 5880d46f6d2..db1726646f8 100644
+--- a/gdb/testsuite/gdb.base/cfi-without-die.exp
++++ b/gdb/testsuite/gdb.base/cfi-without-die.exp
+@@ -37,19 +37,22 @@ if ![runto callback] then {
+    fail "verify unwinding: Can't run to callback"
+    return 0
+ }
+-set test "verify unwinding breaks without CFI"
+-gdb_test_multiple "bt" $test {
++
++set as_expected 1
++gdb_test_multiple "bt" "" {
+     -re " in \[?\]\[?\] .*\r\n$gdb_prompt $" {
+ 	# It may backtrace through some random frames even to main().
+-	pass $test
+     }
+     -re " in main .*\r\n$gdb_prompt $" {
+-	fail $test
++	set as_expected 0
+     }
+     -re "\r\n$gdb_prompt $" {
+-	pass $test
+     }
+ }
++if { ! $as_expected } {
++    untested ${testfile}.exp
++    return -1
++}
+ 
+ if { [gdb_compile "${srcdir}/${subdir}/${srccallerfile}" ${objcallerfile} \
+       object [list {additional_flags=-fomit-frame-pointer -funwind-tables -fasynchronous-unwind-tables}]] != ""

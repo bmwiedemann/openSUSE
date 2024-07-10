@@ -1,0 +1,221 @@
+From 8bf7fdfc16f5d5fd9a94c233c0c41d307ba86cd2 Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Tue, 21 Nov 2023 13:15:29 +0100
+Subject: [PATCH 04/48] [gdb/testsuite] Fix spurious FAILs with
+ examine-backward.exp, again
+
+Commit 59a561480d5 ("Fix spurious FAILs with examine-backward.exp") describes
+the problem that:
+...
+The test case examine-backward.exp issues the command "x/-s" after the end
+of the first string in TestStrings, but without making sure that this
+string is preceded by a string terminator.  Thus GDB may spuriously print
+some random characters from before that string, and then the test fails.
+...
+
+The commit fixes the problem by adding a Barrier variable before the TestStrings
+variable:
+...
++const char Barrier[] = { 0x0 };
+ const char TestStrings[] = {
+...
+
+There is however no guarantee that Barrier is placed immediately before
+TestStrings.
+
+Before recent commit 169fe7ab54b ("Change gdb.base/examine-backwards.exp for
+AIX.") on x86_64-linux, I see:
+...
+0000000000400660 R Barrier
+0000000000400680 R TestStrings
+...
+
+So while the Barrier variable is the first before the TestStrings variable,
+it's not immediately preceding TestStrings.
+
+After commit 169fe7ab54b:
+...
+0000000000402259 B Barrier
+0000000000402020 D TestStrings
+...
+they're not even in the same section anymore.
+
+Fix this reliably by adding the zero in the array itself:
+...
+char TestStringsBase[] = {
+  0x0,
+  ...
+};
+char *TestStrings = &TestStringsBase[1];
+...
+and do likewise for TestStringsH and TestStringsW.
+
+Tested on x86_64-linux.
+
+PR testsuite/31064
+Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=31064
+---
+ gdb/testsuite/gdb.base/examine-backward.c   | 35 ++++++++++++++-------
+ gdb/testsuite/gdb.base/examine-backward.exp | 18 +++++------
+ 2 files changed, 33 insertions(+), 20 deletions(-)
+
+diff --git a/gdb/testsuite/gdb.base/examine-backward.c b/gdb/testsuite/gdb.base/examine-backward.c
+index 354c2e2f323..5549cc20a4a 100644
+--- a/gdb/testsuite/gdb.base/examine-backward.c
++++ b/gdb/testsuite/gdb.base/examine-backward.c
+@@ -32,15 +32,12 @@ literals.  The content of each array is the same as followings:
+   };
+ */
+ 
+-/* This is here just to ensure we have a null character before
+-   TestStrings, to avoid showing garbage when we look for strings
+-   backwards from TestStrings.  */
++unsigned char TestStringsBase[] = {
++  /* This is here just to ensure we have a null character before
++     TestStrings, to avoid showing garbage when we look for strings
++     backwards from TestStrings.  */
++  0x0,
+ 
+-unsigned char Barrier[] = {
+-  0x00,
+-};
+-
+-unsigned char TestStrings[] = {
+   0x41, 0x42, 0x43, 0x44, 0x45, 0x46, 0x47, 0x48,
+   0x49, 0x4a, 0x4b, 0x4c, 0x4d, 0x4e, 0x4f, 0x50,
+   0x51, 0x52, 0x53, 0x54, 0x55, 0x56, 0x57, 0x58,
+@@ -54,7 +51,14 @@ unsigned char TestStrings[] = {
+   0x00
+ };
+ 
+-short TestStringsH[] = {
++unsigned char *TestStrings = &TestStringsBase[1];
++
++short TestStringsHBase[] = {
++  /* This is here just to ensure we have a null character before
++     TestStringsH, to avoid showing garbage when we look for strings
++     backwards from TestStringsH.  */
++  0x0,
++
+   0x0041, 0x0042, 0x0043, 0x0044, 0x0045, 0x0046, 0x0047, 0x0048,
+   0x0049, 0x004a, 0x004b, 0x004c, 0x004d, 0x004e, 0x004f, 0x0050,
+   0x0051, 0x0052, 0x0053, 0x0054, 0x0055, 0x0056, 0x0057, 0x0058,
+@@ -67,7 +71,14 @@ short TestStringsH[] = {
+   0x0000
+ };
+ 
+-int TestStringsW[] = {
++short *TestStringsH = &TestStringsHBase[1];
++
++int TestStringsWBase[] = {
++  /* This is here just to ensure we have a null character before
++     TestStringsW, to avoid showing garbage when we look for strings
++     backwards from TestStringsW.  */
++  0x0,
++
+   0x00000041, 0x00000042, 0x00000043, 0x00000044,
+   0x00000045, 0x00000046, 0x00000047, 0x00000048,
+   0x00000049, 0x0000004a, 0x0000004b, 0x0000004c,
+@@ -89,11 +100,13 @@ int TestStringsW[] = {
+   0x00000000
+ };
+ 
++int *TestStringsW = &TestStringsWBase[1];
++
+ int
+ main (void)
+ {
+   /* Clang++ eliminates the variables if nothing references them.  */
+-  int dummy = Barrier[0] + TestStrings[0] + TestStringsH[0] + TestStringsW[0];
++  int dummy = TestStrings[0] + TestStringsH[0] + TestStringsW[0];
+ 
+   /* Backward disassemble test requires at least 20 instructions in
+      this function.  Adding a simple bubble sort.  */
+diff --git a/gdb/testsuite/gdb.base/examine-backward.exp b/gdb/testsuite/gdb.base/examine-backward.exp
+index 7c8a08c0726..4e197d7d725 100644
+--- a/gdb/testsuite/gdb.base/examine-backward.exp
++++ b/gdb/testsuite/gdb.base/examine-backward.exp
+@@ -145,7 +145,7 @@ gdb_test_no_output "set charset ASCII"
+ 
+ with_test_prefix "char-width=1, print-max=20" {
+     gdb_test_no_output "set print elements 20"
+-    gdb_test_sequence "x/6s &TestStrings" "take 6 strings forward" {
++    gdb_test_sequence "x/6s TestStrings" "take 6 strings forward" {
+         "\"ABCDEFGHIJKLMNOPQRST\"\.\.\."
+         "\"UVWXYZ\""
+         "\"\""
+@@ -162,7 +162,7 @@ with_test_prefix "char-width=1, print-max=20" {
+         "\"[^\"]+\""
+         "\"01234567890123456789\"\.\.\."
+     }
+-    gdb_test_sequence "x/6s &TestStrings" "take 6 strings forward again" {
++    gdb_test_sequence "x/6s TestStrings" "take 6 strings forward again" {
+         "\"ABCDEFGHIJKLMNOPQRST\"\.\.\."
+         "\"UVWXYZ\""
+         "\"\""
+@@ -187,7 +187,7 @@ with_test_prefix "char-width=1, print-max=20" {
+ 
+ with_test_prefix "char-width=2, print-max=20" {
+     gdb_test_no_output "set print elements 20"
+-    gdb_test_sequence "x/6sh &TestStringsH" "take 6 strings forward" {
++    gdb_test_sequence "x/6sh TestStringsH" "take 6 strings forward" {
+         "u\"ABCDEFGHIJKLMNOPQRST\"\.\.\."
+         "u\"UVWXYZ\""
+         "u\"\""
+@@ -204,7 +204,7 @@ with_test_prefix "char-width=2, print-max=20" {
+         "u\"[^\"]+\""
+         "u\"01234567890123456789\"\.\.\."
+     }
+-    gdb_test_sequence "x/6sh &TestStringsH" "take 6 strings forward again" {
++    gdb_test_sequence "x/6sh TestStringsH" "take 6 strings forward again" {
+         "u\"ABCDEFGHIJKLMNOPQRST\"\.\.\."
+         "u\"UVWXYZ\""
+         "u\"\""
+@@ -229,7 +229,7 @@ with_test_prefix "char-width=2, print-max=20" {
+ 
+ with_test_prefix "char-width=4, print-max=20" {
+     gdb_test_no_output "set print elements 20"
+-    gdb_test_sequence "x/6sw &TestStringsW" "take 6 strings forward" {
++    gdb_test_sequence "x/6sw TestStringsW" "take 6 strings forward" {
+         "U\"ABCDEFGHIJKLMNOPQRST\"\.\.\."
+         "U\"UVWXYZ\""
+         "U\"\""
+@@ -246,7 +246,7 @@ with_test_prefix "char-width=4, print-max=20" {
+         "U\"[^\"]+\""
+         "U\"01234567890123456789\"\.\.\."
+     }
+-    gdb_test_sequence "x/6sw &TestStringsW" "take 6 strings forward again" {
++    gdb_test_sequence "x/6sw TestStringsW" "take 6 strings forward again" {
+         "U\"ABCDEFGHIJKLMNOPQRST\"\.\.\."
+         "U\"UVWXYZ\""
+         "U\"\""
+@@ -271,7 +271,7 @@ with_test_prefix "char-width=4, print-max=20" {
+ 
+ with_test_prefix "char-width=2, print-max=0" {
+     gdb_test_no_output "set print elements 0"
+-    gdb_test_sequence "x/6sh &TestStringsH" "take 6 strings forward" {
++    gdb_test_sequence "x/6sh TestStringsH" "take 6 strings forward" {
+         "u\"ABCDEFGHIJKLMNOPQRSTUVWXYZ\""
+         "u\"\""
+         "u\"\""
+@@ -289,7 +289,7 @@ with_test_prefix "char-width=2, print-max=0" {
+         "u\"012345678901234567890123456789\""
+         "u\"!!!!!!\""
+     }
+-    gdb_test_sequence "x/6sh &TestStringsH" "take 6 strings forward again" {
++    gdb_test_sequence "x/6sh TestStringsH" "take 6 strings forward again" {
+         "u\"ABCDEFGHIJKLMNOPQRSTUVWXYZ\""
+         "u\"\""
+         "u\"\""
+@@ -314,7 +314,7 @@ with_test_prefix "char-width=2, print-max=0" {
+ 
+ with_test_prefix "char-width=1, print-max=4" {
+     gdb_test_no_output "set print elements 4"
+-    gdb_test_sequence "x/9s &TestStrings" "take 9 strings forward" {
++    gdb_test_sequence "x/9s TestStrings" "take 9 strings forward" {
+         "\"ABCD\"\.\.\."
+         "\"EFGH\"\.\.\."
+         "\"IJKL\"\.\.\."
+-- 
+2.35.3
+

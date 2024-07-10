@@ -1,0 +1,37 @@
+From bc970668f83cf142c4955d1cbeaa24e8bcc4b238 Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Fri, 25 Aug 2023 09:30:54 +0200
+Subject: [PATCH 03/13] [gdb/symtab] Handle nullptr parent in
+ parent_map::set_parent
+
+Set_parent uses m_die_range_map.set_empty, which doesn't allow
+parent_entry == nullptr.
+
+So it may be necessary to guard calls to set_parent with
+"if (parent_entry != nullptr)".
+
+Fix this by handling the parent_entry == nullptr case in set_parent.
+
+Tested on x86_64-linux.
+---
+ gdb/dwarf2/cooked-index.h | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/gdb/dwarf2/cooked-index.h b/gdb/dwarf2/cooked-index.h
+index 979541fbf60..79fbfe88c03 100644
+--- a/gdb/dwarf2/cooked-index.h
++++ b/gdb/dwarf2/cooked-index.h
+@@ -263,7 +263,9 @@ class parent_map
+   void set_parent (CORE_ADDR start, CORE_ADDR end,
+ 		   const cooked_index_entry *parent_entry)
+   {
+-    m_parent_map.set_empty (start, end, (void *)parent_entry);
++    /* Calling set_empty with nullptr is currently not allowed.  */
++    if (parent_entry != nullptr)
++      m_parent_map.set_empty (start, end, (void *)parent_entry);
+   }
+ 
+ private:
+-- 
+2.35.3
+

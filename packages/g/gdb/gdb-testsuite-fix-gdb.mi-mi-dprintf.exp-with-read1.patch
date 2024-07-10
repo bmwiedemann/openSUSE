@@ -1,0 +1,72 @@
+From 80b0afed39702c7a25d68f6b28427f92c5db6d80 Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Sun, 14 Jan 2024 10:21:46 +0100
+Subject: [PATCH 45/48] [gdb/testsuite] Fix gdb.mi/mi-dprintf.exp with read1
+
+When running test-case gdb.mi/mi-dprintf.exp with check-read1, I run into:
+...
+(gdb) ^M
+PASS: gdb.mi/mi-dprintf.exp: gdb: mi 2nd dprintf stop
+-data-evaluate-expression stderr^M
+^done,value="0x7ffff7e4a420 <_IO_2_1_stderr_>"^M
+(gdb) FAIL: gdb.mi/mi-dprintf.exp: stderr symbol check
+...
+
+The problem is in proc mi_gdb_is_stderr_available:
+...
+proc mi_gdb_is_stderr_available {} {
+    set has_stderr_symbol false
+    gdb_test_multiple "-data-evaluate-expression stderr" "stderr symbol check" {
+	-re "\\^error,msg=\"'stderr' has unknown type; cast it to its declared type\"\r\n$::mi_gdb_prompt$" {
+	}
+	-re "$::mi_gdb_prompt$" {
+	    set has_stderr_symbol true
+	}
+     }
+...
+which uses a gdb_test_multiple that is supposed to use the mi prompt, but
+doesn't use -prompt to indicate this.  Consequently, the default patterns use
+the regular gdb prompt, which trigger earlier than the two custom patterns
+which use "$::mi_gdb_prompt$".
+
+Fix this by adding the missing -prompt "$::mi_gdb_prompt$" arguments.
+
+While we're at it, make the gdb_test_multiple call a bit more readable by
+using variables, and by using -wrap.
+
+Tested on x86_64-linux, with:
+- gcc and clang (to trigger both the has_stderr_symbol true and false cases)
+- make check and make check-read1.
+---
+ gdb/testsuite/lib/mi-support.exp | 11 ++++++++---
+ 1 file changed, 8 insertions(+), 3 deletions(-)
+
+diff --git a/gdb/testsuite/lib/mi-support.exp b/gdb/testsuite/lib/mi-support.exp
+index 540eb3371c6..1b702e8a3bb 100644
+--- a/gdb/testsuite/lib/mi-support.exp
++++ b/gdb/testsuite/lib/mi-support.exp
+@@ -2956,13 +2956,18 @@ proc foreach_mi_ui_mode { var_name body } {
+ # Check if GDB has information about the stderr symbol.
+ proc mi_gdb_is_stderr_available {} {
+     set has_stderr_symbol false
+-    gdb_test_multiple "-data-evaluate-expression stderr" "stderr symbol check" {
+-	-re "\\^error,msg=\"'stderr' has unknown type; cast it to its declared type\"\r\n$::mi_gdb_prompt$" {
++
++    set cmd "-data-evaluate-expression stderr"
++    set test "stderr symbol check"
++    set msg_re {"'stderr' has unknown type; cast it to its declared type"}
++    gdb_test_multiple $cmd $test -prompt "$::mi_gdb_prompt$" {
++	-re -wrap "\\^error,msg=$msg_re" {
+ 	    # Default value of false is fine.
+ 	}
+-	-re "$::mi_gdb_prompt$" {
++	-re -wrap "" {
+ 	    set has_stderr_symbol true
+ 	}
+     }
++
+     return $has_stderr_symbol
+ }
+-- 
+2.35.3
+

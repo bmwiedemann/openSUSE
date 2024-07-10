@@ -1,0 +1,101 @@
+From c1da0d6449415cc1fe6f863526735e4325b0b3ac Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Wed, 1 May 2024 12:43:41 +0200
+Subject: [PATCH 1/2] fixup-skip-tests
+
+---
+ gdb/testsuite/gdb.base/gcore-buildid-exec-but-not-solib.exp | 4 +---
+ gdb/testsuite/gdb.base/gnu-ifunc-strstr-workaround.exp      | 4 +---
+ gdb/testsuite/gdb.cp/cxxexec.exp                            | 2 +-
+ .../py-gdb-rhbz1007614-memleak-infpy_read_memory.exp        | 4 ++--
+ gdb/testsuite/gdb.python/rh634108-solib_address.exp         | 6 +++---
+ 5 files changed, 8 insertions(+), 12 deletions(-)
+
+diff --git a/gdb/testsuite/gdb.base/gcore-buildid-exec-but-not-solib.exp b/gdb/testsuite/gdb.base/gcore-buildid-exec-but-not-solib.exp
+index 0c46489f315..5879319f27c 100644
+--- a/gdb/testsuite/gdb.base/gcore-buildid-exec-but-not-solib.exp
++++ b/gdb/testsuite/gdb.base/gcore-buildid-exec-but-not-solib.exp
+@@ -13,9 +13,7 @@
+ # You should have received a copy of the GNU General Public License
+ # along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ 
+-if {[skip_shlib_tests]} {
+-    return 0
+-}
++require allow_shlib_tests
+ 
+ set testfile "gcore-buildid-exec-but-not-solib"
+ set srcmainfile ${testfile}-main.c
+diff --git a/gdb/testsuite/gdb.base/gnu-ifunc-strstr-workaround.exp b/gdb/testsuite/gdb.base/gnu-ifunc-strstr-workaround.exp
+index 052bd84d420..73a9bb64903 100644
+--- a/gdb/testsuite/gdb.base/gnu-ifunc-strstr-workaround.exp
++++ b/gdb/testsuite/gdb.base/gnu-ifunc-strstr-workaround.exp
+@@ -17,9 +17,7 @@
+ # invalid IFUNC DW_AT_linkage_name: memmove strstr time
+ # http://sourceware.org/bugzilla/show_bug.cgi?id=14166
+ 
+-if {[skip_shlib_tests]} {
+-    return 0
+-}
++require allow_shlib_tests
+ 
+ set testfile "gnu-ifunc-strstr-workaround"
+ set executable ${testfile}
+diff --git a/gdb/testsuite/gdb.cp/cxxexec.exp b/gdb/testsuite/gdb.cp/cxxexec.exp
+index 77c85587407..089a679a1a9 100644
+--- a/gdb/testsuite/gdb.cp/cxxexec.exp
++++ b/gdb/testsuite/gdb.cp/cxxexec.exp
+@@ -13,7 +13,7 @@
+ # You should have received a copy of the GNU General Public License
+ # along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ 
+-if { [skip_cplus_tests] } { continue }
++require allow_cplus_tests
+ 
+ set testfile cxxexec
+ if { [prepare_for_testing ${testfile}.exp ${testfile} ${testfile}.cc {c++ debug}] } {
+diff --git a/gdb/testsuite/gdb.python/py-gdb-rhbz1007614-memleak-infpy_read_memory.exp b/gdb/testsuite/gdb.python/py-gdb-rhbz1007614-memleak-infpy_read_memory.exp
+index 2e6786d499a..d2693cfef1d 100644
+--- a/gdb/testsuite/gdb.python/py-gdb-rhbz1007614-memleak-infpy_read_memory.exp
++++ b/gdb/testsuite/gdb.python/py-gdb-rhbz1007614-memleak-infpy_read_memory.exp
+@@ -13,6 +13,8 @@
+ # You should have received a copy of the GNU General Public License
+ # along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ 
++require allow_python_tests
++
+ set testfile py-gdb-rhbz1007614-memleak-infpy_read_memory
+ set srcfile ${testfile}.c
+ set binfile [standard_output_file ${testfile}]
+@@ -21,8 +23,6 @@ if { [prepare_for_testing ${testfile}.exp ${testfile} ${srcfile}] } {
+     return -1
+ }
+ 
+-if { [skip_python_tests] } { continue }
+-
+ set pid_of_gdb [exp_pid -i [board_info host fileid]]
+ 
+ proc memory_v_pages_get {} {
+diff --git a/gdb/testsuite/gdb.python/rh634108-solib_address.exp b/gdb/testsuite/gdb.python/rh634108-solib_address.exp
+index ebf00babc34..2d950b79951 100644
+--- a/gdb/testsuite/gdb.python/rh634108-solib_address.exp
++++ b/gdb/testsuite/gdb.python/rh634108-solib_address.exp
+@@ -15,10 +15,10 @@
+ 
+ # https://bugzilla.redhat.com/show_bug.cgi?id=634108
+ 
++# Skip all tests if Python scripting is not enabled.
++require allow_python_tests
++
+ gdb_exit
+ gdb_start
+ 
+-# Skip all tests if Python scripting is not enabled.
+-if { [skip_python_tests] } { continue }
+-
+ gdb_test "python print (gdb.solib_name(0))" "None" "gdb.solib_name exists"
+
+base-commit: 50ee7556c2430effed45ca542852f36368336dce
+-- 
+2.35.3
+

@@ -1,0 +1,41 @@
+From 0397481ff25b76d43b123f3d51828982ceb92834 Mon Sep 17 00:00:00 2001
+From: Mark Wielaard <mark@klomp.org>
+Date: Fri, 3 May 2024 15:17:42 +0200
+Subject: [PATCH] [gdb/build] Fix gdbserver/linux-aarch64-low.cc build
+
+Commit 0ee25f97d21e ("Fix regression on aarch64-linux gdbserver")
+removed the last use of i in gdbserver/linux-aarch64-low.cc
+(aarch64_target::low_stopped_data_address). Breaking the build on
+aarch64 with:
+
+gdbserver/linux-aarch64-low.cc: In member function ?virtual CORE_ADDR aarch64_target::low_stopped_data_address()?:
+gdbserver/linux-aarch64-low.cc:557:12: error: unused variable ?i? [-Werror=unused-variable]
+  557 |   int pid, i;
+      |            ^
+cc1plus: all warnings being treated as errors
+
+Fix this by removing the variable i completely.
+
+Fixes: 0ee25f97d21e ("Fix regression on aarch64-linux gdbserver")
+---
+ gdbserver/linux-aarch64-low.cc | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/gdbserver/linux-aarch64-low.cc b/gdbserver/linux-aarch64-low.cc
+index 14346b89822..ce0029b885f 100644
+--- a/gdbserver/linux-aarch64-low.cc
++++ b/gdbserver/linux-aarch64-low.cc
+@@ -555,7 +555,7 @@ CORE_ADDR
+ aarch64_target::low_stopped_data_address ()
+ {
+   siginfo_t siginfo;
+-  int pid, i;
++  int pid;
+   struct aarch64_debug_reg_state *state;
+ 
+   pid = lwpid_of (current_thread);
+
+base-commit: b33811a85ff53af77cdad995ad8cb50431c8c362
+-- 
+2.35.3
+

@@ -1,0 +1,53 @@
+From d3fbb4d91ba2784df267fe1ac2e9ec42581a6fac Mon Sep 17 00:00:00 2001
+From: Simon Marchi <simon.marchi@efficios.com>
+Date: Mon, 15 Jan 2024 16:23:42 +0000
+Subject: [PATCH] gdb/testsuite: remove spurious $ in save_vars
+
+I noticed that running the whole testsuite in serial mode (which means
+all the .exp files are ran in the same TCL environment, one after the
+other) with the native-extended-gdbserver board caused some weird
+failures, for instance a lot of internal errors in the reverse tests,
+like:
+
+    continue^M
+    Continuing.^M
+    /home/jenkins/workspace/binutils-gdb_master_linuxbuild/platform/deb12-amd64/target_board/native-extended-gdbserver/src/binutils-gdb/gdb/remot        e.c:6922: internal-error: resume: Assertion `scope_ptid == inferior_ptid' failed.^M
+    A problem internal to GDB has been detected,^M
+    further debugging may prove unreliable.^M
+    ----- Backtrace -----^M
+    FAIL: gdb.reverse/break-precsave.exp: run to end of main (GDB internal error)
+
+This only happens after running gdb.multi/attach-while-running.exp.
+That test does not restore GDBFLAGS properly when it's done, it leaves
+`-ex \"maint set target-non-stop on\""` in there, which breaks some
+subsequent tests.  The problem is that this line:
+
+    save_vars { $::GDBFLAGS } {
+
+should not use a `$` before the variable name.  Passes the content of
+`::GDBFLAGS` to save_vars, which is not what we want.  We want to pass
+the `::GDBFLAGS` string.  Fix that.
+
+Change-Id: I5ad32c527795fd10d0d94020e4fd15cebaca3a77
+---
+ gdb/testsuite/gdb.multi/attach-while-running.exp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/gdb/testsuite/gdb.multi/attach-while-running.exp b/gdb/testsuite/gdb.multi/attach-while-running.exp
+index d3e0d462413..8fce34eaa65 100644
+--- a/gdb/testsuite/gdb.multi/attach-while-running.exp
++++ b/gdb/testsuite/gdb.multi/attach-while-running.exp
+@@ -46,7 +46,7 @@ if { [build_executable "failed to prepare" ${testfile} ${srcfile}] } {
+ }
+ 
+ proc do_test {} {
+-    save_vars { $::GDBFLAGS } {
++    save_vars { ::GDBFLAGS } {
+ 	append ::GDBFLAGS " -ex \"maint set target-non-stop on\""
+ 	clean_restart $::binfile
+     }
+
+base-commit: 08ce0d63c343f7db9a504d37de25391a997b46e2
+-- 
+2.35.3
+

@@ -1,0 +1,63 @@
+From a9cc672af5f81034f4189446aa656c08ea10e2ac Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Sat, 4 May 2024 10:41:09 +0200
+Subject: [PATCH 19/48] [gdb/testsuite] Factor out proc lock_dir
+
+In lib/rocm.exp we have:
+...
+set gpu_lock_filename $objdir/gpu-parallel.lock
+...
+
+This decides both the lock file name and directory.
+
+Factor out a new proc lock_dir that decides on the directory, leaving just:
+...
+set gpu_lock_filename gpu-parallel.lock
+...
+
+Tested on aarch64-linux.
+
+Approved-By: Tom Tromey <tom@tromey.com>
+---
+ gdb/testsuite/lib/gdb-utils.exp | 7 +++++++
+ gdb/testsuite/lib/rocm.exp      | 2 +-
+ 2 files changed, 8 insertions(+), 1 deletion(-)
+
+diff --git a/gdb/testsuite/lib/gdb-utils.exp b/gdb/testsuite/lib/gdb-utils.exp
+index 3dc4b3a3ebc..63f6b8c3698 100644
+--- a/gdb/testsuite/lib/gdb-utils.exp
++++ b/gdb/testsuite/lib/gdb-utils.exp
+@@ -177,10 +177,17 @@ proc lock_file_release {info} {
+     }
+ }
+ 
++# Return directory where we keep lock files.
++
++proc lock_dir {} {
++    return $objdir
++}
++
+ # Run body under lock LOCK_FILE.
+ 
+ proc with_lock { lock_file body } {
+     if {[info exists ::GDB_PARALLEL]} {
++	set lock_file [file join [lock_dir] $lock_file]
+ 	set lock_rc [lock_file_acquire $lock_file]
+     }
+ 
+diff --git a/gdb/testsuite/lib/rocm.exp b/gdb/testsuite/lib/rocm.exp
+index 86ec29567da..a6608664f24 100644
+--- a/gdb/testsuite/lib/rocm.exp
++++ b/gdb/testsuite/lib/rocm.exp
+@@ -105,7 +105,7 @@ gdb_caching_proc allow_hipcc_tests {} {
+ 
+ # The lock file used to ensure that only one GDB has access to the GPU
+ # at a time.
+-set gpu_lock_filename $objdir/gpu-parallel.lock
++set gpu_lock_filename gpu-parallel.lock
+ 
+ # Run body under the GPU lock.  Also calls gdb_exit before releasing
+ # the GPU lock.
+-- 
+2.35.3
+

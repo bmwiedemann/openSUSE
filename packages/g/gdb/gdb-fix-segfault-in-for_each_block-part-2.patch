@@ -1,0 +1,168 @@
+From 3490f51a80a10d46dc1885ba672d9390a8221170 Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Thu, 2 Nov 2023 14:51:02 +0100
+Subject: [PATCH] Fix segfault in for_each_block, part 2
+
+The previous commit describes PR gdb/30547, a segfault when running test-case
+gdb.base/vfork-follow-parent.exp on powerpc64 (likewise on s390x).
+
+The root cause for the segmentation fault is that linux_is_uclinux gives an
+incorrect result: it returns true instead of false.
+
+So, why does linux_is_uclinux:
+...
+int
+linux_is_uclinux (void)
+{
+  CORE_ADDR dummy;
+
+  return (target_auxv_search (AT_NULL, &dummy) > 0
+	  && target_auxv_search (AT_PAGESZ, &dummy) == 0);
+...
+return true?
+
+This is because ppc_linux_target_wordsize returns 4 instead of 8, causing
+ppc_linux_nat_target::auxv_parse to misinterpret the auxv vector.
+
+So, why does ppc_linux_target_wordsize:
+...
+int
+ppc_linux_target_wordsize (int tid)
+{
+  int wordsize = 4;
+
+  /* Check for 64-bit inferior process.	 This is the case when the host is
+     64-bit, and in addition the top bit of the MSR register is set.  */
+  long msr;
+
+  errno = 0;
+  msr = (long) ptrace (PTRACE_PEEKUSER, tid, PT_MSR * 8, 0);
+  if (errno == 0 && ppc64_64bit_inferior_p (msr))
+    wordsize = 8;
+
+  return wordsize;
+}
+...
+return 4?
+
+Specifically, we get this result because because tid == 0, so we get
+errno == ESRCH.
+
+The tid == 0 is caused by the switch_to_no_thread in
+handle_vfork_child_exec_or_exit:
+...
+	  /* Switch to no-thread while running clone_program_space, so
+	     that clone_program_space doesn't want to read the
+	     selected frame of a dead process.  */
+	  scoped_restore_current_thread restore_thread;
+	  switch_to_no_thread ();
+
+	  inf->pspace = new program_space (maybe_new_address_space ());
+...
+but moving the maybe_new_address_space call to before that gives us the
+same result.  The tid is no longer 0, but we still get ESRCH because the
+thread has exited.
+
+Fix this in handle_vfork_child_exec_or_exit by doing the
+maybe_new_address_space call in the context of the vfork parent.
+
+Tested on top of trunk on x86_64-linux and ppc64le-linux.
+Tested on top of gdb-14-branch on ppc64-linux.
+
+Co-Authored-By: Simon Marchi <simon.marchi@polymtl.ca>
+
+PR gdb/30547
+Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=30547
+---
+ gdb/infrun.c         | 16 +++++++++++-----
+ gdb/nat/ppc-linux.c  |  2 ++
+ gdb/ppc-linux-nat.c  |  2 ++
+ gdb/s390-linux-nat.c |  5 ++++-
+ 4 files changed, 19 insertions(+), 6 deletions(-)
+
+diff --git a/gdb/infrun.c b/gdb/infrun.c
+index 3854c66bf6c..d259e81df84 100644
+--- a/gdb/infrun.c
++++ b/gdb/infrun.c
+@@ -1105,13 +1105,19 @@ handle_vfork_child_exec_or_exit (int exec)
+ 	     go ahead and create a new one for this exiting
+ 	     inferior.  */
+ 
+-	  /* Switch to no-thread while running clone_program_space, so
+-	     that clone_program_space doesn't want to read the
+-	     selected frame of a dead process.  */
+ 	  scoped_restore_current_thread restore_thread;
+-	  switch_to_no_thread ();
+ 
+-	  inf->pspace = new program_space (maybe_new_address_space ());
++	  /* Temporarily switch to the vfork parent, to facilitate ptrace
++	     calls done during maybe_new_address_space.  */
++	  switch_to_thread (any_live_thread_of_inferior (vfork_parent));
++	  address_space_ref_ptr aspace = maybe_new_address_space ();
++
++	  /* Switch back to the vfork child inferior.  Switch to no-thread
++	     while running clone_program_space, so that clone_program_space
++	     doesn't want to read the selected frame of a dead process.  */
++	  switch_to_inferior_no_thread (inf);
++
++	  inf->pspace = new program_space (std::move (aspace));
+ 	  inf->aspace = inf->pspace->aspace;
+ 	  set_current_program_space (inf->pspace);
+ 	  inf->removable = true;
+diff --git a/gdb/nat/ppc-linux.c b/gdb/nat/ppc-linux.c
+index 0957d1b58a7..74549754806 100644
+--- a/gdb/nat/ppc-linux.c
++++ b/gdb/nat/ppc-linux.c
+@@ -78,6 +78,8 @@ ppc64_64bit_inferior_p (long msr)
+ int
+ ppc_linux_target_wordsize (int tid)
+ {
++  gdb_assert (tid != 0);
++
+   int wordsize = 4;
+ 
+   /* Check for 64-bit inferior process.  This is the case when the host is
+diff --git a/gdb/ppc-linux-nat.c b/gdb/ppc-linux-nat.c
+index d14aba694e5..817505ea73e 100644
+--- a/gdb/ppc-linux-nat.c
++++ b/gdb/ppc-linux-nat.c
+@@ -1914,6 +1914,8 @@ ppc_linux_nat_target::auxv_parse (const gdb_byte **readptr,
+ 				  const gdb_byte *endptr, CORE_ADDR *typep,
+ 				  CORE_ADDR *valp)
+ {
++  gdb_assert (inferior_ptid != null_ptid);
++
+   int tid = inferior_ptid.lwp ();
+   if (tid == 0)
+     tid = inferior_ptid.pid ();
+diff --git a/gdb/s390-linux-nat.c b/gdb/s390-linux-nat.c
+index 8f54e9f6322..54167f49480 100644
+--- a/gdb/s390-linux-nat.c
++++ b/gdb/s390-linux-nat.c
+@@ -949,10 +949,12 @@ s390_target_wordsize (void)
+   /* Check for 64-bit inferior process.  This is the case when the host is
+      64-bit, and in addition bit 32 of the PSW mask is set.  */
+ #ifdef __s390x__
++  int tid = s390_inferior_tid ();
++  gdb_assert (tid != 0);
+   long pswm;
+ 
+   errno = 0;
+-  pswm = (long) ptrace (PTRACE_PEEKUSER, s390_inferior_tid (), PT_PSWMASK, 0);
++  pswm = (long) ptrace (PTRACE_PEEKUSER, tid, PT_PSWMASK, 0);
+   if (errno == 0 && (pswm & 0x100000000ul) != 0)
+     wordsize = 8;
+ #endif
+@@ -965,6 +967,7 @@ s390_linux_nat_target::auxv_parse (const gdb_byte **readptr,
+ 				   const gdb_byte *endptr, CORE_ADDR *typep,
+ 				   CORE_ADDR *valp)
+ {
++  gdb_assert (inferior_ptid != null_ptid);
+   int sizeof_auxv_field = s390_target_wordsize ();
+   enum bfd_endian byte_order = gdbarch_byte_order (target_gdbarch ());
+   const gdb_byte *ptr = *readptr;
+
+base-commit: 1d02ba0f4adcba2595a67e88fb1ba6d35c7f8e5b
+-- 
+2.35.3
+

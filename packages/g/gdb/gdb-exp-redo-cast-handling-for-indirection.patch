@@ -1,0 +1,86 @@
+From a6800d9c8145f25001dd39afc3571e3350573e81 Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Mon, 6 May 2024 14:23:25 +0200
+Subject: [PATCH] [gdb/exp] Redo cast handling for indirection
+
+In commit ed8fd0a342f ("[gdb/exp] Fix cast handling for indirection"), I
+introduced the behaviour that even though we have:
+...
+(gdb) p *a_loc ()
+'a_loc' has unknown return type; cast the call to its declared return type
+...
+we get:
+...
+(gdb) p (char)*a_loc ()
+$1 = 97 'a'
+...
+
+In other words, the unknown return type of a_loc is inferred from the cast,
+effectually evaluating:
+...
+(gdb) p (char)*(char *)a_loc ()
+...
+
+This is convient for the case that errno is defined as:
+...
+ #define errno (*__errno_location ())
+...
+and the return type of __errno_location is unknown but the macro definition is
+known, such that we can use:
+...
+(gdb) p (int)errno
+...
+instead of
+...
+(gdb) p *(int *)__errno_location ()
+...
+
+However, as Pedro has pointed out in post-commit review [1], this makes it
+harder to reason about the semantics of an expression.
+
+For instance, this:
+...
+(gdb) p (long long)*a_loc ()"
+...
+would be evaluated without debug info as:
+...
+(gdb) p (long long)*(long long *)a_loc ()"
+...
+but with debug info as:
+...
+(gdb) p (long long)*(char *)a_loc ()"
+...
+
+Fix this by instead simply erroring out for this case:
+...
+(gdb) p (char)*a_loc ()
+'a_loc' has unknown return type; cast the call to its declared return type
+...
+
+Tested on x86_64-linux.
+
+Approved-By: Pedro Alves <pedro@palves.net>
+
+[1] https://sourceware.org/pipermail/gdb-patches/2024-May/208821.html
+---
+ gdb/testsuite/gdb.base/cast-indirection.exp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/gdb/testsuite/gdb.base/cast-indirection.exp b/gdb/testsuite/gdb.base/cast-indirection.exp
+index f1fe4302d27..7b9b5a5d677 100644
+--- a/gdb/testsuite/gdb.base/cast-indirection.exp
++++ b/gdb/testsuite/gdb.base/cast-indirection.exp
+@@ -13,7 +13,7 @@
+ # You should have received a copy of the GNU General Public License
+ # along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ 
+-# Check that "p (char)*a_loc ()" is handled as "p (char)*(char *)a_loc ()".
++# Check that "p (char)*a_loc ()" is handled correctly.
+ 
+ standard_testfile
+ 
+
+base-commit: fc73000faa1798573090994167b7e2d451c211db
+-- 
+2.35.3
+

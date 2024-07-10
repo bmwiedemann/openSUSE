@@ -1,0 +1,95 @@
+From f24d498c972be365c72c99f14ada42e3a300b3c4 Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Sat, 4 May 2024 10:41:09 +0200
+Subject: [PATCH 22/48] [gdb/testsuite] Use unique portnum in parallel testing
+ (check//% case)
+
+Make target check//% is the gdb variant of a similar gcc make target [1].
+
+When running tests using check//%:
+...
+$ cd build/gdb
+$ make check//unix/{-fPIE/-pie,-fno-PIE/-no-pie} -j2 TESTS=gdb.server/*.exp
+...
+we get:
+...
+$ cat build/gdb/testsuite.unix.-fPIE.-pie/cache/portnum
+2427
+$ cat build/gdb/testsuite.unix.-fno-PIE.-no-pie/cache/portnum
+2423
+...
+
+The problem is that there are two portnum files used in parallel.
+
+Fix this by:
+- creating a common lockdir build/gdb/testsuite.lockdir for make target
+  check//%,
+- passing this down to the runtests invocations using variable GDB_LOCK_DIR,
+  and
+- using GDB_LOCK_DIR in lock_dir.
+
+Tested on aarch64-linux.
+
+Approved-By: Tom Tromey <tom@tromey.com>
+
+PR testsuite/31632
+Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=31632
+
+[1] https://gcc.gnu.org/install/test.html
+---
+ gdb/Makefile.in                 | 8 ++++++--
+ gdb/testsuite/lib/gdb-utils.exp | 5 +++++
+ 2 files changed, 11 insertions(+), 2 deletions(-)
+
+diff --git a/gdb/Makefile.in b/gdb/Makefile.in
+index 68e10cf47d8..f742eb5d009 100644
+--- a/gdb/Makefile.in
++++ b/gdb/Makefile.in
+@@ -1971,6 +1971,10 @@ check-parallel: force
+ 	  $(MAKE) $(TARGET_FLAGS_TO_PASS) check-parallel; \
+ 	else true; fi
+ 
++testsuite.lockdir: force
++	rm -rf $@
++	mkdir -p $@
++
+ # The idea is to parallelize testing of multilibs, for example:
+ #   make -j3 check//sh-hms-sim/{-m1,-m2,-m3,-m3e,-m4}/{,-nofpu}
+ # will run 3 concurrent sessions of check, eventually testing all 10
+@@ -1979,7 +1983,7 @@ check-parallel: force
+ # used, this rule will harmlessly fail to match.  Used FORCE_PARALLEL to
+ # prevent serialized checking due to the passed RUNTESTFLAGS.
+ # FIXME: use config.status --config not --version, when available.
+-check//%: force
++check//%: force testsuite.lockdir
+ 	@if [ -f testsuite/config.status ]; then \
+ 	  rootme=`pwd`; export rootme; \
+ 	  rootsrc=`cd $(srcdir); pwd`; export rootsrc; \
+@@ -1997,7 +2001,7 @@ check//%: force
+ 	     ); \
+ 	  else :; fi && cd $$testdir && \
+ 	  $(MAKE) $(TARGET_FLAGS_TO_PASS) \
+-	    RUNTESTFLAGS="--target_board=$$variant $(RUNTESTFLAGS)" \
++	    RUNTESTFLAGS="GDB_LOCK_DIR=$$rootme/testsuite.lockdir --target_board=$$variant $(RUNTESTFLAGS)" \
+ 	    FORCE_PARALLEL=$(if $(FORCE_PARALLEL),1,$(if $(RUNTESTFLAGS),,1)) \
+ 	    "$$target"; \
+ 	else true; fi
+diff --git a/gdb/testsuite/lib/gdb-utils.exp b/gdb/testsuite/lib/gdb-utils.exp
+index cfaa7905997..7fd613e0b8f 100644
+--- a/gdb/testsuite/lib/gdb-utils.exp
++++ b/gdb/testsuite/lib/gdb-utils.exp
+@@ -180,6 +180,11 @@ proc lock_file_release {info} {
+ # Return directory where we keep lock files.
+ 
+ proc lock_dir {} {
++    if { [info exists ::GDB_LOCK_DIR] } {
++	# When using check//.
++	return $::GDB_LOCK_DIR
++    }
++
+     return [make_gdb_parallel_path cache]
+ }
+ 
+-- 
+2.35.3
+

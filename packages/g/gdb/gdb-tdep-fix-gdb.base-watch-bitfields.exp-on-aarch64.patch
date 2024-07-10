@@ -1,0 +1,349 @@
+From 83b2b88c96f87a3649b4440f43a088dc6e292181 Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Tue, 12 Mar 2024 17:08:18 +0100
+Subject: [PATCH 08/48] [gdb/tdep] Fix gdb.base/watch-bitfields.exp on aarch64
+
+On aarch64-linux, with test-case gdb.base/watch-bitfields.exp I run into:
+...
+(gdb) continue^M
+Continuing.^M
+^M
+Hardware watchpoint 2: -location q.a^M
+^M
+Old value = 1^M
+New value = 0^M
+main () at watch-bitfields.c:42^M
+42        q.h--;^M
+(gdb) FAIL: $exp: -location watch against bitfields: q.e: 0->5: continue
+...
+
+In a minimal form, if we step past line 37 which sets q.e, and we have a
+watchpoint set on q.e, it triggers:
+...
+$ gdb -q -batch watch-bitfields -ex "b 37" -ex run -ex "watch q.e" -ex step
+Breakpoint 1 at 0x410204: file watch-bitfields.c, line 37.
+
+Breakpoint 1, main () at watch-bitfields.c:37
+37        q.e = 5;
+Hardware watchpoint 2: q.e
+
+Hardware watchpoint 2: q.e
+
+Old value = 0
+New value = 5
+main () at /home/vries/gdb/src/gdb/testsuite/gdb.base/watch-bitfields.c:38
+38        q.f = 6;
+...
+
+However, if we set in addition a watchpoint on q.a, the watchpoint on q.e
+doesn't trigger.
+
+How does this happen?
+
+Bitfield q.a is just bit 0 of byte 0, and bitfield q.e is bit 4..7 of byte 1
+and bit 1 of byte 2.  So, watch q.a should watch byte 0, and watch q.e should
+watch bytes 1 and 2.
+
+Using "maint set show-debug-regs on" (and some more detailed debug prints) we
+get:
+...
+WP2: addr=0x440028 (orig=0x440029), ctrl=0x000000d5, ref.count=1
+  ctrl: enabled=1, offset=1, len=2
+WP3: addr=0x440028 (orig=0x440028), ctrl=0x00000035, ref.count=1
+  ctrl: enabled=1, offset=0, len=1
+...
+which matches that.
+
+When executing line 37, a hardware watchpoint trap triggers and we hit
+aarch64_stopped_data_address with addr_trap == 0x440028:
+...
+(gdb) p /x addr_trap
+$1 = 0x440028
+....
+and since the loop in aarch64_stopped_data_address walks backward, we check
+WP3 first, which matches, and consequently target_stopped_by_watchpoint
+returns true in watchpoints_triggered.
+
+Likewise for target_stopped_data_address, which also returns addr == 0x440028.
+Watchpoints_triggered matches watchpoint q.a to that address, and sets
+watch_triggered_yes.
+
+However, subsequently the value of q.a is checked, and it's the same value as
+before (becase the insn in line 37 didn't change q.a), so the watchpoint
+hardware trap is not reported to the user.
+
+The problem originates from that fact that aarch64_stopped_data_address picked
+WP3 instead of WP2.
+
+There's something we can do about this.  In the example above, both
+target_stopped_by_watchpoint and target_stopped_data_address returned true.
+Instead we can return true in target_stopped_by_watchpoint but false in
+target_stopped_data_address.  This lets watchpoints_triggered known that a
+watchpoint was triggered, but we don't know where, and both watchpoints
+get set to watch_triggered_unknown.
+
+Subsequently, the values of both q.a and q.e are checked, and since q.e is not
+the same value as before, the watchpoint hardware trap is reported to the user.
+
+Note that this works well for regular (write) watchpoints (watch command), but
+not for read watchpoints (rwatch command), because for those no value is
+checked.  Likewise for access watchpoints (awatch command).
+
+So, fix this by:
+- passing a nullptr in aarch64_fbsd_nat_target::stopped_by_watchpoint and
+  aarch64_linux_nat_target::stopped_by_watchpoint to make clear we're not
+  interested in the stop address,
+- introducing a two-phase approach in aarch64_stopped_data_address, where:
+  - phase one handles access and read watchpoints, as before, and
+  - phase two handles write watchpoints, where multiple matches cause:
+    - return true if addr_p == null, and
+    - return false if addr_p != null.
+
+Tested on aarch64-linux.
+
+Approved-By: Luis Machado <luis.machado@arm.com>
+
+PR tdep/31214
+Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=31214
+---
+ gdb/aarch64-fbsd-nat.c     |   4 +-
+ gdb/aarch64-linux-nat.c    |   4 +-
+ gdb/aarch64-nat.c          | 132 ++++++++++++++++++++++++++-----------
+ gdb/nat/aarch64-hw-point.c |  25 +++++++
+ gdb/nat/aarch64-hw-point.h |   2 +
+ 5 files changed, 123 insertions(+), 44 deletions(-)
+
+diff --git a/gdb/aarch64-fbsd-nat.c b/gdb/aarch64-fbsd-nat.c
+index 38fb093f139..58518248248 100644
+--- a/gdb/aarch64-fbsd-nat.c
++++ b/gdb/aarch64-fbsd-nat.c
+@@ -164,9 +164,7 @@ aarch64_fbsd_nat_target::stopped_data_address (CORE_ADDR *addr_p)
+ bool
+ aarch64_fbsd_nat_target::stopped_by_watchpoint ()
+ {
+-  CORE_ADDR addr;
+-
+-  return stopped_data_address (&addr);
++  return stopped_data_address (nullptr);
+ }
+ 
+ /* Implement the "stopped_by_hw_breakpoint" target_ops method.  */
+diff --git a/gdb/aarch64-linux-nat.c b/gdb/aarch64-linux-nat.c
+index c1d59b5d77c..768748a20db 100644
+--- a/gdb/aarch64-linux-nat.c
++++ b/gdb/aarch64-linux-nat.c
+@@ -972,9 +972,7 @@ aarch64_linux_nat_target::stopped_data_address (CORE_ADDR *addr_p)
+ bool
+ aarch64_linux_nat_target::stopped_by_watchpoint ()
+ {
+-  CORE_ADDR addr;
+-
+-  return stopped_data_address (&addr);
++  return stopped_data_address (nullptr);
+ }
+ 
+ /* Implement the "can_do_single_step" target_ops method.  */
+diff --git a/gdb/aarch64-nat.c b/gdb/aarch64-nat.c
+index ee8c5a1e21d..89d1ba6acc6 100644
+--- a/gdb/aarch64-nat.c
++++ b/gdb/aarch64-nat.c
+@@ -231,46 +231,102 @@ bool
+ aarch64_stopped_data_address (const struct aarch64_debug_reg_state *state,
+ 			      CORE_ADDR addr_trap, CORE_ADDR *addr_p)
+ {
+-  int i;
+-
+-  for (i = aarch64_num_wp_regs - 1; i >= 0; --i)
+-    {
+-      const unsigned int offset
+-	= aarch64_watchpoint_offset (state->dr_ctrl_wp[i]);
+-      const unsigned int len = aarch64_watchpoint_length (state->dr_ctrl_wp[i]);
+-      const CORE_ADDR addr_watch = state->dr_addr_wp[i] + offset;
+-      const CORE_ADDR addr_watch_aligned = align_down (state->dr_addr_wp[i], 8);
+-      const CORE_ADDR addr_orig = state->dr_addr_orig_wp[i];
+-
+-      if (state->dr_ref_count_wp[i]
+-	  && DR_CONTROL_ENABLED (state->dr_ctrl_wp[i])
+-	  && addr_trap >= addr_watch_aligned
+-	  && addr_trap < addr_watch + len)
+-	{
+-	  /* ADDR_TRAP reports the first address of the memory range
+-	     accessed by the CPU, regardless of what was the memory
+-	     range watched.  Thus, a large CPU access that straddles
+-	     the ADDR_WATCH..ADDR_WATCH+LEN range may result in an
+-	     ADDR_TRAP that is lower than the
+-	     ADDR_WATCH..ADDR_WATCH+LEN range.  E.g.:
+-
+-	     addr: |   4   |   5   |   6   |   7   |   8   |
+-				   |---- range watched ----|
+-		   |----------- range accessed ------------|
+-
+-	     In this case, ADDR_TRAP will be 4.
+-
+-	     To match a watchpoint known to GDB core, we must never
+-	     report *ADDR_P outside of any ADDR_WATCH..ADDR_WATCH+LEN
+-	     range.  ADDR_WATCH <= ADDR_TRAP < ADDR_ORIG is a false
+-	     positive on kernels older than 4.10.  See PR
+-	     external/20207.  */
++  bool found = false;
++  for (int phase = 0; phase <= 1; ++phase)
++    for (int i = aarch64_num_wp_regs - 1; i >= 0; --i)
++      {
++	if (!(state->dr_ref_count_wp[i]
++	      && DR_CONTROL_ENABLED (state->dr_ctrl_wp[i])))
++	  {
++	    /* Watchpoint disabled.  */
++	    continue;
++	  }
++
++	const enum target_hw_bp_type type
++	  = aarch64_watchpoint_type (state->dr_ctrl_wp[i]);
++	if (type == hw_execute)
++	  {
++	    /* Watchpoint disabled.  */
++	    continue;
++	  }
++
++	if (phase == 0)
++	  {
++	    /* Phase 0: No hw_write.  */
++	    if (type == hw_write)
++	      continue;
++	  }
++	else
++	  {
++	    /* Phase 1: Only hw_write.  */
++	    if (type != hw_write)
++	      continue;
++	  }
++
++	const unsigned int offset
++	  = aarch64_watchpoint_offset (state->dr_ctrl_wp[i]);
++	const unsigned int len
++	  = aarch64_watchpoint_length (state->dr_ctrl_wp[i]);
++	const CORE_ADDR addr_watch = state->dr_addr_wp[i] + offset;
++	const CORE_ADDR addr_watch_aligned
++	  = align_down (state->dr_addr_wp[i], 8);
++	const CORE_ADDR addr_orig = state->dr_addr_orig_wp[i];
++
++	/* ADDR_TRAP reports the first address of the memory range
++	   accessed by the CPU, regardless of what was the memory
++	   range watched.  Thus, a large CPU access that straddles
++	   the ADDR_WATCH..ADDR_WATCH+LEN range may result in an
++	   ADDR_TRAP that is lower than the
++	   ADDR_WATCH..ADDR_WATCH+LEN range.  E.g.:
++
++	   addr: |   4	 |   5	 |   6	 |   7	 |   8	 |
++				 |---- range watched ----|
++		 |----------- range accessed ------------|
++
++	   In this case, ADDR_TRAP will be 4.  */
++	if (!(addr_trap >= addr_watch_aligned
++	      && addr_trap < addr_watch + len))
++	  {
++	    /* Not a match.  */
++	    continue;
++	  }
++
++	/* To match a watchpoint known to GDB core, we must never
++	   report *ADDR_P outside of any ADDR_WATCH..ADDR_WATCH+LEN
++	   range.  ADDR_WATCH <= ADDR_TRAP < ADDR_ORIG is a false
++	   positive on kernels older than 4.10.  See PR
++	   external/20207.  */
++	if (addr_p != nullptr)
+ 	  *addr_p = addr_orig;
+-	  return true;
+-	}
+-    }
+ 
+-  return false;
++	if (phase == 0)
++	  {
++	    /* Phase 0: Return first match.  */
++	    return true;
++	  }
++
++	/* Phase 1.  */
++	if (addr_p == nullptr)
++	  {
++	    /* First match, and we don't need to report an address.  No need
++	       to look for other matches.  */
++	    return true;
++	  }
++
++	if (!found)
++	  {
++	    /* First match, and we need to report an address.  Look for other
++	       matches.  */
++	    found = true;
++	    continue;
++	  }
++
++	/* More than one match, and we need to return an address.  No need to
++	   look for further matches.  */
++	return false;
++      }
++
++  return found;
+ }
+ 
+ /* Define AArch64 maintenance commands.  */
+diff --git a/gdb/nat/aarch64-hw-point.c b/gdb/nat/aarch64-hw-point.c
+index 6747e61e026..3b8cdcba23b 100644
+--- a/gdb/nat/aarch64-hw-point.c
++++ b/gdb/nat/aarch64-hw-point.c
+@@ -73,6 +73,31 @@ aarch64_watchpoint_length (unsigned int ctrl)
+   return retval;
+ }
+ 
++/* Utility function that returns the type of a watchpoint according to the
++   content of a hardware debug control register CTRL.  */
++
++enum target_hw_bp_type
++aarch64_watchpoint_type (unsigned int ctrl)
++{
++  unsigned int type = DR_CONTROL_TYPE (ctrl);
++
++  switch (type)
++    {
++    case 1:
++      return hw_read;
++    case 2:
++      return hw_write;
++    case 3:
++      return hw_access;
++    case 0:
++      /* Reserved for a watchpoint.  It must behave as if the watchpoint is
++	 disabled.  */
++      return hw_execute;
++    default:
++      gdb_assert_not_reached ("");
++    }
++}
++
+ /* Given the hardware breakpoint or watchpoint type TYPE and its
+    length LEN, return the expected encoding for a hardware
+    breakpoint/watchpoint control register.  */
+diff --git a/gdb/nat/aarch64-hw-point.h b/gdb/nat/aarch64-hw-point.h
+index 2ff9ccb5c1c..71ae2864927 100644
+--- a/gdb/nat/aarch64-hw-point.h
++++ b/gdb/nat/aarch64-hw-point.h
+@@ -73,6 +73,7 @@
+ 
+ #define DR_CONTROL_ENABLED(ctrl)	(((ctrl) & 0x1) == 1)
+ #define DR_CONTROL_MASK(ctrl)		(((ctrl) >> 5) & 0xff)
++#define DR_CONTROL_TYPE(ctrl)		(((ctrl) >> 3) & 0x3)
+ 
+ /* Structure for managing the hardware breakpoint/watchpoint resources.
+    DR_ADDR_* stores the address, DR_CTRL_* stores the control register
+@@ -107,6 +108,7 @@ void aarch64_notify_debug_reg_change (ptid_t ptid, int is_watchpoint,
+ 
+ unsigned int aarch64_watchpoint_offset (unsigned int ctrl);
+ unsigned int aarch64_watchpoint_length (unsigned int ctrl);
++enum target_hw_bp_type aarch64_watchpoint_type (unsigned int ctrl);
+ 
+ int aarch64_handle_breakpoint (enum target_hw_bp_type type, CORE_ADDR addr,
+ 			       int len, int is_insert, ptid_t ptid,
+-- 
+2.35.3
+

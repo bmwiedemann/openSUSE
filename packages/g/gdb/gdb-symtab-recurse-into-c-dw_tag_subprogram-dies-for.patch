@@ -1,0 +1,31 @@
+From 0f53dc7e5cc07e30d11f3f5a0645239535824890 Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Thu, 7 Dec 2023 10:36:07 +0100
+Subject: [PATCH 11/13] [gdb/symtab] Recurse into c++ DW_TAG_subprogram DIEs
+ for cooked index
+
+Recurse into c++ DW_TAG_subprogram DIEs for cooked index, to add
+DW_TAG_inlined_subroutine entries.
+
+Tested on x86_64-linux.
+---
+ gdb/dwarf2/read.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/gdb/dwarf2/read.c b/gdb/dwarf2/read.c
+index e7904532434..de7b655d26c 100644
+--- a/gdb/dwarf2/read.c
++++ b/gdb/dwarf2/read.c
+@@ -16781,7 +16781,8 @@ cooked_indexer::index_dies (cutu_reader *reader,
+ 
+ 	    case DW_TAG_subprogram:
+ 	      if ((m_language == language_fortran
+-		   || m_language == language_ada)
++		   || m_language == language_ada
++		   || m_language == language_cplus)
+ 		  && this_entry != nullptr)
+ 		{
+ 		  info_ptr = recurse (reader, info_ptr, this_entry, true);
+-- 
+2.35.3
+

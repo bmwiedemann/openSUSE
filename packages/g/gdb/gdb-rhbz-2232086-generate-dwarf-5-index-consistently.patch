@@ -1,0 +1,101 @@
+From FEDORA_PATCHES Mon Sep 17 00:00:00 2001
+From: Andrew Burgess <aburgess@redhat.com>
+Date: Mon, 27 Nov 2023 13:19:39 +0000
+Subject: gdb-rhbz-2232086-generate-dwarf-5-index-consistently.patch
+
+;; Back-port upstream commit 3644f41dc80 as part of a fix for
+;; non-deterministic gdb-index generation (RH BZ 2232086).
+
+gdb: generate dwarf-5 index identically as worker-thread count changes
+
+Similar to the previous commit, this commit ensures that the dwarf-5
+index files are generated identically as the number of worker-threads
+changes.
+
+Building the dwarf-5 index makes use of a closed hash table, the
+bucket_hash local within debug_names::build().  Entries are added to
+bucket_hash from m_name_to_value_set, which, in turn, is populated
+by calls to debug_names::insert() in write_debug_names.  The insert
+calls are ordered based on the entries within the cooked_index, and
+the ordering within cooked_index depends on the number of worker
+threads that GDB is using.
+
+My proposal is to sort each chain within the bucket_hash closed hash
+table prior to using this to build the dwarf-5 index.
+
+The buckets within bucket_hash will always have the same ordering (for
+a given GDB build with a given executable), and by sorting the chains
+within each bucket, we can be sure that GDB will see each entry in a
+deterministic order.
+
+I've extended the index creation test to cover this case.
+
+Approved-By: Tom Tromey <tom@tromey.com>
+
+diff --git a/gdb/dwarf2/index-write.c b/gdb/dwarf2/index-write.c
+--- a/gdb/dwarf2/index-write.c
++++ b/gdb/dwarf2/index-write.c
+@@ -452,6 +452,11 @@ class c_str_view
+     return strcmp (m_cstr, other.m_cstr) == 0;
+   }
+ 
++  bool operator< (const c_str_view &other) const
++  {
++    return strcmp (m_cstr, other.m_cstr) < 0;
++  }
++
+   /* Return the underlying C string.  Note, the returned string is
+      only a reference with lifetime of this object.  */
+   const char *c_str () const
+@@ -771,10 +776,18 @@ class debug_names
+       }
+     for (size_t bucket_ix = 0; bucket_ix < bucket_hash.size (); ++bucket_ix)
+       {
+-	const std::forward_list<hash_it_pair> &hashitlist
+-	  = bucket_hash[bucket_ix];
++	std::forward_list<hash_it_pair> &hashitlist = bucket_hash[bucket_ix];
+ 	if (hashitlist.empty ())
+ 	  continue;
++
++	/* Sort the items within each bucket.  This ensures that the
++	   generated index files will be the same no matter the order in
++	   which symbols were added into the index.  */
++	hashitlist.sort ([] (const hash_it_pair &a, const hash_it_pair &b)
++	{
++	  return a.it->first < b.it->first;
++	});
++
+ 	uint32_t &bucket_slot = m_bucket_table[bucket_ix];
+ 	/* The hashes array is indexed starting at 1.  */
+ 	store_unsigned_integer (reinterpret_cast<gdb_byte *> (&bucket_slot),
+diff --git a/gdb/testsuite/gdb.gdb/index-file.exp b/gdb/testsuite/gdb.gdb/index-file.exp
+--- a/gdb/testsuite/gdb.gdb/index-file.exp
++++ b/gdb/testsuite/gdb.gdb/index-file.exp
+@@ -47,6 +47,9 @@ remote_exec host "mkdir -p ${dir1}"
+ with_timeout_factor $timeout_factor {
+     gdb_test_no_output "save gdb-index $dir1" \
+ 	"create gdb-index file"
++
++    gdb_test_no_output "save gdb-index -dwarf-5 $dir1" \
++	"create dwarf-index files"
+ }
+ 
+ # Close GDB.
+@@ -143,13 +146,16 @@ if { $worker_threads > 1 } {
+     with_timeout_factor $timeout_factor {
+ 	gdb_test_no_output "save gdb-index $dir2" \
+ 	    "create second gdb-index file"
++
++	gdb_test_no_output "save gdb-index -dwarf-5 $dir2" \
++	    "create second dwarf-index files"
+     }
+ 
+     # Close GDB.
+     gdb_exit
+ 
+     # Now check that the index files are identical.
+-    foreach suffix { gdb-index  } {
++    foreach suffix { gdb-index debug_names debug_str } {
+ 	set result \
+ 	    [remote_exec host \
+ 		 "cmp -s \"$dir1/${index_filename_base}.${suffix}\" \"$dir2/${index_filename_base}.${suffix}\""]

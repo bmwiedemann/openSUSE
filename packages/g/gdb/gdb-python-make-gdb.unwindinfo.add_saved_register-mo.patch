@@ -1,0 +1,61 @@
+From eafca1ce3d589c731927e5481199db715bcbeff3 Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Sat, 2 Mar 2024 09:35:22 +0100
+Subject: [PATCH 2/2] [gdb/python] Make gdb.UnwindInfo.add_saved_register more
+ robust
+
+On arm-linux, until commit bbb12eb9c84 ("gdb/arm: Remove tpidruro register
+from non-FreeBSD target descriptions") I ran into:
+...
+FAIL: gdb.base/inline-frame-cycle-unwind.exp: cycle at level 5: \
+  backtrace when the unwind is broken at frame 5
+...
+
+What happens is the following:
+- the TestUnwinder from inline-frame-cycle-unwind.py calls
+  gdb.UnwindInfo.add_saved_register with reg == tpidruro and value
+  "<unavailable>",
+- pyuw_sniffer calls value->contents ().data () to access the value of the
+  register, which throws an UNAVAILABLE_ERROR,
+- this causes the TestUnwinder unwinder to fail, after which another unwinder
+  succeeds and returns the correct frame, and
+- the test-case fails because it's counting on the TestUnwinder to succeed and
+  return an incorrect frame.
+
+Fix this by checking for !value::entirely_available as well as
+valued::optimized_out in unwind_infopy_add_saved_register.
+
+Tested on x86_64-linux and arm-linux.
+
+PR python/31437
+Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=31437
+---
+ gdb/python/py-unwind.c | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
+
+diff --git a/gdb/python/py-unwind.c b/gdb/python/py-unwind.c
+index 1856e41e2a1..471eb851674 100644
+--- a/gdb/python/py-unwind.c
++++ b/gdb/python/py-unwind.c
+@@ -354,6 +354,18 @@ unwind_infopy_add_saved_register (PyObject *self, PyObject *args, PyObject *kw)
+       return nullptr;
+     }
+ 
++  if (value->optimized_out () || !value->entirely_available ())
++    {
++      /* If we allow this value to be registered here, pyuw_sniffer is going
++	 to run into an exception when trying to access its contents.
++	 Throwing an exception here just puts a burden on the user to
++	 implement the same checks on the user side.  We could return False
++	 here and True otherwise, but again that might require changes in user
++	 code.  So, handle this with minimal impact for the user, while
++	 improving robustness: silently ignore the register/value pair.  */
++      Py_RETURN_NONE;
++    }
++
+   gdbpy_ref<> new_value = gdbpy_ref<>::new_reference (pyo_reg_value);
+   bool found = false;
+   for (saved_reg &reg : *unwind_info->saved_regs)
+-- 
+2.35.3
+

@@ -1,0 +1,66 @@
+From acc30323a8bc8aa04d404356e96b003a9a30543f Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Thu, 25 Jan 2024 16:36:09 +0100
+Subject: [PATCH 06/48] [gdb/testsuite] Fix regexp in vgdb_start
+
+On Fedora 39 aarch64 I run into:
+...
+(gdb) target remote | vgdb --wait=2 --max-invoke-ms=2500 --pid=2114437^M
+Remote debugging using | vgdb --wait=2 --max-invoke-ms=2500 --pid=2114437^M
+relaying data between gdb and process 2114437^M
+warning: remote target does not support file transfer, \
+  attempting to access files from local filesystem.^M
+Reading symbols from /lib/ld-linux-aarch64.so.1...^M
+_start () at ../sysdeps/aarch64/dl-start.S:22^M
+warning: 22     ../sysdeps/aarch64/dl-start.S: No such file or directory^M
+(gdb) FAIL: gdb.base/valgrind-infcall.exp: target remote for vgdb
+...
+
+For contrast, on openSUSE Leap 15.4 x86_64 I have:
+...
+(gdb) target remote | vgdb --wait=2 --max-invoke-ms=2500 --pid=18797^M
+Remote debugging using | vgdb --wait=2 --max-invoke-ms=2500 --pid=18797^M
+relaying data between gdb and process 18797^M
+warning: remote target does not support file transfer, \
+  attempting to access files from local filesystem.^M
+Reading symbols from /lib64/ld-linux-x86-64.so.2...^M
+(No debugging symbols found in /lib64/ld-linux-x86-64.so.2)^M
+0x0000000004002550 in _start () from /lib64/ld-linux-x86-64.so.2^M
+(gdb) PASS: gdb.base/valgrind-infcall.exp: target remote for vgdb
+...
+
+The fail happens in vgdb_start because the regexp only matches the
+"in _start ()" variant, not the "_start () at":
+...
+       gdb_test "$vgdbcmd" " in \\.?_start .*" "target remote for vgdb"
+...
+Which variant you get is determined by presence of debug info.
+
+Fix this by also matching the "_start () at" variant.
+
+Tested aarch64-linux and x86_64-linux.
+
+Approved-By: Tom Tromey <tom@tromey.com>
+---
+ gdb/testsuite/lib/valgrind.exp | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/gdb/testsuite/lib/valgrind.exp b/gdb/testsuite/lib/valgrind.exp
+index a1cd85a7b09..f9096663509 100644
+--- a/gdb/testsuite/lib/valgrind.exp
++++ b/gdb/testsuite/lib/valgrind.exp
+@@ -92,7 +92,10 @@ proc vgdb_start { {active_at_startup 1} } {
+     set vgdbcmd "target remote | vgdb --wait=2 --max-invoke-ms=2500 --pid=$vgdbpid"
+ 
+     if { $active_at_startup } {
+-	gdb_test "$vgdbcmd" " in \\.?_start .*" "target remote for vgdb"
++	set start_re1 " in \\.?_start "
++	set start_re2 "\\.?_start \\(\\) at "
++	gdb_test "$vgdbcmd" "($start_re1|$start_re2).*" \
++	    "target remote for vgdb"
+     } else {
+ 	# Let $binfile run a bit before attaching.  This is a bit of a hack,
+ 	# in that it lets test-case valgrind-infcall-2.exp run to the point of
+-- 
+2.35.3
+

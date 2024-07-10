@@ -1,0 +1,49 @@
+From d95be7a5210b69ad879c86d23efaa2cd7dcda94a Mon Sep 17 00:00:00 2001
+From: Carl Love <cel@linux.ibm.com>
+Date: Mon, 20 Nov 2023 11:13:22 -0500
+Subject: [PATCH] PowerPC: Fix test gdb.ada/finish-large.exp
+
+Function Create_large returns a large data structure.  On PowerPC, register
+r3 contains the address of where the data structure to be returned is to
+be stored.  However, on exit the ABI does not guarantee that r3 has not
+been changed.  The GDB finish command prints the return value of the
+function at the end of the function.  GDB needs to use the
+DW_TAG_call_site information to determine the value of r3 on entry to
+the function to correctly print the return value at the end of the
+function.  The test must be compiled with -fvar-tracking for the
+DW_TAG_call_site information to be included in the executable file.
+
+This patch adds the -fvar-tracking option to the compile line if the
+option is supported.
+
+The patch fixes the one regression error for the test on PowerPC.
+
+The patch has been tested on Power 10 and X86-64 with no regressions.
+---
+ gdb/testsuite/gdb.ada/finish-large.exp | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
+
+diff --git a/gdb/testsuite/gdb.ada/finish-large.exp b/gdb/testsuite/gdb.ada/finish-large.exp
+index 5661d132a18..6c8b1b2648d 100644
+--- a/gdb/testsuite/gdb.ada/finish-large.exp
++++ b/gdb/testsuite/gdb.ada/finish-large.exp
+@@ -19,7 +19,13 @@ require allow_ada_tests
+ 
+ standard_ada_testfile p
+ 
+-if {[gdb_compile_ada "${srcfile}" "${binfile}" executable debug] != ""} {
++set flags {debug}
++
++if {[have_fvar_tracking]} {
++  lappend flags "additional_flags=-fvar-tracking"
++}
++
++if {[gdb_compile_ada "${srcfile}" "${binfile}" executable $flags] != ""} {
+   return -1
+ }
+ 
+
+base-commit: 0397481ff25b76d43b123f3d51828982ceb92834
+-- 
+2.35.3
+

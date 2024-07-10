@@ -1,0 +1,58 @@
+From 5f7c4f7a435571d535c2372b999e1017eefb15c4 Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Thu, 28 Mar 2024 08:26:31 +0100
+Subject: [PATCH 33/48] [gdb/testsuite] Fix gdb.base/ending-run.exp on manjaro
+ linux
+
+On aarch64-linux, using the manjaro linux distro, I run into:
+...
+(gdb) next^M
+32      }^M
+(gdb) next^M
+0x0000fffff7d67b80 in ?? () from /usr/lib/libc.so.6^M
+(gdb) FAIL: gdb.base/ending-run.exp: step out of main
+...
+
+What happens here is described in detail in this clause:
+...
+    -re "0x.*\\?\\? \\(\\) from /lib/powerpc.*$gdb_prompt $" {
+	# This case occurs on Powerpc when gdb steps out of main and the
+	# needed debug info files are not loaded on the system, preventing
+	# GDB to determine which function it reached (__libc_start_call_main).
+	# Ideally, the target system would have the necessary debugging
+	# information, but in its absence, GDB's behavior is as expected.
+	...
+    }
+...
+but the clause only matches for powerpc.
+
+Fix this by:
+- making the regexp generic enough to also match /usr/lib/libc.so.6, and
+- updating the comment to not mention powerpc.
+
+Tested on aarch64-linux.
+
+PR testsuite/31450
+Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=31450
+---
+ gdb/testsuite/gdb.base/ending-run.exp | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/gdb/testsuite/gdb.base/ending-run.exp b/gdb/testsuite/gdb.base/ending-run.exp
+index 070dcc6f190..76701d33e19 100644
+--- a/gdb/testsuite/gdb.base/ending-run.exp
++++ b/gdb/testsuite/gdb.base/ending-run.exp
+@@ -206,8 +206,8 @@ gdb_test_multiple "next" "step out of main" {
+ 	# This is what happens on system using uClibc.
+ 	pass "step out of main"
+     }
+-    -re "0x.*\\?\\? \\(\\) from /lib/powerpc.*$gdb_prompt $" {
+-	# This case occurs on Powerpc when gdb steps out of main and the
++    -re -wrap "$hex in \\?\\? \\(\\) from \[^\r\n\]+" {
++	# This case occurs when gdb steps out of main and the
+ 	# needed debug info files are not loaded on the system, preventing
+ 	# GDB to determine which function it reached (__libc_start_call_main).
+ 	# Ideally, the target system would have the necessary debugging
+-- 
+2.35.3
+

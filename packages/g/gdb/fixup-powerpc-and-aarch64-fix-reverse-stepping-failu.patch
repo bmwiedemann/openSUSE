@@ -1,0 +1,70 @@
+From d60b57fe1a98094a7e4f19481193b2b5a9bb1e57 Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Thu, 2 May 2024 12:02:50 +0200
+Subject: [PATCH 079/147] fixup PowerPC and aarch64: Fix reverse stepping
+ failure
+
+---
+ gdb/infrun.c | 2 +-
+ gdb/symtab.c | 3 +--
+ gdb/symtab.h | 3 +--
+ 3 files changed, 3 insertions(+), 5 deletions(-)
+
+diff --git a/gdb/infrun.c b/gdb/infrun.c
+index 069ef144a76..7be98cfc252 100644
+--- a/gdb/infrun.c
++++ b/gdb/infrun.c
+@@ -6897,7 +6897,7 @@ update_line_range_start (CORE_ADDR pc, struct execution_control_state *ecs)
+      Given the PC, check the line table and return the PC that corresponds
+      to the line table entry for the source line that PC is in.  */
+   CORE_ADDR start_line_pc = ecs->event_thread->control.step_range_start;
+-  std::optional<CORE_ADDR> real_range_start;
++  gdb::optional<CORE_ADDR> real_range_start;
+ 
+   /* Call find_line_range_start to get the smallest address in the
+      linetable for multiple Line X entries in the line table.  */
+diff --git a/gdb/symtab.c b/gdb/symtab.c
+index ef63ec93c5a..9a47796e5e0 100644
+--- a/gdb/symtab.c
++++ b/gdb/symtab.c
+@@ -73,7 +73,6 @@
+ #include "gdbsupport/gdb_string_view.h"
+ #include "gdbsupport/pathstuff.h"
+ #include "gdbsupport/common-utils.h"
+-#include <optional>
+ 
+ /* Forward declarations for local functions.  */
+ 
+@@ -3328,7 +3327,7 @@ sal_line_symtab_matches_p (const symtab_and_line &sal1,
+ 
+ /* See symtah.h.  */
+ 
+-std::optional<CORE_ADDR>
++gdb::optional<CORE_ADDR>
+ find_line_range_start (CORE_ADDR pc)
+ {
+   struct symtab_and_line current_sal = find_pc_line (pc, 0);
+diff --git a/gdb/symtab.h b/gdb/symtab.h
+index e17d15c595b..6a611d42880 100644
+--- a/gdb/symtab.h
++++ b/gdb/symtab.h
+@@ -38,7 +38,6 @@
+ #include "gdb-demangle.h"
+ #include "split-name.h"
+ #include "frame.h"
+-#include <optional>
+ 
+ /* Opaque declarations.  */
+ struct ui_file;
+@@ -2377,7 +2376,7 @@ extern struct symtab_and_line find_pc_sect_line (CORE_ADDR,
+    the starting PC of line X, and the ranges are contiguous.
+ */
+ 
+-extern std::optional<CORE_ADDR> find_line_range_start (CORE_ADDR pc);
++extern gdb::optional<CORE_ADDR> find_line_range_start (CORE_ADDR pc);
+ 
+ /* Wrapper around find_pc_line to just return the symtab.  */
+ 
+-- 
+2.35.3
+

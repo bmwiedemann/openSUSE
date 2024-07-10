@@ -1,0 +1,35 @@
+Fixup gdb.base/tracefork-zombie.exp
+
+Fix ERROR:
+...
+PASS: gdb.base/tracefork-zombie.exp: attach
+ERROR: tcl error sourcing gdb/testsuite/gdb.base/tracefork-zombie.exp.
+ERROR: tcl error code POSIX ESRCH {no such process}
+ERROR: error reading "file12": no such process
+    while executing
+"read $statusfi"
+    ("foreach" body line 5)
+    invoked from within
+...
+
+---
+ gdb/testsuite/gdb.base/tracefork-zombie.exp | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/gdb/testsuite/gdb.base/tracefork-zombie.exp b/gdb/testsuite/gdb.base/tracefork-zombie.exp
+index 03f790d4c5d..3e2e5517d46 100644
+--- a/gdb/testsuite/gdb.base/tracefork-zombie.exp
++++ b/gdb/testsuite/gdb.base/tracefork-zombie.exp
+@@ -58,8 +58,10 @@ foreach procpid [glob -directory /proc -type d {[0-9]*}] {
+     if {[catch {open $procpid/status} statusfi]} {
+ 	continue
+     }
+-    set status [read $statusfi]
+-    close $statusfi
++    if {[catch {read $statusfi} status]} {
++	continue
++    }
++    catch {close $statusfi}
+     if {1
+          && [regexp -line {^Name:\tgdb$} $status]
+          && [regexp -line {^PPid:\t1$} $status]

@@ -1,0 +1,32 @@
+From FEDORA_PATCHES Mon Sep 17 00:00:00 2001
+From: Fedora GDB patches <invalid@email.com>
+Date: Fri, 27 Oct 2017 21:07:50 +0200
+Subject: gdb-6.6-testsuite-timeouts.patch
+
+;; Avoid too long timeouts on failing cases of "annota1.exp annota3.exp".
+;;=fedoratest
+
+diff --git a/gdb/testsuite/gdb.base/annota1.exp b/gdb/testsuite/gdb.base/annota1.exp
+--- a/gdb/testsuite/gdb.base/annota1.exp
++++ b/gdb/testsuite/gdb.base/annota1.exp
+@@ -37,6 +37,8 @@ if  { [gdb_compile "${srcdir}/${subdir}/${srcfile}" "${binfile}" executable {deb
+ 
+ clean_restart ${binfile}
+ 
++gdb_test "set breakpoint pending off" "" "Avoid lockup on nonexisting functions"
++
+ # The commands we test here produce many lines of output; disable "press 
+ # <return> to continue" prompts.
+ gdb_test_no_output "set height 0"
+diff --git a/gdb/testsuite/gdb.base/annota3.exp b/gdb/testsuite/gdb.base/annota3.exp
+--- a/gdb/testsuite/gdb.base/annota3.exp
++++ b/gdb/testsuite/gdb.base/annota3.exp
+@@ -36,6 +36,8 @@ if  { [gdb_compile "${srcdir}/${subdir}/${srcfile}" "${binfile}" executable {deb
+ 
+ clean_restart ${binfile}
+ 
++gdb_test "set breakpoint pending off" "" "Avoid lockup on nonexisting functions"
++
+ # The commands we test here produce many lines of output; disable "press 
+ # <return> to continue" prompts.
+ gdb_test_no_output "set height 0"

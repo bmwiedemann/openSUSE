@@ -1,0 +1,60 @@
+From 4a08080ba59f4f66bf062a9015f9e51c765b05b5 Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Fri, 29 Mar 2024 07:47:30 +0100
+Subject: [PATCH 31/48] [gdb/testsuite] Add missing includes in
+ gdb.trace/collection.c
+
+On fedora rawhide, with test-case gdb.trace/collection.exp, I get:
+...
+gdb compile failed, collection.c: In function 'strings_test_func':
+collection.c:227:13: error: implicit declaration of function 'malloc' \
+  [-Wimplicit-function-declaration]
+  227 |   longloc = malloc(500);
+      |             ^~~~~~
+collection.c:1:1: note: \
+  include '<stdlib.h>' or provide a declaration of 'malloc'
+  +++ |+#include <stdlib.h>
+    1 | /* This testcase is part of GDB, the GNU debugger.
+
+collection.c:228:3: error: implicit declaration of function 'strcpy' \
+  [-Wimplicit-function-declaration]
+  228 |   strcpy(longloc, ... );
+      |   ^~~~~~
+collection.c:1:1: note: include '<string.h>' or provide a declaration of \
+  'strcpy'
+  +++ |+#include <string.h>
+    1 | /* This testcase is part of GDB, the GNU debugger.
+collection.c:230:8: error: implicit declaration of function 'strlen' \
+  [-Wimplicit-function-declaration]
+  230 |   i += strlen (locstr);
+      |        ^~~~~~
+collection.c:230:8: note: include '<string.h>' or provide a declaration of \
+  'strlen'
+...
+
+Fix this by adding the missing includes.
+
+Tested on aarch64-linux.
+
+Approved-By: John Baldwin <jhb@FreeBSD.org>
+---
+ gdb/testsuite/gdb.trace/collection.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/gdb/testsuite/gdb.trace/collection.c b/gdb/testsuite/gdb.trace/collection.c
+index 3b5484748af..4ef93a3fa33 100644
+--- a/gdb/testsuite/gdb.trace/collection.c
++++ b/gdb/testsuite/gdb.trace/collection.c
+@@ -19,6 +19,9 @@
+  * Test program for trace collection
+  */
+ 
++#include <string.h>
++#include <stdlib.h>
++
+ /*
+  * Typedefs
+  */
+-- 
+2.35.3
+

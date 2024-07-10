@@ -1,0 +1,47 @@
+From 40b2857e42b477832ca7fc2771b6cde910e22f05 Mon Sep 17 00:00:00 2001
+From: Thiago Jung Bauermann <thiago.bauermann@linaro.org>
+Date: Tue, 23 Jan 2024 14:11:33 -0300
+Subject: [PATCH 4/7] gdb/arm: Fix epilogue frame id
+
+arm_epilogue_frame_this_id has a comment saying that it fall backs to using
+the current PC if the function start address can't be identified, but it
+actually uses only the PC to make the frame id.
+
+This patch makes the code match the comment.  Another hint that it's what
+is intended is that arm_prologue_this_id, a function almost identical to
+it, does that.
+
+The problem was found by code inspection.  It fixes the following testsuite
+failures:
+
+FAIL: gdb.base/unwind-on-each-insn.exp: foo: instruction 9: check frame-id matches
+FAIL: gdb.reverse/solib-reverse.exp: reverse-next third shr1
+FAIL: gdb.reverse/solib-reverse.exp: reverse-next second shr1
+FAIL: gdb.reverse/solib-reverse.exp: reverse-next first shr1
+FAIL: gdb.reverse/solib-reverse.exp: reverse-next generic
+FAIL: gdb.reverse/solib-reverse.exp: reverse-step into solib function one
+FAIL: gdb.reverse/solib-reverse.exp: reverse-step within solib function one
+FAIL: gdb.reverse/solib-reverse.exp: reverse-step into solib function two
+FAIL: gdb.reverse/solib-reverse.exp: reverse-step within solib function two
+
+Tested on arm-linux-gnueabi-hf.
+---
+ gdb/arm-tdep.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/gdb/arm-tdep.c b/gdb/arm-tdep.c
+index 3b1682a2aea..21dad198dc7 100644
+--- a/gdb/arm-tdep.c
++++ b/gdb/arm-tdep.c
+@@ -3252,7 +3252,7 @@ arm_epilogue_frame_this_id (frame_info_ptr this_frame,
+ 
+   arm_gdbarch_tdep *tdep
+     = gdbarch_tdep<arm_gdbarch_tdep> (get_frame_arch (this_frame));
+-  *this_id = frame_id_build (arm_cache_get_prev_sp_value (cache, tdep), pc);
++  *this_id = frame_id_build (arm_cache_get_prev_sp_value (cache, tdep), func);
+ }
+ 
+ /* Implementation of function hook 'prev_register' in
+-- 
+2.35.3
+

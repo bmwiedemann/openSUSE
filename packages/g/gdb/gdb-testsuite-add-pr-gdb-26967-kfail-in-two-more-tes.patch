@@ -1,0 +1,167 @@
+From fb2b155e33f5a21259c52685ee9b24f75ac66e75 Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Wed, 20 Mar 2024 19:23:48 +0100
+Subject: [PATCH 10/48] [gdb/testsuite] Add PR gdb/26967 KFAIL in two more
+ test-cases
+
+On aarch64-linux (debian 12), when running test-case
+gdb.base/longjmp-until-in-main.exp, I run into:
+...
+(gdb) until 33^M
+warning: Breakpoint address adjusted from 0x70f727c678928489 to 0xfff727c678928489.^M
+Warning:^M
+Cannot insert breakpoint 0.^M
+Cannot access memory at address 0xfff727c678928489^M
+^M
+0x0000fffff7e3a580 in siglongjmp () from /lib/aarch64-linux-gnu/libc.so.6^M
+(gdb) FAIL: gdb.base/longjmp-until-in-main.exp: until $line, in main
+...
+
+This is PR gdb/26967: no longjmp probe is available:
+...
+(gdb) info probes stap libc ^longjmp$^M
+No probes matched.^M
+...
+and glibc applies pointer mangling which makes it fairly difficult for gdb to
+get the longjmp target.
+
+There's a KFAIL for this in test-case gdb.base/longjmp.exp, added in commit
+b5e7cd5cd3d ("[gdb/testsuite] Add KFAILs in gdb.base/longjmp.exp").
+
+Factor out new proc have_longjmp_probe, and use it to add similar KFAIL in
+this and one more test-case.
+
+Tested on aarch64-linux.
+
+Approved-By: Tom Tromey <tom@tromey.com>
+---
+ .../gdb.base/longjmp-until-in-main.exp        | 24 ++++++++++++++++---
+ gdb/testsuite/gdb.base/longjmp.exp            | 11 +--------
+ .../premature-dummy-frame-removal.exp         | 22 ++++++++++++++++-
+ gdb/testsuite/lib/gdb.exp                     | 19 +++++++++++++++
+ 4 files changed, 62 insertions(+), 14 deletions(-)
+
+diff --git a/gdb/testsuite/gdb.base/longjmp-until-in-main.exp b/gdb/testsuite/gdb.base/longjmp-until-in-main.exp
+index c0635f23345..6167989319a 100644
+--- a/gdb/testsuite/gdb.base/longjmp-until-in-main.exp
++++ b/gdb/testsuite/gdb.base/longjmp-until-in-main.exp
+@@ -35,10 +35,28 @@ if {![runto_main]} {
+     return
+ }
+ 
++set have_longjmp_probe [have_longjmp_probe]
++
+ delete_breakpoints
+ 
+ set until_to_line [gdb_get_line_number "until to here"]
+ 
+-gdb_test "until $until_to_line" \
+-    " until to here .*" \
+-    "until \$line, in main"
++set re_cannot_insert_bp \
++    [multi_line \
++	 "Warning:" \
++	 "Cannot insert breakpoint $::decimal\\." \
++	 "Cannot access memory at address $::hex"]
++
++set test "until \$line, in main"
++gdb_test_multiple "until $until_to_line" $test {
++    -re -wrap "\r\n$re_cannot_insert_bp\r\n.*" {
++	if { $have_longjmp_probe } {
++	    fail $gdb_test_name
++	} else {
++	    kfail gdb/26967 $gdb_test_name
++	}
++    }
++    -re -wrap " until to here .*" {
++	pass $gdb_test_name
++    }
++}
+diff --git a/gdb/testsuite/gdb.base/longjmp.exp b/gdb/testsuite/gdb.base/longjmp.exp
+index f74891aa7ca..0420f4df675 100644
+--- a/gdb/testsuite/gdb.base/longjmp.exp
++++ b/gdb/testsuite/gdb.base/longjmp.exp
+@@ -62,16 +62,7 @@ proc do_test { with_probes } {
+     #
+     # We detect the different failure modes and kfail these.
+ 
+-    set have_longjmp_probe 0
+-    gdb_test_multiple "info probes stap libc ^longjmp$" "" {
+-	-re -wrap "No probes matched\\." {
+-	    pass $gdb_test_name
+-	}
+-	-re -wrap "\r\nstap\[ \t\]+libc\[ \t\]+longjmp\[ \t\]+.*" {
+-	    pass $gdb_test_name
+-	    set have_longjmp_probe 1
+-	}
+-    }
++    set have_longjmp_probe [have_longjmp_probe]
+ 
+     if { $with_probes } {
+ 	if { !$have_longjmp_probe } {
+diff --git a/gdb/testsuite/gdb.base/premature-dummy-frame-removal.exp b/gdb/testsuite/gdb.base/premature-dummy-frame-removal.exp
+index fe906cefb14..6979345ee45 100644
+--- a/gdb/testsuite/gdb.base/premature-dummy-frame-removal.exp
++++ b/gdb/testsuite/gdb.base/premature-dummy-frame-removal.exp
+@@ -49,7 +49,27 @@ if {![runto_main]} {
+ set pyfile [gdb_remote_download host ${srcdir}/${subdir}/${testfile}.py]
+ gdb_test_no_output "source ${pyfile}" "load python file"
+ 
+-gdb_test "p some_func ()" " = 0"
++set have_longjmp_probe [have_longjmp_probe]
++
++set re_cannot_insert_bp \
++    [multi_line \
++	 "Warning:" \
++	 "Cannot insert breakpoint $::decimal\\." \
++	 "Cannot access memory at address $::hex"]
++
++gdb_test_multiple "p some_func ()" "" {
++    -re -wrap "\r\n$re_cannot_insert_bp\r\n.*" {
++	if { $have_longjmp_probe } {
++	    fail $gdb_test_name
++	} else {
++	    kfail gdb/26967 $gdb_test_name
++	    return 0
++	}
++    }
++    -re -wrap " = 0" {
++	pass $gdb_test_name
++    }
++}
+ 
+ # When frame debugging is turned on, this test has (previously)
+ # revealed some crashes due to the Python frame unwinder trying to
+diff --git a/gdb/testsuite/lib/gdb.exp b/gdb/testsuite/lib/gdb.exp
+index 21967550cf6..70c2db4ac84 100644
+--- a/gdb/testsuite/lib/gdb.exp
++++ b/gdb/testsuite/lib/gdb.exp
+@@ -4615,6 +4615,25 @@ proc skip_libstdcxx_probe_tests {} {
+     return [skip_libstdcxx_probe_tests_prompt "$gdb_prompt $"]
+ }
+ 
++# Return 1 if libc supports the longjmp probe.  Note that we're not using
++# gdb_caching_proc because the probe may have been disabled.
++
++proc have_longjmp_probe {} {
++    set have_probe -1
++    gdb_test_multiple "info probes stap libc ^longjmp$" "" {
++	-re -wrap "No probes matched\\." {
++	    set have_probe 0
++	}
++	-re -wrap "\r\nstap\[ \t\]+libc\[ \t\]+longjmp\[ \t\]+.*" {
++	    set have_probe 1
++	}
++    }
++    if { $have_probe == -1 } {
++	error "failed to get libc longjmp probe status"
++    }
++    return $have_probe
++}
++
+ # Helper for gdb_is_target_* procs.  TARGET_NAME is the name of the target
+ # we're looking for (used to build the test name).  TARGET_STACK_REGEXP
+ # is a regexp that will match the output of "maint print target-stack" if
+-- 
+2.35.3
+

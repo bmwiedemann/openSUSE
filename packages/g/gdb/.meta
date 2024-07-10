@@ -1,0 +1,7 @@
+<package name="gdb" project="openSUSE:Factory">
+  <title>A GNU source-level debugger for C, C++, Java and other languages</title>
+  <description>GDB, the GNU debugger, allows you to debug programs written in C, C++,
+Java, and other languages, by executing them in a controlled fashion
+and printing their data.</description>
+  <devel project="devel:gcc" package="gdb"/>
+</package>

@@ -1,0 +1,74 @@
+From 237a0ec8a20cc5e233d630a43d9cacd2774a564d Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Wed, 20 Mar 2024 19:31:24 +0100
+Subject: [PATCH 37/48] [gdb/testsuite] Fix gdb.server/server-connect.exp for
+ missing ipv6
+
+On a system without ipv6 support enabled, when running test-case
+gdb.server/server-connect.exp, it takes about 4 minutes, and I get:
+...
+builtin_spawn gdbserver --once ::1:2347 server-connect^M
+Can't open socket: Address family not supported by protocol.^M
+Exiting^M
+PASS: gdb.server/server-connect.exp: tcp6: start gdbserver
+target remote tcp6:::1:2347^M
+A program is being debugged already.  Kill it? (y or n) y^M
+could not connect: Address family not supported by protocol.^M
+(gdb) FAIL: gdb.server/server-connect.exp: tcp6: connect to gdbserver using tcp6:::1
+...
+
+Fix this by:
+- recognizing the error message in gdbserver_start, and returning an empty list
+  to signal unsupported, and
+- handling the unsupported response in the test-case.
+
+This brings testing time down to 2 seconds, and gets me:
+...
+UNSUPPORTED: gdb.server/server-connect.exp: tcp6: start gdbserver
+UNSUPPORTED: gdb.server/server-connect.exp: tcp6-with-brackets: start gdbserver
+UNSUPPORTED: gdb.server/server-connect.exp: udp6: start gdbserver
+UNSUPPORTED: gdb.server/server-connect.exp: udp6-with-brackets: start gdbserver
+...
+
+Tested on aarch64-linux.
+
+Approved-By: Tom Tromey <tom@tromey.com>
+
+PR testsuite/31502
+Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=31502
+---
+ gdb/testsuite/gdb.server/server-connect.exp | 3 +++
+ gdb/testsuite/lib/gdbserver-support.exp     | 3 +++
+ 2 files changed, 6 insertions(+)
+
+diff --git a/gdb/testsuite/gdb.server/server-connect.exp b/gdb/testsuite/gdb.server/server-connect.exp
+index 1f5b9a27cf4..ffdfaa89154 100644
+--- a/gdb/testsuite/gdb.server/server-connect.exp
++++ b/gdb/testsuite/gdb.server/server-connect.exp
+@@ -88,6 +88,9 @@ save_vars { GDB_TEST_SOCKETHOST } {
+ 	    } else {
+ 		if { $gdbserver_should_fail } {
+ 		    fail "$test: gdbserver should fail but did not"
++		} elseif { [llength $res] == 0 } {
++		    unsupported $test
++		    continue
+ 		} else {
+ 		    pass "$test"
+ 		}
+diff --git a/gdb/testsuite/lib/gdbserver-support.exp b/gdb/testsuite/lib/gdbserver-support.exp
+index a3cccf54a72..d065fb36764 100644
+--- a/gdb/testsuite/lib/gdbserver-support.exp
++++ b/gdb/testsuite/lib/gdbserver-support.exp
+@@ -429,6 +429,9 @@ proc gdbserver_start { options arguments } {
+ 	    -re ".*: cannot resolve name: .*\r\n" {
+ 		error "gdbserver cannot resolve name."
+ 	    }
++	    -re "Can't open socket: Address family not supported by protocol." {
++		return {}
++	    }
+ 	    timeout {
+ 		error "Timeout waiting for gdbserver response."
+ 	    }
+-- 
+2.35.3
+

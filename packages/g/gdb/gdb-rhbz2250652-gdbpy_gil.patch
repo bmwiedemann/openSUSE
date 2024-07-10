@@ -1,0 +1,81 @@
+From FEDORA_PATCHES Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Alexandra=20H=C3=A1jkov=C3=A1?= <ahajkova@redhat.com>
+Date: Mon, 8 Jan 2024 13:12:15 +0100
+Subject: gdb-rhbz2250652-gdbpy_gil.patch
+
+gdb: move gdbpy_gil into python-internal.h
+
+Move gdbpy_gil class into python-internal.h, the next
+commit wants to make use of this class from a file other
+than python.c.
+
+Approved-By: Tom Tromey <tom@tromey.com>
+
+diff --git a/gdb/python/python-internal.h b/gdb/python/python-internal.h
+--- a/gdb/python/python-internal.h
++++ b/gdb/python/python-internal.h
+@@ -754,6 +754,30 @@ class gdbpy_allow_threads
+   PyThreadState *m_save;
+ };
+ 
++/* A helper class to save and restore the GIL, but without touching
++   the other globals that are handled by gdbpy_enter.  */
++
++class gdbpy_gil
++{
++public:
++
++  gdbpy_gil ()
++    : m_state (PyGILState_Ensure ())
++  {
++  }
++
++  ~gdbpy_gil ()
++  {
++    PyGILState_Release (m_state);
++  }
++
++  DISABLE_COPY_AND_ASSIGN (gdbpy_gil);
++
++private:
++
++  PyGILState_STATE m_state;
++};
++
+ /* Use this after a TRY_EXCEPT to throw the appropriate Python
+    exception.  */
+ #define GDB_PY_HANDLE_EXCEPTION(Exception)	\
+diff --git a/gdb/python/python.c b/gdb/python/python.c
+--- a/gdb/python/python.c
++++ b/gdb/python/python.c
+@@ -257,30 +257,6 @@ gdbpy_enter::finalize ()
+   python_gdbarch = target_gdbarch ();
+ }
+ 
+-/* A helper class to save and restore the GIL, but without touching
+-   the other globals that are handled by gdbpy_enter.  */
+-
+-class gdbpy_gil
+-{
+-public:
+-
+-  gdbpy_gil ()
+-    : m_state (PyGILState_Ensure ())
+-  {
+-  }
+-
+-  ~gdbpy_gil ()
+-  {
+-    PyGILState_Release (m_state);
+-  }
+-
+-  DISABLE_COPY_AND_ASSIGN (gdbpy_gil);
+-
+-private:
+-
+-  PyGILState_STATE m_state;
+-};
+-
+ /* Set the quit flag.  */
+ 
+ static void

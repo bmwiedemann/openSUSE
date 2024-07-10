@@ -1,0 +1,54 @@
+From 489d8a4ff8c5998dad5a55694e346532695c911b Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Tue, 26 Mar 2024 17:32:09 +0100
+Subject: [PATCH 36/48] [gdb/testsuite] Fix valgrind tests on debian
+
+On debian 12, I run into:
+...
+(gdb) target remote | vgdb --wait=2 --max-invoke-ms=2500 --pid=618591^M
+Remote debugging using | vgdb --wait=2 --max-invoke-ms=2500 --pid=618591^M
+relaying data between gdb and process 618591^M
+warning: remote target does not support file transfer, \
+  attempting to access files from local filesystem.^M
+Reading symbols from /lib/ld-linux-aarch64.so.1...^M
+(No debugging symbols found in /lib/ld-linux-aarch64.so.1)^M
+0x000000000401a980 in ?? () from /lib/ld-linux-aarch64.so.1^M
+(gdb) FAIL: gdb.base/valgrind-infcall.exp: target remote for vgdb
+...
+
+The problem is that we're expecting to match either of these regexps:
+...
+	set start_re1 " in \\.?_start "
+        set start_re2 "\\.?_start \\(\\) at "
+...
+but there are no dwarf or elf symbols present.
+
+Fix this by also allowing:
+...
+       set start_re3 "$::hex in \\?\\? \\(\\) from "
+...
+
+Tested on aarch64-linux.
+
+Approved-By: Tom Tromey <tom@tromey.com>
+---
+ gdb/testsuite/lib/valgrind.exp | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/gdb/testsuite/lib/valgrind.exp b/gdb/testsuite/lib/valgrind.exp
+index f9096663509..52ef603a803 100644
+--- a/gdb/testsuite/lib/valgrind.exp
++++ b/gdb/testsuite/lib/valgrind.exp
+@@ -94,7 +94,8 @@ proc vgdb_start { {active_at_startup 1} } {
+     if { $active_at_startup } {
+ 	set start_re1 " in \\.?_start "
+ 	set start_re2 "\\.?_start \\(\\) at "
+-	gdb_test "$vgdbcmd" "($start_re1|$start_re2).*" \
++	set start_re3 "$::hex in \\?\\? \\(\\) from "
++	gdb_test "$vgdbcmd" "($start_re1|$start_re2|$start_re3).*" \
+ 	    "target remote for vgdb"
+     } else {
+ 	# Let $binfile run a bit before attaching.  This is a bit of a hack,
+-- 
+2.35.3
+

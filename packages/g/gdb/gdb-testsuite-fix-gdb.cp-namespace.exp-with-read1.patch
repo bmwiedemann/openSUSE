@@ -1,0 +1,57 @@
+From 818f70aa9a6c17ddc79ac33f80c1a3e4df30ea14 Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Sun, 14 Jan 2024 09:36:12 +0100
+Subject: [PATCH 46/48] [gdb/testsuite] Fix gdb.cp/namespace.exp with read1
+
+With check-read1 we run into:
+...
+(gdb) break DNE>::DNE^M
+Function "DNE>::DNE" not defined.^M
+Make breakpoint pending on future shared library load? (y or [n]) y^M
+Breakpoint 9 (DNE>::DNE) pending.^M
+n^M
+(gdb) FAIL: gdb.cp/namespace.exp: br malformed '>' (got interactive prompt)
+n^M
+...
+
+The question is supposed to be handled by the question and response arguments
+to this gdb_test call:
+...
+gdb_test "break DNE>::DNE" "" "br malformed \'>\'" \
+    "Make breakpoint pending on future shared library load?.*" "y"
+...
+but both this and the builtin handling in gdb_test_multiple triggers.
+
+The cause of this is that the question argument regexp is incomplete.
+
+Fix this by making sure that the entire question is matched in the regexp:
+...
+set yn_re [string_to_regexp {(y or [n])}]
+  ...
+    "Make breakpoint pending on future shared library load\\? $yn_re " "Y"
+...
+
+Tested on x86_64-linux.
+---
+ gdb/testsuite/gdb.cp/namespace.exp | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/gdb/testsuite/gdb.cp/namespace.exp b/gdb/testsuite/gdb.cp/namespace.exp
+index a9de09f087d..b1c7403f2c6 100644
+--- a/gdb/testsuite/gdb.cp/namespace.exp
++++ b/gdb/testsuite/gdb.cp/namespace.exp
+@@ -251,8 +251,9 @@ gdb_test "print AAA::ALPHA" "\\$\[0-9\].* = AAA::ALPHA"
+ gdb_test "whatis ::C::CClass::NestedClass" "type = C::CClass::NestedClass"
+ gdb_test "whatis ::C::CClass::NestedClass *" "type = C::CClass::NestedClass \\*"
+ 
++set yn_re [string_to_regexp {(y or [n])}]
+ # Break on functions with a malformed name.
+ gdb_test "break DNE>::DNE" "" "br malformed \'>\'" \
+-    "Make breakpoint pending on future shared library load?.*" "y"
++    "Make breakpoint pending on future shared library load\\? $yn_re " "Y"
+ gdb_test "break DNE)::DNE" "" "br malformed \')\'" \
+-    "Make breakpoint pending on future shared library load?.*" "y"
++    "Make breakpoint pending on future shared library load\\? $yn_re " "Y"
+-- 
+2.35.3
+
