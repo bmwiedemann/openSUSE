@@ -1,0 +1,33 @@
+-------------------------------------------------------------------
+Wed Jul  3 16:17:00 UTC 2024 - Tina Müller <tina.mueller@suse.com>
+
+- Remove openssl3_1-adapt_tests.patch (fixed upstream)
+
+-------------------------------------------------------------------
+Mon May 20 03:07:24 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.11
+   see /usr/share/doc/packages/perl-Protocol-HTTP2/Changes
+
+  1.11 2024-05-19T16:55:28Z
+      - Fix minor typos and spelling errors (Yoshikazu Sawa)
+      - Do not hardcode tlsv1 which is deprecated and disabled in some systems (Olivier Gayot)
+      - Fix length-undef warnings in pre-5.12 perls (Felipe Gasper)
+
+-------------------------------------------------------------------
+Tue May  9 12:28:36 UTC 2023 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- refresh package, Update cpanspec.yml
+
+-------------------------------------------------------------------
+Thu May  4 13:11:57 UTC 2023 - Otto Hollmann <otto.hollmann@suse.com>
+
+- Adapt tests for OpenSSL 3.1 [bsc#1209430]
+  * Add openssl3_1-adapt_tests.patch
+
+-------------------------------------------------------------------
+Thu Nov 26 13:57:41 UTC 2020 - pgajdos@suse.com
+
+- initial version 1.10, needed by apache2 testsuite
+- copied from devel:languages:perl:CPAN-P
+
