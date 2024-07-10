@@ -1,0 +1,48 @@
+-------------------------------------------------------------------
+Thu Feb 29 15:13:05 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN.
+
+-------------------------------------------------------------------
+Tue Nov  7 09:57:01 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix build with RPM 4.19: unnumbered patches are no longer
+  supported.
+
+-------------------------------------------------------------------
+Thu Mar 21 15:20:29 UTC 2013 - dvaleev@suse.com
+
+- specfile cleanup
+- fix invalid license format
+
+-------------------------------------------------------------------
+Wed Oct 15 12:22:11 CEST 2008 - ro@suse.de
+
+- added ExclusiveArch 
+
+-------------------------------------------------------------------
+Wed Jan 25 21:44:58 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Oct 13 16:44:58 CEST 2004 - olh@suse.de
+
+- check for uname == ppc64 instead of powerpc64 (#47174 - LTC11789)
+
+-------------------------------------------------------------------
+Tue Nov 18 22:21:56 CET 2003 - meissner@suse.de
+
+- Use <sys/personality.h>, not <linux/*>
+
+-------------------------------------------------------------------
+Tue Nov 18 16:43:30 CET 2003 - meissner@suse.de
+
+- Make it recompile on STABLE, cleanups.
+
+-------------------------------------------------------------------
+Fri Sep  7 17:35:28 CEST 2001 - olh@suse.de
+
+- initial relase via sed from sparc32
+
