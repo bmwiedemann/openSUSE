@@ -1,0 +1,7 @@
+<package name="python-aiosqlite" project="openSUSE:Factory">
+  <title></title>
+  <description>AsyncIO bridge to the standard python sqlite3 module
+
+aiosqlite replicates the standard sqlite3 module, but with async versions of all the standard connection and cursor methods, and context managers for automatically closing connections.</description>
+  <devel project="devel:languages:python" package="python-aiosqlite"/>
+</package>
