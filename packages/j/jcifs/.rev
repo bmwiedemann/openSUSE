@@ -1,0 +1,122 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>8f47d14700fad7e03890e84ee8fb1bfe</srcmd5>
+    <version>1.3.8</version>
+    <time>1242859080</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="4">
+    <srcmd5>8f47d14700fad7e03890e84ee8fb1bfe</srcmd5>
+    <version>1.3.8</version>
+    <time>1242859080</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>1ce491cc107dd6f5d7aa212ba69ad4a0</srcmd5>
+    <version>1.3.8</version>
+    <time>1268924125</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>1ce491cc107dd6f5d7aa212ba69ad4a0</srcmd5>
+    <version>1.3.8</version>
+    <time>1278667353</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="5" vrev="8">
+    <srcmd5>1ce491cc107dd6f5d7aa212ba69ad4a0</srcmd5>
+    <version>1.3.8</version>
+    <time>1278678584</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="6" vrev="11">
+    <srcmd5>1ce491cc107dd6f5d7aa212ba69ad4a0</srcmd5>
+    <version>1.3.8</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="7" vrev="13">
+    <srcmd5>1ce491cc107dd6f5d7aa212ba69ad4a0</srcmd5>
+    <version>1.3.8</version>
+    <time>1319182008</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="8" vrev="14">
+    <srcmd5>30a00ab3320ff278db7900ef06870aa2</srcmd5>
+    <version>1.3.8</version>
+    <time>1323192031</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="9" vrev="16">
+    <srcmd5>30a00ab3320ff278db7900ef06870aa2</srcmd5>
+    <version>1.3.8</version>
+    <time>1340183484</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="10" vrev="18">
+    <srcmd5>30a00ab3320ff278db7900ef06870aa2</srcmd5>
+    <version>1.3.8</version>
+    <time>1359109119</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="20">
+    <srcmd5>30a00ab3320ff278db7900ef06870aa2</srcmd5>
+    <version>1.3.8</version>
+    <time>1379662710</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="22">
+    <srcmd5>30a00ab3320ff278db7900ef06870aa2</srcmd5>
+    <version>1.3.8</version>
+    <time>1409301276</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="23">
+    <srcmd5>9fbfe1ae7d6ba61bc3fd8b68b2fe2a56</srcmd5>
+    <version>1.3.8</version>
+    <time>1505920188</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with jdk9</comment>
+    <requestid>527144</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>98c7b130c8ea47eaf69908bcf45e1ac6</srcmd5>
+    <version>1.3.19</version>
+    <time>1551024782</time>
+    <user>coolo</user>
+    <comment>Miscellaneous changes in requires + maven-related fixes</comment>
+    <requestid>672368</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>3e427221f6b4ea819d696409ab887a0f</srcmd5>
+    <version>1.3.19</version>
+    <time>1576927856</time>
+    <user>dimstar_suse</user>
+    <comment>Invalid download url</comment>
+    <requestid>758261</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>976653d732ea81810d59a5389ccebb76</srcmd5>
+    <version>1.3.19</version>
+    <time>1647806178</time>
+    <user>dimstar_suse</user>
+    <comment>Build with source/target levels 8</comment>
+    <requestid>963303</requestid>
+  </revision>
+  <revision rev="17" vrev="4">
+    <srcmd5>d9b1b64a056af8d13475626d52c28de1</srcmd5>
+    <version>1.3.19</version>
+    <time>1708534742</time>
+    <user>anag+factory</user>
+    <comment>rpm 4.20 compat</comment>
+    <requestid>1148536</requestid>
+  </revision>
+</revisionlist>
