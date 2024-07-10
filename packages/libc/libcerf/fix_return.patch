@@ -1,0 +1,8 @@
+--- lib/width.c.orig	2021-12-06 17:02:13.721253753 -0700
++++ lib/width.c	2021-12-06 17:02:49.627449182 -0700
+@@ -120,4 +120,5 @@
+ 	}
+     }
+     assert(0); /* One should never arrive here */
++    return 0;
+ }
