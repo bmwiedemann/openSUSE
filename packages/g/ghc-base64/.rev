@@ -1,0 +1,74 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>85496f2a23d2e905d2ed72624032fec5</srcmd5>
+    <version>0.4.2.2</version>
+    <time>1605217168</time>
+    <user>dimstar_suse</user>
+    <comment>new package for cardano support</comment>
+    <requestid>847833</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>b14cd19fbd8795e0b9b0c6a54a7e7a55</srcmd5>
+    <version>0.4.2.2</version>
+    <time>1608633329</time>
+    <user>dimstar_suse</user>
+    <comment>update haskell stack in openSUS</comment>
+    <requestid>857246</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>9b4a870593259ff9e791b35899974a0a</srcmd5>
+    <version>0.4.2.3</version>
+    <time>1613511420</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>870445</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>1d3d169ae8069c70c61f92dd61cf8ede</srcmd5>
+    <version>0.4.2.3</version>
+    <time>1615362872</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>877616</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>e048b8a95ba7d18c95cd0225eea44efd</srcmd5>
+    <version>0.4.2.3</version>
+    <time>1644617313</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>953434</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>65493d3d78f62c7c71a677419d35f69a</srcmd5>
+    <version>0.4.2.4</version>
+    <time>1659382113</time>
+    <user>RBrownFactory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>985801</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>eb7b7b059606bc28993f91eb9031b80e</srcmd5>
+    <version>0.4.2.4</version>
+    <time>1665668469</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1008437</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>0357f69eb40dce45aa83f120bd3c274d</srcmd5>
+    <version>0.4.2.4</version>
+    <time>1680635914</time>
+    <user>dimstar_suse</user>
+    <comment>update for ghc-9.4.4</comment>
+    <requestid>1075774</requestid>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>93f56a5749aceb661e92e28e69d15993</srcmd5>
+    <version>0.4.2.4</version>
+    <time>1700772028</time>
+    <user>anag+factory</user>
+    <comment>version update</comment>
+    <requestid>1128065</requestid>
+  </revision>
+</revisionlist>
