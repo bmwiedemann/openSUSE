@@ -1,0 +1,56 @@
+-------------------------------------------------------------------
+Fri Jan  7 03:09:06 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.15
+   see /usr/share/doc/packages/perl-MRO-Compat/Changes
+
+  0.15 - 2022-01-06
+      - fix function prototypes to match core functions
+
+  0.14_01 - 2020-11-16
+      - optimize pure perl DFS inheritance calculation on perl 5.8
+      - pod formatting fix
+
+-------------------------------------------------------------------
+Wed Mar 29 06:05:12 UTC 2017 - coolo@suse.com
+
+- updated to 0.13
+   see /usr/share/doc/packages/perl-MRO-Compat/Changes
+
+-------------------------------------------------------------------
+Wed Jun  5 14:30:50 UTC 2013 - coolo@suse.com
+
+- updated to 0.12
+    - Bump Class::C3 dependency on 5.8 which in turn will automatically
+      install Class::C3::XS if possible
+    - Fix nonfunctional SYNOPSIS (RT#78325)
+
+-------------------------------------------------------------------
+Fri Nov 18 11:08:42 UTC 2011 - coolo@suse.com
+
+- use original .tar.gz
+
+-------------------------------------------------------------------
+Wed Dec  1 06:55:40 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Thu Nov 11 20:01:05 UTC 2010 - chris@computersalat.de
+
+- update to 0.11
+  - Fix misspelled docs for get_isarev. Closes RT#46401.
+  - Bump optional prereq on Class::C3 to 0.20.
+- 0.10 - Wed Mar 25, 2009
+  - Remove the fake Build.PL. Module::Install doesn't support that anymore.
+    (Florian Ragwitz)
+  - Remove auto_install from Makefile.PL. Its use is strongly discouraged.
+    (Closes RT#44542) (Simon Betrang)
+- noarch pkg
+- changelog to changes file
+
+-------------------------------------------------------------------
+Sun Oct 26 13:38:07 UTC 2008 - gerrit.beine@gmx.de
+
+- first release 0.09
+
