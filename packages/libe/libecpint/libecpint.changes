@@ -1,0 +1,80 @@
+-------------------------------------------------------------------
+Wed Apr 03 14:18:54 UTC 2024 - kkaempf@suse.com
+
+- Update to version v1.0.7+git20230218.8e788d4:
+  * cmake: migrate C++ standard to targets
+    (gh#robashaw/libecpint#59)
+  * cerf instead of Faddeeva (gh#robashaw/libecpint#55)
+  * misc. build changes (gh#robashaw/libecpint#52)
+  * Update CMakeLists.txt.in (gh#robashaw/libecpint#54)
+  * Do not use `#cmakedefine` for `LIBECPINT_MAX_UNROL`
+    (gh#robashaw/libecpint#50)
+  * Fix quotation (gh#robashaw/libecpint#47)
+  * Avoids gtest installation, which is only required for tests
+    (gh#robashaw/libecpint#46)
+
+-------------------------------------------------------------------
+Tue Dec 14 21:51:56 UTC 2021 - Christoph Junghans <junghans@votca.org>
+
+- Fix deps of devel package
+
+-------------------------------------------------------------------
+Tue Dec 14 21:41:28 UTC 2021 - Christoph Junghans <junghans@votca.org>
+
+- Fix tests on i586
+
+-------------------------------------------------------------------
+Sun Dec 12 20:01:42 UTC 2021 - Christoph Junghans <junghans@votca.org>
+
+- Update to 1.0.7:
+  - option to use cerf instead of Faddeeva
+  - googletest branch is main not master
+  - tests that use xml only triggered if xml included
+
+-------------------------------------------------------------------
+Wed Jul 21 17:22:55 UTC 2021 - Sarah Kriesch <sarah.kriesch@opensuse.org>
+
+- Add constraints file for workaround because of "Out of memory" on 
+  s390x (boo#1188441)
+
+-------------------------------------------------------------------
+Wed Mar 24 15:33:32 UTC 2021 - Christoph Junghans <junghans@votca.org>
+
+- Update to 1.0.6:
+  - Includes several minor updates to the CMake infrastructure, in
+    particular making pugixml optional, and other changes to make
+    compatible with Psi4.
+  - Also adds some documentation as part of the JOSS submission.
+
+-------------------------------------------------------------------
+Fri Feb  5 02:59:19 UTC 2021 - Christoph Junghans <junghans@votca.org>
+
+- Update to 1.0.5;
+  - Merges PR #26 replacing C-style arrays in the Bessel function
+    routines.
+- Drop 26.patch, merge upstream
+
+-------------------------------------------------------------------
+Wed Jan 27 18:28:52 UTC 2021 - Christoph Junghans <junghans@votca.org>
+
+- Added 26.patch to fix memory leak
+
+-------------------------------------------------------------------
+Wed Jan 13 00:12:51 UTC 2021 - Christoph Junghans <junghans@votca.org>
+
+- Update to 1.0.4:
+  - Code generation for high-L functions is now considerably
+    faster and uses less memory
+  - This is the final patch before v1.1
+- Update to 1.0.3:
+  - Fix bug in radial type 1 integrals where quadrature could fail
+    to converge
+  - Const correctness throughout, should allow for parallelisation
+    thanks to thomas-dresselhaus
+  - Minor updates to docs
+
+-------------------------------------------------------------------
+Sat Oct  3 19:55:55 UTC 2020 - Christoph Junghans <junghans@votca.org>
+
+- initial import (version 1.0.2)
+
