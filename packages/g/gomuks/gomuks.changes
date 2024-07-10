@@ -1,0 +1,132 @@
+-------------------------------------------------------------------
+Thu Jul  4 11:20:11 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Revendor to pull in fresh golang.org/x/image/tiff to fix
+  bsc#1227165 (CVE-2024-24792).
+
+-------------------------------------------------------------------
+Tue Mar  7 16:18:36 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Restore Source URL.
+
+-------------------------------------------------------------------
+Wed Jan 18 07:11:09 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Switch to service for tarball and vendor tarball creation
+- Update to version 0.3.0:
+  * Bumped minimum Go version to 1.18.
+    Switched from /r0 to /v3 paths everywhere.
+    The new v3 paths are implemented since Synapse 1.48, Dendrite 0.6.5,
+    and Conduit 0.4.0. Servers older than these are no longer supported.
+  * Added config flags for backspace behavior.
+  * Added /rainbownotice command to send a rainbow as a m.notice message.
+  * Added support for editing messages in an external editor.
+  * Added arrow key support for navigating results in fuzzy search.
+  * Added initial support for configurable keyboard shortcuts #328.
+  * Added support for shortcodes without tab-completion in /react #354.
+  * Added background color to differentiate inline code #361.
+  * Added tab-completion support for /toggle options #362.
+  * Added initial support for rendering spoilers in messages.
+  * Added support for sending spoilers (with ||reason|spoiler|| or ||spoiler||).
+  * Added support for inline links (limited terminal support; requires /toggle inlineurls).
+  * Added graphical file picker for /upload when no path is provided (requires zenity).
+  * Updated more places to use default/reverse colors instead of white/black to
+    better work on light themed terminals #401.
+  * Fixed mentions being lost when editing messages.
+  * Fixed date change messages showing the wrong date.
+  * Fixed some whitespace in HTML being rendered even when it shouldn't.
+  * Fixed copying non-text messages with /copy.
+  * Fixed rendering code blocks with unknown languages #386.
+  * Fixed newlines not working in code blocks with certain syntax highlightings #387.
+  * Fixed rendering more than one reaction of the same type in a single message #391.
+  * Fixed line-wrapped messages getting corrupted when receiving a reaction #397.
+
+-------------------------------------------------------------------
+Mon Oct 17 12:30:39 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Clean up SPEC file to be more guidelines-like.
+
+-------------------------------------------------------------------
+Thu Sep 29 13:29:41 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update to version 0.2.4:
+  - Added is_direct flag when creating DMs.
+  - Added newline toggle for swapping enter and alt-enter
+    behavior.
+  - Added timestamps toggle for disabling timestamps in the UI.
+  - Added support for getting custom download directory with
+    xdg-user-dir.
+  - Added support for updating homeserver URL based on well-known
+    data in /login response.
+  - Updated some places to use default color instead of white to
+    better work on light themed terminals.
+  - Updated notification library to work on all unix-like systems
+    with notify-send.
+    Notification sounds will now work if either paplay or ogg123
+    is available.
+  - Disabled logging request content for sensitive requests like
+    /login and cross-signing key uploads.
+  - Fixed caching state of rooms where the room ID contains
+    slashes.
+  - Fixed index error in fuzzy search.
+
+--------------------------------------------------------------------
+Sat Feb 19 17:18:00 UTC 2021 - Lawrence Brown <albino+suse@autistici.org>
+
+- Update to version 0.2.3
+  * Switched crypto store to use SQLite to prevent it from getting corrupted all the time.
+  * Added macOS builds (both x86 and arm64)
+  * Allowed password login to servers with both SSO and password login enabled.
+
+-------------------------------------------------------------------
+Sat Nov 11 16:54:00 UTC 2020 - Lawrence Brown <albino+suse@autistici.org>
+
+- Update to version 0.2.1
+  * Moved help into a modal (partially done by @wvffle in #223)
+  * Fixed choosing a login flow when logging in
+  * Fixed edits by different users than the original message sender being rendered
+  * Fixed panic when rendering empty code block
+  * Fixed panic in /open command (thanks to @dec05eba in #226)
+  * Fixed command autocompletion (thanks to @wvffle in #222)
+
+-------------------------------------------------------------------
+Sat Oct 23 15:19:00 UTC 2020 - Lawrence Brown <albino+suse@autistici.org>
+
+- Update to version 0.2.0
+  * Added interactive device verification support (#161, only outgoing requests currently)
+  * Added option to show inline link target as text (thanks to @r3k2 in #189)
+  * Added /edit command as an alternative to ↑/↓ (#200)
+  * Added support for importing and exporting message decryption keys (#159)
+  * Added command for uploading files (#62, started by @wvffle in #206)
+  * Added parameter autocompletion for some commands (mostly the new crypto and upload commands, but also /download and /open)
+  * Fixed autocompleting HTML pills when markdown is disabled (#190)
+  * Fixed editing the same message many times (#195)
+  * Fixed mangled comment newlines in code blocks (#120, thanks to @wvffle in #214)
+
+-------------------------------------------------------------------
+Sat Jun 25 11:13:19 UTC 2020 - Lawrence Brown <albino+suse@autistici.org>
+
+- Update to version 0.1.2
+  * Fixed panic when clicking Shift+Tab on the first item of the fuzzy room search dialog (#182)
+  * Fixed panic when rendering m.room.canonical_alias events with no prev_content (#181)
+  * Fixed rendering displayname changes
+
+-------------------------------------------------------------------
+Tue Oct 01 09:23:34 UTC 2019 - dead_mozay@opensuse.org
+
+- Update to version 0.0.1.git~20190726.7012564:
+  * Add badge and link for GitLab CI to readme
+  * Update tcell
+  * Add .gitlab-ci.yml
+  * Update tcell
+  * Possibly fix displaying displaynames of left users
+  * Fix or break some history related things
+  * Cache canonical alias in room list so tab completing wouldn't load state from disk
+  * Add initial support for rendering replies
+  * Wrap events in custom struct to add gomuks-specific fields
+  * Only ping if displayname has spaces/punctuation characters around it. Fixes #96
+
+-------------------------------------------------------------------
+Tue Oct  1 09:00:21 UTC 2019 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Initial package 
