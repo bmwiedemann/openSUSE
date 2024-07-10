@@ -1,0 +1,88 @@
+-------------------------------------------------------------------
+Sat May 18 20:46:14 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Switch back to the official Jeff Kingston's version 3.41.0
+  (includes fixes for modern compilers, bsc#1220574).
+- Reapply fix-for-CVE-2019-19917-and-CVE-2019-19918.patch fixing
+  bsc#1159714 (CVE-2019-19917) and bsc#1159713 (CVE-2019-19918).
+- Add tblf-fix-typo-in-PaintBox-PDF-backend.patch fixing typo in
+  @PaintBox PDF backend.
+- Add avoid-calling-catclose-with-an-invalid-argument.patch
+  avoids calling catclose with an invalid argument
+- Add opensuse-build.patch allowing build in OBS.
+
+-------------------------------------------------------------------
+Wed May  8 22:02:53 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- update to 3.43.0:
+  - fix many compile warnings (bsc#1220574)
+
+-------------------------------------------------------------------
+Tue Nov 22 20:29:21 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.42.2: 
+  * blf : fix typo in @paintbox PDF backend
+  * include/lengths: Remove undefined __loutd reference. 
+
+-------------------------------------------------------------------
+Tue Mar 22 17:50:34 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update to 3.42.1:
+  - Update README version.
+  - Include README in updateversion.sh
+  - Ensure BINDIR is created
+  - makefile: Only chmod BINDIR if it is freshly created.
+  - Ensure CFLAGS/LDFLAGS can be passed to compiler 
+
+-------------------------------------------------------------------
+Fri May 14 13:46:35 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Use fork by William Bader
+  * https://mail.gnu.org/archive/html/lout-users/2021-04/msg00001.html
+- Update to version 3.42:
+  * Support for embedding PDF and bitmapped images in lout.
+  * Small images are now placed more accurately.
+  * Improve accuracy of the CM unit.
+  * Add support for segmented postscript files.
+  * Fix the fatal error "AdjustSize: Up(x) == x!"
+  * Fix possible memory overwrite
+  * Fix some bad memory accesses
+  * Full changes:
+    https://github.com/william8000/lout/blob/3.42/whatsnew#L615
+- Update to version 3.41:
+  * Fix CVE-2019-19918 and CVE-2019-19917
+- Always generate the PDFs, dropped as sources
+- Drop upstream resolved
+  * makefile.patch
+  * lout-3.40-cve.patch
+
+-------------------------------------------------------------------
+Fri Oct 23 13:40:17 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Add lout-3.40-cve.patch from
+  https://lists.nongnu.org/archive/html/lout-users/2020-10/msg00013.html
+  fixing  bsc#1159713 and bsc#1159714 (CVE-2019-19918 and
+  CVE-2019-19917), two buffer overflows.
+
+-------------------------------------------------------------------
+Tue Sep  3 19:35:00 CEST 2019 - Matej Cepl <mcepl@suse.com>
+
+- Why in the world we set executable bit on README? Fixed.
+
+-------------------------------------------------------------------
+Mon Nov 12 22:50:55 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim authorship info that does not belong into the description.
+  Move printer mention to cover all cases. Trim bias.
+
+-------------------------------------------------------------------
+Sun Jul  1 20:28:49 UTC 2018 - mcepl@suse.com
+
+- Clean up SPEC file to eliminate warnings.
+
+-------------------------------------------------------------------
+Sun Nov  5 20:28:49 UTC 2017 - o.g.m.belleux@gmail.com
+
+- openSUSE initial release
+-- initial build for opensuse leap 42.2 & 42.3
+-- initial build for opensuse tumbleweed

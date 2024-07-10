@@ -1,0 +1,28 @@
+From bcdfa6b7ce3184b1fd7372716703248aeb14384e Mon Sep 17 00:00:00 2001
+From: Ismael Luceno <ismael@iodev.co.uk>
+Date: Thu, 25 Jan 2024 07:56:58 +0100
+Subject: [PATCH 2/2] Avoid calling catclose with an invalid argument
+
+POSIX doesn't specify that catclose should accept -1 as argument, and with
+musl (1.2.4 and earlier at least) it causes a segfault.
+---
+ z01.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/z01.c b/z01.c
+index f18d4ce..d4953b8 100644
+--- a/z01.c
++++ b/z01.c
+@@ -974,7 +974,8 @@ int main(int argc, char *argv[])
+   while( run_num <= runs_to_do );
+ 
+ #if LOCALE_ON
+-  catclose(MsgCat);
++  if (MsgCat != (nl_catd)-1)
++    catclose(MsgCat);
+ #endif
+ 
+   exit(0);
+-- 
+2.45.1
+
