@@ -1,0 +1,17 @@
+<package name="perl-Config-Crontab" project="openSUSE:Factory">
+  <title>Read/Write Vixie compatible crontab files</title>
+  <description>Config::Crontab reads and writes (and pretty-prints) your crontab(5)
+files. It is compatible with Vixie-style crontabs (and all subsets,
+including Solaris' SysV-style crontabs).
+
+Config::Crontab has a simple, object-oriented syntax. Crontab files are
+broken into &quot;blocks&quot; (paragraphs, each separated by two or more
+newlines); the Block is the basic unit of a Config::Crontab object.
+
+You can re-order entire blocks within a crontab file, re-order lines
+within blocks (there are three types of lines: comments, environment
+settings, and crontab commands or events), remove blocks or lines
+within blocks, add new blocks or lines within blocks, etc. See the
+Config::Crontab manpage for full details.</description>
+  <devel project="devel:languages:perl" package="perl-Config-Crontab"/>
+</package>
