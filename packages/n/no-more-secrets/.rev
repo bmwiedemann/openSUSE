@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d21e1f865aab41a5a84e4ccfcd91e970</srcmd5>
+    <version>0.2.1</version>
+    <time>1485382644</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>429756</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c2b76ceee83c4664ccbbfe09045c5fe7</srcmd5>
+    <version>0.3.2</version>
+    <time>1490317752</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>459152</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f661c3ccdff62a96f8d0f71f6d1d5c58</srcmd5>
+    <version>0.3.3</version>
+    <time>1515506089</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>562451</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e8385cfa57053d925dea34a0a330dc7b</srcmd5>
+    <version>1.0.1</version>
+    <time>1632766127</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.0.1:
+  * Updated output for nms -v to match release version.
+
+- Update to 1.0.0:
+  * Added cyan for color output.
+  * Fixed issues with the ncurses implementation.
+  * Improved code for getting input and error reporting.
+  * Turned on optimizations for the c compiler.
+  * Various other small code improvements and small bug/typo fixes.</comment>
+    <requestid>921534</requestid>
+  </revision>
+</revisionlist>

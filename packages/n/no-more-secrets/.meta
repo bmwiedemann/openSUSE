@@ -1,0 +1,5 @@
+<package name="no-more-secrets" project="openSUSE:Factory">
+  <title>no-more-secrets</title>
+  <description></description>
+  <devel project="games" package="no-more-secrets"/>
+</package>
