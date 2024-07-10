@@ -1,0 +1,73 @@
+From: Michal Kubecek <mkubecek@suse.cz>
+Date: Fri, 15 Jan 2016 07:29:44 +0100
+Subject: adjust installation directories for openSUSE/SLE
+Patch-mainline: Never, SUSE specific
+
+Match the directory layout of openSUSE and SLE.
+---
+ Makefile       |    6 +++---
+ netem/Makefile |    5 +++--
+ tc/q_netem.c   |    2 +-
+ 3 files changed, 7 insertions(+), 6 deletions(-)
+
+Index: iproute2-6.7.0/Makefile
+===================================================================
+--- iproute2-6.7.0.orig/Makefile
++++ iproute2-6.7.0/Makefile
+@@ -15,8 +15,8 @@ MAKEFLAGS += --no-print-directory
+ endif
+ 
+ PREFIX?=/usr
+-SBINDIR?=/sbin
+-NETNS_RUN_DIR?=/var/run/netns
++SBINDIR?=/usr/sbin
++NETNS_RUN_DIR?=/run/netns
+ NETNS_ETC_DIR?=/etc/netns
+ DATADIR?=$(PREFIX)/share
+ HDRDIR?=$(PREFIX)/include/iproute2
+@@ -33,7 +33,7 @@ DBM_INCLUDE:=$(DESTDIR)/usr/include
+ 
+ SHARED_LIBS = y
+ 
+-DEFINES= -DRESOLVE_HOSTNAMES -DLIBDIR=\"$(LIBDIR)\"
++DEFINES= -DRESOLVE_HOSTNAMES -DLIBDIR=\"$(LIBDIR)\" -DPKGDATADIR=\"$(DATADIR)/tc\"
+ ifneq ($(SHARED_LIBS),y)
+ DEFINES+= -DNO_SHARED_LIBS
+ endif
+Index: iproute2-6.7.0/netem/Makefile
+===================================================================
+--- iproute2-6.7.0.orig/netem/Makefile
++++ iproute2-6.7.0/netem/Makefile
+@@ -7,6 +7,7 @@ DISTDATA = normal.dist pareto.dist paret
+ HOSTCC ?= $(CC)
+ CCOPTS  = $(CBUILD_CFLAGS)
+ LDLIBS += -lm
++LIBDIR = /usr/lib
+ 
+ all: $(DISTGEN) $(DISTDATA)
+ 
+@@ -23,9 +24,9 @@ stats: stats.c
+ 	$(HOSTCC) $(CCOPTS) -I../include -o $@ $@.c -lm
+ 
+ install: all
+-	mkdir -p $(DESTDIR)$(LIBDIR)/tc
++	mkdir -p $(DESTDIR)/usr/share/tc
+ 	for i in $(DISTDATA); \
+-	do install -m 644 $$i $(DESTDIR)$(LIBDIR)/tc; \
++	do install -m 644 $$i $(DESTDIR)/usr/share/tc; \
+ 	done
+ 
+ clean:
+Index: iproute2-6.7.0/tc/q_netem.c
+===================================================================
+--- iproute2-6.7.0.orig/tc/q_netem.c
++++ iproute2-6.7.0/tc/q_netem.c
+@@ -131,7 +131,7 @@ static int get_distribution(const char *
+ 	char *line = NULL;
+ 	char name[128];
+ 
+-	snprintf(name, sizeof(name), "%s/%s.dist", get_tc_lib(), type);
++	snprintf(name, sizeof(name), "%s/%s.dist", PKGDATADIR, type);
+ 	f = fopen(name, "r");
+ 	if (f == NULL) {
+ 		fprintf(stderr, "No distribution data for %s (%s: %s)\n",

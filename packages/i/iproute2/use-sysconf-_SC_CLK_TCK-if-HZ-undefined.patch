@@ -1,0 +1,24 @@
+From: Michal Kubecek <mkubecek@suse.cz>
+Date: Fri, 15 Jan 2016 07:30:15 +0100
+Subject: use sysconf(_SC_CLK_TCK) if HZ undefined
+Patch-mainline: No
+
+---
+ lib/utils.c |    4 ++++
+ 1 file changed, 4 insertions(+)
+
+Index: iproute2-6.6.0/lib/utils.c
+===================================================================
+--- iproute2-6.6.0.orig/lib/utils.c
++++ iproute2-6.6.0/lib/utils.c
+@@ -138,6 +138,10 @@ int get_long(long *val, const char *arg,
+ 	return 0;
+ }
+ 
++#ifndef HZ
++#define HZ sysconf(_SC_CLK_TCK)
++#endif
++
+ int get_integer(int *val, const char *arg, int base)
+ {
+ 	long res;

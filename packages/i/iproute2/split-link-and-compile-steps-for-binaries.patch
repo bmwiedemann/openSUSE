@@ -1,0 +1,49 @@
+From: Marcus Meissner <meissner@suse.com>
+Date: Sat, 10 Jun 2017 14:29:22 +0000
+Subject: split link and compile steps for binaries
+Patch-mainline: Submitted - 20170804
+
+Do not compile and link in one step so that CFLAGS and LDFLAGS are only
+applied to the phase they are intended for. This is needed for PIE default
+to work.
+---
+ misc/Makefile | 17 +++++++++--------
+ 1 file changed, 9 insertions(+), 8 deletions(-)
+
+Index: iproute2-6.3.0/misc/Makefile
+===================================================================
+--- iproute2-6.3.0.orig/misc/Makefile
++++ iproute2-6.3.0/misc/Makefile
+@@ -9,23 +9,24 @@ include ../config.mk
+ ifeq ($(HAVE_BERKELEY_DB),y)
+ 	TARGETS += arpd
+ endif
++CFLAGS += -I$(DBM_INCLUDE)
+ 
+ all: $(TARGETS)
+ 
+ ss: $(SSOBJ)
+ 	$(QUIET_LINK)$(CC) $^ $(LDFLAGS) $(LDLIBS) -o $@
+ 
+-nstat: nstat.c
+-	$(QUIET_CC)$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) -o nstat nstat.c $(LDLIBS) -lm
++nstat: nstat.o
++	$(QUIET_CC)$(CC) $(LDFLAGS) -o nstat nstat.o $(LDLIBS) -lm
+ 
+-ifstat: ifstat.c
+-	$(QUIET_CC)$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) -o ifstat ifstat.c $(LDLIBS) -lm
++ifstat: ifstat.o
++	$(QUIET_CC)$(CC) $(LDFLAGS) -o ifstat ifstat.o $(LDLIBS) -lm
+ 
+-rtacct: rtacct.c
+-	$(QUIET_CC)$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) -o rtacct rtacct.c $(LDLIBS) -lm
++rtacct: rtacct.o
++	$(QUIET_CC)$(CC) $(LDFLAGS) -o rtacct rtacct.o $(LDLIBS) -lm
+ 
+-arpd: arpd.c
+-	$(QUIET_CC)$(CC) $(CFLAGS) -I$(DBM_INCLUDE) $(CPPFLAGS) $(LDFLAGS) -o arpd arpd.c $(LDLIBS) -ldb
++arpd: arpd.o
++	$(QUIET_CC)$(CC) $(LDFLAGS) -o arpd arpd.o $(LDLIBS) -ldb
+ 
+ ssfilter.tab.c: ssfilter.y
+ 	$(QUIET_YACC)$(YACC) -b ssfilter ssfilter.y

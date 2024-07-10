@@ -1,0 +1,1161 @@
+<revisionlist>
+  <revision rev="1" vrev="32">
+    <srcmd5>a438e348344960541ec655111f73961c</srcmd5>
+    <version>2.6.15</version>
+    <time>1168903065</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="50">
+    <srcmd5>129aa40a3ba5779e7a47d173cbe704e5</srcmd5>
+    <version>2.6.15</version>
+    <time>1170086470</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="52">
+    <srcmd5>fe77e51543ca32a068c0d0961fbe62b1</srcmd5>
+    <version>2.6.15</version>
+    <time>1170979761</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="61">
+    <srcmd5>857a40d09de78c46f63a365613bee1a9</srcmd5>
+    <version>2.6.15</version>
+    <time>1175628627</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="63">
+    <srcmd5>dc6c7e0aca52eeced55572efd6025bc6</srcmd5>
+    <version>2.6.15</version>
+    <time>1177077406</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>07ab4a22c7e2aeddcd849e31596db87a</srcmd5>
+    <version>2.6.22</version>
+    <time>1184341784</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="37">
+    <srcmd5>144fa9e0494a81b00deca6c7e4402466</srcmd5>
+    <version>2.6.22</version>
+    <time>1192550140</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>e66319fc97cbfd47968d37eac1d2a6ca</srcmd5>
+    <version>2.6.23</version>
+    <time>1193425101</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="58">
+    <srcmd5>161b3bc0dccc5fd6e3086f563a9aaac4</srcmd5>
+    <version>2.6.23</version>
+    <time>1208700428</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="65">
+    <srcmd5>6934b00925342ed631f16c4d7e2168dc</srcmd5>
+    <version>2.6.23</version>
+    <time>1210281315</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="78">
+    <srcmd5>2fa257a702c99a01a01fd100742085bd</srcmd5>
+    <version>2.6.23</version>
+    <time>1214833583</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="83">
+    <srcmd5>dd156227537115924caf3a810279acfb</srcmd5>
+    <version>2.6.23</version>
+    <time>1215808407</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>d8ee1f1fc52e13fe6d5a2c5c69882a1b</srcmd5>
+    <version>2.6.25</version>
+    <time>1216050530</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="40">
+    <srcmd5>2b8221099c8b0229433a2138e93f86e0</srcmd5>
+    <version>2.6.25</version>
+    <time>1222267886</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="41">
+    <srcmd5>49d7cb5e51de69728552ca838ad73d18</srcmd5>
+    <version>2.6.25</version>
+    <time>1223908256</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="42">
+    <srcmd5>2d61df4aa88d601feb5770b426048a48</srcmd5>
+    <version>2.6.25</version>
+    <time>1229348383</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="43">
+    <srcmd5>a82f01df7fe62f3c8bffbae48dc96108</srcmd5>
+    <version>2.6.25</version>
+    <time>1233183085</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="45">
+    <srcmd5>252a17dad841251b0bc371eba8135f53</srcmd5>
+    <version>2.6.25</version>
+    <time>1235079000</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="19" vrev="46">
+    <srcmd5>dc6fcfc710593ff842b028ef16308989</srcmd5>
+    <version>2.6.25</version>
+    <time>1248875485</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>d78086428f864880060baca577cb4ed0</srcmd5>
+    <version>2.6.29.1</version>
+    <time>1250198748</time>
+    <user>autobuild</user>
+    <comment>Copy from network:utilities/iproute2 based on submit request 17722 from user adrianSuSE
+</comment>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>f5a96d43e455370ebf0fcf3b481baada</srcmd5>
+    <version>2.6.29.1</version>
+    <time>1251410411</time>
+    <user>autobuild</user>
+    <comment>Copy from network:utilities/iproute2 based on submit request 18798 from user mlschroe
+</comment>
+  </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>ad093b7e8735a7fe5b536b8af5f317cf</srcmd5>
+    <version>2.6.29.1</version>
+    <time>1251483349</time>
+    <user>autobuild</user>
+    <comment>Copy from network:utilities/iproute2 based on submit request 19149 from user sax2
+</comment>
+  </revision>
+  <revision rev="23" vrev="4">
+    <srcmd5>f5c4246adb6ed9d1f2157473633391ea</srcmd5>
+    <version>2.6.29.1</version>
+    <time>1253134462</time>
+    <user>autobuild</user>
+    <comment>Copy from network:utilities/iproute2 based on submit request 20502 from user sax2
+</comment>
+  </revision>
+  <revision rev="24" vrev="5">
+    <srcmd5>f25d17cc124e646dd86a53374a79b72c</srcmd5>
+    <version>2.6.29.1</version>
+    <time>1255350199</time>
+    <user>autobuild</user>
+    <comment>Copy from network:utilities/iproute2 based on submit request 22166 from user sax2
+</comment>
+  </revision>
+  <revision rev="25" vrev="7">
+    <srcmd5>f25d17cc124e646dd86a53374a79b72c</srcmd5>
+    <version>2.6.29.1</version>
+    <time>1255350199</time>
+    <user>autobuild</user>
+    <comment>Copy from network:utilities/iproute2 based on submit request 22166 from user sax2
+</comment>
+  </revision>
+  <revision rev="26" vrev="8">
+    <srcmd5>6ea72e39b8a88fa52e488c269840e721</srcmd5>
+    <version>2.6.29.1</version>
+    <time>1258369245</time>
+    <user>autobuild</user>
+    <comment>Copy from network:utilities/iproute2 based on submit request 24485 from user msmeissn
+</comment>
+  </revision>
+  <revision rev="27" vrev="9">
+    <srcmd5>3ac4dcf8cb485f8c8db7c357abc5ffaa</srcmd5>
+    <version>2.6.29.1</version>
+    <time>1263483111</time>
+    <user>autobuild</user>
+    <comment>Copy from network:utilities/iproute2 based on submit request 29026 from user coolo
+</comment>
+  </revision>
+  <revision rev="28" vrev="10">
+    <srcmd5>2595474d85fc9634d4e5a56b3f6ed3fd</srcmd5>
+    <version>2.6.29.1</version>
+    <time>1268730352</time>
+    <user>autobuild</user>
+    <comment>Copy from network:utilities/iproute2 based on submit request 34794 from user coolo
+</comment>
+    <requestid>34794</requestid>
+  </revision>
+  <revision rev="29" vrev="11">
+    <srcmd5>a3937ee0565f1d3ec1b47040326eae6c</srcmd5>
+    <version>2.6.29.1</version>
+    <time>1268924034</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="30" vrev="13">
+    <srcmd5>a3937ee0565f1d3ec1b47040326eae6c</srcmd5>
+    <version>2.6.29.1</version>
+    <time>1278667352</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="31" vrev="14">
+    <srcmd5>a3937ee0565f1d3ec1b47040326eae6c</srcmd5>
+    <version>2.6.29.1</version>
+    <time>1278678583</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>736002ab0a31834fa687a77257b787e3</srcmd5>
+    <version>2.6.35+9</version>
+    <time>1289223965</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 52263 from user jengelh
+</comment>
+    <requestid>52263</requestid>
+  </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>d51ae7d30ce704eaa884ca6ed573f7fc</srcmd5>
+    <version>2.6.35+9</version>
+    <time>1289223978</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 52263
+</comment>
+  </revision>
+  <revision rev="34" vrev="3">
+    <srcmd5>7a46124eaba598ea970923cf018ec82a</srcmd5>
+    <version>2.6.35+9</version>
+    <time>1290249058</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 53410 from user coolo
+</comment>
+    <requestid>53410</requestid>
+  </revision>
+  <revision rev="35" vrev="4">
+    <srcmd5>2d69f0763bea9a1e2f3e19c5421a7a1d</srcmd5>
+    <version>2.6.35+9</version>
+    <time>1290249071</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 53410
+</comment>
+  </revision>
+  <revision rev="36" vrev="5">
+    <srcmd5>13de87fddd90405e2b371617891b8c58</srcmd5>
+    <version>2.6.35+9</version>
+    <time>1292766007</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 56229 from user jengelh
+</comment>
+    <requestid>56229</requestid>
+  </revision>
+  <revision rev="37" vrev="6">
+    <srcmd5>689e627fbf4aff8e1ed932d038ce2944</srcmd5>
+    <version>2.6.35+9</version>
+    <time>1292766022</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 56229
+</comment>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>bbb7ec88408a3058555d71c2936616b8</srcmd5>
+    <version>2.6.37</version>
+    <time>1294965718</time>
+    <user>darix</user>
+    <comment>Accepted submit request 58010 from user jengelh
+</comment>
+    <requestid>58010</requestid>
+  </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>7671632a6aefe78a3dd514c59a3eff59</srcmd5>
+    <version>2.6.37</version>
+    <time>1294965725</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 58010
+</comment>
+  </revision>
+  <revision rev="40" vrev="5">
+    <srcmd5>7671632a6aefe78a3dd514c59a3eff59</srcmd5>
+    <version>2.6.37</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>34843ce67178b27869103e07cddfd79f</srcmd5>
+    <version>2.6.38</version>
+    <time>1300955830</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 65041 from user licensedigger
+</comment>
+    <requestid>65041</requestid>
+  </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>8e39d5f6f467f503c1c19e6ca9274770</srcmd5>
+    <version>2.6.38</version>
+    <time>1300955844</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 65041
+</comment>
+  </revision>
+  <revision rev="43" vrev="3">
+    <srcmd5>08e5e529a87f2ed0154127bc5bb1b530</srcmd5>
+    <version>2.6.38</version>
+    <time>1306869233</time>
+    <user>darix</user>
+    <comment></comment>
+    <requestid>72345</requestid>
+  </revision>
+  <revision rev="44" vrev="4">
+    <srcmd5>a382b484ab34cca5ca04a800547370a4</srcmd5>
+    <version>2.6.38</version>
+    <time>1306869244</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 72345
+</comment>
+  </revision>
+  <revision rev="45" vrev="5">
+    <srcmd5>763f05dc18b74926a8b5d8297919c9be</srcmd5>
+    <version>2.6.38</version>
+    <time>1307349331</time>
+    <user>saschpe</user>
+    <comment>[Resubmit of 72647 after fixing CCOPTS]
+- Correct installation path of tc modules
+- Restore symbol lookup in m_xt.so (bnc#679172)
+- Add patches to make m_xt build with libxtables6
+- Restore m_xt's module lookup (bnc#660554)
+- Run spec-beautifier</comment>
+    <requestid>72675</requestid>
+  </revision>
+  <revision rev="46" vrev="6">
+    <srcmd5>43637e4f311392ad5319fbf86f295069</srcmd5>
+    <version>2.6.38</version>
+    <time>1307349357</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 72675
+</comment>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>ba8f72c78b262bd0f9e459c3bc62f2b3</srcmd5>
+    <version>2.6.39</version>
+    <time>1310379353</time>
+    <user>saschpe</user>
+    <comment>- Update to new upstream release 2.6.39
+* support device group semantics
+* support listing devices by group
+* parse flag XFRM_POLICY_ICMP
+* CHOKe scheduler
+* macvlan/macvtap: support 'passthru' mode
+* tc: SFB flow scheduler
+* tc add mqprio qdisc support
+* xfrm security context support
+* allow to specify truncation bits on auth algo
+* fix unit conversion of rtt/rttvar/rto_min
+* support IFLA_TXQLEN in ip link command
+- Remove iproute2-pdfdoc.diff: merged upstream
+- Remove iproute2-memleak.diff: merged upstream</comment>
+    <requestid>75994</requestid>
+  </revision>
+  <revision rev="48" vrev="2">
+    <srcmd5>c095c400d9b4d6d25783bfee75634ec8</srcmd5>
+    <version>2.6.39</version>
+    <time>1310379365</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 75994
+</comment>
+  </revision>
+  <revision rev="49" vrev="4">
+    <srcmd5>c095c400d9b4d6d25783bfee75634ec8</srcmd5>
+    <version>2.6.39</version>
+    <time>1319181991</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="50" vrev="5">
+    <srcmd5>b66a385e7c9f1158634aadf9420883d2</srcmd5>
+    <version>2.6.39</version>
+    <time>1319551414</time>
+    <user>coolo</user>
+    <comment>- Clarify license for iproute2.spec (bnc#720282)
+
+- Add patch iproute2-xt-detect.diff to address shipped Makefiles'
+  failure to use pkg-config to locate libxtables, and thus
+  reenable m_xt</comment>
+    <requestid>89043</requestid>
+  </revision>
+  <revision rev="51" vrev="6">
+    <srcmd5>dde8cd89fce5ab8f4a3a1e61342fdeee</srcmd5>
+    <version>2.6.39</version>
+    <time>1323191974</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>edc847c846fc2e4ead5d5469dce24e48</srcmd5>
+    <version>3.2.0</version>
+    <time>1328890459</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 3.2.0
+* L2TPv3 support
+* netem additions for loss models, improved RED options</comment>
+    <requestid>103454</requestid>
+  </revision>
+  <revision rev="53" vrev="2">
+    <srcmd5>ec3def95f7245629d0984449f05f9eb1</srcmd5>
+    <version>3.2.0</version>
+    <time>1331324625</time>
+    <user>coolo</user>
+    <comment>- Place ip binary in /usr tree (UsrMerge project)
+- Fix permissions to eliminate rpmlint errors</comment>
+    <requestid>108511</requestid>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>143ae3c8a4a03d9ddaf39c26053e68d4</srcmd5>
+    <version>3.3.0</version>
+    <time>1334692717</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>113794</requestid>
+  </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>a0730b79cb3ecbf255939d78898621fc</srcmd5>
+    <version>3.4.0</version>
+    <time>1338528024</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 3.4.0
+* for kernel 3.4
+* ss: use new INET_DIAG_SKMEMINFO option to get more memory
+  information for tcp socket
+* ip: add ability to set link state</comment>
+    <requestid>123060</requestid>
+  </revision>
+  <revision rev="56" vrev="3">
+    <srcmd5>a0730b79cb3ecbf255939d78898621fc</srcmd5>
+    <version>3.4.0</version>
+    <time>1340183465</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="57" vrev="4">
+    <srcmd5>cc59f3ab102565b87b2612684b158878</srcmd5>
+    <version>3.4.0</version>
+    <time>1344064567</time>
+    <user>coolo</user>
+    <comment>- Make it build with modern pdflatex and TeXLive 2012 ... for this
+  also sgmltools has to know about correct babel style usage (forwarded request 129322 from &amp;lt;bound method Request.get_creator of &amp;lt;osc.core.Request instance at 0x2c2a0e0&amp;gt;&amp;gt;)</comment>
+    <requestid>129327</requestid>
+  </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>f02d05b6317887132bc2a079dbafa595</srcmd5>
+    <version>3.5.1</version>
+    <time>1348231165</time>
+    <user>coolo</user>
+    <comment>- Make it build even without pdflatex, use latex+dvips, beside this
+  iproute2-pdflatex.diff was documented, see my last entry from
+  Jul 30 14:33:58 UTC 2012. (forwarded request 134779 from &amp;lt;bound method Request.get_creator of &amp;lt;osc.core.Request instance at 0x2d5d098&amp;gt;&amp;gt;)</comment>
+    <requestid>135113</requestid>
+  </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>c1d2f4ec5d65284a845a49601ae592a5</srcmd5>
+    <version>3.6.0</version>
+    <time>1353597259</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>142277</requestid>
+  </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>e648726bd33e8759bcc1b5cc254e1b1c</srcmd5>
+    <version>3.7.0</version>
+    <time>1355946529</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 3.7.0
+* add support for tcp_metrics
+* iplink: Added support for the kernel IPoIB RTNL ops
+* ss: Get udp sockets info via sock-diag
+* tc: add canid ematch to ematch_map
+* vxlan support</comment>
+    <requestid>145851</requestid>
+  </revision>
+  <revision rev="61" vrev="3">
+    <srcmd5>e648726bd33e8759bcc1b5cc254e1b1c</srcmd5>
+    <version>3.7.0</version>
+    <time>1359109087</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>90371ac8461853e81a8e426e9fda802a</srcmd5>
+    <version>3.8.0</version>
+    <time>1368695103</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>175801</requestid>
+  </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>eba27813c090d9babf92a4f4c71ad833</srcmd5>
+    <version>3.9.0</version>
+    <time>1370516699</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 3.9.0
+* Support for managing the forwarding tables in Bridge and VXLAN.
+- Remove 0001-build-resolve-compile-error-due-to-missing-include.patch
+  (merged upstream)
+- Signature verification for the package</comment>
+    <requestid>177767</requestid>
+  </revision>
+  <revision rev="64" vrev="2">
+    <srcmd5>1dbd8a1dd53942ec24245294be8bd738</srcmd5>
+    <version>3.9.0</version>
+    <time>1378962583</time>
+    <user>coolo</user>
+    <comment>- Make it build with latest TeXLive 2013</comment>
+    <requestid>198528</requestid>
+  </revision>
+  <revision rev="65" vrev="4">
+    <srcmd5>1dbd8a1dd53942ec24245294be8bd738</srcmd5>
+    <version>3.9.0</version>
+    <time>1379662678</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>574bc6e0d23c0a15e05ec13238be1470</srcmd5>
+    <version>3.11</version>
+    <time>1380296244</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>200796</requestid>
+  </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>e9218787e1001fa48607d3cd59743287</srcmd5>
+    <version>3.12</version>
+    <time>1387453226</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>211099</requestid>
+  </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>45872872b5a9f59a64ab20655481ac3e</srcmd5>
+    <version>3.14</version>
+    <time>1398418421</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 3.14</comment>
+    <requestid>230747</requestid>
+  </revision>
+  <revision rev="69" vrev="2">
+    <srcmd5>e4c264c8a386cf5b6d803eddd8d67311</srcmd5>
+    <version>3.14</version>
+    <time>1400006765</time>
+    <user>coolo</user>
+    <comment>- split iproute2-doc subpackage into a separate spec to reduce
+  rebuild times</comment>
+    <requestid>233599</requestid>
+  </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>48012aff088e61519c6364f03f1b443d</srcmd5>
+    <version>3.15</version>
+    <time>1405658419</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 3.15</comment>
+    <requestid>241283</requestid>
+  </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>9c86bb662a2b2fd99e48969d5c4d3367</srcmd5>
+    <version>3.16</version>
+    <time>1407912497</time>
+    <user>lnussel</user>
+    <comment>- Update to new upstream release 3.16.0, following Linux 3.16</comment>
+    <requestid>244127</requestid>
+  </revision>
+  <revision rev="72" vrev="3">
+    <srcmd5>9c86bb662a2b2fd99e48969d5c4d3367</srcmd5>
+    <version>3.16</version>
+    <time>1409301240</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>7d24193177527c7889cf0a167453a89c</srcmd5>
+    <version>3.17</version>
+    <time>1416994528</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 3.17</comment>
+    <requestid>262983</requestid>
+  </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>901687be755e004393ac6011dd70e84d</srcmd5>
+    <version>3.18</version>
+    <time>1421333887</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 3.18</comment>
+    <requestid>280449</requestid>
+  </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>0e7818df9fcde7142f2a2f722c03f1da</srcmd5>
+    <version>3.19</version>
+    <time>1425218292</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 3.19</comment>
+    <requestid>287934</requestid>
+  </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>e209cd9bd3956d2ae72ac42a633b0ba9</srcmd5>
+    <version>4.0</version>
+    <time>1429657818</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 4.0</comment>
+    <requestid>296728</requestid>
+  </revision>
+  <revision rev="77" vrev="2">
+    <srcmd5>03752f6cfc33b0e1eb060a7598dd4c54</srcmd5>
+    <version>4.0</version>
+    <time>1435170617</time>
+    <user>dimstar_suse</user>
+    <comment>- Update iproute2-dirs.diff to respect /usr/share/tc [bnc#934828]
+
+- Update iproute2-dirs.diff to respect /usr/share/tc [bnc#934828]</comment>
+    <requestid>312250</requestid>
+  </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>43553dbb84571db948b6fb664a533893</srcmd5>
+    <version>4.1</version>
+    <time>1436111677</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 4.1</comment>
+    <requestid>314513</requestid>
+  </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>c35305d611b7c28778a23309f4750c66</srcmd5>
+    <version>4.1.1</version>
+    <time>1437398070</time>
+    <user>coolo</user>
+    <comment>- Update to version 4.1.1:</comment>
+    <requestid>317178</requestid>
+  </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>f93dd36b1373251acef928be592c8f5c</srcmd5>
+    <version>4.2</version>
+    <time>1443071757</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>331635</requestid>
+  </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>d8fc367d823a6ea17dfd1475636ad6a3</srcmd5>
+    <version>4.3</version>
+    <time>1447766395</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 4.3
+* route: filter routes by family if so specified
+* ip: add `ip rule save/restore`
+* Manpage additions for tc filters</comment>
+    <requestid>343942</requestid>
+  </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>60c2b51e8896771793135d4af122e372</srcmd5>
+    <version>4.4</version>
+    <time>1453416083</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 4.4
+- replace Debian specific paths and package names in man pages with SUSE ones (forwarded request 353677 from mkubecek)</comment>
+    <requestid>353694</requestid>
+  </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>c135522fcad964920ddd5dddb46fd241</srcmd5>
+    <version>4.5</version>
+    <time>1459936266</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 4.5</comment>
+    <requestid>382899</requestid>
+  </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>a2245b156b7dfebf352b17e8559020dc</srcmd5>
+    <version>4.6</version>
+    <time>1464299584</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 4.6
+[supersede:
+require bash-completion for iproute2-bash-completion]</comment>
+    <requestid>397556</requestid>
+  </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>d1a93b6f507261e23418b3accd20f9ef</srcmd5>
+    <version>4.8</version>
+    <time>1477481253</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>437193</requestid>
+  </revision>
+  <revision rev="86" vrev="2">
+    <srcmd5>50f845c053deee068f9d06f751dacbf8</srcmd5>
+    <version>4.8</version>
+    <time>1479381680</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>440564</requestid>
+  </revision>
+  <revision rev="87" vrev="3">
+    <srcmd5>aeab8784111384675253511a04ded77b</srcmd5>
+    <version>4.8</version>
+    <time>1480584248</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>441845</requestid>
+  </revision>
+  <revision rev="88" vrev="1">
+    <srcmd5>bbcea45f431971a1be08f10d8d199b5a</srcmd5>
+    <version>4.9</version>
+    <time>1483047689</time>
+    <user>lnussel_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>447180</requestid>
+  </revision>
+  <revision rev="89" vrev="1">
+    <srcmd5>0136646aa325391b345439a073eb5bea</srcmd5>
+    <version>4.11</version>
+    <time>1499152100</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 4.11</comment>
+    <requestid>507162</requestid>
+  </revision>
+  <revision rev="90" vrev="1">
+    <srcmd5>880a20482d14838bdb5fd1f2f4b6ec01</srcmd5>
+    <version>4.12</version>
+    <time>1500669319</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 4.12 (forwarded request 509503 from mkubecek)</comment>
+    <requestid>509506</requestid>
+  </revision>
+  <revision rev="91" vrev="2">
+    <srcmd5>19f2baa2a0212bd5e504070450fdde72</srcmd5>
+    <version>4.12</version>
+    <time>1503929800</time>
+    <user>dimstar_suse</user>
+    <comment>SLE cleaning</comment>
+    <requestid>518693</requestid>
+  </revision>
+  <revision rev="92" vrev="1">
+    <srcmd5>22054e39b8dacd9befc5d1989e2322c2</srcmd5>
+    <version>4.13</version>
+    <time>1504981353</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>521654</requestid>
+  </revision>
+  <revision rev="93" vrev="1">
+    <srcmd5>c4769aeb323d5da8d2e2374b7eaea05a</srcmd5>
+    <version>4.14.1</version>
+    <time>1513162551</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 4.14.1</comment>
+    <requestid>555790</requestid>
+  </revision>
+  <revision rev="94" vrev="1">
+    <srcmd5>9359dd00630fe056e27c3da69cac9c8b</srcmd5>
+    <version>4.15.0</version>
+    <time>1518281697</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 4.15.0</comment>
+    <requestid>573923</requestid>
+  </revision>
+  <revision rev="95" vrev="2">
+    <srcmd5>6c18769aae80c6020630b4d147a2ba52</srcmd5>
+    <version>4.15.0</version>
+    <time>1520588051</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>583679</requestid>
+  </revision>
+  <revision rev="96" vrev="1">
+    <srcmd5>cf734ebbeb40a5455dea7475f1be89ef</srcmd5>
+    <version>4.16</version>
+    <time>1523956257</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 4.16</comment>
+    <requestid>595278</requestid>
+  </revision>
+  <revision rev="97" vrev="2">
+    <srcmd5>663ce8a6f6925c7400daecf3da3d4521</srcmd5>
+    <version>4.16</version>
+    <time>1526022815</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>605099</requestid>
+  </revision>
+  <revision rev="98" vrev="1">
+    <srcmd5>ec11a1fbb1f15d1d9bc6d390991e12f6</srcmd5>
+    <version>4.17</version>
+    <time>1534321770</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>627692</requestid>
+  </revision>
+  <revision rev="99" vrev="1">
+    <srcmd5>5823086095651b39e7f59e69bb741ede</srcmd5>
+    <version>4.18</version>
+    <time>1536833382</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>633732</requestid>
+  </revision>
+  <revision rev="100" vrev="1">
+    <srcmd5>414455f2e971391a20f30d900e0b5af8</srcmd5>
+    <version>4.19</version>
+    <time>1541513592</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 4.19</comment>
+    <requestid>645459</requestid>
+  </revision>
+  <revision rev="101" vrev="1">
+    <srcmd5>04da80e899b08454932a4b440364227f</srcmd5>
+    <version>4.20</version>
+    <time>1549017782</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>668811</requestid>
+  </revision>
+  <revision rev="102" vrev="1">
+    <srcmd5>0d32f8afc2365ce98ed291da23960e7b</srcmd5>
+    <version>5.1</version>
+    <time>1558426915</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>702651</requestid>
+  </revision>
+  <revision rev="103" vrev="1">
+    <srcmd5>481d16678d9dbd167b2adf7c5366dc5b</srcmd5>
+    <version>5.2</version>
+    <time>1567678265</time>
+    <user>dimstar_suse</user>
+    <comment>- Use FAT LTO objects in order to provide proper static library. (forwarded request 722578 from marxin)</comment>
+    <requestid>722593</requestid>
+  </revision>
+  <revision rev="104" vrev="1">
+    <srcmd5>0615fcfcb108aefb69455a0ca9cfe6f8</srcmd5>
+    <version>5.3</version>
+    <time>1570448176</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 5.3
+- fix SLE12 build (forwarded request 733095 from mkubecek)</comment>
+    <requestid>733769</requestid>
+  </revision>
+  <revision rev="105" vrev="1">
+    <srcmd5>e0b746d665a24549ebf82f47d3fe9ac0</srcmd5>
+    <version>5.4</version>
+    <time>1576061963</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>753328</requestid>
+  </revision>
+  <revision rev="106" vrev="2">
+    <srcmd5>d72eae5b9083b08d0c76e67a9a5eaaaa</srcmd5>
+    <version>5.4</version>
+    <time>1578867387</time>
+    <user>dimstar_suse</user>
+    <comment>- Add no-double-definitions.patch [boo#1160271]</comment>
+    <requestid>761802</requestid>
+  </revision>
+  <revision rev="107" vrev="1">
+    <srcmd5>40a9c11bf433b3c64d11c9b2365b7b41</srcmd5>
+    <version>5.5.0</version>
+    <time>1581694092</time>
+    <user>okurz-factory</user>
+    <comment>- Update to new upstream version 5.5</comment>
+    <requestid>772545</requestid>
+  </revision>
+  <revision rev="108" vrev="1">
+    <srcmd5>623ce50f03b7229cdc831b956c07ea52</srcmd5>
+    <version>5.6.0</version>
+    <time>1586247632</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 5.6</comment>
+    <requestid>790696</requestid>
+  </revision>
+  <revision rev="109" vrev="2">
+    <srcmd5>a07e2bf551b82684511fa367eaab0572</srcmd5>
+    <version>5.6.0</version>
+    <time>1586641528</time>
+    <user>dimstar_suse</user>
+    <comment>- Move arpd into own subpackage to avoid libdb dependency
+  [jira#PM-1185]</comment>
+    <requestid>792342</requestid>
+  </revision>
+  <revision rev="110" vrev="3">
+    <srcmd5>ad6e9ccb2154066eace18a019fd55aa4</srcmd5>
+    <version>5.6.0</version>
+    <time>1587838378</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>797138</requestid>
+  </revision>
+  <revision rev="111" vrev="1">
+    <srcmd5>0f4690b2b837361f105cd9d951e579d1</srcmd5>
+    <version>5.7.0</version>
+    <time>1591652621</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 5.7</comment>
+    <requestid>811258</requestid>
+  </revision>
+  <revision rev="112" vrev="2">
+    <srcmd5>ec046b3e20bf9b4b417e0a27db583248</srcmd5>
+    <version>5.7.0</version>
+    <time>1593006457</time>
+    <user>dimstar_suse</user>
+    <comment>- remove bpf-bss-section-poc.patch, bpf-data-section-support-poc.patch:
+  * these patches should be obsolete with cilium 1.7 and they never
+  went upstream, so we can drop it (jsc#SLE-9813) (forwarded request 815490 from dirkmueller)</comment>
+    <requestid>815505</requestid>
+  </revision>
+  <revision rev="113" vrev="1">
+    <srcmd5>2e37a5c6056e791ab5c805d96718fa1e</srcmd5>
+    <version>5.8.0</version>
+    <time>1600077734</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>833232</requestid>
+  </revision>
+  <revision rev="114" vrev="2">
+    <srcmd5>a9dce23025b9586a669bef2bf1df906e</srcmd5>
+    <version>5.8.0</version>
+    <time>1602155129</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 0001-ip-add-error-reporting-when-RTM_GETNSID-failed.patch</comment>
+    <requestid>836420</requestid>
+  </revision>
+  <revision rev="115" vrev="1">
+    <srcmd5>de7eebd90b628b3ce41172cce8863d89</srcmd5>
+    <version>5.9.0</version>
+    <time>1603875458</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>843768</requestid>
+  </revision>
+  <revision rev="116" vrev="2">
+    <srcmd5>213a535fc97e175329619b1770dc542b</srcmd5>
+    <version>5.9.0</version>
+    <time>1606145925</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>849615</requestid>
+  </revision>
+  <revision rev="117" vrev="1">
+    <srcmd5>963217deaf7bc68c0751362d84132cb5</srcmd5>
+    <version>5.10.0</version>
+    <time>1612182338</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 5.10</comment>
+    <requestid>867285</requestid>
+  </revision>
+  <revision rev="118" vrev="1">
+    <srcmd5>951e366b84942edfd83185ac2d256501</srcmd5>
+    <version>5.11</version>
+    <time>1615362415</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 5.11</comment>
+    <requestid>877362</requestid>
+  </revision>
+  <revision rev="119" vrev="1">
+    <srcmd5>94c7fb5d6dbac885cd15f2c144d16c39</srcmd5>
+    <version>5.12</version>
+    <time>1619973329</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>889100</requestid>
+  </revision>
+  <revision rev="120" vrev="1">
+    <srcmd5>d3b0196922aad6240f1ea939e33fac8e</srcmd5>
+    <version>5.13</version>
+    <time>1627898683</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 5.13</comment>
+    <requestid>908809</requestid>
+  </revision>
+  <revision rev="121" vrev="1">
+    <srcmd5>708e6b09dcf47f6f70ab1f5275ca4117</srcmd5>
+    <version>5.14</version>
+    <time>1630936671</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 5.14</comment>
+    <requestid>915512</requestid>
+  </revision>
+  <revision rev="122" vrev="1">
+    <srcmd5>c55e60cbff4dc5b0027b19e5a901fb66</srcmd5>
+    <version>5.15</version>
+    <time>1637227976</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.15:</comment>
+    <requestid>931302</requestid>
+  </revision>
+  <revision rev="123" vrev="1">
+    <srcmd5>d31411af58b84872976f9a998a071a16</srcmd5>
+    <version>5.16</version>
+    <time>1642198344</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>945800</requestid>
+  </revision>
+  <revision rev="124" vrev="2">
+    <srcmd5>e81d7275a442c957a605e3c9a1eb7a6d</srcmd5>
+    <version>5.16</version>
+    <time>1647532886</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>959517</requestid>
+  </revision>
+  <revision rev="125" vrev="1">
+    <srcmd5>811dd7fcd5b4e6fab2095b83eeefa6dc</srcmd5>
+    <version>5.17</version>
+    <time>1648739911</time>
+    <user>dimstar_suse</user>
+    <comment>Staging:O</comment>
+    <requestid>965968</requestid>
+  </revision>
+  <revision rev="126" vrev="1">
+    <srcmd5>645d281654b3d620f2bd6ff42038e020</srcmd5>
+    <version>5.18</version>
+    <time>1654506598</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>980865</requestid>
+  </revision>
+  <revision rev="127" vrev="1">
+    <srcmd5>e1d3beae64083a5166c56d792ffa1d9d</srcmd5>
+    <version>5.19</version>
+    <time>1660235484</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>994302</requestid>
+  </revision>
+  <revision rev="128" vrev="1">
+    <srcmd5>56de3b8cdfab8967d5d9aea99de0f5f9</srcmd5>
+    <version>6.0</version>
+    <time>1665420388</time>
+    <user>favogt_factory</user>
+    <comment></comment>
+    <requestid>1008951</requestid>
+  </revision>
+  <revision rev="129" vrev="2">
+    <srcmd5>d677a2e5b24e9f5b0d0626e6807714ba</srcmd5>
+    <version>6.0</version>
+    <time>1669378285</time>
+    <user>dimstar_suse</user>
+    <comment>- Replace routel program by a non-python version [boo#1205632]</comment>
+    <requestid>1037901</requestid>
+  </revision>
+  <revision rev="130" vrev="1">
+    <srcmd5>afca6612d0e712dc68bdd9917202e858</srcmd5>
+    <version>6.1</version>
+    <time>1671889879</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 6.1:
+  * man: ss.8: fix a typo
+  * testsuite: fix build failure
+  * genl: remove unused vars in Makefile
+  * json: do not escape single quotes
+  * ip-monitor: Do not error out when RTNLGRP_STATS is not available
+  * ip-link: man: Document existence of netns argument in add command
+  * macsec: add Extended Packet Number support
+  * macsec: add user manual description for extended packet number feature
+  * ip: xfrm: support &quot;external&quot; (`collect_md`) mode in xfrm interfaces
+  * ip: xfrm: support adding xfrm metadata as lwtunnel info in routes
+  * ip: add NLM_F_ECHO support
+  * libnetlink: add offset for nl_dump_ext_ack_done
+  * tc/tc_monitor: print netlink extack message
+  * rtnetlink: add new function rtnl_echo_talk()
+  * ip: fix return value for rtnl_talk failures
+  * iplink_bridge: Add no_linklocal_learn option support
+  * devlink: use dl_no_arg instead of checking dl_argc == 0
+  * devlink: remove dl_argv_parse_put
+  * mnlg: remove unnused mnlg_socket structure
+  * utils: extract CTRL_ATTR_MAXATTR and save it
+  * devlink: expose nested devlink for a line card object
+  * devlink: load port-ifname map on demand
+  * devlink: fix parallel flash notifications processing
+  * devlink: move use_iec into struct dl
+  * devlink: fix typo in variable name in ifname_map_cb()
+  * devlink: load ifname map on demand from ifname_map_rev_lookup() as well
+  * dcb: unblock mnl_socket_recvfrom if not message received
+  * libnetlink: Fix memory leak in __rtnl_talk_iov()
+  * tc_util: Fix no error return when large parent id used (forwarded request 1044377 from dirkmueller)</comment>
+    <requestid>1044599</requestid>
+  </revision>
+  <revision rev="131" vrev="2">
+    <srcmd5>237b25e7d426b2412583bcbc5f20aaf5</srcmd5>
+    <version>6.1</version>
+    <time>1672927199</time>
+    <user>dimstar_suse</user>
+    <comment>Replace transitional %usrmerged macro with regular version check (boo#1206798) (forwarded request 1054740 from lnussel)</comment>
+    <requestid>1055736</requestid>
+  </revision>
+  <revision rev="132" vrev="1">
+    <srcmd5>17bc59195f330c7709367b5587a06b67</srcmd5>
+    <version>6.2</version>
+    <time>1678283528</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 6.2</comment>
+    <requestid>1069956</requestid>
+  </revision>
+  <revision rev="133" vrev="2">
+    <srcmd5>33bdb58aaaeee67b923c73c12fa4b2a1</srcmd5>
+    <version>6.2</version>
+    <time>1680125155</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1074785</requestid>
+  </revision>
+  <revision rev="134" vrev="1">
+    <srcmd5>1a1f7d6c052a04d47e9959a913366a93</srcmd5>
+    <version>6.3</version>
+    <time>1683295006</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1084548</requestid>
+  </revision>
+  <revision rev="135" vrev="1">
+    <srcmd5>8d7bf9429880787e9b215206ae3f46ec</srcmd5>
+    <version>6.4</version>
+    <time>1689455704</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 6.4</comment>
+    <requestid>1098671</requestid>
+  </revision>
+  <revision rev="136" vrev="1">
+    <srcmd5>f43d4622f49ed14faf72497536f163dc</srcmd5>
+    <version>6.5</version>
+    <time>1695327202</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1112335</requestid>
+  </revision>
+  <revision rev="137" vrev="1">
+    <srcmd5>25dfb29d80118f3e91c5f9e80f2bc203</srcmd5>
+    <version>6.6</version>
+    <time>1701462294</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 6.6</comment>
+    <requestid>1130110</requestid>
+  </revision>
+  <revision rev="138" vrev="1">
+    <srcmd5>2fb629dcb76078496dcb90c6d1ecdb40</srcmd5>
+    <version>6.7</version>
+    <time>1706807037</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 6.7</comment>
+    <requestid>1143108</requestid>
+  </revision>
+  <revision rev="139" vrev="1">
+    <srcmd5>09e1eec3bac48ed868a010a6c439c52e</srcmd5>
+    <version>6.8</version>
+    <time>1710434554</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 6.8</comment>
+    <requestid>1157640</requestid>
+  </revision>
+  <revision rev="140" vrev="1">
+    <srcmd5>59b5ddd3672a90745ec2d8b9c1f76cd5</srcmd5>
+    <version>6.9</version>
+    <time>1715872417</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 6.9</comment>
+    <requestid>1174391</requestid>
+  </revision>
+</revisionlist>
