@@ -1,4 +1,164 @@
 -------------------------------------------------------------------
+Tue Jul  9 12:08:55 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.4.2
+  * Fix building on Haiku
+  * Reduce memory consumption in JoinVerticesProcess::ProcessMesh()
+    significantly
+  * Fix: Add check for invalid input argument
+  * Replace an assert
+  * Extension of skinning data export to GLB/GLTF format
+  * Fix output floating-point values to fbx
+  * Update ImproveCacheLocality.cpp
+  * Update Readme.md
+  * Deep arsdk bone double free
+  * Fix Spelling error
+  * use size in order to be compatible with float and double
+  * Fix: Add missing transformation for normalized normals.
+  * Fix: Implicit Conversion Error
+  * Fix add checks for indices
+  * Update FBXBinaryTokenizer.cpp
+  * link to external minizip with full path
+  * utf8 header not found
+  * Rm unnecessary deg->radian conversion in FBX exporter
+  * Fix empty mesh handling
+  * Refactoring: Some cleanups
+  * Fix invalid read of uint from uvwsrc
+  * Remove double delete
+  * fix mesh-name error.
+  * COLLADA fixes for textures in C4D input
+  * Use the correct allocator for deleting objects in case of
+    duplicate animation Ids
+  * Fix container overflow in MMD parser
+  * Fix: PLY heap buffer overflow
+  * Fix: Check if index for mesh access is out of range
+  * Update FBXConverter.cpp
+  * FBX: Use correct time scaling
+  * Drop explicit inclusion of contrib/ headers
+  * Update Build.md
+  * Fix buffer overflow in FBX::Util::DecodeBase64()
+  * Readme.md: correct 2 errors in section headers
+  * Fix double free in Video::~Video()
+  * FBXMeshGeometry: solve issue #5116 using patch provided
+  * Fix target names not being imported on some gLTF2 models
+  * correct grammar/typographic errors in comments (8 files)
+  * KHR_materials_specular fixes
+  * Disable Hunter
+  * fixed several issues
+  * Fix leak
+  * Check validity of archive without parsing
+  * Fix integer overflow
+  * Add a test before generating the txture folder
+  * Build: Disable building zlib for non-windows
+  * null check.
+  * Bump actions/upload-artifact from 3 to 4
+  * fix: KHR_materials_pbrSpecularGlossiness/diffuseFactor convert
+    to pbrMetallicRoughness/baseColorFactor
+  * fix building errors for MinGW
+  * dynamic_cast error.
+  * Add missing IRR textures
+  * Update Dockerfile
+  * Fix handling of X3D IndexedLineSet nodes
+  * Improve acc file loading
+  * Readme.md: present hyperlinks in a more uniform style
+  * FBX Blendshape FullWeight: Vec<Float> -> FullWeight: Vec<Double>
+  * Fix for issues #5422, #3411, and #5443 -- DXF insert scaling
+    fix and colour fix
+  * Update StbCommon.h to stay up-to-date with stb_image.h.
+  * Introduce aiBuffer
+  * Add bounds checks to the parsing utilities.
+  * Fix crash in viewer
+  * Static code analysis fixes
+  * Kimkulling/fix bahavior of remove redundat mats issue 5438
+  * Fix X importer breakage introduced in commit f844c33
+  * Fileformats.md: clarify that import of .blend files is deprecated
+  * feat:1.add 3mf vertex color read 2.fix 3mf read texture bug
+  * More GLTF loading hardening
+  * Bump actions/cache from 3 to 4
+  * Update CMakeLists.txt
+  * Blendshape->Geometry in FBX Export
+  * Fix identity matrix check
+  * Fix PyAssimp under Python >= 3.12 and macOS library search support
+  * Add ISC LICENSE file
+  * ColladaParser: check values length
+  * Include defs in not cpp-section
+  * Add correct double zero check
+  * Add zlib-header to ZipArchiveIOSystem.h
+  * Add 2024 to copyright infos
+  * Append a new setting "AI_CONFIG_EXPORT_FBX_TRANSPARENCY_FACTOR_REFER_TO_OPACITY"
+  * Eliminate non-ascii comments in clipper
+  * Fix compilation for MSVC14.
+  * Add correction of fbx model rotation
+  * Delete tools/make directory
+  * Delete packaging/windows-mkzip directory
+  * Fix #5420 duplicate degrees to radians conversion in fbx importer
+  * Respect merge identical vertices in ObjExporter
+  * Fix utDefaultIOStream test under MinGW
+  * Fix typos
+  * Add initial macOS support to C4D importer
+  * Update hunter into CMakeLists.txt
+  * Fix: add missing import for AI_CONFIG_CHECK_IDENTITY_MATRIX_EPSILON_DEFAULT
+  * updated json
+  * Cleanup: Fix review findings
+  * CMake: Allow linking draco statically if ASSIMP_BUILD_DRACO_STATIC is set.
+  * updated minizip to last version
+  * updated STBIMAGElib
+  * fix issue #5461 (segfault after removing redundant materials)
+  * Update ComputeUVMappingProcess.cpp
+  * add some ASSIMP_INSTALL checks
+  * Fix SplitByBoneCount typo that prevented node updates
+  * Q3DLoader: Fix possible material string overflow
+  * Reverts the changes introduced
+  * fix a collada import bug
+  * mention IQM loader in Fileformats.md
+  * Kimkulling/fix pyassimp compatibility
+  * fix ASE loader crash when *MATERIAL_COUNT or *NUMSUBMTLS is not specified
+    or is 0
+  * Add checks for invalid buffer and size
+  * Make sure for releases revision will be zero
+  * glTF2Importer: Support .vrm extension
+  * Prepare v5.4.1
+  * Remove deprecated c++11 warnings
+  * fix ci
+  * Fix integer overflow
+  * Assimp viewer fixes
+  * Optimize readability
+  * Temporary fix for #5557 GCC 13+ build issue -Warray-bounds
+  * Fix a bug that could cause assertion failure.
+  * Fix possible nullptr dereferencing.
+  * Update ObjFileParser.cpp
+  * Fix for #5592 Disabled maybe-uninitialized error for
+    AssetLib/Obj/ObjFileParser.cpp
+  * updated zip
+  * Postprocessing: Fix endless loop
+  * Build: Fix compilation for VS-2022 debug mode - warning
+  * Converted a size_t to mz_uint that was being treated as an error
+  * Add trim to xml string parsing
+  * Replace duplicated trim
+  * Move aiScene constructor
+  * Move revision.h and revision.h.in to include folder
+  * Update MDLMaterialLoader.cpp
+  * Create inno_setup
+  * clean HunterGate.cmake
+  * Draft: Update init of aiString
+  * Fix init aistring issue 5622 inpython module
+  * update dotnet example
+  * Make stepfile schema validation more robust.
+  * fix PLY binary export color from float to uchar
+  * Some FBXs do not have "Materials" information, which can cause
+    parsing errors
+  * Fix collada uv channels - temporary was stored and then updated.
+  * remove ASE parsing break
+  * FBX-Exporter: Fix nullptr dereferencing
+  * Fix FBX exporting incorrect bone order
+  * fixes potential memory leak on malformed obj file
+  * Update zip.c
+  * Fixes some uninit bool loads
+  * Fix names of enum values in docstring of aiProcess_FindDegenerates
+  * Fix: StackAllocator Undefined Reference fix
+  * Plx: Fix out of bound access
+
+-------------------------------------------------------------------
 Tue May 21 13:11:09 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 5.4.1
