@@ -1,0 +1,6 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://github.com/insanum/gcalcli.git</param>
+              <param name="changesrevision">a4ac3e7a000834ea623836d5f0f9a73c97ff9c31</param></service><service name="tar_scm">
+                <param name="url">https://github.com/hramrach/gcalcli.git</param>
+              <param name="changesrevision">3e616f7f46adbad060a1655b3a9c13de34a46540</param></service></servicedata>

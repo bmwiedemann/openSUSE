@@ -1,0 +1,5 @@
+<package name="gcalcli" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="Office" package="gcalcli"/>
+</package>
