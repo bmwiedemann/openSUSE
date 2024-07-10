@@ -1,0 +1,55 @@
+-------------------------------------------------------------------
+Wed Feb  9 10:50:00 UTC 2022 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Update to 1.2.0
+  * bump version for new release
+  * opengl source: Do not crash if we could not make our context current
+  * Add Linux Qt6 CI
+  * Make UserFeedbackConsole build with Qt6
+  * Fix linking libKUserFeedbackCommon.a
+  * Build with C++17
+  * Build docs on Qt6 too
+  * Adapt CMake code to make it build with Qt6
+  * Add auto generated files to .gitignore
+  * Add FreeBSD CI
+  * Add Android CI
+  * Enable Linux CI
+  * Fix typos found by codespell
+  * Qt 6: Replace calls to removed QDateTime(QDate) constructor
+  * Qt 6: Fix issues caused by size() returning a qsizetype
+  * Qt 6: Remove QNetworkRequest::FollowRedirectsAttribute
+  * Replace declarations of QVector, QStringList
+  * CMake: Allow building with Qt 6
+  * Qt 6: Replace QMap>QVariant ...
+  * Qt 6: Fix signature of methods for QQmlListProperty
+  * Fix cmake warning
+  * Port away from ECMSetupVersion's deprecated *_VERSION_STRING CMake variable
+  * Make the survey expression variant comparison work with Qt6 as well
+  * Use non-deprecated QStandardPaths enum values
+  * Make QString to QUuid conversion explicit
+  * fix Windows compile, no unistd.h needed
+  * Update historical links to cgit.kde.org.
+  * Check for invalid JSON first, then for empty objects
+  * Don't record telemetry-less survey queries, that just produces empty rows
+  * Fix php unit tests
+  * Also record the device pixel ratio
+  * [server] Convert JSON fetch to stream data
+  * Provider: add API to restore default user-visible settings
+  * Always show the "View previously submitted data..." link
+  * Add appdata file for UserFeedbackConsole
+  * KUserFeedback: Convert license headers to SPDX expressions
+  * Fix area charts with Qt 5.14
+  * Use KDE_INSTALL_LOGGINGCATEGORIESDIR with ECM >= 5.58
+  * Make it compile without deprecated method
+- Update kuserfeedback.keyring
+
+-------------------------------------------------------------------
+Sat Feb 15 12:56:56 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- BuildRequire libqt5-qttools-doc instead of cmake(...) as
+  the cmake file only got added in Qt 5.14
+
+-------------------------------------------------------------------
+Sun Feb  9 13:13:24 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Initial package
