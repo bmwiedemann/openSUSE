@@ -1,0 +1,64 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>11e854078662eaea5d591e62580a2da1</srcmd5>
+    <version>0.36</version>
+    <time>1358786639</time>
+    <user>coolo</user>
+    <comment>Dependency of new package nagios-plugins-diskio, 
+which is used to monitor the amount of disk I/O</comment>
+    <requestid>148735</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>11e854078662eaea5d591e62580a2da1</srcmd5>
+    <version>0.36</version>
+    <time>1359109757</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>11e854078662eaea5d591e62580a2da1</srcmd5>
+    <version>0.36</version>
+    <time>1379663781</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>2525e218595a508973664db94757a7f1</srcmd5>
+    <version>0.36</version>
+    <time>1386159141</time>
+    <user>coolo</user>
+    <comment>- fix license</comment>
+    <requestid>208464</requestid>
+  </revision>
+  <revision rev="5" vrev="8">
+    <srcmd5>2525e218595a508973664db94757a7f1</srcmd5>
+    <version>0.36</version>
+    <time>1409302420</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>fd67ae602e288482ea96c715f1e37f3d</srcmd5>
+    <version>0.36</version>
+    <time>1411721556</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>252374</requestid>
+  </revision>
+  <revision rev="7" vrev="10">
+    <srcmd5>b818c04d0a827629618a260467c07755</srcmd5>
+    <version>0.36</version>
+    <time>1440871484</time>
+    <user>coolo</user>
+    <comment>- perl522.patch: fix test to work with perl-5.22</comment>
+    <requestid>327563</requestid>
+  </revision>
+  <revision rev="8" vrev="11">
+    <srcmd5>6f1531f1ed1aa7c99e51d556ce07582f</srcmd5>
+    <version>0.36</version>
+    <time>1709762789</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1155634</requestid>
+  </revision>
+</revisionlist>

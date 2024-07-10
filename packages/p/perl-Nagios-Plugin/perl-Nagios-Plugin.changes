@@ -1,0 +1,84 @@
+-------------------------------------------------------------------
+Mon Mar  4 13:32:59 UTC 2024 - pgajdos@suse.com
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
+Thu Aug 27 10:20:20 UTC 2015 - hsk@imb-jena.de
+
+- perl522.patch: fix test to work with perl-5.22
+
+-------------------------------------------------------------------
+Tue Sep 23 19:32:49 UTC 2014 - lars@linux-schulserver.de
+
+- fix Url
+
+-------------------------------------------------------------------
+Tue Mar 26 09:40:55 UTC 2013 - coolo@suse.com
+
+- fix license
+
+-------------------------------------------------------------------
+Tue Jan 15 16:12:32 UTC 2013 - lars@linux-schulserver.de
+
+- specfile cleanup
+- use perl generated dependencies instead of package names
+
+-------------------------------------------------------------------
+Thu Dec 29 10:21:01 UTC 2011 - lars@linux-schulserver.de
+
+- update to 0.36:
+  + Updated check_threshold to allow multiple check 
+    values to be checked at once
+
+-------------------------------------------------------------------
+Thu Dec 16 13:37:51 UTC 2010 - vcizek@novell.com
+
+- switch to  %perl_requires macro
+
+-------------------------------------------------------------------
+Sat Dec 11 17:03:19 UTC 2010 - lars@linux-schulserver.de
+
+- update to 0.35:
+  + fixed performance parsing and general data handling
+  + die if default config file is not available and --extra-opts 
+    is set
+  + Added %STATUS_TEXT to valid possible exports
+  + fixed test and pod failures
+
+-------------------------------------------------------------------
+Mon Nov 29 18:30:42 UTC 2010 - coolo@novell.com
+
+- remove /var/adm/perl-modules
+
+-------------------------------------------------------------------
+Thu Dec  4 13:20:57 CET 2008 - lrupp@suse.de
+
+- update to 0.28
+
+-------------------------------------------------------------------
+Sat Jun 07 00:00:00 CET 2008 - gerrit.beine@gmx.de
+
+- update to version 0.27
+
+-------------------------------------------------------------------
+Fri Mar 21 00:00:00 CET 2008 - gerrit.beine@gmx.de
+
+- update to version 0.25
+
+-------------------------------------------------------------------
+Sun Feb 17 00:00:00 CET 2008 - gerrit.beine@googlemail.com
+
+- update to version 0.24
+
+-------------------------------------------------------------------
+Sun Jan 19 00:00:00 CET 2008 - gerrit.beine@googlemail.com
+
+- moved to openSUSE Build Service
+
+-------------------------------------------------------------------
+Thu Dec 06 00:00:00 CET 2007 - gerrit@beine-computer.de
+
+- first release 0.21
+
