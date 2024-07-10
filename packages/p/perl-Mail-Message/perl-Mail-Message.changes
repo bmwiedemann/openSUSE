@@ -1,0 +1,174 @@
+-------------------------------------------------------------------
+Fri Mar  8 22:42:19 UTC 2024 - Tina Müller <tina.mueller@suse.com>
+
+- Fix disabling of __perllib_provides
+
+-------------------------------------------------------------------
+Thu Dec 14 03:09:49 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 3.015
+   see /usr/share/doc/packages/perl-Mail-Message/ChangeLog
+
+  version 3.015: Mon 11 Dec 09:58:17 CET 2023
+
+  	Fixes:
+  	- accept empty fields without complaint. [Andy Beverley]
+  	- fix counting epilogue trailing blank [Gregor Herrmann] GitHub#18, RT#150141
+
+-------------------------------------------------------------------
+Thu Oct 19 03:08:07 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 3.014
+   see /usr/share/doc/packages/perl-Mail-Message/ChangeLog
+
+  version 3.014: Wed 18 Oct 12:16:55 CEST 2023
+
+  	Changes:
+  	- handle utf8 in address phrases, according to RFC5335 (since
+  	  2008 experimental)  May show some changes in your regression
+  	  tests.  [Andy Beverley]
+
+  	Fixes:
+  	- epilogue starter test needs ^ anchor
+  	  github issue #16 [Jacob Balazer]
+  	- existing preamble should keep at least one empty string to
+  	  indicate its existence.
+  	  github issue #18 [Jacob Balazer]
+  	- clean error when field names are too long w.r.t. the fold
+  	  wrap.  Found by [Raphaël Gertz]
+
+-------------------------------------------------------------------
+Sun Jun 25 03:06:38 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 3.013
+   see /usr/share/doc/packages/perl-Mail-Message/ChangeLog
+
+-------------------------------------------------------------------
+Sat Feb 12 03:07:03 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 3.012
+   see /usr/share/doc/packages/perl-Mail-Message/ChangeLog
+
+  version 3.012: Fri 11 Feb 11:34:31 CET 2022
+
+  	Fixes:
+  	- ::Field::Attributes should be stored case intensively
+  	 rt.cpan.org#140894 [Yanyan Yang]
+  	- ::Field::Full phrase with encoding qp parsing failed when
+  	  the qp contains non-atext characters. Github#2 [Andy Beverley]
+  	- ::Field::Full QP encoding must be more strict for use in
+  	  MIME headers.  Github#3 [Andy Beverley]
+  	- Coercion from Mail::Address to Mail::Message::Full::Address
+  	  is too lazy.  Github#4 [Andy Beverley]
+
+  	Improvements:
+  	- extend date in mbox-separator to accept 203X as well.
+
+-------------------------------------------------------------------
+Wed Jul 28 03:08:01 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 3.011
+   see /usr/share/doc/packages/perl-Mail-Message/ChangeLog
+
+  version 3.011: Tue 27 Jul 13:30:38 CEST 2021
+
+  	Improvements:
+  	- textAlternativeForHtml can now be configured to actually change
+  	  left- and rightmargin [Tristan Miller]
+
+-------------------------------------------------------------------
+Mon Nov 23 17:01:26 UTC 2020 - Frank Schreiner <FSchreiner@suse.com>
+
+- Boiled down %description to relevant infos 
+
+-------------------------------------------------------------------
+Thu Oct 15 03:08:17 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 3.010
+   see /usr/share/doc/packages/perl-Mail-Message/ChangeLog
+
+  version 3.010: Wed 14 Oct 19:22:36 CEST 2020
+
+  	Fixes:
+  	- username of address as quoted-string. [Andy Beverley]
+
+-------------------------------------------------------------------
+Sat Feb  8 03:11:08 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 3.009
+   see /usr/share/doc/packages/perl-Mail-Message/ChangeLog
+
+  version 3.009: Fri  7 Feb 15:22:18 CET 2020
+  
+  	Fixes:
+  	- avoid folding inside phrases.  Also, encode more characters.
+  	  Reported by [Andrew Beverley]
+
+-------------------------------------------------------------------
+Tue Feb 12 06:12:43 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 3.008
+   see /usr/share/doc/packages/perl-Mail-Message/ChangeLog
+
+-------------------------------------------------------------------
+Wed Sep 19 05:33:18 UTC 2018 - Stephan Kulow <coolo@suse.com>
+
+- updated to 3.007
+   see /usr/share/doc/packages/perl-Mail-Message/ChangeLog
+
+-------------------------------------------------------------------
+Wed Feb  7 15:49:00 UTC 2018 - coolo@suse.com
+
+- updated to 3.006
+   see /usr/share/doc/packages/perl-Mail-Message/ChangeLog
+
+  version 3.006: Wed 24 Jan 16:55:26 CET 2018
+  
+  	Improvements:
+  	- spell corrections rt.cpan.org #123993 [Damyan Ivanov, debian]
+  	- add some 'use warnings'
+  	- convert to GIT
+  	- publish on GitHUB
+
+-------------------------------------------------------------------
+Sat Dec 23 06:36:20 UTC 2017 - coolo@suse.com
+
+- updated to 3.005
+   see /usr/share/doc/packages/perl-Mail-Message/ChangeLog
+
+  version 3.005: Fri 22 Dec 09:43:45 CET 2017
+  
+  	Fixes:
+  	- repair loose dependency on Mail::Transport [cpantesters]
+
+-------------------------------------------------------------------
+Fri Dec 22 06:36:04 UTC 2017 - coolo@suse.com
+
+- updated to 3.004
+   see /usr/share/doc/packages/perl-Mail-Message/ChangeLog
+
+  version 3.004: Thu 21 Dec 09:08:52 CET 2017
+  
+  	Fixes:
+  	- field unfold replaces leading whitespace into blank. [Mark Nienberg]
+  
+  	Improvements:
+  	- improve docs on $msg->send().
+
+-------------------------------------------------------------------
+Thu Nov  9 06:30:28 UTC 2017 - coolo@suse.com
+
+- updated to 3.003
+   see /usr/share/doc/packages/perl-Mail-Message/ChangeLog
+
+  version 3.003: Wed  8 Nov 13:02:24 CET 2017
+  
+  	Fixes:
+  	- incorrect use of reftype.   rt.cpan.org#121244 [Matthew Darwin]
+  	- missing 'use warnings' in ::Build
+
+-------------------------------------------------------------------
+Wed Oct 18 05:10:22 UTC 2017 - coolo@suse.com
+
+- initial package 3.002
+ * created by cpanspec 1.78.08

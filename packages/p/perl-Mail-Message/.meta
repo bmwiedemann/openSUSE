@@ -1,0 +1,6 @@
+<package name="perl-Mail-Message" project="openSUSE:Factory">
+  <title>General Message Object</title>
+  <description>A 'Mail::Message' object is a container for MIME-encoded message information, as defined by RFC2822. Everything what is not specifically related to storing the messages in mailboxes (folders) is implemented in this class. Methods which are related to folders is implemented in the Mail::Box::Message extension.</description>
+  <devel project="devel:languages:perl" package="perl-Mail-Message"/>
+  <url>https://metacpan.org/release/Mail-Message</url>
+</package>
