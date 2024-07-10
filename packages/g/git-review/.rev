@@ -1,0 +1,291 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b8689ad8f6ce7873d2be05908fdb6d17</srcmd5>
+    <version>1.20</version>
+    <time>1362031701</time>
+    <user>coolo</user>
+    <comment>will replace python-git-review</comment>
+    <requestid>156549</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a106d4617150621b5546b6e06a113944</srcmd5>
+    <version>1.22</version>
+    <time>1370446787</time>
+    <user>coolo</user>
+    <comment>version update to 1.22 (forwarded request 177223 from vmiklos)</comment>
+    <requestid>177708</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>11b9af8a0ed1d395aed4cb48fcf0f468</srcmd5>
+    <version>1.23</version>
+    <time>1378892183</time>
+    <user>coolo</user>
+    <comment>Update to 1.23, fix username selection (forwarded request 198417 from saschpe)</comment>
+    <requestid>198425</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>11b9af8a0ed1d395aed4cb48fcf0f468</srcmd5>
+    <version>1.23</version>
+    <time>1379662450</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>bee31517639b2deccdbbed2473ab2c99</srcmd5>
+    <version>1.23</version>
+    <time>1382634491</time>
+    <user>scarabeus_factory</user>
+    <comment></comment>
+    <requestid>204513</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>c26d34c1672e185d7cc553e7c42b43fe</srcmd5>
+    <version>1.23.61.gcb87cd1</version>
+    <time>1404996905</time>
+    <user>coolo</user>
+    <comment>- Avoid source Url, we're packaging from git
+
+- update to 1.23.61:
+* Topic: do not use '(detached' when detached
+* Use gerrit 2.8.5 instead of gerrit 2.6.1 in tests
+* Allow to specify default scheme in .gitreview file
+* Correct test_remote to support branchs without upstream
+* Remove parsing of --help and variants from our code
+* Python2: fixed UnicodeEncodeError
+* Skip invalid unicode in commit messages
+* Git review assumes the wrong ssh default port
+* Add http(s) protocol support to fetch_review and list_reviews
+* git-review.1 manpage fix for groff warnings
+* Fix parsing of SCP-style URLs, as these are valid in Git itself
+* &quot;git review --setup&quot; failed in Chinese locale
+* Bump hacking version in requirements
+* Reduce testr concurrnecy to 2
+* Add http(s) protocol support to set_hooks_commit_msg
+* Retrieve remote pushurl independently of user's locale
+* Add http(s) protocol support to test_remote
+* Verify if every attached file exists. Attach gerrig.config
+* Wrap exceptions that occur while running external process
+* Make Gerrit port and dir selection deterministic
+* Don't try to attach known_hosts if it's not there
+* Remove tox locale overrides
+* Fix the regex for setting topic
+* Add 2m timeout to tests
+* Attach Gerrit logs and known_hosts to failed tests
+* Change test gerrit ssh/http ports offset
+* Correct .Fl typo WRT --compare in the manual page</comment>
+    <requestid>239528</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>301484b041f76ce873b2828205e37863</srcmd5>
+    <version>1.24</version>
+    <time>1406479635</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>242370</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>301484b041f76ce873b2828205e37863</srcmd5>
+    <version>1.24</version>
+    <time>1409300989</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>573c18ff31cdf27bf7ad3316edbf3c98</srcmd5>
+    <version>1.24</version>
+    <time>1412589991</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>254016</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>af3527ecbcad8cd5ecefeb109d8f33b5</srcmd5>
+    <version>1.25.0</version>
+    <time>1434383376</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>311974</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>a6e5ead47a106dac09cf66f23e24bf9b</srcmd5>
+    <version>1.25.0</version>
+    <time>1440871482</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>327454</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>dff3e09cd7e3f6b4401a0e0a15b04192</srcmd5>
+    <version>1.25.0</version>
+    <time>1510660843</time>
+    <user>dimstar_suse</user>
+    <comment>- add git-2.15-compat.patch: fix compat with git 2.15</comment>
+    <requestid>541537</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>5717ee5e5b02cbb2a2817a50d0926319</srcmd5>
+    <version>1.27.0</version>
+    <time>1548064048</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.27.0:
+  * Work with python3
+- Remove patch in upstream: git-2.15-compat.patch
+- Switch to source url downloads
+- Switch URL to point to active site
+- Switch to singlespec</comment>
+    <requestid>663611</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>62fa0ff5e81164501dba9ac625cc1ed8</srcmd5>
+    <version>1.28.0</version>
+    <time>1557263889</time>
+    <user>dimstar_suse</user>
+    <comment>- revert switch to singlespec. This is an insane complexification
+  for no gain: git-review is a pure cli tool, not a module
+  to import, and we never had a working python2- version anyway
+  because all the tooling was excluded from packaging. So
+  don't create packages that are unusable and deprecated.
+
+- update to 1.28.0 (bsc#1134089):
+  * Support for auto-configuration of topic names based on the
+  presence of keywords in the commit message is removed. Previously,
+  keywords such as bug, bp or lp followed by a number would result
+  in branch names containing the associated number, e.g. bug/123.
+  This feature was OpenStack specific, was a frequent source of bugs
+  and clearly wasn’t being used that often, given that StoryBoard
+  is a thing now and no one had updated this feature to handle that metadata.
+  * Fixed usepushurl to work when a read-only mirror being used as origin does not contain refs/changes from gerrit.</comment>
+    <requestid>700471</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>bd406d4cfd4c86a32e5a5b3980421226</srcmd5>
+    <version>2.1.0</version>
+    <time>1638740781</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.1.0:
+  * Add support for –no-thin which is passed to git push
+  * A new gitreview.branchauthor option allows configuring the change author
+    (owner) name part of the autocreated branch name when downloading changes.
+  * A new gitreview.notopic configuration setting makes git-review always
+    behave as if the --notopic command line option was supplied.
+  * Added the --notify option, which can be used to ensure specified receivers
+    receives email notifications
+  * The Change-Id generating commit hook is now installed into any detected Git
+    submodules, so that it will take effect when creating changes within a
+    submodule and not just in the parent repository.
+  * Encoding was corrected for Git credentials, which was previously causing HTTP
+    authentication to fail under some Python 3 versions.
+  * Change download functions now preserve any unapplied local edits on the
+    branch when attempting to reset the worktree.
+  * The --no-follow-tags option to git push is now used for all pushes, so that
+    git-review won’t error when encountering a local tag which is absent from
+    Gerrit.
+  * For safety, attempts to push a commit with unstaged or uncommitted changes in
+    the worktree will be caught and an error reported, rather than leaving it up to
+    git rebase to spot them. This addresses a situation where users enabling
+    rebase.autostash would otherwise experience data loss when the test rebase is
+    subsequently reset.
+- add 7182166ec00ad3645821435d72c5424b4629165f.patch:
+  * With Git 2.18.0 and later, the --rebase-merges (-r) option will be used in
+    place of the deprecated --preserve-merges (-p) option. This fixes a
+    critical error when git-review is used with Git versions 2.34.0 onward,
+    where the old option is no longer available.</comment>
+    <requestid>935776</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>0935f465262725cc4091c9feb8970412</srcmd5>
+    <version>2.2.0</version>
+    <time>1638997769</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.2.0:
+  - When checking for unstaged or uncommitted changes to avoid
+    performing a test rebase, unstaged and uncommitted changes in
+    Git submodules are now ignored since those won’t be rebased
+    anyway.
+  - git-review now handles the Git core.hooksPath configuration
+    option correctly. Thus, it installs the commit-msg hook
+    into the core.hooksPath directory, if that option is
+    set. Otherwise, it continues to install the hook into
+    .git/hooks, relative to the root of the checkout.
+  - With Git 2.18.0 and later, the --rebase-merges (-r) option
+    will be used in place of the deprecated --preserve-merges
+    (-p) option. This fixes a critical error when git-review is
+    used with Git versions 2.34.0 onward, where the old option is
+    no longer available.
+- Remove unnecessary
+  7182166ec00ad3645821435d72c5424b4629165f.patch</comment>
+    <requestid>936498</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>7ae51b4518a1b1361163dedf93c8069b</srcmd5>
+    <version>2.3.0</version>
+    <time>1650355134</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.3.0:
+  * Python 3.5 is no longer supported.
+  * Git 2.10.0 or later is required as git-review now needs the
+    --no-show-signature option for git-log.
+  * Git’s log.ShowSignature option is now supported. Previously, setting it
+    would confuse git-review into thinking there were twice as many changes
+    to push.
+  * OpenSSH has deprecated its use of scp/rcp protocol in favor of SFTP,
+    which the embedded Apache mina-sshd in widely-deployed Gerrit versions
+    does not yet support. Now git-review will attempt to detect whether
+    scp’s -O option is available to force use of the legacy scp/rcp protocol,
+    and apply it if so. Future git-review versions may change the fallback
+    behavior once an SFTP subsystem is implemented and available for a new
+    Gerrit release.
+- Remove now unneeded BuildRequires on mock.</comment>
+    <requestid>970662</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>bf9e31408322dd6f61ae8130a0dc117c</srcmd5>
+    <version>2.3.1</version>
+    <time>1664112920</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.3.1:
+  * Improved version string parsing for Git</comment>
+    <requestid>1005735</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>daa25a5cc9ab8527e969bbd01a027aee</srcmd5>
+    <version>2.3.1</version>
+    <time>1684754090</time>
+    <user>dimstar_suse</user>
+    <comment>- Clean up the SPEC file.
+</comment>
+    <requestid>1088324</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>7259f838dd38fb2c55141dd801af355f</srcmd5>
+    <version>2.4.0</version>
+    <time>1711397437</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.4.0:
+  * It's patchset not patch set
+  * Add missing release notes and manpage updates
+  * Don't keep incomplete rebase state by default
+  * Test that the --version option returns something
+  * Vendor a copy of Gerrit's commit-msg Git hook
+  * Don't make hook script read-only
+  * Use importlib.metadata instead of pkg\_resources
+  * Fix flake8 issue
+  * Add classifiers for Python 3.10 and 3.11
+  * Add --wip as an alias to --work-in-progress
+  * Uncap test requirements
+  * Warn rather than fail if HEAD already exists on the remote
+  * Use GIT\_SSH for the SSH executable
+  * Test old and new Gerrit
+  * Test Python bounds only
+  * Switch from tox to nox
+  * Simplify test output strings for new Gerrit
+  * Upgrade testing to Gerrit 3.4.4
+  * Add message option
+  * Fix nodesets for tox jobs
+  * feat(cmd): add hashtag implementation
+  * Clarify that test rebases are not kept
+
+  * Improved version string parsing for Git</comment>
+    <requestid>1161122</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,319 @@
+-------------------------------------------------------------------
+Sun Mar 24 13:27:16 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.4.0:
+  * It's patchset not patch set
+  * Add missing release notes and manpage updates
+  * Don't keep incomplete rebase state by default
+  * Test that the --version option returns something
+  * Vendor a copy of Gerrit's commit-msg Git hook
+  * Don't make hook script read-only
+  * Use importlib.metadata instead of pkg\_resources
+  * Fix flake8 issue
+  * Add classifiers for Python 3.10 and 3.11
+  * Add --wip as an alias to --work-in-progress
+  * Uncap test requirements
+  * Warn rather than fail if HEAD already exists on the remote
+  * Use GIT\_SSH for the SSH executable
+  * Test old and new Gerrit
+  * Test Python bounds only
+  * Switch from tox to nox
+  * Simplify test output strings for new Gerrit
+  * Upgrade testing to Gerrit 3.4.4
+  * Add message option
+  * Fix nodesets for tox jobs
+  * feat(cmd): add hashtag implementation
+  * Clarify that test rebases are not kept
+
+-------------------------------------------------------------------
+Mon May 22 10:16:17 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Clean up the SPEC file.
+
+-------------------------------------------------------------------
+Sat Sep 24 09:01:38 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.3.1:
+  * Improved version string parsing for Git
+
+-------------------------------------------------------------------
+Tue Apr 19 05:41:47 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.3.0:
+  * Python 3.5 is no longer supported.
+  * Git 2.10.0 or later is required as git-review now needs the
+    --no-show-signature option for git-log.
+  * Git’s log.ShowSignature option is now supported. Previously, setting it
+    would confuse git-review into thinking there were twice as many changes
+    to push.
+  * OpenSSH has deprecated its use of scp/rcp protocol in favor of SFTP,
+    which the embedded Apache mina-sshd in widely-deployed Gerrit versions
+    does not yet support. Now git-review will attempt to detect whether
+    scp’s -O option is available to force use of the legacy scp/rcp protocol,
+    and apply it if so. Future git-review versions may change the fallback
+    behavior once an SFTP subsystem is implemented and available for a new
+    Gerrit release.
+- Remove now unneeded BuildRequires on mock.
+
+-------------------------------------------------------------------
+Tue Dec  7 21:06:05 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Update to 2.2.0:
+  - When checking for unstaged or uncommitted changes to avoid
+    performing a test rebase, unstaged and uncommitted changes in
+    Git submodules are now ignored since those won’t be rebased
+    anyway.
+  - git-review now handles the Git core.hooksPath configuration
+    option correctly. Thus, it installs the commit-msg hook
+    into the core.hooksPath directory, if that option is
+    set. Otherwise, it continues to install the hook into
+    .git/hooks, relative to the root of the checkout.
+  - With Git 2.18.0 and later, the --rebase-merges (-r) option
+    will be used in place of the deprecated --preserve-merges
+    (-p) option. This fixes a critical error when git-review is
+    used with Git versions 2.34.0 onward, where the old option is
+    no longer available.
+- Remove unnecessary
+  7182166ec00ad3645821435d72c5424b4629165f.patch
+
+-------------------------------------------------------------------
+Sun Dec  5 10:29:09 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.1.0:
+  * Add support for –no-thin which is passed to git push
+  * A new gitreview.branchauthor option allows configuring the change author
+    (owner) name part of the autocreated branch name when downloading changes.
+  * A new gitreview.notopic configuration setting makes git-review always
+    behave as if the --notopic command line option was supplied.
+  * Added the --notify option, which can be used to ensure specified receivers
+    receives email notifications
+  * The Change-Id generating commit hook is now installed into any detected Git
+    submodules, so that it will take effect when creating changes within a
+    submodule and not just in the parent repository.
+  * Encoding was corrected for Git credentials, which was previously causing HTTP
+    authentication to fail under some Python 3 versions.
+  * Change download functions now preserve any unapplied local edits on the
+    branch when attempting to reset the worktree.
+  * The --no-follow-tags option to git push is now used for all pushes, so that
+    git-review won’t error when encountering a local tag which is absent from
+    Gerrit.
+  * For safety, attempts to push a commit with unstaged or uncommitted changes in
+    the worktree will be caught and an error reported, rather than leaving it up to
+    git rebase to spot them. This addresses a situation where users enabling
+    rebase.autostash would otherwise experience data loss when the test rebase is
+    subsequently reset.
+- add 7182166ec00ad3645821435d72c5424b4629165f.patch:
+  * With Git 2.18.0 and later, the --rebase-merges (-r) option will be used in
+    place of the deprecated --preserve-merges (-p) option. This fixes a
+    critical error when git-review is used with Git versions 2.34.0 onward,
+    where the old option is no longer available.
+
+-------------------------------------------------------------------
+Fri May  3 18:08:45 UTC 2019 - Dirk Mueller <dmueller@suse.com>
+
+- revert switch to singlespec. This is an insane complexification
+  for no gain: git-review is a pure cli tool, not a module
+  to import, and we never had a working python2- version anyway
+  because all the tooling was excluded from packaging. So
+  don't create packages that are unusable and deprecated.
+
+-------------------------------------------------------------------
+Fri May  3 17:54:51 UTC 2019 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.28.0 (bsc#1134089):
+  * Support for auto-configuration of topic names based on the
+  presence of keywords in the commit message is removed. Previously,
+  keywords such as bug, bp or lp followed by a number would result
+  in branch names containing the associated number, e.g. bug/123.
+  This feature was OpenStack specific, was a frequent source of bugs
+  and clearly wasn’t being used that often, given that StoryBoard
+  is a thing now and no one had updated this feature to handle that metadata.
+
+  * Fixed usepushurl to work when a read-only mirror being used as origin does not contain refs/changes from gerrit.
+
+-------------------------------------------------------------------
+Tue Jan  8 10:01:57 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.27.0:
+  * Work with python3
+- Remove patch in upstream: git-2.15-compat.patch
+- Switch to source url downloads
+- Switch URL to point to active site
+- Switch to singlespec
+
+-------------------------------------------------------------------
+Mon Nov 13 16:33:47 UTC 2017 - dmueller@suse.com
+
+- add git-2.15-compat.patch: fix compat with git 2.15
+
+-------------------------------------------------------------------
+Thu Aug 27 11:16:55 UTC 2015 - tbechtold@suse.com
+
+- Remove %{_sysconfdir}/git-review/git-review.conf from package.
+  File is deprecated.
+
+-------------------------------------------------------------------
+Sat Jun 13 09:22:37 UTC 2015 - tbechtold@suse.com
+
+- update to 1.25.0:
+  * Add “git-review -l” to man page synopsis and usage doc
+  * Add reviewers on upload
+  * Update project links
+  * Override E-mail in Gerrit integration tests
+  * Fixed a dead link to the git-review docs
+  * Provide an explanation on failed rebase
+  * Switch to requests to support proxying of 'https'
+  * Use plumbing rev-parse to get the branch name
+  * Isolate tests from user/system git configuration
+  * Push language override down into the cmd wrapper
+  * git review -sv gets more verbose
+  * Add utf-8 char support
+  * Choose tracked branch for rebase when submitting
+  * pbr should install the manpage
+  * get_remote_url(): also honor url.*.pushInsteadOf
+  * Support authentication in run_http_exc
+  * Split README.rst into separate doc files
+  * Handle correctly http error raise in run_http_exc
+  * Fix encoding header
+  * Workflow documentation is now in infra-manual
+  * Update tests to use Gerrit 2.9.2
+  * Use 'no_proxy' env variable in addition to uppercase
+  * Enable color support based on tty and config
+  * get_remote_url(): honor any "url.<base>.insteadOf" config setting
+  * Convert add_remote to use GitReviewExceptions
+  * Prefer git-config over git-review config files
+  * Isolate tests from user/system config
+  * Switched documentation to point to storyboard
+  * Fix ---list and "departement" typos in man page
+  * Align git-review and python -m git_review.cmd behaviors
+  * Define -T/--no-topic to disable review submit with topic
+  * Work toward Python 3.4 support and testing
+  * -F/--force-rebase has no effect if rebase is disabled by config
+  * Remove useless constants
+  * Improve windows support for git-review --setup
+  * Fix groff warnings with manpage
+  * Enabled hacking checks H305 and H307
+  * Prevent long subjects in reviews causing spurious blank lines
+  * added link to get-pip to readme
+  * Disable ssh/scp password authentication during tests
+  * Update tests to use Gerrit 2.8.6.1
+  * Build universal wheels
+
+-------------------------------------------------------------------
+Mon Sep 22 14:39:43 UTC 2014 - bwiedemann@suse.com
+
+- Require python-setuptools to fix CLI
+
+-------------------------------------------------------------------
+Wed Jul 16 08:59:50 UTC 2014 - bwiedemann@suse.com
+
+- update to 1.24
+* Require python-requests
+* Update homepage on PyPI
+* Update requirements to OpenStack's recommendations
+* Update the README to mention dependencies
+* Ensure username is set for all tests
+* Provide nicer user message for missing remote ref
+* Fix a typo in HACKING.rst
+* Ignore newline in bp/bug search in commit message
+* Restrict tests SSH auth to only the provided key
+* Disable proxies for tests that clone over http
+* Keep track of gerrit.war and golden_site versions
+* Fix typo in manpage s/gireview/gitreview/
+* Correct git review -l over http(s)
+
+-------------------------------------------------------------------
+Fri Jul  4 07:23:17 UTC 2014 - speilicke@suse.com
+
+- Avoid source Url, we're packaging from git
+
+-------------------------------------------------------------------
+Thu May 22 21:47:03 UTC 2014 - dmueller@suse.com
+
+- update to 1.23.61:
+* Topic: do not use '(detached' when detached
+* Use gerrit 2.8.5 instead of gerrit 2.6.1 in tests
+* Allow to specify default scheme in .gitreview file
+* Correct test_remote to support branchs without upstream
+* Remove parsing of --help and variants from our code
+* Python2: fixed UnicodeEncodeError
+* Skip invalid unicode in commit messages
+* Git review assumes the wrong ssh default port
+* Add http(s) protocol support to fetch_review and list_reviews
+* git-review.1 manpage fix for groff warnings
+* Fix parsing of SCP-style URLs, as these are valid in Git itself
+* "git review --setup" failed in Chinese locale
+* Bump hacking version in requirements
+* Reduce testr concurrnecy to 2
+* Add http(s) protocol support to set_hooks_commit_msg
+* Retrieve remote pushurl independently of user's locale
+* Add http(s) protocol support to test_remote
+* Verify if every attached file exists. Attach gerrig.config
+* Wrap exceptions that occur while running external process
+* Make Gerrit port and dir selection deterministic
+* Don't try to attach known_hosts if it's not there
+* Remove tox locale overrides
+* Fix the regex for setting topic
+* Add 2m timeout to tests
+* Attach Gerrit logs and known_hosts to failed tests
+* Change test gerrit ssh/http ports offset
+* Correct .Fl typo WRT --compare in the manual page
+* Ignore content of merge commits in reporting
+* Remove empty lines from git log output
+* Preserve merges when doing a rebase
+* Split git rev-parse --show-toplevel --git-dir on newline
+* Prefer .gitconfig username
+* Add more deterministic port selection for Gerrit
+* Document source location as git.openstack.org
+* Implement integration tests
+* Migrate to pbr
+* No longer check for new git-review releases
+- remove git-review-username.diff: merged upstream
+
+-------------------------------------------------------------------
+Thu Oct 24 10:50:56 UTC 2013 - speilicke@suse.com
+
+- Require python-setuptools instead of distribute (upstreams merged)
+
+-------------------------------------------------------------------
+Wed Sep 11 06:54:23 UTC 2013 - aj@suse.com
+
+- Add patch git-review-username.diff to prefer .gitconfig username
+  (see https://review.openstack.org/46015)
+- Update to version 1.23:
+    Expand multiple commit submission warning.
+
+-------------------------------------------------------------------
+Mon Jun  3 07:51:24 UTC 2013 - vmiklos@suse.com
+
+- Update to version 1.22
+- Changes from version 1.20:
+  + Allows easy cherry-picking of a change
+  + See https://github.com/openstack-infra/git-review/compare/1.20...1.22
+
+-------------------------------------------------------------------
+Wed Feb 27 09:04:48 UTC 2013 - saschpe@suse.de
+
+- Update to version 1.20:
+  + Avoid symlinks in the manpage path
+- Changes from version 1.19:
+  + Allow download of reviews from deleted accounts
+  + See https://github.com/openstack-infra/git-review/compare/1.18...1.19
+- Renamed from python-git-review, it's a tool not a library
+- Install man-page in correct location
+- Explicit %py_requires, since we don't have files in %python_sitelib
+
+-------------------------------------------------------------------
+Thu Sep 20 14:54:03 UTC 2012 - rhafer@suse.com
+
+- Update to 1.18:
+  * Adds Python3 support and various bugfixes
+- Package a default configuration file to disable the automatic check
+  for new git-review releasess on PyPI. Otherwise git-review refuses
+  to work when a new release is available on PyPI
+
+-------------------------------------------------------------------
+Thu May 24 07:28:55 UTC 2012 - saschpe@suse.de
+
+- Initial version
+
