@@ -1,0 +1,8 @@
+<package name="libunicode" project="openSUSE:Factory">
+  <title>Modern C++17 Unicode library </title>
+  <description>The goal of this library is to bring painless unicode support to C++ with simple and easy to understand APIs.
+
+The API naming conventions are chosen to look familiar to those using the C++ standard libary.</description>
+  <devel project="X11:terminals" package="libunicode"/>
+  <url>https://github.com/contour-terminal/libunicode</url>
+</package>
