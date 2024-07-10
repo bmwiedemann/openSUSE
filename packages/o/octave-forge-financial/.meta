@@ -1,0 +1,6 @@
+<package name="octave-forge-financial" project="openSUSE:Factory">
+  <title></title>
+  <description>Financial manipulation, plotting functions and additional date manipulation tools.
+This is part of Octave-Forge project.</description>
+  <devel project="science" package="octave-forge-financial"/>
+</package>
