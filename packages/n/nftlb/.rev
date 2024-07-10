@@ -1,0 +1,37 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ef20dc13aa1ac20937231c966e8c950a</srcmd5>
+    <version>0.6</version>
+    <time>1585842192</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>790697</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>7fb6ced664421d329f7025b955b73a3e</srcmd5>
+    <version>1.0.6</version>
+    <time>1663694652</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.0.6</comment>
+    <requestid>1004948</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>0b682a99b2b88cc2505a83798ba7bd38</srcmd5>
+    <version>1.0.7</version>
+    <time>1670259652</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.0.7:
+  * Controlling the server behaviour using environment variables
+    You can also specify a custom server key via the `NFTLB_SERVER_KEY`
+    environment variable. Zero length keys will be ignored. (forwarded request 1040003 from dirkmueller)</comment>
+    <requestid>1040011</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d0d2d3601563f3a997896078b0b84e83</srcmd5>
+    <version>1.0.9</version>
+    <time>1695327227</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 1.0.9</comment>
+    <requestid>1112498</requestid>
+  </revision>
+</revisionlist>
