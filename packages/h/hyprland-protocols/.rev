@@ -7,4 +7,14 @@
     <comment>I want to submit this to openSUSE:Factory</comment>
     <requestid>1150286</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>e1d576b6424aa9dacfac9204ba74e513</srcmd5>
+    <version>0.3.0</version>
+    <time>1720622993</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.3.0:
+  * Add hyprland_focus_grab_v1
+</comment>
+    <requestid>1186485</requestid>
+  </revision>
 </revisionlist>
