@@ -1,0 +1,648 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b13ce782e71159da35ab0837054515cf</srcmd5>
+    <version>2.12.2</version>
+    <time>1594894487</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.12.2
+  + Support for Autonomous DataWarehouse and Autonomous Transaction Processing features to
+    allow switching from Non PE to PE (and vice versa) for existing databases as a part of
+    the Database Service for Autonomous Databases
+    * ``oci db autonomous-database update --private-endpoint-label ``
+    * ``oci db autonomous-database update --subnet-id ``
+  + Support for private endpoint (ingress) and public endpoint whitelisting in Analytics Service
+    * ``oci analytics analytics-instance create --network-endpoint-details``
+    * ``oci analytics analytics-instance change-network-endpoint --network-endpoint-details``
+  + Support for re-encrypting an object in the Object Storage Service, by introducing a command
+    line option to specify a new encryption key.
+    * ``oci os object reencrypt``
+  + Support to register and deregister autonomous dedicated databases with Datasafe
+    * ``oci db autonomous-database data-safe register``
+    * ``oci db autonomous-database data-safe deregister``
+- from version 2.12.1
+  + Support for Usage API service
+    * ``oci usage``
+  + Support for Oracle Cloud VMware Solution service
+    * ``oci ocvs``
+  + Support for one-off patches in Database service
+    * ``oci db database patch --one-off-patches``
+  + Support for Vlan features as part of support Layer 2 Virtual Networking
+    * ``oci network vlan``
+    * ``oci network private-ip list --vlan-id``
+    * ``oci network vnic assign-private-ip --vlan-id``
+    * ``oci compute instance attach-vnic --vlan-id``
+  + Validator parameter added for updating tags in Identity service
+    * ``oci iam tag update --validator``
+  + Improve Create Instance Configuration to include the latest AttachVolumeDetails
+    properties in the Compute Management service
+    * ``oci compute-management instance-configuration create --instance-details``</comment>
+    <requestid>821106</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d980e457fdd4434f3ee2f8af724bd1fe</srcmd5>
+    <version>2.12.10</version>
+    <time>1599862025</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.12.10
+  * Support for searching Oracle Cloud resources across tenancies in the Search Service
+    * ``oci search resource free-text-search --tenant-id``
+    * ``oci search resource structured-search --tenant-id``
+  * Support for Management Agent Cloud Service
+    * ``oci management-agent``
+  * Support for sending diagnostic interrupt to a VM instance in the Compute Service
+    * ``oci compute instance action --action SENDDIAGNOSTICINTERRUPT --instance-id``
+  * Support for custom Database Software Images in the Database Service
+    * ``oci db database-software-image``
+  * Support for Management Dashboard Service
+    * ``oci management-dashboard``
+  * Support for Logging Analytics Service
+    * `oci log-analytics`
+  * Support for Logging Service
+    * ``oci logging``
+  * Support for Logging Ingestion Service
+    * ``oci logging-ingestion``
+  * Support for Logging Search Service
+    * ``oci logging-search``
+  * Support for Service Connector Hub service
+    * ``oci sch``
+  * Support for getting and listing container database patches for Autonomous Container
+    Database resources in the Database Service
+    * ``oci db autonomous-patch get --autonomous-patch-id``
+    * ``oci db autonomous-patch list-container-database-patches --autonomous-container-database-id``
+  * Support for updating patch id on maintenance run for Autonomous Container Database
+    resources in the Database Service
+    * ``oci db maintenance-run update --patch-id``
+  * Support for Policy based Request/Response transformation (forwarded request 833318 from glaubitz)</comment>
+    <requestid>833333</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>7b3cc6a11157f11f8d014cffdb47c4e6</srcmd5>
+    <version>2.14.0</version>
+    <time>1603031407</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.14.0
+  * Support for API definitions in the API Gateway service
+    * ``oci api-gateway api --help``
+  * Support for pattern-based Logical Entities, namespace-bound Custom Properties,
+    and faceted search in the Data Catalog service
+    * ``oci data-catalog pattern``
+    * ``oci data-catalog data-asset add-data-selector-patterns``
+    * ``oci data-catalog entity list-aggregated-physical``
+    * ``oci data-catalog namespace``
+    * ``oci data-catalog custom-property``
+    * ``oci data-catalog type associate-custom-properties``
+    * ``oci data-catalog search query``
+  * Support for Autonomous Data Guard for Autonomous Infrastructure
+    * ``oci autonomous-container-database-dataguard``
+    * ``oci autonomous-database-dataguard``
+  * Support for creating a Data Guard association on an existing standby
+    database home in the Database service.
+    * ``oci db data-guard-association create from-existing-db-system --peer-db-home-id``
+    * ``oci db data-guard-association create from-existing-vm-cluster --peer-db-home-id``
+  * Support for list database homes by version.
+    * ``oci db db-home list --db-version``
+  * Support for upgrading Cloud VM Cluster Grid Infrastructure
+    * ``oci db cloud-vm-cluster update [options]``
+  * Help messages for Logging Ingestion Service
+  * Support for updating saved search logs for Logging Service
+    * ``oci logging log-saved-search``
+    * ``oci logging log-included-search``
+  * [Breaking]  Required param ``is-quick-start`` is deleted from ``oci logging
+    log-saved-search create/update``
+- from version 2.13.0 (forwarded request 841902 from glaubitz)</comment>
+    <requestid>841940</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>449247cde037332dc9fe1ab366ede2b1</srcmd5>
+    <version>2.21.1</version>
+    <time>1613427642</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>872528</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>08996c383c14a69db7151def8599d5d0</srcmd5>
+    <version>2.24.4</version>
+    <time>1621113386</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>893346</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>2d0ede00dfc73afd04920b9153463434</srcmd5>
+    <version>2.24.5</version>
+    <time>1621721174</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>894935</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e9e796bfe99cf46331b4311cc176bbd0</srcmd5>
+    <version>2.25.4</version>
+    <time>1625115939</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>903196</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>98bcf82d53f44cfae292993c81ac19df</srcmd5>
+    <version>2.26.4</version>
+    <time>1628108928</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>910078</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>64f39da0811e6176caad780c6424b263</srcmd5>
+    <version>3.0.2</version>
+    <time>1630324523</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>914960</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>8af86d6db68eaab2f5f0e4d03a12391e</srcmd5>
+    <version>3.2.0</version>
+    <time>1635438679</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>927782</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>050dcfc88d077e2897ac2975c1c8c6ad</srcmd5>
+    <version>3.3.1</version>
+    <time>1638388024</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>934745</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>f17661f1e96586af8ca9fdd91a8bcf76</srcmd5>
+    <version>3.4.1</version>
+    <time>1641765018</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>945124</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>20ba5b52582b8981dd0d12bb4a9014e2</srcmd5>
+    <version>3.4.4</version>
+    <time>1643321812</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>949388</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>10c6c7140c4d62dba024414dcce5864e</srcmd5>
+    <version>3.5.2</version>
+    <time>1645998170</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>957762</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>67e54be8c873be4343ab3dcc495858ad</srcmd5>
+    <version>3.6.0</version>
+    <time>1647367858</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>961963</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>6f004f748ea2483559ef2016c33352b0</srcmd5>
+    <version>3.6.2</version>
+    <time>1649450737</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>967700</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>ed310ccb875319496eb6f229fa4e359a</srcmd5>
+    <version>3.7.3</version>
+    <time>1651501540</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>974329</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>cef74569d6c057c220d878b9e9e7ca6f</srcmd5>
+    <version>3.8.0</version>
+    <time>1651960462</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>975532</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>3fe443fce98a8c2529babe8993beb8ce</srcmd5>
+    <version>3.9.0</version>
+    <time>1653503652</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>978241</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>9fabcd9e421efe361e32601f6c8e4cbb</srcmd5>
+    <version>3.10.5</version>
+    <time>1657015726</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>986473</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>5f6063d2acfd9b50bf32bca49b429b28</srcmd5>
+    <version>3.11.1</version>
+    <time>1658857509</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>991050</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>25f506d986aedeb1afef01ca35436d40</srcmd5>
+    <version>3.13.0</version>
+    <time>1660051628</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>993784</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>ffb6e7bf6460fdb6b248b2a4345ef463</srcmd5>
+    <version>3.15.0</version>
+    <time>1661593793</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>999382</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>ff38c94b83c058056ccaf74b17863e95</srcmd5>
+    <version>3.15.2</version>
+    <time>1662639725</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1001682</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>b0b82f7b89e8207954648d46688eb46f</srcmd5>
+    <version>3.16.0</version>
+    <time>1663327950</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1004061</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>985dffe2b65827e4830ca9f46ffaa410</srcmd5>
+    <version>3.18.0</version>
+    <time>1664553481</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>1007086</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>c8153f9de70925ee7ec7728e5cce617e</srcmd5>
+    <version>3.18.1</version>
+    <time>1666102011</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1010232</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>8fc59e7b6bef425aadbf4a74ace89bda</srcmd5>
+    <version>3.20.0</version>
+    <time>1667579857</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1033467</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>089579c07aa9ddcc4b41ef6801af988c</srcmd5>
+    <version>3.20.1</version>
+    <time>1668514721</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1035658</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>99159456fea7dae3fc91497c5b0bc50d</srcmd5>
+    <version>3.20.2</version>
+    <time>1669288996</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1037508</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>d79c552e100b83842ff20f4758c02d03</srcmd5>
+    <version>3.20.3</version>
+    <time>1669992452</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1039555</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>ca04396ce7748000d6a737770536965e</srcmd5>
+    <version>3.21.0</version>
+    <time>1670514657</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1041207</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>93c48415c12de77b0f16632af19fd6fb</srcmd5>
+    <version>3.22.0</version>
+    <time>1672927294</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1056166</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>f60a2dd88c4c19ed7042df6ce2db308a</srcmd5>
+    <version>3.22.3</version>
+    <time>1674810968</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1061213</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>b57bfabdeb5925de0bc5e263fd49ff45</srcmd5>
+    <version>3.22.5</version>
+    <time>1675956216</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1063996</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>1829d1546becae8c575d904199e02d7d</srcmd5>
+    <version>3.23.0</version>
+    <time>1676911600</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1066552</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>c98e08a26bfc76a6539aa78bd86d76c8</srcmd5>
+    <version>3.23.1</version>
+    <time>1677258466</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1067419</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>2f7e9c8f2cc262fcb847bbd209861713</srcmd5>
+    <version>3.23.2</version>
+    <time>1678125399</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1069650</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>fe5bc3cedd7690645c684f26341f177e</srcmd5>
+    <version>3.23.3</version>
+    <time>1678902951</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1071973</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>ab5acd5551540c9cb83c6ec6d52c651c</srcmd5>
+    <version>3.24.0</version>
+    <time>1680125246</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1075123</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>f11f8f693276e97a117ec3b3cd2cb074</srcmd5>
+    <version>3.28.0</version>
+    <time>1685981288</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1090895</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>e9ededc06a4a9b9ecc5252f95cc9ad21</srcmd5>
+    <version>3.28.2</version>
+    <time>1686506058</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1091450</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>104c819156ac624d9f0d606c9488f64f</srcmd5>
+    <version>3.29.1</version>
+    <time>1687469203</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1094647</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>f5c4c9feb34489fb5cdb675f36bf0ee7</srcmd5>
+    <version>3.29.2</version>
+    <time>1688476931</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1096573</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>d629f27f676cdafb195749ebbe80c343</srcmd5>
+    <version>3.29.3</version>
+    <time>1689614637</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1098913</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>17c5b6c89e354bc224a4145b5bb4199e</srcmd5>
+    <version>3.30.0</version>
+    <time>1691594789</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1102403</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>34e514b13d62fb4e586bad18f1ccb192</srcmd5>
+    <version>3.30.2</version>
+    <time>1693685250</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1108477</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>71c625b6936946d9069e1133ded04618</srcmd5>
+    <version>3.33.0</version>
+    <time>1694545386</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1110551</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>aedc0de73ceb5bfd7d1773e9077cf600</srcmd5>
+    <version>3.33.3</version>
+    <time>1696529000</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1115553</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>9d4f8e6af98a5756d9d0c19a63818970</srcmd5>
+    <version>3.34.0</version>
+    <time>1697836713</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1119158</requestid>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>735b06ca6b6df872fedc5cc78fb42618</srcmd5>
+    <version>3.36.2</version>
+    <time>1701121433</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1129102</requestid>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>dd56fbc53a7d391720ab89bf5246bbf1</srcmd5>
+    <version>3.37.0</version>
+    <time>1702327910</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1132511</requestid>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>4181732de3d1a4c86b4b5efa93a612c8</srcmd5>
+    <version>3.37.1</version>
+    <time>1704494561</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1137151</requestid>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>3fc21089daadebbe70001ef83487c4b8</srcmd5>
+    <version>3.37.5</version>
+    <time>1706807151</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1143256</requestid>
+  </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>04c771194eb83505c143594f3b20c2dd</srcmd5>
+    <version>3.37.8</version>
+    <time>1707519280</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1145453</requestid>
+  </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>2fefff847e53d1abacbbc0c33c5956ce</srcmd5>
+    <version>3.37.9</version>
+    <time>1709660979</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1147595</requestid>
+  </revision>
+  <revision rev="57" vrev="2">
+    <srcmd5>040ca835d3a88e99a7dd44eb1cceec35</srcmd5>
+    <version>3.37.9</version>
+    <time>1710014078</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1156455</requestid>
+  </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>a96d201b1bb924bf4ada6c95888d127a</srcmd5>
+    <version>3.37.13</version>
+    <time>1710434757</time>
+    <user>anag+factory</user>
+    <comment>- Switch build setup to agreed upon format to better accomodate SLE and
+  Factory and make it easier in the future to deal with Python interpreter
+  changes (bsc#1221103)
+- Switch to wheel build
+- Update to version 3.37.13
+  * Support for New Dev License Type in Oracle Autonomous Database
+    (on Dedicated Infrastructure)
+  * Support for new optional parameters to create Autonomous Container Database
+  * Support for Autoscaling in the Data Science Model Deployment service
+- From 3.37.12
+  * Support for server streaming events in the Generative AI Inference
+    Service when `inference-request-is-stream` is set to true
+  * Support for Whisper Models in creation of transcription job
+  * Support for Delete Job API in transcription job
+  * Support for updating host-insights
+  * Support to receive insights from resources in child compartments for
+    news reports
+  * Support to update more parameters for news reports
+  * Support to choose the day of the week the report is received for news
+    reports
+- From 3.37.11
+  * Support for retrieving logs in Container Instance Service.
+  * Support for queue source feature in Connector Hub Service.
+  * Support for asynchronous data asset export in Data Catalog Service.
+  * Support for the secret auto-generation in Vault Secret Management Service.
+  * Support for new optional parameters in key commands to enable or modify
+    automatic key rotation settings in Key Management Service.
+  * Support for tagging for following commands in Database Management Service.
+  * Support for multiple approvals (two approvals).
+  * Support for forwarding Hypervisor logs.</comment>
+    <requestid>1158003</requestid>
+  </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>f204117a36b446b8ddc7235497d54586</srcmd5>
+    <version>3.38.1</version>
+    <time>1712520626</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1165366</requestid>
+  </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>b4ac51ad1b7037f9aeb43893fa11b918</srcmd5>
+    <version>3.39.1</version>
+    <time>1713471207</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1168843</requestid>
+  </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>76073408c99375db1cb1ccdd242a47e3</srcmd5>
+    <version>3.40.3</version>
+    <time>1715872517</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1174268</requestid>
+  </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>92ab8ad6cc25f98e32192aa01f3d1ef4</srcmd5>
+    <version>3.42.0</version>
+    <time>1718033924</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1179705</requestid>
+  </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>f99e725146b220e2bb87946e668790a1</srcmd5>
+    <version>3.43.0</version>
+    <time>1718123447</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1180028</requestid>
+  </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>242967122df82b68cd461705269dd06b</srcmd5>
+    <version>3.43.1</version>
+    <time>1718743931</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1181482</requestid>
+  </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>69a60a1851a5c20246222bc96862d304</srcmd5>
+    <version>3.43.2</version>
+    <time>1719937047</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1184328</requestid>
+  </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>a6acb8fef41dd315862f076a8ec266e1</srcmd5>
+    <version>3.44.1</version>
+    <time>1720548350</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1186396</requestid>
+  </revision>
+</revisionlist>
