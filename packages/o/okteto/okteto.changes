@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Wed Jul 10 08:32:07 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.29.0:
+  * [Backport release-2.29] fix: global image clone (#4378)
+  * [Backport release-2.29] up: skip refresh token for vanilla
+    clusters (#4374)
+  * build(deps): bump braces from 3.0.2 to 3.0.3 in
+    /samples/node.js (#4366)
+  * build(deps): bump github.com/hashicorp/go-getter from 1.7.4 to
+    1.7.5 (#4364)
+  * fix: smart build stuck on untracked files (#4361)
+  * Admins to be able to deploy into namespaces or previews (#4354)
+  * Show test command when running 'okteto --help' (#4332)
+  * remove okteto cloud mentions (#4345)
+  * fix: rebuilding for already created image (#4337)
+  * fix: okteto test to use always root user (#4336)
+  * Generate artifacts in `okteto test` including when tests fail
+    (#4334)
+  * Added transient error to retry on build operation (#4348)
+  * fix: clone images on specified services (#4270)
+  * fix: build friendly err (#4335)
+  * Preview deploy scope to default global (#4333)
+  * Reserved variable names (#4331)
+  * fix: only use requirements from yaml (#4329)
+  * fix: use the correct image on okteteo test (#4326)
+  * fix: CVE-2023-47108 (#4327)
+  * remove unused code (#4321)
+
+-------------------------------------------------------------------
 Wed Jul 03 15:40:27 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.28.1:
