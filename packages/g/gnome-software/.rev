@@ -1,0 +1,1185 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f2789dd6a7b023c72182231554a77b16</srcmd5>
+    <version>3.9.2</version>
+    <time>1378748618</time>
+    <user>coolo</user>
+    <comment>New package from the GNOME 3.10 stack</comment>
+    <requestid>197606</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>872effea0bc319eb9940c360e7112375</srcmd5>
+    <version>3.9.3</version>
+    <time>1379317285</time>
+    <user>coolo</user>
+    <comment>  Add suse-xsl-stylesheets and pkgconfig(libxslt) BuildRequires,
+  needed in order to build man pages. 
+
+When investigating why gnome-software fails to launch I found this over at fedora...
+Seems we need to add our own appstream data now.
+
+# install AppStream data for Fedora
+%__mkdir_p %{buildroot}%{_datadir}/app-info/xmls
+%__cp %{SOURCE1} %{buildroot}%{_datadir}/app-info/xmls
+
+# decompress and install AppStream icons
+%__mkdir_p %{buildroot}%{_datadir}/app-info/icons
+cd %{buildroot}%{_datadir}/app-info/icons
+%__tar xvzf %{SOURCE2}
+cd - (forwarded request 199127 from Zaitor)</comment>
+    <requestid>199128</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>872effea0bc319eb9940c360e7112375</srcmd5>
+    <version>3.9.3</version>
+    <time>1379662504</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>19d512ed690ea416632f15a09a8920cd</srcmd5>
+    <version>3.10.0</version>
+    <time>1380295781</time>
+    <user>coolo</user>
+    <comment>- Add PackageKit-branding-upstream Requires: gnome-software
+  requires ScanDesktopFiles=true in PK.conf, which openSUSE
+  explicitly disables for performance reason. Users that want to
+  test gnome-software (technical preview) will have to take this
+  performance hit (bnc#842565). (forwarded request 201053 from dimstar)</comment>
+    <requestid>201055</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>8e01dec2032b9888a05420b1734e5697</srcmd5>
+    <version>3.10.1</version>
+    <time>1381826486</time>
+    <user>scarabeus_factory</user>
+    <comment>Update to 3.10.1 - GNOME Stable branch. Plus some more bugfixes - Worthy for 13.1, as 3.10.0 crashes on start</comment>
+    <requestid>203332</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>66f0d970c94d251c10fb8d57751c283d</srcmd5>
+    <version>3.10.2</version>
+    <time>1382259096</time>
+    <user>scarabeus_factory</user>
+    <comment>Update to 3.10.2 - GNOME Stable branch - exceptional .2 release (forwarded request 203785 from dimstar)</comment>
+    <requestid>203999</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>f72fb9f521480a5d4129ba88e883ac60</srcmd5>
+    <version>3.12.1</version>
+    <time>1399317344</time>
+    <user>coolo</user>
+    <comment>Push GNOME:Factory - GNOME 3.12.1</comment>
+    <requestid>231739</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>3e746e426c5229b672db432d6952acd7</srcmd5>
+    <version>3.12.2</version>
+    <time>1400588688</time>
+    <user>coolo</user>
+    <comment>Stable update (forwarded request 234433 from Zaitor)</comment>
+    <requestid>234513</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>3e746e426c5229b672db432d6952acd7</srcmd5>
+    <version>3.12.2</version>
+    <time>1409301040</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>7facb86e979324ee5e27f39e2f43a9a8</srcmd5>
+    <version>3.14.0</version>
+    <time>1412098694</time>
+    <user>coolo</user>
+    <comment>Push GNOME 3.14.0 (forwarded request 251912 from Zaitor)</comment>
+    <requestid>252087</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>fb49519e4044495e2f8298d5b64ce531</srcmd5>
+    <version>unknown</version>
+    <time>1412589993</time>
+    <user>coolo</user>
+    <comment>- Add gnome-software-add-default-yast-appfolder.patch to add a
+  YaST app-folder by default, in addition to existing app-folders
+  Sundry and Utilities; fixes boo#897713.
+
+- Move %lang_package before the definition of
+  zypp-plugin-appstream to not confuse RPM with the redefined
+  version of the subpackage.
+
+- Split InstallAppdata.sh in an own package libzypp-plugin-appdata:
+  other software centers might have to rely on this as well in the
+  future.
+- Add appstream-glib Requires and minimum version for libzypp to
+  libzypp-plugin-appdata.  
+
+- Drop PackageKit-branding-upstream Requires: PK 1.0.0 got a major
+  rework and dropped the DesktopFile database. So the 'openSUSE'
+  branded package is good enough.
+- Add InstallAppdata.sh: the script is executed by libzypp whenever
+  some repos are refreshed. The script extracts the appstream data
+  from the repo metadata and installs it into the 'well known'
+  location on the file system (/usr/share/app-info).</comment>
+    <requestid>254038</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>b9b0505861de2bfc72c4892b3610a0c6</srcmd5>
+    <version>unknown</version>
+    <time>1413048370</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>254746</requestid>
+  </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>16052d80e5c94e7eef86223c850f3c50</srcmd5>
+    <version>unknown</version>
+    <time>1413263567</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>256054</requestid>
+  </revision>
+  <revision rev="14" vrev="5">
+    <srcmd5>e8ccf51fe8348d502403a8166a534185</srcmd5>
+    <version>3.14.1</version>
+    <time>1416048258</time>
+    <user>dimstar_suse</user>
+    <comment>Split libzypp-plugin-appdata out of gnome-software</comment>
+    <requestid>259606</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>783ec8850419e9e32e2ed05cc3687a4e</srcmd5>
+    <version>3.14.2</version>
+    <time>1416347205</time>
+    <user>dimstar_suse</user>
+    <comment>Push GNOME 3.14.2</comment>
+    <requestid>261803</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>6c70afb1b8f18cd379d4ec80fe500741</srcmd5>
+    <version>3.14.3</version>
+    <time>1425377694</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>288323</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>eb938e8c645cd2a257f3db4e07c96e86</srcmd5>
+    <version>3.16.0</version>
+    <time>1427736379</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push of project GNOME:Next (forwarded request 292840 from dimstar)</comment>
+    <requestid>293023</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>9fbd33e26fb86406c3b29be56dd989b4</srcmd5>
+    <version>3.16.1</version>
+    <time>1429768910</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push of project GNOME:Factory</comment>
+    <requestid>298469</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>3b0e6ca09c486686e3b52f39d1b4e6d0</srcmd5>
+    <version>3.16.2</version>
+    <time>1431978168</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 306530 from Zaitor)</comment>
+    <requestid>306554</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>fecda0795ff00da038f85e944c869ae6</srcmd5>
+    <version>3.16.3</version>
+    <time>1433745094</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>311059</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>bf55ac8d0410446bf9bbca9adcdb7086</srcmd5>
+    <version>3.16.4</version>
+    <time>1434383393</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>311997</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>8d96e6e4d3190d770c8d4bc3d09927e2</srcmd5>
+    <version>3.16.5</version>
+    <time>1438750308</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>320252</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>a1855bbe882b77d7356cc472e7584d47</srcmd5>
+    <version>3.16.5</version>
+    <time>1441296263</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not ship gnome-software-local-file.desktop: gnome-software is
+  not yet able to handle local RPM files on openSUSE (boo#941862).</comment>
+    <requestid>328658</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>c1521af06a0eefb9904b28c06b341a17</srcmd5>
+    <version>3.18.0</version>
+    <time>1444141367</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 3.18.0 (forwarded request 332603 from dimstar)</comment>
+    <requestid>332696</requestid>
+  </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>6d90be7b1852c15d43544926e3ca1a5e</srcmd5>
+    <version>3.18.0</version>
+    <time>1444636962</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>337387</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>3624e35487fd43f943c58c3cfa1a6c34</srcmd5>
+    <version>3.18.2</version>
+    <time>1445860111</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push of project GNOME:Next (forwarded request 339447 from Zaitor)</comment>
+    <requestid>339863</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>286bd3638566fed9afbbed71519dba96</srcmd5>
+    <version>3.18.3</version>
+    <time>1446978406</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>342644</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>21f32dc12526867a72462f6a24471cdd</srcmd5>
+    <version>3.20.0</version>
+    <time>1459254926</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 3.20.0 (forwarded request 376659 from dimstar)</comment>
+    <requestid>376839</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>e64af0e43c572b3e433e4353936af23f</srcmd5>
+    <version>3.20.1</version>
+    <time>1460837318</time>
+    <user>dimstar_suse</user>
+    <comment>Resub rebased sub. (forwarded request 387957 from Zaitor)</comment>
+    <requestid>389232</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>1945472798b098013b4ae9d74a723cf2</srcmd5>
+    <version>3.20.2</version>
+    <time>1462443012</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>392277</requestid>
+  </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>5d51f2df28e5d1f1b559a9e507b41198</srcmd5>
+    <version>3.20.2</version>
+    <time>1463738162</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>396752</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>173eb5bb4972719a4839b83333861c5a</srcmd5>
+    <version>3.20.3</version>
+    <time>1464690325</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>399001</requestid>
+  </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>ef99a103d214f295445355b2a5f2572f</srcmd5>
+    <version>3.20.3</version>
+    <time>1466814178</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>404184</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>7b34b91b45e46fa5d95213f143a80fee</srcmd5>
+    <version>3.20.4</version>
+    <time>1468869808</time>
+    <user>dimstar_suse</user>
+    <comment>Verbump (forwarded request 408285 from Zaitor)</comment>
+    <requestid>408461</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>11e3dcc08ca947f52f1cee6fb1b1f664</srcmd5>
+    <version>3.22.0</version>
+    <time>1474623343</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 3.22.0 (forwarded request 428743 from dimstar)</comment>
+    <requestid>429093</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>e2eb80396783090a46e03b2be7521788</srcmd5>
+    <version>3.22.1</version>
+    <time>1478086219</time>
+    <user>dimstar_suse</user>
+    <comment>Resub with xdg-app br dropped.</comment>
+    <requestid>438230</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>ec8eff6f518873b9fb3306ae9f2f50c7</srcmd5>
+    <version>3.22.2</version>
+    <time>1478779905</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 3.22.2 (forwarded request 439079 from dimstar)</comment>
+    <requestid>439138</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>9f86bdb96f4b532ddba8364e0f56dc6f</srcmd5>
+    <version>3.22.3</version>
+    <time>1481105504</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>443616</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>d8776c254ef7e46963fc20115dbfdf14</srcmd5>
+    <version>3.22.4</version>
+    <time>1481459052</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>445046</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>80d4fabb7948b206bdb6e2a26ce5d5bf</srcmd5>
+    <version>3.22.5</version>
+    <time>1485166843</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>451203</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>417ac4422b6e27adc326ed1e56e456f0</srcmd5>
+    <version>3.24.0</version>
+    <time>1490220654</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 3.24.0 (forwarded request 481597 from dimstar)</comment>
+    <requestid>481601</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>35df63aa4ff51da66fc0ab0994e16a8b</srcmd5>
+    <version>3.24.1</version>
+    <time>1493455880</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 3.24.1 (forwarded request 490814 from dimstar)</comment>
+    <requestid>490930</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>9a7c3645b32e451c9d8c3029fa9bfe85</srcmd5>
+    <version>3.24.3</version>
+    <time>1496225594</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>496389</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>8c6dd27f4e0962f71f35c1f4d637738b</srcmd5>
+    <version>3.26.0</version>
+    <time>1505332331</time>
+    <user>dimstar_suse</user>
+    <comment>- Update package summaries. (forwarded request 523418 from jengelh)</comment>
+    <requestid>523528</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>5ddac4e070184040f3273eb941ad6390</srcmd5>
+    <version>3.26.1</version>
+    <time>1507280305</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 531080 from dimstar)</comment>
+    <requestid>531195</requestid>
+  </revision>
+  <revision rev="46" vrev="2">
+    <srcmd5>ff17cc26a78ac3bb6c09125eed6bff27</srcmd5>
+    <version>3.26.1</version>
+    <time>1510837016</time>
+    <user>dimstar_suse</user>
+    <comment>Some fixings. (forwarded request 540641 from luc14n0)</comment>
+    <requestid>541267</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>a497b2f1c2dd1ccf633d9811444da3c9</srcmd5>
+    <version>3.26.3</version>
+    <time>1512055912</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.26.3:
+  + Fix a common crash in the fwupd plugin.
+  + Make category translations on the details page show up.
+  + Updated translations.
+- Changes from version 3.26.2:
+  + Various fixes to cancellable handling, making it more robust
+    to cancel install/remove operations.
+  + Fix a common crash in Fedora distro upgrades plugin.
+  + Fix showing N+2 Fedora upgrades.
+  + Fix flatpak updates inadvertently triggering a reboot.
+  + Revert plugin GType registering changes that broke app
+    &quot;adopting&quot;.
+  + Various flatpak plugin fixes.
+  + Various snap plugin fixes.
+  + Bump fwupd required dep to 0.9.7 and support building with new
+    1.0.0 API.
+  + Avoid erroring out for operations that return more than 500
+    results (distro upgrades, getting gnome-shell extensions
+    list).
+  + Fix a few memory leaks.
+  + Updated translations.
+- Enable fwupd; introduces BuildRequires on pkgconfig(fwupd) &amp;gt;=
+  0.9.7.
+- Remove the enable-firmware switch from the meson build options;
+  this option has been dropped by upstream. (forwarded request 544415 from badshah400)</comment>
+    <requestid>544627</requestid>
+  </revision>
+  <revision rev="48" vrev="2">
+    <srcmd5>9c0f114e55b95ba4b746d94b1b4dd2ea</srcmd5>
+    <version>3.26.3</version>
+    <time>1512546586</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>548508</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>6dfc266b6c756aad37cec59c1745ef7e</srcmd5>
+    <version>3.26.4</version>
+    <time>1516091305</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>562585</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>becaba063126d3e2a9f8fbb89077a152</srcmd5>
+    <version>3.26.5</version>
+    <time>1516880282</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.26.5:
+  + Add missing locking to gs_plugin_cache_remove(), fixing a
+    possible crash.
+  + Fix various memory leaks spotted by valgrind.
+  + Fix a possible crash triggered by the fwupd plugin.
+  + Do not emit critical warnings when reviewing OS Updates.
+  + fwupd: Use the custom user-agent when downloading firmware.
+  + overview page: Fix a crash when we have no featured apps.
+  + packagekit: Implement repository enabling.
+  + Fix hover CSS for &quot;unknown&quot; and &quot;nonfree&quot; license buttons.
+  + Updated translations. (forwarded request 567818 from iznogood)</comment>
+    <requestid>568066</requestid>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>58d8d3509e4920bf23014efe4d6b6b45</srcmd5>
+    <version>3.26.6</version>
+    <time>1518697216</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.26.6:
+  + Improve alignment on the updates page.
+  + Do not show missing screenshot error for fonts that have
+    screenshots.
+  + Fixes for third party repository handling in the sources
+    dialog.
+  + Fix various issues on Ubuntu when purchasing apps.
+  + Fix building with gtkspell support.
+  + Fix an issue that led to duplicate categories appearing on the
+    overview page.
+  + Various memory leak and correctness fixes.
+  + Show package descriptions when installing packages through the
+    dbus API.
+  + Revert a commit that broke repo package install.
+  + Updated translations.
+- Pass enable-gtkspell=true to meson, ensure we build gtkspell
+  support. (forwarded request 574266 from iznogood)</comment>
+    <requestid>575813</requestid>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>b531fe8372689398b2dcd8a8c7c6dfc2</srcmd5>
+    <version>3.26.7</version>
+    <time>1520502774</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>583241</requestid>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>396e8c283289f8a870915d83eec6e92d</srcmd5>
+    <version>3.28.0</version>
+    <time>1521052269</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 3.28.0 (forwarded request 586185 from dimstar)</comment>
+    <requestid>586248</requestid>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>6fb1674bbe59f2a0f349317f410d8ca1</srcmd5>
+    <version>3.28.1</version>
+    <time>1524144210</time>
+    <user>dimstar_suse</user>
+    <comment>New stable rel (forwarded request 594996 from iznogood)</comment>
+    <requestid>596144</requestid>
+  </revision>
+  <revision rev="55" vrev="2">
+    <srcmd5>959d9faaa59c18a71d5f2b314c45eb7a</srcmd5>
+    <version>3.28.1</version>
+    <time>1524642274</time>
+    <user>dimstar_suse</user>
+    <comment>- require fwupd, gnome-software doesn't work without (boo#1090042) (forwarded request 599273 from lnussel)</comment>
+    <requestid>599939</requestid>
+  </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>0730c4bfecd69d9219534eae5c6d2e35</srcmd5>
+    <version>3.28.2</version>
+    <time>1525960086</time>
+    <user>dimstar_suse</user>
+    <comment>New stable rel (forwarded request 605711 from iznogood)</comment>
+    <requestid>605738</requestid>
+  </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>43744488c64f0f869f1944d01201999a</srcmd5>
+    <version>3.30.2</version>
+    <time>1539757244</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.30.2:
+  + Localize the polkit policy file.
+  + Display ongoing app-installation at top of the list.
+  + Update apps in display order.
+  + Fix autoupdates triggering in a feedback loop.
+  + Tweak the prefs dialog layout.
+  + Various fixes to the flatpak plugin, making its state keeping
+    more robust.
+  + Fix flatpak errors to show up instead of a generic &quot;Aborted&quot;
+    error.
+  + Avoid triggering reboots for online updatable apps (flatpak).
+  + Make rpm-ostree updates work again.
+  + Fix an issue that caused duplicate lines in 'OS Updates' on
+    rpm-ostree based systems.
+  + Compiler warning fixes.
+  + Updated translations. (forwarded request 640102 from iznogood)</comment>
+    <requestid>640111</requestid>
+  </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>d85638a0078ff8a40f78d46933c45a9b</srcmd5>
+    <version>3.30.5</version>
+    <time>1541509240</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 644579 from iznogood)</comment>
+    <requestid>645204</requestid>
+  </revision>
+  <revision rev="59" vrev="2">
+    <srcmd5>93479da5567220393fb6099475ad172b</srcmd5>
+    <version>3.30.5</version>
+    <time>1542889371</time>
+    <user>dimstar_suse</user>
+    <comment>- Add gnome-software-fix-installing-flatpakref.patch: flatpak: Fix
+  installing flatpakrefs if the remote is already configured
+  (glgo#GNOME/gnome-software#517). (forwarded request 650309 from JonathanKang)</comment>
+    <requestid>650342</requestid>
+  </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>33384cf88209524926efa8e8fa9fdf18</srcmd5>
+    <version>3.30.6</version>
+    <time>1545223682</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 659048 from iznogood)</comment>
+    <requestid>659060</requestid>
+  </revision>
+  <revision rev="61" vrev="2">
+    <srcmd5>5bd0e51523a81bd9af26c5757f5a341f</srcmd5>
+    <version>3.30.6</version>
+    <time>1547539770</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>664078</requestid>
+  </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>b05a5a88173e44a9a667c38aa57bb220</srcmd5>
+    <version>3.32.1</version>
+    <time>1556914248</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push of project GNOME:Next (forwarded request 695632 from dimstar)</comment>
+    <requestid>695688</requestid>
+  </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>ed58bea4095b6784ebcc29fd9d4dd49c</srcmd5>
+    <version>3.32.2</version>
+    <time>1557472647</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 701318 from iznogood)</comment>
+    <requestid>701614</requestid>
+  </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>9150122adefb60cc77697c06f0830e32</srcmd5>
+    <version>3.32.3</version>
+    <time>1559481161</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 705309 from iznogood)</comment>
+    <requestid>705582</requestid>
+  </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>09a99796da1e64ee1a453eba5f30845e</srcmd5>
+    <version>3.32.4</version>
+    <time>1563790676</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>714727</requestid>
+  </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>344cb1d473835cb66ef1cfc6ac5a5142</srcmd5>
+    <version>3.34.1</version>
+    <time>1571310078</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from {project}</comment>
+    <requestid>736562</requestid>
+  </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>c4ba29642082a7f07bf6690926032d9c</srcmd5>
+    <version>3.34.2</version>
+    <time>1575039638</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>751581</requestid>
+  </revision>
+  <revision rev="68" vrev="2">
+    <srcmd5>4c4708b022f7451cf7475a88c5606db4</srcmd5>
+    <version>3.34.2</version>
+    <time>1580724711</time>
+    <user>dimstar_suse</user>
+    <comment>fixed</comment>
+    <requestid>768413</requestid>
+  </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>99ba6bb50b9cb94429dcf038bde3b139</srcmd5>
+    <version>3.36.0</version>
+    <time>1587659232</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push of project GNOME:Next (forwarded request 795066 from iznogood)</comment>
+    <requestid>795217</requestid>
+  </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>92a70c26d0cf87f8ba510098d94e5190</srcmd5>
+    <version>3.36.1</version>
+    <time>1591652838</time>
+    <user>dimstar_suse</user>
+    <comment>New stable rel, not buildtested (forwarded request 808307 from iznogood)</comment>
+    <requestid>811414</requestid>
+  </revision>
+  <revision rev="71" vrev="2">
+    <srcmd5>f8beaa2a3500501f1b43169a862ba39e</srcmd5>
+    <version>3.36.1</version>
+    <time>1591879658</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>813315</requestid>
+  </revision>
+  <revision rev="72" vrev="3">
+    <srcmd5>56b8cc70a13720fca525b795c626317c</srcmd5>
+    <version>3.36.1</version>
+    <time>1597220387</time>
+    <user>dimstar_suse</user>
+    <comment>- Update gnome-software-add-missing-headers.patch: add more devel
+  headers in lib/meson.build (glgo#GNOME/gnome-software!446).
+- Add gnome-software-add-missing-headers.patch: add missing devel
+  headers referenced by gnome-software.h (bsc#1174849). (forwarded request 824440 from yfjiang)</comment>
+    <requestid>824806</requestid>
+  </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>784d4570fb050d8c739f080a79306f1e</srcmd5>
+    <version>3.38.0</version>
+    <time>1605783368</time>
+    <user>dimstar_suse</user>
+    <comment>Push GNOME 3.38</comment>
+    <requestid>847226</requestid>
+  </revision>
+  <revision rev="74" vrev="2">
+    <srcmd5>c488a72e126447af2c7eba43a4e52614</srcmd5>
+    <version>3.38.0</version>
+    <time>1606145708</time>
+    <user>dimstar_suse</user>
+    <comment>- Added gnome-packagekit as recommended dependency:
+  gnome-software-launch-gpk-update-viewer-for-updates.patch needs
+  gnome-packagekit to work (SLE only). (forwarded request 849342 from AZhou)</comment>
+    <requestid>849375</requestid>
+  </revision>
+  <revision rev="75" vrev="3">
+    <srcmd5>1e8d6826ee327b2b7e37ca453f4240ff</srcmd5>
+    <version>3.38.0</version>
+    <time>1612182331</time>
+    <user>dimstar_suse</user>
+    <comment>Remove hard dependency on zypp appdata plugin if other PackageKit backend is used (forwarded request 864183 from hellcp)</comment>
+    <requestid>867240</requestid>
+  </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>f69d4be8c90482b0046296242981779c</srcmd5>
+    <version>3.38.1</version>
+    <time>1613511335</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>870853</requestid>
+  </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>72fdc4858277170b639c1665cee34de0</srcmd5>
+    <version>40.0</version>
+    <time>1618223733</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 40 - here we come (forwarded request 880969 from dimstar)</comment>
+    <requestid>881140</requestid>
+  </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>9a93bd38fa1c91762449966d30d9e1be</srcmd5>
+    <version>40.1</version>
+    <time>1620334294</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 40.1 (forwarded request 889877 from mgorse)</comment>
+    <requestid>890094</requestid>
+  </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>0372582de4047ba1c048202574a8891f</srcmd5>
+    <version>40.2</version>
+    <time>1623268295</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 897402 from iznogood)</comment>
+    <requestid>897538</requestid>
+  </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>0f687eea70b9d43719eed26529e085c8</srcmd5>
+    <version>40.3</version>
+    <time>1626887165</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 40.3 (forwarded request 906599 from dimstar)</comment>
+    <requestid>907054</requestid>
+  </revision>
+  <revision rev="81" vrev="2">
+    <srcmd5>5988941f7897a0b503c1218fdee3062e</srcmd5>
+    <version>40.3</version>
+    <time>1627911661</time>
+    <user>dimstar_suse</user>
+    <comment>Synchronize the changelog with SLE and Leap 15.4. (forwarded request 909649 from yfjiang)</comment>
+    <requestid>909738</requestid>
+  </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>b784ec3a6e59381b0127fa8d2cd9d9a2</srcmd5>
+    <version>40.4</version>
+    <time>1629917774</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 912021 from iznogood)</comment>
+    <requestid>913685</requestid>
+  </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>ad85141b479ee03957216c9cb18b6774</srcmd5>
+    <version>41.0</version>
+    <time>1632939458</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from GNOME:Next (forwarded request 920949 from dimstar)</comment>
+    <requestid>921629</requestid>
+  </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>169c0cfacdab13aad345ab179f3df098</srcmd5>
+    <version>41.1</version>
+    <time>1636218912</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 41.1:
+  + Fix showing a ‘transaction in progress’ error when using the
+    rpm-ostree plugin
+  + Don’t recommend a reboot if firmware updates fail
+  + Fix flathub repo being considered present on Fedora 35 with
+    filtered flathub
+  + Allow searching for extensions
+  + Fix translation of main button on updates page
+  + Fix codec installation process
+  + Various minor UI tweaks and fixes
+  + Add new GNOME Circle apps to the featured carousel
+  + Improve metadata support for snaps
+  + Fix update checks being missed across suspend/hibernation
+  + Ensure application lists are updated when repositories are
+    enabled/installed or disabled/removed
+  + Updated translations.
+- Drop now unused _version 40_0 define. (forwarded request 928012 from iznogood)</comment>
+    <requestid>929576</requestid>
+  </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>fdc5784c4bc8b00d494291cace8f9102</srcmd5>
+    <version>41.2</version>
+    <time>1639266956</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>936205</requestid>
+  </revision>
+  <revision rev="86" vrev="2">
+    <srcmd5>8c0cb953b71bbcb7b7e1ba67cb178020</srcmd5>
+    <version>41.2</version>
+    <time>1640459799</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>942433</requestid>
+  </revision>
+  <revision rev="87" vrev="1">
+    <srcmd5>47736502cd9093ca3cff9e603de1574e</srcmd5>
+    <version>41.3</version>
+    <time>1641765003</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>944801</requestid>
+  </revision>
+  <revision rev="88" vrev="1">
+    <srcmd5>b69e2ff8136a9329928849180876ac28</srcmd5>
+    <version>41.4</version>
+    <time>1644617200</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>953292</requestid>
+  </revision>
+  <revision rev="89" vrev="1">
+    <srcmd5>4121494a8b6b1b16c080636512970f03</srcmd5>
+    <version>41.5</version>
+    <time>1647806073</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>962637</requestid>
+  </revision>
+  <revision rev="90" vrev="1">
+    <srcmd5>e90ae3814c76fc515662c6130ba4b1e0</srcmd5>
+    <version>42.0</version>
+    <time>1648062956</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>963545</requestid>
+  </revision>
+  <revision rev="91" vrev="2">
+    <srcmd5>ffcce43c49b732a292642736d45c8edf</srcmd5>
+    <version>42.0</version>
+    <time>1649610323</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 8cbce25.patch: Fix Gnome-Software keep poping up notification
+  &quot;Software updates failed&quot;. (forwarded request 967812 from dimstar)</comment>
+    <requestid>967859</requestid>
+  </revision>
+  <revision rev="92" vrev="1">
+    <srcmd5>210da511b751698240b5e93359bc783f</srcmd5>
+    <version>42.1</version>
+    <time>1651856292</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 974418 from dimstar)</comment>
+    <requestid>975076</requestid>
+  </revision>
+  <revision rev="93" vrev="1">
+    <srcmd5>fc109f7581140ce97c98b736314f0380</srcmd5>
+    <version>42.2</version>
+    <time>1654097640</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 42.2 (forwarded request 979895 from dimstar)</comment>
+    <requestid>980033</requestid>
+  </revision>
+  <revision rev="94" vrev="2">
+    <srcmd5>909ac0cb2ad29b7c2315bbc48e13e548</srcmd5>
+    <version>42.2</version>
+    <time>1656145429</time>
+    <user>dimstar_suse</user>
+    <comment>- Ship software-opensuse.gschema.override, declaring the
+  repositories 'repo-oss', 'repo-update', and 'repo-non-oss' as the
+  official repositories (boo#1189907). (forwarded request 984724 from dimstar)</comment>
+    <requestid>984839</requestid>
+  </revision>
+  <revision rev="95" vrev="1">
+    <srcmd5>5e6f2d7b2e7226615b8a97defe588f96</srcmd5>
+    <version>42.3</version>
+    <time>1656927144</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>986277</requestid>
+  </revision>
+  <revision rev="96" vrev="1">
+    <srcmd5>42ca48ec510810c8e8213701d369e33d</srcmd5>
+    <version>42.4</version>
+    <time>1660144375</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 993278 from iznogood)</comment>
+    <requestid>993944</requestid>
+  </revision>
+  <revision rev="97" vrev="1">
+    <srcmd5>4bcb3c135ce84347283c43dfb4430320</srcmd5>
+    <version>43.0</version>
+    <time>1663764038</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1004804</requestid>
+  </revision>
+  <revision rev="98" vrev="1">
+    <srcmd5>fb4efffcf7f247009bd92ac94ad68c69</srcmd5>
+    <version>43.1</version>
+    <time>1666535580</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1030443</requestid>
+  </revision>
+  <revision rev="99" vrev="2">
+    <srcmd5>c772be887aa7bb7200dc4e8fc17df26c</srcmd5>
+    <version>43.1</version>
+    <time>1666871552</time>
+    <user>dimstar_suse</user>
+    <comment>To Factory for MicroOS Desktop (forwarded request 1031279 from RBrownSUSE)</comment>
+    <requestid>1031309</requestid>
+  </revision>
+  <revision rev="100" vrev="3">
+    <srcmd5>07c56e81cd53fee7f2097b0f1d2f66ac</srcmd5>
+    <version>43.1</version>
+    <time>1667306437</time>
+    <user>dimstar_suse</user>
+    <comment>- Add gnome-software-disable-offline-update.patch: Disable offline
+  update in SLE and openSUSE Leap(bsc#944832). (forwarded request 1031668 from JonathanKang)</comment>
+    <requestid>1032384</requestid>
+  </revision>
+  <revision rev="101" vrev="1">
+    <srcmd5>bae99df18fde0f378d96bd2e0c58d493</srcmd5>
+    <version>43.2</version>
+    <time>1670162280</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1039785</requestid>
+  </revision>
+  <revision rev="102" vrev="1">
+    <srcmd5>ad3e02deaecadf40e85ae543bf9d9a8f</srcmd5>
+    <version>43.3</version>
+    <time>1673359160</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 43.3:
+  + Periodically expire cached app icons.
+  + Stop notifying about unprepared critical updates.
+  + Updated translations. (forwarded request 1056681 from iznogood)</comment>
+    <requestid>1057043</requestid>
+  </revision>
+  <revision rev="103" vrev="2">
+    <srcmd5>11607403838a9577a891b9748035a728</srcmd5>
+    <version>43.3</version>
+    <time>1674232680</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1059497</requestid>
+  </revision>
+  <revision rev="104" vrev="1">
+    <srcmd5>505f4fcbddc49632a40e007c3505aa72</srcmd5>
+    <version>43.4</version>
+    <time>1676150416</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 1064184 from iznogood)</comment>
+    <requestid>1064286</requestid>
+  </revision>
+  <revision rev="105" vrev="2">
+    <srcmd5>8ae5b3f3006ebcc362b01548196e517d</srcmd5>
+    <version>43.4</version>
+    <time>1676389372</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1065573</requestid>
+  </revision>
+  <revision rev="106" vrev="1">
+    <srcmd5>fccfda29a2364e1357a867f8c3838ac5</srcmd5>
+    <version>43.5</version>
+    <time>1677966193</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1069277</requestid>
+  </revision>
+  <revision rev="107" vrev="1">
+    <srcmd5>c7d14e882c3cfefebc6b22cace06c271</srcmd5>
+    <version>44.0</version>
+    <time>1679667413</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 44.0:
+  + Fix missing separators in system updates dialog.
+  + Updated translations.
+- Update to version 44.rc:
+  + Fix a crash during install of a firmware update.
+  + Fix notifications of a prepared update.
+  + Fix cancellation of an update.
+  + Update details page on app job start/end.
+  + Fix a crash after cancelling of a single package update.
+  + Updated translations.
+- Update to version 44.beta:
+  + Add a preference for only showing freely-licensed apps
+  + Improve design of Install/Uninstall buttons for app addons
+  + Fix loading flatpak bundles if a runtime is missing
+  + Improvements to the UI for ratings and reviews
+  + Fix refreshing the details page after searching for an app
+  + Improve choice of icons for apps where a themed icon is
+    available
+  + Improve performance of downloading remote icons significantly
+  + Updated translations.
+- Changes from version 44.alpha:
+  + Allow automatically removing unneeded runtimes
+  + Show changelogs for rpm-ostree updates
+  + Limit the maximum description length in context tiles
+  + Support a less-prominent UI for regular updates for image-based
+    OSs
+  + Improvements to error notification display
+  + Reduce reloading/refreshing of view when installing apps
+  + Minor usability improvements to review lists and adding a
+    review
+  + Stop using libdnf in rpm-ostree backend
+  + UI polish on app source chooser
+  + Fix distro upgrades
+  + Fix system-wide external AppStream support
+  + UI polish on Incompatible Software dialog
+  + Fix opening web apps
+  + Fix notifying about available firmware updates
+  + Improve scaling of Explore page on phones
+  + Add a placeholder to search entry
+  + Fix repo authentication dialog
+  + Periodically refresh cached app icons
+  + Improve labels and tooltips on Updates page
+  + Annotate firmware updates with their release urgency
+  + Adapt to GTK API deprecations
+  + Use the OS logo for minor update rows for image-based OSs
+  + Change ‘application’ to ‘app’ in translatable strings
+  + Stop notifying about unprepared critical updates
+  + Show the ‘Learn More’ link for larger updates of image-based
+    OSs if provided
+  + Add translations for more firmware device categories
+  + Updated translations.
+- Bump gs_plugin_api define to 20 following upstream changes. (forwarded request 1072609 from iznogood)</comment>
+    <requestid>1073157</requestid>
+  </revision>
+  <revision rev="108" vrev="1">
+    <srcmd5>50c14bed34b8923b76b52109174e276e</srcmd5>
+    <version>44.1</version>
+    <time>1682193434</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081152</requestid>
+  </revision>
+  <revision rev="109" vrev="1">
+    <srcmd5>b6ddbea8a817de1682721de94bd41511</srcmd5>
+    <version>44.2</version>
+    <time>1685476855</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1089191 from iznogood
+
+- Update to version 44.2:
+  + Fix subsequent checking for updates if the first check after
+    login fails.
+  + Fix checking for updates when automatic updates are disabled.
+  + Fix rare stall when many background jobs are running.
+  + Don’t download rpm-ostree updates when only checking if updates
+    are available.
+  + Fix bug with listing flatpak addons when multiple flathub
+    remotes are enabled.
+  + Fix duplicated sources in app details page when using an
+    appstream URL.
+  + Reduce background resource consumption when idle.
+  + Updated translations.</comment>
+    <requestid>1089504</requestid>
+  </revision>
+  <revision rev="110" vrev="1">
+    <srcmd5>e0bd184523c61801747693ff78454131</srcmd5>
+    <version>44.3</version>
+    <time>1688246265</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1096133 from iznogood
+
+New stable release</comment>
+    <requestid>1096195</requestid>
+  </revision>
+  <revision rev="111" vrev="1">
+    <srcmd5>518a3095059bf10ea1833fc119197221</srcmd5>
+    <version>44.4</version>
+    <time>1691414923</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1102328 from iznogood
+
+New stable release</comment>
+    <requestid>1102518</requestid>
+  </revision>
+  <revision rev="112" vrev="1">
+    <srcmd5>ba2addf3e03019ab78fb03ce57e56352</srcmd5>
+    <version>45.0</version>
+    <time>1695208966</time>
+    <user>dimstar_suse</user>
+    <comment>Update to GNOME 45 release</comment>
+    <requestid>1112406</requestid>
+  </revision>
+  <revision rev="113" vrev="1">
+    <srcmd5>4a633e07fd7cf55ffdea6479999273d3</srcmd5>
+    <version>45.1</version>
+    <time>1698097203</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1119287</requestid>
+  </revision>
+  <revision rev="114" vrev="2">
+    <srcmd5>4dbc886e61c42ba28744f0e480771749</srcmd5>
+    <version>45.1</version>
+    <time>1698604772</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1120738</requestid>
+  </revision>
+  <revision rev="115" vrev="1">
+    <srcmd5>102938496d19e19fd69a647f78d3f1d6</srcmd5>
+    <version>45.2</version>
+    <time>1701533532</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 45.2 (forwarded request 1130199 from dimstar)</comment>
+    <requestid>1130314</requestid>
+  </revision>
+  <revision rev="116" vrev="2">
+    <srcmd5>6ca09e97fa3c004369cd3544765722b8</srcmd5>
+    <version>45.2</version>
+    <time>1702844926</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1133394</requestid>
+  </revision>
+  <revision rev="117" vrev="3">
+    <srcmd5>32ff3a16620871f7ab91a5415078459c</srcmd5>
+    <version>45.2</version>
+    <time>1704829712</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1137504</requestid>
+  </revision>
+  <revision rev="118" vrev="1">
+    <srcmd5>7e0581e67c10899b928f847cc2d7be97</srcmd5>
+    <version>46.0</version>
+    <time>1710965468</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 46 (forwarded request 1158299 from dimstar)</comment>
+    <requestid>1159465</requestid>
+  </revision>
+  <revision rev="119" vrev="1">
+    <srcmd5>2ed623b59a1d60651cd50ea9b01e5047</srcmd5>
+    <version>46.1</version>
+    <time>1714758212</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 46.1:
+  + Fix a crash when updating apps when built with Mogwai.
+  + Fix a crash when installing flatpak application.
+  + Correct desktop/mobile hardware support detection.
+  + Correct state of Fedora upgrade.
+  + Several fixes in historical updates for rpm-ostree.
+  + Updated translations. (forwarded request 1171254 from dimstar)</comment>
+    <requestid>1171392</requestid>
+  </revision>
+  <revision rev="120" vrev="1">
+    <srcmd5>64d86832219c7d9cad407ab216452bb2</srcmd5>
+    <version>46.2</version>
+    <time>1716803075</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 46.2:
+  + Fix a crash when no appstream data is found.
+  + Correct app safety calculation.
+  + Correct Flatpak system and user apps recognition.
+  + Slightly speed-up rpm-ostree metadata refresh.
+  + Updated translations. (forwarded request 1176669 from dimstar)</comment>
+    <requestid>1176676</requestid>
+  </revision>
+  <revision rev="121" vrev="1">
+    <srcmd5>a84f0b4f61c22371ca34a347fe8f4c04</srcmd5>
+    <version>46.3</version>
+    <time>1719936950</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 46.3:
+  + Show &quot;Install All&quot; button only for codecs
+  + Prefer vendor name from os release in app origin
+  + Updated translations. (forwarded request 1183899 from iznogood)</comment>
+    <requestid>1184249</requestid>
+  </revision>
+</revisionlist>
