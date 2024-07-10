@@ -1,0 +1,267 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>72f6f101c05ec5c69faf6ea449285efb</srcmd5>
+    <version>1.12</version>
+    <time>1168903252</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>dc1c2c516e0f6a8a80bcd472afcf69ea</srcmd5>
+    <version>1.13</version>
+    <time>1171922984</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>355a5ee39b5f62581f5ba4e383618f01</srcmd5>
+    <version>1.14</version>
+    <time>1184086287</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>6ae4bd3ee81ca98ea7966a447635fd70</srcmd5>
+    <version>1.15</version>
+    <time>1191366148</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>241ab31d2f6949770d3993f4d92f4c96</srcmd5>
+    <version>1.15</version>
+    <time>1193127841</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>c1d7432f93af6074e88cda5a7614a286</srcmd5>
+    <version>1.16</version>
+    <time>1194563391</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>b6987f72feff11b1ceb37de9118e4d15</srcmd5>
+    <version>1.16</version>
+    <time>1194644122</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>ceb0f8c3e9411dae88b57a242b28e983</srcmd5>
+    <version>1.17</version>
+    <time>1206544737</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>801f6991d55840d2282b1333db583fc1</srcmd5>
+    <version>1.18</version>
+    <time>1214255036</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>fef51f43376f66072d9959bbbf3bc854</srcmd5>
+    <version>1.19</version>
+    <time>1219011201</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="12">
+    <srcmd5>f2ee934a7b8df7aaabeec38600f20111</srcmd5>
+    <version>1.19</version>
+    <time>1233268613</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>d0e97915e7b43efaa51b643a45e11cc3</srcmd5>
+    <version>1.21</version>
+    <time>1234526724</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>d7d9d2a5416939830abea4cfaa337dc3</srcmd5>
+    <version>1.22</version>
+    <time>1248728753</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>c9b50aa7b44f2fb64446742d4cc67ff0</srcmd5>
+    <version>1.23</version>
+    <time>1253560278</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE3/ktoblzcheck based on submit request 20638 from user Beineri
+</comment>
+  </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>c9b50aa7b44f2fb64446742d4cc67ff0</srcmd5>
+    <version>1.23</version>
+    <time>1253560278</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE3/ktoblzcheck based on submit request 20638 from user Beineri
+</comment>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>c3b3dc65992df080081877cfb962a1ca</srcmd5>
+    <version>1.24</version>
+    <time>1267801318</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE3/ktoblzcheck based on submit request 34122 from user coolo
+</comment>
+    <requestid>34122</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>7ca2ca96d8514d8b41bbe9864986ef3d</srcmd5>
+    <version>1.24</version>
+    <time>1268924326</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>0a518a54391bdebf293cedbec21de3ac</srcmd5>
+    <version>1.26</version>
+    <time>1271371266</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE3/ktoblzcheck based on submit request 37673 from user Beineri
+</comment>
+    <requestid>37673</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>0a518a54391bdebf293cedbec21de3ac</srcmd5>
+    <version>1.26</version>
+    <time>1278667356</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>0a518a54391bdebf293cedbec21de3ac</srcmd5>
+    <version>1.26</version>
+    <time>1278678587</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>f1853fa082e3ef802a40116694990117</srcmd5>
+    <version>1.27</version>
+    <time>1279543345</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE3/ktoblzcheck based on submit request 43151 from user Beineri
+</comment>
+    <requestid>43151</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>1bb351746f1f361e48996ee82d03a0b4</srcmd5>
+    <version>1.28</version>
+    <time>1282571117</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE3/ktoblzcheck based on submit request 45582 from user Beineri
+</comment>
+    <requestid>45582</requestid>
+  </revision>
+  <revision rev="23" vrev="4">
+    <srcmd5>1bb351746f1f361e48996ee82d03a0b4</srcmd5>
+    <version>1.28</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>5e3aa2d2bd92e71d93e6990f656750c5</srcmd5>
+    <version>1.36</version>
+    <time>1318344989</time>
+    <user>lrupp</user>
+    <comment>forward update to factory</comment>
+    <requestid>87330</requestid>
+  </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>5e3aa2d2bd92e71d93e6990f656750c5</srcmd5>
+    <version>1.36</version>
+    <time>1319182060</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="26" vrev="4">
+    <srcmd5>57656a25ec6949f8f17dbed3530ac907</srcmd5>
+    <version>1.36</version>
+    <time>1323192128</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="27" vrev="5">
+    <srcmd5>e1920ec89c033ca2a8ea9e4251e42866</srcmd5>
+    <version>1.36</version>
+    <time>1328001634</time>
+    <user>coolo</user>
+    <comment>- remove call to suse_update_config (very old work around)</comment>
+    <requestid>102099</requestid>
+  </revision>
+  <revision rev="28" vrev="7">
+    <srcmd5>e1920ec89c033ca2a8ea9e4251e42866</srcmd5>
+    <version>1.36</version>
+    <time>1340183540</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="29" vrev="9">
+    <srcmd5>e1920ec89c033ca2a8ea9e4251e42866</srcmd5>
+    <version>1.36</version>
+    <time>1359109211</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="30" vrev="11">
+    <srcmd5>e1920ec89c033ca2a8ea9e4251e42866</srcmd5>
+    <version>1.36</version>
+    <time>1379662844</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="31" vrev="13">
+    <srcmd5>e1920ec89c033ca2a8ea9e4251e42866</srcmd5>
+    <version>1.36</version>
+    <time>1409301432</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>3c1148306b1684c9f22021067e2287e7</srcmd5>
+    <version>1.48</version>
+    <time>1485042491</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>449314</requestid>
+  </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>cecd779eb4d1076a7db7be12000aa19d</srcmd5>
+    <version>1.48</version>
+    <time>1489345205</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>471147</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>da77fd10bc941dcf4697240dcd35a18f</srcmd5>
+    <version>1.53</version>
+    <time>1658243984</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to 1.53:
+  * Update bankdata files
+  * ibanchk: add '--file' command line option
+  * Add python 3 support
+  * Add link to german bank data description
+  * Add manual page for ibanchk
+  * Install ibanchk executable 
+- Rename python-ktoblzcheck package to python3-ktoblzcheck.
+- update to 1.51
+  * Add fetching of sepa providers and install them as csv file
+  * Add supported short options to ktoblzcheck usage output
+  * Fix finding files on windows
+  * Fix bug not finding default bank data file when XDG_DATA_DIRS is not set (sf/ktoblzcheck#2)
+- update to 1.50
+  * Add cmake option to install the raw bankdata file
+  * Add german iban check
+  * Add support for environment variable XDG_DATA_DIRS also on Windows required by test cases
+  * Add support for running cross compiled applications on linux
+  * Completed cmake support on Linux and Windows
+  * Dropped autotools build system
+  * Fix structure documentation in ibandata.txt
+  * Fix test cases
+  * Merge text from README*, INSTALL* into README.md
+  * New bank data file added
+  * Replaced perl scripts by python scripts to reduce the number of requirements
+  * Update doxygen config file to version 1.8.14
+  * Use README.md as main page for doxygen
+</comment>
+    <requestid>989630</requestid>
+  </revision>
+</revisionlist>
