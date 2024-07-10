@@ -1,0 +1,192 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7a7361c9957ec307920fbd8a510adf72</srcmd5>
+    <version>0.0.1</version>
+    <time>1368695337</time>
+    <user>coolo</user>
+    <comment>This odf filter will be required by libreoffice-4.1.</comment>
+    <requestid>175717</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>5df1265923cebfe81aee82db800f1d6d</srcmd5>
+    <version>0.0.2</version>
+    <time>1370426058</time>
+    <user>coolo</user>
+    <comment>- Upstream release 0.0.2
+  * Cleanup of build system
+  * Source code layout change, so that the public headers
+    can be directly included from the tarball
+  * Improvements in generation of borders and column separators (forwarded request 176730 from fstrba)</comment>
+    <requestid>176735</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>5df1265923cebfe81aee82db800f1d6d</srcmd5>
+    <version>0.0.2</version>
+    <time>1379663026</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>e91771f33f082f018973fe714c97894e</srcmd5>
+    <version>0.0.2</version>
+    <time>1383574209</time>
+    <user>coolo</user>
+    <comment>- Use verbose build.</comment>
+    <requestid>205511</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>a7e0c3df8f0d55ec8dcf737298f7321b</srcmd5>
+    <version>0.0.3</version>
+    <time>1384518330</time>
+    <user>coolo</user>
+    <comment>- Build also the documentation (forwarded request 206316 from fstrba)</comment>
+    <requestid>206355</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>1b8d7aeb47dd38d57102c284968dd40d</srcmd5>
+    <version>0.0.4</version>
+    <time>1387174073</time>
+    <user>coolo</user>
+    <comment>- Version bump to 0.0.4:
+  - fix handling of presentation tables
+  - fix handling of presentation notes
+  - fix handling of presentation comments (forwarded request 210901 from fridrich_strba)</comment>
+    <requestid>210916</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>9dd9ee4b6c2e6ea5c7ed560212c0023a</srcmd5>
+    <version>0.0.4</version>
+    <time>1390299110</time>
+    <user>coolo</user>
+    <comment>-  build with -fvisibility-inlines-hidden (forwarded request 214357 from elvigia)</comment>
+    <requestid>214370</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>952c0602701fa590fe1db2b701356b54</srcmd5>
+    <version>0.0.4</version>
+    <time>1391077823</time>
+    <user>coolo</user>
+    <comment>- Cleanup with spec-cleaner.</comment>
+    <requestid>215149</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>c529510de3f26f0d68886162c583971b</srcmd5>
+    <version>0.1.1</version>
+    <time>1406479616</time>
+    <user>coolo</user>
+    <comment>Lo 4.3.0.3 submission</comment>
+    <requestid>242307</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>c529510de3f26f0d68886162c583971b</srcmd5>
+    <version>0.1.1</version>
+    <time>1409301645</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>61bb4017f9e46b8b98ce8facd60aaebd</srcmd5>
+    <version>0.1.2</version>
+    <time>1417643382</time>
+    <user>dimstar_suse</user>
+    <comment>Bugfix 0.1.2 release</comment>
+    <requestid>263286</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>f8a084e919f2b4e417e2bf74f4ff9530</srcmd5>
+    <version>0.1.4</version>
+    <time>1434550546</time>
+    <user>coolo</user>
+    <comment>- Version bump to 0.1.4:
+  - drawing interface: do no forget to call startDocument/endDocument when
+    writing in the manifest
+  - metadata: added handler for 'template' metadata, unknown metadata are
+    written in a meta:user-defined elements,
+  - defineSheetNumberingStyle: can now define styles for the whole document
+    (and not only for the actual sheet)
+  - update doxygen configuration file + add a make astyle command
+  - Allow writing meta:creation-date metadata element for drawings and
+    presentations too.
+  - Improve handling of headings. Most importantly, write valid ODF.
+  - Write meta:generator metadata element.
+  - Add initial support for embedded fonts. It is currently limited to Flat
+    ODF output.</comment>
+    <requestid>311931</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>2ca68023a37762c9b1c9285a540dc419</srcmd5>
+    <version>0.1.5</version>
+    <time>1450860983</time>
+    <user>dimstar_suse</user>
+    <comment>- Version bump to 0.1.5:
+  - graphics:
+    + add code for librevenge:replacement-objects
+    + allow to set the opacity value:&quot;draw:opacity&quot; for surfaces which
+      contain patterns,
+    + add minimalist implementation of &quot;measure&quot;: if drawPolyline is
+      called with two points and draw:show-unit is set, then create a
+      draw:measure tag instead of a draw:line...
+  - sheet interface:
+    + add some operators (plage, union, intersection and %)</comment>
+    <requestid>350184</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>d5eb42de279bfb8f44dde753d480a6fb</srcmd5>
+    <version>0.1.6</version>
+    <time>1451895689</time>
+    <user>dimstar_suse</user>
+    <comment>0.1.6</comment>
+    <requestid>351351</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>d4b4f5a21cc43380e3647aaaad834294</srcmd5>
+    <version>0.1.6</version>
+    <time>1459936188</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>382557</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>cb1f97a951f26d6431640626d1b2e7e0</srcmd5>
+    <version>0.1.7</version>
+    <time>1598983270</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>828347</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>79c0b0bcaf8c9224ab2db0f23e9e4026</srcmd5>
+    <version>0.1.8</version>
+    <time>1611348602</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.1.8:
+    + use libxml2 to parse xml's equations...
+    + code modernization:
+        use range-based for loop, use nullptr,
+        fix too small loop variables,
+        don't access static members through instance,
+    + retrieve more border's attributes in tables,
+    + retrieve draw:auto-grow-width,draw:fit-to-size,draw:z-index,
+       style:print-content, style:shrink-to-fit attributes in graphics
+    + output numbers with more precision,
+- Other improvements and fixes.</comment>
+    <requestid>865051</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>7937100dcee2b8b9078dc06b7bd2e318</srcmd5>
+    <version>0.1.8</version>
+    <time>1621531432</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>894385</requestid>
+  </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>5dda47fb2e30a9752325fc2ef7bf49fa</srcmd5>
+    <version>0.1.8</version>
+    <time>1643486473</time>
+    <user>dimstar_suse</user>
+    <comment>fix license header
+</comment>
+    <requestid>949470</requestid>
+  </revision>
+</revisionlist>
