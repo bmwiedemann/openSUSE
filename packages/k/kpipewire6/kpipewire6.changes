@@ -1,0 +1,159 @@
+-------------------------------------------------------------------
+Tue Jul  2 17:34:03 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.1.2:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.1.2
+- Changes since 6.1.1:
+  * update version for new release
+
+-------------------------------------------------------------------
+Tue Jun 25 17:13:11 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.1.1:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.1.1
+- Changes since 6.1.0:
+  * update version for new release
+
+-------------------------------------------------------------------
+Thu Jun 13 10:58:29 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.1.0:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.1.0
+- Changes since 6.0.90:
+  * update version for new release
+  * Use only non external only format modifiers
+  * Drop implicit modifier shortcut
+  * Use reserve to reserve space in list
+
+-------------------------------------------------------------------
+Sat May 25 11:18:12 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.0.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.0.90
+- Too many changes to list here
+
+-------------------------------------------------------------------
+Wed May 22 07:43:04 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.0.5:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.0.5
+- Changes since 6.0.4:
+  * update version for new release
+
+-------------------------------------------------------------------
+Wed Apr 17 08:12:31 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.0.4:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.0.4
+- Changes since 6.0.3:
+  * fix version
+  * update version for new release
+  * encode: Only increase filtered frame count if frame was actually submitted
+  * Fix nullptr check (kde#484620)
+  * Generate presentation timestamps from std::chrono::steady_clock if SPA_META_Header is missing
+  * Fix a minor coding style issue
+  * Ignore buffers with SPA_META_HEADER_FLAG_CORRUPTED
+  * Ignore chunk size of SPA_DATA_DmaBuf
+  * typo
+  * update version for new release
+  * fix typo
+  * update version for new release
+
+-------------------------------------------------------------------
+Tue Mar 26 18:05:35 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.0.3:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.0.3
+- Changes since 6.0.2:
+  * fix typo
+  * update version for new release
+  * Don't set PipeWireSourceItem::enabled to true when the item becomes visible
+  * Drop redundant isComponentComplete() checks
+  * Remove redundant code
+  * Mark PipeWireSourceItem as enabled after receiving a frame
+
+-------------------------------------------------------------------
+Wed Mar 13 09:09:42 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.0.2:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.0.2
+- Changes since 6.0.1:
+  * fix version
+  * update version for new release
+  * bump version ahead of new release
+  * cmake: Add missing " to unbreak the build
+- Drop patches, now upstream:
+  * 0001-cmake-Add-missing-to-unbreak-the-build.patch
+
+-------------------------------------------------------------------
+Wed Mar  6 08:40:27 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.0.1:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.0.1
+- Changes since 6.0.0:
+  * update version for new release
+- Add patch to fix build (wtf):
+  * 0001-cmake-Add-missing-to-unbreak-the-build.patch
+- Drop patch, no longer necessary:
+  * 0001-Set-SOVERSION-to-6.patch
+
+-------------------------------------------------------------------
+Wed Feb 21 18:36:12 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.0.0:
+  * New bugfix release
+  * Release announcement not available yet
+- Changes since 5.93.0:
+  * add back quotes
+  * update version for new release
+  * Drop defined but undeclared property
+  * record: Make sure we also finalise streams that didn't even start
+  * revert to version 6.0.0
+  * set major version for soname
+  * revert version number for bugfix release
+  * Set the framework version in the project() call
+  * bugfix release
+  * Install kpipewire_version.h
+
+-------------------------------------------------------------------
+Tue Feb  6 18:22:58 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.93.1:
+  * New bugfix release
+  * See https://kde.org/announcements/megarelease/6/rc2/ for details
+- Changes since 5.93.0:
+  * Set the framework version in the project() call
+  * Install kpipewire_version.h
+- Add patch to set the SOVERSION correctly:
+  * 0001-Set-SOVERSION-to-6.patch
+
+-------------------------------------------------------------------
+Wed Jan 31 17:37:04 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.93.0 (6.0 RC 2):
+  * New bugfix release
+  * See https://kde.org/announcements/megarelease/6/rc2/ for details
+- Changes since 5.92.0:
+  * source: Increase logging, drop redundant condition
+  * Add missing cases to convertQImageFormatToAVPixelFormat
+
+-------------------------------------------------------------------
+Mon Jan 15 21:08:49 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.92.0 (6.0 RC 1)
+  * For more details please see:
+    https://kde.org/announcements/megarelease/6/rc1/
+
+-------------------------------------------------------------------
+Sat Jul  1 15:46:53 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Init kpipewire6
