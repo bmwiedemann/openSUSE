@@ -1,0 +1,226 @@
+-------------------------------------------------------------------
+Mon Oct  9 14:03:04 UTC 2023 - Martin Wilck <mwilck@suse.com>
+
+- Actually update the code from 2.3-rc4 to 2.3
+
+-------------------------------------------------------------------
+Thu Sep 21 19:04:03 UTC 2023 - Martin Wilck <mwilck@suse.com>
+
+- Update to version v2.3
+  * Support for NVMe Boot Firmware Table (NBFT) as configuration source
+  * Optimization of udev handling (bsc#1214078)
+  * Bug fixes and optimizations
+
+-------------------------------------------------------------------
+Mon Aug 21 13:30:51 UTC 2023 - Martin Wilck <mwilck@suse.com>
+
+- Update to version v2.3-rc4:
+  * Improve algorithm to see if we can reuse existing connections
+  * udev: Optimize uevent handling
+  * iputil: Reduce amount of netlink requests to the kernel
+  * udev: FC/Loop - use case-insensitive comparison for traddr
+  * trid: Take Host NQN into account
+  * avahi: add connectivity checker to verify IP addresses are reachable
+  * stafd|ctrl: Do not recreate ctrl object on nvme removed events
+  * udev: Rework/simplify _cid_matches_tid()
+  * udev-rules: Only react to `rediscover` events (not `connected`)
+  * udev: Use ipaddress objects when comparing traddr.
+  * udev: Only take src-addr into account for transport=="tcp"
+  * trid: use strong comparison on host-iface
+  * udev-rule: Invoke systemctl "restart" instead of "start"
+  * udev: improve comparison between candidate and existing controllers
+  * nbft: stafd will now use NBFT data (if found)
+  * nbft: Add NbftConf() object to retrieve and cache NBFT data
+  * iputil: Add mac2iface() and corresponding unit test
+  * ctrl: fix inverted logic "is not None" -> "is None"
+  * staslib: Add method to retrieve NBFT data
+
+-------------------------------------------------------------------
+Mon Jun 12 10:22:05 UTC 2023 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 2.2.2:
+   
+   Fix python crash caused by wrong transport identifier handling
+  (bsc#1211557)
+
+-------------------------------------------------------------------
+Fri Jun  2 16:01:46 UTC 2023 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 2.2.1:
+  * staslib: Fix setting controller DHCHAP key (bsc#1211557)
+
+-------------------------------------------------------------------
+Fri Mar 31 19:42:37 UTC 2023 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 2.2:
+  * add DHCHAP support for in-band authentication (bsc#1208580)
+  * staslib: Define LIBNVME_VERSION in defs.py
+  * staslib: Disable udev-rule permanently
+  * build: Change libnvme dependency from 1.2 to 1.3
+
+-------------------------------------------------------------------
+Wed Jan 25 19:28:28 UTC 2023 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 2.1.2:
+  * staslib: fix RoCE support (bsc#1207436)
+  * staslib: Only display unresponsive timer info for "discovered" DCs
+  * staslib: Fix Connect/Disconnect performed in reserve order
+  * udev: Set udev event priority to high
+  * stafd: Bug fix. Default "[Global] persistent-connections=false"
+  * stafd: Handle unresponsive DCs in _config_ctrls_finish()
+  * stafd: Fix handling of lost zeroconf-discovered DC
+  * staslib: Improve name resolution algorithm
+  * staslib: Add unit (sec) to timeout value in info() output
+
+-------------------------------------------------------------------
+Tue Dec 13 14:38:10 UTC 2022 - mwilck@suse.com
+
+- Update to version 2.1:
+  * stafd: Add zeroconf-connections-persistence conf. parameter
+  * Avahi: Handle upper/lower case 'NQN/nqn' in TXT attribute
+    (bsc#1205873)
+  * stafd: Add "origin" parameter to DC controller objects
+  * staslib: Trim whitespaces at the source (bsc#1204975)
+  * udev: Throttle EnvironmentError exception messages
+  * del patch: 0001-meson-disable-subproject.patch (not necessary any more)
+
+-------------------------------------------------------------------
+Mon Nov 21 17:10:55 UTC 2022 - mwilck@suse.com
+
+- Update to version 2.0 (jsc#PED-2487)
+  * stafd: Add support for PLEO bit ("Port Local Entries Only",
+  only with libnvme 1.2 or higher)
+  * Add support for NCC bit ("Not Connected to CDC")
+  * "sticky-connections" is replaced by "disconnect-scope+disconnect-trtypes"
+  * "blacklist" is replaced by "exclude" (but still supported)
+  * better udev support / coexistence
+  * support for new kernel "src_addr" attribute
+  * add patch: 0001-meson-disable-subproject.patch (to fix build in OBS)
+
+-------------------------------------------------------------------
+Tue Nov 15 14:51:56 UTC 2022 - mwilck@suse.com
+
+- Update to version 1.1.7:
+  * staslib: Trim white spaces from DLPEs and manual configuration.
+  (bsc#1204975)
+
+-------------------------------------------------------------------
+Mon Aug 08 20:01:02 UTC 2022 - mwilck@suse.com
+
+- Update to version 1.1.6:
+  Bug fix release
+  * conf: Enable sticky-connections by default
+  * staslib: check that async operation hasn't been cancelled before proceeding
+  * stacd: fix I/O controller connection audits
+  * staslib: add override support
+  * systemd: add explicit dependency to modprobe@nvme_fabrics.service
+
+-------------------------------------------------------------------
+Mon Jul 04 13:19:16 UTC 2022 - mwilck@suse.com
+
+- Update to version 1.1.5 (bsc#1200128)
+  Bug fix release
+  * udev: fix I/O controller scan & detect algorithm
+  * stacd: Fix D-Bus race condition between stacd and stafd.
+  * staslib: fix support for fibre channel
+  * doc: update README.md
+  * staslib: fix race conditions during controller object removal.
+  * stacd: fix defered call to remove_controller() with wrong arguments
+  * staslib: make sure controller object gets "purged" when removed.
+  * staslib: calling wrong cback function on controller removal.
+  * staslib: Fix cback function deleting object that called the cback.
+  * stacd: audit connections
+  * stafd, stacd: Add man page to systend service file.
+  * stacd: Add configuration parameter 'sticky-connections'
+  * doc: troubleshoot guide for missing mDNS packets
+  * stacd: allow disabling nvme-cli auto-connect udev rule.
+- Added systemd service file (service disabled)
+- Spec file: use %python_sitelib rather than %python_sitearch, and install
+  everything under %{python_sitelib}/staslib
+
+
+-------------------------------------------------------------------
+Wed Apr 06 11:07:53 UTC 2022 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Update to version v1.0:
+  * Do not call persistent_set() from libnvme
+  * dbus: return native dbus data instead of json when possible.
+  * update documentation
+
+-------------------------------------------------------------------
+Fri Mar 25 11:32:30 UTC 2022 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Update to version 1.0-rc5:
+  * Remove misconfiguration check. (bsc#1197361)
+  * Document how to increase the number of interfaces that Avahi can monitor.
+- Removed python3-netifaces dependency (bsc#1197361)
+- Added ahahi dependency
+- Do not list files twice (add %dir to directory paths)
+- Drop workaround for Python interpreter path fixup.
+
+-------------------------------------------------------------------
+Wed Mar 23 08:23:34 UTC 2022 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Update to version 1.0-rc4:
+  * Check ignore-iface when creating TransportId object
+  * Adding man pages for ip-family and ignore-iface
+  * Add ignore-iface and ip-family conf. options
+  * Update the documentation
+  * Change default address returned by name resolver
+  * Filter out invalid IP addresses. (bsc#1197361)
+  * When reading the Host NQN, warn people if the NQN seems invalid
+  * Print descriptive message when unable to run stafctl/stacctl
+  * Use the newly added cntlrtype to check the type of controller
+  * minor fix to previous change to set the log level on libnvme
+  * LOG: enable libnvme debug when trace is enabled
+- Added python3-netifaces dependency
+
+-------------------------------------------------------------------
+Thu Mar  3 14:19:14 UTC 2022 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Correct License information. This project is licenced under
+  Apache License 2.0.
+- Mark sys.conf.doc as config file.
+
+-------------------------------------------------------------------
+Thu Mar  3 13:59:52 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add gobject-introspection BuildRequires: enable typelib
+  introspection. This allows RPM to add a bunch of autodetected
+  dependenices by inspecting the python scripts (basedon
+  python-gobject).
+
+-------------------------------------------------------------------
+Wed Feb 23 16:17:42 UTC 2022 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Update to version 1.0-rc2:
+  * Fis github workflows to pull from upstream libnvme
+  * TP8010 was merged into upstream libnvme. Some APIs have changed.
+    This is to update nvme-stas to the new APIs.
+  * A bunch of mostly cosmetic changes
+  * Cleaning up a few things.
+  * Simplifying mDNS configuration and updating documentation.
+  * Changed DBus rules to only block setting properties
+  * Restrict the Dbus "deny" rules to only the debug interface.
+
+-------------------------------------------------------------------
+Wed Feb 16 17:36:18 UTC 2022 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Update to version 1.0-rc1:
+  * fix comment
+  * Perform explicit registration from user-space
+  * Add known image to docker-compose
+  * Add docker run/build way to README
+  * Actions: Disable actions/setup-python
+  * Actions: Work on incoming branch
+  * Fixing docker compilation error
+  * Update docker-publish.yml
+  * Fix github workflow
+  * removed unused code
+  * D-Bus config fixes.
+  * github workflow actions - fix PYTHONPATH
+
+-------------------------------------------------------------------
+Thu Jan 27 17:28:48 UTC 2022 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Initial nvme-stas packaging

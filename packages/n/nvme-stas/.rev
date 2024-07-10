@@ -1,0 +1,158 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>93f5dcf9e7ddcd0ef8edf082192fc1e0</srcmd5>
+    <version>1.0~rc2</version>
+    <time>1646349479</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>959246</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>da86e9c7c4ba4e60eb99a3f7e9521fb6</srcmd5>
+    <version>1.0~rc4</version>
+    <time>1648063111</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>964187</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>eaec5f332cca3813f1693a00dabd0204</srcmd5>
+    <version>1.0~rc5</version>
+    <time>1648241698</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>964850</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a865056ccfaa5916347f23b7d818ef3e</srcmd5>
+    <version>1.0</version>
+    <time>1649274722</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>967286</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>9ab2b2ad54289221133be75c44621e7e</srcmd5>
+    <version>1.1.5</version>
+    <time>1657015760</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>986671</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>f6081f7161c65ca2b4d2d84f35127f66</srcmd5>
+    <version>1.1.6</version>
+    <time>1660051681</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>993927</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>f9c9032768904cb935433cbfd195978a</srcmd5>
+    <version>1.1.7</version>
+    <time>1668609790</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1035873</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>6c7dd1d48b0df323cf824f5199c2f902</srcmd5>
+    <version>2.0</version>
+    <time>1669129812</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1037166</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>8e5194cc8a0478c29fcab89052d38399</srcmd5>
+    <version>2.1</version>
+    <time>1670954229</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.1:
+  * stafd: Add zeroconf-connections-persistence conf. parameter
+  * Avahi: Handle upper/lower case 'NQN/nqn' in TXT attribute
+    (bsc#1205873)
+  * stafd: Add &quot;origin&quot; parameter to DC controller objects
+  * staslib: Trim whitespaces at the source (bsc#1204975)
+  * udev: Throttle EnvironmentError exception messages
+  * del patch: 0001-meson-disable-subproject.patch (not necessary any more)
+
+  * add patch: 0001-meson-disable-subproject.patch (to fix build in OBS) (forwarded request 1042700 from mwilck)</comment>
+    <requestid>1042702</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>69c9d35ea61a00636d0bc66a18d10517</srcmd5>
+    <version>2.1.2</version>
+    <time>1674737864</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.1.2:
+  * staslib: fix RoCE support (bsc#1207436)
+  * staslib: Only display unresponsive timer info for &quot;discovered&quot; DCs
+  * staslib: Fix Connect/Disconnect performed in reserve order
+  * udev: Set udev event priority to high
+  * stafd: Bug fix. Default &quot;[Global] persistent-connections=false&quot;
+  * stafd: Handle unresponsive DCs in _config_ctrls_finish()
+  * stafd: Fix handling of lost zeroconf-discovered DC
+  * staslib: Improve name resolution algorithm
+  * staslib: Add unit (sec) to timeout value in info() output (forwarded request 1061019 from mwilck)</comment>
+    <requestid>1061020</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>04b498a9afe79c8639d1e7234ab75dca</srcmd5>
+    <version>2.2</version>
+    <time>1680370343</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.2:
+  * add DHCHAP support for in-band authentication (bsc#1208580)
+  * staslib: Define LIBNVME_VERSION in defs.py
+  * staslib: Disable udev-rule permanently
+  * build: Change libnvme dependency from 1.2 to 1.3 (forwarded request 1076554 from mwilck)</comment>
+    <requestid>1076555</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>848f3bf109c473201774c81af03d9e54</srcmd5>
+    <version>2.2.1</version>
+    <time>1686074179</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1091049</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>56bb6e4e380fba51aab5229408382a67</srcmd5>
+    <version>2.2.2</version>
+    <time>1686576470</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.2.2:
+   
+   Fix python crash caused by wrong transport identifier handling
+  (bsc#1211557)</comment>
+    <requestid>1092510</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>2fbab0888860a5df0001c44e46b5da01</srcmd5>
+    <version>2.3~4</version>
+    <time>1693235911</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1107771</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>33c5b47b433ca94d97169c5937f1f6a9</srcmd5>
+    <version>2.3</version>
+    <time>1695412057</time>
+    <user>anag+factory</user>
+    <comment>- Update to version v2.3
+  * Support for NVMe Boot Firmware Table (NBFT) as configuration source
+  * Optimization of udev handling (bsc#1214078)
+  * Bug fixes and optimizations</comment>
+    <requestid>1112898</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>2c7ad552bbf8d4201ad2c1cc84d8306b</srcmd5>
+    <version>2.3</version>
+    <time>1697231732</time>
+    <user>anag+factory</user>
+    <comment>- Actually update the code from 2.3-rc4 to 2.3</comment>
+    <requestid>1116491</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,7 @@
+<package name="nvme-stas" project="openSUSE:Factory">
+  <title>STorage Appliance Services (STAS)</title>
+  <description>nvme-stas is a Central Discovery Controller (CDC) client for Linux. It handles Asynchronous Event Notifications (AEN) handling,  Automated, NVMe subsystem connection controls, Error handling and reporting and Automatic (zeroconf) and Manual configuration.
+</description>
+  <devel project="Base:System" package="nvme-stas"/>
+  <url>https://github.com/linux-nvme/nvme-stas</url>
+</package>
