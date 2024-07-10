@@ -1,0 +1,34 @@
+-------------------------------------------------------------------
+Sun Mar  3 03:39:23 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.0.4
+  * configure: Drop AM_MAINTAINER_MODE
+  * autogen.sh: Honor NOCONFIGURE=1
+  * Update configure.ac bug URL for gitlab migration
+  * Add standard X.Org README.md file
+  * Build xz tarballs instead of bzip2
+  * gitlab CI: add a basic build test
+  * gitlab CI: stop requiring Signed-off-by in commits
+  * Add parsing of GCC option '-std='.
+  * autogen.sh: use quoted string variables
+  * autogen: add default patch prefix
+  * autogen.sh: use exec instead of waiting for configure to finish
+
+-------------------------------------------------------------------
+Sun May 16 08:33:08 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- modernize spec-file (move license to licensedir, add source url) 
+
+-------------------------------------------------------------------
+Thu May 22 16:10:08 UTC 2014 - tobias.johannes.klausmann@mni.thm.de
+
+- Update to version 1.0.3:
+  This release fixes gccmakedep with GNU cpp versions newer than
+  4.7, by no longer using cpp to generate the gccmakedep script.
+
+-------------------------------------------------------------------
+Fri Apr 13 08:46:08 UTC 2012 - vuntz@opensuse.org
+
+- Split gccmakedep from xorg-x11-util-devel.
+  Initial version: 1.0.2.
+
