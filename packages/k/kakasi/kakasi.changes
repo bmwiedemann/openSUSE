@@ -1,0 +1,107 @@
+-------------------------------------------------------------------
+Thu Feb 22 12:39:16 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
+Mon Nov  6 16:18:15 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix build with RPM 4.19: unnumbered patches are no longer
+  supported.
+
+-------------------------------------------------------------------
+Sun Jul 27 18:02:08 UTC 2014 - i@marguerite.su
+
+- update version 2.3.6
+  * see NEWS if you know Japanese
+- drop bugzilla-154848-array-subscript-out-of-range.patch
+  * upstream fixed
+- drop kakasi-2.3.4-fclose.patch
+  * upstream fixed
+- add kakasi-2.3.6-no-return-in-nonvoid-function.patch
+
+-------------------------------------------------------------------
+Wed May 30 17:03:49 UTC 2012 - jengelh@inai.de
+
+- Remove redundant tags/sections from specfile
+- Parallel build with %_smp_mflags
+- Source config.guess using a more future-proof location wildcard
+
+-------------------------------------------------------------------
+Thu Mar 22 15:18:51 UTC 2012 - dvaleev@suse.com
+
+- fix ppc64 build
+
+-------------------------------------------------------------------
+Fri Aug 14 15:42:05 CEST 2009 - ro@suse.de
+
+- add some missing fclose calls to atoc-conv,rdic-conf and wx2-conv
+  (bnc#526753) 
+
+-------------------------------------------------------------------
+Thu Jan  8 22:54:59 CET 2009 - crrodriguez@suse.de
+
+- remove static libraries and "la" files 
+
+-------------------------------------------------------------------
+Thu Mar 09 17:52:35 CET 2006 - mfabian@suse.de
+
+- Bugzilla #154848: "array subscript out of range".
+
+-------------------------------------------------------------------
+Wed Jan 25 21:37:05 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Sun Jan 11 12:23:46 CET 2004 - adrian@suse.de
+
+- add %run_ldconfig
+
+-------------------------------------------------------------------
+Sat Aug 10 02:18:04 CEST 2002 - mfabian@suse.de
+
+- kakasi-devel should require kakasi
+
+-------------------------------------------------------------------
+Mon Apr  8 13:44:49 CEST 2002 - mfabian@suse.de
+
+- use %{_libdir}
+- add /usr/share/kakasi/ to file list
+- fix buildrooting
+
+-------------------------------------------------------------------
+Fri Nov  2 21:23:47 CET 2001 - mfabian@suse.de
+
+- rename subpackages:
+  kakaside -> kakasi-devel
+  kakasidi -> kakasi-dict
+- add Requires: kakasi-dict to main package
+- export CFLAGS
+
+-------------------------------------------------------------------
+Wed Oct 10 14:25:24 CEST 2001 - mfabian@suse.de
+
+- update to kakasi-2.3.4 (several small bugfixes, for details
+  see the NEW file)
+
+-------------------------------------------------------------------
+Fri Aug 10 19:02:54 CEST 2001 - mfabian@suse.de
+
+- update to kakasi-2.3.3 (bugfix release)
+- move .so symbolic link in development sub-package
+- remove ldconfig from post and postun scripts
+- some .spec file cleanup
+
+-------------------------------------------------------------------
+Mon May  7 15:49:42 CEST 2001 - mfabian@suse.de
+
+- bzip2 source
+
+-------------------------------------------------------------------
+Wed Jul 12 12:45:16 CEST 2000 - mfabian@suse.de
+
+- new package: kakasi-2.3.2
+  (used the srpm on the kakasi website http://kakasi.namazu.org/
+  as a starting point)
