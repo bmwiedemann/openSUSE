@@ -1,0 +1,919 @@
+-------------------------------------------------------------------
+Sat Apr  6 19:11:28 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.16.1:
+  * #2783 Remove dynamic loading.
+
+-------------------------------------------------------------------
+Wed Mar  6 21:03:36 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Fix truncated version requirement for python3dist(dash)
+
+-------------------------------------------------------------------
+Tue Mar  5 19:40:43 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.16.0
+  * Lots ofchanges since 2.6.2:
+    https://github.com/plotly/dash/compare/v2.6.2...v2.16.0
+- Skip python39: plotly no longer available (due to ipython)
+- Add jupyter-dash package
+
+-------------------------------------------------------------------
+Sun Sep 25 20:21:02 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- update to version 2.6.2:
+  * Fixed
+    + #2237 Ensure calls to plotly.js from dcc.Graph are properly
+       sequenced even if React initiates multiple render cycles in
+       quick succession.
+    + #2218 Fix bug #1348 Validate children prop (required or not).
+    + #2223 Exclude hidden folders when building dash.page_registry.
+    + #2182 Fix #2172 Make it so that when using pages, if
+       suppress_callback_exceptions=True the validation_layout is not
+       set.
+    + #2152 Fix bug #2128 preventing rendering of multiple components
+       inside a dictionary.
+    + #2187 Fix confusing error message when trying to use pytest
+       fixtures but dash[testing] is not installed.
+    + #2202 Fix bug #2185 when you copy text with multiple quotes into
+       a table
+    + #2226 Fix #2219 pages register & background callbacks.
+
+-------------------------------------------------------------------
+Sun Aug 21 15:33:31 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- update to version 2.6.1:
+  * Fixed
+    + #2175 Fix #2173 callback output of ndarray and no_update check.
+    + #2146 Remove leftover debug console.log statement.
+    + #2168 Reverts #2126 (supporting redirect from root when using
+       pages) until the new bugs introduced by that PR are fixed.
+  * Updated
+    + #2167 Update Plotly.js to v2.13.3 (from v2.13.1) including patch
+       release v2.13.2 and patch release v2.13.3.
+       o Emit plotly_selected event on plot API calls and GUI edits.
+       o Fix sankey select error (regression introduced in 2.13.0).
+       o Handle missing drag layer of invisible sankey traces to fix select error.
+       o Emit selection event in shape drawing dragmodes when an existing selection is modified.
+
+- changes from version 2.6.0:
+  * Added
+    + #2109 Add maxHeight to Dropdown options menu.
+    + #2039 Long callback changes:
+      o  Add background=False to dash.callback to use instead of app.long_callback.
+      o  Add previous app.long_callback arguments to dash.callback (interval, running,
+         cancel, progress, progress_default, cache_args_to_ignore, manager)
+    + #2110 Add search prop to dcc.Dropdown options, allowing to
+       search the dropdown options with something other than the label
+       or value.
+  * Fixed
+    + #2126 Fix bug where it was not possible to redirect from root
+       when using pages.
+    + #2114 Fix bug #1978 where text could not be copied from cells in
+       tables with cell_selectable=False.
+    + #2102 Fix bug as reported in dash-labs #113 where files starting
+       with . were not excluded when building dash.page_registry.
+    + #2100 Fixes bug where module name in for a custom not_found_404
+       page is incorrect in the dash.page_registry when not using the
+       pages folder.
+    + #2098 Accept HTTP code 400 as well as 401 for JWT expiry
+    + #2097 Fix bug #2095 with TypeScript compiler and React.FC empty
+       valueDeclaration error & support empty props components.
+    + #2104 Fix bug #2099 with Dropdown clearing search value when a
+       value is selected.
+    + #2039 Fix bugs in long callbacks:
+       o Fix #1769 and #1852 short interval makes job run in loop.
+       o Fix #1974 returning no_update or raising PreventUpdate not supported with celery.
+       o Fix use of the callback context in celery long callbacks.
+       o Fix support of pattern matching for long callbacks.
+    + #2110 Fix dcc.Dropdown search with component as prop for option
+       label.
+    + #2131 Add encoding to file open calls. Fix bug #2127.
+  * Changed
+    + #2116 Rename long callbacks to background callbacks
+       o Deprecated dash.long_callback.managers.CeleryLongCallbackManager,
+         use dash.CeleryManager instead.
+       o Deprecated dash.long_callback.managers.DiskcacheLongCallbackManager,
+         use dash.DiskcacheManager instead.
+       o Deprecated dash constructor argument long_callback_manager in favor
+         of background_callback_manager.
+  * Updated
+    + #2134 Upgrade Plotly.js to v2.13.1 (from v2.12.1) including
+       feature release 2.13.0 and patch release 2.13.1
+      o Add persistent selections via layout attributes selections, newselection,
+        and activeselection, along with an updated UI allowing you to modify a
+	selection you created.
+      o Add unselected line styling to parcoords traces.
+      o Add more quartile algorithms to violin traces.
+      o More flexible axis automargin behavior.
+      o And several other enhancements and bug fixes.
+
+-------------------------------------------------------------------
+Mon Jul 11 02:46:42 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update copyright year
+
+- update to version 2.5.1:
+  * Fixed
+    + #2087 Fix bug #2086 in which using id as a key within a
+      component's id breaks the new callback context's args_grouping
+      function.
+    + #2084 In dash 2.5.0, a default viewport meta tag was added as
+      recommended for mobile-optimized sites by mdn This feature can
+      be disabled by providing an empty viewport meta tag. e.g. app =
+      Dash(meta_tags=[{"name": "viewport"}])
+    + #2090, #2092. Fixed bug where the path to the pages_folder was
+      incorrect on Windows.
+  * Removed
+    + #2087 Removed the undocumented callback context
+      args_grouping_values property which was incompatible with
+      pattern-matching callbacks.
+
+-------------------------------------------------------------------
+Tue Jun  7 19:53:02 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.5.0
+  * #1947 Added pages - a better way to build multi-page apps. For
+    more information see the forum post.
+  * #1965 Add component as props.
+  * #2049 Added wait_for_class_to_equal and wait_for_contains_class
+    methods to dash.testing
+  * #2050 Changed find_element and find_elements to accept an
+    attribute argument that aligns with Selenium's By class,
+    allowing you to search elements by other attributes. Default
+    value is CSS_SELECTOR to maintain backwards compatibility with
+    previous find_elements.
+  * #2043 Fix bug #2003 in which dangerously_allow_html=True +
+    mathjax=True works in some cases, and in some cases not.
+  * #2065 Fix bug #2064 rendering of dcc.Dropdown with a value but
+    no options.
+  * #2047 Fix bug #1979 in which DASH_DEBUG as environment variable
+    gets ignored.
+  * #2070 Fix bug #2066 nested types triggering maximum call stack
+    error when building typescript components.
+- Release 2.4.1
+  * Fix #2045 import error when using pytest but dash[testing] is
+    not installed.
+- Release 2.4.0
+  * #1952 Improved callback_context
+    - Closes #1818 Closes #1054
+    - adds dash.ctx, a more concise name for dash.callback_context
+    - adds ctx.triggered_prop_ids, a dictionary of the component
+      ids and props that triggered the callback.
+    - adds ctx.triggered_id, the id of the component that triggered
+      the callback.
+    - adds ctx.args_grouping, a dict of the inputs used with
+      flexible callback signatures.
+  * #2009 Add support for Promises within Client-side callbacks as
+    requested in #1364.
+  * #1956 Add TypeScript components generation.
+  * #2034 Add link_target prop to dcc.Markdown component. Closes
+    #1827
+  * #2035 Add type annotations to testing fixtures.
+  * #2029 Restrict the number of props listed explicitly in
+    generated component constructors - default is 250. This
+    prevents exceeding the Python 3.6 limit of 255 arguments. The
+    omitted props are still in the docstring and can still be
+    provided the same as before, they just won't appear in the
+    signature so autocompletion may be affected.
+  * #1968 Fix bug #1877, code which uses merge_duplicate_headers
+    and style_header_conditional to highlight columns, it
+    incorrectly highlights header cells.
+  * #2015 Fix bug #1854 in which the combination of
+    row_selectable="single or multi" and filter_action="native"
+    caused the JS error.
+  * #1976 Fix #1962 in which DatePickerSingle and DatePickerRange
+    are extremely slow when provided a long list of disabled_days.
+  * #2035 Fix #2033 In-App error reporting does not render HTML.
+  * #1970 dcc.Dropdown Refactor fixes:
+   - Fix bug #1868 value does not update when selected option
+     removed from options.
+   - Fix bug #1908 Selected options not showing when the value
+     contains a comma.
+  * #1751 Rename app.run_server to app.run while preserving
+    app.run_server for backwards compatibility.
+  * #1839 The callback decorator returns the original function, not
+    the wrapped function, so that you can still call these
+    functions directly, for example in tests. Note that in this
+    case there will be no callback context so not all callbacks can
+    be tested this way.
+  * #2016 Drop the 375px width from default percy_snapshot calls,
+    keep only 1280px
+  * #2027 Improve the error message when a user doesn't wrap
+    children in a list
+  * #2016, #2032, and #2042 Widespread dependency upgrades
+    - Upgrade Plotly.js to v2.12.1 (from v2.11.0).
+      + Feature release 2.12.0 adds minor ticks and gridlines, as
+        well as dashed gridlines.
+      + Patch release 2.11.1 fixes regl-based traces in strict CSP
+        mode, however you must manually switch to the strict bundle
+        to use this.
+      + Patch release 2.12.1 fixes several bugs.
+    - Upgrade black to v22.3.0 for Python 3.7+ - if you use
+      dash[ci] and you call black, this may alter your code
+      formatting slightly, including more consistently breaking
+      Python 2 compatibility.
+    - Many other mainly JS dependency upgrades to the internals of
+      Dash renderer and components. These may patch bugs or improve
+      performance.
+
+-------------------------------------------------------------------
+Fri Apr 29 20:56:04 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.3.1
+  * #1963 Fix #1780 flask shutdown deprecation warning when running
+    dashduo threaded tests.
+  * #1995 Fix #1992 ImportError: cannot import name
+    'get_current_traceback' from 'werkzeug.debug.tbtools'.
+- Release 2.3.0
+  * #1949 Add built-in MathJax support to both dcc.Markdown and
+    dcc.Graph. A new boolean prop mathjax was added to these two
+    components, defaulting to False. Set mathjax=True to enable
+    math rendering. This work uses MathJax v3, although dcc.Graph
+    and Plotly.js can also be used with MathJax v2.
+    - In dcc.Markdown this has two flavors: inline math is any
+      content between single dollar signs, for example "$E=mc^2$",
+      and "display" math (on its own line, potentially multi-line)
+      is delimited by double dollar signs.
+    - In dcc.Graph, most text fields (graph and axis titles, trace
+      names, scatter and bar text) can use math, and it's enabled
+      with single dollar sign delimiters. A limitation here is that
+      currently a given piece of text can only be one or the other:
+      if math is found, everything outside the delimiters is
+      ignored. See https://plotly.com/python/LaTeX/ for details.
+    - For an intro to LaTeX math, see
+      https://en.wikibooks.org/wiki/LaTeX/Mathematics.
+    - Big thanks to Equinor for sponsoring this development,
+      including the related work in Plotly.js!
+  * #1949 Upgrade Plotly.js to v2.11.0 (from v2.9.0)
+    - Support for MathJax v3
+    - fillpattern for scatter traces with filled area
+    - Every trace type can now be rendered in a stricter CSP
+      environment, specifically avoiding unsafe-eval. Please note:
+      the regl-based traces (scattergl, scatterpolargl, parcoords,
+      and splom) are only strict in the strict bundle, which is NOT
+      served by default in Dash. To use this bundle with Dash, you
+      must either download it and put it in your assets/ folder, or
+      include it as an external_script from the CDN:
+      https://cdn.plot.ly/plotly-strict-2.11.0.min.js. All other
+      trace types are strict in the normal bundle.
+    - Patch release 2.10.1 containing a bugfix for mesh3d traces.
+  * #1915 Fix bug #1474 when both dcc.Graph and go.Figure have
+    animation, and when the second animation in Figure is executed,
+    the Frames from the first animation are played instead of the
+    second one.
+  * #1953 Fix bug #1783 in which a failed hot reloader blocks the
+    UI with alerts.
+  * #1942 Fix bug #1663 preventing pie traces from sending
+    customdata with clickData and other events.
+
+-------------------------------------------------------------------
+Wed Mar  2 21:52:56 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update to 2.2.0:
+  Changelog would be too long, see
+  https://github.com/plotly/dash/releases for details.
+
+-------------------------------------------------------------------
+Fri Apr  9 21:34:20 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.20.0
+  Changed
+  * #1531 Update the format of the docstrings to make them easier
+    to read in the reference pages of Dash Docs and in the
+    console. This also addresses #1205
+  * #1553 Increase the z-index of the Dash error menu from 1001 to
+    1100 in order to make sure it appears above Bootstrap
+    components.
+  Fixed
+  * #1546 Validate callback request outputs vs output to avoid a
+    perceived security issue.
+- Release 1.19.0
+  Added
+  * #1508 Fix #1403: Adds an x button to close the error messages
+    box.
+  * #1525 Adds support for callbacks which have overlapping inputs
+    and outputs. Combined with dash.callback_context this
+    addresses many use cases which require circular callbacks.
+  Changed
+  * #1503 Fix #1466: loosen dash[testing] requirements for easier
+    integration in external projects. This PR also bumps many dash
+    [dev] requirements.
+  Fixed
+  * #1530 Dedent error messages more carefully.
+  * #1527￼ get_asset_url now pulls from an external source if
+    assets_external_path is set.
+    - updated _add_assets_resource to build asset urls the same
+      way as get_asset_url.
+    - updated doc string for assets_external_path Dash argument to
+      be more clear that it will allways be joined with the
+      assets_url_path argument when determining the url to an
+      external asset.
+  * #1493 Fix #1143, a bug where having a file with one of several
+    common names (test.py, code.py, org.py, etc) that imports a
+    dash component package would make import dash fail with a
+    cryptic error message asking whether you have a file named
+    "dash.py"
+
+-------------------------------------------------------------------
+Sun Jan  3 18:48:57 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- Prepare Andy's work for submission
+  * update specfile with requirements and comment about tests
+
+-------------------------------------------------------------------
+Mon Dec 21 11:31:03 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Update to 1.18.1.
+  * Bump plotly.js v1.58.2
+  * Updates for 1.18.0
+    * Fix a bug where the table is using classes that are styled by
+      Bootstrap
+    * Upgraded Plotly.js to 1.58.1
+  * Updates for 1.17.0
+    * Update from React 16.13.0 to 16.14.0
+    * Fix #1432 for Julia to import non-core component packages
+      without possible errors.
+    * Provide a hint in the callback error when the user forgot to
+      make app.callback(...) a decorator.
+  * Updates for 1.16.3
+    * Fix a regression caused by flask-compress==1.6.0 causing
+      performance degradation on server requests
+  * Updates for 1.16.2
+    * Fix a regression with some layouts callbacks involving
+      dcc.Tabs, not yet loaded dash_table.DataTable and dcc.Graph
+      to not be called
+    * Make callback graph more robust for complex apps and some
+      specific props (width in particular) that previously caused
+      errors.
+  * Updates for 1.16.1
+    * Extends the getTransform logic in the renderer to handle
+      persistenceTransforms for both nested and non-nested
+      persisted props. This was used to to fix dcc#700 in
+      conjunction with dcc#854 by using persistenceTransforms to
+      strip the time part of the datetime so
+      that datepickers can persist when defined in callbacks.
+      Fixes a bug where the callback graph layout would reset
+      whenever a callback fired, losing user-initiated layout
+      changes (#1402) or creating a new force layout (#1401)
+  * Updates for 1.16.0
+    * You can now get CSP script-src hashes of all added inline
+      scripts by calling app.csp_hashes() (both Dash internal
+      inline scripts, and those added with
+      app.clientside_callback).
+    * Closes #1350 and fixes a previously undefined callback
+      behavior when multiple elements are stacked on top of one
+      another and their n_clicks props are used as inputs of the
+      same callback. The callback will now trigger once with all
+      the triggered n_clicks props changes.
+    * New and improved callback graph in the debug menu. Now based
+      on Cytoscape for much more interactivity, plus callback
+      profiling including number of calls, fine-grained time
+      information, bytes sent and received, and more. You can even
+      add custom timing information on the server with
+      callback_context.record_timing(name, seconds)
+    * Fixed a bug introduced by #1180 breaking use of
+      prevent_initial_call as a positional arg in callback
+      definitions[1.15.0] - 2020-08-25
+    * Removed redundant log message and consolidated logger
+      initialization. You can now control the log level - for
+      example suppress informational messages from Dash with
+      app.logger.setLevel(logging.WARNING).
+    * #1253, #1377 Added experimental --jl-prefix option to
+      dash-generate-components, optionally generates Julia version
+      of components and corresponding Julia package
+    * Input, Output, and State in callback definitions don’t need
+      to be in lists. You still need to provide Output items first,
+      then Input items, then State, and the list form is still
+      supported. In particular, if you want to return a single
+      output item wrapped in a length-1 list, you should still wrap
+      the Output in a list. This can be useful for
+      procedurally-generated callbacks.
+    * Updated pytest to v6.0.1. To avoid deprecation warnings, this
+      also updated pytest-sugar to 0.9.4 and pytest-mock to 3.2.0.
+      The pytest mock update only effects python >= 3.0.
+      Pytest-mock remains pinned at 2.0.0 for python == 2.7.
+  * Updates for 1.14.0
+    * Add title parameter to set the document title. This is the
+      recommended alternative to setting app.title or overriding
+      the index HTML.
+    * Add update_title parameter to set or disable the
+      “Updating....” document title during updates. Closes #856 and
+      #732
+  * Updates for 1.13.4
+    * Fix a regression since 1.13.0 preventing more than one
+      loading state from being shown at a time.
+  * Updates for 1.13.3
+  * Updates for 1.13.2
+    * Fix regression that causes crash when FLASK_ENV is modified
+      during app execution
+    * Fix regression that caused tests using _wait_for_callbacks
+      to fail
+  * Updates for 1.13.0
+    * Supports DASH_PROXY env var to tell app.run_server to report
+      the correct URL to view your app, when it’s being proxied.
+      Throws an error if the proxy is incompatible with the host
+      and port you’ve given the server.
+    * Adds callback_context to clientside callbacks (e.g.
+      dash_clientside.callback_context.triggered).
+      Supports triggered, inputs, inputs_list, states, and
+      states_list, all of which closely resemble their serverside
+      cousins.
+    * Closes #920: Converts hot reload fetch failures into a server
+      status indicator showing whether the latest fetch succeeded
+      or failed.
+    * Callback fetch failures still appear as errors but have a
+      clearer message.
+    * Modifies the callback chain implementation and improves
+      performance for apps with a lot of components
+    * Hard hot reload targets only the current window, not the top
+      - so if your app is in an iframe you will only reload the app
+    * Fixes #919 so dash.testing is compatible with more pytest
+      plugins, particularly pytest-flake8 and pytest-black.
+    * Fixes #1245, so you can use prop persistence with components
+      that have dict IDs, ie for pattern-matching callbacks.
+    * Sort asset directories, same as we sort files inside those
+      directories. This way if you need your assets loaded in a
+      certain order, you can add prefixes to subdirectory names and
+      enforce that order.#1288 Closes #1285: Debug=True should work
+      in the main module.
+  * Updates for 1.12.0
+    * Adds control over firing callbacks on page (or layout chunk)
+      load. Individual callbacks can have their initial calls
+      disabled in their definition
+      @app.callback(..., prevent_initial_call=True) and similar
+      for app.clientside_callback. The app-wide default can also be
+      changed with app=Dash(prevent_initial_callbacks=True), then
+      individual callbacks may disable this behavior.
+    * New attribute app.validation_layout allows you to create a
+      multi-page app without suppress_callback_exceptions=True
+      or layout function tricks. Set this to a component layout
+      containing the superset of all IDs on all pages in your app.
+    * Permit usage of arbitrary file extensions for assets within
+      component libraries
+    * Fixes #1223, a very specific situation in which initial
+      callbacks will not fire.
+    * Fixes #1216, a set of related issues about pattern-matching
+      callbacks with ALL wildcards in their Output which would fail
+      if no components matched the pattern.
+    * Fixes #1200 - prior to Dash 1.11, if none of the inputs to a
+      callback were on the page, it was not an error. This was, and
+      is now again,treated as though the callback raised
+      PreventUpdate. The one exception to this is with
+      pattern-matching callbacks, when every Input uses a
+      multi-value wildcard (ALL or ALLSMALLER), and every Output is
+      on the page. In that case the callback fires as usual.
+    * Fixes #1193 - prior to Dash 1.11, you could use
+      flask.has_request_context() == False inside an app.layout
+      function to provide a special layout containing all IDs for
+      validation purposes in a multi-page app. Dash 1.11 broke this
+      when we moved most of this validation into the renderer. This
+      change makes it work again.
+
+
+-------------------------------------------------------------------
+Tue May 26 07:22:29 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
+
+- %python3_only -> %python_alternative
+
+-------------------------------------------------------------------
+Sat Apr 18 20:31:40 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * updated required versions
+
+- update to version 1.11.0:
+  * Added
+    + #1103 Pattern-matching IDs and callbacks. Component IDs can be
+       dictionaries, and callbacks can reference patterns of
+       components, using three different wildcards: ALL, MATCH, and
+       ALLSMALLER, available from dash.dependencies. This lets you
+       create components on demand, and have callbacks respond to any
+       and all of them. To help with this, dash.callback_context gets
+       three new entries: outputs_list, inputs_list, and states_list,
+       which contain all the ids, properties, and except for the
+       outputs, the property values from all matched components.
+    + #1103 dash.testing option --pause: after opening the dash app in
+       a test, will invoke pdb for live debugging of both Javascript
+       and Python. Use with a single test case like pytest -k cbwc001
+       --pause.
+  * Changed
+  * #1103 Multiple changes to the callback pipeline:
+    + dash.callback_context.triggered now does NOT reflect any initial
+      values, and DOES reflect EVERY value which has been changed
+      either by activity in the app or as a result of a previous
+      callback. That means that the initial call of a callback with no
+      prerequisite callbacks will list nothing as triggering. For
+      backward compatibility, we continue to provide a length-1 list
+      for triggered, but its id and property are blank strings, and
+      bool(triggered) is False.
+    + A user interaction which returns the same property value as was
+      previously present will not trigger the component to re-render,
+      nor trigger callbacks using that property as an input.
+    + Callback validation is now mostly done in the browser, rather
+      than in Python. A few things - mostly type validation, like
+      ensuring IDs are strings or dicts and properties are strings -
+      are still done in Python, but most others, like ensuring outputs
+      are unique, inputs and outputs don't overlap, and (if desired)
+      that IDs are present in the layout, are done in the
+      browser. This means you can define callbacks BEFORE the layout
+      and still validate IDs to the layout; and while developing an
+      app, most errors in callback definitions will not halt the app.
+  * Fixed
+    + #1103 Fixed multiple bugs with chained callbacks either not
+       triggering, inconsistently triggering, or triggering multiple
+       times. This includes: #635, #832, #1053, #1071, and #1084. Also
+       fixed #1105: async components that aren't rendered by the page
+       (for example in a background Tab) would block the app from
+       executing callbacks.
+
+- changes from version 1.10.0:
+  * Added
+    + #1134 Allow dash.run_server() host and port parameters to be set
+       with environment variables HOST & PORT, respectively
+  * Changed
+    + #1145 Update from React 16.8.6 to 16.13.0
+  * Fixed
+    + #1142 Persistence: Also persist 0, empty string etc
+
+-------------------------------------------------------------------
+Tue Mar 31 07:22:22 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix all the runtime dependencies
+
+-------------------------------------------------------------------
+Sat Mar 14 16:02:04 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * be more specific in files section
+
+- update to version 1.9.1:
+  * #1133 Allow the compress config variable to be set with an
+     environment variable with DASH_COMPRESS=FALSE
+
+-------------------------------------------------------------------
+Mon Feb 10 15:30:22 UTC 2020 - Todd R <toddrme2178@gmail.com>
+
+- Update to version 1.9.0
+  * Handle case where dash fails to load when used inside an iframe with a sandbox attribute that only has allow-scripts
+
+-------------------------------------------------------------------
+Thu Jan 30 19:09:44 UTC 2020 - Todd R <toddrme2178@gmail.com>
+
+- Update to version 1.8.0
+  + Added
+    * Two new functions to simplify usage handling URLs and pathnames: `app.get_relative_path` & `app.trim_relative_path`.
+  + Changed
+    * Simplify our build process.
+    * Error messages when providing an incorrect property to a component have been improved: they now specify the component type, library, version, and ID (if available).
+  + Fixed
+    * Fix no_update test to allow copies, such as those stored and retrieved from a cache.
+
+-------------------------------------------------------------------
+Fri Dec  6 18:44:56 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Disable python2 support since dependencies dropped python2
+- Update to version 1.7.0
+  + Added
+    * Add support for defining clientside JavaScript callbacks via inline strings.
+    * Allow `visit_and_snapshot` API in `dash.testing.browser`  to stay on the page so you can run other checks.
+  + Changed
+    * Better error message when you forget to wrap multiple `children` in an array, and they get passed to other props.
+  + Fixed
+    * Fix the `dash.testing` **stop** API with process application runner in Python2. Use `kill()` instead of `communicate()` to avoid hanging.
+    * Fix bug with renderer callback lock never resolving with non-rendered async component using the asyncDecorator
+- Update to version 1.6.1
+  + Fixed
+    * Fix IE11 / ES5 compatibility and validation issues
+    * Fix bug with renderer wrapper component TreeContainer to prevent useless re-renders
+      > Fix and improve the `clear_input()` API in `dash.testing`, so it's more robust handling react `input`.
+      > make the `percy_snapshot()` API more robust, and the timeout of `wait_for_callbacks` (if set to True) will not fail the snapshot execution, but logged as potential error.
+- Update to version 1.6.0
+  + Fixed
+    * Fix fingerprint for component suites with `metadata` in version.
+    * Fix the assets loading issues when dashR application runner is handling with an app defined by string chunk.
+- Update to version 1.5.1
+  + Fixed
+    * Fix cache string handling for component suites with nested folders in their packages.
+    * Fix a bug with evaluation of `_force_eager_loading` when application is loaded with gunicorn
+- Update to version 1.5.0
+  + Added
+    * Adds support for preventing updates in clientside functions.
+      > Reject all updates with `throw window.dash_clientside.PreventUpdate;`
+      > Reject a single output by returning `window.dash_clientside.no_update`
+    * Add support for async dependencies and components
+    * Adds support for resource caching and adds a fallback caching mechanism through etag
+  + Fixed
+    * Fix and improve a percy snapshot behavior issue we found in dash-docs testing. It adds a flag `wait_for_callbacks` to ensure that, in the context of a dash app testing, the percy snapshot action will happen only after all callbacks get fired.
+- Update to version 1.4.1
+  + Fixed
+    * Fix warnings emitted by react devtools coming from our own devtools components.
+- Update to version 1.4.0
+  + Added
+    * Support setting working directory for R apps run using the `dashr` fixture, primarily useful for tests with assets. `dashr.start_server` supports a `cwd` argument to set an explicit working directory, and has smarter defaults when it's omitted: if `app` is a path to an R script, uses the directory of that path; if `app` is a string, uses the directory the test file itself is in.
+      > Relevant `dash.testing` methods can now be called with either an element or a CSS selector: `select_dcc_dropdown`, `multiple_click`, `clear_input`, `zoom_in_graph_by_ratio`, `click_at_coord_fractions`.
+      > Three new `dash.testing` methods: `clear_local_storage`, `clear_session_storage`, and `clear_storage` (to clear both together)
+    * `dash.testing` adds two APIs `zoom_in_graph_by_ratio` and `click_at_coord_fractions` about advanced interactions using mouse `ActionChain`
+    * Add debugging traces to dash backend about serving component suites, to verify the installed packages whenever in doubt.
+  + Fixed
+    * Fix a bug with persistence being toggled on/off on an existing component.
+- Update to version 1.3.1
+  + Changed
+    * Bump dash-core-components version from 1.2.0 to 1.2.1
+- Update to version 1.3.0
+  + Added
+    * Add one configuration `--percy-assets` in `pytest` to specify extra application assets path if needed.
+    * Add `wait_for_element_by_id` and `visit_and_snapshot` APIs in browser, add `raw_command` option (with higher priority than the default waitress one) and optional `start_timeout` argument to handle large applications within the process runner.
+    * Persistence: enable props edited by the user to persist across recreating the component or reloading the page. Components need to define three new props: `persistence`, `persisted_props`, and `persistence_type` as described in the lead comment of `src/persistence.js`. App developers then enable this behavior by, in the simplest case, setting `persistence: true` on the component. First use case is table
+  + Changed
+    * Bump dash-table version from 4.2.0 to 4.3.0
+    * Bump dash-core-components version from 1.1.2 to 1.2.0
+    * Bump dash-renderer version from 1.0.1 to 1.1.0
+  + Fixed
+    * Fix `dash-generate-components` on Windows.
+    * Fix the `--remote` pytest argument which was not effective in the code, adding a new argument `--remote-url` to support the selenium grid usage in the cloud.
+    * Reduce the dash-renderer packages size on **PyPI** about 55% by removing the source maps. To do more advanced debugging, the source maps needs to be generated from source code with `npm run build:local` and pip install in editable mode, i.e. `pip install -e .`
+- Update to version 1.2.0
+  + Added
+    * Add a new arg `dev_tools_prune_errors` to `app.run_server` and `app.enable_dev_tools`. Default `True`, tracebacks only include user code and below. Set it `False` for the previous behavior showing all the Dash and Flask parts of the stack.
+  + Changed
+    * Bump dash-table version from 4.1.0 to 4.2.0
+    * Bump dash-core-components version from 1.1.1 to 1.1.2
+    * Bump dash-html-components version from 1.0.0 to 1.0.1
+    * Bump dash-renderer version from 1.0.0 to 1.0.1
+  + Fixed
+    * Clean all the binary assets in dash-renderer, add tool to build all the required bundles from fresh source code to avoid confusion of the assets and improve the release process.
+- Update to version 1.1.1
+  + Changed
+    * Bump dash-core-components version from 1.1.0 to 1.1.1
+- Update to version 1.1.0
+  + Added
+    * Add support for dashR testing to the `dash.testing` pytest framework.
+  + Changed
+    * Bump dash-table version from 4.0.2 to 4.1.0
+    * Bump dash-core-components version from 1.0.0 to 1.1.0
+- Update to version 1.0.2
+  + Changed
+    * Bump dash-table version from 4.0.1 to 4.0.2
+  + Fixed
+    * Fix a bug with callback error reporting
+- Update to version 1.0.1
+  + Changed
+    * Remove strong `dash.testing` dependencies per community feedback. Testing users should do `pip install dash[testing]` afterwards.
+    * Add headless mode for dash.testing, add `pytest_setup_options` hook for full configuration of `WebDriver Options`.
+    * Bump dash-table version from 4.0.0 to 4.0.1
+- Update to version 1.0.0
+  + Changed
+    * Several breaking changes to the `dash.Dash` API:
+      > Remove two obsolete constructor kwargs: `static_folder` and `components_cache_max_age`
+      > Remove the misspelled `supress_callback_exceptions` fallback
+      > Remove the unused `resources.config.infer_from_layout`
+      > Revamp `app.config`: ALL constructor args are now stored in `config`, with three exceptions: `server`, `index_string`, and `plugins`. None of these are stored in any other instance attributes anymore.
+      > Change `hot_reload_interval` from msec to seconds, for consistency with `hot_reload_watch_interval`
+      > When called from `enable_dev_tools`, `debug=True` by default. It's still `False` by default from `run_server`.
+    * Introducing Dash Testing (`dash.testing`) - read the full tutorial at http://dash.plot.ly/testing.
+    * `Component` no longer inherits `MutableMapping`, so `values`, `keys`, and more are no longer methods. Fixes an issue where components with certain prop names defined but not provided would cause a failure to render. During component generation we now disallow all props with leading underscores or matching a few remaining reserved words: `UNDEFINED`, `REQUIRED`, `to_plotly_json`, `available_properties`, and `available_wildcard_properties`.
+    * Allow the Flask app to be provided to Dash after object initialization. This allows users to define Dash layouts etc when using the app factory pattern, or any other pattern that inhibits access to the app object. This broadly complies with the flask extension API, allowing Dash to be considered as a Flask extension where it needs to be.
+    * Allow the Flask app to set the Dash app name if the name is not provided by users.
+    * Assets are served locally by default. Both JS scripts and CSS files are affected. This improves robustness and flexibility in numerous situations, but in certain cases initial loading could be slowed. To restore the previous CDN serving, set `app.scripts.config.serve_locally = False` (and similarly with `app.css`, but this is generally less important).
+    * Undo/redo toolbar is removed by default, you can enable it with `app=Dash(show_undo_redo=true)`. The CSS hack `._dash-undo-redo:{display:none;}` is no longer needed
+    * Merge the `dash-renderer` project into the main dash repo to simplify feature dev workflow. We will keep the deprecated one for archive purpose.
+- Update to version 0.43.0
+  + Changed
+    * Bump dash-core-components version from 0.47.0 to 0.48.0
+    * Bump dash-renderer version from 0.23.0 to 0.24.0
+    * Bump dash-table version from 3.6.0 to 3.7.0
+  + Fixed
+    * Fix regression on handling PreventUpdate (204 NO CONTENT)
+- Update to version 0.42.0
+  + Added
+    * Dev Tools support. A new UI in the application that automatically display JavaScript & Python error messages, validates your component's properties, and displays a graph of your callback's dependencies. Only enabled in debug mode. Turn this on and off with two new config flags in `app.run_server`:
+      > `dev_tools_props_check` - turn on/off property validation.
+      > `dev_tools_ui` - turn on/off the UI.
+  + Fixed
+    * Fix regression for `children=0` case.
+- Update to version 0.41.0
+  + Added
+    * Support for "Clientside Callbacks" - an escape hatch to execute your callbacks in JavaScript instead of Python
+    * Add `dev_tools_ui` config flag in `app.run_server` (serialized in `<script id="_dash-config" type="application/json">`) to display or hide the forthcoming Dev Tools UI in Dash's front-end (dash-renderer).
+    * Partial updates: leave some multi-output updates unchanged while updating others
+  + Removed
+    * Remove `dash_renderer._set_react_version` support for 15.4.2 and 16.2.0
+  + Changed
+    * Bump dash-core-components version from 0.45.0 to 0.46.0
+    * Update from React 15.4.2 to React 16.8.6
+- Update to version 0.40.0
+  + Changed
+    * Bump dash-core-components version from 0.44.0 to 0.45.0
+    * Bump dash-html-components version from 0.14.0 to 0.15.0
+    * Optimize rendering, and always assign `setProps` to components even with no callbacks to use it.
+- Update to version 0.39.0
+  + Added
+    * Allow multiple outputs from a single callback.
+    * Support custom javascript hooks to modify callback payloads and responses.
+    * Modify the flask response with custom cookies or headers, using `dash.callback_context.response`.
+    * Loading states API
+  + Changed
+    * Bump dash-core-components version from 0.43.1 to 0.44.0
+    * Bump dash-html-components version from 0.13.5 to 0.14.0
+    * Bump dash-table version from 3.5.0 to 3.6.0
+- Update to version 0.38.0
+  + Added
+    * Add components libraries js/css distribution to hot reload watch.
+    * Callback context:
+      > Know which inputs caused a callback to fire: `dash.callback_context.triggered`
+      > Input/State values by name `dash.callback_context.states.get('btn.n_clicks')`
+  + Changed
+    * Bump dash-table version from 3.4.0 to 3.5.0
+    * Bump dash-renderer version from 0.18.0 to 0.19.0
+  + Fixed
+    * Fix missing indentation for generated metadata.json
+    * Fix missing component prop docstring error
+    * Move `__repr__` to base component instead of being generated.
+    * Raise exception when same input & output are used in a callback
+- Update to version 0.37.0
+  + Removed
+    * Removed redux logger for the dev.
+  + Changed
+    * Add core libraries as version locked dependencies
+    * Bump dash-table version from 3.3.0 to 3.4.0
+    * Bump dash-renderer version from 0.17.0 to 0.18.0
+    * Bump dash-core-components version from 0.43.0 to 0.43.1
+  + Fixed
+    * Fix collections.abc deprecation warning for python 3.8
+- Update to version 0.36.0
+  + Removed
+    * Remove support for `Event` system. Use event properties instead, for example the `n_clicks` property instead of the `click` event. `dash_renderer` MUST be upgraded to >=0.17.0 together with this, and it is recommended to update `dash_core_components` to >=0.43.0 and `dash_html_components` to >=0.14.0.
+- Update to version 0.35.3
+  + Changed
+      > `assets_folder` argument now defaults to 'assets'
+      > The assets folder is now always relative to the given root path of `name` argument, the default of `__main__` will get the `cwd`.
+      > No longer coerce the name argument from the server if the server argument is provided.
+  + Fixed
+      > Asset blueprint takes routes prefix into it's static path.
+      > Asset url path no longer strip routes from requests.
+    * Remove print statement from PreventUpdate error handler.
+    * Removed ComponentRegistry dist cache.
+- Update to version 0.35.2
+  + Fixed
+    * Fix typo in some exception names
+      > Keep the config store state on soft reload.
+      > AppProvider returns `Loading...` if no configs as before
+- Update to version 0.35.1
+  + Fixed
+    * Always skip `dynamic` resources from index resources collection.
+- Update to version 0.35.0
+  + Added
+    * Experimental `--r-prefix` option to `dash-generate-components`, optionally generates R version of components and corresponding R package.
+- Update to version 0.34.0
+  + Added
+    * Add `--ignore` option to `dash-generate-components`, defaults to `^_`.
+  + Removed
+    * Unused login api and Authentication component
+  + Fixed
+    * Add `key` to rendered components
+- Update to version 0.33.0
+  + Added
+    * Add specific Dash exception types to replace generic exceptions (`InvalidIndexException`, `DependencyException`, `ResourceException`)
+- Update to version 0.32.2
+  + Fixed
+    * Fix typo in missing events/inputs error message
+- Update to version 0.32.1
+  + Changed
+    * Mute dash related missing props docstring from extract-meta warnings
+- Update to version 0.32.0
+  + Added
+    * Support for .map file extension and dynamic (on demand) loading
+    * Redux devtools support
+- Update to version 0.31.1
+  + Fixed
+    * Fix `_imports_.py` indentation generation.
+- Update to version 0.31.0
+  + Added
+    * Combine `extract-meta` and Python component files generation in a cli
+  + Fixed
+    * Fix a bug in the ON_PROP_CHANGE callback where history was not correctly set when acting on more than one component. In particular, the 'undo' button should now work as expected.
+- Update to version 0.30.0
+  + Added
+    * Hot reloading from the browser.
+    * Silence routes logging with `dev_tools_silence_routes_logging`.
+- Update to version 0.29.0
+  + Added
+    * Add component namespaces registry, collect the resources needed by component library when they are imported instead of crawling the layout.
+- Update to version 0.28.7
+  + Fixed
+    * Use the same prop name black list for component generation in all supported Python versions.
+- Update to version 0.28.6
+  + Fixed
+    * `Dash.registered_paths` changed to a `collections.defaultdict(set)`, was appending the same package paths on every index.
+- Update to version 0.28.5
+  + Fixed
+    * Replace windows endline when generating components class docstrings.
+- Update to version 0.28.4
+  + Fixed
+    * Fix `Component.traverse()` and `Component.traverse_with_paths()` for components with `children` of type `tuple`, not just `list`.
+- Update to version 0.28.3
+  + Fixed
+    * Fix http-equiv typo
+    * Include missing polyfills to restore Internet Explorer support, restore whatwg-fetch
+- Update to version 0.28.2
+  + Changed
+    * Move `add_url` function definition out of `Dash.__init__`
+- Update to version 0.28.1
+  + Fixed
+    * Missing favicon package_data from setup.py
+- Update to version 0.28.0
+  + Added
+    * Default favicon for dash apps.
+    * Bust the cache of the assets favicon.
+  + Fixed
+    * Remove the first and last blank lines from the HTML index string.
+- Update to version 0.27.0
+  + Added
+    * Allow serving dev bundles from the components suite, enable with `app.run_server(dev_tools_serve_dev_bundles=True)`
+  + Fixed
+    * Use HTML5 syntax for the meta tag
+- Update to version 0.26.6
+  + Fixed
+    * Add `Cache-Control` headers to files served by `Dash.serve_component_suites`, and time modified query string to collected components suites resources.
+    * Add `InvalidResourceError` error and a Flask error handler so unregistered paths in `serve_component_suites` return a 404 instead of 500.
+- Update to version 0.26.5
+  + Fixed
+    * Fix `get_asset_url` with a different `assets_url_path`.
+- Update to version 0.26.4
+  + Fixed
+    * Set `url_base_pathname` to `None` in `Dash.__init__`.
+- Update to version 0.26.3
+  + Added
+    * `Dash.get_asset_url` will give the prefixed url for the asset file.
+  + Fixed
+    * Prefix assets files with `requests_pathname_prefix`.
+- Update to version 0.26.2
+  + Fixed
+    * Only create the assets blueprint once for apps that provide the same flask instance to multiple dash instances.
+- Update to version 0.26.1
+  + Fixed
+    * Fix bug in `_validate_layout` which would not let a user set `app.layout` to be a function that returns a layout
+- Update to version 0.26.0
+  + Added
+    * Add `assets_ignore` init keyword, regex filter for the assets files.
+- Update to version 0.25.1
+  + Fixed
+    * Ensure CSS/JS external resources are loaded before the assets.
+- Update to version 0.25.0
+  + Added
+    * Take config values from init or environ variables (Prefixed with `DASH_`).
+  + Fixed
+    * Take `requests_pathname_prefix` config when creating scripts tags.
+    * `requests/routes_pathname_prefix` must start and end with `/`.
+    * `requests_pathname_prefix` must end with `routes_pathname_prefix`. If you supplied both `requests` and `routes` pathname before this update, make sure `requests_pathname_prefix` ends with the same value as `routes_pathname_prefix`.
+    * `url_base_pathname` sets both `requests/routes` pathname, cannot supply it with either `requests` or `routes` pathname prefixes.
+- Update to version 0.24.2
+  + Fixed
+    * Disallow duplicate component ids in the initial layout.
+- Update to version 0.24.1
+  + Fixed
+    * Fix bug where importing Dash components with no props would result in an error.
+    * Fix a bug in 0.23.1 where importing components with arguments that are python keywords could cause an error. In particular, this fixes `dash-html-components` with Python 3.7.
+- Update to version 0.24.0
+  + Added
+    * Add a modified time query string to assets included in the index in order to bust the cache.
+- Update to version 0.23.1
+  + Added
+    * Add `ie-compat` meta tag to the index by default.
+    * Add `external_script` and `external_css` keywords to dash `__init__`.
+    * Dash components are now generated at build-time and then imported rather than generated when a module is imported. This should reduce the time it takes to import Dash component libraries, and makes Dash compatible with IDEs.
+- Update to version 0.22.1
+  + Fixed
+    * Raise a more informative error if a non-JSON-serializable value is returned from a callback.
+- Update to version 0.22.0
+  + Added
+    * Asset files & index customization.
+    * Raise an error if there is no layout present when the server is run.
+    * Add `_dash-error` class to the "Error loading layout" and "Error loading dependencies" messages.
+  + Fixed
+    * Attempting to render a `Boolean` value to the page no longer crashes the app.
+    * If a callback references an `id` which does not exist in the DOM tree at the time it is executed, throw a more informative front-end exception.
+    * Previously, if a component called `updateProps` with multiple properties, Dash would fire the callback multiple times (once for each property). Now the callback only fires once.
+
+-------------------------------------------------------------------
+Tue Dec  4 12:47:08 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Wed May  9 02:55:26 UTC 2018 - toddrme2178@gmail.com
+
+- Update to 5.1.1
+  + Added
+    * `aria-*` and `data-*` attributes are now supported in all
+      dash html components. (#40)
+    * These new keywords can be added using a dictionary expansion
+      e.g. `html.Div(id="my-div", **{"data-toggle": "toggled", "aria-toggled": "true"})`
+- Added license
+
+-------------------------------------------------------------------
+Thu Apr 19 18:16:32 UTC 2018 - toddrme2178@gmail.com
+
+- Initial version
