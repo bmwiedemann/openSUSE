@@ -1,0 +1,5 @@
+<package name="python-beniget" project="openSUSE:Factory">
+  <title>python-beniget</title>
+  <description>Extract semantic information about static Python code</description>
+  <devel project="devel:languages:python" package="python-beniget"/>
+</package>

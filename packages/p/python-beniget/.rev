@@ -1,0 +1,60 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>db8a9b79343ff7d482a416b040cd114c</srcmd5>
+    <version>0.1.0</version>
+    <time>1564994370</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>720485</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>7473d4e00b939a15c297145ebd2c5abc</srcmd5>
+    <version>0.1.0</version>
+    <time>1566894049</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>725884</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>1c637044b982a7ee3fef03d83d21e1ea</srcmd5>
+    <version>0.2.0</version>
+    <time>1568379677</time>
+    <user>lnussel_factory</user>
+    <comment>- Update to 0.2.0:
+  * python 3.8 support</comment>
+    <requestid>730401</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a57eb744cd4a39225452233714d6fdcc</srcmd5>
+    <version>0.3.0</version>
+    <time>1598885441</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.3.0:
+  * Require gast 0.4.0</comment>
+    <requestid>830622</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>72e0b9edce3d611252be952258389e51</srcmd5>
+    <version>0.3.0</version>
+    <time>1622536655</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>895750</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>426b7a20fff8824c83e4a3f4be3acbc3</srcmd5>
+    <version>0.4.1</version>
+    <time>1643062178</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>948272</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>4bdc8e12438c4c45443ce9996142a194</srcmd5>
+    <version>0.4.1</version>
+    <time>1682193709</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081984</requestid>
+  </revision>
+</revisionlist>
