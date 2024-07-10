@@ -1,0 +1,34 @@
+-------------------------------------------------------------------
+Sun Oct  7 21:14:35 UTC 2018 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- Update URL
+
+-------------------------------------------------------------------
+Tue Dec  6 11:51:18 UTC 2011 - coolo@suse.com
+
+- fix perl license
+
+-------------------------------------------------------------------
+Fri Nov 18 11:08:16 UTC 2011 - coolo@suse.com
+
+- use original .tar.gz
+
+-------------------------------------------------------------------
+Tue Nov 30 19:19:53 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Wed Apr 21 15:30:33 UTC 2010 - chris@computersalat.de
+
+- cleanup spec
+  o removed Provides {cpan_name}
+- noarch package
+  o removed .packlist file
+  o removed perllocal.pod file
+
+-------------------------------------------------------------------
+Fri Feb 26 14:32:49 UTC 2010 - chris@computersalat.de
+
+- initial package 1.09
+
