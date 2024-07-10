@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>fbc2694f603ebf2f89d7b9580b768430</srcmd5>
+    <version>0.0.4+git.1604696958.cd5cdf1</version>
+    <time>1684415948</time>
+    <user>dimstar_suse</user>
+    <comment>The hawk-apiserver is required by the hawk2, one of the HA components.</comment>
+    <requestid>1087554</requestid>
+  </revision>
+</revisionlist>
