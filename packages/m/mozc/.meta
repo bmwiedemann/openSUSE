@@ -1,0 +1,5 @@
+<package name="mozc" project="openSUSE:Factory">
+  <title>Mozc - Japanese Input Method for Chromium OS, Mac and Linux</title>
+  <description></description>
+  <devel project="M17N" package="mozc"/>
+</package>

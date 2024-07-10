@@ -1,0 +1,387 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>82a7fa5e79b93069b318af472ba80f28</srcmd5>
+    <version>1.6.1187.102</version>
+    <time>1358198598</time>
+    <user>coolo</user>
+    <comment>supersede sr#147833 </comment>
+    <requestid>148194</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>82a7fa5e79b93069b318af472ba80f28</srcmd5>
+    <version>1.6.1187.102</version>
+    <time>1359109463</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>74ea262b4f95b8882187bd7b96ae41e8</srcmd5>
+    <version>1.10.1390.102</version>
+    <time>1366632754</time>
+    <user>coolo</user>
+    <comment>fix as AJ suggested (forwarded request 171376 from MargueriteSu)</comment>
+    <requestid>171377</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>1c43ca0d4ea7440804631051a2cf24ca</srcmd5>
+    <version>1.10.1390.102</version>
+    <time>1372173295</time>
+    <user>coolo</user>
+    <comment>- fixed build with gcc 4.8
+  * mozc-gcc48.patch (forwarded request 180880 from pgajdos)</comment>
+    <requestid>180883</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>a8f87bfbb212e98effa5d48e0cb79d42</srcmd5>
+    <version>1.11.1502.102</version>
+    <time>1374611014</time>
+    <user>coolo</user>
+    <comment>upstream update. some patches and sed hacks are not necessary anymore.
+I will review and accept later; your review is welcome. (forwarded request 184013 from ftake)</comment>
+    <requestid>184078</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>695fb47894cd1af492a88728906b79a9</srcmd5>
+    <version>1.11.1522.102</version>
+    <time>1378126833</time>
+    <user>coolo</user>
+    <comment>upstream update. (forwarded request 196996 from ftake)</comment>
+    <requestid>197038</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>695fb47894cd1af492a88728906b79a9</srcmd5>
+    <version>1.11.1522.102</version>
+    <time>1379663312</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>4abd5fb2cbce15495738538254146a0e</srcmd5>
+    <version>1.11.1522.102</version>
+    <time>1383575886</time>
+    <user>coolo</user>
+    <comment>Important bug fix and usability improvement. I also submitted to 13.1:Update. I am waiting for accept: https://build.opensuse.org/request/show/205491 (forwarded request 205560 from ftake)</comment>
+    <requestid>205561</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>75cc95efdca3c349aeac5ee23b695bf6</srcmd5>
+    <version>1.13.1651.102</version>
+    <time>1389881531</time>
+    <user>coolo</user>
+    <comment>upstream update, and enabled zip-code dictionary (forwarded request 213504 from ftake)</comment>
+    <requestid>213515</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>1fcb9bcc0dbfa7d1f1698607a5f0348f</srcmd5>
+    <version>1.15.1785.102</version>
+    <time>1403615775</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>238409</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>1fcb9bcc0dbfa7d1f1698607a5f0348f</srcmd5>
+    <version>1.15.1785.102</version>
+    <time>1409301927</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>3d6c779ede751480c03734b0332c0ae5</srcmd5>
+    <version>1.15.1868.102</version>
+    <time>1409761359</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>247051</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>3f884b65a6897be6b8ae77859b45648b</srcmd5>
+    <version>1.15.1917.102</version>
+    <time>1417643273</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>263635</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>5abad4f68d7ef7a7fabad5acce21d371</srcmd5>
+    <version>1.15.1917.102</version>
+    <time>1419249258</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>265978</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>5a25ac28c8de1e65b731696cc40160c1</srcmd5>
+    <version>2.16.2003.102</version>
+    <time>1419896997</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>266595</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>71f57b257cc2149559a30ea71d4a926e</srcmd5>
+    <version>2.16.2020.102</version>
+    <time>1421959782</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>282405</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>9a6cbf09c8b8bf6b2670415ad79d325b</srcmd5>
+    <version>2.16.2037.102</version>
+    <time>1425566576</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>288830</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>404a1fcb196503397d3f2761fd867a22</srcmd5>
+    <version>2.16.2037.102</version>
+    <time>1435652335</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>314258</requestid>
+  </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>1c956cef173ec2e52ebf250c4b107d88</srcmd5>
+    <version>2.16.2037.102</version>
+    <time>1439556420</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>322720</requestid>
+  </revision>
+  <revision rev="20" vrev="4">
+    <srcmd5>376401fed6233f42825f6c6ca0f8a712</srcmd5>
+    <version>2.16.2037.102</version>
+    <time>1439969380</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>323889</requestid>
+  </revision>
+  <revision rev="21" vrev="5">
+    <srcmd5>7bb4166a1f14991ac5773deb50b955a8</srcmd5>
+    <version>2.16.2037.102</version>
+    <time>1444130728</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>335451</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>87406a4a1f6376c1727fc57d36790088</srcmd5>
+    <version>2.17.2123.102</version>
+    <time>1445287753</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>337554</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>f0bea8b902dfacd7c0f603ef03310c9c</srcmd5>
+    <version>2.17.2313.102</version>
+    <time>1461334977</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>373803</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>e9e744f99bc3f77a98a885e5d992ac5d</srcmd5>
+    <version>2.17.2313.102</version>
+    <time>1467705172</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>406439</requestid>
+  </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>c11361f8980fab6d7976986d441a328a</srcmd5>
+    <version>2.17.2313.102</version>
+    <time>1469831267</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>415413</requestid>
+  </revision>
+  <revision rev="26" vrev="4">
+    <srcmd5>5406f77ebbed4a68586483285622c1ce</srcmd5>
+    <version>2.17.2313.102</version>
+    <time>1470413824</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>416615</requestid>
+  </revision>
+  <revision rev="27" vrev="5">
+    <srcmd5>7cf02080378044557c1aa6130639f581</srcmd5>
+    <version>2.17.2313.102</version>
+    <time>1472478157</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>423110</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>6ab34dd0f427766f8c2841777b2242a1</srcmd5>
+    <version>2.18.2612.102</version>
+    <time>1481030800</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>443948</requestid>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>80dadae4c4ca8527c379a932dc2a08af</srcmd5>
+    <version>2.18.2612.102</version>
+    <time>1522225797</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>590973</requestid>
+  </revision>
+  <revision rev="30" vrev="3">
+    <srcmd5>5d19cb4c92610ea36670ccffc66d6e6d</srcmd5>
+    <version>2.18.2612.102</version>
+    <time>1532681754</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>625309</requestid>
+  </revision>
+  <revision rev="31" vrev="4">
+    <srcmd5>29fd5753b0932adb126c43081b9357cc</srcmd5>
+    <version>2.18.2612.102</version>
+    <time>1556022974</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>696785</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>9b10659003fc05d992b8df1fa01de225</srcmd5>
+    <version>2.23.2815.102</version>
+    <time>1580842321</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>769414</requestid>
+  </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>10d85fa6bb6c2839d925b8bf8d0d75b3</srcmd5>
+    <version>2.23.2815.102</version>
+    <time>1588023113</time>
+    <user>dimstar_suse</user>
+    <comment>- Update mozc.spec: Drop the is_opensuse macro to eliminate in 
+  behavior in between SLE-15 and openSUSE Leap (jsc#SLE-11737). 
+</comment>
+    <requestid>796234</requestid>
+  </revision>
+  <revision rev="34" vrev="3">
+    <srcmd5>5236491d1b13ba5f0fd55441a0ced9a6</srcmd5>
+    <version>2.23.2815.102</version>
+    <time>1591101438</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>810376</requestid>
+  </revision>
+  <revision rev="35" vrev="4">
+    <srcmd5>f57327ac3156ee52508fc2c761be92a0</srcmd5>
+    <version>2.23.2815.102</version>
+    <time>1600180123</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>834322</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>e5a54c3a1c07c0f01cfb324ea4b04794</srcmd5>
+    <version>2.25.4150.102</version>
+    <time>1605644511</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>846464</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>f8a58d93ee2e12fb85f42f40ab7ce804</srcmd5>
+    <version>2.26.4276.102</version>
+    <time>1613427355</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>871313</requestid>
+  </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>4ae4ef15f0b59dbc44688e320b60a05f</srcmd5>
+    <version>2.26.4276.102</version>
+    <time>1637877942</time>
+    <user>dimstar_suse</user>
+    <comment>- Move mozc-fcitx5.spec to a dedicated linked package (for now) (forwarded request 933246 from tiwai)</comment>
+    <requestid>933247</requestid>
+  </revision>
+  <revision rev="39" vrev="3">
+    <srcmd5>459f606a177da207d8b06f7f842b2a8b</srcmd5>
+    <version>2.26.4276.102</version>
+    <time>1644778240</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>954048</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>774ec893c3900944c32bba8c010ab9b8</srcmd5>
+    <version>2.26.4660.102</version>
+    <time>1646349443</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>958594</requestid>
+  </revision>
+  <revision rev="41" vrev="2">
+    <srcmd5>a32bd1f8715f993402452e97974401b0</srcmd5>
+    <version>2.26.4660.102</version>
+    <time>1649181354</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>967001</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>b51d6a35edfce2d55e131f578f5ba9b4</srcmd5>
+    <version>2.28.4715.102</version>
+    <time>1652389215</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>976431</requestid>
+  </revision>
+  <revision rev="43" vrev="2">
+    <srcmd5>dd4e09745e8fff7759e56bf277767913</srcmd5>
+    <version>2.28.4715.102</version>
+    <time>1681590794</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1079580</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>7b0db9fccae4cc3d98841ed26f87e334</srcmd5>
+    <version>2.29.5111.102</version>
+    <time>1687272460</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1093662</requestid>
+  </revision>
+  <revision rev="45" vrev="2">
+    <srcmd5>00c397fb556fbf22ff1a635eea3ae1ec</srcmd5>
+    <version>2.29.5111.102</version>
+    <time>1692379763</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1104684</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>99ab9b3a6dcd1f90f871886f684821f0</srcmd5>
+    <version>2.29.5220.102</version>
+    <time>1694460094</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1110141</requestid>
+  </revision>
+  <revision rev="47" vrev="2">
+    <srcmd5>a823c4eebfed97ef4d7538011d8bc866</srcmd5>
+    <version>2.29.5220.102</version>
+    <time>1708866332</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1149996</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>846c1bdce638dffc05324cdf7165f79b</srcmd5>
+    <version>2.29.5268.102</version>
+    <time>1709493578</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1154400</requestid>
+  </revision>
+</revisionlist>

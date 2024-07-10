@@ -1,0 +1,21 @@
+NOTE: add-sha256sum-for-zipcode-archives.patch is automatically generated from
+      add-sha256sum-for-zipcode-archives.patch.in by make_archive.sh
+      Please do not modify the patch file manually.
+
+Index: mozc-2.28.4715.102/src/WORKSPACE.bazel
+===================================================================
+--- mozc-2.28.4715.102.orig/src/WORKSPACE.bazel
++++ mozc-2.28.4715.102/src/WORKSPACE.bazel
+@@ -181,10 +181,12 @@ http_archive(
+     name = "zip_code_ken_all",
+     build_file_content = "exports_files([\"KEN_ALL.CSV\"])",
+     url = "https://www.post.japanpost.jp/zipcode/dl/kogaki/zip/ken_all.zip",
++    sha256 = "ae7a5cd832b3da5f7c021d70d151a4241c741ca4278ac909c0e3930114f62a75"
+ )
+ 
+ http_archive(
+     name = "zip_code_jigyosyo",
+     build_file_content = "exports_files([\"JIGYOSYO.CSV\"])",
+     url = "https://www.post.japanpost.jp/zipcode/dl/jigyosyo/zip/jigyosyo.zip",
++    sha256 = "f001217dadd684841c31b1eca6aea05eec918f147a548710443d08ff82c28c8a"
+ )

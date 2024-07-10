@@ -1,0 +1,68 @@
+ibus-mozc configuration
+-----------------------
+
+### Configuration file path
+
+mozc_tool does not provide ibus-mozc specific configuration. Users can customize
+ibus-mozc by using a setting file, ibus_config.textproto in ~/.mozc or
+~/.config/mozc.
+
+
+### How to use ibus-mozc with a specific keyboard layout
+
+openSUSE provides four variants of ibus-mozc with different layouts:
+
+- Mozc (which does not change layout)
+- Mozc - JP layout
+- Mozc - US layout
+- Mozc - US Dvorak layout
+
+If you want to use ibus-mozc with a layout other than above, open
+ibus_config.textproto and add a new engine specifying "layout" and "variant"
+option. For available values of those options, please refer to
+/usr/share/ibus/component/simple.xml 
+
+After you change the configuration, confirm the change is applied successfully
+by running:
+
+```
+/usr/lib64/ibus-mozc/ibus-engine-mozc --xml
+```
+
+To apply the changes to running IBus, run the following commands:
+
+```
+ibus write-cache
+ibus restart
+```
+
+
+### How to change initial mode to active
+
+Set `active_on_launch` `True` if you want to activate Japanese input by default especially when you want to use it together with another IBus engine.
+
+```
+engines {
+  name : "mozc-jp"
+  longname : "Mozc"
+  layout : "ja"
+  layout_variant : ""
+  layout_option : ""
+  rank : 80
+}
+active_on_launch: True
+```
+
+
+How to use mozc.el
+-------------------
+
+After Mozc is installed, "mozc.el" is not enabled automatically since almost
+people input Japanese characters through a GTK IM module or XIM.
+
+If you want to use "mozc.el", please describe the following lines in your "~/.emacs":
+
+```
+(require 'mozc)
+(setq default-input-method 'japanese-mozc)
+```
