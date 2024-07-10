@@ -1,0 +1,272 @@
+<revisionlist>
+  <revision rev="1" vrev="12">
+    <srcmd5>50e2bb182fbf6a57bd8b83e37992b841</srcmd5>
+    <version>2.2.2</version>
+    <time>1168903565</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="54">
+    <srcmd5>9c3330d414c6b7f6845bc618fc7c6394</srcmd5>
+    <version>2.2.2</version>
+    <time>1177542984</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>607ee96737f5a91255106462d2fc8d8a</srcmd5>
+    <version>2.3</version>
+    <time>1184283490</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>417b66f4f9f04e44db1b790d6efdf737</srcmd5>
+    <version>2.5</version>
+    <time>1214256967</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="23">
+    <srcmd5>7c283e0d0303ddf7001c5f2ab0083530</srcmd5>
+    <version>2.5</version>
+    <time>1221277929</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="25">
+    <srcmd5>7c283e0d0303ddf7001c5f2ab0083530</srcmd5>
+    <version>2.5</version>
+    <time>1221277929</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="26">
+    <srcmd5>47466a3a9bb52a23a78f39b76ced3d34</srcmd5>
+    <version>2.5</version>
+    <time>1268925022</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="8" vrev="28">
+    <srcmd5>47466a3a9bb52a23a78f39b76ced3d34</srcmd5>
+    <version>2.5</version>
+    <time>1278667369</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="29">
+    <srcmd5>47466a3a9bb52a23a78f39b76ced3d34</srcmd5>
+    <version>2.5</version>
+    <time>1278678599</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="32">
+    <srcmd5>47466a3a9bb52a23a78f39b76ced3d34</srcmd5>
+    <version>2.5</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="11" vrev="23">
+    <srcmd5>eb29c912707aba14a3c25b0dca680cef</srcmd5>
+    <version>2.6</version>
+    <time>1307430867</time>
+    <user>saschpe</user>
+    <comment>- update to version 2.6
+  - Documentation fixes (STR #91, STR #92)
+  - The mxmldoc program did not handle typedef comments properly
+    (STR #72)
+  - Added support for &quot;long long&quot; printf formats.
+  - The XML parser now ignores BOMs in UTF-8 XML files (STR #89)
+  - The mxmldoc program now supports generating Xcode documentation
+    sets.
+  - mxmlSave*() did not output UTF-8 correctly on some platforms.
+  - mxmlNewXML() now adds encoding=&quot;utf-8&quot; in the ?xml directive to
+    avoid problems with non-conformant XML parsers that assume
+    something other than UTF-8 as the default encoding.
+  - Wrapping was not disabled when mxmlSetWrapMargin(0) was called,
+    and &quot;&lt;?xml ... ?&gt;&quot; was always followed by a newline (STR #76)
+  - The mxml.pc.in file was broken (STR #79)
+  - The mxmldoc program now handles &quot;typedef enum name {} name&quot;
+    correctly (STR #72)
+- drop requires on main package from the library package</comment>
+    <requestid>72805</requestid>
+  </revision>
+  <revision rev="12" vrev="24">
+    <srcmd5>cba5454ec8d0ac77c95080f72452dcd5</srcmd5>
+    <version>2.6</version>
+    <time>1307430876</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 72805
+</comment>
+  </revision>
+  <revision rev="13" vrev="25">
+    <srcmd5>ae5ae241133d9b91b5c8230e16f7dd6b</srcmd5>
+    <version>2.6</version>
+    <time>1313398138</time>
+    <user>saschpe</user>
+    <comment>Fixed typos in mxml.spec (forwarded request 78692 from aturrini)</comment>
+    <requestid>78693</requestid>
+  </revision>
+  <revision rev="14" vrev="26">
+    <srcmd5>b0a9a84f2c90ecc660150287b912aa08</srcmd5>
+    <version>2.6</version>
+    <time>1313398146</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 78693
+</comment>
+  </revision>
+  <revision rev="15" vrev="28">
+    <srcmd5>b0a9a84f2c90ecc660150287b912aa08</srcmd5>
+    <version>2.6</version>
+    <time>1319182190</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="16" vrev="29">
+    <srcmd5>f54ffdc0c648cf2822c8d1961d2a4fd3</srcmd5>
+    <version>2.6</version>
+    <time>1323192639</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="17" vrev="30">
+    <srcmd5>f56ec29235d57bf38472b1398cbe26d4</srcmd5>
+    <version>2.6</version>
+    <time>1329383184</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>104009</requestid>
+  </revision>
+  <revision rev="18" vrev="32">
+    <srcmd5>f56ec29235d57bf38472b1398cbe26d4</srcmd5>
+    <version>2.6</version>
+    <time>1340183717</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="19" vrev="34">
+    <srcmd5>f56ec29235d57bf38472b1398cbe26d4</srcmd5>
+    <version>2.6</version>
+    <time>1359109473</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="36">
+    <srcmd5>f56ec29235d57bf38472b1398cbe26d4</srcmd5>
+    <version>2.6</version>
+    <time>1379663327</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="38">
+    <srcmd5>f56ec29235d57bf38472b1398cbe26d4</srcmd5>
+    <version>2.6</version>
+    <time>1409301945</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="39">
+    <srcmd5>8589a25d4b493ca6f7cde07b84e831e5</srcmd5>
+    <version>2.6</version>
+    <time>1410513562</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>248841</requestid>
+  </revision>
+  <revision rev="23" vrev="40">
+    <srcmd5>0f9621d7842a7fb936c94b2fd306e838</srcmd5>
+    <version>2.6</version>
+    <time>1410528321</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>248861</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>c821d8dbb4c88634042ab1e7a653e42a</srcmd5>
+    <version>2.9</version>
+    <time>1426064232</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>289782</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>29dd87461c71bd8010ab36639391dea5</srcmd5>
+    <version>2.10</version>
+    <time>1479734557</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>440848</requestid>
+  </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>3337dda55ba98223c5d84d63fd8db5d4</srcmd5>
+    <version>2.10</version>
+    <time>1493880637</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>491266</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>554ac8fc573fe230c690c47a2d1696d1</srcmd5>
+    <version>2.11</version>
+    <time>1532681715</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>623246</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>b3fd471cb162fcd9852ecec07ad35624</srcmd5>
+    <version>3.1</version>
+    <time>1583750478</time>
+    <user>dimstar_suse</user>
+    <comment>- Add keyring
+- Fix source URLs to point to actual releases
+
+- Update to version 3.1
+  - The mxmlLoad* functions now print an error when the XML does
+    not start with &lt; and no parent node is supplied (Issue #256,
+    Issue #259)
+  - Fixed an issue with “make install” trying to install old files
+    (Issue #257)
+  - Fixed some DSO installation issues on Linux.
+- Changes from 3.0
+  - Changed the license to Apache 2.0 with exceptions (Issue #239)
+  - All of the internal node structures are now moved out of the
+    public header (Issue #240)
+  - Fixed a potential buffer overflow when writing floating point
+    data (Issue #233)
+  - Moved mxmldoc to a new codedoc project whose focus is on
+    generating code documentation (Issue #235, Issue #236, Issue
+    #237)
+  - Error messages now include the line number of the error (Issue
+    #230)
+  - The mxmlSetCDATA, mxmlSetElement, mxmlSetOpaque,
+    mxmlSetOpaquef, mxmlSetText, and mxmlSetTextf functions caused
+    a use-after-free bug if the value came from the same node
+    (Issue #241)
+  - The mxmlSetOpaquef and mxmlSetTextf functions did not work
+    (Issue #244)
+  - The _mxml_strdupf function did not work on Windows (Issue #245)
+- Changes from 2.12
+  - Added yet more documentation about using MXML_OPAQUE_CALLBACK</comment>
+    <requestid>782530</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>9879762a067e13e9e43abaa6fa287f5f</srcmd5>
+    <version>3.2</version>
+    <time>1610558357</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>862161</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>b78e671f7065a626ca57437b129a4c65</srcmd5>
+    <version>3.3</version>
+    <time>1638740780</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>935773</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>9f4cd37a4c905e795dd4d7975d70dcdf</srcmd5>
+    <version>3.3.1</version>
+    <time>1659470960</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>992165</requestid>
+  </revision>
+</revisionlist>

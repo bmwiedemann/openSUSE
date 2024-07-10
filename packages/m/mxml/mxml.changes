@@ -1,0 +1,252 @@
+-------------------------------------------------------------------
+Mon Aug  1 21:33:40 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.3.1:
+  * Fixed POSIX thread cleanup bugs 
+
+-------------------------------------------------------------------
+Sun Nov 28 19:44:11 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.3:
+  * Cleaned up usage of `free` throughout the library
+  * Added more error handling to the library
+  * Fixed potential memory leak in `mxmlLoad*` functions
+  * Fixed `mxmlSaveString` with a buffer size of 0
+  * Fixed `MXML_MINOR_VERSION` value in "mxml.h"
+  * Fixed POSIX threading support for MingW
+  * Fixed some minor memory leaks found by Coverity 
+
+-------------------------------------------------------------------
+Wed Jan  6 17:56:37 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.2:
+  - Added support for shared libraries on Haiku (Issue #262)
+  - Fixed handling of unquoted attribute values that start with a Unicode
+    character (Issue #264)
+  - Fixed handling of elements that start with a Unicode character (Issue #267)
+  - Fixed some minor issues identified by the LGTM security scanner.
+
+-------------------------------------------------------------------
+Sat Mar  7 13:14:37 UTC 2020 - Adam Majer <amajer@suse.com>
+
+- Add keyring
+- Fix source URLs to point to actual releases
+
+-------------------------------------------------------------------
+Thu Mar  5 23:39:46 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 3.1
+  - The mxmlLoad* functions now print an error when the XML does
+    not start with < and no parent node is supplied (Issue #256,
+    Issue #259)
+  - Fixed an issue with “make install” trying to install old files
+    (Issue #257)
+  - Fixed some DSO installation issues on Linux.
+- Changes from 3.0
+  - Changed the license to Apache 2.0 with exceptions (Issue #239)
+  - All of the internal node structures are now moved out of the
+    public header (Issue #240)
+  - Fixed a potential buffer overflow when writing floating point
+    data (Issue #233)
+  - Moved mxmldoc to a new codedoc project whose focus is on
+    generating code documentation (Issue #235, Issue #236, Issue
+    #237)
+  - Error messages now include the line number of the error (Issue
+    #230)
+  - The mxmlSetCDATA, mxmlSetElement, mxmlSetOpaque,
+    mxmlSetOpaquef, mxmlSetText, and mxmlSetTextf functions caused
+    a use-after-free bug if the value came from the same node
+    (Issue #241)
+  - The mxmlSetOpaquef and mxmlSetTextf functions did not work
+    (Issue #244)
+  - The _mxml_strdupf function did not work on Windows (Issue #245)
+- Changes from 2.12
+  - Added yet more documentation about using MXML_OPAQUE_CALLBACK
+    when you want to get full strings for inline text instead of
+    separated words (Issue #190)
+  - No longer build documentation sets on macOS since Xcode no
+    longer supports them (Issue #198)
+  - Updated the va_copy macro for use with BCC (Issue #211)
+  - The mxmlNewCDATA and mxmlSetCDATA functions incorrectly added
+    the XML trailer “]]” to the string (Issue #216)
+  - Cross-compiling failed on install (Issue #218)
+  - Fixed a crash bug in the mxmlWrite functions (Issue #228)
+  - The mxmlWrite functions no longer write the siblings of the
+    passed node (Issue #228)
+  - Updated the markdown and ZIP container libraries used for
+    mxmldoc.
+- remove mxmldoc binaries and man pages
+- enable threading support
+
+-------------------------------------------------------------------
+Sun Jul 15 13:11:50 UTC 2018 - antoine.belvire@opensuse.org
+
+- Update to version 2.11:
+  * CDATA nodes now omit the trailing "]]" for convenience
+    (gh#michaelrsweet/mxml#170).
+  * Fixed a memory leak in mxmlDelete (gh#michaelrsweet/mxml#183)
+  * mxmlElementSetAttrf did not work with some versions of Visual
+    Studio (gh#michaelrsweet/mxml#184)
+  * Added mxmlElementGetAttrByIndex and mxmlELementGetAttrCount
+    functions (gh#michaelrsweet/mxml#185)
+  * The configure script now properly supports cross-compilation
+    (gh#michaelrsweet/mxml#188)
+  * The mxmldoc utility now supports generation of EPUB files
+    (gh#michaelrsweet/mxml#189)
+  * The mxmldoc utility now supports the SOURCE_DATE_EPOCH
+    environment variable for reproducible builds
+    (gh#michaelrsweet/mxml#193)
+  * The mxmldoc utility now supports Markdown
+    (gh#michaelrsweet/mxml#194)
+  * Fixed writing of custom data values (gh#michaelrsweet/mxml#201)
+  * Added mxmlNewOpaquef and mxmlSetOpaquef functions to add and
+    set formatted opaque string values.
+  * The mxmldoc utility scanned and loaded descriptive text
+    differently, causing the detailed descriptions ("discussion")
+    to be lost in generated documentation.
+  * The mxmldoc utility now supports @exclude format@ comments to
+    exclude documentation based on the output format. The format
+    string can be all to exclude documentation for all formats or a
+    comma-delimited list such as @exclude man,html@.
+- Drop upstreamed patches:
+  * reproducible.path
+  * mxml-2.3-nobinstrip.patch
+- Clean spec file.
+
+-------------------------------------------------------------------
+Tue Apr 25 04:45:36 UTC 2017 - bwiedemann@suse.com
+
+- Add reproducible.patch to make build reproducible
+
+-------------------------------------------------------------------
+Fri Nov 11 14:50:28 UTC 2016 - mrueckert@suse.de
+
+- update to version 2.10
+  - The version number in mxml.h was wrong (Bug #532)
+  - The mxml.spec file was out of date (Bug #521)
+  - Mini-XML no longer allows malformed element names (Bug #509)
+  - mxmlLoad* and mxmlSAXLoad* did not properly create text nodes
+    when MXML_TEXT_CALLBACK was specified (Bug #531)
+  - mxmlDelete used a recursive algorithm which could require large
+    amounts of stack space depending on the file (Bug #549,
+    CVE-2016-4570) (bnc #979205)
+  - mxmlWrite* used a recursive algorithm which could require large
+    amounts of stack space depending on the file (Bug #549,
+    CVE-2016-4571) (bnc #979206)
+
+-------------------------------------------------------------------
+Thu Mar  5 15:01:03 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 2.9
+  * mxmlLoad* did not correctly load value nodes with MXML_NO_CALLBACK
+    or MXML_TEXT_CALLBACK (Bug #502)
+- Update homepage Url
+- Use download Url as source
+
+-------------------------------------------------------------------
+Fri Sep 12 08:29:09 UTC 2014 - jengelh@inai.de
+
+- Improve on RPM group classification
+
+-------------------------------------------------------------------
+Thu Sep 11 19:02:58 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Add baselibs.conf
+
+-------------------------------------------------------------------
+Sun Jan 29 19:52:20 UTC 2012 - jengelh@medozas.de
+
+- Remove redundant tags/sections per specfile guideline suggestions
+- Parallel building using %_smp_mflags
+
+-------------------------------------------------------------------
+Fri Aug 12 19:05:21 UTC 2011 - andrea.turrini@gmail.com
+
+- fixed typos in mxml.spec
+
+-------------------------------------------------------------------
+Mon Jun  6 17:08:54 UTC 2011 - mrueckert@suse.de
+
+- update to version 2.6
+  - Documentation fixes (STR #91, STR #92)
+  - The mxmldoc program did not handle typedef comments properly
+    (STR #72)
+  - Added support for "long long" printf formats.
+  - The XML parser now ignores BOMs in UTF-8 XML files (STR #89)
+  - The mxmldoc program now supports generating Xcode documentation
+    sets.
+  - mxmlSave*() did not output UTF-8 correctly on some platforms.
+  - mxmlNewXML() now adds encoding="utf-8" in the ?xml directive to
+    avoid problems with non-conformant XML parsers that assume
+    something other than UTF-8 as the default encoding.
+  - Wrapping was not disabled when mxmlSetWrapMargin(0) was called,
+    and "<?xml ... ?>" was always followed by a newline (STR #76)
+  - The mxml.pc.in file was broken (STR #79)
+  - The mxmldoc program now handles "typedef enum name {} name"
+    correctly (STR #72)
+- drop requires on main package from the library package
+
+-------------------------------------------------------------------
+Thu Sep 11 21:56:59 CEST 2008 - mrueckert@suse.de
+
+- use shared library package policy
+
+-------------------------------------------------------------------
+Mon May 19 17:27:50 CEST 2008 - mrueckert@suse.de
+
+- update to version 2.5
+  The new release fixes some XML parsing problems and adds many
+  new mxmldoc features.
+- additional changes from 2.4
+  fixes some build and XML parsing bugs, adds support for the apos
+  character entity, and adds per-thread global settings.
+
+-------------------------------------------------------------------
+Fri Jul 13 01:27:12 CEST 2007 - mrueckert@suse.de
+
+- update to version 2.3
+  - adds several new features and fixes all known bugs.
+  - adds a SAX API, more convenience functions, a user data pointer
+    to the mxml_node_t structure, and improved HTML and new man
+    page output from mxmldoc. The new release now also offers
+    relaxed LGPL licensing that allows static linking.
+- reordered the configure args, so --enable-shared works again.
+- updated nostrip patch. old name mxml-2.2.2.diff
+  new name mxml-2.3-nobinstrip.patch
+- do not include the static library
+- move the html docs to the devel package
+
+-------------------------------------------------------------------
+Wed Apr 25 16:32:58 CEST 2007 - mrueckert@suse.de
+
+- removed valgrind and g++ from the buildrequires.
+- splitted out a devel package.
+- enabled building of the shared library. (#255916)
+
+-------------------------------------------------------------------
+Wed May 17 14:48:22 CEST 2006 - schwab@suse.de
+
+- Don't strip binaries.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:38:29 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Jan 16 22:55:46 CET 2006 - mrueckert@suse.de
+
+- update to version 2.2.2
+
+-------------------------------------------------------------------
+Tue Feb 15 18:10:33 CET 2005 - kssingvo@suse.de
+
+- updated to version 2.1
+- rewrote many parts of the spec file to get it more SUSE like
+
+-------------------------------------------------------------------
+Wed Aug 25 23:51:15 CEST 2004 - mana@suse.de
+
+- initial package for mxml-2.0
+
+
