@@ -1,0 +1,258 @@
+-------------------------------------------------------------------
+Wed Apr 17 18:40:52 UTC 2024 - Avindra Goolcharan <avindra@opensuse.org>
+
+- remove unneeded %check section
+
+-------------------------------------------------------------------
+Fri Apr 12 03:55:03 UTC 2024 - ming li <mli@suse.com>
+
+- update to 2.15: 
+  * unlock indicator: display current keyboard layout when
+    user types password (with --show-keyboard-layout flag).
+
+-------------------------------------------------------------------
+Fri Jun 23 19:51:33 UTC 2023 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 2.14.1:
+  * unlock indicator: display only caps lock and num lock, not all
+    modifiers like shift (which can leak information about your
+    password to bystanders)
+- includes 2.14:
+  * Change default background color to #a3a3a3 See
+    https://github.com/i3/i3lock/pull/300 for extensive discussion
+    and rationale for this change.
+  * Recommend using xss-lock to start i3lock in the README
+    and i3lock.1 man page. xss-lock is the best way to ensure
+    your screen truly is locked before your computer suspends
+  * Display modifier key warning before unlocking, too,
+    not just on failed attempts like before
+  * Switch build system from autotools to meson
+
+-------------------------------------------------------------------
+Tue Aug  9 09:32:04 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
+
+- Use %_pam_vendordir
+
+-------------------------------------------------------------------
+Sun Dec 27 22:03:03 UTC 2020 - Matthias Eliasson <elimat@opensuse.org>
+
+- update to 2.13
+  * Throw error when trying to start on Wayland
+  * Use explicit_bzero() where available, not just on OpenBSD
+  * avoid pixmap allocations in the redraw path
+  * make --debug output go to stderr
+  * unlock_indicator.c: fix build failure against gcc-10
+  * fix: call pam_end in cleanup in main, not in event loop
+  * set _NET_WM_BYPASS_COMPOSITOR hint to avoid flickering
+- drop patch: 0001-unlock_indicator.c-fix-build-failure-against-gcc-10.patch fixed upstream
+
+-------------------------------------------------------------------
+Mon Sep  7 13:25:22 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Install pam configuration to /usr/etc/pam.d on suse_version >=
+  1500 (https://en.opensuse.org/openSUSE:Packaging_UsrEtc#pam.2Fpam-config).
+- Add pre/posttrans scripts to ensure user modified
+  /etc/pam.d/i3lock survives our move to /usr/etc (and user
+  modification in /etc/pam.d wins over /usr/etc/pam.d)
+
+-------------------------------------------------------------------
+Sat Jun  6 11:57:02 UTC 2020 - Matthias Eliasson <elimat@opensuse.org>
+
+- update to 2.12
+  * remove stray \n from error messages
+  * capitalize unlock indicator contents
+  * set WM_CLASS property
+  * reference modifier as “Super”, not “Win”
+  * add --raw option to read image as raw bytes
+- run spec-cleaner
+  * Remove Gropus
+- add patch 0001-unlock_indicator.c-fix-build-failure-against-gcc-10.patch
+  to fix builds with gcc10
+
+-------------------------------------------------------------------
+Mon Feb  3 13:56:55 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop libudev1 BuildRequires: buildrequiring a library (and not a
+  relevant devel package) can't ever be correct.
+
+-------------------------------------------------------------------
+Tue Oct 23 21:37:22 UTC 2018 - Avindra Goolcharan <aavindraa@gmail.com>
+
+- update to 2.11.1
+  * fix dist tarball by including I3LOCK_VERSION
+- includes 2.11
+  * Display an error when backspace is pressed without any input
+  * Print an error when a non-PNG file is opened (i3lock only supports
+    PNG files)
+  * Don’t unnecessarily check the xcb_connect return value, it is
+    known never to be NULL
+  * Fix memory leak when grabbing fails
+  * Respect Xft.dpi for determining the unlock indicator’s scale factor
+  * Discard pending password verification attempts when a new
+    password is entered
+  * Switch to autotools
+- run spec-cleaner
+
+-------------------------------------------------------------------
+Wed Feb  7 03:34:56 UTC 2018 - avindra@opensuse.org
+
+- switch to https urls
+- cleanup spec file
+
+-------------------------------------------------------------------
+Sun Nov 26 15:52:11 UTC 2017 - aavindraa@gmail.com
+
+- update to 2.10
+ * Only use -lpam when not on OpenBSD
+ * locale: treat empty string same as unset
+ * Fix overwrite of getopt optind
+ * Immediately hide the unlock indicator after ESC / C-u
+ * Measure wall-clock time instead of CPU time for “locking” indicator.
+ * SetInputFocus to the i3lock window to force-close context menus
+ * Use RandR for learning about attached monitors
+
+-------------------------------------------------------------------
+Wed Nov  8 15:04:10 CET 2017 - kukuk@suse.de
+
+- Remove obsolete pam-modules requires
+
+-------------------------------------------------------------------
+Tue Sep  5 03:10:56 UTC 2017 - aavindraa@gmail.com
+
+- update to 2.9.1
+- Fix version number mechanism
+- Revert the fix for composited notifications, as it causes more issues than
+ 	it solves:
+
+-------------------------------------------------------------------
+Sun Jun 11 07:09:22 UTC 2017 - mimi.vx@gmail.com
+
+- drop i3lock-2.5-use-unix2_chkpwd.diff
+- use default pam config - drop i3lock.pam
+
+-------------------------------------------------------------------
+Sat Jun 10 13:34:49 UTC 2017 - mimi.vx@gmail.com
+
+- update to 2.9
+- refresh i3lock-2.5-use-unix2_chkpwd.diff
+* Removed obsolete inactivity timeout
+* Set font face
+* Automatically unlock (without having to press <Enter>) one attempt which was
+   entered while authenticating
+* Stop leaking the image_path dup
+* Displaying locking message when grabbing the pointer/keyboard
+* Display error message when locking failed
+* Add Enter on C-m
+* Change input slices to be exactly pi/3 in size instead of slightly more
+* Fix covering of composited notifications using the XComposite extension
+* Remove last traces of DPMS
+
+-------------------------------------------------------------------
+Sun Dec 18 19:05:55 UTC 2016 - mimi.vx@gmail.com
+
+- update to 2.8
+- refresh i3lock-2.5-use-unix2_chkpwd.diff
+* Remove DPMS support in favor of a wrapper script and xset
+* Indicate that the --inactivity-timeout option takes an argument
+* fix pam_securetty: set PAM_TTY to getenv("DISPLAY")
+* Eat XKB_KEY_Delete and XKB_KEY_KP_Delete
+* Show unlock indicator if password was entered during PAM verification
+* Allow CTRL+J as enter and CTRL+H as backspace
+* Flush xcb connection after opening fullscreen window
+* Add support for `xss-lock --transfer-sleep-lock'
+
+-------------------------------------------------------------------
+Tue Apr 26 12:25:06 UTC 2016 - mimi.vx@gmail.com
+
+- update to 2.7
+- refresh i3lock-2.5-use-unix2_chkpwd.diff 
+* Die when the X11 connection breaks during runtime
+* Implement logging the number of failed attempts
+* Ignore password validation is pam is in wrong state
+* Get current user with getpwuid() instead of using $ENV{USER}
+* Add support for Compose and dead-keys with libxkbcommon.
+   Requires libxkbcommon ≥ 0.5.0
+* Format the source using clang-format.
+* Refresh pam credentials on successful authentication (for Kerberos and the
+   like)
+* List pressed modifiers on failed authentication
+* Only redraw the screen if the unlock indicator is actually used
+* Make pkg-config configurable for cross-compilation
+
+-------------------------------------------------------------------
+Sat May  9 18:24:38 UTC 2015 - mpluskal@suse.com
+
+- Add missing dependency on xdpyinfo (boo#930330)
+
+-------------------------------------------------------------------
+Mon Jan 19 03:34:30 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 2.6
+  * NEW DEPENDENCY: use libxkbcommon-x11 instead of libX11
+    This helps us get rid of all code that directly uses libX11
+  * Use cairo_status_to_string for descriptive errors.
+  * Add `-e` option to not validate empty password.
+  * Bugfix: update the initial keyboard modifier state (Thanks lee, Ran)
+  * Re-raise i3lock when obscured in a separate process
+  * Turn on the screen on successful authentication
+  * Delay to turn off the screen after wrong passwd
+  * Discard half-entered passwd after some inactivity
+  * Ignore empty passwd after repeated Enter keypress
+  * Scale the unlock indicator (for retina displays)
+- Replace xorg-x11-devel with pkgconfig(xkbcommon-x11); follow
+  upstream changes
+- Add pkgconfig(cairo) and pkgconfig(xcb-atom) requirements; new
+  upstream dependencies
+- Remove redundant %clean section
+
+-------------------------------------------------------------------
+Thu Mar 20 15:36:04 UTC 2014 - seife+obs@b1-systems.com
+
+- add i3lock-xlock-compat package which provides /usr/bin/xlock
+  for drop-in replacement in e.g. xflock4
+
+-------------------------------------------------------------------
+Mon Feb 17 08:01:39 UTC 2014 - seife+obs@b1-systems.com
+
+- readd the pam config file, which is still needed by unix2_chkpwd
+  (I should read the man page more thoroughly next time)
+
+-------------------------------------------------------------------
+Sat Feb 15 13:51:41 UTC 2014 - seife+obs@b1-systems.com
+
+- add patch to use unix2_chkpwd instead of pam directly (which
+  would need to make i3lock sgid shadow to work for non-root)
+  * i3lock-2.5-use-unix2_chkpwd.diff
+
+-------------------------------------------------------------------
+Sat Feb 15 10:45:46 UTC 2014 - seife+obs@b1-systems.com
+
+- update to version 2.5:
+  * NEW DEPENDENCY: Use libxkbcommon for input handling
+    This makes input handling much better for many edge cases.
+  * Bugfix: fix argument parsing on ARM (s/char/int/)
+  * Bugfix: free(reply) to avoid memory leak
+  * Bugfix: Use ev_loop_fork after fork, fixes forking on kqueue based OSes
+  * Bugfix: Fix centering the indicator in the no-xinerama case
+  * promote the "could not load image" message from debug to normal
+  * s/pam_message/pam_response/ (Thanks Tucos)
+  * remove support for NOLIBCAIRO, cairo-xcb is widespread by now
+  * Allow XKB_KEY_XF86ScreenSaver as synonym for enter
+    This keysym is generated on convertible tablets by pressing a hardware
+    lock/unlock button.
+  * Allow passwordless PAM conversations (e.g. fingerprint)
+  * Add ctrl+u password reset
+  * Set window name to i3lock
+
+-------------------------------------------------------------------
+Thu Mar  7 15:26:31 UTC 2013 - toganm@opensuse.org
+
+- Add xcb-keysyms  xcb-image to BuildRequires
+- cleanup spec
+ 
+
+-------------------------------------------------------------------
+Wed Nov 14 10:16:02 CET 2012 - pascal.bleser@opensuse.org
+
+- initial version (2.4.1)
+

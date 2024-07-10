@@ -1,0 +1,215 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3bd4462f0cac45c9995b1e9b9d60404c</srcmd5>
+    <version>2.4.1</version>
+    <time>1367236678</time>
+    <user>coolo</user>
+    <comment>Needed for the i3 windowmanager which has been in Factory for a while.</comment>
+    <requestid>173599</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>3bd4462f0cac45c9995b1e9b9d60404c</srcmd5>
+    <version>2.4.1</version>
+    <time>1379662632</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>21c6e18d3920fffb1562b3a4868e8991</srcmd5>
+    <version>2.5</version>
+    <time>1392751477</time>
+    <user>coolo</user>
+    <comment>fix authentication by re-adding the i3lock pam config. Sorry, this slipped through my local testing :-( (forwarded request 222530 from seife)</comment>
+    <requestid>222551</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>8b38042cf85c788636510aab1b601d3c</srcmd5>
+    <version>2.5</version>
+    <time>1396291394</time>
+    <user>coolo</user>
+    <comment>add i3lock-xlock-compat package which provides /usr/bin/xlock for drop-in replacement in e.g. xflock4 (forwarded request 228218 from seife)</comment>
+    <requestid>228226</requestid>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>8b38042cf85c788636510aab1b601d3c</srcmd5>
+    <version>2.5</version>
+    <time>1409301189</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>98514363d45e395104e818bf471c41fb</srcmd5>
+    <version>2.6</version>
+    <time>1421753776</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>281954</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>9f2454902745658367f3fa4ca2e80ea9</srcmd5>
+    <version>2.6</version>
+    <time>1431668603</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>306461</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>1ea10bf7646f6c232f59e956186956b5</srcmd5>
+    <version>2.7</version>
+    <time>1462051871</time>
+    <user>dimstar_suse</user>
+    <comment>fix requires (forwarded request 391787 from mimi_vx)</comment>
+    <requestid>391788</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>a42b976ecf5923885ddd27cd3b04849b</srcmd5>
+    <version>2.8</version>
+    <time>1484041444</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>447476</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>caf4b59d2392105581bb00a368962b50</srcmd5>
+    <version>2.9</version>
+    <time>1498638984</time>
+    <user>dimstar_suse</user>
+    <comment>- drop i3lock-2.5-use-unix2_chkpwd.diff
+- use default pam config - drop i3lock.pam
+
+- update to 2.9
+- refresh i3lock-2.5-use-unix2_chkpwd.diff
+* Removed obsolete inactivity timeout
+* Set font face
+* Automatically unlock (without having to press &lt;Enter&gt;) one attempt which was
+   entered while authenticating
+* Stop leaking the image_path dup
+* Displaying locking message when grabbing the pointer/keyboard
+* Display error message when locking failed
+* Add Enter on C-m
+* Change input slices to be exactly pi/3 in size instead of slightly more
+* Fix covering of composited notifications using the XComposite extension
+* Remove last traces of DPMS</comment>
+    <requestid>505642</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>304275dcbfd41541a182c67de535ed54</srcmd5>
+    <version>2.9.1</version>
+    <time>1505238800</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.9.1
+- Fix version number mechanism
+- Revert the fix for composited notifications, as it causes more issues than
+ 	it solves:
+</comment>
+    <requestid>521157</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>e4089258ad52859e1ceeb806813f0c2b</srcmd5>
+    <version>2.9.1</version>
+    <time>1510232872</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>540023</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>b0a7a22b3942ed6f4b9e00afce0ac190</srcmd5>
+    <version>2.10</version>
+    <time>1511817507</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>545890</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>e01e5b6557b0543c58d3c14050c799b1</srcmd5>
+    <version>2.10</version>
+    <time>1518601973</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>576423</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>26e27d7536dbda54139a20b7bbc4112b</srcmd5>
+    <version>2.11.1</version>
+    <time>1540451465</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.11.1
+
+tested locally, new features working as expected</comment>
+    <requestid>644105</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>c5b73acf1b096bd84aec4419cbc81dc8</srcmd5>
+    <version>2.11.1</version>
+    <time>1580842559</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>769891</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>3999aedae018adec01bbdcbc7fd34934</srcmd5>
+    <version>2.12</version>
+    <time>1591558635</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>812068</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>3702a8ecad5913d3c46f8ba7493e895d</srcmd5>
+    <version>2.12</version>
+    <time>1600079387</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>834025</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>12af30e8990628a122d29cbf9325d6df</srcmd5>
+    <version>2.13</version>
+    <time>1609111829</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>858900</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>431c6f6e47e9e2c956289ac6089549ef</srcmd5>
+    <version>2.13</version>
+    <time>1660051756</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>994115</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>7600905e1d0d6bd6a45c215317d8dbde</srcmd5>
+    <version>2.14.1</version>
+    <time>1687630422</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.14.1:
+  * unlock indicator: display only caps lock and num lock, not all
+    modifiers like shift (which can leak information about your
+    password to bystanders)
+- includes 2.14:
+  * Change default background color to #a3a3a3 See
+    https://github.com/i3/i3lock/pull/300 for extensive discussion
+    and rationale for this change.
+  * Recommend using xss-lock to start i3lock in the README
+    and i3lock.1 man page. xss-lock is the best way to ensure
+    your screen truly is locked before your computer suspends
+  * Display modifier key warning before unlocking, too,
+    not just on failed attempts like before
+  * Switch build system from autotools to meson
+</comment>
+    <requestid>1094956</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>67ba2ef97fe12a92c2c16697c48a4926</srcmd5>
+    <version>2.15</version>
+    <time>1713471137</time>
+    <user>anag+factory</user>
+    <comment>- remove unneeded %check section
+- update to 2.15: 
+  * unlock indicator: display current keyboard layout when
+    user types password (with --show-keyboard-layout flag).
+</comment>
+    <requestid>1168647</requestid>
+  </revision>
+</revisionlist>
