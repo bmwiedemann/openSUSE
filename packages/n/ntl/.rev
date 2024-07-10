@@ -1,0 +1,249 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2d7534b0932860a1c48d8fd1e4435bcb</srcmd5>
+    <version>5.5.2</version>
+    <time>1355475824</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>144807</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>2d7534b0932860a1c48d8fd1e4435bcb</srcmd5>
+    <version>5.5.2</version>
+    <time>1359109517</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>2d7534b0932860a1c48d8fd1e4435bcb</srcmd5>
+    <version>5.5.2</version>
+    <time>1379663387</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>4e7dccc4e8bc00692d4eea72457e7ffb</srcmd5>
+    <version>6.1.0</version>
+    <time>1398499756</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>231437</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>4e7dccc4e8bc00692d4eea72457e7ffb</srcmd5>
+    <version>6.1.0</version>
+    <time>1409302000</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>5bfb47da3220c4a94572ce9a83cbe603</srcmd5>
+    <version>8.1.2</version>
+    <time>1423596242</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>284998</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>f25ea38970c76d337f248ebf366e84e7</srcmd5>
+    <version>8.1.2</version>
+    <time>1424430096</time>
+    <user>dimstar_suse</user>
+    <comment>- Update ntl-automake.diff: add a missing backslash causing not all
+  headers to be installed. Support mingw a bit better, too.
+  Support non-C++11 systems.</comment>
+    <requestid>286753</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>8144671798dbc7be1094648b15c7599e</srcmd5>
+    <version>9.0.0</version>
+    <time>1427736777</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 9.0.0</comment>
+    <requestid>293443</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>bf23891d2334ddf75c689f0c69153bfc</srcmd5>
+    <version>9.2.0</version>
+    <time>1435870177</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 9.2.0</comment>
+    <requestid>314514</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>f2163bb987b9fc51e8b4b3f0d47f9c41</srcmd5>
+    <version>9.6.2</version>
+    <time>1448553713</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>345561</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>16a39eaf38ea417865bc3783996a0534</srcmd5>
+    <version>9.6.4</version>
+    <time>1459002193</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 9.6.4</comment>
+    <requestid>370851</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>8d7c01e0216952cd09fd6441dbbf8716</srcmd5>
+    <version>9.9.1</version>
+    <time>1466413654</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 9.9.1</comment>
+    <requestid>403572</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>6344e93e9a06d6e90bf89668f003392a</srcmd5>
+    <version>9.10.0</version>
+    <time>1470413780</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 9.10.0</comment>
+    <requestid>416214</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>c307f7fae25a5c5ef859fb39322959db</srcmd5>
+    <version>9.11.0</version>
+    <time>1475242408</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>430730</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>b0c99477adc4d1334962232c7e780f93</srcmd5>
+    <version>10.1.0</version>
+    <time>1478289624</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>437573</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>6208b8e0b803b8c008afd221587ad817</srcmd5>
+    <version>10.3.0</version>
+    <time>1481153507</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>444146</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>90a4cd4eaba5baccbe2c606d28b28444</srcmd5>
+    <version>10.3.0</version>
+    <time>1493580263</time>
+    <user>dimstar_suse</user>
+    <comment>- Update description</comment>
+    <requestid>492165</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>36086bb46d0202e79b85a10d4af245e7</srcmd5>
+    <version>10.5.0</version>
+    <time>1505334768</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 10.5.0</comment>
+    <requestid>522837</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>ac34917c0ed1a0c5c66f9428d3243be7</srcmd5>
+    <version>10.5.0</version>
+    <time>1506956040</time>
+    <user>dimstar_suse</user>
+    <comment>fix build failure of openSUSE:Factory/flint</comment>
+    <requestid>530075</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>9a381add4ca63ca53d64894c841cd71c</srcmd5>
+    <version>11.0.0</version>
+    <time>1530304421</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 11.0.0</comment>
+    <requestid>618699</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>30895da78aaaee0809225a0b6a940c6e</srcmd5>
+    <version>11.2.1</version>
+    <time>1532774609</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 11.2.1</comment>
+    <requestid>625685</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>bcec986a1c81a25227e3b25c8f9d131f</srcmd5>
+    <version>11.3.0</version>
+    <time>1535705252</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 11.3.0</comment>
+    <requestid>632206</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>98ce14bda74aa55b24afde4320b1136c</srcmd5>
+    <version>11.3.1</version>
+    <time>1540819251</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 11.3.1</comment>
+    <requestid>644602</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>2ca74c3730e64ce709ab5fd7e5281778</srcmd5>
+    <version>11.3.2</version>
+    <time>1552902076</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 11.3.2</comment>
+    <requestid>685469</requestid>
+  </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>8d0c1e83bbb1d88828dac70c8835e5d6</srcmd5>
+    <version>11.3.2</version>
+    <time>1566893993</time>
+    <user>dimstar_suse</user>
+    <comment>- Specfile modernization.</comment>
+    <requestid>725863</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>41ebf5b048e002a50c0e69722c966d2c</srcmd5>
+    <version>11.4.0</version>
+    <time>1569852054</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 11.4.0</comment>
+    <requestid>733944</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>d0eb87ca51b8ed662c81ea8245fe68ca</srcmd5>
+    <version>11.4.1</version>
+    <time>1576927961</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 11.4.1</comment>
+    <requestid>758363</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>bce3001c41916de8a5c8501150dfe3ed</srcmd5>
+    <version>11.4.3</version>
+    <time>1583447147</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 11.4.3</comment>
+    <requestid>781904</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>05ff6c3c80cc5945858d67c96fb048ea</srcmd5>
+    <version>11.4.4</version>
+    <time>1620400536</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 11.4.4</comment>
+    <requestid>891332</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>9e5082528f815584546b648edc53c262</srcmd5>
+    <version>11.5.0</version>
+    <time>1624300539</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 11.5.0</comment>
+    <requestid>901046</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>b3c66e83d7e6fc7000fa7a9dd4cad5e3</srcmd5>
+    <version>11.5.1</version>
+    <time>1624551773</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 11.5.1</comment>
+    <requestid>901676</requestid>
+  </revision>
+</revisionlist>

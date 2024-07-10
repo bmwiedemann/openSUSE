@@ -1,0 +1,22 @@
+From: Jan Engelhardt <jengelh@inai.de>
+Date: 2018-07-26 14:53:39.797440030 +0200
+
+Eh, do not waste time building static libs which we are not going to
+keep.
+---
+ src/DoConfig |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: ntl-11.2.1/src/DoConfig
+===================================================================
+--- ntl-11.2.1.orig/src/DoConfig
++++ ntl-11.2.1/src/DoConfig
+@@ -200,7 +200,7 @@ if ($MakeFlag{'SHARED'} eq 'off') {
+ 
+       system("rm -rf libtool-build") and die "Error: libtool build failed\n";
+       system("cp -R libtool-origin libtool-build") and die "Error: libtool build failed\n";
+-      system("cd libtool-build && ./configure") and die "Error: libtool build failed\n";
++      system("cd libtool-build && ./configure --disable-static") and die "Error: libtool build failed\n";
+ 
+       if (-x "libtool-build/libtool") {
+ 	 print "\n*** libtool OK\n\n";

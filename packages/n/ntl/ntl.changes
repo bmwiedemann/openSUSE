@@ -1,0 +1,286 @@
+-------------------------------------------------------------------
+Wed Jun 23 22:26:11 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 11.5.1
+  * Fixed bug that prevented compilation on IBM z
+
+-------------------------------------------------------------------
+Sun Jun 20 21:59:44 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 11.5.0
+  * Added experimental support for AES-CTR mode as an alternative
+    to ChaCha20 for Pseudo-Random Number Generation.
+
+-------------------------------------------------------------------
+Fri May  7 14:31:32 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 11.4.4
+  * Improved Karatsuba code for ZZX and GF2EX (as well as the
+    non-GMP implementation of ZZ).
+
+-------------------------------------------------------------------
+Thu Mar  5 15:59:38 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 11.4.3
+  * Added KarMul and KarSqr for ZZ_pX (declared in ZZX.h and
+    implemented in ZZX.cpp). These are not a part of the
+    documented interface.
+
+-------------------------------------------------------------------
+Mon Nov  4 14:28:12 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 11.4.1
+  * Fixed bug in new NTL_EXEC_DIVIDE that could manifest itself
+    when NTL_THREAD_BOOST=off. Existing code that does not
+    explicitly use this feature should not be affected by this
+    bug.
+  * Fixed some namespace visibility issues in the TLS hack macros.
+
+-------------------------------------------------------------------
+Sun Sep 29 14:43:16 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 11.4.0
+  * The Schoenhage–Strassen FFT for both ZZ_pX and ZZX is now fully
+    "thread boosted".
+
+-------------------------------------------------------------------
+Sat Aug 24 18:55:50 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Specfile modernization.
+
+-------------------------------------------------------------------
+Fri Mar 15 21:32:45 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 11.3.2
+  * Fixed a performance issue in the PowerMod function for the
+    ZZ class.
+
+-------------------------------------------------------------------
+Thu Oct 25 09:35:51 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 11.3.1
+  * Fixed a bug that effected image, kernel, and gauss routines
+    for Mat<zz_p>. These routines did not behave correctly when
+    the input matrix was zero. Also improved the mat_lzz_pTest
+    program.
+
+-------------------------------------------------------------------
+Wed Aug 29 20:44:41 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 11.3.0
+  * Performance tuned GF2EX arithmetic. Tuned crossovers for
+    various algorithms.
+  * Implemented asymptotocially fast GCD and XGCD for GF2EX,
+    zz_pEX, and ZZ_pEX.
+
+-------------------------------------------------------------------
+Thu Jul 26 12:24:57 UTC 2018 - jengelh@inai.de
+
+- Update to new upstream release 11.2.1
+  * The low-level "small-prime" FFT (a.k.a., NTT) was rewritten. It
+    implements a "truncated" FFT, which can speed up polynomial
+    multiplication by a factor of two, and which mainly eliminates
+    "jumps" in the running time at powers of two. The new FFT
+    routines are in fact a bit faster even at powers of two.
+  * Improved performance of ZZ mul and sqr on small inputs:
+    mul speedup: 1 limb: 2.5x; 2 limbs: 1.4x; 3 limbs: 1.3x.
+  * More efficient implementation of low-level butterfly
+    operations.
+- Remove ntl-automake.diff, add no-static.diff.
+
+-------------------------------------------------------------------
+Wed Jun  6 13:24:18 UTC 2018 - jengelh@inai.de
+
+- Update to new upstream release 11.0.0
+  * Multithreading is enabled. To get these speedups, you have to
+    call SetNumThreads.
+  * Thread boosted all cubic-time operations in mat_ZZ_pE,
+    mat_lzz_pE, and mat_GF2E. This includes: matrix
+    multiplication, inversion, determinant, kernel, image, and
+    solving linear systems.
+  * Thread boosted RandomPrime, GenPrime, and GenGermainPrime.
+  * New functions: GetWallTime, VectorRandomWord.
+
+-------------------------------------------------------------------
+Sat Sep 30 08:47:27 UTC 2017 - jengelh@inai.de
+
+- ntl-automake.diff: add missing header file for flint
+
+-------------------------------------------------------------------
+Sat Sep  9 21:09:02 UTC 2017 - jengelh@inai.de
+
+- Update to new upstream release 10.5.0
+  * Faster linear algebra over ZZ_p. Rewrote mat_ZZ_p routines
+    inv, solve, determinant, gauss, and kernel to be
+    thread boosted.
+  * C++11 support / "move" semantics. Iterators and support for
+    "range based for loops".
+
+-------------------------------------------------------------------
+Sat Apr 29 23:44:19 UTC 2017 - jengelh@inai.de
+
+- Update description
+
+-------------------------------------------------------------------
+Tue Nov 29 11:16:07 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 10.3.0
+  * Marginally improved performance and crossovers for mat_zz_p
+    multipliplication.
+  * Retired the zz_pXAltArgument class, which was used for modular
+    composition in zz_pX. While this has been in in the documented
+    interface for a few months, it was flagged as being provisional
+    and subject to change. In place of zz_pXAltArgument, the class
+    zz_pXNewArgument was added.
+  * Implementation of a multi-modular strategy for matrix
+    multiplication over ZZ_p.
+
+-------------------------------------------------------------------
+Thu Oct 20 18:28:08 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 10.1.0
+* the classical LIP module is finally thread safe
+
+-------------------------------------------------------------------
+Wed Sep 21 09:18:05 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 9.11.0
+* Improved the effectiveness of the new, faster ZZ to
+  zz_p conversion
+* Added new routines VectorConv for faster bulk conversion from ZZ
+  and long to zz_p
+* Added new routines VectorRandomBnd (see ZZ.txt) and VectorRandom
+  for faster bulk random number generation.
+
+-------------------------------------------------------------------
+Sun Jul 31 17:09:21 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 9.10.0
+* Conversions from ZZ to zz_p are now faster, thanks to
+  preconditioning. Among other things, the CRT-based ZZX
+  multiplication code is also a bit faster as a result.
+* The BasicThreadPool class now guarantees that exec_range
+  assigns the current thread first=0, and exec_index assigns the
+  current thread index=0. This makes it easy for a thread to tell
+  whether of not it is the current thread, which can be
+  convienient for some applications.
+* Fine tuned the interface for SmartPtr and UniquePtr a bit,
+  including the ability to attach an explicit deleter policy,
+  which (among other things) makes it easier to implement the
+  PIMPL pattern using these classes. Unfortunately, some of these
+  changes introduced some minor backward incompatibilities (but I
+  doubt anyone will even notice).
+* Introduced a new class CopiedPtr, which has a similar interface
+  to UniquePtr, but which allows copy and assignment. This class
+  is meant to replace the OptionalVal class, whose use is now
+  discouraged.
+
+-------------------------------------------------------------------
+Sun Jun 19 20:21:21 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 9.9.1
+* Introduced ll_type and related routines which perform a
+  restricted set of operations on a long-long-like type. It can
+  be implemented via inline asm, and is a cleaner interface and
+  sometimes faster. On x86-64/gcc platforms, the assembly code
+  version is used and gives a modest speed boost.
+* Introduced PreconditionedRemainder class for faster reduction
+  of a ZZ modulo a fixed long. This is intended to make Chinese
+  Remaindering type computations faster. (For the time being,
+  this is an undocumented feature.)
+* Allow p.move(q), where p is a UniquePtr<T>, q is a
+  UniquePtr<Y>, and Y* converts to T*.
+* Added elts() method to UniqueArray and AlignedArray (for
+  compatibility with Vec class)
+* Added get() and release() methods to OptionalVal
+
+-------------------------------------------------------------------
+Sun Apr 17 21:57:51 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 9.7.0
+* Changes to mat_lzz_p: improved performance of mul, inv, solve
+  and deterministic routines
+* NTLThreadPool is no longer directly accessible: new access
+  functions are provided
+* Got rid of method SplitProblems, and made a more general/abstract
+  class PartitionInfo
+
+-------------------------------------------------------------------
+Fri Mar 11 23:00:45 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 9.6.4
+* A new modular composition implemention for zz_pX. This makes
+  modular composition up to 3x faster, depending on several
+  factors.
+* Improved performance for polynomial factoring over zz_pX using
+  CanZass, using the improved modular composition routine (above)
+  and better choice of baby step / giant step parameters. This
+  leads to a 1.1x to 1.8x speedup, depending on several factors.
+
+-------------------------------------------------------------------
+Sat Nov 14 11:23:04 UTC 2015 - jengelh@inai.de
+
+- Update to new upstream release 9.6.2
+* Performance tuning: ZZ_pX and zz_pX keep getting faster
+* Upgrade to pseudo-random number generation: replaced the
+  underlying PRG with Chacha20 (replacing RC4) and the underlying
+  key-derivation function with a function based on HMAC-SHA256
+  (replacing an MD5-based function). The new routines are faster
+  and more secure.
+
+-------------------------------------------------------------------
+Wed Jun 24 08:49:29 UTC 2015 - jengelh@inai.de
+
+- Update to new upstream release 9.2.0
+* Performance improvements to zz_pX and Vec<zz_p>.
+* Performance improvements to ZZX: implemented asymptotically fast
+  CRT code for HomMul and more cache-friendly logic.
+* Completed the transition away from floating-point arithmetic for
+  the implementation of single-precision modular arithmetic.
+
+-------------------------------------------------------------------
+Fri Mar 27 16:15:01 UTC 2015 - jengelh@inai.de
+
+- Update to new upstream release 9.0.0
+* The interface to the single-precision modular arithmetic
+  routines has been modified slightly: In particular, on 64-bit
+  x86/GCC platforms, single precision moduli can now be up to 60
+  bits, rather than 50 bits. Using larger moduli speeds up a number
+  of things, like ZZ_pX arithmetic, as fewer primes need to be used
+  in Chinese Remaindering steps.
+
+-------------------------------------------------------------------
+Thu Feb 12 12:34:59 UTC 2015 - jengelh@inai.de
+
+- Update ntl-automake.diff: add a missing backslash causing not all
+  headers to be installed. Support mingw a bit better, too.
+  Support non-C++11 systems.
+
+-------------------------------------------------------------------
+Tue Feb  3 00:06:14 UTC 2015 - jengelh@inai.de
+
+- Update to new upstream release 8.1.2
+* Added support for "user defined" FFT primes for zz_p.
+* Added explicit constructors corresponding to promotions.
+* Thread safety, requires C++11 concurrency.
+
+-------------------------------------------------------------------
+Fri Apr 18 15:18:06 UTC 2014 - jengelh@inai.de
+
+- Update to new upstream release 6.1.0
+* Replaced the old template-like macros for vectors, matrices, and
+  pairs with true template classes: Vec<T>, Mat<T>, and Pair<S,T>.
+* There are many new conversions provided.
+* Improve speed for single-precision FFT
+* Added support for "user defined" FFT primes for <tt>zz_p</tt>.
+
+-------------------------------------------------------------------
+Sun Dec  9 04:56:58 UTC 2012 - jengelh@inai.de
+
+- Ensure that only NTL_ defined appear in NTL/config.h
+- Set RPM group according to rpmlint
+
+-------------------------------------------------------------------
+Thu Sep 15 13:42:17 UTC 2011 - jengelh@medozas.de
+
+- Initial package (version 5.5.2) for build.opensuse.org
