@@ -1,7 +1,7 @@
 #
 # spec file for package enchant-1
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -138,6 +138,10 @@ to develop applications that require these.
 %autosetup -p1 -n %{_name}-%{version}
 
 %build
+
+# Work-around boo#1221684
+%global optflags %{optflags} -fpermissive
+
 %configure --with-pic \
     --disable-static \
     --enable-zemberek \

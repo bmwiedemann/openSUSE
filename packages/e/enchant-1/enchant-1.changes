@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jul  8 14:47:39 UTC 2024 - Martin Jambor <mjambor@suse.com>
+
+- Add -fpermissive to optflags to work around C99 violations which
+  are errors by default with GCC 14.  [boo#1221684]
+
+-------------------------------------------------------------------
 Tue Nov 28 11:48:27 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup instead of %setup/%patch.
