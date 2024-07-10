@@ -257,4 +257,15 @@ Features:
     gh#kvesteri/validators#384</comment>
     <requestid>1185281</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>be2b13baa6708d8a7c866ea17b81a177</srcmd5>
+    <version>0.31.0</version>
+    <time>1720622875</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.31.0
+Features:
+  * add validators for base16 and base32 encodings
+    gh#kvesteri/validators#386</comment>
+    <requestid>1186395</requestid>
+  </revision>
 </revisionlist>
