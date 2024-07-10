@@ -1,0 +1,354 @@
+-------------------------------------------------------------------
+Thu Jun 22 16:59:13 UTC 2023 - Matwey Kornilov <matwey.kornilov@gmail.com>
+
+- Update to 2.2.7:
+   - Update autoconf files.
+
+-------------------------------------------------------------------
+Sat Jan  4 16:05:50 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Drop pkgconfig(sdl), no point in building examples which are
+  not packaged.
+
+-------------------------------------------------------------------
+Wed Aug 14 08:31:11 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Switch up to pkgconfgi style dependencies
+
+-------------------------------------------------------------------
+Sat Jul  6 13:34:52 UTC 2019 - Matwey V. Kornilov <matwey.kornilov@gmail.com>
+
+- Update to 2.2.6:
+   - Fix a few compilation warnings with a recent GCC
+   - Fix argument type in dc1394_get_image_size_from_video_mode()
+   - Fix USB3 transfer errors
+
+-------------------------------------------------------------------
+Mon Jan  9 13:49:42 UTC 2017 - matwey.kornilov@gmail.com
+
+- Update to 2.2.5:
+   - Minor thread-safety improvements
+
+-------------------------------------------------------------------
+Wed Feb  3 14:09:56 UTC 2016 - matwey.kornilov@gmail.com
+
+- Update to 2.2.4:
+   - Add USB IDs for some Point Grey cameras 
+   - Re-activate the EdgeSense debayering algorithm (patent has expired)
+   - USB-captured frames now have a valid timestamp
+   - Look for USB enpoints on all interfaces
+
+-------------------------------------------------------------------
+Sat Nov 14 19:24:14 UTC 2015 - jengelh@inai.de
+
+- Drop redundant --with-pic; it is only used for static libs (which
+  we do not build), and always on anyway for shared libraires.
+- Name the utility package -tools as with many other pkgs.
+- Remove non-library packages from baselibs.conf.
+
+-------------------------------------------------------------------
+Sat Mar 21 07:49:15 UTC 2015 - mpluskal@suse.com
+
+- Cleanup spec file with spec-cleaner
+- Use url for source
+
+-------------------------------------------------------------------
+Mon Nov 10 18:05:57 UTC 2014 - matwey.kornilov@gmail.com
+
+- Add baselibs.conf as Source
+
+-------------------------------------------------------------------
+Wed Sep 10 07:10:14 UTC 2014 - matwey.kornilov@gmail.com
+
+- Version 2.2.3
+  - several product IDs have been added for Point Grey USB/IIDC cameras
+
+-------------------------------------------------------------------
+Thu May  1 03:44:33 UTC 2014 - crrodriguez@opensuse.org
+
+- remove libdc1394-visibility.patch, nowadays
+  the package uses -export-symbols-regex to limit
+  the visible symbols to those prefixed with dc1394_
+  fixes http://lists.opensuse.org/opensuse-packaging/2014-04/msg00064.html
+
+-------------------------------------------------------------------
+Fri Mar  7 16:00:17 UTC 2014 - matwey.kornilov@gmail.com
+
+- Update to 2.2.2
+   - several product IDs have been added for Point Grey USB/IIDC cameras
+
+-------------------------------------------------------------------
+Tue Jan 29 14:27:01 UTC 2013 - matwey.kornilov@gmail.com
+
+- Drop support of libdc1394-1 (which is unused for a long time)
+
+-------------------------------------------------------------------
+Mon Jan 28 07:17:50 UTC 2013 - matwey.kornilov@gmail.com
+
+- Update to 2.2.1
+   - updated all licenses to LPGL2 (bnc#777083)
+   - misc fixes
+   - don't expose internal symbols
+
+-------------------------------------------------------------------
+Fri Mar 09 17:09:02 MSK 2012 - matwey.kornilov@gmail.com
+
+- Update to 2.2.0.
+   - new Windows stack
+   - fixed small memory leak in Juju
+   - added two USB cameras from Point Grey.
+   
+-------------------------------------------------------------------
+Thu Nov 17 22:31:02 MSK 2011 - matwey.kornilov@gmail.com
+- Update to 2.1.4.
+   - Allow image buffers to be editable by client apps on Linux juju
+   - Correct error in downsample bayer function
+   - Rename poorly named externally-visible symbol usb_init
+       (meanwhile libdc1394-visibility.patch is still kept)
+-------------------------------------------------------------------
+Sun Nov 13 09:15:01 UTC 2011 - coolo@suse.com
+
+- add libtool as explicit buildrequire to avoid implicit dependency from prjconf
+
+-------------------------------------------------------------------
+Mon Aug 29 08:03:27 UTC 2011 - idonmez@suse.com
+
+- Add libdc1394-visibility.patch to properly hide internal symbols
+  to prevent potential clashes with other libraries, sf #3361405 ,
+  bko # 268267
+
+-------------------------------------------------------------------
+Thu Jul  7 09:47:56 UTC 2011 - idonmez@novell.com
+
+- Add libdc1394-v4l-2.6.38.patch: use the new v4l interface 
+
+-------------------------------------------------------------------
+Fri Apr 14 13:38:21 UTC 2011 - toddrme2178@gmail.com
+ 
+- added 32bit compatibility libraries
+- added necessary devel depedencies (fix for RPMLINT warning)
+
+-------------------------------------------------------------------
+Mon Jan  3 10:27:58 MSK 2011 - matwey.kornilov@gmail.com
+- Update to 2.1.3.
+  - Bug fixes:
+    Fix for usb writes larger than 1 quadlet
+    On MAC OS, add needed frameworks to link line
+    Update firewire-{cdev,constants}.h to latest version and license
+    Change dequeue/enqueue to return error code if usb transfer haserror
+    dc1394/conversions.h: Fix typo in DC1394_STEREO_METHOD_MIN define
+-------------------------------------------------------------------
+Fri Nov 19 18:10:03 UTC 2010 - jslaby@novell.com
+
+- don't strip the objects when installing to allow for -debug* 
+  package creation
+
+-------------------------------------------------------------------
+Mon Oct  4 16:17:07 UTC 2010 - davejplater@gmail.com
+
+- Version 1.2.2 no longer builds with libraw1394-2.0.5 so sub packages
+  libdc1394_control12 and libdc1394_control12-devel are no longer
+  provided. See entry for Tue Aug 15 14:10:33 CEST 2006.
+
+-------------------------------------------------------------------
+Sun Dec 27 19:06:15 MSK 2009 - matwey.kornilov@gmail.com
+
+- Update to 2.1.2.
+  - IIDC-over-USB support
+  - Bug fixes:
+        bayer conversion problem for 16bit over MONO16
+        dc1394_deinterlace_stereo_frames (LP#360520)
+  - Bug fixes on Linux Juju:
+        missing frames with OHCI 1.0
+        automatic iso allocation
+        timestamp support
+        broadcasting
+
+-------------------------------------------------------------------
+Mon Nov 23 09:48:55 MSK 2009 - matwey.kornilov@gmail.com
+
+- Update to 2.0.3. Changes since 2.0.2:
+  - Bug fixes on MSW port
+  - Bug fixes:
+        dc1394_trigger_get_polarity
+        dc1394_deinterlace_stereo_frames
+  - Bug fixes on Linux Juju:
+      - alignment problem during reads
+  - Bug fixes on Mac OS:
+      - crash fix for Mac OS 10.4
+
+-------------------------------------------------------------------
+Tue Jan 13 17:07:56 CET 2009 - crrodriguez@suse.de
+
+- remove static libraries and "la" files 
+
+-------------------------------------------------------------------
+Mon Oct  6 10:15:29 CEST 2008 - olh@suse.de
+
+- fix ordered comparison of pointer with integer zero (bnc#431916)
+
+-------------------------------------------------------------------
+Thu Jun 19 14:19:30 CEST 2008 - pth@suse.de
+
+- Include unistd.h to get prototype for swab.
+
+- Update to 2.0.2. Changes since 2.0.0:
+  - New functions on all platforms:
+        dc1394_camera_get_node
+        dc1394_capture_is_frame_corrupt
+  - New function on Linux video1394 only:
+        dc1394_camera_get_linux_port
+  - New example program to capture PVN sequences.
+  - Bug fixes on Linux Juju:
+      - Better retry timeouts
+      - Fix manual isochronous channel allocation
+  - Bug fixes on Mac OS:
+      - Auto detection of bad or skipped packets (used for
+        dc1394_capture_is_frame_corrupt)
+  - Bug fixes on Linux video1394:
+      - Fix select() with multiple cameras on the same controller
+      - Handle EINTR return code properly in dc1394_capture_dequeue
+  - Better error detection if camera enumeration fails
+  - Documentation improvements
+
+  -- 2.0.1:
+  - Fixed broken dc1394/dc1394.h include file when compiling externally.
+  - Removed the "edge-sense" bayer demosaic algorithm out of patent concern.
+
+-------------------------------------------------------------------
+Fri Apr 11 16:13:18 CEST 2008 - schwab@suse.de
+
+- Fix configure script.
+
+-------------------------------------------------------------------
+Thu Jan 24 20:23:11 CET 2008 - olh@suse.de
+
+- remove buildrequires for xorg-x11-devel
+
+-------------------------------------------------------------------
+Tue Jan 15 08:50:11 CET 2008 - olh@suse.de
+
+- libdc1394-devel requires libdc1394-22
+
+-------------------------------------------------------------------
+Mon Jan 14 16:46:04 CET 2008 - olh@suse.de
+
+- update to 2.0.0 final
+  rename libdc1394-20 to libdc1394-22 due to SONAME change
+
+-------------------------------------------------------------------
+Thu Aug 16 16:21:39 CEST 2007 - olh@suse.de
+
+- libdc1394_control12-devel needs libraw1394-devel
+
+-------------------------------------------------------------------
+Thu Aug 16 16:08:22 CEST 2007 - olh@suse.de
+
+- remove inclusion of code which is labeled as GPL (298152)
+  removes topology.h, cooked1394_read() and others
+  remove dc1394_vloopback binary
+
+-------------------------------------------------------------------
+Sun Aug  5 11:55:22 CEST 2007 - olh@suse.de
+
+- split libdc1394-20 package which contains only libraries
+  split libdc1394_control12 and libdc1394_control12-devel
+  upgrade to 1.2.2, color filter fix
+
+-------------------------------------------------------------------
+Fri Jul 13 22:22:01 CEST 2007 - olh@suse.de
+
+- update to 2.0.0-rc7
+  API fixes
+
+-------------------------------------------------------------------
+Tue Aug 15 14:10:33 CEST 2006 - olh@suse.de
+
+- update to 2.0.0-rc3 (#198102)
+  all new API
+- keep old library version until every app is converted
+
+-------------------------------------------------------------------
+Wed Jul 19 17:39:44 CEST 2006 - olh@suse.de
+
+- update to 1.2.1
+  replaced camera version detection in dc1394_is_camera() by a
+  proper call to dc1394_get_sw_version().
+  fixed compilation warnings due to mixed signedness in the whole code.
+  fixed a serious bug in the camera detection.
+  updated TRIGGER_MODE_NUM definition
+
+-------------------------------------------------------------------
+Wed Jan 25 21:37:25 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Fri Oct 21 19:47:42 CEST 2005 - olh@suse.de
+
+- correct usage of CLK_TCK
+- update to current cvs
+  fixed memory leak in capture functions (dma device name not freed)
+  fixed trigger capabilities detection (Markus Niebel)
+  fixed some confusion between raw1394_new_handle and dc1394_create_handle
+  (Thanks to Thorondor)
+
+-------------------------------------------------------------------
+Mon Sep 26 22:08:26 CEST 2005 - mls@suse.de
+
+- make devel package require base package
+
+-------------------------------------------------------------------
+Tue Jul  5 17:36:54 CEST 2005 - olh@suse.de
+
+- go back to version 1, version 2 still needs some time
+
+-------------------------------------------------------------------
+Fri Jul  1 21:47:41 CEST 2005 - olh@suse.de
+
+- update to version 2.0.0-pre3
+
+-------------------------------------------------------------------
+Fri Jul  1 17:27:52 CEST 2005 - olh@suse.de
+
+- update to version 1.1.0
+
+-------------------------------------------------------------------
+Thu Jan 13 11:23:53 CET 2005 - olh@suse.de
+
+- update to version 1.0.0, cvs status 2004-11-12
+
+-------------------------------------------------------------------
+Tue Jan 11 20:47:48 CET 2005 - olh@suse.de
+
+- update to version 1.0.0
+
+-------------------------------------------------------------------
+Mon Mar  8 14:48:43 CET 2004 - lmuelle@suse.de
+
+- update to version 0.9.3
+- create devel sub package
+
+-------------------------------------------------------------------
+Wed Jan  7 11:43:41 CET 2004 - lmuelle@suse.de
+
+- update to version 0.9.2
+
+-------------------------------------------------------------------
+Mon Jul 28 10:42:24 CEST 2003 - adrian@suse.de
+
+- fix lib filename suffix
+
+-------------------------------------------------------------------
+Fri Jul 25 16:10:12 CEST 2003 - adrian@suse.de
+
+- update to version 0.9.1
+- use BuildRoot
+- add %run_ldconfig
+
+-------------------------------------------------------------------
+Fri Sep 27 14:47:54 CEST 2002 - uli@suse.de
+
+- initial package
+
+

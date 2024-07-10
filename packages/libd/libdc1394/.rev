@@ -1,0 +1,397 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>dbe4310d0779cf2e3c67a4c28dc8216c</srcmd5>
+    <version>2.0.0</version>
+    <time>1168903296</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="60">
+    <srcmd5>7111c29726402c7a272ce5f4457f3281</srcmd5>
+    <version>2.0.0</version>
+    <time>1184359120</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="61">
+    <srcmd5>ac87bcc5ef9c441fb78cd6414b779e0a</srcmd5>
+    <version>2.0.0</version>
+    <time>1186328074</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="62">
+    <srcmd5>6196b79b85642a5dc23cb6570b410a81</srcmd5>
+    <version>2.0.0</version>
+    <time>1187280918</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="63">
+    <srcmd5>eb22be651d1b286f9f35da8a4ddf43fa</srcmd5>
+    <version>2.0.0</version>
+    <time>1200372477</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="64">
+    <srcmd5>ba6d83686e3ef3b7be23c7279a798019</srcmd5>
+    <version>2.0.0</version>
+    <time>1200500122</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="65">
+    <srcmd5>38fdfc65f14adccac810110dde85b848</srcmd5>
+    <version>2.0.0</version>
+    <time>1201206481</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="66">
+    <srcmd5>dd6aa168e21fc7881a272efd4b8dd85e</srcmd5>
+    <version>2.0.0</version>
+    <time>1208026165</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="9">
+    <srcmd5>ff17fe675ec7dd313f899d1a114c7661</srcmd5>
+    <version>2.0.2</version>
+    <time>1214419542</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="10">
+    <srcmd5>2e57bbb2f878deef042107e21cba06ea</srcmd5>
+    <version>2.0.2</version>
+    <time>1223308712</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="11">
+    <srcmd5>bcc8bec4f8059b994e5a5d9307aea8a9</srcmd5>
+    <version>2.0.2</version>
+    <time>1232327374</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="13">
+    <srcmd5>bcc8bec4f8059b994e5a5d9307aea8a9</srcmd5>
+    <version>2.0.2</version>
+    <time>1232327374</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>8df978c5b9c47de141c9a3a4d557e2db</srcmd5>
+    <version>2.1.2</version>
+    <time>1262129041</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:libs/libdc1394 based on submit request 27754 from user tiwai
+</comment>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>b934d1cce82b52053fcf952ef29bf402</srcmd5>
+    <version>2.1.2</version>
+    <time>1268924536</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="15" vrev="13">
+    <srcmd5>b934d1cce82b52053fcf952ef29bf402</srcmd5>
+    <version>2.1.2</version>
+    <time>1268924536</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="16" vrev="15">
+    <srcmd5>b934d1cce82b52053fcf952ef29bf402</srcmd5>
+    <version>2.1.2</version>
+    <time>1278667358</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="17" vrev="16">
+    <srcmd5>b934d1cce82b52053fcf952ef29bf402</srcmd5>
+    <version>2.1.2</version>
+    <time>1278678588</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="18" vrev="17">
+    <srcmd5>11735cbd63a31117b045c4854d76455e</srcmd5>
+    <version>2.1.2</version>
+    <time>1286484196</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:libs/libdc1394 based on submit request 49956 from user plater
+</comment>
+    <requestid>49956</requestid>
+  </revision>
+  <revision rev="19" vrev="18">
+    <srcmd5>447dcf75b7cffd88326f98c78daaef9a</srcmd5>
+    <version>2.1.2</version>
+    <time>1290251558</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 53546 from user coolo
+</comment>
+    <requestid>53546</requestid>
+  </revision>
+  <revision rev="20" vrev="19">
+    <srcmd5>4274b2c14c9ef8ea262096370e9584d3</srcmd5>
+    <version>2.1.2</version>
+    <time>1290251598</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 53546
+</comment>
+  </revision>
+  <revision rev="21" vrev="18">
+    <srcmd5>8b19a322df7a20eb99fc7b4700328e0d</srcmd5>
+    <version>2.1.3</version>
+    <time>1294398916</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 57018 from user plater
+</comment>
+    <requestid>57018</requestid>
+  </revision>
+  <revision rev="22" vrev="19">
+    <srcmd5>2aa76e1b11333abb5968c7452a840677</srcmd5>
+    <version>2.1.3</version>
+    <time>1294398924</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 57018
+</comment>
+  </revision>
+  <revision rev="23" vrev="22">
+    <srcmd5>2aa76e1b11333abb5968c7452a840677</srcmd5>
+    <version>2.1.3</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="24" vrev="23">
+    <srcmd5>0a4c7556c5c6b3559fbeeeae4853cb82</srcmd5>
+    <version>2.1.3</version>
+    <time>1303112490</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 67588 from user coolo
+</comment>
+    <requestid>67588</requestid>
+  </revision>
+  <revision rev="25" vrev="24">
+    <srcmd5>a7a7c7da9e1465571eadd3034bed33fe</srcmd5>
+    <version>2.1.3</version>
+    <time>1303112498</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 67588
+</comment>
+  </revision>
+  <revision rev="26" vrev="25">
+    <srcmd5>a2c29f52893b40f9f2f1b225cb8d2ce3</srcmd5>
+    <version>2.1.3</version>
+    <time>1310557787</time>
+    <user>saschpe</user>
+    <comment>- Add libdc1394-v4l-2.6.38.patch: use the new v4l interface (forwarded request 75638 from namtrac)</comment>
+    <requestid>76154</requestid>
+  </revision>
+  <revision rev="27" vrev="26">
+    <srcmd5>c99f322720384e88f2766904a41af263</srcmd5>
+    <version>2.1.3</version>
+    <time>1310557796</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 76154
+</comment>
+  </revision>
+  <revision rev="28" vrev="27">
+    <srcmd5>29b8070999db4dc2335662c2fc6754b2</srcmd5>
+    <version>2.1.3</version>
+    <time>1314624321</time>
+    <user>saschpe</user>
+    <comment>- Add libdc1394-visibility.patch to properly hide internal symbols
+  to prevent potential clashes with other libraries, sf #3361405 ,
+  bko # 268267 (forwarded request 80001 from namtrac)</comment>
+    <requestid>80035</requestid>
+  </revision>
+  <revision rev="29" vrev="28">
+    <srcmd5>b46f15167efa14dffde3074a9c5abdc1</srcmd5>
+    <version>2.1.3</version>
+    <time>1314624329</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 80035
+</comment>
+  </revision>
+  <revision rev="30" vrev="30">
+    <srcmd5>b46f15167efa14dffde3074a9c5abdc1</srcmd5>
+    <version>2.1.3</version>
+    <time>1319182083</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="31" vrev="31">
+    <srcmd5>c770f57aed16c9a8e687a41dd485ab83</srcmd5>
+    <version>2.1.3</version>
+    <time>1321268402</time>
+    <user>coolo</user>
+    <comment>add buildrequire libtool (forwarded request 91142 from coolo)</comment>
+    <requestid>91175</requestid>
+  </revision>
+  <revision rev="32" vrev="27">
+    <srcmd5>2a2b12bb7a75c57cf4b1dd1b74be1e71</srcmd5>
+    <version>2.1.4</version>
+    <time>1321627547</time>
+    <user>coolo</user>
+    <comment>Updated to new version 2.1.4.
+ (forwarded request 91996 from matwey)</comment>
+    <requestid>92001</requestid>
+  </revision>
+  <revision rev="33" vrev="28">
+    <srcmd5>cfc081c27713a7bd64c94ff50edb782e</srcmd5>
+    <version>2.1.4</version>
+    <time>1323192187</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>e8ecf3e348c40d25f9a124eb5d5d8216</srcmd5>
+    <version>2.2.0</version>
+    <time>1331492648</time>
+    <user>coolo</user>
+    <comment>Version bump to 2.2.0
+ (forwarded request 108705 from matwey)</comment>
+    <requestid>108710</requestid>
+  </revision>
+  <revision rev="35" vrev="3">
+    <srcmd5>e8ecf3e348c40d25f9a124eb5d5d8216</srcmd5>
+    <version>2.2.0</version>
+    <time>1340183575</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="36" vrev="5">
+    <srcmd5>e8ecf3e348c40d25f9a124eb5d5d8216</srcmd5>
+    <version>2.2.0</version>
+    <time>1359109257</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>1a7cb69e42b62134169593e60058ac72</srcmd5>
+    <version>2.2.1</version>
+    <time>1362119045</time>
+    <user>coolo</user>
+    <comment> (forwarded request 151358 from matwey)</comment>
+    <requestid>156294</requestid>
+  </revision>
+  <revision rev="38" vrev="3">
+    <srcmd5>1a7cb69e42b62134169593e60058ac72</srcmd5>
+    <version>2.2.1</version>
+    <time>1379662928</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>b6e32ffdb72d0d9b90b8d16a5aa76a1e</srcmd5>
+    <version>2.2.2</version>
+    <time>1394386015</time>
+    <user>coolo</user>
+    <comment>Bump to version 2.2.2,
+Fix swab patch also. (forwarded request 225109 from matwey)</comment>
+    <requestid>225132</requestid>
+  </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>44d254afecedc4bb0c805ea54dc97f06</srcmd5>
+    <version>2.2.2</version>
+    <time>1400182284</time>
+    <user>coolo</user>
+    <comment>- remove libdc1394-visibility.patch, nowadays
+  the package uses -export-symbols-regex to limit
+  the visible symbols to those prefixed with dc1394_
+  fixes http://lists.opensuse.org/opensuse-packaging/2014-04/msg00064.html (forwarded request 232294 from namtrac)</comment>
+    <requestid>233776</requestid>
+  </revision>
+  <revision rev="41" vrev="4">
+    <srcmd5>44d254afecedc4bb0c805ea54dc97f06</srcmd5>
+    <version>2.2.2</version>
+    <time>1409301535</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>d9d9e80a759d80c42bd30958dc5d6904</srcmd5>
+    <version>2.2.3</version>
+    <time>1415866778</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>260746</requestid>
+  </revision>
+  <revision rev="43" vrev="2">
+    <srcmd5>daf549f6d47b691a1da0d99d8ebf9e13</srcmd5>
+    <version>2.2.3</version>
+    <time>1427313841</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>292212</requestid>
+  </revision>
+  <revision rev="44" vrev="3">
+    <srcmd5>ff9826c534e06a18e1cbf40f802c62e6</srcmd5>
+    <version>2.2.3</version>
+    <time>1448400743</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>344488</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>35d74da7a04ef00281bf7044796e2597</srcmd5>
+    <version>2.2.4</version>
+    <time>1455190354</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>357566</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>d226eede70e01a64268f2259b1058527</srcmd5>
+    <version>2.2.5</version>
+    <time>1485250095</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.2.5:
+   - Minor thread-safety improvements</comment>
+    <requestid>450955</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>8395f26852feff135d8c7da6a02c8f0a</srcmd5>
+    <version>2.2.6</version>
+    <time>1563790546</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>713872</requestid>
+  </revision>
+  <revision rev="48" vrev="2">
+    <srcmd5>725448a6ea8aa4ccde4d619f8cf455a9</srcmd5>
+    <version>2.2.5</version>
+    <time>1563863960</time>
+    <user>dimstar_suse</user>
+    <comment>Revert to previous version; parallel staging issues</comment>
+  </revision>
+  <revision rev="49" vrev="2">
+    <srcmd5>9cfb17fa075eccb753158964c01947cb</srcmd5>
+    <version>2.2.6</version>
+    <time>1565962304</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch up to pkgconfgi style dependencies
+
+- Update to 2.2.6:
+   - Fix a few compilation warnings with a recent GCC
+   - Fix argument type in dc1394_get_image_size_from_video_mode()
+   - Fix USB3 transfer errors</comment>
+    <requestid>723232</requestid>
+  </revision>
+  <revision rev="50" vrev="3">
+    <srcmd5>cd9f29f6c135f69c4f74bce89a03797a</srcmd5>
+    <version>2.2.6</version>
+    <time>1578437452</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>760918</requestid>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>38e9fe78befc36c0d2e6a9598c860002</srcmd5>
+    <version>2.2.7</version>
+    <time>1687900518</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1095424</requestid>
+  </revision>
+  <revision rev="52" vrev="2">
+    <srcmd5>bfb6dc540792588394fa483c0a980e9f</srcmd5>
+    <version>2.2.7</version>
+    <time>1708027113</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1146141</requestid>
+  </revision>
+</revisionlist>
