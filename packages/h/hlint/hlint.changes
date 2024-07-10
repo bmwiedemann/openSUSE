@@ -1,0 +1,295 @@
+-------------------------------------------------------------------
+Sat Jan 20 13:28:58 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update hlint to version 3.8.
+  3.8, released 2024-01-15
+      #1552, make --git and --ignore-glob work nicely together
+      #1502, fix incorrect free variable calculation in some cases
+      #1555, slightly more efficient concatMap usages (e.g. pull filter out)
+      #1500, suggest avoiding NonEmpty.unzip (use Functor.unzip)
+  *   #1544, upgrade to GHC 9.8
+      #1540, correct Functor law hint, was missing brackets
+
+-------------------------------------------------------------------
+Fri Jul  7 10:00:52 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update hlint to version 3.6.1.
+  3.6.1, released 2023-07-03
+      Attempt to make a binary release
+  3.6, released 2023-06-26
+      #1522, define __GLASGOW_HASKELL__ for cmdCpp
+      #1519, don't suggest removing brackets that result in a parse error
+      #1512, add hints to convert for [1..n] to replicateM n
+      #1430, add ignore-suggestions flag
+      #1517, support NO_COLOR
+      #1505, don't suggest redundant brackets around constraints
+      #1478, Fix no warn on (x.y) by treating x.y as atom
+      #1481, more hints about concat/concatMap
+      #1485, add more hints about using a Functor on a literal tuple
+      #1479, add specialised not hints for notElem/notNull
+      #1437, don't add/remove Monad constraints in replacements
+      #1475, rules for (elem False) and (notElem True)
+      #1476, generalise map-consuming rules from lists to Foldables/Traversables
+      #1480, add hints about notElem and notNull
+      #1482, support SARIF output
+      #1470, drop support for GHC 9.0
+  *   #1470, move to GHC 9.6 parser
+      #1449, add some more generalize hints that suggest fmap instead of map
+      Never suggest concatForM_, because it doesn't exist
+      #1467, and groups for warning on partial functions
+      #1465, improve the timing information with -v flag
+      #1454, filter Just . map f ==> map Just . mapMaybe f
+      #1452, add more evaluate rules, e.g. fromJust (Just x) ==> x
+      #1488, add <$>/<&> hints for Either
+      #1447, make <$> hints also work on <&> (dualized)
+      #1450, suggest nub/sort ==> nubSort with the extra hints
+      #1451, isJust y && (x == fromJust y) ==> Just x == y
+      #578, don't suggest numeric underscores for < 5 digits
+      #1428, rename "Use map" hints that introduce tuple sections
+      #1424, don't suggest sortOn; suggest avoiding `reverse . sort`
+
+-------------------------------------------------------------------
+Thu Mar 30 17:09:18 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
+Tue Sep 20 08:40:56 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update hlint to version 3.5.
+  3.5, released 2022-09-20
+      #1421, change zip/repeat to map with tuple section
+      #1418, add more QuickCheck hints
+      #1420, suggest use of Data.Tuple.Extra.both in the extra hints
+      #1407, fix some list-comp hints that applied too broadly
+      #1407, suggest [ f x | x <- [y] ] to [f y]
+      #1417, add some more isAlpha/isDigit suggestions
+      #1411, add some empty list equivalent to "" hints
+      #1416, add hints for (== True) and other bool/section values
+      #1410, remove support for building with GHC 8.10
+  *   #1410, always default to using ghc-parser instead of the GHC API
+  *   #1410, upgrade to the GHC 9.4 parse tree
+      #1408, evaluate calls of map with empty/singleton lists
+      #1409, add notNull hints, e.g. notNull . concat ==> any notNull
+      #1406, spot list comprehension that should be lefts/rights
+      #1404, add more if/then/else to min or max hints
+      #1403, add last . reverse ==> head
+      #1397, evaluation rules for minimum/maximum on singleton lists
+  3.4.1, released 2022-07-10
+      #1345, add --generate-config to generate a complete config
+      #1345, add --generate-summary-json
+      #1377, make anyM/allM on [] produce pure, rather than return
+      #1377, add a pure rule for every return variant
+      #1380, add counts as comments for --default
+      #1372, remove unnecessary brackets when suggesting forM_
+      #1372, suggest void (forM x y) to forM_ without the void
+      #1394, replace maximum [a, b] ==> max a b (and for min)
+      #1393, for QuickCheck, join . elements ==> oneOf
+      #1387, bypass camelCase hint for new tasty_... custom test prefix
+  3.4, released 2022-04-24
+      #1360, make -XHaskell2010 still obey CPP pragmas
+      #1368, make TH quotation bracket rule off by default
+      #1367, add brackets on refactoring templates when needed
+      #1348, make module restrict hints more powerful
+      #1363, add more hints for <$>
+      #1362, add support for language specifier GHC2021
+      #1342, make module wildcards work with `within` restrictions
+      #1340, include Restriction hints in splitSettings and argsSettings output
+      #1330, make ignore: {} not ignore subsequent hints
+      #1317, evaluating all/any/allM/anyM on simple lists
+      #1303, allow more matches for modules doing `import Prelude ()`
+      #1324, add createModuleExWithFixities
+      #1336, warn on unused OverloadedRecordDot
+      #1334, don't remove TypeApplications if there are type-level type applications
+      #1332, suggest using iterate instead of scanl/foldl
+      #1331, suggest using min/max instead of if
+  *   #1247, move to GHC 9.2
+  3.3.6, released 2021-12-29
+      #1326, produce release binaries
+  3.3.5, released 2021-12-12
+      #1304, support aeson-2.0
+      #1309, suggest `either Left f x` becomes `f =<< x`
+      #1295, suggest TemplateHaskell to TemplateHaskellQuotes if it works
+      #1292, don't say redundant bracket around pattern splices
+      #1289, suggest expanding tuple sections in some cases
+      #1289, suggest length [1..n] ==> max 0 n
+      #1279, suggest using NumericUnderscores more if it is enabled
+      #1290, move reverse out of filter
+  3.3.4, released 2021-08-30
+      #1288, fix generation of Linux binaries
+  3.3.3, released 2021-08-29
+      #1286, compatibility with extra-1.7.10
+      #114, if OverloadedLists are enabled, don't suggest list literals
+  3.3.2, released 2021-08-28
+      #1244, add `only` restriction to modules
+      #1278, make --ignore-glob patterns also ignore directories
+      #1268, move nub/sort/reverse over catMaybes/lefts/rights
+      #1276, fix some incorrect unused LANGUAGE warnings
+      #1271, suggest foldr (<>) mempty ==> fold (not mconcat)
+      #1274, make the (& f) ==> f hint apply more
+      #1264, suggest eta reduction under a where
+      #1266, suggest () <$ x ==> void x
+      #1223, add some traverse laws
+      #1254, suggest null [x] ==> False
+      #1253, suggest reverse . init ==> tail . reverse
+      #1253, suggest null . concat ==> all null
+      #1255, suggest filter instead of list comprehension in teaching
+  3.3.1, released 2021-04-26
+      #1221, allow restrictions to use wildcards
+      #1225, treat A{} as not-atomic for bracket hints
+      #1233, -XHaskell98 and -XHaskell2010 now disable extensions too
+      #1226, don't warn on top-level splices with brackets
+      #1230, disable LexicalNegation by default
+      #1219, suggest uncurry f (a, b) ==> f a b
+      #1227, remove some excess brackets generated by refactoring
+  3.3, released 2021-03-14
+      #1212, don't suggest redundant brackets on $(x)
+      #1215, suggest varE 'foo ==> [|foo|]
+      #1215, allow matching on Template Haskell variables
+      #1216, require apply-refact 0.9.1.0
+  *   #1209, switch to the GHC 9.0.1 parse tree
+      Drop GHC 8.6 support
+      #1206, require apply-refact 0.9.0.0 or higher
+      #1205, generalize hints which were with '&' form
+  3.2.8, released 2021-12-27
+      #1304, support aeson-2.0
+      #1286, compatibility with extra-1.7.10
+
+-------------------------------------------------------------------
+Mon Oct 11 09:47:12 UTC 2021 - Peter Simons <psimons@suse.com>
+
+- Update hlint to version 3.2.7 revision 2.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Thu Sep  2 08:33:15 UTC 2021 - psimons@suse.com
+
+- Update hlint to version 3.2.7 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Mon Jan 18 09:07:13 UTC 2021 - psimons@suse.com
+
+- Update hlint to version 3.2.7.
+  3.2.7, released 2021-01-16
+      #1202, add missing parentheses for Avoid Lambda
+      #1201, allow matching through the & operator (similar to $)
+      #1196, fix removed parens with operator sections in some cases
+
+-------------------------------------------------------------------
+Mon Jan  4 11:06:26 UTC 2021 - psimons@suse.com
+
+- Update hlint to version 3.2.6.
+  3.2.6, released 2020-12-30
+      Fixes to the release generation script
+
+-------------------------------------------------------------------
+Wed Dec 30 17:54:00 UTC 2020 - psimons@suse.com
+
+- Update hlint to version 3.2.5.
+  3.2.5, released 2020-12-30
+      Fixes to the release generation script
+  3.2.4, released 2020-12-30
+      #1193, add warnings for redundant flip
+      #1183, allow matches where users specify unnecessary brackets
+      #1177, remove suggestions for fromMaybe False/fromMaybe True
+      #1176, suggest use of unzip
+      #1159, spot redundant brackets due to fixities, default ignored
+      #1172, suggest reusing fromLeft/fromRight
+
+-------------------------------------------------------------------
+Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+ 
+- disable %{ix86} build
+ 
+-------------------------------------------------------------------
+Mon Nov 23 10:11:21 UTC 2020 - psimons@suse.com
+
+- Update hlint to version 3.2.3.
+  3.2.3, released 2020-11-23
+      #1160, never consult the .hscolour file for color preferences
+      #1171, do not refactor redundant lambda with case
+      #1169, default to -A32 (doubles speed for 4 CPU)
+      #1169, make -j actually use parallelism
+      #1167, enable refactoring for "Use lambda"
+
+-------------------------------------------------------------------
+Sun Nov 15 22:11:52 UTC 2020 - psimons@suse.com
+
+- Update hlint to version 3.2.2.
+  3.2.2, released 2020-11-15
+      #1166, detect more unboxed data to avoid suggesting newtype
+      #1153, fix incorrect redundant bracket with @($foo)
+      #1163, do not suggest "Use lambda" when there are guards
+      #1160, add showIdeaANSI to show Idea values with escape codes
+
+-------------------------------------------------------------------
+Fri Oct 16 02:00:52 UTC 2020 - psimons@suse.com
+
+- Update hlint to version 3.2.1.
+  3.2.1, released 2020-10-15
+      #1150, remove the Duplicate hint (was slow)
+      #1149, allow within to use module wildcards, e.g. **.Foo
+      #1141, make redundant return highlight just the return
+      #1142, suggest newtype instead of data for data family instances
+      #1138, show allowed fields in YAML error message
+      #1131, fix potential variable capture in zipWith/repeat hint
+      #1129, add hints to use const and \_ x -> x where appropriate
+
+-------------------------------------------------------------------
+Tue Sep 15 02:37:00 UTC 2020 - psimons@suse.com
+
+- Update hlint to version 3.2.
+  3.2, released 2020-09-14
+      #75, make Windows 10 use color terminals
+      Make sure the extension removed matches what you called it
+  *   #1124, make test into a flag rather than a mode, use --test
+      #1073, add LHS/RHS hints to the summary
+  *   Remove test --proof, --quickcheck and --typecheck, --tempdir
+  *   #1123, delete grep mode
+      #1122, show the --refactor command line with --loud
+      #1120, enable refactoring for use section
+      #1114, enable refactoring for redundant as-pattern
+      #1116, enable refactoring for redundant section
+      #1115, more TVar/TMVar hints
+      #1113, suggest x >>= pure . f becomes x <&> f
+      #1111, add hint for \x y -> (x,y) to (,), and for (,,)
+      #1108, enable refactoring for redundant variable capture
+      #1105, enable refactoring for more redundant return hints
+      #1103, enable refactoring for Redundant void
+      #1083, add hints for mempty as a function
+      #1097, enable refactoring for more avoid lambda hints
+      #1094, error on `-XFoo` if `Foo` is not a known extension
+      #1090, improve --verbose to print more information
+      #1085, support eta-reduce refactoring
+      #780, ignore dist and dist-newstyle directories
+      #1076, fix -XNoCpp and CPP around LANGUAGE extensions
+      #1077, warn on unused StandaloneKindSignatures
+      #1070, warn on unused ImportQualifiedPost
+      #1067, require apply-refact 0.8.1.0 (fixes lots of bugs)
+      #1064, don't remove OverloadedLists if there is a []
+
+-------------------------------------------------------------------
+Wed Aug 19 08:18:33 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
+
+- Add _constraints with 6GB min disk space for ppc64/ppc64le
+
+-------------------------------------------------------------------
+Tue Aug 18 10:46:52 UTC 2020 - Peter Simons <psimons@suse.com>
+
+- Replace %setup -q with the more modern %autosetup macro.
+
+-------------------------------------------------------------------
+Thu Jun 25 02:00:26 UTC 2020 - psimons@suse.com
+
+- Update hlint to version 3.1.6.
+  3.1.6, released 2020-06-24
+      #1062, make sure matching inserts brackets if required
+      #1058, weaken the self-definition check to match more things
+      #1060, suggest [] ++ x and [] ++ x to x
+
+-------------------------------------------------------------------
+Tue Jun 23 09:31:45 UTC 2020 - psimons@suse.com
+
+- Add hlint at version 3.1.5.
+
