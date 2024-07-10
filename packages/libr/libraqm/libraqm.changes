@@ -1,0 +1,188 @@
+-------------------------------------------------------------------
+Thu Jan 18 12:48:55 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- fix build on non-suse distributions
+
+-------------------------------------------------------------------
+Thu Apr 27 22:27:32 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.10.1:
+  * Make combining marks always inherit the script of their base.
+
+-------------------------------------------------------------------
+Wed Jan 18 09:29:57 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to v0.10.0:
+  * Implement raqm_set_text_utf16
+  * Fix font feature range
+  * Fix resolved direction for all neutral text
+  * Implement letter and word spacing support
+
+-------------------------------------------------------------------
+Mon Jan 31 13:22:19 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- update to 0.9.0:
+  * raqm_t objects can now be reused by calling raqm_clear_contents()
+    before re-use, to potentially reduce the number memory allocations.
+  * don't hardcode python3 in tests.
+  * new API:
+    * raqm_set_freetype_load_flags_range()
+    * raqm_clear_contents()
+- Remove 0001-Pass_version_to_meson_library.patch as it was upstreamed
+
+-------------------------------------------------------------------
+Mon Dec 20 22:17:54 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.8.0:
+  * Support using SheenBiDi instead of FriBiDi for Unicode BiDi support.
+  * Fix running tests with Python <= 3.6.
+  * New API:
+    * raqm_get_par_resolved_direction
+    * raqm_get_direction_at_index
+
+-------------------------------------------------------------------
+Thu Sep 30 08:10:08 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 0.7.2
+  * Fix test failure with newer HarfBuzz versions.
+  * Apply FT_Face transformation matrix when built against FreeType
+    2.11 or later.
+  * Add meson build system. Autotools build system will be dropped
+    in next release.
+  * Improve MSVC support (#134).
+  * Build and documentation fixes.
+- Drop upstream patch:
+  * libraqm-fix-cursor_position-GB8a.patch
+- Add upstream change:
+  * 0001-Pass_version_to_meson_library.patch
+
+-------------------------------------------------------------------
+Tue Sep  7 12:08:27 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Drop libraqm-test.patch altogether, testsuite completes now
+  on TW and SLE15.
+- Remove unnecessary ldconfig calls.
+
+-------------------------------------------------------------------
+Tue Sep  7 07:27:00 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add libraqm-fix-cursor_position-GB8a.patch: Fix test suite run,
+  patch cherry-picked from upstream commit 9badec46.
+
+-------------------------------------------------------------------
+Sun Aug 22 03:51:00 UTC 2021 - Fusion Future <qydwhotmail@gmail.com>
+
+- Make libraqm-test.patch apply to all suse versions to fix build.
+- Use "pkgconfig(harfbuzz) >= 1.7.2" as build requirement.
+
+-------------------------------------------------------------------
+Fri Apr 02 11:20:21 UTC 2021 - Wang Jun <jgwang@suse.com>
+
+- Update to version 0.7.1
+  * Require HarfBuzz >= 2.0.0
+  * Build and documentation fixes.
+
+-------------------------------------------------------------------
+Mon May 11 12:52:36 UTC 2020 - Joop Boonen <joop.boonen@opensuse.org>
+
+- Build version 0.7.0
+  * New functions:
+       raqm_version()
+       raqm_version_string()
+       raqm_version_atleast()
+  * New macros:
+       RAQM_VERSION_MAJOR
+       RAQM_VERSION_MICRO
+       RAQM_VERSION_MINOR
+       RAQM_VERSION_STRING
+       RAQM_VERSION_ATLEAST()
+- Since version 0.6.0
+  *  Fix TTB direction regression from the previous release (#81)
+  *  Add raqm_set_invisible_glyph() (#92)
+  *  Correctly detect script of Common and Inherite characters at start of text (#95)
+  *  Undef HAVE_CONFIG_H workaround, for older versions of Fribidi (#101)
+  *  Drop test suite dependency on GLib
+  *  Port test runner to Python instead of shell script
+- Renamed patch libraqm-GB8a.patch to libraqm-test.patch
+
+-------------------------------------------------------------------
+Tue Feb 12 23:37:35 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Rename %soname to %sover to better reflect its use.
+- Rename libraqm-docs to libraqm-doc to better match the
+  rest of openSUSE packages.
+- Fix RPM groups.
+- Avoid double-shipping doc files.
+
+-------------------------------------------------------------------
+Thu Dec 27 13:57:49 UTC 2018 - Joop Boonen <joop.boonen@opensuse.org>
+
+- Build the opensuse version of this package
+
+-------------------------------------------------------------------
+Sun Nov 18 00:00:00 UTC 2018 - Zbigniew Jędrzejewski-Szmek <zbyszek@in.waw.pl>
+
+- Use C.UTF-8 locale
+  See https://fedoraproject.org/wiki/Changes/Remove_glibc-langpacks-all_from_buildroot
+
+
+-------------------------------------------------------------------
+Fri Jul 13 00:00:00 UTC 2018 - Fedora Release Engineering <releng@fedoraproject.org>
+
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_29_Mass_Rebuild
+
+
+-------------------------------------------------------------------
+Wed Mar 14 00:00:00 UTC 2018 - Elliott Sales de Andrade <quantum.analyst@gmail.com>
+
+- Update to latest version
+
+
+-------------------------------------------------------------------
+Wed Feb  7 00:00:00 UTC 2018 - Fedora Release Engineering <releng@fedoraproject.org>
+
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_28_Mass_Rebuild
+
+
+-------------------------------------------------------------------
+Thu Aug  3 00:00:00 UTC 2017 - Fedora Release Engineering <releng@fedoraproject.org>
+
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_27_Binutils_Mass_Rebuild
+
+
+-------------------------------------------------------------------
+Wed Jul 26 00:00:00 UTC 2017 - Fedora Release Engineering <releng@fedoraproject.org>
+
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_27_Mass_Rebuild
+
+
+-------------------------------------------------------------------
+Fri Feb 10 00:00:00 UTC 2017 - Fedora Release Engineering <releng@fedoraproject.org>
+
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_26_Mass_Rebuild
+
+
+-------------------------------------------------------------------
+Sun May  1 00:00:00 UTC 2016 - Mosaab Alzoubi <moceap@hotmail.com>
+
+- Updated to 0.1.1
+
+
+-------------------------------------------------------------------
+Mon Apr 25 00:00:00 UTC 2016 - Mosaab Alzoubi <moceap@hotmail.com>
+
+- Use lib prefix in %%name
+- Depends on same version -devel
+
+
+-------------------------------------------------------------------
+Sun Apr 24 00:00:00 UTC 2016 - Mosaab Alzoubi <moceap@hotmail.com>
+
+- General revision
+
+
+-------------------------------------------------------------------
+Sat Apr 23 00:00:00 UTC 2016 - Mosaab Alzoubi <moceap@hotmail.com>
+
+- Initial build
+
