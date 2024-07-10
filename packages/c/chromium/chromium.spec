@@ -91,7 +91,7 @@
 %define n_suffix %{nil}
 %endif
 Name:           chromium%{n_suffix}
-Version:        125.0.6422.141
+Version:        126.0.6478.126
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -121,7 +121,6 @@ Patch6:         gcc-enable-lto.patch
 # Do not use unrar code, it is non-free
 Patch7:         chromium-norar.patch
 Patch9:         system-libdrm.patch
-Patch10:        chromium-disable-parallel-gold.patch
 # gentoo/fedora/arch patchset
 Patch15:        chromium-125-compiler.patch
 Patch40:        chromium-91-java-only-allowed-in-android-builds.patch
@@ -142,28 +141,23 @@ Patch256:       chromium-120-make_unique-struct.patch
 Patch258:       chromium-121-nullptr_t-without-namespace-std.patch
 Patch261:       chromium-121-rust-clang_lib.patch
 Patch311:       chromium-125-disable-FFmpegAllowLists.patch
-Patch316:       chromium-125-missing-header-files.patch
-Patch317:       chromium-125-no_matching_constructor.patch
 Patch322:       chromium-125-lp155-typename.patch
 Patch324:       chromium-122-workaround_clang_bug-structured_binding.patch
 Patch326:       chromium-123-stats-collector.patch
 Patch336:       chromium-124-system-libxml.patch
 Patch337:       chromium-123-missing-QtGui.patch
-Patch340:       chromium-125-appservice-include.patch
-Patch341:       chromium-125-lens-include.patch
-Patch342:       chromium-125-mojo-bindings-include.patch
-Patch343:       chromium-125-no-vector-consts.patch
-Patch345:       chromium-125-vulkan-include.patch
 Patch346:       chromium-125-tabstrip-include.patch
-Patch347:       chromium-125-ninja.patch
 Patch350:       chromium-125-debian-bad-font-gc0000.patch
 Patch351:       chromium-125-debian-bad-font-gc000.patch
 Patch352:       chromium-125-debian-bad-font-gc00.patch
 Patch353:       chromium-125-debian-bad-font-gc0.patch
 Patch354:       chromium-125-debian-bad-font-gc11.patch
 Patch355:       chromium-125-debian-bad-font-gc1.patch
-Patch356:       chromium-125-debian-bad-font-gc2.patch
-Patch357:       chromium-125-debian-bad-font-gc3.patch
+Patch358:       chromium-126-missing-header-files.patch
+Patch359:       chromium-126-quiche-interator.patch
+Patch360:       chromium-126-RealTimeReportingBindings-missing-decl.patch
+Patch361:       chromium-126-no_matching_constructor.patch
+Patch362:       chromium-126-no-format.patch
 BuildRequires:  SDL-devel
 BuildRequires:  bison
 BuildRequires:  cups-devel
@@ -347,13 +341,13 @@ BuildRequires:  pkgconfig(libyuv)
 %endif
 %if %{with qt}
 BuildRequires:  pkgconfig(Qt5Core)
-BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5Widgets)
+BuildRequires:  pkgconfig(Qt5Gui)
 %endif
 %if %{with qt6}
 BuildRequires:  pkgconfig(Qt6Core)
-BuildRequires:  pkgconfig(Qt6Gui)
 BuildRequires:  pkgconfig(Qt6Widgets)
+BuildRequires:  pkgconfig(Qt6Gui)
 %endif
 %if %{with system_re2}
 BuildRequires:  pkgconfig(re2) >= 11
@@ -467,7 +461,6 @@ clang_base_path="$(clang --version | grep InstalledDir | cut -d' ' -f2 | sed 's#
 keeplibs=(
     base/third_party/cityhash
     base/third_party/double_conversion
-    base/third_party/dynamic_annotations
     base/third_party/icu
     base/third_party/nspr
     base/third_party/superfasthash
@@ -642,6 +635,8 @@ keeplibs=(
     third_party/s2cellid
     third_party/securemessage
     third_party/selenium-atoms
+    third_party/sentencepiece
+    third_party/sentencepiece/src/third_party/darts_clone
     third_party/shell-encryption
     third_party/simplejson
     third_party/skia

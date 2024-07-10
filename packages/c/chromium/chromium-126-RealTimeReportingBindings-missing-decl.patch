@@ -1,0 +1,37 @@
+From fb3678b0d1084b49c5ca795200131a7c0ac01ffe Mon Sep 17 00:00:00 2001
+From: Jose Dapena Paz <jdapena@igalia.com>
+Date: Wed, 15 May 2024 13:59:56 +0000
+Subject: [PATCH] libstdc++: real time reporting bindings vector requires full
+ declaration
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+libstdc++ implementation of std::vector requires the full declaration
+of the type and not a forward declaration. This breaks compilation of
+RealTimeReportingBindings, as it has an std::vector of
+RealTimeReportingContributionPtr.
+
+Bug: 41455655
+Change-Id: I9ee70fbb58af36f4cfc43a5d4b1e99799f4c760c
+Reviewed-on: https://chromium-review.googlesource.com/c/chromium/src/+/5541055
+Reviewed-by: Russ Hamilton <behamilton@google.com>
+Commit-Queue: José Dapena Paz <jdapena@igalia.com>
+Cr-Commit-Position: refs/heads/main@{#1301266}
+---
+ content/services/auction_worklet/real_time_reporting_bindings.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/content/services/auction_worklet/real_time_reporting_bindings.h b/content/services/auction_worklet/real_time_reporting_bindings.h
+index c755d5cab041ec..da4d05e96f788c 100644
+--- a/content/services/auction_worklet/real_time_reporting_bindings.h
++++ b/content/services/auction_worklet/real_time_reporting_bindings.h
+@@ -12,7 +12,7 @@
+ #include "content/common/content_export.h"
+ #include "content/services/auction_worklet/auction_v8_helper.h"
+ #include "content/services/auction_worklet/context_recycler.h"
+-#include "content/services/auction_worklet/public/mojom/real_time_reporting.mojom-forward.h"
++#include "content/services/auction_worklet/public/mojom/real_time_reporting.mojom.h"
+ #include "v8/include/v8-forward.h"
+ 
+ namespace auction_worklet {

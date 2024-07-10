@@ -1,0 +1,1939 @@
+diff -up chromium-126.0.6478.26/base/allocator/partition_allocator/src/partition_alloc/lightweight_quarantine.cc.no_matching_constructor chromium-126.0.6478.26/base/allocator/partition_allocator/src/partition_alloc/lightweight_quarantine.cc
+--- chromium-126.0.6478.26/base/allocator/partition_allocator/src/partition_alloc/lightweight_quarantine.cc.no_matching_constructor	2024-05-29 18:00:45.000000000 +0200
++++ chromium-126.0.6478.26/base/allocator/partition_allocator/src/partition_alloc/lightweight_quarantine.cc	2024-06-02 23:51:25.487915366 +0200
+@@ -86,7 +86,7 @@ bool LightweightQuarantineBranch::Quaran
+ 
+     // Put the entry onto the list.
+     branch_size_in_bytes_ += usable_size;
+-    slots_.emplace_back(slot_start, usable_size);
++    slots_.emplace_back() = {slot_start, usable_size};
+ 
+     // Swap randomly so that the quarantine list remain shuffled.
+     // This is not uniformly random, but sufficiently random.
+diff -up chromium-126.0.6478.26/base/metrics/persistent_histogram_allocator.cc.no_matching_constructor chromium-126.0.6478.26/base/metrics/persistent_histogram_allocator.cc
+--- chromium-126.0.6478.26/base/metrics/persistent_histogram_allocator.cc.no_matching_constructor	2024-05-29 18:00:45.000000000 +0200
++++ chromium-126.0.6478.26/base/metrics/persistent_histogram_allocator.cc	2024-06-02 23:51:25.487915366 +0200
+@@ -225,13 +225,13 @@ PersistentSparseHistogramDataManager::Lo
+     // The sample-record could be for any sparse histogram. Add the reference
+     // to the appropriate collection for later use.
+     if (found_id == match_id) {
+-      found_records.emplace_back(ref, value);
++      found_records.emplace_back() = {ref, value};
+       found = true;
+     } else {
+       std::vector<ReferenceAndSample>* samples =
+           GetSampleMapRecordsWhileLocked(found_id);
+       CHECK(samples);
+-      samples->emplace_back(ref, value);
++      samples->emplace_back() = {ref, value};
+     }
+   }
+ 
+diff -up chromium-126.0.6478.26/base/nix/mime_util_xdg.cc.no_matching_constructor chromium-126.0.6478.26/base/nix/mime_util_xdg.cc
+--- chromium-126.0.6478.26/base/nix/mime_util_xdg.cc.no_matching_constructor	2024-05-29 18:00:45.000000000 +0200
++++ chromium-126.0.6478.26/base/nix/mime_util_xdg.cc	2024-06-02 23:51:25.488915391 +0200
+@@ -56,7 +56,7 @@ void LoadAllMimeCacheFiles(MimeTypeMap&
+   for (const auto& path : GetXDGDataSearchLocations(env.get())) {
+     FilePath mime_cache = path.Append("mime/mime.cache");
+     if (GetFileInfo(mime_cache, &info) && ParseMimeTypes(mime_cache, map)) {
+-      files.emplace_back(mime_cache, info.last_modified);
++      files.emplace_back() = {mime_cache, info.last_modified};
+     }
+   }
+ }
+diff -up chromium-126.0.6478.26/base/trace_event/trace_log.cc.no_matching_constructor chromium-126.0.6478.26/base/trace_event/trace_log.cc
+--- chromium-126.0.6478.26/base/trace_event/trace_log.cc.no_matching_constructor	2024-05-29 18:00:45.000000000 +0200
++++ chromium-126.0.6478.26/base/trace_event/trace_log.cc	2024-06-02 23:51:25.489915414 +0200
+@@ -2026,8 +2026,8 @@ void TraceLog::SetTraceBufferForTesting(
+ 
+ void TraceLog::OnSetup(const perfetto::DataSourceBase::SetupArgs& args) {
+   AutoLock lock(track_event_lock_);
+-  track_event_sessions_.emplace_back(args.internal_instance_index, *args.config,
+-                                     args.backend_type);
++  track_event_sessions_.emplace_back() = {args.internal_instance_index, *args.config,
++                                     args.backend_type};
+ }
+ 
+ void TraceLog::OnStart(const perfetto::DataSourceBase::StartArgs&) {
+diff -up chromium-126.0.6478.26/chrome/browser/content_settings/one_time_permission_provider.cc.no_matching_constructor chromium-126.0.6478.26/chrome/browser/content_settings/one_time_permission_provider.cc
+--- chromium-126.0.6478.26/chrome/browser/content_settings/one_time_permission_provider.cc.no_matching_constructor	2024-05-29 18:00:52.000000000 +0200
++++ chromium-126.0.6478.26/chrome/browser/content_settings/one_time_permission_provider.cc	2024-06-02 23:51:25.489915414 +0200
+@@ -259,8 +259,8 @@ void OneTimePermissionProvider::OnSuspen
+ 
+       while (rule_iterator && rule_iterator->HasNext()) {
+         auto rule = rule_iterator->Next();
+-        patterns_to_delete.emplace_back(setting_type, rule->primary_pattern,
+-                                        rule->secondary_pattern);
++        patterns_to_delete.emplace_back() = {setting_type, rule->primary_pattern,
++                                        rule->secondary_pattern};
+         permissions::PermissionUmaUtil::RecordOneTimePermissionEvent(
+             setting_type,
+             permissions::OneTimePermissionEvent::EXPIRED_ON_SUSPEND);
+@@ -362,8 +362,8 @@ void OneTimePermissionProvider::DeleteEn
+     auto rule = rule_iterator->Next();
+     if (rule->primary_pattern.Matches(origin_gurl) &&
+         rule->secondary_pattern.Matches(origin_gurl)) {
+-      patterns_to_delete.emplace_back(
+-          content_setting_type, rule->primary_pattern, rule->secondary_pattern);
++      patterns_to_delete.emplace_back() = {
++          content_setting_type, rule->primary_pattern, rule->secondary_pattern};
+       permissions::PermissionUmaUtil::RecordOneTimePermissionEvent(
+           content_setting_type, trigger_event);
+     }
+diff -up chromium-126.0.6478.26/chrome/browser/dips/dips_bounce_detector.cc.no_matching_constructor chromium-126.0.6478.26/chrome/browser/dips/dips_bounce_detector.cc
+--- chromium-126.0.6478.26/chrome/browser/dips/dips_bounce_detector.cc.no_matching_constructor	2024-06-03 23:39:30.778285708 +0200
++++ chromium-126.0.6478.26/chrome/browser/dips/dips_bounce_detector.cc	2024-06-03 23:42:17.873038214 +0200
+@@ -511,11 +511,11 @@ UrlAndSourceId RedirectChainDetector::Ge
+   // We can't use RenderFrameHost::GetLastCommittedURL() because that returns an
+   // empty URL while the tab is closing (i.e. within
+   // WebContentsObserver::WebContentsDestroyed)
+-  return UrlAndSourceId(
++  return UrlAndSourceId{
+       WebContentsObserver::web_contents()->GetLastCommittedURL(),
+       WebContentsObserver::web_contents()
+           ->GetPrimaryMainFrame()
+-          ->GetPageUkmSourceId());
++          ->GetPageUkmSourceId()};
+ }
+ 
+ void RedirectChainDetector::HandleRedirectChain(
+@@ -619,8 +619,8 @@ void DIPSBounceDetector::DidStartNavigat
+       !client_detection_state_.has_value()) {
+     server_bounce_detection_state->navigation_start =
+         delegate_->GetLastCommittedURL().url.is_empty()
+-            ? UrlAndSourceId(navigation_handle->GetInitiator(),
+-                             ukm::kInvalidSourceId)
++            ? UrlAndSourceId{navigation_handle->GetInitiator(),
++                             ukm::kInvalidSourceId}
+             : delegate_->GetLastCommittedURL();
+     return;
+   }
+@@ -961,8 +961,8 @@ void DIPSBounceDetector::DidFinishNaviga
+ 
+   for (size_t i = 0; i < access_types.size() - 1; i++) {
+     redirects.push_back(std::make_unique<DIPSRedirectInfo>(
+-        /*url=*/UrlAndSourceId(navigation_handle->GetRedirectChain()[i],
+-                               navigation_handle->GetRedirectSourceId(i)),
++        /*url=*/UrlAndSourceId{navigation_handle->GetRedirectChain()[i],
++                               navigation_handle->GetRedirectSourceId(i)},
+         /*redirect_type=*/DIPSRedirectType::kServer,
+         /*access_type=*/access_types[i],
+         /*time=*/clock_->Now()));
+@@ -971,16 +971,16 @@ void DIPSBounceDetector::DidFinishNaviga
+   if (navigation_handle->HasCommitted()) {
+     committed_redirect_context_.AppendCommitted(
+         std::move(server_state->navigation_start), std::move(redirects),
+-        UrlAndSourceId(navigation_handle->GetURL(),
+-                       navigation_handle->GetNextPageUkmSourceId()),
++        UrlAndSourceId{navigation_handle->GetURL(),
++                       navigation_handle->GetNextPageUkmSourceId()},
+         current_page_has_sticky_activation);
+   } else {
+     // For uncommitted navigations, treat the last URL visited as a server
+     // redirect, so it is considered a potential tracker.
+     const size_t i = access_types.size() - 1;
+     redirects.push_back(std::make_unique<DIPSRedirectInfo>(
+-        /*url=*/UrlAndSourceId(navigation_handle->GetRedirectChain()[i],
+-                               navigation_handle->GetRedirectSourceId(i)),
++        /*url=*/UrlAndSourceId{navigation_handle->GetRedirectChain()[i],
++                               navigation_handle->GetRedirectSourceId(i)},
+         /*redirect_type=*/DIPSRedirectType::kServer,
+         /*access_type=*/access_types[i],
+         /*time=*/clock_->Now()));
+diff -up chromium-126.0.6478.26/chrome/browser/enterprise/profile_management/profile_management_navigation_throttle.cc.no_matching_constructor chromium-126.0.6478.26/chrome/browser/enterprise/profile_management/profile_management_navigation_throttle.cc
+--- chromium-126.0.6478.26/chrome/browser/enterprise/profile_management/profile_management_navigation_throttle.cc.no_matching_constructor	2024-05-29 18:00:52.000000000 +0200
++++ chromium-126.0.6478.26/chrome/browser/enterprise/profile_management/profile_management_navigation_throttle.cc	2024-06-02 23:51:25.489915414 +0200
+@@ -67,8 +67,8 @@ base::flat_map<std::string, SAMLProfileA
+   // TODO(crbug.com/40267996): Add actual domains with attribute names.
+   profile_attributes->insert(std::make_pair(
+       "supported.test",
+-      SAMLProfileAttributes("placeholderName", "placeholderDomain",
+-                            "placeholderToken")));
++      SAMLProfileAttributes{"placeholderName", "placeholderDomain",
++                            "placeholderToken"}));
+ 
+   // Extract domains and attributes from the command line switch.
+   const base::CommandLine& command_line =
+diff -up chromium-126.0.6478.26/chrome/browser/file_system_access/chrome_file_system_access_permission_context.cc.no_matching_constructor chromium-126.0.6478.26/chrome/browser/file_system_access/chrome_file_system_access_permission_context.cc
+--- chromium-126.0.6478.26/chrome/browser/file_system_access/chrome_file_system_access_permission_context.cc.no_matching_constructor	2024-05-29 18:00:53.000000000 +0200
++++ chromium-126.0.6478.26/chrome/browser/file_system_access/chrome_file_system_access_permission_context.cc	2024-06-02 23:51:25.490915438 +0200
+@@ -385,7 +385,7 @@ bool ShouldBlockAccessToPath(const base:
+       DCHECK(block.path);
+       blocked_path = base::FilePath(block.path);
+     }
+-    rules.emplace_back(blocked_path, block.type);
++    rules.emplace_back() = {blocked_path, block.type};
+   }
+ 
+   base::FilePath nearest_ancestor;
+@@ -1685,11 +1685,11 @@ void ChromeFileSystemAccessPermissionCon
+   // profile's directory, assuming the profile dir is a child of the user data
+   // dir.
+   std::vector<BlockPathRule> extra_rules;
+-  extra_rules.emplace_back(profile_->GetPath().DirName(), kBlockAllChildren);
++  extra_rules.emplace_back() = {profile_->GetPath().DirName(), kBlockAllChildren};
+   if (g_browser_process->profile_manager()) {
+-    extra_rules.emplace_back(
++    extra_rules.emplace_back() = {
+         g_browser_process->profile_manager()->user_data_dir(),
+-        kBlockAllChildren);
++        kBlockAllChildren};
+   }
+ 
+   base::ThreadPool::PostTaskAndReplyWithResult(
+diff -up chromium-126.0.6478.26/chrome/browser/performance_manager/mechanisms/page_discarder.cc.no_matching_constructor chromium-126.0.6478.26/chrome/browser/performance_manager/mechanisms/page_discarder.cc
+--- chromium-126.0.6478.26/chrome/browser/performance_manager/mechanisms/page_discarder.cc.no_matching_constructor	2024-05-29 18:00:54.000000000 +0200
++++ chromium-126.0.6478.26/chrome/browser/performance_manager/mechanisms/page_discarder.cc	2024-06-02 23:51:25.490915438 +0200
+@@ -53,7 +53,7 @@ std::vector<PageDiscarder::DiscardEvent>
+     if (lifecycle_unit->DiscardTab(
+             discard_reason,
+             /*memory_footprint_estimate=*/proxy.second)) {
+-      discard_events.emplace_back(base::TimeTicks::Now(), proxy.second);
++      discard_events.emplace_back() = {base::TimeTicks::Now(), proxy.second};
+     }
+   }
+   return discard_events;
+diff -up chromium-126.0.6478.26/chrome/browser/renderer_context_menu/render_view_context_menu.cc.no_matching_constructor chromium-126.0.6478.26/chrome/browser/renderer_context_menu/render_view_context_menu.cc
+--- chromium-126.0.6478.26/chrome/browser/renderer_context_menu/render_view_context_menu.cc.no_matching_constructor	2024-05-29 18:00:54.000000000 +0200
++++ chromium-126.0.6478.26/chrome/browser/renderer_context_menu/render_view_context_menu.cc	2024-06-02 23:51:25.492915486 +0200
+@@ -4044,10 +4044,10 @@ void RenderViewContextMenu::ExecOpenComp
+     autofill::LocalFrameToken frame_token = driver->GetFrameToken();
+     client->GetManager().OpenCompose(
+         *driver,
+-        autofill::FormGlobalId(
+-            frame_token, autofill::FormRendererId(params_.form_renderer_id)),
+-        autofill::FieldGlobalId(
+-            frame_token, autofill::FieldRendererId(params_.field_renderer_id)),
++        autofill::FormGlobalId{
++            frame_token, autofill::FormRendererId(params_.form_renderer_id)},
++        autofill::FieldGlobalId{
++            frame_token, autofill::FieldRendererId(params_.field_renderer_id)},
+         compose::ComposeManagerImpl::UiEntryPoint::kContextMenu);
+     GetBrowser()->window()->NotifyPromoFeatureUsed(
+         compose::features::kEnableCompose);
+diff -up chromium-126.0.6478.26/chrome/browser/ui/autofill/autofill_context_menu_manager.cc.no_matching_constructor chromium-126.0.6478.26/chrome/browser/ui/autofill/autofill_context_menu_manager.cc
+--- chromium-126.0.6478.26/chrome/browser/ui/autofill/autofill_context_menu_manager.cc.no_matching_constructor	2024-05-29 18:00:58.000000000 +0200
++++ chromium-126.0.6478.26/chrome/browser/ui/autofill/autofill_context_menu_manager.cc	2024-06-02 23:51:25.492915486 +0200
+@@ -383,8 +383,8 @@ void AutofillContextMenuManager::Execute
+     AutofillManager& manager) {
+   auto& driver = static_cast<ContentAutofillDriver&>(manager.driver());
+   driver.browser_events().RendererShouldTriggerSuggestions(
+-      FieldGlobalId(driver.GetFrameToken(),
+-                    FieldRendererId(params_.field_renderer_id)),
++      FieldGlobalId{driver.GetFrameToken(),
++                    FieldRendererId(params_.field_renderer_id)},
+       AutofillSuggestionTriggerSource::kManualFallbackPayments);
+   LogManualFallbackContextMenuEntryAccepted(
+       static_cast<BrowserAutofillManager&>(manager),
+diff -up chromium-126.0.6478.26/chrome/browser/ui/omnibox/chrome_omnibox_client.cc.no_matching_constructor chromium-126.0.6478.26/chrome/browser/ui/omnibox/chrome_omnibox_client.cc
+--- chromium-126.0.6478.26/chrome/browser/ui/omnibox/chrome_omnibox_client.cc.no_matching_constructor	2024-05-29 18:00:58.000000000 +0200
++++ chromium-126.0.6478.26/chrome/browser/ui/omnibox/chrome_omnibox_client.cc	2024-06-02 23:51:25.492915486 +0200
+@@ -512,10 +512,10 @@ void ChromeOmniboxClient::OnAutocomplete
+               alternative_nav_match);
+ 
+   // Store the details necessary to open the omnibox match via browser commands.
+-  location_bar_->set_navigation_params(LocationBar::NavigationParams(
++  location_bar_->set_navigation_params(LocationBar::NavigationParams{
+       destination_url, disposition, transition, match_selection_timestamp,
+       destination_url_entered_without_scheme,
+-      destination_url_entered_with_http_scheme, match.extra_headers));
++      destination_url_entered_with_http_scheme, match.extra_headers});
+ 
+   if (browser_) {
+     auto navigation = chrome::OpenCurrentURL(browser_);
+diff -up chromium-126.0.6478.26/chrome/browser/ui/safety_hub/menu_notification_service.h.no_matching_constructor chromium-126.0.6478.26/chrome/browser/ui/safety_hub/menu_notification_service.h
+--- chromium-126.0.6478.26/chrome/browser/ui/safety_hub/menu_notification_service.h.no_matching_constructor	2024-05-29 18:00:59.000000000 +0200
++++ chromium-126.0.6478.26/chrome/browser/ui/safety_hub/menu_notification_service.h	2024-06-02 23:51:25.493915509 +0200
+@@ -24,6 +24,7 @@ struct MenuNotificationEntry {
+   int command = 0;
+   std::u16string label;
+   safety_hub::SafetyHubModuleType module;
++  MenuNotificationEntry(auto c, auto l, auto m) : command(c), label(l), module(m) { }
+ };
+ 
+ namespace {
+diff -up chromium-126.0.6478.26/chrome/browser/ui/views/frame/contents_layout_manager.cc.no_matching_constructor chromium-126.0.6478.26/chrome/browser/ui/views/frame/contents_layout_manager.cc
+--- chromium-126.0.6478.26/chrome/browser/ui/views/frame/contents_layout_manager.cc.no_matching_constructor	2024-05-29 18:00:59.000000000 +0200
++++ chromium-126.0.6478.26/chrome/browser/ui/views/frame/contents_layout_manager.cc	2024-06-02 23:51:25.493915509 +0200
+@@ -44,20 +44,20 @@ views::ProposedLayout ContentsLayoutMana
+ 
+   // DevTools cares about the specific position, so we have to compensate RTL
+   // layout here.
+-  layouts.child_layouts.emplace_back(
++  layouts.child_layouts.emplace_back() = {
+       devtools_view_.get(), devtools_view_->GetVisible(),
+       host_view()->GetMirroredRect(new_devtools_bounds),
+-      views::SizeBounds(container_size));
+-  layouts.child_layouts.emplace_back(
++      views::SizeBounds(container_size)};
++  layouts.child_layouts.emplace_back() = {
+       contents_view_.get(), contents_view_->GetVisible(),
+       host_view()->GetMirroredRect(new_contents_bounds),
+-      views::SizeBounds(container_size));
++      views::SizeBounds(container_size)};
+ 
+   // Enterprise watermark view is always overlaid, even when empty.
+   if (watermark_view_) {
+-    layouts.child_layouts.emplace_back(
++    layouts.child_layouts.emplace_back() = {
+         watermark_view_.get(), watermark_view_->GetVisible(),
+-        gfx::Rect(0, 0, width, height), views::SizeBounds(container_size));
++        gfx::Rect(0, 0, width, height), views::SizeBounds(container_size)};
+   }
+   layouts.host_size = gfx::Size(width, height);
+   return layouts;
+diff -up chromium-126.0.6478.26/chrome/browser/ui/views/permissions/embedded_permission_prompt_ask_view.cc.no_matching_constructor chromium-126.0.6478.26/chrome/browser/ui/views/permissions/embedded_permission_prompt_ask_view.cc
+--- chromium-126.0.6478.26/chrome/browser/ui/views/permissions/embedded_permission_prompt_ask_view.cc.no_matching_constructor	2024-05-29 18:00:59.000000000 +0200
++++ chromium-126.0.6478.26/chrome/browser/ui/views/permissions/embedded_permission_prompt_ask_view.cc	2024-06-03 18:31:02.456804349 +0200
+@@ -78,8 +78,8 @@ EmbeddedPermissionPromptAskView::GetButt
+       buttons.push_back(allow_always);
+     }
+   } else {
+-    buttons.emplace_back(l10n_util::GetStringUTF16(IDS_PERMISSION_ALLOW),
+-                         ButtonType::kAllow, ui::ButtonStyle::kTonal, kAllowId);
++    buttons.emplace_back() = {l10n_util::GetStringUTF16(IDS_PERMISSION_ALLOW),
++                         ButtonType::kAllow, ui::ButtonStyle::kTonal, kAllowId};
+   }
+   return buttons;
+ }
+diff -up chromium-126.0.6478.26/chrome/browser/ui/views/permissions/embedded_permission_prompt_policy_view.cc.no_matching_constructor chromium-126.0.6478.26/chrome/browser/ui/views/permissions/embedded_permission_prompt_policy_view.cc
+--- chromium-126.0.6478.26/chrome/browser/ui/views/permissions/embedded_permission_prompt_policy_view.cc.no_matching_constructor	2024-05-29 18:00:59.000000000 +0200
++++ chromium-126.0.6478.26/chrome/browser/ui/views/permissions/embedded_permission_prompt_policy_view.cc	2024-06-02 23:51:25.494915534 +0200
+@@ -88,8 +88,8 @@ EmbeddedPermissionPromptPolicyView::GetR
+ std::vector<EmbeddedPermissionPromptPolicyView::ButtonConfiguration>
+ EmbeddedPermissionPromptPolicyView::GetButtonsConfiguration() const {
+   std::vector<ButtonConfiguration> buttons;
+-  buttons.emplace_back(l10n_util::GetStringUTF16(IDS_EMBEDDED_PROMPT_OK_LABEL),
+-                       ButtonType::kPolicyOK, ui::ButtonStyle::kTonal);
++  buttons.emplace_back() = {l10n_util::GetStringUTF16(IDS_EMBEDDED_PROMPT_OK_LABEL),
++                       ButtonType::kPolicyOK, ui::ButtonStyle::kTonal};
+   return buttons;
+ }
+ 
+diff -up chromium-126.0.6478.26/chrome/browser/ui/views/permissions/embedded_permission_prompt_previously_denied_view.cc.no_matching_constructor chromium-126.0.6478.26/chrome/browser/ui/views/permissions/embedded_permission_prompt_previously_denied_view.cc
+--- chromium-126.0.6478.26/chrome/browser/ui/views/permissions/embedded_permission_prompt_previously_denied_view.cc.no_matching_constructor	2024-05-29 18:00:59.000000000 +0200
++++ chromium-126.0.6478.26/chrome/browser/ui/views/permissions/embedded_permission_prompt_previously_denied_view.cc	2024-06-02 23:51:25.494915534 +0200
+@@ -66,13 +66,13 @@ EmbeddedPermissionPromptPreviouslyDenied
+ std::vector<EmbeddedPermissionPromptPreviouslyDeniedView::ButtonConfiguration>
+ EmbeddedPermissionPromptPreviouslyDeniedView::GetButtonsConfiguration() const {
+   std::vector<ButtonConfiguration> buttons;
+-  buttons.emplace_back(
++  buttons.emplace_back() = {
+       l10n_util::GetStringUTF16(IDS_EMBEDDED_PROMPT_CONTINUE_NOT_ALLOWING),
+-      ButtonType::kContinueNotAllowing, ui::ButtonStyle::kTonal);
++      ButtonType::kContinueNotAllowing, ui::ButtonStyle::kTonal};
+ 
+-    buttons.emplace_back(
++    buttons.emplace_back() = {
+         l10n_util::GetStringUTF16(IDS_PERMISSION_ALLOW_THIS_TIME),
+-        ButtonType::kAllowThisTime, ui::ButtonStyle::kTonal, kAllowThisTimeId);
++        ButtonType::kAllowThisTime, ui::ButtonStyle::kTonal, kAllowThisTimeId};
+ 
+   return buttons;
+ }
+diff -up chromium-126.0.6478.26/chrome/browser/ui/views/permissions/embedded_permission_prompt_previously_granted_view.cc.no_matching_constructor chromium-126.0.6478.26/chrome/browser/ui/views/permissions/embedded_permission_prompt_previously_granted_view.cc
+--- chromium-126.0.6478.26/chrome/browser/ui/views/permissions/embedded_permission_prompt_previously_granted_view.cc.no_matching_constructor	2024-05-29 18:00:59.000000000 +0200
++++ chromium-126.0.6478.26/chrome/browser/ui/views/permissions/embedded_permission_prompt_previously_granted_view.cc	2024-06-02 23:51:25.495915557 +0200
+@@ -77,13 +77,13 @@ EmbeddedPermissionPromptPreviouslyGrante
+ std::vector<EmbeddedPermissionPromptPreviouslyGrantedView::ButtonConfiguration>
+ EmbeddedPermissionPromptPreviouslyGrantedView::GetButtonsConfiguration() const {
+   std::vector<ButtonConfiguration> buttons;
+-  buttons.emplace_back(
++  buttons.emplace_back() = {
+       l10n_util::GetStringUTF16(IDS_EMBEDDED_PROMPT_CONTINUE_ALLOWING),
+       ButtonType::kContinueAllowing, ui::ButtonStyle::kTonal,
+-      kContinueAllowingId);
++      kContinueAllowingId};
+ 
+-  buttons.emplace_back(
++  buttons.emplace_back() = {
+       l10n_util::GetStringUTF16(IDS_EMBEDDED_PROMPT_STOP_ALLOWING),
+-      ButtonType::kStopAllowing, ui::ButtonStyle::kTonal, kStopAllowingId);
++      ButtonType::kStopAllowing, ui::ButtonStyle::kTonal, kStopAllowingId};
+   return buttons;
+ }
+diff -up chromium-126.0.6478.26/chrome/browser/ui/views/tabs/tab_style_views.cc.no_matching_constructor chromium-126.0.6478.26/chrome/browser/ui/views/tabs/tab_style_views.cc
+--- chromium-126.0.6478.26/chrome/browser/ui/views/tabs/tab_style_views.cc.no_matching_constructor	2024-05-29 18:00:59.000000000 +0200
++++ chromium-126.0.6478.26/chrome/browser/ui/views/tabs/tab_style_views.cc	2024-06-02 23:51:25.495915557 +0200
+@@ -1214,10 +1214,10 @@ SkPath ChromeRefresh2023TabStyleViews::G
+ 
+     // Radii are clockwise from top left.
+     const SkVector radii[4] = {
+-        SkVector(top_content_corner_radius, top_content_corner_radius),
+-        SkVector(top_content_corner_radius, top_content_corner_radius),
+-        SkVector(bottom_content_corner_radius, bottom_content_corner_radius),
+-        SkVector(bottom_content_corner_radius, bottom_content_corner_radius)};
++        SkVector{top_content_corner_radius, top_content_corner_radius},
++        SkVector{top_content_corner_radius, top_content_corner_radius},
++        SkVector{bottom_content_corner_radius, bottom_content_corner_radius},
++        SkVector{bottom_content_corner_radius, bottom_content_corner_radius}};
+     SkRRect rrect;
+     rrect.setRectRadii(SkRect::MakeLTRB(left, top, right, bottom), radii);
+     SkPath path;
+diff -up chromium-126.0.6478.26/chrome/browser/ui/web_applications/sub_apps_service_impl.cc.no_matching_constructor chromium-126.0.6478.26/chrome/browser/ui/web_applications/sub_apps_service_impl.cc
+--- chromium-126.0.6478.26/chrome/browser/ui/web_applications/sub_apps_service_impl.cc.no_matching_constructor	2024-05-29 18:00:59.000000000 +0200
++++ chromium-126.0.6478.26/chrome/browser/ui/web_applications/sub_apps_service_impl.cc	2024-06-02 23:51:25.496915581 +0200
+@@ -108,7 +108,7 @@ AddOptionsFromMojo(
+                      ConvertPathToUrl(sub_app->manifest_id_path, origin));
+     ASSIGN_OR_RETURN(GURL install_url,
+                      ConvertPathToUrl(sub_app->install_url_path, origin));
+-    sub_apps.emplace_back(std::move(manifest_id), std::move(install_url));
++    sub_apps.emplace_back() = {std::move(manifest_id), std::move(install_url)};
+   }
+   return sub_apps;
+ }
+@@ -440,7 +440,7 @@ void SubAppsServiceImpl::ScheduleSubAppI
+         base::BindOnce(
+             [](webapps::ManifestId manifest_id, const webapps::AppId& app_id,
+                webapps::InstallResultCode result_code) {
+-              return SubAppInstallResult(manifest_id, app_id, result_code);
++              return SubAppInstallResult{manifest_id, app_id, result_code};
+             },
+             manifest_id)
+             .Then(concurrent.CreateCallback()),
+diff -up chromium-126.0.6478.26/chrome/test/chromedriver/capabilities.cc.no_matching_constructor chromium-126.0.6478.26/chrome/test/chromedriver/capabilities.cc
+--- chromium-126.0.6478.26/chrome/test/chromedriver/capabilities.cc.no_matching_constructor	2024-05-29 18:01:01.000000000 +0200
++++ chromium-126.0.6478.26/chrome/test/chromedriver/capabilities.cc	2024-06-02 23:51:25.496915581 +0200
+@@ -346,7 +346,7 @@ Status ParseMobileEmulation(const base::
+                         "'version' field of type string");
+         }
+ 
+-        brands.emplace_back(*brand, *version);
++        brands.emplace_back() = {*brand, *version};
+       }
+ 
+       client_hints.brands = std::move(brands);
+@@ -384,7 +384,7 @@ Status ParseMobileEmulation(const base::
+                         "a 'version' field of type string");
+         }
+ 
+-        full_version_list.emplace_back(*brand, *version);
++        full_version_list.emplace_back() = {*brand, *version};
+       }
+ 
+       client_hints.full_version_list = std::move(full_version_list);
+diff -up chromium-126.0.6478.26/components/attribution_reporting/aggregatable_utils.cc.no_matching_constructor chromium-126.0.6478.26/components/attribution_reporting/aggregatable_utils.cc
+--- chromium-126.0.6478.26/components/attribution_reporting/aggregatable_utils.cc.no_matching_constructor	2024-05-29 18:01:05.000000000 +0200
++++ chromium-126.0.6478.26/components/attribution_reporting/aggregatable_utils.cc	2024-06-02 23:51:25.497915604 +0200
+@@ -33,7 +33,7 @@ std::vector<NullAggregatableReport> GetN
+     }
+ 
+     if (generate_func(i)) {
+-      reports.emplace_back(fake_source_time);
++      reports.emplace_back() = {fake_source_time};
+     }
+   }
+   return reports;
+diff -up chromium-126.0.6478.26/components/attribution_reporting/registration_info.cc.no_matching_constructor chromium-126.0.6478.26/components/attribution_reporting/registration_info.cc
+--- chromium-126.0.6478.26/components/attribution_reporting/registration_info.cc.no_matching_constructor	2024-05-29 18:01:05.000000000 +0200
++++ chromium-126.0.6478.26/components/attribution_reporting/registration_info.cc	2024-06-02 23:51:25.497915604 +0200
+@@ -96,7 +96,7 @@ RegistrationInfo::ParseInfo(const net::s
+ 
+   ASSIGN_OR_RETURN(bool report_header_errors, ParseReportHeaderErrors(dict));
+ 
+-  return RegistrationInfo(preferred_platform, report_header_errors);
++  return RegistrationInfo{preferred_platform, report_header_errors};
+ }
+ 
+ }  // namespace attribution_reporting
+diff -up chromium-126.0.6478.26/components/autofill/content/renderer/form_autofill_util.cc.no_matching_constructor chromium-126.0.6478.26/components/autofill/content/renderer/form_autofill_util.cc
+--- chromium-126.0.6478.26/components/autofill/content/renderer/form_autofill_util.cc.no_matching_constructor	2024-05-29 18:01:05.000000000 +0200
++++ chromium-126.0.6478.26/components/autofill/content/renderer/form_autofill_util.cc	2024-06-02 23:51:25.497915604 +0200
+@@ -2279,7 +2279,7 @@ std::vector<std::pair<FieldRef, WebAutof
+     if (element.Focused()) {
+       focused_field = {&field, element};
+     } else {
+-      unfocused_fields.emplace_back(&field, element);
++      unfocused_fields.emplace_back() = {&field, element};
+     }
+   }
+ 
+diff -up chromium-126.0.6478.26/components/autofill/core/browser/webdata/addresses/address_autofill_table.cc.no_matching_constructor chromium-126.0.6478.26/components/autofill/core/browser/webdata/addresses/address_autofill_table.cc
+--- chromium-126.0.6478.26/components/autofill/core/browser/webdata/addresses/address_autofill_table.cc.no_matching_constructor	2024-05-29 18:01:05.000000000 +0200
++++ chromium-126.0.6478.26/components/autofill/core/browser/webdata/addresses/address_autofill_table.cc	2024-06-02 23:51:25.497915604 +0200
+@@ -635,10 +635,10 @@ std::unique_ptr<AutofillProfile> Address
+     }
+ 
+     base::span<const uint8_t> observations_data = s.ColumnBlob(3);
+-    field_type_values.emplace_back(
++    field_type_values.emplace_back() = {
+         type, s.ColumnString16(1), s.ColumnInt(2),
+         std::vector<uint8_t>(observations_data.begin(),
+-                             observations_data.end()));
++                             observations_data.end())};
+ 
+     if (type == ADDRESS_HOME_COUNTRY) {
+       country_code = base::UTF16ToUTF8(s.ColumnString16(1));
+diff -up chromium-126.0.6478.26/components/invalidation/impl/fcm_invalidation_service.cc.no_matching_constructor chromium-126.0.6478.26/components/invalidation/impl/fcm_invalidation_service.cc
+--- chromium-126.0.6478.26/components/invalidation/impl/fcm_invalidation_service.cc.no_matching_constructor	2024-05-29 18:01:06.000000000 +0200
++++ chromium-126.0.6478.26/components/invalidation/impl/fcm_invalidation_service.cc	2024-06-02 23:51:25.498915629 +0200
+@@ -98,7 +98,7 @@ bool FCMInvalidationService::UpdateInter
+   DVLOG(2) << "Subscribing to topics: " << topic_set.size();
+   TopicMap topic_map;
+   for (const auto& topic_name : topic_set) {
+-    topic_map[topic_name] = TopicMetadata(handler->IsPublicTopic(topic_name));
++    topic_map[topic_name] = TopicMetadata{handler->IsPublicTopic(topic_name)};
+   }
+   // TODO(crbug.com/40675708): UpdateRegisteredTopics() should be renamed to
+   // clarify that it actually updates whether topics need subscription (aka
+diff -up chromium-126.0.6478.26/components/memory_pressure/unnecessary_discard_monitor.cc.no_matching_constructor chromium-126.0.6478.26/components/memory_pressure/unnecessary_discard_monitor.cc
+--- chromium-126.0.6478.26/components/memory_pressure/unnecessary_discard_monitor.cc.no_matching_constructor	2024-05-29 18:01:07.000000000 +0200
++++ chromium-126.0.6478.26/components/memory_pressure/unnecessary_discard_monitor.cc	2024-06-02 23:51:25.498915629 +0200
+@@ -92,8 +92,8 @@ void UnnecessaryDiscardMonitor::OnDiscar
+   DCHECK_CALLED_ON_VALID_SEQUENCE(sequence_checker_);
+   if (current_reclaim_event_) {
+     // Cache this kill event along with the time it took place.
+-    current_reclaim_event_kills_.emplace_back(memory_freed_kb,
+-                                              discard_complete_time);
++    current_reclaim_event_kills_.emplace_back() = {memory_freed_kb,
++                                              discard_complete_time};
+   }
+ }
+ 
+diff -up chromium-126.0.6478.26/components/password_manager/core/browser/password_manager.cc.no_matching_constructor chromium-126.0.6478.26/components/password_manager/core/browser/password_manager.cc
+--- chromium-126.0.6478.26/components/password_manager/core/browser/password_manager.cc.no_matching_constructor	2024-05-29 18:01:07.000000000 +0200
++++ chromium-126.0.6478.26/components/password_manager/core/browser/password_manager.cc	2024-06-02 23:51:25.498915629 +0200
+@@ -686,7 +686,7 @@ void PasswordManager::OnUserModifiedNonP
+     it->second.last_change = base::Time::Now();
+   } else {
+     possible_usernames_.Put(
+-        PossibleUsernameFieldIdentifier(driver_id, renderer_id),
++        PossibleUsernameFieldIdentifier{driver_id, renderer_id},
+         PossibleUsernameData(GetSignonRealm(driver->GetLastCommittedURL()),
+                              renderer_id, value, base::Time::Now(), driver_id,
+                              autocomplete_attribute_has_username,
+diff -up chromium-126.0.6478.26/components/password_manager/core/browser/password_suggestion_generator.cc.no_matching_constructor chromium-126.0.6478.26/components/password_manager/core/browser/password_suggestion_generator.cc
+--- chromium-126.0.6478.26/components/password_manager/core/browser/password_suggestion_generator.cc.no_matching_constructor	2024-05-29 18:01:07.000000000 +0200
++++ chromium-126.0.6478.26/components/password_manager/core/browser/password_suggestion_generator.cc	2024-06-03 18:08:15.650577186 +0200
+@@ -156,7 +156,7 @@ void MaybeAppendManagePasswordsEntry(std
+       SuggestionType::kAllSavedPasswordsEntry);
+   // The UI code will pick up an icon from the resources based on the string.
+   suggestion.trailing_icon = Suggestion::Icon::kGooglePasswordManager;
+-  suggestions->emplace_back(std::move(suggestion));
++  suggestions->emplace_back() = {std::move(suggestion)};
+ }
+ 
+ // If |field_suggestion| matches |field_content|, creates a Suggestion out of it
+@@ -201,7 +201,7 @@ void AppendSuggestionIfMatching(const st
+       suggestion.trailing_icon = CreateStoreIcon(from_account_store);
+     }
+ #endif
+-    suggestions->emplace_back(std::move(suggestion));
++    suggestions->emplace_back() = {std::move(suggestion)};
+   }
+ }
+ 
+@@ -233,8 +233,8 @@ void GetSuggestions(const autofill::Pass
+ 
+ void AddPasswordUsernameChildSuggestion(const std::u16string& username,
+                                         Suggestion& suggestion) {
+-  suggestion.children.emplace_back(
+-      username, SuggestionType::kPasswordFieldByFieldFilling);
++  suggestion.children.emplace_back() = {
++      username, SuggestionType::kPasswordFieldByFieldFilling};
+ }
+ 
+ void AddFillPasswordChildSuggestion(Suggestion& suggestion,
+@@ -244,11 +244,11 @@ void AddFillPasswordChildSuggestion(Sugg
+       l10n_util::GetStringUTF16(
+           IDS_PASSWORD_MANAGER_MANUAL_FALLBACK_FILL_PASSWORD_ENTRY),
+       SuggestionType::kFillPassword);
+-  fill_password.payload = Suggestion::PasswordSuggestionDetails(
++  fill_password.payload = Suggestion::PasswordSuggestionDetails{
+       credential.password,
+       GetHumanReadableRealm(credential.GetFirstSignonRealm()),
+-      is_cross_origin.value());
+-  suggestion.children.emplace_back(std::move(fill_password));
++      is_cross_origin.value()};
++  suggestion.children.emplace_back() = {std::move(fill_password)};
+ }
+ 
+ void AddViewPasswordDetailsChildSuggestion(Suggestion& suggestion) {
+@@ -257,7 +257,7 @@ void AddViewPasswordDetailsChildSuggesti
+           IDS_PASSWORD_MANAGER_MANUAL_FALLBACK_VIEW_DETAILS_ENTRY),
+       SuggestionType::kViewPasswordDetails);
+   view_password_details.icon = Suggestion::Icon::kKey;
+-  suggestion.children.emplace_back(std::move(view_password_details));
++  suggestion.children.emplace_back() = {std::move(view_password_details)};
+ }
+ 
+ void AppendManualFallbackSuggestions(const CredentialUIEntry& credential,
+@@ -278,9 +278,9 @@ void AppendManualFallbackSuggestions(con
+     const std::u16string maybe_username =
+         ReplaceEmptyUsername(credential.username, &replaced);
+     suggestion.additional_label = maybe_username;
+-    suggestion.payload = Suggestion::PasswordSuggestionDetails(
++    suggestion.payload = Suggestion::PasswordSuggestionDetails{
+         credential.password, base::UTF8ToUTF16(kDisplaySingonRealm),
+-        is_cross_origin.value());
++        is_cross_origin.value()};
+     suggestion.is_acceptable = on_password_form.value();
+ 
+     if (!replaced) {
+@@ -290,7 +290,7 @@ void AppendManualFallbackSuggestions(con
+     suggestion.children.emplace_back(SuggestionType::kSeparator);
+     AddViewPasswordDetailsChildSuggestion(suggestion);
+ 
+-    suggestions->emplace_back(std::move(suggestion));
++    suggestions->emplace_back() = {std::move(suggestion)};
+   }
+ }
+ 
+@@ -363,27 +363,27 @@ std::vector<Suggestion> PasswordSuggesti
+   if (uses_passkeys && delegate->OfferPasskeysFromAnotherDeviceOption()) {
+     bool listed_passkeys = delegate->GetPasskeys().has_value() &&
+                            delegate->GetPasskeys()->size() > 0;
+-    suggestions.emplace_back(CreateWebAuthnEntry(listed_passkeys));
++    suggestions.emplace_back() = {CreateWebAuthnEntry(listed_passkeys)};
+   }
+ #endif
+ 
+   // Add password generation entry, if available.
+   if (offers_generation) {
+-    suggestions.emplace_back(
+-        show_account_storage_optin
++    suggestions.emplace_back() =
++        {show_account_storage_optin
+             ? CreateEntryToOptInToAccountStorageThenGenerate()
+-            : CreateGenerationEntry());
++            : CreateGenerationEntry()};
+   }
+ 
+   // Add button to opt into using the account storage for passwords and then
+   // suggest.
+   if (show_account_storage_optin) {
+-    suggestions.emplace_back(CreateEntryToOptInToAccountStorageThenFill());
++    suggestions.emplace_back() = {CreateEntryToOptInToAccountStorageThenFill()};
+   }
+ 
+   // Add button to sign-in which unlocks the previously used account store.
+   if (show_account_storage_resignin) {
+-    suggestions.emplace_back(CreateEntryToReSignin());
++    suggestions.emplace_back() = {CreateEntryToReSignin()};
+   }
+ 
+   // Add "Manage all passwords" link to settings.
+@@ -401,10 +401,10 @@ PasswordSuggestionGenerator::GetManualFa
+   const bool generate_sections =
+       !suggested_credentials.empty() && !credentials.empty();
+   if (generate_sections) {
+-    suggestions.emplace_back(
++    suggestions.emplace_back() = {
+         l10n_util::GetStringUTF16(
+             IDS_PASSWORD_MANAGER_MANUAL_FALLBACK_SUGGESTED_PASSWORDS_SECTION_TITLE),
+-        SuggestionType::kTitle);
++        SuggestionType::kTitle};
+   }
+ 
+   std::set<std::string> suggested_signon_realms;
+@@ -415,10 +415,10 @@ PasswordSuggestionGenerator::GetManualFa
+   }
+ 
+   if (generate_sections) {
+-    suggestions.emplace_back(
++    suggestions.emplace_back() = {
+         l10n_util::GetStringUTF16(
+             IDS_PASSWORD_MANAGER_MANUAL_FALLBACK_ALL_PASSWORDS_SECTION_TITLE),
+-        SuggestionType::kTitle);
++        SuggestionType::kTitle};
+   }
+ 
+   // Only the "All passwords" section should be sorted alphabetically.
+diff -up chromium-126.0.6478.26/components/performance_manager/worker_watcher.cc.no_matching_constructor chromium-126.0.6478.26/components/performance_manager/worker_watcher.cc
+--- chromium-126.0.6478.26/components/performance_manager/worker_watcher.cc.no_matching_constructor	2024-05-29 18:01:08.000000000 +0200
++++ chromium-126.0.6478.26/components/performance_manager/worker_watcher.cc	2024-06-02 23:51:25.499915653 +0200
+@@ -244,7 +244,7 @@ void WorkerWatcher::OnWorkerCreated(
+   DCHECK(insertion_result.second);
+ 
+   absl::visit(
+-      base::Overloaded(
++      base::Overloaded{
+           [&,
+            this](const content::GlobalRenderFrameHostId& render_frame_host_id) {
+             AddFrameClientConnection(insertion_result.first->second.get(),
+@@ -253,7 +253,7 @@ void WorkerWatcher::OnWorkerCreated(
+           [&, this](blink::DedicatedWorkerToken dedicated_worker_token) {
+             ConnectDedicatedWorkerClient(insertion_result.first->second.get(),
+                                          dedicated_worker_token);
+-          }),
++          }},
+       creator);
+ }
+ 
+@@ -270,7 +270,7 @@ void WorkerWatcher::OnBeforeWorkerDestro
+   // First disconnect the creator's node from this worker node.
+ 
+   absl::visit(
+-      base::Overloaded(
++      base::Overloaded{
+           [&,
+            this](const content::GlobalRenderFrameHostId& render_frame_host_id) {
+             RemoveFrameClientConnection(worker_node.get(),
+@@ -279,7 +279,7 @@ void WorkerWatcher::OnBeforeWorkerDestro
+           [&, this](blink::DedicatedWorkerToken dedicated_worker_token) {
+             DisconnectDedicatedWorkerClient(worker_node.get(),
+                                             dedicated_worker_token);
+-          }),
++          }},
+       creator);
+ 
+   // Disconnect all child workers before destroying the node.
+@@ -456,7 +456,7 @@ void WorkerWatcher::OnControlleeAdded(
+     const std::string& client_uuid,
+     const content::ServiceWorkerClientInfo& client_info) {
+   absl::visit(
+-      base::Overloaded(
++      base::Overloaded{
+           [&, this](content::GlobalRenderFrameHostId render_frame_host_id) {
+             // For window clients, it is necessary to wait until the navigation
+             // has committed to a RenderFrameHost.
+@@ -494,7 +494,7 @@ void WorkerWatcher::OnControlleeAdded(
+               ConnectSharedWorkerClient(service_worker_node,
+                                         shared_worker_token);
+             }
+-          }),
++          }},
+       client_info);
+ }
+ 
+@@ -534,7 +534,7 @@ void WorkerWatcher::OnControlleeRemoved(
+     return;
+ 
+   absl::visit(
+-      base::Overloaded(
++      base::Overloaded{
+           [&, this](content::GlobalRenderFrameHostId render_frame_host_id) {
+             RemoveFrameClientConnection(worker_node, render_frame_host_id);
+           },
+@@ -544,7 +544,7 @@ void WorkerWatcher::OnControlleeRemoved(
+           },
+           [&, this](blink::SharedWorkerToken shared_worker_token) {
+             DisconnectSharedWorkerClient(worker_node, shared_worker_token);
+-          }),
++          }},
+       client);
+ }
+ 
+@@ -820,7 +820,7 @@ void WorkerWatcher::ConnectAllServiceWor
+ 
+   for (const auto& kv : it->second) {
+     absl::visit(
+-        base::Overloaded(
++        base::Overloaded{
+             [&, this](content::GlobalRenderFrameHostId render_frame_host_id) {
+               AddFrameClientConnection(service_worker_node,
+                                        render_frame_host_id);
+@@ -832,7 +832,7 @@ void WorkerWatcher::ConnectAllServiceWor
+             [&, this](blink::SharedWorkerToken shared_worker_token) {
+               ConnectSharedWorkerClient(service_worker_node,
+                                         shared_worker_token);
+-            }),
++            }},
+         kv.second);
+   }
+ }
+@@ -847,7 +847,7 @@ void WorkerWatcher::DisconnectAllService
+ 
+   for (const auto& kv : it->second) {
+     absl::visit(
+-        base::Overloaded(
++        base::Overloaded{
+             [&, this](
+                 const content::GlobalRenderFrameHostId& render_frame_host_id) {
+               RemoveFrameClientConnection(service_worker_node,
+@@ -861,7 +861,7 @@ void WorkerWatcher::DisconnectAllService
+             [&, this](const blink::SharedWorkerToken& shared_worker_token) {
+               DisconnectSharedWorkerClient(service_worker_node,
+                                            shared_worker_token);
+-            }),
++            }},
+         kv.second);
+   }
+ }
+diff -up chromium-126.0.6478.26/components/viz/service/display_embedder/skia_output_surface_impl_on_gpu.cc.no_matching_constructor chromium-126.0.6478.26/components/viz/service/display_embedder/skia_output_surface_impl_on_gpu.cc
+--- chromium-126.0.6478.26/components/viz/service/display_embedder/skia_output_surface_impl_on_gpu.cc.no_matching_constructor	2024-05-29 18:01:12.000000000 +0200
++++ chromium-126.0.6478.26/components/viz/service/display_embedder/skia_output_surface_impl_on_gpu.cc	2024-06-02 23:51:25.499915653 +0200
+@@ -1719,7 +1719,7 @@ void SkiaOutputSurfaceImplOnGpu::CopyOut
+ 
+       // Issue readbacks from the surfaces:
+       for (size_t i = 0; i < CopyOutputResult::kNV12MaxPlanes; ++i) {
+-        SkISize size(plane_surfaces[i]->width(), plane_surfaces[i]->height());
++        SkISize size{plane_surfaces[i]->width(), plane_surfaces[i]->height()};
+         SkImageInfo dst_info = SkImageInfo::Make(
+             size, (i == 0) ? kAlpha_8_SkColorType : kR8G8_unorm_SkColorType,
+             kUnpremul_SkAlphaType);
+diff -up chromium-126.0.6478.26/content/browser/download/save_package.cc.no_matching_constructor chromium-126.0.6478.26/content/browser/download/save_package.cc
+--- chromium-126.0.6478.26/content/browser/download/save_package.cc.no_matching_constructor	2024-05-29 18:01:12.000000000 +0200
++++ chromium-126.0.6478.26/content/browser/download/save_package.cc	2024-06-02 23:51:25.500915676 +0200
+@@ -802,8 +802,8 @@ void SavePackage::Finish() {
+   if (download_) {
+     std::vector<download::DownloadSaveItemData::ItemInfo> files;
+     for (auto& item : saved_success_items_) {
+-      files.emplace_back(item.second->full_path(), item.second->url(),
+-                         item.second->referrer().url);
++      files.emplace_back() = {item.second->full_path(), item.second->url(),
++                         item.second->referrer().url};
+     }
+     download::DownloadSaveItemData::AttachItemData(download_, std::move(files));
+   }
+diff -up chromium-126.0.6478.26/content/browser/fenced_frame/fenced_frame_config.cc.no_matching_constructor chromium-126.0.6478.26/content/browser/fenced_frame/fenced_frame_config.cc
+--- chromium-126.0.6478.26/content/browser/fenced_frame/fenced_frame_config.cc.no_matching_constructor	2024-05-29 18:01:12.000000000 +0200
++++ chromium-126.0.6478.26/content/browser/fenced_frame/fenced_frame_config.cc	2024-06-02 23:51:25.500915676 +0200
+@@ -407,7 +407,7 @@ void FencedFrameProperties::UpdateParent
+         feature, allow_list.AllowedOrigins(), allow_list.SelfIfMatches(),
+         allow_list.MatchesAll(), allow_list.MatchesOpaqueSrc());
+   }
+-  parent_permissions_info_.emplace(parsed_policies, parent_origin);
++  parent_permissions_info_.emplace() = {parsed_policies, parent_origin};
+ }
+ 
+ }  // namespace content
+diff -up chromium-126.0.6478.26/content/browser/first_party_sets/first_party_set_parser.cc.no_matching_constructor chromium-126.0.6478.26/content/browser/first_party_sets/first_party_set_parser.cc
+--- chromium-126.0.6478.26/content/browser/first_party_sets/first_party_set_parser.cc.no_matching_constructor	2024-05-29 18:01:12.000000000 +0200
++++ chromium-126.0.6478.26/content/browser/first_party_sets/first_party_set_parser.cc	2024-06-02 23:51:25.501915701 +0200
+@@ -774,7 +774,7 @@ FirstPartySetParser::ParseSetsFromEnterp
+                      context.GetPolicySetsFromList(
+                          policy.FindList(kFirstPartySetPolicyAdditionsField),
+                          PolicySetType::kAddition));
+-    return ParsedPolicySetLists(std::move(replacements), std::move(additions));
++    return ParsedPolicySetLists{std::move(replacements), std::move(additions)};
+   }();
+ 
+   context.PostProcessSetLists(set_lists);
+diff -up chromium-126.0.6478.26/content/browser/gpu/compositor_util.cc.no_matching_constructor chromium-126.0.6478.26/content/browser/gpu/compositor_util.cc
+--- chromium-126.0.6478.26/content/browser/gpu/compositor_util.cc.no_matching_constructor	2024-05-29 18:01:12.000000000 +0200
++++ chromium-126.0.6478.26/content/browser/gpu/compositor_util.cc	2024-06-02 23:51:25.501915701 +0200
+@@ -108,7 +108,7 @@ std::vector<GpuFeatureData> GetGpuFeatur
+       *base::CommandLine::ForCurrentProcess();
+ 
+   std::vector<GpuFeatureData> features;
+-  features.emplace_back(
++  features.emplace_back() = {
+       "2d_canvas",
+       SafeGetFeatureStatus(
+           gpu_feature_info, gpu::GPU_FEATURE_TYPE_ACCELERATED_2D_CANVAS,
+@@ -116,13 +116,13 @@ std::vector<GpuFeatureData> GetGpuFeatur
+       DisableInfo::Problem(
+           "Accelerated 2D canvas is unavailable: either disabled "
+           "via blocklist or the command line."),
+-      true);
+-  features.emplace_back(
++      true};
++  features.emplace_back() = {
+       "canvas_oop_rasterization",
+       SafeGetFeatureStatus(
+           gpu_feature_info, gpu::GPU_FEATURE_TYPE_CANVAS_OOP_RASTERIZATION,
+-          command_line.HasSwitch(switches::kDisableAccelerated2dCanvas)));
+-  features.emplace_back(
++          command_line.HasSwitch(switches::kDisableAccelerated2dCanvas))};
++  features.emplace_back() = {
+       "gpu_compositing",
+       // TODO(rivr): Replace with a check to see which backend is used for
+       // compositing; do the same for GPU rasterization if it's enabled. For
+@@ -136,16 +136,16 @@ std::vector<GpuFeatureData> GetGpuFeatur
+           "about:flags "
+           "or the command line. The browser will fall back to software "
+           "compositing and hardware acceleration will be unavailable."),
+-      true);
+-  features.emplace_back(
++      true};
++  features.emplace_back() = {
+       "webgl",
+       SafeGetFeatureStatus(gpu_feature_info,
+                            gpu::GPU_FEATURE_TYPE_ACCELERATED_WEBGL,
+                            command_line.HasSwitch(switches::kDisableWebGL)),
+       DisableInfo::Problem(
+           "WebGL has been disabled via blocklist or the command line."),
+-      false);
+-  features.emplace_back(
++      false};
++  features.emplace_back() = {
+       "video_decode",
+       SafeGetFeatureStatus(
+           gpu_feature_info, gpu::GPU_FEATURE_TYPE_ACCELERATED_VIDEO_DECODE,
+@@ -156,8 +156,8 @@ std::vector<GpuFeatureData> GetGpuFeatur
+       DisableInfo::Problem(
+           "Accelerated video decode has been disabled, either via blocklist, "
+           "about:flags or the command line."),
+-      true);
+-  features.emplace_back(
++      true};
++  features.emplace_back() = {
+       "video_encode",
+       SafeGetFeatureStatus(
+           gpu_feature_info, gpu::GPU_FEATURE_TYPE_ACCELERATED_VIDEO_ENCODE,
+@@ -169,33 +169,33 @@ std::vector<GpuFeatureData> GetGpuFeatur
+       DisableInfo::Problem(
+           "Accelerated video encode has been disabled, either via blocklist, "
+           "about:flags or the command line."),
+-      true);
+-  features.emplace_back(
++      true};
++  features.emplace_back() = {
+       "rasterization",
+       SafeGetFeatureStatus(gpu_feature_info,
+                            gpu::GPU_FEATURE_TYPE_GPU_TILE_RASTERIZATION),
+       DisableInfo::Problem(
+           "Accelerated rasterization has been disabled, either via blocklist, "
+           "about:flags or the command line."),
+-      true);
+-  features.emplace_back(
++      true};
++  features.emplace_back() = {
+       "opengl", SafeGetFeatureStatus(gpu_feature_info,
+-                                     gpu::GPU_FEATURE_TYPE_ACCELERATED_GL));
++                                     gpu::GPU_FEATURE_TYPE_ACCELERATED_GL)};
+ #if BUILDFLAG(ENABLE_VULKAN)
+-  features.emplace_back(
++  features.emplace_back() = {
+       "vulkan",
+-      SafeGetFeatureStatus(gpu_feature_info, gpu::GPU_FEATURE_TYPE_VULKAN));
++      SafeGetFeatureStatus(gpu_feature_info, gpu::GPU_FEATURE_TYPE_VULKAN)};
+ #endif
+-  features.emplace_back(
++  features.emplace_back() = {
+       "multiple_raster_threads",
+-      GetFakeFeatureStatus(NumberOfRendererRasterThreads() > 1));
++      GetFakeFeatureStatus(NumberOfRendererRasterThreads() > 1)};
+ #if BUILDFLAG(IS_ANDROID)
+-  features.emplace_back(
++  features.emplace_back() = {
+       "surface_control",
+       SafeGetFeatureStatus(gpu_feature_info,
+-                           gpu::GPU_FEATURE_TYPE_ANDROID_SURFACE_CONTROL));
++                           gpu::GPU_FEATURE_TYPE_ANDROID_SURFACE_CONTROL)};
+ #endif
+-  features.emplace_back(
++  features.emplace_back() = {
+       "webgl2",
+       SafeGetFeatureStatus(
+           gpu_feature_info, gpu::GPU_FEATURE_TYPE_ACCELERATED_WEBGL2,
+@@ -203,12 +203,12 @@ std::vector<GpuFeatureData> GetGpuFeatur
+               command_line.HasSwitch(switches::kDisableWebGL2)),
+       DisableInfo::Problem(
+           "WebGL2 has been disabled via blocklist or the command line."),
+-      false);
+-  features.emplace_back("raw_draw",
+-                        GetFakeFeatureStatus(features::IsUsingRawDraw()));
+-  features.emplace_back("direct_rendering_display_compositor",
+-                        GetFakeFeatureStatus(features::IsDrDcEnabled()));
+-  features.emplace_back(
++      false};
++  features.emplace_back() = {"raw_draw",
++                        GetFakeFeatureStatus(features::IsUsingRawDraw())};
++  features.emplace_back() = {"direct_rendering_display_compositor",
++                        GetFakeFeatureStatus(features::IsDrDcEnabled())};
++  features.emplace_back() = {
+       "webgpu",
+       SafeGetFeatureStatus(
+           gpu_feature_info, gpu::GPU_FEATURE_TYPE_ACCELERATED_WEBGPU,
+@@ -216,14 +216,14 @@ std::vector<GpuFeatureData> GetGpuFeatur
+               !base::FeatureList::IsEnabled(::features::kWebGPUService)),
+       DisableInfo::Problem(
+           "WebGPU has been disabled via blocklist or the command line."),
+-      false);
+-  features.emplace_back(
++      false};
++  features.emplace_back() = {
+       "skia_graphite",
+       SafeGetFeatureStatus(gpu_feature_info,
+-                           gpu::GPU_FEATURE_TYPE_SKIA_GRAPHITE));
+-  features.emplace_back(
++                           gpu::GPU_FEATURE_TYPE_SKIA_GRAPHITE)};
++  features.emplace_back() = {
+       "webnn",
+-      SafeGetFeatureStatus(gpu_feature_info, gpu::GPU_FEATURE_TYPE_WEBNN));
++      SafeGetFeatureStatus(gpu_feature_info, gpu::GPU_FEATURE_TYPE_WEBNN)};
+   return features;
+ }
+ 
+diff -up chromium-126.0.6478.26/content/browser/interest_group/header_direct_from_seller_signals.h.no_matching_constructor chromium-126.0.6478.26/content/browser/interest_group/header_direct_from_seller_signals.h
+--- chromium-126.0.6478.26/content/browser/interest_group/header_direct_from_seller_signals.h.no_matching_constructor	2024-05-29 18:01:12.000000000 +0200
++++ chromium-126.0.6478.26/content/browser/interest_group/header_direct_from_seller_signals.h	2024-06-02 23:51:25.501915701 +0200
+@@ -133,6 +133,7 @@ class CONTENT_EXPORT HeaderDirectFromSel
+ 
+     // The Ad-Auction-Signals response served by `origin`.
+     std::string response_json;
++    UnprocessedResponse(auto u, auto s) : origin(u), response_json(s) { }
+   };
+ 
+   // Information from ParseAndFind() calls used by ParseAndFindCompleted.
+diff -up chromium-126.0.6478.26/content/browser/interest_group/interest_group_auction.cc.no_matching_constructor chromium-126.0.6478.26/content/browser/interest_group/interest_group_auction.cc
+--- chromium-126.0.6478.26/content/browser/interest_group/interest_group_auction.cc.no_matching_constructor	2024-05-29 18:01:12.000000000 +0200
++++ chromium-126.0.6478.26/content/browser/interest_group/interest_group_auction.cc	2024-06-02 23:51:25.503915748 +0200
+@@ -616,7 +616,7 @@ bool SampleDebugReport(
+        blink::features::kFledgeDebugReportRestrictedCooldown.Get() !=
+            base::Milliseconds(0))) {
+     new_debug_report_lockout_and_cooldowns.debug_report_cooldown_map[origin] =
+-        DebugReportCooldown(now_nearest_next_hour, cooldown_type);
++        DebugReportCooldown{now_nearest_next_hour, cooldown_type};
+   }
+ 
+   return can_send_debug_report;
+diff -up chromium-126.0.6478.26/content/browser/interest_group/interest_group_storage.cc.no_matching_constructor chromium-126.0.6478.26/content/browser/interest_group/interest_group_storage.cc
+--- chromium-126.0.6478.26/content/browser/interest_group/interest_group_storage.cc.no_matching_constructor	2024-05-29 18:01:12.000000000 +0200
++++ chromium-126.0.6478.26/content/browser/interest_group/interest_group_storage.cc	2024-06-04 13:23:48.279501017 +0200
+@@ -204,8 +204,8 @@ blink::InterestGroup::Ad FromInterestGro
+       for (const auto& origin : *maybe_allowed_reporting_origins) {
+         const std::string* origin_str = origin.GetIfString();
+         DCHECK(origin_str);
+-        allowed_reporting_origins_vector.emplace_back(
+-            DeserializeOrigin(*origin_str));
++        allowed_reporting_origins_vector.emplace_back() = {
++            DeserializeOrigin(*origin_str)};
+       }
+       result.allowed_reporting_origins =
+           std::move(allowed_reporting_origins_vector);
+@@ -249,7 +249,7 @@ std::optional<base::flat_map<std::string
+     if (!pair.second.is_double()) {
+       return std::nullopt;
+     }
+-    pairs.emplace_back(pair.first, pair.second.GetDouble());
++    pairs.emplace_back() = {pair.first, pair.second.GetDouble()};
+   }
+   return base::flat_map<std::string, double>(std::move(pairs));
+ }
+@@ -307,8 +307,8 @@ DeserializeInterestGroupAdVectorJson(con
+   for (const auto& ad_value : ads_value->GetList()) {
+     const base::Value::Dict* dict = ad_value.GetIfDict();
+     if (dict) {
+-      result.emplace_back(
+-          FromInterestGroupAdValue(passkey, *dict, for_components));
++      result.emplace_back() = {
++          FromInterestGroupAdValue(passkey, *dict, for_components)};
+     }
+   }
+   return result;
+@@ -352,8 +352,8 @@ DeserializeInterestGroupAdVectorProto(co
+           ad_proto.allowed_reporting_origins_size());
+       for (const std::string& allowed_reporting_origin :
+            ad_proto.allowed_reporting_origins()) {
+-        allowed_reporting_origins_vector.emplace_back(
+-            DeserializeOrigin(allowed_reporting_origin));
++        allowed_reporting_origins_vector.emplace_back() = {
++            DeserializeOrigin(allowed_reporting_origin)};
+       }
+       ad.allowed_reporting_origins =
+           std::move(allowed_reporting_origins_vector);
+@@ -400,13 +400,13 @@ DeserializeStringSizeMap(const std::stri
+     if (!width_val || !width_units_val || !height_val || !height_units_val) {
+       return std::nullopt;
+     }
+-    result.emplace_back(entry.first,
++    result.emplace_back() = {entry.first,
+                         blink::AdSize(width_val->GetDouble(),
+                                       static_cast<blink::AdSize::LengthUnit>(
+                                           width_units_val->GetInt()),
+                                       height_val->GetDouble(),
+                                       static_cast<blink::AdSize::LengthUnit>(
+-                                          height_units_val->GetInt())));
++                                          height_units_val->GetInt()))};
+   }
+   return result;
+ }
+@@ -440,9 +440,9 @@ DeserializeStringStringVectorMap(const s
+     DCHECK(list && list->is_list());
+     std::vector<std::string> result_sizes;
+     for (base::Value& size : list->GetList()) {
+-      result_sizes.emplace_back(size.GetString());
++      result_sizes.emplace_back() = {size.GetString()};
+     }
+-    result.emplace_back(entry.first, result_sizes);
++    result.emplace_back() = {entry.first, result_sizes};
+   }
+   return result;
+ }
+@@ -512,8 +512,8 @@ DeserializeSellerCapabilitiesMap(const s
+     if (!base::StringToInt64(*value_string, &value_bitmask)) {
+       return std::nullopt;
+     }
+-    result.emplace_back(DeserializeOrigin(entry.first),
+-                        DeserializeSellerCapabilities(value_bitmask));
++    result.emplace_back() = {DeserializeOrigin(entry.first),
++                        DeserializeSellerCapabilities(value_bitmask)};
+   }
+   return result;
+ }
+@@ -2499,7 +2499,7 @@ std::optional<std::vector<std::string>>
+     if (!DoRemoveInterestGroup(db, blink::InterestGroupKey(owner, name))) {
+       return std::nullopt;
+     }
+-    cleared_interest_groups.emplace_back(std::move(name));
++    cleared_interest_groups.emplace_back() = {std::move(name)};
+   }
+   if (!transaction.Commit()) {
+     return std::nullopt;
+@@ -3432,7 +3432,7 @@ bool DoRemoveInterestGroupsMatchingOwner
+   load.BindTime(2, expiring_after);
+ 
+   while (load.Step()) {
+-    owner_joiner_names.emplace_back(load.ColumnString(0));
++    owner_joiner_names.emplace_back() = {load.ColumnString(0)};
+   }
+ 
+   for (const auto& name : owner_joiner_names) {
+@@ -3462,8 +3462,8 @@ DoGetAllInterestGroupOwnerJoinerPairs(sq
+   load.Reset(true);
+   load.BindTime(0, expiring_after);
+   while (load.Step()) {
+-    result.emplace_back(DeserializeOrigin(load.ColumnString(0)),
+-                        DeserializeOrigin(load.ColumnString(1)));
++    result.emplace_back() = {DeserializeOrigin(load.ColumnString(0)),
++                        DeserializeOrigin(load.ColumnString(1))};
+   }
+   if (!load.Succeeded()) {
+     return std::nullopt;
+@@ -3596,9 +3596,9 @@ std::optional<DebugReportCooldown> DoGet
+     return std::nullopt;
+   }
+ 
+-  return DebugReportCooldown(cooldown_debugging_only_report.ColumnTime(0),
++  return DebugReportCooldown{cooldown_debugging_only_report.ColumnTime(0),
+                              static_cast<DebugReportCooldownType>(
+-                                 cooldown_debugging_only_report.ColumnInt(1)));
++                                 cooldown_debugging_only_report.ColumnInt(1))};
+ }
+ 
+ void DoGetDebugReportCooldowns(
+@@ -3726,10 +3726,10 @@ DoGetKAnonymityData(sql::Database& db,
+ 
+   std::vector<StorageInterestGroup::KAnonymityData> k_anon_data;
+   while (interest_group_kanon_query.Step()) {
+-    k_anon_data.emplace_back(
++    k_anon_data.emplace_back() = {
+         /*hashed_key=*/interest_group_kanon_query.ColumnString(0),
+         /*is_k_anonymous=*/interest_group_kanon_query.ColumnBool(1),
+-        /*last_updated=*/interest_group_kanon_query.ColumnTime(2));
++        /*last_updated=*/interest_group_kanon_query.ColumnTime(2)};
+   }
+   if (!interest_group_kanon_query.Succeeded()) {
+     return std::nullopt;
+@@ -3826,12 +3826,12 @@ DoGetInterestGroupsForUpdate(sql::Databa
+       continue;
+     }
+ 
+-    result.emplace_back(
++    result.emplace_back() = {
+         blink::InterestGroupKey(
+             owner, get_interest_group_update_parameters.ColumnString(0)),
+         update_url.value(),
+         DeserializeOrigin(
+-            get_interest_group_update_parameters.ColumnString(2)));
++            get_interest_group_update_parameters.ColumnString(2))};
+   }
+   if (!get_interest_group_update_parameters.Succeeded()) {
+     return std::nullopt;
+@@ -4080,8 +4080,8 @@ DoGetInterestGroupNamesForJoiningOrigin(
+   load.BindTime(1, now);
+ 
+   while (load.Step()) {
+-    result.emplace_back(DeserializeOrigin(load.ColumnString(0)),
+-                        load.ColumnString(1));
++    result.emplace_back() = {DeserializeOrigin(load.ColumnString(0)),
++                        load.ColumnString(1)};
+   }
+   if (!load.Succeeded()) {
+     return std::nullopt;
+@@ -4319,9 +4319,9 @@ bool ClearExpiredInterestGroups(sql::Dat
+   expired_interest_group.BindTime(0, expiration_before);
+   std::vector<blink::InterestGroupKey> expired_groups;
+   while (expired_interest_group.Step()) {
+-    expired_groups.emplace_back(
++    expired_groups.emplace_back() = {
+         DeserializeOrigin(expired_interest_group.ColumnString(0)),
+-        expired_interest_group.ColumnString(1));
++        expired_interest_group.ColumnString(1)};
+   }
+   if (!expired_interest_group.Succeeded()) {
+     DLOG(ERROR) << "ClearExpiredInterestGroups could not get expired groups.";
+@@ -4377,8 +4377,8 @@ bool ClearExcessiveStorage(sql::Database
+       cum_size = 0;
+     }
+     if (cum_size + group_size > max_owner_storage_size) {
+-      groups_to_remove.emplace_back(std::move(group_owner),
+-                                    std::move(group_name));
++      groups_to_remove.emplace_back() = {std::move(group_owner),
++                                    std::move(group_name)};
+     } else {
+       cum_size += group_size;
+     }
+@@ -4522,7 +4522,7 @@ DoGetBiddingAndAuctionServerKeys(sql::Da
+     std::vector<BiddingAndAuctionServerKey> keys;
+     keys.reserve(key_protos.keys_size());
+     for (auto& key_proto : *key_protos.mutable_keys()) {
+-      keys.emplace_back(std::move(*key_proto.mutable_key()), key_proto.id());
++      keys.emplace_back() = {std::move(*key_proto.mutable_key()), static_cast<uint8_t>(key_proto.id())};
+     }
+     return {expiration, keys};
+   }
+diff -up chromium-126.0.6478.26/content/browser/renderer_host/render_frame_host_impl.cc.no_matching_constructor chromium-126.0.6478.26/content/browser/renderer_host/render_frame_host_impl.cc
+--- chromium-126.0.6478.26/content/browser/renderer_host/render_frame_host_impl.cc.no_matching_constructor	2024-05-29 18:01:13.000000000 +0200
++++ chromium-126.0.6478.26/content/browser/renderer_host/render_frame_host_impl.cc	2024-06-02 23:51:25.507915843 +0200
+@@ -8964,7 +8964,7 @@ void RenderFrameHostImpl::SendFencedFram
+   for (const blink::FencedFrame::ReportingDestination& destination :
+        destinations) {
+     SendFencedFrameReportingBeaconInternal(
+-        DestinationEnumEvent(event_type, event_data, cross_origin_exposed),
++        DestinationEnumEvent{event_type, event_data, cross_origin_exposed},
+         destination);
+   }
+ }
+@@ -8995,7 +8995,7 @@ void RenderFrameHostImpl::SendFencedFram
+   }
+ 
+   SendFencedFrameReportingBeaconInternal(
+-      DestinationURLEvent(destination_url, cross_origin_exposed),
++      DestinationURLEvent{destination_url, cross_origin_exposed},
+       blink::FencedFrame::ReportingDestination::kBuyer);
+ }
+ 
+@@ -9126,7 +9126,7 @@ void RenderFrameHostImpl::MaybeSendFence
+         data = info->data;
+       }
+       initiator_rfh->SendFencedFrameReportingBeaconInternal(
+-          AutomaticBeaconEvent(event_type, data), destination,
++          AutomaticBeaconEvent{event_type, data}, destination,
+           navigation_request.GetNavigationId());
+     }
+   } else {
+@@ -9137,7 +9137,7 @@ void RenderFrameHostImpl::MaybeSendFence
+     for (blink::FencedFrame::ReportingDestination destination :
+          info->destinations) {
+       initiator_rfh->SendFencedFrameReportingBeaconInternal(
+-          AutomaticBeaconEvent(event_type, info->data), destination,
++          AutomaticBeaconEvent{event_type, info->data}, destination,
+           navigation_request.GetNavigationId());
+     }
+   }
+diff -up chromium-126.0.6478.26/content/browser/service_worker/service_worker_container_host.cc.no_matching_constructor chromium-126.0.6478.26/content/browser/service_worker/service_worker_container_host.cc
+--- chromium-126.0.6478.26/content/browser/service_worker/service_worker_container_host.cc.no_matching_constructor	2024-05-29 18:01:13.000000000 +0200
++++ chromium-126.0.6478.26/content/browser/service_worker/service_worker_container_host.cc	2024-06-02 23:51:25.508915867 +0200
+@@ -1076,7 +1076,7 @@ blink::mojom::ServiceWorkerClientType Se
+   DCHECK_CALLED_ON_VALID_SEQUENCE(sequence_checker_);
+   DCHECK(client_info_);
+   return absl::visit(
+-      base::Overloaded(
++      base::Overloaded{
+           [](GlobalRenderFrameHostId render_frame_host_id) {
+             return blink::mojom::ServiceWorkerClientType::kWindow;
+           },
+@@ -1085,7 +1085,7 @@ blink::mojom::ServiceWorkerClientType Se
+           },
+           [](blink::SharedWorkerToken shared_worker_token) {
+             return blink::mojom::ServiceWorkerClientType::kSharedWorker;
+-          }),
++          }},
+       *client_info_);
+ }
+ 
+diff -up chromium-126.0.6478.26/content/browser/service_worker/service_worker_main_resource_loader_interceptor.cc.no_matching_constructor chromium-126.0.6478.26/content/browser/service_worker/service_worker_main_resource_loader_interceptor.cc
+--- chromium-126.0.6478.26/content/browser/service_worker/service_worker_main_resource_loader_interceptor.cc.no_matching_constructor	2024-05-29 18:01:13.000000000 +0200
++++ chromium-126.0.6478.26/content/browser/service_worker/service_worker_main_resource_loader_interceptor.cc	2024-06-02 23:51:25.508915867 +0200
+@@ -370,10 +370,10 @@ ServiceWorkerMainResourceLoaderIntercept
+   }
+   auto* storage_partition = process->GetStoragePartition();
+ 
+-  return absl::visit(base::Overloaded([&, this](auto token) {
++  return absl::visit(base::Overloaded{[&, this](auto token) {
+                        return GetStorageKeyFromWorkerHost(storage_partition,
+                                                           token, origin);
+-                     }),
++                     }},
+                      *worker_token_);
+ }
+ 
+diff -up chromium-126.0.6478.26/content/browser/worker_host/dedicated_worker_host.cc.no_matching_constructor chromium-126.0.6478.26/content/browser/worker_host/dedicated_worker_host.cc
+--- chromium-126.0.6478.26/content/browser/worker_host/dedicated_worker_host.cc.no_matching_constructor	2024-05-29 18:01:13.000000000 +0200
++++ chromium-126.0.6478.26/content/browser/worker_host/dedicated_worker_host.cc	2024-06-02 23:51:25.509915891 +0200
+@@ -258,7 +258,7 @@ void DedicatedWorkerHost::StartScriptLoa
+   RenderFrameHostImpl* creator_render_frame_host = nullptr;
+   DedicatedWorkerHost* creator_worker = nullptr;
+ 
+-  absl::visit(base::Overloaded(
++  absl::visit(base::Overloaded{
+                   [&](const GlobalRenderFrameHostId& render_frame_host_id) {
+                     creator_render_frame_host =
+                         RenderFrameHostImpl::FromID(render_frame_host_id);
+@@ -266,7 +266,7 @@ void DedicatedWorkerHost::StartScriptLoa
+                   [&](blink::DedicatedWorkerToken dedicated_worker_token) {
+                     creator_worker = service_->GetDedicatedWorkerHostFromToken(
+                         dedicated_worker_token);
+-                  }),
++                  }},
+               creator_);
+ 
+   if (!creator_render_frame_host && !creator_worker) {
+diff -up chromium-126.0.6478.26/extensions/browser/service_worker/service_worker_task_queue.cc.no_matching_constructor chromium-126.0.6478.26/extensions/browser/service_worker/service_worker_task_queue.cc
+--- chromium-126.0.6478.26/extensions/browser/service_worker/service_worker_task_queue.cc.no_matching_constructor	2024-05-29 18:01:23.000000000 +0200
++++ chromium-126.0.6478.26/extensions/browser/service_worker/service_worker_task_queue.cc	2024-06-02 23:51:25.509915891 +0200
+@@ -394,8 +394,8 @@ bool ServiceWorkerTaskQueue::IsReadyToRu
+     return false;
+   }
+ 
+-  const SequencedContextId context_id(extension->id(), browser_context_,
+-                                      *activation_token);
++  const SequencedContextId context_id{extension->id(), browser_context_,
++                                      *activation_token};
+   const WorkerState* worker_state = GetWorkerState(context_id);
+ 
+   if (!worker_state || !worker_state->worker_id_) {
+diff -up chromium-126.0.6478.26/gpu/command_buffer/client/shared_image_interface.h.no_matching_constructor chromium-126.0.6478.26/gpu/command_buffer/client/shared_image_interface.h
+--- chromium-126.0.6478.26/gpu/command_buffer/client/shared_image_interface.h.no_matching_constructor	2024-05-29 18:01:25.000000000 +0200
++++ chromium-126.0.6478.26/gpu/command_buffer/client/shared_image_interface.h	2024-06-02 23:51:25.510915914 +0200
+@@ -64,19 +64,19 @@ struct SharedImageInfo {
+                   SkAlphaType alpha_type,
+                   uint32_t usage,
+                   std::string_view debug_label)
+-      : meta(format, size, color_space, surface_origin, alpha_type, usage),
++      : meta{format, size, color_space, surface_origin, alpha_type, usage},
+         debug_label(debug_label) {}
+   SharedImageInfo(const viz::SharedImageFormat& format,
+                   gfx::Size size,
+                   const gfx::ColorSpace& color_space,
+                   uint32_t usage,
+                   std::string_view debug_label)
+-      : meta(format,
++      : meta{format,
+              size,
+              color_space,
+              kTopLeft_GrSurfaceOrigin,
+              kPremul_SkAlphaType,
+-             usage),
++             usage},
+         debug_label(debug_label) {}
+   // This constructor exists only to support the DEPRECATED CreareSharedImage
+   // call below that accepts a GpuMemoryBuffer. This should be removed when that
+diff -up chromium-126.0.6478.26/gpu/command_buffer/service/shared_image_interface_in_process.cc.no_matching_constructor chromium-126.0.6478.26/gpu/command_buffer/service/shared_image_interface_in_process.cc
+--- chromium-126.0.6478.26/gpu/command_buffer/service/shared_image_interface_in_process.cc.no_matching_constructor	2024-05-29 18:01:26.000000000 +0200
++++ chromium-126.0.6478.26/gpu/command_buffer/service/shared_image_interface_in_process.cc	2024-06-02 23:51:25.510915914 +0200
+@@ -622,12 +622,12 @@ SharedImageInterfaceInProcess::CreateSha
+ 
+   return base::MakeRefCounted<ClientSharedImage>(
+       mailbox,
+-      SharedImageMetadata(
++      SharedImageMetadata{
+           viz::GetSinglePlaneSharedImageFormat(
+               GetPlaneBufferFormat(plane, gpu_memory_buffer->GetFormat())),
+           gpu_memory_buffer->GetSize(), si_info.meta.color_space,
+           si_info.meta.surface_origin, si_info.meta.alpha_type,
+-          si_info.meta.usage),
++          si_info.meta.usage},
+       GenUnverifiedSyncToken(), holder_, gpu_memory_buffer->GetType());
+ }
+ 
+diff -up chromium-126.0.6478.26/gpu/ipc/client/client_shared_image_interface.cc.no_matching_constructor chromium-126.0.6478.26/gpu/ipc/client/client_shared_image_interface.cc
+--- chromium-126.0.6478.26/gpu/ipc/client/client_shared_image_interface.cc.no_matching_constructor	2024-05-29 18:01:26.000000000 +0200
++++ chromium-126.0.6478.26/gpu/ipc/client/client_shared_image_interface.cc	2024-06-02 23:51:25.510915914 +0200
+@@ -251,11 +251,11 @@ scoped_refptr<ClientSharedImage> ClientS
+       AddMailbox(proxy_->CreateSharedImage(
+           buffer_format, plane, gpu_memory_buffer->GetSize(), si_info,
+           gpu_memory_buffer->CloneHandle())),
+-      SharedImageMetadata(viz::GetSinglePlaneSharedImageFormat(
++      SharedImageMetadata{viz::GetSinglePlaneSharedImageFormat(
+                               GetPlaneBufferFormat(plane, buffer_format)),
+                           gpu_memory_buffer->GetSize(),
+                           si_info.meta.color_space, si_info.meta.surface_origin,
+-                          si_info.meta.alpha_type, si_info.meta.usage),
++                          si_info.meta.alpha_type, si_info.meta.usage},
+       GenUnverifiedSyncToken(), holder_, gpu_memory_buffer->GetType());
+ }
+ 
+@@ -297,13 +297,13 @@ ClientSharedImageInterface::CreateSwapCh
+   return ClientSharedImageInterface::SwapChainSharedImages(
+       base::MakeRefCounted<ClientSharedImage>(
+           mailboxes.front_buffer,
+-          SharedImageMetadata(format, size, color_space, surface_origin,
+-                              alpha_type, usage),
++          SharedImageMetadata{format, size, color_space, surface_origin,
++                              alpha_type, usage},
+           sync_token, holder_, gfx::EMPTY_BUFFER),
+       base::MakeRefCounted<ClientSharedImage>(
+           mailboxes.back_buffer,
+-          SharedImageMetadata(format, size, color_space, surface_origin,
+-                              alpha_type, usage),
++          SharedImageMetadata{format, size, color_space, surface_origin,
++                              alpha_type, usage},
+           sync_token, holder_, gfx::EMPTY_BUFFER));
+ }
+ 
+@@ -361,8 +361,8 @@ scoped_refptr<ClientSharedImage> ClientS
+ 
+   return base::MakeRefCounted<ClientSharedImage>(
+       mailbox,
+-      SharedImageMetadata(format, size, color_space, surface_origin, alpha_type,
+-                          usage),
++      SharedImageMetadata{format, size, color_space, surface_origin, alpha_type,
++                          usage},
+       GenUnverifiedSyncToken(), holder_, gfx::EMPTY_BUFFER);
+ }
+ 
+diff -up chromium-126.0.6478.26/gpu/ipc/service/gpu_channel_shared_image_interface.cc.no_matching_constructor chromium-126.0.6478.26/gpu/ipc/service/gpu_channel_shared_image_interface.cc
+--- chromium-126.0.6478.26/gpu/ipc/service/gpu_channel_shared_image_interface.cc.no_matching_constructor	2024-06-03 16:54:58.998196626 +0200
++++ chromium-126.0.6478.26/gpu/ipc/service/gpu_channel_shared_image_interface.cc	2024-06-03 16:55:23.722729949 +0200
+@@ -392,12 +392,12 @@ GpuChannelSharedImageInterface::CreateSh
+ 
+   return base::MakeRefCounted<ClientSharedImage>(
+       mailbox,
+-      SharedImageMetadata(
++      SharedImageMetadata{
+           viz::GetSinglePlaneSharedImageFormat(
+               GetPlaneBufferFormat(plane, gpu_memory_buffer->GetFormat())),
+           gpu_memory_buffer->GetSize(), si_info.meta.color_space,
+           si_info.meta.surface_origin, si_info.meta.alpha_type,
+-          si_info.meta.usage),
++          si_info.meta.usage},
+       GenUnverifiedSyncToken(), holder_, gpu_memory_buffer->GetType());
+ }
+ 
+diff -up chromium-126.0.6478.26/net/dns/host_resolver_cache.cc.no_matching_constructor chromium-126.0.6478.26/net/dns/host_resolver_cache.cc
+--- chromium-126.0.6478.26/net/dns/host_resolver_cache.cc.no_matching_constructor	2024-05-29 18:01:34.000000000 +0200
++++ chromium-126.0.6478.26/net/dns/host_resolver_cache.cc	2024-06-02 23:51:25.511915939 +0200
+@@ -368,7 +368,7 @@ void HostResolverCache::Set(
+ 
+   std::string domain_name = result->domain_name();
+   entries_.emplace(
+-      Key(std::move(domain_name), network_anonymization_key),
++      Key{std::move(domain_name), network_anonymization_key},
+       Entry(std::move(result), source, secure, staleness_generation));
+ 
+   if (entries_.size() > max_entries_) {
+diff -up chromium-126.0.6478.26/third_party/blink/renderer/core/css/properties/css_parsing_utils.cc.no_matching_constructor chromium-126.0.6478.26/third_party/blink/renderer/core/css/properties/css_parsing_utils.cc
+--- chromium-126.0.6478.26/third_party/blink/renderer/core/css/properties/css_parsing_utils.cc.no_matching_constructor	2024-05-29 18:01:38.000000000 +0200
++++ chromium-126.0.6478.26/third_party/blink/renderer/core/css/properties/css_parsing_utils.cc	2024-06-02 23:51:25.513915986 +0200
+@@ -8533,7 +8533,7 @@ std::optional<InsetAreaKeyword> ConsumeI
+     default:
+       return std::nullopt;
+   }
+-  return InsetAreaKeyword(css_parsing_utils::ConsumeIdent(range), type);
++  return InsetAreaKeyword{css_parsing_utils::ConsumeIdent(range), type};
+ }
+ 
+ }  // namespace
+diff -up chromium-126.0.6478.26/third_party/blink/renderer/core/layout/anchor_evaluator_impl.cc.no_matching_constructor chromium-126.0.6478.26/third_party/blink/renderer/core/layout/anchor_evaluator_impl.cc
+--- chromium-126.0.6478.26/third_party/blink/renderer/core/layout/anchor_evaluator_impl.cc.no_matching_constructor	2024-05-29 18:01:39.000000000 +0200
++++ chromium-126.0.6478.26/third_party/blink/renderer/core/layout/anchor_evaluator_impl.cc	2024-06-02 23:51:25.513915986 +0200
+@@ -591,7 +591,7 @@ AnchorEvaluatorImpl::ComputeInsetAreaOff
+     right = Evaluate(query.value(), position_anchor,
+                      /* inset_area_offsets */ std::nullopt);
+   }
+-  return InsetAreaOffsets(top, bottom, left, right);
++  return InsetAreaOffsets{top, bottom, left, right};
+ }
+ 
+ PhysicalRect AnchorEvaluatorImpl::InsetAreaModifiedContainingBlock(
+diff -up chromium-126.0.6478.26/third_party/blink/renderer/modules/media/audio/audio_renderer_mixer_manager.cc.no_matching_constructor chromium-126.0.6478.26/third_party/blink/renderer/modules/media/audio/audio_renderer_mixer_manager.cc
+--- chromium-126.0.6478.26/third_party/blink/renderer/modules/media/audio/audio_renderer_mixer_manager.cc.no_matching_constructor	2024-05-29 18:01:40.000000000 +0200
++++ chromium-126.0.6478.26/third_party/blink/renderer/modules/media/audio/audio_renderer_mixer_manager.cc	2024-06-02 23:51:25.514916010 +0200
+@@ -181,8 +181,8 @@ AudioRendererMixer* AudioRendererMixerMa
+     DVLOG(1) << "Not reusing mixer with errors: " << it->second.mixer;
+ 
+     // Move bad mixers out of the reuse map.
+-    dead_mixers_.emplace_back(std::move(it->second.mixer),
+-                              it->second.ref_count);
++    dead_mixers_.emplace_back() = {std::move(it->second.mixer),
++                              it->second.ref_count};
+     mixers_.erase(it);
+   }
+ 
+@@ -228,7 +228,7 @@ void AudioRendererMixerManager::ReturnMi
+     }
+   } else if (dead_it == dead_mixers_.end() && mixer_ref.mixer->HasSinkError()) {
+     // Move bad mixers out of the reuse map.
+-    dead_mixers_.emplace_back(std::move(mixer_ref.mixer), mixer_ref.ref_count);
++    dead_mixers_.emplace_back() = {std::move(mixer_ref.mixer), mixer_ref.ref_count};
+     mixers_.erase(it);
+   }
+ }
+diff -up chromium-126.0.6478.26/third_party/blink/renderer/platform/fonts/font_palette.h.no_matching_constructor chromium-126.0.6478.26/third_party/blink/renderer/platform/fonts/font_palette.h
+--- chromium-126.0.6478.26/third_party/blink/renderer/platform/fonts/font_palette.h.no_matching_constructor	2024-05-29 18:01:41.000000000 +0200
++++ chromium-126.0.6478.26/third_party/blink/renderer/platform/fonts/font_palette.h	2024-06-02 23:51:25.514916010 +0200
+@@ -96,7 +96,7 @@ class PLATFORM_EXPORT FontPalette : publ
+       Color::ColorSpace color_interpolation_space,
+       std::optional<Color::HueInterpolationMethod> hue_interpolation_method) {
+     return base::AdoptRef(new FontPalette(
+-        start, end, NonNormalizedPercentages(start_percentage, end_percentage),
++        start, end, NonNormalizedPercentages{start_percentage, end_percentage},
+         normalized_percentage, alpha_multiplier, color_interpolation_space,
+         hue_interpolation_method));
+   }
+@@ -170,7 +170,7 @@ class PLATFORM_EXPORT FontPalette : publ
+       double normalized_percentage) {
+     double end_percentage = normalized_percentage * 100.0;
+     double start_percentage = 100.0 - end_percentage;
+-    return NonNormalizedPercentages(start_percentage, end_percentage);
++    return NonNormalizedPercentages{start_percentage, end_percentage};
+   }
+ 
+   double GetAlphaMultiplier() const {
+diff -up chromium-126.0.6478.26/third_party/pdfium/core/fpdfapi/render/cpdf_renderstatus.cpp.no_matching_constructor chromium-126.0.6478.26/third_party/pdfium/core/fpdfapi/render/cpdf_renderstatus.cpp
+--- chromium-126.0.6478.26/third_party/pdfium/core/fpdfapi/render/cpdf_renderstatus.cpp.no_matching_constructor	2024-05-29 18:03:05.000000000 +0200
++++ chromium-126.0.6478.26/third_party/pdfium/core/fpdfapi/render/cpdf_renderstatus.cpp	2024-06-02 23:51:25.515916034 +0200
+@@ -512,7 +512,7 @@ void CPDF_RenderStatus::ProcessClipPath(
+     } else {
+       m_pDevice->SetClip_PathFill(
+           *pPath, &mtObj2Device,
+-          CFX_FillRenderOptions(ClipPath.GetClipType(i)));
++          CFX_FillRenderOptions{ClipPath.GetClipType(i)});
+     }
+   }
+ 
+diff -up chromium-126.0.6478.26/ui/base/wayland/color_manager_util.h.no_matching_constructor chromium-126.0.6478.26/ui/base/wayland/color_manager_util.h
+--- chromium-126.0.6478.26/ui/base/wayland/color_manager_util.h.no_matching_constructor	2024-05-29 18:02:31.000000000 +0200
++++ chromium-126.0.6478.26/ui/base/wayland/color_manager_util.h	2024-06-03 12:58:12.205983691 +0200
+@@ -52,53 +52,53 @@ constexpr auto kChromaticityMap = base::
+     zcr_color_manager_v1_chromaticity_names,
+     PrimaryVersion>(
+     {{ZCR_COLOR_MANAGER_V1_CHROMATICITY_NAMES_BT601_525_LINE,
+-      PrimaryVersion(gfx::ColorSpace::PrimaryID::SMPTE170M,
+-                     kDefaultSinceVersion)},
++      PrimaryVersion{gfx::ColorSpace::PrimaryID::SMPTE170M,
++                     kDefaultSinceVersion}},
+      {ZCR_COLOR_MANAGER_V1_CHROMATICITY_NAMES_BT601_625_LINE,
+-      PrimaryVersion(gfx::ColorSpace::PrimaryID::BT470BG,
+-                     kDefaultSinceVersion)},
++      PrimaryVersion{gfx::ColorSpace::PrimaryID::BT470BG,
++                     kDefaultSinceVersion}},
+      {ZCR_COLOR_MANAGER_V1_CHROMATICITY_NAMES_SMPTE170M,
+-      PrimaryVersion(gfx::ColorSpace::PrimaryID::SMPTE170M,
+-                     kDefaultSinceVersion)},
++      PrimaryVersion{gfx::ColorSpace::PrimaryID::SMPTE170M,
++                     kDefaultSinceVersion}},
+      {ZCR_COLOR_MANAGER_V1_CHROMATICITY_NAMES_BT709,
+-      PrimaryVersion(gfx::ColorSpace::PrimaryID::BT709, kDefaultSinceVersion)},
++      PrimaryVersion{gfx::ColorSpace::PrimaryID::BT709, kDefaultSinceVersion}},
+      {ZCR_COLOR_MANAGER_V1_CHROMATICITY_NAMES_BT2020,
+-      PrimaryVersion(gfx::ColorSpace::PrimaryID::BT2020, kDefaultSinceVersion)},
++      PrimaryVersion{gfx::ColorSpace::PrimaryID::BT2020, kDefaultSinceVersion}},
+      {ZCR_COLOR_MANAGER_V1_CHROMATICITY_NAMES_SRGB,
+-      PrimaryVersion(gfx::ColorSpace::PrimaryID::BT709, kDefaultSinceVersion)},
++      PrimaryVersion{gfx::ColorSpace::PrimaryID::BT709, kDefaultSinceVersion}},
+      {ZCR_COLOR_MANAGER_V1_CHROMATICITY_NAMES_DISPLAYP3,
+-      PrimaryVersion(gfx::ColorSpace::PrimaryID::P3, kDefaultSinceVersion)},
++      PrimaryVersion{gfx::ColorSpace::PrimaryID::P3, kDefaultSinceVersion}},
+      {ZCR_COLOR_MANAGER_V1_CHROMATICITY_NAMES_ADOBERGB,
+-      PrimaryVersion(gfx::ColorSpace::PrimaryID::ADOBE_RGB,
+-                     kDefaultSinceVersion)},
++      PrimaryVersion{gfx::ColorSpace::PrimaryID::ADOBE_RGB,
++                     kDefaultSinceVersion}},
+      {ZCR_COLOR_MANAGER_V1_CHROMATICITY_NAMES_WIDE_GAMUT_COLOR_SPIN,
+-      PrimaryVersion(
++      PrimaryVersion{
+           gfx::ColorSpace::PrimaryID::WIDE_GAMUT_COLOR_SPIN,
+-          ZCR_COLOR_MANAGER_V1_CHROMATICITY_NAMES_WIDE_GAMUT_COLOR_SPIN_SINCE_VERSION)},
++          ZCR_COLOR_MANAGER_V1_CHROMATICITY_NAMES_WIDE_GAMUT_COLOR_SPIN_SINCE_VERSION}},
+      {ZCR_COLOR_MANAGER_V1_CHROMATICITY_NAMES_BT470M,
+-      PrimaryVersion(
++      PrimaryVersion{
+           gfx::ColorSpace::PrimaryID::BT470M,
+-          ZCR_COLOR_MANAGER_V1_CHROMATICITY_NAMES_BT470M_SINCE_VERSION)},
++          ZCR_COLOR_MANAGER_V1_CHROMATICITY_NAMES_BT470M_SINCE_VERSION}},
+      {ZCR_COLOR_MANAGER_V1_CHROMATICITY_NAMES_SMPTE240M,
+-      PrimaryVersion(
++      PrimaryVersion{
+           gfx::ColorSpace::PrimaryID::SMPTE240M,
+-          ZCR_COLOR_MANAGER_V1_CHROMATICITY_NAMES_SMPTE240M_SINCE_VERSION)},
++          ZCR_COLOR_MANAGER_V1_CHROMATICITY_NAMES_SMPTE240M_SINCE_VERSION}},
+      {ZCR_COLOR_MANAGER_V1_CHROMATICITY_NAMES_XYZ_D50,
+-      PrimaryVersion(
++      PrimaryVersion{
+           gfx::ColorSpace::PrimaryID::XYZ_D50,
+-          ZCR_COLOR_MANAGER_V1_CHROMATICITY_NAMES_XYZ_D50_SINCE_VERSION)},
++          ZCR_COLOR_MANAGER_V1_CHROMATICITY_NAMES_XYZ_D50_SINCE_VERSION}},
+      {ZCR_COLOR_MANAGER_V1_CHROMATICITY_NAMES_SMPTEST428_1,
+-      PrimaryVersion(
++      PrimaryVersion{
+           gfx::ColorSpace::PrimaryID::SMPTEST428_1,
+-          ZCR_COLOR_MANAGER_V1_CHROMATICITY_NAMES_SMPTEST428_1_SINCE_VERSION)},
++          ZCR_COLOR_MANAGER_V1_CHROMATICITY_NAMES_SMPTEST428_1_SINCE_VERSION}},
+      {ZCR_COLOR_MANAGER_V1_CHROMATICITY_NAMES_SMPTEST431_2,
+-      PrimaryVersion(
++      PrimaryVersion{
+           gfx::ColorSpace::PrimaryID::SMPTEST431_2,
+-          ZCR_COLOR_MANAGER_V1_CHROMATICITY_NAMES_SMPTEST431_2_SINCE_VERSION)},
++          ZCR_COLOR_MANAGER_V1_CHROMATICITY_NAMES_SMPTEST431_2_SINCE_VERSION}},
+      {ZCR_COLOR_MANAGER_V1_CHROMATICITY_NAMES_FILM,
+-      PrimaryVersion(
++      PrimaryVersion{
+           gfx::ColorSpace::PrimaryID::FILM,
+-          ZCR_COLOR_MANAGER_V1_CHROMATICITY_NAMES_FILM_SINCE_VERSION)}});
++          ZCR_COLOR_MANAGER_V1_CHROMATICITY_NAMES_FILM_SINCE_VERSION}}});
+ 
+ // A map from the zcr_color_manager_v1 eotf_names enum values
+ // representing well-known EOTFs, to their equivalent TransferIDs.
+@@ -107,68 +107,68 @@ constexpr auto kEotfMap = base::MakeFixe
+     zcr_color_manager_v1_eotf_names,
+     TransferVersion>({
+     {ZCR_COLOR_MANAGER_V1_EOTF_NAMES_LINEAR,
+-     TransferVersion(gfx::ColorSpace::TransferID::LINEAR,
+-                     kDefaultSinceVersion)},
++     TransferVersion{gfx::ColorSpace::TransferID::LINEAR,
++                     kDefaultSinceVersion}},
+     {ZCR_COLOR_MANAGER_V1_EOTF_NAMES_SRGB,
+-     TransferVersion(gfx::ColorSpace::TransferID::SRGB, kDefaultSinceVersion)},
++     TransferVersion{gfx::ColorSpace::TransferID::SRGB, kDefaultSinceVersion}},
+     {ZCR_COLOR_MANAGER_V1_EOTF_NAMES_SRGB_HDR,
+-     TransferVersion(gfx::ColorSpace::TransferID::SRGB_HDR,
+-                     ZCR_COLOR_MANAGER_V1_EOTF_NAMES_SRGB_HDR_SINCE_VERSION)},
++     TransferVersion{gfx::ColorSpace::TransferID::SRGB_HDR,
++                     ZCR_COLOR_MANAGER_V1_EOTF_NAMES_SRGB_HDR_SINCE_VERSION}},
+     {ZCR_COLOR_MANAGER_V1_EOTF_NAMES_BT709,
+-     TransferVersion(gfx::ColorSpace::TransferID::BT709,
+-                     ZCR_COLOR_MANAGER_V1_EOTF_NAMES_BT709_SINCE_VERSION)},
++     TransferVersion{gfx::ColorSpace::TransferID::BT709,
++                     ZCR_COLOR_MANAGER_V1_EOTF_NAMES_BT709_SINCE_VERSION}},
+     {ZCR_COLOR_MANAGER_V1_EOTF_NAMES_BT2087,
+-     TransferVersion(gfx::ColorSpace::TransferID::GAMMA24,
+-                     kDefaultSinceVersion)},
++     TransferVersion{gfx::ColorSpace::TransferID::GAMMA24,
++                     kDefaultSinceVersion}},
+     {ZCR_COLOR_MANAGER_V1_EOTF_NAMES_ADOBERGB,
+      // This is ever so slightly inaccurate. The number ought to be
+      // 2.19921875f, not 2.2
+-     TransferVersion(gfx::ColorSpace::TransferID::GAMMA22,
+-                     kDefaultSinceVersion)},
++     TransferVersion{gfx::ColorSpace::TransferID::GAMMA22,
++                     kDefaultSinceVersion}},
+     {ZCR_COLOR_MANAGER_V1_EOTF_NAMES_PQ,
+-     TransferVersion(gfx::ColorSpace::TransferID::PQ, kDefaultSinceVersion)},
++     TransferVersion{gfx::ColorSpace::TransferID::PQ, kDefaultSinceVersion}},
+     {ZCR_COLOR_MANAGER_V1_EOTF_NAMES_HLG,
+-     TransferVersion(gfx::ColorSpace::TransferID::HLG,
+-                     ZCR_COLOR_MANAGER_V1_EOTF_NAMES_HLG_SINCE_VERSION)},
++     TransferVersion{gfx::ColorSpace::TransferID::HLG,
++                     ZCR_COLOR_MANAGER_V1_EOTF_NAMES_HLG_SINCE_VERSION}},
+     {ZCR_COLOR_MANAGER_V1_EOTF_NAMES_SMPTE170M,
+-     TransferVersion(gfx::ColorSpace::TransferID::SMPTE170M,
+-                     ZCR_COLOR_MANAGER_V1_EOTF_NAMES_SMPTE170M_SINCE_VERSION)},
++     TransferVersion{gfx::ColorSpace::TransferID::SMPTE170M,
++                     ZCR_COLOR_MANAGER_V1_EOTF_NAMES_SMPTE170M_SINCE_VERSION}},
+     {ZCR_COLOR_MANAGER_V1_EOTF_NAMES_SMPTE240M,
+-     TransferVersion(gfx::ColorSpace::TransferID::SMPTE240M,
+-                     ZCR_COLOR_MANAGER_V1_EOTF_NAMES_SMPTE240M_SINCE_VERSION)},
++     TransferVersion{gfx::ColorSpace::TransferID::SMPTE240M,
++                     ZCR_COLOR_MANAGER_V1_EOTF_NAMES_SMPTE240M_SINCE_VERSION}},
+     {ZCR_COLOR_MANAGER_V1_EOTF_NAMES_SMPTEST428_1,
+-     TransferVersion(
++     TransferVersion{
+          gfx::ColorSpace::TransferID::SMPTEST428_1,
+-         ZCR_COLOR_MANAGER_V1_EOTF_NAMES_SMPTEST428_1_SINCE_VERSION)},
++         ZCR_COLOR_MANAGER_V1_EOTF_NAMES_SMPTEST428_1_SINCE_VERSION}},
+     {ZCR_COLOR_MANAGER_V1_EOTF_NAMES_LOG,
+-     TransferVersion(gfx::ColorSpace::TransferID::LOG,
+-                     ZCR_COLOR_MANAGER_V1_EOTF_NAMES_LOG_SINCE_VERSION)},
++     TransferVersion{gfx::ColorSpace::TransferID::LOG,
++                     ZCR_COLOR_MANAGER_V1_EOTF_NAMES_LOG_SINCE_VERSION}},
+     {ZCR_COLOR_MANAGER_V1_EOTF_NAMES_LOG_SQRT,
+-     TransferVersion(gfx::ColorSpace::TransferID::LOG_SQRT,
+-                     ZCR_COLOR_MANAGER_V1_EOTF_NAMES_LOG_SQRT_SINCE_VERSION)},
++     TransferVersion{gfx::ColorSpace::TransferID::LOG_SQRT,
++                     ZCR_COLOR_MANAGER_V1_EOTF_NAMES_LOG_SQRT_SINCE_VERSION}},
+     {ZCR_COLOR_MANAGER_V1_EOTF_NAMES_IEC61966_2_4,
+-     TransferVersion(
++     TransferVersion{
+          gfx::ColorSpace::TransferID::IEC61966_2_4,
+-         ZCR_COLOR_MANAGER_V1_EOTF_NAMES_IEC61966_2_4_SINCE_VERSION)},
++         ZCR_COLOR_MANAGER_V1_EOTF_NAMES_IEC61966_2_4_SINCE_VERSION}},
+     {ZCR_COLOR_MANAGER_V1_EOTF_NAMES_BT1361_ECG,
+-     TransferVersion(gfx::ColorSpace::TransferID::BT1361_ECG,
+-                     ZCR_COLOR_MANAGER_V1_EOTF_NAMES_BT1361_ECG_SINCE_VERSION)},
++     TransferVersion{gfx::ColorSpace::TransferID::BT1361_ECG,
++                     ZCR_COLOR_MANAGER_V1_EOTF_NAMES_BT1361_ECG_SINCE_VERSION}},
+     {ZCR_COLOR_MANAGER_V1_EOTF_NAMES_BT2020_10,
+-     TransferVersion(gfx::ColorSpace::TransferID::BT2020_10,
+-                     ZCR_COLOR_MANAGER_V1_EOTF_NAMES_BT2020_10_SINCE_VERSION)},
++     TransferVersion{gfx::ColorSpace::TransferID::BT2020_10,
++                     ZCR_COLOR_MANAGER_V1_EOTF_NAMES_BT2020_10_SINCE_VERSION}},
+     {ZCR_COLOR_MANAGER_V1_EOTF_NAMES_BT2020_12,
+-     TransferVersion(gfx::ColorSpace::TransferID::BT2020_12,
+-                     ZCR_COLOR_MANAGER_V1_EOTF_NAMES_BT2020_12_SINCE_VERSION)},
++     TransferVersion{gfx::ColorSpace::TransferID::BT2020_12,
++                     ZCR_COLOR_MANAGER_V1_EOTF_NAMES_BT2020_12_SINCE_VERSION}},
+     {ZCR_COLOR_MANAGER_V1_EOTF_NAMES_SCRGB_LINEAR_80_NITS,
+-     TransferVersion(
++     TransferVersion{
+          gfx::ColorSpace::TransferID::SCRGB_LINEAR_80_NITS,
+-         ZCR_COLOR_MANAGER_V1_EOTF_NAMES_SCRGB_LINEAR_80_NITS_SINCE_VERSION)},
++         ZCR_COLOR_MANAGER_V1_EOTF_NAMES_SCRGB_LINEAR_80_NITS_SINCE_VERSION}},
+     {ZCR_COLOR_MANAGER_V1_EOTF_NAMES_GAMMA18,
+-     TransferVersion(gfx::ColorSpace::TransferID::GAMMA18,
+-                     ZCR_COLOR_MANAGER_V1_EOTF_NAMES_GAMMA18_SINCE_VERSION)},
++     TransferVersion{gfx::ColorSpace::TransferID::GAMMA18,
++                     ZCR_COLOR_MANAGER_V1_EOTF_NAMES_GAMMA18_SINCE_VERSION}},
+     {ZCR_COLOR_MANAGER_V1_EOTF_NAMES_GAMMA28,
+-     TransferVersion(gfx::ColorSpace::TransferID::GAMMA28,
+-                     ZCR_COLOR_MANAGER_V1_EOTF_NAMES_GAMMA28_SINCE_VERSION)},
++     TransferVersion{gfx::ColorSpace::TransferID::GAMMA28,
++                     ZCR_COLOR_MANAGER_V1_EOTF_NAMES_GAMMA28_SINCE_VERSION}},
+ });
+ 
+ // A map from the SDR zcr_color_manager_v1 eotf_names enum values
+@@ -177,18 +177,18 @@ constexpr auto kEotfMap = base::MakeFixe
+ constexpr auto kTransferMap =
+     base::MakeFixedFlatMap<zcr_color_manager_v1_eotf_names, TransferFnVersion>({
+         {ZCR_COLOR_MANAGER_V1_EOTF_NAMES_LINEAR,
+-         TransferFnVersion(SkNamedTransferFn::kLinear, kDefaultSinceVersion)},
++         TransferFnVersion{SkNamedTransferFn::kLinear, kDefaultSinceVersion}},
+         {ZCR_COLOR_MANAGER_V1_EOTF_NAMES_SRGB,
+-         TransferFnVersion(SkNamedTransferFnExt::kSRGB, kDefaultSinceVersion)},
++         TransferFnVersion{SkNamedTransferFnExt::kSRGB, kDefaultSinceVersion}},
+         {ZCR_COLOR_MANAGER_V1_EOTF_NAMES_BT709,
+-         TransferFnVersion(
++         TransferFnVersion{
+              SkNamedTransferFnExt::kRec709,
+-             ZCR_COLOR_MANAGER_V1_EOTF_NAMES_BT709_SINCE_VERSION)},
++             ZCR_COLOR_MANAGER_V1_EOTF_NAMES_BT709_SINCE_VERSION}},
+         {ZCR_COLOR_MANAGER_V1_EOTF_NAMES_BT2087,
+-         TransferFnVersion(gamma24, kDefaultSinceVersion)},
++         TransferFnVersion{gamma24, kDefaultSinceVersion}},
+         {ZCR_COLOR_MANAGER_V1_EOTF_NAMES_ADOBERGB,
+-         TransferFnVersion(SkNamedTransferFnExt::kA98RGB,
+-                           kDefaultSinceVersion)},
++         TransferFnVersion{SkNamedTransferFnExt::kA98RGB,
++                           kDefaultSinceVersion}},
+     });
+ 
+ // A map from the HDR zcr_color_manager_v1 eotf_names enum values
+@@ -197,67 +197,67 @@ constexpr auto kTransferMap =
+ constexpr auto kHDRTransferMap =
+     base::MakeFixedFlatMap<zcr_color_manager_v1_eotf_names, TransferFnVersion>(
+         {{ZCR_COLOR_MANAGER_V1_EOTF_NAMES_LINEAR,
+-          TransferFnVersion(SkNamedTransferFn::kLinear, kDefaultSinceVersion)},
++          TransferFnVersion{SkNamedTransferFn::kLinear, kDefaultSinceVersion}},
+          {ZCR_COLOR_MANAGER_V1_EOTF_NAMES_SRGB_HDR,
+-          TransferFnVersion(
++          TransferFnVersion{
+               SkNamedTransferFnExt::kSRGB,
+-              ZCR_COLOR_MANAGER_V1_EOTF_NAMES_SRGB_HDR_SINCE_VERSION)},
++              ZCR_COLOR_MANAGER_V1_EOTF_NAMES_SRGB_HDR_SINCE_VERSION}},
+          {ZCR_COLOR_MANAGER_V1_EOTF_NAMES_PQ,
+-          TransferFnVersion(SkNamedTransferFn::kPQ, kDefaultSinceVersion)},
++          TransferFnVersion{SkNamedTransferFn::kPQ, kDefaultSinceVersion}},
+          {ZCR_COLOR_MANAGER_V1_EOTF_NAMES_HLG,
+-          TransferFnVersion(SkNamedTransferFn::kHLG,
+-                            ZCR_COLOR_MANAGER_V1_EOTF_NAMES_HLG_SINCE_VERSION)},
++          TransferFnVersion{SkNamedTransferFn::kHLG,
++                            ZCR_COLOR_MANAGER_V1_EOTF_NAMES_HLG_SINCE_VERSION}},
+          {ZCR_COLOR_MANAGER_V1_EOTF_NAMES_EXTENDEDSRGB10,
+-          TransferFnVersion(
++          TransferFnVersion{
+               SkNamedTransferFnExt::kSRGBExtended1023Over510,
+-              ZCR_COLOR_MANAGER_V1_EOTF_NAMES_EXTENDEDSRGB10_SINCE_VERSION)}});
++              ZCR_COLOR_MANAGER_V1_EOTF_NAMES_EXTENDEDSRGB10_SINCE_VERSION}}});
+ 
+ // A map from zcr_color_manager_v1 matrix_names enum values to
+ // gfx::ColorSpace::MatrixIDs.
+ constexpr auto kMatrixMap =
+     base::MakeFixedFlatMap<zcr_color_manager_v1_matrix_names, MatrixVersion>(
+         {{ZCR_COLOR_MANAGER_V1_MATRIX_NAMES_RGB,
+-          MatrixVersion(gfx::ColorSpace::MatrixID::RGB, kDefaultSinceVersion)},
++          MatrixVersion{gfx::ColorSpace::MatrixID::RGB, kDefaultSinceVersion}},
+          {ZCR_COLOR_MANAGER_V1_MATRIX_NAMES_BT709,
+-          MatrixVersion(gfx::ColorSpace::MatrixID::BT709,
+-                        kDefaultSinceVersion)},
++          MatrixVersion{gfx::ColorSpace::MatrixID::BT709,
++                        kDefaultSinceVersion}},
+          {ZCR_COLOR_MANAGER_V1_MATRIX_NAMES_BT470BG,
+-          MatrixVersion(
++          MatrixVersion{
+               gfx::ColorSpace::MatrixID::BT470BG,
+-              ZCR_COLOR_MANAGER_V1_MATRIX_NAMES_BT470BG_SINCE_VERSION)},
++              ZCR_COLOR_MANAGER_V1_MATRIX_NAMES_BT470BG_SINCE_VERSION}},
+          {ZCR_COLOR_MANAGER_V1_MATRIX_NAMES_BT2020_NCL,
+-          MatrixVersion(gfx::ColorSpace::MatrixID::BT2020_NCL,
+-                        kDefaultSinceVersion)},
++          MatrixVersion{gfx::ColorSpace::MatrixID::BT2020_NCL,
++                        kDefaultSinceVersion}},
+          {ZCR_COLOR_MANAGER_V1_MATRIX_NAMES_FCC,
+-          MatrixVersion(gfx::ColorSpace::MatrixID::FCC, kDefaultSinceVersion)},
++          MatrixVersion{gfx::ColorSpace::MatrixID::FCC, kDefaultSinceVersion}},
+          {ZCR_COLOR_MANAGER_V1_MATRIX_NAMES_YCOCG,
+-          MatrixVersion(gfx::ColorSpace::MatrixID::YCOCG,
+-                        ZCR_COLOR_MANAGER_V1_MATRIX_NAMES_YCOCG_SINCE_VERSION)},
++          MatrixVersion{gfx::ColorSpace::MatrixID::YCOCG,
++                        ZCR_COLOR_MANAGER_V1_MATRIX_NAMES_YCOCG_SINCE_VERSION}},
+          {ZCR_COLOR_MANAGER_V1_MATRIX_NAMES_YDZDX,
+-          MatrixVersion(gfx::ColorSpace::MatrixID::YDZDX,
+-                        ZCR_COLOR_MANAGER_V1_MATRIX_NAMES_YDZDX_SINCE_VERSION)},
++          MatrixVersion{gfx::ColorSpace::MatrixID::YDZDX,
++                        ZCR_COLOR_MANAGER_V1_MATRIX_NAMES_YDZDX_SINCE_VERSION}},
+          {ZCR_COLOR_MANAGER_V1_MATRIX_NAMES_GBR,
+-          MatrixVersion(gfx::ColorSpace::MatrixID::GBR,
+-                        ZCR_COLOR_MANAGER_V1_MATRIX_NAMES_GBR_SINCE_VERSION)},
++          MatrixVersion{gfx::ColorSpace::MatrixID::GBR,
++                        ZCR_COLOR_MANAGER_V1_MATRIX_NAMES_GBR_SINCE_VERSION}},
+          {ZCR_COLOR_MANAGER_V1_MATRIX_NAMES_SMPTE170M,
+-          MatrixVersion(gfx::ColorSpace::MatrixID::SMPTE170M,
+-                        kDefaultSinceVersion)},
++          MatrixVersion{gfx::ColorSpace::MatrixID::SMPTE170M,
++                        kDefaultSinceVersion}},
+          {ZCR_COLOR_MANAGER_V1_MATRIX_NAMES_SMPTE240M,
+-          MatrixVersion(gfx::ColorSpace::MatrixID::SMPTE240M,
+-                        kDefaultSinceVersion)}});
++          MatrixVersion{gfx::ColorSpace::MatrixID::SMPTE240M,
++                        kDefaultSinceVersion}}});
+ 
+ // A map from zcr_color_manager_v1 range_names enum values to
+ // gfx::ColorSpace::RangeIDs.
+ constexpr auto kRangeMap =
+     base::MakeFixedFlatMap<zcr_color_manager_v1_range_names, RangeVersion>(
+         {{ZCR_COLOR_MANAGER_V1_RANGE_NAMES_LIMITED,
+-          RangeVersion(gfx::ColorSpace::RangeID::LIMITED,
+-                       kDefaultSinceVersion)},
++          RangeVersion{gfx::ColorSpace::RangeID::LIMITED,
++                       kDefaultSinceVersion}},
+          {ZCR_COLOR_MANAGER_V1_RANGE_NAMES_FULL,
+-          RangeVersion(gfx::ColorSpace::RangeID::FULL, kDefaultSinceVersion)},
++          RangeVersion{gfx::ColorSpace::RangeID::FULL, kDefaultSinceVersion}},
+          {ZCR_COLOR_MANAGER_V1_RANGE_NAMES_DERIVED,
+-          RangeVersion(gfx::ColorSpace::RangeID::DERIVED,
+-                       kDefaultSinceVersion)}});
++          RangeVersion{gfx::ColorSpace::RangeID::DERIVED,
++                       kDefaultSinceVersion}}});
+ 
+ zcr_color_manager_v1_chromaticity_names ToColorManagerChromaticity(
+     gfx::ColorSpace::PrimaryID primaryID,
+@@ -280,4 +280,4 @@ zcr_color_manager_v1_eotf_names ToColorM
+ 
+ }  // namespace ui::wayland
+ 
+-#endif  // UI_BASE_WAYLAND_COLOR_MANAGER_UTIL_H_
+\ Kein Zeilenumbruch am Dateiende.
++#endif  // UI_BASE_WAYLAND_COLOR_MANAGER_UTIL_H_
+diff -up chromium-126.0.6478.26/ui/gtk/gtk_ui.cc.no_matching_constructor chromium-126.0.6478.26/ui/gtk/gtk_ui.cc
+--- chromium-126.0.6478.26/ui/gtk/gtk_ui.cc.no_matching_constructor	2024-05-29 18:02:32.000000000 +0200
++++ chromium-126.0.6478.26/ui/gtk/gtk_ui.cc	2024-06-02 23:51:25.516916057 +0200
+@@ -1001,11 +1001,11 @@ display::DisplayConfig GtkUi::GetDisplay
+     GdkRectangle geometry;
+     gdk_monitor_get_geometry(monitor, &geometry);
+     int monitor_scale = std::max(1, gdk_monitor_get_scale_factor(monitor));
+-    config.display_geometries.emplace_back(
++    config.display_geometries.emplace_back() = {
+         gfx::Rect(monitor_scale * geometry.x, monitor_scale * geometry.y,
+                   monitor_scale * geometry.width,
+                   monitor_scale * geometry.height),
+-        monitor_scale * font_scale);
++        static_cast<float>(monitor_scale * font_scale)};
+   }
+   return config;
+ }
+diff -up chromium-126.0.6478.26/ui/views/controls/button/label_button.cc.no_matching_constructor chromium-126.0.6478.26/ui/views/controls/button/label_button.cc
+--- chromium-126.0.6478.26/ui/views/controls/button/label_button.cc.no_matching_constructor	2024-05-29 18:02:32.000000000 +0200
++++ chromium-126.0.6478.26/ui/views/controls/button/label_button.cc	2024-06-02 23:51:25.516916057 +0200
+@@ -392,11 +392,11 @@ ProposedLayout LabelButton::CalculatePro
+ 
+   gfx::Rect image_area = GetLocalBounds();
+ 
+-  layouts.child_layouts.emplace_back(
++  layouts.child_layouts.emplace_back() = {
+       ink_drop_container_.get(),
+       static_cast<DelegatingLayoutManager*>(GetLayoutManager())
+           ->CanBeVisible(ink_drop_container_.get()),
+-      image_area, SizeBounds());
++      image_area, SizeBounds()};
+ 
+   gfx::Insets insets = GetInsets();
+   // If the button have a limited space to fit in, the image and the label
+@@ -448,11 +448,11 @@ ProposedLayout LabelButton::CalculatePro
+   } else if (horizontal_alignment == gfx::ALIGN_RIGHT) {
+     image_origin.Offset(image_area.width() - image_size.width(), 0);
+   }
+-  layouts.child_layouts.emplace_back(
++  layouts.child_layouts.emplace_back() = {
+       const_cast<LabelButton*>(this)->image_container_view(),
+       static_cast<DelegatingLayoutManager*>(GetLayoutManager())
+           ->CanBeVisible(image_container_view()),
+-      gfx::Rect(image_origin, image_size), SizeBounds());
++      gfx::Rect(image_origin, image_size), SizeBounds()};
+ 
+   gfx::Rect label_bounds = label_area;
+   if (label_area.width() == label_size.width()) {
+@@ -466,11 +466,11 @@ ProposedLayout LabelButton::CalculatePro
+     }
+   }
+ 
+-  layouts.child_layouts.emplace_back(
++  layouts.child_layouts.emplace_back() = {
+       label_.get(),
+       static_cast<DelegatingLayoutManager*>(GetLayoutManager())
+           ->CanBeVisible(label_.get()),
+-      label_bounds, SizeBounds());
++      label_bounds, SizeBounds()};
+   layouts.host_size =
+       gfx::Size(size_bounds.width().value(), size_bounds.height().value());
+ 
+diff -up chromium-126.0.6478.26/ui/views/controls/editable_combobox/editable_combobox.cc.no_matching_constructor chromium-126.0.6478.26/ui/views/controls/editable_combobox/editable_combobox.cc
+--- chromium-126.0.6478.26/ui/views/controls/editable_combobox/editable_combobox.cc.no_matching_constructor	2024-05-29 18:02:32.000000000 +0200
++++ chromium-126.0.6478.26/ui/views/controls/editable_combobox/editable_combobox.cc	2024-06-02 23:51:25.517916081 +0200
+@@ -492,16 +492,16 @@ ProposedLayout EditableCombobox::Calcula
+     layout.host_size =
+         gfx::Size(size_bounds.width().value(), size_bounds.height().value());
+   }
+-  layout.child_layouts.emplace_back(
++  layout.child_layouts.emplace_back() = {
+       textfield_.get(), textfield_->GetVisible(),
+-      gfx::Rect(0, 0, layout.host_size.width(), layout.host_size.height()));
++      gfx::Rect(0, 0, layout.host_size.width(), layout.host_size.height())};
+   const int preferred_width =
+       control_elements_container_->GetPreferredSize({}).width();
+-  layout.child_layouts.emplace_back(
++  layout.child_layouts.emplace_back() = {
+       control_elements_container_.get(),
+       control_elements_container_->GetVisible(),
+       gfx::Rect(layout.host_size.width() - preferred_width, 0, preferred_width,
+-                layout.host_size.height()));
++                layout.host_size.height())};
+   return layout;
+ }
+ 
+diff -up chromium-126.0.6478.26/ui/views/layout/box_layout.cc.no_matching_constructor chromium-126.0.6478.26/ui/views/layout/box_layout.cc
+--- chromium-126.0.6478.26/ui/views/layout/box_layout.cc.no_matching_constructor	2024-05-29 18:02:32.000000000 +0200
++++ chromium-126.0.6478.26/ui/views/layout/box_layout.cc	2024-06-02 23:51:25.517916081 +0200
+@@ -325,7 +325,7 @@ void BoxLayout::InitializeChildData(BoxL
+     data.child_data.emplace_back();
+     BoxChildData& child_data = data.child_data.back();
+ 
+-    data.layout.child_layouts.emplace_back(child, true);
++    data.layout.child_layouts.emplace_back() = {child, true};
+ 
+     gfx::Insets* margins = child ? child->GetProperty(kMarginsKey) : nullptr;
+     if (margins) {
+diff -up chromium-126.0.6478.26/ui/views/window/dialog_client_view.cc.no_matching_constructor chromium-126.0.6478.26/ui/views/window/dialog_client_view.cc
+--- chromium-126.0.6478.26/ui/views/window/dialog_client_view.cc.no_matching_constructor	2024-05-29 18:02:32.000000000 +0200
++++ chromium-126.0.6478.26/ui/views/window/dialog_client_view.cc	2024-06-02 23:51:25.518916106 +0200
+@@ -206,16 +206,16 @@ ProposedLayout DialogClientView::Calcula
+   const int container_height =
+       button_row_container_->GetHeightForWidth(size_bounds.width().value());
+   const int container_y = size_bounds.height().value() - container_height;
+-  layouts.child_layouts.emplace_back(
++  layouts.child_layouts.emplace_back() = {
+       button_row_container_.get(), button_row_container_->GetVisible(),
+       gfx::Rect(0, container_y, size_bounds.width().value(), container_height),
+-      size_bounds);
++      size_bounds};
+   if (contents_view()) {
+     gfx::Rect contents_bounds(size_bounds.width().value(), container_y);
+     contents_bounds.Inset(GetDialogDelegate()->margins());
+-    layouts.child_layouts.emplace_back(contents_view(),
++    layouts.child_layouts.emplace_back() = {contents_view(),
+                                        contents_view()->GetVisible(),
+-                                       contents_bounds, size_bounds);
++                                       contents_bounds, size_bounds};
+   }
+   layouts.host_size =
+       gfx::Size(size_bounds.width().value(), size_bounds.height().value());
+diff --git a/contact_info_sync_util.cc b/contact_info_sync_util.cc.new
+index 8d6e911..dbb47b7 100644
+--- a/components/autofill/core/browser/webdata/addresses/contact_info_sync_util.cc
++++ b/components/autofill/core/browser/webdata/addresses/contact_info_sync_util.cc
+@@ -169,9 +169,9 @@ class ContactInfoProfileSetter {
+       CHECK(observations.empty());
+       for (const sync_pb::ContactInfoSpecifics::Observation& proto_observation :
+            metadata.observations()) {
+-        observations.emplace_back(proto_observation.type(),
++        observations.emplace_back() = {static_cast<std::underlying_type_t<ProfileTokenQuality::ObservationType>>(proto_observation.type()),
+                                   ProfileTokenQuality::FormSignatureHash(
+-                                      proto_observation.form_hash()));
++                                      proto_observation.form_hash())};
+       }
+     }
+   }

@@ -1,7 +1,7 @@
-Index: chromium-123.0.6312.46/third_party/webrtc/modules/congestion_controller/goog_cc/loss_based_bwe_v2.cc
+Index: chromium-126.0.6478.8/third_party/webrtc/modules/congestion_controller/goog_cc/loss_based_bwe_v2.cc
 ===================================================================
---- chromium-123.0.6312.46.orig/third_party/webrtc/modules/congestion_controller/goog_cc/loss_based_bwe_v2.cc
-+++ chromium-123.0.6312.46/third_party/webrtc/modules/congestion_controller/goog_cc/loss_based_bwe_v2.cc
+--- chromium-126.0.6478.8.orig/third_party/webrtc/modules/congestion_controller/goog_cc/loss_based_bwe_v2.cc
++++ chromium-126.0.6478.8/third_party/webrtc/modules/congestion_controller/goog_cc/loss_based_bwe_v2.cc
 @@ -549,7 +549,7 @@ absl::optional<LossBasedBweV2::Config> L
    if (!enabled.Get()) {
      return config;
@@ -11,10 +11,10 @@ Index: chromium-123.0.6312.46/third_party/webrtc/modules/congestion_controller/g
    config->bandwidth_rampup_upper_bound_factor =
        bandwidth_rampup_upper_bound_factor.Get();
    config->bandwidth_rampup_upper_bound_factor_in_hold =
-Index: chromium-123.0.6312.46/ui/gfx/x/generated_protos/randr.cc
+Index: chromium-126.0.6478.8/ui/gfx/x/generated_protos/randr.cc
 ===================================================================
---- chromium-123.0.6312.46.orig/ui/gfx/x/generated_protos/randr.cc
-+++ chromium-123.0.6312.46/ui/gfx/x/generated_protos/randr.cc
+--- chromium-126.0.6478.8.orig/ui/gfx/x/generated_protos/randr.cc
++++ chromium-126.0.6478.8/ui/gfx/x/generated_protos/randr.cc
 @@ -305,7 +305,7 @@ void ReadEvent<RandR::NotifyEvent>(RandR
    // data
    auto data_expr = subCode;
@@ -78,11 +78,11 @@ Index: chromium-123.0.6312.46/ui/gfx/x/generated_protos/randr.cc
      auto& timestamp = (*data.lc).timestamp;
      auto& window = (*data.lc).window;
      auto& lease = (*data.lc).lease;
-Index: chromium-123.0.6312.46/ui/gfx/x/generated_protos/xkb.cc
+Index: chromium-126.0.6478.8/ui/gfx/x/generated_protos/xkb.cc
 ===================================================================
---- chromium-123.0.6312.46.orig/ui/gfx/x/generated_protos/xkb.cc
-+++ chromium-123.0.6312.46/ui/gfx/x/generated_protos/xkb.cc
-@@ -5276,7 +5276,7 @@ std::unique_ptr<Xkb::GetKbdByNameReply>
+--- chromium-126.0.6478.8.orig/ui/gfx/x/generated_protos/xkb.cc
++++ chromium-126.0.6478.8/ui/gfx/x/generated_protos/xkb.cc
+@@ -5207,7 +5207,7 @@ std::unique_ptr<Xkb::GetKbdByNameReply>
    if (CaseAnd(replies_expr, Xkb::GBNDetail::Types) ||
        CaseAnd(replies_expr, Xkb::GBNDetail::ClientSymbols) ||
        CaseAnd(replies_expr, Xkb::GBNDetail::ServerSymbols)) {
@@ -91,7 +91,7 @@ Index: chromium-123.0.6312.46/ui/gfx/x/generated_protos/xkb.cc
      auto& getmap_type = (*replies.types).getmap_type;
      auto& typeDeviceID = (*replies.types).typeDeviceID;
      auto& getmap_sequence = (*replies.types).getmap_sequence;
-@@ -5708,7 +5708,7 @@ std::unique_ptr<Xkb::GetKbdByNameReply>
+@@ -5626,7 +5626,7 @@ std::unique_ptr<Xkb::GetKbdByNameReply>
      }
    }
    if (CaseAnd(replies_expr, Xkb::GBNDetail::CompatMap)) {
@@ -100,7 +100,7 @@ Index: chromium-123.0.6312.46/ui/gfx/x/generated_protos/xkb.cc
      auto& compatmap_type = (*replies.compat_map).compatmap_type;
      auto& compatDeviceID = (*replies.compat_map).compatDeviceID;
      auto& compatmap_sequence = (*replies.compat_map).compatmap_sequence;
-@@ -5832,7 +5832,7 @@ std::unique_ptr<Xkb::GetKbdByNameReply>
+@@ -5747,7 +5747,7 @@ std::unique_ptr<Xkb::GetKbdByNameReply>
      }
    }
    if (CaseAnd(replies_expr, Xkb::GBNDetail::IndicatorMaps)) {
@@ -109,7 +109,7 @@ Index: chromium-123.0.6312.46/ui/gfx/x/generated_protos/xkb.cc
      auto& indicatormap_type = (*replies.indicator_maps).indicatormap_type;
      auto& indicatorDeviceID = (*replies.indicator_maps).indicatorDeviceID;
      auto& indicatormap_sequence =
-@@ -5926,7 +5926,7 @@ std::unique_ptr<Xkb::GetKbdByNameReply>
+@@ -5840,7 +5840,7 @@ std::unique_ptr<Xkb::GetKbdByNameReply>
    }
    if (CaseAnd(replies_expr, Xkb::GBNDetail::KeyNames) ||
        CaseAnd(replies_expr, Xkb::GBNDetail::OtherNames)) {
@@ -118,7 +118,7 @@ Index: chromium-123.0.6312.46/ui/gfx/x/generated_protos/xkb.cc
      auto& keyname_type = (*replies.key_names).keyname_type;
      auto& keyDeviceID = (*replies.key_names).keyDeviceID;
      auto& keyname_sequence = (*replies.key_names).keyname_sequence;
-@@ -6185,7 +6185,7 @@ std::unique_ptr<Xkb::GetKbdByNameReply>
+@@ -6087,7 +6087,7 @@ std::unique_ptr<Xkb::GetKbdByNameReply>
      }
    }
    if (CaseAnd(replies_expr, Xkb::GBNDetail::Geometry)) {
@@ -127,11 +127,11 @@ Index: chromium-123.0.6312.46/ui/gfx/x/generated_protos/xkb.cc
      auto& geometry_type = (*replies.geometry).geometry_type;
      auto& geometryDeviceID = (*replies.geometry).geometryDeviceID;
      auto& geometry_sequence = (*replies.geometry).geometry_sequence;
-Index: chromium-123.0.6312.46/mojo/public/cpp/bindings/lib/multiplex_router.cc
+Index: chromium-126.0.6478.8/mojo/public/cpp/bindings/lib/multiplex_router.cc
 ===================================================================
---- chromium-123.0.6312.46.orig/mojo/public/cpp/bindings/lib/multiplex_router.cc
-+++ chromium-123.0.6312.46/mojo/public/cpp/bindings/lib/multiplex_router.cc
-@@ -870,7 +870,7 @@ bool MultiplexRouter::ExclusiveSyncWaitF
+--- chromium-126.0.6478.8.orig/mojo/public/cpp/bindings/lib/multiplex_router.cc
++++ chromium-126.0.6478.8/mojo/public/cpp/bindings/lib/multiplex_router.cc
+@@ -893,7 +893,7 @@ bool MultiplexRouter::ExclusiveSyncWaitF
    DCHECK(!exclusive_sync_wait_);
  
    scoped_refptr<MultiplexRouter> keep_alive(this);
@@ -140,11 +140,11 @@ Index: chromium-123.0.6312.46/mojo/public/cpp/bindings/lib/multiplex_router.cc
    exclusive_sync_wait_->interface_id = interface_id;
    exclusive_sync_wait_->request_id = request_id;
    while (!exclusive_sync_wait_->finished) {
-Index: chromium-123.0.6312.46/ui/gfx/x/generated_protos/xinput.cc
+Index: chromium-126.0.6478.8/ui/gfx/x/generated_protos/xinput.cc
 ===================================================================
---- chromium-123.0.6312.46.orig/ui/gfx/x/generated_protos/xinput.cc
-+++ chromium-123.0.6312.46/ui/gfx/x/generated_protos/xinput.cc
-@@ -567,7 +567,7 @@ void ReadEvent<Input::DeviceChangedEvent
+--- chromium-126.0.6478.8.orig/ui/gfx/x/generated_protos/xinput.cc
++++ chromium-126.0.6478.8/ui/gfx/x/generated_protos/xinput.cc
+@@ -560,7 +560,7 @@ void ReadEvent<Input::DeviceChangedEvent
        // data
        auto data_expr = type;
        if (CaseEq(data_expr, Input::DeviceClassType::Key)) {
@@ -152,8 +152,8 @@ Index: chromium-123.0.6312.46/ui/gfx/x/generated_protos/xinput.cc
 +        data.key.emplace(Input::DeviceClass::Key());
          uint16_t num_keys{};
          auto& keys = (*data.key).keys;
-         size_t keys_len = keys.size();
-@@ -583,7 +583,7 @@ void ReadEvent<Input::DeviceChangedEvent
+ 
+@@ -575,7 +575,7 @@ void ReadEvent<Input::DeviceChangedEvent
          }
        }
        if (CaseEq(data_expr, Input::DeviceClassType::Button)) {
@@ -161,8 +161,8 @@ Index: chromium-123.0.6312.46/ui/gfx/x/generated_protos/xinput.cc
 +        data.button.emplace(Input::DeviceClass::Button());
          uint16_t num_buttons{};
          auto& state = (*data.button).state;
-         size_t state_len = state.size();
-@@ -608,7 +608,7 @@ void ReadEvent<Input::DeviceChangedEvent
+         auto& labels = (*data.button).labels;
+@@ -598,7 +598,7 @@ void ReadEvent<Input::DeviceChangedEvent
          }
        }
        if (CaseEq(data_expr, Input::DeviceClassType::Valuator)) {
@@ -171,7 +171,7 @@ Index: chromium-123.0.6312.46/ui/gfx/x/generated_protos/xinput.cc
          auto& number = (*data.valuator).number;
          auto& label = (*data.valuator).label;
          auto& min = (*data.valuator).min;
-@@ -671,7 +671,7 @@ void ReadEvent<Input::DeviceChangedEvent
+@@ -661,7 +661,7 @@ void ReadEvent<Input::DeviceChangedEvent
          Pad(&buf, 3);
        }
        if (CaseEq(data_expr, Input::DeviceClassType::Scroll)) {
@@ -180,7 +180,7 @@ Index: chromium-123.0.6312.46/ui/gfx/x/generated_protos/xinput.cc
          auto& number = (*data.scroll).number;
          auto& scroll_type = (*data.scroll).scroll_type;
          auto& flags = (*data.scroll).flags;
-@@ -706,7 +706,7 @@ void ReadEvent<Input::DeviceChangedEvent
+@@ -696,7 +696,7 @@ void ReadEvent<Input::DeviceChangedEvent
          }
        }
        if (CaseEq(data_expr, Input::DeviceClassType::Touch)) {
@@ -189,7 +189,7 @@ Index: chromium-123.0.6312.46/ui/gfx/x/generated_protos/xinput.cc
          auto& mode = (*data.touch).mode;
          auto& num_touches = (*data.touch).num_touches;
  
-@@ -719,7 +719,7 @@ void ReadEvent<Input::DeviceChangedEvent
+@@ -709,7 +709,7 @@ void ReadEvent<Input::DeviceChangedEvent
          Read(&num_touches, &buf);
        }
        if (CaseEq(data_expr, Input::DeviceClassType::Gesture)) {
@@ -198,7 +198,7 @@ Index: chromium-123.0.6312.46/ui/gfx/x/generated_protos/xinput.cc
          auto& num_touches = (*data.gesture).num_touches;
  
          // num_touches
-@@ -2206,7 +2206,7 @@ std::unique_ptr<Input::ListInputDevicesR
+@@ -2187,7 +2187,7 @@ std::unique_ptr<Input::ListInputDevicesR
        // info
        auto info_expr = class_id;
        if (CaseEq(info_expr, Input::InputClass::Key)) {
@@ -207,7 +207,7 @@ Index: chromium-123.0.6312.46/ui/gfx/x/generated_protos/xinput.cc
          auto& min_keycode = (*info.key).min_keycode;
          auto& max_keycode = (*info.key).max_keycode;
          auto& num_keys = (*info.key).num_keys;
-@@ -2224,14 +2224,14 @@ std::unique_ptr<Input::ListInputDevicesR
+@@ -2205,14 +2205,14 @@ std::unique_ptr<Input::ListInputDevicesR
          Pad(&buf, 2);
        }
        if (CaseEq(info_expr, Input::InputClass::Button)) {
@@ -224,7 +224,7 @@ Index: chromium-123.0.6312.46/ui/gfx/x/generated_protos/xinput.cc
          uint8_t axes_len{};
          auto& mode = (*info.valuator).mode;
          auto& motion_size = (*info.valuator).motion_size;
-@@ -3844,7 +3844,7 @@ std::unique_ptr<Input::GetFeedbackContro
+@@ -3818,7 +3818,7 @@ std::unique_ptr<Input::GetFeedbackContro
        // data
        auto data_expr = class_id;
        if (CaseEq(data_expr, Input::FeedbackClass::Keyboard)) {
@@ -233,7 +233,7 @@ Index: chromium-123.0.6312.46/ui/gfx/x/generated_protos/xinput.cc
          auto& pitch = (*data.keyboard).pitch;
          auto& duration = (*data.keyboard).duration;
          auto& led_mask = (*data.keyboard).led_mask;
-@@ -3886,7 +3886,7 @@ std::unique_ptr<Input::GetFeedbackContro
+@@ -3859,7 +3859,7 @@ std::unique_ptr<Input::GetFeedbackContro
          }
        }
        if (CaseEq(data_expr, Input::FeedbackClass::Pointer)) {
@@ -242,7 +242,7 @@ Index: chromium-123.0.6312.46/ui/gfx/x/generated_protos/xinput.cc
          auto& accel_num = (*data.pointer).accel_num;
          auto& accel_denom = (*data.pointer).accel_denom;
          auto& threshold = (*data.pointer).threshold;
-@@ -3904,7 +3904,7 @@ std::unique_ptr<Input::GetFeedbackContro
+@@ -3877,7 +3877,7 @@ std::unique_ptr<Input::GetFeedbackContro
          Read(&threshold, &buf);
        }
        if (CaseEq(data_expr, Input::FeedbackClass::String)) {
@@ -251,7 +251,7 @@ Index: chromium-123.0.6312.46/ui/gfx/x/generated_protos/xinput.cc
          auto& max_symbols = (*data.string).max_symbols;
          uint16_t num_keysyms{};
          auto& keysyms = (*data.string).keysyms;
-@@ -3924,7 +3924,7 @@ std::unique_ptr<Input::GetFeedbackContro
+@@ -3896,7 +3896,7 @@ std::unique_ptr<Input::GetFeedbackContro
          }
        }
        if (CaseEq(data_expr, Input::FeedbackClass::Integer)) {
@@ -260,7 +260,7 @@ Index: chromium-123.0.6312.46/ui/gfx/x/generated_protos/xinput.cc
          auto& resolution = (*data.integer).resolution;
          auto& min_value = (*data.integer).min_value;
          auto& max_value = (*data.integer).max_value;
-@@ -3939,7 +3939,7 @@ std::unique_ptr<Input::GetFeedbackContro
+@@ -3911,7 +3911,7 @@ std::unique_ptr<Input::GetFeedbackContro
          Read(&max_value, &buf);
        }
        if (CaseEq(data_expr, Input::FeedbackClass::Led)) {
@@ -269,7 +269,7 @@ Index: chromium-123.0.6312.46/ui/gfx/x/generated_protos/xinput.cc
          auto& led_mask = (*data.led).led_mask;
          auto& led_values = (*data.led).led_values;
  
-@@ -3950,7 +3950,7 @@ std::unique_ptr<Input::GetFeedbackContro
+@@ -3922,7 +3922,7 @@ std::unique_ptr<Input::GetFeedbackContro
          Read(&led_values, &buf);
        }
        if (CaseEq(data_expr, Input::FeedbackClass::Bell)) {
@@ -278,7 +278,7 @@ Index: chromium-123.0.6312.46/ui/gfx/x/generated_protos/xinput.cc
          auto& percent = (*data.bell).percent;
          auto& pitch = (*data.bell).pitch;
          auto& duration = (*data.bell).duration;
-@@ -4768,7 +4768,7 @@ std::unique_ptr<Input::QueryDeviceStateR
+@@ -4735,7 +4735,7 @@ std::unique_ptr<Input::QueryDeviceStateR
        // data
        auto data_expr = class_id;
        if (CaseEq(data_expr, Input::InputClass::Key)) {
@@ -286,8 +286,8 @@ Index: chromium-123.0.6312.46/ui/gfx/x/generated_protos/xinput.cc
 +        data.key.emplace(Input::InputState::Key());
          auto& num_keys = (*data.key).num_keys;
          auto& keys = (*data.key).keys;
-         size_t keys_len = keys.size();
-@@ -4786,7 +4786,7 @@ std::unique_ptr<Input::QueryDeviceStateR
+ 
+@@ -4752,7 +4752,7 @@ std::unique_ptr<Input::QueryDeviceStateR
          }
        }
        if (CaseEq(data_expr, Input::InputClass::Button)) {
@@ -295,8 +295,8 @@ Index: chromium-123.0.6312.46/ui/gfx/x/generated_protos/xinput.cc
 +        data.button.emplace(Input::InputState::Button());
          auto& num_buttons = (*data.button).num_buttons;
          auto& buttons = (*data.button).buttons;
-         size_t buttons_len = buttons.size();
-@@ -4804,7 +4804,7 @@ std::unique_ptr<Input::QueryDeviceStateR
+ 
+@@ -4769,7 +4769,7 @@ std::unique_ptr<Input::QueryDeviceStateR
          }
        }
        if (CaseEq(data_expr, Input::InputClass::Valuator)) {
@@ -305,7 +305,7 @@ Index: chromium-123.0.6312.46/ui/gfx/x/generated_protos/xinput.cc
          uint8_t num_valuators{};
          auto& mode = (*data.valuator).mode;
          auto& valuators = (*data.valuator).valuators;
-@@ -5075,7 +5075,7 @@ std::unique_ptr<Input::GetDeviceControlR
+@@ -5039,7 +5039,7 @@ std::unique_ptr<Input::GetDeviceControlR
      // data
      auto data_expr = control_id;
      if (CaseEq(data_expr, Input::DeviceControl::resolution)) {
@@ -313,8 +313,8 @@ Index: chromium-123.0.6312.46/ui/gfx/x/generated_protos/xinput.cc
 +      data.resolution.emplace(Input::DeviceState::Resolution());
        uint32_t num_valuators{};
        auto& resolution_values = (*data.resolution).resolution_values;
-       size_t resolution_values_len = resolution_values.size();
-@@ -5109,7 +5109,7 @@ std::unique_ptr<Input::GetDeviceControlR
+       auto& resolution_min = (*data.resolution).resolution_min;
+@@ -5070,7 +5070,7 @@ std::unique_ptr<Input::GetDeviceControlR
        }
      }
      if (CaseEq(data_expr, Input::DeviceControl::abs_calib)) {
@@ -323,7 +323,7 @@ Index: chromium-123.0.6312.46/ui/gfx/x/generated_protos/xinput.cc
        auto& min_x = (*data.abs_calib).min_x;
        auto& max_x = (*data.abs_calib).max_x;
        auto& min_y = (*data.abs_calib).min_y;
-@@ -5144,7 +5144,7 @@ std::unique_ptr<Input::GetDeviceControlR
+@@ -5105,7 +5105,7 @@ std::unique_ptr<Input::GetDeviceControlR
        Read(&button_threshold, &buf);
      }
      if (CaseEq(data_expr, Input::DeviceControl::core)) {
@@ -332,7 +332,7 @@ Index: chromium-123.0.6312.46/ui/gfx/x/generated_protos/xinput.cc
        auto& status = (*data.core).status;
        auto& iscore = (*data.core).iscore;
  
-@@ -5158,7 +5158,7 @@ std::unique_ptr<Input::GetDeviceControlR
+@@ -5119,7 +5119,7 @@ std::unique_ptr<Input::GetDeviceControlR
        Pad(&buf, 2);
      }
      if (CaseEq(data_expr, Input::DeviceControl::enable)) {
@@ -341,7 +341,7 @@ Index: chromium-123.0.6312.46/ui/gfx/x/generated_protos/xinput.cc
        auto& enable = (*data.enable).enable;
  
        // enable
-@@ -5168,7 +5168,7 @@ std::unique_ptr<Input::GetDeviceControlR
+@@ -5129,7 +5129,7 @@ std::unique_ptr<Input::GetDeviceControlR
        Pad(&buf, 3);
      }
      if (CaseEq(data_expr, Input::DeviceControl::abs_area)) {
@@ -350,7 +350,7 @@ Index: chromium-123.0.6312.46/ui/gfx/x/generated_protos/xinput.cc
        auto& offset_x = (*data.abs_area).offset_x;
        auto& offset_y = (*data.abs_area).offset_y;
        auto& width = (*data.abs_area).width;
-@@ -6659,7 +6659,7 @@ std::unique_ptr<Input::XIQueryDeviceRepl
+@@ -6610,7 +6610,7 @@ std::unique_ptr<Input::XIQueryDeviceRepl
            // data
            auto data_expr = type;
            if (CaseEq(data_expr, Input::DeviceClassType::Key)) {
@@ -358,8 +358,8 @@ Index: chromium-123.0.6312.46/ui/gfx/x/generated_protos/xinput.cc
 +            data.key.emplace(Input::DeviceClass::Key());
              uint16_t num_keys{};
              auto& keys = (*data.key).keys;
-             size_t keys_len = keys.size();
-@@ -6675,7 +6675,7 @@ std::unique_ptr<Input::XIQueryDeviceRepl
+ 
+@@ -6625,7 +6625,7 @@ std::unique_ptr<Input::XIQueryDeviceRepl
              }
            }
            if (CaseEq(data_expr, Input::DeviceClassType::Button)) {
@@ -367,8 +367,8 @@ Index: chromium-123.0.6312.46/ui/gfx/x/generated_protos/xinput.cc
 +            data.button.emplace(Input::DeviceClass::Button());
              uint16_t num_buttons{};
              auto& state = (*data.button).state;
-             size_t state_len = state.size();
-@@ -6700,7 +6700,7 @@ std::unique_ptr<Input::XIQueryDeviceRepl
+             auto& labels = (*data.button).labels;
+@@ -6648,7 +6648,7 @@ std::unique_ptr<Input::XIQueryDeviceRepl
              }
            }
            if (CaseEq(data_expr, Input::DeviceClassType::Valuator)) {
@@ -377,7 +377,7 @@ Index: chromium-123.0.6312.46/ui/gfx/x/generated_protos/xinput.cc
              auto& number = (*data.valuator).number;
              auto& label = (*data.valuator).label;
              auto& min = (*data.valuator).min;
-@@ -6763,7 +6763,7 @@ std::unique_ptr<Input::XIQueryDeviceRepl
+@@ -6711,7 +6711,7 @@ std::unique_ptr<Input::XIQueryDeviceRepl
              Pad(&buf, 3);
            }
            if (CaseEq(data_expr, Input::DeviceClassType::Scroll)) {
@@ -386,7 +386,7 @@ Index: chromium-123.0.6312.46/ui/gfx/x/generated_protos/xinput.cc
              auto& number = (*data.scroll).number;
              auto& scroll_type = (*data.scroll).scroll_type;
              auto& flags = (*data.scroll).flags;
-@@ -6798,7 +6798,7 @@ std::unique_ptr<Input::XIQueryDeviceRepl
+@@ -6746,7 +6746,7 @@ std::unique_ptr<Input::XIQueryDeviceRepl
              }
            }
            if (CaseEq(data_expr, Input::DeviceClassType::Touch)) {
@@ -395,7 +395,7 @@ Index: chromium-123.0.6312.46/ui/gfx/x/generated_protos/xinput.cc
              auto& mode = (*data.touch).mode;
              auto& num_touches = (*data.touch).num_touches;
  
-@@ -6811,7 +6811,7 @@ std::unique_ptr<Input::XIQueryDeviceRepl
+@@ -6759,7 +6759,7 @@ std::unique_ptr<Input::XIQueryDeviceRepl
              Read(&num_touches, &buf);
            }
            if (CaseEq(data_expr, Input::DeviceClassType::Gesture)) {
@@ -404,11 +404,11 @@ Index: chromium-123.0.6312.46/ui/gfx/x/generated_protos/xinput.cc
              auto& num_touches = (*data.gesture).num_touches;
  
              // num_touches
-Index: chromium-123.0.6312.46/components/viz/service/display/surface_aggregator.cc
+Index: chromium-126.0.6478.8/components/viz/service/display/surface_aggregator.cc
 ===================================================================
---- chromium-123.0.6312.46.orig/components/viz/service/display/surface_aggregator.cc
-+++ chromium-123.0.6312.46/components/viz/service/display/surface_aggregator.cc
-@@ -2236,7 +2236,7 @@ AggregatedFrame SurfaceAggregator::Aggre
+--- chromium-126.0.6478.8.orig/components/viz/service/display/surface_aggregator.cc
++++ chromium-126.0.6478.8/components/viz/service/display/surface_aggregator.cc
+@@ -2296,7 +2296,7 @@ AggregatedFrame SurfaceAggregator::Aggre
    root_surface_id_ = surface_id;
  
    // Start recording new stats for this aggregation.
@@ -417,11 +417,11 @@ Index: chromium-123.0.6312.46/components/viz/service/display/surface_aggregator.
  
    base::ElapsedTimer prewalk_timer;
    ResolvedFrameData* resolved_frame = GetResolvedFrame(surface_id);
-Index: chromium-123.0.6312.46/third_party/blink/renderer/modules/media_controls/elements/media_control_timeline_element.cc
+Index: chromium-126.0.6478.8/third_party/blink/renderer/modules/media_controls/elements/media_control_timeline_element.cc
 ===================================================================
---- chromium-123.0.6312.46.orig/third_party/blink/renderer/modules/media_controls/elements/media_control_timeline_element.cc
-+++ chromium-123.0.6312.46/third_party/blink/renderer/modules/media_controls/elements/media_control_timeline_element.cc
-@@ -101,7 +101,7 @@ void MediaControlTimelineElement::Update
+--- chromium-126.0.6478.8.orig/third_party/blink/renderer/modules/media_controls/elements/media_control_timeline_element.cc
++++ chromium-126.0.6478.8/third_party/blink/renderer/modules/media_controls/elements/media_control_timeline_element.cc
+@@ -102,7 +102,7 @@ void MediaControlTimelineElement::Update
  void MediaControlTimelineElement::SetPosition(double current_time,
                                                bool suppress_aria) {
    if (is_live_ && !live_anchor_time_ && current_time != 0) {
@@ -430,10 +430,10 @@ Index: chromium-123.0.6312.46/third_party/blink/renderer/modules/media_controls/
      live_anchor_time_->clock_time_ = base::TimeTicks::Now();
      live_anchor_time_->media_time_ = MediaElement().currentTime();
    }
-Index: chromium-123.0.6312.46/third_party/blink/renderer/platform/graphics/paint/geometry_mapper_transform_cache.cc
+Index: chromium-126.0.6478.8/third_party/blink/renderer/platform/graphics/paint/geometry_mapper_transform_cache.cc
 ===================================================================
---- chromium-123.0.6312.46.orig/third_party/blink/renderer/platform/graphics/paint/geometry_mapper_transform_cache.cc
-+++ chromium-123.0.6312.46/third_party/blink/renderer/platform/graphics/paint/geometry_mapper_transform_cache.cc
+--- chromium-126.0.6478.8.orig/third_party/blink/renderer/platform/graphics/paint/geometry_mapper_transform_cache.cc
++++ chromium-126.0.6478.8/third_party/blink/renderer/platform/graphics/paint/geometry_mapper_transform_cache.cc
 @@ -70,7 +70,7 @@ void GeometryMapperTransformCache::Updat
      to_2d_translation_root_ += translation;
  

@@ -244,3 +244,67 @@ Index: chromium-123.0.6312.46/third_party/blink/renderer/core/layout/hit_test_re
  #include "base/functional/callback.h"
  #include "third_party/blink/renderer/platform/heap/garbage_collected.h"
  #include "third_party/blink/renderer/platform/heap/member.h"
+
+Index: chromium-126.0.6478.126/gpu/config/webgpu_blocklist_impl.h
+===================================================================
+--- chromium-126.0.6478.126.orig/gpu/config/webgpu_blocklist_impl.h
++++ chromium-126.0.6478.126/gpu/config/webgpu_blocklist_impl.h
+@@ -6,6 +6,7 @@
+ #define GPU_CONFIG_WEBGPU_BLOCKLIST_IMPL_H_
+ 
+ #include <string>
++#include <cstdint>
+ 
+ namespace wgpu {
+ class Adapter;
+Index: chromium-126.0.6478.126/third_party/blink/renderer/platform/fonts/shaping/run_segmenter.h
+===================================================================
+--- chromium-126.0.6478.126.orig/third_party/blink/renderer/platform/fonts/shaping/run_segmenter.h
++++ chromium-126.0.6478.126/third_party/blink/renderer/platform/fonts/shaping/run_segmenter.h
+@@ -6,7 +6,10 @@
+ #define THIRD_PARTY_BLINK_RENDERER_PLATFORM_FONTS_SHAPING_RUN_SEGMENTER_H_
+ 
+ #include <unicode/uscript.h>
++
+ #include <memory>
++#include <optional>
++
+ #include "third_party/blink/renderer/platform/fonts/font_orientation.h"
+ #include "third_party/blink/renderer/platform/fonts/orientation_iterator.h"
+ #include "third_party/blink/renderer/platform/fonts/script_run_iterator.h"
+Index: chromium-126.0.6478.126/third_party/blink/renderer/modules/encoding/text_decoder.h
+===================================================================
+--- chromium-126.0.6478.126.orig/third_party/blink/renderer/modules/encoding/text_decoder.h
++++ chromium-126.0.6478.126/third_party/blink/renderer/modules/encoding/text_decoder.h
+@@ -32,6 +32,7 @@
+ #define THIRD_PARTY_BLINK_RENDERER_MODULES_ENCODING_TEXT_DECODER_H_
+ 
+ #include <memory>
++#include <optional>
+ 
+ #include "third_party/blink/renderer/bindings/core/v8/v8_typedefs.h"
+ #include "third_party/blink/renderer/bindings/modules/v8/v8_text_decode_options.h"
+Index: chromium-126.0.6478.126/third_party/blink/renderer/core/page/page_popup_controller.h
+===================================================================
+--- chromium-126.0.6478.126.orig/third_party/blink/renderer/core/page/page_popup_controller.h
++++ chromium-126.0.6478.126/third_party/blink/renderer/core/page/page_popup_controller.h
+@@ -31,6 +31,7 @@
+ #ifndef THIRD_PARTY_BLINK_RENDERER_CORE_PAGE_PAGE_POPUP_CONTROLLER_H_
+ #define THIRD_PARTY_BLINK_RENDERER_CORE_PAGE_PAGE_POPUP_CONTROLLER_H_
+ 
++#include <optional>
+ #include "third_party/blink/renderer/platform/bindings/script_wrappable.h"
+ #include "third_party/blink/renderer/platform/heap/collection_support/heap_vector.h"
+ #include "third_party/blink/renderer/platform/heap/garbage_collected.h"
+diff --git a/components/visited_url_ranking/public/url_visit.h b/components/visited_url_ranking/public/url_visit.h
+index 8fa58c569f2411..8581be3068d81a 100644
+--- a/components/visited_url_ranking/public/url_visit.h
++++ b/components/visited_url_ranking/public/url_visit.h
+@@ -8,6 +8,7 @@
+ #include <memory>
+ #include <optional>
+ #include <set>
++#include <variant>
+ #include <vector>
+ 
+ #include "base/functional/callback.h"

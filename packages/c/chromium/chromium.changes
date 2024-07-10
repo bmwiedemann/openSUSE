@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Tue Jul  9 10:09:56 UTC 2024 - Callum Farmer <gmbr3@opensuse.org>
+
+- Finalize 126
+- Removed patches:
+  * chromium-125-debian-bad-font-gc2.patch
+  * chromium-125-debian-bad-font-gc3.patch
+- Added patches:
+  * chromium-126-RealTimeReportingBindings-missing-decl.patch
+  * chromium-126-no-format.patch
+
+-------------------------------------------------------------------
+Mon Jul  1 14:09:50 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Chromium 126.0.6478.126 (boo#1226504, boo#1226205, boo#1226933)
+  * CVE-2024-6290: Use after free in Dawn
+  * CVE-2024-6291: Use after free in Swiftshader
+  * CVE-2024-6292: Use after free in Dawn
+  * CVE-2024-6293: Use after free in Dawn
+  * CVE-2024-6100: Type Confusion in V8
+  * CVE-2024-6101: Inappropriate implementation in WebAssembly
+  * CVE-2024-6102: Out of bounds memory access in Dawn
+  * CVE-2024-6103: Use after free in Dawn
+  * CVE-2024-5830: Type Confusion in V8
+  * CVE-2024-5831: Use after free in Dawn
+  * CVE-2024-5832: Use after free in Dawn
+  * CVE-2024-5833: Type Confusion in V8
+  * CVE-2024-5834: Inappropriate implementation in Dawn
+  * CVE-2024-5835: Heap buffer overflow in Tab Groups
+  * CVE-2024-5836: Inappropriate Implementation in DevTools
+  * CVE-2024-5837: Type Confusion in V8
+  * CVE-2024-5838: Type Confusion in V8
+  * CVE-2024-5839: Inappropriate Implementation in Memory Allocator
+  * CVE-2024-5840: Policy Bypass in CORS
+  * CVE-2024-5841: Use after free in V8
+  * CVE-2024-5842: Use after free in Browser UI
+  * CVE-2024-5843: Inappropriate implementation in Downloads
+  * CVE-2024-5844: Heap buffer overflow in Tab Strip
+  * CVE-2024-5845: Use after free in Audio
+  * CVE-2024-5846: Use after free in PDFium
+  * CVE-2024-5847: Use after free in PDFium
+- drop patches:
+  * chromium-disable-parallel-gold.patch
+  * chromium-125-appservice-include.patch
+  * chromium-125-lens-include.patch
+  * chromium-125-mojo-bindings-include.patch
+  * chromium-125-no-vector-consts.patch
+  * chromium-125-vulkan-include.patch
+  * chromium-125-ninja.patch
+  * chromium-125-no_matching_constructor.patch
+  * chromium-125-missing-header-files.patch
+- add patches:
+  * chromium-126-missing-header-files.patch
+  * chromium-126-quiche-interator.patch
+  * chromium-126-no_matching_constructor.patch
+
+-------------------------------------------------------------------
 Wed Jun 12 13:00:59 UTC 2024 - Callum Farmer <gmbr3@opensuse.org>
 
 - Amend fix_building_widevinecdm_with_chromium.patch to allow

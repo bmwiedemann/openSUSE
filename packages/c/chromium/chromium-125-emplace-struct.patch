@@ -1,8 +1,8 @@
-diff --git a/shared_image_backing.h b/shared_image_backing.h.new
-index 97ebd0b..fc6179c 100644
---- a/gpu/command_buffer/service/shared_image/shared_image_backing.h
-+++ b/gpu/command_buffer/service/shared_image/shared_image_backing.h
-@@ -338,7 +338,7 @@ class GPU_GLES2_EXPORT SharedImageBacking {
+Index: chromium-126.0.6478.8/gpu/command_buffer/service/shared_image/shared_image_backing.h
+===================================================================
+--- chromium-126.0.6478.8.orig/gpu/command_buffer/service/shared_image/shared_image_backing.h
++++ chromium-126.0.6478.8/gpu/command_buffer/service/shared_image/shared_image_backing.h
+@@ -386,7 +386,7 @@ class GPU_GLES2_EXPORT SharedImageBackin
   private:
    class ScopedWriteUMA {
     public:
@@ -11,7 +11,7 @@ index 97ebd0b..fc6179c 100644
  
      ScopedWriteUMA(const ScopedWriteUMA&) = delete;
      ScopedWriteUMA& operator=(const ScopedWriteUMA&) = delete;
-@@ -352,7 +352,7 @@ class GPU_GLES2_EXPORT SharedImageBacking {
+@@ -400,7 +400,7 @@ class GPU_GLES2_EXPORT SharedImageBackin
      void SetConsumed() { content_consumed_ = true; }
  
     private:
@@ -20,11 +20,11 @@ index 97ebd0b..fc6179c 100644
    };
  
    const Mailbox mailbox_;
-diff --git a/history_item.h b/history_item.h.new
-index 15fea48..ba59305 100644
---- a/third_party/blink/renderer/core/loader/history_item.h
-+++ b/third_party/blink/renderer/core/loader/history_item.h
-@@ -77,13 +77,13 @@ class CORE_EXPORT HistoryItem final : public GarbageCollected<HistoryItem> {
+Index: chromium-126.0.6478.8/third_party/blink/renderer/core/loader/history_item.h
+===================================================================
+--- chromium-126.0.6478.8.orig/third_party/blink/renderer/core/loader/history_item.h
++++ chromium-126.0.6478.8/third_party/blink/renderer/core/loader/history_item.h
+@@ -77,13 +77,13 @@ class CORE_EXPORT HistoryItem final : pu
      DISALLOW_NEW();
  
     public:
@@ -40,11 +40,11 @@ index 15fea48..ba59305 100644
      ScrollAnchorData scroll_anchor_data_;
    };
  
-diff --git a/third_party/blink/public/common/interest_group/auction_config.h b/third_party/blink/public/common/interest_group/auction_config.h.new
-index 5eb6378..4187556 100644
---- a/third_party/blink/public/common/interest_group/auction_config.h
-+++ b/third_party/blink/public/common/interest_group/auction_config.h
-@@ -243,9 +243,11 @@ struct BLINK_COMMON_EXPORT AuctionConfig {
+Index: chromium-126.0.6478.8/third_party/blink/public/common/interest_group/auction_config.h
+===================================================================
+--- chromium-126.0.6478.8.orig/third_party/blink/public/common/interest_group/auction_config.h
++++ chromium-126.0.6478.8/third_party/blink/public/common/interest_group/auction_config.h
+@@ -247,9 +247,11 @@ struct BLINK_COMMON_EXPORT AuctionConfig
  
      // Povides whether debug mode is enabled and, if it is, any debug key.
      struct BLINK_COMMON_EXPORT AuctionReportBuyerDebugModeConfig {
@@ -57,12 +57,12 @@ index 5eb6378..4187556 100644
        friend BLINK_COMMON_EXPORT bool operator==(
            const AuctionReportBuyerDebugModeConfig&,
            const AuctionReportBuyerDebugModeConfig&);
-@@ -447,7 +449,7 @@ struct BLINK_COMMON_EXPORT AuctionConfig {
+@@ -463,7 +465,7 @@ struct BLINK_COMMON_EXPORT AuctionConfig
    // Origin for the Coordinator to be used for Private Aggregation.
    std::optional<url::Origin> aggregation_coordinator_origin;
  
--  static_assert(__LINE__ == 455, R"(
-+  static_assert(__LINE__ == 457, R"(
+-  static_assert(__LINE__ == 466, R"(
++  static_assert(__LINE__ == 468, R"(
  If modifying AuctionConfig fields, please make sure to also modify:
  
  * third_party/blink/public/mojom/interest_group/interest_group_types.mojom

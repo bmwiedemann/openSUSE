@@ -13,7 +13,7 @@ HERE="`dirname "$CHROME_WRAPPER"`"
 # This also makes RPMs find the compatibly-named library symlinks.
 export LD_LIBRARY_PATH="$HERE${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
 
-export CHROME_VERSION_EXTRA="stable"
+export CHROME_VERSION_EXTRA="@@CHANNEL@@"
 
 # We don't want bug-buddy intercepting our crashes. http://crbug.com/24120
 export GNOME_DISABLE_CRASH_DIALOG=SET_BY_GOOGLE_CHROME

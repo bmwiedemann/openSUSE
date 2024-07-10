@@ -1,0 +1,12 @@
+diff -up chromium-126.0.6478.26/net/third_party/quiche/src/quiche/quic/core/quic_interval_deque.h.me chromium-126.0.6478.26/net/third_party/quiche/src/quiche/quic/core/quic_interval_deque.h
+--- chromium-126.0.6478.26/net/third_party/quiche/src/quiche/quic/core/quic_interval_deque.h.me	2024-06-03 15:01:54.724207324 +0200
++++ chromium-126.0.6478.26/net/third_party/quiche/src/quiche/quic/core/quic_interval_deque.h	2024-06-03 14:58:16.244189794 +0200
+@@ -144,7 +144,7 @@ class QUICHE_NO_EXPORT QuicIntervalDeque
+   // for efficient std::lower_bound() calls.
+   class QUICHE_NO_EXPORT Iterator {
+    public:
+-    using iterator_category = std::random_access_iterator_tag;
++    using iterator_category = std::forward_iterator_tag;
+     using value_type = T;
+     using difference_type = std::ptrdiff_t;
+     using pointer = T*;

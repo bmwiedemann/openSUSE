@@ -21,11 +21,11 @@ Signed-off-by: Marek Behún <kabel@kernel.org>
  media/filters/ffmpeg_demuxer.cc         | 16 ++++++++++++++++
  2 files changed, 20 insertions(+)
 
-Index: chromium-119.0.6045.21/media/filters/audio_decoder_unittest.cc
+Index: chromium-126.0.6478.8/media/filters/audio_decoder_unittest.cc
 ===================================================================
---- chromium-119.0.6045.21.orig/media/filters/audio_decoder_unittest.cc
-+++ chromium-119.0.6045.21/media/filters/audio_decoder_unittest.cc
-@@ -108,7 +108,11 @@ void SetDiscardPadding(AVPacket* packet,
+--- chromium-126.0.6478.8.orig/media/filters/audio_decoder_unittest.cc
++++ chromium-126.0.6478.8/media/filters/audio_decoder_unittest.cc
+@@ -109,7 +109,11 @@ void SetDiscardPadding(AVPacket* packet,
    }
  
    // If the timestamp is positive, try to use FFmpeg's discard data.
@@ -37,11 +37,11 @@ Index: chromium-119.0.6045.21/media/filters/audio_decoder_unittest.cc
    const uint32_t* skip_samples_ptr =
        reinterpret_cast<const uint32_t*>(av_packet_get_side_data(
            packet, AV_PKT_DATA_SKIP_SAMPLES, &skip_samples_size));
-Index: chromium-119.0.6045.21/media/filters/ffmpeg_demuxer.cc
+Index: chromium-126.0.6478.8/media/filters/ffmpeg_demuxer.cc
 ===================================================================
---- chromium-119.0.6045.21.orig/media/filters/ffmpeg_demuxer.cc
-+++ chromium-119.0.6045.21/media/filters/ffmpeg_demuxer.cc
-@@ -390,7 +390,11 @@ void FFmpegDemuxerStream::EnqueuePacket(
+--- chromium-126.0.6478.8.orig/media/filters/ffmpeg_demuxer.cc
++++ chromium-126.0.6478.8/media/filters/ffmpeg_demuxer.cc
+@@ -401,7 +401,11 @@ void FFmpegDemuxerStream::EnqueuePacket(
  
    scoped_refptr<DecoderBuffer> buffer;
  
@@ -53,8 +53,8 @@ Index: chromium-119.0.6045.21/media/filters/ffmpeg_demuxer.cc
      uint8_t* side_data = av_packet_get_side_data(
          packet.get(), AV_PKT_DATA_MATROSKA_BLOCKADDITIONAL, &side_data_size);
  
-@@ -453,7 +457,11 @@ void FFmpegDemuxerStream::EnqueuePacket(
-                                        packet->size - data_offset);
+@@ -461,7 +465,11 @@ void FFmpegDemuxerStream::EnqueuePacket(
+                                                    side_data + side_data_size);
      }
  
 +#if LIBAVUTIL_VERSION_MAJOR < 57

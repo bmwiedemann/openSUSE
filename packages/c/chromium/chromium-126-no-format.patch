@@ -1,0 +1,52 @@
+From 3a97a9b768a28e1d11fd9e86733a4179b5b2df15 Mon Sep 17 00:00:00 2001
+From: Jose Dapena Paz <jdapena@igalia.com>
+Date: Wed, 22 May 2024 15:44:27 +0000
+Subject: [PATCH] Do not use std::format in ReadAnythingAppModel
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+std::format is still not allowed in Chrome (and this usage also broke
+libstdc++ build as it was missing the required include). Fix by
+using base::StringPrintf.
+
+Bug: 41455655
+Change-Id: I9a99e350c6ebf5e99baf5f90c06be6bad9c2a106
+Reviewed-on: https://chromium-review.googlesource.com/c/chromium/src/+/5513609
+Reviewed-by: Abigail Klein <abigailbklein@google.com>
+Commit-Queue: José Dapena Paz <jdapena@igalia.com>
+Cr-Commit-Position: refs/heads/main@{#1304460}
+---
+ chrome/renderer/accessibility/read_anything_app_model.cc | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/chrome/renderer/accessibility/read_anything_app_model.cc b/chrome/renderer/accessibility/read_anything_app_model.cc
+index 57606844177a4a..c60794fe13c6fd 100644
+--- a/chrome/renderer/accessibility/read_anything_app_model.cc
++++ b/chrome/renderer/accessibility/read_anything_app_model.cc
+@@ -11,6 +11,7 @@
+ #include "base/check.h"
+ #include "base/containers/contains.h"
+ #include "base/metrics/histogram_functions.h"
++#include "base/strings/stringprintf.h"
+ #include "content/public/renderer/render_thread.h"
+ #include "services/strings/grit/services_strings.h"
+ #include "ui/accessibility/accessibility_features.h"
+@@ -1088,7 +1089,7 @@ std::string ReadAnythingAppModel::GetHtmlTag(
+     int32_t hierarchical_level =
+         ax_node->GetIntAttribute(ax::mojom::IntAttribute::kHierarchicalLevel);
+     if (hierarchical_level) {
+-      return std::format("h{}", hierarchical_level);
++      return base::StringPrintf("h%" PRId32, hierarchical_level);
+     }
+   }
+ 
+@@ -1188,7 +1189,7 @@ std::string ReadAnythingAppModel::GetHeadingHtmlTagForPDF(
+   int32_t hierarchical_level =
+       ax_node->GetIntAttribute(ax::mojom::IntAttribute::kHierarchicalLevel);
+   if (hierarchical_level) {
+-    return std::format("h{}", hierarchical_level);
++    return base::StringPrintf("h%" PRId32, hierarchical_level);
+   }
+   return html_tag;
+ }
