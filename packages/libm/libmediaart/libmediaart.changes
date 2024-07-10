@@ -1,0 +1,224 @@
+-------------------------------------------------------------------
+Wed Jun  1 12:02:29 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.9.6:
+  + build: Add introspection/vapi/tests options.
+  + build: Use library() to optionally build a static library.
+
+-------------------------------------------------------------------
+Sat May 22 19:10:34 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.9.5:
+  + libmediaart:
+    - Remove QT4 support
+    - Mandate that input strings are UTF8
+  + extract: Remove local storage
+  + build:
+    - Drop autotools support
+    - Update to recent glib API
+    - Introspection fixes
+    - Added CI
+- Drop meson-Introspection-fix.patch: Fixed upstream.
+- Update meson option for building docs to new gtk_doc=true value.
+
+-------------------------------------------------------------------
+Wed Mar 11 22:01:14 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Fix URL, update to current home.
+- Use autosetup macro.
+
+-------------------------------------------------------------------
+Mon Mar  5 15:44:34 UTC 2018 - jengelh@inai.de
+
+- Update summaries.
+
+-------------------------------------------------------------------
+Wed Feb 28 16:35:37 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Fri Jan 12 14:05:05 UTC 2018 - robert.munteanu@gmail.com
+
+- Add meson-Introspection-fix.patch: The meson build did not add
+  the extractdummy.c to the sources, which contains introspection
+  annotations (bgo#792272, bgo#791586).
+
+-------------------------------------------------------------------
+Tue Aug 22 16:56:33 UTC 2017 - zaitor@opensuse.org
+
+- Add meson BuildRequires and switch autotools macros configure,
+  make and makeinstall to meson, meson_build and meson_install
+  following upstream switch to Meson build system.
+- Add pkgconfig(vapigen) BuildRequires: Build Vala bindings.
+- Run spec-cleaner, modernize spec, add pkgconfig BuildRequires.
+
+-------------------------------------------------------------------
+Mon Aug 14 09:09:41 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 1.9.4:
+  + Brown paper bag release, export some missing methods that went
+    unintentionally hidden.
+- Changes from version 1.9.3:
+  + Brown paper bag release, fixes soname on meson builds and
+    missing includes on autotools.
+- Changes from version 1.9.2:
+  + extract: Remove Nokia album art downloader support.
+  + build:
+    - Improve dependency tracker for marshallers sources.
+    - Remove duplicate introspection comment for
+      media_art_error_quark().
+    - Add meson build instructions.
+- Drop upstream fixed patches:
+  + libmediaart-remove-nokia-albumart.patch.
+  + libmediaart-build-marshall-files-fixes.patch.
+  + libmediaart-remove-duplicate-introspection.patch.
+- Drop libtool BuildRequires and stop passsing autoreconf, no
+  longer needed as there are no more patches.
+
+-------------------------------------------------------------------
+Fri Jul 28 22:32:45 UTC 2017 - zaitor@opensuse.org
+
+- Add libmediaart-remove-nokia-albumart.patch: Remove Nokia album
+  art downloader support (bgo#767959).
+- Add libmediaart-build-marshall-files-fixes.patch: Improve
+  dependency tracking for marshallers sources and add an explicit
+  dependency on marshal files.
+- Add libmediaart-remove-duplicate-introspection.patch: Remove
+  duplicate introspection comment for media_art_error_quark().
+- Add libtool BuildRequires and pass autoreconf as one of the
+  patches touches the buildsystem.
+
+-------------------------------------------------------------------
+Mon Mar  6 09:45:37 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 1.9.1:
+  + Extract:
+    - Introspection fix.
+    - Coverity fix.
+  + tests: Fix tests to run both installed and built.
+  + libmediaart: Fix marshallers, hide private symbols.
+
+-------------------------------------------------------------------
+Sat Jan 28 11:50:43 UTC 2017 - zaitor@opensuse.org
+
+- Pass --disable-static, --enable-gdkpixbuf, --enable-gtk-doc,
+  --disable-qt and --disable-installed-tests to configure, ensure
+  we build the options we want.
+- Following the above, add gtk-doc BuildRequires.
+
+-------------------------------------------------------------------
+Wed Dec 17 23:33:21 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 1.9.0:
+  + tracker should not scatter .mediaartlocal folders across
+    filesystem (bgo#722795).
+  + Add async calls (bgo#724879).
+- Bump soname, and rename subpackages following upstream changes.
+
+-------------------------------------------------------------------
+Mon Sep 22 15:19:01 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 0.7.0:
+  + Fixes:
+    - Artist, title and prefix arguments in get_file should
+      (bgo#727478).
+    - make check clears user's media-art cache (bgo#731681).
+  + extract: Fixed gtkdoc warning for return value of
+    media_art_error_quark().
+
+-------------------------------------------------------------------
+Tue Aug 19 18:49:50 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 0.6.0:
+  + Fixes: media_art_get_path() usage is unclear (bgo#734837).
+  + build: include m4 dir parsing.
+  + tests: Use tap automake testing scripts, fixes output
+    summaries.
+  + doap: add <programming-language> and 'core' category.
+  + extract: Fixed process_buffer() len check (was inverted) and
+    artist/title.
+- Changes from version 0.5.0:
+  + Heuristics does not handle uppercase properly (bgo#731678).
+  + Build system:
+    - Require glib 2.38 for g_assert_true() in unit tests.
+    - Updated configure.ac from autoscan suggestions.
+    - Improve warnings used when compiling and test compiler
+      warnings we can use.
+  + extract:
+    - Switch to initable MediaArtProcess object from
+      _init/_shutdown().
+    - Split _process() API into  _process_buffer() and
+      _process_file().
+    - Make GFile first parameter for _process_file().
+    - Add _SYMLINK_FAILED error and report symlink() failure in
+      get_heuristic().
+    - Add GError for _NO_TITLE, which is required in some cases.
+    - Add GError * reporting right down to the plugins (pixbuf/qt).
+    - Use a more logical ordered heuristic for caching strings.
+    - Refactor media_art_process_file() to simplify the function.
+  + storage: Make g_message() calls g_debug() calls, output is
+    unnecessary.
+  + docs: Fixed Makefile so we don't fail on distcheck with
+    --enable-gtk-doc.
+  + tests:
+    - Don't expect media art extraction for NULL data buffer for
+      !images.
+    - Test for no error with media_art_process_file() with real use
+      case.
+
+-------------------------------------------------------------------
+Tue Apr  1 20:39:49 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 0.4.0:
+  + Feature request: load album art embedded in music files
+    (bgo#727333).
+  + build: Don't forget to define LIBMEDIAART_BACKEND for all Qt
+    cases.
+  + extract: Incorrect inverse variable check for media_art_set().
+
+-------------------------------------------------------------------
+Fri Mar  7 20:39:12 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 0.3.0:
+  + build: Don't fail if vapigen isn't available.
+  + build: Force automake C linkage when building C only.
+  + build: Remove leftover explicit -lm -lz linkage.
+  + build: Don't link to both Qt and gdk-pixbuf if both are
+    autodetect.
+  + build: Honor NOCONFIGURE=1 in autogen.sh.
+  + cache: Improve _remove() function and fix crash with NULL
+    passed.
+  + cache: Improve _strip_invalid_entites() API.
+  + cache: Fix Non-void function should return a value.
+  + extract: Fix Qt5 compilation failure
+  + extract: Don't break on dummy implementation due to incorrect
+    args in.
+
+-------------------------------------------------------------------
+Thu Feb  6 18:33:47 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 0.2.0:
+  + build: Remove all 'tracker' uses in configure.ac.
+  + build: Fix selection between backends Qt and GdkPixbuf.
+  + build: Fix requirement on tracker-0.16 in pkgconfig file.
+  + build: Make sure pkgconfig file uses -1.0 to avoid minor ver
+    changes.
+  + extract: Port Qt backend to Qt5 and NEMO platform.
+  + extract: Fixed Qt(4) backend to compile and removed all Tracker
+    references.
+  + libmediaart: Fix include which incorrectly defined _INSIDE in
+    main header.
+  + docs: Remove reference to Tracker in reference overview.
+- Rename subpackage, following upstreams name changes:
+  + libmediaart-0_2-0 to libmediaart-1_0-0.
+  + typelib-1-0-MediaArt-0_2 to typelib-1-0-MediaArt-1_0.
+
+-------------------------------------------------------------------
+Wed Dec 18 00:02:39 UTC 2013 - dimstar@opensuse.org
+
+- Initial package, version 0.1.0:
+  + The code for this project has been extracted from Tracker and
+    inserted into its own library because there is call for this
+    functionality in other places on the desktop.
+
