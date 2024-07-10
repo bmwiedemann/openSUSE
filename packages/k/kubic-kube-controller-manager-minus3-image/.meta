@@ -1,0 +1,5 @@
+<package name="kubic-kube-controller-manager-minus3-image" project="openSUSE:Factory">
+  <title>kubic-kube-controller-manager-minus3-image</title>
+  <description></description>
+  <devel project="devel:kubic:containers" package="kubic-kube-controller-manager-minus3-image"/>
+</package>
