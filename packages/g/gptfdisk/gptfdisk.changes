@@ -1,0 +1,288 @@
+-------------------------------------------------------------------
+Thu Apr 11 19:44:38 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.0.10
+  * Fix failure & crash of sgdisk when compiled with latest popt
+  * Fix NULL dereference when duplicating string argument
+  * Allow partition dynamically allocated by --largest-new to be
+    referenced by other options
+  * Truncate decimal inputs (e.g. "9.5G" becomes "9G")
+  * New partition type codes from the Discoverable Partitions
+    Specification
+- Delete 0001-Fix-failure-crash-of-sgdisk-when-compiled-with-lates.patch
+  gptfdisk-1.0.9-libuuid.patch,
+  gptfdisk-fix-null-pointer-dereference.patch (merged)
+
+-------------------------------------------------------------------
+Thu Sep  7 08:44:04 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- Add patch to fix UUID generation with util-linux >= 2.38:
+  * gptfdisk-1.0.9-libuuid.patch
+
+-------------------------------------------------------------------
+Tue Mar  7 02:57:27 UTC 2023 - Alynx Zhou <alynx.zhou@suse.com>
+
+- Add gptfdisk-fix-null-pointer-dereference.patch: Fix NULL pointer
+  dereference in pervious patch, poptGetArg can return NULL so we
+  should not pass it to strdup directly (bsc#1208877).
+
+-------------------------------------------------------------------
+Fri Sep 30 11:17:17 UTC 2022 - Fabian Vogt <fvogt@suse.com>
+
+- Add patch to fix sgdisk with popt 1.19:
+  * 0001-Fix-failure-crash-of-sgdisk-when-compiled-with-lates.patch
+
+-------------------------------------------------------------------
+Sat Aug 27 11:58:11 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.0.9
+  * Added support for aligning partitions' end points, as well as
+    their start points. This support affects the default
+    partition size when using 'n' in gdisk; it affects the
+    default partition size in cgdisk; and it is activated by the
+    new `-I` option in sgdisk.
+  * Added check for too-small disks (most likely to be an issue
+    when trying to use a too-small disk image); program now
+    aborts if this happens.
+  * Added new parition type codes.
+
+-------------------------------------------------------------------
+Thu Jun 10 08:23:55 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.0.8
+  * Fixed double byte swap operation on writes of partition name data on
+    big-endian systems; this is in addition to the double byte swap fix on
+    reading partition label data fixed in 1.0.7. (Thanks to Erik Larsson for
+    both fixes.)
+  * Added feature to gdisk and sgdisk to enable swapping the byte order of
+    partition names, so as to correct disks already affected by the preceding
+    bug. This option is 'b' on the experts' menu in gdisk and
+    -b/--byte-swap-name in sgdisk. This seems advanced/obscure enough that I
+    don't want to clutter cgdisk's menu with this option, so I haven't added
+    it there.
+  * Added type code for the Barebox boot loader (0xbb00;
+    4778ED65-BF42-45FA-9C5B-287A1DC4AAB1).
+  * Fixed bug that caused spurious warnings about the partition table
+    header claiming an invalid size of partition entries when reading
+    some MBR disks.
+  * Added ARM64 as an architecture for the Mac builds of gdisk and fixparts.
+    The official GPT fdisk binaries of these files for macOS are now
+    "universal" x86-64/ARM64 binaries, so they will run natively on the new M1
+    (ARM64) Macs. The sgdisk and cgdisk binaries, though, remain built only
+    for x86-64, because they rely on libraries that are not easily built in
+    "universal" form.
+  * Fixed double byte swap operation on partition label data on big-endian
+    CPUs. This resulted in partition names becoming gibberish on such CPUs.
+  * Added three new type codes:
+    - 0x0701 - Microsoft Storage Replica
+    - 0x0702 - ArcaOS Type 1
+    - 0x8401 - Storage Performance Development Kit (SPDK) block device
+- Drop fix-spurious-warnings.patch
+
+-------------------------------------------------------------------
+Tue Feb 16 00:22:32 UTC 2021 - Manfred Schwarb <manfred99@gmx.ch>
+
+- fix regression from version 1.0.6: misleading warning when reading MBR disks,
+    upstream commit f063fe08e424c99f133df18bf9dce49c851bcb0a 
+- Add fix-spurious-warnings.patch
+
+-------------------------------------------------------------------
+Tue Feb  9 22:56:48 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.0.6
+  * Fixed bug that could cause segfault if GPT header claimed partition
+    entries are oversized. See:
+    https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-0256
+  * Fixed bug that could cause a crash if a badly-formatted MBR disk was
+    read. See:
+    https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-0308
+  * Renamed the partition type "Freedesktop $BOOT" to "XBOOTLDR partition".
+  * Added several more Freedesktop partition table type codes (0x8312 through
+    0x831C).
+  * Fixed type code definition in diskio-unix.cc that prevented 32-bit builds
+    from correctly handling disks over 4 TiB in size.
+  * Minor tweaks to get the software to compile on FreeBSD; that seems to have
+    fallen into disrepair.
+
+-------------------------------------------------------------------
+Fri Sep  4 15:29:53 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Remove old specfile constructs.
+
+-------------------------------------------------------------------
+Tue May 26 14:54:40 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.0.5
+  * Changed number of columns in type code output ("sgdisk -L"
+    and equivalents in gdisk and cgdisk) from 3 to 2, since some
+    descriptions are long enough that they are ambiguous with
+    three columns.
+  * You can now put the 0xEE partition last in a hybrid MBR using
+    sgdisk. (Previously, this was possible with gdisk but not
+    with sgdisk.) See the sgdisk man page for details.
+  * Added numerous type codes for Container Linux, Veracrypt, and
+    Freedesktop.org's Discoverable Partitions Specification
+  * Partition type name searches are now case-insensitive.
+  * It is now possible to quit out of partition type name
+    searches by typing "q".
+  * When changing a partition type code, the default is now the
+    current type code, not a platform-specific type code.
+
+-------------------------------------------------------------------
+Wed Oct 24 04:20:34 UTC 2018 - sean@suspend.net
+
+- Update to 1.0.4
+  * 74 new type codes added
+  * Search/filter function to the type code list
+  * GPT fdisk now reports more details about data structures
+  * Misc bug fixes
+
+-------------------------------------------------------------------
+Mon Mar 26 16:51:10 CEST 2018 - kukuk@suse.de
+
+- Use %license instead of %doc [bsc#1082318]
+
+-------------------------------------------------------------------
+Mon Oct 26 14:25:43 UTC 2015 - sweet_f_a@gmx.de
+
+- Update to new upstream release 1.0.1
+  * new type codes
+  * bug fixes
+  * changes to the OS X build for OS X 10.11 ("El Capitan")
+
+-------------------------------------------------------------------
+Fri Mar 27 10:22:39 UTC 2015 - jengelh@inai.de
+
+- Update to new upstream release 1.0.0
+  * Added partition type for Windows Storage Spaces, Ceph,
+    and Discoverable Linux Partitions.
+  * Added -O/--print-mbr option to sgdisk
+
+-------------------------------------------------------------------
+Sun Mar  8 09:33:02 UTC 2015 - jengelh@inai.de
+
+- Remove old RPM tags for pre-12.x openSUSE.
+  Remove duplicated documentation.
+
+-------------------------------------------------------------------
+Tue Mar  4 10:19:25 UTC 2014 - sweet_f_a@gmx.de
+
+- Update to new upstream release 0.8.10
+ * Bug fix of previous version: The hybrid MBR creation code in
+   gdisk would ignore the second and third partitions to be
+   hybridized.
+ * Fix bug that could cause incorrect partition end points to be
+   set on hybridized partitions that spanned the 2^32-sector mark
+   on disks.
+ * Finally, this version enables the use of 0 as a value for a
+   partition number to the -A/--attributes, -c/--change-name,
+   -t/--typecode, and -u/--partition-guid commands if an earlier
+   -n/--new option created a new partition; in this case, 0 refers
+   to that newly-created partition.
+
+-------------------------------------------------------------------
+Tue Feb 25 14:40:22 UTC 2014 - sweet_f_a@gmx.de
+
+- Update to new upstream release 0.8.9
+ * Three new type codes.
+ * The verify (v) function now checks for MBR partitions (the 0xEE
+   protective partitions or hybrid MBR partitions) that don't fit
+   on the disk.
+ * The GPT-destruction options (z in gdisk, -z and -Z in sgdisk)
+   now wipe out the final few sectors on the disk rather than
+   wherever the backup GPT data are recorded as being. This is done
+   to prevent wiping out data mid-disk, which can otherwise happen
+   if a RAID array is resized in certain ways and the GPT data are
+   not moved prior to wiping the GPT data.
+ * The FixParts program had developed a bug in which it complained
+   that the 0xEE partition didn't begin on sector 1; this version
+   fixes that bug.
+ * Finally, this version removes the dependency on libicu for UTF-16
+   support in partition names.
+- remove obsolete libicu dependency
+
+-------------------------------------------------------------------
+Wed Nov 13 13:18:19 UTC 2013 - sweet_f_a@gmx.de
+
+- Update to new upstream release 0.8.8
+  * Fixed bug that could cause segfault when passing an invalid
+    partition number to sgdisk's -i/--info command.
+  * Added new partition type codes.
+  * Added a pause (with a prompt to hit <Enter>) to display more
+    items gdisk and cgdisk. There's no such pause/prompt in sgdisk,
+    though.
+  * Fine-tuned verification ('v') check for 0xEE partition that
+    doesn't begin on sector 1.
+  * Fixed hybrid MBR creation on disks larger than 2TiB
+  * Added check for an active/bootable 0xEE protective partition to
+    the verify ('v') function.
+
+-------------------------------------------------------------------
+Mon Jul 29 22:18:09 UTC 2013 - sweet_f_a@gmx.de
+
+- Update to new upstream release 0.8.7
+  * Small improvements and bug fixes mark this revision.
+  * Three new partition type codes have been added:
+    freedesktop.org's proposed $BOOT partition (type code EA00),
+    the Intel Rapid Start partition (code 8400),
+    and for Haiku's BFS (code EB00).
+  * Removed a stray debug message that appeared when reading MBR
+    disks.
+  * The "converting MBR to GPT" message has been modified to
+    clarify that changes are being held in memory.
+  * The Mac version now works on /dev/rdisk* devices as well as
+    /dev/disk* devices.
+  * When used with /dev/rdisk* devices, the partition table can
+    sometimes be re-read without rebooting or unplugging and
+    re-inserting the disk.
+  * Finally, cgdisk now supports a -a option, which works similarly
+    to the -a option in cfdisk.
+- remove gptfdisk-0.8.5-fix-test-suite-short-opt-usage.patch, is
+  upstream merged
+
+-------------------------------------------------------------------
+Wed Mar 27 12:48:24 UTC 2013 - mmeister@suse.com
+
+- Added url as source.
+  Please see http://en.opensuse.org/SourceUrls
+
+-------------------------------------------------------------------
+Fri Jan 18 19:58:32 UTC 2013 - sweet_f_a@gmx.de
+
+- Update to new upstream release 0.8.6
+  * add type codes for a Sony System Partition and for VMWare ESX
+  * new check in the verification code
+  * support for building under Solaris.
+  * fix Mac OS X build
+  * fix the hybrid MBR creation support that could cause it to omit
+    the 0xEE partition under some circumstances
+  * fix a bug that could cause a crash when passing a partition
+    number of 0 via the -t option. 
+
+-------------------------------------------------------------------
+Fri Jan 18 12:01:39 UTC 2013 - sweet_f_a@gmx.de
+
+- remove outdated (0.8.2) debian spec files from package sources
+- fix build for old suse and other distros
+- add gptfdisk-0.8.5-fix-test-suite-short-opt-usage.patch and
+  enable test suite
+- change package group to System/Base (rpmlint fix)
+
+-------------------------------------------------------------------
+Fri Jun 22 21:29:05 UTC 2012 - jengelh@inai.de
+
+- Update to new upstream release 0.8.5
+  * sgdisk: fix bug that caused truncation of 2+ TiB partitions
+    on 32-bit
+  * added type codes for Midnight BSD
+- Rip out unused gdisk subpackage
+
+-------------------------------------------------------------------
+Sat Mar 17 15:12:31 UTC 2012 - dimstar@opensuse.org
+
+- Add gptfdisk-gcc47.patch: Fix build with gcc 4.7.
+
+-------------------------------------------------------------------
+Sun Jan 22 00:00:00 UTC 2012 - rodsmith@rodsbooks.com
+
+- Created spec file for 0.8.2 release
