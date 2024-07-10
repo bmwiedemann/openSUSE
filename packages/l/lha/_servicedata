@@ -1,0 +1,6 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">git@github.com:jca02266/lha.git</param>
+              <param name="changesrevision">7c3cd95fdf0d2f9198bb779561724cd314bc39a6</param></service><service name="tar_scm">
+                <param name="url">https://github.com/jca02266/lha.git</param>
+              <param name="changesrevision">26950220c9c7590fd603ecaa54a12a52371affed</param></service></servicedata>
