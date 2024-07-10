@@ -1,0 +1,88 @@
+# git changeset patch
+# Parent e4be60aa2d0234c4c8714033287e482e5673b18c
+disable utmp handling since this is handled in the Xstartup/Xreset scripts
+
+Index: lightdm-1.30.0/src/session-child.c
+===================================================================
+--- lightdm-1.30.0.orig/src/session-child.c
++++ lightdm-1.30.0/src/session-child.c
+@@ -13,8 +13,10 @@
+ #include <grp.h>
+ #include <glib.h>
+ #include <security/pam_appl.h>
++#if 0
+ #include <utmp.h>
+ #include <utmpx.h>
++#endif
+ #include <sys/mman.h>
+ 
+ #if HAVE_LIBAUDIT
+@@ -192,6 +194,7 @@ read_xauth (void)
+     return x_authority_new (x_authority_family, x_authority_address, x_authority_address_length, x_authority_number, x_authority_name, x_authority_data, x_authority_data_length);
+ }
+ 
++#if 0
+ /* GNU provides this but we can't rely on that so let's make our own version */
+ static void
+ updwtmpx (const gchar *wtmp_file, struct utmpx *ut)
+@@ -213,6 +216,7 @@ updwtmpx (const gchar *wtmp_file, struct
+ 
+     updwtmp (wtmp_file, &u);
+ }
++#endif
+ 
+ #if HAVE_LIBAUDIT
+ static void
+@@ -344,6 +348,7 @@ session_child_run (int argc, char **argv
+         /* Write record to btmp database */
+         if (authentication_result == PAM_AUTH_ERR)
+         {
++#if 0
+             struct utmpx ut;
+             struct timeval tv;
+ 
+@@ -364,6 +369,7 @@ session_child_run (int argc, char **argv
+             ut.ut_tv.tv_usec = tv.tv_usec;
+ 
+             updwtmpx ("/var/log/btmp", &ut);
++#endif
+ 
+ #if HAVE_LIBAUDIT
+             audit_event (AUDIT_USER_LOGIN, username, -1, remote_host_name, tty, FALSE);
+@@ -684,6 +690,7 @@ session_child_run (int argc, char **argv
+     /* Wait for the command to complete (blocks) */
+     if (child_pid > 0)
+     {
++#if 0
+         /* Log to utmp */
+         if (g_strcmp0 (pam_getenv (pam_handle, "XDG_SESSION_CLASS"), "greeter") != 0)
+         {
+@@ -711,11 +718,11 @@ session_child_run (int argc, char **argv
+                 g_printerr ("Failed to write utmpx: %s\n", strerror (errno));
+             endutxent ();
+             updwtmpx ("/var/log/wtmp", &ut);
+-
+ #if HAVE_LIBAUDIT
+             audit_event (AUDIT_USER_LOGIN, username, uid, remote_host_name, tty, TRUE);
+ #endif
+         }
++#endif
+ 
+         int child_status;
+         waitpid (child_pid, &child_status, 0);
+@@ -725,6 +732,7 @@ session_child_run (int argc, char **argv
+         else
+             return_code = EXIT_FAILURE;
+ 
++#if 0
+         /* Log to utmp */
+         if (g_strcmp0 (pam_getenv (pam_handle, "XDG_SESSION_CLASS"), "greeter") != 0)
+         {
+@@ -757,6 +765,7 @@ session_child_run (int argc, char **argv
+             audit_event (AUDIT_USER_LOGOUT, username, uid, remote_host_name, tty, TRUE);
+ #endif
+         }
++#endif
+     }
+ 
+     /* Remove X authority */

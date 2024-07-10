@@ -1,0 +1,632 @@
+Index: lightdm-1.30.0/data/lightdm.conf
+===================================================================
+--- lightdm-1.30.0.orig/data/lightdm.conf
++++ lightdm-1.30.0/data/lightdm.conf
+@@ -1,3 +1,26 @@
++# NOTE: settings under /etc/sysconfig take precendence over those below,
++#       specifically:
++#
++# /etc/sysconfig/displaymanager - DISPLAYMANAGER_AUTOLOGIN
++#   if set:
++#   [Seat:*]
++#   autologin-user = <value>
++#   autologin-user-timeout = 0
++#
++# /etc/sysconfig/displaymanager - DISPLAYMANAGER_PASSWORD_LESS_LOGIN
++#   [LightDM]
++#   password-less-login = <value>
++#
++# /etc/sysconfig/displaymanager - DISPLAYMANAGER_REMOTE_ACCESS
++#   [XDMCPServer]
++#   enabled = <value>
++#
++# /etc/sysconfig/displaymanager - DISPLAYMANAGER_XSERVER_TCP_PORT_6000_OPEN
++#   if set to yes or true
++#   [Seat:*]
++#   xserver-allow-tcp = <value>
++#
++
+ #
+ # General configuration
+ #
+Index: lightdm-1.30.0/src/lightdm.c
+===================================================================
+--- lightdm-1.30.0.orig/src/lightdm.c
++++ lightdm-1.30.0/src/lightdm.c
+@@ -22,6 +22,7 @@
+ #include <errno.h>
+ 
+ #include "configuration.h"
++#include "opensuse-sysconfig.h"
+ #include "display-manager.h"
+ #include "display-manager-service.h"
+ #include "xdmcp-server.h"
+@@ -52,6 +53,85 @@ static gint exit_code = EXIT_SUCCESS;
+ 
+ static gboolean update_login1_seat (Login1Seat *login1_seat);
+ 
++#define SYSCONFIG_DISPLAYMANAGER    "/etc/sysconfig/displaymanager"
++
++static void
++config_load_sysconfig (Configuration *config)
++{
++    GError *error = NULL;
++    gchar **displaymanager_config;
++    gchar **windowmanager_config;
++    gchar *str_value;
++    gboolean boolean_value;
++
++    displaymanager_config = opensuse_sysconfig_load_file (SYSCONFIG_DISPLAYMANAGER, &error);
++    if (displaymanager_config)
++    {
++        str_value = opensuse_sysconfig_get_string (displaymanager_config, "DISPLAYMANAGER_AUTOLOGIN", &error);
++        if (!error)
++        {
++            if (*str_value != '\0')
++            {
++                config_set_string (config_get_instance (), "Seat:*", "autologin-user", str_value);
++                config_set_integer (config_get_instance (), "Seat:*", "autologin-user-timeout", 0);
++            }
++            g_free (str_value);
++        }
++        else
++        {
++            g_warning ("Failed to read 'DISPLAYMANAGER_AUTOLOGIN' from " SYSCONFIG_DISPLAYMANAGER);
++            g_clear_error (&error);
++        }
++
++        boolean_value = opensuse_sysconfig_get_boolean (displaymanager_config, "DISPLAYMANAGER_PASSWORD_LESS_LOGIN", &error);
++        if (!error)
++        {
++            config_set_boolean (config_get_instance (), "LightDM", "password-less-login", boolean_value);
++        }
++        else
++        {
++            g_warning ("Failed to read 'DISPLAYMANAGER_PASSWORD_LESS_LOGIN' from " SYSCONFIG_DISPLAYMANAGER);
++            g_clear_error (&error);
++        }
++
++        boolean_value = opensuse_sysconfig_get_boolean (displaymanager_config, "DISPLAYMANAGER_REMOTE_ACCESS", &error);
++        if (!error)
++        {
++            config_set_boolean (config_get_instance (), "XDMCPServer", "enabled", boolean_value);
++        }
++        else
++        {
++            g_warning ("Failed to read 'DISPLAYMANAGER_REMOTE_ACCESS' from " SYSCONFIG_DISPLAYMANAGER);
++            g_clear_error (&error);
++        }
++
++        boolean_value = opensuse_sysconfig_get_boolean (displaymanager_config, "DISPLAYMANAGER_XSERVER_TCP_PORT_6000_OPEN", &error);
++        if (!error)
++        {
++            if (boolean_value)
++              config_set_boolean (config_get_instance (), "Seat:*", "xserver-allow-tcp", TRUE);
++        }
++        else
++        {
++            g_warning ("Failed to read 'DISPLAYMANAGER_XSERVER_TCP_PORT_6000_OPEN' from " SYSCONFIG_DISPLAYMANAGER);
++            g_clear_error (&error);
++        }
++
++        g_strfreev (displaymanager_config);
++    }
++    else
++    {
++        g_warning ("Failed to read " SYSCONFIG_DISPLAYMANAGER);
++        if (error)
++        {
++            g_warning ("%s", error->message);
++            g_clear_error (&error);
++        }
++    }
++
++    return;
++}
++
+ static void
+ log_cb (const gchar *log_domain, GLogLevelFlags log_level, const gchar *message, gpointer data)
+ {
+@@ -835,6 +915,9 @@ main (int argc, char **argv)
+     if (g_mkdir_with_parents (cache_dir_path, S_IRWXU | S_IXGRP | S_IXOTH) < 0)
+         g_warning ("Failed to make cache directory %s: %s", cache_dir_path, strerror (errno));
+ 
++    /* Load sysconfig settings */
++    config_load_sysconfig (config_get_instance ());
++
+     log_init ();
+ 
+     /* Show queued messages once logging is complete */
+Index: lightdm-1.30.0/src/Makefile.am
+===================================================================
+--- lightdm-1.30.0.orig/src/Makefile.am
++++ lightdm-1.30.0/src/Makefile.am
+@@ -70,7 +70,9 @@ lightdm_SOURCES = \
+ 	xdmcp-server.c \
+ 	xdmcp-server.h \
+ 	xdmcp-session.c \
+-	xdmcp-session.h
++	xdmcp-session.h \
++	opensuse-sysconfig.c \
++	opensuse-sysconfig.h
+ 
+ lightdm_CFLAGS = \
+ 	$(WARN_CFLAGS) \
+Index: lightdm-1.30.0/src/opensuse-sysconfig.c
+===================================================================
+--- /dev/null
++++ lightdm-1.30.0/src/opensuse-sysconfig.c
+@@ -0,0 +1,380 @@
++/* -*- Mode: C; tab-width: 8; indent-tabs-mode: nil; c-basic-offset: 8 -*-
++ *
++ * Copyright (C) 2008 Hans Petter Jansson <hpj@novell.com>
++ *
++ * modifications (C) 2011 Guido Berhoerster <gber@opensuse.org>
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; either version 2 of the License, or
++ * (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program; if not, write to the Free Software
++ * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
++ *
++ */
++
++/* Parser for shell-script-like key-value files. Far from complete, but
++ * deals with a couple of common shell oddities. For instance, the following
++ * are parsed correctly:
++ *
++ * KEY=value\0
++ * KEY = value#comment\0
++ * KEY = " value with spaces"  \0
++ * KEY = ' it\'s a value with "embedded" quotes'\0
++ * KEY = "if quotes aren't closed, we assume the string ends at EOL\0
++ *
++ * It should be good enough for the config files in /etc/sysconfig/.
++ */
++
++#include <unistd.h>
++#include <string.h>
++#include <errno.h>
++
++#include <glib.h>
++#include <glib/gi18n.h>
++
++#include "opensuse-sysconfig.h"
++
++/*
++ * only print debug output if requested at compile time, log handlers may not
++ * yet be set up when this code is used
++ */
++#ifndef OPENSUSE_SYSCONFIG_DEBUG
++#ifdef g_debug
++#undef g_debug
++#endif /* g_debug */
++#define g_debug(...)
++#endif /* !OPENSUSE_SYSCONFIG_DEBUG */
++
++#define SPACE_CHARS     " \t"
++#define KEY_ALLOW_CHARS "_abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
++
++static gchar        **load_settings_file (const gchar *file_name, GError **error);
++static const gchar   *skip_from_start_to_key (const gchar *line);
++static const gchar   *skip_over_value (const gchar *value_start, gchar *quotes_out);
++static gchar         *get_value_of_key (const gchar *line, const gchar *key_normal, gint key_len);
++static gchar         *get_value (const gchar **lines, const gchar *key, GError **error);
++
++GQuark
++opensuse_sysconfig_error_quark (void)
++{
++        return g_quark_from_static_string ("opensuse-sysconfig-error-quark");
++}
++
++static gchar **
++load_settings_file (const gchar *file_name, GError **error)
++{
++        GIOChannel *channel;
++        GPtrArray  *lines;
++        gchar      *str;
++
++        g_debug ("Loading settings from %s", file_name);
++
++        channel = g_io_channel_new_file (file_name, "r", error);
++        if (*error) {
++                return NULL;
++        }
++
++        lines = g_ptr_array_new ();
++
++        while (g_io_channel_read_line (channel, &str, NULL, NULL, NULL) != G_IO_STATUS_EOF) {
++                if (str) {
++                        gchar *p0;
++
++                        /* Remove line separators */
++
++                        for (p0 = str + strlen (str) - 1; p0 >= str && strchr ("\r\n", *p0); p0--)
++                                *p0 = '\0';
++
++                        g_ptr_array_add (lines, str);
++                        g_debug ("%s", str);
++                } else {
++                        g_ptr_array_add (lines, g_strdup (""));
++                        g_debug ("%s", str);
++                }
++        }
++
++        g_io_channel_shutdown (channel, FALSE, NULL);
++        g_io_channel_unref (channel);
++
++        g_ptr_array_add (lines, NULL);
++
++        return (gchar **) g_ptr_array_free (lines, FALSE);
++}
++
++static const gchar *
++skip_from_start_to_key (const gchar *line)
++{
++        const gchar *p0;
++
++        /* Skip initial space */
++
++        p0 = line + strspn (line, SPACE_CHARS);
++
++        /* Ignore comments and other junk */
++
++        if (*p0 && strchr (KEY_ALLOW_CHARS, *p0))
++                return p0;
++
++        return NULL;
++}
++
++static const gchar *
++skip_from_start_to_value_of_key (const gchar *line, const gchar *key_normal, gint key_len)
++{
++        const gchar *p0, *p1;
++        gchar       *potential_key_normal;
++        gboolean     result;
++
++        p0 = skip_from_start_to_key (line);
++        if (!p0)
++                return NULL;
++
++        /* There's at least one key-like character, figure out how many */
++
++        p1 = p0 + strspn (p0, KEY_ALLOW_CHARS);
++
++        /* Is this the key we're looking for? */
++
++        if (p1 - p0 != key_len)
++                return NULL;
++
++        potential_key_normal = g_ascii_strdown (p0, p1 - p0);
++        result = strcmp (key_normal, potential_key_normal) == 0 ? TRUE : FALSE;
++        g_free (potential_key_normal);
++
++        if (!result)
++                return NULL;
++
++        /* It's the right key; skip over key-value separator */
++
++        p0 = p1 + strspn (p1, SPACE_CHARS);
++        if (*p0 != '=')
++                return NULL;
++
++        p0++;
++        p0 += strspn (p0, SPACE_CHARS);
++
++        return p0;
++}
++
++static const gchar *
++skip_over_value (const gchar *value_start, gchar *quotes_out)
++{
++        const gchar *p0 = value_start;
++        const gchar *p1;
++        gchar        quotes;
++
++        /* Is the value quoted? */
++
++        quotes = *p0;
++        if (quotes == '\'' || quotes == '"') {
++                /* Quoted sequence opened; find closing quote, but skip over escaped ones. If
++                 * there's no closing quote on this line, assume the EOL closes it. */
++
++                *quotes_out = quotes;
++
++                p1 = p0;
++                do {
++                        p1++;
++                        p1 = strchr (p1, quotes);
++                        if (!p1) {
++                                /* Hit EOL */
++
++                                p1 = p0 + strlen (p0) - 1;
++                                break;
++                        }
++                } while (*(p1 - 1) == '\\');
++        } else {
++                /* No quotes; look for comment or EOL */
++
++                *quotes_out = 0;
++
++                p1 = strchr (p0, '#');
++                if (!p1)
++                        p1 = p0 + strlen (p0);
++
++                for (p1--; p1 >= p0; p1--)
++                        if (!strchr (SPACE_CHARS, *p1))
++                                break;
++        }
++
++        return p1 + 1;
++}
++
++static gchar *
++get_value_of_key (const gchar *line, const gchar *key_normal, gint key_len)
++{
++        const gchar *p0, *p1;
++        gchar        quotes;
++        gchar       *value;
++        gchar       *temp;
++
++        p0 = skip_from_start_to_value_of_key (line, key_normal, key_len);
++        if (!p0)
++                return NULL;
++
++        p1 = skip_over_value (p0, &quotes);
++
++        if (quotes != 0) {
++                if (p1 - p0 > 2) {
++                        temp = g_strndup (p0 + 1, p1 - p0 - 2);
++                        value = g_strcompress (temp);
++                        g_free (temp);
++                } else {
++                        value = g_strdup ("");
++                }
++        } else {
++                temp = g_strndup (p0, p1 - p0);
++                value = g_strcompress (temp);
++                g_free (temp);
++                g_strchomp (value);
++        }
++
++        return value;
++}
++
++static gchar *
++get_value (const gchar **lines, const gchar *key, GError **error)
++{
++        gchar *value = NULL;
++        gchar *key_normal;
++        gint   key_len;
++        gint   i;
++
++        g_debug ("Getting value of %s", key);
++
++        if (!lines) {
++                g_debug ("Missing configuration data");
++                return NULL;
++        }
++
++        key_normal = g_ascii_strdown (key, -1);
++        key_len    = strlen (key_normal);
++
++        for (i = 0; lines [i]; i++) {
++                value = get_value_of_key (lines [i], key_normal, key_len);
++                if (value)
++                        break;
++        }
++
++        if (!value) {
++                g_set_error (error,
++                             OPENSUSE_SYSCONFIG_ERROR,
++                             OPENSUSE_SYSCONFIG_ERROR_KEY_NOT_FOUND,
++                             "Key '%s' not found", key);
++        }
++
++        g_free (key_normal);
++
++        g_debug ("Got value of %s: %s", key, value);
++
++        return value;
++}
++
++gchar **
++opensuse_sysconfig_load_file (const gchar *file_name, GError **error)
++{
++        GError *load_error = NULL;
++        gchar **sysconfig;
++        g_return_val_if_fail (file_name != NULL, NULL);
++
++        sysconfig = load_settings_file (file_name, &load_error);
++        if (load_error) {
++                g_set_error (error,
++                             OPENSUSE_SYSCONFIG_ERROR,
++                             OPENSUSE_SYSCONFIG_ERROR_OPEN_FAILED,
++                             "Failed to open '%s': %s", file_name, load_error->message);
++                g_error_free(load_error);
++                return NULL;
++        }
++        return sysconfig;
++}
++
++gchar *
++opensuse_sysconfig_get_string (const gchar **sysconfig,
++                               const gchar *key,
++                               GError **error)
++{
++        g_return_val_if_fail (sysconfig != NULL, NULL);
++        g_return_val_if_fail (key != NULL, NULL);
++
++        return get_value (sysconfig, key, error);
++}
++
++gint
++opensuse_sysconfig_get_int (const gchar **sysconfig,
++                            const gchar *key,
++                            GError **error)
++{
++        gint64 int64_value;
++        gchar *str_value;
++        gchar *endptr;
++
++        g_return_val_if_fail (sysconfig != NULL, -1);
++        g_return_val_if_fail (key != NULL, -1);
++
++        str_value = get_value (sysconfig, key, error);
++        if (!str_value)
++                return 0;
++
++        errno = 0;
++        int64_value = g_ascii_strtoll (str_value, &endptr, 10);
++        if ((*str_value != '\0' && *endptr != '\0') ||
++            (errno == ERANGE &&
++             (int64_value == G_MAXINT64 || int64_value == G_MININT64)) ||
++            int64_value > G_MAXINT ||
++            int64_value < G_MININT ||
++            errno != 0) {
++                g_set_error (error,
++                             OPENSUSE_SYSCONFIG_ERROR,
++                             OPENSUSE_SYSCONFIG_ERROR_INVALID_VALUE,
++                             "Invalid integer value '%s'",
++                             str_value);
++                int64_value = 0;
++        }
++
++        g_free (str_value);
++        return (gint) int64_value;
++}
++
++gboolean
++opensuse_sysconfig_get_boolean (const gchar **sysconfig,
++                                const gchar *key,
++                                GError **error)
++{
++        gboolean boolean_value;
++        gchar *str_value;
++
++        g_return_val_if_fail (sysconfig != NULL, FALSE);
++        g_return_val_if_fail (key != NULL, FALSE);
++
++        str_value = get_value (sysconfig, key, error);
++        if (!str_value)
++                return FALSE;
++
++        if (g_ascii_strcasecmp (str_value, "yes") == 0 ||
++            g_ascii_strcasecmp (str_value, "true") == 0) {
++                boolean_value = TRUE;
++        } else if (g_ascii_strcasecmp (str_value, "no") == 0 ||
++                   g_ascii_strcasecmp (str_value, "false") == 0) {
++                boolean_value = FALSE;
++        } else {
++                g_set_error (error,
++                             OPENSUSE_SYSCONFIG_ERROR,
++                             OPENSUSE_SYSCONFIG_ERROR_INVALID_VALUE,
++                             "Invalid boolean value '%s'", str_value);
++                boolean_value = FALSE;
++        }
++
++        g_free (str_value);
++        return boolean_value;
++}
++
+Index: lightdm-1.30.0/src/opensuse-sysconfig.h
+===================================================================
+--- /dev/null
++++ lightdm-1.30.0/src/opensuse-sysconfig.h
+@@ -0,0 +1,50 @@
++/* -*- Mode: C; tab-width: 8; indent-tabs-mode: nil; c-basic-offset: 8 -*-
++ *
++ * Copyright (C) 2008 Hans Petter Jansson <hpj@novell.com>
++ *
++ * modifications (C) 2011 Guido Berhoerster <gber@opensuse.org>
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; either version 2 of the License, or
++ * (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program; if not, write to the Free Software
++ * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
++ *
++ */
++
++
++#ifndef __OPENSUSE_SYSCONFIG_H
++#define __OPENSUSE_SYSCONFIG_H
++
++#include <glib-object.h>
++#include <glib/gstdio.h>
++
++G_BEGIN_DECLS
++
++typedef enum {
++        OPENSUSE_SYSCONFIG_ERROR_OPEN_FAILED,
++        OPENSUSE_SYSCONFIG_ERROR_KEY_NOT_FOUND,
++        OPENSUSE_SYSCONFIG_ERROR_INVALID_VALUE
++} OpenSUSESysconfigError;
++
++#define OPENSUSE_SYSCONFIG_ERROR (opensuse_sysconfig_error_quark ())
++
++GQuark     opensuse_sysconfig_error_quark (void);
++
++gchar    **opensuse_sysconfig_load_file (const gchar *file_name, GError **error);
++
++gchar     *opensuse_sysconfig_get_string (const gchar **sysconfig, const gchar *key, GError **error);
++gint       opensuse_sysconfig_get_int (const gchar **sysconfig, const gchar *key, GError **error);
++gboolean   opensuse_sysconfig_get_boolean (const gchar **sysconfig, const gchar *key, GError **error);
++
++G_END_DECLS
++
++#endif /* __OPENSUSE_SYSCONFIG_H */
+Index: lightdm-1.30.0/src/seat.c
+===================================================================
+--- lightdm-1.30.0.orig/src/seat.c
++++ lightdm-1.30.0/src/seat.c
+@@ -1271,9 +1271,18 @@ create_greeter_session (Seat *seat)
+     }
+     session_set_argv (SESSION (greeter_session), argv);
+ 
+-    greeter_set_pam_services (greeter,
+-                              seat_get_string_property (seat, "pam-service"),
+-                              seat_get_string_property (seat, "pam-autologin-service"));
++    if (config_get_boolean (config_get_instance (), "LightDM", "password-less-login"))
++    {
++        greeter_set_pam_services (greeter,
++                                  seat_get_string_property (seat, "pam-autologin-service"),
++                                  seat_get_string_property (seat, "pam-autologin-service"));
++    }
++    else
++    {
++        greeter_set_pam_services (greeter,
++                                  seat_get_string_property (seat, "pam-service"),
++                                  seat_get_string_property (seat, "pam-autologin-service"));
++    }
+     g_signal_connect (greeter, GREETER_SIGNAL_CREATE_SESSION, G_CALLBACK (greeter_create_session_cb), seat);
+     g_signal_connect (greeter, GREETER_SIGNAL_START_SESSION, G_CALLBACK (greeter_start_session_cb), seat);
+ 
+@@ -1518,7 +1527,10 @@ seat_switch_to_user (Seat *seat, const g
+     /* Attempt to authenticate them */
+     session = create_user_session (seat, username, FALSE);
+     g_signal_connect (session, SESSION_SIGNAL_AUTHENTICATION_COMPLETE, G_CALLBACK (switch_authentication_complete_cb), seat);
+-    session_set_pam_service (session, seat_get_string_property (seat, "pam-service"));
++    if (config_get_boolean (config_get_instance (), "LightDM", "password-less-login"))
++        session_set_pam_service (session, seat_get_string_property (seat, "pam-autologin-service"));
++    else
++        session_set_pam_service (session, seat_get_string_property (seat, "pam-service"));
+ 
+     return session_start (session);
+ }
