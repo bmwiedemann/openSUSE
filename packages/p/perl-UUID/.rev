@@ -1,0 +1,59 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>42eadd4d5dc6736a632f0abf7f56d5d8</srcmd5>
+    <version>0.28</version>
+    <time>1607197009</time>
+    <user>dimstar_suse</user>
+    <comment>required by upcoming release of kanku</comment>
+    <requestid>851273</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>4c3d1a6f984ead21f883e0bec7a5f799</srcmd5>
+    <version>0.310.0</version>
+    <time>1700163079</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1126984</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>246720871c1d3297da23649327e27033</srcmd5>
+    <version>0.320.0</version>
+    <time>1704388272</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1136850</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>5c4a53a226a470fed875257c41e8e94f</srcmd5>
+    <version>0.320.0</version>
+    <time>1710014114</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix disabling of __perllib_provides
+</comment>
+    <requestid>1156523</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>6eb268ba9badda48d891585ddb3d4b69</srcmd5>
+    <version>0.330.0</version>
+    <time>1712520693</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1165842</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d0291bd87a27f4b9ddedc7ef6551fa2a</srcmd5>
+    <version>0.340.0</version>
+    <time>1715872610</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1174460</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>64307c8406e175932396dffd8b50c3e9</srcmd5>
+    <version>0.360.0</version>
+    <time>1719582426</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1183648</requestid>
+  </revision>
+</revisionlist>
