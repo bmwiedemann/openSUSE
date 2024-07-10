@@ -1,0 +1,261 @@
+-------------------------------------------------------------------
+Sun Apr 14 12:09:30 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to 1.5.2:
+  * fix build issues and bugs for other platforms
+
+-------------------------------------------------------------------
+Tue Mar  5 08:00:51 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.5.1:
+  * Significant improvement to packet loss robustness using
+    Deep Redundancy (DRED)
+  * Improved packet loss concealment through Deep PLC
+  * Low-bitrate speech quality enhancement down to
+    6 kb/s wideband
+  * Improved x86 (AVX2) and Arm (Neon) optimizations
+  * Support for 4th and 5th order ambisonics
+
+-------------------------------------------------------------------
+Thu Apr 20 21:00:25 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.4:
+  * Improved tuning of the Opus in-band FEC (LBRR). See the
+    https://gitlab.xiph.org/xiph/opus/-/issues/2360 for details
+  * Added a OPUS_SET_INBAND_FEC(2) option that turns on FEC, but
+    does not force SILK mode (FEC will be disabled in CELT mode)
+  * Improved tuning and various fixes to DTX
+  * Added Meson support, improved CMake support
+- Change Source to new home on github.
+- Use autosetup, make_build and ldconfig_scriptlets macros.
+- Move AUTHORS and README docs to devel package.
+- Drop patches fixed upstream:
+  * opus-Fix-celt-decoder-assertion-when-using-OPUS_CUSTOM.patch
+  * opus-Silk-CNG-adapts-faster.patch
+  * opus-Silk-fix-arm-optimization.patch
+
+-------------------------------------------------------------------
+Wed Apr 15 17:38:39 UTC 2020 - Gustavo Pichorim Boiko <gboiko@suse.com>
+
+- Backport of an upstream fix for celt decoder:
+  * opus-Fix-celt-decoder-assertion-when-using-OPUS_CUSTOM.patch: When
+    using OPUS_CUSTOM, `CELTDecoder->end` can be larger than 21.
+    Assert against 25 instead in OPUS_CUSTOM builds.
+
+-------------------------------------------------------------------
+Thu Aug 15 17:37:36 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add 2 upstream bug fixes for Silk:
+  * opus-Silk-CNG-adapts-faster.patch: Silk CNG adapts faster to
+    received packets with lower gains.
+  * opus-Silk-fix-arm-optimization.patch: Avoid processing LPC
+    coeffs beyond the given order in NEON optimizations.
+
+-------------------------------------------------------------------
+Thu Aug  8 11:02:43 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Own %{_datadir}/aclocal: when we might switch to pkgconf instead
+  of pkg-config, nothing in the build root is 'accidentally' owning
+  this directory for us.
+
+-------------------------------------------------------------------
+Sat May 25 08:29:45 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 1.3.1
+  * This release fixes an issue with the analysis on files with
+    digital silence (all zeros), especially on x87 builds
+    (mostly affects 32-bit builds).
+  * Two new features:
+    + A new OPUS_GET_IN_DTX query to know if the encoder is in
+      DTX mode (last frame was either a comfort noise frame or
+      not encoded at all)
+    + A new (and still experimental) CMake-based build system
+      that is eventually meant to replace the VS2015 build
+      system (the autotools one will stay).
+
+-------------------------------------------------------------------
+Thu Oct 18 22:33:04 CEST 2018 - mcepl@suse.com
+
+- Update to 1.3:
+    - improved speech/music detection based on a neural network
+    - low-bitrate speech improvements
+    - support for immersive audio using ambisonics
+    - tone quality improvements
+    - updates to the Opus standard (rfc 8251) are on by default
+    - security improvements
+- Clean up SPEC to the latest standards
+
+-------------------------------------------------------------------
+Mon Jun 26 20:06:55 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 1.2.1:
+  + This fixes an issue where the encoder can misdetect that the
+    signal is SWB instead of FB, lowpassing the signal. This patch
+    makes the encoder much more careful about doing that.
+
+-------------------------------------------------------------------
+Wed Jun 21 21:56:12 UTC 2017 - mpluskal@suse.com
+
+- Cleanup with spec-cleaner
+
+-------------------------------------------------------------------
+Tue Jun 20 21:17:41 UTC 2017 - aloisio@gmx.com
+
+- Update to version 1.2
+  + Speech quality improvements especially in the 12-20 kbit/s
+    range
+  + Improved VBR encoding for hybrid mode
+  + More aggressive use of wider speech bandwidth, including
+    fullband speech starting at 14 kbit/s
+  + Music quality improvements in the 32-48 kb/s range
+  + Generic and SSE CELT optimizations
+  + Support for directly encoding packets up to 120 ms
+  + DTX support for CELT mode
+  + SILK CBR improvements
+  + Support for all of the fixes in
+    draft-ietf-codec-opus-update-06 (the mono downmix and the
+    folding fixes need --enable-update-draft)
+  + Many bug fixes, including integer wrap-arounds discovered
+    through fuzzing (no security implications)
+- Removed static package
+
+-------------------------------------------------------------------
+Sun May 28 18:54:56 UTC 2017 - idonmez@suse.com
+
+- Update to version 1.1.5
+  + This release backports the surround encoder bug fix from
+    1.2-beta branch
+
+-------------------------------------------------------------------
+Sat Mar 11 14:27:30 UTC 2017 - jengelh@inai.de
+
+- Rename %soname to %sover to better reflect its use.
+  RPM group fix.
+
+-------------------------------------------------------------------
+Sun Feb 26 23:08:38 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 1.1.4 (CVE-2017-0381):
+  + A specially-crafted Opus packet could cause an integer
+    wrap-around in the SILK LSF stabilization code. This would
+    cause an out-of-bounds read 256 bytes before a constant table.
+- Drop opus-NLSF-not-negative.patch: Fixed upstream.
+
+-------------------------------------------------------------------
+Mon Jan 16 20:56:54 UTC 2017 - zaitor@opensuse.org
+
+- Fix CVE-2017-0381 (boo#1020102), opus: remote code execution
+  vulnerability in silk/NLSF_stabilize.c.
+- Add opus-NLSF-not-negative.patch: Ensure that NLSF cannot be
+  negative when computing a min distance between them.
+
+-------------------------------------------------------------------
+Sat Aug 13 15:26:11 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 1.1.3:
+  + Neon optimizations improving performance on ARMv7 and ARMv8 by
+    up to 15%.
+  + Fixes some issues with 16-bit platforms (e.g. TI C55x).
+  + Fixes to comfort noise generation (CNG).
+  + Documenting that PLC packets can also be 2 bytes.
+  + Includes experimental ambisonics work (--enable-ambisonics).
+- Stop passing conditional --enable/disable-intrinsics, it's
+  enabled by default now.
+- Not adding the new --enable-ambisonics to configure, it's still
+  experimental.
+
+-------------------------------------------------------------------
+Wed Jan 27 09:32:12 UTC 2016 - olaf@aepfle.de
+
+- Disable SSE2 in SLE_11 due to code or compiler bugs.
+
+-------------------------------------------------------------------
+Tue Jan 26 20:23:12 UTC 2016 - mpluskal@suse.com
+
+- Enable tests during package build
+- Cleanup spec file with spec-cleaner
+- Drop not needed libtool dependency for build
+
+-------------------------------------------------------------------
+Tue Jan 19 13:24:17 UTC 2016 - idonmez@suse.com
+
+- Update to version 1.1.2, fixes the following bugs:
+  + Resetting the encoder or decoder state with OPUS_RESET_STATE
+    would disable some run-time selected architecture-specific
+    optimizations.
+  + In hybrid mode discontinuous transmission (DTX) operation,
+    the comfort noise above 8 kHz was incorrectly estimated
+    and could oscillate in time.
+
+-------------------------------------------------------------------
+Wed Dec  2 19:32:31 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 1.1.1:
+  + x86 SSE, SSE2 and SSE4.1 intrinsics optimizations with run-time
+    CPU detection.
+  + MIPS intrinsics optimizations.
+  + ARM Neon optimizations.
+  + Many architecture-independent optimizations and memory
+    footprint reductions that should improve performance on all
+    platforms, and several minor bug fixes.
+- Pass --enable-intrinsics to configure.
+
+-------------------------------------------------------------------
+Sun Dec  8 00:21:36 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 1.1:
+  + New analysis code and tuning that significantly improves
+    encoding quality, especially for variable-bitrate (VBR).
+  + Automatic detection of speech or music to decide which encoding
+    mode to use.
+  + Surround with good quality at 128 kbps for 5.1 and usable down
+    to 48 kbps.
+  + Speed improvements on all architectures, especially ARM, where
+    decoding uses around 40% less CPU and encoding uses around 30%
+    less CPU.
+
+-------------------------------------------------------------------
+Thu Aug  1 19:12:56 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 1.0.3:
+  + Backport of the new 1.1 surround API.
+  + Fixes for a few minor glitches during mode switching.
+  + Some minor fixed-point fixes.
+  + Fix a regression in the FEC code introduced in 1.0.2.
+
+-------------------------------------------------------------------
+Sat Feb  2 15:21:36 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 1.0.2:
+  + Fix an out-of-bounds read security issue.
+  + Fixes and improvements to the PLC and hybrid mode quality.
+- Drop
+  opus-fix-out-of-bounds-read-issue-with-the-padding-handling.patch
+  Fixed upstream.
+
+-------------------------------------------------------------------
+Sun Jan 13 20:13:46 UTC 2013 - zaitor@opensuse.org
+
+- Add 
+  opus-fix-out-of-bounds-read-issue-with-the-padding-handling.patch
+  Fixes an out-of-bounds read that could be triggered by a
+  malicious Opus packet causing an integer wrap-around in the
+  padding code.
+
+-------------------------------------------------------------------
+Wed Sep 19 18:56:42 UTC 2012 - zaitor@opensuse.org
+
+- Update to version 1.0.1:
+  + First bugfix release of stable version.
+  + Changes are mostly buildfixes.
+  + Fully compliant with the Opus specification.
+- Remove unneeded autoconf, automake, gcc glibc-devel and make.
+- Remove manual deletion of docs, instead pass --disable-doc to
+  configure.
+- Minor spec cleanup.
+
+-------------------------------------------------------------------
+Thu May 31 14:31:47 CET 2012 - pascal.bleser@opensuse.org
+
+- initial version (0.9.14)
+

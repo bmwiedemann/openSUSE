@@ -1,0 +1,232 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>de847374521d82846534224f6a28fdfa</srcmd5>
+    <version>0.9.14</version>
+    <time>1345146309</time>
+    <user>namtrac</user>
+    <comment>Add opus to Factory</comment>
+    <requestid>130877</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>eb6df63a3f952f0a93eda3416e6597d2</srcmd5>
+    <version>1.0.1</version>
+    <time>1348562681</time>
+    <user>coolo</user>
+    <comment>Update and cleanup.
+
+If you are wondering about the removal of 
+# Please submit bugfixes or comments via http://bugs.opensuse.org/
+
+this was because it was listed twice in the spec. (forwarded request 135513 from Zaitor)</comment>
+    <requestid>135517</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>66853a0783c136b319ffb0661f8cd9dd</srcmd5>
+    <version>1.0.1</version>
+    <time>1358153050</time>
+    <user>coolo</user>
+    <comment>Fix a minor security issue. This fix is in version 1.0.2, however since we are in freeze, I cherrypicked this fix from upstream git.
+
+From commit https://git.xiph.org/?p=opus.git;a=commit;h=9345aaa5ca1c2fb7d62981b2a538e0ce20612c38
+
+Fixes an out-of-bounds read issue with the padding handling code
+
+This was reported by Juri Aedla and is limited to reading memory up
+to about 60 kB beyond the compressed buffer. This can only be triggered
+by a compressed packet more than about 16 MB long, so it's not a problem
+for RTP. In theory, it *could* crash an Ogg decoder if the memory just after
+the incoming packet is out-of-range.
+ (forwarded request 148337 from Zaitor)</comment>
+    <requestid>148342</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>66853a0783c136b319ffb0661f8cd9dd</srcmd5>
+    <version>1.0.1</version>
+    <time>1359109556</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d5b5c192f175184aaf33cd4f44824f08</srcmd5>
+    <version>1.0.2</version>
+    <time>1360008942</time>
+    <user>coolo</user>
+    <comment>Update to latest stable, guess this should be ok now that 12.3 is branched. (forwarded request 150860 from Zaitor)</comment>
+    <requestid>151170</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>633be7fa3fad211ef14f8f756568fefa</srcmd5>
+    <version>1.0.3</version>
+    <time>1375728571</time>
+    <user>coolo</user>
+    <comment>Update to ver 1.0.3, latest stable release (forwarded request 185534 from Zaitor)</comment>
+    <requestid>185904</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>633be7fa3fad211ef14f8f756568fefa</srcmd5>
+    <version>1.0.3</version>
+    <time>1379663453</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>a162d425e313b0dda4b49578116bc3d9</srcmd5>
+    <version>1.1</version>
+    <time>1387270949</time>
+    <user>coolo</user>
+    <comment>- Update to version 1.1:
+  + New analysis code and tuning that significantly improves
+    encoding quality, especially for variable-bitrate (VBR).
+  + Automatic detection of speech or music to decide which encoding
+    mode to use.
+  + Surround with good quality at 128 kbps for 5.1 and usable down
+    to 48 kbps.
+  + Speed improvements on all architectures, especially ARM, where
+    decoding uses around 40% less CPU and encoding uses around 30%
+    less CPU. (forwarded request 210960 from Zaitor)</comment>
+    <requestid>210989</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>a162d425e313b0dda4b49578116bc3d9</srcmd5>
+    <version>1.1</version>
+    <time>1409302077</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>1681ab3d403d1dda94f638b4480f5273</srcmd5>
+    <version>1.1.1</version>
+    <time>1449685965</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>347279</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>488343c7e5875d95b641c05f18b8aa5e</srcmd5>
+    <version>1.1.2</version>
+    <time>1453508074</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.2, fixes the following bugs:
+  + Resetting the encoder or decoder state with OPUS_RESET_STATE
+    would disable some run-time selected architecture-specific
+    optimizations.
+  + In hybrid mode discontinuous transmission (DTX) operation,
+    the comfort noise above 8 kHz was incorrectly estimated
+    and could oscillate in time.</comment>
+    <requestid>354782</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>d4f7253c640c6dedae25d907fe70178b</srcmd5>
+    <version>1.1.2</version>
+    <time>1455190331</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>357505</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>23896adb153ce75564b87d4407223111</srcmd5>
+    <version>1.1.3</version>
+    <time>1471249838</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>419176</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>0a80c16ee37c84dede14953f0c53635f</srcmd5>
+    <version>1.1.3</version>
+    <time>1485250056</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>450587</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>4f8e27b18bb98057e54da07102c81abb</srcmd5>
+    <version>1.1.4</version>
+    <time>1488408088</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>460731</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>288b653b360118aa3de59590e77d6bdf</srcmd5>
+    <version>1.1.4</version>
+    <time>1489536271</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>478682</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>b06ca0a18905fd502c73b878f342eac0</srcmd5>
+    <version>1.1.5</version>
+    <time>1496225477</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.5
+  + This release backports the surround encoder bug fix from
+    1.2-beta branch</comment>
+    <requestid>498859</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>c76a1385b9a13f1373aee6901169d019</srcmd5>
+    <version>1.2.1</version>
+    <time>1498638933</time>
+    <user>dimstar_suse</user>
+    <comment>New stable rel</comment>
+    <requestid>506326</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>e0ef4b03dcdf9d30802929dd30dba83b</srcmd5>
+    <version>1.3</version>
+    <time>1540447812</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>643130</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>a2626053e2fd510d40c6f5f90b087f44</srcmd5>
+    <version>1.3.1</version>
+    <time>1558939064</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>705399</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>bd690f8689e77beba315987cd24de7a9</srcmd5>
+    <version>1.3.1</version>
+    <time>1566240418</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>723905</requestid>
+  </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>3a422ab8c666c206e1b715e5013f7aab</srcmd5>
+    <version>1.3.1</version>
+    <time>1587838338</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>795967</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>5f755018f0401da78271a487da3bc5ac</srcmd5>
+    <version>1.4</version>
+    <time>1682193427</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081128</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>e1ce5c0990f0bd138040c9ec9bcaca53</srcmd5>
+    <version>1.5.1</version>
+    <time>1709762615</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1155478</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>ad0b2d425c3ad25c63569143d2f6e216</srcmd5>
+    <version>1.5.2</version>
+    <time>1713290578</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1167726</requestid>
+  </revision>
+</revisionlist>
