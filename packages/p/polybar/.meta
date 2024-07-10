@@ -1,0 +1,5 @@
+<package name="polybar" project="openSUSE:Factory">
+  <title>polybar</title>
+  <description>A fast and easy-to-use status bar</description>
+  <devel project="X11:Utilities" package="polybar"/>
+</package>

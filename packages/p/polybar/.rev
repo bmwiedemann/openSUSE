@@ -1,0 +1,122 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>16f33822e1568448204863e1900ee306</srcmd5>
+    <version>3.4.3</version>
+    <time>1601919558</time>
+    <user>dimstar_suse</user>
+    <comment>Add polybar, a status bar generating program typically used with X11 based window managers.</comment>
+    <requestid>839254</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>5ce906f041220b5e20236aca1d326b04</srcmd5>
+    <version>3.5.2</version>
+    <time>1609147857</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix previous changelog entry
+- Re-fetch correct sources
+
+- Bump to version 3.5.2
+- Removed 0%{?suse_version}
+- Removed deprecated packages and add new one
+- Removed i3-gaps, add offical package i3
+- Add new patch to compile with old version of python3-sphinx (openSUSE 15.1 &amp; openSUSE 15.2)  
+  * sphinx.patch</comment>
+    <requestid>858969</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d6b83f7ec7cce9b055c4d9fd3ee98fda</srcmd5>
+    <version>3.5.5</version>
+    <time>1615061967</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>877385</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>0762cb7d14aecb808f659515101a5ffe</srcmd5>
+    <version>3.5.6</version>
+    <time>1622536522</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>895292</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>02e15705a6679d7649a429b461051214</srcmd5>
+    <version>3.5.7</version>
+    <time>1632341578</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>920850</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>e3920e07f2d5046713c26bcb27567082</srcmd5>
+    <version>3.6.0</version>
+    <time>1646349464</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>958700</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>8c678f8584ac5b7625a7b05fd44d6c60</srcmd5>
+    <version>3.6.1</version>
+    <time>1646948750</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>960829</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>406e9292c189e4fbebb7703f694ce0dd</srcmd5>
+    <version>3.6.2</version>
+    <time>1649450734</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>967677</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>95fc53cbc9fc37cf293c1cf09c6b3769</srcmd5>
+    <version>3.6.2</version>
+    <time>1651501541</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>974319</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>4f913969c67b50e63ee9bc54af4cdbbc</srcmd5>
+    <version>3.6.3</version>
+    <time>1651669874</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>974879</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>b94b1e04bcd0eb4af4dd1349515cfb9d</srcmd5>
+    <version>3.6.3</version>
+    <time>1681151663</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1078271</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>611c5a1830dc853e0c5a1e8c0910d777</srcmd5>
+    <version>3.7.0</version>
+    <time>1699388915</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1123999</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>66d3466dcf1550698c5e81a4f7ef595a</srcmd5>
+    <version>3.7.0</version>
+    <time>1700162865</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1126634</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>069fa0b7594f58cbeec5000e72017daf</srcmd5>
+    <version>3.7.1</version>
+    <time>1701206386</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1129469</requestid>
+  </revision>
+</revisionlist>

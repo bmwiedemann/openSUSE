@@ -1,0 +1,277 @@
+-------------------------------------------------------------------
+Mon Nov 27 20:28:36 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 3.7.1:
+  Build:
+  * Fixed missing header when using libc++ in clang 15 and below
+  Changed:
+  * internal/tray: The module must use the <tray> tag (this is the default) (#3037)
+  Fixed:
+  * Modules did not validate that all tags (e.g. <label>) used in
+    a format were valid for that format (#3043, #3045)
+  * internal/tray: Fixed module-margin and separator being applied
+    to completely empty tray module (#3036, #3037)
+
+-------------------------------------------------------------------
+Wed Nov  8 12:31:49 UTC 2023 - Mateusz Mielczarek <mateusz.mielczarek2@gmail.com>
+
+- Add 'cmake.patch' to pass build on openSUSE 15.4 and 15.5 
+
+-------------------------------------------------------------------
+Mon Nov  6 13:17:17 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 3.7.0:
+  Breaking:
+  * custom/script: No longer hides the module if the exec command
+    failed and did not change the output from the previous run (#2636).
+    Somewhat similar original behaviour can be imitated with format-fail,
+    if necessary.  If the exec command produced no output and exited with
+    a non-zero exit code the module is no longer completely empty, but
+    just has an empty %output% token. If you relied on this behavior
+    to hide the module under certain circumstances, make sure the script
+    exits with an exit code of zero. (#2857, #2861)
+  Build:
+  * Respect CMAKE_INSTALL_PREFIX when installing default config (#2770, #2917)
+  * Change default CMAKE_INSTALL_PREFIX to /usr. Installations with default
+    flags will now go into /usr instead of /usr/local (#2917)
+  * Bump C++ version to C++17 (#2847)
+  Deprecated:
+  * custom/text: The content setting and all its properties are deprecated in
+    favor of format with the same functionality. (#2676)
+  * tray: All tray-related settings in the bar section are deprecated. They
+    are replaced by the new tray module (#3002)
+  Added:
+  * A tray module with type internal/tray for positioning the tray like a module (#2689)
+  * internal/temperature: %temperature-k% token displays the temperature in
+    degrees Kelvin (#2774, #2784)
+  * internal/pulseaudio: reverse-scroll option (#2664)
+  * custom/script: Repeat interval for script failure (interval-fail) and
+    exec-if (interval-if) (#943, #2606, #2630)
+  * custom/ipc:
+    + Added support for <label> in format (#2841)
+    + Added support for format-i for each defined hook-i (#2775, #2810)
+  * custom/text: Loads the format setting, which supports the <label> tag,
+    if the deprecated content is not defined (#1331, #2673, #2676)
+  * internal/backlight:
+    + scroll-interval option (#2696, #2700)
+    + poll-interval setting controls how often the module is updated (in case
+      it does not happen when the brightness changes) (#2835, #3028)
+  * internal/temperature: Added zone-type setting (#2572, #2752)
+  * internal/xwindow: %class% and %instance% tokens, which show the contents
+    of the WM_CLASS property of the active window (#2830)
+  * Added enable-struts option in bar section to enable/disable struts (#2769, #2844)
+  * wm-restack:
+    + bottom: lowers polybar to the bottom of the window stack (same as the previous
+      behavior of generic) (#2961)
+    + ewmh: Tries to use the _NET_SUPPORTING_WM_CHECK hint to position the bar (#2961)
+  * internal/xworkspaces: group-by-monitor setting to decide whether _NET_DESKTOP_VIEWPORT
+    should be used to group workspaces by monitor; (#2603, #2926)
+  Changed:
+  * custom/script:
+    + No longer produces a completely empty module if the exec command failed. It only
+      produces an empty module if the script had a zero exit code. (#2857, #2861)
+    + Bumped the script polling interval (not related to the interval setting) to
+      decrease wakeups. Polybar may take slightly longer to shut down. #2879
+  * internal/fs: Use / as a fallback if no mountpoints are specified (#2572, #2705)
+  * internal/backlight:
+    + Detect backlight if none specified (#2572, #2728)
+    + use-actual-brightness now always defaults to true (even for amdgpu backlights) (#2835, 2839)
+  * Providing a negative min-width to a token adds right-padding (#2789, #2801)
+  * Changed fuzzy match option on i3 and bspwm modules to find longest match instead
+    of the first match (#2831, #2829)
+  * wm-restack
+    + generic: Is now a best effort combination of other restacking strategies. First
+      tries ewmh and then the bottom strategy (#2961)
+    + bspwm: Will restack above the topmost bspwm root window instead of the root window
+      associated with the monitor polybar is on (#3019)
+  Fixed:
+  * Waiting for double click interval on modules that don't have a double click action (#2663, #2695)
+  * renderer:
+    + Small gaps when rendering emojis (#2785, #2802)
+    + Crash when using pseudo-transparency with certain wallpapers (#2798, #2813)
+    + Crash when invalid UTF-8 text is encountered (#2091, #2958)
+  * config:
+    + Error reporting for deprecated config values (#2724)
+    + Also monitor include-files for changes when --reload is set (#675, #2759)
+  * internal/xwindow: module does not crash when a tag is not provided in format (#2826, #2833)
+  * internal/i3: module errors when i3 has negative gaps (#2888, #2889)
+  * internal/backlight: Fix module being one step behind every update (#2835, #3028)
+  * wm-restack = bspwm: bar may become unclickable if there are overlapping monitors (#2873, #2961)
+
+-------------------------------------------------------------------
+Wed Apr  5 07:50:56 UTC 2023 - Tomas Cech <sleep_walker@opensuse.org>
+
+- Added support for XCursor
+
+-------------------------------------------------------------------
+Wed May  4 09:27:41 UTC 2022 - Mateusz Mielczarek <mateusz.mielczarek2@gmail.com>
+
+- Update to 3.6.3:
+  * custom/script: Output clearing when exec-if fails (#2674)
+  * internal/battery: poll-interval not working (#2649, #2677)
+  * ipc: Polybar failing to open IPC channel after another user already ran polybar, if XDG_RUNTIME_DIR is not set (#2683, #2684)
+  * No overlines/underlines being drawn when using offsets (#2685)
+  * Update struts (_NET_WM_STRUT_PARTIAL) when hiding the bar (#2702)
+  * internal/pulseaudio: Hanging during startup (#2707, #2709)
+  * internal/xworkspaces: Updates of _NET_DESKTOP_VIEWPORT being ignored (#2693, #2698) 
+
+-------------------------------------------------------------------
+Sun May  1 04:53:23 UTC 2022 - Sebastian Ross <sebastianfross1@gmail.com>
+
+- Added new BuildRequires libmpdclient-devel: build requirement for mpd support 
+
+-------------------------------------------------------------------
+Fri Apr  8 06:20:56 UTC 2022 - Mateusz Mielczarek <mateusz.mielczarek2@gmail.com>
+
+- Update to 3.6.2:
+  * format-offset being ignored (#2643)
+  * Negative struts (margin-bottom, margin-top) being ignored (#2642, #2644)
+  * Positioning in awesomeWM (#2651)
+  * internal/xworkspaces: The module sometimes crashed polybar when windows were closed. (#2655)
+  * Mouseover error when only one cursor is defined (#2656)
+  * custom/script: Timing inconsistencies (#2650, first described at #2630)
+
+-------------------------------------------------------------------
+Thu Mar 10 15:35:35 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 3.6.1:
+  * Fixed compiler warning in Clang 13 (#2613)
+  * Fixed compiler error in GCC 12 (#2616, #2614)
+  * Fixed installation of docs when some are not generated
+    (man, html...) (#2612)
+  * Fix LDFLAGS not being respected (#2619)
+  * tray-offset-x, tray-offset-y, offset-x, and offset-y were
+    mistakenly capped below at 0 (#2620)
+  * custom/script: Polybar shutdown being stalled by hanging script
+    (#2621)
+  * polybar-msg: Wrong hint when using deprecated hook (#2624)
+
+-------------------------------------------------------------------
+Wed Mar  2 08:17:00 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 3.6.0:
+  Breaking:
+  * We added the backslash escape character (\) for configuration values. This
+    means that the literal backslash character now has special meaning in
+    configuration files, therefore if you want to use it in a value as a literal
+    backslash, you need to escape it with the backslash escape character. The parser
+    logs an error if any unescaped backslashes are found in a value. This affects
+    you only if you are using two consecutive backslashes in a config value, which
+    will now be interpreted as a single literal backslash. (#2354)
+  * We rewrote our formatting tag parser. This shouldn't break anything, if you
+    experience any problems, please let us know. The new parser now gives errors for
+    certain invalid tags where the old parser would just silently ignore them.
+    Adding extra text to the end of a valid tag now produces an error. For example,
+    tags like %{T-a}, %{T2abc}, %{rfoo}, and others will now start producing errors.
+    This does not affect you unless you are producing your own invalid formatting
+    tags (for example in a script).
+  * For security reasons, the named pipe at /tmp/polybar_mqueue.<PID> had its
+    permission bits changed from 666 to 600 to prevent sending ipc messages to
+    polybar processes running under a different user.
+  * For details see: https://github.com/polybar/polybar/releases/tag/3.6.0
+
+-------------------------------------------------------------------
+Wed Sep 22 07:32:39 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 3.5.7:
+  * The tray mistakenly removed tray icons that did not support
+    XEMBED (#2479, #2442)
+  * custom/ipc: Only the first appearance of the %pid% token was
+    replaced (#2500)
+
+-------------------------------------------------------------------
+Tue May 25 06:51:42 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 3.5.6:
+  Build:
+  * Support building documentation on sphinx 4.0 (#2424)
+  Fixed:
+  * Tray icons sometimes appears outside of bar (#2430, #1679)
+  * Crash in the i3 module (#2416)
+
+-------------------------------------------------------------------
+Tue Mar  2 09:08:51 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 3.5.5:
+  * Support older python sphinx versions again (gh#2356)
+- Changes from 3.5.4:
+  * Wrong text displayed if module text ends with } (gh#2331)
+- Changes from 3.5.3:
+  * Don't use git when building documentation (gh#2309)
+  * Empty color values are no longer treated as invalid and no
+    longer produce an error.
+- Remove sphinx.patch (See gh#2356)
+
+-------------------------------------------------------------------
+Mon Dec 28 08:33:45 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Fix previous changelog entry
+- Re-fetch correct sources
+
+-------------------------------------------------------------------
+Tue Dec 22 10:11:01 UTC 2020 - Mateusz Mielczarek <mateusz.mielczarek2@gmail.com>
+
+- Bump to version 3.5.2
+- Removed 0%{?suse_version}
+- Removed deprecated packages and add new one
+- Removed i3-gaps, add offical package i3
+- Add new patch to compile with old version of python3-sphinx (openSUSE 15.1 & openSUSE 15.2)  
+  * sphinx.patch
+
+-------------------------------------------------------------------
+Thu Aug 20 18:42:49 UTC 2020 - Tejas Guruswamy <tejas.guruswamy@opensuse.org>
+
+- Update to version 3.4.3
+- Fixes GCC 10 Compilation (gh#2098), see gh#2097
+
+-------------------------------------------------------------------
+Fri Feb 28 07:45:27 UTC 2020 - Mateusz Mielczarek <mateusz.mielczarek2@gmail.com>
+
+- Bump to version 3.4.2
+- Fix:
+    * internal/i3: Workspace icon map misbehaves for empty icon
+    * custom/ipc: Clear content if hook produces no output.
+    * renderer:
+        - The modules on the right no longer overlap the tray or are shifted out of the bar
+        - The gradient when modules are shifted out of the bar (because there is not enough space) is now drawn correctly in all circumstances
+        - build: Fixed a compilation issue in gcc10
+
+-------------------------------------------------------------------
+Thu Oct 31 08:33:40 UTC 2019 - Mateusz Mielczarek <mateusz.mielczarek2@gmail.com>
+
+- Removed python2 as dependency (EOL)
+
+-------------------------------------------------------------------
+Tue Oct 15 21:17:25 UTC 2019 - Martin Herkt <9+suse@cirno.systems>
+
+- Use c++_compiler in BuildRequires instead of clang
+
+-------------------------------------------------------------------
+Thu Aug 22 16:11:44 UTC 2019 - Mateusz Mielczarek <mateusz.mielczarek2@gmail.com>
+
+- Bump to version 3.4.0
+- Add new dependency: python-Sphinx
+
+-------------------------------------------------------------------
+Wed Apr  3 07:25:45 UTC 2019 - Mateusz Mielczarek <mateusz.mielczarek2@gmail.com>
+
+- Bump to version 3.3.1
+- Removed polybar-3.3.0-libtype.patch
+
+-------------------------------------------------------------------
+Tue Jan 29 10:13:30 UTC 2019 - mvetter@suse.com
+
+- Remove `userconfig` argument from make:
+  This actually is intended to install the config in the users
+  home directory. Not possible here.
+
+-------------------------------------------------------------------
+Mon Jan 28 08:09:29 UTC 2019 - mvetter@suse.com
+
+- Add polybar-3.3.0-libtype.patch:
+  Fix usage with our cmake macros
+
+-------------------------------------------------------------------
+Fri Jan 25 12:00:28 UTC 2019 - mateusz.mielczarek2@gmail.com
+
+- Init package
