@@ -1,0 +1,210 @@
+<revisionlist>
+  <revision rev="1" vrev="872">
+    <srcmd5>305e0e181dbd77bb6f7e6ca8a6e603fa</srcmd5>
+    <version>1.0</version>
+    <time>1168902772</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="994">
+    <srcmd5>305e0e181dbd77bb6f7e6ca8a6e603fa</srcmd5>
+    <version>1.0</version>
+    <time>1168902772</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="995">
+    <srcmd5>1bcc6c9030d74e241693815938f0608b</srcmd5>
+    <version>1.0</version>
+    <time>1245260017</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="996">
+    <srcmd5>a86af96506e332da97cc1f407b0ae546</srcmd5>
+    <version>1.0</version>
+    <time>1249919696</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="998">
+    <srcmd5>a86af96506e332da97cc1f407b0ae546</srcmd5>
+    <version>1.0</version>
+    <time>1249919696</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="999">
+    <srcmd5>dc800c47f15bf6e04c910e8971138c94</srcmd5>
+    <version>1.0</version>
+    <time>1268923573</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="7" vrev="1000">
+    <srcmd5>6f82f5d8b4c08e2ddbeb80809fe6da7a</srcmd5>
+    <version>1.0</version>
+    <time>1278081018</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/fortune based on submit request 42334 from user msmeissn
+</comment>
+    <requestid>42334</requestid>
+  </revision>
+  <revision rev="8" vrev="1003">
+    <srcmd5>6f82f5d8b4c08e2ddbeb80809fe6da7a</srcmd5>
+    <version>1.0</version>
+    <time>1278667345</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="1004">
+    <srcmd5>6f82f5d8b4c08e2ddbeb80809fe6da7a</srcmd5>
+    <version>1.0</version>
+    <time>1278678575</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="1007">
+    <srcmd5>6f82f5d8b4c08e2ddbeb80809fe6da7a</srcmd5>
+    <version>1.0</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="11" vrev="1008">
+    <srcmd5>a6df9d7dbe4999f390c2eb74cfcfd93d</srcmd5>
+    <version>1.0</version>
+    <time>1316516107</time>
+    <user>saschpe</user>
+    <comment>- Apply packaging guidelines (remove redundant/obsolete
+  tags/sections from specfile, etc.) (forwarded request 83543 from jengelh)</comment>
+    <requestid>83724</requestid>
+  </revision>
+  <revision rev="12" vrev="1009">
+    <srcmd5>f97790f2effb335b4be79f3053c9ca5b</srcmd5>
+    <version>1.0</version>
+    <time>1317744579</time>
+    <user>oertel</user>
+    <comment>- cross-build fix: use %__cc macro (forwarded request 86385 from uli_suse)</comment>
+    <requestid>86431</requestid>
+  </revision>
+  <revision rev="13" vrev="1011">
+    <srcmd5>f97790f2effb335b4be79f3053c9ca5b</srcmd5>
+    <version>1.0</version>
+    <time>1319181883</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="14" vrev="1012">
+    <srcmd5>b82fe047dfe46122f0e73bd565a648d3</srcmd5>
+    <version>1.0</version>
+    <time>1323191401</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>0a0f4249471850490c16f3725242a6d4</srcmd5>
+    <version>1.99.1</version>
+    <time>1328711863</time>
+    <user>coolo</user>
+    <comment>- let's treat debian as upstream, they actually cared for the
+  actual fortunes - our last change is 10 years old (forwarded request 103016 from coolo)</comment>
+    <requestid>103069</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>0a0f4249471850490c16f3725242a6d4</srcmd5>
+    <version>1.99.1</version>
+    <time>1340183336</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="17" vrev="5">
+    <srcmd5>0a0f4249471850490c16f3725242a6d4</srcmd5>
+    <version>1.99.1</version>
+    <time>1359108887</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="7">
+    <srcmd5>0a0f4249471850490c16f3725242a6d4</srcmd5>
+    <version>1.99.1</version>
+    <time>1379662358</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="9">
+    <srcmd5>0a0f4249471850490c16f3725242a6d4</srcmd5>
+    <version>1.99.1</version>
+    <time>1409300894</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="10">
+    <srcmd5>4cdb7fc563004cd9ea7edcf1edd35500</srcmd5>
+    <version>1.99.1</version>
+    <time>1485250121</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>451176</requestid>
+  </revision>
+  <revision rev="21" vrev="10">
+    <srcmd5>4cdb7fc563004cd9ea7edcf1edd35500</srcmd5>
+    <version>1.99.1</version>
+    <time>1502011838</time>
+    <user>maxlin_factory</user>
+    <comment>Relies on recode we are removing, if someone is interested there are alternative implementations that do not use the recode, ie https://github.com/vsergeev/minifortune</comment>
+    <requestid>512893</requestid>
+  </revision>
+  <revision rev="22" vrev="10">
+    <srcmd5>4cdb7fc563004cd9ea7edcf1edd35500</srcmd5>
+    <version>1.99.1</version>
+    <time>1502040865</time>
+    <user>maxlin_factory</user>
+    <comment>xcowsay is still requiers fortune</comment>
+  </revision>
+  <revision rev="23" vrev="11">
+    <srcmd5>d52094e493f38f85ca3ba50ada45978b</srcmd5>
+    <version>1.99.1</version>
+    <time>1515876460</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>563551</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>10c926f68a674dc390a558012d8e2591</srcmd5>
+    <version>2.6.2</version>
+    <time>1560970691</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>704683</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>c602aaa67dc7ec3c5cec3009bac61cfa</srcmd5>
+    <version>2.8.0</version>
+    <time>1561049800</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.8.0
+  * Add some quotes by amigojapan.
+  * Some improvements for spelling, punctuation and grammar.
+  * Extract a common C header.</comment>
+    <requestid>711053</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>041147d9c57ce24c44caf2e6d3b0213e</srcmd5>
+    <version>2.10.0</version>
+    <time>1562843630</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.10.0
+  * Move strfile and unstr to /usr/bin.
+  * Code cleanups: warnings and portability.
+- Removed patch fortune-no-recode.patch
+  * Recode is maintained again, so this patch is not needed and due
+    to &quot;code cleanups&quot; it did not apply cleanly. Let us drop it.
+- Added patch fortune-avoid-rinutils.patch
+  * Shlomi Fish again used one of his &quot;random and task-specific&quot; 
+    packages. I do not want to package this one.
+- Corrected license category.</comment>
+    <requestid>713003</requestid>
+  </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>760b5ed31cade546c7a13aeae635cb01</srcmd5>
+    <version>2.10.0</version>
+    <time>1709070426</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1151157</requestid>
+  </revision>
+</revisionlist>
