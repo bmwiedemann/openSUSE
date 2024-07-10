@@ -1,0 +1,13 @@
+<services>
+  <service name="tar_scm" mode="localonly">
+    <param name="scm">bzr</param>
+    <param name="url">https://code.launchpad.net/~elementary-os/+junk/cmake-modules</param>
+    <param name="filename">elementary-cmake-modules</param>
+    <param name="versionprefix">0.1.0.bzr</param>
+    <param name="package-meta">yes</param>
+  </service>
+  <service name="recompress" mode="localonly">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+</services>
