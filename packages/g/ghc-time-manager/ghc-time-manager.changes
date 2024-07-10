@@ -1,0 +1,32 @@
+-------------------------------------------------------------------
+Thu Aug 17 06:05:42 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update time-manager to version 0.0.1.
+  Upstream does not provide a change log file.
+
+-------------------------------------------------------------------
+Thu Mar 30 17:08:39 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
+Tue Nov  1 00:22:42 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update time-manager to version 0.0.0 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+ 
+- disable %{ix86} build
+ 
+-------------------------------------------------------------------
+Tue Aug 18 10:46:18 UTC 2020 - Peter Simons <psimons@suse.com>
+
+- Replace %setup -q with the more modern %autosetup macro.
+
+-------------------------------------------------------------------
+Tue Jun  9 09:26:17 UTC 2020 - psimons@suse.com
+
+- Add time-manager at version 0.0.0.
+
