@@ -1,0 +1,73 @@
+-------------------------------------------------------------------
+Fri Jun  7 17:50:48 UTC 2024 - Carsten Ziepke <kieltux@gmail.com>
+
+- Add bear-fix-building-with-boost-1.85.patch, fixes building with
+  boost >= 1.85
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Wed Sep 23 09:33:59 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Install correct license file corresponding to each subpackage:
+  GPL for binaries and libraries (main pkg) and CCPL for game data
+  (pkg plee-the-bear-data).
+
+-------------------------------------------------------------------
+Tue Sep 22 23:28:12 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.7.1
+- Change URL and Source0 to new upstream location.
+- Drop ptb-sequencer-gcc6.patch: upstreamed.
+- Add _service file for new source (untagged and unreleased) bear,
+  downloaded from its git repository.
+- Add skeleton CMakeLists.txt file to build project as recommended
+  by upstream (see README.md).
+- Add ptb-boost-placeholders.patch to explicitly use
+  boost::placeholders namespace where required, and thus fix build
+  failures on TW.
+- Move installed appdata file to the correct metainfo dir.
+- Drop conditionals supporting EOL openSUSE versions.
+- New BuildRequires: libboost_test-devel.
+- License updated to GPL-3.0-only.
+- Drop empty post(un) scriptlets.
+
+-------------------------------------------------------------------
+Tue Dec 26 16:06:18 UTC 2017 - dap.darkness@gmail.com
+
+- Cmake error and warnings fix.
+
+-------------------------------------------------------------------
+Sun Jun 18 17:52:09 UTC 2017 - dap.darkness@gmail.com
+
+- Added ptb-sequencer-gcc6.patch from Fedora.
+
+-------------------------------------------------------------------
+Mon Feb  6 22:38:52 UTC 2017 - jengelh@inai.de
+
+- Trim description according to guidelines
+- Remove unnecessary ldconfig call (there are no files matching
+  /usr/lib/*.so*)
+
+-------------------------------------------------------------------
+Mon Feb  6 16:44:36 UTC 2017 - mailaender@opensuse.org
+
+- https://en.opensuse.org/SourceUrls
+- use cmake macros
+- fix the .desktop category
+
+-------------------------------------------------------------------
+Thu Apr 10 18:03:42 UTC 2014 - dap.darkness@gmail.com
+
+- Updated to ver. 0.7.0:
+  * no upstream changelog.
+- Deleted no-return-in-nonvoid-function.patch &
+  plee-the-bear-boost-1.50-patch as merged by upstream.
+- Added icon_theme_cache_post(un) & desktop_database_post(un).
+- Let make be verbose.
+- Switched to download_url service.
+
+-------------------------------------------------------------------
+Wed Aug 14 19:45:50 UTC 2013 - dap.darkness@gmail.com
+
+- Initial build.
+

@@ -1,0 +1,5 @@
+<package name="plee-the-bear" project="openSUSE:Factory">
+  <title>Plee the Bear</title>
+  <description>A 2D platform game like those we found on consoles in the beginning of the 90's.</description>
+  <devel project="games" package="plee-the-bear"/>
+</package>
