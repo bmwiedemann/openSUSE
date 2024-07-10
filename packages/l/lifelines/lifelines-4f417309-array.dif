@@ -1,0 +1,23 @@
+---
+ src/liflines/ask.c |    3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+--- src/liflines/ask.c
++++ src/liflines/ask.c	2024-02-22 09:23:50.522625991 +0000
+@@ -178,6 +178,7 @@ ask_for_file_worker (STRING mode,
+ 		rtn = ask_for_output_filename(ttl, path, prompt, fname, sizeof(fname));
+ 	
+ 	if (pfname) {
++		free(*pfname);
+ 		if (fname[0])
+ 			*pfname = strdup(fname);
+ 		else
+@@ -506,7 +507,7 @@ ask_for_record (STRING idstr, INT letr)
+ STRING
+ ask_for_record_key (STRING title, STRING prompt)
+ {
+-	char answer[MAXPATHLEN];
++	char answer[MAXPATHLEN] = {'\0'};
+ 	if (!ask_for_string(title, prompt, answer, sizeof(answer)))
+ 		return NULL;
+ 	if (!answer[0]) return NULL;

@@ -1,0 +1,95 @@
+---
+ src/gedlib/translat.c |    2 +-
+ src/hdrs/standard.h   |    7 +++++++
+ src/interp/builtin.c  |    4 ++--
+ src/interp/interp.c   |    4 ++--
+ src/liflines/screen.c |    4 ++--
+ 5 files changed, 14 insertions(+), 7 deletions(-)
+
+--- src/gedlib/translat.c
++++ src/gedlib/translat.c	2024-02-22 09:12:50.126767823 +0000
+@@ -303,7 +303,7 @@ transl_get_xlat (CNSTRING src, CNSTRING
+ void
+ transl_load_all_tts (void)
+ {
+-	CNSTRING ttpath = getlloptstr("TTPATH", ".");
++	CNSTRING ttpath = getlloptstr("TTPATH", "/usr/share/lifelines/tt");
+ 	if (!inited) local_init();
+ 	xl_load_all_dyntts(ttpath);
+ }
+--- src/hdrs/standard.h
++++ src/hdrs/standard.h	2024-02-22 09:12:50.126767823 +0000
+@@ -82,6 +82,13 @@
+ #define INCLUDED_STDARG_H
+ #endif
+ 
++#ifdef HAVE_INTTYPES_H
++#include <inttypes.h>
++#endif
++#ifdef HAVE_STDINT_H
++#include <stdint.h>
++#endif
++
+ /* Having 'char *' instead of 'unsigned char *' removes about */
+ /* 1800 compiler warnings.  We still need to investigate *every* */
+ /* instance where a STRING is dereferenced and the contents acted */
+--- src/interp/builtin.c
++++ src/interp/builtin.c	2024-02-22 09:12:50.126767823 +0000
+@@ -1138,7 +1138,7 @@ llrpt_f (PNODE node, SYMTAB stab, BOOLEA
+ PVALUE
+ llrpt_alpha (PNODE node, SYMTAB stab, BOOLEAN *eflg)
+ {
+-	static char scratch[2];
++	static char scratch[3];
+ 	INT i;
+ 	PNODE argvar = builtin_args(node);
+ 	PVALUE val = eval_and_coerce(PINT, argvar, stab, eflg);
+@@ -3453,7 +3453,7 @@ llrpt_copyfile (PNODE node, SYMTAB stab,
+ 	PNODE argvar = builtin_args(node);
+ 	PVALUE val = eval_and_coerce(PSTRING, argvar, stab, eflg);
+ 	char buffer[1024];
+-	STRING programsdir = getlloptstr("LLPROGRAMS", ".");
++	STRING programsdir = getlloptstr("LLPROGRAMS", "/usr/share/lifelines/reports");
+ 	if (*eflg)  {
+ 		prog_error(node, nonstr1, "copyfile");
+ 		goto copyfile_end;
+--- src/interp/interp.c
++++ src/interp/interp.c	2024-02-22 09:12:50.126767823 +0000
+@@ -246,7 +246,7 @@ interp_program_list (STRING proc, INT na
+ 	} else {
+ 		PATHINFO pathinfo = 0;
+ 		STRING fname=0, fullpath=0;
+-		STRING programsdir = getlloptstr("LLPROGRAMS", ".");
++		STRING programsdir = getlloptstr("LLPROGRAMS", "/usr/share/lifelines/reports");
+ 		if (!rptui_ask_for_program(LLREADTEXT, _(qSwhatrpt), &fname, &fullpath
+ 			, programsdir, ".ll", picklist)) {
+ 			if (fname)  {
+@@ -454,7 +454,7 @@ remove_tables (HINT_PARAM_UNUSED PACTX p
+ static BOOLEAN
+ find_program (CNSTRING fname, STRING localdir, STRING *pfull,BOOLEAN include)
+ {
+-	STRING programsdir = getlloptstr("LLPROGRAMS", ".");
++	STRING programsdir = getlloptstr("LLPROGRAMS", "/usr/share/lifelines/reports");
+ 	FILE * fp = 0;
+ 	ZSTR zstr=zs_new();
+ 	BOOLEAN rtn=FALSE;
+--- src/liflines/screen.c
++++ src/liflines/screen.c	2024-02-22 09:12:50.130767749 +0000
+@@ -1633,7 +1633,7 @@ invoke_cset_display (void)
+ 		enqueue_list(list, strsave(zs_str(zstr)));
+ 	}
+ 
+-	zs_setf(zstr, "TTPATH: %s", getlloptstr("TTPATH", "."));
++	zs_setf(zstr, "TTPATH: %s", getlloptstr("TTPATH", "/usr/share/lifelines/tt"));
+ 	enqueue_list(list, strsave(zs_str(zstr)));
+ 
+ 	if (charprops_is_loaded()) {
+@@ -1784,7 +1784,7 @@ load_tt_action (void)
+ 	}
+ 
+ 	/* Ask whence to load it */
+-	ttimportdir = getlloptstr("TTPATH", ".");
++	ttimportdir = getlloptstr("TTPATH", "/usr/share/lifelines/tt");
+ 	fp = ask_for_input_file(LLREADTEXT, _(qSmintt), &fname, ttimportdir, ".tt");
+ 	if (fp) {
+ 		fclose(fp);
