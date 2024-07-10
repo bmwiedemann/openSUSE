@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Tue Jul  2 12:08:19 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.87.9
+  * Update CloudFormation specs to 180.0.0 (#3391)
+- from version 0.87.8
+  * Update CloudFormation specs to 179.0.0 (#3308)
+  * Update rules to better handle null/None values for Outputs (#3302)
+- from version 0.87.7
+  * Update rule W2531 to validate when the specified runtime
+    is deprecated (#3297)
+  * Update rule E2531 to validate when you can no longer create
+    a lambda function with the specified runtime (#3297)
+  * Create rule E2533 to validate when you can no longer update
+    a lambda function with the specified runtime (#3297)
+- from version 0.87.6
+  * Update CloudFormation specs to 177.0.0 (#3282)
+  * Update language transformation to handle SSM based Parameters (#3293)
+- from version 0.87.5
+  * Update CloudFormation specs to 175.0.0 (#3255)
+  * Add some allowed patterns for ELB and SGs (#3269)
+  * Return None when a list is emptied out during
+    condition processing (#3265)
+- from version 0.87.4
+  * Update CloudFormation specs to 175.0.0 (#3255)
+  * Add some allowed patterns for ELB and SGs (#3269)
+  * Return None when a list is emptied out during
+    condition processing (#3265)
+- from version 0.87.3
+  * Update CloudFormation specs to 174.0.0 (#3229)
+  * In Graph make sure is_resource id is string (#3252)
+  * Update language extension transform to enumerate FindInMap
+    when can't be resolved (#3246)
+  * Add AWS::IAM::ManagedPolicy.PolicyArn to
+    AWS::IAM::ManagedPolicy.Arn (#3230)
+- Update BuildRequires and Requires from setup.py
+
+-------------------------------------------------------------------
 Fri May 17 12:27:36 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.87.2

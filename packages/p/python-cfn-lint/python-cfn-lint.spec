@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-cfn-lint
-Version:        0.87.2
+Version:        0.87.9
 Release:        0
 Summary:        Tool to checks cloudformation for practices and behaviour
 License:        MIT
@@ -32,7 +32,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       git-core
 Requires:       python-PyYAML >= 5.4
-Requires:       python-aws-sam-translator >= 1.87.0
+Requires:       python-aws-sam-translator >= 1.89.0
 Requires:       python-jschema-to-python >= 1.2.3
 Requires:       python-jsonpatch
 Requires:       python-junit-xml >= 1.9
@@ -49,7 +49,7 @@ Obsoletes:      cfn-lint < %{version}
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module PyYAML >= 5.4}
-BuildRequires:  %{python_module aws-sam-translator >= 1.87.0}
+BuildRequires:  %{python_module aws-sam-translator >= 1.89.0}
 BuildRequires:  %{python_module jschema-to-python >= 1.2.3}
 BuildRequires:  %{python_module jsonpatch}
 BuildRequires:  %{python_module jsonschema > 3.0 with %python-jsonschema < 5}
