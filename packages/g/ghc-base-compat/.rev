@@ -1,0 +1,233 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>00b852934f32d69bf9c41a88ba159a29</srcmd5>
+    <version>0.8.2</version>
+    <time>1450955777</time>
+    <user>dimstar_suse</user>
+    <comment>base-compat: A compatibility layer for base</comment>
+    <requestid>349235</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>b96575b3f956563abd1f7510ddb52186</srcmd5>
+    <version>0.9.0</version>
+    <time>1453998212</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.9.0
+* Sync with base-4.9/GHC 8.0
+* Weakened RealFloat constraints on realPart, imagPart, conjugate, mkPolar, and cis
+	 in Data.Complex.Compat
+* Backport Foreign.ForeignPtr.Safe and Foreign.Marshal.Safe
+* Generalize filterM, forever, mapAndUnzipM, zipWithM, zipWithM_, replicateM, 
+	and replicateM_ in Control.Monad from Monad to Applicative
+* Backport .Unsafe.Compat modules (for Control.Monad.ST, Control.Monad.ST.Lazy, 
+	Foreign.ForeignPtr, and Foreign.Marshal)
+* Backport forkFinally and forkOSWithUnmask to Control.Concurrent.Compat
+* Backport Data.Functor.Const
+* Backport modifyIORef', atomicModifyIORef' and atomicWriteIORef to Data.IORef.Compat
+* Data.Ratio.{denominator,numerator} have no Integral constraint anymore
+* Backport modifySTRef' to Data.STRef.Compat
+* Export String, lines, words, unlines, and unwords to Data.String.Compat
+* Generalize Debug.Trace.{traceM, traceShowM} from Monad to Applicative
+* Backport errorWithoutStackTrace to Prelude.Compat
+* Backport unsafeFixIO and unsafeDupablePerformIO to System.IO.Unsafe.Compat (forwarded request 355923 from mimi_vx)</comment>
+    <requestid>355924</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>1d67970b69b00b4ad24ba784dcf04aec</srcmd5>
+    <version>0.9.1</version>
+    <time>1461335092</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.9.1
+* Use the more efficient version of replicateM and replicateM_ introduced in base-4.9 (forwarded request 390412 from mimi_vx)</comment>
+    <requestid>390413</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>2bbff30d216263e34dea7d0857758abf</srcmd5>
+    <version>0.9.1</version>
+    <time>1469080819</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>410947</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>6ce0ce2f0bbcff750995c1349ea274ce</srcmd5>
+    <version>0.9.2</version>
+    <time>1492169838</time>
+    <user>maxlin_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>485106</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>49c78f612e672978a1067813ca7c121c</srcmd5>
+    <version>0.9.3</version>
+    <time>1494088088</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>491456</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>2ff53cc8bc8bf885884cb22797ed4e6f</srcmd5>
+    <version>0.9.3</version>
+    <time>1505503297</time>
+    <user>dimstar_suse</user>
+    <comment>re-format spec file with latest spec-cleaner and cabal2obs</comment>
+    <requestid>524159</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>c2bcb0dd430c843ac867017f92554005</srcmd5>
+    <version>0.9.3</version>
+    <time>1527675440</time>
+    <user>dimstar_suse</user>
+    <comment>Update to support new ghc-rpm-macros.</comment>
+    <requestid>609765</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>fb27b8e4ff2a7497b5c438989f931093</srcmd5>
+    <version>0.10.4</version>
+    <time>1532445185</time>
+    <user>dimstar_suse</user>
+    <comment>- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.
+
+- Update base-compat to version 0.10.4.
+  ## Changes in 0.10.4 [2018.07.03]
+   - Make more modules `Trustworthy`. In particular, fix a regression in which
+     `Prelude.Compat` was inferred as `Unsafe` by explicitly marking it as
+     `Trustwothy`.
+  ## Changes in 0.10.3 [2018.07.02]
+   - Backport the proper fixity for `($!)`, which was accidentally omitted in
+     `base-compat-0.10.2`.
+  ## Changes in 0.10.2 [2018.07.02]
+   - Sync with `base-4.12`/GHC 8.6
+   - Backport `RuntimeRep`-polymorphic versions of `($!)` and `throw` to
+     `Prelude.Compat` and `Control.Exception.Compat`, respectively
+     (if using `base-4.10`/GHC 8.2 or later).
+   - Introduce the `Data.Functor.Contravariant.Compat` module, which reexports
+     `Data.Functor.Contravariant` if using `base-4.12`/GHC 8.6 or later.
+     See `Data.Functor.Contravariant.Compat` in the corresponding
+     `base-compat-batteries` release for a version with a wider support window.
+  ## Changes in 0.10.1 [2018.04.10]
+   - Add `Data.List.NonEmpty.Compat`.
+   - Reexport `(Data.Semigroup.&lt;&gt;)` from `Data.Monoid.Compat` back to `base-4.9`.
+  ## Changes in 0.10.0 [2018.04.05]
+   - Sync with `base-4.11`/GHC 8.4
+   - Backport `Semigroup((&lt;&gt;))` to `Prelude.Compat`.
+     Note that the `Semigroup` class has only been in `base` since
+     `base-4.9`/GHC 8.0, so accordingly, this can only be backported back
+     to GHC 8.0. If you wish to have a version of `Prelude.Compat` that backports
+     `Semigroup` to older GHCs (by conditionally depending on the `semigroups`</comment>
+    <requestid>623721</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>db2087a05a314c3c9a990e0fea28e686</srcmd5>
+    <version>0.10.5</version>
+    <time>1540448498</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>643327</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>87382c5becd208ab9f711e4bd97ce82b</srcmd5>
+    <version>0.10.5</version>
+    <time>1577451097</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>759342</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>d78531ab7730f7716e3bedaa316fea26</srcmd5>
+    <version>0.11.0</version>
+    <time>1578069312</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>760280</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>5b9d2e9fbd32d4971be9e26d9e8022d4</srcmd5>
+    <version>0.11.1</version>
+    <time>1583759668</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>780010</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>28f9d7101e0f6e1036ef72aa11a7baad</srcmd5>
+    <version>0.11.1</version>
+    <time>1592579289</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>815036</requestid>
+  </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>91fe60f0cbe667c03ebaf39a0d9b0837</srcmd5>
+    <version>0.11.1</version>
+    <time>1598642737</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>829183</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>01ab3de4bc6de515919dfb71224e41ce</srcmd5>
+    <version>0.11.2</version>
+    <time>1603458807</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>842737</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>7475802bb08fb2ab199e14c36ae4d8ae</srcmd5>
+    <version>0.11.2</version>
+    <time>1608633311</time>
+    <user>dimstar_suse</user>
+    <comment>update haskell stack in openSUS</comment>
+    <requestid>857239</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>2ace8e8a4e0bc4fc45b63ef893fbbeb3</srcmd5>
+    <version>0.12.0</version>
+    <time>1631310064</time>
+    <user>dimstar_suse</user>
+    <comment>automated update of haskell stack</comment>
+    <requestid>917477</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>c034fcc7642c6d843526fdafaf912053</srcmd5>
+    <version>0.12.1</version>
+    <time>1636662968</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>930303</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>90656ab68ba4014e0d4f40d9d6f59343</srcmd5>
+    <version>0.12.2</version>
+    <time>1665668462</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1008434</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>41378e342964a4ffe56528025c75d109</srcmd5>
+    <version>0.12.2</version>
+    <time>1680635916</time>
+    <user>dimstar_suse</user>
+    <comment>update for ghc-9.4.4</comment>
+    <requestid>1075776</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>a9a4a07d687cb2ab1bcf5b395a64ce85</srcmd5>
+    <version>0.13.0</version>
+    <time>1687469115</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>1094420</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>a3385e69f2360385fabd1a3f9e6d2e4a</srcmd5>
+    <version>0.13.1</version>
+    <time>1697657148</time>
+    <user>anag+factory</user>
+    <comment>version update</comment>
+    <requestid>1118466</requestid>
+  </revision>
+</revisionlist>
