@@ -356,4 +356,12 @@
   * Add support for bitmaps manipulation macros. (forwarded request 1179175 from alois)</comment>
     <requestid>1179406</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>1d9c520efd5498ea8aef6aaa6d854b9f</srcmd5>
+    <version>0.67</version>
+    <time>1720622877</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.67</comment>
+    <requestid>1186417</requestid>
+  </revision>
 </revisionlist>
