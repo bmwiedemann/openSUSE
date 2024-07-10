@@ -1,0 +1,168 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d1f2cc08bf0002c1b7d27b8516ddbd2a</srcmd5>
+    <version>0.4.0</version>
+    <time>1187058971</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="37">
+    <srcmd5>d3b08b64bdf9e81d58cb0f666e5a5fc1</srcmd5>
+    <version>0.4.0</version>
+    <time>1205769881</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="52">
+    <srcmd5>c24994ecb30fbe9df25ada8c5e1ab48f</srcmd5>
+    <version>0.4.0</version>
+    <time>1211984783</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="58">
+    <srcmd5>6be6992751455046fc3d40830610e257</srcmd5>
+    <version>0.4.0</version>
+    <time>1215546270</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="80">
+    <srcmd5>71cabc7b2ce9a9a06812c82fdd119a04</srcmd5>
+    <version>0.4.0</version>
+    <time>1245366053</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="81">
+    <srcmd5>ebba97929c0c5dc623417bb49b8ac393</srcmd5>
+    <version>0.4.0</version>
+    <time>1245468396</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="83">
+    <srcmd5>ebba97929c0c5dc623417bb49b8ac393</srcmd5>
+    <version>0.4.0</version>
+    <time>1245468396</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="84">
+    <srcmd5>68a03b1836cd7b5d3bfc1891aa02646b</srcmd5>
+    <version>0.4.0</version>
+    <time>1268924631</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="9" vrev="86">
+    <srcmd5>68a03b1836cd7b5d3bfc1891aa02646b</srcmd5>
+    <version>0.4.0</version>
+    <time>1278667360</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="87">
+    <srcmd5>68a03b1836cd7b5d3bfc1891aa02646b</srcmd5>
+    <version>0.4.0</version>
+    <time>1278678590</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="90">
+    <srcmd5>68a03b1836cd7b5d3bfc1891aa02646b</srcmd5>
+    <version>0.4.0</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="12" vrev="91">
+    <srcmd5>aa38985298cdb72ed5a1d1f902636549</srcmd5>
+    <version>0.4.0</version>
+    <time>1316005049</time>
+    <user>saschpe</user>
+    <comment>- do not build ctcs for 12.0+
+
+- fix build with newer ld</comment>
+    <requestid>82062</requestid>
+  </revision>
+  <revision rev="13" vrev="92">
+    <srcmd5>04ac31bc45b281eea9e2449eb66ef0f5</srcmd5>
+    <version>0.4.0</version>
+    <time>1316005057</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 82062
+</comment>
+  </revision>
+  <revision rev="14" vrev="94">
+    <srcmd5>04ac31bc45b281eea9e2449eb66ef0f5</srcmd5>
+    <version>0.4.0</version>
+    <time>1319182110</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="15" vrev="95">
+    <srcmd5>2f6482b835e06ce65a7d191b019264bc</srcmd5>
+    <version>0.4.0</version>
+    <time>1332831419</time>
+    <user>coolo</user>
+    <comment>license update: CDDL-1.0
+SPDX format (forwarded request 111176 from babelworx)</comment>
+    <requestid>111206</requestid>
+  </revision>
+  <revision rev="16" vrev="97">
+    <srcmd5>2f6482b835e06ce65a7d191b019264bc</srcmd5>
+    <version>0.4.0</version>
+    <time>1340183604</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="17" vrev="99">
+    <srcmd5>2f6482b835e06ce65a7d191b019264bc</srcmd5>
+    <version>0.4.0</version>
+    <time>1359109303</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="101">
+    <srcmd5>2f6482b835e06ce65a7d191b019264bc</srcmd5>
+    <version>0.4.0</version>
+    <time>1379663004</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="103">
+    <srcmd5>2f6482b835e06ce65a7d191b019264bc</srcmd5>
+    <version>0.4.0</version>
+    <time>1409301618</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="104">
+    <srcmd5>8cc54906fa5197bf56f4fc2780f569a0</srcmd5>
+    <version>0.4.0</version>
+    <time>1424119607</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>286256</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>c4887ccaabfec16c15a1a4e0c67fb978</srcmd5>
+    <version>0.4.2+hg.20120726</version>
+    <time>1467705114</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to latest mercurial snapshot (4.2.2+hg.20120726)
+  * lots of small changes
+- Build with optflags
+- Refresh patches
+- Add libmicro-implicit-fortify-decl.patch</comment>
+    <requestid>406095</requestid>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>fa102c6214bb32185049e4706509ba2c</srcmd5>
+    <version>0.4.2+hg.20120726</version>
+    <time>1575630674</time>
+    <user>dimstar_suse</user>
+    <comment>- Modernise spec file</comment>
+    <requestid>754604</requestid>
+  </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>e677880b2acce9200a76ae65e9a1408f</srcmd5>
+    <version>0.4.2+hg.20120726</version>
+    <time>1576927861</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not ship .o files - boo#1159556</comment>
+    <requestid>758238</requestid>
+  </revision>
+</revisionlist>

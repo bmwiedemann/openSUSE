@@ -1,0 +1,13 @@
+<services>
+  <service mode="disabled" name="tar_scm">
+    <param name="url">https://hg.java.net/hg/libmicro~hg-repo</param>
+    <param name="scm">hg</param>
+    <param name="filename">libmicro</param>
+    <param name="versionformat">0.4.2+hg.20120726</param>
+  </service>
+  <service mode="disabled" name="recompress">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service mode="disabled" name="set_version"/>
+</services>
