@@ -1,0 +1,34 @@
+From 7663ee00906b1adbde980c96b661c6b79478efa4 Mon Sep 17 00:00:00 2001
+From: Dominique Leuenberger <dimstar@opensuse.org>
+Date: Thu, 18 Feb 2021 18:55:51 +0100
+Subject: [PATCH] build: handle (in some way) the new GNOME versioning scheme
+
+With GNOME switching from odd/even versioning for unsstable/stable
+branches to 40.alpha, 40.beta, we need to trick the versioning to
+our liking.
+
+In case NAUTILUS_VERSION_MINOR contains letters, we reset it to 0.
+
+This means we treat 40.alpha as 40.0 (as if it was the final release of the 40 series)
+
+Fixes issue#97
+---
+ configure.ac | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/configure.ac b/configure.ac
+index d3f75ee..025289c 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -97,6 +97,11 @@ NAUTILUS_VERSION=`$PKG_CONFIG --modversion libnautilus-extension`
+ if test -n "$NAUTILUS_VERSION"; then
+     NAUTILUS_VERSION_MAJOR=`echo -n $NAUTILUS_VERSION | cut -d . -f 1`
+     NAUTILUS_VERSION_MINOR=`echo -n $NAUTILUS_VERSION | cut -d . -f 2`
++    case "$NAUTILUS_VERSION_MINOR" in
++      *[[a-zA-Z]]* )
++          NAUTILUS_VERSION_MINOR=0
++          ;;
++    esac
+     NAUTILUS_VERSION_MICRO=`echo -n $NAUTILUS_VERSION | cut -d . -f 3`
+ fi
+ 

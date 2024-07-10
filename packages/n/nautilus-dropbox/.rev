@@ -1,0 +1,159 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a599b141bc4964441cb101c400795730</srcmd5>
+    <version>1.4.0</version>
+    <time>1346756073</time>
+    <user>coolo</user>
+    <comment>New package addition, dropbox integration into nautilus;</comment>
+    <requestid>132414</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>a599b141bc4964441cb101c400795730</srcmd5>
+    <version>1.4.0</version>
+    <time>1359109490</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e5b087b0400b1ff5962ff6efedd19575</srcmd5>
+    <version>1.6.0</version>
+    <time>1363586890</time>
+    <user>coolo</user>
+    <comment>Update to 1.6.0 - Build tested (forwarded request 159518 from RBrownCCB)</comment>
+    <requestid>159576</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>e5b087b0400b1ff5962ff6efedd19575</srcmd5>
+    <version>1.6.0</version>
+    <time>1379663344</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>e5b087b0400b1ff5962ff6efedd19575</srcmd5>
+    <version>1.6.0</version>
+    <time>1409301956</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>ce0bc40afd29e0cfcd7b34cdbb613c8f</srcmd5>
+    <version>1.6.2</version>
+    <time>1413263459</time>
+    <user>coolo</user>
+    <comment>- Update to version 1.6.2:
+  + Minor bugfixing.
+
+- Update to version 1.6.1:
+  + No changelog available.</comment>
+    <requestid>255262</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>ee60d1e30dfd3897f425d01042b307f9</srcmd5>
+    <version>1.6.2</version>
+    <time>1413476101</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>256871</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>00df7e1f417858cee1526928a5b99955</srcmd5>
+    <version>1.6.2</version>
+    <time>1422521876</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>283218</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>bc5f96fa2684e04743ff5a7caa88be06</srcmd5>
+    <version>2.10.0</version>
+    <time>1424068597</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>286162</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>83d46b9516ecf60f24100b8b3319aea0</srcmd5>
+    <version>2015.10.28</version>
+    <time>1447234321</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>343411</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>bcaeb7099c3a9b5129b5cc6141483c64</srcmd5>
+    <version>2015.10.28</version>
+    <time>1512042283</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>545870</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>cb6b7dc84ed880f3bc27590f86d91a17</srcmd5>
+    <version>2015.10.28</version>
+    <time>1520503065</time>
+    <user>dimstar_suse</user>
+    <comment>spec-cleaner (forwarded request 581376 from dimstar)</comment>
+    <requestid>582700</requestid>
+  </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>8cfc02f0b5b275852363feb80342be6c</srcmd5>
+    <version>2015.10.28</version>
+    <time>1520933040</time>
+    <user>dimstar_suse</user>
+    <comment>Add nautilus-dropbox-reproducible.patch to make man pages build reproducibly (boo#1047218) (forwarded request 585725 from bmwiedemann)</comment>
+    <requestid>585850</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>4c5b6720557d61d25f5597884186c44c</srcmd5>
+    <version>2019.02.14</version>
+    <time>1574551823</time>
+    <user>dimstar_suse</user>
+    <comment>Update to the latest stable release.</comment>
+    <requestid>750293</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>2fc26a20110a73561c3027d3f1ffb330</srcmd5>
+    <version>2020.03.04</version>
+    <time>1610558696</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>862936</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>a3e38763d287d71f08c8f96dfb7b353e</srcmd5>
+    <version>2020.03.04</version>
+    <time>1616168619</time>
+    <user>RBrownSUSE</user>
+    <comment>- Add 98.patch: workaround build script not coping with the new
+  GNOME versioning scheme. In case of x.alpha or x.beta version, we
+  declare them as x.0.
+- Add libtool BuildRequires and call to autoreconf, as above patch
+  touches the build system. (forwarded request 874590 from dimstar)</comment>
+    <requestid>880092</requestid>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>1d4101c90f5f5a8cdecbc2ce9ba52804</srcmd5>
+    <version>2020.03.04</version>
+    <time>1647724841</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>962976</requestid>
+  </revision>
+  <revision rev="18" vrev="4">
+    <srcmd5>4f59c4259d7e8131885856f564e90f84</srcmd5>
+    <version>2020.03.04</version>
+    <time>1663764132</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1003890</requestid>
+  </revision>
+  <revision rev="19" vrev="5">
+    <srcmd5>c164786bef666188adc0c7ce44b82963</srcmd5>
+    <version>2020.03.04</version>
+    <time>1669289117</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1037783</requestid>
+  </revision>
+</revisionlist>
