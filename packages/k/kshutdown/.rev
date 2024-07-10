@@ -1,0 +1,58 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9ab09723c300cb309ab48ac5a3e70169</srcmd5>
+    <version>3.99.1beta</version>
+    <time>1464853066</time>
+    <user>dimstar_suse</user>
+    <comment>Please accept this new RPM.</comment>
+    <requestid>398054</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>3ec7f7f9c20703dd7dbc75e50db638d2</srcmd5>
+    <version>3.99.1beta</version>
+    <time>1471009458</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>418899</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>fd024b2ecd84451e2dc9d673b8a0c9cb</srcmd5>
+    <version>4.2</version>
+    <time>1514983204</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>561243</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b2e0c28e53a84fb50b3281b353e8a366</srcmd5>
+    <version>5.0</version>
+    <time>1560337897</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.0</comment>
+    <requestid>705498</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>bd04e0844ee3575c6a8dcdbd3ad422f8</srcmd5>
+    <version>5.1</version>
+    <time>1567850134</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.1</comment>
+    <requestid>729022</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>3f73054f8a01aef12243f4bde945088b</srcmd5>
+    <version>5.2</version>
+    <time>1579032792</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>764409</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>6344264a7d3c30618801458d3e239bd6</srcmd5>
+    <version>5.2</version>
+    <time>1702845089</time>
+    <user>anag+factory</user>
+    <comment>Require extra-cmake-modules at build time</comment>
+    <requestid>1133541</requestid>
+  </revision>
+</revisionlist>

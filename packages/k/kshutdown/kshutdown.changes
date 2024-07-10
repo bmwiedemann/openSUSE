@@ -1,0 +1,268 @@
+-------------------------------------------------------------------
+Fri Dec 15 22:03:21 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Require extra-cmake-modules at build time
+
+-------------------------------------------------------------------
+Tue Jan 14 16:04:28 UTC 2020 - Markus S <kamikazow@opensuse.org>
+
+- Update to version 5.2
+  * NEW: Experimental: Added "--ui-dialog" command line option.
+  * Updated the Polish translation
+  * FIXED: Added proper way to enable C++14 standard and fix compile error
+    Bug: https://sourceforge.net/p/kshutdown/bugs/38/
+  * REMOVED: Obsolete stats.cpp and stats.h files
+  * CHANGED: i18n: Do not include line numbers in generated *.po/*.pot files
+  * Fixed some "QString::null" warnings (other "deprecated" warnings will be fixed later)
+  * Minor code cleanup
+
+-------------------------------------------------------------------
+Wed Sep  4 21:27:10 UTC 2019 - Markus S <kamikazow@opensuse.org>
+
+- Update to version 5.1-beta
+- CHANGED: New action names that matches more closely
+  the terminology used in current Desktop Environments.
+  You can select "Use old action names" option if don't like the change.
+- NEW: Added Help|What's New? menu item
+- NEW: Added --logoff, --restart, and --sleep command line option aliases
+  (run kshutdown --help for details)
+- CHANGED: Do not show "Ctrl+Q" shortcut in system tray menu
+- CHANGED: Tweaked popup notifications autohide timeout
+- FIXED: Better default keyboard focus in dialog windows
+- NEW: Added "Wiki" link button to the "Command Line Option" help window
+- Qt5: About window:
+  * Links can be selected and opened using Tab/Enter keys
+  * Selectable text
+- NEW: Tools|Run menu: Added boot-related "journalctl" commands
+- CHANGED: Simplify and normalize application versioning.
+  Now all versions are in format: "mm.ii" plus optional "-beta" suffix.
+  This mostly apply to:
+  * versions displayed in KShutdown GUI
+  * default download URLs
+    (e.g. sourceforge.net/projects/kshutdown/files/KShutdown/$VERSION/kshutdown-source-$VERSION.zip/download)
+- UPDATED: "VERSION" file format and related files
+- REMOVED: "test-wine.bat"; use "Setup-wine.sh" instead
+- REMOVED: Obsolete "kshutdown.nsh" file (version number is now passed as /DAPP_VERSION option)
+- Code cleanup
+
+-------------------------------------------------------------------
+Sun May 26 08:31:59 UTC 2019 - Markus S <kamikazow@opensuse.org>
+
+- Update to version 5.0
+  * NEW: Added option to focus/select "Cancel" button by default in confirmation message
+  * NEW: Added Tools -> Run menu with various related Linux commands
+    (this replaces "Statistics" menu item)
+  * Improve error message in the process list combo box
+  * CHANGED: KShutdown 5.x now requires Qt 5.9 or newer
+  * REMOVED: Qt 4 support
+  * Major version number is now "5" to better align with Qt 5/KF 5 versions numbers.
+
+-------------------------------------------------------------------
+Tue Dec 26 01:40:14 UTC 2017 - Markus S <kamikazow@opensuse.org>
+
+- Update to 4.2
+  * Fixed: Password on Cancel bypasses the Action setting (bug #33)
+  * Statistics: Added Ctrl+Shift+S shortcut
+  * Updated the Polish translation
+  * Fixed: Suspend only works the second time (bug #34)
+  * Fixed missing Ctrl+Q shortcut in some Desktop Environments
+  * Fixed: Show application main window if KShutdown is already running
+  * When Selected Application Exit trigger:
+    - Fixed combo box selection of root and non-own processes
+    - Fixed root and non-own processes exit detection
+  * Removed semi-private KDevelop project files
+  * Updated links and args in tools/*.sh scripts
+- Drop kshutdown-src_kshutdown.desktop.patch
+
+-------------------------------------------------------------------
+Thu Sep 01 10:10:31 UTC 2016 - joerg.lorenzen@ki.tng.de
+
+- Update to version 4.0
+  Qt Build:
+  * NEW: Use the standard Ctrl+Q shortcut instead of Ctrl+Shift+Q
+    (bug #26)
+  * Fixed: Support "--version" command line option (bug #26)
+  * Command Line: Ignore "/?" option in non-Windows versions
+  * Fixed: Honor $INSTALL_ROOT environment variable when installing
+    icons (bug #25)
+  * Fixed: Remove icons during "make uninstall"
+  Misc:
+  * Czech translation update (Pavel Fric)
+  * Updated German translation (Vinzenz Vietzke)
+  * Updated Russian translations (Victor Ryzhykh)
+  * Updated Polish translation
+  * Fixed: Make menu titles less distractive and less annoying
+    (feature request #21)
+  * Fixed: Disable incorrectly positioned tool tips in System Tray
+    menu
+  * Windows: Updated installer
+  Linux:
+  * Use uncompressed SVG icon (bug #21)
+  * Adjust kshutdown.desktop (patch #5):
+    - Added StartupNotify=true/false
+    - Added X-SuSE-DesktopUtility category
+  Source:
+  * Fix compiler warnings
+  * README.html: Document "Required Libraries" (bug #23)
+- Fixed kshutdown-src_kshutdown.desktop.patch
+
+-------------------------------------------------------------------
+Tue Jul  5 23:14:58 UTC 2016 - Markus S <kamikazow@opensuse.org>
+
+- Don't run as root by default
+- Tweak spec file slightly as KShutdown is not only for KDE
+
+-------------------------------------------------------------------
+Tue May 24 20:54:52 UTC 2016 - nemysis@openSUSE.org
+
+- Update to 3.99.1beta, please see
+
+  /usr/share/doc/packages/kshutdown/ChangeLog
+
+- Use %{oversion} instead of 3.99.1%20Beta
+- Change Summary, remove Name
+- Change Group
+- Change Source0 to use Web URL
+- Add patch - kshutdown-src_kshutdown.desktop.patch
+- Add BuildRequires, changed by Upstream for Qt5
+- Change Description
+- Remove check %if 0%{?suse_version}, because is only for openSUSE
+- Remove check for obsolete openSUSE version
+- Unpack and remove gzipped-svg-icon
+
+-------------------------------------------------------------------
+Sun Feb 23 23:16:07 UTC 2014 - Markus S <kamikazow@opensuse.org>
+
+- Update to 3.2:
+  * Czech translation update
+  * Updated the Polish translation
+  * Fixed language translations in some common UI elements
+  * Minor User Inteface tweaks
+  * Fixed: Disable "OK" button if new password is invalid
+  * NEW: Simple password protection
+    (see menu bar -> Preferences -> Password tab)
+  * Updated README.html
+  * Updated the Spanish translation (by moray33)
+  * Updated the Polish translation
+  * Qt Build: Allow logout from KDE 4
+  * NEW: "Test" action:
+    - Renamed to "Show Message"
+    - Configurable text
+  * NEW: Removed "kworkspace" library dependency
+    (libkworkspace is no longer required to build KShutdown for KDE)
+  * Enable C++11 support
+  * cppcheck tool support (./tools/cppcheck.sh)
+  * NEW: systemd/logind support (Power Off, Reboot, Hibernate, Suspend)
+  * NEW: Added basic Cinnamon Desktop Environment support
+  * GNOME 3: Fixed detection and logout action
+
+-------------------------------------------------------------------
+Tue Jul  9 16:55:39 UTC 2013 - fisiu@opensuse.org
+
+- Update to 3.0:
+  * Updated Czech translation
+  * Updated Simplified Chinese translation (by xStone)
+  * Bookmarks menu: Mark the current/selected bookmark
+
+-------------------------------------------------------------------
+Wed Jun 19 00:11:52 UTC 2013 - fisiu@opensuse.org
+
+- Update to 3.0beta8:
+  * NEW: Bookmarks menu
+  * Linux: Fixed bug #19 - kshutdown refusing to do shutdown
+    (incomatibility with systems w/o ConsoleKit installed)
+  * Updated Polish and Czech translation
+
+-------------------------------------------------------------------
+Thu Apr 11 11:09:35 UTC 2013 - lnt-sysadmin@lists.lrz.de
+
+- Version 3.0beta7:
+  * Fixes idle timeout bug and others
+
+-------------------------------------------------------------------
+Fri Mar 16 14:43:03 UTC 2012 - alinm.elena@gmail.com
+
+- Version 3.0  
+
+-------------------------------------------------------------------
+Sat Apr 30 16:12:57 UTC 2011 - asterios.dramis@gmail.com
+
+- Version 2.0:
+  Linux:
+  * Support for the UPower suspend/hibernate backend (patch #3224666).
+  * Updated D-Bus Documentation.
+  Misc.:
+  Updated Brazilian Portuguese, Danish, Polish, Russian Language Translations.
+- Spec file updates:
+  * Changed License: to GPLv2+.
+  * Updated Summary: and %description.
+  * Changed Group: to Productivity/Other.
+  * Changed desktop file Category to "Utility;DesktopUtility".
+
+-------------------------------------------------------------------
+Thu Feb 17 20:13:21 UTC 2011 - asterios.dramis@gmail.com
+
+- Version 1.95.12 (2.0beta12):
+   Linux:
+   * NEW: Added D-Bus support. Run "qdbus net.sf.kshutdown /kshutdown" for
+     details.
+   * Fixed bug #3140645 (kde 4.6 + qt 4.7.1 + kshutdown crash)
+   * Setup.sh: Auto select kde4 menu item (if available)
+   * Show error message if "Turn Off Computer" or "Restart Computer" function
+     is not available or disabled in KDE System Settings.
+   * Fixed error in "When selected application exit" function caused by zombie
+     programs
+   Command Line:
+   * NEW: Added "--cancel" command line option to stop an active action (KDE 4
+     only)
+   * NEW: Added "--confirm" option to confirm a command line action
+   * NEW: Added -i and --inactivity command line options (RFE #3052626, Command
+     Line Inactivity Timer)
+   Misc.:
+   * Updated Brazilian Portuguese translation
+   * Updated Polish translation
+   * Updated Slovak translation
+   * Better icon size in system tray
+- Spec file updates:
+  - Changes based on rpmdevtools templates and spec-cleaner run.
+  - Updates in Url:, %description, Buildrequires: and %install sections.
+
+-------------------------------------------------------------------
+Tue Jan 18 10:15:00 CET 2011 - buschmann23@opensuse.org - 1.95.11
+
+- fixed file list for openSUSE Factory (11.4+)
+
+-------------------------------------------------------------------
+Wed Jan 05 20:16:00 CET 2011 - buschmann23@opensuse.org - 1.95.11
+
+- bumped version to 1.95.11 (2.0beta11)
+
+-------------------------------------------------------------------
+Wed Jan 05 16:54:00 CET 2011 - buschmann23@opensuse.org - 1.95
+
+- Version 1.95 (2.0beta11)
+
+-------------------------------------------------------------------
+Mon Jul 26 14:04:47 UTC 2010 - llunak@novell.com
+
+- Version 1.95 (2.0beta10)
+
+-------------------------------------------------------------------
+Mon Mar 15 08:49:03 UTC 2010 - llunak@novell.com
+
+- Version 1.94 (2.0beta9)
+
+-------------------------------------------------------------------
+Wed Sep 30 11:43:01 CEST 2009 - llunak@novell.com
+
+- Version 1.93 (2.0beta8)
+
+-------------------------------------------------------------------
+Mon Aug 10 14:33:54 CEST 2009 - llunak@suse.cz
+
+- Version 1.92 (2.0beta7)
+
+-------------------------------------------------------------------
+Sun Jun 28 21:49:44 CEST 2009 - llunak@novell.com
+
+- Initial version 1.91 (2.0beta6)
