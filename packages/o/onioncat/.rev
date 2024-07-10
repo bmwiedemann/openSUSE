@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>55be15ca3e9e34cd6e15c62c1e7e4f52</srcmd5>
+    <version>0.3.8</version>
+    <time>1616925295</time>
+    <user>RBrownSUSE</user>
+    <comment>A point-to-multipoint VPN between tor hidden services</comment>
+    <requestid>881363</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>5caa074948a660f3059199a44cdb2996</srcmd5>
+    <version>0.3.8</version>
+    <time>1620398757</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>891254</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>9256109ab27633a4c0deb4db85098546</srcmd5>
+    <version>0.3.9</version>
+    <time>1644778261</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>954069</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>9d00e9a539842892546d5257afa015a8</srcmd5>
+    <version>4.10.0</version>
+    <time>1674143071</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1059582</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>fc66bfae5de8e29890e970b3f58b456c</srcmd5>
+    <version>4.11.0</version>
+    <time>1678902959</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1071971</requestid>
+  </revision>
+</revisionlist>
