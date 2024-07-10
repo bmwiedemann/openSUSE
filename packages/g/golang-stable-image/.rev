@@ -1,0 +1,162 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>89c3cf468aead131616a0b5518e022b6</srcmd5>
+    <version>unknown</version>
+    <time>1688563890</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1096935</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>823dc8fd11bead400a8629a0aad337e0</srcmd5>
+    <version>unknown</version>
+    <time>1689786707</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1099511</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>c88a33655b9605a69cd79587ff37ed77</srcmd5>
+    <version>unknown</version>
+    <time>1691502919</time>
+    <user>dimstar_suse</user>
+    <comment>- Add go-doc and go-race subpackages for developer convenience</comment>
+    <requestid>1102822</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>88c0c144830b3b29d802a649b86a3a40</srcmd5>
+    <version>unknown</version>
+    <time>1692795425</time>
+    <user>anag+factory</user>
+    <comment>🤖: sync package with devel:BCI:Tumbleweed from OBS</comment>
+    <requestid>1105166</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>c919be8f1d5e46c5c0b61d6314ed0753</srcmd5>
+    <version>unknown</version>
+    <time>1694460084</time>
+    <user>anag+factory</user>
+    <comment>🤖: sync package with devel:BCI:Tumbleweed from OBS</comment>
+    <requestid>1109878</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>31d50f61f063a07e1d2ff9e121a06e5e</srcmd5>
+    <version>unknown</version>
+    <time>1696269871</time>
+    <user>anag+factory</user>
+    <comment>🤖: sync package with devel:BCI:Tumbleweed from OBS</comment>
+    <requestid>1114176</requestid>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>c3a7a08b343e707609988b9d96737135</srcmd5>
+    <version>unknown</version>
+    <time>1704281486</time>
+    <user>dimstar_suse</user>
+    <comment>🤖: sync package with devel:BCI:Tumbleweed from OBS</comment>
+    <requestid>1136337</requestid>
+  </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>ae7d5a2634f71ba2cbb3a4b1ef39c035</srcmd5>
+    <version>unknown</version>
+    <time>1705611156</time>
+    <user>anag+factory</user>
+    <comment>🤖: sync package with devel:BCI:Tumbleweed from OBS</comment>
+    <requestid>1139570</requestid>
+  </revision>
+  <revision rev="9" vrev="9">
+    <srcmd5>7a1d371041e453a2f3dded4aa7ed639a</srcmd5>
+    <version>unknown</version>
+    <time>1707519128</time>
+    <user>anag+factory</user>
+    <comment>🤖: sync package with devel:BCI:Tumbleweed from OBS</comment>
+    <requestid>1145027</requestid>
+  </revision>
+  <revision rev="10" vrev="10">
+    <srcmd5>fa581612b156702f5c05056409531133</srcmd5>
+    <version>unknown</version>
+    <time>1713088447</time>
+    <user>anag+factory</user>
+    <comment>🤖: sync package with devel:BCI:Tumbleweed from OBS</comment>
+    <requestid>1167085</requestid>
+  </revision>
+  <revision rev="11" vrev="11">
+    <srcmd5>80afcb7db54a7740598e7ec1c19e87cd</srcmd5>
+    <version>unknown</version>
+    <time>1713471120</time>
+    <user>anag+factory</user>
+    <comment>🤖: sync package with devel:BCI:Tumbleweed from OBS</comment>
+    <requestid>1168527</requestid>
+  </revision>
+  <revision rev="12" vrev="12">
+    <srcmd5>b7015acd9a68a951f6bf6843e0df8e0e</srcmd5>
+    <version>unknown</version>
+    <time>1715161195</time>
+    <user>dimstar_suse</user>
+    <comment>🤖: sync package with devel:BCI:Tumbleweed from OBS</comment>
+    <requestid>1172549</requestid>
+  </revision>
+  <revision rev="13" vrev="13">
+    <srcmd5>d732b6dc8752a64bbb3aed39df0b1ea6</srcmd5>
+    <version>unknown</version>
+    <time>1717004177</time>
+    <user>anag+factory</user>
+    <comment>🤖: sync package with devel:BCI:Tumbleweed from OBS</comment>
+    <requestid>1177510</requestid>
+  </revision>
+  <revision rev="14" vrev="14">
+    <srcmd5>bde0d621cee58013124e73997a5f83d6</srcmd5>
+    <version>unknown</version>
+    <time>1717602017</time>
+    <user>anag+factory</user>
+    <comment>🤖: sync package with devel:BCI:Tumbleweed from OBS</comment>
+    <requestid>1178528</requestid>
+  </revision>
+  <revision rev="15" vrev="15">
+    <srcmd5>e359941b4937f83d27c94f49b0d1a45a</srcmd5>
+    <version>unknown</version>
+    <time>1717670004</time>
+    <user>anag+factory</user>
+    <comment>🤖: sync package with devel:BCI:Tumbleweed from OBS</comment>
+    <requestid>1178822</requestid>
+  </revision>
+  <revision rev="16" vrev="16">
+    <srcmd5>8769c79e834691043a8d587c3e6bbc39</srcmd5>
+    <version>unknown</version>
+    <time>1718123316</time>
+    <user>anag+factory</user>
+    <comment>🤖: sync package with devel:BCI:Tumbleweed from OBS</comment>
+    <requestid>1179781</requestid>
+  </revision>
+  <revision rev="17" vrev="17">
+    <srcmd5>aef5f85cf0bfc02160afbd566e0d2384</srcmd5>
+    <version>unknown</version>
+    <time>1718807898</time>
+    <user>anag+factory</user>
+    <comment>🤖: sync package with devel:BCI:Tumbleweed from OBS</comment>
+    <requestid>1181591</requestid>
+  </revision>
+  <revision rev="18" vrev="18">
+    <srcmd5>8d158a63f7f48518fd9f040de555d695</srcmd5>
+    <version>unknown</version>
+    <time>1719349651</time>
+    <user>anag+factory</user>
+    <comment>🤖: sync package with devel:BCI:Tumbleweed from OBS</comment>
+    <requestid>1183072</requestid>
+  </revision>
+  <revision rev="19" vrev="19">
+    <srcmd5>f6949fd3ccd49c9d6c2494591ca94608</srcmd5>
+    <version>unknown</version>
+    <time>1719582474</time>
+    <user>anag+factory</user>
+    <comment>🤖: sync package with devel:BCI:Tumbleweed from OBS</comment>
+    <requestid>1183818</requestid>
+  </revision>
+  <revision rev="20" vrev="20">
+    <srcmd5>188a76ebac6918cb73f000ab473d1928</srcmd5>
+    <version>unknown</version>
+    <time>1720458554</time>
+    <user>anag+factory</user>
+    <comment>🤖: sync package with devel:BCI:Tumbleweed from OBS</comment>
+    <requestid>1186158</requestid>
+  </revision>
+</revisionlist>
