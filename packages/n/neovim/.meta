@@ -1,0 +1,5 @@
+<package name="neovim" project="openSUSE:Factory">
+  <title>Vim-fork focused on extensibility and agility</title>
+  <description>Neovim is a refactor - and sometimes redactor - in the tradition of Vim, which itself derives from Stevie. It is not a rewrite, but a continuation and extension of Vim. Many rewrites, clones, emulators and imitators exist; some are very clever, but none are Vim. Neovim strives to be a superset of Vim, notwithstanding some intentionally removed misfeatures; excepting those few and carefully-considered excisions, Neovim is Vim. It is built for users who want the good parts of Vim, without compromise, and more. </description>
+  <devel project="editors" package="neovim"/>
+</package>
