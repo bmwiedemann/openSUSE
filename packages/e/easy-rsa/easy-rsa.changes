@@ -1,0 +1,310 @@
+-------------------------------------------------------------------
+Tue Oct 17 06:35:16 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 3.1.7:
+  * Completely Remove Upgrade Functionality
+  * Expand help to include undocumented commands
+  * Forbid "default vars in the default PKI" for all commands
+  * show-expire: Calculate certificate expire seconds from Database date
+  * Expand help to include undocumented commands
+  * New command: make-vars - Print vars.example (here-doc) to stdout
+  * gen-crl: preserve existing crl.pem ownership+mode by @Tabiskabis in #1020
+  * Improve vars auto load
+  * Replace santize_path() and ignore Windows "security" warning
+  * Improve select_vars() and source_vars()
+  * sign-req: Allow the CSR DN-field order to be preserved
+  * vars-file: Warn about EASYRSA_NO_VARS disabling vars-file use
+  * Expand default status to include vars-file and CA status
+  * verify_ssl_lib(): Minor style improvements
+  * cleanup: Rename $easyrsa_error_exit to $easyrsa_exit_with_error
+
+-------------------------------------------------------------------
+Sun Aug  6 18:54:29 UTC 2023 - Matthias Eliasson <elimat@opensuse.org>
+
+- Update to 3.1.5:
+  * Build Update: script now supports signing and verifying
+  * Automate support-file creation (Free packaging) (#964)
+  * build-ca: New command option 'raw-ca', abbrevation: 'raw' (#963)
+	This 'raw' method, is the most reliable way to build a CA,
+    with a password, without writing the CA password to a temp-file.
+
+    This option completely replaces both methods below:
+
+    build-ca: New option --ca-via-stdin, use SSL -pass* argument 'stdin' (#959)
+    Option '--ca-via-stdin' offers no more security than standard method.
+    Easy-RSA version 3.1.4 ONLY.
+
+    build-ca: Replace password temp-files with file-descriptors (#955)
+    Using file-descriptors does not work in Windows.
+    Easy-RSA version 3.1.3 ONLY.
+- update and rebase suse-packaging.patch
+
+-------------------------------------------------------------------
+Tue Jan 17 11:06:55 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 3.1.2:
+  * Command 'renew': Remove option 'nopass' 
+  * find_x509_types_dir(): Remove excess checks
+  * Remove function find_x509_types_dir() 
+  * For 'init-pki hard' only, always try to create a new pki/vars file 
+  * Introduce global option '--notext|--no-text' 
+  * Minor style change
+  * Introduce command 'set-pass' 
+  * Fix shellcheck warning for command set-pass case statement 
+  * cleanup(): Exit correctly for SIGINT 
+  * Update help: Standardise output; Improve code; Reprioritise options
+  * vars.example: Add EASYRSA_NO_PASS and wrap long lines
+  * Use 'unset -v', consistently
+  * build-ca: Improve passphrase input mechanism 
+  * Remove global options '--verbose' and '--quiet' as not required
+  * Remove all prerequisite code to build a safe SSL config file
+  * Rename temp files to reflect the purpose 
+  * easyrsa_openssl(): Always set OPENSSL_CONF to EasyRSA safe SSL config 
+  * Replace SSL calls for serial number with function ssl_cert_serial() 
+  * Introduce OpenSSL only mode: No Safe SSL Config File 
+  * ff_date_to_cert_date(): Correct the input format for busybox date 
+  * Re-order easyrsa_openssl() temp-file assignment 
+  * Stop EASYRSA_DEBUG interfering with SSL output from subshells 
+  * Status reports: Recognise Expired certificates 
+  * New function safe_set_var(): Safe wrapper for set_var() 
+  * Windows, build-ca: Add input password to re-open private key 
+  * Renewal: General code improvements 
+  * cleanup(): General improvements - Create KNOWN error exit 
+  * build-ca: Change FATAL error to warning for old openssl-easyrsa.cnf 
+  * Allow --fix-offset to create post-dated certificates 
+  * Default settings: Make default Edwards curve ED25519
+  * cleanup(): Exit with numeric error-code only 
+  * init-pki(): Introduce second warning before HARD removal
+  * build-full: Always enable inline file creation 
+  * Global option '--passout' always take priority ONLY
+  * Status Reports: Set 'LC_TIME=C.UTF-8', only used for reports 
+  * Option --fix-offset: Adjust off-by-one day
+- Drop fix-747.patch
+
+-------------------------------------------------------------------
+Tue Dec 13 23:09:09 UTC 2022 - Olav Reinert <seroton10@gmail.com>
+
+- fix for 3.1.1:
+   * add patch fix-747.patch from upstream
+
+-------------------------------------------------------------------
+Sat Dec  3 19:41:33 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.1.1:
+   * Remove command 'renewable' (#715)
+   * Expand 'show-renew', include 'renewed/certs_by_serial' (#700)
+   * Resolve long-standing issue with --subca-len=N (#691)
+   *  ++ NOTICE: Add EasyRSA-Renew-and-Revoke.md (#690)
+   * Require 'openssl-easyrsa.cnf' is up to date (#695}
+   * Introduce 'renew' (version 3). Only renew cert (#688)
+   * Always ensure X509-types files exist (#581 #696)
+   * Expand alias '--days' to all suitable options with a period (#674)
+   * Introduce --keep-tmp, keep temp files for debugging (#667)
+   * Introduce Option -q|--quiet, disable information output (#703)
+   * Add serialNumber (OID 2.5.4.5) to DN 'org' mode (#606)
+   * Support ampersand and dollar-sign in vars file (#590)
+   * Introduce 'rewind-renew' (#579)
+   * Expand status reports to include checking a single cert (#577)
+   * Introduce 'revoke-renewed' (#547)
+   * update OpenSSL for Windows to 3.0.5
+ 
+-------------------------------------------------------------------
+Mon Sep  5 16:23:46 UTC 2022 - Florian "spirit" <packaging@sp1rit.anonaddy.me>
+
+- Update to 3.1.0 (2022-05-18)
+   * Introduce basic support for OpenSSL version 3 (#492)
+   * Update regex in grep to be POSIX compliant (#556)
+   * Introduce status reporting tools (#555 & #557)
+   * Display certificates using UTF8 (#551)
+   * Allow certificates to be created with fixed date offset (#550)
+   * Add 'verify' to verify certificate against CA (#549)
+   * Add PKCS#12 alias 'friendlyName' (#544)
+   * Disallow use of '--vars=FILE init-pki' (#566)
+   * Support multiple IP-Addresses in SAN (#564)
+   * Add option '--renew-days=NN', custom renew grace period (#557)
+   * Add 'nopass' option to the 'export-pkcs' functions (#411)
+   * Add support for 'busybox' (#543)
+   * Add option '--tmp-dir=DIR' to declare Temp-dir (Commit f503a22)
+
+-------------------------------------------------------------------
+Wed Jun 15 19:12:30 UTC 2022 - Olav Reinert <seroton10@gmail.com>
+
+- Update to 3.0.9 (2022-05-04)
+
+  * Upgrade OpenSSL from 1.1.0j to 1.1.1o (#405, #407)
+      - We are buliding this ourselves now.
+  * Fix --version so it uses EASYRSA_OPENSSL (#416)
+  * Use openssl rand instead of non-POSIX mktemp (#478)
+  * Fix paths with spaces (#443)
+  * Correct OpenSSL version from Homebrew on macOs (#416)
+  * Fix revoking a renewed certificate (Original PR #394)
+  * Follow-up commit: ef22701
+  * Introduce 'show-crl' (d199389)
+  * Support Windows-Git 'version of bash' (#533)
+  * Disallow use of single quote (') in vars file, Warning (#530)
+  * Creating a CA uses x509-types/ca and COMMON (#526)
+  * Prefer 'PKI/vars' over all other locations (#528)
+  * Introduce 'init-pki soft' option (#197)
+  * Warnings are no longer silenced by --batch (#523)
+  * Improve packaging options (#510)
+
+-------------------------------------------------------------------
+Wed Nov 25 16:48:19 UTC 2020 - Olav Reinert <seroton10@gmail.com>
+
+- update to 3.0.8 (2020-09-09)
+  * Provide --version option (#372)
+  * Version information now within generated certificates like on *nix
+  * Fixed issue where gen-dh overwrote existing files without warning (#373)
+  * Fixed issue with ED/EC certificates were still signed by RSA (#374)
+  * Added support for export-p8 (#339)
+  * Clarified error message (#384)
+  * 2->3 upgrade now errors and prints message when vars isn't found (#377)
+  * Update OpenSSL Windows binaries to 1.1.1g
+  * Reverted OpenSSL back to 1.1.0j
+
+-------------------------------------------------------------------
+Tue Feb 12 12:26:17 UTC 2019 - Tuukka Pasanen <tuukka.pasanen@ilmi.fi>
+
+- update to 3.0.6 (2019-02-01)
+  * Certifcates that are revoked now move to a revoked subdirectory (#63)
+  * EasyRSA no longer clobbers non-EASYRSA environment variables (#277)
+  * More sane string checking, allowingn for commas in CN (#267)
+  * Support for reasonCode in CRL (#280)
+  * Better handling for capturing passphrases (#230, others)
+  * Improved LibreSSL/MacOS support
+  * Adds support to renew certificates up to 30 days before expiration (#286)
+    - This changes previous behavior allowing for certificate creation using
+      duplicate CNs.
+- update and rebase suse-packaging.patch
+
+-------------------------------------------------------------------
+Fri Nov 30 11:10:10 UTC 2018 - chris@computersalat.de
+
+- update to 3.0.5
+  * Fix #17 & #58: use AES256 for CA key
+  * Also, don't use read -s, use stty -echo
+  * Fix broken "nopass" option
+  * Add -r to read to stop errors reported by shellcheck (and to behave)
+  * remove overzealous quotes around $pkcs_opts (more SC errors)
+- update and rebase suse-packaging.patch
+  * fix: set_var EASYRSA in vars.example
+- fix License
+
+-------------------------------------------------------------------
+Sun Jan 28 19:05:46 UTC 2018 - seroton10@gmail.com
+
+- Upgrade to version 3.0.4
+  * Remove use of egrep (#154)
+  * Finally(?) fix the subjectAltName issues (really fixes #168)
+- Improve RPM description
+
+-------------------------------------------------------------------
+Wed Oct 18 08:40:40 UTC 2017 - astieger@suse.com
+
+- update release tarball instead of git snapshot
+- add upstream signing keyring and verify source signature
+
+-------------------------------------------------------------------
+Mon Oct 16 06:38:49 UTC 2017 - seroton10@gmail.com
+
+- Update to version 3.0.3
+- Rename easy-rsa-packaging.patch to suse-packaging.patch
+- Remove obsolete upstream patches:
+  * f174800.patch
+  * 29d4dee.patch
+  * b93d0a1.patch
+  * fb4d8d8.patch
+  * b75faa4.patch
+  * 6436eaf.patch
+  * e9e8e27.patch
+  * 534f673.patch
+  * d20d2b3.patch
+  * 4eac410.patch
+  * a138c0d.patch
+  * 83a1a21.patch
+
+
+-------------------------------------------------------------------
+Wed Aug 23 09:06:23 UTC 2017 - seroton10@gmail.com
+
+- Include upstream patches:
+  + 4eac410.patch
+     Fix string comprehension
+  + a138c0d.patch
+     Fix incorrect "openssl rand" usage
+  + 83a1a21.patch
+     Add --copy-ext option
+
+
+-------------------------------------------------------------------
+Fri Jul 28 21:27:09 UTC 2017 - seroton10@gmail.com
+
+- Include upstream patches:
+  + d20d2b3.patch
+     Update docs and examples to fit changes in 534f673
+- Adapted easy-rsa-packaging.patch to work with upstream patch
+
+-------------------------------------------------------------------
+Mon Jul 24 23:04:34 UTC 2017 - seroton10@gmail.com
+
+- Include upstream patches:
+  + 534f673.patch
+     Make $PWD/pki the default PKI location
+- Adapted easy-rsa-packaging.patch to work with upstream patch
+- Treat /etc/easy-rsa as public default config, no default vars
+
+-------------------------------------------------------------------
+Tue Jul 18 18:32:22 UTC 2017 - seroton10@gmail.com
+
+- Include upstream patches:
+  + 6436eaf.patch
+     Add CN as SAN (if none requested) on server certs by default
+  + e9e8e27.patch
+     Moved @ValdikSS's serial randomization to sign_req
+
+-------------------------------------------------------------------
+Mon Jun  5 18:38:00 UTC 2017 - seroton10@gmail.com
+
+- Undo removal of .md suffix on markdown documentation
+
+-------------------------------------------------------------------
+Sat May 27 07:30:22 UTC 2017 - bruno@ioda-net.ch
+
+- Add special %if for SLE11 as patch tool can't rename files. 
+- Include upstream patches 
+  + f174800.patch 
+     Generate random serial number for all certificates 
+  + 29d4dee.patch
+     Fixes #91 basename: invalid option -- 's'   
+  + b93d0a1.patch
+     Spelling fixes and sentence structure improvements   
+  + fb4d8d8.patch
+     Fix comment indicating the end of the function verify_file()    
+  + b75faa4.patch
+     Convert README and COPYING into markdown files 
+- Rename openSUSE specific patch easyrsa.packaging.patch to
+  easy-rsa-packaging.patch
+- spec-cleaner -m (Add also SUSE copyrights)
+
+-------------------------------------------------------------------
+Sat Jan  2 21:13:06 UTC 2016 - projects@localside.net
+
+- update to version 3.0.1
+    * cab4a07 Fix typo: Hellman
+        (ljani: Github)
+
+    * 171834d Fix typo: Default
+        (allo-: Github)
+
+    * 8b42eea Make aes256 default, replacing 3des
+        (keros: Github)
+    
+    * f2f4ac8 Make -utf8 default
+        (roubert: Github)
+
+
+-------------------------------------------------------------------
+Sun Apr  5 19:48:24 UTC 2015 - projects@localside.net
+
+- initial upload: 3.0.0-rc2 (2014/07/27)
+
