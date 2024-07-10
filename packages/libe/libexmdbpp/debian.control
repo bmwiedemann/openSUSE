@@ -1,0 +1,33 @@
+Source: libexmdbpp
+Section: python
+Priority: optional
+Maintainer: Grommunio <null@grommunio.com>
+Build-Depends: debhelper-compat (= 12), dh-python, cmake,
+ python3-all-dev (>= 3.5.3~), pybind11-dev
+Rules-Requires-Root: no
+Standards-Version: 4.5.1
+
+Package: libexmdbpp0
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Description: libexmdbpp0
+ The library provides a C++ API and implementation for constructing
+ exmdb protocol requests and responses and conversing with a server.
+
+Package: libexmdbpp-dev
+Architecture: any
+Depends: ${misc:Depends}, libexmdbpp0 (= ${binary:Version})
+Description: Development files for exmdb++
+ The library provides a C++ API and implementation for constructing exmdb
+ protocol requests and responses and conversing with a server.
+ .
+ This subpackage contains the header files for the library.
+
+Package: python3-pyexmdb
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Description: python3-pyexmdb
+ The library provides a C++ API and implementation for constructing exmdb
+ protocol requests and responses and conversing with a server.
+ .
+ This subpackage contains bindings for Python.
