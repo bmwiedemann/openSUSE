@@ -1,0 +1,302 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>7262d04956ffc61a2fa935ffb4c25455</srcmd5>
+    <version>0.9.5b2</version>
+    <time>1221705936</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="4">
+    <srcmd5>7262d04956ffc61a2fa935ffb4c25455</srcmd5>
+    <version>0.9.5b2</version>
+    <time>1221705936</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>6a85d91f474c0cc47bb3d04d1dd9b071</srcmd5>
+    <version>0.9.5b2</version>
+    <time>1268925836</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>8001ed406ca0c7f0ea37d95374729d77</srcmd5>
+    <version>0.9.7a4</version>
+    <time>1274295408</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:python/python-cssutils based on submit request 40387 from user prusnak
+</comment>
+    <requestid>40387</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>8001ed406ca0c7f0ea37d95374729d77</srcmd5>
+    <version>0.9.7a4</version>
+    <time>1278667383</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>8001ed406ca0c7f0ea37d95374729d77</srcmd5>
+    <version>0.9.7a4</version>
+    <time>1278678613</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>fd66621d9325a434cd1a4f2c2ec8e928</srcmd5>
+    <version>unknown</version>
+    <time>1284463112</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:python/python-cssutils based on submit request 48084 from user coolo
+</comment>
+    <requestid>48084</requestid>
+  </revision>
+  <revision rev="8" vrev="5">
+    <srcmd5>4e67bb8e6250974f980b2803f554f015</srcmd5>
+    <version>0.9.7b3</version>
+    <time>1289224539</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 52398 from user psmt
+</comment>
+    <requestid>52398</requestid>
+  </revision>
+  <revision rev="9" vrev="6">
+    <srcmd5>7a67b38b13ef512abe576291b737d4ef</srcmd5>
+    <version>0.9.7b3</version>
+    <time>1289224549</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 52398
+</comment>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>7010c43f0d8f64cd42e05741c1ae17be</srcmd5>
+    <version>0.9.7b4</version>
+    <time>1289413018</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 52608 from user coolo
+</comment>
+    <requestid>52608</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>19139266d920a39e7a8b1c1ed09acc2f</srcmd5>
+    <version>0.9.7b4</version>
+    <time>1289413027</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 52608
+</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>e8b8534926fa1bf20e8384cf13dcd593</srcmd5>
+    <version>0.9.8a1</version>
+    <time>1294826339</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 57870 from user saschpe
+</comment>
+    <requestid>57870</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>f47977a39ebd1b915e5c6115484e7a45</srcmd5>
+    <version>0.9.8a1</version>
+    <time>1294826350</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 57870
+</comment>
+  </revision>
+  <revision rev="14" vrev="5">
+    <srcmd5>f47977a39ebd1b915e5c6115484e7a45</srcmd5>
+    <version>0.9.8a1</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>3e465826e380522a0f15bbfd879a2ed1</srcmd5>
+    <version>0.9.8a3</version>
+    <time>1315234512</time>
+    <user>lrupp</user>
+    <comment></comment>
+    <requestid>80634</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>bbfd55369cfa1a802673b59ad9eaba05</srcmd5>
+    <version>0.9.8a3</version>
+    <time>1315234524</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 80634
+</comment>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>38367d7f7b4dcc836222b635eeaa20d8</srcmd5>
+    <version>0.9.8a3</version>
+    <time>1316618321</time>
+    <user>saschpe</user>
+    <comment></comment>
+    <requestid>83886</requestid>
+  </revision>
+  <revision rev="18" vrev="5">
+    <srcmd5>38367d7f7b4dcc836222b635eeaa20d8</srcmd5>
+    <version>0.9.8a3</version>
+    <time>1319182385</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="19" vrev="6">
+    <srcmd5>e013d2066dc1f7f918898d3a41d63d71</srcmd5>
+    <version>0.9.8a3</version>
+    <time>1323194109</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>55e856edd0fd2e547ff12d4f7d95e1a7</srcmd5>
+    <version>0.9.9</version>
+    <time>1331627912</time>
+    <user>coolo</user>
+    <comment>Please add.</comment>
+    <requestid>109019</requestid>
+  </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>55e856edd0fd2e547ff12d4f7d95e1a7</srcmd5>
+    <version>0.9.9</version>
+    <time>1340184042</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="22" vrev="4">
+    <srcmd5>cd42e9a80badc9af07998a2bc482638e</srcmd5>
+    <version>0.9.9</version>
+    <time>1358413070</time>
+    <user>coolo</user>
+    <comment>Made required changes (forwarded request 148419 from posophe)</comment>
+    <requestid>148567</requestid>
+  </revision>
+  <revision rev="23" vrev="6">
+    <srcmd5>cd42e9a80badc9af07998a2bc482638e</srcmd5>
+    <version>0.9.9</version>
+    <time>1359110007</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>50f57fbbec3deed86dfd8891b32d2867</srcmd5>
+    <version>0.9.10</version>
+    <time>1366233410</time>
+    <user>coolo</user>
+    <comment>Update to version 0.9.10
+
+This fixes the file conflict in factory (forwarded request 171294 from TheBlackCat)</comment>
+    <requestid>171295</requestid>
+  </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>5a66b3790ca697d22df1a3f51e89f123</srcmd5>
+    <version>0.9.10</version>
+    <time>1371652073</time>
+    <user>coolo</user>
+    <comment>housekeeping sr, necessary due to split between d:l:p and d:l:p3 and (manual) _link removal in Factory.</comment>
+    <requestid>179768</requestid>
+  </revision>
+  <revision rev="26" vrev="4">
+    <srcmd5>5a66b3790ca697d22df1a3f51e89f123</srcmd5>
+    <version>0.9.10</version>
+    <time>1379664149</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="27" vrev="5">
+    <srcmd5>6b58ddb7ef60084a3ea9a8f9046ca8d9</srcmd5>
+    <version>0.9.10</version>
+    <time>1382692374</time>
+    <user>scarabeus_factory</user>
+    <comment></comment>
+    <requestid>204538</requestid>
+  </revision>
+  <revision rev="28" vrev="7">
+    <srcmd5>6b58ddb7ef60084a3ea9a8f9046ca8d9</srcmd5>
+    <version>0.9.10</version>
+    <time>1409302839</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>8963bd58a7d2bd11ef4681c856ab7bd7</srcmd5>
+    <version>1.0</version>
+    <time>1430780154</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>305175</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>55371f1c8c520ca2b36babf6f24a0e49</srcmd5>
+    <version>1.0.2</version>
+    <time>1504617345</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>520195</requestid>
+  </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>dd71aa759a5012a56ce06883d510efb2</srcmd5>
+    <version>1.0.2</version>
+    <time>1544726533</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>653999</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>efaf92ca2de0873934c6130ef3e851d6</srcmd5>
+    <version>2.6.0</version>
+    <time>1663155914</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1003467</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>25c9231c32a269ced5275fc70890a33c</srcmd5>
+    <version>2.7.0</version>
+    <time>1687122468</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1093642</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>43befb11e65bf2f40c7a43e76735cc4b</srcmd5>
+    <version>2.7.1</version>
+    <time>1687379938</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.7.1:
+  * #36: Refactored to restore docs builds without warning-
+    errors.</comment>
+    <requestid>1094122</requestid>
+  </revision>
+  <revision rev="35" vrev="2">
+    <srcmd5>b910ad891c5df8ffe7f1fa08ec11ffa5</srcmd5>
+    <version>2.7.1</version>
+    <time>1692611148</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1104928</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>8e3d35ddfc7a1fd345095f5b0932e5bd</srcmd5>
+    <version>2.9.0</version>
+    <time>1701023832</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.9.0:
+  * Made URL fetcher lenient to missing metadata.
+  * Require Python 3.8 or later.
+  * Made some unreachable tests reachable.
+
+  * No changelog provided
+- Remove BuildRequires: python-2to3, useless since included in main
+- new features:</comment>
+    <requestid>1128742</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>c6f2dea34cc0b1310625a085d691877d</srcmd5>
+    <version>2.10.2</version>
+    <time>1713724022</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.10.2:
+  * Remove optional dependency only required on unsupported
+    Python versions.
+  * Replace xunit-style setup with pytest fixtures.
+  * getPropertyValue now allows specifying a default value.</comment>
+    <requestid>1169356</requestid>
+  </revision>
+</revisionlist>

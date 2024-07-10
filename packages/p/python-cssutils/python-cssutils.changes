@@ -1,0 +1,204 @@
+-------------------------------------------------------------------
+Sat Apr 20 13:26:58 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.10.2:
+  * Remove optional dependency only required on unsupported
+    Python versions.
+  * Replace xunit-style setup with pytest fixtures.
+  * getPropertyValue now allows specifying a default value.
+
+-------------------------------------------------------------------
+Sat Nov 25 14:09:13 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.9.0:
+  * Made URL fetcher lenient to missing metadata.
+  * Require Python 3.8 or later.
+  * Made some unreachable tests reachable.
+
+-------------------------------------------------------------------
+Sun Aug 20 10:01:21 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
+Tue Jun 20 16:19:01 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.7.1:
+  * #36: Refactored to restore docs builds without warning-
+    errors.
+
+-------------------------------------------------------------------
+Sun Jun 11 09:08:05 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.7.0:
+  * Updated deprecated usage of ``cgi`` module.
+  * Updated deprecated setup/teardown from ``nose`` in
+    tests.
+  * Other miscellaneous cleanup and packaging updates.
+
+-------------------------------------------------------------------
+Fri Sep  9 08:34:38 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.0.6:
+  * [gh#jaraco/cssutils#14] Added support for custom CSS
+    variables with -- prefix.
+- Generate a basic setup.py file in-place to use with
+  %%python_setup; upstream no longer supplies one.
+- Use fdupes to link duplicate files.
+- Add %{name}.rpmlintrc file to suppress errors about zero-length
+  files which are nevertheless required.
+- Update URL to new upstream home.
+
+-------------------------------------------------------------------
+Tue Dec  4 12:47:04 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Thu Aug 24 13:35:14 UTC 2017 - jmatejek@suse.com
+
+- singlespec auto-conversion
+
+-------------------------------------------------------------------
+Tue May  2 22:15:14 UTC 2017 - thorsten.behrens@cib.de
+
+- update to version 1.0.2:
+  * Fixed issue #61: Nesting of `@media` rules
+  * Fixed issue #51 and #56: Slow font-family regex
+  * Fixed issue #68: failing tests on Python 3
+  * Fixed issue #69: our DOM implementation now delegates unsupported
+    methods
+  * Fixed issue #72: importing now faster since regexes are no longer
+    pre-cached on import time
+
+-------------------------------------------------------------------
+Tue May  2 22:04:16 UTC 2017 - thorsten.behrens@cib.de
+
+- update to version 1.0.1:
+  * Fixed Python 3.5 compatibility
+
+-------------------------------------------------------------------
+Sat May  2 16:47:10 UTC 2015 - benoit.monin@gmx.fr
+
+- update to version 1.0:
+  * EXPERIMENTAL: Variable references may have a fallback value now
+    (as implemented in Firefox 29). It is available as
+    CSSVariable.fallback and example are:
+  * FEATURE: (issue #37) Implemented parsing of CSSCalc values.
+    General syntax is checked but not if operators in calc are
+    actually the right kind like DIMENSION * DIMENSION. Also Values
+    using calc do not validate in cssutils but are actually valid.
+  * FIXED issue #20 and #35 (Test fail CSSParser.parseUrl() error
+    with Python 3.3)
+  * FIXED issue #21: (almost all) deprecation warning in Py 3.3
+    fixed.
+  * FIXED issue #30 (Test failed)
+  * FIXED issue #33 (well kinda): Added that cssutils is **not**
+    threadsafe!
+  * FIXED issue #34: More complext MediaQueries should be parsable
+    now. A few slight changes in behavior are:
+    - xml.dom.SyntaxErr raised instead of
+      xml.dom.InvalidCharacterErr for an unknown media type
+    - removed handheld media type special case (for old Opera).
+
+-------------------------------------------------------------------
+Thu Oct 24 11:00:55 UTC 2013 - speilicke@suse.com
+
+- Require python-setuptools instead of distribute (upstreams merged)
+
+-------------------------------------------------------------------
+Wed Apr 17 13:34:47 UTC 2013 - toddrme2178@gmail.com
+
+- Update to version 0.9.10:
+  * No changelog provided
+
+-------------------------------------------------------------------
+Tue Apr 16 15:30:10 UTC 2013 - p.drouand@gmail.com
+
+- Remove BuildRequires: python-2to3, useless since included in main
+  python devel package
+- Add Requires: python3; fix build for OpenSUSE <= 12.2
+
+-------------------------------------------------------------------
+Fri Jan 11 16:55:32 UTC 2013 - p.drouand@gmail.com
+
+- Initial python3 support
+
+-------------------------------------------------------------------
+Mon Mar 12 20:48:16 UTC 2012 - saschpe@gmx.de
+
+- Update to version 9.9.9:
+  * No changelog provided
+
+-------------------------------------------------------------------
+Wed Sep  7 14:35:28 UTC 2011 - saschpe@suse.de
+
+- Obsolete/Provide python-cssutils-doc
+
+-------------------------------------------------------------------
+Fri Sep  2 09:33:05 UTC 2011 - saschpe@suse.de
+
+- Update to version 0.9.8a3:
+  * No HTML docs anymore
+- Spec file cleanup
+
+-------------------------------------------------------------------
+Thu Jan  6 19:41:00 UTC 2011 - rwobben@hotmail.com
+
+- Update to version 0.9.8a1
+  * BUGFIX: fixes issue #41, #42, #45, #46
+
+-------------------------------------------------------------------
+Mon Nov  8 15:31:12 UTC 2010 - rwobben@hotmail.com
+
+- Update to 0.9.7b4
+  * improves parsing of MS specific (and probably invalid!) values
+
+-------------------------------------------------------------------
+Mon Nov  8 14:19:47 CET 2010 - pth@suse.de
+
+- Make package own the documentation subdir.
+- Mark documentation as such.
+
+-------------------------------------------------------------------
+Tue Sep 14 08:08:19 UTC 2010 - coolo@novell.com
+
+- update to 0.9.7b3
+- several changes (see CHANGELOG.txt), just random picks:
+  * Massive speed improvement of handling of CSSVariables of a stylesheet
+  * CSSFunction value parameters may contain HASH values like ``#fff`` now
+  * Changed parameters of script/utility function ``csscombine``.
+- sphinx conf no longer provided
+
+-------------------------------------------------------------------
+Tue May 18 14:53:05 CEST 2010 - prusnak@suse.cz
+
+- Update to 0.9.7a4
+- cleanup spec file
+- api changes:
+  * CSSRule values changed: NAMESPACE_RULE, COMMENT, VARIABLES_RULE
+  * CSSStyleSheet.setSerializer and CSSStyleSheet.setSerializerPref DEPRECATED
+- compliance to http://dev.w3.org/csswg/cssom improved.
+- new features:
+   * Started CSS Variables <http://disruptive-innovations.com/zoo/cssvariables/>
+   * added cssutils.css.CSSStyleSheet.variables
+   * cssutils.ser.prefs.resolveVariables switchable
+   * cssutils.ser.prefs.normalizedVarNames switchable
+   * Added new options to cssutils.script.csscombine: cssText=None, href=None
+   * Added CSSRuleList.rulesOfType(type)
+
+-------------------------------------------------------------------
+Mon May 17 13:47:09 UTC 2010 - toms@suse.de
+
+- Update to 0.9.7a3 as needed for FATE#309541
+- Added build requirement for python-sphinx
+- Added patch for copy.py (sphinx documentation)
+- Rebuild HTML documentation with sphinx
+- Better separate documentation package from main package
+
+-------------------------------------------------------------------
+Mon Apr 28 17:50:55 CEST 2008 - pth@suse.de
+
+- Initial package.
+
+
