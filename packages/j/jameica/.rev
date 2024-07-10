@@ -1,0 +1,122 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6bc82fb9e04a02cffa3ac4ac2bd7c472</srcmd5>
+    <version>2.6.6</version>
+    <time>1515876246</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>556878</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>27e3a3d09197715281b068ac7278d24b</srcmd5>
+    <version>2.6.6</version>
+    <time>1518025339</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>573663</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f23c523d928c53529cb93ac3c69fb596</srcmd5>
+    <version>2.8.1</version>
+    <time>1532681719</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>623372</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>1614b6746c0ff89a5e4927c67bac916e</srcmd5>
+    <version>2.8.2</version>
+    <time>1543953273</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>653508</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>42ff5670e1ab419bda766b2c741f0a48</srcmd5>
+    <version>2.8.2</version>
+    <time>1551024775</time>
+    <user>coolo</user>
+    <comment>Clean the spec file and sanitize requires</comment>
+    <requestid>672364</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>e276464ecfe0ba0f7c1e2fb39aa3c428</srcmd5>
+    <version>2.8.4</version>
+    <time>1557142070</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>700916</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>d1678a4eda22b6bb9bddd46c94f4e3e0</srcmd5>
+    <version>2.8.5</version>
+    <time>1571653694</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>741087</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>eb2fe781c55380b8116178a01d2132ee</srcmd5>
+    <version>2.8.6</version>
+    <time>1589315638</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>802935</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>392e955142f90b89a4916ff5d118d1e7</srcmd5>
+    <version>2.10.0</version>
+    <time>1608640538</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>851672</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>0d66005ebfe8a698545baa6d1d275e94</srcmd5>
+    <version>2.10.1</version>
+    <time>1646494061</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>959598</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>3fe8222bc1d8af035f2102a9c29481ac</srcmd5>
+    <version>2.10.2</version>
+    <time>1662322311</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1001117</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>659cf3c7e550e24fcdf3412cb46955df</srcmd5>
+    <version>2.10.3</version>
+    <time>1674737852</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1061001</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>a69b24a86d6ac62027c07899bdcc9683</srcmd5>
+    <version>2.10.4</version>
+    <time>1681654063</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1079751</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>0c9594fbd082546a21d434c65b6530b4</srcmd5>
+    <version>2.10.4</version>
+    <time>1709070590</time>
+    <user>anag+factory</user>
+    <comment>port to apache-commons-lang3</comment>
+    <requestid>1152327</requestid>
+  </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>e90d8af75234444cd79e70607554206f</srcmd5>
+    <version>2.10.4</version>
+    <time>1711397527</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1161130</requestid>
+  </revision>
+</revisionlist>
