@@ -1,0 +1,6 @@
+<package name="khmeros-fonts" project="openSUSE:Factory">
+  <title>Fonts for the Khmer language of Cambodia</title>
+  <description>Fonts for the Khmer language of Cambodia
+</description>
+  <devel project="M17N:fonts" package="khmeros-fonts"/>
+</package>
