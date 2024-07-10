@@ -1,0 +1,15 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 5ed8289..b07cdd5 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -133,8 +133,8 @@ install(FILES ${LIBDICT_HEADERS}
+ # install libraries, shared library is part of runtime whereas static library
+ # is only needed for development
+ install(TARGETS libdict-shared libdict-static
+-    LIBRARY DESTINATION lib COMPONENT lib
+-    ARCHIVE DESTINATION lib COMPONENT dev
++    LIBRARY DESTINATION lib${LIB_SUFFIX} COMPONENT lib
++    ARCHIVE DESTINATION lib${LIB_SUFFIX} COMPONENT dev
+     OPTIONAL)
+ 
+ # tools are in separate package

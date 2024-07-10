@@ -1,0 +1,18 @@
+<package name="libdict" project="openSUSE:Factory">
+  <title>C library of key-value data structures with an object-oriented interface</title>
+  <description>libdict is a C library that provides the following data structures with
+efficient insert, lookup, and delete routines:
+
+* height-balanced (AVL) tree
+* red-black tree
+* splay tree
+* weight-balanced tree
+* path-reduction tree
+* treap
+* hashtable, using separate chaining
+* hashtable, using open addressing with linear probing
+
+</description>
+  <devel project="devel:libraries:c_c++" package="libdict"/>
+  <url>https://github.com/rtbrick/libdict</url>
+</package>
