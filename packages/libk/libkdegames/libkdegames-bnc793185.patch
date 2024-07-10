@@ -1,0 +1,12 @@
+Index: libkdegames-19.11.70git.20210717T045500~9295393e/src/carddecks/CMakeLists.txt
+===================================================================
+--- libkdegames-19.11.70git.20210717T045500~9295393e.orig/src/carddecks/CMakeLists.txt	2021-07-18 08:22:46.169964318 +0200
++++ libkdegames-19.11.70git.20210717T045500~9295393e/src/carddecks/CMakeLists.txt	2021-07-18 08:23:30.754409031 +0200
+@@ -37,7 +37,6 @@
+ install_carddeck(svg-future                 PREVIEW 11.png              SVG future.svg)
+ install_carddeck(svg-gm-paris               PREVIEW 11.png              SVG paris.svg)
+ install_carddeck(svg-jolly-royal            PREVIEW 11.png              SVG jolly-royal.svg)
+-install_carddeck(svg-konqi-modern           PREVIEW 11.png              SVG konqi.svg)
+ install_carddeck(svg-nicu-ornamental        PREVIEW 11.png              SVG ornamental.svg  AUTHORS COPYING)
+ install_carddeck(svg-nicu-white             PREVIEW 11.png              SVG white.svg  AUTHORS COPYING)
+ install_carddeck(svg-oxygen                 PREVIEW 11.png              SVG oxygen.svg)
