@@ -19,7 +19,7 @@
 %global cluster jnr
 %global sover 1.2
 Name:           jffi
-Version:        1.3.11
+Version:        1.3.13
 Release:        0
 Summary:        Java Foreign Function Interface
 License:        Apache-2.0 OR LGPL-3.0-or-later
@@ -138,13 +138,13 @@ ln -s lib%{name}-%{sover}.so lib%{name}.so
 popd
 
 %files -f .mfiles
-%license COPYING.{GPL,LESSER} LICENSE
+%license LICENSE
 
 %files native -f .mfiles-native
 %{_libdir}/%{name}
-%license COPYING.{GPL,LESSER} LICENSE
+%license LICENSE
 
 %files javadoc -f .mfiles-javadoc
-%license COPYING.{GPL,LESSER} LICENSE
+%license LICENSE
 
 %changelog

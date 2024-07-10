@@ -55,4 +55,12 @@
     <comment>rpm 4.20 compat</comment>
     <requestid>1148586</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>20e9546549051cd0b8611891e91dcea3</srcmd5>
+    <version>1.3.13</version>
+    <time>1720622988</time>
+    <user>anag+factory</user>
+    <comment>1.3.13</comment>
+    <requestid>1186466</requestid>
+  </revision>
 </revisionlist>

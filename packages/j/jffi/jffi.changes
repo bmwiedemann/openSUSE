@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jun 23 05:55:46 UTC 2024 - jun wang <jgwang@suse.com>
+
+- Update to v1.3.13
+  * No changelog provided by upstream, and please refer to
+    https://github.com/jnr/jffi/compare/jffi-1.3.11...jffi-1.3.13
+  * no more provided COPYING.{GPL,LESSER} files
+
+-------------------------------------------------------------------
 Wed Feb 21 10:46:50 UTC 2024 - Gus Kenion <gus.kenion@suse.com>
 
 - Use %patch -P N instead of deprecated %patchN.
