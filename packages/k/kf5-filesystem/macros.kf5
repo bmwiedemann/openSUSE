@@ -1,0 +1,209 @@
+# WARNING Install locations are only guaranteed to work with KDEInstallDirs from extra-cmake-modules, and potentially GNUInstallDirs from cmake.
+# Do not use any of this macros unless your project/package uses one of these modules.
+
+%_kf5_prefix     %{_prefix}
+%_kf5_bindir     %{_kf5_prefix}/bin
+%_kf5_sharedir   %{_datadir}
+%_kf5_datadir    %{_kf5_sharedir}/kf5
+%_kf5_includedir %{_includedir}/KF5
+%_kf5_libdir     %{_kf5_prefix}/%{_lib}
+%_kf5_libexecdir %{_libexecdir}/kf5
+%_kf5_mandir     %{_kf5_sharedir}/man
+%_kf5_sbindir    %{_sbindir}
+%_kf5_notifydir  %{_kf5_sharedir}/knotifications5
+%_kf5_localedir  %{_kf5_sharedir}/locale/kf5
+%_kf5_sysconfdir %{_sysconfdir}
+%_kf5_plugindir  %{_kf5_libdir}/qt5/plugins
+%_kf5_plasmadir  %{_kf5_sharedir}/plasma
+%_kf5_importdir  %{_kf5_libdir}/qt5/imports
+%_kf5_qmldir     %{_kf5_libdir}/qt5/qml
+%_kf5_cmakedir   %{_kf5_libdir}/cmake
+%_kf5_mkspecsdir %{_kf5_libdir}/qt5/mkspecs/modules
+%_kf5_dbusinterfacesdir %{_kf5_sharedir}/dbus-1/interfaces
+%_kf5_dbuspolicydir   %{_kf5_sharedir}/dbus-1/system.d
+%_kf5_configdir       %{_kf5_sysconfdir}/xdg
+%_kf5_applicationsdir %{_kf5_sharedir}/applications
+%_kf5_iconsdir        %{_kf5_sharedir}/icons
+%_kf5_wallpapersdir   %{_kf5_sharedir}/wallpapers
+%_kf5_appsdir         %{_kf5_sharedir}
+%_kf5_configkcfgdir   %{_kf5_sharedir}/config.kcfg
+%_kf5_servicesdir     %{_kf5_sharedir}/kservices5
+%_kf5_servicetypesdir %{_kf5_sharedir}/kservicetypes5
+%_kf5_htmldir         %{_kf5_sharedir}/doc/HTML
+%_kf5_kxmlguidir      %{_kf5_sharedir}/kxmlgui5
+%_kf5_appstreamdir    %{_kf5_sharedir}/metainfo
+%_kf5_debugdir        %{_kf5_sharedir}/qlogging-categories5
+%_kf5_knsrcfilesdir   %{_kf5_sharedir}/knsrcfiles
+
+%_kf5_build_type None
+
+%kf5_makeinstall(C:) \
+  bdir=. \
+  %{-C:dir=%{-C*} \
+  cd $dir \
+  bdir=.. } \
+  make VERBOSE=1 DESTDIR=%{?buildroot:%{buildroot}} install \
+  cd $bdir \
+  if ls %{buildroot}%{_kf5_configdir}/*.*categories 2>/dev/null; then \
+    echo "Please ask upstream to use the new KDE_INSTALL_LOGGINGCATEGORIESDIR variable." \
+    mkdir -p %{buildroot}%{_kf5_debugdir} \
+    mv %{buildroot}%{_kf5_configdir}/*.*categories %{buildroot}%{_kf5_debugdir}/ \
+  fi \
+  %{nil}
+
+%cmake_kf5(d:) \
+  bdir=. \
+  %{-d:dir=%{-d*} \
+  mkdir $dir \
+  cd $dir \
+  bdir=.. } \
+  cmake -DCMAKE_BUILD_TYPE=%{_kf5_build_type} \\\
+      -DKDE_INSTALL_USE_QT_SYS_PATHS=OFF \\\
+      -DCMAKE_C_FLAGS="${CFLAGS:-%optflags} -DNDEBUG" \\\
+      -DCMAKE_CXX_FLAGS="${CXXFLAGS:-%optflags} -DNDEBUG" \\\
+      -DCMAKE_EXE_LINKER_FLAGS="-Wl,--as-needed -Wl,--no-undefined -Wl,-Bsymbolic-functions" \\\
+      -DCMAKE_MODULE_LINKER_FLAGS="-Wl,--as-needed -Wl,--no-undefined -Wl,-Bsymbolic-functions" \\\
+      -DCMAKE_SHARED_LINKER_FLAGS="-Wl,--as-needed -Wl,--no-undefined -Wl,-Bsymbolic-functions" \\\
+      -DCMAKE_INSTALL_PREFIX=%{_kf5_prefix} \\\
+      -DCMAKE_PREFIX_PATH=%{_kf5_prefix} \\\
+      -DKDE_INSTALL_LIBDIR=%{_lib} \\\
+      -DKDE_INSTALL_LIBEXECDIR=%{_libexecdir} \\\
+      -DKDE_INSTALL_SYSCONFDIR=%{_kf5_sysconfdir} \\\
+      -DKDE_INSTALL_QTPLUGINDIR=%{_lib}/qt5/plugins \\\
+      -DKDE_INSTALL_PLUGINDIR=%{_lib}/qt5/plugins \\\
+      -DKDE_INSTALL_QMLDIR=%{_lib}/qt5/qml \\\
+      -DKDE_INSTALL_QTQUICKIMPORTSDIR=%{_lib}/qt5/imports \\\
+      -DECM_MKSPECS_INSTALL_DIR=%{_kf5_mkspecsdir} \\\
+      -DKDE_INSTALL_METAINFODIR=%{_kf5_appstreamdir} \\\
+      -DBUILD_TESTING=OFF \\\
+      $bdir %* \
+%{nil}
+
+%create_subdir_filelist(d:f:o:v:) \
+  %{!-d:echo -e "\\nERROR: missing parameter for macro create_subdir_filelist\\n" ; exit 1 ; } \
+  filelist=%{-f:%{-f*}}%{!-f:%{-d*}} \
+  filelist=${filelist#*/} \
+  if test -e doc/%{-d*}; then \
+    pushd doc/%{-d*} \
+    make DESTDIR=$RPM_BUILD_ROOT.%{-d*} install \
+    popd \
+  fi \
+  pushd %{-d*} \
+  make DESTDIR=$RPM_BUILD_ROOT.%{-d*} install \
+  mkdir -p $RPM_BUILD_DIR/%buildsubdir/filelists \
+  { \
+    echo "%%defattr(-,root,root,755)" \
+    if test -n "%{-v*}"; then \
+      devel_filelist=%{-v*} \
+      devel_filelist=${devel_filelist#*/} \
+      { \
+	echo "%%defattr(-,root,root,755)" \
+	find $RPM_BUILD_ROOT.%{-d*} \\( \\\
+	     -path "$RPM_BUILD_ROOT.%{-d*}/usr/include/KF5/*" \\( -type f -o -type l \\) -o \\\
+	     -path "$RPM_BUILD_ROOT.%{-d*}/usr/share/kde5/apps/cmake/modules/*" -type f -o \\\
+	     -path "$RPM_BUILD_ROOT.%{-d*}/usr/lib*/cmake/*" -type f -o \\\
+	     -name '*.so' -type l \\) -printf "/%%P\\n" \
+      } | tee -a $RPM_BUILD_DIR/%buildsubdir/filelists/$devel_filelist | \
+      sed -e '/^%%defattr/d' -e 's/^/%%exclude /' \
+    fi \
+    find $RPM_BUILD_ROOT.%{-d*} \\\
+	 \\( -path "$RPM_BUILD_ROOT.%{-d*}/usr/share/doc/HTML/en/%{-d*}" -o \\\
+	    -path "$RPM_BUILD_ROOT.%{-d*}/usr/share/doc/HTML/en/%{-d*}/*" \\) \\\
+	 -type d -printf "%%%%dir /%%P\\n" -o \\\
+    	 \\( -type f -o -type l \\) -printf "/%%P\\n" \
+  } | \
+  sed -r "s/man\\/man([1-9])\\/(.*)\\.[1-9]$/man\\/man\\1\\/\\2\\.\\1.gz/;s,^/usr/share/doc/HTML/(.[^/])/,%%doc %%lang(\\1) &," >> $RPM_BUILD_DIR/%buildsubdir/filelists/$filelist \
+  rm -rf $RPM_BUILD_ROOT.%{-d*} \
+  popd \
+%{nil}
+
+%create_exclude_filelist \
+  pushd $RPM_BUILD_DIR/%buildsubdir/ \
+  for f in filelists/*; do \
+    case $f in \
+    filelists/exclude) ;; \
+    *) sed -e '/^%%defattr/d' -e 's/^%%exclude //' -e 's/^/%%exclude /' "$f";; \
+    esac \
+  done >filelists/exclude \
+  popd \
+%{nil}
+
+%__spec_clean_post rm -rf filelists
+
+%kf5_post_install \
+        if test -e /usr/lib/rpm/suse_update_desktop_file.sh; then \
+               find $RPM_BUILD_ROOT/usr/share \\\
+                        -name '*.desktop' -o -name '*.directory' 2> /dev/null | while read file; do \
+                       test -r "$file" || continue \
+                       grep -q "^X-SuSE-translate=" "$file" && continue \
+                       case "$file" in \
+                        */.hidden/*) \
+                                %suse_update_desktop_file -n "$file" \
+                                ;; \
+                         *) \
+                                %suse_update_desktop_file "$file" \
+                                ;; \
+                        esac \
+                done \
+        fi \
+%{nil}
+
+%make_jobs \
+  %{__make} %{?_smp_mflags} VERBOSE=1
+
+%kf5_find_lang() \
+if test %# -ge 1; then NAME=%1; else NAME=%{name}; fi \
+if test %# -ge 2; then MO_NAME=%2; else MO_NAME=$NAME.lang; fi \
+if ! test -s $MO_NAME ; then \
+   echo "%defattr (644, root, root, 755)" > $MO_NAME \
+fi \
+MO_NAME_NEW=$MO_NAME.tmp.$$ \
+rm -f $MO_NAME_NEW \
+\
+# remove languages we do not yet support - but give out statistics  \
+if [ -d "%{buildroot}%{_kf5_localedir}" ] ; then \
+    find "%{buildroot}%{_kf5_localedir}" -maxdepth 1 -type d | sed 's:'"%{buildroot}"%{_kf5_localedir}/'::; /^$/d' | while read dir; do \
+    if ! rpm -ql filesystem | grep -E -q "/usr/share/locale/$dir"$; then \
+        find %{buildroot}%{_kf5_localedir}/$dir -name *.mo | sed 's:'"%{buildroot}"'::' | while read file; do \
+        echo -n "removing translation $file: " \
+        msgunfmt "%{buildroot}/$file" | msgfmt --statistics -o /dev/null - \
+        done \
+        rm -rf %{buildroot}%{_kf5_localedir}/$dir \
+    fi \
+    done \
+    echo "%dir %{_kf5_localedir}" >> $MO_NAME \
+fi \
+\
+find "%{buildroot}" -type f -o -type l|sed ' \
+s:'"%{buildroot}"':: \
+s:\\(.*/locale/kf5/\\)\\([^/_]\\+\\)\\([^/]*\\)\\(.*\\.mo$\\):%%dir %%lang(\\2) \\1\\2\\3\\n%%dir %%lang(\\2) \\1\\2\\3/LC_MESSAGES\\n%%lang(\\2) \\1\\2\\3\\4: \
+s:\\(.*/locale/kf5/\\)\\([^/_]\\+\\)\\(/[^/]*\\)\\(/[^/]*\\)\\(/[^/]*\\.js$\\):%%dir %%lang(\\2) \\1\\2\\n%%dir %%lang(\\2) \\1\\2\\3\\n%%dir %%lang(\\2) \\1\\2\\3\\4\\n%%lang(\\2) \\1\\2\\3\\4\\5: \
+s:^\\([^%].*\\):: \
+/^$/d' \ > $MO_NAME_NEW \
+if ! grep -q / $MO_NAME_NEW; then \
+        echo "No translations found for ${NAME} in %{buildroot}" \
+        rm -f $MO_NAME_NEW \
+        exit 1 \
+fi \
+sort -u $MO_NAME_NEW >> $MO_NAME \
+rm -f $MO_NAME_NEW
+
+%kf5_find_htmldocs() \
+# rpm 4.14's find_lang.sh added support for those docs, but we do it ourselves \
+# to stay backwards-compatible and keep the en docs in the main package \
+sed -i'' '\\#%{_kf5_htmldir}#d' %{name}.lang \
+CURDIR=`pwd` \
+pushd %{buildroot}%{_kf5_htmldir} \
+for i in *; do \
+    if ! [ -d "/usr/share/locale/${i}" ]; then \
+        echo "Removing unsupported translation %{_kf5_htmldir}/${i}" \
+        rm -rf "$i" \
+    elif [ "$i" != "en" ]; then \
+        echo "%%doc %%lang($i) %{_kf5_htmldir}/${i}" >> $CURDIR/%{name}.lang \
+    fi \
+done \
+popd
+
+# TODO: Remove the macro
+%kf5_python_bindings_package \
+%{nil}
