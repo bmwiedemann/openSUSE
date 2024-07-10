@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>194092d684bda3a449e4c09123fe1669</srcmd5>
+    <version>0.02006</version>
+    <time>1418737668</time>
+    <user>dimstar_suse</user>
+    <comment>new dep</comment>
+    <requestid>263787</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>fc335fc9c8df3e14e0575066dba125fa</srcmd5>
+    <version>0.02006</version>
+    <time>1518514268</time>
+    <user>dimstar_suse</user>
+    <comment>- fix build</comment>
+    <requestid>575625</requestid>
+  </revision>
+</revisionlist>
