@@ -1,0 +1,8 @@
+<package name="pspg" project="openSUSE:Factory">
+  <title>Pager for PostgreSQL</title>
+  <description>Advanced pager for PostgreSQL and MySQL databases.
+
+</description>
+  <devel project="server:database:postgresql" package="pspg"/>
+  <url>https://github.com/okbob/pspg</url>
+</package>
