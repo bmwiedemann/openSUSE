@@ -1,0 +1,293 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>11c4b5b62f0a0ab8c42f5b9452f2cca2</srcmd5>
+    <version>0.9</version>
+    <time>1347722904</time>
+    <user>namtrac</user>
+    <comment>New package: will be needed for GNOME 3.6</comment>
+    <requestid>133731</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>f75c46c7f974870853659fe0eaf745cf</srcmd5>
+    <version>0.10</version>
+    <time>1349280686</time>
+    <user>coolo</user>
+    <comment>Pushing GNOME:Factory towards openSUSE:Factory</comment>
+    <requestid>136752</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>4bebcf7d5ff655ee245571552ad792c6</srcmd5>
+    <version>0.11</version>
+    <time>1350634743</time>
+    <user>coolo</user>
+    <comment>Update to 0.11 (forwarded request 138285 from dimstar)</comment>
+    <requestid>138609</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>4f5a0b58a3546c0beae928ebafa70904</srcmd5>
+    <version>0.12</version>
+    <time>1353791140</time>
+    <user>coolo</user>
+    <comment>Update to 0.12 (forwarded request 142356 from Zaitor)</comment>
+    <requestid>142543</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>4f5a0b58a3546c0beae928ebafa70904</srcmd5>
+    <version>0.12</version>
+    <time>1359109351</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>5761494ef6636ff464092e02be614d16</srcmd5>
+    <version>0.15</version>
+    <time>1364986930</time>
+    <user>coolo</user>
+    <comment>Push G:Factory</comment>
+    <requestid>162190</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>657536c505933f1c5baf3883f15ffd5b</srcmd5>
+    <version>0.16</version>
+    <time>1377717317</time>
+    <user>coolo</user>
+    <comment>Update to 3.9.90 (forwarded request 196467 from Zaitor)</comment>
+    <requestid>196516</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>657536c505933f1c5baf3883f15ffd5b</srcmd5>
+    <version>0.16</version>
+    <time>1379663086</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>4931c70a41e77b8e96b57c936a9362e7</srcmd5>
+    <version>0.18</version>
+    <time>1394386054</time>
+    <user>coolo</user>
+    <comment>- Update to version 0.18:
+  + Mark most of unstable API as stable.
+  + Bump Glib dependency (2.38+).
+  + Add secret_service_encode_dbus_secret() and decode functions.
+  + Use TAP for testing, parallel tests, and non-recursive make.
+  + Updated FSF's address.
+  + Remove unstable vapi (bgo#721429).
+  + Build fixes: bgo#720087, bgo#720244, bgo#707452.
+  + Updated translations.
+- Drop typelib-1_0-SecretUnstable-0 subpackage: no more unstable
+  APIs (incl. dependency to this package from the -devel package). (forwarded request 224964 from Zaitor)</comment>
+    <requestid>225102</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>4931c70a41e77b8e96b57c936a9362e7</srcmd5>
+    <version>0.18</version>
+    <time>1409301709</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>9d6406c53f0764fa7c4bdc692a843dab</srcmd5>
+    <version>0.18.2</version>
+    <time>1429973219</time>
+    <user>coolo</user>
+    <comment>Scripted push of project GNOME:Factory</comment>
+    <requestid>298721</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>cf021615922490d969b3447d518a4ad1</srcmd5>
+    <version>0.18.3</version>
+    <time>1440479912</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>325079</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>7b5bafe10f96898b3004406793f598a9</srcmd5>
+    <version>0.18.4</version>
+    <time>1453508064</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>354777</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>1ba426a5b866705a111dc33d0bbace34</srcmd5>
+    <version>0.18.5</version>
+    <time>1459508547</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 380346 from Zaitor)</comment>
+    <requestid>380943</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>76e2fbc2ed75228d004d5ebe957af6c7</srcmd5>
+    <version>0.18.5</version>
+    <time>1472594624</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>423533</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>5478ab29571d71e125d89c0be83ebc71</srcmd5>
+    <version>0.18.5</version>
+    <time>1500669748</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>511100</requestid>
+  </revision>
+  <revision rev="17" vrev="4">
+    <srcmd5>1841a34cf6df7cd123b356aa29e2ac2b</srcmd5>
+    <version>0.18.5</version>
+    <time>1500975676</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>512330</requestid>
+  </revision>
+  <revision rev="18" vrev="5">
+    <srcmd5>db668bf42b304ae815691df9c7e130ff</srcmd5>
+    <version>0.18.5</version>
+    <time>1521052297</time>
+    <user>dimstar_suse</user>
+    <comment>- SRPM group fix. Update summaries.
+- Remove duplicate commands. Limit fdupes to /usr. (forwarded request 586258 from jengelh)</comment>
+    <requestid>586273</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>4765c14a1a4d769d0da5a14380b048c6</srcmd5>
+    <version>0.18.6</version>
+    <time>1522934868</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 592852 from dimstar)</comment>
+    <requestid>593152</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>9ea0a423fed49df4148bf663bd27991f</srcmd5>
+    <version>0.18.7</version>
+    <time>1546695546</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>662632</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>c04161bf2638f1c395617fbc9782c6c3</srcmd5>
+    <version>0.18.8</version>
+    <time>1552042800</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>681420</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>21547726068349b98be1c49254fa556a</srcmd5>
+    <version>0.19.1</version>
+    <time>1571310172</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from {project}</comment>
+    <requestid>736592</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>1354ced7f034af5272ca524459dd90f7</srcmd5>
+    <version>0.20.0</version>
+    <time>1579346150</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>764651</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>8ae4fb6aa9d5d25d10fd33160db22a9e</srcmd5>
+    <version>0.20.0</version>
+    <time>1580205123</time>
+    <user>dimstar_suse</user>
+    <comment>Eliminate the -lang recommends (forwarded request 767200 from dimstar)</comment>
+    <requestid>767462</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>22fa4723c4316c90adda8f4c6a03aac5</srcmd5>
+    <version>0.20.1</version>
+    <time>1580724673</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>768245</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>eab9d18996b87ac2613777fee6356379</srcmd5>
+    <version>0.20.3</version>
+    <time>1587162445</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 794078 from iznogood)</comment>
+    <requestid>794361</requestid>
+  </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>198a98c843ff378fc3a69ecaebf8a097</srcmd5>
+    <version>0.20.3</version>
+    <time>1588450441</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 799178 from iznogood)</comment>
+    <requestid>799474</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>5cdfa0beedbf5fb23deb583a8d2a75cf</srcmd5>
+    <version>0.20.4</version>
+    <time>1602682656</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 840876 from iznogood)</comment>
+    <requestid>841169</requestid>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>f1bb0bc2aafb2b296e4f166f8083fe46</srcmd5>
+    <version>0.20.4</version>
+    <time>1632685691</time>
+    <user>dimstar_suse</user>
+    <comment>- Add libsecret-handle-UnknownObject.patch: some Secret Service
+  API backend implementations (like keepassxc) throws
+  UnknownObject instead of UnknownMethod, this patch handles it.
+  (bsc#1190499, glgo#GNOME/libsecret!94) (forwarded request 920800 from AZhou)</comment>
+    <requestid>920820</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>0765acf03dbfb2c19c46036942a8941d</srcmd5>
+    <version>0.20.5</version>
+    <time>1645629947</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>956653</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>df68e0546a2e524e017feed7218be0fb</srcmd5>
+    <version>0.21.0</version>
+    <time>1695208878</time>
+    <user>dimstar_suse</user>
+    <comment>Pushing GNOME 45.rc packages (forwarded request 1109848 from iznogood)</comment>
+    <requestid>1110514</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>77d035d34dd0a8e8c9f035b413baadc1</srcmd5>
+    <version>0.21.1</version>
+    <time>1695758451</time>
+    <user>anag+factory</user>
+    <comment>Version update: 0.21.0 -&gt; 0.21.1 (forwarded request 1112401 from luc14n0)</comment>
+    <requestid>1113450</requestid>
+  </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>e6ce1cb7689228f1f39f2ce18609a4c3</srcmd5>
+    <version>0.21.1</version>
+    <time>1701289180</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1129604</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>aca255c085e4dc4733565e1b8a6160bd</srcmd5>
+    <version>0.21.2</version>
+    <time>1702936531</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1133827</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>eaca6d12fe9f1068a0cdcf4c51e2022a</srcmd5>
+    <version>0.21.4</version>
+    <time>1710965560</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 46 (forwarded request 1159286 from dimstar)</comment>
+    <requestid>1159542</requestid>
+  </revision>
+</revisionlist>
