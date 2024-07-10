@@ -1,0 +1,7 @@
+<package name="perl-libintl-perl" project="openSUSE:Factory">
+  <title>Internationalization Library for Perl</title>
+  <description>This is an internationalization library for Perl that aims to be
+compatible with the Uniforum message translations system as implemented
+for example in GNU gettext.</description>
+  <devel project="devel:languages:perl" package="perl-libintl-perl"/>
+</package>

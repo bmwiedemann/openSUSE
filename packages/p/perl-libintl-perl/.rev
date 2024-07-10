@@ -1,0 +1,281 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3e6fea570b14085d36ee4afd8e53dd97</srcmd5>
+    <version>1.16</version>
+    <time>1195702922</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>61ffad0c971fc18ae61906359fc549c1</srcmd5>
+    <version>1.16</version>
+    <time>1195988904</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="60">
+    <srcmd5>61ffad0c971fc18ae61906359fc549c1</srcmd5>
+    <version>1.16</version>
+    <time>1195988904</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="61">
+    <srcmd5>867d9110035493bb70a24cf1f25b5370</srcmd5>
+    <version>1.16</version>
+    <time>1245337671</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="62">
+    <srcmd5>e6e0120d74b519f226b445c1f4eea009</srcmd5>
+    <version>1.16</version>
+    <time>1248880084</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="64">
+    <srcmd5>e6e0120d74b519f226b445c1f4eea009</srcmd5>
+    <version>1.16</version>
+    <time>1248880084</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>d9d53e2881dbd87d4c53556f61038ec4</srcmd5>
+    <version>1.20</version>
+    <time>1259915936</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-libintl-perl based on submit request 25557 from user coolo
+</comment>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>9c73c96aafe8eb955e756172297e2620</srcmd5>
+    <version>1.20</version>
+    <time>1263034340</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-libintl-perl based on submit request 28345 from user coolo
+</comment>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>eaa59028406bcb9cfd4cc4f0e1e23ab2</srcmd5>
+    <version>1.20</version>
+    <time>1268925682</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="10" vrev="5">
+    <srcmd5>eaa59028406bcb9cfd4cc4f0e1e23ab2</srcmd5>
+    <version>1.20</version>
+    <time>1278667379</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="6">
+    <srcmd5>eaa59028406bcb9cfd4cc4f0e1e23ab2</srcmd5>
+    <version>1.20</version>
+    <time>1278678610</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="12" vrev="7">
+    <srcmd5>a5de7f4c0c5fb661c587d21dc0bff124</srcmd5>
+    <version>1.20</version>
+    <time>1287486918</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 51037 from user coolo
+</comment>
+    <requestid>51037</requestid>
+  </revision>
+  <revision rev="13" vrev="8">
+    <srcmd5>baadccdda9ef573a9fce2088c3431bb2</srcmd5>
+    <version>1.20</version>
+    <time>1287486923</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 51037
+</comment>
+  </revision>
+  <revision rev="14" vrev="9">
+    <srcmd5>1ec512c1cc841f18d405c018e4f23265</srcmd5>
+    <version>1.20</version>
+    <time>1291584611</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 54576 from user coolo
+</comment>
+    <requestid>54576</requestid>
+  </revision>
+  <revision rev="15" vrev="10">
+    <srcmd5>e6a24783d69a1ca54a0986adea326b40</srcmd5>
+    <version>1.20</version>
+    <time>1291584623</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 54576
+</comment>
+  </revision>
+  <revision rev="16" vrev="13">
+    <srcmd5>e6a24783d69a1ca54a0986adea326b40</srcmd5>
+    <version>1.20</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="17" vrev="15">
+    <srcmd5>e6a24783d69a1ca54a0986adea326b40</srcmd5>
+    <version>1.20</version>
+    <time>1319182328</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="18" vrev="16">
+    <srcmd5>83a1beff71642355dce6ef832ce15805</srcmd5>
+    <version>1.20</version>
+    <time>1323193414</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="19" vrev="18">
+    <srcmd5>83a1beff71642355dce6ef832ce15805</srcmd5>
+    <version>1.20</version>
+    <time>1340183960</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="20" vrev="20">
+    <srcmd5>83a1beff71642355dce6ef832ce15805</srcmd5>
+    <version>1.20</version>
+    <time>1359109864</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="21">
+    <srcmd5>a99542f12befbd350f16dbfc9f871e61</srcmd5>
+    <version>1.20</version>
+    <time>1366178254</time>
+    <user>coolo</user>
+    <comment>- Add Source URL, see https://en.opensuse.org/SourceUrls (forwarded request 164063 from namtrac)</comment>
+    <requestid>164077</requestid>
+  </revision>
+  <revision rev="22" vrev="23">
+    <srcmd5>a99542f12befbd350f16dbfc9f871e61</srcmd5>
+    <version>1.20</version>
+    <time>1379663937</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="23" vrev="25">
+    <srcmd5>a99542f12befbd350f16dbfc9f871e61</srcmd5>
+    <version>1.20</version>
+    <time>1409302590</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>d5819c4409ae46ceaf4f95be3814b943</srcmd5>
+    <version>1.24</version>
+    <time>1443694935</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.24
+  * Better portability for tests.
+  
+  * Updated documentation.
+  
+  * License changed to GPLv3.
+  
+  * Bugs fixed:
+  
+    https://rt.cpan.org/Ticket/Display.html?id=98109
+    https://rt.cpan.org/Ticket/Display.html?id=47968
+    https://rt.cpan.org/Ticket/Display.html?id=83980
+    https://rt.cpan.org/Ticket/Display.html?id=102288
+  
+  Version 1.23 - 24 Jan 2013
+  
+  * New message retrieval backend Locale::gettext_dumb(3pm) which produces
+    translations even, when the corresponding locale is not present in
+    the system.
+  
+  * Fixed a bug where the Perl backend under certain circumstances clobbered
+    the environment variable LC_ALL.
+  
+  * Avoid test failures by skipping all tests that depend on the de_AT
+    locale, when that locale is not installed.
+  
+  * Bugs fixed:
+    https://rt.cpan.org/Ticket/Display.html?id=82856
+  
+  Version 1.22 - 24 Jan 2013</comment>
+    <requestid>333402</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>fbed93abc62abdd6240946465965ba21</srcmd5>
+    <version>1.25</version>
+    <time>1464964659</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.25
+  * Fixed false negatives in test suite, no need to upgrade the module!
+  
+  * Bugs fixed:
+  
+    https://rt.cpan.org/Ticket/Display.html?id=83980
+    https://rt.cpan.org/Ticket/Display.html?id=47968</comment>
+    <requestid>399320</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>544c845ee23f4795917b8331129148f4</srcmd5>
+    <version>1.26</version>
+    <time>1468048752</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>404405</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>3bc7b8179eaec24c8b02a1bba825b6bd</srcmd5>
+    <version>1.27</version>
+    <time>1503307934</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>516833</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>b7ae68b7d5dd682bf24c1826419f26c5</srcmd5>
+    <version>1.28</version>
+    <time>1504617218</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>520456</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>e6af05bb29daffe6ba72272942642718</srcmd5>
+    <version>1.29</version>
+    <time>1513676726</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 1.29
+   see /usr/share/doc/packages/perl-libintl-perl/Changes
+</comment>
+    <requestid>556960</requestid>
+  </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>dabcc511dc4fd8ee4ce33eec5afa6396</srcmd5>
+    <version>1.29</version>
+    <time>1541746260</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>646045</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>2048bf76580dafaa752e7209ab11e8f4</srcmd5>
+    <version>1.31</version>
+    <time>1544441280</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>655846</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>40857da144b7ebdd0880a37d1e56c8b6</srcmd5>
+    <version>1.32</version>
+    <time>1604054760</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>844248</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>1ba17dc9d59304f22a1290d4f8afe727</srcmd5>
+    <version>1.33</version>
+    <time>1673359142</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1056994</requestid>
+  </revision>
+</revisionlist>
