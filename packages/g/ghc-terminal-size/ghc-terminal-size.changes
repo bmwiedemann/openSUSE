@@ -1,0 +1,42 @@
+-------------------------------------------------------------------
+Thu Mar 30 17:08:33 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
+Mon Mar 13 14:27:31 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update terminal-size to version 0.3.4.
+  0.3.4
+  =====
+
+    * Provided `hSize` on Windows. (https://github.com/biegunka/terminal-size/pull/18)
+
+-------------------------------------------------------------------
+Sun Mar 20 20:34:59 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update terminal-size to version 0.3.3.
+  0.3.3
+  =====
+
+    * Fixed ioctl foreign import. (https://github.com/biegunka/terminal-size/pull/16)
+
+    * `#alignment` is a hsc2hs built-in since some unspecified GHC 7.x. (https://github.com/biegunka/terminal-size/pull/12)
+
+    * Captured possible `stty` stderr output with a pipe. (https://github.com/biegunka/terminal-size/pull/13)
+
+-------------------------------------------------------------------
+Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+ 
+- disable %{ix86} build
+ 
+-------------------------------------------------------------------
+Tue Aug 18 10:46:13 UTC 2020 - Peter Simons <psimons@suse.com>
+
+- Replace %setup -q with the more modern %autosetup macro.
+
+-------------------------------------------------------------------
+Tue Jun  9 09:26:14 UTC 2020 - psimons@suse.com
+
+- Add terminal-size at version 0.3.2.1.
+
