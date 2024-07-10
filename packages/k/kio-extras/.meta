@@ -1,0 +1,9 @@
+<package name="kio-extras" project="openSUSE:Factory">
+  <title>Additional KIO slaves for KDE applications</title>
+  <description>Additional KIO-slaves for KDE applications.
+
+# kcm_trash.desktop conflicts with KF5's kio one. Only one is needed
+</description>
+  <devel project="KDE:Applications" package="kio-extras"/>
+  <url>https://www.kde.org</url>
+</package>

@@ -1,0 +1,75 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>df45fb55e154026de10dd6ac4a22fcd7</srcmd5>
+    <version>24.02.0</version>
+    <time>1710167296</time>
+    <user>anag+factory</user>
+    <comment>- Rename libkioarchive-devel to libkioarchive6-devel to not conflict
+  with kio-extras5</comment>
+    <requestid>1155572</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>ec34f81155f152eaad25c881eed68daf</srcmd5>
+    <version>24.02.0</version>
+    <time>1710776675</time>
+    <user>anag+factory</user>
+    <comment>- Make kio-extras conflict with kio-extras5 versions older
+  than 24.02.0
+- Recommend ffmpegthumbs</comment>
+    <requestid>1158612</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>9a8992ee5deb975809c0b88da9664a15</srcmd5>
+    <version>24.02.1</version>
+    <time>1711116996</time>
+    <user>anag+factory</user>
+    <comment>KDE release gear 24.02.1 (forwarded request 1159650 from krop)</comment>
+    <requestid>1160235</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>8fe4cfa88c61e9031f24edf49af82fec</srcmd5>
+    <version>24.02.2</version>
+    <time>1713204845</time>
+    <user>anag+factory</user>
+    <comment>- Update to 24.02.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.02.2/
+- Changes since 24.02.1:
+  * man, info: fix outdated use of kdoctools5-common resources, 6 variant now
+  * [thumbnail] Limit bits per pixel to 32 (kde#484183)</comment>
+    <requestid>1167650</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>ffc1f7771fd1485035b6c238bcb70c6e</srcmd5>
+    <version>24.02.2</version>
+    <time>1716406164</time>
+    <user>anag+factory</user>
+    <comment>- Make kcm_trash conflict with kio &lt; 5.116 only (boo#1221438)</comment>
+    <requestid>1175189</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>99a8f3b63b1c682e1fc1055667047ac2</srcmd5>
+    <version>24.05.0</version>
+    <time>1716803224</time>
+    <user>anag+factory</user>
+    <comment>KDE release 24.05.0 (forwarded request 1175936 from krop)</comment>
+    <requestid>1176306</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>363d78a35919814110d2f97214b29a0e</srcmd5>
+    <version>24.05.1</version>
+    <time>1718384310</time>
+    <user>anag+factory</user>
+    <comment>KDE release gear 24.05.1 (forwarded request 1180225 from krop)</comment>
+    <requestid>1180518</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>1663ed71e436d4791b0434c0b5ad55f3</srcmd5>
+    <version>24.05.2</version>
+    <time>1720201559</time>
+    <user>anag+factory</user>
+    <comment>KDE Release Gear 24.05.2 (forwarded request 1184893 from krop)</comment>
+    <requestid>1185562</requestid>
+  </revision>
+</revisionlist>
