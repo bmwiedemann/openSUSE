@@ -1,0 +1,1953 @@
+-------------------------------------------------------------------
+Sun Jun  9 01:48:55 UTC 2024 - Alessandro de Oliveira Faria <cabelo@opensuse.org>
+
+- update to 4.10.0,  highlights below, for details check
+  https://github.com/opencv/opencv/wiki/ChangeLog#version4100
+  * Core Module:
+    + Added CV_FP16 data type for cv::Mat #24892, #24918.
+      Deprecated convertFp16 function, added FP16 support to
+      cv::Mat::convertTo and analogs.
+    + Fixed undefined behaviour in some cases related to FP16
+      arithmetic #25598 + Extended HAL API for minMaxIdx #25563,
+      LUT #25554, meanStdDev #25483, moments 25490, 
+      normHamming #25491. HAL entries for transpose #25342, 
+      some arithmetic functions #25574, #25506
+    + Persistence: output reals as human-friendly expression.
+      #25351
+    + Added cgroups v2 support to parallel framework #25285
+    + Added in-place support for cartToPolar and polarToCart 
+      #24893
+  * Imgproc Module:
+    + Added relative displacement field option to cv::remap #24621
+    + Added new findContours implementation #25146, #25680, #25385
+    + Refactored EMD algorithm to get rid of C-API usage #25469
+    + Fixed bug in stackBlur with large kernels #25513
+    + Extended HAL for projectPoints #25511, equalizeHist #25565,
+      Otsu threshold #25509. Added new HAL entries for 
+      gaussianBlur#25397, remap #25399, bilaterialFilter #25343.
+  * Calib3d Module:
+    + Fixed several bugs in hand-eye calibration methods #24897,
+      #25423
+    + Fixed several bugs in findHomography implementation 
+      #25308, #25665
+    + Multiple improvements in findChessboardCorners 
+      implementation: #25365, 25195, 25177, 25182, 25145, 24779,
+       24710, 24833, 25090
+    + Improved symmetric circles grid pattern detection #25258
+    + Fixed possible infinite loop in USAC #24987
+    + Changed approach for initial estimation for focal length in
+      fisheye calibration #25030
+    + Added solvePnP implementation for Fisheye camera model #25028
+  * DNN module:
+    + Significantly improved DNN memory consumption #25181, 25163
+    + Added Net::dumpToPbtxt method to review optimized graph with
+      Netron #25582
+    + Added support for several TFLite layers: Global_Pool_2D
+      #25613, Transpose #25297, HardSwishInt8 #24985, split, fully
+      connected, SoftMax, Cast #25273.
+    + Fixed bugs in several ONNX layers: Slice #25660, Range 
+      #25414, Clip #25319, ReduceMean #25120, Einsum #25100, 
+      Norm #24808, negative axis support in Concat #24865.
+    + Added new ONNX layers: Mod #24765, GroupNorm layer #24610.
+    + Added more DNN layers with OpenVINO #25524, #25291, 25518.
+    + Optimized fastDepthwiseConv #25361 and int8 layers 25230 for
+      RISC-V with RVV extension
+    + Optimized fastDepthwiseConv for RISC-V P Packed SIMD 
+      Extension v0.5.2 #24556
+    + Optimized Attention #24476, #25271, #25238, #24613, 25076.
+    + Added parallel version for scatter and scatterND #24813
+    + Added broadcasting if a.rank() != b.rank() with 
+      CuDNN backend #24834
+    + Tuned Winograd algorithm usage for convolutions #24709
+    + Added Raft model support and tracking sample with it #24913
+    + Added Vulkan backend for NaryEltwiseLayer in DNN 
+      module #24768
+    + Imporved modern Yolo detectors support. Added sample and
+      documentation #24898, #24611
+    + Added CuDNN 9+ support #25412
+    + Added OpenVINO 2024 support #25199
+  * G-API module:
+    + Ported G-API ONNXRT backend into V2 API #25662
+    + Implement concurrent executor #24845
+    + A quick value-initialization support GMat #25055
+    + Fixed support of mean/scale preprocessing in OV backend for
+      non-real types #24704
+  * Objdetect module:
+    + Fixed inaccurate Charuco board generation in some cases
+      (.generateImage()) #24873, #25673
+    + Fixed Aruco detector thread safety issue #24807, made Aruco
+      detector more deterministic #24829
+    + Added QR codes Structured Append decoding mode #24548
+    + Several bug fixes in QR code detector and decoder #25026
+    + Fixed barcode detectAndDecode #25035
+    + Ported remaning Aruco and Charuco documentation and samples
+      to modern API #23018
+  * VideoIO:
+    + Fix race condition in InternalFFMpegRegister initialization.
+      #25419
+    + Orbbec Camera supports MacOS，Gemini2 and Gemini2L support Y16
+      format #24877
+    + Added V4L2_PIX_FMT_SGRBG8 pixel format support to V4L2 backend
+      #25249
+    + Fix incorrect timestamps returned by VideoCapture when
+      CAP_PROP_FORMAT == -1 #24828
+  * Python Bindings:
+    + Experimental NumPy 2.0 support
+    + Added python bindings for Rect2f and Point3i #24919
+    + Switched to numeric dtype for MatLike instead of generic
+      #25406
+    + Added path-like objects support wherever file names are
+      expected #24773
+  * Platforms support:
+    + CUDA 12.4+ support #25658
+    + Wayland back-end for Linux #25551, #25510, #25502
+    + New LAPACK interface support on MacOS and derivatives 
+      #24804, #25625
+    + Added initial version of HAL for RISC-V processors with
+      P-extension (v0.5.2, Andes platforms) #25167
+    + Added ARM KleidiCV as HAL for ARM v8 and v9 processors
+      (-DWITH_KLEIDICV=ON CMake option) #25443, #25618, ARM
+      announcement.
+    + Added zlib-ng as alternative to classic zlib
+      (-DWITH_ZLIB_NG=ON CMake option) #24782
+    + OneAPI 2024 support (IPP, TBB)
+
+-------------------------------------------------------------------
+Fri Jan 19 20:01:43 UTC 2024 - Axel Braun <axel.braun@gmx.de>
+
+- Add %{?sle15allpythons} and build python bindings for all
+  configured versions (also for Tumbleweed)
+
+-------------------------------------------------------------------
+Sat Dec 30 15:54:41 UTC 2023 - Alessandro de Oliveira Faria <cabelo@opensuse.org>
+
+- update to 4.9.0,  highlights below, for details check
+  https://github.com/opencv/opencv/wiki/ChangeLog#version490
+  Highlights of this release:
+  * Core Module:
+    + Added cv::broadcast
+    + Fixed several rounding issues on ARM platform
+    + Added detection & dispatching of some modern NEON
+      instructions (NEON_FP16, NEON_BF16)
+    + Added optimization for LoongArch 128-bit vector,
+      detection & dispatching of LoongArch
+  * DNN module patches:
+    + Experimental transformers support
+    + ONNX Attention layer support
+    + ONNX Einsum layer support
+    + OpenVINO backend for INT8 models
+    + ONNX Gather Elements layer
+    + ONNX InstanceNorm layer
+    + Better support of ONNX Expand layer with cv::broadcast
+    + Improved DNN graph fusion with shared nodes and commutative
+      operations
+    + New fastGEMM implementation and several layers on top of it
+    + Winograd fp16 optimizations on ARM
+    + Tests and multiple fixes for Yolo family models support
+    + New layers support and bug fixes in CUDA backend: GEMM,
+      Gelu, Add
+    + CANN backend: bug fix, support HardSwish, 
+      LayerNormalization and InstanceNormalization
+    + LayerNormalization: support OpenVINO, OpenCL and 
+      CUDA backend.
+  * G-API module:
+    + Intel® OpenVINO™ DL inference backend:
+      - Introduced "inferenence only" ("benchmark") mode 
+        in the OV2.0 backend.
+      - Fixed model layout setting issue in the OV2.0 backend.
+      - Fixed/relaxed various asserts in the OV2.0 backend.
+    + Core and image processing functionality:
+      - Fluid kernels were rewritten to new universal intrinsics.
+        Thanks for this contribution!
+    + Streaming and video functionality:
+      - Introduced a QueueSource: an alternative way to manually
+        push input frames to the G-API pipeline in the streaming
+        mode.
+      - Introduced VAS Object Tracker (OT) for the various video
+        analytics scenarios.
+    +  Python bindings:
+      - Exposed VAS OT in G-API Python bindings.
+    + Other changes and fixes:
+      - Updated ADE (the G-API's graph library) to the latest
+        version.
+      - Various code clean-ups and warning fixes.
+  * Objdetect module:
+    + Implemented own QR code decoder as replacement for QUIRC
+      library
+    + Bug fixes in QR code encoder version estimation
+    + More accurate Aruco marker corner refinement with
+      dynamic window
+    + Fixed contour filtering in ArUco
+    + QR code detection sample for Android
+    + Multiple local bug fixes and documentation update for
+      Aruco makers, Charuco boards and QR codes.
+  * Video:
+    + Google Summer of Code: added a new object tracking API
+      TrackerVit for a vision transformer-based VitTrack. 
+      This work is done by LIU Pengyu.
+  * VideoIO:
+    + Videoio: Add raw encoded video stream encapsulation
+      to cv::VideoWriter with CAP_FFMPEG
+    + Fix GStreamer backend with manual pipelines.
+  * Calibration module:
+    + Multiple fixes and improvements chess board calibration
+      rig detector.
+    + calibrateCamera throws exception, if calibration system
+      is underconstrained.
+    + Fixed bug in findEssentialMat with USAC
+    + Fixed out-of-image access in cv::cornerSubPix
+    + Fixed crash in ap3p
+    + Fixed stereoRectify image boundaries
+    + Fixed "use after free" issue in essential_solver.cpp
+  * Python Bindings:
+    + Added type stub generation for missed types and manually
+      wrapped types.
+    + Added read-only flag handling for Numpy arrays.
+    + Fixed exception handling and bindings for in module.
+    + Improved error messages in Numpy array type handling.
+    + Fixed constructors documentation in Python.
+  * Platforms and hardware Support:
+    + Experimental CUDA support as first class language in CMake
+    + Added experimental support for Apple VisionOS platform
+    + Add support Orbbec Gemini2 and Gemini2 XL camera
+    + Fix fullscreen behavior on macOS
+  * Other:
+    + OpenCV Summer of Code: semi-automated refactoring across
+      multiple pull requests by HAN Liutong made our CPU-optimized
+      code compatible with SIMD with variable vector
+      length (RISC-V RVV)
+
+-------------------------------------------------------------------
+Sun Oct  1 22:45:15 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- update to 4.8.1
+  * WebP security update for CVE-2023-4863
+  * Depthwise convolution 5x5 performance regression fix
+- update to 4.8.0, highlights below, for details check
+  https://github.com/opencv/opencv/wiki/ChangeLog#version480
+  Highlights of this release:
+  * DNN module patches:
+    + TFLite models support, including int8 quantized models.
+    + Enabled DNN module build without Protobuf dependency.
+    + Improved layers => supported more models:
+      - ONNX: Layer normalization, GELU and QLinearSoftmax.
+      - Fixes in CANN backend:
+        * support ONNX Split, Slice, Clip (Relu6) and
+          Conv with auto_pad.
+        * support ONNX Sub, PRelu, ConvTranspose.
+      - Reduce Refactor for robustness and potential
+        follow-up improvements.
+      - Fixes for Segment Anything Model by Meta.
+      - Fixes in nary element wise layer about broadcast:
+        * Fixes in CPU.
+        * and Fixes in CUDA backend.
+      - Further increased DNN speed on ARM and X86 by improving
+        convolution, covering 1D and 3D cases, supporting
+        convolution+element-wise op fusion.
+      - Added full FP16 computation branch on ARMv8 platform, 1.5x
+        faster than FP32 (FP16 Winograd is still pending).
+      - Vulkan backend refactor for better performance and
+        robustness. It runs 4X faster than before.
+      - Added API blobFromImageParam to build network inputs
+        with pre-processings.
+      - Modern OpenVINO support.
+  * G-API module:
+    + Intel® OpenVINO™ inference backend:
+      - Streamlined preprocessing in OpenVINO
+        Inference Engine (ie) API 1.0 backend. Note: this backend
+        will be deprecated after OpenVINO removes the API 1.0
+        support in its subsequent releases.
+      - Aligned OpenVINO IE API 1.0 backend with the latest
+        OpenVINO 2023.0 (as some features were removed there).
+      - Introduced a brand new OpenVINO API 2.0 backend.
+      - Implemented the required inference operations for
+        the OpenVINO API 2.0 backend.
+    + Python bindings:
+      - Exposed varions normalization options for ONNX RT
+        backend in Python bindings.
+      - Exposed Fluid kernels and kernel package manipulation
+        functions (combine()) in Python.
+      - Fixed issues in Stateful Python kernel state
+        handling; also fixed various issues in Python tests.
+      - Fixed issue with opaque kernel output information
+        handling which broke Python custom kernels.
+    + Samples:
+      - Introduced a new Segmentation demo with desync() to enable
+        slow-running networks in the real-time.
+      - Updated stats calculation in the G-API-based pipeline
+        modelling tool.
+    + Other changes and fixes:
+      - Fixed tolerance in Fluid resize tests to avoid issues
+        on ARM.
+      - Fluid backend: extended Merge3 kernel with more
+        supported data types.
+      - Fixed standalone mode compilation issues.
+  * Objdetect module:
+    + FaceDetectorYN upgrade for better performance,
+      accuracy and facial landmarks support.
+    + New QR code detection algorithm based on ArUco code.
+    + Bar code detector and decoder moved from Contrib to
+      main repository.
+    + Introduced common API for all graphical codes like bar
+      codes and QR codes.
+    + Added flag for legacy pre-4.6.0 ChAruco boards support.
+    + Multiple bug fixes and improvements in QR code detection
+      and decoding pipelines.
+    + Multiple bug fixes and improvements in ArUco based pipelines.
+  * Calibration module:
+    + USAC framework improvements.
+    + Fixed stddev estimation in camera calibration pipelines.
+    + Fixed incorrect pixel grid generation in icvGetRectangles
+      that improves accuracy of getOptimalNewCameraMatrix,
+      stereoRectify and some other calibration functions.
+      Charuco board support in patterns generator, interactive
+      calibration tool and calibration samples.
+  * Image processing module:
+    + Various fixes in line segments detector.
+    + Fixed even input dimensions for INTER_NEAREST_EXACT
+      in resize.
+    + Optimise local cost computation in
+      IntelligentScissorsMB::buildMap.
+    + Keep inliers for linear remap with BORDER_TRANSPARENT
+    + Fix distransform to work with large images.
+  * Features2d module:
+    + SIFT accuracy improvements.
+  * Core module:
+    + Added REDUCE_SUM2 option to cv::reduce.
+    + Introduced cv::hasNonZero function.
+    + Update IPP binaries update to version 20230330.
+    + Improved RISC-V RVV vector extensions support.
+      - Support RVV v0.11 intrinsics available in LLVM 16
+        and GCC 13
+      - Support build with T-Head RISC-V toolchain
+        (RVV 0.7.1 and 1.0)
+    + Several OpenCL vendor and version handling improvements.
+  * Multimedia:
+    + Added AVIF support through libavif.
+    + Orbbec Femto Mega cameras support.
+    + HEVC/H265 support in VideoWriter with MS Media
+      Foundation backend.
+    + Fixed FPS computation on some videos for FFmpeg backend.
+    + Added support for VideoCapture CAP_PROP_AUTO_WB and
+      CV_CAP_PROP_WHITE_BALANCE_BLUE_U for DShow backend.
+    + Fixes OBS Virtual Camera capture.
+    + CV_32S encoding support with tiff.
+  * Python Bindings:
+    + Python typing stubs.
+    + Fix reference counting errors in registerNewType.
+    + Fixed ChAruco and diamond boards detector bindings.
+    + Added bindings to allow GpuMat and Stream objects to
+      be initialized from memory initialized in other libraries
+    + np.float16 support.
+    + Python bindings for RotatedRect, CV_MAKETYPE, CV_8UC(n).
+  * JavaScript bindings:
+    + Added possibility for disabling inlining wasm in opencv.js
+    + Extended JS bindings for Aruco, Charuco, QR codes and
+      bar codes.
+  * Other:
+    + Several critical issue fixes in wechat_qrcode module
+      (opencv_contrib)
+
+-------------------------------------------------------------------
+Thu Dec 29 09:59:55 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- update to 4.7.0, highlights below, for details check
+  https://github.com/opencv/opencv/wiki/ChangeLog#version470
+  Highlights of this release:
+  * DNN:
+    + New ONNX layers: Scatter and ScatterND, Tile, ReduceL1,
+      ReduceMin and more.
+    + Signinficant performance optimization for convolutions.
+      Winograd algoritm implementation.
+    + Element-wise operation (add, sub, mul, div, ...):
+      Broadcasting.
+    + OpenVino 2022.1 support.
+    + CANN backend support.
+  * Algorithms:
+    + ArUco markers and April tags support including ChAruco and
+      diamond boards detection and calibration.
+    + QR code detection and decoding quality imrovement. Alignment
+      markers support. Benchmark for QR codes: link
+    + Nanotrack v2 tracker based on neural networks.
+    + Stackblur algoruthm implementation.
+  * Multimedia:
+    + FFmpeg 5.x support.
+    + CUDA 12.0 support. Hardware accelerated video codecs support
+      on NVIDIA platforms with modern Video Codec SDK (NVCUVID and
+      NVENCODEAPI).
+    + CV_16UC1 read/write video support with FFmpeg.
+    + Orientation meta support on Mac with native media API.
+    + New iterator-based API for multi-page image formats.
+    + libSPNG support for PNG format.
+    + SIMD acceleration for self-built libJPEG-Turbo
+    + H264/H265 support on Android. Multiple fixes for video
+      decoder, endcoder and camera memory layout.
+  * G-API
+    + Exposed all core APIs to Python, including stateful kernels.
+  * Optimization:
+    + New universal intrinsics backend for scalable vector
+      instructions. The first scalable implementation for
+      RISC-V RVV 1.0.
+    + DNN module patches:
+      - Improved layers / supported more models:
+        *  Scatter and ScatterND #22529, Tile #22809
+        *  Fixes in Slice (support negative step #22898)
+        *  Support some reduce layers of ONNX #21601
+      - Added CANN backend support #22634. Link to the manual:
+        https://github.com/opencv/opencv/wiki/Huawei-CANN-Backend.
+      - Added bacthed NMS for multi-class object detection #22857
+      - Accelerating convolution, especially for ARM CPU.
+      - Winograd's convolution optimization
+  + And many other contributions:
+    +   Added n-dimensional flip to core #22898
+    +   Add StackBlur for imgproc #20379
+- Removed upstream opencv-ffmpeg5.patch
+
+-------------------------------------------------------------------
+Tue Aug 23 11:22:38 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add upstream change to fix include issue with FFmpeg 5:
+  * opencv-ffmpeg5.patch
+
+-------------------------------------------------------------------
+Sun Jun 19 13:25:26 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- update to 4.6.0, highlights below, for details check
+  https://github.com/opencv/opencv/wiki/ChangeLog#version460
+  * OpenCV project infrastructure migrating on GitHub Actions
+    workflows for CI and release purposes
+  * Added support for GCC 12, Clang 15
+  * Added support for FFmpeg 5.0
+  * DNN module patches:
+    + Improved layers / activations / supported more models:
+      - LSTM (+CUDA), resize (+ONNX13), Sign, Shrink, Reciprocal,
+        depth2space, space2depth
+      - fixes in Reduce, Slice, Expand
+    + Disabled floating-point denormals processing #21521
+    + Changed layer names in ONNX importer to support "output"
+      entities properly
+    + Added TIM-VX NPU backend support:
+      https://github.com/opencv/opencv/wiki/TIM-VX-Backend-For-Running-OpenCV-On-NPU
+    + Added Softmax parameter to ClassificationModel
+    + Added audio speech recognition sample (C++) #21458
+    + Intel® Inference Engine backend (OpenVINO):
+      - added initial support for OpenVINO 2022.1 release
+      - removed support of legacy API (dropped since 2020.3)
+  * G-API module:
+    + G-API framework:
+      - Introduced a Grayscale image format support for
+        cv::MediaFrame: #21511;
+      - Enabeled .reshape() support in the CPU backend: #21669;
+      - Fixed possible hang in streaming execution mode with constant
+        inputs: #21567;
+      - Introduced proper error/exception propagation in the
+        asynchronous streaming execution mode: #21660;
+      - Fixed new stream event handling: #21731.
+    + Fluid backend:
+      - Fixed horizontal pass in the Resize kernel, fixed Valgrind
+        issues: #21144;
+      - Extended Resize kernel with F32 version: #21678,
+        added AVX: #21728.
+      - Enabled dynamic dispatch for Split4 kernel: #21520;
+      - Enabled dynamic dispatch for Merge3 kernel: #21529;
+      - Added a SIMD version for DivC kernel: #21474;
+      - Added a SIMD version for DivRC kernel: #21530;
+      - Enabled dynamic dispatch for Add kernel: #21686;
+      - Enabled dynamic dispatch for Sub kernel: #21746;
+      - Added a SIMD version for ConvertTo kernel: #21777;
+      - Fixed kernel matrix size for Sobel kernel: #21613.
+    + Intel® OpenVINO™ inference backend:
+      - Fixed NV12 format support for remote memory when OpenVINO
+        remote context is used: #21424.
+      - Implemented correct error handling in the backend: #21579.
+      - Fixed ngraph warnings #21362.
+    + OpenCV AI Kit backend:
+      - Introduced a new backend to program OpenCV AI Kit boards via
+        G-API. Currently the backend is in experimental state, but allows
+        to build Camera+NN pipeline and supports heterogeneity (mixing
+        with host-side code): #20785, #21504.
+    + Media integration:
+      - Enabled GPU inference with oneVPL and DirectX11 on Windows in
+        Intel OpenVINO inference backend: #21232, #21618, #21658, #21687,
+        #21688. Now GPU textures decoded by oneVPL decoder can be
+        preprocessed and inferred on GPU with no extra host processing.
+      - Enabled oneVPL support on Linux: #21883.
+      - Extended GStreamer pipeline source with Grayscale image format
+        support: #21560.
+    + Python bindings:
+      - Exposed GStreamer pipeline source in Python bindings: #20832.
+      - Fixed Python bindings for CudaBufferPool, cudacodec and cudastereo
+        modules in OpenCV Contrib.
+    + Samples:
+      - Introduced a pipeline modelling tool for cascaded model
+        benchmarking: #21477, #21636, #21719. The tool supports a
+        declarative YAML-based config to describe pipelines with simulated
+        pre-/post-processing. The tool collects and reports latency and
+        throughput information for the modelled pipeline.
+    + Other changes and fixes:
+      - Moved GKernelPackage into cv:: namespace by default, its cv::gapi::
+        alias remain for compatibility: #21318;
+      - Moved Resize kernel from core to imgproc kernel packages for
+        CPU, OpenCL, and Fluid backends: #21157. Also moved tests
+        appropriately: #21475;
+      - Avoided sporadic test failures in DivC: #21626;
+      - Fixed 1D Mat handling in the framework: #21782;
+      - Reduced the number of G-API generated accuracy tests: #21909.
+- Drop upstream patches:
+  * 0001-highgui-Fix-unresolved-OpenGL-functions-for-Qt-backe.patch
+  * videoio_initial_FFmpeg_5_0_support.patch
+  * videoio_ffmpeg_avoid_memory_leaks.patch
+
+-------------------------------------------------------------------
+Fri Apr 29 16:54:16 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Add upstream patches for FFmpeg 5.0 support, add
+  * videoio_initial_FFmpeg_5_0_support.patch
+  * videoio_ffmpeg_avoid_memory_leaks.patch
+
+-------------------------------------------------------------------
+Sat Apr  9 17:42:50 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Restore memoryperjob constraint, avoid being scheduled on a 16
+  core system and use less than half of it.
+- Adjust %limit_build to 1800, to avoid recurrent build failures
+  on aarch64. (People should not care for their pet architecture
+  only, but also carefully check if they break others.)
+- Add missing libopencv_aruco dependency in devel package.
+
+-------------------------------------------------------------------
+Mon Jan 10 11:08:32 UTC 2022 - Antonio Larrosa <alarrosa@suse.com>
+
+- Remove the memoryperjob constraint which doesn't work as one
+  would expect and breaks ppc64 builds.
+- Use %limit_memory -m 1700 to set the number of concurrent
+  jobs to a sane value and fix OOM errors when building in
+  workers with many cores.
+- Decrease the disk constraint to 9G which seems to be enough
+
+-------------------------------------------------------------------
+Sat Dec 25 17:43:11 UTC 2021 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- update to 4.5.5, highlights below, for details check
+  https://github.com/opencv/opencv/wiki/ChangeLog#version455
+  * Audio support as part of VideoCapture API: GStreamer #21264
+  * Updated SOVERSION handling rules: #21178
+  * DNN module patches:
+    + Added tests to cover ONNX conformance test suite: #21088
+    + Improved layers / activations / supported more models
+    + Upgraded builtin protobuf from 3.5.2 to 3.19.1
+    + More optimizations for RISC-V platform
+    + Intel® Inference Engine backend ( OpenVINO™ ):
+            added support for OpenVINO 2021.4.2 LTS release
+  * G-API module:
+    + G-API framework:
+      - Fixed issue with accessing 1D data from cv::RMat: #21103
+      - Restricted passing the G-API types to graph inputs/outputs
+        for execution: #21041
+      - Various fixes in G-API Doxygen reference: #20924
+      - Renamed various internal structures for consistency #20836 #21040
+    + Fluid backend:
+      - Introduced a better vectorized version of Resize: #20664.
+      - Added vectorized version of Multiply kernel: #21024
+      - Added vectorized version of Divide kernel: #20914
+      - Added vectorized version of AddC kernel: #21119
+      - Added vectorized version of SubC kernel: #21158
+      - Added vectorized version of MulC kernel: #21177
+      - Added vectorized version of SubRC kernel: #21231
+      - Enabled SIMD dispatching for AbsDiffC: #21204
+    + OpenCL backend:
+      - Fixed sporadic test failures in Multiply kernel running
+        on GPU: #21205
+    + Intel® OpenVINO™ inference backend:
+      - Extended ie::Params to support static batch size as input
+        to inference: #20856
+      - Enabled 2D input tensor support in IE backend: #20925
+      - Fixed various issues with imported (pre-compiled)
+        networks: #20918
+    + Media integration:
+      - Introduced a GStreamer-based pipeline source for
+        G-API: #20709
+      - Completed the integration of Intel® oneVPL as a pipeline
+        source for G-API #20773 with device selection #20738,
+	asynchronous execution #20901, intial demux support #21022,
+	and GPU-side memory allocation via DirectX 11 #21049.
+    + Samples:
+      - Replaced custom kernels with now-standard G-API operations
+        in several samples #21106
+      - Moved API snippets from G-API samples to a dedicated
+        place #20857
+    + Other changes and fixes:
+      - Fixed various static analysis issues for OpenVINO 2021.4
+        release: #21083 and #21212
+      - Fixed various build warnings introduced after OpenVINO
+        update: #20937
+      - Continued clean-up in the G-API test suite on GTest macros
+        #20922 and test data #20995
+      - Added custom accuracy comparison functions to Fluid
+        performance tests: #21150.
+  * And many other contributions:
+    + Added QRcode encoder: #17889
+    + GSoC - OpenCV.js: Accelerate OpenCV.js DNN via WebNN: #20406
+    + Add conventional Bayer naming: #20970
+    + (opencv_contrib) Add Radon transform function to ximgproc: #3090
+    + (opencv_contrib) New superpixel algorithm (F-DBSCAN): #3093
+    + Created Stitching Tool: #21020
+    + Improve CCL with new algorithms and tests: #21275
+    + (opencv_contrib) Update ArUco tutorial: #3126
+- Adjust memory constraints (mostly required for aarch64 on Leap)
+- Add 0001-highgui-Fix-unresolved-OpenGL-functions-for-Qt-backe.patch
+
+-------------------------------------------------------------------
+Wed Nov 24 21:53:53 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.5.4:
+  * 8-bit quantization in the dnn module
+  * Improved Julia bindings
+  * Speech recognition sample
+  * dnn module optimizations for RISC-V
+  * Tutorial about universal intrinsics and parallel_for usage
+  * Improvements in the dnn module:
+    - New layers and models support
+    - Some existing layers have been fixed
+    - Soft-NMS implementation
+    - Supported OpenVINO 2021.4.1 LTS release 
+
+-------------------------------------------------------------------
+Mon Aug 30 09:20:06 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Remove dependency on IlmBase, opencv never uses this directly.
+
+-------------------------------------------------------------------
+Sat May  1 12:25:46 UTC 2021 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- update to 4.5.2, highlights below, for details check
+  https://github.com/opencv/opencv/wiki/ChangeLog#version452
+  * core: added support for parallel backends.
+  * imgproc: added IntelligentScissors implementation (JS demo).
+  * videoio: improved hardware-accelerated video de-/encoding tasks.
+  * DNN module:
+    + Improved debugging of TensorFlow parsing errors: #19220
+    + Improved layers / activations / supported more models:
+      - optimized: NMS processing, DetectionOutput
+      - fixed: Div with constant, MatMul, Reshape
+        (TensorFlow behaviour)
+      - added support: Mish ONNX subgraph, NormalizeL2 (ONNX),
+        LeakyReLU (TensorFlow), TanH + SAM (Darknet), Exp
+    + Intel® Inference Engine backend ( OpenVINO™ ):
+      added support for OpenVINO 2021.3 release
+  * G-API module:
+    + Python support:
+      - Introduced a new Python backend - now G-API can run custom
+        kernels written in Python as part of the pipeline: #19351
+      - Extended Inference support in the G-API bindings: #19318
+      - Added more graph data types in the G-API bindings: #19319
+    + Inference support:
+      - Introduced dynamic input / CNN reshape functionality in the
+        OpenVINO inference backend #18240
+      - Introduced asynchronous execution support in the OpenVINO
+        inference backend, now it can run in multiple parallel
+	requests to increase stream density/throughput: #19487, #19425
+      - Extended supported data types with INT64/INT32 in ONNX
+        inference backend and with INT32 in the OpenVINO inference
+	backend #19792
+      - Introduced cv::GFrame / cv::MediaFrame and constant support
+        in the ONNX backend: #19070
+    + Media support:
+      - Introduced cv::GFrame / cv::MediaFrame support in the
+        drawing/rendering interface: #19516
+      - Introduced multi-stream input support in Streaming mode
+        and frame synchronization policies to support cases like
+	Stereo: #19731
+      - Added Y and UV operations to access NV12 data of cv::GFrame
+        at the graph level; conversions are done on-the-fly if the
+	media format is different: #19325
+    + Operations and kernels:
+      - Added performance tests for new operations (MorphologyEx,
+        BoundingRect, FitLine, FindContours, KMeans, Kalman,
+	BackgroundSubtractor)
+      - Fixed RMat input support in the PlaidML backend: #19782
+      - Added ARM NEON optimizations for Fluid AbsDiffC, AddWeighted,
+        and bitwise operations: #18466, #19233
+      - Other various static analysis and warning fixes
+    + Documentation:
+      - [GSoC] Added TF/PyTorch classification conversion: #17604
+      - [GSoC] Added TF/PyTorch segmentation conversion: #17801
+      - [GSoC] Added TF/PyTorch detection model conversion: #18237
+      - Updated documentation to address Wide Universal Intrinsics
+	(WUI) SIMD API: #18952
+    + And many other great contributions from OpenCV community:
+      - core: cuda::Stream constructor with stream flags: #19286
+      - highgui: pollKey() implementation for w32 backend: #19411
+      - imgcodecs: Added Exif parsing for PNG: #19439
+      - imgcodecs: OpenEXR compression options: #19540
+      - imgproc: connectedComponents optimizations: (Spaghetti
+        Labeling): #19631
+      - videoio: Android NDK camera support #19597
+      - (contrib) WeChat QRCode module open source: #2821
+      - (contrib) Implemented cv::cuda::inRange(): #2803
+      - (contrib) Added algorithms from Edge Drawing Library: #2313
+      - (contrib) Added Python bindings for Viz module: #2882
+- Add libva build dependency for HW accelerated videoio
+- Slight bump for memory constraints
+
+-------------------------------------------------------------------
+Thu Feb 11 10:49:40 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Enable aruco module (recognize markers to detect camera pose)
+
+-------------------------------------------------------------------
+Sat Jan  2 16:30:59 UTC 2021 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- update to 4.5.1, highlights below, for details check
+  https://github.com/opencv/opencv/wiki/ChangeLog#version451
+  * Continued merging of GSoC 2020 results:
+    + Develop OpenCV.js DNN modules for promising web use cases
+      together with their tutorials
+    + OpenCV.js: WASM SIMD optimization 2.0
+    + High Level API and Samples for Scene Text Detection and
+      Recognition
+    + SIFT: SIMD optimization of GaussianBlur 16U
+  * DNN module:
+    + Improved layers / activations / supported more models:
+      - optimized: 1D convolution, 1D pool
+      - fixed: Resize, ReduceMean, Gather with multiple outputs,
+        importing of Faster RCNN ONNX model
+      - added support: INT32 ONNX tensors
+    + Intel® Inference Engine backend (OpenVINO):
+      - added support for OpenVINO 2021.2 release
+      - added preview support for HDDL
+    + Fixes and optimizations in DNN CUDA backend (thanks to
+      @YashasSamaga)
+  * G-API Framework:
+    + Introduced serialization for cv::RMat, including
+      serialization for user-defined memory adapters
+    + Introduced desync, a new Operation for in-graph asynchronous
+      execution - to allow different parts of the graph run with
+      a different latency
+    + Introduced a notion of "in-graph metadata", now various
+      media-related information can be accessed in graph directly
+      (currently only limited to timestamps and frame IDs)
+    + Introduced a new generic task-based executor, based on
+      Threading Building Blocks (TBB)
+    + Extended infer<>() API to accept a new cv::GFrame data
+      structure to allow handling of various media formats without
+      changes in the graph structure
+    + Made copy() an intrinsic where real copy may not happen
+      (optimized out) based on graph structure, extended it to
+      support cv::GFrame
+    + Various fixes, including addressig static analysis,
+      documentation, and test issues
+  * G-API Operations:
+    + Introduced new operations morphologyEx, boundingRect,
+      fitLine, kmeans, Background Subtractor, Kalman filter
+  * G-API Intel® Inference Engine backend (OpenVINO):
+    + Extended cv::gapi::ie::Params<> to import CNN networks (e.g.
+      pre-compiled ones) instead of passing .XML and .BIN files;
+      also enabled configuring Inference Engine plugins via
+      this structure
+    + Added a new overload to infer<>() to run inference over a
+      single region of interest
+    + Added support for cv::MediaFrame input data type (projected
+      from cv::GFrame) and handling for NV12 input image format
+  * G-API Python bindings:
+    + Exposed G-API's Inference and Streaming APIs in the OpenCV
+      Python bindings
+    + Added initial Python support for cv::GArray data structure
+  * Significant progress on RISC-V port.
+- Updated constraints, bump memory to 5 GB
+- Cleaned up spec file
+
+-------------------------------------------------------------------
+Mon Nov  2 20:16:43 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Split library package, move all libraries with external
+  dependencies (Qt5, ffmpeg, gstreamer) into separate packages
+- Move haar and LBP cascades into separate package, pull in from
+  objdetect and face (detect) libraries.
+
+-------------------------------------------------------------------
+Wed Oct 28 21:15:42 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- update to 4.5.0, see
+  https://github.com/opencv/opencv/wiki/ChangeLog#version450
+  for details, highlights:
+  * OpenCV license has been changed to Apache 2 (OpenCV 3.x will
+    keep using BSD)
+  * GSoC is over, all projects were success and most of them have
+    already been merged. Optimizations for RISC-V, bindings for
+    Julia language, real-time single object tracking, improved SIFT
+    and others
+  * OpenJPEG is now used by default for JPEG2000
+  * Supported multiple OpenCL contexts
+  * Improvements in dnn module:
+    + Support latest OpenVINO 2021.1 release
+    + Tengine lite support for inference on ARM
+    + Many fixes and optimizations in CUDA backend
+  * Added Python bindings for G-API module
+  * Multiple fixes and improvements in flann module
+  * Added Robot-World/Hand-Eye calibration function
+
+-------------------------------------------------------------------
+Sun Sep 13 16:55:46 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 4.4.0:
+  * SIFT (Scale-Invariant Feature Transform) algorithm has been
+  moved to the main repository (patent on SIFT is expired)
+  * DNN module:
+    * State-of-art Yolo v4 Detector: #17148.
+    * onnx: Add support for Resnet_backbone
+    * EfficientDet models
+    * add text recognition sample / demo
+    * FlowNet2 optical flow
+  * Intel Inference Engine backend
+    * added support for OpenVINO 2020.3 LTS / 2020.4 releases
+    * support of NN Builder API is planned for removal in the next release
+  * Many fixes and optimizations in CUDA backend
+  * Obj-C / Swift bindings: #17165
+  * Julia bindings as part of ongoing GSoC project
+  * BIMEF: A Bio-Inspired Multi-Exposure Fusion Framework for Low-light Image Enhancement
+  * Enable Otsu thresholding for CV_16UC1 images
+  * Add Stroke Width Transform algorithm for Text Detection
+  * Planned migration on Apache 2 license for next releases 
+- remove opencv-includedir.patch (obsolete)
+
+-------------------------------------------------------------------
+Thu Aug 20 09:02:23 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Use memoryperjob constraint instead of %limit_build macro.
+
+-------------------------------------------------------------------
+Sat Jun 13 22:03:12 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to 4.3.0
+  * DNN module:
+    + Improved layers / activations / supported more models:
+      - ONNX: LSTM, Broadcasting, Algebra over constants, Slice with
+	multiple inputs
+      - DarkNet: grouped convolutions, sigmoid, swish, scale_channels
+      - MobileNet-SSD v3: #16760
+    + New samples / demos:
+      - Clothes parts segmentation and CP-VTON
+      - DaSiamRPN tracker
+      Intel® Inference Engine backend (OpenVINO™):
+      - added support for custom layers through nGraph OpenVINO
+	API: #16628
+      - nGraph OpenVINO API is used by default: #16746
+    + Many fixes and optimizations in CUDA backend (thanks to
+      @YashasSamaga)
+    + OPEN AI LAB team submitted the patch that accelerates OpenCV
+      DNN on ARM using their Tengine library
+  * G-API module:
+    + Introduced a new graph-level data type GOpaque<T>. This type
+      can be used to pass arbitrary user data types between G-API
+      nodes in the graph (supported for CPU/OpenCV backend only).
+    + Introduced a way to declare G-API CPU (OpenCV) kernels in-place
+    + Added a new sample "Privacy masking camera", combining Deep
+      Learning with traditional Image Processing (link)
+    + Added more operations in the default library: WarpAffine,
+      WarpPerspective, NV12toGray.
+  * Performance improvements:
+    + IPP-ICV library with CPU optimizations has been updated to
+      version 2020.0.0 Gold
+    + SIMD intrinsics: integral, resize, (opencv_contrib) RLOF
+      implementation #2476
+  * And many other great contributions from OpenCV community:
+    + (opencv_contrib) Computer Vision based Alpha Matting
+      (GSoC 2019) #2306
+    + calib3d: findChessboardCornersSB improvements: #16625
+    + calib3d: updated documentation for RT matrices: #16860
+    + core: improved getNumberOfCPUs(): #16268
+    + imgproc: new algorithm HOUGH_GRADIENT_ALT is added to
+      HoughCircles() function #16561. It has much better recall
+      and precision
+    + imgcodecs: added initial support for OpenJPEG library
+      (version 2+): #16494
+    + highgui(Qt): added Copy to clipboard: #16677
+    + dnn: TensorFlow, Darknet and ONNX importers improvements
+      by @ashishkrshrivastava
+    + (opencv_contrib) added rapid module for silhouette based 3D
+      object tracking: #2356
+    + (opencv_contrib) SIFT detector is enabled by default due
+      patents expiration (without requirement of NONFREE build
+      option)
+    + help materials: OpenCV Cheat Sheet in Python: #4875
+  * Changes that can potentially break compatibility:
+    + image filtering functions throws exception on empty input
+      (voting results)
+- Packaging changes:
+  * Stop mangling CMake diagnostic output, no dependency versions
+    end up in the packages anyway, drop opencv-build-compare.patch
+  * Set empty OPENCV_DOWNLOAD_TRIES_LIST, skip downloads even when
+    network is available during builds (e.g. local build).
+  * Drop upstream GLES patches:
+    + 0001-Do-not-include-glx.h-when-using-GLES.patch
+    + opencv-gles.patch
+
+-------------------------------------------------------------------
+Fri Jun 12 14:18:41 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Disable Python 2 bindings for Tumbleweed.
+
+-------------------------------------------------------------------
+Tue Jan 21 11:38:08 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop Jasper (i.e jpeg2k) support (boo#1130404, boo#1144260)
+  JasPer is unmaintained, CVEs are not being addressed (some issues
+  received patches submitted to the upstream github project, but are
+  not being merged, other CVEs are considered unfixable). openSUSE
+  follows other distros in dropping JasPer now (much later than
+  most others, incl. Debian).
+
+-------------------------------------------------------------------
+Mon Jan 20 23:22:42 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Add webp build dependency to use system libwebp instead of bundled
+  one.
+- Enable dispatch of AVX512 optimized code.
+
+-------------------------------------------------------------------
+Wed Dec 25 01:25:00 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to 4.2.0
+  * DNN module:
+    + Integrated GSoC project with CUDA backend: #14827
+    + Intel® Inference Engine backend ( OpenVINO™ ):
+      - support for nGraph OpenVINO API (preview / experimental): #15537
+  * G-API module:
+    + Enabled in-graph inference: #15090. Now G-API can express more
+      complex hybrid CV/DL algorithms;
+      - Intel® Inference Engine backend is the only available now,
+        support for DNN module will be added in the future releases.
+    + Extended execution model with streaming support: #15216. Decoding,
+      image processing, inference, and post-processing are now pipelined
+      efficiently when processing a video stream with G-API.
+    + Added tutorials covering these new features: Face analytics
+      pipeline and a sample Face beautification algorithm.
+  * Performance improvements:
+    + SIMD intrinsics: StereoBM/StereoSGBM algorithms, resize, integral,
+      flip, accumulate with mask, HOG, demosaic, moments
+    + Muti-threading: pyrDown
+  * And many other great patches from OpenCV community:
+    + VideoCapture: video stream extraction (demuxing) through
+      FFmpeg backend.
+    + VideoCapture: waitAny() API for camera input multiplexing
+      (Video4Linux through poll() calls).
+    + (opencv_contrib) new algorithm Rapid Frequency Selective
+      Reconstruction (FSR): #2296 + tutorial.
+    + (opencv_contrib) RIC method for sparse match interpolation: #2367.
+    + (opencv_contrib) LOGOS features matching strategy: #2383.
+  * Breaking changes:
+    + Disabled constructors for legacy C API structures.
+    + Implementation of Thread Local Storage (TLS) has been improved to
+      release data from terminated threads. API has been changed.
+    + Don't define unsafe CV_XADD implementation by default.
+    + Python conversion rules of passed arguments will be updated in
+      next releases: #15915.
+
+-------------------------------------------------------------------
+Sun Nov  3 19:50:04 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Limit build parallelism with limit_build, some ARM and PPC workers
+  have a high SMP/memory ratio and run out of memory otherwise.
+- Apply memory constraints (3GB) to all architectures, avoid being
+  scheduled on very weak workers.
+
+-------------------------------------------------------------------
+Sat Oct 12 23:12:21 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to 4.1.2
+  * DNN module:
+    + Intel Inference Engine backend (OpenVINO):
+      - 2019R3 has been supported
+      - Support modern IE Core API
+      - New approach for custom layers management. Now all the OpenCV
+        layers fallbacks are implemented as IE custom layers which
+        helps to improve efficiency due less graph partitioning.
+      - High-level API which introduces dnn::Model class and set of
+        task-specific classes such dnn::ClassificationModel,
+        dnn::DetectionModel, dnn::SegmentationModel. It supports
+        automatic pre- and post-processing for deep learning networks.
+  * Performance improvements and platforms support:
+    + MSA SIMD implementation has been contributed for MIPS platforms:
+      https://github.com/opencv/opencv/pull/15422
+    + OpenCV.js optimization (threading and SIMD as part of GSoC
+      project): https://github.com/opencv/opencv/pull/15371
+    + More optimizations using SIMD intrinsics: dotProd, FAST corners,
+      HOG, LK pyramid (VSX), norm, warpPerspective, etc
+    + Fixed detection of Cascade Lake CPUs
+  * And many other great patches from OpenCV community:
+    + GUI: support topmost window mode (Win32/COCOA):
+      https://github.com/opencv/opencv/pull/14872
+    + Java: fix Mat.toString() for higher dimensions:
+      https://github.com/opencv/opencv/pull/15181
+    + Implementation of colormap "Turbo"
+      https://github.com/opencv/opencv/pull/15388
+    + QR-Code detection accuracy improvement:
+      https://github.com/opencv/opencv/pull/15356
+    + GSoC: Add learning-based super-resolution module:
+      https://github.com/opencv/opencv_contrib/pull/2229 and
+      https://github.com/opencv/opencv_contrib/pull/2231
+    + Detection accuracy improvement of the white marker aruco
+      corners: https://github.com/opencv/opencv_contrib/pull/2236
+    + Added pattern generator tool for aruco:
+      https://github.com/opencv/opencv_contrib/pull/2250
+    + and special thanks to @sturkmen72 for improvind and cleaning
+      up code of samples/tutorials
+  * Breaking changes:
+    + fixed values thresholding accuracy in calcHist()
+  * Security fixes: CVE-2019-15939 (boo#1149742).
+- Enable Graph API (G-API)
+- Minor spec file cleanup
+
+-------------------------------------------------------------------
+Wed Aug 28 15:05:46 UTC 2019 - Marius Kittler <marius.kittler@suse.com>
+
+- Include pkg-config file in opencv-devel package
+  * Add opencv-includedir.patch
+
+-------------------------------------------------------------------
+Tue Aug 27 10:23:45 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Avoid use of ®/™ signs in specfiles as per guidelines.
+
+-------------------------------------------------------------------
+Mon Aug 19 11:13:05 UTC 2019 - Jonathan Brielmaier <jbrielmaier@suse.de>
+
+- Disable LTO on ppc64le for now, as it fails to build when enabled
+  (boo#1146096).
+
+-------------------------------------------------------------------
+Sat Aug 10 21:45:53 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Increase the disk space needed to build opencv.
+
+-------------------------------------------------------------------
+Fri Aug  9 19:56:24 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 4.1.1
+  * DNN module:
+    * 3D convolution networks initial support
+    * A lot of improvements for ONNX and TenforFlow importers
+  * Performance improvements
+  * Added IPPE method for planar pose estimation in solvePnP
+  * Added solvePnPRefineLM and solvePnPRefineVVS
+  * Security fixes: CVE-2019-14491 (boo#1144352), CVE-2019-14492
+    (boo#1144348).
+- Check https://github.com/opencv/opencv/wiki/ChangeLog#version411 for the
+  complete list of changes.
+
+- Drop fix_processor_detection_for_32bit_on_64bit.patch. Fixed upstream
+- Drop 0001-Handle-absolute-OPENCV_INCLUDE_INSTALL_PATH-correctl.patch
+  Fixed upstream
+- Refresh 0001-Do-not-include-glx.h-when-using-GLES.patch and
+  opencv-build-compare.patch.
+
+-------------------------------------------------------------------
+Tue Jul  2 23:06:30 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 4.1.0
+  * DNN module:
+    + Reduced peak memory consumption for some models up to 30%.
+    + Inference Engine
+      - Inference Engine 2018R3 is now a minimal supported version of IE.
+      - Myriad X (Intel® Neural Compute Stick 2) is now supported and tested.
+      - Automatic IR network reshaping for different inputs.
+      - Improved samples to work with models from OpenVINO Open Model Zoo
+    + New networks from TensorFlow Object Detection API: Faster-RCNNs, SSDs
+      and Mask-RCNN with dilated convolutions, FPN SSD
+  * Performance improvements:
+    + More optimization using AVX2 instruction set.
+    + Automatic runtime dispatching is available for large set of functions
+      from core and imgproc modules.
+  * Other improvements:
+    + Matplotlib Perceptually Uniform Sequential colormaps
+    + Add keypoints matching visualization for real-time pose estimation tutorial
+    + Add Hand-Eye calibration methods
+    + Java: improved support for multidimensional arrays (Mat)
+    + Dynamically loaded videoio backends (FFmpeg, GStreamer)
+    + opencv_contrib: Robust local optical flow (RLOF) implementations
+    + opencv_contrib: Implementation of Quasi Dense Stereo algorithm
+    + opencv_contrib: New module: Image Quality Analysis (IQA) API
+    + opencv_contrib: BRISQUE No Reference Image Quality Assessment (IQA) API
+  Check https://github.com/opencv/opencv/wiki/ChangeLog#version410
+- Update to version 4.0.0
+  * A lot of C API from OpenCV 1.x has been removed. The affected modules are
+    objdetect, photo, video, videoio, imgcodecs, calib3d.
+  * Persistence (storing and loading structured data to/from XML, YAML or JSON)
+    in the core module has been completely reimplemented.
+  * OpenCV is now C++11 library and requires C++11-compliant compiler.
+    Thanks to the extended C++11 standard library, we could get rid of hand-crafted
+    cv::String and cv::Ptr. Now cv::String == std::string and cv::Ptr is a thin
+    wrapper on top of std::shared_ptr. Also, on Linux/BSD for cv::parallel_for_
+    we now use std::thread's instead of pthreads.
+  * DNN improvements
+  * Completely new module opencv_gapi has been added. It is the engine for very
+    efficient image processing, based on lazy evaluation and on-fly construction.
+  * Performance improvements
+    A few hundreds of basic kernels in OpenCV have been rewritten using so-called
+    "wide universal intrinsics". Those intrinsics map to SSE2, SSE4, AVX2, NEON or
+    VSX intrinsics, depending on the target platform and the compile flags.
+  * QR code detector and decoder have been added to opencv/objdetect module.
+  * The popular Kinect Fusion algorithm has been implemented, optimized for CPU and
+    GPU (OpenCL), and integrated into opencv_contrib/rgbd module.
+  * Very efficient and yet high-quality DIS dense optical flow algorithm has been
+    moved from opencv_contrib to opencv, video module. See the example.
+  * The slower TV L1 optical flow algorithm has been moved to opencv_contrib.
+  Check https://github.com/opencv/opencv/wiki/ChangeLog#version400
+- Drop obsolete opencv-lib_suffix.patch
+- Add 0001-Handle-absolute-OPENCV_INCLUDE_INSTALL_PATH-correctl.patch
+- As this is a major version upgrade, the old 3.4.x package is still
+  available as opencv3
+
+-------------------------------------------------------------------
+Mon Oct 29 10:22:25 UTC 2018 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 3.4.3
+  * Compatibility fixes with python 3.7
+  * Added a new computational target DNN_TARGET_OPENCL_FP16
+  * Extended support of Intel's Inference Engine backend
+  * Enabled import of Intel's OpenVINO pre-trained networks from
+    intermediate representation (IR).
+  * tutorials improvements
+  Check https://github.com/opencv/opencv/wiki/ChangeLog#version343
+  for the complete changelog.
+- Drop fix-build-i386-nosse.patch, build-workaround-issues-with-c.patch
+  (fixed upstream)
+- Refresh patches
+
+-------------------------------------------------------------------
+Tue May 29 08:26:53 UTC 2018 - fabian@ritter-vogt.de
+
+- Add patch to fix use of headers from C:
+  * build-workaround-issues-with-c.patch
+
+-------------------------------------------------------------------
+Mon May 28 11:04:23 UTC 2018 - fvogt@suse.com
+
+- Update to 3.4.1:
+  * Added support for quantized TensorFlow networks
+  * OpenCV is now able to use Intel DL inference engine as DNN
+    acceleration backend
+  * Added AVX-512 acceleration to the performance-critical kernels
+  * Fix cmake mapping of RelWithDebInfo (boo#1154091).
+  * For more information, read
+    https://github.com/opencv/opencv/wiki/ChangeLog#version341
+- Update contrib modules to 3.4.1:
+  * No changelog available
+- Change mechanism the contrib modules are built
+- Include LICENSE of contrib tarball as well
+- Build with python3 on >= 15
+- Add patch to fix build on i386 without SSE:
+  * fix-build-i386-nosse.patch
+- Refresh patches:
+  * fix_processor_detection_for_32bit_on_64bit.patch
+  * opencv-build-compare.patch
+- Mention all libs explicitly
+- Rebase 3.4.0 update from i@marguerite.su
+- update to 3.4.0
+  * Added faster R-CNN support
+  * Javascript bindings have been extended to
+    cover DNN module
+  * DNN has been further accelerated for iGPU
+    using OpenCL
+  * On-disk caching of precompiled OpenCL
+    kernels has been finally implemented
+  * possible to load and run pre-compiled
+    OpenCL kernels via T-API
+  * Bit-exact 8-bit and 16-bit resize has been
+    implemented (currently supported only
+    bilinear interpolation)
+- update face module to 3.4.0
+- add opencv-lib_suffix.patch, remove LIB_SUFFIX
+  from OPENCV_LIB_INSTALL_PATH, as CMAKE_INSTALL
+  _LIBDIR is arch dependent.
+
+-------------------------------------------------------------------
+Mon Mar 12 08:48:12 UTC 2018 - schwab@suse.de
+
+- Add option to build without openblas
+
+-------------------------------------------------------------------
+Mon Jan  8 09:35:37 UTC 2018 - tchvatal@suse.com
+
+- Add conditionals for python2 and python3 to allow us enabling
+  only desired python variants when needed
+- Do not depend on sphinx as py2 and py3 seem to collide there
+
+-------------------------------------------------------------------
+Sat Nov 25 14:29:14 UTC 2017 - stefan.bruens@rwth-aachen.de
+
+- Readd opencv-gles.patch, it is *not* included upstream; otherwise
+  build breaks on all GLES Qt5 platforms (armv6l, armv7l, aarch64)
+- add fix_processor_detection_for_32bit_on_64bit.patch
+- Correctly set optimizations and dynamic dispatch on ARM, use
+  OpenCV 3.3 syntax on x86.
+
+-------------------------------------------------------------------
+Mon Nov 13 09:21:35 UTC 2017 - mpluskal@suse.com
+
+- Update licensing information
+
+-------------------------------------------------------------------
+Wed Nov  8 11:21:42 UTC 2017 - ecsos@opensuse.org
+
+- change requires of python-numpy-devel to build in Leap and
+  to not break factory in future
+
+-------------------------------------------------------------------
+Sat Nov  4 10:42:02 UTC 2017 - ecsos@opensuse.org
+
+- fix build error/unresolvable for Leap 42.2 and 42.3
+
+-------------------------------------------------------------------
+Fri Nov  3 08:34:20 UTC 2017 - mpluskal@suse.com
+
+- Update to version 3.3.1:
+  * Lots of various bugfixes
+- Update source url
+
+-------------------------------------------------------------------
+Thu Nov  2 15:06:21 UTC 2017 - mpluskal@suse.com
+
+- Rename python subpackage to python2
+- Do not explicitly require python-base for python subpackages
+
+-------------------------------------------------------------------
+Mon Oct  9 05:06:36 UTC 2017 - kah0922@gmail.com
+
+- Update to 3.3
+- Dropped obsolete patches
+	* opencv-gcc6-fix-pch-support-PR8345.patch
+    * opencv-gles.patch
+- Updated opencv-build-compare.patch
+
+-------------------------------------------------------------------
+Sat Jul 15 19:14:48 UTC 2017 - stefan.bruens@rwth-aachen.de
+
+- Add 0001-Do-not-include-glx.h-when-using-GLES.patch
+  Fix build for 32bit ARM, including both GLES and desktop GL headers
+  causes incompatible pointer type errors
+
+-------------------------------------------------------------------
+Mon Jun  5 12:15:24 UTC 2017 - tchvatal@suse.com
+
+- Add conditional for the qt5/qt4 integration
+  * This is used only for gui tools, library is not affected
+- Add provides/obsoletes for the qt5 packages to allow migration
+- Drop patch opencv-qt5-sobump.diff
+  * Used only by the obsoleted qt5 variant
+
+-------------------------------------------------------------------
+Mon Jun  5 11:29:06 UTC 2017 - tchvatal@suse.com
+
+- Cleanup a bit with spec-cleaner
+- Use %cmake macros
+- Remove the conditions that are not really needed
+- Add tests conditional disabled by default
+  * Many tests fail and there are missing testdata
+- Switch to pkgconfig style dependencies
+
+-------------------------------------------------------------------
+Sun May 28 12:32:09 UTC 2017 - stefan.bruens@rwth-aachen.de
+
+- Update to OpenCV 3.2.0
+  - Results from 11 GSoC 2016 projects have been submitted to the library:
+    + sinusoidal patterns for structured light and phase unwrapping module
+      [Ambroise Moreau (Delia Passalacqua)]
+    + DIS optical flow (excellent dense optical flow algorithm that is both
+      significantly better and significantly faster than Farneback’s algorithm –
+      our baseline), and learning-based color constancy algorithms implementation
+      [Alexander Bokov (Maksim Shabunin)]
+    + CNN based tracking algorithm (GOTURN) [Tyan Vladimir (Antonella Cascitelli)]
+    + PCAFlow and Global Patch Collider algorithms implementation
+      [Vladislav Samsonov (Ethan Rublee)]
+    + Multi-language OpenCV Tutorials in Python, C++ and Java
+      [João Cartucho (Vincent Rabaud)]
+    + New camera model and parallel processing for stitching pipeline
+      [Jiri Horner (Bo Li)]
+    + Optimizations and improvements of dnn module
+      [Vitaliy Lyudvichenko (Anatoly Baksheev)]
+    + Base64 and JSON support for file storage. Use names like
+      “myfilestorage.xml?base64” when writing file storage to store big chunks of
+      numerical data in base64-encoded form.  [Iric Wu (Vadim Pisarevsky)]
+    + tiny_dnn improvements and integration
+      [Edgar Riba (Manuele Tamburrano, Stefano Fabri)]
+    + Quantization and semantic saliency detection with tiny_dnn
+      [Yida Wang (Manuele Tamburrano, Stefano Fabri)]
+    + Word-spotting CNN based algorithm
+      [Anguelos Nicolaou (Lluis Gomez)]
+  - Contributions besides GSoC:
+    + Greatly improved and accelerated dnn module in opencv_contrib:
+      - Many new layers, including deconvolution, LSTM etc.
+      - Support for semantic segmentation and SSD networks with samples.
+      - TensorFlow importer + sample that runs Inception net by Google.
+    + More image formats and camera backends supported
+    + Interactive camera calibration app
+    + Multiple algorithms implemented in opencv_contrib
+    + Supported latest OSes, including Ubuntu 16.04 LTS and OSX 10.12
+    + Lot’s of optimizations for IA and ARM archs using parallelism, vector
+      instructions and new OpenCL kernels.
+    + OpenCV now can use vendor-provided OpenVX and LAPACK/BLAS (including Intel MKL,
+      Apple’s Accelerate, OpenBLAS and Atlas) for acceleration
+- Refreshed opencv-build-compare.patch
+- Dropped upstream opencv-gcc5.patch
+- Replace opencv-gcc6-disable-pch.patch with upstream patch
+  opencv-gcc6-fix-pch-support-PR8345.patch
+- Enable TBB support (C++ threading library)
+- Add dependency on openBLAS
+
+-------------------------------------------------------------------
+Thu Jul 21 07:55:09 UTC 2016 - olaf@aepfle.de
+
+- Enable ffmpeg support unconditional
+
+-------------------------------------------------------------------
+Tue Jun  7 08:53:04 UTC 2016 - dimstar@opensuse.org
+
+- In case we build using GCC6 (or newer), add -mlra to CFLAGS to
+  workaround gcc bug
+  https://gcc.gnu.org/bugzilla/show_bug.cgi?id=71294.
+
+-------------------------------------------------------------------
+Wed May 25 13:38:26 UTC 2016 - martin.liska@suse.com
+
+- Apply upstream patch opencv-gcc6-disable-pch.patch to disable
+  PCH for GCC6.
+
+-------------------------------------------------------------------
+Mon Mar 21 17:05:19 UTC 2016 - toddrme2178@gmail.com
+
+- Test for python versions greater than or equal to the current
+  version.
+
+-------------------------------------------------------------------
+Wed Mar  9 18:15:57 UTC 2016 - toddrme2178@gmail.com
+
+- Add python 3 support
+
+-------------------------------------------------------------------
+Thu Mar  3 21:16:19 UTC 2016 - tittiatcoke@gmail.com
+
+- Added opencv_contrib_face-3.1.0.tar.bz2
+  * This tarball is created to take only the face module from the
+    contrib package. The Face module is required by libkface, which
+    in its turn is required by digikam.
+
+-------------------------------------------------------------------
+Sun Feb 28 19:37:23 UTC 2016 - joerg.lorenzen@ki.tng.de
+
+- Added _constraints file to avoid random failures on small workers
+  (at least for builds on PMBS)
+
+-------------------------------------------------------------------
+Sat Feb 27 11:11:34 UTC 2016 - joerg.lorenzen@ki.tng.de
+
+- Update to OpenCV 3.1.0
+  - A lot of new functionality has been introduced during Google
+    Summer of Code 2015:
+    + “Omnidirectional Cameras Calibration and Stereo 3D
+      Reconstruction” – opencv_contrib/ccalib module
+      (Baisheng Lai, Bo Li)
+    + “Structure From Motion” – opencv_contrib/sfm module
+      (Edgar Riba, Vincent Rabaud)
+    + “Improved Deformable Part-based Models” – opencv_contrib/dpm
+      module (Jiaolong Xu, Bence Magyar)
+    + “Real-time Multi-object Tracking using Kernelized Correlation
+      Filter” – opencv_contrib/tracking module
+      (Laksono Kurnianggoro, Fernando J. Iglesias Garcia)
+    + “Improved and expanded Scene Text Detection” –
+      opencv_contrib/text module (Lluis Gomez, Vadim Pisarevsky)
+    + “Stereo correspondence improvements” – opencv_contrib/stereo
+      module (Mircea Paul Muresan, Sergei Nosov)
+    + “Structured-Light System Calibration” –
+      opencv_contrib/structured_light (Roberta Ravanelli,
+      Delia Passalacqua, Stefano Fabri, Claudia Rapuano)
+    + “Chessboard+ArUco for camera calibration” –
+      opencv_contrib/aruco (Sergio Garrido, Prasanna, Gary Bradski)
+    + “Implementation of universal interface for deep neural
+      network frameworks” – opencv_contrib/dnn module
+      (Vitaliy Lyudvichenko, Anatoly Baksheev)
+    + “Recent advances in edge-aware filtering, improved SGBM
+      stereo algorithm” – opencv/calib3d and opencv_contrib/ximgproc
+      (Alexander Bokov, Maksim Shabunin)
+    + “Improved ICF detector, waldboost implementation” –
+      opencv_contrib/xobjdetect (Vlad Shakhuro, Alexander Bovyrin)
+    + “Multi-target TLD tracking” – opencv_contrib/tracking module
+      (Vladimir Tyan, Antonella Cascitelli)
+    + “3D pose estimation using CNNs” – opencv_contrib/cnn_3dobj
+      (Yida Wang, Manuele Tamburrano, Stefano Fabri)
+  - Many great contributions made by the community, such as:
+    + Support for HDF5 format
+    + New/Improved optical flow algorithms
+    + Multiple new image processing algorithms for filtering,
+      segmentation and feature detection
+    + Superpixel segmentation and much more
+  - IPPICV is now based on IPP 9.0.1, which should make OpenCV
+    even faster on modern Intel chips
+  - opencv_contrib modules can now be included into the
+    opencv2.framework for iOS
+  - Newest operating systems are supported: Windows 10 and
+    OSX 10.11 (Visual Studio 2015 and XCode 7.1.1)
+  - Interoperability between T-API and OpenCL, OpenGL, DirectX and
+    Video Acceleration API on Linux, as well as Android 5 camera.
+  - HAL (Hardware Acceleration Layer) module functionality has been
+    moved into corresponding basic modules; the HAL replacement
+    mechanism has been implemented along with the examples
+- Removed improve-sphinx-search.diff, opencv-altivec-vector.patch,
+  opencv-pkgconfig.patch and opencv-samples.patch, fixed upstream.
+- Fixed opencv-qt5-sobump.diff, opencv-build-compare.patch,
+  opencv-gcc5.patch and opencv-gles.patch.
+
+- Version OpenCV 3.0.0
+  + ~1500 patches, submitted as PR @ github. All our patches go
+    the same route.
+  + opencv_contrib (http://github.com/itseez/opencv_contrib)
+    repository has been added. A lot of new functionality is there
+    already! opencv_contrib is only compatible with 3.0/master,
+    not 2.4. Clone the repository and use “cmake …
+    -D OPENCV_EXTRA_MODULES_PATH=<path_to opencv_contrib/modules> …”
+    to build opencv and opencv_contrib together.
+  + a subset of Intel IPP (IPPCV) is given to us and our users free
+    of charge, free of licensing fees, for commercial and
+    non-commerical use. It’s used by default in x86 and x64 builds
+    on Windows, Linux and Mac.
+  + T-API (transparent API) has been introduced, this is transparent
+    GPU acceleration layer using OpenCL. It does not add any
+    compile-time or runtime dependency of OpenCL. When OpenCL is
+    available, it’s detected and used, but it can be disabled at
+    compile time or at runtime. It covers ~100 OpenCV functions.
+    This work has been done by contract and with generous support
+    from AMD and Intel companies.
+  + ~40 OpenCV functions have been accelerated using NEON intrinsics
+    and because these are mostly basic functions, some higher-level
+    functions got accelerated as well.
+  + There is also new OpenCV HAL layer that will simplifies creation
+    of NEON-optimized code and that should form a base for the
+    open-source and proprietary OpenCV accelerators.
+  + The documentation is now in Doxygen: http://docs.opencv.org/master/
+  + We cleaned up API of many high-level algorithms from features2d,
+    calib3d, objdetect etc. They now follow the uniform
+    “abstract interface – hidden implementation” pattern and make
+    extensive use of smart pointers (Ptr<>).
+  + Greatly improved and extended Python & Java bindings (also,
+    see below on the Python bindings), newly introduced Matlab
+    bindings (still in alpha stage).
+  + Improved Android support – now OpenCV Manager is in Java and
+    supports both 2.4 and 3.0.
+  + Greatly improved WinRT support, including video capturing and
+    multi-threading capabilities. Thanks for Microsoft team for this!
+  + Big thanks to Google who funded several successive GSoC programs
+    and let OpenCV in. The results of many successful GSoC 2013 and
+    2014 projects have been integrated in opencv 3.0 and
+    opencv_contrib (earlier results are also available in
+    OpenCV 2.4.x). We can name:
+    - text detection
+    - many computational photography algorithms (HDR, inpainting,
+      edge-aware filters, superpixels, …)
+    - tracking and optical flow algorithms
+    - new features, including line descriptors, KAZE/AKAZE
+    - general use optimization (hill climbing, linear programming)
+    - greatly improved Python support, including Python 3.0 support,
+      many new tutorials & samples on how to use OpenCV with Python.
+    - 2d shape matching module and 3d surface matching module
+    - RGB-D module
+    - VTK-based 3D visualization module
+    - etc.
+  + Besides Google, we enjoyed (and hope that you will enjoy too)
+    many useful contributions from community, like:
+    - biologically inspired vision module
+    - DAISY features, LATCH descriptor, improved BRIEF
+    - image registration module
+    - etc.
+
+-------------------------------------------------------------------
+Fri Jan 22 09:47:00 UTC 2016 - olaf@aepfle.de
+
+- Reduce build-compare noise
+  opencv-build-compare.patch
+
+-------------------------------------------------------------------
+Wed Dec 23 16:51:20 UTC 2015 - alarrosa@suse.com
+
+- Remove BuildRequirement for python-sphinx in SLE12, since it's
+  not available there and it's not a mandatory requirement.
+
+-------------------------------------------------------------------
+Wed Dec  2 09:17:09 UTC 2015 - ohering@suse.de
+
+- Reduce differences between two spec files
+
+-------------------------------------------------------------------
+Tue Sep 22 08:47:31 UTC 2015 - olaf@aepfle.de
+
+- Use pkgconfig for ffmpeg BuildRequires
+
+-------------------------------------------------------------------
+Fri Jul 24 14:40:06 UTC 2015 - mlin@suse.com
+
+- Update improve-sphinx-search.diff for new python-Sphinx(1.3.1)
+  * now that sphinx-build disallow executing without arguments and
+    give you "Insufficient arguments" error, use "sphinx-build -h"
+    instead
+  * the default usages output ie. sphinx-build(or --help) no longer
+    are standard error but standard output, drop OUTPUT_QUIET and
+    add OUTPUT_VARIABLE throws the output to SPHINX_OUTPUT as well
+
+-------------------------------------------------------------------
+Wed Apr 29 11:53:09 UTC 2015 - coolo@suse.com
+
+- support gcc 5 (i.e. gcc versions without minor version):
+  opencv-gcc5.patch
+
+-------------------------------------------------------------------
+Wed Apr 29 09:35:29 UTC 2015 - coolo@suse.com
+
+- Update to OpenCV 2.4.11 - can't find NEWS or Changelog
+  merely collecting bug fixes while 3.0 is in the making, 2.4.11
+  didn't even make it on their web page, it's only on download
+  server
+- remove opencv-underlinking.patch as obsolete
+- remove upstream patch bomb_commit_gstreamer-1x-support.patch
+
+- commenting out opencv-pkgconfig.patch - possibly it requires a rebase,
+  but the problem it tries to solve is unclear
+
+-------------------------------------------------------------------
+Mon Jan 26 09:46:21 UTC 2015 - tittiatcoke@gmail.com
+
+- Add specific buildrequires for libpng15, so that we are
+  building against the system provided libpng.
+
+-------------------------------------------------------------------
+Tue May 13 14:56:21 EEST 2014 - koprok@gmail.com
+
+- Update to OpenCV 2.4.9
+  More info at:
+  http://opencv.org/opencv-2-4-9-is-out.html
+  The brief list of changes:
+  * new 3D visualization module ‘viz’;
+  * performance fixes in ‘ocl’ module;
+  * fixes in Android Camera;
+  * improved CUDA support for mobile platforms;
+  * bugfixes from community;
+  * 55 reported bugs have been closed;
+  * 156 pull requests have been merged.
+
+-------------------------------------------------------------------
+Sun Apr 6 16:22:56 UTC 2014 - tittiatcoke@gmail.com
+
+- Drop the BuildRequires on libucil and libunicap for Factory. This
+  stops us from getting ride of Gstreamer 0.10 and besides these two
+  libraries seem to be unmaintained upstream as that the latest
+  actions are from 2010
+
+-------------------------------------------------------------------
+Thu Apr 3 11:22:56 UTC 2014 - tittiatcoke@gmail.com
+
+- Add upstream patch (3.0 version) to support Gstreamer 1.x
+  * bomb_commit_gstreamer-1x-support.patch
+
+-------------------------------------------------------------------
+Thu Mar 13 07:50:56 UTC 2014 - tchvatal@suse.com
+
+- Upstream now provides tarballs with source only as git tags
+  from github so update Source0 path.
+
+-------------------------------------------------------------------
+Wed Mar 12 12:13:39 UTC 2014 - tchvatal@suse.com
+
+- Add requires on various X extensions linked to opencv_ts module.
+  As those are present in the .pc file we need it anyway.
+
+-------------------------------------------------------------------
+Sun Jan 19 15:57:26 EET 2014 - koprok@gmail.com
+
+- Update to OpenCV 2.4.8
+  More info at:
+  http://opencv.org/opencv-2-4-8.html
+  The brief list of changes:
+  * NVidia CUDA support on Android devices with CUDA capable SoC and
+    CUDA sample;
+  * Concurrent kernel execution and user defined context support for
+    OpenCL;
+  * Integration with Intel Perceptual SDK and new depth sensors support
+    for Windows;
+  * 32 reported bugs have been closed;
+  * 139 pull requests have been merged;
+
+-------------------------------------------------------------------
+Thu Jan 16 17:11:21 UTC 2014 - dvlaeev@suse.com
+
+- Fix build with altivec:
+  opencv-altivec-vector.patch
+
+-------------------------------------------------------------------
+Sun Dec  1 17:37:36 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Added opencv-pkgconfig.patch: make sure to provide link flags in
+  OpenCV pc file (bnc#853036)
+
+-------------------------------------------------------------------
+Tue Nov 12 23:07:23 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Update to OpenCV 2.4.7
+  More info at:
+  http://opencv.org/opencv-2-4-7-is-out.html
+  The brief list of changes:
+  * dynamic OpenCL runtime loading, setting default OpenCL device
+    via env var, many bug-fixes and some new optimization with OpenCL
+  * bug-fixes and new optimizations in CUDA stuff
+  * latest NDK and Android OS support, Native Android Camera tuning
+  * minor fixes, XAML sample and MS Certification compatibility
+    in WinRT stuff
+  * 382 pull requests have been merged
+  * 54 reported bugs have been fixed
+- Added pkgconfig(glu) Requires to devel package, as per .pc file
+- Make devel package provides also devel-static one
+- Drop assume-Sphinx-is-there.diff, and add improve-sphinx-search.diff,
+  for properly finding sphinx with alphabetic chars in version
+
+-------------------------------------------------------------------
+Sun Nov 10 09:42:16 UTC 2013 - tittiatcoke@gmail.com
+
+- Add patch assume-Sphinx-is-there.diff to fix building with
+  Sphinx versions that have alphanumeric characters in the version
+  (Only for factory builds at the moment)
+
+-------------------------------------------------------------------
+Sun Jul 14 16:54:56 UTC 2013 - asterios.dramis@gmail.com
+
+- Use eigen3 instead of eigen2 as build requirement for openSUSE > 12.3.
+- Enable compilation with libucil and libunicap.
+- Removed dos2unix build requirement (not needed anymore).
+
+-------------------------------------------------------------------
+Fri Jul 12 11:22:31 EEST 2013 - koprok@nand.bg
+
+- Update to OpenCV 2.4.6.1
+  More info at:
+  http://opencv.org/opencv-2-4-6-is-out.html
+  The brief list of changes:
+  * added video file i/o Windows RT and sample application using
+    camera, enabled parallelization with TBB or MS Concurrency
+  * added CUDA 5.5 support for desktop and ARM systems
+  * added Qt 5 support
+  * added many new OpenCL algorithms ports, included OpenCL binaries
+    into the Windows superpack
+  * iOS build scripts (together with Android ones) moved to
+    ‘opencv/platforms’ directory
+  * added functions for UIImage <-> cv::Mat conversion
+  * correct front/back camera selection in Android app framework
+  * added Linaro NDK support and fixes for MIPS to Android CMake
+    toolchain
+  * stability has been improved by a lot, numerous bug-fixes across
+    all the library
+
+-------------------------------------------------------------------
+Wed Jun 26 20:26:48 UTC 2013 - crrodriguez@opensuse.org
+
+- build with LFS_CFLAGS in 32 bit archs.
+
+-------------------------------------------------------------------
+Fri May 10 09:59:31 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Disable SSE3 for all architectures (bnc#814333)
+
+-------------------------------------------------------------------
+Thu May  9 20:53:43 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Disable SSE(2) on non x86_64 architectures, causes crashing
+  kde#276923, bnc#789173
+
+-------------------------------------------------------------------
+Thu Apr 11 16:01:08 EEST 2013 - koprok@nand.bg
+
+- Update to OpenCV 2.4.5
+  More info at:
+  http://opencv.org/opencv-2-4-5-is-out.html
+  The brief list of changes:
+  * experimental WinRT support
+  * new video super-resolution module
+  * CLAHE (adaptive histogram equalization) algorithm on both CPU
+    and GPU
+  * further improvements and extensions in ocl module
+    (stereo block matching and belief propagation have been added,
+    fixed crashes on Intel HD4000)
+  * Visual Studio 2012 cv::Mat visualizer plugin debugger tutorial
+    from Microsoft Research
+  * OpenCV4Android SDK improvements
+    (NDK r8e support, native activity sample using OpenCV Manager,
+    bug-fixes)
+  * ~25 reported problems have been resolved since 2.4.4, ~78 pull
+    requests have been merged, thanks everybody who participated!
+
+-------------------------------------------------------------------
+Tue Mar  5 14:42:49 EET 2013 - koprok@nand.bg
+
+- Update to OpenCV 2.4.4
+  More info at:
+  http://opencv.org/opencv-2-4-4-is-out.html
+  The brief list of changes:
+  * OpenCV Java bindings are ported from Android to desktop Java!
+    Actually any JVM language will work, see Tutorial for details,
+    and Java or Scala code samples.
+  * Android application framework, samples, tutorials, and OpenCV
+    Manager are improved.
+  * Optimizations for the new NVIDIA Kepler architecture, CARMA
+    platform support and other new optimizations in CUDA.
+  * OpenCL module now builds successfully with various SDKs (from
+    AMD, NVIDIA, Intel and Apple) and runs well on different GPUs
+    (AMD, NVidia, Intel HD4000). A lot of new functionality has been
+    added, tons of bugs fixed, performance of many functions has
+    been significantly improved.
+  * 100+ reported problems have been resolved since 2.4.3, thanks
+    everybody who participated!
+
+-------------------------------------------------------------------
+Sat Dec  1 12:56:09 UTC 2012 - tittiatcoke@gmail.com
+
+- Drop the buildrequire for libxine
+
+-------------------------------------------------------------------
+Wed Nov 28 11:33:38 EET 2012 - koprok@nand.bg
+
+- Update to OpenCV 2.4.3
+  More info at:
+  http://opencv.org/opencv-2-4-3-released.html
+  The nicely formatted changelog can be seen here:
+  http://code.opencv.org/projects/opencv/wiki/ChangeLog;
+  here are the highlights:
+  * A lot of good stuff from the Google Summer of Code 2012 has been
+    integrated; this was a very productive summer!
+  * Significantly improved and optimized Android and iOS ports.
+  * Greatly extended GPU (i.e. CUDA-based) module.
+  * The brand new ocl (OpenCL-based) module that unleashes GPU power
+    also for AMD and Intel GPU users. It’s not included into the
+    binary package, since there are different SDKs, and it’s not
+    turned on by default. You need to run CMake and turn on
+    “WITH_OPENCL”. Also, please note that this is very first version
+    of the module, so it may be not very stable and not very
+    functional.
+  * Much better performance on many-core systems out of the box. You
+    do not need TBB anymore on MacOSX, iOS and Windows. BTW, the
+    binary package for Windows is now built without TBB support.
+    Libraries and DLLs for Visual Studio 2010 use the Concurrency
+    framework.
+  * About 130 bugs have been fixed since 2.4.2.
+  * Since 2.4.3rc we fixed several more problems, in particular some
+    compile problems with iOS 6 SDK.
+
+-------------------------------------------------------------------
+Tue Sep 18 07:22:59 UTC 2012 - coolo@suse.com
+
+- buildrequire glu
+
+-------------------------------------------------------------------
+Thu Jul  5 11:17:21 EEST 2012 - koprok@nand.bg
+
+- Update to OpenCV 2.4.2
+  More info at:
+  http://code.opencv.org/projects/opencv/wiki/ChangeLog
+- Drop opencv-datadir.patch to comply with upstream directory layout
+
+-------------------------------------------------------------------
+Fri Jun  8 11:07:47 EEST 2012 - koprok@nand.bg
+
+- Update to OpenCV 2.4.1
+  More info at:
+  http://code.opencv.org/projects/opencv/wiki/ChangeLog
+
+-------------------------------------------------------------------
+Tue May 15 14:24:05 EEST 2012 - koprok@nand.bg
+
+- Update to OpenCV 2.4.0
+  More info at:
+  http://code.opencv.org/projects/opencv/wiki/ChangeLog
+
+-------------------------------------------------------------------
+Sat Mar 17 12:01:52 UTC 2012 - dimstar@opensuse.org
+
+- Add opencv-gcc47.patch: Fix build with gcc 4.7.
+
+-------------------------------------------------------------------
+Tue Jan 10 04:24:32 UTC 2012 - crrodriguez@opensuse.org
+
+- Use Explicit Buildrequires on several needed libraries
+  future dependency cleanups may/will cause build to fail otherwise.
+
+-------------------------------------------------------------------
+Sat Dec 31 14:21:49 UTC 2011 - idonmez@suse.com
+
+- Add upstream r6881 to fix clang compatibility
+
+-------------------------------------------------------------------
+Tue Oct 18 08:19:10 UTC 2011 - coolo@suse.com
+
+- uncomment libraries not in 12.1 for now
+
+-------------------------------------------------------------------
+Fri Oct  7 15:15:32 UTC 2011 - toddrme2178@gmail.com
+
+- Changed groups (fix for RPMLINT warning)
+- Added check for duplicate files (fix for RPMLINT warning)
+- Added py_requires macros and python-base dependencies (fix for RPMLINT warning)
+- Escaped macros (fix for RPMLINT warning)
+- Fixed end-of-line encoding problems (fix for RPMLINT warning)
+- Added libeigen2-devel buildrequires
+- Added libunicap and libucil buildrequires (libunicap supports requires libucil)
+- Cleaned up spec file formatting
+
+-------------------------------------------------------------------
+Tue Aug 23 17:46:53 EEST 2011 - koprok@nand.bg
+
+- Dropped opencv-2.3-ffmpeg.patch, applied upstream
+
+-------------------------------------------------------------------
+Tue Aug 23 16:31:53 EEST 2011 - koprok@nand.bg
+
+- Revive opencv-2.3-ffmpeg.patch, needs rebase
+- Tag all patches according to openSUSE packaging guidelines
+
+-------------------------------------------------------------------
+Tue Aug 23 11:22:19 EEST 2011 - koprok@nand.bg
+
+- Removed opencv-2.3-cmake.patch, old cmake cannot be used any more.
+- Python bindings cannot be built without NumPy any more.
+
+-------------------------------------------------------------------
+Fri Aug 19 15:03:45 EEST 2011 - koprok@nand.bg
+
+- Update to OpenCV 2.3.1
+
+-------------------------------------------------------------------
+Wed Aug 17 23:50:39 UTC 2011 - reddwarf@opensuse.org
+
+- Update and readd opencv-2.3-underlinking.patch since it is still
+  necessary.
+
+-------------------------------------------------------------------
+Wed Aug 17 20:19:05 UTC 2011 - reddwarf@opensuse.org
+
+- Fix support for new ffmpeg versions
+
+-------------------------------------------------------------------
+Sun Aug 14 01:44:47 EEST 2011 - koprok@nand.bg
+
+- Removed unnecessary patches
+- Enable Python NumPy support on openSUSE 11.2
+- Build Qt instead of Gtk GUI
+- Fix cmake files for openSUSE 11.1
+- No GStreamer support on openSUSE 11.1
+
+-------------------------------------------------------------------
+Fri Aug 12 17:37:30 EEST 2011 - koprok@nand.bg
+
+- Update to OpenCV 2.3.0.
+  More info at:
+  http://opencv.willowgarage.com/wiki/OpenCV%20Change%20Logs
+
+-------------------------------------------------------------------
+Wed Aug  3 00:36:36 EEST 2011 - koprok@nand.bg
+
+- Fix build on openSUSE 11.2
+
+-------------------------------------------------------------------
+Wed Jul  6 08:23:04 UTC 2011 - idonmez@novell.com
+
+- Add opencv-v4l-2.6.38.patch: use the new libv4l2 interface
+
+-------------------------------------------------------------------
+Mon Dec 27 16:56:15 EET 2010 - koprok@nand.bg
+
+- Enable Python NumPy support
+- SWIG is not required any more
+- Enable OpenEXR support
+
+-------------------------------------------------------------------
+Thu Dec 23 16:08:46 EET 2010 - koprok@nand.bg
+
+- Update to OpenCV 2.2.0.
+  More info at:
+  http://opencv.willowgarage.com/wiki/OpenCV%20Change%20Logs
+
+-------------------------------------------------------------------
+Sun Dec 12 13:39:48 UTC 2010 - cristian.rodriguez@opensuse.org
+
+- Use system zlib, oh, and do not export ZLIB symbols to
+  other applications, clashes ensued.
+
+-------------------------------------------------------------------
+Thu Nov 11 15:50:25 CET 2010 - dmueller@suse.de
+
+- fix build with gcc 4.6
+
+-------------------------------------------------------------------
+Fri Oct  8 07:29:48 UTC 2010 - reddwarf@opensuse.org
+
+- add -underlinking patch
+
+-------------------------------------------------------------------
+Thu Apr 22 11:43:38 EEST 2010 - koprok@nand.bg
+
+- devel package renamed to opencv-devel, so that switching between
+  OBS and packman opencv packages is easier
+
+-------------------------------------------------------------------
+Mon Apr 19 10:48:10 EEST 2010 - koprok@nand.bg
+
+- fix gstreamer support
+- fix xine support
+- fix some rpmlint warnings
+- fix shared libraries permissions
+
+-------------------------------------------------------------------
+Sat Apr 17 18:23:31 EEST 2010 - koprok@nand.bg
+
+- Do not waste resources building the tests as we do not run them
+
+-------------------------------------------------------------------
+Fri Apr 16 10:58:26 EEST 2010 - koprok@nand.bg
+
+- Do not disable SSE,SSE2,etc. According to OpenCV changelog,
+  it should be safe to leave these enabled.
+
+-------------------------------------------------------------------
+Thu Apr 15 14:26:49 EEST 2010 - koprok@nand.bg
+
+- fix build on openSUSE 11.0
+
+-------------------------------------------------------------------
+Tue Apr 13 19:54:42 EEST 2010 - koprok@nand.bg
+
+- Update to OpenCV 2.1.0:
+  * The whole OpenCV is now using exceptions instead of the old
+    libc-style mechanism
+  * Experimental "static" OpenCV configuration in CMake was
+    contributed by Jose Luis Blanco.
+    Pass "BUILD_SHARED_LIBS=OFF" to CMake to build OpenCV statically.
+  * new improved version of one-way descriptor is added
+  * User can now control the image areas visible after the stereo
+    rectification
+  * Fullscreen has been added (thanks to Yannick Verdie).
+  * Further info at:
+     http://opencv.willowgarage.com/wiki/OpenCV%20Change%20Logs
+
+-------------------------------------------------------------------
+Wed Apr  7 14:12:03 UTC 2010 - coolo@novell.com
+
+- fix build with libpng14
+
+-------------------------------------------------------------------
+Thu Mar 18 06:33:27 UTC 2010 - coolo@novell.com
+
+- small spec file cleanup
+
+-------------------------------------------------------------------
+Sat Jan 16 19:45:04 UTC 2010 - tittiatcoke@gmail.com
+
+- Moved to the KDE repositories to enable inclusion in kipi-plugins
+
+-------------------------------------------------------------------
+Fri Oct  9 19:23:14 UTC 2009 - cmorve69@yahoo.es
+
+- Initial package
