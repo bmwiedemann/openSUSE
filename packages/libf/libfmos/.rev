@@ -1,0 +1,74 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2eea9e70ec30893002f6db0aaaf673b4</srcmd5>
+    <version>20220811</version>
+    <time>1662063133</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1000662</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>d4e8718dbb2b9cc8225ad3180286faa1</srcmd5>
+    <version>20220811</version>
+    <time>1669629976</time>
+    <user>dimstar_suse</user>
+    <comment>delete system-libs.patch</comment>
+    <requestid>1038461</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>aab677c976d6e93d6dd777ff22dfa992</srcmd5>
+    <version>20230707</version>
+    <time>1688737671</time>
+    <user>favogt_factory</user>
+    <comment>- Update to release 20230707</comment>
+    <requestid>1097456</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>baa56e4bef2794dbc3f81d40bc7b9a35</srcmd5>
+    <version>20230707</version>
+    <time>1691594710</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1102991</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>3c4b55ba6587470c849873e64a2ede04</srcmd5>
+    <version>20231121</version>
+    <time>1700598765</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 20231121</comment>
+    <requestid>1127871</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>3ac449200c368f30a26bc3618435fb96</srcmd5>
+    <version>20231122</version>
+    <time>1700772057</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 20231122</comment>
+    <requestid>1128158</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>c5b869260ecd2dcedc4dc9dd97d77a07</srcmd5>
+    <version>20240118</version>
+    <time>1705701748</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 20240118</comment>
+    <requestid>1139915</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>3b33364ebec8956950d0c83bb1e30ded</srcmd5>
+    <version>20240118</version>
+    <time>1707328087</time>
+    <user>anag+factory</user>
+    <comment>python 3.12 build fix</comment>
+    <requestid>1144580</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>9e6101f03924bcf6a2e31c89b6f42885</srcmd5>
+    <version>20240415</version>
+    <time>1713290659</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 20240415</comment>
+    <requestid>1167891</requestid>
+  </revision>
+</revisionlist>
