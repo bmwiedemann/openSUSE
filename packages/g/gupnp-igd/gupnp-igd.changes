@@ -1,0 +1,253 @@
+-------------------------------------------------------------------
+Fri Apr 28 07:29:26 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Disable meson_test during build, it randomly fails for all arches
+  https://gitlab.gnome.org/GNOME/gupnp-igd/-/issues/3
+
+-------------------------------------------------------------------
+Thu Apr 13 09:29:30 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.6.0:
+  + Switch to GUPnP 1.6.0 API
+  + Update GLib dependency to 2.70
+  + Add Javascript example
+- Drop patches fixed upstream:
+  + 2c413bbd8b9afc41648f21ad173f0caf81a5f98b.patch
+  + bbe36b279e247cd8ec4ab00bcdf02178af8a99af.patch
+  + 79a1e4cf8c256132978a1d8ab718c8ad132386de.patch
+  + fa1546614190942ab266832e7470a6debf8c32cb.patch
+- Rename libgupnp-igd-1_0-4 and typelib-1_0-GUPnPIgd-1_0 to
+  libgupnp-igd-1_6-0 and typelib-1_0-GUPnPIgd-1_6 following
+  upstream changes. Also update baselibs.conf.
+
+-------------------------------------------------------------------
+Fri Mar 24 10:19:09 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add upstream patches to hopefully fix racy tests:
+  + 2c413bbd8b9afc41648f21ad173f0caf81a5f98b.patch
+  + bbe36b279e247cd8ec4ab00bcdf02178af8a99af.patch
+
+-------------------------------------------------------------------
+Fri Mar  3 09:06:37 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add fa1546614190942ab266832e7470a6debf8c32cb.patch: test: Port to
+  g_inet_address_new_loopback.
+
+-------------------------------------------------------------------
+Sat Aug 27 21:54:20 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add 79a1e4cf8c256132978a1d8ab718c8ad132386de.patch: Port to GUPnP
+  1.6 API. Following this, replace pkgconfig(gssdp-1.2) and
+  pkgconfig(gupnp-1.2) with pkgconfig(gssdp-1.6) and
+  pkgconfig(gupnp-1.6) BuildRequires.
+- Use ldconfig_scriptlets macro for post(un) handling.
+
+-------------------------------------------------------------------
+Fri Oct 16 18:41:16 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.2.0:
+  + Switch to GUPnP 1.2.0 API
+  + Update GLib dependency to 2.38
+  + Replace deprecated GLib APIs
+  + Fix crashes
+  + Switch to meson build.
+- Add meson and gtk-doc BuildRequires and macros following
+  upstreams port, and run tests during build.
+- Drop no longer needed libtool BuildRequires, and various
+  autotools related macros and commands.
+- Drop patches fixed upstream:
+  + gupnp-igd-free-GStaticMutex-in-AddRemoveData.patch
+  + gupnp-igd-port-to-new-gupnp-api.patch
+
+-------------------------------------------------------------------
+Sun Jan  6 00:34:44 UTC 2019 - bjorn.lie@gmail.com
+
+- Add gupnp-igd-port-to-new-gupnp-api.patch: Port to new GUPnP API.
+- Following the above patch, replace pkgconfig(gssdp-1.0) and
+  pkgconfig(gupnp-1.0) with pkgconfig(gssdp-1.2) and
+  pkgconfig(gupnp-1.2) and add libtool BuildRequires aswell as pass
+  autoreconf, as the patch touches the  buildsystem.
+
+-------------------------------------------------------------------
+Sat Jan  5 22:51:40 UTC 2019 - bjorn.lie@gmail.com
+
+- Add gupnp-igd-free-GStaticMutex-in-AddRemoveData.patch: Free
+  GStaticMutex in AddRemoveData. Fixes a memory leak reported by
+  valgrind.
+- Modernize spec.
+
+-------------------------------------------------------------------
+Wed Feb 28 16:33:13 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Mon Nov 20 20:31:34 UTC 2017 - luc14n0@linuxmail.org
+
+- Update to version 0.2.5:
+  + Update gtk-doc to newer version to fix build failures.
+- Update Url to https://wiki.gnome.org/Projects/GUPnP: current
+  GUPnP's web page.
+
+-------------------------------------------------------------------
+Tue Feb 28 09:53:30 UTC 2017 - zaitor@opensuse.org
+
+- Drop pkgconfig(pygobject-2.0) and pkgconfig(pygtk-2.0)
+  BuildRequires: Follow upstream who have had python-bindings
+  disabled by default since version 0.2.3. pygobject-2.0 and
+  pygtk-2.0 are considered deprecated, and we want to minimize our
+  dependencies on these old bindings.
+- Following the above, drop no longer built sub-package
+  python-gupnp-igd, and obsolete it from the main library.
+- Run spec-cleaner, modernize spec, adds pkgconfig BuildRequires
+  and drops obsolete clean section.
+
+-------------------------------------------------------------------
+Fri Apr 15 22:29:27 UTC 2016 - mgorse@suse.com
+
+- Update to GNOME 3.20  Fate#318572
+
+-------------------------------------------------------------------
+Sat Jan  2 17:13:03 UTC 2016 - zaitor@opensuse.org
+
+- Replace *-devel BuildRequires for their pkgconfig counterpart:
+  gobject-introspection-devel for
+  pkgconfig(gobject-introspection-1.0),
+  gtk-doc for pkgconfig(gtk-doc),
+  libgupnp-devel for pkgconfig(gupnp-1.0),
+  and python-gobject2-devel for pkgconfig(pygobject-2.0).
+- Replace python-devel for pkgconfig(pygtk-2.0), as this is what
+  configure really looks for.
+- Add explicit pkgconfig(glib-2.0), pkgconfig(gobject-2.0),
+  pkgconfig(gthread-2.0) and pkgconfig(gssdp-1.0) BuildRequires:
+  align with what configure looks for.
+
+-------------------------------------------------------------------
+Thu Oct 16 19:53:02 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Add baselibs.conf: provide multi-arch packages.
+
+-------------------------------------------------------------------
+Wed Oct  1 09:14:42 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 0.2.4:
+  + Add API to delete mapping by internal IP/port instead of the
+    external one.
+
+-------------------------------------------------------------------
+Thu Feb  6 21:11:58 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 0.2.3:
+  + Emit errors as boxed types.
+  + Various build improvements.
+  + Make tests less racy.
+- Pass --enable-python to configure in order to ensure the python
+  bindings to be built.
+
+-------------------------------------------------------------------
+Tue Dec  4 08:46:21 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.2.2:
+  + Parallel build and linking fixes.
+- Change python-gupnp-id Obsoletes to < %{version}, as we now have
+  a new release. Fixes a rpmlint warning about self-obsoletion.
+
+-------------------------------------------------------------------
+Fri Dec 23 10:40:40 UTC 2011 - vuntz@opensuse.org
+
+- Split typelib file into typelib-1_0-GUPnPIgd-1_0 subpackage.
+- Add typelib-1_0-GUPnPIgd-1_0 Requires to libgupnp-igd-devel
+  subpackage.
+- Rename python-gupnp-id subpackage to python-gupnp-igd: there was
+  a typo in the package name. Add appropriate Provides/Obsoletes.
+- Remove libgupnp-devel Requires from libgupnp-igd-devel
+  subpackage: it will automatically be added the pkgconfig() way.
+
+-------------------------------------------------------------------
+Tue Nov  8 10:10:50 UTC 2011 - dimstar@opensuse.org
+
+- Update to version 0.2.1:
+  + Restore the "main-context" property so that outsider can use
+    the GUPnPIgdThread's GMainContext for timers, etc
+- Changes from version 0.2.0:
+  + Use the thread current GMainContext instead of passing it as a
+    parameter
+  + Make the GUPnPIgdThread object work with the new GUPnP 0.18
+- Re-enabled parallel build.
+- Rename libgupnp-igd-1_0-3 to libgupnp-igd-1_0-4, following
+  upstreams soname change.
+
+-------------------------------------------------------------------
+Thu Jun 16 18:28:48 CEST 2011 - dimstar@opensuse.org
+
+- Remove _service usage to follow current factory packaging style.
+
+-------------------------------------------------------------------
+Thu May  5 09:07:28 CEST 2011 - vuntz@opensuse.org
+
+- Update to version 0.1.11:
+  + Disable introspection correctly on --disable-introspection
+
+-------------------------------------------------------------------
+Fri Apr 29 14:49:09 UTC 2011 - dimstar@opensuse.org
+
+- Update to version 0.1.10:
+  + Port to gobject-introspection 0.10
+- Changes from version 0.1.9:
+  + Set thread default main context
+- Changes from version 0.1.8:
+  - Add GObject Introspection support
+  - Return a valid GError if the other side returns an invalid IP
+  - Make newer GNU Make and newer GCC happy
+- Drop gupnp-igd-make382.patch and related autoreconf call: fixed
+  upstream.
+- Add gobject-introspection-devel BuildRequires for introspection
+  support.
+- Disable parallel build for now: it's broken.
+- Use source services: download_url, recompress and set_version.
+
+-------------------------------------------------------------------
+Sat Sep 11 20:27:55 UTC 2010 - dimstar@opensuse.org
+
+- Add gupnp-igd-make382.patch: Fix build with make 3.82
+- Add autoreconf call in build section.
+- Add gtk-doc BuildRequires.
+
+-------------------------------------------------------------------
+Mon Jun 21 12:48:54 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 0.1.7:
+  + Fix race if g_main_loop_quit() is called just before
+    g_main_loop_run()
+  + override the main-context construct time property in the
+    constructor
+  + Fixed installation of python bindings
+
+-------------------------------------------------------------------
+Tue Jan  5 16:46:33 CET 2010 - vuntz@opensuse.org
+
+- Update to version 0.1.6:
+  + Add python bindings
+- Add python-devel, python-gobject2-devel BuildRequires, and
+  package python bindings in python-gupnp-id subpackage.
+
+-------------------------------------------------------------------
+Mon Dec  7 09:19:28 CET 2009 - vuntz@opensuse.org
+
+- Update to version 0.1.5:
+  + Use the new GUPnP Context Manager from GUPnP 0.13
+- Rename libgupnp-igd-1_0-2 to libgupnp-igd-1_0-3 to follow soname
+  bump.
+
+-------------------------------------------------------------------
+Mon Nov 30 20:13:14 CET 2009 - dimstar@opensuse.org
+
+- Update to version 0.1.4:
+  + Make it compatible with the 0.13 API
+  + Bug fixes
+
+-------------------------------------------------------------------
+Sat Jun 13 23:43:02 CEST 2009 - vuntz@novell.com
+
+- Initial package.
+
