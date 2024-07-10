@@ -74,4 +74,19 @@
     build environments</comment>
     <requestid>1180150</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>c117beadf550d3d8acadaecca2c1a21a</srcmd5>
+    <version>3.3.4</version>
+    <time>1720622872</time>
+    <user>anag+factory</user>
+    <comment>- Update to 3.3.4
+  This release fixes a regression in Ruby 3.3.3 that dependencies
+  are missing in the gemspec of some bundled gems: net-pop,
+  net-ftp, net-imap, and prime [Bug #20581]. The fix allows Bundler
+  to successfully install those gems on platforms like Heroku. If
+  your bundle install runs correctly now, you may not have this
+  issue.
+  https://github.com/ruby/ruby/releases/tag/v3_3_4</comment>
+    <requestid>1186347</requestid>
+  </revision>
 </revisionlist>

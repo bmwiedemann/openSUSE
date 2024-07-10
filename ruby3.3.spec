@@ -36,7 +36,7 @@
 
 %global patch_level p0
 Name:           ruby3.3%{psuffix}
-Version:        3.3.3
+Version:        3.3.4
 Release:        0
 %global pkg_version %{version}
 # make the exported API version explicit
