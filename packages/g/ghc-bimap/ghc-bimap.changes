@@ -1,0 +1,21 @@
+-------------------------------------------------------------------
+Thu Mar 30 17:05:58 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
+Sun May 15 01:41:36 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update bimap to version 0.5.0.
+  Upstream does not provide a change log file.
+
+-------------------------------------------------------------------
+Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+ 
+- disable %{ix86} build
+ 
+-------------------------------------------------------------------
+Sat Nov  7 15:35:36 UTC 2020 - psimons@suse.com
+
+- Add bimap at version 0.4.0 revision 1.
+
