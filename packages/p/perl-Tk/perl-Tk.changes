@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Jul  8 12:40:38 UTC 2024 - pgajdos@suse.com
+
+- mirror last changes in cpanspec.yml
+
+-------------------------------------------------------------------
+Wed Jul  3 18:38:05 UTC 2024 - Martin Jambor <mjambor@suse.com>
+
+- Compile with -fpermissive to work around issues which GCC 14
+  considers errors (and not warnings as before) and add
+  Tk-804-config-C99.diff to actually fix the problems in the
+  conffigury snippets (which are not compiled with the options
+  requested in optflags).  [boo#1225909]
+
+-------------------------------------------------------------------
 Fri Jan 12 10:31:19 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
 
 - Fix an STRLEN vs int pointer confusion in function

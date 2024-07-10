@@ -1,0 +1,50 @@
+Index: config/signedchar.c
+===================================================================
+--- config/signedchar.c.orig
++++ config/signedchar.c
+@@ -1,4 +1,4 @@
+-main()
++int main()
+ {
+  signed char x = 'a';
+  return (x - 'a');
+Index: config/unsigned.c
+===================================================================
+--- config/unsigned.c.orig
++++ config/unsigned.c
+@@ -1,3 +1,5 @@
++#include <stdlib.h>
++
+ int main()
+ {
+  char x[] = "\377";
+Index: pTk/config/Hstrdup.c
+===================================================================
+--- pTk/config/Hstrdup.c.orig
++++ pTk/config/Hstrdup.c
+@@ -1,4 +1,5 @@
+ #include <string.h>
++#include <stdlib.h>
+ 
+ #define STRING "Whatever"
+ 
+Index: pTk/config/Hstrtoul.c
+===================================================================
+--- pTk/config/Hstrtoul.c.orig
++++ pTk/config/Hstrtoul.c
+@@ -1,3 +1,4 @@
++#include <string.h>
+ #include <stdlib.h>
+ 
+ int main()
+Index: config/pregcomp2.c
+===================================================================
+--- config/pregcomp2.c.orig
++++ config/pregcomp2.c
+@@ -4,5 +4,5 @@
+ 
+ int main() {
+     SV* sv = newSViv(0);
+-    regexp* rx = pregcomp(sv, 0);
++    void *rx = (void *) pregcomp(sv, 0);
+ }

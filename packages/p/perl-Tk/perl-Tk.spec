@@ -31,6 +31,8 @@ Patch1:         Tk-804.029-macro.diff
 Patch2:         Tk-804.029-null.diff
 Patch3:         Tk-804.029-refcnt.diff
 Patch4:         Tk-804.036-fix-strlen-vs-int-pointer-confusion.patch
+# PATCH-FIX-UPSTREAM fix gcc14 build error https://github.com/eserte/perl-tk/issues/98
+Patch5:         Tk-804-config-C99.diff
 BuildRequires:  perl
 BuildRequires:  perl-macros
 %{perl_requires}
@@ -74,13 +76,16 @@ been verified as compliant. There ARE differences see pod/804delta.pod.
 %prep
 %autosetup  -n %{cpan_name}-%{version} -p0
 
-find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 # MANUAL BEGIN
 find . -type f -name "Tcl-pTk" -print0 | xargs -0 chmod +x
 find . -type f -name "mkVFunc" -print0 | xargs -0 chmod +x
 # MANUAL END
 
 %build
+# Work around boo#1225909, see the bug for more details
+%global optflags %{optflags} -fpermissive
+
 find -name "*.orig" -exec rm {} \;
 for file in `find -type f` ; do
   grep -q "%{_prefix}/local/bin/perl" $file && \

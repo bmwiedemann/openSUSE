@@ -19,6 +19,7 @@ patches:
   Tk-804.029-null.diff: -p0
   Tk-804.029-refcnt.diff: -p0
   Tk-804.036-fix-strlen-vs-int-pointer-confusion.patch: -p0
+  Tk-804-config-C99.diff: -p0 PATCH-FIX-UPSTREAM fix gcc14 build error https://github.com/eserte/perl-tk/issues/98
 preamble: |-
   BuildRequires:  liberation-fonts
   BuildRequires:  libjpeg-devel
@@ -34,7 +35,6 @@ preamble: |-
   BuildRequires:  perl(Test::More)
   BuildRequires:  perl(Test::Pod)
   %endif
-  BuildRequires:  xorg-x11
   BuildRequires:  xorg-x11-Xnest
   BuildRequires:  xorg-x11-Xvfb
   BuildRequires:  xorg-x11-fonts
@@ -56,6 +56,9 @@ post_prep: |-
 license: (GPL-1.0-or-later OR Artistic-1.0) AND Zlib
 #skip_noarch: 1
 custom_build: |-
+  # Work around boo#1225909, see the bug for more details
+  %global optflags %{optflags} -fpermissive
+
   find -name "*.orig" -exec rm {} \;
   for file in `find -type f` ; do
     grep -q "%{_prefix}/local/bin/perl" $file && \
