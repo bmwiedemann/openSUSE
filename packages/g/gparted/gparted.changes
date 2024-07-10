@@ -1,0 +1,1178 @@
+-------------------------------------------------------------------
+Wed May 29 07:26:06 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop xdg-utils Requires: it's been since 2013 that we relied on
+  pkexec to gain root permissions (using GKSUPROG=pkexec).
+
+-------------------------------------------------------------------
+Tue Feb 27 06:33:56 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.6.0:
+  * Stop forcing 1 MiB gap when moving partition boundary right.
+  * Fix crash when dealing with 0000-0000 exfat UUID.
+  * Remove Attempt Data Rescue and use of gpart.
+  * Update systemd mount masking and udev rule location.
+
+-------------------------------------------------------------------
+Wed Feb 22 07:16:37 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.5.0: 
+  * Fix path used to resize btrfs needs to be a directory
+  * Fix crash when copying NTFS to starting beyond 2 TiB
+  * Enable repair when checking exfat file systems
+  * Fix undeclared identifier 'basename' build failure with musl libc (!99)
+  * Fix NULL == 0 assumption in call to ped_partition_flag_next() (!100)
+  * Fix make distcheck failure found in GitLab CI job unbuntu_test (!103)
+  * Add Alpine Linux CI jobs and resolve FAT16/32 label and UUID issues (!104)
+  * Update used btrfs file system commands, btrfs-progs 4.5 required (!105)
+  * Update AC_PROG_LIBTOOL to LT_INIT in configure.ac (!106)
+  * Migrate from intltool to gettext translation (!107)
+  * Increase minimum XFS size to 300 MiB (#217, !110)
+  * Erase all Promise FastTrack RAID signatures (#220, !111)
+
+-------------------------------------------------------------------
+Thu Oct 27 09:13:52 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Require/BuildRequire /usr/bin/pkexec instead of pkexec: allow to
+  work with it being split from polkit, or integrated.
+
+-------------------------------------------------------------------
+Tue Sep  6 13:51:55 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- No longer recommend reiserfs: the openSUSE kernel has disabled
+  support for this fs, upstream kernel will follow.
+
+-------------------------------------------------------------------
+Mon Aug  8 16:15:42 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Revert 'removal of upstream pokit action', but rather
+  BuildRequire pkexec, which is what decides if the file is
+  installed or not.
+
+-------------------------------------------------------------------
+Sat Aug  6 13:00:33 UTC 2022 - Georg Pfuetzenreuter <georg.pfuetzenreuter@suse.com>
+
+- Recommend pkexec
+- Remove removal of upstream polkit action, it is not being installed by default
+
+-------------------------------------------------------------------
+Tue Mar 29 06:50:58 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to version 1.4.0:
+ * Add labelling of mounted btrfs, ext2/3/4 and xfs file systems
+  * Fix detection of mount points for encrypted file systems
+  * Fix crash scrolling quickly in the drive selection combobox
+  * Add bcache detection
+  * Add JBD external EXT3/4 journal detection
+
+-------------------------------------------------------------------
+Mon Nov 22 10:07:31 UTC 2021 - Giacomo Comes <gcomes.obs@gmail.com> - 1.3.1
+
+- Update to version 1.3.1:
+  * Copy XFS UUID when copying the file system (!85)
+  * Copy XFS label when copying the file system (!85)
+  * Handle change in path for udisks2-inhibit executable (!84)
+  * Fix recognition of SD/MMC device names (!83)
+  * Replace deprecated gtk_show_uri() method for help window (!82)
+- add configure option --enable-libparted-dmraid
+
+-------------------------------------------------------------------
+Fri May  7 16:54:16 UTC 2021 - Predrag Ivanović <predivan@mts.rs>
+
+- Update to version 1.3.0:
+  *  Stop GParted hanging when non-named device is hung
+     (glgo#GNOME/gparted#131) (glgo#GNOME/gparted!65)
+  *  Avoid detecting exfat-utils commands as exfatprogs commands
+     (glgo#GNOME/gparted#137) (glgo#GNOME/gparted!66)
+  *  Fix crash in Create New Partition dialog when changing type
+     (glgo#GNOME/gparted#101) (glgo#GNOME/gparted!73)
+  *  Install gpartedbin under /usr/libexec instead of /usr/sbin
+     (glgo#GNOME/gparted#85)  (glgo#GNOME/gparted!75)
+  *  Restore detection of encrypted file systems
+     (glgo#GNOME/gparted#148) (glgo#GNOME/gparted!78)
+  *  Fix crash probing libparted unrecognised encrypted file system
+     (glgo#GNOME/gparted#152) (glgo#GNOME/gparted!79)
+  *  Support resizing open LUKS2 encryption mappings with passphrase
+     (glgo#GNOME/gparted#59)  (glgo#GNOME/gparted!80)
+  *  Add support for reading exFAT usage and updating the UUID
+     (glgo#GNOME/gparted!67)
+
+-------------------------------------------------------------------
+Tue Jan 26 19:48:02 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.2.0:
+  + Add exFAT support using exfatprogs
+  + Fix gparted not launching when PS_FORMAT environment variable set
+  + Wait for udev change on /dev/DISK when erasing signatures
+  + Raise minimum supported dosfstools to 3.0.18
+  + Fix formatting directive in it.po
+  + Fix GNOME GitLab CI test job failures because of missing /dev entries
+  + Fix GitLab CI job failures following Ubuntu docker image updates
+  + Fix CentOS 7 CI test job fails because of zero sized /etc/machine-id
+  + Set default alignment to cylinder for amiga partition table
+  + Don't try to mask non-existent Systemd \xe2\x97\x8f.service
+- Add exfatprogs to Recommends
+
+-------------------------------------------------------------------
+Mon Jan 20 19:01:44 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.1.0:
+  + Fix error when moving locked LUKS-encrypted partition.
+  + Switch to faster minfo and mdir to read FAT16/32 usage.
+  + Calculate JFS size accurately.
+  + Recognise ATARAID members and detect their busy status.
+
+-------------------------------------------------------------------
+Tue Jul  9 18:54:28 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop scrollkeeper BuildRequires and stop passing
+  --disable-scrollkeeper to configure: No longer needed nor used or
+  recognized.
+- Update macros to current standard.
+
+-------------------------------------------------------------------
+Sun Jul  7 21:50:56 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim marketing filler wording from description.
+
+-------------------------------------------------------------------
+Tue Jul  2 06:51:26 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Change filesystem related Requires to Recommends: on a default
+  setup, this equals to no change, but the users have the choice to
+  remove/block filesystem packages they do not care for
+  (boo#1139018).
+
+-------------------------------------------------------------------
+Wed Jun 05 19:29:19 UTC 2019 - enzokiel@kabelmail.de
+
+- Update to version 1.0.0:
+  + Key changes include:
+    - Port to Gtkmm 3
+    - Port to GNOME 3 yelp-tools documentation infrastructure
+    - Enable online resizing of extended partitions
+    - Add F2FS support for read disk usage, grow, and check
+    - Fix slow refreshing of NTFS file systems
+  + Bug Fixes
+    - Port to Gtkmm 3 (#7, !9)
+    - Increase minimums to libparted 2.2 and glibmm 2.32 (!22)
+    - Enable online resizing of extended partitions (!23)
+    - Port to GNOME 3 yelp-tools documentation infrastructure (!24)
+    - Remove support for btrfs-progs < 3.12 (!26)
+    - Set title of Resize/Move dialog for an extended partition
+      (#44, !28)
+    - Add F2FS support for read disk usage, grow, and check (!29)
+    - Replace String::ucompose() with Glibmm equivalent (#46, !31)
+    - Always show menu images (!32)
+    - Save partition layout to gparted_details.htm (bgo#639176)
+    - Could not stat device /dev/mapper/No RAID disks - No such
+      file (bgo#786031)
+    - File include/Partition.h: performance problem (bgo#788813)
+    - File include/HBoxOperations.h: performance problem
+      (bgo#788814)
+    - Display more version and configuration information (!34)
+    - After GTK3 port icons are too big on KDE (#39, !35)
+    - Set partition type when clearing partition contents (!36)
+    - Fix slow refreshing of NTFS file systems (#47, !37)
+    - Fix minor issues with File System Support rescanning (!38)
+    - Modern Gtk3 - part 1 (!25)
+    - Improve partition information mount status formatting (#52)
+    - Request natural width in Gtk::ScrolledWindows for
+      Gtk >= 3.22 (!39)
+    - Limit wrapping Gtk::Labels (!40)
+    - NTFS Resize results in Partition Information Warning on
+      Refresh (#57, !42)
+  + Updated translations.
+  + Dependencies (new/updated)
+    - gtkmm >= 3.4.0
+    - glibmm >= 2.32
+    - libparted >= 2.2
+    - yelp-tools
+  + Dependencies (no longer needed)
+    - gnome-doc-utils
+    - rarian
+    - rarian-compat
+
+-------------------------------------------------------------------
+Sat Dec 15 05:48:40 UTC 2018 - sean@suspend.net
+
+- Update to version 0.33.0:
+  + Key changes include:
+    - Support copying and moving of unsupported partition content
+    - Add minix file system support
+    - Reognize APFS Apple file system
+    - Gtk2 code modernization
+  + Bug fixes:
+    - Recognize APFS Apple File System (#23)
+    - Fix tries to resize BTRFS mounted read-only (#10)
+    - Update bug links from Bugzilla to GitLab issues (#11)
+    - Add minix file system support (#12)
+    - Support copying and moving of unsupported partition content
+    - Update GParted appdata file license (#12, #15)
+    - Gtk2 code modernization
+    - Fix false usage figures for busy SWRAID members (#27, #19)
+    - Minor namespace and scope operator tidy-ups (#20)
+
+-------------------------------------------------------------------
+Fri Aug 24 09:35:18 UTC 2018 - mvetter@suse.com
+
+- Update to version 0.32.0:
+  + Key changes include:
+    - Implement opening and closing of LUKS mappings
+    - Fix can't shrink LVM partition due to pvresize prompt
+    - Recognise additional GRUB2 core.img signatures
+    - Honour resize2fs minimum FS sizes
+  + Bug Fixes:
+    - Desupport RHEL / CentOS 5 (#794253)
+    - Implement opening and closing of LUKS mappings (#795617)
+    - Fix null pointer check accidentally disabled (#796293)
+    - Add logo.png for automatic GitLab/GitHub project avatar
+    - Fix volume label is incorrect for bitlocker encrypted partitions (#795127)
+    - Update URL links to https://gparted.org (#796411)
+    - Avoid unnecessary string change (!1)
+    - Fix can't shrink LVM partition due to pvresize prompt (#1)(#2)(!3)
+    - Remove support for obsolete devkit-disks automount inhibitor (!2)
+    - Add GitLab CI jobs to build and test GParted (!4)
+    - Recognise additional GRUB2 core.img signatures (!5)
+    - Reduce the time taken by the GitLab CI jobs (!6)
+    - Stop xmllint scrollkeeper-omf.dtd fetch fail breaking CI tests (#9)(!7)
+    - Honour resize2fs minimum FS sizes (#8)(!8)
+
+-------------------------------------------------------------------
+Wed Mar 21 14:08:24 UTC 2018 - enzokiel@kabelmail.de
+
+- Update to version 0.31.0:
+  + Key changes include:
+    - Add support for changing UDF label/uuid and show UDF disk
+      usage.
+    - Rollback specific failed partition change steps.
+  + Bug Fixes:
+    - Report libparted messages in log at point in which these
+      occur (bgo#790842).
+    - Avoid libparted failing to inform kernel about partition
+      changes (bgo#790418).
+    - Rollback specific failed partition change steps (bgo#791875).
+    - Add support for changing UDF label/uuid and show UDF disk
+      usage (bgo#792052).
+    - Base Min and Max size of the UDF partition/disk on block size
+      (bgo#787204).
+    - Reduce dependency on scrollkeeper (bgo#743318).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Dec 09 21:58:41 UTC 2017 - joerg.lorenzen@ki.tng.de
+
+- Fixed source file gparted.policy, gparted binary has been moved
+  from %sbindir to %bindir.
+
+-------------------------------------------------------------------
+Sat Nov 18 01:33:27 UTC 2017 - luc14n0@linuxmail.org
+
+- Update to version 0.30.0:
+  + Interim fix for GParted fails to run as root under Wayland.
+  + Fix reading Unicode labels when no FS specific tools available.
+  + Safely quote and escape external programs arguments.
+  + Uses pkexec command (part of polkit) for root privilege
+    escalation when available.
+  + Bug Fixes:
+    - Interim fix for GParted fails to run as root under Wayland
+      (bgo#776437).
+    - Fix:
+      . Message failed to execute "mkudffs" when not installed
+        (bgo#786050).
+      . Reading Unicode labels when no FS specific tools available
+        (bgo#786502).
+      . Detection of file system images (bgo#787181).
+      . Problems with space in device names (bgo#649509).
+  + Update list of prohibited fat label characters (bgo#787202).
+  + Safely quote and escape external programs arguments
+    (bgo#787203).
+  + Remove:
+    - Minor bits of legacy from DMRaid module (bgo#788007).
+    - whole_device partition flag (bgo#788308).
+  + Updated translations.
+- Pass --enable-xhost-root parameter to configure: an interim
+  workaround to allow GParted to run under Wayland by using xhost
+  to grant and revoke root access to the X11 display.
+- Drop gparted_polkit and its sed command to inject it into
+  Makefile: the installation location of the gparted script has
+  changed and package scripts calling pkexec can be dropped.
+- Point fdupes to the data directory instead of the build root,
+  which is a practice that must be avoided.
+- Remove %clean section: it's no longer needed since RPM has this
+  functionality itself now.
+- Drop %icon_theme_cache_* and %desktop_database_* post/postun
+  scriptlets: it's no longer needed since RPM file triggers.
+- Add conditional use to translation-update-upstream: it's a
+  SLE-only requirement.
+- Switch gtkmm2-devel BuildRequires to its pkgconfig counterpart
+  once that configure only checks for its module.
+- Add glibmm-2.4 and sigc++-2.0 pkgconfig BuildRequires: note that
+  they were already being used but not declared in the specfile.
+
+-------------------------------------------------------------------
+Wed Aug 09 22:11:23 UTC 2017 - joerg.lorenzen@ki.tng.de
+
+- Update to version 0.29.0:
+  + Key changes include:
+    - Add support for UDF file system
+    - Fix segmentation fault on disk with corrupted FAT file system
+    - Fix snap-to-alignment of operations creating partitions
+  + Bug Fixes
+    - Fix segmentation fault on disk with corrupted FAT file system
+      (bgo#777973).
+    - Fix snap-to-alignment of operations creating partitions
+      (bgo#779339).
+    - Fix btrfs partitions mounted with whitespace cannot be
+      resized (bgo#782681).
+    - Add Google Test C++ test framework (bgo#781978).
+    - Fix LVM2 PV detected regardless if second magic matches or not
+      (bgo#783997).
+    - Fix no longer detecting btrfs change UUID capability
+      (bgo#784467).
+    - Fix setting empty label when creating FAT16/32 file systems
+      (bgo#784564).
+    - Add support for UDF file system (bgo#784533).
+    - Fix make distcheck fails with *.Po: No such file or directory
+      (bgo#785308).
+  + Updated translations.
+- Recommend udftools: needed for optional udf file system support.
+
+-------------------------------------------------------------------
+Tue Feb 21 12:34:55 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 0.28.1:
+  + Restore ability to resize/move primary if extended exists.
+  + Make the Label File System and Name Partition dialogs larger.
+  + Some minor bug fixes.
+
+-------------------------------------------------------------------
+Thu Feb 16 11:02:18 UTC 2017 - joerg.lorenzen@ki.tng.de
+
+- Update to version 0.28.0:
+  + Key changes include:
+    - Implement LUKS read-write actions NOT requiring a passphrase.
+    - Add detection of iso9660 file system.
+  + Bug Fixes
+    - Implement LUKS read-write actions NOT requiring a passphrase
+      (bgo#774818).
+    - Fix mount column shown for non-mounted encrypted file systems
+      (bgo#775475).
+    - Refactor mostly applying of operations (bgo#775932).
+    - Update help with additional partition flags (bgo#776002).
+    - Include sys/sysmacros.h for major and minor macros
+      (bgo#776173).
+    - Add detection of iso9660 file system (bgo#771244).
+  + Updated translations.
+  + Dependencies (new/updated)
+    - cryptsetup command is required to work with LUKS encrypted
+      volumes.
+
+-------------------------------------------------------------------
+Thu Oct 20 12:27:57 UTC 2016 - ecsos@opensuse.org
+
+- Update to version 0.27.0:
+  + Key changes include:
+    - Recognize GRUB2 core.img.
+    - Fix Mount Point column is wider than the screen on openSUSE.
+    - Make GParted exit when closed before the initial load
+      complete.
+  + Bug Fixes
+    - Recognize GRUB2 core.img (bgo#766989).
+    - Fix file system usage missing when tools use alt blk dev
+      names (bgo#767842).
+    - Fix sscanf modifier for long long (bgo#768239).
+    - Fix duplicate mounts shown for unmounted encrypted file
+      systems (bgo#771323).
+    - Fix usage of active encrypted swap is not shown (bgo#771670).
+    - Include extended partitions in the count of active
+      partitions.
+    - Fix Mount Point column is wider than the screen on openSUSE
+      (bgo#771693).
+    - Make GParted exit when closed before the initial load
+      completes (bgo#771816).
+    - Prevent the UI hanging while gpart data rescue is running
+      (bgo#772123).
+    - Add language headers to po files.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Jun 13 21:52:33 UTC 2016 - joerg.lorenzen@ki.tng.de
+
+- Update to version 0.26.1:
+  + Key changes include:
+    - Ensure boot loaders work on ext4 < 16 TiB by using 32bit
+      feature.
+    - Fix core dump crash in OperationDelete::get_partition_new().
+  + Bug Fixes:
+    - Clean up partition path "copy of /dev/SRC" code ugliness
+      (bgo#766349).
+    - Fix PedGeometry objects are memory leaked (bgo#767009).
+    - Multiple boot loaders don't work on 64bit EXT4 file systems
+      (bgo#766910).
+    - Fix core dump crash in OperationDelete::get_partition_new()
+      (bgo#767233).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Apr 26 22:26:49 UTC 2016 - joerg.lorenzen@ki.tng.de
+
+- Update to version 0.26.0:
+  + Key changes include:
+    - Implement read-only LUKS support.
+    - Add progress bars to NTFS, XFS, and EXT2/3/4 file system copy
+      methods.
+    - Fix operations sometimes fail with: No such file or
+      directory.
+  + Bug Fixes:
+    - Implement Partition object polymorphism (bgo#759726).
+    - Implement read-only LUKS support (bgo#760080).
+    - Add progress bars to XFS and EXT2/3/4 file system copy
+      methods (bgo#760709).
+    - Add progress bar to NTFS file system specific copy method
+      (bgo#762366).
+    - Use a single progress bar for entire internal copy operation
+      (bgo#762367).
+    - Fix autoconf check for C++11
+      Gtk::Window::set_default_icon_name (bgo#762184).
+    - Limit FAT32 maximum volume size to 2 TiB (bgo#763896).
+    - Enable C++11 compilation when using libsigc++ 2.5.1 and later
+      (bgo#758545).
+    - Use realpath safely (bgo#764369).
+    - Fix crash reading NTFS usage when there is no /dev/PTN entry
+      (bgo#764658).
+    - Fix operations sometimes fail with: No such file or directory
+      (bgo#762941).
+    - Add missing gettext translation tag to AppData file.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Jan 28 15:37:31 UTC 2016 - joerg.lorenzen@ki.tng.de
+
+- Update to version 0.25.0:
+  + Key changes include:
+    - Add progress bar during additional ext2/3/4 and ntfs
+      operations.
+    - Enhance SWRaid member detection and file system clearing.
+    - Always use blkid file system detection before libparted.
+  + Bug Fixes:
+    - Add progress bar during additional ext2/3/4 and ntfs
+      operations (bgo#467925).
+    - Enhance SWRaid member detection and file system clearing
+      (bgo#756829).
+    - Always use blkid file system detection before libparted
+      (bgo#757781).
+    - Rework Dialog_Partition_New::Get_New_Partition()
+      (bgo#757671).
+    - Fix missing "old end" value in detail log of en_CA
+      translation (bgo#756878).
+    - Make about dialog website link non-clickable (bgo#758131).
+    - Fix temporary path name of new partitions (bgo#759488).
+    - Fix partition names sometimes shown as file system labels
+      (bgo#759972).
+    - Revert tarball compression back to gzip (bgo#760099).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Nov 11 15:16:18 UTC 2015 - joerg.lorenzen@ki.tng.de
+
+- Update to version 0.24.0:
+  + Display list of Logical Volumes in Partition Information
+    dialog.
+  + Add ZFS file system detection.
+  + Add recognition of NVME devices.
+  + Prevent hang labeling FAT16/32 if illegal chars in label.
+  + Avoid core dump if invalid or non-existent device on command
+    line.
+  + Bug Fixes:
+    - Add ZFS file system detection (bgo#752862).
+    - Update documentation of GParted software dependencies
+      (bgo#753436).
+    - Configuration issues when using non-system location of
+      libparted (bgo#753525).
+    - Display list of Logical Volumes in Partition Information
+      dialog (bgo#754649).
+    - Add recognition of NVME devices (bgo#755022).
+    - Updates to FileSystem:: and Utils::execute_command()
+      functions (bgo#754684).
+    - Fix issue with copy, reformat source logical partition and
+      paste (bgo#754827).
+    - Refactor operation merging (bgo#755214).
+    - Prevent hang labeling FAT16/32 if illegal chars in label
+      (bgo#755608).
+      - Upper case FAT16/32 label per MS technet bb490925.
+    - Enable C++11 compilation when using glibmm 2.45.40 and later
+      (bgo#756035).
+    - Check disks passed on command line are useable (bgo#755495).
+    - Avoid core dump if invalid or non-existent device on command
+      line (bgo#756434).
+  + Updated translations.
+  + Dependencies (new/updated):
+    - Blkid command should be considered mandatory as it is
+      required to detect a number of file systems which libparted
+      doesn't detect.
+- Add util-linux requires: new dependency to command blkid which
+  is part of package util-linux.
+
+-------------------------------------------------------------------
+Wed Sep 30 15:03:01 UTC 2015 - dimstar@opensuse.org
+
+- Fix boo#920510: Gparted Won't Start:
+  + Add gparted_polkit: launch gparted using pkexec through a
+    wrapper script. Launching pkexec directly from gnome-shell
+    results in a double fork and pkexec does not like to operate
+    on Parent PID = 1.
+  + Replace the command line in the .desktop file by
+    /usr/bin/gparted_polkit.
+
+-------------------------------------------------------------------
+Wed Aug 05 09:04:33 UTC 2015 - joerg.lorenzen@ki.tng.de
+
+- Update to version 0.23.0:
+  + Add partition name to create dialog and enable online naming
+    (relevant for GPT partitioned disk).
+  + Show serial number in device information.
+  + Add support for btrfs set new file system UUID.
+  + Prevent UI hang when resizing FAT16/32, HFS and HFS+ file
+    systems.
+  + Bugs fixed:
+    - Only set LVM partition flag on tables which support it
+      (bgo#746204).
+    - Add partition name to create dialog and enable online naming
+      (bgo#746214).
+    - Fix some operations fail after paste into existing partition
+      (bgo#746559).
+    - Fix FileSystem object memory leaks in init_filesystems
+      (bgo#749036).
+    - Fix arcane cylinder size adjustment when copying and resizing
+      (bgo#749867).
+    - Reduce the amount of copying of partition objects
+      (bgo#750168).
+    - Refactor LVM2_PV_Info module interface and cache
+      representation (bgo#750582).
+      - Adjust pointers to prevent crash resizing a logical
+        partition (bgo#752587).
+    - Show serial number in device information (bgo#751251).
+    - Add support for btrfs set new file system UUID(bgo#751337).
+    - Prevent UI hang when resizing FAT16/32, HFS and HFS+ file
+      systems (bgo#737022).
+    - Add translation comments for code section setting partition
+      flag (bgo#752901).
+  + Updated translations.
+- Add hdparm requires: hdparm command is required for optional
+  display serial number device information.
+
+-------------------------------------------------------------------
+Tue Mar 24 08:20:55 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 0.22.0:
+  + Add read and write support for unpartitioned whole disk
+    devices.
+  + Add read and write support for GPT partition names.
+  + Bug Fixes:
+    - Add support for GPT partition names (bgo#741424).
+    - Fix double quote error creating XFS file systems
+      (bgo#744108).
+    - Make swap usage match figures reported by swapon -s
+      (bgo#742647).
+    - Correct dialog title displaying libparted exceptions
+      (bgo#743825).
+    - GParted cannot recognise LVM signature on unpartitioned drive
+      (bgo#741430).
+    - Nilfs2 file system is unusable on RHEL/CentOS 6 (bgo#742741).
+    - Add unpartitioned drive read-write support (bgo#743181).
+    - If available use udisks2-inhibit to prevent automounting
+      (bgo#745349).
+- Add gpg signature and respective keyring file.
+
+-------------------------------------------------------------------
+Tue Jan 27 13:47:23 UTC 2015 - joerg.lorenzen@ki.tng.de
+
+- Update to version 0.21.0:
+  + Fix off by one sector error in GParted internal block copy.
+  + Add support for ext4 on RHEL/CentOS 5.x.
+  + Add ReFS file system detection.
+  + Use pkg-config to check for version of libparted.
+  + Remove unnecessary duplicate actions when resizing a partition.
+  + Correctly capitalise GNOME in the Manual and man page.
+  + Allow creation of reiser4 file systems on Linux 3.x.
+  + Add keywords in .desktop file to improve application discovery.
+  + Bugs fixed: bgo#742920, bgo#738706, bgo#738471, bgo#740004,
+    bgo#741211, bgo#739805, bgo#742511.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Oct 23 09:08:32 UTC 2014 - joerg.lorenzen@ki.tng.de
+
+- Update to version 0.20.0:
+  + Include devid when resizing multi-device btrfs file systems.
+  + Add GRUB 2 restoration steps to help manual.
+  + Bug Fixes:
+    - Fix devid needed when resizing multi-device
+      btrfs file systems.
+    - Fix warnings and missing label with btrfs-progs
+      3.12 and 3.14.
+    - Fix ./configure is successful even when C++ compiler
+      is missing.
+    - Add GRUB 2 restoration steps to help manual.
+    - Cleanup autoconf configure.ac and related files.
+      All fat16 and fat32 moves performed by GParted
+      internal algorithm.
+    - Autodetect parted online partition resizing capability.
+      Tidy up autoconf check for --disable-doc
+      and --enable-libparted-dmraid.
+    - Prevent automake warning about deprecated INCLUDES.
+    - Reduce display flashing when refreshing devices.
+  + Bugs fixed: bgo#723842, bgo#733601, bgo#732803, bgo#734376,
+    bgo#734718, bgo#734076, bgo#735742, bgo#696149.
+  + Updated translations.
+- Option --enable-online-resize is set automatically by configure
+  when a new enough libparted is detected, removed info line
+  "FIXME" from spec file.
+
+-------------------------------------------------------------------
+Thu Jul 17 09:31:40 UTC 2014 - joerg.lorenzen@ki.tng.de
+
+- Update to version 0.19.1:
+  + Prevent cross thread write after free in _OnReadable().
+  + Bugs fixed: bgo#731752.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Jun 19 11:57:23 UTC 2014 - joerg.lorenzen@ki.tng.de
+
+- Update to version 0.19.0:
+  + Refactor OperationDetail to address random crash behavior.
+  + Make partition information dialog viewable on 800x600 screens.
+  + Bugs fixed: bgo#729139, bgo#690542, bgo#721516, bgo#729800.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Feb 22 09:54:06 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 0.18.0:
+  + Fix partition size less than requested by resize on ext2/3/4,
+    ntfs, reiserfs file system.
+  + Prevent crash when creating new partition on disk with loop
+    label.
+  + Bugs fixed: bgo#723543, bgo#711098, bgo#721988, bgo#721565,
+    bgo#342682.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Dec 15 18:32:41 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 0.17.0:
+  + Add support for online resize, requires patched version of
+    libparted, kernel >= 3.6, and a config flag.
+  + Recognize Linux Swap Suspend and Software RAID partitions.
+  + Fix busy detection for Linux Software RAID and extended
+    partitions.
+  + Fix systemctl runtime mask to prevent automounting partitions.
+  + Bugs fixed: bgo#694622, bgo#708107, bgo#709276, bgo#708378,
+    bgo#652044, bgo#709640, bgo#712633, bgo#705596, bgo#711114,
+    bgo#709164.
+  + Updated translations.
+- Intentionally not pass --enable-online-resize to configure, as
+  we do not ship the patched libparted.
+
+-------------------------------------------------------------------
+Wed Dec 11 15:31:01 UTC 2013 - dimstar@opensuse.org
+
+- Own %{_datadir}/omf: scrollkeeper used to own this, but with the
+  switch to rarian we have to care of it ourselves.
+
+-------------------------------------------------------------------
+Sat Sep 21 07:43:20 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 0.16.2:
+  + Fix crash if click apply before pending operations fully
+    displayed.
+  + Fix FAT16/32 labels are sometimes shown corrupted.
+  + Fix regression - linux-swap resize broken.
+  + Fix to not hide the progress of the tools used - ntfsresize
+    (bgo#697662).
+  + Bugs fixed: bgo#699452, bgo#699626, bgo#700228, bgo#701075,
+    bgo#697848, bgo#539297, bgo#705323, bgo#705426, bgo#706914,
+    bgo#701569, bgo#701676, bgo#702040, bgo#704629, bgo#697662,
+    bgo#706604, bgo#707070, bgo#685735, bgo#694700.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed May  1 20:59:12 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.16.1:
+  + Avoid another crash in GParted when moving or copying
+    partitions (bgo#697727).
+  + Fix GParted doesn't compile on RHEL / CentOS 5.9 (bgo#695279).
+  + Recognise HFSX variant as an HFS+ file system (bgo#698876).
+
+-------------------------------------------------------------------
+Wed Apr 24 22:11:26 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.16.0:
+  + Avoid crash in GParted when moving or copying partitions.
+  + Fix GParted scans forever blank disk in virtual machine.
+  + Add support for f2fs file system.
+  + Bugs fixed: bgo#697727, bgo#697518, bgo#695396, bgo#688882,
+    bgo#697946.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Apr 16 18:30:06 UTC 2013 - dimstar@opensuse.org
+
+- Drop obsolete BuildRequires: gconfmm-devel, glibmm2-devel and
+  libglademm-devel.
+
+-------------------------------------------------------------------
+Wed Mar 20 19:40:38 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 0.15.0:
+  + Live tracking of command progress output in the details log.
+  + Move operations are twice as fast as prior versions.
+  + Proper cancel support added.
+  + Volume label length now based on file system type.
+  + Unallocated space is selected by default.
+  + New key bindings added:
+    - Insert     --> New Partition
+    - Ctrl+Enter --> Apply All Operations
+  + Bug Fixes:
+    - Refactor to use asynchronous command execution (bgo#685740).
+    - Remove move read-only simulation pass (bgo#696013).
+    - Remove temporary mtoolsrc file used in fat16/32 labelling and
+      UUID.
+    - Cleanup duplicate code for common file system methods.
+    - Combine duplicate code for ext2/ext3/ext4.
+    - Check file system after reverting partition table when move
+      canceled.
+    - Add proper cancel support for current and pending operations
+      (bgo#601239).
+    - Fix interrupting a format leaves partition in-use
+      (bgo#403487).
+    - Fix details log does not expand to the available vertical
+      space (bgo#602635).
+    - Increase width of details log display to include status icons
+      (bgo#662722).
+    - Select unallocated space by default (bgo#667365).
+    - Make partition label length dependent on the file system type
+      (bgo#689318).
+    - Avoid reading trailing junk for a reiser4 label.
+    - Improve argument vector usage (bgo#689689).
+    - Prevent crash when using an unknown locale (bgo#692049).
+    - Work around faulty "complete disks" detection in mkdosfs
+      (bgo#693955).
+    - Fix move primary partition right to left shrinks partition 1
+      MiB (bgo#695078).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Feb 28 18:10:37 CET 2013 - sbrabec@suse.cz
+
+- Added support for translation-update-upstream.
+
+-------------------------------------------------------------------
+Thu Feb 21 17:51:53 UTC 2013 - badshah400@gmail.com
+
+- Install polkit policy file (new source file gparted.policy) to
+  allow gparted to be run by normal user after gaining elevated
+  privileges using pkexec; BuildRequires: polkit to properly own
+  polkit directories
+- Use pkexec instead of xdg-su to run gparted from desktop menu;
+  introduces run time requirement on polkit; fixes bnc#755837.
+
+-------------------------------------------------------------------
+Sun Dec 16 19:00:52 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.14.1:
+  + Key changes include:
+    - Fix Linux software RAID device detection
+    - Fix logical partition grow overlaps extended partition end
+  + Bugs fixed: bgo#678379, bgo#683149, bgo#685656, bgo#686668,
+    bgo#687813, bgo#688760.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Oct 12 07:06:06 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.14.0:
+  + Key changes include:
+    - Add LVM PV read-write support
+    - Fix crash when pressing Esc in dialogs with number entry
+  + Bugs fixed: bgo#670171, bgo#682658, bgo#684115, bgo#683255
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Sep 16 17:52:46 UTC 2012 - zaitor@opensuse.org
+
+- Update to version 0.13.1:
+  + Fix failure creating read-only view of rescued file systems
+    (bgo#680740).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Jul 22 15:03:17 UTC 2012 - zaitor@opensuse.org
+
+- Update to version 0.13.0:
+  + Show difference if partition size differs from file system size
+    (sf#499202).
+  + Avoid end partition overlap when resizing extended partition
+    (sf#678831).
+  + Provide credit in About dialog for significant contributions
+    (sf#678486).
+  + Fix spelling mistakes (sf#676598, sf#677964, sf#678362).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Apr 10 06:17:09 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 0.12.1:
+  + Enable minimal file system resize API (FAT and HFS* only)
+    (bgo#668281)
+  + Properly handle more than 15 partitions on a disk (bgo#632345)
+  + Ensure space for EBR when resizing Extended partition
+    (bgo#664050)
+  + Improve reiser4 file system uuid reading method
+  + Fix uninitialised read when pasting into an existing partition
+    (bgo#672654)
+  + Fix for FS size & flags becoming unknown after change UUID
+    (bgo#673245) and fix for FS flags becoming unknown after change
+    label
+  + Fix attempt data rescue fail to open read-only view
+    (bgo#673246)
+  + Add requested partition details to log if resize/move fails
+  + Use cached method first to read UUID to shorten device scan
+    time
+  + Rework Align to MiB adjustments to end sector of partition
+  + Ensure Align to MiB does not overlap following partition
+    (bgo#661744)
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Feb 23 17:32:25 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 0.12.0:
+  + Key changes include:
+    - Add support for nilfs2 including resizing (bgo#642842)
+    - Add ability to change UUID (bgo#667278)
+    - Add read-only support for LVM PVs (bgo#160787)
+    - Enable GPT expansion when growing RAID (bgo#566935)
+  + Bug Fixes:
+    - Prevent unitialized OperationDetail member access
+    - Create common methods for mount and umount in btrfs, jfs,
+      nilfs2, and xfs
+    - Don't ignore any errors resizing btrfs on Linux >= 3.2
+      (bgo#669389)
+    - Display pop-up dialog on libparted exceptions
+    - Reduce graphic processing requirement for pulse bar
+      (deb#499193, deb#519764)
+    - Fix detection of multiple SW RAID (md) devices (bgo#668486)
+    - Fix build to correctly link to gthread (bgo#667412)
+    - Fix long scan problem when BIOS floppy setting incorrect
+      (bgo#667511, lp#910379)
+    - Enhance documentation for UUIDs and copying partitions
+      (bgo#608308)
+    - Fix en_CA parameter missing percent sign translation error
+      (bgo#660180)
+    - Avoid warning display when moving start of extended partition
+    - Increase FAT32 minimum size to 33 MiB (bgo#668491)
+    - Fix regression when shrinking, moving and copying swap
+      (bgo#670017)
+  + Updated translations.
+- Drop gparted-fix-thread-linking.patch: fixed upstream.
+- Drop automake and libtool BuildRequires, as well as call to
+  autoreconf: they were only needed for above patch.
+- Add nilfs-utils Requires for nilfs2 support.
+
+-------------------------------------------------------------------
+Fri Jan  6 14:16:50 UTC 2012 - vuntz@opensuse.org
+
+- Add gparted-fix-thread-linking.patch: fix build system to
+  correctly link to gthread.
+- Add automake and libtool BuildRequires, as well as call to
+  autoreconf, for above patch.
+
+-------------------------------------------------------------------
+Tue Jan  3 08:43:08 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 0.11.0:
+  + Display ext2/3/4 unicode volume labels properly (bgo#662537)
+  + Display ntfs unicode volume labels properly (lp#614994)
+  + Fix FAT16/32 label displayed as uppercase (bgo#625337)
+  + Add labelling of btrfs file systems (bgo#663207)
+  + Fix btrfs volume label reading (bgo#663590)
+  + Enable XFS copy to new smaller partition (bgo#663806)
+  + Use newer btrfs multi-tool control command first (bgo#663884)
+  + Avoid redundant file system maximize actions (bgo#663980)
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Nov  7 09:44:57 UTC 2011 - dimstar@opensuse.org
+
+- Update to version 0.10.0:
+  + Merge overlapping operations (bgo#438573)
+  + Add ability to resize btrfs file systems (bgo#661715)
+  + Add detection of exfat file systems (bgo#639760)
+  + Fix compile error with older gcc (bgo#662174)
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep 21 18:31:05 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 0.9.1:
+  + Fix NTFS partition resize fail problem (bgo#655215)
+  + Fix some compiler warnings
+  + Change some code attributes to local variables (bgo#634090)
+  + Fix typo in string: director --> directory (bgo#657744)
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Jul 18 22:41:59 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 0.9.0:
+  + The most significant change in this release is the ability to
+    compile and link with libparted 3.0.
+    Because Parted 3.0 removed some file system specific
+    functionality, the following abilities are lost or changed when
+    GParted is compiled and linked with libparted 3.0:
+    - Unable to grow and shrink FAT16 and FAT32 file systems
+    - Unable to shrink HFS and HFS+ file systems
+    - Unable to determine used and unused sectors in HFS and HFS+
+      file systems
+    - Unable to erase file system signatures on partition create
+      and format
+    - FAT16 and FAT32 file system moves performed internally by
+      GParted instead of by libparted
+  + Bug Fixes:
+    - bgo#651559: Enable compile and link with libparted 3.0
+    - bgo#649444: Fix size off by one sector with unrecognized disk
+      label
+    - lp#545911: Fix GParted crashes with assertion
+      (head_size <= 63)
+    - bgo#650793: Fix typo "on on " -> "on"
+    - bgo#650237: Improve English grammar: amount -> number
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat May 28 01:01:49 CEST 2011 - vuntz@opensuse.org
+
+- Do not ship our own version of gparted.desktop, and instead
+  export GKSUPROG="/usr/bin/xdg-su -c" during the build to make the
+  upstream .desktop file use xdg-su.
+- This means we can stop changing the .desktop file with
+  %suse_update_desktop_file.
+
+-------------------------------------------------------------------
+Tue May 24 12:13:01 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 0.8.1:
+  + Remove all usage of kpartx to avoid partition entry duplicates
+  + Add configure option --enable-libparted-dmraid
+  + Bug fixes:
+    - lp#696937: Ensure graphical error message displayed when run
+      by non-root user
+    - Simplify command output cleanup implementation
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Apr 30 16:12:56 UTC 2011 - dimstar@opensuse.org
+
+- Handle .desktop files and icons in post/postun scripts.
+- Use %{?no_lang_C} with %find_lang, to make sure the main package
+  ships the unstranslated documentation.
+
+-------------------------------------------------------------------
+Wed Feb 16 08:43:54 UTC 2011 - puzel@novell.com
+
+- Update to gparted-0.8.0 
+  + Add attempt data rescue for lost partitions
+  + Fix paste destination partition smaller than source
+  + Prevent visual disk display area from disappearing
+  + Other bugfixes
+- Add intltool BuildRequires
+- Add gpart Recommends
+
+-------------------------------------------------------------------
+Wed Dec 15 10:04:42 UTC 2010 - puzel@novell.com
+
+- update to gparted-0.7.1 
+  + This release of GParted further improves motherboard BIOS RAID
+    support and includes bug fixes, and language translation
+    updates.
+  + Key changes include:
+    - Fix incorrect dmraid partition path name
+    - Handle characters like spaces in mount points
+  + Bug Fixes:
+    - Fix incorrect dmraid partition path name
+    - Handle characters like spaces in mount points
+    - Enhance to work with mount points defined by uuid or label
+    - Fix MBR does not reflect the GPT partition map
+      . Requires libparted-2.3 or higher
+
+-------------------------------------------------------------------
+Mon Nov  8 09:54:46 UTC 2010 - puzel@novell.com
+
+- update to gparted-0.7.0
+ - This release of GParted adds initial support for the
+    btrfs file system, and fixes two critical bugs.  Also
+    included are other bug fixes and language translation
+    updates.
+ - Key changes include:
+  - Add initial support for btrfs
+  - Fix crash at start with glibmm-ERROR
+  - Fix crash moving more than one logical partition right
+- Require btfsprogs
+
+-------------------------------------------------------------------
+Wed Aug  4 08:51:56 UTC 2010 - puzel@novell.com
+
+- update to gparted-0.6.2 
+  * Re-enable MiB partition alignment option
+  * Fix problem with logical partition move overwriting EBR
+  * Ensure original partition boundaries kept on rollback of 
+    failed move
+  * If available use both udisks and hal-lock to prevent 
+    auto-mounting
+
+-------------------------------------------------------------------
+Fri Jul  9 06:15:37 UTC 2010 - puzel@novell.com
+
+- update to gparted-0.6.1 
+ - two serious bugs fixed (introduced in 0.6.0)
+ - Fix crash moving partition when size is a multiple of 16 MiB
+ - Disable MiB alignment temporarily until bug bgo#623630 can 
+   be fixed.
+
+-------------------------------------------------------------------
+Fri Jun 18 16:14:37 UTC 2010 - puzel@novell.com
+
+- update to gparted-0.6.0 
+  * Add support for devices with sector sizes > 512 bytes
+  * Add align to MiB option and make it the default
+  * Enable copy to work on computers with only 128 MiB RAM
+  * Fix mkswap error "UUID parsing failed" when resizing with no
+    UUID [deb#573836]
+  * Handle devkit-disks command being renamed to udisks
+    - GParted Bug #324220 comment 62, lp#588530
+  * Convert git log entries for Makefile generated ChangeLog
+  * Clean up progress bar current status after copy/move action
+- dropped gparted-fix-gcc-warning.patch (fixed upstream)
+
+-------------------------------------------------------------------
+Tue Mar  9 14:28:10 UTC 2010 - puzel@novell.com
+
+- update to gparted-0.5.2
+  * Fix bug when copying huge NTFS partition never finishes
+  * Indicate required software if unable to read file system
+  * Disable extended option for non-MSDOS and non-DVH disk types
+  * Add check if partition table re-read work around code is needed
+  * Fix problem building gparted on OpenSUSE 11.1
+  * Make partition "New" label available for translation
+  * Enable removal of msftres flag on GPT disk
+    - Requires libparted-2.0 or higher
+  * Set HFS/HFS+ partition identifier to proper value
+    - Requires libparted-2.2 or higher
+- add gparted-fix-gcc-warning.patch - fix build warning
+
+-------------------------------------------------------------------
+Thu Feb 25 12:25:42 UTC 2010 - prusnak@suse.cz
+
+- replace X-KDE-SubstituteUID in favor of xdg-su [bnc#540627]
+
+-------------------------------------------------------------------
+Thu Jan 28 08:34:31 UTC 2010 - puzel@novell.com
+
+- update to gparted-0.5.1 
+  * BUG FIXES
+	* Work around to partition resizing problems
+	  - Thanks to François Dupoux and Steven Shiau for their help
+	* Ensure return code is passed up through commit() method
+	* Avoid crash by ignoring devices with sector size > 512 bytes
+	  - Thanks to Jan Claeys for initial small patch
+	* Capture libparted messages if invalid partition table found
+	* Fix problem reading some FAT32 partitions
+- clean up specfile
+
+-------------------------------------------------------------------
+Thu Dec  3 16:25:19 UTC 2009 - bitshuffler #suse@irc.freenode.org
+
+- update to gparted-0.5.0
+  * NOTES
+	This release of GParted adds support for Linux software RAID.
+
+	RAID systems now supported include:
+	  - Hardware RAID
+	  - Motherboard BIOS RAID (also known as Fake RAID - dmraid)
+	  - Linux Software RAID (mdadm)
+
+	Key changes include:
+	  - Add auto detection of Linux software RAID devices
+	  - Re-enable ability to paste into an existing partition
+	  - Ensure parted-1.9.0 is patched if using with GParted
+
+  * BUG FIXES
+	* Add auto detection of Linux software RAID devices
+	* GNOME Goal: Correct desktop files (#600048)
+	* GNOME Goal: Replace gnome-open with gtk_show_uri (#600046)
+	* Found cause of NTFS volume bigger than device size (#601574)
+	  - Ensure parted-1.9.0 is patched if using with GParted
+	  - Thanks go to François Dupoux for discovering the required patch
+	* Re-enable ability to paste into an existing partition (#582101)
+
+-------------------------------------------------------------------
+Fri Nov 13 15:57:01 UTC 2009 - puzel@novell.com
+
+- update to gparted-0.4.8
+  * BUG FIXES
+	* Rework logic to find symbolic link device mount points (#582687)
+	* Minor string fixes (#597686)
+	  - Thanks go to Bruce Cowan for the small patch
+	* Remove repeated titles in progress dialog (#589558)
+	* Change field labels to sentence capitalization (#583885)
+	* Add padding to progress dialog window
+	* Improve feedback when creating or pasting partition (#579266)
+	* Ensure no pending operations before creating partition table (#583896)
+	* Remove unable to re-read partition table warning (#599078)
+	* Improve dmraid device and name recognition
+
+-------------------------------------------------------------------
+Fri Oct 16 14:36:58 UTC 2009 - puzel@novell.com
+
+- update to gparted-0.4.7
+  * BUG FIXES
+	* Added logic to find symbolic link device mount points
+	* Made set_used_sectors method less meddlesome for FAT16/32
+	* Fixed new partition creation size off by one sector
+	* Improved recognition of dmraid devices
+	* Enhanced to compile with libparted two digit version (e.g., 2.0)
+
+-------------------------------------------------------------------
+Thu Aug  6 15:02:49 UTC 2009 - puzel@novell.com
+
+- update to gparted-0.4.6 
+  * BUG FIXES
+   * Removed requirement for xxd for ntfs move or paste action (n/a)
+   * Enhanced for new linux-swap "filesystem" types from parted-1.9.0 (n/a)
+   * Reduced chance of accidental new partition creation (#576374)
+   * Enhanced file parsing to handle tabs properly (#582687)
+   * Made .gitignore gparted* mask more specific (#587065)
+   * Placed translator comment in the proper location (#590415)
+
+-------------------------------------------------------------------
+Mon Jun  8 13:26:29 CEST 2009 - puzel@suse.cz
+
+- update to 0.4.5
+	* Improved crypt-luks detection
+	* Improved dmraid device detection by checking udev if needed (n/a)
+	* Enhanced to search for udevadm if udevsettle not found (n/a)
+	  - Thanks to Lorenzo Cogotti aka Micia for this tip.
+	* Improved UUID detection to fall back to vol_id if available (n/a)
+	* Improved file system detection with fall back to vol_id (n/a)
+	* Added support for /dev/mapper dmraid devices
+	* Added recognition of /dev/mmcblk* SD/MMC devices
+	* Enhanced resize to only move start if space before changed
+	* Maintained label and UUID when resizing swap
+	* Added detection of LUKS encrypted partitions
+	* Added detection of btrfs file system
+	  - Thanks to Luca Bruno for initial btrfs support patch.
+	* Improved new comments for translators
+
