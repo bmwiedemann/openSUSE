@@ -1,0 +1,109 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>eb01f1a3791fb8e86693620e64c1f4f8</srcmd5>
+    <version>0.12.2</version>
+    <time>1336653200</time>
+    <user>coolo</user>
+    <comment>resubmit after SR#106185 was turned down due to merge conflicts</comment>
+    <requestid>120544</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>eb01f1a3791fb8e86693620e64c1f4f8</srcmd5>
+    <version>0.12.2</version>
+    <time>1340183645</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>eb01f1a3791fb8e86693620e64c1f4f8</srcmd5>
+    <version>0.12.2</version>
+    <time>1359109365</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>317528210543f2eee4767115e3debb63</srcmd5>
+    <version>0.13.3</version>
+    <time>1361191863</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 0.13.3
+* No changelog provided
+* Required by rtorrent-0.9.3
+- Use more robust make install call
+- Build with -fno-strict-aliasing because the code is scaredly
+  full of type punning dereferences (reflected in the build log).
+- Remove libtorrent-decls.diff, libtorrent-gcc4.3-0.12.2.patch:
+  issues resolved upstream (forwarded request 155673 from jengelh)</comment>
+    <requestid>155718</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>317528210543f2eee4767115e3debb63</srcmd5>
+    <version>0.13.3</version>
+    <time>1379663113</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>c29a14cce5430f396e175f08a2318da8</srcmd5>
+    <version>0.13.4</version>
+    <time>1405971603</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 0.13.4</comment>
+    <requestid>241614</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>c29a14cce5430f396e175f08a2318da8</srcmd5>
+    <version>0.13.4</version>
+    <time>1409301738</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>b660334780d7853274e5c2c110664d98</srcmd5>
+    <version>0.13.6</version>
+    <time>1447882478</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 0.13.6</comment>
+    <requestid>344691</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>583765660e4c15908090284bc8986ead</srcmd5>
+    <version>0.13.6</version>
+    <time>1493880927</time>
+    <user>dimstar_suse</user>
+    <comment>- Add cppunit.diff to support newer cppunit</comment>
+    <requestid>492585</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>1d2e0f59921cd3b2d5a7beb559a9c8fe</srcmd5>
+    <version>0.13.6.g72</version>
+    <time>1503592115</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new snapshot 0.13.6.g72</comment>
+    <requestid>501672</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>bf367940f12c3c94829c853e3d9032dc</srcmd5>
+    <version>0.13.6.g126</version>
+    <time>1513110192</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new snapshot 0.13.6.g126</comment>
+    <requestid>556322</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>cb9d5954e84e86d398d19b697238b70f</srcmd5>
+    <version>0.13.8</version>
+    <time>1564576272</time>
+    <user>dimstar_suse</user>
+    <comment>Aaargh, this new interface lacks a lot of functionaility.... Awfull.</comment>
+    <requestid>719868</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>9eeab7dff8428b72877b4bea4c64f296</srcmd5>
+    <version>0.13.8</version>
+    <time>1599343448</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove outdated specfile constructs.</comment>
+    <requestid>832209</requestid>
+  </revision>
+</revisionlist>
