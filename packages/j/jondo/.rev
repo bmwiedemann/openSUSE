@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>81f2e6f6e39490cf98cb1120dc25e352</srcmd5>
+    <version>00.19.001</version>
+    <time>1422636688</time>
+    <user>dimstar_suse</user>
+    <comment>Please accept this new RPM.</comment>
+    <requestid>283462</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>3b681d9d20f02ce83f9d4ea76c8bf8fa</srcmd5>
+    <version>00.20.001</version>
+    <time>1483554979</time>
+    <user>lnussel_factory</user>
+    <comment>1</comment>
+    <requestid>448040</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>4d6a114b49814dcde9fcc8b2cd48e876</srcmd5>
+    <version>00.20.001</version>
+    <time>1708631975</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1149110</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,14 @@
+--- desktop/jondo.desktop.orig	2016-12-12 19:43:01.000000000 +0100
++++ desktop/jondo.desktop	2016-12-21 15:24:39.268050242 +0100
+@@ -1,8 +1,9 @@
+ [Desktop Entry]
+ Name=JonDo
+ GenericName=Anonymous Proxy
+-Type=Application
+ Comment=The Privacy Generator
+-Icon=jondo.png
++Icon=jondo
++Exec=jondo
++Type=Application
+ Categories=Application;Network
+ Terminal=false
