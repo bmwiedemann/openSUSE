@@ -1,0 +1,634 @@
+-------------------------------------------------------------------
+Sat Feb  3 14:58:24 UTC 2024 - Simon Vogl <simon.vogl@gmx.net>
+
+- Add explicit user and group provides to minetestserver package
+  to fix installation issues
+
+-------------------------------------------------------------------
+Thu Dec 21 07:29:27 UTC 2023 - Dmitry Markov <werwolf131313@gmail.com>
+
+- Change gameid set (boo#1218223)
+  * Add environment with additional startup options
+  * Change ExecStart with additional startup options env
+
+-------------------------------------------------------------------
+Sat Dec  9 13:00:13 UTC 2023 - Simon Vogl <simon.vogl@gmx.net>
+
+- Update to version 5.8.0:
+  * Various bug fixes
+  * Full changes:
+    https://dev.minetest.net/Changelog#5.7.0_.E2.86.92_5.8.0
+- Drop support for openSUSE Leap 15.4 as it is unsupported
+- Drop minetest-fix-luajit-include-path.patch as it was only
+  required for Leap <= 15.4
+- Drop old-desktopfile-standard.patch as it was only required for
+  Leap <= 15.4
+
+-------------------------------------------------------------------
+Fri Apr 14 19:53:11 UTC 2023 - Simon Vogl <simon.vogl@gmx.net>
+
+- Update to version 5.7.0:
+  * Various bug fixes
+  * Full changes: https://dev.minetest.net/Changelog#5.6.0_.E2.86.92_5.7.0
+
+-------------------------------------------------------------------
+Fri Oct 14 12:18:15 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Set -mbranch-protection=none only in Tumbleweed since gcc7 does
+  not support it in Leap 15.x / SLE15
+
+-------------------------------------------------------------------
+Wed Sep 28 19:40:52 UTC 2022 - Simon Vogl <simon.vogl@gmx.net>
+
+- Update to version 5.6.1:
+  * Various bug fixes
+  * Full changes: https://dev.minetest.net/Changelog#5.6.0_.E2.86.92_5.6.1
+
+-------------------------------------------------------------------
+Thu Aug 18 11:39:41 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 5.6.0
+  * Fix CVE-2022-35978 ( boo#1202423 ): Mod scripts can escape
+    sandbox in single player mode
+  * `name` in game.conf is deprecated for the game title, use `title` instead
+  * Add depth sorting for node faces
+  * Various bug fixes
+  * Full changes: https://dev.minetest.net/Changelog#5.5.0_.E2.86.92_5.6.0
+
+-------------------------------------------------------------------
+Mon Aug 15 05:18:47 UTC 2022 - Dmitriy Perlow <dap.darkness@gmail.com>
+
+- Introduced mbranch-protection=none CXX flag to resolve bnc#1193141
+  (aarch64).
+
+-------------------------------------------------------------------
+Sat Jul 30 22:36:49 UTC 2022 - Simon Vogl <simon.vogl@gmx.net>
+
+- Drop 0001-Fix-build-for-newer-versions-of-GCC-11246.patch as it is merged upstream
+- Only apply minetest-fix-luajit-include-path.patch on openSUSE Leap as TW versions do not require it any more.
+- Switch to from system irrlicht to IrrlichtMt library version 1.9.0mt5
+- Don't purge the bundled bitop library
+- Add new libzstd build dependency
+- Update to version 5.5.0 & 5.5.1:
+  * Full log for version 5.5.0: https://dev.minetest.net/Changelog#5.4.0_.E2.86.92_5.5.0
+  * This release switches from Irrlicht to our own fork called IrrlichtMt.
+  * Full log for version 5.5.1: https://dev.minetest.net/Changelog#5.5.0_.E2.86.92_5.5.1
+  * This is a maintenance release based on 5.5.0, it contains bugfixes but no new features.
+
+-------------------------------------------------------------------
+Wed Oct  6 12:04:32 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Modified:
+  * minetest@.service
+
+-------------------------------------------------------------------
+Tue Jun  1 13:18:09 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add GCC 11 compatibility patch:
+  * 0001-Fix-build-for-newer-versions-of-GCC-11246.patch
+
+-------------------------------------------------------------------
+Mon Apr 19 17:02:35 UTC 2021 - Maximilian Trummer <opensuse@trummer.xyz>
+
+- Update to version 5.4.1:
+  * This is a maintenance release based on 5.4.0,
+    it contains bugfixes but no new features.
+  * Apply 'old-desktopfile-standard.patch' to Leap 15.3 as well.
+
+-------------------------------------------------------------------
+Wed Feb 24 18:02:10 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Fixed build on current Factory (checking symlinks)
+- Update to version 5.4.0
+  * Full log: https://dev.minetest.net/Changelog#5.3.0_.E2.86.92_5.4.0
+  * Removed support for bumpmapping, generated normal maps
+    and parallax occlusion
+  * By default, the crosshair will now change to an "X" when
+    pointing to objects
+  * Prevent players accessing inventories of other players
+  * Prevent interacting with items out of the hotbar
+  * Prevent players from being able to modify ItemStack meta
+
+-------------------------------------------------------------------
+Tue Sep  8 11:16:27 UTC 2020 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- added patch to build .desktop file without 'PrefersNonDefaultGPU'
+  option on Leap 15.2 and below (old-desktopfile-standard.patch)
+- removed conditional build for very old openSUSE/SLES versions
+- add minetest-runtime provides
+
+-------------------------------------------------------------------
+Mon Jul 13 16:14:18 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Update to version 5.3.0. 
+  (see https://dev.minetest.net/Changelog#5.2.0_.E2.86.92_5.3.0)
+  * Formspec improvements, including a scrolling GUI element
+  * Performance improvements to the Server and API
+  * Many bug fixes and small features
+- Now requires desktop-file-utils version >= 0.25.
+
+-------------------------------------------------------------------
+Mon Jun 22 12:41:37 UTC 2020 - Mia Herkt <mia@0x0.st>
+
+- spec-cleaner
+- Make sure the package does not build with bundled libraries
+- Add minetest-fix-luajit-include-path.patch
+  Fixes the FindLuaJIT CMake module so it also looks for the
+  moonjit include path
+
+-------------------------------------------------------------------
+Mon Apr  6 13:54:06 UTC 2020 - Maximilian Trummer <opensuse@trummer.xyz>
+
+- Update to version 5.2.0
+- See https://dev.minetest.net/Changelog#5.1.0_.E2.86.92_5.2.0
+- Client / Audiovisuals:
+  * Fix alpha blending in texture modifiers (Warr1024)
+  * Make natural night light as bright as MT 0.4.16 (paramat)
+  * Shader fixes (lhofhansl, SmallJoker)
+  * Clean up font caching, fix bitmap fonts (SmallJoker)
+  * Waves generated with Perlin-type noise #8994 (lhofhansl)
+  * Attachments: Fix glitches after detach (SmallJoker)
+  * Let node 'place' and 'dug' sounds be heard
+    by other players (sfan5)
+  * Fix weird looking liquid source (Wuzzy2)
+  * Basic model shading (dcbrwn)
+  * Improve arm inertia animations (kilbith)
+- GUI improvements:
+  * Add visual feedback for button states (Df458)
+  * Formspec: draw order and clipping for all elements (DS)
+  * Refactor internal button styling/rendering code (Df458')
+  * Formspec: Fix clicking on tooltip-obstructed elements (DS)
+  * Formspec: change cursor on fields and co. (DS)
+  * Various new formspec bug fixes (SmallJoker)
+  * Formspec: Add 9-slice background support
+    to button elements (Df458)
+  * Formspec: add hypertext[] element (pyrollo)
+  * Formspec: animated_image[] (Df458, kilbith)
+  * Make clipping of formspec elements more consistent (Df458)
+  * Remove outdated field_close_on_enter[] warnings
+    in element parameters (SmallJoker)
+  * Fix mouse events sent to wrong GUI elements
+    when dragging (sfan5)
+  * Restore intuitive click-through behaviour (DS)
+- Enhancements:
+  * Wear out tools on punch (sfan5)
+  * Tunnels: Completely disable generation
+    when 'cave width' >= 10.0 (paramat)
+  * Randomwalk cave liquids:
+    Remove deprecated 'lava depth' (paramat)
+  * Automatically enable the mod's dependencies
+    in the world config menu (HybridDog)
+  * Clean up craft replacements docs (pauloue)
+  * Falling nodes: add missing support for light sources,
+    most drawtypes, and paramtype2s (Wuzzy2)
+  * Remove legacy flat-file map code
+    and documentation (random-geek)
+  * Fix packet receiving in server and client (sfan5)
+  * Key settings: Cancel with escape,
+    clear with delete (SmallJoker)
+- Script API / Modding:
+  * CSM: Introduce get_modpath() (sfan5)
+  * CSM: Remove non-functional minetest.get_day_count() (sfan5)
+  * Add z-index management to HUD (pyrollo)
+  * Add table.key_value_swap and table.shuffle (HybridDog)
+  * Map download:
+    Escape ':' to '_' (NTFS/FAT* systems) (Montandalar)
+  * Settings: Add get_flags API for mapgen flags (SmallJoker)
+  * Improve minetest.sound_play with ephemeral sounds
+    and player exclusion (sfan5)
+  * Reworked validity checks for entities (sfan5)
+  * Documentation: Add advice on lifetime of ObjectRefs (sfan5)
+  * Allow texture modifiers in hotbar textures (Warr1024)
+  * Nodes with torchlike drawtype and custom visual_scale now are
+    rendered attached to surface instead of being centered (Wuzzy2)
+  * Add documentation of VoxelArea 'ystride', 'zstride' (paramat)
+  * Lua API: Document HP, breath and damage limits (SmallJoker)
+  * Various documentation improvements (Wuzzy2)
+  * CSM: Corrections to client_lua_api.txt (sfan5)
+  * Make minetest.item_place_node return position
+    of placed node (Bluebird)
+  * Call on_secondary_use when object is right-clicked (sfan5)
+  * CSM: Various fixes (sfan5)
+  * Many pathfinder bugfixes and improvements (Wuzzy2)
+    + Fix failure to find path
+      if start or end pos is over air (Wuzzy2)
+    + Fix very broken implementation of A* search (Wuzzy2)
+    + No longer jump through solid nodes (Wuzzy2)
+    + Return nil if start or end pos is solid (Wuzzy2) 
+  * New set_sky, set_sun, set_moon and set_stars (Jordach)
+  * Secure and document minetest.deserialize() (luk3yx)
+  * minetest.get_content_id: throw error
+    for unknown nodes (HybridDog)
+- Misc / Build:
+  * Don't install fonts on ENABLE_CLIENT=0 configurations (sfan5)
+  * Fix memleaks in formspecs (SmallJoker)
+  * Run luacheck in travis, add luacheck (rubenwardy)
+  * Various build issue fixes (Clang, Travis CI) (sfan5)
+
+-------------------------------------------------------------------
+Sat Jan 18 16:26:52 UTC 2020 - Maximilian Trummer <opensuse@trummer.xyz>
+
+- build with spatialindex-devel, this speeds up AreaStores, see
+  https://github.com/minetest/minetest#cmake-options
+
+-------------------------------------------------------------------
+Sat Jan 18 10:37:15 UTC 2020 - Maximilian Trummer <opensuse@trummer.xyz>
+
+- Update to version 5.1.1
+  * See https://dev.minetest.net/Changelog#5.1.0_.E2.86.92_5.1.1
+  * Fix player-bound sound playback (SmallJoker)
+  * Fix item eat sound not played if last item (Wuzzy2)
+  * Formspecs: Reset version number on rebuild (SmallJoker)
+  * Rework packet receiving in ServerThread (sfan5)
+  * Fix core.chat_format_message crashes (ClobberXD)
+  * Fix spaces breaking formspec_version[] tag (rubenwardy)
+  * Fix find_path for newer jsoncpp installations (vilhelmgray)
+  * Update translations
+
+-------------------------------------------------------------------
+Fri Nov 22 23:19:08 UTC 2019 - Simon Puchert <simonpuchert@alice.de>
+
+- Explicitly require libXxf86vm-devel.
+
+-------------------------------------------------------------------
+Sun Oct 13 14:03:41 UTC 2019 - Maximilian Trummer <opensuse@trummer.xyz>
+
+- Update to 5.1.0:
+  * Mapgen Carpathian: Add optional rivers (paramat)
+  * Move more dungeon parameter selection to mapgens (paramat)
+  * Dungeons: Make multiple large rooms possible (paramat)
+  * Change pitch fly binding to 'P', add to change keys menu (rubenwardy)
+  * Android settings: Use 'simple' leaves instead of 'fancy' (paramat)
+  * Fix 3rd person selection range (srifqi)
+  * Make scrollbars' bar variable in size (stujones11)
+  * Damage: Play no damage sound when immortal (SmallJoker)
+  * Increase upper limit of display_gamma to 10 (ClobberXD)
+  * Optimize and unify mesh processing (Vitaliy)
+  * Re-order mapgens in mainmenu and 'all settings' mapgen selection (paramat)
+  * Scrollbars: Move directly to clicked pos if clicked into tray (DS-Minetest)
+  * Fix broken attachments on join (SmallJoker)
+  * Fix inventory_overlay for nodes without inventory_image (DS-Minetest)
+  * Better F6 profiler (SmallJoker)
+  * Fix minimap markers (theviper121)
+  * Textures: Load base pack only as last fallback (SmallJoker)
+  * Add /help formspec for commands and privileges (SmallJoker)
+  * Lua API: Add link to Minetest Modding Book (ClobberXD)
+  * Force item entities out of solid nodes (sfan5, based on Wuzzy`s work)
+  * Lua API: Various fixes (DS-Minetest, SmallJoker)
+  * Rename "private messages" to "direct messages" (Calinou)
+  * Automatically enable depending mods in the dialogue (HybridDog)
+  * All settings: Fix missing flags checkboxes (srifqi)
+  * Various network performance improvements (osjc)
+  * Force send a mapblock to a player (sofar)
+  * Revert ItemStacks being limited to the 'stack_size' value (ClobberXD)
+  * Save forceloaded blocks file periodically (Thomas Rudin)
+  * Improve ABM time budget handling (lhofhansl)
+  * Group "immortal" also protects players from damage (Wuzzy)
+  * Optimize usage of TOSERVER_GOTBLOCKS packet (sfan5)
+  * Network: several bugfixes (sfan5)
+  * Mapgen::spreadLight performance improvement (DS-Minetest)
+  * Improve occlusion culling in corridors with additional check (sfan5)
+  * Inventory: Delay dirty lists, and send changes incrementally (SmallJoker)
+  * Other inventory bugfixes (sfan5, SmallJoker)
+  * Move debug.txt after it grows too big (HybridDog)
+  * Trigger on_place in many situations even if prediction failed (DS-Minetest)
+  * Punchwear (improved) (sfan5)
+  * Add deprecation warnings for ObjectRef:get/set_attribute (ClobberXD)
+  * Nodedef 'drop' documentation: Improve (Paramat)
+  * Mark tool filtering in node drop documentation as deprecated (Paramat)
+  * Add node field to PlayerHPChangeReason table (pauloue)
+  * Don't call on_hpchange callbacks if HP hasn't changed (ClobberXD)
+  * Add disable_jump to liquids and ladders (SmallJoker)
+  * Add support for 9-sliced backgrounds (rubenwardy)
+  * Add compatible, consistent coordinate system to FormSpecs (v-rob)
+  * Document ObjectRef:remove under Lua entity (ClobberXD)
+  * Docs: Clarify where to check for 'protection_bypass' (SmallJoker)
+  * Add vector.dot and vector.cross (HybridDog)
+  * Improve documentation of mapgen aliases (Paramat)
+  * Remove debug.upvaluejoin to prevent leak of insecure environment (fluxionary)
+  * Fix previously crashing minetest.get_craft_result() (pauloue)
+  * Allow toolcaps to override the built-in times for dig_immediate (sfan5)
+  * Formspec styling using style[] (rubenwardy)
+  * Customizable chat message format (ClobberXD)
+  * Velocity modifiers for players (sfan5)
+  * Fix some issues with minetest.clear_craft (pauloue)
+  * Add function `minetest.read_schematic` (paly2)
+  * Formspecs: formspec_version[] element (SmallJoker)
+  * Per-player FOV overrides and multipliers (ClobberXD)
+  * Find PostgreSQL correctly (adrido)
+  * Add compatibility to vcpkg buildsystem (adrido)
+  * Android: Use system provided path for default TMPFolder setting (stujones11)
+  * Fix handling of --color and --worldlist command line arguments (mmattes)
+  * Unified OpenGL ES support (sfan5)
+
+-------------------------------------------------------------------
+Tue Apr  2 11:25:15 UTC 2019 - mvetter@suse.com
+
+- Update to 5.0.1:
+  * Fix detached inventory serialisation
+  * Fix texture rotation for wallmounted nodeboxes
+  * Fix build failing on some compilers
+  * Warn about issues with the num_emerge_threads setting
+  * HPChange Reason: Fix issues with custom reasons
+  * Fix FreeBSD build by handling std::time_t properly
+  * Confirm registration GUI: Remove positional strings to fix Windows bug
+  * Prevent multi-line chat messages server-side
+  * httpfetch: Disable IPv6 here too if requested by settings
+
+-------------------------------------------------------------------
+Mon Apr  1 13:10:28 UTC 2019 - Reinhard Max <max@suse.com>
+
+- bsc#1131077: BuildRequire postgresql-server-devel as a workaround
+  for CMake which explicitly looks for server headers even if just
+  building a client application.
+
+  CAUTION: This workaround should not blindly be copied to other
+  packages that fail to build with PostgreSQL 11. It is always
+  preferrable to convert the package to use pkg-config for linking
+  against libpq instead of pulling in postgresql-server-devel
+  to have pg_config. If in doubt, please talk to max@suse.com
+  before applying such a workaround.
+
+-------------------------------------------------------------------
+Tue Mar  5 11:49:36 UTC 2019 - mvetter@suse.com
+
+- Update to 5.0.0
+  * 5.0.0 is a breaking release and not compatible to the 0.4 series.
+  * See changes: https://dev.minetest.net/Changelog#0.4.16_.E2.86.92_5.0.0
+- Remove shared_mods.patch: global mods possible by default now.
+  See builtin/mainmenu/pkgmgr.lua
+- bsc#1127911: is tracking whitelisting of `minetest` user/group
+  in rpmlint
+
+-------------------------------------------------------------------
+Tue Aug  7 13:07:35 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 0.4.17.1:
+  * Fix boo#1103904
+  * Fix crash caused by log_deprecated
+    and the use of deprecated functions
+  * Fix crash on pause menu when pressing up/down keys
+- Remove use-pkg-config-to-find-luajit.patch: fixed upstream.
+- Update to version 0.4.17:
+  * Dungeons: Mostly fix missing stair nodes
+  * Cavegen: Fix variable typo that broke mgvalleys large cave
+    distribution
+  * Prevent translating empty strings
+  * upright_sprite: Fix texture position for players
+  * core.rotate_node: Do not trigger after_place_node for mod
+    compatibility
+  * Generate Notifier: Clear events once after all
+    'on generated' functions
+  * Fix liquid post effect colour behaviour in third person view
+  * Delete world dialog: Move buttons to avoid
+    double click deletion
+  * Fix /shutdown countdown parameter
+  * Check argument types inside MetaDataRef Lua API
+  * dropped items and falling nodes: Delete in 'ignore' nodes
+  * Fix off-by-one in log output line length
+  * Fix buffer parameter not working in getMapSlice()
+  * Fix rounding error in g/set_node caused by truncation to float
+  * Fix dancing text in text input fields
+  * Fix undefined behaviour on getting pointer to data in
+    empty vector
+  * Fix wrong scrolling in text areas
+  * Damage: Remove damage ignore timer due to abuse potential
+  * Ensure no item stack is being held before crafting
+  * Several documentation additions, improvements
+  * core.rotate_node: Run callbacks like with any
+    regular placed node
+  * Biome dust node: Only place on 'walkable' cubic
+    non-liquid drawtypes
+  * Fix issue Minetest crash when custom font path is not exist
+  * Fix Settings tab formspec alignment
+  * Do not scale texture unless necessary
+  * Fix day_night_ratio_do_override not being initialised
+    server-side
+  * Fix default item callbacks to work with nil users
+  * Prevent from crafting non-existent, unknown items
+  * Profiler: Fix var args not being passed to
+    callback register function
+  * Fix attached particle spawners far from spawn
+  * Localplayer: Fix disable_jump effect and standing node position
+  * Fix blocks written by vmanip not being marked as modified
+  * Fix Rotate Node Placement
+  * ServerEnv: Clean up object lifecycle handling 
+  * Fix the core.wrap_text function
+  * Fix empty legacy meta being persisted
+  * Statbars: fix incorrect half-images in non-standard
+    orientations
+  * serialize: use a temporary for SerializeException
+  * Fix player coordinate rounding in collisionMoveSimple()
+  * Fix for empty key/value when reading item string with
+    wear but no metadata
+  * Fix render order of overlays
+  * Fix console resize issue when maximising game window
+  * Fix console not being properly resized after
+    window size changed
+  * Verify HudSetParams input when hotbar textures are set
+  * (Re)spawn players within 'mapgen_limit'
+  * Fix sending color codes to clients that don't support them
+
+-------------------------------------------------------------------
+Fri Mar  9 07:19:19 UTC 2018 - werner@suse.de
+
+- Use latest libpng
+
+-------------------------------------------------------------------
+Fri Mar  9 06:53:23 UTC 2018 - werner@suse.de
+
+- Use pkg-config information to set PNG_PNG_INCLUDE_DIR for cmake
+
+-------------------------------------------------------------------
+Tue Jan 23 12:02:40 UTC 2018 - opensuse@trummer.xyz
+
+- Added PostgreSQL database backend
+
+-------------------------------------------------------------------
+Mon Jan 22 21:19:42 UTC 2018 - opensuse@trummer.xyz
+
+- Recommend minetest-game to make server package more useful by default
+
+-------------------------------------------------------------------
+Mon Jun  5 12:42:30 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 0.4.16:
+  * Add 2D sheet animations for nodes ''(sfan5)''
+  * Drop client side chat prediction. No more messages shown to chat
+    when you talk and you are disconnected. ''(red-001)''
+  * Add particle animation, glow ''(sfan5)
+  * Server list: add ping indicators ''(kilbith)''
+  * Server side occlusion culling ''(lhofhansl)''
+  * New custom progress bar (you can customize it with texture packs)
+    (kilbith)
+  * Implement delayed shutdown for server owners: /shutdown 60 =>
+    shutdowns in 1 min /shutdown -1 cancels it
+  * Add support for requesting a reconnect and changing the shutdown
+    message to /shutdown
+  * Add a mapblock cache in MeshUpdateQueue to improve client rendering
+    performance ''(celeron55)''
+  * Player data can now be into database. This is an important change,
+    players to files are always supported for this release but deprecated.
+    Files backend for players will be removed in a future release. See
+    http://wiki.minetest.net/Database_backends for compat matrix and
+    migration steps.
+  * Sounds: add fading sounds
+  * Save automatically window size when modified. This behaviour can
+    be disabled in client settings
+  * Add cancel button to password change formspec
+  * Improve pause menu with more user friendly informations and update
+    keys dynamicly depending on your configuration
+  * Merge singleplayer & server tab on desktop clients
+  * Add /clearinv chat command
+  * Add keyword-based search to server-list and advance settings
+  * Add hardware-based itemstacks and node coloring
+  * Undersampling which should make minetest run better on low end devices
+  * Full changelog see http://dev.minetest.net/Changelog#0.4.15_.E2.86.92_0.4.16
+- Minor spec cleanup.
+
+-------------------------------------------------------------------
+Thu Jan  5 23:19:30 UTC 2017 - khyota@redhyena.net
+
+- Add use-pkg-config-to-find-luajit.patch https://github.com/minetest/minetest/issues/4483
+
+-------------------------------------------------------------------
+Mon Dec 26 06:46:38 UTC 2016 - mailaender@opensuse.org
+
+- Update to 0.4.15
+
+-------------------------------------------------------------------
+Wed Jul 27 22:57:38 UTC 2016 - rpm@fthiessen.de
+
+- Replace fonts by system ones.
+- Fixed license.
+
+-------------------------------------------------------------------
+Mon May 16 17:16:16 UTC 2016 - rpm@fthiessen.de
+
+- Update to 0.4.14
+- Removed upstream fixed fix-cguittfont.patch,
+  i18n.patch and fix-find-luajit.patch
+
+-------------------------------------------------------------------
+Wed Dec  2 22:44:18 UTC 2015 - rpm@fthiessen.de
+
+- Added fix-cguittfont.patch to fix missing library "libcguittfont".
+
+-------------------------------------------------------------------
+Tue Nov 24 23:57:56 UTC 2015 - rpm@fthiessen.de
+
+- Update to 0.4.13:
+  * Added: fix-find-luajit.patch to detect systems luajit correctly
+  * Removed upstream fixed FindJson.cmake.patch and
+    minetest-0.4.8-shared-irrlicht.patch
+
+-------------------------------------------------------------------
+Sun Apr 12 18:47:35 UTC 2015 - adam@mizerski.pl
+
+- Cleaned up spec file
+  - Used spec-cleaner
+  - sorted and revised BuildRequires
+  - removed all "%if 0%{?suse_version}" - there's too many openSUSE
+    specific things to keep it really multi-distro.
+- Splitted compilation of minetest and minetestserver
+  (idea borrowed from ArchLinux)
+  - Splitted minetest package into minetest, minetestserver and
+    minetest-data.
+- Enabled support for translations.
+  - Added minetest-lang subpackage.
+- Enabled support for redis and leveldb to minetestsever
+- Fixed support for opengl-game-wrapper.sh
+- Made minetest use system jsoncpp and lua instead of bundled ones.
+- Added files:
+  - minetest@.service
+  - minetest-rpmlintrc
+    - supress warning aboud desktop file pointing to minetest-wrapper
+- Added patches:
+  - FindJson.cmake.patch - copied from Debian.
+  - i18n.patch - copied from Debian.
+  - minetest-0.4.8-shared-irrlicht.patch - copied from Fedora.
+  - shared_mods.patch - copied from Debian and modified.
+- Added "minetest" user and group for minetestserver.
+
+-------------------------------------------------------------------
+Thu Feb 19 19:05:58 UTC 2015 - khyota@redhyena.net
+
+- update to 0.4.12
+
+-------------------------------------------------------------------
+Wed Jan  7 12:03:29 UTC 2015 - ejobling248@gmail.com
+
+- update to 0.4.11
+
+-------------------------------------------------------------------
+Thu Nov 27 09:40:43 UTC 2014 - khyota@redhyena.net
+
+- update title and description
+
+-------------------------------------------------------------------
+Tue Jan  7 10:44:52 UTC 2014 - mailaender@opensuse.org
+
+- update to 0.4.9
+- use simpler GitHub release https://en.opensuse.org/SourceUrls
+
+-------------------------------------------------------------------
+Thu Aug  8 09:56:11 UTC 2013 - opensuse@dstoecker.de
+
+- update to 0.4.7
+
+-------------------------------------------------------------------
+Fri Apr 12 14:51:20 UTC 2013 - mailaender@opensuse.org
+
+- update to version 0.4.6
+
+-------------------------------------------------------------------
+Sun Dec  9 17:08:24 UTC 2012 - m407@mail.ru
+
+- Build version 0.4.4
+
+-------------------------------------------------------------------
+Thu Sep 20 14:13:35 UTC 2012 - joop.boonen@opensuse.org
+
+- Build version 0.4.3
+
+-------------------------------------------------------------------
+Wed May 16 20:52:38 UTC 2012 - joop.boonen@opensuse.org
+
+- Created gcc 4.7 patch
+
+-------------------------------------------------------------------
+Sat Nov 26 23:26:53 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant/unwanted tags/section (cf. specfile guidelines)
+
+-------------------------------------------------------------------
+Sat Nov 26 21:36:23 UTC 2011 - PVince81@opensuse.org
+
+- Fixed package to compile with irrlicht 1.7.9
+- Updated spec file to match game packaging guidelines
+
+-------------------------------------------------------------------
+Thu Nov 10 00:00:00 UTC 2011 giacomosrv@gmail.com
+
+- packaged minetest version 0.3.1
+
+-------------------------------------------------------------------
+Tue Nov 01 00:00:00 UTC 2011 giacomosrv@gmail.com
+
+- packaged minetest version 0.3.0
+
+-------------------------------------------------------------------
+Sun Oct 16 00:00:00 UTC 2011 giacomosrv@gmail.com
+
+- packaged minetest version 0.2.20110922_3
+
+-------------------------------------------------------------------
+Sat Sep 24 00:00:00 UTC 2011 giacomosrv@gmail.com
+
+- packaged minetest version 0.2.20110922_1
+
+-------------------------------------------------------------------
+Wed Aug 17 00:00:00 UTC 2011 giacomosrv@gmail.com
+
+- packaged minetest version 0.2.20110731_3
+
