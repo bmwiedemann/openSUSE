@@ -1,0 +1,370 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>76abcf9ef609f01853ffca9dce659614</srcmd5>
+    <version>1.13.1</version>
+    <time>1366723146</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>172958</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>76abcf9ef609f01853ffca9dce659614</srcmd5>
+    <version>1.13.1</version>
+    <time>1379664111</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>ae8225e0866c4d2fb2ecf0d1434e000f</srcmd5>
+    <version>1.13.1</version>
+    <time>1382693275</time>
+    <user>scarabeus_factory</user>
+    <comment></comment>
+    <requestid>204632</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>fbbea8e0e21bbde5fc1a64748821a72c</srcmd5>
+    <version>1.21.0</version>
+    <time>1386224283</time>
+    <user>coolo</user>
+    <comment>- Update to version 1.21.0:
+  + No changelog, but https://github.com/jacquev6/PyGithub/issues?milestone=33&amp;state=closed
+- Add PyGithub-drop-network-tests.patch: Drop tests that need network access
+  during build</comment>
+    <requestid>209379</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>fbbea8e0e21bbde5fc1a64748821a72c</srcmd5>
+    <version>1.21.0</version>
+    <time>1409302799</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>f7e8629e12e2dea2912ea13529c8a758</srcmd5>
+    <version>1.25.2</version>
+    <time>1431753281</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>307338</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>26255ed00ce173e5d411135685b9dfd6</srcmd5>
+    <version>1.35</version>
+    <time>1503593612</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>517114</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>63c584cff9671bfe4629687b1506435d</srcmd5>
+    <version>1.35</version>
+    <time>1548335009</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>659840</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>ba52f97cbed15b3c3b77f9a589d3cf8a</srcmd5>
+    <version>1.43.5</version>
+    <time>1552380923</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.43.5:
+  * Many actual changes to enumerate, mostly support of current
+    github api see changes.rst file</comment>
+    <requestid>683916</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>8248a67ff67cbbf50776f028e2db46c2</srcmd5>
+    <version>1.43.7</version>
+    <time>1558037267</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.43.7:
+  * Exclude tests from PyPI distribution (#1031) (78d283b9)
+  * Add codecov badge (#1090) (4c0b54c0)
+- Update to 1.43.6:
+  * New features
+    o Add support for Python 3.7 (#1028) (6faa00ac)
+    o Adding HTTP retry functionality via urllib3 (#1002) (5ae7af55)
+    o Add new dismiss() method on PullRequestReview (#1053) (8ef71b1b)
+    o Add since and before to get_notifications (#1074) (7ee6c417)
+    o Add url parameter to include anonymous contributors in get_contributors (#1075) (293846be)
+    o Provide option to extend expiration of jwt token (#1068) (86a9d8e9)
+  * Bug Fixes &amp; Improvements
+    o Fix the default parameter for PullRequest.create_review (#1058) (118def30)
+    o Fix get_access_token (#1042) (6a89eb64)
+    o Fix Organization.add_to_members role passing (#1039) (480f91cf)
+  * Deprecation
+    o Remove Status API (6efd6318)
+- Add patch fix-httpretty-dep.patch</comment>
+    <requestid>703013</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>012d3f7347256a9bf4a82a5c1e2c4d23</srcmd5>
+    <version>1.43.8</version>
+    <time>1569393593</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.43.8:
+  * Add two factor attributes on organizations (#1132) (a073168)
+  * Add Repository methods for pending invitations (#1159) (57af1e0)
+  * Adds get_issue_events to PullRequest object (#1154) (acd515a)
+  * Add invitee and inviter to Invitation (#1156) (0f2beac)
+  * Adding support for pending team invitations (#993) (edab176)
+  * Add support for custom base_url in GithubIntegration class (#1093) (6cd0d64)
+  * GithubIntegration: enable getting installation (#1135) (1818704)
+  * Add sorting capability to Organization.get_repos() (#1139) (ef6f009)
+  * Add new Organization.get_team_by_slug method (#1144) (4349bca)
+  * Add description field when creating a new team (#1125) (4a37860)
+  * Handle a path of / in Repository.get_contents() (#1070) (102c820)
+  * Add issue lock/unlock (#1107) (ec7bbcf)
+  * Fix bug in recursive repository contents example (#1166) (8b6b450)
+  * Allow name to be specified for upload_asset (#1151) (8d2a6b5)
+  * Fixes #1106 for GitHub Enterprise API (#1110) (5406579)</comment>
+    <requestid>732892</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>4cff10ddfc00a58b883e68121c11a4ad</srcmd5>
+    <version>1.44.1</version>
+    <time>1573165179</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.44.1:
+  * Too many changes to enumerate.
+- Drop PyGithub-drop-network-tests.patch, the test in question no longer
+  requires network access.
+- Drop fix-httpretty-dep.patch, the httpretty requirement has been relaxed
+  upstream.
+- Use %python_expand to run the test suite, it works fine on Python 3 now.
+- Add mock and parameterized to BuildRequires, the test suite requires them.</comment>
+    <requestid>746113</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>9dd9c78d9003a312c8c3cb08468d72f6</srcmd5>
+    <version>1.44.1</version>
+    <time>1576062872</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to not pull in hardcoded dependencies:
+  * no-hardcoded-dep.patch</comment>
+    <requestid>755746</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>6b81204d251a405c2476a235e9788187</srcmd5>
+    <version>1.45</version>
+    <time>1578320528</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.45:
+  + Breaking Changes
+    * Branch.edit_{user,team}_push_restrictions() have been removed
+      The new API is:
+         Branch.add_{user,team}_push_restrictions() to add new members
+         Branch.replace_{user,team}_push_restrictions() to replace all members
+         Branch.remove_{user,team}_push_restrictions() to remove members
+    * The api_preview parameter to Github() has been removed.
+  + Bug Fixes &amp; Improvements
+    * Allow sha=None for InputGitTreeElement
+    * Support github timeline events.
+    * Add support for update branch
+    * Refactor Logging tests
+    * Fix rtd build
+    * Apply black to whole codebase
+    * Fix class used returning pull request comments
+    * Support for create_fork
+    * Use Repository.get_contents() in tests
+    * Allow GithubObject.update() to be passed headers
+    * Correct URL for assignees on PRs
+    * Use inclusive ordered comparison for 'parameterized' requirement
+    * Deprecate Repository.get_dir_contents()
+    * Apply some polish to manage.sh
+- Refresh no-hardcoded-dep.patch</comment>
+    <requestid>761017</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>79a293f1c593ed2a6dda1c10fe730277</srcmd5>
+    <version>1.46</version>
+    <time>1582028988</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.46
+  + Bug Fixes &amp; Improvements
+    * Add repo edit support for delete_branch_on_merge
+    * Fix mistake in Repository.create_fork()
+    * Correct two attributes in Invitation
+    * Search repo issues by string label
+    * Correct Repository.create_git_tag_and_release()
+    * exposed seats and filled_seats for Github Organization Plan
+    * Repository.create_project() body is optional
+    * Implement move action for ProjectCard
+    * Tidy up ProjectCard.get_content()
+    * Added nested teams and parent
+    * Correct parameter for Label.edit
+    * doc: example of Pull Request creation
+    * Fix PyPI wheel deployment
+- No longer build Python 2 package
+- Drop BuildRequires on mock, no longer required
+- Drop no-hardcoded-dep.patch, no longer required</comment>
+    <requestid>775083</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>c0ba858b06b7dbd5d1ad8d88ae2f42c7</srcmd5>
+    <version>1.47</version>
+    <time>1584744849</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.47
+  + Bug Fixes &amp; Improvements
+    * Add support to edit and delete a project (#1434) (f11f739)
+    * Add method for fetching pull requests associated with a commit (#1433) (0c55381)
+    * Add &quot;get_repo_permission&quot; to Team class (#1416) (219bde5)
+    * Add list projects support, update tests (#1431) (e44d11d)
+    * Don't transform completely in PullRequest.*assignees (#1428) (b1c3549)
+    * Add create_project support, add tests (#1429) (bf62f75)
+    * Add draft attribute, update test (bd28524)
+    * Docstring for Repository.create_git_tag_and_release (#1425) (bfeacde)
+    * Create a tox docs environment (#1426) (b30c09a)
+    * Add Deployments API (#1424) (3d93ee1)
+    * Add support for editing project cards (#1418) (425280c)
+    * Add draft flag parameter, update tests (bd0211e)
+    * Switch to using pytest (#1423) (c822dd1)
+    * Fix GitMembership with a hammer (#1420) (f2939eb)
+    * Add support to reply to a Pull request comment (#1374) (1c82573)
+    * PullRequest.update_branch(): allow expected_head_sha to be empty (#1412) (806130e)
+    * Implement ProjectCard.delete() (#1417) (aeb27b7)
+    * Add pre-commit plugin for black/isort/flake8 (#1398) (08b1c47)
+    * Add tox (#1388) (125536f)
+    * Open file in text mode in scripts/add_attribute.py (#1396) (0396a49)
+    * Silence most ResourceWarnings (#1393) (dd31a70)
+    * Assert more attributes in Membership (#1391) (d6dee01)
+    * Assert on changed Repository attributes (#1390) (6e3ceb1)
+    * Add reset to the repr for Rate (#1389) (0829af8)</comment>
+    <requestid>785457</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>2b4d87797256e39cb6f870d162b4e561</srcmd5>
+    <version>1.51</version>
+    <time>1588610418</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.51
+  + New features
+    * PyGithub now supports type checking
+    * Ability to retrieve public events
+    * Add and handle the maintainer_can_modify attribute in PullRequest
+    * List matching references
+    * Add create_repository_dispatch
+    * Add some Organization and Repository attributes.
+    * Add create project method
+  + Bug Fixes &amp; Improvements
+    * Drop use of shadow-cat for draft PRs
+    * AuthenticatedUser.get_organization_membership() should be str
+    * Drop documentation for len() of PaginatedList
+    * Fix param name of projectcard's move function
+    * Correct typos found with codespell
+    * Export IncompletableObject in the github namespace
+    * Add GitHub Action workflow for checks
+    * Drop unneeded ignore rule for flake8
+    * Use pytest to parametrize tests
+    * Type stubs are now packaged with the build
+    * Get the project column by id
+- Drop parametrized and pytest-cov from BuildRequires.</comment>
+    <requestid>799922</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>90ecb17bcbe235f10e1576cc69c3a39e</srcmd5>
+    <version>1.53</version>
+    <time>1597746322</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.53:
+  * Add method get_team_membership for user to Team  (#1658) (749e8d35)
+  * PaginatedList's totalCount is 0 if no last page (#1641) (69b37b4a)
+  * Add initial support for Github Apps. (#1631) (260558c1)
+  * Add delete_branch_on_merge arg to Repository.edit type stub
+    (#1639) (15b5ae0c)
+  * upload_asset with data in memory (#1601) (a7786393)
+  * Make Issue.closed_by nullable (#1629) (06dae387)
+  * Add support for workflow dispatch event (#1625) (16850ef1)
+  * Do not check reaction_type before sending (#1592) (136a3e80)
+  * more flexible header splitting (#1616) (85e71361)
+  * Add support for deployment statuses (#1588) (048c8a1d)
+  * Adds the 'twitter_username' attribute to NamedUser. (#1585) (079f75a7)
+  * Add support for Workflow Runs (#1583) (4fb1d23f)
+  * Small documentation correction in Repository.py (#1565) (f0f6ec83)
+  * Remove &quot;api_preview&quot; parameter from type stubs and docstrings
+    (#1559) (cc1b884c)
+  * Repository.update_file() content also accepts bytes (#1543) (9fb8588b)
+  * Fix Repository.get_issues stub (#1540) (b40b75f8)
+  * Check all arguments of NamedUser.get_repos() (#1532) (69bfc325)
+  * Remove RateLimit.rate (#1529) (7abf6004)
+  * PullRequestReview is not a completable object (#1528) (19fc43ab)
+  * Remove pointless setters in GitReleaseAsset (#1527) (1dd1cf9c)
+  * Drop some unimplemented methods in GitRef (#1525) (d4b61311)
+  * Fixed formatting of docstrings for
+    `Repository.create_git_tag_and_release()`
+    and `StatsPunchCard`. (#1520) (ce400bc7)
+  * Remove Repository.topics (#1505) (53d58d2b)
+  * Correct Repository.get_workflows() (#1518) (8727003f)
+  * correct Repository.stargazers_count return type to int (#1513) (b5737d41)
+  * Raise a FutureWarning on use of client_{id,secret} (#1506) (2475fa66)
+  * Improve type signature for create_from_raw_data (#1503) (c7b5eff0)
+  * feat(column): move, edit and delete project columns (#1497) (a32a8965)
+  * Add support for Workflows (#1496) (a1ed7c0e)
+  * Add OAuth support for GitHub applications (4b437110)
+  * Create AccessToken entity (4a6468aa)
+  * Extend installation attributes (61808da1)</comment>
+    <requestid>827522</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>a38437abf916ca0514113c0bc16b1a4c</srcmd5>
+    <version>1.55</version>
+    <time>1620840718</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.55:
+  * Remove client_id/client_secret authentication (#1888) (901af8c8)
+  * Adjust to Github API changes regarding emails (#1890) (2c77cfad)
+    + This impacts what AuthenticatedUser.get_emails() returns
+  * Export headers in GithubException (#1887) (ddd437a7)
+  * Do not import from unpackaged paths in typing (#1926) (27ba7838)
+  * Implement hash for CompletableGithubObject (#1922) (4faff23c)
+  * Use right variable in both get_check_runs() (#1889) (3003e065)
+  * fix bad assertions in github.Project.edit (#1817) (6bae9e5c)
+  * Add support for deleting repository secrets (#1868) (696793de)
+  * Adding github actions secrets (#1681) (c90c050e)
+  * Drop support for Python 3.5 (#1770) (63e4fae9)
+  * Fix stubs file for Repository (fab682a5)
+  * The Github.get_installation(integer) method has been removed.
+  * Repository.create_deployment()'s payload parameter is now a dictionary.
+  * Add support for Check Suites (#1764) (6d501b28)
+  * Add missing preview features of Deployment and Deployment Statuses API
+  * Add Support for Check Runs (#1727) (c77c0676)
+  * Add WorkflowRun.workflow_id (#1737) (78a29a7c)
+  * Added support for the Self-Hosted actions runners API (#1684) (24251f4b)
+  * Fix Branch protection status in the examples (#1729) (88800844)
+  * Filter the DeprecationWarning in Team tests (#1728) (23f47539)
+  * Added get_installations() to Organizations (#1695) (b42fb244)
+  * Fix #1507: Add new Teams: Add or update team repository endpoint
+  * Added support for `Repository.get_workflow_runs` parameters
+  * feat(pullrequest): add the rebaseable attribute (#1690) (ee4c7a7e)
+  * Add support for deleting reactions (#1708) (f7d203c0)
+  * Add get_timeline() to Issue's type stubs (#1663) (6bc9ecc8)</comment>
+    <requestid>892366</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>1b49edc63525b8970f0f298555f5aec1</srcmd5>
+    <version>1.56</version>
+    <time>1667067395</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1032047</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>fc14cd1d412a736e4c0d0dc4de376fad</srcmd5>
+    <version>1.57</version>
+    <time>1667908352</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1034470</requestid>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>c84ab75d9fa7f673c345e03d5f3896bf</srcmd5>
+    <version>1.57</version>
+    <time>1710098742</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1156693</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,380 @@
+-------------------------------------------------------------------
+Wed Mar  6 15:01:45 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Switch package to modern Python Stack on SLE-15
+  + Add %{?sle15_python_module_pythons}
+  + Drop %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+  + Drop %define skip_python2 1
+
+-------------------------------------------------------------------
+Mon Nov  7 20:16:09 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to 1.57 
+  Breaking Changes
+  * Add support for Python 3.11, drop support for Python 3.6 (#2332) (1e2f10d)
+  Bug Fixes & Improvements
+  * Speed up get requested reviewers and teams for pr (#2349) (6725ece)
+  * [WorkflowRun] - Add missing attributes (run_started_at & run_attempt), remove deprecated unicode type (#2273) (3a6235b)
+  * Add support for repository autolink references (#2016) (0fadd6b)
+  * Add retry and pool_size to typing (#2151) (784a3ef)
+  * Fix/types for repo topic team (#2341) (db9337a)
+  * Add class Artifact (#2313) (#2319) (437ff84)
+
+-------------------------------------------------------------------
+Thu Oct 27 19:48:01 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to 1.56 
+   This is the last release that will support Python 3.6.
+  *Bug Fixes & Improvements
+   Create repo from template (#2090) (b50283a)
+   Improve signature of Repository.create_repo (#2118) (001970d)
+   Add support for 'visibility' attribute preview for Repositories (#1872) (8d1397a)
+   Add Repository.rename_branch method (#2089) (6452ddf)
+   Add function to delete pending reviews on a pull request (#1897) (c8a945b)
+   Cover all code paths in search_commits (#2087) (f1faf94)
+   Correctly deal when PaginatedList's data is a dict (#2084) (93b92cd)
+   Add two_factor_authentication in AuthenticatedUser. (#1972) (4f00cbf)
+   Add ProjectCard.edit() to the type stub (#2080) (d417e4c)
+   Add method to delete Workflow runs (#2078) (b1c8eec)
+   Implement organization.cancel_invitation() (#2072) (53fb498)
+   Feat: Add html_url property in Team Class. (#1983) (6570892)
+   Add support for Python 3.10 (#2073) (aa694f8)
+   Add github actions secrets to org (#2006) (bc5e595)
+   Correct replay for Organization.create_project() test (#2075) (fcc1236)
+   Fix install command example (#2043) (99e00a2)
+   Fix: #1671 Convert Python Bool to API Parameter for Authenticated User Notifications (#2001) (1da600a)
+   Do not transform requestHeaders when logging (#1965) (1265747)
+   Add type to OrderedDict (#1954) (ed7d0fe)
+   Add Commit.get_pulls() to pyi (#1958) (b466470)
+   Adding headers in GithubException is a breaking change (#1931) (d1644e3)
+
+-------------------------------------------------------------------
+Wed May 12 05:57:53 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.55:
+  * Remove client_id/client_secret authentication (#1888) (901af8c8)
+  * Adjust to Github API changes regarding emails (#1890) (2c77cfad)
+    + This impacts what AuthenticatedUser.get_emails() returns
+  * Export headers in GithubException (#1887) (ddd437a7)
+  * Do not import from unpackaged paths in typing (#1926) (27ba7838)
+  * Implement hash for CompletableGithubObject (#1922) (4faff23c)
+  * Use right variable in both get_check_runs() (#1889) (3003e065)
+  * fix bad assertions in github.Project.edit (#1817) (6bae9e5c)
+  * Add support for deleting repository secrets (#1868) (696793de)
+  * Adding github actions secrets (#1681) (c90c050e)
+  * Drop support for Python 3.5 (#1770) (63e4fae9)
+  * Fix stubs file for Repository (fab682a5)
+  * The Github.get_installation(integer) method has been removed.
+  * Repository.create_deployment()'s payload parameter is now a dictionary.
+  * Add support for Check Suites (#1764) (6d501b28)
+  * Add missing preview features of Deployment and Deployment Statuses API
+  * Add Support for Check Runs (#1727) (c77c0676)
+  * Add WorkflowRun.workflow_id (#1737) (78a29a7c)
+  * Added support for the Self-Hosted actions runners API (#1684) (24251f4b)
+  * Fix Branch protection status in the examples (#1729) (88800844)
+  * Filter the DeprecationWarning in Team tests (#1728) (23f47539)
+  * Added get_installations() to Organizations (#1695) (b42fb244)
+  * Fix #1507: Add new Teams: Add or update team repository endpoint
+  * Added support for `Repository.get_workflow_runs` parameters
+  * feat(pullrequest): add the rebaseable attribute (#1690) (ee4c7a7e)
+  * Add support for deleting reactions (#1708) (f7d203c0)
+  * Add get_timeline() to Issue's type stubs (#1663) (6bc9ecc8)
+
+-------------------------------------------------------------------
+Tue Aug 18 08:22:14 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.53:
+  * Add method get_team_membership for user to Team  (#1658) (749e8d35)
+  * PaginatedList's totalCount is 0 if no last page (#1641) (69b37b4a)
+  * Add initial support for Github Apps. (#1631) (260558c1)
+  * Add delete_branch_on_merge arg to Repository.edit type stub
+    (#1639) (15b5ae0c)
+  * upload_asset with data in memory (#1601) (a7786393)
+  * Make Issue.closed_by nullable (#1629) (06dae387)
+  * Add support for workflow dispatch event (#1625) (16850ef1)
+  * Do not check reaction_type before sending (#1592) (136a3e80)
+  * more flexible header splitting (#1616) (85e71361)
+  * Add support for deployment statuses (#1588) (048c8a1d)
+  * Adds the 'twitter_username' attribute to NamedUser. (#1585) (079f75a7)
+  * Add support for Workflow Runs (#1583) (4fb1d23f)
+  * Small documentation correction in Repository.py (#1565) (f0f6ec83)
+  * Remove "api_preview" parameter from type stubs and docstrings
+    (#1559) (cc1b884c)
+  * Repository.update_file() content also accepts bytes (#1543) (9fb8588b)
+  * Fix Repository.get_issues stub (#1540) (b40b75f8)
+  * Check all arguments of NamedUser.get_repos() (#1532) (69bfc325)
+  * Remove RateLimit.rate (#1529) (7abf6004)
+  * PullRequestReview is not a completable object (#1528) (19fc43ab)
+  * Remove pointless setters in GitReleaseAsset (#1527) (1dd1cf9c)
+  * Drop some unimplemented methods in GitRef (#1525) (d4b61311)
+  * Fixed formatting of docstrings for
+    `Repository.create_git_tag_and_release()`
+    and `StatsPunchCard`. (#1520) (ce400bc7)
+  * Remove Repository.topics (#1505) (53d58d2b)
+  * Correct Repository.get_workflows() (#1518) (8727003f)
+  * correct Repository.stargazers_count return type to int (#1513) (b5737d41)
+  * Raise a FutureWarning on use of client_{id,secret} (#1506) (2475fa66)
+  * Improve type signature for create_from_raw_data (#1503) (c7b5eff0)
+  * feat(column): move, edit and delete project columns (#1497) (a32a8965)
+  * Add support for Workflows (#1496) (a1ed7c0e)
+  * Add OAuth support for GitHub applications (4b437110)
+  * Create AccessToken entity (4a6468aa)
+  * Extend installation attributes (61808da1)
+
+-------------------------------------------------------------------
+Mon May  4 03:59:23 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.51
+  + New features
+    * PyGithub now supports type checking
+    * Ability to retrieve public events
+    * Add and handle the maintainer_can_modify attribute in PullRequest
+    * List matching references
+    * Add create_repository_dispatch
+    * Add some Organization and Repository attributes.
+    * Add create project method
+  + Bug Fixes & Improvements
+    * Drop use of shadow-cat for draft PRs
+    * AuthenticatedUser.get_organization_membership() should be str
+    * Drop documentation for len() of PaginatedList
+    * Fix param name of projectcard's move function
+    * Correct typos found with codespell
+    * Export IncompletableObject in the github namespace
+    * Add GitHub Action workflow for checks
+    * Drop unneeded ignore rule for flake8
+    * Use pytest to parametrize tests
+    * Type stubs are now packaged with the build
+    * Get the project column by id
+- Drop parametrized and pytest-cov from BuildRequires.
+
+-------------------------------------------------------------------
+Mon Mar 16 07:10:20 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.47
+  + Bug Fixes & Improvements
+    * Add support to edit and delete a project (#1434) (f11f739)
+    * Add method for fetching pull requests associated with a commit (#1433) (0c55381)
+    * Add "get_repo_permission" to Team class (#1416) (219bde5)
+    * Add list projects support, update tests (#1431) (e44d11d)
+    * Don't transform completely in PullRequest.*assignees (#1428) (b1c3549)
+    * Add create_project support, add tests (#1429) (bf62f75)
+    * Add draft attribute, update test (bd28524)
+    * Docstring for Repository.create_git_tag_and_release (#1425) (bfeacde)
+    * Create a tox docs environment (#1426) (b30c09a)
+    * Add Deployments API (#1424) (3d93ee1)
+    * Add support for editing project cards (#1418) (425280c)
+    * Add draft flag parameter, update tests (bd0211e)
+    * Switch to using pytest (#1423) (c822dd1)
+    * Fix GitMembership with a hammer (#1420) (f2939eb)
+    * Add support to reply to a Pull request comment (#1374) (1c82573)
+    * PullRequest.update_branch(): allow expected_head_sha to be empty (#1412) (806130e)
+    * Implement ProjectCard.delete() (#1417) (aeb27b7)
+    * Add pre-commit plugin for black/isort/flake8 (#1398) (08b1c47)
+    * Add tox (#1388) (125536f)
+    * Open file in text mode in scripts/add_attribute.py (#1396) (0396a49)
+    * Silence most ResourceWarnings (#1393) (dd31a70)
+    * Assert more attributes in Membership (#1391) (d6dee01)
+    * Assert on changed Repository attributes (#1390) (6e3ceb1)
+    * Add reset to the repr for Rate (#1389) (0829af8)
+
+-------------------------------------------------------------------
+Tue Feb 18 09:22:59 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.46
+  + Bug Fixes & Improvements
+    * Add repo edit support for delete_branch_on_merge
+    * Fix mistake in Repository.create_fork()
+    * Correct two attributes in Invitation
+    * Search repo issues by string label
+    * Correct Repository.create_git_tag_and_release()
+    * exposed seats and filled_seats for Github Organization Plan
+    * Repository.create_project() body is optional
+    * Implement move action for ProjectCard
+    * Tidy up ProjectCard.get_content()
+    * Added nested teams and parent
+    * Correct parameter for Label.edit
+    * doc: example of Pull Request creation
+    * Fix PyPI wheel deployment
+- No longer build Python 2 package
+- Drop BuildRequires on mock, no longer required
+- Drop no-hardcoded-dep.patch, no longer required
+
+-------------------------------------------------------------------
+Mon Jan  6 04:35:05 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.45:
+  + Breaking Changes
+    * Branch.edit_{user,team}_push_restrictions() have been removed
+      The new API is:
+         Branch.add_{user,team}_push_restrictions() to add new members
+         Branch.replace_{user,team}_push_restrictions() to replace all members
+         Branch.remove_{user,team}_push_restrictions() to remove members
+    * The api_preview parameter to Github() has been removed.
+  + Bug Fixes & Improvements
+    * Allow sha=None for InputGitTreeElement
+    * Support github timeline events.
+    * Add support for update branch
+    * Refactor Logging tests
+    * Fix rtd build
+    * Apply black to whole codebase
+    * Fix class used returning pull request comments
+    * Support for create_fork
+    * Use Repository.get_contents() in tests
+    * Allow GithubObject.update() to be passed headers
+    * Correct URL for assignees on PRs
+    * Use inclusive ordered comparison for 'parameterized' requirement
+    * Deprecate Repository.get_dir_contents()
+    * Apply some polish to manage.sh
+- Refresh no-hardcoded-dep.patch
+
+-------------------------------------------------------------------
+Wed Dec 11 08:26:43 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add patch to not pull in hardcoded dependencies:
+  * no-hardcoded-dep.patch
+
+-------------------------------------------------------------------
+Thu Nov  7 01:54:08 UTC 2019 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.44.1:
+  * Too many changes to enumerate.
+- Drop PyGithub-drop-network-tests.patch, the test in question no longer
+  requires network access.
+- Drop fix-httpretty-dep.patch, the httpretty requirement has been relaxed
+  upstream.
+- Use %python_expand to run the test suite, it works fine on Python 3 now.
+- Add mock and parameterized to BuildRequires, the test suite requires them.
+
+-------------------------------------------------------------------
+Tue Sep 24 09:30:42 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.43.8:
+  * Add two factor attributes on organizations (#1132) (a073168)
+  * Add Repository methods for pending invitations (#1159) (57af1e0)
+  * Adds get_issue_events to PullRequest object (#1154) (acd515a)
+  * Add invitee and inviter to Invitation (#1156) (0f2beac)
+  * Adding support for pending team invitations (#993) (edab176)
+  * Add support for custom base_url in GithubIntegration class (#1093) (6cd0d64)
+  * GithubIntegration: enable getting installation (#1135) (1818704)
+  * Add sorting capability to Organization.get_repos() (#1139) (ef6f009)
+  * Add new Organization.get_team_by_slug method (#1144) (4349bca)
+  * Add description field when creating a new team (#1125) (4a37860)
+  * Handle a path of / in Repository.get_contents() (#1070) (102c820)
+  * Add issue lock/unlock (#1107) (ec7bbcf)
+  * Fix bug in recursive repository contents example (#1166) (8b6b450)
+  * Allow name to be specified for upload_asset (#1151) (8d2a6b5)
+  * Fixes #1106 for GitHub Enterprise API (#1110) (5406579)
+
+-------------------------------------------------------------------
+Tue May 14 19:43:19 UTC 2019 - Gary Smith <GSmith@suse.com>
+
+- Update to 1.43.7:
+  * Exclude tests from PyPI distribution (#1031) (78d283b9)
+  * Add codecov badge (#1090) (4c0b54c0)
+- Update to 1.43.6:
+  * New features
+    o Add support for Python 3.7 (#1028) (6faa00ac)
+    o Adding HTTP retry functionality via urllib3 (#1002) (5ae7af55)
+    o Add new dismiss() method on PullRequestReview (#1053) (8ef71b1b)
+    o Add since and before to get_notifications (#1074) (7ee6c417)
+    o Add url parameter to include anonymous contributors in get_contributors (#1075) (293846be)
+    o Provide option to extend expiration of jwt token (#1068) (86a9d8e9)
+  * Bug Fixes & Improvements
+    o Fix the default parameter for PullRequest.create_review (#1058) (118def30)
+    o Fix get_access_token (#1042) (6a89eb64)
+    o Fix Organization.add_to_members role passing (#1039) (480f91cf)
+  * Deprecation
+    o Remove Status API (6efd6318)
+- Add patch fix-httpretty-dep.patch
+
+-------------------------------------------------------------------
+Wed Mar  6 08:55:14 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.43.5:
+  * Many actual changes to enumerate, mostly support of current
+    github api see changes.rst file
+
+-------------------------------------------------------------------
+Wed Dec 19 00:35:29 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Use noun phrase in summary. Generalize description.
+
+-------------------------------------------------------------------
+Tue Dec  4 12:52:15 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Tue Aug 15 18:52:21 UTC 2017 - sebix+novell.com@sebix.at
+
+- convert to singlespec
+- update to 1.35
+
+-------------------------------------------------------------------
+Mon May 11 15:48:45 UTC 2015 - benoit.monin@gmx.fr
+
+- update to version 1.25.2:
+  * Work around the GitHub API v3 returning null in some paginated
+    responses
+- additional changes from version 1.25.1
+  * Fix two-factor authentication header, thanks to tradej for the
+    pull request
+- additional changes from version 1.25.0
+  * Implement getting repos by id, thanks to tylertreat for the
+    pull request
+  * Add Gist.owner, thanks to dalejung for the pull request
+- additional changes from version 1.24.1
+  * Fix urlquoting in search, thanks to cro for the pull request
+- additional changes from version 1.24.0
+  * Implement search, thanks to thialfihar for the pull request
+- additional changes from version 1.23.0
+  * Fix all that is based on headers in Python 3 (pagination,
+    conditional request, rate_limit...), huge thanks to cwarren-mw
+    for finding the bug
+  * Accept strings for assignees and collaborators, thanks to farrd
+  * Ease two-factor authentication by adding ‘onetime_password’ to
+    AuthenticatedUser.create_authorization, thanks to cameronbwhite
+- additional changes from version 1.22.0
+  * Emojis, thanks to evolvelight
+  * Repository.stargazers_count, thanks to cameronbwhite
+  * User.get_teams, thanks to poulp
+- refresh PyGithub-drop-network-tests.patch
+- pass -q to test to avoid spamming the build log
+- change path of license files: moved upstream
+
+-------------------------------------------------------------------
+Wed Dec  4 09:47:50 UTC 2013 - speilicke@suse.com
+
+- Update to version 1.21.0:
+  + No changelog, but https://github.com/jacquev6/PyGithub/issues?milestone=33&state=closed
+- Add PyGithub-drop-network-tests.patch: Drop tests that need network access
+  during build
+
+-------------------------------------------------------------------
+Thu Oct 24 11:11:48 UTC 2013 - speilicke@suse.com
+
+- Require python-setuptools instead of distribute (upstreams merged)
+
+-------------------------------------------------------------------
+Tue Apr 23 07:17:50 UTC 2013 - speilicke@suse.com
+
+- Add COPYING and COPYING.LESSER
+
+-------------------------------------------------------------------
+Thu Apr 11 06:51:48 UTC 2013 - cfarrell@suse.com
+
+- license update: LGPL-3.0+
+  See setup.py as well as all the source code files in the package itself
+  (and the COPYING.LESSER)
+
+-------------------------------------------------------------------
+Wed Apr 10 13:21:07 UTC 2013 - speilicke@suse.com
+
+- Fix spurious executable perms (README.rst)
+- Don't ship testsuite (scripts w/o sheban / fdupes warnings)
+
+-------------------------------------------------------------------
+Wed Apr 10 13:09:56 UTC 2013 - speilicke@suse.com
+
+- Initial version
+
