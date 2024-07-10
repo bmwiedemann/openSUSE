@@ -1,0 +1,10 @@
+Index: mosquitto-2.0.8/mosquitto.conf
+===================================================================
+--- mosquitto-2.0.8.orig/mosquitto.conf
++++ mosquitto-2.0.8/mosquitto.conf
+@@ -871,4 +871,4 @@
+ # alphabetical order, with capital letters ordered first. If this option is
+ # given multiple times, all of the files from the first instance will be
+ # processed before the next instance. See the man page for examples.
+-#include_dir
++include_dir /etc/mosquitto/conf.d
