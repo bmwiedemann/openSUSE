@@ -1,0 +1,78 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1b9591f940ded156d383675bb3da71c9</srcmd5>
+    <version>3.1.0</version>
+    <time>1336471803</time>
+    <user>coolo</user>
+    <comment>The Bauer stereophonic-to-binaural DSP</comment>
+    <requestid>116353</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>1b9591f940ded156d383675bb3da71c9</srcmd5>
+    <version>3.1.0</version>
+    <time>1340183566</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>1b9591f940ded156d383675bb3da71c9</srcmd5>
+    <version>3.1.0</version>
+    <time>1359109244</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>1b9591f940ded156d383675bb3da71c9</srcmd5>
+    <version>3.1.0</version>
+    <time>1379662906</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="9">
+    <srcmd5>1b9591f940ded156d383675bb3da71c9</srcmd5>
+    <version>3.1.0</version>
+    <time>1409301509</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="10">
+    <srcmd5>98b3e18f4f92be5cdbb48b7365863fd4</srcmd5>
+    <version>3.1.0</version>
+    <time>1450955843</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>350483</requestid>
+  </revision>
+  <revision rev="7" vrev="11">
+    <srcmd5>a39fd3be78b31d3b978df77d72f38025</srcmd5>
+    <version>3.1.0</version>
+    <time>1472025979</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>419997</requestid>
+  </revision>
+  <revision rev="8" vrev="12">
+    <srcmd5>ebd8876e77a12ff50d97a39bf037fe05</srcmd5>
+    <version>3.1.0</version>
+    <time>1650657179</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>970971</requestid>
+  </revision>
+  <revision rev="9" vrev="13">
+    <srcmd5>7de6eb61713e2b9475cc3ee962e6957b</srcmd5>
+    <version>3.1.0</version>
+    <time>1655824531</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>984003</requestid>
+  </revision>
+  <revision rev="10" vrev="14">
+    <srcmd5>c78bf637549964e5d425d0b2907bc636</srcmd5>
+    <version>3.1.0</version>
+    <time>1706741610</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1142897</requestid>
+  </revision>
+</revisionlist>
