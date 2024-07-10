@@ -1,0 +1,316 @@
+-------------------------------------------------------------------
+Mon Apr 22 21:50:57 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.14.19
+  * Fix some memory allocations in the "TvDevice" example
+
+-------------------------------------------------------------------
+Tue Aug 22 08:54:29 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.14.18
+  * miniserver: fix busy loop on socket error
+
+-------------------------------------------------------------------
+Mon May  1 07:55:25 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.14.17
+  * No user-visible changes
+  * Include fuzzer and gtest in the tarball
+
+-------------------------------------------------------------------
+Thu Mar 30 13:29:07 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.14.16
+  * Fix memory leak and ActionExAsync
+
+-------------------------------------------------------------------
+Sat Nov 19 02:42:39 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.14.15
+  * Fix for some CMake missing files in the autotools distro
+
+-------------------------------------------------------------------
+Thu Oct  6 21:45:03 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.14.14
+  * Skip leading UTF-8 BOM in XML documents
+
+-------------------------------------------------------------------
+Wed Aug  3 16:40:07 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.14.13
+  * http: RecvMessage: Fix potential allocation failure
+
+-------------------------------------------------------------------
+Tue Sep 28 08:00:43 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.14.12
+  * Changes to build system only; nothing user-visible.
+
+-------------------------------------------------------------------
+Tue Aug 17 15:06:17 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.14.10
+  * Changes to build system only; nothing user-visible.
+
+-------------------------------------------------------------------
+Wed Aug 11 20:07:10 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.14.9
+  * Removes references to deprecated pthread_mutexattr_{g,s}etkind_np
+
+-------------------------------------------------------------------
+Wed May 12 09:37:07 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.14.7
+  * Build fixes for Windows
+
+-------------------------------------------------------------------
+Wed Apr 21 08:27:57 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.14.6
+  * Fix for a DNS Rebind exploit. [CVE-2021-29462]
+
+-------------------------------------------------------------------
+Tue Apr  6 23:38:27 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.14.5
+  * Non-recursive version of ixmlNode_free() avoids stack overflow
+    attack (Fixes CVE-2021-28302).
+
+-------------------------------------------------------------------
+Tue Mar 30 06:28:49 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.14.4
+  * Fix for gena leak.
+
+-------------------------------------------------------------------
+Mon Mar  1 06:47:53 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.14.2
+  * Fix crash in UpnpGetIfInfo due to unexpected null addresses
+    showing up for tunnel netdevices.
+
+-------------------------------------------------------------------
+Wed Feb 10 14:56:58 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.14.1
+  * Remove port >= 49152 restriction.
+
+-------------------------------------------------------------------
+Sun Aug 16 15:27:31 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.14.0
+  * Remove deprecated "UpnpInit" function
+  * Reworked the miniserver code to deal with SO_REUSEADDR
+- Drop 0001-Fixes-177-NULL-pointer-dereference-in-FindServiceCon.patch
+  (merged)
+
+-------------------------------------------------------------------
+Tue Jun  9 19:08:27 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Add 0001-Fixes-177-NULL-pointer-dereference-in-FindServiceCon.patch
+  [boo#1172625]
+
+-------------------------------------------------------------------
+Tue Apr 21 17:37:33 UTC 2020 - Michal Vyskocil <mvyskocil@opensuse.org>
+
+- Update to version 1.12.1:
+    * #129: Remove and replace the list.h file
+    * Reduce spurious HTTP 416 errors due to ill-defined bytes header
+    * #138: Use stdbool.h instead of BOOL typedef and defines
+    * #140: Remove IN, OUT and INOUT defines
+    * #129: Remove and replace the list.h file
+    * and many more, see ChangeLog
+- Bump libpnpn defines to 16 following upstream changes (also in
+  baselibs.conf).
+- ChangeLog installed with devel package, not libXY ones
+
+
+-------------------------------------------------------------------
+Mon Dec 30 14:37:16 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.10.1:
+  + Fix format string for ExtraHeaders.
+  + Use higher port when reuseaddr is set and the default port is
+    busy (boo#1132829).
+- Drop libupnp-configure.patch: patch seems no longer needed (patch
+  was added before 2013 and only ever rebased without validating
+  its usefulness).
+- Drop libtool BuildRequires and no longer call autoreconf: since
+  we have no patch left, there is no need to bootstrap.
+- Bump libpnpn defines to 15 and libixmlver to 11, following
+  upstream chanes (also in baselibs.conf).
+
+-------------------------------------------------------------------
+Thu Nov 29 19:32:02 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Update descriptions. "Portable" is part of the proper noun,
+  and needs an uppercase P here.
+
+-------------------------------------------------------------------
+Wed Nov 28 10:53:06 UTC 2018 - davejplater@gmail.com
+
+- Split off libixml10 and renamed libupnp6 to it's correct name
+  libupnp13. Major version 6 was last seen long ago.
+- libthreadutil was merged with libupnp in version 1.8.1
+
+-------------------------------------------------------------------
+Thu Nov 15 19:13:44 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Version update to 1.8.4:
+  * Various fixes to communicate right with some TVs
+  * Compiler fixes
+  * Testsuite fun
+- Rebase patch libupnp-configure.patch
+
+-------------------------------------------------------------------
+Fri Apr 13 09:29:06 UTC 2018 - adam.majer@suse.de
+
+- Install license with %license tag instead of as documentation
+
+-------------------------------------------------------------------
+Fri Apr 13 08:55:40 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 1.6.25:
+  + Fix and add more compat helpers.
+  + Fix assertion error when http_MakeMessage is called with E in
+    fmt.
+  + libupnp.pc: drop -pthread from Cflags.
+  + Fix segmentation fault in http_MakeMessage.
+- Changes from version 1.6.23:
+  + Allow extra headers to be sent to client in the File_Info
+    struct by adding extra_headers, an array of struct
+    Extra_Headers.
+  + Queue events on their subscription object instead of adding
+    them to the thread pool immediately.
+- Changes from version 1.6.22:
+  + Fix some compiler warning messages on md5.c.
+  + Replace MD5 impmplementation with public-domain version.
+  + ixml/test/test_document.c is missing the string.h include,
+    therefore the compiler complains about an implicit declaration.
+- Rebase libupnp-configure.patch with quilt.
+- Run spec-cleaner, modernize spec.
+
+-------------------------------------------------------------------
+Thu Mar  2 11:01:33 UTC 2017 - jengelh@inai.de
+
+- Rectify RPM groups, use find -delete over -exec rm.
+
+-------------------------------------------------------------------
+Fri Feb 24 19:26:45 UTC 2017 - olaf@aepfle.de
+
+- Update to version 1.6.21 (bsc#898167)
+  * use stderr if log file cannot be opened
+  * fix out-of-bounds access [CVE-2016-8863] (bsc#1006256)
+  * miniserver: fix binding to ipv6 link-local addresses
+  * fix for file write via POST [CVE-2016-6255] (bsc#989948)
+- Replace individual packages from Packman to make migration to
+  Tumbleweed easier.
+- Package LICENSE file
+
+-------------------------------------------------------------------
+Thu Feb 19 20:29:34 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 1.6.19
+  * Fix access violation due to changed usage of pthreads-win32
+    (closes SF Bug Tracker #119)
+- Update libupnp-configure.patch
+- added baselibs.conf to sources
+- add .sha1 download from sf ... (not much useful)
+
+-------------------------------------------------------------------
+Tue Feb  5 21:10:59 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 1.6.18:
+  + Security fix for CERT issue VU#922681.
+  + CVE-2012-5958 Issue #2: Stack buffer overflow of Tempbuf
+  + CVE-2012-5959 Issue #4: Stack buffer overflow of Event->UDN
+  + CVE-2012-5960 Issue #8: Stack buffer overflow of Event->UDN
+  + Notice that the following issues have already been dealt by
+    previous work:
+   - CVE-2012-5961 Issue #1: Stack buffer overflow of Evt->UDN
+   - CVE-2012-5962 Issue #3: Stack buffer overflow of
+     Evt->DeviceType
+   - CVE-2012-5963 Issue #5: Stack buffer overflow of Event->UDN
+   - CVE-2012-5964 Issue #6: Stack buffer overflow of
+     Event->DeviceType
+   - CVE-2012-5965 Issue #7: Stack buffer overflow of 
+     Event->DeviceType
+  + Fix memory leak and access violation in
+    UpnpSendAction(Ex)Async.
+  + Disable SetGenaCallback call if device is disabled.
+  + Fix problems detected as dead assignment warning by clang
+    scan-build.
+  + Fix condition for allocation failure in get_content_type().
+  + Avoid dereference of null pointer in
+    ixmlNode_setNodeProperties.
+  + Avoid access violation after parser_parse_chunky_headers call.
+  + Remove possibility of access violation.
+  + Fix type of local variable stopSock in RunMiniServer().
+  + Compilation optimisation.
+  + Use of thread-unsafe gmtime() in httpreadwrite.c sf#3507819.
+- Changes from version 1.6.17:
+  + Remove implicit casts.
+  + Add --enable-unspecified_server
+  + Removing implicit casts in miniserver.c
+  + Bugs fixed: sf#3512833, sf#3510693, sf#3511149, sf#3514145.
+- Changes from version 1.6.16:
+  + Replace sprintf by snprintf in http_WriteHttpPost to avoid
+    buffer overflow.
+  + Add infoSize parameter to get_sdk_info
+  + Check return code in ixml.
+  + Add --disable-optssdp option
+  + Add more explicit casts and remove dead code.
+  + Bug fix in ixmlNode_allowChildren.
+  + Improve upnp/genlib/net.
+  + Improve ssdp part. Do not compile
+    CreateClientRequestPacketUlaGua if IPv6 is disabled.
+  + Bugs fixed: sf#3502958, sf#3499781, sf#3499878, sf#3175217,
+    sf#3496993, sf#3497714, sf#3498442, sf#3498439, sf#3498436,
+    sf#3497714, sf#2989399, sf#3325246, sf#3417134, sf#3497159,
+    sf#3497140, sf#3497126, sf#3497034, sf#3497033, sf#3497027,
+    sf#3497009, sf#3496703, sf#3496702, sf#3496942, sf#3496938,
+    sf#3496934, sf#3496933, sf#3496581, sf#3495616, sf#3495286,
+    sf#3495280, sf#3494865, sf#3489999, sf#3489990, sf#3489999.
+- Changes from version 1.6.15:
+  + Bug fix on M-SEARCH for IPv6 CPs.
+  + Retrieve IPv6 addresses in Upnp_Discovery.
+  + Fix bug sf#3469344.
+- Changes from version 1.6.14:
+  + UPnP Low Power Support.
+  + Bug fix in IN6_IS_ADDR_GLOBAL.
+  + Bug Fix on M-SEARCH.
+  + Fixes for compilation under Windows.
+  + Several fixes to correctly use SOCKET (and related) types
+    instead of non-portable variations.
+- Rebase libupnp-configure.patch.
+
+-------------------------------------------------------------------
+Sun Feb  3 17:15:23 UTC 2013 - crrodriguez@opensuse.org
+
+- Previous patch was incomplete and did not consider files 
+ in the upnp directory. (updates libupnp-configure.patch)
+
+-------------------------------------------------------------------
+Tue Jul 17 14:53:58 UTC 2012 - crrodriguez@opensuse.org
+
+- Enable IPV6 support...
+- Fix autotools, all C files must include "*config.h" 
+- DO not build samples
+
+-------------------------------------------------------------------
+Sat Feb 25 08:35:41 UTC 2012 - coolo@suse.com
+
+- sync package name with spec file name
+
+-------------------------------------------------------------------
+Mon Jan 30 13:09:31 UTC 2012 - jengelh@medozas.de
+
+- Properly provide pkgconfig symbols
+
+-------------------------------------------------------------------
+Sat Oct  8 10:26:59 UTC 2011 - saschpe@gmx.de
+
+- Initial version
+
