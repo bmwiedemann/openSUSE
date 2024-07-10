@@ -1,0 +1,1083 @@
+-------------------------------------------------------------------
+Tue Jul  2 13:53:43 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.05.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.05.2/
+- Changes since 24.05.1:
+  * ContextView: allow scrolling lyrics with the mouse wheel again (kde#481994)
+
+-------------------------------------------------------------------
+Wed Jun 12 07:32:12 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.05.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.05.1/
+- Changes since 24.05.0:
+  * Fix running on Windows (QtWinExtras no longer exists)
+  * Fix potential crash when enqueueing from empty files view (kde#441525)
+  * Fix DBus service activation (kde#487905)
+  * Remove unneeded function
+  * Fix 1px padding between playlist panel and right edge of window
+  * Adapt to source incompatible changes in Qt's 6.7 JNI API
+
+-------------------------------------------------------------------
+Sun May 19 09:55:00 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.05.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.05.0/
+- Changes since 24.04.80:
+  * Fix UI freeze when maximizing the Headerbar (kde#483613)
+
+-------------------------------------------------------------------
+Fri May  3 09:14:50 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.04.80
+  * New feature release
+- Too many changes since 24.02.2, only listing bugfixes:
+  * Fix broken volume slider with Qt Multimedia backend (kde#392501)
+  * Don't skip to the end when playing the same track twice in a row (kde#480743)
+  * Open the config window in the centre of the app (kde#429936)
+  * Refactor "About Elisa" dialog to use Kirigami Addons (kde#439781)
+
+-------------------------------------------------------------------
+Tue Apr  9 18:07:12 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.02.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.02.2/
+- Changes since 24.02.1:
+  * Require CMake 3.16
+  * Fix page header click events propagating into main ScrollView
+  * Fix broken volume slider with Qt Multimedia backend (kde#392501)
+  * Fix failing trackmetadatamodelTest
+  * Fix qt multimedia backend stopping playback after a track has finished
+  * Don't skip to the end when playing the same track twice in a row (kde#480743)
+- Drop patch, merged upstream:
+  * elisa-qtmultimedia.patch
+
+-------------------------------------------------------------------
+Sat Mar 30 10:51:19 UTC 2024 - Dmitry Roshchin <dmitry_r@opensuse.org>
+
+-  Fix qt multimedia backend stopping playback after a track has finished
+  elisa-qtmultimedia.patch
+
+-------------------------------------------------------------------
+Tue Mar 19 15:25:22 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.02.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.02.1/
+- Changes since 24.02.0:
+  * Improve DurationSlider and VolumeSlider keyboard accessibility
+  * Fix favorite filter and exit fullscreen buttons not activating on Enter/Return
+  * Refactor FlatButton to support checkable buttons
+  * Fix items taking focus when they aren't visible
+  * Fix mobile playlist entry menu buttons taking focus when parent isn't selected
+  * Fix mobile playlist Show Current button not highlighting current entry
+
+-------------------------------------------------------------------
+Sat Mar 16 10:03:16 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update elisa runtime requirements (boo#1218742)
+
+-------------------------------------------------------------------
+Fri Feb 23 13:58:20 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.02.0
+  * New feature release
+- No code change since 24.01.95
+
+-------------------------------------------------------------------
+Fri Feb  9 16:07:25 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.01.95
+  * https://kde.org/announcements/megarelease/6/rc2/
+
+-------------------------------------------------------------------
+Fri Dec 15 21:29:29 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Require extra-cmake-modules at build time
+
+-------------------------------------------------------------------
+Tue Dec  5 14:19:02 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.4
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.4/
+- No code change since 23.08.3
+
+-------------------------------------------------------------------
+Tue Nov  7 17:04:06 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.3/
+- Changes since 23.08.2:
+  * Add CI template for building APKs on invent
+  * snapcraft: Use source icon, Add license header, Fix qml import path.
+  * snapcraft: add qml module qtquickcontrols 2
+  * snapcraft: initial import snapcraft files
+
+-------------------------------------------------------------------
+Tue Oct 10 18:26:54 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.2/
+- No code change since 23.08.1
+
+-------------------------------------------------------------------
+Tue Sep 12 11:55:22 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.1/
+- No code change since 23.08.0
+
+-------------------------------------------------------------------
+Sun Aug 20 13:58:58 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.0/
+- No code change since 23.07.90
+
+-------------------------------------------------------------------
+Mon Aug 14 08:02:15 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.07.90
+  * New feature release
+- No code change since 23.07.80
+
+-------------------------------------------------------------------
+Tue Aug  1 10:13:20 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.07.80
+  * New feature release
+- Too many changes since 23.04.3, only listing bugfixes:
+  * Prioritise exact string match when searching for cover files (kde#470529)
+  * Build cover file search strings from file name + extension (kde#467274)
+  * Emit positionChanged when seeking with vlc backend (kde#448068)
+  * Add tooltip showing integer percentage for volume level (kde#467344)
+  * Set more sensible default styles, and respect environment overrides (kde#469154)
+  * Add feature to replace playlist with whole view contents on double-click (kde#406469)
+  * Refactor view selecting code (kde#Refactor, kde#view, kde#selecting, kde#code)
+  * Implement Shuffle and LoopStatus (repeat mode) for mpris2 (kde#448215)
+  * only disconnect from playlist when the value is different (kde#467348)
+  * Add the quit action in the application menu when using tray icon feature (kde#466835)
+  * Restore prior state correctly when leaving full screen mode (kde#467356)
+  * Reset slider position to 0 when manually clearing playlist (kde#467352)
+
+-------------------------------------------------------------------
+Tue Jul  4 10:19:17 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.04.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.04.3/
+- No code change since 23.04.2
+
+-------------------------------------------------------------------
+Tue Jun  6 20:00:35 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.04.2/
+- Changes since 23.04.1:
+  * Don't use pointing finger cursor for non-link UI elements
+
+-------------------------------------------------------------------
+Tue May  9 10:46:31 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.04.1/
+- Changes since 23.04.0:
+  * Cache directory results in FileScanner::searchForCoverFile
+  * Set more sensible default styles, and respect environment overrides (kde#469154)
+  * Don't open album artist page when opening an album from a different artist's page
+
+-------------------------------------------------------------------
+Sat Apr 15 08:45:18 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.04.0/
+
+-------------------------------------------------------------------
+Fri Mar 31 16:41:37 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.03.90
+  * New feature release
+
+-------------------------------------------------------------------
+Fri Mar 17 20:42:57 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.03.80
+  * New feature release
+
+-------------------------------------------------------------------
+Tue Feb 28 09:45:31 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 22.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.12.3/
+
+-------------------------------------------------------------------
+Tue Jan 31 10:33:03 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 22.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.12.2/
+
+-------------------------------------------------------------------
+Tue Jan  3 10:19:25 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 22.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.12.1/
+
+-------------------------------------------------------------------
+Fri Dec  2 12:24:39 UTC 2022 - Christophe Marin <christophe@krop.fr>
+
+- Update to 22.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.12.0/
+
+-------------------------------------------------------------------
+Sat Nov 26 16:44:17 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.11.90
+  * New feature release
+
+-------------------------------------------------------------------
+Sat Nov 12 08:53:28 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.11.80
+  * New feature release
+
+-------------------------------------------------------------------
+Tue Nov  1 11:19:50 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.08.3/
+
+-------------------------------------------------------------------
+Tue Oct 11 14:31:53 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.08.2/
+
+-------------------------------------------------------------------
+Tue Sep  6 15:18:56 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.08.1/
+
+-------------------------------------------------------------------
+Sun Aug 14 09:41:40 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.08.0/
+
+-------------------------------------------------------------------
+Fri Aug  5 12:10:23 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.07.90
+  * New feature release
+
+-------------------------------------------------------------------
+Sat Jul 16 08:27:36 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.07.80
+  * New feature release
+
+-------------------------------------------------------------------
+Tue Jul  5 17:02:49 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.04.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.04.3/
+
+-------------------------------------------------------------------
+Wed Jun  8 09:52:35 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.04.2/
+
+-------------------------------------------------------------------
+Tue May 10 16:29:30 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.04.1/
+
+-------------------------------------------------------------------
+Mon Apr 18 07:50:51 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.04.0/
+
+-------------------------------------------------------------------
+Fri Apr  8 18:17:19 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.03.90
+  * New feature release
+
+-------------------------------------------------------------------
+Wed Mar 23 08:13:37 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.03.80
+  * New feature release
+- Too many changes since 21.12.3, only listing bugfixes:
+  * Fix shortcut not working under non English locale (kde#424890)
+  * ViewSelector: don't overlap icons with scrollbar when being icon-only (kde#448066)
+  * Let clicking systray icon raise Elisa to the foreground (kde#430547)
+  * Fix single track insert when playlist is shuffled (kde#442272)
+  * Make more use of Kirigami stuff (kde#448461)
+  * Port Playlist inlinemessages to PassiveNotification (kde#447607)
+  * Fix metadata not updating when track is opened from Files-browser (kde#448043)
+  * Fix metadata view not updating when switching tabs (kde#436405)
+  * Fixes issue of metadata/lyrics not updating when switching tracks (kde#436405)
+  * Give Sort button an icon (kde#448097)
+  * MediaTrackMetadataView: Round folder icon size to nearest real size (kde#448272)
+  * Use standard icon and text for close/ok button on metadata window (kde#448210)
+  * Changed clear playlist icon to "undo" icon (kde#447826)
+  * Refactor and fix opening playlist files (kde#441544)
+  * Implement dropping music files from file manager onto Playlist (kde#404712)
+  * BUG 445357 Use media-default-album instead of media-optical-audio (kde#445357)
+
+-------------------------------------------------------------------
+Tue Mar  1 09:56:39 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.12.3/
+- Changes since 21.12.2:
+  * SettingsForm: Fill width with long UI controls
+  * ListBrowserDelegate: Remove unnecessary properties (kde#449936)
+
+-------------------------------------------------------------------
+Tue Feb  1 13:02:27 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.12.2/
+- Changes since 21.12.1:
+  * ListBrowserDelegate: set spacings and paddings in a better way
+  * Don't let rating stars take up space for unrated tracks (kde#448016)
+  * Enable unicode normalization on track data before matching (kde#391462)
+  * Improve Sort menu button's behaviors to be more conventional
+  * Fixup identical IDs introduced in the previous commit
+  * Fix sort menu positioning (kde#448083)
+  * Fix crash when QUrl in Enqueued files is empty (kde#428218)
+
+-------------------------------------------------------------------
+Tue Jan  4 10:25:05 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.12.1/
+- Changes since 21.12.0:
+  * Fix volume slider scroll speed regression (kde#446909)
+  * Fix Favorite button size on list items (kde#446911)
+  * always restore local files that still exists in playlist
+  * add media play list for restoring local track from files not db
+  * Use Kirigami.Icon for icons, rather than Image (kde#446446)
+
+-------------------------------------------------------------------
+Fri Dec  3 19:21:29 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.12.0/
+- Changes since 21.11.90:
+  * Improve MediaPlayListView text
+
+-------------------------------------------------------------------
+Sat Nov 27 10:10:22 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.11.90
+  * New feature release
+- Changes since 21.11.80:
+  * Fix i18n arguments for playlist view "N tracks" message
+
+-------------------------------------------------------------------
+Sat Nov 13 17:54:22 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.11.80
+  * New feature release
+- Changes since 21.08.3:
+  * Pass proper display name to VLC
+  * Don't use Title Case for inhibition reason
+  * Remove min Android SDK version from Manifest
+  * Optional "favorite" style ratings (kde#430196)
+  * Use Math.round() to calculate the height of HeaderBar (kde#443191)
+  * Fix "Now Playing" view's background flickering (kde#431607)
+  * Unify header look between Now Playing page and other pages (kde#442262)
+  * Don't parse HTML in metadata fields (kde#442077)
+  * Added vertical spacing to Playlist bottom toolbar.
+  * Rename "Radios" to "Radio Stations" (kde#441732)
+  * Use text "Add to Playlist" instead of "Enqueue" (kde#441734)
+  * Refine search show/hide button's tooltip (kde#441736)
+  * Use KDECompilerSettings, kf5.85 defines CMAKE_CXX_STANDARD 17 directly
+  * Don't find KIO on Android
+  * we can use as_const
+  * Don't use icons-only buttons in the Playlist
+  * Un-hardcode slider appearance
+  * Make track ratings editable inline (kde#437099)
+  * Allow update track rating in DataListView
+  * export DataTypes to qml such that enums inside it are usable
+
+-------------------------------------------------------------------
+Tue Nov  2 21:33:19 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.08.3/
+- Changes since 21.08.2:
+  * Remove min Android SDK version from Manifest
+
+-------------------------------------------------------------------
+Tue Oct  5 16:27:40 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.08.2/
+- Changes since 21.08.1:
+  * Don't unnecessarily disable back and forward buttons when paused (kde#442137)
+  * Fix ToolButton icon colours not being white
+
+-------------------------------------------------------------------
+Wed Sep  1 12:37:45 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.08.1
+- Changes since 21.08.0:
+  * Don't find KIO on Android
+  * Fix in-app seek shortcuts (kde#441485)
+  * Fix broken "Files" view (kde#440980)
+  * Don't show "Show in Folder" buttons for radio streams (kde#439280)
+- Drop upstream patch:
+  * 0001-Fix-broken-Files-view.patch
+
+-------------------------------------------------------------------
+Thu Aug 26 06:25:54 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patch from upstream to fix a critical regression in the files
+  view, which was being built without KIO support.
+  * 0001-Fix-broken-Files-view.patch
+
+-------------------------------------------------------------------
+Fri Aug  6 09:34:33 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.08.0
+- Changes since 21.07.90:
+  * Make desktop config window able to scroll (kde#440491)
+
+-------------------------------------------------------------------
+Fri Jul 30 10:04:29 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.07.90
+  * New feature release
+- Changes since 21.07.80:
+  * make KIO optional on Android and required everywhere else
+  * avoid fetching lyrics twice for tracks not in database from playlist
+  * remove hard dependency on DBus for powermanagement code
+
+-------------------------------------------------------------------
+Sat Jul 17 20:05:33 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.07.80
+  * New feature release
+- Changes since 21.04.3:
+  * generate qml plugin types file
+  * Remove unused licenses from LICENSES/ directory
+  * Fix comment grammar, sent->send
+  * Improve header label's mouse area
+  * Make partyMode list scroll to the playing track
+  * Move all hardcoded color in HeaderBar to one place
+  * Remove progress background of playlist entries on desktop
+  * Add F11 hotkey for toggling Party Mode
+  * Port GaussianBlur to FastBlur for better performance
+  * Move playlist's section sizer to BaseTheme
+  * Use Kirigami.PlaceholderMessage's explanation: property in playlist
+  * Bump frameworks version to 5.80 and use Q_EMIT consistently
+  * use enum for columns in album queries
+  * use an enum to select the column returned when querying radios
+  * use an enum to select the column returned when querying tracks
+  * Clean unneeded code
+  * Add flathub badge
+  * [autotest] Add test for PlayListEntry's play button
+  * Relayout PlayListEntry's label when state changes
+  * Allow resuming when clicking on Playlist's play button
+  * Fix binding loop in ContextView when resizing
+  * Two related fixes for FooterBar to snap to bounds
+  * Improve Playlist's album header
+  * Pass desktop entry name to power management inhibition
+  * Improve Player Control
+  * Cleanup whitespace in CMakeLists.txt
+  * Fix Repeat button's tooltip on mobile
+  * Make Shuffle/Repeat modes more clear (kde#436217)
+  * Polish Now playing page
+  * Only display secondary Text in grid delegate if there is secondry text
+  * Use ternaries in GridBrowserView instead of nested if/else statements
+  * Add mobile screenshot to metadata
+  * keep the UI activity running in background to keep playing music
+  * gets more accurate metadata for tracks and improve reliability
+  * use QtAndroid::requestPermissionsSync instead of custom code
+  * Fix spacing of playing sidebar header and footer and mobile
+  * ensure that reuse is happy with our Android resources
+  * improve Android integration
+  * improve logging info for QtMultimedia player code
+  * add missing icons
+  * never use dbus on Android
+
+-------------------------------------------------------------------
+Wed Jul  7 08:56:50 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.04.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.04.3
+- Changes since 21.04.2:
+  * Fix inhibit suspend on Gnome
+
+-------------------------------------------------------------------
+Tue Jun  8 12:39:05 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.04.2
+- Changes since 21.04.1:
+  * Fix fields behavior when creating a radio.
+  * properly update album when removing one of its track
+  * Elisa has a wonderful site, let's point to it
+  * No need to emit trackModified when a track starts playing
+
+-------------------------------------------------------------------
+Wed May 12 06:06:52 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/21.04.1
+- Changes since 21.04.0:
+  * Correct ContextView's footer
+  * [ContextView] Fix visibility of "Show In Folder" button
+  * Make contextView's footer as tall as playlistView's one
+
+-------------------------------------------------------------------
+Fri Apr 16 16:11:09 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.04
+- No code change since 21.03.90
+
+-------------------------------------------------------------------
+Fri Apr  9 17:39:36 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.03.90
+  * New feature release
+- Changes since 21.03.80:
+  * Larger minimum window width for desktop mode (kde#435446)
+
+-------------------------------------------------------------------
+Sun Mar 21 13:27:13 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.03.80
+  * New feature release
+- Too many changes since 20.12.3, only listing bugfixes:
+  * still return a valid track even when no extractors support it (kde#433892)
+  * Increase base height of configuration dialog (kde#431639)
+  * ensure the configuration dialog is not dirty when just open (kde#430743)
+  * Fix serialisation of playlist (kde#430444)
+  * Redo configuration window (kde#425140)
+  * Move remaining track indicator to playlist footer (kde#429464)
+  * Replace homemade ScrollHelper with standard ScrollViews to hold view items (kde#417859)
+
+-------------------------------------------------------------------
+Thu Mar  4 06:09:33 UTC 2021 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/20.12.3
+- Changes since 20.12.2:
+  * fix sort by duration to not use string sort
+
+-------------------------------------------------------------------
+Wed Feb  3 08:27:52 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2021-02-apps-update
+- Changes since 20.12.1:
+  * avoid concurrent access when fetching lyrics (kde#431422)
+  * Fix "show current track" button (kde#431602)
+  * ensure the configuration dialog is not dirty when just open (kde#430743)
+  * avoid printing useless logs on console when power management is working (kde#421660)
+  * fix enqueue from files explorer (kde#428218)
+  * Fix Radio streams
+  * use a QFlags to handle entities to watch for file system changes
+
+-------------------------------------------------------------------
+Tue Jan  5 12:24:46 UTC 2021 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2021-01-apps-update
+- Changes since 20.12.0:
+  * do not mishandle the force file system option (kde#424901)
+  * always enable the remove button for playlist entries
+  * when adding a directory from files view, follow sort order
+  * properly build URLs for local files that may have special characters
+  * properly enqueue files from file browser to playlist (kde#429465)
+  * clean dead signal in ViewManager
+  * add some categorized debug output in player control code
+  * remove unused code in MPRIS interface class
+  * emit Seeked on MPRIS2 interface when player really seeked (kde#428957)
+
+-------------------------------------------------------------------
+Sat Dec  5 23:15:27 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-12-apps-update
+- Changes since 20.11.90:
+  * Don't look for translated version of "Play-Pause" shortcut (kde#410110)
+  * in grid view, do not try to open music files but enqueue them (kde#429460)
+  * Allow to restore entries in play list from local or remote URLs
+  * call Q_EMIT Seeked less frequently to reduce MPRIS spamming
+  * Don't show "Show Playlist" button in Party Mode (kde#429729)
+
+-------------------------------------------------------------------
+Fri Nov 27 15:15:44 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.11.90
+  * New feature release
+- Too many changes since 20.11.80, only listing bugfixes:
+  * Remove unneeded margins around list browser view (kde#429330)
+  * prevent crash by stopping play before freeing libvlc resources (kde#424891)
+  * forget the saved position withing a track when switching to another one (kde#408295)
+  * use a role of the model to also choose the correct delegate for metadata (kde#429039)
+  * fix modification of tracks with embedded covers (kde#429041)
+
+-------------------------------------------------------------------
+Sat Nov 14 00:00:35 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.11.80
+  * New feature release
+- Too many changes since 20.08.3, only listing bugfixes:
+  * make MediaTrackMetadataView able to modify metadata for tracks (kde#406472)
+  * Replace homemade ScrollHelper with standard ScrollViews to hold view items (kde#417859)
+  * Add feature to show files in file manager (kde#406471)
+  * Accept files named "albumart.jpg" for album art (kde#424661)
+  * Don't allow view's loading indicator and placeholder message to overlap (kde#424918)
+  * Set StartupWMClass in .desktop file to make the app show up in GNOME properly (kde#428032)
+  * Fix "Nothing played" message when a file only with a title tag is played (kde#427289)
+  * Don't show unnecessary global shortcuts columns in keyboard shortcuts window (kde#427072)
+  * Add appropriate side margins for content in Now Playing view (kde#425834)
+  * fix open now playing (kde#425601)
+
+-------------------------------------------------------------------
+Thu Nov  5 22:45:28 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-11-apps-update
+- No code change since 20.08.2
+
+-------------------------------------------------------------------
+Fri Oct  9 05:43:00 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-10-apps-update
+- Changes since 20.08.1:
+  * Fix list items with no subtitle not being centered (kde#426417)
+  * Fix incorrect version display in about dialog (kde#424932)
+  * Clip placeholder message within playlist
+
+-------------------------------------------------------------------
+Tue Sep  1 20:49:06 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-09-apps-update
+- Changes since 20.08.0:
+  * Fix incorrect mpris2 volume display
+  * when navigating with Elisa's file browser display current directory
+  * fix clickable zones in header bar to be always maximized
+
+-------------------------------------------------------------------
+Sun Aug  9 09:08:17 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-08-apps-update
+- Changes since 20.07.90:
+  * fixes all remaining issues when handling track URLs
+  * unbreak automated tests of MediaPlayList proxy model
+  * fix typo in FileBrowserProxyModel class attribute
+  * fix enqueue of a single file from Elisa's file browser
+  * fix enqueue from program arguments (for example from Doplhin) (kde#423007)
+  * Fix excessively tall hit areas for playback and volume sliders
+
+-------------------------------------------------------------------
+Sun Aug  2 07:58:37 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.07.90
+  * New feature release
+- Changes since 20.07.80:
+  * provide width and height for blurred background in HeaderBar
+  * fix image provider to scale images to requested size with good quality (kde#424276)
+  * Fix misplaced slider backgrounds (kde#424154)
+
+-------------------------------------------------------------------
+Sun Jul 19 10:03:48 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.07.80
+  * New feature release
+- Too many changes to list here.
+
+-------------------------------------------------------------------
+Thu Jul  9 20:08:36 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.04.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-07-apps-update
+- No code change since 20.04.2
+
+-------------------------------------------------------------------
+Tue Jun  9 12:14:07 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-06-apps-update
+- Changes since 20.04.1:
+  * fix most issues in Elisa own code detected by Clazy
+  * avoid Elisa prevent session close
+  * fix qml interface not showing up on Windows due to platform specific qml
+
+-------------------------------------------------------------------
+Fri May 15 15:40:58 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-05-apps-update
+- Changes since 20.04.0:
+  * Emit rejected() signal when closing metadata window (kde#420530)
+
+-------------------------------------------------------------------
+Thu Apr 23 12:21:54 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-04-apps-update
+- Changes since 20.03.90:
+  * add automated tests to ViewManager and fix one bug in it
+
+-------------------------------------------------------------------
+Sun Apr  5 20:29:40 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.03.90
+  * New feature release
+- Changes since 20.03.80:
+  * workaround not to have the system tray menu appear when it should not (kde#419145)
+  * remove dependency on KCMUtils that is no longer used
+  * fix move in shuffle move that can trigger an assert and add a test
+  * fix handling of menu exported by system tray icon (kde#409010)
+  * focus first (title) TextEntry component when editing a radio (kde#418296)
+  * add icons to dialogs (kde#418576)
+  * keep enough data to check that received data are for the correct track
+  * fix invalid URL when sending cover image in mpris for embedded covers (kde#416131)
+
+-------------------------------------------------------------------
+Sun Mar 22 09:16:35 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.03.80
+  * New feature release
+- Too many changes since 19.12.3, only listing bugfixes:
+  * allow to have an Elisa icon in system tray and to close main window (kde#416170)
+  * allow the user via to configure Elisa not to rely on Baloo (kde#417822)
+  * New shuffle mode for playlist (kde#394333)
+  * allow to activate/deactivate the progress indicator on task bar entry (kde#406454)
+  * convert KCM based configuration dialog to a simple dialog (kde#414982)
+  * Change style in Context view to use blurred album art as the background (kde#417268)
+  * Make the album art thumbnails in the playlist a little bit smaller (kde#416806)
+  * Migrate from deprecated media content URL API (kde#416144)
+  * put back the cleaning of DataModel when database is cleared (kde#413100)
+
+-------------------------------------------------------------------
+Thu Mar  5 20:35:43 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-03-apps-update
+- Changes since 19.12.2:
+  * appdata: use canonical docs.kde.org help location
+  * set TextInput::selectByMouse to true to fix text selection
+  * limit the rate with which progress is sent via MPRIS (kde#416179)
+
+-------------------------------------------------------------------
+Fri Feb  7 08:36:55 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Replace %make_jobs with %cmake_build.
+
+-------------------------------------------------------------------
+Wed Feb  5 06:28:45 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-02-apps-update
+- Too many changes since 19.12.1, only listing bugfixes:
+  * limit the rate with which progress is sent via MPRIS (kde#416179)
+  * disable playlist animations to fix display corruption (kde#398093)
+  * allow database to contain and get tracks without metadata (kde#415180)
+  * fix problems with wrong type passed from qml to c++ (kde#415827)
+
+-------------------------------------------------------------------
+Tue Jan  7 10:00:01 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 19.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/releases/19.12.1
+- Too many changes since 19.12.0, only listing bugfixes:
+  * set the cover art in the header to a fixed source size (kde#413359)
+  * convert KCM based configuration dialog to a simple dialog (kde#414982)
+
+-------------------------------------------------------------------
+Tue Dec 10 06:38:09 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.12.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/releases/19.12
+- Changes since 19.11.90:
+  * Update Appstream for new release
+  * fix new issue introduced by !39 merge request
+  * as requested during review, put back extra parameter in TracksListener::trackByFileNameInList
+  * many clazy level 2 fixes
+  * correct clazy level 1 warnings from Elisa source code
+  * should fix the infinite loop when config changed
+  * Make it compile against last qt5.14
+  * properly get the path in the kcm module and use it cleanly in indexers
+
+-------------------------------------------------------------------
+Sat Nov 30 09:11:30 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.11.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/19.12-rc
+- Changes since 19.11.80:
+  * bring back a working ContextView (kde#412334)
+  * call KQuickAddons::QtQuickSettings::init() after QApplication is built
+  * add beta release 19.11.80 to appdata file
+  * ki18n_install is a noop when the directory does not exist
+  * use QtQuickSettings to get common default qml setting
+  * put back the cleaning of DataModel when database is cleared (kde#413100)
+  * always set new source when track is set
+  * always add a slash to the directory path
+  * fix one forgotten file modification time and cleanup
+
+-------------------------------------------------------------------
+Mon Nov 25 06:25:31 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.11.80
+  * Now part of KDE release service
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Sun Jun 30 20:33:02 UTC 2019 - wbauer@tmo.at
+
+- Update to 0.4.2
+  * Fix restore of tracks with missing metadata in playlist (this
+    was the case for tracks without album metadata)
+  * Fix view selector not following the color theme (kde#408435)
+
+-------------------------------------------------------------------
+Sat Jun 22 16:34:26 UTC 2019 - wbauer@tmo.at
+
+- Update to 0.4.1
+  * Improve accessibility by providing metadata for UI elements
+  * Use full-height separators in ContentView
+  * Make Playlist items span full width (kde#408210)
+  * Fix focus rectangle not visible in single album view mode
+  * Port GridBrowser Delegate UI changes to FileBrowserDelegate too
+    (kde#407945)
+
+-------------------------------------------------------------------
+Tue May 21 12:51:03 UTC 2019 - wbauer@tmo.at
+
+- Update to 0.4.0
+  * Support for progress bar on Plasma Desktop taskbar entries
+  * Improved party mode
+  * Undo Support when Playlist is Cleared
+  * New Browsing Views: most recently played tracks, most
+    frequently played tracks
+  * A new context view that is now able to show some of the
+    metadata from the currently playing track like the composer,
+    lyricist, play count, lyrics ...
+  * Optimizations And Reduced Memory Usage
+  * Support for Embedded Cover Images
+  * Easy Navigation to Album or Artist of the Currently Playing
+    Track
+  * Improved Grid Views Elements
+- Add kirigami2 dependency, which is used/required now also for the
+  desktop version
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Sun Sep 30 21:32:09 UTC 2018 - wbauer@tmo.at
+
+- Update to 0.3.0
+  * Fix scrolling in the Album, Artist, etc. and Now Playing views
+    is much too fast (kde#397446)
+  * Fix status box is too small (kde#398924)
+  * Fix Elisa being unaware of Baloo if it starts after Elisa
+    (kde#387437)
+  * User should be able to start typing to search after pressing
+     Ctrl+F (kde#398718)
+  * Fix high memory usage (kde#396840)
+    (improvements have landed in 0.3.0 release and more will come
+    to 0.3.1)
+  * Elisa should better handle being scaled down to a small size
+    (kde#392778)
+    (not yet finished but some improvements are in 0.3.0 release)
+  * Hide stars when there is no rating
+  * Implement interface of Baloo to watch renamed files
+  * Upgrade some code using deprecated features in KDeclarative
+    framework
+  * Align the action buttons with the big icon in the views header
+  * Allow the playlist to be hidden when browsing your music
+  * Always display the title of the playlist entries
+  * Internal improvements to various non graphical components to
+    allow future improvements to the header bar
+  * Resize track metadata view dynamically
+  * Improvements to the header of the play list
+  * Add a mode where Elisa can show only the header but in the full
+    window
+  * Optimize the data methods of model and use
+    QAbstractItemModelTester
+  * Makes KIO and KFileMetaData be optional dependencies
+
+-------------------------------------------------------------------
+Sun Sep 16 13:18:31 UTC 2018 - wbauer@tmo.at
+
+- Update to 0.2.1
+  * Fixed issues that could lead to wrong data shown for albums
+    with multiple discs
+  * The buttons in the header on top of the views are now aligned
+    with the top and bottom of the big icon
+- Update to 0.2.0
+  * All views are now sorted in ascending order by default
+  * New button to toggle between ascending and descending
+  * New view allows you to browse your home directory, only music
+    files and directories are shown
+  * New view allows you to browse by going from genres to artists,
+    their albums and its tracks
+  * Now has a proper icon
+  * The player bar is now featuring all playback controls, the look
+    of the playlist view and the views selector have been refreshed
+    and improved
+  * Now uses the new icons from Breeze to differentiate between
+    actions (play, pause, etc) and states (playing, paused, etc)
+  * To avoid scanning files for changes at the start, Elisa now
+    keeps the last modified time of files
+  * The browsing views are now only loaded when shown
+  * Elisa is now finding more cover images and most common cases
+    should work
+  * A few fixes to Mpris2 support
+  * Various fixes to the internal tracks database
+- Use macros for the minimum Qt5 and KF5 versions in the specfile
+
+-------------------------------------------------------------------
+Tue Apr 17 11:21:08 UTC 2018 - kbabioch@suse.com
+
+- Update to 0.1.1
+  * Minor bugfixes
+- Download and verify signature for source archive
+- Cleaned up spec file (spec-cleaner)
+
+-------------------------------------------------------------------
+Sun Apr  8 07:59:07 UTC 2018 - wbauer@tmo.at
+
+- Update to 0.1
+  * First stable release
+- Update build requirements
+- Add necessary runtime requirements
+- Mark license files as %license instead of %doc
+
+-------------------------------------------------------------------
+Mon Feb  5 23:35:32 UTC 2018 - jengelh@inai.de
+
+- Ensure neutrality of description.
+- Replace vision statement by what the software is about.
+
+-------------------------------------------------------------------
+Fri Feb  2 16:12:19 UTC 2018 - kbabioch@suse.com
+
+- Initial packaging of elisa
