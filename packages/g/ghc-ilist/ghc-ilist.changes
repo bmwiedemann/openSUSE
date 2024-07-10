@@ -1,0 +1,16 @@
+-------------------------------------------------------------------
+Sun Aug  6 18:57:33 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update ilist to version 0.4.0.1 revision 3.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Thu Mar 30 17:07:14 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
+Mon Nov 15 21:45:53 UTC 2021 - Peter Simons <psimons@suse.com>
+
+- Add ilist at version 0.4.0.1 revision 2.
+

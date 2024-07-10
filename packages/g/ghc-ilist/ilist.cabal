@@ -1,0 +1,94 @@
+cabal-version:       2.4
+name:                ilist
+version:             0.4.0.1
+x-revision: 3
+synopsis:            Optimised list functions for doing index-related things
+description:
+  Optimised list functions for doing index-related things. They're
+  faster than common idioms in all cases, they avoid
+  <https://ghc.haskell.org/trac/ghc/ticket/12620 space leaks>, and
+  sometimes they fuse better as well.
+homepage:            http://github.com/kowainik/ilist
+bug-reports:         http://github.com/kowainik/ilist/issues
+license:             MPL-2.0
+license-file:        LICENSE
+author:              Artyom
+maintainer:          Kowainik <xrom.xkov@gmail.com>
+copyright:           2016-2019 Artyom Kazak (BSD-3-Clause)
+                     2019-2020 Kowainik (MPL-2.0)
+category:            List
+build-type:          Simple
+extra-doc-files:     README.md
+                     CHANGELOG.md
+tested-with:         GHC == 8.2.2
+                     GHC == 8.4.4
+                     GHC == 8.6.5
+                     GHC == 8.8.4
+                     GHC == 8.10.7
+                     GHC == 9.0.1
+                     GHC == 9.2.1
+
+source-repository head
+  type:                git
+  location:            https://github.com/kowainik/ilist.git
+
+common common-options
+  build-depends:       base >= 4.10 && < 4.20
+
+  ghc-options:         -Wall
+                       -Wcompat
+                       -Widentities
+                       -Wincomplete-uni-patterns
+                       -Wincomplete-record-updates
+                       -Wredundant-constraints
+                       -fhide-source-paths
+  if impl(ghc >= 8.4)
+    ghc-options:       -Wmissing-export-lists
+                       -Wpartial-fields
+  if impl(ghc >= 8.8)
+    ghc-options:       -Wmissing-deriving-strategies
+                       -Werror=missing-deriving-strategies
+  if impl(ghc >= 8.10)
+    ghc-options:       -Wunused-packages
+
+  default-language:    Haskell2010
+  default-extensions:  DeriveGeneric
+                       DerivingStrategies
+                       GeneralizedNewtypeDeriving
+                       InstanceSigs
+                       LambdaCase
+                       OverloadedStrings
+                       RecordWildCards
+                       ScopedTypeVariables
+                       TypeApplications
+
+library
+  import:              common-options
+  hs-source-dirs:      src
+  exposed-modules:     Data.List.Index
+  ghc-options:         -O2
+
+test-suite tests
+  import:              common-options
+  type:                exitcode-stdio-1.0
+  hs-source-dirs:      tests
+  main-is:             Main.hs
+  build-depends:       hspec
+                     , ilist
+                     , transformers
+  ghc-options:         -O2 -fno-warn-unused-do-bind
+
+benchmark bench
+  import:              common-options
+  type:                exitcode-stdio-1.0
+  hs-source-dirs:      bench
+  main-is:             Main.hs
+  other-modules:       Functions
+  build-depends:       criterion
+                     , ilist
+                     -- imapM_ is broken in 4.13.2
+                     , lens >= 4.13.2.1
+                     , loop
+                     , transformers
+                     , vector
+  ghc-options:         -O2

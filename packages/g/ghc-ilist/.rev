@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>493054daafa39faec02534c61e745a90</srcmd5>
+    <version>0.4.0.1</version>
+    <time>1680636053</time>
+    <user>dimstar_suse</user>
+    <comment>update for ghc-9.4.4</comment>
+    <requestid>1075926</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>efa4bb72759c6bb113a5da85de584353</srcmd5>
+    <version>0.4.0.1</version>
+    <time>1692379710</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1104455</requestid>
+  </revision>
+</revisionlist>
