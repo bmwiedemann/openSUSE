@@ -579,4 +579,24 @@ mtools is GPL-3.0+ licensed, not GPL-2.0+ (forwarded request 126894 from babelwo
     <comment>- Use %autosetup macro. (forwarded request 1149387 from pgajdos)</comment>
     <requestid>1149388</requestid>
   </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>0effb29f04bb665ea0a6147bde5854a1</srcmd5>
+    <version>4.0.44</version>
+    <time>1720622869</time>
+    <user>anag+factory</user>
+    <comment>- version update to 4.0.44
+  * Added documentation for size parameters
+  * Fix parsing of fat_start (reserved sectors) in mformat.c so
+    as to allow more than 255
+  * Rewrite autorename in vfat.c such that it doesn't
+    (temporarily) overwrite byte after name string
+  * Switch statement fall-through fixes (size parsing, and bios disk in
+    mformat.c)
+  * Compilation warning fixes, mostly for CLANG
+- deleted sources
+  - mtools-4.0.43.tar.bz2.sig (not needed)
+- added sources
+  + mtools-4.0.44.tar.bz2.sig</comment>
+    <requestid>1186319</requestid>
+  </revision>
 </revisionlist>

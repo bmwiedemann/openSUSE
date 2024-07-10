@@ -17,7 +17,7 @@
 
 
 Name:           mtools
-Version:        4.0.43
+Version:        4.0.44
 Release:        0
 Summary:        Tools to access MS-DOS filesystems without kernel drivers
 License:        GPL-3.0-or-later
@@ -30,6 +30,7 @@ Source2:        %{name}.keyring
 Patch0:         %{name}-conf.diff
 BuildRequires:  makeinfo
 BuildRequires:  texinfo
+Requires:       glibc-gconv-modules-extra
 Requires:       glibc-locale-base
 
 %description

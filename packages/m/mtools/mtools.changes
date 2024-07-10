@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Jul  8 07:17:04 UTC 2024 - pgajdos@suse.com
+
+- version update to 4.0.44
+  * Added documentation for size parameters
+  * Fix parsing of fat_start (reserved sectors) in mformat.c so
+    as to allow more than 255
+  * Rewrite autorename in vfat.c such that it doesn't
+    (temporarily) overwrite byte after name string
+  * Switch statement fall-through fixes (size parsing, and bios disk in
+    mformat.c)
+  * Compilation warning fixes, mostly for CLANG
+- deleted sources
+  - mtools-4.0.43.tar.bz2.sig (not needed)
+- added sources
+  + mtools-4.0.44.tar.bz2.sig
+
+-------------------------------------------------------------------
 Thu Feb 22 13:18:11 UTC 2024 - pgajdos@suse.com
 
 - Use %autosetup macro.
