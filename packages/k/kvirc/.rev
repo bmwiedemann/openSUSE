@@ -1,0 +1,595 @@
+<revisionlist>
+  <revision rev="1" vrev="29">
+    <srcmd5>b42810071531d8002dc855e10d937d9c</srcmd5>
+    <version>3.2.5</version>
+    <time>1166489995</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>8e6a56fc68972e74f459cb19faebdee3</srcmd5>
+    <version>3.2.6</version>
+    <time>1168276764</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>42f93fd09c2888cc9ac057960a4938cb</srcmd5>
+    <version>3.2.6</version>
+    <time>1168447691</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="51">
+    <srcmd5>2fe723f900f7acb2d4760e51a7ab76d2</srcmd5>
+    <version>3.2.6</version>
+    <time>1185534253</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="96">
+    <srcmd5>d5a4b77ae5d7c4dd7834846834190dff</srcmd5>
+    <version>3.2.6</version>
+    <time>1193127862</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="139">
+    <srcmd5>16cd9ee3f8fa1065e5542364831b5d45</srcmd5>
+    <version>3.2.6</version>
+    <time>1203035261</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="164">
+    <srcmd5>73ca3bcb5545b60205a5ccd1eed53544</srcmd5>
+    <version>3.2.6</version>
+    <time>1208266587</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="251">
+    <srcmd5>73ca3bcb5545b60205a5ccd1eed53544</srcmd5>
+    <version>3.2.6</version>
+    <time>1208266587</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>5295f4955f3114cf9154a448b5f71e7e</srcmd5>
+    <version>3.4.2</version>
+    <time>1225817272</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>0f882062360b9cbf7cfa1716909577b7</srcmd5>
+    <version>3.4.2</version>
+    <time>1225843832</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>efb6f6db0bd4ca00d4616efbd947c8c7</srcmd5>
+    <version>3.4.2</version>
+    <time>1247126769</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="5">
+    <srcmd5>efb6f6db0bd4ca00d4616efbd947c8c7</srcmd5>
+    <version>3.4.2</version>
+    <time>1247126769</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="6">
+    <srcmd5>67fd1e24699aaafc2fa4a4e805864469</srcmd5>
+    <version>3.4.2</version>
+    <time>1259335479</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE3/kvirc based on submit request 25118 from user Beineri
+</comment>
+  </revision>
+  <revision rev="14" vrev="7">
+    <srcmd5>be8ba949d3ddcd9d867703b09cc49682</srcmd5>
+    <version>3.4.2</version>
+    <time>1268924447</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="15" vrev="8">
+    <srcmd5>e5c864c926bf67b3809c03f7e57eea26</srcmd5>
+    <version>3.4.2</version>
+    <time>1271629906</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:KDE3/kvirc based on submit request 38167 from user oertel
+</comment>
+    <requestid>38167</requestid>
+  </revision>
+  <revision rev="16" vrev="10">
+    <srcmd5>e5c864c926bf67b3809c03f7e57eea26</srcmd5>
+    <version>3.4.2</version>
+    <time>1278667356</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="17" vrev="11">
+    <srcmd5>e5c864c926bf67b3809c03f7e57eea26</srcmd5>
+    <version>3.4.2</version>
+    <time>1278678587</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>ee40c354acd2559cb905841883ab248a</srcmd5>
+    <version>4.0.0</version>
+    <time>1279919265</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:Distro:Factory/kvirc based on submit request 43539 from user Beineri
+</comment>
+    <requestid>43539</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>572f487197f0f566e7c06b739bbd8c4b</srcmd5>
+    <version>4.0.0</version>
+    <time>1280793531</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:Distro:Factory/kvirc based on submit request 44342 from user llunak
+</comment>
+    <requestid>44342</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>28c62f86e123b40da0865da92c695bfc</srcmd5>
+    <version>4.0.2</version>
+    <time>1294663916</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 57325 from user dirkmueller
+</comment>
+    <requestid>57325</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>eec0a9ab84a93e14625059d97f089fe4</srcmd5>
+    <version>4.0.2</version>
+    <time>1294663924</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 57325
+</comment>
+  </revision>
+  <revision rev="22" vrev="5">
+    <srcmd5>eec0a9ab84a93e14625059d97f089fe4</srcmd5>
+    <version>4.0.2</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>d99ea58adb6bce2b1743f49f1177bb57</srcmd5>
+    <version>4.0.4</version>
+    <time>1301646295</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 65721 from user coolo
+</comment>
+    <requestid>65721</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>e101b4728c3288be3c9bc6eb3bde7632</srcmd5>
+    <version>4.0.4</version>
+    <time>1301915643</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 65859 from user coolo
+</comment>
+    <requestid>65859</requestid>
+  </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>893eb96bcd4eccb242e8d9718a4d2031</srcmd5>
+    <version>4.0.4</version>
+    <time>1301915652</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 65859
+</comment>
+  </revision>
+  <revision rev="26" vrev="4">
+    <srcmd5>1d02aaf96369b30bf65167f4c4130567</srcmd5>
+    <version>4.0.4</version>
+    <time>1317132439</time>
+    <user>saschpe</user>
+    <comment>- Added %kde4_runtime_requires macro (fix for RPMLINT warning)
+- Removed commented lines (fix for RPMLINT warning)
+- Added automatic language check (fix for RPMLINT warning)
+- Cleaned up spec file formatting (forwarded request 84490 from TheBlackCat) (forwarded request 84491 from TheBlackCat)</comment>
+    <requestid>84803</requestid>
+  </revision>
+  <revision rev="27" vrev="5">
+    <srcmd5>ef8efbe5fc42511fa24d4c3e7fe35b91</srcmd5>
+    <version>4.0.4</version>
+    <time>1318762342</time>
+    <user>lrupp</user>
+    <comment>- Switched to external libraries.  This is the upstream recommended
+  way to build the program and is more secure
+- Removed INSTALL file from documentation (fix for RPMLINT warning)
+- Cleaned up spec file formatting (forwarded request 87853 from TheBlackCat)</comment>
+    <requestid>88023</requestid>
+  </revision>
+  <revision rev="28" vrev="7">
+    <srcmd5>ef8efbe5fc42511fa24d4c3e7fe35b91</srcmd5>
+    <version>4.0.4</version>
+    <time>1319182061</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="29" vrev="8">
+    <srcmd5>d9505b6d3643c3eacbb2951f82b2576d</srcmd5>
+    <version>4.0.4</version>
+    <time>1322567541</time>
+    <user>coolo</user>
+    <comment>- Fix duplicate filelist</comment>
+    <requestid>94138</requestid>
+  </revision>
+  <revision rev="30" vrev="9">
+    <srcmd5>eff30d74f627ecdfc92ede5d21f82c98</srcmd5>
+    <version>4.0.4</version>
+    <time>1332752570</time>
+    <user>coolo</user>
+    <comment>Fix build with gcc 4.7 - Please work with upstream to resolve it in upstream code base. There is also a chance that a newer version of the package might have this fixed already. (forwarded request 110917 from dimstar)</comment>
+    <requestid>110959</requestid>
+  </revision>
+  <revision rev="31" vrev="10">
+    <srcmd5>2c5c485ce539283a29ee1b9137ff3bd5</srcmd5>
+    <version>4.0.4</version>
+    <time>1339530284</time>
+    <user>coolo</user>
+    <comment>license update: SUSE-GPL-2.0+-with-openssl-exception
+ (forwarded request 124400 from babelworx)</comment>
+    <requestid>124585</requestid>
+  </revision>
+  <revision rev="32" vrev="12">
+    <srcmd5>2c5c485ce539283a29ee1b9137ff3bd5</srcmd5>
+    <version>4.0.4</version>
+    <time>1340183542</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="33" vrev="14">
+    <srcmd5>2c5c485ce539283a29ee1b9137ff3bd5</srcmd5>
+    <version>4.0.4</version>
+    <time>1359109213</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>ffa62ead4f71a9cb5f105d702f00febc</srcmd5>
+    <version>4.2.0</version>
+    <time>1375288280</time>
+    <user>coolo</user>
+    <comment>Update to version 4.2.0</comment>
+    <requestid>184858</requestid>
+  </revision>
+  <revision rev="35" vrev="3">
+    <srcmd5>ffa62ead4f71a9cb5f105d702f00febc</srcmd5>
+    <version>4.2.0</version>
+    <time>1379662848</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="36" vrev="5">
+    <srcmd5>ffa62ead4f71a9cb5f105d702f00febc</srcmd5>
+    <version>4.2.0</version>
+    <time>1409301442</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="37" vrev="6">
+    <srcmd5>9a69736171f8d16a49e84d5a07fac2d9</srcmd5>
+    <version>4.2.0</version>
+    <time>1468360336</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>407179</requestid>
+  </revision>
+  <revision rev="38" vrev="7">
+    <srcmd5>86d5b672b50f422a9f5446b1904f122b</srcmd5>
+    <version>4.2.0</version>
+    <time>1511817524</time>
+    <user>dimstar_suse</user>
+    <comment>- BuildRequire openssl-devel 1.0 explicitly to fix build on TW
+- Remove %if with ancient checks</comment>
+    <requestid>545986</requestid>
+  </revision>
+  <revision rev="39" vrev="8">
+    <srcmd5>206aa3f5ae8a0417be3b515c41ff3fe2</srcmd5>
+    <version>4.2.0</version>
+    <time>1513677439</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>557675</requestid>
+  </revision>
+  <revision rev="40" vrev="9">
+    <srcmd5>0b61b3b9a28e56d7c2dd141881ed2d23</srcmd5>
+    <version>4.2.0</version>
+    <time>1543311867</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>652037</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>50ebd96e931e95d414a51a55237f9759</srcmd5>
+    <version>5.0.0</version>
+    <time>1550220887</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>667953</requestid>
+  </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>c47da40066ea67d28d8af5b030a6b338</srcmd5>
+    <version>5.0.0</version>
+    <time>1579273554</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patches to use Python 3:
+  * 0001-Add-support-for-Python-3.patch
+  * 0001-This-is-not-necessary-anymore.patch
+  * 0001-Replace-FindPythonLibs-with-FindPython3-in-CMake.patch
+  * 0001-Stop-unsetting-_DEBUG-when-including-Python.h.patch
+- Drop obsolete conditions</comment>
+    <requestid>765064</requestid>
+  </revision>
+  <revision rev="43" vrev="3">
+    <srcmd5>4d2ae5f64b62e57ebce1f4a1de7adfc0</srcmd5>
+    <version>5.0.0</version>
+    <time>1591286241</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to fix build with Qt 5.15:
+  0001-Fix-build-with-Qt-5.15.patch</comment>
+    <requestid>811515</requestid>
+  </revision>
+  <revision rev="44" vrev="4">
+    <srcmd5>10775c5a8e81888ed624403fb7ccd86c</srcmd5>
+    <version>5.0.0</version>
+    <time>1624887224</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove the optional QtWebKit dependency</comment>
+    <requestid>902764</requestid>
+  </revision>
+  <revision rev="45" vrev="5">
+    <srcmd5>e5d9ad218c371b1535affc3b531b9152</srcmd5>
+    <version>5.0.0</version>
+    <time>1659890039</time>
+    <user>dimstar_suse</user>
+    <comment>- set CMAKE_SKIP_RPATH when building kvirc. Without it, CMake adds
+  a (yet unexplained) empty RUNPATH entry to the perl module.</comment>
+    <requestid>993559</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>0e7402fcd360beb3c3ebbb7aeee5c905</srcmd5>
+    <version>5.2.0</version>
+    <time>1705437536</time>
+    <user>anag+factory</user>
+    <comment>Update to 5.2.0</comment>
+    <requestid>1139125</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>a41c332867612a2e4dde3d6283609aa0</srcmd5>
+    <version>5.2.4</version>
+    <time>1715801313</time>
+    <user>anag+factory</user>
+    <comment>- Update to 5.2.4
+  * This is mostly a bugfix release, including some quality of life
+    improvements for Wayland users on GNU/Linux and Windows users
+    running KVirc as a &quot;portable&quot; app. It also includes an important
+    fix for a crash related to the undo/redo functionality.
+    As a goodie, a new &quot;Vertical line margin&quot; option has been added
+    to the ircview to make your ASCII art look better than ever.
+- Update to 5.2.0
+  * Support for the latest version of upstream libraries:
+    Qt5.15/6.6, KDE5/6, OpenSSL 1.x/3.x
+  * Wayland support
+  * Fix for some nasty crash bugs
+  * an improved font rendering engine able to represent complex
+    characters like emojis with ligatures
+  * a reworked tray icon that now follows your OS style
+  * better support for solanum ircd (Libera net)
+- Drop patches, no longer needed:
+  * 0001-Add-support-for-Python-3.patch
+  * 0001-This-is-not-necessary-anymore.patch
+  * 0001-Replace-FindPythonLibs-with-FindPython3-in-CMake.patch
+  * 0001-Stop-unsetting-_DEBUG-when-including-Python.h.patch
+  * 0001-Fix-build-with-Qt-5.15.patch
+- set CMAKE_SKIP_RPATH when building kvirc. Without it, CMake adds
+  a (yet unexplained) empty RUNPATH entry to the perl module.
+- Remove the optional QtWebKit dependency
+- Add patch to fix build with Qt 5.15:
+  0001-Fix-build-with-Qt-5.15.patch
+- Add patches to use Python 3:
+  * 0001-Add-support-for-Python-3.patch
+  * 0001-This-is-not-necessary-anymore.patch
+  * 0001-Replace-FindPythonLibs-with-FindPython3-in-CMake.patch
+  * 0001-Stop-unsetting-_DEBUG-when-including-Python.h.patch
+- Drop obsolete conditions
+- Update to 5.0.0
+  * Ported to Qt5 and KDE Frameworks5
+  * Too many changes to list here
+- Drop patches merged upstream:
+  * fix-processEvents.patch
+  * kvirc-gendoc-date.patch
+  * kvirc-cmake-timestamp.patch
+  * kvirc-no-uname.patch
+- Drop separate devel package and just delete libkvirc.so instead
+- Change package license to GPL-2.0-or-later AND (GPL-3.0-only OR
+  SUSE-LGPL-2.1-with-digia-exception-1.1)
+- Add kvirc-cmake-timestamp.patch kvirc-gendoc-date.patch (boo#1047218)
+- Add kvirc-no-uname.patch to make package build reproducible (boo#1101107)
+- BuildIgnore libopenssl-1_1_0-devel to fix build with ossl 1.1 based
+  libqt4
+- BuildRequire openssl-devel 1.0 explicitly to fix build on TW
+- Remove %if with ancient checks
+- Add fix-processEvents.patch: fixes use of wrong operator when
+  constructing the parameter to QApplication::processEvents(), and
+  as a result also the build with gcc6 (boo#985191)
+- Update to 4.2.0
+  * More scripting power:
+    - the interface to the popup subsystem has been rewritten: 
+      the new popup module
+    - a new interface to the userlist: the userlist module
+    - a new webView class that embeds a webkit
+    - improved SQL classes
+    - a new trayicon KVS class
+    - added a default script manager to restore default scripts 
+      without overwriting custom user scripts
+    - lots of new functions. 
+    - new SSL certificate related stuff: $dcc.getSSLCertInfo(), 
+      $certificate(), $str.evpSign(), $str.evpVerify()
+  * New miscellaneous features:
+    - a module to support FiSH irc encryption
+    - smart logging paths using KVS
+    - improved medialayer support: VLC, Spotify, Totem, Clementine
+    - a rewritten log viewer module
+    - dynamic support for custom channel modes
+  * a lot of bugfixes and minor enchancements
+- Remove patch kvirc-gcc47.patch. This is now fixed upstream
+- license update: SUSE-GPL-2.0+-with-openssl-exception
+- Add kvirc-gcc47.patch: Fix build with gcc 4.7.
+- Fix duplicate filelist 
+- Switched to external libraries.  This is the upstream recommended
+  way to build the program and is more secure
+- Removed INSTALL file from documentation (fix for RPMLINT warning)
+- Cleaned up spec file formatting
+- Added %kde4_runtime_requires macro (fix for RPMLINT warning)
+- Removed commented lines (fix for RPMLINT warning)
+- Added automatic language check (fix for RPMLINT warning)
+- Cleaned up spec file formatting
+-Suppress build date in kvirc-config script, breaks build-compare. 
+- update to 4.0.4
+  * translations updated
+  * many fixes to the buildsystem
+  * bugfixes
+  * details please see https://svn.kvirc.de/kvirc/timeline 
+- Update to 4.0.2:
+  * Bugfixes
+- Add optional python dependency
+- Update to 4.0.2:
+  * ChangeLog is not updated
+- Update to 4.0.1:
+  * ChangeLog is not updated
+- Add optional python dependency
+- add kvirc-ctcp_vul.diff:
+  fix issue with remote CTCP commands execution
+  CVE-2010-2785 (bnc#626942) 
+- Update to 4.0.0:
+  * Definitive and stable port to the Qt4 libraries
+  * A brand new build system based on CMake (no more ./configure)
+  * Better support for server technologies: CAPS, STARTTLS, SASL,
+    irc services.
+  * New UPnP module to control and remotely map router ports for DCC
+  * Totally rewritten MDI subsystem, with look and feel of your OS
+  * Nice graphical addon packager
+  * Visual class editor for object oriented scripting
+  * Rewritten iograph module to check your bandwidth usage
+  * Support for animated avatars
+  * Ability to get other user's avatars/information without the 
+    need to CTCP the whole channel
+  * Support for DBus inter-process communication
+  * Support for the MPRIS media player control and info reporting
+  * Support for Phonon direct media playback
+  * A lot of new options to better customize your client
+  * A lot of new KVS commands and functions for your scripting needs
+  * Tons of bug fixes, more than 500 only from the bugtracker
+- Use %_smp_mflags
+- compile with new openssl interface
+- require the exact perl version as it links libperl.so
+- Added a patch to correct the makefile in po/kvirc. This contained 
+  twice the entry for kvirc_hu.mo
+- Remove .la files
+- Update to 3.4.2
+  * Improved themeing support
+  * Improved scripting engine
+  * Improved help subsystem
+  * Improved windows and macosx support
+  * Better desktop integration
+  * Nicer support for many different IRC servers
+  * A totally revised option layout
+  * Basic support for script &quot;addons&quot;
+  * New nice statusbar applets
+  * Fixed CVE-2008-4748; (bnc#439819)
+- Run ldconfig on deinstalltion
+- Remove broken libtool macros.
+- recode CRLF files to fix newlines in generated docu files 
+- fix build with gcc-4.3 
+- block &quot;$&quot; and &quot;;&quot; in irc urlhandler (#285810)
+- update to 3.2.6
+  * Added handling of unknown RPL_WHOIS* numeric replies
+  * Added a file with KVIrc file extension definitions
+  * Added an option for the &quot;network name in taskbar&quot;
+  * Added new notifier
+  * Moved the whole theme management engine to a new module
+  * New german translation file
+  * More work on the options dialogs
+- in kvi_socket.h: test if error value equals to EAGAIN
+  instead of setting it to that value (#226878) 
+- fix crash after initial setup (thanks to gladiac) 
+- update to 3.2.5
+  - documentation cleanups 
+  - Fixed some docs about KVS
+  - Fixed couple of bugs, include crashbug when applying a new theme
+  - Changed trayicon bechaviour. Now it's configurable.
+  - Make Tree taskbar header hidable. Hide it by default
+- update to 3.2.4 
+  - uparser is definitively gone: KVS is the reality.
+  - many cleanups all over, including documentation
+  - countless bugfixes
+- fix build 
+- build parallel 
+- remove unused .a files for modules (#182161)
+- split off devel package 
+- converted neededforbuild to BuildRequires
+- fix libtool usage (protecting share holder value again)
+- fix build with gcc-4.0.1 
+- Added audiofile-devel to neededforbuild.
+- update to 3.2.0 
+- move menu entry to xdg dir
+- remove unneeded mad and mad-devel from nfb
+- recode all translations patches to UTF-8
+- remove most hunks from old patch (apparently obsolete)
+- recode de translation to utf-8 first
+- fix file conflict with kopete from KDE 3.3
+- update to 3.0.1
+- update to 3.0.0
+- cvs update of Mar18
+- now the icons look complete ...
+- cvs update of Mar07
+- cvs update of Jan30
+- added defattr 
+- update to CVS of Oct29 ... mountain of patches to compile 
+- added run_ldconfig 
+- add Categories
+- add dir /opt/kde3/include/kvirc to filelist 
+- fix filelist 
+- change mode of .la files to 644 
+- move applnk and mimelnk files in place
+- use kfmclient as urlhandler if available 
+- update to 3.0.0-beta2
+- update to 3.0.0-beta1 
+- libdir is /opt/kde2/%_lib for kde2 ... 
+- fix to compile on lib64-archs
+- fix pofiles 
+- use kde2-devel-packages 
+- cvs update 2001/10/30 
+- change TAG to X11/KDE/Beta
+- Fix casts.
+- update to cvs of today
+- use current libtool to build plugins right 
+- enable kde-support and ipv6-support
+- update to 2.1.2pre2 (cvs) to make it compile 
+- changed neededforbuild &lt;sp_libs&gt; to &lt;sp-devel&gt;
+- New version 2.1.1
+- changed neededforbuild &lt;docbkdsl&gt; to &lt;docbook-dsssl-stylesheets&gt;
+- fixed neededforbuild
+- changed neededforbuild &lt;docbk30&gt; to &lt;docbook_3&gt;
+- fixed filelist 
+- package fix
+- update to 2.1.0 (KDE 2)
+- fixed CXXFLAGS passing in the src/*/Makefile.in files
+- fixed neededforbuild
+- fixed neededforbuild: += libmng-devel 
+- neededforbuild libmng 
+- fixed neededforbuild 
+- Added group tag, suse_update_config and new file list
+- Added group tag, suse_update_config and new file list
+- Spec file created from kvirc-1.0.0_beta3.1.tar.gz by autospec
+ - Drop ksupp, klibs, kbase and qtlib1 from neededforbuild
+- New version 1.0.0_beta3.1, need qtlib2, fixes
+  Buzilla bug #605
+                                 
+- Reinserted old # Commandline: line.
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+ - Recreated spec file with new autospec
+- don't use lx_hack for build
+- Recreated spec file from kvirc-0.9.0.tar.gz using autospec script by kettner@suse.de (forwarded request 1174093 from kill_it)</comment>
+    <requestid>1174126</requestid>
+  </revision>
+</revisionlist>
