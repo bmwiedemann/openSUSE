@@ -1,0 +1,545 @@
+-------------------------------------------------------------------
+Thu Feb 22 08:00:44 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
+Sun Jul 12 16:08:35 UTC 2015 - mpluskal@suse.com
+
+- Cleanup spec file with spec-cleaner
+
+-------------------------------------------------------------------
+Wed Oct  8 13:15:53 UTC 2014 - jengelh@inai.de
+
+- Use source URLs and remove old specfile tags and sections.
+
+-------------------------------------------------------------------
+Fri Sep 30 15:23:26 UTC 2011 - uli@suse.com
+
+- cross-build fix: use %__cc macro
+
+-------------------------------------------------------------------
+Sun Oct 31 12:37:02 UTC 2010 - jengelh@medozas.de
+
+- Use %_smp_mflags
+
+-------------------------------------------------------------------
+Tue Sep 23 01:02:15 CEST 2008 - ro@suse.de
+
+- drop madwifi from buildrequires (not needed here) 
+
+-------------------------------------------------------------------
+Wed Mar 14 14:59:13 CET 2007 - jg@suse.de
+
+- split hostap-utils off into own package
+
+-------------------------------------------------------------------
+Mon Sep 18 14:13:31 CEST 2006 - jg@suse.de
+
+- hostap-utils: Fixed usage of uninitialised variable (bug 184410)
+- hostapd: Update to version 0.4.9, changes:
+  * added a new configuration option, eapol_version, that can be
+    used to set EAPOL version to 1 (default is 2) to work around
+    broken client implementations that drop EAPOL frames which use
+    version number 2 [Bug 89]
+  * fixed EAP-MSCHAPv2 message length validation
+  * fixed stdarg use in hostapd_logger(): if both stdout and syslog
+    logging was enabled, hostapd could trigger a segmentation fault
+    in vsyslog on some CPU -- C library combinations
+
+-------------------------------------------------------------------
+Sun Feb  5 19:37:30 CET 2006 - ro@suse.de
+
+- use madwifi-devel in BuildRequires 
+
+-------------------------------------------------------------------
+Sun Feb  5 17:09:48 CET 2006 - aj@suse.de
+
+- Remove BuildRequires on km_wlan.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:36:28 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Nov 21 14:00:48 CET 2005 - jg@suse.de
+
+- hostapd: update to 0.4.7, changes:
+  * driver_wired: fixed EAPOL sending to optionally use PAE group
+    address as the destination instead of supplicant MAC address
+  * driver_madwifi: configure driver to use TKIP countermeasures in
+    order to get correct behavior
+  * driver_madwifi: added support for madwifi-ng
+- hostapd: remove obsolete madwifi patch
+- hostapd: updated config file
+- hostap-utils: update to 0.4.7 (no changes)
+- use %{jobs}
+
+-------------------------------------------------------------------
+Tue Nov  8 15:28:33 CET 2005 - jg@suse.de
+
+- do not build as root
+
+-------------------------------------------------------------------
+Fri Nov  4 17:51:44 CET 2005 - jg@suse.de
+
+- hostapd, update to 0.4.6, changes:
+  * added support for replacing user identity from EAP with RADIUS
+    User-Name attribute from Access-Accept message, if that is included,
+    for the RADIUS accounting messages (e.g., for EAP-PEAP/TTLS to get
+    tunneled identity into accounting messages when the RADIUS server
+    does not support better way of doing this with Class attribute)
+  * driver_madwifi: fixed EAPOL packet receive for configuration where
+     ath# is part of a bridge interface
+  * added a configuration file and log analyzer script for logwatch
+  * fixed EAPOL state machine step function to process all state
+    transitions before processing new events; this resolves a race
+    condition in which EAPOL-Start message could trigger hostapd to send
+    two EAP-Response/Identity frames to the authentication server
+- hostapd: added support for madwifi-ng
+- removed hostap-driver, is part of the kernel now
+
+-------------------------------------------------------------------
+Thu Oct 13 16:29:17 CEST 2005 - jg@suse.de
+
+- hostapd: update to 0.4.5, changes (shortened):
+  * added client CA list to the TLS certificate request in order to
+    make it easier for the client to select which certificate to use
+  * added experimental support for EAP-PSK
+  * added support for WE-19 (hostap, madwifi)
+  * fixed PMKSA caching to copy User-Name and Class attributes so
+    that RADIUS accounting gets correct information
+  * start RADIUS accounting only after successful completion of WPA
+    4-Way Handshake if WPA-PSK is used
+  * fixed PMKSA caching for the case where
+  * EAP-PAX is now registered as EAP type 46
+  * fixed EAP-PAX MAC calculation
+  * fixed EAP-PAX CK and ICK key derivation
+- hostap-driver: update to 0.4.5, changes:
+  * added support for WE-19
+- hostap-utils: update to 0.4.0 (no real changes)
+
+-------------------------------------------------------------------
+Thu Sep  8 16:41:41 CEST 2005 - jg@suse.de
+
+- fixed file permissions
+
+-------------------------------------------------------------------
+Mon Aug 22 15:21:31 CEST 2005 - jg@suse.de
+
+- hostap-driver: update to 0.4.4, changes:
+  * added support for pcmcia changes in Linux 2.6.13
+  * added support for creating sysfs device files (Linux 2.6.x)
+  * fixed power save processing for PS-Poll frames with PwrMgmt flag
+    set (this was causing "wifi0: invalid skb->cb magic" errors)
+  * fixed linking both hostap_cs and hostap_pci to kernel
+  * filter out sequential disconnect events to make race condition with
+    received EAPOL frames less likely to happen (this improves
+    authentication success rate with some APs that send EAPOL frames
+    very quickly after the (re)association response)
+  * added support for setting channel mask for scan requests
+
+-------------------------------------------------------------------
+Sun Aug  7 22:13:32 CEST 2005 - ro@suse.de
+
+- fix build with current wireless drivers 
+
+-------------------------------------------------------------------
+Mon Jul 11 16:34:25 CEST 2005 - jg@suse.de
+
+- hostapd: update to 0.3.9, changes:
+  * fixed a bug which caused some RSN pre-authentication cases to
+    use freed memory and potentially crash hostapd
+  * fixed private key loading for cases where passphrase is not set
+  * fixed WPA2 to add PMKSA cache entry when using integrated EAP
+    authenticator
+  * driver_madwifi: fixed pairwise key removal to allow WPA reauth
+    without disassociation
+  * fixed RADIUS attribute Class processing to only use
+    Access-Accept packets to update Class; previously, other RADIUS
+    authentication packets could have cleared Class attribute
+  * fixed PMKSA caching (EAP authentication was not skipped correctly
+    with the new state machine changes from IEEE 802.1X draft)
+- hostap-driver: update to 0.3.9, changes:
+  * fixed background scans (iwlist wlan0 scan) not to break data
+    connection when in host_roaming 2 mode
+  * fixed beacon frame when moving from monitor mode to master mode
+
+-------------------------------------------------------------------
+Wed Jun  8 08:23:34 CEST 2005 - meissner@suse.de
+
+- adjust hostapd/Makefile to be able to correctly
+  get passed RPM_OPT_FLAGS.
+
+-------------------------------------------------------------------
+Wed Jun  8 00:09:10 CEST 2005 - meissner@suse.de
+
+- Use RPM_OPT_FLAGS.
+
+-------------------------------------------------------------------
+Fri Mar 11 14:36:44 CET 2005 - jg@suse.de
+
+- hostap-driver:
+  * create sysfs links for ethernet device, not IEEE80211 device
+  * disabled sysfs links for hostap_cs, as it breaks association
+
+-------------------------------------------------------------------
+Thu Feb 24 15:28:31 CET 2005 - jg@suse.de
+
+- hostap-driver: fixed sysfs support
+
+-------------------------------------------------------------------
+Mon Feb 14 10:11:51 CET 2005 - jg@suse.de
+
+- hostapd, hostap-utils, hostap-driver: update to 0.3.7 final
+  (no real changes, just version rename)
+
+-------------------------------------------------------------------
+Mon Feb  7 21:11:32 CET 2005 - jg@suse.de
+
+- disabled support for madwifi on non x86(-64) platforms
+
+-------------------------------------------------------------------
+Mon Feb  7 14:43:27 CET 2005 - jg@suse.de
+
+- hostapd: update to version 0.3.7-pre, changes (shortened):
+  * added support for configuring a forced PEAP version based on
+    the Phase 1 identity
+  * fixed PEAPv1 to use tunneled EAP-Success/Failure instead of
+    EAP-TLV to terminate authentication
+  * driver_madwifi: filter wireless events based on ifindex to
+    allow more than one network interface to be used
+  * added support for configuring multiple allowed EAP types for
+    Phase 2 authentication (EAP-PEAP, EAP-TTLS)
+  * added support for EAP-PEAP in the integrated EAP authenticator
+  * added support for EAP-GTC in the integrated EAP authenticator
+  * added support for configuring list of EAP methods for Phase 1
+    so that the integrated EAP authenticator can, e.g., use the
+    wildcard entry for EAP-TLS and EAP-PEAP
+  * added support for EAP-TTLS in the integrated EAP authenticator
+  * added support for EAP-SIM in the integrated EAP authenticator
+  * added support for using hostapd as a RADIUS authentication
+    server with the integrated EAP authenticator taking care of
+   EAP authentication
+  * driver_madwifi: fixed group key setup and added get_ssid method
+  * added support for EAP-MSCHAPv2 in the integrated EAP
+    authenticator
+  * added support for integrated EAP-TLS authentication
+  * added support for reading PKCS#12 (PFX) files (as a replacement
+    for PEM/DER) to get certificate and private key (CONFIG_PKCS12)
+  * added support for Acct-{Input,Output}-Gigawords
+  * added support for Event-Timestamp (in RADIUS Accounting-Requests)
+  * added support for RADIUS Authentication Client MIB (RFC2618)
+  * added support for RADIUS Accounting Client MIB (RFC2620)
+  * made EAP re-authentication period configurable
+  * fixed EAPOL reauthentication to trigger WPA/WPA2 reauthentication
+  * added support for multiple WPA pre-shared keys
+  * added support for multiple driver interfaces to allow hostapd
+    to be used with other drivers
+  * added wired authenticator driver interface
+  * added madwifi driver interface
+  * fixed RADIUS reconnection after an error in sending interim
+    accounting packets
+  * added hostapd control interface for external programs
+  * finished update from IEEE 802.1X-2001 to IEEE 802.1X-REV
+    (now d11)
+  * added support for strict GTK rekeying
+  * added Prism54 driver interface
+  * dual-licensed hostapd (GPLv2 and BSD licenses)
+  * added integrated EAP authenticator that can be used instead of
+    external RADIUS authentication server
+- hostap-driver: update to version 0.3.7-pre, changes:
+  * improved suspend operation: disable firmware (hostap_cs) and
+    generate disconnect event to trigger wpa_supplicant to 
+    reassociate immediately after resume
+  * added new ioctl command for hostapd to clear station specific
+    accounting data when starting a new accounting session
+  * added support for the special initialization needed for the
+    wireless part of multi-function SanDisk ConnectPlus CF cards
+    (manfid 0xd601, 0x0101)
+  * fixed card enabling after firmware download in case any of the
+    netdevs were up when the download was started
+  * added support for Linux wireless extension v17
+- hostap-utils: update to version 0.3.7-pre (no changes)
+- added all example configuration files
+
+-------------------------------------------------------------------
+Thu Jan 13 12:26:34 CET 2005 - jg@suse.de
+
+- hostapd: update to version 0.2.6, changes:
+  * fixed RADIUS accounting to generate a new session id for cases
+    where a station reassociates without first being complete
+    deauthenticated
+  * fixed STA disassociation handler to mark next timeout state to
+    deauthenticate the station, i.e., skip long wait for inactivity
+    poll and extra disassociation, if the STA disassociates without
+    deauthenticating
+  * removed 'daemonize' configuration file option since it has not
+    really been used at all for more than year
+- hostap-utils: update to version 0.2.6, changes:
+  * split_combined_hex: updated to use head/tail -n argument
+- hostap-driver: update to version 0.2.6, changes:
+  * added support for changed PCI API in Linux 2.6.10-rc1 and newer
+
+-------------------------------------------------------------------
+Tue Nov  2 17:53:18 CET 2004 - jg@suse.de
+
+- hostapd: update to version 0.2.5, changes:
+  * fixed EAPOL reauthentication to trigger WPA/WPA2
+    reauthentication
+  * fixed EAPOL state machine to stop if STA is removed during
+    eapol_sm_step(); this fixes at least one segfault triggering
+    bug with IEEE 802.11i pre-authentication
+  * fixed an alignment issue that could cause SHA-1 to fail on some
+    platforms (e.g., Intel ixp425 with a compiler that does not
+    32-bit align variables)
+  * fixed RADIUS reconnection after an error in sending interim
+    accounting packets
+- hostap-driver: update to version 0.2.5, changes:
+  * fixed card enabling after firmware download in case any of the
+    netdevs were up when the download was started
+  * fixed netif_carrier_on/off() calls to leave carrier on for
+    Master mode; previously this may have been left off in some
+    cases which could prevent packet bridging with new kernel
+    versions
+- hostap-driver: enabled support for non-volatile firmware download
+
+-------------------------------------------------------------------
+Fri Oct  1 18:13:12 CEST 2004 - jg@suse.de
+
+- fixed sysfs device/driver links (bug 46633)
+
+-------------------------------------------------------------------
+Mon Aug  9 09:35:05 CEST 2004 - jg@suse.de
+
+- fixed filelist
+
+-------------------------------------------------------------------
+Fri Aug  6 15:09:06 CEST 2004 - jg@suse.de
+
+- do not install /etc/pcmcia/hostap_cs.conf.example anymore
+
+-------------------------------------------------------------------
+Thu Jul 29 19:51:55 CEST 2004 - jg@suse.de
+
+- update hostapd to 0.2.4:
+  * fixed some accounting cases where Accounting-Start was sent
+    when IEEE 802.1X port was being deauthorized
+  * modified RADIUS client to re-connect the socket in case of
+    certain error codes that are generated when a network
+    interface state is changes (e.g., when IP address changes or
+    the interface is set UP)
+  * fixed couple of cases where EAPOL state for a station was freed
+    twice causing a segfault for hostapd
+  * fixed couple of bugs in processing WPA deauthentication
+  * fixed WPA/WPA2 group rekeying to use key index correctly (GN/GM)
+  * fixed group rekeying to send zero TSC in EAPOL-Key messages to
+    fix cases where STAs dropped multicast frames as replay attacks
+  * added support for copying RADIUS Attribute 'Class' from
+    authentication messages into accounting messages
+  * send canned EAP failure if RADIUS server sends Access-Reject
+    without EAP message (previously, Supplicant was not notified
+    in this case)
+  * fixed mixed WPA-PSK and WPA-EAP mode to work with WPA-PSK
+- update hostap-utils to 0.2.4 (no changes)
+- update hostap-driver to 0.2.4:
+  * fixed wlan#/wifi# interface packet counters (both are supposed
+    to see data packets once; wlan# was counting TX twice and wifi#
+    did not count TX or RX at all for most cases)
+  * fixed compilation with PRISM2_NO_STATION_MODES defined
+  * fixed MAC address changing to update address for wifi# interface
+    (without this, at least Master mode did not work correctly when
+    MAC address was changed for wlan#)
+  * fixed inner-BSS bridge (ap_bridge_packets=1) not to bridge
+    packets to unauthorized ports when IEEE 802.1X/WPA is used
+  * merged CryptoAPI versions of WEP/TKIP/CCMP from the wireless-2.6
+    BitKeeper tree (not used by default, can be enabled by defining
+    HOSTAP_USE_CRYPTO_API)
+  * fixed a buffer overflow in TKIP encryption (hostap_crypt_tkip
+    module) on big endian hosts
+
+-------------------------------------------------------------------
+Mon May 17 18:15:57 CEST 2004 - jg@suse.de
+
+- update hostapd to 0.2.1 (shortened):
+  * added WPA and IEEE 802.11i/RSN (WPA2) Authenticator
+    functionality
+  * added support for Acct-Interim-Interval
+  * added new hostapd.conf variable, nas_identifier, that can be
+    used to add an optional RADIUS Attribute, NAS-Identifier, into
+    authentication and accounting messages
+  * added support for Accounting-On and Accounting-Off messages         
+- update hostap-utils to 0.2.1:
+  * hostap_rid: fixed handling of failed RID reads
+  * fixed prism2_srec not to allow combination of volatile and
+    non-volatile firmware images (they will corrupt the card flash)
+  * added support for loading PRI firmware for cards without PRI
+  * fixed volatile download of combined primary and secondary
+    firmware to start running the secondary firmware
+  * added support for dumping PDA in text format and overriding PDA
+    with text and binary files (prism2_srec options -D, -P, and -O)
+- update hostap-driver to 0.2.1 (shortened):
+  * allow hostapd to send encrypted frames using wlan#ap interface
+  * added driver support for hostapd WPA Authenticator
+  * fixed TKIP get sequence number
+  * clear IFF_RUNNING and generate linkwatch events based on
+    association status in Managed mode
+  * added alternative TKIP implementation which uses Michael MIC
+    implementation in CryptoAPI instead of Host AP specific
+    implementation                                                      
+  * added support for RSN (IEEE 802.11i/WPA2)
+  * dropped support for Linux 2.2.x and old Linux 2.4.x kernels
+  * fixed hostap_cs unregistration when PC Card is removed while
+    Host AP interfaces are still up
+  * restructured Linux net device use to be more like IEEE 802.1q
+    VLAN
+  * disable wlan hardware when radio netdev (wifi#) is down
+  * fixed Shared Key authentication when using host_decrypt and
+    kernel driver based IEEE 802.11 management
+  * added crypto hooks for full MSDU encrypt/decrypt
+  * fixed iwspy support with Linux wireless ext v16
+  * fixed IEEE 802.11 defragmentation when using host-based WEP
+    decryption and bridging packets between two associated STAs         
+  * added driver support for WPA Authenticator/Supplicant
+  * added minimal support for ethtool
+- fixed bug in hostap-driver Makefile which prevented hostap_cs.ko
+  from being built
+
+-------------------------------------------------------------------
+Sat Apr  3 17:39:13 CEST 2004 - jg@suse.de
+
+- fixed sysfs support in hostap driver (bug #37278)
+
+-------------------------------------------------------------------
+Tue Mar 30 11:09:31 CEST 2004 - jg@suse.de
+
+- skipping build for UM kernels (bug #37448)
+- skipping build of hostap_cs in case PCMCIA is disabled in the
+  kernel config (also bug #37448)
+
+-------------------------------------------------------------------
+Tue Mar  2 08:20:38 CET 2004 - jg@suse.de
+
+- typo fix in makefile
+
+-------------------------------------------------------------------
+Sun Feb 29 12:28:30 CET 2004 - jg@suse.de
+
+- update to hostapd-0.1.3, changes:
+  * fixed event loop to call signal handlers only after returning from
+    the real signal handler
+  * reset sta->timeout_next after successful association to make sure
+    that the previously registered inactivity timer will not remove the
+    STA immediately (e.g., if STA deauthenticates and re-associates
+    before the timer is triggered).
+- update to hostap-driver-0.1.3, changes:
+  * fixed IEEE 802.11 defragmentation when using host-based WEP
+    decryption and bridging packets between two associated STAs
+    (this caused a kernel crash in dev_queue_xmit())
+  * reconfigure fragmentation threshold after Port0 enable to work around
+    issues with some STA firmware versions forgetting the configured
+    value
+  * restore retry limit after card reset
+  * update STA RX statistics also in Repeater mode
+  * hostap_cs: fixed CS reset when the netdev is down: need to reset
+    hardware even in this case to make resume from suspend mode work
+    correctly
+  * fixed error reporting from Genesis mode download
+  * changed README to use 'make' instead of 'make pccard/pci/plx' when
+    building the driver
+  * replaced CardServices() calls with calls to matching pcmcia_*()
+    functions (required for Linux 2.6.2 and newer)
+  * fixed module reference counting of hostap_crypt_wep module for
+    Linux 2.6.x (i.e., prevent it from be unloaded if it is still used)
+- update to hostap-utils-0.1.3, changes:
+  * prism2_srec: ignore PDR 0x0413 if it is not used (this allows some
+    of the newer STA firmware 1.8.x versions to be downloaded)
+  * prism2_srec: fixed combined RAM download of PRI and STA firmwares
+    to use correct start address
+- added driver race condition fix from hostap CVS
+- rewrote driver Makefile
+
+-------------------------------------------------------------------
+Mon Jan 26 15:01:49 CET 2004 - jg@suse.de
+
+- removed kernel-source from neededforbuild 
+
+-------------------------------------------------------------------
+Fri Jan  9 18:44:30 CET 2004 - jg@suse.de
+
+- driver update to version 0.1.2, from ChangeLog
+  * fixed RTS and Fragmentation thresholds after hw reset
+  * fixed Managed/Ad-hoc mode authentication with Open System
+    algorithm when using old (e.g., version 0.6.2) STA firmware
+  * fixed iwspy support with Linux wireless ext v16
+  * fixed WDS interface selection to not select non-WDS interface
+  * fixed wlan#wds#, wlan#ap, and wlan#sta netdevice unregistration
+  * added PCI ID for Prism3 mini-PCI [hostap_pci]
+  * fixed yield() backward compatibility code for Linux 2.4.0-18
+  * added support for 32-bit CommTallies (if STA f/w >= 0.8.2)
+  * update counters used for /proc/net/hostap/wlan#/stats periodically
+  * fixed CommTallies handling on big endian platforms
+  * added support for Primary-only mode
+  * fixed failure handling in PCI probe not to crash kernel [hostap_pci]
+  * merged hostap_crypt module into hostap module
+  * fixed inactivity polling of stations that are in power saving mode
+- utils update to version 0.1.2, from ChangeLog
+  * fixed prism2_srec not to allow combination of volatile and
+    non-volatile firmware images (they will corrupt the card flash)
+  * reduced verbosity of prism2_srec
+  * added support for volatile download of Primary firmware using
+    Genesis mode (this is available only for hfa3842; hfa3841, i.e., old
+    Prism2 cards, require hardware changes for similar function)
+    ('-g' command line option in prism2_srec)
+  * added support for merging two srec file (Primary and Secondary(STA)
+    firmware) into one non-volatile (flash) download
+- hostapd update to version 0.1.0
+
+-------------------------------------------------------------------
+Mon Sep  8 18:35:40 CEST 2003 - agruen@suse.de
+
+- km_hostap-HZ.diff: Adapt to dynamic-hz kernel patch.
+
+-------------------------------------------------------------------
+Mon Jul 28 16:52:09 CEST 2003 - jg@suse.de
+
+- update to version 0.0.4, from ChangeLog (shortened)
+  * moved non-hardware specific RX code from hostap_hw.c into a new file,
+    hostap_80211_rx.c and removed Prism2 RX descriptor dependency from
+    hostap_ap.c
+  * fixed number of compilation issues (RH9 kernel, *.mod files to local
+    directory, 2.4.x compilation with CONFIG_MODVERSIONS, external
+    pcmcia-cs)
+  * removed extra tasklet that was used with TX callback handler
+  * update basic rate set automaticallyt when changing supported rate set
+  * fixed compilation without Linux Wireless Extensions
+  * use less aggressive transmit rate decreasing algorithm
+  * fixed inactivity expiration of stations using power saving mode
+  * fixed sending of IEEE 802.1X frames to buffer them if STA is in power
+    saving mode
+  * removed backward compatibility code for Linux Wireless Extensions
+    versions older than ver 9
+  * added module parameter 'dev_template' for setting the device name
+    template (default: 'wlan%d'); this is for hostap_{cs,pci,plx}.o
+  * changed monitor mode to use pseudo-IBSS mode instead of Host AP mode
+    to avoid sending out Beacon and ProbeResp frames
+  * fixed enh_sec setting (hide SSID) to reset Port0 so that the changes
+    to the beacon are taken into use immediately
+  * added support for selection which authentication algorithm to use
+    in station mode
+  * added support for manual scan and roaming mode (managed/ad-hoc);
+  * process beacon frames in kernel driver even when hostapd is used
+  * removed TX power controlling (iwconfig txpower)
+
+-------------------------------------------------------------------
+Tue Jun 17 10:06:30 CEST 2003 - jg@suse.de
+
+- added directory /usr/src/kernel-modules to filelist
+
+-------------------------------------------------------------------
+Wed Jun  4 13:25:28 CEST 2003 - jg@suse.de
+
+- Initial package
+

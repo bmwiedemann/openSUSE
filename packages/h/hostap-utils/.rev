@@ -1,0 +1,137 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>25c8cf41c9b279daca3e6fb2d7bb2509</srcmd5>
+    <version>0.4.7</version>
+    <time>1174275049</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="179">
+    <srcmd5>367bc176c4c7a718e3481497e70adc77</srcmd5>
+    <version>0.4.7</version>
+    <time>1222211079</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="181">
+    <srcmd5>367bc176c4c7a718e3481497e70adc77</srcmd5>
+    <version>0.4.7</version>
+    <time>1222211079</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="182">
+    <srcmd5>e8454d3ab55fe23f0bcb2cd03b0eab87</srcmd5>
+    <version>0.4.7</version>
+    <time>1268923945</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="5" vrev="184">
+    <srcmd5>e8454d3ab55fe23f0bcb2cd03b0eab87</srcmd5>
+    <version>0.4.7</version>
+    <time>1278667350</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="6" vrev="185">
+    <srcmd5>e8454d3ab55fe23f0bcb2cd03b0eab87</srcmd5>
+    <version>0.4.7</version>
+    <time>1278678581</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="7" vrev="186">
+    <srcmd5>68a71380383c79da74795e39797cb585</srcmd5>
+    <version>0.4.7</version>
+    <time>1288705277</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 51868 from user coolo
+</comment>
+    <requestid>51868</requestid>
+  </revision>
+  <revision rev="8" vrev="187">
+    <srcmd5>d2aab6601090acbe718bb3fd2bb1df94</srcmd5>
+    <version>0.4.7</version>
+    <time>1288705283</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 51868
+</comment>
+  </revision>
+  <revision rev="9" vrev="190">
+    <srcmd5>d2aab6601090acbe718bb3fd2bb1df94</srcmd5>
+    <version>0.4.7</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="10" vrev="191">
+    <srcmd5>0599a62db6b050f238074ce845cab333</srcmd5>
+    <version>0.4.7</version>
+    <time>1317744704</time>
+    <user>oertel</user>
+    <comment>- cross-build fix: use %__cc macro (forwarded request 86399 from uli_suse)</comment>
+    <requestid>86437</requestid>
+  </revision>
+  <revision rev="11" vrev="193">
+    <srcmd5>0599a62db6b050f238074ce845cab333</srcmd5>
+    <version>0.4.7</version>
+    <time>1319181971</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="12" vrev="194">
+    <srcmd5>c141c77c4c1b373b1b0ff2024bea2316</srcmd5>
+    <version>0.4.7</version>
+    <time>1323191895</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="13" vrev="196">
+    <srcmd5>c141c77c4c1b373b1b0ff2024bea2316</srcmd5>
+    <version>0.4.7</version>
+    <time>1340183439</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="14" vrev="198">
+    <srcmd5>c141c77c4c1b373b1b0ff2024bea2316</srcmd5>
+    <version>0.4.7</version>
+    <time>1359109051</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="200">
+    <srcmd5>c141c77c4c1b373b1b0ff2024bea2316</srcmd5>
+    <version>0.4.7</version>
+    <time>1379662620</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="202">
+    <srcmd5>c141c77c4c1b373b1b0ff2024bea2316</srcmd5>
+    <version>0.4.7</version>
+    <time>1409301176</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="203">
+    <srcmd5>2f8381d3eb8d5831b7a9b15e750953bf</srcmd5>
+    <version>0.4.7</version>
+    <time>1414613370</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>258341</requestid>
+  </revision>
+  <revision rev="18" vrev="204">
+    <srcmd5>49aa5dce1b143e4ef294866d0c334a1b</srcmd5>
+    <version>0.4.7</version>
+    <time>1438421673</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>317073</requestid>
+  </revision>
+  <revision rev="19" vrev="205">
+    <srcmd5>818f082f81538bee7cde30163841986b</srcmd5>
+    <version>0.4.7</version>
+    <time>1708631974</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1149113</requestid>
+  </revision>
+</revisionlist>
