@@ -1,0 +1,470 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>62c9c6354bd5ca58b6c85fdc170fbcc6</srcmd5>
+    <version>6.0</version>
+    <time>1360243677</time>
+    <user>coolo</user>
+    <comment>new package</comment>
+    <requestid>151462</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>ba2d6732b15962e9b14445cf797f6912</srcmd5>
+    <version>6.0</version>
+    <time>1360753801</time>
+    <user>coolo</user>
+    <comment>-&gt;</comment>
+    <requestid>155243</requestid>
+  </revision>
+  <revision rev="3" vrev="15">
+    <srcmd5>58649df51834302d8f9633d0cfb2c457</srcmd5>
+    <version>9.0</version>
+    <time>1362731875</time>
+    <user>coolo</user>
+    <comment>- Do not repackage debuginfo package (bnc#806637) (forwarded request 157340 from michal-m)</comment>
+    <requestid>157341</requestid>
+  </revision>
+  <revision rev="4" vrev="16">
+    <srcmd5>b24fdf23ebdd15f2a2f030a7d59038ea</srcmd5>
+    <version>9.0</version>
+    <time>1363340737</time>
+    <user>coolo</user>
+    <comment>- correct the license of the generated package to fix build</comment>
+    <requestid>159499</requestid>
+  </revision>
+  <revision rev="5" vrev="17">
+    <srcmd5>217e5e602bb26263bf7864f011cfd132</srcmd5>
+    <version>9.0</version>
+    <time>1364899045</time>
+    <user>coolo</user>
+    <comment>bnc#808594: Calculate the digest of the padded data section to be consistent with the output file (forwarded request 161510 from gary_lin)</comment>
+    <requestid>161512</requestid>
+  </revision>
+  <revision rev="6" vrev="15">
+    <srcmd5>02e1e6f6e9ee60760eec71bbd922e721</srcmd5>
+    <version>10.0</version>
+    <time>1371562222</time>
+    <user>coolo</user>
+    <comment>- Put debuginfo packages to %_topdir/OTHER (bnc#824971).
+
+- Version 10
+- Add modsign-repackage tool to repackage RPMs outside the buildservice (forwarded request 178980 from michal-m)</comment>
+    <requestid>179021</requestid>
+  </revision>
+  <revision rev="7" vrev="17">
+    <srcmd5>02e1e6f6e9ee60760eec71bbd922e721</srcmd5>
+    <version>10.0</version>
+    <time>1379663943</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="18">
+    <srcmd5>a759d1dd9b4453566ff4f598c6d684e8</srcmd5>
+    <version>10.0</version>
+    <time>1396709411</time>
+    <user>coolo</user>
+    <comment>- pesign-gen-repackage-spec: switch to new rpm style handling
+  of weak dependencies (forwarded request 228891 from michal-m)</comment>
+    <requestid>228905</requestid>
+  </revision>
+  <revision rev="9" vrev="19">
+    <srcmd5>57800d81d8dfdbecb327bbd1fa50fe83</srcmd5>
+    <version>10.0</version>
+    <time>1399017103</time>
+    <user>coolo</user>
+    <comment>- Fix matching /boot and /lib/firmware in pesign-repackage.spec
+
+- Do not store the buildroot in the .*.hmac file.
+
+- Regenerate the HMAC checksum when signing and EFI binary with
+  a checksum (fate#316930, bnc#856310).
+
+- Update README.
+
+- Add /usr/lib/rpm/pesign/gen-hmac tool to generate a hmac checksum
+  for a given file (fate#316930, bnc#856310). (forwarded request 231426 from michal-m)</comment>
+    <requestid>231557</requestid>
+  </revision>
+  <revision rev="10" vrev="20">
+    <srcmd5>0c472680f055abb818d35c3da4a30758</srcmd5>
+    <version>10.0</version>
+    <time>1404996896</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>239749</requestid>
+  </revision>
+  <revision rev="11" vrev="21">
+    <srcmd5>3cb938967864653e1d9d289ca7d1480f</srcmd5>
+    <version>10.0</version>
+    <time>1406698487</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>242802</requestid>
+  </revision>
+  <revision rev="12" vrev="22">
+    <srcmd5>cd0bfce04599f6beb99a766184b388ad</srcmd5>
+    <version>10.0</version>
+    <time>1406896449</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>242972</requestid>
+  </revision>
+  <revision rev="13" vrev="23">
+    <srcmd5>b309c527067638d45f190de6a810b3ad</srcmd5>
+    <version>10.0</version>
+    <time>1407331915</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>243651</requestid>
+  </revision>
+  <revision rev="14" vrev="24">
+    <srcmd5>0d879db6ae19f904c543c0aa71c17056</srcmd5>
+    <version>10.0</version>
+    <time>1408089502</time>
+    <user>lnussel</user>
+    <comment>1</comment>
+    <requestid>244535</requestid>
+  </revision>
+  <revision rev="15" vrev="25">
+    <srcmd5>4501744831d9860ccb216867263a3ab6</srcmd5>
+    <version>10.0</version>
+    <time>1409151182</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>245529</requestid>
+  </revision>
+  <revision rev="16" vrev="27">
+    <srcmd5>4501744831d9860ccb216867263a3ab6</srcmd5>
+    <version>10.0</version>
+    <time>1409302598</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="28">
+    <srcmd5>58255aa1c985e54245a9cfe077628ee0</srcmd5>
+    <version>10.0</version>
+    <time>1409998697</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>247436</requestid>
+  </revision>
+  <revision rev="18" vrev="29">
+    <srcmd5>c4564a96ea21581aebabb257b043dc01</srcmd5>
+    <version>10.0</version>
+    <time>1410981825</time>
+    <user>coolo</user>
+    <comment>-&gt;</comment>
+    <requestid>249602</requestid>
+  </revision>
+  <revision rev="19" vrev="30">
+    <srcmd5>c95e627c56a06cb169a905d84931387a</srcmd5>
+    <version>10.0</version>
+    <time>1422216799</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>282510</requestid>
+  </revision>
+  <revision rev="20" vrev="31">
+    <srcmd5>0e1531208c027b36bdef05c5b6c26ed5</srcmd5>
+    <version>10.0</version>
+    <time>1457532972</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>367305</requestid>
+  </revision>
+  <revision rev="21" vrev="32">
+    <srcmd5>6e0f32cede938f156441998824c1dfa4</srcmd5>
+    <version>10.0</version>
+    <time>1480584044</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>442620</requestid>
+  </revision>
+  <revision rev="22" vrev="33">
+    <srcmd5>68ab50c74a422d27098fd5da8c4d8df3</srcmd5>
+    <version>10.0</version>
+    <time>1505757156</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>523849</requestid>
+  </revision>
+  <revision rev="23" vrev="34">
+    <srcmd5>7b79aeac9bfe6752f305ae3069ccd83e</srcmd5>
+    <version>10.0</version>
+    <time>1506955396</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>528596</requestid>
+  </revision>
+  <revision rev="24" vrev="35">
+    <srcmd5>13aebe1ab3c137b808a56d4071d9f891</srcmd5>
+    <version>10.0</version>
+    <time>1507196893</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>530628</requestid>
+  </revision>
+  <revision rev="25" vrev="36">
+    <srcmd5>cc7502221e39b5e69f0dab8d887c9d51</srcmd5>
+    <version>10.0</version>
+    <time>1510659438</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>539775</requestid>
+  </revision>
+  <revision rev="26" vrev="37">
+    <srcmd5>75d5be6e12a187bd3403652e98b66b2d</srcmd5>
+    <version>10.0</version>
+    <time>1519486700</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>579229</requestid>
+  </revision>
+  <revision rev="27" vrev="38">
+    <srcmd5>9a6bd84edb2809b7335f0f98f4f653ca</srcmd5>
+    <version>10.0</version>
+    <time>1529665903</time>
+    <user>maxlin_factory</user>
+    <comment>Switch to tarball release to support both rpm build and deb build</comment>
+    <requestid>616174</requestid>
+  </revision>
+  <revision rev="28" vrev="39">
+    <srcmd5>1dab94dc6a2983bac80491b54f20c94c</srcmd5>
+    <version>10.0</version>
+    <time>1541514693</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>645819</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>1e0e7925e861869f0d6c943bd12f30ec</srcmd5>
+    <version>10.1</version>
+    <time>1549458312</time>
+    <user>coolo</user>
+    <comment>This submission is required to go together with request 670220 
+Otherwise, &quot;modsign-verify&quot; will be missing.
+
+- Version 10.1
+- Add modsign-verify for the signature verification (bsc#1118953)
+
+- debhelper: restrict wildcard package unpacking</comment>
+    <requestid>670420</requestid>
+  </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>28a9876f1e6547153ea30ea6521ecd78</srcmd5>
+    <version>10.1</version>
+    <time>1551468340</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>679676</requestid>
+  </revision>
+  <revision rev="31" vrev="3">
+    <srcmd5>69a43cc604a1c3c9b5d85924a119ada1</srcmd5>
+    <version>10.1</version>
+    <time>1555588505</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>694663</requestid>
+  </revision>
+  <revision rev="32" vrev="4">
+    <srcmd5>3317a531a58b45a1b086a1f5fe7977d2</srcmd5>
+    <version>10.1</version>
+    <time>1558341037</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>704111</requestid>
+  </revision>
+  <revision rev="33" vrev="5">
+    <srcmd5>e7faf272c1d68160065c580711e55038</srcmd5>
+    <version>10.1</version>
+    <time>1560337382</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>706197</requestid>
+  </revision>
+  <revision rev="34" vrev="6">
+    <srcmd5>9ff194d66f9de4a72ecca101ab732703</srcmd5>
+    <version>10.1</version>
+    <time>1565178940</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>720134</requestid>
+  </revision>
+  <revision rev="35" vrev="7">
+    <srcmd5>f20ea4300d613af1a1e421d19401924a</srcmd5>
+    <version>10.1</version>
+    <time>1567680416</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>728378</requestid>
+  </revision>
+  <revision rev="36" vrev="8">
+    <srcmd5>c52df049e36381e825dfbd7879307eae</srcmd5>
+    <version>10.1</version>
+    <time>1573473526</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>746111</requestid>
+  </revision>
+  <revision rev="37" vrev="9">
+    <srcmd5>540353b2e414136f8f43abce26eae5da</srcmd5>
+    <version>10.1</version>
+    <time>1582642894</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>778639</requestid>
+  </revision>
+  <revision rev="38" vrev="10">
+    <srcmd5>6d6f2514f014c3170327c1be66a5da39</srcmd5>
+    <version>10.1</version>
+    <time>1585995409</time>
+    <user>dimstar_suse</user>
+    <comment>- pesign-sign-s390x-kernel.patch: Sign also the non-PE (e.g. s390x)
+  kernels with just kernel-sign-file (bsc#1163524) (forwarded request 789612 from msmeissn)</comment>
+    <requestid>789640</requestid>
+  </revision>
+  <revision rev="39" vrev="11">
+    <srcmd5>6a6c3ec61d10b547dd50535ceb36b0cc</srcmd5>
+    <version>10.1</version>
+    <time>1595338941</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>821458</requestid>
+  </revision>
+  <revision rev="40" vrev="12">
+    <srcmd5>461a6b054ef501d51c6440be6a284c57</srcmd5>
+    <version>10.1</version>
+    <time>1599343061</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>831367</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>b71e9e1571f743b8d05f4d00d161f22c</srcmd5>
+    <version>10.1+1602850462</version>
+    <time>1603545375</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 10.1+1602850462:
+  * Compress kernel modules in batch and in parallel
+  * Forward _binary_payload to the repackaged rpm (bsc#1175882)
+- remove 0001-Forward-_binary_payload-to-the-repackaged-rpm.patch,
+  parallel-compression.patch (upstream)
+
+- Sync from git master directly
+- drop 0001-Add-support-for-kernel-module-compression.patch
+  0001-Enable-find_provides-and-requires.patch
+  0001-Initialize-compress-variable.patch
+  0001-Keep-the-files-in-the-OTHER-directory.patch
+  0001-Passthrough-license-tag.patch
+  0001-brp-99-compress-vmlinux-support-xz-compressed-vmlinu.patch
+  0001-sign-stage3.bin-from-s390-tools-with-sign-files-bsc-.patch
+  pesign-sign-s390x-kernel.patch (upstream)
+- add parallel-compression.patch</comment>
+    <requestid>843222</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>b7956ce3ae67a3817db02ab29b6345d2</srcmd5>
+    <version>10.2</version>
+    <time>1608729664</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 10.2: Fix the wrongly created noarch subpackages (issue#22, bsc#1180242)
+- tag bsc#1180279</comment>
+    <requestid>858093</requestid>
+  </revision>
+  <revision rev="43" vrev="2">
+    <srcmd5>120ea6942e1f7be86d0704716e3b841b</srcmd5>
+    <version>10.2</version>
+    <time>1617034875</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>880645</requestid>
+  </revision>
+  <revision rev="44" vrev="3">
+    <srcmd5>9396095cede23f0d06f45d382b18936f</srcmd5>
+    <version>10.2</version>
+    <time>1624551744</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>901652</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>84a9d440721b3a4f80ff66fe4592c835</srcmd5>
+    <version>10.2+git20210804.ff18da1</version>
+    <time>1628282676</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 10.2+git20210804.ff18da1:
+  * brp-99-pesign: fix that the signature of shim be broken (forwarded request 910150 from lnussel)</comment>
+    <requestid>910151</requestid>
+  </revision>
+  <revision rev="46" vrev="2">
+    <srcmd5>06519c2ed3e61f263ecf15e30f4b3855</srcmd5>
+    <version>10.2+git20210804.ff18da1</version>
+    <time>1643128537</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>948089</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>f544aee15133126e20e6b3e23ac97e30</srcmd5>
+    <version>10.2+git20220504.8690743</version>
+    <time>1655665837</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>982941</requestid>
+  </revision>
+  <revision rev="48" vrev="2">
+    <srcmd5>905b2b2afaef5b72bb50ab71a9c19b53</srcmd5>
+    <version>10.2+git20220504.8690743</version>
+    <time>1657191382</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>987156</requestid>
+  </revision>
+  <revision rev="49" vrev="3">
+    <srcmd5>edc07f9c5c158680b1994476e98754ca</srcmd5>
+    <version>10.2+git20220504.8690743</version>
+    <time>1659106033</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>991177</requestid>
+  </revision>
+  <revision rev="50" vrev="4">
+    <srcmd5>0628a0396bc5f155d657a56427b50b47</srcmd5>
+    <version>10.2+git20220504.8690743</version>
+    <time>1664638951</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>1006626</requestid>
+  </revision>
+  <revision rev="51" vrev="5">
+    <srcmd5>ef1410781caa42d83098b043c6ff0dc5</srcmd5>
+    <version>10.2+git20220504.8690743</version>
+    <time>1675094999</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1061964</requestid>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>8e064ee15544d74876ea7acd39c0692a</srcmd5>
+    <version>10.2+git20230612.4699910</version>
+    <time>1686665332</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1092483</requestid>
+  </revision>
+  <revision rev="53" vrev="2">
+    <srcmd5>2da37331df92f08073713d7e04fd968a</srcmd5>
+    <version>10.2+git20230612.4699910</version>
+    <time>1687549946</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1094706</requestid>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>b4f064fdc7c4bfee9f588e19047abca4</srcmd5>
+    <version>10.2+git20240216.1e15ef4</version>
+    <time>1708631773</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1147093</requestid>
+  </revision>
+</revisionlist>

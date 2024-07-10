@@ -1,0 +1,17 @@
+<services>
+  <service name="obs_scm" mode="manual">
+    <param name="url">https://github.com/openSUSE/pesign-obs-integration.git</param>
+    <param name="scm">git</param>
+    <param name="exclude">.git</param>
+    <param name="revision">master</param>
+    <param name="versionformat">@PARENT_TAG@+git%cd.%h</param>
+    <param name="changesgenerate">enable</param>
+    <param name="extract">pesign-obs-integration.spec</param>
+  </service>
+  <service name="set_version" mode="manual"/>
+  <service name="tar" mode="buildtime"/>
+  <service name="recompress" mode="buildtime">
+     <param name="compression">gz</param>
+     <param name="file">*.tar</param>
+  </service>
+</services>
