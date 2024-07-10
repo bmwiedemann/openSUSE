@@ -1,0 +1,254 @@
+-------------------------------------------------------------------
+Fri Mar 17 19:02:07 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.44.0:
+  + No changes since 3.43.0 development release.
+
+-------------------------------------------------------------------
+Mon Mar  6 16:50:55 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.43.0:
+  + Testsuite fixes
+  + Improved error messages
+  + Provide client error code with JSON_CLIENT_ERROR error domain
+  + Explicit variant ownership fixes
+- Enable meson_test macro again, following upstreams fixes.
+
+-------------------------------------------------------------------
+Mon Aug 29 06:19:20 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Disable meson_test macro, it randomly fails for all arches and
+  targets.
+  https://gitlab.gnome.org/GNOME/jsonrpc-glib/-/issues/2
+
+-------------------------------------------------------------------
+Sat Mar 19 05:39:54 UTC 2022 - Luciano Santos <luc14n0@opensuse.org>
+
+- Update to version 3.42.0:
+  + Documentation improvements to use gi-docgen.
+  + Introspection fixes.
+- Replace gtk-doc with pkgconfig(gi-docgen) build requirement as
+  the new improved way for generating the API documentation.
+- Add temporary hacky SED commands to fix the gi-docgen generated
+  documentation ending up under /usr/share/doc/ rather than
+  /usr/share/doc/PKG_NAME.
+- Add jsonrpc-glib-rpmlintrc to filter out the:
+  "obsolete-not-provided typelib-1_0-Jsonrpc-1.0" since there's no
+  need to do so as we already used the capability typelib(foobar),
+  for requirements, before the renaming.
+
+-------------------------------------------------------------------
+Fri Jan  7 22:53:13 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.41.0:
+  + Improvements to JSONRPC_MESSAGE_PUT_VARIANT().
+- Replace post(un) handling with ldconfig_scriptlets macro.
+- Add check section, meson_test macro and pass enable_tests=true to
+  meson, run tests during build.
+
+-------------------------------------------------------------------
+Thu Sep 23 07:08:07 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.40.0:
+  + Add ability to inject variant into messages.
+
+-------------------------------------------------------------------
+Mon Sep 14 12:49:39 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 3.38.0:
+  + Improve usage as a subproject.
+
+-------------------------------------------------------------------
+Tue Sep 10 18:13:20 CDT 2019 - mgorse@suse.com
+
+- Update to version 3.34.0:
+  + No changes.
+
+-------------------------------------------------------------------
+Thu Aug 15 11:38:36 CEST 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.33.3:
+  + Custom marshallers are now provided for all signals to improve
+    the stack-unwinding capability from kernel tooling such as
+    Linux `perf`.
+  + Various build system improvements.
+
+-------------------------------------------------------------------
+Wed Jul  3 11:25:06 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Rename typelib-1_0-Jsonrpc-1.0 to typelib-1_0-Jsonrpc-1_0: adhere
+  to packaging guideline for typelib libraries. Obsolete the old
+  name (no need to Provide, as packages are supposed to Require
+  typelib(Jsonrpc-1.0). This symbol remains unchanged.
+
+-------------------------------------------------------------------
+Wed Mar 13 08:35:29 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.32.0:
+  + No changes in this release.
+
+-------------------------------------------------------------------
+Tue Feb 19 22:34:04 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.31.91:
+  + Improve cross-compilation support.
+
+-------------------------------------------------------------------
+Thu Oct 11 08:50:53 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.30.1:
+  + When --buildtype=release is used, assertion checks are disabled
+    and -Bsymbolic is used.
+
+-------------------------------------------------------------------
+Wed Sep 12 20:35:10 UTC 2018 - antoine.belvire@opensuse.org
+
+- Update to version 3.30.0:
+  + No change, only bump version.
+
+-------------------------------------------------------------------
+Fri Aug 17 01:16:44 UTC 2018 - luc14n0@linuxmail.org
+
+- Update to version 3.29.91:
+  + Fix of double-free in generated vala bindings.
+  + Floating reference fixes for some gvariants.
+  + Use g_bytes_new_take() to simplify memory tracking.
+  + Some variants are now unwrapped to simplify usage by consumers.
+  + Unit tests now disable SIGPIPE.
+  + test-client was removed as it was dead code.
+
+-------------------------------------------------------------------
+Tue Jul 24 12:52:09 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.29.4:
+  + More lenient testing for transient errors.
+  + Increased compiler warnings when building on GCC.
+  + Vala vapi generation improvements.
+
+-------------------------------------------------------------------
+Thu Jun 21 02:27:25 UTC 2018 - luc14n0@linuxmail.org
+
+- Update to version 3.29.3:
+  + Various introspection fixes.
+  + Add JsonrpcServer::client-closed.
+  + Emit JsonrpcClient::failed upon panic.
+  + Helpers for strv message building and parsing.
+  + Support for boxing/unboxing a{sv} variants.
+  + A new variant for calling a remote method and get message id.
+  + Fixes for an invalid type propagation.
+
+-------------------------------------------------------------------
+Tue Jun 19 16:50:05 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.28.1:
+  + Fixes for invalid type propagation.
+  + Fixes for gobject introspection.
+  + Improved busy tracking in streams.
+  + Ensure JsonrpcClient::failed is emitted in panic.
+
+-------------------------------------------------------------------
+Wed Mar 14 04:26:58 UTC 2018 - luc14n0@linuxmail.org
+
+- Update to version 3.28.0:
+  + No visible changes.
+- Update URL tag to https://gitlab.gnome.org/GNOME/jsonrpc-glib:
+  the closest thing to a web page currently.
+
+-------------------------------------------------------------------
+Wed Feb 28 16:33:47 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Wed Feb 21 16:22:38 UTC 2018 - dimstar@opensuse.org
+
+- Update to version 3.27.91:
+  + Add JsonrpcServer::client-accepted signal.
+  + Improvements to dispatching of errors when panic'ing the
+    connection.
+  + Message parsing is more liberal in what it accepts as input.
+  + Default ABI visibility was set to hidden, making our ABI macros
+    useful.
+- Update license tag to SPDX-3.0 format: LGPL-2.1-or-later.
+
+-------------------------------------------------------------------
+Mon Feb  5 12:10:46 UTC 2018 - dimstar@opensuse.org
+
+- Update to version 3.27.90:
+  + More documentation and GObject Introspection additions.
+  + Fixes for documentation and taking of floating references from
+    GVariant params.
+  + The soname has been bumped since we altered the correctness of
+    GVariant params. C-based programs mostly just need to be
+    recompiled. Other bindings-based consumers should have their
+    bindings regenerated if necessary.
+  + When panic'ing a connection (such as from a broken pipe) we now
+    defer error propagation back to the main loop to avoid some
+    re-entrancy complexity for applications.
+- Bump sover to 1_0-1 and rename the library packages to
+  libjsonrpc-glib-1_0-1, following upstreams change.
+
+-------------------------------------------------------------------
+Fri Jan 12 03:16:19 UTC 2018 - luc14n0@linuxmail.org
+
+- Update to version 3.27.4:
+  + The JSONRPC_MESSAGE_NEW_ARRAY() macro was added to allow for
+    creating GVariant messages that are an array.
+  + A number of conformance tests were added.
+  + JsonrpcClient allows for detailed signals (G_SIGNAL_DETAILED)
+    for notification and handle-call signals.
+  + JsonrpcServer gained new functionality to enumerate the number
+    of connected clients.
+  + JsonrpcClient tries to hold on to an additional reference when
+    panic is called.
+  + Message parsing can now support NULL strings using maybe types
+    when encoding and decoding messages.
+- Update package descriptions making it shorter and more assertive.
+- Add gio-unix-2.0 and glib-2.0 pkgconfig modules BuildRequires:
+  They were being pulled with gio-2.0 pkgconfig module and used
+  already as all of them live in glib2-devel package.
+
+-------------------------------------------------------------------
+Thu Oct 19 11:28:06 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.27.1:
+  + jsonrpc-glib now uses versioning macros similar to GLib or Gtk
+    instead of a custom linker script for ABI exports.
+
+-------------------------------------------------------------------
+Thu Oct  5 01:41:06 UTC 2017 - luc14n0@linuxmail.org
+
+- Update to version 3.26.1:
+  + Require -std=gnu11 in project config. We always required this,
+    but previously we were relying on the default GCC flags to do
+    so.
+  + Fix improper use of va_list on non-Intel architectures.
+  + JsonrpcOutputStream now properly checks for pending operations
+    before flushing, so that an error is not incorrectly
+    synthesized.
+  + Improved error propagation from data streams.
+  + Correctness fixes for stress tests.
+
+-------------------------------------------------------------------
+Tue Sep 12 00:24:11 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.26.0:
+  + Run test suite as part of build tooling.
+- Enable gtk-doc BuildRequires, build documentation.
+- Add enable_profiling=false, enable_gtk_doc=true and
+  enable_tests=false to meson, ensure we build the features we
+  want.
+
+-------------------------------------------------------------------
+Thu Sep  7 08:28:47 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.25.92:
+  + Check for version-script support from linker.
+  + Fix impossible comparison in JsonrpcInputStream.
+
+-------------------------------------------------------------------
+Tue Jul  4 21:50:26 UTC 2017 - zaitor@opensuse.org
+
+- Initial build for openSUSE, version 3.25.3.
+
+
