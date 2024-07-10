@@ -74,6 +74,7 @@ gnome-debug, gnome-build, and anjuta2.
 %autosetup -p1
 
 %build
+%global optflags %{optflags} -Wno-error=incompatible-pointer-types
 %configure
 %make_build
 

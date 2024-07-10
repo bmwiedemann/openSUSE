@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jul  9 12:47:14 UTC 2024 - Martin Jambor <mjambor@suse.com>
+
+- Add -Wno-error=incompatible-pointer-types to optflgas in order to
+  prevent GCC 14 from reporting errors because of these C99
+  violations. [boo#1221685]
+
+-------------------------------------------------------------------
 Tue Jan 16 16:17:54 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Own /usr/share/gtk-doc: glib no longer uses gtk-doc and as a
