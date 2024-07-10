@@ -1,0 +1,388 @@
+-------------------------------------------------------------------
+Wed Feb 28 10:00:18 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.4.3+155:
+  + Port to using libsoup for CDDB requests.
+  + Use GSubprocess instead of g_spawn_async().
+  + Updated translations.
+- Add easytag-taglib-2.0.patch: Fix build against taglib 2.0.
+- Rebase easytag-revert-open-handle-ogg.patch.
+
+-------------------------------------------------------------------
+Tue Nov 28 11:22:11 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -p N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
+Sat Aug  6 19:23:07 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Temporarily disable the nautilus extension: not yet compatible
+  with Nautilus/GTK4.
+
+-------------------------------------------------------------------
+Wed Mar  2 01:59:13 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Enable nautilus extension again.
+
+-------------------------------------------------------------------
+Wed Jan 12 15:59:24 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Temporarily disable the nautilus extension: not yet compatible
+  with Nautilus/GTK4.
+
+-------------------------------------------------------------------
+Fri Mar 13 10:09:11 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Remove empty post and postun
+
+-------------------------------------------------------------------
+Sat Jan 25 14:06:59 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- No longer recommend -lang: supplements are in use
+
+-------------------------------------------------------------------
+Sat Apr 14 10:56:28 UTC 2018 - bjorn.lie@gmail.com
+
+- Add easytag-revert-open-handle-ogg.patch: Revert commit causing
+  corruption in oggfiles (bgo#776110, boo#1069789).
+
+-------------------------------------------------------------------
+Wed Feb 28 16:24:51 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Tue Dec  6 11:35:42 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 2.4.3:
+  + Fix two crashes in the dialog to load filenames from a file.
+  + Avoid a crash when adding an image and no files are selected.
+  + Avoid a crash when saving ID3v2.4 tags and no audio is present.
+  + Fix a crash when applying CDDB results.
+  + Fix saving of ID3v1 genres when also using ID3v2.4.
+  + Fix Ogg tag writing on Windows.
+  + Ensure that a selected path in the browser is shown in the path
+    list.
+  + Open the online version of the help if Yelp is not available.
+  + Fix handling of MP4 files with empty tag fields.
+  + Fix the artist/album toolbar icon.
+  + Adwaita-style artist/album icons.
+  + Add support for MP4 files with the .aac file extension.
+  + Updated translations.
+- Drop easytag-Fix-crash-when-loading-files.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Sun Feb 28 21:59:27 UTC 2016 - zaitor@opensuse.org
+
+- Add easytag-Fix-crash-when-loading-files.patch: Fix a crash when
+  loading filenames from a file and a crash in filedialogs. Taken
+  from upstream git.
+- Drop a since long not needed autoreconf run and it's
+  corresponding libtool BuildRequires.
+
+-------------------------------------------------------------------
+Mon Feb 22 08:32:28 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 2.4.2:
+  + Fix a crash when renaming directories.
+  + Fix input of new file names in the file area.
+  + Add case-insensitive sorting of the artist/album list.
+  + Improve searching within UTF-8 strings.
+  + Handle UTF-8 strings when sorting the file list.
+  + Fix display of the Monkey's Audio file type.
+  + Avoid locale-sensitive tag reading issues (especially for FLAC
+    and Ogg).
+  + Only install the metainfo file for the Nautilus extension if
+    requested.
+  + Refactor reading of Ogg and FLAC tags.
+  + Refactor Monkey's Audio and Musepack header reading.
+
+-------------------------------------------------------------------
+Tue Jan 26 08:00:11 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 2.4.1:
+  + Opus parsing crash fix.
+  + Playlist writing crash fix.
+  + Handle FLAC files with an invalid sample rate.
+  + Fix generated playlist order.
+  + Consistently use the GLib filename encoding.
+  + Extensive refactoring of locale and encoding handling.
+  + Improve fallback legacy locale detection.
+  + CDDB fill fields fix.
+  + Fix CDDB search fields and categories settings handling.
+  + Use the correct encoding when writing ID3v2.4 tags.
+  + Fix a linking error on Mac OS X.
+  + Improve illegal character logic, especially for trailing
+    characters.
+  + Remove several outdated and unnecessary Windows compatibility
+    wrappers.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Aug 29 13:43:33 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 2.4.0:
+  + Correct the disc number format specifier to %z.
+  + Fix multiple CDDB searches during a single run.
+  + Improve handling of tags with empty images.
+  + Link to the online application help on Windows.
+  + Remember the paned position in the main window between
+    restarts.
+  + Improve handling of file list selection.
+  + Fix a crash when deleting files from within the application.
+  + Fix a crash when reading FLAC files.
+  + Fix a crash when navigating the directory browser with the
+    keyboard.
+  + Remove a few internal FIXMEs with some refactoring.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun May 17 10:55:56 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 2.3.7:
+  + Add preliminary support for HiDPI displays.
+  + Fix missing libepoxy DLL in the Windows installer.
+  + Convert several widgets to use templates.
+  + Use new G_DEFINE_TYPE_WITH_PRIVATE support in GObject.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Apr 22 09:29:16 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 2.3.6:
+  + Fix renaming files in the scanner.
+  + Improve minimum size of log area.
+  + Improve several UI strings.
+  + Add symbolic application icon and improvements to Mallard help.
+  + Add several comments for translators.
+  + Add a test for the file renaming code.
+  + Fix compiler warnings due to switch-enum warning when disabling
+    tag support.
+  + Improvements to several internal string-handling functions.
+  + Remove setting for controlling the maximum number of log lines.
+  + Remove quit confirmation dialog.
+  + Further refactoring of internal file list code.
+  + Updated translations.
+- Add libtool BuildRequires and call to autoreconf: the tarball
+  was produced using redhat-hardened as ld, which is part of
+  ltmain.sh.
+- Add appstream-glib-devel BuildRequires: additional dependency to
+  be able to bootstrap.
+
+-------------------------------------------------------------------
+Wed Apr  8 13:28:06 UTC 2015 - dimstar@opensuse.org
+
+- Build nautilus extension (open with easytag):
+  + Add pkgconfig(libnautilus-extension) BuildRequires.
+  + Split new package nautilus-plugin-easytag.
+
+-------------------------------------------------------------------
+Wed Mar 18 13:03:50 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 2.3.5:
+  + Fix changing tag fields containing certain characters.
+  + Fix for truncated CDDB results.
+  + Fix changing the artwork description.
+  + Avoid a crash when reading FLAC files with no tags.
+  + Avoid a crash when reading invalid MP3 files.
+  + Further refactoring of the internal file list code.
+  + Add several unit tests.
+  + Handle empty descriptions in ID3 tag artwork.
+  + Build against the patched Debian version of id3lib.
+  + Fix compilation when FLAC support is disabled.
+  + Avoid a runtime warning in the file browser.
+  + Fix a couple of Coverity warnings.
+  + Fix string format sign warnings with GCC 5.0.
+  + Further improvements to compiler warning flag checking.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Feb  7 13:10:49 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 2.3.4:
+  + Fix crash when saving FLAC tags.
+  + Port to use AX_COMPILER_FLAGS for improved compiler warning
+    checks.
+  + Many compiler warning fixes, discovered after enabling extra
+    warnings.
+  + Fixes for two Coverity warnings.
+  + Improve validation of Vorbis artwork and MIME types.
+  + Refactoring of internal file list code.
+  + Relicense id3lib wrapper to GPLv2+.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Feb  6 21:36:30 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 2.3.3:
+  + Add album artist support for WavPack and APE tags.
+  + Add channel mask reading support for WavPack tags.
+  + Reduce memory usage when copying cover art, such as when
+    modifying tags which contain images.
+  + Use GIO when reading and writing FLAC, ID3v2.4 and WavPack
+    tags.
+  + Use GIO for reading and writing list store files.
+  + Fix an error check when saving WavPack tags.
+  + Clear empty fields when saving WavPack tags.
+  + Allow the search dialog tree view to expand to fill the
+    dialog.
+  + Fix the disc number preferences controls.
+  + Fix a crash when migrating configuration directories.
+  + Fix a double unref when renaming files.
+  + Fix memory leaks in the CDDB dialog, Ogg tagging code, Speex
+    tagging code, FLAC tagging code, images tree view and the
+    WavPack tagging code.
+  + Fix stripping of disc number fields in ID3v2.4 tags.
+  + Fix Ctrl-clicking to modify the file list selection.
+  + Add an automated test for file type detection.
+  + Refactoring of internal file list code.
+  + Refactoring of FLAC and WavPack tagging code.
+  + Relicense all code (excluding the Nautilus extension) under the
+    GNU GPL version 2 or later.
+- Changes from version 2.3.2:
+  + Fix a crash when reading empty FLAC tags.
+  + Fix an assertion failure when reading empty ID3 tags.
+  + Fix incorrect track durations when searching CDDB.
+  + Fix the log view being forcibly shown on startup.
+  + Fix launching of external applications.
+  + Fix many memory leaks in the CDDB search dialog.
+  + Improve setting handling for the process fields scanner.
+  + Improve file list selection handling.
+  + Allow the tag area images tree view to expand if space is
+    available.
+  + Improve ID3v2 handling with Ogg files.
+  + Add more fragments from which to guess the image type.
+  + Add AppData metainfo description for Nautilus extension.
+  + Add several automated tests.
+  + Add a separator row below the all albums row in the artist
+    tree view.
+  + Improvements to the Mallard help.
+  + Updated translations.
+- Add %glib2_gsettings_schema_post/postun calls, as easytag newly
+  installs glib schemas.
+
+-------------------------------------------------------------------
+Fri Feb  6 20:36:30 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 2.2.6:
+  + Fix crash when saving FLAC tags.
+  + Fix more CDDB search dialog memory leaks.
+  + Fix memory leaks when loading and saving Speex and Ogg files.
+  + Fix a crash when renaming files.
+  + Fix Ctrl-clicking to toggle file selection.
+  + Fix stripping the disc number from ID3v2.4 tags.
+  + Support album artist fields in WavPack tags.
+  + Improve validation of Vorbis artwork and MIME types.
+  + Several improvements to WavPack tag support.
+  + Relicense all code under the GNU GPL version 2 or later.
+  + Fix menu items used for tag field case conversion.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Nov 25 10:29:38 UTC 2014 - badshah400@gmail.com
+
+- Update to version 2.2.5:
+  + Fix many memory leaks in the CDDB search dialog.
+  + Clear empty cover art and album artist fields in MP4 tags.
+  + Fix a memory leak and invalid read in the MP4 tagging code.
+  + Improve ID3v2 handling with Ogg files.
+  + Improve file list selection handling.
+  + Fix several memory leaks in the file browser.
+  + Show updated images in the Windows installer.
+  + Updated translations. 
+
+-------------------------------------------------------------------
+Sat Sep 27 09:32:50 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 2.2.4:
+  + Fix a crash when reloading the directory tree.
+  + Fix delays, and a possible crash, when running CDDB searches.
+  + Handle renaming on case-insensitive filesystems.
+  + Provide a useful error message when failing to write files.
+  + Fix memory leak in check for buggy id3lib version.
+  + Improvements to scanner help.
+  + Scanner help fixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri May  9 19:01:59 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 2.2.2:
+  + Fix loading filenames from a text file.
+  + Fix saving Ogg cover art without a description.
+  + Fix check for broken id3lib UTF-16 writing.
+  + Fix keyboard navigation to allow escaping the tag area.
+  + Update ID3v1 genre list.
+  + Revert asynchronous image handling changes.
+  + Fix ID3 memory leak fix.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Apr 12 06:25:01 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 2.2.0:
+  + Several stability fixes.
+  + Use GTK+ 3 by default, but still allow building against GTK+ 2.
+  + Support extended tag fields in MP4 files.
+  + Support GIF images in tags.
+  + Add Ogg Opus support, asynchronous image loading, scanner
+    function tests and new Vorbis cover art support.
+  + Add MP4 cover art and GIO support.
+  + Fix for Roman numeral capitalization.
+  + Ask for confirmation before overwriting during renaming.
+  + Mallard help updates.
+  + Avoid truncating Vorbis audio data when saving
+  + Updated translations.
+- Replace pkgconfig(gtk+-2.0) for pkgconfig(gtk+-3.0)
+  BuildRequires: Upstream now use GTK+ 3 by default and we are
+  following.
+- Add pkgconfig(opusfile) BuildRequires, in order to build the new
+  Ogg Opus support.
+
+-------------------------------------------------------------------
+Fri Feb 21 22:42:17 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 2.1.10:
+  + Several memory leak and crash fixes.
+  + GFileInfo porting and dummy browser row fixes.
+  + Add a Contents item to the Help menu, for viewing the Mallard
+    help.
+  + Use g_spawn_async() to spawn child processes.
+  + Reinstate ID3 tag support on Windows.
+  + Remove the Quit button from the toolbar.
+  + Scanner memory leak fix.
+  + Add AppData XML.
+  + Updated translations.
+- Add %icon_theme_cache_post / %icon_theme_cache_postun calls to
+  %post and %postun.
+
+-------------------------------------------------------------------
+Sat Jan  4 19:15:44 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 2.1.9:
+  + Lots of general refactoring and stability improvements.
+  + Replace most mini buttons with GtkEntry icons.
+  + Many memory leak and invalid read fixes.
+  + Fix crash when the MusicBrainz CDDB search fails.
+  + Remove ancient libmpg123 code and use id3lib for reading the
+    MPEG header.
+  + Many more improvements.
+- Drop upstream fixed patches:
+  + easytag-remove-deprecated-x-directory.patch.
+  + easytag-mixed-declarations.patch.
+  + easytag-nodatetime.patch.
+- Add gtk-doc and yelp-tools BuildRequires: new dependencies.
+
+-------------------------------------------------------------------
+Mon Sep 30 02:36:35 UTC 2013 - malcolmlewis@opensuse.org
+
+- Add easytag-remove-deprecated-x-directory.patch: Remove
+  deprecated x-directory/normal from .desktop.
+- Add update desktop file build macros and build requires to spec
+  file.
+
+-------------------------------------------------------------------
+Wed Mar  6 19:34:31 UTC 2013 - dimstar@opensuse.org
+
+- Initial package, version 2.1.8.
+

@@ -1,0 +1,233 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4963c2c36ed35298df6c49e9458735c1</srcmd5>
+    <version>2.1.8</version>
+    <time>1363104703</time>
+    <user>coolo</user>
+    <comment>New package, from the GNOME stack and maintainers</comment>
+    <requestid>158590</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>4963c2c36ed35298df6c49e9458735c1</srcmd5>
+    <version>2.1.8</version>
+    <time>1379662272</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>8038b3e169245ce2545e7363b5e852c4</srcmd5>
+    <version>2.1.8</version>
+    <time>1380607867</time>
+    <user>coolo</user>
+    <comment>Update to fix a mime type issue from the forum.
+http://forums.opensuse.org/showthread.php?t=490812 (forwarded request 201415 from malcolmlewis)</comment>
+    <requestid>201513</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f242f75c9b8adfd403ece98e9c2e84fb</srcmd5>
+    <version>2.1.9</version>
+    <time>1389124699</time>
+    <user>coolo</user>
+    <comment>Update to 2.1.9 (forwarded request 212828 from RBrownCCB)</comment>
+    <requestid>213032</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>0248cf82411f6b991cc27a4a3af7e990</srcmd5>
+    <version>2.1.10</version>
+    <time>1393221717</time>
+    <user>coolo</user>
+    <comment>Update to 2.1.10</comment>
+    <requestid>223495</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>655f32d29417cacb2bc25b7598e83bd0</srcmd5>
+    <version>2.2.0</version>
+    <time>1399317429</time>
+    <user>coolo</user>
+    <comment>Push version 2.2.0</comment>
+    <requestid>231814</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>c9a630b6840e027cb6db104a5859563a</srcmd5>
+    <version>2.2.2</version>
+    <time>1399755457</time>
+    <user>coolo</user>
+    <comment>- Update to version 2.2.2:
+  + Fix loading filenames from a text file.
+  + Fix saving Ogg cover art without a description.
+  + Fix check for broken id3lib UTF-16 writing.
+  + Fix keyboard navigation to allow escaping the tag area.
+  + Update ID3v1 genre list.
+  + Revert asynchronous image handling changes.
+  + Fix ID3 memory leak fix.
+  + Updated translations. (forwarded request 233283 from Zaitor)</comment>
+    <requestid>233364</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>c9a630b6840e027cb6db104a5859563a</srcmd5>
+    <version>2.2.2</version>
+    <time>1409300809</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>442df5ef77ede6d81e3a3a3a4e696eb3</srcmd5>
+    <version>2.2.4</version>
+    <time>1412098812</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>252747</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>a0ff19ede5ed608ff7d1df9398e13f69</srcmd5>
+    <version>2.2.5</version>
+    <time>1417160689</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>263260</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>15627e6143c6de52dd5593db369fd997</srcmd5>
+    <version>2.2.6</version>
+    <time>1423392141</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>284573</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>4b43741cea946228458183fbe6d5e971</srcmd5>
+    <version>2.3.5</version>
+    <time>1427109456</time>
+    <user>dimstar_suse</user>
+    <comment>Push GNOME:Apps - without pcheck</comment>
+    <requestid>291881</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>4e69f3a3637799b16a664c4cc76c896f</srcmd5>
+    <version>2.3.5</version>
+    <time>1428652401</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>295000</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>3a34a4c7ac320ae52bee145655bb5752</srcmd5>
+    <version>2.3.6</version>
+    <time>1429948374</time>
+    <user>coolo</user>
+    <comment>Scripted push of project GNOME:Apps</comment>
+    <requestid>298725</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>35d5119f804b1f4329a41e25f62030db</srcmd5>
+    <version>2.3.7</version>
+    <time>1431981206</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>307736</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>06f2d7a33d30ab952cc5b8d96b6fd608</srcmd5>
+    <version>2.4.0</version>
+    <time>1441054780</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>328121</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>dcbac20ed9b17171d5564d06a29c63e0</srcmd5>
+    <version>2.4.1</version>
+    <time>1453998273</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>356193</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>5f6e02642a14a906dcb068db38affc3c</srcmd5>
+    <version>2.4.2</version>
+    <time>1456243049</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>360774</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>109776fe96f58aaf0d46cf553b6985fb</srcmd5>
+    <version>2.4.2</version>
+    <time>1456821921</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>362867</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>a1f0d1160d8fb765b6dcc0dc5a333a4a</srcmd5>
+    <version>2.4.3</version>
+    <time>1481153491</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>444123</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>26fa1e2a6d78d277379e10dd219f2d1d</srcmd5>
+    <version>2.4.3</version>
+    <time>1520503027</time>
+    <user>dimstar_suse</user>
+    <comment>spec-cleaner (forwarded request 581029 from dimstar)</comment>
+    <requestid>582682</requestid>
+  </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>88d6d022d4669d3cc12f13afa65865a9</srcmd5>
+    <version>2.4.3</version>
+    <time>1523956625</time>
+    <user>dimstar_suse</user>
+    <comment>Revert commit, fix boo#1069789 I hope (forwarded request 596505 from iznogood)</comment>
+    <requestid>596947</requestid>
+  </revision>
+  <revision rev="23" vrev="4">
+    <srcmd5>62b4e882412d5a3de966f543f5100c1d</srcmd5>
+    <version>2.4.3</version>
+    <time>1580080987</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from GNOME:Apps</comment>
+    <requestid>767348</requestid>
+  </revision>
+  <revision rev="24" vrev="5">
+    <srcmd5>919dde5c2c331a9ba323624291b522aa</srcmd5>
+    <version>2.4.3</version>
+    <time>1585484794</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove empty post and postun (forwarded request 784600 from polslinux)</comment>
+    <requestid>789265</requestid>
+  </revision>
+  <revision rev="25" vrev="6">
+    <srcmd5>39111db326e898fff5e12efeb145bd5d</srcmd5>
+    <version>2.4.3</version>
+    <time>1647724843</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>962977</requestid>
+  </revision>
+  <revision rev="26" vrev="7">
+    <srcmd5>8be44bb1c4925f39a464aa3338086527</srcmd5>
+    <version>2.4.3</version>
+    <time>1663764128</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 43.rc - let's get this into Staging to see what we break (e.g meson:test seems to be an issue already) (forwarded request 1002590 from dimstar)</comment>
+    <requestid>1003274</requestid>
+  </revision>
+  <revision rev="27" vrev="8">
+    <srcmd5>2f4c68a9cb7f98d878271c33696a0339</srcmd5>
+    <version>2.4.3</version>
+    <time>1701206401</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1129568</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>85c1c3cf36265d366c7daf7ec7563d68</srcmd5>
+    <version>2.4.3+155</version>
+    <time>1709146083</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1152955</requestid>
+  </revision>
+</revisionlist>
