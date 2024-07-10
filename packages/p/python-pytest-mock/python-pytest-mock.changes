@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Jul  8 10:47:18 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.14.0:
+  * #415: MockType and AsyncMockType can be imported from
+    pytest_mock for type annotation purposes.
+  * #420: Fixed a regression which would cause
+    mocker.patch.object to not being properly cleared between
+    tests.
+  * #417: spy now has spy_return_list, which is a list containing
+    all the values returned by the spied function.
+  * pytest-mock now requires pytest>=6.2.5.
+  * #410: pytest-mock's setup.py file is removed. If you relied
+    on this file, e.g. to install pytest using setup.py install,
+    please see Why you shouldn't invoke setup.py directly for
+    alternatives.
+- drop fix-tests-python3117.patch (upstream)
+
+-------------------------------------------------------------------
 Wed Dec 20 12:28:16 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Fix tests with python 3.11.7
