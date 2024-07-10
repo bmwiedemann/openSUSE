@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e1715195f9b5f5a6e8ad1513f9c6aa70</srcmd5>
+    <version>0.11.0+20200922</version>
+    <time>1601653456</time>
+    <user>dimstar_suse</user>
+    <comment>Dependency for siril
+Please add to adi:56</comment>
+    <requestid>839159</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>34e6af487864eba9aa4eca5453d8130b</srcmd5>
+    <version>0.12.0+20210408</version>
+    <time>1623098626</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>897929</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>7fba5e948f2c09b22b3d3420ceee9aa6</srcmd5>
+    <version>0.12.0+20211228</version>
+    <time>1651180077</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.12.0+20211228:
+  * Update amaze.cc
+  * Update CA_correct.cc
+  * Update rcd.cc
+  * Update markesteijn.cc
+  * Various small fixes
+- Drop add-missing-include.patch
+</comment>
+    <requestid>973543</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>89bfc15a777055f6330c2751ba8ebbb7</srcmd5>
+    <version>0.12.0+20230627</version>
+    <time>1718286034</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1180354</requestid>
+  </revision>
+</revisionlist>
