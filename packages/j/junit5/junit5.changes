@@ -1,0 +1,123 @@
+-------------------------------------------------------------------
+Fri May 24 05:33:13 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Let junit5 require junit5-minimal to avoid conflict of providers
+
+-------------------------------------------------------------------
+Tue Apr 30 16:25:27 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Update to upstream version 5.10.2
+  * Changes:
+    + XML reports in new Open Test Reporting format
+    + Configurable cleanup mode for @TempDir
+    + Configurable thread mode for @Timeout
+    + Conditional execution based on OS architectures
+    + New TestInstancePreConstructCallback extension API
+    + Reusable parameter resolution for custom extension methods
+      via ExecutableInvoker
+    + Parameter injection for @MethodSource methods
+    + New IterationSelector
+    + Various improvements to ConsoleLauncher
+    + Promotion of various experimental APIs to stable
+    + New LauncherInterceptor SPI
+    + New testfeed details mode for ConsoleLauncher
+    + New ConsoleLauncher subcommand for test discovery without
+      execution
+    + Dry-run mode for test execution
+    + New NamespacedHierarchicalStore for use in third-party test
+      engines
+    + Stacktrace pruning to hide internal JUnit calls
+    + New @SelectMethod support in test @Suite classes.
+    + New TempDirFactory SPI for customizing how temporary
+      directories are created
+    +  Failure threshold for @RepeatedTest
+    + New convenience base classes for implementing
+      ArgumentsProvider and ArgumentConverter
+    + Custom class loader support for class/method selectors,
+      @MethodSource, @EnabledIf, and @DisabledIf
+    + Improved configurability of parallel execution
+    + Numerous bug fixes and minor improvements
+- Added patches:
+  * 0001-Drop-transitive-requirement-on-apiguardian.patch
+  * 0002-Add-missing-module-static-requires.patch
+    + fix dependencies in module-info.java files
+  * 0003-Bump-open-test-reporting-to-0.1.0-M2.patch
+    + fix build with the latest open-test-reporting milestone
+- Removed patch:
+  * unreported-exception.patch
+    + not needed any more with this version
+
+-------------------------------------------------------------------
+Mon Apr 29 12:16:37 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- The binaries are compatible with java 1.8
+
+-------------------------------------------------------------------
+Tue Apr  9 20:21:54 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Split into two _multibuild packages so that we can use the
+  junit-jupiter-api pretty early in the build without creating
+  build cycles.
+
+-------------------------------------------------------------------
+Wed Feb 21 10:48:09 UTC 2024 - Gus Kenion <gus.kenion@suse.com>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
+Thu Oct 26 12:21:48 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * unreported-exception.patch fix unreported exception error that
+    is fatal with JDK 21
+
+-------------------------------------------------------------------
+Mon Sep 11 10:40:34 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Reproducible builds: use SOURCE_DATE_EPOCH for timestamp
+
+-------------------------------------------------------------------
+Mon May  9 12:28:45 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Update to upstream version 5.8.2
+  * Fixes:
+    + Text blocks in @CsvSource are treated like CSV files
+    + CSV headers in display names for @CsvSource and
+      @CsvFileSource
+    + Custom quote character support in @CsvSource and
+      @CsvFileSource
+    + Support for text blocks in @CsvSource
+    + Java 18 support in the JRE enum
+    + Access to the ExecutionMode in the ExtensionContext
+    + Declarative test suites via @Suite classes
+    + LauncherSession and accompanying listener
+    + New UniqueIdTrackingListener
+    + More fine-grained Java Flight Recorder events
+    + Java Flight Recorder support on Java 8 Update 262 or
+      higher
+    + Test class ordering
+    + @TempDir can be used to create multiple temporary
+      directories
+    + Extension registration via @ExtendWith on fields and
+      parameters
+    + Auto-close support for arguments in @ParameterizedTest
+      methods
+- Fix the classpath of console application so that it actually
+  works
+
+-------------------------------------------------------------------
+Thu Mar  3 14:03:48 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Package also the bill-of-materials pom
+
+-------------------------------------------------------------------
+Fri Nov  8 08:55:55 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to junit5 5.5.2
+- Distribute also the manifest-only junit-jupiter artifact
+- Build the console by default, since picocli package exists now
+
+-------------------------------------------------------------------
+Thu Apr 11 15:14:17 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Initial packaging of junit5 5.4.0

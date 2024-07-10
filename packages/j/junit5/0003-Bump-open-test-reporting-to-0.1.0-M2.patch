@@ -1,0 +1,31 @@
+From c3d9035f7e39e17f8ee12336b2f4de9ad65e521d Mon Sep 17 00:00:00 2001
+From: Marc Philipp <mail@marcphilipp.de>
+Date: Sat, 20 Apr 2024 15:54:00 +0200
+Subject: [PATCH 3/3] Bump open-test-reporting to 0.1.0-M2
+
+Resolves #3788.
+---
+ .../open/xml/OpenTestReportGeneratingListener.java         | 7 +++----
+ 1 file changed, 3 insertions(+), 4 deletions(-)
+
+diff --git a/junit-platform-reporting/src/main/java/org/junit/platform/reporting/open/xml/OpenTestReportGeneratingListener.java b/junit-platform-reporting/src/main/java/org/junit/platform/reporting/open/xml/OpenTestReportGeneratingListener.java
+index 05c452880a..35c995f3aa 100644
+--- a/junit-platform-reporting/src/main/java/org/junit/platform/reporting/open/xml/OpenTestReportGeneratingListener.java
++++ b/junit-platform-reporting/src/main/java/org/junit/platform/reporting/open/xml/OpenTestReportGeneratingListener.java
+@@ -236,10 +236,9 @@ public class OpenTestReportGeneratingListener implements TestExecutionListener {
+ 	public void reportingEntryPublished(TestIdentifier testIdentifier, ReportEntry entry) {
+ 		String id = inProgressIds.get(testIdentifier.getUniqueIdObject());
+ 		eventsFileWriter.append(reported(id, Instant.now()), //
+-			reported -> reported.append(attachments(), attachments -> attachments.append(data(), data -> {
+-				data.withTime(entry.getTimestamp());
+-				entry.getKeyValuePairs().forEach(data::addEntry);
+-			})));
++			reported -> reported.append(attachments(), //
++				attachments -> attachments.append(data(entry.getTimestamp()), //
++					data -> entry.getKeyValuePairs().forEach(data::addEntry))));
+ 	}
+ 
+ 	@Override
+-- 
+2.44.0
+
