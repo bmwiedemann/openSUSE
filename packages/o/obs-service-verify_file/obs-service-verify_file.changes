@@ -1,0 +1,51 @@
+-------------------------------------------------------------------
+Wed Dec  7 09:48:00 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not ever use "%setup -n .": rpm 4.18 tries to be cleaner and
+  remove stuff it extraced, which would lead to 'rm -rf .', which
+  rm does not like. Use "%setup -c" instead, which creates the
+  appropriate %{name}-%{version} directory expected.
+
+-------------------------------------------------------------------
+Tue Feb 16 08:59:36 UTC 2016 - adrian@suse.de
+
+- protect parameter handling (boo#967265) 
+
+-------------------------------------------------------------------
+Wed Jun  3 13:08:40 UTC 2015 - suse-tux@gmx.de
+
+- added "file" parameter to the service definition
+
+-------------------------------------------------------------------
+Wed Apr  3 20:52:07 UTC 2013 - fa0sck@gmail.com
+
+- add sha1sum to checksum verifiers
+
+-------------------------------------------------------------------
+Fri Mar  1 09:29:28 UTC 2013 - fa0sck@gmail.com
+
+- allow to switch among the provided checksum verifiers 
+
+-------------------------------------------------------------------
+Fri Jun 22 07:11:23 UTC 2012 - Rene.vanPaassen@gmail.com
+
+- added a requirement on perl-MD5 for Fedora 17 
+
+-------------------------------------------------------------------
+Thu Apr 12 13:01:43 UTC 2012 - saschpe@suse.de
+
+- Change license to MIT (see bnc#753973) and provide a copy of the license text
+
+-------------------------------------------------------------------
+Tue Mar 20 10:35:07 UTC 2012 - saschpe@suse.de
+
+- Renamed spec/changes file to OBS package name to please factory-auto review
+- Added spec file license header
+- Set license to SDPX style (GPL-2.0+
+
+-------------------------------------------------------------------
+Mon May 17 14:26:35 UTC 2010 - adrian@suse.de
+
+- initial package of version 0.1
+  sha256sum verification only supported atm
+
