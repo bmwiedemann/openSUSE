@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul 09 07:40:55 UTC 2024 - filippo.bonazzi@suse.com
+
+- Update to version 1550+20240708.7e0e3f4:
+  * profile: whitelist kdeplasma-addons-kameleon helper (bsc#1226306)
+
+-------------------------------------------------------------------
 Thu Jun 20 09:51:18 UTC 2024 - filippo.bonazzi@suse.com
 
 - Update to version 1550+20240620.095c860:

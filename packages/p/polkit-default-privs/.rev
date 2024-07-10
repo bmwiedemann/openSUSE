@@ -2202,4 +2202,14 @@ for 12.3</comment>
     <comment></comment>
     <requestid>1181899</requestid>
   </revision>
+  <revision rev="239" vrev="1">
+    <srcmd5>c155e295cb862deb9357b3d580bacce2</srcmd5>
+    <version>1550+20240708.7e0e3f4</version>
+    <time>1720622869</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1550+20240708.7e0e3f4:
+  * profile: whitelist kdeplasma-addons-kameleon helper (bsc#1226306)
+</comment>
+    <requestid>1186321</requestid>
+  </revision>
 </revisionlist>
