@@ -602,4 +602,12 @@
     <comment>- Update to release 17.0.1</comment>
     <requestid>1181508</requestid>
   </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>22ae37bcef6fbdd5271f8edb1217b03b</srcmd5>
+    <version>18.0</version>
+    <time>1720622986</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 18</comment>
+    <requestid>1186459</requestid>
+  </revision>
 </revisionlist>
