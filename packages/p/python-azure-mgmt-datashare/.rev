@@ -1,0 +1,82 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>69431aa39d43b4009462333515e031b8</srcmd5>
+    <version>0.1.0rc1</version>
+    <time>1582899591</time>
+    <user>dimstar_suse</user>
+    <comment>- New Python Azure SDK component package</comment>
+    <requestid>775189</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>1187dd511cf46d4689a8ad539638b53b</srcmd5>
+    <version>0.2.0</version>
+    <time>1601652080</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 0.2.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Rename HISTORY.rst to CHANGELOG.md in %files section
+- Rename README.rst to README.md in %files section (forwarded request 830757 from glaubitz)</comment>
+    <requestid>830898</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>b84d6e576c35ed8e0386f19ae76a4e9f</srcmd5>
+    <version>0.2.0</version>
+    <time>1607548677</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>853920</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>0f44b6dce8390b3beb5df7b9e91fe362</srcmd5>
+    <version>1.0.0b1</version>
+    <time>1610051177</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.0.0b1
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 861158 from glaubitz)</comment>
+    <requestid>861277</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>fcf50dcb2a334789af364be640248ca9</srcmd5>
+    <version>1.0.0.0</version>
+    <time>1620400517</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Override upstream version with 1.0.0.0 to ensure
+  proper upgrade from previous version 1.0.0b1
+- Update Requires from setup.py (forwarded request 890936 from glaubitz)</comment>
+    <requestid>890977</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>c03297ac80f7f913ab9c4f3e8878fafd</srcmd5>
+    <version>1.0.0.0</version>
+    <time>1712520466</time>
+    <user>anag+factory</user>
+    <comment>- Switch package to modern Python Stack on SLE-15
+  + Use Python 3.11 on SLE-15 by default
+  + Add Obsoletes for old python3 package on SLE-15
+  + Drop support for older Python versions
+- Switch build system from setuptools to pyproject.toml
+  + Add python-pip and python-wheel to BuildRequires
+  + Replace %python_build with %pyproject_wheel
+  + Replace %python_install with %pyproject_install
+  + Update name for dist directory in %files section
+- Use modern RPM macros to express version dependencies (forwarded request 1164771 from glaubitz)</comment>
+    <requestid>1165168</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>c32296c48252be87ffb02133815787f2</srcmd5>
+    <version>1.0.0.0</version>
+    <time>1715444540</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1173292</requestid>
+  </revision>
+</revisionlist>
