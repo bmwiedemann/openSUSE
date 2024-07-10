@@ -1,0 +1,5 @@
+<package name="gnome-maps" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="GNOME:Factory" package="gnome-maps"/>
+</package>
