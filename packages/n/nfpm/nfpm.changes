@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Jul 10 08:37:36 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.38.0:
+  * docs: clarify trailing slash in dst
+  * fix: system fs paths on windows (#838)
+  * test: centos8 mirrorlist has been down for a long time (#837)
+  * fix: rpm doesnt allow dashes in prerelease (#836)
+  * fix: better handle files owned by the fs (#834)
+  * chore: cleanup
+  * docs: update
+  * docs: update
+  * feat(deps): bump github.com/spf13/cobra from 1.8.0 to 1.8.1
+    (#832)
+  * feat(deps): bump github.com/klauspost/compress from 1.17.8 to
+    1.17.9 (#831)
+  * ci: update goreleaser config
+  * chore(deps): bump goreleaser/goreleaser-action from 5 to 6
+    (#827)
+  * chore(deps): bump cachix/install-nix-action from 26 to 27
+    (#823)
+  * docs: update cmd docs
+
+-------------------------------------------------------------------
 Mon Jun 17 18:48:05 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.37.1:
@@ -9,9 +32,12 @@ Mon Jun 17 18:48:05 UTC 2024 - opensuse_buildservice@ojkastl.de
   * docs: update cmd docs
   * feat: support for ipk packages (#818)
   * chore(deps): update go-rpmutils
-  * chore(deps): bump golangci/golangci-lint-action from 5 to 6 (#819)
-  * chore(deps): bump anchore/sbom-action from 0.15.10 to 0.15.11 (#817)
-  * chore(deps): bump golangci/golangci-lint-action from 4 to 5 (#816)
+  * chore(deps): bump golangci/golangci-lint-action from 5 to 6
+    (#819)
+  * chore(deps): bump anchore/sbom-action from 0.15.10 to 0.15.11
+    (#817)
+  * chore(deps): bump golangci/golangci-lint-action from 4 to 5
+    (#816)
 
 -------------------------------------------------------------------
 Mon Jun 17 18:47:53 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>

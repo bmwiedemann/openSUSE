@@ -7,4 +7,12 @@
     <comment>new package nfpm: a simple deb, rpm, apk and arch linux packager written in Go</comment>
     <requestid>1181523</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>7434af61d5fbe6e66ee14fa64f0039db</srcmd5>
+    <version>2.38.0</version>
+    <time>1720623469</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1186565</requestid>
+  </revision>
 </revisionlist>
