@@ -1,0 +1,104 @@
+-------------------------------------------------------------------
+Sat Mar 26 14:18:26 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.9.10:
+  - improved macOS Monterey support through dyld interposing
+  - changed interception hooks for stat() and similar functions,
+    refactored to use a common handler (@sirainen)
+  - added support for timespec_get, timerfd_{get,set} (@sliquister)
+  - generic syscall() interception for selected syscalls (@dkg)
+  - improved testing system (@dkg)
+
+-------------------------------------------------------------------
+Sun Feb 28 18:05:21 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.9.9:
+  - When compiled with the CFLAG FAKE_RANDOM set,
+    libfaketime will intercept calls to getrandom()
+    and return pseudorandom numbers for determinism.
+    The mechanism needs to be activated by setting
+    the environment variable FAKERANDOM_SEED to a
+    64-bit seed value, e.g., "0x12345678DEADBEEF".
+    Please note that this completely breaks the
+    security of random numbers for cryptographic
+    purposes and should only be used for deterministic
+    tests. Never use this in production!
+  - When the environment variable FAKETIME_TIMESTAMP_FILE is
+    set, points to a writeable (creatable) custom config file
+    and the environment variable FAKETIME_UPDATE_TIMESTAMP_FILE
+    is "1", then the file also is updated on each call. By
+    this, a common "virtual time" can be shared by several
+    processes, where each can adjust the time for all.
+  - Additional link-time LDFLAGS can be passed via the
+    environment variable FAKETIME_LINK_FLAGS when
+    running 'make'.
+  - Compile-time CFLAG FAKE_SETTIME can be enabled to
+    intercept calls to clock_settime(), settimeofday(), and
+    adjtime(). (suggested and prototyped by @ojura)
+  - Additional compile-time CFLAGs can be passed via the
+    environment variable FAKETIME_COMPILE_CFLAGS when
+    running 'make'.
+  - src/Makefile CFLAG FORCE_PTHREAD_NONVER should be set on
+    systems that hang on CLOCK_REALTIME, or that hang on
+    CLOCK_MONOTONIC where FORCE_MONOTONIC_FIX is not sufficient.
+
+-------------------------------------------------------------------
+Wed Aug 28 20:18:13 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.9.8
+   * Passthrough for unknown clock ids to avoid error messages
+   * Fixes for multithreaded operations (mliertzer, qnox)
+   * glibc-related fixes (jprjr) and gcc8 support (tpetazzoni)
+   * Improved error message output on parsing errors
+   * fix file stat() faking when 'i' modifier is used for determinism
+   - Use FAKETIME="%" to take FAKETIME setting from a file as
+     specified in FAKETIME_FOLLOW_FILE
+   * Added FAKETIME_DONT_RESET environment variable to avoid
+     faketime resets when subprocesses are started (similar to
+     the old v0.9.6 behavior)
+   * Added FAKETIME_XRESET to avoid large clock jumps when
+     the 'x' modifier is used and changed during run-time
+   - Do not fake time during libfaketime initialization to
+     improve compatibility with memory allocation libraries that
+     use time-related functions themselves
+   * Fixes for shared memory related issues, especially when
+     not using the faketime wrapper
+   * Updated glibc compatibility settings for various platforms
+   * Support for clock_nanosleep() with realtime and monotonic clocks
+   * Support for epoll_wait(), epoll_pwait(), and pselect()
+   * src/Makefile CFLAG FORCE_MONOTONIC_FIX should be set (only) on
+     platforms where the test program hangs forever at the
+     CLOCK_MONOTONIC test.
+- Remove not longer needed patch:
+  * 161.patch
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Sun Jun 24 09:26:45 UTC 2018 - coolo@suse.com
+
+- add 161.patch to pick gcc8 patches from git
+- fix source archive to match github URLs
+
+-------------------------------------------------------------------
+Sun Feb 25 14:50:35 UTC 2018 - sweet_f_a@gmx.de
+
+- update 0.9.7:
+  * added an option to disable monotonic time faking
+  * added support for COARSE clocks
+  * preliminary support for CLOCK_BOOTTIME (Linux)
+  * build fixes
+- remove libfaketime-0.9.6-gcc6.patch
+
+-------------------------------------------------------------------
+Mon Jun 20 17:19:50 UTC 2016 - i@marguerite.su
+
+- add patch: libfaketime-0.9.6-gcc6.patch
+  * fix boo#985141
+  * fix nonnull argument 'buf' compared to NULL
+- run spec-cleaner
+
+-------------------------------------------------------------------
+Mon Feb  2 16:15:53 UTC 2015 - coolo@suse.com
+
+- initial package
+
