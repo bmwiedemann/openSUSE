@@ -1,0 +1,19 @@
+[Unit]
+Description=Ethernet Bridge Filtering tables
+
+[Service]
+# added automatically, for details please see
+# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
+ProtectSystem=full
+ProtectHome=true
+ProtectHostname=true
+ProtectControlGroups=true
+RestrictRealtime=true
+# end of automatic additions 
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=@LIBEXECDIR@/ebtables-helper start
+ExecStop=@LIBEXECDIR@/ebtables-helper stop
+
+[Install]
+WantedBy=multi-user.target

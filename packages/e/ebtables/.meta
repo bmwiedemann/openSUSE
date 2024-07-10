@@ -1,0 +1,9 @@
+<package name="ebtables" project="openSUSE:Factory">
+  <title>Ethernet Bridge Tables</title>
+  <description>A firewalling tool to transparently filter network traffic passing a
+bridge. The filtering possibilities are limited to link layer filtering
+and some basic filtering on higher network layers. The ebtables tool
+can be used together with the other Linux filtering tools, like
+iptables. There are no incompatibility issues.</description>
+  <devel project="security:netfilter" package="ebtables"/>
+</package>
