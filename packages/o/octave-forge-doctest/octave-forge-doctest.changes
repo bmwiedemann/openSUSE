@@ -1,0 +1,68 @@
+-------------------------------------------------------------------
+Wed Jan  4 13:52:34 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.8.0:
+  * Expected error messages can be optionally prefixed with "error: ".
+  * Writing "??? " at the beginning of an error is now deprecated.
+  * Texinfo users can markup errors with `@error{}`.
+  * `doctest myclass` has been refactored with various bugs fixed.
+  * Preliminary support for `doctest classdef.method` on Octave.
+  * Test classdef methods using dotted `classdef.method` while still
+    using `@class/method` on old-style classes.
+  * Functions defined directly in the Octave interpreter can now be tested.
+  * Test suite fixes for Octave 6 and 7.
+  * Source code is encoded with UTF-8, indicated with `.oct-config` files.
+  * Don't doctest some classdef methods twice.
+
+-------------------------------------------------------------------
+Wed Nov 27 00:12:47 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 0.7.0:
+  * Functions within compiled `.oct` files can now be tested.
+  * Tests are run with default number formatting (see `help doctest`).
+  * More robust to errors during testing.
+  * Makefile improvements and fixes.
+
+-------------------------------------------------------------------
+Wed Jul 18 07:33:28 UTC 2018 - badshah400@gmail.com
+
+- Update to version 0.6.1:
+  * Workaround regex bug on ARM (again!).
+- Changes from version 0.6.0:
+  * Tests can now call "clear" and "clear all".
+  * Fixes for running on Octave development versions (upcoming
+    4.4.0).
+  * Minimum supported Octave version is now 4.2.0.  The package no
+    longer has any compiled code and does not include an "evalc"
+    implementation.
+- Update Requires: octave-cli > 4.2.0 is now required.
+- Update file list: pkg no longer installs to libdir.
+- BuildArch: noarch because pkg no longer installs arch dependent
+  binaries.
+- Untar tarball in build dir before running checks.
+
+-------------------------------------------------------------------
+Thu Nov 24 14:09:56 UTC 2016 - dmitry_r@opensuse.org
+
+- Update to version 0.5.0
+  * SKIP_IF and other conditional directives can include small single-line
+    blocks of code.
+  * Recursion into subdirectories is now the default.
+  * In Texinfo mode, skip tests without output by default.
+
+-------------------------------------------------------------------
+Sat Jun 11 08:29:54 UTC 2016 - dmitry_r@opensuse.org
+
+- Update to version 0.4.1
+  * Added conditional variants of SKIP and XFAIL directives to control test
+    execution based on runtime conditions.
+  * Added constants DOCTEST_OCTAVE and DOCTEST_MATLAB that can be used as
+    conditions in SKIP_IF etc.
+  * Improved handling of example code in TexInfo documentation.
+  * Improved folder/directory traversals.
+
+-------------------------------------------------------------------
+Tue Jul 14 20:20:34 UTC 2015 - dmitry_r@opensuse.org
+
+- Initial package, version 0.4.0
+
