@@ -1,0 +1,314 @@
+<revisionlist>
+  <revision rev="1" vrev="3">
+    <srcmd5>87020f5638f1680c4faedcba98919b1d</srcmd5>
+    <version>0.9.0</version>
+    <time>1172928632</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="6">
+    <srcmd5>38fedf77cde4d80e68f9a0f737892c52</srcmd5>
+    <version>0.9.0</version>
+    <time>1175041418</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e8941c8922093e558857272ed5f80d1a</srcmd5>
+    <version>1.0.1</version>
+    <time>1207167622</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>a9fa46dbb2d3e18edf2733826bcbec06</srcmd5>
+    <version>1.0.1</version>
+    <time>1210674900</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>9e7ee71be344cf8e4fb3fc1c62459b87</srcmd5>
+    <version>1.3.0</version>
+    <time>1220980297</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>9e7ee71be344cf8e4fb3fc1c62459b87</srcmd5>
+    <version>1.3.0</version>
+    <time>1220980297</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>d37694c602167b08d32cfbe1d3ffc3f5</srcmd5>
+    <version>1.3.0</version>
+    <time>1258723601</time>
+    <user>autobuild</user>
+    <comment>Copy from network:telephony/libzrtpcpp based on submit request 24708 from user coolo
+</comment>
+  </revision>
+  <revision rev="8" vrev="5">
+    <srcmd5>b62c1865632e4c8b77e552b4a4b0ec73</srcmd5>
+    <version>1.3.0</version>
+    <time>1268924797</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="9" vrev="7">
+    <srcmd5>b62c1865632e4c8b77e552b4a4b0ec73</srcmd5>
+    <version>1.3.0</version>
+    <time>1278667364</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="8">
+    <srcmd5>b62c1865632e4c8b77e552b4a4b0ec73</srcmd5>
+    <version>1.3.0</version>
+    <time>1278678594</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="9">
+    <srcmd5>90bfcf22ca3e43dba82b3b16c6b00c8c</srcmd5>
+    <version>1.3.0</version>
+    <time>1292000275</time>
+    <user>darix</user>
+    <comment>Accepted submit request 55451 from user coolo
+</comment>
+    <requestid>55451</requestid>
+  </revision>
+  <revision rev="12" vrev="10">
+    <srcmd5>4a3ede57ddb3ea47673251b3baafda97</srcmd5>
+    <version>1.3.0</version>
+    <time>1292000287</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 55451
+</comment>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>916510bf1f7aed705d7d20e1645db106</srcmd5>
+    <version>1.6.0</version>
+    <time>1294836634</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 57918 from user wernerdi
+</comment>
+    <requestid>57918</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>ccf07564074048a11ab2ad08e03eccbe</srcmd5>
+    <version>1.6.0</version>
+    <time>1294836650</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 57918
+</comment>
+  </revision>
+  <revision rev="15" vrev="5">
+    <srcmd5>ccf07564074048a11ab2ad08e03eccbe</srcmd5>
+    <version>1.6.0</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>08797b12ed7cd748165b7cb197b216b8</srcmd5>
+    <version>2.0.0</version>
+    <time>1317132393</time>
+    <user>saschpe</user>
+    <comment>- fix the shared library policy packaging
+
+- Modify and rename spec file to adhere to naming policies
+  * remove rpmlintrc file - not longer used
+
+- update to version 2.0 to be in sync with version number of GNU ccRTP
+  * Update configuration to use the new GNU uCommon library</comment>
+    <requestid>85020</requestid>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>08797b12ed7cd748165b7cb197b216b8</srcmd5>
+    <version>2.0.0</version>
+    <time>1319182150</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="18" vrev="4">
+    <srcmd5>89e0f1c666207cb53f52696704e92041</srcmd5>
+    <version>2.0.0</version>
+    <time>1323192392</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="19" vrev="5">
+    <srcmd5>1f0f5f5110b9841ceaedccc1e512ac3a</srcmd5>
+    <version>2.0.0</version>
+    <time>1334216360</time>
+    <user>coolo</user>
+    <comment>- better libdir handling (forwarded request 112706 from k0da)</comment>
+    <requestid>112707</requestid>
+  </revision>
+  <revision rev="20" vrev="7">
+    <srcmd5>1f0f5f5110b9841ceaedccc1e512ac3a</srcmd5>
+    <version>2.0.0</version>
+    <time>1340183660</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="21" vrev="9">
+    <srcmd5>1f0f5f5110b9841ceaedccc1e512ac3a</srcmd5>
+    <version>2.0.0</version>
+    <time>1359109391</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="10">
+    <srcmd5>e62c174507dc583bfab37412b994f626</srcmd5>
+    <version>2.0.0</version>
+    <time>1364157544</time>
+    <user>coolo</user>
+    <comment>- Properly determine LIB_SUFFIX (forwarded request 160737 from Andreas_Schwab)</comment>
+    <requestid>160780</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>4a47f4bd1c8188e8da26c92546ae3a4b</srcmd5>
+    <version>2.3.2</version>
+    <time>1371135286</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 2.3.2
+* Upstream has not provided a NEWS/changelog entry
+- Do signature verification
+- Remove redundant %clean section; more robust make install call
+- Remove libzrtpcpp-libdir.patch (no longer required) (forwarded request 177839 from jengelh)</comment>
+    <requestid>178631</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>4ea690c05d6707dc928dcb01027cef18</srcmd5>
+    <version>2.3.3</version>
+    <time>1371561760</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 2.3.3 (forwarded request 178911 from jengelh)</comment>
+    <requestid>179246</requestid>
+  </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>4ea690c05d6707dc928dcb01027cef18</srcmd5>
+    <version>2.3.3</version>
+    <time>1379663154</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>9bc30e496b713f7ce706273f5dbf9ad5</srcmd5>
+    <version>3.2.2.2</version>
+    <time>1380296525</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 3.2.2.2 (forwarded request 200844 from jengelh)</comment>
+    <requestid>201072</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>d57c8950e537cd28b9143991e4ea6bcc</srcmd5>
+    <version>4.1.0</version>
+    <time>1385391767</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 4.1.0
+* added some new algorithms for the DH key agreement and the Skein
+  Hash for ZRTP.</comment>
+    <requestid>208144</requestid>
+  </revision>
+  <revision rev="28" vrev="3">
+    <srcmd5>d57c8950e537cd28b9143991e4ea6bcc</srcmd5>
+    <version>4.1.0</version>
+    <time>1409301787</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>ae1254b5c78b6afc9ab210069c4b8558</srcmd5>
+    <version>4.2.4</version>
+    <time>1410795676</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>249096</requestid>
+  </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>3fef1db53b7ced933b2a790f49d80653</srcmd5>
+    <version>4.2.4</version>
+    <time>1413987806</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>257743</requestid>
+  </revision>
+  <revision rev="31" vrev="3">
+    <srcmd5>2675fc96d220edaf97a9c89e5c044221</srcmd5>
+    <version>4.2.4</version>
+    <time>1414613379</time>
+    <user>coolo</user>
+    <comment>copy to 13.2
+- Add 0001-pkg-config-add-includedir-libzrtcpp-to-CFLAGS.patch
+  to fix downstream compilation [bso#902614]</comment>
+    <requestid>258379</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>dfed9f8b9c8b92d6bc2ac1e3b7eea401</srcmd5>
+    <version>4.3.1</version>
+    <time>1427313929</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>292878</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>eaef712cd7bdd5fb496fbc82d36ed4aa</srcmd5>
+    <version>4.4.0</version>
+    <time>1440337432</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>324760</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>c43e18cd7e3b1c2cad3eea5666e26978</srcmd5>
+    <version>4.5.0</version>
+    <time>1454491167</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>356744</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>f13a0e6a11f5487551028a2bb43c7216</srcmd5>
+    <version>4.6.2</version>
+    <time>1456521584</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>361652</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>b232e9b1a5b4570bb1f7fb830e99c30a</srcmd5>
+    <version>4.6.3</version>
+    <time>1459508567</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>382248</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>c0023e2b3e509fd2e8fe1ec16a470cd4</srcmd5>
+    <version>4.6.4</version>
+    <time>1480693270</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>442290</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>dca8da083d681eb1dce7eaa26cf8aa72</srcmd5>
+    <version>4.6.6</version>
+    <time>1502186356</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to new maintenance release 4.6.6</comment>
+    <requestid>513703</requestid>
+  </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>2fe391d064cae239f5a0baa7410538cb</srcmd5>
+    <version>4.6.6</version>
+    <time>1513015061</time>
+    <user>dimstar_suse</user>
+    <comment>- BuildRequire pre-1.1 openssl.</comment>
+    <requestid>555908</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>5cbf58e002273b83b50c8a4ca1059859</srcmd5>
+    <version>4.7.0</version>
+    <time>1600346630</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 4.7.0</comment>
+    <requestid>832615</requestid>
+  </revision>
+</revisionlist>
