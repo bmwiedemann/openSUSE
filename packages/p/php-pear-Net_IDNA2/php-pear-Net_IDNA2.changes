@@ -1,0 +1,41 @@
+-------------------------------------------------------------------
+Thu Dec  5 20:55:02 UTC 2019 - Arjen de Korte <suse+build@de-korte.org>
+
+- make package PHP version independent
+- use correct macro to reference metadata (boo#1158112)
+- clean-up spec, use https for downloading
+
+-------------------------------------------------------------------
+Fri Nov  3 08:18:33 UTC 2017 - jengelh@inai.de
+
+- Expand description.
+
+-------------------------------------------------------------------
+Fri Aug 18 07:31:21 UTC 2017 - ecsos@opensuse.org
+
+- update to 0.2.0
+  * Bug #19375: Add static to the fuction getInstance
+  * Bug #21123: Signing the source package
+
+- renamed package to php7-pear-Net_IDNA2
+
+-------------------------------------------------------------------
+Mon May 12 12:52:11 UTC 2014 - aj@ajaissle.de
+
+- Spec file cleanup
+
+-------------------------------------------------------------------
+Fri Nov  8 12:43:27 UTC 2013 - aj@ajaissle.de
+
+- Removed (Build)Requires php5-pear-channel-horde
+
+-------------------------------------------------------------------
+Wed Jan 30 19:57:13 UTC 2013 - aj@ajaissle.de
+
+- Optimized BuildRequires to enable building for SLE11 and oS11.x
+
+-------------------------------------------------------------------
+Wed Jan 30 04:15:58 UTC 2013 - aj@ajaissle.de
+
+- SUSE package creation
+
