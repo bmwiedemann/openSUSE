@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Wed Jul 10 07:40:40 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.8.2:
+  * Bump go mod min version (#1109)
+  * Add changelog for v1.8.2 (#1106)
+  * Fix npm grouping (#1107)
+  * Add warning to the default docker container scanning method
+    (#1089)
+  * Move sbom to internal, and add standard output tests (#1104)
+  * fix: ensure that npm dependencies retain their "production"
+    grouping (#939)
+  * test: add output fixtures for call analysis (#1093)
+  * fix: restore custom styling to table format (#1094)
+  * chore(deps): lock file maintenance (#1103)
+  * chore(deps): update workflows (#1101)
+  * github-action.md add version into md example (#1073)
+  * ✨  Adding CycloneDX 1.4 and 1.5 reporter (#1014)
+  * chore(deps): update golang docker tag to v1.22.5 (#1100)
+  * fix(deps): update osv-scanner minor (#1102)
+  * Add go compiler to enable call analysis in the github action
+    (#1099)
+  * Update github action docs in osv-scanner (#1096)
+  * test: update snapshots (#1092)
+  * Refactoring `manifest.Read()` for Maven (#1083)
+  * refactor: just disable color output rather than tracking
+    terminal width (#1087)
+  * ci: upgrade `semantic` workflow to use v4 for artifact
+    workflows (#1088)
+  * chore(deps): update workflows (#1080)
+  * fix(deps): update module github.com/spdx/tools-golang to v0.5.5
+    (#1081)
+  * Added Testing for the SPDX SBOM Reader (#1086)
+  * Changed min and max to inbuilt functions (#1076)
+  * Update snapshots (#1084)
+  * fix: use errgroup to avoid hydration deadlock scenario (#1078)
+  * ci: setup workflow to run `semantic` tests weekly (#958)
+  * test: update snapshots (#1079)
+  * filter out unimportant vulnerabilities from vuln group (#1072)
+  * Fix test (#1071)
+  * fix: ensure that `package` exists in `affected` property
+    (#1055)
+  * Cherry-pick unmerged change from docs branch (#1069)
+  * chore(deps): update alpine:3.20 docker digest to b89d9c9
+    (#1062)
+  * chore(deps): update golang:1.22.4-alpine3.19 docker digest to
+    c46c460 (#1063)
+  * fix(deps): update module github.com/charmbracelet/bubbletea to
+    v0.26.6 (#1064)
+  * Combine Debian unimportant count logs (#1067)
+  * Update tests to support go version changes (#1065)
+  * fix: only care about ecosystem suffix if present in both
+    ecosystems when determining equality (#1007)
+  * refactor: enable `revive/indent-error-flow` (#997)
+
+-------------------------------------------------------------------
 Fri Jun 21 20:09:23 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.8.1:
