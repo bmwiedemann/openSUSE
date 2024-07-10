@@ -1,0 +1,38 @@
+-------------------------------------------------------------------
+Fri Nov 17 04:16:17 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update data-clist to version 0.2 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Thu Mar 30 17:06:29 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
+Fri Feb 25 08:18:33 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update data-clist to version 0.2.
+  Upstream does not provide a change log file.
+
+-------------------------------------------------------------------
+Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+ 
+- disable %{ix86} build
+ 
+-------------------------------------------------------------------
+Mon Aug 31 09:34:31 UTC 2020 - psimons@suse.com
+
+- Update data-clist to version 0.1.2.3 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Tue Aug 18 10:44:34 UTC 2020 - Peter Simons <psimons@suse.com>
+
+- Replace %setup -q with the more modern %autosetup macro.
+
+-------------------------------------------------------------------
+Tue Jun  9 09:26:37 UTC 2020 - psimons@suse.com
+
+- Add data-clist at version 0.1.2.3.
+
