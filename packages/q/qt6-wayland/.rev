@@ -272,4 +272,13 @@
     <comment>Qt 6.7.1 + pyside 6.7.1 (forwarded request 1181766 from krop)</comment>
     <requestid>1182618</requestid>
   </revision>
+  <revision rev="35" vrev="2">
+    <srcmd5>05cd31174704d2ecd7c86d23fae7aeb7</srcmd5>
+    <version>6.7.2</version>
+    <time>1720622871</time>
+    <user>anag+factory</user>
+    <comment>- Add patch to fix certain wayland protocol errors (kde#489259):
+  * 0001-Client-Ensure-that-guessed-popup-parent-has-a-shell-.patch (forwarded request 1186341 from Vogtinator)</comment>
+    <requestid>1186345</requestid>
+  </revision>
 </revisionlist>

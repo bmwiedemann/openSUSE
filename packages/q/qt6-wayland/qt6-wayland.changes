@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul  9 09:20:12 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix certain wayland protocol errors (kde#489259):
+  * 0001-Client-Ensure-that-guessed-popup-parent-has-a-shell-.patch
+
+-------------------------------------------------------------------
 Wed Jun 19 07:26:06 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.7.2:
