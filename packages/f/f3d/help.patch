@@ -1,0 +1,13 @@
+Index: f3d-2.5.0/application/CMakeLists.txt
+===================================================================
+--- f3d-2.5.0.orig/application/CMakeLists.txt
++++ f3d-2.5.0/application/CMakeLists.txt
+@@ -165,7 +165,7 @@ if(UNIX AND NOT APPLE)
+       set(MAN_OUTPUT_FILE ${CMAKE_BINARY_DIR}/f3d.1)
+       add_custom_command(
+         OUTPUT ${MAN_OUTPUT_FILE}
+-        COMMAND ${HELP2MAN} $<TARGET_FILE:f3d> -N -n "fast and minimalist 3D viewer" > ${MAN_OUTPUT_FILE}
++        COMMAND ${HELP2MAN} --no-discard-stderr $<TARGET_FILE:f3d> -N -n "fast and minimalist 3D viewer" > ${MAN_OUTPUT_FILE}
+         COMMAND ${GZIP} -f ${MAN_OUTPUT_FILE}
+         DEPENDS f3d)
+       add_custom_target(man ALL DEPENDS ${MAN_OUTPUT_FILE})

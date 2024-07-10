@@ -1,0 +1,10 @@
+<package name="f3d" project="openSUSE:Factory">
+  <title>Fast and minimalist 3D viewer</title>
+  <description>
+F3D is a VTK-based 3D viewer following the KISS principle, so it is
+minimalist, efficient, has no GUI, has simple interaction mechanisms and is
+fully controllable using arguments in the command line.
+  </description>
+  <devel project="graphics" package="f3d"/>
+  <url>https://f3d-app.github.io/f3d</url>
+</package>
