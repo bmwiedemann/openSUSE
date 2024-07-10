@@ -1,0 +1,179 @@
+<revisionlist>
+  <revision rev="1" vrev="3">
+    <srcmd5>1e878a99a5da27fb2bb7c672067acca8</srcmd5>
+    <version>2.2.2</version>
+    <time>1168902740</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="57">
+    <srcmd5>fb41f8ebebec6228339525dcd661aa6f</srcmd5>
+    <version>2.2.2</version>
+    <time>1181859592</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="58">
+    <srcmd5>88d20ce4b115ee130f46e1914f6b360d</srcmd5>
+    <version>2.2.2</version>
+    <time>1182204951</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="59">
+    <srcmd5>592ca760ec6b3dd6cb6ccb196e96e06d</srcmd5>
+    <version>2.2.2</version>
+    <time>1182464333</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="137">
+    <srcmd5>592ca760ec6b3dd6cb6ccb196e96e06d</srcmd5>
+    <version>2.2.2</version>
+    <time>1182464333</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="138">
+    <srcmd5>d77f25aa16a0df8c193de3f2948b92bd</srcmd5>
+    <version>2.2.2</version>
+    <time>1245260046</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="139">
+    <srcmd5>b6d10cee4c245352c22bbec31a84d3be</srcmd5>
+    <version>2.2.2</version>
+    <time>1251298269</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/figlet based on submit request 18785 from user mlschroe
+</comment>
+  </revision>
+  <revision rev="8" vrev="141">
+    <srcmd5>b6d10cee4c245352c22bbec31a84d3be</srcmd5>
+    <version>2.2.2</version>
+    <time>1251298269</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/figlet based on submit request 18785 from user mlschroe
+</comment>
+  </revision>
+  <revision rev="9" vrev="142">
+    <srcmd5>b05ac10ed35b387c802dddf806376541</srcmd5>
+    <version>2.2.2</version>
+    <time>1268923524</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="10" vrev="144">
+    <srcmd5>b05ac10ed35b387c802dddf806376541</srcmd5>
+    <version>2.2.2</version>
+    <time>1278667344</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="145">
+    <srcmd5>b05ac10ed35b387c802dddf806376541</srcmd5>
+    <version>2.2.2</version>
+    <time>1278678574</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="12" vrev="148">
+    <srcmd5>b05ac10ed35b387c802dddf806376541</srcmd5>
+    <version>2.2.2</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="13" vrev="149">
+    <srcmd5>2b67fd9672ff4540caca18042e1b8aac</srcmd5>
+    <version>2.2.2</version>
+    <time>1299591423</time>
+    <user>saschpe</user>
+    <comment>Copy from IBS home:dec16180:ldig:branches:SUSE:Factory:Head/figlet based on submit request 11061 from user dec16180
+</comment>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>56b0fd8caa85845a7d43bb83e90153c8</srcmd5>
+    <version>2.2.4</version>
+    <time>1311148346</time>
+    <user>saschpe</user>
+    <comment>Update to version 2.2.4, Spec file updates, Rebased figlet-config.patch to apply cleanly, Removed figlet-random.patch and figlet-implicit.patch (fixed upstream) (forwarded request 76334 from adra)</comment>
+    <requestid>76375</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>4dba1ca922a35562e90e2a339f5d31d7</srcmd5>
+    <version>2.2.4</version>
+    <time>1316516029</time>
+    <user>saschpe</user>
+    <comment>- Apply packaging guidelines (remove redundant/obsolete
+  tags/sections from specfile, etc.) (forwarded request 83512 from jengelh)</comment>
+    <requestid>83732</requestid>
+  </revision>
+  <revision rev="16" vrev="4">
+    <srcmd5>4dba1ca922a35562e90e2a339f5d31d7</srcmd5>
+    <version>2.2.4</version>
+    <time>1319181876</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="17" vrev="5">
+    <srcmd5>f49f3641a870c6dcd19ca5a4f29c4688</srcmd5>
+    <version>2.2.4</version>
+    <time>1323191362</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="18" vrev="7">
+    <srcmd5>f49f3641a870c6dcd19ca5a4f29c4688</srcmd5>
+    <version>2.2.4</version>
+    <time>1340183326</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="19" vrev="9">
+    <srcmd5>f49f3641a870c6dcd19ca5a4f29c4688</srcmd5>
+    <version>2.2.4</version>
+    <time>1359108875</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="11">
+    <srcmd5>f49f3641a870c6dcd19ca5a4f29c4688</srcmd5>
+    <version>2.2.4</version>
+    <time>1379662337</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="13">
+    <srcmd5>f49f3641a870c6dcd19ca5a4f29c4688</srcmd5>
+    <version>2.2.4</version>
+    <time>1409300874</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>aae5b40a21d5ac15fa5556b57142cf6c</srcmd5>
+    <version>2.2.5</version>
+    <time>1426680505</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>291207</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>6be5e8a5f0eab7cb0426f55c0f8d8695</srcmd5>
+    <version>2.2.5</version>
+    <time>1496681340</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>500579</requestid>
+  </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>dd2b21fa546e71e51a4e541f649ccf4c</srcmd5>
+    <version>2.2.5</version>
+    <time>1685124865</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1088832</requestid>
+  </revision>
+  <revision rev="25" vrev="4">
+    <srcmd5>9144a235d2701365b328519eb27c2c21</srcmd5>
+    <version>2.2.5</version>
+    <time>1709493523</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1153950</requestid>
+  </revision>
+</revisionlist>

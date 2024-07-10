@@ -1,0 +1,161 @@
+-------------------------------------------------------------------
+Mon Feb 26 08:36:10 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
+Tue May 23 04:33:32 UTC 2023 - Jiri Srain <jsrain@suse.com>
+
+- adjust .spec-file to list all sources independently on the
+  build options
+- flag the license properly
+
+-------------------------------------------------------------------
+Wed May 31 09:57:37 UTC 2017 - bwiedemann@suse.com
+
+- delete file from tar without repacking
+  to make build reproducible
+
+-------------------------------------------------------------------
+Sat Mar 14 14:26:36 UTC 2015 - benoit.monin@gmx.fr
+
+- update to version 2.2.5:
+  * Add regression tests for uskata and jis0201 control files
+  * Properly escape minus signs in figlist(6) man page
+  * Fix chkfont coredump on invalid input
+  * Update ISO8859 map files to fix licensing issue raised in Debian
+    bugs 673096 and 674844
+  * Re-add missing figmagic and getopt.c files which were left out
+    of releases 2.2.3 and 2.2.4
+  * Fix output of test script in MacOS X
+- remove source figlet222-8859tables.tar.bz2: fixed upstream
+- update figlet-licpatch.sh: iso8859 files fixed updtream
+
+-------------------------------------------------------------------
+Sun Sep 18 17:17:12 UTC 2011 - jengelh@medozas.de
+
+- Apply packaging guidelines (remove redundant/obsolete
+  tags/sections from specfile, etc.)
+
+-------------------------------------------------------------------
+Sat Jul 16 18:49:38 UTC 2011 - asterios.dramis@gmail.com
+
+- Update to version 2.2.4:
+  * Add support to Sam Hocevar's TOIlet TLF fonts containing UTF-8
+    encoded Unicode characters.
+  * Add infocode 5 to list supported font formats
+  * Fix rendering error caused by the previous attempt to fix invalid
+    memory accesses when smushing at start of line
+  * New environment variable FIGLET_FONTDIR can be used to specify
+    the path to search for fonts
+  * Add regression tests
+  From 2.2.3:
+  * License changed from "Academic Free License" to "New BSD License"
+    (3-clause) as agreed by FIGlet authors
+  * New JIS X 0201 control file (Micah Cowan)
+  * Fix behavior of JIS0201 SHIFT-OUT and SHIFT-IN that were previouly
+    inverted (Micah Cowan)
+  * Fix memory violation when smushing at line start
+  * Fix handling of memory allocation errors
+  * Relicense Ed Hamrick zipio under the MIT license. This should
+    eliminate any concerns about redistribution of FIGlet as libre
+    software.
+  * Update Makefile to meet modern standards in variable naming, using
+    BINDIR as the pathname for binary files and reservind DESTDIR
+    as the extra prefix commonly used in package building.
+  * Add a Turbo C makefile, just because I had the compiler. (this
+    also tests portability to old compilers and foreign platforms)
+  * Add Jonathon Abbott's man pages for figlist, showfigfonts and
+    chkfont originally contributed to the Debian Project
+- Spec file updates:
+  * Changes based on spec-cleaner run.
+  * Changed License: to BSD-3-Clause.
+  * Install binaries in /usr/bin and fonts in /usr/share/figlet.
+  * Minor other updates.
+- Rebased figlet-config.patch to apply cleanly.
+- Removed figlet-random.patch and figlet-implicit.patch (fixed upstream).
+
+-------------------------------------------------------------------
+Mon Mar  7 19:13:36 UTC 2011 - cdenicolo@novell.com
+
+- license update: AFLv2.1
+  license is AFLv2.1
+
+-------------------------------------------------------------------
+Wed Aug 26 12:53:54 CEST 2009 - mls@suse.de
+
+- make patch0 usage consistent
+
+-------------------------------------------------------------------
+Thu Jun 21 13:39:31 CEST 2007 - pcerny@suse.cz
+
+- more update due to [#285171]
+
+-------------------------------------------------------------------
+Mon Jun 18 20:29:51 CEST 2007 - pcerny@suse.cz
+
+- updated some files from unicode.org [#285171]
+
+-------------------------------------------------------------------
+Thu Jun 14 19:21:26 CEST 2007 - pcerny@suse.cz
+
+- changed permissions for showfigfonts and figlist (#281419)
+
+-------------------------------------------------------------------
+Wed Jan 25 21:35:53 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue Nov  8 14:51:59 CET 2005 - dmueller@suse.de
+
+- don't build as root 
+
+-------------------------------------------------------------------
+Wed Jul 20 18:32:19 CEST 2005 - sbrabec@suse.cz
+
+- Updated to version 2.2.2.
+
+-------------------------------------------------------------------
+Tue Oct 15 18:06:59 CEST 2002 - sbrabec@suse.cz
+
+- Update to version 2.2.1.
+- Make build root install.
+- FHS fixes (use games specific paths).
+
+-------------------------------------------------------------------
+Thu Dec  6 01:55:44 CET 2001 - ro@suse.de
+
+- install manpage into right place 
+
+-------------------------------------------------------------------
+Mon Jul 16 14:05:11 CEST 2001 - rvasice@suse.cz
+
+- fix bug [9215]
+
+-------------------------------------------------------------------
+Tue May  8 11:59:19 CEST 2001 - mfabian@suse.de
+
+- bzip2 some sources
+
+-------------------------------------------------------------------
+Sat Dec  9 18:43:19 MET 2000 - nashif@suse.de
+
+- sorted 
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+-------------------------------------------------------------------
+Mon Apr 20 22:46:12 MEST 1998 - ray@suse.de
+
+- move to /usr/lib/figlet
+
+-------------------------------------------------------------------
+Tue Apr  7 12:45:09 MEST 1998 - ray@suse.de
+
+- new package figlet V2.2
+
+
