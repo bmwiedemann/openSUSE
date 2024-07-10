@@ -1,0 +1,123 @@
+-------------------------------------------------------------------
+Thu Jul  4 03:54:51 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Fix build without checks (boo#1227364)
+
+-------------------------------------------------------------------
+Thu Jun 27 16:41:48 UTC 2024 - Shawn Dunn <sfalken@opensuse.org>
+
+- Added %check section
+- Added explicit Requires: on libqt5-qtwayland (boo#1222993)
+
+-------------------------------------------------------------------
+Sun Mar 17 20:51:08 UTC 2024 - Shawn Dunn <sfalken@opensuse.org>
+
+- Split -layouts and -lang subpackages to better conform with
+  Factory packaging policy
+
+-------------------------------------------------------------------
+Fri Mar 15 14:23:22 UTC 2024 - Shawn Dunn <sfalken@opensuse.org>
+
+- Moved from OBS package maliit-keyboard2, for :Factory submission
+  the Project packagename needs to match %{name}
+
+-------------------------------------------------------------------
+Thu Mar 14 21:50:23 UTC 2024 - Shawn Dunn <sfalken@opensuse.org>
+
+- Removed BuildRequires: cmake(Qt5Feedback)
+  * Causes Buildfailure
+
+-------------------------------------------------------------------
+Sat May 27 14:59:20 UTC 2023 - Adrian Campos Garrido <adriancampos@teachelp.com>
+
+- Update to version 2.3.1
+
+-------------------------------------------------------------------
+Tue Feb 15 22:18:04 UTC 2022 - Andrés B.S. <andresbs@opensuse.org>
+
+- Changes for the version 2.2.0:
+  * Revert to simpler method of word engine plugin loading
+  * Improved layout switching behavior to cycle through all enabled
+    languages.
+  * Handle invalid values being set for active and enabled
+    languages.
+  * Remove previous-language setting
+  * Support for disabling keyboard hide and unhide animations
+  * Integrate emoji layout into main keyboard
+  * Fix the default hunspell dictionary path
+  * Fix Qt and glib deprecation warnings during compilation
+  * Add ẞ and missing currency symbols to German keyboard
+  * Fix build with hunspell disabled
+  * Synchronize changes from Lomiri keyboard fork
+  * Selection mode available when in cursor mode now
+  * Toolbar in cursor mode for undo/redo/select all and
+    cut/copy/paste.
+  * Belarusian layout
+  * Bulgarian layout
+  * English (Dvorak) layout
+  * French (Swiss) layout
+  * Lithuanian layout
+  * Macedonian layout
+  * Thai layout
+  * Turkish layout
+  * Fix compilation with presage enabled on c++17 default
+    compilers.
+  * Enable translations support
+  * Set haptic feedback duration to 100ms and intensity to 0.5
+  * Add haptic feedback to spacebar
+  * Use the correct kcm name for settings in Plasma Mobile
+
+-------------------------------------------------------------------
+Tue Nov  2 04:32:19 UTC 2021 - Andrés B.S. <andresbs@opensuse.org>
+
+- Revert package name from maliit-keyboard2 to maliit-keyboard.
+
+-------------------------------------------------------------------
+Wed Sep 22 03:29:06 UTC 2021 - Andrés B.S. <andresbs@opensuse.org>
+
+- Changes for the version 2.1.0:
+  * Remove label from language key on emoji keyboard
+  * Remove the unused and outdated styling support
+  * Support icon themes to load the icons
+  * Make sure Settings also work when running on Plasma
+  * left/right arrow keypress: Don't check for surrounding text
+  * Bypass argument count problem for newPredictionSuggestions and
+    newSpellingSuggestions
+  * Clean up unused code
+  * Let language features customize primary candidate index
+  * Recalculate primary candidates after refreshing candidate list
+  * Process pinyin sequence properly
+  * Handle partial candidate words in pinyin properly
+  * Allow force refreshing candidate list
+  * Allow delaying committing text when a candidate word is
+    selected
+  * Provide appstream information
+  * Use Q_ENUM
+  * Optimise symbols for Simplified Chinese
+  * Use only valid pinyin symbols on pinyin keyboard
+  * Fix incorrect key name in tablet.json
+  * Don't crash when no language plugin is loaded
+  * Drop the Ubuntu styling subpackage
+
+-------------------------------------------------------------------
+Fri Jun 25 17:41:46 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Recommend instead of Suggesting %{name}-emoji and
+  %{name}-styles-ubuntu. If -emoji is not installed and the user
+  changes to the emoji keyboard, it seems to be impossible to
+  change back to the normal keyboard (unless the configuration
+  files are changed manually). We probably should consider even
+  Requiring them, but probably Recommending is good enough.
+- Don't require the exact same release of the main package from
+  subpackages, a matching version number is enough.
+
+-------------------------------------------------------------------
+Fri Apr  2 18:19:34 UTC 2021 - Andrés B.S. <andresbs@opensuse.org>
+
+- Update to version 2.0, no changelog is provided. This solves
+  bsc#1184014.
+
+-------------------------------------------------------------------
+Thu Feb 11 16:59:30 UTC 2021 - Andrés B.S. <andresbs@opensuse.org>
+
+- "First" buid.

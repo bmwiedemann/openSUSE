@@ -1,0 +1,27 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>78a83ada7ebd0b4c0c3d377968cbcb6d</srcmd5>
+    <version>2.3.1</version>
+    <time>1710776692</time>
+    <user>anag+factory</user>
+    <comment>New package, provides OSK for Plasma Desktop</comment>
+    <requestid>1158821</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>e7d2353d8b66aa1118721badfa9d2d88</srcmd5>
+    <version>2.3.1</version>
+    <time>1719582422</time>
+    <user>anag+factory</user>
+    <comment>- Added %check section
+- Added explicit Requires: on libqt5-qtwayland (boo#1222993)</comment>
+    <requestid>1183643</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>c3979594386d77b5b2d9935ff49c82ab</srcmd5>
+    <version>2.3.1</version>
+    <time>1720458588</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1186209</requestid>
+  </revision>
+</revisionlist>
