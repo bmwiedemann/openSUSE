@@ -1,0 +1,30 @@
+From 01ae2ceee2688b308553b0ed0c5f9c1b6f27ad78 Mon Sep 17 00:00:00 2001
+From: Jonathan Kang <jonathankang@gnome.org>
+Date: Wed, 27 Jul 2022 17:15:31 +0800
+Subject: [PATCH] zypp: Disable upgrade-system support in SLE
+
+---
+ backends/zypp/pk-backend-zypp.cpp | 13 +++++++++++++
+ 1 file changed, 13 insertions(+)
+
+Index: PackageKit-1.2.8/backends/zypp/pk-backend-zypp.cpp
+===================================================================
+--- PackageKit-1.2.8.orig/backends/zypp/pk-backend-zypp.cpp
++++ PackageKit-1.2.8/backends/zypp/pk-backend-zypp.cpp
+@@ -3572,6 +3572,16 @@ pk_backend_upgrade_system_thread (PkBack
+ 		return;
+ 	}
+ 
++    release_name = pk_get_distro_name (&error);
++	if (release_name == NULL)
++		g_error ("Failed to parse os-release: %s", error->message);
++    if (g_str_has_prefix (release_name, "SLE")) {
++		pk_backend_job_error_code (job, PK_ERROR_ENUM_NOT_SUPPORTED,
++					   "upgrade-system is not supported in SLE.");
++
++		return;
++    }
++
+ 	ResPool pool = zypp_build_pool (zypp, TRUE);
+ 	PkRestartEnum restart = PK_RESTART_ENUM_NONE;
+ 	PoolStatusSaver saver;

@@ -1,0 +1,2053 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>63a1db0857529558033edcdb08c340c7</srcmd5>
+    <version>0.1.5git20071207a</version>
+    <time>1197948373</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>10c39960a63714886df7d186e4cd09d0</srcmd5>
+    <version>0.1.5</version>
+    <time>1199928978</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>bb11a34eaca1b1e3856560e85d219c76</srcmd5>
+    <version>0.1.9</version>
+    <time>1204226651</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>725fab12145a776ae6236fc40a60aad2</srcmd5>
+    <version>0.1.9</version>
+    <time>1204296753</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>51660a50659a3f0f40628a33cc99545a</srcmd5>
+    <version>0.1.9</version>
+    <time>1204764515</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>e439c4109d029cf9f5a69062e0d94638</srcmd5>
+    <version>0.1.9.1</version>
+    <time>1205535962</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>d345548c079c9180242b99ffc6900f4c</srcmd5>
+    <version>0.1.9.2</version>
+    <time>1206653387</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>d58cb8a75c4f165da722063f51c4cd1c</srcmd5>
+    <version>0.1.11</version>
+    <time>1207459606</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>ef91925d336024d438b70a9b82fb705a</srcmd5>
+    <version>0.2.0</version>
+    <time>1208204862</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="6">
+    <srcmd5>7dd248da79fd348811008620c874cb8a</srcmd5>
+    <version>0.2.0</version>
+    <time>1208698123</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="8">
+    <srcmd5>656ce005434fa524054a18249c2a5884</srcmd5>
+    <version>0.2.0</version>
+    <time>1209320036</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="11">
+    <srcmd5>48adab28787ae297700be40825ff0d5a</srcmd5>
+    <version>0.2.0</version>
+    <time>1209400504</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="15">
+    <srcmd5>1a1b5f9302e2b886552a9e0d59a660ff</srcmd5>
+    <version>0.2.0</version>
+    <time>1209942041</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>834fdee29f954731c1dabc39a5a0201a</srcmd5>
+    <version>0.2.1</version>
+    <time>1210517630</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>544bfb0463844ceb7314a395a1164e86</srcmd5>
+    <version>0.2.1</version>
+    <time>1210675224</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="9">
+    <srcmd5>79df973262c7da7a09d7690f126c5c36</srcmd5>
+    <version>0.2.1</version>
+    <time>1211621280</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="10">
+    <srcmd5>54e22ec66c130c4ac895bb110b7985a7</srcmd5>
+    <version>0.2.1</version>
+    <time>1211729508</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="17">
+    <srcmd5>31ffc1b128e1667c658a4ae7221880ea</srcmd5>
+    <version>0.2.1</version>
+    <time>1213094358</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="19" vrev="23">
+    <srcmd5>9ebdad2fbc74835e5b2d69a85411adeb</srcmd5>
+    <version>0.2.1</version>
+    <time>1215070770</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>3b31b9d03970e7150cd867e01753dd1d</srcmd5>
+    <version>0.2.3</version>
+    <time>1216997939</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="21" vrev="5">
+    <srcmd5>55e7deb965a56bda8f145d68d6e6c356</srcmd5>
+    <version>0.2.3</version>
+    <time>1217463097</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>9a9212cd52c24d4520df2960a692acd8</srcmd5>
+    <version>0.3.0</version>
+    <time>1219078754</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="23" vrev="5">
+    <srcmd5>8b5e9918749a7372077c9a30121c849c</srcmd5>
+    <version>0.3.0</version>
+    <time>1219347544</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="24" vrev="6">
+    <srcmd5>092c8e1008b0d9176609199664dfd0b2</srcmd5>
+    <version>0.3.0</version>
+    <time>1219448616</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>c39dd7a4a61ddb2f72868e204f3dbfdb</srcmd5>
+    <version>0.3.1</version>
+    <time>1220275632</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="26" vrev="9">
+    <srcmd5>96275bd25a25f17d16d6dde311b81c9f</srcmd5>
+    <version>0.3.1</version>
+    <time>1220980625</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>ab6cc57c0e3052329b70eb22c5437619</srcmd5>
+    <version>0.3.2</version>
+    <time>1221280670</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>2750e0fe3e2c76167971771cbaf89bc1</srcmd5>
+    <version>0.3.4</version>
+    <time>1222269556</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>82058db2bed8c1911c063ae5573905bc</srcmd5>
+    <version>0.3.5</version>
+    <time>1222733239</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>ce9ec814ab9f6397a3a33dce07c56d1e</srcmd5>
+    <version>0.3.6</version>
+    <time>1223571256</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>8b5ac1d05402db1d32d9b92838cbc7c8</srcmd5>
+    <version>0.3.7</version>
+    <time>1224000875</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>3e25b62c33b35fc51285e946b4be67d8</srcmd5>
+    <version>0.3.9</version>
+    <time>1225718169</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>204d8d317385ba59224f901625d9c7ff</srcmd5>
+    <version>0.3.9</version>
+    <time>1226171671</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>4d1578ea902717e2c8b96ea2664c8cd7</srcmd5>
+    <version>0.3.10</version>
+    <time>1227025742</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="35" vrev="2">
+    <srcmd5>067f5805d0a1cb8bb068d88f4a5f61a4</srcmd5>
+    <version>0.3.10</version>
+    <time>1227428943</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>2ead8541e1ee27d73566985c5729b082</srcmd5>
+    <version>0.3.11</version>
+    <time>1227626025</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>4876507ca9f54e1d7bfcf62907b4bc3c</srcmd5>
+    <version>0.3.12</version>
+    <time>1229349765</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>b7c3575e157107805314bf7705eb6af4</srcmd5>
+    <version>0.3.13</version>
+    <time>1231894486</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="39" vrev="4">
+    <srcmd5>c3c0770ed22ba411f261fccc24e2b1c5</srcmd5>
+    <version>0.3.13</version>
+    <time>1234314153</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>7f1ba0aa771629c3f69e47c06c7d7fab</srcmd5>
+    <version>0.4.3</version>
+    <time>1234744025</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="41" vrev="2">
+    <srcmd5>e96435e715ec86751abd75d8743ea7be</srcmd5>
+    <version>0.4.3</version>
+    <time>1235708344</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>1b59d7ccc4bab6f2d03884d4c6ba3f6e</srcmd5>
+    <version>0.4.4</version>
+    <time>1236037257</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>87c045c417046259ab4d4ce168bebeb6</srcmd5>
+    <version>0.4.5</version>
+    <time>1236802133</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>c21a25fcc748dea240b2b15d3a2579c3</srcmd5>
+    <version>0.4.6</version>
+    <time>1240532481</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>e0e24e1fbdf96c2273fcbe90e090d7f4</srcmd5>
+    <version>0.4.7</version>
+    <time>1242849304</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>297a61a0e480da088927645f8ce3e11b</srcmd5>
+    <version>0.4.8</version>
+    <time>1244824932</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="47" vrev="2">
+    <srcmd5>6872c84f9dcd3553c7f14bf2606a7b8b</srcmd5>
+    <version>0.4.8</version>
+    <time>1248079158</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>10c258716b12a8ba2119540acb27cded</srcmd5>
+    <version>0.5.0</version>
+    <time>1249067176</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>41cfba354001745f33dc536ca4a8be3e</srcmd5>
+    <version>0.5.1</version>
+    <time>1250514179</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/PackageKit based on submit request 17827 from user vuntz
+</comment>
+  </revision>
+  <revision rev="50" vrev="2">
+    <srcmd5>53a6f1dda53664a4ccb1a91a9f22e3fa</srcmd5>
+    <version>0.5.1</version>
+    <time>1255357298</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/PackageKit based on submit request 22191 from user dimstar
+</comment>
+  </revision>
+  <revision rev="51" vrev="4">
+    <srcmd5>53a6f1dda53664a4ccb1a91a9f22e3fa</srcmd5>
+    <version>0.5.1</version>
+    <time>1255357298</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/PackageKit based on submit request 22191 from user dimstar
+</comment>
+  </revision>
+  <revision rev="52" vrev="5">
+    <srcmd5>3b13c14e5d8a7142f5356c9bb61a6d80</srcmd5>
+    <version>0.5.1</version>
+    <time>1260260857</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/PackageKit based on submit request 25779 from user coolo
+</comment>
+  </revision>
+  <revision rev="53" vrev="6">
+    <srcmd5>c760b6591acad845314161c20e311075</srcmd5>
+    <version>0.5.1</version>
+    <time>1265270960</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/PackageKit based on submit request 30908 from user coolo
+</comment>
+  </revision>
+  <revision rev="54" vrev="7">
+    <srcmd5>eee7a9134b5a1b0e55ef81dfc905a26b</srcmd5>
+    <version>0.5.1</version>
+    <time>1265916138</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/PackageKit based on submit request 32223 from user vuntz
+</comment>
+  </revision>
+  <revision rev="55" vrev="8">
+    <srcmd5>f5eb1754f508fca4a4c58fa1ab300759</srcmd5>
+    <version>0.5.1</version>
+    <time>1268922803</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>69265ed784c3f115f5a7c8d167c9b7b2</srcmd5>
+    <version>0.6.3</version>
+    <time>1270056895</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/PackageKit based on submit request 36271 from user vuntz
+</comment>
+    <requestid>36271</requestid>
+  </revision>
+  <revision rev="57" vrev="2">
+    <srcmd5>a291517f0470cc2ad7ee170afa10e467</srcmd5>
+    <version>0.6.3</version>
+    <time>1271367430</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/PackageKit based on submit request 37621 from user vuntz
+</comment>
+    <requestid>37621</requestid>
+  </revision>
+  <revision rev="58" vrev="3">
+    <srcmd5>21024597677d72b739d5cc87fdef5c16</srcmd5>
+    <version>0.6.3</version>
+    <time>1272213774</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/PackageKit based on submit request 38675 from user coolo
+</comment>
+    <requestid>38675</requestid>
+  </revision>
+  <revision rev="59" vrev="4">
+    <srcmd5>e6f279719fc7e498821a33a4871048ad</srcmd5>
+    <version>0.6.3</version>
+    <time>1273092644</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/PackageKit based on submit request 39403 from user dimstar
+</comment>
+    <requestid>39403</requestid>
+  </revision>
+  <revision rev="60" vrev="5">
+    <srcmd5>2a80ddce1ccc176db9b9ba81d8daf177</srcmd5>
+    <version>0.6.3</version>
+    <time>1277717436</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/PackageKit based on submit request 42007 from user vuntz
+</comment>
+    <requestid>42007</requestid>
+  </revision>
+  <revision rev="61" vrev="6">
+    <srcmd5>2a80ddce1ccc176db9b9ba81d8daf177</srcmd5>
+    <version>0.6.3</version>
+    <time>1278667374</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="62" vrev="7">
+    <srcmd5>2a80ddce1ccc176db9b9ba81d8daf177</srcmd5>
+    <version>0.6.3</version>
+    <time>1278678607</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>0ffbc22975b36296d8d5122bec9ecad9</srcmd5>
+    <version>0.6.7</version>
+    <time>1281391349</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/PackageKit based on submit request 45134 from user vuntz
+</comment>
+    <requestid>45134</requestid>
+  </revision>
+  <revision rev="64" vrev="2">
+    <srcmd5>5aa29c30551a38d7c673be0e461b4f02</srcmd5>
+    <version>unknown</version>
+    <time>1284196601</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/PackageKit based on submit request 47714 from user vuntz
+</comment>
+    <requestid>47714</requestid>
+  </revision>
+  <revision rev="65" vrev="3">
+    <srcmd5>d5d62eca0ae89262e402a5fbed6ec5dd</srcmd5>
+    <version>0.6.8</version>
+    <time>1285279255</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/PackageKit based on submit request 48877 from user vuntz
+</comment>
+    <requestid>48877</requestid>
+  </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>9c28b07540bf3ccbe72876e7aa06237f</srcmd5>
+    <version>0.6.9</version>
+    <time>1287154168</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/PackageKit based on submit request 50639 from user vuntz
+</comment>
+    <requestid>50639</requestid>
+  </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>e4d961176aeb91fb9eefd7b2de84fad7</srcmd5>
+    <version>0.6.10</version>
+    <time>1290251569</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 53450 from user vuntz
+</comment>
+    <requestid>53450</requestid>
+  </revision>
+  <revision rev="68" vrev="2">
+    <srcmd5>95d6ad1ea43acbac921f23cff439c709</srcmd5>
+    <version>0.6.10</version>
+    <time>1291996767</time>
+    <user>darix</user>
+    <comment>Accepted submit request 55469 from user vuntz
+</comment>
+    <requestid>55469</requestid>
+  </revision>
+  <revision rev="69" vrev="3">
+    <srcmd5>fc2f59f4b9c4fc6882a008cb360e3587</srcmd5>
+    <version>0.6.10</version>
+    <time>1291996773</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 55469
+</comment>
+  </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>51aeca7625241ad2048cd89332f6fd6b</srcmd5>
+    <version>0.6.11</version>
+    <time>1294398624</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 57216 from user vuntz
+</comment>
+    <requestid>57216</requestid>
+  </revision>
+  <revision rev="71" vrev="2">
+    <srcmd5>e9fdd90e86a0ccdfda5c56f74819ac3a</srcmd5>
+    <version>0.6.11</version>
+    <time>1294398630</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 57216
+</comment>
+  </revision>
+  <revision rev="72" vrev="3">
+    <srcmd5>efdd1f952eb59b75acb61d4af37f8fe3</srcmd5>
+    <version>0.6.11</version>
+    <time>1297642115</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 61074 from user vuntz
+</comment>
+    <requestid>61074</requestid>
+  </revision>
+  <revision rev="73" vrev="4">
+    <srcmd5>57df68613fd3d7efbbc70640c49218bf</srcmd5>
+    <version>0.6.11</version>
+    <time>1297642121</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 61074
+</comment>
+  </revision>
+  <revision rev="74" vrev="7">
+    <srcmd5>57df68613fd3d7efbbc70640c49218bf</srcmd5>
+    <version>0.6.11</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="75" vrev="8">
+    <srcmd5>34823b0f92fd0a80261b34cd26dd379d</srcmd5>
+    <version>0.6.11</version>
+    <time>1298028873</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 61590 from user vuntz
+</comment>
+    <requestid>61590</requestid>
+  </revision>
+  <revision rev="76" vrev="9">
+    <srcmd5>44c1b4050c9fce10f6a3e6f19b2a937f</srcmd5>
+    <version>0.6.11</version>
+    <time>1298028882</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 61590
+</comment>
+  </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>4b444e0ba6f78baa6fabb38e12aa6177</srcmd5>
+    <version>0.6.12</version>
+    <time>1298038771</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 61911 from user vuntz
+</comment>
+    <requestid>61911</requestid>
+  </revision>
+  <revision rev="78" vrev="2">
+    <srcmd5>4c50adf3347f1e51fade4e41127f453f</srcmd5>
+    <version>0.6.12</version>
+    <time>1298810531</time>
+    <user>darix</user>
+    <comment>Accepted submit request 62908 from user coolo
+</comment>
+    <requestid>62908</requestid>
+  </revision>
+  <revision rev="79" vrev="3">
+    <srcmd5>6b7b6dc55012488714002071a05832a8</srcmd5>
+    <version>0.6.12</version>
+    <time>1298810539</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 62908
+</comment>
+  </revision>
+  <revision rev="80" vrev="2">
+    <srcmd5>917456df57478ef739518a60d4dde3b4</srcmd5>
+    <version>0.6.13</version>
+    <time>1304334958</time>
+    <user>saschpe</user>
+    <comment>Pushing G:F (including GNOME3)</comment>
+    <requestid>69001</requestid>
+  </revision>
+  <revision rev="81" vrev="3">
+    <srcmd5>d3545c4072ec870452e4adb92922604f</srcmd5>
+    <version>0.6.13</version>
+    <time>1304334968</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 69001
+</comment>
+  </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>da4f016fe0e7038309908ebb97fec3d6</srcmd5>
+    <version>0.6.14</version>
+    <time>1306840356</time>
+    <user>saschpe</user>
+    <comment>Pushing G:F</comment>
+    <requestid>71970</requestid>
+  </revision>
+  <revision rev="83" vrev="2">
+    <srcmd5>ed4714aee40b87687f25faaad29a91fa</srcmd5>
+    <version>0.6.14</version>
+    <time>1306840369</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 71970
+</comment>
+  </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>f9b88a5303aa4b84bf62eb0e1530405d</srcmd5>
+    <version>0.6.15</version>
+    <time>1307691153</time>
+    <user>saschpe</user>
+    <comment>New version, should fix build</comment>
+    <requestid>73217</requestid>
+  </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>2796987c066a4edc81b6563d8a129a45</srcmd5>
+    <version>0.6.16</version>
+    <time>1310115916</time>
+    <user>saschpe</user>
+    <comment>Pushing G:F, including GNOME 3.1.3</comment>
+    <requestid>75697</requestid>
+  </revision>
+  <revision rev="86" vrev="1">
+    <srcmd5>a5034544f0f01f3594d0bf1b4abda960</srcmd5>
+    <version>0.6.17</version>
+    <time>1312651532</time>
+    <user>saschpe</user>
+    <comment>Update to 0.6.17</comment>
+    <requestid>78019</requestid>
+  </revision>
+  <revision rev="87" vrev="2">
+    <srcmd5>2f590e7389d5a516bb054a1a4411feb0</srcmd5>
+    <version>0.6.17</version>
+    <time>1313149024</time>
+    <user>saschpe</user>
+    <comment>Build against npapi-sdk.</comment>
+    <requestid>78624</requestid>
+  </revision>
+  <revision rev="88" vrev="3">
+    <srcmd5>14a55409bc457f60748f48ea9481f62a</srcmd5>
+    <version>0.6.17</version>
+    <time>1313149034</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 78624
+</comment>
+  </revision>
+  <revision rev="89" vrev="1">
+    <srcmd5>7c5cdc14a19b26aace3539f35444662b</srcmd5>
+    <version>0.6.18</version>
+    <time>1315566527</time>
+    <user>saschpe</user>
+    <comment>Pushing most of G:F</comment>
+    <requestid>81435</requestid>
+  </revision>
+  <revision rev="90" vrev="2">
+    <srcmd5>3048f8a8cb55a46ce8f855f32760aa32</srcmd5>
+    <version>0.6.18</version>
+    <time>1317744372</time>
+    <user>oertel</user>
+    <comment>Add explicit shared-mime-info BuildRequires (forwarded request 86161 from vuntz)</comment>
+    <requestid>86334</requestid>
+  </revision>
+  <revision rev="91" vrev="1">
+    <srcmd5>243296909b32a774c98c5e664bfb17d2</srcmd5>
+    <version>0.6.19</version>
+    <time>1317828893</time>
+    <user>lrupp</user>
+    <comment>Update to 0.6.19 (forwarded request 86618 from vuntz)</comment>
+    <requestid>86643</requestid>
+  </revision>
+  <revision rev="92" vrev="3">
+    <srcmd5>243296909b32a774c98c5e664bfb17d2</srcmd5>
+    <version>0.6.19</version>
+    <time>1319181755</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="93" vrev="4">
+    <srcmd5>5631fb10ec442d861cbaaaa9701369e6</srcmd5>
+    <version>0.6.19</version>
+    <time>1320770689</time>
+    <user>coolo</user>
+    <comment>Fix PackageKit slowness</comment>
+    <requestid>90513</requestid>
+  </revision>
+  <revision rev="94" vrev="1">
+    <srcmd5>529ab679f61c0a6c1c8f16f10499bf30</srcmd5>
+    <version>0.7.1</version>
+    <time>1326104170</time>
+    <user>coolo</user>
+    <comment>Pushing G:F</comment>
+    <requestid>98968</requestid>
+  </revision>
+  <revision rev="95" vrev="1">
+    <srcmd5>648ce2a01b3c88f7ea57957f6c413186</srcmd5>
+    <version>0.7.2</version>
+    <time>1327484330</time>
+    <user>coolo</user>
+    <comment>Pushing bits of G:F that are fine (mostly update to 3.3.4)</comment>
+    <requestid>101159</requestid>
+  </revision>
+  <revision rev="96" vrev="2">
+    <srcmd5>8523941c3c3c2b393de3361f0600c0c1</srcmd5>
+    <version>0.7.2</version>
+    <time>1329405652</time>
+    <user>coolo</user>
+    <comment>Move dbus interface files + split zypp backend in subpackage (forwarded request 105284 from dimstar)</comment>
+    <requestid>105339</requestid>
+  </revision>
+  <revision rev="97" vrev="1">
+    <srcmd5>f6e499c47f131cc3e6a7bdb0efeed044</srcmd5>
+    <version>0.7.3</version>
+    <time>1332147545</time>
+    <user>coolo</user>
+    <comment>Pushing G:F</comment>
+    <requestid>109377</requestid>
+  </revision>
+  <revision rev="98" vrev="1">
+    <srcmd5>4d7508272d914a8bdefe1b233896766f</srcmd5>
+    <version>0.7.4</version>
+    <time>1337588758</time>
+    <user>coolo</user>
+    <comment>push G:F</comment>
+    <requestid>121408</requestid>
+  </revision>
+  <revision rev="99" vrev="3">
+    <srcmd5>4d7508272d914a8bdefe1b233896766f</srcmd5>
+    <version>0.7.4</version>
+    <time>1340183155</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="100" vrev="4">
+    <srcmd5>e298f3196772c947f7602cf372b51f1f</srcmd5>
+    <version>0.7.4</version>
+    <time>1340723405</time>
+    <user>coolo</user>
+    <comment>Fix using upstream patch (forwarded request 125584 from Zaitor)</comment>
+    <requestid>125706</requestid>
+  </revision>
+  <revision rev="101" vrev="5">
+    <srcmd5>2d000e814c0788a415092e3e53912acd</srcmd5>
+    <version>0.7.4</version>
+    <time>1343673449</time>
+    <user>coolo</user>
+    <comment>push for 12.2 - fixes reported bugs</comment>
+    <requestid>129331</requestid>
+  </revision>
+  <revision rev="102" vrev="6">
+    <srcmd5>ec4b3158b523c4906d48031cc653a915</srcmd5>
+    <version>0.7.4</version>
+    <time>1344065012</time>
+    <user>coolo</user>
+    <comment>Mini fixup of spelling error... should also go to 12.2, to minimize confusion</comment>
+    <requestid>129650</requestid>
+  </revision>
+  <revision rev="103" vrev="7">
+    <srcmd5>df6b63e57719ce21f9dc1752c14fb920</srcmd5>
+    <version>0.7.4</version>
+    <time>1345973590</time>
+    <user>namtrac</user>
+    <comment>Add PackageKit-bnc775651-ignore-accept-eula.patch to fix crash after accepting EULA (bnc#775651) (forwarded request 131450 from dimstar)</comment>
+    <requestid>131451</requestid>
+  </revision>
+  <revision rev="104" vrev="8">
+    <srcmd5>da5bec708eab9ae3affbc86dac075d26</srcmd5>
+    <version>0.7.4</version>
+    <time>1347376626</time>
+    <user>coolo</user>
+    <comment>license update: GPL-2.0+ and LGPL-2.1+
+Library portions are LGPL-2.1+ licensed (forwarded request 132611 from dimstar)</comment>
+    <requestid>133549</requestid>
+  </revision>
+  <revision rev="105" vrev="9">
+    <srcmd5>00ca4b45588c2a279b127f7f64fbd88b</srcmd5>
+    <version>0.7.4</version>
+    <time>1349368880</time>
+    <user>coolo</user>
+    <comment>Pushing GNOME:Factory towards openSUSE:Factory</comment>
+    <requestid>136776</requestid>
+  </revision>
+  <revision rev="106" vrev="10">
+    <srcmd5>58102f0e540fca5ae6eb962d2f62423a</srcmd5>
+    <version>0.7.4</version>
+    <time>1353305227</time>
+    <user>coolo</user>
+    <comment>- Add PackageKit-no-polkit-backend-1.patch: Do not look for no
+  longer existing polkit-backend-1. Fixes build with polkit &gt;= 106. (forwarded request 141604 from Zaitor)</comment>
+    <requestid>141725</requestid>
+  </revision>
+  <revision rev="107" vrev="1">
+    <srcmd5>c28f5252faf0669ad38c94251e085b79</srcmd5>
+    <version>0.8.7</version>
+    <time>1358666594</time>
+    <user>coolo</user>
+    <comment>Update to 0.8.7 - with a bunch of tested bugfixes</comment>
+    <requestid>149240</requestid>
+  </revision>
+  <revision rev="108" vrev="2">
+    <srcmd5>8ae32499518ad38c2ff2e6a4a73ea9c8</srcmd5>
+    <version>0.8.7</version>
+    <time>1358872826</time>
+    <user>coolo</user>
+    <comment>Many more PK goodies for Factory...</comment>
+    <requestid>149417</requestid>
+  </revision>
+  <revision rev="109" vrev="3">
+    <srcmd5>9b500e70f109cb322adaab079b3e6ea2</srcmd5>
+    <version>0.8.7</version>
+    <time>1359020836</time>
+    <user>coolo</user>
+    <comment>Some more nice patches for PK / zypp</comment>
+    <requestid>149731</requestid>
+  </revision>
+  <revision rev="110" vrev="5">
+    <srcmd5>9b500e70f109cb322adaab079b3e6ea2</srcmd5>
+    <version>0.8.7</version>
+    <time>1359108624</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="111" vrev="6">
+    <srcmd5>b43c996dc1552fde521a84196e5729b6</srcmd5>
+    <version>0.8.7</version>
+    <time>1359465991</time>
+    <user>coolo</user>
+    <comment>Forward fixes from coolo...</comment>
+    <requestid>150104</requestid>
+  </revision>
+  <revision rev="112" vrev="7">
+    <srcmd5>69ec9f581b225c7b90d89dac131e8f3e</srcmd5>
+    <version>0.8.7</version>
+    <time>1360670040</time>
+    <user>coolo</user>
+    <comment>- Add one more patch from git (bnc#735864):
+  + 0013-zypp-remap-PK-provides-into-rpm-provides-as-the-zif-.patch</comment>
+    <requestid>155147</requestid>
+  </revision>
+  <revision rev="113" vrev="8">
+    <srcmd5>e8d56a03a389286220ca9effa6c7411a</srcmd5>
+    <version>0.8.7</version>
+    <time>1361349228</time>
+    <user>coolo</user>
+    <comment>Wanted for 12.3
+
+- Add PackageKit-allow-to-disable-systemd-updates.patch: Disabling
+  systemd-updates has the effect that HAVE_SYSTEMD is completely
+  ignored, causing build failures.
+- Introduce with_systemd_updates (currently set to 0) to have an
+  easy way enabling/disabling systemd offline updates. For openSUSE
+  12.3 this is not fully ready, and instead of the UI offering it
+  and having any kind of side effect, we for now decide to disable
+  it. The defines conditionally does:
+  + Pass --disable-systemd-updates to configure
+  + Add a section to the %post scripts, removing remnant files if
+    left there.
+  + Adjust the files section.</comment>
+    <requestid>155878</requestid>
+  </revision>
+  <revision rev="114" vrev="9">
+    <srcmd5>b36e975be8d2839199420540fc771b1c</srcmd5>
+    <version>0.8.7</version>
+    <time>1362119969</time>
+    <user>coolo</user>
+    <comment>Resubmit with auto-rebased patch 0014</comment>
+    <requestid>156866</requestid>
+  </revision>
+  <revision rev="115" vrev="10">
+    <srcmd5>3c66d39c1cbbdf13c84f7454804da6e7</srcmd5>
+    <version>0.8.7</version>
+    <time>1362900970</time>
+    <user>coolo</user>
+    <comment>- add 0015-zypp-only-allow-updates.patch from git (bnc#804983) (forwarded request 157980 from vuntz)</comment>
+    <requestid>158140</requestid>
+  </revision>
+  <revision rev="116" vrev="11">
+    <srcmd5>dfb40b447f400a31e09c239b8d3e3aa4</srcmd5>
+    <version>0.8.7</version>
+    <time>1365928611</time>
+    <user>coolo</user>
+    <comment>- Drop fix-policies-opensuse.patch: these settings aren't being
+  used anymore as they're overridden by our settings in the package 
+  polkit-default-privs.</comment>
+    <requestid>163728</requestid>
+  </revision>
+  <revision rev="117" vrev="1">
+    <srcmd5>c592bc6e82e399a511ee82ff366756da</srcmd5>
+    <version>0.8.8</version>
+    <time>1368696112</time>
+    <user>coolo</user>
+    <comment>Update to 0.8.8 - tweaked as per nitpick (forwarded request 174890 from dimstar)</comment>
+    <requestid>174891</requestid>
+  </revision>
+  <revision rev="118" vrev="1">
+    <srcmd5>0f00f755d4ef0dcef65cf27822a2e266</srcmd5>
+    <version>0.8.9</version>
+    <time>1369735160</time>
+    <user>coolo</user>
+    <comment>Update to 0.9.9 (forwarded request 176399 from Zaitor)</comment>
+    <requestid>176468</requestid>
+  </revision>
+  <revision rev="119" vrev="1">
+    <srcmd5>61496e9caef977dabc4623d378d310d6</srcmd5>
+    <version>0.8.10</version>
+    <time>1377875645</time>
+    <user>coolo</user>
+    <comment>Repush... seems not to work much worse than the previous version... (forwarded request 196301 from dimstar)</comment>
+    <requestid>196302</requestid>
+  </revision>
+  <revision rev="120" vrev="1">
+    <srcmd5>c77c7013791a8f74b2d28f60dc66ff23</srcmd5>
+    <version>0.8.11</version>
+    <time>1378716799</time>
+    <user>coolo</user>
+    <comment>- Add PackageKit-dbus-location.patch: Look for dbus socket in /run
+  instead of /var/run (bnc#829944). (forwarded request 197851 from Zaitor)</comment>
+    <requestid>197856</requestid>
+  </revision>
+  <revision rev="121" vrev="3">
+    <srcmd5>c77c7013791a8f74b2d28f60dc66ff23</srcmd5>
+    <version>0.8.11</version>
+    <time>1379661920</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="122" vrev="4">
+    <srcmd5>e5f513bfd551dfe84f02a2e856e3013d</srcmd5>
+    <version>0.8.11</version>
+    <time>1380297369</time>
+    <user>coolo</user>
+    <comment>Push GNOME 3.10.0</comment>
+    <requestid>200873</requestid>
+  </revision>
+  <revision rev="123" vrev="5">
+    <srcmd5>68cf72cddf0e312730ab3295c4084377</srcmd5>
+    <version>0.8.11</version>
+    <time>1380778981</time>
+    <user>coolo</user>
+    <comment>- Set BUILD_CNF to 0: in openSUSE, we use the sep.
+  command-not-found package for the same purpose. The existing
+  handler anyway never worked, as it checked for the presence of
+  /usr/libexec/packagekitd, which is not a valid openSUSE location. (forwarded request 201398 from Zaitor)</comment>
+    <requestid>201412</requestid>
+  </revision>
+  <revision rev="124" vrev="1">
+    <srcmd5>403585da6ef14e85126e2577b70f0149</srcmd5>
+    <version>0.8.12</version>
+    <time>1383545330</time>
+    <user>coolo</user>
+    <comment>Update</comment>
+    <requestid>205380</requestid>
+  </revision>
+  <revision rev="125" vrev="1">
+    <srcmd5>2dfbeb4c6bf68358f7f2f882e26ec91a</srcmd5>
+    <version>0.8.13</version>
+    <time>1387485533</time>
+    <user>coolo</user>
+    <comment>- Add PackageKit-dbus-interface-annotation.patch: annotate
+  GetHistory call for Qt bindings to compile.
+
+- Update to version 0.8.13:
+  + New Features:
+    - Add a systemd packagekit.service file.
+    - Provide a way to run the spawned backend under strace.
+  + Improvements to various backends: hawkey, poldek and yum.
+  + Bugfixes:
+    - Fix the --with-systemdsystemunitdir option to actually work.
+    - Do not abort the daemon if we can't write to a database.
+    - Do not proxy the action states when simulating.
+    - Don't crash if ProxyHTTP is set.
+    - Fix a small memory leak spotted by clang.
+    - Fix critical warning when killing a backend with new versions
+      of GLib.
+    - Fix memory leak when running plugins.
+    - Fix memory leak when using new versions of GLib.
+    - Ignore the prefix when dealing with the PackageKit prepared
+      update.
+    - Make the debugging print formatter thread safe.
+    - Remove duplicate assignment of pkcon '-y' option.
+    - browser-plugin: Never use the application icon.
+    - systemd-updates: Log all warnings and notices to the journal.
+    - systemd-updates: Show some text progress.
+- Add pkgconfig(libsystemd-journal) BuildRequires: new dependency.</comment>
+    <requestid>211665</requestid>
+  </revision>
+  <revision rev="126" vrev="1">
+    <srcmd5>17ce4132d00d878c509d1d8998d46591</srcmd5>
+    <version>0.8.15</version>
+    <time>1388395462</time>
+    <user>coolo</user>
+    <comment>- Update to version 0.8.15:
+  + Lots of bugfixes and cleanups, no real new features.
+  + Changes in the following backends: alpm, aptcc, hawkey and yum.
+  + Bugsfixes:
+    - Do not assert when re-using a PkPackage instance.
+    - Do not overrride CLEANFILES from gtk-doc, append to it.
+    - Do not update the role when doing the test transaction.
+    - For gtk-doc DOC_SOURCE_DIR is relative to builddir.
+    - For gtk-doc add missing setup_files.
+    - Ignore progressbar start text if it unchanged.
+    - Only show some status values in pkcon after a small delay.
+    - Resolve internally in pkcon to provide a better output.
+    - Update CVE regexp for new CVE format.
+    - Use syslog() correctly.
+    - Use the filter when removing and installing software using
+      pkcon.
+    - Use the system database location when compiling with
+      --enable-local.
+
+- Update to version 0.8.14:
+  + We've removed and deprecated the parts of PackageKit that
+    either didn't work very well, or simply were not being used.
+    The library and soname stays the same, but a lot of daemon
+    cruft has been removed.
+  + A lot of the work above focused on speed, and packagekitd is
+    substantially faster on most backends now. 100ms here, 50ms
+    there; things feel lot more snappy doing the most common
+    operations.
+  + Libraries:
+    - Do not add two refs on the PkPackage when in a sack. (forwarded request 212225 from Zaitor)</comment>
+    <requestid>212290</requestid>
+  </revision>
+  <revision rev="127" vrev="1">
+    <srcmd5>68169bd181576856064e68a6289940f1</srcmd5>
+    <version>0.8.16</version>
+    <time>1390380248</time>
+    <user>coolo</user>
+    <comment>Update to 0.8.16 (forwarded request 214519 from Zaitor)</comment>
+    <requestid>214629</requestid>
+  </revision>
+  <revision rev="128" vrev="2">
+    <srcmd5>c2ba5edd8a36c5b9e20be5e505cf66aa</srcmd5>
+    <version>0.8.16</version>
+    <time>1394103718</time>
+    <user>coolo</user>
+    <comment>Fix typo (forwarded request 224704 from namtrac)</comment>
+    <requestid>224707</requestid>
+  </revision>
+  <revision rev="129" vrev="3">
+    <srcmd5>6f7f40019e9190267766ec81126f7edb</srcmd5>
+    <version>0.8.16</version>
+    <time>1399317418</time>
+    <user>coolo</user>
+    <comment>Push GNOME:Factory - GNOME 3.12.1</comment>
+    <requestid>231792</requestid>
+  </revision>
+  <revision rev="130" vrev="4">
+    <srcmd5>cfbd838d823c43b998ba1ccaf54604c5</srcmd5>
+    <version>0.8.16</version>
+    <time>1403121876</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>236920</requestid>
+  </revision>
+  <revision rev="131" vrev="1">
+    <srcmd5>19296736e7b52ec473a0b74ff5803e67</srcmd5>
+    <version>0.8.17</version>
+    <time>1405521389</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>240882</requestid>
+  </revision>
+  <revision rev="132" vrev="2">
+    <srcmd5>06039c091ac36d51cfd0fb3bee909650</srcmd5>
+    <version>0.8.17</version>
+    <time>1407744571</time>
+    <user>lnussel</user>
+    <comment>1</comment>
+    <requestid>243827</requestid>
+  </revision>
+  <revision rev="133" vrev="4">
+    <srcmd5>06039c091ac36d51cfd0fb3bee909650</srcmd5>
+    <version>0.8.17</version>
+    <time>1409300440</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="134" vrev="1">
+    <srcmd5>1eb7e1b1128820e860fbb13aefcc3d99</srcmd5>
+    <version>1.0.0</version>
+    <time>1411485408</time>
+    <user>coolo</user>
+    <comment> (forwarded request 249119 from Mailaender)</comment>
+    <requestid>250132</requestid>
+  </revision>
+  <revision rev="135" vrev="2">
+    <srcmd5>0064f5f3ea0c3bd82baed7c48a3416d1</srcmd5>
+    <version>1.0.0</version>
+    <time>1412625877</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>253907</requestid>
+  </revision>
+  <revision rev="136" vrev="3">
+    <srcmd5>b3a9336bf924dd25b46b3a5f4f21c747</srcmd5>
+    <version>1.0.0</version>
+    <time>1413060096</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>254910</requestid>
+  </revision>
+  <revision rev="137" vrev="4">
+    <srcmd5>04277517144f2d159a5e6477c9a9d4b5</srcmd5>
+    <version>1.0.0</version>
+    <time>1413739649</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>257288</requestid>
+  </revision>
+  <revision rev="138" vrev="1">
+    <srcmd5>fecb8d7454830fcc6cb16f6815173ab3</srcmd5>
+    <version>1.0.1</version>
+    <time>1414613353</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>258549</requestid>
+  </revision>
+  <revision rev="139" vrev="1">
+    <srcmd5>337c7e57054eea0bc819107255ade029</srcmd5>
+    <version>1.0.3</version>
+    <time>1417160757</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>262591</requestid>
+  </revision>
+  <revision rev="140" vrev="2">
+    <srcmd5>23fe064dc86153551eb5be545d01f750</srcmd5>
+    <version>1.0.3</version>
+    <time>1418978393</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>264636</requestid>
+  </revision>
+  <revision rev="141" vrev="1">
+    <srcmd5>ce4909ce8f9fc143470cc747d6583bfd</srcmd5>
+    <version>1.0.4</version>
+    <time>1422358542</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>282837</requestid>
+  </revision>
+  <revision rev="142" vrev="1">
+    <srcmd5>e641bf2f0117db0f2d040bdad1490817</srcmd5>
+    <version>1.0.5</version>
+    <time>1423812861</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>285553</requestid>
+  </revision>
+  <revision rev="143" vrev="1">
+    <srcmd5>cbe4fb87affcb72c817bf2876a5ffbb2</srcmd5>
+    <version>1.0.6</version>
+    <time>1428790066</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 1.0.6</comment>
+    <requestid>294840</requestid>
+  </revision>
+  <revision rev="144" vrev="1">
+    <srcmd5>4cd79f6834b4133f2e57dcffee153f4b</srcmd5>
+    <version>1.0.7</version>
+    <time>1437657700</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>317668</requestid>
+  </revision>
+  <revision rev="145" vrev="1">
+    <srcmd5>990a869e3bec6acf12b8db2621a8d987</srcmd5>
+    <version>1.0.10</version>
+    <time>1444142082</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 333031 from Zaitor)</comment>
+    <requestid>333088</requestid>
+  </revision>
+  <revision rev="146" vrev="2">
+    <srcmd5>c86a81f0c570727995020a5e959e369e</srcmd5>
+    <version>1.0.10</version>
+    <time>1447353372</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>343410</requestid>
+  </revision>
+  <revision rev="147" vrev="3">
+    <srcmd5>f977483c57183e13a9de87623f5b9b6d</srcmd5>
+    <version>1.0.10</version>
+    <time>1447882405</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>344265</requestid>
+  </revision>
+  <revision rev="148" vrev="1">
+    <srcmd5>a9ad1593496d599df33c32fc96707e9c</srcmd5>
+    <version>1.0.11</version>
+    <time>1450363922</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>348381</requestid>
+  </revision>
+  <revision rev="149" vrev="1">
+    <srcmd5>a6602b53cb9a68d3aecdbea1efb36762</srcmd5>
+    <version>1.1.0</version>
+    <time>1459254478</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push of project GNOME:Factory</comment>
+    <requestid>364595</requestid>
+  </revision>
+  <revision rev="150" vrev="1">
+    <srcmd5>1de5a3fd903a434f743800d5df02aec7</srcmd5>
+    <version>1.1.1</version>
+    <time>1462443117</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>393294</requestid>
+  </revision>
+  <revision rev="151" vrev="2">
+    <srcmd5>52c2fb04b6328e8147cb1c2b1173a72c</srcmd5>
+    <version>1.1.1</version>
+    <time>1464017383</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>396599</requestid>
+  </revision>
+  <revision rev="152" vrev="1">
+    <srcmd5>baffca8b9f1036e085d7f21302cad3f4</srcmd5>
+    <version>1.1.3</version>
+    <time>1471345277</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>408689</requestid>
+  </revision>
+  <revision rev="153" vrev="2">
+    <srcmd5>aac874c26c4bde238fb6140fb8c6b608</srcmd5>
+    <version>1.1.3</version>
+    <time>1471855731</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>419727</requestid>
+  </revision>
+  <revision rev="154" vrev="3">
+    <srcmd5>b7694a823b099de95035a9c85259e407</srcmd5>
+    <version>1.1.3</version>
+    <time>1472379419</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>422076</requestid>
+  </revision>
+  <revision rev="155" vrev="4">
+    <srcmd5>8f6b59c9566c4c02ddd8dcacbfec70c8</srcmd5>
+    <version>1.1.3</version>
+    <time>1473102891</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>424168</requestid>
+  </revision>
+  <revision rev="156" vrev="1">
+    <srcmd5>e6240c175566d2a4ec068765817b42ca</srcmd5>
+    <version>1.1.4</version>
+    <time>1474475954</time>
+    <user>dimstar_suse</user>
+    <comment>resub_typo_fixed (forwarded request 428852 from dimstar)</comment>
+    <requestid>429126</requestid>
+  </revision>
+  <revision rev="157" vrev="1">
+    <srcmd5>07e8395a5532f7e24d4e1102a7350adc</srcmd5>
+    <version>1.1.5</version>
+    <time>1485380187</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>451938</requestid>
+  </revision>
+  <revision rev="158" vrev="2">
+    <srcmd5>d58b40e33267853cc47a0dc634e9ce59</srcmd5>
+    <version>1.1.5</version>
+    <time>1490219960</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push of project GNOME:Factory</comment>
+    <requestid>461114</requestid>
+  </revision>
+  <revision rev="159" vrev="3">
+    <srcmd5>d022283784babf69d0bd9d8dd5de945a</srcmd5>
+    <version>1.1.5</version>
+    <time>1496681364</time>
+    <user>dimstar_suse</user>
+    <comment>Add bugfix patch</comment>
+    <requestid>500675</requestid>
+  </revision>
+  <revision rev="160" vrev="1">
+    <srcmd5>f2b7ef0c75c971d7ad0ae0235c19459a</srcmd5>
+    <version>1.1.6</version>
+    <time>1497272975</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>501801</requestid>
+  </revision>
+  <revision rev="161" vrev="2">
+    <srcmd5>bf9edfb18196bbf0b6a8c70804b44af4</srcmd5>
+    <version>1.1.6</version>
+    <time>1499291213</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>507067</requestid>
+  </revision>
+  <revision rev="162" vrev="1">
+    <srcmd5>6d5dd726753c2302d751d8bd4f1e56a0</srcmd5>
+    <version>1.1.7</version>
+    <time>1505332510</time>
+    <user>dimstar_suse</user>
+    <comment>Resub post review (forwarded request 523641 from Zaitor)</comment>
+    <requestid>523667</requestid>
+  </revision>
+  <revision rev="163" vrev="2">
+    <srcmd5>a7c48b6c0acfc725a1438ac26cb02fcf</srcmd5>
+    <version>1.1.7</version>
+    <time>1506340472</time>
+    <user>dimstar_suse</user>
+    <comment>- No longer BuildRequires libqt4-devel, this part is in a separate
+  project since version 0.8.6. (forwarded request 527661 from fcrozat)</comment>
+    <requestid>527712</requestid>
+  </revision>
+  <revision rev="164" vrev="3">
+    <srcmd5>daaf8c7338a74f7802fca3ec3a4dcfd0</srcmd5>
+    <version>1.1.7</version>
+    <time>1507896542</time>
+    <user>dimstar_suse</user>
+    <comment>- Add PK-zypp-return-error-invalid-package-ids.patch: Return error
+  if invalid package IDs are detected in zypp backend (bsc#981011). (forwarded request 532632 from JonathanKang)</comment>
+    <requestid>532850</requestid>
+  </revision>
+  <revision rev="165" vrev="4">
+    <srcmd5>32adba31bde3b5a6eb1ba45dd047d8c6</srcmd5>
+    <version>1.1.7</version>
+    <time>1509530786</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>537471</requestid>
+  </revision>
+  <revision rev="166" vrev="5">
+    <srcmd5>d5b4690d3a11db8248ebba470f5a4671</srcmd5>
+    <version>1.1.7</version>
+    <time>1510321469</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop py_requires from PackageKit: there are no python scripts in
+  the main package.
+- Drop python-devel BuildRequires: we do not package the python
+  packagend anyway.
+- Have post/postun script for PackageKit-gtk3-module post/postun
+  only for suse_version &amp;lt; 1330: newer versions have file triggers
+  to trigger schema compilation. (forwarded request 538433 from dimstar)</comment>
+    <requestid>539461</requestid>
+  </revision>
+  <revision rev="167" vrev="6">
+    <srcmd5>ea98268bbdbdd0bcc45bbc2e307b4992</srcmd5>
+    <version>1.1.7</version>
+    <time>1512055925</time>
+    <user>dimstar_suse</user>
+    <comment>Replace references to /var/adm/fillup-templates with new %_fillupdir macro (boo#1069468) (forwarded request 544647 from RBrownSUSE)</comment>
+    <requestid>544850</requestid>
+  </revision>
+  <revision rev="168" vrev="7">
+    <srcmd5>bf40a6c75394bc45cdab4cafb8d764fd</srcmd5>
+    <version>1.1.7</version>
+    <time>1512847567</time>
+    <user>dimstar_suse</user>
+    <comment>- Add PackageKit-cron-without-sleep.patch: Do not sleep while
+  running scripts called by cron. openSUSE's run-crons has
+  sufficient logic to not have all machines start at the same time
+  (boo#1071521).
+
+- Replace references to /var/adm/fillup-templates with new (forwarded request 554795 from dimstar)</comment>
+    <requestid>555203</requestid>
+  </revision>
+  <revision rev="169" vrev="1">
+    <srcmd5>470685cbfa83b0f7adb8daf072c152e0</srcmd5>
+    <version>1.1.8</version>
+    <time>1519554848</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 1.1.8 (forwarded request 578903 from dimstar)</comment>
+    <requestid>579026</requestid>
+  </revision>
+  <revision rev="170" vrev="2">
+    <srcmd5>e2e1551ff37b15078569e96af05ca4e2</srcmd5>
+    <version>1.1.8</version>
+    <time>1520253175</time>
+    <user>dimstar_suse</user>
+    <comment>spec-cleaner (forwarded request 581427 from dimstar)</comment>
+    <requestid>581646</requestid>
+  </revision>
+  <revision rev="171" vrev="1">
+    <srcmd5>f3c5b5bece69b1d8b1efa66a96ca4017</srcmd5>
+    <version>1.1.9</version>
+    <time>1520852992</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push of project GNOME:Next (forwarded request 583612 from dimstar)</comment>
+    <requestid>584774</requestid>
+  </revision>
+  <revision rev="172" vrev="2">
+    <srcmd5>57aeb6ff374a92d164e4b50f24893492</srcmd5>
+    <version>1.1.9</version>
+    <time>1522060655</time>
+    <user>dimstar_suse</user>
+    <comment>t-u-u / boo#1086036 (forwarded request 589276 from dimstar)</comment>
+    <requestid>589966</requestid>
+  </revision>
+  <revision rev="173" vrev="3">
+    <srcmd5>04523620c08bce1c8e770a6ca84be8dc</srcmd5>
+    <version>1.1.9</version>
+    <time>1523126912</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove pkgconfig(npapi-sdk) BuildRequires:, it is no longer
+  needed as browser plugin is not built since 1.1.0.</comment>
+    <requestid>593804</requestid>
+  </revision>
+  <revision rev="174" vrev="4">
+    <srcmd5>e959918cddde915d7db38ad67a2d61f5</srcmd5>
+    <version>1.1.9</version>
+    <time>1524144370</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable offline-update when building for SLE. (forwarded request 594880 from fcrozat)</comment>
+    <requestid>597329</requestid>
+  </revision>
+  <revision rev="175" vrev="1">
+    <srcmd5>8f284f28f2a5a1eefd9f04d425051c46</srcmd5>
+    <version>1.1.10</version>
+    <time>1525121399</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.10:
+  + Notes: This release fixes CVE-2018-1106 which is a moderate
+    security issue (boo#1086936).
+  + Backends:
+    - zypp:
+      . Implement GetDetailsLocal in zypp backend.
+      . Improve refresh-cache function in zypp backend.
+    - Various changes related to aptcc and dnf.
+- Drop PackageKit-zypp-backend-improve-refresh-cache.patch and
+  PackageKit-zypp-backend-get-details-local.patch: Fixed upstream.
+- Drop NetworkManager-devel BuildRequires: Not used since version
+  1.1.7. (forwarded request 600975 from dimstar)</comment>
+    <requestid>601533</requestid>
+  </revision>
+  <revision rev="176" vrev="2">
+    <srcmd5>f0bafd0d01efc14ca3cd5f5a31759e1c</srcmd5>
+    <version>1.1.10</version>
+    <time>1525960007</time>
+    <user>dimstar_suse</user>
+    <comment>- offline updates should be disabled in Leap too, just like SLE (forwarded request 605101 from lnussel)</comment>
+    <requestid>605349</requestid>
+  </revision>
+  <revision rev="177" vrev="3">
+    <srcmd5>e6cac4fbcc277d2e264cae54e6ba1f14</srcmd5>
+    <version>1.1.10</version>
+    <time>1534543139</time>
+    <user>dimstar_suse</user>
+    <comment>- Add PackageKit.tmpfiles: Use tmpfile.d to make sure PackageKit
+  doesn't package files in /var (bsc#1098042). (forwarded request 628418 from JonathanKang)</comment>
+    <requestid>628553</requestid>
+  </revision>
+  <revision rev="178" vrev="4">
+    <srcmd5>5f6b805f6ff359db47c575e969b36cc2</srcmd5>
+    <version>1.1.10</version>
+    <time>1536148054</time>
+    <user>dimstar_suse</user>
+    <comment>- Add PackageKit-get-files-local.patch: Implement GetFilesLocal
+  method in zypp backend (bsc#1097581). (forwarded request 632436 from xiaoguang_wang)</comment>
+    <requestid>632820</requestid>
+  </revision>
+  <revision rev="179" vrev="5">
+    <srcmd5>49015e921437020daa652884644bdbac</srcmd5>
+    <version>1.1.10</version>
+    <time>1540319669</time>
+    <user>dimstar_suse</user>
+    <comment>- Add files/directories created by tmpfiles.d under /var as ghost
+  entries to the rpm filelist. (forwarded request 642250 from alarrosa)</comment>
+    <requestid>642594</requestid>
+  </revision>
+  <revision rev="180" vrev="1">
+    <srcmd5>818170d62337ca9f5a2d24966aec805a</srcmd5>
+    <version>1.1.12</version>
+    <time>1543998975</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>652493</requestid>
+  </revision>
+  <revision rev="181" vrev="2">
+    <srcmd5>099cac5666d02f4b9372983332ad95c6</srcmd5>
+    <version>1.1.12</version>
+    <time>1545996814</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop PackageKit-avoid-endless-loop-on-autoupdate.patch: With
+  PackageKit-return-on-transactions-going-backwards.patch and
+  PackageKit-remove-default-thread-check.patch, EULA promt works
+  without any issue (bsc#1038425).
+- Add PackageKit-remove-default-thread-check.patch: Remove the
+  pk_is_thread_default() check in pk_backend_is_eula_valid() so
+  that we can call it in zypp backend without any issue
+  (gh#hughsie/PackageKit#301, bsc#1038425).
+- Add PackageKit-return-on-transactions-going-backwards.patch:
+  transaction: Return directly when its state is going backwards
+  (gh#hughsie/PackageKit#301, bsc#1038425).
+</comment>
+    <requestid>661478</requestid>
+  </revision>
+  <revision rev="182" vrev="3">
+    <srcmd5>7d23bca5b6fa51b4953a74ac6e22559e</srcmd5>
+    <version>1.1.12</version>
+    <time>1548537461</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>668676</requestid>
+  </revision>
+  <revision rev="183" vrev="4">
+    <srcmd5>72cdb9ceadfb7952fc9c57277a935c7a</srcmd5>
+    <version>1.1.12</version>
+    <time>1550402364</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>676261</requestid>
+  </revision>
+  <revision rev="184" vrev="5">
+    <srcmd5>4061363f5c0cee2d56224a0e16b30a19</srcmd5>
+    <version>1.1.12</version>
+    <time>1552042748</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>681224</requestid>
+  </revision>
+  <revision rev="185" vrev="6">
+    <srcmd5>baac4513e4368c7cd921e6f44393d327</srcmd5>
+    <version>1.1.12</version>
+    <time>1553263024</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>686197</requestid>
+  </revision>
+  <revision rev="186" vrev="7">
+    <srcmd5>62bc095837cb158821c6e42a5c28038e</srcmd5>
+    <version>1.1.12</version>
+    <time>1553611050</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>687765</requestid>
+  </revision>
+  <revision rev="187" vrev="8">
+    <srcmd5>01464bc778998d0f2362d4cb704045eb</srcmd5>
+    <version>1.1.12</version>
+    <time>1557472525</time>
+    <user>dimstar_suse</user>
+    <comment>- Add zypp-perform-actions-disallowed-by-update-in-upgrade-mode.patch
+  to fix switch to upgrade mode in the backend (forwarded request 697219 from hellcp)</comment>
+    <requestid>701598</requestid>
+  </revision>
+  <revision rev="188" vrev="9">
+    <srcmd5>5bd6ff41c599cf07871f2db7a0fe7fa9</srcmd5>
+    <version>1.1.12</version>
+    <time>1561643585</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>710955</requestid>
+  </revision>
+  <revision rev="189" vrev="10">
+    <srcmd5>b8ae90f3122e7ff9b34c2b686d1e6e51</srcmd5>
+    <version>1.1.12</version>
+    <time>1566478981</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>724486</requestid>
+  </revision>
+  <revision rev="190" vrev="11">
+    <srcmd5>02e882add6684bef6d1baf3b354aacfc</srcmd5>
+    <version>1.1.12</version>
+    <time>1567000870</time>
+    <user>dimstar_suse</user>
+    <comment>Resub rebased (forwarded request 724505 from iznogood)</comment>
+    <requestid>725537</requestid>
+  </revision>
+  <revision rev="191" vrev="12">
+    <srcmd5>b6b0307360d44a50d6a5c1377c26ff90</srcmd5>
+    <version>1.1.12</version>
+    <time>1568189896</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>729386</requestid>
+  </revision>
+  <revision rev="192" vrev="13">
+    <srcmd5>64488120f73f5d2636a21723fd0fc18f</srcmd5>
+    <version>1.1.12</version>
+    <time>1571310355</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>738470</requestid>
+  </revision>
+  <revision rev="193" vrev="14">
+    <srcmd5>5146937615021683d83e719fb0051425</srcmd5>
+    <version>1.1.12</version>
+    <time>1572442729</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>742520</requestid>
+  </revision>
+  <revision rev="194" vrev="15">
+    <srcmd5>9673a330ac8e44dca5f73b75a37aa617</srcmd5>
+    <version>1.1.12</version>
+    <time>1573051581</time>
+    <user>dimstar_suse</user>
+    <comment>Revert - https://bugzilla.opensuse.org/show_bug.cgi?id=1155624</comment>
+  </revision>
+  <revision rev="195" vrev="16">
+    <srcmd5>564499e6b59334b2487c4e397513e63f</srcmd5>
+    <version>1.1.12</version>
+    <time>1575039382</time>
+    <user>dimstar_suse</user>
+    <comment>handle tumbleweed upgrade in update-packages as well so that it doesn't break other component. (forwarded request 750038 from JonathanKang)</comment>
+    <requestid>750926</requestid>
+  </revision>
+  <revision rev="196" vrev="1">
+    <srcmd5>82822e3501de2511cbd38eea4ff92437</srcmd5>
+    <version>1.1.13</version>
+    <time>1583311071</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.13
+  + New APIs for pk-client-helper in packagekit-glib2
+  + dnf, zypp: Various fixes related to upgrades
+  + Added support for user services
+  + New plymouth &quot;system-upgrade&quot; and &quot;reboot&quot; modes used now
+  + Add mutex lock to protect EULAs array
+  + Correct bug tracker links on website
+  + Support non-x86 arches in gstreamer helper
+  + List installed, removed and obsoleted packages in pkcon get-updates
+  + Properly mark obsoleted packages when simulating upgrade
+  + Provide information about obsoleted packages
+  + Return directly when its state is going backwards
+  + Shrink the progress bar to fit when run in small spaces
+  + Improve the 'using' documentation with a link to API
+- Remove upstreamed patches:
+  + PackageKit-add-mutex-lock-to-protect-backend-priv-eulas.patch
+  + PackageKit-return-on-transactions-going-backwards.patch
+  + PackageKit-zypp-dont-set-upgrade-mode-on-updating-specific-packages.patch
+  + PackageKit-zypp-fix-newest-filter.patch
+  + PackageKit-zypp-fix-what-provides-newest-filter.patch
+  + PackageKit-zypp-get-files-string-array.patch
+  + PackageKit-zypp-get-updates-dup-or-up.patch
+  + PackageKit-zypp-upgrade-system.patch
+  + zypp-perform-actions-disallowed-by-update-in-upgrade-mode.patch
+  + 0001-dnf-Don-t-override-DnfContext-s-release_ver-for-the-.patch
+  + 0001-dnf-Invalidate-the-sack-cache-after-downloading-new-.patch
+  + 0001-offline-update-Use-new-plymouth-system-upgrade-and-r.patch
+- Add new openSUSE specific patches for DNF backend:
+  + PackageKit-dnf-Add-openSUSE-vendor.patch
+  + PackageKit-dnf-Add-support-for-AppStream-repodata-basenames-use.patch
+- Remove old openSUSE patches for the DNF backend:
+  + 1001-dnf-Add-openSUSE-Tumbleweed-vendor.patch
+  + 1002-dnf-Add-support-for-AppStream-repodata-basenames-use.patch
+- Refresh patches:
+  + PackageKit-drop-gtk2.patch
+- Build PackageKit DNF backend
+- Add patches to support backend
+  + 0001-dnf-Invalidate-the-sack-cache-after-downloading-new-.patch
+  + 0001-dnf-Don-t-override-DnfContext-s-release_ver-for-the-.patch
+  + 1001-dnf-Add-openSUSE-Tumbleweed-vendor.patch 
+  + 1002-dnf-Add-support-for-AppStream-repodata-basenames-use.patch
+- Add patch to improve offline updates with plymouth
+  + 0001-offline-update-Use-new-plymouth-system-upgrade-and-r.patch
+- Fix Supplements to use modern rich Supplements statements
+- No longer recommend -lang: supplements are in use</comment>
+    <requestid>780741</requestid>
+  </revision>
+  <revision rev="197" vrev="17">
+    <srcmd5>c7b02c926f512731dae36635811dee23</srcmd5>
+    <version>1.1.12</version>
+    <time>1583478119</time>
+    <user>dimstar_suse</user>
+    <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=115562</comment>
+  </revision>
+  <revision rev="198" vrev="2">
+    <srcmd5>fb5061cf9b6a7e8a81ad83bcf1016e73</srcmd5>
+    <version>1.1.13</version>
+    <time>1583947956</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>782591</requestid>
+  </revision>
+  <revision rev="199" vrev="3">
+    <srcmd5>42de8b59617bd2bf5a81165cb51c194f</srcmd5>
+    <version>1.1.13</version>
+    <time>1584350156</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>784412</requestid>
+  </revision>
+  <revision rev="200" vrev="4">
+    <srcmd5>8fab18e2c88961df74417a2b2ac2db45</srcmd5>
+    <version>1.1.13</version>
+    <time>1588185733</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove is_opensuse macro in spec file to sync SLE and openSUSE
+  differences(jsc#SLE-11804). (forwarded request 796143 from JonathanKang)</comment>
+    <requestid>798329</requestid>
+  </revision>
+  <revision rev="201" vrev="5">
+    <srcmd5>fcb0076ab345ca44c5fc8013d01729df</srcmd5>
+    <version>1.1.13</version>
+    <time>1591652849</time>
+    <user>dimstar_suse</user>
+    <comment>- Add PackageKit-zypp-ensure-ResPool-before-is_tumbleweed.patch:
+  zypp: Ensure ResPool is built before is_tumbleweed()
+  (gh#/hughsie/PackageKit/commit/5c0fd7d7). (forwarded request 808875 from JonathanKang)</comment>
+    <requestid>811416</requestid>
+  </revision>
+  <revision rev="202" vrev="6">
+    <srcmd5>c11fdf2346f33f7984ed98a6a32b1a9c</srcmd5>
+    <version>1.1.13</version>
+    <time>1592469342</time>
+    <user>dimstar_suse</user>
+    <comment>- Add PackageKit-pkcon-exit-with-retval-5.patch: pkcon: exit with
+  retval 5 if no packages needed be installed
+  (gh#/hughsie/PackageKit#405 bsc#1170562). (forwarded request 814795 from JonathanKang)</comment>
+    <requestid>815257</requestid>
+  </revision>
+  <revision rev="203" vrev="7">
+    <srcmd5>8af6147f3931b0a56d31f0f81ba50205</srcmd5>
+    <version>1.1.13</version>
+    <time>1597519005</time>
+    <user>dimstar_suse</user>
+    <comment>- Add PackageKit-zypp-cleanup-tmp-files.patch: zypp: Cleanup
+  temporary files when PackageKit quits
+  (gh#/hughsie/PackageKit/commit/807f410, bsc#1169739). (forwarded request 826192 from JonathanKang)</comment>
+    <requestid>826638</requestid>
+  </revision>
+  <revision rev="204" vrev="1">
+    <srcmd5>07374b2f049ab9b18ade5fc65883f2bd</srcmd5>
+    <version>1.2.1</version>
+    <time>1600078394</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.2.1
+  + Port to the meson build system
+  + Remove the GTK2 gtk-module support
+  + Do not do failable actions in the PkDbus constructor
+  + Do not do failable actions in the PkTransaction constructor
+  + Revert &quot;Shutdown the daemon on idle by default&quot;
+  + Actually merge in the PolicyKit translation
+  + Fix setting libexecdir for command-not-found helper
+  + Fix command-not-found handling arguments with spaces
+  + Use SQL statements for queries with input
+  + Exit pkcon with retval 5 if no packages needed be installed
+  + dnf: Load all the repos and vars directories
+  + dnf: Add vendor configuration for openSUSE
+  + zypp: Ignore already installed package when installing
+  + zypp: Remove upgrade-system implementation
+  + zypp: Clean up temporary files when PK quits
+  + zypp: Ensure ResPool is built before is_tumbleweed()
+- Remove upstreamed patches
+  + PackageKit-dnf-Add-openSUSE-vendor.patch
+  + PackageKit-drop-gtk2.patch
+  + PackageKit-pkcon-exit-with-retval-5.patch
+  + PackageKit-zypp-cleanup-tmp-files.patch
+  + PackageKit-zypp-ensure-ResPool-before-is_tumbleweed.patch
+  + PackageKit-zypp-ignore-already-installed-packages.patch
+  + PackageKit-zypp-update-packages-in-all-openSUSE.patch
+- Add patch from upstream
+  + PackageKit-test-Install-required-helper-files.patch
+- Refresh existing patches
+  + PackageKit-remove-polkit-rules.patch
+  + PackageKit-systemd-timers.patch
+- Clean up legacy cruft, assume openSUSE Leap 15 or newer (forwarded request 832819 from Pharaoh_Atem)</comment>
+    <requestid>833698</requestid>
+  </revision>
+  <revision rev="205" vrev="2">
+    <srcmd5>ba2b80dc3a41ce31a708d41e9c2b0ea9</srcmd5>
+    <version>1.2.1</version>
+    <time>1601043914</time>
+    <user>dimstar_suse</user>
+    <comment>- Add PackageKit-zypp-set-PATH.patch: zypp: Set PATH variable
+  (gh#/hughsie/PackageKit/commit/2fb7fc6e, bsc#1175315). (forwarded request 835757 from JonathanKang)</comment>
+    <requestid>836045</requestid>
+  </revision>
+  <revision rev="206" vrev="3">
+    <srcmd5>9dc162f2b90a853e4dceb3167a1e9d78</srcmd5>
+    <version>1.2.1</version>
+    <time>1602762429</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>841480</requestid>
+  </revision>
+  <revision rev="207" vrev="4">
+    <srcmd5>b95c3cd8d1d3e695c4f7a6e4f5f81bb3</srcmd5>
+    <version>1.2.1</version>
+    <time>1604306314</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>844984</requestid>
+  </revision>
+  <revision rev="208" vrev="5">
+    <srcmd5>1b7f9b1bcd253c10262a4a3fbb5a6ca2</srcmd5>
+    <version>1.2.1</version>
+    <time>1604926626</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>846473</requestid>
+  </revision>
+  <revision rev="209" vrev="1">
+    <srcmd5>3706d0254bbedc869656f98bf605c2f2</srcmd5>
+    <version>1.2.2</version>
+    <time>1606649025</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.2.2:
+  + New Features: Notify the service manager when it's beginning to
+    shutdown.
+  + Bugfixes:
+    - Fix possible information disclosure (CVE-2020-16121).
+    - Install required test helper files.
+    - Silence meson warning by bumping minimum version.
+  + Changes related to zypp backend:
+    - Don’t refresh repos again when actually updating packages.
+    - Erase tmp repo from pool after local installation.
+    - Set PATH variable.
+- Drop upstream merged patches:
+  + PackageKit-test-Install-required-helper-files.patch
+  + PackageKit-zypp-dont-refresh-repos-on-offline-update.patch
+  + PackageKit-zypp-set-PATH.patch
+  + PackageKit-bsc1169739.patch (forwarded request 850961 from dimstar)</comment>
+    <requestid>851059</requestid>
+  </revision>
+  <revision rev="210" vrev="2">
+    <srcmd5>abac385cbeb15dedc0f49043e130e8d1</srcmd5>
+    <version>1.2.2</version>
+    <time>1607196976</time>
+    <user>dimstar_suse</user>
+    <comment>bring back PackageKit-zypp-cleanup-tmp-files.patch to really fix bsc#1169739 (forwarded request 852493 from JonathanKang)</comment>
+    <requestid>852650</requestid>
+  </revision>
+  <revision rev="211" vrev="3">
+    <srcmd5>7411de7707929567c31713a3cc48f749</srcmd5>
+    <version>1.2.2</version>
+    <time>1609344727</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 859160 from iznogood)</comment>
+    <requestid>859196</requestid>
+  </revision>
+  <revision rev="212" vrev="4">
+    <srcmd5>3095e3783f7677a12265184a4600e4a7</srcmd5>
+    <version>1.2.2</version>
+    <time>1611928623</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>867217</requestid>
+  </revision>
+  <revision rev="213" vrev="5">
+    <srcmd5>bb2eae179b40936ec4699e2158fa3957</srcmd5>
+    <version>1.2.2</version>
+    <time>1612009735</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not build cnf: scout-c-n-f is still pending, having PK-cnf
+  obsolete cnf is unacceptable.</comment>
+  </revision>
+  <revision rev="214" vrev="6">
+    <srcmd5>e2cd04dc0573ffa8b424c1a1b4059d3c</srcmd5>
+    <version>1.2.2</version>
+    <time>1613511328</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>870844</requestid>
+  </revision>
+  <revision rev="215" vrev="7">
+    <srcmd5>4de1728c025ded8be5ecc6213d35866d</srcmd5>
+    <version>1.2.2</version>
+    <time>1615362367</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>876239</requestid>
+  </revision>
+  <revision rev="216" vrev="8">
+    <srcmd5>28ee0858fd5d4e526e0a2e814a8e27cc</srcmd5>
+    <version>1.2.2</version>
+    <time>1615905775</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>879127</requestid>
+  </revision>
+  <revision rev="217" vrev="9">
+    <srcmd5>ed79bbfe5e662f7dc965488fc0c4430a</srcmd5>
+    <version>1.2.2</version>
+    <time>1616598580</time>
+    <user>dimstar_suse</user>
+    <comment>- Add PackageKit-remove-transaction-size-limit.patch: Remove large transaction 
+  size sanity check (gh#hughsie/PackageKit/commit#ac5c8660) (forwarded request 879289 from develop7)</comment>
+    <requestid>879958</requestid>
+  </revision>
+  <revision rev="218" vrev="10">
+    <srcmd5>c868f345ceda18ef686800187ccd9d3b</srcmd5>
+    <version>1.2.2</version>
+    <time>1618387767</time>
+    <user>dimstar_suse</user>
+    <comment>- Add PackageKit-cancel-transaction-if-daemon-disappears.patch:
+  Fix hangs in packagekit-glib2 client if daemon crashes
+  (gh#hughsie/PackageKit#464). (forwarded request 881432 from JonathanKang)</comment>
+    <requestid>884643</requestid>
+  </revision>
+  <revision rev="219" vrev="11">
+    <srcmd5>18d576c9d133e9ec7c6013a7ecb2d639</srcmd5>
+    <version>1.2.2</version>
+    <time>1627587075</time>
+    <user>dimstar_suse</user>
+    <comment>Synchronize the changelog with Leap and SLE. (forwarded request 909038 from yfjiang)</comment>
+    <requestid>909087</requestid>
+  </revision>
+  <revision rev="220" vrev="12">
+    <srcmd5>155e60cfe9902ffc24805ca21c807999</srcmd5>
+    <version>1.2.2</version>
+    <time>1627680131</time>
+    <user>dimstar_suse</user>
+    <comment>Rearrange the changelog layout to fit ibs requirement of incremental changelog compared to sle-15-sp3. (forwarded request 909178 from yfjiang)</comment>
+    <requestid>909319</requestid>
+  </revision>
+  <revision rev="221" vrev="13">
+    <srcmd5>0f7127cb37969681842d62d8adf11e75</srcmd5>
+    <version>1.2.2</version>
+    <time>1629917786</time>
+    <user>dimstar_suse</user>
+    <comment>- Add PackageKit-zypp-fix-crash-with-empty-search-string.patch:
+  zypp: Fix crash when search string is NULL (bsc#1179287,
+  gh#hughsie/PackageKit/commit#21ccf49). (forwarded request 913226 from JonathanKang)</comment>
+    <requestid>913703</requestid>
+  </revision>
+  <revision rev="222" vrev="1">
+    <srcmd5>7271905cee36c7757d14a36aac7fa336</srcmd5>
+    <version>1.2.4</version>
+    <time>1636218953</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 929652 from iznogood)</comment>
+    <requestid>929706</requestid>
+  </revision>
+  <revision rev="223" vrev="2">
+    <srcmd5>377ec16bf05ad3b5caeb55b6f2170def</srcmd5>
+    <version>1.2.4</version>
+    <time>1636931177</time>
+    <user>dimstar_suse</user>
+    <comment>- Add PackageKit-zypp-c++17.patch: Fix build failure when building
+  with libzypp &gt; 17.28.5 and gcc &lt; 11
+  (gh#hughsie/PackageKit/commit/1a6bb6ae6, bsc#1192349).</comment>
+    <requestid>930858</requestid>
+  </revision>
+  <revision rev="224" vrev="3">
+    <srcmd5>f33dd8a134d36a8d53abc5b5849dd60e</srcmd5>
+    <version>1.2.4</version>
+    <time>1637227987</time>
+    <user>dimstar_suse</user>
+    <comment>- Apply all patches unconditonally: PackageKit-zypp-c++17.patch is
+  merged in upstream git and thus does not justify to be
+  conditionally applied.
+- Switching back to autosetup, as this works without conditional
+  patches.
+
+- Rewrite prep phase to not use autopatch -M: SLE15/Leap15's RPM
+  version does not support that syntax yet.</comment>
+    <requestid>931779</requestid>
+  </revision>
+  <revision rev="225" vrev="1">
+    <srcmd5>93c1c5d5a6bc5655c3e5a378990c03e0</srcmd5>
+    <version>1.2.5</version>
+    <time>1653417050</time>
+    <user>dimstar_suse</user>
+    <comment>Tweak .changes, resub (forwarded request 978286 from iznogood)</comment>
+    <requestid>978663</requestid>
+  </revision>
+  <revision rev="226" vrev="2">
+    <srcmd5>122fe9095e5994312befbbc5a2a07d8f</srcmd5>
+    <version>1.2.5</version>
+    <time>1654097628</time>
+    <user>dimstar_suse</user>
+    <comment>- Add PackageKit-zypp-locked-packages.patch: zypp: ignore locked
+  packages(gh#hughsie/PackageKit#543, boo#1199895). (forwarded request 979408 from JonathanKang)</comment>
+    <requestid>980018</requestid>
+  </revision>
+  <revision rev="227" vrev="3">
+    <srcmd5>9e4f2c94bf6d4c5f972fd21d1e52848b</srcmd5>
+    <version>1.2.5</version>
+    <time>1656927146</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>986278</requestid>
+  </revision>
+  <revision rev="228" vrev="4">
+    <srcmd5>ab1c031022a41f4a0218e9c82b5955ed</srcmd5>
+    <version>1.2.5</version>
+    <time>1658857363</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>990416</requestid>
+  </revision>
+  <revision rev="229" vrev="5">
+    <srcmd5>515338b95136edeaf1c4581ed6ff290c</srcmd5>
+    <version>1.2.5</version>
+    <time>1660144370</time>
+    <user>dimstar_suse</user>
+    <comment>- Modified PackageKit.spec: bump libzypp dependency version to
+  17.31.0.
+- Add PackageKit-zypp-avoid-statuReset.patch: zypp: Avoid
+  statuReset() on locked packages
+  (gh#PackageKit/PackageKit/commit/dd1964255, bsc#1199895).
+- Add PackageKit-zypp-disable-upgrade-system-in-sle.patch: zypp:
+  Disable upgrade-system support in SLE
+  (gh#PackageKit/PackageKit/commit/0fcd820c2).
+- Add PackageKit-zypp-restore-pool-status-after-simulating-update.patch:
+  zypp: restore pool status after simulating an update
+  (gh#PackageKit/PackageKit/commit/2b61a6649, bsc#1199895).
+- Add PackageKit-zypp-fix-is-tumbleweed-check.patch: zypp: build
+  the pool before calling is_tumbleweed()
+  (gh#PackageKit/PackageKit/commit/146890153).
+- Add PackageKit-zypp-update-libzypp-dependency-version.patch:
+  zypp: update libzypp dependency version
+  (gh#PackageKit/PackageKit/commit/58c7c0285, bsc#1199895). (forwarded request 992722 from JonathanKang)</comment>
+    <requestid>993936</requestid>
+  </revision>
+  <revision rev="230" vrev="6">
+    <srcmd5>2927723727279eccc0cd16271e4dfeab</srcmd5>
+    <version>1.2.5</version>
+    <time>1662239914</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1000811</requestid>
+  </revision>
+  <revision rev="231" vrev="7">
+    <srcmd5>76d6dc2c534fca78c146539af79fd3d0</srcmd5>
+    <version>1.2.5</version>
+    <time>1664797463</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1007202</requestid>
+  </revision>
+  <revision rev="232" vrev="8">
+    <srcmd5>5226124a1ffc3f69b9cb3177e409cce9</srcmd5>
+    <version>1.2.5</version>
+    <time>1673108166</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1056384</requestid>
+  </revision>
+  <revision rev="233" vrev="9">
+    <srcmd5>ea95e9647f8093af3a072d6e12141940</srcmd5>
+    <version>1.2.5</version>
+    <time>1678902788</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1071264</requestid>
+  </revision>
+  <revision rev="234" vrev="10">
+    <srcmd5>58f49ab1fbbad133abbffb7ec62ab4c9</srcmd5>
+    <version>1.2.5</version>
+    <time>1695208867</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1109790 from iznogood
+
+Pushing GNOME 45.rc packages</comment>
+    <requestid>1110395</requestid>
+  </revision>
+  <revision rev="235" vrev="1">
+    <srcmd5>d592d113ffcc7d880ac953ae79483a9a</srcmd5>
+    <version>1.2.8</version>
+    <time>1701289183</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1129730</requestid>
+  </revision>
+  <revision rev="236" vrev="2">
+    <srcmd5>e85afacfc09f085560149edebe030aa5</srcmd5>
+    <version>1.2.8</version>
+    <time>1705611104</time>
+    <user>anag+factory</user>
+    <comment> (forwarded request 1139464 from dimstar)</comment>
+    <requestid>1139465</requestid>
+  </revision>
+  <revision rev="237" vrev="3">
+    <srcmd5>b75c4f71b4fc9a178ef6e65488b04dcc</srcmd5>
+    <version>1.2.8</version>
+    <time>1709762637</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop baselibs.conf: the -32bit packages are no longer needed and
+  have not been part of Tumbleweed for a while already (build for
+  i586 only enabled in LegacyX86). (forwarded request 1155230 from dimstar)</comment>
+    <requestid>1155246</requestid>
+  </revision>
+</revisionlist>

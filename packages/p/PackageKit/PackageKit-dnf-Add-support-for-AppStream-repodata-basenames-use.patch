@@ -1,0 +1,29 @@
+From 819847a0f585e9e950f63c65fa5dead5cdf0027c Mon Sep 17 00:00:00 2001
+From: Neal Gompa <ngompa13@gmail.com>
+Date: Sat, 31 Aug 2019 22:45:04 -0400
+Subject: [PATCH] dnf: Add support for AppStream repodata basenames used by
+ Open Build Service
+
+For no particularly clear reason, it appears that the Open Build Service
+appends AppStream repodata to repositories with the 'appdata' basename
+instead of the default 'appstream' basename.
+
+Support downloading this variant as well, as it should (hopefully)
+be mutually exclusive.
+---
+ backends/dnf/pk-backend-dnf.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: PackageKit-1.2.8/backends/dnf/pk-backend-dnf-common.c
+===================================================================
+--- PackageKit-1.2.8.orig/backends/dnf/pk-backend-dnf-common.c
++++ PackageKit-1.2.8/backends/dnf/pk-backend-dnf-common.c
+@@ -89,7 +89,7 @@ pk_backend_setup_dnf_context (DnfContext
+ gboolean
+ dnf_utils_refresh_repo_appstream (DnfRepo *repo, GError **error)
+ {
+-	const gchar *as_basenames[] = { "appstream", "appstream-icons", NULL };
++	const gchar *as_basenames[] = { "appstream", "appstream-icons", "appdata", "appdata-icons", NULL };
+ 	for (guint i = 0; as_basenames[i] != NULL; i++) {
+ 		const gchar *tmp = dnf_repo_get_filename_md (repo, as_basenames[i]);
+ 		if (tmp == NULL)

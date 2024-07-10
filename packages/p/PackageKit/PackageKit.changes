@@ -1,0 +1,4469 @@
+-------------------------------------------------------------------
+Tue Mar  5 14:14:09 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop baselibs.conf: the -32bit packages are no longer needed and
+  have not been part of Tumbleweed for a while already (build for
+  i586 only enabled in LegacyX86).
+
+-------------------------------------------------------------------
+Tue Jan  2 08:23:40 UTC 2024 - Alynx Zhou <alynx.zhou@suse.com>
+
+- Add PackageKit-find-python-3-6.patch: Specify the Python version
+  we need to build this package.
+
+-------------------------------------------------------------------
+Thu Nov  9 09:32:29 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.2.8:
+  + Libraries:
+    - offline-updates:
+      . Make package update list deduplication more efficient.
+      . Add only one entry per package to 'offline-update-competed'
+        file.
+    - PkClient: Replace the GSimpleAsyncResult with the GTask API.
+    - pk-client:
+      . Fix use-before-set of PkProgress on cancellation.
+      . Move cancellable disconnect to dispose.
+      . Rework refcounting for PkClientState.
+  + Backends: Changes to apt, dnf, PiSi and BSD backends.
+- Changes from version 1.2.7:
+  + New Features:
+    -  pkclient: Add an option to count download size with
+       dependencies.
+    - pk-transaction: Add support for getting the RemainingTime
+      property.
+  + Backends:
+    - zypp: Fix ambiguous reference to 'filesystem' class.
+    - Changes to dnf, apt, alpm backends.
+- Changes from version 1.2.6:
+  + New Features:
+    - Expose transaction sender as read-only property on the bus.
+    - pkmon: Display transaction sender binary name in log.
+    - pk-transaction: Add Packages signal.
+    - pk-transaction: Combine some D-Bus PropertiesChanged signal
+      emissions.
+    - pk-transaction: Add UpdateDetails signal.
+  + Backends:
+    - zypp:
+      . implement upgrade-system method.
+      . Clean up trailing whitespaces.
+      . Avoid statuReset() on locked packages.
+      . restore pool status after simulating an update.
+      . Disable upgrade-system support in SLE.
+      . build the pool before calling is_tumbleweed().
+      . update libzypp dependency version.
+      . Don't refresh repos before searching.
+      . Check if packages are locked before removing.
+      . add repository data in package id.
+      . Remove trailing whitespace.
+    + Changes to alpm, aptcc, apt, and nix backends.
+- Rebase patches:
+  + PackageKit-dnf-Add-support-for-AppStream-repodata-basenames-use.patch
+  + PackageKit-dynamic-export.patch
+  + PackageKit-zypp-disable-upgrade-system-in-sle.patch
+- Drop upstream fixed patches:
+  + PackageKit-zypp-add-repo-in-packageid.patch
+  + PackageKit-zypp-add-upgrade-system.patch
+  + PackageKit-zypp-avoid-statuReset.patch
+  + PackageKit-zypp-dont-refresh-before-searching.patch
+  + PackageKit-zypp-dont-remove-locked-packages.patch
+  + PackageKit-zypp-fix-ambiguous-filesystem-reference.patch
+  + PackageKit-zypp-fix-is-tumbleweed-check.patch
+  + PackageKit-zypp-restore-pool-status-after-simulating-update.patch
+  + PackageKit-zypp-update-libzypp-dependency-version.patch
+
+-------------------------------------------------------------------
+Mon Jul 17 13:28:33 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add PackageKit-dynamic-export.patch: fix loading of modules when
+  built using glib 2.70 (boo#1213309).
+
+-------------------------------------------------------------------
+Mon Mar 13 02:46:44 UTC 2023 - Jonathan Kang <songchuan.kang@suse.com>
+
+- Add PackageKit-fix-pkcon-permission.patch: trivial: Drop
+  unnecessary x permission
+  (gh#PackageKit/PackageKit/commit/47b7f97bc, bsc#1209138)
+
+-------------------------------------------------------------------
+Fri Jan  6 02:22:16 UTC 2023 - Jonathan Kang <songchuan.kang@suse.com>
+
+- Add PackageKit-zypp-fix-ambiguous-filesystem-reference.patch:
+  zypp: Fix ambiguous reference to 'filesystem' class
+  (gh#PackageKit/PackageKit/commit/bb1409a71, bsc#1206687).
+
+-------------------------------------------------------------------
+Mon Sep 26 03:12:44 UTC 2022 - Jonathan Kang <songchuan.kang@suse.com>
+
+- Add PackageKit-zypp-dont-remove-locked-packages.patch: zypp:
+  Check if packages are locked before removing
+  (gh#PackageKit/PackageKit/commit/8649a07bc, bsc#1199895).
+- Add PackageKit-zypp-add-repo-in-packageid.patch: zypp: add
+  repository data in package id
+  (gh#PackageKit/PackageKit/commit/8eb2ef0ae, bsc#1202585).
+- Remove PackageKit-zypp-locked-packages.patch: reverted upstream
+  (gh#PackageKit/PackageKit/commit/ed3e38043).
+
+-------------------------------------------------------------------
+Fri Sep  2 01:16:56 UTC 2022 - Jonathan Kang <songchuan.kang@suse.com>
+
+- Add PackageKit-zypp-dont-refresh-before-searching.patch:
+  zypp: Don't refresh repos before searching
+  (gh#PackageKit/PackageKit/commit/58c7c0285, bsc#1199895).
+
+-------------------------------------------------------------------
+Wed Aug  3 03:27:36 UTC 2022 - Jonathan Kang <songchuan.kang@suse.com>
+
+- Modified PackageKit.spec: bump libzypp dependency version to
+  17.31.0.
+- Add PackageKit-zypp-avoid-statuReset.patch: zypp: Avoid
+  statuReset() on locked packages
+  (gh#PackageKit/PackageKit/commit/dd1964255, bsc#1199895).
+- Add PackageKit-zypp-disable-upgrade-system-in-sle.patch: zypp:
+  Disable upgrade-system support in SLE
+  (gh#PackageKit/PackageKit/commit/0fcd820c2).
+- Add PackageKit-zypp-restore-pool-status-after-simulating-update.patch:
+  zypp: restore pool status after simulating an update
+  (gh#PackageKit/PackageKit/commit/2b61a6649, bsc#1199895).
+- Add PackageKit-zypp-fix-is-tumbleweed-check.patch: zypp: build
+  the pool before calling is_tumbleweed()
+  (gh#PackageKit/PackageKit/commit/146890153).
+- Add PackageKit-zypp-update-libzypp-dependency-version.patch:
+  zypp: update libzypp dependency version
+  (gh#PackageKit/PackageKit/commit/58c7c0285, bsc#1199895).
+
+-------------------------------------------------------------------
+Sat Jul  9 12:35:42 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- Move the dbus-1 system.d file to /usr (bsc#1201347)
+
+-------------------------------------------------------------------
+Fri Jul  1 03:34:35 UTC 2022 - Jonathan Kang <songchuan.kang@suse.com>
+
+- Add PackageKit-zypp-add-upgrade-system.patch: implement
+  upgrade-system method(gh#hughsie/PackageKit/commit/930dd201b).
+
+-------------------------------------------------------------------
+Thu May 26 07:25:04 UTC 2022 - Jonathan Kang <songchuan.kang@suse.com>
+
+- Add PackageKit-zypp-locked-packages.patch: zypp: ignore locked
+  packages(gh#hughsie/PackageKit#543, boo#1199895).
+
+-------------------------------------------------------------------
+Fri May 20 09:01:45 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.2.5:
+  + Backends:
+    - dnf:
+      . Add support for autoremove flag when removing packages.
+      . Searches by name and package details should be case
+        insensitive.
+      . Update appstream xml files if dnf_sack_add_repos() does
+        the download.
+    - zypp:
+      . Add -std=c++1z cpp flags.
+      . Fix crash when search string is NULL.
+      . Fix package installation using undefined data.
+    - Changes to alpm, apttcc, nix, and slack.
+  + Bugfixes:
+    - Install offline-update enablement symlink if Meson is new
+      enough.
+    - Move Wants= line for network-online.target.
+    - Add flags to D-Bus offline invoking methods.
+    - Properly handle allow-reinstall flag for installations.
+    - Provide better error message if trying to install an
+      installed package.
+    - Wait until online to activate systemd service.
+- Drop 505.patch, PackageKit-zypp-c++17.patch, and
+  PackageKit-zypp-fix-crash-with-empty-search-string.patch: fixed
+  upstream.
+
+-------------------------------------------------------------------
+Tue Nov 16 14:24:11 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Apply all patches unconditonally: PackageKit-zypp-c++17.patch is
+  merged in upstream git and thus does not justify to be
+  conditionally applied.
+- Switching back to autosetup, as this works without conditional
+  patches.
+
+-------------------------------------------------------------------
+Tue Nov 16 08:00:29 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Rewrite prep phase to not use autopatch -M: SLE15/Leap15's RPM
+  version does not support that syntax yet.
+
+-------------------------------------------------------------------
+Fri Nov  5 12:07:00 UTC 2021 - Jonathan Kang <songchuan.kang@suse.com>
+
+- Add PackageKit-zypp-c++17.patch: Fix build failure when building
+  with libzypp > 17.28.5 and gcc < 11
+  (gh#hughsie/PackageKit/commit/1a6bb6ae6, bsc#1192349).
+
+-------------------------------------------------------------------
+Fri Nov  5 11:16:00 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.2.4:
+  + Libraries:
+    - Add specific error code when user declined interaction
+    - Avoid spurious GObject::notify signal emissions
+    - Correct 'cancellable' use in pk_client_repair_system_async()
+    - Fix a leak on calling set_locale() a second time
+    - Fix a possible use-after-free under pk_client_cancel_cb()
+    - Improve thread safety on an operation cancellation
+  + Backends:
+    - dnf:
+      . Read update information also when getting list of updates
+      . Honor install_weak_deps=False if it is there
+      . Use 'hy_query_get_advisory_pkgs', if available
+  + New Features:
+    - PkDetails: Add 'download-size' property
+    - PkPackage: Add update severity property
+  + Bugfixes:
+    - Let the finish understand the 'cancelled' exit code
+    - Make backends that use pk-backend-spawn work (#477)
+    - Only set polkit interactive flag if method call has too
+- Changes from version 1.2.3:
+  + Backends:
+    - alpm:
+      . Add post transaction hook
+      . Rename errno to alpm_err to avoid name clashes
+    - aptcc: Auto-remove old kernels, unless configured otherwise
+    - dnf: Add support for coercing upgrade to distupgrade
+    - zypp:
+      . Make sure pool is initialized at the beginning of some
+        methods
+      . Reset update mode after getting updates
+  + Bugfixes:
+    - Append to cron log instead of overwriting it
+    - Cancel a transaction if calling Cancel fails or the daemon
+      disappears
+    - Do not crash when calling pk_dbus_get_uid() before D-Bus is
+      setup
+    - Fix all compiler warnings
+    - Fix multilib conflicts in generated pk-enum-types.h
+    - Free scheduler array correctly again
+    - Remove large transaction size sanity check
+- Drop patches fixed upstream:
+  + PackageKit-zypp-cleanup-tmp-files.patch
+  + PackageKit-zypp-reset-update-mode-after-get-updates.patch
+  + PackageKit-dnf-Add-support-for-coercing-upgrade-to-distupgrade.patch
+  + PackageKit-zypp-initialize-pool.patch
+  + PackageKit-remove-transaction-size-limit.patch
+  + PackageKit-cancel-transaction-if-daemon-disappears.patch
+  + PackageKit-dnf-ignore-weak-deps.patch
+- Add 505.patch: pk-offline: Add flags to D-Bus invoking methods.
+  That's currently to be able to set whether the method should be
+  interactive or not. The old functions call the methods as
+  non-interactive.
+
+-------------------------------------------------------------------
+Thu Sep 16 01:19:18 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
+
+- Remove obsolete translation-update-upstream support
+  (jsc#SLE-21105).
+
+-------------------------------------------------------------------
+Fri Aug 20 01:31:50 UTC 2021 - Jonathan Kang <songchuan.kang@suse.com>
+
+- Add PackageKit-zypp-fix-crash-with-empty-search-string.patch:
+  zypp: Fix crash when search string is NULL (bsc#1179287,
+  gh#hughsie/PackageKit/commit#21ccf49).
+
+-------------------------------------------------------------------
+Thu Jul 29 12:47:53 UTC 2021 - Yifan Jiang <yfjiang@suse.com>
+
+- Drop upstream merged patches on SLE and Leap 15.4:
+  + PackageKit-CVE-2020-16121.patch
+
+-------------------------------------------------------------------
+Thu Jun 10 17:36:23 UTC 2021 - Dario Faggioli <dfaggioli@suse.com>
+
+- Add PackageKit-dnf-ignore-weak-deps.patch
+  Backport upstream patch (gh#Conan-Kudo/PackageKit/commit#ecd4a96,
+  gh#Conan-Kudo/PackageKit#488) for fixing: dnf backend not honoring
+  "install_weak_deps=False" (gh#dfaggioli/Packagekit#486). See also
+  https://bugzilla.redhat.com/show_bug.cgi?id=1955484
+
+-------------------------------------------------------------------
+Fri Mar 26 01:41:35 UTC 2021 - Jonathan Kang <songchuan.kang@suse.com>
+
+- Add PackageKit-cancel-transaction-if-daemon-disappears.patch:
+  Fix hangs in packagekit-glib2 client if daemon crashes
+  (gh#hughsie/PackageKit#464).
+
+-------------------------------------------------------------------
+Mon Mar 15 21:24:53 UTC 2021 - Andrei Dziahel <develop7@develop7.info>
+
+- Add PackageKit-remove-transaction-size-limit.patch: Remove large transaction 
+  size sanity check (gh#hughsie/PackageKit/commit#ac5c8660)
+
+-------------------------------------------------------------------
+Mon Mar  1 08:05:23 UTC 2021 - Jonathan Kang <songchuan.kang@suse.com>
+
+- Add PackageKit-zypp-initialize-pool.patch: zypp: Make sure pool
+  is initialized at the beginning of some methods
+  (gh#hughsie/PackageKit/commit#3efa0c524, bsc#1180597).
+
+-------------------------------------------------------------------
+Fri Feb 26 14:39:52 UTC 2021 - Neal Gompa <ngompa13@gmail.com>
+
+- Enable offline updates support for openSUSE Leap 16+
+- Recommend a provider of rpm-repos-openSUSE for the DNF backend
+- Use dnf-data instead of dnf-conf in Supplements on DNF backend package
+
+-------------------------------------------------------------------
+Sat Jan 30 12:28:21 UTC 2021 - Dominique Leuenberger <dleuenberger@suse.com>
+
+- Do not build cnf: scout-c-n-f is still pending, having PK-cnf
+  obsolete cnf is unacceptable.
+
+-------------------------------------------------------------------
+Fri Jan 29 21:30:49 UTC 2021 - Neal Gompa <ngompa13@gmail.com>
+
+- Backport fix from upstream to have DNF backend force dup for updates
+  + Patch: PackageKit-dnf-Add-support-for-coercing-upgrade-to-distupgrade.patch
+
+-------------------------------------------------------------------
+Wed Jan 27 09:03:50 UTC 2021 - Jonathan Kang <songchuan.kang@suse.com>
+
+- Add PackageKit-zypp-reset-update-mode-after-get-updates.patch:
+  zypp: Reset update mode after getting updates
+  (gh#hughsie/PackageKit/commit#b208f551, bsc#1180150).
+
+-------------------------------------------------------------------
+Tue Jan 19 21:16:33 UTC 2021 - Stasiek Michalski <stasiek@michalski.cc>
+
+- Build command-not-found by default
+
+-------------------------------------------------------------------
+Tue Dec 29 09:30:52 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add PackageKit-fix-crash-pre-dbus.patch: Do not crash when
+  calling pk_dbus_get_uid() before D-Bus is setup.
+
+-------------------------------------------------------------------
+Fri Dec  4 02:03:42 UTC 2020 - Jonathan Kang <songchuan.kang@suse.com>
+
+- Add PackageKit-CVE-2020-16121.patch: Information disclosure in
+  InstallFiles, GetFilesLocal and GetDetailsLocal
+  (gh#hughsie/PackageKit/commit/d5e8c597, bsc#1176930).
+
+-------------------------------------------------------------------
+Wed Dec  2 07:24:08 UTC 2020 - Jonathan Kang <songchuan.kang@suse.com>
+
+- Add PackageKit-zypp-cleanup-tmp-files.patch: Revert "Revert
+  "zypp: Clean up temporary files when PK quits""
+  (bsc#1169739 gh#hughsie/PackageKit/commit#cf73b01a).
+
+-------------------------------------------------------------------
+Wed Nov  4 02:43:07 UTC 2020 - Jonathan Kang <songchuan.kang@suse.com>
+
+- Update summary and description of gstreamer-plugin and
+  gtk3-module subpackages in spec file (bsc#1104313).
+
+-------------------------------------------------------------------
+Mon Nov  2 14:47:56 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.2.2:
+  + New Features: Notify the service manager when it's beginning to
+    shutdown.
+  + Bugfixes:
+    - Fix possible information disclosure (CVE-2020-16121).
+    - Install required test helper files.
+    - Silence meson warning by bumping minimum version.
+  + Changes related to zypp backend:
+    - Don’t refresh repos again when actually updating packages.
+    - Erase tmp repo from pool after local installation.
+    - Set PATH variable.
+- Drop upstream merged patches:
+  + PackageKit-test-Install-required-helper-files.patch
+  + PackageKit-zypp-dont-refresh-repos-on-offline-update.patch
+  + PackageKit-zypp-set-PATH.patch
+  + PackageKit-bsc1169739.patch
+
+-------------------------------------------------------------------
+Fri Oct 30 03:12:47 UTC 2020 - Jonathan Kang <songchuan.kang@suse.com>
+
+- Add PackageKit-bsc1169739.patch: main: notify the service manager
+  when it's beginning to shutdown
+  (gh#/hughsie/PackageKit/commit/d8dd484d, bsc#1169739).
+
+-------------------------------------------------------------------
+Wed Oct 28 07:04:45 UTC 2020 - Franck Bui <fbui@suse.com>
+
+- Replace $DISABLE_RESTART_ON_UPDATE=yes with %service_del_postun_without_restart
+
+  Use of $DISABLE_RESTART_ON_UPDATE is deprecated.
+
+-------------------------------------------------------------------
+Tue Oct 13 01:56:23 UTC 2020 - Jonathan Kang <songchuan.kang@suse.com>
+
+- Add PackageKit-zypp-dont-refresh-repos-on-offline-update.patch:
+  zypp: Don’t refresh repos again when actually updating packages
+  (gh#/hughsie/PackageKit/commit/81207bd3, bsc#1173562).
+
+-------------------------------------------------------------------
+Mon Sep 21 06:37:58 UTC 2020 - Jonathan Kang <songchuan.kang@suse.com>
+
+- Add PackageKit-zypp-set-PATH.patch: zypp: Set PATH variable
+  (gh#/hughsie/PackageKit/commit/2fb7fc6e, bsc#1175315).
+
+-------------------------------------------------------------------
+Mon Sep  7 14:04:19 UTC 2020 - Neal Gompa <ngompa13@gmail.com>
+
+- Update to version 1.2.1
+  + Port to the meson build system
+  + Remove the GTK2 gtk-module support
+  + Do not do failable actions in the PkDbus constructor
+  + Do not do failable actions in the PkTransaction constructor
+  + Revert "Shutdown the daemon on idle by default"
+  + Actually merge in the PolicyKit translation
+  + Fix setting libexecdir for command-not-found helper
+  + Fix command-not-found handling arguments with spaces
+  + Use SQL statements for queries with input
+  + Exit pkcon with retval 5 if no packages needed be installed
+  + dnf: Load all the repos and vars directories
+  + dnf: Add vendor configuration for openSUSE
+  + zypp: Ignore already installed package when installing
+  + zypp: Remove upgrade-system implementation
+  + zypp: Clean up temporary files when PK quits
+  + zypp: Ensure ResPool is built before is_tumbleweed()
+- Remove upstreamed patches
+  + PackageKit-dnf-Add-openSUSE-vendor.patch
+  + PackageKit-drop-gtk2.patch
+  + PackageKit-pkcon-exit-with-retval-5.patch
+  + PackageKit-zypp-cleanup-tmp-files.patch
+  + PackageKit-zypp-ensure-ResPool-before-is_tumbleweed.patch
+  + PackageKit-zypp-ignore-already-installed-packages.patch
+  + PackageKit-zypp-update-packages-in-all-openSUSE.patch
+- Add patch from upstream
+  + PackageKit-test-Install-required-helper-files.patch
+- Refresh existing patches
+  + PackageKit-remove-polkit-rules.patch
+  + PackageKit-systemd-timers.patch
+- Clean up legacy cruft, assume openSUSE Leap 15 or newer
+
+-------------------------------------------------------------------
+Thu Aug 13 03:26:49 UTC 2020 - Jonathan Kang <songchuan.kang@suse.com>
+
+- Add PackageKit-zypp-cleanup-tmp-files.patch: zypp: Cleanup
+  temporary files when PackageKit quits
+  (gh#/hughsie/PackageKit/commit/807f410, bsc#1169739).
+
+-------------------------------------------------------------------
+Tue Jun 16 02:07:15 UTC 2020 - Jonathan Kang <songchuan.kang@suse.com>
+
+- Add PackageKit-pkcon-exit-with-retval-5.patch: pkcon: exit with
+  retval 5 if no packages needed be installed
+  (gh#/hughsie/PackageKit#405 bsc#1170562).
+
+-------------------------------------------------------------------
+Tue May 26 02:37:45 UTC 2020 - Jonathan Kang <songchuan.kang@suse.com>
+
+- Add PackageKit-zypp-ensure-ResPool-before-is_tumbleweed.patch:
+  zypp: Ensure ResPool is built before is_tumbleweed()
+  (gh#/hughsie/PackageKit/commit/5c0fd7d7).
+
+-------------------------------------------------------------------
+Wed Apr 22 02:54:02 UTC 2020 - Jonathan Kang <songchuan.kang@suse.com>
+
+- Remove is_opensuse macro in spec file to sync SLE and openSUSE
+  differences(jsc#SLE-11804).
+
+-------------------------------------------------------------------
+Thu Mar 12 01:47:44 UTC 2020 - Jonathan Kang <songchuan.kang@suse.com>
+
+- Add PackageKit-zypp-ignore-already-installed-packages.patch,
+  remove PackageKit-zypp-revert-fail-on-already-installed.patch:
+  zypp: Ignore already installed package when installing
+  (bsc#1155624, gh#/hughsie/PackageKit/commit/d9233011).
+
+-------------------------------------------------------------------
+Tue Mar 10 03:04:40 UTC 2020 - Jonathan Kang <songchuan.kang@suse.com>
+
+- Fix source URL in the spec file.
+
+-------------------------------------------------------------------
+Sat Mar  7 15:34:03 UTC 2020 - Neal Gompa <ngompa13@gmail.com>
+
+- Add patch to stop zypp backend failing on already installed packages (boo#1155624)
+  + Patch: PackageKit-zypp-revert-fail-on-already-installed.patch
+
+-------------------------------------------------------------------
+Sat Jan 25 14:04:56 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- No longer recommend -lang: supplements are in use
+
+-------------------------------------------------------------------
+Sun Jan 19 22:48:36 UTC 2020 - Neal Gompa <ngompa13@gmail.com>
+
+- Fix autotools modifications in openSUSE vendor patch
+  + Patch: PackageKit-dnf-Add-openSUSE-vendor.patch
+
+-------------------------------------------------------------------
+Sun Jan 12 19:25:24 UTC 2020 - Neal Gompa <ngompa13@gmail.com>
+
+- Update to version 1.1.13
+  + New APIs for pk-client-helper in packagekit-glib2
+  + dnf, zypp: Various fixes related to upgrades
+  + Added support for user services
+  + New plymouth "system-upgrade" and "reboot" modes used now
+  + Add mutex lock to protect EULAs array
+  + Correct bug tracker links on website
+  + Support non-x86 arches in gstreamer helper
+  + List installed, removed and obsoleted packages in pkcon get-updates
+  + Properly mark obsoleted packages when simulating upgrade
+  + Provide information about obsoleted packages
+  + Return directly when its state is going backwards
+  + Shrink the progress bar to fit when run in small spaces
+  + Improve the 'using' documentation with a link to API
+- Remove upstreamed patches:
+  + PackageKit-add-mutex-lock-to-protect-backend-priv-eulas.patch
+  + PackageKit-return-on-transactions-going-backwards.patch
+  + PackageKit-zypp-dont-set-upgrade-mode-on-updating-specific-packages.patch
+  + PackageKit-zypp-fix-newest-filter.patch
+  + PackageKit-zypp-fix-what-provides-newest-filter.patch
+  + PackageKit-zypp-get-files-string-array.patch
+  + PackageKit-zypp-get-updates-dup-or-up.patch
+  + PackageKit-zypp-upgrade-system.patch
+  + zypp-perform-actions-disallowed-by-update-in-upgrade-mode.patch
+  + 0001-dnf-Don-t-override-DnfContext-s-release_ver-for-the-.patch
+  + 0001-dnf-Invalidate-the-sack-cache-after-downloading-new-.patch
+  + 0001-offline-update-Use-new-plymouth-system-upgrade-and-r.patch
+- Add new openSUSE specific patches for DNF backend:
+  + PackageKit-dnf-Add-openSUSE-vendor.patch
+  + PackageKit-dnf-Add-support-for-AppStream-repodata-basenames-use.patch
+- Remove old openSUSE patches for the DNF backend:
+  + 1001-dnf-Add-openSUSE-Tumbleweed-vendor.patch
+  + 1002-dnf-Add-support-for-AppStream-repodata-basenames-use.patch
+- Refresh patches:
+  + PackageKit-drop-gtk2.patch
+
+-------------------------------------------------------------------
+Thu Nov 21 01:09:07 UTC 2019 - Jonathan Kang <songchuan.kang@suse.com>
+
+- Add PackageKit-zypp-update-packages-in-all-openSUSE.patch: Handle
+  Tumbleweed upgrade in update-packages as well so that it doesn't
+  break other components.
+
+-------------------------------------------------------------------
+Wed Nov 13 02:00:32 UTC 2019 - Jonathan Kang <sckang@suse.com>
+
+- Add PackageKit-zypp-upgrade-system.patch: zypp: implement
+  upgrade-system method (bsc#1155638, bsc#1154973,
+  gh#hughsie/PackageKit/commit/d060dd24).
+- Add PackageKit-zypp-get-files-string-array.patch: zypp: pass an
+  array of strings to pk_backend_job_files()
+  (gh#hughsie/PackageKit#351).
+
+-------------------------------------------------------------------
+Mon Oct 14 07:00:32 UTC 2019 - Jonathan Kang <sckang@suse.com>
+
+- Remove zypp-Switch-to-doUpgrade-solver-when-required-by-distribution.patch,
+  rebase zypp-perform-actions-disallowed-by-update-in-upgrade-mode.patch,
+  add PackageKit-zypp-dont-set-upgrade-mode-on-updating-specific-packages.patch:
+  zypp: Don't set upgrade mode in update-packages
+  (gh#hughsie/PackageKit#345).
+
+-------------------------------------------------------------------
+Wed Oct  9 06:19:11 UTC 2019 - Jonathan Kang <sckang@suse.com>
+
+- Add PackageKit-zypp-get-updates-dup-or-up.patch: Fix get-updates
+  in Tumbleweed(gh#hughsie/PackageKit#343).
+
+-------------------------------------------------------------------
+Mon Sep  9 08:27:28 UTC 2019 - Jonathan Kang <sckang@suse.com>
+
+- Modify PackageKit-systemd-timers.patch: Port the cron
+  configuration variables to the script, and add -sendwait
+  parameter to mail in the script(bsc#1130306).
+
+-------------------------------------------------------------------
+Sun Sep  1 02:29:07 UTC 2019 - Neal Gompa <ngompa13@gmail.com>
+
+- Build PackageKit DNF backend
+- Add patches to support backend
+  + 0001-dnf-Invalidate-the-sack-cache-after-downloading-new-.patch
+  + 0001-dnf-Don-t-override-DnfContext-s-release_ver-for-the-.patch
+  + 1001-dnf-Add-openSUSE-Tumbleweed-vendor.patch 
+  + 1002-dnf-Add-support-for-AppStream-repodata-basenames-use.patch
+- Add patch to improve offline updates with plymouth
+  + 0001-offline-update-Use-new-plymouth-system-upgrade-and-r.patch
+- Fix Supplements to use modern rich Supplements statements
+
+-------------------------------------------------------------------
+Mon Aug 19 01:10:02 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Refresh patches with quilt.
+- Drop PackageKit-cron-without-sleep.patch: Not needed for any
+  current version of openSUSE.
+- Add PackageKit-drop-gtk2.patch: Port away from gtk2 dependency,
+  drop gtk2-devel BuildRequires (gh#/hughsie/PackageKit#333).
+- Add autoconf-archive BuildRequires and run autogen.sh, needed as
+  above patch touches buildsystem.
+
+-------------------------------------------------------------------
+Mon Aug 19 01:10:01 UTC 2019 - Jonathan Kang <sckang@suse.com>
+
+- Add PackageKit-zypp-fix-what-provides-newest-filter.patch:
+  zypp: Add support for newest filter in what-provides(bsc#984865,
+  gh#hughsie/PackageKit#335).
+
+-------------------------------------------------------------------
+Wed Aug 14 01:32:01 UTC 2019 - Jonathan Kang <sckang@suse.com>
+
+- Rename PackageKit-remove-default-thread-check.patch to
+  PackageKit-add-mutex-lock-to-protect-backend-priv-eulas.patch,
+  and update it with the one accepted upstream.
+
+-------------------------------------------------------------------
+Wed Jun 19 08:17:22 UTC 2019 - Jonathan Kang <sckang@suse.com>
+
+- Add PackageKit-zypp-fix-newest-filter.patch: zypp: Emit installed
+  package for newest filter (bsc#1125434, gh#hughsie/PackageKit#329).
+
+-------------------------------------------------------------------
+Tue Apr 23 15:39:37 UTC 2019 - Stasiek Michalski <hellcp@mailbox.org>
+
+- Add zypp-perform-actions-disallowed-by-update-in-upgrade-mode.patch
+  to fix switch to upgrade mode in the backend
+
+-------------------------------------------------------------------
+Tue Mar 19 08:31:13 UTC 2019 - sckang@suse.com
+
+- Add PackageKit-remove-polkit-rules.patch: Remove polkit rules
+  file (bsc#1125434).
+
+-------------------------------------------------------------------
+Sun Mar 17 10:28:35 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Limit fdupes to the btrfs subvolume.
+- Combine %service_* calls to reduce generated boilerplate.
+- Redo summaries without em dashes.
+- Reduce %systemd_requires to %systemd_ordering; %service_*
+  can deal with the absence of it.
+
+-------------------------------------------------------------------
+Mon Mar  4 02:32:57 UTC 2019 - sckang@suse.com
+
+- Modify PackageKit-systemd-timers.patch: Fix unit field in
+  packagekit-background.timer (boo#1126943).
+
+-------------------------------------------------------------------
+Thu Feb 14 02:45:13 UTC 2019 - Stasiek Michalski <hellcp@mailbox.org>
+
+- Add zypp-Switch-to-doUpgrade-solver-when-required-by-distribution.patch
+  so Tumbleweed can properly update
+
+-------------------------------------------------------------------
+Mon Jan  7 08:15:52 UTC 2019 - sckang@suse.com
+
+- Add PackageKit-systemd-timers.patch: Migrate from cron to
+  systemd timer (bsc#1115410).
+
+-------------------------------------------------------------------
+Wed Dec 26 06:36:22 UTC 2018 - sckang@suse.com
+
+- Drop PackageKit-avoid-endless-loop-on-autoupdate.patch: With
+  PackageKit-return-on-transactions-going-backwards.patch and
+  PackageKit-remove-default-thread-check.patch, EULA promt works
+  without any issue (bsc#1038425).
+- Add PackageKit-remove-default-thread-check.patch: Remove the
+  pk_is_thread_default() check in pk_backend_is_eula_valid() so
+  that we can call it in zypp backend without any issue
+  (gh#hughsie/PackageKit#301, bsc#1038425).
+- Add PackageKit-return-on-transactions-going-backwards.patch:
+  transaction: Return directly when its state is going backwards
+  (gh#hughsie/PackageKit#301, bsc#1038425).
+
+-------------------------------------------------------------------
+Wed Nov 28 10:40:29 UTC 2018 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.1.12:
+  + common: Handle quoted strings in /etc/os-release.
+  + offline update: Fix translations to show up.
+  + Backends:
+    - zypp: Implement GetFilesLocal in zypp backend.
+    - Various changes related to aptcc and dnf.
+- Changes from version 1.1.11:
+  + New Features:
+    - Add --autoremove option to pkcon.
+    - Shutdown the daemon on idle by default.
+  + Bugfixes:
+    - De-register callbacks on PkClientHelper finalize.
+    - Don't complain if command-not-found get uninstalled while
+      running.
+    - Fix critical on idle shutdown.
+    - Fix issues with debconf helper not working.
+    - Never assert when an interactive TTY is not available.
+    - Schedule offline update service to run after
+      system-update-pre.target.
+    - Shut down services cleanly before rebooting after offline
+      updates.
+  + Backends:
+    - Various changes related to aptcc, dnf and nix.
+- Drop PackageKit-get-files-local.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Tue Oct 16 10:40:44 UTC 2018 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add files/directories created by tmpfiles.d under /var as ghost
+  entries to the rpm filelist.
+
+-------------------------------------------------------------------
+Fri Aug 31 05:46:47 UTC 2018 - xwang@suse.com
+
+- Add PackageKit-get-files-local.patch: Implement GetFilesLocal
+  method in zypp backend (bsc#1097581).
+
+-------------------------------------------------------------------
+Thu Aug  9 01:42:03 UTC 2018 - sckang@suse.com
+
+- Add PackageKit.tmpfiles: Use tmpfile.d to make sure PackageKit
+  doesn't package files in /var (bsc#1098042).
+
+-------------------------------------------------------------------
+Mon May  7 12:13:59 UTC 2018 - lnussel@suse.de
+
+- offline updates should be disabled in Leap too, just like SLE
+
+-------------------------------------------------------------------
+Mon Apr 23 15:23:45 UTC 2018 - dimstar@opensuse.org
+
+- Update to version 1.1.10:
+  + Notes: This release fixes CVE-2018-1106 which is a moderate
+    security issue (boo#1086936).
+  + Backends:
+    - zypp:
+      . Implement GetDetailsLocal in zypp backend.
+      . Improve refresh-cache function in zypp backend.
+    - Various changes related to aptcc and dnf.
+- Drop PackageKit-zypp-backend-improve-refresh-cache.patch and
+  PackageKit-zypp-backend-get-details-local.patch: Fixed upstream.
+- Drop NetworkManager-devel BuildRequires: Not used since version
+  1.1.7.
+
+-------------------------------------------------------------------
+Mon Apr  9 12:38:01 UTC 2018 - fcrozat@suse.com
+
+- Disable offline-update when building for SLE.
+
+-------------------------------------------------------------------
+Thu Apr  5 11:48:50 UTC 2018 - fcrozat@suse.com
+
+- Remove pkgconfig(npapi-sdk) BuildRequires:, it is no longer
+  needed as browser plugin is not built since 1.1.0.
+
+-------------------------------------------------------------------
+Tue Mar 20 16:50:56 UTC 2018 - dimstar@opensuse.org
+
+- Unconditionally enable translation-update-upstream: on
+  Tumbleweed, this results in a NOP and for Leap in SLE paid
+  translations being used (boo#1086036).
+
+-------------------------------------------------------------------
+Mon Mar  5 17:11:37 UTC 2018 - dimstar@opensuse.org
+
+- Update to version 1.1.9:
+  + Fix missing PK_STATUS_ENUM_RUN_HOOK in pk-enum.c.
+  + Fix Qt annotation on DBus signature.
+  + client: Fix an invalid read when cancelling races with Finish.
+  + engine: Fix a memory leak when handling GetTransactionList.
+  + Fix getting user session ID with D-Bus "user bus" model.
+  + Fix g_object_ref() type cast warnings with glib 2.56.
+  + Rename "Software Sources" to "Software Repositories".
+  + transaction: Don't leak polkit authority.
+  + transaction: Fix a memory leak when authorizing actions.
+  + transaction: Log transaction completed messages on debug, not
+    info level.
+  + Backends:
+    - zypp: remove memory leak from zypp backend.
+    - Various changes related to aptcc, dnf, slack and urpmi.
+
+-------------------------------------------------------------------
+Wed Feb 28 16:38:10 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Thu Feb 22 06:51:52 UTC 2018 - sckang@suse.com
+
+- Add PackageKit-zypp-backend-get-details-local.patch: Implement
+  GetDetailsLocal method in zypp backend (bsc#1008287).
+
+-------------------------------------------------------------------
+Mon Feb 19 11:25:34 UTC 2018 - dimstar@opensuse.org
+
+- Update to version 1.1.8:
+  + Notes: The Slackware backend was renamed from "katja" to
+    "slack".
+  + Libraries:
+    - Add getters for PkEulaRequired.
+    - Add new pk_results_set_role() API.
+  + New Features: Save transaction role to the offline update
+    results file.
+  + Bugfixes:
+    - Various fixes to docs.
+    - Bring introspection and vapigen m4 macros into the source.
+    - command-not-found: Be more explicit when ignoring path
+      components.
+    - service: Use ConditionPathExists=!/run/ostree-booted.
+  + Backends:
+    - zypp: Return error if invalid package IDs are detected.
+    - Various changes related to aptcc and slack.
+- Drop PK-zypp-return-error-invalid-package-ids.patch: fixed
+  upstream.
+- Drop autoconf-archive and automake BuildRequires and no longer
+  call autoreconf: no patch changes the build system.
+- Replace --enable/disable-systemd-updates configure parameter with
+  --enable/disable-offline-update: the relevant systemd-updates
+  parameters have not been valid since PackageKit 1.0.0.
+- Drop --with-default-backend=zypp configure parameter: this has
+  not been udnerstood since PackageKit 1.0. PK just used the one
+  and only backend installed in the distro.
+
+-------------------------------------------------------------------
+Wed Dec  6 12:48:41 UTC 2017 - dimstar@opensuse.org
+
+- Add PackageKit-cron-without-sleep.patch: Do not sleep while
+  running scripts called by cron. openSUSE's run-crons has
+  sufficient logic to not have all machines start at the same time
+  (boo#1071521).
+
+-------------------------------------------------------------------
+Thu Nov 23 13:37:14 UTC 2017 - rbrown@suse.com
+
+- Replace references to /var/adm/fillup-templates with new
+  %_fillupdir macro (boo#1069468)
+
+-------------------------------------------------------------------
+Thu Nov  2 15:38:31 UTC 2017 - dimstar@opensuse.org
+
+- Drop py_requires from PackageKit: there are no python scripts in
+  the main package.
+- Drop python-devel BuildRequires: we do not package the python
+  packagend anyway.
+- Have post/postun script for PackageKit-gtk3-module post/postun
+  only for suse_version < 1330: newer versions have file triggers
+  to trigger schema compilation.
+
+-------------------------------------------------------------------
+Mon Oct 30 06:11:17 UTC 2017 - sckang@suse.com
+
+- Modify PackageKit-zypp-backend-improve-refresh-cache.patch:
+  Prevent PK from being killed by unhandled exceptions
+  (boo#1064380).
+
+-------------------------------------------------------------------
+Mon Oct  9 02:20:58 UTC 2017 - sckang@suse.com
+
+- Add PK-zypp-return-error-invalid-package-ids.patch: Return error
+  if invalid package IDs are detected in zypp backend (bsc#981011).
+
+-------------------------------------------------------------------
+Wed Sep 20 14:56:55 UTC 2017 - fcrozat@suse.com
+
+- No longer BuildRequires libqt4-devel, this part is in a separate
+  project since version 0.8.6.
+
+-------------------------------------------------------------------
+Mon Sep 11 20:20:17 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 1.1.7:
+  + Libraries: Add missing context pushes and pops.
+  + Backends: zypp: Fix stack smashing on 32-bit system.
+  + New Features: Add the ability to install updates on reboot in
+    PackageKit-cron.
+  + Bugfixes:
+    - Don't search for NetworkManager or ConnMan anymore.
+    - Effectively check for previous proxy entries.
+    - Fix proxy environment variables.
+    - Show a different progress message for system upgrades.
+  + Updated translations.
+- Drop PackageKit-avoid-stack-smashing-on-i586.patch: Fixed
+  upstream.
+
+-------------------------------------------------------------------
+Wed Jun 28 09:04:56 UTC 2017 - dimstar@opensuse.org
+
+- Explicitly call autoreconf, as one of the patches touches the
+  build system. As long as the version of automake available is the
+  same as was used to bootstrap the tarball, there is no issue, but
+  if the version changes, the call must be explicit.
+- Add autoconf-archive BuildRequires in order to actually be able
+  to successfully bootstrap.
+
+-------------------------------------------------------------------
+Wed Jun  7 15:24:01 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 1.1.6:
+  + New Feature: Add new status "Running hooks".
+  + Bugfixes:
+    - Checks NULL strings inside pk_progress_bar_start.
+    - Fix segfault when config file is not found.
+    - Return success to avoid reboot in pk-offline-update.
+    - Use g_printerr() for errors instead g_print().
+    - Various tweaks to the offline-updates service file.
+  + Backends: fixes for alpm, aptcc and dnf.
+
+-------------------------------------------------------------------
+Thu Jun  1 06:33:41 UTC 2017 - sckang@suse.com
+
+- Add PackageKit-avoid-stack-smashing-on-i586.patch: Fix PackageKit
+  stack smashing when running "pkcon get-updates" on 32-bit system
+  (fdo#101267, bsc#1020028).
+
+-------------------------------------------------------------------
+Mon Feb 13 02:47:07 UTC 2017 - sckang@suse.com
+
+- Add PackageKit-zypp-backend-improve-refresh-cache.patch: Improve
+  zypp_refresh_cache in zypp backend to make PK works better with
+  zypper (bsc#899755).
+
+-------------------------------------------------------------------
+Fri Jan 20 12:42:25 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 1.1.5:
+  + This release removes the hif backend which is superseded by the
+    new dnf backend.
+  + Bugfixes:
+    - Fix redeclaration of polkit autocleanup functions.
+    - Check for a zero-length search string before passing to
+      backends.
+    - command-not-found: Ignore commands of only one character.
+  + Backends: fixes for alpm, aptcc and katja.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 19 20:26:10 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 1.1.4:
+  + Backends:
+    - aptcc:
+      . Add get-files-local support.
+      . Add support for pk_backend_get_details_local.
+      . Add support for searching for relative paths.
+      . Convert a few more loops to C++11 range for.
+      . Drop DebFile helper class.
+      . Fix locating package which a file list belongs to.
+      . Fix NULL assertion warning.
+      . Fix typo.
+      . Install local files using APT API.
+      . Update pk-matrix for GetDetailsLocal.
+      . Use C++11 range for loops.
+      . Use FindGrp instead of manual matching every package when
+        resolving.
+    - apt: Remove reference from pk-matrix.html.
+    - dnf: Port from libhif to libdnf.
+    - hif/dnf:
+      . Fix a tiny memory leak when installing packages.
+      . Fix a tiny memory leak when invalidating repo cache.
+    - zypp:
+      . Pass the patch "Application Restart Suggested" flag down
+        to PK.
+      . Return error if invalid package IDs are detected.
+  + New Features:
+    - Add a new DNF backend.
+    - Use GetFilesLocal in pkcon get-files if argument is a file.
+  + Bugfixes:
+    - Add a new REPO_ALREADY_SET error enum and use it in backends.
+    - Annotate PreparedUpgrade DBus property for usage in
+      PackageKit-Qt.
+    - Change the configuration of the cron script to a
+      sysconfig-like config.
+    - Do not try to exec plymouth if it is not installed.
+    - Don't crash when emitting PropertiesChanged for NULL values.
+    - Fix a leak in get_prepared_sack().
+    - Fix a tiny memory leak on error path.
+    - Fix a tiny memory leak when setting a proxy.
+    - Fix "cache-age changed to -1" debug message (when cache-age
+      is G_MAXUINT).
+    - Fix two small memory leaks when processing signals from the
+      daemon.
+    - Fix updates and change code to aid in not breaking this again
+      (gh#hughsie/PackageKit#149).
+    - Fix various g_variant_get ^a&s leaks.
+    - Invalidate PreparedUpgrade property when the prepared file
+      changes.
+    - Look for command-not-found dbus socket in /run instead of
+      /var/run.
+    - Remove declaration of non-existent
+      pk_task_{get,set}_interactive().
+- Drop
+  0001-Change-the-configuration-of-the-cron-script-to-a-sys.patch,
+  PackageKit-dbus-location.patch,
+  PackageKit-annotate-dbus-interface.patch,
+  0001-zypp-Return-error-if-invalid-package-IDs-are-detecte.patch
+  and bnc#881245-update-test-affects-package-manager-should-restart-gpk-update-viewer.patch:
+  Fixed upstream.
+- Conditionally apply translations-update-upstream BuildRequires
+  and macro for non-openSUSE only.
+- Stop passing V=1 to make, we do debugging locally.
+
+-------------------------------------------------------------------
+Thu Aug 25 11:17:18 UTC 2016 - dimstar@opensuse.org
+
+- Drop PackageKit-1.0.1-fix-bashisms.patch: this patch has been
+  submitted upstream for discussion (gh#hughsie/PackageKit#162). If
+  accepted, we'll inherit with a future update, if declined, it is
+  not important enough to carry around. The code it touches is only
+  used by the internal test suite.
+
+-------------------------------------------------------------------
+Thu Aug 25 10:30:17 UTC 2016 - dimstar@opensuse.org
+
+- Drop PackageKit-fix-offline-trigger.patch: in line with upstreams
+  expectation we package /var/cache/PackageKit. With this present
+  the symlink produced for offline update can correctly symlink
+  to an existing directory.
+
+-------------------------------------------------------------------
+Fri Aug 12 11:31:11 UTC 2016 - zaitor@opensuse.org
+
+- Stop Providing/Obsoleting opensuse-codecs-installer, it was
+  dropped more than 5 years ago.
+
+-------------------------------------------------------------------
+Mon Jul 25 08:37:41 UTC 2016 - ma@suse.com
+
+- Add
+  0001-zypp-Return-error-if-invalid-package-IDs-are-detecte.patch:
+  Fix segfaults when detecting invalid package IDs
+  (gh#hughsie/PackageKit#148).
+
+-------------------------------------------------------------------
+Fri Jul 15 11:21:56 UTC 2016 - dimstar@opensuse.org
+
+- Add PackageKit-annotate-dbus-interface.patch: annotate the DBus
+  interface introduced with version 1.1.2 in order for PK-Qt to
+  be able to build.
+
+-------------------------------------------------------------------
+Thu Jul 14 13:02:14 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 1.1.3:
+  + Bugfixes:
+    - backend job: Avoid emitting duplicates with parallel
+      download.
+    - Revert a patch that caused PackageKit to always request auth
+      when installing packages.
+    - Update the GPLv2 text in COPYING.
+  + Backends: zypp: PK_FILTER_ENUM_ARCH is supposed to filter on
+    primary arch.
+
+-------------------------------------------------------------------
+Wed Jul 13 10:37:28 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 1.1.2:
+  + This release adds a new backend for the Nix package manager.
+  + New Features:
+    - Add a test for offline distro upgrades.
+    - Add PreparedUpgrade DBus property.
+  + Bugfixes:
+    - Make pk_console_get_prompt() big endian safe.
+    - Require admin authorisation to trigger a distro upgrade.
+    - build: Avoid g_simple_async_result deprecation warnings.
+    - task: Fix only-trusted property notifications.
+    - task: Honour the only_trusted property when setting up
+      transactions.
+  + Backends: fixes for alpm. aptcc, hif and katja.
+- Add trusted key of Kalev Lember (8F62AF74) to the keyring.
+- Fix update-alternatives usage.
+
+-------------------------------------------------------------------
+Thu May 19 19:40:59 CEST 2016 - hpj@suse.com
+
+- Update to GNOME 3.20.2 (FATE#318572).
+
+-------------------------------------------------------------------
+Wed May 18 09:12:12 UTC 2016 - zaitor@opensuse.org
+
+- Drop docbook-utils BuildRequires: No longer needed for man pages
+  building.
+
+-------------------------------------------------------------------
+Fri Apr 29 13:40:11 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 1.1.1:
+  + Backends:
+    - alpm: port to g_autoptr().
+    - hif: Set ALLOW_DOWNGRADE flag for all transactions.
+    - zypp: Enforce formatting input as string.
+  + New Features:
+    - Add UpdateTriggered / UpgradeTriggered DBus properties.
+    - Add TriggerUpgrade DBus method handling.
+  + Bugfixes:
+    - Emit UpdatesChanges when installing packages.
+    - Fix GIR annotations for progress callbacks.
+    - Increase the number of packages that can be resolved.
+    - Point offline update/upgrade trigger to the prepared update.
+    - Unlink any existing offline update triggers before creating.
+
+-------------------------------------------------------------------
+Thu Apr 14 15:59:34 UTC 2016 - mgorse@suse.com
+
+- Update to GNOME 3.20  Fate#318572
+
+-------------------------------------------------------------------
+Tue Feb 16 10:56:48 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 1.1.0:
+  + New Features:
+    - Add client side API for triggering offline system upgrades.
+    - Add getters for PkProgress.
+    - Add pk_get_distro_version_id.
+    - Add system upgrade API to PkTask.
+    - Port to g_autoptr().
+    - Remove the PackageKit browser plugin.
+    - Use the GLib network monitoring support.
+  + Backends:
+    - zypp:
+      . Avoid media access when testing for cd/dvd URL scheme.
+      . Fix build.
+      . Use libzypp's arch compatibility check.
+    - Other fixes for alpm, aptcc and hif.
+  + Bugfixes:
+    - Add missing description for obsoleted packages.
+    - Add support for offline system upgrades.
+    - Allow to enable or disable systemd units for offline update.
+    - Correctly store file descriptor from logind (bgo#94070).
+    - Do not crash on GetPrepared when there are no offline
+      updates.
+    - Do not crash on transaction database corruption.
+    - Do not crash when parsing a very broken transaction log.
+    - Do not install offline update related files if disabled.
+    - Emit PropertiesChanged for UpgradeSystem transaction flags.
+    - Fix download-size-remaining property type.
+    - Fix various minor memory leaks.
+    - Make transaction get_proxy() return TRUE for no proxy
+      settings.
+    - Minor fixes in command_not_found_handle{,r}() for bash and
+      zsh.
+    - Relax validation performed on input strings passed to
+      backends.
+    - Require dbus.socket for offline update.
+    - Set PACKAGEKIT_CALLER_UID environment.
+    - Sort package names when printing out simulation.
+    - Use new PkTask API for system upgrades.
+- Rebase PackageKit-dbus-location.patch.
+- Drop PackageKit-zypp-buildfix.patch: fixed upstream.
+- Drop PackageKit-browser-plugin subpackage: the plugin was removed
+  upstream.
+- No longer pass --with-mozilla-plugin-dir to configure: without
+  the plugin there is no need to know where it would need to be
+  installed.
+
+-------------------------------------------------------------------
+Sun Nov 29 19:09:25 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 1.0.11:
+  + By popular demand, reintroduce the UpgradeSystem method.
+  + Backends:
+    - python:
+      . Make PackagekitProgress an Iterable.
+      . Set steps on PackagekitProgress instanciation.
+    - zypp: Raise priority of ZYPP stack updates if a security
+      patch is shadowed (bsc#951592).
+    - dummy: Implement simulating UpgradeSystem and respect the
+      transaction flags.
+    - Lots of fixes for aptcc, hif and portage backends.
+  + New Features: Allow the use of variadic functions in vala.
+  + Bugfixes: Make pk_details_get_size documentation more specific.
+- Add PackageKit-zypp-buildfix.patch: Fix build of the zypp
+  backend.
+
+-------------------------------------------------------------------
+Fri Nov 13 16:17:39 UTC 2015 - zaitor@opensuse.org
+
+- Add PackageKit-avoid-endless-loop-on-autoupdate.patch: Avoid a
+  endless loop on autoupdates.
+
+-------------------------------------------------------------------
+Fri Nov 13 16:16:15 UTC 2015 - dimstar@opensuse.org
+
+- Add PackageKit-fix-offline-trigger.patch: Fix the PK trigger
+  detection: if not done properly, PK might believe that something
+  else triggered the system update and expects something else to
+  handle the update (boo#954125).
+
+-------------------------------------------------------------------
+Mon Nov  9 19:23:41 UTC 2015 - tchvatal@suse.com
+
+- Add Suggests: cron due to existing cronscript
+- Slight whitespace with spec-cleaner
+
+-------------------------------------------------------------------
+Tue Sep 22 19:28:51 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 1.0.10:
+  + Process the offline update triggered by older PK versions.
+  + Use Glib for reading symlink to prevent crash with some
+    compilers.
+
+-------------------------------------------------------------------
+Wed Sep 16 08:58:19 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 1.0.9:
+  + Check the offline action trigger before performing the update.
+  + Fix two critical warnings.
+  + Add PackageKitGlib-1.0.metadata to release tarball.
+  + Fix a race with the backend job thread creation.
+  + Updated translations.
+- Drop PackageKitGlib-1.0.metadata source: it is now part of the
+  tarball.
+
+-------------------------------------------------------------------
+Tue Sep  1 10:47:38 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 1.0.8:
+  + New Feature: Generate Vala bindings.
+  + Bugfixes:
+    - Correctly register enum properties.
+    - Exit quietly if we didn't prepare the offline update.
+    - Fix various docstring errors in the library.
+    - Look for libsystemd now that journal/login are merged.
+  + Backend enhancements/fixes: hif, urpmi and yum.
+- Replace pkgconfig(libsystemd-journal) BuildRequires with
+  pkgconfig(libsystemd), following upstreams changes.
+- Add vala BuildRequires in order to build the vala bindings.
+- Inject PackageKitGlib-1.0.metadata as source into the package: it
+  was forgotten in the 1.0.8 release tarball.
+
+-------------------------------------------------------------------
+Thu Jul 16 09:43:39 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 1.0.7:
+  + New Feature: Define command_not_found_handler for zsh.
+  + Bugfixes:
+    - Correct punctuation while applying offline updates.
+    - Don't run if bash command completion is being run.
+    - Fix Details() from spawned backends.
+    - Port GTK+ module to org.freedesktop.PackageKit.Modify2.
+    - Return the correct error for syntax errors in pkcon.
+    - Return the correct error if nothing was done for repo-enable.
+  + Backend enhancements/fixes: alpm, entropy, hif, portage, urpm
+    and yum.
+
+-------------------------------------------------------------------
+Tue Apr  7 17:27:33 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 1.0.6:
+  + New Features:
+    - Add dbus method for returning prepared packages.
+    - Add pk_backend_is_transaction_inhibited.
+    - gstreamer plugin: Add support for v2 of the PK session
+      service interface.
+  + Bugfixes:
+    - Don't recursive lock the debug mutex when using --verbose
+      without a tty.
+    - Make "reboot" the default action for no action file.
+    - gstreamer plugin: Adapt to gstreamer missing plugin changes.
+    - gstreamer plugin: Avoid criticals when some of the parameters
+      are NULL.
+  + Backend enhancements/fixes: alpm and hif.
+
+-------------------------------------------------------------------
+Wed Feb 11 08:39:14 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 1.0.5:
+  + Add missing --allow-downgrade and --allow-reinstall to the man
+    page.
+  + Backend enhancements/fixes: alpm and hif.
+
+-------------------------------------------------------------------
+Sat Jan 24 21:33:05 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 1.0.4:
+  + New Features:
+    - Add 'quit' command to pkcon.
+    - Add the install and remove commands to the packagekit-direct
+      test tool
+  + Libraries: Add PK_INFO_ENUM_UNAVAILABLE.
+  + Bugfixes:
+    - Actually inhibit logind when the transaction can't be
+      cancelled.
+    - Allow pk_backend_job_set_allow_cancel() after ErrorCode has
+      been set/
+    - Do not attempt to run command-not-found for anything prefixed
+      with '.'.
+    - Don't use PkBackendSpawn helpers in compiled backends.
+    - Fix a hard-to-debug crash when cancelling a task that has
+      never been run.
+    - Make pk_backend_job_call_vfunc() threadsafe.
+    - Make pk_backend_repo_list_changed() threadsafe.
+    - Make the network detection code simpler.
+    - Really remove the timer GSource when quitting the daemon.
+    - Recreate the download location if it does not already exist.
+  + Backend enhancements/fixes: alpm, aptcc, dummy, hif and urpmi.
+- PK is newly published with a digital signature: add .keyring and
+  .asc file to sources.
+
+-------------------------------------------------------------------
+Sat Nov 22 17:39:00 UTC 2014 - Led <ledest@gmail.com>
+
+- fix using 'echo' command in search-name.sh script
+- add patches:
+  * PackageKit-1.0.1-fix-bashisms.patch
+
+-------------------------------------------------------------------
+Wed Nov 19 16:47:33 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 1.0.3:
+  + Libraries: glib: Add support for reinstallation and downgrades.
+  + Backends:
+    - hif:
+      . Add support for reinstall and downgrade.
+      . Use hif_context_set_vendor_cache_dir() to be smarter about
+        the vendor cache.
+      . Use repo loader provided by the context.
+    - zypp:
+      . Improve progress status.
+      . Propagate install errors to PK.
+      . Remap 'recommended' patches to 'BUGFIX'.
+  + New Features: Add reinstall and downgrade support to pkcon.
+- Drop PackageKit-zypp-progress-info.patch: Fixed upstream.
+
+-------------------------------------------------------------------
+Wed Oct 22 11:00:10 UTC 2014 - dimstar@opensuse.org
+
+- Add PackageKit-zypp-progress-info.patch: Pass more progress
+  information from libzypp to PackageKit. This results in PK having
+  accurate information about overall download and install progress,
+  making all UIs profit from this (instead of just writing
+  'Installing packages', they can now show a progress bar. Clients
+  like pkcon and gnome-packagekit already use this information if
+  provided. Also offline-update propagates the information to
+  plymouth.
+
+-------------------------------------------------------------------
+Tue Oct 21 12:35:15 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 1.0.1:
+  + New Feature: Add a KeepCache config parameter.
+  + Bugfixes:
+    - Do not install the python helpers unless required.
+    - Don't assume systemd is found if --with-systemdsystemunitdir
+      is passed.
+    - Fall back to /usr/lib/os-release if /etc/os-release does not
+      exist.
+    - Fix compile when the systemd headers are not located in
+      /usr/include.
+    - Never allow cancelling a transaction twice.
+    - Overwrite an existing link for
+      packagekit-offline-update.service.
+  + Backends:
+    - ZYpp:
+      . Be more specific with the progress status messages.
+      . Ensure to reach 100% on complete cache_refresh.
+      . Fix compiler warning.
+    - Fixes in apm, hif and urpmi backends.
+- Drop PackageKit-offline-update.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Thu Oct 16 20:24:47 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update baselibs.conf: upon update to 1.0.0 soversion was bumped
+  to libpackagekit-glib2-18, but baselibs wasn't adjusted
+
+-------------------------------------------------------------------
+Thu Oct  9 18:02:19 UTC 2014 - dimstar@opensuse.org
+
+- Set DISABLE_RESTART_ON_UPDATE to 'yes' instead of '1': the
+  systemd macros do an explicit compare to the string.
+
+-------------------------------------------------------------------
+Sat Oct  4 12:31:13 UTC 2014 - dimstar@opensuse.org
+
+- Add PackageKit-offline-update.patch:
+  + Make packagekit-offline-update a static service. Users believe
+    by disabling the service, the feature would be disabled, when
+    in fact systemd still brings the user to the
+    system-update.target, but then doesn't perform any action, most
+    of all not removing the /system-update link, thus ending in a
+    loop.
+
+-------------------------------------------------------------------
+Fri Sep 19 12:23:59 UTC 2014 - fcrozat@suse.com
+
+- Add patch
+  bnc#881245-update-test-affects-package-manager-should-restart-gpk-update-viewer.patch:
+  ensure PackageKit asks to be restarted when restart_suggested is
+  part of the update flags. Patch by Roy Ley Mu (bnc#881245).
+
+-------------------------------------------------------------------
+Fri Sep 12 12:17:30 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 1.0.0:
+  + The offline update functionality has moved to a proper D-Bus
+    interface and the pkexec helpers have been removed. Offline
+    updates is an important feature that no longer deserves to be
+    bolted-on. All the existing users have been ported to the new
+    interface, but you need 3.13.92 if you're running GNOME from
+    unstable or jhbuild.
+  + No more plugins. Both in-tree and out-of-tree plugins were the
+    biggest source of crashes, and with the systemd offline updates
+    merged into the core daemon they are just not reuired anymore.
+    All affected projects have been notified.
+  + No more conary, opkg, smart or yum plugins. These have been
+    unmaintained and broken for over two years, so time to give
+    them the heave-ho.
+  + The alpm, aptcc, hif and zypp plugins have had lots of love,
+    and are up to date with the latest features and working well.
+  + New Features:
+    - Add a D-Bus interface and helpers for offline support.
+    - Add a repo-set-data command to packagekit-direct.
+    - Add a simple script that generates some offline metadata.
+    - Add pk_backend_job_get_cancellable().
+    - Add pk_backend_job_is_cancelled().
+    - Add pk_backend_set_user_data().
+    - Add pk_offline_get_prepared_sack() and use it in the
+      systemd-updates plugin.
+    - Remove pk-debuginfo-install.
+    - Remove support for distros not supporting /etc/os-release.
+    - Remove the --enable-systemd-updates configure switch.
+    - Remove the events/pre-transaction.d functionality.
+    - Remove the pkexec systemd helpers.
+    - Remove the plugin interface.
+    - Remove various options from the config file.
+  + Bugfixes:
+    - Automatically do pk_backend_job_finished() for threaded
+      backends.
+    - Do not shutdown the daemon on idle by default.
+    - Fix compile of the ConnMan network support.
+    - Fix packagekit-offline-update.service generation.
+    - Increase the default transaction limits.
+    - Prefer npapi-sdk over mozilla-plugins.
+    - Refresh the NetworkManager state when the daemon starts.
+- Add rcpackagekitd and rcpackagekitd-offline-update symlinks.
+- Shorten the Summary of PackageKit-branding-upstream a bit.
+
+-------------------------------------------------------------------
+Wed Sep 10 09:21:22 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 0.9.6 (git master/0fcee3c):
+  + Fix a multitude of possible crashers.
+- Drop  0002-Build-against-npapi-sdk-instead-of-xulrunner.patch and
+  PackageKit-zypp-0.9.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Tue Sep  9 20:16:24 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 0.9.5:
+  + New Features:
+    - Add --allow-untrusted option to pkcon.
+    - Add a new tool called packagekit-direct that can run without
+      a daemon.
+    - Remove remaining time reporting.
+    - Remove the desktop.db plugin.
+  + Bugfixes:
+    - Do not commit the transaction manually but instead set the
+      correct state.
+    - Do not log a critical warning when idle exiting.
+    - Fix a crash when we are cancelling a transaction that has not
+      yet been run.
+    - Make browser-plugin search for npapi-sdk or mozilla-plugin.
+    - Never ever use g_main_context_iteration() manually.
+  + Backend fixes.
+  + For changes from version 0.9.1 up to 0.9.4: please see NEWS
+    file.
+- No longer pass --with-security-framework to configure: not known
+  anymore.
+- Rebase 0002-Build-against-npapi-sdk-instead-of-xulrunner.patch
+  and PackageKit-dbus-location.patch.
+- Drop PackageKit-zypp-filter-uninstalled-packages.patch: fixed
+  upstream.
+- Add PackageKit-zypp-0.9.patch: port zypp backend to PK 0.9.x.
+- Drop typelib-1_0-PackageKitPlugin-1_0 subpackage: the plugin
+  architecture does no longer exist.
+- Rename libpackagekit-glib2-16 subpackage to
+  libpackagekit-glib2-18, following upstreams soname change.
+- Rework for GStreamer 1.0 support:
+  + Remove gstreamer-0_10-devel and
+    gstreamer-0_10-plugins-base-devel BuildRequires.
+  + Add gstreamer-devel and gstreamer-plugins-base-devel
+    BuildRequires.
+  + Change supplements in gstreamer-plugin to
+    packageand(%{name}:gstreamer-plugins-base).
+
+-------------------------------------------------------------------
+Wed Aug  6 15:54:25 UTC 2014 - dimstar@opensuse.org
+
+- Export DISABLE_RESTART_ON_UPDATE=1 in postun scriptlet: advise
+  the systemd postun macro not to restart PackageKit services, as
+  PK would forget it was in progress of a transaction and abort it.
+
+-------------------------------------------------------------------
+Sun Jul 13 20:36:24 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 0.8.17:
+  + Backends:
+    - Multiple Katja updates.
+    - Multiple aptcc updates.
+    - Multiple hawkey updates.
+  + New Features:
+    - Allow optionally shutting down after applying updates.
+    - Set an idle IO priority for background threaded transactions.
+  + Bugfixes:
+    - Do not disregard any transaction that takes more than 43
+      seconds.
+    - Do not install into python_sitelib.
+    - Fix directory path in the docs.
+    - Return an error if a client tries to execute an unknown
+      method.
+    - Set the default cache-age to 'never'.
+    - When using 'pkcon install' assume arch filter.
+
+-------------------------------------------------------------------
+Fri Jun  6 13:09:41 CEST 2014 - hpj@suse.com
+
+- Add PackageKit-zypp-filter-uninstalled-packages.patch. GStreamer
+  codec installation would prompt to install already installed
+  packages. This patch fixes the issue. Part of fate#316921.
+
+-------------------------------------------------------------------
+Tue Feb 25 19:39:53 UTC 2014 - dimstar@opensuse.org
+
+- Switch with_offline_udpates on.
+
+-------------------------------------------------------------------
+Mon Jan 20 18:25:00 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 0.8.16:
+  + Libraries: Add pk_package_sack_find_by_id_name_arch().
+  + New Features: Set all the proxy settings when using pkcon.
+  + Changes in the following backends: aptcc, entropy, hawkey,
+    katja.
+  + Bugfixes:
+    - Annotate DBUS Interface for GetPackageHistory.
+    - Clear the prepared-updates file only when the update is
+      invalidated.
+    - Do not show an error if GetDepends is not supported.
+    - Do not use the '…' character when talking to plymouth.
+    - Don't use the default main context in sync PkClient methods.
+    - Only scan .desktop files in the datadir.
+
+- Drop PackageKit-dbus-interface-annotation.patch,
+  bsc#951592-zypp-Raise-priority-of-ZYPP-stack-updates-if-a-secur.patch,
+  and PackageKit-gstreamer1.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Mon Jan  5 10:24:22 CET 2014 - ma@suse.com
+
+- Add bsc#951592-zypp-Raise-priority-of-ZYPP-stack-updates-if-a-secur.patch:
+  zypp: Raise priority of ZYPP stack updates if a security patch
+  is shadowed. (bsc#951592)
+
+-------------------------------------------------------------------
+Sat Jan  4 08:42:16 UTC 2014 - fcrozat@suse.com
+
+- Add PackageKit-gstreamer1.patch: Build against gstreamer 1.0, not
+  0.10.
+
+-------------------------------------------------------------------
+Tue Dec 24 19:56:08 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.8.15:
+  + Lots of bugfixes and cleanups, no real new features.
+  + Changes in the following backends: alpm, aptcc, hawkey and yum.
+  + Bugsfixes:
+    - Do not assert when re-using a PkPackage instance.
+    - Do not overrride CLEANFILES from gtk-doc, append to it.
+    - Do not update the role when doing the test transaction.
+    - For gtk-doc DOC_SOURCE_DIR is relative to builddir.
+    - For gtk-doc add missing setup_files.
+    - Ignore progressbar start text if it unchanged.
+    - Only show some status values in pkcon after a small delay.
+    - Resolve internally in pkcon to provide a better output.
+    - Update CVE regexp for new CVE format.
+    - Use syslog() correctly.
+    - Use the filter when removing and installing software using
+      pkcon.
+    - Use the system database location when compiling with
+      --enable-local.
+
+-------------------------------------------------------------------
+Thu Dec 19 10:56:11 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.8.14:
+  + We've removed and deprecated the parts of PackageKit that
+    either didn't work very well, or simply were not being used.
+    The library and soname stays the same, but a lot of daemon
+    cruft has been removed.
+  + A lot of the work above focused on speed, and packagekitd is
+    substantially faster on most backends now. 100ms here, 50ms
+    there; things feel lot more snappy doing the most common
+    operations.
+  + Libraries:
+    - Do not add two refs on the PkPackage when in a sack.
+    - Do not check if the package-id name is valid UTF-8.
+    - Do not maintain two arrays of the same packages.
+    - Do not use g_strdup_printf() when building a package_id.
+    - Optimise pk_package_set_id() by not using g_strsplit().
+    - Remove an overly-cautious dup when setting the package ID.
+  + Backends:
+    - box: Remove backend, it's obsolete upstream.
+    - Various fixes in backends: entropy, hawkey, portage, zif.
+  + New Features: Update the website and developer docs to reflect
+    reality.
+  + Bugfixes:
+    - Don't populate a PkResults object just so we can save one
+      PkErrorEnum value.
+    - Don't update the text package cache when refreshing.
+    - Explicitly mark the required PolicyKit as a hard dep.
+    - Never ever use WError.
+    - Only get the sender cmdline when the value is going to be
+      used.
+    - Only load the transaction introspection once.
+    - Only validate UTF-8 text from the spawned backends.
+    - Speed up loading the transaction introspection by 13ms.
+- Drop pm-utils BuildRequires and pm-utils relevant install
+  instructions: support has been removed.
+
+-------------------------------------------------------------------
+Thu Dec 19 08:59:10 UTC 2013 - coolo@suse.com
+
+- Add PackageKit-dbus-interface-annotation.patch: annotate
+  GetHistory call for Qt bindings to compile.
+
+-------------------------------------------------------------------
+Sat Nov 23 22:10:21 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.8.13:
+  + New Features:
+    - Add a systemd packagekit.service file.
+    - Provide a way to run the spawned backend under strace.
+  + Improvements to various backends: hawkey, poldek and yum.
+  + Bugfixes:
+    - Fix the --with-systemdsystemunitdir option to actually work.
+    - Do not abort the daemon if we can't write to a database.
+    - Do not proxy the action states when simulating.
+    - Don't crash if ProxyHTTP is set.
+    - Fix a small memory leak spotted by clang.
+    - Fix critical warning when killing a backend with new versions
+      of GLib.
+    - Fix memory leak when running plugins.
+    - Fix memory leak when using new versions of GLib.
+    - Ignore the prefix when dealing with the PackageKit prepared
+      update.
+    - Make the debugging print formatter thread safe.
+    - Remove duplicate assignment of pkcon '-y' option.
+    - browser-plugin: Never use the application icon.
+    - systemd-updates: Log all warnings and notices to the journal.
+    - systemd-updates: Show some text progress.
+- Add pkgconfig(libsystemd-journal) BuildRequires: new dependency.
+
+-------------------------------------------------------------------
+Sat Oct 19 22:53:18 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.8.12:
+  + Libraries:
+    - Add a method to parse a PkPackage from it's description.
+    - Add pk_transaction_past_get_timestamp() as a helper.
+    - Add some simple getters for PkDetails.
+    - Add some simple getters for PkTransactionPast.
+    - Destroy and re-create the control proxy if the server
+      changes.
+    - Do not have duplicate 'interactive' properties.
+    - Make PkTask thread-default-context aware.
+  + pisi backend fixes.
+  + Add GetPackageHistory() that returns history data for packages.
+  + Check for packagekitd in the right location.
+  + Do not send the backend a cache age of -308 when using
+    UINT_MAX.
+- Rebase PackageKit-dbus-location.patch.
+- Drop PackageKit-destroy-and-recreate.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Sun Sep 29 17:38:51 UTC 2013 - dimstar@opensuse.org
+
+- Set BUILD_CNF to 0: in openSUSE, we use the sep.
+  command-not-found package for the same purpose. The existing
+  handler anyway never worked, as it checked for the presence of
+  /usr/libexec/packagekitd, which is not a valid openSUSE location.
+
+-------------------------------------------------------------------
+Thu Sep 26 16:50:37 UTC 2013 - dimstar@opensuse.org
+
+- Add PackageKit-destroy-and-recreate.patch: Destroy and re-create
+  the control proxy if the server changes. Helps gnome-software to
+  be able to communicate with packagekitd after restarting the
+  daemon.
+
+-------------------------------------------------------------------
+Sat Sep  7 17:25:35 UTC 2013 - dimstar@opensuse.org
+
+- Add PackageKit-dbus-location.patch: Look for dbus socket in /run
+  instead of /var/run (bnc#829944).
+
+-------------------------------------------------------------------
+Tue Sep  3 06:37:22 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.8.11:
+  + Make it possible to cancel an offline update.
+  + Add offline update commands to the pkcon man page.
+  + Make sure basic stuff is set up before entering the STARTED
+    plugin phase.
+  + pkcon: Add a few missing subcommands to the help output.
+  + pkcon: Document commands and options.
+  + zypp: Adapt to pk_backend_job_files change.
+  + Various backend fixes (not zypp related).
+- Drop PackageKit-zypp-buildfix.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Wed Jul 31 13:16:23 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.8.10:
+  + Libraries:
+    - glib:
+      . Actually return the error if any PkClient methods failed.
+      . Fix a potential segfault when getting the error code for
+        the results.
+    - ruby_packagekit:
+      . update enums with enum-convertor.
+      . update prints with commands.
+      . update the backend API.
+  + New Features:
+    - Add a 'DOWNLOADED' filter to select only packages already in
+      the cache.
+    - Add three pkcon sub-commands for offline updates.
+    - Allow local active users in the wheel group to install signed
+      packages without a password.
+    - Allow plugins to override PolicyKit action IDs.
+  + Bugs fixed:
+    - Also look for libraries in type txt from lsof.
+    - Correctly handle SIGINT signals again.
+    - Default lsof installation path on FreeBSD.
+    - Depend on GLib 2.30.0 for the UNIX signal handling features.
+    - Do not start the daemon if we cannot get a valid starting ID.
+    - Don't cause warnings if /proc/net/route is missing.
+    - Do proper error checking when modifying the transaction
+      database.
+    - Emit error for Listaller package installs, if Listaller is
+      not installed.
+    - Ensure we create the per-system metadata cache location.
+    - Fix Listaller compat check if IPK mime type is not installed.
+    - Generate the python files to get the path right.
+    - If the transaction database is missing, show an error and
+      cleanly shutdown.
+    - Load an instance of the transaction database for each
+      transaction.
+    - Make pk_backend_job_files() accept an array of strings.
+    - Make the client-helper run on non-Linux systems.
+    - Make the test scripts use a standard shell.
+    - Only check the package-id of ::Files when specified.
+    - Only search newest packages when resolving 'pkcon update
+      foo'.
+    - Raise the package process threshold to 5000.
+    - systemd-updates: Do not exit with an error for a race
+      condition.
+  + Various fixes in aptcc, dummy, hawkey, pisi, ports, yum and
+    zif backend.
+- Add PackageKit-zypp-buildfix.patch: change zypp backend to
+  follow pk_backend_job_files() changes.
+
+-------------------------------------------------------------------
+Wed May 22 12:18:59 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.8.9:
+  + New Features:
+    - Add 'pkcon backend-details' to be get details of the selected
+      backend.
+  + Bugfixes:
+    - Add fallback for older libarchive.
+    - Do not rely on Python2 to write UTF-8 strings.
+    - Do not use -fPIE when calling g-ir-scanner.
+    - Ensure the package is removed from the sack properly.
+    - Modify CodingStyle.
+  + Backends:
+    - yum: Update the comps->group mapping for Fedora 19.
+    - yum: When converting to unicode special case YumBaseError.
+
+-------------------------------------------------------------------
+Wed May  8 15:12:13 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.8.8:
+  + PackageKit now allows local active users to install signed
+    software without prompting for authentication.
+  + Libraries:
+    - Add some public getters to PkUpdateDetail.
+    - Don't use the default main context in sync PkClient methods.
+    - When getting desktop data try the installed prefix, and then
+      the system copy.
+  + ZYPP backend fixes:
+     - Do not trigger invalid numbers.
+     - Fix compile with __attribute__ gnu_printf.
+     - Fix download progress.
+     - Fix removing packages.
+     - Ignore system resolvables during install too.
+     - Ignore @System upgrades during update.
+     - Instantiate PoolStatusSaver after pool is built
+       (bnc#804054).
+     - Less debug in progress functions.
+     - Merge all backend code into one file, much easier to
+       refactor.
+     - Only allow to update candidates (fdo#61231).
+     - Remap PK provides into rpm provides as the zif backend
+       does.
+     - Use the right functions to get solvables.
+  + Multiple other backend fixes.
+  + New Features:
+    - Added Provides property to retrieve which Provides the
+      backend supports
+    - Expose the transaction flags on the .Transaction object.
+    - Use __attribute__ gnu_printf when dealing with varargs.
+    - Use G_GNUC_NULL_TERMINATED for pk_backend_spawn_helper.
+    - Use PIE to better secure installed tools and also use full
+      RELRO in the daemon.
+  + Bugfixes:
+    - Add compatibility with newer libarchive versions.
+    - Allow clients to call org.freedesktop.DBus.Peer.
+    - browser-plugin: Do not crash when running an installed
+      package that is upgradable.
+    - Do not install the bash-completion code in /etc.
+    - Do not use _UTF8Writer when using python3.
+    - Do not write the prepared-updates file if systemd is not
+      available.
+    - Don't abort the daemon if the client requests a property that
+      does not exist.
+    - Don't initialize GType system on newer GLib versions.
+    - Ensure /var/lib/PackageKit exists before using it.
+    - Fix compiling with --enable-systemd
+      --disable-systemd-updates.
+    - Fix crash while calling inhibit into systemd-login.
+    - Fixed connman interface.
+    - Fix symbol-prefix passed to g-ir-scanner.
+    - Make PackageKit compile on !Linux again.
+    - Pause for 10 seconds if an error occurred before restarting
+      systemd-updates.
+    - Remove pk-plugin-clear-system-update as removing the trigger
+      file is never required.
+    - Remove the prepared-updates file if any relevant state was
+      changed.
+    - Resolve according to the filters when doing
+      'pkcon get-requires'.
+    - Support getting the distro-id from /etc/os-release.
+    - Use the correct session method to fix font installation in
+      pk-gtk-module.
+    - Write a pre-failure status file in case the update
+      transaction crashes.
+- Drop patches that have been merged upstream:
+  + 0003-zypp-fix-download-progress.patch
+  + 0004-zypp-use-the-right-functions-to-get-solvables.patch
+  + 0005-zypp-fix-removing-packages.patch
+  + 0006-zypp-do-not-trigger-invalid-numbers.patch
+  + 0007-fix-crash-while-calling-inhibit-into-systemd-login.patch
+  + 0008-zypp-ignore-System-upgrades-during-update.patch
+  + 0009-zypp-merge-all-backend-code-into-one-file-much-easie.patch
+  + 0010-zypp-ignore-system-resolvables-during-install-too.patch
+  + 0011-zypp-Fix-compile-with-__attribute__-gnu_printf.patch
+  + 0012-zypp-less-debug-in-progress-functions.patch
+  + 0013-zypp-remap-PK-provides-into-rpm-provides-as-the-zif-.patch
+  + 0014-zypp-Instantiate-PoolStatusSaver-after-pool-is-built.patch
+  + 0015-zypp-only-allow-updates.patch
+  + PackageKit-allow-to-disable-systemd-updates.patch
+- Add pkgconfig(bash-completion) BuildRequires: new dependency to
+  detect the bash completions install location.
+
+-------------------------------------------------------------------
+Wed Mar 27 12:52:41 UTC 2013 - mike.catanzaro@gmail.com
+
+- Drop fix-policies-opensuse.patch: these settings aren't being
+  used anymore as they're overridden by our settings in the package 
+  polkit-default-privs.
+
+-------------------------------------------------------------------
+Fri Mar  8 10:05:12 UTC 2013 - coolo@suse.com
+
+- add 0015-zypp-only-allow-updates.patch from git (bnc#804983)
+
+-------------------------------------------------------------------
+Thu Feb 28 16:00:49 CET 2013 - ma@suse.de
+
+- Add 0014-Instantiate-PoolStatusSaver-after-pool-is-built-bnc-.patch
+  (bnc#804054)
+
+-------------------------------------------------------------------
+Tue Feb 19 08:01:34 UTC 2013 - dimstar@opensuse.org
+
+- Add PackageKit-allow-to-disable-systemd-updates.patch: Disabling
+  systemd-updates has the effect that HAVE_SYSTEMD is completely
+  ignored, causing build failures.
+- Introduce with_systemd_updates (currently set to 0) to have an
+  easy way enabling/disabling systemd offline updates. For openSUSE
+  12.3 this is not fully ready, and instead of the UI offering it
+  and having any kind of side effect, we for now decide to disable
+  it. The defines conditionally does:
+  + Pass --disable-systemd-updates to configure
+  + Add a section to the %post scripts, removing remnant files if
+    left there.
+  + Adjust the files section.
+
+-------------------------------------------------------------------
+Mon Feb 11 18:37:26 UTC 2013 - coolo@suse.com
+
+- Add one more patch from git (bnc#735864):
+  + 0013-zypp-remap-PK-provides-into-rpm-provides-as-the-zif-.patch
+
+-------------------------------------------------------------------
+Sun Jan 27 07:38:52 UTC 2013 - coolo@suse.com
+
+- Add two more patches from git:
+  + 0011-zypp-Fix-compile-with-__attribute__-gnu_printf.patch
+  + 0012-zypp-less-debug-in-progress-functions.patch
+
+-------------------------------------------------------------------
+Mon Jan 21 17:22:28 UTC 2013 - coolo@suse.com
+
+- two more patches from git:
+   0010-zypp-ignore-system-resolvables-during-install-too.patch
+   0009-zypp-merge-all-backend-code-into-one-file-much-easie.patch
+
+-------------------------------------------------------------------
+Mon Jan 21 12:34:16 UTC 2013 - coolo@suse.com
+
+- Add two more patches fixing things from git:
+  + 0007-fix-crash-while-calling-inhibit-into-systemd-login.patch
+  + 0008-zypp-ignore-System-upgrades-during-update.patch
+
+-------------------------------------------------------------------
+Sun Jan 20 20:45:13 UTC 2013 - coolo@suse.com
+
+- Add 0006-zypp-do-not-trigger-invalid-numbers.patch to avoid crash
+  during download.
+
+-------------------------------------------------------------------
+Sat Jan 19 15:32:49 UTC 2013 - coolo@suse.com
+
+- Add 0005-zypp-fix-removing-packages.patch: fix removing packages
+  and hopefully also some crashes (bnc#769764).
+
+-------------------------------------------------------------------
+Sat Jan 19 09:29:27 UTC 2013 - coolo@suse.com
+
+- Add 0004-zypp-use-the-right-functions-to-get-solvables.patch:
+  make sure we're not hitting random packages. This also makes it
+  able to install patters with pkconf.
+
+-------------------------------------------------------------------
+Fri Jan 18 13:18:30 UTC 2013 - dimstar@opensuse.org
+
+- Make the new libpackagekit-glib package conflict with older
+  versions of PackageKit: together with the Recommends, we bring
+  the latest version in but don't forcibly require it.
+
+-------------------------------------------------------------------
+Thu Jan 17 16:10:55 UTC 2013 - coolo@suse.com
+
+- Added 0003-zypp-fix-download-progress.patch: fix download
+  progress (in apper).
+
+-------------------------------------------------------------------
+Thu Jan 17 10:01:11 UTC 2013 - tittiatcoke@gmail.com
+
+- Added patch (fix-policies-opensuse.patch) to be within the 
+  openSUSE guidelines for PolicyKit files.
+- Removed PackageKit-rpmlintrc due to above mentioned patch
+
+-------------------------------------------------------------------
+Wed Jan 16 19:38:47 UTC 2013 - tittiatcoke@gmail.com
+
+- Update to version 0.8.7: 
+  + ZYpp Backend:
+    - Adjust PK_FILTER_ENUM_NOT_DEVELOPMENT (bnc#770028)
+    - Construct PoolItem from sat::Solvable rather than doing 
+      a search
+    - Don't retrieve raw package attributes but use zypp::ResObject
+      (bnc#764677)
+    - Don't waste time comparing zypp::Arch string representations
+    - Fix missing dtor
+    - No longer use the old and deprecated ZYppCommitResult members
+      (bnc#769764)
+    - No need to retrieve installed packages attributes from rpm
+      database
+    - Set CXXFLAGS and use --std=c++0x as libzypp does (bnc#769764)
+    - Use pre-increment in for-loops to avoid temporaries
+    - always solve dependencies with 'IgnoreAlreadyRecommended ON'
+      (bnc#747751)
+    - check for best architecture and version when looking for the
+      'newest' package 
+    - finish port of backend to 0.8 API
+    - match the patch name to prevent an internal error
+    - return package list ordered witht respect to solver policies
+    - TODO is old and outdated, removed 
+  + GLib library:
+    - Add a PkItemProgress helper object to remove the workaround
+      in PkProgress
+    - Make the 'update-vendor-urls' property have a proper char**
+      type
+    - Make the updates and obsoletes items in
+      Transaction::UpdateDetail actual arrays
+    - Make the URL items in Transaction::UpdateDetail actual arrays
+    - Don't update the transaction role to 'unknown' 
+    - Remove support for UpdateSystem() 
+    - Save the transaction flags when removing packages 
+    - Ensure remote error is stripped before showing it to the user
+    - Add pk_package_sack_to_file() to save the sack to disk
+    - Check for failure to copy files when making a service pack
+    - Remove some unused code spotted by coverity
+  + New Features:
+    - Add an optional binary to update the system when offline
+    - Add an optional pkexec binary to create the system-update
+      symlink
+    - Add a --only-download option to pkcon for testing
+    - Added Transaction property DownloadSizeRemaining, so backends
+      can tell how much download is left to do
+    - Add logind support which is enabled by default
+    - Add pkexec executable pk-clear-offline-update to be able to
+      clear the offline-update message
+  + Bugfixes:
+    - Drop the unused polkit-backend-1 check from configure as
+      it's gone upstream
+    - Fix a crash where NetworkManager is restarted whilst
+      packagekitd is running
+    - Pause the plymouth progress when applying offline updates
+    - Do not run the plugins when using only-download
+    - systemd-updates: Add environment PK_OFFLINE_UPDATE_TEST=1 for
+      testing funcitonality
+    - systemd-updates: If the upgrade tool exits with an error
+      reboot the system
+    - systemd-updates: Remove the prepared-updates file if
+      GetUpdates() returns no packages
+    - systemd-updates: Remove the prepared-updates file if the
+      daemon state changes
+    - systemd-updates: Write package_ids into
+      /var/lib/PackageKit/prepared-update
+    - We don't need to authenticate at all to just download
+      packages
+- Dropped patches due to upstream incorporation :
+  + 0003-Revert-packagekit-qt2-Since-new-methods-and-enums-wh.patch
+  + 0004-zypp-use-pre-increment-in-for-loops-to-avoid-tempora.patch
+  + 0005-zypp-don-t-waste-time-comparing-zypp-Arch-string-rep.patch
+  + 0006-zypp-set-CXXFLAGS-and-use-std-c-0x-as-libzypp-does-b.patch
+  + 0007-zypp-fix-missing-dtor.patch
+  + 0008-zypp-no-longer-use-the-old-and-deprecated-ZYppCommit.patch
+  + 0009-zypp-adjust-PK_FILTER_ENUM_NOT_DEVELOPMENT-bnc-77002.patch
+  + PackageKit-zypp-packagesize.patch
+  + PackageKit-bnc775651-ignore-accept-eula.patch
+  + PackageKit-bnc780058-zypp-backend-match-patches.patch
+  + PackageKit-gstreamer-1.0.patch
+  + PackageKit-no-polkit-backend-1.patch
+- Add pkgconfig(systemd) BuildRequires: new depenency.
+- Remove obsolete xulrunner version matches: we build against npapi
+  now.
+- Drop obsolete suse_version checks.
+- Rename libpackagekit-glib2-14 to libpackagekit-glib2-16,
+  following upstreams soname bump (also in baselibs.conf)
+- Drop libpackagekit-qt2-devel and libpackagekit-qt2-2 subpackages:
+  upstream split this in an own source tarball.
+- Pass --enable-gstreamer-plugin to configure.
+- Remove references to libpackagekit-qt14 and libpackagekit-qt2-2
+  from baselibs.conf: those libraries are no longer built.
+
+-------------------------------------------------------------------
+Fri Nov 16 23:33:08 UTC 2012 - dimstar@opensuse.org
+
+- Add PackageKit-no-polkit-backend-1.patch: Do not look for no
+  longer existing polkit-backend-1. Fixes build with polkit >= 106.
+
+-------------------------------------------------------------------
+Mon Sep 24 21:29:57 UTC 2012 - dimstar@opensuse.org
+
+- Add PackageKit-gstreamer-1.0.patch: Add GStreamer 1.0 support to
+  the PackageKit plugin.
+
+-------------------------------------------------------------------
+Mon Sep 24 02:47:55 UTC 2012 - glin@suse.com
+
+- Add PackageKit-bnc780058-zypp-backend-match-patches.patch to
+  prevent the internal error (bnc#780058)
+
+-------------------------------------------------------------------
+Tue Sep 11 20:43:33 UTC 2012 - vuntz@opensuse.org
+
+- Change license tags to be per package:
+  + GPL-2.0+: PackageKit, backend-zypp,
+    typelib-1_0-PackageKitPlugin-1_0, browser-plugin,
+    gstreamer-plugin, gtk3-module, devel, branding-upstream.
+  + LGPL-2.1+: libpackagekit-glib2-14,
+    typelib-1_0-PackageKitGlib-1_0, libpackagekit-glib2-devel,
+    libpackagekit-qt2-2, libpackagekit-qt2-devel.
+- This is clearer than using "GPL-2.0+ and LGPL-2.1+" for
+  everything.
+
+-------------------------------------------------------------------
+Wed Sep  5 11:55:52 UTC 2012 - cfarrell@suse.com
+
+- license update: GPL-2.0+ and LGPL-2.1+
+  Library portions are LGPL-2.1+ licensed
+
+-------------------------------------------------------------------
+Wed Aug 22 10:22:02 UTC 2012 - glin@suse.com
+
+- Add PackageKit-bnc775651-ignore-accept-eula.patch to fix crash
+  after accepting EULA (bnc#775651)
+
+-------------------------------------------------------------------
+Wed Jul 18 20:00:46 UTC 2012 - dimstar@opensuse.org
+
+- Add Patches from the openSUSE_Factory PK branch (in order to fix
+  bnc#769764 and bnc#770028):
+  + 0004-zypp-use-pre-increment-in-for-loops-to-avoid-tempora.patch
+  + 0005-zypp-don-t-waste-time-comparing-zypp-Arch-string-rep.patch
+  + 0006-zypp-set-CXXFLAGS-and-use-std-c-0x-as-libzypp-does-b.patch
+  + 0007-zypp-fix-missing-dtor.patch
+  + 0008-zypp-no-longer-use-the-old-and-deprecated-ZYppCommit.patch
+  + 0009-zypp-adjust-PK_FILTER_ENUM_NOT_DEVELOPMENT-bnc-77002.patch
+
+-------------------------------------------------------------------
+Wed Jun 20 18:47:20 UTC 2012 - dimstar@opensuse.org
+
+- Add PackageKit-zypp-packagesize.patch: libzypp changed their
+  API and now returns Bytes instead of KBytes.
+- Add call to autoreconf, as above patch touches the build system.
+
+-------------------------------------------------------------------
+Wed Jun 20 13:23:02 UTC 2012 - coolo@suse.com
+
+- gcc46 is no longer required for libzypp
+
+-------------------------------------------------------------------
+Thu Apr 26 06:31:34 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 0.7.4:
+  + New Features:
+    - Deprecate Message(untrusted-package) from the API
+    - Install pk-task-sync.h as part of the public API
+    - Add full integration so that UI can know when to repair the
+      system
+  + Libraries (glib): Add GType's for packagekit-glib2 enumerations
+  + Libraries (qt2): Add simulateRepairSystem and
+    repairSystem(bool) to the Transaction API
+  + Libraries (python): Speed up get_package_list
+  + Zypp Backend:
+    - Build pool before resolving
+    - Do not set a PACKAGE_NOT_FOUND error when resolving packages
+  + Non-zypp backends updates.
+  + Bugfixes:
+    - Add some documentation about the auto-untrusted logic
+    - Add some documentation for the new RepairSystem transaction
+      interaction
+    - Do not allow an empty resolve call to be passed down to the
+      backends
+    - Do not include the website in the tarball
+    - Drop --print-reply from dbus-send command used on
+      suspend/resume
+- Remove doc subpackage, as it only contained the website which is
+  not shipped anymore in the tarball. Add a Obsoletes for it to the
+  main subpackage for smooth upgrades.
+- Add a force_gcc46 define that we can use to force building with
+  gcc 4.6. This is needed in Factory for now, as libzypp doesn't
+  build with gcc 4.7 right now. When this is set, we use gcc46-c++
+  BuildRequires and export CC and CXX environment variables to use
+  gcc 4.6.
+- Add
+  0003-Revert-packagekit-qt2-Since-new-methods-and-enums-wh.patch:
+  the soversion of libpackagekit-qt2 has been decreased by
+  accident, so revert this change for now.
+
+-------------------------------------------------------------------
+Fri Mar  2 10:59:58 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 0.7.3:
+  + New Features:
+    - Add LANGUAGE_SUPPORT what-provides type
+  + Libraries (glib):
+    - Don't segfault the client if there are no cached properties
+    - Fix a critical warning in gnome-settings-daemon when setting
+      the proxy
+    - Fix transfer annotation of pk_results_get_package_sack()
+    - Fix transfer annotations for GPtrArray returns
+    - Do not send progress updates for non-verb packages
+  + Non-zypp backends updates.
+  + Bugfixes:
+    - Document CODEC what-provides type
+    - Don't crash when the system bus isn't available, just abort
+      with an error
+    - Fix a critical warning when starting gnome-settings-daemon
+    - Imply the install trusted polkit auth when we get the remove
+      auth
+    - Imply the install trusted polkit auth when we get the
+      untrusted auth
+    - Port the session example code to GDBus
+    - Website updates.
+- Remove xz BuildRequires now that it comes for free in the build
+  system.
+
+-------------------------------------------------------------------
+Wed Feb 15 11:08:41 UTC 2012 - vuntz@opensuse.org
+
+- Move dbus xml interface files from devel subpackage to main
+  subpackage: PackageKit now requires them at runtime to work.
+- Move the zypp backend to a new backend-zypp subpackage: this will
+  make it clearer to users which backend is being used. It also
+  makes it easier to test small changes in the zypp backend.
+- Move all test backends to devel subpackage, as they are not
+  useful to users.
+- Add PackageKit-backend Requires to main subpackage, so we get a
+  working backend by default. This will be PackageKit-backend-zypp
+  since nothing else provides this right now.
+
+-------------------------------------------------------------------
+Wed Jan 18 07:23:39 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 0.7.2:
+  + New Features:
+    - Add a new repair-system policy and use it by the
+      corresponding RepairSystem method
+    - Add a transaction_reset backend hook
+    - Add new roles SimulateRepairSystem and RepairSystem
+    - Add pk_*_enum_to_localised_text to pk-enum.h and export via
+      GIR
+    - Add possibility to connect/disconnect backend signals
+    - Add PropertiesChanged signals to the main and transaction
+      interfaces
+    - Allow the Plasma version to be specified for
+      PK_PROVIDES_ENUM_PLASMA_SERVICE
+  + Libraries (glib):
+    - Convert libpackagekit-glib2 from dbus-glib to GDBus
+    - Skip empty catalog entries
+  + Libraries (qt):
+    - Automatically rebuild moc files with different moc version
+  + Zypp Backend:
+    - Retrieve url for packages instead of returning "TODO"
+  + Non-zypp backends updates.
+  + Bugfixes:
+    - browser-plugin: Make it compile with newest xulrunner
+    - Fix a critical warning in the client tools when a simulation
+      is cancelled
+    - Fix builddir != srcdir issue
+    - Fix item-percentage call in the spawned backend
+    - gtk-plugin: Fix name of GTK plugin schema file
+    - Make PkProc part of the daemon again
+    - Remove deprecated g_thread_init() on GLib < 2.31
+    - Set the frontend socket as environment variable in the
+      spawned backend
+    - Update the website matrix to include the new
+      (Simulate)RepairSystem roles
+- Rebase patches, via git, including removal of
+  0002-Retrieve-url-for-packages-instead-of-returning-TODO.patch
+  (fixed upstream).
+
+-------------------------------------------------------------------
+Wed Dec 21 15:32:38 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 0.7.1:
+  + New Features:
+    - Add command line option to keep environment
+    - Add Introspection support for PK-Plugins
+    - Add possibility for backends/plugins to skip transactions
+    - Add 'uid' and 'cmdline' properties to PkBackend
+    - Use the new g_thread_new() for new versions of GLib
+  + Libraries (qt): Drop packagekit-qt1 which is obsolete in favor
+    of packagekit-qt2
+  + Libraries (qt2):
+    - Remove old Find* macro
+    - Really do not distribute moc files
+  + Zypp Backend:
+    - Dont call build pool inside the loop
+    - Only load repositories once
+    - Refactor the private static data into one structure
+  + Non-zypp backends updates
+  + Bugfixes:
+    - Check if a transaction should be skipped after it has started
+      too
+    - Don't use the deprecated g_thread_supported() in the dameon
+      code
+    - Finalize PackageKitPlugin GIR file
+    - Find uninstalled PackageKitGlib-1.0.gir when building
+    - Fix the role of the EULA transaction
+    - Make PK compile on GNU Hurd
+    - Move the gtk-module extra files to the PK tarball
+    - Offset the cache age by 30 minutes
+    - plugin: Add a few GIR annotations
+    - Remove the implemented checks for the simulate methods
+    - Require exactly 'y<enter>' or 'yes<enter>' before running a
+      transaction
+    - Use the newest filter when resolving for new packages to
+      install
+    - website: Fix broken link to gdb docs
+    - website: Improve links to bug trackers
+- Changes from version 0.7.0:
+  + Notes:
+    - This is the first release of the unstable 0.7.x series.
+    - This code removes a lot of deprecated code and compatibility
+      shims compared to the previous branch.
+    - Highlights of this release is the new transaction plugin
+      interface that allows external projects to add modules for
+      interfacing with PackageKit.
+  + New Features:
+    - Add an 'auto' string for the --with-default-backend=
+      configure option
+    - Add an example plugin that saves private state
+    - Add an example to contrib to show how to build an out-of-tree
+      plugin
+    - Add an ItemProgress signal designed to eventually replace
+      SubPercentage
+    - Add an untrusted section header when using console
+      applications
+    - Add a PK_PROVIDES_ENUM_LIBRARY entry
+    - Add a "Python" type to PkProvidesEnum and document how the
+      provided components should be named
+    - Add a transaction plugin infrastructure to packagekitd
+    - Do not do the compatibility method fallbacks anymore
+    - Don't ship all the valid licences as enums anymore
+    - Install a pkgconfig file so external projects can build
+      plugins
+    - Move the check for libraries in use for security updates
+      functionality to a plugin
+    - Move the checking for running processes before update to a
+      plugin
+    - Move the clearing firmware functionality into a plugin
+    - Move the desktop database rescan functionality into a plugin
+    - Move the pre-transaction.d and post-transaction.d
+      functionality into a plugin
+    - Move the update check for running processes into a plugin
+    - Move the updating of the package list into a plugin
+    - Raise the PolicyKit required version to 0.98 and drop the
+      compat code
+    - Remove PkFileMonitor, we can now use GFileMonitor
+    - Remove the deprecated PK_BACKEND_OPTIONS
+    - Remove the GTK+2 pango module and only support GTK+3
+    - Remove the HAL integration code
+    - Require a new version of automake, and make configure.in sane
+      again
+    - Use g_bus_watch_name() and remove the homegrown
+      EggDbusMonitor
+  + Libraries (glib):
+    - Free the PkProgress' package
+    - Remove the foo_from_text() compatibility defines
+  + Libraries (python): Remove the native python library
+  + Libraries (qt): Do not dist the moc files
+  + Libraries (qt2): Use cmake package config instead of Find*
+    module
+  + Zypp Backend:
+    - Do not install locked (taboo) patches
+    - Do not rebuild the pool on every call causing slowness
+      (bnc#679650)
+    - Just use the iterator instead of so many temps
+  + Non-zypp backends updates
+  + Bugfixes:
+    - Actually use the value from /etc/login.defs
+    - Fix the browser-plugin build with GTK+ < 2.24
+    - Port the browser-plugin from dbus-glib to GDBus
+    - Convert the daemon to use GDBus rather than dbus-glib
+    - Port the gstreamer-plugin from dbus-glib to GDBus
+    - gtk-module: Port from dbus-glib to GDBus
+    - Ignore local packages when calculating the simulate list
+    - Ignore untrusted packages when calculating the simulate list
+    - Make percentage, subpercentage and remaining proper GObject
+      properties on the PkBackend object
+    - Make the lsof plugin code support distros such as Fedora with
+      /lib64
+    - pk-command-not-found: An ellipsis has three dots, not two
+    - Make lsof use the '-n' option to avoid looking up hostnames
+    - Remove cppunit check as packagekit-qt2 does not use it
+    - Remove the duplicate 'The software is not from a trusted
+      source'
+    - Use g_unix_signal_add_full() which has been renamed in GLib
+- Remove dbus-1-glib-devel BuildRequires: removed upstream.
+- Remove the gtk-module subpackage: the GTK+ 2 module got dropped.
+  To ensure smooth upgrades, add an Obsoletes for it to main
+  subpackage.
+- Remove libpackagekit-qt14 and libpackagekit-qt-devel subpackages:
+  this library got dropped.
+- Add %glib2_gsettings_schema_* macro machinery for gtk3-module
+  subpackage since it now contains a GSettings schema.
+- Create typelib-1_0-PackageKitPlugin-1_0 subpackage for
+  PackageKitPlugin-1.0.typelib, and add Requires for it to devel
+  subpackage.
+- Split PackageKitGlib-1.0.typelib from libpackagekit-glib2-14 into
+  typelib-1_0-PackageKitGlib-1_0 subpackage. Add
+  typelib-1_0-PackageKitGlib-1_0 Requires to
+  libpackagekit-glib2-devel subpackage.
+- Stop marking devel subpackage as noarch as it now contains files
+  in %{_libdir}.
+- Stop removing .moc files in %prep: they're not shipped anymore.
+- Use correct groups for subpackages:
+  + System/Daemons for main and branding-upstream subpackages.
+  + System/Libraries for typelib-1_0-PackageKitPlugin-1_0,
+    gtk3-module, libpackagekit-glib2-14,
+    typelib-1_0-PackageKitGlib-1_0, libpackagekit-qt2-2
+    subpackages.
+  + Development/Libraries/C and C++ for devel and
+    libpackagekit-qt2-devel subpackages.
+  + Development/Libraries/GNOME for libpackagekit-glib2-devel
+    subpackage.
+  + Productivity/Networking/Web/Browsers for browser-plugin
+    subpackage.
+  + Productivity/Multimedia/Other for gstreamer-plugin subpackage.
+  + Documentation/Other for doc subpackage.
+
+-------------------------------------------------------------------
+Wed Nov 30 14:27:09 UTC 2011 - coolo@suse.com
+
+- add automake as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Mon Nov 14 10:17:27 UTC 2011 - dmacvicar@suse.de
+
+- Update to version 0.6.20
+  + New features:
+    - Add command line option to keep environment
+  + Libraries:
+    - python: Implement and use utf8 stream writer for stdout,
+      stderr
+  + Zypp Backend:
+    - Dont call build pool inside the loop
+    - Only load repositories once
+  + Non-zypp backends updates
+- Drop upstreamed patches:
+  + 0002-dont-call-build-pool-inside-the-loop.patch
+  + 0003-only-load-repositories-once.patch
+  + 0004-Workaround-Don-t-refresh-repositories-each-time-for-.patch
+- Add patch to retrieve url of packages:
+  0002-Retrieve-url-for-packages-instead-of-returning-TODO.patch
+
+-------------------------------------------------------------------
+Mon Nov  7 10:27:14 UTC 2011 - dmacvicar@suse.de
+
+- Redo patches based on github.com/openSUSE/PackageKit for
+  easier patch tracking across all distro versions.
+- Add patches to fix slowness in zypp backend.
+- Add comment in package to help with future updating.
+
+-------------------------------------------------------------------
+Wed Oct  5 05:53:32 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 0.6.19:
+  + New Features:
+    - Offset the cache age by 30 minutes
+  + Bugfixes:
+    - Use g_unix_signal_add_full() which has been renamed GLib
+    - Use the newest filter when resolving for new packages to
+      install
+  + Non-zypp backends updates.
+- Drop PackageKit-glib-2.29.19.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Mon Oct  3 07:25:29 UTC 2011 - vuntz@opensuse.org
+
+- Add explicit shared-mime-info BuildRequires since we use the
+  %mime_database_* macros.
+
+-------------------------------------------------------------------
+Sat Sep 17 10:05:23 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+- Use %_smp_mflags for parallel build
+- Implement baselibs for package
+
+-------------------------------------------------------------------
+Tue Sep  6 22:28:58 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 0.6.18:
+  + Libraries (glib): Fix a small memory leak
+  + Libraries (qt): Do not dist the moc files
+  + Non-zypp backends updates.
+  + Bugfixes:
+    - Fix the browser-plugin build with GTK+ < 2.24
+    - Make the lsof plugin code support distros with /lib64
+    - Make the lsof plugin not lookup hostnames
+    - Remove the duplicate 'The software is not from a trusted
+      source'
+- Drop PackageKit-gtk224.patch: fixed upstream.
+- Add PackageKit-glib-2.29.19.patch: fix build with recent versions
+  of glib.
+- Manually remove .moc files in %prep so that they get re-generated
+  with our version of Qt. See fdo#40662 for more details.
+
+-------------------------------------------------------------------
+Fri Sep  2 10:54:09 UTC 2011 - fcrozat@novell.com
+
+- Add PackageKit-gtk224.patch: fix build with GTK+ < 2.24
+- Pass V=1 to make, to enable verbose build log.
+
+-------------------------------------------------------------------
+Thu Aug 11 18:05:33 UTC 2011 - wr@rosenauer.org
+
+- Add PackageKit-npapi.patch: On openSUSE > 11.4, build using NPAPI
+  headers from new package npapi-sdk.
+
+-------------------------------------------------------------------
+Tue Aug  2 09:53:59 CEST 2011 - vuntz@opensuse.org
+
+- Update to version 0.6.17:
+  + Libraries:
+    - Add an untrusted section header when using console
+      applications
+  + Zypp Backend:
+    - Do not rebuild the pool on every call to find package by name
+      (bnc#679650)
+  + Non-zypp backends updates.
+  + Bugfixes:
+    - Actually use the value from /etc/login.defs
+    - Ignore local packages when calculating the simulate list
+    - Ignore untrusted packages when calculating the simulate list
+    - pk-command-not-found: An ellipsis has three dots, not two
+
+-------------------------------------------------------------------
+Wed Jul  6 15:38:32 CEST 2011 - vuntz@opensuse.org
+
+- Add Requires for PackageKit to branding-upstream subpackage,
+  since the branding package is useless without it.
+- Update summary and description of branding-upstream subpackage.
+
+-------------------------------------------------------------------
+Tue Jul  5 10:48:38 CEST 2011 - vuntz@opensuse.org
+
+- Update to version 0.6.16:
+  + New Features:
+    - Support looking up Plasma services
+  + Libraries (glib):
+    - Added element-type annotations for each function returning a
+      GPtrArray
+    - Ensure packages from the progress handler have the package_id
+      assigned
+  + Non-zypp backends updates.
+  + Bugfixes:
+    - Do not hardcode G_DISABLE_DEPRECATED as it breaks with GTK+-2
+      and GLib
+    - Do not hardcode the UID_MIN as 500 (rh#717110)
+    - Do not try to parse any arguments in command-not-found
+    - Ensure we save the updates cache for the pre-transaction
+      checks
+    - Fix a build error in the browser plugin when using old
+      versions of gdk
+    - Update the PackageKit matrix webpage to reflect current
+      backends
+- Add xz BuildRequires because we can't build a package for a
+  xz-compressed tarball without explicitly specifying that... See
+  bnc#697467 for more details.
+
+-------------------------------------------------------------------
+Mon Jul  4 14:27:09 CEST 2011 - vuntz@opensuse.org
+
+- Create %{_libexecdir}/gst-install-plugins-helper in %install as
+  the ghost files need to exist to be packaged.
+
+-------------------------------------------------------------------
+Tue Jun  7 21:03:50 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 0.6.15:
+  + New Features:
+    - Added PK_INFO_ENUM_UNTRUSTED so we can tell which packages
+      are trusted
+    - When refreshing cache backends should emit RepoDetail as
+      frontends will be able to present extra details
+  + Libraries (gir):
+    - Annotations for file arrays
+    - Some more annotation updates
+  + Libraries (qt2):
+    - Remove package caching as we use const Packages now
+  + Zypp Backend:
+    - Fix deletion of package locks (bnc#690038)
+    - Log to ZYpp's log the start of a PK backend function to ease
+      debugging
+  + Non-zypp backends updates.
+  + Bugfixes:
+    - Do not prevent updating when firefox is running, we don't
+      have all the client UI ready yet
+    - Only include glib-unix.h if the GLib version is >= 2.29.4
+- Drop upstream fixed patches:
+  + 0001-zypp-log-to-ZYpp-s-log-the-start-of-a-PK-backend-fun.patch
+  + 0002-zypp-fix-deletion-of-package-locks-bnc-690038.patch
+
+-------------------------------------------------------------------
+Mon May  9 15:21:17 UTC 2011 - dmacvicar@suse.de
+
+- Add patches:
+  + Add PackageKit backend function name in logging
+    (pk_backend_log):
+    0001-zypp-log-to-ZYpp-s-log-the-start-of-a-PK-backend-fun.patch
+  + Fix for lost package locks (bnc#690038):
+    0002-zypp-fix-deletion-of-package-locks-bnc-690038.patch
+
+-------------------------------------------------------------------
+Fri May  6 10:38:42 CEST 2011 - vuntz@opensuse.org
+
+- Update to version 0.6.14:
+  + Lots of nice bugfixes in this release, along with slight
+    changes to the SetProxy() and DownloadPackages() D-Bus API. If
+    you're using either packagekit-glib or packagekit-qt then
+    there's no change required as the libraries have symbol
+    fallbacks.
+  + The packageKit-qt2 library has been committed. It is eventually
+    aiming to replace packagekit-qt.
+  + New Features:
+    - Add a 'store_in_cache' attribute to the DownloadPackages
+      method
+    - Automatically cancel running background transactions if a
+      foreground transaction is committed
+    - Cancel any background transactions when we get
+      SuggestDaemonQuit
+    - Introduce other attributes in the SetProxy() method
+  + Libraries (glib):
+    - Add GIR annotations to make PK GIR usable
+    - Add header name to GIR and set export package
+  + Libraries (qt):
+    - Add storeInCache parameter to downloadPackages to cover new
+      API
+    - Fix typo in SearchGroups
+  + Libraries (qt2):
+    - New library.
+  + Bugfixes:
+    - Fix precedence when assigning strings to a *GStrv
+    - Create transaction db properly if it's not exist
+    - Do not abort in pk_catalog_init() if PackageKit is not
+      available. Fixes rh#688280
+    - Do not allow backends to output duplicate older packages when
+      searching with newest
+    - Fix a crash where the error code was pointing to freed
+      memory. Fixes rh#684464
+    - Fix a typo in pk_transaction_db_get_proxy
+    - Get more proxy info after the new proxy parameters was
+      introduced
+    - Honour ACLOCAL_FLAGS in Makefile.am. Fixes fd#35237
+    - browser-plugin: Remove deprecated symbols
+    - pkcon: add missing {} around if
+    - pk-debuginfo-install: fix typo of using PK_FILTER
+    - Use the new threadsafe signal handling support in GLib
+    - Various docs updates.
+  + Zypp Backend:
+    - Check repo file before using it
+    - Consider only_trusted option while installing packages
+    - Fix memory leak in pk_backend_transaction_start
+    - Patch::Content is returned by value. Fixes crash on
+      get-updates (bnc#685831)
+    - Reload RpmDB before removing packages
+    - Report download speed (bnc#663069)
+    - Reset packages status in repo while removing packages
+    - Set locale info at the begin of transaction
+    - Support proxy_https,proxy_socks,no_proxy
+    - Use namespace once to remove the namespace noise.
+    - Use output parameters (references) for containers
+  + Non-zypp backends updates (including removal of pacman
+    backend).
+- Drop PackageKit-fix-endless-recursion.patch: fixed upstream.
+- Drop PackageKit-fix-build.patch: fixed upstream.
+- Change Requires of "Packagekit = %{version} to Recommends for
+  libpackagekit-glib2-14 and libpackagekit-qt14: a strict Requires
+  like this goes against the goal of the shared library packaging
+  policy. Also, the users of those libraries should gracefully
+  handle the case where the PackageKit daemon is not running or
+  doesn't understand the D-Bus requests.
+- Create libpackagekit-qt2-0 and libpackagekit-qt2-devel subpackage
+  for the new libpackagekit-qt2 library.
+- Remove explicit Requires for packages from various devel
+  subpackages as they will automatically be added the pkgconfig()
+  way:
+  + PackageKit-devel: glib2-devel, NetworkManager-devel,
+    sqlite3-devel
+  + libpackagekit-glib2-devel: glib2-devel, NetworkManager-devel,
+    sqlite3-devel (as well as PackageKit itself)
+  + libpackagekit-qt-devel: libqt4-devel (as well as PackageKit
+    itself)
+- Mark branding-upstream subpackage as noarch.
+- Set BUILD_CNF to 1 as the file search works again. This means the
+  pk-command-not-found utility will be built again.
+
+-------------------------------------------------------------------
+Thu Apr 28 12:27:43 CEST 2011 - vuntz@opensuse.org
+
+- Add PackageKit-fix-build.patch to fix build: do not use some
+  deprecated symbol. Taken from git.
+
+-------------------------------------------------------------------
+Wed Apr 20 09:46:25 CEST 2011 - dmueller@suse.de
+
+- Add opensuse-codecs-installer Provides/Obsoletes to
+  gstreamer-plugin subpackage, as it replaces it.
+
+-------------------------------------------------------------------
+Mon Apr  4 15:36:51 UTC 2011 - fcrozat@novell.com
+
+- Add gtk3-devel BuildRequires.
+- Create gtk3-module subpackage.
+
+-------------------------------------------------------------------
+Fri Mar 11 16:17:48 UTC 2011 - dmacvicar@suse.de
+
+- Update to version 0.6.13
+  + Libraries:
+    - Allow pk_client_download_packages_async() to be called with
+      no target directory
+    - Port away from PolkitBackendActionLookup to support new
+      versions of PolicyKit
+  + ZYpp Backend:
+    - remove check online in refresh cache
+    - uses the standard system update algorithm from ZYpp. Fixes
+      bnc#637764 (as patch in 0.6.12 package)
+  + Non-zypp backends updates.
+  + Bugfixes:
+    - Add missing python(gio) requirement
+    - Check for polkit_authority_get_sync symbol
+    - Change the connman DBus name
+    - Update for NetworkManager 0.9 snapshots
+- Drop PackageKit-use-system-solve.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Sat Feb 26 10:57:15 UTC 2011 - coolo@novell.com
+
+- small (and obvious) fix for bnc#671146
+
+-------------------------------------------------------------------
+Fri Feb 18 11:25:43 UTC 2011 - dmacvicar@suse.de
+
+- Add PackageKit-use-system-solve.patch to update ZYpp backend:
+  + uses the standard system update algorithm from ZYpp, which
+    honours user policies. (bnc#637764)
+  + configurable HidePackages=true in [Updates] section in
+    /etc/PackageKit/ZYpp.conf to show only maintenance patches
+    instead of all packages with update candidates.
+
+-------------------------------------------------------------------
+Fri Feb 18 11:14:13 UTC 2011 - dmacvicar@suse.de
+
+- Update to version 0.6.12:
+  + New Features:
+    - Add speed python backend method
+    - Allow the user to specify a comma delimited list of default
+      backends
+    - Provide a hook so spawned backends can report speed
+  + Libraries (glib):
+    - Allow the service pack self tests to run by setting the temp
+      directory
+    - Avoid spamming lots of low level debugging to
+      .xsession-errors. (rh#668303)
+    - Check sscanf() returned the correct number of items before
+      using the answer
+    - Do not return distro-specific id's whilst testing, to fix
+      'make check' on Debian
+    - Ensure we test for and always run the
+      self-check-socket-program in 'make check'
+    - Only use g_time_val_from_iso8601() when we have a valid
+      ISO8601 value
+  + Libraries (qt): Build fix.
+  + Bugfixes:
+    - Do not enable command not found debugging by default.
+      (rh#666254)
+    - Explictly include GIO in LDADD to fix a compile error on
+      Debian
+    - Fix calling pk_client_helper_start() with no environment set
+    - Fix bug which caused a crash when the Section() of a package
+      was NULL (lp#591474)
+    - Only try to populate the command list in pkcon after the
+      PkControl command has finished
+    - pkcon: check PK error in pk_console_resolve_package
+    - Set client locale to LC_MESSAGES rather than LC_ALL
+  + Zypp Backend:
+    - Consider autoremove in remove_packages
+    - Don't send package signal in DownloadProgressReportReceiver
+    - Erase system resolvables in zypp_build_pool
+    - Implement download packages
+    - Include system repo when install local rpm
+    - Refresh cache before searching
+    - Support download source RPM packages
+  + Non-zypp backends updates.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Feb 14 16:20:35 CET 2011 - sbrabec@suse.cz
+
+- Added support for translation-update-upstream.
+
+-------------------------------------------------------------------
+Sun Feb 13 17:00:28 CET 2011 - vuntz@opensuse.org
+
+- Call relevant macros in %post/%postun:
+  + %mime_database_post/postun because the package ships a mime
+    type definition.
+- Pass %{?no_lang_C} to %find_lang so that english documentation
+  can be packaged with the program, and not in the lang subpackage.
+
+-------------------------------------------------------------------
+Thu Jan  6 02:16:55 CET 2011 - vuntz@opensuse.org
+
+- Add %{_libexecdir}/gst-install-plugins-helper as a ghost file in
+  the file list of the gstreamer-plugin subpackage, since we use
+  the update-alternatives mechanism.
+
+-------------------------------------------------------------------
+Mon Dec 27 23:41:20 CET 2010 - dimstar@opensuse.org
+
+- Update to version 0.6.11:
+  + Notes:
+    - Additonal notes have been added to the DBus specification
+      that allow backends to send the origin of a installed
+      package. This is optional.
+    - Additionally, more recommendations have been made to allow
+      searching by repository. See the DBus specification for more
+      details.
+  + New Features:
+    - Add a new backend role for updating the whole distro:
+      UpgradeSystem
+    - Allow backend to encode the package origin in the package-id
+    - Added PK_ERROR_ENUM_CANNOT_FETCH_SOURCES when refreshing
+      cache fails
+    - Add recommendation 'repo:foo' to be able to return all
+      packages in a certain repository
+    - Change the spec to recommend 'category:web-development'
+      rather than '@web-development'
+    - Spawn KDE Debconf frontend if KDE is running
+  + Bugfixes:
+    - Allow cancelling a transaction if it is not cancellable
+    - Always show update a package even if already update
+    - Correct the description of
+      org.freedesktop.packagekit.upgrade-system
+    - Do not disable background mode if we are marked as
+      interactive, as the two are orthognal
+    - Ensure we can send a cache-age of maxuint to fix
+      command-not-found
+    - Ensure we emit PK_STATUS_ENUM_WAIT when a transaction is in
+      the 'ready' state
+    - Ignore unknown entries in the pk_x_bitfield_from_string() to
+      ensure forwards compatibility
+    - Use G_LOG_DOMAIN in all the backends
+  + Libraries:
+    - glib: Add some C getters to PkDistroUpgrade
+    - packagekit-qt:
+      . Add searchGroups methods that can take a string so we can
+        search on categories
+      . Emit transactionListChanged(empty) when daemon crashes
+      . Fix order of initialization
+      . Updated enums and converted tabs to spaces
+      . Use QDBusServiceWatcher instead of watching for
+        serviceOwnerChanged()
+      . Write the getCategories() code so we can use it
+    - python: use SetHints now instead of SetLocale
+  + Dummy Backend:
+    - Add a more realistic UpgradeSystem
+    - Fix a potential NULL dereference spotted by clang
+  + Zypp Backend:
+    - Catch ZyppFactoryException in get_zypp
+    - Filter installed packages to update
+    - Fix a logic error in refresh cache
+    - Fix a typo in get_zypp
+    - Port from PK_BACKEND_OPTIONS function table
+    - Support repo filter in getting repo list
+    - Transfer correct restart info while updating packages
+    - Use zypp::sat::SolvAttr::filelist in search file
+  + Non-zypp backends updates.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Dec  9 10:23:44 CET 2010 - vuntz@opensuse.org
+
+- Build against mozilla-xulrunner20-devel on 11.4 and later.
+
+-------------------------------------------------------------------
+Tue Nov 16 17:02:11 CET 2010 - dimstar@opensuse.org
+
+- Update to version 0.6.10:
+  + Notes:
+    - This is the first release of PackageKit to support session
+      configuration helper support in the GLib and QT libraries.
+    - This allows debconf to work when using PackageKit on Debian.
+    - A formal transaction lifecyle is now in place, which allows
+      future extensions to hook into the transaction at certain
+      points.
+  + New Features:
+    - Add a new optional hint, 'cache-age' to allow the frontend to
+      control the maximum age of the metadata
+    - Add PkClientHelper, which allows a helper session program to
+      be run for a transaction
+    - Add the concept of a transaction lifecycle
+    - Document the @category resolve special case in the
+      specification as it's been used for at least a year now
+    - Document the @category search in the docs, as it's been used
+      in a few backends for over two years.
+  + Libraries:
+    - glib: Add several more FSF free licenses
+    - glib: Add some C getters and setters for PkClient and PkTask
+    - glib: Fix up a lot of the gobject-introspection warnings
+  + Bugfixes:
+    - Add a special case of a DBus unique name of
+      :org.freedesktop.PackageKit which is used in the self check
+      code
+    - Always emit Message(BackendError) when there is a parsing
+      error from a spawned process
+    - Always emit the locked and unlocked signals even if HAL is
+      not available
+    - cnf: Pass all arguments to comand-not-found so we open the
+      newly installed tool with existing argv
+    - Do not strip the trailing plus when comparing licences, as
+      GPL+ exists, but GPL does not
+    - Ensure we notice when a spawn command is invalid by printing
+      it in red on the command line
+    - Make PkLsof find lsof on Debian
+    - rh#641311: Make the output of command-not-found match the
+      bash builtin.
+    - Move the managed bindings to a seporate repo as they are very
+      out of date
+    - Prevent a segfault when estimating the time when the backend
+      issues many ProgressChanged signals at one time.
+    - rh#641691: Raise the default of StateChangedTimeoutPriority
+      from 5 seconds to 30 seconds.
+    - Require GTK >= 2.91.0 for the GTK3 version of the PackageKit
+      font install module
+    - Return with success if the database contained no proxy values
+      for a transaction, as this could be correct
+    - Switch from EggDebug to the GLib debugging framework
+    - Switch the default to UseUpdateCache=false now that we are
+      using cache-age
+  + Zypp Backend:
+    - Call zypp_build_pool() when searching with what_provides.
+- Drop PackageKit-zypp-fix-provides-search.patch: upstream fixed.
+
+-------------------------------------------------------------------
+Fri Oct  8 11:56:22 CEST 2010 - vuntz@opensuse.org
+
+- Add PackageKit-zypp-fix-provides-search.patch: this fixes the
+  search for provides, and as a side-effect, this fixes bnc#640935.
+
+-------------------------------------------------------------------
+Tue Oct  5 10:02:17 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 0.6.9:
+  + New Features:
+    - Add transaction_start() and transaction_stop() vfuncs to make
+      backends simpler
+    - Add a feature that allows external scripts to be run after
+      certain transactions
+    - Allow backends to omit the table-of-vfuncs and use GModule
+      functionality to resolve backend functions
+  + Libraries:
+    - glib: Check the GCancellable is not already cancelled at
+      startup in PkClient and PkControl
+    - glib: Do not crash the client if a catalog file has both file
+      and package sections
+    - glib: Do not return simulation failures as critical errors
+    - glib: Only return packages for catalogs that are _not_
+      installed
+    - qt: Use setHints() on new constructor
+  + Bugfixes:
+    - Add a nicer translated error when UpdatePackages has no
+      packages to update. Fixes fdo#30459
+    - browser-plugin: Do not query PkDesktop by default
+    - browser-plugin: Fix up 2 small memory leaks in error paths
+    - cnf: Add a proper error message when the transaction was
+      cancelled
+    - Don't call back into the daemon (from the daemon) when
+      checking service packs. Fixes rh#634628
+    - Ensure we set an error if the spawned backend gets cancelled
+    - Fix build with newer gobject-introspection
+    - Fix generating an updates service pack using pkgenpack
+    - Use the correct network state for connman
+  + Zypp backend:
+    - Add development package support to filtering
+    - Calculate sizes for patches correctly: bmo#2281, bnc#559802
+    - Enable proxy for zypp backend
+    - Include patches in 'resolve' results. bmo#2059
+    - Refresh cache and sat solv pool data if necessary
+    - Refresh cache before getting upgrade and installing
+    - Refresh system rpmdb while refresh cache
+    - Remove premature require_restart emission in
+      update_packages_thread
+  + Non-zypp backends updates.
+- Drop PackageKit-fix-introspection-build.patch: fixed upstream.
+- Drop PackageKit-BNC559802-zypp-count-patch-size.patch: fixed
+  upstream.
+
+-------------------------------------------------------------------
+Fri Oct  1 19:24:43 CEST 2010 - vuntz@opensuse.org
+
+- Add PackageKit-fix-introspection-build.patch to fix build with
+  recent gobject-introspection.
+
+-------------------------------------------------------------------
+Tue Sep 28 19:27:17 UTC 2010 - aj@suse.de
+
+- Change lang package Requires to Recommends since it is not
+  mandatory at runtime.
+
+-------------------------------------------------------------------
+Sun Sep 19 00:52:31 CEST 2010 - vuntz@opensuse.org
+
+- Move gir files to devel subpackage.
+
+-------------------------------------------------------------------
+Tue Sep  7 01:39:52 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 0.6.8:
+  + Libraries:
+    - packagekit-qt: Fix compilation
+    - packagekit-qt: Fixed error on proxy creating, extended API
+    - packagekit-qt: Forgot to setHints()
+  + Bugfixes:
+    - Add accessor to detect if an error is already set on a
+      backend
+    - Ensure gobject-introspection is installed before running
+      configure. Fixes fdo#29861
+    - Fix compile with the latest PolicyKit release
+    - Increase timeout between an error message and assuming the
+      thread is dead
+    - Set allow_cancel default in init to match that in
+      pk_transaction_set_running ie. FALSE
+  + Zypp backend:
+    - Immediately abort transactions that set errors relating to
+      signature interactions
+    - Remove a double pk_backend_finish path, and an incorrect
+      update_packages callback
+  + Non-zypp backends updates.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Aug  6 14:29:09 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 0.6.7:
+  + New Features:
+    - Add a long document explaining the media-repo functionality
+    - If either of ProxyHTTP are set in PackageKit.conf then ignore
+      the user proxy setting. Fixes rh#604317
+  + Libraries:
+    - glib: Add an 'interactive' property to PkTask so that we  can
+      use it to do '-y' in pkcon properly
+  + Bugfixes:
+    - Add 0install to the user list
+    - cron: Do not exit with 1 if the cron script is disabled in
+      the config
+    - Don't ship README AUTHORS NEWS COPYING in all subpackages.
+      Fixes rh#612332
+    - Make the PkBackend always start with the WAIT state, but do
+      not proxy this onto the bus
+    - Recognise bluetooth connections as mobile networks. Fixes
+      rh#609827
+    - Unbreak CNF after the daemon moved to libexec. Fixes
+      rh#613514
+  + Non-zypp backends updates.
+  + Updated translations.
+- Drop PackageKit-cron-disabled-is-no-error.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Thu Jul 22 19:52:13 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 0.6.6:
+  + New Features:
+    - Add a MaxSearchTime entry in CommandNotFound.conf and default
+      to 2000ms
+    - Assign names to our idle sources when using new versions of
+      glib2
+    - Build the gtk-module for gtk-3.0 as well as gtk-2.0 if
+      available
+    - Port 'make check' to GTest rather than using our homegrown
+      EggTest functionality
+    - Get the control properties async when the user starts the
+      pkmon tool
+  + Bugfixes:
+    - Only set a cancelled error after we've given the backend a
+      fighting chance to process the request
+    - Move the packagekitd binary to libexec
+    - Ensure we clear the cancel timer when we finish a PkBackend
+      transaction
+    - Ensure filters are properly split for spawned backends
+  + Libraries:
+    - glib: Explicitly mark the library as LGPLv2 by using the
+      correct boilerplate code
+  + Zypp backend:
+    - Disable get_zypp in intialize
+    - Fix FPE when there are no repos
+    - Don't crash checking status of non-patches
+  + Non-zypp backends updates.
+  + Updated translations.
+- Change tag of PackageKit-cron-disabled-is-no-error.patch to
+  mention upstream bug.
+- Obsoletes ruck to make sure it gets removed since it's not
+  supported anymore.
+- Version the Requires on PackageKit-branding to fix a rpmlint
+  warning.
+
+-------------------------------------------------------------------
+Wed Jun 23 11:28:57 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 0.6.5:
+  + New Features:
+    - Add --force argument to pkcon refresh
+    - Show the MediaChangeRequired signals in pkmon
+    - Use the new PkTask API in pkcon so we can deal with Media and
+      Eula querie
+  + Bugfixes:
+    - Build conditional BUILD_ZIF needs to be at the top level
+    - Fix problem whereby the terminal wouldn't return data to
+      scanf from a read
+    - Fix up several daemon thinkos when a client tries to set a
+      root other than '/'
+  + Libraries:
+    - glib: Add some new PkTask methods that handle the Media and
+      Eula callbacks
+    - qt: Add Q_ENUMS to DaemonError
+    - python: Fix a typo in format_string
+  + Zypp backend:
+    - Detect and advertise from /etc/meego-release
+    - Re-factor to pass PkBackend around
+    - Re-work install_packages_thread
+    - Unify code used to generate the list of updates
+  + Non-zypp backends updates.
+- Changes from version 0.6.4:
+  + Notes:
+    - This release is the first to support a relocatable root,
+      which may be useful to LTSP and some virtualised
+      environments. It's not yet well tested, and early adopters
+      are encouraged to joint the mailing list
+  + New Features:
+    - Allow clients to request a relocatable root, but only with
+      admin authority
+    - Add hint:simulate boolean on the backend, set for all
+      simulation methods, to increase code re-use
+    - Add maximum wait time limit to cron checks
+    - Add support for the 'frontend-socket' hint and pass it to
+      backends
+    - Ported PackageKit to Haiku
+    - Send a message when other updates are held back so we can add
+      a note to the GUI tool
+  + Bugfixes:
+    - fdo#27527: Correctly fallback by checking the transaction
+      role, not the backend role.
+    - Don't return from SetProxy() before we've got the
+      authentication result
+    - Downgrade required autoconf version
+    - Ensure the daemon emits Message() signals when replaying the
+      cached GetUpdates data
+    - Fix parallel-build snafu wrt. MOC generated files
+    - Fix system name variable name inconsistency in the cron
+      script
+    - Fix the permission of /etc/sysconfig/packagekit-background to
+      be non-executable
+    - Fix up three typos in translated strings
+    - If http_proxy or ftp_proxy are set in the environment, use them in pkcon
+    - Remove the ruck client, it's been broken for the last few releases
+  + Libraries:
+    - glib: Add C accessors for PkMessage
+    - glib: Add some more C accessors for PkPackage
+  + Zypp backend:
+    - Attempt to improve backend_find_packages
+    - Cleanup a certain amount of superstitious coding
+    - cleanup 'resolve' filtering code
+    - Factor pool item change notification out into
+      zypp_backend_pool_item_notify
+    - Fix leaks in GetRequires, resolve and what_provides
+    - Fix memory leaks
+    - Fix multiple bugs in Resolve()
+    - Get the final 'finished' signal right on remove
+    - Implement simulated package removal
+    - Improve exception handling
+    - Introduce a pseudo-architecture "source" to distinguish
+      source packages from binary ones
+    - Let libzypp determine whether a patch is needed
+    - Share the version / architecture comparison code into
+      zypp_ver_and_arch_equal
+    - Tweak filtering to ensure that we never emit both
+      states even if a package is also re-installable
+  + Non-zypp backends updates.
+  + Updated translations.
+- Drop upstream included patches:
+  + 0001-zypp-fix-memeory-leaks.patch
+  + 0002-zypp-attempt-to-improve-backend_find_packages.patch
+  + 0003-zypp-let-libzypp-determine-whether-a-patch-is-needed.patch
+  + PackageKit-libzypp6.patch
+- Rebase patches:
+  + PackageKit-cron-disabled-is-no-error.patch
+  + PackageKit-sysconfig-cron.patch
+- Delete ruck subpackage: ruck client has been broken for a few
+  releases.
+- Remove workaround to make
+  %{_sysconfdir}/sysconfig/packagekit-background non-executable.
+
+-------------------------------------------------------------------
+Fri Jun 18 18:34:14 UTC 2010 - sreeves@novell.com
+
+- Add PackageKit-bnc609409.patch.
+    Failure getting dependencies for upates.
+
+-------------------------------------------------------------------
+Wed Apr 28 17:10:59 CEST 2010 - ma@suse.de
+
+- Add patches:
+  + 0001-zypp-fix-memeory-leaks.patch: fix memeory leaks.
+  + 0002-zypp-attempt-to-improve-backend_find_packages.patch
+    zypp: attempt to improve backend_find_packages. (bnc#597772)
+  + 0003-zypp-let-libzypp-determine-whether-a-patch-is-needed.patch
+    zypp: let libzypp determine whether a patch is needed. Together
+    with the latest libzypp, this will no longer classify locked
+    patches as being needed. (bnc#577118)
+
+-------------------------------------------------------------------
+Wed Apr 28 10:00:07 UTC 2010 - seife@opensuse.org
+
+- Add PackageKit-cron-disabled-is-no-error.patch: having
+  the cron job disabled is not an error (after all it is
+  configurable). Return value should be 0 in this case to stop
+  annoying cronjob mails.
+
+-------------------------------------------------------------------
+Wed Apr 21 11:31:15 CEST 2010 - meissner@suse.de
+
+- added obsoletes/provides for the renamed package to allow
+  zypp to migrate it correctly on update.
+
+-------------------------------------------------------------------
+Sat Apr 10 01:40:59 CEST 2010 - vuntz@opensuse.org
+
+- Use %py_requires instead of an explicit python PreReq.
+- Create browser-plugin, gstreamer-plugin and gtk-module
+  subpackages.
+- Use update-alternatives to setup the gstreamer helper, so we
+  don't have to pass a special argument when building
+  gstreamer-0_10-plugins-base.
+- Do not build the PackageKit-based command-not-found since it
+  doesn't work with our zypp backend. We make it easy to have it
+  back with a build-time option.
+- Build the cron script, that makes it possible to update the
+  system daily with PackageKit:
+  + remove --disable-cron from configure
+  + add PackageKit-sysconfig-cron.patch to make the configuration a
+    real sysconfig-like configuration
+  + add %fillup_prereq PreReq
+  + add a %post section to fill the sysconfig configuration based
+    on the template
+
+-------------------------------------------------------------------
+Wed Mar 31 01:45:31 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 0.6.3:
+  + Notes:
+    - Two important bugfixes, one that causes high CPU load in
+      client programs, and one that fixes an odd crash in the
+      libnm-glib threading code.
+  + Libraries:
+    - glib: Add pk_package_sack_filter() and
+      pk_package_sack_remove_by_filter()
+    - glib: Do not generate a PkPackageSack from the package array,
+      instead add packages as they appear
+    - glib: Ensure we remove CLEANUP and FINISHED from the package
+      sack before we run the simulate callback
+    - glib: Fix up a critical warning when installing a file, not a
+      package
+    - qt: Fixed UpdateState enum
+    - python: Fixed packagekit.client.search_file()
+  + New Features:
+    - Add a configure option UseThreadsInBackend so we can more
+      easily debug packagekitd
+    - Break internal python API by supplying a list of filters to
+      the backend, not a delimited list
+    - Add a boolean configure variable 'SimilarNameSearch' to allow
+      skipping swizzle testing. Fixes fdo#27246
+    - Show PkPackage changes in pkmon for easier debugging
+  + Bugfixes:
+    - Add some missing G_BEGIN_DECLS and G_END_DECLS to fix
+      including from C++
+    - Be more careful when testing the value of waitpid() to try to
+      debug a problem where the backend appears to exit
+    - Do not crash libdbus when libnm-glib uses it's own context
+    - Do not finish the transaction with success when the spawned
+      backend does a non-finished exit
+    - Do not show installed packages when we choose packages to
+      download
+    - Ensure the Package(finished) signal is always sent during the
+      transaction. Fixes rh#522628
+    - Fix a nasty segfault if the library check-restart code tries
+      to emit a restart-required
+    - Fix Kubuntu support for upgrade
+    - Fix reporting distribution upgrades by setting the correct
+      property in two places
+    - Never exit the daemon, even when we hit a race in PkSpawn -
+      just cleanup, warn, and continue
+    - Do not call finished before exiting the script due to an
+      error
+    - When realpath fails, do not silently fail but return with an
+      error
+  + Non-zypp backends updates.
+  + Updated translations.
+- Drop PackageKit-fix-pk-qt.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Fri Mar 26 15:15:59 CET 2010 - vuntz@opensuse.org
+
+- Add PackageKit-fix-pk-qt.patch, taken from git, to make
+  libpackagekit-qt work correctly.
+
+-------------------------------------------------------------------
+Fri Mar 26 13:14:34 CET 2010 - vuntz@opensuse.org
+
+- Build against mozilla-xulrunner192-devel on openSUSE > 11.2.
+
+-------------------------------------------------------------------
+Tue Mar 23 22:08:13 CET 2010 - vuntz@opensuse.org
+
+- Update to version 0.6.2:
+  + Notes:
+    - We broke PackageKit-Qt API in a big way this release. You'll
+      need a new KPackageKit if you're using KDE.
+    - There is a _tiny_ API break in PackageKit-glib2 which means
+      most apps just need a recompile.
+  + Libraries:
+    - PackageKit-glib2: Add pk_control_suggest_daemon_quit()
+    - PackageKit-Qt: Add a Last[enum-type] entry to each type
+    - PackageKit-Qt: Added more constness to the lib
+    - PackageKit-Qt: Drop QObject for Package
+    - PackageKit-Qt: Fix filtersToString and make enumToString more
+      robust
+    - PackageKit-Qt: Fix up a typo that prevents compiling programs
+      that use -pedantic-errors
+    - PackageKit-Qt: Fully automatize the proxy generation
+    - PackageKit-Qt: Moved the package enums to Enum class
+    - PackageKit-Qt: Port tests to current API
+    - PackageKit-Qt: Port the tests to the new Enum class
+    - PackageKit-Qt: Switch from QDbusReply to QDBusPendingReply
+  + New Features:
+    - Add a new library function: pk_package_sack_filter_by_info()
+    - Add a pk_backend_set_speed() helper function
+    - Added autoremove to simulateRemovePackage
+    - Add the eula-required python method helper
+    - Change the python helpers to get sent an array of values, not
+      a delimited string
+    - Define a new error code for when the user declines the
+      simulation
+    - Removed deprecated SetLocale
+    - Show messages in the pkmon output when the task has completed
+  + Bugfixes:
+    - Add the environment variable accepted_eulas to the spawned
+      processes
+    - Add the polkit backend library in LIBADD, not LDFLAGS. Fixes
+      fdo#26373
+    - Do not run the transaction with only_trusted if the
+      simulation inferred that any packages were unsigned
+    - Ensure that a malicious user can't make the backend exit by
+      injecting a bogus EULA call into the transaction
+    - Fix a logic problem where the PkSpawn and PkBackend instances
+      would race and sometimes issue a pk_backend_finished() when
+      the dispatcher instance was being changed
+    - Initialize relevant GError's in the daemon to NULL
+    - Install the introspection data to the correct location
+    - Update the list of free licences from the Fedora wiki
+  + Backends:
+    - zypp: add more features to repo_set_data
+    - zypp: change policy to download first
+    - Non-zypp backends updates.
+  + Updated translations.
+- Add gobject-introspection-devel BuildRequires.
+- Rename libpackagekit-glib2-13 to libpackagekit-glib2-14 and
+  libpackagekit-qt13 to libpackagekit-qt14 after soversion change.
+- Add workaround to install pm-utils files in libexecdir, since
+  this is how pm-utils is configured in openSUSE.
+
+-------------------------------------------------------------------
+Fri Mar 19 13:17:02 CET 2010 - vuntz@opensuse.org
+
+- Add branding infrastructure, and create a
+  PackageKit-branding-upstream. There is some vendor-specific
+  settings that really belongs to branding packages, and we can
+  also change the default configuration there. Fix bnc#471377.
+- Drop PackageKit_release.patch: this will be done in the branding
+  package.
+
+-------------------------------------------------------------------
+Thu Mar 18 15:37:48 CET 2010 - vuntz@opensuse.org
+
+- Update to version 0.6.1:
+  + Backends:
+    - zypp: Add more features to repo_set_data
+    - zypp: Partial support of multiple values for search params
+    - zypp: Work with packagekit-glib2
+    - Non-zypp backends updates.
+  + New Features:
+    - Add Kubuntu support for upgrade
+    - Add support for the 'interactive' hint in the daemon, and
+      also sent it to the backend
+    - Add a new message enum 'repo-for-developers-only' for repos
+      that should not be used by users
+    - Add sync versions of the PkPackageSack functions
+    - Enable initial introspection support in PackageKit-glib2
+    - Sort the packages by name in all pkcon results
+  + Bugfixes:
+    - Ensure we enter SETUP before we run the pre-transaction
+      checks
+    - Add a parent object to all the source objects to track the
+      source role and transacton id
+    - Ensure we set an error when the transaction is cancelled
+    - Ensure PkProgress sends ::notify signals when properties
+      change
+    - When adopting a transaction ensure we set the role on the
+      PkResults object
+    - Show the translated role and status when using pkgenpack
+    - Ensure that pkgenpack generates filenames without ';'
+      embedded in them
+    - If the user uses 'pkcon install dave.rpm' then give a useful
+      error message
+    - Fixed packagekit.client.install_packages() in Python bindings
+    - Cache autoremove too in transaction_remove_packages
+  + Updated translations.
+- Update to version 0.6.0:
+  + New Features:
+    - Remove the deprecated DBus methods from the daemon
+    - Break internal and external API to support OR queries
+    - Add a new error enum 'failed-due-to-running-process' for
+      future code
+    - Add a new config file entry, NoUpdateProcessList that
+      specifies processes that should not be updated when running
+    - glib: Remove the deprecated glib library
+    - packagekit-qt: Removed deprecated methods
+    - packagekit-qt: Added searchNames, searchFiles and searchGroups
+  + Bugfixes:
+    - cnf: Ensure we send error messages to stderr, not stdout.
+      Fixes rh#545220
+    - Fix a crash where the extra library check file callbacks had
+      the wrong signature
+    - Allow the inhibit call to go through even if cancel is not
+      implemented
+    - packagekit-qt: Improved and fixed transaction handling so
+      does not crash kded module anymore
+    - packagekit-qt: Fixed the naming of the conviniece functions
+      to match the same function
+  + Non-zypp backends updates.
+  + Updated translations.
+- Update to version 0.5.5:
+  + New Features:
+    - Add a --plain option to pkcon to better support not-running
+      with a console
+    - Moved get_distro id to a daemon property
+    - Fixed one old call to get_distro_id and changed all
+      identifiers to distro;version;arch
+    - Make the scan for desktop files be recursive
+  + Bugfixes:
+    - Switch the signed install permission to require the root
+      password
+  + Many other bugfixes and libraries updates (see NEWS for
+    details)
+  + Non-zypp backends updates.
+  + Updated translations.
+- Changes from version 0.5.4:
+  + Backends
+    - zypp: Add support for get_mime_types
+  + New Features
+    - Add a vtable entry get_roles() to allow the backend to
+      override what is advertised by the daemon
+  + Many bugfixes and libraries updates (see NEWS for details)
+  + Non-zypp backends updates.
+  + Updated translations.
+- Changes from version 0.5.3:
+  + Notes:
+    - Quite a few method and property additions and clarifications
+      to the spec, with 7 methods now deprecated. We'll be
+      supporting the deprecated methods all through 0.5.x so client
+      code does not have to worry until 0.6.x.
+    - Support for using idle bandwidth, disk and CPU in some
+      circumstances.
+    - A new 'slapt' backend for slackware packages as a preview
+      release.
+    - This is the first release to use the glib2 library
+      internally. This makes the client tools faster, more stable
+      and more supportable. The headers are also now used in the
+      daemon and many of the synchronous methods are now async.  It
+      is not yet recommended for external client programs use
+      packagekit-glib2 as the API is not yet set in stone and may
+      change. This is expected in 0.6.x.
+  + Specification
+    - Add a Speed property to the interface as some users require
+      the download speed
+    - Add a per-Transaction ::Changed() signal and deprecate the
+      other FooChanged() signals
+    - Add OR delimiters to SearchName, SearchDetails, SearchGroup,
+      SearchFile and WhatProvides
+    - Add ElapsedTime and RemainingTime as properties on the
+      Transaction interface
+    - Mandate that ::Files() from DownloadPackages must be one per
+      package, with the package_id set correctly
+    - Deprecate SetLocale() and add another method to replace it,
+      SetHints()
+    - Deprecate ::Locked() and ::NetworkStateChanged() and add
+      properties and a ::Changed() signal
+  + Various small new features, many bugfixes and libraries updates
+    (see NEWS for details)
+  + Non-zypp backends updates.
+  + Updated translations.
+- Changes from version 0.5.2:
+  + Notes
+    - A new read-only backend for FreeBSD Ports.
+    - New Simulate* methods added to find out what a transaction
+      will do.
+    - Resove() now accepts a package_id as well as a package name.
+    - New properties on the DBus interfaces, with the old methods
+      deprecated.
+    - The new packagekit-glib2 library is experimental and
+      unstable, but is designed to replace the old packagekit-glib
+      library long term. Early testing welcomed.
+  + New Features
+    - Make the browser plugin interaction better
+    - Simulate installing packages and files in pkcon if possible
+    - Add the device rebinding functionality required for the
+      session to install drivers
+    - Add PK_PROVIDES_ENUM_POSTSCRIPT_DRIVER for the new foomatic
+      functionality
+    - Allow resolve to match on an exact package_id
+    - Property names have to be WindowsStyleCaps
+  + Many bugfixes and libraries updates (see NEWS for details)
+  + Non-zypp backends updates.
+  + Updated translations.
+- Add libgudev-1_0-devel BuildRequires.
+- Add pm-utils BuildRequires and drop
+  PackageKit-force-pm-utils.patch since the new pm-utils has a
+  pkg-config file. Also remove autoreconf call.
+- Rebase PackageKit_release.patch to remove part that is fixed
+  upstream.
+- Drop PackageKit-BNC543595.patch: fixed upstream.
+- Drop PackageKit-BNC383261-suggest-daemon-quit.patch: this API is
+  now upstream (but the API had changed, so it's named differently)
+- Drop PackageKit-webyast.patch: fixed upstream.
+- Rename libpackagekit-glib12 and libpackagekit-glib12-devel to
+  libpackagekit-glib2-13 and libpackagekit-glib2-devel after
+  library name change (note that we don't put the soversion in the
+  devel package name anymore).
+- Rename libpackagekit-qt12 to libpackagekit-qt13 after soversion
+  change, and rename libpackagekit-qt12-devel to
+  libpackagekit-qt-devel to follow the library policy. Make
+  libpackagekit-qt-devel obsolete libpackagekit-qt12-devel, but not
+  provide it (since it's not the same ABI).
+- Improve summary of ruck to fix rpmlint warning.
+
+-------------------------------------------------------------------
+Wed Mar 17 09:10:34 UTC 2010 - glin@novell.com
+
+- enhanced zypp backend to calculate the download size of a patch
+  while sending the package details. Fix a part of bnc#559802
+
+-------------------------------------------------------------------
+Tue Feb  9 17:19:16 CET 2010 - prusnak@suse.cz
+
+- Build doc and devel subpackages as noarch on openSUSE 11.2 and
+  later since they don't contain any architecture-dependent files.
+
+-------------------------------------------------------------------
+Fri Jan 29 09:41:06 UTC 2010 - lslezak@suse.cz
+
+- enhanced libzypp-backend to save more attributes
+  (keeppackages, url and name), this is needed by WebYaST
+  Repository Manager module
+- version 0.5.1-4
+
+-------------------------------------------------------------------
+Sun Dec  6 09:38:19 UTC 2009 - coolo@novell.com
+
+- refresh the patches to fix build
+
+-------------------------------------------------------------------
+Thu Oct  8 17:15:04 UTC 2009 - sreeves@novell.com
+
+- Fix bnc#543595 - install local files.
+
+-------------------------------------------------------------------
+Wed Aug 12 13:47:30 CEST 2009 - dominique-obs@leuenberger.net
+
+- Use new python macros on openSUSE <= 11.1
+
+-------------------------------------------------------------------
+Sun Aug  9 12:43:26 CEST 2009 - coolo@novell.com
+
+- use new python macros
+
+-------------------------------------------------------------------
+Mon Aug  3 19:44:57 CEST 2009 - dominique-obs@leuenberger.net
+
+- Update to version 0.5.1:
+  + Security reviewd: see link for details
+    http://cgit.freedesktop.org/packagekit/plain/docs/security.txt
+  + PackageKit's proxy support got a major tuneup, see link
+    http://cgit.freedesktop.org/packagekit/plain/docs/setting-the-proxy.txt
+  + Detection of security updates to shared libraries in use
+  + Lots of bugfixes and a few new configure options
+  + Updated translations
+  + New Features:
+    - Check for pm-utils installation if pm-utils option is enabled
+    - Adding 'strict' option to configure to add -Werror
+      (auto-enabled in repo)
+    - Add networkmanager, connman and service-packs options to
+      prevent auto-magic deps
+    - Add functionality to detect when shared libraries are being
+      used that are updated in a security update
+    - Limit the maximum number of requests a given user is able to
+      request and queue
+    - Limit the number of packages that can be processed by the
+      daemon in one method call
+    - Add a security document after some initial review
+    - glib: Add a PkClientPool object to better manage async
+      clients
+    - Add uid and session to proxy mapping in the database
+    - Add a document explaining how we map the proxy internally
+    - Add arch filtering to the generic python filter helper
+    - debuginfo-install: handle untrusted packages
+    - Detect when the PolicyKit authentication was timed out, and
+      show this as a message to the user
+    - cnf: Search other directories that commands can be found in,
+      not just /usr/bin
+    - cnf: Show status rather than just hanging for a long time
+      without any output
+    - cnf: Handle SIGINT in command-not-found
+    - glib: expose the some new properties on the PkClient object
+- Add PackageKit-force-pm-utils.patch. Our pm-utils package
+  does not provide a *.pc file and as such can't be detected. Also
+  enable the autoreconf for this patch.
+
+-------------------------------------------------------------------
+Fri Jul 31 20:27:40 CEST 2009 - vuntz@novell.com
+
+- Remove Obsoletes for libpackagekit-{gtk,qt}11.
+
+-------------------------------------------------------------------
+Sun Jul 19 22:51:05 CEST 2009 - dominique-obs@leuenberger.net
+
+- Update to version 0.5.0:
+  + Notes:
+    - This is the first release of the unstable 0.5.x branch,
+      which depends on PolicyKit1, rather than the old PolicyKit.
+    - The API has been slightly changed for PolicyKit1 support and
+      new functionality; see the interface for more details.
+  + New Features:
+    - Add ConnMan networking stack support
+    - Add force parameter to refresh-cache function in python
+      backends
+    - Improve SearchFile, SearchName, SearchDetails and SearchGroup
+      specifications
+    - Port to polkit1, and remove a lot of the complexity with the
+      old PolicyKit code
+    - Rewrite the networking code to derive from a common
+      PkNetworkStack object
+    - Enable nice build output on automake1.11
+    - Make GIO a hard build dependency and remove the conditional
+      code
+    - Enable the warning GSEAL_ENABLE and fix up build failures
+    - Add a trusted parameter to InstallPackages, UpdatePackage and
+      UpdateSystem
+    - Add a convenience Exit enum, NEED_UNTRUSTED, and set for the
+      correct error enums
+    - Don't hardcode the StateChangedTimeout's and add them to the
+      config file
+    - Add a PolicyKit action lookup so we can do the translated
+      authentication from the server
+    - Populate some initial PolkitDetails when we ask PolicyKit1
+      for authorization
+    - Add pk-debuginfo-install functionality as a new contrib
+      project
+    - Create a PkRequireRestartObj type
+  + Updated translations.
++ The soname for libpackagekit-{gtk,qt} was bumped, so rename the
+  packages and obsolete the old ones.
++ Add polkit-devel BuildRequires.
++ Remove PolicyKit-devel BuildRequires.
+
+-------------------------------------------------------------------
+Sun Jul 19 19:03:13 CEST 2009 - coolo@novell.com
+
+- fix use of %_libexecdir
+
+-------------------------------------------------------------------
+Tue Jun  2 18:02:38 CEST 2009 - vuntz@novell.com
+
+- Update to version 0.4.8:
+  + New Features:
+    - Add a PK_CHECK_VERSION macro
+    - Add three properties on the main interface with the runtime
+      daemon versions
+    - Export version-* properties in PkControl
+    - Add a prototype backend interface definition as a
+      tech-preview
+    - Don't use --enable-developer, instead use DeveloperMode set
+      in the config file
+    - Create a shared pk_backend_bool_to_text() helper to reduce
+      copy&paste
+  + Bugfixes:
+    - Make PkNetworkUnix watch /proc/net/route and check for
+      network state changes
+    - Ensure we send ::Finished() even when the dispatcher closed
+      normally
+    - Ensure we disconnect ::Finished() when we unref a transaction
+      in the PkTransactionList
+    - Emit ::Destroy() in the dispose phase to ensure it is proxied
+      to the bus
+    - Fix SuggestDaemonQuit to exit using the mainloop
+    - Fix the logic of when ::RestartSchedule is used
+    - Don't cache the update detail anymore, we can't ensure
+      cache-consistency
+    - Don't try to clear the cancel timeout if it fires again on
+      PkClient finalise
+    - Only return the newest available package for the
+      command-not-found tool
+    - Check earlier if we don't have libarchive when creating a
+      service pack
+    - Be more paranoid when parsing ISO8601 dates from the backend
+      to avoid a critical error
+    - Fix a small memory leak when we check for session restarts
+    - When we search for the file list after an install or upgrade,
+      use the local package
+    - Don't crash the session program if we are connecting to an
+      old packagekitd with a new libpackagekit
+    - Protect a few function in pk-package-ids.c from NULL input
+  + Non-zypp backends updates.
+  + Updated translations.
+- Add libarchive-devel BuildRequires for service packs.
+- Add docbook-utils BuildRequires for man pages.
+
+-------------------------------------------------------------------
+Wed May  6 15:14:24 CEST 2009 - vuntz@novell.com
+
+- Build against mozilla-xulrunner191 on openSUSE > 11.1.
+
+-------------------------------------------------------------------
+Wed May  6 01:55:54 CEST 2009 - vuntz@novell.com
+
+- Update to version 0.4.7:
+  + Added media change support in a few backends (not zypp, though)
+  + Updated translations.
+  + New Features:
+    - Add DOAP file to the project
+    - Add a method to disable SIGKILL in PkSpawn
+    - Added media change support to -qt lib
+    - Added support to recognize Debian version
+    - Add media change request support to the spawned backend
+    - Allow a spawned backend to opt-out of the SIGKILL cancel
+      process
+    - Remove job_count.dat, it's not used anymore
+    - Remove the DBus backend. The only user
+    - New signal, media-change-required (daemon and glib)
+  + Bugfixes:
+    - Add support for /etc/lsb-release to pk_get_distro_id(). Fixes
+      fdo#21550
+    - Allow the dummy security model to authorise actions
+    - Check the transaction totals are not zero before using them.
+      Fixes rh#495849
+    - Correct the allow-cancel duplicate logic
+    - Correct the logic for SetSynchronous without returning in the
+      duplicate check
+    - Display Message()'s in pkcon rather than just ignoring them
+    - Don't filter out 'Presto' unconditionally from the stdout to
+      fix rh#496091
+    - Fix compile on FreeBSD
+    - pkgenpack man page still pointed to pk-generate-package-list
+    - pk_package_ids_check is not valid when the packageids array
+      is zero length
+    - Remove the NameOwnerChanged handler when we unref
+      PkConnection to prevent a bug in client applications
+    - Still use command not found for commands one character long
+    - To fix spawned backends, http_proxy has to be a URI not a
+      bare proxy. Fixes rh#491859
+    - Use the new session interface for installing Fontconfig
+      resources and GStreamerCodecs
+  + Libraries:
+    - PackageKit-Qt: Add support for cancel-foreign PolicyKit
+      action
+    - Packagekit-Qt: Changed License to QString in package
+    - PackageKit-Qt: Drop support for building with CMake. The
+      module for the lib is still included
+    - Packagekit-Qt: Switch some QSets to QFlags, because
+      keyToValue() returns int not qint64
+    - Packagekit-Qt: Adds registration to MessageType
+    - Packagekit-Qt: Fixed Message enum the same way as Filter and
+      Action
+    - Packagekit-Qt: Removed a useless resolv method
+    - Packagekit-Qt: Renamed various enums to have a prefix to
+      avoid conflicts
+    - Python: Add two further helpers get_package_id and
+      split_package_id
+    - Python: Add two helpers format_string and text_to_bool to the
+      backend module
+  + Non-zypp backends updates.
+- Update PackageKit_release.patch: drop the part that is not needed
+  anymore.
+- Pass --disable-cron to configure (this is what the old part of
+  PackageKit_release.patch used to do).
+
+-------------------------------------------------------------------
+Sat Apr  4 15:09:07 CEST 2009 - vuntz@novell.com
+
+- Update to version 0.4.6:
+  + Notes:
+    - Lots of profiling lead to many speed increases, most at cold
+      startup
+    - Fixes to command not found for bash 4.0
+    - Experimental aptcc backend merged, which does not use
+      python-apt at all
+  + New Features:
+    - Add a config variable to be able to turn off the updates
+      cache for debugging
+    - Warn if there are any pending sources at the end of each self
+      test section
+  + Bugfixes:
+    - Make the GTK+ module resident to fix crash when session is
+      reloaded
+    - Only check the transaction database once at startup, to
+      reduce 25ms off the cold start
+    - Don't force SQLite to do fsync in PkTransactionDb, to reduce
+      our cold cache start by 700ms
+    - Don't store the job-id in a separate file, as this adds 37ms
+      to each generate method
+    - Don't allow pk_backend_error_timeout_delay_cb() to be called
+      more than once
+    - Escape the ';' in the UpdateDetail:ChangeLog signal so we can
+      send more than one line
+    - Use the bash 4.0 command_not_found function name to fix new
+      versions of bash
+    - When we get the update detail in pkcon, resolve not-installed
+      packages. Fixes rh#492004
+    - glib: Don't hardcode /var/lib/PackageKit for the desktop
+      database
+    - qt: Check for QtXml in configure and use the correct deps in
+      the packagekit-qt pc file
+    - qt: Made Transaction::cancel() a slot
+    - qt: Updated almost all the enums
+  + Non-zypp backends updates.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 10 21:16:39 CET 2009 - vuntz@novell.com
+
+- Update to version 0.4.5:
+  + New features:
+    - Enable ptrace() on libpackagekit, it was always a bandaid
+    - python: add a PkError exception class to better handle nested
+      errors
+    - Clarify the spec that a Details::size value of zero of a
+      non-installed file indicates it's in cache and doesn't need
+      to be downloaded
+    - Remove the app-install feature, it's now it's own project
+    - Allow backends to enable simultaneous mode to do actions in
+      parallel
+    - Updated QPackageKit soname version to 0.4.1
+    - Made package methods const and added an operator== to package
+  + Bugfixes:
+    - When we reset a PkClient, get a new reference to a
+      PkPackageList
+    - Ensure we set PK_STATUS_ENUM_FINISHED when we return cached
+      updates
+    - glib: When we cancel a transaction, don't overwrite the role
+      as Cancel
+    - Fix the self test by using actual provides in the catalog
+      file
+  + Non-zypp backends updates.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Feb 27 22:08:46 CET 2009 - mboman@suse.de
+
+- Update to version 0.4.4:
+  + New Features:
+    * Add a new method GetDaemonState to the main interface to help
+      debugging on live systems
+    * Print the daemon state when using pkmon in verbose mode
+    * Add a draft standard for application install metadata
+      handling
+    * Add a pk-app-install binary for manipulating the sqlite
+      cache
+    * PackageKit-Qt: Sync API for RequireRestart
+    * PackageKit-Qt: Add support for application filter
+    * PackageKit-Qt: Add a searchFromDesktopFile method
+  + Bugfixes:
+    * Updated documentation with UseSyslog parameter
+    * Fix for the updates and obsoletes delimiter
+    * Make the dbus policy more fine grained
+    * Fix compile failure with gcc-4.4.0 and old versions of glib2
+    * If we fail to exit from the dispatcher, make sure we cleanup
+      the poll as the child check isn't going to be run
+    * The QT lib now depends on QtSql, so add this to the
+      configure
+    * Fix up resolve in pkcon and from libpackagekit-glib
+    * Don't dereference a NULL pointer in pk_console_resolve()
+      which can be done using pkcon list-install
+    * Don't use an local error in pkcon list-install else we'll
+      fail to free it, and it's non-fatal
+    * PackageKit-Qt: Handle daemon errors more gracefully
+    * PackageKit-Qt: Add a getLastError method to get the last
+      daemon error
+    * PackageKit-Qt: Add missing implementation for uid and
+      cmdline
+    * Packagekit-Qt: Fix to make what provides work
+  + Backends (only zypp related listed. See NEWS for all others):
+    * zypp: Fix up virtual callback methods
+  + Translation updates
+- Remove duplicate BuildRoot
+- Remove AutoReqProv since it's default
+- Remove Requires since it's supplied automatically
+- Don't use autoreconf -f -i
+- Removed BuildRequires fontconfig-devel, glib2-devel,
+  libpixman-1-0-devel, pango-devel
+- Replace %setup -q -n %{name}-%{version} with %setup -q
+- Move gtk-doc to -devel
+- Upstreamed PackageKit-libzypp6.patch (fdo#20366)
+
+-------------------------------------------------------------------
+Fri Feb 27 02:03:40 CET 2009 - ro@suse.de
+
+- fix build with current libzypp:
+  isToBeUninstalledDueToObsolete is gone
+
+-------------------------------------------------------------------
+Sat Feb 14 01:00:57 CET 2009 - vuntz@novell.com
+
+- Merge .changes entry about sr@latin from factory (was already
+  done on Feb 2 in GNOME:Factory)
+
+-------------------------------------------------------------------
+Wed Feb 11 01:08:50 CET 2009 - ro@suse.de
+
+- use sr@latin instead of sr@Latn
+
+-------------------------------------------------------------------
+Sun Feb  8 14:58:45 EST 2009 - hfiguiere@suse.de
+
+- Add libpixman-1-0-devel to the buildrequires for Factory
+
+-------------------------------------------------------------------
+Thu Feb  5 09:51:11 EST 2009 - mboman@suse.de
+
+- Update to version 0.4.3:
+  + New Features:
+    * Add new packagekit-sharp binding
+    * Allow the user to specify a complete output file name with
+      pkgenpack
+  + Bugfixes:
+    * Repair pkcon resolve argument parsing
+    * Remove dep on python-sqlite2 and use internal python sqlite
+      Fixes rh#481270
+    * Dist the website in the tarball correctly, and install in
+      the -docs subpackage
+    * Fix up a translation in pkcon when we fail to get the time
+      since action
+    * Add an option to configure so we can specify a different
+      directory. Fixes fd#19884
+    * Remove bare send_interface lines in the DBus rules
+    * Add _get_info, get_id and _get_summary for PkPackageObj
+    * Removed -Wswitch-enum from compiler switches
+    * Don't print an internal error if we don't pass an argument
+      to --package
+  + Backends:
+    * alpm: Change source code to be more standards compliant
+    * smart: Don't filter *-testing channels as development
+    * yum: Get some useful text when yum passes us an invalid
+      message. Fixes fd#19781
+    * zypp: Remove GROUP_ENUM_UNKNOWN as engine returns empty if
+      included in list
+  + Translation updates
+- Remove PackageKit-browser-plugin.patch. Mozilla plugin directory
+  can now be specified during configure
+- Create a -doc subpackage with the website content.
+
+-------------------------------------------------------------------
+Mon Feb  2 16:07:37 EST 2009 - mboman@suse.de
+
+- Update to version 0.4.2:
+  + New Features:
+    * Use the detail field as a package_id so we can propogate
+      useful information to clients
+    * Add an entry to the config file to turn on time estimation,
+      and enable it by default
+    * Remove the udev helper from PackageKit now the core
+      functionality is in udev itself
+  + Bugfixes:
+    * If a script is still running and PkSpawn is asked to unload,
+      be more careful about disconnecting timers
+    * Ensure we call the backend finalise method when the daemon
+      times out
+    * Ensure we send the correct network state with the new
+      changed codepath
+    * Don't leak directory on commit-failed error path
+    * Set the setup signal after we've connected the backend to
+      the transaction so it is emitted for clients
+    * Don't emit allow-cancel over and over if it is the same
+      state as before
+    * A *-testing repo is not a development repo, so should not
+      be filtered by default. Fixes rh#480135
+    * Remove the obsolete specific vendor_url for each PolicyKit
+      authorisation and rely on the packagekit homepage.
+      bnc#450349
+    * Only try to exit the spawned backend if it is running, which
+      removes an error warning if it is already closed
+    * Clear the backend store in pk_backend_reset() as we can't
+      guarantee the ordering for cancelled jobs
+    * Fix compile of the browser plugin with newer versions of
+      xulrunner
+  + Backends:
+    * dummy: Output a load of messages we can play with in GUI
+      tools
+  + Translation updates
+- Modify PackageKit_release.patch to follow upstream with
+  LT_CURRENT/LT_REVISION
+
+-------------------------------------------------------------------
+Mon Feb  2 00:57:51 CET 2009 - vuntz@novell.com
+
+- Enable ruck and put it in its own package.
+- Consolidate removal of static libraries and "la" files.
+- Fix directory for browser plugin.
+- Remove sr@Latn hack.
+
+-------------------------------------------------------------------
+Mon Jan 12 09:08:13 EST 2009 - mboman@suse.de
+
+- Update to version 0.4.1:
+  + Use NetworkManager to get the network device type for session
+    policy decisions
+  + Resolve() is now case sensitive
+  + Adapted pk-upgrade-distro.sh for suse
+  + Don't let spawned backends hog the disk by default using ioprio
+  + glib: Add a client side timeout monitor so we can set a limit
+    on queries
+  + glib: Added accessors for PkPackageId
+  + Added search file method and search details convinience method
+    to packagekit-qt
+  + Daemon backend: Separate object creation and running
+  + QPackageKit: Revert the threaded polkit as it breaks everything
+  + Define a macro directory so we work with newer versions of
+    libtool
+  + Remove the concept of slow and fast interfaces, since we don't
+    actualy know the speed
+  + Get the caller (and uid) for all transactions from the GetTid
+    method as we cannot get the UID from the non-async methods
+  + Clarify that free form text in Details and UpdateDetail is
+    formatted to markdown syntax
+  + Allow pkcon to resolve all the command line arguments,
+    not just the first one
+  + Fix the python client library for SearchDetails and SearchFile
+    Fixes fdo#19426
+  + Make get_packages call GetPackages, not GetUpdates
+  + Misc fixes for backends
+  + Translation updates
+
+-------------------------------------------------------------------
+Sat Jan  3 09:08:13 EST 2009 - mboman@suse.de
+
+- Update to version 0.4.0:
+  + Now integrates with BASH suggesting replacements and offering
+    to install missing packages.
+  + Now integrates with Pango using a gtk-module to install missing
+    fonts.
+  + Much tighter security model and new audit logging framework.
+  + Lots of new, untested, code so probably not a good idea for
+    stable distributions.
+  + qt: Add GetMimeTypes to Qt bindings (Adrien BUSTANY)
+  + Add a PolicyKit rule so other users can cancel tasks from other
+    users
+  + Add command-not-found functionality to PackageKit
+  + Add a various possible replacement models to command not found
+  + Use a config file to control the actions we take on
+    command-not-found
+  + Add a Pango module that can be used to automatically install
+    missing fonts
+  + Set the environment variable NETWORK for the spawned backends
+  + Get the lang and network state in the generic spawned backend
+  + pk-generate-package-list is not used any more, remove from the
+    man page
+  + Check the sender for SetLocale and the UID for Cancel
+  + Fix a small memory leak in pk_backend_package
+  + Make a lot of new strings translatable in pkcon
+  + Add the DBus interface now that the default send interface is
+    now deny
+  + Allow all clients to send to all interfaces of the server.
+    Fixes DBus introspection
+  + glib: Don't emit a critical warning if a desktop file contains
+    an error
+  + qt: Fix make check with the threaded Polkit client
+  + qt: Fix the old transactions, and upgrade to new API
+  + qt: Fixed freezed UI while waiting for blocking
+    polkit_auth_obtain call
+  + poldek: Implement get_mime_types
+  + Misc fixes for the yum backend
+  + Translation updates
+
+-------------------------------------------------------------------
+Tue Dec 09 17:42:15 CET 2008 - sreeves@suse.de
+
+- Move to 0.3.12 - Bugfix only release
+    Fix a memory leak when checking transactions
+    Dont emit a critical warning if g_desktop_app_info returns an error
+    Remove incorrect reference to pk-generate-package-list in man page
+    Fix to allow send on dbus interface - needed when pending dbus update
+      changes that default to deny (CVE-2008-4311)
+  Add method to call SuggestDaemonQuit as part of fix for BNC#383261
+
+-------------------------------------------------------------------
+Mon Nov 24 17:42:15 CET 2008 - sreeves@suse.de
+
+- Move to 0.3.11
+    Pull in updated translation files (.po)
+    Bugfix - enable translations in all client tools
+
+-------------------------------------------------------------------
+Fri Nov 21 17:46:15 CET 2008 - sreeves@suse.de
+
+- Keep the PolkitCaller to allow repeat queries faster
+  Do not abort update when a repo has problems
+  Add user and cmdline to the Transaction signal
+  Add syslog logging to keep record of obtained auths
+  Fix crash when pk-control is referenced after it's finalized
+  Handle filters in what-provides
+
+-------------------------------------------------------------------
+Mon Nov 17 21:12:16 CET 2008 - sreeves@suse.de
+
+- Fix the installSignature method to understand repo keys
+  In pkcon update - don't attempt to do what-provides if it's not implemented
+  Fix restart flag handling
+  Fix segfault in the error path when files could not be installed with pkcon
+  Move to 0.3.10
+
+-------------------------------------------------------------------
+Fri Nov  7 17:33:36 CET 2008 - sreeves@suse.de
+
+- Add updated translation files
+  Fix get_distro_upgrades
+  Fix error on reuse of TIDS causing timeout on auth
+  Set status when installing a signature
+  Fix for BNC #431940 - packagekitd locks system management
+
+-------------------------------------------------------------------
+Tue Oct 28 16:27:56 CET 2008 - coolo@suse.de
+
+- split out lang package
+- do not require all of python
+
+-------------------------------------------------------------------
+Thu Oct 23 21:16:04 CEST 2008 - sreeves@suse.de
+
+- Split up package according to shared library policy
+- Move to 0.3.9
+    (from the release news...)
+    Merge in QPackageKit QT library
+    This release brings many, many new and updated translations.
+    Print a message when we try to install a package that is already installed
+    glib: Send a more precise error code when we fail a transaction
+
+-------------------------------------------------------------------
+Mon Oct 13 21:16:04 CEST 2008 - sreeves@suse.de
+
+- Move to 0.3.7  Bug fix release
+    Fix for BNC #433889 - PackageKit crash
+    Fix for BNC #402372  - reinstalls all local packages
+    Don't crash the client tools if PkControl launches the daemon
+    Register the mime-type x-package-list as we are using it for service packs
+  Fix for BNC #422176 - non useful error notifications
+
+-------------------------------------------------------------------
+Wed Oct  8 23:11:49 CEST 2008 - sreeves@suse.de
+
+- Move to 0.3.6  Bug fix release
+   (from the release news...)
+   Remove items about to be run from the transaction list without crashing
+   Make the GStreamer helper use proper GStreamer exit codes
+   Set the default timeout to the maximum as dbus-glib times out after 25 seconds
+   Fix a theoretical hang where we could try to reuse a exiting instance
+   Unlock the backend before we send finished on ErrorCode as unlocking may take some time
+   When we exit the dispatcher with 'exit' ensure we unlock if locked
+   If the refresh cache fails, don't do the PkRefresh actions
+   If a caller does GetTid and then crashes, the daemon should timeout the transaction
+   Use environent variables rather than static instance variables to hold the debugging state,
+   so that we can get access to libpackagekit debugging when linked in
+   When we query the progress of a transaction, use the cached transaction values rather
+   than querying the backend, as it might not be the transaction actually running
+   We are allowed to cancel queued (and not running) transactions
+
+-------------------------------------------------------------------
+Mon Sep 29 18:19:05 CEST 2008 - sreeves@suse.de
+
+- Move to 0.3.5
+    Finish support for hardware driver install - FATE #303677
+
+-------------------------------------------------------------------
+Tue Sep 23 02:52:58 CEST 2008 - sreeves@suse.de
+
+- Move to 0.3.4
+    Start of support for hardware driver install - FATE #303677
+
+-------------------------------------------------------------------
+Fri Sep 12 19:17:58 CEST 2008 - sreeves@suse.de
+
+- Move to 0.3.2
+    Fix udev script invocation.
+    support for dispatcher
+    Optionally auto-run pk-generate-package-list and pk-import-desktop
+
+-------------------------------------------------------------------
+Tue Sep  9 19:16:32 CEST 2008 - ro@suse.de
+
+- use py_sitedir macro in filelist
+
+-------------------------------------------------------------------
+Mon Sep  1 00:42:31 CEST 2008 - sreeves@suse.de
+
+- Move to 0.3.1
+    distro upgrade support
+
+-------------------------------------------------------------------
+Fri Aug 22 13:15:37 CEST 2008 - sbrabec@suse.cz
+
+- Fixed invalid locale names.
+
+-------------------------------------------------------------------
+Mon Aug 18 11:23:53 CEST 2008 - schwab@suse.de
+
+- Fix name of completions file.
+
+-------------------------------------------------------------------
+Mon Aug 18 07:51:31 CEST 2008 - sreeves@suse.de
+
+- Move to pre-release of 0.3.0
+    start of service pack and distribution upgrade support.
+
+-------------------------------------------------------------------
+Wed Jul 30 07:54:00 CEST 2008 - coolo@suse.de
+
+- getting it to compile (brute force)
+
+-------------------------------------------------------------------
+Fri Jul 18 01:18:27 CEST 2008 - sreeves@suse.de
+
+- Move to 0.2.3
+    Add PkCatalog for installing catalogs
+    Add source filter support.
+    Allow adding and removing multiple packages at one time with pkcon
+
+-------------------------------------------------------------------
+Thu Jul  3 01:35:30 CEST 2008 - sreeves@suse.de
+
+- Match libzypp API change
+
+-------------------------------------------------------------------
+Wed Jun 25 20:07:28 CEST 2008 - sreeves@suse.de
+
+- Fix for BNC#389415 - Use generic PolicyKit
+  More work on BNC#398391 - return all restart_suggested patches
+    instead of one at a time.
+
+-------------------------------------------------------------------
+Tue Jun 17 21:01:32 CEST 2008 - sreeves@suse.de
+
+- Fix for BNC#398391 -  only show patches
+    swampid for this - 18244
+
+-------------------------------------------------------------------
+Mon Jun  9 19:33:22 CEST 2008 - sreeves@suse.de
+
+- Fix for BNC#398367 -  dont include recommends
+  Fix for BNC#398380 -  init keyring
+
+-------------------------------------------------------------------
+Sat May 24 21:46:48 CEST 2008 - sreeves@suse.de
+
+- Include updates from the openSUSE branch
+    Update to match changed libzypp API
+    BNC #390339 - rotate logs
+    BNC #392435 - poor dialog
+    BNC #392064 - confusing popup notifications
+    BNC #390929 - crash
+
+-------------------------------------------------------------------
+Sat May 24 07:59:25 CEST 2008 - aj@suse.de
+
+- Follow zypp changes.
+
+-------------------------------------------------------------------
+Tue May 13 00:29:30 CEST 2008 - sreeves@suse.de
+
+- Fix for BNC #388165 - mark some files with verify (not)
+
+-------------------------------------------------------------------
+Fri May  9 23:14:00 CEST 2008 - sreeves@suse.de
+
+- Move to official upstream 0.2.1 release.
+    Fix to accept multiple license prompts
+    Handle signed repos - import keys.
+
+-------------------------------------------------------------------
+Thu May  1 19:56:11 CEST 2008 - sreeves@suse.de
+
+- Change packagekit daemon timeout to 15 seconds - BNC #374043
+
+-------------------------------------------------------------------
+Mon Apr 28 18:29:00 CEST 2008 - sreeves@suse.de
+
+- Move to libzypp 4.15
+  Fix BNC#378342 - gpk-update-viewer crash
+
+-------------------------------------------------------------------
+Sun Apr 27 19:56:43 CEST 2008 - coolo@suse.de
+
+- replace deprecated zypp calls
+
+-------------------------------------------------------------------
+Thu Apr 17 18:12:55 CEST 2008 - schwab@suse.de
+
+- Fix configure script.
+
+-------------------------------------------------------------------
+Mon Apr 14 16:21:56 CEST 2008 - sreeves@suse.de
+
+- Update to version 0.2.0
+    new dbus model
+    change packagekitd timeout to 120 seconds
+
+-------------------------------------------------------------------
+Sat Apr  5 01:28:22 CEST 2008 - sreeves@suse.de
+
+- Update to version 0.1.11
+    Fix parse errors on bad markup
+    Emit verbose messages on dependency failures
+    Fix crash when getting dependencies.
+
+-------------------------------------------------------------------
+Thu Mar 27 07:36:19 CET 2008 - sreeves@suse.de
+
+- Update to version 0.1.9.2
+    Mem leak fixes
+    Fix multiple popups on install
+    Fix parse error causing missing name
+
+-------------------------------------------------------------------
+Fri Mar 14 00:42:13 CET 2008 - sreeves@suse.de
+
+- Update version. Includes working "update system"
+
+-------------------------------------------------------------------
+Wed Mar  5 01:31:29 CET 2008 - sreeves@suse.de
+
+- keep up with the new libzypp API
+
+-------------------------------------------------------------------
+Fri Feb 29 14:51:51 CET 2008 - coolo@suse.de
+
+- make it compile again with new libzypp API
+
+-------------------------------------------------------------------
+Thu Feb 28 10:07:54 CET 2008 - sreeves@suse.de
+
+- Update to ~0.1.9 (git pull on 2/28) release (with the policy file intltool
+  calls patched out temporarily until we get a newer intltool in factory.
+
+  add --enable-zypp to the configure line
+
+-------------------------------------------------------------------
+Tue Jan  8 16:27:44 CET 2008 - btimothy@suse.de
+
+- Upgraded to 0.1.5 (released upstream).
+- Added "--with-security-framework=polkit" to the configure.
+
+-------------------------------------------------------------------
+Mon Dec 10 20:40:41 CET 2007 - btimothy@suse.de
+
+- Added extra directories to the %files section so it'll build in
+  factory.
+
+-------------------------------------------------------------------
+Fri Dec 07 20:09:00 CEST 2007 - btimothy@suse.de
+
+- Update to version 0.1.5git20071207a which does rudimentary
+  package dependency checking.
+
+-------------------------------------------------------------------
+Tue Dec 04 01:56:00 CEST 2007 - btimothy@suse.de
+
+- Update to version 0.1.5git20071203f to fix a compiler error.
+
+-------------------------------------------------------------------
+Tue Dec 04 01:40:00 CEST 2007 - btimothy@suse.de
+
+- Update to version 0.1.5git20071203e which includes installed
+  packages when getting the description of a package.
+  pk-application uses this when you highlight an installed package.
+
+-------------------------------------------------------------------
+Tue Dec 04 01:25:00 CEST 2007 - btimothy@suse.de
+
+- Update to version 0.1.5git20071203d which includes installed
+  packages when searching by name in addition to packages found in
+  configured repositories.
+
+-------------------------------------------------------------------
+Tue Dec 04 00:04:00 CEST 2007 - btimothy@suse.de
+
+- Removed "= 1.1.3" for dbus-1 Requires line.
+
+-------------------------------------------------------------------
+Mon Dec 03 23:27:00 CEST 2007 - btimothy@suse.de
+
+- Update to version 0.1.5git20071203c.
+- Added a couple new entries to the %files section for
+  pk-completion.bash and packagekit-bugreport.sh.
+
+-------------------------------------------------------------------
+Mon Dec 03 21:58:00 CEST 2007 - btimothy@suse.de
+
+- Update to version 0.1.5git20071203b.
+
+-------------------------------------------------------------------
+Mon Dec 03 21:23:00 CEST 2007 - btimothy@suse.de
+
+- Update to version 0.1.5git20071203a.
+
+-------------------------------------------------------------------
+Fri Nov 30 21:39:00 CEST 2007 - btimothy@suse.de
+
+- Update to version 0.1.5git20071130a (remove the dash).
+
+-------------------------------------------------------------------
+Fri Nov 30 20:39:00 CEST 2007 - btimothy@suse.de
+
+- Update to version 0.1.5-20071130a taken from git master.
+
+-------------------------------------------------------------------
+Wed Nov 21 00:38:00 CEST 2007 - btimothy@suse.de
+
+- Added a new tar.bz2 file to do rudimentary package install.
+
+-------------------------------------------------------------------
+Mon Nov 19 18:11:00 CEST 2007 - btimothy@suse.de
+
+- Adjusted to install the PackageKit.service for dbus into the
+  /usr/share/dbus-1/system-services directory.  This is what
+  allows the system activation stuff to work.
+
+-------------------------------------------------------------------
+Fri Nov 16 16:50:00 CEST 2007 - btimothy@suse.de
+
+- Grabbed new PackageKit-0.1.4.tar.bz2 built from this morning's
+  git repo (has stubbed-out zypp backend).
+- Configure so zypp is the default backend.
+
+-------------------------------------------------------------------
+Thu Nov 15 17:19:00 CEST 2007 - jpr@suse.de
+
+- Reduce requires, most of them are automatic
+- Remove gcc from BuildRequires its automatic
+
+-------------------------------------------------------------------
+Thu Nov 15 17:04:00 CEST 2007 - jpr@suse.de
+
+- fix build on 64bit by not hardcoding "lib"
+- make description a little more manageable
+- use %{py_requires} instead of hardcoded python
+- use "devel" instead of "-n Package-devel" because adding the
+  Package- partis automatic
+
+-------------------------------------------------------------------
+Wed Nov 14 20:35:00 CEST 2007 - btimothy@suse.de
+
+- Revert the last change and hardcode /usr/share because otherwise
+  it gets installed to /dbus-1/services.  We'll have to figure this
+  one out later.
+
+-------------------------------------------------------------------
+Wed Nov 14 19:19:00 CEST 2007 - btimothy@suse.de
+
+- Use %{_datadir} instead of /usr/share when specifying where
+  the dbus-1/services directory is at configure.
+
+-------------------------------------------------------------------
+Wed Nov 14 18:50:00 CEST 2007 - btimothy@suse.de
+
+- Specify /usr/share/dbus-1/services at configure so we don't have
+  to modify the make install step.
+
+-------------------------------------------------------------------
+Tue Nov 13 18:53:00 CEST 2007 - btimothy@suse.de
+
+- init
