@@ -1,0 +1,72 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>87b42f7c16da5dd2168f6b1550692ceb</srcmd5>
+    <version>0.0.3</version>
+    <time>1553435987</time>
+    <user>dimstar_suse</user>
+    <comment>- Initial spec for v0.0.3 with update-tests.patch for tests to work
+  with latest click
+</comment>
+    <requestid>683536</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>0bcf01d43348f754bdd26fd611b75865</srcmd5>
+    <version>0.0.3</version>
+    <time>1554458429</time>
+    <user>dimstar_suse</user>
+    <comment>- Use noun phrase in summary.</comment>
+    <requestid>690279</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>724b0beffa3bc97f3232e5a169611b41</srcmd5>
+    <version>0.0.3</version>
+    <time>1568983974</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>731865</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>6e45799068efc867223cfcdae95ca1bd</srcmd5>
+    <version>0.0.3</version>
+    <time>1588023424</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable testing until upstream catches up with the cli output
+  changes on latest click; it is just changing the looks but the
+  module still works.</comment>
+    <requestid>798105</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>19a931ac4ed76fe81e534d70c3278af6</srcmd5>
+    <version>0.0.3</version>
+    <time>1686576384</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1092386</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>2964dadb7749b7312f89b75fb5f2633a</srcmd5>
+    <version>0.3.0</version>
+    <time>1705353448</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.3.0:
+  * update tests for latest click
+  * fix license
+  * add typing
+  * switch to poetry
+- reenable tests
+- drop update-tests.patch (upstream)</comment>
+    <requestid>1138673</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>2142f292ae67461a7434a118cb0224c0</srcmd5>
+    <version>0.3.1</version>
+    <time>1712069056</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.3.1:
+  * Add repository property to pyproject.toml
+  * Add homepage url and readme for pypi
+  * Remove upper bound from Python version specifier
+  * Fix dependency manifest and CI</comment>
+    <requestid>1164116</requestid>
+  </revision>
+</revisionlist>
