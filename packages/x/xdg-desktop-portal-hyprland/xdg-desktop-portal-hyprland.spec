@@ -16,18 +16,24 @@
 #
 
 
+%global __builder ninja
+
 Name:           xdg-desktop-portal-hyprland
-Version:        1.3.1
+Version:        1.3.2
 Release:        0
 Summary:        Extended xdg-desktop-portal backend for Hyprland
 License:        MIT
 Group:          System/Libraries
 URL:            https://github.com/hyprwm/xdg-desktop-portal-hyprland
 Source0:        https://github.com/hyprwm/xdg-desktop-portal-hyprland/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Patch1:         fix-systemd-service-file-install-path.patch
+Patch1:         https://github.com/hyprwm/xdg-desktop-portal-hyprland/commit/c5b30938710d6c599f3f5cd99a3ffac35381fb0f.patch#/fix-compilation-with-pw.patch
 BuildRequires:  cmake
-BuildRequires:  gcc-c++
+# Seems some of the C and CXX flags are CLANG specific
+BuildRequires:  clang
+BuildRequires:  clang-devel
 BuildRequires:  hyprland-protocols-devel
+BuildRequires:  ninja
+BuildRequires:  pipewire-devel
 BuildRequires:  pkgconfig
 BuildRequires:  qt6-base-devel
 BuildRequires:  qt6-wayland
@@ -35,12 +41,13 @@ BuildRequires:  qt6-wayland-devel
 BuildRequires:  qt6-waylandclient-devel
 BuildRequires:  qt6-waylandclient-private-devel
 BuildRequires:  scdoc >= 1.9.7
+BuildRequires:  util-linux
 BuildRequires:  pkgconfig(gbm) >= 21.3
+BuildRequires:  pkgconfig(hyprland-protocols)
 BuildRequires:  pkgconfig(hyprlang)
 BuildRequires:  pkgconfig(inih)
 BuildRequires:  pkgconfig(libdrm) >= 2.4.109
 BuildRequires:  pkgconfig(libjpeg)
-BuildRequires:  pkgconfig(libpipewire-0.3) >= 0.3.62
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(pango)
 BuildRequires:  pkgconfig(pangocairo)
@@ -49,6 +56,7 @@ BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(uuid)
 BuildRequires:  pkgconfig(wayland-client)
 BuildRequires:  pkgconfig(wayland-protocols) >= 1.24
+BuildRequires:  pkgconfig(wlroots) >= 0.17.0
 
 # Screencasting won't work without pipewire, but it's not a hard dependency.
 Recommends:     pipewire >= 0.3.41
@@ -64,9 +72,14 @@ other wlroots-based Wayland compositors too with some limitations.
 
 %prep
 %autosetup -p1
+pushd subprojects
+rm -rfv hyprland-protocols sdbus-cpp
+popd
 
 %build
-%cmake
+%cmake \
+	-DCMAKE_C_COMPILER="clang" \
+	-DCMAKE_CXX_COMPILER="clang++"
 %cmake_build
 
 %install

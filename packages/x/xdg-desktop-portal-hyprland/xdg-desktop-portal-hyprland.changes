@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Wed Jul 10 00:53:52 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
+
+- Add ./fix-compilation-with-pw.patch
+
+-------------------------------------------------------------------
+Wed Jul 10 00:26:41 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
+
+- Switch from gcc to clang
+
+-------------------------------------------------------------------
+Tue Jul  9 23:42:41 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
+
+- Cleanup specfile. Remove subprojects
+
+-------------------------------------------------------------------
+Tue Jul  9 23:39:45 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
+
+- Remove fix-systemd-service-file-install-path.patch
+- Add hyprland-protocols as build dependency
+
+-------------------------------------------------------------------
+Tue Jul  9 23:31:42 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
+
+- Update to version 1.3.2:
+  * added screencopy:max_fps config option
+  * core: don't critically exit when no HOME env is set
+  * core: avoid using uninitialized ptrs
+  * screencast: remove frame callbacks on stream state change
+  * screencast: fixup timing issues with frame re-scheduling
+
+-------------------------------------------------------------------
 Sun Feb 25 11:22:11 UTC 2024 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
 
 - Cleanup specfile
