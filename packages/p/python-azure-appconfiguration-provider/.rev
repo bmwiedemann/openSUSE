@@ -1,0 +1,39 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4ea94bd95fedea96e24193883ec15ba6</srcmd5>
+    <version>1.1.0</version>
+    <time>1707860637</time>
+    <user>anag+factory</user>
+    <comment>- New component of Azure SDK</comment>
+    <requestid>1146394</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>dc6b92cec04b4c4599d2b7a346a34d9c</srcmd5>
+    <version>1.1.0</version>
+    <time>1712520339</time>
+    <user>anag+factory</user>
+    <comment>- Switch package to modern Python Stack on SLE-15
+  + Use Python 3.11 on SLE-15 by default
+  + Add Obsoletes for old python3 package on SLE-15
+  + Drop support for older Python versions
+- Switch build system from setuptools to pyproject.toml
+  + Add python-pip and python-wheel to BuildRequires
+  + Replace %python_build with %pyproject_wheel
+  + Replace %python_install with %pyproject_install
+  + Update name for dist directory in %files section
+- Use modern RPM macros to express version dependencies (forwarded request 1164631 from glaubitz)</comment>
+    <requestid>1165032</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>631a8448391fbd6b58f01b03f4db8d45</srcmd5>
+    <version>1.2.0</version>
+    <time>1717076053</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 1.2.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update BuildRequires and Requires from setup.py (forwarded request 1177694 from glaubitz)</comment>
+    <requestid>1177725</requestid>
+  </revision>
+</revisionlist>
