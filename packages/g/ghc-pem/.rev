@@ -1,0 +1,95 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2d6dabf2ba1056c6eaf4a59b9720cc13</srcmd5>
+    <version>0.2.2</version>
+    <time>1432190256</time>
+    <user>coolo</user>
+    <comment>Privacy Enhanced Mail (PEM) format reader and writer for Haskell.</comment>
+    <requestid>307937</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>50b3ca3c7561e6d3bc0a4f307a497181</srcmd5>
+    <version>0.2.2</version>
+    <time>1469382685</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>412146</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>0494deb6ee85eade9f9ae4d0e4ebdc08</srcmd5>
+    <version>0.2.2</version>
+    <time>1505505842</time>
+    <user>dimstar_suse</user>
+    <comment>re-format spec file with latest spec-cleaner and cabal2obs</comment>
+    <requestid>525145</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d6e0777ebdabf1550919a03178e63062</srcmd5>
+    <version>0.2.4</version>
+    <time>1527675728</time>
+    <user>dimstar_suse</user>
+    <comment>Update pem to version 0.2.4.</comment>
+    <requestid>610353</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>e7c8d049e0c6e0d16557c7f41e168056</srcmd5>
+    <version>0.2.4</version>
+    <time>1532161324</time>
+    <user>dimstar_suse</user>
+    <comment>- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.
+
+- update to version 0.2.2
+- Update to version 0.2.0
+- Initial package - version 0.1.2</comment>
+    <requestid>623828</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>080fb9e3b50ea66b9da6879c41a1034f</srcmd5>
+    <version>0.2.4</version>
+    <time>1540450924</time>
+    <user>dimstar_suse</user>
+    <comment>trivial cosmetic change in comments</comment>
+    <requestid>643438</requestid>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>8706134593b103fe7575c6ec8b049480</srcmd5>
+    <version>0.2.4</version>
+    <time>1577451372</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>759474</requestid>
+  </revision>
+  <revision rev="8" vrev="5">
+    <srcmd5>570e858601e9686c49b4ebbbeb8a8cd5</srcmd5>
+    <version>0.2.4</version>
+    <time>1592579819</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>815151</requestid>
+  </revision>
+  <revision rev="9" vrev="6">
+    <srcmd5>8cc1567d890a39b643b479e80ac1682b</srcmd5>
+    <version>0.2.4</version>
+    <time>1598643367</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>829379</requestid>
+  </revision>
+  <revision rev="10" vrev="7">
+    <srcmd5>a34b560cfbd80bea39e3eaf927e4c784</srcmd5>
+    <version>0.2.4</version>
+    <time>1608633852</time>
+    <user>dimstar_suse</user>
+    <comment>update haskell stack in openSUS</comment>
+    <requestid>857500</requestid>
+  </revision>
+  <revision rev="11" vrev="8">
+    <srcmd5>914a2bf9282905ab742dcb07f187a8f1</srcmd5>
+    <version>0.2.4</version>
+    <time>1680636139</time>
+    <user>dimstar_suse</user>
+    <comment>update for ghc-9.4.4</comment>
+    <requestid>1075992</requestid>
+  </revision>
+</revisionlist>
