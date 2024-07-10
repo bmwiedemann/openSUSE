@@ -1,0 +1,46 @@
+-------------------------------------------------------------------
+Sat Jan  6 13:05:17 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.6.4.0:
+  * stty(1): Retranslated from coreutils 9.1.
+  * vt-is-UTF8(1): Dropped, tool already disappeared.
+  * Import and update coreutils 9.1 translation.
+
+-------------------------------------------------------------------
+Fri Oct 22 11:14:32 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 1.6.3.6
+  * Update translations for ulimit(3) from manpages-dev 5.10
+  * Update unicode_stop(1) and unicode_start(1) from kbd 2.3.0
+  * Add translation for epoll(7)
+  * Add coreutils 8.32 translation: od(1) and pr(1).
+  * Replace old fileutils ln(1) with coreutils ln(1).
+  * Replace old bsdutils kill(1) with coreutils kill(1).
+  * Some other minor improvements
+- Fix URL and SourceUrl
+
+-------------------------------------------------------------------
+Mon May 31 04:04:43 UTC 2021 - Marguerite Su <i@marguerite.su>
+
+- update version 1.6.3.4
+  * switch upstream to https://github.com/manpages-zh
+    which has latest coreutils translations
+
+-------------------------------------------------------------------
+Wed Jul 30 17:23:18 UTC 2014 - i@marguerite.su
+
+- update version 1.5.2.1
+  * add ibus.1 ibus-daemon.1 ibus-setup.1
+  * add fcitx.1 fcitx-remote.1 createPYMB.1 mb2txt.1
+- no matter how you git, it's dead. Let's fork it!
+
+-------------------------------------------------------------------
+Mon Jun 23 10:32:45 UTC 2014 - coolo@suse.com
+
+- update to latest git (which is 6 years younger than 1.5)
+
+-------------------------------------------------------------------
+Fri Jul 27 19:19:02 CEST 2007 - mfabian@suse.de
+
+- new package man-pages-zh_CN, version 1.5.
+

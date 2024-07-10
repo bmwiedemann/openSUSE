@@ -1,0 +1,5 @@
+<package name="man-pages-zh_CN" project="openSUSE:Factory">
+  <title>Chinese translation of man pages from the CMPP project</title>
+  <description>Chinese translation of man pages from the CMPP project</description>
+  <devel project="M17N" package="man-pages-zh_CN"/>
+</package>
