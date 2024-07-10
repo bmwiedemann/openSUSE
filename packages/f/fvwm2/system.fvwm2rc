@@ -1,0 +1,465 @@
+## Major cleanup.
+##
+## Thomas Adam <thomas.adam22@gmail.com>
+
+# window buttons
+#
+#Large up Triangle for Maximize
+
+## The least we can do here is define a decor.
+DestroyDecor DefaultDecor
+AddToDecor   DefaultDecor
++ ButtonStyle 2 4 50x24@1 75x74@0 25x74@0 50x24@1
++ ButtonStyle 4 4 50x74@1 75x24@0 25x24@1 50x74@1
++ ButtonStyle 3 13 20x60@1 20x40@1 40x40@1 40x20@1 60x20@1 60x40@0 80x40@1 80x60@0 60x60@0 60x80@0 40x80@0 40x60@1 20x60@0
++ BorderStyle Inactive -- HiddenHandles NoInset
+
+#general configuration
+
+DeskTopSize 3x2
+EdgeResistance 250 10
+EdgeScroll 0 0
+ClickTime 750
+ColormapFocus FollowsMouse
+IgnoreModifiers L2
+## Having this set to unlimited ensures potential users aren't confused due
+## to the XGrabServer() call when having to draw the rubber-band which would
+## have happened had OpaqueMoveSize been set to the default.
+OpaqueMoveSize -1
+
+#paths specific to fvwm2
+#
+##         The difference between X.org 6.x and 7.x
+## If you switch to X.org version 6.9 or below change the paths for ImagePath
+## /usr/lib/X11/fvwm2 -> /usr/X11R6/lib... 
+## /usr/share/X11/fvwm2/pixmaps -> /usr/X11R6/lib/X11/fvwm2/pixmaps
+
+### No, redefining ModulePath is the wrong thing to do.
+##ModulePath /usr/lib/X11/fvwm2
+
+## Adding $[FVWM_USERDIR] here doesn't hurt, and neither does prepending the
+## *internal* ImagePath.
+
+ImagePath /usr/share/X11/fvwm2/pixmaps:/usr/share/wallpapers:$[FVWM_USERDIR]:+
+
+#colors
+
+# 0 = Default colors
+# 1 = Inactive windows
+# 2 = Active windows
+# 3 = Inactive menu entry and menu background
+# 4 = Active menu entry
+# 5 = greyed out menu entry (only bg used)
+# 6 = module foreground and background)
+# 7 = hilight colors
+
+Colorset 0 fg black, bg rgb:6f/a1/dc
+Colorset 1 fg black, bg rgb:a1/b2/c8
+Colorset 2 fg black, bg rgb:70/a2/dd
+Colorset 3 fg black, bg rgb:c8/d3/e5
+Colorset 4 fg black, bg rgb:91/ae/d6
+Colorset 5 fg rgb:d2/bf/a8, bg rgb:b4/aa/94
+Colorset 6 fg black, bg rgb:b4/aa/94
+Colorset 7 fg black, bg rgb:94/ab/bf
+
+
+# run FvwmTheme before anything else is done
+##ModuleSynchronous Timeout 5 FvwmTheme
+#
+# general setup
+#
+Style * Colorset 1
+Style * HilightColorset 2
+MenuStyle * MenuColorset 3
+MenuStyle * ActiveColorset 4
+MenuStyle * GreyedColorset 5
+
+XORvalue 255
+
+#fonts
+DefaultFont 		"StringEncoding=UTF-8:xft:sans-serif:encoding=iso10646-1:size=10;-misc-*-medium-r-semicondensed-*-13-*-*-*-*-*-iso10646-1"
+IconFont        	"StringEncoding=UTF-8:xft:sans-serif:encoding=iso10646-1:size=8;-misc-fixed-medium-r-normal-*-10-*-*-*-*-*-iso10646-1"
+
+
+#fvwm system functions
+
+AddToFunc QuitSave
+ +	"I"	Quit
+
+
+AddToFunc StartFunction
++ I Test (Init) Module FvwmBanner
++ I Test (Init) Exec exec xterm -ls -geometry +150+85
++ I Test (Init) Exec exec xli -onroot -fillscreen -border black /usr/share/wallpapers/openSUSEdefault/contents/images/1600x1200.jpg
++ I Test (Restart) Exec exec xli -onroot -fillscreen -border black /usr/share/wallpapers/openSUSEdefault/contents/images/1600x1200.jpg
++ I Module FvwmButtons
+
+AddToFunc ExitFunction
+ +	I	Exec xsetroot
+ +	I	Exec xsetroot
+
+
+#fvwm window modifier functions
+
+AddToFunc MoveOrRaise
++                         C      Raise
++                         M      Raise
++                         M      Move
++                         D      Lower
+AddToFunc ResizeOrRaise
++                          C      Raise
++                          M      Raise
++                          M      Resize
++                          D      Lower
+AddToFunc MaximizeFunc
++                          M      Maximize   0 100
++                          C      Maximize   0  80
++                          D      Maximize 100 100
+
+## all.
+AddToFunc MoveOrIconify
++                          I   Raise
++                          M   Move
++                          D   Iconify
+
+
+#buttonbar menu
+
+AddToMenu bargraphicspopup "Graphics"	Title
+ + "Gimp"		 Exec exec gimp
+ + "Inkscape"		 Exec exec inkscape
+ + "XV"			 Exec exec xv
+
+AddToMenu bartoolspopup "Tools"	Title
+ + "Firefox"		 Exec exec firefox
+ + "OpenOffice"		 Exec exec soffice
+
+AddToMenu barshellspopup "Shell in XTerm"	Title
+ +	"Shell in XTerm"	Exec exec xterm -ls
+ +	"Root shell"		Exec exec xterm -ls -vb -sb -sl 2000 -T Root -n Root -j -rw +vb -bg \#ff8c6d -e  su -
+
+
+AddToMenu barsusepopup "openSUSE"	Title
+ +	"Control Center"	Exec exec xterm -e su - -cyast2
+ +	"Help"			Exec exec susehelp
+ +	"openSUSE menu"		Popup xdg_menu
+
+## Adding Pick here ensures we always ensure a window context.
+AddToMenu windowops "Window menu (Shift-Alt-Space)"	Title
+ + "Mo&ve                  (Alt-F5) "	Pick Move
+ + "Resi&ze                (Alt-F6) "	Pick Resize
+ + "&Iconify               (Alt-F4) "	Pick Iconify
+ + "&Maximize/Normal (Shift-Alt-F3) "	Pick Maximize
+ + "(Un)St&ick       (Shift-Alt-F4) "	Pick Stick
+ +    ""  Nop 
+ + "Window &list          (Alt-F11) "	WindowList
+ +    ""  Nop 
+ + "&Close                 (Alt-F9) "	Pick Delete
+ + "&Kill                 (Alt-F11) "	Pick Destroy
+
+
+#Menu: Fvwm-Manpages
+
+AddToMenu manpages_popup "Fvwm-Manpages"   Title
+ + "FvwmEvent"		 Exec exec xterm -e man FvwmEvent
+ + "FvwmAuto"		 Exec exec xterm -e man FvwmAuto
+ + "FvwmBacker"		 Exec exec xterm -e man FvwmBacker
+ + "FvwmBanner"		 Exec exec xterm -e man FvwmBanner
+ + "FvwmButtons"	 Exec exec xterm -e man FvwmButtons
+## + "FvwmCascade"	 Exec exec xterm -e man FvwmCascade
+ + "FvwmCommand"	 Exec exec xterm -e man FvwmCommand
+ + "FvwmConfig"		 Exec exec xterm -e man fvwm-config
+ + "FvwmConsole"	 Exec exec xterm -e man FvwmConsole
+ + "FvwmConsoleC"	 Exec exec xterm -e man FvwmConsoleC
+ + "FvwmCpp"		 Exec exec xterm -e man FvwmCpp
+ + "FvwmDebug"		 Exec exec xterm -e man FvwmDebug
+ + "FvwmForm"		 Exec exec xterm -e man FvwmForm
+## + "FvwmGoodStuff"	 Exec exec xterm -e man FvwmGoodStuff
+ + "FvwmIconBox"	 Exec exec xterm -e man FvwmIconBox
+ + "FvwmIconMan"	 Exec exec xterm -e man FvwmIconMan
+ + "FvwmIdent"		 Exec exec xterm -e man FvwmIdent
+ + "FvwmM4"		 Exec exec xterm -e man FvwmM4
+ + "FvwmPager"		 Exec exec xterm -e man FvwmPager
+ + "FvwmSave"		 Exec exec xterm -e man FvwmSave
+ + "FvwmSaveDesk"	 Exec exec xterm -e man FvwmSaveDesk
+ + "FvwmScript"		 Exec exec xterm -e man FvwmScript
+ + "FvwmScroll"		 Exec exec xterm -e man FvwmScroll
+## + "FvwmTalk"		 Exec exec xterm -e man FvwmTalk
+ + "FvwmTaskBar"	 Exec exec xterm -e man FvwmTaskBar
+ + "FvwmTile"		 Exec exec xterm -e man FvwmTile
+ + "FvwmWharf"		 Exec exec xterm -e man FvwmWharf
+ + "FvwmWinList"	 Exec exec xterm -e man FvwmWinList
+
+
+
+#Menu: Modules
+
+AddToMenu modules_popup "Modules"   Title
+ + "Event"		 Module FvwmEvent
+ + "Autoraise off"	 KillModule FvwmAuto
+ + "Autoraise 500ms"	 Module FvwmAuto 500
+ + "Banner"		 Module FvwmBanner
+ + "Buttons"		 Module FvwmButtons
+ + "Cascade"		 Module FvwmCascade
+ + "Command"		 Module FvwmCommandS
+##+ "Config"		 Module FvwmConfig
+ + "Console"		 Module FvwmConsole
+ + "Debug"		 Module FvwmDebug
+ + "Form"		 Module FvwmForm
+## + "GoodStuff"		 Module FvwmGoodStuff
+ + "IconBox"		 Module FvwmIconBox
+ + "IconMan"		 Module FvwmIconMan
+ + "Ident"		 Module FvwmIdent
+ + "M4"		 	 Module FvwmM4
+ + "Pager"		 Module FvwmPager 0 0
+## + "Pipe"		 Module FvwmPipe
+ + "Save"		 Module FvwmSave
+## + "SaveDesk"		 Module FvwmSaveDesk
+ + "Script"		 Module FvwmScript
+ + "Scroll"		 Module FvwmScroll
+ + "Talk"		 Module FvwmTalk
+ + "TaskBar"		 Module FvwmTaskBar
+ + "Tile"		 Module FvwmTile
+ + "Wharf"		 Module FvwmWharf
+ + "WindowMenu"		 Module FvwmWindowMenu
+ + "WinList"		 Module FvwmWinList
+
+
+
+#Menu: WindowManager
+
+AddToMenu THISWM_MENU_popup "WindowManager"   Title
+ + "Modules"	 Popup modules_popup 
+ + "Fvwm-Manpages"	 Popup manpages_popup 
+	+	""	Nop
+ + "Fvwm2-Manpage"		 Exec exec xterm -e man fvwm
+	+	""	Nop
+ + "Restart Fvwm2"		 Restart
+	+	""	Nop
+ + "Exit"		 Quit
+
+
+
+#Menu: Keyboardclicks
+
+AddToMenu settings_kbdclick_popup "Keyboardclicks"   Title
+ + "hard"		Exec exec xset c 100
+ + "Off"		Exec exec xset c off
+ + "soft"		Exec exec xset c on
+
+
+#Menu: Mouse
+
+AddToMenu settings_mouse_popup "Mouse"   Title
+ + "fast"		Exec exec xset m 4 2
+ + "Left handed mouse"	Exec exec xmodmap -e
+ + "normal"		Exec exec xset m 2 5
+ + "slow"		Exec exec xset m 1 1
+
+
+
+#Menu: Speaker
+
+AddToMenu settings_speaker_popup "Speaker"   Title
+ + "loud"		Exec exec xset b  100 600 50
+ + "normal"		Exec exec xset b on
+ + "loud and long"	Exec exec xset b 100 600 300
+ + "Off"		Exec exec xset b off
+
+
+
+#Menu: Screensaver
+
+AddToMenu screen_popup "Screensaver"   Title
+ + "Blank"		Exec exec xset s blank
+ + "Off"		Exec exec xset s off
+ + "Pattern after 5 min"		 Exec exec xset s noblank s 300 300
+ + "Immediately"	Exec exec xset s activate
+ + "Default"		Exec exec xset s default
+
+
+
+#Menu: Settings
+
+AddToMenu settings_popup "Settings"   Title
+ + "Keyboardclicks"	Popup settings_kbdclick_popup 
+ + "Mouse"		Popup settings_mouse_popup 
+ + "Speaker"		Popup settings_speaker_popup 
+ + "Screensaver"	Popup screen_popup 
+
+
+#Menu: Work
+
+PipeRead 'xdg_menu --charset UTF-8 --format fvwm2'
+
+AddToMenu WORK_MENU_popup "Work Menu"   Title
+ + "xterm"		Exec exec xterm
+ + "Firefox"		Exec exec firefox
+ + ""			Nop
+ + "Top"		Exec exec xterm -e top
+ + ""			Nop
+ + "Settings"	 	Popup settings_popup 
+ + "WindowManager"	Popup THISWM_MENU_popup
+ + "openSUSE"		Popup xdg_menu
+
+Style	"FvwmPager"	!Title, Sticky, WindowListSkip
+*FvwmPager: Rows	1
+*FvwmPager: Columns	1
+*FvwmPager: Geometry	-0+0
+*FvwmPager: Fore	Black
+*FvwmPager: Back	grey67
+*FvwmPager: Hilight	grey50
+*FvwmPager: Font	none
+*FvwmPager: SmallFont     "StringEncoding=UTF-8:xft:sans-serif:encoding=iso10646-1:size=6;-misc-fixed-medium-r-normal--7-*-*-*-*-*-iso10646-1"
+
+AddToFunc barthiswmpopupfunc
+ +	"I"	Popup THISWM_MENU_popup
+
+AddToFunc barsusepopupfunc
+ +	"I"	Popup barsusepopup
+
+AddToFunc bargraphicspopupfunc
+ +	"I"	Popup bargraphicspopup
+
+AddToFunc bartoolspopupfunc
+ +	"I"	Popup bartoolspopup
+
+AddToFunc barshellspopupfunc
+ +	"I"	Popup barshellspopup
+
+*FvwmButtons: Font        "StringEncoding=UTF-8:xft:sans-serif:encoding=iso10646-1:size=9;-*-*-medium-*-semicondensed-*-12-*-*-*-*-*-iso10646-1"
+#*FvwmButtonsFore	Black
+*FvwmButtons: Back	rgb:91/ae/d6
+*FvwmButtons: Geometry	+0+0
+*FvwmButtons: Rows	1
+*FvwmButtons: (2x1 Frame 0 Swallow(UseOld, Respawn, NoClose) "FvwmPager" "Module FvwmPager 0 0")
+*FvwmButtons: (Swallow FvwmXeyes 'Exec xeyes -name "FvwmXeyes" -geometry +0+0 -bg grey67 &')
+*FvwmButtons: (Swallow FvwmXclock 'Exec xclock -name "FvwmXclock" -geometry +0+0 -padding 1 -bg rgb:91/ae/d6 &')
+*FvwmButtons:(Title "Fvwm2", Icon fvwm.xpm, Action (Mouse 0) Function barthiswmpopupfunc)
+*FvwmButtons: (Title "openSUSE", Icon openSUSE.xpm, Action (Mouse 0) Function barsusepopupfunc)
+*FvwmButtons: (Title "Graphics", Icon gimp.xpm, Action (Mouse 0) Function bargraphicspopupfunc)
+*FvwmButtons (Title "Tools", Icon toolbox.xpm, Action (Mouse 0) Function bartoolspopupfunc)
+*FvwmButtons (Title "Shells", Icon xterm.xpm, Action (Mouse 0) Function barshellspopupfunc)
+#style options for modules and programs in fvwm2
+
+
+##Style	"*"	BackColor Grey
+##Style	"*"	ForeColor DimGrey
+Style   *	UseDecor DefaultDecor
+Style	*	SloppyFocus
+Style	*	DecorateTransient
+Style	*	IconBox +55 +85 +130 +480
+Style	*	StickyIcon
+Style	*	SmartPlacement, RandomPlacement, ActivePlacement
+Style	*	NoPPosition
+Style	FvwmWinList	!Title, WindowListSkip
+Style	FvwmButtons	!Title, Sticky, WindowListSkip
+Style	FvwmBanner	!Title, Sticky, StaysOnTop, WindowListSkip
+Style	IconManModule	!Title, Sticky, !Handles, Icon toolbox.xpm
+
+Style	"xeyes"	        SmartPlacement, RandomPlacement
+Style	"xclock"	SmartPlacement, RandomPlacement
+
+# see bug n#51189
+Style   "AcroRead"      SmartPlacement, RandomPlacement
+# see bug n#51188
+# Style   "OpenOffice*"   NoPPosition, RandomPlacement, EWMHIgnoreStrutHints, EWMHMaximizeIgnoreWorkingArea, EWMHPlacementIgnoreWorkingArea, IgnoreGravity
+
+*FvwmBacker: Desk 0 -solid steelblue
+*FvwmBacker: Desk 1 -solid midnightblue
+*FvwmBacker: Desk 2 -solid yellow
+*FvwmBacker: Desk 3 -solid cadetblue2
+*FvwmBacker: Desk 5 -solid cadetblue3
+*FvwmBacker: Desk 6 -solid cadetblue4
+
+*FvwmIdent: Back	MidnightBlue
+*FvwmIdent: Fore	Yellow
+*FvwmIdent: Font  "StringEncoding=UTF-8:xft:sans-serif:encoding=iso10646-1:size=10;-misc-fixed-medium-r-normal--13-*-*-*-*-*-iso10646-1"
+
+*FvwmWinList: Back	Grey
+*FvwmWinList: Fore	Black
+*FvwmWinList: FocusBack	Black
+*FvwmWinList: FocusFore	Grey
+*FvwmWinList: IconBack	LightGrey
+*FvwmWinList: IconFore	DimGrey
+*FvwmWinList: Font        "StringEncoding=UTF-8:xft:sans-serif:encoding=iso10646-1:size=11;-misc-fixed-medium-r-normal--15-*-*-*-*-*-iso10646-1"
+*FvwmWinList: Action	Click1 Iconify -1,Focus
+*FvwmWinList: Action	Click2 Iconify
+*FvwmWinList: Action	Click3 Module "FvwmIdent" FvwmIdent
+*FvwmWinList: Geometry	+0-1
+*FvwmWinList: UseSkipList
+*FvwmWinList: UseIconNames
+
+# Key bindings
+
+Key	Left	A	SM	Scroll -100 +0
+Key	Left	A	C	CursorMove -1 0
+Key	Left	A	SC	CursorMove -10 +0
+
+Key	Right	A	SM	Scroll +100 +0
+Key	Right	A	C	CursorMove +1 0
+Key	Right	A	SC	CursorMove +10 +0
+
+Key	Up	A	SM	Scroll +0 -100
+Key	Up	A	C	CursorMove +0 -1
+Key	Up	A	SC	CursorMove +0 -10
+
+Key	Down	A	SM	Scroll +0 +100
+Key	Down	A	C	CursorMove +0 +1
+Key	Down	A	SC	CursorMove +0 +10
+
+Key	F1	A	M	Menu	WORK_MENU_popup
+Key	F2	A	M	WindowList
+Key	F3	A	M	Menu	xdg_menu
+Key	F4	A	M	Pick Iconify
+Key	F5	A	M	Pick Move
+Key	F6	A	M	Pick Resize
+Key	F7	A	M	Pick Raise
+Key	F8	A	M	Pick Lower
+Key	F9	A	M	Pick Delete
+Key	F10	A	M	Pick Destroy
+
+Key	F11	A	M	Prev (AcceptsFocus) focus
+Key	F12	A	M	Next (AcceptsFocus) focus
+Key	Tab	A	4	Next (AcceptsFocus) focus
+Key	Tab	A	S4	Prev (AcceptsFocus) focus
+
+Key	F3	A	SM	Pick Maximize
+Key	F4	A	SM	Pick Stick
+Key	F5	A	SM	Pick RefreshWindow
+
+Key	BackSpace	A	SM	Function QuitSave
+
+#button bar popup menus
+Key	s	A	SM	Function barsusepopupfunc
+Key	g	A	SM	Function bargraphicpopupfunc
+Key	t	A	SM	Function bartoolspopupfunc
+Key	l	A	SM	Function barshellpopupfunc
+Key	m	A	SM	Function MailFunc
+
+Key	F1	A	SM	Restart
+
+# Mouse bindings
+
+Mouse	1	R	A	Menu	WORK_MENU_popup	Nop
+Mouse	2	R	A	Module	FvwmWinList	Transient
+Mouse	3	R	A	Menu	xdg_menu	Nop
+Mouse	2	FST	A	Menu	windowops	Nop
+
+Mouse	1	1	A	Menu	windowops	Delete
+Mouse	2	1	A	Menu	windowops	Destroy
+Mouse	3	1	A	Menu	windowops	Nop
+
+Mouse	1	SF	A	Function "ResizeOrRaise"
+
+Mouse	1	T	A	Function "MoveOrRaise"
+
+Mouse	1	I	A	Iconify
+Mouse	2	I	A	Iconify
+Mouse	3	TSIF	A	RaiseLower
+
+Mouse	1	2	A	Maximize 0 100
+Mouse	2	2	A	Maximize 100 100
+Mouse	3	2	A	Maximize 100 0
+Mouse	0	4	A	Iconify
+Mouse	1	3	A	Stick

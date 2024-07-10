@@ -1,0 +1,1133 @@
+-------------------------------------------------------------------
+Sun Aug 27 09:06:34 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.7.0:
+  * Fix handling of configure's --enable-mandoc/--enable-htmldoc
+  * Fix crash in FvwmPager when desk height or width is 0
+  * Added DoubleClick time to man page.
+  * Fix to FvwmIconMan to disable a SizeHint warning.
+  * Allow for reproducible builds.
+  * Increase the number of supported mouse buttons to 15.
+  * Tweaks to configure.ac
+- Remove upstreamed patches:
+  * enable-more-mouse-buttons.patch
+
+-------------------------------------------------------------------
+Thu May  4 07:30:15 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- Add patch threadlocking.patch
+  * Fix for lock recusion in handle_all_expose() to handle if
+    libX11 1.8.1 and above enables X display locks unconditionnaly
+
+-------------------------------------------------------------------
+Tue Jan 31 14:22:50 UTC 2023 - Reinhard Max <max@suse.com>
+
+- Fix a buffer overflow in the FvwmAuto module.
+  fvwm-FvwmAuto-overflow.patch 
+
+-------------------------------------------------------------------
+Tue Mar  3 09:30:08 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Install missed main manual page of fvwm its self 
+
+-------------------------------------------------------------------
+Mon Sep  9 07:44:29 UTC 2019 - mvetter@suse.com
+
+- Update to 2.6.9:
+  * Adds a new conditional option Fullscreen which detects windows in that state;
+  * Updates to translations;
+  * Fix how htmldoc/mandoc are detected in configure.ac
+
+-------------------------------------------------------------------
+Fri Oct  5 06:49:37 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add patch to work with multibuttons mice. Upstream is not
+  interested in the patch as other than xorg servers still might
+  not support this:
+  * enable-more-mouse-buttons.patch
+
+-------------------------------------------------------------------
+Fri Oct  5 06:05:12 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Remove not really needed patches:
+  * fvwm-2.5.26-gcc-warnings.patch
+  * fvwm-2.5.26-ia64.patch
+  * fvwm-rsvg.patch
+  * fvwm-2.5.26-no-copy-dt-needed-entries.patch
+  * fvwm-2.5.26-charset_in_title.patch
+
+-------------------------------------------------------------------
+Thu Oct  4 20:08:30 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Version update to 2.6.8:
+  * Various DESTDIR fixes (especially around the default-config Makefile)
+  * fvwm-perllib pod2man fixes.
+  * FvwmIconMan no longer triggers a warning about bad size hints in the fvwm core.
+  * VMware windows do not disapper when switching between fullscreen and normal state.
+  * Fix (de)installation with the configure options
+    --program-prefix, --program-suffix and
+    --program-transform-name.
+  * Remove further references to obsolete modules from man page(s).
+  * fvwm-menu-desktop(1) now requires python3 as an explicit dependency.
+  * Add a 'fullscreen' option to the 'Maximize' command.
+- Remove local fvwm-menu-desktop-config.fpl as upstream has newer
+  version
+- Refresh patch fvwm-2.5.26-sv_SE.patch
+- Rename properly the openSUSE.xpm u->U
+- Require python3-base as per above change to use it in
+  the menu-desktop
+
+-------------------------------------------------------------------
+Thu Oct  4 20:05:07 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Reduce usage of self defined macros and rely on system ones
+- Switch Source to point to upstream provided archive
+
+-------------------------------------------------------------------
+Fri May 18 13:24:18 UTC 2018 - mvetter@suse.com
+
+- boo#1080494: Add update-alternative configuration
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Fri Feb 10 16:53:50 UTC 2017 - jengelh@inai.de
+
+- Update summary
+
+-------------------------------------------------------------------
+Tue Feb  7 11:14:39 UTC 2017 - werner@suse.de
+
+- Update to 2.6.7 (06-Nov-2016)
+  - dropped fvwm-icon-440d675d14412ec0a123d4c977534ab688229148.patch
+  * New fvwm features:
+    A new default configuration which is available when fvwm
+    doesn't detect a configuration file to load.
+    A new conditional command "Desk n" can restrict matching
+    windows to a specific desk.
+    A new conditional command "Screen n" to restrict matching
+    windows on a given Xinerama screen.
+    New expansion variable "w.screen" to ascertain the Xineram
+    screen number a window is on.
+    New command "InfoStoreClear" to remove all items in the
+    InfoStore.
+  * Removed features:
+    The old and unmaintained debian/ and rpm/ directories have
+    been removed; use the maintainers' copies where available.
+    VMS support has been removed.
+    GTK1.x support has been removed.
+    GNOME-specific window hints (pre-EWMH) have been removed.
+    Some fvwm modules have been removed:
+      FvwmDragWell (no replacement)
+      FvwmGTK (no replacement)
+      FvwmSave (no replacement)
+      FvwmSaveDesk (no replacement)
+      FvwmScroll (no replacement)
+      FvwmTabs (no replacement, never worked anyway)
+      FvwmTaskBar (use FvwmButtons)
+      FvwmTheme (in core of fvwm as colorsets)
+      FvwmWharf (use FvwmButtons)
+      FvwmWinList (use WindowList command)
+      FvwmWindowMenu (use WindowList command)
+      FvwmIconBox (use the IconBox style instead)
+  * New module features:
+    FvwmButtons learned a new option "Colorset" to its
+    ChangeButton command.
+  * fvwm-menu-desktop updated:
+    Renamed default menu to XDGMenu and changed the name
+    of the FvwmForm to FvwmForm-XDGMenu-Config to not conflict
+    with someone already using FvwmMenu.
+    fvwm-menu-desktop will now load defaults from the
+    FvwmForm-XDGMenu-Config data file.
+    Improved dynamic menus by regenerating them on-the-fly.
+    Added new options: --regen-cmd, --dynamic, and more.
+  * Bug fixes:
+    A bug introduced in 2.6.6 could cause applications with
+    negative coordinates to be placed at strange positions. This
+    affected for example acroread when switching to fullscreen
+    mode. This has been fixed.
+    FvwmButtons "Silent" option for dynamic ChangeButton commands
+    no longer loops infinitely.
+
+-------------------------------------------------------------------
+Thu Aug 18 11:48:10 UTC 2016 - mvetter@suse.com
+
+- boo#877539 - wrong path in system.fvwm2rc:
+  * Fix wallpaper path for 'init' and 'restart' commands.
+  * Require default branding wallpaper package.
+
+-------------------------------------------------------------------
+Tue Aug  2 14:18:11 UTC 2016 - werner@suse.de
+
+- Update to 2.6.6
+  * fvwm features:
+  - Support for Russian from Ivan Gayevskiy.
+  - EnvMatch supports infostore variables.
+  - The option "forget" to the Maximize command allows to
+    unmaximize a window without changing its size and position.
+  - Windows shaded to a corner (NW, NE, SW, SE) are reduced to a
+    small square.
+  - New option "!raise" to the WarpToWindow command.
+  - The new extended variables $[wa.x], $[wa.y], $[wa.width],
+    $[wa.height] can be used to get the geometry of the EWMH
+    working area, and $[dwa.x], $[dwa.y], $[dwa.width],
+    $[dwa.height] can be used to get the geometry of the EWMH
+    dynamic working area.
+  - The Resize commands accept "wa" or "da" as a suffix of the
+    width or height value.  If present, the value is a percentage
+    of the width or height of the EWMH working area or the EWMH
+    dynamic working area.
+  - Fvwm is much more resilient against applications that flood the
+    window manager with repeated events.
+  * New module features:
+  - FvwmForm supports separator lines.
+  - New FvwmIconMan options:
+      IconAndSelectButton
+      IconAndSelectColorset
+  * Bug fixes:
+  - Provide a wrapper for the deprecation of XKeycodeToKeysym and
+    use XkbKeycodeToKeysym() where appropriate.
+  - fvwm-menu-desktop is re-written and provides better support of
+    the XDG menu specification.
+  - Fix fvwm-menu-desktop keyError bug.  Use "others" if no desktop
+    environment found.
+  - FvwmIconMan had problems displaying the hilight colour on some
+    systems (64 bit issue?).
+  - Globally active windows cannot take the focus if the style
+    forbids programs to take focus themselves (style
+    !FPFocusByProgram).
+  - Windows no longer jump from one position to the other which
+    could happen in some cases with SnapAttraction.  Windows now
+    snap to the closest window (or screen edge).
+  - Removing bindings had several strange side effects that are
+    fixed now (removing too many bindings; old bindings showing up
+    again after another is removed; possibly other effects).
+  - Windows sometimes did not get expose events (i.e. did not
+    redraw properly) if they were uncovered by moving a window
+    above them.  This has been fixed.
+  - FvwmConsole now causes much less network traffic.
+  - Suppress bogus events sent to the modules when a window is
+    resized with the mouse.
+  - Properly handle the has_ref_window_moved flag for ResizeMove and
+    ResizeMoveMaximize.
+  - Removed some unnecessary redraws in FvwmPager.
+  - The option "NoDeskLimitY" option of the GotoPage command did
+    not work.
+  - Negative coordinates in the "rectangle" option to the Menu
+    commend did not work correctly.  This has been fixed.
+  - Removes a slight graphics problem whith the ResizeMaximize
+    command being invoked from a window button menu.
+  - When an attempt to reparent a client window (i.e. decorate
+    it) fails, fvwm no longer throws away all events but only the
+    events for that window.
+  - The ChangeButton command of FvwmButtons used to strip
+    whitespace from the beginning and end of button titles and
+    image paths.  This is no longer done.
+- Remove patches now upstream
+   fvwm-2.6.5-eventcrash.patch
+   fvwm-rsvg.patch
+   fvwm-snapshot.patch
+- Add upstream patch
+   fvwm-icon-440d675d14412ec0a123d4c977534ab688229148.patch
+    Expose: don't flush accumulated events
+
+-------------------------------------------------------------------
+Thu Mar  3 14:03:06 UTC 2016 - mvetter@suse.com
+
+- Clean up with spec-cleaner
+- Remove 'system.fvwm2rc_' seems not to be used
+- Fix module 'Command' see (boo#966650)
+
+-------------------------------------------------------------------
+Wed Oct  8 13:43:30 UTC 2014 - tchvatal@suse.com
+
+- Rename config file to not have underscore at begining
+
+-------------------------------------------------------------------
+Tue Sep 30 20:11:27 UTC 2014 - crrodriguez@opensuse.org
+
+- fvwm-no-date-time.patch Do not include __DATE__ and __TIME__ 
+  in binaries.
+- Drop usage of xorg-x11-devel. pick only the needed packages.
+
+-------------------------------------------------------------------
+Wed Jul 24 10:33:41 UTC 2013 - werner@suse.de
+
+- Add patch fvwm-2.6.5-eventcrash.patch which should avoid that not
+  set icon names will be freed  (bnc#778347)
+
+-------------------------------------------------------------------
+Thu Jul 18 11:58:36 UTC 2013 - werner@suse.de
+
+- Update to 2.6.5 + snpashot 2012/10/11
+  - NEWS: Added FvwmForm Separators,
+    fvwm-desktop-menu fixes.
+  - libs/Bindings.c (AddBinding):
+  - fvwm/builtins.c (FkeysymToKeycode):
+  - fvwm/events.c (__handle_key):
+    Add detection of XKeycodeToKeysym as deprecated, and provide a wrapper
+    for it by way of fvwm_KeycodeToKeysym() to call the newer
+    XkbKeycodeToKeysum() where needed.
+  - libs/PictureImageLoader.c (PImageLoadSvg, PimageLoadXpm,
+    PImageLoadPng):
+    Fix compilation errors.
+  - fvwm/menu.c ( __scan_for_pixmap):
+  - libs/PictureImageLoader.c (PImageLoadSvg, PimageLoadXpm,
+    PImageLoadPng):
+    Add fvwm_msg() for hints about failed image load.
+  - fvwm/events.c (HandlePropertyNotify):
+    Fix XSizeHints problem with FVWM not correctly allowing resizing of
+    windows when the hints are toggled with respect to FVWM processing
+    XA_WM_NORMAL_HINTS.
+  - fvwm/placement.c ( __pl_position_get_pos_simple):
+    When using "UnderMouse" for PositionPlacement, ensure we honor the EWMH
+    working area by default if it's in use.
+  - fvwm/fvwm.c (InstallSignals):
+    Unblock signals when installing them.
+    When signals are registered, ensure they're unblocked so as not to queue
+    them up.
+  - fvwm/infostore.c (get_metainfo_length):
+  + fvwm/infostore.c (new_metainfo):
+  + fvwm/infostore.c (insert_metainfo):
+  + fvwm/style.c (style_parse_one_style_option):
+    Make C90 compliant.
+- Add patch fvwm-snapshot.patch for snpashot 2012/10/11
+- Add patch fvwm-rsvg.patch to avoid internal rsvg-cairo.h included twice
+- Add source bin/fvwm-menu-desktop-config.fpl as missed in 2012/10/11
+- Modify patch fvwm-2.5.26-gcc-warnings.patch as fixed upstream
+
+-------------------------------------------------------------------
+Sat Mar 30 18:05:26 CET 2013 - werner@suse.de
+
+- Add two missing build requires: librsvg-devel and libxslt-tools
+
+-------------------------------------------------------------------
+Tue Feb  7 09:25:57 UTC 2012 - werner@suse.de
+
+- update to 2.6.4
+  new features:
+  - FvwmIconMan no longer allows for itself to be transient
+  - New command InfoStore -- to store key/value pairs of information
+    to relieve the burden of the SetEnv command.
+  - Speed-up improvements for fvwm-menu-desktop when generating XDG
+    menus by removing unnecessary stat(2) calls.
+  - BusyCursor and CursorStyle have been set to make the cursor look
+    like a dot during Read/PipeRead commands, by default.
+  Bug fixes:
+  - FvwmRearrange now understands the "ewmhiwa" option when placing
+    windows.
+  - Client gravity for subwindows is honoured for reparenting
+    windows, such as with XEmbed, when changing the parent's
+    geometry.
+  - Conditional command processing of !Layer n
+    has now been fixed.
+  - Fixed handling of swallowed windows for transient FvwmButtons'.
+  - fvwm-menu-desktop now looks in /usr/share/applications for KDE
+    legacy mode.
+  - fvwm-config no longer accepts "--is-stable", "--is-released",
+        "--is-final".
+
+-------------------------------------------------------------------
+Tue Jan  3 09:21:43 UTC 2012 - vcizek@suse.com
+
+- update to 2.6.3
+  dropped libpng patch
+  New features over 2.5.26:
+  * Support libpng 1.4 and 1.5.0's slightly newer APIs
+  * New extended variable $[w.visiblename]
+  * Style matching now honours the window's visible name
+  * New style InitialMapCommand allows to execute any command when
+    a window is mapped first.
+  * New option to PrintInfo, "bindings" which prints out all of the
+    Key, PointerKey, Mouse and Stroke bindings which fvwm knows about.
+  * New differentiated options for SnapAttraction when snapping
+    against screen edges:
+  * New option to the BugOpts command
+  * New BugOpts option QtDragnDropWorkaround to work around an oddity
+    in handling drag-n-drop events to Qt applications.
+  * New MenuStyle "UniqueHotkeyActivatesImmediate" and its negation
+    "!UniqueHotkeyActivatesImmediate" to retain the menu until the
+    user presses one of the menu keybindings to enact that change in
+    the case where there's only one item defined in the menu at the
+    specified hotkey.
+  * New Style commands
+  * New Resize argument to direction
+  * Couple of changes to the Move command:
+  * The EWMH working area is now honoured by default.
+  * To move a window ignoring the working area, the option "ewmhiwa"
+    can be used, similar to how the Maximize command works.
+  * New expansion placeholder $[pointer.screen] to return the screen
+    number the pointer is on.
+
+-------------------------------------------------------------------
+Fri Dec  2 07:36:42 UTC 2011 - coolo@suse.com
+
+- remove uncommented patch
+
+-------------------------------------------------------------------
+Thu Dec  1 17:06:01 UTC 2011 - coolo@suse.com
+
+- add automake as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Thu Sep  1 15:21:45 UTC 2011 - pgajdos@suse.com
+
+- build with --no-copy-dt-needed-entries
+  * no-copy-dt-needed-entries.patch
+
+-------------------------------------------------------------------
+Fri Mar 11 20:26:21 UTC 2011 - coolo@novell.com
+
+- use of %find_lang is a MUST
+
+-------------------------------------------------------------------
+Mon Nov  8 12:57:56 UTC 2010 - coolo@novell.com
+
+- remove support for pre-9.1
+
+-------------------------------------------------------------------
+Sun Apr  4 18:55:54 CEST 2010 - ro@suse.de
+
+- fix build with libpng14 (replace long deprecated functions) 
+
+-------------------------------------------------------------------
+Mon Dec 28 18:20:51 CET 2009 - vuntz@opensuse.org
+
+- Remove gnome-libs-devel, gtk-devel, gtkdoc, imlib-config,
+  imlib-devel BuildRequires.
+- Add xorg-x11-devel BuildRequires.
+- Pass --disable-gtk to configure.
+- Remove gtk subpackage: it's optional, and doesn't look that good.
+- This is for fate#308601: remove gtk/gnome 1.x stack.
+
+-------------------------------------------------------------------
+Tue Nov  3 19:09:16 UTC 2009 - coolo@novell.com
+
+- updated patches to apply with fuzz=0
+
+-------------------------------------------------------------------
+Tue Jun 24 16:34:14 CEST 2008 - lmichnovic@suse.cz
+
+- update to version 2.5.26
+* New features:
+  - New MenuStyle option VerticalMargins.
+* New module features:
+  - FvwmButtons: New button alignment option: top.
+* Bug fixes:
+  - Fixed crash in ARGB visual detection code.
+  - Fixed compilation without XRender support.
+  - Fixed drawing of background pictures in menu items and titles.
+  - Fixed hadling of shaped windows.
+  - Fixed a 64-bit bug in the EWMH code.
+
+-------------------------------------------------------------------
+Wed Feb 27 10:59:15 CET 2008 - lmichnovic@suse.cz
+
+- update to version 2.5.25
+ * New features:
+  - Handle the STATE_ADD command of the EWMH _NET_WM_STATE
+    message from version 1.3 of the EWMH spec.
+  - Support transparency in ARGB windows
+ * Bug Fixes:
+  - Fixed problem with windows disappearing when created
+    unless the style Unmanaged was used.
+  - Edge move delay was used as resistance for the top edge.
+  - Fixed a parsing problem of the screen argument of the
+    SnapAttraction style.
+  - Some html documentation files were not installed.
+  - Fixed a memory leak in internationalized font handling.
+  - Fixed a bug in MinOverlap placement.
+  - Fixed the StickyAcrossPages style in the FvwmPager.
+  - Fixed the determination of the X charset on UTF-8 systems.
+  - Fixed a crash when certain EWMH messages were sent to
+    unmanaged windows.
+  - Fixed a memory leak in multibyte codepage code.
+  - Ignore the EWMH staysontop and staysonbottom hints if the
+    EWMHIgnoreStackingOrderHints style is used.
+  - Fixed a sporadic crash when the root background set by gnome,
+    fvwm-root, esetroot etc. changes and a root transparent
+    colour set is used.
+  - Fixed spradic crash in modules with root transparent
+    background from colour sets.
+  - Fixed a possible crash if the last active module fails.
+
+-------------------------------------------------------------------
+Wed Jan 30 16:10:05 CET 2008 - lmichnovic@suse.cz
+
+- adjusted system.fvwm2rc and _system.fvwm2rc files
+ * checked and fixed menu entries
+ * fixed missing wallpaper after restart
+ * changed Control center execution for systems with X.org < 7.0
+
+-------------------------------------------------------------------
+Fri Jan 11 11:33:14 CET 2008 - lmichnovic@suse.cz
+
+- update to version 2.5.24
+ * New features:
+   - Disabled paging during interactive resize operations by
+     default (see 2.5.20) as it is annoying to many people.
+   - New style command options:
+       EdgeMoveResistance
+       EdgeMoveDelay
+       EdgeResizeDelay
+       SnapGrid
+       SnapAttraction
+     that replace the now obsolete commands EdgeResistance,
+     SnapGrid and SnapAttraction.  The EdgeResistance command has
+     a new syntax with only one argument.
+   - New command MenuCloseAndExec for menu bindinngs that can be
+     used to trigger certain commands from a menu without an
+     associated item.  For example, with
+       Key F1 MTI[]-_ A MenuCloseAndExec Menu RootMenu
+     the RootMenu can be opened from any other menu by pressing
+     F1.
+ * Bug Fixes:
+   - Sometimes a window jumped by half the screen's size when
+     moving with the mouse and hitting the border of the desktop.
+   - Fixed the "screen w" argument of the Move and other commands.
+   - Clicking on a menu title did not close the menu by default.
+   - Temporary files in FvwmPerl overwrote each other.
+
+-------------------------------------------------------------------
+Tue Oct 23 10:30:18 CEST 2007 - lmichnovic@suse.cz
+
+- Removed librsvg from BuildRequires to keep the fvwm lightweight
+  WM suitable for installation; keeping gnome-libs-devel which 
+  affects only gtk subpackage [#335658]
+
+-------------------------------------------------------------------
+Mon Oct 15 15:21:00 CEST 2007 - lmichnovic@suse.cz
+
+- fixed wrong font for non ascii characters in titles of windows 
+  especially for english locales (charset_in_title.patch) [#307361]
+
+-------------------------------------------------------------------
+Tue Sep 25 16:23:14 CEST 2007 - lmichnovic@suse.cz
+
+- excluding useless file README.vms 
+- file list with %lang (macro find_lang is hard to use for fvwm)
+- added gnome-libs-devel (/usr/bin/gnome-config) and librsvg into 
+  BuildReq to enable more features
+
+-------------------------------------------------------------------
+Tue Sep 25 14:16:47 CEST 2007 - lmichnovic@suse.cz
+
+- update to version 2.5.23
+  - obsoletes *string_compar.patch
+  - fixes segfault on dual core processors [#304236]
+- New Features in 2.5.23 cumulative with 2.5.22:
+   - New Style command options: 
+      StartShaded
+      UnderMousePlacementHonorsStartsOnPage
+      UnderMousePlacementIgnoresStartsOnPage
+      !MinOverlapPlacementPenalties
+      !MinOverlapPercentPlacementPenalties
+      MinWindowSize
+   - SVG (scalable vector graphics) image loading support.
+   - New extended variables
+      $[w.iconfile.svgopts]
+      $[w.miniiconfile.svgopts].
+   - Added suffix 'w' to the arguments of the Move command and
+     similar.  It is now possible to add multiple shifts to a
+     window position, e.g. "50-50w 50-50w" for the center of the
+     screen.
+   - Removed UnderMousePlacement and CenterPlacement.  Use
+     "PositionPlacement Center" and "PositionPlacement UnderMouse"
+     instead.
+   - Documentation in HTML format.
+   - Replaced "UseListSkip" with "UseSkipList" & "OnlyListSkip" with
+     "OnlySkipList" in WindowList command. (Old options deprecated.)
+   - New subject ImageCache for PrintInfo command.
+   - The new commad EchoFuncDefinition prints a function's
+     definition to the console for debugging purposes.
+   - The CursorStyle command can now load PNG and SVG images as
+     mouse cursors.  New x and y arguments to specify the
+     hot spot.  Also, it is now possible to load non-monochrome
+     cursors and cursors with partial transparency.
+-  New module features:
+   - FvwmScript: New instructions: ChangeWindowTitle and
+     ChangeWindowTitleFromArg.
+- Bug Fixes:
+   - Windows with aspect ratio no longer maximize past the screen
+     edges.
+   - Fixed CenterPlacement with Xinerama screens.
+   - Fixed CascadePlacement with title direction west and east
+   - Windows no longer unstick when going to fullscreen mode.
+   - Fixed crash when raising/lowering a destroyed window.
+   - Fixed expansion of $[n-] and $[*], broken in 2.5.20.
+   - Fixes for resizing shaded windows and windows with a gravity
+     other than northwest.
+   - Fixed CursorStyle POSITION, broken since 2.3.24.
+   - The hi, sh and fgsh colors in colorsets are no longer replaced
+     by computed values if not explicit set on the same line as the
+     bg, or for fgsh fg, changes. (bug #3359)
+   - FvwmButtons now redraws stretched button backgrounds correctly
+     on partial expose.
+   - Windows with circular transient for hints may no longer crash
+     fvwm with StackTransientParent style.
+   - FvwmPager now displays windows that are StickyAcrossPages
+     correctly.
+   - Fixed a possible crash with modules closing down.
+   - Fixed broken demo script fvwm_make_browse_menu.sh.
+   - The conditon following a comma separator without whitespace
+     padding was previously ignored if the presiding condition was
+     multi-worded.
+   - Various FvwmButtons drawing problems.
+   - Window movement or resizing triggered by an EWMH message now
+     honours the FixedSize and FixedPosition window styles.
+   - Properly generate leave_window and enter_window events for
+     the root window in FvwmEvent.
+   - Fixed crash in UTF8 code.
+   - Fixed parsing of the PropertyChange command.
+   - Fixed windowlist crash when combining CurrentAtEnd with
+     IconifiedAtEnd and all windows are iconified.
+
+-------------------------------------------------------------------
+Fri Aug 10 16:40:43 CEST 2007 - dmueller@suse.de
+
+- package size reduction (#217472)
+
+-------------------------------------------------------------------
+Thu Jul 19 18:01:29 CEST 2007 - lmichnovic@suse.cz
+
+- wiped susewmif from rc file because it's not available since 9.1 
+
+-------------------------------------------------------------------
+Thu May 10 17:47:14 CEST 2007 - ro@suse.de
+
+- split off FvwmGtk to its own subpackage 
+
+-------------------------------------------------------------------
+Wed Apr  4 21:17:21 CEST 2007 - schwab@suse.de
+
+- Fix last change.
+
+-------------------------------------------------------------------
+Wed Apr  4 16:48:44 CEST 2007 - lmichnovic@suse.cz
+
+- fixed gcc warnings: comparing a char* pointer with a 
+  string literal (string_compar.patch)
+
+-------------------------------------------------------------------
+Fri Mar  9 18:40:31 CET 2007 - lmichnovic@suse.cz
+
+- Fixed corrupted characters in sax2 test mode for some locales
+  [#251639] (*utf_encoding.patch)
+
+-------------------------------------------------------------------
+Wed Feb 28 14:58:04 CET 2007 - lmichnovic@suse.cz
+
+- renamed sv_SE to sv, (sv_SE.patch) [#248751] 
+- removed xorg-x11 from Requires and Buildrequires since 
+  /usr/share/xsessions is part of filesystem [#229172]
+
+-------------------------------------------------------------------
+Tue Feb 13 17:58:44 CET 2007 - lmichnovic@suse.cz
+
+- adjusted fvwm2rc file, thanks to Thomas Adam [#242015] 
+
+-------------------------------------------------------------------
+Tue Feb 13 17:16:11 CET 2007 - lmichnovic@suse.cz
+
+- update to version 2.5.21 
+ * New feature: The command Scroll can now be used for interactive
+   scrolling.
+ * Bug Fix: Tile...Placement styles (SmartPlacement) that were
+   broken in 2.5.20.
+
+-------------------------------------------------------------------
+Wed Jan 24 13:42:03 CET 2007 - lmichnovic@suse.cz
+
+- removed superfluous slashes ante macros 
+- now building with icecream
+
+-------------------------------------------------------------------
+Tue Jan 16 18:13:49 CET 2007 - lmichnovic@suse.cz
+
+- fixed wrong path for icons in system.fvwm2rc [#223521] 
+- changed titles to openSUSE
+- created openSuSE.xpm icon for Button bar menu
+- spec cleanup
+
+-------------------------------------------------------------------
+Mon Jan 15 21:03:22 CET 2007 - lmichnovic@suse.cz
+
+- update to 2.5.20
+  - many bug fixes
+  - fixed few memory leaks
+  - some new functions and features:
+    * "Mouse n M N" is no longer used to disable or remap the
+      builtin tear off menu button. See the section Tear Off Menus.
+    * Full support for menu context (M) key and mouse bindings.
+    * New window conditions: StickyIcon, StickyAcrossPagesIcon 
+      and StickyAcrossDesksIcon.
+    * Hilighted menu backgrounds now use pixmaps gradients and
+      transparency from their related colorset.
+
+-------------------------------------------------------------------
+Fri Jan  5 18:10:37 CET 2007 - lmichnovic@suse.cz
+
+- fixed missing background image [#223521] 
+
+-------------------------------------------------------------------
+Tue Dec 19 20:00:44 CET 2006 - lmichnovic@suse.cz
+
+- added xorg-x11 into Requires and Buildrequires and excluding
+  /usr/share/xsessions directory from filelist [#229172]
+
+-------------------------------------------------------------------
+Tue Dec 12 11:19:11 CET 2006 - lmichnovic@suse.cz
+
+- update to version 2.5.19 including bugfix in FvwmWinList: problem 
+  with window name/button mixups during Init/Restart of fvwm.
+  * Many bugfixes:
+   - fvwm no longer crashes on 1 and 4 bit displays.
+   - Security fix in fvwm-menu-directory. (CVE-2006-5969) 
+- which obsoletes *sec-fvwmname.patch
+  * New features (from version 2.5.17): 
+   - New MenuStyle options TitleFont, TitleColorset and
+     HilightTitleBack.
+   - New command PressButton in module FvwmButtons for being able
+     to emulate button press via other means than the mouse.
+   - New wrap options to EdgeScroll command for wrapping with pixel
+     distances. 
+   - New Style option UnderMousePlacement.
+   - Unused arguments to Style options generate warnings.
+   - The name style names match against can be augmented by the
+     X-resource "fvwmstyle".
+   - New options, Reverse and UseStack, to All command.
+   - WindowShade can now reshade windows using the Last direction.
+   - Positional parameters to complex functions can now be expanded
+     using $[n], $[n-m], $[n-] and $[*] expressions.
+   - The width and height arguments of the Resize command now 
+     accept the prefix 'w' to allow resizing relative to the
+     current window size.
+   - New command ModuleListenOnly. 
+   - New "Periodic" option added to Schedule command.
+
+-------------------------------------------------------------------
+Tue Nov 14 16:17:36 CET 2006 - lmichnovic@suse.cz
+
+- fixed possible command execution (sec-fvwmname.patch) [#220708]
+
+-------------------------------------------------------------------
+Tue Sep  5 14:35:24 CEST 2006 - lmichnovic@suse.cz
+
+- distinquishing from X.org version which config file to install
+  (Source4 resp. Source5)
+
+-------------------------------------------------------------------
+Mon Sep  4 17:39:49 CEST 2006 - lmichnovic@suse.cz
+
+- omitting X11R6 in config file (which is Source4)
+- specifying X.org libs and headers
+
+-------------------------------------------------------------------
+Sun Aug  6 22:18:50 CEST 2006 - pnemec@suse.cz
+
+- major change in specfile instalation and file section to build 
+  with Xorg 7
+
+-------------------------------------------------------------------
+Mon Jul  3 17:08:19 CEST 2006 - schwab@suse.de
+
+- Set mandir.
+
+-------------------------------------------------------------------
+Tue May 30 15:03:29 CEST 2006 - pnemec@suse.cz
+
+- updated to 2.5.16
+  clean up in code see changelog
+- patches (-64bit, -grab_pointer, -conf) are in upstream now  
+- patch -ia64 is in upstream only partially
+
+-------------------------------------------------------------------
+Fri Feb 17 12:19:30 CET 2006 - pnemec@suse.cz
+
+- fixed menu entry #150221
+
+-------------------------------------------------------------------
+Wed Jan 25 21:36:04 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Thu Oct 20 16:54:05 CEST 2005 - pnemec@suse.cz
+
+- changed fvmw default theme to use diferent program to set background #106011
+- fixed gcc warnings
+
+-------------------------------------------------------------------
+Thu Aug 25 16:01:42 CEST 2005 - schwab@suse.de
+
+- Remove obsolete patch.
+
+-------------------------------------------------------------------
+Mon May 16 14:17:24 CEST 2005 - ltinkl@suse.cz
+
+- update to 2.5.12
+- adapt patches
+
+-------------------------------------------------------------------
+Thu Feb 10 15:04:43 CET 2005 - adrian@suse.de
+
+- install session desktop file
+
+-------------------------------------------------------------------
+Thu Jan 27 01:38:12 CET 2005 - ro@suse.de
+
+- add 64bit fix from lubos (#50203)
+
+-------------------------------------------------------------------
+Fri May 07 15:39:24 CEST 2004 - ltinkl@suse.cz
+
+- added mktemp to requirements
+- updated sources to 2.5.10
+
+-------------------------------------------------------------------
+Thu Apr 08 10:19:27 CEST 2004 - ltinkl@suse.cz
+
+- fix button background (#37677)
+
+-------------------------------------------------------------------
+Thu Mar 18 12:28:42 CET 2004 - ltinkl@suse.cz
+
+- fixed missing icons (#35551)
+- fixed SUSE helpcenter command line
+- reworked color scheme to match the current blueish design
+- build the list of screensavers dynamically
+- fixed the invocation of fvwm2 manpage
+- build with -fno-strict-aliasing
+- make Acroread work in fullscreen mode (#36189)
+
+-------------------------------------------------------------------
+Mon Mar 15 11:29:43 CET 2004 - kukuk@suse.de
+
+- Provide/Obsolete xpmroot
+
+-------------------------------------------------------------------
+Thu Mar 11 21:44:54 CET 2004 - ltinkl@suse.cz
+
+- SuSE -> SUSE
+- use the default system wallpaper (#31644, #35687)
+
+-------------------------------------------------------------------
+Tue Mar  9 17:30:49 CET 2004 - schwab@suse.de
+
+- Don't require on xpmroot.
+
+-------------------------------------------------------------------
+Thu Mar 04 15:11:20 CET 2004 - ltinkl@suse.cz
+
+- updated to 2.4.9
+
+-------------------------------------------------------------------
+Wed Jan 28 12:09:24 CET 2004 - ltinkl@suse.cz
+
+- fix security problem with temp file handling (#34077)
+
+-------------------------------------------------------------------
+Sat Jan 10 12:10:55 CET 2004 - adrian@suse.de
+
+- build as user
+
+-------------------------------------------------------------------
+Wed Dec 17 18:33:43 CET 2003 - mfabian@suse.de
+
+- enable building with Xft2 again (configure script had changed
+  the way of detecting Xft2, therefore building with Xft2 was
+  accidentally disabled again after the update).
+
+-------------------------------------------------------------------
+Tue Nov 18 12:43:53 CET 2003 - ltinkl@suse.cz
+
+- update to latest stable version 2.5.8
+
+-------------------------------------------------------------------
+Wed Sep 17 15:01:09 CEST 2003 - ltinkl@suse.cz
+
+- fix menu encoding (has to be UTF-8)
+- fix RMB desktop menu
+
+-------------------------------------------------------------------
+Mon Sep 15 11:42:34 CEST 2003 - ltinkl@suse.cz
+
+- adjusted default fonts and fixed some broken menu entries (#30521)
+
+-------------------------------------------------------------------
+Sat Sep 13 20:10:59 CEST 2003 - schwab@suse.de
+
+- Workaround broken module interface (it can't handle padding).
+
+-------------------------------------------------------------------
+Fri Sep  5 19:55:36 CEST 2003 - mfabian@suse.de
+
+- enable Xft2 support to get better i18n support out of the box
+  and to be able to finally fix Bugzilla #24765.
+- change system.fvwm2rc to use only fonts via Xft2 by default
+- specify "StringEncoding=UTF-8:" and ":encoding=iso10646-1"
+  for all fonts (config file should be UTF-8 encoded!).
+- remove my fvwm-nls-examples.tar.bz2 documentation, it is very
+  obsolete now.
+- add xpmroot to Requires because it is used to draw the
+  background in system.fvwmrc.
+
+-------------------------------------------------------------------
+Fri Sep 05 15:01:22 CEST 2003 - ltinkl@suse.cz
+
+- integrate common (XDG) menu, closes #29498
+
+-------------------------------------------------------------------
+Tue Sep 02 11:37:44 CEST 2003 - ltinkl@suse.cz
+
+- created an implicit configuration to fix #29498
+
+-------------------------------------------------------------------
+Wed Jul 30 13:40:58 CEST 2003 - schwab@suse.de
+
+- Update to fvwm 2.5.7.
+- Fix misalignment bug.
+
+-------------------------------------------------------------------
+Tue Jul 15 09:28:12 CEST 2003 - ltinkl@suse.cz
+
+- updated sources to 2.4.16
+
+-------------------------------------------------------------------
+Sat Mar  8 23:44:26 CET 2003 - adrian@suse.de
+
+- add wallpaper background pixmap
+
+-------------------------------------------------------------------
+Sun Feb 16 13:21:35 CET 2003 - adrian@suse.de
+
+- do not require icon packages anymore, default config will be
+  without icons due to dropped package. Let's see what breaks :/
+
+-------------------------------------------------------------------
+Tue Feb  4 12:09:04 CET 2003 - pmladek@suse.cz
+
+- updated to version 2.4.15 (many bug fixes)
+
+-------------------------------------------------------------------
+Tue Sep  3 17:15:36 CEST 2002 - mfabian@suse.de
+
+- add fvwm-2.4.8-utf-8-font-load.patch.
+  Thanks to Egbert Eich <eich@suse.de>
+  Without this patch, fvwm2 doesn't work in UTF-8 locales.
+  It writes many "internal error" messages about missing fonts
+  to stdout and the menus are empty because the fonts couldn't
+  be loaded. I.e. without this patch fvwm2 is unusable in UTF-8
+  locales.
+
+-------------------------------------------------------------------
+Sat Aug 17 16:27:13 CEST 2002 - ro@suse.de
+
+- don't duplicate README's in filelist 
+
+-------------------------------------------------------------------
+Tue Jul  9 16:38:47 CEST 2002 - pmladek@suse.cz
+
+- updated to version 2.4.8:
+	* many bugfixes, some improvents
+- removed obsolete ia64-prep patch
+
+-------------------------------------------------------------------
+Tue Apr  2 13:09:32 CEST 2002 - pmladek@suse.cz
+
+- fixed to compile with autoconf-2.53
+	* added missing brackets into smr_SWITCH macro
+	* removed redundant AC_SUBST(LIBOBJS)
+
+-------------------------------------------------------------------
+Wed Mar  6 14:04:51 MET 2002 - mmj@suse.de
+
+- Fixed permissions [Bug #14421]
+
+-------------------------------------------------------------------
+Sun Feb 10 12:24:11 CET 2002 - ro@suse.de
+
+- new option for bz2 tar is "j" 
+
+-------------------------------------------------------------------
+Tue Feb  5 17:04:07 CET 2002 - pmladek@suse.cz
+
+- updated to version 2.4.5
+
+-------------------------------------------------------------------
+Mon Jan 21 11:15:07 CET 2002 - pmladek@suse.cz
+
+- updated to version 2.4.4
+
+-------------------------------------------------------------------
+Tue Dec  4 11:07:38 CET 2001 - pmladek@suse.cz
+
+- fixed too long time of deadlock when fvwm2 tries to grab mouse
+  pointer but the mouse pointer is already grabbed by another
+  application (#12167)
+
+-------------------------------------------------------------------
+Thu Nov 29 16:52:41 CET 2001 - pmladek@suse.cz
+
+- updated to version 2.4.3
+	* many bug fixes
+	* new commands and options
+
+-------------------------------------------------------------------
+Thu Aug  9 13:48:48 CEST 2001 - pmladek@suse.cz
+
+- updated to stable version 2.4.0
+- fixed configure.in
+	* forget cached value in readline tests
+
+-------------------------------------------------------------------
+Thu Jun 14 09:00:02 CEST 2001 - pmladek@suse.cz
+
+- fixed to compile with new automake
+
+-------------------------------------------------------------------
+Wed May 16 15:53:39 CEST 2001 - pmladek@suse.cz
+
+- fixed cast warnigs on ia64
+
+-------------------------------------------------------------------
+Thu May 10 15:24:17 CEST 2001 - pmladek@suse.cz
+
+- removed link:
+  ln -sf system.fvwm2rc $RPM_BUILD_ROOT/etc/X11/fvwm2/.fvwm2rc
+  (because susewm generates right config file system.fvwm2rc now)
+- /etc/X11/fvwm2/system.fvwm2rc is right config file now
+
+-------------------------------------------------------------------
+Tue Apr 24 08:31:47 CEST 2001 - pmladek@suse.cz
+
+- fixed conversions int <-> poiter on ia64
+- fixed preprocesor problems on ia64
+
+-------------------------------------------------------------------
+Thu Apr 12 08:01:58 CEST 2001 - pmladek@suse.cz
+
+- updated to version 2.3.31 
+
+-------------------------------------------------------------------
+Mon Apr  9 08:38:39 CEST 2001 - pmladek@suse.cz
+
+- added icons-xpm to Requires
+
+-------------------------------------------------------------------
+Wed Apr  4 12:24:29 CEST 2001 - mfabian@suse.de
+
+- removed rplay again from "# neededforbuild" because a small
+  fvwm2 is needed as a default windowmanager and rplay will not
+  be in the default selection.
+
+-------------------------------------------------------------------
+Wed Apr  4 10:37:36 CEST 2001 - mfabian@suse.de
+
+- added libstroke, libstroke-devel, and rplay to "# neededforbuild"
+  (request of upstream fvwm2 authors)
+
+-------------------------------------------------------------------
+Fri Mar 30 09:06:23 CEST 2001 - pmladek@suse.cz
+
+- updated to version 2.3.30
+- added URL
+- compiled witk GTK and IMLIB
+  * added gtk gtk-devel gtkdoc glib glib-devel imlib imlib-devel 
+    imlib-config to neededforbuild
+- fixed call of suse_update_config
+
+-------------------------------------------------------------------
+Thu Mar 15 07:53:55 CET 2001 - cihlar@suse.cz
+
+- fixed file list
+- removed xselection, package xselect is better
+
+-------------------------------------------------------------------
+Wed Mar  7 21:32:37 CET 2001 - mfabian@suse.de
+
+- repair packaging mistake, forgot to pack /usr/X11R6/share/
+
+-------------------------------------------------------------------
+Wed Mar  7 13:20:48 CET 2001 - mfabian@suse.de
+
+- upgrade to fvwm2-2.3.29
+- improve nls examples
+
+-------------------------------------------------------------------
+Fri Feb 23 00:10:25 CET 2001 - ro@suse.de
+
+- added readline/readline-devel to neededforbuild (split from bash)
+
+-------------------------------------------------------------------
+Sun Jan 28 05:37:53 CET 2001 - mfabian@suse.de
+
+- upgraded to "stable beta release" FVWM 2.3.28.
+- added icons tarball (previously included in main tarball)
+- added "--enable-multibyte" to ./configure
+- added fvwm-nls-examples.tar.bz2 (explanation and examples
+  for native language support, especially for Japanese)
+- added symlink:
+  ln -sf system.fvwm2rc $RPM_BUILD_ROOT/etc/X11/fvwm2/.fvwm2rc
+  (because fvwm2 now reads only /etc/X11/fvwm2/system.fvwm2rc, but
+  SuSEconfig generates /etc/X11/fvwm/.fvwm2rc)
+- removed patches changing path of perl (handled by configure now)
+- removed old i18n patch (already included upstream now)
+
+-------------------------------------------------------------------
+Wed Dec 13 08:15:16 CET 2000 - cihlar@suse.cz
+
+- fixed i18n patch [#4532]
+- removed %preun
+
+-------------------------------------------------------------------
+Mon Nov 20 12:53:32 CET 2000 - cihlar@suse.cz
+
+- fixed neededforbuild
+- requires: icons ...
+
+-------------------------------------------------------------------
+Fri Oct 13 09:39:02 CEST 2000 - cihlar@suse.cz
+
+- fixed i18n
+- bzipped sources
+- fixed configuration
+
+-------------------------------------------------------------------
+Fri Aug 18 11:48:31 CEST 2000 - cihlar@suse.cz
+
+- fixed to work with new pixmaps
+- fixed config file
+
+-------------------------------------------------------------------
+Tue Jun  6 18:44:02 CEST 2000 - kukuk@suse.de
+
+- Update to 2.2.4
+- Move sysconfdir to /etc/X11/fvwm2
+
+-------------------------------------------------------------------
+Mon Jun  5 01:08:33 CEST 2000 - ro@suse.de
+
+- doc relocation
+
+-------------------------------------------------------------------
+Mon Dec 13 23:02:15 CET 1999 - ro@suse.de
+
+- use /usr/X11R6/bin instead of /usr/bin/X11
+- use /usr/X11R6/lib/X11 instead of /usr/lib/X11 
+
+-------------------------------------------------------------------
+Mon Sep 20 16:45:48 CEST 1999 - ro@suse.de
+
+- added Provides windowmanager
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+-------------------------------------------------------------------
+Sat Jul 17 17:21:06 MEST 1999 - maddin@suse.de
+
+- created package version 2.2.2 (based on and conflicting with fvwm-2.0)
+
+
