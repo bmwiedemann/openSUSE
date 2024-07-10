@@ -1,0 +1,77 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0f44bbede13ef44cb6323ba1e7370579</srcmd5>
+    <version>0.1.1</version>
+    <time>1570710872</time>
+    <user>dimstar_suse</user>
+    <comment>- New Python Azure ADK component package</comment>
+    <requestid>736477</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>ddad79a2df728349379e76e1f173aef3</srcmd5>
+    <version>0.1.1</version>
+    <time>1607548727</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>853941</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>17d8d9950514c4f014286964639bc6d4</srcmd5>
+    <version>1.0.0b1</version>
+    <time>1610051205</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.0.0b1
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Rename HISTORY.rst to CHANGELOG.md in %files section
+- Rename README.rst to README.md in %files section
+- Update Requires from setup.py (forwarded request 861290 from glaubitz)</comment>
+    <requestid>861392</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>73d29e0738c3a42d99bb030a3f6da585</srcmd5>
+    <version>1.0.0.0</version>
+    <time>1620400518</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Override upstream version with 1.0.0.0 to ensure
+  proper upgrade from previous version 1.0.0b1
+- Update Requires from setup.py (forwarded request 890983 from glaubitz)</comment>
+    <requestid>890991</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>11612189ce2162facfc11dd7d6c7b2ae</srcmd5>
+    <version>2.0.0</version>
+    <time>1661593796</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 2.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Remove temporary version override
+- Update Requires from setup.py (forwarded request 999351 from glaubitz)</comment>
+    <requestid>999391</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>f39870cbc9cf175bf3a5574d47ef59cb</srcmd5>
+    <version>2.0.0</version>
+    <time>1712520500</time>
+    <user>anag+factory</user>
+    <comment>- Switch package to modern Python Stack on SLE-15
+  + Use Python 3.11 on SLE-15 by default
+  + Add Obsoletes for old python3 package on SLE-15
+  + Drop support for older Python versions
+- Switch build system from setuptools to pyproject.toml
+  + Add python-pip and python-wheel to BuildRequires
+  + Replace %python_build with %pyproject_wheel
+  + Replace %python_install with %pyproject_install
+  + Update name for dist directory in %files section
+- Drop setting default file attributes in %files section
+- Use modern RPM macros to express version dependencies (forwarded request 1164813 from glaubitz)</comment>
+    <requestid>1165209</requestid>
+  </revision>
+</revisionlist>
