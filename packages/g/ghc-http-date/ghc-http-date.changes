@@ -1,0 +1,38 @@
+-------------------------------------------------------------------
+Thu Mar 30 17:07:12 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
+Wed Feb 24 18:10:52 UTC 2021 - psimons@suse.com
+
+- Update http-date to version 0.0.11.
+  Upstream does not provide a change log file.
+
+-------------------------------------------------------------------
+Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+ 
+- disable %{ix86} build
+ 
+-------------------------------------------------------------------
+Wed Oct  7 02:01:16 UTC 2020 - psimons@suse.com
+
+- Update http-date to version 0.0.10.
+  Upstream does not provide a change log file.
+
+-------------------------------------------------------------------
+Fri Sep 25 02:00:58 UTC 2020 - psimons@suse.com
+
+- Update http-date to version 0.0.9.
+  Upstream does not provide a change log file.
+
+-------------------------------------------------------------------
+Tue Aug 18 10:45:08 UTC 2020 - Peter Simons <psimons@suse.com>
+
+- Replace %setup -q with the more modern %autosetup macro.
+
+-------------------------------------------------------------------
+Tue Jun  9 09:26:13 UTC 2020 - psimons@suse.com
+
+- Add http-date at version 0.0.8.
+
