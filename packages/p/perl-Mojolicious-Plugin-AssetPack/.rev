@@ -1,0 +1,430 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>961bf584b3c8bdca2dcd50a13e40e830</srcmd5>
+    <version>0.44</version>
+    <time>1428064480</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>293325</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>3c21e08b6c03a7d985efe98768d0825f</srcmd5>
+    <version>0.50</version>
+    <time>1429107814</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>296057</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a4a8d4baafb9cdb1ec2e9f88fe2887d0</srcmd5>
+    <version>0.51</version>
+    <time>1429346401</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>297334</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>11066943428ad46725cbf39156a3ab81</srcmd5>
+    <version>0.5201</version>
+    <time>1429658320</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>298221</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>75efbc1d2db5af784eb5c359d32f8042</srcmd5>
+    <version>0.54</version>
+    <time>1429948457</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>303815</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>797aba43ae06bc6801c07a857722a59f</srcmd5>
+    <version>0.55</version>
+    <time>1434003772</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>311423</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>500eae5e0c349c7dd69c2a5e477d55d9</srcmd5>
+    <version>0.56</version>
+    <time>1439190990</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>321417</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>64cbf1264e76387efec3a5dab1463d0c</srcmd5>
+    <version>0.61</version>
+    <time>1440658676</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>326658</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>36372c9b8ff7f5cfbff2017d368c41f2</srcmd5>
+    <version>0.63</version>
+    <time>1441296149</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>327877</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>88d18a8362d6296f49d2fdb9eef5c76e</srcmd5>
+    <version>0.68</version>
+    <time>1443585182</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>334360</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>8ae1ef073d24255ce635e69f5094d28d</srcmd5>
+    <version>0.69</version>
+    <time>1450284129</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>347587</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>4a2505014e7007be5a053531a13c97ad</srcmd5>
+    <version>1.13</version>
+    <time>1465129242</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>399273</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>4c9dd1c68fdab8c0ac7e056710c94677</srcmd5>
+    <version>1.14</version>
+    <time>1466814260</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>404394</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>5981551ec0828752d9598eebfab3b1b8</srcmd5>
+    <version>1.16</version>
+    <time>1468360279</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>406461</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>565f561ec7e8bed1e634a39033cc1102</srcmd5>
+    <version>1.17</version>
+    <time>1468999770</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>412082</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>a3ef0a271565b4bca7773532c6424655</srcmd5>
+    <version>1.24</version>
+    <time>1478517734</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>427100</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>17c857c1734ed1147d85210983578fd7</srcmd5>
+    <version>1.25</version>
+    <time>1478780838</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>439449</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>b9a6286b8c5d5fae55ad07b113f33013</srcmd5>
+    <version>1.26</version>
+    <time>1479502989</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>440750</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>4cd7c4237dc0ab1ec2ba73d5946c75a7</srcmd5>
+    <version>1.27</version>
+    <time>1479662372</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>440989</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>a9d004e5bd9719adc4afecc16d558443</srcmd5>
+    <version>1.28</version>
+    <time>1480342060</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>441933</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>2fca5a287eb96535005ef2fdbb7a869a</srcmd5>
+    <version>1.29</version>
+    <time>1481969965</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>446688</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>d284346d9b97f0c1cd21f51a272a9ce8</srcmd5>
+    <version>1.30</version>
+    <time>1484041617</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>448587</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>098d16e9d19ac847f22bb8fb006cb5c7</srcmd5>
+    <version>1.31</version>
+    <time>1484132705</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>449574</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>a2ee95e9f427b77b95e0367e2786d7c9</srcmd5>
+    <version>1.36</version>
+    <time>1484561691</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 1.36
+   see /usr/share/doc/packages/perl-Mojolicious-Plugin-AssetPack/Changes
+  1.36 2017-01-11T11:18:45+0100
+   - Fix bug in Fetch pipe, fixing t/font-awesome.t
+   - Change Mojolicious::Plugin::AssetPack::Asset::path() to return a Mojo::File object
+  
+  1.35 2017-01-11T10:30:09+0100
+   - Forgot to remove Carp::Always from t/recreate.t after debugging
+  
+  1.34 2017-01-10T23:22:16+0100
+   - Compatible with Mojolicious 7.15
+  
+  1.33 2017-01-08T14:20:03+0100
+   - Fix t/reloader.t when CSS::Minifier::XS is missing #113
+  
+  1.32 2017-01-08T11:50:36+0100
+   - Fix Mojo::Home::rel_dir is DEPRECATED in favor of Mojo::Hom::rel_file #112
+   - Disable &quot;Reloader&quot; pipe, unless in development</comment>
+    <requestid>449670</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>e736e0fb186bfcd2892affc21b0ab2f8</srcmd5>
+    <version>1.37</version>
+    <time>1484772213</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>450504</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>613063e9eaa7478cd02252197620069a</srcmd5>
+    <version>1.38</version>
+    <time>1485383649</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>452173</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>4dba6e1bfb6f2f57c338f3d627b16489</srcmd5>
+    <version>1.39</version>
+    <time>1486856945</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>452558</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>89bbdf51ac118ce4eee2f4cece52110a</srcmd5>
+    <version>1.40</version>
+    <time>1487149634</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>456584</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>50db52f3a1e89d1d7fbbb6fa949c283c</srcmd5>
+    <version>1.41</version>
+    <time>1490318598</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>482153</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>f69d50a16a0cb25e771feb57ab8f192c</srcmd5>
+    <version>1.42</version>
+    <time>1493819839</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>492405</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>0e5722ac4715f91f82cba17d5c164c27</srcmd5>
+    <version>1.43</version>
+    <time>1495637238</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>495804</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>e1ecc720097e2e8f4e97b45b62f83361</srcmd5>
+    <version>1.44</version>
+    <time>1495883948</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>498321</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>9c33ece5e973e23389eba521d23a42c6</srcmd5>
+    <version>1.45</version>
+    <time>1498741476</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>504916</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>f4043dcf4e3882a0c5f22b91f25a052f</srcmd5>
+    <version>1.46</version>
+    <time>1507065457</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>530065</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>a5baf3a069f65a750ead0accba6eda18</srcmd5>
+    <version>1.47</version>
+    <time>1508336200</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>534738</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>45f03544f1fa18ca4de47c60dbbd15fa</srcmd5>
+    <version>2.01</version>
+    <time>1510761277</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 2.01
+   see /usr/share/doc/packages/perl-Mojolicious-Plugin-AssetPack/Changes
+  2.01 2017-11-06T13:02:45+0100
+  
+   - Up version number to try to fix pause indexing issues
+  
+  1.48 2017-10-29T10:20:51+0800
+   - Fix RollupJs package name #130
+   - load_module() confess on error
+   - Removed EXPERIMENTAL Reloader pipe
+   - Removed EXPERIMENTAL clone() method in AssetPack::Asset</comment>
+    <requestid>539969</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>45005821029071b240daaeab98fea6eb</srcmd5>
+    <version>2.02</version>
+    <time>1518187642</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>573983</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>2f0268d22b26960a688e1576060c5563</srcmd5>
+    <version>2.03</version>
+    <time>1525343620</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>603047</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>76a68cbcb8f9b946bc75bea64ee7a005</srcmd5>
+    <version>2.04</version>
+    <time>1532293534</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>624411</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>36ce7f5ba7958f04d6d609977666490d</srcmd5>
+    <version>2.05</version>
+    <time>1535704970</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>631318</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>495c780f63f35033997a39a27d777907</srcmd5>
+    <version>2.06</version>
+    <time>1537436554</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>636640</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>19e2d9f37af2e05d6b67549b953e9773</srcmd5>
+    <version>2.07</version>
+    <time>1557142038</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>700691</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>6b8874faa8b00698a90a8fae0bbeb666</srcmd5>
+    <version>2.08</version>
+    <time>1557751902</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>702478</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>3b71baebdb533ebe6be8b83fc1c2d8b2</srcmd5>
+    <version>2.09</version>
+    <time>1599507358</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>832732</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>7effb4922f987a4b71504a1b80034d2a</srcmd5>
+    <version>2.10</version>
+    <time>1607965804</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>855720</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>4c175a41a9453d30e4655ab7b73290ae</srcmd5>
+    <version>2.11</version>
+    <time>1613774715</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>873701</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>290afeb137e835f22f1ac5a5bbce2d26</srcmd5>
+    <version>2.13</version>
+    <time>1616104481</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>879445</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>0077b76f5a2cfcf9c87cc6e9fa87683b</srcmd5>
+    <version>2.14</version>
+    <time>1675873250</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1063835</requestid>
+  </revision>
+  <revision rev="49" vrev="2">
+    <srcmd5>1bc3da6e907cb26cb966ad4ae9cd42ba</srcmd5>
+    <version>2.14</version>
+    <time>1695209501</time>
+    <user>dimstar_suse</user>
+    <comment>- Add mojolicious-deprecate-spurt.patch from
+  https://github.com/mojolicious/mojo-assetpack/pull/149</comment>
+    <requestid>1112340</requestid>
+  </revision>
+  <revision rev="50" vrev="3">
+    <srcmd5>e4e33d0025e2d61fb1f04e71fd270a4d</srcmd5>
+    <version>2.14</version>
+    <time>1718743949</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1181506</requestid>
+  </revision>
+</revisionlist>

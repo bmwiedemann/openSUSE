@@ -1,0 +1,13 @@
+diff --git a/lib/Mojolicious/Plugin/AssetPack/Pipe/Sass.pm b/lib/Mojolicious/Plugin/AssetPack/Pipe/Sass.pm
+index 47e16be..847fe4a 100644
+--- a/lib/Mojolicious/Plugin/AssetPack/Pipe/Sass.pm
++++ b/lib/Mojolicious/Plugin/AssetPack/Pipe/Sass.pm
+@@ -61,7 +61,7 @@ sub process {
+       $asset->content($store->save(\$css, $attrs))->FROM_JSON($attrs);
+     }
+     else {
+-      my @args = (qw(sass -s), map { ('-I', $_) } @{$opts{include_paths}});
++      my @args = (qw(sass -s --trace), map { ('-I', $_) } @{$opts{include_paths}});
+       push @args, '--scss'          if $asset->format eq 'scss';
+       push @args, qw(-t compressed) if $attrs->{minified};
+       $self->run(\@args, \$content, \my $css, undef);
