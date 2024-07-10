@@ -1,0 +1,243 @@
+-------------------------------------------------------------------
+Mon Feb 26 12:54:42 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  PatchN.
+
+-------------------------------------------------------------------
+Wed Feb  7 11:49:48 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Provide user/group symbol for the user generated during pre.
+  Required by RPM 4.19.
+
+-------------------------------------------------------------------
+Sun Jan 28 17:20:31 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 28.9:
+  * web UI improvements:
+  * display lyrics metadata
+  * toggle Spotify on/off in some views
+  * many minor improvements
+  * use compressed ALAC for Airplay for bandwidth + fixes esp32
+    issue
+  * don't merge Spotify albums with local albums
+  * handle playlist with Unicode BOM
+  * json API add tracks to queue returns info on added tracks
+  * replace syscall with gettid, syscall deprecated on MacOS
+  * fix issue where m3u genre doesn't override despite
+    m3u_override = true
+  * fix possible crash from use-after-free
+  * fix FreeBSD possible crash
+  * fix crash when keys of incorrect length are used for legacy
+    pairing
+  * fix ALAC missing end tag causing ffmpeg decoder warnings
+  * fix crash if Spotify AP resolver is unavailable
+  * fix duplicates if file within library is replaced
+  * fix fatal error due to mutex being zeroed
+  * fix compability with ffmpeg 6
+  * web UI improvements:
+  * easier volume sliders
+  * incorrect display of genre
+  * Chinese translation
+  * fix removing RSS podcasts
+  * sort by rating for composer, genre and artist tracks
+  * (and much more)
+  * changes to artwork search orders (easier static artwork for
+    pipes)
+  * major refactor of the http server improving mp3 streaming
+  * support for m3u8 playlist files
+  * allow mixed ipv4/ipv6 mdns
+  * fix issue with device name capitalization (TuneAero issue)
+  * drop support for libevent < 2.1.4
+
+-------------------------------------------------------------------
+Tue Apr 11 11:02:24 UTC 2023 - Adrian Schröter <adrian@suse.de>
+
+- update to version 28.6
+  * German translation of web UI
+  * web UI: fix error messages not displaying
+  * fix low resolution Spotify artwork
+  * fix incorrect display of date released pre 1970
+  * fix for Denon speakers when pausing
+  * support password authentication for Airplay 2
+  * support for user config ffmpeg audio filters
+
+-------------------------------------------------------------------
+Mon Dec 12 11:35:10 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop explicit ffmpeg-4-libavfilter-devel BuildRequires: we
+  already have pkgconfig(libavfilter) covering this dependency, and
+  package builds fine with ffmpeg-5.
+
+-------------------------------------------------------------------
+Sun Nov  6 09:33:57 UTC 2022 - Adrian Schröter <adrian@suse.de>
+
+- update to version 28.5
+  * French translation of web UI
+  * improved web UI loading of images
+  * add support for Airplay 2 password based auth
+  * fix some Airplay speakers turning on by themselves
+  * fix parsing of CRLF and NOT in smart playlists and allow larger sizes
+  * fix possible crash after Avahi restart
+  * fix for Remote - play item from 'up next' when stopped
+  * use configured bind_address to set mdns network interface
+  * fix broken Spotify after libspotify sunset
+  * remove antlr3 dependency, use bison/flex instead
+  * improve search by supporting diacritics and Unicode case folding
+  * add support for new output: Roku/Soundbridge RCP
+  * switch to MkDocs for documentation
+  * smart playlists fixups and new "this week" param
+  * fix 'add next' when in queue shuffle mode
+  * web UI improvements:
+  * migration to Vue 3 and Vite
+  * honor "radio_playlists" config setting
+  * display of search results for composers and playlists
+  * add album / track count to genre and composer pages
+  * fix incorrect sorting of album/artist searches
+  * minor UI fixes
+  * fix for Spotify config option album_override
+  * improved Spotify scan performance
+  * generic browse endpoints for the json api
+  * fix slow shutdown with some libwebsocket versions
+
+-------------------------------------------------------------------
+Mon Feb 14 17:53:40 UTC 2022 - Adrian Schröter <adrian@suse.de>
+
+- update to version 28.3
+  * web UI improvements, e.g.:
+    * composer views
+    * partial scan (e.g. only update RSS feeds)
+    * fix http stream button not clickable in mobile view
+    * fix Spotify playlists not showing
+    * handling of not playable Spotify tracks
+    * handling of podcast play counts
+  * support for Spotify podcasts
+  * updates for ffmpeg 5
+  * better Spotify logout
+  * user "usermark" field for user flagging of various track states
+  * fix for 0-byte files crashing ffmpeg
+  * fix metadata pipe deadlock and artwork memleak-on-error
+  * better handling of Spotify disconnects
+  * fix rare Airplay pairing error
+  * many minor error handling fixes
+
+-------------------------------------------------------------------
+Wed Oct 13 14:40:39 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
+  * harden_owntone.service.patch
+
+-------------------------------------------------------------------
+Wed Sep  8 08:02:01 UTC 2021 - Adrian Schröter <adrian@suse.de>
+
+- upstream renamed from forked-daapd to owntone(-server)
+- update to version 28.2
+  * add Spotify integration that doesn't depend on libspotify
+  * partial support for AirPlay events (Homepod buttons)
+  * web UI upgraded, now 1.1.0:
+  * show "comment" field in track details
+  * drop double login to Spotify when not using libspotify
+  * easier install by letting 'make install' add user and service files
+  * preserve existing conf file when running 'make install'
+  * support for "comment" field when making smart playlists
+  * fix support for dacp device-volume
+  * fix issue where source file sort tags where ignored
+  * fix for Roku (RSP) artist display issue
+  * fix bug when 'bind_address' option is used
+  * fix for CVE-2021-38383
+  * fix some minor time-of-check time-of-use bugs
+  * fix web UI slow updates due to websockets 3.x changes
+  * support for ALAC sort tags
+  * support for remote pls/m3u with https streams
+  * add /api/queue?id=now_playing json API shortcut
+  * fix possible crash on Pulseaudio error callback
+  * fix possible segfault-on-exit
+  * fix websockets not working on FreeBSD
+  * refactor how the server binds to sockets (use dual stack ipv4/6)
+  * configurable interface/address binding
+
+-------------------------------------------------------------------
+Tue Apr 20 07:22:38 UTC 2021 - Adrian Schröter <adrian@suse.de>
+
+- update to version 27.4
+  * fix web server path traversal vulnerability
+  * support for AirPlay 2 speakers, incl. compressed ALAC
+  * web UI upgraded, now v0.8.5:
+    - new design/layout
+    - optimize "Recently added"
+    - Spotify search dialogue improvements
+    - drop separate admin web page, now integrated in main web
+    - podcast deletion
+    - make Radio a top level item
+    - show release dates
+    - new sorting options
+    - prevent browser caching of playlists
+    - additional settings
+  * improved Chromecast streaming (retransmisson, adaptive etc.)
+  * JSON api support for updating metadata of queue items
+  * JSON api new fields, e.g. time_added, time_played and seek
+  * fix for some Chromecasts disconnecting
+  * new algorithm for more natural ALSA volume adjustments
+  * new nickname option for AirPlay and Chromecast
+  * mpd fixes (nextsong, multiple commands)
+  * charset flexibility when getting ICY metadata from streams
+  * adaptive probing of radio streams
+  * libplist and libsodium now required
+  * fixes for library update events
+  * fixes to speaker selection and unintentional volume changes
+  * fix some minor memleaks
+  * support shairport-sync metadata pipe flush event
+  * misc logging fixup
+- switch to libplist 2.0 for factory
+
+-------------------------------------------------------------------
+Thu Nov 26 08:46:52 UTC 2020 - Adrian Schröter <adrian@suse.de>
+
+- update to version 27.2
+  * web UI upgraded to v0.7.2:
+    - show cover artwork in album pages and lazy loading of artwork
+    - show playlist folders
+    - use sass/scss for css files
+    - add "Radio" tab to the music section
+    - add settings for artwork sources
+    - add pop up dialog for Remote pairing requests
+    - support adding/removing podcast subscriptions
+    - support marking all new podcast episodes/all episodes as played
+    - support searching by smart pl queries
+    - skip buttons for audiobooks and podcasts
+    - show localized times/dates
+    - generate colored placeholder image if cover artwork is missing
+    - show "cast" icon for Chromecast outputs
+    - styling changes of the navbars and moving the volume controls
+  * new speaker selection logic (persist user choice even after failure)
+  * speaker autoselect no longer enabled by default
+  * removed old admin page, not necessary any more
+  * fix/workaround for Apple TV's and HomePods that disconnect
+  * support for RSS feeds
+  * support for nested smart playlists (playlist folders)
+  * support for online artwork sources e.g. Discogs, Coverartarchive
+  * support for radio StreamUrl's that point to json with metadata
+  * fix incorrect artwork shown for unknown album/artists
+  * fix issue parsing shairport-sync progress metadata
+  * fix missing Spofity logout option
+  * fix for embedded artwork not working with ffmpeg 4.3+
+  * some smart PL improvements, e.g. support for more tags
+  * config option for Airplay timing/control ports (eases firewalling)
+  * quicker loading of radio streams (smaller probing)
+  * workaround for mxml 2.10 significant memleak
+  * some fixes for Roku (RSP)
+  * drop libspotify for artwork, doesn't work any more
+  * documentation improvements
+- fixed logrotate filename
+
+-------------------------------------------------------------------
+Tue Jun 23 12:00:39 UTC 2020 - Adrian Schröter <adrian@suse.de>
+
+- fix compile with gcc10 by using -fcommon
+
+-------------------------------------------------------------------
+Wed May 20 06:46:17 UTC 2020 - Adrian Schröter <adrian@suse.de>
+
+- initial package of version 27.1
+  Upstream spec file was used as base
+
