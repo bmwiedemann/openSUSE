@@ -1,0 +1,238 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>318d6357fe821e4a83cee97751de3514</srcmd5>
+    <version>0.11</version>
+    <time>1184812852</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>e22a88f34e585941084756a2eea32b5d</srcmd5>
+    <version>0.27</version>
+    <time>1197573992</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="32">
+    <srcmd5>03d7b260bc10278d159cafadabf1d790</srcmd5>
+    <version>0.27</version>
+    <time>1214845674</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>47c8502fa2f7c760a02b8fb79b4dbc74</srcmd5>
+    <version>0.30</version>
+    <time>1216998062</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>5323a7b87e5a992f77417b878247c829</srcmd5>
+    <version>0.40</version>
+    <time>1232501822</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>2e03ecddb45e56e4d1a54e4a0e9c70bc</srcmd5>
+    <version>0.43</version>
+    <time>1237412496</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>35e2507b3c1e34673b4803cee35d03e5</srcmd5>
+    <version>0.45</version>
+    <time>1249341223</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>35e2507b3c1e34673b4803cee35d03e5</srcmd5>
+    <version>0.45</version>
+    <time>1249341223</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>4bd55d1fe92433fff91ecfcfc40f93eb</srcmd5>
+    <version>0.45</version>
+    <time>1263225734</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-XML-Bare based on submit request 28933 from user coolo
+</comment>
+  </revision>
+  <revision rev="10" vrev="5">
+    <srcmd5>5ff7ee94baecaeca5d9fb4e6914a4b74</srcmd5>
+    <version>0.45</version>
+    <time>1268925654</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="11" vrev="7">
+    <srcmd5>5ff7ee94baecaeca5d9fb4e6914a4b74</srcmd5>
+    <version>0.45</version>
+    <time>1278667380</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="12" vrev="8">
+    <srcmd5>5ff7ee94baecaeca5d9fb4e6914a4b74</srcmd5>
+    <version>0.45</version>
+    <time>1278678610</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="13" vrev="9">
+    <srcmd5>fb9a0afab17f0e251090af68b0b9ea4e</srcmd5>
+    <version>0.45</version>
+    <time>1291132765</time>
+    <user>darix</user>
+    <comment>Accepted submit request 54127 from user coolo
+</comment>
+    <requestid>54127</requestid>
+  </revision>
+  <revision rev="14" vrev="10">
+    <srcmd5>7fd5ca3d4bc8aced08f21fe423797172</srcmd5>
+    <version>0.45</version>
+    <time>1291132771</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 54127
+</comment>
+  </revision>
+  <revision rev="15" vrev="11">
+    <srcmd5>d9cca9839ca8f93f92d613b9f76d0fdd</srcmd5>
+    <version>0.45</version>
+    <time>1291584471</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 54692 from user coolo
+</comment>
+    <requestid>54692</requestid>
+  </revision>
+  <revision rev="16" vrev="12">
+    <srcmd5>f3c40b149e2eca67f92085e3f8d4d663</srcmd5>
+    <version>0.45</version>
+    <time>1291584479</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 54692
+</comment>
+  </revision>
+  <revision rev="17" vrev="15">
+    <srcmd5>f3c40b149e2eca67f92085e3f8d4d663</srcmd5>
+    <version>0.45</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="18" vrev="16">
+    <srcmd5>9cb8cf4091f8e03233427a69975cbf2a</srcmd5>
+    <version>0.45</version>
+    <time>1300269139</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 64200 from user coolo
+</comment>
+    <requestid>64200</requestid>
+  </revision>
+  <revision rev="19" vrev="17">
+    <srcmd5>f32185adf2d9ee8991ef4c70ad14e5bc</srcmd5>
+    <version>0.45</version>
+    <time>1300269146</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 64200
+</comment>
+  </revision>
+  <revision rev="20" vrev="19">
+    <srcmd5>f32185adf2d9ee8991ef4c70ad14e5bc</srcmd5>
+    <version>0.45</version>
+    <time>1319182322</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="21" vrev="20">
+    <srcmd5>285de9c5aa22a3e6fc6d981007dfc821</srcmd5>
+    <version>0.45</version>
+    <time>1321876211</time>
+    <user>coolo</user>
+    <comment>update</comment>
+    <requestid>92243</requestid>
+  </revision>
+  <revision rev="22" vrev="21">
+    <srcmd5>10ecb6550f3765f7d2d6038910712660</srcmd5>
+    <version>0.45</version>
+    <time>1323193779</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="23" vrev="16">
+    <srcmd5>1e247002a508a21db6850668f1b2094f</srcmd5>
+    <version>0.47</version>
+    <time>1329391561</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>104871</requestid>
+  </revision>
+  <revision rev="24" vrev="18">
+    <srcmd5>1e247002a508a21db6850668f1b2094f</srcmd5>
+    <version>0.47</version>
+    <time>1340183951</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="25" vrev="20">
+    <srcmd5>1e247002a508a21db6850668f1b2094f</srcmd5>
+    <version>0.47</version>
+    <time>1359109847</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>d8048f5a04f37214467c11804c86fe33</srcmd5>
+    <version>0.53</version>
+    <time>1375773752</time>
+    <user>coolo</user>
+    <comment>- add fix-pointers.diff to fix build on factory
+
+- updated to 0.53
+   - Remove executable permissions from files that shouldn't have them.
+   - Added shebang to main Bare.pm file ( apparently some people want this )
+   - Correct line endings to unix style on parser.c
+   - Improved simplify function that works properly with trees instead of just a single level
+   - Added hash2xml to quickly convert recursing hashes into XML
+   - Added proper binmode setting when outputting XML to address deficiences on Win32 ( such as failing Strawberry perl due to line endings )
+   - Added evil OS check in file writing code to address differences in how files must be opened to write utf8 on win32 versus linux/cygwin.
+   - Added note regarding using utf8 flag instead of using encoding(utf8)
+   - Altered UTF8 test to also write XML containing UTF8 to a file.
+   - New 'unsafe' parsing mode, giving a 30% speed increase with some downfalls
+   - New 'read_more' function, allowing more data to be read in before parsing into a tree
+   - Fixed some memory leaks
+   - Added 'Controversy' section to documentation
+   - Updated speed comparisons for feed2.xml, adding a comparison against XML::Fast as well
+     as a comparison of running in 'unsafe' mode.
+   - Spelling correction
+   - &quot;Modernized&quot; file handling using my variables
+   - Remove debugging print statements that were left in
+   - Include the new test cases in the distribution
+   - Fixes to find_by_perl
+     Can now be accessed in an object or namespace flexibly.
+     Now ignores case of keys.
+     Keys with underscores can be used.
+     Will work properly when passed a single node instead of an array reference of nodes.
+   - Fixes to xget
+     Method of deferencing has been changed to be compatible with newer versions of perl ( 5.10.2+ )
+   - Fixed handling of nodes named 'value'; they will no longer crash the XS code</comment>
+    <requestid>185948</requestid>
+  </revision>
+  <revision rev="27" vrev="3">
+    <srcmd5>d8048f5a04f37214467c11804c86fe33</srcmd5>
+    <version>0.53</version>
+    <time>1379663915</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="28" vrev="5">
+    <srcmd5>d8048f5a04f37214467c11804c86fe33</srcmd5>
+    <version>0.53</version>
+    <time>1409302566</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="29" vrev="6">
+    <srcmd5>2f58410456615667be9099b4f7873a6d</srcmd5>
+    <version>0.53</version>
+    <time>1709832459</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1155449</requestid>
+  </revision>
+</revisionlist>
