@@ -1,0 +1,9 @@
+<package name="gwenview" project="openSUSE:Factory">
+  <title>Image Viewer by KDE</title>
+  <description>Gwenview is an image viewer by KDE. It features a folder tree window and a file
+list window, providing navigation of file hierarchies.
+
+</description>
+  <devel project="KDE:Applications" package="gwenview"/>
+  <url>https://apps.kde.org/gwenview</url>
+</package>
