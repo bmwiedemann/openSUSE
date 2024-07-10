@@ -1,0 +1,427 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e0cf38702ffcdd8cdb7194ecf57bb6f1</srcmd5>
+    <version>1.0~pre.1490686312.b24ea32</version>
+    <time>1494088166</time>
+    <user>dimstar_suse</user>
+    <comment>new product builder for Leap 15</comment>
+    <requestid>491599</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>6ab56d37bf6f69f3397179de8d86f26c</srcmd5>
+    <version>1.0~pre.1490686312.b24ea32</version>
+    <time>1495469318</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>497150</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>3edb11e7c93a11829c3e500fa44415ce</srcmd5>
+    <version>1.0~pre.1495619642.e97a217</version>
+    <time>1495883804</time>
+    <user>dimstar_suse</user>
+    <comment>- adapt path of meta packages to /usr/lib/skeldcd/CD?  (bsc#1031335)</comment>
+    <requestid>497908</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>435ca0010b3509aa9dc5bae1d00a8938</srcmd5>
+    <version>1.0~pre.1497939465.cb6f23f</version>
+    <time>1498485155</time>
+    <user>dimstar_suse</user>
+    <comment>bugfixes</comment>
+    <requestid>505845</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>89c923764fa2bfd9606ece4a1b7e939b</srcmd5>
+    <version>1.0~pre.1498572432.a4cad04</version>
+    <time>1498639022</time>
+    <user>dimstar_suse</user>
+    <comment>fix ppc media build</comment>
+    <requestid>506492</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>f27f5e50a6f4cae1552027aa2a515af6</srcmd5>
+    <version>1.0~pre.1499777959.e6adac4</version>
+    <time>1499778126</time>
+    <user>dimstar_suse</user>
+    <comment>compat mode for old meta packages</comment>
+    <requestid>509450</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>3c349ee30649609967216743394f14ba</srcmd5>
+    <version>1.0~pre.1503327890.95c265e</version>
+    <time>1504815175</time>
+    <user>dimstar_suse</user>
+    <comment>Add changes entry for the patch, so that the bot is happy (forwarded request 521076 from dimstar)</comment>
+    <requestid>521101</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>8b8570220c73bb6119d616ce56372682</srcmd5>
+    <version>1.0~pre.1505229546.36dadce</version>
+    <time>1505331497</time>
+    <user>dimstar_suse</user>
+    <comment>support multiple license files on multi product media</comment>
+    <requestid>523757</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>dbcc87a625cef5a2991dc04a05f00d82</srcmd5>
+    <version>1.0~pre.1505473893.8038263</version>
+    <time>1505757053</time>
+    <user>dimstar_suse</user>
+    <comment>- copy .treeinfo for virt-installer</comment>
+    <requestid>526359</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>d58d39277e9b6427dd0388935656d003</srcmd5>
+    <version>1.0~pre.1506336035.066b85a</version>
+    <time>1506524035</time>
+    <user>dimstar_suse</user>
+    <comment>- bring back media.?/media file
+- drop media.?/build instead
+- building seperate media is an explicit setting now
+</comment>
+    <requestid>528737</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>5a4fb36ce558e4fdd97c45c90c4ba05a</srcmd5>
+    <version>1.0~pre.1507277845.84ea077</version>
+    <time>1507628275</time>
+    <user>dimstar_suse</user>
+    <comment>- patch README.BETA again
+
+- building separate media is an explicit setting now</comment>
+    <requestid>532160</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>b0d6397243669c79eebceb7ff4dde7c4</srcmd5>
+    <version>1.0~pre.1507277845.84ea077</version>
+    <time>1511517126</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>544118</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>36d9f3085df9d463f0594e2a39e7a233</srcmd5>
+    <version>1.0</version>
+    <time>1512546842</time>
+    <user>dimstar_suse</user>
+    <comment>fix uefi</comment>
+    <requestid>547017</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>a4b460b92a3cb4d4509d04c28fb1e36e</srcmd5>
+    <version>1.0.1</version>
+    <time>1516092022</time>
+    <user>dimstar_suse</user>
+    <comment>support mk_changelog</comment>
+    <requestid>563604</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>a66fdc7241fddd420483f61614f118e3</srcmd5>
+    <version>1.0.3</version>
+    <time>1516443775</time>
+    <user>dimstar_suse</user>
+    <comment>- 1.0.3
+  * Adapt to changed -debuginfo-32bit -&gt; -32bit-debuginfo name scheme in SLE 15
+    (incompatible change)
+
+- 1.0.2
+  * drop IA64 support and fix corner case for qemu-x86-debug* packages</comment>
+    <requestid>567691</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>c967e8cc017069ee5ce49755046d2e21</srcmd5>
+    <version>1.0.4</version>
+    <time>1519307910</time>
+    <user>dimstar_suse</user>
+    <comment>- 1.0.4
+  * Fix ChangeLog file generation</comment>
+    <requestid>578647</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>5ca116b167e5d7d453b71b7eeb9ded2b</srcmd5>
+    <version>1.0.5</version>
+    <time>1520329428</time>
+    <user>dimstar_suse</user>
+    <comment>- 1.0.5
+  * use mkisofs instead of unmaintained wodim</comment>
+    <requestid>581924</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>1b718f9389f155fccd04a34f5302de02</srcmd5>
+    <version>1.0.7</version>
+    <time>1521579221</time>
+    <user>dimstar_suse</user>
+    <comment>- 1.0.7
+  * fix ppc64le (related to bsc#1084893)
+- align with SLE changes file (add accept_old_meta_package.patch)
+
+- 1.0.6
+  * fixed platform ID for EFI boot (bsc#1081739)
+- fix dependencies to mkisofs
+- using spec file from git now</comment>
+    <requestid>586163</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>c44c9c974b7d03a99feb29d4dc786c65</srcmd5>
+    <version>1.0.8</version>
+    <time>1523029591</time>
+    <user>dimstar_suse</user>
+    <comment>- 1.0.8
+  * support skelcd with NET subfolder</comment>
+    <requestid>593833</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>e82a0438035a1aee79692f38fc3061bb</srcmd5>
+    <version>1.0.9</version>
+    <time>1524837558</time>
+    <user>dimstar_suse</user>
+    <comment>- 1.0.9
+  * have a different medium name in media.?/media for debug and
+    source medium
+
+as requested by Michel</comment>
+    <requestid>600695</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>8e86286c2ee80b56620066e6220a6214</srcmd5>
+    <version>1.1.0</version>
+    <time>1527932891</time>
+    <user>dimstar_suse</user>
+    <comment>- 1.1.0
+  * fixed handling of metapackages with multiple lines for one package
+    filtered via required architecture
+  * execute mk_listings when configured (bsc#1094929)
+  + drop promo / live boot code
+  * Add riscv64 architecture</comment>
+    <requestid>612900</requestid>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>85f277c6f0e805bc34736b035394bc06</srcmd5>
+    <version>1.0.9</version>
+    <time>1528111370</time>
+    <user>dimstar_suse</user>
+    <comment>Revert to 1.0.9, 1.1.0 introduces a regression when booting the ISO as a DVD-Drive</comment>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>413f7a4ac4cf5fffc97f8f945ef61f3a</srcmd5>
+    <version>1.1.3</version>
+    <time>1528492804</time>
+    <user>dimstar_suse</user>
+    <comment>- 1.1.3
+  * Another fix needed for hybrid media on x86_64
+
+- 1.1.2
+  * Do not generate Apple partion on ppc64le anymore
+  * Allow to build medias without meta packages again
+
+- 1.1.1
+  * fix EFI boot sort order
+- drop factory skelcd hack (accept_old_meta_package.patch)
+
+- 1.1.0
+  * fixed handling of metapackages with multiple lines for one package
+    filtered via required architecture
+  * execute mk_listings when configured (bsc#1094929)
+  + drop promo / live boot code
+  * Add riscv64 architecture</comment>
+    <requestid>614497</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>ae7af23076a46a02d1a921608d859a9b</srcmd5>
+    <version>1.2.0</version>
+    <time>1536678632</time>
+    <user>maxlin_factory</user>
+    <comment>- 1.2.0
+  * Add special RPi hybrid mode</comment>
+    <requestid>631391</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>78ee2078a8820690f3d7b22a7d4db9db</srcmd5>
+    <version>1.2.1</version>
+    <time>1551784614</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>679575</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>c645b948c0bfd0573c9940ae31c26538</srcmd5>
+    <version>1.2.2</version>
+    <time>1563701370</time>
+    <user>dimstar_suse</user>
+    <comment>- 1.2.2
+  * track provided cpeid of products</comment>
+    <requestid>715659</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>5a036ed49fbb0d6f1ac34037af7f19e6</srcmd5>
+    <version>1.2.4</version>
+    <time>1568720213</time>
+    <user>maxlin_factory</user>
+    <comment>- 1.2.4
+  * add SLE wrapper to prepare modules for packages dvd (jsc#SLE-8271)
+  * smaller perl fixes
+
+- 1.2.3
+  handle multiple packages with same name but different version/release in one repo.
+  bsc#1150238</comment>
+    <requestid>731197</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>c0962a7cd60ccc5257bffebd07822078</srcmd5>
+    <version>1.2.5</version>
+    <time>1569367999</time>
+    <user>dimstar_suse</user>
+    <comment>- 1.2.5
+  * Fix SLE wrapper to take the proper architecture for packages DVD (jsc#SLE-8271)</comment>
+    <requestid>731719</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>a00e49d21626eb4c40bb333b93144781</srcmd5>
+    <version>1.2.7</version>
+    <time>1581693978</time>
+    <user>okurz-factory</user>
+    <comment>- 1.2.7
+  * Fix possible partition misallignment (bsc#1162531)
+
+- 1.2.6
+  * Fix SLE wrapper for new Package DVD name.</comment>
+    <requestid>770240</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>2ecd4b9ca3fe3b98eefb7ca31730bd6d</srcmd5>
+    <version>1.2.9</version>
+    <time>1583947926</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>782084</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>4d0c30fcd013b68446d9247e44cd8fb1</srcmd5>
+    <version>1.2.10</version>
+    <time>1587070788</time>
+    <user>dimstar_suse</user>
+    <comment>- 1.2.10
+  * disable -chrp-boot option for ppc64le (bsc#1169420)</comment>
+    <requestid>794217</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>9fe494247536ba57f6b258c9beab773b</srcmd5>
+    <version>1.3.0</version>
+    <time>1588022948</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>797196</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>3d3b461503aea6e5746215d34a846fd7</srcmd5>
+    <version>1.3.1</version>
+    <time>1600879029</time>
+    <user>dimstar_suse</user>
+    <comment>- 1.3.1
+  * include license information in report files
+    (do not use this on OBS 2.10 or before)</comment>
+    <requestid>834264</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>71c317efa8705810cf63be73bfce5988</srcmd5>
+    <version>1.3.2</version>
+    <time>1613043961</time>
+    <user>dimstar_suse</user>
+    <comment>- 1.3.2
+  * RISC-V support</comment>
+    <requestid>870315</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>18a176c6c3268e717443dee8ff20d18e</srcmd5>
+    <version>1.3.3</version>
+    <time>1615905792</time>
+    <user>RBrownSUSE</user>
+    <comment>- 1.3.3
+  * armv7l support</comment>
+    <requestid>879192</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>dd0e88f65cd8d0a3d4ae04d29972947f</srcmd5>
+    <version>1.3.4</version>
+    <time>1625225188</time>
+    <user>dimstar_suse</user>
+    <comment>- 1.3.4
+  * fix collecting of source rpms when multiple different
+    binary versions were used</comment>
+    <requestid>902771</requestid>
+  </revision>
+  <revision rev="37" vrev="2">
+    <srcmd5>ac9ed95a5941c7c9d777c612551df67f</srcmd5>
+    <version>1.3.3</version>
+    <time>1626363172</time>
+    <user>dimstar_suse</user>
+    <comment>Revert to 1.3.3; PPC andz Systems ftp tree fails to build</comment>
+  </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>afd151ecbddcf5ef03f1c8dad7772338</srcmd5>
+    <version>1.3.4</version>
+    <time>1630787525</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>915646</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>0b8622d8cc501e6c59e2fa8a648ac6e5</srcmd5>
+    <version>1.4.2</version>
+    <time>1630928554</time>
+    <user>dimstar_suse</user>
+    <comment>- 1.4.2
+  * support newest rpm version mode (no repository priority)
+  * helpful error message when exact version is required</comment>
+    <requestid>917081</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>971d593020b5a05e988d93754f849b03</srcmd5>
+    <version>1.4.4</version>
+    <time>1632173515</time>
+    <user>dimstar_suse</user>
+    <comment>- 1.4.4
+  * put all candidates of all modules to the medium
+  * fixed architecture handling in version priority mode</comment>
+    <requestid>919687</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>e33c661d6561740289367ad038e0c809</srcmd5>
+    <version>1.4.6</version>
+    <time>1633038182</time>
+    <user>dimstar_suse</user>
+    <comment>- 1.4.6
+  * fixed package tracking regression</comment>
+    <requestid>921794</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>19d86d6733ab222fa71f35734cb06240</srcmd5>
+    <version>1.4.12</version>
+    <time>1671128660</time>
+    <user>dimstar_suse</user>
+    <comment>This version has nothing important for Factory, but contains quite some changes, so let's try to follow git master ....</comment>
+    <requestid>1042919</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>488c7b1a28e482d865665fa5ff6b008e</srcmd5>
+    <version>1.4.13</version>
+    <time>1679854751</time>
+    <user>dimstar_suse</user>
+    <comment>- 1.4.13
+  * fix version compare logic, using the newest candidate now</comment>
+    <requestid>1074194</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>9855e9efbddc061359e410564ef0ad55</srcmd5>
+    <version>1.4.14</version>
+    <time>1690743438</time>
+    <user>dimstar_suse</user>
+    <comment>- 1.4.14
+  * Introduce DOWNLOAD_MIRROR_POLICY option, enabled by default!
+    =&gt; can lead to build failures on inconsistent package build
+       states
+  * Joliet format only on main medium</comment>
+    <requestid>1101100</requestid>
+  </revision>
+</revisionlist>

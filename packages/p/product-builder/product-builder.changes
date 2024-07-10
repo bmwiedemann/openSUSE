@@ -1,0 +1,332 @@
+-------------------------------------------------------------------
+Thu Jul 27 14:38:16 UTC 2023 - Adrian Schröter <adrian@suse.de>
+
+- 1.4.14
+  * Introduce DOWNLOAD_MIRROR_POLICY option, enabled by default!
+    => can lead to build failures on inconsistent package build
+       states
+  * Joliet format only on main medium
+
+-------------------------------------------------------------------
+Fri Mar 24 12:53:48 UTC 2023 - Adrian Schröter <adrian@suse.de>
+
+- 1.4.13
+  * fix version compare logic, using the newest candidate now
+
+-------------------------------------------------------------------
+Wed Dec 14 12:39:26 UTC 2022 - Adrian Schröter <adrian@suse.de>
+
+- 1.4.12
+  * RedHat media support
+  * SLSA provenance file support
+  * support to set DVD volumeid manual
+  * fix hybrid ISO creation
+  * support modulemd filtering
+
+-------------------------------------------------------------------
+Mon Sep 27 13:02:28 UTC 2021 - Adrian Schröter <adrian@suse.de>
+
+- 1.4.6
+  * fixed package tracking regression
+
+-------------------------------------------------------------------
+Fri Sep 17 09:04:30 UTC 2021 - Adrian Schröter <adrian@suse.de>
+
+- 1.4.4
+  * put all candidates of all modules to the medium
+  * fixed architecture handling in version priority mode
+
+-------------------------------------------------------------------
+Mon Sep  6 11:03:58 UTC 2021 - Adrian Schröter <adrian@suse.de>
+
+- 1.4.2
+  * support newest rpm version mode (no repository priority)
+  * helpful error message when exact version is required
+
+-------------------------------------------------------------------
+Mon Jun 28 08:47:58 UTC 2021 - Adrian Schröter <adrian@suse.de>
+
+- 1.3.4
+  * fix collecting of source rpms when multiple different
+    binary versions were used
+
+-------------------------------------------------------------------
+Mon Mar 15 12:26:31 UTC 2021 - Adrian Schröter <adrian@suse.de>
+
+- 1.3.3
+  * armv7l support
+
+-------------------------------------------------------------------
+Mon Feb  8 15:57:54 UTC 2021 - Adrian Schröter <adrian@suse.de>
+
+- 1.3.2
+  * RISC-V support
+
+-------------------------------------------------------------------
+Mon Sep 14 09:46:09 UTC 2020 - Adrian Schröter <adrian@suse.de>
+
+- 1.3.1
+  * include license information in report files
+    (do not use this on OBS 2.10 or before)
+
+-------------------------------------------------------------------
+Tue Apr 21 14:40:56 UTC 2020 - Adrian Schröter <adrian@suse.de>
+
+- 1.3.0
+  * fail when plugins fail
+
+-------------------------------------------------------------------
+Wed Apr 15 14:37:41 UTC 2020 - Adrian Schröter <adrian@suse.de>
+
+- 1.2.10
+  * disable -chrp-boot option for ppc64le (bsc#1169420)
+
+-------------------------------------------------------------------
+Fri Feb 28 11:02:19 UTC 2020 - Adrian Schröter <adrian@suse.de>
+
+- 1.2.9
+  * fix "multiple kiwi files" error for Full media
+
+-------------------------------------------------------------------
+Wed Feb 26 13:23:16 UTC 2020 - Adrian Schröter <adrian@suse.de>
+
+- 1.2.8
+  * keep kwd file in SLE Full media wrapper (bsc#1164670)
+
+-------------------------------------------------------------------
+Wed Feb  5 12:06:04 UTC 2020 - Adrian Schröter <adrian@suse.de>
+
+- 1.2.7
+  * Fix possible partition misallignment (bsc#1162531)
+
+-------------------------------------------------------------------
+Thu Dec 12 11:07:17 UTC 2019 - Frederic Crozat <fcrozat@suse.com>
+
+- 1.2.6
+  * Fix SLE wrapper for new Package DVD name.
+
+-------------------------------------------------------------------
+Wed Sep 18 11:06:05 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- 1.2.5
+  * Fix SLE wrapper to take the proper architecture for packages DVD (jsc#SLE-8271)
+
+-------------------------------------------------------------------
+Mon Sep 16 08:32:26 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- 1.2.4
+  * add SLE wrapper to prepare modules for packages dvd (jsc#SLE-8271)
+  * smaller perl fixes
+
+-------------------------------------------------------------------
+Fri Sep 13 06:08:31 UTC 2019 - Adrian Schröter <adrian@suse.de>
+
+- 1.2.3
+  handle multiple packages with same name but different version/release in one repo.
+  bsc#1150238
+
+-------------------------------------------------------------------
+Tue Jul 16 07:38:10 UTC 2019 - Adrian Schröter <adrian@suse.de>
+
+- 1.2.2
+  * track provided cpeid of products
+
+-------------------------------------------------------------------
+Wed Jan 16 14:46:43 UTC 2019 - Adrian Schröter <adrian@suse.de>
+
+- 1.2.1
+  * Use RPi hybrid mode on aarch64 always (no config needed anymore)
+
+-------------------------------------------------------------------
+Fri Aug 24 12:36:16 UTC 2018 - Adrian Schröter <adrian@suse.de>
+
+- 1.2.0
+  * Add special RPi hybrid mode
+
+-------------------------------------------------------------------
+Wed Jun  6 08:57:09 UTC 2018 - adrian@suse.de
+
+- 1.1.3
+  * Another fix needed for hybrid media on x86_64
+
+-------------------------------------------------------------------
+Tue Jun  5 12:46:51 UTC 2018 - adrian@suse.de
+
+- 1.1.2
+  * Do not generate Apple partion on ppc64le anymore
+  * Allow to build medias without meta packages again
+
+-------------------------------------------------------------------
+Mon Jun  4 13:35:16 UTC 2018 - adrian@suse.de
+
+- 1.1.1
+  * fix EFI boot sort order
+- drop factory skelcd hack (accept_old_meta_package.patch)
+
+-------------------------------------------------------------------
+Tue May 29 15:04:31 UTC 2018 - adrian@suse.de
+
+- 1.1.0
+  * fixed handling of metapackages with multiple lines for one package
+    filtered via required architecture
+  * execute mk_listings when configured (bsc#1094929)
+  + drop promo / live boot code
+  * Add riscv64 architecture
+
+-------------------------------------------------------------------
+Tue Apr 24 16:22:46 UTC 2018 - adrian@suse.de
+
+- 1.0.9
+  * have a different medium name in media.?/media for debug and
+    source medium
+
+-------------------------------------------------------------------
+Mon Mar 26 10:54:12 UTC 2018 - adrian@suse.de
+
+- 1.0.8
+  * support skelcd with NET subfolder
+
+-------------------------------------------------------------------
+Tue Mar 13 05:45:03 UTC 2018 - coolo@suse.com
+
+- 1.0.7
+  * fix ppc64le (related to bsc#1084893)
+- align with SLE changes file (add accept_old_meta_package.patch)
+
+-------------------------------------------------------------------
+Thu Mar  8 08:48:41 UTC 2018 - adrian@suse.de
+
+- 1.0.6
+  * fixed platform ID for EFI boot (bsc#1081739)
+- fix dependencies to mkisofs
+- using spec file from git now
+
+-------------------------------------------------------------------
+Fri Mar  2 08:31:12 UTC 2018 - adrian@suse.de
+
+- 1.0.5
+  * use mkisofs instead of unmaintained wodim
+
+-------------------------------------------------------------------
+Fri Feb 16 12:26:43 UTC 2018 - adrian@suse.de
+
+- 1.0.4
+  * Fix ChangeLog file generation
+
+-------------------------------------------------------------------
+Fri Jan 19 13:10:30 UTC 2018 - adrian@suse.de
+
+- 1.0.3
+  * Adapt to changed -debuginfo-32bit -> -32bit-debuginfo name scheme in SLE 15
+    (incompatible change)
+
+-------------------------------------------------------------------
+Tue Jan 16 13:43:20 UTC 2018 - adrian@suse.de
+
+- 1.0.2
+  * drop IA64 support and fix corner case for qemu-x86-debug* packages
+
+-------------------------------------------------------------------
+Thu Jan 11 13:29:47 UTC 2018 - adrian@suse.de
+
+- 1.0.1
+  * allow to call mk_changelog again (bsc#1050404)
+    default is still off
+
+-------------------------------------------------------------------
+Fri Dec  1 10:14:49 UTC 2017 - adrian@suse.de
+
+- tag it as 1.0
+- fix UEFI secure boot (bsc#939456)
+
+-------------------------------------------------------------------
+Tue Nov 21 09:49:23 UTC 2017 - dimstar@opensuse.org
+
+- Apply accept_old_meta_package.patch also in case prjmeta has a
+  skelcd_compat variable defined. This allows us to change
+  suse_version while still not being able to migrate to the new
+  product converter/builder for Tumbleweed.
+
+-------------------------------------------------------------------
+Fri Oct  6 10:04:45 UTC 2017 - adrian@suse.de
+
+- patch README.BETA again
+
+-------------------------------------------------------------------
+Fri Sep 22 08:25:18 UTC 2017 - adrian@suse.de
+
+- bring back media.?/media file
+- drop media.?/build instead
+- building separate media is an explicit setting now
+
+-------------------------------------------------------------------
+Fri Sep 15 11:12:10 UTC 2017 - adrian@suse.de
+
+- copy .treeinfo for virt-installer
+
+-------------------------------------------------------------------
+Tue Sep 12 15:21:26 UTC 2017 - adrian@suse.de
+
+- detect all products which got put on media
+
+-------------------------------------------------------------------
+Tue Sep  5 10:04:52 UTC 2017 - adrian@suse.de
+
+- Add accept_old_meta_package.patch: temporarily accept metadata
+  in /CD1 for tumbleweed to ease migration.
+
+-------------------------------------------------------------------
+Mon Aug 21 14:47:29 UTC 2017 - adrian@suse.de
+
+- bring back media.1/products file
+  => means that pure repomd data is not anymore enough for YaST
+     installer
+
+-------------------------------------------------------------------
+Mon Aug 21 12:18:40 UTC 2017 - adrian@suse.de
+
+- fix metapackage unpack loop
+
+-------------------------------------------------------------------
+Wed Aug  9 11:12:20 CEST 2017 - ro@suse.de
+
+- only use x86 boot image on s390/s390x if it exists
+- also, on s390/s390x if we have a x86_64 image, make that bootable
+- enforce default to abort on missing packages 
+
+-------------------------------------------------------------------
+Tue Aug  8 07:54:15 UTC 2017 - adrian@suse.de
+
+- always exit on error (bsc#1052017)
+
+-------------------------------------------------------------------
+Tue Jul 11 12:34:47 UTC 2017 - adrian@suse.de
+
+- add Provides system-packages:kiwi-product
+- temporary compat code for /CD? directories in meta packages
+
+-------------------------------------------------------------------
+Tue Jun 27 14:18:50 UTC 2017 - adrian@suse.de
+
+- install missing file for generating PowerPC medias (bsc#1046114)
+
+-------------------------------------------------------------------
+Fri Jun 23 08:56:24 UTC 2017 - adrian@suse.de
+
+- fix unpacking of meta packages and plugin execution
+
+-------------------------------------------------------------------
+Wed May 24 09:54:50 UTC 2017 - adrian@suse.de
+
+- adapt path of meta packages to /usr/lib/skeldcd/CD?  (bsc#1031335)
+
+-------------------------------------------------------------------
+Fri Apr 28 16:49:07 UTC 2017 - jengelh@inai.de
+
+- Stop using old RPM shell vars
+
+-------------------------------------------------------------------
+Tue Apr 11 14:57:20 UTC 2017 - adrian@suse.de
+
+- initial package based on kiwi 7, first attempt for Leap 15
+
