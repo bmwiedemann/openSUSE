@@ -1,0 +1,13 @@
+<services>
+	<service name="tar_scm" mode="disabled">
+		<param name="scm">git</param>
+		<param name="url">https://git.code.sf.net/p/octave/level-set</param>
+		<param name="version">0.3.1</param>
+		<param name="filename">level-set</param>
+	</service>
+	<service name="recompress" mode="disabled">
+		<param name="compression">xz</param>
+		<param name="file">level-set-*.tar</param>
+	</service>
+	<service name="set_version" mode="disabled" />
+</services>
