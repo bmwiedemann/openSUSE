@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>67fe094cd1a5fdc20d5230f192a9d3e4</srcmd5>
+    <version>0.16</version>
+    <time>1637372361</time>
+    <user>dimstar_suse</user>
+    <comment>Needed as a dependency for http://public-inbox.org/ which Joerg Roedel would like to package.</comment>
+    <requestid>932524</requestid>
+  </revision>
+</revisionlist>
