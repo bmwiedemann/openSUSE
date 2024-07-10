@@ -1,0 +1,91 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>88a8985341d0c2f9ab42b6ab540054a5</srcmd5>
+    <version>0.9.0</version>
+    <time>1604926705</time>
+    <user>dimstar_suse</user>
+    <comment>Add malcontent; new dep to GNOME 3.38</comment>
+    <requestid>847068</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>1b63ba48512d05dcb3c724e4a882b561</srcmd5>
+    <version>0.9.0</version>
+    <time>1606649006</time>
+    <user>dimstar_suse</user>
+    <comment>- Don't actually install com.endlessm.ParentalControls.rules: this
+  just grants 'wheel'-group members access without password; as
+  openSUSE does not support 'wheel' by default, we only ship the
+  file as sample file (boo#1177974#c8). (forwarded request 850957 from dimstar)</comment>
+    <requestid>851055</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>c9574a5bcf80500583eff0de7326d449</srcmd5>
+    <version>0.9.0</version>
+    <time>1607801292</time>
+    <user>dimstar_suse</user>
+    <comment>- Split MalcontentControl into seperate package so a library
+  doesn't require a desktop application. (forwarded request 854615 from hellcp)</comment>
+    <requestid>854630</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>0f06f4e416678e00b992a21b12dfaa60</srcmd5>
+    <version>0.10.1</version>
+    <time>1622928652</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 0.10.1 (forwarded request 896406 from susnux)</comment>
+    <requestid>896637</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>12918bf79940eebd29c87201e70a40b3</srcmd5>
+    <version>0.10.1</version>
+    <time>1632939493</time>
+    <user>dimstar_suse</user>
+    <comment>- Use %_pam_moduledir instead of harcoding %{_lib}/security
+  (boo#1191037). (forwarded request 921994 from dimstar)</comment>
+    <requestid>922105</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>a3a01768b4b675ced2381fd903217dd3</srcmd5>
+    <version>0.10.3</version>
+    <time>1644188023</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>951411</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>65bf337a5a702e8d67abb8fdc7eb4817</srcmd5>
+    <version>0.10.4</version>
+    <time>1652561536</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.10.4
+  + Remove superfluous arguments to i18n.merge_file.
+  + Updated translations.
+- Drop upstream resolved patch:
+  + f433aaf8c8f82f0aeaedee664f08bc6fcad47b0d.patch</comment>
+    <requestid>976604</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>b7f860c05b1053a6cb9ecae626b60e3d</srcmd5>
+    <version>0.11.1</version>
+    <time>1697146738</time>
+    <user>anag+factory</user>
+    <comment> (forwarded request 1117188 from iznogood)</comment>
+    <requestid>1117450</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>f80084e389557a9e453f034d4d1058fb</srcmd5>
+    <version>0.11.1</version>
+    <time>1711477501</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1161488</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>d50e031f06176a6620a36791c27b9bb5</srcmd5>
+    <version>0.12.0</version>
+    <time>1715969086</time>
+    <user>anag+factory</user>
+    <comment>Update to version 0.12.0 (forwarded request 1174410 from simonlm)</comment>
+    <requestid>1174651</requestid>
+  </revision>
+</revisionlist>
