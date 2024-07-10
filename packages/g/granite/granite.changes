@@ -1,0 +1,382 @@
+-------------------------------------------------------------------
+Sun Feb 20 15:35:14 UTC 2022 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 6.2.0:
+  * min_length property for Granite.ValidatedEntry
+  * Granite.HyperTextView for navigatable URLs in text views
+  * Updated translations
+  * Prevent crashing on environments without dark style
+  * Use values from the Settings Portal when possible
+  * Disable horizontal scrolling by default in SettingsPage
+
+-------------------------------------------------------------------
+Thu Sep  9 21:24:34 UTC 2021 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 6.1.1:
+- Fixes:
+  * Ensure accel_to_string works with multiple modifiers
+  * Fix locale issues in Flatpaks
+  * Updated translations
+- Additions:
+  * TRANSITION_DURATION_IN_PLACE for consistent in-place widget
+    transformations
+- Other Changes:
+  * accel_to_string handles accel markup without modifiers or
+    that are only modifiers
+  * Granite.Dialog replaces Gtk.Dialog for consistent styling
+  * Granite.SwitchModelButton for use in Gtk.Popover menus
+  * Granite.ValidatedEntry for client-side verification in forms
+- New Constants:
+  * TOOLTIP_SECONDARY_TEXT_MARKUP for smaller second line text in
+    Gtk.Tooltips
+  * SMALL_LABEL for smaller Gtk.Labels without Pango
+  * STYLE_CLASS_WARMTH and STYLE_CLASS_TEMPERATURE for scales
+  * STYLE_CLASS_DEFAULT_DECORATION for slim headerbars
+  * TRANSITION_DURATION_OPEN and TRANSITION_DURATION_CLOSE for
+    consistent animations
+- Removals:
+  * Granite.Widgets.AboutDialog. Provide AppStream metadata
+    instead.
+  * Granite.Widgets.AppMenu. Use Gtk.MenuButton instead.
+- Deprecations:
+  * Granite.Widgets.Avatar. Use Hdy.Avatar instead
+  * Toasts now reset their timeout when sending a new
+    notification and the timeout is stopped while hovering
+  * Backslash, Right Control, and Left Control are now handled by
+    accel_to_string
+  * Make tab tooltips of DynamicNotebook settable
+  * Timepicker corrrectly fires time_changed when AM and PM
+    buttons are selected
+  * Granite.MessageDialog now uses the messagedialog CSS name
+  * Visible child name is now properly synced in
+    Granite.SettingsSidebar
+  * Status can be set in Granite.AbstractSettingsPage on
+    construct
+
+-------------------------------------------------------------------
+Tue Aug 25 20:34:12 UTC 2020 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 5.5.0:
+  * Update granite.appdata.xml.in
+  * SourceList: Rewrite default style (#411)
+  * Deprecate get_button_layout_schema (#403)
+  * Deprecate Utils.set_theming (#404)
+  * Deprecate CollapsiblePaned (#402)
+  * Deprecate get_default_close_button_position (#407)
+  * Deprecate set_theming_for_screen (#408)
+  * SourceList: move only usage of is_left_to_right (#406)
+  * Deprecate get_css_provider (#405)
+  * Deprecate Granite.Services.Paths (#401)
+  * Deprecate Composited Window (#400)
+  * SimpleCommand: Mark as deprecated (#397)
+  * StyleClass: Add color-button (#393)
+  * StyleClass: Add .rounded style constant (#392)
+  * DynamicNotebook: Get rid of the big spinner (#391)
+
+-------------------------------------------------------------------
+Thu Apr 30 18:56:58 UTC 2020 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 5.4.0:
+  * Get prefers color scheme from accountsservice (#319)
+  * Settings: Deprecate and suggest GLib.Settings (#376)
+  * Release 5.3.1 (#379)
+  * AccelLabel: make label settable (#373)
+  * SettingsSidebarRow: center align with no subtitle (#372)
+
+-------------------------------------------------------------------
+Mon Feb 17 00:30:06 UTC 2020 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Fix: invalid-filename-dependency
+
+-------------------------------------------------------------------
+Wed Dec 18 15:36:54 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 5.3.0:
+  * Add Release to Actions
+  * Delete AUTHORS
+  * AccelLabel and Utils: Add null checks (#362)
+  * Add tooltip support for SourceList (#187)
+  * Add Lint to CI (#325)
+  * DynamicNotebook: Lint (#334)
+  * Application: Lint (#341)
+  * BufferSurface: Lint (#343)
+  * AboutDialog: Lint (#352)
+  * Drawing Utilities: Lint (#353)
+  * Drawing Color: Lint (#354)
+  * IconFactory: Lint (#355)
+  * Logger: Lint (#356)
+  * AppMenu: Lint (#357)
+  * Abstract Settings Pages: Lint (#358)
+  * AsyncImage: Lint (#351)
+  * MessageDialog: Lint (#350)
+  * CellRenderers: Lint (#349)
+  * SimpleCommand: Lint (#348)
+  * CompositedWindow: Lint (#347)
+  * SettingsSidebarRow: Lint (#346)
+  * Settings: Lint (#345)
+  * Paths: Lint (#344)
+  * SourceList: Lint (#342)
+  * DatePicker: Lint (#340)
+  * ModeButton: Lint (#339)
+  * Welcome: Lint (#336)
+  * TimePicker: Lint (#338)
+  * Utils: Lint (#337)
+  * Demo Views: Lint (#335)
+  * Use async mutex for badge synchronisation (#333)
+  * Add Gettext Updates to Actions
+  * Delay tab resizing when closing tabs and larger min/max tab
+    width (#311)
+  * Add AccelLabel (#300)
+  * MessageDialogView: Sentence-case primary label (#329)
+  * ...
+
+-------------------------------------------------------------------
+Mon Sep  9 18:53:22 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 5.2.5:
+  * Use vala-lint to lint demo directory. (#316)
+  * README: Update Weblate badge
+  * Remove path from --shared-library flag (#297)
+  * Utils: Add equal keys to accel_to_string (#307)
+  * Merge branch 'origin/master' into Weblate.
+  * Revert "More efficient code for closing to the right (#299)"
+    (#304)
+  * Fix merge conflicts with Weblate
+  * More efficient code for closing to the right (#299)
+  * Provide Badge and Progress support for an Application (#288)
+  * Localization fixes (#298)
+  * Close Tabs to the Right (#296)
+  * Fix #294: Rapidly closing tabs with three-finger/middle click
+    button re-opens closed tabs (#295)
+- Fix: invalid-filepath-dependency
+
+-------------------------------------------------------------------
+Mon Jul  8 01:05:33 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 5.2.4:
+  * SimpleSettingsPage: make title and description selectable
+    (#290)
+  * AbstractSimpleSettingsPage: Use Granite style constant (#292)
+  * Restore GNOME time format key (#273)
+  * Create FUNDING.yml
+  * Contrasting foreground color (#284)
+  * Meson: remove deprecated --thread (#279)
+  * MessageDialogView: Make copy more concise (#282)
+  * Utils: Add more keys to accel-to-string (#278)
+  * Constructors of abstract classes should not be public
+  * Merge branch 'origin/master' into Weblate.
+  * System: deprecate utilies provided by GLib (#269)
+  * Deprecate unused IconFactory (#270)
+
+-------------------------------------------------------------------
+Sun Mar  3 19:13:56 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Do away with em dashes in summaries.
+
+-------------------------------------------------------------------
+Thu Feb 28 16:09:14 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 5.2.3:
+  * Require Meson >=0.48.2 Part 2 (#267)
+  * meson: require meson >= 0.48.2 (#266)
+  * TimePicker: Use more compact boolean comparison syntax (#260)
+  * Fix typo on Avatar documentation (#259)
+  * Add function to check if history is enabled within the
+    privacy settings (#257)
+  * MessageDialog: Add show_error_expander method (#205)
+  * Handle 'Return' key (#255)
+  * DateTime: strip leading spaces from time formats (#252)
+  * meson: bring back the dependencies to the Require field of
+    the pkgconfig
+  * Switch from CMake to Meson build system (#240)
+  * Ignore empty accel strings (#251)
+
+-------------------------------------------------------------------
+Wed Nov 21 18:13:07 UTC 2018 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 5.2.1:
+  * Utils: Make accels optional (#237)
+  * Avoid List.copy() and transfer ownership to fix type-argument
+    mismatch
+
+-------------------------------------------------------------------
+Fri Nov  2 18:34:59 UTC 2018 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 5.2.0:
+  * markup_accel_tooltip: Don't add duplicate accels (#235)
+  * Handle plus/minus (#234)
+  * Add utilities for marking up accel tooltips (#229)
+  * TimePicker: Restore position_dropdown() to fix ABI/API break
+  * Change settings to look at a more relevant value for time
+    format (#222)
+  * Demo: Move ModeSwitch to ModeButton page (#215)
+  * StyleClass: add checkerboard (#214)
+  * TimePicker: misc cleanup (#210)
+  * Updated Example (#207)
+
+-------------------------------------------------------------------
+Mon Oct  8 12:51:49 UTC 2018 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 5.1.0:
+  * DateTime: Add commas in date format (#202)
+  * Merge branch 'origin/master' into Weblate
+  * Don't propagate right click in source list (#190)
+  * .gitignore: Ignore temporary files
+  * Deprecate Granite.Application (#196)
+  * Add EditorConfig
+  * Add Granite.ModeSwitch (#195)
+  * GraniteDemo: Use Gtk.Application (#197)
+  * Allow markup in SourceList.Item names (#188)
+
+-------------------------------------------------------------------
+Sat Jun  9 23:01:04 UTC 2018 - avvissu@yandex.by
+
+- Update to 5.0:
+  * application: Do not export extern symbols
+  * Use --target-glib=2.50 to match gtk+-3.0 requirement
+  * Fix "copying delegates is not supported" warnings
+  * AlertView: Hide icon if no icon name (#167)
+  * Merge remote-tracking branch 'origin/master'
+  * Style class mode switch (#186)
+  * DynamicNotebook: Fix title case (#183)
+  * Handle negative seconds in seconds_to_time function (#140)
+  * Bump vala dependency to >= 0.40
+  * DynamicNotebook: Disconnect from backing Gtk.Notebook on
+    destroy
+  * Drop default value of non-automatic property for vala 0.41+
+  * SimpleSettingsPage: Hide action area if empty (#171)
+  * DynamicNotebook: Style cleanups (#173)
+  * SimpleSettingsPage: Valign title with no description (#170)
+  * Remove several deprecation warnings and useless functions
+    (#160)
+  * SimpleSettingsPage: Ellipsize long page titles (#168)
+  * Add code examples (#153)
+  * Deprecate overlay property in OverlayBar (#162)
+  * MessageDialog: Move properties to construct block (#165)
+  * Prevent ModeButton deselection (for #67) (#156)
+  * DynamicNotebook: make the keybinding trigger the right signal
+    (#164)
+
+-------------------------------------------------------------------
+Fri Jun  8 23:23:47 UTC 2018 - avvissu@yandex.by
+
+- Update the homepage
+- Spec file cleanup
+
+-------------------------------------------------------------------
+Mon Jan 22 16:14:35 UTC 2018 - avvissu@yandex.by
+
+- Add typelib-1_0-Granite-1_0 as required dependency
+
+-------------------------------------------------------------------
+Thu Nov  9 19:24:41 UTC 2017 - avvissu@yandex.by
+
+- Update license
+
+-------------------------------------------------------------------
+Sat Nov  4 23:51:39 UTC 2017 - avvissu@yandex.by
+
+- Update to 0.5:
+  * Update FSF address (#126)
+  * Allow subclassing Granite.Wigets.Tab (#124)
+  * Major soname bump (#117)
+  * Add Seekbar Widget (#120)
+  * Replace deprecated margin_left and margin_right (#119)
+  * Add SettingsSidebar (#70)
+  * [DynamicNotebook] Use GObject construct method to allow
+    subclasses (#118)
+  * Update popover calendar when setting date (#113)
+  * DynamicNotebook: Fix regression with tab duplication on close
+  * add relative date time utils (#102)
+  * DynamicNotebook: misc cleanup (#105)
+  * Better parse text input (#115)
+  * Fix parsing application options (#111)
+  * Make settings lookup recursive (#103)
+  * Add Date & Time formatting to the demo (#101)
+  * Add primary style class (#100)
+  * Add a Granite.MessageDialog (#98)
+  * Fix handling debug option blocking other options from showing
+    in help (#96)
+
+-------------------------------------------------------------------
+Sun May  7 13:10:52 UTC 2017 - avvissu@yandex.by
+
+- Update to 0.4.1:
+  * Readme: Fix weblate link (#43)
+  * Demo: update URLs (#42)
+  * Make ModeButton use toggled instead of button_press_event
+  * Switch WelcomeButton from button_release_event to clicked
+  * Avatar: change icon_size to pixel_size (#37)
+  * Merge remote-tracking branch 'origin/master'
+  * StorageBar.vala: remove deprecated resize_children
+  * Ignore arguments that aren't recognised by granite
+  * Fix build with vala 0.35.6
+  * lib/GtkPatch/AboutDialog.vala: unmark as executable
+  * avatar: allow HiDPI Pixbufs (X times bigger raw images or
+    icons specifically rendered for @X size)
+  * Do not call set_prgname () while GLib already calls it
+  * Add Toast.png to doc/images
+  * Add 2017 to license copyright and app years.
+  * DatePicker: add a "date_changed" signal
+  * AlertView: Wrap title label
+  * Demo: Use back-button style class
+  * Update license header
+  * Remove using Gtk
+  * Add a Toast widget with demo
+  * doc/CMakeLists.txt: fix make valadocs command
+  * Use Gtk.STYLE_CLASS_VIEW
+  * Use Gtk.STYLE_CLASS_DIM_LABEL
+  * Add "welcome" style class
+- Drop granite-0.4.0.1-vala-0.36.patch
+
+-------------------------------------------------------------------
+Sat Apr  1 00:19:20 UTC 2017 - avvissu@yandex.by
+
+- Fix build with vala >= 0.36 (granite-0.4.0.1-vala-0.36.patch)
+
+-------------------------------------------------------------------
+Thu Sep 22 17:27:52 UTC 2016 - avvissu@yandex.by
+
+- Fix install the lang pack
+
+-------------------------------------------------------------------
+Thu Sep 15 20:31:58 UTC 2016 - avvissu@yandex.by
+
+- Spec file cleanup
+
+-------------------------------------------------------------------
+Sat Sep 10 17:01:14 UTC 2016 - mailaender@opensuse.org
+
+- update to version 0.4.0.1
+- add a lang package
+
+-------------------------------------------------------------------
+Sun Aug 30 19:11:10 UTC 2015 - mailaender@opensuse.org
+
+- update to version 0.3.1
+- removed vala_gtk_bindings.patch as lp#1421925 is fixed upstream
+- removed DynamicNotebook.diff as lp#1453526 has been fixed upstream
+- removed ContractorView.diff
+
+-------------------------------------------------------------------
+Fri May 15 14:26:37 UTC 2015 - mailaender@opensuse.org
+
+- add patches to fix bit rot
+  * ContractorView.diff
+  * DynamicNotebook.diff
+
+-------------------------------------------------------------------
+Mon Feb 16 20:00:27 UTC 2015 - mailaender@opensuse.org
+
+- add vala_gtk_bindings.patch.patch to fix lp#1421925
+
+-------------------------------------------------------------------
+Sun Jun 15 14:06:48 UTC 2014 - mailaender@opensuse.org
+
+- update to version 0.3.0
+
+-------------------------------------------------------------------
+Sun May 15 23:06:40 UTC 2014 - jengelh@inai.de
+
+- initial packaging
+
