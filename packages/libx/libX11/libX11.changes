@@ -1,0 +1,1175 @@
+-------------------------------------------------------------------
+Sat Apr  6 03:06:49 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to 1.8.9
+  * Fix regressions introduced in 1.8.8 (!245, !248) - this includes
+    reverting for now the previous "Fix XIM input sometimes jumbled
+    (#198, !236)"
+- supersedes
+  * U_0001-xlibi18n-restore-parse_line1-for-WIN32-builds.patch
+  * U_0002-Revert-imDefLkup-Commit-first-info-in-XimCommitInfo.patch
+  * U_0003-Revert-ximcp-Unmark-to-fabricate-key-events-with-XKe.patch
+
+-------------------------------------------------------------------
+Fri Apr  5 10:42:25 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- U_0001-xlibi18n-restore-parse_line1-for-WIN32-builds.patch
+  U_0002-Revert-imDefLkup-Commit-first-info-in-XimCommitInfo.patch
+  U_0003-Revert-ximcp-Unmark-to-fabricate-key-events-with-XKe.patch
+  * fix regressions in 1.8.8 (issues #204, #205, #206, #207, #208)
+
+-------------------------------------------------------------------
+Mon Mar 25 01:45:51 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- update to 1.8.8
+ * Fix XIM input sometimes jumbled (#198, !236)
+ * Fix _XkbReadGetDeviceInfoReply for nButtons == dev->buttons (!237)
+ * Drop ifdefs for platforms that are no longer supported (!242, !243)
+ * Assorted memory handling cleanups
+
+-------------------------------------------------------------------
+Fri Mar  1 17:52:11 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim descriptions for size (keep the big one for the prominently
+  installed libX11-6).
+- Spin documentation off to libX11-devel-doc, this saves buildroots
+  800+ files and time (mandb is run in %posttrans).
+
+-------------------------------------------------------------------
+Fri Mar  1 10:26:37 UTC 2024 - pgajdos@suse.com
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
+Mon Nov 20 15:55:51 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- this update is needed due to jsc#PED-7282; it includes the
+  security fix for CVE-2022-3555 (bsc#1204425, bsc#1208881) and
+  a fix for a race condition in libX11 that causes various
+  applications to crash randomly (boo#1181963)
+
+-------------------------------------------------------------------
+Tue Oct  3 20:51:22 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- update to 1.8.7
+  This release contains fixes for the issues reported in security
+  advisory here: 
+    https://lists.x.org/archives/xorg-announce/2023-October/003424.html
+  * fixes CVE-2023-43785 libX11: out-of-bounds memory access in 
+    _XkbReadKeySyms() (boo#1215683)
+  * fixes CVE-2023-43786 libX11: stack exhaustion from infinite recursion
+   in PutSubImage() (boo#1215684)
+  * fixes CVE-2023-43787 libX11: integer overflow in XCreateImage()
+    leading to a heap overflow (boo#1215685)
+  along with:
+  * Fail XOpenDisplay() if server-provided default visual is invalid (!233)
+  * Bring XKB docs in line with actual implementation (!231, !228)
+  * Xutil.h: declare XEmptyRegion() and XEqualRegion() as Bool (!225)
+  * Assorted updates to en_US.UTF-8 compose keys (!213, !214, !215, !216,
+    !217, !219, !220, !222, !223, !226, !227, !229)
+
+-------------------------------------------------------------------
+Sat Jul 15 14:44:18 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.8.6:
+  * InitExt.c: Add bounds checks for extension request,
+    event, & error codes
+  * Fixes CVE-2023-3138: X servers could return values from
+    XQueryExtension that would cause Xlib to write entries
+    out-of-bounds of the arrays to store them, though this
+    would only overwrite other parts of the Display
+    struct, not outside the bounds allocated for that
+    structure.
+- drop U_InitExt.c-Add-bounds-checks-for-extension-request-ev.patch (upstream)
+
+-------------------------------------------------------------------
+Mon Jun 12 13:14:03 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- U_InitExt.c-Add-bounds-checks-for-extension-request-ev.patch
+  * Buffer overflows in InitExt.c (boo#1212102, CVE-2023-3138)
+
+-------------------------------------------------------------------
+Thu Jun  1 07:53:19 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.8.5
+  * gitlab CI: Add libtool to required packages
+  * configure: raise minimum autoconf requirement to 2.70
+  * configure: replace deprecated AC_HELP_STRING with AS_HELP_STRING
+  * configure: Use LT_INIT from libtool 2 instead of deprecated AC_PROG_LIBTOOL
+  * gitlab CI: add workflow rules
+  * nls: delete compose sequences that pointlessly mix upper and lower case
+  * nls: remove four hundred and sixty untypable Greek compose sequences
+  * nls: remove twenty two untypable Greek compose sequences
+  * XSetScreenSaver.man: restore the part that was accidentally snipped
+  * nls: make the Amharic compose sequences use the dead-vowel symbols
+  * nls: sort three sequences alphabetically in their group, like all others
+  * nls: delete six compose sequences that cannot be typed
+  * nls: use a slash instead of a combining solidus in compose sequences
+  * NLS: move long S compositions to respective blocks
+  * NLS: implement the expansion of the six Breton N-graph keysyms
+  * NLS: move dead-caron subscript compositions to the relevant Unicode block
+  * NLS: Remove strange dead_cedilla cedi sign sequences
+  * nls: add compose sequence for capital schwa, and delete a deviant one
+- Users of the Amharic (am_ET.UTF-8) compose key sequences provided by libX11
+  will also want to upgrade to xkeyboard-config 2.39 (releasing soon), in order
+  to keep those sequeunces working with this release.
+
+-------------------------------------------------------------------
+Thu Mar  9 11:58:32 UTC 2023 - llyyr <llyyr.public@gmail.com>
+
+- Update to version 1.8.4
+  This release fixes the regressions in previous 1.8.x related to the thread-
+  -safety-constructor option. (boo#1209176)
+- supersedes U_fix-a-memory-leak-in-XRegisterIMInstantiateCallback.patch
+
+-------------------------------------------------------------------
+Mon Dec  5 20:33:29 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.8.1
+  This release fixes the --enable-thread-safety-constructor option to the
+  configure script to work as intended.  In the previous release, the changes
+  for this option may not have been enabled when the option was not specified
+  or when the --enable option was specified.
+  While we have enabled it by default, believing that doing so will reduce
+  the number of bugs users encounter running libX11 clients, in some cases
+  it may expose bugs in which clients had previously gotten away with calling
+  libX11 functions while a libX11 lock is already held, and thus now deadlock,
+  as discussed in https://gitlab.freedesktop.org/xorg/lib/libx11/-/issues/157  
+- let's hope this version doesn't suffer yet from the regressions
+  reported in boo#1205778, boo#1205818 (reported against 1.8.2);
+  we need libX11 thread safe for totem (GNOME 43) :-(
+
+-------------------------------------------------------------------
+Mon Dec  5 13:40:36 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- going back to version 1.7.5 for now to get rid of regressions,
+  which were introduced by trying to get thread-safe in libX11
+  itself 
+- re-introduced U_fix-a-memory-leak-in-XRegisterIMInstantiateCallback.patch
+  which was not yet in 1.7.5
+- supersedes the following patches
+  * U_0001-Add-XFreeThreads-function.patch
+  * U_0002-Don-t-use-pragma-inside-a-function-it-breaks-compili.patch
+  * U_0003-Fix-797755-Allow-X-IfEvent-to-reenter-libX11.patch
+  * U_0004-Indentation-fixes-around-recent-dpy-in_ifevent-chang.patch
+  * U_0005-ChkIfEv.c-fix-wrong-handling-of-dpy-in_ifevent.patch
+
+-------------------------------------------------------------------
+Sat Dec  3 10:20:09 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- U_0001-Add-XFreeThreads-function.patch
+  U_0002-Don-t-use-pragma-inside-a-function-it-breaks-compili.patch
+  U_0003-Fix-797755-Allow-X-IfEvent-to-reenter-libX11.patch
+  U_0004-Indentation-fixes-around-recent-dpy-in_ifevent-chang.patch
+  U_0005-ChkIfEv.c-fix-wrong-handling-of-dpy-in_ifevent.patch
+  * adding all patches since 1.8.2 release in order to try fixing
+    regressions after introducing thread safety constructor with
+    1.8.1 (boo#1205778, boo#1205818)
+- supersedes U_Fix-797755-Allow-X-IfEvent-to-reenter-libX11.patch
+- re-enabled thread safe constructor
+
+-------------------------------------------------------------------
+Fri Dec  2 14:17:32 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- back to "--disable-thread-safety-constructor" for now; we see just
+  too many regressions, e.g. firefox freezes and crashes, crashes with
+  barrierc, crashes in Godot, assertions with vkquake (boo#1205818,
+  boo#1205778)
+
+-------------------------------------------------------------------
+Sat Nov 26 09:56:03 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- U_Fix-797755-Allow-X-IfEvent-to-reenter-libX11.patch
+  * fixed Firefox freezes (regression since 1.8.2) (boo#1205778) 
+
+-------------------------------------------------------------------
+Fri Nov 11 09:05:09 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.8.2
+  * This is primarily a bug fix release, including further work on
+    improving the thread-safety-constructor and making it work with
+    software which had incorrectly called libX11 functions from
+    inside X*IfEvent() calls.
+- supersedes U_fix-a-memory-leak-in-XRegisterIMInstantiateCallback.patch
+
+-------------------------------------------------------------------
+Wed Oct 19 08:45:08 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- U_fix-a-memory-leak-in-XRegisterIMInstantiateCallback.patch
+  * security update for CVE-2022-3554 (bsc#1204422)
+
+-------------------------------------------------------------------
+Thu Jun  9 02:09:02 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.8.1
+  This release fixes the --enable-thread-safety-constructor option to the
+  configure script to work as intended.  In the previous release, the changes
+  for this option may not have been enabled when the option was not specified
+  or when the --enable option was specified.
+
+  While we have enabled it by default, believing that doing so will reduce
+  the number of bugs users encounter running libX11 clients, in some cases
+  it may expose bugs in which clients had previously gotten away with calling
+  libX11 functions while a libX11 lock is already held, and thus now deadlock,
+  as discussed in https://gitlab.freedesktop.org/xorg/lib/libx11/-/issues/157 .
+
+-------------------------------------------------------------------
+Fri Apr 29 17:56:04 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.8
+  * The highlight of this release is that we now try to initialize
+    thread safety ourselves, rather than hope the application does it.
+    This should resolve a number of long-standing bugs with the libxcb
+    integration, since the socket handoff mechanism essentially has to
+    be thread-safe.
+
+-------------------------------------------------------------------
+Sun Apr  3 18:37:48 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.7.4
+  * Don't try to destroy NULL condition variables 
+
+-------------------------------------------------------------------
+Thu Mar 31 08:53:37 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.7.4
+  * bugfix release 
+- supersedes p_khmer-compose.diff
+
+-------------------------------------------------------------------
+Fri Dec 10 10:04:50 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.7.3.1
+  * This release of libX11 corrects a packaging problem in 1.7.3 
+    which caused the m4 files needed for autoreconf to not be 
+    included in the tarballs.
+  * As a bonus, this release also includes one tiny typo fix in the
+    XIM specs.
+
+-------------------------------------------------------------------
+Tue Dec  7 12:56:08 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.7.3
+  * This release includes a number of bug fixes and adds support for
+    the _EVDEVK keysyms added in xorgproto 2021.2.
+
+-------------------------------------------------------------------
+Mon Nov 15 14:03:27 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
+
+- u_no-longer-crash-in-XVisualIDFromVisual.patch
+  * no longer crash in XVisualIDFromVisual() [boo#1191517] 
+
+-------------------------------------------------------------------
+Sun Jun  6 18:54:32 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.7.2
+  * bug fix release, correcting a regression introduced by and
+    improving the checks from the fix for CVE-2021-31535.
+- supersedes U_Check-for-NULL-strings-before-getting-their-lengths.patch
+
+-------------------------------------------------------------------
+Mon May 31 15:33:38 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
+
+- U_Check-for-NULL-strings-before-getting-their-lengths.patch
+  * regression in libX11 1.7.1 (boo#1186643)
+    fixes segfaults for xforms applications like fdesign
+
+-------------------------------------------------------------------
+Tue May 18 15:57:02 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.7.1
+  * security update for CVE-2021-31535 (bsc#1182506)
+- supersedes U_CVE-2021-31535.patch 
+
+-------------------------------------------------------------------
+Mon May 17 09:45:43 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
+
+- U_CVE-2021-31535.patch
+  * adds missing request length checks in libX11 (CVE-2021-31535,
+    bsc#1182506)
+
+-------------------------------------------------------------------
+Sat Nov 21 19:09:11 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.7.0
+  * libX11 version 1.7.0 includes a new API, hence the change from
+    the 1.6 series to 1.7:
+    XSetIOErrorExitHandler which provides a mechanism for applications
+    to recover from I/O error conditions instead of being forced to
+    exit. Thanks to Carlos Garnacho for this.
+  * This release includes a bunch of bug fixes, some which have been
+    pending for over three years:
+    + A bunch of nls cleanups to remove obsolete entries and clean up
+      formatting of the ist. Thanks to Benno Schulenberg for these.
+    + Warning fixes and other cleanups across a huge swath of the
+      library. Thanks to Alan Coopersmith for these.
+    + Memory allocation bugs, including leaks and use after free in the
+      locale code. Thanks to Krzesimir Nowak, Jacek Caban and Vittorio
+      Zecca for these.
+    + Thread safety fixes in the locale code. Thanks to Jacek Caban for
+      these.
+    + poll_for_response race condition fix. Thanks to Frediano Ziglio for
+      the bulk of this effort, and to Peter Hutterer for careful review
+      and improvements.
+  * Version 1.7.0 includes a couple of new locales:
+    ia and ie locales. Thanks to Carmina16 for these.
+  * There are also numerous compose entries added, including:
+    + |^ or ^| for ↑, |v or v| for ↓, ~~ for ≈. Thanks to Antti
+      Savolainen for this.
+    + Allowing use of 'v' for caron, in addition to 'c', so things like
+      vC for Č, vc for č. Thanks to Benno Schulenberg for this.
+    + Compose sequences LT, lt for '<', and GT, gt for '>' for keyboards
+      where those are difficult to access. Thanks to Jonathan Belsewir
+      for this.
+- refreshed patches en-locales.diff, p_khmer-compose.diff and 
+  p_xlib_skip_ext_env.diff
+
+-------------------------------------------------------------------
+Tue Aug 25 21:24:32 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.6.12
+  * Fix an integer overflow in init_om() [CVE-2020-14363, boo#1175239]
+
+-------------------------------------------------------------------
+Sat Aug 15 17:30:24 UTC 2020 - Tobias Klausmann <tobias.klausmann@freenet.de>
+
+- Update to version 1.6.11:
+  A collection of random and security fixes.
+- Remove patches included in this release:
+  + U_001-ChangeTheData_lenParameterOf_XimAttributeToValueToCARD16.patch
+  + U_002-FixIntegerOverflowsIn_XimAttributeToValue.patch
+  + U_003-FixMoreUncheckedLengths.patch
+  + U_004-FixSignedLengthValuesIn_XimGetAttributeID.patch
+  + U_005-ZeroOutBuffersInFunctions.patch
+  + U_006-Fix-size-calculation-in-_XimAttributeToValue.patch
+- Adapt patch p_xlib_skip_ext_env.diff to work with the new version
+
+-------------------------------------------------------------------
+Tue Aug  4 16:33:45 CEST 2020 - tiwai@suse.de
+
+- U_006-Fix-size-calculation-in-_XimAttributeToValue.patch:
+  * Regression fix in previous XIM client head overflow fixes
+    (CVE-2020-14344, bsc#1174628)
+
+-------------------------------------------------------------------
+Fri Jul 31 20:23:05 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
+
+- U_001-ChangeTheData_lenParameterOf_XimAttributeToValueToCARD16.patch,
+  U_002-FixIntegerOverflowsIn_XimAttributeToValue.patch,
+  U_003-FixMoreUncheckedLengths.patch,
+  U_004-FixSignedLengthValuesIn_XimGetAttributeID.patch,
+  U_005-ZeroOutBuffersInFunctions.patch,
+  * XIM client heap overflows (CVE-2020-14344, bsc#1174628)
+
+-------------------------------------------------------------------
+Sun Oct 20 18:27:32 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Add conflicts for old xorgproto-devel, X11/extensions/XKBgeom.h
+  was moved to libX11-devel.
+
+-------------------------------------------------------------------
+Wed Oct  9 22:33:27 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.6.9
+  * A collection of build and documentation fixes, one preparatory
+    change for a new xorgproto release, and a fix for a deadlock
+    bug in _XReply.
+
+-------------------------------------------------------------------
+Mon Jun 17 15:16:57 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.6.8
+  * bug fixes 
+
+-------------------------------------------------------------------
+Wed Oct 10 10:20:23 UTC 2018 - sndirsch@suse.com
+
+- Update to version 1.6.7
+  * XcmsLookupColor: fully initialize XColor structs passed to
+    _XColor_to_XcmsRGB
+  * poll_for_response: Call poll_for_event again if xcb_poll_for_reply fails
+  * poll_for_event: Allow using xcb_poll_for_queued_event
+
+-------------------------------------------------------------------
+Mon Aug 27 07:50:31 UTC 2018 - tchvatal@suse.com
+
+- Format spec with spec-cleaner
+- Use %autopatch to not bother with one-by-one patch application
+- Remove autoreconf as we no longer patch any of the buildsystem
+- Explicitly disable silent rules during configuration
+
+-------------------------------------------------------------------
+Wed Aug 22 15:09:51 UTC 2018 - tobias.johannes.klausmann@mni.thm.de
+
+- Update to version 1.6.6:
+  + Make Xkb{Get,Set}NamedIndicator spec & manpages match code
+  + Clarify state parameter to XkbSetNamedDeviceIndicator
+  + Improve table formatting in XkbChangeControls & XkbKeyNumGroups man pages
+  + If XGetImage fails to create image, don't dereference it to bounds check
+  + Use size_t for buffer sizes in SetHints.c
+  + Change fall through comment in lcDB.c to match gcc's requirements
+  + _XDefaultError: set XlibDisplayIOError flag before calling exit
+  + Fix possible memory leak in cmsProp.c:140
+  + Don't rebuild ks_tables.h if nothing changed.
+  + Remove statement with no effect.
+  + Use flexible array member instead of fake size.
+  + Valgrind fix for XStoreColor and XStoreColors.
+  + XkbOpenDisplay.3: fix typo
+  + Validation of server response in XListHosts.
+  + Fixed off-by-one writes (CVE-2018-14599).
+  + Fixed out of boundary write (CVE-2018-14600).
+  + Fixed crash on invalid reply (CVE-2018-14598).
+  + fix shadow warning
+  + _XIOError(dpy); will never return so remore dead
+  + remove argument check for free() adjust one inden
+  + fix shadow char_size
+  + fix more shadow warning
+  + no need to check argument for _XkbFree()
+  + remove stray extern
+  + no need to check args for Xfree()
+  + fix memleak in error path
+  + fix memleak in error path
+  + no need to check XFree arguments
+  + mark _XDefaultIOError as no_return
+  + Fixes: warning: variable 'req' set but not,used
+  + add _X_UNUSED to avoid unused variable warnings
+  + remove empty line
+  + silence gcc warning assignment discards 'const' qualifier from pointer target type
+- Packaging changes:
+  + Remove upstreamed u_Use-flexible-array-member-instead-of-fake-size.patch
+  + Remove upstreamed u_off-by-one-write-in-XListExtensions.patch
+  + Remove upstreamed u_out-of-boundary-write-in-XListExtensions.patch
+  + Remove upstreamed u_crash-on-invalid-reply-in-XListExtensions.patch
+
+-------------------------------------------------------------------
+Mon Aug 20 12:15:47 UTC 2018 - sndirsch@suse.com
+
+- u_off-by-one-write-in-XListExtensions.patch
+  * fixes off-by-one write in XListExtensions (bsc#1102062, CVE-2018-14599)
+- u_out-of-boundary-write-in-XListExtensions.patch
+  * fixes out of boundary write in XListExtensions (bsc#1102068, CVE-2018-14600)
+- u_crash-on-invalid-reply-in-XListExtensions.patch
+  * crash on invalid reply in XListExtensions (bsc#1102073, CVE-2018-14598) 
+
+-------------------------------------------------------------------
+Thu Mar 15 09:01:19 UTC 2018 - msrb@suse.com
+
+- u_Use-flexible-array-member-instead-of-fake-size.patch
+  * Fixes build error with gcc8. (bnc#1084639)
+
+-------------------------------------------------------------------
+Wed Mar  1 13:48:43 UTC 2017 - tobias.johannes.klausmann@mni.thm.de
+
+- Update to version 1.6.5:
+  + Revert "Compose sequences for rouble sign"
+  + specs/libX11: More synopsis fixes
+  + specs/libX11: Fix paramdef entries listing multiple parameters
+  + specs/libX11: Make paramdef spacing more consistent
+  + specs/libX11: Add missing parameter types for XGetWindowProperty()
+  + specs/libX11: Fix broken synopsis for Data/Data16/Data32
+  + specs/libX11: Update Portability Considerations for the 21st century
+  + autogen.sh: use quoted string variables
+  + Plug a memory leak
+  + Fix wrong Xfree in XListFonts failure path
+  + Typos in "Xlib - C Language X Interface" document - Chapter 02
+  + autogen: add default patch prefix
+  + Compose sequences for rouble sign
+  + autogen.sh: use exec instead of waiting for configure to finish
+  + Revert cs_CZ.UTF-8 XLC_LOCALE to en_US.UTF-8
+- supersedes u_nls-fix-handling-of-cs_CZ.UTF8_locale.patch
+
+-------------------------------------------------------------------
+Tue Nov  8 11:04:56 UTC 2016 - sndirsch@suse.com
+
+- u_nls-fix-handling-of-cs_CZ.UTF8_locale.patch
+  * refix cs_CZ.UTF-locale (boo#1008951, fdo#81875, fdo#98219)
+
+-------------------------------------------------------------------
+Sat Nov  5 01:23:00 UTC 2016 - jengelh@inai.de
+
+- Run fdupes over at least the manpages
+
+-------------------------------------------------------------------
+Sat Oct 29 00:10:49 UTC 2016 - tobias.johannes.klausmann@mni.thm.de
+
+- Update to version 1.6.4:
+  + Move Compose \ o / to be with other emoji compose sequences
+  + Replace Xmalloc+memset pairs with Xcalloc calls
+  + Remove unused definition of XCONN_CHECK_FREQ
+  + Bug 93184: read_EncodingInfo invalid free
+  + Bug 93183: _XDefaultOpenIM memory leaks in out-of-memory error paths
+  + Use strdup instead of Xmalloc+strcpy in _XDefaultOpenIM
+  + XDefaultOMIF: replace strlen+Xmalloc+strcpy with strdup, code simplification
+  + XlcDL.c: replace strcpy+strcat sequences with snprintf
+  + XlcDL.c: reduce code duplication
+  + lcPubWrap: replace malloc(strlen) + strcpy with strdup
+  + Stop checking XTRANS_SECURE_RPC_FLAGS since we no longer use them
+  + Stop checking for preferred order of local transports
+  + Don't need to link libX11-xcb against libX11
+  + xcms: use size_t for strlen/sizeof values instead of converting to int & back
+  + xcms: use unsigned indexes when looping through unsigned values
+  + xcms: use size_t for pointer offsets passed to strncmp
+  + omGeneric.c: Correct the parameter usage of sizeof
+  + fix for Xlib 32-bit request number issues
+  + Add Compose sequence for U+1F4A9.
+  + Xlib.h: Fix macros imitating C functions.
+  + Add compose file for pt_PT similar to pt_BR
+  + Mark _XNextRequest as hidden
+  + New compose keys for local languages in Togo
+  + Fixup param specification for XChangeProperty()
+- Package changes:
+  + Remove upstream patch U_fix_for_Xlib_32-bit_request_number_issues.patch 
+
+-------------------------------------------------------------------
+Mon Nov 23 15:42:49 UTC 2015 - msrb@suse.com
+
+- U_fix_for_Xlib_32-bit_request_number_issues.patch
+  * Fix for overflow of requet number on 32bit platforms.
+    (bnc#845916)
+
+-------------------------------------------------------------------
+Thu Mar 12 16:19:15 UTC 2015 - sndirsch@suse.com
+
+- marked baselibs.conf as source file in specfile 
+
+-------------------------------------------------------------------
+Wed Mar 11 03:38:27 UTC 2015 - tobias.johannes.klausmann@mni.thm.de
+
+- Update to version 1.6.3:
+This release of libX11 looks bigger than it is, due to a lot of spec/doc
+cleanup work that doesn't affect the code itself.  There is still a good
+deal of bug fixes, code cleanup, locale improvements, and compose key table
+additions, including new UTF-8 compose sequences for:
+ + <Multi_key> <R> <equal>      : "<U+20B9>" U20b9 # INDIAN RUPEE SIGN
+ + <Multi_key> <S> <semicolon>  : "Ș"   U0218  # LATIN CAPITAL LETTER S WITH COMMA BELOW
+ + <Multi_key> <s> <semicolon>  : "ș"   U0219  # LATIN SMALL LETTER S WITH COMMA BELOW
+ + <Multi_key> <T> <semicolon>  : "Ț"   U021A  # LATIN CAPITAL LETTER T WITH COMMA BELOW
+ + <Multi_key> <t> <semicolon>  : "ț"   U021B  # LATIN SMALL LETTER T WITH COMMA BELOW
+ + <Multi_key> <F> <U>          : "<U+1F595>"  U1F595 # REVERSED HAND WITH MIDDLE FINGER EXTENDED
+ + <Multi_key> <L> <L> <A> <P>  : "<U+1F596>"  U1F596 # RAISED HAND WITH PART BETWEEN MIDDLE AND RING FINGERS
+- Changes to package:
+  + remove Patch16: U_nls-en_US.UTF-8-Compose.pre-Fix-typo.patch
+
+-------------------------------------------------------------------
+Mon Mar 24 12:47:59 UTC 2014 - sndirsch@suse.com
+
+- U_nls-en_US.UTF-8-Compose.pre-Fix-typo.patch
+  * fix typo in en_US Compose file (s/dead_actute/dead_acute/)
+    (bnc#869333)
+
+-------------------------------------------------------------------
+Mon Sep  9 13:56:14 UTC 2013 - tobias.johannes.klausmann@mni.thm.de
+
+- Update to version 1.6.2:
+  This release of libX11 includes a number of fixes to handle realloc() failure
+  better, resolves a number of compiler & static analyzer warnings, fixes several
+  bugs in the X Input Method framework, and cleans up the XKB code to be a little
+  more maintainable.
+- Drop upstreamed patches:
+  + Patch10: bug-239698_libx11.diff
+  + Patch13: bug-221326-xim-sync.patch
+
+-------------------------------------------------------------------
+Tue Jul 30 12:37:20 UTC 2013 - tobias.johannes.klausmann@mni.thm.de
+
+- Update to version 1.6.1:
+  This release includes fixes to the code, docs & build system.
+  It makes both clang & doclifter happier.  It includes patches
+  upstreamed from Ubuntu, NetBSD, and Solaris.
+
+-------------------------------------------------------------------
+Tue Jun  4 15:31:23 UTC 2013 - tobias.johannes.klausmann@mni.thm.de
+
+- Update to final version 1.6.0:
+  Changes since libX11 1.5 (found in the release candidates) include fixes 
+  for the recently announced security issues CVE-2013-1981, CVE-2013-1997,
+  and CVE-2013-2004; the addition of the _XEatDataWords API for use by
+  Xlib-based extension libraries, to help them avoid integer overflows when
+  it is necessary to discard data; removal of ancient, unused, incomplete 
+  support for the Cray Unicos OS, and the DECnet and TLI transport types;
+  numerous improvements to compose files and locale data; man page macro
+  cleanups to improve compatibility with doclifter; and various other
+  code cleanups and compiler warning fixes.
+
+-------------------------------------------------------------------
+Fri May 24 15:02:37 UTC 2013 - tobias.johannes.klausmann@mni.thm.de
+
+- Update to version 1.5.99.902 (1.6 RC2):
+  This release is brought to you by the letters C, V, & E, and more numbers
+  than I can count, with a special guest appearance by the letters J́ and j́.
+
+-------------------------------------------------------------------
+Thu Apr 11 10:19:55 UTC 2013 - mmeister@suse.com
+
+- Added url as source.
+  Please see http://en.opensuse.org/SourceUrls
+
+-------------------------------------------------------------------
+Mon Mar 25 10:23:19 UTC 2013 - tobias.johannes.klausmann@mni.thm.de
+
+- Update to version 1.5.99.901 (1.6 RC1):
+  + Remove upstreamed patches: 
+    bug153744.diff (patch1)
+    p_new-locales.diff (patch4)
+    p_khmer-locale.diff (patch8)
+    Xcms.diff (patch17)
+    compose-zh_CN.UTF-8.diff (patch18)
+  + Changed patches:
+    bug-239698_libx11.diff (patch10)
+    bug-221326-xim-sync.patch (patch13)
+    en-locales.diff (patch15)
+
+-------------------------------------------------------------------
+Tue Mar 19 18:20:00 UTC 2013 - jengelh@inai.de
+
+- Use more robust make install call
+
+-------------------------------------------------------------------
+Thu Feb 28 15:04:09 UTC 2013 - matz@suse.com
+
+- Fix typo in rpm metadata (%versino -> %version)
+
+-------------------------------------------------------------------
+Mon Jun  4 11:14:06 UTC 2012 - tobias.johannes.klausmann@mni.thm.de
+
+- Update finally to version 1.5
+
+-------------------------------------------------------------------
+Wed May 30 01:14:02 UTC 2012 - tobias.johannes.klausmann@mni.thm.de
+
+- Update to version 1.4.99.902
+
+-------------------------------------------------------------------
+Thu Apr 26 08:47:37 UTC 2012 - vuntz@opensuse.org
+
+- Drop xorg-x11-libX11.sh and xorg-x11-libX11.csh files: they were
+  not used in the package, although they were intended to be
+  installed in /etc/profile.d. However, /etc/profile and
+  /etc/csh.login already contain this code (setting the XKEYSYMDB
+  and XNLSPATH environment variables), so we don't need them.
+
+-------------------------------------------------------------------
+Thu Apr 12 08:19:14 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 1.4.99.901:
+  + Allow modifier releases in compose sequences
+  + XQueryColors: Split a request into multiple requests if
+    necessary
+  + Revert "xcb: Add TCP fallback"
+  + Block for other threads in _XUserLockDisplay
+  + Fixes for compiler warnings and problems found by code static
+    analysis tools
+  + New compose sequences
+  + Documentation fixes and improvements
+- Changes from version 1.4.99.1:
+  + New macro/API added: GetRequestSized to get a request of a
+    specific size
+  + New compose sequences
+  + Various bug fixes, including:
+    - Fix for pasting more than 1024 bytes into xterm
+    - Make Xim handle NEED_SYNC_REPLY flag
+    - Fix modifier key range in Xutil.h
+    - Fix build/target word size mismatch when cross-compiling in
+      makekeys
+  + Cleanup of specs
+- Changes from version 1.4.4:
+  + Fixes for problems found by static analysis or to ease further
+    static analysis
+  + Documentation fixes and improvements
+  + Improved assertions to help users and developers figure out why
+    Xlib just crashed on them
+- Changes from version 1.4.3:
+  + Add support for the Sinhala keysyms
+- Changes from version 1.4.2:
+  + Fixes for problems found by code static analysis tools
+  + Fixes for Display lock handling that caused some deadlocks when
+    using xcb for transport
+  + Build configuration improvements
+- Changes from version 1.4.1:
+  + Fix two issues in Xlib event handling
+  + Convert the XKB API spec to DocBook format
+- Drop 0001--XIM-Revert-commit-1a1a42a3.patch: a fix was committed
+  according to latest comments in fdo#7869.
+- Drop p_sr_CS-compose.diff: some (Serbian) Cyrillic NFD sequences
+  were added in git commit fa2eecca, so we don't need our own patch
+  anymore. Fix bnc#95813.
+- Rewrite bug153744.diff after build system change.
+- Rebase p_new-locales.diff: some of it was integrated upstream.
+- Rebase p_khmer-compose.diff: some of it was integrated upstream.
+- Rebase bug-239698_libx11.diff: fix for fdo#7869 (commit 738f7b86)
+  changed the macro to be used.
+- Update Xcms.diff to use $(datadir) instead of /usr/share so that
+  it's upstreamable.
+
+-------------------------------------------------------------------
+Sat Feb 11 19:01:37 UTC 2012 - jengelh@medozas.de
+
+- Rename xorg-x11-libX11 to libX11 and utilize shlib policy
+
+-------------------------------------------------------------------
+Sun Nov 20 06:48:30 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Wed Jun 29 08:55:03 UTC 2011 - eich@suse.de
+
+- revert code:
+  * add 0001--XIM-Revert-commit-1a1a42a3.patch, 
+  * remove scim_swallow.diff 
+  This restores Xlib as it was before commit 1a1a42a3 was introduced 
+  upstream.
+  scim_swallow.diff tried to fix a client problem on the
+  library side: clients should call XFilterEvent() directly
+  after calling XNextEvent(). The focus must not change between
+  these two calls. If we see problems we should fix the clients.
+  The patch introduces another problem as it causes keyboard events
+  to be delivered to the wrong IC and window.
+
+-------------------------------------------------------------------
+Fri May 20 10:29:18 UTC 2011 - sndirsch@novell.com
+
+- reverted previous change since it still results in a build cycle 
+
+-------------------------------------------------------------------
+Thu May 19 12:01:44 UTC 2011 - giecrilj@stegny.2a.pl
+
+- Fix bnc#688032 by reintroducing (modified) xmlto
+
+-------------------------------------------------------------------
+Tue Mar 22 20:01:19 UTC 2011 - sndirsch@novell.com
+
+- disabled Ignore-user-locks-after-sleeping-in-_XReply-and-_XRe.patch
+  for now (bnc #679177, comment #6) 
+
+-------------------------------------------------------------------
+Thu Mar 17 17:29:54 UTC 2011 - sndirsch@novell.com
+
+- Ignore-user-locks-after-sleeping-in-_XReply-and-_XRe.patch
+  * Ignore user locks after sleeping in _XReply and _XReadEvents
+    (bnc #679177) 
+
+-------------------------------------------------------------------
+Tue Jan 18 16:32:18 UTC 2011 - sndirsch@novell.com
+
+- reverted previous change due to creation of a pretty huge build
+  cycle according to coolo
+
+-------------------------------------------------------------------
+Mon Jan 17 14:22:28 UTC 2011 - sndirsch@novell.com
+
+- added xmlto to BuildRequires to generate HTML documentation from
+  XML sources
+
+-------------------------------------------------------------------
+Tue Dec 21 02:42:17 UTC 2010 - sndirsch@novell.com
+
+- bumped version number to 7.6 
+
+-------------------------------------------------------------------
+Tue Nov 30 22:51:55 UTC 2010 - cristian.rodriguez@opensuse.org
+
+- revert symbol export control patch, other packages
+ happend to use libX11 private symbols 
+
+-------------------------------------------------------------------
+Tue Nov 30 15:13:16 UTC 2010 - cristian.rodriguez@opensuse.org
+
+- export only public API symbols
+- disable silent rules, defeat the purpose of post build checks  
+
+-------------------------------------------------------------------
+Sun Nov 21 23:39:31 UTC 2010 - sndirsch@novell.com
+
+- update to release 1.4.0 
+  * After 3 release candidates, it's finally done - libX11 1.4 is
+    released.
+
+-------------------------------------------------------------------
+Sat Oct 30 16:01:11 UTC 2010 - sndirsch@novell.com
+
+- update to release 1.3.99.903
+  * This is the third release candidate for libX11 1.4. Will the
+    third time be the charm? Hopefully Dan's fixes to disable
+    fopping the docs by default will solve the build issues that
+    many people had with the second RC.
+
+-------------------------------------------------------------------
+Wed Sep 22 07:08:05 UTC 2010 - sndirsch@novell.com
+
+- update to release 1.3.99.902
+  "This is the second (and hopefully last) release candidate for
+   libX11 1.4. A final release is planned to occur by the end of
+   September, so that it will be available for inclusion in the
+   X11R7.6 katamari, since I missed the original goal of releasing
+   at XDS time."
+
+-------------------------------------------------------------------
+Sat Sep  4 06:23:16 CEST 2010 - sndirsch@suse.de
+
+- update to release 1.3.99.901
+  * This is the first release candidate for libX11 1.4. A final
+    release is planned to occur around the time of the X Developer
+    Summit in mid-September, so that it will be available for
+    inclusion in the X11R7.6 katamari.
+- removed p_xauth.diff; obsoleted by
+  bug-262309_xcb-xauthlocalhostname.diff in xorg-x11-libxcb
+  package
+
+-------------------------------------------------------------------
+Sat Sep  4 06:04:30 CEST 2010 - sndirsch@suse.de
+
+- update to release 1.3.5
+- adjusted p_sr_CS-compose.diff 
+
+-------------------------------------------------------------------
+Fri Apr  2 17:54:37 CEST 2010 - sndirsch@suse.de
+
+- bumped version number to 7.5 
+
+-------------------------------------------------------------------
+Sat Jan 16 18:49:49 CET 2010 - sndirsch@suse.de
+
+- update to release 1.3.2
+- adjusted p_sr_CS-compose.diff 
+
+-------------------------------------------------------------------
+Mon Dec 14 18:24:50 CET 2009 - jengelh@medozas.de
+
+- add baselibs.conf as a source
+
+-------------------------------------------------------------------
+Sat Nov 14 03:03:13 CET 2009 - sndirsch@suse.de
+
+- regenerated p_new-locales.diff 
+
+-------------------------------------------------------------------
+Fri Jul 10 07:32:06 CEST 2009 - sndirsch@suse.de
+
+- libX11 1.2.2
+  * various fixes
+  * support for some locales added
+- adjusted p_new-locales.diff
+
+-------------------------------------------------------------------
+Thu Apr 30 21:53:45 CEST 2009 - sndirsch@suse.de
+
+- pack .la files in devel package
+- move .a files to devel package
+
+-------------------------------------------------------------------
+Thu Apr 30 18:27:28 CEST 2009 - sndirsch@suse.de
+
+- reenabled build of static libs on openSUSE <= 11.1
+
+-------------------------------------------------------------------
+Tue Apr 28 22:26:17 CEST 2009 - crrodriguez@suse.de
+
+- fix -devel package dependencies 
+
+-------------------------------------------------------------------
+Tue Apr 21 20:56:15 CEST 2009 - crrodriguez@suse.de
+
+- remove static libraries and "la" files 
+
+-------------------------------------------------------------------
+Wed Apr  8 01:54:51 CEST 2009 - sndirsch@suse.de
+
+- libX11 1.2.1
+  * various fixes
+  * support for some locales added
+- adjusted en-locales.diff, p_new-locales.diff
+
+-------------------------------------------------------------------
+Tue Mar  3 18:09:23 CET 2009 - sndirsch@suse.de
+
+- fixed and reenabled scim_swallow.diff (bnc #434865)
+
+-------------------------------------------------------------------
+Tue Mar  3 12:08:56 CET 2009 - sndirsch@suse.de
+
+- redone scim_swallow.diff (replaces scim_swallow1.diff/
+  scim_swallow2.diff); disabled for now since it breaks scim
+  completely
+
+-------------------------------------------------------------------
+Sun Mar  1 20:40:21 CET 2009 - sndirsch@suse.de
+
+- libX11 1.2 
+- obsoletes bug356556-bad_array_index.diff, 
+  p_XFree86-4.2.0-i18n-xlib-20020322.diff.bz2, p_xlc-locale.diff,
+  p_xlib-threadsafe.diff, xkb-rangefix.diff
+- adjusted p_sr_CS-compose.diff, p_xauth.diff, scim_swallow1.diff
+
+-------------------------------------------------------------------
+Tue Feb 24 14:13:11 CET 2009 - sndirsch@suse.de
+
+- scim_swallow1.diff/scim_swallow2.diff:
+  * fix for bnc #434865
+
+-------------------------------------------------------------------
+Wed Jan 28 16:23:58 CET 2009 - sndirsch@suse.de
+
+- compose-zh_CN.UTF-8.diff
+  * added missing entry in compose.dir for zh_CN.UTF-8 (bnc #461243)
+
+-------------------------------------------------------------------
+Thu Sep 11 14:20:55 CEST 2008 - sndirsch@suse.de
+
+- bumped release number to 7.4 
+
+-------------------------------------------------------------------
+Fri Sep  5 04:47:41 CEST 2008 - sndirsch@suse.de
+
+- libX11 1.1.5
+  * This is just an i18n and bugfix release, essentially. Most of
+    the fixes bar James's most recent ones have been in 1.1 branch
+    for a while, and the rest were just cherry-picked from master.
+
+-------------------------------------------------------------------
+Sat Aug 30 04:01:50 CEST 2008 - sndirsch@suse.de
+
+- moved Xcms.txt to /usr/share/X11 (bnc #419548)
+
+-------------------------------------------------------------------
+Tue Aug 26 23:53:58 CEST 2008 - sndirsch@suse.de
+
+- Xcms.txt apparently needs to be in /usr/lib/X11 (bnc #419548) 
+
+-------------------------------------------------------------------
+Wed May 14 10:42:49 CEST 2008 - sndirsch@suse.de
+
+- xkb-rangefix.diff
+  * fixed range in _XKbWriteKeyExplicit (bnc #369263)
+- fixed rpmlint warnings
+
+-------------------------------------------------------------------
+Fri May  9 17:43:52 CEST 2008 - sndirsch@suse.de
+
+- en-locales.diff
+  * added missing support for en_XX.UTF-8 locales (bnc #388711)
+
+-------------------------------------------------------------------
+Thu Apr 10 12:54:45 CEST 2008 - ro@suse.de
+
+- added baselibs.conf file to build xxbit packages
+  for multilib support
+
+-------------------------------------------------------------------
+Thu Mar  6 22:20:20 CET 2008 - sndirsch@suse.de
+
+- libX11 1.1.4 
+
+-------------------------------------------------------------------
+Mon Feb 25 18:34:00 CET 2008 - sndirsch@suse.de
+
+- using "-fno-tree-vrp" as workaround for gcc miscompilation no
+  longer required (bnc #355496)
+
+-------------------------------------------------------------------
+Wed Feb 13 11:21:25 CET 2008 - sndirsch@suse.de
+
+- added temporary workaround (-fno-tree-vrp) to fix gcc
+  miscompilation (bnc#355496)
+
+-------------------------------------------------------------------
+Tue Jan 29 15:56:21 CET 2008 - sndirsch@suse.de
+
+- bug356556-bad_array_index.diff
+  * fixed copy & paste error, which resulted ina bad array index
+    compiler warning (Bug #356556) 
+
+-------------------------------------------------------------------
+Wed Jan  2 00:08:05 CET 2008 - crrodriguez@suse.de
+
+- fix library-without-ldconfig-* error 
+
+-------------------------------------------------------------------
+Fri Oct 26 10:45:58 CEST 2007 - sndirsch@suse.de
+
+- p_khmer-compose.diff/p_khmer-locale.diff
+  * added missing bits (Bug #335944, comment #17)
+
+-------------------------------------------------------------------
+Sat Sep 29 12:22:38 CEST 2007 - sndirsch@suse.de
+
+- bumped version to 7.3 
+
+-------------------------------------------------------------------
+Thu Aug  2 12:28:48 CEST 2007 - sndirsch@suse.de
+
+- update to release 1.1.3
+  * libX11 1.1.3 is a maintenance release that fixes a bug
+    (introduced with libX11 1.1.2) which broke the
+    XGetMotionEvents function.
+
+-------------------------------------------------------------------
+Mon Jun 11 17:36:44 CEST 2007 - sndirsch@suse.de
+
+- libX11-1.1.2-fix-XGetMotionEvents.patch:
+  * fix argument orders (X.Org Bug #11222)
+
+-------------------------------------------------------------------
+Mon Jun  4 11:26:19 CEST 2007 - sndirsch@suse.de
+
+- update to release 1.1.2:
+  * A variety of bug fixes, new and better documentation, etc.
+- obsoletes bug-252958_libX11.diff, bug-248332_lcDB.diff
+
+-------------------------------------------------------------------
+Thu May 10 21:40:18 CEST 2007 - sndirsch@suse.de
+
+- create symlinks instead of copies for empty/missing files of some 
+  UTF-8 locales (Bug #273157)
+
+-------------------------------------------------------------------
+Thu May 03 16:10:51 CEST 2007 - mfabian@suse.de
+
+- Bugzilla #221326: add Egbert's XIM sync patch.
+
+-------------------------------------------------------------------
+Wed Apr  4 22:55:18 CEST 2007 - sndirsch@suse.de
+
+- bug-248332_lcDB.diff:
+  * fixes a bad pointer calculation type (Bug #248332)
+
+-------------------------------------------------------------------
+Thu Mar 29 22:44:44 CEST 2007 - sndirsch@suse.de
+
+- added zlib-devel to Buildrequires 
+
+-------------------------------------------------------------------
+Mon Mar 26 12:57:33 CEST 2007 - sndirsch@suse.de
+
+- bug-252958_libX11.diff:
+  * Buffer overflow in XGetPixel() (Bug #252958)
+
+-------------------------------------------------------------------
+Thu Feb 22 06:05:08 CET 2007 - sndirsch@suse.de
+
+- build with libxcb again
+
+-------------------------------------------------------------------
+Tue Jan 30 00:19:43 CET 2007 - sndirsch@suse.de
+
+- bug-239698_libx11.diff:
+  * XIM (with SCIM) commits first character after FocusIn 
+    immediately (Bug #239698) 
+
+-------------------------------------------------------------------
+Sat Dec 30 11:49:22 CET 2006 - sndirsch@suse.de
+
+- force building without libxcb (still was built against it by
+  accident)
+
+-------------------------------------------------------------------
+Sat Dec 16 05:52:49 CET 2006 - sndirsch@suse.de
+
+- no longer build libX11 against libxcb
+
+-------------------------------------------------------------------
+Sun Dec  3 16:12:23 CET 2006 - sndirsch@suse.de
+
+- update to release 1.1.1 
+- build libX11 against libxcb
+
+-------------------------------------------------------------------
+Sat Nov 25 12:00:48 CET 2006 - sndirsch@suse.de
+
+- remove nls/{ja.U90,ja.S90}/XLC_LOCALE.pre from sources; no longer
+  mark sources as NoSource in specfile (Bugs #200471, #153744)
+
+-------------------------------------------------------------------
+Wed Oct 18 14:41:08 CEST 2006 - sndirsch@suse.de
+
+- imLcIm.c.diff:
+  * no longer twice-open the compose file in Xinput setup 
+
+-------------------------------------------------------------------
+Sun Sep  3 15:12:56 CEST 2006 - dmueller@suse.de
+
+- build parallel
+
+-------------------------------------------------------------------
+Sun Aug 20 14:29:43 CEST 2006 - sndirsch@suse.de
+
+- install profile.d files only for SUSE <= 10.1
+- Compose and XI18N_OBJS files are missing or empty for some UTF-8
+  locales; use the ones for en_US.UTF-8
+
+-------------------------------------------------------------------
+Mon Aug  7 10:36:38 CEST 2006 - sndirsch@suse.de
+
+- p_khmer-compose.diff:
+  * added required compose entries for Khmer (Bug #143348)
+- p_khmer-locale.diff:
+  * km_KH locale support (Bug #144397)
+- p_xlib_skip_ext_env.diff:
+  * added support for disabling extensions through environment 
+    variables (Bug #167317)
+
+-------------------------------------------------------------------
+Sat Aug  5 22:46:48 CEST 2006 - sndirsch@suse.de
+
+- p_XFree86-4.2.0-i18n-xlib-20020322.diff:
+  * gb18030 patches from SUN
+- p_new-locales.diff:
+  * support for new indic/african locales (Bug #98262)
+- p_xauth.diff:
+  * Let X authorization be tolerant to hostname changes (Bug #98627)
+- p_xlc-locale.diff:
+  * fixes strange font mixups, when fontsets are still used (#74299)
+- p_xlib-threadsafe.diff:
+  * don't have the input filter wrapped by the display lock (Bug #55962)
+- p_sr_CS-compose.diff:
+  * Serbian specific compose table entries (Bug #95813)
+
+-------------------------------------------------------------------
+Wed Aug  2 16:12:02 CEST 2006 - sndirsch@suse.de
+
+- fix setup line 
+
+-------------------------------------------------------------------
+Fri Jul 28 14:44:18 CEST 2006 - sndirsch@suse.de
+
+- use "-fno-strict-aliasing" 
+
+-------------------------------------------------------------------
+Thu Jul 27 11:41:16 CEST 2006 - sndirsch@suse.de
+
+- use $RPM_OPT_FLAGS
+- remove existing /usr/include/X11 symlink in %pre
+
+-------------------------------------------------------------------
+Tue Jul 25 10:14:20 CEST 2006 - sndirsch@suse.de
+
+- added profile scripts to set XKEYSYMDB/XNLSPATH accordingly
+
+-------------------------------------------------------------------
+Mon Jul 24 10:47:37 CEST 2006 - sndirsch@suse.de
+
+- fixed locale support 
+
+-------------------------------------------------------------------
+Fri Jul 21 14:43:54 CEST 2006 - sndirsch@suse.de
+
+- no longer install ja.S90/ja.U90 XLC_LOCALE files; declare libX11
+  sources as NoSource to make our legal department happy 
+  (Bug #153744)
+
+-------------------------------------------------------------------
+Thu Jul 20 12:31:19 CEST 2006 - sndirsch@suse.de
+
+- removed usr/lib/X11 directory from filelist, since it conflicts
+  with filesystem package  
+
+-------------------------------------------------------------------
+Thu Jul 20 04:23:37 CEST 2006 - sndirsch@suse.de
+
+- added /usr/%{_lib}/X11 to %files to fix build
+
+-------------------------------------------------------------------
+Thu Jun 22 12:35:43 CEST 2006 - sndirsch@suse.de
+
+- created package 
+

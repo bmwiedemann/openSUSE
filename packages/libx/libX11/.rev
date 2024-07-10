@@ -1,0 +1,673 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b807dfd8a7624be145da72f6a5b3a662</srcmd5>
+    <version>1.4.0</version>
+    <time>1329476536</time>
+    <user>coolo</user>
+    <comment>- Rename xorg-x11-libX11 to libX11 and utilize shlib policy</comment>
+    <requestid>105442</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>651fee593a3b958904c822e3af67ff33</srcmd5>
+    <version>1.4.99.901</version>
+    <time>1336492858</time>
+    <user>coolo</user>
+    <comment>Remove unused source files from package; this blocks the package from enterin Factory; needs to be resubmitted to Factory because of this issue (forwarded request 115612 from vuntz)</comment>
+    <requestid>116725</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>4fe4b66060d3804debcc6fe3c26f30f3</srcmd5>
+    <version>1.4.99.902</version>
+    <time>1338528065</time>
+    <user>coolo</user>
+    <comment>- Update to version 1.4.99.902</comment>
+    <requestid>122979</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>5bd2e5168bf3188bbdcd18cc52a9bf4c</srcmd5>
+    <version>1.5.0</version>
+    <time>1338991680</time>
+    <user>coolo</user>
+    <comment>- Update finally to version 1.5</comment>
+    <requestid>123782</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>5bd2e5168bf3188bbdcd18cc52a9bf4c</srcmd5>
+    <version>1.5.0</version>
+    <time>1340183554</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>5bd2e5168bf3188bbdcd18cc52a9bf4c</srcmd5>
+    <version>1.5.0</version>
+    <time>1359109229</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="6">
+    <srcmd5>7389e86b98eddcd0c37dda3478cbd89c</srcmd5>
+    <version>1.5.0</version>
+    <time>1362119173</time>
+    <user>coolo</user>
+    <comment>- Fix typo in rpm metadata (%versino -&gt; %version) (forwarded request 156844 from matz2)</comment>
+    <requestid>156861</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>4d2a646011f2b0e2240b58e5807a5c8e</srcmd5>
+    <version>1.5.99.901</version>
+    <time>1364323698</time>
+    <user>coolo</user>
+    <comment>- Update to version 1.5.99.901 (1.6 RC1):
+  + Remove upstreamed patches: 
+    bug153744.diff (patch1)
+    p_new-locales.diff (patch4)
+    p_khmer-locale.diff (patch8)
+    Xcms.diff (patch17)
+    compose-zh_CN.UTF-8.diff (patch18)
+  + Changed patches:
+    bug-239698_libx11.diff (patch10)
+    bug-221326-xim-sync.patch (patch13)
+    en-locales.diff (patch15)
+
+- Use more robust make install call</comment>
+    <requestid>161220</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>ebb0d61a710f19aa561ccdf756235287</srcmd5>
+    <version>1.5.99.901</version>
+    <time>1365928438</time>
+    <user>coolo</user>
+    <comment>- Added url as source.
+  Please see http://en.opensuse.org/SourceUrls (forwarded request 163608 from m_meister)</comment>
+    <requestid>163634</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>0d81f785aabf7bd2b20260f226adb421</srcmd5>
+    <version>1.5.99.902</version>
+    <time>1369641163</time>
+    <user>coolo</user>
+    <comment>update to version 1.5.99.902
+
+This &quot;release&quot; fixes conutless CVE's:
+http://lists.x.org/archives/xorg-announce/2013-May/002221.html (forwarded request 176514 from tobijk)</comment>
+    <requestid>176536</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>5271e4478175671e75d562fdab5787ea</srcmd5>
+    <version>1.6.0</version>
+    <time>1370426109</time>
+    <user>coolo</user>
+    <comment>update to version 1.6.0 (forwarded request 177535 from tobijk)</comment>
+    <requestid>177643</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>9f964925af1a1ba8dabe552557acc297</srcmd5>
+    <version>1.6.1</version>
+    <time>1375288248</time>
+    <user>coolo</user>
+    <comment>update to version 1.6.1 (forwarded request 184949 from tobijk)</comment>
+    <requestid>184950</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>53434dd5ed0380d546d88375b17b24df</srcmd5>
+    <version>1.6.2</version>
+    <time>1378894785</time>
+    <user>coolo</user>
+    <comment>update to version 1.6.2 (forwarded request 198222 from tobijk)</comment>
+    <requestid>198223</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>53434dd5ed0380d546d88375b17b24df</srcmd5>
+    <version>1.6.2</version>
+    <time>1379662877</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="4">
+    <srcmd5>d6d6a3d1808494e147c6bc8c535085a5</srcmd5>
+    <version>1.6.2</version>
+    <time>1395897271</time>
+    <user>coolo</user>
+    <comment>- U_nls-en_US.UTF-8-Compose.pre-Fix-typo.patch
+  * fix typo in en_US Compose file (s/dead_actute/dead_acute/)
+    (bnc#869333)</comment>
+    <requestid>227308</requestid>
+  </revision>
+  <revision rev="16" vrev="6">
+    <srcmd5>d6d6a3d1808494e147c6bc8c535085a5</srcmd5>
+    <version>1.6.2</version>
+    <time>1409301480</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>02ce01f4c30c91342898e3a416a14a5a</srcmd5>
+    <version>1.6.3</version>
+    <time>1426495060</time>
+    <user>dimstar_suse</user>
+    <comment>- marked baselibs.conf as source file in specfile 
+
+- Update to version 1.6.3:
+This release of libX11 looks bigger than it is, due to a lot of spec/doc
+cleanup work that doesn't affect the code itself.  There is still a good
+deal of bug fixes, code cleanup, locale improvements, and compose key table
+additions, including new UTF-8 compose sequences for:
+ + &lt;Multi_key&gt; &lt;R&gt; &lt;equal&gt;      : &quot;&lt;U+20B9&gt;&quot; U20b9 # INDIAN RUPEE SIGN
+ + &lt;Multi_key&gt; &lt;S&gt; &lt;semicolon&gt;  : &quot;Ș&quot;   U0218  # LATIN CAPITAL LETTER S WITH COMMA BELOW
+ + &lt;Multi_key&gt; &lt;s&gt; &lt;semicolon&gt;  : &quot;ș&quot;   U0219  # LATIN SMALL LETTER S WITH COMMA BELOW
+ + &lt;Multi_key&gt; &lt;T&gt; &lt;semicolon&gt;  : &quot;Ț&quot;   U021A  # LATIN CAPITAL LETTER T WITH COMMA BELOW
+ + &lt;Multi_key&gt; &lt;t&gt; &lt;semicolon&gt;  : &quot;ț&quot;   U021B  # LATIN SMALL LETTER T WITH COMMA BELOW
+ + &lt;Multi_key&gt; &lt;F&gt; &lt;U&gt;          : &quot;&lt;U+1F595&gt;&quot;  U1F595 # REVERSED HAND WITH MIDDLE FINGER EXTENDED
+ + &lt;Multi_key&gt; &lt;L&gt; &lt;L&gt; &lt;A&gt; &lt;P&gt;  : &quot;&lt;U+1F596&gt;&quot;  U1F596 # RAISED HAND WITH PART BETWEEN MIDDLE AND RING FINGERS
+- Changes to package:
+  + remove Patch16: U_nls-en_US.UTF-8-Compose.pre-Fix-typo.patch</comment>
+    <requestid>290458</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>d3b36691474149703b860180bf34ae80</srcmd5>
+    <version>1.6.3</version>
+    <time>1448957857</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>345908</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>4e307637685619453c2090b1bcc11d16</srcmd5>
+    <version>1.6.4</version>
+    <time>1478377278</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>438252</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>d3b6e4a342a74ac6a677ac3b2b99d615</srcmd5>
+    <version>1.6.4</version>
+    <time>1478687896</time>
+    <user>dimstar_suse</user>
+    <comment>- u_nls-fix-handling-of-cs_CZ.UTF8_locale.patch
+  * refix cs_CZ.UTF-locale (boo#1008951, fdo#81875, fdo#98219)
+
+- Run fdupes over at least the manpages</comment>
+    <requestid>439186</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>9b7d9af7ee7013edf0ceffca7adfc166</srcmd5>
+    <version>1.6.5</version>
+    <time>1488732959</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.6.5:
+  + Revert &quot;Compose sequences for rouble sign&quot;
+  + specs/libX11: More synopsis fixes
+  + specs/libX11: Fix paramdef entries listing multiple parameters
+  + specs/libX11: Make paramdef spacing more consistent
+  + specs/libX11: Add missing parameter types for XGetWindowProperty()
+  + specs/libX11: Fix broken synopsis for Data/Data16/Data32
+  + specs/libX11: Update Portability Considerations for the 21st century
+  + autogen.sh: use quoted string variables
+  + Plug a memory leak
+  + Fix wrong Xfree in XListFonts failure path
+  + Typos in &quot;Xlib - C Language X Interface&quot; document - Chapter 02
+  + autogen: add default patch prefix
+  + Compose sequences for rouble sign
+  + autogen.sh: use exec instead of waiting for configure to finish
+  + Revert cs_CZ.UTF-8 XLC_LOCALE to en_US.UTF-8
+- supersedes u_nls-fix-handling-of-cs_CZ.UTF8_locale.patch</comment>
+    <requestid>461349</requestid>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>7edbfd00cba3fd43d73c6ebc92c3ad13</srcmd5>
+    <version>1.6.5</version>
+    <time>1521192874</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>587472</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>8108a97a37b8f39363caac41f3d0042e</srcmd5>
+    <version>1.6.6</version>
+    <time>1535441046</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>631742</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>afd8ce4ddc34459b96c023327079f30c</srcmd5>
+    <version>1.6.7</version>
+    <time>1540198935</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.6.7
+  * XcmsLookupColor: fully initialize XColor structs passed to
+    _XColor_to_XcmsRGB
+  * poll_for_response: Call poll_for_event again if xcb_poll_for_reply fails
+  * poll_for_event: Allow using xcb_poll_for_queued_event</comment>
+    <requestid>640982</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>c88fe131b7fef1154b80e9a6ce4a5b86</srcmd5>
+    <version>1.6.8</version>
+    <time>1561195442</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.6.8
+  * bug fixes</comment>
+    <requestid>710377</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>c00335fcad5d81f8993216e4aef69089</srcmd5>
+    <version>1.6.9</version>
+    <time>1571950865</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>741458</requestid>
+  </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>b84259397a4cc4b2cd8ac04a6e85d466</srcmd5>
+    <version>1.6.9</version>
+    <time>1596651995</time>
+    <user>dimstar_suse</user>
+    <comment>- U_006-Fix-size-calculation-in-_XimAttributeToValue.patch:
+  * Regression fix in previous XIM client head overflow fixes
+    (CVE-2020-14344, bsc#1174628) (forwarded request 824349 from tiwai)</comment>
+    <requestid>824353</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>f8ee86578d0fd322a96fe288c032a5bf</srcmd5>
+    <version>1.6.12</version>
+    <time>1598651106</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.6.12
+  * Fix an integer overflow in init_om() [CVE-2020-14363, boo#1175239]
+
+- Update to version 1.6.11:
+  A collection of random and security fixes.
+- Remove patches included in this release:
+  + U_001-ChangeTheData_lenParameterOf_XimAttributeToValueToCARD16.patch
+  + U_002-FixIntegerOverflowsIn_XimAttributeToValue.patch
+  + U_003-FixMoreUncheckedLengths.patch
+  + U_004-FixSignedLengthValuesIn_XimGetAttributeID.patch
+  + U_005-ZeroOutBuffersInFunctions.patch
+  + U_006-Fix-size-calculation-in-_XimAttributeToValue.patch
+- Adapt patch p_xlib_skip_ext_env.diff to work with the new version</comment>
+    <requestid>829641</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>cfe492c2fd8923f55bc7fd80039f5936</srcmd5>
+    <version>1.7.0</version>
+    <time>1606428621</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.7.0
+  * libX11 version 1.7.0 includes a new API, hence the change from
+    the 1.6 series to 1.7:
+    XSetIOErrorExitHandler which provides a mechanism for applications
+    to recover from I/O error conditions instead of being forced to
+    exit. Thanks to Carlos Garnacho for this.
+  * This release includes a bunch of bug fixes, some which have been
+    pending for over three years:
+    + A bunch of nls cleanups to remove obsolete entries and clean up
+      formatting of the ist. Thanks to Benno Schulenberg for these.
+    + Warning fixes and other cleanups across a huge swath of the
+      library. Thanks to Alan Coopersmith for these.
+    + Memory allocation bugs, including leaks and use after free in the
+      locale code. Thanks to Krzesimir Nowak, Jacek Caban and Vittorio
+      Zecca for these.
+    + Thread safety fixes in the locale code. Thanks to Jacek Caban for
+      these.
+    + poll_for_response race condition fix. Thanks to Frediano Ziglio for
+      the bulk of this effort, and to Peter Hutterer for careful review
+      and improvements.
+  * Version 1.7.0 includes a couple of new locales:
+    ia and ie locales. Thanks to Carmina16 for these.
+  * There are also numerous compose entries added, including:
+    + |^ or ^| for ↑, |v or v| for ↓, ~~ for ≈. Thanks to Antti
+      Savolainen for this.
+    + Allowing use of 'v' for caron, in addition to 'c', so things like
+      vC for Č, vc for č. Thanks to Benno Schulenberg for this.
+    + Compose sequences LT, lt for '&lt;', and GT, gt for '&gt;' for keyboards
+      where those are difficult to access. Thanks to Jonathan Belsewir
+      for this.
+- refreshed patches en-locales.diff, p_khmer-compose.diff and 
+  p_xlib_skip_ext_env.diff</comment>
+    <requestid>849881</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>3d7a2807425c51f790280aeb010dd29f</srcmd5>
+    <version>1.7.1</version>
+    <time>1621531484</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.7.1
+  * security update for CVE-2021-31535 (bsc#1182506)
+- supersedes U_CVE-2021-31535.patch 
+
+- U_CVE-2021-31535.patch
+  * adds missing request length checks in libX11 (CVE-2021-31535,
+    bsc#1182506)</comment>
+    <requestid>894113</requestid>
+  </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>c5b709d8afcb5b7e9b715f9e80224e6e</srcmd5>
+    <version>1.7.1</version>
+    <time>1622928628</time>
+    <user>dimstar_suse</user>
+    <comment>- U_Check-for-NULL-strings-before-getting-their-lengths.patch
+  * regression in libX11 1.7.1 (boo#1186643)
+    fixes segfaults for xforms applications like fdesign</comment>
+    <requestid>896392</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>abc15916db1448fbad8a3011f1e1c4f8</srcmd5>
+    <version>1.7.2</version>
+    <time>1623443422</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.7.2
+  * bug fix release, correcting a regression introduced by and
+    improving the checks from the fix for CVE-2021-31535.
+- supersedes U_Check-for-NULL-strings-before-getting-their-lengths.patch</comment>
+    <requestid>897894</requestid>
+  </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>7ec69022092fa8520b7ebaba359be6cb</srcmd5>
+    <version>1.7.2</version>
+    <time>1637372291</time>
+    <user>dimstar_suse</user>
+    <comment>- u_no-longer-crash-in-XVisualIDFromVisual.patch
+  * no longer crash in XVisualIDFromVisual() [boo#1191517]</comment>
+    <requestid>931562</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>3f6c3c537d53cca06628878300fed712</srcmd5>
+    <version>1.7.3.1</version>
+    <time>1639266972</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.7.3.1
+  * This release of libX11 corrects a packaging problem in 1.7.3 
+    which caused the m4 files needed for autoreconf to not be 
+    included in the tarballs.
+  * As a bonus, this release also includes one tiny typo fix in the
+    XIM specs.
+
+- Update to version 1.7.3
+  * This release includes a number of bug fixes and adds support for
+    the _EVDEVK keysyms added in xorgproto 2021.2.</comment>
+    <requestid>939073</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>485126cb03aef3bd0bf903bceaa378d5</srcmd5>
+    <version>1.7.5</version>
+    <time>1649181471</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.7.4
+  * Don't try to destroy NULL condition variables 
+
+- Update to version 1.7.4
+  * bugfix release 
+- supersedes p_khmer-compose.diff</comment>
+    <requestid>966679</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>279c086ea6647d45d60f4fdbc750a9fc</srcmd5>
+    <version>1.8</version>
+    <time>1651501478</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.8
+  * The highlight of this release is that we now try to initialize
+    thread safety ourselves, rather than hope the application does it.
+    This should resolve a number of long-standing bugs with the libxcb
+    integration, since the socket handoff mechanism essentially has to
+    be thread-safe.</comment>
+    <requestid>973978</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>6c9633d26315ddbedecc4403ce013d76</srcmd5>
+    <version>1.8.1</version>
+    <time>1654869435</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.8.1
+  This release fixes the --enable-thread-safety-constructor option to the
+  configure script to work as intended.  In the previous release, the changes
+  for this option may not have been enabled when the option was not specified
+  or when the --enable option was specified.
+  While we have enabled it by default, believing that doing so will reduce
+  the number of bugs users encounter running libX11 clients, in some cases
+  it may expose bugs in which clients had previously gotten away with calling
+  libX11 functions while a libX11 lock is already held, and thus now deadlock,
+  as discussed in https://gitlab.freedesktop.org/xorg/lib/libx11/-/issues/157 .</comment>
+    <requestid>981405</requestid>
+  </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>72db93f518e5f087d2c0c4f32fb9845e</srcmd5>
+    <version>1.8</version>
+    <time>1654998355</time>
+    <user>dimstar_suse</user>
+    <comment>osc copypac from project:openSUSE:Factory package:libX11 revision:36, using expand</comment>
+  </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>6c9633d26315ddbedecc4403ce013d76</srcmd5>
+    <version>1.8.1</version>
+    <time>1657191372</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>986983</requestid>
+  </revision>
+  <revision rev="40" vrev="3">
+    <srcmd5>a87f5e74c63c12006e4c52701c530a1c</srcmd5>
+    <version>1.8.1</version>
+    <time>1666256984</time>
+    <user>dimstar_suse</user>
+    <comment>- U_fix-a-memory-leak-in-XRegisterIMInstantiateCallback.patch
+  * security update for CVE-2022-3554 (bsc#1204422)</comment>
+    <requestid>1029940</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>b1656c30e31b1218a48f26476f1ca4e1</srcmd5>
+    <version>1.8.2</version>
+    <time>1668271230</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.8.2
+  * This is primarily a bug fix release, including further work on
+    improving the thread-safety-constructor and making it work with
+    software which had incorrectly called libX11 functions from
+    inside X*IfEvent() calls.
+- supersedes U_fix-a-memory-leak-in-XRegisterIMInstantiateCallback.patch</comment>
+    <requestid>1035199</requestid>
+  </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>411b62ce4f409210e8f57397e6322452</srcmd5>
+    <version>1.8.2</version>
+    <time>1669549975</time>
+    <user>dimstar_suse</user>
+    <comment>- U_Fix-797755-Allow-X-IfEvent-to-reenter-libX11.patch
+  * fixed Firefox freezes (regression since 1.8.2) (boo#1205778)</comment>
+    <requestid>1038314</requestid>
+  </revision>
+  <revision rev="43" vrev="3">
+    <srcmd5>5b83bc8f974f61af52b1765150fb07a4</srcmd5>
+    <version>1.8.2</version>
+    <time>1670058202</time>
+    <user>dimstar_suse</user>
+    <comment>- back to &quot;--disable-thread-safety-constructor&quot; for now; we see just
+  too many regressions, e.g. firefox freezes and crashes, crashes with
+  barrierc, crashes in Godot, assertions with vkquake (boo#1205818,
+  boo#1205778)</comment>
+    <requestid>1039609</requestid>
+  </revision>
+  <revision rev="44" vrev="4">
+    <srcmd5>1f691bfa26e730d2d280d6acc96ebe88</srcmd5>
+    <version>1.8.2</version>
+    <time>1670162279</time>
+    <user>dimstar_suse</user>
+    <comment>- U_0001-Add-XFreeThreads-function.patch
+  U_0002-Don-t-use-pragma-inside-a-function-it-breaks-compili.patch
+  U_0003-Fix-797755-Allow-X-IfEvent-to-reenter-libX11.patch
+  U_0004-Indentation-fixes-around-recent-dpy-in_ifevent-chang.patch
+  U_0005-ChkIfEv.c-fix-wrong-handling-of-dpy-in_ifevent.patch
+  * adding all patches since 1.8.2 release in order to try fixing
+    regressions after introducing thread safety constructor with
+    1.8.1 (boo#1205778, boo#1205818)
+- supersedes U_Fix-797755-Allow-X-IfEvent-to-reenter-libX11.patch
+- re-enabled thread safe constructor</comment>
+    <requestid>1039777</requestid>
+  </revision>
+  <revision rev="45" vrev="4">
+    <srcmd5>3acc0161d69c88659d02e8ef0c14e340</srcmd5>
+    <version>1.8.1</version>
+    <time>1670332967</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.8.1
+  This release fixes the --enable-thread-safety-constructor option to the
+  configure script to work as intended.  In the previous release, the changes
+  for this option may not have been enabled when the option was not specified
+  or when the --enable option was specified.
+  While we have enabled it by default, believing that doing so will reduce
+  the number of bugs users encounter running libX11 clients, in some cases
+  it may expose bugs in which clients had previously gotten away with calling
+  libX11 functions while a libX11 lock is already held, and thus now deadlock,
+  as discussed in https://gitlab.freedesktop.org/xorg/lib/libx11/-/issues/157  
+- let's hope this version doesn't suffer yet from the regressions
+  reported in boo#1205778, boo#1205818 (reported against 1.8.2);
+  we need libX11 thread safe for totem (GNOME 43) :-(
+
+- going back to version 1.7.5 for now to get rid of regressions,
+  which were introduced by trying to get thread-safe in libX11
+  itself 
+- re-introduced U_fix-a-memory-leak-in-XRegisterIMInstantiateCallback.patch
+  which was not yet in 1.7.5
+- supersedes the following patches
+  * U_0001-Add-XFreeThreads-function.patch
+  * U_0002-Don-t-use-pragma-inside-a-function-it-breaks-compili.patch
+  * U_0003-Fix-797755-Allow-X-IfEvent-to-reenter-libX11.patch
+  * U_0004-Indentation-fixes-around-recent-dpy-in_ifevent-chang.patch
+  * U_0005-ChkIfEv.c-fix-wrong-handling-of-dpy-in_ifevent.patch</comment>
+    <requestid>1040432</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>40e4b33ba0a85ba74209216561819dfe</srcmd5>
+    <version>1.8.4</version>
+    <time>1679068947</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.8.4
+  This release fixes the regressions in previous 1.8.x related to the thread-
+  -safety-constructor option. (boo#1209176)
+- supersedes U_fix-a-memory-leak-in-XRegisterIMInstantiateCallback.patch</comment>
+    <requestid>1072175</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>bcd94d72e0d641150ccb51a686ebd492</srcmd5>
+    <version>1.8.5</version>
+    <time>1685830292</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.8.5
+  * gitlab CI: Add libtool to required packages
+  * configure: raise minimum autoconf requirement to 2.70
+  * configure: replace deprecated AC_HELP_STRING with AS_HELP_STRING
+  * configure: Use LT_INIT from libtool 2 instead of deprecated AC_PROG_LIBTOOL
+  * gitlab CI: add workflow rules
+  * nls: delete compose sequences that pointlessly mix upper and lower case
+  * nls: remove four hundred and sixty untypable Greek compose sequences
+  * nls: remove twenty two untypable Greek compose sequences
+  * XSetScreenSaver.man: restore the part that was accidentally snipped
+  * nls: make the Amharic compose sequences use the dead-vowel symbols
+  * nls: sort three sequences alphabetically in their group, like all others
+  * nls: delete six compose sequences that cannot be typed
+  * nls: use a slash instead of a combining solidus in compose sequences
+  * NLS: move long S compositions to respective blocks
+  * NLS: implement the expansion of the six Breton N-graph keysyms
+  * NLS: move dead-caron subscript compositions to the relevant Unicode block
+  * NLS: Remove strange dead_cedilla cedi sign sequences
+  * nls: add compose sequence for capital schwa, and delete a deviant one
+- Users of the Amharic (am_ET.UTF-8) compose key sequences provided by libX11
+  will also want to upgrade to xkeyboard-config 2.39 (releasing soon), in order
+  to keep those sequeunces working with this release.</comment>
+    <requestid>1090195</requestid>
+  </revision>
+  <revision rev="48" vrev="2">
+    <srcmd5>9a34ea07fa5d637172aac3f3538c17fc</srcmd5>
+    <version>1.8.5</version>
+    <time>1687033209</time>
+    <user>dimstar_suse</user>
+    <comment>- U_InitExt.c-Add-bounds-checks-for-extension-request-ev.patch
+  * Buffer overflows in InitExt.c (boo#1212102, CVE-2023-3138)</comment>
+    <requestid>1093353</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>7871feab568e5d67db2e70f4e80cc9d2</srcmd5>
+    <version>1.8.6</version>
+    <time>1689786577</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1098898</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>638c192ee9a4fccb149af77fb860f947</srcmd5>
+    <version>1.8.7</version>
+    <time>1696528962</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.8.7
+  This release contains fixes for the issues reported in security
+  advisory here: 
+    https://lists.x.org/archives/xorg-announce/2023-October/003424.html
+  * fixes CVE-2023-43785 libX11: out-of-bounds memory access in 
+    _XkbReadKeySyms() (boo#1215683)
+  * fixes CVE-2023-43786 libX11: stack exhaustion from infinite recursion
+   in PutSubImage() (boo#1215684)
+  * fixes CVE-2023-43787 libX11: integer overflow in XCreateImage()
+    leading to a heap overflow (boo#1215685)
+  along with:
+  * Fail XOpenDisplay() if server-provided default visual is invalid (!233)
+  * Bring XKB docs in line with actual implementation (!231, !228)
+  * Xutil.h: declare XEmptyRegion() and XEqualRegion() as Bool (!225)
+  * Assorted updates to en_US.UTF-8 compose keys (!213, !214, !215, !216,
+    !217, !219, !220, !222, !223, !226, !227, !229)</comment>
+    <requestid>1115072</requestid>
+  </revision>
+  <revision rev="51" vrev="2">
+    <srcmd5>db7be126bdb0ed31f7643a99e6495375</srcmd5>
+    <version>1.8.7</version>
+    <time>1700598723</time>
+    <user>anag+factory</user>
+    <comment>- this update is needed due to jsc#PED-7282; it includes the
+  security fix for CVE-2022-3555 (bsc#1204425, bsc#1208881) and
+  a fix for a race condition in libX11 that causes various
+  applications to crash randomly (boo#1181963)</comment>
+    <requestid>1127741</requestid>
+  </revision>
+  <revision rev="52" vrev="3">
+    <srcmd5>617c41f6e6f5f08bcce716ecead30d8a</srcmd5>
+    <version>1.8.7</version>
+    <time>1709493574</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1154330</requestid>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>fef151c173be4f89a9ad65d136ba38df</srcmd5>
+    <version>1.8.8</version>
+    <time>1711397227</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.8.8
+ * Fix XIM input sometimes jumbled (#198, !236)
+ * Fix _XkbReadGetDeviceInfoReply for nButtons == dev-&gt;buttons (!237)
+ * Drop ifdefs for platforms that are no longer supported (!242, !243)
+ * Assorted memory handling cleanups</comment>
+    <requestid>1161216</requestid>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>0d131591df60f086125847ec124323ab</srcmd5>
+    <version>1.8.9</version>
+    <time>1712590659</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.8.9
+  * Fix regressions introduced in 1.8.8 (!245, !248) - this includes
+    reverting for now the previous &quot;Fix XIM input sometimes jumbled
+    (#198, !236)&quot;
+- supersedes
+  * U_0001-xlibi18n-restore-parse_line1-for-WIN32-builds.patch
+  * U_0002-Revert-imDefLkup-Commit-first-info-in-XimCommitInfo.patch
+  * U_0003-Revert-ximcp-Unmark-to-fabricate-key-events-with-XKe.patch
+
+- U_0001-xlibi18n-restore-parse_line1-for-WIN32-builds.patch
+  U_0002-Revert-imDefLkup-Commit-first-info-in-XimCommitInfo.patch
+  U_0003-Revert-ximcp-Unmark-to-fabricate-key-events-with-XKe.patch
+  * fix regressions in 1.8.8 (issues #204, #205, #206, #207, #208)</comment>
+    <requestid>1165729</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,25 @@
+Index: src/QuExt.c
+===================================================================
+--- src/QuExt.c.orig
++++ src/QuExt.c
+@@ -45,6 +45,20 @@ XQueryExtension(
+     if (name != NULL && strlen(name) >= USHRT_MAX)
+         return false;
+ 
++    if (name && strlen (name) < 256)
++    {
++	char var[256 + 15];
++	int  i;
++
++	strcpy (var, "XLIB_SKIP_EXT_");
++	for (i = 0; name[i]; i++)
++	    var[i + 14] = name[i] == '-' ? '_' : name[i];
++
++	var[i + 14] = 0;
++	if (getenv (var))
++	    return False;
++    }
++
+     LockDisplay(dpy);
+     GetReq(QueryExtension, req);
+     req->nbytes = name ? (CARD16) strlen(name) : 0;
