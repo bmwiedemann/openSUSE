@@ -1,10 +1,10 @@
 #!/bin/sh
 pkg=$1
 [ -n "$1" ] || exit 1
-first=$(echo $pkg | cut -c1)
+first=$(echo $pkg | cut -c1 | tr A-Z a-z)
 p=packages/$first/$pkg
 if ! test -d $p ; then # handle lib*
-    first=$(echo $pkg | cut -c1-4)
+    first=$(echo $pkg | cut -c1-4 | tr A-Z a-z)
     p=packages/$first/$pkg
 fi
 test -d $p || exit 2
