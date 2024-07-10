@@ -1,0 +1,28 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>69e82e0d3a2297a7e7248a67ab0e947a</srcmd5>
+    <version>0.3.5</version>
+    <time>1668609846</time>
+    <user>dimstar_suse</user>
+    <comment>General package for accessing OpenStreetMap API (including Overpass).</comment>
+    <requestid>1036200</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>a398e18432a74457e5d550430de54c44</srcmd5>
+    <version>0.3.5</version>
+    <time>1680636401</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip python38, python-xarray is not available there.
+</comment>
+    <requestid>1077174</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>33d0975b732230f74899f271373ea979</srcmd5>
+    <version>0.3.5</version>
+    <time>1704281565</time>
+    <user>dimstar_suse</user>
+    <comment>- require setuptools
+- spec cleanups</comment>
+    <requestid>1136455</requestid>
+  </revision>
+</revisionlist>
