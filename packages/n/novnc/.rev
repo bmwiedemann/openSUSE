@@ -1,0 +1,173 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>bd0d950b8dddc0e97a908ca76305903f</srcmd5>
+    <version>0.3</version>
+    <time>1367237312</time>
+    <user>coolo</user>
+    <comment>OpenStack dependency</comment>
+    <requestid>173036</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>bd0d950b8dddc0e97a908ca76305903f</srcmd5>
+    <version>0.3</version>
+    <time>1379663381</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>3c56fab9ee961b7cf908470b08a847eb</srcmd5>
+    <version>0.4</version>
+    <time>1380172185</time>
+    <user>coolo</user>
+    <comment>- update to 0.4:
+  * Clarify permissive licenses of HTML, CSS, images.
+  * Use render queue and requestAnimationFrame
+  * UltraVNC repeater support</comment>
+    <requestid>200476</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>3c56fab9ee961b7cf908470b08a847eb</srcmd5>
+    <version>0.4</version>
+    <time>1409301994</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d5652f76ce0d01cb8671394aa1d3a6cb</srcmd5>
+    <version>0.5.1</version>
+    <time>1435652143</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.5.1:
+  + Improved keyboard support via use of keysyms.js
+  + Fix HEXTILE &quot;blank&quot; tile support
+  + lower minimum width to accommodate smaller screens
+  + Fix issue causing true-color cursors to not be changed
+  + Fix subprotocol support for the TIGHT encoding
+- Changes from 0.5.0:
+  + General Fixes/Improvements:
+    - Use Object.defineProperty on Array prototype to prevent
+      issues with enumeration
+    - Internal Refactor for improved testability
+    - Improved parsing of query string parameters
+    - Support container page scrolling
+    - Fixed IE10 keyboard support
+    - Fixes for mobile keyboards (Android and iOS)
+    - Improved foreign keyboard support
+    - dynamic script loading without document.write
+  + Protocol Support:
+    - TightVNC support (we support choosing the NOTUNNEL type if
+      tunnels are requested)
+    - XVP Support
+- Update license tag to &quot;MPL-2.0; LGPL-3.0&quot;, following relicensing.
+- Drop novnc-0.3-call-websockify.patch,
+  novnc-0.3-nova-wsproxy.patch: not needed anymore.</comment>
+    <requestid>313222</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>a944dbd9303116b27951ff8b6312692f</srcmd5>
+    <version>0.5.1</version>
+    <time>1450695875</time>
+    <user>dimstar_suse</user>
+    <comment>- Package is definetely noarch. Mark as such</comment>
+    <requestid>349370</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>2aa26d9f3be0feb11438de79e75f25b6</srcmd5>
+    <version>0.6.2</version>
+    <time>1501840790</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to 0.6.2:
+  _This is a vulnerability fix release._
+  Fixes a XSS issue in which the remote VNC server could inject
+  arbitrary HTML into the noVNC web page via the messages propagated
+  to the status field, such as the VNC server name.
+  This affects users of vnc_auto.html and vnc.html, as well as any
+  users of include/ui.js.</comment>
+    <requestid>512022</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>ae97311ed2f37ea81d13b1ec8c9d8ade</srcmd5>
+    <version>1.0.0</version>
+    <time>1530740997</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>619169</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>00898cac9b65db65b9d943604c8a7322</srcmd5>
+    <version>1.0.0</version>
+    <time>1546946303</time>
+    <user>dimstar_suse</user>
+    <comment>- require python3-websockify for recent distros (bsc#1119737)</comment>
+    <requestid>662499</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>b889763699f566fe6604a5b7ce08f28d</srcmd5>
+    <version>1.1.0</version>
+    <time>1564575249</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>718594</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>182c15fbc9f1f3b7fd78a2c4ec7914eb</srcmd5>
+    <version>1.2.0</version>
+    <time>1596095916</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 1.2.0 (forwarded request 820946 from mmanu84)</comment>
+    <requestid>823363</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>a59a526f2a1bd8e039d51917e434fae0</srcmd5>
+    <version>1.3.0</version>
+    <time>1635628420</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.3.0
+    Application:
+      * Added French and Portuguese (Brazil) translations
+      * The novnc_proxy command (earlier launch.sh) is now able to interface better
+        towards Websockify and now has it's own man page
+    Library:
+      * RTCDataChannel is now supported as a communication channel, an alternative
+        to WebSockets
+      * Resizes of the viewport are handled in a more modern way. This allows our
+        library to not only react on browser window changes, but to size changes of
+        the screen element as well
+      * Fixed a bug with the Alt key on Firefox
+      * Fixed a disconnect that happened when using some VNC servers. The error
+        displayed in this case was &quot;Error decoding rect: TypeError&quot;
+      * Plain authentication passwords now support longer passwords, which can be
+        useful if you're using a password manager
+      * Support for Internet Explorer has been dropped. This made it possible to use
+        more modern features and clean up a large number of workarounds
+- python3-websockify &gt;= 0.9.0 is necessary
+    https://github.com/novnc/noVNC/issues/1276#issuecomment-521174077
+- Fix patch novnc-1.1.0-fix-interpreter.patch
+    * Renamed to patch novnc-1.3.0-fix-interpreter.patch</comment>
+    <requestid>927994</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>407faf7ac15060631528d82c8b8b7ee3</srcmd5>
+    <version>1.3.0</version>
+    <time>1667901196</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1034127</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>558e01e41e8362ef128f14f80a0aeb13</srcmd5>
+    <version>1.4.0</version>
+    <time>1674997819</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1061719</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>057b43d9bf4ab3726ee20ad994e64ea3</srcmd5>
+    <version>1.5.0</version>
+    <time>1719349594</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1183016</requestid>
+  </revision>
+</revisionlist>
