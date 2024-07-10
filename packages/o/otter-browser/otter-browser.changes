@@ -1,0 +1,309 @@
+-------------------------------------------------------------------
+Fri Feb 25 18:31:18 UTC 2022 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 1.0.03:
+  * updated QtWebEngine to (silently) breaking upstream changes
+  * updated translations
+  * some other backports
+
+-------------------------------------------------------------------
+Sun Jun 27 09:58:44 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Drop the optional QtWebKit dependency.
+  QtWebKit is unmaintained and must go away soon from Factory.
+
+-------------------------------------------------------------------
+Sun Jan 10 11:40:55 UTC 2021 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 1.0.02:
+  * optimized handling of large images for Start Page backgrounds
+  * improved validation of content blocking profile checksum
+  * updated translations
+  * some other fixes
+- Add otter-browser-lang package.
+- Update build requires.
+- Remove conditional builds für openSUSE < 15.
+- Remove post/postun.
+- Run spec-cleaner.
+
+-------------------------------------------------------------------
+Wed Jan  2 08:01:19 UTC 2019 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.0.01:
+  * Some enhancements in the experimental backend for QtWebEngine
+    (Blink):
+    + download dialogue is now shown for the tab that initiated it;
+    + add support for handling requests to print page.
+  * Many other fixes.
+
+-------------------------------------------------------------------
+Sun Sep  2 07:20:23 UTC 2018 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 0.9.99.3:
+  * QtWebEngine backend no longer uses locks for fetching feeds,
+    links or search engines.
+  * Some other fixes.
+
+-------------------------------------------------------------------
+Thu Aug  2 10:32:23 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 0.9.99.2:
+  * Reworked handling of custom icons for toolbar entries.
+  * Some other fixes.
+
+-------------------------------------------------------------------
+Mon Jul  2 09:41:48 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 0.9.99.1:
+  * Add an importer for OPML files.
+  * Add support for abp: a protocol for adding new content
+    filtering profiles.
+  * Add ability to open selection as a link if it matches the URL
+    format.
+  * Various fixes and minor improvements for the Feeds reader.
+
+-------------------------------------------------------------------
+Sat Jun  2 10:08:17 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 0.9.99 (changes since 0.9.97):
+  * Several enhancements in the experimental backend for
+    QtWebEngine (Blink):
+    + initial work on global history support;
+    + add support for alternative stylesheets;
+    + add support for fetching lists of search engines, feeds and
+      links.
+  * Initial version of the Feeds Reader:
+    + Atom and RSS 2.0 parsers;
+    + Support for categories;
+    + Ability to preview feeds before subscribing using
+      view-feed: protocol.
+  * Add an action to take page's screenshot.
+  * Several bug fixes and some minor optimisations.
+
+-------------------------------------------------------------------
+Thu Apr  5 19:56:16 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 0.9.97:
+  * Add an initial version of a Links panel;
+  * Some minor optimisations.
+
+-------------------------------------------------------------------
+Sun Mar  4 12:46:38 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 0.9.96:
+  * Add initial version of Tab History panel.
+  * Some minor optimisations.
+
+-------------------------------------------------------------------
+Fri Feb  2 11:27:34 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 0.9.95:
+  * Add initial version of a toolbar widget for viewing downloads
+    from the current session.
+  * Add some new keyboard shortcuts.
+  * Some minor fixes.
+
+-------------------------------------------------------------------
+Tue Jan  2 11:20:47 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 0.9.94 (changes since 0.9.92):
+  * Add a Page Information panel.
+  * Add support for external icons for User Scripts.
+  * Add a new default style for Start Page.
+  * Add an interface allowing to manage a list of hosts using
+    customised website overrides.
+  * Several bug fixes and some optimisations.
+
+-------------------------------------------------------------------
+Thu Nov  2 13:00:00 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 0.9.92:
+  * Improve support for styling tab bar text.
+  * Add support for deleting User Scripts in Addons Manager.
+  * Restore inline URLs completion.
+  * Add a action for peeking tab contents.
+  * Multiple bug fixes and stability improvements.
+
+-------------------------------------------------------------------
+Mon Oct  1 22:17:38 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 0.9.91:
+  * Rework toolbars:
+    - Add support for visibility toggle button (collapsing
+      contents).
+    - Toolbar visibility and location is now stored per main window.
+  * Improve sidebar(s):
+    - Add an ability to add new sidebars.
+    - allow to change their location by drag and drop.
+  * Vastly improved error pages:
+    - Special error pages are now used instead of SSL warning
+      dialogues.
+    - Blocked content triggers dedicated error pages.
+  * Improve User Agents configuration.
+  * Add support for managing multiple proxy configurations and
+    setting them per page or host.
+  * Rework internal actions handling system allows to specify
+    parameters for actions triggered by keyboard shortcuts and
+    mouse gestures.
+  * Vastly decrease import time for large bookmark files.
+  * Add a module for listing opened windows and tabs.
+  * Add a new default icon theme by Kamil Nęcek.
+  * Item views can now allocate extra space to predefined column
+    other than last one.
+  * Add an action to set, reset or toggle an option.
+  * Global editing actions now apply to focused single and multi
+    line text edit widgets too.
+  * Add an ability to drop URLs onto bookmark bars.
+  * Spell checking is now available in other multi line text edit
+    widgets.
+  * Add an action to control multimedia playback rate.
+  * Keyboard shortcuts are now validated while editing.
+  * Add support for customising the F12 menu.
+  * Implement the "Validate Using" menu.
+  * Add support for configurable Fast Forward rules.
+  * Lots of various fixes.
+
+-------------------------------------------------------------------
+Wed Aug 16 20:01:42 UTC 2017 - sebix+novell.com@sebix.at
+
+- remove suse_version checks, they may be outdated soon and are not effective
+
+-------------------------------------------------------------------
+Sat Aug 12 17:15:07 UTC 2017 - jengelh@inai.de
+
+- Reword descriptions.
+
+-------------------------------------------------------------------
+Tue Jan  3 11:24:07 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 0.9.12:
+  * Greatly improve tab bar:
+    + allow to detach tabs by dragging them away;
+    + allow to drop URLs and tabs from other windows;
+    + add an option to show embedded tab thumbnails;
+    + improve handling of visibility of close button;
+    + tabs demanding attention are drawn using bold font;
+    + improve RTL support;
+    + decrease default tab padding;
+    + no longer center tab text horizontally;
+    + fix status tip messages while rearranging tabs.
+  * Improve Plasma 5 and Unity integration:
+    + add support for progress information;
+    + add support for desktop actions.
+  * Add fullscreen support for QtWebKit backend.
+  * Save open file path.
+  * Improve RTL support in address and search fields.
+  * Many other fixes and improvements.
+
+-------------------------------------------------------------------
+Mon Oct  3 14:54:39 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 0.9.11 (changes since 0.9.09):
+  * Add initial support for User Scripts.
+  * Add Addons Manager.
+  * Add alternative display mode and support for optional headers
+    for URL completion in address field.
+  * Many enhancements in experimental backend for QtWebEngine (Blink):
+    - add support for entering full screen mode;
+    - add support for content blocking;
+    - add support for several missing actions.
+  * Several fixes and improvements in content blocking.
+  * Improve CMake build system (also now it is the only officially
+    supported).
+  * Add a new backend for storing browsing history.
+  * Add initial support for storing passwords:
+    - support for multiple credential sets per host;
+    - basic passwords management;
+    - disabled by default (no encryption yet).
+  * Add a crash reporter.
+  * Add support for muting tab media.
+  * F12 menu now exposes all modes for Images visibility (including
+    new option to show cached images only) and Plugins.
+  * QtWebEngine backend is now capable of saving pages in MIME HTML
+    format and as complete set of files.
+  * Add new toolbar visibility settings for full screen mode.
+  * Add a new widget for showing content blocking details.
+  * Add an ability to customise the progress bar.
+  * Add an ability to add loading progress information widgets to
+    any toolbar.
+  * Various improvements in handling of content blocking profiles:
+    - add new definitions and updated existing;
+    - add an option to add custom blocking rules;
+    - profiles are now grouped by type.
+  * Many other fixes and improvements.
+- Build the experimental QtWebEngine backend.
+
+-------------------------------------------------------------------
+Sat Mar  5 13:34:34 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to 0.9.09 (changes since 0.9.07):
+  * Enhanced URL completion in address field:
+    + suggest bookmarks by URL and keyword;
+    + suggest URLs from history;
+    + suggest searching for given string using default search
+      engine;
+    + allow to use popup with list of suggestions.
+  * Add new extremely flexible mouse gestures system.
+  * Add icons for badge in address field.
+  * Add FTP listing support to QtWebKit backend.
+  * Add TLS/SSL certificate viewer.
+  * Add Website Information dialog.
+  * Add configuration module for downloads handlers.
+  * Add configuration module for mouse gestures.
+  * Add command line option to print out diagnostic report
+    (--report).
+  * Add support for configuring policy for popup windows.
+  * Update style of error pages and directory listings.
+  * Add initial support for spell checking.
+  * Add support for selecting allowed and rejected domains for
+    third-party cookies.
+  * Add support for customising visible columns and their order in
+    most of views.
+  * Add support for customising text and icon of toolbar entries.
+  * Add support for adding arbitrary menus to toolbars.
+  * Many other fixes and improvements.
+
+-------------------------------------------------------------------
+Fri Sep 18 09:54:15 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 0.9.07:
+  * Add support for customising context menu.
+  * Add Opera notes import.
+  * Add initial support for auto updates.
+  * Add dialog allowing to decide what to do with downloaded file.
+  * MDI actions are now enabled by default.
+  * Allow to specify default arguments using arguments.txt.
+  * Various minor fixes and improvements.
+
+-------------------------------------------------------------------
+Fri Jun  5 14:13:12 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 0.9.06:
+  * Add a start page (speed dial).
+  * Add MDI mode (disabled by default).
+  * Add source viewer.
+  * Add dropdown with list of recently typed URLs.
+  * Add option to disable single key shortcuts.
+  * Add support for freedesktop.org notifications.
+  * Lots of other fixes and improvements.
+
+-------------------------------------------------------------------
+Thu Apr  2 16:55:32 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 0.9.05:
+* experimental backend for QtWebEngine (Blink), disabled by default;
+* added advanced options for cookies;
+* added interface for configuring toolbars;
+* added support for bookmark bars;
+* added Ctrl+Tab tab switcher;
+* added support for taking notes;
+* added interface to deny or grant permission to use geolocation etc.
+  (set of available permissions depends on what is supported by backend);
+* restore tab position when restoring closed tab;
+* tabs are now drawn horizontally in vertical toolbars;
+* many other fixes and improvements.
+
+-------------------------------------------------------------------
+Fri Feb 27 19:14:57 UTC 2015 - sor.alexei@meowr.ru
+
+- Initial package.

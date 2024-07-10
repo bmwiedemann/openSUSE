@@ -1,0 +1,5 @@
+<package name="otter-browser" project="openSUSE:Factory">
+  <title>Web browser controlled by the user</title>
+  <description>Project aiming to recreate classic Opera (Presto) UI using Qt.</description>
+  <devel project="network" package="otter-browser"/>
+</package>
