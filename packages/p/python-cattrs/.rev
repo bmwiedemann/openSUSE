@@ -1,0 +1,36 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0161c95f88a8f10ccc63ecf9aa353fe3</srcmd5>
+    <version>22.2.0</version>
+    <time>1674495109</time>
+    <user>dimstar_suse</user>
+    <comment>Initial release of 22.2.0.</comment>
+    <requestid>1060317</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>1add3eaef334e546bb579d1cf3b5388a</srcmd5>
+    <version>22.2.0</version>
+    <time>1683630545</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1085631</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>509daa87341c6493ac795d25dd8dfea0</srcmd5>
+    <version>23.2.3</version>
+    <time>1702673407</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1133406</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>bb5e859267206bd6b77a499d0d8df3c6</srcmd5>
+    <version>23.2.3</version>
+    <time>1712590814</time>
+    <user>anag+factory</user>
+    <comment>- add sle15_python_module_pythons
+
+- Initial release of 22.2.0.</comment>
+    <requestid>1166149</requestid>
+  </revision>
+</revisionlist>
