@@ -1,0 +1,60 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c0b164c39adf0b49e3fe8fafd965fa10</srcmd5>
+    <version>0.0+git20161023.e277e22</version>
+    <time>1503593676</time>
+    <user>dimstar_suse</user>
+    <comment>New package lua-ldbus needed by the mpv mpris plugin
+(in lua-lua-mpris)</comment>
+    <requestid>517909</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c091158cedccc29c2a0d942131d250f1</srcmd5>
+    <version>0.0+git20161023.e277e22</version>
+    <time>1509461040</time>
+    <user>dimstar_suse</user>
+    <comment>drop lua5.2 from multibuild</comment>
+    <requestid>537620</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>ab115f6e90be1939635a551740313ed5</srcmd5>
+    <version>0.0+git20161023.e277e22</version>
+    <time>1541079802</time>
+    <user>dimstar_suse</user>
+    <comment>- Make package building even on SLE-12/Leap 42</comment>
+    <requestid>645807</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>23ed5444abeb24c378f31d7d4f0c25ad</srcmd5>
+    <version>0.0+git20190816.9e176fe</version>
+    <time>1572180061</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>742983</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>12f24218fdc93280bf066b2106f55f58</srcmd5>
+    <version>0.0+git20190816.9e176fe</version>
+    <time>1594817700</time>
+    <user>dimstar_suse</user>
+    <comment>- Added lua54.patch to fix building with Lua 5.4
+- Add lua54 as new build target</comment>
+    <requestid>819738</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>6c4690ac9eb268adeffa32536177e6f4</srcmd5>
+    <version>0.0+git20190816.9e176fe</version>
+    <time>1613677379</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>873542</requestid>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>6a0db22c00f3c8a3b556520068d9c8e6</srcmd5>
+    <version>0.0+git20190816.9e176fe</version>
+    <time>1674665089</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1060955</requestid>
+  </revision>
+</revisionlist>

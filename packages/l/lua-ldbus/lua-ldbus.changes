@@ -1,0 +1,75 @@
+-------------------------------------------------------------------
+Wed Jan 25 12:37:35 UTC 2023 - Michal Suchanek <msuchanek@suse.de>
+
+- Blank line required after %%autosetup on SLE12
+
+-------------------------------------------------------------------
+Wed Jan 25 11:52:07 UTC 2023 - Michal Suchanek <msuchanek@suse.de>
+
+- Fix missing dependency on lua-macros (boo#1205612)
+
+-------------------------------------------------------------------
+Wed Jan 25 10:52:05 UTC 2023 - Michal Suchanek <msuchanek@suse.de>
+
+- Opencode %make_build to prevent build failure when not defined.
+
+-------------------------------------------------------------------
+Thu Feb 18 15:51:00 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Use %lua_provides macro for default lua versioning
+
+-------------------------------------------------------------------
+Thu Jul  9 13:41:16 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Added lua54.patch to fix building with Lua 5.4
+
+-------------------------------------------------------------------
+Mon Jul  6 19:03:42 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Add lua54 as new build target
+
+-------------------------------------------------------------------
+Thu Oct 24 16:12:43 UTC 2019 - alarrosa@suse.com
+
+- Update to version 0.0+git20190816.9e176fe:
+  * Squashed 'vendor/compat-5.3/' changes from bc91f40..daebe77
+  * src/Makefile: Use LDFLAGS
+  * src/Makefile: Introduce LUA_PKGNAME
+  * src/ldbus.h: Remove now unused ldbus_callback_udata
+  * src/: Move 'timeout' callbacks to new callback management style
+  * src/: Move 'watch' callbacks to new callback management style
+  * Use ldbus_callback_indexes enum instead of hard-coding
+  * src/connection.c: Use different style of callback management for wakeup and dispatch functions
+  * src/connection.c: Use different style of callback management for VTable functions
+  * src/pending_call.c: Use different style of callback management
+  * Squashed 'vendor/compat-5.3/' changes from 924cdb2..bc91f40
+
+-------------------------------------------------------------------
+Wed Oct 31 21:08:41 CET 2018 - mcepl@suse.com
+
+- Make package building even on SLE-12/Leap 42
+
+-------------------------------------------------------------------
+Mon Oct 30 14:45:32 UTC 2017 - jmatejek@suse.com
+
+- do not build for Lua 5.2
+
+-------------------------------------------------------------------
+Fri Aug 18 15:35:41 UTC 2017 - opensuse-packaging@opensuse.org
+
+- Update to version 0.0+git20161023.e277e22:
+  * rockspec: Add library to external_dependencies
+  * .gitignore: add .rock files
+  * Add binding to dbus_bus_get_private
+  * Mention get_private in README
+  * src/: Fix segfault when callback registered from a thread which gets collected
+  * README: Fix formatting in table
+  * rockspec: Formatting
+  * rockspec: Only claim compat up to 5.3
+  * rockspec: Add libdir for dbus
+  * Allow overriding the pkg-config executable
+
+-------------------------------------------------------------------
+Fri Aug 18 15:31:07 UTC 2017 - alarrosa@suse.com
+
+- Initial release 
