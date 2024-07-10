@@ -1,0 +1,67 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>afca64062c16c095ccae022507cc1e5d</srcmd5>
+    <version>1.0.0b1</version>
+    <time>1625225227</time>
+    <user>dimstar_suse</user>
+    <comment>- New package part of the Azure SDK</comment>
+    <requestid>903437</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>e537ffb5c0b8c8cb3fadb38ff910fc7c</srcmd5>
+    <version>1.0.0b2</version>
+    <time>1669715614</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.0.0b2
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 1037929 from glaubitz)</comment>
+    <requestid>1038693</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ce3fad92ea4db573e0d8effb3fd0f5f0</srcmd5>
+    <version>1.0.0b3</version>
+    <time>1676563034</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.0.0b3
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1066148 from glaubitz)</comment>
+    <requestid>1066161</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>085f3fc419a14f66297a622f3fc42573</srcmd5>
+    <version>1.0.0b4</version>
+    <time>1685294622</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1089366</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>2da9bc7889024bcd76043e7a65b5f611</srcmd5>
+    <version>1.0.0b5</version>
+    <time>1698604915</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1120979</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>be8b5a3d630d0dfcf4fb682988c2bd81</srcmd5>
+    <version>1.0.0b5</version>
+    <time>1712520554</time>
+    <user>anag+factory</user>
+    <comment>- Switch package to modern Python Stack on SLE-15
+  + Use Python 3.11 on SLE-15 by default
+  + Add Obsoletes for old python3 package on SLE-15
+  + Drop support for older Python versions
+- Switch build system from setuptools to pyproject.toml
+  + Add python-pip and python-wheel to BuildRequires
+  + Replace %python_build with %pyproject_wheel
+  + Replace %python_install with %pyproject_install
+  + Update name for dist directory in %files section
+- Drop setting default file attributes in %files section
+- Use modern RPM macros to express version dependencies (forwarded request 1164871 from glaubitz)</comment>
+    <requestid>1165265</requestid>
+  </revision>
+</revisionlist>
