@@ -1,0 +1,10 @@
+<package name="plzip" project="openSUSE:Factory">
+  <title>Title of New Package</title>
+  <description>
+LONG DESCRIPTION 
+GOES 
+HERE
+  </description>
+  <devel project="Archiving" package="plzip"/>
+  <url>PUT_UPSTREAM_URL_HERE</url>
+</package>

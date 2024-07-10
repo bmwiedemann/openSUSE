@@ -1,0 +1,113 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a5c7c6f5ad6519f60b9b0a008f550e51</srcmd5>
+    <version>1.1</version>
+    <time>1406145978</time>
+    <user>coolo</user>
+    <comment>Please review.</comment>
+    <requestid>235240</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>a5c7c6f5ad6519f60b9b0a008f550e51</srcmd5>
+    <version>1.1</version>
+    <time>1409302717</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>b6573398ecad4081a855fd65d9aa6c6c</srcmd5>
+    <version>1.1</version>
+    <time>1411627388</time>
+    <user>coolo</user>
+    <comment>- Drop gpg-offline build-time requirement</comment>
+    <requestid>251748</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ddd8e26175a7580bcf2f88f8e3c9493d</srcmd5>
+    <version>1.2</version>
+    <time>1412589987</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 1.2</comment>
+    <requestid>253637</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>7b8130bfb34db1a48e862dd9a119c159</srcmd5>
+    <version>1.3</version>
+    <time>1423596133</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 1.3</comment>
+    <requestid>284786</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>5fe2e2627e297b71190953fb12c564fd</srcmd5>
+    <version>1.4</version>
+    <time>1439556383</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>322311</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>15f474e3c4365024ac54d9a81fff2a6d</srcmd5>
+    <version>1.5</version>
+    <time>1472111765</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 1.5</comment>
+    <requestid>420645</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>bd502d4c91d05e7b4143c167f9eda841</srcmd5>
+    <version>1.6</version>
+    <time>1495267977</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.6: (forwarded request 494580 from pluskalm)</comment>
+    <requestid>494583</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>645b90f831d5d28deb1bcd657d8208c6</srcmd5>
+    <version>1.7</version>
+    <time>1520588639</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 1.7</comment>
+    <requestid>583128</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>848003e3aed3dbb90f3824fab930a96a</srcmd5>
+    <version>1.8~rc1</version>
+    <time>1546245979</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 1.8~rc1</comment>
+    <requestid>658029</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>cace601932438392d391ad79c3af30cc</srcmd5>
+    <version>1.8</version>
+    <time>1546946986</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 1.8</comment>
+    <requestid>663443</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>8c30f87e34f6f6724b9fe4710e8c9f2d</srcmd5>
+    <version>1.9</version>
+    <time>1617131780</time>
+    <user>RBrownSUSE</user>
+    <comment>- update to 1.9:</comment>
+    <requestid>878667</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>0b0242b3a7f12160d5d5f98eb415b5a8</srcmd5>
+    <version>1.10</version>
+    <time>1645461994</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>956196</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>ba84697e2284d81994384226ceff83e7</srcmd5>
+    <version>1.11</version>
+    <time>1707415453</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 1.11</comment>
+    <requestid>1145191</requestid>
+  </revision>
+</revisionlist>
