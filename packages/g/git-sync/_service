@@ -1,0 +1,14 @@
+<services>
+  <service name="tar_scm" mode="disabled">
+    <param name="versionformat">0.0.0~git%cd.%h</param>
+    <param name="revision">eb9adaf2b5fd65aac1e83d6544b9076aae6af5b7</param>
+    <param name="url">https://github.com/simonthum/git-sync.git</param>
+    <param name="scm">git</param>
+    <param name="changesgenerate">enable</param>
+  </service>
+  <service name="recompress" mode="disabled">
+    <param name="compression">xz</param>
+    <param name="file">*.tar</param>
+  </service>
+  <service name="set_version" mode="disabled"/>
+</services>

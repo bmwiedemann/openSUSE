@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7adef705b1d4cbe8879bcaa9ad581ac2</srcmd5>
+    <version>0.0.0~git20151024.eb9adaf</version>
+    <time>1521499036</time>
+    <user>dimstar_suse</user>
+    <comment>Safe and simple one-script git synchronization</comment>
+    <requestid>586095</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>2e0c0a912fa2070ea5c6945c34fd5241</srcmd5>
+    <version>0.0.0~git20151024.eb9adaf</version>
+    <time>1530866721</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>621053</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>b61d6984e70af657760188aa49372c4e</srcmd5>
+    <version>0.0.0~git20151024.eb9adaf</version>
+    <time>1709070544</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1152212</requestid>
+  </revision>
+</revisionlist>
