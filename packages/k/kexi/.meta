@@ -1,0 +1,9 @@
+<package name="kexi" project="openSUSE:Factory">
+  <title></title>
+  <description>Kexi is an open source visual database applications creator,
+a long-awaited competitor for programs like MS Access
+or Filemaker.
+
+Homepage: http://www.kexi-project.org/</description>
+  <devel project="KDE:Extra" package="kexi"/>
+</package>
