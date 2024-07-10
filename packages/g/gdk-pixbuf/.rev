@@ -1,0 +1,836 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a7e8e169fdc58e4ab8a440575daf7d2b</srcmd5>
+    <version>2.21.6</version>
+    <time>1281359756</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/gdk-pixbuf based on submit request 45166 from user vuntz
+</comment>
+    <requestid>45166</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>33083ca71bb4e581d2a91af461ea1377</srcmd5>
+    <version>2.22.0</version>
+    <time>1285278981</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/gdk-pixbuf based on submit request 48902 from user vuntz
+</comment>
+    <requestid>48902</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>e688b0f6fa5d644b48bd2d246228d1fb</srcmd5>
+    <version>2.22.0</version>
+    <time>1287139493</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/gdk-pixbuf based on submit request 50673 from user vuntz
+</comment>
+    <requestid>50673</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>8982fdffa995f62111594be41307a96d</srcmd5>
+    <version>2.22.1</version>
+    <time>1290248200</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 53467 from user vuntz
+</comment>
+    <requestid>53467</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>87c21b712def877ebf458e7c5cb129d2</srcmd5>
+    <version>2.22.1</version>
+    <time>1294652556</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 57531 from user vuntz
+</comment>
+    <requestid>57531</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>0093d36841b120385e22469224a499e5</srcmd5>
+    <version>2.22.1</version>
+    <time>1294652578</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 57531
+</comment>
+  </revision>
+  <revision rev="7" vrev="6">
+    <srcmd5>0093d36841b120385e22469224a499e5</srcmd5>
+    <version>2.22.1</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="8" vrev="7">
+    <srcmd5>d9ae801c70f758e50682702a73adae61</srcmd5>
+    <version>2.22.1</version>
+    <time>1298026508</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 61385 from user vuntz
+</comment>
+    <requestid>61385</requestid>
+  </revision>
+  <revision rev="9" vrev="8">
+    <srcmd5>b5641202351ed32a4a55a1f49d6c4d29</srcmd5>
+    <version>2.22.1</version>
+    <time>1298026525</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 61385
+</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>008a68019d39016acbc4bd21f9824788</srcmd5>
+    <version>2.23.3</version>
+    <time>1304331497</time>
+    <user>saschpe</user>
+    <comment>Pushing G:F (including GNOME3)</comment>
+    <requestid>69040</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>d3ba1421404c4a63c2edb617866bb178</srcmd5>
+    <version>2.23.5</version>
+    <time>1309529411</time>
+    <user>saschpe</user>
+    <comment>Update to 2.23.5 (forwarded request 74757 from dimstar)</comment>
+    <requestid>74951</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>2eae5725161aeeec6e2810b42cd13ba6</srcmd5>
+    <version>2.24.0</version>
+    <time>1315559650</time>
+    <user>saschpe</user>
+    <comment>Pushing most of G:F</comment>
+    <requestid>81467</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>2eae5725161aeeec6e2810b42cd13ba6</srcmd5>
+    <version>2.24.0</version>
+    <time>1319181898</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="14" vrev="4">
+    <srcmd5>a0e915d5eb94725b89fce55495eccbcf</srcmd5>
+    <version>2.24.0</version>
+    <time>1323191510</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>698f7a06734a9f163c7768eb8bbbceca</srcmd5>
+    <version>2.25.0</version>
+    <time>1325846631</time>
+    <user>coolo</user>
+    <comment>Pushing G:F</comment>
+    <requestid>99010</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>7717f4585a5a60a6e85b71640983bac8</srcmd5>
+    <version>2.25.2</version>
+    <time>1329405193</time>
+    <user>coolo</user>
+    <comment>Pushing most G:F bits</comment>
+    <requestid>105094</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>7984fd768408d826e7e7814513791e0b</srcmd5>
+    <version>2.26.0</version>
+    <time>1333013989</time>
+    <user>coolo</user>
+    <comment>Pushing G:F</comment>
+    <requestid>111696</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>a768fec2f3842cb03b30f615f7c53aab</srcmd5>
+    <version>2.26.1</version>
+    <time>1334927647</time>
+    <user>coolo</user>
+    <comment>Pushing G:F</comment>
+    <requestid>114638</requestid>
+  </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>a768fec2f3842cb03b30f615f7c53aab</srcmd5>
+    <version>2.26.1</version>
+    <time>1340183354</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>09ddd6c01acdce9277982b61b1b655fc</srcmd5>
+    <version>2.26.2</version>
+    <time>1345022261</time>
+    <user>namtrac</user>
+    <comment>Update to 2.26.2 - bugfix release (forwarded request 130238 from vuntz)</comment>
+    <requestid>130810</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>00b0ce3234b2268c9857c64780b8d8d7</srcmd5>
+    <version>2.26.4</version>
+    <time>1349241268</time>
+    <user>coolo</user>
+    <comment>Pushing GNOME:Factory towards openSUSE:Factory</comment>
+    <requestid>136666</requestid>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>804f8c38df591b09d89b9043bda6b9eb</srcmd5>
+    <version>2.26.4</version>
+    <time>1351837834</time>
+    <user>coolo</user>
+    <comment>Make devel available on all archs (forwarded request 139740 from dimstar)</comment>
+    <requestid>139741</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>c5d49e066779afebce7a29566f9314b1</srcmd5>
+    <version>2.26.5</version>
+    <time>1353597153</time>
+    <user>coolo</user>
+    <comment>Push G:F</comment>
+    <requestid>142089</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>d8fd0fe09517039f92210b68772f1b47</srcmd5>
+    <version>2.26.5</version>
+    <time>1353952454</time>
+    <user>coolo</user>
+    <comment>typo (forwarded request 142538 from vuntz)</comment>
+    <requestid>142544</requestid>
+  </revision>
+  <revision rev="25" vrev="4">
+    <srcmd5>d8fd0fe09517039f92210b68772f1b47</srcmd5>
+    <version>2.26.5</version>
+    <time>1359108911</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>b4dc061da7263251d43e31b6bee4fc4a</srcmd5>
+    <version>2.28.0</version>
+    <time>1364895835</time>
+    <user>coolo</user>
+    <comment>Update to 2.28.0</comment>
+    <requestid>161969</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>51df9d92e2f83aba0181e34d5cdef304</srcmd5>
+    <version>2.28.1</version>
+    <time>1366983771</time>
+    <user>coolo</user>
+    <comment>Push GNOME 3.8.1 to Factory - mostly small bug fixes over the existing 3.8.0 we have</comment>
+    <requestid>173225</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>ddaba71691fe04fdc71b73872e829228</srcmd5>
+    <version>2.29.0</version>
+    <time>1370425915</time>
+    <user>coolo</user>
+    <comment>Push GNOME 3.9.1 - been running it for a while now.</comment>
+    <requestid>176659</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>b11b8e32be0468dd88349fb1c7efd4a8</srcmd5>
+    <version>2.29.2</version>
+    <time>1372527564</time>
+    <user>coolo</user>
+    <comment>Push GNOME 3.9.3, as announced</comment>
+    <requestid>181266</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>406b2e4bc7dcf7906fd096c6b86127bc</srcmd5>
+    <version>2.29.3</version>
+    <time>1376648750</time>
+    <user>scarabeus_factory</user>
+    <comment>push GNOME:Factory</comment>
+    <requestid>186859</requestid>
+  </revision>
+  <revision rev="31" vrev="3">
+    <srcmd5>406b2e4bc7dcf7906fd096c6b86127bc</srcmd5>
+    <version>2.29.3</version>
+    <time>1379662399</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>00e130f357d33b24e02dbbfe6e59515f</srcmd5>
+    <version>2.30.0</version>
+    <time>1380294618</time>
+    <user>coolo</user>
+    <comment>Push GNOME 3.10.0</comment>
+    <requestid>200900</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>6c22fa65dc852a8f98fae9e6fa216603</srcmd5>
+    <version>2.30.1</version>
+    <time>1384334209</time>
+    <user>scarabeus_factory</user>
+    <comment>Update to 2.30.1 (forwarded request 206512 from Zaitor)</comment>
+    <requestid>206682</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>2d1af87fac07370d833b17a8fe98f099</srcmd5>
+    <version>2.30.2</version>
+    <time>1388393611</time>
+    <user>coolo</user>
+    <comment>Update to 2.30.2 - This is stable branch</comment>
+    <requestid>212274</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>05d97d580a0f27fba9a68781fe44b735</srcmd5>
+    <version>2.30.3</version>
+    <time>1389883035</time>
+    <user>coolo</user>
+    <comment>- Update to version 2.30.3:
+  + Expand the test suite.
+  + Enable coverage testing with --enable-coverage.
+  + Unify sniff buffer sizes across loaders: 4k everywhere.
+  + Port to GTask (bgo#712704).
+  + xpm: Fix scaling (bgo#686514).
+  + xpm: Update colors from pango (bgo#678996).
+  + qtif: fix fread() error check (bgo#721371). (forwarded request 213829 from dimstar)</comment>
+    <requestid>213912</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>5dd94bab45bd9a27e32f0ee848582902</srcmd5>
+    <version>2.30.4</version>
+    <time>1391765148</time>
+    <user>scarabeus_factory</user>
+    <comment>Update to 2.30.4 (forwarded request 220863 from Zaitor)</comment>
+    <requestid>220994</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>7f3f39fcb25f23b378962ce458c2c811</srcmd5>
+    <version>2.30.5</version>
+    <time>1393008755</time>
+    <user>coolo</user>
+    <comment>Update to ver 2.30.5 (forwarded request 222703 from Zaitor) (forwarded request 222708 from dimstar)</comment>
+    <requestid>223161</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>9b19a22773c0a44552a90bbc37e1d2ad</srcmd5>
+    <version>2.30.6</version>
+    <time>1394130572</time>
+    <user>coolo</user>
+    <comment>Update to 2.30.6 (forwarded request 224537 from Zaitor)</comment>
+    <requestid>224543</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>93a9d21c547f9ec2dab602ca275d87ae</srcmd5>
+    <version>2.30.7</version>
+    <time>1396709404</time>
+    <user>coolo</user>
+    <comment>- Update to version 2.30.7:
+  + Documentation fixes. (forwarded request 227622 from Zaitor) (forwarded request 227815 from Zaitor)</comment>
+    <requestid>228568</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>47cadb3a329e4d54bb9f7c2a15c550eb</srcmd5>
+    <version>2.30.8</version>
+    <time>1404487112</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>239333</requestid>
+  </revision>
+  <revision rev="41" vrev="3">
+    <srcmd5>47cadb3a329e4d54bb9f7c2a15c550eb</srcmd5>
+    <version>2.30.8</version>
+    <time>1409300932</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>e9cab2d5c634b1efc5500f8485a8c5eb</srcmd5>
+    <version>2.31.1</version>
+    <time>1412098609</time>
+    <user>coolo</user>
+    <comment>Push GNOME 3.13.91 - Add to Staging:E (forwarded request 248673 from dimstar)</comment>
+    <requestid>248811</requestid>
+  </revision>
+  <revision rev="43" vrev="2">
+    <srcmd5>543923bc3bf60bb666e8641f4433a80e</srcmd5>
+    <version>2.31.1</version>
+    <time>1415866613</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>260778</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>00fd654ac928a98dedc8623146e37c6c</srcmd5>
+    <version>2.31.2</version>
+    <time>1417031843</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>262914</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>8ea6c0ecc1881e2c1f3e3c652101dff6</srcmd5>
+    <version>2.31.3</version>
+    <time>1427735553</time>
+    <user>dimstar_suse</user>
+    <comment>Push GNOME:Factory - without pcheck</comment>
+    <requestid>291920</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>12092ce1eb421d08f964bc8607de5731</srcmd5>
+    <version>2.31.4</version>
+    <time>1431977732</time>
+    <user>dimstar_suse</user>
+    <comment>Selfack and forward (forwarded request 306523 from Zaitor)</comment>
+    <requestid>306547</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>810134882e63206565102d80b72699d7</srcmd5>
+    <version>2.31.6</version>
+    <time>1440138269</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>324403</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>3d0d8f3f6dd7eca261e7a1403bbae0c8</srcmd5>
+    <version>2.32.1</version>
+    <time>1444142175</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 333802 from Zaitor)</comment>
+    <requestid>333811</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>1f6e4b1153df676c6ec461f66370e4bb</srcmd5>
+    <version>2.32.2</version>
+    <time>1448186299</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>343263</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>f63ba541578667526ee3eacc282c55ee</srcmd5>
+    <version>2.32.3</version>
+    <time>1451045122</time>
+    <user>dimstar_suse</user>
+    <comment>Stable update</comment>
+    <requestid>350471</requestid>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>88701553ca08ff91791322095f195ff5</srcmd5>
+    <version>2.34.0</version>
+    <time>1459255790</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 379524 from Zaitor)</comment>
+    <requestid>380214</requestid>
+  </revision>
+  <revision rev="52" vrev="2">
+    <srcmd5>367eeb78b7cc62733b9f4f8aa4120c7b</srcmd5>
+    <version>2.34.0</version>
+    <time>1471428070</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push of project GNOME:Factory</comment>
+    <requestid>418932</requestid>
+  </revision>
+  <revision rev="53" vrev="3">
+    <srcmd5>0949cd2269f05d91f2effb1555fb82ff</srcmd5>
+    <version>2.34.0</version>
+    <time>1473102915</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>424177</requestid>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>0df6fffd66169e097fbfffeebb07e73a</srcmd5>
+    <version>2.36.0</version>
+    <time>1474475816</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 428763 from Zaitor)</comment>
+    <requestid>429102</requestid>
+  </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>82f7aaff14ef51f8bde35ad0e86d65c3</srcmd5>
+    <version>2.36.1</version>
+    <time>1482784831</time>
+    <user>lnussel_factory</user>
+    <comment>1</comment>
+    <requestid>446487</requestid>
+  </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>786147c6e4a46d75964bff16c3da68c1</srcmd5>
+    <version>2.36.3</version>
+    <time>1484041203</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>449333</requestid>
+  </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>a9ddd8adcc4da536b17fb18b1d877255</srcmd5>
+    <version>2.36.4</version>
+    <time>1485166786</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>450949</requestid>
+  </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>137e5b3268cd90035e0b7125ca1a6a5b</srcmd5>
+    <version>2.36.5</version>
+    <time>1487461144</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>457388</requestid>
+  </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>ff906a326bf3a39428cb3b8dd4211c31</srcmd5>
+    <version>2.36.6</version>
+    <time>1491907172</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>482925</requestid>
+  </revision>
+  <revision rev="60" vrev="2">
+    <srcmd5>f06a540622c68a68b51d5b2e1169b500</srcmd5>
+    <version>2.36.6</version>
+    <time>1495132667</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>494241</requestid>
+  </revision>
+  <revision rev="61" vrev="3">
+    <srcmd5>6f36b35aa81595b1142e0b4429970003</srcmd5>
+    <version>2.36.6</version>
+    <time>1500274818</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>510609</requestid>
+  </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>a87c090b14771e5a0eac6fb3e145323c</srcmd5>
+    <version>2.36.7</version>
+    <time>1502365445</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>511904</requestid>
+  </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>cd1b6cdd6543e161b230d06c38fa0b00</srcmd5>
+    <version>2.36.8</version>
+    <time>1503061079</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 515087 from Zaitor)</comment>
+    <requestid>516855</requestid>
+  </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>617108d6ea95a08e32ef18b7f7c68e1b</srcmd5>
+    <version>2.36.9</version>
+    <time>1503591895</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>518080</requestid>
+  </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>1b2a75b3b528a0b2babbe2b489f8ba77</srcmd5>
+    <version>2.36.10</version>
+    <time>1505332229</time>
+    <user>dimstar_suse</user>
+    <comment>New upstream release (forwarded request 523315 from Zaitor)</comment>
+    <requestid>523361</requestid>
+  </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>1dd17aebd6fdecdf186b281e8bac24b1</srcmd5>
+    <version>2.36.11</version>
+    <time>1507280458</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 531553 from dimstar)</comment>
+    <requestid>531691</requestid>
+  </revision>
+  <revision rev="67" vrev="2">
+    <srcmd5>07fa7f21dedc772c4a8ef19b09d77a3b</srcmd5>
+    <version>2.36.11</version>
+    <time>1516091272</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>562495</requestid>
+  </revision>
+  <revision rev="68" vrev="3">
+    <srcmd5>13aa8c64107f1748d1ecd337ec96e056</srcmd5>
+    <version>2.36.11</version>
+    <time>1520502189</time>
+    <user>dimstar_suse</user>
+    <comment>spec-cleaner (forwarded request 581039 from dimstar)</comment>
+    <requestid>582711</requestid>
+  </revision>
+  <revision rev="69" vrev="4">
+    <srcmd5>de7d12bb825bd462e9b78ca6d67ad6d9</srcmd5>
+    <version>2.36.11</version>
+    <time>1522061456</time>
+    <user>dimstar_suse</user>
+    <comment>t-u-u / boo#1086036 (forwarded request 589342 from dimstar)</comment>
+    <requestid>590029</requestid>
+  </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>6e5829f87ab7738a1be25a6fb3d82d57</srcmd5>
+    <version>2.36.12</version>
+    <time>1524144267</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 2.36.12. (forwarded request 595399 from luc14n0)</comment>
+    <requestid>596158</requestid>
+  </revision>
+  <revision rev="71" vrev="2">
+    <srcmd5>d3537e2f21ff3a974e4607b95fc4001c</srcmd5>
+    <version>2.36.12</version>
+    <time>1531592059</time>
+    <user>dimstar_suse</user>
+    <comment>- Pass all options to meson, ensure we build gdk-pixbuf with the
+  features we want. (forwarded request 621592 from iznogood)</comment>
+    <requestid>621675</requestid>
+  </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>5e965a7065e57653e85e3408ad1ab675</srcmd5>
+    <version>2.38.0</version>
+    <time>1539756631</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>636750</requestid>
+  </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>604e807e8e67445b5bc62995043b427d</srcmd5>
+    <version>2.38.1</version>
+    <time>1551687276</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>680625</requestid>
+  </revision>
+  <revision rev="74" vrev="2">
+    <srcmd5>7a320f056b2de74a42e7438053896473</srcmd5>
+    <version>2.38.1</version>
+    <time>1558036578</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>701851</requestid>
+  </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>214a5417ee58d2158fca471f68bad3fe</srcmd5>
+    <version>2.38.2</version>
+    <time>1568189902</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>729387</requestid>
+  </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>6380fff6bd87d0f6b3bea3bad0b6274f</srcmd5>
+    <version>2.40.0</version>
+    <time>1571309891</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from {project}</comment>
+    <requestid>736514</requestid>
+  </revision>
+  <revision rev="77" vrev="2">
+    <srcmd5>fa8c335683532fc49388f892aa26892d</srcmd5>
+    <version>2.40.0</version>
+    <time>1580725613</time>
+    <user>dimstar_suse</user>
+    <comment>Remove -lang recommends (forwarded request 768702 from dimstar)</comment>
+    <requestid>768715</requestid>
+  </revision>
+  <revision rev="78" vrev="3">
+    <srcmd5>b35240a2c578e4a22a6b8f3419526ef6</srcmd5>
+    <version>2.40.0</version>
+    <time>1583007660</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>779892</requestid>
+  </revision>
+  <revision rev="79" vrev="4">
+    <srcmd5>95f2e8b2b97bf7708e7b340b53dcc350</srcmd5>
+    <version>2.40.0</version>
+    <time>1595949867</time>
+    <user>dimstar_suse</user>
+    <comment>- Add gdk-pixbuf-boo1174307-io-gif-overflow.patch: Avoid overflows
+  by checking the memset length argument (boo#1174307).
+- Raise dependency glib-2.0 version. (forwarded request 822927 from zcjia)</comment>
+    <requestid>822966</requestid>
+  </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>861108213af8602da205fbd67766dfb4</srcmd5>
+    <version>2.42.0</version>
+    <time>1605783468</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 2.42.0 (forwarded request 847339 from dimstar)</comment>
+    <requestid>847419</requestid>
+  </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>99e0154993d68d0928a209578914f9f7</srcmd5>
+    <version>2.42.2</version>
+    <time>1607548316</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>853734</requestid>
+  </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>68898ba8ae41707fb224ff91ae3cdc00</srcmd5>
+    <version>2.42.4</version>
+    <time>1618223764</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable building of docs: creates a cycle with python:
+  + Drop python3-gi-docgen BuildRequires.
+  + Pass gtk_doc=false to meson
+- Update to version 2.42.4:
+  + Make enum type registration thread safe.
+  + Do not install skipped test files.
+  + Fix GIF initialization.
+  + Always run GIF loader tests.
+  + Fix leaks discovered via ASan.
+  + Expose GdkPixbufLoader API via introspection.
+  + Fix revert-to-previous first frame behaviour for GIF files.
+  + Link to libintl if needed.
+  + Improve support for using gdk-pixbuf as a subproject.
+  + Fix build with GModule disabled.
+  + Use gi-docgen to generate the API reference from introspection
+    data.
+- Replace gtk-doc BuildRequires with python3-gi-docgen: follow
+  upstreams port.
+- As a workaround to
+  https://gitlab.gnome.org/GNOME/gdk-pixbuf/-/issues/177, delete
+  the installed gi-docgen program files.
+</comment>
+    <requestid>881680</requestid>
+  </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>12b2e58d47fb092f32644cb2a8f16526</srcmd5>
+    <version>2.42.6</version>
+    <time>1618775113</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 885790 from susnux)</comment>
+    <requestid>886221</requestid>
+  </revision>
+  <revision rev="84" vrev="2">
+    <srcmd5>833e8cdab5a369761046e59741207e3a</srcmd5>
+    <version>2.42.6</version>
+    <time>1627587077</time>
+    <user>dimstar_suse</user>
+    <comment>Synchronize the changelog with SLE and Leap. (forwarded request 909101 from yfjiang)</comment>
+    <requestid>909106</requestid>
+  </revision>
+  <revision rev="85" vrev="3">
+    <srcmd5>258fac3111e97eb4c0d0f0b786589f4a</srcmd5>
+    <version>2.42.6</version>
+    <time>1627680133</time>
+    <user>dimstar_suse</user>
+    <comment>Rearrange the changelog layout to fit ibs requirement of incremental changelog compared to sle-15-sp3. (forwarded request 909275 from yfjiang)</comment>
+    <requestid>909323</requestid>
+  </revision>
+  <revision rev="86" vrev="4">
+    <srcmd5>e5782443d8ac73dd4beae3eafc26324b</srcmd5>
+    <version>2.42.6</version>
+    <time>1636218927</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 929147 from iznogood)</comment>
+    <requestid>929599</requestid>
+  </revision>
+  <revision rev="87" vrev="1">
+    <srcmd5>a5654ae866743de104d750c48db40ca5</srcmd5>
+    <version>2.42.8</version>
+    <time>1648062967</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 42 - ready for impact</comment>
+    <requestid>963568</requestid>
+  </revision>
+  <revision rev="88" vrev="2">
+    <srcmd5>26119666b38e23d9655bc90e97e209f9</srcmd5>
+    <version>2.42.8</version>
+    <time>1659470951</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>991752</requestid>
+  </revision>
+  <revision rev="89" vrev="1">
+    <srcmd5>a47728573a4f5bb2133f1213cc7f780d</srcmd5>
+    <version>2.42.9</version>
+    <time>1660319176</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>994371</requestid>
+  </revision>
+  <revision rev="90" vrev="2">
+    <srcmd5>2c77cd9eda9fb749b24ba68e2e421e96</srcmd5>
+    <version>2.42.9</version>
+    <time>1660924402</time>
+    <user>dimstar_suse</user>
+    <comment>- avoid bashism in baselibs postscript (bsc#1195391) (forwarded request 995215 from dirkmueller)</comment>
+    <requestid>997731</requestid>
+  </revision>
+  <revision rev="91" vrev="3">
+    <srcmd5>70c0f5e99a1633bae53ee4c0e5c3a679</srcmd5>
+    <version>2.42.9</version>
+    <time>1662062982</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1000473</requestid>
+  </revision>
+  <revision rev="92" vrev="1">
+    <srcmd5>7ed564f661050830b893c2b05abffe95</srcmd5>
+    <version>2.42.10</version>
+    <time>1666978142</time>
+    <user>dimstar_suse</user>
+    <comment>New upstream release (forwarded request 1031331 from iznogood)</comment>
+    <requestid>1031452</requestid>
+  </revision>
+  <revision rev="93" vrev="2">
+    <srcmd5>7675d81312faba00719a1790e5c6cb69</srcmd5>
+    <version>2.42.10</version>
+    <time>1713546812</time>
+    <user>anag+factory</user>
+    <comment>- Fix path to gdk-pixbuf-query-loader in pkg-config file: we rename
+  the loader to be multi-arch compatible and thus also need to
+  adjust the .pc file to have build-systems find it. (forwarded request 1168866 from dimstar)</comment>
+    <requestid>1168891</requestid>
+  </revision>
+  <revision rev="94" vrev="1">
+    <srcmd5>74e00e74909e310d0c71ad64fc8ea1ec</srcmd5>
+    <version>2.42.11</version>
+    <time>1714758241</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.42.11:
+  + Disable fringe loaders by default.
+  + Introspection fixes.
+  + Updated translations. (forwarded request 1171352 from dimstar)</comment>
+    <requestid>1171403</requestid>
+  </revision>
+  <revision rev="95" vrev="2">
+    <srcmd5>d6cc8cf6c368658a971e2eab199e44f5</srcmd5>
+    <version>2.42.11</version>
+    <time>1715097729</time>
+    <user>dimstar_suse</user>
+    <comment>- Pass -Dothers=enabled to meson: enable other image loaders (most
+  notably beeded seems xpm,xbm). This is in line with upstreams
+  recommendation for now, but won't be working past version 2.43.x.
+  The loaders will likely be split out into a separate repo.
+  (boo#1223903, glgo#GNOME/gdk-pixbuf!169).
+- Add 238893d8cd6f9c2616a05ab521a29651a17a38c2.patch: Fix test
+  suite with other loaders enabled. (forwarded request 1172084 from dimstar)</comment>
+    <requestid>1172085</requestid>
+  </revision>
+  <revision rev="96" vrev="1">
+    <srcmd5>cc39912307ee52ecdc590f1d974ed740</srcmd5>
+    <version>2.42.12</version>
+    <time>1715872396</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.42.12:
+  + Fix a build failure,
+  + Fix occasional build failures,
+  + ani: Reject files with multiple INA or IART chunks,
+  + ani: Reject files with multiple anih chunks (CVE-2022-48622),
+  + ani: validate chunk size,
+  + Updated translations.
+- Drop 238893d8cd6f9c2616a05ab521a29651a17a38c2.patch: fixed
+  upstream. (forwarded request 1174230 from dimstar)</comment>
+    <requestid>1174238</requestid>
+  </revision>
+  <revision rev="97" vrev="2">
+    <srcmd5>09219abb17ccaa2331580708e1dd28d6</srcmd5>
+    <version>2.42.12</version>
+    <time>1715969087</time>
+    <user>anag+factory</user>
+    <comment>- Enable test suite on x86_64 (other arches seem too flaky for now):
+  + Add %check section and call %meson_test
+  + Add gdk-pixbuf-jpeg-slow.patch: allow pixbuf-jpeg to run for
+    more than 30s, by marking it as a slow test
+    (glgo#GNOME/gdk-pixbuf!174).
+
+- Migrate package to a regular obs_scm service, no longer password
+  protecting a zip file. The originally reported bsc#1159337 seems
+  no longer be applicable and we prefer the easier route.
+- Drop unzip BuildRequires and pre_checkin.sh script. (forwarded request 1174646 from dimstar)</comment>
+    <requestid>1174652</requestid>
+  </revision>
+</revisionlist>

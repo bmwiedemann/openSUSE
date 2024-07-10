@@ -1,0 +1,35 @@
+# RPM macros for packages installing a gdk-pixbuf loader
+#
+###
+#
+# When a package installs a gdk-pixbuf loader, it should use all
+# three macros:
+#
+#  - %gdk_pixbuf_loader_requires in the preamble
+#  - %gdk_pixbuf_loader_post in %post
+#  - %gdk_pixbuf_loader_postun in %postun
+#
+###
+
+%gdk_pixbuf_loader_requires                             \
+Requires(post): gdk-pixbuf-query-loaders                \
+Requires(postun): gdk-pixbuf-query-loaders
+
+# On install, update the cache
+%gdk_pixbuf_loader_post                                 \
+%if "%_lib" == "lib64"                                  \
+  %{_bindir}/gdk-pixbuf-query-loaders-64 --update-cache \
+%else                                                   \
+  %{_bindir}/gdk-pixbuf-query-loaders --update-cache    \
+%endif
+
+# On uninstall, update the cache. Note: we ignore upgrades (already
+# handled in %post of the new package).
+%gdk_pixbuf_loader_postun                                       \
+if [ $1 -eq 0 ]; then                                           \
+  %if "%_lib" == "lib64"                                        \
+    %{_bindir}/gdk-pixbuf-query-loaders-64 --update-cache       \
+  %else                                                         \
+    %{_bindir}/gdk-pixbuf-query-loaders --update-cache          \
+  %endif                                                        \
+fi
