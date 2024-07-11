@@ -1,7 +1,62 @@
-# The openSUSE Tumbleweed BCI OpenJDK 22 development container image
+# OpenJDK 22 development container image
+
 ![Redistributable](https://img.shields.io/badge/Redistributable-Yes-green)
 
-OpenJDK 22 development container based on the openSUSE Tumbleweed Base Container Image.
+## Description
+
+[OpenJDK](https://openjdk.org/) (Open Java Development Kit) is a free and open source implementation of the Java Platform, Standard Edition (Java SE). OpenJDK is the official reference implementation of Java SE since version 7.
+
+The OpenJDK development image is intended to be used as a build environment. For runtime, use the OpenJDK runtime image.
+
+## Usage
+
+The default command for the image is the Java Shell tool (JShell).
+
+```ShellSession
+$ podman run -it --rm registry.opensuse.org/opensuse/bci/openjdk-devel:22
+jshell> /help
+```
+
+To compile and deploy an application, copy the sources and build the binary:
+
+```Dockerfile
+# Build the application using the OpenJDK development image
+FROM registry.opensuse.org/opensuse/bci/openjdk-devel:22 as build
+
+WORKDIR /app
+
+COPY . ./
+
+RUN javac Hello.java
+
+# Bundle the application into OpenJDK runtime image
+FROM registry.suse.com/bci/openjdk:22
+
+WORKDIR /app
+
+COPY --from=build /app/Hello.class /app
+
+CMD ["java", "Hello"]
+```
+
+Build and run the container image:
+
+```ShellSession
+$ podman build -t my-java-app .
+$ podman run -it --rm my-java-app
+```
+
+There are situations, where you don't want to run an application inside a container.
+
+To compile the application, without running it inside a container instance, use the following command:
+
+```ShellSession
+$ podman run --rm -v "$PWD":/app:Z -w /app registry.opensuse.org/opensuse/bci/openjdk-devel:22 javac Hello.java
+```
+
+## Additional tools
+
+The OpenJDK 22 development image includes [Git](https://git-scm.com/) and [Apache Maven](https://maven.apache.org/). [Apache Ant](https://ant.apache.org/) is available in the repositories.
 
 ## Licensing
 
