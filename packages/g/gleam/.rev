@@ -39,4 +39,29 @@
  * Changelog: https://gleam.run/news/auto-imports-and-tolerant-expressions/</comment>
     <requestid>1186440</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>76cd490643f2e2376e33e034694f5bf1</srcmd5>
+    <version>1.3.2</version>
+    <time>1720723013</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.3.2:
+   Language Server
+    * The language server no longer shows completions when inside a literal string.
+      (Giacomo Cavalieri)
+   Bug Fixes
+    * Fixed a bug where the compiler would report errors for duplicate `@external`
+      attributes with inconsistent spans between Erlang and JavaScript.
+      (Connor Szczepaniak)
+    * Fixed a bug where `gleam add` would fail to parse version specifiers
+      correctly.
+      (Louis Pilfold)
+    * Fixed a bug where single clause case expressions could generate JavaScript
+      code with incorrectly rewritten JavaScript variable names.
+      (Louis Pilfold)
+
+- Update to 1.3.1:
+ * Fixes a bug with import cycle detection when there is more than 2 imports in the cycle
+   (Ameen Radwan)</comment>
+    <requestid>1186922</requestid>
+  </revision>
 </revisionlist>
