@@ -21,7 +21,7 @@
 # your live system before submitting an update.
 %bcond_with     test
 Name:           spyder
-Version:        5.5.4
+Version:        5.5.5
 Release:        0
 Summary:        The Scientific Python Development Environment
 License:        MIT
@@ -84,7 +84,7 @@ Requires:       (python3-pylint >= 3.1 with python3-pylint < 4)
 Requires:       (python3-python-lsp-black >= 2.0.0 with python3-python-lsp-black < 3)
 Requires:       (python3-python-lsp-server >= 1.11.0 with python3-python-lsp-server < 1.12)
 Requires:       (python3-qtconsole >= 5.5.1 with python3-qtconsole < 5.6.0)
-Requires:       (python3-spyder-kernels >= 2.5.1 with python3-spyder-kernels < 2.6)
+Requires:       (python3-spyder-kernels >= 2.5.2 with python3-spyder-kernels < 2.6)
 Recommends:     %{name}-dicom
 Recommends:     %{name}-hdf5
 Recommends:     python3-Cython >= 0.21
@@ -179,7 +179,7 @@ BuildRequires:  (python3-pylint >= 3.1 with python3-pylint < 4)
 BuildRequires:  (python3-python-lsp-black >= 2.0.0 with python3-python-lsp-black < 3)
 BuildRequires:  (python3-python-lsp-server >= 1.11 with python3-python-lsp-server < 1.12)
 BuildRequires:  (python3-qtconsole >= 5.5.1 with python3-qtconsole < 5.6)
-BuildRequires:  (python3-spyder-kernels >= 2.5.1 with python3-spyder-kernels < 2.6)
+BuildRequires:  (python3-spyder-kernels >= 2.5.2 with python3-spyder-kernels < 2.6)
 # /SECTION
 
 %description

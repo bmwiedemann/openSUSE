@@ -724,4 +724,19 @@ rename the package from spyder3 to spyder.
 - Bump pylsp (forwarded request 1167871 from bnavigator)</comment>
     <requestid>1167874</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>1a65ddc6d560064c479cc9814ec9f2a1</srcmd5>
+    <version>5.5.5</version>
+    <time>1720722804</time>
+    <user>anag+factory</user>
+    <comment>- Update to 5.5.5
+  * Fix to ensure compatibility with matplotlib 3.9.0.
+  * Fix kernel start when connection file has spaces in its path.
+  * Improve compatibility with PySide2.
+  * Handle no output/error output when checking for updates on
+    conda installations.
+  * Fix installers update validation logic to choose installer
+    executable name to download/use. (forwarded request 1186842 from bnavigator)</comment>
+    <requestid>1186843</requestid>
+  </revision>
 </revisionlist>

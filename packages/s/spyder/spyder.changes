@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jul 11 10:31:44 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 5.5.5
+  * Fix to ensure compatibility with matplotlib 3.9.0.
+  * Fix kernel start when connection file has spaces in its path.
+  * Improve compatibility with PySide2.
+  * Handle no output/error output when checking for updates on
+    conda installations.
+  * Fix installers update validation logic to choose installer
+    executable name to download/use.
+
+-------------------------------------------------------------------
 Mon Apr 15 17:41:53 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 5.5.4
