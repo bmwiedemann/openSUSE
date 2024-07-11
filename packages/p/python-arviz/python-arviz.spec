@@ -19,7 +19,7 @@
 %{?sle15_python_module_pythons}
 %define skip_python39 1
 Name:           python-arviz
-Version:        0.17.1
+Version:        0.18.0
 Release:        0
 Summary:        Exploratory analysis of Bayesian models
 License:        Apache-2.0
@@ -35,10 +35,11 @@ BuildRequires:  %{python_module bokeh}
 BuildRequires:  %{python_module dash}
 BuildRequires:  %{python_module dask-array}
 BuildRequires:  %{python_module dask}
+BuildRequires:  %{python_module dm-tree}
 BuildRequires:  %{python_module h5netcdf}
 BuildRequires:  %{python_module matplotlib >= 3.5}
 BuildRequires:  %{python_module numba}
-BuildRequires:  %{python_module numpy >= 1.22.0}
+BuildRequires:  %{python_module numpy >= 1.22.0 with %python-numpy < 2}
 BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pandas >= 1.4.0}
 BuildRequires:  %{python_module pytest >= 0.23}
@@ -50,9 +51,9 @@ BuildRequires:  %{python_module xarray-einstats >= 0.3}
 BuildRequires:  %{python_module zarr}
 # /SECTION
 BuildRequires:  fdupes
+Requires:       python-dm-tree
 Requires:       python-h5netcdf
 Requires:       python-matplotlib >= 3.5
-Requires:       python-numpy >= 1.22.0
 Requires:       python-packaging
 Requires:       python-pandas >= 1.4.0
 Requires:       python-scipy >= 1.8.0
@@ -60,6 +61,7 @@ Requires:       python-setuptools >= 60.0.0
 Requires:       python-typing_extensions
 Requires:       python-xarray >= 0.21.0
 Requires:       python-xarray-einstats
+Requires:       (python-numpy >= 1.22.0 with python-numpy < 2)
 Recommends:     python-bokeh >= 1.4.0
 Recommends:     python-numba
 Recommends:     python-ujson

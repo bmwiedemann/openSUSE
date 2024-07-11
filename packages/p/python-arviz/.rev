@@ -137,4 +137,22 @@
   * Fix `plot_forest` when Numba is installed</comment>
     <requestid>1158956</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>7a03426441c5acc4c8ca46ac3906a5d4</srcmd5>
+    <version>0.18.0</version>
+    <time>1720722594</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.18.0:
+  * New features
+    + Add new example data rugby_field and update rugby example data
+    + Support for pytrees and robust to nested dictionaries.
+    + Add .close method to InferenceData
+  * Maintenance and fixes
+    + Fix deprecation warnings in multiple dependencies
+  * Deprecation
+    + Removed arguments values2, fpr, pointwise, npoints, and pit in
+      plot_ecdf
+- Restrict numpy to &lt; 2.</comment>
+    <requestid>1186725</requestid>
+  </revision>
 </revisionlist>

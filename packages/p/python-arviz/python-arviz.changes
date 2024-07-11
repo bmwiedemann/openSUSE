@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Jul 11 02:36:53 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.18.0:
+  * New features
+    + Add new example data rugby_field and update rugby example data
+    + Support for pytrees and robust to nested dictionaries.
+    + Add .close method to InferenceData
+  * Maintenance and fixes
+    + Fix deprecation warnings in multiple dependencies
+  * Deprecation
+    + Removed arguments values2, fpr, pointwise, npoints, and pit in
+      plot_ecdf
+- Restrict numpy to < 2.
+
+-------------------------------------------------------------------
 Mon Mar 18 10:43:07 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.17.1:
