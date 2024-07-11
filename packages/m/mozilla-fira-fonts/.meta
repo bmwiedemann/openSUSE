@@ -1,0 +1,13 @@
+<package name="mozilla-fira-fonts" project="openSUSE:Factory">
+  <title>Friendly free fonts designed for Firefox OS</title>
+  <description>Friendly free sans-serif font designed for Firefox OS. Fira Sans
+(née Feura Sans) looks very similar to FF Meta, but has a larger x-height to
+improve appearance on screens. Contains light, regular, medium &amp; bold weights
+of Fira Sans. Contains bold &amp; regular versions of Fira Mono.
+
+Designers: Ralph du Carrois &amp; Erik Spiekermann.
+
+</description>
+  <devel project="M17N:fonts" package="mozilla-fira-fonts"/>
+  <url>https://github.com/mozilla/Fira</url>
+</package>

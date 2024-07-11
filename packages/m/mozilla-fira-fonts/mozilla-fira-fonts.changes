@@ -1,0 +1,48 @@
+-------------------------------------------------------------------
+Mon Nov 06 21:09:00 UTC 2023 - robert@riemann.cc
+
+- Update to version 4.202
+- Inclusion of Fira Sans Condensed
+- See https://github.com/mozilla/Fira/releases/tag/4.202 for details
+
+-------------------------------------------------------------------
+Mon Oct 19 20:31:49 UTC 2015 - toms@opensuse.org
+
+- Update to version 4.106
+- See https://github.com/mozilla/Fira/releases/tag/4.106 for details 
+
+-------------------------------------------------------------------
+Fri Jun 13 09:59:12 UTC 2014 - sknorr@suse.de
+
+- Update to version 3.1
+- Go back to OTF version, since there are no TTFs for Fira Mono
+
+-------------------------------------------------------------------
+Thu Jan 30 11:34:30 UTC 2014 - sknorr@suse.de
+
+- Rename package mozilla-fira-fonts
+- Move to another GitHub repository as source
+- Add Fira Mono
+- Switch back to TTF, as the OTF version has an OT in its name
+- Switch from Apache 2 to OFL, since the new repository has a
+  different license 
+
+-------------------------------------------------------------------
+Fri Sep  6 10:10:36 UTC 2013 - sknorr@suse.de
+
+- Update package name to match new font name
+- Update to version 2.0001
+- Enable medium weight again
+- Switch from ttf to otf version
+
+-------------------------------------------------------------------
+Fri Jul  5 07:39:54 UTC 2013 - sknorr@suse.de
+
+- Remove medium weight from installed package
+- Use full Github repo package instead of modified one
+
+-------------------------------------------------------------------
+Thu Jul  4 16:17:04 UTC 2013 - sknorr@suse.de
+
+- Initial version of package, with Feura Sans 1.01
+- Upstream FIXME: Medium & bold weights contain the same font
