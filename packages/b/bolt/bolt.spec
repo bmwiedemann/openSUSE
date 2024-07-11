@@ -21,16 +21,20 @@ Name:           bolt
 Version:        0.9.8
 Release:        0
 Summary:        Thunderbolt 3 device manager
-License:        GPL-2.0-or-later
+License:        LGPL-2.1-or-later
 Group:          System/Daemons
 URL:            https://gitlab.freedesktop.org/bolt/bolt
 Source0:        https://gitlab.freedesktop.org/bolt/bolt/-/archive/%{version}/bolt-%{version}.tar.bz2
-BuildRequires:  glib2-devel
-BuildRequires:  glibc-devel >= 2.27
-BuildRequires:  meson >= 0.46
+BuildRequires:  asciidoc
+BuildRequires:  c_compiler
+BuildRequires:  meson >= 0.60
 BuildRequires:  ninja
-BuildRequires:  polkit-devel
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(gio-2.0)
+BuildRequires:  pkgconfig(gio-unix-2.0)
+BuildRequires:  pkgconfig(glib-2.0) >= 2.56.0
 BuildRequires:  pkgconfig(libudev)
+BuildRequires:  pkgconfig(polkit-gobject-1)
 BuildRequires:  pkgconfig(udev)
 
 %description
@@ -47,7 +51,7 @@ The %{name}-tools package contains optional tools from the Bolt
 software framework.
 
 %prep
-%setup -q -n bolt-%{version}
+%autosetup
 
 %build
 %meson
@@ -65,7 +69,7 @@ ln -sf %{_sbindir}/service %{buildroot}/%{_sbindir}/rcbolt
 # move polkit rules to doc folder: the wheel group does not have special
 # meaning on SUSE based distros
 mkdir -p %{buildroot}/%{_docdir}/bolt/
-mv %{buildroot}/usr/share/polkit-1/rules.d/org.freedesktop.bolt.rules %{buildroot}/%{_docdir}/bolt/
+mv %{buildroot}%{_datadir}/polkit-1/rules.d/org.freedesktop.bolt.rules %{buildroot}/%{_docdir}/bolt/
 
 %preun
 %service_del_preun bolt.service
@@ -82,6 +86,7 @@ mv %{buildroot}/usr/share/polkit-1/rules.d/org.freedesktop.bolt.rules %{buildroo
 %files
 %doc README.md INSTALL.md BUGS.md
 %license COPYING
+%{_mandir}/man8/boltd.8%{?ext_man}
 %{_libexecdir}/boltd
 %{_unitdir}/bolt.service
 %{_sbindir}/rcbolt
@@ -94,5 +99,6 @@ mv %{buildroot}/usr/share/polkit-1/rules.d/org.freedesktop.bolt.rules %{buildroo
 
 %files tools
 %{_bindir}/boltctl
+%{_mandir}/man1/boltctl.1%{?ext_man}
 
 %changelog

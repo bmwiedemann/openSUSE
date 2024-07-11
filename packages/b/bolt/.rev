@@ -150,4 +150,12 @@ privileges and the file did not have any effect. (boo#1125425)</comment>
     <comment></comment>
     <requestid>1174438</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>130d1b6ddfc2478205f7e5dc3308e284</srcmd5>
+    <version>0.9.8</version>
+    <time>1720722577</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1186694</requestid>
+  </revision>
 </revisionlist>
