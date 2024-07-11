@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Jul  4 03:47:54 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 3.2.1:
+  * Drop future dependency. Uncertainties now has no external dependencies
+    when not using Numpy integration
+  * Drop support for Python versions before 3.8, including Python 2
+  * remove 1to2 and deprecations
+  * Moved from setup.py to pyproject.toml
+  * Move tests to tests folder
+  * Update unumpy test to be compatible with numpy 2
+  * Mark docstrings with backslashes as raw strings in tests
+- Drop patch remove-future-requirement.patch, no longer required.
+
+-------------------------------------------------------------------
 Thu Dec 28 15:26:42 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}

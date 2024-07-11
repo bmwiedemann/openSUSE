@@ -1,7 +1,7 @@
 #
 # spec file for package python-uncertainties
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-uncertainties
-Version:        3.1.7
+Version:        3.2.1
 Release:        0
 Summary:        Uncertainties on the Quantities Involved (aka "Error Propagation")
 License:        BSD-3-Clause
 URL:            https://github.com/lebigot/uncertainties/
 Source:         https://files.pythonhosted.org/packages/source/u/uncertainties/uncertainties-%{version}.tar.gz
-Patch0:         remove-future-requirement.patch
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
@@ -47,8 +47,6 @@ involving numbers with uncertainties can also be evaluated directly.
 
 %prep
 %autosetup -p1 -n uncertainties-%{version}
-sed -i -e '/^#!\//, 1d' uncertainties/1to2.py
-sed -i -e '/^#!\//, 1d' uncertainties/lib1to2/test_1to2.py
 
 %build
 %pyproject_wheel
