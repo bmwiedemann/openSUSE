@@ -1,7 +1,7 @@
 #
 # spec file for package gap-majoranaalgebras
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gap-majoranaalgebras
-Version:        1.5.1
+Version:        1.5.2
 Release:        0
 Summary:        GAP: Majorana algebra and representation construction
 License:        GPL-2.0-or-later
