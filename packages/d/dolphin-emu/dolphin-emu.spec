@@ -16,14 +16,13 @@
 #
 
 
-%define commit a9544510468740b77cf06ef28daaa65fe247fd32
 Name:           dolphin-emu
-Version:        5.0.21460
+Version:        2407
 Release:        0
 Summary:        Dolphin, a GameCube and Wii Emulator
 License:        (Apache-2.0 OR MIT) AND BSD-2-Clause AND libpng-2.0 AND GPL-2.0-or-later
 URL:            https://dolphin-emu.org
-# n=dolphin-emu && v=5.0.21460 && c=a9544510468740b77cf06ef28daaa65fe247fd32 && d=$n-$v && f=$d.tar.xz && cd /tmp && git clone https://github.com/$n/dolphin.git $n && pushd $n && git checkout $c && git submodule && git submodule update --init --recursive Externals/VulkanMemoryAllocator Externals/cubeb/cubeb Externals/enet/enet Externals/gtest Externals/implot/implot Externals/libspng/libspng Externals/rcheevos/rcheevos Externals/tinygltf/tinygltf Externals/zlib-ng/zlib-ng && git submodule status && rm -rf .??* && popd && mv $n $d && tar c --remove-files "$d" | xz -9e > "$f"
+# n=dolphin-emu && v=2407 && d=$n-$v && f=$d.tar.xz && cd /tmp && git clone https://github.com/$n/dolphin.git $n && pushd $n && git checkout $v && git submodule && git submodule update --init --recursive Externals/VulkanMemoryAllocator Externals/cubeb/cubeb Externals/enet/enet Externals/gtest Externals/implot/implot Externals/libspng/libspng Externals/minizip-ng/minizip-ng Externals/rcheevos/rcheevos Externals/tinygltf/tinygltf Externals/zlib-ng/zlib-ng && git submodule status && rm -rf .??* && popd && mv $n $d && tar c --remove-files "$d" | xz -9e > "$f"
 Source0:        %{name}-%{version}.tar.xz
 BuildRequires:  cmake
 BuildRequires:  fdupes
@@ -128,9 +127,9 @@ cmake . -LA \
     -DCMAKE_CXX_FLAGS="%{optflags}" \
     -DCMAKE_INSTALL_PREFIX=%{_prefix} \
     -DDISTRIBUTOR=openSUSE \
-    -DDOLPHIN_WC_BRANCH=beta \
+    -DDOLPHIN_WC_BRANCH=master \
     -DDOLPHIN_WC_DESCRIBE=%{version} \
-    -DDOLPHIN_WC_REVISION=%{commit} \
+    -DDOLPHIN_WC_REVISION=%{version} \
     -DENABLE_ANALYTICS=OFF \
     -DENABLE_LTO=OFF \
     -DENCODE_FRAMEDUMPS=OFF \

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul 10 05:26:41 UTC 2024 - Илья Индиго <ilya@ilya.top>
+
+- Updated to 2407
+  * Upstream doesn't provide a ChangeLog.
+
+-------------------------------------------------------------------
 Thu May  2 14:27:09 UTC 2024 - Илья Индиго <ilya@ilya.top>
 
 - Switched to default gcc for TW and gcc13 for Leap with disabled LTO.

@@ -120,4 +120,13 @@
 - Updated to 5.0.21460 a9544510468740b77cf06ef28daaa65fe247fd32</comment>
     <requestid>1171379</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>282cbd6bf3171b19490bc736f00013b4</srcmd5>
+    <version>2407</version>
+    <time>1720722585</time>
+    <user>anag+factory</user>
+    <comment>- Updated to 2407
+  * Upstream doesn't provide a ChangeLog.</comment>
+    <requestid>1186494</requestid>
+  </revision>
 </revisionlist>
