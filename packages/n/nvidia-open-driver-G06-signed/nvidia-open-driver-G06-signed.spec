@@ -17,7 +17,7 @@
 
 
 %define gfx_version 550.100
-%define cuda_version 555.42.02
+%define cuda_version 555.42.06
 
 %global flavor @BUILD_FLAVOR@%{?nil}
 %if "%{flavor}" == "cuda"
@@ -72,10 +72,10 @@ Source9:        pci_ids-supported-%{version}
 # Generate:
 # CUDA_VER=12.5.1; DRIVER_VER=%version; ARCH=...
 # mkdir tmp
-# wget https://developer.download.nvidia.com/compute/cuda/<cuda_ver>/local_install -P ./tmp
-# sh tmp/cuda_$CUDA_VER_$DRIVER_VER_linux.run --extract=$(pwd)/tmp
-# sh tmp/NVIDIA-Linux-$ARCH-$DRIVER_VER.run -x
-# ./json-to-pci-id-list.py --skiplegacy --kernelopen tmp/NVIDIA-Linux-$ARCH-$DRIVER_VER/supported-gpus/supported-gpus.json pci_ids-supported-$DRIVER_VER
+# wget https://developer.download.nvidia.com/compute/cuda/<cuda_ver>/local_installers/cuda_${CUDA_VER}_${DRIVER_VER}_linux.run -P ./tmp
+# sh tmp/cuda_${CUDA_VER}_${DRIVER_VER}_linux.run --extract=$(pwd)/tmp
+# cd tmp; sh ./NVIDIA-Linux-$ARCH-$DRIVER_VER.run -x; cd -
+# ./json-to-pci-id-list.py --skiplegacy --kernelopen tmp/NVIDIA-Linux-${ARCH}-${DRIVER_VER}/supported-gpus/supported-gpus.json pci_ids-supported-$DRIVER_VER
 Source10:       pci_ids-supported
 Source11:       pesign-copy-sources
 Source12:       pesign-spec-macros
