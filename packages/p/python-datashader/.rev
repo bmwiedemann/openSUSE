@@ -323,4 +323,12 @@
   * Compatibility with geopandas 1.0 and dask-geopandas 0.4.0</comment>
     <requestid>1186117</requestid>
   </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>cf3ac48038335754c4bbd330ccf9f72c</srcmd5>
+    <version>0.16.3</version>
+    <time>1720722775</time>
+    <user>anag+factory</user>
+    <comment>- Restrict numpy to &lt; 2.</comment>
+    <requestid>1186729</requestid>
+  </revision>
 </revisionlist>
