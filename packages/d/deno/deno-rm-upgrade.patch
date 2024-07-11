@@ -38,10 +38,26 @@ index 031ab07..4f3b05c 100644
        tools::vendor::vendor(flags, vendor_flags).await
      }),
 diff --git a/cli/args/flags.rs.1 b/cli/args/flags.rs
-index 72841df..1c93da1 100644
+index 48cfb92..eb31bf6 100644
 --- a/cli/args/flags.rs.1
 +++ b/cli/args/flags.rs
-@@ -397,7 +397,6 @@ pub enum DenoSubcommand {
+@@ -377,15 +377,6 @@ pub struct TestFlags {
+   pub junit_path: Option<String>,
+ }
+ 
+-#[derive(Clone, Debug, Eq, PartialEq)]
+-pub struct UpgradeFlags {
+-  pub dry_run: bool,
+-  pub force: bool,
+-  pub canary: bool,
+-  pub version: Option<String>,
+-  pub output: Option<String>,
+-}
+-
+ #[derive(Clone, Debug, Eq, PartialEq)]
+ pub struct VendorFlags {
+   pub specifiers: Vec<String>,
+@@ -428,7 +419,6 @@ pub enum DenoSubcommand {
    Task(TaskFlags),
    Test(TestFlags),
    Types,
@@ -49,16 +65,7 @@ index 72841df..1c93da1 100644
    Vendor(VendorFlags),
    Publish(PublishFlags),
  }
-@@ -917,7 +917,7 @@ impl Flags {
-         Some(current_dir.to_path_buf())
-       }
-       Add(_) | Bundle(_) | Completions(_) | Doc(_) | Fmt(_) | Init(_)
--      | Uninstall(_) | Jupyter(_) | Lsp | Lint(_) | Types | Upgrade(_)
-+      | Uninstall(_) | Jupyter(_) | Lsp | Lint(_) | Types
-       | Vendor(_) => None,
-       Install(_) => {
-         if *DENO_FUTURE {
-@@ -1062,9 +1061,6 @@ static ENV_VARIABLES_HELP: &str = color_print::cstr!(
+@@ -1097,9 +1087,6 @@ static ENV_VARIABLES_HELP: &str = color_print::cstr!(
      <g>DENO_NO_PROMPT</>       Set to disable permission prompts on access
                           (alternative to passing --no-prompt on invocation)
  
@@ -68,7 +75,7 @@ index 72841df..1c93da1 100644
      <g>DENO_TLS_CA_STORE</>    Comma-separated list of order dependent certificate
                           stores. Possible values: "system", "mozilla".
                           Defaults to "mozilla".
-@@ -944,7 +934,6 @@ pub fn flags_from_vec(args: Vec<String>) -> clap::error::Result<Flags> {
+@@ -1209,7 +1196,6 @@ pub fn flags_from_vec(args: Vec<OsString>) -> clap::error::Result<Flags> {
        "test" => test_parse(&mut flags, &mut m),
        "types" => types_parse(&mut flags, &mut m),
        "uninstall" => uninstall_parse(&mut flags, &mut m),
@@ -76,7 +83,7 @@ index 72841df..1c93da1 100644
        "vendor" => vendor_parse(&mut flags, &mut m),
        "publish" => publish_parse(&mut flags, &mut m),
        _ => unreachable!(),
-@@ -1099,7 +1088,6 @@ fn clap_root() -> Command {
+@@ -1379,7 +1365,6 @@ fn clap_root() -> Command {
          .subcommand(task_subcommand())
          .subcommand(test_subcommand())
          .subcommand(types_subcommand())
@@ -84,7 +91,7 @@ index 72841df..1c93da1 100644
          .subcommand(vendor_subcommand())
      })
      .long_about(DENO_HELP)
-@@ -2413,60 +2404,6 @@ The declaration file could be saved and used for typing information.",
+@@ -2776,60 +2761,6 @@ The declaration file could be saved and used for typing information.",
      )
  }
  
@@ -142,10 +149,10 @@ index 72841df..1c93da1 100644
 -    })
 -}
 -
+ // TODO(bartlomieju): this subcommand is now deprecated, remove it in Deno 2.
  fn vendor_subcommand() -> Command {
    Command::new("vendor")
-       .about("Vendor remote modules into a local directory")
-@@ -3965,23 +3902,6 @@ fn types_parse(flags: &mut Flags, _matches: &mut ArgMatches) {
+@@ -4488,23 +4419,6 @@ fn types_parse(flags: &mut Flags, _matches: &mut ArgMatches) {
    flags.subcommand = DenoSubcommand::Types;
  }
  
@@ -169,7 +176,7 @@ index 72841df..1c93da1 100644
  fn vendor_parse(flags: &mut Flags, matches: &mut ArgMatches) {
    ca_file_arg_parse(flags, matches);
    config_args_parse(flags, matches);
-@@ -4442,25 +4362,6 @@ mod tests {
+@@ -4974,43 +4888,6 @@ mod tests {
      assert_eq!(flags2, flags);
    }
  
@@ -192,10 +199,28 @@ index 72841df..1c93da1 100644
 -    );
 -  }
 -
+-  #[test]
+-  fn upgrade_with_output_flag() {
+-    let r = flags_from_vec(svec!["deno", "upgrade", "--output", "example.txt"]);
+-    assert_eq!(
+-      r.unwrap(),
+-      Flags {
+-        subcommand: DenoSubcommand::Upgrade(UpgradeFlags {
+-          force: false,
+-          dry_run: false,
+-          canary: false,
+-          version: None,
+-          output: Some(String::from("example.txt")),
+-        }),
+-        ..Flags::default()
+-      }
+-    );
+-  }
+-
    #[test]
-   fn upgrade_with_output_flag() {
-     let r = flags_from_vec(svec!["deno", "upgrade", "--output", "example.txt"]);
-@@ -7509,25 +7406,6 @@ mod tests {
+   fn version() {
+     let r = flags_from_vec(svec!["deno", "--version"]);
+@@ -8832,25 +8709,6 @@ mod tests {
      );
    }
  
