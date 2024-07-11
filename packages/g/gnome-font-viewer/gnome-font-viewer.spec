@@ -24,6 +24,8 @@ License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://gitlab.gnome.org/GNOME/gnome-font-viewer
 Source0:        https://download.gnome.org/sources/gnome-font-viewer/46/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM 565d795731471c27542bb9ee60820a2d0d15534e.patch -- window: Fix function callback definition
+Patch1:         https://gitlab.gnome.org/GNOME/gnome-font-viewer/-/commit/565d795731471c27542bb9ee60820a2d0d15534e.patch
 
 BuildRequires:  appstream-glib
 BuildRequires:  desktop-file-utils
