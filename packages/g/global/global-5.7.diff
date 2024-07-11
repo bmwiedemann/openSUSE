@@ -2,11 +2,11 @@
  Makefile.am |    2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-Index: Makefile.am
+Index: global-6.6.13/Makefile.am
 ===================================================================
---- Makefile.am.orig
-+++ Makefile.am
-@@ -20,7 +20,7 @@ if USE_GTAGSCSCOPE
+--- global-6.6.13.orig/Makefile.am
++++ global-6.6.13/Makefile.am
+@@ -21,7 +21,7 @@ if USE_GTAGSCSCOPE
          SUBDIRS += gtags-cscope
  endif
  

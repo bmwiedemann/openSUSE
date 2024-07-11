@@ -2,6 +2,7 @@
 # spec file for package global
 #
 # Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +18,7 @@
 
 
 Name:           global
-Version:        6.6.11
+Version:        6.6.13
 Release:        0
 Summary:        Common source code tag system
 License:        GPL-3.0-only
@@ -50,7 +51,7 @@ easily. It is useful to hack a large project containing many
 subdirectories or many main() functions like MH, X, or Linux kernel.
 
 %prep
-%autosetup -p0
+%autosetup -p1
 
 %build
 autoreconf -fiv
@@ -71,7 +72,11 @@ mv %{buildroot}/%{_docdir}/%{name}/gtags.el %{buildroot}%{_datadir}/emacs/site-l
 mv %{buildroot}/%{_docdir}/%{name}/gtags.conf %{buildroot}%{_sysconfdir}/
 rm -rf %{buildroot}/%{_docdir}/%{name}/INSTALL
 
-%if %{suse_version} >= 1600
+# installed via %%license
+rm -v %{buildroot}/%{_docdir}/%{name}/COPYING*
+rm -v %{buildroot}/%{_docdir}/%{name}/LICENSE
+
+%if 0%{?suse_version} >= 1600
 %python3_fix_shebang_path %{buildroot}%{_datadir}/gtags/script/pygments_parser.py
 %endif
 
@@ -81,11 +86,21 @@ sed -i "s|env perl|perl|g" \
 
 %fdupes -s %{buildroot}
 
+%check
+%make_build check
+
 %files
+%license COPYING COPYING.LIB LICENSE
+%{_bindir}/global
+%{_bindir}/globash
+%{_bindir}/gozilla
+%{_bindir}/gtags
+%{_bindir}/gtags-cscope
+%{_bindir}/htags
+%{_bindir}/htags-server
 %dir %{_datadir}/emacs
 %dir %{_datadir}/emacs/site-lisp
 %config(noreplace) %{_sysconfdir}/gtags.conf
-%{_bindir}/*
 %doc %{_docdir}/%{name}
 %{_mandir}/man*/*%{?ext_man}
 %{_infodir}/global.info%{?ext_info}

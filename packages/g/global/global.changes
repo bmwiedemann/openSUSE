@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Jul  7 06:42:21 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 6.6.13:
+  * CVE-2024-38448: htags may allow code execution via untrusted
+    dbpath (boo#1226420)
+- includes changes from 6.6.12:
+  * Add new option 'limit' for the --completion command
+  * Fix segfault in global -c command with the --from-here option
+  * htags: fix failures in large environments
+
+-------------------------------------------------------------------
 Mon Apr 29 14:23:07 UTC 2024 - pgajdos@suse.com
 
 - remove dependency on /usr/bin/python3 using

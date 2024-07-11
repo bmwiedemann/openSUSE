@@ -1,7 +1,7 @@
-Index: gtags.conf.in
+Index: global-6.6.13/gtags.conf.in
 ===================================================================
---- gtags.conf.in.orig
-+++ gtags.conf.in
+--- global-6.6.13.orig/gtags.conf.in
++++ global-6.6.13/gtags.conf.in
 @@ -77,7 +77,7 @@ builtin-parser:\
  user-custom|User custom plugin parser:\
  	:tc=common:\
@@ -32,7 +32,7 @@ Index: gtags.conf.in
 @@ -370,7 +370,7 @@ universal-ctags|setting to use Universal
  pygments-parser|Pygments plug-in parser:\
  	:tc=common:\
- 	:ctagscom=@EXUBERANT_CTAGS@:\
+ 	:ctagscom=@UNIVERSAL_CTAGS@:\
 -	:pygmentslib=$libdir/gtags/pygments-parser.la:\
 +	:pygmentslib=@libdir@/gtags/pygments-parser.la:\
  	:langmap=ABAP\:.abap:\
