@@ -43,4 +43,13 @@
   * Use serde-transcode to optimize JSON formatting, see #362</comment>
     <requestid>1167766</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d8db35c326b48b1ecd0a749a593fa8c8</srcmd5>
+    <version>0.22.2~0</version>
+    <time>1720722596</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.22.2:
+  * Prevent directory traversal in server-supplied filenames #379</comment>
+    <requestid>1186517</requestid>
+  </revision>
 </revisionlist>

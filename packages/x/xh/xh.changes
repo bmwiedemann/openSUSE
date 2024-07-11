@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul 10 06:57:13 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.22.2:
+  * Prevent directory traversal in server-supplied filenames #379
+
+-------------------------------------------------------------------
 Mon Apr 15 08:17:34 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.22.0:
