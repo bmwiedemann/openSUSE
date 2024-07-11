@@ -29,4 +29,13 @@
   * Added TryExec to desktop entry (forwarded request 1186486 from rrahl0)</comment>
     <requestid>1186487</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>6151eb9cd1be2b36eaa3b4ad8234de43</srcmd5>
+    <version>51.13</version>
+    <time>1720722779</time>
+    <user>anag+factory</user>
+    <comment>- update to version 51.13:
+  * Fixed crash on starting executables via the file manager (forwarded request 1186699 from rrahl0)</comment>
+    <requestid>1186700</requestid>
+  </revision>
 </revisionlist>

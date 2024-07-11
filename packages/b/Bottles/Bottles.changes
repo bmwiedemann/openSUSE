@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul 10 21:45:43 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to version 51.13:
+  * Fixed crash on starting executables via the file manager
+
+-------------------------------------------------------------------
 Wed Jul 10 00:32:46 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update version 51.12:
