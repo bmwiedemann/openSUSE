@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Jul  8 05:56:21 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Updated to version 5.2.3
+  * Fix crash in bot star stats page.
+  * Bug fixes and other minor improvements.
+
+-------------------------------------------------------------------
+Tue Jul  2 19:33:39 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Updated to version 5.2.2
+  * Fix topics search in topic groups.
+  * Fix Instant View pages content updating.
+
+-------------------------------------------------------------------
+Tue Jul  2 08:10:10 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Updated to version 5.2.1
+  * Fix crash when opening topic in a new window.
+  * Fix crash in topic search scope dropdown.
+  * Fix crash in video player.
+  * Fix feeze and crash in Instant View (Windows).
+  * Allow unlock by Apple Watch or System Password (macOS).
+
+-------------------------------------------------------------------
 Mon Jul  1 06:30:36 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Updated to version 5.2.0
