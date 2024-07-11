@@ -18,17 +18,17 @@
 
 %define test_version 0.5
 Name:           vis
-Version:        0.8
+Version:        0.9
 Release:        0
 Summary:        An editor combining the strengths of both vi(m) and sam
 License:        ISC
 Group:          Productivity/Text/Editors
-URL:            https://github.com/martanne/vis
-Source0:        https://github.com/martanne/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Source1:        https://github.com/martanne/vis-test/releases/download/v%{test_version}/vis-test-%{test_version}.tar.gz
-# PATCH-FEATURE-UPSTREAM 675-nb-subproc-runner.patch gh#martanne/vis!675 mcepl@suse.com
-# adds support for the non-blocking subprocess runner
-Patch0:         675-nb-subproc-runner.patch
+URL:            https://sr.ht/~martanne/vis/
+Source0:        https://git.sr.ht/~martanne/vis/archive/v%{version}.tar.gz
+Source1:        https://git.sr.ht/~martanne/vis-test/archive/v%{test_version}.tar.gz
+# PATCH-FIX-UPSTREAM vis-test-builtin_strncpy-bounds.patch mcepl@suse.com
+# patch from https://git.sr.ht/~martanne/vis-test/commit/efafa3c17826
+Patch0:         vis-test-builtin_strncpy-bounds.patch
 BuildRequires:  libselinux-devel
 BuildRequires:  libtermkey-devel
 BuildRequires:  lua-devel
@@ -47,9 +47,11 @@ Vis aims to be a modern, legacy free, simple yet efficient editor combining the 
 It extends vi's modal editing with built-in support for multiple cursors/selections and combines it with sam's structural regular expression based command language.
 
 %prep
-%autosetup -p1
+%setup -q -n %{name}-v%{version}
 
 tar -xC test/ --strip-components 1 -f %{SOURCE1}
+
+%patch -p1 -P 0
 
 %build
 export CFLAGS="%{optflags} -fcommon"

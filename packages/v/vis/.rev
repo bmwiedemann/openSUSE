@@ -196,4 +196,25 @@ Adds support for the non-blocking subprocess runner.
 (🤖: Submission of vis via https://src.opensuse.org/pool/vis/pulls/5 by mcepl)</comment>
     <requestid>1099712</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>636243fc4641e5ab82a1e34028f59981</srcmd5>
+    <version>0.9</version>
+    <time>1720722631</time>
+    <user>anag+factory</user>
+    <comment>update_0.9
+
+- Update to 0.9:
+
+## [0.9] - 2024-05-01
+
+This release has been long in the works but its time now. There
+have been many additions and bugfixes since 0.8. In particular
+changes to the Lua API have made it easier to extend `vis` in all
+sorts of ways that were previously difficult or impossible. As
+always the appreciation towards contributors new and old can not
+be understated; thanks goes out to everyone for their efforts!
+
+(🤖: Submission of vis via https://src.opensuse.org/pool/vis/pulls/1 by mcepl)</comment>
+    <requestid>1186601</requestid>
+  </revision>
 </revisionlist>
