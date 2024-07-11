@@ -1,7 +1,7 @@
 #
 # spec file for package anjuta
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,9 @@ Source0:        https://download.gnome.org/sources/anjuta/3.34/%{name}-%{version
 Source99:       %{name}-rpmlintrc
 # PATCH-FIX-UPSTREAM libgda-6.patch gmbr3@opensuse.org -- Require and support GDA 6
 Patch0:         libgda-6.patch
+# PATCH-FIX-UPSTREAM pointer-types.patch -- Fix for modern C
+Patch1:         pointer-types.patch
+
 BuildRequires:  autogen
 BuildRequires:  binutils-devel
 BuildRequires:  bison

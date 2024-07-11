@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jul 10 14:12:45 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add pointer-types.patch: Fix build with gcc 14.
+
+-------------------------------------------------------------------
 Tue Aug 30 19:32:46 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Disable devhelp plugin, we can no longer support this due to
