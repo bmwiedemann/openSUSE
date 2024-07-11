@@ -18,14 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-ai-translation-text
-Version:        1.0.0
+Version:        1.0.1
 Release:        0
 Summary:        Azure Text Translation Client Library for Python
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/Azure/azure-sdk-for-python
 Source:         https://files.pythonhosted.org/packages/source/a/azure-ai-translation-text/azure-ai-translation-text-%{version}.tar.gz
-Source1:        LICENSE.txt
 BuildRequires:  %{python_module azure-ai-nspkg >= 1.0.0}
 BuildRequires:  %{python_module azure-ai-translation-nspkg >= 1.0.0}
 BuildRequires:  %{python_module pip}
@@ -63,7 +62,6 @@ Use the Text Translation client library for Python to:
 %setup -q -n azure-ai-translation-text-%{version}
 
 %build
-install -m 644 %{SOURCE1} %{_builddir}/azure-ai-translation-text-%{version}
 %pyproject_wheel
 
 %install
@@ -78,7 +76,7 @@ rm -rf %{buildroot}%{$python_sitelib}/azure/__pycache__
 
 %files %{python_files}
 %doc CHANGELOG.md README.md
-%license LICENSE.txt
+%license LICENSE
 %{python_sitelib}/azure/ai/translation/text
 %{python_sitelib}/azure_ai_translation_text-*.dist-info
 
