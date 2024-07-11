@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Wed Jul 10 16:55:40 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.10.4:
+  * expose keygen options
+  * build(deps): bump google.golang.org/grpc in the go_modules
+    group
+  * Fix env overrides for interactive builds
+  * python/pipelines - resolve symlink to full path.
+  * python/import pipeline - find python3.7, python3.8, python3.9
+  * python/import - fix a bug in 'imports', do not require
+    specifying python
+  * var-transforms: support var transform substitions across
+    runtimes and provides and tests
+  * build(deps): bump the gomod group with 2 updates
+  * build(deps): bump the actions group with 2 updates
+  * build(deps): bump cloud.google.com/go/storage from 1.42.0 to
+    1.43.0
+  * build(deps): bump chainguard.dev/apko
+  * build(deps): bump
+    go.opentelemetry.io/otel/exporters/stdout/stdouttrace
+  * build(deps): bump golang.org/x/sys from 0.21.0 to 0.22.0
+  * build(deps): bump google.golang.org/api from 0.186.0 to 0.187.0
+
+-------------------------------------------------------------------
+Wed Jul 10 07:28:05 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.10.3:
+  * group dependabot updates
+  * bump golangci-lint to v1.59.x
+  * bump to go1.22.5
+
+-------------------------------------------------------------------
+Wed Jul 10 07:22:15 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.10.2:
+  * goreleaser: make skip value configurable
+  * goreleaser pipeline: --skip flag refactor
+  * build(deps): bump github.com/chainguard-dev/yam from 0.0.9 to
+    0.0.10
+  * build(deps): bump google.golang.org/api from 0.185.0 to 0.186.0
+
+-------------------------------------------------------------------
 Wed Jul 03 19:01:03 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.10.1:
