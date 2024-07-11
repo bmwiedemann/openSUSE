@@ -1,0 +1,792 @@
+-------------------------------------------------------------------
+Wed Jul 10 16:49:20 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.7.1:
+  * chore: release 2.7.1
+  * fix(ci-env): unable to copy /home/<user>/.docker/mutagen
+  * fix: suppress warnings for some commands
+  * docs(build): add cross-compilation section
+  * chore(release): 1.2 alpha, 2 alpha
+  * chore(release): 1.2 beta,rock-solid 2 beta,ea,stable,rock-solid
+
+-------------------------------------------------------------------
+Wed Jul 10 07:23:29 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.7.0:
+  * chore: release 2.7.0
+  * docs(build): move multi-platform and cross-platform building
+    section
+  * refactor: fix typo
+  * refactor: update global warnings interface
+  * refactor: refactor synchronization server GlobalWarningLn
+  * refactor(config): update deprecation warning for artifact,
+    fromArtifact and import.artifact
+  * refactor(config): update deprecation warning for nameless image
+  * refactor(config): add ansible deprecation warning
+  * refactor: update global warnings format
+  * docs: remove artifacts completely
+  * feat(build, stapel): add disableGitAfterPatch directive
+  * feat(build): add ability to regulate the final property of an
+    image
+  * refactor: unify treatment of stapel, dockerfile, and artifact
+    images
+  * docs(reference, config): actualize
+  * refactor: update v1.3 to v3 in deprecation messages
+  * refactor(build, buildah): update error message
+  * fix(build): fix invalid image digest when cache repo used
+  * test(build, stapel): remove outdated test
+  * test: fix broken tests
+  * chore(channels): bump alpha
+
+-------------------------------------------------------------------
+Wed Jul 03 15:28:33 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.6.7:
+  * chore: release 2.6.7
+  * fix(deploy): dependency between ClusterRoleBinding in
+    non-release namespace and ClusterRole not detected
+  * chore(release): 1.2 alpha, 2 alpha
+
+-------------------------------------------------------------------
+Wed Jul 03 15:20:01 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.6.6:
+  * chore: release 2.6.6
+  * fix(build): fix stage selection does not take into account
+    parent creation timestamp
+  * refactor: rename StageID.UniqueID to StageID.CreationTs
+  * chore(release): 1.2 alpha,beta,ea,stable, 2 alpha,beta
+
+-------------------------------------------------------------------
+Wed Jul 03 15:16:52 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.6.5:
+  * chore: release 2.6.5
+  * fix(build): fix `panic: got bad timestamp ""` when Created not
+    present in base image
+  * chore(release): 1.2 stable, 2 beta,ea,stable,rock-solid
+  * fix(build, stapel): fix fromLatest does not work properly with
+    index manifest
+  * refactor: remove unused code
+  * fix(deploy): werf helm ugprade aborts if last release Pending
+  * refactor(deploy): move uninstall-related code from dismiss.go
+    to Nelm
+  * chore(release): 1.2 beta, ea
+  * chore(release): 1.2 alpha, 2 alpha
+
+-------------------------------------------------------------------
+Wed Jul 03 15:14:21 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.6.4:
+  * chore: release 2.6.4
+  * fix(build, cache-repo): fix "panic: runtime error: info must be
+    set for image"
+  * chore(channels): bump alpha
+
+-------------------------------------------------------------------
+Wed Jun 26 05:12:44 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.6.3:
+  * chore: release 2.6.3
+  * fix(deploy): errors count in progress report not updating
+  * fix(deploy): some STS and DS pods not tracked and their errors
+    ignored
+  * fix(deploy): ignore false recreation errors during StatefulSet
+    tracking
+  * fix(deploy): helm rollback not adding release metadata to
+    created resources
+  * fix(deploy): rollback error not showed
+  * chore(channels): bump alpha
+
+-------------------------------------------------------------------
+Wed Jun 26 05:08:14 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.6.2:
+  * test(deploy): fix expect with old error message
+  * refactor(deploy): move deploy-related code from render.go to
+    Nelm
+  * chore: release 2.6.2
+  * chore(release): 1.2 rock-solid, 2 beta,ea,stable,rock-solid
+  * test(build): temporary disable annoying flaky multiplatform
+    build test
+  * refactor(deploy): move deploy-related code from plan.go to Nelm
+  * docs(build): update docs about using mirrors
+  * docs: regenerate cli
+  * refactor(deploy): move deploy-related code from converge.go to
+    Nelm
+  * fix(build): publish custom tags and final images in parallel
+  * chore(release): 1.2 alpha
+  * chore(release): 1.2 stable, 2 beta,ea,stable
+
+-------------------------------------------------------------------
+Tue Jun 18 14:27:47 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.6.1:
+  * Add StackOverflow to README
+  * chore: release 2.6.1
+  * fix: "docker-compose": executable file not found error
+  * test(deploy): disable test that stopped working due to skipping
+    releases
+  * chore(channels): bump alpha
+
+-------------------------------------------------------------------
+Fri Jun 14 18:11:32 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.6.0:
+  * chore: release 2.6.0
+  * docs: fix urls
+  * feat(deploy): release namespace management v2
+  * chore(release): 1.2 ea, 2 beta,ea
+  * feat(export): add introspect and parallel cli options
+  * fix(common): fix panic "unexpected regexp find submatch for
+    reference"
+  * chore(release): 2 alpha,beta
+
+-------------------------------------------------------------------
+Fri Jun 07 19:25:10 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.5.0:
+  * chore: release 2.5.0
+  * fix(build, buildah, dockerfile): fix multi-stage does not work
+    properly
+  * feat(build, dockerfile, multiplatform): support automatic
+    platform ARGs
+  * fix(dev): disable signing for service commits
+  * docs(build): fix links
+  * chore(channels): bump alpha
+
+-------------------------------------------------------------------
+Fri Jun 07 19:18:24 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.4.1:
+  * chore(ci): add "." to slack message as a workaround for "empty
+    commit message"
+  * docs(plan): add docs about werf plan
+  * chore: release 2.4.1
+  * fix(deploy): bundle apply not overriding project.werf.io/env
+    annotation
+  * docs(build): move docker.io mirrors doc
+  * fix(deploy): panics when some manifest fields are of wrong type
+  * chore(channels): bump alpha 1.2, 2
+  * docs(contributing): update supported scopes
+  * docs(contributing): update supported scopes
+  * chore(channels): bump alpha channels 1.2
+  * chore(channels): bump alpha channels 1.2, 2
+
+-------------------------------------------------------------------
+Sat Jun 01 09:50:03 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.4.0:
+  * docs(build): new `--container-registry-mirror` option
+  * chore: release 2.4.0
+  * feat(build): new option --container-registry-mirror
+  * chore(release): 1.1 all
+  * chore(channels): bump all channels 1.2, 2
+
+-------------------------------------------------------------------
+Thu May 30 11:32:56 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.3.3:
+  * chore: release 2.3.3
+  * chore(channels): bump alpha 1.2, 2
+  * fix(build, buildah): multiple registry mirrors broken
+
+-------------------------------------------------------------------
+Thu May 30 11:28:30 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.3.2:
+  * chore(channels): bump alpha 1.2, 2
+  * chore: release 2.3.2
+  * fix(build, buildah): prefix registries mirrors with https /2
+  * chore(channels): bump 1.2, 2 alpha
+
+-------------------------------------------------------------------
+Thu May 30 11:22:45 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.3.1:
+  * chore: release 2.3.1
+  * fix(build, buildah): prefix registries mirrors with https
+  * fix(build, buildah): add default registry for mirrors docker.io
+  * chore(release): 1.2 alpha
+  * chore(release): 2 alpha
+
+-------------------------------------------------------------------
+Thu May 30 11:09:39 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.3.0:
+  * chore: release 2.3.0
+  * feat(build, buildah): support mirror registries (v1)
+  * feat(other): use docker hub if registry address not specified
+    in `werf cr`
+  * docs(contributing): update supported scopes
+  * chore(ci): fix coverage report
+  * docs(contributing): update supported scopes
+  * chore(release): bump beta
+  * docs(contributing): simplify supported scopes
+  * chore(release): 1.2 alpha
+  * Update CONTRIBUTING.md
+  * Update CONTRIBUTING.md
+  * Update CONTRIBUTING.md
+  * chore(channels): bump alpha
+
+-------------------------------------------------------------------
+Fri May 24 12:39:17 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.2.0:
+  * Features
+    - build: publish custom tags and final images in parallel
+      (ff2843a)
+    - deploy: new werf.io/deploy-dependency-<name> annotation
+      (3e76f87)
+    - harbor: try to get the image again due to
+      PROJECTPOLICYVIOLATION error (b7044c1)
+  * - Bug Fixes
+    - deploy: werf.io/deploy-dependency-.. anno params should be
+      comma-separated (17639e5)
+    - prevent growing TCP connections by using a shared HTTP
+      transport (59f4ec8)
+
+-------------------------------------------------------------------
+Tue May 21 18:29:52 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.1.0:
+  * test(v2): fix outdated giterminism tests
+  * chore: release 2.1.0
+  * fix(deploy): stable resource sorting in Helm release manifests
+  * chore: go mod tidy
+  * feat(values): env WERF_EXPERIMENT_NO_GLOBAL_SERVICE_VALUES=1
+    will disable global service values
+  * Fix docs of Usage - Build - Stapel
+  * chore: bump channels for 1.1
+  * Partially revert "ci(v2): fix v1.2 and v2 releasing"
+  * ci(v2): fix v1.2 and v2 releasing
+  * docs: fix documentation.yml path in regen.sh
+
+-------------------------------------------------------------------
+Tue May 14 04:59:49 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.0.4:
+  * chore: bump channels
+  * chore: release 2.0.4
+  * fix(docs): fix routing /3
+  * docs: fix routing /2
+  * fix: docs routing
+  * fix(ci-env): fix unable to copy
+    "/Users/username/.docker/mutagen"
+  * chore(ci): fix notifications (#6101)
+  * Sync with EN as part of werf 2.0 release
+  * Sync overview.md with EN as part of werf 2.0 release
+  * Sync with EN as part of werf 2.0 release
+  * Sync with EN - minor fix
+  * Sync deployment_order.md with EN as part of werf 2.0 release
+  * Sync comparison.md with EN
+  * doc(v2): fix breadcrumb
+  * doc(v2): update documentation for v2
+  * doc(v2): fix migration to v2 guide
+  * doc(v2): fix old v1.2 link
+  * doc(v2): fix breadcrumb
+  * doc(v2): add werf 2.0 migration guide
+  * ci(v2): export 1.2 werf images also
+  * chore: bump channels
+
+-------------------------------------------------------------------
+Thu Apr 25 18:49:31 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.0.3:
+  Bug Fixes
+  * v2: replace leftovers of v1.2 to v2 /2 (d6cacfb)
+
+-------------------------------------------------------------------
+Wed Apr 24 17:14:22 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.0.2:
+  * fix(v2): panic with --add-annotations
+
+-------------------------------------------------------------------
+Wed Apr 24 17:05:25 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.0.1:
+  * Bug Fixes
+    - cleanup: remove unnecessary specific implementation for
+      selectel (88d0d65)
+    - v2: werf version is always dev (9876a4e)
+
+-------------------------------------------------------------------
+Wed Apr 24 16:59:29 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.0.0:
+  Major update!
+  * Features
+    - new 2.0 release (16a2ac7)
+    - new major v2 release (e15cf3c)
+    - v2: "werf render" now uses Nelm (03e05a5)
+    - v2: remove --...-implementation flags (82b548f)
+    - v2: remove deprecated --report-path and --report-format
+      (4f26904)
+    - v2: remove deprecated --skip-build option (14d1c72)
+    - v2: remove deprecated --tag/--to-tag/--repo from "werf bundle
+      copy" (1a4bea1)
+    - v2: remove deprecated "werf_image" Helm templates function
+      (8721568)
+    - v2: switch "werf bundle render" to Nelm (24f3042)
+  * Bug Fixes
+    - deploy: incorrect error message when release lock fails
+      (7f60ccc)
+    - remove deprecated werf bundle export/download commands
+      (dd9bc09)
+    - v2: dont save service annotations in release secret (27d6c4d)
+    - v2: enable Nelm by default, remove option to switch back to
+      the old engine (9df5245)
+    - v2: remove automigration from helm 2 to helm 3 releases
+      (316caee)
+    - v2: replace leftovers of v1.2 with v2 (940fefe)
+
+-------------------------------------------------------------------
+Wed Apr 10 05:30:58 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.2.307:
+  * chore: bump channels
+  * chore: release 1.2.307
+  * docs: update reference
+  * feat(nelm): switch back to the old deployment engine by default
+
+-------------------------------------------------------------------
+Wed Apr 10 05:20:31 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.2.306:
+  * chore: release 1.2.306
+  * fix(nelm): release namespace and hook never deleted (except
+    recreation)
+  * fix(nelm): multiple delete policies ignored
+  * (tests): Update e2e and integration tests for Kubernetes
+    (#6049)
+  * chore: 1.2.305 to alpha
+
+-------------------------------------------------------------------
+Fri Apr 05 17:32:34 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.2.305:
+  * chore: release 1.2.305
+  * fix(nelm): --save-deploy-report not saving report on skipped
+    release /2
+
+-------------------------------------------------------------------
+Fri Apr 05 17:22:40 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.2.304:
+  * chore: release 1.2.304
+  * fix(nelm): --save-deploy-report not saving report on skipped
+    release
+  * fix(doc): remove references to werf.yaml and .helm from
+    commands that ignore project configs
+  * chore(ci): add "." to slack message as a workaround for "empty
+    commit message"
+  * chore: 1.2.303 to alpha
+
+-------------------------------------------------------------------
+Fri Apr 05 11:23:45 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.2.303:
+  * chore: release 1.2.303
+  * feat(nelm): skip removal of resources with missing/incorrect
+    release annotations and labels
+  * fix(nelm): "werf converge" panics on first release
+  * fix(nelm): allow empty helm.sh/hook-delete-policy and
+    werf.io/delete-policy
+  * feat(deps): update Nelm
+  * fix(nelm): don't skip release if all resources up-to-date but
+    the release itself changed
+  * doc(nelm): update reference
+  * feat(nelm): deploy bundles using new deployment engine
+  * chore: bump channels
+  * fix(nelm): missing expected annotations values in adoption
+    errors
+  * chore(tests): disable old integration tests broken by enabling
+    Nelm /2
+  * chore(tests): disable old integration tests broken by enabling
+    Nelm
+  * Revert "chore(channels): 1.2 stable"
+  * chore(channels): alpha to 1.2.302, beta to 1.2.301
+
+-------------------------------------------------------------------
+Wed Apr 03 17:00:10 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.2.302:
+  * nelm: change propagation policy on DELETE from Auto to
+    Foreground (d7906f0)
+
+-------------------------------------------------------------------
+Fri Mar 29 19:28:52 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.2.301:
+  * chore: release 1.2.301
+  * feat(deps): mini bump all modules
+  * fix(stapel): using suitable stage might break reproducibility
+    of subsequent stages
+  * refactor: small improvement
+  * fix(stapel): copying suitable stage from secondary might break
+    reproducibility of subsequent stages
+  * fix(stapel): discarding newly built image might break
+    reproducibility of subsequent stages
+  * fix(nelm): don't show logs produced before current release
+  * fix(nelm): --status-progress-period=-1 panics
+  * fix(buildah): "unknown version specified" error
+  * fix(buildah): unable to find "pasta" binary
+  * fix(buildah): "could not find netavark" error
+  * fix(nelm): tracking might hang with
+    werf.io/track-termination-mode: "NonBlocking"
+  * chore(channels): 1.2 beta, ea, stable
+  * chore: format files
+  * fix(deps): update all direct dependencies
+  * fix(deps): update Helm to v3.14.3
+  * fix: e2e converge tests after Nelm migration
+  * fix(nelm): Jobs not failing on errors /2
+
+-------------------------------------------------------------------
+Thu Mar 21 19:29:19 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.2.300:
+  * chore: release 1.2.300
+  * fix(nelm): Jobs not failing on errors /2
+  * feat: make werf root command embeddable
+
+-------------------------------------------------------------------
+Thu Mar 21 19:24:02 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.2.299:
+  * chore: release 1.2.299
+  * chore(channels): alpha to 1.2.299
+  * fix(nelm): Jobs not failing on errors
+
+-------------------------------------------------------------------
+Thu Mar 21 19:19:47 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.2.298:
+  * chore(channels): alpha to 1.2.298
+  * doc: regenerate reference
+  * chore: release 1.2.298
+  * docs: add a link to the Argo CD integration article (#6000)
+  * fix(nelm): WERF_DIR ignored for chart path
+  * chore(channels): rollback alpha to 1.2.295
+  * chore(channels): alpha to 1.2.297 (enable Nelm by default)
+
+-------------------------------------------------------------------
+Tue Mar 19 20:14:33 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.2.297:
+  * chore: release 1.2.297
+  * fix(nelm): panic with werf.io/replicas-on-creation
+  * chore(channels): 1.2 beta, stable, rock-solid
+  * feat(nelm): show release name/namespace on converge/plan start
+  * feat(nelm): improve log coloring
+  * feat(nelm): remove excessive operations summary
+  * feat(nelm): show NOTES.txt on release
+  * fix(nelm): removing child chart values with null
+
+-------------------------------------------------------------------
+Sun Mar 17 08:55:58 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.2.296:
+  * chore: release 1.2.296
+  * feat(nelm): activate new deployment engine Nelm by default
+  * chore(channels): revert 1.2 rock-solid
+  * chore: bump alpha
+
+-------------------------------------------------------------------
+Sun Mar 17 08:50:07 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.2.295:
+  * chore: release 1.2.295
+  * fix(ssh): initialize ssh agent before working with git repo
+  * fix(nelm): deployment tracking hangs; old pods tracked
+  * chore(channels): ea, rock-solid
+  * chore(channels): 1.2 beta, ea, stable
+
+-------------------------------------------------------------------
+Tue Feb 20 20:40:08 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.2.294:
+  * chore: release 1.2.294
+  * chore: bump alpha
+  * fix(deploy): dont strip non-whitespace after --- in manifests
+  * chore: bump alpha
+
+-------------------------------------------------------------------
+Tue Feb 20 20:30:48 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.2.293:
+  * chore: release 1.2.293
+  * fix: more robust manifest splitting
+  * fix(nelm): corrupted revision number in errors messages
+  * docs: regenerate reference
+
+-------------------------------------------------------------------
+Sun Feb 18 17:30:51 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.2.292:
+  * chore: bump alpha
+  * chore: release 1.2.292
+  * feat: add --atomic, --timeout, --skip-dependencies-repo-refresh
+    for "bundle apply"
+  * docs: fix adding arbitrary files to the build context example
+  * chore: bump alpha
+
+-------------------------------------------------------------------
+Sun Feb 18 17:27:54 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.2.291:
+  * chore: release 1.2.291
+  * fix(bundle): support for
+    --insecure-registry/--skip-tls-verify-registry options
+  * fix(nelm): cycle error if pre+post hook in release
+  * fix(cleanup): git unshallow and sync with remote when git
+    history based policy disabled
+  * fix(build): image metadata publication when git history based
+    policy disabled
+  * fix(cleanup): image metadata cleanup when git history based
+    policy disabled
+  * chore: bump alpha
+
+-------------------------------------------------------------------
+Wed Feb 14 20:05:30 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.2.290:
+  * chore: bump stable
+  * chore: release 1.2.290
+  * chore(channels): rollback stable to 1.2.277 due to error
+    'Error: validation: more than one dependency with name or alias
+    ...
+  * feat(nelm): save plan graph on plan build error
+  * fix(nelm): panic on replicas null
+  * chore(channels): 1.2 beta, stable, rock-solid
+  * chore: bump alpha
+
+-------------------------------------------------------------------
+Thu Feb 08 19:53:45 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.2.289:
+  * chore: release 1.2.289
+  * fix: --wait-for-jobs did not use Kubedog
+  * chore: bump alpha, beta, ea
+
+-------------------------------------------------------------------
+Thu Feb 08 12:01:02 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.2.288:
+  * chore: release 1.2.288
+  * fix(nelm): controllers not Readying; no logs for STS/DS
+  * chore(channels): 1.2 beta, ea
+  * chore: bump alpha
+
+-------------------------------------------------------------------
+Fri Feb 02 15:14:58 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.2.287:
+  * chore: release 1.2.287
+  * fix(nelm): resources always rendered in no-cluster mode
+  * fix(cleanup): issue with incorrect exclusion of ancestors for
+    retained images (#5956)
+  * chore: bump alpha, beta
+
+-------------------------------------------------------------------
+Thu Feb 01 18:48:34 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.2.286:
+  * chore: release 1.2.286
+  * fix: dont try to create namespace if exists
+  * chore: bump alpha
+
+-------------------------------------------------------------------
+Thu Feb 01 18:39:42 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.2.285:
+  * chore: release 1.2.285
+  * fix(nelm): pods not ready in progress report when they are
+  * ci: trigger website deploy when a new release is created
+    (#5951)
+  * chore(channels): 1.2 beta, ea, stable, rock-solid
+  * chore: bump alpha
+
+-------------------------------------------------------------------
+Wed Jan 31 18:06:23 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.2.284:
+  * chore: release 1.2.284
+  * feat(nelm): --auto-rollback support for converge
+  * fix(nelm): refactor pending release check in converge
+  * fix(nelm): refactor failure deploy plan in converge
+  * fix(nelm): refactor error handling in converge
+
+-------------------------------------------------------------------
+Wed Jan 31 17:34:14 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.2.283:
+  * chore: release 1.2.283
+  * feat(compose): use host docker binary instead of docker-compose
+    (#5944)
+  * chore: bump alpha
+  * feat(nelm): heavily improved resource tracking
+  * chore(channels): 1.2 alpha, beta (#5940)
+
+-------------------------------------------------------------------
+Wed Jan 31 17:29:51 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.2.282:
+  * chore: release 1.2.282 (#5938)
+  * fix(cleanup): panic: runtime error: invalid memory address or
+    nil pointer dereference (#5937)
+  * chore(channels): alpha to 1.2.281
+
+-------------------------------------------------------------------
+Sat Jan 20 17:01:31 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.2.281:
+  * chore: release 1.2.281
+  * feat(nelm): --exit-code flag for werf plan
+  * fix: update helm, nelm modules
+  * chore(channels): alpha rollback to 1.2.278
+  * chore(channels): alpha to 1.2.280
+  * chore(channels): downgrade 1.2 alpha
+  * Revert "chore(deps): bump nokogiri from 1.15.5 to 1.16.0 in
+    /docs" (#5933)
+  * chore(channels): alpha to 1.2.280
+
+-------------------------------------------------------------------
+Wed Jan 17 07:27:00 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.2.280:
+  * doc: fix doc tests
+  * chore: release 1.2.280
+  * fix: switch to go 1.21
+  * chore(channels): alpha to 1.2.279
+  * chore(channels): 1.2 beta, ea, stable, rock-solid (#5929)
+  * fix: disable dependabot
+
+-------------------------------------------------------------------
+Wed Jan 17 07:24:09 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.2.279:
+  * chore: release 1.2.279
+  * fix: update more modules, get rid of minio
+  * doc: regenerate docs
+  * fix: update all go modules
+  * chore(deps): bump nokogiri from 1.15.5 to 1.16.0 in /docs
+  * chore: replace satori/go.uuid with google/uuid (#5905)
+  * ci: fix workflow for documentation (#5917)
+  * chore(channels): bump channels
+  * chore(channels): 1.2.278 to alpha
+
+-------------------------------------------------------------------
+Wed Jan 10 19:20:34 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.2.278:
+  * doc: update env function docs
+  * ci: fix workflow, fix build, update dependencies for the
+    documentation (#5914)
+  * chore: release 1.2.278
+  * chore(ci): rollback download-artifact action from master to v3
+  * ci: fix workflow, fix build, update dependencies for the
+    documentation (#5914)
+  * chore(ci): rollback upload-artifact action from master to v3
+  * chore: fix lint
+  * fix(deps): update helm-plugin-utils
+  * ci: fix workflow for documentation (#5910)
+  * fix(deps): update go-git
+  * ci: fix workflow for documentation (#5907)
+  * ci: use enterprise runners (#5874)
+  * chore(deps): bump jekyll from 4.3.2 to 4.3.3 in /docs
+  * chore(deps): bump nokogiri from 1.15.5 to 1.16.0 in /docs
+  * chore(channels): 1.2.277 to alpha
+
+-------------------------------------------------------------------
+Sun Jan 07 15:54:58 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.2.277:
+  * chore: release 1.2.277
+  * fix: Nelm moved to separate repo
+  * fix: add WERF_NELM var (same as
+    WERF_EXPERIMENTAL_DEPLOY_ENGINE)
+  * chore(channels): 1.2 all channels (#5899)
+
+-------------------------------------------------------------------
+Sun Jan 07 15:43:34 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.2.276:
+  * chore: release 1.2.276 (#5898)
+  * fix: pre-collapsed gitlab section not usable (#5897)
+  * chore(channels): 1.2.275 -> alpha, 1.2.274 -> beta
+
+-------------------------------------------------------------------
+Sun Jan 07 15:37:58 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.2.275:
+  * chore: release 1.2.275
+  * fix(build): files from git with spaces in path not removed on
+    install/beforeSetup/setup patch-stages
+  * chore(channels): 1.2.274 into alpha
+
+-------------------------------------------------------------------
+Thu Dec 21 17:07:17 UTC 2023 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.2.274:
+  * chore: release 1.2.274
+  * fix(buildah): fix digest change on rebuild of
+    install/beforeSetup/setup stage when using multiple
+    git-mappings in the same image
+  * chore(channels): 1.2.273 to alpha
+
+-------------------------------------------------------------------
+Thu Dec 21 16:27:17 UTC 2023 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.2.273:
+  * chore: release 1.2.273
+  * fix(exp-engine): "no matches for kind" when deploying CR for
+    CRD from crds/
+
+-------------------------------------------------------------------
+Wed Dec 20 12:55:53 UTC 2023 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.2.272:
+  * chore(channels): 1.2.272 to alpha
+  * chore: release 1.2.272
+  * feat: improve generic resource tracking
+  * chore(channel): 1.2 stable (#5886)
+  * fix(staged-dockerfile): explanatory error message when building
+    unsupported Dockerfile conf
+  * chore(channels): 1.2.171 hotfix into alpha, beta and ea
+
+-------------------------------------------------------------------
+Thu Dec 14 17:20:38 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.2.271:
+  * chore: release 1.2.271
+  * fix(secrets): empty secrets values yaml file results in werf
+    error
+  * docs(configurator-separate-pages): serve
+    /documentation/X/configurator/*.html pages
+  * chore(channels): rollback to 1.2.269
+  * chore(channels): 1.2 ea, stable, rock-solid (#5877)
+  * chore(channels): 1.2 beta, ea (#5873)
+  * chore(channels): 1.2 alpha (#5872)
+
+-------------------------------------------------------------------
+Sun Dec 10 19:16:14 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.2.270:
+  * chore: release 1.2.270 (#5868)
+  * fix(secrets): fix double decryption error when decrypting a
+    yaml with multiple references to the same anchor
+  * feat(container): implement generic Retry-After header handling
+    (#5867)
+  * chore: fix lint failed (#5865)
+  * chore(channels): 1.2 beta, ea, stable (#5864)
+  * docs(bundles): move cr login section after overview (#5861)
+  * chore(deps): bump nokogiri from 1.15.4 to 1.15.5 in /docs
+  * chore: release 1.2.269 (#5847)
+  * chore(channels): 1.2 alpha (#5848)
+
+-------------------------------------------------------------------
+Sun Dec 10 19:15:04 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- new package werf: efficient and consistent software delivery to
+  Kubernetes facilitating best practices
