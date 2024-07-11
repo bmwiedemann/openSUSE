@@ -1,0 +1,6 @@
+<package name="cosmic-reader" project="openSUSE:Factory">
+  <title></title>
+  <description>COSMIC PDF reader</description>
+  <devel project="X11:COSMIC:Apps" package="cosmic-reader"/>
+  <url>https://github.com/pop-os/cosmic-reader</url>
+</package>
