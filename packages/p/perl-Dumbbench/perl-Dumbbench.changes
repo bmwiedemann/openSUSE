@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jul 10 05:29:29 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.504.0 (0.504)
+   see /usr/share/doc/packages/perl-Dumbbench/Changes
+
+  0.504 2024-07-09T15:31:31Z
+  	* use the 'name' parameter in examples, from Alceu Rodrigues de Freitas Junior (#21)
+  	* make the SOOT features depend on the availability of SOOT, in the xt/ tests
+  	* make a couple of xt/ tests TODO since comparative timings are too close to be
+  	compared stably.
+
+-------------------------------------------------------------------
 Fri Apr 22 03:08:18 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.503

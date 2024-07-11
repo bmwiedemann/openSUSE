@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Dumbbench
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,14 @@
 
 %define cpan_name Dumbbench
 Name:           perl-Dumbbench
-Version:        0.503
+Version:        0.504.0
 Release:        0
+# 0.504 -> normalize -> 0.504.0
+%define cpan_version 0.504
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        More reliable benchmarking with the least amount of thinking
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/B/BD/BDFOY/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/B/BD/BDFOY/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
@@ -44,6 +46,17 @@ Requires:       perl(Number::WithError) >= 1.00
 Requires:       perl(Params::Util)
 Requires:       perl(Statistics::CaseResampling) >= 0.06
 Requires:       perl(parent)
+Provides:       perl(Benchmark::Dumb) = 0.503
+Provides:       perl(Dumbbench) = %{version}
+Provides:       perl(Dumbbench::BoxPlot)
+Provides:       perl(Dumbbench::CPUFrequencyPinner)
+Provides:       perl(Dumbbench::Instance)
+Provides:       perl(Dumbbench::Instance::Cmd)
+Provides:       perl(Dumbbench::Instance::PerlEval)
+Provides:       perl(Dumbbench::Instance::PerlSub)
+Provides:       perl(Dumbbench::Result)
+Provides:       perl(Dumbbench::Stats)
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -70,7 +83,7 @@ Please note that 'Dumbbench' works entirely with wallclock time as reported
 by 'Time::HiRes'' 'time()' function.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
