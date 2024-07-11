@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Jul  6 13:17:39 UTC 2024 - Enrico Belleri <kilgore.trout@idesmi.eu>
+
+- Update to version 1.90.4:
+  * Resolved high disk and CPU rate.
+  * Stop guessing the unknown battery as a power supply.
+  * Continue to support lid handling.
+  * Fix org.freedesktop.UPower: EnergyRate is a positive value.
+  * Fix uni-test python script.
+- Switch to tagged release.
+- Update BuildRequires minimum versions
+
+-------------------------------------------------------------------
 Mon Feb 12 09:47:07 UTC 2024 - trenn@suse.de
 
 - Update to version 1.90.2+15:

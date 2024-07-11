@@ -22,7 +22,7 @@
 %define libplist2 0
 %endif
 Name:           upower
-Version:        1.90.2+15
+Version:        1.90.4
 Release:        0
 Summary:        Power Device Enumeration Framework
 License:        GPL-2.0-or-later
@@ -36,13 +36,13 @@ BuildRequires:  gobject-introspection-devel >= 0.9.9
 BuildRequires:  gtk-doc >= 1.11
 BuildRequires:  intltool
 BuildRequires:  libtool
-BuildRequires:  meson >= 0.49.0
+BuildRequires:  meson >= 0.60.0
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(dbus-glib-1)
-BuildRequires:  pkgconfig(gio-2.0) >= 2.16.1
-BuildRequires:  pkgconfig(gio-unix-2.0)
-BuildRequires:  pkgconfig(glib-2.0) >= 2.34.0
-BuildRequires:  pkgconfig(gobject-2.0)
+BuildRequires:  pkgconfig(gio-2.0) >= 2.66.0
+BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.66.0
+BuildRequires:  pkgconfig(glib-2.0) >= 2.66.0
+BuildRequires:  pkgconfig(gobject-2.0) >= 2.66.0
 BuildRequires:  pkgconfig(gudev-1.0) >= 235
 BuildRequires:  pkgconfig(libimobiledevice-1.0) >= 0.9.7
 BuildRequires:  pkgconfig(libusb-1.0) >= 1.0.0
