@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<services>
+  <service name="tar_scm" mode="manual">
+    <param name="url">https://github.com/pop-os/cosmic-player.git</param>
+    <param name="scm">git</param>
+    <param name="revision">master</param>
+    <param name="versionformat">0.1.0+git%cd.%h</param>
+    <param name="package-meta">yes</param>
+  </service>
+  <service name="recompress" mode="manual">
+    <param name="file">*.tar</param>
+    <param name="compression">zstd</param>
+  </service>
+  <service name="cargo_vendor" mode="manual">
+    <param name="src">cosmic-player</param>
+    <param name="update">false</param>
+  </service>
+  <service name="set_version" mode="manual" />
+</services>

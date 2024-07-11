@@ -1,0 +1,6 @@
+<package name="cosmic-player" project="openSUSE:Factory">
+  <title></title>
+  <description>COSMIC media player</description>
+  <devel project="X11:COSMIC:Apps" package="cosmic-player"/>
+  <url>https://github.com/pop-os/cosmic-player</url>
+</package>
