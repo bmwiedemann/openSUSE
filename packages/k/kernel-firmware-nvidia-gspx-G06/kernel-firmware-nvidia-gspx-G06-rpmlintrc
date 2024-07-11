@@ -1,1 +1,6 @@
 addFilter("kernel-firmware-nvidia-gspx.*shlib-policy-name-error")
+
+# Firmware doesn't run on the CPU. It should be arch-independent;
+# NVIDIA has confirmed this.
+
+addFilter(".* (W|E): arch-independent-package-contains-binary-or-object .*/usr/lib/firmware/nvidia/*")

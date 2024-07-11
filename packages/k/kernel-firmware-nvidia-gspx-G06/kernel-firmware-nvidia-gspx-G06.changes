@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jul 11 10:56:16 UTC 2024 - Egbert Eich <eich@suse.com>
+
+- For CUDA update version to 555.42.6.
+- Use firmware for one arch only as firmware doesn't run on
+  the CPU and therefore should be arch-independent. This has
+  been confirmed by NVIDIA.
+  Since the run file attempts to run binaries if these are
+  not installed, 'BuildRequire:' zstd.
+
+-------------------------------------------------------------------
 Tue Jul  9 12:46:11 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to 550.100 (boo#1227575)

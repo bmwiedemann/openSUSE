@@ -117,4 +117,12 @@ https://nvidia.custhelp.com/app/answers/detail/a_id/5491/~/security-bulletin%3A-
     <comment>- Update to 550.100 (boo#1227575)</comment>
     <requestid>1186453</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>00d4abfb4fdf61b8d48a99f66c04d41b</srcmd5>
+    <version>550.100</version>
+    <time>1720722807</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1186868</requestid>
+  </revision>
 </revisionlist>
