@@ -20,7 +20,7 @@ TIK_IMG_DIR="/usr/lib/tik/img"
 
 # Display name of the OS to be deployed by tik
 # Default: Undefined
-TIK_OS_NAME="openSUSE Aeon"
+TIK_OS_NAME="Aeon"
 
 # URL for bug reports to go to
 # Default: https://aeondesktop.org/reportbug
