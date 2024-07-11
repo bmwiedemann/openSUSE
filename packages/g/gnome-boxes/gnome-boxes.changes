@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul 10 11:22:42 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add fix-return-val-if-fail-build.patch: libvirt-broker: Guard
+  methods with "require" Instead of return_val_if_fail. Fixes #863
+
+-------------------------------------------------------------------
 Thu May  2 08:21:41 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 46.1:

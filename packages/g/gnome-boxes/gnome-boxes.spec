@@ -27,6 +27,8 @@ License:        LGPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Design/Apps/Boxes
 Source0:        https://download.gnome.org/sources/gnome-boxes/46/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM fix-return-val-if-fail-build.patch -- libvirt-broker: Guard methods with "require" Instead of return_val_if_fail. Fixes #863
+Patch1:         fix-return-val-if-fail-build.patch
 
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes

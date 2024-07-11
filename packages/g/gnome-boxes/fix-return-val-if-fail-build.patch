@@ -1,0 +1,37 @@
+From 79471fed6390c04cbd5b8c7bd83164be90be446f Mon Sep 17 00:00:00 2001
+From: Felipe Borges <felipeborges@gnome.org>
+Date: Thu, 28 Mar 2024 11:50:02 +0100
+Subject: [PATCH] libvirt-broker: Guard methods with "require"
+
+Instead of return_val_if_fail.
+
+Fixes #863
+---
+ src/libvirt-broker.vala | 7 ++-----
+ 1 file changed, 2 insertions(+), 5 deletions(-)
+
+diff --git a/src/libvirt-broker.vala b/src/libvirt-broker.vala
+index 655a8c562..7932a81cc 100644
+--- a/src/libvirt-broker.vala
++++ b/src/libvirt-broker.vala
+@@ -19,15 +19,12 @@ private LibvirtBroker () {
+         pending_domains = new GLib.List<GVir.Domain> ();
+     }
+ 
+-    public GVir.Connection get_connection (string name) {
+-        return_val_if_fail (broker != null, null);
++    public GVir.Connection get_connection (string name) requires (broker != null) {
+         return broker.connections.get (name);
+     }
+ 
+     public async LibvirtMachine add_domain (CollectionSource source, GVir.Connection connection, GVir.Domain domain)
+-                                            throws GLib.Error {
+-        return_val_if_fail (broker != null, null);
+-
++                                            throws GLib.Error requires (broker != null) {
+         if (pending_domains.find (domain) != null) {
+             // Already being added asychronously
+             SourceFunc callback = add_domain.callback;
+-- 
+GitLab
+
