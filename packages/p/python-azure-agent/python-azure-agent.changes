@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jul 10 15:09:56 UTC 2024 - Joachim Gleissner <jgleissner@suse.com>
+
+- Set Provisioning.Agent parameter to 'cloud-init' in SLE Micro >= 5.5
+  (bsc#1227106).
+- Do not package waagent2.0 in Python 3 builds.
+- Drop obsolete otherproviders keyword from Conflicts statements
+
+-------------------------------------------------------------------
 Mon Jul  1 09:53:19 UTC 2024 - Joachim Gleissner <jgleissner@suse.com>
 
 - Do not require wicked in non-SUSE build environments.

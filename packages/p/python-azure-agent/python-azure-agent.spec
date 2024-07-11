@@ -102,7 +102,7 @@ Summary:        Default upstream configuration
 Group:          Development/Languages/Python
 Requires:       %{name} == %{version}
 Provides:       waagent-config
-Conflicts:      otherproviders(waagent-config)
+Conflicts:      waagent-config
 
 %description config-default
 The default configuration for the agent as supplied by upstream for SUSE
@@ -112,7 +112,7 @@ Summary:        SUSE specific configuration for server products
 Group:          Development/Languages/Python
 Requires:       %{name} == %{version}
 Provides:       waagent-config
-Conflicts:      otherproviders(waagent-config)
+Conflicts:      waagent-config
 
 %description config-server
 Modified waagent.conf file to meet SUSE policies and SUSE image build
@@ -123,7 +123,7 @@ Summary:        SUSE specific configuration for HPC
 Group:          Development/Languages/Python
 Requires:       %{name} == %{version}
 Provides:       waagent-config
-Conflicts:      otherproviders(waagent-config)
+Conflicts:      waagent-config
 
 %description config-hpc
 Modified waagent.conf file to meet SUSE policies and SUSE image build
@@ -134,7 +134,7 @@ Summary:        SUSE specific configuration for Micro
 Group:          Development/Languages/Python
 Requires:       %{name} == %{version}
 Provides:       waagent-config
-Conflicts:      otherproviders(waagent-config)
+Conflicts:      waagent-config
 
 %description config-micro
 Modified waagent.conf file to meet SUSE policies and SUSE image build
@@ -161,6 +161,7 @@ python setup.py build
 %install
 %if 0%{?suse_version} > 1315
 python3 setup.py install --prefix=%{_prefix} --lnx-distro='suse' --root=%{buildroot}
+rm %{buildroot}/usr/sbin/waagent2.0
 %else
 python setup.py install --prefix=%{_prefix} --lnx-distro='suse' --root=%{buildroot}
 %endif
@@ -185,8 +186,10 @@ cp %{buildroot}%{_sysconfdir}/waagent.conf %{buildroot}%{_sysconfdir}/waagent.co
 # Micro setup
 # Undo the HPC change
 sed -i -e "s/OS.EnableRDMA=y/# OS.EnableRDMA=y/" %{buildroot}%{_sysconfdir}/waagent.conf
-# Use Ignition/Afterburn in Micro
+%if 0%{?sle_version} && 0%{?sle_version} < 150500
+# Use Ignition/Afterburn in Micro < 5.5
 sed -i -e "s/Provisioning.Agent=cloud-init/Provisioning.Agent=disabled/" %{buildroot}%{_sysconfdir}/waagent.conf
+%endif
 # No extension support for transactional-upfdate systems
 # There's an inherant bug in that root password reset is also treated via this
 # switch
@@ -213,8 +216,6 @@ mv %{buildroot}%{_sysconfdir}/udev/rules.d/* %{buildroot}/usr/lib/udev/rules.d/
 ### log file ghost
 mkdir -p  %{buildroot}/%{_localstatedir}/log
 touch %{buildroot}/%{_localstatedir}/log/waagent.log
-### permissinon fixes
-chmod +x %{buildroot}/%{_sbindir}/waagent2.0
 ### naming issues
 %if 0%{?suse_version} > 1500
 mkdir -p %{buildroot}%{_distconfdir}/logrotate.d
@@ -298,7 +299,6 @@ ln -s %{_sysconfdir}/waagent.conf.micro %{_sysconfdir}/waagent.conf
 %exclude %{_sysconfdir}/waagent.conf*
 %{_sbindir}/rcwaagent
 %attr(0755,root,root) %{_sbindir}/waagent
-%attr(0755,root,root) %{_sbindir}/waagent2.0
 %if 0%{?suse_version} > 1500
 %{_distconfdir}/logrotate.d/waagent
 %else
@@ -319,6 +319,7 @@ ln -s %{_sysconfdir}/waagent.conf.micro %{_sysconfdir}/waagent.conf
 %exclude %{python3_sitelib}/azurelinuxagent/tests
 %else
 %dir %{python_sitelib}/azurelinuxagent
+%attr(0755,root,root) %{_sbindir}/waagent2.0
 %{python_sitelib}
 %exclude %{python_sitelib}/azurelinuxagent/tests
 %endif
