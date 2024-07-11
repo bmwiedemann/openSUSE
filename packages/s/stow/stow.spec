@@ -27,6 +27,7 @@ Source:         https://ftp.gnu.org/gnu/%{name}/%{name}-%{version}.tar.bz2
 Source1:        https://ftp.gnu.org/gnu/%{name}/%{name}-%{version}.tar.bz2.sig
 Source2:        https://savannah.gnu.org/project/memberlist-gpgkeys.php?group=stow&download=1#/%name.keyring
 Source3:        stow-rpmlintrc
+Patch0:         avoid_precedence_warning.patch
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(IO::Scalar)
@@ -66,7 +67,7 @@ Requires:       %{name} = %{version}
 Documentation for GNU Stow %{version} in HTML and PDF format.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %configure \

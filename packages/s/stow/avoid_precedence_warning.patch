@@ -1,0 +1,26 @@
+commit 79bb69177d5966badee7b453c1e8c652aeddefc6
+Author: Wolfgang Frisch <wolfgang.frisch@suse.com>
+Date:   Thu Jul 11 09:48:46 2024 +0200
+
+    avoid precedence warning
+    
+    Perl 5.40.0 extended the scope of the precedence warning to include
+    ternary operators.
+    
+    <https://perldoc.perl.org/5.40.0/perldelta>
+    
+    Reported-By: Peter Sütterlin <P.Suetterlin@royac.iac.es>
+
+Index: stow-2.4.0/bin/stow.in
+===================================================================
+--- stow-2.4.0.orig/bin/stow.in
++++ stow-2.4.0/bin/stow.in
+@@ -836,7 +836,7 @@ Report bugs to: bug-stow\@gnu.org
+ Stow home page: <http://www.gnu.org/software/stow/>
+ General help using GNU software: <http://www.gnu.org/gethelp/>
+ EOT
+-    exit defined $msg ? 1 : 0;
++    exit (defined $msg ? 1 : 0);
+ }
+ 
+ sub version {

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jul 11 08:04:30 UTC 2024 - Wolfgang Frisch <wolfgang.frisch@suse.com>
+
+- Add avoid_precedence_warning.patch:
+  Fix operator precedence warning introduced by Perl 5.40.0.
+  https://perldoc.perl.org/5.40.0/perldelta
+
+-------------------------------------------------------------------
 Mon Apr  8 06:48:09 UTC 2024 - Wolfgang Frisch <wolfgang.frisch@suse.com>
 
 - stow 2.4.0:
