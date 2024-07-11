@@ -187,4 +187,12 @@ A    thermal_daemon.obsinfo
     <comment></comment>
     <requestid>1132506</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>0a3abc1d817c9d320fe28c5d140b9c61</srcmd5>
+    <version>2.5.7.17.git+fc7464a</version>
+    <time>1720722625</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1186571</requestid>
+  </revision>
 </revisionlist>

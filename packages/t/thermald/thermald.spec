@@ -1,7 +1,7 @@
 #
 # spec file for package thermald
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 %global with_thermalmonitor 0%{?is_opensuse}
 
 Name:           thermald
-Version:        2.5.4.0.git+63b290f
+Version:        2.5.7.17.git+fc7464a
 Release:        0
 Summary:        The Linux Thermal Daemon program from 01.org
 License:        GPL-2.0-or-later
@@ -54,11 +54,9 @@ BuildRequires:  pkgconfig(Qt5PrintSupport)
 BuildRequires:  pkgconfig(Qt5Widgets)
 %endif
 BuildRequires:  pkgconfig(dbus-1)
-BuildRequires:  pkgconfig(dbus-glib-1)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gtk-doc)
 BuildRequires:  pkgconfig(libevdev)
-BuildRequires:  pkgconfig(liblzma)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(upower-glib)

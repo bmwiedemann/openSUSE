@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Jul 06 08:45:39 UTC 2024 - andrea.manzini@suse.com
+
+- Update to version 2.5.7.17.git+fc7464a:
+  * Use common macro for temperature conversion
+  * Account when no adaptive conditions present
+  * Remove dbus-glib-devel
+  * Add Lunar Lake M support
+  * thd_engine_default: Drop modem support
+  * main: remove deprecated API
+  * Remove dependency on lzma lib
+  * Add security reporting file
+  * Downgrade log level on "Unsupported condition"
+  * Fix seg fault when there is no config file
+  * Process a single trip in a zone with a target state
+  * Fix Terminate and Reinit method
+  * Fix incorrect ioctl numbers used for reading PSVT
+
+-------------------------------------------------------------------
 Mon Dec 11 13:43:22 UTC 2023 - Fabian Vogt <fvogt@suse.com>
 
 - Remove use of %with_thermalmonitor where not necessary
