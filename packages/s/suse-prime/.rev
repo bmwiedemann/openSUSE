@@ -705,4 +705,21 @@ Latest changes:
   * added prime-run script for easier offload mode usage (github issue#96)</comment>
     <requestid>1137277</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>7996e94bddaf017cbdc36520c78b6a34</srcmd5>
+    <version>0.8.17</version>
+    <time>1720722765</time>
+    <user>anag+factory</user>
+    <comment>- SUSEPrime-0.8.17
+  * fix error in disabling nvidia service 
+
+- SUSEPrime-0.8.16
+  * fixed nvidia-powerd service preventing unloading of nvidia
+    modules  
+
+- SUSEPrime-0.8.15
+  * added prime-run script for easier offload mode usage (github
+    issue#96)</comment>
+    <requestid>1186790</requestid>
+  </revision>
 </revisionlist>

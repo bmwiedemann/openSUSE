@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Jul 11 08:37:56 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- SUSEPrime-0.8.17
+  * fix error in disabling nvidia service 
+
+-------------------------------------------------------------------
+Thu Jul 11 01:12:50 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- SUSEPrime-0.8.16
+  * fixed nvidia-powerd service preventing unloading of nvidia
+    modules  
+
+-------------------------------------------------------------------
+Thu Jul 11 01:12:06 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- SUSEPrime-0.8.15
+  * added prime-run script for easier offload mode usage (github
+    issue#96) 
+
+-------------------------------------------------------------------
 Sat Jan  6 17:11:21 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - SUSEPrime-0.8.14
