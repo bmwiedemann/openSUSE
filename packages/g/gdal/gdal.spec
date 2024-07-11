@@ -16,7 +16,7 @@
 #
 
 
-%define soversion 34
+%define soversion 35
 %define sourcename gdal
 # Uppercase GDAL is the canonical name for this package in Python
 %define pypi_package_name GDAL
@@ -31,7 +31,7 @@
 %bcond_with deflate_support
 %bcond_with tests_support
 Name:           gdal
-Version:        3.8.5
+Version:        3.9.1
 Release:        0
 Summary:        GDAL/OGR - a translator library for raster and vector geospatial data formats
 License:        BSD-3-Clause AND MIT AND SUSE-Public-Domain
@@ -43,11 +43,6 @@ BuildRequires:  KEALib-devel
 BuildRequires:  bison
 BuildRequires:  blas-devel
 BuildRequires:  chrpath
-%if %{with tests_support}
-BuildRequires:  cmake-full
-%else
-BuildRequires:  cmake
-%endif
 BuildRequires:  curl-devel
 BuildRequires:  dos2unix
 BuildRequires:  doxygen >= 1.4.2
@@ -62,24 +57,14 @@ BuildRequires:  libdeflate-devel
 BuildRequires:  libtool
 BuildRequires:  libzstd-devel
 BuildRequires:  mysql-devel
+# This one is needed for Leap :-(
+BuildRequires:  opencl-headers
 BuildRequires:  pcre2-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python3-base
 BuildRequires:  python3-devel
 BuildRequires:  python3-numpy-devel
 BuildRequires:  python3-setuptools
-%if 0%{?sle_version} == 150300 && 0%{?is_opensuse}
-BuildRequires:  python-rpm-macros
-%endif
-%if %{with tests_support}
-BuildRequires:  proj
-BuildRequires:  python3-lxml
-BuildRequires:  python3-pytest
-BuildRequires:  python3-pytest-env
-BuildRequires:  python3-pytest-sugar
-%endif
-# This one is needed for Leap :-(
-BuildRequires:  opencl-headers
 BuildRequires:  shapelib
 BuildRequires:  swig
 BuildRequires:  unixODBC-devel
@@ -115,6 +100,21 @@ BuildRequires:  pkgconfig(spatialite)
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(xerces-c)
 BuildRequires:  pkgconfig(zlib) >= 1.1.4
+%if %{with tests_support}
+BuildRequires:  cmake-full
+%else
+BuildRequires:  cmake
+%endif
+%if 0%{?sle_version} == 150300 && 0%{?is_opensuse}
+BuildRequires:  python-rpm-macros
+%endif
+%if %{with tests_support}
+BuildRequires:  proj
+BuildRequires:  python3-lxml
+BuildRequires:  python3-pytest
+BuildRequires:  python3-pytest-env
+BuildRequires:  python3-pytest-sugar
+%endif
 %if %{with deflate_support}
 BuildRequires:  libdeflate-devel
 %endif
@@ -143,8 +143,8 @@ BuildRequires:  ERDAS-ECW_JPEG_2000_SDK-devel
 BuildRequires:  libecwj2-devel
 %endif
 %endif
-
-Requires:       python3-GDAL = %{version}
+# 3.9.x we stop requiring this hardly
+#Requires:       python3-GDAL = %%{version}
 
 %description
 GDAL is a translator library for raster geospatial data formats that
@@ -165,8 +165,8 @@ Provides:       lib%{name}-devel = %{version}
 Development Libraries for the GDAL file format library
 
 %package -n lib%{name}%{soversion}
-Requires:       lib%{name}-drivers >= %{version}
 Summary:        GDAL static libraries
+Requires:       lib%{name}-drivers >= %{version}
 
 %description -n lib%{name}%{soversion}
 GDAL and OGR are translator libraries for raster and vector geospatial data
@@ -205,7 +205,7 @@ bash command line completion support for GDAL
 %setup -q -n %{sourcename}-%{version}
 %autopatch -p1
 # Prepare tests
-tar -xf %{S:2}
+tar -xf %{SOURCE2}
 # Delete bundled libraries
 # keep zlib due to missing frmts/zlib/contrib/infback9 in our package
 # rm -rv frmts/zlib
@@ -302,6 +302,8 @@ find . -iname "*.py" -exec sed -i "s,^#!%{_bindir}/env python3,#!%{_bindir}/pyth
 %install
 %cmake_install
 %fdupes %{buildroot}%{python3_sitearch}
+#remove duplicate license file
+rm -f %{buildroot}%{_datadir}/%{name}/LICENSE.TXT
 
 %if %{with tests_support}
 %check
@@ -407,25 +409,26 @@ popd
 %{_mandir}/man1/ogrlineref.1%{?ext_man}
 %{_mandir}/man1/ogrtindex.1%{?ext_man}
 %{_mandir}/man1/sozip.1%{?ext_man}
-# 20201104 We keep all binaries in gdal and requires python3-GDAL
-%{_bindir}/gdalattachpct.py
-%{_bindir}/gdal2tiles.py
-%{_bindir}/gdal2xyz.py
-%{_bindir}/gdal_calc.py
-%{_bindir}/gdal_edit.py
-%{_bindir}/gdal_fillnodata.py
-%{_bindir}/gdal_merge.py
-%{_bindir}/gdal_pansharpen.py
-%{_bindir}/gdal_polygonize.py
-%{_bindir}/gdal_proximity.py
-%{_bindir}/gdal_retile.py
-%{_bindir}/gdal_sieve.py
-%{_bindir}/gdalcompare.py
-%{_bindir}/gdalmove.py
-%{_bindir}/ogrmerge.py
-%{_bindir}/ogr_layer_algebra.py
-%{_bindir}/pct2rgb.py
-%{_bindir}/rgb2pct.py
+# 20240706 with 3.9.x release we have all binaries in gdal
+# and python3-GDAL will contains the *.py equivalent.
+%{_bindir}/gdalattachpct
+%{_bindir}/gdal2tiles
+%{_bindir}/gdal2xyz
+%{_bindir}/gdal_calc
+%{_bindir}/gdal_edit
+%{_bindir}/gdal_fillnodata
+%{_bindir}/gdal_merge
+%{_bindir}/gdal_pansharpen
+%{_bindir}/gdal_polygonize
+%{_bindir}/gdal_proximity
+%{_bindir}/gdal_retile
+%{_bindir}/gdal_sieve
+%{_bindir}/gdalcompare
+%{_bindir}/gdalmove
+%{_bindir}/ogrmerge
+%{_bindir}/ogr_layer_algebra
+%{_bindir}/pct2rgb
+%{_bindir}/rgb2pct
 %{_mandir}/man1/gdal2tiles.1%{?ext_man}
 %{_mandir}/man1/gdal_calc.1%{?ext_man}
 %{_mandir}/man1/gdal_edit.1%{?ext_man}
@@ -462,7 +465,27 @@ popd
 %files -n python3-%{pypi_package_name}
 %license LICENSE.TXT
 %doc NEWS.md PROVENANCE.TXT
-%{python3_sitearch}/*
+%{python3_sitearch}/osgeo_utils
+%{python3_sitearch}/osgeo
+%{python3_sitearch}/GDAL-%{version}*-info
+%{_bindir}/gdalattachpct.py
+%{_bindir}/gdal2tiles.py
+%{_bindir}/gdal2xyz.py
+%{_bindir}/gdal_calc.py
+%{_bindir}/gdal_edit.py
+%{_bindir}/gdal_fillnodata.py
+%{_bindir}/gdal_merge.py
+%{_bindir}/gdal_pansharpen.py
+%{_bindir}/gdal_polygonize.py
+%{_bindir}/gdal_proximity.py
+%{_bindir}/gdal_retile.py
+%{_bindir}/gdal_sieve.py
+%{_bindir}/gdalcompare.py
+%{_bindir}/gdalmove.py
+%{_bindir}/ogrmerge.py
+%{_bindir}/ogr_layer_algebra.py
+%{_bindir}/pct2rgb.py
+%{_bindir}/rgb2pct.py
 
 %files bash-completion
 %{_datadir}/bash-completion/completions/*

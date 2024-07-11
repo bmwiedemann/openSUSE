@@ -733,4 +733,12 @@ Otherwise compilation fails with hard to understand error that opj_codec_set is 
     <comment></comment>
     <requestid>1165446</requestid>
   </revision>
+  <revision rev="87" vrev="1">
+    <srcmd5>e70b32a40bceab9a11d66b0f5a11764a</srcmd5>
+    <version>3.9.1</version>
+    <time>1720722796</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1186804</requestid>
+  </revision>
 </revisionlist>

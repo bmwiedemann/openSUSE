@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Thu Jul  4 13:30:21 UTC 2024 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- update to bugfix release 3.9.1
+  https://github.com/OSGeo/gdal/blob/v3.9.1/NEWS.md
+- update to version 3.9.0
+  https://github.com/OSGeo/gdal/blob/v3.9.0/NEWS.md
+  + fix boo#1227394 compilation error with libpoppler 24.06
+- packaging: the following binaries are directly present in main gdal
+   /usr/bin/gdal2tiles
+   /usr/bin/gdal2xyz
+   /usr/bin/gdal_calc
+   /usr/bin/gdal_edit
+   /usr/bin/gdal_fillnodata
+   /usr/bin/gdal_merge
+   /usr/bin/gdal_pansharpen
+   /usr/bin/gdal_polygonize
+   /usr/bin/gdal_proximity
+   /usr/bin/gdal_retile
+   /usr/bin/gdal_sieve
+   /usr/bin/gdalattachpct
+   /usr/bin/gdalcompare
+   /usr/bin/gdalmove
+   /usr/bin/ogr_layer_algebra
+   /usr/bin/ogrmerge
+   /usr/bin/pct2rgb
+   /usr/bin/rgb2pct
+  Their *.py equivalent are present in python3-GDAL, so we remove
+  the hard dependency on python3-GDAL in gdal
+  + remove duplicate LICENSE.TXT file in /usr/share/gdal
+- spec cleaning
+
+-------------------------------------------------------------------
 Thu Apr  4 19:22:17 UTC 2024 - Bruno Friedmann <bruno@ioda-net.ch>
 
 - update to bugfix release 3.8.5 (last of 3.8 series)
