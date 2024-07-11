@@ -291,4 +291,14 @@
     <comment></comment>
     <requestid>1185718</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>d59b11a837e1b1cf4f7dfe1b97da7acd</srcmd5>
+    <version>1.2.5</version>
+    <time>1720722783</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.2.5:
+  * Updated man page for fifo operation
+  * Removed autotools. Just use make - see the README</comment>
+    <requestid>1186770</requestid>
+  </revision>
 </revisionlist>

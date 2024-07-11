@@ -17,7 +17,7 @@
 
 
 Name:           parcellite
-Version:        1.2.4
+Version:        1.2.5
 Release:        0
 Summary:        A lightweight GTK+ clipboard manager
 License:        GPL-3.0-or-later
@@ -28,7 +28,6 @@ Source:         https://github.com/rickyrockrat/parcellite/archive/refs/tags/%{v
 Patch0:         parcellite-1.1.7-defaults.patch
 Patch1:         parcellite-1.1.9_no_kde_start.patch
 Patch2:         parcellite-1.2.4.0-simple.patch
-BuildRequires:  automake
 BuildRequires:  gnome-icon-theme
 BuildRequires:  intltool >= 0.23
 BuildRequires:  pkgconfig
@@ -49,8 +48,6 @@ system tray or notification area if you want to use this package.
 %autosetup -p1
 
 %build
-autoreconf -fi
-%configure
 %make_build
 sed -i -e '/^Icon/s/=.*/=parcellite/' data/parcellite.desktop
 
