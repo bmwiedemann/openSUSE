@@ -35,7 +35,7 @@ BuildRequires:  python-rpm-macros >= 20210628
 BuildRequires:  %{python_module docstring-to-markdown}
 BuildRequires:  %{python_module PyQt5}
 BuildRequires:  %{python_module autopep8 >= 2.0.4 with %python-autopep8 < 2.1.0}
-BuildRequires:  %{python_module flake8 >= 7 with %python-flake8 < 8}
+BuildRequires:  %{python_module flake8 >= 7.1 with %python-flake8 < 8}
 BuildRequires:  %{python_module flaky}
 BuildRequires:  %{python_module importlib_metadata > 4.8.3 if %python-base < 3.10}
 BuildRequires:  %{python_module jedi >= 0.17.2 with %python-jedi < 0.20}
@@ -72,12 +72,12 @@ Suggests:       python-yapf >= 0.33
 Suggests:       python-whatthepatch >= 1.0.2
 Conflicts:      python-whatthepatch >= 2
 # SECTION flake8 pins
-Suggests:       python-flake8 >= 7
+Suggests:       python-flake8 >= 7.1
 Conflicts:      python-flake8 >= 8
 Suggests:       python-mccabe >= 0.7.0
 Conflicts:      python-mccabe >= 0.8.0
-Suggests:       python-pycodestyle >= 2.11.0
-Conflicts:      python-pycodestyle >= 2.12.0
+Suggests:       python-pycodestyle >= 2.12.0
+Conflicts:      python-pycodestyle >= 2.13.0
 Suggests:       python-pyflakes >= 3.2.0
 Conflicts:      python-pyflakes >= 3.3.0
 # /SECTION
@@ -107,6 +107,7 @@ will be enabled:
 %autosetup -p1 -n python-lsp-server-%{version}
 # Remove pytest addopts
 sed -i '/addopts/d' pyproject.toml
+sed -i 's/"pycodestyle>=2.11.0,<2.12.0",/"pycodestyle>=2.12.0,<2.13.0",/' pyproject.toml
 
 %build
 %pyproject_wheel

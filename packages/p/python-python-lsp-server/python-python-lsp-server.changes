@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jul 11 10:39:17 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Bump flake8 to 7.1 and it's pinning pycodestyle to 2.12.0
+
+-------------------------------------------------------------------
 Mon Apr  1 11:03:05 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 1.11.0

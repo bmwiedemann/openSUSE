@@ -340,4 +340,12 @@
 - Drop pylsp-pr543-pylint3.1.patch (forwarded request 1167872 from bnavigator)</comment>
     <requestid>1167873</requestid>
   </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>0e89e5861981349b9ed887ea87c571bc</srcmd5>
+    <version>1.11.0</version>
+    <time>1720722803</time>
+    <user>anag+factory</user>
+    <comment>- Bump flake8 to 7.1 and it's pinning pycodestyle to 2.12.0 (forwarded request 1186837 from bnavigator)</comment>
+    <requestid>1186838</requestid>
+  </revision>
 </revisionlist>
