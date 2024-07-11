@@ -737,6 +737,10 @@ find %{buildroot}%{_datadir}/emacs/%{version}/etc/ -name '*[a-z].[16]' | \
 rm -vf %{buildroot}%{_datadir}/emacs/%{version}/lisp/COPYING
 ln -sf ../etc/COPYING \
        %{buildroot}%{_datadir}/emacs/%{version}/lisp/COPYING
+# Support system wide ELPA/MELPA
+mkdir -p %{buildroot}%{_libdir}/emacs/elpa
+mkdir -p %{buildroot}%{_datadir}/emacs/%{version}/site-lisp/elpa
+mkdir -p %{buildroot}%{_datadir}/emacs/site-lisp/elpa
 #
 fdupes -q -r -1 %{buildroot}%{_datadir}/emacs/%{version}/etc/images/icons/ %{buildroot}%{_datadir}/icons/ |\
 xargs -n 2 | while read first second; do
@@ -800,27 +804,7 @@ make check
 %pre
 test -L usr/bin/emacs && rm -f usr/bin/emacs || true
 
-%post -n emacs-nox
-if test -e usr/share/emacs/site-lisp/auctex/font-latex.elc ; then
-  owd=$(pwd)
-  cd usr/share/emacs/site-lisp/auctex || exit 1
-  emacs -batch -no-site-file -no-init-file --eval '(setq load-path (cons "." load-path)
-    byte-compile-warnings nil
-    TeX-lisp-directory "<none>"
-    TeX-auto-global "<none>")' -f batch-byte-compile font-latex.el > /dev/null 2>&1
-  cd $owd
-fi
-
 %post -n emacs-x11
-if test -e usr/share/emacs/site-lisp/auctex/font-latex.elc ; then
-  owd=$(pwd)
-  cd usr/share/emacs/site-lisp/auctex || exit 1
-  emacs -batch -no-site-file -no-init-file --eval '(setq load-path (cons "." load-path)
-    byte-compile-warnings nil
-    TeX-lisp-directory "<none>"
-    TeX-auto-global "<none>")' -f batch-byte-compile font-latex.el > /dev/null 2>&1
-  cd $owd
-fi
 %glib2_gsettings_schema_post
 
 %postun -n emacs-x11
@@ -860,6 +844,10 @@ fi
 %{_bindir}/ebrowse
 %{_bindir}/emacs
 %{_bindir}/emacsclient
+%if %{without nativecomp}
+%dir %{_libdir}/emacs/
+%endif
+%dir %{_libdir}/emacs/elpa/
 %dir %{_libexecdir}/emacs/
 %dir %{_libexecdir}/emacs/%{version}/
 %dir %{_libexecdir}/emacs/%{version}/*-suse-linux*/
@@ -3474,6 +3462,7 @@ fi
 %{_datadir}/emacs/%{version}/lisp/xwidget.elc
 %{_datadir}/emacs/%{version}/lisp/yank-media.elc
 %dir %{_datadir}/emacs/%{version}/site-lisp/
+%dir %{_datadir}/emacs/%{version}/site-lisp/elpa/
 %{_datadir}/emacs/%{version}/site-lisp/subdirs.el
 %dir %{_datadir}/emacs/%{version}/site-lisp/term/
 %{_datadir}/emacs/%{version}/site-lisp/term/func-keys.el
@@ -3482,6 +3471,7 @@ fi
 %{_datadir}/emacs/%{version}/site-lisp/term/linux.el
 %{_datadir}/emacs/%{version}/site-lisp/term/locale.el
 %dir %{_datadir}/emacs/site-lisp/
+%dir %{_datadir}/emacs/site-lisp/elpa/
 %dir %{_datadir}/emacs/site-lisp/site-start.d/
 %{_mandir}/man1/*.1%{ext_man}
 %exclude %{_mandir}/man1/*tags.1%{ext_man}

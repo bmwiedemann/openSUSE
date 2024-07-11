@@ -358,12 +358,6 @@
     (if (or (> major 11) (and (eq major 11) (>= minor 86)))
 	(custom-set-default 'TeX-master nil)
       (setq-default TeX-master nil)))
-; ; Users private libaries 
-; (if (boundp 'AUCTeX-version)
-;   (progn
-;     (setq TeX-macro-private '("~/lib/tex-lib/"))
-;     (setq TeX-style-private   "~/lib/site-lisp/auctex/style/")   ; AUC-TeX-Macros
-;     (setq TeX-auto-private    "~/lib/site-lisp/auctex/auto/")))  ; Autom. Auc-TeX-Macros
   (if (and window-system (featurep 'font-lock))
       (progn
 	(add-hook 'latex-mode-hook 'turn-on-font-lock)
@@ -371,7 +365,7 @@
 	  (progn
 	    (add-hook 'LaTeX-mode-hook 'turn-on-font-lock)
 	    (add-hook 'LaTeX-mode-hook 'LaTeX-math-mode)
-	    (add-hook 'after-init-hook #'(lambda () (load "auctex/font-latex" nil t)))))))
+	    (add-hook 'after-init-hook #'(lambda () (load "font-latex" nil t)))))))
 ))
 
 ;;

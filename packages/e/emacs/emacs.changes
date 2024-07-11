@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jul 10 08:54:22 UTC 2024 - Dr. Werner Fink <werner@suse.de>
+
+- Support system wide ELPA and MELPA site lisp paths
+- Move post scriptlets for font-latex to emacs-auctex as
+  triggerin scriptlets 
+
+-------------------------------------------------------------------
 Tue Jul  2 07:52:23 UTC 2024 - Dr. Werner Fink <werner@suse.de>
 
 - The release 29.4 does fix boo#1226957 -- CVE-2024-39331

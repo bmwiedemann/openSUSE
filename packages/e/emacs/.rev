@@ -1982,4 +1982,14 @@ Now one could consider building emacs with gsettings support (both debian and fe
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1186323</requestid>
   </revision>
+  <revision rev="188" vrev="3">
+    <srcmd5>19aa819f901b367532ae9e11d76b6a3a</srcmd5>
+    <version>29.4</version>
+    <time>1720722566</time>
+    <user>anag+factory</user>
+    <comment>- Support system wide ELPA and MELPA site lisp paths
+- Move post scriptlets for font-latex to emacs-auctex as
+  triggerin scriptlets</comment>
+    <requestid>1186609</requestid>
+  </revision>
 </revisionlist>
