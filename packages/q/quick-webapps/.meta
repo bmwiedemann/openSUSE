@@ -1,0 +1,6 @@
+<package name="quick-webapps" project="openSUSE:Factory">
+  <title></title>
+  <description> Web applications at your fingertips.</description>
+  <devel project="X11:COSMIC:Apps" package="quick-webapps"/>
+  <url>https://github.com/elevenhsoft/WebApps</url>
+</package>
