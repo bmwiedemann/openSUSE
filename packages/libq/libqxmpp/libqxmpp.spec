@@ -32,7 +32,7 @@ ExclusiveArch:  do_not_build
 %endif
 %define sover 5
 Name:           libqxmpp%{?pkg_suffix}
-Version:        1.7.0
+Version:        1.7.1
 Release:        0
 Summary:        Qt XMPP Library
 License:        LGPL-2.1-or-later
@@ -46,8 +46,8 @@ BuildRequires:  fdupes
 %endif
 # c++-17 is required
 %if 0%{?suse_version} < 1550
-BuildRequires:  gcc13-c++
 BuildRequires:  gcc13-PIE
+BuildRequires:  gcc13-c++
 %endif
 BuildRequires:  pkgconfig
 %if 0%{?qt5}

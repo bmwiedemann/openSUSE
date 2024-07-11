@@ -252,4 +252,14 @@ Qt5 alternative.</comment>
     <comment>Update to 1.7.0</comment>
     <requestid>1175586</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>8c9f5bd3ecbdc07335058ad7b73a15e0</srcmd5>
+    <version>1.7.1</version>
+    <time>1720722624</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.7.0:
+  * OMEMO: Fix messages are dropped if decryption fails (#634)
+  * Fix build issue with MSVC: missing export of utility functions (forwarded request 1186516 from jubalh)</comment>
+    <requestid>1186567</requestid>
+  </revision>
 </revisionlist>

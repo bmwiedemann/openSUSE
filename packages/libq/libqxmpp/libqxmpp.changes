@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jul 10 06:58:56 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.7.1:
+  * OMEMO: Fix messages are dropped if decryption fails (#634)
+  * Fix build issue with MSVC: missing export of utility functions
+
+-------------------------------------------------------------------
 Tue May 21 13:26:33 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 1.7.0
