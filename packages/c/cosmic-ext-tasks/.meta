@@ -1,0 +1,6 @@
+<package name="cosmic-ext-tasks" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="X11:COSMIC:Apps" package="cosmic-ext-tasks"/>
+  <url>https://github.com/edfloreshz/tasks</url>
+</package>
