@@ -150,4 +150,14 @@
     <comment></comment>
     <requestid>1174377</requestid>
   </revision>
+  <revision rev="15" vrev="8">
+    <srcmd5>a1958bc2468ee9b478488a4b25a4cf90</srcmd5>
+    <version>1.0.0</version>
+    <time>1720722733</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit
+- Updating config.sh to 'Include BCI free rpm repository also in SLE WSL' via
+  a 'zypper addrepo' call</comment>
+    <requestid>1186917</requestid>
+  </revision>
 </revisionlist>

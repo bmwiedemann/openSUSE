@@ -57,8 +57,10 @@ fi
 
 if ! (grep -q opensuse /usr/lib/os-release || grep -q opensuse /etc/os-release); then
   source /usr/share/wsl-appx/DOTsettings
+  # MAJOR_VER,SP_VER, and OARCH come from wsl-appx DOTsettings file (sourced above)
+  # Add [free] SLE_BCI repo - https://jira.suse.com/browse/PED-8754
+  zypper --non-interactive addrepo --priority 100 "https://updates.suse.com/SUSE/Products/SLE-BCI/$MAJOR_VER-SP$SP_VER/$OARCH/product/" SLE_BCI
   # Inject curated text into /etc/YaST2/products.yaml
-  # MAJOR_VER and SP_VER come from wsl-appx DOTsettings file (sourced above)
   cat << EOF > /etc/YaST2/products.yaml
 - display_name: "SUSE Linux Enterprise Server $MAJOR_VER SP$SP_VER"
   name: "SLES"
