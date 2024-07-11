@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jul 10 08:17:34 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 2.32.0
+  * Adds support for X509 workload credential type (#1541)
+- Adjust upstream source name in spec file
+
+-------------------------------------------------------------------
 Fri Jul  5 10:08:50 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 2.31.0

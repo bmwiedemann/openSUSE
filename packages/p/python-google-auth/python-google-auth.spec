@@ -18,12 +18,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-google-auth
-Version:        2.31.0
+Version:        2.32.0
 Release:        0
 Summary:        Google Authentication Library
 License:        Apache-2.0
 URL:            https://github.com/googleapis/google-auth-library-python
-Source:         https://files.pythonhosted.org/packages/source/g/google-auth/google-auth-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/g/google-auth/google_auth-%{version}.tar.gz
 # https://github.com/googleapis/google-auth-library-python/issues/1055
 Patch1:         python-google-auth-no-mock.patch
 BuildRequires:  %{python_module Flask}
@@ -59,7 +59,7 @@ BuildArch:      noarch
 This library simplifies using Google’s various server-to-server authentication mechanisms to access Google APIs.
 
 %prep
-%autosetup -p1 -n google-auth-%{version}
+%autosetup -p1 -n google_auth-%{version}
 
 %build
 %python_build
