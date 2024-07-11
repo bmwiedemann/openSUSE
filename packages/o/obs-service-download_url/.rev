@@ -57,4 +57,13 @@
   * added new parameter &quot;download-manifest&quot; for bulk downloads</comment>
     <requestid>1100253</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>ad1360498315f48b1999de57f29867ed</srcmd5>
+    <version>0.2.1</version>
+    <time>1720722833</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.2.1:
+  * fixed argument parsing boo#1227203 CVE-2024-22033</comment>
+    <requestid>1186878</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul 10 15:07:46 UTC 2024 - adrian@suse.de
+
+- Update to version 0.2.1:
+  * fixed argument parsing boo#1227203 CVE-2024-22033
+
+-------------------------------------------------------------------
 Mon Jul 24 06:20:30 UTC 2023 - adrian@suse.de
 
 - Update to version 0.2.0:

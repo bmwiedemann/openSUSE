@@ -1,7 +1,7 @@
 #
 # spec file for package obs-service-download_url
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@ Summary:        An OBS source service: wget download tool
 License:        GPL-2.0-or-later
 Group:          Development/Tools/Building
 URL:            https://github.com/openSUSE/obs-service-download_url
-Version:        0.2.0
+Version:        0.2.1
 Release:        0
 Source:         %name-%version.tar.gz
 Requires:       wget

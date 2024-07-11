@@ -1,4 +1,8 @@
 <servicedata>
 <service name="tar_scm">
                 <param name="url">git@github.com:openSUSE/obs-service-download_url.git</param>
-              <param name="changesrevision">401d580f04a2fe488f60d6ad61f3754091814b28</param></service></servicedata>
+              <param name="changesrevision">gpg: Signature made Wed 10 Jul 2024 04:54:19 PM CEST
+gpg:                using RSA key D50175CE6FE935BBF28602C5918D8C954C08DB67
+gpg: Good signature from "Adrian Schroeter (OBS Project Manager) &lt;adrian@suse.de&gt;" [ultimate]
+Primary key fingerprint: D501 75CE 6FE9 35BB F286  02C5 918D 8C95 4C08 DB67
+f0a346983ad38b03d6de6056be98febf33385c1a</param></service></servicedata>

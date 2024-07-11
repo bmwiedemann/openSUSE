@@ -1,6 +1,6 @@
 Format: 1.0
 Source: obs-service-download-url
-Version: 0.2.0
+Version: 0.2.1
 Binary: obs-service-download-url
 Maintainer: Adrian Schroeter <adrian@suse.com>
 Architecture: all
