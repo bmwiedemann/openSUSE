@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jul  4 20:21:59 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Add upstream changes fixing some krita issues:
+  * 0001-Fix-xsimd-available_architectures-.has-for-sve-and-r.patch
+  * 0002-Fix-detection-of-SSE-AVX-AVX512-when-they-are-explic.patch
+
+-------------------------------------------------------------------
 Fri May 17 09:38:45 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 13.0.0:

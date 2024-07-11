@@ -69,4 +69,14 @@
     <comment></comment>
     <requestid>1176930</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>9e360ae860022082797a7a2cab5ee436</srcmd5>
+    <version>13.0.0</version>
+    <time>1720722563</time>
+    <user>anag+factory</user>
+    <comment>- Add upstream changes fixing some krita issues:
+  * 0001-Fix-xsimd-available_architectures-.has-for-sve-and-r.patch
+  * 0002-Fix-detection-of-SSE-AVX-AVX512-when-they-are-explic.patch (forwarded request 1185446 from krop)</comment>
+    <requestid>1186600</requestid>
+  </revision>
 </revisionlist>

@@ -24,6 +24,9 @@ License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
 URL:            https://xsimd.readthedocs.io/en/latest/
 Source0:        https://github.com/xtensor-stack/xsimd/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM -- https://mail.kde.org/pipermail/distributions/2024-July/001511.html
+Patch0:         0001-Fix-xsimd-available_architectures-.has-for-sve-and-r.patch
+Patch1:         0002-Fix-detection-of-SSE-AVX-AVX512-when-they-are-explic.patch
 BuildRequires:  cmake
 BuildRequires:  doctest-devel
 BuildRequires:  doxygen
