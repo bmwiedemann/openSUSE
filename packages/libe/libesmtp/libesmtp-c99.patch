@@ -1,0 +1,24 @@
+Index: libESMTP-1.1.0/smtp-api.c
+===================================================================
+--- libESMTP-1.1.0.orig/smtp-api.c
++++ libESMTP-1.1.0/smtp-api.c
+@@ -22,6 +22,7 @@
+ 
+ #include <config.h>
+ 
++#define _GNU_SOURCE
+ #include <stdarg.h>
+ #include <string.h>
+ #include <stdlib.h>
+Index: libESMTP-1.1.0/smtp-tls.c
+===================================================================
+--- libESMTP-1.1.0.orig/smtp-tls.c
++++ libESMTP-1.1.0/smtp-tls.c
+@@ -47,6 +47,7 @@
+ 
+ /* This stuff doesn't belong here */
+ /* vvvvvvvvvvv */
++#define _GNU_SOURCE
+ #include <sys/types.h>
+ #include <sys/stat.h>
+ #include <unistd.h>

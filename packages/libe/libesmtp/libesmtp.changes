@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jul 10 14:41:09 UTC 2024 - Martin Jambor <mjambor@suse.com>
+
+- Added libesmtp-c99.patch which adds a required feature macro
+  definition so that strlcpy function is properly declared in the
+  standard header file.  [boo#1225800]
+
+-------------------------------------------------------------------
 Tue Dec 27 10:32:59 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 1.1.0: 

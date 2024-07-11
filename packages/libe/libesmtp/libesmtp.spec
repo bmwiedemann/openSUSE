@@ -27,6 +27,8 @@ Group:          Development/Libraries/C and C++
 URL:            https://libesmtp.github.io/
 Source0:        https://github.com/libesmtp/libESMTP/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Patch0:         add_ntlm.patch
+#PATCH-FIX-UPSTREAM libesmtp-c99.patch boo#1225800 mjambor@suse.cz
+Patch1:         libesmtp-c99.patch
 BuildRequires:  libtool
 BuildRequires:  meson >= 0.50.0
 BuildRequires:  openssl-devel >= 1.1.0
