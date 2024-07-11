@@ -1,0 +1,5 @@
+<package name="python-webauthn" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:languages:python" package="python-webauthn"/>
+</package>
