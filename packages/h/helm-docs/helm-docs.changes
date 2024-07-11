@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Thu Jul 11 07:44:40 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.14.2:
+  * Release v1.14.2
+  * fix: Adds check for tag format to release script, also makes
+    release script error on improper tags
+  * chore(deps): bump helm.sh/helm/v3 from 3.15.1 to 3.15.2
+
+-------------------------------------------------------------------
+Thu Jul 11 07:43:11 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.14.1:
+  * Release 1.14.1
+  * Update go.mod via 'go mod tidy'
+  * chore: generates documentation using new v1.14.0
+
+-------------------------------------------------------------------
+Thu Jul 11 07:13:34 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.14.0:
+  * Release 1.14.0
+  * fix: Fixes goreleaser action by using new flag
+  * chore(deps): bump github.com/stretchr/testify from 1.8.3 to
+    1.9.0
+  * chore(deps): bump github.com/spf13/cobra from 1.7.0 to 1.8.1
+  * chore(deps): bump goreleaser/goreleaser-action from 4 to 6
+  * chore(deps): bump alpine from 3.19 to 3.20
+  * chore(deps): bump docker/setup-buildx-action from 2 to 3
+  * chore(deps): bump docker/setup-qemu-action from 2 to 3
+  * chore(deps): bump crazy-max/ghaction-import-gpg from 5 to 6
+  * Add dependabot
+  * Use helm v3
+  * revert go.mod
+  * add toYaml example
+  * add example
+  * chore: set go version to 1.22.0
+  * chore: renders example chart documentation using v1.13.1
+  * add a flag to remove the version footer
+  * feat: add toYaml and fromYaml to functions map
+
+-------------------------------------------------------------------
 Sat Mar 16 16:53:01 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.13.1:
