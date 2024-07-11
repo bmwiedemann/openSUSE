@@ -1,0 +1,5 @@
+<package name="zenith" project="openSUSE:Factory">
+  <title>zenith</title>
+  <description>sort of like top or htop but with zoom-able charts, CPU, GPU, network, and disk usage</description>
+  <devel project="utilities" package="zenith"/>
+</package>

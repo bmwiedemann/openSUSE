@@ -1,0 +1,16 @@
+-------------------------------------------------------------------
+Sat Jul 06 10:45:57 UTC 2024 - alessio.biancalana@suse.com
+
+- Add 001-strip-cargo-config.patch to remove clumsy cargo config
+- Update to version 0.14.1~0:
+  * fixed the changelog formatting
+  * Bump version; update changelog
+  * Migrated to 'uzers' from 'users' as the latter is no longer maintained (#146)
+  * Update linux-taskstats-rs to v0.5.0 closes https://github.com/bvaisvil/zenith/security/dependabot/14
+  * Update Arch Linux package URL in README.md (#143)
+  * Updated readme to reference ratatui
+  * Upgrade tui -> raratui and other deps (#139)
+  * ui: use even spacing between elements when temperature is shown (#140)
+  * Do not crash when pressing arrow keys in an empty graphics section (#141)
+  * Remove unused `mut` (#136)
+
