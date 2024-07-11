@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Jul 10 08:35:11 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.60.1:
+  * Concurrent access write fixes (#3245)
+
+-------------------------------------------------------------------
+Wed Jul 10 08:29:04 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.60.0:
+  * Add support for Terraform 1.9 (#3239)
+
+-------------------------------------------------------------------
+Wed Jul 10 07:44:06 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.59.7:
+  * Fixed using authentication provider credentials with
+    `get_aws_account_id` (#3243)
+  * chore: Updating `CODEOWNERS` to include current Terragrunt
+    maintainers (#3233)
+  * fix: Fixing quick start docs (#3232)
+  * chore: switch to gtm for docs site (#3229)
+
+-------------------------------------------------------------------
 Wed Jul 03 15:14:51 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.59.6:
