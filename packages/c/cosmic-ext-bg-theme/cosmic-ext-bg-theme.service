@@ -1,0 +1,22 @@
+[Unit]
+Description=Unofficial service for syncing COSMIC theme with the active wallpaper.
+After=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/cosmic-ext-bg-theme
+Restart=always
+RestartSec=300
+# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
+PrivateDevices=true
+ProtectClock=true
+ProtectControlGroups=true
+ProtectHome=true
+ProtectHostname=true
+ProtectKernelLogs=true
+ProtectKernelModules=true
+ProtectKernelTunables=true
+RestrictRealtime=true
+
+[Install]
+WantedBy=graphical-session.target

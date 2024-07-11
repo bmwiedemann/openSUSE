@@ -1,0 +1,6 @@
+<package name="cosmic-ext-bg-theme" project="openSUSE:Factory">
+  <title></title>
+  <description>Unofficial service for syncing the theme with the wallpaper for the COSMIC(tm) desktop.</description>
+  <devel project="X11:COSMIC:Apps" package="cosmic-ext-bg-theme"/>
+  <url>https://github.com/wash2/cosmic_bg_theme</url>
+</package>
