@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul 10 17:31:11 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.6
+  * Stop reading non-existent .gd/.gi files
+
+-------------------------------------------------------------------
 Sun Feb 12 19:55:45 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Initial package (version 1.5) for build.opensuse.org

@@ -1,7 +1,7 @@
 #
 # spec file for package gap-unipot
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gap-unipot
-Version:        1.5
+Version:        1.6
 Release:        0
 Summary:        GAP: Elements of unipotent subgroups of Chevalley groups
 License:        GPL-2.0-or-later
