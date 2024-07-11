@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul 10 12:17:12 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add 771528ae54d8335957533291b89f87da812aca95.patch: Fix build
+  with GCC 14.
+
+-------------------------------------------------------------------
 Mon Feb 12 16:47:31 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.12.57:

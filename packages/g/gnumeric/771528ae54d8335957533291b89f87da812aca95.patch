@@ -1,0 +1,29 @@
+From 771528ae54d8335957533291b89f87da812aca95 Mon Sep 17 00:00:00 2001
+From: Yaakov Selkowitz <yselkowi@redhat.com>
+Date: Fri, 26 Apr 2024 04:23:56 +0000
+Subject: [PATCH] Fix build with GCC 14
+
+plugin-gda.c: In function 'open_connection':
+plugin-gda.c:330:61: error: passing argument 1 of 'gda_connection_open_from_dsn' from incompatible pointer type [-Wincompatible-pointer-types]
+In file included from /usr/include/libgda-6.0/libgda/libgda.h:36:
+/usr/include/libgda-6.0/libgda/gda-connection.h:268:71: note: expected 'GdaDsnInfo *' {aka 'struct _GdaDsnInfo *'} but argument is of type 'gchar *' {aka 'char *'}
+---
+ plugins/gda/plugin-gda.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/plugins/gda/plugin-gda.c b/plugins/gda/plugin-gda.c
+index f8414f7e6..1a196e108 100644
+--- a/plugins/gda/plugin-gda.c
++++ b/plugins/gda/plugin-gda.c
+@@ -327,7 +327,7 @@ open_connection (const gchar *dsn, const gchar *user, const gchar *password, Gda
+ 		gchar *chosen_dsn = NULL, *auth_string = NULL;
+ 
+ 		if (query_connection_info (dsn, user, password, &chosen_dsn, &auth_string) && chosen_dsn) {
+-			cnc = gda_connection_open_from_dsn (chosen_dsn, auth_string, options, &error);
++			cnc = gda_connection_open_from_dsn_name (chosen_dsn, auth_string, options, &error);
+ 			if (!cnc) {
+ 				g_warning ("Libgda error: %s\n", error->message);
+ 				g_error_free (error);
+-- 
+GitLab
+

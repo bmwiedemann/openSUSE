@@ -25,6 +25,8 @@ Group:          Productivity/Office/Spreadsheets
 URL:            http://www.gnumeric.org/
 Source0:        %{name}-%{version}.tar.zst
 Source1:        gnumeric-rpmlintrc
+# PATCH-FIX-UPSTREAM 771528ae54d8335957533291b89f87da812aca95.patch: Fix build with GCC 14
+Patch1:         https://gitlab.gnome.org/GNOME/gnumeric/-/commit/771528ae54d8335957533291b89f87da812aca95.patch
 
 BuildRequires:  bison
 BuildRequires:  docbook-dtds
