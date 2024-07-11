@@ -83,4 +83,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1183584</requestid>
   </revision>
+  <revision rev="11" vrev="11">
+    <srcmd5>25f78f5051b9ab25a8fd788930a83cbe</srcmd5>
+    <version>5.0</version>
+    <time>1720722829</time>
+    <user>anag+factory</user>
+    <comment>- Add mokutil (needed for Secureboot configuration and checking)</comment>
+    <requestid>1186874</requestid>
+  </revision>
 </revisionlist>

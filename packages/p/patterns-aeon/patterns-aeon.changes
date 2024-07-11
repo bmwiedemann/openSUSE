@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jul 11 12:47:24 UTC 2024 - Richard Brown <rbrown@suse.com>
+
+- Add mokutil (needed for Secureboot configuration and checking) 
+
+-------------------------------------------------------------------
 Thu Jun 20 13:46:40 UTC 2024 - Richard Brown <rbrown@suse.com>
 
 - Build for aarch64 also to provide unofficial VM images 
