@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jul 10 13:54:23 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add port-to-c99.patch: Fix build with gcc14.
+
+-------------------------------------------------------------------
 Tue Jan 16 16:17:07 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Own /usr/share/gtk-doc: glib no longer uses gtk-doc and as a

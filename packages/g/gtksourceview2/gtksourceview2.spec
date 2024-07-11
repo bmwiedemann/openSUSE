@@ -27,6 +27,9 @@ URL:            http://www.gnome.org/
 Source:         http://download.gnome.org/sources/gtksourceview/2.10/%{_name}-%{version}.tar.bz2
 # PATCH-FEATURE-OPENSUSE gtksourceview-2.10.5-rpmspec_highlight.patch bgo#676261 lazy.kent@opensuse.org -- add SUSE-specific highlights for rpm spec
 Patch0:         gtksourceview-2.10.5-rpmspec_highlight.patch
+# PATCH-FIX-UPSTREAM port-to-c99.patch -- Fix build with gcc14
+Patch1:         port-to-c99.patch
+
 BuildRequires:  fdupes
 BuildRequires:  gtk2-devel
 BuildRequires:  intltool
