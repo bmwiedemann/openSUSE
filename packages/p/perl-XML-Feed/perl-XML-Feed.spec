@@ -1,7 +1,7 @@
 #
 # spec file for package perl-XML-Feed
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,14 @@
 
 %define cpan_name XML-Feed
 Name:           perl-XML-Feed
-Version:        0.63
+Version:        0.650.0
 Release:        0
-Summary:        Syndication feed parser and auto-discovery
+# 0.65 -> normalize -> 0.650.0
+%define cpan_version 0.65
 License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        XML Syndication Feed Support
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/D/DA/DAVECROSS/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/D/DA/DAVECROSS/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
@@ -39,7 +41,7 @@ BuildRequires:  perl(Feed::Find)
 BuildRequires:  perl(HTML::Entities)
 BuildRequires:  perl(HTML::TokeParser)
 BuildRequires:  perl(LWP::UserAgent)
-BuildRequires:  perl(Module::Build) >= 0.420000
+BuildRequires:  perl(Module::Build) >= 0.42
 BuildRequires:  perl(Module::Pluggable)
 BuildRequires:  perl(URI)
 BuildRequires:  perl(URI::Fetch)
@@ -63,6 +65,16 @@ Requires:       perl(URI::Fetch)
 Requires:       perl(XML::Atom) >= 0.38
 Requires:       perl(XML::LibXML) >= 1.66
 Requires:       perl(XML::RSS) >= 1.47
+Provides:       perl(XML::Feed) = %{version}
+Provides:       perl(XML::Feed::Content) = %{version}
+Provides:       perl(XML::Feed::Enclosure) = %{version}
+Provides:       perl(XML::Feed::Entry) = %{version}
+Provides:       perl(XML::Feed::Entry::Format::Atom) = %{version}
+Provides:       perl(XML::Feed::Entry::Format::RSS) = %{version}
+Provides:       perl(XML::Feed::Format::Atom) = %{version}
+Provides:       perl(XML::Feed::Format::RSS) = %{version}
+Provides:       perl(XML::Feed::Util) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -90,17 +102,17 @@ for date handling, _XML::Feed_ converts all date formats transparently into
 DateTime objects, which it then returns to the caller.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version}
 
 %build
-perl Build.PL installdirs=vendor
-./Build build flags=%{?_smp_mflags}
+perl Build.PL --installdirs=vendor
+./Build build --flags=%{?_smp_mflags}
 
 %check
 ./Build test
 
 %install
-./Build install destdir=%{buildroot} create_packlist=0
+./Build install --destdir=%{buildroot} --create_packlist=0
 %perl_gen_filelist
 
 %files -f %{name}.files

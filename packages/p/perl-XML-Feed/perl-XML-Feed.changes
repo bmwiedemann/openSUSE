@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jul 10 05:30:15 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.650.0 (0.65)
+   see /usr/share/doc/packages/perl-XML-Feed/ChangeLog.md
+
+  ## [0.65] - 2024-07-08
+  ### Fixed
+  * Packaging errors in version 0.64 (thanks @perlpunk for spotting them)
+  ## [0.64] - 2024-07-07
+  ### Added
+  * Include parse error message in output (thanks @renderorange)
+
+-------------------------------------------------------------------
 Wed May 26 03:08:22 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.63
