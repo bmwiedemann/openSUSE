@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jul 11 14:56:34 UTC 2024 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Applied a new patch (bsc#1227602)
+  * s390-tools-slfo-01-parse-ipl-device-for-activation.patch 
+- Removed the old 'initial' patch 
+  * s390-tools-sles15sp6-01-parse-ipl-device-for-activation.patch
+
+-------------------------------------------------------------------
 Thu Jun 20 13:58:08 UTC 2024 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Amended read_values.c (bsc#1226609)

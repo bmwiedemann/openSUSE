@@ -1,19 +1,28 @@
-From 3ea6d6dfd2eb120ffee4c44ff51b7e9e7a9097a6 Mon Sep 17 00:00:00 2001
+From 001c5aa5d40ffa7a40d64416c43c67004de29b8f Mon Sep 17 00:00:00 2001
 From: Thomas Blume <Thomas.Blume@suse.com>
 Date: Thu, 28 Mar 2024 13:32:46 +0100
 Subject: [PATCH] parse ipl device for activation
 
 ported from dracut modules
 ---
- zdev/dracut/95zdev/parse-dasd.sh | 15 ++++++++---
- zdev/dracut/95zdev/parse-zfcp.sh | 46 +++++++++++++++++++-------------
- 2 files changed, 39 insertions(+), 22 deletions(-)
+ zdev/dracut/95zdev/parse-dasd.sh | 20 ++++++++++--
+ zdev/dracut/95zdev/parse-zfcp.sh | 56 +++++++++++++++++++++-----------
+ 2 files changed, 54 insertions(+), 22 deletions(-)
 
 diff --git a/zdev/dracut/95zdev/parse-dasd.sh b/zdev/dracut/95zdev/parse-dasd.sh
-index a97801f..eb2fa64 100644
+index a97801fe..cce0435a 100644
 --- a/zdev/dracut/95zdev/parse-dasd.sh
 +++ b/zdev/dracut/95zdev/parse-dasd.sh
-@@ -27,9 +27,18 @@ zdev_vinfo() {
+@@ -10,6 +10,8 @@
+ #   parameters are evaluated and used to configure dasd devices.
+ #
+ 
++zdev_dasd_base_args="--no-settle --yes --no-root-update --force"
++
+ # shellcheck source=/dev/null
+ type zdev_parse_dasd_list > /dev/null 2>&1 || . /lib/s390-tools/zdev-from-dasd_mod.dasd
+ 
+@@ -27,9 +29,21 @@ zdev_vinfo() {
  
  zdev_parse_rd_dasd() {
      local _zdev_dasd _zdev_dasd_list
@@ -26,7 +35,10 @@ index a97801f..eb2fa64 100644
 +        && [[ $(< /sys/firmware/ipl/ipl_type) == "ccw" ]]; then
 +        read -r _ccw < /sys/firmware/ipl/device
 +
-+        chzdev --offline --existing --enable --active dasd "$_ccw"
++        if lszdev --offline "$_ccw" &>/dev/null; then
++            chzdev --offline --existing --enable --active $zdev_dasd_base_args \
++                   dasd "$_ccw"
++        fi
 +    else
 +        for _zdev_dasd in $(getargs rd.dasd -d 'rd_DASD='); do
 +            _zdev_dasd_list="${_zdev_dasd_list:+${_zdev_dasd_list},}$_zdev_dasd"
@@ -36,10 +48,10 @@ index a97801f..eb2fa64 100644
  }
  
 diff --git a/zdev/dracut/95zdev/parse-zfcp.sh b/zdev/dracut/95zdev/parse-zfcp.sh
-index 715aa00..6279beb 100644
+index 715aa009..e4fef0b9 100644
 --- a/zdev/dracut/95zdev/parse-zfcp.sh
 +++ b/zdev/dracut/95zdev/parse-zfcp.sh
-@@ -12,25 +12,33 @@
+@@ -12,25 +12,43 @@
  
  zdev_zfcp_base_args="--no-settle --yes --no-root-update --force"
  
@@ -53,21 +65,31 @@ index 715aa00..6279beb 100644
 -        IFS="$IFS_SAVED"
 -        echo "rd.zfcp ${zdev_zfcp_arg} :" | zdev_vinfo
 -        if [ "$#" -eq 1 ]; then
+-            # shellcheck disable=SC2086
+-            chzdev --enable --persistent $zdev_zfcp_base_args \
+-                   zfcp-host "$args" 2>&1 | zdev_vinfo
+-        else
++zdev_vinfo() {
++    local _zdev_vinfo_line
++    while read -r _zdev_vinfo_line || [ -n "$_zdev_vinfo_line" ]; do
++        # Prefix "<30>" represents facility LOG_DAEMON 3 and loglevel INFO 6:
++        # (facility << 3) | level.
++        echo "<30>dracut: $_zdev_vinfo_line" > /dev/kmsg
++    done
++}
++
 +# autodetect active bootdev from zipl device
 +if ! getargbool 0 'rd.zfcp' \
 +    && [[ -f /sys/firmware/ipl/ipl_type ]] \
 +    && [[ $(< /sys/firmware/ipl/ipl_type) == "fcp" ]]; then
-+        chzdev --offline --existing --enable --active zfcp-host 2>&1 | zdev_vinfo
++        chzdev --offline --existing --enable --active $zdev_zfcp_base_args \
++               zfcp-host 2>&1 | zdev_vinfo
 +else
 +    for zdev_zfcp_arg in $(getargs rd.zfcp -d 'rd_ZFCP='); do
 +        (
 +            IFS_SAVED="$IFS"
 +            IFS="," # did not work in front of built-in set command below
              # shellcheck disable=SC2086
--            chzdev --enable --persistent $zdev_zfcp_base_args \
--                   zfcp-host "$args" 2>&1 | zdev_vinfo
--        else
--            # shellcheck disable=SC2086
 -            chzdev --enable --persistent $zdev_zfcp_base_args \
 -                   zfcp-lun "$args" 2>&1 | zdev_vinfo
 -        fi
@@ -92,6 +114,3 @@ index 715aa00..6279beb 100644
 +
  unset zdev_zfcp_arg
  unset zdev_zfcp_base_args
--- 
-2.44.0
-
