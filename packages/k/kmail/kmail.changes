@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul 10 11:32:30 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix crash on opening mails for editing (kde#486283):
+  * 0001-Fix-crash-due-to-deleteLater-nested-event-loop.patch
+
+-------------------------------------------------------------------
 Tue Jul  2 13:54:30 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.05.2

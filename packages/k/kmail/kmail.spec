@@ -32,6 +32,8 @@ Source0:        https://download.kde.org/stable/release-service/%{version}/src/%
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
+# PATCH-FIX-UPSTREAM https://invent.kde.org/pim/kmail/-/merge_requests/137
+Patch1:         0001-Fix-crash-due-to-deleteLater-nested-event-loop.patch
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  libgpgmepp-devel
 BuildRequires:  cmake(KF6Bookmarks) >= %{kf6_version}
@@ -96,10 +98,10 @@ BuildRequires:  cmake(Qt6Network) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Test) >= %{qt6_version}
 BuildRequires:  cmake(Qt6WebEngineWidgets) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
-Requires:       kmail-application-icons
 Requires:       kdepim-addons
 Requires:       kdepim-runtime
 Requires:       kmail-account-wizard
+Requires:       kmail-application-icons
 Requires:       ktextaddons
 Recommends:     akonadi-import-wizard
 Recommends:     akonadi-search

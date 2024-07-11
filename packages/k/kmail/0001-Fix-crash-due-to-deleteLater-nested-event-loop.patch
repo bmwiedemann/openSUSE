@@ -1,0 +1,54 @@
+From f4ad9fb23b0f2154b98a24d74c355652102f5532 Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fabian@ritter-vogt.de>
+Date: Wed, 10 Jul 2024 10:43:00 +0200
+Subject: [PATCH] Fix crash due to deleteLater() + nested event loop
+
+KMEditItemCommand::execute creates a connection that does deleteLater(),
+but also calls KMComposerWin::setMessage which creates a nested QEventLoop
+in Kleo::KeyCache::Private::ensureCachePopulated. This nested event loop
+thus deletes KMEditItemCommand within KMEditItemCommand::execute, causing
+a crash.
+
+Fix this by creating the connection for deleteLater as late as possible
+and also call setDeletesItself(true) for good measure.
+
+BUG: 486283
+(cherry picked from commit be1e18f93c6b601389e92eeb87d32e801e77a52f)
+---
+ src/kmcommands.cpp | 11 ++++++-----
+ 1 file changed, 6 insertions(+), 5 deletions(-)
+
+diff --git a/src/kmcommands.cpp b/src/kmcommands.cpp
+index 976128fd2..9651ed3dc 100644
+--- a/src/kmcommands.cpp
++++ b/src/kmcommands.cpp
+@@ -592,11 +592,6 @@ KMCommand::Result KMEditItemCommand::execute()
+         return Failed;
+     }
+ 
+-    if (mDeleteFromSource) {
+-        setDeletesItself(true);
+-        auto job = new Akonadi::ItemDeleteJob(item);
+-        connect(job, &KIO::Job::result, this, &KMEditItemCommand::slotDeleteItem);
+-    }
+     KMail::Composer *win = KMail::makeComposer();
+     bool lastEncrypt = false;
+     bool lastSign = false;
+@@ -623,8 +618,14 @@ KMCommand::Result KMEditItemCommand::execute()
+         win->setFcc(QString::number(sentAttribute->moveToCollection().id()));
+     }
+     win->show();
++
+     if (mDeleteFromSource) {
+         win->setModified(true);
++
++        setDeletesItself(true);
++        setEmitsCompletedItself(true);
++        auto job = new Akonadi::ItemDeleteJob(item);
++        connect(job, &KIO::Job::result, this, &KMEditItemCommand::slotDeleteItem);
+     }
+ 
+     return OK;
+-- 
+2.45.2
+
