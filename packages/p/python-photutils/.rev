@@ -602,4 +602,41 @@
     set to 0. [#1714] (forwarded request 1171970 from bnavigator)</comment>
     <requestid>1171971</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>2673b9919983fe1d1d3d939092bc2b30</srcmd5>
+    <version>1.13.0</version>
+    <time>1720722802</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.13.0
+  ## General
+  * scikit-learn has been removed as an optional dependency.
+    [#1774]
+  ## New Features
+  ### photutils.datasets
+  * Added a make_model_image function for generating simulated
+    images with model sources. This function has more options and
+    is significantly faster than the now-deprecated
+    make_model_sources_image function. [#1759, #1790]
+  * Added a make_model_params function to make a table of randomly
+    generated model positions and fluxes for simulated sources.
+    [#1766, #1796]
+  ### photutils.detection
+  * The find_peaks function now supports input arrays with units.
+    [#1743]
+  * The Table returned from find_peaks now has an id column that
+    contains unique integer IDs for each peak. [#1743]
+  * The DAOStarFinder, IRAFStarFinder, and StarFinder classes now
+    support input arrays with units. [#1746]
+  ### photutils.profiles
+  * Added an unnormalize method to RadialProfile and CurveOfGrowth
+    to return the profile to the state before any normalize calls
+    were run. [#1732]
+  * Added calc_ee_from_radius and calc_radius_from_ee methods to
+    CurveOfGrowth. [#1733]
+  ### photutils.psf
+  * Added an include_localbkg keyword to the IterativePSFPhotometry
+    make_model_image and make_residual_image methods. [#1756]
+  * Added “x_fit”, “xfit”, “y_fit”, “yfit”, “flux_fit”, and (forwarded request 1186835 from bnavigator)</comment>
+    <requestid>1186836</requestid>
+  </revision>
 </revisionlist>

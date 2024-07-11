@@ -1,4 +1,148 @@
 -------------------------------------------------------------------
+Thu Jul 11 10:00:45 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.13.0
+  ## General
+  * scikit-learn has been removed as an optional dependency.
+    [#1774]
+  ## New Features
+  ### photutils.datasets
+  * Added a make_model_image function for generating simulated
+    images with model sources. This function has more options and
+    is significantly faster than the now-deprecated
+    make_model_sources_image function. [#1759, #1790]
+  * Added a make_model_params function to make a table of randomly
+    generated model positions and fluxes for simulated sources.
+    [#1766, #1796]
+  ### photutils.detection
+  * The find_peaks function now supports input arrays with units.
+    [#1743]
+  * The Table returned from find_peaks now has an id column that
+    contains unique integer IDs for each peak. [#1743]
+  * The DAOStarFinder, IRAFStarFinder, and StarFinder classes now
+    support input arrays with units. [#1746]
+  ### photutils.profiles
+  * Added an unnormalize method to RadialProfile and CurveOfGrowth
+    to return the profile to the state before any normalize calls
+    were run. [#1732]
+  * Added calc_ee_from_radius and calc_radius_from_ee methods to
+    CurveOfGrowth. [#1733]
+  ### photutils.psf
+  * Added an include_localbkg keyword to the IterativePSFPhotometry
+    make_model_image and make_residual_image methods. [#1756]
+  * Added “x_fit”, “xfit”, “y_fit”, “yfit”, “flux_fit”, and
+    “fluxfit” as allowed column names in the init_params table
+    input to the PSF photometry objects. [#1765]
+  * Added a make_psf_model_image function to generate a simulated
+image from PSF models. [#1785, #1796] PSFPhotometry now has a new
+fit_params attribute containing a table of the fit model parameters
+and errors. [#1789]
+  * The PSFPhotometry and IterativePSFPhotometry init_params table
+    now allows the user to input columns for model parameters other
+    than x, y, and flux. The column names must match the parameter
+    names in the PSF model. They   * can also be suffixed with
+    either the “_init” or “_fit” suffix. [#1793]
+  ## Bug Fixes
+  ### photutils.aperture
+  * Fixed an issue in ApertureStats where in very rare cases the
+    covariance calculation could take a long time. [#1788]
+  ### photutils.background
+  * No longer warn about NaNs in the data if those NaNs are masked
+    in coverage_mask passed to Background2D. [#1729]
+  ### photutils.psf
+  * Fixed an issue where IterativePSFPhotometry would fail if the
+    input data was a Quantity array. [#1746]
+  * Fixed the IntegratedGaussianPRF class bounding_box limits to
+    always be symmetric. [#1754]
+  * Fixed an issue where IterativePSFPhotometry could sometimes
+    issue a warning when merging tables if mode='all'. [#1761]
+  * Fixed a bug where the first matching column in the init_params
+    table was not used in PSFPhotometry and IterativePSFPhotometry.
+    [#1765]
+  * Fixed an issue where IterativePSFPhotometry could sometimes
+    raise an error about non-overlapping data. [#1778]
+  * Fixed an issue with unit handling in PSFPhotometry and
+    IterativePSFPhotometry. [#1792]
+  * Fixed an issue in IterativePSFPhotometry where the fit_results
+    attribute was not cleared between repeated calls. [#1793]
+  ### photutils.segmentation
+  * Fixed an issue in SourceCatalog where in very rare cases the
+    covariance calculation could take a long time. [#1788]
+  ## API Changes
+  * The photutils.test function has been removed. Instead use the
+    pytest --pyargs photutils command. [#1725]
+  ### photutils.datasets
+  * The photutils.datasets subpackage has been reorganized and the
+    make module has been deprecated. Instead of importing functions
+    from photutils.datasets.make, import functions from
+    photutils.datasets. [#1726]
+  * The make_model_sources_image function has been deprecated in
+    favor of the new make_model_image function. The new function
+    has more options and is significantly faster. [#1759]
+  * The randomly-generated optional noise in the simulated example
+    images make_4gaussians_image and make_100gaussians_image is now
+    slightly different. The noise sigma is the same, but the pixel
+    values differ. [#1760]
+  * The make_gaussian_prf_sources_image function is now deprecated.
+    Use the make_model_psf_image function or the new
+    make_model_image function instead. [#1762]
+  * The make_gaussian_sources_table function now includes an “id”
+    column and always returns both 'flux' and 'amplitude' columns.
+    [#1763]
+  * The make_model_sources_table function now includes an “id”
+    column. [#1764]
+  * The make_gaussian_sources_table function is now deprecated. Use
+    the make_model_sources_table function instead. [#1764]
+  * The make_test_psf_data function is now deprecated. Use the new
+    make_model_psf_image function instead. [#1785]
+  ### photutils.detection
+  * The sky keyword in DAOStarFinder and IRAFStarFinder is now
+    deprecated and will be removed in a future version. [#1747]
+  * Sources that have non-finite properties (e.g., centroid,
+    roundness, sharpness, etc.) are automatically excluded from the
+    output table in DAOStarFinder, IRAFStarFinder, and StarFinder.
+    [#1750]
+  ### photutils.psf
+PSFPhotometry and IterativePSFPhotometry now raise a ValueError if
+the input psf_model is not two-dimensional with n_inputs=2 and
+n_outputs=1. [#1741]
+  * The IntegratedGaussianPRF class bounding_box is now a method
+    instead of an attribute for consistency with Astropy models.
+    The method has a factor keyword to scale the bounding box. The
+    default scale factor is 5.5 times sigma. [#1754]
+  * The IterativePSFPhotometry make_model_image and
+    make_residual_image methods no longer include the local
+    background by default. This is a backwards-incompatible change.
+    If the previous behavior is desired, set   *
+    include_localbkg=True. [#1756]
+  * IterativePSFPhotometry will now only issue warnings after all
+    iterations are completed. [#1767]
+  * The IterativePSFPhotometry psfphot attribute has been removed.
+    Instead, use the fit_results attribute, which contains a list
+    of PSFPhotometry instances for each fit iteration. [#1771]
+  * The group_size column has been moved to come immediately after
+    the group_id column in the output table from PSFPhotometry and
+    IterativePSFPhotometry. [#1772]
+  * The PSFPhotometry init_params table was moved from the
+fit_results dictionary to an attribute. [#1773] Removed local_bkg,
+psfcenter_indices, fit_residuals, npixfit, and nmodels keys from
+the PSFPhotometry fit_results dictionary. [#1773]
+  * Removed the deprecated BasicPSFPhotometry,
+    IterativelySubtractedPSFPhotometry, DAOPhotPSFPhotometry,
+    DAOGroup, DBSCANGroup, and GroupStarsBase, and NonNormalizable
+    classes and the prepare_psf_model,   * get_grouped_psf_model,
+    and subtract_psf functions. [#1774]
+  * A ValueError is now raised if the shape of the error array does
+    not match the data array when calling the PSF-fitting classes.
+    [#1777]
+  * The fit_param_errs key was removed from the PSFPhotometry
+    fit_results dictionary. The fit parameter errors are now stored
+    in the fit_params table. [#1789]
+  * The cfit column in the PSFPhotometry and IterativePSFPhotometry
+    result table will now be NaN for sources whose initial central
+    pixel is masked. [#1789]
+
+-------------------------------------------------------------------
 Sun May  5 10:03:57 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 1.12
