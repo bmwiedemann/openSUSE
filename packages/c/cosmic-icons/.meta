@@ -1,0 +1,6 @@
+<package name="cosmic-icons" project="openSUSE:Factory">
+  <title></title>
+  <description>Cosmic icon theme.</description>
+  <devel project="X11:COSMIC:Factory" package="cosmic-icons"/>
+  <url>https://github.com/pop-os/cosmic-icons</url>
+</package>
