@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jul 10 07:16:10 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.3.6:
+  * Bump golang.org/x/net from 0.17.0 to 0.23.0
+  * Bump google.golang.org/protobuf from 1.27.1 to 1.33.0
+  * Bump golang.org/x/net from 0.7.0 to 0.17.0
+  * Bump gopkg.in/yaml.v3 from 3.0.0-20210107192922-496545a6307b to
+    3.0.0
+
+-------------------------------------------------------------------
 Mon Apr 17 05:03:17 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.3.5:

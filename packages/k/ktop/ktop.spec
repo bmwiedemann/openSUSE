@@ -1,7 +1,7 @@
 #
 # spec file for package ktop
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           ktop
-Version:        0.3.5
+Version:        0.3.6
 Release:        0
 Summary:        A top-like tool for your Kubernetes clusters
 License:        Apache-2.0
