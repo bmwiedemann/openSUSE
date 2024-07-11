@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Jul 02 11:23:19 UTC 2024 - kskarthik@disroot.org
+
+- Update to version 0.2.64:
+  * chore: bump VERSION to 0.2.64
+  * build(deps): bump github.com/spf13/cobra from 1.8.0 to 1.8.1 (#2366)
+  * build(deps): bump google.golang.org/protobuf from 1.34.1 to 1.34.2 (#2365)
+  * build(deps): bump golang.org/x/term from 0.20.0 to 0.21.0 (#2360)
+  * build(deps): bump github.com/docker/cli (#2358)
+  * fix: skip service container for empty image (#2281)
+  * fix: composite action input pollution (#2348)
+  * fix: update reusable workflow input handling (#2349)
+  * Add riscv64 binary release (#2350)
+  * build(deps): bump github.com/rhysd/actionlint from 1.7.0 to 1.7.1 (#2346)
+
+-------------------------------------------------------------------
 Sun Jun 02 14:46:59 UTC 2024 - kskarthik@disroot.org
 
 - Update to version 0.2.63:
