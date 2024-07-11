@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jul  6 23:48:20 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Trigger Vala compilation during build, for GCC 14 compatibility.
+- Add ce8461ff6ea8ed79ce06b4241cb4fbb6d3d314f1.patch: Drop
+  unsupported inline modifier on constructor and destructor
+  declarations.
+
+-------------------------------------------------------------------
 Tue Mar  5 14:08:17 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop baselibs.conf: the -32bit packages are no longer needed and

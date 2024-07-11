@@ -29,6 +29,8 @@ Source0:        https://download.gnome.org/sources/libgee/0.20/%{name}-%{version
 Patch0:         https://gitlab.gnome.org/GNOME/libgee/-/commit/b33a6627f4fc96938b6015e05849867c472160a8.patch
 # PATCH-FIX-UPSTREAM 2f0bbe8987e5eb1390b23ac531c971b202c2ef77.patch -- Implementations of "G List.get()" should use non-nullable return as defined
 Patch1:         https://gitlab.gnome.org/GNOME/libgee/-/commit/2f0bbe8987e5eb1390b23ac531c971b202c2ef77.patch
+# PATCH-FIX-UPSTREAM ce8461ff6ea8ed79ce06b4241cb4fbb6d3d314f1.patch -- Drop unsupported inline modifier on constructor and destructor declarations
+Patch2:         https://gitlab.gnome.org/GNOME/libgee/-/commit/ce8461ff6ea8ed79ce06b4241cb4fbb6d3d314f1.patch
 
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  pkgconfig
@@ -73,9 +75,13 @@ This package provides all the files needed for development using Libgee.
 
 %prep
 %autosetup -p1
+find -name '*.vala' -exec touch {} \;
 
 %build
-%configure --disable-static
+%configure \
+	--disable-static \
+	--enable-vala \
+	%{nil}
 %make_build
 
 %install

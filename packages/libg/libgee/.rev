@@ -358,4 +358,12 @@
   i586 only enabled in LegacyX86). (forwarded request 1155221 from dimstar)</comment>
     <requestid>1155240</requestid>
   </revision>
+  <revision rev="46" vrev="4">
+    <srcmd5>a922da2c553620e04e6febb2c639e224</srcmd5>
+    <version>0.20.6</version>
+    <time>1720722571</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1186688</requestid>
+  </revision>
 </revisionlist>
