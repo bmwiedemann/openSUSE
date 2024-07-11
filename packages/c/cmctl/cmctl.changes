@@ -1,4 +1,91 @@
 -------------------------------------------------------------------
+Tue Jun 11 12:12:27 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.1.0:
+  * [CI] Merge self-upgrade into main by @github-actions in #35
+  * Bump the all group with 10 updates by @dependabot in #39
+  * BUGFIX: return correct error codes and add tests by @inteon in
+    #40
+  * [CI] Merge self-upgrade into main by @github-actions in #41
+  * [CI] Merge self-upgrade into main by @github-actions in #42
+  * Add go Makefile module by @inteon in #43
+  * Bump the all group with 4 updates by @dependabot in #50
+  * [CI] Merge self-upgrade into main by @github-actions in #45
+  * Fix linters by @inteon in #44
+  * [CI] Merge self-upgrade into main by @github-actions in #51
+  * Upgrade repository-base module by @inteon in #52
+  * [CI] Merge self-upgrade-main into main by @github-actions in
+    #54
+  * Bump the all group across 1 directory with 9 updates by
+    @dependabot in #55
+  * [CI] Merge self-upgrade-main into main by @github-actions in
+    #56
+  * [CI] Merge self-upgrade-main into main by @github-actions in
+    #58
+  * Bump github.com/cert-manager/cert-manager from 1.14.4 to 1.14.5
+    in the all group by @dependabot in #57
+  * Bump the all group across 1 directory with 2 updates by
+    @dependabot in #63
+  * [CI] Merge self-upgrade-main into main by @github-actions in
+    #60
+  * escape dot in regular expression by @wangli1030 in #66
+  * [CI] Merge self-upgrade-main into main by @github-actions in
+    #64
+  * Fix gosec errors and enable gosec linter by @inteon in #59
+  * docs: create RELEASE.md file documenting release process by
+    @ThatsMrTalbot in #68
+  * Run 'make klone-upgrade' and fix broken generator flags by
+    @inteon in #71
+  * [CI] Merge self-upgrade-main into main by @github-actions in
+    #69
+  * Bump the all group across 1 directory with 10 updates by
+    @dependabot in #70
+  * [CI] Merge self-upgrade-main into main by @github-actions in
+    #73
+  * Prepare for cert-manager v1.15.0: cleanup imports, point to
+    local test package by @inteon in #76
+  * Bump the all group across 1 directory with 3 updates by
+    @dependabot in #75
+  * Bump golang.org/x/crypto from 0.23.0 to 0.24.0 in the all group
+    by @dependabot in #77
+  * testdata fetcher: add exception for the v1.15.0-beta.0 release
+    which was abandoned by @inteon in #78
+  * [CI] Merge self-upgrade-main into main by @github-actions in
+    #79
+  * Bump the all group with 4 updates by @dependabot in #80
+  * Make the binary dynamically determine whether it is a kubectl
+    plugin by @inteon in #61
+  * Add tar.gz artifacts to the GH releases by @inteon in #81
+
+-------------------------------------------------------------------
+Fri Jun 07 20:10:45 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- change upstream URL to https://github.com/cert-manager/cmctl,
+  as the package was split out of the cert-manager repository
+- Update to version 2.0.0:
+	v2.0.0 is the first cmctl release after moving the code from
+  cert-manager/cert-manager to cert-manager/cmctl.
+  From now on, we officially decouple the cmctl version from the
+  cert-manager version and version cmctl separately.
+  - chore: add thatsmrtalbot as reviewer by @ThatsMrTalbot in #16
+  - BUGFIX: re-enable install test and fix flags which were not
+    parsed correctly by @inteon in #14
+  - BREAKING: remove the default flag value for --v by @inteon in
+    #12
+  - Remove unused functions & variables by @inteon in #15
+  - Fix cmctl renew flags validation by @jace-ys in #20
+  - Uninstall flags bugfix by @inteon in #28
+  - Add uninstall tests by @inteon in #29
+  - Cleanup uninstall flags by @inteon in #30
+  - Make uninstalling cert-manager SAFE: don't uninstal the CRDs by
+    @inteon in #13
+  - Bugfix typos: Organizational(Unit) by @inteon in #31
+  - Move versionchecker from cert-manager/cert-manager to this repo
+    + refactor tests by @inteon in #17
+  - Pass context through cmd and use RunE instead of Run by @inteon
+    in #33
+
+-------------------------------------------------------------------
 Fri Jun 07 19:58:54 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.14.6:
