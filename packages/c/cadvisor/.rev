@@ -17,4 +17,41 @@
 - Initial package (0.46.0)</comment>
     <requestid>1181870</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>dd89ae6595cce3063a069b877103964a</srcmd5>
+    <version>0.49.1</version>
+    <time>1720722841</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.49.1:
+  * build docker - add --provenance=false flag
+  * Remove s390x support
+  * Disable libipmctl in build
+  * Ugrade base image to 1.22 and alpine 3.18
+  * fix type of C.malloc in cgo
+  * Bump golang.org/x/net
+  * Bump grpc
+  * Update docker
+  * Bump runc to v1.1.12
+  * Bump to bullseye
+  * Bump golang to 1.22
+  * Remove section about canary image
+  * Add note about WebUI auth
+  * Remove mentions of accelerator from the docs
+  * reduce_logs_for_kubelet_use_crio
+  * upgrade actions/checkout and actions/setup-go and actions/upload-artifact
+  * build(deps): bump golang.org/x/crypto from 0.14.0 to 0.17.0 in /cmd
+  * add cadvisor and crio upstream changes
+  * Avoid using container/podman in manager.go
+  * container: skip checking for files in non-existent directories.
+  * Adjust the log level of Initialize Plugins
+  * add ignored device
+  * fix: variable naming
+  * build(deps): bump golang.org/x/net from 0.10.0 to 0.17.0 in /cmd
+  * manager: require higher verbosity level for container info misses
+  * Information should be logged on increased verbosity only
+  * Running do mod tidy
+  * Running go mod tidy
+  * Running go mod tidy</comment>
+    <requestid>1186911</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,112 @@
 -------------------------------------------------------------------
+Thu Jul 11 15:42:44 UTC 2024 - dmueller@suse.com
+
+- Update to version 0.49.1:
+  * build docker - add --provenance=false flag
+  * Remove s390x support
+  * Disable libipmctl in build
+  * Ugrade base image to 1.22 and alpine 3.18
+  * fix type of C.malloc in cgo
+  * Bump golang.org/x/net
+  * Bump grpc
+  * Update docker
+  * Bump runc to v1.1.12
+  * Bump to bullseye
+  * Bump golang to 1.22
+  * Remove section about canary image
+  * Add note about WebUI auth
+  * Remove mentions of accelerator from the docs
+  * reduce_logs_for_kubelet_use_crio
+  * upgrade actions/checkout and actions/setup-go and actions/upload-artifact
+  * build(deps): bump golang.org/x/crypto from 0.14.0 to 0.17.0 in /cmd
+  * add cadvisor and crio upstream changes
+  * Avoid using container/podman in manager.go
+  * container: skip checking for files in non-existent directories.
+  * Adjust the log level of Initialize Plugins
+  * add ignored device
+  * fix: variable naming
+  * build(deps): bump golang.org/x/net from 0.10.0 to 0.17.0 in /cmd
+  * manager: require higher verbosity level for container info misses
+  * Information should be logged on increased verbosity only
+  * Running do mod tidy
+  * Running go mod tidy
+  * Running go mod tidy
+  * container/libcontainer: Improve limits file parsing perf
+  * container/libcontainer: Add limit parsing benchmark
+  * build(deps): bump github.com/cyphar/filepath-securejoin in /cmd
+  * build(deps): bump github.com/cyphar/filepath-securejoin
+  * Set verbosity after flag definition
+  * fix: error message typo
+  * vendor: bump runc to 1.1.9
+  * Switch to use busybox from registry.k8s.io
+  * Bump golang ci lint to v1.54.1
+  * Bump github.com/docker/docker in /cmd
+  * Bump github.com/docker/docker
+  * Bump github.com/docker/distribution in /cmd
+  * Bump github.com/docker/distribution
+  * Update genproto dependency to isolated submodule
+  * remove the check for the existence of NFS files, which will cause unnecessary requests.
+  * reduce inotify watch
+  * fix performance degradation of NFS
+  * fix: fix type issue
+  * fix: fix cgo memory leak
+  * ft: export memory kernel usage
+  * sysinfo: Ignore "hidden" sysfs device entries
+  * Increasing required verbosity level
+  * Patch to fix issue 2341
+  * podman support: Enable Podman support.
+  * podman support: Create Podman handler.
+  * podman support: Changes in Docker handler.
+  * unit test: machine_swap_bytes
+  * Add documentation for machine_swap_bytes metric
+  * Add a machine_swap_bytes metric
+  * fix: add space trimming for label allowlist
+  * Upgrade to blang/semver/v4 v4.0.0
+  * docs(deploy/k8s): remote build for kustomize
+  * Update dependencies
+  * Change filepaths to detect online CPUs
+  * Update actions/checkout to v3
+  * Fix flags typo
+  * Updating location of kubernetes/pause image
+  * Using t.TempDir() in tests
+  * Unit test: MachineInfo Clone() method
+  * Bugfix: MachineInfo Clone() - clone SwapCapacity
+  * Optimize network metrics collection
+  * Removing calls to deprecates io/ioutil package
+  * Updating minimum Go version to 1.19
+  * Request the pid of another container if current pid is not longer valid
+  * Restructure
+  * Add CRI-O client timeout setting
+  * Set containerd grpc.MaxCallRecvMsgSize to 16MB
+  * Fix asset build
+  * feat(logging): add verbosity to non-NUMA node warning
+  * add nerdctl to ignoredDevices
+  * nvm: Change the "no NVM devices" log.
+  * nvm: Fix typo.
+  * Fix CVE-2022-27664 (#3248)
+  * resctrl: Reduce size and mode files check (#3264)
+  * readme: Update Creatone contributor info. (#3265)
+  * Fix comment to refer to correct client
+  * build: bump golang to 1.20
+  * ci: Update golang ci-lint to v1.51.2
+  * build: Update shebang to python3
+  * Revert "dockerfile: Fix typo in go build tags."
+  * Decreasing verbosity level for "Cannot read vendor id correctly, set empty"
+  * dockerfile: Fix typo in go build tags.
+  * deps: Move from cloud.google.com/go/compute -> cloud.google.com/go
+  * use memory.min for reservation memory instead of high
+  * Mark GOPATH as git safe.directory to fix CI build
+  * switch to gomodule/redigo from garyburd/redigo
+  * update go.mod/sum both in root and cmd/
+  * Drop accelerator metrics and nvidia integration
+  * Add s390x support for docker image
+  * typo in MachineInfo spec for SwapCapacity
+  * add support for swap in machine/info
+
+-------------------------------------------------------------------
 Thu Jun 20 07:01:05 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
-- update description from Holden Fried <holdenrf2021@gmail.com>
+- update description from Holden Fried (bsc#1222192)
 
 -------------------------------------------------------------------
 Thu Dec 22 21:19:06 UTC 2022 - Dirk Müller <dmueller@suse.com>
