@@ -18,7 +18,7 @@
 
 %global _lto_cflags %nil
 Name:           gum
-Version:        0.14.0
+Version:        0.14.1
 Release:        0
 Summary:        Tool for glamorous shell scripts
 License:        MIT
@@ -62,7 +62,7 @@ BuildArch:      noarch
 Zsh command-line completion support for %{name}.
 
 %prep
-%setup -qa1
+%autosetup -a1
 
 %build
 %ifarch ppc64

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jul 11 00:17:31 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Switch from deprecated %setup to %autosetup
+- Update to 0.14.1:
+  New:
+  * Show help with Huh?
+  * Support using the Home/End keys in pager
+  Fixes:
+  * Handle huh? user aborted error
+  * Cursor styling
+  * Re-introduce ESC for gum write
+
+-------------------------------------------------------------------
 Sun Apr 28 17:50:44 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Update to 0.14.0:
