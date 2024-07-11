@@ -94,4 +94,17 @@
   * Make bash no longer use TIOCSTI by default</comment>
     <requestid>1178226</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>9ef5608d6253f016891aceb3f107f323</srcmd5>
+    <version>0.9.1+0</version>
+    <time>1720722785</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.9.1:
+  * Added the mcfly stats command
+  * Prevent cancellation of Bash/Zsh initialization on mcfly
+    initialization failure
+  * Prevent UTF-8 entry issue from new default to avoid TIOCSTI
+    added in 0.9.0</comment>
+    <requestid>1186776</requestid>
+  </revision>
 </revisionlist>

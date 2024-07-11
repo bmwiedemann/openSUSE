@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jul 11 07:48:02 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.9.1:
+  * Added the mcfly stats command
+  * Prevent cancellation of Bash/Zsh initialization on mcfly
+    initialization failure
+  * Prevent UTF-8 entry issue from new default to avoid TIOCSTI
+    added in 0.9.0
+
+-------------------------------------------------------------------
 Mon Jun  3 06:27:57 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.9.0:
