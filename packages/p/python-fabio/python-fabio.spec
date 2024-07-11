@@ -16,9 +16,9 @@
 #
 
 
-%define pyversion 2023.10.0
+%define pyversion 2024.4.0
 Name:           python-fabio
-Version:        2023.10
+Version:        2024.4
 Release:        0
 Summary:        Image IO for images produced by 2D X-ray detectors
 License:        BSD-3-Clause AND GPL-2.0-or-later AND LGPL-3.0-or-later AND MIT
@@ -59,13 +59,11 @@ FabIO is an I/O library for images produced by 2D X-ray detectors.
 find src -name '*.py' -and ! -path src/fabio/_version.py -exec sed -i '1{/^#!/d}' '{}' ';' -exec chmod -x '{}' ';'
 
 %build
-%{python_expand # _version.py is called during meson build
-sed -i '1{s|^#!.*$|#!%{__$python}|}' src/fabio/_version.py
-%{$python_pyproject_wheel}
-}
+%pyproject_wheel
 
 %install
 %pyproject_install
+%python_expand sed -i '1{s|^#!.*$|#!%{__$python}|}' %{buildroot}%{$python_sitearch}/fabio/version.py
 %python_clone -a %{buildroot}%{_bindir}/densify_Bragg
 %python_clone -a %{buildroot}%{_bindir}/fabio-convert
 %python_clone -a %{buildroot}%{_bindir}/fabio_viewer
