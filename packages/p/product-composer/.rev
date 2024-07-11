@@ -165,4 +165,13 @@
 - Set service to manual run: server side execution not permitted in</comment>
     <requestid>1186131</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>eaa4cc2f30c869616b4a8e1194e36386</srcmd5>
+    <version>0.4.13</version>
+    <time>1720722847</time>
+    <user>anag+factory</user>
+    <comment>- update to version 0.4.12
+  * crash fix for &quot;all available packages&quot; option (forwarded request 1186889 from adrianSuSE)</comment>
+    <requestid>1186890</requestid>
+  </revision>
 </revisionlist>
