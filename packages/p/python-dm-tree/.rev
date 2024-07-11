@@ -1,0 +1,14 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5fa30fdd152d9bb3a45288e09ff789c2</srcmd5>
+    <version>0.1.8</version>
+    <time>1720722593</time>
+    <user>anag+factory</user>
+    <comment>- Initial release of 0.1.8. 
+- Add patches:
+  * remove-abseil.patch -- Remove use of abseil-cpp.
+  * use-system-pybind11.patch -- Use system-provided pybind11.
+  * set-debug.patch -- Build using debug symbols.</comment>
+    <requestid>1186515</requestid>
+  </revision>
+</revisionlist>

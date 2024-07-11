@@ -1,0 +1,17 @@
+Index: dm-tree-0.1.8/tree/CMakeLists.txt
+===================================================================
+--- dm-tree-0.1.8.orig/tree/CMakeLists.txt
++++ dm-tree-0.1.8/tree/CMakeLists.txt
+@@ -18,11 +18,7 @@ set(CMAKE_CXX_STANDARD 14 CACHE STRING "
+ set(CMAKE_POSITION_INDEPENDENT_CODE ON)
+ 
+ # Set default build type.
+-if(NOT CMAKE_BUILD_TYPE)
+-   set(CMAKE_BUILD_TYPE RELEASE
+-       CACHE STRING "Choose the type of build: Debug Release."
+-       FORCE)
+-endif()
++set(CMAKE_BUILD_TYPE DEBUG)
+ message("Current build type is: ${CMAKE_BUILD_TYPE}")
+ message("PROJECT_BINARY_DIR is: ${PROJECT_BINARY_DIR}")
+ 
