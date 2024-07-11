@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Tue Jul  9 18:41:19 UTC 2024 - Carsten Ziepke <kieltux@gmail.com>
+
+- update to 4.5.1
+  * General:
+    * Fix: Various issues with special research topics,
+      "give all" cheat
+    * Fix: Log failures preventing new terrain renderer use and
+      warn user
+    * Fix: Display information for loading errors caused by mods
+    * Fix: Improve handling of mod loading failures
+    * Fix: wzapi: Avoid undefined behavior handling nan
+    * Fix: Various potential crashes
+  * Campaign:
+    * Fix: Propulsion stats in Classic balance
+  * Multiplayer:
+    * Fix: Various netplay log message & state handling issues
+    * Fix: UPnP compatibility with certain routers
+    * Fix: Support auto lag kick for spectators in lobby
+    * Change: GameStoryLogger: Log cheated var
+  * Balance MP:
+    * Change: Reduce prices of certain defensive structures
+      and buff some towers and hardpoints
+    * Change: Adjust research cost of all defensive structures,
+      except for artillery and bastions
+  * Other:
+    * Fix: Update autohost docs & examples
+
+-------------------------------------------------------------------
 Tue Jul  2 04:49:22 UTC 2024 - Carsten Ziepke <kieltux@gmail.com>
 
 - update to 4.5.0 (changes since 4.5.0-beta2)
