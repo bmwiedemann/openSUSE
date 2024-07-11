@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul 11 14:29:06 UTC 2024 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Adding OARCH variable to 'Include BCI free rpm repository also in SLE WSL'
+  in Virtualization:WSL/kiwi-images-wsl
+
+-------------------------------------------------------------------
 Tue Aug 22 13:39:42 UTC 2023 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Adding code to remove " Server" from PRETTY_NAME

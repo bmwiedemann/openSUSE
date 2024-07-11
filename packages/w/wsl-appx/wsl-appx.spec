@@ -1,7 +1,7 @@
 #
 # spec file for package wsl-appx
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -110,6 +110,7 @@ SHORT_NAME="${PRETTY_NAME::35}"
 # Substitute these digits with an actual release number during kiwi
 # image build using OBS source services.
 RELEASE="0.0"
+OARCH="%_arch"
 ARCH="%_arch"
 case "$ARCH" in
 	x86_64) ARCH="x64" ;;
@@ -139,7 +140,7 @@ else
 	VERSION=`printf "%d.%d.%d.0" "${VERSION_ID//\./}" "${RELEASE%.*}" "${RELEASE#*.}"`
 fi
 
-for i in PRETTY_NAME APPID IDENTITYAPPID ARCH PUBLISHER PUBLISHER_DISPLAY_NAME VERSION LAUNCHERNAME MAJOR_VER SP_VER SHORT_NAME; do
+for i in PRETTY_NAME APPID IDENTITYAPPID OARCH ARCH PUBLISHER PUBLISHER_DISPLAY_NAME VERSION LAUNCHERNAME MAJOR_VER SP_VER SHORT_NAME; do
 	eval echo "\"$i='\$$i'\""
 done > .settings
 cp -v .settings files/DOTsettings
