@@ -20,14 +20,14 @@ Name:           systemd-repart-branding-Aeon
 Version:        20240404
 Release:        0
 Summary:        Aeon configuration for systemd-repart
-License:        MIT 
+License:        MIT
 URL:            https://en.opensuse.org/Portal:Aeon
 Source:         50-root.conf
 Source1:        00-esp.conf
 Source2:        LICENSE
 BuildArch:      noarch
-Provides:	systemd-repart-branding
-Conflicts:	systemd-repart-branding
+Provides:       systemd-repart-branding
+Conflicts:      systemd-repart-branding
 
 %description
 Aeon configuration for systemd-repart
@@ -51,4 +51,3 @@ install -D -m 644 00-esp.conf %{buildroot}%{_prefix}/lib/repart.d/
 %{_prefix}/lib/repart.d/00-esp.conf
 
 %changelog
-

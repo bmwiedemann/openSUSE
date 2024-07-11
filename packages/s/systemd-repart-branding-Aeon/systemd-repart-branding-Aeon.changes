@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jul  2 15:25:56 UTC 2024 - Richard Brown <rbrown@suse.com>
+
+- Require encryption of root partition and use for image deployment 
+
+-------------------------------------------------------------------
 Wed May  8 13:26:24 UTC 2024 - Richard Brown <rbrown@suse.com>
 
 - Conflict with other repart-brandings and no longer require systemd-experimental 
