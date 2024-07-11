@@ -17,7 +17,7 @@
 
 
 Name:           eaglemode
-Version:        0.96.1
+Version:        0.96.2
 Release:        0
 Summary:        A zoomable user interface (ZUI) with file manager, file viewers, games, etc.
 License:        GPL-3.0-only

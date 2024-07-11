@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jun 29 20:56:38 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.96.2:
+  * Fixed character encoding of PDF selection on non-UTF-8 systems.
+  * Fixed occasional segmentation fault in PDF viewer.
+  * Allowed to open URLs in PDF documents.
+
+-------------------------------------------------------------------
 Tue Mar 12 07:40:17 UTC 2024 - ming li <mli@suse.com>
 
 - update to 0.96.1:
@@ -52,7 +60,7 @@ Wed Sep 23 06:48:00 UTC 2020 - Dirk Mueller <dmueller@suse.com>
   thereby most likely more secure.
   * Completely removed support for outdated archive file formats to improve
   security and simplify maintenance: Goodbye to arc, arj, lha, rar, and zoo.
-  Minor fixes and improvements. 
+  Minor fixes and improvements.
 
 -------------------------------------------------------------------
 Mon Apr 15 08:21:02 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
@@ -88,12 +96,12 @@ Fri Jun 29 13:21:27 UTC 2018 - kstreitova@suse.com
 
 - require p7zip-full for TW as 7z binary needed by eaglemode was
   moved to this package (see bsc#899627 for more details about
-  this change) 
+  this change)
 
 -------------------------------------------------------------------
 Wed Oct 11 07:29:52 UTC 2017 - joop.boonen@opensuse.org
 
-- Update to 0.93.0, announce message: 
+- Update to 0.93.0, announce message:
 
   • Added autoplay function: Slideshow of picture files and playback of multiple audio/video files.
   • Minor fixes.
@@ -231,7 +239,7 @@ Mon Feb 11 12:36:28 UTC 2013 - coolo@suse.com
 -------------------------------------------------------------------
 Mon Dec 24 14:37:41 UTC 2012 - joop.boonen@opensuse.org
 
-- Fixed sles build pkgconfig isn't supported by sles 
+- Fixed sles build pkgconfig isn't supported by sles
 
 -------------------------------------------------------------------
 Wed Sep 19 13:36:55 UTC 2012 - cfarrell@suse.com
@@ -244,7 +252,7 @@ Wed Sep 19 13:36:55 UTC 2012 - cfarrell@suse.com
 Mon Sep 17 13:09:10 UTC 2012 - joop.boonen@opensuse.org
 
 - Don't require arc, unarj and lha anymore as they don't
-  exist in Factory and the are not used much anymore 
+  exist in Factory and the are not used much anymore
 
 -------------------------------------------------------------------
 Thu Aug 30 13:02:19 UTC 2012 - joop.boonen@opensuse.org
