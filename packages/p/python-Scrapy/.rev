@@ -240,4 +240,41 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1164153</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>4654de69eed0cf786eca635028daaea1</srcmd5>
+    <version>2.11.2</version>
+    <time>1720722814</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.11.2 (bsc#1224474, CVE-2024-1968):
+  * Redirects to non-HTTP protocols are no longer followed.
+    Please, see the 23j4-mw76-5v7h security advisory for more
+    information. (:issue:`457`)
+  * The Authorization header is now dropped on redirects to a
+    different scheme (http:// or https://) or port, even if the
+    domain is the same. Please, see the 4qqq-9vqf-3h3f security
+    advisory for more information.
+  * When using system proxy settings that are different for
+    http:// and https://, redirects to a different URL scheme
+    will now also trigger the corresponding change in proxy
+    settings for the redirected request. Please, see the
+    jm3v-qxmh-hxwv security advisory for more information.
+    (:issue:`767`)
+  * :attr:`Spider.allowed_domains
+    &lt;scrapy.Spider.allowed_domains&gt;` is now enforced for all
+    requests, and not only requests from spider callbacks.
+  * :func:`~scrapy.utils.iterators.xmliter_lxml` no longer
+    resolves XML entities.
+  * defusedxml is now used to make
+    :class:`scrapy.http.request.rpc.XmlRpcRequest` more secure.
+  * Restored support for brotlipy_, which had been dropped in
+    Scrapy 2.11.1 in favor of brotli. (:issue:`6261`)  Note
+    brotlipy is deprecated, both in Scrapy and upstream. Use
+    brotli instead if you can.
+  * Make :setting:`METAREFRESH_IGNORE_TAGS` [&quot;noscript&quot;] by
+    default. This prevents :class:`~scrapy.downloadermiddlewares.
+    redirect.MetaRefreshMiddleware` from following redirects that
+    would not be followed by web browsers with JavaScript
+    enabled.</comment>
+    <requestid>1186841</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,70 @@
 -------------------------------------------------------------------
+Thu Jul 11 10:38:36 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.11.2 (bsc#1224474, CVE-2024-1968):
+  * Redirects to non-HTTP protocols are no longer followed.
+    Please, see the 23j4-mw76-5v7h security advisory for more
+    information. (:issue:`457`)
+  * The Authorization header is now dropped on redirects to a
+    different scheme (http:// or https://) or port, even if the
+    domain is the same. Please, see the 4qqq-9vqf-3h3f security
+    advisory for more information.
+  * When using system proxy settings that are different for
+    http:// and https://, redirects to a different URL scheme
+    will now also trigger the corresponding change in proxy
+    settings for the redirected request. Please, see the
+    jm3v-qxmh-hxwv security advisory for more information.
+    (:issue:`767`)
+  * :attr:`Spider.allowed_domains
+    <scrapy.Spider.allowed_domains>` is now enforced for all
+    requests, and not only requests from spider callbacks.
+  * :func:`~scrapy.utils.iterators.xmliter_lxml` no longer
+    resolves XML entities.
+  * defusedxml is now used to make
+    :class:`scrapy.http.request.rpc.XmlRpcRequest` more secure.
+  * Restored support for brotlipy_, which had been dropped in
+    Scrapy 2.11.1 in favor of brotli. (:issue:`6261`)  Note
+    brotlipy is deprecated, both in Scrapy and upstream. Use
+    brotli instead if you can.
+  * Make :setting:`METAREFRESH_IGNORE_TAGS` ["noscript"] by
+    default. This prevents :class:`~scrapy.downloadermiddlewares.
+    redirect.MetaRefreshMiddleware` from following redirects that
+    would not be followed by web browsers with JavaScript
+    enabled.
+  * During :ref:`feed export <topics-feed-exports>`, do not close
+    the underlying file from :ref:`built-in post-processing
+    plugins <builtin-plugins>`.
+  * :class:`LinkExtractor
+    <scrapy.linkextractors.lxmlhtml.LxmlLinkExtractor>` now
+    properly applies the unique and canonicalize parameters.
+  * Do not initialize the scheduler disk queue if
+    :setting:`JOBDIR` is an empty string.
+  * Fix :attr:`Spider.logger <scrapy.Spider.logger>` not logging
+    custom extra information.
+  * robots.txt files with a non-UTF-8 encoding no longer prevent
+    parsing the UTF-8-compatible (e.g. ASCII) parts of the
+    document.
+  * :meth:`scrapy.http.cookies.WrappedRequest.get_header` no
+    longer raises an exception if default is None.
+    :func:`scrapy.utils.response.get_base_url` to determine the
+    base URL of a given :class:`~scrapy.http.Response`.
+  * :class:`~scrapy.selector.Selector` now uses
+    :func:`scrapy.utils.response.get_base_url` to determine the
+    base URL of a given :class:`~scrapy.http.Response`.
+    (:issue:`6265`)
+  * The :meth:`media_to_download` method of :ref:`media pipelines
+    <topics-media-pipeline>` now logs exceptions before stripping
+    them.
+  * When passing a callback to the :command:`parse` command,
+    build the callback callable with the right signature.
+  * Add a FAQ entry about :ref:`creating blank requests <faq-
+    blank-request>`.
+  * Document that :attr:`scrapy.selector.Selector.type` can be
+    "json".
+  * Make builds reproducible.
+  * Packaging and test fixes
+
+-------------------------------------------------------------------
 Mon Mar 25 14:12:20 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.11.1 (bsc#1220514, CVE-2024-1892, bsc#1221986):

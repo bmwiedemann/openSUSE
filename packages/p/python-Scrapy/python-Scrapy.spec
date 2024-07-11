@@ -18,15 +18,16 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-Scrapy
-Version:        2.11.1
+Version:        2.11.2
 Release:        0
 Summary:        A high-level Python Screen Scraping framework
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://scrapy.org
-Source:         https://files.pythonhosted.org/packages/source/S/Scrapy/Scrapy-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/s/scrapy/scrapy-%{version}.tar.gz
+BuildRequires:  %{python_module Brotli}
 BuildRequires:  %{python_module Pillow}
-BuildRequires:  %{python_module Protego >= 0.1.15}
+BuildRequires:  %{python_module Protego}
 BuildRequires:  %{python_module PyDispatcher >= 2.0.5}
 BuildRequires:  %{python_module Twisted >= 18.9.0}
 BuildRequires:  %{python_module attrs}
@@ -35,6 +36,7 @@ BuildRequires:  %{python_module botocore >= 1.4.87}
 BuildRequires:  %{python_module cryptography >= 36.0.0}
 BuildRequires:  %{python_module cssselect >= 0.9.1}
 BuildRequires:  %{python_module dbm}
+BuildRequires:  %{python_module defusedxml >= 0.7.1}
 BuildRequires:  %{python_module itemadapter >= 0.1.0}
 BuildRequires:  %{python_module itemloaders >= 1.0.1}
 BuildRequires:  %{python_module lxml >= 4.4.1}
@@ -63,6 +65,7 @@ Requires:       python-PyDispatcher >= 2.0.5
 Requires:       python-Twisted >= 18.9.0
 Requires:       python-cryptography >= 36.0.0
 Requires:       python-cssselect >= 0.9.1
+Requires:       python-defusedxml >= 0.7.1
 Requires:       python-itemadapter >= 0.1.0
 Requires:       python-itemloaders >= 1.0.1
 Requires:       python-lxml >= 4.4.1
@@ -93,7 +96,7 @@ Group:          Documentation/HTML
 Provides documentation for %{name}.
 
 %prep
-%autosetup -p1 -n Scrapy-%{version}
+%autosetup -p1 -n scrapy-%{version}
 
 sed -i -e 's:= python:= python3:g' docs/Makefile
 
@@ -112,7 +115,7 @@ popd
 # no color in obs chroot console
 skiplist="test_pformat"
 # no online connection to toscrapy.com
-skiplist="$skiplist or CheckCommandTest"
+skiplist="$skiplist or CheckCommandTest or test_file_path"
 # Flaky test gh#scrapy/scrapy#5703
 skiplist="$skiplist or test_start_requests_laziness"
 %{pytest -x \
