@@ -1,0 +1,5 @@
+<package name="dhcpcd" project="openSUSE:Factory">
+  <title></title>
+  <description>dhcpcd is a DHCP and a DHCPv6 client. It's also an IPv4LL (aka ZeroConf) client. In layperson's terms, dhcpcd runs on your machine and silently configures your computer to work on the attached networks without trouble and mostly without configuration.</description>
+  <devel project="network:dhcp" package="dhcpcd"/>
+</package>

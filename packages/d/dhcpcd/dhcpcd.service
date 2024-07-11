@@ -1,0 +1,10 @@
+[Unit]
+Description=Minimal DHCPv4 and DHCPv6 client
+Wants=network.target
+Before=network.target
+	
+[Service]
+ExecStart=/usr/sbin/dhcpcd -q --nobackground
+	
+[Install]
+WantedBy=multi-user.target
