@@ -1,0 +1,6 @@
+<package name="cosmic-term" project="openSUSE:Factory">
+  <title></title>
+  <description>Terminal Emulator specifically written for COSMIC DE.</description>
+  <devel project="X11:COSMIC:Apps" package="cosmic-term"/>
+  <url>https://github.com/pop-os/cosmic-term</url>
+</package>
