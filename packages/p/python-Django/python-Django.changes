@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Jul  9 14:03:46 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Update to 5.0.7
+  * Supports Python >= 3.10.
+  * Facet counts are now shown for applied filters in the admin changelist 
+    when toggled on via the UI. This behavior can be changed via the new 
+    ModelAdmin.show_facets attribute.
+  * Django 5.0 introduces the concept of a field group, and field group 
+    templates. This simplifies rendering of the related elements of a 
+    Django form field such as its label, widget, help text, and errors.
+  * The new Field.db_default parameter sets a database-computed default value.
+  * The new GeneratedField allows creation of database generated columns. 
+    This field can be used on all supported database backends to create 
+    a field that is always computed from other fields.
+  * More options for declaring field choices
+  * Few backwards-incompatible changes in the database backend API,
+    django.contrib.gis and django.contrib.sitemaps
+  * Dropped support for MySQL < 8.0.11
+  * Using create_defaults__exact may now be required with QuerySet.update_or_create()
+  * Migrating existing UUIDField on MariaDB 10.7+
+- Drop no-longer-needed patches:
+  * dirty-hack-remove-assert.patch
+  * sanitize_address.patch
+
+-------------------------------------------------------------------
 Wed May  8 07:30:48 UTC 2024 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Update to 4.2.13

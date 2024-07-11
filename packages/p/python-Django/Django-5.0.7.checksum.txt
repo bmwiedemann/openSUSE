@@ -1,0 +1,67 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA256
+
+This file contains MD5, SHA1, and SHA256 checksums for the source-code
+tarball and wheel files of Django 5.0.7, released July 9, 2024.
+
+To use this file, you will need a working install of PGP or other
+compatible public-key encryption software. You will also need to have
+the Django release manager's public key in your keyring. This key has
+the ID ``2EE82A8D9470983E`` and can be imported from the MIT
+keyserver, for example, if using the open-source GNU Privacy Guard
+implementation of PGP:
+
+    gpg --keyserver pgp.mit.edu --recv-key 2EE82A8D9470983E
+
+or via the GitHub API:
+
+    curl https://github.com/nessita.gpg | gpg --import -
+
+Once the key is imported, verify this file:
+
+    gpg --verify Django-5.0.7.checksum.txt
+
+Once you have verified this file, you can use normal MD5, SHA1, or SHA256
+checksumming applications to generate the checksums of the Django
+package and compare them to the checksums listed below.
+
+Release packages
+================
+
+https://www.djangoproject.com/m/releases/5.0/Django-5.0.7.tar.gz
+https://www.djangoproject.com/m/releases/5.0/Django-5.0.7-py3-none-any.whl
+
+MD5 checksums
+=============
+
+454d23ea901892fd544541f4a1a33a3e  Django-5.0.7.tar.gz
+c687175397b8d6d98b8e0e35e6f142fb  Django-5.0.7-py3-none-any.whl
+
+SHA1 checksums
+==============
+
+ed070e21b5bf0b188104338a3b8a495b9d59593d  Django-5.0.7.tar.gz
+4aecb9aeab348f003c32952906eef7556a5be54b  Django-5.0.7-py3-none-any.whl
+
+SHA256 checksums
+================
+
+bd4505cae0b9bd642313e8fb71810893df5dc2ffcacaa67a33af2d5cd61888f2  Django-5.0.7.tar.gz
+f216510ace3de5de01329463a315a629f33480e893a9024fc93d8c32c22913da  Django-5.0.7-py3-none-any.whl
+-----BEGIN PGP SIGNATURE-----
+
+iQJcBAEBCABGFiEEW1sboQ2FrHxcduOPLugqjZRwmD4FAmaNPRgoHDEyNDMwNCtu
+ZXNzaXRhQHVzZXJzLm5vcmVwbHkuZ2l0aHViLmNvbQAKCRAu6CqNlHCYPgnUD/47
+sPedXK17iCelw70BRY7EqWxwVwSbTxKcnw14y2qejS923MlnEEraeOll2HbCqOmL
++O3coVJsTc9GAMrQLyip8sHCwb4SSCWmwRqQZbTdNRrZOWfCPRLsbVccEabdwTNC
+7YDyDc+3FQhHIszNI0zkJ1H3G7280euwIrMIhnCbwH1PC/hqAwdlhf1+nc4BiIMg
+dz/Bg65abruY/6LM0btMP72avHrM0BRiRs5kOYn7+xgh1cqnI64RHROgrymK7JkT
+LxoZDhWvDv68IvyNWEuLU4yDXnv/3ZglhwUA8q+leMqtURwBWs8UMnLhHhR52kie
+okrK6eBkYeHls3vMGOTKxe7nJHhfEjl6V9XJShIdU1ir+/iCeaRMzYjpr4H5591H
+TMs8Hgm27Wt7U/OT5EsF+vIpLaAR9AnZfNfB1eYU34BUAloZSQCxz+Y65LCN5wKk
+jfaG7phOiO33NJMUxhfemjwJIJymw7uZnuRQJ8KUMbr9Q/iCVWsMG+QXhJs96KRO
+y1SYVgPgU5Jll9VN/H2WJCj9I1YOVZPDVAbMcB+hKklw6ZhZx2fxgxLO/3/REQJs
+iBJ1ETPdCHct5HJyAoBD++NCeioUKd5pXxqMvtuNH7winRC9NMGw4XX1CbpBBB+1
+y1mkGxw+QvBh4rivA6TSQQwTDQXAnoT7ida+Ye2FVw==
+=GcbG
+-----END PGP SIGNATURE-----
