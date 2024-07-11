@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul 10 11:35:23 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add 5cdefa8c76ddb797bce8b67a3f5767678bd36a5a.patch: Fix gcc 14.x
+  build failure (due to -Wincompatible-pointer-types).
+
+-------------------------------------------------------------------
 Mon Nov  6 15:54:47 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 -  Fix build with RPM 4.19: unnumbered patches are no longer
