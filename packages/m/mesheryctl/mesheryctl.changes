@@ -1,4 +1,79 @@
 -------------------------------------------------------------------
+Thu Jul 11 05:16:51 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.7.80:
+  * General
+    - Bump ejs from 3.1.7 to 3.1.10 in /install/docker-extension/ui
+      @dependabot (#10830)
+    - [Cert-manager]: Sync upstream master and add cert-manager
+      relationships @innocentrda (#10986)
+    - update go.sum w/signoff @Jougan-0 (#11356)
+  * Meshery CLI
+    - [mesheryctl] consistent mesheryctl pattern list @dusdjhyeon
+      (#11264)
+    - fix concurent write error w/signoff @Jougan-0 (#11361)
+    - [Feat] mesheryctl model export command @humblenginr (#11338)
+    - [Mesheryctl] model import command @Jougan-0 (#11332)
+    - [Models] Update models to reflect the correct schemaVersion.
+      @MUzairS15 (#11344)
+  * Meshery UI
+    - Bump @reduxjs/toolkit from 1.9.5 to 2.2.6 in /ui @dependabot
+      (#11290)
+    - Bump eslint from 8.57.0 to 9.6.0 in /provider-ui @dependabot
+      (#11281)
+    - [chore] Update styles @dragon-slayer875 (#11341)
+    - chore: bump sistent @dottharun (#11360)
+    - fix width issues of stepper modal @sudhanshutech (#11343)
+    - fix: setting registry tree view @surajgjadhav (#11335)
+    - Support for rjsf form in sistent modal and migrate all modals
+      @sudhanshutech (#11163)
+  * Maintenance
+    - Update integrations-updater.yml @vishalvivekm (#11362)
+    - Bump @reduxjs/toolkit from 1.9.5 to 2.2.6 in /ui @dependabot
+      (#11290)
+    - Bump eslint from 8.57.0 to 9.6.0 in /provider-ui @dependabot
+      (#11281)
+    - Bump google.golang.org/grpc from 1.64.0 to 1.64.1 @dependabot
+      (#11355)
+  * Documentation
+    - [mesheryctl] consistent mesheryctl pattern list @dusdjhyeon
+      (#11264)
+    - Spelling Mistakes Correction @ENUMERA8OR (#11347)
+    - [Mesheryctl] model import command @Jougan-0 (#11332)
+    - docs: added NPM_TOKEN details under secrets section
+      @surajgjadhav (#11350)
+
+-------------------------------------------------------------------
+Wed Jul 10 08:45:06 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.7.79:
+  * General
+    - [Relationships] Dapr: Add dapr relationships @innocentrda
+      (#11058)
+  * Meshery CLI
+    - pattern export command for mesheryctl @Jougan-0 (#11270)
+  * Meshery UI
+    - remove validation error truncating @aabidsofi19 (#11333)
+    - Move prompt component to sistent modal @sudhanshutech
+      (#11317)
+    - Bump relay-compiler from 16.2.0 to 17.0.0 in /ui @dependabot
+      (#11279)
+    - Fix info modal validation issues @shubham251972 (#11308)
+  * Maintenance
+    - Bump relay-compiler from 16.2.0 to 17.0.0 in /ui @dependabot
+      (#11279)
+    - Bump google.golang.org/api from 0.169.0 to 0.187.0
+      @dependabot (#11298)
+    - Update cncf-staging-playground-deploy-meshery.yaml @MUzairS15
+      (#11328)
+    - [CI] Pull Request Labeler: Update labeler to include matching
+      of *.rego files @leecalcote (#11327)
+  * Documentation
+    - pattern export command for mesheryctl @Jougan-0 (#11270)
+    - Updated extension points link in FAQ.md @Aviral0702 (#11325)
+    - Fix docs build failing @shubham251972 (#11326)
+
+-------------------------------------------------------------------
 Wed Jul  3 19:05:24 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.7.78:
