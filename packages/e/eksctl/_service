@@ -3,7 +3,7 @@
     <param name="url">https://github.com/eksctl-io/eksctl</param>
     <param name="scm">git</param>
     <param name="exclude">.git</param>
-    <param name="revision">v0.184.0</param>
+    <param name="revision">v0.185.0</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="changesgenerate">enable</param>
     <param name="versionrewrite-pattern">v(.*)</param>
@@ -11,11 +11,13 @@
   <service name="set_version" mode="manual">
     <param name="basename">eksctl</param>
   </service>
-  <service name="tar" mode="buildtime"/>
+  <service name="go_modules" mode="manual">
+  </service>
+  <!-- services below are running at buildtime -->
+  <service name="tar" mode="buildtime">
+  </service>
   <service name="recompress" mode="buildtime">
     <param name="file">*.tar</param>
     <param name="compression">gz</param>
-  </service>
-  <service name="go_modules" mode="manual">
   </service>
 </services>

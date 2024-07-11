@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Jul 10 19:16:03 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.185.0:
+  * Add release notes for v0.185.0
+  * Avoid creating subnets in disallowed Availability Zone IDs
+  * Add auto-ssm ami resolution for ubuntu
+  * add additional hpc7g instance types
+  * update efa-device-plugin.yaml to one that workkks
+  * add support for hpc7g arm images
+  * fix run as root efa device plugin bug
+  * fixed iam permissions for karpenter
+  * Prepare for next development iteration
+
+-------------------------------------------------------------------
 Thu Jul 04 04:51:41 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.184.0:
