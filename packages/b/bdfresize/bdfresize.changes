@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jul  8 12:31:34 UTC 2024 - Martin Jambor <mjambor@suse.com>
+
+- Added bdfresize-gcc14.patch which adds a missing return type to main
+  function in the configure script so that the configure script works
+  with C99 standard enforcing compilers like GCC 14. [boo#1225772]
+
+-------------------------------------------------------------------
 Thu Feb 22 10:09:28 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.
