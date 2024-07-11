@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jul 10 20:06:41 UTC 2024 - Robert Frohl <rfrohl@suse.com>
+
+- Wireshark 4.2.6:
+  * SPRT dissector crash.
+- Further features, bug fixes and updated protocol support as listed in:
+  https://www.wireshark.org/docs/relnotes/wireshark-4.2.6.html
+
+-------------------------------------------------------------------
 Wed Jun 19 12:34:54 UTC 2024 - Markus Ebner <info@ebner-markus.de>
 
 - Fix Wireshark Super User Mode starter

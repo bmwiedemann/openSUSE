@@ -1885,4 +1885,12 @@ Use capabilities for capture. bsc#957624</comment>
     <comment></comment>
     <requestid>1183022</requestid>
   </revision>
+  <revision rev="220" vrev="1">
+    <srcmd5>696062d7595d2778bb38e15bb7428a83</srcmd5>
+    <version>4.2.6</version>
+    <time>1720722578</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1186695</requestid>
+  </revision>
 </revisionlist>
