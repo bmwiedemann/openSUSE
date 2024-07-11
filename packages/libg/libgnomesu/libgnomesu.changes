@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Jul 11 00:32:12 UTC 2024 - Stanislav Brabec <sbrabec@suse.com>
+
+- Update to version 2.0.8:
+  * Builds with GCC 14 (boo#1225852, obsoletes
+    libgnomesu-configure-C99.diff).
+  * Updated translations.
+
+-------------------------------------------------------------------
+Wed Jul 10 16:25:22 UTC 2024 - Martin Jambor <mjambor@suse.com>
+
+- Added libgnomesu-configure-C99.diff to make malloc and realloc
+  configure script snippets compliant with C99 so that the same
+  features are also configured even with GCC 14.  [boo#1225852]
+
+-------------------------------------------------------------------
 Tue Dec 27 15:50:43 UTC 2022 - Stefan Schubert <schubi@suse.com>
 
 - Migration of PAM settings to /usr/lib/pam.d.

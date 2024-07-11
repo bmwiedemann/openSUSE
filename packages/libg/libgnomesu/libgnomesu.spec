@@ -1,7 +1,7 @@
 #
 # spec file for package libgnomesu
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           libgnomesu
-Version:        2.0.7
+Version:        2.0.8
 Release:        0
 Summary:        GNOME su Library
 License:        LGPL-2.1-or-later
@@ -26,7 +26,6 @@ URL:            https://github.com/openSUSE/libgnomesu
 Source:         %{url}/releases/download/v%{version}/%{name}-%{version}.tar.xz
 Source1:        gnomesu-pam.pamd
 # Patch: Avoid patches if possible! Update openSUSE upstream instead.
-
 BuildRequires:  fdupes
 BuildRequires:  gtk3-devel
 BuildRequires:  intltool

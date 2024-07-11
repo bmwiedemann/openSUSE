@@ -495,4 +495,19 @@
     <comment></comment>
     <requestid>1045609</requestid>
   </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>74b5a0968dbf3a5951a0d3c7a158ba9c</srcmd5>
+    <version>2.0.8</version>
+    <time>1720722580</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.0.8:
+  * Builds with GCC 14 (boo#1225852, obsoletes
+    libgnomesu-configure-C99.diff).
+  * Updated translations.
+- Added libgnomesu-configure-C99.diff to make malloc and realloc
+  configure script snippets compliant with C99 so that the same
+  features are also configured even with GCC 14.  [boo#1225852]
+</comment>
+    <requestid>1186764</requestid>
+  </revision>
 </revisionlist>
