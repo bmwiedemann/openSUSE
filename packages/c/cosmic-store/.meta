@@ -1,0 +1,6 @@
+<package name="cosmic-store" project="openSUSE:Factory">
+  <title></title>
+  <description>COSMIC Software &quot;Store&quot;</description>
+  <devel project="X11:COSMIC:Apps" package="cosmic-store"/>
+  <url>https://github.com/pop-os/cosmic-store</url>
+</package>
