@@ -1,0 +1,102 @@
+-------------------------------------------------------------------
+Thu Jul 11 11:56:17 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.de>
+
+- update to version 0.5.3
+  * Make dettrace optional
+
+-------------------------------------------------------------------
+Thu Jul 11 07:28:12 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- update to version 0.5.2
+  * Replace old aslr tool with the new one based on setarch
+
+-------------------------------------------------------------------
+Thu Jul 11 05:44:41 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- update to version 0.5.1
+  * Improve the .spec file
+
+-------------------------------------------------------------------
+Fri Jul  5 10:39:15 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- update to version 0.5.0
+  add reproducible-faketools futurepost, aslr2
+- make debug output optional
+
+-------------------------------------------------------------------
+Thu Apr 25 09:02:56 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- update to version 0.4.2
+  add reproducible-faketools j1
+
+-------------------------------------------------------------------
+Sat Feb  6 04:05:01 UTC 2021 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- add reproducible-faketools dettrace
+
+-------------------------------------------------------------------
+Wed Nov 11 05:41:03 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
+- Add reproducible-faketools-find
+
+-------------------------------------------------------------------
+Sun Sep 30 02:59:35 UTC 2018 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- update to version 0.4.0
+  * extend+refine strace to allow autoprovenance
+
+-------------------------------------------------------------------
+Fri Aug  4 20:48:10 UTC 2017 - bwiedemann@suse.com
+
+- update to version 0.3.9
+  add reproducible-faketools tar/gzip, strace
+
+-------------------------------------------------------------------
+Wed Jul 26 12:55:56 UTC 2017 - bwiedemann@suse.com
+
+- update to version 0.3.8
+  add reproducible-faketools-faketime to more thoroughly fake time
+
+-------------------------------------------------------------------
+Mon Jul 10 13:43:54 UTC 2017 - bwiedemann@suse.com
+
+- update to version 0.3.7
+  add reproducible-faketools-filesys to sort readdir
+
+-------------------------------------------------------------------
+Mon Jul 10 02:38:23 UTC 2017 - bwiedemann@suse.com
+
+- update to version 0.3.6
+  use strip-all-nondeterminism script
+
+-------------------------------------------------------------------
+Wed Jun 21 07:39:08 UTC 2017 - bwiedemann@suse.com
+
+- update to version 0.3.5
+  add zip wrapper
+
+-------------------------------------------------------------------
+Mon May  8 15:09:57 UTC 2017 - bwiedemann@suse.com
+
+- update to version 0.3.4
+
+-------------------------------------------------------------------
+Mon Apr 17 02:54:33 UTC 2017 - bwiedemann@suse.com
+
+- split tools into subpackages so that we can use some
+  even if others break tests (e.g. with uname in util-linux)
+
+-------------------------------------------------------------------
+Sun Apr 16 03:10:37 UTC 2017 - bwiedemann@suse.com
+
+- add ar and strip
+
+-------------------------------------------------------------------
+Fri Jan 27 10:28:55 UTC 2017 - bwiedemann@suse.com
+
+- update to version 0.3.1
+
+-------------------------------------------------------------------
+Fri Jan 27 08:33:27 UTC 2017 - bwiedemann@suse.com
+
+- initial package version 0.3
+

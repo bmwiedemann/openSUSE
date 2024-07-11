@@ -1,0 +1,13 @@
+<services>
+  <service mode="manual" name="obs_scm">
+    <param name="url">https://github.com/bmwiedemann/reproducible-faketools.git</param>
+    <param name="scm">git</param>
+    <param name="revision">devel</param>
+    <param name="versionformat">@PARENT_TAG@+@TAG_OFFSET@</param>
+    <param name="versionrewrite-pattern">v(\d+\.\d+\.\d+)</param>
+    <param name="extract">reproducible-faketools.spec</param>
+    <param name="extract">_service</param>
+  </service>
+  <service mode="manual" name="set_version" />
+  <service mode="buildtime" name="tar" />
+</services>
