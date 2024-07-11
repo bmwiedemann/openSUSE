@@ -24,28 +24,25 @@
 %bcond_with test
 %define psuffix %{nil}
 %endif
-%define skip_python39 1
 
 # avoid "lto1: internal compiler error" during build
 %global _lto_cflags %{nil}
 
 %{?sle15_python_module_pythons}
 Name:           python-yt%{psuffix}
-Version:        4.3.0
+Version:        4.3.1
 Release:        0
 Summary:        An analysis and visualization toolkit for volumetric data
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/yt-project/yt
 Source0:        https://files.pythonhosted.org/packages/source/y/yt/yt-%{version}.tar.gz
 Source100:      python-yt-rpmlintrc
-# PATCH-FIX-UPSTREAM yt-pr4727-unpin-unyt.patch gh#yt-project/yt#4727
-Patch0:         https://github.com/yt-project/yt/pull/4727.patch#/yt-pr4727-unpin-unyt.patch
 # PATCH-FIX-OPENSUSE yt-ignore-pytestdepr.patch code@bnavigator.de -- ignore a pytest deprecation warning. Upstream is still working on the nose ot pytest transition
 Patch1:         yt-ignore-pytestdepr.patch
 BuildRequires:  %{python_module Cython > 3 with %python-Cython < 3.1}
+BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module ewah-bool-utils-devel >= 1.0.2}
-BuildRequires:  %{python_module numpy-devel >= 1.25 with %python-numpy-devel < 2}
+BuildRequires:  %{python_module numpy-devel >= 1.25}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -58,11 +55,11 @@ Requires:       python-ewah-bool-utils >= 1.0.2
 Requires:       python-ipywidgets >= 8.0.0
 Requires:       python-matplotlib >= 3.5
 Requires:       python-more-itertools >= 8.4
+Requires:       python-numpy >= 1.19.3
 Requires:       python-packaging >= 20.9
 Requires:       python-tomli-w >= 0.4.0
 Requires:       python-tqdm >= 3.4.0
 Requires:       python-unyt >= 2.9.2
-Requires:       (python-numpy >= 1.19.3 with python-numpy < 2)
 Requires:       (python-tomli >= 1.2.3 if python-base < 3.11)
 Requires:       (python-typing-extensions >= 4.4.0 if python-base < 3.12)
 Requires(post): update-alternatives
@@ -122,8 +119,8 @@ rm -r yt
 %doc README.md
 %license COPYING.txt
 %python_alternative %{_bindir}/yt
-%{python_sitearch}/yt-%{version}.dist-info
 %{python_sitearch}/yt
+%{python_sitearch}/yt-%{version}.dist-info
 %endif
 
 %changelog

@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu Jul  4 05:28:54 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 4.3.1:
+  * Fix broken urllib imports
+  * Make annotate_sphere and annotate_arrow safe when run after plot
+    invalidation
+  * Fix an incompatibility with unyt 3.0 (amu_cgs doesn't exist as a physical
+    constant anymore)
+  * Handle deprecation warnings from numpy 2.0.0dev0 (np.row_stack ->
+    np.vstack and np.in1d -> np.isin)
+  * Avoid a deprecation warning in yt.load_sample on Python 3.12
+  * Switch to field tuples for default fields in particle_trajectories
+  * Enforce Figure dpi in _show_mpl
+  * Fix bug where race condition results in incorrect fields categorization
+    when computing particle_trajectories
+  * Use the validated center for YTCuttingPlane set_field_parameter
+  * Avoid usage of deprecated numpy.core namespace (numpy 2 compat)
+  * Fix geographic coordinate conversions
+  * Update xarray integration test to use non-deprecated API
+  * Enzo testing framework - ignore units for ShockTube tests
+  * Explicitly set minimum Python to 3.9.2
+  * Ditch np.int_t, removed in numpy 2's C API (use np.int64_t instead)
+  * Migrate module-level setup/teardown functions to pytest
+- Drop patch yt-pr4727-unpin-unyt.patch, included upstream.
+- Remove upper bound on numpy.
+
+-------------------------------------------------------------------
 Mon Apr  8 10:30:47 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons

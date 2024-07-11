@@ -225,4 +225,12 @@ https://github.com/yt-project/yt/releases.
   * extend support of the ``marker``, ``text``, ``line`` and ``sphere`` annotation</comment>
     <requestid>1166141</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>525a233f07de2a314bca06e4da412034</srcmd5>
+    <version>4.3.1</version>
+    <time>1720722776</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1186758</requestid>
+  </revision>
 </revisionlist>
