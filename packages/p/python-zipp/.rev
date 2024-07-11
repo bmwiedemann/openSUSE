@@ -253,4 +253,13 @@
   * No significant changes.</comment>
     <requestid>1179936</requestid>
   </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>ea9846391a2f80a5a1ca9d9ec035a17f</srcmd5>
+    <version>3.19.2</version>
+    <time>1720722624</time>
+    <user>anag+factory</user>
+    <comment>- Add CVE and bug link to the changelog
+(CVE-2024-5569, bsc#1227547)</comment>
+    <requestid>1186491</requestid>
+  </revision>
 </revisionlist>
