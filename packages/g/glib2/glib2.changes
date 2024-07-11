@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Jul  8 18:19:52 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.80.4:
+  + Bugs fixed:
+    - GLib unit tests fail on macOS runner due to localhost being
+      out of addresses
+    - Random failures to build glib 2.80.3
+    - Backport !4111 “gioerror: Map EADDRNOTAVAIL to
+      G_IO_ERROR_CONNECTION_REFUSED” to glib-2-80
+    - Backport !3373 and !4117 “Handle files >4GB in
+      g_file_load_contents()“ to glib-2-80
+    - Backport !4020 and !4122: fixes to GIR install locations and
+      build race fixes
+    - Backport !4110 “gthreadedresolver: ref-sink returned records
+      in lookup_records()” to glib-2-80
+
+-------------------------------------------------------------------
 Tue Jun 11 07:14:25 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 2.80.3:

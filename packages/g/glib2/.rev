@@ -2289,4 +2289,12 @@ Extra note: I see glib2 in G:N is missing its link - manual merge needed after a
   + Updated translations. (forwarded request 1179899 from dimstar)</comment>
     <requestid>1180002</requestid>
   </revision>
+  <revision rev="280" vrev="1">
+    <srcmd5>da1b2276fa84c90b0e55381080fa9e19</srcmd5>
+    <version>2.80.4</version>
+    <time>1720722573</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1186691</requestid>
+  </revision>
 </revisionlist>
