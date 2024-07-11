@@ -36,7 +36,7 @@ BuildRequires:  cmake >= 3.14.0
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
-BuildRequires:  %{python_module numpy >= 1.16 with %python-numpy < 2}
+BuildRequires:  %{python_module numpy >= 1.16}
 BuildRequires:  %{python_module psutil}
 # /SECTION
 Recommends:     python-numpy
