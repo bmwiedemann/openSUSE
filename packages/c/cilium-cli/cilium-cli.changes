@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Jul 10 07:11:49 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.16.12:
+  * Prepare for v0.16.12 release
+  * CODEOWNERS: Assign BGP/FRR source files to sig-bgp
+  * connectivity: Introduce BGP CP connectivity tests
+  * chore(deps): update all github action dependencies
+  * chore(deps): update go to v1.22.5
+  * kvstoremesh: don't disable by default
+  * chore(deps): update docker/setup-buildx-action action to v3.4.0
+  * chore(deps): update golang:1.22.5-alpine3.19 docker digest to
+    0642d4f
+  * fix(deps): update all go dependencies main
+  * chore(deps): update golang docker tag to v1.22.5
+  * chore(deps): update docker/build-push-action action to v6.3.0
+  * Add --disable-check flag back
+  * action: Use github.action_path when accessing cilium.sh
+  * connectivity: Label test namespaces
+  * fix(deps): update module github.com/cilium/cilium to
+    v1.16.0-rc.1
+  * Update stable release to v0.16.11
+  * Dockerfile: Fix a warning
+  * Simplify Kind workflow
+
+-------------------------------------------------------------------
 Wed Jul 03 16:10:01 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.16.11:
