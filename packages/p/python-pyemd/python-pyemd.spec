@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyemd
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,23 +16,20 @@
 #
 
 
-%define         skip_python36 1
-# pytest is too smart for its own good, prevent use of compiled version
-%bcond_with     test
 Name:           python-pyemd
-Version:        0.5.1
+Version:        1.0.0
 Release:        0
 Summary:        Python implementation of the Earth Mover's Distance
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/wmayner/pyemd
 Source:         https://files.pythonhosted.org/packages/source/p/pyemd/pyemd-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM https://github.com/wmayner/pyemd/commit/34631658ae0cc555001b692623c23c02ed8d5611 Mark uses of ragged nested sequences in NumPy arrays as intented
-Patch0:         numpy-arrays.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy-devel >= 1.9.0}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  c++_compiler
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -49,27 +46,24 @@ of the Earth Mover's Distance that allows it to be used with NumPy.
 %prep
 %autosetup -p1 -n pyemd-%{version}
 
-sed -i -e '/^#!\//, 1d' pyemd/__about__.py pyemd/__init__.py
-
 %build
 export CFLAGS="%{optflags}"
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
+%python_expand rm -r %{buildroot}%{$python_sitearch}/pyemd/{lib,emd.cpp}
 
 %check
-mv conftest.py conftest_bad.py_bad
 pushd test
 %pytest_arch
 popd
-mv conftest_bad.py_bad conftest.py
 
 %files %{python_files}
 %doc README.rst
 %license LICENSE
 %{python_sitearch}/pyemd
-%{python_sitearch}/pyemd-%{version}*-info
+%{python_sitearch}/pyemd-%{version}.dist-info
 
 %changelog

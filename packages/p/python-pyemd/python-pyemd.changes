@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jul  4 02:17:34 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.0.0:
+  * Use modern packaging.
+- Switch to pyproject macros.
+- Remove patch numpy-arrays.patch, included upstream.
+
+-------------------------------------------------------------------
 Thu Feb 23 15:09:45 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - build with Cython to get python 3.11 compatible cythonized files 
