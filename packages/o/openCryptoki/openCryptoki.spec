@@ -165,6 +165,10 @@ install -d %{buildroot}%{_localstatedir}/lib/opencryptoki
 install -d %{buildroot}%{_initddir}
 install -d %{buildroot}%{_sbindir}
 install -d %{buildroot}%{_prefix}/lib/tmpfiles.d
+#
+mkdir -p %{buildroot}%{_datadir}/opencryptoki
+cp %{buildroot}%{_datadir}/doc/opencryptoki/*.conf %{buildroot}%{_datadir}/opencryptoki
+#
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcpkcsslotd
 rm -rf %{buildroot}/tmp
 
@@ -177,8 +181,8 @@ rm -f %{buildroot}%{_libdir}/opencryptoki/methods
 # autobuild:/work/cd/lib/misc/group
 # openCryptoki    pkcs11:x:64:
 # openCryptoki    pkcsslotd:x:64:
-%{_sbindir}/groupadd -g %{pkcs11_group_id} -r %{pkcs_group} 2>/dev/null || true
-%{_sbindir}/useradd -g %{pkcs11_group_id} -r pkcsslotd -s /sbin/nologin -d /run/opencryptoki   2>/dev/null || true
+%{_sbindir}/groupadd -g %{pkcs11_group_id} -r %{pkcs_group} 2>/dev/null || getent group %{pkcs_group} 2>/dev/null || true
+%{_sbindir}/useradd -g %{pkcs11_group_id} -r pkcsslotd -s /sbin/nologin -d /run/opencryptoki   2>/dev/null || getent passwd pkcsslotd 2>/dev/null || true
 %{_sbindir}/usermod -a -G %{pkcs_group} root
 
 %preun
@@ -238,8 +242,11 @@ ln -sf %{_libdir}/opencryptoki/libopencryptoki.so %{_prefix}/lib/pkcs11/PKCS11_A
 %doc openCryptoki-TFAQ.html FAQ
 %doc doc/*
 %dir %{_datadir}/doc/opencryptoki
-%{_datadir}/doc/opencryptoki/policy-example.conf
-%{_datadir}/doc/opencryptoki/strength-example.conf
+%doc %{_datadir}/doc/opencryptoki/policy-example.conf
+%doc %{_datadir}/doc/opencryptoki/strength-example.conf
+%dir %{_datadir}/opencryptoki
+%{_datadir}/opencryptoki/policy-example.conf
+%{_datadir}/opencryptoki/strength-example.conf
   # configuration directory
 %dir %{_sysconfdir}/opencryptoki
 %config %{_sysconfdir}/opencryptoki/opencryptoki.conf

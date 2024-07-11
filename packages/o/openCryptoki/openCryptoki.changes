@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jul 11 07:57:25 UTC 2024 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Updated the .spec file (bsc#1225876, bsc#1227280)
+  * Amended for group %{pkcs_group} and user pkcsslotd
+  * Copying example script files from /usr/share/doc/opencryptoki to
+    /usr/share/opencryptoki (policy-example.conf and strength-example.conf)
+    in case that there is 'rpm.install.excludedocs=yes' set in the
+    zypper.conf(zypp.conf)
+
+-------------------------------------------------------------------
 Wed Feb  7 07:27:00 UTC 2024 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Upgrade openCryptoki to version 3.23 (jsc#PED-3360, jsc#PED-3361)
