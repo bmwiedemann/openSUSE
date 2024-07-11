@@ -165,4 +165,12 @@
 - Use %license instead of %doc</comment>
     <requestid>1130813</requestid>
   </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>dee3a2d87dd2ec8179e9dc89fd6e7fba</srcmd5>
+    <version>0.1.20</version>
+    <time>1720722570</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1186682</requestid>
+  </revision>
 </revisionlist>

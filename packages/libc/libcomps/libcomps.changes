@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul 10 14:05:56 UTC 2024 - Martin Jambor <mjambor@suse.com>
+
+- Add libcomps-c99.patch in order to avoid C99 violations which are
+  errors by default with GCC 14.  [boo#1221700]
+
+-------------------------------------------------------------------
 Mon Dec  4 14:34:19 UTC 2023 - Ana Guerrero <ana.guerrero@suse.com>
 
 - Add BuildRequires on python-setuptools to create python egg and
