@@ -71,7 +71,7 @@
 %endif
 
 Name:           velociraptor%{name_suffix}
-Version:        0.7.0.4.git74.3426c0a
+Version:        0.7.0.4.git97.675e45f9
 Release:        0
 %if %{build_server}
 Summary:        Endpoint visibility and collection tool
@@ -128,7 +128,11 @@ BuildRequires:  npm >= 18
 %endif
 %if %{with bpf}
 %if 0%{?suse_version}
-%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150300
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} == 150600
+BuildRequires:  clang17
+BuildRequires:  llvm17
+%else
+%if 0%{?sle_version} >= 150300
 BuildRequires:  clang16
 BuildRequires:  llvm16
 %if 0%{?sle_version} > 150400
@@ -137,6 +141,7 @@ BuildRequires:  llvm16-libclang13
 %else
 BuildRequires:  clang13
 BuildRequires:  llvm13
+%endif
 %endif
 BuildRequires:  libelf-devel
 BuildRequires:  libzstd-devel

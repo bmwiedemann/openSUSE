@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Wed Jul 03 17:01:54 UTC 2024 - antonio.teixeira@suse.com
+
+- Update to version 0.7.0.4.git97.675e45f9:
+  * kafka-humio-gateway: update go version and dependency list
+  * kafka-humio-gateway: specific mTLS cert paths in config.yml
+  * docker-compose: set kafka replication factor and min ISRs
+  * kafka-humio-gateway: add http post retry mechanism
+  * kafka-humio-gateway: add pprof debugging option
+  * kafka-humio-gateway: format with gofmt
+  * kafka-humio-gateway: fix go-staticcheck issues
+  * kafka-humio-gateway: fix sendEvents() never exiting
+  * Kafka.Events.Client: Update to use new artifactset type
+  * docker-compose: add optional Kafka cluser
+  * kafka-humio-gateway: add mTLS support
+  * contrib/kafka-humio-gateway: add new debug option for noisy events
+  * contrib/kafka-humio-gateway: backoff and retry for metadata
+  * kafka-humio-gateway: add sample config file
+  * kafka-humio-gateway: update sarama and dependencies
+  * Add Kafka-Humio Gateway [Depends on PR#10] (#8)
+  * vql/server/kafka: connect sarama logging to velociraptor logging
+  * vql/server/kafka: add exponential backoff (limited to 30s) for metadata retries
+  * vql/server/kafka: set appropriate ClientID
+  * Add a Kafka export plugin
+- Use llvm17 when available
+
+-------------------------------------------------------------------
 Tue May 28 16:45:51 UTC 2024 - Antonio Teixeira <antonio.teixeira@suse.com>
 
 - Patches changes:
