@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jul  3 04:05:41 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to autosetup and pyproject macros.
+- Add patch support-numpy-2.patch:
+  * Use correct constant for NaN.
+
+-------------------------------------------------------------------
 Sat Mar 16 11:53:52 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.2.7:

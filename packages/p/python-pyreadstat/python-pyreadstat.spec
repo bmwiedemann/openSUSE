@@ -23,11 +23,15 @@ Summary:        Package to read and write statistical data files into pandas
 License:        Apache-2.0
 URL:            https://github.com/Roche/pyreadstat
 Source:         https://github.com/Roche/pyreadstat/archive/v%{version}.tar.gz#/pyreadstat-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM gh#Roche/pyreadstat#266
+Patch0:         support-numpy-2.patch
 BuildRequires:  %{python_module Cython >= 3}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy-devel}
 BuildRequires:  %{python_module pandas >= 0.24.0}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  glibc-devel
 BuildRequires:  python-rpm-macros
@@ -40,14 +44,14 @@ Requires:       python-pandas >= 0.24.0
 Reads and Writes SAS, SPSS and Stata files into pandas data frames.
 
 %prep
-%setup -q -n pyreadstat-%{version}
+%autosetup -p1 -n pyreadstat-%{version}
 
 %build
 export CFLAGS="%{optflags} -fno-strict-aliasing"
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
@@ -63,7 +67,7 @@ mv pyreadstat_temp pyreadstat
 %files %{python_files}
 %doc README.md change_log.md
 %license LICENSE
-%{python_sitearch}/pyreadstat*.egg-info
 %{python_sitearch}/pyreadstat
+%{python_sitearch}/pyreadstat-%{version}.dist-info
 
 %changelog

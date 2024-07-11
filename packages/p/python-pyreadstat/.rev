@@ -155,4 +155,12 @@
   * Fix read in chunks when output is dict</comment>
     <requestid>1158458</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>f1244973017c8dfb0dc7863a49e66de7</srcmd5>
+    <version>1.2.7</version>
+    <time>1720722587</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1186490</requestid>
+  </revision>
 </revisionlist>

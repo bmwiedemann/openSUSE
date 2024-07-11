@@ -1,0 +1,24 @@
+From 6462420c00e208b58653718e0539c630c38a2d1d Mon Sep 17 00:00:00 2001
+From: Steve Kowalik <steven@wedontsleep.org>
+Date: Wed, 3 Jul 2024 13:48:15 +1000
+Subject: [PATCH] Support Numpy 2 changes
+
+Numpy 2.0 has been released, and the only change required to make the
+tests pass is to start using the new NaN constant, which is now nan.
+---
+ tests/test_basic.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tests/test_basic.py b/tests/test_basic.py
+index d791778..d0bdece 100644
+--- a/tests/test_basic.py
++++ b/tests/test_basic.py
+@@ -93,7 +93,7 @@ def _prepare_data(self):
+         df_dates2 = df_dates1.copy()
+         df_dates2["date"] = df_dates2["date"].apply(lambda x: x.date())
+         self.df_sas_dates = df_dates2
+-        self.df_sas_dates2 = pd.concat([self.df_sas_dates, pd.DataFrame([[np.NaN, pd.NaT, np.NaN]],columns=["date", "dtime", "time"])], ignore_index=True)
++        self.df_sas_dates2 = pd.concat([self.df_sas_dates, pd.DataFrame([[np.nan, pd.NaT, np.nan]],columns=["date", "dtime", "time"])], ignore_index=True)
+ 
+         # missing data
+         pandas_missing_sav_csv = os.path.join(self.basic_data_folder, "sample_missing.csv")
