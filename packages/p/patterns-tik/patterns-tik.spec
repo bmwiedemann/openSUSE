@@ -368,6 +368,9 @@ Requires:       tpm2.0-abrmd
 Requires:       tpm2-0-tss
 Requires:       tpm2.0-tools
 
+# Secureboot support
+Requires:       mokutil
+
 ### x86_64_v3 support is mandatory on Aeon
 #AEON:Requires:       x86_64_v3-branding-Aeon
 

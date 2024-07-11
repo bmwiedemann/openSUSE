@@ -27,4 +27,12 @@
 - Require gsettings-backend-dconf (boo#1224473, boo#1224472)</comment>
     <requestid>1175817</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>fe7cf41124e8a13b4748375f63fb4aa5</srcmd5>
+    <version>1.0</version>
+    <time>1720722829</time>
+    <user>anag+factory</user>
+    <comment>- Add mokutil (needed for Secureboot configuration and checking)</comment>
+    <requestid>1186875</requestid>
+  </revision>
 </revisionlist>

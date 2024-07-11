@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jul 11 12:47:00 UTC 2024 - Richard Brown <rbrown@suse.com>
+
+- Add mokutil (needed for Secureboot configuration and checking) 
+
+-------------------------------------------------------------------
 Wed May 22 12:01:57 UTC 2024 - Richard Brown <rbrown@suse.com>
 
 - Require coreutils-systemd (boo#1224812)
