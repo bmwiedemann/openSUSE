@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jul  9 19:55:32 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.5.2:
+  + Fix a mismatched g_mutex_init()/g_mutex_clear() which caused an
+    issue with MUSL-based systems.
+
+-------------------------------------------------------------------
 Thu Apr 11 11:31:40 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 0.5.1:
