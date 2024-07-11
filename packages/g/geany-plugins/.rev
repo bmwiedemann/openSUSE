@@ -390,4 +390,12 @@
 - Dropped 1178.patch since it has been upstreamed. (forwarded request 1119160 from polslinux)</comment>
     <requestid>1119570</requestid>
   </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>6df7a91182ed4439892299ae846c846c</srcmd5>
+    <version>2.0</version>
+    <time>1720722742</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1186684</requestid>
+  </revision>
 </revisionlist>

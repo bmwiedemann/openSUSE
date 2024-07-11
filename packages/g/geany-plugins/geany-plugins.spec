@@ -1,7 +1,7 @@
 #
 # spec file for package geany-plugins
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,10 @@ License:        GPL-2.0-or-later AND GPL-3.0-or-later
 Group:          Development/Tools/IDE
 URL:            https://plugins.geany.org/geany-plugins/
 Source:         http://plugins.geany.org/geany-plugins/%{name}-%{version}.tar.bz2
+# PATCH-FIX-UPSTREAM db2698cc869274aef353ba7af23d70921d944166.patch -- projectorganizer: fix invalid string comparison
+Patch1:         https://github.com/geany/geany-plugins/commit/db2698cc869274aef353ba7af23d70921d944166.patch
+# PATCH-FIX-UPSTREAM 644550babb52013d2625a3f8e789bbe94a335b6f.patch -- projectorganizer: Use g_pattern_spec_match_string() instead  of g_pattern_match_string()
+Patch2:         https://github.com/geany/geany-plugins/commit/644550babb52013d2625a3f8e789bbe94a335b6f.patch
 
 BuildRequires:  devhelp-devel
 BuildRequires:  fdupes
