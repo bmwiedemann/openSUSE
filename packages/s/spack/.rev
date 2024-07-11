@@ -540,4 +540,12 @@
       + Packages compiled with `%gcc` now depend on a new package</comment>
     <requestid>1179953</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>5cdff312e08e1bdf4770434c69afba9a</srcmd5>
+    <version>0.22.1</version>
+    <time>1720722618</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1186551</requestid>
+  </revision>
 </revisionlist>

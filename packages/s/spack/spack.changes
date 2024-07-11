@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Wed Jul 10 06:54:31 UTC 2024 - Egbert Eich <eich@suse.com>
+
+- Update to 0.22.1.
+  * Bug Fixes:
+    - Fix reuse of externals on Linux.
+    - Ensure parent gcc-runtime version >= child.
+    - Ensure the latest gcc-runtime is rpath'ed when multiple exist
+      among link deps.
+    - Improve version detection of glibc.
+    - Improve heuristics for solver.
+    - Make strong preferences override reuse.
+    - Reduce verbosity when C compiler is missing.
+    - Make missing ccache executable an error when required.
+    - Make every environment view containing `python` a `venv`.
+    - Fix external detection for compilers with os but no target.
+    - Fix version optimization for roots.
+    - Handle common implementations of pagination of tags in OCI
+      build caches.
+    - Apply fetched patches to develop specs.
+    - Avoid Windows wrappers for filesystem utilities on non-Windows.
+    - Fix formatting issue in `spack audit`.
+  * Package updates:
+    - Require libiconv for iconv.
+      Notice that glibc/musl also provide iconv, but are not
+      guaranteed to be complete. Set `packages:iconv:require:[glibc]`
+      to restore the old behavior.
+    - protobuf: fix 3.4:3.21 patch checksum.
+    - protobuf: update hash for patch needed when="@3.4:3.21".
+    - git: bump v2.39 to 2.45; deprecate unsafe versions.
+    - gcc: use `-rpath {rpath_dir}` not `-rpath={rpath dir}`.
+    - Remove mesa18 and libosmesa.
+    - Enforce consistency of `gl` providers.
+    - py-matplotlib: qualify when to do a post install.
+    - rust: fix v1.78.0 instructions.
+    - suite-sparse: improve setting of the libs property.
+    - netlib-lapack: provide blas and lapack together.
+
+-------------------------------------------------------------------
 Thu May 16 17:03:50 UTC 2024 - Egbert Eich <eich@suse.com>
 
 - Move-site-config-scope-before-system-scope.patch:
