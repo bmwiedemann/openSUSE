@@ -1,0 +1,6 @@
+<package name="cosmic-edit" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="X11:COSMIC:Apps" package="cosmic-edit"/>
+  <url>https://github.com/pop-os/cosmic-edit</url>
+</package>
