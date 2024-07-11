@@ -146,4 +146,15 @@
   * Fix an issue where arithmetic operations on units defined in different registries and having the conversion defined in one direction would lead to a crash. See PR #164. Thank you to Clément Robert (@neutrinoceros on GitHub) for the initial bug report and fix.</comment>
     <requestid>1158535</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>5d7cc39051bbb9c1af04e6a575140934</srcmd5>
+    <version>3.0.3</version>
+    <time>1720722773</time>
+    <user>anag+factory</user>
+    <comment>- Update to 3.0.3:
+  * BUG: fix signature incompatibilities in NEP 18 wrapped functions
+  * BUG: fix an incompatibility with sympy 1.13.0rc1
+- Restrict numpy to &lt; 2.</comment>
+    <requestid>1186726</requestid>
+  </revision>
 </revisionlist>

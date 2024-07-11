@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-unyt
-Version:        3.0.2
+Version:        3.0.3
 Release:        0
 Summary:        A package for handling numpy arrays with units
 License:        BSD-3-Clause
@@ -33,12 +33,12 @@ BuildRequires:  python-rpm-macros
 # SECTION test
 BuildRequires:  %{python_module dask-array}
 BuildRequires:  %{python_module dask-diagnostics}
-BuildRequires:  %{python_module numpy >= 1.19.3}
+BuildRequires:  %{python_module numpy >= 1.19.3 with %python-numpy < 2}
 BuildRequires:  %{python_module packaging >= 20.9}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module sympy >= 1.7}
 # /SECTION
-Requires:       python-numpy >= 1.19.3
+Requires:       (python-numpy >= 1.19.3 with python-numpy < 2)
 Requires:       python-packaging > 20.9
 Requires:       python-sympy >= 1.7
 BuildArch:      noarch
