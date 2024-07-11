@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Thu Jul 11 05:13:25 UTC 2024 - Gordon Leung <pirateclip@protonmail.com>
+
+- update to 2.18.1
+   Changes:
+     * --ts-version has been renamed to --detect-version
+        - general.detectVersion in JSON config file
+   Bugfixes:
+     * Fix and improve GPU driver detection (GPU, Linux)
+
+-------------------------------------------------------------------
+Wed Jul 10 11:42:48 UTC 2024 - Pi-Cla <pirateclip@protonmail.com>
+
+- update to 2.18.0
+   Changes:
+     * Fastfetch no longer prints * (which means it's the default route)
+       if defaultRouteOnly is set (LocalIP)
+   Bugfixes:
+     * Fix some memory leaks
+     * Fix compatibility with old Python versions
+     * Don't detect frequency for AMD cards (GPU, Linux)
+        - Fix possible hang with discrete AMD cards (#1077)
+     * Don't print colors in --pipe mode (Separator)
+     * Don't print (null) in property locator (PhysicalMemory)
+     * Ignore disabled PCI devices (GPU)
+     * Fix flag --opengl-library doesn't work (OpenGL)
+   Features:
+     * Detect revision of USB drives (Disk)
+     * Support fractional scale factor detection (Display, Linux)
+     * Support primary display detection for KDE and GNOME (Display, Linux)
+     * Support percent bar in custom formatting
+     * Print signal quality by default (Wifi)
+     * Detect used OpenGL library version (OpenGL)
+
+-------------------------------------------------------------------
 Thu Jul  4 16:53:01 UTC 2024 - Gordon Leung <pirateclip@protonmail.com>
 
 - update to 2.17.2

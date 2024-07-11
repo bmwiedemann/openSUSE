@@ -631,4 +631,38 @@ Bugfixes:
     * --ts-version false will disable editor version detection (Editor)</comment>
     <requestid>1185429</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>108fd683c1c90e14dedebe5672532add</srcmd5>
+    <version>2.18.1</version>
+    <time>1720722627</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.18.1
+   Changes:
+     * --ts-version has been renamed to --detect-version
+        - general.detectVersion in JSON config file
+   Bugfixes:
+     * Fix and improve GPU driver detection (GPU, Linux)
+
+- update to 2.18.0
+   Changes:
+     * Fastfetch no longer prints * (which means it's the default route)
+       if defaultRouteOnly is set (LocalIP)
+   Bugfixes:
+     * Fix some memory leaks
+     * Fix compatibility with old Python versions
+     * Don't detect frequency for AMD cards (GPU, Linux)
+        - Fix possible hang with discrete AMD cards (#1077)
+     * Don't print colors in --pipe mode (Separator)
+     * Don't print (null) in property locator (PhysicalMemory)
+     * Ignore disabled PCI devices (GPU)
+     * Fix flag --opengl-library doesn't work (OpenGL)
+   Features:
+     * Detect revision of USB drives (Disk)
+     * Support fractional scale factor detection (Display, Linux)
+     * Support primary display detection for KDE and GNOME (Display, Linux)
+     * Support percent bar in custom formatting
+     * Print signal quality by default (Wifi)
+     * Detect used OpenGL library version (OpenGL)</comment>
+    <requestid>1186733</requestid>
+  </revision>
 </revisionlist>
