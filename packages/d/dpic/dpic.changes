@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jul  9 12:59:04 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2024.01.01:
+  * SVG stroke fix.
+  * Robust arrowheads and pgf text offsets.
+
+-------------------------------------------------------------------
 Fri Mar  3 08:57:52 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2023.02.1:
@@ -11,7 +18,7 @@ Fri Mar  3 08:57:52 UTC 2023 - Dirk Müller <dmueller@suse.com>
   * Improved robustness for fuzzed input.
   * Added colored svg sprintf text and % appended to selected outputs.
   * Shift operation bugfix.
-  * Improved error messaging; additional distribution examples. 
+  * Improved error messaging; additional distribution examples.
   * CVE-2021-33390: Use-after-free in thedeletestringbox() (boo#1214501).
   * CVE-2021-33388: Heap Buffer Overflow in themakevar() (boo#1214502).
   * CVE-2021-32422: Buffer Overflow in theyylex() (boo#1214503).

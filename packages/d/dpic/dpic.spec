@@ -1,7 +1,7 @@
 #
 # spec file for package dpic
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           dpic
-Version:        2023.02.01
+Version:        2024.01.01
 Release:        0
 Summary:        Pic language processor
 License:        BSD-2-Clause AND CC-BY-3.0
