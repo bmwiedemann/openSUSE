@@ -1,4 +1,11 @@
 --------------------------------------------------------------------
+Wed Jul 10 10:08:42 UTC 2024 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#999
+- use cryptsetup to get uuid of newly created luks
+- 4.5.217
+
+--------------------------------------------------------------------
 Wed Jul 3 12:55:49 UTC 2024 - aschnell@suse.com
 
 - merge gh#openSUSE/libstorage-ng#998
