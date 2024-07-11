@@ -1,0 +1,29 @@
+diff --git a/overlays/wwinit/rootfs/etc/issue.ww b/overlays/wwinit/rootfs/etc/issue.ww
+index d526a2b6..f7cd4e86 100644
+--- a/overlays/wwinit/rootfs/etc/issue.ww
++++ b/overlays/wwinit/rootfs/etc/issue.ww
+@@ -6,7 +6,11 @@ Kernelargs:         {{.Kernel.Args}}
+ Network:
+ {{- range $devname, $netdev := .NetDevs}}
+     {{$devname}}: {{$netdev.Device}}
+-    {{$devname}}: {{$netdev.IpCIDR}}
+-{{if $netdev.Ipaddr6 }}    {{$devname}}: {{$netdev.Ipaddr6}}{{ end -}}
+-{{if $netdev.Hwaddr }}    {{$devname}}: {{$netdev.Hwaddr}}{{ end -}}
+-{{end}}
++    {{$devname}}: \4{{ print "{" }}{{$netdev.Device}}{{ print "}" }}
++{{- if $netdev.Ipaddr6 }}
++    {{$devname}}: \6{{ print "{" }}{{$netdev.Device}}{{ print "}" }}
++{{- end }}
++{{- if $netdev.Hwaddr }}
++    {{$devname}}: {{$netdev.Hwaddr}}
++{{- end }}
++{{- end}}
+diff --git a/overlays/wwinit/rootfs/etc/motd.d/ww4.ww b/overlays/wwinit/rootfs/etc/motd.d/ww4.ww
+new file mode 100644
+index 00000000..dad912db
+--- /dev/null
++++ b/overlays/wwinit/rootfs/etc/motd.d/ww4.ww
+@@ -0,0 +1,3 @@
++warewulf Node:      {{.Id}}
++Container:          {{.Container}}
++Kernelargs:         {{.Kernel.Args}}

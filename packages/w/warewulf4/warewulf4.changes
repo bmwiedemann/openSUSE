@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Jul  9 12:06:49 UTC 2024 - Christian Goll <cgoll@suse.com>
+
+- updated to 4.5.5 with following changes:
+  * mount `/sys` and `/run` on `wwctl container exec` to enabled
+    SUSEConnect (bsc#1227289)
+  * don't want on NIS style passwd line (bsc#1227250)
+  * wwctl import can have `passwd` and `user` argument (bsc#1227340)
+  * add net.ifnames=1 to default kernel parameters (bsc#1226654)
+  * be more verbose if container is rebuild (bsc#1227646)
+  * issue like message in motd (bsc#1227478)
+- removed wwctl-configure-all-calls-SSH-keys.patch as included
+  upstream
+- added following not yet accepted upstream patches:
+  * empty-container.patch
+  * enhanced-cont-list.patch
+  * fix-overlay-built.patch
+  * oci-vars.patch
+  * issue-motd.patch
+  * verbose-exec.patch
+
+-------------------------------------------------------------------
 Mon May 27 17:21:53 UTC 2024 - Christian Goll <cgoll@suse.com>
 
 - added wwctl-configure-all-calls-SSH-keys.patch to fix

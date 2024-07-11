@@ -16,7 +16,7 @@
 #
 
 
-%global vers 4.5.2
+%global vers 4.5.5
 %global tftpdir /srv/tftpboot
 %global srvdir %{_sharedstatedir}
 #%%global githash 5b0de8ea5397ca42584335517fd4959d7ffe3da5
@@ -35,7 +35,13 @@ Source5:        warewulf4-rpmlintrc
 Source10:       config-ww4.sh
 Source11:       adjust_overlays.sh
 Source20:       README.dnsmasq
-Patch1:         wwctl-configure-all-calls-SSH-keys.patch
+#Patch1:         wwctl-configure-all-calls-SSH-keys.patch
+Patch1:         empty-container.patch
+Patch2:         enhanced-cont-list.patch
+Patch3:         fix-overlay-built.patch
+Patch4:         oci-vars.patch
+Patch5:         issue-motd.patch
+Patch6:         verbose-exec.patch
 
 # no firewalld in sle12
 %if 0%{?sle_version} >= 150000 || 0%{?suse_version} > 1500
@@ -101,6 +107,17 @@ Provides:       warewulf4-slurm = %version
 %description overlay-slurm
 This package install the necessary configuration files in order to run a slurm
 cluster on the configured warewulf nodes.
+
+%package dracut
+Summary:        Dracut module for loading a Warewulf container image
+BuildArch:      noarch
+
+Requires:       dracut
+
+%description dracut
+This subpackage contains a dracut module that can be used to generate
+an initramfs that can fetch and boot a Warewulf container image from a
+Warewulf server.
 
 %prep
 %setup -q -n warewulf-%{vers}
@@ -174,6 +191,11 @@ yq e '
   .["container mounts"] += {"source": "/etc/SUSEConnect", "dest": "/etc/SUSEConnect", "readonly": true} |
   .["container mounts"] += {"source": "/etc/zypp/credentials.d/SCCcredentials", "dest": "/etc/zypp/credentials.d/SCCcredentials", "readonly": true}' \
   -i %{buildroot}%{_sysconfdir}/warewulf/warewulf.conf
+# disable suse net-naming
+yq -e '
+  .defaultnode.kernel.args="quiet crashkernel=no net.ifnames=1" |
+  del(.defaultnode.["boot method"] )' \
+  -i %{buildroot}%{_datadir}/warewulf/defaults.conf
 # SUSE starts user UIDs at 1000
 sed -i -e 's@\(.* \$_UID \(>\|-ge\) \)500\(.*\)@\11000\3@' %{buildroot}%{_localstatedir}/lib/warewulf/overlays/host/rootfs/etc/profile.d/ssh_setup.*sh.ww
 # fix dhcp for SUSE
@@ -269,5 +291,10 @@ mv %{buildroot}/%{_sysconfdir}/warewulf/examples %{buildroot}%{_defaultdocdir}/%
 %{_localstatedir}/lib/warewulf/overlays/generic/rootfs/etc/munge/munge.key.ww
 %dir %attr(0700,munge,munge) %{_localstatedir}/lib/warewulf/overlays/generic/rootfs/etc/munge
 %attr(0600,munge,munge) %config(noreplace) %{_localstatedir}/lib/warewulf/overlays/generic/rootfs/etc/munge/munge.key.ww
+
+%files dracut
+%defattr(-, root, root)
+%dir %{_prefix}/lib/dracut/modules.d/90wwinit
+%{_prefix}/lib/dracut/modules.d/90wwinit/*.sh
 
 %changelog

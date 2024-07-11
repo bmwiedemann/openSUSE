@@ -270,4 +270,13 @@
   (bsc#1225402)</comment>
     <requestid>1177285</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>4b16d0110000a7124b0ba2267f1f8f84</srcmd5>
+    <version>4.5.5</version>
+    <time>1720722630</time>
+    <user>anag+factory</user>
+    <comment>* wwctl import can have `passwd` and `user` argument (bsc#1227340)
+  * issue like message in motd (bsc#1227478) (forwarded request 1186881 from mslacken)</comment>
+    <requestid>1186882</requestid>
+  </revision>
 </revisionlist>
