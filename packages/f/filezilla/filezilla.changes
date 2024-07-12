@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Jul 12 09:37:57 UTC 2024 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.57.1
+  * Bugfixes and minor changes:
+    - MSW: Fixed an issue with confirmation dialogs for file
+      deletion not being modal
+    - Updated to libfilezilla 0.48.1
+- Changes from 3.67.1-rc1
+  * Bugfixes and minor changes:
+    - Fixed an issue migrating old queue files if several older
+      versions have been skipped
+    - Updated to libfilezilla 0.48.0
+- Drop filezilla-verifyhostkeydialog.patch because now in upstream.
+- Download over osc no more possible. Source must be download over
+  website link.
+
+-------------------------------------------------------------------
 Thu Apr 18 16:20:27 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Do not recommend filezilla-lang: the -lang package, as generated

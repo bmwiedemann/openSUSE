@@ -1069,4 +1069,25 @@
     <comment></comment>
     <requestid>1169216</requestid>
   </revision>
+  <revision rev="116" vrev="1">
+    <srcmd5>8f1851aec5d17b970ea374f4a43ddb55</srcmd5>
+    <version>3.67.1</version>
+    <time>1720796746</time>
+    <user>anag+factory</user>
+    <comment>- Update to 3.57.1
+  * Bugfixes and minor changes:
+    - MSW: Fixed an issue with confirmation dialogs for file
+      deletion not being modal
+    - Updated to libfilezilla 0.48.1
+- Changes from 3.67.1-rc1
+  * Bugfixes and minor changes:
+    - Fixed an issue migrating old queue files if several older
+      versions have been skipped
+    - Updated to libfilezilla 0.48.0
+- Drop filezilla-verifyhostkeydialog.patch because now in upstream.
+- Download over osc no more possible. Source must be download over
+  website link.
+</comment>
+    <requestid>1187082</requestid>
+  </revision>
 </revisionlist>

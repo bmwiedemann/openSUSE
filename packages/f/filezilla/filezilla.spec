@@ -16,20 +16,20 @@
 #
 
 
-%define libversion 3.67.0
-%define libfilezillaversion 0.47.0
+%define libversion 3.67.1
+%define libfilezillaversion 0.48.1
 
 Name:           filezilla
-Version:        3.67.0
+Version:        3.67.1
 Release:        0
 Summary:        A GUI FTP and SFTP Client
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Ftp/Clients
 URL:            https://filezilla-project.org/
-Source0:        https://download.filezilla-project.org/client/FileZilla_%{version}_src.tar.xz
+#Source0:        https://download.filezilla-project.org/client/FileZilla_%%{version}_src.tar.xz
+Source0:        FileZilla_%{version}_src.tar.xz
 Patch0:         %{name}-welcome_dialog.patch
 Patch1:         disable-avx-on-i586.patch
-Patch2:         %{name}-verifyhostkeydialog.patch
 Patch3:         %{name}-sftp_crypt_info_dlg.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
