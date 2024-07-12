@@ -19,16 +19,14 @@
 %define         _lto_cflags %{nil}
 %define         appname io.gitlab.news_flash.NewsFlash
 Name:           newsflash
-Version:        3.2.0
+Version:        3.3.1
 Release:        0
 Summary:        The spiritual successor to FeedReader
 License:        GPL-3.0-only
 URL:            https://gitlab.com/news-flash/news_flash_gtk
-Source0:        news_flash_gtk-%{version}.tar.zst
+Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
-Patch0:         show-actual-version.patch
 BuildRequires:  appstream-glib
-BuildRequires:  blueprint-compiler
 BuildRequires:  cargo-packaging
 BuildRequires:  desktop-file-utils
 BuildRequires:  gcc-c++
@@ -40,15 +38,19 @@ BuildRequires:  pkgconfig
 BuildRequires:  python3-gobject
 BuildRequires:  update-desktop-files
 BuildRequires:  xdg-utils
+BuildRequires:  pkgconfig(blueprint-compiler)
+BuildRequires:  pkgconfig(clapper-gtk-0.0)
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
 BuildRequires:  pkgconfig(glib-2.0)
+BuildRequires:  pkgconfig(gstreamer-1.0)
 BuildRequires:  pkgconfig(gtk4)
 BuildRequires:  pkgconfig(libadwaita-1)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(webkitgtk-6.0)
+BuildRequires:  typelib(ClapperGtk)
 
 %description
 NewsFlash is a program designed to complement an already existing web-based RSS reader account.
@@ -59,7 +61,10 @@ and having access to all your articles as long as you like.
 %lang_package
 
 %prep
-%autosetup -p1 -a1 -n news_flash_gtk-%{version}
+%autosetup -a1
+
+# show the actual version in the about page
+sed -i "s|version: '0.0.0'|version: '%{version}'|g" meson.build
 
 %build
 %meson
@@ -74,7 +79,7 @@ and having access to all your articles as long as you like.
 %files
 %license LICENSE
 %doc README.md
-%{_bindir}/io.gitlab.news_flash.NewsFlash
+%{_bindir}/%{appname}
 %{_datadir}/applications/%{appname}.desktop
 %{_iconsdir}/hicolor/scalable/apps/%{appname}.svg
 %{_iconsdir}/hicolor/symbolic/apps/%{appname}-symbolic.svg

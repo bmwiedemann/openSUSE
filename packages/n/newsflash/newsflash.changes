@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Fri Jul 12 06:17:13 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 3.3.1:
+  * video player: mpris support
+  * zoom controls in article menu
+  * properly escape markup of empty feed list status
+  * fix keyboard navigation article list with collapsed article view
+  * favicon cache: cache and reuse gdk Textures to reduce memory consumption
+  * local RSS: keep order of articles when no date is specified
+  * article scraper: apply suggestions regarding libxml2 thread safety
+  * article scraper: update full-text-rss config files
+  * article scraper: replace images with single emoji in alt-text with unicode emoji
+  * database: store timestamps with UTC timezone
+  * database: reduce connection-pool size
+- update to 3.3.0:
+  * Video player based on libclapper
+  * Performance: parallelize requests to services during sync as much as possible
+  * miniflux: fix fetching a single feed after adding it
+  * feed parsing: improve selecting the correct website link
+  * Properly disconnect signals of listview rows
+  * Ping: timeout faster than the 3s delay for network changes
+  * Only show error badges if error count is greater than 0
+  * Use gtk4 uri launcher instead of ashpd
+  * Context menu to mark all articles as read
+  * Add dialogs: fit long translated string into mobile form factor
+- switch to changing version in spec file, removing show-actual-version.patch
+
+-------------------------------------------------------------------
 Fri May 10 09:20:01 UTC 2024 - Richard Rahl <rrahl0@disroot.org>
 
 - update to 3.2.0:
