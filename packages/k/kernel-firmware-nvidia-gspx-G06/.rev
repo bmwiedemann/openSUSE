@@ -125,4 +125,13 @@ https://nvidia.custhelp.com/app/answers/detail/a_id/5491/~/security-bulletin%3A-
     <comment></comment>
     <requestid>1186868</requestid>
   </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>8b96dc27f748efb61d903a2534e52f1b</srcmd5>
+    <version>550.100</version>
+    <time>1720796754</time>
+    <user>anag+factory</user>
+    <comment>- due to maintenance process we can switch to noarch only for new
+  products; so do this only for sle15-sp7 or later</comment>
+    <requestid>1187075</requestid>
+  </revision>
 </revisionlist>

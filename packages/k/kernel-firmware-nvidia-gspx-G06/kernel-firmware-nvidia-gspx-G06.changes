@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jul 12 11:54:05 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- due to maintenance process we can switch to noarch only for new
+  products; so do this only for sle15-sp7 or later
+
+-------------------------------------------------------------------
 Thu Jul 11 10:56:16 UTC 2024 - Egbert Eich <eich@suse.com>
 
 - For CUDA update version to 555.42.6.

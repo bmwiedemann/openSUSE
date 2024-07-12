@@ -68,7 +68,9 @@ Conflicts:      kernel-firmware-nvidia-gspx-G06
 %endif
 Obsoletes:      kernel-firmware-nvidia-gsp-G06 = 535.86.05
 ExclusiveArch:  x86_64 aarch64
+%if 0%{?sle_version} >= 150700
 BuildArch:      noarch
+%endif
 
 %description
 This package contains the versioned kernel firmware file "gsp.bin" for
