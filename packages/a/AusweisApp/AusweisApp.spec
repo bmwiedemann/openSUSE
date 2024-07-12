@@ -24,6 +24,7 @@ License:        EUPL-1.2
 Group:          Productivity/Security
 URL:            https://www.ausweisapp.bund.de
 Source0:        https://github.com/Governikus/AusweisApp2/archive/%{version}.tar.gz
+Patch0:         https://github.com/Governikus/AusweisApp/pull/53.patch#/0001-fix-qml-error-with-qt6.6.patch
 BuildRequires:  cmake
 %if 0%{?suse_version} > 1500
 BuildRequires:  gcc-c++
@@ -63,6 +64,7 @@ reader or compatible NFC smart phone is required.
 
 %prep
 %setup -q -n %{name}-%{version}
+%patch -P0 -p1
 
 %build
 %if 0%{?suse_version} <= 1500

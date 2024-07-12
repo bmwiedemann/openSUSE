@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jul 12 13:24:10 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Cherry-pick upstream patch to fix QML error with Qt 6.6
+  + 0001-fix-qml-error-with-qt6.6.patch
+
+-------------------------------------------------------------------
 Fri Jul  5 11:30:50 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - New upstream release
