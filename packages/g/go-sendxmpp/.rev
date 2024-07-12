@@ -241,4 +241,16 @@
     Streamlining Tokens (requires go-xmpp &gt;= 0.2.1)</comment>
     <requestid>1177829</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>b9e5ea81c9a923e44b6032dcbea95ffb</srcmd5>
+    <version>0.11.1</version>
+    <time>1720796724</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.11.1:
+  * Fix Ox encryption in interactive mode (do not add the same
+    recipient key to the keyring over and over again).
+  * Exit with error code if Ox encryption for one recipient fails.
+  * Improved handling of perl sendxmpp config files.</comment>
+    <requestid>1186988</requestid>
+  </revision>
 </revisionlist>
