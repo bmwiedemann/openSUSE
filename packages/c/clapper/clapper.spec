@@ -114,6 +114,8 @@ Group:          Development/Libraries/C and C++
 License:        LGPL-2.1-or-later
 Requires:       lib%{name}-%{altlibver}-%{sover} = %{version}
 Requires:       lib%{name}-gtk-%{altlibver}-%{sover} = %{version}
+Requires:       typelib-1_0-%{gstlib}-%{altlibver} = %{version}
+Requires:       typelib-1_0-%{gstlib}Gtk-%{altlibver} = %{version}
 
 %description %{_description}
 
