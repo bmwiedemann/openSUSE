@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Jul 12 05:20:31 UTC 2024 - ecsos <ecsos@opensuse.org>
+
+- Update to 7.14.0
+  * New Features
+    - Book details: When dropping files add an option to add them
+      to the book as data files
+    - Edit book: A new action to toggle line wrapping mode in all
+      code editors. Can be assigned via
+      Preferences->Keyboard shortcuts->Global actions or added to
+      the toolbar via Preferences->Toolbars->Book wide actions
+    - Kobo driver: Add an option to force the SeriesID for all
+      books in a series to have the same value
+  * Bug Fixes
+    - Fix a regression in the previous release that broke merging
+      of books when the confirmation for the merge was disabled
+    - E-book viewer: Allow some header and footer items such as
+      progress to overflow instead of being truncated
+    - HTMLZ output: Make renaming of image files happen in filename
+      order
+    - MTP driver: Fix infinite loop when connecting to some devices
+      with more 65K objects in their filesystem
+    - Fix shortcut editing widget when Qt is using a theme that
+      inserts accelerators into push button labels automatically
+
+-------------------------------------------------------------------
 Fri Jun 28 09:11:04 UTC 2024 - ecsos <ecsos@opensuse.org>
 
 - Update to 7.13.0
