@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Jul 12 05:44:34 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.5.0:
+  * Deprecation of leaving ‘norbs’ unset for site families
+  * Plotly for plots
+  * Automatic addition of Peierls phase terms to Builders
+  * Improved tutorial building
+  * Discretization onto a Landau level basis
+  * Removal of Umfpack support
+  * Addition of python-mumps wrapper
+- Restrict numpy to < 2 for now.
+- Switch to pyproject macros.
+
+-------------------------------------------------------------------
 Sat Dec 16 21:14:39 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.4.4:

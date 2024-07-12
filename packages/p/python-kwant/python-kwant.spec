@@ -1,7 +1,7 @@
 #
 # spec file for package python-kwant
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,33 +19,33 @@
 %define modname kwant
 %{?sle15_python_module_pythons}
 Name:           python-kwant
-Version:        1.4.4
+Version:        1.5.0
 Release:        0
 Summary:        Python library for numerical quantum transport calculations
 License:        BSD-2-Clause
-Group:          Development/Languages/Python
 URL:            https://kwant-project.org/
 Source0:        https://files.pythonhosted.org/packages/source/k/kwant/kwant-%{version}.tar.gz
 BuildRequires:  %{python_module Cython}
-BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module numpy-devel}
+BuildRequires:  %{python_module devel >= 3.8}
+BuildRequires:  %{python_module numpy-devel >= 1.18 with %python-numpy-devel < 2}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  blas-devel
 BuildRequires:  fdupes
 BuildRequires:  lapack-devel
 BuildRequires:  mumps-devel
 BuildRequires:  python-rpm-macros
-Requires:       python-numpy
-Requires:       python-scipy
+Requires:       python-scipy >= 1.3
 Requires:       python-tinyarray
+Requires:       (python-numpy >= 1.18 with python-numpy < 2)
 Recommends:     python-matplotlib
 Recommends:     python-qsymm
 Recommends:     python-sympy
 # SECTION test requirements
-BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module scipy}
-BuildRequires:  %{python_module sympy}
+BuildRequires:  %{python_module scipy >= 1.3}
+BuildRequires:  %{python_module sympy >= 1.5}
 BuildRequires:  %{python_module tinyarray}
 # /SECTION
 # mumps exclusion list is "i586 s390 ppc armv7l" (sic!)
@@ -70,10 +70,10 @@ functions, out-of-equilibrium local quantities.
 %build
 # CAN'T FIND mumps HEADERS
 export CFLAGS="%{optflags} -I%{_includedir}/mumps"
-%python_build --cython
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 
 # REMOVE UNNEEDED HEADER FILE
 %python_expand rm %{buildroot}%{$python_sitearch}/%{modname}/graph/defs.h
@@ -91,7 +91,7 @@ popd
 %files %{python_files}
 %doc AUTHORS.rst README.rst
 %license LICENSE.rst
-%{python_sitearch}/%{modname}/
-%{python_sitearch}/%{modname}-%{version}-py%{python_version}.egg-info/
+%{python_sitearch}/%{modname}
+%{python_sitearch}/%{modname}-%{version}.dist-info
 
 %changelog
