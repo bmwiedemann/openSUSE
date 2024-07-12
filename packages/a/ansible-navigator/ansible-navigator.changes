@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Jul 11 19:01:51 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 24.7.0:
+  * Updated cspell dictionary and removed unneeded values (#1817)
+  * Bump the dependencies group in /.config with 4 updates (#1816)
+
+-------------------------------------------------------------------
+Thu Jul 11 18:57:18 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 24.6.1:
+  * Bugfixes
+    - Exit with an appropriate message if the image is invalid
+      (#1810) @shatakshiiii
+
+-------------------------------------------------------------------
 Wed Jul 03 19:10:08 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 24.6.0:
