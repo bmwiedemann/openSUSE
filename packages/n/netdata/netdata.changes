@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Fri Jul 12 00:04:13 UTC 2024 - Mia Herkt <mia@0x0.st>
+
+- Update to 1.46.2
+  * Improve collecting of ksm/swap/cma/zswap metrics: now collected
+    only when the feature is enabled (proc/vmstat, proc/meminfo)
+    gh#netdata/netdata#18076
+  * Fixed Prometheus "prometheus_all_hosts" export format by adding
+    a missing comma before the "instance" label
+    gh#netdata/netdata#18061
+  * Increased accuracy of average IO operation time metrics by
+    switching to microseconds (proc/diskstats)
+    gh#netdata/netdata#18040
+  * Fixed monitoring of host mount points when running Netdata in
+    Docker containers (diskspace.plugin)
+    gh#netdata/netdata#18035
+  * Alert prototypes: Default "after" value in calculations set to
+    -600 (10 minutes) for clarity
+    gh#netdata/netdata#18025
+  * Improved building by ensuring correct library usage by
+    enforcing vendor include ordering
+    gh#netdata/netdata#18008
+  * Disabled logsmanagement plugin by default during packaging due
+    to lack of support
+    gh#netdata/netdata#18002
+    (corresponding package dropped in openSUSE)
+  * Aligned default days until expiration warnings with
+    documentation (30/15) (go.d/whoisquery)
+    gh#netdata/netdata#18000
+  * Expiration times now displayed in days instead of seconds
+    (whoisquery and x509check alerts)
+    gh#netdata/netdata#17999
+  * Improved functionality within Docker containers by respecting
+    the DOCKER_HOST environment variable (go.d.plugin)
+    gh#netdata/netdata#17979
+  * Improved ping_host_reachable alert calculations for better
+    reliability
+    gh#netdata/netdata#17976
+
+-------------------------------------------------------------------
 Sat Jun 22 05:04:56 UTC 2024 - Mia Herkt <mia@0x0.st>
 
 - Update to 1.46.1

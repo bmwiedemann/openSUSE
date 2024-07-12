@@ -280,4 +280,12 @@
     <comment>Own gtk-doc dir structure (forwarded request 1139235 from dimstar)</comment>
     <requestid>1139260</requestid>
   </revision>
+  <revision rev="40" vrev="4">
+    <srcmd5>84f9a9a0cdd403621a0fe595ab0c9213</srcmd5>
+    <version>3.0.0</version>
+    <time>1720796693</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1186975</requestid>
+  </revision>
 </revisionlist>

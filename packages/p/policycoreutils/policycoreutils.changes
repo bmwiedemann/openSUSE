@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Jul  1 08:10:53 UTC 2024 - Cathy Hu <cathy.hu@suse.com>
+
+- Update to version 3.7
+  https://github.com/SELinuxProject/selinux/releases/tag/3.7
+  User-visible changes:
+    * audit2allow -C for CIL output mode
+    * sepolgen: adjust parse for refpolicy
+  * Bugfixes:
+    * fixfiles: drop unnecessary \ line endings
+    * setfiles: avoid unsigned integer underflow
+    * python/semanage: Do not sort local fcontext definitions
+    * python/semanage: Allow modifying records on "add"
+- Refresh get_os_version.patch
+
+-------------------------------------------------------------------
 Tue May 28 10:42:49 UTC 2024 - Cathy Hu <cathy.hu@suse.com>
 
 - Rework packaging to modern python packaging as we need

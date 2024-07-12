@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Jul 12 04:08:37 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Restrict numpy to < 2 for now. 
+
+-------------------------------------------------------------------
+Sat Jun 29 19:33:27 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.17.0:
+  * Remove Python 3.7, add 3.12
+  * Add layer control tree plugin
+  * Add Timeline plugin
+  * Add `Leaflet.encoded` plugin: Enable creating PolyLine and
+    Polygon from encoded string
+  * Add Evented base class
+  * Update Map zoom_control variable to also allow string to set
+    position
+  * Add a custom container to the realtime plugin
+  * Add custom Template class with tojavascript filter
+  * Drop Bootstrap 3 but keep glyphicons
+  * fix `__geo_interface__` styling
+  * Fixes styling on tag filter button
+  * repair max_zoom and max_native_zoom
+  * Change `Map` lat&lon bound type annotations from int to float
+
+-------------------------------------------------------------------
 Sat Apr 20 21:10:06 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.16.0:

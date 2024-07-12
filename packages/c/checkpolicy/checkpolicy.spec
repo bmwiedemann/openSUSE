@@ -1,7 +1,7 @@
 #
 # spec file for package checkpolicy
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%define libsepol_ver 3.6
+%define libsepol_ver 3.7
 Name:           checkpolicy
-Version:        3.6
+Version:        3.7
 Release:        0
 Summary:        SELinux policy compiler
 License:        GPL-2.0-or-later

@@ -168,4 +168,12 @@
   * add to API docs</comment>
     <requestid>1160839</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>0f87bd39e6b38140ec2deaf1ee8b3d81</srcmd5>
+    <version>2.0.4</version>
+    <time>1720796715</time>
+    <user>anag+factory</user>
+    <comment>- Restrict numpy to &lt; 2.</comment>
+    <requestid>1186985</requestid>
+  </revision>
 </revisionlist>

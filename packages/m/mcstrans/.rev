@@ -263,4 +263,18 @@
     <comment></comment>
     <requestid>1137091</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>49cb685cf243725e6eb64bf162b3685f</srcmd5>
+    <version>3.7</version>
+    <time>1720796663</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.7
+  https://github.com/SELinuxProject/selinux/releases/tag/3.7
+  * Bugfixes:
+    * mcstrans: free constraint in error branch
+    * mcstrans: ensure transitivity in compare functions
+    * mcstrans: check memory allocations
+</comment>
+    <requestid>1185749</requestid>
+  </revision>
 </revisionlist>

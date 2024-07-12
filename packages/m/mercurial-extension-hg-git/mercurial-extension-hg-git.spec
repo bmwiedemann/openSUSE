@@ -37,13 +37,13 @@
 %endif
 
 Name:           mercurial-extension-hg-git
-Version:        1.1.1
+Version:        1.1.3
 Release:        0
 Summary:        Hg-Git Mercurial plugin
 License:        GPL-2.0-only
 Group:          Development/Tools/Version Control
 URL:            http://foss.heptapod.net/mercurial/hg-git
-Source0:        https://files.pythonhosted.org/packages/source/h/hg-git/hg-git-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/h/hg-git/hg_git-%{version}.tar.gz
 Source90:       tests.blacklist
 BuildRequires:  %{mercurial_python}
 BuildRequires:  %{mercurial_python}-dulwich >= 0.19.3
@@ -77,7 +77,7 @@ This plugin for Mercurial adds the ability to push and pull to/from a Git server
 The Hg-Git plugin can convert commits/changesets losslessly from one system to another, so you can push via a Mercurial repository and another Hg client can pull it and their changeset node ids will be identical - Mercurial data does not get lost in translation. It is intended that Hg users may wish to use this to collaborate even if no Git users are involved in the project, and it may even provide some advantages if you’re using Bookmarks.
 
 %prep
-%setup -q -n hg-git-%{version}
+%setup -q -n hg_git-%{version}
 
 %build
 %pyproject_wheel

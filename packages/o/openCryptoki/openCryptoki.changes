@@ -13,7 +13,7 @@ Wed Feb  7 07:27:00 UTC 2024 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Upgrade openCryptoki to version 3.23 (jsc#PED-3360, jsc#PED-3361)
   * EP11: Add support for FIPS-session mode
-  * Updates to harden against RSA timing attacks
+  * Updates to harden against RSA timing attacks (bsc#1219217)
   * Bug fixes
 - Renamed ocki-3.22-remove-make-install-chgrp.patch to
           ocki-3.23-remove-make-install-chgrp.patch
@@ -68,7 +68,8 @@ Fri May 26 06:55:10 UTC 2023 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 -------------------------------------------------------------------
 Thu Feb 16 13:22:45 UTC 2023 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
-- Updated package to openCryptoki 3.20 (jsc#PED-2870)
+- Updated package to openCryptoki 3.20 (bsc#1207760,
+         jsc#PED-3376, jsc#PED-2870, jsc#PED-2869 ) 
 - Removed the following obsolite patches:
         * ocki-3.19.0-0001-EP11-Unify-key-pair-generation-functions.patch
         * ocki-3.19.0-0002-EP11-Do-not-report-DSA-DH-parameter-generation-as-be.patch

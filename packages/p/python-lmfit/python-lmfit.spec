@@ -1,7 +1,7 @@
 #
 # spec file for package python-lmfit
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,15 @@
 
 
 Name:           python-lmfit
-Version:        1.2.2
+Version:        1.3.1
 Release:        0
 Summary:        Least-Squares Minimization with Bounds and Constraints
 License:        BSD-3-Clause AND MIT
 URL:            https://lmfit.github.io/lmfit-py/
 Source:         https://files.pythonhosted.org/packages/source/l/lmfit/lmfit-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.7}
+# PATCH-FIX-UPSTREAM gh#lmfit/lmfit-py#959
+Patch0:         support-numpy-2.patch
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
@@ -31,19 +33,22 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-asteval >= 0.9.28
-Requires:       python-numpy >= 1.19
-Requires:       python-scipy >= 1.6
+Requires:       python-dill >= 0.3.4
+Requires:       python-numpy >= 1.23
+Requires:       python-scipy >= 1.8
 Requires:       python-uncertainties >= 3.1.4
-Recommends:     python-dill
 Recommends:     python-emcee
 Recommends:     python-matplotlib
 Recommends:     python-pandas
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module asteval >= 0.9.28}
-BuildRequires:  %{python_module numpy >= 1.19}
+BuildRequires:  %{python_module dill >= 0.3.4}
+BuildRequires:  %{python_module flaky}
+BuildRequires:  %{python_module numpy >= 1.23}
+BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module scipy >= 1.6}
+BuildRequires:  %{python_module scipy >= 1.8}
 BuildRequires:  %{python_module uncertainties >= 3.1.4}
 # /SECTION
 %python_subpackages
@@ -68,10 +73,8 @@ estimating Parameter uncertainties from the covariance matrix is
 questionable.
 
 %prep
-%setup -q -n lmfit-%{version}
+%autosetup -p1 -n lmfit-%{version}
 sed -i -e '/^#!\//, 1d' lmfit/jsonutils.py
-# only coverage related pytest flags here. remove
-sed -i '/addopts/d' setup.cfg
 
 %build
 %pyproject_wheel
@@ -97,6 +100,6 @@ fi
 %doc README.rst AUTHORS.txt
 %license LICENSE
 %{python_sitelib}/lmfit
-%{python_sitelib}/lmfit-%{version}*-info
+%{python_sitelib}/lmfit-%{version}.dist-info
 
 %changelog

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jul 12 02:20:58 UTC 2024 - mvetter@suse.com
+
+- Update to version 0~20240711.74a63c6:
+  * Implement Late Externalization for STRONG externalization type
+  * Check the TagDecl in TypedefNameDecl for extra attributes
+  * Github CI: Drop llvm-16, enable llvm-17 and 18
+  * Add logic to get the system's gcc headers install folder
+  * Undefine noinline macro if conflicts with AST dump
+  * Store ASTUnit in PrettyPrint instead of SourceManager
+
+-------------------------------------------------------------------
 Fri Jul 05 07:22:03 UTC 2024 - mvetter@suse.com
 
 - Update to version 0~20240704.16ab0bf:

@@ -624,4 +624,23 @@ sepolgen: Add back attributes flag to fix exception crash from Dan Walsh.
     <comment></comment>
     <requestid>1178335</requestid>
   </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>f7444494a1e1e3f3d5704a3cd8071f8b</srcmd5>
+    <version>3.7</version>
+    <time>1720796664</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.7
+  https://github.com/SELinuxProject/selinux/releases/tag/3.7
+  User-visible changes:
+    * audit2allow -C for CIL output mode
+    * sepolgen: adjust parse for refpolicy
+  * Bugfixes:
+    * fixfiles: drop unnecessary \ line endings
+    * setfiles: avoid unsigned integer underflow
+    * python/semanage: Do not sort local fcontext definitions
+    * python/semanage: Allow modifying records on &quot;add&quot;
+- Refresh get_os_version.patch
+</comment>
+    <requestid>1185750</requestid>
+  </revision>
 </revisionlist>

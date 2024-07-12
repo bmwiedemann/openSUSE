@@ -26,6 +26,9 @@ License:        LGPL-2.0-only
 Group:          Development/Libraries/GNOME
 URL:            https://wiki.gnome.org/GooCanvas
 Source0:        https://download.gnome.org/sources/goocanvas/3.0/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM fix-gcc14-build.patch -- Fix building with GCC 14
+Patch1:         fix-gcc14-build.patch
+
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(cairo) >= 1.10.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.0.0
@@ -98,8 +101,7 @@ This package provides the GObject Introspection bindings for GooCanvas.
 rm %{buildroot}%{_libdir}/*.*a
 %find_lang goocanvas3
 
-%post -n libgoocanvas-3_0-9 -p /sbin/ldconfig
-%postun -n libgoocanvas-3_0-9 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libgoocanvas-3_0-9
 
 %files -n libgoocanvas-3_0-9
 %doc AUTHORS NEWS README TODO

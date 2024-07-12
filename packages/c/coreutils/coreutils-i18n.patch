@@ -1541,12 +1541,13 @@ Index: coreutils-9.5/src/fold.c
  
 -  saved_errno = errno;
 +  *saved_errno = errno;
-+  if (!ferror (istream))
+   if (!ferror (istream))
+-    saved_errno = 0;
 +    *saved_errno = 0;
-+
-+  if (offset_out)
-+    fwrite (line_out, sizeof (char), (size_t) offset_out, stdout);
-+
+ 
+   if (offset_out)
+     fwrite (line_out, sizeof (char), (size_t) offset_out, stdout);
+ 
 +}
 +
 +#if HAVE_MBRTOWC
@@ -1718,19 +1719,18 @@ Index: coreutils-9.5/src/fold.c
 +    }
 +
 +  *saved_errno = errno;
-   if (!ferror (istream))
--    saved_errno = 0;
++  if (!ferror (istream))
 +    *saved_errno = 0;
- 
-   if (offset_out)
-     fwrite (line_out, sizeof (char), (size_t) offset_out, stdout);
- 
++
++  if (offset_out)
++    fwrite (line_out, sizeof (char), (size_t) offset_out, stdout);
++
 +}
 +#endif
 +
 +/* Fold file FILENAME, or standard input if FILENAME is "-",
 +   to stdout, with maximum line length WIDTH.
-+   Return 0 if successful, 1 if an error occurs. */
++   Return true if successful. */
 +
 +static bool
 +fold_file (char const *filename, size_t width)
@@ -1741,15 +1741,15 @@ Index: coreutils-9.5/src/fold.c
 +  if (STREQ (filename, "-"))
 +    {
 +      istream = stdin;
-+      have_read_stdin = 1;
++      have_read_stdin = true;
 +    }
 +  else
 +    istream = fopen (filename, "r");
 +
-+  if (istream == NULL)
++  if (istream == nullptr)
 +    {
 +      error (0, errno, "%s", filename);
-+      return 1;
++      return false;
 +    }
 +
 +  /* Define how ISTREAM is being folded. */

@@ -4551,4 +4551,41 @@ Other Notable Changes
     gh#netdata/netdata#17963</comment>
     <requestid>1182543</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>ff74ad3adaf529073f44e3e8a08552eb</srcmd5>
+    <version>1.46.2</version>
+    <time>1720796721</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.46.2
+  * Improve collecting of ksm/swap/cma/zswap metrics: now collected
+    only when the feature is enabled (proc/vmstat, proc/meminfo)
+    gh#netdata/netdata#18076
+  * Fixed Prometheus &quot;prometheus_all_hosts&quot; export format by adding
+    a missing comma before the &quot;instance&quot; label
+    gh#netdata/netdata#18061
+  * Increased accuracy of average IO operation time metrics by
+    switching to microseconds (proc/diskstats)
+    gh#netdata/netdata#18040
+  * Fixed monitoring of host mount points when running Netdata in
+    Docker containers (diskspace.plugin)
+    gh#netdata/netdata#18035
+  * Alert prototypes: Default &quot;after&quot; value in calculations set to
+    -600 (10 minutes) for clarity
+    gh#netdata/netdata#18025
+  * Improved building by ensuring correct library usage by
+    enforcing vendor include ordering
+    gh#netdata/netdata#18008
+  * Disabled logsmanagement plugin by default during packaging due
+    to lack of support
+    gh#netdata/netdata#18002
+    (corresponding package dropped in openSUSE)
+  * Aligned default days until expiration warnings with
+    documentation (30/15) (go.d/whoisquery)
+    gh#netdata/netdata#18000
+  * Expiration times now displayed in days instead of seconds
+    (whoisquery and x509check alerts)
+    gh#netdata/netdata#17999
+  * Improved functionality within Docker containers by respecting</comment>
+    <requestid>1186980</requestid>
+  </revision>
 </revisionlist>

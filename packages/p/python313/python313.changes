@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul  4 16:04:05 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Stop using %%defattr, it seems to be breaking proper executable
+  attributes on /usr/bin/ scripts (bsc#1227378).
+
+-------------------------------------------------------------------
 Sun Jun 30 19:20:56 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - move pathlib to -base

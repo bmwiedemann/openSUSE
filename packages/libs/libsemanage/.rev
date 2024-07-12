@@ -566,4 +566,20 @@ Could not find any LGPL-2.1 &quot;only&quot; licensed files in the pacakge (forw
     <comment></comment>
     <requestid>1178334</requestid>
   </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>a66f83839a8393b302068cb18f27b045</srcmd5>
+    <version>3.7</version>
+    <time>1720796660</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.7
+  https://github.com/SELinuxProject/selinux/releases/tag/3.7
+  * Bugfixes: 
+    * libsemanage: support huge passwd entries
+- Update to version 3.7
+  https://github.com/SELinuxProject/selinux/releases/tag/3.7
+  * Bugfixes: 
+    * libsemanage: support huge passwd entries
+</comment>
+    <requestid>1185747</requestid>
+  </revision>
 </revisionlist>

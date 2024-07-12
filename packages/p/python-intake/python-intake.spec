@@ -57,7 +57,7 @@ BuildRequires:  %{python_module intake = %{version}}
 #BuildRequires:  %%{python_module intake-parquet}
 BuildRequires:  %{python_module msgpack-numpy}
 BuildRequires:  %{python_module notebook}
-BuildRequires:  %{python_module numpy}
+BuildRequires:  %{python_module numpy < 2}
 BuildRequires:  %{python_module pandas}
 BuildRequires:  %{python_module panel}
 BuildRequires:  %{python_module pytest}

@@ -1,0 +1,343 @@
+From eee021f650833f0a2667315b2ab5d8351f0b1a1f Mon Sep 17 00:00:00 2001
+From: Matthew Newville <newville@cars.uchicago.edu>
+Date: Sat, 29 Jun 2024 10:27:59 -0500
+Subject: [PATCH 1/6] clean un-serializable symbols with NumPy2 that should be
+ removed from asteval
+
+---
+ lmfit/parameter.py | 31 ++++++++++++++++++++++++-------
+ pyproject.toml     |  3 ++-
+ 2 files changed, 26 insertions(+), 8 deletions(-)
+
+diff --git a/lmfit/parameter.py b/lmfit/parameter.py
+index ca9ccc72..b68584c4 100644
+--- a/lmfit/parameter.py
++++ b/lmfit/parameter.py
+@@ -5,6 +5,8 @@
+ 
+ from asteval import Interpreter, get_ast_names, valid_symbol_name
+ from numpy import arcsin, array, cos, inf, isclose, sin, sqrt
++from numpy import version as npvers
++from packaging.version import Version
+ from scipy.linalg import LinAlgError
+ import scipy.special
+ from uncertainties import correlated_values, ufloat
+@@ -21,6 +23,18 @@
+     SCIPY_FUNCTIONS[fnc_name] = getattr(scipy.special, fnc_name)
+ 
+ 
++def clean_np2_symbols(user_syms):
++    """clean symbols from self._asteval.user_defined_symbols()
++    that have been deprecated in numpy 2.0
++    This should be a short term fix, as these are removed from asteval.
++    """
++    if Version(npvers.version) > Version('1.9'):
++        for sym in ('ogrid', 'mgrid', 'c_', 'r_', 's_', 'index_exp'):
++            if sym in user_syms:
++                user_syms.remove(sym)
++    return user_syms
++
++
+ def check_ast_errors(expr_eval):
+     """Check for errors derived from asteval."""
+     if len(expr_eval.error) > 0:
+@@ -95,7 +109,8 @@ def update(self, other):
+         if not isinstance(other, Parameters):
+             raise ValueError(f"'{other}' is not a Parameters object")
+         self.add_many(*other.values())
+-        for sym in other._asteval.user_defined_symbols():
++        usersyms = clean_np2_symbols(other._asteval.user_defined_symbols())
++        for sym in usersyms:
+             self._asteval.symtable[sym] = other._asteval.symtable[sym]
+         return self
+ 
+@@ -114,7 +129,8 @@ def __deepcopy__(self, memo):
+ 
+         # find the symbols that were added by users, not during construction
+         unique_symbols = {}
+-        for key in self._asteval.user_defined_symbols():
++        usersyms = clean_np2_symbols(self._asteval.user_defined_symbols())
++        for key in usersyms:
+             try:
+                 val = deepcopy(self._asteval.symtable[key])
+                 unique_symbols[key] = val
+@@ -161,7 +177,8 @@ def __add__(self, other):
+             raise ValueError(f"'{other}' is not a Parameters object")
+         out = deepcopy(self)
+         out.add_many(*other.values())
+-        for sym in other._asteval.user_defined_symbols():
++        usersyms = clean_np2_symbols(other._asteval.user_defined_symbols())
++        for sym in usersyms:
+             if sym not in out._asteval.symtable:
+                 out._asteval.symtable[sym] = other._asteval.symtable[sym]
+         return out
+@@ -181,9 +198,9 @@ def __reduce__(self):
+         params = [self[k] for k in self]
+ 
+         # find the symbols from _asteval.symtable, that need to be remembered.
+-        sym_unique = self._asteval.user_defined_symbols()
++        usersyms = clean_np2_symbols(self._asteval.user_defined_symbols())
+         unique_symbols = {key: deepcopy(self._asteval.symtable[key])
+-                          for key in sym_unique}
++                          for key in usersyms}
+ 
+         return self.__class__, (), {'unique_symbols': unique_symbols,
+                                     'params': params}
+@@ -567,9 +584,9 @@ def dumps(self, **kws):
+ 
+         """
+         params = [p.__getstate__() for p in self.values()]
+-        sym_unique = self._asteval.user_defined_symbols()
++        usersyms = clean_np2_symbols(self._asteval.user_defined_symbols())
+         unique_symbols = {key: encode4js(deepcopy(self._asteval.symtable[key]))
+-                          for key in sym_unique}
++                          for key in usersyms}
+         return json.dumps({'unique_symbols': unique_symbols,
+                            'params': params}, **kws)
+ 
+diff --git a/pyproject.toml b/pyproject.toml
+index 623c6a2d..511e9a97 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -10,7 +10,8 @@ dependencies = [
+     "numpy>=1.19",
+     "scipy>=1.6",
+     "uncertainties>=3.1.4",
+-    "dill>=0.3.4"
++    "dill>=0.3.4",
++    "packaging",
+ ]
+ requires-python = ">= 3.8"
+ authors = [
+
+From 2a195ac6a375b34245f330f8e60824f564e086bd Mon Sep 17 00:00:00 2001
+From: Matthew Newville <newville@cars.uchicago.edu>
+Date: Sat, 29 Jun 2024 10:36:34 -0500
+Subject: [PATCH 2/6] fix numpy2 deprecation
+
+---
+ tests/test_model.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tests/test_model.py b/tests/test_model.py
+index 396ea0b1..24dfbfcd 100644
+--- a/tests/test_model.py
++++ b/tests/test_model.py
+@@ -900,7 +900,7 @@ def test_independent_var_parsing(self):
+         yatan = stepmod2.eval(pars, x=x)
+ 
+         assert (yatan-yline).std() > 0.1
+-        assert (yatan-yline).ptp() > 1.0
++        assert np.ptp(yatan-yline) > 1.0
+ 
+         voigtmod = Model(voigt)
+         assert 'x' in voigtmod.independent_vars
+
+From 48d3b5f9338312078186543044fb5d0109cec429 Mon Sep 17 00:00:00 2001
+From: Matthew Newville <newville@cars.uchicago.edu>
+Date: Sat, 29 Jun 2024 10:38:23 -0500
+Subject: [PATCH 3/6] specify numpy>=2  for latest tests
+
+---
+ azure-pipelines.yml | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/azure-pipelines.yml b/azure-pipelines.yml
+index 53c7c7f1..54f70890 100644
+--- a/azure-pipelines.yml
++++ b/azure-pipelines.yml
+@@ -139,7 +139,7 @@ stages:
+             swig libmpc-dev
+           displayName: 'Install dependencies'
+         - script: |
+-            python -m pip install --upgrade build pip setuptools wheel
++            python -m pip install --upgrade build pip setuptools wheel "numpy>=2.0"
+           displayName: 'Install latest available version of Python dependencies'
+         - script: |
+             python -m build
+@@ -183,7 +183,7 @@ stages:
+             versionSpec: '$(python.version)'
+           displayName: 'Use Python $(python.version)'
+         - script: |
+-            python -m pip install --upgrade build pip setuptools wheel
++            python -m pip install --upgrade build pip setuptools wheel "numpy>=2.0"
+           displayName: 'Install latest available version of Python dependencies'
+         - script: |
+             python -m build
+@@ -218,7 +218,7 @@ stages:
+             versionSpec: '$(python.version)'
+           displayName: 'Use Python $(python.version)'
+         - script: |
+-            python -m pip install --upgrade build pip setuptools wheel
++            python -m pip install --upgrade build pip setuptools wheel "numpy>=2.0"
+           displayName: 'Install latest available version of Python dependencies'
+         - script: |
+             python -m build
+
+From 2a40772b20e2c1c48807c6b50d36217d72472d28 Mon Sep 17 00:00:00 2001
+From: Matthew Newville <newville@cars.uchicago.edu>
+Date: Sat, 29 Jun 2024 10:55:24 -0500
+Subject: [PATCH 4/6] numpy2 not available for Python3.8
+
+---
+ azure-pipelines.yml | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/azure-pipelines.yml b/azure-pipelines.yml
+index 54f70890..98f8674b 100644
+--- a/azure-pipelines.yml
++++ b/azure-pipelines.yml
+@@ -107,13 +107,13 @@ stages:
+         - script: |
+             ./codecov -v -f "coverage.xml"
+           displayName: 'Upload to codecov.io'
+-
+ - stage: tests_latest_dependencies
+   dependsOn: check_codestyle
+   condition: succeededOrFailed()
+   jobs:
+     - job:
+       pool:
++
+         vmImage: 'ubuntu-latest'
+       strategy:
+         matrix:
+@@ -139,7 +139,7 @@ stages:
+             swig libmpc-dev
+           displayName: 'Install dependencies'
+         - script: |
+-            python -m pip install --upgrade build pip setuptools wheel "numpy>=2.0"
++            python -m pip install --upgrade build pip setuptools wheel numpy
+           displayName: 'Install latest available version of Python dependencies'
+         - script: |
+             python -m build
+
+From 4a986540dec49cc714faa726a060c5d9dda66feb Mon Sep 17 00:00:00 2001
+From: Matthew Newville <newville@cars.uchicago.edu>
+Date: Sun, 30 Jun 2024 13:46:26 -0500
+Subject: [PATCH 5/6] remove packaging, clarify when clean_np2_symbols() can be
+ removed
+
+---
+ lmfit/parameter.py | 10 +++++++---
+ pyproject.toml     |  1 -
+ 2 files changed, 7 insertions(+), 4 deletions(-)
+
+diff --git a/lmfit/parameter.py b/lmfit/parameter.py
+index b68584c4..56e37f94 100644
+--- a/lmfit/parameter.py
++++ b/lmfit/parameter.py
+@@ -6,7 +6,6 @@
+ from asteval import Interpreter, get_ast_names, valid_symbol_name
+ from numpy import arcsin, array, cos, inf, isclose, sin, sqrt
+ from numpy import version as npvers
+-from packaging.version import Version
+ from scipy.linalg import LinAlgError
+ import scipy.special
+ from uncertainties import correlated_values, ufloat
+@@ -26,9 +25,9 @@
+ def clean_np2_symbols(user_syms):
+     """clean symbols from self._asteval.user_defined_symbols()
+     that have been deprecated in numpy 2.0
+-    This should be a short term fix, as these are removed from asteval.
++    This function can be removed when asteval 0.9.33 is no longer supported
+     """
+-    if Version(npvers.version) > Version('1.9'):
++    if npvers.version.startswith('2'):
+         for sym in ('ogrid', 'mgrid', 'c_', 'r_', 's_', 'index_exp'):
+             if sym in user_syms:
+                 user_syms.remove(sym)
+@@ -109,6 +108,7 @@ def update(self, other):
+         if not isinstance(other, Parameters):
+             raise ValueError(f"'{other}' is not a Parameters object")
+         self.add_many(*other.values())
++        # FIXME: clear_np2_symbols() can be removed when asteval 0.9.33 is not supported
+         usersyms = clean_np2_symbols(other._asteval.user_defined_symbols())
+         for sym in usersyms:
+             self._asteval.symtable[sym] = other._asteval.symtable[sym]
+@@ -129,6 +129,7 @@ def __deepcopy__(self, memo):
+ 
+         # find the symbols that were added by users, not during construction
+         unique_symbols = {}
++        # FIXME: clear_np2_symbols() can be removed when asteval 0.9.33 is not supported
+         usersyms = clean_np2_symbols(self._asteval.user_defined_symbols())
+         for key in usersyms:
+             try:
+@@ -177,6 +178,7 @@ def __add__(self, other):
+             raise ValueError(f"'{other}' is not a Parameters object")
+         out = deepcopy(self)
+         out.add_many(*other.values())
++        # FIXME: clear_np2_symbols() can be removed when asteval 0.9.33 is not supported
+         usersyms = clean_np2_symbols(other._asteval.user_defined_symbols())
+         for sym in usersyms:
+             if sym not in out._asteval.symtable:
+@@ -198,6 +200,7 @@ def __reduce__(self):
+         params = [self[k] for k in self]
+ 
+         # find the symbols from _asteval.symtable, that need to be remembered.
++        # FIXME: clear_np2_symbols() can be removed when asteval 0.9.33 is not supported
+         usersyms = clean_np2_symbols(self._asteval.user_defined_symbols())
+         unique_symbols = {key: deepcopy(self._asteval.symtable[key])
+                           for key in usersyms}
+@@ -584,6 +587,7 @@ def dumps(self, **kws):
+ 
+         """
+         params = [p.__getstate__() for p in self.values()]
++        # FIXME: clear_np2_symbols() can be removed when asteval 0.9.33 is not supported
+         usersyms = clean_np2_symbols(self._asteval.user_defined_symbols())
+         unique_symbols = {key: encode4js(deepcopy(self._asteval.symtable[key]))
+                           for key in usersyms}
+diff --git a/pyproject.toml b/pyproject.toml
+index 511e9a97..a40dad96 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -11,7 +11,6 @@ dependencies = [
+     "scipy>=1.6",
+     "uncertainties>=3.1.4",
+     "dill>=0.3.4",
+-    "packaging",
+ ]
+ requires-python = ">= 3.8"
+ authors = [
+
+From 8c49b0cebef3bc1e05f6c8ccf3278f1049d8cae2 Mon Sep 17 00:00:00 2001
+From: Matthew Newville <newville@cars.uchicago.edu>
+Date: Sun, 30 Jun 2024 13:47:14 -0500
+Subject: [PATCH 6/6] revert azure pipeline to not specify numpy version for
+ most tests
+
+---
+ azure-pipelines.yml | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/azure-pipelines.yml b/azure-pipelines.yml
+index 98f8674b..03a3b132 100644
+--- a/azure-pipelines.yml
++++ b/azure-pipelines.yml
+@@ -139,7 +139,7 @@ stages:
+             swig libmpc-dev
+           displayName: 'Install dependencies'
+         - script: |
+-            python -m pip install --upgrade build pip setuptools wheel numpy
++            python -m pip install --upgrade build pip setuptools wheel
+           displayName: 'Install latest available version of Python dependencies'
+         - script: |
+             python -m build
+@@ -183,7 +183,7 @@ stages:
+             versionSpec: '$(python.version)'
+           displayName: 'Use Python $(python.version)'
+         - script: |
+-            python -m pip install --upgrade build pip setuptools wheel "numpy>=2.0"
++            python -m pip install --upgrade build pip setuptools wheel
+           displayName: 'Install latest available version of Python dependencies'
+         - script: |
+             python -m build
+@@ -218,7 +218,7 @@ stages:
+             versionSpec: '$(python.version)'
+           displayName: 'Use Python $(python.version)'
+         - script: |
+-            python -m pip install --upgrade build pip setuptools wheel "numpy>=2.0"
++            python -m pip install --upgrade build pip setuptools wheel
+           displayName: 'Install latest available version of Python dependencies'
+         - script: |
+             python -m build

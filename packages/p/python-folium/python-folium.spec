@@ -28,7 +28,7 @@
 %bcond_with test
 %endif
 Name:           python-folium%{psuffix}
-Version:        0.16.0
+Version:        0.17.0
 Release:        0
 Summary:        Make beautiful maps with Leafletjs and Python
 License:        MIT
@@ -47,7 +47,7 @@ BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module branca >= 0.6.0}
 BuildRequires:  %{python_module folium = %{version}}
 BuildRequires:  %{python_module geopandas}
-BuildRequires:  %{python_module numpy}
+BuildRequires:  %{python_module numpy < 2}
 BuildRequires:  %{python_module pandas}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
@@ -58,7 +58,7 @@ BuildRequires:  %{python_module xyzservices}
 %endif
 Requires:       python-Jinja2 >= 2.9
 Requires:       python-branca >= 0.6.0
-Requires:       python-numpy
+Requires:       python-numpy < 2
 Requires:       python-requests
 Requires:       python-xyzservices
 BuildArch:      noarch
@@ -89,7 +89,7 @@ export SETUPTOOLS_SCM_PRETEND_VERSION=%{version}
 # no working chromedriver for selenium
 ignoretests="--ignore tests/selenium"
 # requires network access
-donttest="test_json_request"
+donttest="test_json_request or test_timedynamic_geo_json"
 # also uses selenium
 donttest="$donttest or test__repr_png_is_bytes or test_valid_png or test_valid_png_size"
 # no proj database backend running

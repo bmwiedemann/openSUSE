@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Jul 11 18:30:16 UTC 2024 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 11.1.4.
+  * compatibility with Mercurial 6.8
+  topic (1.1.4)
+  * compatibility with Mercurial 6.8
+- Changes from version 11.1.3:
+  topic (1.1.3)
+  * topic namespaces: add hg debug-default-topic-namespace command that can
+    list changesets with problematic topic namespaces (i.e. "none" and
+    "default") and rewrite them
+  * topic namespaces: new experimental.tns-reject-push config to make servers
+    reject pushes that contain changesets with any topic namespace in commit
+    extras
+  * topic namespaces: slightly change .hg/topic-namespace cleanup code to be
+    executed on acquiring a wlock instead of on reading .hg/topic-namespace
+
+
+-------------------------------------------------------------------
 Tue Jun 18 01:23:32 UTC 2024 - Lukas Müller <expeehaa@outlook.com>
 
 - Build package with Python 3.11 on Leap 15.6.

@@ -49,4 +49,18 @@
 - Put version requirement on llvm-devel</comment>
     <requestid>1185728</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d7739217ecc90dfa30286697a9328c6d</srcmd5>
+    <version>0~20240711.74a63c6</version>
+    <time>1720796719</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0~20240711.74a63c6:
+  * Implement Late Externalization for STRONG externalization type
+  * Check the TagDecl in TypedefNameDecl for extra attributes
+  * Github CI: Drop llvm-16, enable llvm-17 and 18
+  * Add logic to get the system's gcc headers install folder
+  * Undefine noinline macro if conflicts with AST dump
+  * Store ASTUnit in PrettyPrint instead of SourceManager</comment>
+    <requestid>1186987</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul 11 20:10:14 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add fix-gcc14-build.patch: Fix build with gcc 14.
+- Use ldconfig_scriptlets for post(un) handling.
+
+-------------------------------------------------------------------
 Tue Jan 16 16:19:16 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Own /usr/share/gtk-doc: glib no longer uses gtk-doc and as a

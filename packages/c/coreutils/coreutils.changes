@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jul  9 20:22:23 UTC 2024 - Bernhard Voelker <mail@bernhard-voelker.de>
+
+- coreutils-i18n.patch: fold(1): fix exit code for non-existent file.
+  The exit code of fold(1) was zero for non-existent file:
+    $ fold badfile; echo $?
+    fold: badfile: No such file or directory
+    0
+  The bug was introduced by the downstrean I18N patch. (rhbz#2296201)
+
+-------------------------------------------------------------------
 Mon Apr  1 18:07:16 UTC 2024 - Bernhard Voelker <mail@bernhard-voelker.de>
 
 - Update to 9.5:

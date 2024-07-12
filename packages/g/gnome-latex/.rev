@@ -100,4 +100,12 @@
     <comment>Pushing GNOME 45.rc packages (forwarded request 1109821 from iznogood)</comment>
     <requestid>1110490</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>c0c807e7285b609c372864a7bbbecf87</srcmd5>
+    <version>3.46.0</version>
+    <time>1720796692</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1186974</requestid>
+  </revision>
 </revisionlist>

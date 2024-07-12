@@ -94,4 +94,29 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1170511</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>7760307f2a0242454730066c2927b927</srcmd5>
+    <version>0.17.0</version>
+    <time>1720796717</time>
+    <user>anag+factory</user>
+    <comment>- Restrict numpy to &lt; 2 for now. 
+
+- update to 0.17.0:
+  * Remove Python 3.7, add 3.12
+  * Add layer control tree plugin
+  * Add Timeline plugin
+  * Add `Leaflet.encoded` plugin: Enable creating PolyLine and
+    Polygon from encoded string
+  * Add Evented base class
+  * Update Map zoom_control variable to also allow string to set
+    position
+  * Add a custom container to the realtime plugin
+  * Add custom Template class with tojavascript filter
+  * Drop Bootstrap 3 but keep glyphicons
+  * fix `__geo_interface__` styling
+  * Fixes styling on tag filter button
+  * repair max_zoom and max_native_zoom
+  * Change `Map` lat&amp;lon bound type annotations from int to float</comment>
+    <requestid>1186992</requestid>
+  </revision>
 </revisionlist>

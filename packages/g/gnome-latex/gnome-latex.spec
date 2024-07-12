@@ -64,11 +64,13 @@ features are:
 
 %prep
 %autosetup -p1
+find -name '*.vala' -exec touch {} \;
 
 %build
 autoreconf -fiv
 %configure \
 	--enable-gtk-doc \
+	--enable-vala \
 	%{nil}
 %make_build
 

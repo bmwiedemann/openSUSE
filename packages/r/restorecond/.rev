@@ -111,4 +111,15 @@
     <comment></comment>
     <requestid>1137092</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>c11928416fd7782fb9107c10be76bfdb</srcmd5>
+    <version>3.7</version>
+    <time>1720796669</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.7
+  https://github.com/SELinuxProject/selinux/releases/tag/3.7
+  * no changes from 3.6, only version changed to 3.7
+</comment>
+    <requestid>1185751</requestid>
+  </revision>
 </revisionlist>

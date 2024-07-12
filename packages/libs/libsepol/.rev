@@ -437,4 +437,32 @@
     <comment></comment>
     <requestid>1137090</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>8ffa9f5284341e6f503587066d0f2be0</srcmd5>
+    <version>3.7</version>
+    <time>1720796661</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.7
+  https://github.com/SELinuxProject/selinux/releases/tag/3.7
+  * User-visible changes:
+    * libsepol: improve policy lookup failure message
+    * libsepol: include prefix for module policy versions
+    * libsepol: validate type-attribute-map for old policies
+    * libsepol: only exempt gaps checking for kernel policies
+  * Bugfixes:
+    * libsepol/src/Makefile: fix reallocarray detection
+    * libsepol/cil: Fix detected RESOURCE_LEAK (CWE-772)
+    * libsepol: ensure transitivity in compare functions
+  * oss-fuzz fixes:
+    * libsepol: check scope permissions refer to valid class
+    * libsepol: validate attribute-type maps
+    * libsepol: reject self flag in type rules in old policies
+    * libsepol: validate class permissions
+    * libsepol: validate access vector permissions
+    * libsepol: reject MLS support in pre-MLS policies
+    * libsepol: Fix buffer overflow when using sepol_av_to_string()
+    * libsepol: Use a dynamic buffer in sepol_av_to_string()
+</comment>
+    <requestid>1185748</requestid>
+  </revision>
 </revisionlist>

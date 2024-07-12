@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jul 11 18:41:39 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.61.0:
+  * Added `hclvalidate` command (#3248)
+  * Added `--terragrunt-excludes-file` flag (#3255)
+  * fix: Adjusting CODEOWNERS file so that all are recognized as
+    codeowners, instead of only the last entry (#3251)
+
+-------------------------------------------------------------------
 Wed Jul 10 08:35:11 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.60.1:

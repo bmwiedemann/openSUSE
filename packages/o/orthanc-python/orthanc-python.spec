@@ -19,7 +19,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           orthanc-python
-Version:        4.2
+Version:        4.3
 Release:        0
 Summary:        Python plugin for Orthanc
 License:        AGPL-3.0-or-later

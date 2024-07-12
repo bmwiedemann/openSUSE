@@ -17,7 +17,7 @@
 
 
 Name:           bluetui
-Version:        0.4
+Version:        0.5
 Release:        0
 Summary:        TUI for managing bluetooth devices
 License:        GPL-3.0-or-later
@@ -43,8 +43,6 @@ an alternative to most bluetooth managers, like blueman.
 
 %install
 install -Dm755 target/release/%{name} -t %{buildroot}%{_bindir}
-
-%check
 
 %files
 %license LICEN*

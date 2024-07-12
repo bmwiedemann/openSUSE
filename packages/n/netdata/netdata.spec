@@ -22,7 +22,7 @@
 %define __builder ninja
 
 Name:           netdata
-Version:        1.46.1
+Version:        1.46.2
 Release:        0
 Summary:        A system for distributed real-time performance and health monitoring
 # netdata is GPL-3.0+, other licenses refer to included third-party software (see REDISTRIBUTED.md)
@@ -198,6 +198,7 @@ versions instead of the Python versions.
 Summary:        The go.d metrics collection plugin for the Netdata Agent
 Requires:       netdata = %{version}
 Suggests:       nvme-cli
+Suggests:       sensors
 Suggests:       sudo
 Supplements:    netdata
 Provides:       netdata:%{_libexecdir}/%{name}/plugins.d/go.d.plugin
@@ -293,24 +294,6 @@ metrics exposed through debugfs.
 %files plugin-debugfs
 # CAP_DAC_READ_SEARCH required for data collection.
 %caps(cap_dac_read_search=ep) %attr(0750,root,%{netdata_user}) %{_libexecdir}/%{name}/plugins.d/debugfs.plugin
-
-%package plugin-logs-management
-Summary:        The logs-management plugin for the Netdata Agent
-Requires:       netdata = %{version}
-Enhances:       netdata
-Provides:       netdata:%{_libexecdir}/%{name}/plugins.d/logs-management.plugin
-
-%description plugin-logs-management
-This plugin allows the Netdata Agent to collect logs from the system
-and parse them to extract metrics.
-
-%files plugin-logs-management
-%defattr(0644,root,%{netdata_user},0755)
-%{_prefix}/lib/%{name}/conf.d/logsmanagement.d.conf
-%{_prefix}/lib/%{name}/conf.d/logsmanagement.d
-%defattr(0750,root,%{netdata_user},0750)
-# CAP_DAC_READ_SEARCH and CAP_SYSLOG needed for data collection.
-%caps(cap_dac_read_search,cap_syslog=ep) %attr(0750,root,%{netdata_user}) %{_libexecdir}/%{name}/plugins.d/logs-management.plugin
 
 %package plugin-network-viewer
 Summary:        The network viewer plugin for the Netdata Agent
