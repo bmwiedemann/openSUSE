@@ -1,7 +1,7 @@
 #
 # spec file for package python-cma
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2020 Christoph Junghans
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,9 +17,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-# No numpy on 3.6
-%define skip_python36 1
 Name:           python-cma
 Version:        3.3.0
 Release:        0
@@ -28,11 +25,13 @@ License:        BSD-3-Clause
 URL:            https://cma.gforge.inria.fr/cmaes_sourcecode_page.html
 Source0:        https://github.com/CMA-ES/pycma/archive/r%{version}.tar.gz#/cma-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module numpy-devel}
+BuildRequires:  %{python_module numpy-devel < 2}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-numpy
+Requires:       python-numpy < 2
 Recommends:     python-matplotlib
 BuildArch:      noarch
 %python_subpackages
@@ -48,10 +47,10 @@ problems in continuous search spaces, implemented in Python.
 sed -i '1d' cma/{bbobbenchmarks.py,purecma.py,test.py}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -60,6 +59,7 @@ sed -i '1d' cma/{bbobbenchmarks.py,purecma.py,test.py}
 %files %{python_files}
 %license LICENSE
 %doc README.md
-%{python_sitelib}/cma*
+%{python_sitelib}/cma
+%{python_sitelib}/cma-%{version}.dist-info
 
 %changelog

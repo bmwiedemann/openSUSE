@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jul 12 07:13:44 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Restrict numpy to < 2.
+- Switch to pyproject macros.
+- No more globs in %files.
+
+-------------------------------------------------------------------
 Sat Jan 28 14:35:51 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.3.0:

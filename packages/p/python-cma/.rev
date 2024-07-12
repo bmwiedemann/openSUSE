@@ -43,4 +43,14 @@
   * Diagonal decoding, fmin functions with surrogate and more.</comment>
     <requestid>1061747</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>728feb2ef66b081f25b6b7448423f50e</srcmd5>
+    <version>3.3.0</version>
+    <time>1720796741</time>
+    <user>anag+factory</user>
+    <comment>- Restrict numpy to &lt; 2.
+- Switch to pyproject macros.
+- No more globs in %files.</comment>
+    <requestid>1187018</requestid>
+  </revision>
 </revisionlist>
