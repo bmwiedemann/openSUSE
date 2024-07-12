@@ -449,4 +449,15 @@
   * Add support for enabling SAE for AP mode operation. (forwarded request 1179176 from alois)</comment>
     <requestid>1179407</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>252b9a5948a3bc8821d535aa80b772a8</srcmd5>
+    <version>2.19</version>
+    <time>1720796729</time>
+    <user>anag+factory</user>
+    <comment>adding missing CVE ference for tracking
+
+- Update to version 2.16 (bsc#1221018, CVE-2024-28084):
+  * Add support for FastReauthentication setting for EAP-TLS. (forwarded request 1186912 from dirkmueller)</comment>
+    <requestid>1186995</requestid>
+  </revision>
 </revisionlist>

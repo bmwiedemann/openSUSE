@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jul  9 12:37:37 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.19:
+  * Fix issue with handling flush flag for external scans.
+  * Fix issue with handling SNR calculation in ranking.
+
+-------------------------------------------------------------------
 Fri Jun  7 10:23:06 UTC 2024 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 2.18
@@ -18,7 +25,7 @@ Mon Apr  1 17:29:44 UTC 2024 - Luigi Baldoni <aloisio@gmx.com>
 -------------------------------------------------------------------
 Sat Mar 23 06:06:05 UTC 2024 - Luigi Baldoni <aloisio@gmx.com>
 
-- Update to version 2.16
+- Update to version 2.16 (bsc#1221018, CVE-2024-28084):
   * Fix issue with uninitialized variable and DPP encrypt.
   * Fix issue with Access Point mode and ATTR_MAC validation.
   * Fix issue with Access Point mode and frequency attributes.
@@ -115,7 +122,7 @@ Wed Feb 15 08:35:18 UTC 2023 - Dirk Müller <dmueller@suse.com>
   * Fix issue with length calculation for WMM IE.
   * Fix issue with channel number allocation off-by-one.
   * Fix issue with cached session when TLS phase2 fails.
-  * Add support for FastReauthentication setting for EAP-TLS. 
+  * Add support for FastReauthentication setting for EAP-TLS.
 
 -------------------------------------------------------------------
 Wed Jan 25 08:06:21 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
