@@ -12868,7 +12868,7 @@ unsorted:
   - libfifechan_sdl0_1_5 
   - libfilezilla-devel 
   - libfilezilla-lang 
-  - libfilezilla43 
+  - libfilezilla45 
   - libfilteraudio0 
   - libfinal-devel 
   - libfinal-examples 
@@ -19429,7 +19429,6 @@ unsorted:
   - netdata-plugin-debugfs 
   - netdata-plugin-freeipmi 
   - netdata-plugin-go 
-  - netdata-plugin-logs-management 
   - netdata-plugin-network-viewer 
   - netdata-plugin-nfacct 
   - netdata-plugin-perf 
