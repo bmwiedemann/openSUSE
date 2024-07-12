@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Jul 12 02:47:43 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 12.88:
+  * Added ability to read/write deflate-compressed XMP in HEIC files
+  * Added a new Canon LensType
+  * Added a new XMP-GCamera tag
+  * Added a new Nikon LensID
+  * Added a few new Canon AFAreaMode values
+  * Added config_files/onone.config to the distribution
+  * Decode timed accelerometer readings from NextBase 622GW videos
+  * Decode Pentax K-3III CameraOrentation
+  * Improved German translation for LensModel
+  * Enhanced the API StructFormat JSONQ setting to quote all JSON
+    values, even if they aren't in a structure
+  * Changed -geolocate option so specifying the Keys group writes
+    Keys:GPSPosition only if an input city is specified, and
+    Keys:LocationName only for input GPS coordinates
+  * Tweaked API Geolocation option recognized space-separated lat/lon
+    even when there is no decimal point in the numbers
+  * API Changes:
+      * Changed LargeFileSupport default to 2 and added a warning
+      if a large chunk is encountered. Set to 1 to avoid the warning.
+
+-------------------------------------------------------------------
 Fri Jun 14 08:46:34 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 12.87:

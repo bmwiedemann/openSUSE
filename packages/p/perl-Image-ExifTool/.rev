@@ -875,4 +875,12 @@ See https://bugzilla.opensuse.org/show_bug.cgi?id=1195398
     <comment></comment>
     <requestid>1180900</requestid>
   </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>db46d4b538e620fb3a565fa1f4b6cd78</srcmd5>
+    <version>12.88</version>
+    <time>1720796734</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1186998</requestid>
+  </revision>
 </revisionlist>
