@@ -2296,6 +2296,9 @@ unsorted:
   - cmark 
   - cmark-devel 
   - cmctl 
+  - cmctl-bash-completion 
+  - cmctl-fish-completion 
+  - cmctl-zsh-completion 
   - cmh 
   - cmh-devel 
   - cmis-client 
@@ -2566,6 +2569,16 @@ unsorted:
   - cosign-bash-completion 
   - cosign-fish-completion 
   - cosign-zsh-completion 
+  - cosmic-edit 
+  - cosmic-ext-bg-theme 
+  - cosmic-ext-tasks 
+  - cosmic-files 
+  - cosmic-icons 
+  - cosmic-player 
+  - cosmic-reader 
+  - cosmic-screenshot 
+  - cosmic-store 
+  - cosmic-term 
   - coturn 
   - coturn-devel 
   - coturn-utils 
@@ -3217,6 +3230,7 @@ unsorted:
   - dhcp-devel 
   - dhcp-doc 
   - dhcp-keama 
+  - dhcpcd 
   - dhcpd-pools 
   - dhewm3 
   - dhex 
@@ -13110,7 +13124,7 @@ unsorted:
   - libgda-ui-6_0-tools 
   - libgda-xslt-6_0-6_0_0 
   - libgdal-drivers 
-  - libgdal34 
+  - libgdal35 
   - libgdata-devel 
   - libgdbm6-32bit 
   - libgdbm_compat4-32bit 
@@ -18755,6 +18769,7 @@ unsorted:
   - mousetweaks-lang 
   - movit-devel 
   - mozaddon-devel 
+  - mozilla-fira-fonts 
   - mozilla-nspr-32bit 
   - mozilla-nspr-devel 
   - mozilla-nss-32bit 
@@ -19680,6 +19695,7 @@ unsorted:
   - objectweb-pom 
   - objenesis 
   - objenesis-javadoc 
+  - oboete 
   - obs-scm-bridge 
   - obs-service-appimage 
   - obs-service-cargo 
@@ -22788,6 +22804,7 @@ unsorted:
   - pommed 
   - pongix 
   - pop 
+  - pop-icon-theme 
   - popeye 
   - poppler-data 
   - poppler-data-devel 
@@ -24944,6 +24961,7 @@ unsorted:
   - python310-djet 
   - python310-dkimpy 
   - python310-dlib 
+  - python310-dm-tree 
   - python310-dmidecode 
   - python310-dns-lexicon 
   - python310-dnslib 
@@ -28518,6 +28536,7 @@ unsorted:
   - python311-djet 
   - python311-dkimpy 
   - python311-dlib 
+  - python311-dm-tree 
   - python311-dmidecode 
   - python311-dns-lexicon 
   - python311-dnslib 
@@ -32042,6 +32061,7 @@ unsorted:
   - python312-djet 
   - python312-dkimpy 
   - python312-dlib 
+  - python312-dm-tree 
   - python312-dmidecode 
   - python312-dns-lexicon 
   - python312-dnslib 
@@ -35115,6 +35135,7 @@ unsorted:
   - quazip-qt5-devel 
   - quazip-qt6-devel 
   - qucs-s 
+  - quick-webapps 
   - quilt 
   - quilter 
   - quilter-lang 
@@ -35318,6 +35339,27 @@ unsorted:
   - replay-sorcery 
   - reprepro 
   - reproc-devel 
+  - reproducible-faketools 
+  - reproducible-faketools-ant 
+  - reproducible-faketools-ar 
+  - reproducible-faketools-aslr 
+  - reproducible-faketools-date 
+  - reproducible-faketools-dettrace 
+  - reproducible-faketools-faketime 
+  - reproducible-faketools-filesys 
+  - reproducible-faketools-find 
+  - reproducible-faketools-future 
+  - reproducible-faketools-future1y 
+  - reproducible-faketools-futurepost 
+  - reproducible-faketools-hostname 
+  - reproducible-faketools-j1 
+  - reproducible-faketools-pid 
+  - reproducible-faketools-random 
+  - reproducible-faketools-rpmbuild 
+  - reproducible-faketools-strace 
+  - reproducible-faketools-tar 
+  - reproducible-faketools-verbose 
+  - reproducible-faketools-zip 
   - reptyr 
   - resample 
   - rescue 
@@ -36882,6 +36924,7 @@ unsorted:
   - surgescript-devel 
   - suru-plus-dark-icon-theme 
   - suse-build-key 
+  - suse-fonts 
   - suse-hpc 
   - suse-prime 
   - suse-xsl-stylesheets 
@@ -47632,6 +47675,7 @@ unsorted:
   - warewulf-provision-x86_64-initramfs 
   - warewulf-vnfs 
   - warewulf4 
+  - warewulf4-dracut 
   - warewulf4-man 
   - warewulf4-overlay 
   - warewulf4-overlay-slurm 
@@ -47718,6 +47762,10 @@ unsorted:
   - weechat-tcl 
   - weggli 
   - weld-parent 
+  - werf 
+  - werf-bash-completion 
+  - werf-fish-completion 
+  - werf-zsh-completion 
   - werken-xpath 
   - werken-xpath-javadoc 
   - wesnoth 
@@ -48515,6 +48563,7 @@ unsorted:
   - zellij-bash-completion 
   - zellij-fish-completion 
   - zellij-zsh-completion 
+  - zenith 
   - zerobranestudio 
   - zeromq-devel 
   - zfp 
