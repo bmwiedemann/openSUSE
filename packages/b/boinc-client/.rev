@@ -515,4 +515,15 @@ replace plaintext widget with mini-html widget (forwarded request 522296 from je
     <comment>fix for bnc#1227092 (forwarded request 1184356 from computersalat)</comment>
     <requestid>1184357</requestid>
   </revision>
+  <revision rev="64" vrev="3">
+    <srcmd5>b2c7987038d9811e0778b4b435c4942f</srcmd5>
+    <version>8.0.2</version>
+    <time>1720796730</time>
+    <user>anag+factory</user>
+    <comment>- Revert to state of 2024-05-26 due to regressions,
+  https://build.opensuse.org/request/show/1183568#comment-1957214
+  https://build.opensuse.org/request/show/1184357#comment-1959404
+  [boo#1227092]</comment>
+    <requestid>1186996</requestid>
+  </revision>
 </revisionlist>

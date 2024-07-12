@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jul 12 04:58:08 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Revert to state of 2024-05-26 due to regressions,
+  https://build.opensuse.org/request/show/1183568#comment-1957214
+  https://build.opensuse.org/request/show/1184357#comment-1959404
+  [boo#1227092]
+
+-------------------------------------------------------------------
 Thu Jun 27 11:43:32 UTC 2024 - chris@computersalat.de
 
 - fix for bnc#1227092

@@ -8,10 +8,8 @@ glibc-2.26 has dropped xlocale.h.
  clientgui/AsyncRPC.cpp | 4 +---
  1 file changed, 1 insertion(+), 3 deletions(-)
 
-Index: clientgui/AsyncRPC.cpp
-===================================================================
---- clientgui/AsyncRPC.cpp.orig
-+++ clientgui/AsyncRPC.cpp
+--- a/clientgui/AsyncRPC.cpp
++++ b/clientgui/AsyncRPC.cpp
 @@ -24,9 +24,7 @@
  #endif
  #include "config.h"
