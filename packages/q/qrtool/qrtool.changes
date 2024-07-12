@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jul 12 05:20:35 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 0.11.2
+  * Add support for PIC output format
+  * Add ASCII string and ANSI escape sequences to the output
+    format
+  * Add values for inverting foreground and background colors
+    when the output format is a string
+  * Rename terminal to unicode, and making terminal an alias for
+    unicode
+
+-------------------------------------------------------------------
 Wed Jul  3 20:46:09 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 0.11.0
