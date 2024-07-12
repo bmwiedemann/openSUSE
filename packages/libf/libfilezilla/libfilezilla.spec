@@ -16,17 +16,18 @@
 #
 
 
-%define major		43
+%define major		45
 %define libname		%{name}%{major}
 %define develname	%{name}-devel
 Name:           libfilezilla
-Version:        0.47.0
+Version:        0.48.1
 Release:        0
 Summary:        C++ library for filezilla
 License:        GPL-2.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://lib.filezilla-project.org/
-Source0:        https://download.filezilla-project.org/libfilezilla/%{name}-%{version}.tar.xz
+#Source0:        https://download.filezilla-project.org/libfilezilla/%%{name}-%%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.xz
 Patch0:         %{name}-date-time.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -79,10 +80,8 @@ Requires:       %{libname} = %{version}-%{release}
 Files needed for development with %{name}.
 
 
-
-
-
 # Need %%lang_package expanded for an extra conflict with an old library package
+
 %package lang
 # FIXME: consider using %%lang_package macro
 Summary:        Translations for package %{name}

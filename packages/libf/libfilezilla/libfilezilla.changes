@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Jul 12 09:28:18 UTC 2024 - ecsos <ecsos@opensuse.org>
+
+- Update to 0.48.1
+  * Bugfixes and minor changes:
+    - Allow comparing strtokenizer::iterator with each other
+    - MSW: fz::recursive_remove now exposes calls SHFileOperations,
+      as the caller might need special steps to ensure modality
+- Changes from 0.48.0
+  * New features:
+    - fz::percent_decode can now optionally treat plus as space
+    - Added file::get_modification_time
+  * Bugfixes and minor changes:
+    - EROFS is now mapped to fsresult::noperm
+    - fz::aio_waiter has been removed due to thread-safety issues
+    - *nix: Only link with -ldl if required by dlsym
+    - Fixed error code if no parent can be found during mkdir
+- Download over osc no more possible. Source must be download over
+  website link.
+
+-------------------------------------------------------------------
 Tue Apr 16 08:34:10 UTC 2024 - ecsos <ecsos@opensuse.org>
 
 - Update to 0.47.0
