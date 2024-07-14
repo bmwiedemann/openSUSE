@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jul  8 19:14:20 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 6.4.13:
+  * More manual pages.
+  * Sounds: Concatenate with overlap...: guard against a crash
+    that would occur if the total overlap time was longer than the
+    original sounds together.
+  * number recognizes hexadecimal numbers again.
+
+-------------------------------------------------------------------
 Thu Apr 25 15:03:37 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 6.4.10:
