@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jul 12 13:17:07 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add -Wno-error=incompatible-pointer-types to optflgas in order to
+  prevent GCC 14 from reporting errors because of these C99
+  violations
+- Use modern macros.
+
+-------------------------------------------------------------------
 Mon Sep 20 19:48:00 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
 
 - Remove obsolete translation-update-upstream support

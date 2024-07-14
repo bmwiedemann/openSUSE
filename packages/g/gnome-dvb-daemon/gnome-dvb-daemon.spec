@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-dvb-daemon
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -85,12 +85,14 @@ This package contains a Totem plugin to use your DVB devices.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
+%global optflags %{optflags} -Wno-error=incompatible-pointer-types
 %configure \
         --enable-totem-plugin
-make %{?_smp_mflags} V=1
+        %{nil}
+%make_build
 
 %install
 %make_install
