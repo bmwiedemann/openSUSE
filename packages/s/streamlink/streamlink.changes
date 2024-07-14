@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jul 12 06:04:34 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 6.8.3:
+  * tiktok: new plugin
+  * twitch: fixed channel names with uppercase characters
+
+-------------------------------------------------------------------
 Fri Jul  5 07:25:07 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 6.8.2:
