@@ -250,4 +250,23 @@
     <comment>Fix gcc14 build</comment>
     <requestid>1176772</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>771075d56947d20930212b6c4f25f48f</srcmd5>
+    <version>1.2.40</version>
+    <time>1720939858</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.2.40 
+  The legacy XML Security Library 1.2.40 release includes the following changes:
+  * (xmlsec-core) Fixed functions deprecated in LibXML2 2.13.1 (including disabling HTTP support by default).
+  * (xmlsec-nss) Increased keys size in all tests to support NSS 3.101.
+  * (windows) Added &quot;ftp&quot; and &quot;http&quot; flags in 'configure.js' (both are disabled by default).
+  * Several other small fixes (more details).
+- Update to 1.2.39
+  The legacy XML Security Library 1.2.39 release includes the following changes:
+  * Added options to enable/disable local files, HTTP, and FTP support. FTP is disabled by default.
+  * Several other small fixes (more details).
+- Remove upstreamed xmlsec1-gcc14.patch
+</comment>
+    <requestid>1187083</requestid>
+  </revision>
 </revisionlist>

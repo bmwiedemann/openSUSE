@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul 11 09:32:43 UTC 2024 - schubi@suse.com
+
+- Update to version 0.0.11:
+  * Handle content-length of stomp in zypper plugin (bsc#1227418).
+
+-------------------------------------------------------------------
 Fri Jun 14 09:57:22 UTC 2024 - schubi@suse.com
 
 - Update to version 0.0.10:

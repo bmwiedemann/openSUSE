@@ -17,3 +17,6 @@
 /var/adm/netconfig/md5/etc /etc
 /var/adm/netconfig/md5/var /var
 /usr/etc /etc
+/bin /usr/bin
+/sbin /usr/bin
+/usr/sbin /usr/bin

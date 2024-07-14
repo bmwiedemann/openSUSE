@@ -23,7 +23,7 @@ Release:        0
 Summary:        Library to load and process 3D scenes from various data formats
 License:        BSD-3-Clause AND MIT
 Group:          Development/Libraries/C and C++
-URL:            https://www.assimp.org/
+URL:            https://github.com/assimp/assimp
 Source0:        %{name}-%{version}.tar.xz
 BuildRequires:  cmake >= 3.22
 BuildRequires:  dos2unix
@@ -122,10 +122,10 @@ gtest_filter="${gtest_filter}:AssimpAPITest_aiQuaternion.*"
 gtest_filter="${gtest_filter}:AssimpAPITest_aiVector2D.*"
 gtest_filter="${gtest_filter}:AssimpAPITest_aiVector3D.*"
 %endif
-%endif
 
 ./bin/unit --gtest_filter="${gtest_filter}"
 popd
+%endif
 
 %ldconfig_scriptlets -n lib%{name}%{sover}
 

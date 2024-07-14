@@ -261,4 +261,13 @@
     <comment></comment>
     <requestid>1186219</requestid>
   </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>c9a8694a40c84625ae3f7867392d1a78</srcmd5>
+    <version>1.6</version>
+    <time>1720939740</time>
+    <user>anag+factory</user>
+    <comment>- Add LicenseRef-GPL-2.0-with-openssl-exception to License: (upstream has not
+  yet created appropriate exception in SPDX). (forwarded request 1186734 from pevik)</comment>
+    <requestid>1186851</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jul 12 11:40:02 UTC 2024 - Martin Jambor <mjambor@suse.com>
+
+- Add -D_GNU_SOURCE to compilation flags because it is a required
+  feature macro for function setlinebuf to be declared. [boo#1225864]
+
+-------------------------------------------------------------------
 Thu Dec 28 18:32:20 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.52.24:

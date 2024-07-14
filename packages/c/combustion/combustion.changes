@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jul 12 09:35:20 UTC 2024 - Fabian Vogt <fvogt@suse.com>
+
+- Switch _service to use mode="manual"
+- Update to version 1.3+git11:
+  * 30firstboot: Leave IPL DASD enablement to s390-tools (jsc#PED-8130)
+  * Wait for tee to finish in example scripts (bsc#1222411)
+
+-------------------------------------------------------------------
 Wed Mar 06 12:50:29 UTC 2024 - Fabian Vogt <fvogt@suse.com>
 
 - Update to version 1.3+git9:

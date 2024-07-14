@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jun 14 00:10:03 UTC 2024 - Yasuhiko Kamata <belphegor@belbel.or.jp>
+
+- Imported C99 compatibility fixes from Fedora project:
+  https://src.fedoraproject.org/rpms/libvisual/c/bcffd8eddbbcab5b00f930805396be5fdb55c5a7?branch=rawhide
+
+  it fixes build error when using GCC14 (boo#1225859)
+  (added libvisual-configure-c99.patch and libvisual-c99.patch).
+
+-------------------------------------------------------------------
 Fri Mar  1 10:22:19 UTC 2024 - pgajdos@suse.com
 
 - Use %patch -P N instead of deprecated %patchN.

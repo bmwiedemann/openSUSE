@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jul 12 12:53:13 UTC 2024 - Martin Jambor <mjambor@suse.com>
+
+- Add -Wno-error=implicit-function-declaration to %optflags to
+  work-around an issue in mocklibc (which has been meanwhile removed
+  by upstream) with exactly this kind of issue.
+
+-------------------------------------------------------------------
 Fri Dec  8 22:20:51 UTC 2023 - Tobias Klausmann <tobias.klausmann@freenet.de>
 
 - Add 'dbus-service' as Requires instead of /usr/bin/dbus-daemon

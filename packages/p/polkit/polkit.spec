@@ -1,7 +1,7 @@
 #
 # spec file for package polkit
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -158,6 +158,10 @@ This package provides the GObject Introspection bindings for PolicyKit.
 %autosetup -p1
 
 %build
+# Disabling of this error can hopefully be removed when syncing with
+# upstream which has removed mocklibc:
+%global optflags %{optflags} -Wno-error=implicit-function-declaration
+
 %meson                                     \
     -D session_tracking=libsystemd-login   \
     -D systemdsystemunitdir="%{_unitdir}"  \

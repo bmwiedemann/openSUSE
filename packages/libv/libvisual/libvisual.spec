@@ -1,7 +1,7 @@
 #
 # spec file for package libvisual
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,6 +35,8 @@ Patch2:         libvisual.visual_cpu_get_altivec.patch
 Patch3:         %name-%{version}-unref-static.diff
 Patch4:         libvisual-0.4.0-2.1-nmu.diff
 Patch5:         libvisual-0.4.0-inlinedefineconflict.patch
+Patch6:         libvisual-configure-c99.patch
+Patch7:         libvisual-c99.patch
 BuildRequires:  freeglut-devel
 BuildRequires:  gcc-c++
 BuildRequires:  libdrm-devel
@@ -77,6 +79,10 @@ This library is used by amaroK for example.
 %patch -P 3
 %patch -P 4 -p1
 %patch -P 5 -p1
+%patch -P 6 -p1
+%patch -P 7 -p1
+# Prevent re-building the autotools scripts.
+touch -r aclocal.m4 configure*
 
 %build
 autoreconf -fiv

@@ -26,20 +26,20 @@
 # Version of SELinux we were using
 %define selinux_policyver %(rpm -q selinux-policy --qf '%%{version}')
 Name:           container-selinux
-Version:        2.228.0
+Version:        2.232.1
 Release:        0
 Summary:        SELinux policies for container runtimes
 License:        GPL-2.0-only
 URL:            https://github.com/containers/container-selinux
-Source0:        https://github.com/containers/container-selinux/archive/refs/tags/v%{version}.tar.gz
+Source0:        container-selinux-%{version}.tar.xz
 BuildRequires:  selinux-policy
 BuildRequires:  selinux-policy-devel
 Requires:       selinux-policy >= %(rpm -q selinux-policy --qf '%%{version}-%%{release}')
-Requires(post): policycoreutils
-Requires(post): /usr/bin/sed
-Requires(post): selinux-policy-base >= %{selinux_policyver}
-Requires(post): selinux-policy-targeted >= %{selinux_policyver}
-Requires(post): selinux-tools
+Requires(posttrans): policycoreutils
+Requires(posttrans): /usr/bin/sed
+Requires(posttrans): selinux-policy-base >= %{selinux_policyver}
+Requires(posttrans): selinux-policy-targeted >= %{selinux_policyver}
+Requires(posttrans): selinux-tools
 BuildArch:      noarch
 
 %description
@@ -68,7 +68,12 @@ install -m 0644 udica-templates/*.cil %{buildroot}%{_datadir}/udica/templates
 %pre
 %selinux_relabel_pre -s %{selinuxtype}
 
-%post
+%postun
+if [ $1 -eq 0 ]; then
+   %selinux_modules_uninstall -s %{selinuxtype} %{modulenames} docker
+fi
+
+%posttrans
 # Install all modules in a single transaction
 if [ $1 -eq 1 ]; then
    %{_sbindir}/setsebool -P -N virt_use_nfs=1 virt_sandbox_use_all_caps=1
@@ -81,13 +86,6 @@ fi
 . %{_sysconfdir}/selinux/config
 sed -e "\|container_file_t|h; \${x;s|container_file_t||;{g;t};a\\" -e "container_file_t" -e "}" -i %{_sysconfdir}/selinux/${SELINUXTYPE}/contexts/customizable_types
 matchpathcon -qV %{_sharedstatedir}/containers || restorecon -R %{_sharedstatedir}/containers &> /dev/null || :
-
-%postun
-if [ $1 -eq 0 ]; then
-   %selinux_modules_uninstall -s %{selinuxtype} %{modulenames} docker
-fi
-
-%posttrans
 %selinux_relabel_post -s %{selinuxtype}
 
 %files

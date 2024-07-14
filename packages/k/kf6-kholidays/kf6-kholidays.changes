@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Jul  9 09:41:46 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.4.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.4.0
+- Changes since 6.3.0:
+  * Add holidays for Germany, Bremen and Germany, Hamburg
+  * Add public holidays for Uzbekistan
+  * holiday_pe_es - add Peru holidays per "Decreto Legislativo 713" (kde#488513)
+  * Update russian holidays substitution for 2021, 2022, 2023, 2024
+  * Update holiday_ph_en - fix syntax error "of august" should be "in august"
+  * Change optional name to Philippines
+  * Introduce a holidays file for Philippines (kde#487468)
+
+-------------------------------------------------------------------
 Wed Jun  5 10:11:39 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.3.0

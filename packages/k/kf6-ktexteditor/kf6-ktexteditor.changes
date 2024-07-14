@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Jul  9 09:41:57 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.4.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.4.0
+- Changes since 6.3.0:
+  * add a tool to test javascript scripts
+  * fix JS API result of view.executeCommand()
+  * kateregexpsearch: fix FAST_DEBUG
+  * API documentation: fix typo on kte_design page
+  * add action to popy the current file name and line (kde#488027)
+  * prefer even indent sizes (kde#474505)
+  * try different way to read file for digest
+  * remove gradient, looks ugly
+  * add missing :, are there for all other entries
+  * don't remember encoding if known to be broken (kde#445015)
+  * ensure we don't keep old session config keys (kde#486648)
+
+-------------------------------------------------------------------
 Wed Jun  5 10:11:57 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.3.0

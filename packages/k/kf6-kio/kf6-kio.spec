@@ -19,13 +19,13 @@
 %define qt6_version 6.6.0
 
 %define rname kio
-# Full KF6 version (e.g. 6.3.0)
+# Full KF6 version (e.g. 6.4.0)
 %{!?_kf6_version: %global _kf6_version %{version}}
 # Last major and minor KF6 version (e.g. 6.0)
 %{!?_kf6_bugfix_version: %define _kf6_bugfix_version %(echo %{_kf6_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kf6-kio
-Version:        6.3.0
+Version:        6.4.0
 Release:        0
 Summary:        Network transparent access to files and data
 License:        LGPL-2.1-or-later
@@ -150,6 +150,7 @@ Development files.
 
 %files
 %{_kf6_applicationsdir}/ktelnetservice6.desktop
+%{_kf6_applicationsdir}/org.kde.kiod6.desktop
 %{_kf6_bindir}/ktelnetservice6
 %{_kf6_bindir}/ktrash6
 %{_kf6_datadir}/searchproviders/

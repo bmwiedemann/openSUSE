@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jul  9 09:41:30 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.4.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.4.0
+- Changes since 6.3.0:
+  * gitignore: add VS Code dir
+
+-------------------------------------------------------------------
 Wed Jun  5 10:10:42 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.3.0

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Jul  9 09:42:00 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.4.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.4.0
+- Changes since 6.3.0:
+  * Fix the since version of KJobWidgets::windowHandle,setWindowHandle
+  * kjobwidgets: Force setWindow() creating a window handle
+  * kjobwidgets: Add functions to associate QWindow with a KJob
+  * KTitleWidget: restore size policies to Preferred & vertical centering (kde#488319)
+  * KTitleWidget: do not autoFillBackground by default, drop StyledPanel frame (kde#)
+  * Make compile fine without qt6.7 deprecated methods
+
+-------------------------------------------------------------------
 Wed Jun  5 10:12:02 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.3.0

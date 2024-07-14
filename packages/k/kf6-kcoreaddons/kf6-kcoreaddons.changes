@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Jul  9 09:41:40 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.4.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.4.0
+- Changes since 6.3.0:
+  * Rename deprecated argument CLASSNAME to CLASS_NAME in ecm_add_qml_module() for KCoreAddonsPlugin
+  * kurlmimedata: warn about problems while retrieving files from portal
+  * decode os-release as UTF-8
+  * use REQUIRED_QT_VERSION for dbus, too
+  * provide USE_DBUS option to allow to turn on/off dbus parts
+
+-------------------------------------------------------------------
 Wed Jun  5 10:11:29 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.3.0

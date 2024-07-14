@@ -934,4 +934,41 @@ trigered by: https://build.opensuse.org/request/show/312207 (forwarded request 3
     <comment></comment>
     <requestid>1144005</requestid>
   </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>6a25909c8000d6ee170771ede7fa0987</srcmd5>
+    <version>11.7.0</version>
+    <time>1720939727</time>
+    <user>anag+factory</user>
+    <comment>- fix CVE-2024-38526 [bsc#1227693] Polyfill Supplay Chain Attack
+
+- version update to 11.7.0
+  * Release 11.07.00
+    + libnetpbm: Fix double free crash when memory allocation via
+      REALLOCARRAY fails.  Introduced in Netpbm 10.40 (September
+      2007).
+    + libnetpbm: Allow color dictionary with more than 1000 entries.
+    + ppmhist, ppmtoxpm: Work with color dictionary with more than
+      1000 color entries.
+    + rgb.txt: Add Resene paint colors, 2010.
+  * Release 11.06.00
+    + pamcut: add -reportonly.
+    + infotopam: Add input validation. 
+    + infotopam: Remove input file name from messages.  Add -verbose
+      and issue informational message only if it is specified.
+    + libnetpbm: Don't ignore garbage at the end of a color specifier
+      (e.g. rgbi:0/.5/1xyz).
+    + color database: change names of &quot;Spring Green&quot;, &quot;Lamp Black&quot;,
+      and &quot;light grey&quot; to &quot;SpringGreen&quot;, &quot;LampBlack&quot;, and &quot;LightGrey&quot;
+      to be consistent with other color names.
+    + pamcut: fix incorrect output when rectangle to cut is entirely
+      above the input image.  Invisible junk after image.  Always
+      broken.  (The ability to cut outside the input image was new in
+      pamcut's predecessor pnmcut in Netpbm 9.7 (August 2000).
+    + pamcut: fix incorrect output with PBM input when rectangle to
+      cut is entirely below the input image.  Invisible junk after
+      image.  Broken in Netpbm 10.44 (September 2008).
+    + ppmtowinicon: fix array overrun with 4 and 8 bits per pixel.
+      Broken in Netpbm 11.05 (December 2023).</comment>
+    <requestid>1187057</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Jul  9 09:41:32 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.4.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.4.0
+- Changes since 6.3.0:
+  * Use newly introduced ColorScheme-Accent (kde#446468)
+  * Improve excalamation point placement in data-warning/dialog-warning icon (kde#487626)
+  * Add generic translate icon, symlink crow-translate-tray
+  * Add non-symbolic base version of network-wireless-bluetooth icons
+  * mark as non gui executables to have output on Windows
+
+-------------------------------------------------------------------
 Wed Jun  5 10:11:17 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.3.0

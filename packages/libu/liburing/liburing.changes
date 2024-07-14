@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Jun 28 08:29:55 UTC 2024 - Jiri Slaby <jslaby@suse.cz>
+
+- Update to 2.6:
+  * Add getsockopt and setsockopt socket commands
+  * Add test cases to test/hardlink
+  * Man page fixes
+  * Add futex support, and test cases
+  * Add waitid support, and test cases
+  * Add read multishot, and test cases
+  * Add support for IORING_SETUP_NO_SQARRAY
+  * Use IORING_SETUP_NO_SQARRAY as the default
+  * Add support for IORING_OP_FIXED_FD_INSTALL
+  * Add io_uring_prep_fixed_fd_install() helper
+  * Support for napi busy polling
+  * Improve/add test cases
+  * Man page fixes
+  * Add sample 'proxy' example
+- Remove (they are upstream)
+  * test-no-mmap-inval-0-return-is-fine-too.patch
+  * test-recv-multishot-wait-for-the-right-amount-of-CQE.patch
+- exclude buf-ring-nommap.t test (crashes)
+
+-------------------------------------------------------------------
 Wed Apr  3 08:40:14 UTC 2024 - Jiri Slaby <jslaby@suse.cz>
 
 - Update to 2.5:

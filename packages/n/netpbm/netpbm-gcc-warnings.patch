@@ -1,7 +1,7 @@
-Index: netpbm-11.5.2/converter/other/pngx.c
+Index: netpbm-11.7.0/converter/other/pngx.c
 ===================================================================
---- netpbm-11.5.2.orig/converter/other/pngx.c
-+++ netpbm-11.5.2/converter/other/pngx.c
+--- netpbm-11.7.0.orig/converter/other/pngx.c
++++ netpbm-11.7.0/converter/other/pngx.c
 @@ -370,6 +370,7 @@ pngx_srgbIntentDesc(pngx_srgbIntent cons
      case PNGX_ABSOLUTE_COLORIMETRIC: return "ABSOLUTE_COLORIMETRIC";
      }
@@ -18,22 +18,22 @@ Index: netpbm-11.5.2/converter/other/pngx.c
  }
  
  
-Index: netpbm-11.5.2/lib/libpm.c
+Index: netpbm-11.7.0/lib/libpm.c
 ===================================================================
---- netpbm-11.5.2.orig/lib/libpm.c
-+++ netpbm-11.5.2/lib/libpm.c
+--- netpbm-11.7.0.orig/lib/libpm.c
++++ netpbm-11.7.0/lib/libpm.c
 @@ -440,6 +440,7 @@ pm_maxvaltobits(int const maxval) {
-         pm_error( "maxval of %d is too large!", maxval );
+         pm_error("maxval of %d is too large!", maxval);
  
      assert(false);
 +    return 0;
  }
  
  
-Index: netpbm-11.5.2/lib/libpnm3.c
+Index: netpbm-11.7.0/lib/libpnm3.c
 ===================================================================
---- netpbm-11.5.2.orig/lib/libpnm3.c
-+++ netpbm-11.5.2/lib/libpnm3.c
+--- netpbm-11.7.0.orig/lib/libpnm3.c
++++ netpbm-11.7.0/lib/libpnm3.c
 @@ -446,6 +446,8 @@ pnm_bittoxel(bit    const inputBit,
      case PBM_WHITE: return pnm_whitexel(maxval, PBM_TYPE); break;
      default:

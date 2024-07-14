@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Jul  9 09:42:04 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.4.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.4.0
+- Changes since 6.3.0:
+  * combobox: Set focus on text field within combobox
+  * Delegates: Use inset to control spacing around hover/selection highlight
+  * Limit focus workaround to affected versions
+  * itembranchindicators: Store QPersistentModelIndex instead of QModelIndex
+  * itemindicators: Don't access thread-unsafe data from the render thread (kde#487850)
+  * Implement baselineOffset for more controls
+  * KQuickStyleItem: Mark baselineOffset method as const
+  * Implement SplitView with splitter handles
+  * support USE_DBUS option to enable/disable dbus use
+
+-------------------------------------------------------------------
 Wed Jun  5 10:12:08 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.3.0

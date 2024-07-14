@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jun 30 07:10:45 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.15:
+  * Fixed the bad tarball from 1.0.14 with stall include files.
+    There are no other changes
+
+-------------------------------------------------------------------
 Thu May  9 18:51:56 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.0.14:

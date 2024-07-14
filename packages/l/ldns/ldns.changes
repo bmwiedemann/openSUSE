@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jul 10 13:43:44 UTC 2024 - Martin Jambor <mjambor@suse.com>
+
+- Added ldns-swig-4.2.patch and ldns-swig-32bit.patch in order to
+  avoid C99 viloations which are compile time errors by default with
+  GCC 14. [boo#1225794]
+
+-------------------------------------------------------------------
 Fri Sep  2 19:37:42 UTC 2022 - Michael Ströder <michael@stroeder.com>
 
 - use HTTPS URLs for URL and Source

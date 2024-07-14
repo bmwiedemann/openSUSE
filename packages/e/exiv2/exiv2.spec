@@ -18,7 +18,7 @@
 
 %bcond_with docs
 Name:           exiv2
-Version:        0.28.2
+Version:        0.28.3
 Release:        0
 Summary:        Tool to access image Exif metadata
 License:        BSD-3-Clause AND GPL-2.0-or-later

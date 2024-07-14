@@ -22,7 +22,7 @@ Name:           ima-evm-utils
 Version:        1.6
 Release:        0
 Summary:        IMA/EVM control utility
-License:        GPL-2.0-or-later AND LGPL-2.0-or-later AND GPL-2.0-or-later WITH Linux-syscall-note
+License:        GPL-2.0-or-later AND LGPL-2.0-or-later AND GPL-2.0-or-later WITH Linux-syscall-note AND LicenseRef-GPL-2.0-with-openssl-exception
 Group:          System/Base
 URL:            https://sourceforge.net/projects/linux-ima/
 Source0:        https://github.com/mimizohar/ima-evm-utils/releases/download/v%{version}/%{name}-%{version}.tar.gz
@@ -48,7 +48,7 @@ Measurement Architecture/ Linux Extended Verification Module).
 
 %package devel
 Summary:        Development files for the IMA/EVM control utility library
-License:        LGPL-2.0-or-later AND GPL-2.0-or-later WITH Linux-syscall-note
+License:        LGPL-2.0-or-later AND GPL-2.0-or-later WITH Linux-syscall-note AND LicenseRef-GPL-2.0-with-openssl-exception
 Group:          Development/Libraries/C and C++
 Requires:       %{libname} = %{version}
 Requires:       openssl-devel
@@ -58,7 +58,7 @@ This package contains the header files and the utilities for %{name}.
 
 %package -n %{libname}
 Summary:        IMA/EVM control utility libary
-License:        LGPL-2.0-or-later AND GPL-2.0-or-later WITH Linux-syscall-note
+License:        LGPL-2.0-or-later AND GPL-2.0-or-later WITH Linux-syscall-note AND LicenseRef-GPL-2.0-with-openssl-exception
 Group:          System/Libraries
 
 %description -n %{libname}
@@ -67,7 +67,7 @@ Measurement Architecture/Extended Verification Module).
 
 %package -n evmctl
 Summary:        IMA/EVM signing utility
-License:        GPL-2.0-or-later AND GPL-2.0-or-later WITH Linux-syscall-note
+License:        GPL-2.0-or-later AND GPL-2.0-or-later WITH Linux-syscall-note AND LicenseRef-GPL-2.0-with-openssl-exception
 Group:          System/Kernel
 Provides:       ima-evm-utils = %{version}
 Obsoletes:      ima-evm-utils < %{version}

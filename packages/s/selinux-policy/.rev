@@ -666,4 +666,75 @@ https://build.opensuse.org/request/show/1178504 </comment>
 </comment>
     <requestid>1184840</requestid>
   </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>7c59abbec989012d7fc51d3a4b12732d</srcmd5>
+    <version>20240710</version>
+    <time>1720939738</time>
+    <user>anag+factory</user>
+    <comment>- Enable sap module
+- Add equivalency in file_contexts.subs_dist
+  * /bin /usr/bin
+  * /sbin /usr/bin
+  * /usr/sbin /usr/bin
+- Update to version 20240710:
+  * Change fc in rebootmgr module for /sbin -&gt; /usr/bin
+  * Change fc in rpm module for /sbin -&gt; /usr/bin
+  * Change fc in rsync module for /sbin -&gt; /usr/bin
+  * Change fc in wicked module for /sbin -&gt; /usr/bin
+  * Confine libvirt-dbus
+  * Allow virtqemud the kill capability in user namespace
+  * Allow rshim get options of the netlink class for KOBJECT_UEVENT family
+  * Allow dhcpcd the kill capability
+  * Allow systemd-networkd list /var/lib/systemd/network
+  * Allow sysadm_t run systemd-nsresourced bpf programs
+  * Update policy for systemd generators interactions
+  * Allow create memory.pressure files with cgroup_memory_pressure_t
+  * Add support for libvirt hooks
+  * Allow certmonger read and write tpm devices
+  * Allow all domains to connect to systemd-nsresourced over a unix socket
+  * Allow systemd-machined read the vsock device
+  * Update policy for systemd generators
+  * Allow ptp4l_t request that the kernel load a kernel module
+  * Allow sbd to trace processes in user namespace
+  * Allow request-key execute scripts
+  * Update policy for haproxyd
+  * Update policy for systemd-nsresourced
+  * Correct sbin-related file context entries
+  * Allow login_userdomain execute systemd-tmpfiles in the caller domain
+  * Allow virt_driver_domain read files labeled unconfined_t
+  * Allow virt_driver_domain dbus chat with policykit
+  * Allow virtqemud manage nfs files when virt_use_nfs boolean is on
+  * Add rules for interactions between generators
+  * Label memory.pressure files with cgroup_memory_pressure_t
+  * Revert &quot;Allow some systemd services write to cgroup files&quot;
+  * Update policy for systemd-nsresourced
+  * Label /usr/bin/ntfsck with fsadm_exec_t
+  * Allow systemd_fstab_generator_t read tmpfs files
+  * Update policy for systemd-nsresourced
+  * Alias /usr/sbin to /usr/bin and change all /usr/sbin paths to /usr/bin
+  * Remove a few lines duplicated between {dkim,milter}.fc
+  * Alias /bin → /usr/bin and remove redundant paths
+  * Drop duplicate line for /usr/sbin/unix_chkpwd
+  * Drop duplicate paths for /usr/sbin
+  * Update systemd-generator policy
+  * Remove permissive domain for bootupd_t
+  * Remove permissive domain for coreos_installer_t
+  * Remove permissive domain for afterburn_t
+  * Add the sap module to modules.conf
+  * Move unconfined_domain(sap_unconfined_t) to an optional block
+  * Create the sap module
+  * Allow systemd-coredumpd sys_admin and sys_resource capabilities
+  * Allow systemd-coredump read nsfs files
+  * Allow generators auto file transition only for plain files
+  * Allow systemd-hwdb write to the kernel messages device
+  * Escape &quot;interface&quot; as a file name in a virt filetrans pattern
+  * Allow gnome-software work for login_userdomain
+  * Allow systemd-machined manage runtime sockets
+  * Revert &quot;Allow systemd-machined manage runtime sockets&quot;
+  * Allow postfix_domain connect to postgresql over a unix socket
+  * Dontaudit systemd-coredump sys_admin capability
+- Update container-selinux
+</comment>
+    <requestid>1186820</requestid>
+  </revision>
 </revisionlist>

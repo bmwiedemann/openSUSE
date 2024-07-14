@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Mon Jul  1 09:50:57 UTC 2024 - Martin Sirringhaus <martin.sirringhaus@suse.com>
+
+- update to NSS 3.101.1 
+  * bmo#1901932 - missing sqlite header.
+  * bmo#1901080 - GLOBALTRUST 2020: Set Distrust After for TLS and S/MIME.
+
+-------------------------------------------------------------------
+Mon Jun 10 12:49:53 UTC 2024 - Martin Sirringhaus <martin.sirringhaus@suse.com>
+
+- update to NSS 3.101
+  * bmo#1900413 - add diagnostic assertions for SFTKObject refcount.
+  * bmo#1899759 - freeing the slot in DeleteCertAndKey if authentication failed
+  * bmo#1899883 - fix formatting issues.
+  * bmo#1889671 - Add Firmaprofesional CA Root-A Web to NSS.
+  * bmo#1899593 - remove invalid acvp fuzz test vectors.
+  * bmo#1898830 - pad short P-384 and P-521 signatures gtests.
+  * bmo#1898627 - remove unused FreeBL ECC code.
+  * bmo#1898830 - pad short P-384 and P-521 signatures.
+  * bmo#1898825 - be less strict about ECDSA private key length.
+  * bmo#1854439 - Integrate HACL* P-521.
+  * bmo#1854438 - Integrate HACL* P-384.
+  * bmo#1898074 - memory leak in create_objects_from_handles.
+  * bmo#1898858 - ensure all input is consumed in a few places in mozilla::pkix
+  * bmo#1884444 - SMIME/CMS and PKCS #12 do not integrate with modern NSS policy
+  * bmo#1748105 - clean up escape handling
+  * bmo#1896353 - Use lib::pkix as default validator instead of the old-one
+  * bmo#1827444 - Need to add high level support for PQ signing.
+  * bmo#1548723 - Certificate Compression: changing the allocation/freeing of buffer + Improving the documentation
+  * bmo#1884444 - SMIME/CMS and PKCS #12 do not integrate with modern NSS policy
+  * bmo#1893404 - Allow for non-full length ecdsa signature when using softoken
+  * bmo#1830415 - Modification of .taskcluster.yml due to mozlint indent defects
+  * bmo#1793811 - Implement support for PBMAC1 in PKCS#12
+  * bmo#1897487 - disable VLA warnings for fuzz builds.
+  * bmo#1895032 - remove redundant AllocItem implementation.
+  * bmo#1893334 - add PK11_ReadDistrustAfterAttribute.
+  * bmo#215997  - Clang-formatting of SEC_GetMgfTypeByOidTag update
+  * bmo#1895012 - Set SEC_ERROR_LIBRARY_FAILURE on self-test failure
+  * bmo#1894572 - sftk_getParameters(): Fix fallback to default variable after error with configfile.
+  * bmo#1830415 - Switch to the mozillareleases/image_builder image
+- Follow upstream changes in nss-fips-constructor-self-tests.patch (switch from ec_field_GFp to ec_field_plain)
+- Remove part of nss-fips-zeroization.patch that got removed upstream
+ 
+-------------------------------------------------------------------
 Fri May 24 08:12:08 UTC 2024 - Martin Sirringhaus <martin.sirringhaus@suse.com>
 
 - Adding nss-fips-bsc1223724.patch to fix startup crash of Firefox

@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Tue Jul  9 09:41:48 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.4.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.4.0
+- Changes since 6.3.0:
+  * core: use QString to format number
+  * Remove unnecessary space character in empty text file template (kde#487768)
+  * Port DropJob to KJobWidgets::windowHandle()
+  * Use resolved executable in KProcessRunner::fromExecutable
+  * Handle using parent environment correctly in SystemdProcessRunner
+  * Prepare environment for systemd in SystemdProcessRunner
+  * Enable CommandLauncherJob tests (modulo _KDE_APPLICATIONS_AS_SERVICE on CI)
+  * kmountpoint: use advised call params when possible for libmount
+  * Remove unused includes
+  * Drop unused modifiers support from user agent code
+  * [kprotocolmanager] Remmove unused http_config
+  * Remove unused includes
+  * Don't pass proxy config to workers
+  * Drop protocol proxying
+  * Deprecate KProtocolInfo::proxiedBy
+  * [ftp] Drop ProxiedBy=http
+  * kfileitem.cpp: If fileMode is not unknown, set InitCalled to true in readUDSEntry (kde#485771)
+  * support USE_DBUS option to enable/disable dbus use
+  * [webdav] emit ERR_UNSUPPORTED_ACTION when performing fileSystemFreeSpace on a file
+  * Add desktop file for kiod (kde#459054)
+  * gitignore: add VS Code dir
+  * kfileitemtest: testBasicDirectory relax size assertion
+  * commandlauncherjob: emit error when no executable
+
+-------------------------------------------------------------------
 Wed Jun  5 10:11:43 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.3.0

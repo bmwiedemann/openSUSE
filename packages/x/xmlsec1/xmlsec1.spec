@@ -23,7 +23,7 @@
 %global libgnutls  libxmlsec1-gnutls1
 %global libnss     libxmlsec1-nss1
 Name:           xmlsec1
-Version:        1.2.38
+Version:        1.2.40
 Release:        0
 Summary:        Library providing support for "XML Signature" and "XML Encryption" standards
 License:        MIT
@@ -33,7 +33,6 @@ Source1:        https://www.aleksey.com/xmlsec/download/xmlsec1-%{version}.sig#/
 Source2:        %{name}.keyring
 Source99:       xmlsec1-rpmlintrc
 Patch0:         xmlsec1-ui_null.patch
-Patch1:         xmlsec1-gcc14.patch
 BuildRequires:  libgcrypt-devel
 BuildRequires:  libtool
 # Needed certutil for tests
@@ -146,7 +145,6 @@ Libraries, includes, etc. for developing XML Security applications with NSS.
 %if 0%{?suse_version} < 1500
 %patch -P 0 -p1
 %endif
-%patch -P 1 -p1
 
 %build
 # Allow for deprecations

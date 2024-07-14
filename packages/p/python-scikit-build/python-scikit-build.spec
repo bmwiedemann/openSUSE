@@ -27,16 +27,14 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-scikit-build%{psuffix}
-Version:        0.17.6
+Version:        0.18.0
 Release:        0
 Summary:        Improved build system generator for Python C/C++/Fortran/Cython extensions
 License:        MIT
 URL:            https://github.com/scikit-build/scikit-build
 Source:         https://files.pythonhosted.org/packages/source/s/scikit-build/scikit_build-%{version}.tar.gz
 Source99:       sample-setup.cfg
-# PATCH-FIX-UPSTREAM gh#scikit-build/scikit-build#1087
-Patch0:         support-setuptools-69-3.patch
-BuildRequires:  %{python_module devel >= 3.7}
+BuildRequires:  %{python_module devel >= 3.8}
 BuildRequires:  %{python_module hatch-fancy-pypi-readme}
 BuildRequires:  %{python_module hatch-vcs}
 BuildRequires:  %{python_module hatchling}
@@ -44,7 +42,7 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 42.0.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       cmake
+Requires:       cmake >= 3.5
 Requires:       python-distro
 Requires:       python-packaging
 Requires:       python-setuptools >= 42.0.0

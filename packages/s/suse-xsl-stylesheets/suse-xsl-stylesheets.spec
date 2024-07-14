@@ -23,7 +23,7 @@
 #
 Name:           suse-xsl-stylesheets
 Version:        2.94.7
-Release:        0
+Release:        1
 Summary:        SUSE-Branded Stylesheets for DocBook
 License:        GPL-2.0-only OR GPL-3.0-only
 Group:          Productivity/Publishing/XML
@@ -70,20 +70,20 @@ Requires:       gnu-free-fonts
 Requires:       arabic-amiri-fonts
 #
 # Japanese (regular/bold):
-Requires:       google-noto-sans-jp-bold-fonts
 Requires:       google-noto-sans-jp-regular-fonts
+Requires:       google-noto-sans-jp-bold-fonts
 #
 # Korean (regular/bold):
-Requires:       google-noto-sans-kr-bold-fonts
 Requires:       google-noto-sans-kr-regular-fonts
+Requires:       google-noto-sans-kr-bold-fonts
 #
 # Chinese, simplified  (regular/bold):
-Requires:       google-noto-sans-sc-bold-fonts
 Requires:       google-noto-sans-sc-regular-fonts
+Requires:       google-noto-sans-sc-bold-fonts
 #
 # Chinese, traditional (regular/bold):
-Requires:       google-noto-sans-tc-bold-fonts
 Requires:       google-noto-sans-tc-regular-fonts
+Requires:       google-noto-sans-tc-bold-fonts
 #
 #
 # Fonts for older stylesheets variants

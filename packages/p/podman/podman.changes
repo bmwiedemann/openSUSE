@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Jul 11 07:34:21 UTC 2024 - danish.prakash@suse.com
+
+- Update to version 5.1.2:
+  * Bump to v5.1.2
+  * libpod/container_top_linux.c: fix missing header
+  * pkg/machine/wsl: force terminate wsl instance
+  * pkg/machine/wsl: wrap command errors
+  * Update release notes for v5.1.2
+  * remote: fix incorrect CONTAINER_CONNECTION parsing
+  * CI: do not install python packages at runtime
+  * Undo a change to .cirrus.yml that depends on things not backported
+  * Update containers/image to v5.31.1
+  * apple virtiofs: fix racy mount setup
+  * cirrus: fix broken macos artifacts URL
+  * test/e2e: remove podman system service tests
+  * pkg/machine/apple: machine stop timeout
+  * podman top: join the container userns
+  * restore: fix missing network setup
+  * podman run use pod userns even with --pod-id-file
+  * remote API: fix pod top error reporting
+  * [v5.1] Drop minikube CI test
+  * Workaround rawhide validation dnf error
+  * Bump to v5.1.2-dev
+
+-------------------------------------------------------------------
 Sun Jun 30 14:19:27 UTC 2024 - Dan Čermák <dcermak@suse.com>
 
 - Add patch to fix bsc#1227052 / CVE-2024-6104:

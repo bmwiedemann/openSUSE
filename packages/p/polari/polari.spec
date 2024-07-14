@@ -45,10 +45,10 @@ BuildRequires:  pkgconfig(telepathy-glib)
 BuildRequires:  pkgconfig(tracker-sparql-3.0)
 Requires:       gjs >= 1.69.2
 Requires:       telepathy-idle
-Requires:       telepathy-logger
 Requires:       telepathy-mission-control
 # Dependency not detected by the dep scanner - boo#1122687
 Requires:       typelib(Gspell)
+Recommends:     telepathy-logger
 # typelib-1_0-Polari-1_0 was merged into the main package, as it's in a private library directory
 Obsoletes:      typelib-1_0-Polari-1_0 < %{version}
 

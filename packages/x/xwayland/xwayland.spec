@@ -22,7 +22,7 @@
 %endif
 
 Name:           xwayland
-Version:        24.1.0
+Version:        24.1.1
 Release:        0
 URL:            http://xorg.freedesktop.org
 Summary:        Xwayland Xserver
@@ -39,7 +39,7 @@ BuildRequires:  pkgconfig(bigreqsproto)
 BuildRequires:  pkgconfig(compositeproto)
 BuildRequires:  pkgconfig(damageproto)
 BuildRequires:  pkgconfig(dri)
-BuildRequires:  pkgconfig(dri3proto)
+BuildRequires:  pkgconfig(dri3proto) >= 1.4
 BuildRequires:  pkgconfig(epoxy)
 BuildRequires:  pkgconfig(fixesproto)
 BuildRequires:  pkgconfig(fontsproto)
@@ -61,7 +61,7 @@ BuildRequires:  pkgconfig(libtirpc)
 BuildRequires:  pkgconfig(libxcvt)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(pixman-1)
-BuildRequires:  pkgconfig(presentproto)
+BuildRequires:  pkgconfig(presentproto) >= 1.4
 BuildRequires:  pkgconfig(randrproto)
 BuildRequires:  pkgconfig(recordproto)
 BuildRequires:  pkgconfig(renderproto)
@@ -69,7 +69,7 @@ BuildRequires:  pkgconfig(resourceproto)
 BuildRequires:  pkgconfig(scrnsaverproto)
 BuildRequires:  pkgconfig(videoproto)
 BuildRequires:  pkgconfig(wayland-client) >= 1.21.0
-BuildRequires:  pkgconfig(wayland-protocols)
+BuildRequires:  pkgconfig(wayland-protocols) >= 1.34
 BuildRequires:  pkgconfig(xau)
 BuildRequires:  pkgconfig(xcb)
 BuildRequires:  pkgconfig(xcb-damage)

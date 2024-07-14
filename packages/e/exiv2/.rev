@@ -885,4 +885,17 @@
   ctest's rpm macro</comment>
     <requestid>1186110</requestid>
   </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>150ab59cb93ca001a417ef3764afff14</srcmd5>
+    <version>0.28.3</version>
+    <time>1720939732</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.28.3 (bsc#1227528, CVE-2024-39695):
+  * Release Notes:
+    + https://github.com/Exiv2/exiv2/issues/3008
+    + https://github.com/Exiv2/exiv2/milestone/14?closed=1
+  * This release also fixes a low-severity security issue in
+    asfvideo.cpp: out-of-bounds read in AsfVideo::streamProperties.</comment>
+    <requestid>1186800</requestid>
+  </revision>
 </revisionlist>

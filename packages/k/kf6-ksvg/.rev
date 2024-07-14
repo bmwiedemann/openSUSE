@@ -51,4 +51,12 @@
 - Rebase 0001-Revert-Support-for-fractional-scaling.patch</comment>
     <requestid>1181922</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>eadfc7dd2dc11fb39cb5b3e8a12718f4</srcmd5>
+    <version>6.4.0</version>
+    <time>1720939809</time>
+    <user>anag+factory</user>
+    <comment>KDE Frameworks 6.4.0 (forwarded request 1186902 from krop)</comment>
+    <requestid>1187138</requestid>
+  </revision>
 </revisionlist>

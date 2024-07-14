@@ -19,13 +19,13 @@
 %define qt6_version 6.6.0
 
 %define rname ksvg
-# Full KF6 version (e.g. 6.3.0)
+# Full KF6 version (e.g. 6.4.0)
 %{!?_kf6_version: %global _kf6_version %{version}}
 # Last major and minor KF6 version (e.g. 6.0)
 %{!?_kf6_bugfix_version: %define _kf6_bugfix_version %(echo %{_kf6_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kf6-ksvg
-Version:        6.3.0
+Version:        6.4.0
 Release:        0
 Summary:        Components for handling SVGs
 License:        GPL-2.0-or-later
@@ -35,10 +35,8 @@ Source:         %{rname}-%{version}.tar.xz
 Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        frameworks.keyring
 %endif
-# PATCH-FIX-UPSTREAM
-Patch0:         0001-Restore-proper-devicepixelratio-when-extracting-from.patch
 # PATCH-FIX-OPENSUSE
-Patch1:         0001-Revert-Support-for-fractional-scaling.patch
+Patch0:         0001-Revert-Support-for-fractional-scaling.patch
 BuildRequires:  doxygen
 BuildRequires:  kf6-extra-cmake-modules >= %{_kf6_bugfix_version}
 BuildRequires:  cmake(KF6Archive) >= %{_kf6_bugfix_version}

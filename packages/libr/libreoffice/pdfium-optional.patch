@@ -1,0 +1,29 @@
+--- external/pdfium/annot.patch.1
++++ external/pdfium/annot.patch.1
+@@ -2,6 +2,17 @@ diff --git a/fpdfsdk/fpdf_annot.cpp b/fpdfsdk/fpdf_annot.cpp
+ index bc1f7f7eb..075baf1df 100644
+ --- a/fpdfsdk/fpdf_annot.cpp
+ +++ b/fpdfsdk/fpdf_annot.cpp
++@@ -8,6 +8,10 @@
++ #include <sstream>
++ #include <utility>
++ #include <vector>
+++#ifdef USE_SYSTEM_ABSEIL
+++#include <optional>
+++#include <absl/types/optional.h>
+++#endif
++ 
++ #include "constants/annotation_common.h"
++ #include "core/fpdfapi/edit/cpdf_pagecontentgenerator.h"
+ @@ -1366,6 +1366,42 @@ FPDFAnnot_GetFontSize(FPDF_FORMHANDLE hHandle,
+    return true;
+  }
+@@ -32,7 +40,7 @@ index bc1f7f7eb..075baf1df 100644
+ +  if (!pWidget)
+ +    return false;
+ +
+-+  std::optional<FX_COLORREF> text_color = pWidget->GetTextColor();
+++  absl::optional<FX_COLORREF> text_color = pWidget->GetTextColor();
+ +  if (!text_color)
+ +    return false;
+ +

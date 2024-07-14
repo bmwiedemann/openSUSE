@@ -19,13 +19,13 @@
 %define qt6_version 6.6.0
 
 %define rname kcrash
-# Full KF6 version (e.g. 6.3.0)
+# Full KF6 version (e.g. 6.4.0)
 %{!?_kf6_version: %global _kf6_version %{version}}
 # Last major and minor KF6 version (e.g. 6.0)
 %{!?_kf6_bugfix_version: %define _kf6_bugfix_version %(echo %{_kf6_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kf6-kcrash
-Version:        6.3.0
+Version:        6.4.0
 Release:        0
 Summary:        An application crash handler
 License:        LGPL-2.1-or-later
@@ -42,6 +42,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  cmake(KF6CoreAddons) >= %{_kf6_bugfix_version}
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
+BuildRequires:  cmake(Qt6OpenGL) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Test) >= %{qt6_version}
 BuildRequires:  cmake(Qt6ToolsTools) >= %{qt6_version}
 BuildRequires:  pkgconfig(x11)

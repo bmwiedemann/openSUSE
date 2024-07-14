@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Jul  9 09:42:02 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.4.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.4.0
+- Changes since 6.3.0:
+  * Add missing find_dependency call on Qt6Network. (kde#489094)
+  * Fixed occasional lag issue with ActiveConnection.
+  * Recognize OWE in AP capabilities and connection security
+  * Add VRF and loopback device types
+  * Recognize the "loopback" connection type
+  * Fix check for device and AP cipher compatibility
+
+-------------------------------------------------------------------
 Wed Jun  5 10:12:05 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.3.0

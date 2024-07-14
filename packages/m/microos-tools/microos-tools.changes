@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul 11 11:48:19 UTC 2024 - fvogt@suse.com
+
+- Update to version 2.21+git13:
+  * Don't run in the zipl initrd "initgrub" mode
+
+-------------------------------------------------------------------
 Fri Feb 23 11:59:42 UTC 2024 - fvogt@suse.com
 
 - Update to version 2.21+git12:

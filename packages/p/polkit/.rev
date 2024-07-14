@@ -830,4 +830,17 @@ I didn't encounter any errors while playing around with it in a Live CD. (forwar
   package again. (bsc#1217863) (forwarded request 1132569 from tobijk)</comment>
     <requestid>1132614</requestid>
   </revision>
+  <revision rev="91" vrev="3">
+    <srcmd5>a9b6f3e2211df8f1eea1528ab010b340</srcmd5>
+    <version>123</version>
+    <time>1720939729</time>
+    <user>anag+factory</user>
+    <comment>- Add -Wno-error=implicit-function-declaration to %optflags to
+  work-around an issue in mocklibc (which has been meanwhile removed
+  by upstream) with exactly this kind of issue.
+
+If the request is OK, please forward it to Factory soon-ish so that we
+can switch the default compiler. (forwarded request 1187079 from jamborm)</comment>
+    <requestid>1187081</requestid>
+  </revision>
 </revisionlist>

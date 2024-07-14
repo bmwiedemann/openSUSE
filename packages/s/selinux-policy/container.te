@@ -1,4 +1,4 @@
-policy_module(container, 2.230.0)
+policy_module(container, 2.232.1)
 
 gen_require(`
 	class passwd rootok;
@@ -37,6 +37,13 @@ gen_tunable(sshd_launch_containers, false)
 ##  </p>
 ## </desc>
 gen_tunable(container_use_devices, false)
+
+## <desc>
+##  <p>
+##  Allow containers to use any xserver device volume mounted into container, mostly used for GPU acceleration
+##  </p>
+## </desc>
+gen_tunable(container_use_xserver_devices, false)
 
 ## <desc>
 ##  <p>
@@ -777,6 +784,8 @@ init_dbus_chat(spc_t)
 optional_policy(`
 	systemd_dbus_chat_machined(spc_t)
 	systemd_dbus_chat_logind(spc_t)
+	systemd_dbus_chat_timedated(spc_t)
+	systemd_dbus_chat_localed(spc_t)
 ')
 
 domain_transition_all(spc_t)
@@ -1087,6 +1096,7 @@ allow container_net_domain self:rawip_socket create_stream_socket_perms;
 allow container_net_domain self:netlink_kobject_uevent_socket create_socket_perms;
 allow container_net_domain self:netlink_xfrm_socket create_netlink_socket_perms;
 
+allow container_domain spc_t:unix_stream_socket { read write };
 kernel_unlabeled_domtrans(container_runtime_domain, spc_t)
 kernel_unlabeled_entry_type(spc_t)
 allow container_runtime_domain unlabeled_t:key manage_key_perms;
@@ -1394,6 +1404,11 @@ tunable_policy(`container_use_devices',`
 	allow container_domain device_node:blk_file {rw_blk_file_perms map};
 ')
 
+tunable_policy(`container_use_xserver_devices',`
+	dev_getattr_xserver_misc_dev(container_t)
+	dev_rw_xserver_misc(container_t)
+')
+
 tunable_policy(`container_use_dri_devices',`
 	dev_rw_dri(container_domain)
 ')
@@ -1432,6 +1447,23 @@ allow container_engine_t filesystem_type:{dir file} mounton;
 allow container_engine_t proc_kcore_t:file mounton;
 allow container_engine_t proc_t:filesystem remount;
 allow container_engine_t sysctl_t:{dir file} mounton;
+allow container_engine_t fusefs_t:dir { relabelfrom relabelto };
+allow container_engine_t fusefs_t:file relabelto;
+allow container_engine_t kernel_t:system module_request;
+allow container_engine_t null_device_t:chr_file mounton;
+allow container_engine_t random_device_t:chr_file mounton;
+allow container_engine_t self:netlink_tcpdiag_socket nlmsg_read;
+allow container_engine_t urandom_device_t:chr_file mounton;
+allow container_engine_t zero_device_t:chr_file mounton;
+
+manage_chr_files_pattern(container_engine_t, fusefs_t, fusefs_t)
+
+optional_policy(`
+	gen_require(`
+		type devtty_t;
+	')
+	allow container_engine_t devtty_t:chr_file mounton;
+')
 
 type kubelet_t, container_runtime_domain;
 domain_type(kubelet_t)
@@ -1444,6 +1476,7 @@ optional_policy(`
 	unconfined_domain(kubelet_t)
 ')
 
+manage_chr_files_pattern(container_engine_t, fusefs_t, fusefs_t)
 
 type kubelet_exec_t;
 application_executable_file(kubelet_exec_t)

@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Tue Jul  9 09:42:03 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.4.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.4.0
+- Changes since 6.3.0:
+  * JobView: Fix switch-case: add default branch
+  * plugins/barcode: Fix up QML
+  * widgets: Rework type registration and property initialization, improve QML
+  * Don't let the Heading overflow
+  * AlternativesModel: Use logging category
+  * AlternativesModel: Drop unused header
+  * tests: Rework testing share tool
+  * tests: Set initial properties instead of introspecting objects later
+  * tests: Correctly check for additional positional arguments
+  * tests: Remove duplicating calls to add help and version CLI options
+  * tests: Add missing translation domain
+  * Drop QML import versions
+  * Fix some QML and C++ code style
+  * Use ellipses instead of triple period
+  * AlternativesModel: Use correct role for a tooltip
+  * kdeconnect: Don't let the Heading overflow
+  * Namespace embedded resources
+  * support USE_DBUS option to enable/disable dbus use
+  * gitignore: add VS Code dir
+
+-------------------------------------------------------------------
 Wed Jun  5 10:12:07 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.3.0

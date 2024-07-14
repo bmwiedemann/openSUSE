@@ -450,4 +450,12 @@
   pkgconfig(tracker-sparql-3.0): follow upstreams changes. (forwarded request 1171122 from dimstar)</comment>
     <requestid>1171386</requestid>
   </revision>
+  <revision rev="56" vrev="2">
+    <srcmd5>e706927f6a652616ab6dc8f9fb879485</srcmd5>
+    <version>46.0</version>
+    <time>1720939745</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1186870</requestid>
+  </revision>
 </revisionlist>

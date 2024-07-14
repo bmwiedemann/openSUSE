@@ -20,13 +20,13 @@
 
 %define sonum 6
 %define rname kcalendarcore
-# Full KF6 version (e.g. 6.3.0)
+# Full KF6 version (e.g. 6.4.0)
 %{!?_kf6_version: %global _kf6_version %{version}}
 # Last major and minor KF6 version (e.g. 6.0)
 %{!?_kf6_bugfix_version: %define _kf6_bugfix_version %(echo %{_kf6_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kf6-kcalendarcore
-Version:        6.3.0
+Version:        6.4.0
 Release:        0
 Summary:        Library to access and handle calendar data
 License:        LGPL-2.0-or-later
@@ -42,6 +42,7 @@ BuildRequires:  kf6-extra-cmake-modules >= %{_kf6_version}
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(LibIcal) >= 3.0
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Qml) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
 BuildRequires:  cmake(Qt6ToolsTools) >= %{qt6_version}
 
@@ -57,6 +58,16 @@ Summary:        Library to access to and handle calendar data
 KCalendarCore is a library to provide access to and handling of calendar data.
 It supports the standard formats iCalendar and vCalendar and the group
 scheduling standard iTIP.
+
+%package imports 
+Summary:        Library to access to and handle calendar data - QtQuick bindings
+Requires:       libKF6CalendarCore%{sonum} = %{version}
+
+%description imports
+KCalendarCore is a library to provide access to and handling of calendar data.
+It supports the standard formats iCalendar and vCalendar and the group
+scheduling standard iTIP. This package provides QtQuick bindings for KCalendarCore,
+allowing its use from QML.
 
 %package devel
 Summary:        Development files for kcalendarcore, a library to handle calendar data
@@ -94,6 +105,9 @@ develop applications making use of KCalendarCore.
 %{_kf6_debugdir}/kcalendarcore.categories
 %{_kf6_debugdir}/kcalendarcore.renamecategories
 %{_kf6_libdir}/libKF6CalendarCore.so.*
+
+%files imports
+%{_kf6_qmldir}/org/kde/calendarcore
 
 %files devel
 %doc %{_kf6_qchdir}/KF6CalendarCore.*

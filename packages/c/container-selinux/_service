@@ -1,0 +1,21 @@
+<services>
+  <service name="tar_scm" mode="manual">
+    <param name="version">_auto_</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="url">https://github.com/containers/container-selinux.git</param>
+    <param name="scm">git</param>
+    <param name="changesgenerate">enable</param>
+    <param name="match-tag">v*</param>
+    <param name="revision">main</param>
+    <param name="versionrewrite-pattern">v(.*)</param>
+    <param name="versionrewrite-replacement">\1</param>
+  </service>
+  <service name="recompress" mode="manual">
+    <param name="compression">xz</param>
+    <param name="file">*.tar</param>
+  </service>
+  <service name="set_version" mode="manual" >
+    <param name="file">container-selinux.spec</param>
+  </service>
+</services>
+

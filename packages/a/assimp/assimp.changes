@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jul 11 15:28:24 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- fix check failure on s390x (bsc#1218474)
+
+-------------------------------------------------------------------
 Tue Jul  9 12:08:55 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 5.4.2
@@ -706,12 +711,12 @@ Thu Jun 16 22:16:07 UTC 2016 - jengelh@inai.de
 Tue Sep  3 09:38:16 UTC 2013 - joop.boonen@opensuse.org
 
 - Fixed the build problem with docdir
-  moved samples/ to doc 
+  moved samples/ to doc
 
 -------------------------------------------------------------------
 Fri Feb  1 21:12:07 UTC 2013 - joop.boonen@opensuse.org
 
-- Improved the spec file, changed the names and cleaned the spec file 
+- Improved the spec file, changed the names and cleaned the spec file
 
 -------------------------------------------------------------------
 Mon Jul 30 00:00:00 CEST 2012 - sergey.shambir.auto@gmail.c

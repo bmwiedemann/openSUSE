@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jul  9 09:41:31 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.4.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.4.0
+- Changes since 6.3.0:
+  * Revert "[Extractor] Change to QCoreApplication" (kde#487628)
+  * Port QML modules to declarative type registration
+  * CI: update clang-format image
+
+-------------------------------------------------------------------
 Wed Jun  5 10:11:15 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.3.0

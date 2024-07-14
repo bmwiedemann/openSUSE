@@ -331,4 +331,12 @@
 - Switch _service to use mode=&quot;manual&quot; instead of &quot;disabled&quot;</comment>
     <requestid>1149889</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>42db4020cd4d2985a58de86124156e39</srcmd5>
+    <version>2.21+git13</version>
+    <time>1720939743</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1186859</requestid>
+  </revision>
 </revisionlist>

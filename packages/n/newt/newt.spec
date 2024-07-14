@@ -1,7 +1,7 @@
 #
 # spec file for package newt
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -134,7 +134,7 @@ providing a python API for creating text mode interfaces.
 # --with-gpm-support
 %configure --without-tcl
 ## make depend
-make CPPFLAGS="%{optflags} -fPIC" %{?_smp_mflags} all
+make CPPFLAGS="%{optflags} -fPIC -D_GNU_SOURCE" %{?_smp_mflags} all
 chmod 0644 peanuts.py popcorn.py
 
 %install

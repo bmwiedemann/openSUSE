@@ -18,7 +18,7 @@
 
 %define lname   libfribidi0
 Name:           fribidi
-Version:        1.0.14
+Version:        1.0.15
 Release:        0
 Summary:        An implementation of the Unicode BiDi algorithm
 License:        LGPL-2.1-only

@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Jul  9 09:41:38 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.4.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.4.0
+- Changes since 6.3.0:
+  * Fix two cmakelint types of issue
+  * Fix KCONFIG_USE_QML=OFF by moving ECMQmlModule behind the conditional
+  * kconfig_compiler: Don't generate .moc include
+  * kconfig_compiler: Allow generating QML type registration macros
+  * kconfig_compiler: Use automoc for GENERATE_MOC
+  * Avoid unused variable definition
+  * Allow desktop files to be a symbolic link
+  * Fix compile
+  * KStandardActions: Use C++11 for loop
+  * fix compile dependencies for windows
+  * Register KCoreConfigSkeleton to QML
+  * provide a generic named USE_DBUS option to allow to choose if to use it
+  * don't warn if no dbus enabled
+
+-------------------------------------------------------------------
 Wed Jun  5 10:11:26 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.3.0

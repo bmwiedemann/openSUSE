@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Jul  9 09:41:36 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.4.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.4.0
+- Changes since 6.3.0:
+  * plugins: Use help-about icons instead of dialog-information
+  * SettingHighlighterPrivate: Optimize connections
+  * plugins: Use symbolic versions of the icons
+  * Declare missing QML module dependency
+  * Properly declare KQuickConfigModule as having attached properties
+  * support USE_DBUS option to enable/disable dbus use
+  * gitignore: add VS Code dir
+  * Ensure KCM load function is called only once (kde#487388)
+
+-------------------------------------------------------------------
 Wed Jun  5 10:11:23 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.3.0

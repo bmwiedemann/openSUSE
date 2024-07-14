@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Jul  9 09:42:06 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.4.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.4.0
+- Changes since 6.3.0:
+  * Add CustomType highlighting and improve import highlighting
+  * Corrected Gleam syntax
+  * Add Gleam syntax
+  * OrgMode: add header-item folding, properties folding, more todo keywords
+  * avoid that we try to open files without name
+  * [dracula.theme] Fix "ISO/Delphi Extended" for Pascal.
+  * nginx: update for new directives and variables
+  * systemd unit: update to systemd v256
+  * Add basic syntax highlighting rules for opsi-script
+  * [dracula.theme] Fix "Special Variable" for PHP.
+  * Add Typst highlighter
+
+-------------------------------------------------------------------
 Wed Jun  5 10:12:11 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.3.0

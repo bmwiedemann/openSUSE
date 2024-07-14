@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Jul 11 21:03:49 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Update to 24.2.5.2 (24.2.5 final)
+  https://wiki.documentfoundation.org/Releases/24.2.5/RC1 and
+  https://wiki.documentfoundation.org/Releases/24.2.5/RC2
+- Added patch:
+  * pdfium-optional.patch
+    + fix build of pdfium with system abseil-cpp
+
+-------------------------------------------------------------------
+Wed Jul 10 17:49:13 UTC 2024 - Martin Schreiner <martin.schreiner@suse.com>
+
+- Remove recommendation on libreoffice-qt5 to keep the same behaviour
+  as we do for libreoffice-qt6, which is not recommending it by
+  default (bsc#1227145).
+- Add patch for CVE-2024-5261 (bsc#1226975):
+  * cve-2024-5261.patch
+- This patch won't be needed when LibreOffice 24.8 is released, as
+  it's been merged upstream.
+
+-------------------------------------------------------------------
 Tue Jul  2 19:16:57 UTC 2024 - Martin Schreiner <martin.schreiner@suse.com>
 
 - libreoffice no longer recommends libreoffice-qt6 (bsc#1227145).

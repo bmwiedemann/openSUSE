@@ -18,8 +18,8 @@
 
 
 %define srcversion 6.9
-%define patchversion 6.9.7
-%define git_commit a5efffa8ce37bfaa23d811678b26b6b9c0f52a79
+%define patchversion 6.9.9
+%define git_commit 8c0f7974077bd42f9bfec8b1e3de8b5dfa20bb1b
 %define variant %{nil}
 %define compress_modules zstd
 %define compress_vmlinux xz
@@ -36,9 +36,9 @@
 %(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,mkspec,compute-PATCHVERSION.sh,arch-symbols,log.sh,try-disable-staging-driver,compress-vmlinux.sh,mkspec-dtb,check-module-license,klp-symbols,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
 
 Name:           kernel-default
-Version:        6.9.7
+Version:        6.9.9
 %if 0%{?is_kotd}
-Release:        <RELEASE>.ga5efffa
+Release:        <RELEASE>.g8c0f797
 %else
 Release:        0
 %endif
@@ -838,6 +838,7 @@ from this package.
 
 %source_timestamp
 %files vdso
+%dir %modules_dir
 %modules_dir/vdso/
 %endif
 

@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Thu Jul 11 13:46:12 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- added version specific requirements for dri3proto, presentproto
+  and wayland-protocols
+
+-------------------------------------------------------------------
+Thu Jul 11 13:17:54 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- This supersedes the following patches
+  * U_CVE-2024-31080-Xi-ProcXIGetSelectedEvents-needs-to-use-unswapped-le.patch
+  * U_CVE-2024-31081-Xi-ProcXIPassiveGrabDevice-needs-to-use-unswapped-le.patch
+  * U_CVE-2024-31083-render-fix-refcounting-of-glyphs-during-ProcRenderAd.patch
+  * U_render-Avoid-possible-double-free-in-ProcRenderAddGl.patch 
+  which fixed security issues 
+  * CVE-2024-31080 (bsc#1222309)
+  * CVE-2024-31081 (bsc#1222310)
+  * CVE-2024-31083 (bsc#1222312)
+  and a regression due to a security fix for CVE-2024-31083 (bsc#1222312,
+  boo#1222442, gitlab xserver issue #1659)
+
+-------------------------------------------------------------------
+Thu Jul 11 11:43:22 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to bugfix release 24.1.1 for the current stable 24.1
+  branch of Xwayland
+  * xwayland: fix segment fault in `xwl_glamor_gbm_init_main_dev`
+  * os: Explicitly include X11/Xmd.h for CARD32 definition to fix
+    building on i686
+  * present: On *BSD, epoll-shim is needed to emulate eventfd()
+  * xwayland: Stop on first unmapped child
+  * xwayland/window-buffers: Promote xwl_window_buffer
+  * xwayland/window-buffers: Add xwl_window_buffer_release()
+  * xwayland/glamor/gbm: Copy explicit sync code to GLAMOR/GBM
+  * xwayland/window-buffers: Use synchronization from GLAMOR/GBM
+  * xwayland/window-buffers: Do not always set syncpnts
+  * xwayland/window-buffers: Move code to submit pixmaps
+  * xwayland/window-buffers: Set syncpnts for all pixmaps
+  * xwayland: Move xwl_window disposal to its own function
+  * xwayland: Make sure we do not leak xwl_window on destroy
+  * wayland/window-buffers: Move buffer disposal to its own function
+  * xwayland/window-buffers: optionally force disposal
+  * wayland: Force disposal of windows buffers for root on destroy
+  * xwayland: Check for pointer in xwl_seat_leave_ptr()
+  * xwayland: remove includedir from pkgconfig
+
+-------------------------------------------------------------------
 Wed Jun  5 11:27:13 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - disable DPMS on sle15 due to missing proto package

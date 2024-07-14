@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jul 12 00:16:41 UTC 2024 - Mia Herkt <mia@0x0.st>
+
+- Update to 0.32.0
+Features:
+  * add validator for sha384 hash
+    gh#python-validators/validators#387
+
+-------------------------------------------------------------------
 Tue Jul  9 12:49:35 UTC 2024 - Mia Herkt <mia@0x0.st>
 
 - Update to 0.31.0

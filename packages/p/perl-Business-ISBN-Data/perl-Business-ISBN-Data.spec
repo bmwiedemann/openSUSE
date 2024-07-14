@@ -18,10 +18,10 @@
 
 %define cpan_name Business-ISBN-Data
 Name:           perl-Business-ISBN-Data
-Version:        20240614.1.0
+Version:        20240710.1.0
 Release:        0
-# 20240614.001 -> normalize -> 20240614.1.0
-%define cpan_version 20240614.001
+# 20240710.001 -> normalize -> 20240710.1.0
+%define cpan_version 20240710.001
 License:        Artistic-2.0
 Summary:        Data pack for Business::ISBN
 URL:            https://metacpan.org/release/%{cpan_name}

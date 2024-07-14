@@ -3555,4 +3555,12 @@ Petr</comment>
 - Re-enable Firebird support for Leap 15.X and SLE-15 (bsc#1225597).</comment>
     <requestid>1185243</requestid>
   </revision>
+  <revision rev="295" vrev="1">
+    <srcmd5>d56602ff323302d146a31a11c59e3a3b</srcmd5>
+    <version>24.2.5.2</version>
+    <time>1720939835</time>
+    <user>anag+factory</user>
+    <comment>24.2.5 + security updates</comment>
+    <requestid>1186978</requestid>
+  </revision>
 </revisionlist>

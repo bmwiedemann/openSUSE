@@ -1,7 +1,7 @@
 #
 # spec file for package ldns
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,8 @@ URL:            https://www.nlnetlabs.nl/projects/ldns/
 Source:         https://www.nlnetlabs.nl/downloads/ldns/ldns-%{version}.tar.gz
 Source1:        https://www.nlnetlabs.nl/downloads/ldns/ldns-%{version}.tar.gz.asc
 Source2:        ldns.keyring
+Patch0:         ldns-swig-4.2.patch
+Patch1:         ldns-swig-32bit.patch
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  libopenssl-devel
@@ -85,7 +87,7 @@ Requires:       %{libname} >= %{version}
 Perl bindings for the ldns library.
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 export CFLAGS="%{optflags} -fno-strict-aliasing"

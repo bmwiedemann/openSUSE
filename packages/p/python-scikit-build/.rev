@@ -244,4 +244,12 @@
   * Support changes introduced by setuptools 69.3.0.</comment>
     <requestid>1178218</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>4669cdc2f249b5d9cb47cf7fb548abee</srcmd5>
+    <version>0.18.0</version>
+    <time>1720939739</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1186828</requestid>
+  </revision>
 </revisionlist>

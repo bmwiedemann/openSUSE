@@ -399,4 +399,16 @@
     <comment></comment>
     <requestid>1135557</requestid>
   </revision>
+  <revision rev="52" vrev="2">
+    <srcmd5>99e6f1af1d18d0ca935589bd8bc8eec2</srcmd5>
+    <version>0.52.24</version>
+    <time>1720939729</time>
+    <user>anag+factory</user>
+    <comment>- Add -D_GNU_SOURCE to compilation flags because it is a required
+  feature macro for function setlinebuf to be declared. [boo#1225864]
+
+If the request is OK, can you please also forward it to Factory
+soon-ish so that we can switch the default compiler?  Thanks! (forwarded request 1187069 from jamborm)</comment>
+    <requestid>1187076</requestid>
+  </revision>
 </revisionlist>

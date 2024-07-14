@@ -1,7 +1,7 @@
 #
 # spec file for package linux-atm
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -14,6 +14,7 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 %if %{undefined _firmwaredir}
 %define _firmwaredir /lib/firmware
@@ -37,11 +38,14 @@ Patch2:         linux-atm-2.5.2-fix-header-conflict.patch
 Patch3:         linux-atm-2.5.2-remove-headers-crude-hack.patch
 # PATCH-FIX-UPSTREAM fix-build-after-y2038-changes-in-glibc.patch -- fix build after y2038 changes in glibc
 Patch4:         fix-build-after-y2038-changes-in-glibc.patch
-BuildRequires:  bison
+# PATCH-FIX-UPSTREAM linux-atm-C99.patch -- fix passing wrong type to accept
+Patch5:         linux-atm-C99.patch
+
 BuildRequires:  autoconf
-BuildRequires:  libtool
+BuildRequires:  bison
 BuildRequires:  flex
 BuildRequires:  glibc-devel
+BuildRequires:  libtool
 
 %description
 Tools to support ATM (Asynchronous Transfer Mode) networking.

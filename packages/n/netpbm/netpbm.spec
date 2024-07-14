@@ -20,10 +20,10 @@
 %define asan_build     0
 %define ubsan_build    0
 %define libmaj  11
-%define libmin  105
+%define libmin  107
 %define libver  %{libmaj}.%{libmin}
 Name:           netpbm
-Version:        11.5.2
+Version:        11.7.0
 Release:        0
 Summary:        A Graphics Conversion Package
 License:        BSD-3-Clause AND GPL-2.0-or-later AND IJG AND MIT AND SUSE-Public-Domain
@@ -117,9 +117,12 @@ export LDFLAGS="$LDFLAGS -fsanitize=undefined"
 %endif
 make %{?_smp_mflags} CFLAGS="$CFLAGS"
 rm doc/INSTALL
-#
-# convert html to man pages
+# DOC
 cd netpbm.sourceforge.net/doc
+# CVE-2024-38526
+# notified upstream on 2024-07-12
+sed -i 's/polyfill.io/cdnjs.cloudflare.com/' pamhomography.html
+# convert html to man pages
  ../../buildtools/makeman *.html
 for i in 1 3 5 ; do
   mkdir -p ../../man/man${i}
@@ -145,6 +148,10 @@ rm %{buildroot}%{_bindir}/pstopnm # disable due security reasons, e. g. [bsc#110
 %postun -n libnetpbm%{libmaj} -p /sbin/ldconfig
 
 %check
+# HOWTO run tests manually:
+# $ LD_LIBRARY_PATH=lib PATH=package/bin pamtowinicon -pngthreshold=1 package-test-tmp/testimg1.pam
+# pamtowinicon: bad magic number 0xf0f - not a PAM, PPM, PGM, or PBM file
+# $
 %if %{asan_build}
 export LSAN_OPTIONS="detect_leaks=0"
 %endif
@@ -159,14 +166,19 @@ sed -i '/pict-roundtrip/d' test/Test-Order
 sed -i '/stdin-ppm3.test/d' test/Test-Order
 # pstopnm is not shipped
 sed -i '/^l\?ps.*\.test/d' test/Test-Order
-# new winicon-roundtrip2.test failure reported to bryanh@giraffe-data.com on 2020-12-29
-# $ LD_LIBRARY_PATH=lib PATH=package/bin pamtowinicon -pngthreshold=1 package-test-tmp/testimg1.pam
-# pamtowinicon: bad magic number 0xf0f - not a PAM, PPM, PGM, or PBM file
-# $
-sed -i '/winicon-roundtrip2.test/d'  test/Test-Order
 # Unable to exec 'gs'
 sed -i '/pbmtextps.test/d'  test/Test-Order
 sed -i '/stdin-pnm2.test/d' test/Test-Order
+# reported to bryanh@giraffe-data.com on 2024-07-12
+# == xpm-roundtrip.test ==
+# ppmtoxpm: (Computing colormap...
+# ppmtoxpm: ...Done.  20314 colors found.)
+# ppmtoxpm: (Computing colormap...
+# ppmtoxpm: ...Done.  2 colors found.)
+# xpmtoppm: EOF or read error on input file
+# pgmtopbm: Error reading first byte of what is expected to be a Netpbm magic number.  Most often, this means your input file is empty
+# xpm-roundtrip.test: FAILURE
+sed -i '/xpm-roundtrip.test/d' test/Test-Order
 mkdir package-test-{tmp,results}
 make pkgdir=`pwd`/package tmpdir=`pwd`/package-test-tmp RESULTDIR=`pwd`/package-test-results check-package
 

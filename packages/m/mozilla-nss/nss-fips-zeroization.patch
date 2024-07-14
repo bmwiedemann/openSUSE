@@ -103,19 +103,6 @@ Index: nss/lib/freebl/dh.c
          *privKey = NULL;
          PORT_FreeArena(arena, PR_TRUE);
      }
-Index: nss/lib/freebl/ec.c
-===================================================================
---- nss.orig/lib/freebl/ec.c
-+++ nss/lib/freebl/ec.c
-@@ -1121,7 +1121,7 @@ ECDSA_VerifyDigest(ECPublicKey *key, con
-     mp_int n;
-     SECItem pointC = { siBuffer, NULL, 0 };
-     int slen;       /* length in bytes of a half signature (r or s) */
--    int flen;       /* length in bytes of the field size */
-+    int flen = 0;   /* length in bytes of the field size */
-     unsigned olen;  /* length in bytes of the base point order */
-     unsigned obits; /* length in bits  of the base point order */
- 
 Index: nss/lib/freebl/gcm.c
 ===================================================================
 --- nss.orig/lib/freebl/gcm.c

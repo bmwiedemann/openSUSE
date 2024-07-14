@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Jul  9 09:41:31 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.4.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.4.0
+- Changes since 6.3.0:
+  * Add core/primary services for LE Audio: CSIS, MCS, BASS, PACS, CAS
+  * Add comments to improve readability and maintainability
+  * Bump TODO KF6 to TODO KF7
+  * Manager: Add list property for connectedDevices
+  * Manager: Sort out property shorthand in tests
+
+-------------------------------------------------------------------
 Wed Jun  5 10:11:16 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.3.0

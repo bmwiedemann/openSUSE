@@ -78,7 +78,7 @@
 %global with_gcc 12
 %endif
 Name:           libreoffice
-Version:        24.2.4.2
+Version:        24.2.5.2
 Release:        0
 Summary:        A Free Office Suite (Framework)
 License:        LGPL-3.0-or-later AND MPL-2.0+
@@ -131,6 +131,7 @@ Patch1:         scp2-user-config-suse.diff
 # FIXME: the right fix is to compile the help and produce the .db_, .ht_, and other files
 Patch2:         nlpsolver-no-broken-help.diff
 Patch3:         mediawiki-no-broken-help.diff
+Patch4:         pdfium-optional.patch
 # PATCH-FIX-OPENSUSE boo#1186110 fix GCC 11 error
 Patch6:         gcc11-fix-error.patch
 Patch9:         fix_math_desktop_file.patch
@@ -148,6 +149,8 @@ Patch991:       libreoffice-no-destdircheck.patch
 Patch992:       python34-no-f-strings.patch
 # Fix build with icu 74 (bsc#1224309)
 Patch993:       icu-74-compatibility.patch
+# PATCH-FIX-UPSTREAM CVE-2024-5261 (bsc#1226975)
+Patch994:       cve-2024-5261.patch
 BuildRequires:  %{name}-share-linker
 BuildRequires:  ant
 BuildRequires:  autoconf
@@ -291,9 +294,6 @@ Requires:       libreoffice-l10n-en = %{version}
 Requires:       python3
 Recommends:     dejavu-fonts
 Recommends:     google-carlito-fonts
-%if %{with qt5}
-Recommends:     libreoffice-qt5
-%endif
 Provides:       %{name}-draw-extensions = %{version}
 Obsoletes:      %{name}-draw-extensions < %{version}
 Provides:       %{name}-impress-extensions = %{version}
@@ -1089,6 +1089,7 @@ Provides %{langname} translations and additional resources (help files, etc.) fo
 %endif # Leap 42/SLE-12
 %patch -P 2
 %patch -P 3
+%patch -P 4
 %patch -P 6 -p1
 %patch -P 9 -p1
 %if 0%{?suse_version} < 1500
@@ -1103,6 +1104,7 @@ Provides %{langname} translations and additional resources (help files, etc.) fo
 %patch -P 992 -p1
 %endif
 %patch -P 993 -p1
+%patch -P 994 -p1
 
 # Disable some of the failing tests (some are random)
 %if 0%{?suse_version} < 1330

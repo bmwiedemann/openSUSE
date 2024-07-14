@@ -134,6 +134,7 @@ logs in applications without having to provide lots of information over D-Bus).
 %autosetup -p1
 
 %build
+%global optflags %{optflags} -fpermissive
 %configure \
   --disable-static \
   --enable-public-extensions

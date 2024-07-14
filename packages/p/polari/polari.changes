@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jul 11 11:58:39 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Change telepathy-logger runtime Requires to Recommends. Version
+  46.0 replaced it with a private tracker database, it is now only
+  needed for import of the old telepathy database.
+
+-------------------------------------------------------------------
 Wed May  1 09:02:28 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 46.0:

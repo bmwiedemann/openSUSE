@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Wed Jul 10 07:52:16 UTC 2024 - cathy.hu@suse.com
+
+- Update to version 2.232.1:
+  * Bump to v2.232.1
+  * TMT: fix srpm download syntax on rawhide
+  * Bump to 2.232.0
+  * Packit: remove `update_release` key from downstream jobs (#313)
+  * Update container-selinux.8 man page
+  * Add ownership of /usr/share/udica (#312)
+  * Packit/TMT: upstream maintenance of downstream gating tests
+  * extend container_engine_t again
+  * Allow spc_t to use localectl
+  * Allow spc_t to use timedatectl
+  * introduce container_use_xserver_devices boolean to allow GPU access
+
+-------------------------------------------------------------------
+Mon May 06 07:36:02 UTC 2024 - jsegitz@suse.com
+
+- Update to version 2.231.0:
+  * Allow container domains to communicate with spc_t unix_stream_sockets
+  * Move to %posttrans to ensure selinux-policy got updated before
+    the commands run (bsc#1221720)
+
+-------------------------------------------------------------------
+Wed Apr 10 15:47:15 UTC 2024 - Cathy Hu <cathy.hu@suse.com>
+
+- Manual update to version 2.230.0+git4.a8e389d to include this 
+  commit that is needed for the main selinux-policy update to work:
+  * Rename all /var/run file context entries to /run
+
+-------------------------------------------------------------------
+Wed Apr 10 15:38:24 UTC 2024 - Cathy Hu <cathy.hu@suse.com>
+
+- Update to version 2.230.0:
+  * Move to tar_scm based packaging: added _service and _servicedata
+  * Allow containers to unmount file systems
+  * Add buildah as a container_runtime_exec_t label
+  * Additional rules for container_user_t
+  * improve container_engine_t
+
+-------------------------------------------------------------------
 Thu Jan 11 08:37:53 UTC 2024 - Johannes Segitz <jsegitz@suse.com>
 
 - Update to version 2.228:

@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Jul  9 09:41:49 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.4.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.4.0
+- Changes since 6.3.0:
+  * Add Kirigmai.Action unit tests
+  * Fix static build
+  * Allow initializing a Kirigami.Action from a QAction
+  * NavigationTabButton: improve text legibility (kde#489573)
+  * Dialog: Add horizontal padding to prevent content from leaking onto borders
+  * ActionTextField: de-duplicate action icon code
+  * dialogs/Dialog.qml: removed colorSet
+  * ActionTextField: fix QML errors
+  * Update build.gradle in application template to Qt 6
+  * Remove unused KItemModels import
+  * Fix: The issue of abnormal touch events
+  * Relax property types to QtQuick.Templates counterparts
+  * Units: decouple grid unit from font metrics
+  * Fix typo
+  * support USE_DBUS option to enable/disable dbus use
+  * PlaceholderMessage: Announce the text and description to a11y (kde#482753)
+  * fix: install KirigamiPrivate soversion
+
+-------------------------------------------------------------------
 Wed Jun  5 10:11:43 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.3.0

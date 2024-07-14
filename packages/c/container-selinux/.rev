@@ -171,4 +171,12 @@
     <comment></comment>
     <requestid>1138077</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>9f16d10b1a3887a0122a481a935fab20</srcmd5>
+    <version>2.232.1</version>
+    <time>1720939737</time>
+    <user>anag+factory</user>
+    <comment>container-selinux update</comment>
+    <requestid>1186819</requestid>
+  </revision>
 </revisionlist>
