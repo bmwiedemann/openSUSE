@@ -16,9 +16,9 @@
 #
 
 
-%define distversion 4.1.8
+%define distversion 4.2.3
 Name:           python-jupyterlab
-Version:        4.1.8
+Version:        4.2.3
 Release:        0
 Summary:        Environment for interactive and reproducible computing
 License:        BSD-3-Clause
@@ -42,6 +42,7 @@ BuildRequires:  %{python_module jupyterlab_server >= 2.27.1 with %python-jupyter
 BuildRequires:  %{python_module notebook_shim >= 0.2}
 BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools >= 40.1}
 BuildRequires:  %{python_module tomli >= 1.2.2 if %python-base < 3.11}
 BuildRequires:  %{python_module tornado >= 6.2.0}
 BuildRequires:  %{python_module traitlets}
@@ -61,12 +62,13 @@ Requires:       python-jupyter-lsp >= 2.0.0
 Requires:       python-jupyter_core
 Requires:       python-notebook_shim >= 0.2
 Requires:       python-packaging
+Requires:       python-setuptools >= 40.1
 Requires:       python-tornado >= 6.2.0
 Requires:       python-traitlets
 Requires:       (python-importlib-metadata >= 4.8.3 if python-base < 3.10)
 Requires:       (python-importlib-resources >= 1.4 if python-base < 3.9)
 Requires:       (python-jupyter_server >= 2.4.0 with python-jupyter_server < 3)
-Requires:       (python-jupyterlab_server >= 2.19.0 with python-jupyterlab_server < 3)
+Requires:       (python-jupyterlab_server >= 2.27.1 with python-jupyterlab_server < 3)
 Requires:       (python-tomli >= 1.2.2 if python-base < 3.11)
 Suggests:       python-jupyter-collaboration >= 1
 Provides:       python-jupyter_jupyterlab = %{version}

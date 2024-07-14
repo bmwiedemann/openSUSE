@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Fri Jul 12 14:42:33 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 4.2.3
+  * Fix inline completer configure calls not being propagated
+    correctly #16508 (@krassowski)
+  * Fix the lines placeholder taking up too much space #16493
+    (@krassowski)
+  * Use correct hub restart URL #16471 (@mahendrapaipuri)
+  * Fix check link CI failure in README (time zone converter site)
+    #16482 (@afshin)
+- Release 4.2.2
+  ## Bugs fixed
+  * Fix width and margins of the notebook footer. #16383
+    (@HaudinFlorence)
+  * Fix async function display #16443 (@sanskriti2005)
+  * Fix code comments in tilde (~) fences incorrectly shown as
+    headings in TOC #16437 (@itsmevichu)
+  * Fix typos in jupyter-collaboration-missing error message #16436
+    (@krishanbhasin-px)
+  * Reactive toolbar computation, again... #16409 (@brichet)
+  * Fix comments in nested markdown code blocks incorrectly being
+    identified as TOC headings #16420 (@itsmevichu)
+  * Add the toolbar again when updating the title of
+    PanelWithToolbar #16390 (@brichet)
+  * Align token usage for events #16397 (@fcollonval)
+  * Fix runtime console error in debugger extension #16368
+    (@afshin)
+  ## Maintenance and upkeep improvements
+  * Ignore empty stdout data when logging in verdaccio #16459
+    (@fcollonval)
+  * Fix some flaky ui tests #16430 (@brichet)
+  * Do not install cairo/pango on Mac in CI #16434 (@krassowski)
+  * Fix usage check job on CI (add setuptools dependency) #16423
+    (@jtpio)
+  * Run Python tests on MacOS with Python 12, replace canvas with
+    jest-canvas-mock #16314 (@krassowski)
+  * Fix failing link check (point to JAWS on Wikipedia) #16365
+    (@krassowski)
+  * Do not check links to Jupyter blog on Medium #16351
+    (@krassowski)
+- Release 4.2.1
+  * Fix Shift + Tab contextual help inspector tooltip regression
+    #16343 (@krassowski)
+  * Fix workspace context menu incorrectly showing up in other
+    sidebar sections #16346 (@krassowski)
+  * Fix execution in console in terminal interaction mode #16348
+    (@krassowski)
+  * Reactive toolbar: avoid simultaneous calls to _onResize()
+    #16335 (@brichet)
+  * Resetting a shortcut does not restore and enable the default if
+    it was modified #16304 (@itsmevichu)
+  * Allow to invoke inline completer anywhere (not only at the end
+    of line) #16298 (@ajbozarth)
+  * Search and replace with substring in markdown and raw cells
+    #16293 (@JasonWeill)
+  * Wait for the cell toolbar items to be rendered the first time
+    before looking for overlap #16291 (@brichet)
+  * Add lowercase proxy vars and make priority consistent with
+    other tools #16287 (@jgoodson)
+
+-------------------------------------------------------------------
 Thu May  9 15:11:09 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Revert to 4.1.8 until the ecosystem is ready (notebook)
