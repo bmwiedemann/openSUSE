@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Mon Jul  8 17:13:43 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 5.7.0:
+  * [CMake] Move baseline required C++ standard to C++17
+  * [OSS] Add feature setting for Extended Error Text
+  * [Server] Add enhanced error message interface
+  * [Server] Add method to get sanitized env/cgi string
+  * [Server] Implement the kXR_seqio open option for sequential
+    I/O
+  * [XCache] Add new only-if-cached cache control option using
+    XrdPfcFsctl (gh#xrootd/xrootd#2104)
+  * [XrdApps,XrdPss] Add support for pelican:// protocol
+    (gh#xrootd/xrootd#2177, gh#xrootd/xrootd#2171)
+  * [XrdCms] Add new load balancing algorithm with randomized
+    affinity
+  * [XrdCrypto,XrdSecgsi] Update min/default RSA bits to 2048
+    (gh#xrootd/xrootd#2117, gh#xrootd/xrootd#2147)
+  * [XrdHttp] Add new option to allow for tpc unrestricted
+    redirection (gh#xrootd/xrootd#2232, gh#xrootd/xrootd#2228)
+  * [XrdHttp] External handlers can now be loaded without TLS
+    (gh#xrootd/xrootd#2253, gh#xrootd/xrootd#2099,
+    gh#xrootd/xrootd#2123)
+  * [XrdMacaroons] Support negative directives in macaroons.trace
+    option (gh#xrootd/xrootd#2224)
+  * [XrdOuc] Extend XrdOucGatherConf to do more boiler plate work
+    and be extendable
+  * [XrdOuc] Provide method to get the last line from
+    XrdOucGatherConf
+  * [XrdSciTokens] Implement ability to have token groups as a
+    separate claim (gh#xrootd/xrootd#2176)
+  * [XrdSciTokens] New option to configure authorization strategy
+    for tokens (gh#xrootd/xrootd#2205, gh#xrootd/xrootd#2121,
+    gh#xrootd/xrootd#2254)
+  * [XrdThrottle] Add monitoring packet for IO, based on the
+    throttle plugin
+  * [XrdThrottle] Improved handling of timing information on macOS
+    (gh#xrootd/xrootd#2262)
+  * [XrdTpc] Add option to force the destination IP address on a
+    HTTP-TPC (gh#xrootd/xrootd#2172)
+  * [XrdTpc] Add tpc.header2cgi configuration option
+    (gh#xrootd/xrootd#2285, gh#xrootd/xrootd#2283)
+  * For list of bugs fixed, see
+    <https://github.com/xrootd/xrootd/releases/tag/v5.7.0>.
+- Add new BuildRequires to build additional libraries and plugins:
+  * scitokens-cpp-devel
+  * tinyxml-devel
+  * pkgconfig(davix)
+  * pkgconfig(json-c)
+  * pkgconfig(libcurl)
+  * pkgconfig(libisal): only for openSUSE >+ 1650 and 64-bit archs
+  * pkgconfig(libsystemd)
+  * pkgconfig(libtirpc)
+- Add xrootd-find-gtest.patch: Add `find_package` snippet to
+  CMakeLists.txt to avoid linking issues when building tests (we
+  do not, but still this fixes the cmake config for when we
+  might).
+
+-------------------------------------------------------------------
 Thu Mar 14 16:13:05 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 5.6.9:

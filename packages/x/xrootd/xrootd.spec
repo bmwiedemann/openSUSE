@@ -20,13 +20,28 @@
 %define pname xrootd
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "python"
+# No tests for python bindings
 %bcond_without python3
 %define psuffix -python
+%bcond_with tests
 %else
 %bcond_with python3
 %define psuffix %{nil}
+# Cannot run tests as some of them depend on network connection
+%bcond_with tests
 %endif
 # /SECTION
+
+# libisal only available for oS >= 1650 and even then only for 64bit archs
+%if 0%{?suse_version} > 1650
+%ifnarch %{ix86}
+%bcond_without system_isal
+%else
+%bcond_with system_isal
+%endif
+%else
+%bcond_with system_isal
+%endif
 
 %define __builder ninja
 %define skip_python2 1
@@ -34,7 +49,7 @@
 %bcond_with    ceph
 
 Name:           %{pname}%{psuffix}
-Version:        5.6.9
+Version:        5.7.0
 Release:        0
 Summary:        An eXtended Root Daemon
 License:        LGPL-3.0-or-later
@@ -43,6 +58,8 @@ URL:            https://xrootd.slac.stanford.edu/
 Source0:        https://github.com/xrootd/xrootd/releases/download/v%{version}/%{pname}-%{version}.tar.gz
 Source1:        xrootd-user.conf
 Source100:      xrootd-rpmlintrc
+# PATCH-FIX-UPSTREAM xrootd-find-gtest.patch badshah400@gmail.com -- Add find_package snippet to CMakeLists.txt to avoid linking issues when building tests
+Patch0:         xrootd-find-gtest.patch
 # PATCH-FEATURE-OPENSUSE Hardening patches
 Patch100:       harden_cmsd@.service.patch
 # PATCH-FEATURE-OPENSUSE Hardening patches
@@ -59,19 +76,28 @@ BuildRequires:  glibc-devel >= 2.21
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
 BuildRequires:  readline-devel
+BuildRequires:  scitokens-cpp-devel
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  sysuser-tools
+BuildRequires:  tinyxml-devel
+BuildRequires:  pkgconfig(davix)
 BuildRequires:  pkgconfig(fuse)
+BuildRequires:  pkgconfig(json-c)
 BuildRequires:  pkgconfig(krb5)
+BuildRequires:  pkgconfig(libcurl)
+BuildRequires:  pkgconfig(libsystemd)
+BuildRequires:  pkgconfig(libtirpc)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(uuid)
 BuildRequires:  pkgconfig(zlib)
+%if %{with system_isal}
+BuildRequires:  pkgconfig(libisal)
+%endif
 %if %{with ceph}
 BuildRequires:  librados-devel
 BuildRequires:  libradosstriper-devel
 %endif
-BuildRequires:  pkgconfig(libtirpc)
 %if %{with python3}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
@@ -87,6 +113,9 @@ BuildRequires:  xrootd-server-devel  = %{version}
 %else
 BuildRequires:  doxygen
 BuildRequires:  graphviz-gnome
+%endif
+%if %{with tests}
+BuildRequires:  pkgconfig(gtest)
 %endif
 
 %description
@@ -314,7 +343,9 @@ popd
 %cmake \
    -DBUILD_PYTHON:BOOL=OFF \
    -DENABLE_CEPH:BOOL=%{with ceph} \
-   -DUSE_LIBC_SEMAPHORE:BOOL=ON
+   -DUSE_LIBC_SEMAPHORE:BOOL=ON \
+   -DBUILD_TESTS:BOOL=%{?with_tests:ON}%{!?with_tests:OFF} \
+   %{nil}
 
 %cmake_build
 doxygen ../Doxyfile
@@ -356,6 +387,11 @@ install -m 0644 %{SOURCE1} %{buildroot}%{_sysusersdir}/
 
 %fdupes %{buildroot}%{_prefix}
 
+%if %{with tests}
+%check
+%ctest
+%endif
+
 %post libs -p /sbin/ldconfig
 %postun libs -p /sbin/ldconfig
 %post client-libs -p /sbin/ldconfig
@@ -394,6 +430,10 @@ install -m 0644 %{SOURCE1} %{buildroot}%{_sysusersdir}/
 %{_bindir}/xrdgsiproxy
 %{_bindir}/xrdpinls
 %{_bindir}/xrdreplay
+%if %{with tests}
+# This binary is only used for running tests and is not meant for the end user
+%exclude %{_bindir}/xrdshmap
+%endif
 %{_mandir}/man1/xrdadler32.1%{?ext_man}
 %{_mandir}/man1/xrdcopy.1%{?ext_man}
 %{_mandir}/man1/xrdcp.1%{?ext_man}
@@ -406,6 +446,9 @@ install -m 0644 %{SOURCE1} %{buildroot}%{_sysusersdir}/
 %{_libdir}/libXrdFfs.so.*
 %{_libdir}/libXrdPosix.so.*
 %{_libdir}/libXrdPosixPreload.so.*
+%if %{with system_isal}
+%{_libdir}/libXrdEc.so.*
+%endif
 # This lib may be used for LD_PRELOAD so the .so link needs to be included
 %{_libdir}/libXrdPosixPreload.so
 %dir %{_sysconfdir}/%{pname}/
@@ -417,6 +460,9 @@ install -m 0644 %{SOURCE1} %{buildroot}%{_sysusersdir}/
 %license COPYING.LGPL LICENSE
 %{_bindir}/xrdgsitest
 %{_mandir}/man1/xrdgsitest.1%{?ext_man}
+%if %{with system_isal}
+%{_libdir}/libXrdEc.so
+%endif
 %{_libdir}/libXrdCl.so
 %{_libdir}/libXrdFfs.so
 %{_libdir}/libXrdPosix.so
@@ -441,11 +487,16 @@ install -m 0644 %{SOURCE1} %{buildroot}%{_sysusersdir}/
 %{_libdir}/libXrdHttpUtils.so.*
 %{_libdir}/libXrdUtils.so.*
 %{_libdir}/libXrdXml.so.*
+# Section Plugins
+%{_libdir}/libXrdAccSciTokens-%{plugver}.so
+%{_libdir}/libXrdHttpTPC-%{plugver}.so
+%{_libdir}/libXrdClHttp-%{plugver}.so
 %{_libdir}/libXrdClProxyPlugin-%{plugver}.so
 %{_libdir}/libXrdSec*-%{plugver}.so
 %{_libdir}/libXrdCksCalczcrc32-%{plugver}.so
 %{_libdir}/libXrdCryptossl-%{plugver}.so
 %{_libdir}/libXrdCmsRedirectLocal-%{plugver}.so
+# /Section
 
 %files libs-devel
 %license COPYING.LGPL LICENSE
