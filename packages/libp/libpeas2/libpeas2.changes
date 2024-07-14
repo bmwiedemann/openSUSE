@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Jul 12 16:32:53 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.0.3:
+  + Various non-critical resiliency fixes.
+  + Updated translations.
+- Changes from version 2.0.2:
+  + Updated translations.
+- Changes from version 2.0.1:
+  + Improve dependency searching for Python when building
+  + Fix g_object_ref() usage with PeasExtensionSet as a GListModel
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sun Sep 17 01:26:56 UTC 2023 - Luciano Santos <luc14n0@opensuse.org>
 
 - Update to version 2.0.0:
