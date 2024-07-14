@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jul 12 14:52:46 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.12.43
+  * fix: domain should not be reset when min/max are set #1638
+
+-------------------------------------------------------------------
 Tue Mar  5 18:46:34 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Skip python39: no longer supported since ipython 8.19 (through

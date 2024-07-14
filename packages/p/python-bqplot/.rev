@@ -155,4 +155,13 @@
 </comment>
     <requestid>1155858</requestid>
   </revision>
+  <revision rev="14" vrev="8">
+    <srcmd5>62c4863c3e99e304519749e76d1ab01a</srcmd5>
+    <version>unknown</version>
+    <time>1720939884</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.12.43
+  * fix: domain should not be reset when min/max are set #1638 (forwarded request 1187178 from bnavigator)</comment>
+    <requestid>1187179</requestid>
+  </revision>
 </revisionlist>

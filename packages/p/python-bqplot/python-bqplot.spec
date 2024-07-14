@@ -18,9 +18,8 @@
 
 # https://github.com/bqplot/bqplot/issues/1639
 %define skip_python312 1
-%define skip_python39 1
-%define         pyver 0.12.42
-%define         jupver 0.5.43
+%define         pyver 0.12.43
+%define         jupver 0.5.44
 Name:           python-bqplot
 Version:        %{pyver}
 Release:        0
@@ -108,7 +107,9 @@ rm bqplot/install.py
 
 %check
 %python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} $python -c "import bqplot"
-%pytest tests/
+# dtype no longer unsupported
+donttest="test_dtype_with_str"
+%pytest tests/  -k "not ($donttest)"
 %pytest --nbval ui-tests/tests/notebooks
 
 %files %{python_files}
