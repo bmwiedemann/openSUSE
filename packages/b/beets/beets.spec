@@ -1,7 +1,7 @@
 #
 # spec file for package beets
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,21 +17,21 @@
 
 
 Name:           beets
-Version:        1.6.0
+Version:        2.0.0
 Release:        0
 Summary:        Music tagger and library organizer
 License:        MIT
 Group:          Productivity/Multimedia/Sound/Players
 URL:            http://beets.io/
-Source:         https://github.com/beetbox/beets/releases/download/v%{version}/%{name}-%{version}.tar.gz
+Source:         https://github.com/beetbox/beets/archive/refs/tags/v%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-PyYAML
 BuildRequires:  python3-Unidecode
-BuildRequires:  python3-confuse >= 1.0.0
+BuildRequires:  python3-confuse >= 1.5.0
 BuildRequires:  python3-devel
 BuildRequires:  python3-jellyfish
-BuildRequires:  python3-mediafile >= 0.2.0
+BuildRequires:  python3-mediafile >= 0.12.0
 BuildRequires:  python3-munkres
 BuildRequires:  python3-musicbrainzngs >= 0.4
 BuildRequires:  python3-setuptools
@@ -50,16 +50,16 @@ BuildRequires:  python3-responses
 BuildRequires:  python3-testsuite
 Requires:       python3-PyYAML
 Requires:       python3-Unidecode
-Requires:       python3-confuse >= 1.0.0
+Requires:       python3-confuse >= 1.5.0
 Requires:       python3-jellyfish
-Requires:       python3-mediafile >= 0.2.0
+Requires:       python3-mediafile >= 0.12.0
 Requires:       python3-munkres
 Requires:       python3-musicbrainzngs >= 0.4
 Recommends:     ffmpeg
 Recommends:     python3-Flask
 Recommends:     python3-Flask-Cors
 Recommends:     python3-dbus-python
-Recommends:     python3-discogs-client >= 2.1.0
+Recommends:     python3-discogs-client >= 2.3.15
 Recommends:     python3-pyacoustid
 Recommends:     python3-pylast
 Recommends:     python3-python-mpd2
