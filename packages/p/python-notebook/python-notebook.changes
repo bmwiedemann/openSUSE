@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Jul 12 15:30:35 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 7.2.1
+  * Remove pseudoelement obstructing the cell collapser #7392
+    (@krassowski)
+- Release 7.2
+  * Jupyter Notebook 7.2 is based on JupyterLab 4.2, and includes a
+    number of new features, bug fixes, and enhancements for
+    extension developers. This release is compatible with
+    extensions supporting JupyterLab 4.0. Extension authors are
+    recommended to consult the Extension Migration Guide which
+    lists deprecations and changes to the public API.
+  * Full notebook windowing mode by default
+  * Improved Shortcuts Editor
+  * Dark high contrast theme
+
+-------------------------------------------------------------------
 Fri Mar 29 18:58:51 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 7.1.2
