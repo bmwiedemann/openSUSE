@@ -9837,6 +9837,7 @@ unsorted:
   - kf6-kauth-devel 
   - kf6-kbookmarks-devel 
   - kf6-kcalendarcore-devel 
+  - kf6-kcalendarcore-imports 
   - kf6-kcmutils-devel 
   - kf6-kcodecs-devel 
   - kf6-kcolorscheme-devel 
@@ -27061,7 +27062,6 @@ unsorted:
   - python310-thespian 
   - python310-threadpoolctl 
   - python310-three-merge 
-  - python310-threevis 
   - python310-thrift 
   - python310-thriftpy2 
   - python310-tifffile 
@@ -30555,7 +30555,6 @@ unsorted:
   - python311-thespian 
   - python311-threadpoolctl 
   - python311-three-merge 
-  - python311-threevis 
   - python311-thrift 
   - python311-thriftpy2 
   - python311-tifffile 
@@ -34152,7 +34151,6 @@ unsorted:
   - python312-thespian 
   - python312-threadpoolctl 
   - python312-three-merge 
-  - python312-threevis 
   - python312-thrift 
   - python312-thriftpy2 
   - python312-tifffile 
