@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Jul 10 19:13:47 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.1.4:
+  * doc: add 0.1.4 release note (#486)
+  * Bump gopkg.in/dnaeon/go-vcr.v3 from 3.1.2 to 3.2.0 (#459)
+  * Bump github.com/stretchr/testify from 1.8.4 to 1.9.0 (#444)
+  * Bump github.com/spf13/cobra from 1.8.0 to 1.8.1 (#482)
+  * Bump k8s.io/klog/v2 from 2.110.1 to 2.130.1 (#483)
+  * chore: upgrade go to v1.21.11 to fix CVE-2024-24790 (#485)
+  * Bump github.com/Azure/azure-sdk-for-go/sdk/azcore from 1.11.1
+    to 1.12.0 (#478)
+  * feat: declare go version directive with patch version (#476)
+  * Bump github.com/Azure/azure-sdk-for-go/sdk/azidentity (#474)
+
+-------------------------------------------------------------------
 Tue Apr 23 07:57:27 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.1.3:

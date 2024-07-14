@@ -17,7 +17,7 @@
 
 
 Name:           kubelogin
-Version:        0.1.3
+Version:        0.1.4
 Release:        0
 Summary:        Kubernetes client credential plugin implementing Azure authentication
 License:        MIT
