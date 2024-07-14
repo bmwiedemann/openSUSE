@@ -27,13 +27,13 @@
 %if 0%{?suse_version} > 1500
 %define with_exr 1
 %endif
-# Full KF6 version (e.g. 6.3.0)
+# Full KF6 version (e.g. 6.4.0)
 %{!?_kf6_version: %global _kf6_version %{version}}
 # Last major and minor KF6 version (e.g. 6.0)
 %{!?_kf6_bugfix_version: %define _kf6_bugfix_version %(echo %{_kf6_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kf6-kimageformats
-Version:        6.3.0
+Version:        6.4.0
 Release:        0
 Summary:        Image format plugins for Qt
 License:        LGPL-2.1-or-later
@@ -108,8 +108,10 @@ environments.
 %{_kf6_plugindir}/imageformats/kimg_kra.so
 %{_kf6_plugindir}/imageformats/kimg_ora.so
 %{_kf6_plugindir}/imageformats/kimg_pcx.so
+%{_kf6_plugindir}/imageformats/kimg_pfm.so
 %{_kf6_plugindir}/imageformats/kimg_pic.so
 %{_kf6_plugindir}/imageformats/kimg_psd.so
+%{_kf6_plugindir}/imageformats/kimg_pxr.so
 %{_kf6_plugindir}/imageformats/kimg_qoi.so
 %{_kf6_plugindir}/imageformats/kimg_ras.so
 %{_kf6_plugindir}/imageformats/kimg_raw.so
