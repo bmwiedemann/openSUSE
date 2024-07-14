@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jul 12 15:07:15 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 5.5.2
+  * Check if kernel manager is available in case the console is
+    connected to an externally launched kernel.
+  * Use string representation for a QKeySequence construction to
+    avoid an error in PySide6.
+
+-------------------------------------------------------------------
 Fri Mar  8 13:45:17 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Skip python39: no longer supported since ipython 8.19

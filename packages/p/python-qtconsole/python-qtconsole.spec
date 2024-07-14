@@ -16,14 +16,13 @@
 #
 
 
-%define skip_python39 1
 %if 0%{?suse_version} > 1500
 %bcond_without libalternatives
 %else
 %bcond_with libalternatives
 %endif
 Name:           python-qtconsole
-Version:        5.5.1
+Version:        5.5.2
 Release:        0
 Summary:        Jupyter Qt console
 License:        BSD-3-Clause

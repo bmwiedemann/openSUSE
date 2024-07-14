@@ -287,4 +287,12 @@ This needs to go into openSUSE:Factory:Staging:adi:49 with the other jupyter sub
   (via ipykernel)</comment>
     <requestid>1156374</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>625e77c4e3488c480169ec2f17c60301</srcmd5>
+    <version>5.5.2</version>
+    <time>1720939886</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1187193</requestid>
+  </revision>
 </revisionlist>
