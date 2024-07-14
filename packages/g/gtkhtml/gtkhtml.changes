@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jul 12 13:10:46 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add -Wno-error=incompatible-pointer-types to optflgas in order to
+  prevent GCC 14 from reporting errors because of these C99
+  violations
+- Use modern macros (autosetup, make_build and ldconfig_scriptlets)
+
+-------------------------------------------------------------------
 Fri Dec 16 15:19:16 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop baselibs.conf: there is no known consumer of the -32bit

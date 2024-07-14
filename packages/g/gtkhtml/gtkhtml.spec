@@ -1,7 +1,7 @@
 #
 # spec file for package gtkhtml
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -108,13 +108,14 @@ to develop applications that require these.
 %lang_package -n %{name}-%{_gtkhtml_api}
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
+%global optflags %{optflags} -Wno-error=incompatible-pointer-types
 %configure \
         --disable-static \
         --with-glade-catalog
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -122,10 +123,8 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %find_lang %{name}-%{_gtkhtml_version}
 %fdupes %{buildroot}
 
-%post -n libgtkhtml-%{_gtkhtml_api}-%{_gtkhtml_major} -p /sbin/ldconfig
-%postun -n libgtkhtml-%{_gtkhtml_api}-%{_gtkhtml_major} -p /sbin/ldconfig
-%post -n libgtkhtml-editor-%{_gtkhtml_editor_api}-%{_gtkhtml_editor_major} -p /sbin/ldconfig
-%postun -n libgtkhtml-editor-%{_gtkhtml_editor_api}-%{_gtkhtml_editor_major} -p /sbin/ldconfig
+%ldconfig_scriptlets -n libgtkhtml-%{_gtkhtml_api}-%{_gtkhtml_major}
+%ldconfig_scriptlets -n libgtkhtml-editor-%{_gtkhtml_editor_api}-%{_gtkhtml_editor_major}
 
 %files -n libgtkhtml-%{_gtkhtml_api}-%{_gtkhtml_major}
 %license COPYING
