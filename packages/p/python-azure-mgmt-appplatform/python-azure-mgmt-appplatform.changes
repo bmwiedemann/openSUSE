@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jul 15 08:09:22 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 9.1.0.post2
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Drop extra LICENSE.txt as upstream now ships its own
+- Rename LICENSE.txt to LICENSE in %files section
+- Update Requires from setup.py
+
+-------------------------------------------------------------------
 Thu Apr  4 12:54:01 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Switch package to modern Python Stack on SLE-15
