@@ -130,7 +130,7 @@
    if test "x$TOOLCHAIN_TYPE" != xmicrosoft; then
 --- a/make/autoconf/spec.gmk.in
 +++ b/make/autoconf/spec.gmk.in
-@@ -841,6 +841,11 @@ INSTALL_SYSCONFDIR=@sysconfdir@
+@@ -844,6 +844,11 @@ INSTALL_SYSCONFDIR=@sysconfdir@
  # Libraries
  #
  
@@ -1417,7 +1417,7 @@
 +}
 --- a/src/java.base/share/conf/security/java.security
 +++ b/src/java.base/share/conf/security/java.security
-@@ -83,6 +83,17 @@ security.provider.tbd=Apple
+@@ -82,6 +82,17 @@ security.provider.tbd=Apple
  #endif
  security.provider.tbd=SunPKCS11
  
@@ -1435,7 +1435,7 @@
  #
  # A list of preferred providers for specific algorithms. These providers will
  # be searched for matching algorithms before the list of registered providers.
-@@ -293,6 +304,47 @@ policy.ignoreIdentityScope=false
+@@ -292,6 +303,47 @@ policy.ignoreIdentityScope=false
  #
  keystore.type=pkcs12
  
@@ -1483,7 +1483,7 @@
  #
  # Controls compatibility mode for JKS and PKCS12 keystore types.
  #
-@@ -330,6 +382,13 @@ package.definition=sun.misc.,\
+@@ -329,6 +381,13 @@ package.definition=sun.misc.,\
  #
  security.overridePropertiesFile=true
  
@@ -1510,7 +1510,7 @@
 +
 --- a/src/java.base/share/lib/security/default.policy
 +++ b/src/java.base/share/lib/security/default.policy
-@@ -121,6 +121,7 @@ grant codeBase "jrt:/jdk.charsets" {
+@@ -123,6 +123,7 @@ grant codeBase "jrt:/jdk.charsets" {
  grant codeBase "jrt:/jdk.crypto.ec" {
      permission java.lang.RuntimePermission
                     "accessClassInPackage.sun.security.*";
@@ -1518,7 +1518,7 @@
      permission java.lang.RuntimePermission "loadLibrary.sunec";
      permission java.security.SecurityPermission "putProviderProperty.SunEC";
      permission java.security.SecurityPermission "clearProviderProperties.SunEC";
-@@ -130,6 +131,7 @@ grant codeBase "jrt:/jdk.crypto.ec" {
+@@ -132,6 +133,7 @@ grant codeBase "jrt:/jdk.crypto.ec" {
  grant codeBase "jrt:/jdk.crypto.cryptoki" {
      permission java.lang.RuntimePermission
                     "accessClassInPackage.com.sun.crypto.provider";
@@ -1526,7 +1526,7 @@
      permission java.lang.RuntimePermission "accessClassInPackage.jdk.internal.misc";
      permission java.lang.RuntimePermission
                     "accessClassInPackage.sun.security.*";
-@@ -140,6 +142,8 @@ grant codeBase "jrt:/jdk.crypto.cryptoki" {
+@@ -142,6 +144,8 @@ grant codeBase "jrt:/jdk.crypto.cryptoki" {
      permission java.util.PropertyPermission "os.name", "read";
      permission java.util.PropertyPermission "os.arch", "read";
      permission java.util.PropertyPermission "jdk.crypto.KeyAgreement.legacyKDF", "read";
@@ -2408,31 +2408,21 @@
      private static final long serialVersionUID = -2575874101938349339L;
  
      private static final String PUBLIC = "public";
-@@ -139,9 +144,7 @@ abstract class P11Key implements Key, Length {
-         this.tokenObject = tokenObject;
-         this.sensitive = sensitive;
-         this.extractable = extractable;
--        char[] tokenLabel = this.token.tokenInfo.label;
--        isNSS = (tokenLabel[0] == 'N' && tokenLabel[1] == 'S'
--                && tokenLabel[2] == 'S');
-+        isNSS = P11Util.isNSS(this.token);
-         boolean extractKeyInfo = (!DISABLE_NATIVE_KEYS_EXTRACTION && isNSS &&
-                 extractable && !tokenObject);
-         this.keyIDHolder = new NativeKeyHolder(this, keyID, session,
-@@ -395,8 +398,10 @@ abstract class P11Key implements Key, Length {
+@@ -393,9 +398,10 @@ abstract class P11Key implements Key, Length {
                      new CK_ATTRIBUTE(CKA_EXTRACTABLE),
          });
  
--        boolean keySensitive = (attrs[0].getBoolean() ||
--                attrs[1].getBoolean() || !attrs[2].getBoolean());
+-        boolean keySensitive =
+-                (attrs[0].getBoolean() && P11Util.isNSS(session.token)) ||
+-                attrs[1].getBoolean() || !attrs[2].getBoolean();
 +        boolean exportable = plainKeySupportEnabled && !algorithm.equals("DH");
 +        boolean keySensitive = (!exportable &&
-+            (attrs[0].getBoolean() ||
-+             attrs[1].getBoolean() || !attrs[2].getBoolean()));
++                ((attrs[0].getBoolean() && P11Util.isNSS(session.token)) ||
++                attrs[1].getBoolean() || !attrs[2].getBoolean()));
  
          switch (algorithm) {
          case "RSA":
-@@ -451,7 +456,8 @@ abstract class P11Key implements Key, Length {
+@@ -450,7 +456,8 @@ abstract class P11Key implements Key, Length {
  
          public String getFormat() {
              token.ensureValid();
@@ -2863,7 +2853,7 @@
  
  /**
   * Collection of static utility methods.
-@@ -40,10 +44,106 @@ public final class P11Util {
+@@ -40,6 +44,93 @@ public final class P11Util {
  
      private static volatile Provider sun, sunRsaSign, sunJce;
  
@@ -2957,19 +2947,6 @@
      private P11Util() {
          // empty
      }
- 
-+    static boolean isNSS(Token token) {
-+        char[] tokenLabel = token.tokenInfo.label;
-+        if (tokenLabel != null && tokenLabel.length >= 3) {
-+            return (tokenLabel[0] == 'N' && tokenLabel[1] == 'S'
-+                    && tokenLabel[2] == 'S');
-+        }
-+        return false;
-+    }
-+
-     static Provider getSunProvider() {
-         Provider p = sun;
-         if (p == null) {
 --- a/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/SunPKCS11.java
 +++ b/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/SunPKCS11.java
 @@ -26,6 +26,9 @@
@@ -5877,3 +5854,6 @@
 +        }
 +    }
 +}
+-- 
+2.45.2
+
