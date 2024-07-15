@@ -9501,7 +9501,6 @@ unsorted:
   - jupyter-ipysheet 
   - jupyter-ipytablewidgets 
   - jupyter-ipytablewidgets-jupyterlab 
-  - jupyter-ipyvolume 
   - jupyter-ipyvue-nbextension 
   - jupyter-ipyvuetify-nbextension 
   - jupyter-ipywebrtc 
@@ -9509,7 +9508,6 @@ unsorted:
   - jupyter-jupyterlab 
   - jupyter-jupyterlab-filesystem 
   - jupyter-jupyterlab-ipyscales 
-  - jupyter-jupyterlab-ipyvolume 
   - jupyter-jupyterlab-ipyvue 
   - jupyter-jupyterlab-ipyvuetify 
   - jupyter-jupyterlab-latex 
@@ -11080,7 +11078,7 @@ unsorted:
   - libOsi1 
   - libOsiCbc3 
   - libOsiClp1 
-  - libPDAL15 
+  - libPDAL17 
   - libPocoActiveRecord101 
   - libPocoCppParser101 
   - libPocoCrypto101 
@@ -13212,7 +13210,6 @@ unsorted:
   - libglfw2 
   - libglfw3 
   - libglfw3-wayland 
-  - libglib-2_0-0-32bit 
   - libglib-testing-0-0 
   - libglib-testing-devel 
   - libglibmm-2_4-1-32bit 
@@ -16436,7 +16433,7 @@ unsorted:
   - libudunits2-0 
   - libuev-devel 
   - libuev3 
-  - libuhd4_6_0 
+  - libuhd4_7_0 
   - libuhttpmock-1_0-1 
   - libulfius2_7 
   - libulockmgr1 
@@ -25410,7 +25407,6 @@ unsorted:
   - python310-ipytablewidgets 
   - python310-ipython 
   - python310-ipython_genutils 
-  - python310-ipyvolume 
   - python310-ipyvue 
   - python310-ipyvuetify 
   - python310-ipywebrtc 
@@ -28965,7 +28961,6 @@ unsorted:
   - python311-ipytablewidgets 
   - python311-ipython 
   - python311-ipython_genutils 
-  - python311-ipyvolume 
   - python311-ipyvue 
   - python311-ipyvuetify 
   - python311-ipywebrtc 
@@ -35350,10 +35345,12 @@ unsorted:
   - reproducible-faketools-futurepost 
   - reproducible-faketools-hostname 
   - reproducible-faketools-j1 
+  - reproducible-faketools-jar 
   - reproducible-faketools-pid 
   - reproducible-faketools-random 
   - reproducible-faketools-rpmbuild 
   - reproducible-faketools-strace 
+  - reproducible-faketools-strip-nondeterminism 
   - reproducible-faketools-tar 
   - reproducible-faketools-verbose 
   - reproducible-faketools-zip 
@@ -48249,6 +48246,7 @@ unsorted:
   - xosview 
   - xournalpp 
   - xournalpp-lang 
+  - xpadneo 
   - xpadneo-kmp-default 
   - xpadneo-ueficert 
   - xpenguins 
