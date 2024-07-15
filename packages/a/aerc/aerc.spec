@@ -21,7 +21,7 @@ Name:           aerc
 Version:        0.18.0
 Release:        0
 Summary:        An email client for terminals
-License:        MIT
+License:        GPL-3.0-or-later
 Group:          Productivity/Networking/Email/Clients
 URL:            https://aerc-mail.org/
 Source0:        https://git.sr.ht/~rjarry/aerc/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz

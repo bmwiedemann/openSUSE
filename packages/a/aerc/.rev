@@ -79,4 +79,13 @@
     <comment></comment>
     <requestid>1184949</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>138625dc96fbed38c4f3768111f87d06</srcmd5>
+    <version>0.18.0</version>
+    <time>1721065804</time>
+    <user>anag+factory</user>
+    <comment>- Update license to GPL-3.0-or-later -- See mailing list
+  https://lists.sr.ht/~sircmpwn/aerc/%3CCKGCI4U5ATJ4.SFCCWY4TB0M7@marty%3E</comment>
+    <requestid>1187555</requestid>
+  </revision>
 </revisionlist>
