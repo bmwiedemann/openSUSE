@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Mon Jul 15 13:11:18 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.137.0
+  * **aiplatform:** Update the api
+  * **alloydb:** Update the api
+  * **analyticsadmin:** Update the api
+  * **assuredworkloads:** Update the api
+  * **backupdr:** Update the api
+  * **bigquery:** Update the api
+  * **bigtableadmin:** Update the api
+  * **cloudbuild:** Update the api
+  * **clouderrorreporting:** Update the api
+  * **contactcenterinsights:** Update the api
+  * **containeranalysis:** Update the api
+  * **container:** Update the api
+  * **dataform:** Update the api
+  * **datafusion:** Update the api
+  * **dataplex:** Update the api
+  * **discoveryengine:** Update the api
+  * **dlp:** Update the api
+  * **firebaseappcheck:** Update the api
+  * **firebaseml:** Update the api
+  * **games:** Update the api
+  * **integrations:** Update the api
+  * **pubsub:** Update the api
+  * **run:** Update the api
+  * **storage:** Update the api
+  * **tagmanager:** Update the api
+  * **vmmigration:** Update the api
+  * **vmwareengine:** Update the api
+  * **workloadmanager:** Update the api
+  * **connectors:** Update the api
+- Adjust upstream source name in spec file
+
+-------------------------------------------------------------------
 Thu Jul  4 08:44:48 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 2.136.0

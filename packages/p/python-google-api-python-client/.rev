@@ -1141,4 +1141,41 @@ eplacement for google-api-python-client, follow our naming convention</comment>
     <comment></comment>
     <requestid>1185402</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>19a436eb77b8956812c433de29d6b469</srcmd5>
+    <version>2.137.0</version>
+    <time>1721065804</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.137.0
+  * **aiplatform:** Update the api
+  * **alloydb:** Update the api
+  * **analyticsadmin:** Update the api
+  * **assuredworkloads:** Update the api
+  * **backupdr:** Update the api
+  * **bigquery:** Update the api
+  * **bigtableadmin:** Update the api
+  * **cloudbuild:** Update the api
+  * **clouderrorreporting:** Update the api
+  * **contactcenterinsights:** Update the api
+  * **containeranalysis:** Update the api
+  * **container:** Update the api
+  * **dataform:** Update the api
+  * **datafusion:** Update the api
+  * **dataplex:** Update the api
+  * **discoveryengine:** Update the api
+  * **dlp:** Update the api
+  * **firebaseappcheck:** Update the api
+  * **firebaseml:** Update the api
+  * **games:** Update the api
+  * **integrations:** Update the api
+  * **pubsub:** Update the api
+  * **run:** Update the api
+  * **storage:** Update the api
+  * **tagmanager:** Update the api
+  * **vmmigration:** Update the api
+  * **vmwareengine:** Update the api
+  * **workloadmanager:** Update the api
+  * **connectors:** Update the api (forwarded request 1187559 from glaubitz)</comment>
+    <requestid>1187561</requestid>
+  </revision>
 </revisionlist>
