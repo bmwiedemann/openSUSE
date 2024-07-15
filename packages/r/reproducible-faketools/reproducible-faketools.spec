@@ -17,7 +17,7 @@
 
 
 Name:           reproducible-faketools
-Version:        0.5.3+0
+Version:        0.5.4+0
 Release:        0
 Summary:        Fake system tools for reproducible builds
 License:        MIT
@@ -43,6 +43,9 @@ echo dummy file because an rpm cannot be empty > README.random
 
 %install
 %make_install
+
+%check
+make test
 
 %package hostname
 Summary:        replacement hostname
@@ -105,6 +108,17 @@ a script to enhance the reproducibility of the output of ant
 %defattr(-, root, root, 0755)
 /usr/local/bin/ant
 
+%package strip-nondeterminism
+Summary:        Run strip-nondeterminism after build
+Requires:       reproducible-faketools
+Requires:       strip-nondeterminism
+%description strip-nondeterminism
+enhance the reproducibility of various file formats
+with strip-nondeterminism
+%files strip-nondeterminism
+%defattr(-, root, root, 0644)
+/usr/lib/rpm/brp-suse.d/brp-95-strip-nondeterminism
+
 %package filesys
 Summary:        sorted filesystem
 Requires:       disorderfs
@@ -158,6 +172,17 @@ by replacing it with a wrapper to 7z
 %defattr(-, root, root, 0755)
 /usr/local/bin/zip
 /usr/local/bin/reproducible-zip.pl
+
+%package jar
+Summary:        replacement jar
+Requires:       java-devel
+Requires:       reproducible-faketools
+%description jar
+a script to enhance the reproducibility of the output of jar
+by normalizing mtimes via the --date= option
+%files jar
+%defattr(-, root, root, 0755)
+/usr/local/bin/jar
 
 %package rpmbuild
 Summary:        wrapper to include various other faketools

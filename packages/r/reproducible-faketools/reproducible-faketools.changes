@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jul 12 19:28:56 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- update to version 0.5.4
+  * add jar wrapper
+  * add strip-nondeterminism helper
+  * add tests
+
+-------------------------------------------------------------------
 Thu Jul 11 11:56:17 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.de>
 
 - update to version 0.5.3
