@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Jul 15 08:13:13 UTC 2024 - Dr. Werner Fink <werner@suse.de>
+
+- Remove patch aw.listreply.diff as it conflicts with builtin
+  <list-reply> feature
+- Build and install pdf doc
+
+-------------------------------------------------------------------
+Mon Jul 15 06:44:09 UTC 2024 - Dr. Werner Fink <werner@suse.de>
+
+- Require some cyrus-sasl plugins to make the cyrus-sasl feature
+  of mutt function (boo#1227731)
+
+-------------------------------------------------------------------
 Mon Jun  3 12:11:28 UTC 2024 - Dr. Werner Fink <werner@suse.de>
 
 - Update to mutt 2.2.13 (Bug fix release)

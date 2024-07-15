@@ -1475,4 +1475,17 @@ with a run of spec-cleaner (forwarded request 826781 from AndreasStieger)</comme
     from address.</comment>
     <requestid>1178323</requestid>
   </revision>
+  <revision rev="119" vrev="2">
+    <srcmd5>116e33a45b7565da78ac0a3c2fd26076</srcmd5>
+    <version>2.2.13</version>
+    <time>1721065797</time>
+    <user>anag+factory</user>
+    <comment>- Remove patch aw.listreply.diff as it conflicts with builtin
+  &lt;list-reply&gt; feature
+- Build and install pdf doc
+
+- Require some cyrus-sasl plugins to make the cyrus-sasl feature
+  of mutt function (boo#1227731)</comment>
+    <requestid>1187531</requestid>
+  </revision>
 </revisionlist>

@@ -46,8 +46,6 @@ Patch2:         %{name}-1.5.9i-pgpewrap.diff
 Patch3:         %{name}-1.5.20-sendgroupreplyto.diff
 Patch4:         %{name}-1.5.15-wrapcolumn.diff
 Patch7:         mutt-1.6.1-opennfs.dif
-# http://www.wolfermann.org/mutt.html
-Patch11:        aw.listreply.diff
 Patch12:        patch-1.5.24.vk.pgp_verbose_mime
 # PATCH-FIX-OPENSUSE: bnc#813498 - mutt crashes in fgetwc in text_enriched_handler
 Patch15:        widechar.sidebar.dif
@@ -63,24 +61,35 @@ Patch20:        mutt-1.10.1-imap.patch
 Patch21:        mutt-Fix-SIGQUIT-handling.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
+BuildRequires:  cyrus-sasl
 BuildRequires:  cyrus-sasl-gssapi
+BuildRequires:  cyrus-sasl-plain
+BuildRequires:  docbook-dsssl-stylesheets
 BuildRequires:  docbook-xsl-stylesheets
+BuildRequires:  docbook2x
 BuildRequires:  hunspell
 BuildRequires:  iso_ent
 BuildRequires:  libgpgme-devel
 BuildRequires:  libxslt-tools
+BuildRequires:  makeinfo
+BuildRequires:  openjade
 BuildRequires:  opensp
 BuildRequires:  pkgconfig
+BuildRequires:  texlive-jadetex
 BuildRequires:  w3m
 BuildRequires:  pkgconfig(gssrpc)
 BuildRequires:  pkgconfig(krb5)
 BuildRequires:  pkgconfig(libsasl2)
+BuildRequires:  pkgconfig(sqlite3)
+BuildRequires:  tex(8r.enc)
 %if 0%{suse_version} >= 1500
 BuildRequires:  python3-base
 BuildRequires:  python3-devel
 BuildRequires:  python3-setuptools
 BuildRequires:  smtp_daemon
 %endif
+Requires:       cyrus-sasl-gssapi
+Requires:       cyrus-sasl-plain
 Requires:       glibc-locale
 Suggests:       smtp_daemon
 Requires(post): %{_bindir}/cat
@@ -164,7 +173,6 @@ Provides translations to the package mutt.
 %patch -P 3  -b .sendgroupreplyto
 %patch -P 4  -b .wrapcolumn
 %patch -P 7  -b .opennfs
-%patch -P 11  -b .listreply
 %patch -P 12  -b .pgp_verbose_mtime
 %patch -P 15  -b .widechar.sidebar
 %patch -P 16  -b .crlf
@@ -176,6 +184,8 @@ Provides translations to the package mutt.
 cp %{SOURCE2} .
 
 %build
+mkdir bin
+ln -sf /usr/bin/docbook-to-texi bin/docbook2texi
 %if %{with mutt_gnutls}
 echo 'set ssl_ca_certificates_file="%{_sysconfdir}/ssl/ca-bundle.pem"' >> doc/Muttrc.head
 %endif
@@ -216,7 +226,7 @@ cflags -pie				LDFLAGS
 export CC CFLAGS LDFLAGS
 export SENDMAIL=%{_sbindir}/sendmail
 export ISPELL=%{_bindir}/hunspell
-export PATH="%{_prefix}/lib/mit/bin:$PATH"
+export PATH="%{_prefix}/lib/mit/bin:${PWD}/bin:$PATH"
 export KRB5CFGPATH="$(type -p krb5-config)"
 $KRB5CFGPATH --cflags gssapi
 $KRB5CFGPATH --libs gssapi
@@ -231,6 +241,7 @@ $KRB5CFGPATH --version
 	--without-ssl \
 	--with-gnutls=%{_prefix} \
 %endif
+        --enable-autocrypt \
 	--enable-imap \
 	--enable-pop \
 	--enable-pgp \
@@ -244,6 +255,7 @@ $KRB5CFGPATH --version
 	--with-sasl=%{_prefix} \
 	--with-gss=%{_prefix} \
 	--with-curses=%{_prefix} \
+	--with-sqlite3=%{_prefix} \
 	--enable-smtp \
 	--enable-hcache \
 	--enable-debug \
@@ -255,6 +267,7 @@ $KRB5CFGPATH --version
 %make_build -C doc clean
 %make_build
 %make_build -C doc
+%make_build manual.pdf -C doc
 
 %install
 %make_install
@@ -286,6 +299,7 @@ install -D -m 644 %{SOURCE5} %{buildroot}%{_sysconfdir}/skel/.muttrc
 install -D -m 644 %{SOURCE9} %{buildroot}%{_datadir}/%{name}/mailcap
 rm -vf %{buildroot}%{_docdir}/%{name}/manual.txt
 install -D -m 644 doc/manual.txt.gz %{buildroot}%{_docdir}/%{name}/
+install -D -m 644 doc/manual.pdf %{buildroot}%{_docdir}/%{name}/
 
 mv  %{buildroot}%{_sysconfdir}/Muttrc %{buildroot}%{_datadir}/%{name}/Muttrc
 sed -rn '/Command formats for gpg/,$p' %{SOURCE5} >> %{buildroot}%{_datadir}/%{name}/Muttrc
@@ -364,6 +378,7 @@ rm -f %{_localstatedir}/adm/update-messages/%{name}-%{version}-%{release}-notify
 %endif
 
 %files doc
+%doc %{_docdir}/%{name}/manual.pdf
 %doc %{_docdir}/%{name}/COPYRIGHT
 %doc %{_docdir}/%{name}/ChangeLog
 %doc %{_docdir}/%{name}/GPL
