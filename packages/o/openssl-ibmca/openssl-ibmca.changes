@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jul 15 08:18:35 UTC 2024 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Amended the .spec file (bsc#1227537)
+  * 'rpm.install.excludedocs = yes' in zypp.conf excludes the /usr/share/doc/.. 
+  * Added a check, if there is is /usr/share/doc file to be editted.
+
+-------------------------------------------------------------------
 Wed Apr 17 14:04:14 UTC 2024 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Amended the .spec file
