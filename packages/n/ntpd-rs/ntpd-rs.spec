@@ -1,6 +1,7 @@
 #
 # spec file for package ntpd-rs
 #
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2024, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +19,7 @@
 
 %define services ntpd-rs.service ntpd-rs-metrics.service
 Name:           ntpd-rs
-Version:        1.1.2
+Version:        1.2.0
 Release:        0
 Summary:        Full-featured implementation of NTP with NTS support
 License:        Apache-2.0 OR MIT
@@ -29,7 +30,6 @@ Source:         https://github.com/pendulum-project/ntpd-rs/archive/refs/tags/v%
 Source1:        vendor.tar.zst
 Source2:        %{name}.tmpfiles
 Source3:        %{name}.sysusers
-Patch0:         0001-Move-default-socket-path-from-var-run-to-run.patch
 BuildRequires:  cargo
 BuildRequires:  cargo-packaging
 BuildRequires:  systemd-rpm-macros
@@ -105,7 +105,7 @@ systemd-tmpfiles --create %{_tmpfilesdir}/%{name}.conf || true
 #%%{cargo_test} -- -- --skip hwtimestamp::tests::get_hwtimestamp --skip socket::tests::test_send_timestamp
 
 %files
-%license COPYING LICENSE-APACHE LICENSE-MIT
+%license COPYRIGHT LICENSE-APACHE LICENSE-MIT
 %doc CHANGELOG.md README.md SECURITY.md
 %doc docs/examples/conf/ntp.toml.default
 %dir %{_sysconfdir}/ntpd-rs
