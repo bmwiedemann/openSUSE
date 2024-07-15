@@ -2,7 +2,7 @@
 # spec file for package borgbackup
 #
 # Copyright (c) 2024 SUSE LLC
-# Copyright (c) 2016-2023 LISA GmbH, Bingen, Germany.
+# Copyright (c) 2016-2024 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,6 +22,9 @@
 # needed when building without the packaged algorithms
 %define borg_liblz4_prefix BORG_LIBLZ4_PREFIX=%{_includedir}
 %define borg_libzstd_prefix BORG_LIBZSTD_PREFIX=%{_includedir}
+# new defintion needed with borgbackup >= 1.4.0
+%define borg_libxxhash_prefix BORG_LIBXXHASH_PREFIX=%{_includedir}
+%define borg_libacl_prefix BORG_LIBACL_PREFIX=%{_includedir}
 %if 0%{?suse_version} >= 1500
 # use new compression libs (lz4, zstd)
 %bcond_without  borg_newcompr
@@ -41,7 +44,7 @@
 %bcond_with     borg_sysblake2
 %endif
 Name:           borgbackup
-Version:        1.2.8
+Version:        1.4.0
 Release:        0
 Summary:        Deduplicating backup program with compression and authenticated encryption
 License:        BSD-3-Clause
@@ -59,11 +62,11 @@ BuildRequires:  bash
 BuildRequires:  fdupes
 BuildRequires:  fish
 BuildRequires:  gcc-c++
-BuildRequires:  libacl-devel
+BuildRequires:  libacl-devel >= 2.2.47
 BuildRequires:  openssl-devel >= 1.1.0
 BuildRequires:  pkgconfig
-BuildRequires:  python3-Cython >= 0.29.33
-BuildRequires:  python3-base >= 3.8
+BuildRequires:  python3-Cython >= 3.0.10
+BuildRequires:  python3-base >= 3.9
 BuildRequires:  python3-devel
 BuildRequires:  python3-packaging
 BuildRequires:  python3-setuptools
@@ -85,16 +88,14 @@ BuildRequires:  libzstd-devel >= 1.3.0
 # msgpack is not included with borg version >= 1.2.0 anymore
 # The metadata is very specific about the version, the command will fail if msgpack is out of range -- boo#1198267
 # See https://github.com/borgbackup/borg/blob/1.2.1/setup.py#L68 and update this for every version bump!
-BuildRequires:  (python3-msgpack >= 0.5.6 with python3-msgpack <= 1.0.8)
-BuildConflicts: python3-msgpack = 1.0.1
-Conflicts:      python3-msgpack = 1.0.1
+BuildRequires:  (python3-msgpack >= 1.0.3 with python3-msgpack <= 1.1.0)
 Requires:       python3-packaging
-Requires:       (python3-msgpack >= 0.5.6 with python3-msgpack <= 1.0.8)
+Requires:       (python3-msgpack >= 1.0.3 with python3-msgpack <= 1.1.0)
 %if 0%{?suse_version} > 1500
 # upstream recommends a "Requires" if pyfuse3 is available
 Requires:       python3-pyfuse3 >= 3.1.1
 %else
-Recommends:     python3-llfuse
+Recommends:     python3-llfuse >= 1.3.8
 %endif
 # /SECTION
 # SECTION docs requirements
@@ -204,12 +205,12 @@ find src/ -name '*.pyx' | sed -e 's/.pyx/.c/g' | xargs rm -f
 cp -a %{_datadir}/licenses/%{python_flavor}-msgpack/COPYING LICENSE.msgpack
 
 %build
-%{borg_openssl_prefix} %{borg_libzstd_prefix} %{borg_liblz4_prefix} CFLAGS="%{optflags}" CXXFLAGS="%{optflags}" python3 setup.py build
+%{borg_openssl_prefix} %{borg_libzstd_prefix} %{borg_liblz4_prefix} %{borg_libxxhash_prefix} %{borg_libacl_prefix} CFLAGS="%{optflags}" CXXFLAGS="%{optflags}" python3 setup.py build
 export PYTHONPATH=$(pwd)/build/lib.linux-$(uname -m)-%{py3_ver}
 %make_build -C docs html man && rm docs/_build/html/.buildinfo
 
 %install
-%{borg_openssl_prefix} %{borg_liblz4_prefix} %{borg_libzstd_prefix} python3 setup.py install --prefix=%{_prefix} --root=%{buildroot}
+%{borg_libacl_prefix} %{borg_libxxhash_prefix} %{borg_openssl_prefix} %{borg_liblz4_prefix} %{borg_libzstd_prefix} python3 setup.py install --prefix=%{_prefix} --root=%{buildroot}
 # install all man pages
 mkdir -p %{buildroot}%{_mandir}/man1
 install -m 0644 docs/man/borg*.1 %{buildroot}%{_mandir}/man1
