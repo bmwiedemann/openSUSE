@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul 11 09:46:12 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Do not pin to numpy < 2. Dask supports it, downstream packages
+  must take care of their own.
+
+-------------------------------------------------------------------
 Mon Jul  8 04:34:30 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 2024.6.2:

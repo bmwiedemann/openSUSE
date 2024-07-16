@@ -181,8 +181,7 @@ This package pulls in all the optional dask components.
 Summary:        Numpy-like array data structure for dask
 Requires:       %{name} = %{version}
 Requires:       %{name}-delayed = %{version}
-# Requires both pyarrow and tables to be built against numpy 2
-Requires:       (python-numpy >= 1.21 with python-numpy < 2)
+Requires:       python-numpy >= 1.21
 Recommends:     python-scipy
 
 %description array
