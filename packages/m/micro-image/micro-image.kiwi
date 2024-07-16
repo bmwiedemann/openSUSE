@@ -28,8 +28,8 @@ You can contact the BCI team via https://github.com/SUSE/bci/discussions
       <containerconfig
           name="opensuse/bci/bci-micro"
           tag="%OS_VERSION_ID_SP%"
-          maintainer="openSUSE (https://www.opensuse.org/)"
-          additionaltags="%OS_VERSION_ID_SP%.%RELEASE%,latest">
+          additionaltags="%OS_VERSION_ID_SP%.%RELEASE%,latest"
+          maintainer="openSUSE (https://www.opensuse.org/)">
         <labels>
           <suse_label_helper:add_prefix prefix="org.opensuse.bci.micro">
             <label name="org.opencontainers.image.title" value="openSUSE Tumbleweed BCI Micro"/>
