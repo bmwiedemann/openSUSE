@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jul 16 07:59:05 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.31.0:
+  * Stabilize modules
+  * Allow mod path to be directory containing module source
+  * Allow enabling unstable features with set unstable
+  * Allow abbreviating functions ending in _directory to _dir
+  * Lexiclean search directory so .. does not check the current directory
+  * Print space before submodules in --list with groups
+
+-------------------------------------------------------------------
 Sun Jul  7 20:51:34 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Update to version 1.30.1:
