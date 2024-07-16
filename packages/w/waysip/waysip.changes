@@ -1,0 +1,29 @@
+-------------------------------------------------------------------
+Wed Jul 10 22:46:35 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Update to version 0.2.3:
+  * docs: Update readme
+  * feat: show display name when select screen
+  * fix(example): Update example
+  * fix: Incorrect spelling of dimensions
+  * ref: Accept client-side wayland connection, global
+  * refactor(libwaysip): Separate state and dispatch files
+  * refactor: Remove redundant app state structs
+  * ref: Change ambiguous struct name `WaySipKind`
+  * ref: Re-export SelectionType
+
+-------------------------------------------------------------------
+Mon Mar 18 07:56:34 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Update to version 0.2.2
+  Features:
+  * wlout info need to record
+  * add the output `-o`
+  * screen chooser
+  * point do not allow choose region
+  * return point and width as i32
+
+-------------------------------------------------------------------
+Tue Dec 19 00:08:35 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Initial packaging of waysip 0.1.1
