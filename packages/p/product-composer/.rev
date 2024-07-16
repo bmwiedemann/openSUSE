@@ -174,4 +174,16 @@
   * crash fix for &quot;all available packages&quot; option (forwarded request 1186889 from adrianSuSE)</comment>
     <requestid>1186890</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>6be656b108867c29efca0cc0f0a93746</srcmd5>
+    <version>0.4.14</version>
+    <time>1721160311</time>
+    <user>anag+factory</user>
+    <comment>- update to version 0.4.14
+  * added option to run installcheck
+    =&gt; new dependency to libsolv-tools therefore
+
+- update to version 0.4.13</comment>
+    <requestid>1187917</requestid>
+  </revision>
 </revisionlist>
