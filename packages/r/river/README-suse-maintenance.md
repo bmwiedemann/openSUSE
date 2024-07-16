@@ -6,7 +6,7 @@
 OR this hack
 
 ```
-zig build --global-cache-dir vendor/
+zig fetch . --global-cache-dir vendor/
 cd vendor
 rm -rfv z
 ```

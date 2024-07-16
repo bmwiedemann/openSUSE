@@ -17,7 +17,7 @@
 
 
 Name:           river
-Version:        0.3.3
+Version:        0.3.4
 Release:        0
 Summary:        A dynamic tiling Wayland compositor
 License:        GPL-3.0-only
@@ -35,7 +35,6 @@ BuildRequires:  pkgconfig
 BuildRequires:  scdoc >= 1.9.2
 BuildRequires:  zig
 BuildRequires:  zig-rpm-macros
-BuildRequires:  zstd
 BuildRequires:  zstd
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(dbus-1) >= 1.10
@@ -72,9 +71,6 @@ ExclusiveArch:  x86_64 aarch64 riscv64 %{mips64}
 
 %description
 River is a dynamic tiling Wayland compositor with flexible runtime configuration.
-
-%prep
-%autosetup -n %{name}-%{version} -a2
 
 %package        riverctl
 Summary:        Command-line interface for controlling river
@@ -144,11 +140,24 @@ listing it to a Display Manager such as GDM with a desktop file or
 setting up sane environmental variables before running river in
 `river.sh`. These files are not part of the river project.
 
+%prep
+%autosetup -n %{name}-%{version} -a2
+
+# env-script-interpreter fix
+sed -i 's|/bin/env |/bin/|' contrib/*
+
 %build
 %ifarch aarch64
 %zig_build -Dpie -Dxwayland --global-cache-dir vendor/
 %else
 %zig_build -Dno-llvm -Dpie -Dxwayland --global-cache-dir vendor/
+%endif
+
+%check
+%ifarch aarch64
+%zig_test -Dpie -Dxwayland --global-cache-dir vendor/
+%else
+%zig_test -Dno-llvm -Dpie -Dxwayland --global-cache-dir vendor/
 %endif
 
 %install

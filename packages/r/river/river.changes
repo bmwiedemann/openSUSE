@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Jul 10 17:02:36 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Enable tests
+- Move %prep down and add sed to fix env-script-interpreter badness
+- Change README-suse-maintenance.md to use zig fetch
+- Update to version 0.3.4:
+  * docs: mention zig build -h in readme
+  * docs: tweak repology link wording in readme
+  * input: apply map-to-output on output activation
+  * layer-shell: fix on_demand keyboard focus
+  * Output: fix Wayland backend support
+  * Output: flag gamma as dirty on enable
+  * PointerConstraint: fix assertion failure
+  * SceneNodeData: fix fromSurface() use after free
+  * XdgPopup: send configure after initial commit
+  * Xwayland: fix unsound cast
+
+-------------------------------------------------------------------
 Sat Jun 15 12:13:44 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
 
 - Update to version 0.3.3:
