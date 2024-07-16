@@ -28,8 +28,8 @@ You can contact the BCI team via https://github.com/SUSE/bci/discussions
       <containerconfig
           name="opensuse/helm"
           tag="3.15"
-          maintainer="openSUSE (https://www.opensuse.org/)"
-          additionaltags="3.15-%RELEASE%,latest">
+          additionaltags="3.15-%RELEASE%,latest"
+          maintainer="openSUSE (https://www.opensuse.org/)">
         <labels>
           <suse_label_helper:add_prefix prefix="org.opensuse.application.helm">
             <label name="org.opencontainers.image.title" value="openSUSE Tumbleweed Kubernetes Package Manager"/>
