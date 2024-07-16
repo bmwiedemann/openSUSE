@@ -23,7 +23,7 @@
 %global _helix_runtimedir %{_libdir}/%{name}/runtime
 
 Name:           helix
-Version:        24.03
+Version:        24.07
 Release:        0
 Summary:        A post-modern modal text editor written in Rust
 License:        (Apache-2.0 OR MIT) AND BSD-3-Clause AND (Apache-2.0 OR BSL-1.0) AND (Apache-2.0 OR MIT) AND (MIT OR Apache-2.0 OR Zlib) AND (MIT or Unlicense) AND (Zlib OR Apache-2.0 OR MIT) AND Apache-2.0 AND BSL-1.0 AND ISC AND MIT AND MPL-2.0 AND Zlib AND MPL-2.0
@@ -35,6 +35,7 @@ Source3:        README-suse-maint.md
 Source4:        helix-rpmlintrc
 BuildRequires:  c++_compiler
 BuildRequires:  c_compiler
+BuildRequires:  cargo >= 1.74.0
 BuildRequires:  cargo-packaging
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  update-desktop-files
@@ -50,6 +51,7 @@ has treesitter support for syntax highlighting and improved navigation
 Summary:        Bash Completion for %{name}
 Group:          System/Shells
 Supplements:    (%{name} and bash-completion)
+Requires:       %{name} = %{version}
 BuildArch:      noarch
 
 %description    bash-completion
@@ -59,6 +61,7 @@ Bash command-line completion support for %{name}.
 Summary:        Fish Completion for %{name}
 Group:          System/Shells
 Supplements:    (%{name} and fish)
+Requires:       %{name} = %{version}
 BuildArch:      noarch
 
 %description    fish-completion
@@ -68,6 +71,7 @@ Fish command-line completion support for %{name}.
 Summary:        Zsh Completion for %{name}
 Group:          System/Shells
 Supplements:    (%{name} and zsh)
+Requires:       %{name} = %{version}
 BuildArch:      noarch
 
 %description    zsh-completion
@@ -121,6 +125,7 @@ rm -rfv %{buildroot}%{_helix_runtimedir}/grammars/sources
 # Desktop application file
 install -Dm644 -T %{_builddir}/%{name}-%{version}/contrib/Helix.desktop %{buildroot}%{_datadir}/applications/%{name}.desktop
 %suse_update_desktop_file %{name}
+install -Dm644 -T %{_builddir}/%{name}-%{version}/contrib/Helix.appdata.xml %{buildroot}%{_datadir}/metainfo/%{name}.appdata.xml
 
 # Icon
 install -Dm644 -T %{_builddir}/%{name}-%{version}/logo.svg %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
@@ -138,6 +143,7 @@ install -Dm644 -T %{_builddir}/%{name}-%{version}/contrib/completion/hx.zsh %{bu
 # Desktop application file
 %{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
 %{_datadir}/applications/*
+%{_datadir}/metainfo/%{name}.appdata.xml
 
 %dir %{_libdir}/helix
 

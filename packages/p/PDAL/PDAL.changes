@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jul 12 17:44:23 UTC 2024 - Enno Tensing <tenno+suse@suij.in>
+
+- Update to 2.7.2
+  * https://github.com/PDAL/PDAL/compare/2.5.6...2.7.2
+
+-------------------------------------------------------------------
 Fri Mar  1 10:53:46 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
 
 - Fix building on Leap

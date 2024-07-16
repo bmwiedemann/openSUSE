@@ -31,4 +31,23 @@
 - Drop upstreamed patch: 0001-wlheadless-Add-support-for-kwin.patch</comment>
     <requestid>1161392</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>3250b9db78a10a8f359884f94c8a62bd</srcmd5>
+    <version>0.0.4</version>
+    <time>1721065760</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.0.4
+  + xwayland: Improve xauth errors
+  + common: Improve error reporting
+  + common: Ignore setpgrp() failures
+  + mutter: Add a virtual monitor by default
+  + mutter: Check whether --no-x11 is supported
+  + common: Recursively remove our temporary XDG_RUNTIME_DIR
+  + commit: Wait for child processes before cleanup
+- Backport fix for waitpid errors
+  + Patch: 0001-wlheadless-Ignore-os.waitpid-1-0-error.patch
+- Add Suggests for default compositor
+- Set mutter as the default compositor for SLE</comment>
+    <requestid>1187417</requestid>
+  </revision>
 </revisionlist>

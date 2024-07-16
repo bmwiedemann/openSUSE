@@ -1,28 +1,28 @@
 diff --git a/llm/generate/gen_linux.sh b/llm/generate/gen_linux.sh
-index 28ce1f2..4193a43 100755
+index db2c6c3..8194cd9 100755
 --- a/llm/generate/gen_linux.sh
 +++ b/llm/generate/gen_linux.sh
 @@ -52,6 +52,7 @@ if [ -z "${CUDACXX}" ]; then
      fi
  fi
- COMMON_CMAKE_DEFS="-DCMAKE_POSITION_INDEPENDENT_CODE=on -DLLAMA_NATIVE=off -DLLAMA_AVX=on -DLLAMA_AVX2=off -DLLAMA_AVX512=off -DLLAMA_FMA=off -DLLAMA_F16C=off -DLLAMA_OPENMP=off"
-+COMMON_CMAKE_DEFS="${COMMON_CMAKE_DEFS} -DLLAMA_LTO=on -DCMAKE_BUILD_TYPE=Release"
+ COMMON_CMAKE_DEFS="-DBUILD_SHARED_LIBS=off -DCMAKE_POSITION_INDEPENDENT_CODE=on -DGGML_NATIVE=off -DGGML_AVX=on -DGGML_AVX2=off -DGGML_AVX512=off -DGGML_FMA=off -DGGML_F16C=off -DGGML_OPENMP=off"
++COMMON_CMAKE_DEFS="${COMMON_CMAKE_DEFS} -DGGML_LTO=on -DCMAKE_BUILD_TYPE=Release"
  source $(dirname $0)/gen_common.sh
  init_vars
  git_module_setup
 @@ -78,6 +79,7 @@ if [ -z "${OLLAMA_SKIP_CPU_GENERATE}" ]; then
          init_vars
          echo "OLLAMA_CUSTOM_CPU_DEFS=\"${OLLAMA_CUSTOM_CPU_DEFS}\""
-         CMAKE_DEFS="${OLLAMA_CUSTOM_CPU_DEFS} -DCMAKE_POSITION_INDEPENDENT_CODE=on ${CMAKE_DEFS}"
-+        CMAKE_DEFS="${CMAKE_DEFS} -DLLAMA_LTO=on"
+         CMAKE_DEFS="${OLLAMA_CUSTOM_CPU_DEFS} -DBUILD_SHARED_LIBS=off -DCMAKE_POSITION_INDEPENDENT_CODE=on ${CMAKE_DEFS}"
++        CMAKE_DEFS="${CMAKE_DEFS} -DGGML_LTO=on"
          BUILD_DIR="../build/linux/${ARCH}/cpu"
          echo "Building custom CPU"
          build
 @@ -94,6 +96,7 @@ if [ -z "${OLLAMA_SKIP_CPU_GENERATE}" ]; then
-         # -DLLAMA_AVX512_VNNI -- 2021 Intel Alder Lake
+         # -DGGML_AVX512_VNNI -- 2021 Intel Alder Lake
  
-         COMMON_CPU_DEFS="-DCMAKE_POSITION_INDEPENDENT_CODE=on -DLLAMA_NATIVE=off -DLLAMA_OPENMP=off"
-+        COMMON_CPU_DEFS="-DLLAMA_LTO=on -DCMAKE_BUILD_TYPE=Release"
+         COMMON_CPU_DEFS="-DBUILD_SHARED_LIBS=off -DCMAKE_POSITION_INDEPENDENT_CODE=on -DGGML_NATIVE=off -DGGML_OPENMP=off"
++        COMMON_CPU_DEFS="-DGGML_LTO=on -DCMAKE_BUILD_TYPE=Release"
          if [ -z "${OLLAMA_CPU_TARGET}" -o "${OLLAMA_CPU_TARGET}" = "cpu" ]; then
              #
              # CPU first for the default library, set up as lowest common denominator for maximum compatibility (including Rosetta)

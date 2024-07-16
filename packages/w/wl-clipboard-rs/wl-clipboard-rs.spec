@@ -17,7 +17,7 @@
 
 
 Name:           wl-clipboard-rs
-Version:        0.8.1
+Version:        0.9.0
 Release:        0
 Summary:        Wayland Clipboard Utility in Rust
 License:        Apache-2.0 AND MIT

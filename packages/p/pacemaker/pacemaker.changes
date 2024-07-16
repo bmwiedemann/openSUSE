@@ -1,4 +1,85 @@
 -------------------------------------------------------------------
+Fri Jul 12 11:13:38 UTC 2024 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.7+20240711.239cba384:
+- various: Don't set cluster-layer node ID as XML ID
+- tools: crm_node -i must initialize nodeid before passing pointer (gh#ClusterLabs/pacemaker#3574)
+
+-------------------------------------------------------------------
+Wed Jul 10 16:43:36 UTC 2024 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.7+20240709.f04c3b02c:
+- tools: CIB clients retry signon upon an EAGAIN error (gh#ClusterLabs/pacemaker#3567, bsc#1224183)
+- libcib: new function cib__signon_attempts() (gh#ClusterLabs/pacemaker#3567, bsc#1224183)
+
+-------------------------------------------------------------------
+Wed Jul 10 16:38:18 UTC 2024 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.7+20240708.347e83d87:
+- crm_verify: Improve checking of fencing level IDs
+
+-------------------------------------------------------------------
+Thu Jul 04 07:10:12 UTC 2024 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.7+20240703.f73f033d5 (Pacemaker-2.1.8-rc3):
+- sysconfig: deprecate PCMK_dh_min_bits environment variable
+
+-------------------------------------------------------------------
+Tue Jul 02 09:25:05 UTC 2024 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.7+20240701.8af8b59e2:
+- libcrmcluster: use local hostname for node name if not configured in corosync (gh#ClusterLabs/pacemaker#3551)
+
+-------------------------------------------------------------------
+Tue Jul 02 09:21:29 UTC 2024 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.7+20240701.b4e61209c:
+- tools: Don't double-free XML in crm_verify after schema update
+
+-------------------------------------------------------------------
+Mon Jul 01 14:27:39 UTC 2024 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.7+20240701.a1003bbf1:
+- cts-cli: update expected output for crm_verify to distinguish configuration warnings and errors (gh#ClusterLabs/pacemaker#3543)
+- tools: crm_verify distinguishes configuration warnings and errors (gh#ClusterLabs/pacemaker#3543)
+
+-------------------------------------------------------------------
+Mon Jul 01 07:41:34 UTC 2024 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.7+20240624.5d44a760b:
+- libcrmcommon: don't try to add to full string in pcmk__time_format_hr()
+- libcrmcommon: handle formatting errors in pcmk__time_format_hr()
+- scheduler: consider group locations when member is explicit colocation dependent
+- tools: Don't skip formatting if running crm_simulate interactively.
+
+-------------------------------------------------------------------
+Wed Jun 12 09:45:01 UTC 2024 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.7+20240611.cbf6db339 (Pacemaker-2.1.8-rc2):
+- libcrmcommon: reject ISO 8601 duration without any values (gh#ClusterLabs/pacemaker#3517)
+- libcrmcommon: bounds-check ISO 8601 duration elements
+- scheduler: improve promotion score message for inactive instances
+- scheduler: use -INFINITY promotion score for inactive instances
+- libstonithd: prevent to free 'op_reply' repeatedly in 'stonith_send_command' (gh#ClusterLabs/pacemaker#3517)
+
+-------------------------------------------------------------------
+Mon Jun 10 11:37:18 UTC 2024 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.7+20240606.917fbfa11:
+- libpacemaker: correctly retrieve any existing fail-count for increment (gh#ClusterLabs/pacemaker#3513)
+
+-------------------------------------------------------------------
+Mon Jun 10 11:23:24 UTC 2024 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.7+20240605.f80f40e36:
+- libpacemaker: Add spaces back to attrd_updater query output.
+- libcib,liblrmd: improve TLS handshake error messages
+- liblrmd: make TLS handshake error handling consistent
+- libcrmcommon: interpret pcmk__remote_ready() return code correctly
+- pacemakerd: improve subdaemon check messages
+- pacemaker-based: improve local notification messages
+
+-------------------------------------------------------------------
 Tue Jun 04 07:35:46 UTC 2024 - Yan Gao <ygao@suse.com>
 
 - Update to version 2.1.7+20240530.09c4d6d2e:
@@ -1738,7 +1819,7 @@ Thu May 12 07:56:23 UTC 2022 - Yan Gao <ygao@suse.com>
 Mon May 02 10:01:36 UTC 2022 - Yan Gao <ygao@suse.com>
 
 - Update to version 2.1.2+20220427.c01a90fd2:
-- tools: Hook up the verbosity flag in crm_attribute.
+- tools: Hook up the verbosity flag in crm_attribute. (gh#ClusterLabs/pacemaker#2696, bsc#1224183)
 - tools: Honor CIB_file when doing node name lookups in crm_attribute.
 - tools: Handle a remote node's name differing from its hostname.
 - libcrmcommon: Fix a bug in processing multiple IPC messages.

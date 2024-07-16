@@ -1,4 +1,196 @@
 -------------------------------------------------------------------
+Sun Jul 14 17:24:29 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Add MSRV to specfile
+- Require main package for completion
+- Remove deprecated cargo_audit -- Now part of cargo_vendor
+- Update to version 24.07:
+  Features:
+  * Add a textobject for entries/elements of list-like things
+  * Add a picker showing files changed in VCS
+  * Use a temporary file for writes
+  * Allow cycling through LSP signature-help signatures with
+    A-n/A-p
+  * Use tree-sitter when finding matching brackets and closest
+    pairs
+  * Auto-save all buffers after a delay
+  Commands:
+  * select_all_siblings (A-a) - select all siblings of each
+    selection
+  * select_all_children (A-i) - select all children of each
+    selection
+  * :read - insert the contents of the given file at each selection
+  Usability improvements:
+  * Support scrolling popup contents using the mouse
+  * Sort the jumplist picker so that most recent items come first
+  * Improve goto_file's (gf) automatic path detection strategy
+  * Respect language server definition order in code action menu
+  * Allow using a count with goto_next_buffer (gn) and
+    goto_previous_buffer (gp)
+  * Improve the positioning of popups
+  * Reset all changes overlapped by selections in
+    :reset-diff-change
+  * Await pending writes in the suspend command (C-z)
+  * Remove special handling of line ending characters in replace
+    (r)
+  * Use the selected register as a history register for
+    rename_symbol (<space>r)
+  * Use the configured insert-mode cursor for prompt entry
+  * Add tilted quotes to the matching brackets list
+  * Prevent improper files like /dev/urandom from being used as
+    file arguments
+  * Allow multiple language servers to provide
+    :lsp-workspace-commands
+  * Trim output of commands executed through :pipe
+  Fixes:
+  * Use lldb-dap instead of lldb-vscode in default DAP
+    configuration
+  * Fix creation of uneven splits when closing windows
+  * Avoid setting a register in delete_selection_noyank, fixing the
+    command's use in command sequences
+  * Fix jump alphabet config resetting when using :config-reload
+  * Overlay LSP unnecessary/deprecated diagnostic tag highlights
+    onto regular diagnostic highlights
+  * Fix crash on LSP text edits with invalid ranges
+  * Handle partial failure when sending multiple LSP
+    textDocument/didSave notifications
+  * Fix off-by-one error for completion-replace option
+  * Fix mouse right-click selection behavior
+  * Fix scrolling to the end within a popup
+  * Fix jump label highlight locations when jumping in non-ascii
+    text
+  * Fix crashes from tree-sitter query captures that return
+    non-grapheme aligned ranges
+  * Include VCS change in mi/ma textobject infobox
+  * Override crossterm's support for NO_COLOR
+  * Respect mode when starting a search
+  * Simplify first-in-line computation for indent queries
+  * Ignore .svn version controlled files in file pickers
+  * Fix overloading language servers with completionItem/resolve
+    requests
+  * Specify direction for select_next_sibling / select_prev_sibling
+  * Fix restarting language servers
+  * Don't stop at the first URL in goto_file
+  * Fix overflows in window size calculations for small terminals
+  * Allow missing or empty completion lists in DAP
+  * Revert statusline refactor that could cause the statusline to
+    blank out on files with long paths
+  * Synchronize files after writing
+  * Avoid cnorm for cursor-type detection in certain terminals
+  * Reset inlay hints when stopping or restarting a language server
+  * Fix logic for updating --version when development VCS HEAD
+    changes
+  * Set a max value for the count
+  * Deserialize number IDs in DAP module types
+  * Fix the behavior of jump_backwords when the jumplist is at
+    capacity
+  * Fix injection layer heritage tracking for reused tree-sitter
+    injection layers
+  * Fix pluralization of "buffers" in the statusline for :q, :q!,
+    :wq
+  * Declare LSP formatting client capabilities
+  * Commit uncommitted changes before attempting undo/earlier
+  * Expand tilde for selected paths in goto_file
+  * Commit undo checkpoints before :write[-all], fixing the
+    modification indicator
+  Themes:
+  * Add jump label styles to nightfox, Solarized, cyan_light,
+    onelight, tokyonight, papercolor, Darcula, autumn, Ayu themes,
+    dark_high_contrast, varua, Modus themes
+  * Add flexoki-dark, flexoki-light, iroaseta, kanagawa-dragon
+    themes
+  * Update material themes
+  * Add default theme keys for LSP diagnostics tags to existing
+    themes
+  * Add jump label styles to base16 themes
+  * Add modeline and default virtual highlights to base16_default
+  * Dim primary selection in kanagawa
+  * Add ruler style to adwaita-dark
+  * Remove ui.highlight effects from solarized_dark
+  * Fix statusline color in material themes
+  * Brighten nord selection highlight
+  * Add inlay-hint styles to monokai themes
+  * Add bufferline and cursorline colors to vim_dark_high_contrast
+  * Switch themes with foreground rulers to background
+  * Fix statusline colors for everblush
+  * Use yellow1 for gruvbox warning diagnostics
+  * Refactor dark_plus and gruvbox themes
+  * Add debug highlights to dark_plus
+  * Fix per-mode cursor colors in the default theme
+  * Add tag and attribute highlights to dark_high_contrast
+  * Improve readability of virtual text with noctis theme
+  * Sync catppuccin themes with upstream
+  New languages:
+  * BitBake, Earthfile, TCL, ADL, LDIF, XTC, Move, Pest, GJS/GTS,
+    Inko, Mojo, Elisp
+  Updated languages and queries:
+  * Recognize mkdn files as markdown
+  * Add comment injections for Gleam
+  * Recognize BuildKite commands in YAML injections
+  * Add F# block comment token configuration
+  * Update tree-sitter-templ and queries
+  * Recognize Tiltfile as Starlark
+  * Remove todo.txt from files recognized as todotxt
+  * Highlight type keyword in Python from PEP695
+  * Update tree-sitter-koka, add language server config
+  * Recognize node and Python history files
+  * Recognize more shell files as bash
+  * Recognize the bun shebang as typescript
+  * Add a configuration for the angular language server
+  * Add textobject queries for Solidity
+  * Recognize meson.options as Meson
+  * Improve Solidity highlighting
+  * Recognize _.tpl files as Helm
+  * Update tree-sitter-ld and highlights
+  * Add lldb-dap configuration for Odin
+  * Update tree-sitter-rust
+  * Update tree-sitter-typst
+  * Recognize hyprpaper.conf, hypridle.conf and hyprlock.conf as
+    Hyprlang
+  * Improve HTML highlighting
+  * Add rust-script and cargo as shebangs for Rust
+  * Fix precedence of tag highlights in Svelte
+  * Update tree-sitter-bash
+  * Recognize *.ignore files as ignore
+  * Add configuration to enable inlay hints in metals
+  * Enable highlighting private members in ECMA languages
+  * Add comment injection to typst queries
+  * Add textobject queries for Hurl
+  * Add try keyword to Rust
+  * Add is not and not in to Python highlights
+  * Remove ' and ⟨⟩ from Lean autopair configuration
+  * Match TOML/YAML highlights for JSON keys
+  * Recognize WORKSPACE files as Starlark
+  * Switch Odin tree-sitter grammar and highlights
+  * Update tree-sitter-slint
+  * Add missing operators for Solidity highlights
+  * Update tree-sitter-inko
+  * Add py, hs, rs and typ injection regexes
+  * Update Swift grammar and queries
+  * Update Cairo grammar and queries
+  * Update Rust grammar
+  * Add block comment tokens for typst
+  * Recognize jsonl as JSON
+  * Add rulers and text-width at 100 columns for Lean language
+  * Improve VDHL highlights
+  * Recognize hsc as Haskell
+  * Fix heredoc and $'<ansi_string>' highlights in Bash
+  * Add LSP configuration for basedpyright
+  * Recognize npmrc and .nmprc files as INI
+  * Recognize ~/.config/git/ignore as git-ignore
+  * Recognize pdm.lock and uv.lock as TOML
+  * Recognize .yml as well as .yaml for Helm chart templates
+  * Add regex injections for Bash
+  * Update tree-sitter-todo
+  Packaging:
+  * Make Helix.appdata.xml spec-compliant
+  * Expose all flake outputs through flake-compat
+  * Bump the MSRV to 1.74.0
+  * Improve fish completions
+  * Improve ZSH completions
+
+
+-------------------------------------------------------------------
 Sat Mar 30 13:53:25 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Remove obsolete cargo_config and references in spec

@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Sun Jul 14 17:48:36 UTC 2024 - eyadlorenzo@gmail.com
+
+- Update to version 0.2.5:
+  * Fixed issue where a model's SYSTEM message not be applied
+
+- Update to version 0.2.4:
+  * Fixed issue where context, load_duration and total_duration 
+    fields would not be set in the /api/generate endpoint.
+  * Ollama will no longer error if loading models larger than 
+    system memory if disk space is available
+
+- Update to version 0.2.3:
+  * Fix issue where system prompt would not be applied
+
+- Update to version 0.2.2:
+  * Fixed errors that occurred when using Ollama with Nvidia V100 
+    GPUs
+  * glm4 models will no longer fail to load from out of memory
+    errors
+  * Fixed error that would occur when running deepseek-v2 and 
+    deepseek-coder-v2 models
+  * Fixed a series of out of memory issues when using Nvidia
+    GPUs
+  * Fixed a series of errors that would occur when using multiple 
+    Radeon GPUs
+
+- Update to version 0.2.1:
+  * Fixed issue where setting OLLAMA_NUM_PARALLEL would cause 
+    models to be reloaded after each request
+
+- Update to version 0.2.0:
+  * Ollama 0.2.0 is now available with concurrency support. 
+    This unlocks 2 specific features:
+    ~ Ollama can now serve multiple requests at the same time
+    ~ Ollama now supports loading different models at the same time
+  * New models: GLM-4: A strong multi-lingual general language 
+    model with competitive performance to Llama 3.
+  * New models: CodeGeeX4: A versatile model for AI software 
+    development scenarios, including code completion.
+  * New models: Gemma 2: Improved output quality and base text 
+    generation models now available
+  * Ollama will now show a better error if a model architecture 
+    isn't supported
+  * Improved handling of quotes and spaces in Modelfile FROM lines
+  * Ollama will now return an error if the system does not have 
+    enough memory to run a model on Linux
+-------------------------------------------------------------------
 Sun Jul 07 19:18:11 UTC 2024 - Eyad Issa <eyadlorenzo@gmail.com>
 
 - Update to version 0.1.48:

@@ -17,11 +17,11 @@
 #
 
 
-%define soname 15
-%define sovers 15.6.0
+%define soname 17
+%define sovers 17.1.0
 %define lname   pdal
 Name:           PDAL
-Version:        2.5.6
+Version:        2.7.2
 Release:        0
 Summary:        Point Data Abstraction Library (GDAL for point cloud data)
 # The code is licensed BSD except for:
@@ -222,6 +222,11 @@ export CXX=g++-12
 %install
 %cmake_install
 
+# No executable hpp-Files
+find %{buildroot} -type f -name "*.hpp" -executable -exec chmod -x '{}' \;
+# No executable cmake-Files
+find %{buildroot} -type f -name "*.cmake" -executable -exec chmod -x '{}' \;
+
 #No .la lib
 find %{buildroot} -type f -name "*.la" -o -name "*.a" -delete -print
 
@@ -244,18 +249,20 @@ sed -i 's,/usr//usr/lib64,%{_libdir},g' %{buildroot}/%{_libdir}/cmake/PDAL/PDALC
 
 %check
 ## test the compiled code (see doc/project/testing.rst)
+# A custom timeout of 60s is set. This avoids having tests timeout after the default
+# timeout (about 20 minutes)
 # we skip tests for selected architectures which need upstream fixes
 %ifarch armv7hl aarch64 ppc64le s390x
-%ctest --output-on-failure || true
+%ctest --output-on-failure --timeout 60 || true
 %else
 ## we skip the PG test (BUILD_PGPOINTCLOUD_TESTS:BOOL=OFF):
 # PGUSER=pdal PGPASSWORD=password PGHOST=localhost PGPORT=5432 ctest -V
 %ifarch i686
 # https://github.com/PDAL/PDAL/issues/3501 should work with PROJ 8.2 and gdal 3.2.3.
-%ctest || :
+%ctest --timeout 60 || :
 %else
 # https://github.com/PDAL/PDAL/issues/3501
-%ctest || :
+%ctest  --timeout 60 || :
 %endif
 %endif
 
@@ -270,17 +277,15 @@ sed -i 's,/usr//usr/lib64,%{_libdir},g' %{buildroot}/%{_libdir}/cmake/PDAL/PDALC
 %files -n lib%{name}%{soname}
 %license LICENSE.txt
 %doc AUTHORS.txt README.md RELEASENOTES.txt
-%{_libdir}/libpdal_base.so.%{sovers}
-%{_libdir}/libpdal_base.so.%{soname}
+%{_libdir}/libpdalcpp.so.%{soname}
+%{_libdir}/libpdalcpp.so.%{sovers}
 # Plugins
-%{_libdir}/libpdal_plugin_kernel_fauxplugin.so.%{sovers}
 %{_libdir}/libpdal_plugin_kernel_fauxplugin.so.%{soname}
-%{_libdir}/libpdal_plugin_reader_pgpointcloud.so.%{sovers}
+%{_libdir}/libpdal_plugin_kernel_fauxplugin.so.%{sovers}
 %{_libdir}/libpdal_plugin_reader_pgpointcloud.so.%{soname}
-%{_libdir}/libpdal_plugin_writer_pgpointcloud.so.%{sovers}
+%{_libdir}/libpdal_plugin_reader_pgpointcloud.so.%{sovers}
 %{_libdir}/libpdal_plugin_writer_pgpointcloud.so.%{soname}
-%{_libdir}/libpdal_util.so.%{sovers}
-%{_libdir}/libpdal_util.so.%{soname}
+%{_libdir}/libpdal_plugin_writer_pgpointcloud.so.%{sovers}
 
 %files bash-completion
 %dir %{_datadir}/bash-completion
@@ -291,12 +296,10 @@ sed -i 's,/usr//usr/lib64,%{_libdir},g' %{buildroot}/%{_libdir}/cmake/PDAL/PDALC
 %license LICENSE.txt
 %doc AUTHORS.txt README.md CONTRIBUTING.md
 %{_includedir}/pdal
-%{_libdir}/libpdal_base.so
+%{_libdir}/libpdalcpp.so
 %{_libdir}/libpdal_plugin_kernel_fauxplugin.so
 %{_libdir}/libpdal_plugin_reader_pgpointcloud.so
 %{_libdir}/libpdal_plugin_writer_pgpointcloud.so
-%{_libdir}/libpdal_util.so
-%{_libdir}/libpdalcpp.so
 %{_libdir}/pkgconfig/pdal.pc
 %{_libdir}/cmake/PDAL
 %{_bindir}/pdal-config

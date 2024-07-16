@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Jul 15 05:25:31 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.2.1:
+  * Make limit consecutive skips to default
+  * Add list of contributors to About page
+
+-------------------------------------------------------------------
+Mon Jul 15 05:25:10 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.2.0:
+  * Limit consecutive skips
+
+-------------------------------------------------------------------
+Mon Jul 15 05:24:59 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.1.9:
+  * Fix crash in smartpause
+
+-------------------------------------------------------------------
+Mon Jul 15 05:23:37 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.1.8:
+  * New version with python 3.12 support
+
+-------------------------------------------------------------------
 Wed Jul  5 07:55:14 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to version 2.1.6:

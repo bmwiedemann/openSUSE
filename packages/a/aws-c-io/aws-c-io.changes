@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jul 11 10:09:51 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.14.10
+  * clang-format 18 by @graebm in (#644)
+  * Fix Freebsd CI by @waahm7 in (#648)
+  * Fix memory leaks in Windows TLS code
+    by @graebm in #652
+
+-------------------------------------------------------------------
 Wed Jun  5 08:50:30 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.14.9

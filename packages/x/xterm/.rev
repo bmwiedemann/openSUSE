@@ -1912,4 +1912,12 @@ echo &quot;WARNING: Dummy prjconf macro. gpg-offline is not available, skipping 
   * correct loop for trimming environment variables (report/patch by Casper Dik).</comment>
     <requestid>1184897</requestid>
   </revision>
+  <revision rev="146" vrev="1">
+    <srcmd5>817ad4070f5adcdb41e29712c8bc33f5</srcmd5>
+    <version>393</version>
+    <time>1721065550</time>
+    <user>anag+factory</user>
+    <comment>xterm 393 (forwarded request 1187202 from AndreasStieger)</comment>
+    <requestid>1187223</requestid>
+  </revision>
 </revisionlist>

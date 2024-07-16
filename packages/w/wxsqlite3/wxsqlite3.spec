@@ -1,7 +1,7 @@
 #
 # spec file for package wxsqlite3
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@ BuildRequires:  wxWidgets-devel >= 3
 BuildRequires:  wxWidgets-3_0-devel
 %endif
 Name:           wxsqlite3
-Version:        4.9.6
+Version:        4.9.11
 Release:        0
 Summary:        C++ wrapper around SQLite 3.x
 License:        SUSE-wxWidgets-3.1

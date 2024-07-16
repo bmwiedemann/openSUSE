@@ -188,4 +188,17 @@
     <comment></comment>
     <requestid>1186765</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>e8e39bd9634a91e0eae4c8ea93797def</srcmd5>
+    <version>1.51.1</version>
+    <time>1721065621</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.51.1:
+  * [Servers] Fixed the page to complete Cloudflare challenges
+  * [Servers] Japscan (FR): Disabled
+  * [Servers] Neko Scans (ES): Disabled
+  * Updated translations.
+</comment>
+    <requestid>1187291</requestid>
+  </revision>
 </revisionlist>

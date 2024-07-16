@@ -1,7 +1,7 @@
 #
 # spec file for package b3sum
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 Name:           b3sum
-Version:        1.5.1
+Version:        1.5.2
 Release:        0
 Summary:        A multithreaded rust implementation of BLAKE3
 License:        Apache-2.0 OR CC0-1.0
-Url:            https://github.com/BLAKE3-team/BLAKE3
+URL:            https://github.com/BLAKE3-team/BLAKE3
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
-BuildRequires:	cargo-packaging
+BuildRequires:  cargo-packaging
 
 %description
 The official Rust implementation of the BLAKE3 cryptographic hash
@@ -33,6 +33,7 @@ magnitude faster than e.g. sha256sum on typical desktop hardware.
 
 %prep
 %autosetup -a1 -n %{name}-%{version}/b3sum
+mv ../LICENSE_* .
 
 %build
 %{cargo_build}
@@ -42,10 +43,10 @@ magnitude faster than e.g. sha256sum on typical desktop hardware.
 
 %install
 %{cargo_install}
-mv ../LICENSE .
 
 %files
-%license LICENSE
+%license LICENSE_A2 LICENSE_A2LLVM LICENSE_CC0
+
 %{_bindir}/%{name}
 
 %changelog

@@ -655,4 +655,12 @@
     <comment>- remove botan binary (moves to Botan3)</comment>
     <requestid>1127662</requestid>
   </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>fb06f43c25a99eada35dc162c8d3cfa2</srcmd5>
+    <version>2.19.5</version>
+    <time>1721065787</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1187484</requestid>
+  </revision>
 </revisionlist>

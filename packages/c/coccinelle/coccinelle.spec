@@ -1,7 +1,7 @@
 #
 # spec file for package coccinelle
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           coccinelle
-Version:        1.1.1
+Version:        1.2
 Release:        0
 Summary:        Semantic patch utility
 License:        GPL-2.0-only
@@ -86,17 +86,6 @@ export NO_DEBUGINFO_STRIP_DEBUG=true
 : >debugsourcefiles.list
 
 %make_install
-
-# Until https://github.com/coccinelle/coccinelle/issues/259 is fixed
-for i in spatch spgen; do
-	mv -v "$b/%_bindir/$i" "$b/%_bindir/$i.bin"
-	cat >"$b/%_bindir/$i" <<-EOF
-		#!/bin/bash
-		if test -z "\$COCCINELLE_HOME"; then export COCCINELLE_HOME="%_libdir/coccinelle"; fi
-		exec %_bindir/$i.bin "\$@"
-	EOF
-	chmod -v a+x "$b/%_bindir/$i"
-done
 
 %fdupes $b/%_prefix
 

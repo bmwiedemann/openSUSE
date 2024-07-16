@@ -1,4 +1,81 @@
 -------------------------------------------------------------------
+Thu Jul 11 14:11:16 UTC 2024 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Update to 4.8.1
+  * allow hiding of sidepanel docks via view/show
+  * reduce number on visible dock on OSX due to qt osx style weakness
+  * fix raised dock after hiding/showing sidepanel
+    gh#texstudio-org/texstudio#3653
+  * fallback to simple syntax highligting when tooltip background differs from
+    general background gh#texstudio-org/texstudio#3644
+  * fix structure view context on sections gh#texstudio-org/texstudio#3642
+  * fix black background on comboxes with windows11 style (qt6.7.1)
+  
+- Update to 4.8.0
+  * AI chat assistant added
+  * use moveable/splitable docks for sidepanel
+  * extended search can now also search in all files in one folder
+  * add basic syntax highlighting for latex3 code
+  * fix handling CJK characters in pdf on OSX gh#texstudio-org/texstudio#3558
+  * fix rare crash gh#texstudio-org/texstudio#3556
+  * reload hidden docs when user chooses to discard changes
+    gh#texstudio-org/texstudio#3550
+  
+- Update to 4.7.3
+  * First line of macro editor no longer uses macro type, use buttons to set
+    type. Macro format changes slightly. 
+    For details s. gh#texstudio-org/texstudio#3458
+  * add export of all macros in Edit Macros dialog
+    gh#texstudio-org/texstudio#3451
+  * macro editor now executes normal and environment macros in addition to
+    script macros gh#texstudio-org/texstudio#3444
+  * macro editor with better button arrangement gh#texstudio-org/texstudio#3451
+  * copy data from all issues in the messages pane (log) to clipboard
+    gh#texstudio-org/texstudio#3487
+  * insert graphics wizard opens position details without changing position or
+    size of ui elements located above position details
+    gh#texstudio-org/texstudio#3509
+  * improved Package Help dialog 
+    gh#texstudio-org/texstudio#3478, gh#texstudio-org/texstudio#3497
+  * fix missing connection error message when browsing macro repository
+    gh#texstudio-org/texstudio#3448
+  * fix switching (by clicking) between documents
+    gh#texstudio-org/texstudio#3473
+  * fix “Show all open documents in this tree” gh#texstudio-org/texstudio#3476
+  * fix handling a new file created from the context menu
+    gh#texstudio-org/texstudio#3471
+  * small fixes
+  
+- Update to 4.7.2
+  * remove something (alt+del) handles matching delimiters
+  * fix detecting parent/child documents when autoloading is disabled
+    gh#texstudio-org/texstudio#3411
+  * fix completion of user constructs like a_b gh#texstudio-org/texstudio#3403
+  * fix navigating in subfiles gh#texstudio-org/texstudio#3404
+  * fix duplicate shortcut in ‘Additional Shortcut’ column is not removed
+    gh#texstudio-org/texstudio#3408
+  * fix wrong cursor, scaling, settings in pdf viewer when switching window
+    mode gh#texstudio-org/texstudio#3426 gh#texstudio-org/texstudio#3428 …
+  
+- Update to 4.7.1
+  * fix highlighting of %TODO comments after loading a file
+    gh#texstudio-org/texstudio#3398
+  * fix missing document height update when copy wrapped single lines
+    gh#texstudio-org/texstudio#3396
+  
+- Update to 4.7.0
+  * remove auto inserted closing parenthesis if the opening one is removed
+    via backspace
+  * optimize internal parsing
+  * TeXdoc dialog now shows (optionally all) packages as a searchable list.
+    A new button opens the CTAN package documentation online.
+    (gh#texstudio-org/texstudio#3259, gh#texstudio-org/texstudio#3270, …)
+  * fix inputting accented characters on OSX
+  * handle keyval with spaces better gh#texstudio-org/texstudio#3362
+  * save some memory by reading thesaurus database only when needed the
+    first time
+
+-------------------------------------------------------------------
 Mon Sep 04 09:42:29 UTC 2023 - Markus Ebner <info@ebner-markus.de>
 
 - Update to 4.6.3

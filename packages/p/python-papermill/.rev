@@ -201,4 +201,25 @@
     <comment>- Skip testing python39: no longer supported since ipython 8.19</comment>
     <requestid>1156372</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>2c339719575363892ebe097c596b0858</srcmd5>
+    <version>2.6.0</version>
+    <time>1721065626</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.6.0
+  * bring back strip_color and remove ANSI color codes from
+    exception traceback #791
+  * cleaned up documentation #790
+  * prevent error override, fix traceback type #788
+  * Upgrade tests to moto v5 #779
+  * raise PapermillExecutionError when CellExecutionError is raised
+    without cell error output #786
+  * make progress_bar param accept a dict #778
+  * Fix nbformat to 5.2.0 to cell None type #770
+  * Use f-strings where possible #762
+  * Unmark wheel as universal #764
+- Drop papermill-pr779-moto5.patch
+</comment>
+    <requestid>1187313</requestid>
+  </revision>
 </revisionlist>

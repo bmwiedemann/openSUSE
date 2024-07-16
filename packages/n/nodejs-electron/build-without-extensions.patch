@@ -8,16 +8,14 @@ This is not upstreamable as the problem is due to Electron changes to chromium, 
 
 --- src/extensions/browser/guest_view/web_view/web_view_guest.cc.old	2023-09-28 10:14:03.660044621 +0200
 +++ src/extensions/browser/guest_view/web_view/web_view_guest.cc	2023-09-29 08:05:41.827245244 +0200
-@@ -285,9 +285,6 @@ std::string WebViewGuest::GetPartitionID
+@@ -285,7 +285,6 @@ std::string WebViewGuest::GetPartitionID
  }
  
  // static
 -const char WebViewGuest::Type[] = "webview";
--
--// static
- int WebViewGuest::GetOrGenerateRulesRegistryID(int embedder_process_id,
-                                                int webview_instance_id) {
-   bool is_web_view = embedder_process_id && webview_instance_id;
+ const guest_view::GuestViewHistogramValue WebViewGuest::HistogramValue =
+     guest_view::GuestViewHistogramValue::kWebView;
+ 
 --- src/extensions/browser/guest_view/web_view/web_view_guest.h.old	2023-09-28 10:14:03.660044621 +0200
 +++ src/extensions/browser/guest_view/web_view/web_view_guest.h	2023-09-29 08:06:13.200529820 +0200
 @@ -49,7 +49,7 @@ class WebViewGuest : public guest_view::
@@ -26,6 +24,6 @@ This is not upstreamable as the problem is due to Electron changes to chromium, 
  
 -  static const char Type[];
 +  constexpr static const char Type[] = "webview";
+   static const guest_view::GuestViewHistogramValue HistogramValue;
  
    // Returns the WebView partition ID associated with the render process
-   // represented by |render_process_host|, if any. Otherwise, an empty string is

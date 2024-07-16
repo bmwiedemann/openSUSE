@@ -7,4 +7,12 @@
     <comment>This is a rust implementation of a fast cryptographic hash alg. I want to maintain it in Factory as well.</comment>
     <requestid>1169697</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>18ff7205c5547ad8b12b5ca9754d733a</srcmd5>
+    <version>1.5.2</version>
+    <time>1721065602</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1187228</requestid>
+  </revision>
 </revisionlist>

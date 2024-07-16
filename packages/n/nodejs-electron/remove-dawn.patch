@@ -9,9 +9,9 @@ Remove this unused component which brings a huge dependency on //third_party/daw
 -    "//services/on_device_model:on_device_model_service",
 -    "//services/on_device_model/public/cpp",
 -    "//services/on_device_model/public/mojom",
+     "//services/screen_ai/buildflags",
      "//services/service_manager/public/cpp",
      "//services/service_manager/public/mojom",
-     "//services/shape_detection:lib",
 --- src/content/utility/services.cc.orig
 +++ src/content/utility/services.cc
 @@ -31,7 +31,6 @@
@@ -23,8 +23,8 @@ Remove this unused component which brings a huge dependency on //third_party/daw
  #include "services/tracing/tracing_service.h"
  #include "services/video_capture/public/mojom/video_capture_service.mojom.h"
 @@ -327,13 +326,6 @@ auto RunVideoCapture(
-   return service;
  }
+ #endif
  
 -auto RunOnDeviceModel(
 -    mojo::PendingReceiver<on_device_model::mojom::OnDeviceModelService>
@@ -37,8 +37,8 @@ Remove this unused component which brings a huge dependency on //third_party/daw
  auto RunXrDeviceService(
      mojo::PendingReceiver<device::mojom::XRDeviceService> receiver) {
 @@ -408,9 +400,6 @@ void RegisterMainThreadServices(mojo::Se
-   services.Add(RunTracing);
-   services.Add(RunVideoCapture);
+   services.Add(RunVideoEffects);
+ #endif
  
 -  if (optimization_guide::features::CanLaunchOnDeviceModelService()) {
 -    services.Add(RunOnDeviceModel);
@@ -53,9 +53,9 @@ Remove this unused component which brings a huge dependency on //third_party/daw
  #include "sandbox/policy/sandbox.h"
  #include "sandbox/policy/sandbox_type.h"
 -#include "services/on_device_model/on_device_model_service.h"
+ #include "services/screen_ai/buildflags/buildflags.h"
  #include "services/tracing/public/cpp/trace_startup.h"
  #include "third_party/icu/source/common/unicode/unistr.h"
- #include "third_party/icu/source/i18n/unicode/timezone.h"
 @@ -202,10 +201,6 @@ int UtilityMain(MainFunctionParams param
            ? base::MessagePumpType::UI
            : base::MessagePumpType::DEFAULT;

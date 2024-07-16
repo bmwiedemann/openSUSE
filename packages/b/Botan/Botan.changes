@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Jul 15 05:50:55 UTC 2024 - Angel Yankov <angel.yankov@suse.com>
+
+- Update to 2.19.5:
+  * Fix multiple Denial of service attacks due to X.509 cert processing:
+  * CVE-2024-34702 - bsc#1227238
+  * CVE-2024-34703 - bsc#1227607
+  * CVE-2024-39312 - bsc#1227608
+  * Fix a crash in OCB
+  * Fix a test failure in compression with certain versions of zlib 
+  * Fix some iterator debugging errors in TLS CBC decryption. 
+  * Avoid a miscompilation in ARIA when using XCode 14
+
+-------------------------------------------------------------------
 Fri Nov 17 13:18:55 UTC 2023 - Marcus Meissner <meissner@suse.com>
 
 - remove botan binary (moves to Botan3)

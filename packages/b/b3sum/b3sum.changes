@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jul 12 18:31:22 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Update to version 1.5.2:
+  * build.rs sets cc::Build::emit_rerun_if_env_changed(false) to
+    prevent some unnecessary rebuilds
+  * Serializing a Hash produces a bytestring instead of an array in
+    formats that support bytestrings (like CBOR). Deserialization
+    is backwards-compatible with the array format
+  * Cleanup and edge case fixes in the C and CMake builds.
+
+-------------------------------------------------------------------
 Mon Apr 22 14:37:02 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Package changes:

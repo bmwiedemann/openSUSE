@@ -4,6 +4,7 @@ SUSE: Disable the following:
     and global CFLAGS go at the end of the commandline
 * Submodel options (-march and friends). Upstream notoriously forces SSE3 despite the code not requiring it.
   * note that cpu options for ARM are currently left in, as they do not seem to do harm and V8 needs to know the exact target anyway
+* libstdc++ assertions. Enabling them or not should in general be the distro's decision. Electron does not run untrusted code (unlike browsers) and as such does not really benefit from security paranoia.
 * Debuginfo format. Upstream seems to force something that is not recognized by rpmbuild.
   * per-target debuginfo level is left in as it is still useful (-g2 everywhere does not work)
 * Emitting code for the PIC model. It is needed in case of shared libraries, but results in a larger executable (and Electron is already enormous)
@@ -24,7 +25,7 @@ diff --git a/build/config/compiler/BUILD.gn b/build/config/compiler/BUILD.gn
 index d40843b..b92f03b 100644
 --- a/build/config/compiler/BUILD.gn
 +++ b/build/config/compiler/BUILD.gn
-@@ -274,9 +274,7 @@
+@@ -322,9 +322,7 @@ config("compiler") {
  
    configs += [
      # See the definitions below.
@@ -34,7 +35,7 @@ index d40843b..b92f03b 100644
      ":compiler_codegen",
      ":compiler_deterministic",
    ]
-@@ -305,7 +303,12 @@
+@@ -353,7 +351,12 @@ config("compiler") {
    if (!is_win) {
      # Common POSIX compiler flags setup.
      # --------------------------------
@@ -48,7 +49,7 @@ index d40843b..b92f03b 100644
  
      # Stack protection. ShadowCallStack and Stack protector address the same
      # problems. Therefore, we only enable one or the other. Clang advertises SCS as
-@@ -432,10 +435,6 @@
+@@ -494,10 +497,6 @@ config("compiler") {
    # Linux/Android/Fuchsia common flags setup.
    # ---------------------------------
    if (is_linux || is_chromeos || is_android || is_fuchsia) {
@@ -59,7 +60,7 @@ index d40843b..b92f03b 100644
  
      if (!is_clang) {
        # Use pipes for communicating between sub-processes. Faster.
-@@ -527,55 +527,6 @@
+@@ -590,55 +589,6 @@ config("compiler") {
      ldflags += [ "-Wl,-z,keep-text-section-prefix" ]
    }
  
@@ -115,7 +116,19 @@ index d40843b..b92f03b 100644
    # C11/C++11 compiler flags setup.
    # ---------------------------
    if (is_linux || is_chromeos || is_android || (is_nacl && is_clang) ||
-@@ -862,7 +837,8 @@
+@@ -1070,11 +1020,6 @@ config("compiler") {
+     defines += [ "_LIBCPP_HARDENING_MODE=_LIBCPP_HARDENING_MODE_NONE" ]
+   }
+ 
+-  # Enable libstdc++ hardening lightweight assertions. Those have a low
+-  # performance penalty but are considered a bare minimum for security.
+-  if (use_safe_libstdcxx) {
+-    defines += [ "_GLIBCXX_ASSERTIONS=1" ]
+-  }
+ }
+ 
+ # The BUILDCONFIG file sets this config on targets by default, which means when
+@@ -1140,7 +1085,8 @@ config("thinlto_optimize_max") {
  # without using everything that "compiler" brings in.  Options that
  # tweak code generation for a particular CPU do not belong here!
  # See "compiler_codegen", below.
@@ -125,7 +138,7 @@ index d40843b..b92f03b 100644
    cflags = []
    ldflags = []
    defines = []
-@@ -1227,46 +1203,6 @@
+@@ -1523,46 +1469,6 @@ config("compiler_deterministic") {
      }
    }
  
@@ -172,7 +185,7 @@ index d40843b..b92f03b 100644
    # Tells the compiler not to use absolute paths when passing the default
    # paths to the tools it invokes. We don't want this because we don't
    # really need it and it can mess up the goma cache entries.
-@@ -1400,7 +1337,8 @@
+@@ -1739,7 +1645,8 @@ config("treat_warnings_as_errors") {
  # Collects all warning flags that are used by default.  This is used as a
  # subconfig of both chromium_code and no_chromium_code.  This way these
  # flags are guaranteed to appear on the compile command line after -Wall.
@@ -182,20 +195,20 @@ index d40843b..b92f03b 100644
    cflags = []
    cflags_c = []
    cflags_cc = []
-@@ -1597,11 +1535,7 @@
+@@ -1983,11 +1890,7 @@ config("chromium_code") {
        defines = [ "_HAS_NODISCARD" ]
      }
    } else {
 -    cflags = [ "-Wall" ]
-+    cflags = []
 -    if (is_clang) {
 -      # Enable extra warnings for chromium_code when we control the compiler.
 -      cflags += [ "-Wextra" ]
 -    }
++    cflags = []
  
      # In Chromium code, we define __STDC_foo_MACROS in order to get the
      # C99 macros on Mac and Linux.
-@@ -1618,24 +1552,6 @@
+@@ -1996,24 +1899,6 @@ config("chromium_code") {
        "__STDC_FORMAT_MACROS",
      ]
  
@@ -220,7 +233,7 @@ index d40843b..b92f03b 100644
      if (is_apple) {
        cflags_objc = [ "-Wimplicit-retain-self" ]
        cflags_objcc = [ "-Wimplicit-retain-self" ]
-@@ -1841,7 +1841,6 @@
+@@ -2159,7 +2044,6 @@ config("no_rtti") {
  config("export_dynamic") {
    # TODO(crbug.com/1052397): Revisit after target_os flip is completed.
    if (is_linux || is_chromeos_lacros || export_libcxxabi_from_executables) {
@@ -228,7 +241,7 @@ index d40843b..b92f03b 100644
    }
  }
  
-@@ -1887,7 +1811,8 @@
+@@ -2247,7 +2131,8 @@ config("wexit_time_destructors") {
  # gcc 4.9 and earlier had no way of suppressing this warning without
  # suppressing the rest of them.  Here we centralize the identification of
  # the gcc 4.9 toolchains.
@@ -238,7 +251,7 @@ index d40843b..b92f03b 100644
    cflags = []
    if (is_clang) {
      cflags += [ "-Wno-incompatible-pointer-types" ]
-@@ -1990,7 +1915,8 @@
+@@ -2362,7 +2247,8 @@ if (is_win) {
    common_optimize_on_cflags += [ "-fno-math-errno" ]
  }
  
@@ -248,7 +261,7 @@ index d40843b..b92f03b 100644
    if (!is_win) {
      if (enable_frame_pointers) {
        cflags = [ "-fno-omit-frame-pointer" ]
-@@ -2017,7 +1943,8 @@
+@@ -2389,7 +2275,8 @@ config("default_stack_frames") {
  }
  
  # Default "optimization on" config.
@@ -256,9 +269,9 @@ index d40843b..b92f03b 100644
 +config("optimize") { }
 +config("xoptimize") {
    if (is_win) {
-     if (chrome_pgo_phase != 2) {
-       # Favor size over speed, /O1 must be before the common flags.
-@@ -2055,7 +1982,8 @@
+     cflags = [ "/O2" ] + common_optimize_on_cflags
+ 
+@@ -2430,7 +2317,8 @@ config("optimize") {
  }
  
  # Turn off optimizations.
@@ -268,7 +281,7 @@ index d40843b..b92f03b 100644
    if (is_win) {
      cflags = [
        "/Od",  # Disable optimization.
-@@ -2095,7 +2023,8 @@
+@@ -2470,7 +2358,8 @@ config("no_optimize") {
  # Turns up the optimization level. On Windows, this implies whole program
  # optimization and link-time code generation which is very expensive and should
  # be used sparingly.
@@ -278,7 +291,7 @@ index d40843b..b92f03b 100644
    if (is_nacl && is_nacl_irt) {
      # The NaCl IRT is a special case and always wants its own config.
      # Various components do:
-@@ -2128,7 +2057,8 @@
+@@ -2503,7 +2392,8 @@ config("optimize_max") {
  #
  # TODO(crbug.com/621335) - rework how all of these configs are related
  # so that we don't need this disclaimer.
@@ -288,7 +301,7 @@ index d40843b..b92f03b 100644
    if (is_nacl && is_nacl_irt) {
      # The NaCl IRT is a special case and always wants its own config.
      # Various components do:
-@@ -2154,7 +2084,8 @@
+@@ -2529,7 +2419,8 @@ config("optimize_speed") {
    }
  }
  
@@ -298,7 +311,7 @@ index d40843b..b92f03b 100644
    cflags = [ "-O1" ] + common_optimize_on_cflags
    rustflags = [ "-Copt-level=1" ]
    ldflags = common_optimize_on_ldflags
-@@ -2273,7 +2204,8 @@
+@@ -2662,7 +2553,8 @@ config("win_pdbaltpath") {
  }
  
  # Full symbols.
@@ -308,7 +321,7 @@ index d40843b..b92f03b 100644
    rustflags = []
    if (is_win) {
      if (is_clang) {
-@@ -2398,7 +2330,8 @@
+@@ -2811,7 +2703,8 @@ config("symbols") {
  # Minimal symbols.
  # This config guarantees to hold symbol for stack trace which are shown to user
  # when crash happens in unittests running on buildbot.
@@ -318,7 +331,7 @@ index d40843b..b92f03b 100644
    rustflags = []
    if (is_win) {
      # Functions, files, and line tables only.
-@@ -2470,7 +2403,8 @@
+@@ -2896,7 +2789,8 @@ config("minimal_symbols") {
  # This configuration contains function names only. That is, the compiler is
  # told to not generate debug information and the linker then just puts function
  # names in the final debug information.

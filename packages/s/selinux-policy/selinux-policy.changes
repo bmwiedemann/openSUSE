@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jul 15 11:55:43 UTC 2024 - cathy.hu@suse.com
+
+- Update to version 20240715:
+  * Allow systemd_getty_generator_t read /proc/1/environ
+  * Allow systemd_getty_generator_t to read and write to tty_device_t (bsc#1226888)
+
+-------------------------------------------------------------------
 Wed Jul 10 07:45:13 UTC 2024 - cathy.hu@suse.com
 
 - Enable sap module

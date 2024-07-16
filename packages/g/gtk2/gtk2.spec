@@ -54,6 +54,9 @@ Patch8:         gtk2-updateiconcache_sort.patch
 Patch9:         gtk2-check-attribute.patch
 # PATCH-FIX-UPSTREAM gtk2-gcc14.patch mgorse@suse.com -- fix building with gcc14.
 Patch10:        gtk2-gcc14.patch
+# PATCH-FIX-UPSTREAM CVE-2024-6655.patch -- CVE-2024-6655 Stop looking for modules in cwd
+Patch11:        CVE-2024-6655.patch
+
 BuildRequires:  cairo-devel
 BuildRequires:  cups-devel
 BuildRequires:  fdupes
@@ -325,6 +328,7 @@ cp -a %{SOURCE2} .
 %patch -P 8 -p1
 %patch -P 9 -p1
 %patch -P 10 -p1
+%patch -P 11 -p1
 gnome-patch-translation-update
 
 %build

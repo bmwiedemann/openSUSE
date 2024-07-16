@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Sat Jul  6 22:57:12 UTC 2024 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to v30.3.2
+  * Changes of version 30.3.2
+    = Fix side bearings of U+02CC under Quasi-Proportional.
+    = Improve glyph shape for U+02ED.
+    = Add characters:
+      ~ LEFTWARDS ARROW-TAIL (U+2919) ... RIGHTWARDS DOUBLE
+        ARROW-TAIL (U+291C).
+      ~ MODIFIER LETTER STRESS AND HIGH TONE (U+A720).
+      ~ MODIFIER LETTER STRESS AND LOW TONE (U+A721).
+      ~ BLACK HEART (U+1F5A4).
+      ~ LEFT HALF CIRCLE (U+1F907).
+      ~ WHITE HEART (U+1F90D).
+
+-------------------------------------------------------------------
+Sun Jun 30 23:26:24 UTC 2024 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to v30.3.1
+  * Changes of version 30.3.1
+    = Add Capital Eszet (VXAC) variants with top-left corner.
+    = Add square-dotted variant for brailles (#2388).
+    = Fix leaning mark anchors for U+0195, U+019E, U+01A6, and
+      U+0220.
+    = Optimize glyph shape for U+01A6, U+A68A, and U+A68B.
+    = Make Aile and Etoile use {six|nine}.closed-contour by
+      default.
+    = Make ss20 use seven.curly-serifless by default.
+    = Adjust balancing of r with corner hooks (#2394).
+    = Fix side bearings of Latin-1 Macron (U+00AF) under
+      Quasi-Proportional.
+    = Make U+050F, U+A68B, U+FB03, and U+FB04 slightly wider under
+      Quasi-Proportional.
+
+-------------------------------------------------------------------
 Sat Jun 22 16:53:08 UTC 2024 - Anton Shvetz <shvetz.anton@gmail.com>
 
 - Update to v30.3.0

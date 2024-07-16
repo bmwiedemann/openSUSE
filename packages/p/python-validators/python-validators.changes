@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jul 15 04:45:05 UTC 2024 - Mia Herkt <mia@0x0.st>
+
+- Update to 0.33.0
+Features:
+  * add validator for bsc addresses
+    gh#python-validators/validators#389
+
+-------------------------------------------------------------------
 Fri Jul 12 00:16:41 UTC 2024 - Mia Herkt <mia@0x0.st>
 
 - Update to 0.32.0

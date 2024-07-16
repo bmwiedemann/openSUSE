@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Jul 12 16:03:25 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 393:
+  * add a check for ANSI SC/RC, to ignore CSI parameters.
+  * improve check for missing characters for bitmap-fonts
+  * fix regression in error-recovery for SGR parameters 
+  * change default for --enable-imake configure option
+  * fixes for wcwidth
+  * eliminate maxStringParse limit for SIXEL
+  * improve logic which ignores APC, PM and SOS controls to also
+    not accumulate their data temporarily in a buffer.
+  * exclude TERM_INGRESS from cleanup of environment variables
+  * fix some documentation typos
+
+-------------------------------------------------------------------
 Tue Jul  2 14:45:13 UTC 2024 - Marcus Meissner <meissner@suse.com>
 
 - update to 392:

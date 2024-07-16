@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Jul 11 18:40:42 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.54.0:
+  * build(deps): bump github.com/open-policy-agent/opa from 0.65.0
+    to 0.66.0 (#966)
+  * build(deps): bump github.com/spdx/tools-golang from 0.5.4 to
+    0.5.5 (#965)
+  * build(deps): bump cuelang.org/go from 0.9.1 to 0.9.2 (#964)
+  * build(deps): bump alpine from 3.20.0 to 3.20.1 (#963)
+  * build(deps): bump github.com/hashicorp/go-getter from 1.7.4 to
+    1.7.5 (#962) (fix boo#1227012 CVE-2024-6257)
+  * build(deps): bump github.com/moby/buildkit from 0.14.0 to
+    0.14.1 (#961)
+  * build(deps): bump cuelang.org/go from 0.9.0 to 0.9.1 (#960)
+  * build(deps): bump github.com/moby/buildkit from 0.13.2 to
+    0.14.0 (#959)
+  * build(deps): bump golang from 1.22.3-alpine to 1.22.4-alpine
+    (#958)
+
+-------------------------------------------------------------------
 Fri Jun 07 19:40:27 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.53.0:

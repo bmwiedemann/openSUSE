@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Jul  6 20:51:12 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 2.52.0:
+  * Attestation Verification - Buffer Fix
+  * Remove beta note from attestation top level command
+  * Removed beta note from `gh at download`.
+  * Removed beta note from `gh at verify`, clarified reusable workflows use case.
+  * add `-a` flag to `gh run list`
+
+-------------------------------------------------------------------
 Fri Jun 14 16:12:45 UTC 2024 - pdostal@suse.com
 
 - Update to version 2.51.0:

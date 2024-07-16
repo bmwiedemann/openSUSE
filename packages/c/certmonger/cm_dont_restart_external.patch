@@ -1,0 +1,26 @@
+--- certmonger-0.79.13-150400.3.3.1.x86_64/src/iterate.c	2020-10-20 21:39:55.000000000 +0200
++++ certmonger-0.79.13-150400.3.3.1.x86_64/src/iterate.c	2024-05-08 10:48:22.851568239 +0200
+@@ -2389,15 +2389,19 @@ 
+ 				case cm_ca_phase_renew_reqs:
+ 				case cm_ca_phase_capabilities:
+ 					if (emit_ca_changes != NULL) {
+-						cm_restart_entries_by_ca(context,
+-									 ca->cm_nickname);
++						if(ca->cm_ca_type != cm_ca_external) {
++							cm_restart_entries_by_ca(context,
++									 	ca->cm_nickname);
++						}
+ 					}
+ 					ca->cm_ca_state[state->cm_phase] = CM_CA_NEED_TO_ANALYZE;
+ 					break;
+ 				case cm_ca_phase_encryption_certs:
+ 					if (emit_ca_changes != NULL) {
+-						cm_restart_entries_by_ca(context,
+-									 ca->cm_nickname);
++						if(ca->cm_ca_type != cm_ca_external) {
++							cm_restart_entries_by_ca(context,
++										 ca->cm_nickname);
++						}
+ 					}
+ 					ca->cm_ca_state[state->cm_phase] = CM_CA_NEED_TO_ANALYZE;
+ 					break;

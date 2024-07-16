@@ -68,4 +68,23 @@
     <comment></comment>
     <requestid>1096991</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>2ecde0f7fb35efac3026cff1887552bc</srcmd5>
+    <version>2.2.1</version>
+    <time>1721065770</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.2.1:
+  * Make limit consecutive skips to default
+  * Add list of contributors to About page
+
+- Update to 2.2.0:
+  * Limit consecutive skips
+
+- Update to 2.1.9:
+  * Fix crash in smartpause
+
+- Update to 2.1.8:
+  * New version with python 3.12 support</comment>
+    <requestid>1187436</requestid>
+  </revision>
 </revisionlist>

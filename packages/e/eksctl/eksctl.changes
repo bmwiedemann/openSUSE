@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Jul 13 06:42:48 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.186.0:
+  * Add release notes for v0.186.0
+  * Allow limiting the number of nodegroups created in parallel
+  * Retry throttling errors, disable retry rate-limiting
+  * Refactor: move bare cluster validation to
+    NewCreateClusterLoader
+  * Prepare for next development iteration
+
+-------------------------------------------------------------------
 Wed Jul 10 19:16:03 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.185.0:

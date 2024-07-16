@@ -275,4 +275,12 @@
   - Added UnitRegistry () operator to parse</comment>
     <requestid>1143987</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>8cfea3b44efa2a774b7cab82200c4cf3</srcmd5>
+    <version>0.24.1</version>
+    <time>1721065763</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1187422</requestid>
+  </revision>
 </revisionlist>

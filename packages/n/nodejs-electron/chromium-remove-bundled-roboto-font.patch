@@ -20,7 +20,7 @@ This font is already available in opensuse and can be installed systemwide
 -  }
  
    public_deps = [
-     "cr_elements:build_grdp",
+     "cr_components/commerce:build_grdp",
 'roboto.css' -> 'roboto.css.new'
 --- a/ui/webui/resources/css/roboto.css	2022-06-15 15:58:23.846426661 +0200
 +++ b/ui/webui/resources/css/roboto.css	2022-06-21 15:53:08.931243442 +0200

@@ -63,4 +63,15 @@
   * Store ASTUnit in PrettyPrint instead of SourceManager</comment>
     <requestid>1186987</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>7e649e444a8c60fe4db2cb494c4867f7</srcmd5>
+    <version>0~20240714.17e3908</version>
+    <time>1721065766</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0~20240714.17e3908:
+  * Fix location comment of LateExternalized variables
+  * Implement first effective use in SymbolExternalizer
+  * FunctionDepsFinder: Factor out closure logic</comment>
+    <requestid>1187429</requestid>
+  </revision>
 </revisionlist>

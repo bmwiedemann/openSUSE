@@ -28,6 +28,7 @@ Source0:        https://pagure.io/certmonger/archive/%{version}/certmonger-%{ver
 Patch0001:      0001-Update-tests-to-be-compatible-with-OpenSSL-3.2.patch
 Patch0002:      certmonger-c99-01.patch
 Patch0003:      certmonger-c99-02.patch
+Patch0004:      cm_dont_restart_external.patch
 
 BuildRequires:  autoconf
 BuildRequires:  automake

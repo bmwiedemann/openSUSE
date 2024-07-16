@@ -17,7 +17,7 @@
 
 
 Name:           phraze
-Version:        0.3.10
+Version:        0.3.12
 Release:        0
 Summary:        Generate random passphrases
 License:        MPL-2.0

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jun 29 21:43:53 UTC 2024 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Update to version 4.7.0.0
+  See: https://github.com/EttusResearch/uhd/releases for all changes
+- Patches fix-boost1.85-one.patch and fix-boost1.85-two.patch
+  removed (applied upstream)
+
+-------------------------------------------------------------------
 Fri Apr 26 09:39:29 UTC 2024 - Ana Guerrero <ana.guerrero@suse.com>
 
 - Fix build with boost 1.85, add patches fix-boost1.85-one.patch

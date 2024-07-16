@@ -38,7 +38,6 @@ Source6:        filters
 Source7:        modem-peers
 Source8:        pppoe-peers
 Source9:        pppoe-rp-peers
-Source10:       pppoatm-peers
 Source11:       ppp-peers
 Source12:       pptp-peers
 # modem files
@@ -63,7 +62,6 @@ Patch8:         ppp-pidfiles.patch
 # Of cause any other compatible libc would work, like musl, but 2.24 required for SOL_NETLINK
 BuildRequires:  glibc-devel >= 2.24
 BuildRequires:  libpcap-devel
-BuildRequires:  linux-atm-devel
 BuildRequires:  openssl-devel
 BuildRequires:  pam-devel
 BuildRequires:  pkgconfig(libsystemd)
@@ -112,10 +110,6 @@ sed -i -e '1s/local\///' scripts/secure-card
 find scripts -type f | xargs chmod a-x
 find -type f -name '*.orig' | xargs rm -f
 
-# Have to patch this in the Makefile, because setting it on the make
-# command line only is not enough.
-#sed -i '/#HAVE_LIBATM/s/#//' pppd/plugins/pppoatm/Makefile.linux
-
 %build
 %configure \
 	--with-runtime-dir=%_rundir/ppp/ \
@@ -138,9 +132,6 @@ install -d 755 %{buildroot}%{_sysconfdir}/ppp/peers
 install -m 644 %{SOURCE7} %{buildroot}%{_sysconfdir}/ppp/peers/modem
 install -m 644 %{SOURCE8} %{buildroot}%{_sysconfdir}/ppp/peers/pppoe
 install -m 644 %{SOURCE9} %{buildroot}%{_sysconfdir}/ppp/peers/pppoe-rp
-%ifnarch mips s390 s390x
-install -m 644 %{SOURCE10} %{buildroot}%{_sysconfdir}/ppp/peers/pppoatm
-%endif
 install -m 644 %{SOURCE11} %{buildroot}%{_sysconfdir}/ppp/peers/ppp
 install -m 644 %{SOURCE12} %{buildroot}%{_sysconfdir}/ppp/peers/pptp
 %if 0%{?suse_version} > 1500

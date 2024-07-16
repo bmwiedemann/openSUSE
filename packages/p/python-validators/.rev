@@ -279,4 +279,15 @@ Features:
     gh#python-validators/validators#387</comment>
     <requestid>1186984</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>ad0a767c7bb3bda9c286a3b939c174f9</srcmd5>
+    <version>0.33.0</version>
+    <time>1721065581</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.33.0
+Features:
+  * add validator for bsc addresses
+    gh#python-validators/validators#389</comment>
+    <requestid>1187432</requestid>
+  </revision>
 </revisionlist>

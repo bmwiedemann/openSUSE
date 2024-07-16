@@ -359,6 +359,7 @@ everything needed to access data.
 %autosetup -p1 -n %{_name}-%{version}
 
 %build
+%global optflags %{optflags} -fpermissive
 export LANG=C.UTF-8
 # Patch1 introdcues a --ARCH-- field in getsp, which needs to be replace prior to compilation
 getspARCH=%{_target_cpu}
@@ -409,14 +410,10 @@ chmod 755 %{buildroot}%{_bindir}/*
 %find_lang %{_name}-6.0 %{?no_lang_C}
 %fdupes %{buildroot}%{_prefix}
 
-%post -n libgda-6_0-6_0_0 -p /sbin/ldconfig
-%postun -n libgda-6_0-6_0_0 -p /sbin/ldconfig
-%post -n libgda-ui-6_0-6_0_0 -p /sbin/ldconfig
-%postun -n libgda-ui-6_0-6_0_0 -p /sbin/ldconfig
-%post -n libgda-report-6_0-6_0_0 -p /sbin/ldconfig
-%postun -n libgda-report-6_0-6_0_0 -p /sbin/ldconfig
-%post -n libgda-xslt-6_0-6_0_0 -p /sbin/ldconfig
-%postun -n libgda-xslt-6_0-6_0_0 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libgda-6_0-6_0_0
+%ldconfig_scriptlets -n libgda-ui-6_0-6_0_0
+%ldconfig_scriptlets -n libgda-report-6_0-6_0_0
+%ldconfig_scriptlets -n libgda-xslt-6_0-6_0_0
 
 %files -n %{_name}-6_0-6_0_0-lang -f %{_name}-6.0.lang
 

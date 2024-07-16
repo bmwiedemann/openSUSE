@@ -61,6 +61,8 @@ Requires:       kirigami-addons >= 0.7.0
 Requires:       kirigami2 >= 5.67.0
 Requires:       kquickimageeditor-imports
 Requires:       libqt5-qtquickcontrols2
+Requires:       libQt5Location5
+Requires:       libQt5PositioningQuick5
 
 %description
 Kaidan is a simple Jabber/XMPP client providing a user-interface using

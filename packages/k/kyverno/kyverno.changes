@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Fri Jul 12 19:30:28 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.12.5:
+  * release v1.12.5 (#10653)
+  * release v1.12.5-rc.2 (#10651)
+  * fix: truncate event messages to 1024 chars (#10636) (#10643)
+  * fix: rename level 1 logs to INFO from DEBUG (#10617) (#10642)
+  * fix: compute operations for mutatingwebhookconf (#10639)
+    (#10641)
+  * fix: CEL policies aren't applied to deleted resources (#10624)
+  * release v1.12.5-rc.1 (#10632)
+  * refactor: add a function to check if VAPs are registered in the
+    API server (#10625)
+  * fix: remove unused parameters (#10626)
+  * feat: add reports circuit breaker (cherry-pick #10499 #10596
+    #10610 #10613) (#10628)
+  * fix(json-ctx): overwrite element each iteration (#10615)
+    (#10616)
+  * cherry-pick #10382 (#10593)
+  * feat(events): normalize gctx events reason to be inline with
+    other po… (#10395) (#10612)
+  * fix: get ns labels in the cluster mode when using the CLI
+    (cherry-pick #10348) (#10549)
+  * fix: cleanup policy name is appended to logs (#10583) (#10599)
+  * fix: failed to delete resource (#10582) (#10598)
+  * feat: fix notary tests (#10579) (#10584)
+  * fix: correctly validate patterns for old and new objects
+    (#10310) (#10537)
+  * fix: use generate name for admission reports (#10491) (#10522)
+
+-------------------------------------------------------------------
 Mon Jun 17 19:17:58 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.12.4:

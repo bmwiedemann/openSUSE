@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jul 11 18:42:44 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add -fpermissive to optflags to work around C99 violations which
+  are errors by default with GCC 14.
+- Use ldconfig_scriptlets macro for post(un) handling.
+
+-------------------------------------------------------------------
 Tue Feb 13 10:19:47 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
 
 - Remove the hardcoded libopenssl-1_1-devel to libopenssl-devel.

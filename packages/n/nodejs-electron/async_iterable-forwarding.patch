@@ -1,0 +1,98 @@
+From e4d212302ed2e71c224ae67bdaf2a2816be34f21 Mon Sep 17 00:00:00 2001
+From: Mattias Buelens <mattias.buelens@gmail.com>
+Date: Tue, 26 Mar 2024 19:25:54 +0000
+Subject: [PATCH] streams: Fix gcc compatibility for
+ ReadableStream::valuesForBinding()
+
+The perfect forwarding technique we used turned out to be incompatible
+with gcc. Revert to something simpler.
+
+Bug: 40612900
+Change-Id: I45f3588354fe96159c7f84d969ac222a935b1c1a
+Reviewed-on: https://chromium-review.googlesource.com/c/chromium/src/+/5372645
+Reviewed-by: Adam Rice <ricea@chromium.org>
+Reviewed-by: Yuki Shiino <yukishiino@chromium.org>
+Commit-Queue: Adam Rice <ricea@chromium.org>
+Cr-Commit-Position: refs/heads/main@{#1278534}
+---
+ .../bindings/core/v8/async_iterable.h         | 32 +++++++++----------
+ 1 file changed, 16 insertions(+), 16 deletions(-)
+
+diff --git a/third_party/blink/renderer/bindings/core/v8/async_iterable.h b/third_party/blink/renderer/bindings/core/v8/async_iterable.h
+index 115ee5303414c..8a0d085b8174e 100644
+--- a/third_party/blink/renderer/bindings/core/v8/async_iterable.h
++++ b/third_party/blink/renderer/bindings/core/v8/async_iterable.h
+@@ -200,42 +200,42 @@ class PairAsyncIterable {
+   PairAsyncIterable(const PairAsyncIterable&) = delete;
+   PairAsyncIterable& operator=(const PairAsyncIterable&) = delete;
+ 
++  template <typename... ArgsAndExceptionState>
+   AsyncIteratorType* keysForBinding(
+       ScriptState* script_state,
+-      std::convertible_to<InitArgs> auto&&... args,
+-      ExceptionState& exception_state) {
++      ArgsAndExceptionState&&... args_and_exception_state) {
+     const auto kind = IterationSource::Kind::kKey;
+     IterationSource* source = CreateIterationSource(
+-        script_state, kind, std::forward<decltype(args)>(args)...,
+-        exception_state);
++        script_state, kind,
++        std::forward<ArgsAndExceptionState>(args_and_exception_state)...);
+     if (!source) {
+       return nullptr;
+     }
+     return MakeGarbageCollected<AsyncIteratorType>(source);
+   }
+ 
++  template <typename... ArgsAndExceptionState>
+   AsyncIteratorType* valuesForBinding(
+       ScriptState* script_state,
+-      std::convertible_to<InitArgs> auto&&... args,
+-      ExceptionState& exception_state) {
++      ArgsAndExceptionState&&... args_and_exception_state) {
+     const auto kind = IterationSource::Kind::kValue;
+     IterationSource* source = CreateIterationSource(
+-        script_state, kind, std::forward<decltype(args)>(args)...,
+-        exception_state);
++        script_state, kind,
++        std::forward<ArgsAndExceptionState>(args_and_exception_state)...);
+     if (!source) {
+       return nullptr;
+     }
+     return MakeGarbageCollected<AsyncIteratorType>(source);
+   }
+ 
++  template <typename... ArgsAndExceptionState>
+   AsyncIteratorType* entriesForBinding(
+       ScriptState* script_state,
+-      std::convertible_to<InitArgs> auto&&... args,
+-      ExceptionState& exception_state) {
++      ArgsAndExceptionState&&... args_and_exception_state) {
+     const auto kind = IterationSource::Kind::kKeyValue;
+     IterationSource* source = CreateIterationSource(
+-        script_state, kind, std::forward<decltype(args)>(args)...,
+-        exception_state);
++        script_state, kind,
++        std::forward<ArgsAndExceptionState>(args_and_exception_state)...);
+     if (!source) {
+       return nullptr;
+     }
+@@ -274,14 +274,14 @@ class ValueAsyncIterable {
+   ValueAsyncIterable(const ValueAsyncIterable&) = delete;
+   ValueAsyncIterable& operator=(const ValueAsyncIterable&) = delete;
+ 
++  template <typename... ArgsAndExceptionState>
+   AsyncIteratorType* valuesForBinding(
+       ScriptState* script_state,
+-      std::convertible_to<InitArgs> auto&&... args,
+-      ExceptionState& exception_state) {
++      ArgsAndExceptionState&&... args_and_exception_state) {
+     const auto kind = IterationSource::Kind::kValue;
+     IterationSource* source = CreateIterationSource(
+-        script_state, kind, std::forward<decltype(args)>(args)...,
+-        exception_state);
++        script_state, kind,
++        std::forward<ArgsAndExceptionState>(args_and_exception_state)...);
+     if (!source) {
+       return nullptr;
+     }

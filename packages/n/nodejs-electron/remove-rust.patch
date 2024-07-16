@@ -10,43 +10,93 @@ Remove this dead code which brings a dependency on rustc
      "//components/query_parser:unit_tests",
      "//components/reading_list/core:unit_tests",
      "//components/reporting/client:unit_tests",
---- src/chrome/test/BUILD.gn.orig	2024-03-27 16:37:20.829583999 +0100
-+++ src/chrome/test/BUILD.gn	2024-03-28 23:15:36.696977127 +0100
-@@ -1765,8 +1765,6 @@ if (!is_android && !is_fuchsia) {
-       "//chrome/common/privacy_budget:test_support",
-       "//chrome/renderer",
-       "//chrome/renderer/companion/visual_query:browser_tests",
--      "//chrome/services/qrcode_generator/public/cpp",
--      "//chrome/services/qrcode_generator/public/mojom",
-       "//chrome/services/removable_storage_writer:lib",
-       "//chrome/test/data/webui:resources_grit",
-       "//chrome/test/data/webui/mojo:mojo_bindings",
-@@ -6818,7 +6816,6 @@ if (!is_fuchsia) {
-       "//chrome/common/themes:unit_tests",
-       "//chrome/renderer/companion/visual_query:unit_tests",
-       "//chrome/services/file_util:unit_tests",
--      "//chrome/services/qrcode_generator/public/cpp",
-       "//components/account_id",
-       "//components/assist_ranker/proto",
-       "//components/autofill/content/browser:test_support",
---- src/chrome/services/qrcode_generator/BUILD.gn.orig	2024-03-27 16:30:07.952978653 +0100
-+++ src/chrome/services/qrcode_generator/BUILD.gn	2024-03-28 23:20:47.829864401 +0100
-@@ -15,8 +15,6 @@ source_set("qrcode_generator") {
-   deps = [
-     "//base",
-     "//chrome:strings",
--    "//components/qr_code_generator",
--    "//components/qr_code_generator:qr_code_generator_features",
-     "//components/vector_icons",
-     "//mojo/public/cpp/bindings",
-     "//net",
---- src/chrome/services/qrcode_generator/public/cpp/BUILD.gn.orig	2024-03-27 16:30:07.952978653 +0100
-+++ src/chrome/services/qrcode_generator/public/cpp/BUILD.gn	2024-03-28 23:22:28.019734555 +0100
-@@ -15,7 +15,6 @@ source_set("cpp") {
-     "//chrome:strings",
-     "//chrome/services/qrcode_generator",
-     "//chrome/services/qrcode_generator/public/mojom",
--    "//components/qr_code_generator:qr_code_generator_features",
-     "//content/public/browser",
-     "//skia",
-   ]
+--- src/chrome/browser/BUILD.gn.orig
++++ src/chrome/browser/BUILD.gn
+@@ -1972,7 +1972,6 @@ static_library("browser") {
+     "//chrome/browser/profiling_host",
+ 
+     # TODO(crbug.com/1335199): break this dep when favicon is in its own target
+-    "//chrome/browser/share",
+     "//chrome/browser/ui",
+     "//chrome/browser/storage_access_api",
+     "//chrome/browser/top_level_storage_access_api:permissions",
+@@ -2106,7 +2105,6 @@ static_library("browser") {
+     "//chrome/browser/safe_browsing:advanced_protection",
+     "//chrome/browser/safe_browsing:metrics_collector",
+     "//chrome/browser/safe_browsing:verdict_cache_manager_factory",
+-    "//chrome/browser/share",
+     "//chrome/browser/sharing:buildflags",
+     "//chrome/browser/sharing/proto",
+     "//chrome/browser/signin:identity_manager_provider",
+@@ -4598,7 +4596,6 @@ static_library("browser") {
+       "//chrome/browser/policy:path_parser",
+       "//chrome/browser/profile_resetter:profile_reset_report_proto",
+       "//chrome/browser/resources:component_extension_resources",
+-      "//chrome/browser/share/proto:proto",
+       "//chrome/browser/smart_card",
+       "//chrome/browser/support_tool:support_tool_proto",
+       "//chrome/browser/ui/actions:actions_headers",
+@@ -8407,7 +8404,6 @@ static_library("test_support") {
+     "//build:chromeos_buildflags",
+     "//chrome/app/theme:theme_resources",
+     "//chrome/browser/policy/messaging_layer/proto:crd_event_proto",
+-    "//chrome/browser/share:share",
+     "//chrome/common",
+     "//chrome/common/notifications",
+     "//chrome/common/safe_browsing:proto",
+--- src/chrome/browser/ui/BUILD.gn.orig
++++ src/chrome/browser/ui/BUILD.gn
+@@ -451,7 +451,6 @@ static_library("ui") {
+     "//chrome/browser/resources:dev_ui_resources",
+     "//chrome/browser/resources:resources",
+     "//chrome/browser/safe_browsing",
+-    "//chrome/browser/share",
+     "//chrome/browser/storage_access_api",
+     "//chrome/browser/ui/side_panel:side_panel_enums",
+     "//chrome/browser/ui/webui/location_internals:mojo_bindings",
+@@ -591,7 +590,6 @@ static_library("ui") {
+     "//components/privacy_sandbox:tracking_protection_settings",
+     "//components/profile_metrics",
+     "//components/proxy_config",
+-    "//components/qr_code_generator:bitmap_generator",
+     "//components/query_parser",
+     "//components/reading_list/core",
+     "//components/reading_list/features:flags",
+--- src/chrome/test/BUILD.gn.orig
++++ src/chrome/test/BUILD.gn
+@@ -1923,7 +1923,6 @@ if (!is_android) {
+       "//components/privacy_sandbox/privacy_sandbox_attestations:test_support",
+       "//components/privacy_sandbox/privacy_sandbox_attestations/proto:proto",
+       "//components/proxy_config",
+-      "//components/qr_code_generator:bitmap_generator",
+       "//components/reading_list/core",
+       "//components/reading_list/features:flags",
+       "//components/resources",
+@@ -6774,7 +6773,6 @@ test("unit_tests") {
+     "//chrome/browser/safe_browsing:metrics_collector",
+     "//chrome/browser/safe_browsing:verdict_cache_manager_factory",
+     "//chrome/browser/segmentation_platform:test_utils",
+-    "//chrome/browser/share",
+     "//chrome/browser/sharing/proto",
+     "//chrome/browser/storage_access_api",
+     "//chrome/browser/sync_file_system/drive_backend:sync_file_system_drive_proto",
+@@ -6927,7 +6925,6 @@ test("unit_tests") {
+     "//components/privacy_sandbox/privacy_sandbox_attestations:test_support",
+     "//components/privacy_sandbox/privacy_sandbox_attestations/proto:proto",
+     "//components/proxy_config",
+-    "//components/qr_code_generator:bitmap_generator",
+     "//components/query_parser",
+     "//components/query_tiles:unit_tests",
+     "//components/reading_list/core",
+@@ -8360,11 +8357,6 @@ test("unit_tests") {
+ 
+     data += [ "//ash/components/arc/test/data/icons/" ]
+ 
+-    data_deps += [
+-      # enclave_manager_unittest.cc runs this binary as part of its testing
+-      # process.
+-      "//third_party/cloud_authenticator/test/local_service:cloud_authenticator_test_service",
+-    ]
+ 
+     if (include_js2gtest_tests && is_chromeos_ash) {
+       data += js2gtest_js_libraries

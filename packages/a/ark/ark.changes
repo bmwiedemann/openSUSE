@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jul 13 12:50:18 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix tmp folder cleanup (kde#487229):
+  * 0001-cliinterface-adapt-to-behavior-change-in-QTemporaryD.patch
+
+-------------------------------------------------------------------
 Tue Jul  2 13:53:35 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.05.2

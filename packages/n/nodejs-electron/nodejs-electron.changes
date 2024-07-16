@@ -1,4 +1,84 @@
 -------------------------------------------------------------------
+Fri Jul 12 10:28:06 UTC 2024 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- New upstream release 30.2.0
+  * Node 20.15.0
+  * Enabled the Windows Control Overlay API on Linux.
+  * Expose systemPreferences to utilityProcess.
+  * Fixed a focus issue when calling BrowserWindow.setTopBrowserView.
+  * Fixed an issue where fetch-dependent interfaces could be missing in Web Workers with nodeIntegrationInWorker enabled.
+  * Fixed an issue where control could fail to return properly after saving a dialog using showOpenDialogSync on Linux.
+  * Fixes an issue where the user-specified default path did not work in some circumstances when using Linux dialogs.
+  * Fixes potentially incorrect exit code in UtilityProcess.
+  * (Leap 15.5) Fix heap buffer overflow in libaom (CVE-2024-5493 bsc#1225690)
+  * Security fixes for V8: CVE-2024-6100, CVE-2024-6101 (bsc#1226504)
+  * Fix use after free in Swiftshader (CVE-2024-6291 bsc#1226933)
+
+-------------------------------------------------------------------
+Tue Jul  9 10:04:38 UTC 2024 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- Update to 30.1.2
+  * ABI break: NODE_MODULE_VERSION is now 123
+  * Chromium 124.0.6367.243
+  * Node 20.14.0
+  * V8 12.4
+  * Added WebContentsView and BaseWindow, replacing the now-deprecated BrowserView APIs.
+  * cross-origin iframes now use Permission Policy to access features
+  * Removed: The --disable-color-correct-rendering switch
+  * The inputFieldType property in the context-menu params has been removed
+  * Removed: process.getIOCounters()
+  * see https://www.electronjs.org/blog/electron-30-0 and https://github.com/electron/electron/releases/tag/v30.0.0 for more
+- Fedora: use bundled simdutf as the system version is too old
+- Drop no longer needed patches
+  * chromium-122-avoid-SFINAE-TypeConverter.patch
+  * chromium-122-BookmarkNode-missing-operator.patch
+  * chromium-98-EnumTable-crash.patch
+  * chromium-gcc11.patch
+  * CVE-2024-30260-undici-clear-proxy-authorization.patch
+  * CVE-2024-30261-undici-fetch-integrity.patch
+  * ElectronDesktopWindowTreeHostLinux-OnWindowTiledStateChanged-crash.patch
+  * grid_sizing_tree-Wchanges-meaning.patch
+  * hit_test_request-missing-optional.patch
+  * InternalAllocator-too-many-initializers.patch
+  * material_color_utilities-tones-missing-round.patch
+  * nested-nested-nested-nested-nested-nested-regex-patterns.patch
+  * perfetto-numeric_storage-double_t.patch
+  * plus_address_types-missing-optional.patch
+  * race_network_request_write_buffer_manager-missing-optional.patch
+  * resolution_monitor-missing-bitset.patch
+  * script_promise_resolver-explicit-specialization.patch
+  * search_engine_choice_service-missing-optional.patch
+  * text_break_iterator-icu74-breakAllLineBreakClassTable-should-be-consistent.patch
+  * v8-instance-type-inl-constexpr-used-before-its-definition.patch
+- Drop no longer needed -Wno-error=narrowing from CXXFLAGS
+- Add patches to fix build
+  * chromium-124-shims.patch
+  * enable_stack_trace_line_numbers-symbol_level.patch
+  * angle-FramebufferVk-powf.patch
+  * licenses.py-FileNotFoundError.patch
+  * span_reader-missing-optional.patch
+  * bitset-missing-uint8_t-memcpy.patch
+  * temporal_scalability_id_extractor-missing-bitset.patch
+  * gpu_adapter_info-missing-optional.patch
+  * first_party_sets_handler_database_helper-missing-optional.patch
+  * async_iterable-forwarding.patch
+  * preview_cancel_reason-missing-string.patch
+  * script_streamer-atomic-include.patch
+- Add -Wno-packed-not-aligned -Wno-address to CXXFLAGS to suppress build logspam
+- Add libaom_av1_encoder-aom37-AV1E_SET_MAX_CONSEC_FRAME_DROP_CBR.patch to build with old libaom
+- Add backported DesktopNativeWidgetAura-HandleActivationChanged-crash.patch
+- Revert upstream changes which introduce a use-after-free bug causing crashes (bsc#1224178 deb#1067886)
+  * bad-font-gc0000.patch
+  * bad-font-gc000.patch
+  * bad-font-gc00.patch
+  * bad-font-gc0.patch
+  * bad-font-gc11.patch
+  * bad-font-gc1.patch
+  * bad-font-gc2.patch
+  * bad-font-gc3.patch
+
+
+-------------------------------------------------------------------
 Thu Jul  4 04:27:14 UTC 2024 - Bruno Pitrus <brunopitrus@hotmail.com>
 
 - Fix use after free in content::RenderFrameHostImpl::RemoveDocumentService (bsc#1227307)

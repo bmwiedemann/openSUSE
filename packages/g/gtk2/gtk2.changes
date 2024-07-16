@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jul 12 18:40:00 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add CVE-2024-6655.patch: CVE-2024-6655 Stop looking for modules
+  in cwd.
+
+-------------------------------------------------------------------
 Mon Apr 29 07:09:25 UTC 2024 - pgajdos@suse.com
 
 - remove dependency on /usr/bin/python3 using

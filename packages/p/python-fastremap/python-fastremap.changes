@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Jul  8 01:11:21 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.14.2:
+  * build: temporarily exclude macos until ecosystem fixes itself
+  * chore: ignore fastremap.cpp
+  * chore: ignore fastremap.cpp
+  * build: update for py312
+  * build: update build
+- Switch to pyproject macros.
+- Cythonize pyx file before building.
+- No more greedy globs in %files.
+
+-------------------------------------------------------------------
 Tue Dec  5 17:49:11 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.14.0:

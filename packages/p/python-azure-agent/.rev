@@ -367,4 +367,12 @@
     <comment></comment>
     <requestid>1186652</requestid>
   </revision>
+  <revision rev="36" vrev="9">
+    <srcmd5>1d9bca917a95f673a7a42b1bef33de07</srcmd5>
+    <version>2.9.1.1</version>
+    <time>1721065594</time>
+    <user>anag+factory</user>
+    <comment>fix typo in patch</comment>
+    <requestid>1187232</requestid>
+  </revision>
 </revisionlist>

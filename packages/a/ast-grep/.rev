@@ -397,4 +397,28 @@
   * doc: add cli help text for debug format 1754382</comment>
     <requestid>1183519</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>2e6e86c0c6a53dd6fd2a63f3ec9b4d86</srcmd5>
+    <version>0.25.1+0</version>
+    <time>1721065767</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.25.1:
+  * fix: make config file work outside of workspace root #1326
+  * fix: fix napi musl bde7f34
+  * fix: debug napi 2d87fc5
+
+- Update to 0.25.0:
+  * Fix Python 3.10 macOS ast-grep-py build #1315
+  * feat: support multiple doc in scan #1310
+  * fix: fix testing #1305
+  * feat: support searching injected code in specified lang #1307
+  * feat: improve HTML language extraction for ts/scss #1301
+  * fix: use relative path in lsp #1272
+  * fix: use match info in lsp message #1271
+  * feat: support arm64 musl #1227
+  * fix(deps): update dependency @babel/core to v7.24.8 624aa70
+  * feat: support multiple regions in run 07ef11f
+  * refactor: move Html out 4a0c177</comment>
+    <requestid>1187426</requestid>
+  </revision>
 </revisionlist>

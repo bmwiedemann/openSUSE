@@ -2321,4 +2321,40 @@
 - fencer: Fix memory leak in handle_local_reply_and_notify()</comment>
     <requestid>1179895</requestid>
   </revision>
+  <revision rev="158" vrev="1">
+    <srcmd5>ea091ec6f6566ff814689bb80caa9578</srcmd5>
+    <version>2.1.7+20240711.239cba384</version>
+    <time>1721065543</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.1.7+20240711.239cba384:
+- various: Don't set cluster-layer node ID as XML ID
+- tools: crm_node -i must initialize nodeid before passing pointer (gh#ClusterLabs/pacemaker#3574)
+
+- Update to version 2.1.7+20240709.f04c3b02c:
+- tools: CIB clients retry signon upon an EAGAIN error (gh#ClusterLabs/pacemaker#3567, bsc#1224183)
+- libcib: new function cib__signon_attempts() (gh#ClusterLabs/pacemaker#3567, bsc#1224183)
+
+- Update to version 2.1.7+20240708.347e83d87:
+- crm_verify: Improve checking of fencing level IDs
+
+- Update to version 2.1.7+20240703.f73f033d5 (Pacemaker-2.1.8-rc3):
+- sysconfig: deprecate PCMK_dh_min_bits environment variable
+
+- Update to version 2.1.7+20240701.8af8b59e2:
+- libcrmcluster: use local hostname for node name if not configured in corosync (gh#ClusterLabs/pacemaker#3551)
+
+- Update to version 2.1.7+20240701.b4e61209c:
+- tools: Don't double-free XML in crm_verify after schema update
+
+- Update to version 2.1.7+20240701.a1003bbf1:
+- cts-cli: update expected output for crm_verify to distinguish configuration warnings and errors (gh#ClusterLabs/pacemaker#3543)
+- tools: crm_verify distinguishes configuration warnings and errors (gh#ClusterLabs/pacemaker#3543)
+
+- Update to version 2.1.7+20240624.5d44a760b:
+- libcrmcommon: don't try to add to full string in pcmk__time_format_hr()
+- libcrmcommon: handle formatting errors in pcmk__time_format_hr()
+- scheduler: consider group locations when member is explicit colocation dependent
+- tools: Don't skip formatting if running crm_simulate interactively. (forwarded request 1187166 from yan_gao)</comment>
+    <requestid>1187168</requestid>
+  </revision>
 </revisionlist>

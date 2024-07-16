@@ -2,7 +2,7 @@ Remove this code which is disabled (media/base/media_switches.cc) and depends on
 
 --- src/media/base/libaom_thread_wrapper.cc.old	2024-04-02 09:53:17.097624400 +0000
 +++ src/media/base/libaom_thread_wrapper.cc	2024-04-08 17:15:53.578155000 +0000
-@@ -5,16 +5,8 @@
+@@ -5,17 +5,8 @@
  #include "base/logging.h"
  #include "media/base/codec_worker_impl.h"
  #include "media/base/libvpx_thread_wrapper.h"
@@ -13,15 +13,16 @@ Remove this code which is disabled (media/base/media_switches.cc) and depends on
 -void InitLibAomThreadWrapper() {
 -  const AVxWorkerInterface interface =
 -      CodecWorkerImpl<AVxWorkerInterface, AVxWorkerImpl, AVxWorker,
--                      AVxWorkerStatus, NOT_OK, OK,
--                      WORK>::GetCodecWorkerInterface();
+-                      AVxWorkerStatus, AVX_WORKER_STATUS_NOT_OK,
+-                      AVX_WORKER_STATUS_OK,
+-                      AVX_WORKER_STATUS_WORKING>::GetCodecWorkerInterface();
 -  CHECK(aom_set_worker_interface(&interface));
 -}
  
  }  // namespace media
 --- src/media/base/libvpx_thread_wrapper.cc.old	2024-04-02 09:53:17.097624400 +0000
 +++ src/media/base/libvpx_thread_wrapper.cc	2024-04-08 17:15:46.565471400 +0000
-@@ -5,17 +5,8 @@
+@@ -5,18 +5,8 @@
  #include "media/base/libvpx_thread_wrapper.h"
  
  #include "media/base/codec_worker_impl.h"
@@ -32,8 +33,9 @@ Remove this code which is disabled (media/base/media_switches.cc) and depends on
 -void InitLibVpxThreadWrapper() {
 -  const VPxWorkerInterface interface =
 -      CodecWorkerImpl<VPxWorkerInterface, VPxWorkerImpl, VPxWorker,
--                      VPxWorkerStatus, NOT_OK, OK,
--                      WORK>::GetCodecWorkerInterface();
+-                      VPxWorkerStatus, VPX_WORKER_STATUS_NOT_OK,
+-                      VPX_WORKER_STATUS_OK,
+-                      VPX_WORKER_STATUS_WORKING>::GetCodecWorkerInterface();
 -
 -  CHECK(vpx_set_worker_interface(&interface));
 -}

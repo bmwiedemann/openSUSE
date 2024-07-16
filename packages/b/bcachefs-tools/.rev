@@ -111,4 +111,12 @@
     key from some more involved means (forwarded request 1181823 from smolsheep)</comment>
     <requestid>1181897</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>7ed86bebaed4047f97bedd3538e9b220</srcmd5>
+    <version>1.9.3</version>
+    <time>1721065613</time>
+    <user>anag+factory</user>
+    <comment>- Update to release v1.9.3</comment>
+    <requestid>1187254</requestid>
+  </revision>
 </revisionlist>

@@ -31,6 +31,8 @@ Patch8:         paa_12_sp5_rdma_no_ext_driver.patch
 # PATCH-FIX-UPSTREAM gh#Azure/WALinuxAgent#2741
 Patch9:         remove-mock.patch
 Patch10:        agent-micro-is-sles.patch
+# PATCH-FIX-UPSTREAM gh#Azure/WALinuxAgent#3158
+Patch11:        agent-btrfs-use-f.patch
 BuildRequires:  dos2unix
 
 BuildRequires:  distribution-release
@@ -150,6 +152,7 @@ setup
 %patch -P 8
 %patch -P 9 -p1
 %patch -P 10
+%patch -P 11
 
 %build
 %if 0%{?suse_version} > 1315

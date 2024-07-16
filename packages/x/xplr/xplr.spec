@@ -17,7 +17,7 @@
 
 
 Name:           xplr
-Version:        0.21.8
+Version:        0.21.9
 Release:        0
 Summary:        TUI file explorer
 License:        MIT
@@ -42,6 +42,8 @@ scriptable, keyboard-controlled, real-time visual interface.
 %prep
 %autosetup -a1
 sed -i 's/-- version = "0.0.0"/version = "%{version}"/' src/init.lua
+# This conflicts with vendored cargo
+rm .cargo/config
 
 %build
 %{cargo_build} --all-features

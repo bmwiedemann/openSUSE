@@ -17,7 +17,7 @@
 
 
 Name:           you-get
-Version:        0.4.1710
+Version:        0.4.1718
 Release:        0
 Summary:        Dumb downloader that scrapes the web
 License:        MIT
@@ -41,7 +41,7 @@ handy way to do it.
 %package        bash-completion
 Summary:        Bash completion for %{name}
 Requires:       bash-completion
-Supplements:    packageand(%{name}:bash)
+Supplements:    (%{name} and bash)
 BuildArch:      noarch
 
 %description    bash-completion
@@ -50,7 +50,7 @@ Bash command line completion support for %{name}.
 %package        fish-completion
 Summary:        Fish completion for %{name}
 Requires:       fish
-Supplements:    packageand(%{name}:fish)
+Supplements:    (%{name} and fish)
 BuildArch:      noarch
 
 %description    fish-completion
@@ -59,7 +59,7 @@ Fish command line completion support for %{name}.
 %package        zsh-completion
 Summary:        Zsh Completion for %{name}
 Requires:       zsh
-Supplements:    packageand(%{name}:zsh)
+Supplements:    (%{name} and zsh)
 BuildArch:      noarch
 
 %description zsh-completion
@@ -84,6 +84,8 @@ install -m0755 you-get %{buildroot}%{_bindir}
 install -Dm644 contrib/completion/you-get-completion.bash %{buildroot}%{_datadir}/bash-completion/completions/you-get
 install -Dm644 contrib/completion/you-get.fish %{buildroot}%{_datadir}/fish/completions/you-get.fish
 install -Dm644 contrib/completion/_you-get %{buildroot}%{_datadir}/zsh/site-functions/_you-get
+
+%check
 
 %files
 %doc CHANGELOG.rst README.rst

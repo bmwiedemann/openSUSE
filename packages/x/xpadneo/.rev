@@ -7,4 +7,13 @@
     <comment>xpadneo is the driver for Xbox Series controllers</comment>
     <requestid>1158274</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f3e4c1b75cadd4a2295963aea3eaa8e3</srcmd5>
+    <version>0.9.6</version>
+    <time>1721065737</time>
+    <user>anag+factory</user>
+    <comment>- Added modprobe alias and udev rules
+The reason why overriding alias is needed can be found here from upstream author https://github.com/atar-axis/xpadneo/issues/467</comment>
+    <requestid>1187374</requestid>
+  </revision>
 </revisionlist>

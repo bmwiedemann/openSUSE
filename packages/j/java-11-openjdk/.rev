@@ -575,4 +575,12 @@
     <comment>reproducible jlink for reproducible jmods</comment>
     <requestid>1179186</requestid>
   </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>64734e8defccae807e7945b1b56ecd38</srcmd5>
+    <version>11.0.24.0~7</version>
+    <time>1721065584</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1187483</requestid>
+  </revision>
 </revisionlist>

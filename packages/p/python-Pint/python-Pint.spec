@@ -18,12 +18,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-Pint
-Version:        0.23
+Version:        0.24.1
 Release:        0
 Summary:        Physical quantities module
 License:        BSD-3-Clause
 URL:            https://github.com/hgrecco/pint
-Source:         https://files.pythonhosted.org/packages/source/P/Pint/Pint-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/p/pint/pint-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
@@ -31,15 +31,24 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-packaging
+Requires:       python-appdirs
+Requires:       python-flexcache
+Requires:       python-flexparser
+Requires:       python-typing_extensions
 Requires:       python-uncertainties >= 3.0
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 Recommends:     python-numpy >= 1.21
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module numpy >= 1.21}
+BuildRequires:  %{python_module appdirs}
+BuildRequires:  %{python_module flexcache}
+BuildRequires:  %{python_module flexparser}
 BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pytest >= 4.0}
 BuildRequires:  %{python_module pytest-subtests}
+BuildRequires:  %{python_module typing_extensions}
 BuildRequires:  %{python_module uncertainties >= 3.0}
 # /SECTION
 %python_subpackages
@@ -55,7 +64,7 @@ and constants. Due to it's modular design, you to extend (or even rewrite!)
 the complete list without changing the source code.
 
 %prep
-%setup -q -n Pint-%{version}
+%setup -q -n pint-%{version}
 
 %build
 %pyproject_wheel
@@ -67,8 +76,7 @@ the complete list without changing the source code.
 
 %check
 rm -rv pint/testsuite/benchmarks
-# fails with numpy 1.25 https://github.com/hgrecco/pint/issues/1825
-%pytest -k "not test_equal_zero_nan_NP"
+%pytest
 
 %post
 %python_install_alternative pint-convert
@@ -80,7 +88,7 @@ rm -rv pint/testsuite/benchmarks
 %license LICENSE
 %doc AUTHORS CHANGES README.rst
 %python_alternative %{_bindir}/pint-convert
-%{python_sitelib}/Pint-0*.dist-info
-%{python_sitelib}/pint/
+%{python_sitelib}/pint
+%{python_sitelib}/Pint-%{version}.dist-info
 
 %changelog

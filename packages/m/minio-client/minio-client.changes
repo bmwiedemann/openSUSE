@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jul 13 10:08:01 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 20240711T180128Z:
+  * Fix non-recursive compares against alias+key on Windows (#4983)
+  * Support metrics-v3 api in `admin prometheus generate` (#4985)
+  * Support metrics-v3 api in `admin prometheus metrics` (#4982)
+
+-------------------------------------------------------------------
 Thu Jul 11 05:31:59 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 20240708T205924Z:

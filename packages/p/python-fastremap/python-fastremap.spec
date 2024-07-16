@@ -1,7 +1,7 @@
 #
 # spec file for package python-fastremap
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,21 +16,21 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define         skip_python2 1
-%define         skip_python36 1
 Name:           python-fastremap
-Version:        1.14.0
+Version:        1.14.2
 Release:        0
 Summary:        Module to Remap, mask, renumber, and in-place transpose numpy arrays
 License:        LGPL-3.0-only
 URL:            https://github.com/seung-lab/fastremap/
 Source:         https://files.pythonhosted.org/packages/source/f/fastremap/fastremap-%{version}.tar.gz
+BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy-devel >= 1.16.0}
 BuildRequires:  %{python_module pbr}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  python-rpm-macros
@@ -45,10 +45,11 @@ A module to remap, mask, renumber, and in-place transpose numpy arrays.
 
 %build
 export CFLAGS="%{optflags}"
-%python_build
+cython -3 --cplus fastremap.pyx
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
@@ -57,6 +58,7 @@ export CFLAGS="%{optflags}"
 %files %{python_files}
 %doc AUTHORS ChangeLog README.md
 %license LICENSE
-%{python_sitearch}/*
+%{python_sitearch}/fastremap.cpython-*-linux-gnu.so
+%{python_sitearch}/fastremap-%{version}.dist-info
 
 %changelog

@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Jul 10 15:34:55 MDT 2024 - carnold@suse.com
+
+- Update to version 5.3.4 (jsc#PED-6305)
+  * Add support for OCaml 5
+  * Add kylinsecos support
+  * rpm: Detect dnf5 and omit missing options
+  * ocamlc: Use -output-complete-exe instead of -custom
+  * Fix kernel filtering for aarch64 architecture
+  * Uncompress kernel on RISC-V
+- Drop patches contained in new tarball
+  001-Improved-debugging-of-the-supermin-if-newer-calculation.patch
+  002-Fix-if-newer-copy-kernel.patch
+  003-Fix-kernel-filtering-for-aarch64-architecture.patch
+  004-Use-output-complete-exe-instead-of-custom.patch
+  005-Only-supply-output-complete-exe-to-final-link.patch
+  006-Rename-function-file-kernel.patch
+  007-Uncompress-kernel-on-RISC-V.patch
+  008-Fix-link-to-renamed-kernel-documentation.patch
+  009-New-mailing-list-email-address.patch
+
+-------------------------------------------------------------------
 Mon May  6 15:27:43 MDT 2024 - carnold@suse.com
 
 - Supermin uses mke2fs. Add Requires e2fsprogs for this command.

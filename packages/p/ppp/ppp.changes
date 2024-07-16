@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun 19 10:10:49 UTC 2024 - Jiri Bohac <jbohac@suse.com>
+
+- drop support for PPPoATM and the dependency on linux-atm-devel
+
+-------------------------------------------------------------------
 Thu Feb 29 14:39:13 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

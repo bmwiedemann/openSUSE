@@ -1,4 +1,6 @@
 <servicedata>
-<service name="tar_scm">
-                <param name="url">https://github.com/cli/cli</param>
-              <param name="changesrevision">f647131e1d19da4d470cfeb5e936589e12e42960</param></service></servicedata>
+  <service name="tar_scm">
+    <param name="url">https://github.com/cli/cli</param>
+    <param name="changesrevision">467550a14aa6e26f6872d684279e6604ed6ca7e7</param>
+  </service>
+</servicedata>

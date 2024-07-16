@@ -21,11 +21,11 @@
 %define _firmwaredir /lib/firmware
 %endif
 %define __ksyms_path ^%{_firmwaredir}
-%define version_unconverted 20240618
+%define version_unconverted 20240712
 # Force bzip2 instead of lzma compression (bsc#1176981)
 %define _binary_payload w9.bzdio
 Name:           kernel-firmware
-Version:        20240618
+Version:        20240712
 Release:        0
 Summary:        Linux kernel firmware files
 License:        GPL-2.0-only AND SUSE-Firmware AND GPL-2.0-or-later AND MIT
@@ -1826,9 +1826,13 @@ Supplements:    modalias(acpi*:INTC1058%3A*)
 Supplements:    modalias(acpi*:INTC1094%3A*)
 Supplements:    modalias(acpi*:INTC10D0%3A*)
 Supplements:    modalias(auxiliary:intel_ipu6.isys)
+Supplements:    modalias(pci:v00008086d000002FCsv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00000435sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000006FCsv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00000AA2sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00001919sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00008086d000019E2sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00001AA2sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00001D60sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00001D61sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00001D62sv*sd*bc*sc*i*)
@@ -1841,9 +1845,28 @@ Supplements:    modalias(pci:v00008086d00001D68sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00001D69sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00001D6Asv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00001D6Bsv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000022D8sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00008086d000024F0sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00008086d000024F1sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000031A2sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000034FCsv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00008086d000037C8sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000043FCsv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00004BB3sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000051FCsv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000054FCsv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00005AA2sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00007745sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00007A78sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00007AF8sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00007E45sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00007F78sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00009D35sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00009DFCsv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000A0FCsv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000A135sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000A37Csv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000A845sv*sd*bc*sc*i*)
 
 %description intel
 This package contains compressed kernel firmware files for
@@ -3088,6 +3111,8 @@ Supplements:    modalias(of:N*T*Cmediatek,mt8183-scpC*)
 Supplements:    modalias(of:N*T*Cmediatek,mt8186-scp)
 Supplements:    modalias(of:N*T*Cmediatek,mt8186-scpC*)
 Supplements:    modalias(of:N*T*Cmediatek,mt8188-scp)
+Supplements:    modalias(of:N*T*Cmediatek,mt8188-scp-dual)
+Supplements:    modalias(of:N*T*Cmediatek,mt8188-scp-dualC*)
 Supplements:    modalias(of:N*T*Cmediatek,mt8188-scpC*)
 Supplements:    modalias(of:N*T*Cmediatek,mt8192-scp)
 Supplements:    modalias(of:N*T*Cmediatek,mt8192-scpC*)
@@ -3669,6 +3694,8 @@ Supplements:    modalias(eisa:sABP7401*)
 Supplements:    modalias(eisa:sABP7501*)
 Supplements:    modalias(of:N*T*Camd,ccp-seattle-v1a)
 Supplements:    modalias(of:N*T*Camd,ccp-seattle-v1aC*)
+Supplements:    modalias(of:N*T*Carm,mali-valhall-csf)
+Supplements:    modalias(of:N*T*Carm,mali-valhall-csfC*)
 Supplements:    modalias(of:N*T*Cfsl,imx25-sdma)
 Supplements:    modalias(of:N*T*Cfsl,imx25-sdmaC*)
 Supplements:    modalias(of:N*T*Cfsl,imx31-sdma)
@@ -3707,6 +3734,8 @@ Supplements:    modalias(of:N*T*Cnxp,88w8987-bt)
 Supplements:    modalias(of:N*T*Cnxp,88w8987-btC*)
 Supplements:    modalias(of:N*T*Cnxp,88w8997-bt)
 Supplements:    modalias(of:N*T*Cnxp,88w8997-btC*)
+Supplements:    modalias(of:N*T*Crockchip,rk3588-mali)
+Supplements:    modalias(of:N*T*Crockchip,rk3588-maliC*)
 Supplements:    modalias(of:N*T*Csilabs,brd4001a)
 Supplements:    modalias(of:N*T*Csilabs,brd4001aC*)
 Supplements:    modalias(of:N*T*Csilabs,brd8022a)
@@ -4196,6 +4225,7 @@ Conflicts:      kernel-firmware-uncompressed
 # make sure we have post-usrmerge filesystem package on TW
 Conflicts:      filesystem < 84
 %endif
+Supplements:    modalias(mhi:QAIC_TIMESYNC_PERIODIC)
 Supplements:    modalias(of:N*T*Cqcom,mdp4)
 Supplements:    modalias(of:N*T*Cqcom,mdp4C*)
 Supplements:    modalias(of:N*T*Cqcom,mdp5)
@@ -4424,6 +4454,7 @@ Supplements:    modalias(of:N*T*Cqcom,x1e80100-dpu)
 Supplements:    modalias(of:N*T*Cqcom,x1e80100-dpuC*)
 Supplements:    modalias(of:N*T*Cqcom,x1e80100-mdss)
 Supplements:    modalias(of:N*T*Cqcom,x1e80100-mdssC*)
+Supplements:    modalias(pci:v000017CBd0000A100sv*sd*bc*sc*i*)
 
 %description qcom
 This package contains compressed kernel firmware files for
@@ -6367,6 +6398,10 @@ Supplements:    modalias(of:N*T*Cmediatek,mt8188-dsp)
 Supplements:    modalias(of:N*T*Cmediatek,mt8188-dspC*)
 Supplements:    modalias(of:N*T*Cmediatek,mt8195-dsp)
 Supplements:    modalias(of:N*T*Cmediatek,mt8195-dspC*)
+Supplements:    modalias(of:N*T*Cqcom,qcm6490-idp-sndcard)
+Supplements:    modalias(of:N*T*Cqcom,qcm6490-idp-sndcardC*)
+Supplements:    modalias(of:N*T*Cqcom,qcs6490-rb3gen2-sndcard)
+Supplements:    modalias(of:N*T*Cqcom,qcs6490-rb3gen2-sndcardC*)
 Supplements:    modalias(of:N*T*Cqcom,sc8280xp-sndcard)
 Supplements:    modalias(of:N*T*Cqcom,sc8280xp-sndcardC*)
 Supplements:    modalias(of:N*T*Cqcom,sm8450-sndcard)

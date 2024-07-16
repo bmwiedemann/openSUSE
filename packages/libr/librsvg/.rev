@@ -1165,4 +1165,12 @@
   + Fix failing test with Pango 1.52.1.</comment>
     <requestid>1177168</requestid>
   </revision>
+  <revision rev="143" vrev="1">
+    <srcmd5>41bfd6eab3b6906cc89e6b3c199f764d</srcmd5>
+    <version>2.58.2</version>
+    <time>1721065552</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1187250</requestid>
+  </revision>
 </revisionlist>

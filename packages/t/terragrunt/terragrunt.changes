@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Jul 12 19:33:33 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.62.0:
+  * IaC engine support (#3218)
+
+-------------------------------------------------------------------
+Fri Jul 12 19:27:18 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.61.1:
+  * Added passing of extra ENVs to the hook executed command
+    (#3263)
+  * feat: Adding more documentation on validation (#3262)
+  * fix: Fixing Pages Build (#3260)
+  * feat: Adding pages GHA build (#3259)
+
+-------------------------------------------------------------------
 Thu Jul 11 18:41:39 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.61.0:

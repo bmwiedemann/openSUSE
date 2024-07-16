@@ -1,7 +1,7 @@
 #
 # spec file for package Botan
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define version_suffix 2-19
 %define short_version 2
 Name:           Botan
-Version:        2.19.3
+Version:        2.19.5
 Release:        0
 Summary:        A C++ Crypto Library
 License:        BSD-2-Clause

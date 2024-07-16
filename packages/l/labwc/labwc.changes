@@ -1,4 +1,85 @@
 -------------------------------------------------------------------
+Fri Jul 12 17:36:36 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 0.7.3
+  + Added
+    - Add config option `<core><xwaylandPersistence>` to support
+      keeping XWayland alive even when no clients are connected.
+    - Support xdg-shell protocol v3 with popup repositioning.
+      which adds support on the wlroots side.
+    - Add action `ToggleTabletMouseEmulation`.
+    - Implement `<resize><drawContents>`.
+    - Add `onRelease` option to `<keybind>` in support of binding
+      `Super_L` to a menu.
+    - Add initial support for `security-context-v1`
+      (user configurable blocklists are still missing).
+    - Add support for `tablet-v2-manager`.
+    - Add action `UnMaximize`.
+    - Support multiple IME popups.
+    - Add `All` context for mouse bindings which need to be
+      handled irrespective of the mouse pointer location. This
+      enables Super+mouse-scroll to change magnification.
+    - Add `SetDecorations` action.
+    - Add `policy` option to `AutoPlace` action.
+    - Add window type filter to If-actions.
+    - Add screen magnifier which can be controlled with the
+      `ZoomIn`, `ZoomOut` and `ToggleMagnify` actions.
+  + Fixed
+    - When looking for menu.xml, go through all paths rather than
+      just giving up if not found in the first path searched.
+      This makes it consistent with how other config/theme files
+      are handled.
+    - Fix memory leaks in theme.c and menu.c.
+    - Fix session-lock bugs related to keyboard focus.
+      + Clear focused surface on lock
+      + Restore focused view on unlock
+    - Fix memory leak in ssd/ssd-shadow.c
+    - Respect `menu.overlap.x` when using pipemenus.
+    - Do not try to restore windows to very small width/height on
+      unmaximize.
+    - Conditially set squared server-side decoration (SSD) corners
+      when a view is tiled.
+    - Remember initial direction when starting window-cycling with
+      `PreviousView`. Also make the toggling of direction when
+      shift is pressed relative to the initial direction.
+    - Show dnd icon above layer-shell surfaces.
+    - Initialize locale after reading environment files so that
+      client-menu items and workspace names follow the env var
+      `LANG` should that be set in `~/.config/labwc/environment`
+      (which is not recommended, but we prefer to handle it
+      properly if it is).
+    - Fix crash on `menu.xml` containing `<item>` without a
+      parent `<menu>`.
+    - Reset XWayland cursor image on cursor theme reload to avoid
+      trying to read destroyed pixel data.
+    - Prevent child views from opening outside of usable area.
+    - Fix IME popups issues (flicker when popup surface is
+      initially mapped and incorrectly showing multiple popups).
+    - Rate-limit cursor-driven resize events based on monitor's
+      refresh rate. This fixes the lag when resizing windows of
+      some apps on XWayland, for example Chromium and Steam.
+    - Session-lock: fix flashing & update cursor shape.
+    - Remove tearing-controller listeners on destroy.
+    - Handle invalid `ForEach` and `If` action cofigs.
+    - Delay startup of applications until event loop is ready.
+    - With `SendToDesktop` action follow=no option, ensure the
+      topmost window is focused.
+    - Prevent XWayland from using incorrect keymap.
+    - Allow keybinds containing the hyphen key to be defined
+      with `-`.
+    - Show/hide `top` layer more smartly. Before this commit,
+      `top` layers were hidden whenever there was a fullscreen
+      window in the corresponding output. With this commit,
+      `top` layers are hidden only when there is a fullscreen
+      window without other windows above it in the
+      corresponding output.
+  + Changed
+    - Remove subprojects/seatd.wrap as no longer needed
+    - Action `MoveToCursor` is deprecated in favour of:
+      `<action name="AutoPlace" policy="cursor"/>`.
+- Recommends alacritty instead foot as default terminal
+
+-------------------------------------------------------------------
 Fri May 10 21:53:00 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 0.7.2

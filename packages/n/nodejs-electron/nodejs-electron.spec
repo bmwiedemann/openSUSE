@@ -22,7 +22,7 @@
 
 %define mod_name electron
 # https://github.com/nodejs/node/blob/main/doc/abi_version_registry.json
-%define abi_version 121
+%define abi_version 123
 
 # Do not provide libEGL.so, etc…
 %define __provides_exclude ^lib.*\\.so.*$
@@ -141,11 +141,9 @@ BuildArch:      i686
 %if 0%{?fedora}
 %bcond_without system_llhttp
 %bcond_without system_histogram
-%bcond_without system_simdutf
 %else
 %bcond_with system_llhttp
 %bcond_with system_histogram
-%bcond_with system_simdutf
 %endif
 
 
@@ -154,6 +152,9 @@ BuildArch:      i686
 %else
 %bcond_with system_vma
 %endif
+
+# requires `run_convert_utf8_to_latin1_with_errors`
+%bcond_with system_simdutf
 
 
 #requires `imageSequenceTrackPresent` and `enableParsingGainMapMetadata` both of which are only in post-1.0.0 nightlies
@@ -211,7 +212,7 @@ BuildArch:      i686
 
 
 Name:           nodejs-electron
-Version:        29.4.3
+Version:        30.2.0
 %global tag_version %version
 Release:        0
 Summary:        Build cross platform desktop apps with JavaScript, HTML, and CSS
@@ -256,6 +257,7 @@ Patch80:        icon.patch
 Patch82:        node-compiler.patch
 Patch84:        aarch64-Xclang.patch
 Patch85:        devtools-frontend-compress_files-oom.patch
+Patch86:        enable_stack_trace_line_numbers-symbol_level.patch
 
 
 # PATCHES that remove code we don't want. Most of them can be reused verbatim by other distributors,
@@ -307,10 +309,10 @@ Patch1078:      system-simdutf.patch
 Patch1079:      system-libm.patch
 Patch1080:      system-yuv.patch
 Patch1081:      chromium-122-abseil-shims.patch
+Patch1082:      chromium-124-shims.patch
 
 
 # PATCHES to fix interaction with third-party software
-Patch2004:      chromium-gcc11.patch
 Patch2010:      chromium-93-ffmpeg-4.4.patch
 
 #Since ffmpeg 5, there is no longer first_dts member in AVFormat. Chromium upstream (and Tumbleweed) patches ffmpeg to add a av_stream_get_first_dts function.
@@ -346,44 +348,45 @@ Source2047:     bundled-minizip.patch
 Patch2047:      bundled-minizip.patch
 %endif
 Patch2048:      absl2023-encapsulated_web_transport-StrCat.patch
+Patch2049:      libaom_av1_encoder-aom37-AV1E_SET_MAX_CONSEC_FRAME_DROP_CBR.patch
+# bsc#1224178 deb#1067886
+Patch2050:      bad-font-gc0000.patch
+Patch2051:      bad-font-gc000.patch
+Patch2052:      bad-font-gc00.patch
+Patch2053:      bad-font-gc0.patch
+Patch2054:      bad-font-gc11.patch
+Patch2055:      bad-font-gc1.patch
+Patch2056:      bad-font-gc2.patch
+Patch2057:      bad-font-gc3.patch
 
 # PATCHES that should be submitted upstream verbatim or near-verbatim
-Patch3016:      chromium-98-EnumTable-crash.patch
 # Fix blink nodestructor
 Patch3023:      electron-13-blink-gcc-ambiguous-nodestructor.patch
 Patch3027:      electron-16-freetype-visibility-list.patch
 Patch3028:      electron-16-third_party-symbolize-missing-include.patch
 # From https://git.droidware.info/wchen342/ungoogled-chromium-fedora
 Patch3033:      chromium-94.0.4606.71-InkDropHost-crash.patch
-# https://salsa.debian.org/chromium-team/chromium/-/blob/456851fc808b2a5b5c762921699994e957645917/debian/patches/upstream/nested-nested-nested-nested-nested-nested-regex-patterns.patch
-Patch3064:      nested-nested-nested-nested-nested-nested-regex-patterns.patch
 Patch3080:      compact_enc_det_generated_tables-Wnarrowing.patch
 Patch3096:      remove-date-reproducible-builds.patch
-Patch3118:      material_color_utilities-tones-missing-round.patch
-Patch3126:      perfetto-numeric_storage-double_t.patch
-Patch3129:      text_break_iterator-icu74-breakAllLineBreakClassTable-should-be-consistent.patch
-Patch3132:      v8-instance-type-inl-constexpr-used-before-its-definition.patch
 Patch3133:      swiftshader-llvm18-LLVMReactor-getInt8PtrTy.patch
 Patch3134:      swiftshader-llvm18-LLVMJIT-Host.patch
 Patch3135:      swiftshader-llvm18-LLVMJIT-CodeGenOptLevel.patch
-Patch3136:      CVE-2024-30260-undici-clear-proxy-authorization.patch
-Patch3137:      CVE-2024-30261-undici-fetch-integrity.patch
 Patch3138:      distributed_point_functions-aes_128_fixed_key_hash-missing-StrCat.patch
-Patch3139:      chromium-122-avoid-SFINAE-TypeConverter.patch
-Patch3140:      plus_address_types-missing-optional.patch
-Patch3141:      chromium-122-BookmarkNode-missing-operator.patch
-Patch3142:      search_engine_choice_service-missing-optional.patch
-Patch3143:      race_network_request_write_buffer_manager-missing-optional.patch
 Patch3144:      mt21_util-flax-vector-conversions.patch
-Patch3145:      script_promise_resolver-explicit-specialization.patch
-Patch3146:      hit_test_request-missing-optional.patch
-Patch3147:      grid_sizing_tree-Wchanges-meaning.patch
-Patch3148:      resolution_monitor-missing-bitset.patch
 Patch3149:      boringssl-internal-addc-cxx.patch
-Patch3150:      InternalAllocator-too-many-initializers.patch
 Patch3151:      distributed_point_functions-evaluate_prg_hwy-signature.patch
 Patch3152:      fake_ssl_socket_client-Wlto-type-mismatch.patch
-Patch3153:      ElectronDesktopWindowTreeHostLinux-OnWindowTiledStateChanged-crash.patch
+Patch3153:      angle-FramebufferVk-powf.patch
+Patch3154:      licenses.py-FileNotFoundError.patch
+Patch3155:      span_reader-missing-optional.patch
+Patch3156:      bitset-missing-uint8_t-memcpy.patch
+Patch3157:      temporal_scalability_id_extractor-missing-bitset.patch
+Patch3158:      gpu_adapter_info-missing-optional.patch
+Patch3159:      first_party_sets_handler_database_helper-missing-optional.patch
+Patch3160:      async_iterable-forwarding.patch
+Patch3161:      preview_cancel_reason-missing-string.patch
+Patch3162:      script_streamer-atomic-include.patch
+Patch3163:      DesktopNativeWidgetAura-HandleActivationChanged-crash.patch
 
 # Patches to re-enable upstream force disabled features.
 # There's no sense in submitting them but they may be reused as-is by other packagers.
@@ -456,7 +459,7 @@ BuildRequires:  (python3-setuptools if python3 >= 3.12)
 %endif
 BuildRequires:  python%{PYVER}-six
 %if %{with system_simdutf}
-BuildRequires:  simdutf-devel >= 3
+BuildRequires:  simdutf-devel >= 3.2.17
 %endif
 BuildRequires:  snappy-devel
 %if 0%{?suse_version}
@@ -521,7 +524,7 @@ BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(gbm)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(glproto)
-BuildRequires:  pkgconfig(gtest)
+BuildRequires:  pkgconfig(gtest) >= 1.12
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(harfbuzz) >= 3
 %if %{with harfbuzz_5}
@@ -584,6 +587,7 @@ BuildRequires:  pkgconfig(libxxhash)
 # needs I410ToI420
 BuildRequires:  pkgconfig(libyuv) >= 1855
 %endif
+BuildRequires:  pkgconfig(libzstd)
 %if %{with system_minizip}
 %if 0%{?fedora}
 BuildRequires:  minizip-compat-devel
@@ -839,19 +843,16 @@ export CFLAGS="${CXXFLAGS}"
 # multiple times throughout the codebase (including generated code). It is not possible to redefine the macro to __builtin_unreachable,
 # as it has an astonishing syntax, behaving like an ostream (in debug builds it is supposed to trap and print an error message)
 export CXXFLAGS="${CXXFLAGS} -Wno-error=return-type"
-# [ 8947s] gen/third_party/blink/renderer/bindings/modules/v8/v8_gpu_sampler_descriptor.h:212:39: error: narrowing conversion of '4294967295' from 'unsigned int' to 'float' [-Wnarrowing]
-# [ 8947s]   212 | float member_lod_max_clamp_{0xffffffff};
-# I have no idea where this code is generated, and it is not something that needs a critical fix.
-# Remove this once upstream issues a proper patch.
-export CXXFLAGS="${CXXFLAGS} -Wno-error=narrowing"
 
 # A bunch of memcpy'ing of JSObject in V8 runs us into “Logfile got too big, killed job.”
 export CXXFLAGS="${CXXFLAGS} -Wno-class-memaccess"
+# Warning spam from generated mojom code again makes the log too big
+export CXXFLAGS="${CXXFLAGS} -Wno-packed-not-aligned -Wno-address"
 
 # REDUCE DEBUG for C++ as it gets TOO large due to “heavy hemplate use in Blink”. See symbol_level below and chromium-102-compiler.patch
 export CXXFLAGS="$(echo ${CXXFLAGS} | sed -e 's/-g / /g' -e 's/-g$//g')"
 
-%ifnarch x86_64 %x86_64
+%ifarch %ix86 %arm aarch64
 export CFLAGS="$(echo ${CFLAGS} | sed -e 's/-g /-g1 /g' -e 's/-g$/-g1/g')"
 %endif
 
@@ -900,7 +901,7 @@ unset MALLOC_PERTURB_
 
 %if %{with lto}
 %ifarch aarch64
-export LDFLAGS="$LDFLAGS -flto=4 --param ggc-min-expand=20 --param ggc-min-heapsize=32768 --param lto-max-streaming-parallelism=1 -Wl,--no-keep-memory -Wl,--reduce-memory-overheads"
+export LDFLAGS="$LDFLAGS -flto=3 --param ggc-min-expand=20 --param ggc-min-heapsize=32768 --param lto-max-streaming-parallelism=1 -Wl,--no-keep-memory -Wl,--reduce-memory-overheads"
 %else
 # x64 is fine with the the default settings (the machines have 30GB+ ram)
 export LDFLAGS="$LDFLAGS -flto=auto"
@@ -935,6 +936,7 @@ gn_system_libraries=(
     snappy
     woff2
     zlib
+    zstd
 )
 
 %if %{with system_abseil}
@@ -1137,7 +1139,6 @@ myconf_gn+=' content_enable_legacy_ipc=true'
 
 #do not build webextensions support
 myconf_gn+=' enable_electron_extensions=false'
-myconf_gn+=' enable_extensions_legacy_ipc=false'
 
 # The option below get overriden by whatever is in CFLAGS/CXXFLAGS, so they affect only C++ code.
 # symbol_level=2 is full debug
@@ -1145,7 +1146,12 @@ myconf_gn+=' enable_extensions_legacy_ipc=false'
 # symbol_level=0 no debuginfo (only function names in private symbols)
 # blink (HTML engine) and v8 (js engine) are template-heavy, trying to compile them with full debug leads to linker errors due to inherent limitations of the DWARF format.
 %ifnarch %ix86 %arm aarch64
+%if 0%{?fedora}
+# [10675s] lto1: internal compiler error: in build_abbrev_table, at dwarf2out.cc:9244
+myconf_gn+=' symbol_level=1'
+%else
 myconf_gn+=' symbol_level=2'
+%endif
 myconf_gn+=' blink_symbol_level=1'
 myconf_gn+=' v8_symbol_level=1'
 %endif
@@ -1163,6 +1169,9 @@ myconf_gn+=' blink_symbol_level=0'
 myconf_gn+=' v8_symbol_level=0'
 %endif
 
+#symbol_level should not affect generated code.
+myconf_gn+=' enable_stack_trace_line_numbers=true'
+
 
 # do not build some chrome features not used by electron
 # (some of these only go to buildflag_headers and are dead code rn, but disabling them preemptively as long as they're visible)
@@ -1178,6 +1187,7 @@ myconf_gn+=" enable_captive_portal_detection=false"
 myconf_gn+=" enable_browser_speech_service=false"
 myconf_gn+=" enable_speech_service=false"
 myconf_gn+=" enable_screen_ai_service=false"
+myconf_gn+=' enable_screen_ai_browsertests=false'
 myconf_gn+=" include_transport_security_state_preload_list=false"
 myconf_gn+=" enable_web_speech=false"
 myconf_gn+=" chrome_wide_echo_cancellation_supported=false"
@@ -1203,9 +1213,11 @@ myconf_gn+=' enable_compose=false'
 myconf_gn+=' enterprise_cloud_content_analysis=false'
 myconf_gn+=' enterprise_local_content_analysis=false'
 myconf_gn+=' enterprise_data_controls=false'
-myconf_gn+=' enterprise_client_certificates=false'
 myconf_gn+=' enterprise_watermark=false'
 myconf_gn+=' enterprise_content_analysis=false'
+myconf_gn+=' enable_video_effects=false'
+myconf_gn+=' use_fake_screen_ai=true'
+myconf_gn+=' webnn_use_tflite=false'
 
 
 #FIXME: possibly enable this when skia gets built with rust code by default.
@@ -1213,9 +1225,6 @@ myconf_gn+=' enterprise_content_analysis=false'
 myconf_gn+=' enable_rust=false'
 myconf_gn+=' enable_chromium_prelude=false'
 
-#See net/base/features.cc. It's not enabled yet.
-#FIXME: enable this and add shims to build with system zstd when it's enabled
-myconf_gn+=' disable_zstd_filter=true'
 
 myconf_gn+=' chrome_certificate_policies_supported=false'
 myconf_gn+=' use_kerberos=false'

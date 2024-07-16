@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Jul 15 07:20:41 UTC 2024 - Marcus Meissner <meissner@suse.com>
+
+- Updated to 9.13 release
+  - Support for loading ODBC Windows drivers.
+  - More user32 data structures in shared memory.
+  - More rewriting of the CMD.EXE engine.
+  - Various bug fixes.
+- update staging to 9.13 release
+- removed 0001-mf-tests-Remove-static-specifier-on-variables-refere.patch: upstream
+
+-------------------------------------------------------------------
+Wed Jul 10 09:49:46 UTC 2024 - Marcus Meissner <meissner@suse.com>
+
+- replaced 0001-mf-tests-use-defines-instead-of-static-const-for-old.patch
+  by official commit 0001-mf-tests-Remove-static-specifier-on-variables-refere.patch
+
+-------------------------------------------------------------------
 Sat Jun 29 07:00:18 UTC 2024 - Marcus Meissner <meissner@suse.com>
 
 - Updated to 9.12 release

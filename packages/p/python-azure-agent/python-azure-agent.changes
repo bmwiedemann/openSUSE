@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jul 12 15:41:55 UTC 2024 - Robert Schweikert <rjschwei@suse.com>
+
+- Add agent-btrfs-use-f.patch (bsc#1227711)
+  + Use the proper option to force btrfs to overwrite a file system on the
+    resource disk if one already exists.
+
+-------------------------------------------------------------------
 Wed Jul 10 15:09:56 UTC 2024 - Joachim Gleissner <jgleissner@suse.com>
 
 - Set Provisioning.Agent parameter to 'cloud-init' in SLE Micro >= 5.5

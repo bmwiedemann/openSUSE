@@ -18,14 +18,16 @@
      "//components/content_settings/core/common",
      "//components/crash/core/common",
      "//components/device_signals/core/common:features",
---- src/components/services/screen_ai/BUILD.gn.old
-+++ src/components/services/screen_ai/BUILD.gn
-@@ -41,8 +41,6 @@ if (is_linux || is_chromeos) {
+--- src/content/utility/BUILD.gn.orig
++++ src/content/utility/BUILD.gn
+@@ -144,10 +144,6 @@ source_set("utility") {
+     }
+   }
  
-     deps = [
-       "//base",
--      "//components/component_updater",
--      "//components/services/screen_ai/public/cpp:utilities",
-       "//sandbox/linux:sandbox_services",
-       "//ui/accessibility:ax_base",
-     ]
+-  if (is_linux || is_chromeos) {
+-    deps += [ "//services/screen_ai:screen_ai_sandbox_hook" ]
+-  }
+-
+   if (enable_accessibility_service) {
+     deps += [ "//services/accessibility:lib" ]
+   }

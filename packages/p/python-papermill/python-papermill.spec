@@ -17,25 +17,24 @@
 
 
 Name:           python-papermill
-Version:        2.5.0
+Version:        2.6.0
 Release:        0
 Summary:        Tool to parametrize and run Jupyter and nteract Notebooks
 License:        BSD-3-Clause
 URL:            https://github.com/nteract/papermill
 Source:         https://files.pythonhosted.org/packages/source/p/papermill/papermill-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM papermill-pr779-moto5.patch gh#nteract/papermill#779
-Patch0:         papermill-pr779-moto5.patch
-BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-PyYAML
+Requires:       python-ansicolors
 Requires:       python-click
 Requires:       python-entrypoints
 Requires:       python-nbclient >= 0.2.0
-Requires:       python-nbformat >= 5.1.2
+Requires:       python-nbformat >= 5.2.0
 Requires:       python-requests >= 2.21.0
 Requires:       python-tenacity >= 5.0.2
 Requires:       python-tqdm >= 4.32.2
@@ -54,6 +53,7 @@ BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module aiohttp if %python-base >= 3.12}
+BuildRequires:  %{python_module ansicolors}
 BuildRequires:  %{python_module azure-datalake-store >= 0.0.30}
 BuildRequires:  %{python_module azure-identity >= 1.3.1}
 BuildRequires:  %{python_module azure-storage-blob >= 12.1.0}
@@ -63,12 +63,12 @@ BuildRequires:  %{python_module entrypoints}
 BuildRequires:  %{python_module gcsfs}
 # for python-azure-storage-blob (https://build.opensuse.org/request/show/1083380#comments)
 BuildRequires:  %{python_module typing_extensions}
-BuildRequires:  %{python_module ipython >= 5.0 if %python-base >= 3.10}
-BuildRequires:  %{python_module ipywidgets if %python-base >= 3.10}
+BuildRequires:  %{python_module ipython >= 5.0}
+BuildRequires:  %{python_module ipywidgets}
 BuildRequires:  %{python_module moto}
 BuildRequires:  %{python_module nbclient >= 0.2.0}
-BuildRequires:  %{python_module nbformat >= 5.1.2}
-BuildRequires:  %{python_module notebook if %python-base >= 3.10}
+BuildRequires:  %{python_module nbformat >= 5.2}
+BuildRequires:  %{python_module notebook}
 BuildRequires:  %{python_module pandas}
 BuildRequires:  %{python_module pyarrow}
 BuildRequires:  %{python_module pytest-env}
@@ -100,13 +100,7 @@ sed -i '/docs_/d' setup.py
 %check
 # different output type expected
 donttest="TestBrokenNotebook2"
-export PYTHONDONTWRITEBYTECODE=1
-%{python_expand # don't test anything on python39: no ipython anymore
-export PYTHONPATH=%{buildroot}%{$python_sitelib}
-if [ ${python_flavor} != "python39" ]; then
-$python -m pytest -k "not ($donttest)"
-fi
-}
+%pytest -k "not ($donttest)"
 
 %post
 %python_install_alternative papermill
@@ -115,7 +109,7 @@ fi
 %python_uninstall_alternative papermill
 
 %files %{python_files}
-%doc CHANGELOG.md README.md
+%doc README.md
 %license LICENSE
 %python_alternative %{_bindir}/papermill
 %{python_sitelib}/papermill

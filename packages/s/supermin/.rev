@@ -183,4 +183,12 @@
     <comment>Add Requires e2fsprogs for mke2fs used in supermin</comment>
     <requestid>1172599</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>fba67fcc13d4f020f16f31ea8407cd8a</srcmd5>
+    <version>5.3.4</version>
+    <time>1721065597</time>
+    <user>anag+factory</user>
+    <comment>Update supermin to version 5.3.4</comment>
+    <requestid>1187213</requestid>
+  </revision>
 </revisionlist>

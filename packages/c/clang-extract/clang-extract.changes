@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jul 15 04:25:50 UTC 2024 - mvetter@suse.com
+
+- Update to version 0~20240714.17e3908:
+  * Fix location comment of LateExternalized variables
+  * Implement first effective use in SymbolExternalizer
+  * FunctionDepsFinder: Factor out closure logic
+
+-------------------------------------------------------------------
 Fri Jul 12 02:20:58 UTC 2024 - mvetter@suse.com
 
 - Update to version 0~20240711.74a63c6:

@@ -187,4 +187,16 @@
     <comment></comment>
     <requestid>1186594</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>bb09db45b4b0760f5efad1d8f1632f51</srcmd5>
+    <version>20240712.dd8c2eb</version>
+    <time>1721065593</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 20240712.dd8c2eb:
+  * use cdn.opensuse.org for leap16
+
+- Update to version 20240712.d0ece36:
+  * Update opensuse-leap16-repoindex.xml to use distribution (#71)</comment>
+    <requestid>1187246</requestid>
+  </revision>
 </revisionlist>

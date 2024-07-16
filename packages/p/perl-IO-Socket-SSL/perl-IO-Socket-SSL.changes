@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Sun Jul 14 16:02:28 UTC 2024 - Tina Müller <tina.mueller@suse.com>
+
+- Remove patches 80315ed1a6a0b7968ce26284ed81b56c0ab288d9.patch,
+  perl-IO-Socket-SSL-use-system-default-cipher-list.patch (fixed upstream)
+
+-------------------------------------------------------------------
+Sun Jul 14 05:31:32 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.88.0 (2.088)
+   see /usr/share/doc/packages/perl-IO-Socket-SSL/Changes
+
+  2.088 2024/07/14
+  - minor fixes for use on ancient versions of perl and for building with
+    newer versions of openssl
+
+-------------------------------------------------------------------
+Thu Jul 11 14:38:31 UTC 2024 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- add 80315ed1a6a0b7968ce26284ed81b56c0ab288d9.patch to fix a error
+  introduced in version 2.087
+
+-------------------------------------------------------------------
+Tue Jul  9 05:30:33 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.87.0 (2.087)
+   see /usr/share/doc/packages/perl-IO-Socket-SSL/Changes
+
+  2.087 2024/07/08
+  - support for PSK, see SSL_psk in documentation
+
+-------------------------------------------------------------------
 Wed Jul  3 16:49:59 UTC 2024 - Tina Müller <tina.mueller@suse.com>
 
 - updated to 2.86.0 (2.086)

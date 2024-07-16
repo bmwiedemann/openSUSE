@@ -1366,4 +1366,12 @@ Ensure nobody gets confused next time we want to update the version. (forwarded 
   %python3_fix_shebang macro, [bsc#1212476] (forwarded request 1170677 from pgajdos)</comment>
     <requestid>1170718</requestid>
   </revision>
+  <revision rev="186" vrev="10">
+    <srcmd5>58e2b60b1456c2a0755a4d8dd4b364e0</srcmd5>
+    <version>2.24.33</version>
+    <time>1721065550</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1187225</requestid>
+  </revision>
 </revisionlist>

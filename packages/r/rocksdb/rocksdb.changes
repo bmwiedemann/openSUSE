@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sat Jul 13 13:21:25 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 9.4.0:
+  * Added a CompactForTieringCollectorFactory to auto trigger
+    compaction for tiering use case.
+  * Optimistic transactions and pessimistic transactions with the
+    WriteCommitted policy now support the GetEntityForUpdate API.
+  * Added a new "count" command to the ldb repl shell. By default,
+    it prints a count of keys in the database from start to end.
+    The options --from= and/or --to= can be specified to limit the
+    range.
+  * Deprecated names LogFile and VectorLogPtr in favor of new names
+    WalFile and VectorWalPtr.
+  * Introduce a new universal compaction option
+    CompactionOptionsUniversal::max_read_amp which allows user to
+    define the limit on the number of sorted runs separately from
+    the trigger for compaction (level0_file_num_compaction_trigger)
+  * Inactive WALs are immediately closed upon being fully sync-ed
+    rather than in a background thread.
+  * Bug Fixes
+
+-------------------------------------------------------------------
 Sat Jun 29 13:24:27 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 9.3.1:

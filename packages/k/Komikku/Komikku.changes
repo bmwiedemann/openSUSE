@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jul 13 06:22:01 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.51.1:
+  * [Servers] Fixed the page to complete Cloudflare challenges
+  * [Servers] Japscan (FR): Disabled
+  * [Servers] Neko Scans (ES): Disabled
+  * Updated translations.
+
+-------------------------------------------------------------------
 Wed Jul 10 22:34:25 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 1.51.0:

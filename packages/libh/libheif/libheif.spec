@@ -27,7 +27,7 @@
 %endif
 
 Name:           libheif
-Version:        1.17.6
+Version:        1.18.0
 Release:        0
 Summary:        HEIF/AVIF file format decoder and encoder
 License:        GPL-2.0-or-later
@@ -35,7 +35,6 @@ Group:          Productivity/Graphics/Other
 URL:            https://github.com/strukturag/libheif
 Source0:        %{url}/releases/download/v%{version}/%{name}-%{version}.tar.gz
 Source99:       baselibs.conf
-Patch0:         https://patch-diff.githubusercontent.com/raw/strukturag/libheif/pull/1146.patch#/libheif-svtav1.patch
 BuildRequires:  chrpath
 BuildRequires:  cmake
 BuildRequires:  fdupes
@@ -284,7 +283,7 @@ Allows to show thumbnail previews of HEIF and AVIF images using %{name}.
 %if %{with x265}
 #Install examples and man pages
 install -d -m 0755 %{buildroot}%{_bindir} %{buildroot}%{_mandir}/man1/
-for e in heif-convert \
+for e in heif-dec \
          heif-enc \
          heif-info \
          heif-thumbnailer
@@ -363,10 +362,10 @@ rm -f %{buildroot}%{_datadir}/thumbnailers/heif.thumbnailer
 
 %if %{with x265}
 %files -n heif-examples
-%{_bindir}/heif-convert
+%{_bindir}/heif-dec
 %{_bindir}/heif-enc
 %{_bindir}/heif-info
-%{_mandir}/man1/heif-convert.1%{?ext_man}
+%{_mandir}/man1/heif-dec.1%{?ext_man}
 %{_mandir}/man1/heif-enc.1%{?ext_man}
 %{_mandir}/man1/heif-info.1%{?ext_man}
 

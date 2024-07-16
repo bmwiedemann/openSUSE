@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jul 10 14:01:21 UTC 2024 - Frantisek Simorda <frantisek.simorda@suse.com>
+
+- Update to 0.21.0
+   * Support storage.luks.clevis (flatcar 1.2.0-exp)
+   * Stabilize OpenShift spec 4.16.0, targeting Ignition spec 3.4.0
+   * Add OpenShift spec 4.17.0-experimental, targeting Ignition spec
+   * 3.5.0-experimental
+ 
+
+-------------------------------------------------------------------
 Mon Feb 19 23:22:22 UTC 2024 - Richard Rahl <rrahl0@proton.me>
 
 - clean up the install step, so less commands are used

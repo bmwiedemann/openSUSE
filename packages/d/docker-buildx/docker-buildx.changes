@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Thu Jul 11 18:43:30 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.16.0:
+  * Notable Changes
+    - Build command now ensures that multi-node builds use the same
+      build reference for each node #2572
+    - Bake command now supports --call and --check flags and call
+      key in target definition for selecting custom build methods
+      #2556 #2576
+    - Bake definition variables and targets supports new
+      description key for defining text-based description that can
+      be inspected later #2556
+    - Experimental: Bake command supports new --list-targets and
+      --list-variables flags for inspecting the definition and
+      possible configuration options for your project. #2556
+    - Bake command now supports printing warnings similarly to the
+      build command. #2501
+    - Avoid duplicate requests and improve the performance of
+      remote driver #2501
+    - Build warnings can now be saved to the metadata file when
+      defining BUILDX_METADATA_WARNINGS=1 #2551 #2521 #2550
+    - Improve message of --check when no warnings are detected
+      #2549
+    - Fix support for multi-type annotations during build #2522
+    - Fix possible inefficient transfer of files when switching
+      projects due to incremental transfer reuse (regression from
+      v0.14+) #2558
+    - Fix incorrect default load for chained Bake targets #2583
+    - Fix incorrect COMPOSE_PROJECT_NAME handling in Bake #2579
+    - Fix index annotations support for multi-node builds #2546
+    - Fix capturing provenance metadata for builds from remote
+      context #2560
+
+-------------------------------------------------------------------
 Wed Jun 19 10:33:11 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.15.1:

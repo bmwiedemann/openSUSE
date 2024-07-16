@@ -17,24 +17,15 @@
 
 
 Name:           supermin
-Version:        5.3.3
+Version:        5.3.4
 Release:        0
 Summary:        Bootstrapping tool for creating supermin appliances
 License:        GPL-3.0-or-later
 Group:          System/Filesystems
 URL:            https://libguestfs.org/
-Source0:        https://download.libguestfs.org/supermin/5.3-development/supermin-5.3.3.tar.gz
-Source1:        https://download.libguestfs.org/supermin/5.3-development/supermin-5.3.3.tar.gz.sig
+Source0:        https://download.libguestfs.org/supermin/5.3-development/supermin-5.3.4.tar.gz
+Source1:        https://download.libguestfs.org/supermin/5.3-development/supermin-5.3.4.tar.gz.sig
 Source9:        supermin.keyring
-Patch1:         001-Improved-debugging-of-the-supermin-if-newer-calculation.patch
-Patch2:         002-Fix-if-newer-copy-kernel.patch
-Patch3:         003-Fix-kernel-filtering-for-aarch64-architecture.patch
-Patch4:         004-Use-output-complete-exe-instead-of-custom.patch
-Patch5:         005-Only-supply-output-complete-exe-to-final-link.patch
-Patch6:         006-Rename-function-file-kernel.patch
-Patch7:         007-Uncompress-kernel-on-RISC-V.patch
-Patch8:         008-Fix-link-to-renamed-kernel-documentation.patch
-Patch9:         009-New-mailing-list-email-address.patch
 Patch30:        suse_release.patch
 Patch31:        supermin-kernel_version_compressed.patch
 Patch32:        disable-test-if-newer-ext2.patch

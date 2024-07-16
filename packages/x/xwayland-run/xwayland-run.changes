@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Jul 14 23:51:26 UTC 2024 - Neal Gompa <ngompa@opensuse.org>
+
+- Update to 0.0.4
+  + xwayland: Improve xauth errors
+  + common: Improve error reporting
+  + common: Ignore setpgrp() failures
+  + mutter: Add a virtual monitor by default
+  + mutter: Check whether --no-x11 is supported
+  + common: Recursively remove our temporary XDG_RUNTIME_DIR
+  + commit: Wait for child processes before cleanup
+- Backport fix for waitpid errors
+  + Patch: 0001-wlheadless-Ignore-os.waitpid-1-0-error.patch
+- Add Suggests for default compositor
+- Set mutter as the default compositor for SLE
+
+-------------------------------------------------------------------
 Mon Mar 25 12:58:00 UTC 2024 - Neal Gompa <ngompa@opensuse.org>
 
 - Update to 0.0.3

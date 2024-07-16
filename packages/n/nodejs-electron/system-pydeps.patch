@@ -130,7 +130,7 @@ Unbundle assorted lexing/parsing/transpiling tools written in Python.
 --- a/mojo/public/tools/bindings/mojom.gni
 +++ b/mojo/public/tools/bindings/mojom.gni
 @@ -699,7 +699,7 @@
-       allow_remote = true
+       remote_worker = "large"
        custom_processor = "mojom_parser"
        script = mojom_parser_script
 -      inputs = mojom_parser_sources + ply_sources + [ build_metadata_filename ]

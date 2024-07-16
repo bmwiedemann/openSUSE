@@ -214,7 +214,6 @@ keeplibs=(
     third_party/devtools-frontend/src/front_end/third_party #various javascript code compiled into chrome, see README.md
     third_party/devtools-frontend/src/front_end/third_party/puppeteer/package/lib/esm/third_party/mitt
     third_party/devtools-frontend/src/front_end/third_party/puppeteer/package/lib/esm/third_party/rxjs
-    third_party/devtools-frontend/src/test/unittests/front_end/third_party/i18n # javascript
     third_party/devtools-frontend/src/third_party/i18n #javascript
     third_party/devtools-frontend/src/third_party/typescript #Chromium added code
     third_party/distributed_point_functions #not in any distro
@@ -223,6 +222,7 @@ keeplibs=(
     third_party/electron_node #Integral part of electron
     third_party/emoji-segmenter #not available as a shared library
     third_party/fdlibm #derived code, not vendored dep
+    third_party/fp16 #Fedora 41 has it (but an old version?) Not in openSUSE. Header-only library thus we're not debundling it rn.
     third_party/hunspell #heavily forked version
     third_party/inspector_protocol #integral part of chrome
     third_party/ipcz #not in any distro

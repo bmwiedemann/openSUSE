@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul  4 09:16:38 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Require file for posttrans phase of the headless subpackage
+  (bsc#1227298)
+
+-------------------------------------------------------------------
 Thu Jun  6 17:10:37 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Added patch:

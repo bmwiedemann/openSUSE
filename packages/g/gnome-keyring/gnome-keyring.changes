@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jul 12 17:06:25 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 46.2:
+  + Don't use `bool` as variable name
+  + autogoo: replace AC_HELP_STRING with AS_HELP_STRING
+  + Default "automatically unlock" checkbox to false
+  + build: Fix distcheck with systemd unit
+  + rpc-layer: Fix undefined reference to g_strlcpy
+  + Updated translations.
+
+-------------------------------------------------------------------
 Thu Feb 15 08:14:42 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Pass --enable-ssh-agent to configure: the switch to gcr-ssh-agent

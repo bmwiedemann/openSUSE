@@ -10,9 +10,11 @@ if [ ${#configfiles[@]} -gt 0 ]; then
   do
       configfilename=$(basename "$configfile")
       cp $configfile /etc/valkey/$configfilename
+      chown root:valkey /etc/valkey/$configfilename
       mv $configfile ${configfile}.bak
   done
   sed -e 's|^dir\s.*|dir /var/lib/valkey|g' -i /etc/valkey/*.conf
+  sed -e 's|^logfile\s/var/log/redis/|logfile /var/log/valkey/|g' -i /etc/valkey/*.conf
   echo "/etc/redis/*.conf has been copied to /etc/valkey.  Manual review of adjusted configs is strongly suggested."
 fi
 if [ ${#redisunits[@]} -gt 0 ]; then
@@ -31,7 +33,7 @@ if [ ${#sentinelunits[@]} -gt 0 ]; then
 fi
 if [ -d /var/lib/redis ]; then
   cp -r /var/lib/redis/* /var/lib/valkey/
-  chown -R valkey. /var/lib/valkey
+  chown -R valkey:valkey /var/lib/valkey
   mv /var/lib/redis /var/lib/redis.bak
   echo "On-disk redis dumps copied from /var/lib/redis/ to /var/lib/valkey"
 fi

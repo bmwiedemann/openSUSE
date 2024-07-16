@@ -14,8 +14,9 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
-
 # needssslcertforbuild
+
+
 Name:           xpadneo
 Version:        0.9.6
 Release:        0
@@ -26,6 +27,7 @@ Source0:        https://github.com/atar-axis/xpadneo/archive/v%{version}.tar.gz#
 Source1:        preamble
 BuildRequires:  %{kernel_module_package_buildreqs}
 BuildRequires:  pesign-obs-integration
+Requires:       xpadneo-kmp
 %kernel_module_package -n %{name} -x debug -x trace -c %{_sourcedir}/_projectcert.crt -p %{_sourcedir}/preamble
 
 %description
@@ -56,5 +58,16 @@ done
 # directories or patterns matching files that need to be signed.  E.g., packages
 # that include firmware files would set BRP_PESIGN_FILES='*.ko /lib/firmware'
 export BRP_PESIGN_FILES='*.ko'
+
+# modprobe aliases
+install -Dm0644 -t "%{buildroot}/usr/lib/modprobe.d" source/etc-modprobe.d/*
+
+# udev rules
+install -Dm0644 -t "%{buildroot}/usr/lib/udev/rules.d" source/etc-udev-rules.d/*
+
+%files
+/usr/lib/modprobe.d/xpadneo.conf
+/usr/lib/udev/rules.d/50-xpadneo-fixup-steamlink.rules
+/usr/lib/udev/rules.d/60-xpadneo.rules
 
 %changelog

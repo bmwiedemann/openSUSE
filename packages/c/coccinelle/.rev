@@ -301,4 +301,13 @@
 - Increase stack size (forwarded request 1038846 from Andreas_Schwab)</comment>
     <requestid>1039067</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>1be7d44198fbb57d0c206286adf0f85d</srcmd5>
+    <version>1.2</version>
+    <time>1721065624</time>
+    <user>anag+factory</user>
+    <comment>- update to version 1.2
+  See included changes.txt for details (forwarded request 1187230 from olh)</comment>
+    <requestid>1187297</requestid>
+  </revision>
 </revisionlist>

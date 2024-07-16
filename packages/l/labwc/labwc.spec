@@ -21,7 +21,7 @@
 %define sname   wlroots
 %define sver    0.17.0
 Name:           labwc
-Version:        0.7.2
+Version:        0.7.3
 Release:        0
 Summary:        A Wayland window-stacking compositor
 License:        GPL-2.0-or-later
@@ -49,7 +49,7 @@ BuildRequires:  pkgconfig(xcb-xfixes)
 BuildRequires:  pkgconfig(xcb-xkb)
 BuildRequires:  pkgconfig(xwaylandproto)
 %else
-BuildRequires:  wlroots-devel
+BuildRequires:  wlroots-devel >= 0.17.3
 %endif
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  meson
@@ -70,7 +70,7 @@ BuildRequires:  pkgconfig(xkbcommon)
 BuildRequires:  scdoc
 Recommends:     xwayland
 Recommends:     %{name}-lang
-Requires:       foot
+Recommends:     alacritty
 Suggests:       rofi-wayland
 Suggests:       grim
 Suggests:       swaybg
@@ -84,7 +84,6 @@ by openbox.
 
 %prep
 %autosetup
-sed -i "s/alacritty/foot/" docs/menu.xml
 
 %if %{with warp}
 mkdir subprojects/%{sname}

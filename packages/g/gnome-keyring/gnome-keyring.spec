@@ -17,7 +17,7 @@
 
 
 Name:           gnome-keyring
-Version:        46.1
+Version:        46.2
 Release:        0
 Summary:        GNOME Keyring
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later

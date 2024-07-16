@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jul 12 21:21:35 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.58.2:
+  + Don't leak XML entities when the XML document fails to parse.
+  + Fix stack overflow in <use> reference cycle.
+
+-------------------------------------------------------------------
 Mon May 27 06:37:49 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 2.58.1:

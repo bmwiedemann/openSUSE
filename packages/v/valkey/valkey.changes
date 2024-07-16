@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jul  9 14:21:33 UTC 2024 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- migrate_redis_to_valkey.bash fixes (boo#1227139)
+  * Also set group owner for /var/lib/valkey
+  * Change logdir option in copied conf files to /var/log/valkey
+  * Change owner of copied conf files to root:valkey
+
+-------------------------------------------------------------------
 Tue Jul  2 07:52:48 UTC 2024 - Andreas Schwab <schwab@suse.de>
 
 - valkey.logrotate: fix owner of logfiles

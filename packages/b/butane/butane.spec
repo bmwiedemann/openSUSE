@@ -18,7 +18,7 @@
 
 
 Name:           butane
-Version:        0.20.0
+Version:        0.21.0
 Release:        0
 Summary:        Tool to generate Ignition configs from Butane Configs
 Group:          System/Management

@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Jul 10 05:23:45 UTC 2024 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Thunderbird 115.13.0
+  * After starting Thunderbird, the message list position was
+    sometimes set to an incorrect position
+  MFSA 2024-30 (bsc#1226316)
+  * CVE-2024-6600 (bmo#1888340)
+    Memory corruption in WebGL API
+  * CVE-2024-6601 (bmo#1890748)
+    Race condition in permission assignment
+  * CVE-2024-6602 (bmo#1895032)
+    Memory corruption in NSS
+  * CVE-2024-6603 (bmo#1895081)
+    Memory corruption in thread creation
+  * CVE-2024-6604 (bmo#1748105, bmo#1837550, bmo#1884266)
+    Memory safety bugs fixed in Firefox 128, Firefox ESR 115.13,
+    and Thunderbird 115.13
+
+-------------------------------------------------------------------
 Tue Jul  2 14:47:02 UTC 2024 - Martin Sirringhaus <martin.sirringhaus@suse.com>
 
 - Mozilla Thunderbird 115.12.2

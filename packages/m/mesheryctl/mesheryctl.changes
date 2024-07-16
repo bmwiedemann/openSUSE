@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Sat Jul 13 12:56:26 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.7.81:
+  * Meshery UI
+    - Revert "Bump @reduxjs/toolkit from 1.9.5 to 2.2.6 in /ui"
+      @Yashsharma1911 (#11383)
+
+-------------------------------------------------------------------
+Sat Jul 13 12:15:52 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.7.81:
+  * General
+    - Replace the repetitive logic with handler pagination
+      @singh1203 (#11255)
+    - fix wasm filter relationships @codeSafari10 (#11375)
+    - fix and add dapr rels for other components @codeSafari10
+      (#11365)
+    - Init dapr sidecar relationships @leecalcote (#11364)
+  * Meshery UI
+    - [Chore] UI: Upgrade dependent package Sistent to v0.14.65
+      @leecalcote (#11379)
+    - fix: eslint rollback to 8.x.x @dottharun (#11372)
+    - remove operator switch @MUzairS15 (#11376)
+    - Added end-to-end playwright tests for UI/Connections
+      component @DevRish (#11220)
+  * Maintenance
+    - fix commit issue w/signoff @Jougan-0 (#11366)
+    - Added end-to-end playwright tests for UI/Connections
+      component @DevRish (#11220)
+  * Documentation
+    - Update component-shape-guide.md @nwanduka (#10621)
+    - Update Secrets list in Build and Release @Jacobojijo (#11359)
+    - Corrected Spelling Mistakes @ENUMERA8OR (#11371)
+
+-------------------------------------------------------------------
 Thu Jul 11 05:16:51 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.7.80:

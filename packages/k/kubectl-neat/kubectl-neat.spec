@@ -1,7 +1,7 @@
 #
 # spec file for package kubectl-neat
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,25 +19,25 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           kubectl-neat
-Version:        2.0.3
+Version:        2.0.4
 Release:        0
 Summary:        Clean up Kubernetes yaml and json output to make it readable
 License:        Apache-2.0
 URL:            https://github.com/itaysk/kubectl-neat
-Source:         kubectl-neat-%{version}.tar.gz
+Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  go >= 1.13
+BuildRequires:  go >= 1.22
 
 %description
 Remove clutter from Kubernetes manifests to make them more readable.
 
 %prep
-%setup -q
-%setup -q -T -D -a 1
+%autosetup -p 1 -a 1
 
 %build
 go build \
    -mod=vendor \
+   -buildmode=pie \
    -ldflags="-X main.Version=%{version}"
 
 %install

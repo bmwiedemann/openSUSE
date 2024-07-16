@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jul 14 20:48:41 UTC 2024 - hui <sturm-fr@web.de>
+
+- Fix dependency which prevented Kaidan from start boo#1227744
+
+-------------------------------------------------------------------
 Mon Mar 25 11:52:13 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Replace the 'cmake(KQuickImageEditor)' BuildRequires with

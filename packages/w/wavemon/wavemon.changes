@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Jul 13 18:39:06 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.9.6
+  Enhancements and Fixes
+  * Info Screen:
+    + Fix hanging receive by switching to non-blocking netlink
+      socket.
+  Miscellaneous
+  * Bump autoconf minimum version to 2.7.1.
+
+
+-------------------------------------------------------------------
 Wed Nov  1 19:54:30 UTC 2023 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.9.5

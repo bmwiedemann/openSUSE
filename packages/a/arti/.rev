@@ -76,4 +76,25 @@ It doesn't build on 15.5 because of rust being too old
     <comment></comment>
     <requestid>1184017</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>d0090f436f2aa5e70ca9a84a39414ef0</srcmd5>
+    <version>1.2.5~0</version>
+    <time>1721065742</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.2.5:
+  * Stop publishing the obsolete arti-hyper crate
+  * Update curve25519-dalek to avoid a low-severity timing 
+    vulnerability. (TROVE-2024-007)
+  * With full vanguards, client rendezvous circuits
+    do not reuse the final vanguard as the rendezvous point.
+    (TROVE-2024-008)
+  * Some RPC development
+  * Add skeleton, including (experimental): arti-relay crate,
+    relay cargo feature in arti-client,
+    relay command line argument to arti
+  * Add a key material export facility for some of our TLS 
+    implementations.
+  * Tolerate removal of files from Arti's cache directory.</comment>
+    <requestid>1187408</requestid>
+  </revision>
 </revisionlist>

@@ -5230,4 +5230,21 @@ If you have any suggestions for improvement, please let me know! (forwarded requ
 - added: 0001-mf-tests-use-defines-instead-of-static-const-for-old.patch</comment>
     <requestid>1184798</requestid>
   </revision>
+  <revision rev="444" vrev="1">
+    <srcmd5>37a07be2ba96cb99ee0a20d1c2878b48</srcmd5>
+    <version>9.13</version>
+    <time>1721065777</time>
+    <user>anag+factory</user>
+    <comment>- Updated to 9.13 release
+  - Support for loading ODBC Windows drivers.
+  - More user32 data structures in shared memory.
+  - More rewriting of the CMD.EXE engine.
+  - Various bug fixes.
+- update staging to 9.13 release
+- removed 0001-mf-tests-Remove-static-specifier-on-variables-refere.patch: upstream
+
+- replaced 0001-mf-tests-use-defines-instead-of-static-const-for-old.patch
+  by official commit 0001-mf-tests-Remove-static-specifier-on-variables-refere.patch</comment>
+    <requestid>1187480</requestid>
+  </revision>
 </revisionlist>

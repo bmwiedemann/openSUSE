@@ -1,7 +1,7 @@
 #
 # spec file for package texstudio
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           texstudio
-Version:        4.6.3
+Version:        4.8.1
 Release:        0
 Summary:        LaTeX Editor
 License:        Apache-2.0 AND GPL-2.0-only AND GPL-3.0-only AND MPL-1.1

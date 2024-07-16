@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Jul  2 10:35:05 UTC 2024 - Frantisek Simorda <frantisek.simorda@suse.com>
+
+- Update to 4.9.11
+   * Upgrade to SQLite3 Multiple Ciphers version 1.8.6 (based on SQLite 3.46.0)
+
+- Update to 4.9.10
+   * Upgrade to SQLite3 Multiple Ciphers version 1.8.4 (based on SQLite 3.45.2)
+   * Disable user authentication extension in build files by default
+
+- Update to 4.9.9
+   * Upgrade to SQLite3 Multiple Ciphers version 1.8.2 (based on SQLite 3.45.0)
+
+- Update to 4.9.8
+   * Upgrade to SQLite3 Multiple Ciphers version 1.8.0 (based on SQLite 3.44.1)
+   * Added new cipher scheme Ascon-128 (Lightweight Authenticated Encryption)
+
+- Update to 4.9.7  
+   * Upgrade to SQLite3 Multiple Ciphers version 1.7.4 (based on SQLite 3.44.0)
+   * Prevent crashes due to uninitialized cipher tables
+
+-------------------------------------------------------------------
 Fri Oct  6 21:42:16 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 4.9.6

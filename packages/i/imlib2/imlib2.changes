@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Jul 14 13:12:04 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.12.3:
+  * Y4M loader: add support for full range color and 10-bit 4:2:0
+  * XPM loader: Major overhaul and bug fixes
+  * Add endbr32/64 instruction at the start of asm functions
+  * Add missing CET (Control-flow Enforcement Technology) bits in
+    asm code
+  * Developer visible improvements in imlib2_view2
+
+-------------------------------------------------------------------
 Sun Feb  4 20:45:07 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 1.12.2:

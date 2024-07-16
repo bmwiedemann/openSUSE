@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jul 13 06:16:43 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 3.3.2:
+  * Hotfix: use timeformat compatible with sqlite 3.42.0 in migration
+
+-------------------------------------------------------------------
 Fri Jul 12 06:17:13 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 3.3.1:
