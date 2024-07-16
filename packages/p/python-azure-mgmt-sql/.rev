@@ -336,4 +336,15 @@
     CHANGELOG.md file provided with this package (forwarded request 1175471 from glaubitz)</comment>
     <requestid>1175532</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>abbfd753dfb96fc268e16bedd4357f86</srcmd5>
+    <version>4.0.0b18</version>
+    <time>1721160295</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 4.0.0b18
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1187771 from glaubitz)</comment>
+    <requestid>1187891</requestid>
+  </revision>
 </revisionlist>
