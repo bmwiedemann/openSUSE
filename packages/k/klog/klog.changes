@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jul 16 20:19:38 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 6.4:
+  * Release v6.4
+  * Add `--create` flag for `klog bookmarks set`
+  * Fix coloring of inlined totals
+  * Support `--resume-nth`/`-N` flag for `klog start`
+
+-------------------------------------------------------------------
 Mon Jun 10 19:52:01 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - new package klog: Command line tool for time tracking in a

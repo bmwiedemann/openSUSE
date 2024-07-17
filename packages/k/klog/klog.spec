@@ -19,7 +19,7 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           klog
-Version:        6.3
+Version:        6.4
 Release:        0
 Summary:        Time tracking in a human-readable, plain-text file format
 License:        MIT
