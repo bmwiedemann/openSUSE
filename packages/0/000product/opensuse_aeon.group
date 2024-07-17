@@ -22,10 +22,7 @@
     <package name="dbus-1-common" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
     <package name="dbus-1-daemon" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
     <package name="dbus-1-tools" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
-    <package name="dialog" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
     <package name="dracut" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
-    <package name="dracut-pcr-signature" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
-    <package name="efibootmgr" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
     <package name="elfutils" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
     <package name="file" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
     <package name="file-magic" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
@@ -35,7 +32,6 @@
     <package name="gawk" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
     <package name="glibc" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="grep" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
-    <package name="jq" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
     <package name="kbd" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
     <package name="kernel-default" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
     <package name="kmod" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
@@ -54,10 +50,8 @@
     <package name="libcryptsetup12" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
     <package name="libdbus-1-3" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
     <package name="libdevmapper1_03" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
-    <package name="libdialog15" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
     <package name="libdw1" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
     <package name="libeconf0" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
-    <package name="libefivar1" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
     <package name="libelf1" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
     <package name="libexpat1" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
     <package name="libfdisk1" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
@@ -65,7 +59,6 @@
     <package name="libgcrypt20" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:suse-module-tools-scriptlets -->
     <package name="libgmp10" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="libgpg-error0" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:suse-module-tools-scriptlets -->
-    <package name="libjq1" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
     <package name="libjson-c5" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
     <package name="libkmod2" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
     <package name="liblua5_4-5" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:suse-module-tools-scriptlets -->
@@ -76,7 +69,6 @@
     <package name="libmpfr6" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
     <package name="libncurses6" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="libnss_usrfiles2" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
-    <package name="libonig5" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
     <package name="libopenssl3" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
     <package name="libpcre2-8-0" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="libpkgconf5" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
@@ -88,11 +80,6 @@
     <package name="libsmartcols1" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
     <package name="libstdc++6" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="libsystemd0" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
-    <package name="libtss2-esys0" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
-    <package name="libtss2-mu0" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
-    <package name="libtss2-rc0" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
-    <package name="libtss2-sys1" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
-    <package name="libtss2-tcti-device0" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
     <package name="libudev1" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
     <package name="libuuid1" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
     <package name="libz-ng-compat1" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:suse-module-tools-scriptlets -->
@@ -101,7 +88,6 @@
     <package name="netcfg" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
     <package name="pam" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
     <package name="pam-config" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
-    <package name="pcr-oracle" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
     <package name="perl-Bootloader" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
     <package name="permctl" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
     <package name="permissions" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
@@ -112,8 +98,6 @@
     <package name="pkgconf-pkg-config" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
     <package name="rpm" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:suse-module-tools-scriptlets -->
     <package name="rpm-config-SUSE" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:suse-module-tools-scriptlets -->
-    <package name="sdbootutil" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
-    <package name="sdbootutil-rpm-scriptlets" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
     <package name="sed" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
     <package name="suse-module-tools" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:suse-module-tools-scriptlets -->
     <package name="suse-module-tools-scriptlets" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:suse-module-tools-scriptlets -->
@@ -122,10 +106,8 @@
     <package name="system-user-lp" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
     <package name="system-user-root" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="systemd" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
-    <package name="systemd-boot" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
     <package name="systemd-default-settings" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
     <package name="systemd-default-settings-branding-SLE" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
-    <package name="systemd-experimental" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
     <package name="systemd-presets-branding-Aeon" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
     <package name="systemd-presets-common-SUSE" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
     <package name="systemd-rpm-macros" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:suse-module-tools-scriptlets -->

@@ -34971,7 +34971,6 @@ unsorted:
   - qt6-scxml-private-devel 
   - qt6-scxmlqml-devel 
   - qt6-scxmlqml-private-devel 
-  - qt6-sensors 
   - qt6-sensors-devel 
   - qt6-sensors-docs-html 
   - qt6-sensors-docs-qch 
@@ -37053,6 +37052,7 @@ unsorted:
   - system-user-rustdesk 
   - system-user-transmission 
   - system-user-uuidd 
+  - system-user-vault-sync 
   - system-user-velociraptor 
   - system-user-zabbix 
   - systemd-default-settings-branding-SLE-Micro 
@@ -47401,6 +47401,7 @@ unsorted:
   - varlink-vim 
   - varnish 
   - varnish-devel 
+  - vault-sync 
   - vboot 
   - vbrfix 
   - vcdimager 
