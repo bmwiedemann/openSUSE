@@ -102,7 +102,7 @@ export CLASSPATH=$(build-classpath glassfish-servlet-api)
 export OPT_JAR_LIST=:
 %{ant} -Dant.build.javac.source=1.8 -Dant.build.javac.target=1.8 jar javadoc
 export CLASSPATH=$(build-classpath glassfish-servlet-api):$(pwd)/%{name}-%{version}.jar
-(cd examples && %javac -target 1.8 -source 1.8 *.java)
+(cd examples && mkdir -p build && javac -d build -encoding utf-8 -source 1.8 -target 1.8 *.java)
 
 %install
 # jar
@@ -121,7 +121,8 @@ cp -pr docs/api/* %{buildroot}%{_javadocdir}/%{name}-%{version}
 ln -s %{name}-%{version} %{buildroot}%{_javadocdir}/%{name}
 # data
 mkdir -p %{buildroot}%{_datadir}/%{name}/examples
-cp -pr examples/*{.class,.java} %{buildroot}%{_datadir}/%{name}/examples
+cp -pr examples/*.java %{buildroot}%{_datadir}/%{name}/examples
+cp -pr examples/build/*.class %{buildroot}%{_datadir}/%{name}/examples
 %fdupes -s %{buildroot}%{_datadir}/%{name}/examples
 
 %files -f .mfiles

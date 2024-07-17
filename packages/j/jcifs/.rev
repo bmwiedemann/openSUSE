@@ -119,4 +119,12 @@
     <comment>rpm 4.20 compat</comment>
     <requestid>1148536</requestid>
   </revision>
+  <revision rev="18" vrev="5">
+    <srcmd5>27765024404ed92c098f1e4c5741cea4</srcmd5>
+    <version>1.3.19</version>
+    <time>1721222104</time>
+    <user>anag+factory</user>
+    <comment>fix build on some sle versions</comment>
+    <requestid>1188054</requestid>
+  </revision>
 </revisionlist>
