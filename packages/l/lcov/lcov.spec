@@ -30,6 +30,7 @@ Requires:       perl-Capture-Tiny
 Requires:       perl-DateTime
 Requires:       perl-GD
 Requires:       perl-PerlIO-gzip
+Requires:       perl-TimeDate
 BuildArch:      noarch
 
 %description

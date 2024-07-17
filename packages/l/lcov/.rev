@@ -317,4 +317,12 @@
     <comment>- Fix incorrectly set permissions (boo#1222234)</comment>
     <requestid>1164555</requestid>
   </revision>
+  <revision rev="33" vrev="3">
+    <srcmd5>179e26f781b57e35c082bc775456920f</srcmd5>
+    <version>2.0+git.20240123.d981242</version>
+    <time>1721222119</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1188151</requestid>
+  </revision>
 </revisionlist>

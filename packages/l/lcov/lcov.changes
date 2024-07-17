@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jul 16 10:17:58 UTC 2024 - Florian <sp1rit@disroot.org>
+
+- Added missing perl-TimeDate dependency
+
+-------------------------------------------------------------------
 Thu Apr  4 10:11:17 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
 
 - Fix incorrectly set permissions (boo#1222234)
