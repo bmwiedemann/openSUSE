@@ -9537,8 +9537,6 @@ unsorted:
   - jupyter-server-mathjax 
   - jupyter-server-terminals 
   - jupyter-sidecar-jupyterlab 
-  - jupyter-threejs 
-  - jupyter-threejs-jupyterlab 
   - jupyter-widgetsnbextension 
   - jurand 
   - just 
@@ -17430,7 +17428,6 @@ unsorted:
   - lomt-script1-fonts 
   - lomt-sniglet-fonts 
   - lomt-sortsmillgoudy-fonts 
-  - lonote 
   - lookbook 
   - lookbook-lang 
   - loook 
@@ -26597,7 +26594,6 @@ unsorted:
   - python310-pythonfinder 
   - python310-pythonwhois 
   - python310-pythran 
-  - python310-pythreejs 
   - python310-pytidylib 
   - python310-pytils 
   - python310-pytimeparse 
@@ -30104,7 +30100,6 @@ unsorted:
   - python311-pythonfinder 
   - python311-pythonwhois 
   - python311-pythran 
-  - python311-pythreejs 
   - python311-pytidylib 
   - python311-pytils 
   - python311-pytimeparse 
@@ -33688,7 +33683,6 @@ unsorted:
   - python312-pythonfinder 
   - python312-pythonwhois 
   - python312-pythran 
-  - python312-pythreejs 
   - python312-pytidylib 
   - python312-pytils 
   - python312-pytimeparse 
@@ -47708,6 +47702,7 @@ unsorted:
   - waypipe 
   - wayprompt 
   - wayshot 
+  - waysip 
   - wayvnc 
   - wbg 
   - wbxml2-tools 
