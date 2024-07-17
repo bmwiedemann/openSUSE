@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jul 14 15:17:30 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 9.5.29:
+  * Updated Galician translations
+  * Fixed #7362 <https://github.com/squidfunk/mkdocs-material/issues/7362>:
+    Annotations in figure captions rendering incorrectly
+
+-------------------------------------------------------------------
 Wed Jul  3 16:30:14 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 9.5.28:

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jul 16 06:03:39 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 20240715T174606Z:
+  * mirror: let user decide whether to skip errors if client runs
+    in watch / active-active mode (#4986)
+
+-------------------------------------------------------------------
 Sat Jul 13 10:08:01 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 20240711T180128Z:

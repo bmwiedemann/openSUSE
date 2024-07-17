@@ -72,13 +72,15 @@ Fish command line completion support for %{name}.
 %setup -q -a1
 
 %build
+COMMIT_HASH="$(sed -n 's/commit: \(.*\)/\1/p' %_sourcedir/%{name}.obsinfo)"
+
 go build \
    -installsuffix "static" \
    -mod=vendor \
    -buildmode=pie \
    -ldflags=" \
-   -X github.com/vmware-tanzu/%{name}/pkg/buildinfo.Version=%{version} \
-   -X github.com/vmware-tanzu/%{name}/pkg/buildinfo.GitSHA=v%{version} \
+   -X github.com/vmware-tanzu/%{name}/pkg/buildinfo.Version=v%{version} \
+   -X github.com/vmware-tanzu/%{name}/pkg/buildinfo.GitSHA=${COMMIT_HASH} \
    -X github.com/vmware-tanzu/%{name}/pkg/buildinfo.GitTreeState=clean" \
    -o bin/%{name} ./cmd/%{name}
 

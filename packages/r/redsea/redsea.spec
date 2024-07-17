@@ -18,7 +18,7 @@
 
 
 Name:           redsea
-Version:        0.21
+Version:        1.0.0
 Release:        0
 Summary:        An RDS decoder
 License:        MIT
@@ -26,11 +26,13 @@ Group:          Productivity/Hamradio/Other
 URL:            https://github.com/windytan/redsea
 #Git-Clone:     https://github.com/windytan/redsea.git
 Source:         https://github.com/windytan/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  autoconf
-BuildRequires:  automake
+BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  libliquid-devel
 BuildRequires:  libsndfile-devel
+BuildRequires:  meson
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(nlohmann_json)
 Recommends:     jq
 Recommends:     rtl-sdr
 
@@ -47,14 +49,11 @@ or, optionally, undecoded hex blocks (-x).
 %setup -q
 
 %build
-autoreconf -fiv
-export CXXFLAGS='%{optflags} -Wno-return-type'
-%configure
-%make_build
+%meson
+%meson_build
 
 %install
-%make_install
-rm %{buildroot}/%{_datadir}/doc/redsea/README.md
+%meson_install
 
 %files
 %license LICENSE

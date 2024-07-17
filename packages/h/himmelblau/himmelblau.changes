@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jul 15 15:07:32 UTC 2024 - david.mulder@suse.com
+
+- Update to version 0.4.3+git.2.6379abc:
+  * Specifically use msal 0.2.6
+  * Version 0.4.3
+  * update libnss requirement from 0.7.0 to 0.8.0
+  * himmelblaud stops working after suspend
+  * Version 0.4.2
+  * Fix ConsolidatedTelephony MFA method
+
+-------------------------------------------------------------------
 Wed May 29 19:35:33 UTC 2024 - david.mulder@suse.com
 
 - Update to version 0.4.1+git.0.41dd0dc:

@@ -1,7 +1,7 @@
 #
 # spec file for package clamtk
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           clamtk
-Version:        6.16
+Version:        6.18
 Release:        0
 Summary:        GUI for the ClamAV Antivirus
 License:        Artistic-1.0 OR GPL-1.0-or-later

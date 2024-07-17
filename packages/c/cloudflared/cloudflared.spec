@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           cloudflared
 Version:        2024.6.0
 Release:        0
@@ -28,12 +29,10 @@ Source1:        vendor.tar.gz
 Patch0:         001-skip-test.patch
 # PATCH-FIX-OPENSUSE 002-use-pie.patch hillwood@opensuse.org
 Patch1:         002-use-pie.patch
-# PATCH-FIX-UPSTREAM 003-support-ppc64le.patch hillwood@opensuse.org
-Patch2:         003-support-ppc64le.patch
 BuildRequires:  fdupes
 BuildRequires:  git-core
-BuildRequires:  golang(API) >= 1.22
 BuildRequires:  golang-packaging
+BuildRequires:  golang(API) >= 1.22
 AutoReqProv:    Off
 %{go_provides}
 
@@ -51,10 +50,10 @@ origins are available under cloudflared tunnel help.
 %autosetup -p1 -a1 -n %{name}-%{version}
 
 %build
-%make_build
+%make_build GOARCH=$(go env GOARCH)
 
 %install
-%make_install
+%make_install GOARCH=$(go env GOARCH)
 
 %files
 %doc README.md

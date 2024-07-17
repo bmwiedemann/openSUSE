@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jul 15 13:24:24 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.2.1
+  * Clean up local server socket on error (#339)
+- Adjust upstream source name in spec file
+
+-------------------------------------------------------------------
 Thu Feb 29 23:23:16 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to autosetup macro. 

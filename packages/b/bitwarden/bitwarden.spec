@@ -17,8 +17,11 @@
 # Please submit bugfixes or comments via http://bugs.opensuse.org/
 #
 
+#not running the tests on OBS — extremely flaky
+%bcond_with test_rust
+
 Name:       bitwarden
-Version:    2024.6.2
+Version:    2024.7.0
 Release:    0
 Summary:    A secure and free password manager for all of your devices
 Group:      Productivity/Security
@@ -56,7 +59,6 @@ Patch1:    fix-desktop-file.patch
 Patch3:    do-not-install-font-privately.patch
 Patch4:    desktop_native-rust-arch.patch
 Patch5:    remove-argon2-browser.patch
-Patch6:    argon2-binary-path.patch
 Patch7:    bug-reporting-url.patch
 Patch8:    no-sourcemaps.patch
 
@@ -100,6 +102,16 @@ BuildRequires: gcc-c++
 BuildRequires: pkgconfig(glib-2.0)
 BuildRequires: pkgconfig(libsecret-1)
 BuildRequires: pkgconfig(wayland-protocols)
+
+#For tests
+%if %{with test_rust}
+BuildRequires:  gnome-keyring
+%if 0%{?fedora}
+BuildRequires:  dbus-daemon
+%else
+BuildRequires:  dbus-service
+%endif
+%endif
 
 Requires: (google-opensans-fonts or open-sans-fonts)
 Requires: nodejs-electron%{_isa}
@@ -175,7 +187,7 @@ auditable='auditable -vv'
 
 cd apps/desktop
 pushd desktop_native
-cargo -vv $auditable rustc --offline --release --lib --crate-type cdylib
+cargo -vv $auditable rustc --offline --release --package desktop_napi --lib --crate-type cdylib
 popd
 
 npm run build
@@ -183,11 +195,12 @@ npm run clean:dist
 
 #copy this manually instead of using electron-builder. there's few enough dependencies.
 cd build
-mkdir -pv node_modules/@bitwarden/desktop-native
-cp -plv ../desktop_native/{package.json,index.js} -t node_modules/@bitwarden/desktop-native
-cp -plvT ../desktop_native/target/release/*.so node_modules/@bitwarden/desktop-native/desktop_native.node
+mkdir -pv node_modules/@bitwarden/desktop-napi
+cp -plv ../desktop_native/napi/{package.json,index.js} -t node_modules/@bitwarden/desktop-napi
+cp -plvT ../desktop_native/target/release/*.so node_modules/@bitwarden/desktop-napi/desktop_napi.node
 rm -fv ../../../node_modules/argon2/build-tmp-napi-v3/node_gyp_bins/python3
 cp -plvr ../../../node_modules/argon2 -t node_modules/
+cp -plvr ../../../node_modules/node-gyp-build -t node_modules/
 cp -plvr '../../../node_modules/@phc' -t node_modules/
 
 
@@ -217,6 +230,7 @@ find -name '*.h' -type f -print -delete
 find -name '*.gyp' -type f -print -delete
 find -name '*.gypi' -type f -print -delete
 find -name '*.ts' -type f -print -delete
+find -name '*.cts' -type f -print -delete
 find -name build-tmp-napi-v3  -print0 |xargs -r0 -- rm -rvf --
 find -name src -print0 |xargs -r0 -- rm -rvf --
 find -name Makefile -type f -print -delete
@@ -257,6 +271,28 @@ find . -type d -empty -print -delete
 %check
 %electron_check_native
 
+#Rust tests
+%if %{with test_rust}
+%ifarch %ix86
+export RUSTC_BOOTSTRAP=1
+%endif
+export RUSTC_LOG='rustc_codegen_ssa::back::link=info'
+export RUSTFLAGS="%{build_rustflags} --verbose -Cstrip=none"
+export CARGO_TERM_VERBOSE=true
+export CFLAGS="%{optflags} -fpic -fno-semantic-interposition -fvisibility=hidden"
+export CXXFLAGS="%{optflags} -fpic -fno-semantic-interposition -fvisibility=hidden"
+export LDFLAGS="%{?build_ldflags}"
+export MAKEFLAGS="%{_smp_mflags}"
+%if 0%{?suse_version}
+auditable='auditable -vv'
+%endif
+cd apps/desktop
+pushd desktop_native
+# see .github/workflows/test.yml
+export XDG_CONFIG_HOME=$(mktemp -d)
+
+dbus-run-session sh -c ' echo '' | gnome-keyring-daemon --unlock && echo '' | gnome-keyring-daemon --start && exec cargo -vv '"$auditable"' test --release --no-fail-fast --workspace -- --test-threads=1'
+%endif
 
 %files
 %defattr(-,root,root)

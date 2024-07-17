@@ -592,4 +592,12 @@
     <comment>Remove database entry for SUSE Linux Micro 6.0 and add back database entry for SUSE Linux Enterprise Micro 6.0 - bsc#1227116. Update the database version and a few recommended hardware requirements.</comment>
     <requestid>1184947</requestid>
   </revision>
+  <revision rev="75" vrev="2">
+    <srcmd5>04ba5f8e550b4b5c50bd225343a16872</srcmd5>
+    <version>20240701</version>
+    <time>1721160139</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1187605</requestid>
+  </revision>
 </revisionlist>

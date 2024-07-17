@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Jul  6 20:36:45 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 2.4.0:
+  * Support bumping based on configurable custom pattern
+  * Support setting the initial_tag
+  * multiple improvements to changelog generation
+  * Add Gitea support
+  * Add Bitbucket support
+  * Add GitLab support
+  * Support using stdout via dash (-o -)
+  * Bug Fixes and documentation updates
+  * Add --ignore-tags argument
+  * Allow -o and -p together if they point to different files
+
+-------------------------------------------------------------------
 Wed May 15 18:21:35 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 2.2.2:

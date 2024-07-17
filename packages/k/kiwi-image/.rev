@@ -7,4 +7,12 @@
     <comment>🤖: initial submission of kiwi-image</comment>
     <requestid>1187587</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>cece3d1dbb0cd03ffdf94ce8f5445a8b</srcmd5>
+    <version>unknown</version>
+    <time>1721160257</time>
+    <user>anag+factory</user>
+    <comment>🤖: sync package with devel:BCI:Tumbleweed from OBS</comment>
+    <requestid>1187701</requestid>
+  </revision>
 </revisionlist>

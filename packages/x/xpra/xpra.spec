@@ -37,7 +37,7 @@
 # ----
 %global __requires_exclude ^typelib\\(GtkosxApplication\\)|typelib\\(GdkGLExt\\)|typelib\\(GtkGLExt\\).*$
 Name:           xpra
-Version:        6.1+git20240620.b8d2c4b5
+Version:        6.1+git20240708.6cd739ab
 Release:        0
 Summary:        Remote display server for applications and desktops
 License:        BSD-3-Clause AND GPL-2.0-or-later AND LGPL-3.0-or-later AND MIT
@@ -268,6 +268,7 @@ mv %{buildroot}%{_sysconfdir}/pam.d/xpra %{buildroot}%{_pam_vendordir}
 %endif
 
 %fdupes -s %{buildroot}
+rm -v %{buildroot}%{_datadir}/gnome-shell/extensions/input-source-manager@xpra_org/COPYING
 
 %pre
 getent group xpra >/dev/null || groupadd -r xpra
@@ -307,6 +308,9 @@ done
 %doc %{_defaultdocdir}/xpra
 %endif
 %license COPYING
+%dir %{_datadir}/gnome-shell
+%dir %{_datadir}/gnome-shell/extensions
+%dir %{_datadir}/gnome-shell/extensions/input-source-manager@xpra_org
 %dir %{_datadir}/xpra
 %dir %{_sysconfdir}/xpra
 %dir %{_sysconfdir}/xpra/conf.d
@@ -352,6 +356,7 @@ done
 %{_datadir}/applications/xpra-launcher.desktop
 %{_datadir}/applications/xpra-shadow.desktop
 %{_datadir}/applications/xpra.desktop
+%{_datadir}/gnome-shell/extensions/input-source-manager@xpra_org/*
 %{_datadir}/metainfo/xpra.appdata.xml
 %{_datadir}/pixmaps/xpra-mdns.png
 %{_datadir}/pixmaps/xpra-shadow.png

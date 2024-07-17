@@ -1,4 +1,155 @@
 -------------------------------------------------------------------
+Mon Jul 08 18:47:53 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 6.1+git20240708.6cd739ab:
+  * add more info on AES modes, keydata safety
+  * cert should always be a string
+  * RFB connections cannot be upgraded to 'http' / 'ws'
+  * update authentication docs to match parsing code
+  * look for the file specified
+  * stronger type hints
+  * the paramiko project looks unmaintained
+  * default implementation can check password
+  * make sure it is a string
+  * also remove bytes here
+  * update test to match 3c520276c813dbb3c5081b18277dfa023bc6070c
+  * simplify: options are always strings
+  * stronger type hints
+  * add docstrings
+  * verify_sync error logging message format errors
+  * missing type hints
+  * silence 'may be used uninitialized' warning
+  * #4146 use the new location for openssl.cnf
+  * just override the 'check_password' method which takes a string
+  * prettier output
+  * #4287 auth api changed password to byte strings
+  * don't log redundant messages
+  * wider type required by cythonization
+  * #3483 keep track of the full import caller details
+  * #4287 derp
+  * don't use d3d11 capture with VirtualBox
+  * minor type hint fixes
+  * unbreak non-posix shadow servers
+  * more helpful command output from terminals
+  * oops: fixup d930e89801356780ffef78625127734caa28c5e3
+  * minor type hint fixes
+  * #4282 skip missing RHEL10 packages
+  * match the new package name
+  * #4282 RHEL 10 packaging updates
+  * #4281 we need clang to build the CUDA kernels on Fedora 40+
+  * add 'NoReturn' type hint where appropriate
+  * type hints and formatting
+  * #4281 build kernels with clang instead of gcc 14+
+  * preverve the same interpreter version with systemd-run wrapping
+  * don't bother with systemd-run when not daemonizing
+  * remove outdated Ubuntu workaround
+  * #4279 make it possible to resize to a fixed resolution only
+  * POINTER(None) is not a valid construct.
+  * Update SETUP.sh: wrong package name
+  * Update pdfium.py
+  * #4275 msvcrt malloc and free incorrect default definitions
+  * fix missing http headers
+  * typo
+  * fix http directory listing
+  * remove unused function
+  * add type hints
+  * #3582 don't show full Pyton version in http server string
+  * log ssl error only once per socket
+  * simplify: options is now required (and always a typedict)
+  * add Python 3.12 patch for ctypes change
+  * support printing typedict with cythonization enabled
+  * switch to cairo enums
+  * honour connect timeout with proxy and retry socket connect
+  * try to get the compiler to optimize the bit shuffling functions
+  * #4270 prefer BGRX with webp decoder
+  * also support debug save image in pseudo video encoder
+  * #4270 prefer BGRX with jpeg decoder
+  * remove redundant statement, add type hint
+  * doh: ensure the output rgb format is updated
+  * #4270 prefer BGRX and BGRA with the cairo backend
+  * Pillow 10.4.0
+  * #4270 test all combinations and report speed
+  * #4270 add more pixel formats: RGB and BGR to ARGB
+  * add cairo test
+  * simplify using a type alias for paint callbacks
+  * add missing return type so 'noexcept' can be used
+  * reduce debug logging verbosity
+  * #4270 faster: inline, nogil
+  * simplify: remove _do_paint_rgbNN methods
+  * #4270 verify that the pixel order matches
+  * add type alias for paint callbacks
+  * #4271 move shared pointer via paint callback
+  * cosmetic and inline more Cython functions
+  * remove enum prefix for older Python versions
+  * #4270 no need for readonly memoryview here
+  * remove debug logging
+  * #4270 use pixel data directly
+  * #4270 use read-write memory so we can use it with cairo
+  * simplify: create and populate cairo ImageSurface in one place (#4270)
+  * with cythonize-more, we can get a TypeError too
+  * stronger types for Cython functions
+  * stronger types and inline compiler hint
+  * simplify: alen == blen
+  * #4269 replace left-over instances of 'Buffer' type hint
+  * #3376 identify WebTransport connections using socktype='webtransport'
+  * make debug logging less costly in hot path
+  * #3376 working webtransport adapter
+  * clarify that --exec-wrapper=vglrun is better
+  * cosmetic logging tweaks
+  * redundant
+  * simplify
+  * this was redundant: UnicodeDecodeError is a ValueError
+  * cosmetic
+  * 'SizedBuffer' is the new 'Buffer'
+  * make upgrades work
+  * cosmetic
+  * more correct keycloak test
+  * Revert "#4265 warn once"
+  * Python < 3.12 doesn't have the 'Buffer' type
+  * #4265 warn once
+  * #3376 (almost working) WebTransport server
+  * narrower exception type
+  * don't log error level backtrace for socket errors when sending http responses
+  * fix keycloak test, again: t() doesn't return anything
+  * Install input-source-manager@xpra_org gnome-shell extension by RPM/DEB
+  * Introduce the input-source-manager@xpra_org gnome-shell extension
+  * better debug logging, especially flush-then-close
+  * stronger quic type hints
+  * handle iterable packet data more gracefully in none_encode
+  * ValueError makes more sense
+  * keycloak auth module can fail to initialize with an exception
+  * log the failing 'grant_type' value
+  * minor linter fixes
+  * fix keycloak unit test: no exception raised, check the return value
+  * fix builds for Python < 3.12
+  * more linter fixes
+  * clipboard tests usually fail if there's a DE
+  * simplify
+  * validate colorspace
+  * verify NV12 images
+  * update test to use new 'full-range' boolean flag
+  * we want our buffers to support 'Sized'
+  * linter fixes
+  * try to setup a test WebTransport connection
+  * add libexec/xpra
+  * also rename the spec file
+  * install the dummy driver in a dev env
+  * uppercase names are out, apparently
+  * #4263 fix PEP 517 builds
+  * debug logging
+  * type hints
+  * add debug logging to connection setup
+  * prefer IPv4, at least for loopback
+  * uvloop.run requires a main function, which we don't have
+  * point to the current Python SSL docs
+  * patch for better bacwards compatibility with older cryptography versions
+  * avoid deprecation warning
+  * aioquic 1.1.0
+  * simplify using binary_headers function
+  * add type hints
+  * use --ssh when reconnecting
+
+-------------------------------------------------------------------
 Thu Jun 20 19:17:35 UTC 2024 - scott.bradnick@suse.com
 
 - Update to version 6.1+git20240620.b8d2c4b5:

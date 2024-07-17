@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Jun 30 20:39:23 UTC 2024 - malcolmlewis@opensuse.org
+
+- Updated to 2.13.3:
+  * Skip options (spotted in a Brother device) where min>max.
+  * Remove given and when keywords and ~~ operator to fix given is
+    deprecated, closes #421 (Perl 5.38.0 deprecated given and when
+    keywords).
+  * Fix GLib-GObject-CRITICAL error in t/0601.
+  * Workaround for locale bug caused by GTK, closes #429 (settings
+    dialog not appearing except LC_ALL=C).
+  * Updated translations.
+
+-------------------------------------------------------------------
 Sat Jan 21 10:23:46 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Update to 2.13.2:

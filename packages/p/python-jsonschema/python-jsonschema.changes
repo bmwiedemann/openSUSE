@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jul 11 19:39:45 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 4.23.0:
+  * Add some typing to the exceptions.py module by @DanielNoord in
+    #1019
+  * Declare support for 3.13 by @rominf in #1282
+
+-------------------------------------------------------------------
 Thu May  2 06:40:15 UTC 2024 - Johannes Kastl <git@johannes-kastl.de>
 
 - update to 4.22.0:

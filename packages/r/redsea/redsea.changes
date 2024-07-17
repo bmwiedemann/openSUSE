@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Thu Jun 27 19:53:59 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.0.0
+  New features:
+  * Add support for Enhanced RadioText (eRT).
+  * Add support for Long PS in Group 15A.
+  * Add runtime option --no-fec for disabling error correction.
+  UX changes:
+  * Breaking: Print a warning to stderr if the raw MPX input sample
+    rate is not specified (breaks the previous silent assumption
+    of 171 kHz)
+  * Improve error reporting in general
+  * Add --output hex (same as --output-hex) to mirror --input hex
+  Fixes:
+  * Fix detection of invalid date/time (timestamps >2000 years ago)
+  * Noise resistance improvements.
+    + Require three (instead of two) repeats of a new PI before
+      accepting it for the JSON output
+    + Require three (instead of two) synchronization pulses before
+      locking.
+  Maintainability:
+  * Migrate build system from autotools to meson.
+  * Switch from patched, packaged-in JsonCPP to external
+    nlohmann-json.
+  * Breaking: The order of some JSON elements has changed
+    (insertion order instead of alphabetical)
+  * Remove unmaintained build options for non-liquid, non-TMC
+    builds.
+  * Fix compiler warnings, issues identified via static analysis,
+    and other code cleanup.
+
+-------------------------------------------------------------------
 Sun Jan 28 10:17:43 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.21

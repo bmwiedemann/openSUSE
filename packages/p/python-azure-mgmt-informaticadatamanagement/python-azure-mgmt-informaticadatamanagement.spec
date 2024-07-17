@@ -15,17 +15,16 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%define realversion 1.0.0b1
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-mgmt-informaticadatamanagement
-Version:        1.0.0~b1
+Version:        1.0.0
 Release:        0
 Summary:        Microsoft Azure Informaticadatamanagement Management Client Library for Python
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/Azure/azure-sdk-for-python
-Source:         https://files.pythonhosted.org/packages/source/a/azure-mgmt-informaticadatamanagement/azure-mgmt-informaticadatamanagement-%{realversion}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/a/azure-mgmt-informaticadatamanagement/azure-mgmt-informaticadatamanagement-%{version}.tar.gz
 BuildRequires:  %{python_module azure-mgmt-nspkg >= 3.0.0}
 BuildRequires:  %{python_module azure-nspkg >= 3.0.0}
 BuildRequires:  %{python_module pip}
@@ -35,6 +34,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-azure-mgmt-nspkg >= 3.0.0
 Requires:       python-azure-nspkg >= 3.0.0
+Requires:       python-typing_extensions >= 4.6.0
 Requires:       (python-azure-common >= 1.1 with python-azure-common < 2.0.0)
 Requires:       (python-azure-mgmt-core >= 1.3.2 with python-azure-mgmt-core < 2.0.0)
 Requires:       (python-isodate >= 0.6.1 with python-isodate < 1.0.0)
@@ -45,9 +45,8 @@ BuildArch:      noarch
 
 %description
 
-
 %prep
-%setup -q -n azure-mgmt-informaticadatamanagement-%{realversion}
+%setup -q -n azure-mgmt-informaticadatamanagement-%{version}
 
 %build
 %pyproject_wheel

@@ -7,4 +7,13 @@
     <comment></comment>
     <requestid>1185408</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>a4bf3e1a8523d9deee0e7a9232812567</srcmd5>
+    <version>2024.6.0</version>
+    <time>1721160251</time>
+    <user>anag+factory</user>
+    <comment>- Define GOARCH
+- Remove 003-support-ppc64le.patch.</comment>
+    <requestid>1187690</requestid>
+  </revision>
 </revisionlist>

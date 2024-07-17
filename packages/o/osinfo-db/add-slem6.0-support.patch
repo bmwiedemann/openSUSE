@@ -1,5 +1,7 @@
---- /dev/null	2023-08-07 05:04:54.296175996 -0600
-+++ osinfo-db-20230719/os/suse.com/slem-6.0.xml	2023-08-07 10:58:08.228681018 -0600
+Index: osinfo-db-20240701/os/suse.com/slem-6.0.xml
+===================================================================
+--- /dev/null
++++ osinfo-db-20240701/os/suse.com/slem-6.0.xml
 @@ -0,0 +1,75 @@
 +<?xml version="1.0"?>
 +<libosinfo version="0.0.1">
@@ -29,7 +31,7 @@
 +    <family>linux</family>
 +    <distro>slem</distro>
 +    <derives-from id="http://suse.com/slem/5.5"/>
-+    <release-status>prerelease</release-status>
++    <release-date>2024-06-08</release-date>
 +    <media arch="x86_64">
 +      <iso>
 +        <system-id>LINUX</system-id>

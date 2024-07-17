@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Jul 15 21:18:43 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 2.4
+  * Fixed segfault on exit;
+  * Fixed text char positions;
+  * Fixed text shadow config;
+  * Fixed cache and preload config;
+  * Added support for multiple action per key;
+  * Added new action: status (allows to print text message);
+  * Added support for skipping files;
+  * Added option to unlock image position;
+  * Added support for transparent colors in config;
+  * Added timeout to hide the info block;
+  * Added support for external image data source;
+  * Added options for managing of cache and preload;
+  * Fixed mouse drag error (dragged only by diagonal);
+  * Fixed reset scale on window focus lost;
+  * Fixed crash on reloading stdin files;
+  * Some minor fixes.
+- Add conditional build for leap
+- Add gcc-c++ BuildRequires: needed for build v2.4
+
+-------------------------------------------------------------------
 Sun Apr  7 00:15:37 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 2.2

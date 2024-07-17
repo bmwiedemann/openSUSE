@@ -1,15 +1,15 @@
---- bitwarden/node_modules/argon2/binding.gyp.old	2023-02-18 10:39:01.221224062 +0100
-+++ bitwarden/node_modules/argon2/binding.gyp	2023-02-18 10:54:05.873323234 +0100
-@@ -13,7 +13,7 @@
+--- clients/node_modules/argon2/binding.gyp.orig	2024-07-15 19:27:24.157408387 +0200
++++ clients/node_modules/argon2/binding.gyp	2024-07-15 19:40:42.806528404 +0200
+@@ -20,7 +20,7 @@
        "Release": {
          "target_conditions": [
            ["OS != 'win'", {
--            "cflags+": ["-fdata-sections", "-ffunction-sections", "-fvisibility=hidden"],
+-            "cflags+": ["-fdata-sections", "-ffunction-sections", "-flto", "-fvisibility=hidden"],
 +            "cflags+": ["-fvisibility=hidden"],
              "ldflags+": ["-Wl,--gc-sections"]
            }]
          ],
-@@ -22,26 +22,7 @@
+@@ -29,26 +29,7 @@
      }
    },
    "targets": [
@@ -17,10 +17,10 @@
 -      "target_name": "libargon2",
 -      "sources": [
 -        "argon2/src/argon2.c",
--        "argon2/src/core.c",
 -        "argon2/src/blake2/blake2b.c",
--        "argon2/src/thread.c",
+-        "argon2/src/core.c",
 -        "argon2/src/encoding.c",
+-        "argon2/src/thread.c"
 -      ],
 -      "cflags+": ["-Wno-type-limits"],
 -      "conditions": [
@@ -34,13 +34,17 @@
 -      "type": "static_library"
 -    }, {
 +{
-       "target_name": "<(module_name)",
-       "xcode_settings": {
-         "GCC_ENABLE_CPP_EXCEPTIONS": "YES",
-@@ -57,7 +38,12 @@
+       "target_name": "argon2",
+       "defines+": [
+         "NAPI_VERSION=<(napi_build_version)",
+@@ -58,10 +39,15 @@
+       "sources": [
+         "argon2_node.cpp"
        ],
+-      "cflags_cc+": ["-Wall", "-Wextra", "-Wconversion", "-Wformat", "-Wnon-virtual-dtor", "-pedantic", "-Werror"],
++      "cflags_cc+": ["-Wall", "-Wextra", "-Wconversion", "-Wformat", "-Wnon-virtual-dtor", "-pedantic"],
        "cflags_cc!": ["-fno-exceptions"],
-       "include_dirs": ["<!@(node -p \"require('node-addon-api').include\")"],
+       "include_dirs": ["<!(node -p \"require('node-addon-api').include_dir\")"],
 -      "dependencies": ["libargon2"],
 +      "cflags": [
 +        "<!@(pkg-config libargon2 --cflags)",
@@ -51,10 +55,9 @@
        "configurations": {
          "Debug": {
            "conditions": [
---- bitwarden/node_modules/argon2/argon2_node.cpp.old	2023-02-18 10:39:00.524876063 +0100
-+++ bitwarden/node_modules/argon2/argon2_node.cpp	2023-02-18 10:58:23.321982987 +0100
-@@ -1,5 +1,5 @@
- 
+--- clients/node_modules/argon2/argon2_node.cpp.orig	2024-07-15 19:27:24.130728388 +0200
++++ clients/node_modules/argon2/argon2_node.cpp	2024-07-15 19:42:24.944237666 +0200
+@@ -1,4 +1,4 @@
 -#include "argon2/include/argon2.h"
 +#include <argon2.h>
  #include <cassert>

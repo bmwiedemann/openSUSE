@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Jul 13 12:07:09 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.4.48:
+  * nethsm: Improve base64 handling and add key import from PEM by
+    @robin-nitrokey in #539
+  * fido2: Add get-info subcommand by @robin-nitrokey in #545
+  * nk3/update: add pre_bootloader_hint for update process by
+    @daringer in #546
+
+-------------------------------------------------------------------
 Thu Apr 18 05:16:50 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.4.47 (includes a fix for boo#1222090):

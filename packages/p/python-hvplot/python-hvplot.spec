@@ -18,19 +18,18 @@
 
 %define skip_python39 1
 Name:           python-hvplot
-Version:        0.9.2
+Version:        0.10.0
 Release:        0
 Summary:        High-level plotting API for the PyData ecosystem built on HoloViews
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/pyviz/hvplot
 Source0:        https://files.pythonhosted.org/packages/source/h/hvplot/hvplot-%{version}.tar.gz
 # Test data. Bump the commit whenever you bump this version
 Source1:        https://github.com/pydata/xarray-data/archive/7d8290e0be9d2a8f4b4381641f20a97db6eaea3d.tar.gz#/xarray-data.tar.gz
-Source100:      python-hvplot-rpmlintrc
 BuildRequires:  %{python_module param >= 1.9 with %python-param < 3}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pyct >= 0.4.4}
+BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
@@ -38,10 +37,10 @@ BuildRequires:  python-rpm-macros
 Requires:       python-bokeh >= 1.0.0
 Requires:       python-colorcet >= 2
 Requires:       python-holoviews >= 1.11.0
-Requires:       python-numpy >= 1.15
 Requires:       python-packaging
 Requires:       python-pandas
 Requires:       python-panel >= 0.11.0
+Requires:       (python-numpy >= 1.15 with python-numpy < 2)
 Requires:       (python-param >= 1.12 with python-param < 3)
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
@@ -75,7 +74,7 @@ BuildRequires:  %{python_module datashader}
 BuildRequires:  %{python_module holoviews >= 1.11.0}
 BuildRequires:  %{python_module ipywidgets}
 BuildRequires:  %{python_module networkx}
-BuildRequires:  %{python_module numpy >= 1.7}
+BuildRequires:  %{python_module numpy >= 1.15 with %python-numpy < 2}
 BuildRequires:  %{python_module pandas}
 BuildRequires:  %{python_module panel >= 0.11.0}
 BuildRequires:  %{python_module param >= 1.9.0}
@@ -135,6 +134,6 @@ fi
 %license LICENSE
 %{python_sitelib}/hvplot
 %exclude %{python_sitelib}/hvplot/tests
-%{python_sitelib}/hvplot-%{version}*-info
+%{python_sitelib}/hvplot-%{version}.dist-info
 
 %changelog

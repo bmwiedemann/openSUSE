@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jul  8 11:56:05 UTC 2024 - Andreas Schwab <schwab@suse.de>
+
+- Define GOARCH
+- Remove 003-support-ppc64le.patch.
+
+-------------------------------------------------------------------
 Thu Jul  4 13:55:12 UTC 2024 - Hillwood Yang <hillwood@opensuse.org>
 
 - Add 003-support-ppc64le.patch 

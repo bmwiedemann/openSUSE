@@ -69,7 +69,7 @@
 %define apache_group www
 
 %define apache_dir /srv/www
-%define apache_webconfigdir /etc/apache2/conf.d
+%define apache_webconfigdir /etc/apache2/vhosts.d
 %define apache_mod_wsgi apache2-mod_wsgi-python%{python3_pkgversion}
 %define tftpboot_dir /srv/tftpboot
 
@@ -104,8 +104,13 @@
 %define grub2_ia32_efi_pkg grub-efi-ia32
 %define system_release_pkg base-files
 
+# Ubuntu 22.04 and later moved to the C implementation of createrepo
+%if 0%{?ubuntu} >= 22
+%define createrepo_pkg createrepo-c
+%endif
+
 # Debian 11 moved to the C implementation of createrepo
-%if 0%{?debian} == 11
+%if 0%{?debian} >= 11
 %define createrepo_pkg createrepo-c
 %endif
 
@@ -153,7 +158,7 @@
 %endif
 
 Name:           cobbler
-Version:        3.3.3
+Version:        3.3.6
 Release:        0%{?dist}
 Summary:        Boot server configurator
 URL:            https://cobbler.github.io/
@@ -288,7 +293,6 @@ Requires:       cobbler = %{version}-%{release}
 %description tests-containers
 Dockerfiles and scripts to setup testing containers
 
-
 %prep
 %setup
 
@@ -298,7 +302,14 @@ sed -e "s|/var/lib/tftpboot|%{tftpboot_dir}|g" -i config/cobbler/settings.yaml
 %endif
 
 %build
+if [ -d "%{_sourcedir}/%{name}-%{version}/.git" ]; then
+    cp -r %{_sourcedir}/%{name}-%{version}/.git %{_builddir}/%{name}-%{version}
+fi
+%if 0%{?fedora} || 0%{?rhel}
+. distro_build_configs.sh FEDORA
+%else
 . distro_build_configs.sh
+%endif
 
 # Check distro specific variables for consistency
 [ "${DOCPATH}" != %{_mandir} ] && echo "ERROR: DOCPATH: ${DOCPATH} does not match %{_mandir}"
@@ -317,7 +328,11 @@ sed -e "s|/var/lib/tftpboot|%{tftpboot_dir}|g" -i config/cobbler/settings.yaml
 make man
 
 %install
+%if 0%{?fedora} || 0%{?rhel}
+. distro_build_configs.sh FEDORA
+%else
 . distro_build_configs.sh
+%endif
 %py3_install
 
 # cobbler

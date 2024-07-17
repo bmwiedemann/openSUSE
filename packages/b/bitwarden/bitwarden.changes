@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jul 15 19:48:10 UTC 2024 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- New upstream release 2024.7.0
+  * Deprecated setting for approving logins. Desktop now receives login requests by default.
+- Drop no longer needed argon2-binary-path.patch
+
+-------------------------------------------------------------------
 Wed Jun 19 12:45:54 UTC 2024 - Bruno Pitrus <brunopitrus@hotmail.com>
 
 - New upstream release 2024.6.2

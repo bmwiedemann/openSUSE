@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jul 15 15:54:39 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.9.25:
+  * #60 - SyntaxWarning with Python 3.12 (@kitterma)
+  * #63 - Records with empty rdata causes pack() to fail
+  * #66 - DNS SRV "target" names are compressed (@bobstanden)
+
+-------------------------------------------------------------------
 Sat Jan  6 17:11:17 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.9.24:

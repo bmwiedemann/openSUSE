@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jul 15 22:56:47 UTC 2024 - Hannes Braun <apple.hannes@gmail.com> - 0.18.1
+
+- Update to upstream version 0.18.1
+  * Fixed startup error if "log-file" directory does not exist.
+  * Aerc is now less pedantic about invalid headers for the maildir and notmuch
+    backends.
+  * Error when trying to configure smtp-domain with STARTTLS enabled.
+  * smtp-domain is now properly taken into account for TLS connections.
+
+-------------------------------------------------------------------
 Wed Jul 10 17:23:14 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Update license to GPL-3.0-or-later -- See mailing list

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Jul 15 16:26:58 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.98 (bsc#1227423, CVE-2024-39929):
+  * The dkim_status ACL condition may now be used in data ACLs
+  * The dkim_verbose logging control also enables logging of signing
+  * The dkim_timestamps signing option now accepts zero to include
+    a current timestamp but no expiry timestamp.
+  * The recipients_max main option is now expanded.
+  * Setting variables for "exim -be" can set a tainted value.
+  * A dns:fail event.
+  * The dsearch lookup supports search for a sub-path.
+  * Include mailtest utility for simple connection checking.
+  * Add SMTP WELLKNOWN extension.
+
+-------------------------------------------------------------------
 Thu Feb 22 11:32:13 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.

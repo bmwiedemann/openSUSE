@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jul  2 17:03:59 UTC 2024 - ecsos <ecsos@opensuse.org>
+
+- Update to version 5.4.1:
+  - Avoid FP overflow in NormEvidenceOf (fixes issue #4257) in #4259
+  - Update deprecated Node.js 16 GitHub actions in #4262
+  - Fix code style issues which were reported in #4263
+  - Fix some issues which were reported in #4266
+  - Fix more Codacy issues in #4267
+  - Several build fixes
+
+-------------------------------------------------------------------
 Fri Jun  7 10:57:13 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 5.4.0:

@@ -845,4 +845,12 @@
   * Numbers: Improve parsing of malformed decimals</comment>
     <requestid>1135251</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>d36c4c964ca5e052e702ff46a855503d</srcmd5>
+    <version>2.15.0</version>
+    <time>1721160143</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1187612</requestid>
+  </revision>
 </revisionlist>

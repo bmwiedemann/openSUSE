@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-grpc-google-iam-v1
-Version:        0.13.0
+Version:        0.13.1
 Release:        0
 Summary:        GRPC library for the google-iam-v1 service
 License:        Apache-2.0
@@ -32,6 +32,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-googleapis-common-protos >= 1.56.0
 Requires:       python-grpcio >= 1.44.0
+Requires:       python-protobuf >= 3.20.2
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module googleapis-common-protos >= 1.56.0}

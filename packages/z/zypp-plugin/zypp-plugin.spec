@@ -1,7 +1,7 @@
 #
 # spec file for package zypp-plugin
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,27 +12,27 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via https://bugs.opensuse.org/
+# Please submit bugfixes or comments via http://bugs.opensuse.org/
 #
 
 
 %define singlespec_py3 ( 0%{?suse_version} > 1330 )
 
 Name:           zypp-plugin
-Version:        0.6.3
+Version:        0.6.4
 Release:        0
 Summary:        Helper that makes writing ZYpp plugins easier
-License:        GPL-2.0-only
+License:        GPL-2.0
 Group:          System/Packages
-URL:            https://github.com/openSUSE/zypp-plugin
+Url:            https://github.com/openSUSE/zypp-plugin
 Source0:        %{name}-%{version}.tar.bz2
 BuildArch:      noarch
 
 %if %{singlespec_py3}
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 BuildRequires:  %{python_module devel}
-BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+BuildRequires:  fdupes
 Requires:       python-base
 # provide old names for py2 package
 %if "%{python_flavor}" == "python2"

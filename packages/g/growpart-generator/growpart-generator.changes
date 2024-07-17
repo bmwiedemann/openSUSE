@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jul 15 13:17:26 UTC 2024 - Fabian Vogt <fvogt@suse.com>
+
+- Remove meanwhile unnecessary /bin/sh -c indirection
+
+-------------------------------------------------------------------
 Wed Feb 16 15:27:38 UTC 2022 - Fabian Vogt <fvogt@suse.com>
 
 - Get the parent device with lsblk

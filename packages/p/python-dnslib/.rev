@@ -74,4 +74,15 @@
   * Validate TXID in client.py</comment>
     <requestid>1137272</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>1f104270bc44099a329f42dd92925d35</srcmd5>
+    <version>0.9.25</version>
+    <time>1721160148</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.9.25:
+  * #60 - SyntaxWarning with Python 3.12 (@kitterma)
+  * #63 - Records with empty rdata causes pack() to fail
+  * #66 - DNS SRV &quot;target&quot; names are compressed (@bobstanden)</comment>
+    <requestid>1187595</requestid>
+  </revision>
 </revisionlist>

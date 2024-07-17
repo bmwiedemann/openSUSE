@@ -65,7 +65,7 @@
 %bcond_with zypp
 
 Name:           libsolv
-Version:        0.7.29
+Version:        0.7.30
 Release:        0
 Summary:        Package dependency solver using a satisfiability algorithm
 License:        BSD-3-Clause
@@ -182,7 +182,6 @@ Group:          System/Management
 Conflicts:      satsolver-tools-obsolete
 Obsoletes:      satsolver-tools < 0.18
 Provides:       satsolver-tools = 0.18
-Requires:       findutils
 Requires:       libsolv-tools-base = %{version}
 
 %description tools

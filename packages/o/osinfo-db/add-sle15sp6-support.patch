@@ -1,7 +1,7 @@
-Index: osinfo-db-20240510/os/suse.com/sle-15.6.xml
+Index: osinfo-db-20240701/os/suse.com/sle-15.6.xml
 ===================================================================
 --- /dev/null
-+++ osinfo-db-20240510/os/suse.com/sle-15.6.xml
++++ osinfo-db-20240701/os/suse.com/sle-15.6.xml
 @@ -0,0 +1,105 @@
 +<?xml version="1.0"?>
 +<libosinfo version="0.0.1">
@@ -32,7 +32,7 @@ Index: osinfo-db-20240510/os/suse.com/sle-15.6.xml
 +    <distro>sle</distro>
 +    <upgrades id="http://suse.com/sle/15.5"/>
 +    <derives-from id="http://suse.com/sle/15.5"/>
-+    <release-status>prerelease</release-status>
++    <release-date>2024-06-26</release-date>
 +    <media arch="x86_64">
 +      <iso>
 +        <system-id>LINUX</system-id>

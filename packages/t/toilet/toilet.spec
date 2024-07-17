@@ -1,7 +1,7 @@
 #
 # spec file for package toilet
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -41,7 +41,7 @@ FIGlet fonts and perform horizontal smushing.
 
 %prep
 %setup -q
-sed -i 's|11 10|16 15 14 13 12 11 10|' bootstrap
+sed -i 's|11 10|17 16 15 14 13 12 11 10|' bootstrap
 
 %build
 ./bootstrap

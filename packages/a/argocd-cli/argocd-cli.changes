@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jul 16 05:50:42 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.11.5:
+  * Bump version to 2.11.5 (#19061)
+  * chore: update gitops-engine (2.11) (#19036)
+  * fix(cli): Get Redis password from secret in `loadClusters()`
+    (#18951) (#18956)
+
+-------------------------------------------------------------------
 Wed Jul 03 19:09:39 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.11.4:

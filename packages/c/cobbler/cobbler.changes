@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Jul 16 10:39:57 UTC 2024 - Enno Gotthold <egotthold@suse.com>
+
+- Update to 3.3.6
+  * Upstream all openSUSE specific patches that were maintained in Git
+  * Fix rename of items that had uppercase letters
+  * Skip inconsistent collections instead of crashing the daemon
+- Update to 3.3.5
+  * Added collection indicies for UUID's, MAC's, IP addresses and hostnames
+    bsc#1219933
+  * Re-added to_dict() caching
+  * Added lazy loading for the daemon (off by default)
+- Update to 3.3.4
+  * Added cobbler-tests-containers subpackage
+  * Updated the distro_signatures.json database
+  * The default name for grub2-efi changed to grubx64.efi to match
+    the DHCP template
+
+-------------------------------------------------------------------
 Wed May 17 15:40:31 UTC 2023 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
 
 - Fix package building with Sphinx >= 7.0.0

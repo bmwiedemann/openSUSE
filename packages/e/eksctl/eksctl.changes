@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jul 16 09:27:08 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.187.0:
+  * Add release notes for v0.187.0 (#7885)
+  * Restrict `VPC.SecurityGroup` egress rules validations to
+    self-managed nodes (#7883)
+  * Prepare for next development iteration
+
+-------------------------------------------------------------------
 Sat Jul 13 06:42:48 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.186.0:

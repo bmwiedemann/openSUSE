@@ -121,4 +121,12 @@
     <comment>update for multiple python3 flavors. See https://github.com/openSUSE/zypp-plugin/pull/3</comment>
     <requestid>844816</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>703ce6f140a1d81f1553bb8816baebe5</srcmd5>
+    <version>0.6.4</version>
+    <time>1721160135</time>
+    <user>anag+factory</user>
+    <comment>Softwarestack update</comment>
+    <requestid>1187589</requestid>
+  </revision>
 </revisionlist>

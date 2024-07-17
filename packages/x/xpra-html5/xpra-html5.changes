@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Mon Jul 08 18:41:24 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 15.0+git20240709.bd65758:
+  * version no not bumped in Utilities.js
+  * bump version
+  * version bump + update the release notes
+  * localhost is presumed safe
+  * finish constifying the packet types
+  * cosmetic: remove long commented out code
+  * simplify
+  * add 'warning' class when can't probe the server specified
+  * prevent simple XSS from server menu data
+  * undo terrible formatting changes
+  * preserve disconnection message when failing early
+  * fix state of insecure password related widgets
+  * simplify: shortcut early
+  * fail fast if digest is unsafe
+  * undo more bad formatting
+  * remove debug logging
+  * always reject insecure xor digest
+  * more bad formatting reverted
+  * undo some awful automated formatting
+  * hide aes key input when switching to WebTransport
+  * move 'insecure' checkbox below the encryption options
+  * trigger host_address_changed when we modify ssl flag
+  * #143 add 'webtransport' switch
+  * oops: don't use WebTransport by default
+  * #143 use the same writer, remove debug delay
+  * #143 add WebTransport protocol (disabled for now)
+  * undo ugly line wrapping
+  * there is only one packet encoder now
+  * all browsers we support have Object.hasOwn
+
+-------------------------------------------------------------------
+Mon Jun 10 14:26:04 UTC 2024 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Updating Uglify-JS to v3.18.0
+
+-------------------------------------------------------------------
 Tue May 28 16:07:49 UTC 2024 - scott.bradnick@suse.com
 
 - Update to version 13.0+git20240528.6209443:

@@ -1,7 +1,7 @@
 @types/semver and path-browserify is normally included transitively by storybook which we delete, adding it here explicitely because it is needed for build
 
---- clients/package.json.orig	2024-03-07 21:37:44.692428174 +0100
-+++ clients/package.json	2024-03-07 21:40:28.774422025 +0100
+--- clients/package.json.orig	2024-07-15 19:10:38.711610685 +0200
++++ clients/package.json	2024-07-15 19:25:13.322024338 +0200
 @@ -13,7 +13,6 @@
    },
    "homepage": "https://bitwarden.com",
@@ -19,34 +19,33 @@
    },
    "workspaces": [
      "apps/*",
-@@ -35,121 +34,45 @@
+@@ -35,120 +34,44 @@
    ],
    "devDependencies": {
-     "@angular-devkit/build-angular": "16.2.11",
+     "@angular-devkit/build-angular": "16.2.14",
 -    "@angular-eslint/eslint-plugin": "16.3.1",
 -    "@angular-eslint/eslint-plugin-template": "16.3.1",
 -    "@angular-eslint/template-parser": "16.3.1",
--    "@angular/cli": "16.2.11",
+-    "@angular/cli": "16.2.14",
      "@angular/compiler-cli": "16.2.12",
 -    "@angular/elements": "16.2.12",
 -    "@babel/core": "^7.24.6",
      "@babel/preset-env": "^7.24.6",
--    "@compodoc/compodoc": "1.1.23",
+-    "@compodoc/compodoc": "1.1.25",
 -    "@electron/notarize": "2.3.0",
 -    "@electron/rebuild": "3.6.0",
-     "@ngtools/webpack": "16.2.11",
--    "@storybook/addon-a11y": "7.6.17",
--    "@storybook/addon-actions": "7.6.17",
+     "@ngtools/webpack": "16.2.14",
+-    "@storybook/addon-a11y": "7.6.19",
+-    "@storybook/addon-actions": "7.6.19",
 -    "@storybook/addon-designs": "7.0.9",
--    "@storybook/addon-essentials": "7.6.17",
--    "@storybook/addon-interactions": "7.6.17",
--    "@storybook/addon-links": "7.6.17",
--    "@storybook/angular": "7.6.17",
+-    "@storybook/addon-essentials": "7.6.19",
+-    "@storybook/addon-interactions": "7.6.19",
+-    "@storybook/addon-links": "7.6.19",
+-    "@storybook/angular": "7.6.19",
 -    "@storybook/jest": "0.2.3",
 -    "@storybook/testing-library": "0.2.2",
 -    "@types/argon2-browser": "1.18.1",
 -    "@types/chrome": "0.0.262",
-     "@types/duo_web_sdk": "2.7.1",
 -    "@types/firefox-webext-browser": "111.0.5",
 -    "@types/inquirer": "8.2.10",
      "@types/jest": "29.5.12",
@@ -59,7 +58,7 @@
 -    "@types/koa-json": "2.0.23",
 -    "@types/lowdb": "1.0.15",
      "@types/lunr": "2.3.7",
-     "@types/node": "18.19.29",
+     "@types/node": "20.14.8",
 -    "@types/node-fetch": "2.6.4",
      "@types/node-forge": "1.3.11",
      "@types/node-ipc": "9.2.3",
@@ -69,8 +68,8 @@
 -    "@types/retry": "0.12.5",
 +    "@types/semver": "^7.3.4",
      "@types/zxcvbn": "4.4.4",
--    "@typescript-eslint/eslint-plugin": "7.8.0",
--    "@typescript-eslint/parser": "7.8.0",
+-    "@typescript-eslint/eslint-plugin": "7.13.1",
+-    "@typescript-eslint/parser": "7.13.1",
 -    "@webcomponents/custom-elements": "1.6.0",
 -    "@yao-pkg/pkg": "^5.11.5",
      "autoprefixer": "10.4.19",
@@ -82,7 +81,7 @@
      "copy-webpack-plugin": "12.0.2",
      "cross-env": "7.0.3",
      "css-loader": "6.10.0",
-     "electron": "29.4.2",
+     "electron": "30.1.2",
 -    "electron-builder": "24.13.3",
      "electron-log": "5.0.1",
 -    "electron-reload": "2.0.0-alpha.1",
@@ -95,7 +94,7 @@
 -    "eslint-plugin-rxjs": "5.0.3",
 -    "eslint-plugin-rxjs-angular": "2.0.1",
 -    "eslint-plugin-storybook": "0.8.0",
--    "eslint-plugin-tailwindcss": "3.15.1",
+-    "eslint-plugin-tailwindcss": "3.17.4",
 -    "gulp": "4.0.2",
 -    "gulp-filter": "9.0.1",
 -    "gulp-if": "3.0.0",
@@ -108,8 +107,8 @@
 -    "husky": "9.0.11",
 -    "jest-junit": "16.0.0",
      "jest-mock-extended": "3.0.7",
--    "jest-preset-angular": "14.0.4",
--    "lint-staged": "15.2.2",
+-    "jest-preset-angular": "14.1.1",
+-    "lint-staged": "15.2.7",
      "mini-css-extract-plugin": "2.8.1",
      "node-ipc": "9.2.1",
 +    "path-browserify": "^1.0.1",
@@ -124,11 +123,11 @@
 -    "remark-gfm": "3.0.1",
      "rimraf": "5.0.7",
      "sass": "1.74.1",
-     "sass-loader": "13.3.3",
--    "storybook": "7.6.17",
+     "sass-loader": "14.2.1",
+-    "storybook": "7.6.19",
 -    "style-loader": "3.3.4",
 -    "tailwindcss": "3.4.3",
--    "ts-jest": "29.1.2",
+-    "ts-jest": "29.1.5",
      "ts-loader": "9.5.1",
      "tsconfig-paths-webpack-plugin": "4.1.0",
 -    "type-fest": "2.19.0",
@@ -136,7 +135,7 @@
      "url": "0.11.3",
 -    "util": "0.12.5",
 -    "wait-on": "7.2.0",
-     "webpack": "5.89.0",
+     "webpack": "5.92.0",
 -    "webpack-cli": "5.1.4",
 -    "webpack-dev-server": "5.0.4",
 -    "webpack-node-externals": "3.0.0"
@@ -144,7 +143,7 @@
    },
    "dependencies": {
      "@angular/animations": "16.2.12",
-@@ -158,56 +84,29 @@
+@@ -160,55 +83,28 @@
      "@angular/platform-browser": "16.2.12",
      "@angular/platform-browser-dynamic": "16.2.12",
      "@angular/router": "16.2.12",
@@ -153,7 +152,7 @@
      "@microsoft/signalr": "8.0.0",
      "@microsoft/signalr-protocol-msgpack": "8.0.0",
      "@ng-select/ng-select": "11.2.0",
-     "argon2": "0.31.0",
+     "argon2": "0.40.1",
 -    "argon2-browser": "1.18.0",
      "big-integer": "1.6.51",
 -    "bootstrap": "4.6.0",
@@ -163,7 +162,6 @@
 -    "chalk": "4.1.2",
      "commander": "11.1.0",
 -    "core-js": "3.36.1",
-     "duo_web_sdk": "github:duosecurity/duo_web_sdk",
 -    "form-data": "4.0.0",
 -    "https-proxy-agent": "7.0.2",
 -    "inquirer": "8.2.6",
@@ -191,8 +189,8 @@
 -    "qrious": "4.0.2",
      "rxjs": "7.8.1",
 -    "tabbable": "6.2.0",
-     "tldts": "6.1.22",
-     "utf-8-validate": "6.0.3",
+     "tldts": "6.1.29",
+     "utf-8-validate": "6.0.4",
      "zone.js": "0.13.3",
      "zxcvbn": "4.4.2"
    },
@@ -201,8 +199,8 @@
      "@storybook/angular": {
        "zone.js": "$zone.js"
      },
---- a/apps/desktop/desktop_native/package.json
-+++ b/apps/desktop/desktop_native/package.json
+--- clients/apps/desktop/desktop_native/napi/package.json.orig	2024-07-15 19:10:33.919215714 +0200
++++ clients/apps/desktop/desktop_native/napi/package.json	2024-07-15 19:25:13.322024338 +0200
 @@ -10,9 +10,6 @@
    },
    "author": "",
@@ -211,5 +209,5 @@
 -    "@napi-rs/cli": "2.16.2"
 -  },
    "napi": {
-     "name": "desktop_native",
+     "name": "desktop_napi",
      "triples": {

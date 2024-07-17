@@ -19,7 +19,7 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           kubefirst
-Version:        2.4.11
+Version:        2.4.12
 Release:        0
 Summary:        CLI for the KubeFirst GitOps Infrastructure & Application Delivery Platform
 License:        MIT

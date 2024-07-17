@@ -1,7 +1,7 @@
 #
 # spec file for package python-Babel
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,12 +26,12 @@
 %define oldpython python
 %{?sle15_python_module_pythons}
 Name:           python-Babel
-Version:        2.14.0
+Version:        2.15.0
 Release:        0
 Summary:        Internationalization utilities
 License:        BSD-3-Clause
 URL:            https://babel.pocoo.org/
-Source:         https://files.pythonhosted.org/packages/source/B/Babel/Babel-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/b/babel/babel-%{version}.tar.gz
 BuildRequires:  %{python_module freezegun}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module py >= 1.4.14}
@@ -46,7 +46,7 @@ Requires:       alts
 BuildRequires:  alts
 %else
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 %endif
 BuildArch:      noarch
 %ifpython2
@@ -63,7 +63,7 @@ Obsoletes:      python3-babel < %{version}
 A collection of tools for internationalizing Python applications.
 
 %prep
-%autosetup -p1 -n Babel-%{version}
+%autosetup -p1 -n babel-%{version}
 
 %build
 %pyproject_wheel

@@ -212,4 +212,12 @@
 - Disable opencl support due to boo#1213370:x</comment>
     <requestid>1179190</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>09ab85a76e1ed2fc43ffdd68de75e756</srcmd5>
+    <version>5.4.1</version>
+    <time>1721160288</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1187878</requestid>
+  </revision>
 </revisionlist>

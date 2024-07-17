@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul 16 06:11:44 UTC 2024 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Amended the .spec file
+  * Replaced hard-coded '/usr/share' with %{_datadir}  
+
+-------------------------------------------------------------------
 Mon Jul 15 08:18:35 UTC 2024 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Amended the .spec file (bsc#1227537)

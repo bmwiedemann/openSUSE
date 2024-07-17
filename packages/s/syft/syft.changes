@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Thu Jul 11 18:41:11 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.9.0:
+  * chore(deps): bump actions/setup-go from 5.0.1 to 5.0.2 (#3027)
+  * chore(deps): bump github.com/charmbracelet/lipgloss (#3028)
+  * fix: stabilize cpe sorting during collection sort (#3009)
+  * Map the downloadLocation field for PHP Composer packages
+    (#3011)
+  * chore(deps): update stereoscope to
+    e46739e217969fa67cbe8834b64bb165a10a1548 (#3013)
+  * chore(deps): bump golang.org/x/net from 0.26.0 to 0.27.0
+    (#3015)
+  * chore(deps): bump golang.org/x/mod from 0.18.0 to 0.19.0
+    (#3014)
+  * chore(deps): bump actions/upload-artifact from 4.3.3 to 4.3.4
+    (#3017)
+  * chore(deps): bump github.com/google/go-containerregistry
+    (#3019)
+  * chore(deps): bump github.com/adrg/xdg from 0.4.0 to 0.5.0
+    (#3020)
+  * chore(deps): update CPE dictionary index (#3016)
+  * Infer the package type from ELF package notes (#3008)
+  * chore(deps): update tools to latest versions (#3003)
+  * chore(deps): update CPE dictionary index (#3002)
+  * chore(deps): bump github.com/docker/docker (#3006)
+  * chore(deps): bump github/codeql-action from 3.25.10 to 3.25.11
+    (#3004)
+  * chore(deps): bump github.com/saferwall/pe from 1.5.3 to 1.5.4
+    (#3005)
+  * feat: version 3 support for swift package manager of the
+    resolved files (#3001)
+  * chore(deps): bump github.com/spdx/tools-golang from 0.5.4 to
+    0.5.5 (#2999)
+  * chore(deps): bump github.com/docker/docker (#2994)
+  * Add detection of Erlang in Alpine linux (#2996)
+  * chore(deps): update tools to latest versions (#2991)
+  * chore(deps): update stereoscope to
+    753b5576fe42bc007b22108ad7911d1729957a46 (#2992)
+  * chore(deps): bump github.com/charmbracelet/bubbletea (#2995)
+
+-------------------------------------------------------------------
 Tue Jun 25 04:58:18 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.8.0:

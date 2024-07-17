@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Jul 15 12:50:54 UTC 2024 - okurz@suse.com
+
+- Update to version 4.6.1721042877.3f4dbfde:
+  * Move render_specific_not_found to SharedHelpers
+  * Prevent failure when restarting Minion-related services
+  * Fix links in Branding.asciidoc
+  * Extend and improve tests for job overview API
+  * Support parameters `arch` and `machine` in job overview API
+  * Prevent live view viewers from making openQA unresponsive
+  * Avoid relying on project-level environment variables in CircleCI
+  * Bump esquery from 1.5.0 to 1.6.0
+  * Use Codecov-related env variables from orga context
+
+-------------------------------------------------------------------
 Mon Jul 08 17:14:25 UTC 2024 - okurz@suse.com
 
 - Update to version 4.6.1720446867.5cfa922b:

@@ -19,15 +19,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-argcomplete
-Version:        3.3.0
+Version:        3.4.0
 Release:        0
 Summary:        Bash tab completion for argparse
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/kislyuk/argcomplete
 Source:         https://files.pythonhosted.org/packages/source/a/argcomplete/argcomplete-%{version}.tar.gz
-# Use correct place for auxiliary bashrc.sh file from pexpect
-Patch3:         bash-repl.patch
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pexpect}
 BuildRequires:  %{python_module pip}

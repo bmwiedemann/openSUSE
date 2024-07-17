@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Sat Jul 13 11:14:49 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 6.0.1:
+  The LXC team is pleased to announce the release of LXC 6.0.1!
+  This is the first bugfix release for LXC 6.0 which is supported
+  until June 2029.
+  As usual this bugfix releases focus on stability and hardening.
+  * Highlights
+    - Fixed some build tooling issues
+    - Fixed startup failures on system without IPv6 support
+    - Updated AppArmor rules to avoid potential warnings
+  * Detailed changelog
+    - meson: fix build on NixOS
+    - github: test the lxc multicall binary builds too
+    - lxc/network: handle non-existing sysctl /disable_ipv6
+    - network: netdev_configure_server_veth: reduce scope of
+      disable_ipv6_fd/path vars
+    - Update lxc-attach.sgml.in
+    - Update lxc-execute.sgml.in
+    - Update lxc-{attach,execute}.sgml.in
+    - Update lxc-execute.sgml.in
+    - lxc-local: fix use of LXC_PATH before init
+    - lxc-local: fix incorrect path to templates file
+    - lxc-local: remove check for template existence before
+      extraction
+    - apparmor: fix rule path pattern specification syntax
+    - apparmor: regenerate rules
+    - apparmor: use /{,} instead of /
+    - apparmor: regenerate rules
+    - github: start using ubuntu-24.04
+    - github: properly check apparmor profile changes
+    - lxc/storage/zfs: ignore false-positive use-after-free warning
+    - github: exclude clang & ubuntu-24.04 combination
+    - meson: fix build with -Dtools-multicall=true on NixOS
+
+-------------------------------------------------------------------
 Sun Apr 14 13:10:19 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - fix builds on 15.5 or 5.5

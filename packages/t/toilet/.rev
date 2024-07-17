@@ -7,4 +7,12 @@
     <comment> </comment>
     <requestid>779542</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>41ac558260f3c6039516a8eb17d431ef</srcmd5>
+    <version>0.3</version>
+    <time>1721160137</time>
+    <user>anag+factory</user>
+    <comment>- Adjust patching of bootstrap to work with Automake 1.17, too.</comment>
+    <requestid>1187601</requestid>
+  </revision>
 </revisionlist>

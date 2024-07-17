@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jul 10 08:00:19 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 6.18:
+  * Remove unnecessary line from #154 fix in App.pm
+  * Change default clamtk user directory to .config/clamtk (Github #161)
+  * Fix for scanned directories not showing in logs
+  * Update App.pm to support $XDG_CONFIG_HOME environnement variable (Github #154)
+
+-------------------------------------------------------------------
 Mon Feb 26 10:57:59 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

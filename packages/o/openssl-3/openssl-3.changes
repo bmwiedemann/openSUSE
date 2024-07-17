@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jul 15 05:52:07 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add reproducible.patch to fix bsc#1223336
+  aes-gcm-avx512.pl: fix non-reproducibility issue
+
+-------------------------------------------------------------------
 Wed May 29 13:30:21 UTC 2024 - Martin Wilck <mwilck@suse.com>
 
 - Fix HDKF key derivation (bsc#1225291, gh#openssl/openssl#23448,

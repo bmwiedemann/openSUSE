@@ -1,7 +1,7 @@
-Index: osinfo-db-20240510/os/opensuse.org/opensuse-15.6.xml
+Index: osinfo-db-20240701/os/opensuse.org/opensuse-15.6.xml
 ===================================================================
 --- /dev/null
-+++ osinfo-db-20240510/os/opensuse.org/opensuse-15.6.xml
++++ osinfo-db-20240701/os/opensuse.org/opensuse-15.6.xml
 @@ -0,0 +1,247 @@
 +<?xml version="1.0"?>
 +<libosinfo version="0.0.1">
@@ -35,7 +35,7 @@ Index: osinfo-db-20240510/os/opensuse.org/opensuse-15.6.xml
 +    <distro>opensuse</distro>
 +    <upgrades id="http://opensuse.org/opensuse/15.5"/>
 +    <derives-from id="http://opensuse.org/opensuse/15.5"/>
-+    <release-status>prerelease</release-status>
++    <release-date>2024-06-12</release-date>
 +    <variant id="netinst">
 +      <name>openSUSE Leap 15.6</name>
 +      <name xml:lang="ko">&#xC624;&#xD508;&#xC218;&#xC138; &#xB9BD; 15.6</name>

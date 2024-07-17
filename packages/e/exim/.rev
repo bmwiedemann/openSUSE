@@ -902,4 +902,22 @@ argument by removing the curly brackets (shell syntax).</comment>
     <comment></comment>
     <requestid>1149269</requestid>
   </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>e6bef7e46ee9d57c5ee9cb07c3b110dd</srcmd5>
+    <version>4.98</version>
+    <time>1721160153</time>
+    <user>anag+factory</user>
+    <comment>- update to 4.98 (bsc#1227423, CVE-2024-39929):
+  * The dkim_status ACL condition may now be used in data ACLs
+  * The dkim_verbose logging control also enables logging of signing
+  * The dkim_timestamps signing option now accepts zero to include
+    a current timestamp but no expiry timestamp.
+  * The recipients_max main option is now expanded.
+  * Setting variables for &quot;exim -be&quot; can set a tainted value.
+  * A dns:fail event.
+  * The dsearch lookup supports search for a sub-path.
+  * Include mailtest utility for simple connection checking.
+  * Add SMTP WELLKNOWN extension.</comment>
+    <requestid>1187596</requestid>
+  </revision>
 </revisionlist>

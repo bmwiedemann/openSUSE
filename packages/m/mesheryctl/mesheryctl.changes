@@ -1,7 +1,18 @@
 -------------------------------------------------------------------
+Tue Jul 16 06:04:07 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.7.83:
+  * General
+    - add sistent docs @codeSafari10 (#11393)
+    - move dapr relationship to model folder @codeSafari10 (#11388)
+  * Meshery CLI
+    - Updated filter view command to accept multi-word filters and
+      filter ID @Aviral0702 (#11336)
+
+-------------------------------------------------------------------
 Sat Jul 13 12:56:26 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
-- update to 0.7.81:
+- update to 0.7.82:
   * Meshery UI
     - Revert "Bump @reduxjs/toolkit from 1.9.5 to 2.2.6 in /ui"
       @Yashsharma1911 (#11383)

@@ -1,7 +1,7 @@
 #
 # spec file for package exim
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,7 +31,7 @@
 %bcond_with     dane
 %endif
 Name:           exim
-Version:        4.97.1
+Version:        4.98
 Release:        0
 Summary:        The Exim Mail Transfer Agent, a Replacement for sendmail
 License:        GPL-2.0-or-later

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Jul 15 11:10:55 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.15.0
+  * Babel 2.15.0 will require Python 3.8 or newer
+  * CLDR: Upgrade to CLDR 44
+  * Dates: Support for the "fall back to short format"
+    logic for time delta formatting
+  * Message: More versatile .po IO functions
+  * Numbers: Improved support for alternate spaces
+    when parsing numbers
+  * Upgrade GitHub Actions
+  * The Unicode license is now included in `locale-data`
+    and in the documentation
+- Adjust upstream source name in spec file
+
+-------------------------------------------------------------------
 Wed Dec 27 09:37:51 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.14.0:

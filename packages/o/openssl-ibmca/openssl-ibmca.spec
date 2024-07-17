@@ -162,10 +162,10 @@ cp -p %{_datadir}/%{name}/openssl-ibmca.sectiondef.txt %{sslengcnf}/openssl-ibmc
 cp -p %{_datadir}/%{name}/openssl-ibmca.enginedef.cnf %{sslengdef}/openssl-ibmca.cnf
 
 %if "%{flavor}" == ""
-if [ -f "/usr/share/doc/packages/openssl-ibmca/ibmca-engine-opensslconfig" ]; then
-   cp -p /usr/share/doc/packages/openssl-ibmca/ibmca-engine-opensslconfig /usr/share/doc/packages/openssl-ibmca/ibmca-engine-opensslconfig.orig
-   sed -e 's/ossl-modules/engines-3/' /usr/share/doc/packages/openssl-ibmca/ibmca-engine-opensslconfig.orig > /usr/share/doc/packages/openssl-ibmca/ibmca-engine-opensslconfig
-   rm /usr/share/doc/packages/openssl-ibmca/ibmca-engine-opensslconfig.orig
+if [ -f "%{_datadir}/doc/packages/openssl-ibmca/ibmca-engine-opensslconfig" ]; then
+   cp -p %{_datadir}/doc/packages/openssl-ibmca/ibmca-engine-opensslconfig %{_datadir}/doc/packages/openssl-ibmca/ibmca-engine-opensslconfig.orig
+   sed -e 's/ossl-modules/engines-3/' %{_datadir}/doc/packages/openssl-ibmca/ibmca-engine-opensslconfig.orig > %{_datadir}/doc/packages/openssl-ibmca/ibmca-engine-opensslconfig
+   rm %{_datadir}/doc/packages/openssl-ibmca/ibmca-engine-opensslconfig.orig
 fi
 %endif
 

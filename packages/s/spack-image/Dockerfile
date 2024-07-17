@@ -16,8 +16,8 @@
 #!ExclusiveArch: aarch64 x86_64
 #!BuildTag: opensuse/bci/spack:0.22
 #!BuildTag: opensuse/bci/spack:0.22-%RELEASE%
-#!BuildTag: opensuse/bci/spack:0.22.0
-#!BuildTag: opensuse/bci/spack:0.22.0-%RELEASE%
+#!BuildTag: opensuse/bci/spack:0.22.1
+#!BuildTag: opensuse/bci/spack:0.22.1-%RELEASE%
 #!BuildTag: opensuse/bci/spack:latest
 
 FROM opensuse/tumbleweed:latest
@@ -63,7 +63,7 @@ RUN set -euo pipefail; mkdir -p /root/.spack \
     && rm -rf /root/*.* /run/nologin
 
 # sanity check that the version from the tag is equal to the version of spack that we expect
-RUN set -euo pipefail; [ "$(rpm -q --qf '%{version}' spack | cut -d '.' -f -3)" = "0.22.0" ]
+RUN set -euo pipefail; [ "$(rpm -q --qf '%{version}' spack | cut -d '.' -f -3)" = "0.22.1" ]
 
 WORKDIR /root
 SHELL ["docker-shell"]

@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Jul 13 10:58:47 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 6.0.1 LTS:
+  * Some of the highlights for this release are:
+    - Support for running multiple instances of LXCFS
+      (--runtime-dir)
+    - Detect systems that has a Yama policy preventing reading
+      process personalities
+  * Detailed changelog
+    - github: add lxcfs live upgrade compatibility test
+    - proc: checks system security policy before trying to get
+      personalities
+    - lxcfs/bindings: Refactor RUNTIME_PATH so that it can be
+      overridden on startup
+    - lxcfs/bindings: add a flag for overriding the runtime dir
+    - github: update coverity test to use Ubuntu 22.04
+    - README.md: add info about how to collect a core dump
+    - github: add ISSUE_TEMPLATE.md
+    - tests: Update for multiple runtime paths
+
+-------------------------------------------------------------------
 Sun Apr 14 08:28:30 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 6.0.0:

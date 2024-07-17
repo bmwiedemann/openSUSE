@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jul 12 10:02:10 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- fix version output: use actual hash and prefix version with a 'v'
+  This fixes the following warning:
+  `# WARNING: the client version does not match the server version.
+  Please update client`
+- change to using obs_scm to have velero.obsinfo which contains the
+  commit hash required by the ldflags
+
+-------------------------------------------------------------------
 Mon Jun 17 19:16:43 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.14.0:

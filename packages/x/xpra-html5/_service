@@ -11,7 +11,7 @@
 
     -->
     <param name="versionrewrite-pattern">v9.0</param>
-    <param name="versionrewrite-replacement">13.0</param>
+    <param name="versionrewrite-replacement">15.0</param>
     <!--
     <param name="versionrewrite-pattern">v(.*)</param>
     -->

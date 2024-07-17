@@ -1,5 +1,5 @@
 <services>
-  <service name="obs_scm" mode="disabled">
+  <service name="obs_scm" mode="manual">
     <param name="url">https://github.com/openSUSE/cobbler.git</param>
     <param name="scm">git</param>
     <param name="versionformat">@PARENT_TAG@</param>
@@ -7,7 +7,7 @@
     <param name="revision">openSUSE/factory</param>
     <param name="extract">cobbler.spec</param>
   </service>
-  <service name="set_version" mode="disabled"/>
+  <service name="set_version" mode="manual"/>
   <service name="tar" mode="buildtime"/>
   <service name="recompress" mode="buildtime">
     <param name="compression">gz</param>

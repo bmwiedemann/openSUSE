@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jul 15 15:51:49 CEST 2024 - ma@suse.com
+
+- Fix stomp header regex to include '-' (bsc#1227793)
+- version 0.6.4
+
+-------------------------------------------------------------------
 Fri Oct 23 21:31:23 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - singlespec in Tumbleweed must support multiple python3 flavors

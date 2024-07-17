@@ -17,7 +17,7 @@
 
 
 Name:           swayimg
-Version:        2.2
+Version:        2.4
 Release:        0
 Summary:        Image viewer for Sway/Wayland
 License:        MIT
@@ -26,8 +26,12 @@ Source:         https://github.com/artemsen/swayimg/archive/refs/tags/v%{version
 BuildRequires:  giflib-devel
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  meson
+BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
+%if 0%{?suse_version} > 1600
 BuildRequires:  pkgconfig(OpenEXR) >= 3.1
+BuildRequires:  pkgconfig(libjxl)
+%endif
 BuildRequires:  pkgconfig(bash-completion)
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(fontconfig)
@@ -35,7 +39,6 @@ BuildRequires:  pkgconfig(json-c)
 BuildRequires:  pkgconfig(libavif)
 BuildRequires:  pkgconfig(libexif)
 BuildRequires:  pkgconfig(libheif)
-BuildRequires:  pkgconfig(libjxl)
 BuildRequires:  pkgconfig(libpng16)
 BuildRequires:  pkgconfig(librsvg-2.0)
 BuildRequires:  pkgconfig(libtiff-4)
@@ -56,13 +59,16 @@ opening the image directly in a terminal window.
 %autosetup
 
 %build
-%meson -Dversion=%{version}
+%meson \
+%if 0%{?suse_version} < 1600
+  -Dexr=disabled \
+  -Djxl=disabled \
+%endif
+  -Dversion=%{version}
 %meson_build
 
 %install
 %meson_install
-
-%check
 
 %files
 %license LICENSE

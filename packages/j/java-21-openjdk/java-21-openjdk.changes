@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul  2 14:54:49 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Require file for posttrans phase of the headless subpackage
+  (bsc#1227298)
+
+-------------------------------------------------------------------
 Thu Apr 18 13:25:02 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Update to upstream tag jdk-21.0.3+9 (April 2024 CPU)

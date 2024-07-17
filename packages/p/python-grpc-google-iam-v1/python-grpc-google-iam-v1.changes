@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jul 15 13:33:09 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.13.1
+  * **deps:** Require protobuf >= 3.20.2, protobuf < 6 (ac15e1c)
+  * Regenerate pb2 files for compatibility with protobuf 5.x (ac15e1c)
+
+-------------------------------------------------------------------
 Mon Feb 26 19:49:45 UTC 2024 - Robert Schweikert <rjschwei@suse.com>
 
 - Include in SLE 15 SP4 and later (jsc#PED-6697)

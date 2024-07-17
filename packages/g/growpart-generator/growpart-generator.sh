@@ -39,7 +39,7 @@ Type=oneshot
 RemainAfterExit=yes
 # Exit code 1 means "NOCHANGE"
 SuccessExitStatus=1
-ExecStart=/bin/sh -c "/usr/sbin/growpart ${parent_dev} ${partnum}"
+ExecStart=/usr/sbin/growpart ${parent_dev} ${partnum}
 TimeoutSec=0
 EOF
 	ln -sf "${UNIT_DIR}/growpart@${dev_esc}.service" "${UNIT_DIR}/${mnt_esc}.mount.wants/"
