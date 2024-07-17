@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jul 17 05:29:27 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2024.07.16
+  * Support auto-tty and no_color-tty for --color
+  * youtube: Avoid poToken experiment player responses
+
+-------------------------------------------------------------------
 Wed Jul 10 07:18:59 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2024.07.09
