@@ -57,6 +57,9 @@ ExclusiveArch:  donotbuild
 %if "%flavor" != "python312"
 %define skip_python312 1
 %endif
+%if "%flavor" != "python313"
+%define skip_python313 1
+%endif
 %else
 # SLE/Leap
 %if "%flavor" == "python3"

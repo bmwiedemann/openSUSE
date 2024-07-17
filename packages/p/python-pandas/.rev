@@ -701,4 +701,12 @@ All packages broken by this update should be fixed now.</comment>
 - Skip also test_plot_scatter_shape (gh#pandas-dev/pandas#58851)</comment>
     <requestid>1179390</requestid>
   </revision>
+  <revision rev="67" vrev="4">
+    <srcmd5>04a652327500f285c8df4ea64cb1438f</srcmd5>
+    <version>2.2.2</version>
+    <time>1721222058</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1187906</requestid>
+  </revision>
 </revisionlist>

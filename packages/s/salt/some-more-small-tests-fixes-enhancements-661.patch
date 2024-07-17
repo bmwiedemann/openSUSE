@@ -1,0 +1,152 @@
+From e4333e2000b3ee92c1df7f9af57133706b48ca66 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Pablo=20Su=C3=A1rez=20Hern=C3=A1ndez?=
+ <psuarezhernandez@suse.com>
+Date: Mon, 8 Jul 2024 16:58:28 +0100
+Subject: [PATCH] Some more small tests fixes/enhancements (#661)
+
+* test_system: prevent errors when systemd-timesyncd service is masked
+
+* test_custom_module: disable tests when running on Salt Bundle
+
+* Fix debian 12 package tests
+
+* pam: use sys.executable in case /usr/bin/python3 does not exist
+
+* pam: add unit test to ensure sys.executable is used
+
+* Use proper method to calculate the path to Python interpreter
+
+---------
+
+Co-authored-by: Megan Wilhite <mwilhite@vmware.com>
+---
+ salt/auth/pam.py                              | 19 ++++++++++++++++++-
+ tests/integration/cli/test_custom_module.py   |  6 ++++++
+ .../pytests/functional/modules/test_system.py |  4 +++-
+ .../functional/states/pkgrepo/test_debian.py  |  4 ++++
+ tests/pytests/unit/auth/test_pam.py           | 19 +++++++++++++++++++
+ 5 files changed, 50 insertions(+), 2 deletions(-)
+
+diff --git a/salt/auth/pam.py b/salt/auth/pam.py
+index 12af29bbdb8..25e080861b7 100644
+--- a/salt/auth/pam.py
++++ b/salt/auth/pam.py
+@@ -223,12 +223,29 @@ def authenticate(username, password):
+ 
+     ``password``: the password in plain text
+     """
++
++    def __find_pyexe():
++        """
++        Provides the path to the Python interpreter to use.
++
++        First option: the system's Python 3 interpreter
++        If not found, it fallback to use the running Python interpreter (sys.executable)
++
++        This can be overwritten via "auth.pam.python" configuration parameter.
++        """
++        if __opts__.get("auth.pam.python"):
++            return __opts__.get("auth.pam.python")
++        elif os.path.exists("/usr/bin/python3"):
++            return "/usr/bin/python3"
++        else:
++            return sys.executable
++
+     env = os.environ.copy()
+     env["SALT_PAM_USERNAME"] = username
+     env["SALT_PAM_PASSWORD"] = password
+     env["SALT_PAM_SERVICE"] = __opts__.get("auth.pam.service", "login")
+     env["SALT_PAM_ENCODING"] = __salt_system_encoding__
+-    pyexe = pathlib.Path(__opts__.get("auth.pam.python", "/usr/bin/python3")).resolve()
++    pyexe = pathlib.Path(__find_pyexe()).resolve()
+     pyfile = pathlib.Path(__file__).resolve()
+     if not pyexe.exists():
+         log.error("Error 'auth.pam.python' config value does not exist: %s", pyexe)
+diff --git a/tests/integration/cli/test_custom_module.py b/tests/integration/cli/test_custom_module.py
+index 6c048e30cd2..a4863b584f8 100644
+--- a/tests/integration/cli/test_custom_module.py
++++ b/tests/integration/cli/test_custom_module.py
+@@ -29,12 +29,18 @@
+         olleh
+ """
+ 
++import sys
++
+ import pytest
+ 
+ from tests.support.case import SSHCase
+ 
+ 
+ @pytest.mark.skip_on_windows
++@pytest.mark.skipif(
++    "venv-salt-minion" in sys.executable,
++    reason="Skipping for Salt Bundle (tests are not compatible)",
++)
+ class SSHCustomModuleTest(SSHCase):
+     """
+     Test sls with custom module functionality using ssh
+diff --git a/tests/pytests/functional/modules/test_system.py b/tests/pytests/functional/modules/test_system.py
+index 3b669c46afd..2cd03a3a3e4 100644
+--- a/tests/pytests/functional/modules/test_system.py
++++ b/tests/pytests/functional/modules/test_system.py
+@@ -61,7 +61,9 @@ def setup_teardown_vars(file, service, system):
+         _machine_info = False
+ 
+     try:
+-        _systemd_timesyncd_available_ = service.available("systemd-timesyncd")
++        _systemd_timesyncd_available_ = service.available(
++            "systemd-timesyncd"
++        ) and not service.masked("systemd-timesyncd")
+         if _systemd_timesyncd_available_:
+             res = service.stop("systemd-timesyncd")
+             assert res
+diff --git a/tests/pytests/functional/states/pkgrepo/test_debian.py b/tests/pytests/functional/states/pkgrepo/test_debian.py
+index d025643aa4c..87716706d5e 100644
+--- a/tests/pytests/functional/states/pkgrepo/test_debian.py
++++ b/tests/pytests/functional/states/pkgrepo/test_debian.py
+@@ -622,6 +622,10 @@ class Repo:
+         if (
+             self.grains["osfullname"] == "Ubuntu"
+             and self.grains["osrelease"] == "22.04"
++            or "Debian" in self.grains["osfullname"]
++            and self.grains["osrelease"] == "12"
++            # only need to use alt repo until
++            # we release Debian 12 salt packages
+         ):
+             return True
+         return False
+diff --git a/tests/pytests/unit/auth/test_pam.py b/tests/pytests/unit/auth/test_pam.py
+index 22c7f438d63..35f599e3d17 100644
+--- a/tests/pytests/unit/auth/test_pam.py
++++ b/tests/pytests/unit/auth/test_pam.py
+@@ -1,3 +1,5 @@
++import tempfile
++
+ import pytest
+ 
+ import salt.auth.pam
+@@ -45,3 +47,20 @@ def test_if_pam_acct_mgmt_returns_zero_authenticate_should_be_true(mock_pam):
+             )
+             is True
+         )
++
++
++def test_if_sys_executable_is_used_to_call_pam_auth(mock_pam):
++    class Ret:
++        returncode = 0
++
++    with patch(
++        "salt.auth.pam.subprocess.run", return_value=Ret
++    ) as run_mock, tempfile.NamedTemporaryFile() as f, patch(
++        "salt.auth.pam.sys.executable", f.name
++    ), patch(
++        "os.path.exists", return_value=False
++    ):
++        assert salt.auth.pam.auth(
++            username="fnord", password="fnord", service="login", encoding="utf-8"
++        )
++        assert f.name in run_mock.call_args_list[0][0][0]
+-- 
+2.45.2
+
+

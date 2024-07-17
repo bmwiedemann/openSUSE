@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jul 16 12:31:17 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.3.1:
+  * Bumped minimum Go version to 1.21.
+  * Added support for authenticated media.
+  * Added /powerlevel command for managing power levels.
+  * Disabled logging by default.
+  * Changed default log directory to ~/.local/state/gomuks on Linux.
+
+-------------------------------------------------------------------
 Thu Jul  4 11:20:11 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Revendor to pull in fresh golang.org/x/image/tiff to fix

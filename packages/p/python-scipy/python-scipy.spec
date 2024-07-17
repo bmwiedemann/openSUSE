@@ -189,11 +189,16 @@ export FC=gfortran-10
 %endif
 # makes sure that the cython and pythran commands from the correct flavor are in PATH
 %python_flavored_alternatives
+origpath="$PATH"
 %{python_expand #
 %if %{with hpc}
+export PATH=$origpath
+mkdir build/hpcflavorbin
 py_ver=%{$python_version}
 %hpc_setup
 module load $python-numpy
+ln -s %{_bindir}/f2py-%{$python_bin_suffix} build/hpcflavorbin/f2py
+export PATH="$PWD/build/hpcflavorbin/:$PATH"
 %endif
 export CFLAGS="%{optflags} -fno-strict-aliasing"
 %{$python_pyproject_wheel}

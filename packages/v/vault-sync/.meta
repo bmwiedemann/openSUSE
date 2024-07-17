@@ -1,0 +1,14 @@
+<package name="vault-sync" project="openSUSE:Factory">
+  <title>Synchronize secrets between HashiCorp Vault instances</title>
+  <description>A poor man's tool to replicate secrets from one Vault instance to another.
+
+How it works
+
+When vault-sync starts, it does a full copy of the secrets from the source Vault instance to the destination Vault instance. Periodically, vault-sync does a full reconciliation to make sure all the destination secrets are up to date.
+
+At the same time, you can manually enable the Socket Audit Device for the source Vault, so Vault will be sending audit logs to vault-sync. Using these audit logs, vault-sync keeps the secrets in the destination Vault up to date. Note that vault-sync does not create or delete the audit devices by itself.
+
+It is possible to use the same Vault instance as the source and the destination. You can use this feature to replicate a &quot;folder&quot; of secrets to another &quot;folder&quot; on the same server. You need to specify different prefixes (src.prefix and dst.prefix) in the configuration file to make sure the source and the destination do not overlap.</description>
+  <devel project="security" package="vault-sync"/>
+  <url>https://github.com/pbchekin/vault-sync</url>
+</package>

@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Thu Jul 04 12:02:17 UTC 2024 - aplanas@suse.com
+
+- Update to version 1+git20240704.a2c5a26:
+  * Complain if fde-tools is missing
+  * Remove rpm scriptlets
+  * Remove is_transactional check
+  * Call regenerate-initrd-posttrans
+  * Remove pcrlock files older than 1 week
+  * Measure initial state from backup
+  * Remove useless TODO comments
+  * Rename variable to SDB_ADD_INITIAL_COMPONENT
+  * Fix transactional check
+  * Add system / snapper as prefix for tw/grub2-bls
+  * Compose the entry file name in a single place
+  * Make 'invert' a generic case
+  * Make free space for new kernel / initrd
+  * Replace match with test in jq
+  * grub: add grub drive in initrd path
+  * grub: blscfg is included in the image
+  * Fix pcrlock_manual_raw call
+  * Add emacs .dir-locals.el
+  * Show success message
+  * Use a recovery pin for re-enrollment
+  * grub2: entries predictions as a single component
+  * grub2: remove duplicate function
+  * Add blscfg.mod in the ESP and update predictions
+  * grub2: generate pcrlock predictions
+  * Fix some typos
+
+-------------------------------------------------------------------
 Tue May 14 12:12:16 UTC 2024 - lnussel@suse.com
 
 - Update to version 1+git20240514.56dc89c:

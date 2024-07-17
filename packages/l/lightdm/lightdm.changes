@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jul 12 09:30:03 UTC 2024 - Martin Jambor <mjambor@suse.com>
+
+- Add typecasts to avoid passing incompatible pointer types to
+  opensuse_sysconfig_get_string and opensuse_sysconfig_get_boolean to
+  our patch lightdm-sysconfig-support.patch so that the package
+  compiles with compilers which by default enforce C99 standard such
+  as GCC 14. [boo#1221704]
+
+-------------------------------------------------------------------
 Thu Mar 16 15:25:32 UTC 2023 - Callum Farmer <gmbr3@opensuse.org>
 
 - Split bash-completion to separate sub-package

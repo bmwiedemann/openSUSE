@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jul 16 16:12:25 UTC 2024 - Joan Torres <joan.torres@suse.com>
+
+- Build kernel module considering the different flavors an arch can have.
+
+-------------------------------------------------------------------
 Wed May  8 08:03:51 UTC 2024 - Joan Torres <joan.torres@suse.com>
 
 - With the latest update these patches are not needed anymore:

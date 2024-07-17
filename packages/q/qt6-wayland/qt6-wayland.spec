@@ -40,6 +40,9 @@ Source0:        https://download.qt.io/official_releases/qt/%{short_version}/%{r
 Source99:       qt6-wayland-rpmlintrc
 # PATCH-FIX-UPSTREAM
 Patch1:         0001-Client-Ensure-that-guessed-popup-parent-has-a-shell-.patch
+Patch2:         0001-client-Guard-against-windows-being-on-a-null-screen.patch
+# https://codereview.qt-project.org/c/qt/qtwayland/+/574983
+Patch3:         0002-Client-Improve-thread-safety-determining-window-size.patch
 BuildRequires:  pkgconfig
 BuildRequires:  qt6-core-private-devel
 BuildRequires:  qt6-gui-private-devel
@@ -164,7 +167,6 @@ Summary:        Collection of build features used by qt6-wayland libraries
 %description -n qt6-waylandglobal-private-devel
 This package contains enabled features information shared by all the
 qt6-wayland libraries.
-
 
 ### Private only libraries ###
 

@@ -86,6 +86,13 @@ Patch403:       Revert-changes-from-3.18.5-that-break-hp-setup-for-f.patch
 # PATCH-FIX-UPSTREAM: https://bugs.launchpad.net/hplip/+bug/1879445
 Patch404:       hplip-3.20.6-python-includes.patch
 Patch500:       hplip-missing-drivers.patch
+# PATCH-FIX-UPSTREAM boo#1225777
+Patch601:       hplip-pserror-c99.patch
+Patch602:       hplip-scan-hpaio-include.patch
+Patch603:       hplip-scan-orblite-c99.patch
+Patch604:       hplip-sclpml-strcasestr.patch
+Patch605:       hplip-hpaio-gcc14.patch
+
 BuildRequires:  %{pymod devel}
 BuildRequires:  %{pymod qt5-devel}
 BuildRequires:  %{pymod xml}
@@ -331,6 +338,11 @@ This sub-package is only required by developers.
 %patch -P 403 -p1
 %patch -P 404 -p1
 %patch -P 500 -p1
+%patch -P 601 -p1
+%patch -P 602 -p1
+%patch -P 603 -p1
+%patch -P 604 -p1
+%patch -P 605 -p1
 # replace "env" shebang and "/usr/bin/python" with real executable
 find . -name '*.py' -o -name pstotiff | \
     xargs -n 1 sed -i '1s,^#!\(%{_bindir}/env python\|%{_bindir}/python\),#!%{pyexe},'

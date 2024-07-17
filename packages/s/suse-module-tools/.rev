@@ -792,4 +792,19 @@ source service setup which messed up my spec file.
   * udevrules: activate CPUs on hotplug for s390, too (bsc#1224400) (forwarded request 1183024 from mwilck)</comment>
     <requestid>1183025</requestid>
   </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>47e101ffcd5f3908e393864717bdb9c9</srcmd5>
+    <version>16.0.47</version>
+    <time>1721222039</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 16.0.47:
+  * rpm scriptlets: fix shellcheck warnings
+- Update to version 16.0.46:
+  * Support for bootloaders that follow the boot loader specification
+    in particular systemd-boot (bsc#1226122)
+  * Spec file: obsolete sdbootutil-rpm-scriptlets, the scriptlets
+    in suse-module-tools-scriptlets have modified to support the
+    systemd-boot / sdbootutil use case, too (forwarded request 1185244 from mwilck)</comment>
+    <requestid>1185245</requestid>
+  </revision>
 </revisionlist>

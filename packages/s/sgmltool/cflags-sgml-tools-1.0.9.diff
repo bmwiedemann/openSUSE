@@ -1,17 +1,37 @@
 --- sgml-tools-1.0.9/Makefile.in.~1~	2005-10-10 11:46:17.000000000 +0200
 +++ sgml-tools-1.0.9/Makefile.in	2005-10-10 14:05:24.000000000 +0200
+--- sgml-tools-1.0.9.orig/Makefile.in
++++ sgml-tools-1.0.9/Makefile.in
+@@ -34,7 +34,7 @@ all: gen
+ ifeq ($(BUILD_SGMLSASP), true)
+ 	@echo "Compiling the SGML parsing tools (in sgmls-1.1/)..."
+ 	( cd sgmls-1.1 ; \
+-	  $(MAKE) OPTIMIZE="$(OPTIMIZE)" sgmlsasp )
++	  $(MAKE) CFLAGS="$(CFLAGS)"  OPTIMIZE="$(OPTIMIZE)" sgmlsasp )
+ endif
+ ifeq ($(BUILD_NSGMLS), true)
+ 	@echo "Compiling the SGML parsing tools (in sp/)..."
 @@ -49,10 +49,10 @@
  endif
  	@echo "Compiling preprocessor (in sgmlpre/)..."
  	( cd sgmlpre ; \
 -	  $(MAKE) CFLAGS="$(OPTIMIZE)" LEX=flex sgmlpre || exit -1 )
-+	  $(MAKE) OPTIMIZE="$(OPTIMIZE)" LEX=flex sgmlpre || exit -1 )
++	  $(MAKE) CFLAGS="$(CFLAGS)" OPTIMIZE="$(OPTIMIZE)" LEX=flex sgmlpre || exit -1 )
  	@echo "Compiling RTF conversion tools (in rtf-fix/)..."
  	( cd rtf-fix ; \
 -	  $(MAKE) CFLAGS="$(OPTIMIZE)" || exit -1 )
-+	  $(MAKE) OPTIMIZE="$(OPTIMIZE)" || exit -1 )
++	  $(MAKE) CFLAGS="$(CFLAGS)" OPTIMIZE="$(OPTIMIZE)" || exit -1 )
  
  install::
  	@echo "Installing binaries in $(bindir) ..."
-
-Diff finished.  Mon Oct 10 14:05:44 2005
+--- sgml-tools-1.0.9.orig/sgmls-1.1/Makefile
++++ sgml-tools-1.0.9/sgmls-1.1/Makefile
+@@ -21,7 +21,7 @@ INCLUDE=
+ OPTIMIZE=-O
+ DEBUG=
+ WARN=
+-CFLAGS=$(DEBUG) $(INCLUDE) $(WARN) $(PROFILE) $(OPTIMIZE)
++CFLAGS=$(CFLAGS) $(DEBUG) $(INCLUDE) $(WARN) $(PROFILE) $(OPTIMIZE)
+ LDFLAGS=$(DEBUG) $(PROFILE)
+ # Additional libraries needed.
+ # Ultrix needs -li

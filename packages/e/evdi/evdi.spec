@@ -18,6 +18,7 @@
 
 %define _dllibdir %{_libdir}/displaylink
 %define lname   libevdi1
+
 Name:           evdi
 Release:        0
 Version:        1.14.4
@@ -34,6 +35,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libdrm)
 # needssslcertforbuild
 %kernel_module_package -p %{_sourcedir}/evdi-kmp-preamble -c %{_sourcedir}/_projectcert.crt
+%define kver %(uname -r | sed 's/-default//')
 
 %description
 The Extensible Virtual Display Interface (EVDI) is a Linux kernel module
@@ -80,8 +82,17 @@ popd
 
 pushd module
 sed -i 's:/kernel/drivers/gpu/drm/evdi:/extra:' Makefile
-%make_build
 mv LICENSE LICENSE.module
+set -- *
+mkdir source
+mv "$@" source/
+mkdir obj
+for flavor in %flavors_to_build; do
+       rm -rf obj/$flavor
+       cp -r source obj/$flavor
+       make %{?_smp_mflags} -C %kernel_module_directory/%{kver}-$flavor/build M=$PWD/obj/$flavor \
+       modules
+done
 
 %install
 pushd library
@@ -90,13 +101,18 @@ install -m644 -D evdi_lib.h %{buildroot}%{_includedir}/%{name}/evdi_lib.h
 popd
 
 pushd module
-%make_install PREFIX=%{_prefix}
+for flavor in %flavors_to_build; do
+       make -C %kernel_module_directory/%{kver}-$flavor/build M=$PWD/obj/$flavor \
+       INSTALL_MOD_PATH=%{buildroot} \
+       INSTALL_MOD_DIR=/extra \
+       modules_install
+done
 
 %post   -n %{lname} -p /sbin/ldconfig
 %postun -n %{lname} -p /sbin/ldconfig
 
 %files
-%license {library,module}/LICENSE.*
+%license {library,module/source}/LICENSE.*
 %doc README.md docs
 
 %files -n %{lname}

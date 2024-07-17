@@ -21,16 +21,17 @@
 # NOTE: Keep this is in the same order as pyproject.toml.
 %if %{with use_poetry_for_dependencies}
 %global Jinja2_version                3.1.4
-%global Pillow_version                10.2.0
+# TODO: 10.4.0
+%global Pillow_version                10.3.0
 %global PyYAML_version                6.0.1
 %global attrs_version                 23.2.0
 %global bcrypt_version                4.1.3
 %global bleach_version                6.1.0
 %global canonicaljson_version         2.0.0
-%global cryptography_version          42.0.7
+%global cryptography_version          42.0.8
 %global immutabledict_version         4.2.0
 %global idna_version                  3.7
-%global ijson_version                 3.2.3
+%global ijson_version                 3.3.0
 %global jsonschema_version            4.20.0
 %global matrix_common_version         1.3.0
 %global matrix_common_max_version     2
@@ -68,6 +69,7 @@
 %global Pympler_version               1.0.1
 %global pydantic_version              2.7.1
 %global pyicu_version                 2.13.1
+%global python_multipart_version      0.0.9
 %else
 # some version locks based on poetry.lock
 %global Jinja2_version                3.0
@@ -117,6 +119,7 @@
 %global Pympler_version               1.0.1
 %global pydantic_version              1.7.4
 %global pyicu_version                 2.10.2
+%global python_multipart_version      0.0.9
 %endif
 
 %define requires_peq() %(echo '%*' | LC_ALL=C xargs -r rpm -q --whatprovides --qf 'Requires: %%{name} = %%{epoch}:%%{version}\\n' | sed -e 's/ (none):/ /' -e 's/ 0:/ /' | grep -v "is not")
@@ -150,7 +153,7 @@
 %define         pkgname matrix-synapse
 %define         eggname matrix_synapse
 Name:           %{pkgname}
-Version:        1.110.0
+Version:        1.111.0
 Release:        0
 Summary:        Matrix protocol reference homeserver
 License:        AGPL-3.0-or-later
@@ -218,6 +221,8 @@ BuildRequires:  %{use_python}-jsonschema >= %{jsonschema_version}
 %requires_peq   %{use_python}-jsonschema
 BuildRequires:  (%{use_python}-matrix_common >= %{matrix_common_version} with %{use_python}-matrix_common <  %{matrix_common_max_version})
 %requires_peq   %{use_python}-matrix_common
+BuildRequires:  (%{use_python}-python-multipart >= %{python_multipart_version})
+%requires_peq   %{use_python}-python-multipart
 BuildRequires:  %{use_python}-msgpack >= %{msgpack_version}
 %requires_peq   %{use_python}-msgpack
 BuildRequires:  %{use_python}-netaddr >= %{netaddr_version}

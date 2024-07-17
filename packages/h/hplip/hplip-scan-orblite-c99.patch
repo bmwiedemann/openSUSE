@@ -1,0 +1,48 @@
+scan/sane/orblite: Include <dflcn.h> for function prototypes
+
+This is required for C99 compatibility.  Also delete the unused
+bb_unload function because it calls a call to the undefined
+_DBG function/macro.
+
+Submitted upstream: <https://bugs.launchpad.net/hplip/+bug/1997875>
+
+diff --git a/scan/sane/orblite.c b/scan/sane/orblite.c
+index ba86640c7528fc9c..ac59dda9c2dba593 100644
+--- a/scan/sane/orblite.c
++++ b/scan/sane/orblite.c
+@@ -20,6 +20,7 @@
+ #include "orblitei.h"
+ #include "orblite.h"//Added New
+ #include <math.h>
++#include <dlfcn.h>
+ #include "utils.h"
+ #include "io.h"
+ 
+@@ -193,27 +194,6 @@ bugout:
+ 
+ }
+ 
+-static int bb_unload(SANE_THandle ps)
+-{
+-   _DBG("Calling orblite bb_unload: \n");
+-   if (ps->bb_handle)
+-   {
+-      dlclose(ps->bb_handle);
+-      ps->bb_handle = NULL;
+-   }
+-   if (ps->hpmud_handle)
+-   {
+-      dlclose(ps->hpmud_handle);
+-      ps->hpmud_handle = NULL;
+-   }
+-//   if (ps->math_handle)
+-//   { 
+-//      dlclose(ps->math_handle);
+-//      ps->math_handle = NULL;
+-//   }
+-   return 0;
+-}
+-
+ SANE_Status 
+ orblite_init (SANE_Int * version_code, SANE_Auth_Callback authorize)
+ {

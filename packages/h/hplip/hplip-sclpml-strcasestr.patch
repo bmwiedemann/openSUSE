@@ -1,0 +1,20 @@
+Kludge to support building C99 mode.  This should no longer be needed
+once glibc declares strcasestr by default, and not just with
+-D_GNU_SOURCE.
+
+Submitted upstream: <https://bugs.launchpad.net/hplip/+bug/1997875>
+
+diff --git a/scan/sane/sclpml.c b/scan/sane/sclpml.c
+index dc8b32ce02ad1202..f2cacd53e86800ce 100644
+--- a/scan/sane/sclpml.c
++++ b/scan/sane/sclpml.c
+@@ -47,6 +47,9 @@
+ #define DEBUG_DECLARE_ONLY
+ #include "sanei_debug.h"
+ 
++/* This file is not built with _GNU_SOURCE. */
++char *strcasestr(const char *, const char *);
++
+ //# define  SCLPML_DEBUG
+ # ifdef SCLPML_DEBUG
+    # define _DBG(args...) syslog(LOG_INFO, __FILE__ " " STRINGIZE(__LINE__) ": " args)

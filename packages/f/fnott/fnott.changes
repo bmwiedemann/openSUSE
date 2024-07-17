@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Jul 16 15:55:25 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
+
+- Add new file to list /usr/share/dbus-1/services/fnott.service
+
+-------------------------------------------------------------------
+Tue Jul 16 15:22:35 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
+
+- Update to version 1.6.0:
+  * selection-helper-uses-null-separator=yes|no to fnott.ini. This can be used to e.g. improve handling of action strings with newlines in them.
+  * scaling-filter to fnott.ini, allowing you to choose which scaling filter to use when scaling non-SVG notification images. The default is lanczos3.
+  * Nanosvg updated to 93ce879dc4c04a3ef1758428ec80083c38610b1f
+  * D-Bus service file for starting automatically
+  * Systemd unit file
+
+-------------------------------------------------------------------
 Mon Apr 22 22:31:52 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Add package sig and developer keyring

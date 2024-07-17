@@ -1,4 +1,104 @@
 -------------------------------------------------------------------
+Tue Jul 16 14:20:43 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
+
+- Update to version 0.24.2:
+  * check: Handle error expressions in offset()
+  * Clean up includes
+  * expr_hash: Handle STORAGE_ERROR case
+  * check: Handle error in bindings of for-accumulator
+  * expr_hash: Remove unnecessary alias check
+  * Disallow casting types of undefined size
+  * typedef: Emit struct literals
+  * Remove unused gen_context.store
+  * eval: Disallow auto-dereferencing
+  * typedef: Handle values of enums with rune storage
+  * eval: Implement slicing expressions
+  * parse: simplify nested switch
+  * parse: Remove unnecessary special-case from parse_if_expression
+  * drop some "descriptive" names in generated IL
+  * makefiles/tests.mk: make everything depend on harec
+  * check: drop check of for_expr binding result type
+  * gen_expr_delete: split single element/subslice cases
+  * remove a use of *void in tests
+  * simplify condition in identifier_eq
+  * gen: implement gen_slice_ptrs and load_slice_data helpers
+  * check: rewrite slice_bounds_check
+  * eval: fix and add tests for casts from tagged unions
+  * check: lower len(array) to a constant
+  * gen: remove another overly verbose temporary name
+  * remove useless line
+  * check_expr_compound: simplify lower_implicit_cast logic
+  * type_store: fix tuple size calculation
+  * eval: use restrict keyword
+  * type_store: simplify function signatures in struct initialization
+  * test some embedded struct error cases
+  * use arch specific sizes from ctx->arch consistently
+  * gen: rewrite slice bounds checks
+  * gen_expr_assign_slice: use gen_subslice_info
+  * gen_expr_delete: use gen_subslice_info
+  * test functions with bodies have named parameters
+  * gen: rewrite expandable array -> slice assignment
+  * gen: use store_slice_data instead of manual slice stores
+  * type_store: return errors more explicitly in case of struct init errors
+  * type_store: fix union size calculation
+  * prohibit @packed in check, not in the parser
+  * ast: split up slice and array atypes
+  * ast: improve representation of array literal expandability
+  * resolve: pass function location data into prototype check
+  * util: simplify printing in errline()
+  * eval: truncate bitwise not and integer unary negation results
+  * check: improve binding assignability failure error
+  * check: don't special case STORAGE_ERROR in check_function
+  * check: drop pointless branch
+  * gen: extract fixed_abort condition checks into a separate function
+  * gen: rewrite slice and array alloc cases
+  * check: rewrite check_expr_call
+  * check: fix outdated comment about flexible promotion
+  * tests: fix typo
+  * Makefile: add uninstall target
+  * check.c: fix up lingering issue from rename
+  * Generate meaningful names for @init functions
+  * Generate arbitrary names for @init functions
+  * scripts/version: upgrade to 0.24.2
+  * fix some spurious errors
+  * Allow optional parameters in variadic functions.
+  * check: fix error location in check_expr_append_insert
+  * 12-loops: fix scope test
+  * implement for-each
+  * rt::compile ensure tests fail when "invalid" Hare is valid
+  * gen: fix implicitly void if false branch
+  * parse: fix memory leak
+  * eval: fix signed integer comparisons
+  * check: remove TODO
+  * Remove unnecessary forward declaration
+  * lex: make comment more accurate
+  * gen: s/strconst/strliteral/g
+  * Makefile: recompile everything when a header changes
+  * makefiles/tests.mk: make all tests depend on .cache/rt.td
+  * typedef: fix some format specifiers
+  * set TDENV when running tests
+  * tests: rename 00-constants to 00-literals
+  * util: ignore write errors to stderr
+  * Check stage at which compilation failed in reject tests
+  * tests/00-literals: s/append/static append/
+  * gen: fix for-each iterator with tagged union type
+  * typedef: use const in more places
+  * types: remove extraneous check
+  * types: make unbounded arrays not assignable to slices
+  * gen: remove gen_defers from gen_expr_for
+  * main: remove unnecessary 'next' variable
+  * mod: use string initializer instead of memcpy
+  * parse: remove dead branch
+  * parse: use error function for empty block error
+  * check: fix measurement error locations
+  * check: simplify switch exhaustivity checking
+  * tests.mk: add missing testmod.td dependency
+  * typedef: Remove unnecessary includings of "typedef.h"
+  * lex: allow digit separators
+  * Check that enums are exported if used in exported types.
+  * Implement optional function parameters.
+
+-------------------------------------------------------------------
 Sat Feb 17 00:57:51 UTC 2024 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
 
 - Update to release 0.24.0:

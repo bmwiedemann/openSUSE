@@ -7669,4 +7669,41 @@ always built-in because vim has direct perl dependencies anyway.
     <comment></comment>
     <requestid>1182976</requestid>
   </revision>
+  <revision rev="371" vrev="1">
+    <srcmd5>1675b71c7e0943ef005d8fb13aae2162</srcmd5>
+    <version>9.1.0588</version>
+    <time>1721222022</time>
+    <user>anag+factory</user>
+    <comment>- Removed patches, as they're no longer required (refreshing them
+  deleted their contents):
+  * vim-7.3-help_tags.patch
+  * vim-7.4-highlight_fstab.patch
+- Reorganise all applied patches in the spec file.
+- Update to 9.1.0588:
+  * 9.1.0588: The maze program no longer compiles on newer clang
+    runtime(typst): Add typst runtime files
+  * 9.1.0587: tests: Test_gui_lowlevel_keyevent is still flaky
+  * 9.1.0586: ocaml runtime files are outdated
+    runtime(termdebug): fix a few issues
+  * 9.1.0585: tests: test_cpoptions leaves swapfiles around
+  * 9.1.0584: Warning about redeclaring f_id() non-static
+    runtime(doc): Add hint how to load termdebug from vimrc
+    runtime(doc): document global insert behavior
+  * 9.1.0583: filetype: *.pdf_tex files are not recognized
+  * 9.1.0582: Printed line doesn't overwrite colon when pressing Enter in Ex mode
+  * 9.1.0581: Various lines are indented inconsistently
+  * 9.1.0580: :lmap mapping for keypad key not applied when typed in Select mode
+  * 9.1.0579: Ex command is still executed after giving E1247
+  * 9.1.0578: no tests for :Tohtml
+  * 9.1.0577: Unnecessary checks for v:sizeoflong in test_put.vim
+  * 9.1.0576: tests: still an issue with test_gettext_make
+  * 9.1.0575: Wrong comments in alt_tabpage()
+  * 9.1.0574: ex: wrong handling of commands after bar
+    runtime(doc): add a note for netrw bug reports
+  * 9.1.0573: ex: no implicit print for single addresses
+    runtime(vim): make &amp;indentexpr available from the outside
+  * 9.1.0572: cannot specify tab page closing behaviour
+    runtime(doc): remove obsolete Ex insert behavior (forwarded request 1187635 from mschreiner)</comment>
+    <requestid>1187636</requestid>
+  </revision>
 </revisionlist>

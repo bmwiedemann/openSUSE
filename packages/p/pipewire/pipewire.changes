@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Sun Jul 14 20:25:15 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.2.1:
+  * Highlights
+    - Fix a regression in the node activation counters that would
+      break audio when using KODI.
+    - Fix a regression in ardour export because of mishandling of
+      sync groups.
+    - Fix a regression in KDE screen preview because of the new
+      async scheduling.
+    - Fix a regression in context.exec argument parsing that would
+      break some existing scripts.
+    - More small bug fixes and improvements.
+  * PipeWire
+    - Fix a regression in the node activation counters that would
+      break audio when using KODI. (#4087)
+    - Fix a regression in ardour export because of mishandling of
+      sync groups. (#4083)
+    - Fix a regression in KDE screen preview because of the new
+      async scheduling. Disable async for driver nodes. (#4092)
+    - Slightly improve node shutdown to cause less xruns.
+    - Fix a regression in context.exec argument parsing that would
+      break some existing scripts.
+    - Support custom thread create functions.
+  * Modules
+    - Improve snapcast address parsing. (#4093)
+  * SPA
+    - Fix multiple %f parsing in ACP for the new plug+a52 profiles.
+    - Improve v4l2 param generation. Improve recovery when
+      framesize or rates are unknown, support vivid. (#4063)
+  * JACK
+    - Use the custom thread create function to correctly let
+      module-rt kit manage threads so that we don't end up with
+      priorities on the wrong threads. (#4099)
+  * GStreamer
+    - Fix a crash when destroying a stream.
+
+-------------------------------------------------------------------
 Fri Jun 28 06:11:18 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to version 1.2.0:

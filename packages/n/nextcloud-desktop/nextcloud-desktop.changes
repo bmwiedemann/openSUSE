@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jul 12 12:42:08 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.13.2:
+  * Fix "The host name did not match any of the valid hosts for
+    this certificate" notification even when the certificate was
+    valid (gh#nextcloud/desktop#6785).
+  * Check if sync item is actually a folder before processing it
+    (gh#nextcloud/desktop#6881).
+  * Remove unecessary call to sendTransferInfo
+    (gh#nextcloud/desktop#6887).
+
+-------------------------------------------------------------------
 Tue Jul  2 08:19:40 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 3.13.1:

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jul 15 14:02:19 UTC 2024 - Martin Jambor <mjambor@suse.com>
+
+- Backport zsh-ab4d62eb975a4c4c51dd35822665050e2ddc6918.patch
+  and zsh-4c89849c98172c951a9def3690e8647dae76308f.patch and add
+  autoconf to build requirements to make the package build with
+  GCC 14. [boo#1225958]
+
+-------------------------------------------------------------------
 Tue Feb 20 12:11:13 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.

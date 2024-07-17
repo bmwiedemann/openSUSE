@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Jul 16 13:35:56 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patches to support libopenh264 for encoding
+  (boo#1227461, kde#476187):
+  * 0001-Simpler-yet-more-useful-handling-of-KPIPEWIRE_FORCE_.patch
+  * 0002-Add-encoder-using-libopenh264.patch
+
+-------------------------------------------------------------------
+Tue Jul 16 13:23:41 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.1.3:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.1.3
+- Changes since 6.1.2:
+  * produce: Properly cleanup on deactivate in all cases (kde#488687)
+  * produce: Destroy PipeWireSourceStream on the right thread (kde#489434)
+  * update version for new release
+
+-------------------------------------------------------------------
 Tue Jul  2 17:34:03 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.1.2:

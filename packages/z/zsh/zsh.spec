@@ -1,7 +1,7 @@
 #
 # spec file for package zsh
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -43,6 +43,9 @@ Patch2:         zsh-osc-completion.patch
 # PATCH-FIX-OPENSUSE: taken from https://www.zsh.org/mla/workers/2022/msg00956.html
 Patch3:         egrep-deprecation.patch
 Patch4:         pipe-less-and-signals-handling.patch
+Patch5:         zsh-ab4d62eb975a4c4c51dd35822665050e2ddc6918.patch
+Patch6:         zsh-4c89849c98172c951a9def3690e8647dae76308f.patch
+BuildRequires:  autoconf
 BuildRequires:  groff
 BuildRequires:  libcap-devel
 BuildRequires:  ncurses-devel
@@ -116,6 +119,8 @@ Use zsh as /bin/sh implementation.
 %patch -P 2 -p1
 %patch -P 3 -p1
 %patch -P 4 -p1
+%patch -P 5 -p1
+%patch -P 6 -p1
 
 # Remove executable bit
 chmod 0644 Etc/changelog2html.pl

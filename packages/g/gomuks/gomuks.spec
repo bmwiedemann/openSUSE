@@ -18,7 +18,7 @@
 
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 Name:           gomuks
-Version:        0.3.0
+Version:        0.3.1
 Release:        0
 Summary:        A terminal Matrix client written in Go
 License:        AGPL-3.0-only
@@ -27,7 +27,7 @@ Source:         https://github.com/tulir/gomuks/archive/refs/tags/v%{version}.ta
 Source1:        vendor.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
-BuildRequires:  go >= 1.13
+BuildRequires:  go >= 1.21
 BuildRequires:  go-md2man
 BuildRequires:  golang-packaging
 BuildRequires:  olm-devel

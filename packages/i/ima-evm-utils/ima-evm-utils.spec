@@ -25,7 +25,7 @@ Summary:        IMA/EVM control utility
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later AND GPL-2.0-or-later WITH Linux-syscall-note AND LicenseRef-GPL-2.0-with-openssl-exception
 Group:          System/Base
 URL:            https://sourceforge.net/projects/linux-ima/
-Source0:        https://github.com/mimizohar/ima-evm-utils/releases/download/v%{version}/%{name}-%{version}.tar.gz
+Source0:        https://github.com/linux-integrity/ima-evm-utils/releases/download/v%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  asciidoc
 BuildRequires:  attr
 BuildRequires:  autoconf

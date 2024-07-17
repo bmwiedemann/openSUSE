@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul  9 12:24:48 UTC 2024 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Drop sdbootutil-scriptlets requirement, as is now supplied by
+  suse-module-tools-scriptlets
+
+-------------------------------------------------------------------
 Tue Jun 11 08:33:39 UTC 2024 - Frederic Crozat <fcrozat@suse.com>
 
 - Add cockpit-ws and cockpit-networkmanager as dependency to

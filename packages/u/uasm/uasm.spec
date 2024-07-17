@@ -1,7 +1,7 @@
 #
 # spec file for package uasm
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -14,6 +14,7 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 Name:           uasm
 Version:        2.56.2
@@ -32,6 +33,8 @@ MASM-compatible assembler based on JWasm
 %autosetup -n UASM-%{version} -p1
 
 %build
+# Workaround for boo#1225948
+%global optflags %{optflags} -fpermissive
 %make_build -f gccLinux64.mak CFLAGS="%{optflags}"
 
 %install

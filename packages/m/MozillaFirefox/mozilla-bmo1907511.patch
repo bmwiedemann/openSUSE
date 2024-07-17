@@ -1,0 +1,29 @@
+
+# HG changeset patch
+# User stransky <stransky@redhat.com>
+# Date 1720807971 0
+# Node ID d8a0164db5db7090fd7549b03dd0391f7151649c
+# Parent  e243955016ffa880296b8d82cf531887dfb3ac22
+Bug 1907511 [Linux/X11] Check mWindow at GtkCompositorWidget::LockSurface() r=emilio
+
+Differential Revision: https://phabricator.services.mozilla.com/D216380
+
+diff --git a/widget/gtk/GtkCompositorWidget.cpp b/widget/gtk/GtkCompositorWidget.cpp
+--- a/widget/gtk/GtkCompositorWidget.cpp
++++ b/widget/gtk/GtkCompositorWidget.cpp
+@@ -207,13 +207,13 @@ void GtkCompositorWidget::SetRenderingSu
+ 
+ #ifdef MOZ_LOGGING
+ bool GtkCompositorWidget::IsPopup() {
+   return mWidget ? mWidget->IsPopup() : false;
+ }
+ #endif
+ 
+ UniquePtr<MozContainerSurfaceLock> GtkCompositorWidget::LockSurface() {
+-  return mWidget->LockSurface();
++  return mWidget ? mWidget->LockSurface() : nullptr;
+ }
+ 
+ }  // namespace widget
+ }  // namespace mozilla
+

@@ -1,0 +1,28 @@
+From e24c5dbc8c48ce46d3a87cd527677b980c29124d Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Pablo=20Su=C3=A1rez=20Hern=C3=A1ndez?=
+ <psuarezhernandez@suse.com>
+Date: Tue, 9 Jul 2024 12:19:36 +0100
+Subject: [PATCH] test_vultrpy: adjust test expectation to prevent
+ failure (#666)
+
+---
+ tests/integration/cloud/clouds/test_vultrpy.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tests/integration/cloud/clouds/test_vultrpy.py b/tests/integration/cloud/clouds/test_vultrpy.py
+index a25b4502dae..719d7291410 100644
+--- a/tests/integration/cloud/clouds/test_vultrpy.py
++++ b/tests/integration/cloud/clouds/test_vultrpy.py
+@@ -19,7 +19,7 @@ class VultrTest(CloudTest):
+         """
+         image_list = self.run_cloud("--list-images {}".format(self.PROVIDER))
+ 
+-        self.assertIn("Debian 10 x64 (buster)", [i.strip() for i in image_list])
++        self.assertIn("Debian 12 x64 (bookworm)", [i.strip() for i in image_list])
+ 
+     def test_list_locations(self):
+         """
+-- 
+2.45.2
+
+

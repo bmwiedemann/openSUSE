@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Jul  9 11:23:20 UTC 2024 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- test_vultrpy: adjust test expectation to prevent failure after Debian 10 EOL
+
+- Added:
+  * test_vultrpy-adjust-test-expectation-to-prevent-fail.patch
+
+-------------------------------------------------------------------
+Mon Jul  8 16:02:47 UTC 2024 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Make auth.pam more robust with Salt Bundle and fix tests
+
+- Added:
+  * some-more-small-tests-fixes-enhancements-661.patch
+
+-------------------------------------------------------------------
 Wed Jul  3 11:13:00 UTC 2024 - Flex Liu <fliu@suse.com>
 
 - Fix performance of user.list_groups with many remote groups

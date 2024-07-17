@@ -1,0 +1,21 @@
+<services>
+  <service name="obs_scm" mode="manual">
+    <param name="url">https://github.com/pbchekin/vault-sync</param>
+    <param name="scm">git</param>
+    <param name="revision">0.9.2</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="changesgenerate">enable</param>
+  </service>
+  <service name="set_version" mode="manual">
+  </service>
+  <service name="cargo_vendor" mode="manual">
+    <param name="update">true</param>
+    <param name="srcdir">vault-sync</param>
+  </service>
+  <service name="tar" mode="buildtime">
+  </service>
+  <service name="recompress" mode="buildtime">
+    <param name="file">*.tar</param>
+    <param name="compression">gz</param>
+  </service>
+</services>

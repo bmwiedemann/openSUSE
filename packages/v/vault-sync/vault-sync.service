@@ -1,0 +1,12 @@
+[Unit]
+Description=vault-sync
+Documentation=https://github.com/pbchekin/vault-sync
+Documentation=https://github.com/pbchekin/vault-sync/blob/main/vault-sync.example.yaml
+
+[Service]
+Type=Simple
+User=vault
+ExecStart=vault-sync --config /etc/vault-sync/vault-sync.yaml
+
+[Install]
+WantedBy=multi-user.target

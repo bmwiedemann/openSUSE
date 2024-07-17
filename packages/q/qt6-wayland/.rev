@@ -281,4 +281,15 @@
   * 0001-Client-Ensure-that-guessed-popup-parent-has-a-shell-.patch (forwarded request 1186341 from Vogtinator)</comment>
     <requestid>1186345</requestid>
   </revision>
+  <revision rev="36" vrev="3">
+    <srcmd5>94cc202f518737316538dedaffa33a25</srcmd5>
+    <version>6.7.2</version>
+    <time>1721222027</time>
+    <user>anag+factory</user>
+    <comment>- Add patches to fix crashes on screens disappearing
+  (kde#489072, kde#489180):
+  * 0001-client-Guard-against-windows-being-on-a-null-screen.patch
+  * 0002-Client-Improve-thread-safety-determining-window-size.patch (forwarded request 1187717 from favogt)</comment>
+    <requestid>1187796</requestid>
+  </revision>
 </revisionlist>

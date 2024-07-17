@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jul 11 17:55:47 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Fix hpc build: Provide f2py with correct shebang for build-time
+
+-------------------------------------------------------------------
 Mon Jul  1 13:35:29 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.14.0

@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Mon Jul  8 20:25:10 UTC 2024 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Firefox 128.0
+  https://www.mozilla.org/en-US/firefox/128.0/releasenotes
+  MFSA 2024-29 (bsc#1226316)
+  * CVE-2024-6605 (bmo#1836786)
+    Firefox Android missed activation delay to prevent tapjacking
+  * CVE-2024-6606 (bmo#1902305)
+    Out-of-bounds read in clipboard component
+  * CVE-2024-6607 (bmo#1694513)
+    Leaving pointerlock by pressing the escape key could be
+    prevented
+  * CVE-2024-6608 (bmo#1743329)
+    Cursor could be moved out of the viewport using pointerlock.
+  * CVE-2024-6609 (bmo#1839258)
+    Memory corruption in NSS
+  * CVE-2024-6610 (bmo#1883396)
+    Form validation popups could block exiting full-screen mode
+  * CVE-2024-6600 (bmo#1888340)
+    Memory corruption in WebGL API
+  * CVE-2024-6601 (bmo#1890748)
+    Race condition in permission assignment
+  * CVE-2024-6602 (bmo#1895032)
+    Memory corruption in NSS
+  * CVE-2024-6603 (bmo#1895081)
+    Memory corruption in thread creation
+  * CVE-2024-6611 (bmo#1844827)
+    Incorrect handling of SameSite cookies
+  * CVE-2024-6612 (bmo#1880374)
+    CSP violation leakage when using devtools
+  * CVE-2024-6613 (bmo#1900523)
+    Incorrect listing of stack frames
+  * CVE-2024-6614 (bmo#1902983)
+    Incorrect listing of stack frames
+  * CVE-2024-6604 (bmo#1748105, bmo#1837550, bmo#1884266)
+    Memory safety bugs fixed in Firefox 128, Firefox ESR 115.13,
+    and Thunderbird 115.13
+  * CVE-2024-6615 (bmo#1892875, bmo#1894428, bmo#1898364)
+    Memory safety bugs fixed in Firefox 128
+- requires
+  NSS 3.101.1
+  rust >= 1.78
+- update create-tar.sh
+- add wayland upstream fixes (bmo#1907511, bmo#1898476)
+  (mozilla-bmo1898476.patch and mozilla-bmo1907511.patch)
+
+-------------------------------------------------------------------
 Mon Jul  1 09:44:55 UTC 2024 - Andrei Dziahel <develop7@develop7.info>
 
 - Mozilla Firefox 127.0.2

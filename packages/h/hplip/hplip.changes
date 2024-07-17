@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jul 15 15:19:58 UTC 2024 - Martin Jambor <mjambor@suse.com>
+
+- Add hplip-pserror-c99.patch hplip-scan-hpaio-include.patch
+  hplip-scan-orblite-c99.patch hplip-sclpml-strcasestr.patch
+  hplip-hpaio-gcc14.patch to avoid C99 violations which prevent
+  building with GCC 14. [boo#1225777]
+
+-------------------------------------------------------------------
 Fri Jun 21 21:30:55 UTC 2024 - Martin Wilck <martin.wilck@suse.com>
 
 - Update to hplip 3.24.4

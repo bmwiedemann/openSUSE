@@ -1,7 +1,7 @@
 #
 # spec file for package qt6-sensors
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -68,6 +68,7 @@ QML files and plugins from the Qt 6 Sensors module
 
 %package -n libQt6Sensors6
 Summary:        Qt 6 Sensors library
+Requires:       qt6-sensors >= %{version}
 
 %description -n libQt6Sensors6
 The Qt 6 Sensors library.

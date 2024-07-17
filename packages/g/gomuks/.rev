@@ -23,4 +23,17 @@
     <comment></comment>
     <requestid>1185377</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>2484695423aadceac954af26f4791672</srcmd5>
+    <version>0.3.1</version>
+    <time>1721222081</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.3.1:
+  * Bumped minimum Go version to 1.21.
+  * Added support for authenticated media.
+  * Added /powerlevel command for managing power levels.
+  * Disabled logging by default.
+  * Changed default log directory to ~/.local/state/gomuks on Linux.</comment>
+    <requestid>1187957</requestid>
+  </revision>
 </revisionlist>

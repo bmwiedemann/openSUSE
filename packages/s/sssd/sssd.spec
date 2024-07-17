@@ -420,6 +420,13 @@ perl -i -lpe 's{%_bindir/python\b}{%_bindir/python3}' src/tools/sss_obfuscate
 b="%buildroot"
 
 # Copy some defaults
+%if %{?_distconfdir:1}
+install -D -p -m 0600 src/examples/sssd-example.conf "$b/%_distconfdir/sssd/sssd.conf"
+install -d -m 0755 "$b/%_distconfdir/sssd/conf.d"
+%else
+install -D -p -m 0600 src/examples/sssd-example.conf "$b/%_sysconfdir/sssd/sssd.conf"
+install -d -m 0755 "$b/%_sysconfdir/sssd/conf.d"
+%endif
 install -d "$b/%_unitdir"
 %if 0%{?suse_version} > 1500
 install -d "$b/%_distconfdir/logrotate.d"
@@ -444,8 +451,8 @@ find "$b" -type f -name "*.la" -print -delete
 mkdir -pv %buildroot/%_sysconfdir/alternatives %buildroot/%_sysconfdir/cifs-utils
 ln -sfv %_sysconfdir/alternatives/%cifs_idmap_name %buildroot/%cifs_idmap_plugin
 %python3_fix_shebang
-%if %{suse_version} >= 1600
-%python3_fix_shebang_path %{buildroot}/%{_libexecdir}/%{name}/
+%if 0%{?suse_version} >= 1600
+%python3_fix_shebang_path %buildroot/%_libexecdir/%name/
 %endif
 
 %check
@@ -454,10 +461,12 @@ ln -sfv %_sysconfdir/alternatives/%cifs_idmap_name %buildroot/%cifs_idmap_plugin
 
 %pre
 %service_add_pre sssd.service
+%if %{?_distconfdir:1}
 # Prepare for migration to /usr/etc; save any old .rpmsave
 for i in sssd/sssd.conf pam.d/sssd-shadowutils logrotate.d/sssd ; do
-	test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i}.rpmsave.old ||:
+	test -f "%_sysconfdir/$i.rpmsave" && mv -v "%_sysconfdir/$i.rpmsave" "%_sysconfdir/$i.rpmsave.old" || :
 done
+%endif
 
 %post
 /sbin/ldconfig
@@ -545,10 +554,12 @@ touch /run/systemd/rpm/sssd-was-active
 fi
 
 %posttrans
+%if %{?_distconfdir:1}
 # Migration to /usr/etc, restore just created .rpmsave
 for i in sssd/sssd.conf logrotate.d/sssd pam.d/sssd-shadowutils ; do
-	test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i} ||:
+	test -f "%_sysconfdir/$i.rpmsave" && mv -v "%_sysconfdir/$i.rpmsave" "%_sysconfdir/$i" || :
 done
+%endif
 # Migrate sssd.service from sssd-common to sssd
 if [ -e /run/systemd/rpm/sssd-was-enabled ]; then
 systemctl is-enabled sssd.service > /dev/null
@@ -657,6 +668,15 @@ fi
 %attr(755,root,root) %dir %sssdstatedir/mc/
 %attr(700,root,root) %dir %sssdstatedir/keytabs/
 %attr(750,root,root) %dir %_localstatedir/log/%name/
+%if %{?_distconfdir:1}
+%dir %_distconfdir/sssd/
+%%dir %_distconfdir/sssd/conf.d
+%config(noreplace) %_distconfdir/sssd/sssd.conf
+%else
+%dir %_sysconfdir/sssd/
+%%dir %_sysconfdir/sssd/conf.d
+%config(noreplace) %_sysconfdir/sssd/sssd.conf
+%endif
 %if 0%{?suse_version} > 1500
 %_distconfdir/logrotate.d/sssd
 %_pam_vendordir/sssd-shadowutils

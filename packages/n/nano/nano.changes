@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Jul 13 07:43:31 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- GNU nano 8.1:
+  * The idiom nano filename:linenumber is understood only when
+    the option --colonparsing (or 'set colonparsing') is used
+  * Modern bindings are not activated when nano's invocation name
+    starts with "e", as it jars with Debian's alternatives system
+  * New bindable function 'cycle' first centers the current row,
+    then moves it to the top of the viewport, then to the bottom
+  * It is bound by default to ^L.
+  * Option --listsyntaxes/-z lists the names of available syntaxes
+
+-------------------------------------------------------------------
 Wed May  1 11:58:56 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - GNU nano 8.0:

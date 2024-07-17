@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jul  8 15:29:36 UTC 2024 - Martin Jambor <mjambor@suse.com>
+
+- Backport upstream patches fipscheck-fix_check_openssl_version.patch
+  and fipscheck-fix_incorrect_length_type.patch to fix C99 violations
+  which are errors by default with GCC 14 [boo#1221714] - although the
+  first one looks like it possibly fixes some more substantial error.
+
+-------------------------------------------------------------------
 Wed Nov  2 14:30:29 UTC 2022 - Marcus Meissner <meissner@suse.com>
 
 - updated to 1.7.0 (from a different supplier)

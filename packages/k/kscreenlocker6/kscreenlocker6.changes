@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jul 16 13:23:49 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.1.3:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.1.3
+- Changes since 6.1.2:
+  * greeter/authenticators: add a property for if a prompt was shown in the past
+  * update version for new release
+
+-------------------------------------------------------------------
 Tue Jul  2 17:34:08 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.1.2:

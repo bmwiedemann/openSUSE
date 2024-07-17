@@ -17,7 +17,7 @@
 
 
 %define pkg_version 9.1
-%define patchlevel 0512
+%define patchlevel 0588
 %define patchlevel_compact %{patchlevel}
 %define VIM_SUBDIR vim91
 %define site_runtimepath %{_datadir}/vim/site
@@ -60,22 +60,20 @@ Source31:       gvim_256.png
 Source32:       gvim_512.png
 # /Section
 Source99:       %{name}-7.4-rpmlintrc
-Patch3:         %{name}-7.4-disable_lang_no.patch
-Patch4:         %{name}-7.3-gvimrc_fontset.patch
-Patch5:         %{name}-7.4-highlight_fstab.patch
-Patch6:         %{name}-7.3-sh_is_bash.patch
-Patch7:         %{name}-7.3-filetype_ftl.patch
-Patch8:         %{name}-7.3-help_tags.patch
-Patch9:         %{name}-7.3-use_awk.patch
-Patch10:        %{name}-7.3-name_vimrc.patch
-Patch11:        %{name}-7.3-mktemp_tutor.patch
-Patch15:        %{name}-7.4-filetype_apparmor.patch
-Patch18:        %{name}-7.3-filetype_spec.patch
-Patch21:        %{name}-7.3-filetype_changes.patch
-Patch22:        %{name}-7.4-filetype_mine.patch
-Patch100:       vim73-no-static-libpython.patch
-Patch101:       vim-8.0.1568-defaults.patch
-Patch104:       vim-8.2.2411-globalvimrc.patch
+Patch1:         %{name}-7.4-disable_lang_no.patch
+Patch2:         %{name}-7.3-gvimrc_fontset.patch
+Patch3:         %{name}-7.3-sh_is_bash.patch
+Patch4:         %{name}-7.3-filetype_ftl.patch
+Patch5:         %{name}-7.3-use_awk.patch
+Patch6:         %{name}-7.3-name_vimrc.patch
+Patch7:         %{name}-7.3-mktemp_tutor.patch
+Patch8:         %{name}-7.4-filetype_apparmor.patch
+Patch9:         %{name}-7.3-filetype_spec.patch
+Patch10:        %{name}-7.3-filetype_changes.patch
+Patch11:        %{name}-7.4-filetype_mine.patch
+Patch12:        %{name}73-no-static-libpython.patch
+Patch13:        %{name}-8.0.1568-defaults.patch
+Patch14:        %{name}-8.2.2411-globalvimrc.patch
 BuildRequires:  autoconf
 BuildRequires:  db-devel
 BuildRequires:  fdupes
@@ -210,23 +208,21 @@ a hex dump back to its original binary form.
 %prep
 %setup -q -n %{name}-%{pkg_version}.%{patchlevel}
 
+%patch -P 1 -p1
+%patch -P 2 -p1
 %patch -P 3 -p1
 %patch -P 4 -p1
 %patch -P 5 -p1
 %patch -P 6 -p1
 %patch -P 7 -p1
+cp %{SOURCE23} runtime/syntax/apparmor.vim
 %patch -P 8 -p1
 %patch -P 9 -p1
 %patch -P 10 -p1
 %patch -P 11 -p1
-cp %{SOURCE23} runtime/syntax/apparmor.vim
-%patch -P 15 -p1
-%patch -P 18 -p1
-%patch -P 21 -p1
-%patch -P 22 -p1
-%patch -P 100 -p1
-%patch -P 101 -p1
-%patch -P 104 -p1
+%patch -P 12 -p1
+%patch -P 13 -p1
+%patch -P 14 -p1
 cp %{SOURCE3} %{SOURCE4} %{SOURCE5} %{SOURCE8} %{SOURCE10} .
 
 %build

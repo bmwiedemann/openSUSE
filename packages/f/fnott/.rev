@@ -68,4 +68,18 @@
     <comment></comment>
     <requestid>1169766</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>9d83b4cda04839261318e099c47af978</srcmd5>
+    <version>1.6.0</version>
+    <time>1721222076</time>
+    <user>anag+factory</user>
+    <comment>- Add new file to list /usr/share/dbus-1/services/fnott.service
+- Update to version 1.6.0:
+  * selection-helper-uses-null-separator=yes|no to fnott.ini. This can be used to e.g. improve handling of action strings with newlines in them.
+  * scaling-filter to fnott.ini, allowing you to choose which scaling filter to use when scaling non-SVG notification images. The default is lanczos3.
+  * Nanosvg updated to 93ce879dc4c04a3ef1758428ec80083c38610b1f
+  * D-Bus service file for starting automatically
+  * Systemd unit file</comment>
+    <requestid>1187955</requestid>
+  </revision>
 </revisionlist>

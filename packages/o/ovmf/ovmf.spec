@@ -27,7 +27,7 @@
 %endif
 
 Name:           ovmf
-Version:        202311
+Version:        202402
 Release:        0
 Summary:        Open Virtual Machine Firmware
 License:        BSD-2-Clause-Patent
@@ -41,7 +41,6 @@ Source113:      openssl.keyring.README
 Source2:        README
 Source3:        SLES-UEFI-CA-Certificate-2048.crt
 Source4:        openSUSE-UEFI-CA-Certificate-2048.crt
-Source5:        openSUSE-UEFI-SIGN-Certificate-2048.crt
 # berkeley-softfloat-3: https://github.com/ucb-bar/berkeley-softfloat-3
 Source6:        berkeley-softfloat-3-%{softfloat_version}.tar.xz
 Source7:        descriptors.tar.xz
@@ -53,12 +52,9 @@ Source9:        public-mipi-sys-t-1.1-edk2.tar.gz
 Source10:       mbedtls-3.3.0.tar.gz
 Source100:      %{name}-rpmlintrc
 Source101:      gdb_uefi.py.in
-Source102:      gen-key-enrollment-iso.sh
-Source103:      ovmf-build-funcs.sh
 Patch1:         %{name}-gdb-symbols.patch
 Patch2:         %{name}-pie.patch
 Patch3:         %{name}-disable-ia32-firmware-piepic.patch
-Patch4:         %{name}-set-fixed-enroll-time.patch
 Patch5:         %{name}-disable-brotli.patch
 Patch6:         %{name}-ignore-spurious-GCC-12-warning.patch
 # Bug 1205978 - Got Page-Fault exception when VM is booting with edk2-stable202211 ovmf
@@ -73,17 +69,6 @@ Patch10:        %{name}-Revert-OvmfPkg-PlatformPei-Update-ReserveEmuVariable.pat
 Patch11:        %{name}-OvmfPkg-SmbiosPlatformDxe-tweak-fallback-release-dat.patch
 # Bug 1217704 - ovmf: reproducible builds problem in ovmf-riscv64-code.bin
 Patch12:        %{name}-EmbeddedPkg-Library-Support-SOURCE_DATE_EPOCH-in-Vir.patch
-# Bug 1218678 (CVE-2022-36763) - VUL-0: CVE-2022-36763: EDK2 is susceptible to a vulnerability in the Tcg2MeasureGptTable() function...
-Patch13:        %{name}-SecurityPkg-DxeTpm2MeasureBootLib-SECURITY-PATCH-4117.patch
-Patch14:        %{name}-SecurityPkg-DxeTpmMeasureBootLib-SECURITY-PATCH-4117.patch
-Patch15:        %{name}-SecurityPkg-Adding-CVE-2022-36763-to-SecurityFixes.y.patch
-# Bug 1218679 (CVE-2022-36764) - VUL-0: CVE-2022-36764: EDK2 is susceptible to a vulnerability in the Tcg2MeasurePeImage() function...
-Patch16:        %{name}-SecurityPkg-DxeTpm2MeasureBootLib-SECURITY-PATCH-4118.patch
-Patch17:        %{name}-SecurityPkg-DxeTpmMeasureBootLib-SECURITY-PATCH-4118.patch
-Patch18:        %{name}-SecurityPkg-Adding-CVE-2022-36764-to-SecurityFixes.y.patch
-Patch19:        %{name}-SecurityPkg-DxeTpm2MeasureBootLib-SECURITY-PATCH-4117-4118-symbol-rename.patch
-Patch20:        %{name}-SecurityPkg-DxeTpmMeasureBootLib-SECURITY-PATCH-4117-4118-symbol-rename.patch
-Patch21:        %{name}-SecurityPkg-Updating-SecurityFixes.yaml-after-symbol.patch
 BuildRequires:  bc
 BuildRequires:  cross-arm-binutils
 BuildRequires:  cross-arm-gcc%{gcc_version}
@@ -98,10 +83,8 @@ BuildRequires:  mtools
 BuildRequires:  nasm
 BuildRequires:  openssl
 BuildRequires:  python3
-BuildRequires:  qemu-arm >= 3.0.0
-BuildRequires:  qemu-ipxe
-BuildRequires:  qemu-x86 >= 3.0.0
 BuildRequires:  unzip
+BuildRequires:  virt-firmware
 %ifnarch aarch64
 BuildRequires:  cross-aarch64-binutils
 BuildRequires:  cross-aarch64-gcc%{gcc_version}
@@ -117,7 +100,7 @@ BuildRequires:  cross-riscv64-gcc%{gcc_version}
 %endif
 %endif
 # Only build on the architectures with
-#  1. cross-compilers, 2. iasl, 3. qemu-arm and qemu-x86
+#  1. cross-compilers, 2. iasl
 ExclusiveArch:  x86_64 aarch64 riscv64
 
 %description
@@ -240,8 +223,6 @@ pushd CryptoPkg/Library/MbedTlsLib/mbedtls
 tar -xf %{SOURCE10} --strip 1
 popd
 
-chmod +x %{SOURCE102}
-
 %build
 
 # Enable python3 build
@@ -329,7 +310,6 @@ BUILD_OPTIONS_RV64=" \
 %endif
 
 # Import the build functions
-source %{SOURCE103}
 source ./edksetup.sh
 
 ### Build x86 UEFI Images ###
@@ -398,14 +378,6 @@ for flavor in ${FLAVORS_X64[@]}; do
 %endif
 done
 
-# build Shell.efi for X64
-build -a X64 -t $TOOL_CHAIN -p ShellPkg/ShellPkg.dsc
-
-# Copy Shell.efi and EnrollDefaultKeys.efi
-mkdir X64
-cp Build/Shell/DEBUG_*/X64/ShellPkg/Application/Shell/Shell/DEBUG/Shell.efi X64
-cp Build/OvmfX64/DEBUG_*/X64/EnrollDefaultKeys.efi X64
-
 %ifarch x86_64
 # Collect the source
 mkdir -p source/ovmf-x86_64
@@ -447,11 +419,6 @@ cp Build/ArmVirtQemu-AARCH64/DEBUG_GCC*/FV/QEMU_EFI.fd aavmf-aarch64-code.bin
 truncate -s 64M aavmf-aarch64-code.bin
 cp Build/ArmVirtQemu-AARCH64/DEBUG_GCC*/FV/QEMU_VARS.fd aavmf-aarch64-vars.bin
 truncate -s 64M aavmf-aarch64-vars.bin
-
-# Copy Shell.efi and EnrollDefaultKeys.efi
-mkdir AARCH64
-cp Build/ArmVirtQemu-AARCH64/DEBUG_*/AARCH64/Shell.efi AARCH64
-cp Build/ArmVirtQemu-AARCH64/DEBUG_*/AARCH64/EnrollDefaultKeys.efi AARCH64
 
 # Remove the temporary build files to reduce the disk usage (bsc#1178244)
 rm -rf Build/ArmVirtQemu-AARCH64/
@@ -521,24 +488,6 @@ generate_sb_var_templates()
 {
 	local ARCH=$1
 
-	# Assign the key iso file
-	local MS_ISO_FILE=ms-keys-${ARCH}.iso
-	local NOMS_ISO_FILE=no-ms-keys-${ARCH}.iso
-	declare -A KEY_ISO_FILES
-	KEY_ISO_FILES=(
-		[ms]=$MS_ISO_FILE
-		[suse]=$NOMS_ISO_FILE
-		[opensuse]=$NOMS_ISO_FILE
-		[devel]=$NOMS_ISO_FILE
-	)
-
-	# Create the iso images
-	local GEN_ISO=%{SOURCE102}
-	local SHELL=${ARCH}/Shell.efi
-	local ENROLLER=${ARCH}/EnrollDefaultKeys.efi
-	$GEN_ISO $ARCH $SHELL $ENROLLER default    $MS_ISO_FILE
-	$GEN_ISO $ARCH $SHELL $ENROLLER no-default $NOMS_ISO_FILE
-
 	# We only build the variable templates for X64 and AARCH64
 	if [ "$ARCH" == "X64" ]; then
 		FLAVORS=${FLAVORS_X64[@]}
@@ -549,9 +498,15 @@ generate_sb_var_templates()
 	# Generate the varstore templates
 	for flavor in ${FLAVORS[@]}; do
 		for key in ${KEY_SOURCES[@]}; do
-			build_template "$ARCH" "$flavor" "$key" \
-				"${PKKEK[$key]}" "${KEY_ISO_FILES[$key]}" \
-				"separate"
+			ln "${flavor}-code.bin" "${flavor}-${key}-code.bin"
+
+			if [ "$key" == "ms" ]; then
+				virt-fw-vars --secure-boot --enroll-cert "${PKKEK[$key]}" -i "${flavor}-vars.bin" -o "${flavor}-${key}-vars.bin"
+			else
+				# GUID of EnrollDefaultKeys.efi, already used by virt-fw-vars for PK and KEK
+				virt-fw-vars --secure-boot --enroll-cert "${PKKEK[$key]}" -i "${flavor}-vars.bin" -o "${flavor}-${key}-vars.bin" \
+					     --no-microsoft --microsoft-kek none --add-db a0baa8a3-041d-48a8-bc87-c36d121b5e3d "${PKKEK[$key]}"
+			fi
 		done
 	done
 
@@ -560,9 +515,7 @@ generate_sb_var_templates()
 		# backward compatibility. (bsc#1159793)
 		for flavor in ${FLAVORS[@]}; do
 			for key in ${KEY_SOURCES[@]}; do
-				build_template "$ARCH" "$flavor" "$key" \
-					"${PKKEK[$key]}" "${KEY_ISO_FILES[$key]}" \
-					"unified"
+				cat "${flavor}-${key}-vars.bin" "${flavor}-code.bin" > "${flavor}-${key}.bin"
 			done
 		done
 	fi
@@ -599,6 +552,7 @@ install -m 0644 -D qemu-uefi-*.bin -t %{buildroot}/%{_datadir}/qemu/
 install -m 0644 -D aavmf-*.bin -t %{buildroot}/%{_datadir}/qemu/
 install -m 0644 -D descriptors/*.json \
 	-t %{buildroot}/%{_datadir}/qemu/firmware
+
 %fdupes %{buildroot}/%{_datadir}/qemu/
 
 %ifarch x86_64
@@ -613,31 +567,12 @@ mv source/ovmf-x86_64* %{buildroot}%{_prefix}/src/debug
 %fdupes -s %{buildroot}%{_prefix}/src/debug/ovmf-x86_64
 %endif
 
-# Install Secure Boot key enroller
-mkdir -p %{buildroot}/%{_datadir}/ovmf/
-install -m 0755 %{SOURCE102} %{buildroot}/%{_datadir}/ovmf/
-%ifarch x86_64
-install -m 0644 X64/*.efi %{buildroot}/%{_datadir}/ovmf/
-%endif
-%ifarch aarch64
-install -m 0644 AARCH64/*.efi %{buildroot}/%{_datadir}/ovmf/
-%endif
-%ifarch riscv64
-# Nothing there yet
-#install -m 0644 RISCV64/*.efi %{buildroot}/%{_datadir}/ovmf/
-%endif
-
 %if %{without build_riscv64}
 rm %{buildroot}%{_datadir}/qemu/firmware/*-riscv64*.json
 %endif
 
 %files
 %doc README
-%dir %{_datadir}/ovmf/
-%ifnarch riscv64
-%{_datadir}/ovmf/*.efi
-%endif
-%{_datadir}/ovmf/*.sh
 
 %files tools
 %doc BaseTools/UserManuals/EfiRom_Utility_Man_Page.rtf

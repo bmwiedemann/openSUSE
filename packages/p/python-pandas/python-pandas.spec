@@ -71,12 +71,12 @@ URL:            https://pandas.pydata.org/
 Source0:        pandas-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM pandas-pr58269-pyarrow16xpass.patch -- gh#pandas-dev/pandas#58269
 Patch0:         pandas-pr58269-pyarrow16xpass.patch
-# PATCH-FIX-UPSTREAM pandas-pr58720-xarray-dp.patch gh#pandas-dev/pandas!58720 mcepl@suse.com
-# make pandas compatible with the modern xarray
+# PATCH-FIX-UPSTREAM pandas-pr58720-xarray-dp.patch -- gh#pandas-dev/pandas#58720 mcepl@suse.com, make pandas compatible with the modern xarray
 Patch1:         pandas-pr58720-xarray-dp.patch
-# PATCH-FIX-UPSTREAM pandas-pr58484-matplotlib.patch gh#pandas-dev/pandas!58484 mcepl@suse.com
-# make pandas compatible with the modern matplotlib
+# PATCH-FIX-UPSTREAM pandas-pr58484-matplotlib.patch -- gh#pandas-dev/pandas#58484 mcepl@suse.com, make pandas compatible with the modern matplotlib
 Patch2:         pandas-pr58484-matplotlib.patch
+# PATCH-FIX-UPSTREAM pandas-pr59175-matplotlib.patch -- gh#pandas-dev/pandas#59175
+Patch3:         https://github.com/pandas-dev/pandas/pull/59175.patch#/pandas-pr59175-matplotlib.patch
 %if !%{with test}
 BuildRequires:  %{python_module Cython >= 3.0.5}
 BuildRequires:  %{python_module devel >= 3.9}
@@ -514,8 +514,6 @@ SKIP_TESTS+=" or test_psycopg2_schema_support"
 SKIP_TESTS+=" or test_self_join_date_columns"
 # expects a dirty git revision from git repo
 SKIP_TESTS+=" or test_git_version"
-# gh#pandas-dev/pandas#58851 conflict with matplotlib 3.9.0
-SKIP_TESTS+=" or test_plot_scatter_shape"
 %if "%{flavor}" == "test-py312"
 # https://github.com/pandas-dev/pandas/pull/57391, proposed change is not necessary the right one
 SKIP_TESTS+=" or (test_scalar_unary and numexpr-pandas)"

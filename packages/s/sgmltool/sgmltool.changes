@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jul 15 11:08:21 UTC 2024 - Martin Jambor <mjambor@suse.com>
+
+- Fix up cflags-sgml-tools-1.0.9.diff so that %optflags are not
+  completely lost.  Added -fpermissive to %optflags in order to
+  make GCC 14 treat a number of C99 violations as mere warnings
+  by default. [boo#1225928]
+
+-------------------------------------------------------------------
 Mon Feb 26 13:08:20 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.

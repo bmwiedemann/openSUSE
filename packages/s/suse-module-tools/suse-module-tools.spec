@@ -37,7 +37,7 @@
 %global modprobe_conf_rpmsave %(echo "%{modprobe_conf_files}" | sed 's,\\([^ ]*\\),%{_sysconfdir}/modprobe.d/\\1.conf.rpmsave,g')
 
 Name:           suse-module-tools
-Version:        16.0.45
+Version:        16.0.47
 Release:        0
 Summary:        Configuration for module loading and SUSE-specific utilities for KMPs
 License:        GPL-2.0-or-later
@@ -81,6 +81,8 @@ Summary:        Kernel rpm scriptlets
 Provides:       suse-kernel-rpm-scriptlets = 0
 Requires:       suse-module-tools = %{version}
 Provides:       suse-module-tools:/usr/lib/module-init-tools/kernel-scriptlets
+Provides:       sdbootutil-rpm-scriptlets = 2.0
+Obsoletes:      sdbootutil-rpm-scriptlets < 2.0
 
 %description scriptlets
 Scripts called by the SUSE kernel packages on installation

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jul 10 20:09:28 UTC 2024 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Updated tar-fix-extract-unlink.patch
+  * Replace patch with an equivalent upstreamed commit
+  * Fixes bsc#1225407
+
+-------------------------------------------------------------------
 Wed Dec  6 16:04:39 UTC 2023 - Joshua Smith <jsmithfpv@gmail.com>
 
 - GNU tar 1.34:

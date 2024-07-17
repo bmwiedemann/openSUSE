@@ -1,11 +1,16 @@
 # HG changeset patch
-# Parent  9fcbd287056a40084b1e679f787bf683b291f323
+# Parent  125a78208d2cef58191a0328ffe894dd14c6b146
 Taken from https://bugzilla.mozilla.org/show_bug.cgi?id=1504834
 
 diff --git a/gfx/2d/DrawTargetSkia.cpp b/gfx/2d/DrawTargetSkia.cpp
 --- a/gfx/2d/DrawTargetSkia.cpp
 +++ b/gfx/2d/DrawTargetSkia.cpp
-@@ -156,7 +156,8 @@ static IntRect CalculateSurfaceBounds(co
+@@ -151,17 +151,18 @@ static IntRect CalculateSurfaceBounds(co
+   if (!sampledBounds.ToIntRect(&bounds)) {
+     return surfaceBounds;
+   }
+ 
+   return surfaceBounds.Intersect(bounds);
  }
  
  static const int kARGBAlphaOffset =
@@ -15,10 +20,20 @@ diff --git a/gfx/2d/DrawTargetSkia.cpp b/gfx/2d/DrawTargetSkia.cpp
  
  static bool VerifyRGBXFormat(uint8_t* aData, const IntSize& aSize,
                               const int32_t aStride, SurfaceFormat aFormat) {
+   if (aFormat != SurfaceFormat::B8G8R8X8 || aSize.IsEmpty()) {
+     return true;
+   }
+   // We should've initialized the data to be opaque already
+   // On debug builds, verify that this is actually true.
 diff --git a/gfx/2d/Types.h b/gfx/2d/Types.h
 --- a/gfx/2d/Types.h
 +++ b/gfx/2d/Types.h
-@@ -89,18 +89,11 @@ enum class SurfaceFormat : int8_t {
+@@ -84,28 +84,21 @@ enum class SurfaceFormat : int8_t {
+   YUV422,  // Single plane YUV 4:2:2 interleaved as Y`0 Cb Y`1 Cr.
+   HSV,
+   Lab,
+   Depth,
+ 
    // This represents the unknown format.
    UNKNOWN,  // TODO: Replace uses with Maybe<SurfaceFormat>.
  
@@ -40,10 +55,20 @@ diff --git a/gfx/2d/Types.h b/gfx/2d/Types.h
  
    // The following values are OS and endian-independent synonyms.
    //
+   // TODO(aosmond): When everything blocking bug 1581828 has been resolved, we
+   // can make this use R8B8G8A8 and R8B8G8X8 for non-Windows platforms.
+   OS_RGBA = A8R8G8B8_UINT32,
+   OS_RGBX = X8R8G8B8_UINT32
+ };
 diff --git a/gfx/skia/skia/modules/skcms/skcms.cc b/gfx/skia/skia/modules/skcms/skcms.cc
 --- a/gfx/skia/skia/modules/skcms/skcms.cc
 +++ b/gfx/skia/skia/modules/skcms/skcms.cc
-@@ -30,6 +30,8 @@
+@@ -26,16 +26,18 @@
+         // it'd be a lot slower.  But we want all those headers included so we
+         // can use their features after runtime checks later.
+         #include <smmintrin.h>
+         #include <avxintrin.h>
+         #include <avx2intrin.h>
          #include <avx512fintrin.h>
          #include <avx512dqintrin.h>
      #endif
@@ -51,8 +76,18 @@ diff --git a/gfx/skia/skia/modules/skcms/skcms.cc b/gfx/skia/skia/modules/skcms/
 +    #define SKCMS_PORTABLE
  #endif
  
- static bool runtime_cpu_detection = true;
-@@ -324,20 +326,28 @@ enum {
+ using namespace skcms_private;
+ 
+ static bool sAllowRuntimeCPUDetection = true;
+ 
+ void skcms_DisableRuntimeCPUDetection() {
+     sAllowRuntimeCPUDetection = false;
+@@ -319,30 +321,38 @@ enum {
+     skcms_Signature_sf32 = 0x73663332,
+     // XYZ is also a PCS signature, so it's defined in skcms.h
+     // skcms_Signature_XYZ = 0x58595A20,
+ };
+ 
  static uint16_t read_big_u16(const uint8_t* ptr) {
      uint16_t be;
      memcpy(&be, ptr, sizeof(be));
@@ -87,3 +122,8 @@ diff --git a/gfx/skia/skia/modules/skcms/skcms.cc b/gfx/skia/skia/modules/skcms/
  #endif
  }
  
+ static int32_t read_big_i32(const uint8_t* ptr) {
+     return (int32_t)read_big_u32(ptr);
+ }
+ 
+ static float read_big_fixed(const uint8_t* ptr) {

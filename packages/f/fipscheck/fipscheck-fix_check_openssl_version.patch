@@ -1,0 +1,36 @@
+From 8e8fb5a47d19bc4bb589af06623e710d755bb963 Mon Sep 17 00:00:00 2001
+From: "Doug.Smith" <doug.smith@lairdconnect.com>
+Date: Tue, 23 Aug 2022 15:13:02 -0400
+Subject: [PATCH] BZ22308: fipscheck for openssl-3 fails
+
+Fix openssl version check -- missing include
+of version <opensslv.h> before check.
+
+Fix loading of openssl fips provider.
+
+Bug: 22308
+---
+ src/filehmac.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/src/filehmac.c b/src/filehmac.c
+index 87ad15f..f9b5310 100644
+--- a/src/filehmac.c
++++ b/src/filehmac.c
+@@ -41,6 +41,7 @@
+ #include <sys/wait.h>
+ 
+ #if defined(WITH_OPENSSL)
++#include <openssl/opensslv.h>
+ #if OPENSSL_VERSION_NUMBER >= 0x30000000L
+ #include <openssl/provider.h>
+ #include <openssl/evp.h>
+@@ -215,7 +216,7 @@ compute_file_hmac(const char *path, void **buf, size_t *hmaclen, int force_fips)
+ 	size_t len;
+ 	unsigned int hlen;
+ 
+-	if (force_fips && fips != NULL) {
++	if (force_fips && fips == NULL) {
+ 		fips = OSSL_PROVIDER_load(NULL, "fips");
+ 		if (fips == NULL) {
+ 			debug_log("Failed to load FIPS provider\n");

@@ -1213,4 +1213,14 @@ goes in line with 946250</comment>
     <comment>- Update to release 2.9.5</comment>
     <requestid>1174497</requestid>
   </revision>
+  <revision rev="139" vrev="2">
+    <srcmd5>1b32f8cf8720a2dd7e9fd5ebcbe3c8c5</srcmd5>
+    <version>2.9.5</version>
+    <time>1721222057</time>
+    <user>anag+factory</user>
+    <comment>- Revert the change dropping the default configuration file. If
+  /usr/etc exists will be installed there, otherwise in /etc.
+  (bsc#1226157);</comment>
+    <requestid>1187905</requestid>
+  </revision>
 </revisionlist>

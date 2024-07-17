@@ -1,0 +1,26 @@
+From 05f84f7ec315f1251ffaa151e3b69df68f31c9e9 Mon Sep 17 00:00:00 2001
+From: Isaac Lee <isaac.lee@alliedtelesis.co.nz>
+Date: Thu, 16 Feb 2023 19:21:59 +1300
+Subject: [PATCH] filehmac: fix incorrect length type
+
+EVP_MAC_final() expects a size_t type variable for storing the number of
+bytes written, but the the variable was declared as unsigned int, causing
+the function to write 0 to the variable while the actual hmac computation
+actually successfully completes.
+---
+ src/filehmac.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/filehmac.c b/src/filehmac.c
+index f9b5310..f59f09e 100644
+--- a/src/filehmac.c
++++ b/src/filehmac.c
+@@ -214,7 +214,7 @@ compute_file_hmac(const char *path, void **buf, size_t *hmaclen, int force_fips)
+ 	OSSL_PARAM params[2];
+ 	unsigned char rbuf[READ_BUFFER_LENGTH];
+ 	size_t len;
+-	unsigned int hlen;
++	size_t hlen;
+ 
+ 	if (force_fips && fips == NULL) {
+ 		fips = OSSL_PROVIDER_load(NULL, "fips");

@@ -28,9 +28,9 @@
 # orig_suffix b3
 # major 69
 # mainver %%major.99
-%define major          127
-%define mainver        %major.0.2
-%define orig_version   127.0.2
+%define major          128
+%define mainver        %major.0
+%define orig_version   128.0
 %define orig_suffix    %{nil}
 %define update_channel release
 %define branding       1
@@ -45,7 +45,7 @@
 %bcond_with only_print_mozconfig
 
 # define if ccache should be used or not
-%define useccache     0
+%define useccache     1
 
 # SLE-12 doesn't have this macro
 %{!?_rpmmacrodir: %global _rpmmacrodir %{_rpmconfigdir}/macros.d}
@@ -103,8 +103,8 @@ BuildRequires:  gcc13-c++
 %else
 BuildRequires:  gcc-c++
 %endif
-BuildRequires:  cargo1.76
-BuildRequires:  rust1.76
+BuildRequires:  cargo1.78
+BuildRequires:  rust1.78
 %if 0%{useccache} != 0
 BuildRequires:  ccache
 %endif
@@ -114,7 +114,7 @@ BuildRequires:  libiw-devel
 BuildRequires:  libproxy-devel
 BuildRequires:  makeinfo
 BuildRequires:  mozilla-nspr-devel >= 4.35
-BuildRequires:  mozilla-nss-devel >= 3.100
+BuildRequires:  mozilla-nss-devel >= 3.101.1
 BuildRequires:  nasm >= 2.14
 BuildRequires:  nodejs >= 12.22.12
 %if 0%{?sle_version} >= 120000 && 0%{?sle_version} < 150000
@@ -124,11 +124,14 @@ BuildRequires:  python39
 BuildRequires:  python39-curses
 BuildRequires:  python39-devel
 %else
-%if 0%{?sle_version} >= 150000 && 0%{?sle_version} <= 150600
+%if 0%{?sle_version} > 150000 && 0%{?sle_version} <= 150600
+BuildRequires:  nodejs12 >= 12.22.12
 BuildRequires:  python39
 BuildRequires:  python39-curses
 BuildRequires:  python39-devel
 %else
+# ALP
+BuildRequires:  nodejs >= 12.22.12
 BuildRequires:  python3 >= 3.7
 BuildRequires:  python3-curses
 BuildRequires:  python3-devel
@@ -146,11 +149,7 @@ BuildRequires:  zip
 %if 0%{?suse_version} < 1550
 BuildRequires:  pkgconfig(gconf-2.0) >= 1.2.1
 %endif
-%if (0%{?sle_version} >= 120000 && 0%{?sle_version} < 150000)
-BuildRequires:  clang6-devel
-%else
-BuildRequires:  clang-devel >= 5
-%endif
+BuildRequires:  clang15-devel
 BuildRequires:  pkgconfig(glib-2.0) >= 2.22
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.14.0
@@ -196,7 +195,7 @@ Source9:        firefox.js
 Source11:       firefox.1
 Source12:       mozilla-get-app-id
 Source13:       spellcheck.js
-Source14:       https://github.com/openSUSE/firefox-scripts/raw/9b77cf0/create-tar.sh
+Source14:       https://github.com/openSUSE/firefox-scripts/raw/913fab1/create-tar.sh
 Source15:       firefox-appdata.xml
 Source16:       %{name}.changes
 Source17:       firefox-search-provider.ini
@@ -229,6 +228,8 @@ Patch21:        svg-rendering.patch
 Patch22:        mozilla-partial-revert-1768632.patch
 Patch23:        mozilla-rust-disable-future-incompat.patch
 Patch24:        mozilla-bmo1822730.patch
+Patch25:        mozilla-bmo1898476.patch
+Patch26:        mozilla-bmo1907511.patch
 # Firefox/browser
 Patch101:       firefox-kde.patch
 Patch102:       firefox-branded-icons.patch
@@ -580,8 +581,10 @@ grep amazondotcom dist/firefox/browser/omni.ja
 # copy tree into RPM_BUILD_ROOT
 mkdir -p %{buildroot}%{progdir}
 cp -rf $RPM_BUILD_DIR/obj/dist/%{srcname}/* %{buildroot}%{progdir}
+%if %localize
 mkdir -p %{buildroot}%{progdir}/browser/extensions
 cp -rf $RPM_BUILD_DIR/langpacks_artifacts/* %{buildroot}%{progdir}/browser/extensions/
+%endif
 mkdir -p %{buildroot}%{progdir}/distribution/extensions
 mkdir -p %{buildroot}%{progdir}/browser/defaults/preferences/
 # renaming executables (for regular vs. ESR)

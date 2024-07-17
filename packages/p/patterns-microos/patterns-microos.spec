@@ -733,7 +733,6 @@ Requires:       policycoreutils-python-utils
 Requires:       qemu-guest-agent
 %ifarch %{ix86} x86_64 aarch64
 Requires:       sdbootutil
-Requires:       sdbootutil-rpm-scriptlets
 Requires:       sdbootutil-snapper
 Requires:       systemd-boot
 %endif

@@ -7,4 +7,12 @@
     <comment>Add new package uasm, needed to enable ASM support for 7zip</comment>
     <requestid>1039531</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>6319c5b80a9bf81830b14d9dc864491c</srcmd5>
+    <version>2.56.2</version>
+    <time>1721222032</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1187883</requestid>
+  </revision>
 </revisionlist>

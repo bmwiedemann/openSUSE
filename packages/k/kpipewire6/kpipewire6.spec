@@ -27,7 +27,7 @@
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kpipewire6
-Version:        6.1.2
+Version:        6.1.3
 Release:        0
 Summary:        PipeWire integration for KDE Plasma
 License:        LGPL-2.0-only AND LGPL-3.0-only
@@ -37,6 +37,9 @@ Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{ver
 Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
+# PATCH-FEATURE-UPSTREAM
+Patch1:         0001-Simpler-yet-more-useful-handling-of-KPIPEWIRE_FORCE_.patch
+Patch2:         0002-Add-encoder-using-libopenh264.patch
 BuildRequires:  kf6-extra-cmake-modules
 BuildRequires:  pkgconfig
 BuildRequires:  qt6-gui-private-devel >= %{qt6_version}

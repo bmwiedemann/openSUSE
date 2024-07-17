@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sat Jun 29 20:31:08 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 26.4.18:
+  * The garbd process hangs due to exceptions in the GCS layer not
+    being caught within the receive loop, necessitating a forceful
+    termination. Fixing this requires catching all exceptions
+    within the loop, closing the connection first, and then
+    continuing until a 'SELF-LEAVE' message ensures graceful exit.
+  * When using SSL, crashes of garbd during graceful node shutdowns
+    may occur, and result in the cluster becoming non-Primary;
+    garbd now ignores the SIGPIPE signal to prevent this.
+  * socket_ssl_compression is deprecated, now it isn't attempt to
+    be set, and the user receives a warning if it was explicitly
+    set.
+  * Fixed commit cut tracking on node leave, and bumped GCS protocol
+    version for backwards compatibility.
+  * Executing the gcomm join process in the database server thread
+    can lead to issues during allowlist callbacks, which should
+    only be handled by Galera service threads. The gcomm join
+    process is run within the gcomm service thread now.
+
+-------------------------------------------------------------------
 Mon Feb 19 11:09:35 UTC 2024 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Update to 26.4.17:
@@ -6,7 +28,7 @@ Mon Feb 19 11:09:35 UTC 2024 - Danilo Spinella <danilo.spinella@suse.com>
   of resource keys: schema, table, row, yet one common resource used by every
   writeset, a node. The key is added by default to every writeset with the default
   type WSREP_KEY_SHARED. Now, node-wide operations can be performed with the same
-  semantics as regular transactions. 
+  semantics as regular transactions.
   - Non-SYNCED nodes are not counted when calculating commit cut - maximum seqno
   that is no longer needed in certification index; situations may arise when group
   commit cut is applied before all preceding events are committed on a non-SYNCED
@@ -18,13 +40,13 @@ Mon Feb 19 11:09:35 UTC 2024 - Danilo Spinella <danilo.spinella@suse.com>
   - Stability of node joining process for EVS improved by dropping EVS join
   messages without own identified in joining state, to avoid starting membership
   protocol before at least one of the existing nodes has seen at least one join
-  message from a joiner. 
+  message from a joiner.
   - Improve "Failed to report last committed" warning to make it more accurate and
   user-friendly.
 - Update to 26.4.16:
   - Removed out-of-order certification for BF aborted transactions.
   - Better error handling when the socket is closed, also cleaned up excessive
-  debug logging. 
+  debug logging.
 - Update to 26.4.15:
   - an assertion is relaxed when Galera is configured with commit order disabled
   - in certificate index preload, an assertion in handle_ist_trx_preload() fails
@@ -154,7 +176,7 @@ Wed Dec  2 17:37:31 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
 -------------------------------------------------------------------
 Thu Jul  2 15:53:25 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
 
-- allow also newer versions of mariadb 
+- allow also newer versions of mariadb
 
 -------------------------------------------------------------------
 Mon Apr  6 14:44:51 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>

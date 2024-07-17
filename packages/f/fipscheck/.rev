@@ -90,4 +90,12 @@
 - dropped fipscheck-fips.h_not_needed.patch (not needed) (forwarded request 1032908 from msmeissn)</comment>
     <requestid>1032909</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>96c1d5664f0548b44fda5d13162bf4c6</srcmd5>
+    <version>1.7.0</version>
+    <time>1721222066</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1187682</requestid>
+  </revision>
 </revisionlist>

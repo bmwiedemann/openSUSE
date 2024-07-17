@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Jul 16 18:12:53 UTC 2024 - Ignaz Forster <iforster@suse.com>
+
+- It seems it's taking a longer time until the tests will be
+  adopted to the new reboot behavior. Disable soft-reboot for now
+  to unblock the regular transactional-update update.
+
+-------------------------------------------------------------------
+Thu Jul  4 15:22:40 UTC 2024 - Ignaz Forster <iforster@suse.com>
+
+- Version 4.7.0
+  - Add plugin mechanism
+    It's now possible to hook into API functions with custom
+    plugins; see doc/tukit-plugins.md for details.
+    [gh#openSUSE/transactional-update#122]
+  - Fix missing libdir replacement for status command
+
+-------------------------------------------------------------------
+Fri Jun 14 10:06:31 UTC 2024 - Ignaz Forster <iforster@suse.com>
+
+- Enable soft-reboot by default again as announced in
+  https://microos.opensuse.org/blog/2024-06-13-soft-reboot/
+
+-------------------------------------------------------------------
 Tue May  7 14:25:07 UTC 2024 - Ignaz Forster <iforster@suse.com>
 
 - Version 4.6.8

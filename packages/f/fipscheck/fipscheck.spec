@@ -1,7 +1,7 @@
 #
 # spec file for package fipscheck
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,8 @@ Group:          Development/Libraries/C and C++
 URL:            https://github.com/LairdCP/fipscheck
 Source0:        fipscheck-%version.tar.bz2
 Source1:        baselibs.conf
+Patch0:         fipscheck-fix_check_openssl_version.patch
+Patch1:         fipscheck-fix_incorrect_length_type.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
@@ -57,6 +59,8 @@ This package contains development files for %{name}.
 
 %prep
 %setup -q
+%patch -P0 -p1
+%patch -P1 -p1
 
 %build
 %configure --disable-static

@@ -59,7 +59,7 @@ Index: lightdm-1.30.0/src/lightdm.c
 +    displaymanager_config = opensuse_sysconfig_load_file (SYSCONFIG_DISPLAYMANAGER, &error);
 +    if (displaymanager_config)
 +    {
-+        str_value = opensuse_sysconfig_get_string (displaymanager_config, "DISPLAYMANAGER_AUTOLOGIN", &error);
++        str_value = opensuse_sysconfig_get_string ((const gchar **) displaymanager_config, "DISPLAYMANAGER_AUTOLOGIN", &error);
 +        if (!error)
 +        {
 +            if (*str_value != '\0')
@@ -75,7 +75,7 @@ Index: lightdm-1.30.0/src/lightdm.c
 +            g_clear_error (&error);
 +        }
 +
-+        boolean_value = opensuse_sysconfig_get_boolean (displaymanager_config, "DISPLAYMANAGER_PASSWORD_LESS_LOGIN", &error);
++        boolean_value = opensuse_sysconfig_get_boolean ((const gchar **) displaymanager_config, "DISPLAYMANAGER_PASSWORD_LESS_LOGIN", &error);
 +        if (!error)
 +        {
 +            config_set_boolean (config_get_instance (), "LightDM", "password-less-login", boolean_value);
@@ -86,7 +86,7 @@ Index: lightdm-1.30.0/src/lightdm.c
 +            g_clear_error (&error);
 +        }
 +
-+        boolean_value = opensuse_sysconfig_get_boolean (displaymanager_config, "DISPLAYMANAGER_REMOTE_ACCESS", &error);
++        boolean_value = opensuse_sysconfig_get_boolean ((const gchar **) displaymanager_config, "DISPLAYMANAGER_REMOTE_ACCESS", &error);
 +        if (!error)
 +        {
 +            config_set_boolean (config_get_instance (), "XDMCPServer", "enabled", boolean_value);
@@ -97,7 +97,7 @@ Index: lightdm-1.30.0/src/lightdm.c
 +            g_clear_error (&error);
 +        }
 +
-+        boolean_value = opensuse_sysconfig_get_boolean (displaymanager_config, "DISPLAYMANAGER_XSERVER_TCP_PORT_6000_OPEN", &error);
++        boolean_value = opensuse_sysconfig_get_boolean ((const gchar **) displaymanager_config, "DISPLAYMANAGER_XSERVER_TCP_PORT_6000_OPEN", &error);
 +        if (!error)
 +        {
 +            if (boolean_value)

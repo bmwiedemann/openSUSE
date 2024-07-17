@@ -964,4 +964,15 @@ mostly-working synapse than nothing at all) and the package has been update to
     <comment>- Update to 1.110.0</comment>
     <requestid>1185213</requestid>
   </revision>
+  <revision rev="104" vrev="1">
+    <srcmd5>74531124a17d8d79015232b75b89d6e8</srcmd5>
+    <version>1.111.0</version>
+    <time>1721222072</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1187923 from darix
+
+- new dependency on python-python-multipart
+- Update to 1.111.0</comment>
+    <requestid>1187924</requestid>
+  </revision>
 </revisionlist>

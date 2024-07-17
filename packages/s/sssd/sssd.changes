@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jul 11 09:41:21 UTC 2024 - Samuel Cabrero <scabrero@suse.de>
+
+- Revert the change dropping the default configuration file. If
+  /usr/etc exists will be installed there, otherwise in /etc.
+  (bsc#1226157);
+
+-------------------------------------------------------------------
 Thu May 16 12:13:02 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.9.5

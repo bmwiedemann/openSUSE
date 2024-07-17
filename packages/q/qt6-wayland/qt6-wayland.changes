@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jul 16 09:02:13 UTC 2024 - Fabian Vogt <fvogt@suse.com>
+
+- Add patches to fix crashes on screens disappearing
+  (kde#489072, kde#489180):
+  * 0001-client-Guard-against-windows-being-on-a-null-screen.patch
+  * 0002-Client-Improve-thread-safety-determining-window-size.patch
+
+-------------------------------------------------------------------
 Tue Jul  9 09:20:12 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add patch to fix certain wayland protocol errors (kde#489259):

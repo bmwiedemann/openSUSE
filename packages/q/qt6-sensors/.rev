@@ -191,4 +191,12 @@
     <comment>Qt 6.7.1 + pyside 6.7.1 (forwarded request 1181766 from krop)</comment>
     <requestid>1182609</requestid>
   </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>c08bf42c2417e621c3c839a30f0a8c68</srcmd5>
+    <version>6.7.2</version>
+    <time>1721222028</time>
+    <user>anag+factory</user>
+    <comment>- Make sure the plugins are installed (boo#1227871) (forwarded request 1187689 from Vogtinator)</comment>
+    <requestid>1187800</requestid>
+  </revision>
 </revisionlist>

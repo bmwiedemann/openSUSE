@@ -27,7 +27,7 @@ BuildRequires:  git-core
 %define git_version %{nil}
 %endif
 Name:           sdbootutil
-Version:        1+git20240514.56dc89c%{git_version}
+Version:        1+git20240704.a2c5a26%{git_version}
 Release:        0
 Summary:        script to install shim with sd-boot
 License:        MIT
@@ -44,6 +44,7 @@ Requires:       systemd-experimental
 Requires:       dracut-pcr-signature
 Supplements:    (systemd-boot and shim)
 Requires:       (%{name}-snapper if (snapper and btrfsprogs))
+Requires:       (%{name}-tukit if read-only-root-fs)
 ExclusiveArch:  aarch64 ppc64le riscv64 x86_64
 
 %description
@@ -59,19 +60,14 @@ Requires:       snapper
 %description snapper
 Plugin scripts for snapper to handle BLS config files
 
-%package rpm-scriptlets
-Summary:        Scripts to create boot entries on kernel updates
+%package tukit
+Summary:        plugin script for tukit
+Requires:       %{name} = %{version}
 Requires:       sdbootutil >= %{version}-%{release}
-# make sure to not replace scriptlets with nops on systems that
-# use grub2
-Conflicts:      grub2
-Conflicts:      suse-kernel-rpm-scriptlets
-Provides:       suse-kernel-rpm-scriptlets
-Obsoletes:      %{name}-filetriggers < %{version}
+Requires:       tukit
 
-%description rpm-scriptlets
-Scriptlets that call sdbootutil to create boot entries when
-kernels are installed or removed
+%description tukit
+Plugin scripts for tukit to handle BLS config files
 
 %package kernel-install
 Summary:        Hook script for kernel-install
@@ -95,23 +91,16 @@ for i in sdbootutil-update-predictions.service; do
 	install -D -m 644 "$i" %{buildroot}%{_unitdir}/"$i"
 done
 
-mkdir -p %{buildroot}%{_prefix}/lib/module-init-tools/kernel-scriptlets
-for a in rpm; do
-    install -m 755 "$a-script" %{buildroot}%{_prefix}/lib/module-init-tools/kernel-scriptlets
-    for b in post posttrans postun pre preun; do
-       ln -s "$a-script" %{buildroot}%{_prefix}/lib/module-init-tools/kernel-scriptlets/$a-$b
-    done
-done
-for a in cert inkmp kmp; do
-    for b in post posttrans postun pre preun; do
-       ln -s /bin/true %{buildroot}%{_prefix}/lib/module-init-tools/kernel-scriptlets/$a-$b
-    done
-done
-
 # snapper
 install -d -m755 %{buildroot}%{_prefix}/lib/snapper/plugins
 for i in 10-sdbootutil.snapper; do
   install -m 755 $i %{buildroot}%{_prefix}/lib/snapper/plugins/$i
+done
+
+# tukit
+install -d -m755 %{buildroot}%{_prefix}/lib/tukit/plugins
+for i in 10-sdbootutil.tukit; do
+  install -m 755 $i %{buildroot}%{_prefix}/lib/tukit/plugins/$i
 done
 
 # kernel-install
@@ -143,14 +132,15 @@ sdbootutil update
 %{_bindir}/sdbootutil
 %{_unitdir}/sdbootutil-update-predictions.service
 
-%files rpm-scriptlets
-%dir %{_prefix}/lib/module-init-tools
-%{_prefix}/lib/module-init-tools/*
-
 %files snapper
 %dir %{_prefix}/lib/snapper
 %dir %{_prefix}/lib/snapper/plugins
 %{_prefix}/lib/snapper/plugins/*
+
+%files tukit
+%dir %{_prefix}/lib/tukit
+%dir %{_prefix}/lib/tukit/plugins
+%{_prefix}/lib/tukit/plugins/*
 
 %files kernel-install
 %dir %{_prefix}/lib/kernel

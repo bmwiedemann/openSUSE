@@ -1235,4 +1235,23 @@ Also requires https://build.opensuse.org/request/show/1167142.</comment>
   - Add support for snapper 0.11.0; also significantly decreases cleanup time [boo#1223504]</comment>
     <requestid>1172470</requestid>
   </revision>
+  <revision rev="109" vrev="1">
+    <srcmd5>16ceeefbff05cc7f2b3096904b6b78a7</srcmd5>
+    <version>4.7.0</version>
+    <time>1721222043</time>
+    <user>anag+factory</user>
+    <comment>- It seems it's taking a longer time until the tests will be
+  adopted to the new reboot behavior. Disable soft-reboot for now
+  to unblock the regular transactional-update update.
+- Version 4.7.0
+  - Add plugin mechanism
+    It's now possible to hook into API functions with custom
+    plugins; see doc/tukit-plugins.md for details.
+    [gh#openSUSE/transactional-update#122]
+  - Fix missing libdir replacement for status command
+- Enable soft-reboot by default again as announced in
+  https://microos.opensuse.org/blog/2024-06-13-soft-reboot/
+</comment>
+    <requestid>1188045</requestid>
+  </revision>
 </revisionlist>

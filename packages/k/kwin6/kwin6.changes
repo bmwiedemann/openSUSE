@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Tue Jul 16 13:22:44 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.1.3:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.1.3
+- Changes since 6.1.2:
+  * update version for new release
+  * plugins/nightlight: Relax custom times constraints (kde#489366)
+  * wayland: Simplify XdgPopupWindow::sendRoleConfigure()
+  * wayland: Dismiss XdgPopupWindow when the parent window is closed (kde#472013)
+  * tiling: Don't put maximized windows in tile (kde#489463)
+  * Input method window should not break showing desktop (kde#489057)
+  * plugins/fadingpopups: don't block direct scanout (kde#487780)
+  * backends/drm: test and apply all mode changes at once
+  * autotests/drm: add test for vrr capability changing without a hotunplug
+  * backends/drm: update output properties after they're created too (kde#486149)
+  * use separation dep_version to build against, updated by release scripts
+  * plugins/screencast: Don't download texture data if target size and texture size mismatch
+  * plugins/screencast: Allocate offscreen texture in WindowScreenCastSource::render(QImage) as big as the memfd buffer (kde#489764)
+  * autotests: Skip testScreencasting in CI
+  * Foward modifiers after disabling sticky keys
+  * plugins/screenshot: Port blitScreenshot() to glReadnPixels()
+  * wayland: add error handling for QFile::open failure in org_kde_plasma_window_get_icon
+  * placement: ignore the active output with place under mouse (kde#488110)
+  * opengl: Add OpenGlContext::glGetnTexImage()
+  * plugins/screencast: Prefer glReadnPixels() and glGetnTexImage()
+  * WindowHeapDelegate: label topMargin to small, remove height padding (kde#489595)
+  * plugins/glide: drop references to closed windows if they're not animated
+  * update version for new release
+  * plugins/screencast: Handle frame rate throttling timer firing a bit earlier
+  * backends/drm: disable triple buffering on NVidia (kde#487833)
+
+-------------------------------------------------------------------
 Tue Jul  2 17:33:33 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.1.2:

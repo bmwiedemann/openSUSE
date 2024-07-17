@@ -6866,4 +6866,41 @@
 - Fix GNOME search provider (boo#1225278)</comment>
     <requestid>1185336</requestid>
   </revision>
+  <revision rev="431" vrev="1">
+    <srcmd5>edaf14f9d9772548e936306c5f0751ab</srcmd5>
+    <version>128.0</version>
+    <time>1721222045</time>
+    <user>anag+factory</user>
+    <comment>- Mozilla Firefox 128.0
+  https://www.mozilla.org/en-US/firefox/128.0/releasenotes
+  MFSA 2024-29 (bsc#1226316)
+  * CVE-2024-6605 (bmo#1836786)
+    Firefox Android missed activation delay to prevent tapjacking
+  * CVE-2024-6606 (bmo#1902305)
+    Out-of-bounds read in clipboard component
+  * CVE-2024-6607 (bmo#1694513)
+    Leaving pointerlock by pressing the escape key could be
+    prevented
+  * CVE-2024-6608 (bmo#1743329)
+    Cursor could be moved out of the viewport using pointerlock.
+  * CVE-2024-6609 (bmo#1839258)
+    Memory corruption in NSS
+  * CVE-2024-6610 (bmo#1883396)
+    Form validation popups could block exiting full-screen mode
+  * CVE-2024-6600 (bmo#1888340)
+    Memory corruption in WebGL API
+  * CVE-2024-6601 (bmo#1890748)
+    Race condition in permission assignment
+  * CVE-2024-6602 (bmo#1895032)
+    Memory corruption in NSS
+  * CVE-2024-6603 (bmo#1895081)
+    Memory corruption in thread creation
+  * CVE-2024-6611 (bmo#1844827)
+    Incorrect handling of SameSite cookies
+  * CVE-2024-6612 (bmo#1880374)
+    CSP violation leakage when using devtools
+  * CVE-2024-6613 (bmo#1900523)
+    Incorrect listing of stack frames</comment>
+    <requestid>1187677</requestid>
+  </revision>
 </revisionlist>

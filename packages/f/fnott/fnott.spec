@@ -17,7 +17,7 @@
 
 
 Name:           fnott
-Version:        1.5.0
+Version:        1.6.0
 Release:        0
 Summary:        Lightweight notification daemon for Wayland
 License:        MIT
@@ -90,6 +90,10 @@ Zsh command-line completion support for %{name}
 %dir %{_sysconfdir}/xdg/%{name}/
 %{_sysconfdir}/xdg/%{name}/fnott.ini
 %{_datadir}/applications/fnott.desktop
+
+%dir %{_datadir}/dbus-1
+%dir %{_datadir}/dbus-1/services
+%{_datadir}/dbus-1/services/%{name}.service
 
 %files zsh-completion
 %{_datadir}/zsh/site-functions/_fnott

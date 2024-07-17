@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jul  3 21:49:31 UTC 2024 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 16.0.47:
+  * rpm scriptlets: fix shellcheck warnings
+
+- Update to version 16.0.46:
+  * Support for bootloaders that follow the boot loader specification
+    in particular systemd-boot (bsc#1226122)
+  * Spec file: obsolete sdbootutil-rpm-scriptlets, the scriptlets
+    in suse-module-tools-scriptlets have modified to support the
+    systemd-boot / sdbootutil use case, too
+
+-------------------------------------------------------------------
 Mon Jun 24 14:10:46 UTC 2024 - Martin Wilck <mwilck@suse.com>
 
 - Update to version 16.0.45:
