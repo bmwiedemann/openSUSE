@@ -1062,4 +1062,15 @@ in the libvirt 10.3.0 dev cycle, so no 10.3.0 release of the perl bindings.
   - Add all new APIs and constants in libvirt 10.2.0</comment>
     <requestid>1171481</requestid>
   </revision>
+  <revision rev="105" vrev="1">
+    <srcmd5>67f4088a368db9c179d13810326233fc</srcmd5>
+    <version>10.5.0</version>
+    <time>1721222106</time>
+    <user>anag+factory</user>
+    <comment>Updated perl bindings for libvirt 10.5.0.
+
+- Update to 10.5.0
+  - Add all new APIs and constants in libvirt 10.5.0</comment>
+    <requestid>1188056</requestid>
+  </revision>
 </revisionlist>
