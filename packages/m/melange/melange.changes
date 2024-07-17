@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Tue Jul 16 20:19:17 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.11.0:
+  * Apply variables to workdir within a range
+  * Add update.exclude-reason field.
+  * fix(pipelines): Use contextdir instead of destdir in a few
+    places
+  * remove defunct reference to k8s runner
+  * drop extra generate
+  * update Makefile
+  * drop make generate from verify.yaml
+  * drop allowedPrefixes
+  * don't SCA-generate so: provides for libs not directly in lib
+    dirs
+  * drop lima runner
+  * fix bug, test passes
+  * short circuit analyze on no-provides (demonstrate bug?)
+  * fail on diff
+  * go generate in e2e testS
+  * better SCA e2e tests
+  * try this
+  * try this
+  * another fix
+  * default key name
+  * unexport more
+  * drop example
+  * refactor Keygen opts to a struct
+  * fix(cargo/build): test for non-zero length
+
+-------------------------------------------------------------------
 Wed Jul 10 16:55:40 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.10.4:
