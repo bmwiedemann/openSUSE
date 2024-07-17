@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul  9 13:23:53 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 8.5.3:
+  * Send stdout to /dev/null unless it is needed
+
+-------------------------------------------------------------------
 Wed May  3 23:15:16 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Trim filler wording and rhetorics from descriptions.
@@ -45,14 +51,14 @@ Wed Jul 24 20:33:23 UTC 2013 - zaitor@opensuse.org
   + Enhancements: dtrx can now handle `xz compression`_.
   + Other changes: The tests now use the PyYAML library, instead of
     the abandoned Syck.
-- Changes from version 6.5:    
+- Changes from version 6.5:
   + Enhancements:
     - When you list archive contents with -l or -t, dtrx will start
       printing results much faster than it used to.  There's a
       small chance that it will print some incorrect listings if it
       misdetects the archive type of a given file, but it will show
       you an error message when that happens.
-    - dtrx recognizes more kinds of compressed tar archives by 
+    - dtrx recognizes more kinds of compressed tar archives by
       their extension.
     - You can now extract newer .deb packages that are compressed
       with bzip2 or lzma.
