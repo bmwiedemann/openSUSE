@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Wed Jul 17 03:29:15 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 1.1.3:
+  * internal/openvex: update handler test
+  * LICENSE: update per Google Legal
+  * internal/vulncheck: add warning message for ancient binaries
+  * all: remove build restrictions requiring go1.18
+  * cmd/govulncheck: clarify unsafe/reflection limitations
+  * cmd/govulncheck: update docs for old Go binaries
+  * internal/openvex: omit vulns with no findings
+  * cmd/govulncheck/integration: adjust k8s expectations
+  * all: remove skipIfShort
+  * all: remove unnecessary test lines for staticcheck
+  * internal/vulncheck: avoid recomputing if module is known
+  * go.mod: update golang.org/x dependencies
+  * internal/buildinfo: add support for ancient Go binaries
+  * internal/goversion: comment out a printing line
+  * internal/goversion: add package as copy of rsc.io/goversion/version
+  * cmd/govulncheck: remove line about go version requirements
+  * internal/vulncheck: improve documentation
+  * internal/vulncheck: use module info when looking for symbols
+  * internal/vulncheck: handle symbols ending with .
+  * cmd/govulncheck/integration: make expectation check more robust
+  * all: require go1.21
+- Packaging improvements:
+  * Build PIE with pattern that may become recommended procedure:
+    %%ifnarch ppc64 GOFLAGS="-buildmode=pie" %%endif go build
+    A go toolchain buildmode default config would be preferable
+    but none exist at this time.
+  * Update to BuildRequires: golang(API) >= 1.21 matching go.mod
+  * Use name macro where applicable to normalize common lines
+    across Go app packages. Also makes renaming binary easier when
+    required to handle package name conflict.
+
+-------------------------------------------------------------------
 Thu Jun 06 20:41:57 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 1.1.2:

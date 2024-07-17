@@ -170,4 +170,41 @@
   * cmd/govulncheck: record scan mode telemetry (forwarded request 1179095 from jfkw)</comment>
     <requestid>1179096</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>51f79f6213912e30b24bffdf5f37ccad</srcmd5>
+    <version>1.1.3</version>
+    <time>1721222107</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.1.3:
+  * internal/openvex: update handler test
+  * LICENSE: update per Google Legal
+  * internal/vulncheck: add warning message for ancient binaries
+  * all: remove build restrictions requiring go1.18
+  * cmd/govulncheck: clarify unsafe/reflection limitations
+  * cmd/govulncheck: update docs for old Go binaries
+  * internal/openvex: omit vulns with no findings
+  * cmd/govulncheck/integration: adjust k8s expectations
+  * all: remove skipIfShort
+  * all: remove unnecessary test lines for staticcheck
+  * internal/vulncheck: avoid recomputing if module is known
+  * go.mod: update golang.org/x dependencies
+  * internal/buildinfo: add support for ancient Go binaries
+  * internal/goversion: comment out a printing line
+  * internal/goversion: add package as copy of rsc.io/goversion/version
+  * cmd/govulncheck: remove line about go version requirements
+  * internal/vulncheck: improve documentation
+  * internal/vulncheck: use module info when looking for symbols
+  * internal/vulncheck: handle symbols ending with .
+  * cmd/govulncheck/integration: make expectation check more robust
+  * all: require go1.21
+- Packaging improvements:
+  * Build PIE with pattern that may become recommended procedure:
+    %%ifnarch ppc64 GOFLAGS=&quot;-buildmode=pie&quot; %%endif go build
+    A go toolchain buildmode default config would be preferable
+    but none exist at this time.
+  * Update to BuildRequires: golang(API) &gt;= 1.21 matching go.mod
+  * Use name macro where applicable to normalize common lines
+    across Go app packages. Also makes renaming binary easier when (forwarded request 1188075 from jfkw)</comment>
+    <requestid>1188076</requestid>
+  </revision>
 </revisionlist>
