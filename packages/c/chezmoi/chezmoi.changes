@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jul 16 17:36:47 UTC 2024 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 2.51.0:
+  - Features
+    * feat: Add 1Password SDK template funcs
+    * feat: Add decompression of file externals
+  - Fixes
+    * fix: keep initFuncs when using 'includeTemplate' in config
+    * fix: Use scriptTempDir for modify_ scripts
+
+-------------------------------------------------------------------
 Tue Jul  9 14:41:51 UTC 2024 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 2.50.0:

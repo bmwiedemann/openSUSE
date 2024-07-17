@@ -494,4 +494,19 @@
 </comment>
     <requestid>1186431</requestid>
   </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>afbf380b84d438610b3f066d13a1dba3</srcmd5>
+    <version>2.51.0</version>
+    <time>1721222098</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.51.0:
+  - Features
+    * feat: Add 1Password SDK template funcs
+    * feat: Add decompression of file externals
+  - Fixes
+    * fix: keep initFuncs when using 'includeTemplate' in config
+    * fix: Use scriptTempDir for modify_ scripts
+</comment>
+    <requestid>1188035</requestid>
+  </revision>
 </revisionlist>
