@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Jul 16 18:32:24 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 3.19.0
+  * Fix mouse wheel behavior with Alt modifier
+  * Fix random comparison of images
+  * Fix missing window icon when running under Wayland
+  * Fix wrong coordinates in crop toolbar
+  * Fix incorrect crop tooltip when rotating
+  * fix broken zip thumbnails
+  * Fix infinite loop when scanning subfolder
+  * Fix segfaults or hangs when sorting
+  * Fix segfault in history dock when last tab is closed
+  * Fix status bar displaying wrong zoom
+  * Fix segfault on thumbnailer
+
+-------------------------------------------------------------------
+Sat Jul  6 09:18:12 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Build leap with clang: gcc version doesn't support c++17 
+
+-------------------------------------------------------------------
 Thu Apr 25 16:24:23 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Add kf6-kimageformats Requires: Enable QOI format support

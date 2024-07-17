@@ -18,7 +18,7 @@
 
 %define pver a869962f051504dd2c1dedeb3bc3d266c17070c1
 Name:           nomacs
-Version:        3.17.2295
+Version:        3.19.0
 Release:        0
 Summary:        Lightweight image viewer
 License:        GPL-3.0-or-later
@@ -28,7 +28,11 @@ Source0:        https://github.com/nomacs/%{name}/archive/%{version}.tar.gz#/%{n
 Source1:        https://github.com/v-tyrtov/nomacs-plugins/archive/%{pver}/nomacs-plugins-%{pver}.tar.gz 
 BuildRequires:  cmake >= 2.8
 BuildRequires:  fdupes
-BuildRequires:  gcc-c++
+%if 0%{?suse_version} < 1600
+BuildRequires:  clang
+%else
+BuildRequires:  gcc-c++ >= 8
+%endif
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
@@ -75,6 +79,10 @@ Some usefull plugins for nomacs:
 tar xf %{SOURCE1} --strip-components 1 -C ImageLounge/plugins/
 
 %build
+%if 0%{?suse_version} < 1600
+export CC=/usr/bin/clang
+export CXX=/usr/bin/clang++
+%endif
 pushd ImageLounge/
 %cmake \
   -DCMAKE_BUILD_TYPE=Release                           \
@@ -102,8 +110,6 @@ sed -i -E 's|(%{_datadir}.*)$|"\1"|' %{name}.lang
 
 # fix zero-length
 rm %{buildroot}%{_datadir}/nomacs/Image\ Lounge/themes/System.css
-
-%check
 
 %post -p /sbin/ldconfig
 

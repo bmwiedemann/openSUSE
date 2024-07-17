@@ -231,4 +231,25 @@
     <comment></comment>
     <requestid>1170188</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>b3756f557d1b305b85039f08b51a2f0d</srcmd5>
+    <version>3.19.0</version>
+    <time>1721222102</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.19.0
+  * Fix mouse wheel behavior with Alt modifier
+  * Fix random comparison of images
+  * Fix missing window icon when running under Wayland
+  * Fix wrong coordinates in crop toolbar
+  * Fix incorrect crop tooltip when rotating
+  * fix broken zip thumbnails
+  * Fix infinite loop when scanning subfolder
+  * Fix segfaults or hangs when sorting
+  * Fix segfault in history dock when last tab is closed
+  * Fix status bar displaying wrong zoom
+  * Fix segfault on thumbnailer
+- Build leap with clang: gcc version doesn't support c++17 
+</comment>
+    <requestid>1188048</requestid>
+  </revision>
 </revisionlist>
