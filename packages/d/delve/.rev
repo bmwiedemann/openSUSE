@@ -164,4 +164,41 @@
   * Cirrus-CI: update FreeBSD version (#3618) (forwarded request 1155745 from jfkw)</comment>
     <requestid>1155746</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>fecc0dcd83e1f295347d826871c2fa0d</srcmd5>
+    <version>1.23.0</version>
+    <time>1721222101</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.23.0:
+  * *: release version 1.23.0 (#3782)
+  * teamcity: fix typo in configuration (#3783)
+  * goversion: add 1.23 to supported versions, update test matrix (#3780)
+  * proc: fix bug with range-over-func stepping (#3778)
+  * *: replace old golang.org links with new go.dev (#3774)
+  * service/rpc1: add Go Reference doc (#3779)
+  * proc: use .closureptr for stepping through range-over-func statements (#3763)
+  * pkg/dwarf/line: use t.Logf instead of fmt.Printf in tests (#3772)
+  * pkg: refactor to buf.WriteString() (#3769)
+  * pkg/terminal: add missing file.Close() call (#3770)
+  * go.mod: update gopkg.in/yaml to v3 (#3776)
+  * pkg/proc: fix 404 links and change to https (#3775)
+  * *: remove redundant lines at the start/end of block (#3773)
+  * fix: LoadAbstractOriginAndSpecification infinite loop caused by abstract origin point to itself. (#3767)
+  * service/debugger: evaluate breakpoint vars on g-less threads (#3759)
+  * proc: support stepping through range-over-func statements with inlining (#3755)
+  * fix: mem cache out of range panic caused by overflow (#3761)
+  * pkg/proc,service/debugger: fix debuginfod-find source (#3762)
+  * refactor: move loadModuleData from runtimeTypeToDIE and expose the apis (#3741)
+  * all: fix typos in docs, comments and package name (#3757)
+  * pkg/terminal: do not use deprecated strings.Title (#3756)
+  * proc: initial support for expressions with range-over-func (#3750)
+  * *: replace fmt.Errorf with errors.New (#3752)
+  * pkg/astutil,pkg/elfwriter: fix package doc (#3753)
+  * service: print better message for unattended stops (#3747)
+  * proc: refactor identifier evaluation for range-over-func support (#3738)
+  * proc: fix TestRangeOverFuncNext (#3740)
+  * proc: fix bug with stack watchpoints going out of scope (#3742)
+  * pkg/terminal,service/debugger: Support to add a new suboption --follow-calls to trace subcommand  (#3594) (forwarded request 1188049 from jfkw)</comment>
+    <requestid>1188050</requestid>
+  </revision>
 </revisionlist>
