@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Jul 17 06:17:45 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.22.3:
+  * Updated Go version to include security fixes for the net/http
+    package related to CVE-2024-24791
+  * Updated Envoy version to include security fixes related to
+    CVE-2024-39305
+  * Fixed a bug where router’s merged gateway was not immediately
+    recomputed when a service was created or updated. (Issue #51726
+  * Fixed inconsistent behavior with the
+    istio_agent_cert_expiry_seconds metric.
+  * Removed sorting of JSON access logs pending Envoy fix.
+
+-------------------------------------------------------------------
 Wed Jul  3 19:03:11 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 1.22.2:
