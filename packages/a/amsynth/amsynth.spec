@@ -17,7 +17,7 @@
 
 
 Name:           amsynth
-Version:        1.13.3
+Version:        1.13.4
 Release:        0
 Summary:        Analog modelling (a.k.a virtual analog) software synthesizer
 License:        GPL-2.0-or-later
@@ -153,27 +153,18 @@ This package includes the VST implementation of the synthesizer.
 %autosetup -n %{name}-release-%{version} -p1
 
 %build
-mkdir -p m4
 autoreconf -fiv
 intltoolize -f
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
-%suse_update_desktop_file %{name} Audio Midi
 %find_lang %{name} %{?no_lang_C}
 %fdupes %{buildroot}%{_datadir}/%{name}/skins/
 
-%if 0%{?suse_version} < 1550
-%post
-%desktop_database_post
-%icon_theme_cache_post
-
-%postun
-%desktop_database_postun
-%icon_theme_cache_postun
-%endif
+%check
+%make_build check
 
 %files
 %license COPYING

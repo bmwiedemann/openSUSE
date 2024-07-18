@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jul 17 06:38:35 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.13.4:
+  * Fixed "reference to 'filesystem' is ambiguous" build error
+    [gh#amsynth/amsynth#233].
+- Drop use of %suse_update_desktop_files.
+- Run `make check` as part of %check.
+- Drop snippets supporting obsolete openSUSE versions.
+
+-------------------------------------------------------------------
 Mon Apr 15 12:01:01 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 1.13.3:
