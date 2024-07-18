@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jul 15 10:44:12 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.27.3
+  * Fix memory leaks in Windows TLS handler by @graebm in (#637)
+
+-------------------------------------------------------------------
 Thu Jul  4 12:06:19 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.27.2
