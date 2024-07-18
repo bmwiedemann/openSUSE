@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jul 18 04:04:22 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.90
+  * Support templated access with imported and top-level
+    structure types, templated access with types containing
+    static fields, and templated imports for parameter types
+    defined in imported modules.
+  * Decouple scaling of each dimension with a fixed version of
+    the original 2-variable simplex method.
+  * Fix approximate transparency rendering for GPUs without SSBO
+    support.
+
+-------------------------------------------------------------------
 Thu Jun 13 08:26:44 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Drop the dependency on /usr/bin/python3 symlink

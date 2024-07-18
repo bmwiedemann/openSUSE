@@ -18,7 +18,7 @@
 
 %bcond_with lsp
 Name:           asymptote
-Version:        2.89
+Version:        2.90
 Release:        0
 Summary:        2D & 3D TeX-Aware vector graphics language
 License:        LGPL-3.0-or-later
@@ -60,6 +60,7 @@ BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(zlib)
 BuildRequires:  tex(media9.sty)
 BuildRequires:  tex(parskip.sty)
+BuildRequires:  tex(type1cm.sty)
 Conflicts:      texlive-asymptote
 Conflicts:      texlive-asymptote-bin
 Conflicts:      texlive-asymptote-doc

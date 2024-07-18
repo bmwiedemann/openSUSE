@@ -44,4 +44,12 @@
     <comment>- Drop the dependency on /usr/bin/python3 symlink [boo#1212476]</comment>
     <requestid>1180338</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d65dc068f9dc068672932077154b6b62</srcmd5>
+    <version>2.90</version>
+    <time>1721323179</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 2.90</comment>
+    <requestid>1188290</requestid>
+  </revision>
 </revisionlist>
