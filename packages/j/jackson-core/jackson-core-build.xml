@@ -213,6 +213,7 @@
              linksource="false" 
              breakiterator="false" 
              maxmemory="1g">
+      <arg value="-notimestamp"/>
     </javadoc>
   </target>
 

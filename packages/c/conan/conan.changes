@@ -1,4 +1,70 @@
 -------------------------------------------------------------------
+Wed Jul 17 11:12:57 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.5.0:
+  * Feature: New tools.cmake.cmaketoolchain:enabled_blocks
+    configuration to define which blocks of CMakeToolchain should
+    be active or not (gh#conan-io/conan#16563).
+  * Feature: Allow --filter-options in conan list to use &: scope
+    to refer to all packages being listed
+    (gh#conan-io/conan#16559).
+  * Feature: Highlight missing or invalid requirements while
+    computing dependency graph (gh#conan-io/conan#16520).
+  * Feature: New conan lock update subcommand to remove + add a
+    reference in the same command (gh#conan-io/conan#16511).
+  * Feature: Add support for GCC 12.4 (gh#conan-io/conan#16506).
+  * Feature: Honoring tools.android:ndk_path conf. Setting the
+    needed flags to cross-build for Android
+    (gh#conan-io/conan#16502).
+  * Feature: Add os.ndk_version for Android
+    (gh#conan-io/conan#16494).
+  * Feature: Qbs helper now invokes Conan provider automatically
+    (gh#conan-io/conan#16486).
+  * Feature: Added force option to
+    tools.cmake.cmaketoolchain:extra_variables
+    (gh#conan-io/conan#16481).
+  * Feature: Raising a ConanException if any section is duplicated
+    in the same Conan profile file (gh#conan-io/conan#16454).
+  * Feature: Added resolve() method to the Qbs toolchain
+    (gh#conan-io/conan#16449).
+  * Feature: Make MSBuildDeps generation with deployer relocatable
+    (gh#conan-io/conan#16441).
+  * Feature: Add QbsDeps class to be used with Qbs Conan module
+    provider (gh#conan-io/conan#16334).
+  * Feature: Add built in runtime_deploy deployer
+    (gh#conan-io/conan#15382).
+  * Fix: Fix provides conflict error message not showing
+    conflicting provides when a named reference matches a provider
+    (gh#conan-io/conan#16562).
+  * Fix: Set correct testpaths for pytest
+    (gh#conan-io/conan#16530).
+  * Fix: Allow .conanrc file in the root of a filesystem
+    (gh#conan-io/conan#16514).
+  * Fix: Add support for non default docker hosts in conan runners
+    (#16477)
+  * Fix: Don't fail when we can't overwrite the summary file in
+    the backup upload (gh#conan-io/conan#16452).
+  * Fix: Make source_credentials.json do not apply to Conan server
+    repos protocol (gh#conan-io/conan#16425).
+  * Fix: Allow packages to have empty folders
+    (gh#conan-io/conan#16424).
+  * Bugfix: Fix detect_msvc_compiler() from detect_api to properly
+    detect VS 17.10 with compiler.version=194
+    (gh#conan-io/conan#16581).
+  * Bugfix: Fix unexpected error when a recipe performs
+    package_id() info erasure and is used as a compatibility
+    candidate (gh#conan-io/conan#16575).
+  * Bugfix: Ensure msvc cppstd compatibility fallback does not
+    ignore 194 binaries (gh#conan-io/conan#16573).
+  * Bugfix: XXXDeps generators did not include an absolute path in
+    their generated files if --deployer-folder=xxxx param was used
+    (gh#conan-io/conan#16552).
+  * Bugfix: Fix conan list ... --format=compact for package
+    revisions (gh#conan-io/conan#16490).
+  * Bugfix: Fix XcodeToolchain when only defines are set
+    (gh#conan-io/conan#16429).
+
+-------------------------------------------------------------------
 Thu Apr  4 07:44:40 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 2.2.2:

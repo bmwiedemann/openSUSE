@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Wed Jul 17 16:35:00 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.8.0:
+  * chore(channels): bump 1.2, 2
+  * chore(ci): disable Slack notifications temporarily /2
+  * chore(ci): disable Slack notifications temporarily
+  * chore: release 2.8.0
+  * fix(deploy): --kube-config option must have highest priority
+  * refactor(build, buildah): fix image ID format
+  * refactor(build): always keep container parentID in labels
+  * fix(build, stapel): fix panic when unsupported scratch base
+    image used
+  * docs(build, images): fix example
+  * docs(build, stapel): remove usages of nameless images
+  * docs(development-ansible): removed due to the deprecation of
+    this functionality
+  * refactor: add optional new line in log
+  * refactor: remove unnecessary empty line in global warning
+    message
+  * feat(docker-registry): use werf user agent for requests to
+    container registry API
+  * refactor(docker-registry): add common remote options to the
+    tags request
+  * refactor(docker-registry): refactor common remote options usage
+  * chore(release): 1.2 alpha, 2 alpha
+
+-------------------------------------------------------------------
 Wed Jul 10 16:49:20 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.7.1:

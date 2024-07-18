@@ -121,7 +121,7 @@ export PYTEST_DEBUG_TEMPROOT=$(mktemp -d -p ./)
 %license LICENSE.txt
 %doc CONTRIBUTORS.txt TODO.txt
 %{python_sitearch}/skimage/
-%{python_sitearch}/scikit_image-%{version}*-info
+%{python_sitearch}/scikit_image-%{version}.dist-info
 %endif
 
 %changelog

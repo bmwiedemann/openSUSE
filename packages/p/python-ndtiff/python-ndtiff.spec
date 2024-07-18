@@ -16,27 +16,29 @@
 #
 
 
-%define commit e7e32f7d59d1a0ac7ce8727c6b166d1a0844e42c
+%define commit 6f4a5eed38ca466c529fca210fb37494bbd3890f
 Name:           python-ndtiff
-Version:        1.12.0
+Version:        3.1.0
 Release:        0
 Summary:        Python libraries for NDTiff datasets
 License:        BSD-3-Clause
-URL:            https://github.com/micro-manager/NDTiffStorage
+URL:            https://github.com/micro-manager/NDStorage
 # gh#micro-manager/NDTiffStorage#106
-Source0:        https://github.com/micro-manager/NDTiffStorage/archive/%{commit}.tar.gz#/ndtiff-%{version}-gh.tar.gz
+Source0:        https://github.com/micro-manager/NDStorage/archive/%{commit}.tar.gz#/ndtiff-%{version}-gh.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-dask-array >= 2022.2.0
-Requires:       (python-numpy with python-numpy < 2)
+Requires:       python-numpy
+Requires:       python-sortedcontainers
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module dask-array >= 2022.2.0}
-BuildRequires:  %{python_module numpy with %python-numpy < 2}
+BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module sortedcontainers}
 # /SECTION
 %python_subpackages
 
@@ -44,7 +46,7 @@ BuildRequires:  %{python_module pytest}
 Python libraries for NDTiff datasets
 
 %prep
-%setup -q -n NDTiffStorage-%{commit}/python
+%autosetup -p1 -n NDStorage-%{commit}/python
 
 %build
 %pyproject_wheel

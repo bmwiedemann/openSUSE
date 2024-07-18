@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jul 17 14:55:31 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Update to 2024.1
+  * Confirmed support for Django 4.2.
+  * Dropped support for Django 3.2, 4.0 and 4.1.
+  * Added support for Django 5.0.
+  * Added support for Python 3.12.
+  * Dropped support for django-crispy-forms 1.x.
+  * Enabled custom-control checkbox inputs when show_form_labels is False.
+- Drop upstreamed no-bs3.patch
+
+-------------------------------------------------------------------
 Fri Mar 22 08:28:40 UTC 2024 - Max Lin <mlin@suse.com>
 
 - Add %{?sle15_python_module_pythons}

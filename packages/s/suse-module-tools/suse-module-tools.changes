@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jul 18 10:10:56 UTC 2024 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 16.0.48:
+  * Fix 64k check in check_arm_pagesize() that would cause OBS
+    builds to fail
+
+-------------------------------------------------------------------
 Wed Jul  3 21:49:31 UTC 2024 - Martin Wilck <mwilck@suse.com>
 
 - Update to version 16.0.47:

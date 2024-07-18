@@ -135,4 +135,12 @@
     <comment>No code change. Just added bug number to changelog entry</comment>
     <requestid>1172937</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>8603b1f100bccc9ffd9abb0f280300a2</srcmd5>
+    <version>1.53.1</version>
+    <time>1721323032</time>
+    <user>anag+factory</user>
+    <comment>Update guestfs-tools to version 1.53.1</comment>
+    <requestid>1188246</requestid>
+  </revision>
 </revisionlist>

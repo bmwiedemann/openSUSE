@@ -1297,4 +1297,24 @@
   * Update README.md (forwarded request 1185416 from jfkw)</comment>
     <requestid>1185417</requestid>
   </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>5a809b58f4f2eaaa2af64d04376ffe6f</srcmd5>
+    <version>0.129.0</version>
+    <time>1721323028</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.129.0:
+  * tpl: Use xxHash instead of MD5 to hash the deferred templates
+  * Throw error if resources.PostProcess is used in a deferred template
+  * deps: Upgrade github.com/bep/gitmap v1.4.0 =&gt; v1.6.0 (note)
+  * deps: Go mod tidy
+  * deps: Upgraded github.com/tdewolff/minify/v2 v2.20.20 =&gt; v2.20.36
+  * deps: Upgrade to golang.org/x/image v0.18.0
+  * commands: Fix --navigateToChanged server behavior when editing headless content
+  * commands: Simplify the browser live reload logic
+  * Use xxHash for the change detector
+  * source: Expose GitInfo Body
+  * commands: Fix hugo mod get -u ./...
+  * Add hash.XxHash (forwarded request 1188233 from jfkw)</comment>
+    <requestid>1188234</requestid>
+  </revision>
 </revisionlist>

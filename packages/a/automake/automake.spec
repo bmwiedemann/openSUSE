@@ -26,7 +26,7 @@
 %define nsuffix %{nil}
 %endif
 Name:           automake%{nsuffix}
-Version:        1.16.5
+Version:        1.17
 Release:        0
 Summary:        A Program for Automatically Generating GNU-Style Makefile.in Files
 # docs ~> GFDL, sources ~> GPLv2+, mkinstalldirs ~> PD and install-sh ~> MIT
@@ -38,14 +38,7 @@ Source1:        https://ftp.gnu.org/gnu/automake/automake-%{version}.tar.xz.sig
 # taken from https://savannah.gnu.org/project/release-gpgkeys.php?group=automake&download=1
 Source2:        automake.keyring
 Source3:        automake-rpmlintrc
-Patch2:         automake-require_file.patch
-Patch3:         automake-1.13.4-fix-primary-prefix-invalid-couples-test.patch
 Patch5:         0001-correct-parameter-parsing-in-test-driver-script.patch
-# PATCH-FIX-UPSTREAM: Fix testuite with GCC-14
-Patch6:         tests-Fix-type-defaults-error-in-link_cond.patch
-Patch7:         tests-avoid-implicit-function-declaration-in-depcomp.patch
-Patch8:         tests-don-t-try-to-prevent-flex-from-including-unist.patch
-Patch9:         tests-avoid-implicit-function-declarations.patch
 Patch100:       automake-suse-vendor.patch
 BuildRequires:  autoconf >= 2.69
 BuildRequires:  bison

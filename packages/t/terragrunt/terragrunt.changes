@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jul 17 04:58:01 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.62.3:
+  * Add handling of multi line variables description (#3269)
+
+-------------------------------------------------------------------
+Tue Jul 16 20:19:03 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.62.2:
+  * fix: diags error when parse remote_state (#3268)
+
+-------------------------------------------------------------------
 Tue Jul 16 06:08:38 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.62.1:

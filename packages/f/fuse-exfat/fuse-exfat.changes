@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jul 14 09:41:28 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- use fuse 3
+- remove autotools dependency
+
+-------------------------------------------------------------------
 Thu Jan  4 17:57:51 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Do not mess with system config files which we do not own during

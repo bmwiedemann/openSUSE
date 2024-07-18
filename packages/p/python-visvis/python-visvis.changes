@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jul 17 04:11:28 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Restrict numpy to < 2 for now. 
+
+-------------------------------------------------------------------
 Wed Mar 13 23:37:50 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Replace use-importlib.patch with one that has been submitted upstream. 

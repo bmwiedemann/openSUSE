@@ -3,6 +3,7 @@
 #
 # Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2013 Sidlovsky, Yaroslav <zawertun@gmail.com>
+# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,12 +26,8 @@ License:        GPL-2.0-or-later
 Group:          System/Filesystems
 URL:            https://github.com/relan/exfat
 Source0:        https://github.com/relan/exfat/releases/download/v%{version}/%{name}-%{version}.tar.gz
-BuildRequires:  autoconf
-BuildRequires:  automake
-BuildRequires:  fuse-devel >= 2.6
-BuildRequires:  libtool
 BuildRequires:  pkgconfig
-Requires:       fuse >= 2.6
+BuildRequires:  pkgconfig(fuse3)
 Recommends:     exfat-utils
 
 %description
@@ -40,17 +37,17 @@ intended to replace FAT32, removing some of its limitations. exFAT is
 a standard FS for SDXC memory cards.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
-# force installation of manual pages
-sed -i -e 's/no-installman//' configure.ac
-autoreconf -fiv
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
+
+%check
+%make_build check
 
 %files
 %license COPYING

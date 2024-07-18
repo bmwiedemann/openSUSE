@@ -22,7 +22,6 @@ Version:        2023.8.30
 Release:        0
 Summary:        Write Chimera Map (CMAP) files
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/cgohlke/cmapfile/
 # SourceRepository: https://github.com/cgohlke/cmapfile
 Source:         https://github.com/cgohlke/cmapfile/archive/v%{version}.tar.gz#/cmapfile-%{version}.tar.gz

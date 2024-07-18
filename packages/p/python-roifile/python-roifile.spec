@@ -16,10 +16,7 @@
 #
 
 
-%define skip_python2 1
-%define skip_python36 1
 %define packagename roifile
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-roifile
 Version:        2024.5.24
 Release:        0
@@ -30,8 +27,10 @@ Source:         https://github.com/cgohlke/roifile/archive/v%{version}.tar.gz#/r
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module matplotlib >= 3.2}
 BuildRequires:  %{python_module numpy >= 1.15.1}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module tifffile >= 2020.8.13}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-matplotlib >= 3.2
@@ -54,10 +53,10 @@ overlays.
 sed -i 's/\r//' README.rst
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/%{packagename}
 
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
@@ -76,7 +75,7 @@ sed -i 's/\r//' README.rst
 %doc README.rst
 %license LICENSE
 %python_alternative %{_bindir}/%{packagename}
-%{python_sitelib}/*egg-info/
-%{python_sitelib}/%{packagename}/
+%{python_sitelib}/%{packagename}
+%{python_sitelib}/%{packagename}-%{version}.dist-info
 
 %changelog

@@ -25,6 +25,7 @@
   <overwrite>
     <conditions>
       <arch>ppc64le</arch>
+      <arch>s390x</arch>
     </conditions>
     <hardware>
       <physicalmemory>

@@ -233,4 +233,18 @@
 - Use modern RPM macros to express version dependencies (forwarded request 1164810 from glaubitz)</comment>
     <requestid>1165206</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>e99804b21b62ad5522d48eab70f28c27</srcmd5>
+    <version>10.3.1</version>
+    <time>1721322981</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 10.3.1
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Drop extra LICENSE.txt as upstream now ships its own
+- Rename LICENSE.txt to LICENSE in %files section
+- Update Requires from setup.py (forwarded request 1188149 from glaubitz)</comment>
+    <requestid>1188170</requestid>
+  </revision>
 </revisionlist>

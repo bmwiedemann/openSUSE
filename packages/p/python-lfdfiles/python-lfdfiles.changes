@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jul 17 08:02:14 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Revert pinning. NumPy 2 officially supported since 2024.4.24
+
+-------------------------------------------------------------------
+Wed Jul 17 02:23:12 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Restrict to numpy < 2 for now.
+- Switch to pyproject macros.
+
+-------------------------------------------------------------------
 Tue May  7 21:14:25 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2024.4.24:

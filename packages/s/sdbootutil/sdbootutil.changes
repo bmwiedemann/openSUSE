@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Jul 18 10:05:20 UTC 2024 - aplanas@suse.com
+
+- Update to version 1+git20240718.6fbaad1:
+  * Enroll using pcr_oracle if pcrlock fails
+  * Fix loader.conf measurement
+  * Address some shellcheck issues
+  * Implement basic [un]enroll commands
+  * snapper: do not error if sdbootutil fails
+
+-------------------------------------------------------------------
+Tue Jul 16 12:25:53 UTC 2024 - aplanas@suse.com
+
+- Update to version 1+git20240716.bb40c38:
+  * Add --only-default option for list-entries command
+  * Turn off colors when the shell it not interactive
+  * Support portable installation of bootloader This is useful to create portable drives, so the bootloader entry isn't created permenantly.
+
+-------------------------------------------------------------------
 Thu Jul 04 12:02:17 UTC 2024 - aplanas@suse.com
 
 - Update to version 1+git20240704.a2c5a26:

@@ -20,7 +20,8 @@
 %global patches_touch_autotools 1
 
 # The source directory.
-%global source_directory 1.52-stable
+#%global source_directory 1.52-stable
+%global source_directory 1.53-development
 
 #
 %define guestfs_docdir %{_defaultdocdir}/%{name}
@@ -30,7 +31,7 @@
 
 Summary:        Tools to access and modify virtual machine disk images
 Name:           guestfs-tools
-Version:        1.52.0
+Version:        1.53.1
 Release:        0
 License:        GPL-2.0-or-later
 
@@ -41,9 +42,6 @@ ExclusiveArch:  x86_64 ppc64le s390x aarch64 riscv64
 URL:            http://libguestfs.org/
 Source0:        http://download.libguestfs.org/guestfs-tools/%{source_directory}/%{name}-%{version}.tar.gz
 Source1:        http://download.libguestfs.org/guestfs-tools/%{source_directory}/%{name}-%{version}.tar.gz.sig
-
-Patch1:         Update-virt-customize-generated-files.patch
-Patch2:         Initialise-bar-fp-as-NULL.patch
 
 %if 0%{patches_touch_autotools}
 BuildRequires:  autoconf

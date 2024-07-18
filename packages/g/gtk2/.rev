@@ -1374,4 +1374,13 @@ Ensure nobody gets confused next time we want to update the version. (forwarded 
     <comment></comment>
     <requestid>1187225</requestid>
   </revision>
+  <revision rev="187" vrev="11">
+    <srcmd5>ccc5f55cee017af73f02ebe051ef45ec</srcmd5>
+    <version>2.24.33</version>
+    <time>1721322942</time>
+    <user>anag+factory</user>
+    <comment>- Add automake-1.17.patch to support Automake 1.17 in autogen.sh
+</comment>
+    <requestid>1188230</requestid>
+  </revision>
 </revisionlist>

@@ -807,4 +807,14 @@ source service setup which messed up my spec file.
     systemd-boot / sdbootutil use case, too (forwarded request 1185244 from mwilck)</comment>
     <requestid>1185245</requestid>
   </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>fd2b26c75e87323e048f440666bae3b3</srcmd5>
+    <version>16.0.48</version>
+    <time>1721322915</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 16.0.48:
+  * Fix 64k check in check_arm_pagesize() that would cause OBS
+    builds to fail (forwarded request 1188377 from mwilck)</comment>
+    <requestid>1188378</requestid>
+  </revision>
 </revisionlist>

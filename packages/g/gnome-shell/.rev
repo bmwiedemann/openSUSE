@@ -2340,4 +2340,12 @@ Upstream applied and then reverted gnome-shell-animations-speedup.patch for the 
   + Misc. bug fixes and cleanups (bsc#1215485 CVE-2023-43090). (forwarded request 1184215 from dimstar)</comment>
     <requestid>1184261</requestid>
   </revision>
+  <revision rev="257" vrev="2">
+    <srcmd5>da4405022a1e951f79a72109e6684a2d</srcmd5>
+    <version>46.3.1</version>
+    <time>1721322934</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1188203</requestid>
+  </revision>
 </revisionlist>

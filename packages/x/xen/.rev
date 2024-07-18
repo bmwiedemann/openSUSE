@@ -2950,4 +2950,12 @@
     <comment>Fix for bsc#1214718 - The system hangs intermittently ... and other upstream fixes</comment>
     <requestid>1183065</requestid>
   </revision>
+  <revision rev="347" vrev="2">
+    <srcmd5>8ecd76cd8fae452c9d5356192cb2de03</srcmd5>
+    <version>4.18.2_06</version>
+    <time>1721322919</time>
+    <user>anag+factory</user>
+    <comment>Security and Maintenance Update. Fix for bsc#1227355 CVE-2024-31143 XSA-458. Also some python adjustments.</comment>
+    <requestid>1187952</requestid>
+  </revision>
 </revisionlist>

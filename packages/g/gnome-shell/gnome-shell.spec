@@ -43,6 +43,8 @@ Patch7:         gnome-shell-executable-path-not-absolute.patch
 Patch8:         gnome-shell-exit-crash-workaround.patch
 # PATCH-FIX-UPSTREAM gnome-shell-fix-cursor-on-hide-preedit.patch glgo#GNOME/gnome-shell!3318 alynx.zhou@suse.com -- Correctly reset cursor when hide preedit
 Patch9:         gnome-shell-fix-cursor-on-hide-preedit.patch
+# PATCH-FIX-UPSTREAM CVE-2024-36472.patch glgo#GNOME/gnome-shell#7688 bsc#1225567 xiaoguang.wang@suse.com -- Show notification when detecting captive portal
+Patch10:        CVE-2024-36472.patch
 
 ## NOTE: Keep SLE-only patches at bottom (starting on 1000).
 # PATCH-FEATURE-SLE gnome-shell-gdm-login-applet.patch fate#314545 dliang@suse.com -- Add an applet on login UI to display suse icon, product name, hostname.
@@ -194,6 +196,7 @@ popd
 %patch -P 7 -p1
 %patch -P 8 -p1
 %patch -P 9 -p1
+%patch -P 10 -p1
 
 %if 0%{?sle_version}
 %patch -P 1001 -p1

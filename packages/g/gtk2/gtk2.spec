@@ -56,6 +56,8 @@ Patch9:         gtk2-check-attribute.patch
 Patch10:        gtk2-gcc14.patch
 # PATCH-FIX-UPSTREAM CVE-2024-6655.patch -- CVE-2024-6655 Stop looking for modules in cwd
 Patch11:        CVE-2024-6655.patch
+# PATCH-FEATURE-OPENSUSE automake-1.17.patch -- Add automake 1.17 support to autogen.sh
+Patch12:        automake-1.17.patch
 
 BuildRequires:  cairo-devel
 BuildRequires:  cups-devel
@@ -329,6 +331,7 @@ cp -a %{SOURCE2} .
 %patch -P 9 -p1
 %patch -P 10 -p1
 %patch -P 11 -p1
+%patch -P 12 -p1
 gnome-patch-translation-update
 
 %build

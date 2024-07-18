@@ -233,4 +233,12 @@ https://github.com/yt-project/yt/releases.
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1186758</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>760682ebbee76fa53c4ed230bc722956</srcmd5>
+    <version>4.3.1</version>
+    <time>1721322967</time>
+    <user>anag+factory</user>
+    <comment>- Restrict numpy to &lt; 2 for now.</comment>
+    <requestid>1188090</requestid>
+  </revision>
 </revisionlist>

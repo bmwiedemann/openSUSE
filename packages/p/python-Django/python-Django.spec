@@ -50,11 +50,11 @@ BuildRequires:  %{pythons}
 BuildRequires:  fdupes
 BuildRequires:  gpg2
 BuildRequires:  python-rpm-macros
-BuildRequires:  %{python_module backports.zoneinfo if (%python-base with python38-base)}
 Requires:       python
 Requires:       python-Pillow >= 6.2.0
 Requires:       python-asgiref >= 3.7.0
 Requires:       python-sqlparse >= 0.3.1
+Requires:       python-tzdata
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 Recommends:     python-Jinja2 >= 2.9.2

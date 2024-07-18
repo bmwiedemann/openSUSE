@@ -1,7 +1,7 @@
 #
 # spec file for package werf
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           werf
-Version:        2.7.1
+Version:        2.8.0
 Release:        0
 Summary:        CLI for the Werf CI/CD system
 License:        Apache-2.0
@@ -29,8 +29,8 @@ Source1:        vendor.tar.gz
 BuildRequires:  go >= 1.20
 #
 BuildRequires:  device-mapper-devel
-BuildRequires:  libcontainers-common
 BuildRequires:  libbtrfs-devel
+BuildRequires:  libcontainers-common
 BuildRequires:  libgpgme-devel
 
 %description

@@ -186,4 +186,13 @@
 - update to version 0.4.13</comment>
     <requestid>1187917</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>d7a223160ab9125d17f70071d4b65a22</srcmd5>
+    <version>0.4.15</version>
+    <time>1721322984</time>
+    <user>anag+factory</user>
+    <comment>- update to version 0.4.15
+  * avoid double export of -debug packages when using &quot;all&quot; option</comment>
+    <requestid>1188178</requestid>
+  </revision>
 </revisionlist>

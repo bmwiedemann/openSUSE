@@ -23,7 +23,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-psutil
-Version:        5.9.7
+Version:        6.0.0
 Release:        0
 Summary:        A process utilities module for Python
 License:        BSD-3-Clause
@@ -32,8 +32,6 @@ Source:         https://files.pythonhosted.org/packages/source/p/psutil/psutil-%
 # PATCH-FIX-UPSTREAM skip_failing_tests.patch gh#giampaolo/psutil#1635 mcepl@suse.com
 # skip tests failing because of incomplete emulation of the environment in osc build
 Patch2:         skip_failing_tests.patch
-# PATCH-FIX-SLE skip_rlimit_tests_on_python2.patch alarrosa@suse.com
-Patch3:         skip_rlimit_tests_on_python2.patch
 # PATCH-FIX-SLE adopt change of used memory of procps
 Patch4:         mem-used-bsc1181475.patch
 BuildRequires:  %{python_module devel}

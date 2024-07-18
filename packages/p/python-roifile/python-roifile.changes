@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jul 17 07:49:50 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Revert numpy < 2 restriction
+
+-------------------------------------------------------------------
+Wed Jul 17 04:04:28 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Restrict numpy to < 2 for now.
+- Switch to pyproject macros.
+
+-------------------------------------------------------------------
 Sat Jun 29 05:47:19 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2024.5.24:

@@ -1,7 +1,7 @@
 #
 # spec file for package python-crispy-bootstrap4
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,29 +15,28 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %{?sle15_python_module_pythons}
 Name:           python-crispy-bootstrap4
-Version:        2022.1
+Version:        2024.1
 Release:        0
 Summary:        Bootstrap4 template pack for django-crispy-forms
 License:        MIT
 URL:            https://github.com/django-crispy-forms/crispy-bootstrap4
 Source:         https://github.com/django-crispy-forms/crispy-bootstrap4/archive/refs/tags/%{version}.tar.gz#/crispy-bootstrap4-%{version}.tar.gz
-#PATCH-FIX-UPSTREAM https://github.com/django-crispy-forms/crispy-bootstrap4/commit/eb8e43359b6a9ad2ccadc68e29e54a439e5d321d Removed test depedant upon bootstrap3 template pack
-Patch:          no-bs3.patch
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
-BuildRequires:  %{python_module Django >= 3.2}
-BuildRequires:  %{python_module django-crispy-forms >= 1.14.0}
-BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module Django >= 4.2}
+BuildRequires:  %{python_module django-crispy-forms >= 2.0}
 BuildRequires:  %{python_module pytest-django}
+BuildRequires:  %{python_module pytest}
 # /SECTION
 BuildRequires:  fdupes
-Requires:       python-Django >= 3.2
-Requires:       python-django-crispy-forms >= 1.14.0
+Requires:       python-Django >= 4.2
+Requires:       python-django-crispy-forms >= 2.0
 BuildArch:      noarch
 %python_subpackages
 

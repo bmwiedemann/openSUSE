@@ -18,7 +18,7 @@
 
 # Note: We only want to build for the default python3
 Name:           conan
-Version:        2.2.2
+Version:        2.5.0
 Release:        0
 Summary:        A C/C++ package manager
 License:        MIT
@@ -56,7 +56,7 @@ Integration of C and C++ projects.
 %fdupes %{buildroot}%{python3_sitelib}
 sed -Ei "1{\@/usr/bin/(env )?python@d}" \
   %{buildroot}%{python3_sitelib}/conan/tools/intel/intel_cc.py \
-  %{buildroot}%{python3_sitelib}/conans/test/utils/server_launcher.py
+  %{buildroot}%{python3_sitelib}/conan/test/utils/server_launcher.py
 
 %files
 %doc README.md

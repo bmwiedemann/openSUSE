@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Jul 17 14:28:07 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.129.0:
+  * tpl: Use xxHash instead of MD5 to hash the deferred templates
+  * Throw error if resources.PostProcess is used in a deferred template
+  * deps: Upgrade github.com/bep/gitmap v1.4.0 => v1.6.0 (note)
+  * deps: Go mod tidy
+  * deps: Upgraded github.com/tdewolff/minify/v2 v2.20.20 => v2.20.36
+  * deps: Upgrade to golang.org/x/image v0.18.0
+  * commands: Fix --navigateToChanged server behavior when editing headless content
+  * commands: Simplify the browser live reload logic
+  * Use xxHash for the change detector
+  * source: Expose GitInfo Body
+  * commands: Fix hugo mod get -u ./...
+  * Add hash.XxHash
+
+-------------------------------------------------------------------
 Thu Jul 04 14:16:48 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 0.128.2:

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jul 16 08:44:03 UTC 2024 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.4.7
+
+- Update to 2.4.7:
+  - Add support for anaconda3-2024.06-1 in #3009
+  - Fix debug build for X.Yt-dev in #3011
+
+Full Changelog: https://github.com/pyenv/pyenv/compare/v2.4.6...v2.4.7
+
+-------------------------------------------------------------------
 Fri Jul  5 04:56:59 UTC 2024 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.4.6
 
 - Update to 2.4.6:

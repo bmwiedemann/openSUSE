@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jul 10 12:03:20 UTC 2024 - Miquel Sabaté <msabate@suse.com>
+
+- Update version to 1.11
+  - Added uname as collector
+  - Added SAP workload detection
+  - Added detection of container runtimes
+  - Multiple fixes on ARM64 detection
+  - Use `read_values` for the CPU collector on Z
+  - Fixed data collection for ppc64le
+  - Grab the home directory from /etc/passwd if needed (bsc#1226128)
+
+-------------------------------------------------------------------
 Thu May 23 15:00:00 UTC 2024 - Felix Schnizlein <fschnizlein@suse.com>
 
 - Update version to 1.10.0

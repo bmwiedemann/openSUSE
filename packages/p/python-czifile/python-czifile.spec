@@ -1,7 +1,7 @@
 #
 # spec file for package python-czifile
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,29 +17,27 @@
 
 
 %define packagename czifile
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
-%define skip_python36 1
 Name:           python-czifile
 Version:        2019.7.2
 Release:        0
 Summary:        Read Carl Zeiss(r) Image (CZI) files
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://www.lfd.uci.edu/~gohlke/
 Source:         https://github.com/cgohlke/czifile/archive/v%{version}.tar.gz#/%{packagename}-%{version}.tar.gz
 BuildRequires:  %{python_module imagecodecs >= 2019.1.1}
 BuildRequires:  %{python_module numpy >= 1.11.3}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module scipy >= 1.1}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module tifffile >= 2019.7.2}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-imagecodecs >= 2019.1.1
-Requires:       python-numpy >= 1.11.3
 Requires:       python-scipy >= 1.1
 Requires:       python-tifffile >= 2019.7.2
+Requires:       python-numpy >= 1.11.3
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch
@@ -57,10 +55,10 @@ sed -i '/^#!/d' %{packagename}/czi2tif.py
 sed -i 's/\r//' README.rst
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 for p in %{packagename} ; do
     %python_clone -a %{buildroot}%{_bindir}/$p
 done
@@ -89,7 +87,7 @@ done
 %license LICENSE
 %python_alternative %{_bindir}/czi2tif
 %python_alternative %{_bindir}/czifile
-%{python_sitelib}/*egg-info/
-%{python_sitelib}/%{packagename}/
+%{python_sitelib}/%{packagename}
+%{python_sitelib}/%{packagename}-%{version}.dist-info
 
 %changelog

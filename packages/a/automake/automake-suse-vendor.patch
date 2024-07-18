@@ -1,8 +1,8 @@
-Index: automake-1.16.5/lib/config.guess
-===================================================================
---- automake-1.16.5.orig/lib/config.guess
-+++ automake-1.16.5/lib/config.guess
-@@ -188,6 +188,17 @@ Linux|GNU|GNU/*)
+diff --git a/lib/config.guess b/lib/config.guess
+index f6d217a49..67f9aa0fb 100755
+--- a/lib/config.guess
++++ b/lib/config.guess
+@@ -194,6 +194,17 @@ Linux|GNU|GNU/*)
  	;;
  esac
  
@@ -20,7 +20,7 @@ Index: automake-1.16.5/lib/config.guess
  # Note: order is significant - the case branches are not exclusive.
  
  case $UNAME_MACHINE:$UNAME_SYSTEM:$UNAME_RELEASE:$UNAME_VERSION in
-@@ -269,46 +280,46 @@ case $UNAME_MACHINE:$UNAME_SYSTEM:$UNAME
+@@ -275,46 +286,46 @@ case $UNAME_MACHINE:$UNAME_SYSTEM:$UNAME_RELEASE:$UNAME_VERSION in
  	;;
      *:Bitrig:*:*)
  	UNAME_MACHINE_ARCH=`arch | sed 's/Bitrig.//'`
@@ -80,7 +80,7 @@ Index: automake-1.16.5/lib/config.guess
  	;;
      mips:OSF1:*.*)
  	GUESS=mips-dec-osf1
-@@ -370,13 +381,13 @@ case $UNAME_MACHINE:$UNAME_SYSTEM:$UNAME
+@@ -376,13 +387,13 @@ case $UNAME_MACHINE:$UNAME_SYSTEM:$UNAME_RELEASE:$UNAME_VERSION in
  	GUESS=$UNAME_MACHINE-dec-osf$OSF_REL
  	;;
      Amiga*:UNIX_System_V:4.0:*)
@@ -97,7 +97,7 @@ Index: automake-1.16.5/lib/config.guess
  	;;
      *:OS/390:*:*)
  	GUESS=i370-ibm-openedition
-@@ -391,7 +402,7 @@ case $UNAME_MACHINE:$UNAME_SYSTEM:$UNAME
+@@ -397,7 +408,7 @@ case $UNAME_MACHINE:$UNAME_SYSTEM:$UNAME_RELEASE:$UNAME_VERSION in
  	GUESS=arm-acorn-riscix$UNAME_RELEASE
  	;;
      arm*:riscos:*:*|arm*:RISCOS:*:*)
@@ -106,7 +106,7 @@ Index: automake-1.16.5/lib/config.guess
  	;;
      SR2?01:HI-UX/MPP:*:* | SR8000:HI-UX/MPP:*:*)
  	GUESS=hppa1.1-hitachi-hiuxmpp
-@@ -505,7 +516,7 @@ case $UNAME_MACHINE:$UNAME_SYSTEM:$UNAME
+@@ -511,7 +522,7 @@ case $UNAME_MACHINE:$UNAME_SYSTEM:$UNAME_RELEASE:$UNAME_VERSION in
  	GUESS=m68k-hades-mint$UNAME_RELEASE
  	;;
      *:*MiNT:*:* | *:*mint:*:* | *:*TOS:*:*)
@@ -115,7 +115,7 @@ Index: automake-1.16.5/lib/config.guess
  	;;
      m68k:machten:*:*)
  	GUESS=m68k-apple-machten$UNAME_RELEASE
-@@ -818,9 +829,9 @@ EOF
+@@ -824,9 +835,9 @@ EOF
  	;;
      i*86:OSF1:*:*)
  	if test -x /usr/sbin/sysversion ; then
@@ -127,7 +127,7 @@ Index: automake-1.16.5/lib/config.guess
  	fi
  	;;
      parisc*:Lites*:*:*)
-@@ -885,10 +896,10 @@ EOF
+@@ -891,10 +902,10 @@ EOF
  	GUESS=$UNAME_MACHINE-pc-bsdi$UNAME_RELEASE
  	;;
      sparc*:BSD/OS:*:*)
@@ -140,7 +140,7 @@ Index: automake-1.16.5/lib/config.guess
  	;;
      arm:FreeBSD:*:*)
  	UNAME_PROCESSOR=`uname -p`
-@@ -897,10 +908,10 @@ EOF
+@@ -903,10 +914,10 @@ EOF
  	    | grep -q __ARM_PCS_VFP
  	then
  	    FREEBSD_REL=`echo "$UNAME_RELEASE" | sed -e 's/[-(].*//'`
@@ -153,7 +153,7 @@ Index: automake-1.16.5/lib/config.guess
  	fi
  	;;
      *:FreeBSD:*:*)
-@@ -912,7 +923,7 @@ EOF
+@@ -918,7 +929,7 @@ EOF
  		UNAME_PROCESSOR=i586 ;;
  	esac
  	FREEBSD_REL=`echo "$UNAME_RELEASE" | sed -e 's/[-(].*//'`
@@ -162,7 +162,7 @@ Index: automake-1.16.5/lib/config.guess
  	;;
      i*:CYGWIN*:*)
  	GUESS=$UNAME_MACHINE-pc-cygwin
-@@ -935,10 +946,10 @@ EOF
+@@ -944,10 +955,10 @@ EOF
  		GUESS=i586-pc-interix$UNAME_RELEASE
  		;;
  	    authenticamd | genuineintel | EM64T)
@@ -175,7 +175,7 @@ Index: automake-1.16.5/lib/config.guess
  		;;
  	esac ;;
      i*:UWIN*:*)
-@@ -949,29 +960,29 @@ EOF
+@@ -958,7 +969,7 @@ EOF
  	;;
      prep*:SunOS:5.*:*)
  	SUN_REL=`echo "$UNAME_RELEASE" | sed -e 's/[^.]*//'`
@@ -184,25 +184,25 @@ Index: automake-1.16.5/lib/config.guess
  	;;
      *:GNU:*:*)
  	# the GNU system
- 	GNU_ARCH=`echo "$UNAME_MACHINE" | sed -e 's,[-/].*$,,'`
- 	GNU_REL=`echo "$UNAME_RELEASE" | sed -e 's,/.*$,,'`
--	GUESS=$GNU_ARCH-unknown-$LIBC$GNU_REL
-+	GUESS=$GNU_ARCH-${VENDOR}-$LIBC$GNU_REL
+@@ -976,10 +987,10 @@ EOF
+ 	GUESS="$UNAME_MACHINE-pc-managarm-mlibc"
  	;;
-     *:GNU/*:*:*)
- 	# other systems with GNU libc and userland
- 	GNU_SYS=`echo "$UNAME_SYSTEM" | sed 's,^[^/]*/,,' | tr "[:upper:]" "[:lower:]"`
- 	GNU_REL=`echo "$UNAME_RELEASE" | sed -e 's/[-(].*//'`
--	GUESS=$UNAME_MACHINE-unknown-$GNU_SYS$GNU_REL-$LIBC
-+	GUESS=$UNAME_MACHINE-${VENDOR}-$GNU_SYS$GNU_REL-$LIBC
+     *:[Mm]anagarm:*:*)
+-	GUESS="$UNAME_MACHINE-unknown-managarm-mlibc"
++	GUESS="$UNAME_MACHINE-${VENDOR}-managarm-mlibc"
  	;;
      *:Minix:*:*)
 -	GUESS=$UNAME_MACHINE-unknown-minix
 +	GUESS=$UNAME_MACHINE-${VENDOR}-minix
  	;;
      aarch64:Linux:*:*)
--	GUESS=$UNAME_MACHINE-unknown-linux-$LIBC
-+	GUESS=$UNAME_MACHINE-${VENDOR}-linux-$LIBC
+ 	set_cc_for_build
+@@ -1002,11 +1013,11 @@ EOF
+ 		eabi | eabihf) CPU=armv8l; LIBCABI=$LIBC$ABI ;;
+ 	    esac
+ 	fi
+-	GUESS=$CPU-unknown-linux-$LIBCABI
++	GUESS=$CPU-${VENDOR}-linux-$LIBCABI
  	;;
      aarch64_be:Linux:*:*)
  	UNAME_MACHINE=aarch64_be
@@ -211,7 +211,7 @@ Index: automake-1.16.5/lib/config.guess
  	;;
      alpha:Linux:*:*)
  	case `sed -n '/^cpu model/s/^.*: \(.*\)/\1/p' /proc/cpuinfo 2>/dev/null` in
-@@ -985,29 +996,29 @@ EOF
+@@ -1020,29 +1031,29 @@ EOF
  	esac
  	objdump --private-headers /bin/sh | grep -q ld.so.1
  	if test "$?" = 0 ; then LIBC=gnulibc1 ; fi
@@ -247,7 +247,7 @@ Index: automake-1.16.5/lib/config.guess
  	;;
      cris:Linux:*:*)
  	GUESS=$UNAME_MACHINE-axis-linux-$LIBC
-@@ -1016,31 +1027,31 @@ EOF
+@@ -1051,40 +1062,40 @@ EOF
  	GUESS=$UNAME_MACHINE-axis-linux-$LIBC
  	;;
      e2k:Linux:*:*)
@@ -263,8 +263,7 @@ Index: automake-1.16.5/lib/config.guess
 +	GUESS=$UNAME_MACHINE-${VENDOR}-linux-$LIBC
  	;;
      i*86:Linux:*:*)
--	GUESS=$UNAME_MACHINE-pc-linux-$LIBC
-+	GUESS=$UNAME_MACHINE-${VENDOR}-linux-$LIBC
+ 	GUESS=$UNAME_MACHINE-pc-linux-$LIBC
  	;;
      ia64:Linux:*:*)
 -	GUESS=$UNAME_MACHINE-unknown-linux-$LIBC
@@ -274,7 +273,19 @@ Index: automake-1.16.5/lib/config.guess
 -	GUESS=$UNAME_MACHINE-unknown-linux-$LIBC
 +	GUESS=$UNAME_MACHINE-${VENDOR}-linux-$LIBC
  	;;
-     loongarch32:Linux:*:* | loongarch64:Linux:*:* | loongarchx32:Linux:*:*)
+     kvx:Linux:*:*)
+-	GUESS=$UNAME_MACHINE-unknown-linux-$LIBC
++	GUESS=$UNAME_MACHINE-${VENDOR}-linux-$LIBC
+ 	;;
+     kvx:cos:*:*)
+-	GUESS=$UNAME_MACHINE-unknown-cos
++	GUESS=$UNAME_MACHINE-${VENDOR}-cos
+ 	;;
+     kvx:mbr:*:*)
+-	GUESS=$UNAME_MACHINE-unknown-mbr
++	GUESS=$UNAME_MACHINE-${VENDOR}-mbr
+ 	;;
+     loongarch32:Linux:*:* | loongarch64:Linux:*:*)
 -	GUESS=$UNAME_MACHINE-unknown-linux-$LIBC
 +	GUESS=$UNAME_MACHINE-${VENDOR}-linux-$LIBC
  	;;
@@ -288,12 +299,8 @@ Index: automake-1.16.5/lib/config.guess
  	;;
      mips:Linux:*:* | mips64:Linux:*:*)
  	set_cc_for_build
-@@ -1088,60 +1099,60 @@ EOF
- EOF
- 	cc_set_vars=`$CC_FOR_BUILD -E "$dummy.c" 2>/dev/null | grep '^CPU\|^MIPS_ENDIAN\|^LIBCABI'`
- 	eval "$cc_set_vars"
--	test "x$CPU" != x && { echo "$CPU${MIPS_ENDIAN}-unknown-linux-$LIBCABI"; exit; }
-+	test "x$CPU" != x && { echo "$CPU${MIPS_ENDIAN}-${VENDOR}-linux-$LIBCABI"; exit; }
+@@ -1135,57 +1146,57 @@ EOF
+ 	test "x$CPU" != x && { echo "$CPU${MIPS_ENDIAN}-unknown-linux-$LIBCABI"; exit; }
  	;;
      mips64el:Linux:*:*)
 -	GUESS=$UNAME_MACHINE-unknown-linux-$LIBC
@@ -367,12 +374,8 @@ Index: automake-1.16.5/lib/config.guess
  	;;
      vax:Linux:*:*)
  	GUESS=$UNAME_MACHINE-dec-linux-$LIBC
-@@ -1157,10 +1168,10 @@ EOF
- 		LIBCABI=${LIBC}x32
- 	    fi
- 	fi
--	GUESS=$UNAME_MACHINE-pc-linux-$LIBCABI
-+	GUESS=$UNAME_MACHINE-${VENDOR}-linux-$LIBCABI
+@@ -1215,7 +1226,7 @@ EOF
+ 	GUESS=$CPU-pc-linux-$LIBCABI
  	;;
      xtensa*:Linux:*:*)
 -	GUESS=$UNAME_MACHINE-unknown-linux-$LIBC
@@ -380,7 +383,7 @@ Index: automake-1.16.5/lib/config.guess
  	;;
      i*86:DYNIX/ptx:4*:*)
  	# ptx 4.0 does uname -s correctly, with DYNIX/ptx in there.
-@@ -1182,16 +1193,16 @@ EOF
+@@ -1237,16 +1248,16 @@ EOF
  	GUESS=$UNAME_MACHINE-pc-os2-emx
  	;;
      i*86:XTS-300:*:STOP)
@@ -400,7 +403,7 @@ Index: automake-1.16.5/lib/config.guess
  	;;
      i*86:*DOS:*:*)
  	GUESS=$UNAME_MACHINE-pc-msdosdjgpp
-@@ -1211,7 +1222,7 @@ EOF
+@@ -1266,7 +1277,7 @@ EOF
  	    *Pentium)	     UNAME_MACHINE=i586 ;;
  	    *Pent*|*Celeron) UNAME_MACHINE=i686 ;;
  	esac
@@ -409,7 +412,7 @@ Index: automake-1.16.5/lib/config.guess
  	;;
      i*86:*:3.2:*)
  	if test -f /usr/options/cb.name; then
-@@ -1250,7 +1261,7 @@ EOF
+@@ -1305,7 +1316,7 @@ EOF
  	if grep Stardent /usr/include/sys/uadmin.h >/dev/null 2>&1 ; then
  	  GUESS=i860-stardent-sysv$UNAME_RELEASE    # Stardent Vistra i860-SVR4
  	else # Add other i860-SVR4 vendors below as they are discovered.
@@ -418,7 +421,7 @@ Index: automake-1.16.5/lib/config.guess
  	fi
  	;;
      mini*:CTIX:SYS*5:*)
-@@ -1287,19 +1298,19 @@ EOF
+@@ -1342,19 +1353,19 @@ EOF
  	/bin/uname -p 2>/dev/null | /bin/grep pteron >/dev/null \
  	    && { echo i586-ncr-sysv4.3"$OS_REL"; exit; } ;;
      m68*:LynxOS:2.*:* | m68*:LynxOS:3.0*:*)
@@ -442,7 +445,7 @@ Index: automake-1.16.5/lib/config.guess
  	;;
      SM[BE]S:UNIX_SV:*:*)
  	GUESS=mips-dde-sysv$UNAME_RELEASE
-@@ -1349,7 +1360,7 @@ EOF
+@@ -1404,7 +1415,7 @@ EOF
  	if test -d /usr/nec; then
  		GUESS=mips-nec-sysv$UNAME_RELEASE
  	else
@@ -451,16 +454,16 @@ Index: automake-1.16.5/lib/config.guess
  	fi
  	;;
      BeBox:BeOS:*:*)	# BeOS running on hardware made by Be, PPC only.
-@@ -1365,7 +1376,7 @@ EOF
- 	GUESS=i586-pc-haiku
+@@ -1423,7 +1434,7 @@ EOF
+ 	GUESS=powerpc-apple-haiku
  	;;
-     x86_64:Haiku:*:*)
--	GUESS=x86_64-unknown-haiku
-+	GUESS=x86_64-${VENDOR}-haiku
+     *:Haiku:*:*)	# Haiku modern gcc (not bound by BeOS compat)
+-	GUESS=$UNAME_MACHINE-unknown-haiku
++	GUESS=$UNAME_MACHINE-${VENDOR}-haiku
  	;;
      SX-4:SUPER-UX:*:*)
  	GUESS=sx4-nec-superux$UNAME_RELEASE
-@@ -1478,13 +1489,13 @@ EOF
+@@ -1536,13 +1547,13 @@ EOF
  	elif test "x${cputype-}" != x; then
  	    UNAME_MACHINE=$cputype
  	fi
@@ -477,7 +480,7 @@ Index: automake-1.16.5/lib/config.guess
  	;;
      KS10:TOPS-20:*:* | KL10:TOPS-20:*:* | TYPE4:TOPS-20:*:*)
  	GUESS=pdp10-dec-tops20
-@@ -1493,17 +1504,17 @@ EOF
+@@ -1551,17 +1562,17 @@ EOF
  	GUESS=pdp10-xkl-tops20
  	;;
      *:TOPS-20:*:*)
@@ -498,8 +501,8 @@ Index: automake-1.16.5/lib/config.guess
  	;;
      *:*VMS:*:*)
  	UNAME_MACHINE=`(uname -p) 2>/dev/null`
-@@ -1523,16 +1534,16 @@ EOF
- 	GUESS=$UNAME_MACHINE-pc-rdos
+@@ -1584,19 +1595,19 @@ EOF
+ 	GUESS=$UNAME_MACHINE-pc-fiwix
  	;;
      *:AROS:*:*)
 -	GUESS=$UNAME_MACHINE-unknown-aros
@@ -516,6 +519,10 @@ Index: automake-1.16.5/lib/config.guess
      *:Unleashed:*:*)
 -	GUESS=$UNAME_MACHINE-unknown-unleashed$UNAME_RELEASE
 +	GUESS=$UNAME_MACHINE-${VENDOR}-unleashed$UNAME_RELEASE
+ 	;;
+     *:Ironclad:*:*)
+-	GUESS=$UNAME_MACHINE-unknown-ironclad
++	GUESS=$UNAME_MACHINE-${VENDOR}-ironclad
  	;;
  esac
  

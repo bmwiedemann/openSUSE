@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Wed Jul 17 16:22:41 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.29.0:
+  * fix: typos
+  * update docs generation to avoid man pages generation
+  * bump compose-go to v2.1.4, buildx to v0.16.0, containerd to
+    v1.7.19 and buildx to v0.15.0
+  * restore setEnvWithDotEnv
+  * empty env variable with no value must be unset in container
+  * exclude unnecessary resources after services have been selected
+  * change time for stale bot
+  * Remove debug mode and run twice a week
+  * Add stale workflow
+  * update docs
+  * feat(watch): Add --prune option to docker-compose watch command
+  * Remove COMPOSE_MENU env from e2e tests
+  * Use rawjson for the build backend.
+  * Set logging format to JSON.
+  * Format errors as JSON when in JSON progress mode.
+  * Pass 'plain' instead of 'json' to build backend
+  * Add JSON stream progress writer
+  * go.mod: docker/cli, docker/docker v27.0.3
+  * gha: test against docker v27.0.3
+  * go.mod: docker/cli, docker/docker v27.0.2
+
+-------------------------------------------------------------------
 Mon Jun 24 18:55:23 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.28.1:

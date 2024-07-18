@@ -15,4 +15,12 @@
     <comment>- Restrict numpy to &lt; 2.</comment>
     <requestid>1186292</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>69ebf14a2258b0800bc61a1619161938</srcmd5>
+    <version>3.1.0</version>
+    <time>1721323011</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1188218</requestid>
+  </revision>
 </revisionlist>

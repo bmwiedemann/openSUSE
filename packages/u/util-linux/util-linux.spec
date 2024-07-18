@@ -467,6 +467,7 @@ cp -a %{S:2} .
 %autopatch -p1
 # This test randomly fails or keeps hanging task inside build chroot (tested on 2.38).
 rm tests/ts/lsns/ioctl_ns
+AUTOPOINT=true GTKDOCIZE=true autoreconf -vfi
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
@@ -513,7 +514,6 @@ configure_options+="--with-systemd "
 %endif
 # ulsubset == systemd
 
-#AUTOPOINT=true GTKDOCIZE=true autoreconf -vfi
 # All dirs needs to be specified, as %%configure does not derive them
 # from %%_prefix, and bootstrap build will fall back to /usr.
 %configure\

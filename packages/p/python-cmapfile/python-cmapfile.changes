@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jul 17 07:22:57 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Revert. Works fine with numpy2. The pinning creates too many
+  conflicts in consumers
+
+-------------------------------------------------------------------
+Wed Jul 17 02:13:38 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Restrict numpy to < 2. 
+
+-------------------------------------------------------------------
 Mon Apr  8 10:28:32 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons

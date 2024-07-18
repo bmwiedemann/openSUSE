@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul 16 11:28:56 UTC 2024 - Christoph G <foss@grueninger.de>
+
+- Run autoreconf unconditionally to allow newer versions
+  of Automake.
+
+-------------------------------------------------------------------
 Wed Dec 27 11:19:12 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.15.0:

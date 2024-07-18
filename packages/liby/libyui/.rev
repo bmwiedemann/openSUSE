@@ -751,4 +751,12 @@ build/package/libyui.spec:Version:        3.0.13</comment>
     <comment>submit new version 4.6.1</comment>
     <requestid>1116919</requestid>
   </revision>
+  <revision rev="91" vrev="1">
+    <srcmd5>814a6cd45e6c9e22c4fb4654982b4c8a</srcmd5>
+    <version>4.6.2</version>
+    <time>1721322926</time>
+    <user>anag+factory</user>
+    <comment>submit new version 4.6.2</comment>
+    <requestid>1188131</requestid>
+  </revision>
 </revisionlist>

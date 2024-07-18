@@ -26,6 +26,8 @@
 # Keep it at the original location (/usr/lib) for backward compatibility
 %define _libexecdir /usr/lib
 
+%{?!primary_python:%define primary_python python3}
+
 Name:           xen
 ExclusiveArch:  %ix86 x86_64 aarch64
 %define xen_build_dir xen-4.18.2-testing
@@ -117,6 +119,7 @@ BuildRequires:  makeinfo
 %ifarch x86_64
 BuildRequires:  pesign-obs-integration
 %endif
+BuildRequires:  python-rpm-macros
 Provides:       installhint(reboot-needed)
 
 Version:        4.18.2_06
@@ -180,6 +183,7 @@ Patch23:        6672c846-x86-xstate-initialisation-of-XSS-cache.patch
 Patch24:        6672c847-x86-CPUID-XSAVE-dynamic-leaves.patch
 Patch25:        6673ffdc-x86-IRQ-forward-pending-to-new-dest-in-fixup_irqs.patch
 # EMBARGOED security fixes
+Patch100:       xsa458.patch
 # libxc
 Patch301:       libxc-bitmap-long.patch
 Patch302:       libxc-sr-xl-migration-debug.patch
@@ -241,8 +245,6 @@ Patch466:       libxl.helper_done-crash.patch
 Patch467:       libxl.LIBXL_HOTPLUG_TIMEOUT.patch
 # python3 conversion patches
 Patch500:       build-python3-conversion.patch
-Patch501:       migration-python3-conversion.patch
-Patch502:       bin-python3-conversion.patch
 # Hypervisor and PV driver Patches
 Patch600:       xen.bug1026236.suse_vtsc_tolerance.patch
 Patch601:       x86-ioapic-ack-default.patch
@@ -306,8 +308,8 @@ Requires:       qemu-arm
 Requires:       %{name} = %{version}-%{release}
 Requires:       %{name}-libs = %{version}-%{release}
 Recommends:     multipath-tools
-Requires:       python3
-Requires:       python3-curses
+Requires:       %{primary_python}
+Requires:       %{primary_python}-curses
 %ifarch %{ix86} x86_64
 Requires:       qemu-seabios
 %endif
@@ -499,7 +501,7 @@ configure_flags="${configure_flags} --enable-stubdom"
 sed -i~ 's/ XENSTORETYPE=domain$/ XENSTORETYPE=daemon/' tools/hotplug/Linux/launch-xenstore.in
 configure_flags="${configure_flags} --disable-stubdom"
 %endif
-export PYTHON="/usr/bin/python3"
+export PYTHON=$(realpath /usr/bin/python3)
 configure_flags="${configure_flags} --disable-qemu-traditional"
 ./configure \
         --disable-xen \
@@ -833,6 +835,7 @@ done
 # Xen utilities
 install -m755 %SOURCE36 %{buildroot}/usr/sbin/xen2libvirt
 install -m755 %SOURCE10183 %{buildroot}/usr/sbin/xen_maskcalc
+%python3_fix_shebang
 
 rm -f %{buildroot}/etc/xen/README*
 # Example config

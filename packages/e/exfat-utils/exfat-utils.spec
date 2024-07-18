@@ -3,6 +3,7 @@
 #
 # Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2013 Sidlovsky, Yaroslav <zawertun@gmail.com>
+# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,10 +26,6 @@ License:        GPL-2.0-or-later
 Group:          System/Filesystems
 URL:            https://github.com/relan/exfat
 Source0:        https://github.com/relan/exfat/releases/download/v%{version}/%{name}-%{version}.tar.gz
-BuildRequires:  autoconf
-BuildRequires:  automake
-BuildRequires:  libtool
-BuildRequires:  pkgconfig
 Recommends:     fuse-exfat
 
 %description
@@ -39,9 +36,6 @@ system.
 %autosetup
 
 %build
-# force installation of manual pages
-sed -i -e 's/no-installman//' configure.ac
-autoreconf -fiv
 %configure
 %make_build
 
@@ -55,6 +49,9 @@ pushd %{buildroot}%{_mandir}/man8
 ln -s exfatfsck.8.gz fsck.exfat.8.gz
 ln -s mkexfatfs.8.gz mkfs.exfat.8.gz
 popd
+
+%check
+%make_build check
 
 %files
 %license COPYING

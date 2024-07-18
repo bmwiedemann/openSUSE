@@ -1224,4 +1224,16 @@
     <comment></comment>
     <requestid>1186497</requestid>
   </revision>
+  <revision rev="118" vrev="2">
+    <srcmd5>30e809b7a83e4757de67c38e5e627bf5</srcmd5>
+    <version>5.0.7</version>
+    <time>1721322946</time>
+    <user>anag+factory</user>
+    <comment>- This release also fixes several security issues:
+  * bsc#1227590 (CVE-2024-38875)
+  * bsc#1227593 (CVE-2024-39329)
+  * bsc#1227594 (CVE-2024-39330)
+  * bsc#1227595 (CVE-2024-39614)</comment>
+    <requestid>1188243</requestid>
+  </revision>
 </revisionlist>

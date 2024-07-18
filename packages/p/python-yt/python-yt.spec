@@ -42,7 +42,7 @@ Patch1:         yt-ignore-pytestdepr.patch
 BuildRequires:  %{python_module Cython > 3 with %python-Cython < 3.1}
 BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module ewah-bool-utils-devel >= 1.0.2}
-BuildRequires:  %{python_module numpy-devel >= 1.25}
+BuildRequires:  %{python_module numpy-devel >= 1.25 with %python-numpy-devel < 2}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -55,11 +55,11 @@ Requires:       python-ewah-bool-utils >= 1.0.2
 Requires:       python-ipywidgets >= 8.0.0
 Requires:       python-matplotlib >= 3.5
 Requires:       python-more-itertools >= 8.4
-Requires:       python-numpy >= 1.19.3
 Requires:       python-packaging >= 20.9
 Requires:       python-tomli-w >= 0.4.0
 Requires:       python-tqdm >= 3.4.0
 Requires:       python-unyt >= 2.9.2
+Requires:       (python-numpy >= 1.19.3 with python-numpy < 2)
 Requires:       (python-tomli >= 1.2.3 if python-base < 3.11)
 Requires:       (python-typing-extensions >= 4.4.0 if python-base < 3.12)
 Requires(post): update-alternatives

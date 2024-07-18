@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jul 14 13:28:44 UTC 2024 - Sarah Kriesch <sarah.kriesch@opensuse.org>
+
+- Remove func_math_tests_MDEV-26645.diff as patch for s390x/ppc64le
+- Add s390x to the constraints file
+
+-------------------------------------------------------------------
 Tue Jun 18 20:39:59 UTC 2024 - Antonio Teixeira <antonio.teixeira@suse.com>
 
 - Remove errmsg-utf8.txt from mariadb-errormessages.

@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Jul 16 13:15:45 MDT 2024 - carnold@suse.com
+
+- Update to version 1.53.5 (jsc#PED-6305)
+  * generator/customize.ml: Split --chown parameter on ':' character
+  * daemon: Add gost checksum command support
+  * Add detection support for Circle Linux
+  * Add support for LoongArch.
+  * daemon: Fix file architecture translation for LoongArch
+  * options: Allow nbd+unix:// URIs
+  * daemon/parted: Assume sfdisk --part-type exists
+  * daemon: Reimplement partition GPT functions using sfdisk
+  * appliance: only wait for resolv.conf update if dhcpcd succeeded
+  * generator/customize.ml: Add virt-customize --inject-blnsvr operation
+  * lib: libvirt: Stop recommending LIBGUESTFS_BACKEND=direct
+  * daemon: cryptsetup_open: Add --cipher
+  * rust: Handle null pointer when creating slice
+  * Remove gluster support
+  * Remove sheepdog support
+  * Remove tftp drive support
+  * generator/daemon: Don't truncate 64 bit results from OCaml functions
+  * daemon: Fix parsing in part_get_gpt_attributes
+  * New APIs: findfs_partuuid and findfs_partlabel
+  * inspection: Resolve PARTUUID= and PARTLABEL= in /etc/fstab
+  * generator/actions_core.ml: Fix version field for new APIs
+  * Kylin is centos derivative
+
+-------------------------------------------------------------------
 Thu May 16 13:02:34 MDT 2024 - carnold@suse.com
 
 - Update to version 1.52.1 bug fix release (jsc#PED-6305)

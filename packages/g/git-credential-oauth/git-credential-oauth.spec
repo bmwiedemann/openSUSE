@@ -17,7 +17,7 @@
 
 
 Name:           git-credential-oauth
-Version:        0.11.3
+Version:        0.13.0
 Release:        0
 Summary:        Git credential helper that authenticates to GitHub and other forges using OAuth
 License:        Apache-2.0
@@ -27,6 +27,7 @@ Source0:        https://github.com/hickford/%{name}/archive/refs/tags/v%{version
 Source1:        vendor.tar.zst
 BuildRequires:  golang-packaging
 BuildRequires:  zstd
+BuildRequires:  golang(API) >= 1.22
 Requires:       git-core
 
 %description

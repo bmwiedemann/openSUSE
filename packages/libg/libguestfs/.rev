@@ -1150,4 +1150,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1176549</requestid>
   </revision>
+  <revision rev="108" vrev="1">
+    <srcmd5>b6bb31fbecd3c7e5e4a9cb35213a933c</srcmd5>
+    <version>1.53.5</version>
+    <time>1721323030</time>
+    <user>anag+factory</user>
+    <comment>Update libguestfs to version 1.53.5</comment>
+    <requestid>1188245</requestid>
+  </revision>
 </revisionlist>

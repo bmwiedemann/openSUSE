@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jul 16 05:39:23 UTC 2024 - Christoph G <foss@grueninger.de>
+
+- Add automake-1.17.patch to support Automake 1.17 in autogen.sh
+
+-------------------------------------------------------------------
 Fri Jul 12 18:40:00 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add CVE-2024-6655.patch: CVE-2024-6655 Stop looking for modules

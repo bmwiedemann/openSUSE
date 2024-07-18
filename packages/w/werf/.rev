@@ -7,4 +7,12 @@
     <comment>new package werf: efficient and consistent software delivery to Kubernetes facilitating best practices</comment>
     <requestid>1186680</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>92a106a4313eff4a30c5ff70ea948f12</srcmd5>
+    <version>2.8.0</version>
+    <time>1721323024</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1188239</requestid>
+  </revision>
 </revisionlist>

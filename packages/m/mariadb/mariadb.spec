@@ -78,7 +78,6 @@ Patch1:         mariadb-10.2.4-logrotate.patch
 Patch4:         mariadb-10.2.4-fortify-and-O.patch
 Patch6:         mariadb-10.4.12-harden_setuid.patch
 Patch7:         mariadb-10.4.12-fix-install-db.patch
-Patch9:         func_math_tests_MDEV-26645.diff
 Patch10:        fix-pamdir.patch
 Patch11:        gcc13-fix.patch
 # needed for bison SQL parser and wsrep API
@@ -357,11 +356,6 @@ find . -name "*.jar" -type f -exec rm --verbose -f {} \;
 %patch -P 4
 %patch -P 6 -p1
 %patch -P 7 -p1
-%if 0%{?suse_version} > 1500
-%ifarch s390x ppc64 ppc64le
-%patch -P 9
-%endif
-%endif
 # usrmerge has only been applied to TW
 %if 0%{?suse_version} > 1500
 %patch -P 10 -p1

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Jul 17 14:59:56 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Update to 2024.2
+  * Added Django 5.0 and 4.2 support
+  * Added Python 3.11 and 3.12 support
+  * Dropped Python 3.7 support
+  * Dropped Django 3.2, 4.0 and 4.1 support
+  * Switched to CalVer versioning
+  * Added support for Switches.
+  * Used <fieldset> and <legend> to group related inputs.
+  * Added modal template.
+- Dropped upstreamed patches:
+  * cf2.patch
+  * help_test_escape.patch
+
+-------------------------------------------------------------------
 Fri Mar 22 08:29:00 UTC 2024 - Max Lin <mlin@suse.com>
 
 - Add %{?sle15_python_module_pythons}

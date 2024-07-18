@@ -31,8 +31,10 @@ BuildRequires:  %{python_module matplotlib >= 3.2.0}
 BuildRequires:  %{python_module netpbmfile >= 2020.9.18}
 BuildRequires:  %{python_module numpy >= 1.15}
 BuildRequires:  %{python_module oiffile >= 2020.9.18}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module tifffile >= 2020.9.3}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-click
@@ -57,10 +59,10 @@ experimental data at the Laboratory for Fluorescence Dynamics.
 sed -i 's/\r//g' README.rst
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 for p in lfdfiles fbd2b64 ; do
     %python_clone -a %{buildroot}%{_bindir}/$p
 done
@@ -82,7 +84,7 @@ done
 %doc README.rst
 %python_alternative %{_bindir}/lfdfiles
 %python_alternative %{_bindir}/fbd2b64
-%{python_sitearch}/*egg-info
-%{python_sitearch}/lfdfiles/
+%{python_sitearch}/lfdfiles
+%{python_sitearch}/lfdfiles-%{version}.dist-info
 
 %changelog

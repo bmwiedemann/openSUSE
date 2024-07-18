@@ -817,4 +817,12 @@ It does not make sense to double the whole HISTORY of upstream source in .change
 - BuildRequire pkgconfig(libsystemd) instead of full systemd</comment>
     <requestid>1160631</requestid>
   </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>323749a1b36a7cb4c2ca18477ec41056</srcmd5>
+    <version>6.0.0</version>
+    <time>1721322940</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1188219</requestid>
+  </revision>
 </revisionlist>

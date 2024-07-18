@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Fri Jul 12 17:18:39 UTC 2024 - Christoph G <foss@grueninger.de>
+
+- update to 1.17
+  - AM_PATH_PYTHON will, after checking "python", prefer any Python 3
+    version (latest versions checked first) over any Python 2
+    version. If a specific version of Python 2 is still needed, the
+    $PYTHON variable should be set beforehand.
+  - AM_PATH_PYTHON will also search for Python versions 3.20 through 3.10.
+    It previously searched for 3.9 through 3.0.
+  - RANLIB may be overridden on a per-target basis.
+  - AM_TEXI2FLAGS may be defined to pass extra flags to TEXI2DVI & TEXI2PDF.
+  - New option "posix" to emit the special target .POSIX for make.
+  - Systems with non-POSIX "rm -f" behavior are now supported, and the
+    prior intent to drop support for them has been reversed.
+    The ACCEPT_INFERIOR_RM_PROGRAM setting no longer exists.
+  - Variables using escaped \# will trigger portability warnings, but be
+    retained when appended.  GNU Make & BSD Makes are known to support it.
+  - GNU Make's default pattern rules are disabled, for speed and debugging.
+    (.SUFFIXES was already cleared.)
+  - For Texinfo documents, if a .texi.in file exists, but no .texi, the
+    .texi.in will be read. Texinfo source files need not be present at
+    all, and if present, need not contain @setfilename. Then the file name
+    as given in the Makefile.am will be used.  If @setfilename is present,
+    it should be the basename of the Texinfo file, extended with .info.
+  - aclocal has a new option --aclocal-path to override $ACLOCAL_PATH.
+  - The missing script also supports autoreconf, autogen, and perl.
+  - test-suite.log now contains basic system information, and the
+    console message about bug reporting on failure has a bit more detail.
+  - When using the (default) "parallel" test driver, you can now omit the
+    output of skipped tests from test-suite.log by defining the
+    variable IGNORE_SKIPPED_LOGS to a non-empty value. (bug#71422)
+- Drop patches now included in 1.17
+  * tests-Fix-type-defaults-error-in-link_cond.patch
+  * tests-avoid-implicit-function-declaration-in-depcomp.patch
+  * tests-don-t-try-to-prevent-flex-from-including-unist.patch
+  * tests-avoid-implicit-function-declarations.patch
+- Drop patch automake-require_file.patch with different upstream fix
+- Drop no longer necessary patch
+  automake-1.13.4-fix-primary-prefix-invalid-couples-test.patch
+- Ajust patches automake-suse-vendor.patch and
+  0001-correct-parameter-parsing-in-test-driver-script.patch
+
+-------------------------------------------------------------------
 Tue May  7 15:46:57 UTC 2024 - Valentin Lefebvre <valentin.lefebvre@suse.com>
 
 - Fix testsuite with gcc 14

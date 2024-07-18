@@ -65,6 +65,8 @@ ZZipLib.
 sed -i -e 's:docs ::g' Makefile.am
 
 %build
+# Workaround for boo#1225959
+%global optflags %{optflags} -fpermissive
 %cmake -DZZIP_TESTCVE=OFF
 %cmake_build
 

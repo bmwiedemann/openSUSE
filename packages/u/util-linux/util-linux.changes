@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jul 16 13:25:03 UTC 2024 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- uncomment "autoreconf --install" to use the new version of automake
+
+-------------------------------------------------------------------
 Mon Jun 10 10:44:55 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - disable libmagic in more(1) for binary detection (bsc#1225197)

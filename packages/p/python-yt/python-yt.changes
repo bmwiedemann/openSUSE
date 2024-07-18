@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jul 17 05:41:40 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Restrict numpy to < 2 for now. 
+
+-------------------------------------------------------------------
 Thu Jul  4 05:28:54 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 4.3.1:

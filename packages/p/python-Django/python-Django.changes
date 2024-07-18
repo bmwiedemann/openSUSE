@@ -19,6 +19,11 @@ Tue Jul  9 14:03:46 UTC 2024 - Markéta Machová <mmachova@suse.com>
   * Dropped support for MySQL < 8.0.11
   * Using create_defaults__exact may now be required with QuerySet.update_or_create()
   * Migrating existing UUIDField on MariaDB 10.7+
+- This release also fixes several security issues:
+  * bsc#1227590 (CVE-2024-38875)
+  * bsc#1227593 (CVE-2024-39329)
+  * bsc#1227594 (CVE-2024-39330)
+  * bsc#1227595 (CVE-2024-39614)
 - Drop no-longer-needed patches:
   * dirty-hack-remove-assert.patch
   * sanitize_address.patch

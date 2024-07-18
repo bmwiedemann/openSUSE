@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jul 12 08:23:12 UTC 2024 - Xiaoguang Wang <xiaoguang.wang@suse.com>
+
+- Add CVE-2024-36472.patch: Show notification when detecting
+  captive portal
+  (glgo#GNOME/gnome-shell#7688 bsc#1225567 CVE-2024-36472).
+
+-------------------------------------------------------------------
 Sun Jun 30 09:45:26 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 46.3.1:

@@ -779,4 +779,34 @@ Version 1.11.66
   * Don't show 'saved' on display name save error (https://github.com/matrix-org/matrix-react-sdk/pull/12600). Contributed by @dbkr.</comment>
     <requestid>1187579</requestid>
   </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>b6b9f6e56a05de41272035d1ce2ea196</srcmd5>
+    <version>1.11.71</version>
+    <time>1721323013</time>
+    <user>anag+factory</user>
+    <comment>- Version 1.11.71
+  ## ✨ Features
+  * Add Modernizr rule for Intl.Segmenter (https://github.com/element-hq/element-web/pull/27677). Contributed by @t3chguy.
+  * Add tabs to the right panel (https://github.com/matrix-org/matrix-react-sdk/pull/12672). Contributed by @MidhunSureshR.
+  * Promote new room header from labs to Beta (https://github.com/matrix-org/matrix-react-sdk/pull/12739). Contributed by @t3chguy.
+  * Redesign room search interface (https://github.com/matrix-org/matrix-react-sdk/pull/12677). Contributed by @t3chguy.
+  * Move language settings to 'preferences' (https://github.com/matrix-org/matrix-react-sdk/pull/12723). Contributed by @dbkr.
+  * New layout selector ui in user settings (https://github.com/matrix-org/matrix-react-sdk/pull/12676). Contributed by @florianduros.
+  * Prevent Element appearing in system media controls  (https://github.com/matrix-org/matrix-react-sdk/pull/10995). Contributed by @SuperKenVery.
+  * Move the account management button (https://github.com/matrix-org/matrix-react-sdk/pull/12663). Contributed by @dbkr.
+  * Disable profile controls if the HS doesn't allow them to be set (https://github.com/matrix-org/matrix-react-sdk/pull/12652). Contributed by @dbkr.
+  * New theme ui in user settings (https://github.com/matrix-org/matrix-react-sdk/pull/12576). Contributed by @florianduros.
+  * Adjust room header hover transition from 300ms to 200ms (https://github.com/matrix-org/matrix-react-sdk/pull/12703). Contributed by @t3chguy.
+  * Split out email \&amp; phone number settings to separate components \&amp; move discovery to privacy tab (https://github.com/matrix-org/matrix-react-sdk/pull/12670). Contributed by @dbkr.
+  ## 🐛 Bug Fixes
+  * Ensure we do not load matrix-react-sdk is a manner which can white-screen (https://github.com/element-hq/element-web/pull/27685). Contributed by @t3chguy.
+  * Fix incoming call toast crash due to audio refactor (https://github.com/matrix-org/matrix-react-sdk/pull/12737). Contributed by @t3chguy.
+  * Improve new room header accessibility (https://github.com/matrix-org/matrix-react-sdk/pull/12725). Contributed by @t3chguy.
+  * Fix closing all modals (https://github.com/matrix-org/matrix-react-sdk/pull/12728). Contributed by @dbkr.
+  * Fix close button on forgot password flow (https://github.com/matrix-org/matrix-react-sdk/pull/12732). Contributed by @dbkr.
+  * Don't consider textual characters to be emoji (https://github.com/matrix-org/matrix-react-sdk/pull/12582). Contributed by @robintown.
+  * Clear autocomplete input on selection accept (https://github.com/matrix-org/matrix-react-sdk/pull/12709). Contributed by @dbkr.
+  * Fix `Match system theme` toggle (https://github.com/matrix-org/matrix-react-sdk/pull/12719). Contributed by @florianduros.</comment>
+    <requestid>1188223</requestid>
+  </revision>
 </revisionlist>

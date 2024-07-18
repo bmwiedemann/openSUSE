@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul 17 12:24:00 UTC 2024 - Adrian Schröter <adrian@suse.de>
+
+- update to version 0.4.15
+  * avoid double export of -debug packages when using "all" option
+
+-------------------------------------------------------------------
 Tue Jul 16 12:23:34 UTC 2024 - Adrian Schröter <adrian@suse.de>
 
 - update to version 0.4.14

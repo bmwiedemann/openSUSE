@@ -21,7 +21,6 @@ Version:        2024.5.24
 Release:        0
 Summary:        Read Olympus(r) image files (OIF and OIB)
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://www.lfd.uci.edu/~gohlke/
 # SourceRepository: https://github.com/cgohlke/oiffile
 Source:         https://github.com/cgohlke/oiffile/archive/v%{version}.tar.gz#/oiffile-%{version}.tar.gz

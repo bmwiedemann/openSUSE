@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jul 17 07:05:51 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Revert. Numpy 2 is supported. 
+
+-------------------------------------------------------------------
+Wed Jul 17 04:27:49 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Restrict numpy to < 2 for now. 
+
+-------------------------------------------------------------------
 Wed Jun 26 08:27:58 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.24.0

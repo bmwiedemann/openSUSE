@@ -321,4 +321,12 @@
     <comment>- Restrict numpy to &lt; 2.</comment>
     <requestid>1186294</requestid>
   </revision>
+  <revision rev="30" vrev="3">
+    <srcmd5>7ba4c864e3ecec6bc0dde8824c54ff3a</srcmd5>
+    <version>5.1.4</version>
+    <time>1721323009</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1188214</requestid>
+  </revision>
 </revisionlist>

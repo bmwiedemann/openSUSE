@@ -1,4 +1,66 @@
 -------------------------------------------------------------------
+Wed Jul 17 12:33:03 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 6.0.0
+  * 2109_: ``maxfile`` and ``maxpath`` fields were removed from the namedtuple
+    returned by `disk_partitions()`_. Reason: on network filesystems (NFS) this
+    can potentially take a very long time to complete.
+  * 2366_, [Windows]: log debug message when using slower process APIs.
+  * 2375_, [macOS]: provide arm64 wheels.  (patch by Matthieu Darbois)
+  * 2396_: `process_iter()`_ no longer pre-emptively checks whether PIDs have
+    been reused. This makes `process_iter()`_ around 20x times faster.
+  * 2396_: a new ``psutil.process_iter.cache_clear()`` API can be used the clear
+    `process_iter()`_ internal cache.
+  * 2401_, Support building with free-threaded CPython 3.13. (patch by Sam Gross)
+  * 2407_: `Process.connections()`_ was renamed to `Process.net_connections()`_.
+    The old name is still available, but it's deprecated (triggers a
+    ``DeprecationWarning``) and will be removed in the future.
+  * 2425_: [Linux]: provide aarch64 wheels.  (patch by Matthieu Darbois / Ben Raz)
+  * 2250_, [NetBSD]: `Process.cmdline()`_ sometimes fail with EBUSY. It usually
+    happens for long cmdlines with lots of arguments. In this case retry getting
+    the cmdline for up to 50 times, and return an empty list as last resort.
+  * 2254_, [Linux]: offline cpus raise NotImplementedError in cpu_freq() (patch
+    by Shade Gladden)
+  * 2272_: Add pickle support to psutil Exceptions.
+  * 2359_, [Windows], [CRITICAL]: `pid_exists()`_ disagrees with `Process`_ on
+    whether a pid exists when ERROR_ACCESS_DENIED.
+  * 2360_, [macOS]: can't compile on macOS < 10.13.  (patch by Ryan Schmidt)
+  * 2362_, [macOS]: can't compile on macOS 10.11.  (patch by Ryan Schmidt)
+  * 2365_, [macOS]: can't compile on macOS < 10.9.  (patch by Ryan Schmidt)
+  * 2395_, [OpenBSD]: `pid_exists()`_ erroneously return True if the argument is
+    a thread ID (TID) instead of a PID (process ID).
+  * 2412_, [macOS]: can't compile on macOS 10.4 PowerPC due to missing `MNT_`
+    constants.
+  * 2109_: the namedtuple returned by `disk_partitions()`_' no longer has
+    ``maxfile`` and ``maxpath`` fields.
+  * 2396_: `process_iter()`_ no longer pre-emptively checks whether PIDs have
+    been reused. If you want to check for PID reusage you are supposed to use
+    `Process.is_running()`_ against the yielded `Process`_ instances. That will
+    also automatically remove reused PIDs from `process_iter()`_ internal cache.
+  * 2407_: `Process.connections()`_ was renamed to `Process.net_connections()`_.
+    The old name is still available, but it's deprecated (triggers a
+    ``DeprecationWarning``) and will be removed in the future.
+- from version 5.9.8
+  * 2343_, [FreeBSD]: filter `net_connections()`_ returned list in C instead of
+    Python, and avoid to retrieve unnecessary connection types unless explicitly
+    asked. E.g., on an IDLE system with few IPv6 connections this will run around
+    4 times faster. Before all connection types (TCP, UDP, UNIX) were retrieved
+    internally, even if only a portion was returned.
+  * 2342_, [NetBSD]: same as above (#2343) but for NetBSD.
+  * 2349_: adopted black formatting style.
+  * 930_, [NetBSD], [critical]: `net_connections()`_ implementation was broken.
+    It could either leak memory or core dump.
+  * 2340_, [NetBSD]: if process is terminated, `Process.cwd()`_ will return an
+    empty string instead of raising `NoSuchProcess`_.
+  * 2345_, [Linux]: fix compilation on older compiler missing DUPLEX_UNKNOWN.
+  * 2222_, [macOS]: `cpu_freq()` now returns fixed values for `min` and `max`
+    frequencies in all Apple Silicon chips.
+- Drop obsolete patch to skip tests on Python 2
+  * skip_rlimit_tests_on_python2.patch
+- Update patch to skip failing tests for new version
+  * skip_failing_tests.patch
+
+-------------------------------------------------------------------
 Fri Mar 22 10:40:19 UTC 2024 - Fabian Vogt <fvogt@suse.com>
 
 - BuildRequire pkgconfig(libsystemd) instead of full systemd

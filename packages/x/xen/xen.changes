@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jul  3 12:41:39 MDT 2024 - carnold@suse.com
+
+- bsc#1227355 - VUL-0: CVE-2024-31143: xen: double unlock in x86
+  guest IRQ handling (XSA-458)
+  xsa458.patch
+
+-------------------------------------------------------------------
 Mon Jun 24 16:20:00 CEST 2024 - jbeulich@suse.com
 
 - bsc#1214718 - The system hangs intermittently when Power Control
@@ -19,6 +26,19 @@ Mon Jun 24 16:20:00 CEST 2024 - jbeulich@suse.com
   667187cc-x86-Intel-unlock-CPUID-earlier.patch
   6672c846-x86-xstate-initialisation-of-XSS-cache.patch
   6672c847-x86-CPUID-XSAVE-dynamic-leaves.patch
+
+-------------------------------------------------------------------
+Wed Jun 12 12:03:14 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Fix python3 shebang in tools package (bsc#1212476)
+- Depend directly on %primary_python instead of python3 so this
+  package will continue working without rebuilding even if python3
+  changes in the system.
+- Remove not needed patches, these patches adds the python3 shebang to
+  some scripts, but that's done during the build phase so it's not
+  needed:
+  - bin-python3-conversion.patch
+  - migration-python3-conversion.patch
 
 -------------------------------------------------------------------
 Tue Jun  4 18:09:00 MDT 2024 - carnold@suse.com
