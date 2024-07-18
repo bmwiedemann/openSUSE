@@ -1,0 +1,5 @@
+<package name="apache-tomcat-10-java-22-image" project="openSUSE:Factory">
+  <title>openSUSE Tumbleweed Apache Tomcat</title>
+  <description>Apache Tomcat container based on the openSUSE Tumbleweed Base Container Image.</description>
+  <devel project="devel:BCI:Tumbleweed" package="apache-tomcat-10-java-22-image"/>
+</package>
