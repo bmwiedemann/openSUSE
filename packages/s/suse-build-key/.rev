@@ -361,4 +361,12 @@ changelog can't be avoided.
   from migrated systems. (forwarded request 1156875 from msmeissn)</comment>
     <requestid>1156876</requestid>
   </revision>
+  <revision rev="44" vrev="15">
+    <srcmd5>e799f49821701af91f2900697a6bd997</srcmd5>
+    <version>12.0</version>
+    <time>1721323215</time>
+    <user>anag+factory</user>
+    <comment>- also include the GPG key from the current build project</comment>
+    <requestid>1188398</requestid>
+  </revision>
 </revisionlist>

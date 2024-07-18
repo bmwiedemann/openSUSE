@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jul 18 12:13:36 UTC 2024 - Marcus Meissner <meissner@suse.com>
+
+- also include the GPG key from the current build project
+
+-------------------------------------------------------------------
 Thu Mar  7 10:19:49 UTC 2024 - Marcus Meissner <meissner@suse.com>
 
 - switch the container key to the new 4096RSA key by default

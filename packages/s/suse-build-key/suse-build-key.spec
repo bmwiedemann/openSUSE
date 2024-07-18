@@ -14,6 +14,8 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+# needspubkeyforbuild
+
 
 
 Name:           suse-build-key
@@ -25,6 +27,7 @@ Group:          System/Packages
 Version:        12.0
 Release:        0
 
+Source1000:     key2rpmname
 # pub  2048R/39DB7C82 2013-01-31 SuSE Package Signing Key <build@suse.de>
 # The main package signing key.
 Source0:        gpg-pubkey-39db7c82-5f68629b.asc
@@ -123,6 +126,14 @@ for i in %sources; do
         ;;
     esac
 done
+
+if [ -e "%_sourcedir/_pubkey" ]; then
+    name="$(sh %{SOURCE1000} %_sourcedir/_pubkey).asc"
+    if [ ! -e "%_sourcedir/$name" ]; then
+        install -D -m 644 %_sourcedir/_pubkey %{buildroot}%keydir/"$name"
+    fi
+fi
+
 %if 0%{?suse_version} &&  0%{?suse_version} < 1120
 install -m 755 %{SOURCE100} $RPM_BUILD_ROOT/usr/lib/rpm/gnupg
 %endif
@@ -144,14 +155,7 @@ install -c -m 644 %{SOURCE8} $RPM_BUILD_ROOT%{pemcontainerkeydir}/suse-container
 %if 0%{?suse_version} &&  0%{?suse_version} < 1120
 %attr(755,root,root) %{_prefix}/lib/rpm/gnupg/dumpsigs
 %endif
-%{keydir}/gpg-pubkey-50a3dd1c-50f35137.asc
-%{keydir}/gpg-pubkey-39db7c82-5f68629b.asc
-# SLES 11 key no longer added
-#{keydir}/gpg-pubkey-307e3d54-5aaa90a5.asc
-%{keydir}/gpg-pubkey-09d9ea69-645b99ce.asc
-%{keydir}/gpg-pubkey-3fa1d6ce-63c9481c.asc
-%{keydir}/gpg-pubkey-73f03759-626bd414.asc
-%{keydir}/gpg-pubkey-25db7ae0-645bae34.asc
+%{keydir}/gpg-pubkey-*.asc
 %{keydir}/suse_ptf_4096_key.asc
 %{keydir}/suse_ptf_key.asc
 %{containerkeydir}/suse-container-key.asc
