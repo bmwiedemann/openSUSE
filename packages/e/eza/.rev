@@ -623,4 +623,14 @@
   * Fix missing line breaks in _eza</comment>
     <requestid>1184194</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>d5a3890fc7cdfab16519ea6701317d20</srcmd5>
+    <version>0.18.22+0</version>
+    <time>1721323169</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.18.22:
+  * Use NaiveDateTime::from_timestamp_opt instead of panicky From impl
+  * Add non-nix pre-commit rustfmt and clippy hooks</comment>
+    <requestid>1188292</requestid>
+  </revision>
 </revisionlist>

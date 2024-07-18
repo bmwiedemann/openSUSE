@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jul 18 05:13:01 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.18.22:
+  * Use NaiveDateTime::from_timestamp_opt instead of panicky From impl
+  * Add non-nix pre-commit rustfmt and clippy hooks
+
+-------------------------------------------------------------------
 Mon Jul  1 06:06:03 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.18.21:
