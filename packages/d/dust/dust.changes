@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Thu Jul 18 00:42:14 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Update to version 1.1.1:
+  * docs: update release procedure
+  * fix: perf issues with v1.1.0
+  * refactor: rename variable
+
+-------------------------------------------------------------------
+Wed Jul 17 07:54:55 UTC 2024 - mvetter@suse.com
+
+- Update to version 1.1.0:
+  * Added json output function
+  * Allow options to be set in any position
+  * chore: Cleanup threads commit
+  * deps: bump libc from 0.2.153 to 0.2.155
+  * deps: update winapi-util to 0.1.8
+  * eprint problematic folders
+  * Explicit lifecycle that can be omitted
+  * feat: Added the ability to filter the corresponding files
+    based on the access time, modify time, and change time of the
+    file for statistics
+  * feat: Add flag to read from file/stdin
+  * feat: Adding threads flag
+  * fix: bug: Si detection was backwards.
+  * fix: issue 386 --only-file displays full paths even without --full-paths
+  * fix: si detection - single digits are binary
+  * fix: total_ordering of sort_by_inode
+  * Fix -x option behavior
+  * Fix zsh completion
+  * Redo 'Fix zsh completion' with clap
+  * refactor: cleanup -j / --output-json flag
+  * streamline func APIs processing target_dirs
+  * test_exact_output: refactor unreadable directory handling
+  * test_exact_output: simplify array handling
+  * tests: Cleanup test_exact_ouput
+  * tests: Fix test broken in prev commit
+
+-------------------------------------------------------------------
 Tue Mar 26 13:47:45 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Remove fix-test-string.patch -- fixed upstream
