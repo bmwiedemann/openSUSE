@@ -126,4 +126,12 @@
     <comment>rpm 4.20 compat</comment>
     <requestid>1148033</requestid>
   </revision>
+  <revision rev="17" vrev="6">
+    <srcmd5>2215ed4e868d2ace22e7eafcd0a021b0</srcmd5>
+    <version>4.3</version>
+    <time>1721323210</time>
+    <user>anag+factory</user>
+    <comment>Add an artifact alias</comment>
+    <requestid>1188395</requestid>
+  </revision>
 </revisionlist>

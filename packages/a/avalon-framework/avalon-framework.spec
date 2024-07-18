@@ -82,7 +82,7 @@ install -dm 0755 %{buildroot}%{_mavenpomdir}
 install -pm 0644 %{name}-api-%{version}/project.xml %{buildroot}%{_mavenpomdir}/%{name}-api.pom
 %add_maven_depmap %{name}-api.pom %{name}-api.jar -a org.apache.avalon.framework:avalon-framework-api
 install -pm 0644 %{name}-impl-%{version}/project.xml %{buildroot}%{_mavenpomdir}/%{name}-impl.pom
-%add_maven_depmap %{name}-impl.pom %{name}-impl.jar -a org.apache.avalon.framework:avalon-framework-impl
+%add_maven_depmap %{name}-impl.pom %{name}-impl.jar -a "org.apache.avalon.framework:avalon-framework-impl","avalon-framework:avalon-framework"
 # javadoc
 mkdir -p %{buildroot}%{_javadocdir}/%{name}
 cp -pr %{name}-api-%{version}/dist/docs/api %{buildroot}%{_javadocdir}/%{name}/api

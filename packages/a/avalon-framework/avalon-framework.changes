@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jul 15 09:34:55 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Add alias for avalon-framework:avalon-framework and point it to
+  the avalon-framework:avalon-framework-impl artifact.
+
+-------------------------------------------------------------------
 Tue Feb 20 12:38:12 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Rather use %setup/%autopatch: autosetup does not handle the
