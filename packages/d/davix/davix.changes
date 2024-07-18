@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Jul 17 07:18:21 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.8.7:
+  * Davix does not hide lower-case Authorization headers for
+    HTTP/2
+  * [gh#cern-fts/davix#120] Out of Date RapidJSON dependency
+    causing compile failure
+  * [gh#cern-fts/davix#114] Support 64-bit off_t on 32-bit systems
+    (LFS)
+  * [gh#cern-fts/davix#119] Use system rapidjson, fall back to
+    bundled
+  * [gh#cern-fts/davix#123] Implement multipart streaming for
+    DavPosix::write()
+  * [gh#cern-fts/davix#124] Fix s3 dirlisting to follow the
+    istruncated/nextmarker
+- Drop davix-no-hardcoded-rapidjson-includes.patch: upstreamed.
+
+-------------------------------------------------------------------
 Wed May  1 20:29:22 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Use system available curl and rapidjson instead of bundled

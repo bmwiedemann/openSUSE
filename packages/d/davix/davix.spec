@@ -19,17 +19,15 @@
 %define shlib lib%{name}0
 %define v_maj 0
 %define v_min 8
-%define v_pat 6
+%define v_pat 7
 Name:           davix
-Version:        %{v_maj}.%{v_min}.%{v_pat}
+Version:        0.8.7
 Release:        0
 Summary:        File management over HTTP-based protocols
 License:        LGPL-2.1-or-later
 Group:          Productivity/Networking/Web/Utilities
 URL:            https://davix.web.cern.ch/davix/docs/devel
 Source:         https://github.com/cern-fts/davix/releases/download/R_%{v_maj}_%{v_min}_%{v_pat}/davix-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM davix-no-hardcoded-rapidjson-includes.patch gh#cern-fts/davix#119 badshah400@gmail.com -- Do not hard code the location of rapidjson header, and allow system package to be used if available
-Patch0:         davix-no-hardcoded-rapidjson-includes.patch
 BuildRequires:  cmake >= 2.6
 BuildRequires:  gcc-c++
 BuildRequires:  git
