@@ -1,0 +1,6 @@
+<package name="dragon-drop" project="openSUSE:Factory">
+  <title>dragon - simple drag-and-drop source/sink for X or Wayland</title>
+  <description>A lightweight drag-and-drop source/target for X or Wayland.</description>
+  <devel project="X11:Utilities" package="dragon-drop"/>
+  <url>https://github.com/mwh/dragon</url>
+</package>
