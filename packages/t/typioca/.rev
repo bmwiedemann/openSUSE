@@ -7,4 +7,18 @@
     <comment>New package typioca version 2.11.2 is a minimal terminal based typing speed tester</comment>
     <requestid>1180952</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>e835f65be5dc5ae8cbb5590dc8ff84bd</srcmd5>
+    <version>3.0.0</version>
+    <time>1721323165</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.0.0:
+  * chore: bump dependencies
+  * Bump golang.org/x/term from 0.18.0 to 0.22.0 (#157)
+  * Bump github.com/charmbracelet/bubbletea from 0.25.0 to 0.26.6 (#152)
+  * feat: add Dvorak emulation layout (#156)
+  * Add keyboard layout emulation (#154)
+  * add openSUSE install instruction (forwarded request 1188249 from kskarthik)</comment>
+    <requestid>1188253</requestid>
+  </revision>
 </revisionlist>

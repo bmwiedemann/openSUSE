@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jul 17 18:27:21 UTC 2024 - kskarthik@disroot.org
+
+- Update to version 3.0.0:
+  * chore: bump dependencies
+  * Bump golang.org/x/term from 0.18.0 to 0.22.0 (#157)
+  * Bump github.com/charmbracelet/bubbletea from 0.25.0 to 0.26.6 (#152)
+  * feat: add Dvorak emulation layout (#156)
+  * Add keyboard layout emulation (#154)
+  * add openSUSE install instruction
+
+-------------------------------------------------------------------
 Fri Jun 14 12:29:29 UTC 2024 - Sai Karthik Karra <kskarthik@disroot.org>
 
 - Packaging improvements:

@@ -17,8 +17,8 @@
 
 
 Name:           typioca
-Version:        2.11.2
-Release:        1
+Version:        3.0.0
+Release:        0
 Summary:        Minimal terminal based typing speed tester
 License:        MIT
 Group:          Productivity/Text/Utilities
