@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jul 17 16:11:41 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Chromium 126.0.6478.182 (boo#1227979)
+  * CVE-2024-6772: Inappropriate implementation in V8
+  * CVE-2024-6773: Type Confusion in V8
+  * CVE-2024-6774: Use after free in Screen Capture
+  * CVE-2024-6775: Use after free in Media Stream
+  * CVE-2024-6776: Use after free in Audio
+  * CVE-2024-6777: Use after free in Navigation
+  * CVE-2024-6778: Race in DevTools
+  * CVE-2024-6779: Out of bounds memory access in V8
+
+-------------------------------------------------------------------
 Tue Jul  9 10:09:56 UTC 2024 - Callum Farmer <gmbr3@opensuse.org>
 
 - Finalize 126

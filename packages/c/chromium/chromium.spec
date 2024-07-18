@@ -91,7 +91,7 @@
 %define n_suffix %{nil}
 %endif
 Name:           chromium%{n_suffix}
-Version:        126.0.6478.126
+Version:        126.0.6478.182
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -341,13 +341,13 @@ BuildRequires:  pkgconfig(libyuv)
 %endif
 %if %{with qt}
 BuildRequires:  pkgconfig(Qt5Core)
-BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(Qt5Gui)
+BuildRequires:  pkgconfig(Qt5Widgets)
 %endif
 %if %{with qt6}
 BuildRequires:  pkgconfig(Qt6Core)
-BuildRequires:  pkgconfig(Qt6Widgets)
 BuildRequires:  pkgconfig(Qt6Gui)
+BuildRequires:  pkgconfig(Qt6Widgets)
 %endif
 %if %{with system_re2}
 BuildRequires:  pkgconfig(re2) >= 11

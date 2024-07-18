@@ -5036,4 +5036,12 @@ boo#1224178</comment>
     <comment>- Chromium 126.0.6478.126 (boo#1226504, boo#1226205, boo#1226933)</comment>
     <requestid>1186376</requestid>
   </revision>
+  <revision rev="425" vrev="1">
+    <srcmd5>a7c91276e60b4c9b1936b09c82a88199</srcmd5>
+    <version>126.0.6478.182</version>
+    <time>1721323038</time>
+    <user>anag+factory</user>
+    <comment>Chromium 126.0.6478.182 (boo#1227979)</comment>
+    <requestid>1188247</requestid>
+  </revision>
 </revisionlist>
