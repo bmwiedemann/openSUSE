@@ -21,7 +21,7 @@
 %global jit_arches %{ix86} x86_64 ppc64 ppc64le %{aarch64} %{arm} s390x riscv64
 %global debug 0
 %global make make
-%global is_release 0
+%global is_release 1
 %global buildoutputdir build
 # Convert an absolute path to a relative path.  Each symbolic link is
 # specified relative to the directory in which it is installed so that
@@ -34,7 +34,7 @@
 %global featurever      17
 %global interimver      0
 %global updatever       12
-%global buildver        6
+%global buildver        7
 %global openjdk_repo    jdk17u
 %global openjdk_tag     jdk-%{featurever}.%{interimver}.%{updatever}%{?patchver:.%{patchver}}+%{buildver}
 %global openjdk_dir     %{openjdk_repo}-jdk-%{featurever}.%{interimver}.%{updatever}%{?patchver:.%{patchver}}-%{buildver}
