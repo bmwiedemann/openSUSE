@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jul 19 13:59:04 UTC 2024 - aplanas@suse.com
+
+- Update to version 1+git20240719.36c650f:
+  * Remove pcrlock.d if there are too many files
+  * Limit LAST_WORKING_SNAPSHOTS to 3
+
+-------------------------------------------------------------------
 Thu Jul 18 10:05:20 UTC 2024 - aplanas@suse.com
 
 - Update to version 1+git20240718.6fbaad1:
