@@ -4298,6 +4298,7 @@ unsorted:
   - flxmlrpc-devel 
   - fly 
   - fmit 
+  - fmt-10-devel 
   - fmt-9-devel 
   - fmt-devel 
   - fnotifystat 
@@ -4451,6 +4452,10 @@ unsorted:
   - frink 
   - fritzing 
   - fritzing-parts 
+  - frizbee 
+  - frizbee-bash-completion 
+  - frizbee-fish-completion 
+  - frizbee-zsh-completion 
   - frogr 
   - frogr-lang 
   - frozen-bubble 
@@ -12936,7 +12941,8 @@ unsorted:
   - libfmos-devel 
   - libfmos1 
   - libfmt10 
-  - libfmt10-32bit 
+  - libfmt11 
+  - libfmt11-32bit 
   - libfole-devel 
   - libfole1 
   - libfolks-telepathy26 
@@ -23792,6 +23798,7 @@ unsorted:
   - python310-Delorean 
   - python310-Deprecated 
   - python310-Django 
+  - python310-Django4 
   - python310-Dumper 
   - python310-Durus 
   - python310-EasyProcess 
@@ -25386,6 +25393,7 @@ unsorted:
   - python310-injector 
   - python310-installer 
   - python310-intake 
+  - python310-intelhex 
   - python310-interrogate 
   - python310-intervals 
   - python310-intervaltree 
@@ -27400,6 +27408,7 @@ unsorted:
   - python311-Delorean 
   - python311-Deprecated 
   - python311-Django 
+  - python311-Django4 
   - python311-Dumper 
   - python311-Durus 
   - python311-EasyProcess 
@@ -28940,6 +28949,7 @@ unsorted:
   - python311-injector 
   - python311-installer 
   - python311-intake 
+  - python311-intelhex 
   - python311-interrogate 
   - python311-intervals 
   - python311-intervaltree 
@@ -30888,6 +30898,7 @@ unsorted:
   - python312-Delorean 
   - python312-Deprecated 
   - python312-Django 
+  - python312-Django4 
   - python312-Dumper 
   - python312-Durus 
   - python312-EasyProcess 
@@ -32480,6 +32491,7 @@ unsorted:
   - python312-injector 
   - python312-installer 
   - python312-intake 
+  - python312-intelhex 
   - python312-interrogate 
   - python312-intervals 
   - python312-intervaltree 
