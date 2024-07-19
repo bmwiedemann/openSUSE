@@ -94,6 +94,8 @@ Patch0:         hyperkitty-settings.patch
 Patch98:        gl-mr300-add-opengraph-metadata.patch
 # PATCH-FIX-UPSTREAM gl-mr470-introduce-feed-filtering.patch gl#mailman/hyperkitty#470
 Patch99:        gl-mr470-introduce-feed-filtering.patch
+# PATCH-FIX-UPSTREAM gl-mr635-empty_attachment.patch gl#mailman/hyperkitty#635
+Patch100:       gl-mr635-empty_attachment.patch
 #
 BuildRequires:  %{python_module Django >= %{django_min_version} with %python-Django < %{django_max_version}}
 BuildRequires:  %{python_module Whoosh}
