@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jul 18 07:59:15 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Add missing dependency on setuptools
+
+-------------------------------------------------------------------
 Wed Jul  3 14:20:39 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Update to 4.8.0

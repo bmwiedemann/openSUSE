@@ -866,4 +866,12 @@ SPDX format (note that it should CDDL-1.1 if the (c) owner and license steward i
   %{_sysconfdir}/ant.d/junitlauncher</comment>
     <requestid>1171907</requestid>
   </revision>
+  <revision rev="97" vrev="7">
+    <srcmd5>682825e34520648b1f03c70dc73a0cad</srcmd5>
+    <version>1.10.14</version>
+    <time>1721395558</time>
+    <user>anag+factory</user>
+    <comment>Reproducible mar mtimes and javadoc generation</comment>
+    <requestid>1188402</requestid>
+  </revision>
 </revisionlist>

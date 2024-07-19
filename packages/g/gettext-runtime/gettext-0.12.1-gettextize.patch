@@ -1,7 +1,7 @@
 Index: gettext-tools/misc/gettextize.in
 ===================================================================
---- gettext-tools/misc/gettextize.in.orig	2010-06-06 14:49:57.000000000 +0200
-+++ gettext-tools/misc/gettextize.in	2010-12-20 18:47:11.932132562 +0100
+--- a/gettext-tools/misc/gettextize.in.orig	2010-06-06 14:49:57.000000000 +0200
++++ b/gettext-tools/misc/gettextize.in	2010-12-20 18:47:11.932132562 +0100
 @@ -1262,20 +1262,6 @@ if $doit; then
    echo "It is a wrapper around <libintl.h> that implements the configure --disable-nls"
    echo "option."

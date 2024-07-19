@@ -1,7 +1,7 @@
 #
 # spec file for package apcupsd
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -40,6 +40,7 @@ Source6:        %{name}.logrotate
 Source7:        apcupsd-httpd.conf
 Source8:        https://sourceforge.net/projects/apcupsd/files/apcupsd%%20-%%20Stable/%{version}/apcupsd-%{version}.tar.gz.sig
 Source9:        %{name}.keyring
+Source10:       %{name}.firewall
 # PATCH-FIX-OPENSUSE apcupsd-suse.patch sbrabec@suse.cz -- Do not perform halt script alternation on install.
 Patch0:         apcupsd-suse.patch
 # PATCH-FEATURE-OPENSUSE apcupsd-hibernate.patch sbrabec@suse.cz -- Support for hibernation on powerfail.
@@ -48,6 +49,8 @@ Patch2:         apcupsd-hibernate.patch
 Patch11:        apcupsd-3.14.8-systemd.patch
 # PATCH-FIX-OPENSUSE apcupsd-3.14.9-fixgui.patch rhbz#578276 p.drouand@gmail.com -- fix crash in gui
 Patch13:        apcupsd-3.14.9-fixgui.patch
+# PATCH-FIX-OPENSUSE apcupsd-config.patch
+Patch14:        apcupsd-config.patch
 BuildRequires:  apache-rpm-macros
 BuildRequires:  apache2-devel
 BuildRequires:  dos2unix
@@ -66,9 +69,11 @@ Requires(post): grep
 Requires(post): sed
 Recommends:     logrotate
 %{?systemd_requires}
-%if 0%{?suse_version} > 1500
+%if 0%{?sle_version} >= 150600 || 0%{?suse_version} > 1500
 BuildRequires:  util-linux-tty-tools
 Requires:       util-linux-tty-tools
+%else
+Requires:       systemd-sysvinit
 %endif
 %if %{with gapcmon}
 BuildRequires:  update-desktop-files
@@ -136,7 +141,8 @@ cp -a %{SOURCE2} %{SOURCE4} .
 	--with-distname=suse \
 %endif
         %{nil}
-make %{?_smp_mflags}
+# variable V is used in targets.mak for strange purposes, needs to be unset
+%make_build V=''
 
 %install
 %make_install
@@ -174,6 +180,11 @@ install -d %{buildroot}%{_sysconfdir}/logrotate.d
 install -m0644 %{SOURCE6} %{buildroot}%{_sysconfdir}/logrotate.d/%{name}
 install -d %{buildroot}%{_sysconfdir}/apache2/conf.d/
 install -m0644 %{SOURCE7} %{buildroot}%{_sysconfdir}/apache2/conf.d/%{name}.conf
+
+%if 0%{?suse_version} && 0%{?suse_version} <= 1500
+# firewall config
+install -m 644 -D %{SOURCE10} %{buildroot}/%{_sysconfdir}/sysconfig/SuSEfirewall2.d/services/%{name}
+%endif
 
 %pre
 %service_add_pre %{name}.service
@@ -224,6 +235,9 @@ rm -f etc/init.d/apcupsd-early-powerdown
 %config(noreplace) %{_sysconfdir}/%{name}/offbattery
 %config(noreplace) %{_sysconfdir}/logrotate.d/apcupsd
 %config(noreplace) %{_sysconfdir}/%{name}/%{name}.conf
+%if 0%{?suse_version} && 0%{?suse_version} <= 1500
+%config(noreplace) %attr(0644,root,root) %{_sysconfdir}/sysconfig/SuSEfirewall2.d/services/%{name}
+%endif
 %attr(0755,root,root) %{_sysconfdir}/%{name}/apccontrol
 %{_mandir}/man?/*.*
 %{_fillupdir}/sysconfig.%{name}

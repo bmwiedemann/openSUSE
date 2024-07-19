@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jul 11 09:59:18 UTC 2024 - Michael Pujos <pujos.michael@gmail.com>
+
+- removed ProtectKernelTunables=yes from irqbalance.service to
+  fix "Cannot change IRQ %d affinity: Read-only file system" errors.
+  See https://github.com/Irqbalance/irqbalance/issues/308
+
+-------------------------------------------------------------------
 Tue Mar 19 16:52:54 UTC 2024 - trenn@suse.de
 
 - Update to version 1.9.4.0.git+f8b8cdd:

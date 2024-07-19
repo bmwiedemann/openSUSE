@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jul 16 08:42:20 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Use %autosetup
+
+-------------------------------------------------------------------
 Mon Feb 26 14:57:24 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.

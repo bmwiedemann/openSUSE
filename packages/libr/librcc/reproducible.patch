@@ -1,0 +1,33 @@
+From 7278124f0f3f7b894f7649d0cdb433c5a6f6f54a Mon Sep 17 00:00:00 2001
+From: "Bernhard M. Wiedemann" <bwiedemann@suse.de>
+Date: Fri, 20 Jan 2023 11:42:14 +0100
+Subject: [PATCH] Allow to override build date with SOURCE_DATE_EPOCH
+
+in order to make builds reproducible.
+See https://reproducible-builds.org/ for why this is good
+and https://reproducible-builds.org/specs/source-date-epoch/
+for the definition of this variable.
+This date call works with various implementations of date.
+
+Also use UTC to be independent of timezone.
+
+This patch was done while working on reproducible builds for openSUSE.
+---
+ configure.ac | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index 9248faa..451a1c9 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -26,7 +26,9 @@ AC_SUBST(LIBRCC_VERSION_INFO)
+ LIBRCC_CVS=`cat VERSION | sed -e s/.*CVS.*/CVS/`
+ if test "x$LIBRCC_CVS" = "xCVS"; then
+ LIBRCC_CVS=1
+-LIBRCC_CVS_DATE=`date +%y%m%d.%H`
++DATE_FMT="+%y%m%d.%H"
++SOURCE_DATE_EPOCH="${SOURCE_DATE_EPOCH:-$(date +%s)}"
++LIBRCC_CVS_DATE=$(date -u -d "@$SOURCE_DATE_EPOCH" "$DATE_FMT" 2>/dev/null || date -u -r "$SOURCE_DATE_EPOCH" "$DATE_FMT" 2>/dev/null || date -u "$DATE_FMT")
+ else 
+ LIBRCC_CVS=0
+ LIBRCC_CVS_DATE=0

@@ -26,6 +26,7 @@ Group:          Development/Libraries/C and C++
 URL:            https://rusxmms.sourceforge.net
 Source:         https://github.com/RusXMMS/librcc/archive/refs/tags/librcc-%{version}.tar.gz
 Source1:        baselibs.conf
+Patch0:         https://github.com/RusXMMS/librcc/pull/5.patch#/reproducible.patch
 BuildRequires:  aspell-devel
 BuildRequires:  automake
 BuildRequires:  db-devel
@@ -70,7 +71,7 @@ Group:          System/Libraries
 Runtime environment for the LibRCC package.
 
 %prep
-%setup -q -n librcc-librcc-%{version}
+%autosetup -p1 -n librcc-librcc-%{version}
 
 %build
 ./autogen.sh

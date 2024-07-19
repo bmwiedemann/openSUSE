@@ -54,7 +54,7 @@
         <description></description>
     </key>
     <key name="background-uris" type="as">
-        <default>['file:///usr/share/wallpapers/openSUSEdefault/contents/images/1920x1080.jpg']</default>
+        <default>['file:///usr/share/wallpapers/openSUSEdefault/contents/images/5120x3200.png']</default>
         <summary>desktop background picture URIs for workspaces</summary>
         <description>Note that the backend only supports local (file://) URIs.</description>
     </key>

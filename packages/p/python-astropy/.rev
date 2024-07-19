@@ -2156,4 +2156,12 @@
 - Remove upper bound on pytest, no longer required.</comment>
     <requestid>1183096</requestid>
   </revision>
+  <revision rev="55" vrev="2">
+    <srcmd5>c93a294ce35eb10e6bc3abaf63823ce4</srcmd5>
+    <version>6.1.1</version>
+    <time>1721395661</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1188362</requestid>
+  </revision>
 </revisionlist>

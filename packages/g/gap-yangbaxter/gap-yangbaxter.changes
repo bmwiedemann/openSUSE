@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul 18 09:02:56 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.10.6
+  * Do not read static files which do not even exist
+
+-------------------------------------------------------------------
 Tue Jun 18 07:23:15 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.10.5

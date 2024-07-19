@@ -44,6 +44,8 @@ Patch13:        reproducible.patch
 # PATCH-FEATURE bsc#1165138
 Patch14:        0001-msgcat-Add-feature-to-use-the-newest-po-file.patch
 Patch15:        0002-msgcat-Merge-headers-when-use-first.patch
+# PATCH-FIX-UPSTREAM https://lists.gnu.org/archive/html/bug-gettext/2024-07/msg00021.html
+Patch16:        reproducible-jar.patch
 BuildRequires:  automake >= 1.14
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -65,18 +67,7 @@ Java applications. It also includes example code for java, java+awt and
 java+swing.
 
 %prep
-%setup -q -n gettext-%{version}
-%patch -P 0
-%patch -P 1 -p1
-%patch -P 2
-%patch -P 3 -p1
-%patch -P 4
-%patch -P 5
-%patch -P 6 -p1
-%patch -P 11 -p1
-%patch -P 13 -p1
-%patch -P 14 -p1
-%patch -P 15 -p1
+%autosetup -p1 -n gettext-%{version}
 
 %build
 # expect a couple "You should update your `aclocal.m4' by running aclocal."

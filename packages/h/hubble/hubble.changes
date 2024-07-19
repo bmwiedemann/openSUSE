@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Jul 18 18:52:22 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.13.6:
+  * Modify version to 0.13.6
+  * Modify changelog for 0.13.6 release
+  * Bump golang to v1.21.12
+  * chore(deps): update github/codeql-action action to v3.25.12
+  * chore(deps): update all github action dependencies
+  * chore(deps): update all github action dependencies
+  * chore(deps): update all github action dependencies
+  * chore(deps): update github/codeql-action action to v3.25.11
+  * chore(deps): update docker/build-push-action action to v6.2.0
+  * chore(deps): update golang stable
+  * chore(deps): update golang stable
+  * chore(deps): update docker/build-push-action action to v6
+  * chore(deps): update docker.io/library/alpine docker tag to
+    v3.19.2
+  * chore(deps): update golang stable
+  * chore(deps): update golang stable
+  * chore(deps): update docker/build-push-action action to v5.4.0
+  * chore(deps): update all github action dependencies
+  * Prepare for v0.13.6 development
+
+-------------------------------------------------------------------
 Fri Jun 07 19:52:59 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.13.5:

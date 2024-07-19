@@ -548,4 +548,12 @@
 - fix build with changed definition of g_malloc (gulong-&gt;gsize)</comment>
     <requestid>1184162</requestid>
   </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>60edf0e824bfa951654f6d15e4fe9897</srcmd5>
+    <version>1.3.1</version>
+    <time>1721395526</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1188324</requestid>
+  </revision>
 </revisionlist>

@@ -21,7 +21,7 @@
 %global jit_arches %{ix86} x86_64 ppc64 ppc64le %{aarch64} %{arm} s390x riscv64
 %global debug 0
 %global make make
-%global is_release 0
+%global is_release 1
 %global buildoutputdir build
 # Convert an absolute path to a relative path.  Each symbolic link is
 # specified relative to the directory in which it is installed so that
@@ -34,7 +34,7 @@
 %global featurever      21
 %global interimver      0
 %global updatever       4
-%global buildver        6
+%global buildver        7
 %global openjdk_repo    jdk21u
 %global openjdk_tag     jdk-%{featurever}%{?updatever:.%{interimver}.%{updatever}}%{?patchver:.%{patchver}}+%{buildver}
 %global openjdk_dir     %{openjdk_repo}-jdk-%{featurever}%{?updatever:.%{interimver}.%{updatever}}%{?patchver:.%{patchver}}-%{buildver}
@@ -154,6 +154,7 @@ Patch4:         PStack-808293.patch
 Patch5:         multiple-pkcs11-library-init.patch
 # Fix instantiation of VM on ZERO
 Patch8:         zero-ranges.patch
+Patch9:         reproducible-javadoc-timestamp.patch
 # From icedtea: Increase default memory limits
 Patch10:        memory-limits.patch
 Patch11:        reproducible-properties.patch
@@ -389,6 +390,7 @@ rm -rvf src/java.desktop/share/native/liblcms/lcms2*
 %patch -P 4 -p1
 %patch -P 5 -p1
 %patch -P 8 -p1
+%patch -P 9 -p1
 %patch -P 10 -p1
 %patch -P 11 -p1
 %patch -P 12 -p1

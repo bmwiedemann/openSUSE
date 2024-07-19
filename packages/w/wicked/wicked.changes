@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu Jul 18 14:32:55 UTC 2024 - Clemens Famulla-Conrad <cfamullaconrad@suse.com>
+
+- Update to version 0.6.76
+  - compat-suse: warn user and create missing parent config of
+    infiniband children (gh#openSUSE/wicked#1027)
+  - client: fix origin in loaded xml-config with obsolete port
+    references but missing port interface config, causing a
+    no-carrier of master (bsc#1226125)
+  - ipv6: fix setup on ipv6.disable=1 kernel cmdline (bsc#1225976)
+  - wireless: add frequency-list in station mode (jsc#PED-8715)
+  - client: fix crash while hierarchy traversing due to loop in
+    e.g. systemd-nspawn containers (bsc#1226664)
+  - man: add supported bonding options to ifcfg-bonding(5) man page
+    (gh#openSUSE/wicked#1021)
+  - arputil: Document minimal interval for getopts (gh#openSUSE/wicked#1019)
+  - man: (re)generate man pages from md sources (gh#openSUSE/wicked#1018)
+  - client: warn on interface wait time reached (gh#openSUSE/wicked#1017)
+  - compat-suse: fix dummy type detection from ifname to not cause
+    conflicts with e.g. correct vlan config on dummy0.42 interfaces
+    (gh#openSUSE/wicked#1016)
+  - compat-suse: fix infiniband and infiniband child type detection 
+    from ifname (gh#openSUSE/wicked#1015)
+- Removed patches included in the source archive:
+  [- 0001-ifreload-pull-UP-again-on-master-lower-changes-bsc1224100.patch]
+  [- 0002-increase-arp-retry-attempts-on-sending-bsc1218668.patch]
+
+-------------------------------------------------------------------
 Tue Jun 11 11:22:19 UTC 2024 - Marius Tomaschewski <mt@suse.com>
 
 - arp: increase arp-send retry value to avoid address configuration

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jul 18 12:15:00 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * 0008-Reproducible-builds-constant-timestamp-for-pom.prope.patch
+    + use reproducible timestamp when post-processing jar files and
+      adding there the pom.properties file.
+
+-------------------------------------------------------------------
 Wed Oct  4 07:18:58 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Added patches:

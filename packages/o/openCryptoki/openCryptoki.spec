@@ -181,8 +181,8 @@ rm -f %{buildroot}%{_libdir}/opencryptoki/methods
 # autobuild:/work/cd/lib/misc/group
 # openCryptoki    pkcs11:x:64:
 # openCryptoki    pkcsslotd:x:64:
-%{_sbindir}/groupadd -g %{pkcs11_group_id} -r %{pkcs_group} 2>/dev/null || getent group %{pkcs_group} 2>/dev/null || true
-%{_sbindir}/useradd -g %{pkcs11_group_id} -r pkcsslotd -s /sbin/nologin -d /run/opencryptoki   2>/dev/null || getent passwd pkcsslotd 2>/dev/null || true
+getent group %{pkcs_group} 2>/dev/null || %{_sbindir}/groupadd -g %{pkcs11_group_id} -r %{pkcs_group} 2>/dev/null || true
+getent passwd pkcsslotd 2>/dev/null || %{_sbindir}/useradd -g %{pkcs11_group_id} -r pkcsslotd -s /sbin/nologin -d /run/opencryptoki 2>/dev/null || true
 %{_sbindir}/usermod -a -G %{pkcs_group} root
 
 %preun

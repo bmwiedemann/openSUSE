@@ -512,4 +512,12 @@
     <comment>- Update to release 10.2.1</comment>
     <requestid>1136875</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>283f697aab6555b34e7d767119ccca70</srcmd5>
+    <version>11.0.1</version>
+    <time>1721395502</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 11.0.1</comment>
+    <requestid>1187367</requestid>
+  </revision>
 </revisionlist>

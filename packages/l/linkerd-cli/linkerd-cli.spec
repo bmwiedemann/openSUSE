@@ -19,7 +19,7 @@
 %define linkerd_executable_name linkerd
 
 Name:           linkerd-cli
-Version:        2.14.10
+Version:        2.15
 Release:        0
 Summary:        CLI for the linkerd service mesh for Kubernetes
 License:        Apache-2.0
@@ -79,7 +79,7 @@ go build \
    -mod=vendor \
    -tags prod \
    -buildmode=pie \
-   -ldflags="-s -w -X github.com/linkerd/linkerd2/pkg/version.Version=stable-%{version}" \
+   -ldflags="-X github.com/linkerd/linkerd2/pkg/version.Version=stable-%{version}" \
    -o bin/linkerd-cli ./cli/
 
 %install

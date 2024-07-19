@@ -17,7 +17,7 @@
 
 
 Name:           ollama
-Version:        0.2.5
+Version:        0.2.6
 Release:        0
 Summary:        Tool for running AI models on-premise
 License:        MIT
@@ -28,17 +28,16 @@ Source2:        ollama.service
 Source3:        %{name}-user.conf
 Patch0:         enable-lto.patch
 BuildRequires:  cmake >= 3.24
+BuildRequires:  git
+BuildRequires:  sysuser-tools
+BuildRequires:  zstd
+BuildRequires:  golang(API) >= 1.22
+%sysusers_requires
 %if 0%{?sle_version} == 150600
 BuildRequires:  gcc12-c++
 %else
 BuildRequires:  gcc-c++ >= 11.4.0
 %endif
-BuildRequires:  git
-BuildRequires:  sysuser-tools
-BuildRequires:  zstd
-BuildRequires:  golang(API) >= 1.22
-
-%{sysusers_requires}
 
 %description
 Ollama is a tool for running AI models on one's own hardware.
@@ -67,16 +66,19 @@ export GOFLAGS="-mod=vendor"
 export OLLAMA_SKIP_PATCHING=1
 
 go generate ./...
-go build .
+go build -v .
 
 %install
 install -D -m 0755 %{name} %{buildroot}/%{_bindir}/%{name}
 install -D -m 0644 %{SOURCE2} %{buildroot}%{_unitdir}/%{name}.service
 install -D -m 0644 %{SOURCE3} %{buildroot}%{_sysusersdir}/%{name}-user.conf
-install -d %{buildroot}/var/lib/%{name}
+install -d %{buildroot}%{_localstatedir}/lib/%{name}
 
-mkdir -p "%buildroot/%_docdir/%name"
-cp -Ra docs/* "%buildroot/%_docdir/%name"
+mkdir -p "%{buildroot}/%{_docdir}/%{name}"
+cp -Ra docs/* "%{buildroot}/%{_docdir}/%{name}"
+
+%check
+go test ./...
 
 %pre -f %{name}.pre
 %service_add_pre %{name}.service
@@ -97,6 +99,6 @@ cp -Ra docs/* "%buildroot/%_docdir/%name"
 %{_bindir}/%{name}
 %{_unitdir}/%{name}.service
 %{_sysusersdir}/%{name}-user.conf
-%attr(-, ollama, ollama) /var/lib/%{name}
+%attr(-, ollama, ollama) %{_localstatedir}/lib/%{name}
 
 %changelog

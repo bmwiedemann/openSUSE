@@ -46,7 +46,7 @@ systems and DOS.
 
 %build
 autoreconf -fiv
-CFLAGS="%{optflags} -DDATADIR='\"%{_datadir}/bb/\"'" \
+CFLAGS="%{optflags} -fpermissive -DDATADIR='\"%{_datadir}/bb/\"'" \
 %configure
 %make_build
 

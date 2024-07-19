@@ -1,7 +1,7 @@
 #
 # spec file for package redland
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -102,6 +102,7 @@ including contexts.
 
 %build
 autoconf
+%global optflags %{optflags} -D_GNU_SOURCE
 # only compile bdb backend as it seems to be the recommended one?
 %configure --enable-release --with-raptor=system --with-rasqal=system \
   --with-threestore=no --with-sqlite=3 \

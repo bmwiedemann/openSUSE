@@ -1,4 +1,67 @@
 -------------------------------------------------------------------
+Wed Jul 17 07:00:25 UTC 2024 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Update to 3.6.0
+- Remove mod-script-pipe-disable-rpath.patch - no need anymore.
+
+Major changes
+
+  * Master effects
+  - Audacity now features master effects. Master effects are effects
+    which apply to the entire project at once. More information can
+    be found at Using master effects & realtime effects.
+
+  * New compressor and limiter
+  - A new compressor and limiter has been added, replacing the 
+    previous versions. A gain reduction history has been added to
+    these effects when they're used as a realtime effect.
+  - Factory Presets suitable for a wide range of use cases for these
+    effects have been provided by Vladislav Isaev and Marek Iwaszkiewicz,
+    available via the Presets & Settings button.
+
+  * New themes
+  - Audacity now features new and improved dark and light themes.
+    You can switch between themes via Preferences -> Interface.
+  - The theme previously used still is around as the Classic theme,
+    and themes even older than that can be optionally installed as
+    custom themes[1] from here[2].
+    Updated instructions on creating custom themes can be found here[3].
+    [1]https://support.audacityteam.org/basics/customizing-audacity/using-themes#installing-custom-themes
+    [2]https://github.com/LWinterberg/classicTheme
+    [3]https://audacity.gitbook.io/dev/scripting/creating-custom-themes
+
+  * Increased performance
+  - Audacity is now quite a bit snappier than before, especially when
+    working on larger projects and on larger screens.
+
+Other changes
+
+  * Added FFmpeg 7 support.
+  * You now can paste audio files into Audacity using Ctrl+V.
+  * Alternative waveform colors are now themeable by custom themes.
+  * Removed the track name overlay preference and the "blend themes"
+    preference.
+  * Scripting: Added GetInfo: Type=Selection. (Thanks, Jonatã Bolzan Loss!)
+  * Added an Extras > Export > Export Selected Audio option.
+  * Import Raw: Added support for offsets larger than 2 GB.
+  * Redesigned the "what's new" dialog.
+  * Added an option to the View menu to show/hide RMS in waveforms.
+  * OpenVINO AI effects can now be downloaded from audacityteam.org/download/openvino/
+
+Bugfixes
+
+  * #6340 When recording to a new track, the track is now scrolled
+    back into view again.
+  * #3825 The macro manager no longer shows parameterless actions
+    as editable. (Thanks, Davi Nonnenmacher!)
+  * #6138 Pressing Esc in some preference dialogs no longer saves them.
+  * #4504 Fixed stray orange lines in the high contrast theme.
+  * #5626 Fixed the quality slider for Ogg export on Linux. (Thanks, Devpriya Nalin!)
+  * #6875 Fixed a bug which could open a project with the wrong sample rate.
+  * Various compiler warning fixes and OpenBSD build fixes. (Thanks, Brad Smith!)
+
+
+-------------------------------------------------------------------
 Tue Apr 30 05:53:46 UTC 2024 - Konstantin Voinov <kv@kott.no-ip.biz>
 
 - Update VST3SDK to latest 3.7.11_build10

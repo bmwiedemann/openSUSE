@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jul 12 19:50:55 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to 661:
+  * fix crash - buffer overflow by one in fexpand
+  * fix free(): double free detected in tcache 2
+  * fix segmentation fault on line-num-width & -N
+
+-------------------------------------------------------------------
 Mon May 27 14:43:39 UTC 2024 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Update to 656:

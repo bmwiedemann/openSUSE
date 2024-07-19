@@ -15,10 +15,11 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define bin wormhole-rs
 
 Name:           magic-wormhole.rs
-Version:        0.6.1
+Version:        0.7.0
 Release:        0
 Summary:        Rust implementation of Magic Wormhole
 License:        EUPL-1.2
@@ -38,6 +39,7 @@ Rust implementation of Magic Wormhole, with new features and enhancements such a
 Summary:        Bash Completion for %{name}
 Group:          System/Shells
 Supplements:    (%{name} and bash-completion)
+Requires:       %{name} = %{version}
 Requires:       bash-completion
 BuildArch:      noarch
 
@@ -48,6 +50,7 @@ Bash command-line completion support for %{name}.
 Summary:        Fish Completion for %{name}
 Group:          System/Shells
 Supplements:    (%{name} and fish)
+Requires:       %{name} = %{version}
 Requires:       fish
 BuildArch:      noarch
 
@@ -58,6 +61,7 @@ Fish command-line completion support for %{name}.
 Summary:        Zsh Completion for %{name}
 Group:          System/Shells
 Supplements:    (%{name} and zsh)
+Requires:       %{name} = %{version}
 Requires:       zsh
 BuildArch:      noarch
 

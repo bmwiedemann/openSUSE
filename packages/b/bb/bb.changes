@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul 18 16:11:46 UTC 2024 - Martin Jambor <mjambor@suse.com>
+
+- Build with -fpermissive to work around various C99 violations which
+  lead to compiler errors with GCC 14 by default [boo#1228121]
+
+-------------------------------------------------------------------
 Mon Apr  8 14:39:57 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Use full URL for source.

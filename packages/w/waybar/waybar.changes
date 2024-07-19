@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Thu Jul 18 00:50:21 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Update to 0.10.4
+  * Add config option to select UPower device based on device
+    model.
+  * Add GitHub action for nightly Docker image building
+  * add hide-empty-text option to hide module whenever output is
+    empty but format is not
+  * Add hotplug detection of bluetooth controllers
+  * Adding the ability to have dropdown menu for modules
+  * Add keyboard debug info to hyprland language module
+  * AModule: Cursor config option
+  * Cava. $XDG_CONFIG_HOME validation
+  * cava bump: 0.10.2
+  * chore: update meson build command in readme
+  * clang-tidy fixes in the privacy module
+  * Do not try to strcmp a variable that may be a null-pointer
+  * Enable using capture groups in window-rewrite
+  * feat: Toggle drawer state
+  * change layer for mode invisible to nullopt
+  * Fix Clock. Tooltip calendar text overflows(#2240)
+  * Fix device list not being updated on selecting new bluetooth
+    controller
+  * fix: display titles with '&' correctly
+  * Fix docker image build github action
+  * fix example in manpage for pulseaudio/slider
+  * Fix format replacement names
+  * Fix hyprland/language events not working with keyboard names
+    with commas in them
+  * fix mpris: hide on current player vanished
+  * fix privacy: consider only configured modules
+  * fix: taskbar not applying empty class on empty
+  * hyprland: disable modules instead of rendering empty
+  * (hyprland) fix crash when failed to parse IPC message
+  * hyprland: refactor and cleanup
+  * hyprland/window: fix crash when no return from socket
+  * Hyprland/Workspaces: Added option to hide non-visible special
+    workspaces
+  * hyprland/workspaces: remove deprecated property
+  * modules/battery: Deprioritize capacity /sys value for battery
+    calculation if other methods are available
+  * modules/hyprland/backend: handle empty socket response
+  * modules/hyprland/backend: use /tmp
+  * modules/hyprland/workspace: ignore empty window-rewrite
+  * network: add bssid format replacement
+  * Organize tests and start Hyprland testing
+  * pulseaudio: Consider ignored sinks never running
+  * Support for muted icons for pulseaudio devices/ports
+  * sway/workspaces: Correct behavior when "current-only" is set
+  * sway/workspaces: remove deprecated field and ignore empty
+    rewrite rules
+  * temperature: allow hwmon-path-abs as array
+  * (temperature) fix clang-tidy lint .
+  * treewide: clang-tidy
+  * treewide: meson deprecation and freebsd fixes
+  * Upower. Fix segmentation fault
+  * Upower refactoring
+  * workaround for icons not rendered for apps existing before
+    waybar launch
+
+-------------------------------------------------------------------
 Tue May  7 02:56:52 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Update to 0.10.3

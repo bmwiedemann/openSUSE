@@ -120,4 +120,22 @@
 - Update to version 0.2.0:</comment>
     <requestid>1187407</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>3e96d9d7e53a6024ae40fcdd7f0c8f39</srcmd5>
+    <version>0.2.6</version>
+    <time>1721395671</time>
+    <user>anag+factory</user>
+    <comment>- Fixed issue with shared libraries 
+
+- Added %check section
+- Use -v when building 
+- Update to version 0.2.6:
+  * New models: MathΣtral is a 7B model designed for math 
+    reasoning and scientific discovery by Mistral AI.
+  * Fixed issue where uppercase roles such as USER would no longer
+    work in the chat endpoints
+  * Fixed issue where empty system message would be included in the
+    prompt</comment>
+    <requestid>1188404</requestid>
+  </revision>
 </revisionlist>

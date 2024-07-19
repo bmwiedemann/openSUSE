@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Jul 17 08:39:26 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2024.6.1
+  * Pass 7486 tests.
+  * Fix segfault in sperr_decode.
+  * Fix segfault when strided-decoding into buffers with unexpected
+    shapes (#98).
+  * Fix jpeg2k_encoder output buffer too small (#101).
+  * Add PCODEC codec based on pcodec library.
+  * Support NumPy 2.
+- Drop skip-rare-codecs.patch, restore and update
+  imagecodecs_distributor_setup.py
+
+-------------------------------------------------------------------
 Mon Mar 18 19:45:10 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - replace imagecodecs_distributor_setup.py with

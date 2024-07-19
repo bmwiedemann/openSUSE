@@ -15,4 +15,16 @@
     <comment></comment>
     <requestid>1173207</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>4add399d6792f33a1c72ea6d67eea5a0</srcmd5>
+    <version>0.4.15</version>
+    <time>1721395616</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.4.15:
+  * fix mistake
+- update to 0.4.11:
+  * update translations
+  * Remove extra space in bottles.vala (forwarded request 1188311 from rrahl0)</comment>
+    <requestid>1188312</requestid>
+  </revision>
 </revisionlist>

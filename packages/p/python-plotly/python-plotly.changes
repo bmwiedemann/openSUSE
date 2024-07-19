@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jul 18 08:19:01 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Revert restriction. I created the patch for a reason. This one
+  does not even require numpy for runtime.
+
+-------------------------------------------------------------------
+Wed Jul 17 04:00:42 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Restrict numpy to < 2 for now. 
+
+-------------------------------------------------------------------
 Sun Jun  2 14:39:59 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Build from github archive with obs-service-node_modules and

@@ -1,0 +1,51 @@
+From 586901a3aff9fd6885df1913a6a6d03f71a5037d Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Fridrich=20=C5=A0trba?= <fridrich.strba@bluewin.ch>
+Date: Thu, 18 Jul 2024 12:30:13 +0200
+Subject: [PATCH 3/3] Reproducible javadoc: notimestamp option and some
+ auto-detection
+
+---
+ .../fedoraproject/xmvn/mojo/JavadocMojo.java  | 20 +++++++++++++++++++
+ 1 file changed, 20 insertions(+)
+
+diff --git a/xmvn-mojo/src/main/java/org/fedoraproject/xmvn/mojo/JavadocMojo.java b/xmvn-mojo/src/main/java/org/fedoraproject/xmvn/mojo/JavadocMojo.java
+index 644c3930..48f3a930 100644
+--- a/xmvn-mojo/src/main/java/org/fedoraproject/xmvn/mojo/JavadocMojo.java
++++ b/xmvn-mojo/src/main/java/org/fedoraproject/xmvn/mojo/JavadocMojo.java
+@@ -102,6 +102,12 @@ public class JavadocMojo
+     @Parameter( property = "xmvn.javadoc.ignoreJPMS" )
+     private boolean ignoreJPMS;
+ 
++    @Parameter( defaultValue = "${project.build.outputTimestamp}" )
++    protected String outputTimestamp;
++
++    @Parameter( property = "notimestamp", defaultValue = "false" )
++    private boolean notimestamp;
++
+     private List<String> options = new ArrayList<>();
+ 
+     private static String quoted( Object obj )
+@@ -372,6 +378,20 @@ public class JavadocMojo
+         addOpt( "-docencoding", docencoding, "UTF-8" );
+         addOpt( "-doctitle", "Javadoc for package XXX" );
+ 
++        if ( !notimestamp && outputTimestamp != null && outputTimestamp.length() > 1 )
++        {
++            notimestamp = true;
++        }
++        if ( !notimestamp && System.getenv( "SOURCE_DATE_EPOCH" ) != null )
++        {
++            notimestamp = true;
++        }
++        if ( notimestamp )
++        {
++            addOpt( "-notimestamp" );
++        }
++
++
+         if ( !addOpt( "--release", release ) )
+         {
+             addOpt( "-source", source );
+-- 
+2.45.2
+

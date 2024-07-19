@@ -19,7 +19,7 @@
 %bcond_without  test
 Name:           hare
 Release:        0
-Version:        0.24.0
+Version:        0.24.2
 Summary:        Hare system programming language
 Group:          Development/Tools/Building
 License:        MPL-2.0
@@ -27,10 +27,6 @@ URL:            https://harelang.org
 Source0:        https://git.sr.ht/~sircmpwn/hare/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        %{name}-rpmlintrc
 Source2:        README-suse-maint.md
-# PATCH-FIX-UPSTREAM riscv64-correct-comments.patch mcepl@suse.com
-# Fixes: https://lists.sr.ht/~sircmpwn/hare-users/%3CD18FD2EPPRY2.225EG4C0M57O4@cepl.eu%3E
-# Patch-from: https://git.sr.ht/~sircmpwn/hare/commit/80e45e4d931a
-Patch0:         riscv64-correct-comments.patch
 BuildRequires:  binutils
 BuildRequires:  gcc
 # Hare and the HareC compiler should have the same version

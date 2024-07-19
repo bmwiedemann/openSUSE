@@ -220,4 +220,12 @@ This should fix ERROR: download_files is configured to fail when the upstream fi
   * Allow compress bilevel images with deflate, LZMA, and Zstd.</comment>
     <requestid>1183924</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>cbaec386d890f92f13d167b9bd3cc753</srcmd5>
+    <version>2024.6.18</version>
+    <time>1721395581</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1188318</requestid>
+  </revision>
 </revisionlist>

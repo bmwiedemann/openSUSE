@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jul 18 05:42:22 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.15:
+  major update, see the release announcement
+  https://linkerd.io/2024/02/21/announcing-linkerd-2.15/
+
+-------------------------------------------------------------------
+Thu Apr 18 07:29:07 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- do not strip aka remove -s -w ldflags
+
+-------------------------------------------------------------------
 Tue Feb 20 20:27:50 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.14.10:

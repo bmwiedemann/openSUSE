@@ -28,6 +28,7 @@ Source:         https://files.pythonhosted.org/packages/source/d/django-auth-lda
 BuildRequires:  %{python_module Django >= 2.2}
 BuildRequires:  %{python_module ldap >= 3.1}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros

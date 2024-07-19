@@ -144,7 +144,7 @@ BuildRequires:  %{python_module pytest-mpl}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module sgp4 >= 2.3}
-BuildRequires:  %{python_module skyfield >= 1.20 if %python-base < 3.11}
+BuildRequires:  %{python_module skyfield}
 BuildRequires:  %{python_module threadpoolctl}
 # /SECTION
 %endif

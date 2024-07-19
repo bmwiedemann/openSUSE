@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package javapackages-tools
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -59,6 +59,8 @@ Patch7:         0005-Interpolate-properties-also-in-the-current-artifact.patch
 Patch8:         0006-Test-variable-expansion-in-artifactId.patch
 #PATCH-FIX-UPSTREAM: test gracious handling of <relativePath/> construct
 Patch9:         0007-Test-that-we-don-t-bomb-on-relativePath.patch
+#PATCH-FIX-UPSTREAM: make the pom.properties have reproducible timestamp
+Patch10:        0008-Reproducible-builds-constant-timestamp-for-pom.prope.patch
 BuildRequires:  asciidoc
 BuildRequires:  fdupes
 BuildRequires:  perl

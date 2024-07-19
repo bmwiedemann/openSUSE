@@ -23,27 +23,3 @@ you should:
   hibernation in all situations.
 - Use YaST Sysconfig editor and set
   Hardware->UPS->APCUPSD_POWERFAIL_BEHAVIOR to "hibernate".
-
-
-Environment with possible service timeouts
-
-In some environments, there is no guarantee, that the machine will
-correctly shut down, either because other machines providing critical
-services are already down or because some services (e. g. squid) are
-stopping too long and battery power is not sufficient. In this case,
-you can prefer incorrect but fast shutdown.
-
-To fix this problem, you need to do:
-
-- Copy apcupsd-early-powerdown script to your /etc/init.d/ directory.
-
-- Edit following lines:
-
-  Replace "FIXME scripts which should not stop before powerdown" by an
-  appropriate init script list.
-
-  Replace "FIXME scripts which should stop before powerdown" by an
-  appropriate init script list.
-
-- Start YaST Runlevel Editor and enable this meta-service in
-  runlevels, where you want to apply early shutdown.

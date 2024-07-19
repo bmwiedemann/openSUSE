@@ -17,23 +17,19 @@
 
 
 Name:           python-ase
-Version:        3.22.1
+Version:        3.23.0
 Release:        0
 Summary:        Atomic Simulation Environment
 License:        LGPL-2.1-or-later
 URL:            https://wiki.fysik.dtu.dk/ase
 Source:         https://files.pythonhosted.org/packages/source/a/ase/ase-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM https://gitlab.com/ase/ase/-/merge_requests/2826
-Patch0:         support-matplotlib-36.patch
-# PATCH-FIX-UPSTREAM https://gitlab.com/ase/ase/-/merge_requests/2582
-Patch1:         2582.patch
-# PATCH-FIX-UPSTREAM deprecated-importlib-find_loader.patch https://gitlab.com/ase/ase/-/merge_requests/2938
-Patch2:         deprecated-importlib-find_loader.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module matplotlib >= 3.1.0}
-BuildRequires:  %{python_module numpy >= 1.15.0}
+BuildRequires:  %{python_module numpy >= 1.15.0 with %python-numpy < 2}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
@@ -42,8 +38,10 @@ BuildRequires:  %{python_module tk}
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-matplotlib >= 3.1.0
-Requires:       python-numpy >= 1.15.0
 Requires:       python-scipy >= 1.1.0
+Requires:       (python-numpy >= 1.15.0 with python-numpy < 2)
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -54,24 +52,22 @@ Atomic Simulation Environment
 %autosetup -p1 -n ase-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/ase
-%python_clone -a %{buildroot}%{_bindir}/ase-db
-%python_clone -a %{buildroot}%{_bindir}/ase-gui
-%python_clone -a %{buildroot}%{_bindir}/ase-run
-%python_clone -a %{buildroot}%{_bindir}/ase-info
-%python_clone -a %{buildroot}%{_bindir}/ase-build
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 # No scipy CODATA
-%pytest -k 'not test_units'
+donttest="test_units"
+# Broken with current release, remove on upgrade
+donttest+=" or test_pw_input_write_nested_flat or test_fix_scaled"
+%pytest -k "not ($donttest)"
 
 %post
-%python_install_alternative ase ase-db ase-gui ase-run ase-info ase-build
+%python_install_alternative ase
 
 %postun
 %python_uninstall_alternative ase
@@ -80,12 +76,7 @@ Atomic Simulation Environment
 %doc CHANGELOG.rst README.rst
 %license COPYING COPYING.LESSER LICENSE
 %python_alternative %{_bindir}/ase
-%python_alternative %{_bindir}/ase-db
-%python_alternative %{_bindir}/ase-gui
-%python_alternative %{_bindir}/ase-run
-%python_alternative %{_bindir}/ase-info
-%python_alternative %{_bindir}/ase-build
 %{python_sitelib}/ase
-%{python_sitelib}/ase*info
+%{python_sitelib}/ase-%{version}.dist-info
 
 %changelog

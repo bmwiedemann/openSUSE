@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Jul 10 18:07:21 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 11.0.1
+  * Added fmt/base.h which provides a subset of the API with
+    minimal include dependencies and enough functionality to
+    replace all uses of the printf family of functions.
+  * Improved integration with stdio in fmt::print, enabling
+    direct writes into a C stream buffer in common cases.
+  * fmt::format_to no longer exceeds buffers, instead it will
+    truncate.
+  * Added formatters for std::{expected,complex,type_info},
+    std::chrono::{day,month,year,year_month_day}.
+
+-------------------------------------------------------------------
 Thu Jan  4 13:55:11 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 10.2.1

@@ -159,4 +159,12 @@
     <comment>Fix for building with new maven-plugin-tools</comment>
     <requestid>1174252</requestid>
   </revision>
+  <revision rev="21" vrev="9">
+    <srcmd5>0f7709874a3ffdc9a477627b90de3347</srcmd5>
+    <version>4.2.0</version>
+    <time>1721395667</time>
+    <user>anag+factory</user>
+    <comment>Reproducible javadoc timestamps in xmvn-mojo</comment>
+    <requestid>1188393</requestid>
+  </revision>
 </revisionlist>

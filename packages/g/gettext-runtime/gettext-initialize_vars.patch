@@ -1,7 +1,7 @@
 Index: gettext-tools/gnulib-lib/gl_anylinked_list2.h
 ===================================================================
---- gettext-tools/gnulib-lib/gl_anylinked_list2.h.orig	2010-05-24 11:42:37.000000000 +0200
-+++ gettext-tools/gnulib-lib/gl_anylinked_list2.h	2010-12-20 18:47:11.981132438 +0100
+--- a/gettext-tools/gnulib-lib/gl_anylinked_list2.h.orig	2010-05-24 11:42:37.000000000 +0200
++++ b/gettext-tools/gnulib-lib/gl_anylinked_list2.h	2010-12-20 18:47:11.981132438 +0100
 @@ -34,6 +34,12 @@
  # define ASYNCSAFE(type)
  #endif

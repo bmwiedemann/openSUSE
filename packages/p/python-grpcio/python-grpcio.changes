@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Jul 17 10:56:55 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.65.0:
+  * [Python O11y] Implement CSM observability for Python
+    (gh#grpc/grpc#36557).
+  * [Python AIO] Return EOF from UnaryStreamCall.read() as
+    documented (gh#grpc/grpc#36660).
+  * [Python Otel] Deprecate target_attribute_filter
+    (gh#grpc/grpc#36697).
+  * [Python Server] Remove abstractmethod notation for
+    add_registered_method_handlers (gh#grpc/grpc#36684).
+- Drop python-grpcio-cython3-compat.patch: upstreamed.
+- Rebase xxhash-avoid-armv6-unaligned-access.patch and
+  xxhash-ppc64le-gcc7.patch to apply with -p1 from top level dir,
+  for easier maintenance.
+
+-------------------------------------------------------------------
 Sun Apr 21 16:12:45 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.62.2:

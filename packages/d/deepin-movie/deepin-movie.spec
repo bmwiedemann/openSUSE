@@ -1,7 +1,7 @@
 #
 # spec file for package deepin-movie
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,10 +24,10 @@
 %define sover 0_1
 
 Name:           deepin-movie
-Version:        5.10.8
+Version:        6.0.8
 Release:        0
 Summary:        Deepin Video Players
-License:        GPL-3.0-or-later AND OpenSSL
+License:        GPL-3.0-or-later
 Group:          Productivity/Multimedia/Video/Players
 URL:            https://github.com/linuxdeepin/deepin-movie-reborn
 Source:         https://github.com/linuxdeepin/deepin-movie-reborn/archive/%{version}/%{name}-reborn-%{version}.tar.gz
@@ -56,6 +56,7 @@ BuildRequires:  pkgconfig(Qt5Svg)
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(Qt5X11Extras)
 BuildRequires:  pkgconfig(Qt5Gui)
+BuildRequires:  pkgconfig(Qt5Xml)
 BuildRequires:  pkgconfig(dtkcore) >= 5.0.0
 BuildRequires:  pkgconfig(dtkgui) >= 5.0.0
 BuildRequires:  pkgconfig(dtkwidget) >= 5.0.0
@@ -63,9 +64,6 @@ BuildRequires:  pkgconfig(dvdnav)
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(gsettings-qt)
 BuildRequires:  pkgconfig(libavcodec)
-BuildRequires:  pkgconfig(libavformat)
-BuildRequires:  pkgconfig(libavresample)
-BuildRequires:  pkgconfig(libavutil)
 BuildRequires:  pkgconfig(libffmpegthumbnailer)
 BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(libpulse-simple)
@@ -139,8 +137,8 @@ sed -i 's/MPV_EVENT_TRACKS_CHANGED/MP_EVENT_TRACKS_CHANGED/g' src/backends/mpv/m
 
 %files
 %defattr(-,root,root,-)
-%doc README.md HACKING.md CHANGELOG.md
-%license LICENSE LICENSE.OpenSSL
+%doc README.md README.zh_CN.md HACKING.md CHANGELOG.md
+%license LICENSE
 %{_bindir}/%{name}
 %{_datadir}/%{name}
 %{_datadir}/deepin-manual/manual-assets/application/%{name}
@@ -150,6 +148,7 @@ sed -i 's/MPV_EVENT_TRACKS_CHANGED/MP_EVENT_TRACKS_CHANGED/g' src/backends/mpv/m
 %dir %{_datadir}/icons/hicolor/scalable/apps
 %{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
 %{_datadir}/glib-2.0/schemas/com.deepin.deepin-movie.gschema.xml
+%{_datadir}/dbus-1/services/com.deepin.movie.service
 
 %files -n libdmr%{sover}
 %defattr(-,root,root)

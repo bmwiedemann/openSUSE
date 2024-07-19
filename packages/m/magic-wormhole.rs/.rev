@@ -7,4 +7,12 @@
     <comment>This is the CLI version of warp and is even the CLI that powers it. I want to maintain this in factory as well.</comment>
     <requestid>1177179</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>4e565646c58f39bd6114b15b0e0d1cac</srcmd5>
+    <version>0.7.0</version>
+    <time>1721395610</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1188278</requestid>
+  </revision>
 </revisionlist>

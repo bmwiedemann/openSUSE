@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul 18 18:56:19 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.29.2:
+  * Bump kubectl and other binaries. Fix CVEs (#4401) (#4403)
+
+-------------------------------------------------------------------
 Wed Jul 10 19:13:18 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.29.1:

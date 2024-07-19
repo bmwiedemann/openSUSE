@@ -26,8 +26,9 @@ License:        Apache-2.0
 Group:          Development/Tools/Building
 URL:            https://fedora-java.github.io/xmvn/
 Source0:        https://github.com/fedora-java/%{parent}/releases/download/%{version}/%{parent}-%{version}.tar.xz
-Patch0:         UUID.patch
-Patch1:         0001-Do-not-leave-a-stray-options-file-in-the-generated-j.patch
+Patch0:         0001-Do-not-leave-a-stray-options-file-in-the-generated-j.patch
+Patch1:         0002-Make-metadata-UUIDs-reproducible-if-SOURCE_DATE_EPOC.patch
+Patch2:         0003-Reproducible-javadoc-notimestamp-option-and-some-aut.patch
 BuildRequires:  %{parent}-api = %{version}
 BuildRequires:  %{parent}-core = %{version}
 BuildRequires:  fdupes

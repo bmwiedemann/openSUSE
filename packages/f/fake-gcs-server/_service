@@ -1,5 +1,5 @@
 <services>
-  <service name="go_modules" mode="disabled">
+  <service name="go_modules" mode="manual">
        <param name="compression">xz</param>
   </service>
 </services>

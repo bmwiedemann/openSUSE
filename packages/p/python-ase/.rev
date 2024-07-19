@@ -25,4 +25,41 @@
   https://gitlab.com/ase/ase/-/merge_requests/2938</comment>
     <requestid>1144709</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>9a00fe1d3e7f18b72b731fd1c521f3dc</srcmd5>
+    <version>3.23.0</version>
+    <time>1721395593</time>
+    <user>anag+factory</user>
+    <comment>- Update to 3.23.0:
+  * Add FixSubsetCom to fix the center of mass of the specified subset
+    of atoms.
+  * Add the indices option to ase.Atoms.get_center_of_mass() to compute
+    the center of mass of the specified subset of atoms.
+  * All saddle-point search and minimum-energy path methods have been
+    moved into a new ase.mep module. You should start importing from this
+    location; e.g., from ase.mep import NEB, DyNEB.
+  * Fix ase.constraints.FixCom.adjust_momenta() to have no center-of-mass
+    momentum
+  * ase.build.surface.graphene() now takes a thickness argument
+  * ase.build.bulk() now assigns initial magnetic moments to BCC Fe, Co,
+    and Ni.
+  * ase.build.make_supercell() can now control how to order the atoms in
+    the supercell via the option order
+  * mask() returns the mask of nonzero cell vectors, an array of three
+    booleans.
+  * reciprocal() now guarantees that cell vectors which are zero correspond
+    to reciprocal cell vectors that are also zero. Previously the
+    reciprocal cell vectors could have small nonzero values due to floating
+    point tolerance.
+  * The Cell object now has normal() and normals() which calculate normal
+    vectors to one or all pairs of cell vectors. Also added area() and
+    areas(), which return the area spanned by one or all pairs of cell
+    vectors.
+  * New a2b and periodic formats for Formula objects. The abc format has
+    been renamed to ab2.
+  * IO formats can now be implemented in separate packages and registered
+    in ase with the entry point ase.ioformats in the external package
+    configuration.</comment>
+    <requestid>1188288</requestid>
+  </revision>
 </revisionlist>

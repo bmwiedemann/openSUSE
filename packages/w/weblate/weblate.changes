@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Jul 16 08:00:55 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Update to 5.6.2 (bsc#1227273, CVE-2024-39303)
+  * Many more changes, see https://docs.weblate.org/en/latest/changes.html
+  * Perl brace format quality check
+  * Mobile Kotlin resources
+  * Format.JS JSON file
+  * Component discovery now reports skipped entries
+  * File downloads now honor If-Modified-Since
+  * Add-ons can be now installed project-wide and site-wide
+  * API improvements
+  * Added Systran automatic translation support
+  * Docker container now validates user password strength by default
+  * Translation component alerts are now refreshed when needed, not just daily
+  * Notifications now include strings which need updating
+  * Improved compatibility with password managers
+  * Validation of Project level backups ZIP file upon restoring (CVE-2024-39303 / GHSA-jfgp-674x-6q4p).
+- Download tarballs from GitHub
+- Releases are signed by Sigstore instead of PGP
+  * added weblate-%{version}.tar.gz.sigstore
+  * dropped Weblate-%{version}.tar.xz.asc
+
+-------------------------------------------------------------------
 Thu Feb 29 09:13:31 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Do not generate dependency on /usr/bin/python (boo#1220367)

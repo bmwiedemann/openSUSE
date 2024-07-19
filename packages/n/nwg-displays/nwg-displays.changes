@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jul 18 01:11:41 UTC 2024 - Avindra Goolcharan <avindra@opensuse.org>
+
+- Update to version 0.3.20
+  * Added try clause for Gdk.Monitor assignment error #60
+  * Added workaround for gtk3-1:3.24.42 Gdk.Monitor bug
+  * Hopefully fixed f-string error on python<3.12. #58
+  * Added support for upcoming new Hyprland socket files location
+    in $XDG_RUNTIME_DIR/hypr.
+
+-------------------------------------------------------------------
 Wed Mar 27 03:54:16 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 0.3.16

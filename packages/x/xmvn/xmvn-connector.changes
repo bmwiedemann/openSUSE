@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jul 18 11:07:04 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Modified patch:
+  * UUID.patch ->
+    0002-Make-metadata-UUIDs-reproducible-if-SOURCE_DATE_EPOC.patch
+    + use version of the patch from our Pull Request to upstream
+- Added patch:
+  * 0003-Reproducible-javadoc-notimestamp-option-and-some-aut.patch
+    + make javadoc reproducible if project.build.outputTimestamp
+      is specified or if SOURCE_DATE_EPOCH environmental variable
+      is set
+
+-------------------------------------------------------------------
 Tue Jan 30 09:25:00 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Modified patch:

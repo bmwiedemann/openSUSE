@@ -83,6 +83,8 @@ install -m 0644 sysconfig.irqbalance %{buildroot}%{_fillupdir}/
 sed -ie "s|EnvironmentFile=.*|EnvironmentFile=%{_sysconfdir}/sysconfig/irqbalance|g" misc/irqbalance.service
 # Remove syslog.target in systemd service file; not provided by systemd anymore
 sed -ie "s|After=syslog.target||g" misc/irqbalance.service
+# Remove ProtectKernelTunables=yes. See https://github.com/Irqbalance/irqbalance/issues/308
+sed -ie "s|ProtectKernelTunables=yes||g" misc/irqbalance.service
 install -D -m 0644 misc/irqbalance.service %{buildroot}%{_unitdir}/irqbalance.service
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcirqbalance
 

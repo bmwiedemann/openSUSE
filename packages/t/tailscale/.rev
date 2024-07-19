@@ -55,4 +55,20 @@
     <comment></comment>
     <requestid>1185700</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>37f1d073c1c86bc5d143be2a15dfb522</srcmd5>
+    <version>1.70.0</version>
+    <time>1721395619</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.70.0:
+  * New: Restrict recommended and automatically selected exit nodes using the
+    new AllowedSuggestedExitNodes system policy. Applies only to platforms that
+    support system policies.
+  * Changed: Improved NAT traversal for some uncommon scenarios.
+  * Changed: Optimized sending firewall rules to clients more efficiently.
+  * Fixed: Exit node suggestion CLI command now prints the hostname.
+  * Fixed: Taildrive share paths configured through the CLI resolve relative
+    to where you run the tailscale command. (forwarded request 1188314 from rrahl0)</comment>
+    <requestid>1188315</requestid>
+  </revision>
 </revisionlist>

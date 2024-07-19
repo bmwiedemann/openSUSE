@@ -18,15 +18,16 @@
 
 # PYTHON2 NOT SUPPORTED BY UPSTREAM
 %define         skip_python2 1
+%define         modname grpcio_tools
 %{?sle15_python_module_pythons}
 Name:           python-grpcio-tools
-Version:        1.62.2
+Version:        1.65.0
 Release:        0
 Summary:        Protobuf code generator for gRPC
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://grpc.io
-Source:         https://files.pythonhosted.org/packages/source/g/grpcio-tools/grpcio-tools-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/g/grpcio-tools/%{modname}-%{version}.tar.gz
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel >= 3.7}
 BuildRequires:  %{python_module pip}
@@ -49,7 +50,7 @@ BuildRequires:  %{python_module pytest}
 This package provides a python-based Protobuf code generator for gRPC.
 
 %prep
-%setup -q -n grpcio-tools-%{version}
+%setup -q -n %{modname}-%{version}
 # Drop a hashbang from anon-exec script
 sed -i "1{/\/usr\/bin\/env python/d}" grpc_tools/protoc.py
 
@@ -61,9 +62,6 @@ export CFLAGS="%{optflags}"
 %install
 %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
-
-%check
-%pytest_arch
 
 %files %{python_files}
 %doc README.rst

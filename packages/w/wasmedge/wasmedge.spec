@@ -1,7 +1,7 @@
 #
 # spec file for package wasmedge
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,8 +24,10 @@ License:        Apache-2.0 AND CC0-1.0
 Group:          Development/Tools/Other
 URL:            https://github.com/WasmEdge/WasmEdge
 Source0:        https://github.com/WasmEdge/WasmEdge/releases/download/%{version}/%{name}-%{version}-src.tar.gz
+Patch1:         fmt11.patch
 BuildRequires:  boost-devel
 BuildRequires:  cmake >= 3.15.0
+BuildRequires:  fmt-devel
 BuildRequires:  gcc-c++ >= 9.4.0
 BuildRequires:  spdlog-devel
 # Supported platforms
@@ -53,7 +55,7 @@ This package contains the header files and libraries needed for
 compiling programs using WasmEdge.
 
 %prep
-%autosetup -n %{name}
+%autosetup -n %{name} -p1
 
 %build
 %cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo -DBUILD_SHARED_LIBS=OFF -DWASMEDGE_BUILD_TESTS=OFF -DWASMEDGE_BUILD_AOT_RUNTIME=OFF

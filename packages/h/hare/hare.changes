@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Tue Jul 16 15:31:19 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
+
+- Remove riscv64-correct-comments.patch
+
+-------------------------------------------------------------------
+Tue Jul 16 14:32:27 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
+
+- Update to version 0.24.2:
+  This release introduces a lot of breaking changes
+  * time::date now accepts a zone offset (zoff) parameter in
+    time::date::reckon and time::date::truncate.
+  * time::date::calculus has been renamed to time::date::rflag.
+  * time::date::realize requires .vloc to be set, and no longer defaults
+    to UTC.
+  * time::date::now() is renamed to time::date::localnow() and
+    time::date::nowutc() is renamed to time::date::now()
+  * time::date::EPOCHAL_JULIAN and EPOCHAL_GREGORIAN have been renamed to
+    EPOCHDAY_JULIAN and EPOCHDAY_GREGORIAN respectively
+  * time::chrono::eq has been removed and replaced with
+    time::chrono::simultaneous and time::chrono::coincident
+  * time::chrono::mzone has been renamed to time::chrono::ozone
+  * The type of time::date::parsefail has been chnaged from rune (storing
+    the offending format specifier) to (size, rune), which adds the index
+    of the position where the parsing failure occured.
+  * Several constants for format layouts in time::date have been renamed:
+    [[EMAILZ]] => [[EMAILZONE]]
+    [[STAMP_NANO]] => [[STAMPNANO]]
+    [[STAMP_ZOFF]] => [[STAMPZOFF]]
+    [[STAMP_ZONE]] => [[STAMPZONE]]
+    [[STAMP_NOZL]] => [[STAMPLOC]]
+  * unix::hosts
+  * unix::passwd
+  * "done" is now a reserved word and cannot be used in user-defined names
+  * The following standard library symbols have been updated to use done
+    types in their API:
+    * bytes::next_token/bytes::prev_token
+    * encoding::utf8
+    * fs::next
+    * glob::next
+    * io::EOF
+    * mime
+    * path::nextiter
+    * strings::next/strings::prev
+    * strings::next_token/strings::prev_token
+    * In short, if your program matches on a function using the iterator
+      pattern with "void" and this causes an error from 0.24.2, the
+      correct solution is likely to rewrite it to use a for-each loop, or
+      replace "void" with "done" in the relevant match case.
+  * for-each loops and the "done" type
+  * Optional parameters for functions
+  * Support for shared memory and memfds on supported platforms
+  * Revised and improved APIs for unix::*
+  * Improved performance for bufio and related APIs
+  * regex:: now supports multiple alternation (i.e. (x|y|z))
+  * New cryptography APIs:
+    * crypto::ec
+    * crypto::ecdh
+    * crypto::ecdsa
+
+-------------------------------------------------------------------
 Mon May 13 11:03:12 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Add riscv64-correct-comments.patch to fix the build on riscv64.

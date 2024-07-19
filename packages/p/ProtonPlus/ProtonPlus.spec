@@ -17,7 +17,7 @@
 
 
 Name:           ProtonPlus
-Version:        0.4.10
+Version:        0.4.15
 Release:        0
 Summary:        A Wine and Proton-based compatibility tools manager for GNOME
 License:        GPL-3.0-only
@@ -62,7 +62,7 @@ uses GTK4.
 
 %files
 %{_bindir}/com.vysp3r.ProtonPlus
-%{_datadir}/appdata/com.vysp3r.ProtonPlus.appdata.xml
+%{_datadir}/metainfo/com.vysp3r.ProtonPlus.metainfo.xml
 %{_datadir}/applications/com.vysp3r.ProtonPlus.desktop
 %{_datadir}/glib-2.0/schemas/com.vysp3r.ProtonPlus.gschema.xml
 %{_datadir}/icons/hicolor/*

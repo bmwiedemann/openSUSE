@@ -1,0 +1,186 @@
+commit 06bb3d6f86c43c7eb259cb2f0b8522ad87df40f1
+Author: Bruno Haible <bruno@clisp.org>
+Date:   Tue Jul 16 23:59:05 2024 +0200
+
+    java: Create reproducible .jar files if the 'jar' utility supports it.
+    
+    Suggested by Bernhard M. Wiedemann <bwiedemann@suse.de> in
+    <https://lists.gnu.org/archive/html/bug-gettext/2024-07/msg00020.html>.
+    
+    * build-aux/jar-cf: New file.
+    * Makefile.am (EXTRA_DIST): Add it.
+    * gettext-runtime/intl-java/Makefile.am (libintl.jar): Use jar-cf.
+    * gettext-tools/src/Makefile.am (gettext.jar): Likewise.
+
+diff --git a/Makefile.am b/Makefile.am
+index c3ac6e0e5..4e2ad1128 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -54,7 +54,8 @@ EXTRA_DIST = \
+   $(changelog_etc) DEPENDENCIES PACKAGING HACKING JOIN-GNU ChangeLog.0 \
+   autogen.sh \
+   check-copyright-headers \
+-  build-aux/ac-help.sed build-aux/git-version-gen build-aux/texi2html \
++  build-aux/ac-help.sed build-aux/git-version-gen build-aux/jar-cf \
++  build-aux/texi2html \
+   m4/fixautomake.m4 m4/woe32-dll.m4 \
+   m4/libtool.m4
+ 
+diff --git a/build-aux/jar-cf b/build-aux/jar-cf
+new file mode 100755
+index 000000000..f42578c02
+--- /dev/null
++++ b/build-aux/jar-cf
+@@ -0,0 +1,112 @@
++#!/bin/sh
++# Creating a Java archive (.jar).
++
++# Copyright (C) 2024 Free Software Foundation, Inc.
++#
++# This file is free software: you can redistribute it and/or modify
++# it under the terms of the GNU General Public License as published
++# by the Free Software Foundation, either version 3 of the License,
++# or (at your option) any later version.
++#
++# This file is distributed in the hope that it will be useful,
++# but WITHOUT ANY WARRANTY; without even the implied warranty of
++# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++# GNU General Public License for more details.
++#
++# You should have received a copy of the GNU General Public License
++# along with this program.  If not, see <https://www.gnu.org/licenses/>.
++
++# Written by Bruno Haible <bruno@clisp.org>, 2024.
++
++# func_usage
++# outputs to stdout the --help usage message.
++func_usage ()
++{
++  echo "\
++Usage: jar-cf [OPTION]... JAR_PROGRAM TOP_SRCDIR DESTINATION.jar ELEMENT...
++
++Invokes the JAR_PROGRAM, to create DESTINATION.jar with the ELEMENTs as
++contents.
++
++Options:
++      --help           print this help and exit
++      --version        print version information and exit
++
++Send patches and bug reports to <bug-gettext@gnu.org>."
++}
++
++# func_version
++# outputs to stdout the --version message.
++func_version ()
++{
++  echo "jar-cf (GNU gettext)"
++  echo "Copyright (C) 2024 Free Software Foundation, Inc.
++License GPLv3+: GNU GPL version 3 or later <https://gnu.org/licenses/gpl.html>
++This is free software: you are free to change and redistribute it.
++There is NO WARRANTY, to the extent permitted by law."
++  echo
++  printf 'Written by %s.\n' "Bruno Haible"
++}
++
++# func_fatal_error message
++# outputs to stderr a fatal error message, and terminates the program.
++func_fatal_error ()
++{
++  echo "jar-cf: *** $1" 1>&2
++  echo "jar-cf: *** Stop." 1>&2
++  exit 1
++}
++
++# Outputs a command and runs it.
++func_verbose ()
++{
++  # Make it easy to copy&paste the printed command into a shell in most cases,
++  # by escaping '\\', '"', and '$'. This is not perfect, just good enough.
++  echo "$@" | sed -e 's/\([\\"$]\)/\\\1/g'
++  "$@"
++}
++
++# Command-line option processing.
++while test $# -gt 0; do
++  case "$1" in
++    --help | --hel | --he | --h )
++      func_usage
++      exit 0 ;;
++   --version | --versio | --versi | --vers | --ver | --ve | --v )
++      func_version
++      exit 0 ;;
++    -- )      # Stop option processing
++      shift; break ;;
++    -* )
++      func_fatal_error "unrecognized option: $1"
++      ;;
++    * )
++      break ;;
++  esac
++done
++
++if test $# -lt 2; then
++  func_fatal_error "too few arguments"
++fi
++
++jar_program="$1"
++top_srcdir="$2"
++shift
++shift
++
++if $jar_program --help 2>&1 | grep '\-\-date=' >/dev/null; then
++  # The JAR_PROGRAM supports the --date option. Its effect is to set the given
++  # date as time stamp on all the ELEMENTs and also the META-INF/MANIFEST.MF.
++  # Use it, for reproducibility (cf. <https://reproducible-builds.org/>).
++  if test -d "$top_srcdir/.git"; then
++    # We are in a git checkout. Use the date of the latest commit.
++    date=`git log -n 1 --date=iso --format=fuller | sed -n -e 's/^CommitDate: //p' | sed -e 's/ /T/' -e 's/ \(...\)\(..\)$/\1:\2/'`
++  else
++    # We are building from a tarball.
++    # Use the date of the first entry of the ChangeLog file.
++    date=`sed -n -e 's/^\([0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]\).*/\1/p' -e 1q "$top_srcdir/ChangeLog"`'T00:00:00+00:00'
++  fi
++  func_verbose $jar_program --date="$date" -c -f "$@"
++else
++  func_verbose $jar_program cf "$@"
++fi
+diff --git a/gettext-runtime/intl-java/Makefile.am b/gettext-runtime/intl-java/Makefile.am
+index a8c5290e9..4444f6e6c 100644
+--- a/gettext-runtime/intl-java/Makefile.am
++++ b/gettext-runtime/intl-java/Makefile.am
+@@ -1,5 +1,5 @@
+ ## Makefile for the gettext-runtime/intl-java subdirectory of GNU gettext
+-## Copyright (C) 2001-2003, 2006-2007, 2013 Free Software Foundation, Inc.
++## Copyright (C) 2001-2024 Free Software Foundation, Inc.
+ ##
+ ## This program is free software: you can redistribute it and/or modify
+ ## it under the terms of the GNU General Public License as published by
+@@ -45,7 +45,7 @@ gnu/gettext/GettextResource.class: $(srcdir)/gnu/gettext/GettextResource.java
+ 	$(JAVACOMP) -d . $(srcdir)/gnu/gettext/GettextResource.java
+ 
+ libintl.jar: gnu/gettext/GettextResource.class
+-	$(JAR) cf $@ gnu/gettext/GettextResource*.class
++	$(top_srcdir)/../build-aux/jar-cf '$(JAR)' '$(top_srcdir)/..' $@ gnu/gettext/GettextResource*.class
+ 
+ EXTRA_DIST += gnu/gettext/GettextResource.java
+ 
+diff --git a/gettext-tools/src/Makefile.am b/gettext-tools/src/Makefile.am
+index d95b08ed6..0316ca287 100644
+--- a/gettext-tools/src/Makefile.am
++++ b/gettext-tools/src/Makefile.am
+@@ -1,5 +1,5 @@
+ ## Makefile for the gettext-tools/src subdirectory of GNU gettext
+-## Copyright (C) 1995-1998, 2000-2023 Free Software Foundation, Inc.
++## Copyright (C) 1995-2024 Free Software Foundation, Inc.
+ ##
+ ## This program is free software: you can redistribute it and/or modify
+ ## it under the terms of the GNU General Public License as published by
+@@ -655,7 +655,7 @@ gnu/gettext/GetURL.class: $(srcdir)/gnu/gettext/GetURL.java
+ 	$(JAVACOMP) -d . $(srcdir)/gnu/gettext/GetURL.java
+ 
+ gettext.jar: gnu/gettext/DumpResource.class gnu/gettext/GetURL.class
+-	$(JAR) cf $@ gnu/gettext/DumpResource*.class gnu/gettext/GetURL*.class
++	$(top_srcdir)/../build-aux/jar-cf '$(JAR)' '$(top_srcdir)/..' $@ gnu/gettext/DumpResource*.class gnu/gettext/GetURL*.class
+ 
+ EXTRA_DIST += gnu/gettext/DumpResource.java gnu/gettext/GetURL.java
+ 

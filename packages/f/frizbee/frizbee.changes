@@ -1,0 +1,5 @@
+-------------------------------------------------------------------
+Mon Jun 10 07:02:04 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- new package frizbee: tool to replace image tags with shasums in
+  e.g. Dockerfiles

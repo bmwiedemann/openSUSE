@@ -1,4 +1,66 @@
 -------------------------------------------------------------------
+Wed Jul 17 13:51:46 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Update to 2.10.0
+  * refactored a big part of the foundation of the SDK
+  * Additional integrations will now be activated automatically if 
+    the SDK detects the respective package is installed
+  * Added new API for custom instrumentation: new_scope, isolation_scope
+  * Many breaking changes, see CHANGELOG.md
+  * Removed support for Python 2 and Python 3.5
+  * Removed support for Celery 3.*
+  * Removed support for Django 1.8, 1.9, 1.10
+  * Removed support for Flask 0.*
+  * Removed support for gRPC < 1.39
+  * Removed support for Tornado < 6
+  * few deprecations
+  * fix(integrations): don't send full env to subprocess
+    (bsc#1228128, CVE-2024-40647)
+  * many more changes, see CHANGELOG.md
+- Revised tests
+
+-------------------------------------------------------------------
+Sat Jun 29 19:24:30 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.45.0:
+  * Allow to upsert monitors
+  * It's now possible to provide `monitor_config` to the
+    `monitor` decorator/context manager directly:
+  * Add Django `signals_denylist` to filter signals that are
+    attached to by `signals_spans`
+  * `increment` for metrics
+  * Add `value`, `unit` to `before_emit_metric`
+  * New normalization rules for metric keys, names, units, tags
+  * Change `data_category` from `statsd` to `metric_bucket`
+  * Accessing `__mro__` might throw a `ValueError`
+  * Suppress prompt spawned by subprocess when using `pythonw`
+  * Handle `None` in GraphQL query
+  * Do not send "quiet" Sanic exceptions to Sentry
+  * Implement `metric_bucket` rate limits
+  * Fix type hints for `monitor` decorator
+  * Remove deprecated `typing` imports in crons
+  * Make `monitor_config` a `TypedDict`
+  * Make `monitor` async friendly
+  * Fixed `Event | None` runtime `TypeError`
+  * ref: Define types at runtime
+  * Explicit reexport of types
+  * Add optional `keep_alive`
+  * Add support for Celery Redbeat cron tasks
+  * `aws_event` can be an empty list
+  * Re-export `Event` in `types.py`
+  * We added an integration for OpenAI to capture errors and also
+    performance data when using the OpenAI Python SDK.
+  * Discard open OpenTelemetry spans after 10 minutes
+  * Propagate sentry-trace and baggage headers to Huey tasks
+  * Added Event type
+  * Improve scrub_dict typing
+  * Fix compatibility with `greenlet`/`gevent`
+  * Fix query source relative filepath
+  * Support `clickhouse-driver==0.2.7`
+  * Deprecate `last_event_id()`.
+  * `parsed_url` can be `None`
+
+-------------------------------------------------------------------
 Sat Jun 15 19:22:19 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Only require install requirements. The extra requirements are

@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Sat Jun  1 14:00:08 UTC 2024 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 6.0.8
+  * Fix bugs
+
+-------------------------------------------------------------------
+Mon Feb 26 13:08:06 UTC 2024 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 6.0.6
+  * Fix bugs
+- Drop fix-dtkgui.patch
+
+-------------------------------------------------------------------
+Wed Jul 26 14:54:08 UTC 2023 - Hillwood Yang <hillwood@opensuse.org>
+
+- Add fix-dtkgui.patch, fix build on dtkgui 5.6.12  
+
+-------------------------------------------------------------------
+Mon May  1 12:01:35 UTC 2023 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 6.0.5
+  * Update debian/changelog
+- Refresh Fix-library-link.patch
+
+-------------------------------------------------------------------
+Sat Jan 21 08:55:29 UTC 2023 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 6.0.1
+  * Migrate to DDE v23
+  * Fix bugs
+
+-------------------------------------------------------------------
+Sat Nov 26 07:28:47 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.10.16
+  * Support DLNA
+  * Fix bugs
+  * Change license
+
+-------------------------------------------------------------------
 Thu Aug 25 08:19:47 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 5.10.8

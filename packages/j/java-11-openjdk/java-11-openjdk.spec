@@ -26,7 +26,7 @@
 %else
 %global add_back_javaee_modules 1
 %endif
-%global is_release 0
+%global is_release 1
 %global buildoutputdir build
 # Convert an absolute path to a relative path.  Each symbolic link is
 # specified relative to the directory in which it is installed so that
@@ -39,7 +39,7 @@
 %global featurever      11
 %global interimver      0
 %global updatever       24
-%global buildver        7
+%global buildver        8
 %global openjdk_repo    jdk11u
 %global openjdk_tag     jdk-%{featurever}.%{interimver}.%{updatever}%{?patchver:.%{patchver}}+%{buildver}
 %global openjdk_dir     %{openjdk_repo}-jdk-%{featurever}.%{interimver}.%{updatever}%{?patchver:.%{patchver}}-%{buildver}

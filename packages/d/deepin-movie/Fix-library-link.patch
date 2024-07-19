@@ -1,18 +1,38 @@
-diff -Nur deepin-movie-reborn-5.10.8/src/CMakeLists.txt deepin-movie-reborn-5.10.8-new/src/CMakeLists.txt
---- deepin-movie-reborn-5.10.8/src/CMakeLists.txt	2022-08-09 15:33:32.000000000 +0800
-+++ deepin-movie-reborn-5.10.8-new/src/CMakeLists.txt	2022-08-25 16:05:20.083901453 +0800
-@@ -9,6 +9,7 @@
+diff -Nur deepin-movie-reborn-6.0.5/src/CMakeLists.txt deepin-movie-reborn-6.0.5-new/src/CMakeLists.txt
+--- deepin-movie-reborn-6.0.5/src/CMakeLists.txt	2023-02-06 15:06:00.000000000 +0800
++++ deepin-movie-reborn-6.0.5-new/src/CMakeLists.txt	2023-05-01 20:46:10.357621047 +0800
+@@ -33,7 +33,10 @@
+ pkg_check_modules(DBusextended REQUIRED IMPORTED_TARGET dbusextended-qt5)
+ pkg_check_modules(Gst REQUIRED IMPORTED_TARGET gobject-2.0)
+ # IMPORTED_TARGET failed to work for some of libs under flatpak env
+-pkg_check_modules(Other REQUIRED  gsettings-qt)
++pkg_check_modules(Other REQUIRED gsettings-qt)
++pkg_check_modules(FFMPEG REQUIRED IMPORTED_TARGET libavcodec)
++
++include_directories(${FFMPEG_INCLUDE_DIRS})
+ 
+ qt5_add_resources(RCS ../assets/resources.qrc)
+ qt5_add_resources(RCS ../assets/icons/theme-icons.qrc)
+@@ -41,7 +44,6 @@
+     qt5_add_resources(RCS ../assets/theme.qrc)
+ endif()
+ 
+-
+ file(GLOB_RECURSE SRCS LIST_DIRECTORIES false common/*.cpp widgets/*.cpp libdmr/*.cpp vendor/*.cpp dlna/*.cpp dlna/*.c)
+ list(APPEND SRCS main.cpp)
+ 
+diff -Nur deepin-movie-reborn-6.0.5/src/libdmr/CMakeLists.txt deepin-movie-reborn-6.0.5-new/src/libdmr/CMakeLists.txt
+--- deepin-movie-reborn-6.0.5/src/libdmr/CMakeLists.txt	2023-02-06 15:06:00.000000000 +0800
++++ deepin-movie-reborn-6.0.5-new/src/libdmr/CMakeLists.txt	2023-05-01 19:36:21.880798408 +0800
+@@ -11,6 +11,7 @@
+ remove_definitions(-D_MOVIE_USE_)
+ 
+ pkg_check_modules(Gst REQUIRED IMPORTED_TARGET gstreamer-1.0 glib-2.0)
++pkg_check_modules(other REQUIRED gsettings-qt)
  
  include_directories(${CMAKE_INCLUDE_CURRENT_DIR})
- include_directories(${CMAKE_CURRENT_BINARY_DIR})
-+include_directories(/usr/include/ffmpeg)
  
- find_package(Qt5Widgets)
- find_package(Qt5DBus)
-diff -Nur deepin-movie-reborn-5.10.8/src/libdmr/CMakeLists.txt deepin-movie-reborn-5.10.8-new/src/libdmr/CMakeLists.txt
---- deepin-movie-reborn-5.10.8/src/libdmr/CMakeLists.txt	2022-08-09 15:33:32.000000000 +0800
-+++ deepin-movie-reborn-5.10.8-new/src/libdmr/CMakeLists.txt	2022-08-25 16:07:58.615934066 +0800
-@@ -23,7 +23,7 @@
+@@ -27,7 +28,7 @@
      ${PROJECT_SOURCE_DIR}/../common ${PROJECT_SOURCE_DIR}/../backends/mediaplayer ${PROJECT_SOURCE_DIR}/../backends/mpv /usr/include/glib-2.0 /usr/include/gstreamer-1.0)
  
  target_link_libraries(${CMD_NAME} PkgConfig::Dtk Qt5::Widgets Qt5::Concurrent

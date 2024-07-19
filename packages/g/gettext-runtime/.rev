@@ -839,4 +839,12 @@ address the issues between gettext-runtime and the -mini flavor:
 sync the changes and spec file by actually calling pre_checkin.sh - not syncing stuff manually (forwarded request 1179032 from dimstar)</comment>
     <requestid>1179033</requestid>
   </revision>
+  <revision rev="96" vrev="6">
+    <srcmd5>a3ede261fdb6d4aa4f0ffb8ff024146f</srcmd5>
+    <version>0.22.5</version>
+    <time>1721395495</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1188352</requestid>
+  </revision>
 </revisionlist>

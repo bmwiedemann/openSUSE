@@ -147,7 +147,7 @@ Requires:       libpixman-1-0 >= 0.24
 Requires:       Mesa
 %if 0%{?suse_version} >= 1315
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 %endif
 Provides:       xorg-x11-server-glx
 Obsoletes:      xorg-x11-server-glx
@@ -239,6 +239,8 @@ Patch1921:      u_xf86-Accept-devices-with-the-kernels-ofdrm-driver.patch
 Patch1930:      u_xfree86-activate-GPU-screens-on-autobind.patch
 
 Patch1960:      u_sync-pci-ids-with-Mesa.patch
+
+Patch2000:      u_fbdevhw_kernel6.9_break_fbdev_open.patch
 
 Patch1218176:   u_miCloseScreen_check_for_null_pScreen_dev_private.patch
 Patch1222442:   U_render-Avoid-possible-double-free-in-ProcRenderAddGl.patch
@@ -397,6 +399,7 @@ sh %{SOURCE92} --verify . %{SOURCE91}
 %patch -P 1921 -p1
 %patch -P 1930 -p1
 %patch -P 1960 -p1
+%patch -P 2000 -p1
 
 %patch -P 1218176 -p1
 

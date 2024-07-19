@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jul 17 10:12:04 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
+
+- Drop md5sum of sources as it is pointless 
+
+-------------------------------------------------------------------
+Fri Jul 12 17:56:35 UTC 2024 - Enno Tensing <tenno+suse@suij.in>
+
+- Update 8.3.2, Changelog at https://github.com/OSGeo/grass/releases/tag/8.3.2
+
+-------------------------------------------------------------------
 Thu Mar  2 13:49:37 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update to 8.2.1:

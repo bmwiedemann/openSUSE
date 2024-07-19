@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jul 18 18:56:37 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 9.2.1:
+  * fix pdbMinAvailableGreaterThanHPAMinReplicas check when
+    minAvailable is not present (#1062)
+
+-------------------------------------------------------------------
 Wed Jul 10 08:28:39 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 9.2.0:

@@ -1,7 +1,7 @@
-Index: xxHash-0.8.1/xxhash.h
+Index: grpcio/third_party/xxhash/xxhash.h
 ===================================================================
---- xxHash-0.8.1.orig/xxhash.h
-+++ xxHash-0.8.1/xxhash.h
+--- grpcio.orig/third_party/xxhash/xxhash.h
++++ grpcio/third_party/xxhash/xxhash.h
 @@ -1408,7 +1408,7 @@ XXH3_128bits_reset_withSecretandSeed(XXH
      (defined(__INTEL_COMPILER) && !defined(_WIN32)) || \
      ( \

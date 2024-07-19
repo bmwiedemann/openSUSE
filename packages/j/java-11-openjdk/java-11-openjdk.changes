@@ -1,4 +1,303 @@
 -------------------------------------------------------------------
+Thu Jul 18 06:07:42 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream tag jdk-11.0.24+8 (July 2024 CPU)
+  * Security fixes:
+    + JDK-8314794, CVE-2024-21131, bsc#1228046: Improve UTF8 String
+      supports
+    + JDK-8319859, CVE-2024-21138, bsc#1228047: Better symbol
+      storage
+    + JDK-8320097: Improve Image transformations
+    + JDK-8320548, CVE-2024-21140, bsc#1228048: Improved loop
+      handling
+    + JDK-8322106, CVE-2024-21144, bsc#1228050: Enhance Pack 200
+      loading
+    + JDK-8323231, CVE-2024-21147, bsc#1228052: Improve array
+      management
+    + JDK-8323390: Enhance mask blit functionality
+    + JDK-8324559, CVE-2024-21145, bsc#1228051: Improve 2D image
+      handling
+    + JDK-8325600: Better symbol storage
+    + JDK-8327413: Enhance compilation efficiency
+  * Other changes:
+    + JDK-8015739: Background of JInternalFrame is located out of
+      JInternalFrame
+    + JDK-8042380: Test javax/swing/JFileChooser/4524490/
+      /bug4524490.java fails with InvocationTargetException
+    + JDK-8061729: Update java/net tests to eliminate dependency on
+      sun.net.www.MessageHeader and some other internal APIs
+    + JDK-8158048: Fix failure message from jtreg gtest wrapper
+    + JDK-8159927: Add a test to verify JMOD files created in the
+      images do not have debug symbols
+    + JDK-8163921: HttpURLConnection default Accept header is
+      malformed according to HTTP/1.1 RFC
+    + JDK-8187759: Background not refreshed when painting over a
+      transparent JFrame
+    + JDK-8210988: Improved handling of compiler warnings in the
+      build
+    + JDK-8214400: Update hotspot application/jcstress jtreg tests
+      wrappers to use jcstress 0.5
+    + JDK-8218917: KeyEvent.getModifiers() returns inconsistent
+      values for ALT keys
+    + JDK-8220202: Simplify/standardize method naming for HtmlTree
+    + JDK-8231351: Add notes for PKCS11 tests in the test doc
+    + JDK-8241951: SA core file tests failed to find core file for
+      signed binaries on OSX 10.15
+    + JDK-8243010: Test support: Customizable Hex Printer
+    + JDK-8248194: Need better support for running SA tests on core
+      files
+    + JDK-8248667: Need support for building native libraries
+      located in the test/lib directory
+    + JDK-8253980: javax/swing/plaf/synth/7158712/bug7158712.java
+      fails on windows
+    + JDK-8255031: Update java/util/prefs/AddNodeChangeListener.java
+      to report more failure info
+    + JDK-8256660: Disable DTLS 1.0
+    + JDK-8261404: Class.getReflectionFactory() is not thread-safe
+    + JDK-8263659: Reflow GTestResultParser for better readability
+    + JDK-8263940: NPE when creating default file system when
+      default file system provider is packaged as JAR file on class
+      path
+    + JDK-8264152: javax/net/ssl/DTLS/RespondToRetransmit.java
+      timed out
+    + JDK-8267796: vmTestbase/nsk/jvmti/scenarios/hotswap/HS201/
+      /hs201t002/TestDescription.java fails with NoClassDefFoundError
+    + JDK-8267938: (sctp) SCTP channel factory methods should check
+      platform support
+    + JDK-8268974: GetJREPath() JLI function fails to locate
+      libjava.so if not standard Java launcher is used
+    + JDK-8269258: java/net/httpclient/ManyRequestsLegacy.java
+      failed with connection timeout
+    + JDK-8270199: Most SA tests are skipped on macosx-aarch64
+      because all executables are signed
+    + JDK-8271142: package help is not displayed for missing
+      X11/extensions/Xrandr.h
+    + JDK-8273153: Consolidate file_exists into os:file_exists
+    + JDK-8273831: PrintServiceLookup spawns 2 threads in the
+      current classloader, getting orphaned
+    + JDK-8276125: RunThese24H.java SIGSEGV in
+      JfrThreadGroup::thread_group_id
+    + JDK-8280546: Remove hard-coded 127.0.0.1 loopback address
+    + JDK-8281507: Two javac tests have bad jtreg `@clean` tags
+    + JDK-8282017: sun/net/www/protocol/https/HttpsURLConnection/
+      /B6216082.java fails with "SocketException: Unexpected end of
+      file from server"
+    + JDK-8283349: Robustness improvements to
+      java/util/prefs/AddNodeChangeListener.jar
+    + JDK-8286705: GCC 12 reports use-after-free potential bugs
+    + JDK-8290203: ProblemList vmTestbase/nsk/jvmti/scenarios/
+      /capability/CM03/cm03t001/TestDescription.java on linux-all
+    + JDK-8292716: Configure should check that jtreg is of the
+      required version
+    + JDK-8292717: Clean up checking of testing requirements in
+      configure
+    + JDK-8292763: JDK-8292716 breaks configure without jtreg
+    + JDK-8293563: [macos-aarch64] SA core file tests failing with
+      sun.jvm.hotspot.oops.UnknownOopException
+    + JDK-8293887: AArch64 build failure with GCC 12 due to
+      maybe-uninitialized warning in libfdlibm k_rem_pio2.c
+    + JDK-8293965: Code signing warnings after JDK-8293550
+    + JDK-8294137: Review running times of java.math tests
+    + JDK-8294156: Allow PassFailJFrame.Builder to create test UI
+    + JDK-8295343: sun/security/pkcs11 tests fail on Linux RHEL 8.6
+      and newer
+    + JDK-8297082: Remove sun/tools/jhsdb/BasicLauncherTest.java
+      from problem list
+    + JDK-8297449: Update JInternalFrame Metal Border code
+    + JDK-8297798: Timeout with DTLSOverDatagram test template
+    + JDK-8299023: TestPLABResize.java and TestPLABPromotion.java
+      are failing intermittently
+    + JDK-8299677: Formatter.format might take a long time to
+      format an integer or floating-point
+    + JDK-8299858: [Metrics] Swap memory limit reported incorrectly
+      when too large
+    + JDK-8302069: javax/management/remote/mandatory/notif/
+      /NotifReconnectDeadlockTest.java update
+    + JDK-8302512: Update IANA Language Subtag Registry to Version
+      2023-02-14
+    + JDK-8303466: C2: failed: malformed control flow. Limit type
+      made precise with MaxL/MinL
+    + JDK-8304761: Update IANA Language Subtag Registry to Version
+      2023-03-22
+    + JDK-8305645: System Tray icons get corrupted when Windows
+      primary monitor changes
+    + JDK-8305874: Open source AWT Key, Text Event related tests
+    + JDK-8305931: jdk/jfr/jcmd/TestJcmdDumpPathToGCRoots.java
+      failed with "Expected chains but found none"
+    + JDK-8305942: Open source several AWT Focus related tests
+    + JDK-8305943: Open source few AWT Focus related tests
+    + JDK-8305962: update jcstress to 0.16
+    + JDK-8306031: Update IANA Language Subtag Registry to Version
+      2023-04-13
+    + JDK-8306067: Open source AWT Graphics,GridBagLayout related
+      tests
+    + JDK-8306634: Open source AWT Event related tests
+    + JDK-8306714: Open source few Swing event and AbstractAction
+      tests
+    + JDK-8306838: GetGraphicsTest needs to be headful
+    + JDK-8306941: Open source several datatransfer and dnd AWT
+      tests
+    + JDK-8307083: Open source some drag and drop tests 3
+    + JDK-8307955: Prefer to PTRACE_GETREGSET instead of
+      PTRACE_GETREGS in method 'ps_proc.c::process_get_lwp_regs'
+    + JDK-8308021: Update IANA Language Subtag Registry to Version
+      2023-05-11
+    + JDK-8310380: Handle problems in core-related tests on macOS
+      when codesign tool does not work
+    + JDK-8310818: Refactor more Locale tests to use JUnit
+    + JDK-8310923: Refactor Currency tests to use JUnit
+    + JDK-8312194: test/hotspot/jtreg/applications/ctw/modules/
+      /jdk_crypto_ec.java cannot handle empty modules
+    + JDK-8312383: Log X509ExtendedKeyManager implementation class
+      name in TLS/SSL connection
+    + JDK-8313206: PKCS11 tests silently skip execution
+    + JDK-8313702: Update IANA Language Subtag Registry to Version
+      2023-08-02
+    + JDK-8314220: Configurable InlineCacheBuffer size
+    + JDK-8314283: Support for NSS tests on aarch64 platforms
+    + JDK-8314495: Update to use jtreg 7.3.1
+    + JDK-8314552: Fix javadoc tests to work with jtreg 7
+    + JDK-8314830: runtime/ErrorHandling/ tests ignore external VM
+      flags
+    + JDK-8315071: Modify TrayIconScalingTest.java,
+      PrintLatinCJKTest.java to use new PassFailJFrame's builder
+      pattern usage
+    + JDK-8315117: Update Zlib Data Compression Library to Version
+      1.3
+    + JDK-8315609: Open source few more swing text/html tests
+    + JDK-8315663: Open source misc awt tests
+    + JDK-8315677: Open source few swing JFileChooser and other
+      tests
+    + JDK-8315726: Open source several AWT applet tests
+    + JDK-8315741: Open source few swing JFormattedTextField and
+      JPopupMenu tests
+    + JDK-8315824: Open source several Swing Text/HTML related tests
+    + JDK-8315834: Open source several Swing JSpinner related tests
+    + JDK-8315889: Open source several Swing HTMLDocument  related
+      tests
+    + JDK-8316017: Refactor timeout handler in PassFailJFrame
+    + JDK-8316053: Open some swing tests 3
+    + JDK-8316138: Add GlobalSign 2 TLS root certificates
+    + JDK-8316142: Enable parallelism in
+      vmTestbase/nsk/monitoring/stress/lowmem tests
+    + JDK-8316154: Opensource JTextArea manual tests
+    + JDK-8316164: Opensource JMenuBar manual test
+    + JDK-8316242: Opensource SwingGraphics manual test
+    + JDK-8316608: Enable parallelism in vmTestbase/gc/vector tests
+    + JDK-8317287: [macos14] InterJVMGetDropSuccessTest.java: Child
+      VM: abnormal termination
+    + JDK-8317507: C2 compilation fails with "Exceeded _node_regs
+      array"
+    + JDK-8318322: Update IANA Language Subtag Registry to Version
+      2023-10-16
+    + JDK-8318580: "javax/swing/MultiMonitor/MultimonVImage.java
+      failing with Error. Can't find library:
+      /open/test/jdk/java/awt/regtesthelpers" after JDK-8316053
+    + JDK-8318599: HttpURLConnection cache issues leading to
+      crashes in JGSS w/ native GSS introduced by 8303809
+    + JDK-8318727: Enable parallelism in
+      vmTestbase/vm/gc/concurrent tests
+    + JDK-8318809: java/util/concurrent/ConcurrentLinkedQueue/
+      /WhiteBox.java shows intermittent failures on linux ppc64le
+      and aarch64
+    + JDK-8318854: [macos14] Running any AWT app prints Secure
+      coding warning
+    + JDK-8319128: sun/security/pkcs11 tests fail on OL 7.9 aarch64
+    + JDK-8319136: Skip pkcs11 tests on linux-aarch64
+    + JDK-8319436: Proxy.newProxyInstance throws NPE if loader is
+      null and interface not visible from class loader
+    + JDK-8320005: Allow loading of shared objects with .a
+      extension on AIX
+    + JDK-8320113: [macos14] : ShapeNotSetSometimes.java fails
+      intermittently on macOS 14
+    + JDK-8320129: "top" command during jtreg failure handler does
+      not display CPU usage on OSX
+    + JDK-8320303: Allow PassFailJFrame to accept single window
+      creator
+    + JDK-8320342: Use PassFailJFrame for
+      TruncatedPopupMenuTest.java
+    + JDK-8320943: Files/probeContentType/Basic.java fails on
+      latest Windows 11 - content type mismatch
+    + JDK-8321489: Update LCMS to 2.16
+    + JDK-8321925: sun/security/mscapi/KeytoolChangeAlias.java
+      fails with "Alias <246810> does not exist"
+    + JDK-8322239: [macos] a11y : java.lang.NullPointerException is
+      thrown when focus is moved on the JTabbedPane
+    + JDK-8322511: [11u] JfrCheckpointThreadClosure::do_thread
+      crashes when fetching thread_id
+    + JDK-8322783: prioritize /etc/os-release over
+      /etc/SuSE-release in hs_err/info output
+    + JDK-8323717: Introduce test keyword for tests that need
+      external dependencies
+    + JDK-8323994: gtest runner repeats test name for every single
+      gtest assertion
+    + JDK-8324238: [macOS] java/awt/Frame/ShapeNotSetSometimes/
+      /ShapeNotSetSometimes.java fails with the shape has not been
+      applied msg
+    + JDK-8324598: use mem_unit when working with sysinfo memory
+      and swap related information
+    + JDK-8324632: Update Zlib Data Compression Library to Version
+      1.3.1
+    + JDK-8324723: GHA: Upgrade some actions to avoid deprecated
+      Node 16
+    + JDK-8324733: [macos14] Problem list tests which fail due to
+      macOS bug described in JDK-8322653
+    + JDK-8325137: com/sun/management/ThreadMXBean/
+      /ThreadCpuTimeArray.java can fail in Xcomp with out of
+      expected range
+    + JDK-8325326: [PPC64] Don't relocate in case of allocation
+      failure
+    + JDK-8325579: Inconsistent behavior in
+      com.sun.jndi.ldap.Connection::createSocket
+    + JDK-8325972: Add -x to bash for building with LOG=debug
+    + JDK-8326006: Allow TEST_VM_FLAGLESS to set flagless mode
+    + JDK-8326101: [PPC64] Need to bailout cleanly if creation of
+      stubs fails when code cache is out of space
+    + JDK-8326201: [S390] Need to bailout cleanly if creation of
+      stubs fails when code cache is out of space
+    + JDK-8326351: Update the Zlib version in
+      open/src/java.base/share/legal/zlib.md to 1.3.1
+    + JDK-8326521: JFR: CompilerPhase event test fails on windows
+      32 bit
+    + JDK-8326529: JFR: Test for CompilerCompile events fails due
+      to time out
+    + JDK-8326591: New test JmodExcludedFiles.java fails on Windows
+      when --with-external-symbols-in-bundles=public is used
+    + JDK-8326638: Crash in
+      PhaseIdealLoop::remix_address_expressions due to unexpected
+      Region instead of Loop
+    + JDK-8326643: JDK server does not send a dummy
+      change_cipher_spec record after HelloRetryRequest message
+    + JDK-8326661: sun/java2d/cmm/ColorConvertOp/ColConvTest.java
+      assumes profiles were generated by LCMS
+    + JDK-8326801: Bump update version for OpenJDK: jdk-11.0.24
+    + JDK-8326891: Prefer RPATH over RUNPATH for $ORIGIN rpaths in
+      internal JDK binaries
+    + JDK-8326938: [11u] JDK-8214908 broke two CTW tests
+    + JDK-8327136: javax/management/remote/mandatory/notif/
+      /NotifReconnectDeadlockTest.java fails on libgraal
+    + JDK-8328194: Add a test to check default rendering engine
+    + JDK-8328524: [x86] StringRepeat.java failure on linux-x86:
+      Could not reserve enough space for 2097152KB object heap
+    + JDK-8328540: test javax/swing/JSplitPane/4885629/
+      /bug4885629.java fails on windows hidpi
+    + JDK-8328705: GHA: Cross-compilation jobs do not require build
+      JDK
+    + JDK-8328812: Update and move siphash license
+    + JDK-8328825: Google CAInterop test failures
+    + JDK-8331643: [11u]: Bump GHA bootstrap JDK to 11.0.23
+    + JDK-8331750: [11u] JDK-8259530 is not backported correctly to
+      11u
+    + JDK-8331790: [11u] Remove problemlist entries after backport
+      of JDK-8228649
+    + JDK-8334441: Mark tests in jdk_security_infra group as manual
+    + JDK-8335973: [11u] Remove designator
+      DEFAULT_PROMOTED_VERSION_PRE=ea for release 11.0.24
+- Modified patch:
+  * reproducible-javadoc-timestamp.patch
+    + rediff to changed context
+
+-------------------------------------------------------------------
 Thu Jul  4 09:16:38 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Require file for posttrans phase of the headless subpackage

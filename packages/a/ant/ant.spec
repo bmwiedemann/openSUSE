@@ -45,6 +45,8 @@ Patch5:         reproducible-build-manifest.patch
 Patch6:         apache-ant-xml-apis.patch
 # PATCH-FEATURE-OPENSUSE debian patch to use SOURCE_DATE_EPOCH for timestamp in property files
 Patch7:         reproducible-propertyfile-task.patch
+Patch8:         reproducible-jar-mtime.patch
+Patch9:         reproducible-javadoc.patch
 BuildRequires:  antlr-bootstrap
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local >= 6
@@ -394,6 +396,8 @@ find -name \*.jar -print -delete
 %patch -P 5 -p1
 %patch -P 6 -p1
 %patch -P 7 -p1
+%patch -P 8 -p1
+%patch -P 9 -p1
 
 # clean jar files
 find . -name "*.jar" -print -delete

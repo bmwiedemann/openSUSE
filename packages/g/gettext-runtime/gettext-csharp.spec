@@ -80,18 +80,7 @@ also included msgfmt.net.exe and msgunfmt.net.exe handle PO files more
 reliably than 'resgen'.
 
 %prep
-%setup -q -n gettext-%{version}
-%patch -P 0
-%patch -P 1 -p1
-%patch -P 2
-%patch -P 3 -p1
-%patch -P 4
-%patch -P 5
-%patch -P 6 -p1
-%patch -P 11 -p1
-%patch -P 13 -p1
-%patch -P 14 -p1
-%patch -P 15 -p1
+%autosetup -p1 -n gettext-%{version}
 
 %build
 export CFLAGS="%{optflags} -pipe -W -Wall -Dgcc_is_lint -lm"

@@ -22,7 +22,7 @@ index db2c6c3..8194cd9 100755
          # -DGGML_AVX512_VNNI -- 2021 Intel Alder Lake
  
          COMMON_CPU_DEFS="-DBUILD_SHARED_LIBS=off -DCMAKE_POSITION_INDEPENDENT_CODE=on -DGGML_NATIVE=off -DGGML_OPENMP=off"
-+        COMMON_CPU_DEFS="-DGGML_LTO=on -DCMAKE_BUILD_TYPE=Release"
++        COMMON_CPU_DEFS="${COMMON_CPU_DEFS} -DGGML_LTO=on -DCMAKE_BUILD_TYPE=Release"
          if [ -z "${OLLAMA_CPU_TARGET}" -o "${OLLAMA_CPU_TARGET}" = "cpu" ]; then
              #
              # CPU first for the default library, set up as lowest common denominator for maximum compatibility (including Rosetta)

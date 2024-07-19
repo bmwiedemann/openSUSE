@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Jul 11 09:14:41 UTC 2024 - Manfred Schwarb <manfred99@gmx.ch>
+
+- Revert SuSEfirewall2 removal (commit on Wed Jul  3 13:45:08 UTC 2019),
+    conditionally for SLE/Leap, to avoid possible regressions.
+- Require systemd-sysvinit for SLE/Leap < 15.6 to have a /usr/sbin/shutdown
+    command available. For newer versions, it is included in the systemd package. 
+
+-------------------------------------------------------------------
+Wed Jul 10 10:44:28 UTC 2024 - Manfred Schwarb <manfred99@gmx.ch>
+
+- remove obsolete text concerning apcupsd-early-powerdown in README.SUSE
+- do not use /sbin/service, call systemctl directly
+
+-------------------------------------------------------------------
+Mon Jul  8 10:31:24 UTC 2024 - Manfred Schwarb <manfred99@gmx.ch>
+
+- Leap 15.6 also needs util-linux-tty-tools
+- Patch configure to show correct GCC version (not configure.in, autoreconf fails)
+  * apcupsd-config.patch
+- Use %make_build in spec file
+
+-------------------------------------------------------------------
 Tue Mar 28 09:54:06 UTC 2023 - Michal Suchanek <msuchanek@suse.com>
 
 - Require wall utility from util-linux-tty-tools - fixes build in Factory

@@ -1,4 +1,71 @@
 -------------------------------------------------------------------
+Thu Jul 18 03:49:28 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 3.23.0:
+  * Add FixSubsetCom to fix the center of mass of the specified subset
+    of atoms.
+  * Add the indices option to ase.Atoms.get_center_of_mass() to compute
+    the center of mass of the specified subset of atoms.
+  * All saddle-point search and minimum-energy path methods have been
+    moved into a new ase.mep module. You should start importing from this
+    location; e.g., from ase.mep import NEB, DyNEB.
+  * Fix ase.constraints.FixCom.adjust_momenta() to have no center-of-mass
+    momentum
+  * ase.build.surface.graphene() now takes a thickness argument
+  * ase.build.bulk() now assigns initial magnetic moments to BCC Fe, Co,
+    and Ni.
+  * ase.build.make_supercell() can now control how to order the atoms in
+    the supercell via the option order
+  * mask() returns the mask of nonzero cell vectors, an array of three
+    booleans.
+  * reciprocal() now guarantees that cell vectors which are zero correspond
+    to reciprocal cell vectors that are also zero. Previously the
+    reciprocal cell vectors could have small nonzero values due to floating
+    point tolerance.
+  * The Cell object now has normal() and normals() which calculate normal
+    vectors to one or all pairs of cell vectors. Also added area() and
+    areas(), which return the area spanned by one or all pairs of cell
+    vectors.
+  * New a2b and periodic formats for Formula objects. The abc format has
+    been renamed to ab2.
+  * IO formats can now be implemented in separate packages and registered
+    in ase with the entry point ase.ioformats in the external package
+    configuration.
+  * ase.phonons.Displacement now has a comm keyword argument to better
+    support parallelization.
+  * Fix ase.build.rotate.minimize_rotation_and_translation() for systems
+    with periodic boundary conditions.
+  * Fix ase.io.db.row.AtomsRow.charge(), which was looking for
+    inital_charges instead of initial_charges.
+  * Fixed definition of the Lennard-Jones potential in ase.utils.ff
+  * The x3d viewer has improved aesthetics
+  * Added a function, ase.dft.kpoints.mindistance2monkhorstpack(), to
+    construct a Monkhorst-Pack grid
+  * Fixed turbomole calculator parsing issues when = are present in data
+    groups
+  * Fixed round-trip dict (de)serialization with FixedMode constraint
+  * Show total number of rows in ASE database
+  * Fix units of magnetic moments in ASE database
+  * General improvements to POVRay colors
+  * Remove deprecated CLI functions, such as the old ase-gui command
+  * Fix calculation of stresses in ase.stress.full_3x3_to_voigt_6_stress()
+  * Add polarization parser for FHI-AIMS calculator
+  * Fix bug in ase.atoms.Atoms.get_center_of_mass()
+  * Fix multiprocessing bug with ase.neb.NEB
+  * NEB calculations now call get_forces() instead of get_potential_energy()
+    followed by get_forces() to prevent duplicate work
+  * Improve performance of ase.build.supercells.make_supercell() for large
+    supercells
+  * Fix conservation of momentum in ase.md.langevin.Langevin
+  * Fix bug in ase.vibrations.Vibrations causing property calculations to
+    always use the default method
+- Switch to pyproject macros.
+- Remove patches, included upstream:
+  * support-matplotlib-36.patch
+  * 2582.patch
+  * deprecated-importlib-find_loader.patch
+
+-------------------------------------------------------------------
 Tue Feb  6 18:08:22 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add upstream patch to support python3.12

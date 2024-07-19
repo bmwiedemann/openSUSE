@@ -297,4 +297,41 @@ Reduce dependencies from 260MiB to 14MiB.
     mostly for integrations and not meant to be dependencies.</comment>
     <requestid>1183486</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>2044606aad144dd57f7eba34c3b02569</srcmd5>
+    <version>2.10.0</version>
+    <time>1721395626</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.10.0
+  * refactored a big part of the foundation of the SDK
+  * Additional integrations will now be activated automatically if 
+    the SDK detects the respective package is installed
+  * Added new API for custom instrumentation: new_scope, isolation_scope
+  * Many breaking changes, see CHANGELOG.md
+  * Removed support for Python 2 and Python 3.5
+  * Removed support for Celery 3.*
+  * Removed support for Django 1.8, 1.9, 1.10
+  * Removed support for Flask 0.*
+  * Removed support for gRPC &lt; 1.39
+  * Removed support for Tornado &lt; 6
+  * few deprecations
+  * fix(integrations): don't send full env to subprocess
+    (bsc#1228128, CVE-2024-40647)
+  * many more changes, see CHANGELOG.md
+- Revised tests
+
+- update to 1.45.0:
+  * Allow to upsert monitors
+  * It's now possible to provide `monitor_config` to the
+    `monitor` decorator/context manager directly:
+  * Add Django `signals_denylist` to filter signals that are
+    attached to by `signals_spans`
+  * `increment` for metrics
+  * Add `value`, `unit` to `before_emit_metric`
+  * New normalization rules for metric keys, names, units, tags
+  * Change `data_category` from `statsd` to `metric_bucket`
+  * Accessing `__mro__` might throw a `ValueError`
+  * Suppress prompt spawned by subprocess when using `pythonw`</comment>
+    <requestid>1188499</requestid>
+  </revision>
 </revisionlist>

@@ -540,4 +540,12 @@
     grpc_google_default_credentials_create with nogil</comment>
     <requestid>1169539</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>6fda727db35b37ca991681e421297fb1</srcmd5>
+    <version>1.65.0</version>
+    <time>1721395644</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1188357</requestid>
+  </revision>
 </revisionlist>

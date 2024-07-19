@@ -18,7 +18,7 @@
 
 %define		release_prefix  %{?snapshot:%{snapshot}}%{!?snapshot:0}
 Name:           wicked
-Version:        0.6.75
+Version:        0.6.76
 Release:        %{release_prefix}.0.0
 Summary:        Network configuration infrastructure
 License:        GPL-2.0-or-later
@@ -26,8 +26,6 @@ Group:          System/Management
 URL:            https://github.com/openSUSE/wicked
 Source0:        %{name}-%{version}.tar.bz2
 Source1:        wicked-rpmlintrc
-Patch1:         0001-ifreload-pull-UP-again-on-master-lower-changes-bsc1224100.patch
-Patch2:         0002-increase-arp-retry-attempts-on-sending-bsc1218668.patch
 #
 # Upstream First - openSUSE Build Service Policy:
 #
@@ -44,7 +42,7 @@ BuildRequires:  libtool
 BuildRequires:  make
 %if %{with wicked_devel}
 # libwicked-%%{version}.so shlib package compatible match for wicked-devel
-Provides:       libwicked-0_6_75 = %{version}-%{release}
+Provides:       libwicked-0_6_76 = %{version}-%{release}
 %endif
 # uninstall obsolete libwicked-0-6 (libwicked-0.so.6, wicked < 0.6.60)
 Provides:       libwicked-0-6 = %{version}
@@ -66,6 +64,14 @@ Obsoletes:      libwicked-0-6 < %{version}
 %bcond_with     dhcp6_nis
 %endif
 
+# optional and disabled (not needed): enable man page
+# template rebuild from md sources using pandoc(-cli)
+%bcond_with	pandoc
+
+%if %{with pandoc}
+BuildRequires:  pandoc
+%endif
+
 %bcond_with     wicked_devel
 
 # Note: teamd is enabled by default
@@ -76,9 +82,9 @@ Obsoletes:      libwicked-0-6 < %{version}
 %define _fillupdir /var/adm/fillup-templates
 %endif
 
+BuildRequires:  libnl3-devel
 BuildRequires:  dbus-1-devel
 BuildRequires:  libgcrypt-devel
-BuildRequires:  libnl3-devel
 BuildRequires:  pkg-config
 
 # Prerequire the logger package
@@ -158,7 +164,7 @@ Summary:        Network configuration infrastructure - Development files
 Group:          Development/Libraries/C and C++
 Requires:       dbus-1-devel
 Requires:       libnl3-devel
-Requires:       libwicked-0_6_75 = %{version}-%{release}
+Requires:       libwicked-0_6_76 = %{version}-%{release}
 
 %description devel
 Wicked is a network configuration infrastructure incorporating a number
@@ -170,7 +176,6 @@ This package provides the wicked development files.
 
 %prep
 %setup
-%autopatch -p1
 
 %build
 test -x ./configure || autoreconf --force --install
@@ -197,6 +202,9 @@ export CFLAGS="-std=gnu89 $RPM_OPT_FLAGS -fPIC" LDFLAGS="-pie"
 	--with-systemd-unitdir=%{_unitdir} \
 	--without-dbus-servicedir	\
 	--with-dbus-configdir=%{dbus_config_base}/system.d \
+%if %{without pandoc}
+	--disable-pandoc		\
+%endif
 	--disable-static
 make %{?_smp_mflags}
 
@@ -332,9 +340,12 @@ fi
 %dir %_datadir/wicked/schema
 %_datadir/wicked/schema/*.xml
 %_mandir/man5/wicked-config.5*
+%_mandir/man5/ifcfg-bond.5*
 %_mandir/man5/ifcfg-bonding.5*
 %_mandir/man5/ifcfg-bridge.5*
 %_mandir/man5/ifcfg-dummy.5*
+%_mandir/man5/ifcfg-infiniband.5*
+%_mandir/man5/ifcfg-ipoib.5*
 %_mandir/man5/ifcfg-macvlan.5*
 %_mandir/man5/ifcfg-macvtap.5*
 %_mandir/man5/ifcfg-ppp.5*

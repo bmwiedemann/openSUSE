@@ -41,4 +41,12 @@
 - Update com.deepin.dde.dock.gschema.xml</comment>
     <requestid>1000260</requestid>
   </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>88111c5187ad98ea129b1e82c452f6ce</srcmd5>
+    <version>15.4</version>
+    <time>1721395686</time>
+    <user>anag+factory</user>
+    <comment>- Update default wallpaper (boo#1228113) (forwarded request 1188416 from hillwood)</comment>
+    <requestid>1188417</requestid>
+  </revision>
 </revisionlist>

@@ -158,4 +158,12 @@
 - Add brunsli-devel as new dependency (fixes aarch64 build)</comment>
     <requestid>1159128</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>adc77319c175b26e03236c70d6796d4b</srcmd5>
+    <version>2024.6.1</version>
+    <time>1721395614</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1188317</requestid>
+  </revision>
 </revisionlist>

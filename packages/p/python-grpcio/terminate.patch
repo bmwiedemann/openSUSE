@@ -13,11 +13,11 @@ would warn, given all three cases return.
  src/core/lib/promise/party.h |    4 ++++
  1 file changed, 4 insertions(+)
 
-Index: grpcio-1.62.0/src/core/lib/promise/party.h
+Index: grpcio-1.65.0/src/core/lib/promise/party.h
 ===================================================================
---- grpcio-1.62.0.orig/src/core/lib/promise/party.h
-+++ grpcio-1.62.0/src/core/lib/promise/party.h
-@@ -564,6 +564,7 @@ class Party : public Activity, private W
+--- grpcio-1.65.0.orig/src/core/lib/promise/party.h
++++ grpcio-1.65.0/src/core/lib/promise/party.h
+@@ -567,6 +567,7 @@ class Party : public Activity, private W
            Crash(
                "unreachable: promises should not be repolled after completion");
        }
@@ -25,7 +25,7 @@ Index: grpcio-1.62.0/src/core/lib/promise/party.h
      }
  
      // Outside party poll: check whether the spawning party has completed this
-@@ -576,6 +577,7 @@ class Party : public Activity, private W
+@@ -579,6 +580,7 @@ class Party : public Activity, private W
          case State::kResult:
            return std::move(result_);
        }

@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Thu Jul 18 14:27:33 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to v1.49.2:
+  - Add omitempty to new timestorageclassupdated
+- Update to v1.49.1:
+  - examples: remove Ruby
+  - Include fields required by alpakka scala client in response
+  - Add Testcontainers example with Node.js
+- Update to v1.49.0:
+  - Add Object Deletion Using Signed URLs
+  - examples/node: add exists()
+  - Don't omit versioning.enabled in bucket response
+  - Additional ACL response attributes
+  - Additional bucket response attributes
+- Update to v1.48.0:
+  - Fix brittle test
+  - Fill the errors attribute for HTTP errors
+  - Remove unnecessary quoting around ETag in JSON response
+  - Additional object response attributes
+  - Support the projection parameter in getObject
+- Update to v1.47.8:
+  - Add Ruby example
+- Update to v1.47.7:
+  - Updated python example
+  - Fixed patchObject ignoring ContentType and ContentEncoding
+- Update to v1.47.6:
+  - ci/goreleaser: remove deprecated option
+  - config: trim trailing slashes from externalURL
+- Update to v1.47.5:
+  - Migrate from logrus to slog
+  - add missing etag header in download object response
+  - github/workflows/main: pin python to 3.11 in gsutil example
+  - github/workflows/main: bump node and java in examples
+- Update to v1.47.4:
+  - server: add MethodHead to the /download mapping
+- Update to v1.47.2:
+  - backend/fs: return empty BucketAttrs if the metadata file is
+    missing
+- Update to v1.47.1:
+  - Restore 4443 as default port for '-scheme http' as before PR
+    #1215
+- Update to v1.47.0:
+  - Disallow composing more than 32 objects at once
+  - Remove obsolete upload route
+  - Additional bucket response attributes
+  - Support trailing slash in /o and /b routes
+  - Add scheme option to bind to both HTTP and HTTPS
+- Update to v1.46.0:
+  - Unify logic for seeding the server from a directory
+  - Send X-Goog-Stored-Content-Encoding header
+  - Omit items if empty in object list response
+  - Add Bucket Attributes
+  - backend/fs: some bucket attributes cleanup
+
+-------------------------------------------------------------------
 Mon Jul 17 14:06:02 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Use %autosetup.

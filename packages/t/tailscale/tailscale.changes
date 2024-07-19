@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jul 18 06:31:58 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.70.0:
+  * New: Restrict recommended and automatically selected exit nodes using the
+    new AllowedSuggestedExitNodes system policy. Applies only to platforms that
+    support system policies.
+  * Changed: Improved NAT traversal for some uncommon scenarios.
+  * Changed: Optimized sending firewall rules to clients more efficiently.
+  * Fixed: Exit node suggestion CLI command now prints the hostname.
+  * Fixed: Taildrive share paths configured through the CLI resolve relative
+    to where you run the tailscale command.
+
+-------------------------------------------------------------------
 Tue Jul  2 20:35:35 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 1.68.2:

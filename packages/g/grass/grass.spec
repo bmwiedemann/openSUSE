@@ -1,7 +1,7 @@
 #
 # spec file for package grass
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 # Notice to maintainer : move this package to real lfhs
-%define	shortver 82
+%define	shortver 83
 %if 0%{?suse_version} >= 1550
 BuildRequires:  python3-wxPython
 %else
@@ -25,14 +25,13 @@ BuildRequires:  python-wxWidgets-devel >= 3.0
 %endif
 
 Name:           grass
-Version:        8.2.1
+Version:        8.3.2
 Release:        0
 Summary:        Geographic Resources Analysis Support System
 License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Other
 URL:            https://grass.osgeo.org/
 Source:         https://grass.osgeo.org/grass%{shortver}/source/%{name}-%{version}.tar.gz
-Source1:        https://grass.osgeo.org/grass%{shortver}/source/%{name}-%{version}.md5sum
 BuildRequires:  -post-build-checks
 BuildRequires:  PDAL-devel
 BuildRequires:  bison
@@ -216,7 +215,6 @@ echo %{grassdir} >%{buildroot}/%{_sysconfdir}/GRASSDIR
 
 %files devel
 %{grassdir}/include
-%{grasslib}/*.a
 %{_sysconfdir}/GRASSDIR
 
 %files doc
@@ -275,7 +273,7 @@ echo %{grassdir} >%{buildroot}/%{_sysconfdir}/GRASSDIR
 %{grassdir}/CHANGES
 %{grassdir}/COPYING
 %{grassdir}/GPL.TXT
-%{grassdir}/REQUIREMENTS.html
+%{grassdir}/REQUIREMENTS.md
 %{grassdir}/CITING
 %{grassdir}/INSTALL.md
 %exclude %{grassdir}/demolocation

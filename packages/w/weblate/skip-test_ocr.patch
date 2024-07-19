@@ -2,10 +2,10 @@
  weblate/screenshots/tests.py |    3 ++-
  1 file changed, 2 insertions(+), 1 deletion(-)
 
-Index: Weblate-5.3.1/weblate/screenshots/tests.py
+Index: weblate-5.6.2/weblate/screenshots/tests.py
 ===================================================================
---- Weblate-5.3.1.orig/weblate/screenshots/tests.py
-+++ Weblate-5.3.1/weblate/screenshots/tests.py
+--- weblate-5.6.2.orig/weblate/screenshots/tests.py
++++ weblate-5.6.2/weblate/screenshots/tests.py
 @@ -13,6 +13,8 @@ from django.urls import reverse
  from django.utils import timezone
  from rest_framework.test import APITestCase
@@ -20,7 +20,7 @@ Index: Weblate-5.3.1/weblate/screenshots/tests.py
          self.assertEqual(screenshot.units.count(), 0)
  
 +    @skip("Test fails, gh#WeblateOrg/weblate#8931")
-     def test_ocr_backend(self):
+     def test_ocr_backend(self) -> None:
          # Extract strings
          with get_tesseract(Language.objects.get(code="en")) as api:
 @@ -159,6 +162,7 @@ class ViewTest(TransactionsTestMixin, Fi
@@ -28,6 +28,6 @@ Index: Weblate-5.3.1/weblate/screenshots/tests.py
          )
  
 +    @skip("Test fails, gh#WeblateOrg/weblate#8931")
-     def test_ocr(self):
+     def test_ocr(self) -> None:
          self.make_manager()
          self.do_upload()

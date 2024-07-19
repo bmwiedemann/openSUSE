@@ -1180,4 +1180,12 @@ Remove spurious text from changes
          vst3sdk-fix-limits-include-moduleinfoparser.patch</comment>
     <requestid>1171075</requestid>
   </revision>
+  <revision rev="120" vrev="1">
+    <srcmd5>6919dfe8fa4403650c72ad216721bb71</srcmd5>
+    <version>3.6.0</version>
+    <time>1721395710</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1188453</requestid>
+  </revision>
 </revisionlist>

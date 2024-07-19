@@ -1,13 +1,14 @@
 <services>
-  <service name="tar_scm" mode="manual">
-    <param name="versionprefix">1.53.0+git</param>
-    <param name="url">https://bitbucket.org/amc-nicemice/par.git</param>
+  <service name="obs_scm" mode="manual">
     <param name="scm">git</param>
-    <param name="exclude">.git*</param>
+    <param name="url">https://git.sr.ht/~mcepl/par</param>
+    <param name="versionprefix">1.53.0+git</param>
+    <param name="revision">devel</param>
     <param name="changesgenerate">enable</param>
     <param name="changesauthor">mcepl@cepl.eu</param>
   </service>
-  <service name="recompress" mode="manual">
+  <service name="tar" mode="buildtime"/>
+  <service name="recompress" mode="buildtime">
     <param name="compression">gz</param>
     <param name="file">*.tar</param>
   </service>

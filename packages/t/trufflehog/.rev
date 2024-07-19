@@ -1161,4 +1161,41 @@
     <comment></comment>
     <requestid>1184157</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>fb7494c70d4785c19a9503b15c903b21</srcmd5>
+    <version>3.80.0</version>
+    <time>1721395701</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.80.0:
+  * [perf] -  Optimize MIME Type Detection to Reduce Allocations (#3048)
+  * [feat] - Streamlined File Handling with BufferedReaderSeeker (#3041)
+  * fix(deps): update module github.com/google/go-containerregistry to v0.20.1 (#3072)
+  * Atlassian Token Detector (#3065)
+  * fix(deps): update golang.org/x/exp digest to 1d5bc16 (#3070)
+  * fix(deps): update module github.com/xanzy/go-gitlab to v0.107.0 (#3069)
+  * fix(deps): update module github.com/aws/aws-sdk-go to v1.54.19 (#3064)
+  * fix(deps): update module github.com/aws/aws-sdk-go to v1.54.18 (#3062)
+  * fix(deps): update module cloud.google.com/go/secretmanager to v1.13.4 (#3059)
+  * fix(deps): update module github.com/aws/aws-sdk-go to v1.54.17 (#3057)
+  * update package name (#3020)
+  * Log more GitLab stuff (#3040)
+  * Order GitLab repos by ID (#3047)
+  * fix(deps): update module github.com/google/go-containerregistry to v0.20.0 (#3055)
+  * fix(deps): update module github.com/aws/aws-sdk-go to v1.54.16 (#3054)
+  * fix(deps): update golang.org/x/exp digest to 46b0784 (#3053)
+  * chore(deps): update goreleaser/goreleaser-action action to v6 (#3051)
+  * remove dead code (#3044)
+  * fix(deps): update testcontainers-go monorepo to v0.32.0 (#3050)
+  * fix(deps): update module github.com/aws/aws-sdk-go to v1.54.15 (#3049)
+  * fix(deps): update module golang.org/x/crypto to v0.25.0 (#3045)
+  * fix(deps): update module golang.org/x/net to v0.27.0 (#3046)
+  * fix(deps): update module cloud.google.com/go/storage to v1.43.0 (#3043)
+  * fix(deps): update module github.com/aws/aws-sdk-go to v1.54.14 (#3042)
+  * fix(deps): update module cloud.google.com/go/secretmanager to v1.13.3 (#3037)
+  * fix(deps): update module go.mongodb.org/mongo-driver to v1.16.0 (#3036)
+  * Elevenlabs detector (#3023)
+  * fix(detectors): avoid race (#3028)
+  * remove launchdarkly dep (#3034) (forwarded request 1188316 from ph03nix)</comment>
+    <requestid>1188427</requestid>
+  </revision>
 </revisionlist>

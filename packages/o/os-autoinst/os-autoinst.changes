@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jul 17 14:29:11 UTC 2024 - okurz@suse.com
+
+- Update to version 4.6.1721226544.d45b609:
+  * Remove obsolete check_needles.pl
+  * Rename variable "scriptdir" for clarification
+  * isotovideo: Extract 'handle_shutdown' method
+  * Restore running of individual tests via test-perl-testsuite
+  * Extract proper isotovideo 'runner::init' method instead of private call
+  * Refactor: generate python bindings from template
+
+-------------------------------------------------------------------
 Fri Jul 05 13:57:24 UTC 2024 - okurz@suse.com
 
 - Update to version 4.6.1720187836.12ff220:

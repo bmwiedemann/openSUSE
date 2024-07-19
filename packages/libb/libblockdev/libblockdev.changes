@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Apr 10 11:29:31 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.1.1:
+  * Use glib2 G_GNUC_UNUSED in place of UNUSED locally defined
+  * Port to G_GNUC_INTERNAL for controlling symbols visibility
+  * Fix some more occurrences of missing port to G_GNUC_UNUSED
+  * dm_logging: Annotate redirect_dm_log() printf format
+  * tests: Add NVMe persistent discovery controller tests
+  * tests: Add NVMe controller type checks
+  * Makefile: Fix bumpver to work with micro versions
+  * tests: Manually remove removed PVs from LVM devices file
+  * tests: Ignore LVM devices file for non-LVM tests
+  * tests: Fix removing custom LVM devices file
+  * nvme: Add bd_nvme_is_tech_avail to the API file
+  * lvm-dbus: Fix passing size for pvresize over DBus
+
+-------------------------------------------------------------------
 Mon Feb 12 10:06:44 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 3.1.0:
@@ -242,7 +259,7 @@ Thu Aug 20 22:11:53 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - udpate to 2.24:
   * VDO plugin has been deprecated in this release (functionality
-    replaced by LVM VDO) 
+    replaced by LVM VDO)
   * support for creating and managing LVM VDO volumes added
   * support for unlocking of BitLocker-compatible format BITLK
     added

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jul 17 06:03:52 UTC 2024 - danish.prakash@suse.com
+
+- Update to version 1.7.6:
+  * update containerd (1.7.16)
+  * update containerd (1.7.15)
+  * update cosign image to latest release
+  * github.com/containerd/containerd v1.7.16
+  * golang.org/x/net v0.24.0
+
+-------------------------------------------------------------------
 Sat Mar 23 13:23:12 UTC 2024 - mark_nefedov@outlook.com
 
 - Update to version 1.7.5:

@@ -19,15 +19,13 @@
 %global modname grpcio
 %{?sle15_python_module_pythons}
 Name:           python-grpcio
-Version:        1.62.2
+Version:        1.65.0
 Release:        0
 Summary:        HTTP/2-based Remote Procedure Call implementation
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://grpc.io
 Source:         https://files.pythonhosted.org/packages/source/g/grpcio/grpcio-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM python-grpcio-cython3-compat.patch gh#grpc/grpc#33918 badshah400@gmail.com -- Fix noexcept errors upon compiling with Cython 3+
-Patch0:         python-grpcio-cython3-compat.patch
 # PATCH-FIX-SLE xxhash-avoid-armv6-unaligned-access.patch alarrosa@suse.com -- do not expect unaligned accesses to work on armv6
 Patch1:         xxhash-avoid-armv6-unaligned-access.patch
 # PATCH-FIX-SLE xxhash-ppc64le-gcc7.patch boo#1208794 alarrosa@suse.com -- fix build failure on ppc64le when using gcc 7
@@ -60,13 +58,7 @@ and server applications to communicate, and enables the building of
 connected systems.
 
 %prep
-%autosetup -N -n grpcio-%{version}
-%patch -P 0 -p1
-%patch -P 3 -p1
-pushd third_party/xxhash
-%patch -P 1 -p1
-%patch -P 2 -p1
-popd
+%autosetup -p1 -n grpcio-%{version}
 
 %build
 export GRPC_BUILD_WITH_BORING_SSL_ASM=false

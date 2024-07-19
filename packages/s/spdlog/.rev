@@ -535,4 +535,16 @@
 - update fmt dependency to verrsion 10.0</comment>
     <requestid>1179915</requestid>
   </revision>
+  <revision rev="37" vrev="3">
+    <srcmd5>3961f8575ce4db89d4605e365c04f987</srcmd5>
+    <version>1.14.1</version>
+    <time>1721395499</time>
+    <user>anag+factory</user>
+    <comment>- added rpm group
+- Factory has libfmt 11 now, updated pkgconfig 
+- update spec to fix build failure. Option is called SPDLOG_BUILD_EXAMPLE, and has to be
+  turned off, to avoid upstream issue with libfmt (see https://github.com/gabime/spdlog/issues/3129).
+</comment>
+    <requestid>1187333</requestid>
+  </revision>
 </revisionlist>

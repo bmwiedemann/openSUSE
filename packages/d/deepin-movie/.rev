@@ -124,4 +124,32 @@
   * Update documents</comment>
     <requestid>1000249</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>64b1888c39b847c2f5de918633f337d9</srcmd5>
+    <version>6.0.8</version>
+    <time>1721395692</time>
+    <user>anag+factory</user>
+    <comment>- Update version to 6.0.8
+  * Fix bugs
+
+- Update version to 6.0.6
+  * Fix bugs
+- Drop fix-dtkgui.patch
+
+- Add fix-dtkgui.patch, fix build on dtkgui 5.6.12  
+
+- Update version to 6.0.5
+  * Update debian/changelog
+- Refresh Fix-library-link.patch
+
+- Update version to 6.0.1
+  * Migrate to DDE v23
+  * Fix bugs
+
+- Update version to 5.10.16
+  * Support DLNA
+  * Fix bugs
+  * Change license (forwarded request 1188425 from hillwood)</comment>
+    <requestid>1188426</requestid>
+  </revision>
 </revisionlist>

@@ -105,4 +105,14 @@
     <comment></comment>
     <requestid>1069669</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>9b15dacf8d4963a8af693f8c81c27f02</srcmd5>
+    <version>8.3.2</version>
+    <time>1721395629</time>
+    <user>anag+factory</user>
+    <comment>- Drop md5sum of sources as it is pointless 
+- Update 8.3.2, Changelog at https://github.com/OSGeo/grass/releases/tag/8.3.2
+</comment>
+    <requestid>1188335</requestid>
+  </revision>
 </revisionlist>

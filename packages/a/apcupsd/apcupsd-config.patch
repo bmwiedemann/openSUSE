@@ -1,0 +1,11 @@
+--- apcupsd-3.14.14/configure.orig	2016-04-18 22:26:31.000000000 +0200
++++ apcupsd-3.14.14/configure	2024-07-08 14:34:09.108354615 +0200
+@@ -14678,7 +14678,7 @@ $MAKE clean
+ # A whole lot of hand springs to get the compiler version.
+ #  This is because gcc changed the output in version 3.0
+ #
+-CXXVERSION=`${CXX} --version | tr '\n' ' ' | cut -f 3 -d ' '`
++CXXVERSION=`${CXX} --version | sed 's/([^)]*)//' | awk '{ print $2; exit }'`
+ if test "x${CXXVERSION}" = "x" ; then
+    CXXVERSION=`${CXX} --version | tr '\n' ' ' | cut -f 1 -d ' '`
+ fi

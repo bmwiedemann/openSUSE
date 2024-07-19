@@ -32,4 +32,16 @@ Also put packaging files under the control of git.
 (🤖: Submission of fake-gcs-server via https://src.opensuse.org/pool/fake-gcs-server/pulls/3 by mcepl)</comment>
     <requestid>1099102</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b3e5369b61556f8c511e3bdebdaa39f6</srcmd5>
+    <version>1.49.2</version>
+    <time>1721395705</time>
+    <user>anag+factory</user>
+    <comment>update_1.49.2
+
+
+
+(🤖: Submission of fake-gcs-server via https://src.opensuse.org/pool/fake-gcs-server/pulls/1 by mcepl)</comment>
+    <requestid>1188434</requestid>
+  </revision>
 </revisionlist>

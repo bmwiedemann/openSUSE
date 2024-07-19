@@ -391,4 +391,12 @@
     <comment>Some more fixes of variable interpolation + tests</comment>
     <requestid>1115402</requestid>
   </revision>
+  <revision rev="41" vrev="5">
+    <srcmd5>c7b4400f209695252b565bd57dbd44ec</srcmd5>
+    <version>6.2.0</version>
+    <time>1721395560</time>
+    <user>anag+factory</user>
+    <comment>some reproducible mtimes</comment>
+    <requestid>1188405</requestid>
+  </revision>
 </revisionlist>

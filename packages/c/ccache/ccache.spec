@@ -31,6 +31,8 @@ URL:            https://ccache.dev/
 Source0:        https://github.com/ccache/ccache/releases/download/v%{version}/ccache-%{version}.tar.xz
 Source1:        https://github.com/ccache/ccache/releases/download/v%{version}/ccache-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
+# PATCH-FIX-UPSTREAM
+Patch0:         fmt_fix.patch
 BuildRequires:  cmake
 BuildRequires:  doctest-devel
 BuildRequires:  fmt-devel

@@ -1,5 +1,16 @@
 -------------------------------------------------------------------
-Sat May  4 00:55:36 UTC 2024 - Anton Shvetz <shvetz.anton@gmail.com>
+Thu Jul 18 12:09:04 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Added patches:
+  * reproducible-jar-mtime.patch
+    + make the modification times of files in a jar file
+      reproducible
+  * reproducible-javadoc.patch
+    + make javadoc generation reproducible: don't generate
+      timestamps, and normalize locale and encoding
+
+-------------------------------------------------------------------
+Sat May  4 00:54:38 UTC 2024 - Anton Shvetz <shvetz.anton@gmail.com>
 
 - Add forgotten open-test-reporting/events to
   %{_sysconfdir}/ant.d/junitlauncher

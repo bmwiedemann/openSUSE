@@ -26,7 +26,7 @@
 %bcond_without fltk
 
 Name:           pinentry%{?nsuffix}
-Version:        1.3.0
+Version:        1.3.1
 Release:        0
 Summary:        Collection of Simple PIN or Passphrase Entry Dialogs
 License:        GPL-2.0-or-later
@@ -265,6 +265,8 @@ install -p -m 755 -D %{SOURCE3} %{buildroot}%{_bindir}/pinentry
 %{_bindir}/pinentry-qt4
 %attr(755,root,root) %{_bindir}/pinentry-qt
 %{_datadir}/applications/org.gnupg.pinentry-qt.desktop
+%{_datadir}/pixmaps/pinentry.png
+
 %else
 
 %files

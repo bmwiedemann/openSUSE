@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Jul 18 13:14:46 UTC 2024 - mcepl@cepl.eu
+
+- Switch from dead upstream to the current soft fork at
+  https://git.sr.ht/~mcepl/par, which includes all patches
+  available for the program collected from all other
+  distributions.
+- Update to version 1.53.0+git.1721308378.56c5d7a:
+  * test: we currently do not support non-UTF8 wide characters
+  * fix: use swprintf(3) for wchar_t string.
+  * chore: don't ignore existing environmental variables
+  * feat: add README.md and LICENSE
+  * Add another test case. Karel Hynek Mácha: Cikáni
+  * Make tests working even with Latin-1 and UTF-8 texts.
+  * add a Makefile that sets up variables for the protoMakefile from upstream
+  * fix cross compilation
+  * print error messages
+  * Add multibyte characters support in par(1)
+- Removed patch (included in upstream fork):
+  - par-1.53-i18n.1.patch
+
+-------------------------------------------------------------------
 Mon Jul 31 16:03:50 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Use 'manual' keyword in the _service file instead of deprecated

@@ -4112,4 +4112,16 @@ to build this: &quot;Prefer: libatomic1-gcc5&quot;</comment>
     <comment></comment>
     <requestid>1180219</requestid>
   </revision>
+  <revision rev="432" vrev="4">
+    <srcmd5>0d3ebde904c465840694c971291e786c</srcmd5>
+    <version>21.1.12</version>
+    <time>1721395543</time>
+    <user>anag+factory</user>
+    <comment>- u_fbdevhw_kernel6.9_break_fbdev_open.patch
+  * Linux kernel v6.9 has changed the symlink to point to the
+    parent device.  This breaks fbdev_open() detection logic.
+    Change it to use the subsystem symlink instead which will
+    remain stable (gitlab xserver issue#1714)</comment>
+    <requestid>1188381</requestid>
+  </revision>
 </revisionlist>

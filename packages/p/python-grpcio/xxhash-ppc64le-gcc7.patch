@@ -7,10 +7,10 @@ Subject: [PATCH] Fix compilation on RHEL 7 ppc64le (gcc 4.8)
  xxhash.h | 6 +++---
  1 file changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/xxhash.h b/xxhash.h
+diff --git a/third_party/xxhash/xxhash.h b/third_party/xxhash/xxhash.h
 index 08ab794..7850622 100644
---- a/xxhash.h
-+++ b/xxhash.h
+--- a/third_party/xxhash/xxhash.h
++++ b/third_party/xxhash/xxhash.h
 @@ -4129,7 +4129,7 @@ XXH3_accumulate_512_vsx(  void* XXH_RESTRICT acc,
                      const void* XXH_RESTRICT secret)
  {

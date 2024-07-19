@@ -42,4 +42,16 @@
 - Skipping build on 32bit platforms (gh#SWI-Prolog/swipl-devel#1139)</comment>
     <requestid>1178985</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>ea76f731c8cef24beb0c838d96e79111</srcmd5>
+    <version>9.3.8</version>
+    <time>1721395655</time>
+    <user>anag+factory</user>
+    <comment>update to 9.3.8
+
+
+
+(🤖: Submission of swipl via https://src.opensuse.org/pool/swipl/pulls/1 by mcepl)</comment>
+    <requestid>1188348</requestid>
+  </revision>
 </revisionlist>

@@ -23,11 +23,10 @@ Version:        1.14.1
 Release:        0
 Summary:        C++ logging library
 License:        MIT
+Group:          Development/Libraries/C and C++
 URL:            https://github.com/gabime/spdlog
 Source0:        https://github.com/gabime/%{name}/archive/refs/tags/v%{version}.tar.gz
 Source99:       baselibs.conf
-# PATCH-FIX-UPSTREAM 2827.patch -- Added missing square bracket to fix the level_to_string_view
-#Patch0:         https://patch-diff.githubusercontent.com/raw/gabime/spdlog/pull/2827.patch
 BuildRequires:  cmake >= 3.10
 %if 0%{?suse_version} > 1500
 BuildRequires:  gcc-c++ >= 13
@@ -37,7 +36,7 @@ BuildRequires:  gcc13-c++
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
 BuildRequires:  (pkgconfig(catch2) >= 3)
-BuildRequires:  (pkgconfig(fmt) >= 10.0.0)
+BuildRequires:  (pkgconfig(fmt) >= 11)
 BuildRequires:  pkgconfig(libsystemd)
 
 %description
@@ -88,7 +87,7 @@ v="$PWD/spdlog.sym"
     -DSPDLOG_BUILD_BENCH=OFF \
     -DSPDLOG_FMT_EXTERNAL=ON \
     -DCMAKE_BUILD_TYPE=Release \
-    -DSPDLOG_BUILD_EXAMPLES=OFF \
+    -DSPDLOG_BUILD_EXAMPLE=OFF \
     -DSPDLOG_BUILD_SHARED=ON \
     -DCMAKE_SHARED_LINKER_FLAGS="%{?build_ldflags} -Wl,--as-needed -Wl,-z,now  -Wl,--version-script=$v" \
 ..

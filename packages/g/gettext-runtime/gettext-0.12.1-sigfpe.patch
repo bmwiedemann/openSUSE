@@ -1,7 +1,7 @@
 Index: gettext-runtime/intl/dcigettext.c
 ===================================================================
---- gettext-runtime/intl/dcigettext.c.orig	2010-06-06 14:49:57.000000000 +0200
-+++ gettext-runtime/intl/dcigettext.c	2010-12-20 18:47:11.543133542 +0100
+--- a/gettext-runtime/intl/dcigettext.c.orig	2010-06-06 14:49:57.000000000 +0200
++++ b/gettext-runtime/intl/dcigettext.c	2010-12-20 18:47:11.543133542 +0100
 @@ -68,20 +68,7 @@ extern int errno;
  #endif
  
@@ -26,8 +26,8 @@ Index: gettext-runtime/intl/dcigettext.c
  # include <sys/param.h>
 Index: gettext-runtime/intl/eval-plural.h
 ===================================================================
---- gettext-runtime/intl/eval-plural.h.orig	2010-06-06 14:49:57.000000000 +0200
-+++ gettext-runtime/intl/eval-plural.h	2010-12-20 18:48:36.928872823 +0100
+--- a/gettext-runtime/intl/eval-plural.h.orig	2010-06-06 14:49:57.000000000 +0200
++++ b/gettext-runtime/intl/eval-plural.h	2010-12-20 18:48:36.928872823 +0100
 @@ -62,16 +62,12 @@ plural_eval (const struct expression *pe
  	      case mult:
  		return leftarg * rightarg;

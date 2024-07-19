@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jul 16 08:42:20 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Use %autosetup
+
+-------------------------------------------------------------------
 Thu Jun  6 14:23:04 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix envsubst-mini:

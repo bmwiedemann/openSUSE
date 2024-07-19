@@ -1,0 +1,27 @@
+From 528377da02db9311fe8fc6aa082172d6095df4ff Mon Sep 17 00:00:00 2001
+From: Jan Engelhardt <jengelh@inai.de>
+Date: Tue, 16 Jul 2024 10:39:54 +0200
+Subject: [PATCH] build: resolve build failure with fmt-11
+References: https://github.com/WasmEdge/WasmEdge/pull/3565
+
+lib/common/errinfo.cpp:165:25: error: "join" is not a member of "fmt"
+ 165 |                    fmt::join(Info.ExpParams, " , "sv),
+---
+ lib/common/errinfo.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/lib/common/errinfo.cpp b/lib/common/errinfo.cpp
+index 188a1836..5a4df5d3 100644
+--- a/lib/common/errinfo.cpp
++++ b/lib/common/errinfo.cpp
+@@ -1,6 +1,7 @@
+ // SPDX-License-Identifier: Apache-2.0
+ // SPDX-FileCopyrightText: 2019-2022 Second State INC
+ 
++#include <fmt/ranges.h>
+ #include "common/errinfo.h"
+ #include "common/errcode.h"
+ #include "common/hexstr.h"
+-- 
+2.45.2
+

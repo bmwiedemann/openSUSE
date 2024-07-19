@@ -1,0 +1,38 @@
+--- apache-ant-1.10.14/src/main/org/apache/tools/ant/taskdefs/Javadoc.java	2024-07-17 15:06:13.718343866 +0200
++++ apache-ant-1.10.14/src/main/org/apache/tools/ant/taskdefs/Javadoc.java	2024-07-18 14:51:50.362329096 +0200
+@@ -1297,6 +1297,15 @@
+     }
+ 
+     /**
++     * Control generation of timestamps.
++     *
++     * @param b if true, don't generate timestamps.
++     */
++    public void setNoTimestamp(final boolean b) {
++        addArgIf(b, "-notimestamp");
++    }
++
++    /**
+      * Create link to Javadoc output at the given URL.
+      *
+      * @return link argument to configure
+@@ -1807,6 +1816,19 @@
+      */
+     @Override
+     public void execute() throws BuildException {
++        if (System.getenv("SOURCE_DATE_EPOCH") != null) {
++            java.util.List<String> arguments = java.util.Arrays.asList(cmd.getCommandline());
++            if (!arguments.contains("-locale")) {
++                setLocale("en");
++            }
++            if (!arguments.contains("-encoding")) {
++                setEncoding("UTF-8");
++            }
++            if (!arguments.contains("-notimestamp")) {
++                setNoTimestamp(true);
++            }
++        }
++
+         checkTaskName();
+ 
+         final List<String> packagesToDoc = new Vector<>();

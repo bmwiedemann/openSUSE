@@ -1,7 +1,7 @@
 #
 # spec file for package python-esptool
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-esptool
-Version:        4.6.2
+Version:        4.7.0
 Release:        0
 Summary:        A serial utility to communicate & flash code to Espressif ESP8266 & ESP32 chips
 License:        GPL-2.0-or-later
@@ -27,24 +27,28 @@ Source:         https://github.com/espressif/esptool/archive/v%{version}.tar.gz#
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module bitstring >= 3.1.6}
 BuildRequires:  %{python_module ecdsa >= 0.16.0}
-BuildRequires:  %{python_module pyaes}
+BuildRequires:  %{python_module intelhex}
 BuildRequires:  %{python_module pyelftools}
 BuildRequires:  %{python_module pyserial >= 3.0}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module reedsolo >= 1.5.3}
 BuildRequires:  %{python_module setuptools}
-%if 0%{?python_version_nodots} < 37
-BuildRequires:  %{python_module cryptography}
-%endif
 BuildRequires:  fdupes
 BuildRequires:  openssl
 BuildRequires:  python-rpm-macros
+Requires:       python-PyYAML >= 5.1
+Requires:       python-bitstring >= 3.1.6
+Requires:       python-cryptography >= 2.1.4
 Requires:       python-ecdsa >= 0.16.0
-Requires:       python-pyaes
+Requires:       python-intelhex
 Requires:       python-pyserial >= 3.0
+Requires:       python-reedsolo >= 1.5.3
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
+%if 0%{?python_version_nodots} < 37
+BuildRequires:  %{python_module cryptography}
+%endif
 %python_subpackages
 
 %description
@@ -66,6 +70,7 @@ sed -i '/^#!/d' flasher_stub/*.py
 %python_clone -a %{buildroot}%{_bindir}/esptool.py
 %python_clone -a %{buildroot}%{_bindir}/esp_rfc2217_server.py
 %python_expand rm -rf %{buildroot}%{$python_sitelib}/__pycache__/*.pyc
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 # there are more tests but upstream runs only those in .travis.yml
