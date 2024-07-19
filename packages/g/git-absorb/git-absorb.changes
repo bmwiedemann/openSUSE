@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul 18 22:31:45 UTC 2024 - Gordon Leung <pirateclip@protonmail.com>
+
+- Update to 0.6.15
+  * Bump git2 and time crates to fix various issues
+
+-------------------------------------------------------------------
 Wed Apr 24 09:40:41 UTC 2024 - Gordon Leung <pirateclip@protonmail.com>
 
 - Remove redundant %{cargo_build}

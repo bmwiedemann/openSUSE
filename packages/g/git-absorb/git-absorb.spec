@@ -17,7 +17,7 @@
 
 
 Name:           git-absorb
-Version:        0.6.13
+Version:        0.6.15
 Release:        0
 Summary:        git commit --fixup, but automatic
 License:        BSD-3-Clause

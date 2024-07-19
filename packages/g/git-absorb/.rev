@@ -26,4 +26,13 @@ to completion packages</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1171130</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>3c79e5c041246bb68df21b9cf4f88430</srcmd5>
+    <version>0.6.15</version>
+    <time>1721395763</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.6.15
+  * Bump git2 and time crates to fix various issues</comment>
+    <requestid>1188497</requestid>
+  </revision>
 </revisionlist>
