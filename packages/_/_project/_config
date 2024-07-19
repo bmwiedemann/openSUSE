@@ -813,6 +813,7 @@ Ignore: postgresql12-devel-mini:this-is-only-for-build-envs
 Ignore: postgresql13-devel-mini:this-is-only-for-build-envs
 Ignore: postgresql14-devel-mini:this-is-only-for-build-envs
 Ignore: postgresql16-devel-mini:this-is-only-for-build-envs
+Ignore: reproducible-faketools:this-is-only-for-build-envs
 Ignore: systemd-mini-container:this-is-only-for-build-envs
 Ignore: systemd-mini:this-is-only-for-build-envs
 Ignore: udev-mini:this-is-only-for-build-envs
