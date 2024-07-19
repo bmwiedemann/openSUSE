@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Thu Jul 18 14:42:51 UTC 2024 - antonio.teixeira@suse.com
+
+- Update to version 3.14.24:
+  * WaylandBackend: Run UpdateVRRRefreshRate on Wayland_Surface_Leave
+  * WaylandBackend: Fix picking output refresh for VRR displays.
+  * steamcompmgr: Add adaptive sync convar
+  * steamcompmgr: Add filter appids for relative mouse mode
+  * Utils: Add helpers for std::vector in our Algorithm helpers
+  * convar: Add some helpers for std::string convars and callbacks
+  * steamcompmgr: Only forward relative mouse mode if we have a cursor constraint
+  * Utils: Use Contains in CloseAllFds
+  * Utils: Add small Algorithm helper file
+  * main: Only set no_display if in Steam mode.
+  * openvr: Fix trackpad mode with fps limiter
+  * openvr: Add trackpad stuff for relative mouse mode
+  * steamcompmgr: Don't consider Steam for relative mouse mode
+  * convar: Fix ordering for <=>
+  * convar: Print info if invoked with one arg
+  * steamcompmgr: Use active cursor for setting relative mouse mode
+  * steamcompmgr: Fix relative mouse getting enabled when using a nested cursor
+  * convar: Support for float convars
+  * openvr: Use full output width/height for backing texture for now
+  * main: Defer unlink for mangoapp/limiter configs
+  * main: Set GAMESCOPE_LIMITER_FILE in UpdateCompatEnvVars
+  * steamcompmgr: Add debug_force_repaint command
+  * Utils: Only attempt to close open FDs in CloseAllFds
+  * gamescopereaper: Fix zombie process buildup
+  * utils: make setting/restoring from RT thread work on musl
+  * gamescopereaper: add missing include
+  * utils: Move defer to Utils folder
+  * wlserver: Handle cursor not reaching full length of popup menus
+  * gamescopestream: Hook up to regular log stuff
+  * build: Move certain apps to src/Apps
+  * gamescopereaper: Change name for reaper log
+  * steamcompmgr: Some console changes
+  * log: Make logging a bit more colourful
+  * steamcompmgr: Remove old buffer map variables
+  * all: Refactor process launching + app waiting + add watchdog reaper thing
+  * mangoapp: Use existing MANGOHUD_CONFIGFILE if set
+  * openvr: Remove need for backing if screensize and alpha if backing is transparent
+
+-------------------------------------------------------------------
 Thu Jun 27 14:52:01 UTC 2024 - antonio.teixeira@suse.com
 
 - Update to version 3.14.22:
