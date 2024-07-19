@@ -46,6 +46,7 @@ Requires:       python-cryptography
 Requires:       python-deepmerge
 Requires:       python-fastjsonschema
 Requires:       python-hexdump
+Requires:       python-importlib_metadata
 Requires:       python-libusbsio
 Requires:       python-oscrypto
 Requires:       python-platformdirs

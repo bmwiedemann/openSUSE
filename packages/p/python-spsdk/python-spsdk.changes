@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jul 17 19:23:07 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Require importlib_metadata
+
+-------------------------------------------------------------------
 Thu Mar 28 15:03:18 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 2.1.1:
