@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jul 18 19:07:17 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.27.1:
+  * Release notes for v0.27.1 (#1566)
+  * Update dependencies (#1565)
+  * Bump golang.org/x/crypto from 0.24.0 to 0.25.0 (#1561)
+  * Improve release process (#1559)
+  * Bump k8s.io/klog/v2 from 2.130.0 to 2.130.1 (#1558)
+  * Release carvel 2.16.0 (#1555)
+  * Release chart 2.16.0 (#1554)
+
+-------------------------------------------------------------------
 Fri Jun 21 20:06:47 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.27.0:
