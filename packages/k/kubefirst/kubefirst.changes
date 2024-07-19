@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jul 18 19:08:31 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.4.13:
+  * feat: install kubefirst pro flag (#2236)
+  * fix: a missing break (#2247)
+  * feat: runtime migration to kubefirst-api (#2246)
+
+-------------------------------------------------------------------
 Tue Jul 16 06:01:08 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.4.12:
