@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jul 18 07:52:24 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Restrict Django to < 5
+
+-------------------------------------------------------------------
 Tue Mar 19 08:18:47 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Fix the libary name in gh-pr-737_importlib.patch

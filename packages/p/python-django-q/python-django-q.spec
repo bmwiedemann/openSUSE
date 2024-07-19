@@ -29,17 +29,17 @@ Patch:          gh-pr-737_importlib.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Django >= 2.2
 Requires:       python-arrow
 Requires:       python-blessed
 Requires:       python-django-picklefield
 Requires:       python-redis
+Requires:       (python-Django >= 2.2 with python-Django < 5)
 Suggests:       python-croniter
 Suggests:       python-django-q-rollbar >= 0.1
 Suggests:       python-django-q-sentry >= 0.1
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module Django >= 2.2}
+BuildRequires:  %{python_module Django >= 2.2 with %python-Django < 5}
 BuildRequires:  %{python_module arrow}
 BuildRequires:  %{python_module blessed}
 BuildRequires:  %{python_module croniter}
