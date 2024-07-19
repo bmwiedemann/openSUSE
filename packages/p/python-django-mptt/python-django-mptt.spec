@@ -18,13 +18,15 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-django-mptt
-Version:        0.14
+Version:        0.16
 Release:        0
 Summary:        Modified Preorder Tree Traversal for Django Models
 License:        MIT
 URL:            https://github.com/django-mptt/django-mptt
-Source:         https://github.com/django-mptt/django-mptt/archive/refs/tags/%{version}.tar.gz#/django-mptt-%{version}.0.tar.gz
-BuildRequires:  %{python_module setuptools}
+Source:         https://github.com/django-mptt/django-mptt/archive/refs/tags/%{version}.tar.gz
+BuildRequires:  %{python_module hatchling}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Django >= 2.2
@@ -46,10 +48,10 @@ sed -i 's/from model_mommy import mommy/from model_bakery import baker as mommy/
 sed -i 's/test_create_by_mommy_exception/_test_create_by_mommy_exception/' tests/myapp/tests.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check

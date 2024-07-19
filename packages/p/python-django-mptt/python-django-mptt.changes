@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jul 18 14:43:23 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Update to version 0.16
+  * "Since I unfortunately still depend on django-mptt in prehistoric 
+    projects I took it upon me to make it runnable again. This doesn't 
+    mean I want to maintain the package."
+  * Added support for Python 3.12, Django 5.0.
+  * Dropped Python < 3.9, Django < 3.2.
+  * Added support for the Django admin theme switcher.
+  * Switched to hatchling.
+  * Fixed get_cached_trees if there are multiple trees in the queryset.
+
+-------------------------------------------------------------------
 Tue Apr 23 20:40:24 UTC 2024 - Georg Pfuetzenreuter <mail+rpm@georg-pfuetzenreuter.net>
 
 - Switch to sle15_python_module_pythons to repair build on Leap
