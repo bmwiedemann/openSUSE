@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jul 18 20:58:39 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.32.0:
+  * Add unstable [script(…)] attribute
+  * Add [extension: 'EXT'] attribute to set shebang recipe script file extension
+  * Suppress mod doc comment with empty [doc] attribute
+  * Allow [doc] annotation on modules
+
+-------------------------------------------------------------------
 Tue Jul 16 07:59:05 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 1.31.0:
