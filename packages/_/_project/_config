@@ -592,6 +592,11 @@ Prefer: -python310-anyio3
 Prefer: -python311-anyio3
 Prefer: -python312-anyio3
 
+# have choice for python311-django >= 1.11: python311-Django python311-Django4, have choice for python311-Django needed by python311-pytest-django: python311-Django python311-Django4
+Prefer: -python310-Django4
+Prefer: -python311-Django4
+Prefer: -python312-Django4
+
 # have choice for dbus-broker-restart-behavior = 35 needed by dbus-broker: dbus-broker-allow-restart dbus-broker-block-restart
 Prefer: -dbus-broker-allow-restart
 
