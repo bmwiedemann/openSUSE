@@ -1,0 +1,6 @@
+<package name="taplo" project="openSUSE:Factory">
+  <title>Taplo</title>
+  <description>A TOML toolkit written in Rust.</description>
+  <devel project="utilities" package="taplo"/>
+  <url>https://taplo.tamasfe.dev/</url>
+</package>

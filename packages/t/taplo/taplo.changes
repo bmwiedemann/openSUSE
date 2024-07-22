@@ -1,0 +1,15 @@
+-------------------------------------------------------------------
+Fri Jul 12 18:34:52 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Update to 0.9.2:
+  * fix: bump engines compat due to new types usage
+  * fix: remove crypto workaround since VS imports own crypto
+  * Fix realign of comment makes debug assert fail
+  * Add repository attribute to crates missing it
+  * add GeneralArgs support to lsp command
+  * fix: allow building with `no-default-features`
+
+-------------------------------------------------------------------
+Tue Apr 16 05:49:09 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Initial package of taplo for openSUSE
