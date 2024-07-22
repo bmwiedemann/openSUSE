@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul  4 09:57:58 UTC 2024 - Matwey Kornilov <matwey.kornilov@gmail.com>
+
+- Switch back to InflxuData fork, since the Community fork is outdated.
+- Add fix-unsigned-char.patch: fix build for aarch64
+
+-------------------------------------------------------------------
 Mon Nov 20 11:51:29 UTC 2023 - Lubos Kocman <lubos.kocman@suse.com>
 
 - Adjust license field based on legaldb scan

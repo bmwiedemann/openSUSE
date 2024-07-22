@@ -1,7 +1,7 @@
 #
 # spec file for package flux
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,13 +25,13 @@ Version:        0.195.1
 Release:        0
 Summary:        Influx data language
 License:        Apache-2.0 AND MIT AND (Apache-2.0 OR MIT) AND Apache-2.0 WITH LLVM-exception AND CC-BY-3.0 AND CC-BY-SA-4.0 AND (Apache-2.0 OR BSL-1.0) AND BSD-3-Clause AND MPL-2.0 AND Zlib AND X11 AND Unicode-DFS-2016 AND Unicode-TOU
-URL:            https://github.com/influxcommunity/flux
+URL:            https://github.com/influxdata/flux
 Source:         %{name}-%{version}.tar.xz
 Source1:        vendor.tar.xz
-Source2:        cargo_config
 Patch1:         disable-static-library.patch
-BuildRequires:  cargo1.71
-BuildRequires:  rust1.71 >= 1.45
+Patch2:         fix-unsigned-char.patch
+BuildRequires:  cargo
+BuildRequires:  rust
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
@@ -62,9 +62,9 @@ programs using Influx data language.
 %setup -q
 pushd libflux
 tar -Jxf %{SOURCE1}
-install -D %{SOURCE2} .cargo/config
 
 patch -p2 < %{PATCH1}
+patch -p2 < %{PATCH2}
 patch -p2 <<EOF
 --- a/libflux/flux/build.rs
 +++ b/libflux/flux/build.rs
@@ -97,7 +97,7 @@ libdir=%{_libdir}
 includedir=%{_includedir}
 
 Name:           Flux
-Version:        %{version}
+Version:        0.195.1%{version}
 Description: Library for the InfluxData Flux engine
 Libs: -L%{_libdir} -lflux
 Libs.private: -ldl -lpthread
