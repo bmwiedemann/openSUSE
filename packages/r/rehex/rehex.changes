@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Jul 22 08:23:38 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.62.0:
+  * This release includes changes and new features to assist editing
+    of sub-byte-width values and non-byte-aligned values in files:
+    + Add bit array data type (#167).
+    + Allow selecting and setting comments/highlights/types on
+    bit-sized/aligned quantities, not just byte-aligned (#155).
+    + Allow defining arbitrary integer types, up to 64 bits wide (#215).
+    + Allow navigating hex data by nibbles rather than bytes (#58).
+  * There are also improvements to the highlighting feature, and general usability improvements:
+    + Allow colouring data by byte value (#223).
+    + Allow changing/defining custom highlight colours and assigning labels to them (#227).
+    + Use dimmer highlight colours for dark colour schemes (#227).
+    + Save highlight colours/labels per-file (#60).
+    + Allow changing keyboard shortcuts (#226).
+    + Add Shift+Enter shortcut for "OK" in the comment dialog (#226).
+    + Display offset in both decimal and hexadecimal in status bar (#228).
+    + Fix handling of relative paths specified on the command line when
+      opening in an existing instance (#237).
+
+-------------------------------------------------------------------
 Thu Mar 14 06:10:52 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.61.0:

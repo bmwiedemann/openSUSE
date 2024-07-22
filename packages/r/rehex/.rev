@@ -155,4 +155,29 @@
     &quot;Collapse matches&quot; is enabled in the file comparison window.</comment>
     <requestid>1157813</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>51face1f1d0fc03b0d0326ab0654a220</srcmd5>
+    <version>0.62.0</version>
+    <time>1721661528</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.62.0:
+  * This release includes changes and new features to assist editing
+    of sub-byte-width values and non-byte-aligned values in files:
+    + Add bit array data type (#167).
+    + Allow selecting and setting comments/highlights/types on
+    bit-sized/aligned quantities, not just byte-aligned (#155).
+    + Allow defining arbitrary integer types, up to 64 bits wide (#215).
+    + Allow navigating hex data by nibbles rather than bytes (#58).
+  * There are also improvements to the highlighting feature, and general usability improvements:
+    + Allow colouring data by byte value (#223).
+    + Allow changing/defining custom highlight colours and assigning labels to them (#227).
+    + Use dimmer highlight colours for dark colour schemes (#227).
+    + Save highlight colours/labels per-file (#60).
+    + Allow changing keyboard shortcuts (#226).
+    + Add Shift+Enter shortcut for &quot;OK&quot; in the comment dialog (#226).
+    + Display offset in both decimal and hexadecimal in status bar (#228).
+    + Fix handling of relative paths specified on the command line when
+      opening in an existing instance (#237).</comment>
+    <requestid>1188955</requestid>
+  </revision>
 </revisionlist>
