@@ -1,7 +1,7 @@
 #
 # spec file for package adriconf
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           adriconf
-Version:        2.7.1
+Version:        2.7.2
 Release:        0
 Summary:        Advanced DRI Configurator
 License:        GPL-3.0-only
@@ -52,7 +52,7 @@ the standard drirc file used by the Mesa drivers.
 %lang_package
 
 %prep
-%autosetup -n %{name}-v%{version} -p1
+%autosetup -n %{name}-v%{version}
 
 %build
 %cmake \

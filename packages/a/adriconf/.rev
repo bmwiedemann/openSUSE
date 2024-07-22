@@ -114,4 +114,13 @@
     <comment></comment>
     <requestid>1116874</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>532e34736e517546063946649bc59fc0</srcmd5>
+    <version>2.7.2</version>
+    <time>1721661536</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.7.11:
+  * Updated dependencies</comment>
+    <requestid>1188980</requestid>
+  </revision>
 </revisionlist>
