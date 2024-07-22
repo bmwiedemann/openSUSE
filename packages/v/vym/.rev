@@ -353,4 +353,12 @@
     <comment>Upstream version 2.9.2 with mostly bugfixes, one which could lead to data loss when reading (very) old maps</comment>
     <requestid>1079206</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>f70bbea3c9509fc62a7d8ba92fac4e63</srcmd5>
+    <version>2.9.28</version>
+    <time>1721661522</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1188951</requestid>
+  </revision>
 </revisionlist>

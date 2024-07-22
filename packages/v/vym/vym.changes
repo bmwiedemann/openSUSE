@@ -1,4 +1,98 @@
 -------------------------------------------------------------------
+Tue Jul 16 02:51:57 UTC 2024 - jun wang <jgwang@suse.com>
+
+- Update to version 2.9.28
+  * Add a README.source file to describe the tarball creation.
+  * Remove desktop.patch - applied upstream.
+  * Refresh cmake-installs.patch.
+  * Remove debian/vym.links, mimetype icon link is created
+    by cmake.
+- Other changes since 2.9.2 
+  * Add myself as Uploader.
+  * Replace cdbs by debhelper as the Debian build helper.
+  * Drop pro-file.patch - building with cmake now.
+  * Refresh do-not-phone-home.patch.
+  * Ship upstream man 1 vym.
+  * Drop debian/menu.
+  * Update debian/copyright.
+  * Add a mimetype icon for the hicolor default theme.
+  * Add Rules-Requires-Root set to no.
+  * Add Vcs information to debian/control.
+  * Raise Standards-Version to 4.7.0.
+  * Delete old desktop file shipped in debian/.
+  * Add desktop.patch to pass %F in the Exec setting and add
+    keywords.
+  * Add doc-base registration for the user manual.
+  * Add cmake-installs.patch to adjust documentation install
+    folder.
+  * Adjust watch file to query github API and change to version 4.
+  * Include release-notes-2.9.md in the package docs.
+  * Feature: Support multiple Jira instances with specific
+    authentication methods
+  * Feature: Floppy disk icon for unsaved maps better visible,
+    if active
+  * Feature: Upload images also for new Confluence pages
+  * Feature: New commands to control visuals of selection box
+  * Feature: added script to set colors of selection box for dark theme
+    demos/scripts/setSelectionBoxDarkTheme.vys
+    cannot understand every of the newer elements and .
+  * Feature: Center on selection and fit to view with
+    Key_Period + Key_Shift
+  * Feature: Delete vymLink with Ctrl-Shift click
+  * Feature: Scale pasted images to 300px width
+  * Feature: Define pen color, width and brush for selection box
+    setSelectionPenColor
+    setSelectionPenWidth
+    setSelectionBrushColor
+  * Feature: Option to 'never' use dark theme
+  * Feature: Support Personal Access Tokens for Jira and Confluence
+  * Feature: Improved animated centering on selection
+    (Shortcut: Key_Period)
+  * Feature: For multiple selected items show count in status line
+  * Feature: Scale images on the fly
+  * Bugfix: Creating Confluence page without attachments
+  * Bugfix: Icon and status of view icons
+  * Bugfix: disabled all icons when no map is available.
+  * Bugfix: Fixed layout of dialog for Confluence export
+  * Bugfix: Improved adding new branches at border of current scene
+  * Bugfix: Urls and VymLinks shown again in statusBar
+  * Bugfix: Wrong positon of selection box of xlinks control points,
+    resulting in crazy scrolling, when control point is selected.
+  * Bugfix: #79 quell linking error (#79)
+  * Bugfix: Set selection background color in TreeEditor
+  * Bugfix: Also center on selected branch when using HeadingEditor
+    while editing a heading
+  * Bugfix: Save colors of headings
+  * Bugfix: Editing long plainText headings might open
+    HeadingEditor
+  * Bugfix: #65 and #71 Colors in NoteEditor with RichText
+  * Bugfix: #76 Editing heading of zoomed in view causes panning
+  * Bugfix: When zooming in/out using mouse wheel don't change
+    rotation
+  * Bugfix: Background colors in HeadingEditor
+  * Bugfix: #40 Editing PlainText headings with linebreaks
+  * Bugfix: #75 TreeEditor and Linebreaks in headings
+  * Bugfix: #73 Default maps should not have word default in
+    MapCenter
+  * Bugfix: #72 Improved support to load new default maps
+  * Bugfix: #74 HTML export uses word wrap for PlainText notes
+  * Bugfix: Update HeadingEditor for RichText heading, when frame
+    background changes
+  * Bugfix: Update color and heading of HeadingEditor
+  * Bugfix: #70 HeadingEditor doesn't use map background when
+    switching on RichText mode
+  * Bugfix: #70 settings override macroPath, if local option is
+    used "-l"
+  * Bugfix: #68 HeadingEditor doesn't update after in MapEditor
+  * Bugfix: Consider zoomFactor after load when scrolling to
+    selection
+  * Bugfix: Set color and width of legacy xlink
+  * Change: Use Control modifier instead of Shift to only move
+    MapCenter
+  * Change: Compatibility with 2.9.514: Some elements can be read,
+    even if vym
+
+-------------------------------------------------------------------
 Thu Apr 13 12:08:45 UTC 2023 - Uwe Drechsel <vym@insilmaril.de>
 
 - Update to upstream Version 2.9.2

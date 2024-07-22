@@ -1,7 +1,7 @@
 #
 # spec file for package vym
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           vym
-Version:        2.9.2
+Version:        2.9.28
 Release:        0
 Summary:        Tool to generate and manipulate thought maps
 License:        GPL-2.0-only
@@ -90,6 +90,7 @@ fi
 # Directories can be owned by multiple packages:
 %dir %{_datadir}/icons/hicolor/48x48
 %dir %{_datadir}/icons/hicolor/48x48/apps
+%dir %{_datadir}/icons/hicolor/48x48/mimetypes
 
 %{_datadir}/icons/*/*/*/*.*
 %{_bindir}/vym
