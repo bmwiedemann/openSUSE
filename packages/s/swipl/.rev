@@ -54,4 +54,16 @@
 (🤖: Submission of swipl via https://src.opensuse.org/pool/swipl/pulls/1 by mcepl)</comment>
     <requestid>1188348</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>55a919e10bb9fa9cce63ce2413803b92</srcmd5>
+    <version>9.3.8</version>
+    <time>1721661538</time>
+    <user>anag+factory</user>
+    <comment>Add missing dependency … python3-devel.
+
+
+
+(🤖: Submission of swipl via https://src.opensuse.org/pool/swipl/pulls/2 by mcepl)</comment>
+    <requestid>1188988</requestid>
+  </revision>
 </revisionlist>

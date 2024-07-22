@@ -34,6 +34,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  gmp-devel
 BuildRequires:  gperftools-devel
 BuildRequires:  java-devel >= 1.8.0
+BuildRequires:  python3-devel >= 3.6
 # For %%check
 BuildRequires:  junit
 BuildRequires:  libarchive-devel
