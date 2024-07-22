@@ -498,4 +498,18 @@
     CHANGELOG.md file provided with this package (forwarded request 1170009 from glaubitz)</comment>
     <requestid>1170011</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>6f12813537098391069de1b24ed30e22</srcmd5>
+    <version>31.0.0</version>
+    <time>1721661545</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 31.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Drop extra LICENSE.txt as upstream now ships its own
+- Rename LICENSE.txt to LICENSE in %files section
+- Update Requires from setup.py (forwarded request 1188941 from glaubitz)</comment>
+    <requestid>1189008</requestid>
+  </revision>
 </revisionlist>
