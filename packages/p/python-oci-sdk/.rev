@@ -941,4 +941,16 @@
     <comment></comment>
     <requestid>1187614</requestid>
   </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>7593872496fb79c06ac29c37b47935d1</srcmd5>
+    <version>2.129.3</version>
+    <time>1721661521</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.129.3
+
+* Support for calling Oracle Cloud Infrastructure services in the me-abudhabi-2 region
+
+(🤖: Submission of python-oci-sdk via https://src.opensuse.org/pool/python-oci-sdk/pulls/3 by glaubitz)</comment>
+    <requestid>1188947</requestid>
+  </revision>
 </revisionlist>
