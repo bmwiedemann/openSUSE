@@ -1339,4 +1339,11 @@ URL-decode the target URL. (forwarded request 234827 from ptesarik)</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1188206</requestid>
   </revision>
+  <revision rev="149" vrev="2">
+    <srcmd5>55ad4bded06399b8f94f4fe26ac8c56e</srcmd5>
+    <version>2.0.7</version>
+    <time>1721644319</time>
+    <user>anag+factory</user>
+    <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1226676</comment>
+  </revision>
 </revisionlist>
