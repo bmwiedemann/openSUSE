@@ -791,25 +791,21 @@ echo %{sitedir}/_import_failed > %{buildroot}/%{sitedir}/site-packages/zzzz-impo
 
 %if %{with general}
 %files -n %{python_pkg_name}-tk
-%defattr(644, root, root, 755)
 %{sitedir}/tkinter
 %exclude %{sitedir}/tkinter/test
 %{dynlib _tkinter}
 
 %files -n %{python_pkg_name}-curses
-%defattr(644, root, root, 755)
 %{sitedir}/curses
 %{dynlib _curses}
 %{dynlib _curses_panel}
 
 %files -n %{python_pkg_name}-dbm
-%defattr(644, root, root, 755)
 %{sitedir}/dbm
 %{dynlib _dbm}
 %{dynlib _gdbm}
 
 %files -n %{python_pkg_name}
-%defattr(644, root, root, 755)
 %dir %{sitedir}
 %dir %{sitedir}/lib-dynload
 %{sitedir}/sqlite3
@@ -821,7 +817,6 @@ echo %{sitedir}/_import_failed > %{buildroot}/%{sitedir}/site-packages/zzzz-impo
 %endif
 
 %files -n %{python_pkg_name}-idle
-%defattr(644, root, root, 755)
 %{sitedir}/idlelib
 %dir %{_sysconfdir}/idle%{python_version}
 %config %{_sysconfdir}/idle%{python_version}/*
@@ -859,11 +854,9 @@ echo %{sitedir}/_import_failed > %{buildroot}/%{sitedir}/site-packages/zzzz-impo
 %postun -n libpython%{so_version} -p /sbin/ldconfig
 
 %files -n libpython%{so_version}
-%defattr(644, root,root)
 %{_libdir}/libpython%{python_abi}.so.%{so_major}.%{so_minor}
 
 %files -n %{python_pkg_name}-tools
-%defattr(644, root, root, 755)
 %{sitedir}/turtledemo
 %if %{primary_interpreter}
 %{_bindir}/2to3
@@ -872,7 +865,6 @@ echo %{sitedir}/_import_failed > %{buildroot}/%{sitedir}/site-packages/zzzz-impo
 %doc %{_docdir}/%{name}/Tools
 
 %files -n %{python_pkg_name}-devel
-%defattr(644, root, root, 755)
 %{_libdir}/libpython%{python_abi}.so
 %if %{primary_interpreter}
 %{_libdir}/libpython3.so
@@ -880,7 +872,6 @@ echo %{sitedir}/_import_failed > %{buildroot}/%{sitedir}/site-packages/zzzz-impo
 %{_libdir}/pkgconfig/*
 %{_includedir}/python%{python_abi}
 %{sitedir}/config-%{python_abi}-*
-%defattr(755, root, root)
 %{_bindir}/python%{python_abi}-config
 %if %{primary_interpreter}
 %{_bindir}/python3-config
@@ -893,7 +884,6 @@ echo %{sitedir}/_import_failed > %{buildroot}/%{sitedir}/site-packages/zzzz-impo
 %{_datadir}/gdb/auto-load/%{_libdir}/libpython%{python_abi}.so.%{so_major}.%{so_minor}-gdb.py
 
 %files -n %{python_pkg_name}-testsuite
-%defattr(644, root, root, 755)
 %{sitedir}/test
 %{sitedir}/*/test
 %{sitedir}/*/tests
@@ -909,7 +899,6 @@ echo %{sitedir}/_import_failed > %{buildroot}/%{sitedir}/site-packages/zzzz-impo
 %dir %{sitedir}/tkinter
 
 %files -n %{python_pkg_name}-base
-%defattr(644, root, root, 755)
 # docs
 %dir %{_docdir}/%{name}
 %doc %{_docdir}/%{name}/README.rst
