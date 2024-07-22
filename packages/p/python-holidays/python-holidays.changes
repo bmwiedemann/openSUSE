@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Jul 22 08:59:26 UTC 2024 - Adrian Schröter <adrian@suse.de>
+
+- update to 0.53:
+  * Update Chile holidays: add bank holidays
+  * Extend HolidayBase::__setitem__ to handle names including '; '
+
+-------------------------------------------------------------------
+Mon Jul 22 08:55:49 UTC 2024 - Adrian Schröter <adrian@suse.de>
+
+- re-apply rudi's fix for generating translations
+  need to generated and installed, running at %check produces an
+  incomplete package, not able to work
+
+-------------------------------------------------------------------
 Wed Jun 19 06:53:26 UTC 2024 - Adrian Schröter <adrian@suse.de>
 
 - update to 0.51:

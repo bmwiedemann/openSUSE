@@ -17,7 +17,7 @@
 
 
 Name:           python-holidays
-Version:        0.51
+Version:        0.53
 Release:        0
 Summary:        Python library for generating holidays on the fly
 License:        MIT
@@ -49,6 +49,7 @@ It makes determining whether a specific date is a holiday possible.
 %setup -q -n python-holidays-%{version}
 
 %build
+scripts/l10n/generate_mo_files.py
 %pyproject_wheel
 
 %install
@@ -56,7 +57,6 @@ It makes determining whether a specific date is a holiday possible.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-scripts/l10n/generate_mo_files.py
 %pytest
 
 %files %{python_files}
