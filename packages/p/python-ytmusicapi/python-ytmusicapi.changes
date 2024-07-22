@@ -1,0 +1,75 @@
+-------------------------------------------------------------------
+Thu Jul 18 07:37:16 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 1.7.5
+  * podcasts: fixed a crash by returning blank album author ID
+    when it doesn't exist
+  * get_album: fix invalid track list artists
+  * get_playlist: fix korean language by extracting song count
+    from text using regex
+  Changes from 1.7.4:
+  * fixed get_album other_versions
+  * fixed get_episodes_playlist
+  * edit_playlist: Allow moving title to bottom of playlist
+  * get_playlist: title, artists and album are correctly resolved
+    in collaborative playlists
+  * fix sum_total_duration failing if duration_seconds is not an
+    int
+
+-------------------------------------------------------------------
+Sun Jun 16 09:12:44 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 1.7.3
+  * playlist search result "itemCount" field cast to int
+  * add playlist id to album search
+  * make parse_menu_playlists more error proof
+  * get_home: remove "year" attribute from album results, parse
+    podcasts and episodes
+
+-------------------------------------------------------------------
+Tue May 21 19:38:33 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 1.7.2. Changes since 1.6.0:
+  * get_account_info: get authenticated user's account info
+  * get_library_channels: added type attribute to differentiate
+    between channels and artists
+  * get_artist: now supports shows from the artists view,
+    improved documentation
+  * support new A/B test formats for get_playlist and get_album
+  * adding Optional type hinting for limits parameters
+  * get_library_upload_songs: Gracefully retrieve uploaded songs
+    with a blank duration
+
+-------------------------------------------------------------------
+Mon Mar 11 12:35:17 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 1.6.0
+  * New endpoints:
+    * get_account_info
+    * get_library_podcasts
+    * get_library_channels
+    * get_channel
+    * get_channel_episodes
+    * get_episodes_playlist
+
+-------------------------------------------------------------------
+Tue Mar  5 09:50:14 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 1.5.4
+  * Fix parsing of album and views in parse_playlist_items
+  * get_episode: support progress percentage
+  * nav() now displays some debugging information on KeyError
+
+-------------------------------------------------------------------
+Fri Feb 23 21:35:17 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 1.5.3
+  * Revert "get_playlist: fix albums on tracks"
+    (gh#sigma67/ytmusicapi#548)
+  * Revert "get_charts: removed trending category (no longer
+    available on YTM)"
+
+-------------------------------------------------------------------
+Wed Feb 21 22:56:37 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Init python-ytmusicapi. Needed by audiotube

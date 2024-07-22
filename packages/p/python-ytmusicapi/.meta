@@ -1,0 +1,8 @@
+<package name="python-ytmusicapi" project="openSUSE:Factory">
+  <title>Unofficial API for YouTube Music</title>
+  <description>Unofficial API for YouTube Music
+
+</description>
+  <devel project="KDE:Applications" package="python-ytmusicapi"/>
+  <url>https://github.com/sigma67/ytmusicapi</url>
+</package>
