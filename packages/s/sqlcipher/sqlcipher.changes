@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jul 22 08:56:24 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 4.6.0:
+  * Sets default log level to WARN
+  * Sends default log output to: logcat for Android; Console for iOS and macOS; and stderr for all other platforms
+  * General improvements to log level assignments, output, and sanitization
+  * Fixes Apple Privacy Manifest by removing empty NSPrivacyCollectedDataType from PrivacyInfo.xcprivacy
+  * Moves Swift support defines for podspec user_target_xcconfig so they only apply to the consuming project
+
+-------------------------------------------------------------------
 Tue Feb  6 13:40:40 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 4.5.6:

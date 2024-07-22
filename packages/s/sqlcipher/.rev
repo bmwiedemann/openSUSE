@@ -214,4 +214,17 @@
     <comment></comment>
     <requestid>1144631</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>1f4fbc4289a75aeeb0d544735202ce6a</srcmd5>
+    <version>4.6.0</version>
+    <time>1721661535</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 4.6.0:
+  * Sets default log level to WARN
+  * Sends default log output to: logcat for Android; Console for iOS and macOS; and stderr for all other platforms
+  * General improvements to log level assignments, output, and sanitization
+  * Fixes Apple Privacy Manifest by removing empty NSPrivacyCollectedDataType from PrivacyInfo.xcprivacy
+  * Moves Swift support defines for podspec user_target_xcconfig so they only apply to the consuming project</comment>
+    <requestid>1188968</requestid>
+  </revision>
 </revisionlist>
