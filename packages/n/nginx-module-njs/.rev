@@ -15,4 +15,41 @@
     <comment></comment>
     <requestid>1119189</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a25bc7dd8020d5eb04c390ea6c6e0418</srcmd5>
+    <version>0.8.5</version>
+    <time>1721661556</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.8.5:
+nginx modules:
+  *  Change: r.variables.var, r.requestText, r.responseText,
+     s.variables.var, and the data argument of the s.on() callback with
+     upload or download event types will now convert bytes invalid in
+     UTF-8 encoding into the replacement character. When working with
+     binary data, use r.rawVariables.var, r.requestBuffer,
+     r.responseBuffer, s.rawVariables.var, and the upstream or
+     downstream event type for s.on() instead.
+  *  Feature: added timeout argument for add(), set(), and incr() methods of a shared dictionary.
+  *  Bugfix: fixed checking for duplicate js_set variables.
+  *  Bugfix: fixed request Host header when the port is non-standard.
+  *  Bugfix: fixed handling of a zero-length request body in ngx.fetch() and r.subrequest().
+  *  Bugfix: fixed heap-buffer-overflow in Headers.get().
+  *  Bugfix: fixed r.subrequest() error handling.
+Core:
+  *  Feature: added zlib module for QuickJS engine.
+  *  Bugfix: fixed zlib.inflate().
+  *  Bugfix: fixed String.prototype.replaceAll() with a zero-length argument.
+  *  Bugfix: fixed retval handling after an exception in Array.prototype.toSpliced(),
+     Array.prototype.toReversed(), Array.prototype.toSorted().
+  *  Bugfix: fixed RegExp.prototype[@@replace]() with replacements containing
+     $', $` and strings with Unicode characters.
+  *  Bugfix: fixed a one-byte overread in decodeURI() and decodeURIComponent().
+  *  Bugfix: fixed tracking of argument scope.
+  *  Bugfix: fixed integer overflow in Date.parse().
+Changes with njs 0.8.4
+nginx modules:
+  *  Feature: the Server header for outgoing header can be set.
+  *  Improvement: validating URI and args arguments in r.subrequest().</comment>
+    <requestid>1189037</requestid>
+  </revision>
 </revisionlist>

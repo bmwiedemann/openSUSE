@@ -1,4 +1,71 @@
 -------------------------------------------------------------------
+Mon Jul 22 12:42:55 UTC 2024 - Adam Majer <adam.majer@suse.de>
+
+- update to 0.8.5:
+nginx modules:
+  *  Change: r.variables.var, r.requestText, r.responseText,
+     s.variables.var, and the data argument of the s.on() callback with
+     upload or download event types will now convert bytes invalid in
+     UTF-8 encoding into the replacement character. When working with
+     binary data, use r.rawVariables.var, r.requestBuffer,
+     r.responseBuffer, s.rawVariables.var, and the upstream or
+     downstream event type for s.on() instead.
+  *  Feature: added timeout argument for add(), set(), and incr() methods of a shared dictionary.
+  *  Bugfix: fixed checking for duplicate js_set variables.
+  *  Bugfix: fixed request Host header when the port is non-standard.
+  *  Bugfix: fixed handling of a zero-length request body in ngx.fetch() and r.subrequest().
+  *  Bugfix: fixed heap-buffer-overflow in Headers.get().
+  *  Bugfix: fixed r.subrequest() error handling.
+Core:
+  *  Feature: added zlib module for QuickJS engine.
+  *  Bugfix: fixed zlib.inflate().
+  *  Bugfix: fixed String.prototype.replaceAll() with a zero-length argument.
+  *  Bugfix: fixed retval handling after an exception in Array.prototype.toSpliced(),
+     Array.prototype.toReversed(), Array.prototype.toSorted().
+  *  Bugfix: fixed RegExp.prototype[@@replace]() with replacements containing
+     $', $` and strings with Unicode characters.
+  *  Bugfix: fixed a one-byte overread in decodeURI() and decodeURIComponent().
+  *  Bugfix: fixed tracking of argument scope.
+  *  Bugfix: fixed integer overflow in Date.parse().
+
+Changes with njs 0.8.4
+nginx modules:
+  *  Feature: the Server header for outgoing header can be set.
+  *  Improvement: validating URI and args arguments in r.subrequest().
+  *  Improvement: checking for duplicate js_set variables.
+  *  Bugfix: fixed clear() method of a shared dictionary without a timeout introduced in 0.8.3.
+  *  Bugfix: fixed r.send() method of a shared dictionary without a timeout with Buffer argument.
+Core:
+  *  Feature: added QuickJS engine support in CLI.
+  *  Bugfix: fixed atob() with non-padded base64 strings.
+
+Changes with njs 0.8.3
+nginx modules:
+  *  Bugfix: fixed Headers.set().
+  *  Bugfix: fixed js_set with Buffer values.
+  *  Bugfix: fixed clear() method of a shared dictionary when a timeout is not specified.
+  *  Bugfix: fixed stub_status statistics when js_periodic is enabled.
+Core:
+  *  Bugfix: fixed building with libxml2 2.12 and later.
+  *  Bugfix: fixed Date constructor for overflows and with NaN values.
+  *  Bugfix: fixed underflow in querystring.parse().
+  *  Bugfix: fixed potential buffer overread in String.prototype.match().
+  *  Bugfix: fixed parsing of for-in loops.
+  *  Bugfix: fixed parsing of hexadecimal, octal, and binary literals with no digits.
+
+Changes with njs 0.8.2
+nginx modules:
+  *  Feature: introduced console object. The following methods were introduced:
+     error(), info(), log(), time(), timeEnd(), warn().
+  *  Bugfix: fixed HEAD response handling with large Content-Length in Fetch API.
+  *  Bugfix: fixed items() method for a shared dictionary.
+  *  Bugfix: fixed delete() method for a shared dictionary.
+Core:
+  *  Feature: extended fs module. Added fs.existsSync().
+  *  Bugfix: fixed xml module. Broken XML exception handling in xml.parse() method was fixed.
+  *  Bugfix: fixed Regexp.prototype.exec() with global regexp and Unicode input.
+
+-------------------------------------------------------------------
 Thu Oct 19 20:52:24 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 0.8.1:

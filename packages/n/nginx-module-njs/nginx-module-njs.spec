@@ -1,7 +1,7 @@
 #
 # spec file for package nginx-module-njs
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           nginx-module-njs
-Version:        0.8.1
+Version:        0.8.5
 Release:        0
 Summary:        NGINX module for NGINX Javascript
 License:        BSD-2-Clause
 Group:          Productivity/Networking/Web/Proxy
 URL:            https://nginx.org/en/docs/njs/
-Source:         %{name}.tar.gz
+Source:         nginx-module-njs-%{version}.tar.gz
 BuildRequires:  nginx-source
 %{ngx_conditionals}
 %{ngx_requires}
@@ -33,7 +33,7 @@ njs is a subset of the JavaScript language that allows extending
 nginx functionality.
 
 %prep
-%autosetup -p1 -n %{name}
+%autosetup -p1
 cp -r %{_prefix}/src/nginx .
 
 %build
@@ -48,7 +48,7 @@ install -Dpm0755 nginx/objs/ngx_stream_js_module.so %{buildroot}/%{ngx_module_di
 
 %files
 %license LICENSE
-%doc README CHANGES
+%doc CHANGES
 %{ngx_module_dir}/ngx_http_js_module.so
 %{ngx_module_dir}/ngx_stream_js_module.so
 

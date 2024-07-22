@@ -1,13 +1,14 @@
 <services>
 	<service name="tar_scm" mode="manual">
 		<param name="filename">nginx-module-njs</param>
-		<param name="scm">hg</param>
-		<param name="url">https://hg.nginx.org/njs</param>
-		<param name="revision">0.8.1</param>
-        <param name="version"></param>
+		<param name="scm">git</param>
+		<param name="url">https://github.com/nginx/njs</param>
+		<param name="revision">@PARENT_TAG@</param>
+		<param name="versionformat">@PARENT_TAG@</param>
 	</service>
     <service name="recompress" mode="manual">
         <param name="compression">gz</param>
-        <param name="file">nginx-module-njs.tar</param>
+        <param name="file">nginx-module-njs*.tar</param>
     </service>
+    <service name="set_version" mode="manual" />
 </services>
