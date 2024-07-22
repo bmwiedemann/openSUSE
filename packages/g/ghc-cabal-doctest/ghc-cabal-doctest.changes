@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jun 26 21:59:54 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update cabal-doctest to version 1.0.10.
+  Upstream has renamed and modified the change log file(s) in this
+  release. Unfortunately, the automatic updater cannot reliable
+  determine relevant entries for this release.
+
+-------------------------------------------------------------------
 Thu Mar 30 17:06:06 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Updated spec file to conform with ghc-rpm-macros-2.5.2.

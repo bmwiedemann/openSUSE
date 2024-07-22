@@ -1,4 +1,118 @@
 -------------------------------------------------------------------
+Fri Jul 19 11:35:48 UTC 2024 - Matt Williams <matt@milliams.com>
+
+- update to 4.0.3:
+  * Fixed
+    + Increased the minimum requirement of attrs to >=21.3. Older
+      versions do not import correctly. (gh#fsfe/reuse-tool#1044)
+- update to 4.0.2:
+  * Fixed
+    + Repaired a bug that would cause a crash when running annotate
+      --merge-copyrights on a file that does not yet have a year in
+      the copyright statement. This bug was introduced in v4.0.1.
+      (gh#fsfe/reuse-tool#1030)
+- update to 4.0.1:
+  * Fixed
+    Make sure that Read the Docs can compile the documentation. This
+    necesitated updating poetry.lock. (gh#fsfe/reuse-tool#1028)
+- update to 4.0.0:
+  * Added
+    + Added support for REUSE.toml. (gh#fsfe/reuse-tool#863)
+    + Added reuse convert-dep5 to convert .reuse/dep5 to REUSE.toml.
+      (gh#fsfe/reuse-tool#863)
+    + Man pages added for all reuse commands. Distribution
+      maintainers might wish to distribute the (Sphinx-built) man
+      pages. (gh#fsfe/reuse-tool#975)
+    + More file types are recognised:
+      + Assembler (.asm) (gh#fsfe/reuse-tool#928)
+      + GraphQL (.graphqls, .gqls) (gh#fsfe/reuse-tool#930)
+      + CUDA-C++ (.cu, .cuh) (gh#fsfe/reuse-tool#938)
+      + Various .NET files (.csproj, .fsproj, .fsx, .props, .sln,
+        .vbproj) (gh#fsfe/reuse-tool#940)
+      + Cargo (Cargo.lock) (gh#fsfe/reuse-tool#937)
+      + Clang-Tidy (.clang-tidy) (gh#fsfe/reuse-tool#961)
+      + Java .properties files (gh#fsfe/reuse-tool#968)
+      + Apache HTTP server config .htaccess files
+        (gh#fsfe/reuse-tool#985)
+      + npm .npmrc files (gh#fsfe/reuse-tool#985)
+      + LaTeX class files (.cls) (gh#fsfe/reuse-tool#971)
+      + CSON (.cson) (gh#fsfe/reuse-tool#1002)
+      + Hjson (.hjson) (gh#fsfe/reuse-tool#1002)
+      + JSON5 (.json5) (gh#fsfe/reuse-tool#1002)
+      + JSON with Comments (.jsonc) (gh#fsfe/reuse-tool#1002)
+      + Tap (.taprc) (gh#fsfe/reuse-tool#997)
+      + Zsh (.zshrc) (gh#fsfe/reuse-tool#997)
+      + Perl test (.t) (gh#fsfe/reuse-tool#997)
+      + BATS test (.bats) (gh#fsfe/reuse-tool#997)
+      + Octave/Matlab (.m) (gh#fsfe/reuse-tool#604)
+      + VHDL(.vhdl) (gh#fsfe/reuse-tool#564)
+      + Earthly files (Earthfile and .earthlyignore)
+        (gh#fsfe/reuse-tool#1024)
+    + Added comment styles:
+      + man for UNIX Man pages (.man) (gh#fsfe/reuse-tool#954)
+    + Added --lines output option for lint. (gh#fsfe/reuse-tool#956)
+    + Treat % !TEX and % !BIB as shebangs in TeX and BibTeX files,
+      respectively (gh#fsfe/reuse-tool#971)
+    + Support alternate spelling --skip-unrecognized.
+      (gh#fsfe/reuse-tool#974)
+    + In annotate, rename --copyright-style to --copyright-prefix.
+      The former parameter is still supported.
+      (gh#fsfe/reuse-tool#973)
+    + Support alternate spelling --skip-unrecognized
+      (gh#fsfe/reuse-tool#974)
+    + cpp and cppsingle style shorthands (see changes).
+      (gh#fsfe/reuse-tool#941)
+  * Changed
+    + Updated SPDX resources to 3.24.0. (gh#fsfe/reuse-tool#994)
+    + Updated REUSE specification version to 3.2.
+      (gh#fsfe/reuse-tool#994)
+    + .s files now use the Python comment style as per GNU Assembler
+      (gas). (gh#fsfe/reuse-tool#928)
+    + Previously, any file that begins with COPYING or LICENSE was
+      ignored. This has been changed. Now, files like COPYING_README
+      are no longer ignored, but COPYING and COPYING.txt are still
+      ignored (in other words: exact matches, or COPYING + a file
+      extension). Idem ditto for LICENSE. (gh#fsfe/reuse-tool#886)
+    + Dependencies added:
+      + attrs>=21.1 (gh#fsfe/reuse-tool#863)
+      + tomlkit>=0.8 (gh#fsfe/reuse-tool#863)
+    + Reorganised the way that c, css, and csingle styles work.
+      (#941)
+      + c used to support multi-line comments; it now only supports
+        multi-line /* */ comments. This is identical to the old css
+        style.
+      + cpp has been added, which supports multi-line /* */ comments
+        and single-line // comments. This is identical to the old c
+        style.
+      + csingle has been renamed to cppsingle, and it supports only
+        single-line // comments.
+  * Deprecated
+    + .reuse/dep5 is marked deprecated. reuse convert-dep5 will help
+      you switch to REUSE.toml. (gh#fsfe/reuse-tool#863)
+  * Removed
+    + The PendingDeprecationWarning for the aggregation of
+      information between DEP5 and the contents of a file has been
+      removed. This behaviour is now explicitly specified in REUSE
+      Specification v3.2. (gh#fsfe/reuse-tool#1017, related to
+      gh#fsfe/reuse-tool#779)
+    + reuse init removed. (gh#fsfe/reuse-tool#863)
+    + csingle and css style shorthands (see changes).
+      (gh#fsfe/reuse-tool#941)
+  * Fixed
+    + The datetime value for Created: was wrongly formatted since
+      3.0.0. It now returns a correctly formatted ISO 8601 date
+      again. (gh#fsfe/reuse-tool#952)
+    + Repaired the behaviour of reuse download where being inside of
+      a LICENSES/ directory should not create a deeper
+      LICENSES/LICENSES/ directory. (gh#fsfe/reuse-tool#975)
+    + Support annotating a file that contains only a shebang.
+      (gh#fsfe/reuse-tool#965)
+    + Add CONTRIBUTING.md to the sdist. (gh#fsfe/reuse-tool#987)
+    + In reuse spdx, fixed the output to be more compliant by
+      capitalising SPDXRef-Document DESCRIBES appropriately.
+      (gh#fsfe/reuse-tool#1013)
+
+-------------------------------------------------------------------
 Sun May  5 20:59:03 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.0.2:

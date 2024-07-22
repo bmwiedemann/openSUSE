@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        3.2
+Version:        3.2.1
 Release:        0
 Summary:        Conversion between markup formats
 License:        GPL-2.0-or-later
@@ -400,6 +400,7 @@ This package provides the Haskell %{pkg_name} profiling library.
 %{_datadir}/%{pkg_name}-%{version}/data/templates/default.ms
 %{_datadir}/%{pkg_name}-%{version}/data/templates/default.muse
 %{_datadir}/%{pkg_name}-%{version}/data/templates/default.opendocument
+%{_datadir}/%{pkg_name}-%{version}/data/templates/default.openxml
 %{_datadir}/%{pkg_name}-%{version}/data/templates/default.opml
 %{_datadir}/%{pkg_name}-%{version}/data/templates/default.org
 %{_datadir}/%{pkg_name}-%{version}/data/templates/default.plain

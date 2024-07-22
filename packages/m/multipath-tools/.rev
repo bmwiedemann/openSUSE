@@ -1967,4 +1967,21 @@ by an upstream reviewed commit. (forwarded request 1109432 from mwilck)</comment
   (bsc#1222458) (forwarded request 1183349 from mwilck)</comment>
     <requestid>1183412</requestid>
   </revision>
+  <revision rev="165" vrev="1">
+    <srcmd5>9cb2fb29ed322e356164fbfeb455d790</srcmd5>
+    <version>0.9.9+161+suse.0c835ef</version>
+    <time>1721661282</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.9.9+161+suse.0c835ef:
+  * Update to upstream reviewed code path (787e00d)
+  * Added hardware defaults for Huawei storage arrays and XSG1 vendors
+  * Refactored and improved the libultipath / libdevmapper interface
+  * Fixed bug that caused queueing to be always disabled if flushing a map failed
+  (bug introduced in 0.9.8).
+  * Fixed failure to remove maps even with `deferred_remove`
+  (bug introduced in 0.9.9).
+  * CI improvements
+  * Documentation fixes (forwarded request 1188706 from mwilck)</comment>
+    <requestid>1188707</requestid>
+  </revision>
 </revisionlist>

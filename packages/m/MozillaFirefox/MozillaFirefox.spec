@@ -1,5 +1,5 @@
 #
-# spec file for package MozillaFirefox
+# spec file
 #
 # Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2006-2024 Wolfgang Rosenauer <wr@rosenauer.org>
@@ -233,10 +233,12 @@ Patch26:        mozilla-bmo1907511.patch
 # Firefox/browser
 Patch101:       firefox-kde.patch
 Patch102:       firefox-branded-icons.patch
+# PATCH-FIX-UPSTREAM MozillaFirefox-3781e3117706.patch bsc#1227856
+Patch103:       firefox-3781e3117706.patch
 %endif
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Requires(post): coreutils shared-mime-info desktop-file-utils
-Requires(postun): shared-mime-info desktop-file-utils
+Requires(postun):shared-mime-info desktop-file-utils
 Requires:       %{name}-branding >= 68
 %requires_ge    mozilla-nspr
 %requires_ge    mozilla-nss

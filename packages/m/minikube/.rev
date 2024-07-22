@@ -716,4 +716,12 @@
     <comment></comment>
     <requestid>1178136</requestid>
   </revision>
+  <revision rev="46" vrev="2">
+    <srcmd5>f753ca1961172e84daf0064a435be334</srcmd5>
+    <version>1.33.1</version>
+    <time>1721661333</time>
+    <user>anag+factory</user>
+    <comment>- add socat recommends (bsc#1120850)</comment>
+    <requestid>1188576</requestid>
+  </revision>
 </revisionlist>

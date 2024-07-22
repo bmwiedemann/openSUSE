@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jul 20 10:19:17 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add python-healpy-scipy-1_14-compat.patch: Account for the
+  renaming of trapz to trapezoid in scipy 1.14.
+- Add python-healpy-matplotlib-1_9-compat.patch: Fix compatibility
+  with matplotlib >= 3.9; upstream commit 0b1f498 rebased for
+  current version.
+
+-------------------------------------------------------------------
 Wed Oct  4 23:12:42 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 1.16.6:

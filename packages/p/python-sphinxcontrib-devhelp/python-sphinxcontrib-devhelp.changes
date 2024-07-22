@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jul 19 17:56:18 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Add no-store-btime-gzip.patch to fix bsc#1227999 by not storing
+  build time in gzip headers so as to make building documentation
+  reproducible
+- Add rpmlintrc
+
+-------------------------------------------------------------------
 Sun Jan 14 10:42:57 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.0.6:

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jul 17 10:37:58 UTC 2024 - Sai Karthik Karra <kskarthik@disroot.org>
+
+- Add missing runtime dependency libgthread-2_0-0 which
+  makes nyxt unable to start
+- Added %check section in spec to prevent future runtime errors
+  which can be caught during packaging stage
+
+-------------------------------------------------------------------
 Sat Jun  1 20:25:02 UTC 2024 - Michael Pujos <pujos.michael@gmail.com>
 
 - added cl-gobject-introspection-sb-int.patch and fset-sb-int.patch

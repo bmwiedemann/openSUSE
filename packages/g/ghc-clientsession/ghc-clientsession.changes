@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jul 14 08:07:12 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update clientsession to version 0.9.3.0.
+  ## 0.9.3.0
+
+  * Migrate to crypton from cryptonite.
+
+-------------------------------------------------------------------
 Wed Jul 19 14:02:37 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update clientsession to version 0.9.2.0 revision 1.

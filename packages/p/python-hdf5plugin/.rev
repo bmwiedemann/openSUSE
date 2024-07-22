@@ -15,4 +15,13 @@
     <comment></comment>
     <requestid>1179335</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>b9c0d39d689d8fdb7b7e65fd9f888e81</srcmd5>
+    <version>4.4.0</version>
+    <time>1721661513</time>
+    <user>anag+factory</user>
+    <comment>- Add patch support-numpy-2.patch:
+  * Do not call now-removed numpy methods in the test suite.</comment>
+    <requestid>1188921</requestid>
+  </revision>
 </revisionlist>

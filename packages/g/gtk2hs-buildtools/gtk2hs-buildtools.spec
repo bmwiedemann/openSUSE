@@ -19,13 +19,12 @@
 %global pkg_name gtk2hs-buildtools
 %global pkgver %{pkg_name}-%{version}
 Name:           %{pkg_name}
-Version:        0.13.10.0
+Version:        0.13.11.0
 Release:        0
 Summary:        Tools to build the Gtk2Hs suite of User Interface libraries
 License:        GPL-2.0-only
 URL:            https://hackage.haskell.org/package/%{name}
 Source0:        https://hackage.haskell.org/package/%{name}-%{version}/%{name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{name}-%{version}/revision/1.cabal#/%{name}.cabal
 BuildRequires:  alex
 BuildRequires:  chrpath
 BuildRequires:  ghc-Cabal-devel
@@ -95,7 +94,6 @@ This package provides the Haskell %{pkg_name} profiling library.
 
 %prep
 %autosetup
-cp -p %{SOURCE1} %{name}.cabal
 
 %build
 %ghc_lib_build

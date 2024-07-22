@@ -1,7 +1,7 @@
 #
 # spec file for package votca
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2022-2024 SUSE LLC
 # Copyright (c) 2021-2022 Christoph Junghans
 #
 # All modifications and additions to the file contributed by third parties
@@ -25,7 +25,7 @@
 %endif
 
 Name:           votca
-Version:        2024
+Version:        2024.1
 Release:        0
 %define         uversion %{version}
 %define         sover 2024
@@ -34,8 +34,6 @@ License:        Apache-2.0
 Group:          Productivity/Scientific/Chemistry
 URL:            https://www.votca.org
 Source0:        https://github.com/votca/votca/archive/v%{uversion}.tar.gz#/%{name}-%{uversion}.tar.gz
-# PATCH-FIX-UPSTREAM 1032.patch -- fix build with newer boost votca/votca#1032
-Patch0:         1032.patch
 
 BuildRequires:  cmake >= 3.13
 BuildRequires:  eigen3-devel
@@ -195,10 +193,27 @@ This package contains the bash completion support for votca.
 sed -i '1s@env @@' \
   %{buildroot}/%{_datadir}/votca/scripts/inverse/{iie,cma_processor,table_smooth_at_cut_off}.py \
   %{buildroot}/%{_datadir}/votca/csg-tutorials/LJ1-LJ2/imc/svd.py \
-  %{buildroot}/%{_datadir}/votca/csg-tutorials/spce/ibi*/spce.py
+  %{buildroot}/%{_datadir}/votca/csg-tutorials/spce/ibi*/spce.py \
+  %{buildroot}/%{_datadir}/votca/scripts/inverse/check_csg_xml.py
+sed -i '1s@/usr/bin/env .*perl@/usr/bin/perl@' \
+  %{buildroot}/%{_datadir}/votca/scripts/inverse/*.pl
+sed -i '1s@/usr/bin/env .*bash@/bin/bash@' \
+  %{buildroot}/%{_datadir}/votca/scripts/inverse/*.sh \
+  %{buildroot}/%{_datadir}/votca/csg-tutorials/*/*/*.sh \
+  %{buildroot}/%{_datadir}/votca/csg-tutorials/*/*.sh \
+  %{buildroot}/%{_datadir}/votca/csg-tutorials/*/*/*/*.sh \
+  %{buildroot}/%{_bindir}/csg_{call,inverse}
+
+# fixed in next release
+chmod +x %{buildroot}/%{_datadir}/votca/csg-tutorials/spce/ibi_espressopp/spce.py
 
 %if %{with_xtp}
-sed -i '1s@env @@' %{buildroot}/%{_bindir}/xtp_* %{buildroot}/%{_datadir}/votca/xtp/benchmark/xtp_benchmark
+chmod +x %{buildroot}/%{_datadir}/votca/xtp-tutorials/pyxtp/scripts/run_*.py
+sed -i '1s@env @@' %{buildroot}/%{_bindir}/xtp_* \
+  %{buildroot}/%{_datadir}/votca/xtp/benchmark/xtp_benchmark \
+  %{buildroot}/%{_datadir}/votca/xtp-tutorials/pyxtp/scripts/run_*.py
+sed -i '1s@/usr/bin/env .*bash@/bin/bash@' \
+  %{buildroot}/%{_datadir}/votca/xtp-tutorials/clean_notebooks.sh
 %endif
 
 # Move bash completion file to correct location

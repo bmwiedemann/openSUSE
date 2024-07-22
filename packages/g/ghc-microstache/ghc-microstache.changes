@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri May 17 00:36:09 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update microstache to version 1.0.3.
+  ## microstache 1.0.3
+
+  - Support GHC-8.6.5...GHC-9.10.1
+
+-------------------------------------------------------------------
 Fri Oct 13 10:16:02 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update microstache to version 1.0.2.3 revision 3.

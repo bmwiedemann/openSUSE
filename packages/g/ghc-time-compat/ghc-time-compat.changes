@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul  4 20:56:02 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update time-compat to version 1.9.7 revision 2.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Mon May 13 18:27:58 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update time-compat to version 1.9.7.

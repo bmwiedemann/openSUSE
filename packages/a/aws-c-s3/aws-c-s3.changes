@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Jul 15 10:47:29 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.6.4
+  * Make options more const by @DmitriyMusatkin in (#445)
+- from version 0.6.3
+  * Mark the network interface API experimental by @waahm7 in (#447)
+- from version 0.6.2
+  * Fix assert when library goes through init/cleanup multiple times
+    by @graebm in (#446)
+  * Support machines with multiple NICs by @waahm7 in (#444)
+- from version 0.6.1
+  * Fix assert when library goes through init/cleanup multiple times
+    by @graebm in (#446)
+  * Support machines with multiple NICs by @waahm7 in (#444)
+
+-------------------------------------------------------------------
 Thu Jul  4 12:09:57 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.6.0

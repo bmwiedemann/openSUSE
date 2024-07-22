@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul 17 16:36:06 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.4.49:
+  * nethsm: Add support for namespaces by @robin-nitrokey in #535
+
+-------------------------------------------------------------------
 Sat Jul 13 12:07:09 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.4.48:

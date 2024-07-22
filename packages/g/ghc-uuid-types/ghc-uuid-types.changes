@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jul  4 20:55:00 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update uuid-types to version 1.0.6 revision 1.
+  ## 1.0.6 (2023-04-16)
+
+  - Support GHC-8.6.5..GHC-9.10.1
+
+-------------------------------------------------------------------
 Wed Oct  4 11:24:32 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update uuid-types to version 1.0.5.1.

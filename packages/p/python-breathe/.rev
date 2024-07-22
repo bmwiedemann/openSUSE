@@ -291,4 +291,13 @@
     <comment></comment>
     <requestid>1115886</requestid>
   </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>88eddb896f92a1f2f553d4593fa16c5f</srcmd5>
+    <version>4.35.0</version>
+    <time>1721661241</time>
+    <user>anag+factory</user>
+    <comment>- Skip test suite because of gh#breathe-doc/breathe#987
+</comment>
+    <requestid>1188744</requestid>
+  </revision>
 </revisionlist>

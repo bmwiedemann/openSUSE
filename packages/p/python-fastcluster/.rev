@@ -96,4 +96,15 @@
     <comment></comment>
     <requestid>1006738</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>48825a29718153b39d9f56d32a466a68</srcmd5>
+    <version>1.2.6</version>
+    <time>1721661298</time>
+    <user>anag+factory</user>
+    <comment>- Add patch support-numpy-2.patch:
+  * Support both numpy 1 and 2
+- Switch to pyproject macros.
+- No more greedy globs in %files.</comment>
+    <requestid>1188506</requestid>
+  </revision>
 </revisionlist>

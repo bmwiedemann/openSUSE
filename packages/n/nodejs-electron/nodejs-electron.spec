@@ -78,16 +78,24 @@ BuildArch:      i686
 
 
 
-%ifnarch %ix86 %arm
-
+%ifnarch %ix86 %arm aarch64
 %if (0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150700 || 0%{?fedora})
 %bcond_without lto
 %else
 %bcond_with lto
 %endif
+%endif
 
-%else
+%ifarch %ix86 %arm
 %bcond_with lto
+%endif
+
+%ifarch aarch64
+%if 0%{?fedora} >= 40
+%bcond_with lto
+%else
+%bcond_without lto
+%endif
 %endif
 
 
@@ -212,7 +220,7 @@ BuildArch:      i686
 
 
 Name:           nodejs-electron
-Version:        30.2.0
+Version:        30.3.0
 %global tag_version %version
 Release:        0
 Summary:        Build cross platform desktop apps with JavaScript, HTML, and CSS
@@ -787,127 +795,7 @@ ln -sf %{_bindir}/eu-strip buildtools/third_party/eu-strip/bin/eu-strip
 sed -i 's/OFFICIAL_BUILD/GOOGLE_CHROME_BUILD/' \
       tools/generate_shim_headers/generate_shim_headers.py
 
-
-%build
-pushd electron/shell/browser/resources/win
-[ $(identify electron.ico | wc -l) = 4 ] #Sanity check
-convert electron.ico -strip extracted.png
-identify extracted-0.png | grep -F 16x16
-identify extracted-1.png | grep -F 32x32
-identify extracted-2.png | grep -F 48x48
-identify extracted-3.png | grep -F 256x256
-popd
-
-
-# GN sets lto on its own and we need just ldflag options, not cflags
-%define _lto_cflags %{nil}
-
-# Make sure python is python3
-install -d -m 0755 python3-path
-%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150700 || 0%{?fedora}
-ln -sf %{_bindir}/python3 "$(pwd)/python3-path/python"
-%else
-ln -sf %{_bindir}/python3.11 "$(pwd)/python3-path/python"
-ln -sf %{_bindir}/python3.11 "$(pwd)/python3-path/python3"
-%endif
-export PATH="$(pwd)/python3-path:${PATH}"
-
-#HACK: Those packages on Leap are available only in python3.6 versions.
-%if 0%{?suse_version}  && 0%{?suse_version} < 1550
-install -d -m 0755 python3-site
-cp -pr %{python3_sitelib}/{json5,mako} -t "$(pwd)/python3-site"
-export PYTHONPATH="$(pwd)/python3-site"
-%endif
-
-#some Fedora ports still try to build with LTO
-ARCH_FLAGS=$(echo "%optflags"|sed 's/-f[^ ]*lto[^ ]*//g' )
-
-#Work around an upstream ODR issue.
-#Remove this once https://bugs.chromium.org/p/chromium/issues/detail?id=1375049 gets fixed.
-ARCH_FLAGS="$ARCH_FLAGS -DIS_SERIAL_ENABLED_PLATFORM"
-
-
-
-
-%if 0%{?fedora}
-# Fix base/allocator/allocator_shim.cc:408:2: error: #error This code cannot be
-# used when exceptions are turned on.
-ARCH_FLAGS="$(echo $ARCH_FLAGS | sed -e 's/ -fexceptions / /g')"
-%endif
-
-# for wayland
-export CXXFLAGS="${ARCH_FLAGS} -I/usr/include/wayland -I/usr/include/libxkbcommon"
-export CFLAGS="${CXXFLAGS}"
-
-# Google has a bad coding style, using a macro `NOTREACHED()` that is not properly detected by GCC
-# multiple times throughout the codebase (including generated code). It is not possible to redefine the macro to __builtin_unreachable,
-# as it has an astonishing syntax, behaving like an ostream (in debug builds it is supposed to trap and print an error message)
-export CXXFLAGS="${CXXFLAGS} -Wno-error=return-type"
-
-# A bunch of memcpy'ing of JSObject in V8 runs us into “Logfile got too big, killed job.”
-export CXXFLAGS="${CXXFLAGS} -Wno-class-memaccess"
-# Warning spam from generated mojom code again makes the log too big
-export CXXFLAGS="${CXXFLAGS} -Wno-packed-not-aligned -Wno-address"
-
-# REDUCE DEBUG for C++ as it gets TOO large due to “heavy hemplate use in Blink”. See symbol_level below and chromium-102-compiler.patch
-export CXXFLAGS="$(echo ${CXXFLAGS} | sed -e 's/-g / /g' -e 's/-g$//g')"
-
-%ifarch %ix86 %arm aarch64
-export CFLAGS="$(echo ${CFLAGS} | sed -e 's/-g /-g1 /g' -e 's/-g$/-g1/g')"
-%endif
-
-#The chromium build process passes lots of .o files directly to the linker instead of using static libraries,
-#and relies on the linker eliminating unused sections.
-#Re-add these parameters from build/config/compiler/BUILD.gn.
-export LDFLAGS="%{?build_ldflags} -Wl,-O2 -Wl,--gc-sections "
-
-
-
-%ifarch %ix86 %arm
-#try to reduce memory
-
-export LDFLAGS="${LDFLAGS} -Wl,--no-keep-memory"
-%endif #ifarch ix86 arm
-
-
-%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150700 || 0%{?fedora}
-export CC=gcc
-export CXX=g++
-export AR=gcc-ar
-export NM=gcc-nm
-export RANLIB=gcc-ranlib
-%else
-export CC=gcc-13
-export CXX=g++-13
-export AR=gcc-ar-13
-export NM=gcc-nm-13
-export RANLIB=gcc-ranlib-13
-%endif
-
-
-
-# do not eat all memory
-%ifarch %ix86 %arm
-%limit_build -m 1200
-%else
-%limit_build -m 4000
-%endif
-
-%ifarch aarch64
-#These settings make it use much more memory leading to OOM during linking
-unset MALLOC_CHECK_
-unset MALLOC_PERTURB_
-%endif
-
-%if %{with lto}
-%ifarch aarch64
-export LDFLAGS="$LDFLAGS -flto=3 --param ggc-min-expand=20 --param ggc-min-heapsize=32768 --param lto-max-streaming-parallelism=1 -Wl,--no-keep-memory -Wl,--reduce-memory-overheads"
-%else
-# x64 is fine with the the default settings (the machines have 30GB+ ram)
-export LDFLAGS="$LDFLAGS -flto=auto"
-%endif
-%endif
-
+# Remove bundled libraries
 gn_system_libraries=(
     brotli
     crc32c
@@ -1040,6 +928,134 @@ find third_party/electron_node/deps/histogram -type f ! -name "*.gn" -a ! -name 
 find third_party/electron_node/deps/simdutf -type f ! -name "*.gn" -a ! -name "*.gni" -a ! -name "*.gyp" -a ! -name "*.gypi" -delete
 %endif
 
+
+%build
+pushd electron/shell/browser/resources/win
+[ $(identify electron.ico | wc -l) = 4 ] #Sanity check
+convert electron.ico -strip extracted.png
+identify extracted-0.png | grep -F 16x16
+identify extracted-1.png | grep -F 32x32
+identify extracted-2.png | grep -F 48x48
+identify extracted-3.png | grep -F 256x256
+popd
+
+
+# GN sets lto on its own and we need just ldflag options, not cflags
+%define _lto_cflags %{nil}
+
+# Make sure python is python3
+install -d -m 0755 python3-path
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150700 || 0%{?fedora}
+ln -sf %{_bindir}/python3 "$(pwd)/python3-path/python"
+%else
+ln -sf %{_bindir}/python3.11 "$(pwd)/python3-path/python"
+ln -sf %{_bindir}/python3.11 "$(pwd)/python3-path/python3"
+%endif
+export PATH="$(pwd)/python3-path:${PATH}"
+
+#HACK: Those packages on Leap are available only in python3.6 versions.
+%if 0%{?suse_version}  && 0%{?suse_version} < 1550
+install -d -m 0755 python3-site
+cp -pr %{python3_sitelib}/{json5,mako} -t "$(pwd)/python3-site"
+export PYTHONPATH="$(pwd)/python3-site"
+%endif
+
+#some Fedora ports still try to build with LTO
+ARCH_FLAGS=$(echo "%optflags"|sed 's/-f[^ ]*lto[^ ]*//g' )
+
+#Work around an upstream ODR issue.
+#Remove this once https://bugs.chromium.org/p/chromium/issues/detail?id=1375049 gets fixed.
+ARCH_FLAGS="$ARCH_FLAGS -DIS_SERIAL_ENABLED_PLATFORM"
+
+
+
+
+%if 0%{?fedora}
+# Fix base/allocator/allocator_shim.cc:408:2: error: #error This code cannot be
+# used when exceptions are turned on.
+ARCH_FLAGS="$(echo $ARCH_FLAGS | sed -e 's/ -fexceptions / /g')"
+%endif
+
+# for wayland
+export CXXFLAGS="${ARCH_FLAGS} -I/usr/include/wayland -I/usr/include/libxkbcommon"
+export CFLAGS="${CXXFLAGS}"
+
+# Google has a bad coding style, using a macro `NOTREACHED()` that is not properly detected by GCC
+# multiple times throughout the codebase (including generated code). It is not possible to redefine the macro to __builtin_unreachable,
+# as it has an astonishing syntax, behaving like an ostream (in debug builds it is supposed to trap and print an error message)
+export CXXFLAGS="${CXXFLAGS} -Wno-error=return-type"
+
+# A bunch of memcpy'ing of JSObject in V8 runs us into “Logfile got too big, killed job.”
+export CXXFLAGS="${CXXFLAGS} -Wno-class-memaccess"
+# Warning spam from generated mojom code again makes the log too big
+export CXXFLAGS="${CXXFLAGS} -Wno-packed-not-aligned -Wno-address"
+
+# REDUCE DEBUG for C++ as it gets TOO large due to “heavy hemplate use in Blink”. See symbol_level below and chromium-102-compiler.patch
+export CXXFLAGS="$(echo ${CXXFLAGS} | sed -e 's/-g / /g' -e 's/-g$//g')"
+
+%ifarch %ix86 %arm
+export CFLAGS="$(echo ${CFLAGS} | sed -e 's/-g /-g1 /g' -e 's/-g$/-g1/g')"
+%endif
+
+%ifarch aarch64
+%if %{with lto}
+export CFLAGS="$(echo ${CFLAGS} | sed -e 's/-g /-g1 /g' -e 's/-g$/-g1/g')"
+%endif
+%endif
+
+
+#The chromium build process passes lots of .o files directly to the linker instead of using static libraries,
+#and relies on the linker eliminating unused sections.
+#Re-add these parameters from build/config/compiler/BUILD.gn.
+export LDFLAGS="%{?build_ldflags} -Wl,-O2 -Wl,--gc-sections "
+
+
+
+%ifarch %ix86 %arm
+#try to reduce memory
+
+export LDFLAGS="${LDFLAGS} -Wl,--no-keep-memory"
+%endif #ifarch ix86 arm
+
+
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150700 || 0%{?fedora}
+export CC=gcc
+export CXX=g++
+export AR=gcc-ar
+export NM=gcc-nm
+export RANLIB=gcc-ranlib
+%else
+export CC=gcc-13
+export CXX=g++-13
+export AR=gcc-ar-13
+export NM=gcc-nm-13
+export RANLIB=gcc-ranlib-13
+%endif
+
+
+
+# do not eat all memory
+%ifarch %ix86 %arm
+%limit_build -m 1200
+%else
+%limit_build -m 4000
+%endif
+
+%ifarch aarch64
+#These settings make it use much more memory leading to OOM during linking
+unset MALLOC_CHECK_
+unset MALLOC_PERTURB_
+%endif
+
+%if %{with lto}
+%ifarch aarch64
+export LDFLAGS="$LDFLAGS -flto=3 --param ggc-min-expand=20 --param ggc-min-heapsize=32768 --param lto-max-streaming-parallelism=1 -Wl,--no-keep-memory -Wl,--reduce-memory-overheads"
+%else
+# x64 is fine with the the default settings (the machines have 30GB+ ram)
+export LDFLAGS="$LDFLAGS -flto=auto"
+%endif
+%endif
+
 # Create the configuration for GN
 # Available options: out/Release/gn args --list out/Release/
 myconf_gn=""
@@ -1162,11 +1178,17 @@ myconf_gn+=" blink_symbol_level=0"
 myconf_gn+=" v8_symbol_level=0"
 %endif
 %ifarch aarch64
+%if %{with lto}
 # linker OOM, sorry.
 # we still seem to get some debug generated during linking when LTO is enabled
 myconf_gn+=' symbol_level=0'
 myconf_gn+=' blink_symbol_level=0'
 myconf_gn+=' v8_symbol_level=0'
+%else
+myconf_gn+=' symbol_level=2'
+myconf_gn+=' blink_symbol_level=1'
+myconf_gn+=' v8_symbol_level=1'
+%endif
 %endif
 
 #symbol_level should not affect generated code.

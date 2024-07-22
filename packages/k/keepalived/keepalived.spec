@@ -38,7 +38,7 @@
 %bcond_without systemd
 
 Name:           keepalived
-Version:        2.2.8
+Version:        2.3.1
 Release:        0
 Summary:        A keepalive facility for Linux
 License:        GPL-2.0-or-later

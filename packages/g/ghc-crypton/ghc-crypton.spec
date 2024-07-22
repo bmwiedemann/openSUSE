@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-crypton
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.34
+Version:        1.0.0
 Release:        0
 Summary:        Cryptography Primitives sink
 License:        BSD-3-Clause
@@ -38,7 +38,6 @@ BuildRequires:  ghc-deepseq-prof
 BuildRequires:  ghc-memory-devel
 BuildRequires:  ghc-memory-prof
 BuildRequires:  ghc-rpm-macros
-BuildRequires:  glibc-devel
 ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-tasty-devel
@@ -84,7 +83,6 @@ Read "Crypto.Tutorial" for a quick start guide.
 Summary:        Haskell %{pkg_name} library development files
 Requires:       %{name} = %{version}-%{release}
 Requires:       ghc-compiler = %{ghc_version}
-Requires:       glibc-devel
 Requires(post): ghc-compiler = %{ghc_version}
 Requires(postun): ghc-compiler = %{ghc_version}
 

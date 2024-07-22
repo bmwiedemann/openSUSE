@@ -30,7 +30,7 @@
 %endif
 
 Name:           kubevirt
-Version:        1.2.2
+Version:        1.3.0
 Release:        0
 Summary:        Container native virtualization
 License:        Apache-2.0
@@ -41,13 +41,12 @@ Source1:        kubevirt_containers_meta
 Source2:        kubevirt_containers_meta.service
 Source3:        %{url}/releases/download/v%{version}/disks-images-provider.yaml
 Source100:      %{name}-rpmlintrc
-Patch1:         0001-Collect-component-Role-rules-under-operator-Role-ins.patch
 BuildRequires:  glibc-devel-static
 BuildRequires:  golang-packaging
 BuildRequires:  pkgconfig
 BuildRequires:  rsync
 BuildRequires:  sed
-BuildRequires:  golang(API) >= 1.21
+BuildRequires:  golang(API) >= 1.22
 BuildRequires:  pkgconfig(libvirt)
 ExclusiveArch:  %{_exclusive_arch}
 
@@ -183,6 +182,11 @@ case "${distro}" in
     ;;
 150600:0)
     tagprefix=suse/sles/15.6
+    labelprefix=com.suse.kubevirt
+    registry=registry.suse.com
+    ;;
+150700:0)
+    tagprefix=suse/sles/15.7
     labelprefix=com.suse.kubevirt
     registry=registry.suse.com
     ;;

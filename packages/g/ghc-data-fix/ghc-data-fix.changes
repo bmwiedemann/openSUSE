@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jul  4 20:04:07 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update data-fix to version 0.3.4.
+  ## 0.3.4
+
+  - Use quantified constraints superclasses for `Eq`, `Ord`, `NFData` and
+    `Hashable Fix` instances, when available.
+
+-------------------------------------------------------------------
 Sun May 12 20:32:03 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update data-fix to version 0.3.3.

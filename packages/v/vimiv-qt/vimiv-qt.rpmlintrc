@@ -1,0 +1,4 @@
+# PyQt5 provided by other thing.
+addFilter("python-missing-require PyQt5")
+addFilter("python-leftover-require python3-qt5")
+

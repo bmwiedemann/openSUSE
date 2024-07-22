@@ -172,4 +172,12 @@ See: http://lists.opensuse.org/archive/opensuse-factory/2014-03/msg00332.html</c
     <comment>version update</comment>
     <requestid>1108865</requestid>
   </revision>
+  <revision rev="22" vrev="5">
+    <srcmd5>bdcd86cebec2a2aebebc58dc120ab98b</srcmd5>
+    <version>1.0</version>
+    <time>1721661379</time>
+    <user>anag+factory</user>
+    <comment>version update</comment>
+    <requestid>1188637</requestid>
+  </revision>
 </revisionlist>

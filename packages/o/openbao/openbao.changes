@@ -1,0 +1,42 @@
+-------------------------------------------------------------------
+Thu Jul 18 12:47:17 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.0.0:
+  * This release does not ship with the UI enabled. The UI will be
+    available in the future. #129
+  * This release provides initial support for artifact signing.
+  * OpenBao does not provide support for Vault Enterprise features.
+    If there is an enterprise feature you would like to see added
+    to the project, please open a feature request.
+  * OpenBao is fully API compatible with Vault 1.14.9, and seal
+    compatible with the plugins the project supports. Plugin
+    support for OpenBao can be found here.
+  * Changelog
+    - Gate Docker steps behind GOOS (#412)
+    - Add GOOS matrix to release workflow (#411)
+    - Update Go version, changelog, modules for GA (#410)
+    - set bao binary version info with Goreleaser (#401)
+    - Remove cross-cluster revocation from PKI (#365)
+    - Update docs to include mlock removal RFC (#391)
+    - Bump actions/upload-artifact from 4.3.3 to 4.3.4 (#395)
+    - Clarify fork point in FAQ (#392)
+    - docs: recreate images and diagrams (#397)
+    - Bump test-summary/action from 2.2 to 2.4 (#387)
+    - Remove mlock and replace with cgroups (#363)
+    - Downgrade test-summary/action from 2.3 to 2.2 (#381)
+    - Bump test-summary/action from 2.1 to 2.3 (#199)
+    - Bump browser-actions/setup-chrome from 1.5.0 to 1.7.1 (#377)
+    - Bump actions/github-script from 6.4.1 to 7.0.1 (#198)
+    - Bump actions/upload-artifact from 3.1.2 to 4.3.3 (#376)
+    - fix release asset parsing for download page (#378)
+    - update website dependencies (#368)
+    - docs(token): document the token format (#372)
+    - Fix artifact signing, use default runner
+    - Bump actions/configure-pages from 4 to 5 (#370)
+
+-------------------------------------------------------------------
+Sun Feb  4 08:43:31 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- new package openbao: provide a software solution to manage,
+  store, and distribute sensitive data including secrets,
+  certificates, and keys (open source fork of Hashicorp Vault)

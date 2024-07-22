@@ -1,4 +1,126 @@
 -------------------------------------------------------------------
+Sun Jul 14 11:17:33 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 10.0.24 → 10.0.25
+
+-------------------------------------------------------------------
+Fri Jul 12 12:58:24 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix mocking of test_process_result_bundle_as_rpm
+
+-------------------------------------------------------------------
+Fri Jul 12 12:43:23 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed logging behavior of Compress::get_format
+
+  The get_format() method allows to check which compression format
+  a given input stream has. This is done by calling the supported
+  compression tools in a row and let them check if they can deal
+  with the provided data or not. As a result error messages are
+  logged for streams that some tool doesn't understand. However,
+  those error messages are no errors and only the result of the
+  checking. This information in the kiwi log file is confusing
+  and several users already complained when they see information
+  like:
+
+  EXEC: Failed with stderr: /usr/bin/xz: ...: File format not recognized
+
+  This commit changes how the compression tooling is called in a
+  way that no exception is raised (which leads to the above error message)
+  but the result returncode is used to decide on the success or
+  error of the respective compression tooling.
+
+-------------------------------------------------------------------
+Fri Jul 12 10:18:24 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Allow to set custom ISO Application ID
+
+  Add new <type ... application_id="..."/> attribute to be set in
+  the ISO header main block. The application ID was used as identifier
+  in the legacy initrd code from former kiwi versions. Because of
+  this there is still the compat layer which sets an App ID as MBR
+  identifier string unless the new application_id overwrites it.
+  This Fixes #1810
+
+-------------------------------------------------------------------
+Fri Jul 12 09:43:09 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 10.0.23 → 10.0.24
+
+-------------------------------------------------------------------
+Thu Jul 11 16:47:22 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Added integration test for SUSE agama installer
+
+  This integration test builds a self-install ISO image which
+  drops the SUSE Agama installer into a ramdisk for performing
+  an interactive installation procedure to test Agama
+
+-------------------------------------------------------------------
+Thu Jul 11 14:33:16 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add --set-type-attr and --set-release-version
+
+  Allow to set/overwrite type section attributes via the cmdline.
+  Allow to set/add the release-version element via the cmdline.
+  This Fixes #2478 and Fixes #2588
+
+-------------------------------------------------------------------
+Wed Jul 10 16:58:57 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update integration test for eficsm
+
+  Update the type of the Secure profile of the live image integration
+  test as well as the type of the simple-disk test to make use of the
+  eficsm="false" attribute to switch off CSM mode and test an EFI only
+  layout.
+
+-------------------------------------------------------------------
+Wed Jul 10 16:32:30 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add new eficsm type attribute
+
+  Allow to produce EFI/UEFI images without hybrid CSM
+  capabilities. This Fixes #2407
+
+-------------------------------------------------------------------
+Wed Jul 10 11:26:45 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Wait for loop device detach to complete
+
+  Detaching a loop device via 'losetup -d' is an async operation.
+  Once the command returns the loop can still be associated with
+  the block special. Therefore this commit waits until the block
+  device got released or a timeout is hit. This Fixes #2580
+
+-------------------------------------------------------------------
+Tue Jul 09 09:40:49 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update requires for kiwi-systemdeps-disk-images
+
+  On Tumbleweed several changes caused tools like strings
+  or the codepage for mtools to be missing in a standard
+  installation. For building disk images especially EFI
+  capable ones with vendor information kiwi needs the above
+  tool. This commit adds the packages providing them on
+  Tumbleweed to the meta systemdeps for disk images.
+  This Fixes #2585
+
+-------------------------------------------------------------------
+Mon Jul 08 09:17:49 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Supplements are not understood by Debian/Ubuntu
+
+-------------------------------------------------------------------
+Thu Jul 04 16:16:44 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Split out bash completion into a sub-package
+
+  Per review of the SUSE packaging team we should split out
+  the bash completion into its own sub-package to give users
+  better control over the completion feature.
+
+-------------------------------------------------------------------
 Thu Jul 04 12:57:58 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
 
 - Bump version: 10.0.22 → 10.0.23

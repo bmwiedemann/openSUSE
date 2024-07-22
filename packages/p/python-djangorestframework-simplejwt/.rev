@@ -68,4 +68,12 @@
 - Drop patch jwt2.patch, included upstream.</comment>
     <requestid>1183075</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>d890969d1850a416c53f2e730e3ab74a</srcmd5>
+    <version>5.3.1</version>
+    <time>1721661354</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1188599</requestid>
+  </revision>
 </revisionlist>

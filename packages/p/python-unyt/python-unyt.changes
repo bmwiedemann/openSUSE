@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jul 19 18:07:04 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Revert numpy restriction. It is explicitly supported upstream.
+
+-------------------------------------------------------------------
 Thu Jul 11 02:42:33 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 3.0.3:

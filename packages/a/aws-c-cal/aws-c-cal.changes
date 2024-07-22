@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jul 19 11:02:08 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.7.2
+  * CI for AWS-LC-FIPS by @graebm in (#192)
+  * Fix FreeBSD CI to install default python packages
+    by @TingDaoK in (#193)
+  * Revert "Revert "Implement runtime check on libcrypto linkage (#186)"
+    by @TingDaoK in (#195)
+
+-------------------------------------------------------------------
 Thu Jul  4 11:32:42 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.7.1

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Jul 13 12:59:34 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update gtk2hs-buildtools to version 0.13.11.0.
+  Upstream does not provide a change log file.
+
+-------------------------------------------------------------------
+Mon Jul  1 04:43:34 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update gtk2hs-buildtools to version 0.13.10.0 revision 2.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Fri Jan  5 23:11:36 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update gtk2hs-buildtools to version 0.13.10.0 revision 1.

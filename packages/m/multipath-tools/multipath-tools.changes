@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Jul 19 16:01:19 UTC 2024 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 0.9.9+161+suse.0c835ef:
+  * Update to upstream reviewed code path (787e00d)
+  * Added hardware defaults for Huawei storage arrays and XSG1 vendors
+  * Refactored and improved the libultipath / libdevmapper interface
+  * Fixed bug that caused queueing to be always disabled if flushing a map failed
+  (bug introduced in 0.9.8).
+  * Fixed failure to remove maps even with `deferred_remove`
+  (bug introduced in 0.9.9).
+  * CI improvements
+  * Documentation fixes
+
+-------------------------------------------------------------------
 Tue Jun 25 13:19:58 UTC 2024 - Martin Wilck <mwilck@suse.com>
 
 - Update to version 0.9.9+90+suse.f1d2f20:

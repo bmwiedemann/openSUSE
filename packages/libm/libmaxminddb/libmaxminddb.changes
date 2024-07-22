@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jul 18 15:54:35 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.10.0:
+  * The reader can now lookup records on a database with a search
+    tree that is greater than 4 gigabytes without sometimes
+    returning erroneous results due to an integer overflow.
+
+-------------------------------------------------------------------
 Wed Jan 10 08:53:07 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - libmaxminddb 1.9.1:
@@ -127,46 +135,46 @@ Thu May 17 13:37:24 UTC 2018 - jweberhofer@weberhofer.at
 Tue Apr 12 13:48:56 UTC 2016 - p.drouand@gmail.com
 
 - Update to version 1.2.0
-  * Four additional fields were added to the end of the 
-    MMDB_search_node_s struct returned by MMDB_read_node. These 
+  * Four additional fields were added to the end of the
+    MMDB_search_node_s struct returned by MMDB_read_node. These
     fields allow the user to iterate through the search tree without
-    making undocumented assumptions about how this library works 
-    internally and without knowing the specific details of the database 
+    making undocumented assumptions about how this library works
+    internally and without knowing the specific details of the database
     format. GitHub #110 (https://github.com/maxmind/libmaxminddb/issues/110)
 - Changes from version 1.1.5
-  * Previously, reading a database with a pointer in the metadata would 
-    cause an MMDB_INVALID_METADATA_ERROR to be returned. This was due to 
-    an invalid offset being used when calculating the pointer. The 
-    data_section and metadata_section fields now both point to the 
-    beginning of the data section. Previously, data_section pointed 
-    to the beginning of the data separator. This will not affect 
+  * Previously, reading a database with a pointer in the metadata would
+    cause an MMDB_INVALID_METADATA_ERROR to be returned. This was due to
+    an invalid offset being used when calculating the pointer. The
+    data_section and metadata_section fields now both point to the
+    beginning of the data section. Previously, data_section pointed
+    to the beginning of the data separator. This will not affect
     anyone using only documented fields from MMDB_s.
-  * MMDB_lookup_sockaddr will set mmdb_error to 
-    MMDB_IPV6_LOOKUP_IN_IPV4_DATABASE_ERROR if an IPv6 sockaddr is 
-    looked up in an IPv4-only database. Previously only 
+  * MMDB_lookup_sockaddr will set mmdb_error to
+    MMDB_IPV6_LOOKUP_IN_IPV4_DATABASE_ERROR if an IPv6 sockaddr is
+    looked up in an IPv4-only database. Previously only
     MMDB_lookup_string would set this error code.
-  * When resolving an address, this library now relies on getaddrinfo 
+  * When resolving an address, this library now relies on getaddrinfo
     to determine the address family rather than trying to guess it itself.
 - Changes from version 1.1.4
-  * Packaging fixes. The 1.1.3 tarball release contained a lot of extra 
+  * Packaging fixes. The 1.1.3 tarball release contained a lot of extra
     junk in the t/ directory.
 - Changes from version 1.1.3
   * Added several additional checks to make sure that we don't attempt to read
-    past the end of the databases's data section. GitHub #103 
+    past the end of the databases's data section. GitHub #103
     (https://github.com/maxmind/libmaxminddb/pull/103).
-  * When searching for the database metadata, there was a bug that caused 
-    the code to think it had found valid metadata when none existed. In 
+  * When searching for the database metadata, there was a bug that caused
+    the code to think it had found valid metadata when none existed. In
     addition, this could lead to an attempt to read past the end of the
-    database entirely. Finally, if there are multiple metadata markers 
-    in the database, we treat the final one as the start of the metdata, 
+    database entirely. Finally, if there are multiple metadata markers
+    in the database, we treat the final one as the start of the metdata,
     instead of the first. GitHub #102 (https://github.com/maxmind/libmaxminddb/pull/102)
-  * Don't attempt to mmap a file that is too large to be mmapped on the system. 
+  * Don't attempt to mmap a file that is too large to be mmapped on the system.
     GitHub #101 (https://github.com/maxmind/libmaxminddb/pull/101).
-  * Added a missing out of memory check when reading a file's metadata. 
+  * Added a missing out of memory check when reading a file's metadata.
     GitHub #101 (https://github.com/maxmind/libmaxminddb/pull/101).
-  * Added several additional checks to make sure that we never attempt 
-    to malloc more than SIZE_MAX memory, which would lead to integer 
-    overflow. This could only happen with pathological databases. 
+  * Added several additional checks to make sure that we never attempt
+    to malloc more than SIZE_MAX memory, which would lead to integer
+    overflow. This could only happen with pathological databases.
     GitHub #101 (https://github.com/maxmind/libmaxminddb/pull/101).
 
 -------------------------------------------------------------------
@@ -174,21 +182,21 @@ Wed Nov 18 15:15:37 UTC 2015 - p.drouand@gmail.com
 
 - Update to version 1.1.2
   * IMPORTANT: This release includes a number of important security
-    fixes. Among these fixes is improved validation of the database 
-    metadata. Unfortunately, MaxMind GeoIP2 and GeoLite2 databases 
-    created earlier than January 28, 2014, had an invalid data type 
-    for the record_size in the metadata. Previously these databases 
-    worked on little endian machines with libmaxminddb but did not 
-    work on big endian machines. Due to increased safety checks when 
-    reading the file, these databases will no longer work on any 
-    platform. If you are using one of these databases, we recommend 
+    fixes. Among these fixes is improved validation of the database
+    metadata. Unfortunately, MaxMind GeoIP2 and GeoLite2 databases
+    created earlier than January 28, 2014, had an invalid data type
+    for the record_size in the metadata. Previously these databases
+    worked on little endian machines with libmaxminddb but did not
+    work on big endian machines. Due to increased safety checks when
+    reading the file, these databases will no longer work on any
+    platform. If you are using one of these databases, we recommend
     that you upgrade to the latest GeoLite2 or GeoIP2 database
   * Added pkg-config support.
   * Several segmentation faults found with afl-fuzz were fixed. These
-    were caused by missing bounds checking and missing verification 
+    were caused by missing bounds checking and missing verification
     of data type.
-    MMDB_get_entry_data_list will now fail on data structures with a 
-    depth greater than 512 and data structures that are cyclic. This 
+    MMDB_get_entry_data_list will now fail on data structures with a
+    depth greater than 512 and data structures that are cyclic. This
     should not affect any known MaxMind DB in production. All databases
     produced by MaxMind have a depth of less than five.
 - Add a build dependency to pkg-config
@@ -223,13 +231,13 @@ Wed Jan 21 14:03:32 UTC 2015 - p.drouand@gmail.com
 - Update to version 1.0.4
   * If you used a non-integer string as an array index when doing a
     lookup with MMDB_get_value, MMDB_vget_value, or MMDB_aget_value,
-    the first element of the array would be returned rather than an 
-    error. A MMDB_LOOKUP_PATH_DOES_NOT_MATCH_DATA_ERROR error will 
+    the first element of the array would be returned rather than an
+    error. A MMDB_LOOKUP_PATH_DOES_NOT_MATCH_DATA_ERROR error will
     now be returned. GitHub #61.
   * If a number larger than LONG_MAX was used in the same functions,
     LONG_MAX would have been used in the lookup. Now a
     MMDB_INVALID_LOOKUP_PATH_ERROR error will be returned.
-  * Visual Studio build files were added for unit tests and some 
+  * Visual Studio build files were added for unit tests and some
     compatibility issues with the tests were fixed.
   * Visual Studio project was updated to use property pages. GitHub #69.
   * A test failure in t/compile_c++_t.pl on new installs was fixed.

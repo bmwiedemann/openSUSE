@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jul 19 11:44:15 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Add missing libQt6Svg6 runtime dependency to Requires
+
+-------------------------------------------------------------------
 Fri Jul 12 13:24:10 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Cherry-pick upstream patch to fix QML error with Qt 6.6

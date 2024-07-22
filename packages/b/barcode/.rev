@@ -215,4 +215,13 @@
     <comment>- Use %patch -P N instead of deprecated %patchN.</comment>
     <requestid>1149057</requestid>
   </revision>
+  <revision rev="31" vrev="11">
+    <srcmd5>0db861f1392b072b32da0e24ace2bf19</srcmd5>
+    <version>0.99</version>
+    <time>1721661484</time>
+    <user>anag+factory</user>
+    <comment>- Add barcode-C99.diff to add mssing includes of libintl.h to allow
+  the package to be built with GCC 14.</comment>
+    <requestid>1188831</requestid>
+  </revision>
 </revisionlist>

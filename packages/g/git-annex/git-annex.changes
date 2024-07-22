@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Tue Jul  2 16:31:40 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update git-annex to version 10.20240701.
+  git-annex (10.20240701) upstream; urgency=medium
+
+    * git-annex remotes can now act as proxies that provide access to
+      their remotes. Configure this with remote.name.annex-proxy
+      and the git-annex update proxy command.
+    * Clusters are now supported. These are collections of nodes that can
+      be accessed as a single entity, accessed by one or more gateway
+      repositories.
+    * Added git-annex initcluster, updatecluster, and extendcluster commands.
+    * Fix a bug where interrupting git-annex while it is updating the
+      git-annex branch for an export could later lead to git fsck
+      complaining about missing tree objects.
+    * Tab completion of options like --from now includes special remotes,
+      as well as proxied remotes and clusters.
+    * Tab completion of many commands like info and trust now includes
+      remotes.
+    * P2P protocol version 2.
+    * Fix Windows build with Win32 2.13.4+
+      Thanks, Oleg Tolmatcev
+    * When --debugfilter or annex.debugfilter is set, avoid propigating
+      debug output from git-annex-shell, since it cannot be filtered.
+
+   -- Joey Hess <id@joeyh.name>  Mon, 01 Jul 2024 15:11:48 -0400
+
+-------------------------------------------------------------------
 Fri May 31 16:33:01 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update git-annex to version 10.20240531.

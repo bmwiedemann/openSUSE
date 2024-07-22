@@ -104,22 +104,15 @@ RUN=""
 SECURE_PERMISSIONS="${SECURE_DIR_PERMISSIONS:-755}"
 for CRONDIR in /etc/cron.{hourly,daily,weekly,monthly} ; do
     test -d $CRONDIR || continue
-    # this is racy but better than nothing
+    # these checks are racy but better than nothing
     if [ ! "$ENFORCE_ROOT_OWNER_GROUP_DIR" = "no" ] && [ ! -O $CRONDIR -o ! -G $CRONDIR ]; then
       echo "wrong owner/group for $CRONDIR, skipping" | logger
       continue
     fi
     ACTUAL_PERMISSIONS=$(stat -c %a $CRONDIR)
-    # to have this default to false would be better, but would require a more
-    # complicated logic in the loop 
-    PERMISSIONS_ARE_SECURE=true
-    for (( i=0; i<${#ACTUAL_PERMISSIONS}; i++ )); do
-      if [ "${ACTUAL_PERMISSIONS:$i:1}" -gt "${SECURE_PERMISSIONS:$i:1}" ]; then
-        PERMISSIONS_ARE_SECURE=false
-      fi
-    done
-    if [ ! "$PERMISSIONS_ARE_SECURE" = true ]; then
-      echo "wrong permissions $ACTUAL_PERMISSIONS for $CRONDIR, expecting $SECURE_PERMISSIONS. Skipping" | logger
+
+    if [ ! "${ACTUAL_PERMISSIONS}" = "${SECURE_PERMISSIONS}" ]; then
+      echo "wrong permissions $ACTUAL_PERMISSIONS for $CRONDIR, expecting $SECURE_PERMISSIONS (see SECURE_DIR_PERMISSIONS in /etc/sysconfig/cron). Skipping" | logger
       continue
     fi
 

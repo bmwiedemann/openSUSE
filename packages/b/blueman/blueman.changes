@@ -1,4 +1,66 @@
 -------------------------------------------------------------------
+Thu Jul 18 08:35:39 UTC 2024 - Jan Kužílek <jan.kuzilek@suse.com>
+
+- Update to version 2.4.2:
+  * Broken audio profile applet menu items
+  * Missing manager window title
+  * Teardown of DBus mock server in tests
+  * Only a single battery notification
+  * Renamed recent connections header in applet menu
+  * Translation updates
+  * An option to toggle the manager window with the tray icon (the 2.3 behavior
+    useful when there are no window decorations for closing it)
+- Update to version 2.4.1:
+  * Fallback for missing icons
+  * Correct Bluetooth state tracking in manager window
+  * Sporadic error on battery data (Note that there was a regression
+    in Linux 6.8.2, 6.7.11 and 6.6.23 that causes it and lots of other trouble)
+  * Active state on tray icon
+  * Broken markup in tray menu
+  * Translation updates
+  * Handle incompabilities with kded6 running on desktops without
+    StatusNotifierItem support
+- Update to version 2.4:
+  * Fix device-selected handlers
+  * Fix deprecations in tests
+  * Fix showing -1 seconds when discovering @kuraga
+  * Tray: Let dbus call end and reply to caller
+  * Get the image-missing icon if lookup failed to avoid crash
+  * Raise minimum Python version to 3.8
+  * Raise minumum Gtk+ version to 3.24
+  * Hide recent connections associated with unavailable adapters
+  * Store network configuration in GSettings instead of
+    /var/lib/blueman/network.state.
+  * Replace custom MessageArea widget with regular Gtk.InfoBar
+  * Drop auto-power feature. BlueZ now has the AutoEnable setting for even
+    better auto-powering.
+  * Do not use pointless link quality value
+  * Recent connections in toplevel applet menu
+  * Never hide keyboard and combos, see #1954 for more info
+  * Do not close blueman-manager from applet
+  * Add Switch to blueman-manager to set bluetooth on/off
+  * Remove broken check for bluetooth status
+  * PluginDialog: Replace custom list with Gtk.ListBox
+  * Ignore double-click for connect when unpowered
+  * Drop homgeneous from statusbar
+  * PulseAudioUtils: Use python enums in several places
+  * Use operator convenience functions
+  * Cleanup PluginDialog UI
+  * Show HCI device in blueman-adapers tabs
+  * Show different icon for the active audio profile @localevil
+  * Make blueman-services a notebook
+  * Use the TypedDict as constructor
+  * Audio profile switcher in applet menu (@abhijeetviswa)
+  * Set router address as DNS server instead of loopback addresses
+  * Enable dnsmasq DNS service if possible and add DNS servers otherwise
+  * Reconfigure DHCP service on local nameserver changes
+  * Support for systemd-resolved for getting nameservers for NAP clients
+  * List connected devices in status icon tooltip
+  * Support for nautilus 43 and later
+  * Copy bleutooth address to clipboard in devicelist
+  * Add battery levels to status icon tooltip
+
+-------------------------------------------------------------------
 Fri Feb 10 01:00:09 UTC 2023 - Maurizio Galli <maurizio.galli@suse.com>
 
 - Update to version 2.3.5:

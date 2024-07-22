@@ -1,0 +1,25 @@
+From 2e0fc9b9da0227b146258aa3831a416c7b023234 Mon Sep 17 00:00:00 2001
+From: "Bernhard M. Wiedemann" <bwiedemann@suse.de>
+Date: Wed, 17 Jul 2024 07:50:46 +0200
+Subject: [PATCH] Avoid storing build time in gzip headers
+
+This allows to create bit-reproducible Python3.12/Python.devhelp.gz output.
+
+See https://reproducible-builds.org/ for why this is good.
+---
+ sphinxcontrib/devhelp/__init__.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/sphinxcontrib/devhelp/__init__.py b/sphinxcontrib/devhelp/__init__.py
+index bc99016..fc441d0 100644
+--- a/sphinxcontrib/devhelp/__init__.py
++++ b/sphinxcontrib/devhelp/__init__.py
+@@ -124,7 +124,7 @@ def write_index(title: str, refs: list[Any], subitems: Any) -> None:
+ 
+         # Dump the XML file
+         xmlfile = path.join(outdir, outname + '.devhelp.gz')
+-        with gzip.open(xmlfile, 'w') as f:
++        with gzip.GzipFile(filename=xmlfile, mode='w', mtime=0) as f:
+             tree.write(f, 'utf-8')  # type: ignore
+ 
+ 

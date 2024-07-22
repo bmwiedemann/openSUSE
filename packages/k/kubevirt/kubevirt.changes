@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Jul 19 07:32:30 UTC 2024 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Update to version 1.3.0
+  Release notes https://github.com/kubevirt/kubevirt/releases/tag/v1.3.0
+- Drop upstreamed patch
+  0001-Collect-component-Role-rules-under-operator-Role-ins.patch
+
+-------------------------------------------------------------------
+Fri Jul 19 07:30:33 UTC 2024 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Add registry path for SLE15 SP7
+
+-------------------------------------------------------------------
 Thu Jun 20 13:48:18 UTC 2024 - Vasily Ulyanov <vasily.ulyanov@suse.com>
 
 - Collect component Role rules under operator Role instead of

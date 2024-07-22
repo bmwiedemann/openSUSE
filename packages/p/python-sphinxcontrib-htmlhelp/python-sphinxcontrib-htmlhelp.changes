@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Jul 20 16:15:23 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 2.0.6:
+  - Fix tests for Sphinx 7.4 and later.
+- Enable tests again
+
+-------------------------------------------------------------------
+Fri Jul 19 23:59:01 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Clean up SPEC file.
+- Skip failing tests (gh#sphinx-doc/sphinx#12623)
+
+-------------------------------------------------------------------
 Sun Jan 14 10:47:30 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.0.5:

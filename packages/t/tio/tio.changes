@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sat Jul 20 06:17:31 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.6
+  * Add configuration file include directive.
+  * Mention how to list key commands in help output.
+  * Fix hex output mode when using normal input mode.
+  * Improve warning upon failing connect.
+  * Add device path to warning when connect fails.
+  * Print correct 'Done' timestamp for X- and Y-modem transfers.
+  * Call tio_printf() after completing xymodem_send().
+
+-------------------------------------------------------------------
+Sat Jun 29 14:53:21 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.5
+  * Clarify input and output direction of map flags.
+  * Rename mapping flag MSB2LSB to IMSB2LSB.
+  * Add OIGNCR mapping flag.
+  * Ignores CR on output to serial device.
+  * Fix line input mode ignoring characters ABCD.
+  * Fix tainted print.
+
+-------------------------------------------------------------------
 Sat Jun 15 17:42:52 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 3.4

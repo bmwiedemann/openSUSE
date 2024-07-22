@@ -347,4 +347,12 @@ https://github.com/nodejs/node/blob/main/doc/changelogs/CHANGELOG_V20.md#20.10.0
   * libuv version 1.48.0 (CVE-2024-24806, bsc#1220053)</comment>
     <requestid>1166624</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>594a05a5e1c35b91cb79e7d826afa4c3</srcmd5>
+    <version>20.15.1</version>
+    <time>1721661430</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1188691</requestid>
+  </revision>
 </revisionlist>

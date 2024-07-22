@@ -25,7 +25,7 @@ URL:            https://github.com/python-quantities/python-quantities/
 Source:         https://files.pythonhosted.org/packages/source/q/quantities/quantities-%{version}.tar.gz
 Patch0:         reproducible.patch
 BuildRequires:  %{python_module base >= 3.7}
-BuildRequires:  %{python_module numpy >= 1.16}
+BuildRequires:  %{python_module numpy >= 1.16 with %python-numpy < 2}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools_scm}
@@ -33,7 +33,7 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-numpy >= 1.16
+Requires:       (python-numpy >= 1.16 with python-numpy < 2)
 BuildArch:      noarch
 %python_subpackages
 
@@ -59,7 +59,7 @@ mv .quantities quantities
 %doc CHANGES.txt README.rst
 %license doc/user/license.rst
 %dir %{python_sitelib}/quantities
-%{python_sitelib}/quantities/*
-%{python_sitelib}/quantities-%{version}*-info
+%{python_sitelib}/quantities
+%{python_sitelib}/quantities-%{version}.dist-info
 
 %changelog

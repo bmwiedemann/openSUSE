@@ -162,4 +162,12 @@
 - added fix_tests.patch - better compactibility with django 2.2</comment>
     <requestid>1165941</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>e3363ba4f5185c12da06bbf196ea5c05</srcmd5>
+    <version>24.2</version>
+    <time>1721661326</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1188573</requestid>
+  </revision>
 </revisionlist>

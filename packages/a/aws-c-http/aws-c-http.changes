@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jul 15 10:50:26 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.8.4
+  * Mark the network interface API experimental by @waahm7 in (#475)
+- from version 0.8.3
+  * clang-format 18 by @graebm in (#469)
+  * Bind to a list of Network Interfaces by @waahm7 in (#471)
+
+-------------------------------------------------------------------
 Wed Jun  5 09:52:17 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.8.2

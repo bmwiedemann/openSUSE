@@ -19,15 +19,19 @@
 %define _name dde-launcher
 
 Name:           deepin-launcher
-Version:        5.5.31
+Version:        5.6.1
 Release:        0
 Summary:        Deepin Launcher
 License:        GPL-3.0-or-later
 URL:            https://github.com/linuxdeepin/dde-launcher
 Source0:        https://github.com/linuxdeepin/dde-launcher/archive/%{version}/%{_name}-%{version}.tar.gz
+Group:          System/GUI/Other
+# PATCH-FIX-UPSTREAM fix-include-dir.patch hillwood@opensuse.org - Make sure the compiler can find DtkGui headers
+Patch0:         fix-include-dir.patch
+# PATCH-FIX-UPSTREAM fix-ambiguous-error.patch hillwood@opensuse.org - Skip the ambiguous error
+Patch1:         fix-ambiguous-error.patch
 # https://github.com/linuxdeepin/dde-launcher/commit/0612c1181f232eb1c7be05a40c9c951a51cd0f2a
 Patch2:         fix-stuck-issue.patch
-Group:          System/GUI/Other
 BuildRequires:  cmake
 BuildRequires:  gtest
 BuildRequires:  hicolor-icon-theme

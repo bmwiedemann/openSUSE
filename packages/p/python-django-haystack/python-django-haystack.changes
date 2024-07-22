@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jul 19 13:00:55 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Update to 3.3.0
+  * Django versions 3-5 are supported, running on Python 3.8-3.12.
+  * Releases are now created in GitHub Actions and published directly 
+    to PyPI, improving visibility into the build process.
+- Drop upstreamed patches:
+  * gh-pr-1935_importlib.patch
+  * unittest312.patch
+
+-------------------------------------------------------------------
 Thu Mar 28 05:51:20 UTC 2024 - Max Lin <mlin@suse.com>
 
 - Numbering patches for fix Leap15 build

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jul 18 15:27:13 UTC 2024 - Martin Jambor <mjambor@suse.com>
+
+- Add firefox-3781e3117706.patch to fix boo#1227856 aka bmo#1905018
+  where an incompatible pointer assignment is not accepted in C by
+  GCC 14.
+
+-------------------------------------------------------------------
 Mon Jul  8 20:25:10 UTC 2024 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Firefox 128.0

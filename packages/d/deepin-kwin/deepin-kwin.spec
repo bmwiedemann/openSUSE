@@ -20,7 +20,7 @@
 %global wayland (0%{?suse_version} >= 1330)
 
 Name:           deepin-kwin
-Version:        5.25.15
+Version:        5.25.26
 Release:        0
 # Full Plasma 5 version (e.g. 5.8.95)
 %{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
@@ -138,7 +138,11 @@ BuildRequires:  pipewire-devel >= 0.3.29
 Recommends:     xorg-x11-server-wayland
 %endif
 # new default decoration
-Requires:       breeze6-decoration >= %{_plasma5_version}
+%if 0%{?suse_version} < 1600
+Requires:       breeze5-decoration >= %{_plasma5_version}
+%else
+Requires:       breeze6-decoration
+%endif
 # Needed to show dialogs
 Requires:       kdialog
 # Needed for effects KCM at runtime

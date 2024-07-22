@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jul 10 14:33:46 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.14.13:
+  * Fix compile warning (Wcast-function-type).
+  * Fix memory leak originating in purple_prefs_connect_callback.
+  * Don’t use the Real name as a candidate for the SASL username in
+    IRC.
+  * Don’t link with libgadu unnecessarily.
+  * Make collapsed groups searchable in the buddy list.
+  * Fix incompatible type conversion errors.
+  * Stop removing -Wall from CFLAGS.
+
+-------------------------------------------------------------------
 Tue Nov 28 11:47:33 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -p N instead of deprecated %patchN.

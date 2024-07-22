@@ -1290,4 +1290,41 @@ IMPORTANT: It would be better to fix/update the test, so if you can fix this ple
   * #12012: Use types-docutils instead of docutils-stubs.</comment>
     <requestid>1184035</requestid>
   </revision>
+  <revision rev="107" vrev="1">
+    <srcmd5>b5213c86e87df41c013a8bc37f4a344d</srcmd5>
+    <version>7.4.5</version>
+    <time>1721661238</time>
+    <user>anag+factory</user>
+    <comment>- update to 7.4.5:
+  * #12593, #12600: Revert coercing the type of selected
+    :confval:`html_sidebars` values to a list. Log an error
+    message when string values are detected. Patch by Adam
+    Turner.
+  * #12594: LaTeX: since 7.4.0, :rst:dir:`seealso` and other
+    &quot;light&quot; admonitions now break PDF builds if they contain a
+    :dudir:`figure` directive; and also if they are contained in
+    a table cell (rendered by tabulary). Patch by Jean-François
+    B.
+  * #12585, #12586: Do not warn when an intersphinx inventory
+    contains case-insensitively ambiguous duplicate items. Patch
+    by James Addison.
+  * #12582: Restore support for list-styled
+    :confval:`source_suffix` values with extensions that register
+    parsers. Patch by Adam Turner.
+  * #12580, #12583: Resolve failures with the C domain on
+    incremental builds with Sphinx 7.3.7 and earlier. Patch by
+    Adam Turner.
+  * Fix invalid HTML when a rubric node with invalid heading-
+    level is used. Patch by Adam Turner.
+  * #12579, #12581: Restore support for typing.ParamSpec in
+    autodoc. Patch by Adam Turner.
+  * #12555: Drop Docutils 0.18.1 and Docutils 0.19 support. Patch
+    by Adam Turner.
+  * LaTeX: the xcolor package is now required (but is for example
+    part of Ubuntu texlive-latex-recommended which has always
+    been required).
+  * LaTeX: the fontawesome5 LaTeX package is needed for the
+    default choices of icons now used in admonition titles in PDF</comment>
+    <requestid>1188421</requestid>
+  </revision>
 </revisionlist>

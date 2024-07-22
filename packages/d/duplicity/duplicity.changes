@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jul 18 14:57:10 UTC 2024 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 3.0.0:
+  * Collected fixes to setup process.
+  * CommandLineError: argument --gpg-options: expected one
+    argument.
+  * Volume missing if --asynchronous-upload and put fails.
+  * Don't raise KeyError if OSError.errno is unrecognized.
+
+-------------------------------------------------------------------
 Wed May 22 17:21:52 UTC 2024 - Michael Gorse <mgorse@suse.com>
 
 - Update to version 2.2.4:

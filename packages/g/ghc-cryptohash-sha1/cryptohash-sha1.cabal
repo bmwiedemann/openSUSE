@@ -1,7 +1,7 @@
 cabal-version:       >=1.10
 name:                cryptohash-sha1
 version:             0.11.101.0
-x-revision:          4
+x-revision:          5
 description:
     A practical incremental and one-pass, pure API to the
     <https://en.wikipedia.org/wiki/SHA-1 SHA-1 hash algorithm>
@@ -29,9 +29,9 @@ category:            Data, Cryptography
 build-type:          Simple
 
 tested-with:
-  GHC == 9.10.0
+  GHC == 9.10.1
   GHC == 9.8.2
-  GHC == 9.6.4
+  GHC == 9.6.5
   GHC == 9.4.8
   GHC == 9.2.8
   GHC == 9.0.2
@@ -41,7 +41,6 @@ tested-with:
   GHC == 8.4.4
   GHC == 8.2.2
   GHC == 8.0.2
-  GHC == 7.10.3
 
 extra-source-files:  cbits/sha1.h
                      changelog.md
@@ -75,7 +74,7 @@ test-suite test-sha1
                    , base16-bytestring >= 1.0.1.0 && < 1.1
                    , SHA               >= 1.6.4   && < 1.7
                    , tasty             >= 1.4     && < 1.6
-                   , tasty-quickcheck  == 0.10.*
+                   , tasty-quickcheck  >= 0.10    && < 1
                    , tasty-hunit       == 0.10.*
 
 benchmark bench-sha1

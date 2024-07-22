@@ -1,7 +1,7 @@
 #
-# spec file for package o2scl
+# spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,39 +16,53 @@
 #
 
 
-%define shlib lib%{name}0
-Name:           o2scl
-Version:        0.926
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%bcond_without test
+%define psuffix -test
+# Python binding tests do not work in the chroot env
+%bcond_with python3
+# Tests for non-x86_64 fail due to tolerance issues in the tests gh#awsteiner/o2scl#39, gh#awsteiner/o2scl#41
+ExclusiveArch:  x86_64
+%else
+%bcond_with test
+%bcond_without python3
+%define psuffix %{nil}
+%endif
+%define pname o2scl
+%define shlib lib%{pname}0
+Name:           %{pname}%{?psuffix}
+Version:        0.929.1
 Release:        0
 Summary:        Object-oriented Scientific Computing Library
 License:        GPL-3.0-only
 Group:          Productivity/Scientific/Math
-URL:            https://neutronstars.utk.edu/code/o2scl/html/index.html
-Source:         https://github.com/awsteiner/o2scl/releases/download/v%{version}/%{name}-%{version}.tar.gz
-# PATCH-FEATURE-OPENSUSE o2scl-disable-slow-hdf-test.patch badshah400@gmail.com -- Disable an hdf5 test that takes too long causing OBS workers to time out and build to fail
-Patch0:         o2scl-disable-slow-hdf-test.patch
-# PATCH-FEATURE-OPENSUSE o2scl-disable-test-without-destdir-support.patch badshah400@gmail.com -- Disable tests that use data files installed to datadir but does not support DESTDIR and therefore cannot be run in a buildroot env
-Patch1:         o2scl-disable-test-without-destdir-support.patch
-# PATCH-FIX-UPSTREAM o2scl-eos_quark_cfl6-test-increase-tol.patch gh#awsteiner/o2scl#18 badshah400@gmail.com -- Increase the tolerance of a test that fails due to minor tolerance issues on x86_64
-Patch2:         o2scl-eos_quark_cfl6-test-increase-tol.patch
-# PATCH-FIX-UPSTREAM o2scl-failing-tests-increase-tol.patch badshah400@gmail.com -- Minor increases in tolerance for a few more failing tests
-Patch3:         o2scl-failing-tests-increase-tol.patch
-BuildRequires:  armadillo-devel
-BuildRequires:  eigen3-devel
+URL:            https://awsteiner.org/code/o2scl
+Source0:        https://github.com/awsteiner/o2scl/releases/download/v%{version}/%{pname}-%{version}.tar.gz
+Source1:        %{pname}.rpmlintrc
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  hdf5-devel
 # Required For Patch0
 BuildRequires:  libtool
-%if 0%{?suse_version} > 1320
-BuildRequires:  libboost_headers-devel
-%else
-BuildRequires:  boost-devel
-%endif
+BuildRequires:  libboost_headers-devel >= 1.80
+BuildRequires:  memory-constraints
 BuildRequires:  pkgconfig
-BuildRequires:  readline-devel
+BuildRequires:  pkgconfig(armadillo)
+BuildRequires:  pkgconfig(eigen3)
+BuildRequires:  pkgconfig(fftw3)
 BuildRequires:  pkgconfig(gsl)
-Recommends:     %{name}-doc = %{version}
+BuildRequires:  pkgconfig(mpfr)
+BuildRequires:  pkgconfig(ncurses)
+%if %{with test}
+BuildRequires:  %{pname}-devel = %{version}
+%endif
+%if %{with python3}
+BuildRequires:  python3-devel
+BuildRequires:  python3-numpy-devel
+BuildRequires:  readline-devel
+%endif
+Recommends:     %{pname}-doc = %{version}
 
 %description
 O2scl is a C++ library for object-oriented numerical programming. It
@@ -68,47 +82,67 @@ O2scl is a C++ library for object-oriented numerical programming.
 
 This package provides the shared libraries for %{name}.
 
-%package devel
+%package -n %{pname}-devel
 Summary:        Source and header files for O2scl
 Group:          Development/Libraries/C and C++
 Requires:       %{shlib} = %{version}
 Requires:       armadillo-devel
+Requires:       cblas-devel
 Requires:       eigen3-devel
 Requires:       gcc-c++
 Requires:       hdf5-devel
 Requires:       readline-devel
+Requires:       pkgconfig(fftw3)
 Requires:       pkgconfig(gsl)
+Requires:       pkgconfig(mpfr)
 
-%description devel
+%description -n %{pname}-devel
 O2scl is a C++ library for object-oriented numerical programming.
 
 This package provides the source and header files for writing software
 using %{name}.
 
-%package doc
+%package -n %{pname}-doc
 Summary:        Documentation for %{name}
 Group:          Documentation/HTML
+BuildArch:      noarch
 
-%description doc
+%description -n %{pname}-doc
 O2scl is a C++ library for object-oriented numerical programming.
 This package provides the documentation for %{name}.
 
 %prep
-%autosetup -p1
+%autosetup -p1 -n %{pname}-0.929
+cp %{SOURCE1} doc/o2scl/
+sed -Ei "s/\r$/\n/g" doc/o2scl/html/_static/evan.eml
 
 %build
 autoreconf -fvi
-export CXXFLAGS+=" -DO2SCL_PLAIN_HDF5_HEADER"
-%configure \
-%if 0%{?suse_version} >= 1500
-  --enable-gsl2 \
+%limit_build -m 2500
+# -DO2SCL_FAST_TEST due to https://github.com/awsteiner/o2scl/issues/37
+export CXXFLAGS+="-DO2SCL_PLAIN_HDF5_HEADER %{?with_test:-DO2SCL_FAST_TEST} %{?with_python3:-I%{python3_sitearch}/numpy/core/include}"
+# Leap 15.X has hdf5 1.10.X
+%if 0%{?suse_version} < 1650
+export CXXFLAGS+=" -DO2SCL_HDF5_PRE_1_12"
 %endif
-  --enable-eigen \
-  --disable-static
+# Needed to avoid "undefined symbol: GOMP_critical_name_end" when using o2sclpy from python
+# https://github.com/awsteiner/o2scl/issues/40
+export LDFLAGS+="-lgomp"
+%configure                           \
+  --enable-armadillo                 \
+  --enable-eigen                     \
+  --enable-fftw                      \
+  --enable-openmp                    \
+  --enable-ncurses                   \
+  --disable-pugixml                   \
+  %{?with_python3:--enable-python}   \
+  %{!?with_python3:--disable-python} \
+  %{nil}
 
 %make_build
 
 %install
+%if %{without test}
 %make_install
 mkdir -p %{buildroot}%{_docdir}/%{name}
 mv %{buildroot}%{_datadir}/doc/o2scl/* %{buildroot}%{_docdir}/%{name}/
@@ -123,20 +157,14 @@ find %{buildroot}%{_docdir}/%{name}/ -name "Makefile.*" -delete -print
 find %{buildroot}%{_libdir} "(" -name "*.a" -o -name "*.la" ")" -delete -print
 
 %fdupes %{buildroot}%{_docdir}/%{name}/
+%fdupes %{buildroot}%{_datadir}/%{name}/
 
-# Tests fail on i586/arm*/aarch64/ppc* due to tolerances in the test codes being set too low. Enable only for x86_64 until fixed
-%ifarch x86_64
-%check
-%make_build check
-%endif
-
-%post -n %{shlib} -p /sbin/ldconfig
-%postun -n %{shlib} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{shlib}
 
 %files -n %{shlib}
 %{_libdir}/*.so.*
 
-%files devel
+%files -n %{pname}-devel
 %doc AUTHORS ChangeLog README NEWS
 %license COPYING
 %{_bindir}/acol
@@ -146,7 +174,14 @@ find %{buildroot}%{_libdir} "(" -name "*.a" -o -name "*.la" ")" -delete -print
 %{_libdir}/*.so
 %{_includedir}/o2scl/
 
-%files doc
+%files -n %{pname}-doc
 %doc %{_docdir}/%{name}/
+
+%else
+
+%check
+%make_build check
+
+%endif
 
 %changelog

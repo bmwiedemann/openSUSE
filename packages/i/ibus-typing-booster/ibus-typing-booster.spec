@@ -17,7 +17,7 @@
 
 
 Name:           ibus-typing-booster
-Version:        2.25.12
+Version:        2.25.13
 Release:        0
 Summary:        An input completion utility
 License:        GPL-3.0-or-later
@@ -141,7 +141,11 @@ pushd engine
     # hunspell_suggest.py test currently doesn't work on SuSE because
     # the en_US dictionary changed apparently:
     # python3 hunspell_suggest.py -v
-    python3 m17n_translit.py -v
+    if [ -e /usr/share/m17n/si-wijesekara.mim ] ; then
+        python3 m17n_translit.py -v
+    else
+        echo "/usr/share/m17n/si-wijesekara.mim does not exist, m17n-db probably < 1.8.6, skipping doctest of m17n_translit.py"
+    fi
     python3 itb_emoji.py -v
     python3 itb_util.py -v
 popd

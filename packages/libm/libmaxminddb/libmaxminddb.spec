@@ -19,7 +19,7 @@
 
 %define lname	libmaxminddb0
 Name:           libmaxminddb
-Version:        1.9.1
+Version:        1.10.0
 Release:        0
 Summary:        C library for the MaxMind DB file format
 License:        Apache-2.0

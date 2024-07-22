@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package python-sphinxcontrib-htmlhelp
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -16,7 +16,6 @@
 #
 
 
-%{?sle15_python_module_pythons}
 %define skip_python2 1
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
@@ -26,14 +25,16 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
+%{?sle15_python_module_pythons}
 Name:           python-sphinxcontrib-htmlhelp%{psuffix}
-Version:        2.0.5
+Version:        2.0.6
 Release:        0
-Summary:        Sphinx contrib extension to generate html help files
+Summary:        Sphinx extension to generate HTML help files
 License:        BSD-2-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/sphinx-doc/sphinxcontrib-htmlhelp
-Source:         https://files.pythonhosted.org/packages/source/s/sphinxcontrib_htmlhelp/sphinxcontrib_htmlhelp-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/s/sphinxcontrib_htmlhelp/sphinxcontrib_htmlhelp-%{version}.tar.gz
+Source99:       python-sphinxcontrib-htmlhelp.rpmlintrc
 BuildRequires:  %{python_module flit-core}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module wheel}
@@ -49,7 +50,7 @@ BuildRequires:  %{python_module sphinxcontrib-htmlhelp >= %{version}}
 %python_subpackages
 
 %description
-Html help generating extension.
+sphinxcontrib-htmlhelp is a sphinx extension which renders HTML help files.
 
 %prep
 %autosetup -p1 -n sphinxcontrib_htmlhelp-%{version}

@@ -327,6 +327,7 @@ rm -rf third_party/electron_node/deps/{googletest/{include,src},icu-small} #292M
 find third_party/electron_node/deps/brotli -type f ! -name "*.gn" -a ! -name "*.gni" -a ! -name "*.gyp" -a ! -name "*.gypi" -delete
 find third_party/electron_node/deps/cares -type f ! -name "*.gn" -a ! -name "*.gni" -a ! -name "*.gyp" -a ! -name "*.gypi" -delete
 find third_party/electron_node/deps/nghttp2 -type f ! -name "*.gn" -a ! -name "*.gni" -a ! -name "*.gyp" -a ! -name "*.gypi" -delete
+find third_party/electron_node/deps/ngtcp2 -type f ! -name "*.gn" -a ! -name "*.gni" -a ! -name "*.gyp" -a ! -name "*.gypi" -delete
 find third_party/electron_node/deps/openssl -type f ! -name "*.gn" -a ! -name "*.gni" -a ! -name "*.gyp" -a ! -name "*.gypi" -delete
 find third_party/electron_node/deps/v8 -type f ! -name "*.gn" -a ! -name "*.gni" -a ! -name "*.gyp" -a ! -name "*.gypi" -delete
 rm -rvf third_party/electron_node/deps/v8/tools

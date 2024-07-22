@@ -17,7 +17,7 @@
 
 
 Name:           dosbox
-Version:        0.81.1
+Version:        0.81.2
 Release:        0
 Summary:        DOS/x86 emulator to run old DOS games
 License:        GPL-2.0-or-later
@@ -33,7 +33,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  python3 >= 3.7
 BuildRequires:  pkgconfig(SDL2_net)
 BuildRequires:  pkgconfig(alsa)
-BuildRequires:  pkgconfig(fluidsynth) >= 2.3.0
+BuildRequires:  pkgconfig(fluidsynth)
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(gmock)
 BuildRequires:  pkgconfig(gtest)
@@ -42,7 +42,7 @@ BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(mt32emu)
 BuildRequires:  pkgconfig(opusfile)
 BuildRequires:  pkgconfig(sdl2)
-BuildRequires:  pkgconfig(slirp) >= 4.7.0
+BuildRequires:  pkgconfig(slirp)
 BuildRequires:  pkgconfig(speexdsp)
 BuildRequires:  pkgconfig(xi)
 BuildRequires:  pkgconfig(zlib-ng)

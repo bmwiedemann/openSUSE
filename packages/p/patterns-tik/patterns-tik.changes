@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jul 19 15:11:57 UTC 2024 - Richard Brown <rbrown@suse.com>
+
+- Remove tpm2.0-abrmd, not longer used 
+
+-------------------------------------------------------------------
 Thu Jul 11 12:47:00 UTC 2024 - Richard Brown <rbrown@suse.com>
 
 - Add mokutil (needed for Secureboot configuration and checking) 

@@ -1,7 +1,43 @@
 -------------------------------------------------------------------
+Sat Jul 20 15:06:44 UTC 2024 - Christoph Junghans <junghans@votca.org>
+
+- Drop 1032.patch, merged upstream
+- Update to v2024.1
+  - csg_reupdate: remove commented out dosteep ([gh#votca/votca#1103])
+  - CI: drop gmx2023, add gmx2024 ([gh#votca/votca#1106])
+  - new option to ignore segment types in KMC ([gh#votca/votca#1105])
+  - fixed dftcoupling option path ([gh#votca/votca#1107])
+  - cmake: fix MKL detection ([gh#votca/votca#1110])
+  - cmake: handover GMX options transparently ([gh#votca/votca#1108])
+  - CI: Switch Intel build to Ubuntu ([gh#votca/votca#1111])
+  - CI: update GitHub actions ([gh#votca/votca#1112])
+  - Fix Python print in hoomd tutorial ([gh#votca/votca#1118])
+  - CI: fix warnings ([gh#votca/votca#1119], [gh#votca/votca#1122],
+    [gh#votca/votca#1130], [gh#votca/votca#1138])
+  - votca_help2doc: fix python warnings ([gh#votca/votca#1121])
+  - Fix build with boost-1.85.0 ([gh#votca/votca#1123])
+  - make some interpreters explicit  ([gh#votca/votca#1125],
+    [gh#votca/votca#1129])
+  - cmake: update hdf5 detection for cmake hdf5 ([gh#votca/votca#1126],
+    [gh#votca/votca#1127])
+  - scripts: use sed in posix way ([gh#votca/votca#1128])
+  - add CI on FreeBSD ([gh#votca/votca#1124])
+  - Fix Sphinx build ([gh#votca/votca#1131])
+  - add CONTRIBUTING.md ([gh#votca/votca#1133])
+  - csg_table fix ([gh#votca/votca#1134])
+  - Added v2024 JOSS paper and link to older pubs ([gh#votca/votca#1132])
+  - DFT and GW-BSE theory section in manual ([gh#votca/votca#1135])
+  - add rate theory part to XTP manual section ([gh#votca/votca#1136])
+  - adding transport model section to XTP manual ([gh#votca/votca#1137])
+  - switching optimizer in XTP tutorial ([gh#votca/votca#1139],
+    [gh#votca/votca#1140])
+  - csg-tutorials: auto-detect gmx binary ([gh#votca/votca#1144])
+  - add crest documentation ([gh#votca/votca#1145])
+
+-------------------------------------------------------------------
 Mon Jun  3 21:40:05 UTC 2024 - Christoph Junghans <junghans@votca.org>
 
-- Add upsteam patch, 1032.patch, to fix build with newer boost
+- Add upstream patch, 1032.patch, to fix build with newer boost
 
 -------------------------------------------------------------------
 Wed Jan 31 20:58:32 UTC 2024 - Christoph Junghans <junghans@votca.org>

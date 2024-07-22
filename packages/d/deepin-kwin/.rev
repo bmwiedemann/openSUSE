@@ -149,4 +149,12 @@
 - Don't limit breeze's version (forwarded request 1159676 from hillwood)</comment>
     <requestid>1159677</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>2cabe6defeed1479b51225e0d9de7084</srcmd5>
+    <version>5.25.26</version>
+    <time>1721661324</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1188560</requestid>
+  </revision>
 </revisionlist>

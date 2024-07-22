@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jul 17 13:27:41 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 3.44.2
+  * Database Service
+    * Support for create new DB with OKV
+      * ``oci db database create --key-store-id``
+    * Support for confirm key store details are correct
+      * ``oci db key-store confirm-key-store-details-are-correct --key-store-id``
+- Refresh patches for new version
+  * oc_relax-python-depends.patch
+- Update BuildRequires and Requires from setup.py
+
+-------------------------------------------------------------------
 Tue Jul  9 06:39:46 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 3.44.1

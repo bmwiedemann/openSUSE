@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Apr 25 23:14:26 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update crypton to version 1.0.0.
+  ## 1.0.0
+
+  * Versions follow the standard version policy.
+  * Removing pthread stuff.
+    [#32](https://github.com/kazu-yamamoto/crypton/pull/32)
+
+-------------------------------------------------------------------
 Fri Nov 10 00:32:55 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update crypton to version 0.34.

@@ -1,0 +1,7 @@
+-------------------------------------------------------------------
+Sat Jul 20 13:59:59 UTC 2024 - Alessio Biancalana <alessio.biancalana@suse.com>
+
+- Update to version 0.15.1:
+  * Gracefully handle invalid URLs
+  * Chain visibility
+  * Fix spelling

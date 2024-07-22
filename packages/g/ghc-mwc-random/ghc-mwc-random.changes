@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jul  9 17:21:28 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update mwc-random to version 0.15.1.0.
+  ## Changes in 0.15.1.0
+
+    * Additon of binomial sampler using the rejection sampling method in
+      Kachitvichyanukul, V. and Schmeiser, B. W.  Binomial Random
+      Variate Generation.  Communications of the ACM, 31, 2 (February,
+      1988) 216. <https://dl.acm.org/doi/pdf/10.1145/42372.42381>. A more
+      efficient basis for e.g. the beta binomial distribution:
+  	`beta a b g >>= \p -> binomial n p g`.
+
+-------------------------------------------------------------------
 Thu Mar 30 17:07:39 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Updated spec file to conform with ghc-rpm-macros-2.5.2.

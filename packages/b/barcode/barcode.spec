@@ -32,9 +32,11 @@ Patch2:         %{name}-0.99-info.patch
 Patch5:         %{name}-0.98-leak-fix.patch
 # PATCH-FIX-UPSTREAM barcode-fix-renamed-include.patch malcolmlewis@opensuse.org -- Fix renamed gettext include header reference.
 Patch6:         barcode-fix-renamed-include.patch
+# PATCH-FIX-UPSTREAM barcode-C99.diff mjambor@suse.com -- Fix missing includes which cause compilation errors with GCC 14
+Patch7:         barcode-C99.diff
 BuildRequires:  makeinfo
 Requires(post): %{install_info_prereq}
-Requires(preun): %{install_info_prereq}
+Requires(preun):%{install_info_prereq}
 
 %description
 GNU Barcode is meant to meet most barcode creation needs with a
@@ -59,6 +61,7 @@ Encapsulated PostScript format.
 %patch -P 2
 %patch -P 5
 %patch -P 6 -p1
+%patch -P 7 -p1
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects

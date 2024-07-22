@@ -1,7 +1,7 @@
+cabal-version:  >=1.10
 name:           entropy
-
 version:        0.4.1.10
-x-revision: 1
+x-revision:     2
 description:    A mostly platform independent method to obtain cryptographically strong entropy
                 (RDRAND, urandom, CryptAPI, and patches welcome)
                 Users looking for cryptographically strong (number-theoretically
@@ -19,11 +19,26 @@ stability:      stable
 
 build-type:     Custom
 
--- ^^ Test for RDRAND support using 'ghc'
-cabal-version:  >=1.10
-tested-with:    GHC == 8.2.2
--- data-files:
-extra-source-files:   ./cbits/getrandom.c ./cbits/random_initialized.c ./cbits/rdrand.c, ./cbits/rdrand.h, README.md
+tested-with:
+  GHC == 9.10.1
+  GHC == 9.8.2
+  GHC == 9.6.5
+  GHC == 9.4.8
+  GHC == 9.2.8
+  GHC == 9.0.2
+  GHC == 8.10.7
+  GHC == 8.8.4
+  GHC == 8.6.5
+  GHC == 8.4.4
+  GHC == 8.2.2
+  GHC == 8.0.2
+
+extra-source-files:
+  ./cbits/getrandom.c
+  ./cbits/random_initialized.c
+  ./cbits/rdrand.c
+  ./cbits/rdrand.h
+  README.md
 
 Flag DoNotGetEntropy
   Description: Avoid use of the getentropy() *nix function. By default getentropy will be used
@@ -32,10 +47,9 @@ Flag DoNotGetEntropy
   Manual: True
 
 custom-setup
-  setup-depends: Cabal >= 1.10 && < 3.11
-    -- Relax Cabal: https://github.com/haskell/entropy/pull/79
+  setup-depends: Cabal >= 1.10 && < 3.13
                , base < 5
-               , filepath < 1.5
+               , filepath < 1.6
                , directory < 1.4
                , process < 1.7
 

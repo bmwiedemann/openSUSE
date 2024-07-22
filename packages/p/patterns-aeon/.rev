@@ -91,4 +91,12 @@
     <comment>- Add mokutil (needed for Secureboot configuration and checking)</comment>
     <requestid>1186874</requestid>
   </revision>
+  <revision rev="12" vrev="12">
+    <srcmd5>d8d7087f0857c4969d6085edced51acc</srcmd5>
+    <version>5.0</version>
+    <time>1721661436</time>
+    <user>anag+factory</user>
+    <comment>- Remove tpm2.0-abrmd, not longer used</comment>
+    <requestid>1188703</requestid>
+  </revision>
 </revisionlist>

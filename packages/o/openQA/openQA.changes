@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jul 20 09:14:30 UTC 2024 - okurz@suse.com
+
+- Update to version 4.6.1721394676.6f16d338:
+  * Use signatures in WebAPI::ServerSideDataTable
+  * Use nginx zone size large enough for 16k pages
+  * Add proper constant time comparison authentication functions
+
+-------------------------------------------------------------------
 Thu Jul 18 01:14:29 UTC 2024 - okurz@suse.com
 
 - Update to version 4.6.1721240179.3145b6a1:

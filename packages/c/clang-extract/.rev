@@ -74,4 +74,18 @@
   * FunctionDepsFinder: Factor out closure logic</comment>
     <requestid>1187429</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>1534bfc30c8443936a3837da60132317</srcmd5>
+    <version>0~20240721.9b2dfb6</version>
+    <time>1721661445</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0~20240721.9b2dfb6:
+  * Remove the EnumConstantTable
+
+- Update to version 0~20240720.6054fa3:
+  * Fix nested struct being discarded if parent struct is flagged as partial
+  * Fix __builtin_convertvector escaping the closure
+  * Fix dropped attributes from vector types</comment>
+    <requestid>1188956</requestid>
+  </revision>
 </revisionlist>

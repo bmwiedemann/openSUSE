@@ -28,6 +28,8 @@ Source:         https://files.pythonhosted.org/packages/source/h/hdf5plugin/hdf5
 Patch0:         hdf5plugin-system-libs.patch
 # PATCH-FIX-UPSTREAM Fix warnings related to const for blosc_filter.c
 Patch1:         hdf5plugin-fix-gcc14.patch
+# PATCH-FIX-UPSTREAM gh#silx-kit/hdf5plugin#346343e8b63e6a7842d82130a48a16815dfe07bd
+Patch2:         support-numpy-2.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module blosc2}
 BuildRequires:  %{python_module h5py}

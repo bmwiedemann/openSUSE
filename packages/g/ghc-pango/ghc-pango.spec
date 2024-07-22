@@ -19,13 +19,12 @@
 %global pkg_name pango
 %global pkgver %{pkg_name}-%{version}
 Name:           ghc-%{pkg_name}
-Version:        0.13.10.0
+Version:        0.13.11.0
 Release:        0
 Summary:        Binding to the Pango text rendering engine
 License:        LGPL-2.1-only
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/2.cabal#/%{pkg_name}.cabal
 BuildRequires:  fdupes
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-Cabal-prof
@@ -98,7 +97,6 @@ This package provides the Haskell %{pkg_name} profiling library.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
-cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %build
 %ghc_lib_build

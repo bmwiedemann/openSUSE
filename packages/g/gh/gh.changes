@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Thu Jul 18 14:05:15 UTC 2024 - pdostal@suse.com
+
+- Update to version 2.53.0:
+  * Disable `TestGetTrustedRoot/successfully_verifies_TUF_root` test
+      due to https://github.com/cli/cli/issues/8928
+  * Fix bsc#1227035 - VUL-0: CVE-2024-6104: gh: hashicorp/go-retryablehttp:
+      url might write sensitive information to log file
+  * Rename package directory and files
+  * Rename package name to `update_branch`
+  * Rename `gh pr update` to `gh pr update-branch`
+  * Add test case for merge conflict error
+  * Handle merge conflict error
+  * Return error if PR is not mergeable
+  * Replace literals with consts for `Mergeable` field values
+  * Add separate type for `PullRequest.Mergeable` field
+  * Remove unused flag
+  * Print message on stdout instead of stderr
+  * Raise error if editor is used in non-tty mode
+  * Add tests for JSON field support on issue and pr view commands
+  * docs: Update documentation for `gh repo create` to clarify owner
+  * Ensure PR does not panic when stateReason is requested
+  * build(deps): bump actions/attest-build-provenance from 1.3.2 to 1.3.3
+  * Enable to use --web even though editor is enabled by config
+  * Add editor hint message
+  * Use prefer_editor_prompt config by `issue create`
+  * Add prefer_editor_prompt config
+  * Add `issue create --editor`
+  * Update create.go
+  * gh attestation trusted-root subcommand (#9206)
+  * Fetch variable selected repo relationship when required
+  * Update .github/ISSUE_TEMPLATE/bug_report.md
+  * build(deps): bump github.com/hashicorp/go-retryablehttp
+  * Update .github/ISSUE_TEMPLATE/bug_report.md
+  * Add GH_DEBUG to issue template
+  * Add `createdAt` field to tests
+  * Add `createdAt` field to `Variable` type
+  * Add test for exporting as JSON
+  * Add test for JSON output
+  * Only populate selected repo information for JSON output
+  * Add test to verify JSON exporter gets set
+  * Add `--json` option support
+  * Use `Variable` type defined in `shared` package
+  * Add tests for JSON output
+  * Move `Variable` type and `PopulateSelectedRepositoryInformation` func to shared
+  * Fix query parameter name
+  * Update tests to account for ref comparison step
+  * Improve query variable names
+  * Check if PR branch is already up-to-date
+  * Add `ComparePullRequestBaseBranchWith` function
+  * Run `go mod tidy`
+  * Add test to verify `--repo` requires non-empty selector
+  * Require non-empty selector when `--repo` override is used
+  * Run `go mod tidy`
+  * Register `update` command
+  * Add tests for `pr update` command
+  * Add `pr update` command
+  * Add `UpdatePullRequestBranch` method
+  * Upgrade `shurcooL/githubv4`
+
+-------------------------------------------------------------------
 Sat Jul  6 20:51:12 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 2.52.0:

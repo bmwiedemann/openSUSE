@@ -1,7 +1,7 @@
 #
 # spec file for package python-healpy
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,10 @@ Summary:        Python library to handle pixelated data on the sphere based on H
 License:        GPL-2.0-only
 URL:            https://github.com/healpy/healpy
 Source:         https://files.pythonhosted.org/packages/source/h/healpy/healpy-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM python-healpy-scipy-1_14-compat.patch badshah400@gmail.com -- Account for renaming of integrate.trapz to integrate.trapezoidal in scipy 1.14
+Patch0:         python-healpy-scipy-1_14-compat.patch
+# PATCH-FIX-UPSTREAM python-healpy-matplotlib-1_9-compat.patch badshah400@gmail.com -- Compatibility with matplotlib 3.9 via upstream commit 0b1f498 rebased for current version
+Patch1:         python-healpy-matplotlib-1_9-compat.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy-devel >= 1.13}

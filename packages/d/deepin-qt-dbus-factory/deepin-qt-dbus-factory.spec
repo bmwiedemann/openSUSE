@@ -1,7 +1,7 @@
 #
 # spec file for package deepin-qt-dbus-factory
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define _name  dde-qt-dbus-factory
 
 Name:           deepin-qt-dbus-factory
-Version:        5.5.22
+Version:        6.0.0
 Release:        0
 Summary:        A repository storing auto-generated Qt5 D-Bus code
 License:        GPL-3.0-or-later

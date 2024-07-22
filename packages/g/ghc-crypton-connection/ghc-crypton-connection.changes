@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jun 29 21:31:10 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update crypton-connection to version 0.3.2 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Mon Feb  5 07:09:15 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update crypton-connection to version 0.3.2.

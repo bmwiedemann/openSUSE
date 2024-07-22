@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jul 12 07:23:15 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update iproute to version 1.7.14.
+  Upstream does not provide a change log file.
+
+-------------------------------------------------------------------
 Thu Mar 30 17:07:17 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Updated spec file to conform with ghc-rpm-macros-2.5.2.

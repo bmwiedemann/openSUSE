@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jul 17 15:22:06 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update yesod-core to version 1.6.26.0.
+  ## 1.6.26.0
+
+  * Always apply jsAttributes to julius script blocks of body [#1836](https://github.com/yesodweb/yesod/pull/1836)
+
+-------------------------------------------------------------------
 Tue Mar  5 09:25:22 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update yesod-core to version 1.6.25.1 revision 1.

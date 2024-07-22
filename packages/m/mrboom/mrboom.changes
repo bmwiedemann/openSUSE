@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jul  9 14:41:58 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to 5.5:
+  * remove autofire
+  * sdl2: cap framerate to 60 FPS
+
+- update to 5.4:
+  * fix modules endings
+  * add maf's zik
+
+-------------------------------------------------------------------
 Thu Dec 28 18:22:12 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.3:

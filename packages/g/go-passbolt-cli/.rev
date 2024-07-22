@@ -7,4 +7,13 @@
     <comment>request for inclusion</comment>
     <requestid>1184003</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>80243cbc265fdccb58347b8072989456</srcmd5>
+    <version>0.3.1</version>
+    <time>1721661455</time>
+    <user>anag+factory</user>
+    <comment>- Add shell Completions &amp; man pages 
+</comment>
+    <requestid>1188800</requestid>
+  </revision>
 </revisionlist>

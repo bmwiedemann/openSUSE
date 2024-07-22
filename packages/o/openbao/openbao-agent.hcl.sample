@@ -1,0 +1,18 @@
+vault {
+   address = "https://openbao.example.org:8200"
+   tls_skip_verify = false
+}
+
+auto_auth {
+   method {
+      type = "token_file"
+      config = {
+         token_file_path = "/var/lib/openbao/.vault-token"
+      }
+   }
+   sink "file" {
+      config = {
+            path = "/var/lib/openbao/vault-token-via-agent"
+      }
+   }
+}

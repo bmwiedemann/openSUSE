@@ -1,0 +1,33 @@
+
+# HG changeset patch
+# User Paul Adenot <paul@paul.cx>
+# Date 1721290421 0
+# Node ID 3781e311770684d79c1c8112d18abce258e29e7f
+# Parent  fd4c60ac71c20d0cac519b517f32fc4956e0cfe3
+Bug 1905018 - Fix logctx type in dovi_rpu stub. r=media-playback-reviewers,alwu
+
+Differential Revision: https://phabricator.services.mozilla.com/D216832
+
+diff --git a/media/ffvpx/libavcodec/dovi_rpu.h b/media/ffvpx/libavcodec/dovi_rpu.h
+--- a/media/ffvpx/libavcodec/dovi_rpu.h
++++ b/media/ffvpx/libavcodec/dovi_rpu.h
+@@ -5,17 +5,17 @@
+  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+ 
+ /* Stubs for dovi_rpu.{c,h} */
+ 
+ typedef struct AVCtx AVContext;
+ 
+ typedef struct DOVICtx {
+   int dv_profile;
+-  AVContext* logctx;
++  void* logctx;
+   int operating_point;
+ } DOVIContext;
+ 
+ typedef struct AVDOVICConfRecord {
+ } AVDOVIDecoderConfigurationRecord;
+ 
+ static void ff_dovi_ctx_unref(DOVIContext* ctx) {}
+ static void ff_dovi_update_cfg(DOVIContext* ctx,
+

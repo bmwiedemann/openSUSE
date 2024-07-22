@@ -352,4 +352,15 @@
 - Update Requires from setup.py (forwarded request 1173587 from glaubitz)</comment>
     <requestid>1173719</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>e19365a0bb28cebca4006cb09473957e</srcmd5>
+    <version>12.21.0</version>
+    <time>1721661352</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 12.21.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1188558 from glaubitz)</comment>
+    <requestid>1188620</requestid>
+  </revision>
 </revisionlist>

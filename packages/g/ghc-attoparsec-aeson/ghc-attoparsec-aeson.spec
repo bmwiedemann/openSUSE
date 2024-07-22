@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-attoparsec-aeson
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name attoparsec-aeson
 %global pkgver %{pkg_name}-%{version}
 Name:           ghc-%{pkg_name}
-Version:        2.2.0.1
+Version:        2.2.2.0
 Release:        0
 Summary:        Parsing of aeson's Value with attoparsec
 License:        BSD-3-Clause
@@ -34,6 +34,8 @@ BuildRequires:  ghc-base-devel
 BuildRequires:  ghc-base-prof
 BuildRequires:  ghc-bytestring-devel
 BuildRequires:  ghc-bytestring-prof
+BuildRequires:  ghc-character-ps-devel
+BuildRequires:  ghc-character-ps-prof
 BuildRequires:  ghc-integer-conversion-devel
 BuildRequires:  ghc-integer-conversion-prof
 BuildRequires:  ghc-primitive-devel

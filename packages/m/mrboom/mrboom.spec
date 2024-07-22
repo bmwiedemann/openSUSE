@@ -1,7 +1,7 @@
 #
 # spec file for package mrboom
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2018, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           mrboom
-Version:        5.3
+Version:        5.5
 Release:        0
 Summary:        A Bomberman clone
 License:        MIT

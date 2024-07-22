@@ -52,6 +52,7 @@ BuildRequires:  qt6-svg-devel
 BuildRequires:  qt6-websockets-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(libudev)
+Requires:       libQt6Svg6
 Provides:       AusweisApp2 = 2.0.0
 Obsoletes:      AusweisApp2 < 2.0.0
 Requires:       hicolor-icon-theme

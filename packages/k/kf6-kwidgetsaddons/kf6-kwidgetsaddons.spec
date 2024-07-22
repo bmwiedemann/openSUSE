@@ -35,6 +35,8 @@ Source:         %{rname}-%{version}.tar.xz
 Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        frameworks.keyring
 %endif
+#PATCH-FIX-UPSTREAM
+Patch0:         0001-Partially-revert-cccaa8.patch
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  kf6-extra-cmake-modules >= %{_kf6_bugfix_version}

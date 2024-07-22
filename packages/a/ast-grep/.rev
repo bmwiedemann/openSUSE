@@ -421,4 +421,16 @@
   * refactor: move Html out 4a0c177</comment>
     <requestid>1187426</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>77401ae9580b9fe7101faf11510549c9</srcmd5>
+    <version>0.25.2+0</version>
+    <time>1721661317</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.25.2:
+  * fix: only present code action when there are truly fixable diagnostic #1327
+  * refactor: move some function out of lsp 1e6b477
+  * fix: use fix in data for fix all command d358d45
+  * fix: update fix all lsp b760b9b</comment>
+    <requestid>1188553</requestid>
+  </revision>
 </revisionlist>

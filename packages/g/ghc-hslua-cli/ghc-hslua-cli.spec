@@ -19,7 +19,7 @@
 %global pkg_name hslua-cli
 %global pkgver %{pkg_name}-%{version}
 Name:           ghc-%{pkg_name}
-Version:        1.4.2
+Version:        1.4.3
 Release:        0
 Summary:        Command-line interface for Lua
 License:        MIT

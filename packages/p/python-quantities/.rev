@@ -96,4 +96,12 @@
 - Remove test_umath because the test no longer fails when expected</comment>
     <requestid>1140266</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>dbd49c4d3c0cf5db7564baf457cb3ba3</srcmd5>
+    <version>0.15.0</version>
+    <time>1721661515</time>
+    <user>anag+factory</user>
+    <comment>- Restrict numpy to &lt; 2, not quite supported yet.</comment>
+    <requestid>1188925</requestid>
+  </revision>
 </revisionlist>

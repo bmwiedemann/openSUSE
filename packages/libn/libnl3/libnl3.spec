@@ -1,7 +1,7 @@
 #
 # spec file for package libnl3
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,8 +19,8 @@
 Name:           libnl3
 %define lname	libnl3-200
 %define with_tools 1
-%define uver	3_9_0
-Version:        3.9.0
+%define uver	3_10_0
+Version:        3.10.0
 Release:        0
 Summary:        Convenience library for working with Netlink sockets
 License:        GPL-2.0-only AND LGPL-2.1-only

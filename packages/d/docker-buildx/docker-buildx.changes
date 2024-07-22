@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jul 18 18:54:02 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.16.1:
+  * clarify the appropriate place to use the debug flag when
+    viewing warnings
+  * test: bake print
+  * bake: check printer before printing warnings
+
+-------------------------------------------------------------------
 Thu Jul 11 18:43:30 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.16.0:

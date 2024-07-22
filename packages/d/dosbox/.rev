@@ -383,4 +383,13 @@
   * https://dosbox-staging.github.io/releases/release-notes/0.81.1</comment>
     <requestid>1173532</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>5e4e6054a56ccda67a80f77f3fbb5c43</srcmd5>
+    <version>0.81.2</version>
+    <time>1721661508</time>
+    <user>anag+factory</user>
+    <comment>- Updated to 0.81.2
+  * https://www.dosbox-staging.org/releases/release-notes/0.81.2</comment>
+    <requestid>1188901</requestid>
+  </revision>
 </revisionlist>

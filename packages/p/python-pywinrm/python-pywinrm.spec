@@ -1,7 +1,7 @@
 #
 # spec file for package python-pywinrm
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pywinrm
-Version:        0.4.3
+Version:        0.5.0
 Release:        0
 Summary:        Python library for Windows Remote Management
 License:        MIT
@@ -26,17 +26,17 @@ Group:          Development/Languages/Python
 URL:            https://github.com/diyan/pywinrm/
 Source:         https://github.com/diyan/pywinrm/archive/refs/tags/v%{version}.tar.gz#/pywinrm-%{version}.tar.gz
 BuildRequires:  %{python_module kerberos}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests >= 2.9.1}
-BuildRequires:  %{python_module requests_ntlm >= 0.3.0}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module requests_ntlm >= 1.1.0}
 BuildRequires:  %{python_module six}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  %{python_module xmltodict}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-requests >= 2.9.1
-Requires:       python-requests_ntlm >= 0.3.0
-Requires:       python-six
+Requires:       python-requests_ntlm >= 1.1.0
 Requires:       python-xmltodict
 Suggests:       python-requests-credssp >= 0.0.1
 Suggests:       python-requests-kerberos >= 0.10.0
@@ -57,11 +57,12 @@ Microsoft's WinRM http://msdn.microsoft.com/en-us/library/aa384426.aspx
 %setup -q -n pywinrm-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%python_expand rm -Rv  %{buildroot}%{$python_sitelib}/winrm/tests
 
 %check
 # https://github.com/diyan/pywinrm/issues/345
@@ -71,6 +72,7 @@ sed -i 's:import mock:from unittest import mock:' winrm/tests/test_transport.py
 %files %{python_files}
 %license LICENSE
 %doc README.md
-%{python_sitelib}/*
+%{python_sitelib}/winrm
+%{python_sitelib}/pywinrm-%{version}.dist-info
 
 %changelog

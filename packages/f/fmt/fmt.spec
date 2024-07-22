@@ -18,7 +18,7 @@
 
 %define sover   11
 Name:           fmt
-Version:        11.0.1
+Version:        11.0.2
 Release:        0
 Summary:        A formatting library for C++
 License:        MIT

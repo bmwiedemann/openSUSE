@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Wed Jul 10 20:06:41 UTC 2024 - Robert Frohl <rfrohl@suse.com>
 
-- Wireshark 4.2.6:
+- Wireshark 4.2.6 (jsc#PED-8517):
   * SPRT dissector crash.
 - Further features, bug fixes and updated protocol support as listed in:
   https://www.wireshark.org/docs/relnotes/wireshark-4.2.6.html

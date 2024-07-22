@@ -68,6 +68,8 @@ Patch4:         git-prevent_xss-default.diff
 Patch6:         git-tcsh-completion-fixes.diff
 Patch8:         git-asciidoc.patch
 Patch10:        setup-don-t-fail-if-commondir-reference-is-deleted.patch
+# PATCH-FIX-OPENSUSE CVE-2024-24577.patch boo#1219660 antonio.teixeira@suse.com
+Patch11:        CVE-2024-24577.patch
 BuildRequires:  fdupes
 BuildRequires:  gpg2
 BuildRequires:  libcurl-devel

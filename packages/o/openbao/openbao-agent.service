@@ -1,0 +1,34 @@
+[Unit]
+Description="HashiCorp Vault Agent"
+Documentation=https://github.com/openbao/openbao
+Requires=network-online.target
+After=network-online.target
+ConditionFileNotEmpty=/etc/openbao/openbao-agent.hcl
+StartLimitIntervalSec=60
+StartLimitBurst=3
+
+[Service]
+Type=notify
+EnvironmentFile=/etc/openbao/openbao-agent.env
+User=openbao
+Group=openbao
+ProtectSystem=full
+ProtectHome=read-only
+PrivateTmp=yes
+PrivateDevices=yes
+SecureBits=keep-caps
+AmbientCapabilities=CAP_IPC_LOCK
+CapabilityBoundingSet=CAP_SYSLOG CAP_IPC_LOCK
+NoNewPrivileges=yes
+ExecStart=/usr/bin/openbao agent -config=/etc/openbao/openbao-agent.hcl
+ExecReload=/bin/kill --signal HUP $MAINPID
+KillMode=process
+KillSignal=SIGINT
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=30
+LimitNOFILE=65536
+LimitMEMLOCK=infinity
+
+[Install]
+WantedBy=multi-user.target

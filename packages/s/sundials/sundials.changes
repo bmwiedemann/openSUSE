@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jul 17 05:10:15 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 7.1.1:
+  * Fixed a bug in v7.1.0 with the SYCL N_Vector N_VSpace
+  * function (gh#LLNL/sundials#523).
+- Changes from version 7.1.0:
+  * Too many to list, see
+    <https://github.com/LLNL/sundials/releases/tag/v7.1.0>.
+
+-------------------------------------------------------------------
 Tue Mar 12 01:04:46 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 7.0.0:

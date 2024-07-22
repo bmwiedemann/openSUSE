@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jul 12 16:49:22 UTC 2024 - David Disseldorp <ddiss@suse.com>
+
+- Fix buf-ring-nommap.t test failure
+  * test-buf-ring-nommap-zero-the-ringbuf-memory.patch
+
+-------------------------------------------------------------------
 Fri Jun 28 08:29:55 UTC 2024 - Jiri Slaby <jslaby@suse.cz>
 
 - Update to 2.6:

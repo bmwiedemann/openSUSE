@@ -57,4 +57,13 @@
     <comment>KDE Frameworks 6.4.0 (forwarded request 1186902 from krop)</comment>
     <requestid>1187145</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>41143e340148bd7423e60297e4d8e0de</srcmd5>
+    <version>6.4.0</version>
+    <time>1721661284</time>
+    <user>anag+factory</user>
+    <comment>- Add upstream fix:
+  * 0001-Partially-revert-cccaa8.patch</comment>
+    <requestid>1188708</requestid>
+  </revision>
 </revisionlist>

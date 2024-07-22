@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-nethsm
-Version:        1.1.0
+Version:        1.2.0
 Release:        0
 Summary:        Python Library to manage NetHSM(s)
 License:        Apache-2.0
@@ -50,7 +50,6 @@ Suggests:       python-flit >= 3.2
 Suggests:       python-ipython
 Suggests:       python-isort
 Suggests:       python-mypy >= 1.4
-Suggests:       python-pyinstaller == 5.9.0
 Suggests:       python-pytest
 Suggests:       python-pytest-reporter-html1
 Suggests:       python-docker
@@ -133,6 +132,11 @@ IGNORED_CHECKS="${IGNORED_CHECKS} or test_state_provision_update"
 IGNORED_CHECKS="${IGNORED_CHECKS} or test_state_provision_update_cancel_update"
 IGNORED_CHECKS="${IGNORED_CHECKS} or test_state_restore"
 IGNORED_CHECKS="${IGNORED_CHECKS} or test_update_commit_update"
+# ignore checks that need docker
+IGNORED_CHECKS="${IGNORED_CHECKS} or test_keys"
+IGNORED_CHECKS="${IGNORED_CHECKS} or test_config"
+IGNORED_CHECKS="${IGNORED_CHECKS} or test_add_user"
+IGNORED_CHECKS="${IGNORED_CHECKS} or test_delete_self"
 %pytest -k "not (${IGNORED_CHECKS})"
 
 %files %{python_files}

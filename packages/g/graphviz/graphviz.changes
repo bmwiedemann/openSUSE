@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jul  9 13:46:12 UTC 2024 - Martin Jambor <mjambor@suse.com>
+
+- Add -fpermissive to optflags when compiling the addons flavor in
+  order to prevent GCC 14 to throw errors upon encountering various
+  C99 violations. [boo#1225776]
+
+-------------------------------------------------------------------
 Thu Mar  7 14:57:35 UTC 2024 - Thomas Renninger <trenn@suse.de>
 
 - VUL-0: CVE-2023-46045: graphviz: out-of-bounds read via a crafted config6a file

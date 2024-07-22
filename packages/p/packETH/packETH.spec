@@ -1,7 +1,7 @@
 #
 # spec file for package packETH
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,15 +23,13 @@
 %bcond_with cli
 %endif
 Name:           packETH
-Version:        2.1
+Version:        2.24
 Release:        0
 Summary:        Packet generator tool for ethernet
 License:        GPL-3.0-or-later
 Group:          Productivity/Networking/Diagnostic
 URL:            http://packeth.sourceforge.net/packeth/Home.html
 Source0:        https://github.com/jemcek/packETH/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM e72195b573.patch -- https://github.com/jemcek/packETH/pull/22
-Patch0:         https://github.com/jemcek/packETH/commit/e72195b573.patch
 BuildRequires:  automake
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(glib-2.0) >= 2.4

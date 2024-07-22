@@ -52,7 +52,7 @@
 %endif
 
 Name:           python-kiwi
-Version:        10.0.23
+Version:        10.0.25
 Provides:       kiwi-schema = 8.1
 Release:        0
 Url:            https://github.com/OSInside/kiwi
@@ -334,6 +334,10 @@ Provides:       kiwi-image:vmx
 Requires:       kiwi-systemdeps-filesystems = %{version}-%{release}
 Requires:       kiwi-systemdeps-bootloaders = %{version}-%{release}
 Requires:       kiwi-systemdeps-iso-media = %{version}-%{release}
+%if 0%{?suse_version} >= 1650
+Requires:       binutils
+Requires:       glibc-gconv-modules-extra
+%endif
 %if 0%{?suse_version}
 Requires:       gptfdisk
 %else
@@ -412,7 +416,6 @@ Requires:       screen
 Requires:       file
 Requires:       sed
 Requires:       bash
-Recommends:     bash-completion
 Requires:       python%{python3_pkgversion} >= 3.9
 %if 0%{?ubuntu} || 0%{?debian}
 Requires:       python%{python3_pkgversion}-yaml
@@ -655,6 +658,19 @@ Group:          %{sysgroup}
 %description -n kiwi-man-pages
 Provides manual pages to describe the kiwi commands
 
+%package -n kiwi-bash-completion
+Summary:        Bash Completion for kiwi-ng
+Requires:       bash-completion
+Requires:       python%{python3_pkgversion}-kiwi = %{version}
+%if ! (0%{?debian} || 0%{?ubuntu})
+Supplements:    (%{name} and bash-completion)
+%endif
+BuildArch:      noarch
+
+%description -n kiwi-bash-completion
+Bash command line completion support for python-kiwi - completion
+of subcommands, parameters and keywords for the kiwi-ng command.
+
 %prep
 %setup -q -n kiwi-%{version}
 
@@ -764,10 +780,12 @@ fi
 %{_bindir}/kiwi-ng
 %{_bindir}/kiwi-ng-3*
 %{python3_sitelib}/kiwi*
-%{_usr}/share/bash-completion/completions/kiwi-ng
 %{_usr}/share/kiwi/xsl_to_v74/
 %{_defaultdocdir}/python-kiwi/LICENSE
 %{_defaultdocdir}/python-kiwi/README
+
+%files -n kiwi-bash-completion
+%{_usr}/share/bash-completion/completions/kiwi-ng
 
 %files -n kiwi-man-pages
 %config %_sysconfdir/kiwi.yml

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Jul 20 13:14:42 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 20240531:
+  * Update for functional issues. Refer to Intel® Pentium® Silver
+    and Intel® Celeron® Processor Specification Update
+  - Updated Platforms:
+    | Processor      | Stepping | F-M-S/PI    | Old Ver  | New Ver  | Products
+    |:---------------|:---------|:------------|:---------|:---------|:---------
+    | GLK            | B0       | 06-7a-01/01 | 00000040 | 00000042 | Pentium Silver N/J5xxx, Celeron N/J4xxx
+
+-------------------------------------------------------------------
 Wed May 15 10:06:58 UTC 2024 - Marcus Meissner <meissner@suse.com>
 
 - Intel CPU Microcode was updated to the 20240514 release (bsc#1224277)
@@ -236,7 +247,7 @@ Wed Aug  9 07:27:10 UTC 2023 - Alexander Bergmann <abergmann@suse.com>
   | RPL-H/P/PX 6+8 | J0       | 06-ba-02/e0 |          | 00004119 | Core Gen13
 
   Updated Platforms:
-  
+
   | Processor      | Stepping | F-M-S/PI    | Old Ver  | New Ver  | Products
   |:---------------|:---------|:------------|:---------|:---------|:---------
   | CML-U62 V2     | K1       | 06-a6-01/80 | 000000f6 | 000000f8 | Core Gen10 Mobile
@@ -286,7 +297,7 @@ Wed Aug  9 07:27:10 UTC 2023 - Alexander Bergmann <abergmann@suse.com>
   | ADL            | C0       | 06-bf-02/07 | 0000002c | 0000002e | Core Gen12
   | ADL            | C0       | 06-bf-05/07 | 0000002c | 0000002e | Core Gen12
   | CML-H          | R1       | 06-a5-02/20 | 000000f6 | 000000f8 | Core Gen10 Mobile
-  | RPL-H/P/PX 6+8 | J0       | 06-ba-02/e0 |          | 00004119 | Core Gen13 
+  | RPL-H/P/PX 6+8 | J0       | 06-ba-02/e0 |          | 00004119 | Core Gen13
   | RPL-U 2+8      | Q0       | 06-ba-03/e0 |          | 00004119 | Core Gen13
 
 -------------------------------------------------------------------
@@ -572,7 +583,7 @@ Mon Nov 21 15:35:02 UTC 2022 - Marcus Meissner <meissner@suse.com>
 Wed Aug 10 13:19:14 UTC 2022 - Marcus Meissner <meissner@suse.com>
 
 - Updated to Intel CPU Microcode 20220809 release. (bsc#1201727)
-  - CVE-2022-21233: Security updates for [INTEL-SA-00657](https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-00657.html). 
+  - CVE-2022-21233: Security updates for [INTEL-SA-00657](https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-00657.html).
   - Update for functional issues. Refer to [Intel® Xeon® Processor Scalable Family Specification
 +Update](https://www.intel.com/content/www/us/en/processors/xeon/scalable/xeon-scalable-spec-update.html?wapkw=processor+specification+update) for details.  - Updated Platforms:
 
@@ -831,7 +842,7 @@ Wed Nov 11 08:23:06 UTC 2020 - Marcus Meissner <meissner@suse.com>
   | TGL            | B1       | 06-8c-01/80 |          | 00000068 | Core Gen11 Mobile
   | CML-H          | R1       | 06-a5-02/20 |          | 000000e0 | Core Gen10 Mobile
   | CML-S62        | G1       | 06-a5-03/22 |          | 000000e0 | Core Gen10
-  | CML-S102       | Q0       | 06-a5-05/22 |          | 000000e0 | Core Gen10 
+  | CML-S102       | Q0       | 06-a5-05/22 |          | 000000e0 | Core Gen10
   | CML-U62 V2     | K0       | 06-a6-01/80 |          | 000000e0 | Core Gen10 Mobile
 
   ### Updated Platforms
@@ -955,7 +966,7 @@ Tue Nov 19 06:06:55 UTC 2019 - Marcus Meissner <meissner@suse.com>
   - CFL-H/S/E3   R0       6-9e-d/22 000000c6->000000ca Core Gen9 Desktop, Mobile, Xeon E
   - CML-U62      A0       6-a6-0/80 000000c6->000000ca Core Gen10 Mobile
 
-- Updated to 20191113 release 
+- Updated to 20191113 release
   - Processor             Identifier     Version       Products
   - Model        Stepping F-MO-S/PI      Old->New
   - ---- updated platforms ------------------------------------
@@ -1252,12 +1263,12 @@ Wed Mar 14 14:15:49 UTC 2018 - meissner@suse.com
   CFL D0 6-8e-a:c0 70->84
   CFL U0 6-9e-a:22 70->84
   CFL B0 6-9e-b:02 72->84
-  SKX H0 6-55-4:b7 2000035->2000043 
+  SKX H0 6-55-4:b7 2000035->2000043
 
 -------------------------------------------------------------------
 Mon Mar  5 21:56:59 UTC 2018 - crrodriguez@opensuse.org
 
-- intel-microcode2ucode.c replaced by better maintained and 
+- intel-microcode2ucode.c replaced by better maintained and
   feature rich iucode_tool package, add it to buildrequires.
 
 -------------------------------------------------------------------
@@ -1277,7 +1288,7 @@ Thu Nov 23 14:01:29 UTC 2017 - trenn@suse.de
 -------------------------------------------------------------------
 Wed Jul 19 15:04:28 UTC 2017 - astieger@suse.com
 
-- Remove code in intel-microcode2ucode.c that refers to 
+- Remove code in intel-microcode2ucode.c that refers to
   GenuineIntel.bin , previously in binary blob package.
 
 -------------------------------------------------------------------
@@ -1315,7 +1326,7 @@ Tue May 16 08:46:55 UTC 2017 - idonmez@suse.com
 -------------------------------------------------------------------
 Mon Dec  5 21:25:01 UTC 2016 - crrodriguez@opensuse.org
 
-- Update to version 20161104. 
+- Update to version 20161104.
 
 -------------------------------------------------------------------
 Thu Jul 21 09:21:38 UTC 2016 - trenn@suse.de
@@ -1359,7 +1370,7 @@ Mon Nov  2 15:49:52 UTC 2015 - fvogt@suse.com
 -------------------------------------------------------------------
 Thu Mar 19 00:52:40 UTC 2015 - crrodriguez@opensuse.org
 
-- Update to microcode 20150121. 
+- Update to microcode 20150121.
 
 -------------------------------------------------------------------
 Wed Jan 21 20:13:01 UTC 2015 - mpluskal@suse.com
@@ -1437,12 +1448,12 @@ Mon Nov 25 11:14:51 UTC 2013 - trenn@suse.de
 -------------------------------------------------------------------
 Sun Sep 22 16:23:54 UTC 2013 - crrodriguez@opensuse.org
 
-- ucode 20130906, no changelog available. 
+- ucode 20130906, no changelog available.
 
 -------------------------------------------------------------------
 Fri Aug 30 23:31:41 UTC 2013 - crrodriguez@opensuse.org
 
-- ucode 20130808, as usual, no changelog available. 
+- ucode 20130808, as usual, no changelog available.
 
 -------------------------------------------------------------------
 Thu Jul 25 06:33:45 UTC 2013 - aj@suse.com

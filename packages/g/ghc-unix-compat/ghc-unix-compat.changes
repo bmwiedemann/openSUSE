@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jun 25 13:44:12 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update unix-compat to version 0.7.2.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/unix-compat-0.7.2/src/CHANGELOG.md
+
+-------------------------------------------------------------------
 Wed Dec  6 12:31:37 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update unix-compat to version 0.7.1.

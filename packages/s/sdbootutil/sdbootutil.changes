@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jul 22 09:25:21 UTC 2024 - aplanas@suse.com
+
+- Update to version 1+git20240722.e6d7c91:
+  * Fix early return value when cleaning pcrlock.d
+
+-------------------------------------------------------------------
 Fri Jul 19 13:59:04 UTC 2024 - aplanas@suse.com
 
 - Update to version 1+git20240719.36c650f:

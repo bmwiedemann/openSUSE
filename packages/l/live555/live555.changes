@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Thu Jul 18 14:19:57 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2024-06-26:
+  * Updated the "OnDemandServerMediaSubsession" implementation to
+    output an error message if the "sink->startPlaying()" call failed
+    (e.g., due to its source not being compatible with the sink).
+    This makes some common errors (e.g, a proper 'framer' not
+    being used) easier to detect.
+- update to 2024-05-30:
+  * Fixed a mistake that caused the config file
+    "config.raspberrypi" to not appear in the distribution.
+- update to 2024-05-15:
+  * Added a new config file "config.raspberrypi" that is known to
+    work for building the code on/for a Raspberry Pi 5.
+- update to 2024-05-05:
+  * Updated "QuickTimeFileSink" to add support for recording H.265
+    video streams.  (This is not fully working yet; it appears to
+    have some bugs.)
+- update to 2024-04-19:
+  * Updated "MPEG2TransportStreamFramer" to ignore big jumps (2x or
+    more) in the estimate for the duration of each Transport
+    packet.
+    This is likely caused by an unexpected jump in the PCR (not
+    indicated by "discontinuity_indicator").
+- update to 2024-03-08:
+  * Changed "ServerTLSState::setup()" (in "TLSState.cpp") to call
+    "SSL_CTX_use_certificate_chain_file()" instead of
+    "SSL_CTX_use_certificate_file()", to allow the server operator to
+    specify a chain of certificates, rather than just one.
+- update to 2024.02.28:
+  * Updated the code for "dateHeader()" (in "RTSPCommon.cpp") to
+    avoid using "strftime()", because that can produce a localized
+    date string that violates the RTSP specification
+    (which uses section 3.3.1 of RFC 2068 (the HTTP/1.1
+    specification) to define the "Date:" header).
+- update to 2024.02.23:
+  * Updated the code for "dateHeader()" (in "RTSPCommon.cpp") to use
+    "NULL" instead of "nullptr"; the latter was causing compilation
+    problems for someone.
+- update to 2024.02.15:
+  * Updated the RTCP implementation so that reception stats for a
+    SSRC are no longer deleted, even if a SSRC is reaped due to RTCP
+    inactivity (no RTCP "SR" reports received recently).
+
+-------------------------------------------------------------------
+Thu Jul 18 14:17:02 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2024.
+
+-------------------------------------------------------------------
 Fri Mar  1 10:52:02 UTC 2024 - pgajdos@suse.com
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
@@ -12,7 +62,7 @@ Sun Jan 14 10:08:15 UTC 2024 - Takashi Iwai <tiwai@suse.com>
     "TimeCode::operator==()" the "const" qualifier, to make some
     compilers happy.
   * Performed the annual update of the copyright years near the start
-    of each file 
+    of each file
 - update to 2023.11.08:
   * Changed the signature to the virtual function
     "getRTPSinkandRTCP()" (in "ServerMediaSubession", and its subclasses
@@ -21,7 +71,7 @@ Sun Jan 14 10:08:15 UTC 2024 - Takashi Iwai <tiwai@suse.com>
     There was no real reason to make those "const *".
 - update to 2023.11.07:
   * In the class "GenericMediaServer", made the variables
-    "fServerMediaSessions", 
+    "fServerMediaSessions",
     "fClientConnections", and "fClientSessions" 'protected' rather
     than 'private', to allow subclasses to access them if desired.
 - update to 2023.10.30:
@@ -79,7 +129,7 @@ Sat Jan 21 12:18:32 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2023.01.19:
   - By default, we no longer compile "groupsock/NetAddress.cpp" for Windows to use
-    "gethostbyname()", because of a report that this breaks IPv6 name resolution. 
+    "gethostbyname()", because of a report that this breaks IPv6 name resolution.
 
 -------------------------------------------------------------------
 Mon Jan 16 07:38:03 UTC 2023 - Dirk Müller <dmueller@suse.com>
@@ -100,7 +150,7 @@ Fri Dec  2 21:59:44 UTC 2022 - Dirk Müller <dmueller@suse.com>
   - Fixed a bug in "RTSPClient" that would cause RTSP-over-HTTP streaming over TLS to
     sometimes fail.  (Thanks to Johannes Gajdosik for reporting this.)
   - Fixed a bug that would cause a RTSP server to use an incorrect URL if it accepted connections
-    via TLS, but *without* streaming SRTP. 
+    via TLS, but *without* streaming SRTP.
 
 -------------------------------------------------------------------
 Tue Nov 22 20:26:02 UTC 2022 - Dirk Müller <dmueller@suse.com>
@@ -270,50 +320,50 @@ Mon Aug 23 14:46:03 UTC 2021 - Fusion Future <qydwhotmail@gmail.com>
 Thu Aug 12 00:38:24 UTC 2021 - Fusion Future <qydwhotmail@gmail.com>
 
 - Update to 2021.08.09:
-  - Fixed a bug in the MPEG-1 or 2 file server demultiplexors that 
-    could cause a RTSP server to crash if it received successive 
-    RTSP "SETUP" commands for the same track. (Thanks to Ba 
+  - Fixed a bug in the MPEG-1 or 2 file server demultiplexors that
+    could cause a RTSP server to crash if it received successive
+    RTSP "SETUP" commands for the same track. (Thanks to Ba
     Jinsheng for reporting this.)(boo#1189352, CVE-2021-38381)
 - Update to 2021.08.06:
-  - Fixed a bug in the Matroska and Ogg file server demultiplexors 
-    that could cause a RTSP server to crash if it received 
-    successive RTSP "SETUP" commands for the same track.  (Thanks 
+  - Fixed a bug in the Matroska and Ogg file server demultiplexors
+    that could cause a RTSP server to crash if it received
+    successive RTSP "SETUP" commands for the same track.  (Thanks
     to Ba Jinsheng for reporting this.)(boo#1189353, CVE-2021-38382)
 - Update to 2021.08.04:
-  - In the "MP3FileSource" implementation, we no longer do a 
-    recursive call to "doEventLoop()" when attempting to 
-    synchronously read from a MP3 file.  This avoids a possible 
-    stack overflow in the RTSP server if multiple concurrent 
-    requests are made. (Thanks to Ba Jinsheng for reporting this.)  
-    The server still does some synchronous reads, when 
-    initializing, and when parsing MP3 frame headers. This should 
+  - In the "MP3FileSource" implementation, we no longer do a
+    recursive call to "doEventLoop()" when attempting to
+    synchronously read from a MP3 file.  This avoids a possible
+    stack overflow in the RTSP server if multiple concurrent
+    requests are made. (Thanks to Ba Jinsheng for reporting this.)
+    The server still does some synchronous reads, when
+    initializing, and when parsing MP3 frame headers. This should
     be fixed sometime in the future. (boo#1189351, CVE-2021-38380)
 - Update to 2021.07.20:
-  - If a "RTSPClient" receives a response to a RTSP "PLAY" that 
-    changes the 'scale()' or 'speed()' of the whole session, then 
-    those parameters also need to be changed in each subsession (as 
-    that inheritance doesn't happen automatically). (Thanks to a 
+  - If a "RTSPClient" receives a response to a RTSP "PLAY" that
+    changes the 'scale()' or 'speed()' of the whole session, then
+    those parameters also need to be changed in each subsession (as
+    that inheritance doesn't happen automatically). (Thanks to a
     developer in China for reporting this.)
 - Update to 2021.07.10:
-  - Updated "H264or5VideoStreamFramer.cpp" once again to set the 
-    default value of "DeltaTfiDivisor" to 2.0 for H.265, and 1.0 
-    for everything else.  (This fixes the frame rate for another 
+  - Updated "H264or5VideoStreamFramer.cpp" once again to set the
+    default value of "DeltaTfiDivisor" to 2.0 for H.265, and 1.0
+    for everything else.  (This fixes the frame rate for another
     stream supplied by Paul Westlund.)
 - Update to 2021.06.29:
-  - In the proxy server implementation, if a client closes one 
-    substream, but there are still other clients receiving other 
-    substream(s), then we no send a single-track RTSP "PAUSE" 
-    command downstream, because some back-end servers might handle 
-    that by pausing all tracks of the stream.  So now, in this 
-    case, we don't send a RTSP "PAUSE" command at all. (Thanks to 
+  - In the proxy server implementation, if a client closes one
+    substream, but there are still other clients receiving other
+    substream(s), then we no send a single-track RTSP "PAUSE"
+    command downstream, because some back-end servers might handle
+    that by pausing all tracks of the stream.  So now, in this
+    case, we don't send a RTSP "PAUSE" command at all. (Thanks to
     Jose Maria Infanzon for noting this issue.)
 - Update to 2021.06.25:
-  - Updated "H264or5VideoStreamFramer.cpp" to set the default value 
-    of "DeltaTfiDivisor" to 1.0 (rather than 2.0), and to assume a 
-    frame rate of 30 fps (rather than 25 fps) if there is no VPS or 
-    SPS NAL unit that specifies a different frame rate.  This seems 
-    to work the best for most raw H.264 and H.265 video streams.  
-    (Thanks to Paul Westlund for supplying an example file to 
+  - Updated "H264or5VideoStreamFramer.cpp" to set the default value
+    of "DeltaTfiDivisor" to 1.0 (rather than 2.0), and to assume a
+    frame rate of 30 fps (rather than 25 fps) if there is no VPS or
+    SPS NAL unit that specifies a different frame rate.  This seems
+    to work the best for most raw H.264 and H.265 video streams.
+    (Thanks to Paul Westlund for supplying an example file to
     motivate this.)
 - Change the so version of libliveMedia to 97
 
@@ -335,7 +385,7 @@ Sun Oct 18 17:54:57 UTC 2020 - Dirk Mueller <dmueller@suse.com>
     This fixes a problem that could cause 100% CPU usage in RTSP client applications.
     (Thanks to Larry Wu for reporting this.)
   - Updated "TLSState::setup()" to use "TLS_client_method()" instead of the (deprecated)
-    "SSLv23_client_method()". 
+    "SSLv23_client_method()".
 
 -------------------------------------------------------------------
 Sat Oct  3 15:07:23 UTC 2020 - Dirk Mueller <dmueller@suse.com>
@@ -373,7 +423,7 @@ Sat Oct  3 15:07:23 UTC 2020 - Dirk Mueller <dmueller@suse.com>
     Also changed the definition of EXE in "config.mingw" to be ".exe".
     (Thanks to Eric Beuque for this suggestion.)
   - Fixed a typo in the previous release that could cause a compilation problem for some
-    developers.  (Thanks to Eric Beuque for reporting this.) 
+    developers.  (Thanks to Eric Beuque for reporting this.)
 
 -------------------------------------------------------------------
 Thu Jun  4 14:33:03 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
@@ -559,7 +609,7 @@ Sat Jul  8 20:15:00 UTC 2017 - jengelh@inai.de
 -------------------------------------------------------------------
 Mon Jul  3 09:39:00 UTC 2017 - ramaxlo@gmail.com
 
-- Update to version 2017.06.04 
+- Update to version 2017.06.04
   2017.06.04:
   * Fixed a bug in "RTPInterface::removeStreamSocket()" that could
     cause not all 'TCP stream' records for a given socket number
@@ -630,7 +680,7 @@ Sun Oct 16 12:05:45 UTC 2016 - aloisio@gmx.com
 
 - Update to version 2016.10.11
   2016.10.11:
-  * After building the source code, we now display a message 
+  * After building the source code, we now display a message
     reminding the developer about our FAQ.
   2016.09.22:
   * Added a new "liveMedia" class
@@ -639,14 +689,14 @@ Sun Oct 16 12:05:45 UTC 2016 - aloisio@gmx.com
     Stream 188-byte 'packets' into a larger chunk of data,
     more appropriate for streaming via RTP (or raw UDP).
   2016.09.19:
-  * Added support for an experimental RTSP "DEREGISTER" 
+  * Added support for an experimental RTSP "DEREGISTER"
     command, which undoes the effect of a "REGISTER" command.
-  * Moved the REGISTER/DEREGISTER-specific functionality of 
+  * Moved the REGISTER/DEREGISTER-specific functionality of
     "RTSPServer.cpp" into a new file "RTSPServerRegister.cpp",
     to make the base RTSP server code (in "RTSPServer.cpp")
     easier to comprehend.
   2016.09.12:
-  * Fixed "GenericMediaServer::createNewClientSessionWithId()" 
+  * Fixed "GenericMediaServer::createNewClientSessionWithId()"
     to make sure that the new 'client session' object (returned
     by a call to "createNewClientSession()") is not NULL
     before it tries to add it to the 'fClientSessions' table.
@@ -654,16 +704,16 @@ Sun Oct 16 12:05:45 UTC 2016 - aloisio@gmx.com
   2016.09.08:
   * Updated "RTSPClient::reset()" to reset each of the 'request
     queues' as well.
-    (Thanks to Erik Montnemery for noting a problem (with the 
+    (Thanks to Erik Montnemery for noting a problem (with the
     "LIVE555 Proxy Server") that this caused.)
   * Updated "GenericMediaServer::ClientConnection::closeSockets()"
     so that it doesn't try to call "closeSocket()" (=="close()")
     on socket numbers <0.
   2016.09.05:
-  * Fixed a problem whereby a 'delayed task' for a 
+  * Fixed a problem whereby a 'delayed task' for a
     "MPEG2TransportStreamMultiplexor" object might have gotten run
     after such an object was deleted.
-    (Thanks to Bruno Basilio for providing debugging output to 
+    (Thanks to Bruno Basilio for providing debugging output to
     help track this down.)
   * Updated "Socket::reset()" (in "groupsock/NetInterface.cpp") so
     that it doesn't try to call "closeSocket()" (=="close()") on
@@ -673,10 +723,10 @@ Sun Oct 16 12:05:45 UTC 2016 - aloisio@gmx.com
     same 'event trigger id' from different threads.
     (This was already noted in a comment in
     "liveMedia/DeviceSource.cpp", but not in
-    "UsageEnvironment/include/UsageEnvironment.hh", which is 
+    "UsageEnvironment/include/UsageEnvironment.hh", which is
     where "triggerEvent()" is defined.)
   2016.08.27:
-  * Fixed a problem whereby a "Medium" object's "nextTask()" 
+  * Fixed a problem whereby a "Medium" object's "nextTask()"
     (i.e., "fNextTask") could hold an invalid value after a
     'scheduled task' has occurred (but before the next similar
     task is scheduled) - which causes problems should the
@@ -686,29 +736,29 @@ Sun Oct 16 12:05:45 UTC 2016 - aloisio@gmx.com
     to make it clear that "unscheduleDelayedTask()" (or
     "rescheduleDelayedTask()") must not be called on a
     'scheduled task' after it has already occurred.
-    (Thanks to Helmut Grohne for motivating this.)  
+    (Thanks to Helmut Grohne for motivating this.)
   2016.08.07:
-  * Fixed a bug in the handling of the non-standard 
+  * Fixed a bug in the handling of the non-standard
     "com.ses.streamID:" header (used by 'SAT>IP' servers)
     that we had introduced in version 2016.01.12.
     (Thanks to Yaobing Deng for noting this.)
   2016.07.19:
-  * Fixed a bug in "RTSPServer" that could cause a crash if a 
+  * Fixed a bug in "RTSPServer" that could cause a crash if a
     "RTSPServer" object is deleted after having been used
     for RTSP-over-HTTP streaming.  (Thanks to Pavel Aronov.)
-  * Updated "RTSPClient" to recognize a "Connection: Close" 
+  * Updated "RTSPClient" to recognize a "Connection: Close"
     header in a server's response. It handles this header by
     closing the RTSP TCP connection (because the server is
     assumed to not be using it again), so that we open a new
     TCP  connection for any subsequent commands.
     (Thanks to Nathan (at MediaPortal) for this suggestion.)
-  * Made a small optimization to "RTSPServer"s handling of the 
+  * Made a small optimization to "RTSPServer"s handling of the
     first "SETUP" command from each client.  (Thanks to Maxim
     Dementiev for the suggestion.)
   2016.06.26:
   * Added a new (public) function "canDeliverNewFrameImmediately()"
     to "MPEG2TransportStreamMultiplexor".
-    This function may be used by a downstream reader to test 
+    This function may be used by a downstream reader to test
     whether the next call to "doGetNextFrame()" will deliver
     data immediately.  It can be useful if you want to decide
     whether or not to keep accumulating multiple Transport Stream
@@ -717,107 +767,107 @@ Sun Oct 16 12:05:45 UTC 2016 - aloisio@gmx.com
   * Made a minor syntactic change to "MediaTranscodingTable.hh"
     to eliminate compiler warnings.
   2016.06.23:
-  * Changed the constant "MAX_INPUT_ES_FRAME_SIZE" to a static 
+  * Changed the constant "MAX_INPUT_ES_FRAME_SIZE" to a static
     member variable
-    "MPEG2TransportStreamFromESSource::maxInputESFrameSize" 
+    "MPEG2TransportStreamFromESSource::maxInputESFrameSize"
     that can, if desired, be increased at run time (before a
     "MPEG2TransportStreamFromESSource" object is created).
     (Thanks to Gilles Chanteperdrix for motivating this.)
   2016.06.22:
-  * Changed "~ProxyServerMediaSession()" so that it no longer 
+  * Changed "~ProxyServerMediaSession()" so that it no longer
     deletes the "MediaTranscodingTable" object that it had
     been passed in its constructor.  (The reason for this is
     that the same "MediaTranscodingTable" can be used by more
     than one "ProxyServerMediaSession".)
-  * Made the "parseTransportHeaderForREGISTER()" function 
+  * Made the "parseTransportHeaderForREGISTER()" function
     (that's used in the "RTSPServer" implementation) non-static,
     so that it can be used in other, non-RTSP server
     implementations that want to handle the "REGISTER" command.
-  * Made the "RTPSink::SSRC()" function "public:" rather than 
+  * Made the "RTPSink::SSRC()" function "public:" rather than
     "protected:".
     (Thanks to Jean-Luc Bonnet for this suggestion.)
   2016.05.20:
-  * Added a new virtual function "noteLiveness()" to the 
+  * Added a new virtual function "noteLiveness()" to the
     "ServerMediaSession" class. This function is called
     (by a "GenericMediaServer") whenever there's 'liveness'
-    on a "ClientSession".  The default implementation of this 
+    on a "ClientSession".  The default implementation of this
     function is a 'noop', but subclasses can redefine it - e.g.,
     if you want to remove long-unused "ServerMediaSession"s
     from the server.
-  * Fixed a bug in the options handling for the command 
+  * Fixed a bug in the options handling for the command
     "live555ProxyServer" that could erroneously produce a
-    "usage" error if the '-R' option is used, but no 
+    "usage" error if the '-R' option is used, but no
     back-end "rtsp://" URL is given.
   2016.05.18:
-  * Backed out the change to "MultiFramedRTPSink" that was 
+  * Backed out the change to "MultiFramedRTPSink" that was
     made in 2016.05.17; the 2016.05.16 version turned out
     to be correct.
-  * Rearranged "#include"s to avoid an 'excessive #include 
+  * Rearranged "#include"s to avoid an 'excessive #include
     nesting' error with some old compilers.
   2016.05.17:
-  * Made a (mostly inconsequential) fix to the previous bugfix 
+  * Made a (mostly inconsequential) fix to the previous bugfix
     for "MultiFramedRTPSink".
   2016.05.16:
-  * Fixed a bug in "MultiFramedRTPSink" that affected 
+  * Fixed a bug in "MultiFramedRTPSink" that affected
     subclasses that redefine "frameSpecificHeaderSize()"
     (for frame-specific headers that precede multiple frames
     in a RTP packet).  (Currently, the only subclass that
     this affected was "VorbisAudioRTPSink".)
     (Thanks to Gilles Chanteperdrix for reporting this bug.)
-  * Made a minor update to the "ProxyServerMediaSession" code 
+  * Made a minor update to the "ProxyServerMediaSession" code
     to better support optional media transcoding.
   2016.04.21:
-  * Made it easier to set the MTU for all outgoing RTP 
+  * Made it easier to set the MTU for all outgoing RTP
     packets, instead of having to call "setPacketSizes()"
     after each "MultiFramedRTPSink" is created.  If you wish,
     you can define the compile-time constants (macros)
     RTP_PAYLOAD_MAX_SIZE and (optionally) RTP_PAYLOAD_PREFERRED_SIZE
-    when compiling "MultiFramedRTPSink.cpp".  (These constants 
+    when compiling "MultiFramedRTPSink.cpp".  (These constants
     have default values of 1456 and 1000 respectively, just as
     before.)
-  * Updated "GroupsockHelper.{hh,cpp}" to (supposedly) support 
+  * Updated "GroupsockHelper.{hh,cpp}" to (supposedly) support
     'MinGW' better
   2016.04.01:
-  * Fixed a bug the "ProxyServerMediaSubsession" code that 
+  * Fixed a bug the "ProxyServerMediaSubsession" code that
     could cause an infinite loop if the 'back-end' server was
     slow to respond to "SETUP" requests.
     (Thanks to Erik Montnemery for helping to debug this.)
-  * Added support for parsing/streaming Matroska files that 
+  * Added support for parsing/streaming Matroska files that
     contain PCM audio tracks.
     (Thanks to Michel Promonet.)
   2016.03.16:
-  * Added some more debugging fprintf()s to the 
+  * Added some more debugging fprintf()s to the
     "ProxyServerMediaSubsession" code to try to track down a
     bug.
-  * Simplified the "genMakefiles" script (moving duplicate 
+  * Simplified the "genMakefiles" script (moving duplicate
     code into a 'for' loop).
   2016.03.14:
-  * Updated the proxy server implementation to better handle 
+  * Updated the proxy server implementation to better handle
     'front-end' clients that have asked to stream only some
     of the substreams of a multi-stream session.  Now, if a
     substream is closed (because all 'front-end' clients have
     stopped requesting it), but other front-end clients are
-    still streaming other substreams, then we will send - to 
+    still streaming other substreams, then we will send - to
     the 'back-end' server - only a substream-specific "PAUSE"
     command; not a "PAUSE" command for the entire stream.
     (Thanks to Lakshmi Narayanan for noting this issue.)
-  * Added an optional "-p <RTSP-port-number>" option to the 
+  * Added an optional "-p <RTSP-port-number>" option to the
     "LIVE555 Proxy Server", to allow the user to specify a
     RTSP server port number other than the standard port
     numbers: 554 and 8554. (These standard port numbers are
     still tried if the specified port number can't be used.)
     (Thanks to Denis Genestier for this suggestion.)
   2016.02.22:
-  * Updated the "ProxyServerMediaSession" to add a Boolean 
+  * Updated the "ProxyServerMediaSession" to add a Boolean
     virtual function "allowProxyingForSubsession()".
     By default, this always returns True.  However,
     subclasses can redefine this if they wish to restrict
     which subsessions of a stream get proxied - e.g., if
     you want to proxy only video tracks.
-  * Improved the "WAVAudioFileSource" code (for parsing 
+  * Improved the "WAVAudioFileSource" code (for parsing
     WAV-format audio files) to make it more tolerant of
     unusual formats.
-  * Made it possible to build a version of the "liveMedia" 
+  * Made it possible to build a version of the "liveMedia"
     library that doesn't contain any RTSP server code;
     e.g., if you are developing only a RTSP client, and
     want to save space. To do this, omit any files that
@@ -825,29 +875,29 @@ Sun Oct 16 12:05:45 UTC 2016 - aloisio@gmx.com
     OMIT_REGISTER_HANDLING when compiling "RTSPClient.cpp".
     (Thanks to Jeff Shanab for this suggestion.)
   2016.02.09:
-  * Added an option "-E <absolute-seek-end-time>" to 
+  * Added an option "-E <absolute-seek-end-time>" to
     "openRTSP".
     (Thanks to Hans Maes for suggesting this.)
   2016.02.08:
   * Fixed a bug that was causing "playSIP" to crash.
     (Thanks to Vilaysak Thipavong for reporting this.)
   2016.01.29:
-  * Updated "QuickTimeFileSink" to make it usable with non-RTP 
+  * Updated "QuickTimeFileSink" to make it usable with non-RTP
     input sources. It still needs to have a "MediaSession"
     that describes the input source; however, this input source
     no longer needs to be RTP; it can, instead, be a UDP or
     other type of source. (Of course, audio/video synchronization
     and hint tracks can't be done in this case.)
-  * Changed the name of a variable in the "Makefile.tail" file 
+  * Changed the name of a variable in the "Makefile.tail" file
     for the "BasicUsageEnvironment" project, in response to
     a complaint that the old name clashed with something in
     some Windows development environment
   2016.01.24:
-  * Updated "ProxyServerMediaSession.cpp" to add some 
+  * Updated "ProxyServerMediaSession.cpp" to add some
     'internal error' debugging fprintf()s to try to catch a
     possible bug that was reported recently.
   2016.01.20:
-  * When a server calls "startStream()" to start a RTSP stream 
+  * When a server calls "startStream()" to start a RTSP stream
     for a client, we now no longer make a slight adjustment to
     the RTP timestamp sequence (using the "presetNextTimestamp()"
     call) if there is already another ongoing stream using the
@@ -857,49 +907,49 @@ Sun Oct 16 12:05:45 UTC 2016 - aloisio@gmx.com
     contents of the RTP/RTCP packets.
     (Thanks to Erik Montnemery for noting this issue.)
   2016.01.16:
-  * This release has no source-code changes from the previous 
+  * This release has no source-code changes from the previous
     release.  However, a test file was mistakenly left in the
     previous version; this produced an excessively-large tar file.
     This has now been removed.
   2016.01.12:
-  * Added a hack to "RTSPClient" to handle the non-standard 
+  * Added a hack to "RTSPClient" to handle the non-standard
     "com.ses.streamID:" header - used by 'SAT>IP' servers -
     by using its value in the 'base URL' for subsequent requests.
     (Thanks to Julian Scheel for proposing this.)
   2015.12.22:
-  * Updated "QuickTimeFileSink" to add a sanity check to try 
+  * Updated "QuickTimeFileSink" to add a sanity check to try
     to prevent an occasional problem with H.264 video tracks
     that contain 'sync frames'.
-  * Updated the "config.linux-with-shared-libraries" 
+  * Updated the "config.linux-with-shared-libraries"
     configuration file to use the $(CC) and $(CXX)
-    macros, to allow for cross-compiling.  (Thanks to Michel 
+    macros, to allow for cross-compiling.  (Thanks to Michel
     Promonet.)
   * Updated the years in the copyright notice on each file.
   2015.11.09:
-  * Changed the "ProxyServerMediaSession" code once again.  We 
+  * Changed the "ProxyServerMediaSession" code once again.  We
     backed out the changes in the previous two releases,
     and now respond to failures of the back-end "SETUP"
     or "PLAY" commands by doing a full reset - which involves
     deleting the "ProxyServerMediaSubsession" object, and
-    doing another "DESCRIBE" to create a new one.  However, we 
+    doing another "DESCRIBE" to create a new one.  However, we
     can't do this immediately - because the "SETUP" and "PLAY"
     commands can be sent from within
-    "ProxyServerMediaSubsession::createNewStreamSource()".  
+    "ProxyServerMediaSubsession::createNewStreamSource()".
     Instead, we wait until the next 'liveness' command, which
     will get sent immediately when we return to the event loop.
-  * Our proxy server code no longer converts the "mode" string 
+  * Our proxy server code no longer converts the "mode" string
     to lower case before passing it to
-    "MPEG4GenericRTPSink::createNew()".  (This turned out to 
+    "MPEG4GenericRTPSink::createNew()".  (This turned out to
     be unnecessary, and was breaking some clients that weren't
     treating this string as case-insensitive when they saw it
     in the stream's SDP descriptor.)  (Thanks to Craig Matsuura
     for noting this issue.)
   2015.10.29:
-  * Updated the fix in the previous revision to apply to the 
+  * Updated the fix in the previous revision to apply to the
     back-end "PLAY" command as well as the back-end "SETUP"
     command, because both of these back-end commands can get
     sent from within
-    "ProxyServerMediaSubsession::createNewStreamSource()", so 
+    "ProxyServerMediaSubsession::createNewStreamSource()", so
     we can't allow the "ProxyServerMediaSubsession" object
     to get deleted in either case.
 
@@ -1083,7 +1133,7 @@ Fri Oct 16 20:24:23 UTC 2015 - aloisio@gmx.com
     This makes it possible to develop other kinds of media server
     that use the same "ServerMediaSession"/"ServerMediaSubsession"
     objects to represent the stream(s) that they serve, but using
-    protocols other than RTSP.      
+    protocols other than RTSP.
   * Added a new virtual function "createGroupsock" to
     "OnDemandServerMediaSubsession". This makes it possible for
     subclasses of "OnDemandServerMediaSubsession" to automatically
@@ -1262,9 +1312,9 @@ Fri Oct 16 20:24:23 UTC 2015 - aloisio@gmx.com
 Sat Jan 31 13:00:25 UTC 2015 - aloisio@gmx.com
 
 - fixed paths in live555.pc
-- update to version 2015.01.27:                                                                                
-  * Fixed a bug in "MPEG2TransportStreamFromESSource" that could                                               
-    sometimes cause an abort if more than one Elementary Stream                                                
+- update to version 2015.01.27:
+  * Fixed a bug in "MPEG2TransportStreamFromESSource" that could
+    sometimes cause an abort if more than one Elementary Stream
     Source were multiplexed into a single Transport Stream.
     (Thanks to Marc Palau for reporting this issue.)
 - version 2015.01.19:
@@ -1532,7 +1582,7 @@ Tue Sep  1 00:20:22 CEST 2009 - dominique-vlc.suse@leuenberger.net
 Sun Apr 26 23:16:23 CEST 2009 - dominique-suse.vlc@leuenberger.net
 
 2009.04.20:
-- Fixed "BasicUsageEnvironment::getErrno()" to always (under Windows) return 
+- Fixed "BasicUsageEnvironment::getErrno()" to always (under Windows) return
   "WSAGetLastError()" (and to just ignore the "errno" variable>.
   Also fixed a few places in the code where we were still using "errno"
   instead of calling "getErrno()"

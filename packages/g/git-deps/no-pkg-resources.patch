@@ -1,0 +1,25 @@
+---
+ git_deps/__init__.py |    7 +------
+ setup.cfg            |    2 +-
+ 2 files changed, 2 insertions(+), 7 deletions(-)
+
+--- a/git_deps/__init__.py
++++ b/git_deps/__init__.py
+@@ -1,6 +1 @@
+-import pkg_resources
+-
+-try:
+-    __version__ = pkg_resources.get_distribution(__name__).version
+-except pkg_resources.DistributionNotFound:
+-    __version__ = 'unknown'
++__version__ = '1.1.0'
+--- a/setup.cfg
++++ b/setup.cfg
+@@ -1,6 +1,6 @@
+ [metadata]
+ name = git-deps
+-version = 1.1.0
++version = attr: git_deps.__version__
+ summary = automatically detect dependencies between git commits
+ author = Adam Spiers
+ author_email = git@adamspiers.org

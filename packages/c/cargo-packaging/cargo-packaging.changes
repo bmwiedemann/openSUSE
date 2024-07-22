@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jul 19 03:18:37 UTC 2024 - William Brown <william.brown@suse.com>
+
+- Resolve build failure when backported to 15-SP3
+
+-------------------------------------------------------------------
+Fri Jul 19 02:01:33 UTC 2024 - William Brown <william.brown@suse.com>
+
+- Depend on provides of rust to allow older compiler version usage
+
+-------------------------------------------------------------------
 Fri Apr  5 00:50:37 UTC 2024 - William Brown <william.brown@suse.com>
 
 - Remove cargo_config that is now part of vendor.tar

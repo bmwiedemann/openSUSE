@@ -16,29 +16,40 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           git-deps
-Version:        1.0.2+git.1559732444.7c75531
+Version:        1.1.0+git.1696898573.89d51e8
 Release:        0
 Summary:        Tool to analyze git deps
 License:        GPL-2.0-only
 Group:          Development/Tools/Version Control
 URL:            https://github.com/aspiers/git-deps
 Source:         %{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM dont-use-st-markdown.patch gh#aspiers/git-deps!118 mcepl@suse.com
+# update syntax to the current levels and eliminate (almost) setup.py
 Patch0:         dont-use-st-markdown.patch
-Patch1:         Fix-issue-with-unbuffered-text-I-O-under-python3.patch
+# PATCH-FIX-UPSTREAM pygit2-1.15.0.patch gh#aspiers/git-deps!129 mcepl@suse.com
+# make compatible with pygit2 1.15.0
+Patch1:         pygit2-1.15.0.patch
+# PATCH-FIX-UPSTREAM no-pkg-resources.patch gh#aspiers/git-deps!131 mcepl@suse.com
+# Don't depend on pkg_resources
+Patch2:         no-pkg-resources.patch
 BuildRequires:  fdupes
+BuildRequires:  git
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-pip
 BuildRequires:  python3-pygit2
-BuildRequires:  python3-setuptools
+# Because of version = attr: package.__version__
+BuildRequires:  python3-setuptools >= 46.4.0
 BuildRequires:  python3-wheel
+BuildRequires:  python3-pytest
+# BuildRequires:  python3-certifi
 Requires:       python3-pygit2
 # for html subpackage
 Requires:       python3-Flask
 #Requires:       nodejs-browserify # broken/missing
 Requires:       npm
+Requires:       git
 BuildArch:      noarch
 
 %description
@@ -57,22 +68,30 @@ Documentation for git-deps.
 %autosetup -p1 -n %{name}-%{version}
 
 %build
-# https://github.com/aspiers/git-deps/issues/115
-sed -i '/six/d' setup.py
-python3 -s setup.py build
+%python3_pyproject_wheel
 
 %install
-python3 -s setup.py install -O1 --skip-build --force --root %{buildroot} --prefix %{_prefix}
-%python_expand %fdupes %{buildroot}%{python_sitelib}
+%python3_pyproject_install
+install -D -m 755 %{buildroot}%{python3_sitelib}/git_deps/handler.py \
+    %{buildroot}%{_bindir}/gitfile-handler
+%python3_fix_shebang
+%fdupes %{buildroot}%{python3_sitelib}
+
+%check
+# Test doesn't work with tarball, requires .git/ directory with full history
+# # because of gh#libgit2/pygit2$1311
+# export PYTEST_ADDOPTS="--ignore tests/test_GitUtils.py"
+# %%python3_pytest
 
 %files
-%{_bindir}/git-deps
-%{_bindir}/git-fixup
-%{_bindir}/gitfile-handler
-%{python_sitelib}/git_deps*
 %license LICENSE.txt
 %doc AUTHORS.rst CONTRIBUTING.md CHANGES.rst README.md USAGE.md
 %doc HISTORY.md USE-CASES.md
+%{_bindir}/git-deps
+# %%{_bindir}/git-fixup
+%{_bindir}/gitfile-handler
+%{python3_sitelib}/git_deps
+%{python3_sitelib}/git_deps-1.1.0*-info
 
 %files html
 %doc docs

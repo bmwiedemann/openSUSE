@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jul 18 01:35:13 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Update to version 1.5.3:
+  * Revert the serialization change. It was intended to be
+    backwards compatible, but that didn't hold for
+    non-self-describing serialization formats like bincode.
+
+-------------------------------------------------------------------
 Fri Jul 12 18:31:22 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Update to version 1.5.2:

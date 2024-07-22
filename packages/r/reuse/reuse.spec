@@ -18,7 +18,7 @@
 
 
 Name:           reuse
-Version:        3.0.2
+Version:        4.0.3
 Release:        0
 Summary:        A tool for compliance with the REUSE recommendations
 License:        Apache-2.0 AND CC-BY-SA-4.0 AND GPL-3.0-or-later AND CC0-1.0
@@ -31,20 +31,25 @@ BuildRequires:  git-core
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3 >= 3.8
 BuildRequires:  python3-Jinja2
+BuildRequires:  python3-Sphinx
 BuildRequires:  python3-binaryornot
 BuildRequires:  python3-boolean.py
 BuildRequires:  python3-debian
+BuildRequires:  python3-freezegun
 BuildRequires:  python3-license-expression
+BuildRequires:  python3-myst-parser
 BuildRequires:  python3-pip
 BuildRequires:  python3-poetry
 BuildRequires:  python3-pytest
+BuildRequires:  python3-sphinxcontrib-apidoc
 Requires:       python3 >= 3.8
 Requires:       python3-Jinja2
+Requires:       python3-attrs
 Requires:       python3-binaryornot
 Requires:       python3-boolean.py
 Requires:       python3-debian
 Requires:       python3-license-expression
-Requires:       python3-setuptools
+Requires:       python3-tomlkit
 Recommends:     git-core
 
 %description
@@ -57,16 +62,19 @@ generates a project's bill of materials.
 
 %build
 %python3_pyproject_wheel
+make -C docs man
 
 %install
 %python3_pyproject_install
 %fdupes %{buildroot}%{python3_sitearch}
+install -D -m 0644 docs/_build/man/*.1 -t "%{buildroot}%{_mandir}/man1/"
 
 %check
 PYTHONDONTWRITEBYTECODE=1 LC_ALL=C.UTF-8 LANG=C.UTF-8 py.test tests/
 
 %files
 %doc README.md CHANGELOG.md
+%{_mandir}/man1/*.1%{ext_man}
 %license LICENSES/*
 %{_bindir}/reuse
 %{python3_sitearch}/*

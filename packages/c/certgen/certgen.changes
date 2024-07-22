@@ -1,0 +1,20 @@
+-------------------------------------------------------------------
+Tue Jul 16 14:29:58 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.3.0:
+  * update go-releaser with latest changes
+  * upgrade vulncheck min-go-version (#6)
+  * Remove duplicated `Install` section (#5)
+  * adding vulncheck github workflow action (#4)
+  * add common-name support for client certs
+  * update README.md binaries
+  * fix generating certs, default to ecdsa-prime256v1
+  * update certgen docs
+  * add support for generating client certs
+  * update goreleaser and format certgen.go
+
+-------------------------------------------------------------------
+Tue Jul 16 14:29:30 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- new package certgen: a dead simple tool to generate self signed
+  certificates (for MinIO TLS deployments)

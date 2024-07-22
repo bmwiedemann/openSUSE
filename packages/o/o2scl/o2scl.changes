@@ -1,4 +1,66 @@
 -------------------------------------------------------------------
+Sun Jul 14 05:54:59 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.929.1:
+  * Small fixes to address some security updates and problems on
+    32-bit systems.
+
+-------------------------------------------------------------------
+Thu May  9 20:30:02 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.929:
+  * Created example ex_mcmc_kde.cpp.
+  * Created new steppers for mcmc_para.
+  * Improved Python, multiprecision, MPFR support in several
+    classes.
+  * Updated classes and methods inte_kronrod_boost,
+    cli::xml_to_o2(), eos_leptons, eos_leptons_multip,
+    inte_double_exp_boost, ode_boost, fermion_deriv_rel,
+    inte_gauss_cern, inte_adapt_cern, astep_boost, boson_rel,
+    calc_utf8, funct_multip, eos_sn, lib_settings, fermi_function,
+    and boson_thermo.
+  * Allowed for virtual environments in py_init()
+  * Updates to acol commands: table rename, table3d refine, table
+    cat, table3d contours, table autocorr, table thin-mcmc.
+  * Updated acol function support.
+  * Updated yanic.
+  * Created a new O2SCL_NO_BOOST_MULTIPRECISION ifdef for speed.
+- Drop patches:
+  * o2scl-disable-slow-hdf-test.patch: No longer needed as we
+    disable slow running tests by passing `-DO2SCL_FAST_TEST` to
+    CXXFLAGS instead.
+  * o2scl-link-quadmath.patch: fixed upstream.
+- Split off tests into separate multibuild flavour to avoid main
+  library builds getting bogged down by long running tests and
+  also to turn off python support for the test flavour to avoid
+  running python based tests. This prevents a circular dependency
+  between python-o2sclpy and o2scl.
+- Build with ncurses support; add BuildRequires:
+  pkgconfig(ncurses).
+- Switch a few *-devel BuildRequires to pkgconfig based ones.
+- Account for openSUSE Leap having hdf5 < 1.12 by passing
+  `-DO2SCL_HDF5_PRE_1_12` to CXXFLAGS.
+- Add o2scl.rpmlintrc to mask warnings for empty files installed
+  as part of doc package.
+- Pass `-lgomp` to linker flags to avoid undefined symbol:
+  GOMP_critical_name_end when using python o2sclpy
+  (gh#awsteiner/o2scl#40).
+- Update URL tag to new upstream home page.
+- Disable pugixml: not for end-users (gh#awsteiner/o2scl#38).
+
+-------------------------------------------------------------------
+Thu Jul 27 10:44:01 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.928:
+- doc package is now noarch.
+- Use memory_constraints to allow at least 2GB memory per thread.
+- Add _constraints.
+- Drop test related patches that have been fixed upstream:
+  * o2scl-eos_quark_cfl6-test-increase-tol.patch
+  * o2scl-disable-test-without-destdir-support.patch
+  * o2scl-failing-tests-increase-tol.patch
+
+-------------------------------------------------------------------
 Thu Aug 11 19:12:58 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Adapt CFLAGS to build with hdf5 >= 1.12.

@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Jul 18 21:00:15 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 0.8.2:
+  * Better MPRIS Clapper support
+  * Clapper GIF looping
+  * Hid Clapper's media controls for GIFs
+  * Blur + greyscale + no cache for admin reports' attachment to protect them
+    from illegal and disturbing media
+  * Status name button tooltip
+  * Signed int multiplication overflow
+  * Mini-profile padding
+  * Profile cover focus ring
+  * Media Viewer crashes due to Graphics Offload by setting it to false by
+    default until GTK 4.16
+  * Websocket events being unnecessarily url decoded
+  * Random crash when navigating back
+  * Notification count not being updated after network reconnection
+  * Admin report dialogs not being able to close without taking an action
+- switch to meson build system
+
+-------------------------------------------------------------------
 Sun Jun 23 12:06:58 UTC 2024 - Richard Rahl <rrahl0@disroot.org>
 
 - update to version 0.8.1:

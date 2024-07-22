@@ -1,0 +1,6 @@
+<package name="tofi" project="openSUSE:Factory">
+  <title>Tofi</title>
+  <description>Tiny dynamic menu for Wayland</description>
+  <devel project="X11:Wayland" package="tofi"/>
+  <url>https://github.com/philj56/tofi</url>
+</package>

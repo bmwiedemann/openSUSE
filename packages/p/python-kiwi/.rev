@@ -2492,4 +2492,12 @@
   The call to 'losetup -d' is in fact an async operation. Once</comment>
     <requestid>1185374</requestid>
   </revision>
+  <revision rev="117" vrev="1">
+    <srcmd5>d4120e698aad3a1e97532836f1fd7620</srcmd5>
+    <version>10.0.25</version>
+    <time>1721661255</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1188893</requestid>
+  </revision>
 </revisionlist>

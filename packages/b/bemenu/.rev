@@ -382,4 +382,13 @@
   * Border fixes (fixes: #399) #407</comment>
     <requestid>1186089</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>c3506f46a200e5606eb413cffcd79fa9</srcmd5>
+    <version>0.6.23</version>
+    <time>1721661306</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.6.23:
+  * Disable cairo antialiasing with Wayland fractional scaling #413</comment>
+    <requestid>1188522</requestid>
+  </revision>
 </revisionlist>

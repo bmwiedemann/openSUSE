@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Wed Jun 26 15:39:39 UTC 2024 - Michael Pujos <pujos.michael@gmail.com>
+
+- run tests in %check section
+- update to 2.1.7:
+  * Fix build issues on less common platforms
+  * Started upstreaming patches from the CPython integration
+  * Upstream vcpkg patches
+- update to 2.1.6:  
+  * Fix build errors on various (older) platforms
+  * Refactored aligned allocation
+- update to 2.1.4:  
+  * Fixes various bugs and build issues
+  * Add MI_LIBC_MUSL cmake flag for musl builds
+  * Free-ing code is refactored into a separate module (free.c)
+  * Mimalloc page info is simplified with the block size directly available
+    (and new block_size_shift to improve aligned block free-ing)
+  * New approach to collection of abandoned segments:
+    When a thread terminates the segments it owns are abandoned
+    (containing still live objects) and these can be reclaimed by other threads.
+    We no longer use a list of abandoned segments but this is now done using
+    bitmaps in arena's which is more concurrent (and more aggressive).
+    Abandoned memory can now also be reclaimed if a thread frees an object
+    in an abandoned page (which can be disabled using mi_option_abandoned_reclaim_on_free).
+    The option mi_option_max_segment_reclaim gives a maximum percentage
+    of abandoned segments that can be reclaimed per try (=10%).
+
+-------------------------------------------------------------------
 Tue Oct 10 10:35:32 UTC 2023 - ming li <mli@suse.com>
 
 - update to 2.1.2:

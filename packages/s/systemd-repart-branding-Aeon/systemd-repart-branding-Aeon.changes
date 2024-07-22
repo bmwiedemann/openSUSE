@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jul 12 07:23:57 UTC 2024 - Richard Brown <rbrown@suse.com>
+
+- Use key-file for encrypting root partition, to be replaced with
+  either TPM or Passphrase at installation 
+
+-------------------------------------------------------------------
 Tue Jul  2 15:25:56 UTC 2024 - Richard Brown <rbrown@suse.com>
 
 - Require encryption of root partition and use for image deployment 

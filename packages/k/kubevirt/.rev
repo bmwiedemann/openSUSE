@@ -699,4 +699,16 @@ SLE identical and thus derived from a common source. Thanks!
     <comment></comment>
     <requestid>1181959</requestid>
   </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>3cb333823aebaf7f2aca8f22c8f77892</srcmd5>
+    <version>1.3.0</version>
+    <time>1721661291</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.3.0
+  Release notes https://github.com/kubevirt/kubevirt/releases/tag/v1.3.0
+- Drop upstreamed patch
+  0001-Collect-component-Role-rules-under-operator-Role-ins.patch
+- Add registry path for SLE15 SP7</comment>
+    <requestid>1188547</requestid>
+  </revision>
 </revisionlist>

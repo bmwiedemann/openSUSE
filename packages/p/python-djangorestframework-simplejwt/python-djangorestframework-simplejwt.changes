@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jul 19 11:26:13 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Add upstream patch fix-tests.patch to fix tests with Django 5
+
+-------------------------------------------------------------------
 Mon Jun 24 04:49:38 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch back to PyPi tarball.

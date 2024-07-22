@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        2.0.3
+Version:        2.0.6
 Release:        0
 Summary:        Library for manipulating Operating system strings
 License:        BSD-3-Clause

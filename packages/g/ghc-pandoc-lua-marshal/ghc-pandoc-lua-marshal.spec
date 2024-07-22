@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.2.7
+Version:        0.2.7.1
 Release:        0
 Summary:        Use pandoc types in Lua
 License:        MIT

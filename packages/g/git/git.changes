@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jul 18 17:38:04 UTC 2024 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Add CVE-2024-24577.patch
+  * CVE-2024-24577: arbitrary code execution due to heap corruption
+    in git_index_add (boo#1219660)
+
+-------------------------------------------------------------------
 Fri May 31 22:57:33 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Compat stub for %python3_fix_shebang_path

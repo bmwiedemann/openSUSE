@@ -1,0 +1,13 @@
+<package name="vimiv-qt" project="openSUSE:Factory">
+  <title>Vimiv</title>
+  <description>Vimiv is an image viewer with vim-like keybindings.
+ 
+- Basic image operations and navigation
+- ranger-like library to browse your images
+- Thumbnail mode: navigable grid of image previews
+- Command mode with tab-completion
+- Search with pattern matching
+- Simple mark and tag system</description>
+  <devel project="X11:Utilities" package="vimiv-qt"/>
+  <url>https://karlch.github.io/vimiv-qt/</url>
+</package>

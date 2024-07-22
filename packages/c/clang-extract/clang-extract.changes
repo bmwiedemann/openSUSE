@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Jul 22 08:27:55 UTC 2024 - mvetter@suse.com
+
+- Update to version 0~20240721.9b2dfb6:
+  * Remove the EnumConstantTable
+
+-------------------------------------------------------------------
+Sat Jul 20 06:18:05 UTC 2024 - mvetter@suse.com
+
+- Update to version 0~20240720.6054fa3:
+  * Fix nested struct being discarded if parent struct is flagged as partial
+  * Fix __builtin_convertvector escaping the closure
+  * Fix dropped attributes from vector types
+
+-------------------------------------------------------------------
 Mon Jul 15 04:25:50 UTC 2024 - mvetter@suse.com
 
 - Update to version 0~20240714.17e3908:

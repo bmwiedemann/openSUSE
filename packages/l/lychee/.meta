@@ -1,0 +1,5 @@
+<package name="lychee" project="openSUSE:Factory">
+  <title>lychee</title>
+  <description>Fast, async, stream-based link checker written in Rust. Finds broken URLs and mail addresses inside Markdown, HTML, reStructuredText, websites and more.</description>
+  <devel project="network" package="lychee"/>
+</package>

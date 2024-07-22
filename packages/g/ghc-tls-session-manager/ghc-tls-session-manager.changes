@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jun 25 04:30:02 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update tls-session-manager to version 0.0.6.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/tls-session-manager-0.0.6/src/ChangeLog.md
+
+-------------------------------------------------------------------
 Sat Apr 27 10:55:46 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update tls-session-manager to version 0.0.5 revision 2.

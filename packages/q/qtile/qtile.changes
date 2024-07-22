@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Jul 19 10:56:46 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
+
+- Update tov version 0.27.0:
+  * Make default `Plasma` add mode dynamic
+  * Add `background` parameter to `Screen` to paint a solid colour background
+  * Add ability to use key codes to bind keys. Will benefit users who change keyboard layouts but
+    wish to retain same bindings, irrespective of layout.
+  * Wayland: Add support for idle-notify-v1 protocol needed by swayidle.
+  * Wayland: Make keybinds repeat according to the keyboard's repeat rate and delay. Previously the keybinds did not repeat.
+  * Fix `Plasma` layout with `ScreenSplit` by implementing `get_windows`
+  * Fix border bug in fullscreening/maximizing wayland windows
+  * Fix automatic fullscreening for many XWayland applications (e.g. games) by checking if they want to fullscreen on map
+
+-------------------------------------------------------------------
 Sat Jun  8 04:41:33 UTC 2024 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
 
 - Attempt to remove mypy for now as this might be the cause of failed tests (?)

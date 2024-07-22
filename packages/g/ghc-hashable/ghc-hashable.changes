@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jun 24 10:44:33 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update hashable to version 1.4.7.0.
+  ## Version 1.4.7.0
+
+    * Make `arch-native` disabled by default.
+
+-------------------------------------------------------------------
 Tue Jun 11 19:44:31 UTC 2024 - Andreas Schwab <schwab@suse.de>
 
 - Disable use of invalid -march flag.

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jul 22 05:51:49 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to autosetup macro.
+- Restrict numpy to < 2 because it isn't currently supported.
+- Add patch support-pytest-8.patch:
+  * Use pytest setup/teardown methods.
+
+-------------------------------------------------------------------
 Mon Mar 25 20:12:25 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.2.1:

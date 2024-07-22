@@ -80,4 +80,12 @@
     <comment>- Add fix-stuck-issue.patch, fix a stuck issue (forwarded request 1062364 from hillwood)</comment>
     <requestid>1062365</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>b3298f4e2fa618a1c756dac74a1b575b</srcmd5>
+    <version>5.6.1</version>
+    <time>1721661447</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1188774</requestid>
+  </revision>
 </revisionlist>

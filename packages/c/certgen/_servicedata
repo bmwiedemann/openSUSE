@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://github.com/minio/certgen</param>
+              <param name="changesrevision">54766f1d2e2809fdea7fa23adee06474231e4471</param></service></servicedata>

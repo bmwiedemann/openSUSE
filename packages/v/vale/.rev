@@ -682,4 +682,32 @@
   * chore: add `build-base` to Docker [ci skip] (forwarded request 1181639 from jfkw)</comment>
     <requestid>1181640</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>a3cb8b9851353d9d3d69d51ea8844345</srcmd5>
+    <version>3.7.0</version>
+    <time>1721661511</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.7.0:
+  * refactor: display action results in `message`
+  * feat: add capture group support to `substitution`
+  * refactor: support capture groups in `substitution`
+  * chore: remove `funlen` check
+  * fix: handle conatenating nested lists
+  * chore: add `TARGETARCH`
+  * chore: fix version in .goreleaser.yml
+
+- Update to version 3.6.1:
+  * golangci lint (#822)
+  * fix: sort commands before printing
+  * chore: build statically on Windows
+  * docs: clean up README
+  * chore: restrict fossa to source files
+  * refactor: error on misplaced core-level settings
+  * chore: update fossa version
+  * Fix broken link in README.md (#853)
+  * chore: `cinst` -&gt; `choco install`
+  * docs: update link to examples
+  * fix: check for `token.Skip` before re-order (forwarded request 1188919 from jfkw)</comment>
+    <requestid>1188920</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package mimalloc
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2020, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,7 +20,7 @@
 %global sover   2
 %global libname libmimalloc%{sover}
 Name:           mimalloc
-Version:        2.1.2
+Version:        2.1.7
 Release:        0
 Summary:        A compact general purpose allocator
 License:        MIT
@@ -65,11 +65,15 @@ This subpackage contains libraries and header files for developing
 applications that want to make use of mimalloc.
 
 %prep
-%setup
+%setup -q
 
 %build
 %cmake -DMI_INSTALL_TOPLEVEL=ON -DMI_BUILD_OBJECT=OFF -DMI_BUILD_STATIC=OFF
 %make_build
+
+%check
+cd %{__builddir}
+%make_build test
 
 %install
 %cmake_install

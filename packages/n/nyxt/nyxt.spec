@@ -46,6 +46,7 @@ Requires:       gsettings-desktop-schemas
 Requires:       libfixposix4
 Requires:       libwebkit2gtk-4_1-0
 Requires:       xclip
+Requires:       libgthread-2_0-0
 
 %description
 Nyxt is a keyboard-oriented, extensible web-browser designed for power users.
@@ -80,6 +81,9 @@ EOF
 chmod +x "%{buildroot}%{_bindir}/nyxt"
 
 %suse_update_desktop_file %{name}
+
+%check
+./%{name} --version
 
 %files
 %{_bindir}/nyxt

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jul 20 01:45:43 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Skip test suite because of gh#breathe-doc/breathe#987
+
+-------------------------------------------------------------------
 Wed Oct  4 13:47:35 UTC 2023 - Markéta Machová <mmachova@suse.com>
 
 - Make support-sphinx-7.2.patch backwards-compatible

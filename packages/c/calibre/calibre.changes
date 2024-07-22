@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Jul 19 08:14:10 UTC 2024 - ecsos <ecsos@opensuse.org>
+
+- Update to 7.15.0
+  * New Features
+    - Fetch news: Allow individual news sources to specify source
+      specific options such as downloading of past editions
+  * Bug Fixes
+    - Windows: MTP driver: Fix a regression in the previous release
+      that caused an error with some devices
+    - Icon theme creation dialog: Fix various issues when creating
+      an icon theme with many icons that have light/dark variants
+
+-------------------------------------------------------------------
 Fri Jul 12 05:20:31 UTC 2024 - ecsos <ecsos@opensuse.org>
 
 - Update to 7.14.0

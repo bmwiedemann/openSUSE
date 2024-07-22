@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jul 19 11:38:11 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Update to 7.0
+  * Better default sorting of choices
+  * Convert string value to timezone object immediately on creation/assignment
+  * Add support for django 5.1
+  * Drop support for django 3.2, 4.0, 4.1
+  * Change base class of TimeZoneSerializerField from DJRF's Field to CharField
+- Add missing test requirement and recommend pytz
+
+-------------------------------------------------------------------
 Tue Dec  5 17:43:49 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.1.0:

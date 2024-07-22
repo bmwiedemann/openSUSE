@@ -1,0 +1,60 @@
+Index: barcode-0.99/cmdline.c
+===================================================================
+--- barcode-0.99.orig/cmdline.c
++++ barcode-0.99/cmdline.c
+@@ -27,6 +27,7 @@
+ #include <stdlib.h>
+ #include <string.h>
+ #include <unistd.h>
++#include <libintl.h>
+ 
+ #include "cmdline.h"
+ 
+Index: barcode-0.99/main.c
+===================================================================
+--- barcode-0.99.orig/main.c
++++ barcode-0.99/main.c
+@@ -25,6 +25,7 @@
+ #include <stdlib.h>
+ #include <string.h>
+ #include <errno.h>
++#include <libintl.h>
+ 
+ #include "cmdline.h"
+ 
+Index: barcode-0.99/pcl.c
+===================================================================
+--- barcode-0.99.orig/pcl.c
++++ barcode-0.99/pcl.c
+@@ -26,6 +26,7 @@
+ #include <string.h>
+ #include <ctype.h>
+ #include <errno.h>
++#include <libintl.h>
+ 
+ #define SHRINK_AMOUNT 0.15  /* shrink the bars to account for ink spreading */
+ 
+Index: barcode-0.99/plessey.c
+===================================================================
+--- barcode-0.99.orig/plessey.c
++++ barcode-0.99/plessey.c
+@@ -24,6 +24,7 @@
+ #include <string.h>
+ #include <ctype.h>
+ #include <errno.h>
++#include <libintl.h>
+ 
+ static char * patterns[] = { "13", "31" };
+ 
+Index: barcode-0.99/sample.c
+===================================================================
+--- barcode-0.99.orig/sample.c
++++ barcode-0.99/sample.c
+@@ -3,6 +3,7 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
++#include <libintl.h>
+ 
+ int main(int argc, char **argv)
+ {

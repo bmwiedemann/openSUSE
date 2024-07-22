@@ -55,4 +55,12 @@
     <comment>Fix ghc-pandoc deps</comment>
     <requestid>1175754</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>68e219320cc6508e4cff9414cdeb2773</srcmd5>
+    <version>0.3</version>
+    <time>1721661395</time>
+    <user>anag+factory</user>
+    <comment>version update</comment>
+    <requestid>1188651</requestid>
+  </revision>
 </revisionlist>

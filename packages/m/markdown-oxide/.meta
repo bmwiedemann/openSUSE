@@ -1,0 +1,8 @@
+<package name="markdown-oxide" project="openSUSE:Factory">
+  <title>Markdown Oxide</title>
+  <description>A markdown language server with Obsidian syntax support.
+Markdown Oxide does not aim to fully replace Obsidian; it serves to
+provide a feature rich and advanced note taking experience.</description>
+  <devel project="editors" package="markdown-oxide"/>
+  <url>https://github.com/Feel-ix-343/markdown-oxide</url>
+</package>

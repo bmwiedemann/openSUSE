@@ -329,4 +329,14 @@
   * Add Malayalam and Swedish translations</comment>
     <requestid>1166722</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>d16bed13e6f7a6a70fbdf4497a03c751</srcmd5>
+    <version>1.4.30</version>
+    <time>1721661481</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.4.30
+  * Name of Sinhala input method changed: si-wijesekera ➡️ si-wijesekara
+  * Add Sinhala translations</comment>
+    <requestid>1188832</requestid>
+  </revision>
 </revisionlist>

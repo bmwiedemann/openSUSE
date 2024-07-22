@@ -161,6 +161,11 @@ case "${distro}" in
     labelprefix=com.suse.kubevirt
     registry=registry.suse.com
     ;;
+150700:0)
+    tagprefix=suse/sles/15.7
+    labelprefix=com.suse.kubevirt
+    registry=registry.suse.com
+    ;;
 *:1)
     tagprefix=kubevirt
     labelprefix=org.opensuse.kubevirt

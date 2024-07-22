@@ -126,4 +126,15 @@
 - skip python 36</comment>
     <requestid>1161551</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>808ffb764b87833cb2f70cc2973c7843</srcmd5>
+    <version>5.2.1</version>
+    <time>1721661516</time>
+    <user>anag+factory</user>
+    <comment>- Switch to autosetup macro.
+- Restrict numpy to &lt; 2 because it isn't currently supported.
+- Add patch support-pytest-8.patch:
+  * Use pytest setup/teardown methods.</comment>
+    <requestid>1188927</requestid>
+  </revision>
 </revisionlist>

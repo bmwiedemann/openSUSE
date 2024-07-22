@@ -18,4 +18,12 @@
   * Media Viewer images not being marked as loaded (forwarded request 1182856 from rrahl0)</comment>
     <requestid>1182857</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>796e83def90478ca83b579283e9108be</srcmd5>
+    <version>0.8.2</version>
+    <time>1721661299</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1188514</requestid>
+  </revision>
 </revisionlist>

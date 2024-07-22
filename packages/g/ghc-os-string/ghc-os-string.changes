@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Jun 29 17:09:02 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update os-string to version 2.0.6.
+  ## 2.0.6 *Jun 2024*
+
+  * add `fromString` on windows
+  * add `fromBytestring` on unix
+
+  ## 2.0.5 *Jun 2024*
+
+  * Add `decodeLE`/`encodeLE` and deprecate `decodeFS`/`encodeFS` (pointing users to `System.OsPath` instead), fixes [#19](https://github.com/haskell/os-string/issues/19)
+
+  ## 2.0.4 *Jun 2024*
+
+  * Use TemplateHaskellQuotes rather than TemplateHaskell extension wrt [#21](https://github.com/haskell/os-string/issues/21)
+
+-------------------------------------------------------------------
 Fri May 24 07:37:33 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update os-string to version 2.0.3.

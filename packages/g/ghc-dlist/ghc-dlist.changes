@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul  4 12:43:02 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update dlist to version 1.0 revision 2.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Thu Aug 31 20:10:00 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update dlist to version 1.0 revision 1.

@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Fri Jul 12 13:21:02 UTC 2024 - Adam Majer <adam.majer@suse.de>
+
+- Update to 20.15.1:
+  * Bypass incomplete fix of CVE-2024-27980 (bsc#1227560, CVE-2024-36138)
+  * Bypass network import restriction via data URL (bsc#1227554, CVE-2024-22020)
+  * fs.lstat bypasses permission model (bsc#1227562, CVE-2024-22018)
+  * fs.fchown/fchmod bypasses permission model (bsc#1227561, CVE-2024-36137)
+  * Permission model improperly processes UNC paths (bsc#1227563, CVE-2024-37372)
+
+- Changes in 20.15.0:
+  * test_runner: support test plans
+  * inspector: introduce the --inspect-wait flag
+  * zlib: expose zlib.crc32()
+  * cli: allow running wasm in limited vmem with --disable-wasm-trap-handler
+
+- Changes in 20.14.0
+  * src,permission: throw async errors on async APIs
+  * test_runner: support forced exit
+
+- fix_ci_tests.patch, npm_search_paths.patch: refreshed
+- skip_no_console.patch: dropped, upstreamed
+
+-------------------------------------------------------------------
+Tue May 28 11:56:14 UTC 2024 - Adam Majer <adam.majer@suse.de>
+
+- Update to 20.13.1:
+  * buffer: improve base64 and base64url performance
+  * crypto: deprecate implicitly shortened GCM tags
+  * events,doc: mark CustomEvent as stable
+  * fs: add stacktrace to fs/promises
+  * report: add --report-exclude-network option
+  * src: add uv_get_available_memory to report and process
+  * stream: support typed arrays
+  * util: support array of formats in util.styleText
+  * v8: implement v8.queryObjects() for memory leak regression testing
+  * watch: mark as stable
+
+- versioned.patch: refreshed
+- cares_sle12_capabilities.patch: SLES12 compatibility
+
+-------------------------------------------------------------------
 Tue Apr  9 12:30:22 UTC 2024 - Adam Majer <adam.majer@suse.de>
 
 - Update to 20.12.1:

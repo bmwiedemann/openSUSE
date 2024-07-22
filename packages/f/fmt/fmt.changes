@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Jul 20 14:51:13 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 11.0.2
+  * Fixed performance regressions when using
+    ``std::back_insert_iterator`` with`` fmt::format_to``.
+  * Made ``formatter<std::string_view>::parse`` work with types
+    convertible to ``std::string_view``.
+  * Made ``volatile void *`` formattable.
+  * Made ``fmt::context`` iterator compatible with STL algorithms
+    that rely on the iterator category.
+
+-------------------------------------------------------------------
 Wed Jul 10 18:07:21 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 11.0.1

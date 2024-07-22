@@ -24,6 +24,8 @@ Summary:        JSON Web Token authentication for Django REST Framework
 License:        MIT
 URL:            https://github.com/davesque/django-rest-framework-simplejwt
 Source:         https://files.pythonhosted.org/packages/source/d/djangorestframework-simplejwt/djangorestframework_simplejwt-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM https://github.com/jazzband/djangorestframework-simplejwt/pull/769 Fix tests
+Patch0:         fix-tests.patch
 BuildRequires:  %{python_module Django}
 BuildRequires:  %{python_module PyJWT}
 BuildRequires:  %{python_module djangorestframework}

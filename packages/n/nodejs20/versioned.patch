@@ -8,10 +8,10 @@ management via update_alternatives.
 
 This is also important for generation of binary
 modules for multiple versions of NodeJS
-Index: node-v20.12.0/Makefile
+Index: node-v20.13.1/Makefile
 ===================================================================
---- node-v20.12.0.orig/Makefile
-+++ node-v20.12.0/Makefile
+--- node-v20.13.1.orig/Makefile
++++ node-v20.13.1/Makefile
 @@ -76,7 +76,7 @@ BUILDTYPE_LOWER := $(shell echo $(BUILDT
  EXEEXT := $(shell $(PYTHON) -c \
  		"import sys; print('.exe' if sys.platform == 'win32' else '')")
@@ -21,10 +21,10 @@ Index: node-v20.12.0/Makefile
  # Use $(PWD) so we can cd to anywhere before calling this
  NODE ?= "$(PWD)/$(NODE_EXE)"
  NODE_G_EXE = node_g$(EXEEXT)
-Index: node-v20.12.0/tools/install.py
+Index: node-v20.13.1/tools/install.py
 ===================================================================
---- node-v20.12.0.orig/tools/install.py
-+++ node-v20.12.0/tools/install.py
+--- node-v20.13.1.orig/tools/install.py
++++ node-v20.13.1/tools/install.py
 @@ -87,7 +87,7 @@ def uninstall(options, paths, dest):
      try_remove(options, path, dest)
  
@@ -68,7 +68,7 @@ Index: node-v20.12.0/tools/install.py
      node_bin += '.exe'
    action(options, [os.path.join(options.build_dir, node_bin)], os.path.join('bin', node_bin))
 @@ -190,7 +190,7 @@ def files(options, action):
-   if 'freebsd' in sys.platform or 'openbsd' in sys.platform:
+   if 'openbsd' in sys.platform:
      action(options, ['doc/node.1'], 'man/man1/')
    else:
 -    action(options, ['doc/node.1'], 'share/man/man1/')
@@ -112,10 +112,10 @@ Index: node-v20.12.0/tools/install.py
  
    if sys.platform == 'zos':
      zoslibinc = os.environ.get('ZOSLIB_INCLUDES')
-Index: node-v20.12.0/doc/node.1
+Index: node-v20.13.1/doc/node.1
 ===================================================================
---- node-v20.12.0.orig/doc/node.1
-+++ node-v20.12.0/doc/node.1
+--- node-v20.13.1.orig/doc/node.1
++++ node-v20.13.1/doc/node.1
 @@ -31,24 +31,24 @@
  .Dt NODE 1
  .
@@ -145,10 +145,10 @@ Index: node-v20.12.0/doc/node.1
  .Op Fl -v8-options
  .
  .\"======================================================================
-Index: node-v20.12.0/src/node_main.cc
+Index: node-v20.13.1/src/node_main.cc
 ===================================================================
---- node-v20.12.0.orig/src/node_main.cc
-+++ node-v20.12.0/src/node_main.cc
+--- node-v20.13.1.orig/src/node_main.cc
++++ node-v20.13.1/src/node_main.cc
 @@ -94,6 +94,7 @@ int wmain(int argc, wchar_t* wargv[]) {
  // UNIX
  
@@ -157,10 +157,10 @@ Index: node-v20.12.0/src/node_main.cc
    return node::Start(argc, argv);
  }
  #endif
-Index: node-v20.12.0/tools/test.py
+Index: node-v20.13.1/tools/test.py
 ===================================================================
---- node-v20.12.0.orig/tools/test.py
-+++ node-v20.12.0/tools/test.py
+--- node-v20.13.1.orig/tools/test.py
++++ node-v20.13.1/tools/test.py
 @@ -954,7 +954,7 @@ class Context(object):
      if self.vm is not None:
        return self.vm
@@ -170,10 +170,10 @@ Index: node-v20.12.0/tools/test.py
      else:
        name = 'out/%s.%s/node' % (arch, mode)
  
-Index: node-v20.12.0/node.gyp
+Index: node-v20.13.1/node.gyp
 ===================================================================
---- node-v20.12.0.orig/node.gyp
-+++ node-v20.12.0/node.gyp
+--- node-v20.13.1.orig/node.gyp
++++ node-v20.13.1/node.gyp
 @@ -24,8 +24,8 @@
      'node_shared_openssl%': 'false',
      'node_v8_options%': '',

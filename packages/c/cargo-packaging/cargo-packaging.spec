@@ -25,8 +25,8 @@ Group:          Development/Languages/Rust
 URL:            https://github.com/Firstyear/cargo-packaging
 Source0:        %{name}-%{version}.tar.xz
 Source1:        vendor.tar.xz
-Requires:       cargo
 Requires:       cargo-auditable
+Requires:       rust+cargo
 Requires:       zstd
 BuildRequires:  cargo
 BuildRequires:  zstd

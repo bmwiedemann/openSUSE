@@ -79,4 +79,17 @@
     expect a directed acyclic graph (DAG) of dependencies.</comment>
     <requestid>1138559</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>8fb208a4ebb9031437e58abee79c8dcb</srcmd5>
+    <version>2.0.6</version>
+    <time>1721661246</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.0.6:
+  - Fix tests for Sphinx 7.4 and later.
+- Enable tests again
+- Clean up SPEC file.
+- Skip failing tests (gh#sphinx-doc/sphinx#12623)
+</comment>
+    <requestid>1188823</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Jul  2 07:59:53 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update pandoc-lua-marshal to version 0.2.7.1.
+  ## 0.2.7.1
+
+  Released 2024-07-02.
+
+  -   Relaxed the upper bound of tasty-quickcheck, used in tests.
+      Now allows version 0.11.
+
+  -   Update documentation on constructors; the descriptions now
+      match those in the pandoc docs.
+
+-------------------------------------------------------------------
 Mon May  6 15:06:05 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update pandoc-lua-marshal to version 0.2.7.

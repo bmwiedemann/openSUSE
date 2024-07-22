@@ -1,7 +1,7 @@
 #
 # spec file for package mawk
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2010 Guido Berhoerster.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 %define _upver 1.3.4
-%define _datever 20230525
+%define _datever 20240622
 Name:           mawk
 Version:        %{_upver}.%{_datever}
 Release:        0
@@ -60,5 +60,6 @@ chmod 755 examples/*
 %doc ACKNOWLEDGMENT CHANGES README examples/
 %{_bindir}/mawk
 %{_mandir}/man1/mawk.1%{?ext_man}
+%{_mandir}/man7/mawk-{arrays,code}.7%{?ext_man}
 
 %changelog

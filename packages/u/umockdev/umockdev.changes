@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jul 17 06:30:18 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.18.3:
+  * preload: Re-fix time64 redirects for glibc < 2.39.9
+- Changes from version 0.18.2:
+  * preload: Fix time64 redirect for glibc 2.39.9
+
+-------------------------------------------------------------------
 Wed Apr 10 14:58:38 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 0.18.1:

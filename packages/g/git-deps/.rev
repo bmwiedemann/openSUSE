@@ -33,4 +33,71 @@
     <comment></comment>
     <requestid>1006077</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>9f115110c2a326606988ea95f6c8afde</srcmd5>
+    <version>1.1.0+git.1696898573.89d51e8</version>
+    <time>1721661293</time>
+    <user>anag+factory</user>
+    <comment>Update to version 1.1.0+git.1696898573.89d51e8:
+
+  * Only use pygit2's blame via opt-in
+  * Blame via pygit2 instead of subprocess
+  * Fix deps fetching on the root commit
+  * Start test suite of running git-deps on itself
+  * Remove dependency to six. Closes #115
+  * Remove Travis config
+  * Upgrade setuptools
+  * Create CI.yml
+  * Import `safe_join` from `werkzeug.security`
+  * Drop support for Python 3.6
+  * Drop setuptools-markdown
+  * Handle server port in use error more gracefully (#88)
+  * Fix publishing procedure
+  * Expand AUTHORS.rst
+  * Remove sphinx.ext.pngmath
+  * Add maintainer-guide to the docs
+  * Be stricter with docs
+  * Update sphinx docs location
+  * Update CHANGES.rst
+  * Add flake8 to Travis
+  * Fix some flake8 issues
+  * Don't totally ignore KeyboardInterrupt
+  * Improve HTML installation instructions slightly
+  * Update INSTALL.md for Python 3.x (#98)
+  * Update tox.ini for newer Pythons
+  * Fix Travis builds (#73)
+  * Use line-buffering on output (#87)
+  * Bump jquery from 3.0.0 to 3.5.0 in /git_deps/html
+Remove upstreamed patches:
+  - Fix-issue-with-unbuffered-text-I-O-under-python3.patch
+Add compatibility patches:
+  - no-pkg-resources.patch
+  - pygit2-1.15.0.patch (from gh#aspiers/git-deps!129)
+Update to version 1.1.0+git.1655802074.8cafb5c:
+  * Import `safe_join` from `werkzeug.security`
+  * Drop support for Python 3.6
+  * Drop setuptools-markdown
+  * Handle server port in use error more gracefully (#88)
+  * Fix publishing procedure
+  * Expand AUTHORS.rst
+  * Remove sphinx.ext.pngmath
+  * Add maintainer-guide to the docs
+  * Be stricter with docs
+  * Update sphinx docs location
+  * Update CHANGES.rst
+  * Add flake8 to Travis
+  * Fix some flake8 issues
+  * Don't totally ignore KeyboardInterrupt
+  * Improve HTML installation instructions slightly
+  * Update INSTALL.md for Python 3.x (#98)
+  * Update tox.ini for newer Pythons
+  * Fix Travis builds (#73)
+  * Use line-buffering on output (#87)
+  * Bump jquery from 3.0.0 to 3.5.0 in /git_deps/html
+Remove upstreamed Fix-issue-with-unbuffered-text-I-O-under-python3.patch
+Switch package to be managed by SCM.
+
+(🤖: Submission of git-deps via https://src.opensuse.org/pool/git-deps/pulls/1 by mcepl)</comment>
+    <requestid>1188586</requestid>
+  </revision>
 </revisionlist>

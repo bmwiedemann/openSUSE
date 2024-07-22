@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jul 19 05:38:35 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.11.1:
+  * feat(sca): Generate dependency on Ruby when building gems
+
+-------------------------------------------------------------------
 Tue Jul 16 20:19:17 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.11.0:

@@ -1,7 +1,7 @@
 #
 # spec file for package agama-products-opensuse
 #
-# Copyright (c) 2023 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,8 +12,9 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 Name:           agama-products-opensuse
 #               This will be set by osc services, that will run after this.
@@ -21,7 +22,7 @@ Version:        0
 Release:        0
 Summary:        Definition of openSUSE products for the Agama installer
 License:        GPL-2.0-only
-Url:            https://github.com/opensuse/agama
+URL:            https://github.com/opensuse/agama
 BuildArch:      noarch
 Source0:        agama.tar
 
@@ -38,10 +39,12 @@ install -D -d -m 0755 %{buildroot}%{_datadir}/agama/products.d
 install -m 0644 *.yaml %{buildroot}%{_datadir}/agama/products.d
 
 %files
+%doc README.md
+%license LICENSE
 %dir %{_datadir}/agama
 %dir %{_datadir}/agama/products.d
 %{_datadir}/agama/products.d/microos.yaml
 %{_datadir}/agama/products.d/tumbleweed.yaml
-# %{_datadir}/agama/products.d/leap_160.yaml
+%{_datadir}/agama/products.d/leap_160.yaml
 
 %changelog

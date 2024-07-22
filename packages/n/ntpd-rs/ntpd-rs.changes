@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Jul 18 16:59:44 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.2.2
+  Fixed
+  * Fixed a bug in leap second flag handling where previous flags
+    weren't explicitly unset.
+  * Fixed a bug that caused NTS-KE sessions from clients with a
+    large request to hang.
+  * Fixed a bug that caused NTS-KE error records never to be sent.
+- Update to version 1.2.1
+  Fixed
+  * Fixed a bug in leap second flag handling where previous flags
+    weren't explicitly unset.
+
+-------------------------------------------------------------------
 Thu Jul 11 15:37:53 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.2.0

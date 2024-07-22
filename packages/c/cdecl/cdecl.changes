@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jul 20 14:56:44 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 18.1
+  * Alignments can now have names to denote the number of bytes.
+  * In C89, implicit int is now warned about in more cases.
+  * To match gibberish output, K&R C typeless parameters now print
+    ``as integer`` in pseudo-English.
+
+-------------------------------------------------------------------
 Sat Jul  6 15:08:32 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 18

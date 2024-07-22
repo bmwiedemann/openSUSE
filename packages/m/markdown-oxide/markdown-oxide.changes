@@ -1,0 +1,53 @@
+-------------------------------------------------------------------
+Fri Jul  5 14:36:23 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Add remove-unstable-rust.patch -- Allow building with stable rust
+- Update to version 0.23.1:
+  * fix some zed bugs
+- Updates from version 0.23.0:
+  * Update Cargo.toml with the new version number
+  * Add helix daily note commands, accessible by
+    :lsp-workspace-command {command}
+- Updates from version 0.22.0:
+  * feat: support for cargo binstall
+  * Define PKM in the readme (hah)
+  * Use LSP commands to open/create daily notes (by the format
+    either imported from your obsidian settings or in the config
+    you provide). There is now Today, Tomorrow, Yesterday, and
+    Daily {natural language} (Daily three days ago). You may have
+    to modify your editor config; check the README -- and I have
+    only tested this on Neovim:
+  * Add option to set the folder to create daily notes
+  * Configure whether to add a .md extension to markdown and
+    wikilink completions; this also modifies the parser to parse
+    links with this:
+  * Add config options for respecting/ignorice character case in
+    fuzzy matching: Smart, Ignore, Respect.
+  * updated the tag parsing, it should be more aligned with common
+    mark spec now
+- Updates from version 0.0.21:
+  * fix: parse root_dir
+- Updates from version 0.0.20:
+  * feat: support no root_dir (limited functionality in neovim)
+  * fix: Using in Helix fails without Git initialized 
+
+-------------------------------------------------------------------
+Mon Apr 22 14:32:57 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Update to version 0.0.19:
+  * fix: extra bracket in wikilink completions
+  * fix: remove the printlns to fix vscode erroring
+  * don't parse data:image
+  * fix code block parsing
+
+-------------------------------------------------------------------
+Thu Apr 18 12:42:18 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Update to version 0.0.17:
+  * Move cursor to position after link when inserting link
+  * fix: don't parse . extensions other than .md
+
+-------------------------------------------------------------------
+Mon Apr 15 06:12:37 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Initial package of markdown-oxide for openSUSE.

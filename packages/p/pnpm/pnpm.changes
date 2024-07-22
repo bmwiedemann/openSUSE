@@ -1,0 +1,119 @@
+-------------------------------------------------------------------
+Tue Jul  9 20:03:51 UTC 2024 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to version 9.5.0:
+  * Added support for catalogs #8122
+  * Read authentication information from .npmrc in the current
+    directory when running dlx #7996
+  * Updated @pnpm/tabtab to v0.5.4, enabling zsh autocomplete
+    lazy loading #8236
+  * Installation with filtering will now work, when dedupe-peer-
+    dependents is set to true #6300
+  * Fixed dlx not actually using the Node.js version specified by
+    --use-node-version.
+
+-------------------------------------------------------------------
+Sat Jul  6 01:49:11 UTC 2024 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to version 9.4.0:
+  * Some registries allow the exact same content to be published
+    under different package names and/or versions. This breaks
+    the validity checks of packages in the store. To avoid errors
+    when verifying the names and versions of such packages in the
+    store, you may now set the strict-store-pkg-content-check
+    setting to false #4724
+  * Fix package-manager-strict-version missing in config #8195
+  * If install is performed on a subset of workspace projects,
+    always create an up-to-date lockfile first. So, a partial
+    install can be performed only on a fully resolved (non-partial)
+    lockfile #8165
+  * Handle workspace protocol with any semver range specifier,
+    when used in peer dependencies #7578
+
+-------------------------------------------------------------------
+Fri Jun 14 21:08:00 UTC 2024 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to version 9.3.0:
+  * Semi-breaking. Dependency key names in the lockfile are
+    shortened if they are longer than 1000 characters. We don't
+    expect this change to affect many users. Affected users most
+    probably can't run install successfully at the moment. This
+    change is required to fix some edge cases in which installation
+    fails with an out-of-memory error or "Invalid string length
+    (RangeError: Invalid string length)" error. The max allowed
+    length of the dependency key can be controlled with the peers-
+    suffix-max-length setting #8177.
+  * Set reporter-hide-prefix to true by default for pnpm exec. In
+    order to show prefix, the user now has to explicitly set reporter
+    -hide-prefix=false #8174.
+- changes from 9.2.0:
+  * If package-manager-strict-version is set to true, pnpm will
+    fail if its version doesn't exactly match the version in the
+    "packageManager" field of package.json.
+  * Update @yarnpkg/pnp to the latest version, fixing issue with
+    node: imports #8161.
+  * Deduplicate bin names to prevent race condition and corrupted
+    bin scripts #7833.
+  * pnpm doesn't fail if its version doesn't match the one
+    specified in the "packageManager" field of package.json #8087.
+  * exec now also streams prefixed output when --recursive or
+    --parallel is specified just as run does #8065.
+- changes from 9.1.4:
+  * Improved the performance of the resolution stage by changing
+    how missing peer dependencies are detected #8144.
+- changes from 9.1.3:
+  * Fix a bug in which a dependency that is both optional for one 
+    package but non-optional for another is omitted when optional=false #8066.
+  * Clear resolution cache before starting peer dependencies resolution #8109.
+  * Reduce memory usage by peer dependencies resolution #8072.
+
+-------------------------------------------------------------------
+Tue May 21 18:26:46 UTC 2024 - draskmont@protonmail.com
+
+- update to version 9.1.2
+- require nodejs >= 18
+
+-------------------------------------------------------------------
+Sat Apr 27 21:34:30 UTC 2024 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to version 9.0.6:
+  * Lockfiles that have git-hosted dependencies specified should
+    be correctly converted to the new lockfile format #7990.
+  * Don't upgrade the lockfile format on pnpm install
+    --frozen-lockfile #7991.
+- includes version 9.0.5:
+  * Lockfiles with local or git-hosted dependencies are now
+    successfully converted to the new lockfile format #7955.
+  * Resolve peer dependencies correctly, when they have
+    prerelease versions #7977.
+  * Fix aliased dependencies resolution on repeat install with
+    existing lockfile, when the aliased dependency doesn't
+    specify a version or range #7957.
+  * The lockfile should be saved in the new format even if it is
+    up-to-date.
+- run spec-cleaner
+
+-------------------------------------------------------------------
+Sat Apr 20 18:22:54 UTC 2024 - draskmont@protonmail.com
+
+- update to version 9.0.4
+- Added shell completion subpackages for bash, zsh and fish
+- Removed python2 dependency
+- Prevent packaging of executable files for other OS.
+- Cleaned up specfile:
+  * Removed some unused tags, macros and redudant requirements
+  * Added licensing header
+  * Fixed rpmlint errors and warnings
+- Removed unused _service file
+- Restored changelog
+
+-------------------------------------------------------------------
+Thu Jan 25 15:03:16 UTC 2024 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- update to version 8.14.3
+  * https://github.com/pnpm/pnpm/compare/v8.4.0...v8.14.3
+
+-------------------------------------------------------------------
+Mon Jan 14 09:20:53 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- initial revision for pnpm 2.25.1

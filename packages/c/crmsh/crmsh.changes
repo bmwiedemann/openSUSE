@@ -1,4 +1,99 @@
 -------------------------------------------------------------------
+Thu Jul 18 09:31:54 UTC 2024 - XLiang@suse.com
+
+- Update to version 5.0.0+20240718.3877db63:
+  * Dev: qdevice: numbers automatically the steps to generate client certs
+  * Dev: prun: add more possible libexec PATH for sftp-server
+  * Dev: behave: adjust functional tests for previous commits
+  * fix a typo
+  * Dev: unittest: adjust unit tests for previous commits
+  * Fix: qdevice: config "tls" should accept value "required" (bsc#1227649)
+  * Fix: bootstrap: refine the wording in the question asking TLS config for qdevice (bsc#1227649)
+  * Fix: qdevice: TLS certs should always be generated for qnetd (bsc#1227649)
+
+-------------------------------------------------------------------
+Thu Jul 18 02:21:42 UTC 2024 - XLiang@suse.com
+
+- Update to version 5.0.0+20240718.b77bc9ed:
+  * Dev: Rename variables to distinguish the concept of adding default
+  * Dev: behave: Add functional test for rsc_template
+  * Fix: cibconfig: Disable complete advised operation values when adding a rsc_template
+
+-------------------------------------------------------------------
+Tue Jul 16 06:40:30 UTC 2024 - XLiang@suse.com
+
+- Update to version 5.0.0+20240716.99f2232d:
+  * Dev: github-actions: actions/setup-python@v4 is deprecated
+
+-------------------------------------------------------------------
+Tue Jul 16 02:44:18 UTC 2024 - XLiang@suse.com
+
+- Update to version 5.0.0+20240716.b2d65eba:
+  * Fix: hahealth.py script
+
+-------------------------------------------------------------------
+Thu Jul 11 11:44:58 UTC 2024 - XLiang@suse.com
+
+- Update to version 5.0.0+20240711.72c64e62:
+  * Dev: behave: Add functional test for previous commit
+  * Dev: bootstrap: Use the existing function to query cluster property
+  * Dev: Remove crmsh/ordereddict.py
+
+-------------------------------------------------------------------
+Thu Jul 11 02:35:02 UTC 2024 - XLiang@suse.com
+
+- Update to version 5.0.0+20240711.bda8e3da:
+  * Fix: cli: loading cib should be a soft depenedency
+  * Dev: ui_context: refactor NON_FUNCTIONAL_COMMAND and NON_FUNCTIONAL_OPTIONS
+  * Revert changes to `quit` and `up` in ui_context from #1300 (#1466)
+  * Fix: cibconfig: do not load cib to check if cib is changed (#1466)
+  * Fix: ui_context: crm configure up prompt #1466
+  * Dev: ra: Refine RAInfo.params interface to exclude some completion results
+  * Dev: ui_context: Don't append space when completion ends with equal sign
+  * Dev: ui_configure: Complete required parameters first
+
+-------------------------------------------------------------------
+Fri Jun 28 06:44:32 UTC 2024 - XLiang@suse.com
+
+- Update to version 5.0.0+20240628.3b3d7eeb:
+  * Fix: ui_context: crm cluster delete autocompletion #1403 #1460
+
+-------------------------------------------------------------------
+Wed Jun 26 11:29:48 UTC 2024 - nicholas.yang@suse.com
+
+- Update to version 5.0.0+20240626.8f0ed3e4:
+  * Dev: testcases: Replace LVM with LVM-activate
+  * Dev: testcases: Replace IPaddr with IPaddr2
+  * Dev: Dockerfile: Update dockerfile after corosync3 is in the Factory
+
+-------------------------------------------------------------------
+Tue Jun 25 10:07:59 UTC 2024 - nicholas.yang@suse.com
+
+- Update to version 5.0.0+20240625.c6cc5997:
+  * Fix: github-actions: should pass secrets to reusable workflows
+  * Revert "Fix: codecov: use environ to pass CODECOV_TOKEN (#1472)"
+
+-------------------------------------------------------------------
+Tue Jun 25 07:02:02 UTC 2024 - XLiang@suse.com
+
+- Update to version 5.0.0+20240625.26e3dd24:
+  * Dev: unittest: Adjust unit test for previous commit
+  * Dev: behave: Adjust functional test for previous commit
+  * Dev: sbd: Replace external/sbd as fence_sbd (jsc#PED-8256, jsc#PED-8498)
+
+-------------------------------------------------------------------
+Tue Jun 25 04:09:59 UTC 2024 - XLiang@suse.com
+
+- Update to version 5.0.0+20240625.b1ff9f63:
+  * Fix: codecov: use environ to pass CODECOV_TOKEN (#1472)
+
+-------------------------------------------------------------------
+Fri Jun 21 10:43:22 UTC 2024 - XLiang@suse.com
+
+- Update to version 5.0.0+20240621.fe4d011b:
+  * Dev: Drop rkt container type in bundle (jsc#PED-5577)
+
+-------------------------------------------------------------------
 Thu Jun 20 06:58:34 UTC 2024 - XLiang@suse.com
 
 - Update to version 5.0.0+20240620.4dcac184:

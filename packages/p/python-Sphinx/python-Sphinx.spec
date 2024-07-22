@@ -26,7 +26,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-Sphinx%{psuffix}
-Version:        7.3.7
+Version:        7.4.5
 Release:        0
 Summary:        Python documentation generator
 License:        BSD-2-Clause
@@ -88,6 +88,7 @@ BuildRequires:  %{python_module html5lib}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module sphinxcontrib-websupport}
 BuildRequires:  %{python_module testsuite}
+BuildRequires:  %{python_module typing-extensions}
 BuildRequires:  ImageMagick
 BuildRequires:  graphviz
 # For PNG format

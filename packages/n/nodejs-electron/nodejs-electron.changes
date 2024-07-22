@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Jul 20 10:02:27 UTC 2024 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- New upstream release 30.3.0
+  * Node 20.15.1
+  * Added DownloadItem.getCurrentBytesPerSecond(), DownloadItem.getPercentComplete(), DownloadItem.getEndTime().
+  * Fixed a potential crash when using off screen rendering.
+  * fix crash when resolving proxy with session.resolveProxy api
+- aarch64 Fedora 40: disable LTO due to linker oom failing build
+
+-------------------------------------------------------------------
 Fri Jul 12 10:28:06 UTC 2024 - Bruno Pitrus <brunopitrus@hotmail.com>
 
 - New upstream release 30.2.0

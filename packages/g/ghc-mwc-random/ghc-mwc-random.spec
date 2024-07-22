@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-mwc-random
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,13 +20,12 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.15.0.2
+Version:        0.15.1.0
 Release:        0
 Summary:        Fast, high quality pseudo random number generation
 License:        BSD-2-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/1.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-base-devel
 BuildRequires:  ghc-base-prof
@@ -49,6 +48,8 @@ BuildRequires:  ghc-bytestring-devel
 BuildRequires:  ghc-bytestring-prof
 BuildRequires:  ghc-doctest-devel
 BuildRequires:  ghc-doctest-prof
+BuildRequires:  ghc-mtl-devel
+BuildRequires:  ghc-mtl-prof
 BuildRequires:  ghc-tasty-devel
 BuildRequires:  ghc-tasty-hunit-devel
 BuildRequires:  ghc-tasty-hunit-prof
@@ -60,14 +61,11 @@ BuildRequires:  ghc-tasty-quickcheck-prof
 %description
 This package contains code for generating high quality random numbers that
 follow either a uniform or normal distribution. The generated numbers are
-suitable for use in statistical applications.
-
-The uniform PRNG uses Marsaglia's MWC256 (also known as MWC8222)
-multiply-with-carry generator, which has a period of 2^8222 and fares well in
-tests of randomness. It is also extremely fast, between 2 and 3 times faster
-than the Mersenne Twister.
-
-Compared to the mersenne-random package, this package has a more convenient
+suitable for use in statistical applications. . The uniform PRNG uses
+Marsaglia's MWC256 (also known as MWC8222) multiply-with-carry generator, which
+has a period of 2^8222 and fares well in tests of randomness. It is also
+extremely fast, between 2 and 3 times faster than the Mersenne Twister.
+. Compared to the mersenne-random package, this package has a more convenient
 API, is faster, and supports more statistical distributions.
 
 %package devel
@@ -98,7 +96,6 @@ This package provides the Haskell %{pkg_name} profiling library.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
-cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %build
 %ghc_lib_build
@@ -119,7 +116,7 @@ cp -p %{SOURCE1} %{pkg_name}.cabal
 %license LICENSE
 
 %files devel -f %{name}-devel.files
-%doc README.markdown changelog.md
+%doc README.md changelog.md docs
 
 %files -n ghc-%{pkg_name}-doc -f ghc-%{pkg_name}-doc.files
 %license LICENSE

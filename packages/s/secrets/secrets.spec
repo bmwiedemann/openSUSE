@@ -23,7 +23,7 @@
 %define         psuffix %nil
 %endif
 Name:           secrets%{psuffix}
-Version:        9.5
+Version:        9.6
 Release:        0
 Summary:        A password manager for GNOME
 License:        GPL-3.0-or-later

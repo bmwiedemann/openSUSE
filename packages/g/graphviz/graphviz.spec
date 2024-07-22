@@ -430,7 +430,7 @@ CFLAGS="%{optflags} -ffast-math -fno-strict-aliasing -fno-strict-overflow -fPIC"
 
 %if "%{flavor}" == "addons"
 
-CFLAGS="$CFLAGS -I/usr/include/ruby-%{ruby_version}.0"
+CFLAGS="$CFLAGS -I/usr/include/ruby-%{ruby_version}.0 -fpermissive"
 #seems to be broken? gives -I/usr/lib64/ruby/2.6.0/x86_64-linux-gnu, ruby.h is in /usr/lib64/ruby/2.6.0
 #CFLAGS="$CFLAGS $(pkg-config --cflags ruby-$(echo {rb_ver} | sed 's|\.[^.]*$||'))"
 

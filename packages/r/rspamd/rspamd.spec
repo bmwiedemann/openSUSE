@@ -56,7 +56,7 @@
 %endif
 
 Name:           rspamd
-Version:        3.8.4
+Version:        3.9.0
 Release:        0
 Summary:        Spam filtering system
 License:        Apache-2.0
@@ -106,6 +106,7 @@ BuildRequires:  pkgconfig(libnsl)
 %endif
 BuildRequires:  ragel
 BuildRequires:  pkgconfig(libsodium)
+BuildRequires:  pkgconfig(libarchive) >= 3.0
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(sqlite3)
 %if %{with systemd}
@@ -238,7 +239,11 @@ export CXX="g++-%{?force_gcc_version}"
   %if %{with jemalloc}
   -DENABLE_JEMALLOC=ON                      \
   %endif
+  %if %{pkg_vcmp fmt-devel > 11}
   -DSYSTEM_FMT=ON                           \
+  %else
+  -DSYSTEM_FMT=OFF                          \
+  %endif
   -DSYSTEM_ZSTD=ON                          \
   -DDEBIAN_BUILD=1                          \
   -DRSPAMD_GROUP=%{rspamd_group}            \
@@ -381,6 +386,7 @@ find /var/lib/rspamd/ -type f -name '*.unser' -delete -print ||:
 
 %dir %{_sysconfdir}/rspamd/maps.d
 %config(noreplace) %{_sysconfdir}/rspamd/maps.d/dmarc_whitelist.inc
+%config(noreplace) %{_sysconfdir}/rspamd/maps.d/exe_clickbait.inc
 %config(noreplace) %{_sysconfdir}/rspamd/maps.d/maillist.inc
 %config(noreplace) %{_sysconfdir}/rspamd/maps.d/mid.inc
 %config(noreplace) %{_sysconfdir}/rspamd/maps.d/mime_types.inc
@@ -393,6 +399,7 @@ find /var/lib/rspamd/ -type f -name '*.unser' -delete -print ||:
 %config(noreplace) %{_sysconfdir}/rspamd/modules.d/aws_s3.conf
 %config(noreplace) %{_sysconfdir}/rspamd/modules.d/arc.conf
 %config(noreplace) %{_sysconfdir}/rspamd/modules.d/asn.conf
+%config(noreplace) %{_sysconfdir}/rspamd/modules.d/bayes_expiry.conf
 %config(noreplace) %{_sysconfdir}/rspamd/modules.d/bimi.conf
 %config(noreplace) %{_sysconfdir}/rspamd/modules.d/chartable.conf
 %config(noreplace) %{_sysconfdir}/rspamd/modules.d/clickhouse.conf
@@ -408,6 +415,7 @@ find /var/lib/rspamd/ -type f -name '*.unser' -delete -print ||:
 %config(noreplace) %{_sysconfdir}/rspamd/modules.d/forged_recipients.conf
 %config(noreplace) %{_sysconfdir}/rspamd/modules.d/fuzzy_check.conf
 %config(noreplace) %{_sysconfdir}/rspamd/modules.d/greylist.conf
+%config(noreplace) %{_sysconfdir}/rspamd/modules.d/gpt.conf
 %config(noreplace) %{_sysconfdir}/rspamd/modules.d/history_redis.conf
 %config(noreplace) %{_sysconfdir}/rspamd/modules.d/hfilter.conf
 %config(noreplace) %{_sysconfdir}/rspamd/modules.d/http_headers.conf
@@ -472,6 +480,7 @@ find /var/lib/rspamd/ -type f -name '*.unser' -delete -print ||:
 %{_datadir}/rspamd/forged_recipients.lua
 %{_datadir}/rspamd/fuzzy_collect.lua
 %{_datadir}/rspamd/greylist.lua
+%{_datadir}/rspamd/gpt.lua
 %{_datadir}/rspamd/hfilter.lua
 %{_datadir}/rspamd/history_redis.lua
 %{_datadir}/rspamd/ip_score.lua
@@ -588,6 +597,7 @@ find /var/lib/rspamd/ -type f -name '*.unser' -delete -print ||:
 %{_datadir}/rspamd/lualib/rspamadm/confighelp.lua
 %{_datadir}/rspamd/lualib/rspamadm/configwizard.lua
 %{_datadir}/rspamd/lualib/rspamadm/cookie.lua
+%{_datadir}/rspamd/lualib/rspamadm/classifier_test.lua
 %{_datadir}/rspamd/lualib/rspamadm/corpus_test.lua
 %{_datadir}/rspamd/lualib/rspamadm/dmarc_report.lua
 %{_datadir}/rspamd/lualib/rspamadm/dns_tool.lua
@@ -625,6 +635,7 @@ find /var/lib/rspamd/ -type f -name '*.unser' -delete -print ||:
 %{_datadir}/rspamd/lualib/redis_scripts/bayes_stat.lua
 
 %dir %{_datadir}/rspamd/rules
+%{_datadir}/rspamd/rules/archives.lua
 %{_datadir}/rspamd/rules/bitcoin.lua
 %{_datadir}/rspamd/rules/bounce.lua
 %{_datadir}/rspamd/rules/content.lua
@@ -674,6 +685,7 @@ find /var/lib/rspamd/ -type f -name '*.unser' -delete -print ||:
 %{_wwwdir}/%{name}/img/asc.png
 %{_wwwdir}/%{name}/img/desc.png
 %{_wwwdir}/%{name}/img/rspamd_logo_navbar.png
+%{_wwwdir}/%{name}/img/drop-area.svg
 
 %dir %{_wwwdir}/%{name}/js
 %{_wwwdir}/%{name}/js/main.js

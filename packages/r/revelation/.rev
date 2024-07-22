@@ -43,4 +43,22 @@
     <comment></comment>
     <requestid>1123868</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>9f76af689633cd8eb9091c3c2f6670e5</srcmd5>
+    <version>0.5.5</version>
+    <time>1721661423</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.5.5:
+  * Bugfixes:
+    - Fix building with &gt;=Meson-0.60
+    - Fix importing GPass-0.5.1 files
+    - Fix Metainfo errors reported by Debian
+  * Others:
+    - Code changes based on flake8 and bandit
+    - First Meson only supported release
+  * Updated translations.
+- Remove revelation-mesonfix-061.patch, the new version has fixed
+  this issue</comment>
+    <requestid>1188678</requestid>
+  </revision>
 </revisionlist>

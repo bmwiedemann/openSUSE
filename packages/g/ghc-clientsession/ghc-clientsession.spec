@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-clientsession
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,13 +20,12 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.9.2.0
+Version:        0.9.3.0
 Release:        0
 Summary:        Securely store session data in a client-side cookie
 License:        MIT
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/1.cabal#/%{pkg_name}.cabal
 BuildRequires:  chrpath
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-base-devel
@@ -39,8 +38,8 @@ BuildRequires:  ghc-cereal-devel
 BuildRequires:  ghc-cereal-prof
 BuildRequires:  ghc-crypto-api-devel
 BuildRequires:  ghc-crypto-api-prof
-BuildRequires:  ghc-cryptonite-devel
-BuildRequires:  ghc-cryptonite-prof
+BuildRequires:  ghc-crypton-devel
+BuildRequires:  ghc-crypton-prof
 BuildRequires:  ghc-directory-devel
 BuildRequires:  ghc-directory-prof
 BuildRequires:  ghc-entropy-devel
@@ -98,7 +97,6 @@ This package provides the Haskell %{pkg_name} profiling library.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
-cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %build
 %ghc_lib_build

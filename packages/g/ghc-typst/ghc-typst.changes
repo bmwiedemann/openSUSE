@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Jun 24 18:45:46 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update typst to version 0.5.0.4.
+  ## 0.5.0.4
+
+    * Add built-in identifiers for standard types (#21):
+      array, bool, content, int, float, regex, length,
+      alignment, color, symbol, string.
+
+    * Adjust emphasis parser for CJK characters (#49).
+      Typst documentation says that `*` strong emphasis
+      "only works at word boundaries." However, in typst/typst#2648
+      this was changed for CJK.
+
+-------------------------------------------------------------------
 Sun Apr  7 05:58:34 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update typst to version 0.5.0.3.

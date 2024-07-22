@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jul 19 16:34:25 UTC 2024 - Martin Jambor <mjambor@suse.com>
+
+- Add barcode-C99.diff to add mssing includes of libintl.h to allow
+  the package to be built with GCC 14.
+
+-------------------------------------------------------------------
 Thu Feb 22 08:09:38 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Use %patch -P N instead of deprecated %patchN.

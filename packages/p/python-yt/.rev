@@ -241,4 +241,12 @@ https://github.com/yt-project/yt/releases.
     <comment>- Restrict numpy to &lt; 2 for now.</comment>
     <requestid>1188090</requestid>
   </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>bd8351560f36c46059719c76b8a20eea</srcmd5>
+    <version>4.3.1</version>
+    <time>1721661471</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1188820</requestid>
+  </revision>
 </revisionlist>

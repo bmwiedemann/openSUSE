@@ -1,0 +1,2 @@
+# There are some blank files in the documentation that must not be deleted
+addFilter("o2scl-doc.noarch: E: zero-length")

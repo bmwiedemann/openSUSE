@@ -25,6 +25,7 @@ License:        (GPL-2.0-only AND LGPL-2.1-or-later) OR MIT
 Group:          Development/Libraries/C and C++
 URL:            https://git.kernel.dk/cgit/liburing
 Source:         https://git.kernel.dk/cgit/liburing/snapshot/%{name}-%{version}.tar.bz2
+Patch0:         test-buf-ring-nommap-zero-the-ringbuf-memory.patch
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  procps
@@ -86,8 +87,7 @@ sh ./configure --prefix=%{_prefix} \
 # io_uring syscalls not supported as of qemu 7.0.0 and would test the host
 # kernel anyway not the target kernel..
 %if !0%{?qemu_user_space_build}
-# buf-ring-nommap.t crashes with kernel 6.9
-/usr/bin/make %{?_smp_mflags} runtests TEST_EXCLUDE='buf-ring-nommap.t'
+/usr/bin/make %{?_smp_mflags} runtests
 %endif
 
 %install

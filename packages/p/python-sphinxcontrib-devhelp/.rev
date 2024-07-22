@@ -43,4 +43,16 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1140274</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>287b572ad2457e36073f404c05549a7d</srcmd5>
+    <version>1.0.6</version>
+    <time>1721661240</time>
+    <user>anag+factory</user>
+    <comment>- Add no-store-btime-gzip.patch to fix bsc#1227999 by not storing
+  build time in gzip headers so as to make building documentation
+  reproducible
+- Add rpmlintrc
+</comment>
+    <requestid>1188716</requestid>
+  </revision>
 </revisionlist>

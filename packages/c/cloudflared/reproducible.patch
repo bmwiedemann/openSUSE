@@ -1,0 +1,29 @@
+From b2d93673dacbb9426467853d79c929b8a580301e Mon Sep 17 00:00:00 2001
+From: "Bernhard M. Wiedemann" <bwiedemann@suse.de>
+Date: Mon, 8 Jul 2024 10:24:19 +0200
+Subject: [PATCH] Use ChangeLog date instead of build date
+
+to make builds reproducible.
+See https://reproducible-builds.org/ for why this is good
+and https://reproducible-builds.org/specs/source-date-epoch/
+for the definition of this variable.
+This date call only works with GNU date and BSD date.
+
+This patch was done while working on reproducible builds for openSUSE, sponsored by the NLnet NGI0 fund.
+---
+ Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile b/Makefile
+index 1961f03d9c0..a63c800847c 100644
+--- a/Makefile
++++ b/Makefile
+@@ -24,7 +24,7 @@ else
+ 	DEB_PACKAGE_NAME := $(BINARY_NAME)
+ endif
+ 
+-DATE          := $(shell date -u '+%Y-%m-%d-%H%M UTC')
++DATE          := $(shell date -u -r CHANGES.md '+%Y-%m-%d-%H%M UTC')
+ VERSION_FLAGS := -X "main.Version=$(VERSION)" -X "main.BuildTime=$(DATE)"
+ ifdef PACKAGE_MANAGER
+ 	VERSION_FLAGS := $(VERSION_FLAGS) -X "github.com/cloudflare/cloudflared/cmd/cloudflared/updater.BuiltForPackageManager=$(PACKAGE_MANAGER)"

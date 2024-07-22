@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jun 24 18:30:00 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update djot to version 0.1.2.1.
+  ## 0.1.2.1 -- 2024-06-24
+
+  * Djot writer: include separator line in table when the table has
+    non-default alignments but no header (#7).
+
+-------------------------------------------------------------------
 Sat May 11 06:43:44 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update djot to version 0.1.2.

@@ -40,6 +40,7 @@ Recommends:     kubernetes-client
 Recommends:     libvirt
 Recommends:     libvirt-daemon-qemu
 Recommends:     qemu-kvm
+Recommends:     socat
 ExcludeArch:    ppc64le s390x
 
 %description

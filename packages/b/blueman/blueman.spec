@@ -1,7 +1,7 @@
 #
 # spec file for package blueman
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@
 %bcond_with nemo
 %endif
 Name:           blueman
-Version:        2.3.5
+Version:        2.4.2
 Release:        0
 Summary:        GTK Bluetooth Manager
 License:        GPL-3.0-only
@@ -49,11 +49,11 @@ BuildRequires:  systemd-rpm-macros
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(bluez) >= 5.48
 BuildRequires:  pkgconfig(glib-2.0)
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.24
 BuildRequires:  pkgconfig(libnotify)
 BuildRequires:  pkgconfig(polkit-agent-1)
 BuildRequires:  pkgconfig(pygobject-3.0) >= 3.27.2
-BuildRequires:  pkgconfig(python3)
+BuildRequires:  pkgconfig(python3) >= 3.8
 Requires:       bluez >= 5.48
 Requires:       dbus-1-python3
 Requires:       gdk-pixbuf-loader-rsvg

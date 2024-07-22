@@ -167,4 +167,33 @@
 </comment>
     <requestid>995076</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>9783405d5b6f3d152ca94590712e3218</srcmd5>
+    <version>0.929.1</version>
+    <time>1721661506</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.929.1.
+- Split off tests into separate multibuild flavour to avoid main
+  library builds getting bogged down by long running tests and
+  also to turn off python support for the test flavour to avoid
+  running python based tests. This prevents a circular dependency
+  between python-o2sclpy and o2scl.
+- Build with ncurses support; add BuildRequires:
+  pkgconfig(ncurses).
+- Switch a few *-devel BuildRequires to pkgconfig based ones.
+- Account for openSUSE Leap having hdf5 &lt; 1.12 by passing
+  `-DO2SCL_HDF5_PRE_1_12` to CXXFLAGS.
+- Add o2scl.rpmlintrc to mask warnings for empty files installed
+  as part of doc package.
+- Pass `-lgomp` to linker flags to avoid undefined symbol:
+  GOMP_critical_name_end when using python o2sclpy
+  (gh#awsteiner/o2scl#40).
+- Update URL tag to new upstream home page.
+- Disable pugixml: not for end-users (gh#awsteiner/o2scl#38).
+- Update to version 0.928:
+- doc package is now noarch.
+- Use memory_constraints to allow at least 2GB memory per thread.
+- Add _constraints.</comment>
+    <requestid>1188890</requestid>
+  </revision>
 </revisionlist>

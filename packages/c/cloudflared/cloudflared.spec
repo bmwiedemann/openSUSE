@@ -29,6 +29,7 @@ Source1:        vendor.tar.gz
 Patch0:         001-skip-test.patch
 # PATCH-FIX-OPENSUSE 002-use-pie.patch hillwood@opensuse.org
 Patch1:         002-use-pie.patch
+Patch2:         reproducible.patch
 BuildRequires:  fdupes
 BuildRequires:  git-core
 BuildRequires:  golang-packaging

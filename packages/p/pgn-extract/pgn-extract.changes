@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Jul 21 10:03:17 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 24.11
+  * Bug fix for material matches with Chess960 games involving castling.
+  * Bug fix for -n when used with tag matching.
+  * Bug fix for tag matching with relational operators.
+  * Bug fix for position matching via -z. Games with FEN tags in which black 
+    was to move had colours swapped when matching.
+  * New options --commented, --insufficient and --suppressmatched.
+  * Added stdout as an output for -n.
+  * EloDiff pseudo-tag added.
+  * Relational operator available for non-numeric tag values.
+
+-------------------------------------------------------------------
 Thu Jun 13 09:21:37 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to 24.10

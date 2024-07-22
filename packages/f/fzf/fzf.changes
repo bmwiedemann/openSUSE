@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Jul 20 14:14:23 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Update to 0.54.1:
+  * fastwalk: add optional sorting and improve documentation
+  * Reverted ALT-C binding of fish to use cd instead of builtin
+    cd. builtin cd was introduced to work around a bug of cd coming
+    from zoxide init --cmd cd fish where it cannot handle --
+    argument.
+
+-------------------------------------------------------------------
 Mon Jul  8 14:09:41 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Add new "v" prefix to tag in URL

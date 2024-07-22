@@ -20,7 +20,7 @@
 %global _conflict_wlroots_ver 0.18.0
 
 Name:           qtile
-Version:        0.26.0
+Version:        0.27.0
 Release:        0
 Summary:        A pure-Python tiling window manager
 # All MIT except for: libqtile/widget/pacman.py:GPL (v3 or later)

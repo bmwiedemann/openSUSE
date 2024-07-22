@@ -1,4 +1,75 @@
 -------------------------------------------------------------------
+Fri Jul 19 03:11:26 UTC 2024 - William Brown <william.brown@suse.com>
+
+- Resolve build failure when backported to 15-SP3
+
+-------------------------------------------------------------------
+Fri Jul 19 02:02:31 UTC 2024 - William Brown <william.brown@suse.com>
+
+- Depend on provides of rust to allow older compiler version usage
+
+-------------------------------------------------------------------
+Tue May 28 04:48:14 UTC 2024 - william.brown@suse.com
+
+- Update to version 0.6.4~0:
+  * Release cargo-auditable v0.6.4
+  * Correctly attribute changelog file addition in changelog
+  * Add changelog for auditable-extract
+  * Verify various feature combinations in CI
+  * Upgrade wasmparser to remove dependencies with `unsafe`
+  * Add LoongArch support
+  * cargo fmt
+  * Move doc headers to README.md and point rustdoc to them, so that we have nice crates.io pages
+  * Expand on the note about WebAssembly parsing
+  * Populate changelogs
+  * Resume bragging about all dependencies being safe, now that there is a caveat below
+  * drop fuzz Cargo.lock to always fuzz against latest versions
+  * Bump `cargo auditable` version
+  * Mention WASM support in README
+  * Revert "Be super duper extra sure both MinGW and MSVC are tested on CI"
+  * Be super duper extra sure both MinGW and MSVC are tested on CI
+  * Add wasm32 targets to CI for more platforms
+  * Don't pass --target twice in tests
+  * Install WASM toolchain in CI
+  * cargo fmt
+  * Add WASM end-to-end test
+  * cargo fmt
+  * Update documentation to mention the WASM feature
+  * cargo fmt
+  * Plumb WASM parsing feature through the whole stack
+  * Make WASM parsing an optional, non-default feature
+  * Add a fuzzing harness for WASM parsing
+  * Rewritten WASM parsing to avoid heap allocations
+  * Initial WASM extraction support
+  * Nicer assertion
+  * Drop obsolete comment
+  * Clarify that embedding the compiler version has shipped.
+  * Fixed section name for WASM
+  * Unified and more robust platform detection. Fixed wasm build process
+  * Initial WASM support
+  * More robust platform detection for picking the binary format
+  * Fix Windows CI to run both -msvc and -gnu
+  * Use the correct link.exe flag for preserving the specified symbol even if it is unused
+  * Fix Windows
+  * Fix tests on Rust 1.77
+  * Placate clippy
+  * Oopps, I meant components field
+  * Also remove the dependencies field if empty
+  * Use serde_json with order preservation feature to get a more compressible JSON after workarounds
+  * Work around cyclonedx-bom limitations to produce minified JSON
+  * Also record the dependency kind
+  * cyclonedx-bom: also record PURL
+  * Also write the dependency tree
+  * Clear the serial number in the minimal CycloneDX variant
+  * Prototype impl of auditable2cdx
+  * Fill in auditable2cdx dependencies
+  * Initial auditable2cdx boilerplace
+  * add #![forbid(unsafe_code)]
+  * Initial implementation of auditable-to-cyclonedx conversion
+  * Add the necessary dependencies to auditable-cyclonedx
+  * Initial dummy package for auditable-cyclonedx
+
+-------------------------------------------------------------------
 Tue Mar  5 01:17:29 UTC 2024 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
 
 - Update specfile:

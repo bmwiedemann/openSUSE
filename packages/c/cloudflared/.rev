@@ -16,4 +16,12 @@
 - Remove 003-support-ppc64le.patch.</comment>
     <requestid>1187690</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>15ff0f583cb67cc26739145598dd8a12</srcmd5>
+    <version>2024.6.0</version>
+    <time>1721661322</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1188555</requestid>
+  </revision>
 </revisionlist>

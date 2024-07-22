@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package python-sphinxcontrib-devhelp
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -32,7 +32,11 @@ Summary:        Sphinx extension which outputs Devhelp documents
 License:        BSD-2-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/sphinx-doc/sphinxcontrib-devhelp
-Source:         https://files.pythonhosted.org/packages/source/s/sphinxcontrib-devhelp/sphinxcontrib_devhelp-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/s/sphinxcontrib-devhelp/sphinxcontrib_devhelp-%{version}.tar.gz
+Source99:       python-sphinxcontrib-devhelp.rpmlintrc
+# PATCH-FIX-UPSTREAM no-store-btime-gzip.patch bsc#1227999 mcepl@suse.com
+# don't store build time in gzip headers to make building documentation reproducible
+Patch0:         no-store-btime-gzip.patch
 %if %{with test}
 BuildRequires:  %{python_module Sphinx >= 5.0}
 BuildRequires:  %{python_module pytest}
@@ -50,13 +54,13 @@ BuildArch:      noarch
 sphinxcontrib-devhelp is a sphinx extension which outputs Devhelp document.
 
 %prep
-%setup -q -n sphinxcontrib_devhelp-%{version}
+%autosetup -p1 -n sphinxcontrib_devhelp-%{version}
 
 %build
 %pyproject_wheel
 
 %install
-%if !%{with test}
+%if %{without test}
 %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
@@ -66,11 +70,13 @@ sphinxcontrib-devhelp is a sphinx extension which outputs Devhelp document.
 %pytest
 %endif
 
-%if !%{with test}
+%if %{without test}
 %files %{python_files}
 %doc README.rst CHANGES
 %license LICENSE
-%{python_sitelib}/*
+%dir %{python_sitelib}/sphinxcontrib
+%{python_sitelib}/sphinxcontrib/devhelp
+%{python_sitelib}/sphinxcontrib_devhelp-%{version}*-info
 %endif
 
 %changelog

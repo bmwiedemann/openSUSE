@@ -1,0 +1,27 @@
+diff -Nur dde-launcher-5.6.1/CMakeLists.txt dde-launcher-5.6.1-new/CMakeLists.txt
+--- dde-launcher-5.6.1/CMakeLists.txt	2022-11-18 10:14:44.000000000 +0800
++++ dde-launcher-5.6.1-new/CMakeLists.txt	2023-01-15 16:46:49.053765340 +0800
+@@ -66,6 +66,7 @@
+ find_package(DtkWidget REQUIRED)
+ find_package(Qt5Svg REQUIRED)
+ find_package(DtkCore REQUIRED)
++find_package(DtkGui REQUIRED)
+ 
+ pkg_check_modules(XCB_EWMH REQUIRED xcb-ewmh)
+ pkg_check_modules(DFrameworkDBus REQUIRED dframeworkdbus)
+@@ -118,6 +119,7 @@
+ target_include_directories(${BIN_NAME} PUBLIC
+     ${DtkWidget_INCLUDE_DIRS}
+     ${DtkCore_INCLUDE_DIRS}
++    ${DtkGui_INCLUDE_DIRS}
+     ${XCB_EWMH_INCLUDE_DIRS}
+     ${DFrameworkDBus_INCLUDE_DIRS}
+     ${Qt5Gui_PRIVATE_INCLUDE_DIRS}
+@@ -130,6 +132,7 @@
+     ${DFrameworkDBus_LIBRARIES}
+     ${DtkWidget_LIBRARIES}
+     ${DtkCore_LIBRARIES}
++    ${DtkGui_LIBRARIES}
+     ${Qt5Widgets_LIBRARIES}
+     ${Qt5Concurrent_LIBRARIES}
+     ${Qt5X11Extras_LIBRARIES}

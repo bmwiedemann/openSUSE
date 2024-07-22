@@ -1,7 +1,7 @@
 cabal-version:       2.0
 name:                cryptohash-sha256
 version:             0.11.102.1
-x-revision:          4
+x-revision:          5
 
 synopsis:            Fast, pure and practical SHA-256 implementation
 description: {
@@ -51,9 +51,9 @@ category:            Data, Cryptography
 build-type:          Simple
 
 tested-with:
-  GHC == 9.10.0
+  GHC == 9.10.1
   GHC == 9.8.2
-  GHC == 9.6.4
+  GHC == 9.6.5
   GHC == 9.4.8
   GHC == 9.2.8
   GHC == 9.0.2
@@ -63,7 +63,6 @@ tested-with:
   GHC == 8.4.4
   GHC == 8.2.2
   GHC == 8.0.2
-  GHC == 7.10.3
 
 extra-source-files:  cbits/hs_sha256.h
                      changelog.md
@@ -137,7 +136,7 @@ test-suite test-sha256
                    , base16-bytestring ^>= 0.1.1 || ^>= 1.0.0
                    , SHA               ^>= 1.6.4
                    , tasty             ^>= 1.4   || ^>= 1.5
-                   , tasty-quickcheck  ^>= 0.10
+                   , tasty-quickcheck   >= 0.10  && < 1
                    , tasty-hunit       ^>= 0.10
 
 benchmark bench-sha256

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed May 22 10:04:17 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update http-api-data to version 0.6.1.
+  0.6.1
+
+  * Require at least GHC-8.6
+  * Support `cookie-0.5.0`, see [#137](https://github.com/fizruk/http-api-data/pull/137).
+
+    Note that `cookie-0.5.0`'s parser now removes double quotes around cookie values.
+
+-------------------------------------------------------------------
 Wed Oct 11 11:42:57 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update http-api-data to version 0.6 revision 1.

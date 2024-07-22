@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jul 17 16:37:53 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.2.0:
+  * Features
+    - Add support for namespaces (#110)
+  * Bugfixes
+    - Fix authentication for partial restore, i. e. on an
+      operational instance (#120)
+
+-------------------------------------------------------------------
 Fri May  3 16:28:42 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 1.1.0:

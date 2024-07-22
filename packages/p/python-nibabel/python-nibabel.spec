@@ -25,15 +25,17 @@ License:        MIT
 URL:            https://nipy.org/nibabel
 # SourceRepository: https://github.com/nipy/nibabel
 Source:         https://files.pythonhosted.org/packages/source/n/nibabel/nibabel-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM gh#nipy/nibabel#1325
+Patch0:         support-pytest-8.patch
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module hatch-vcs}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-numpy >= 1.20
 Requires:       python-packaging => 17
 Requires:       (python-importlib-resources >= 1.3 if python-base < 3.9)
+Requires:       (python-numpy >= 1.20 with python-numpy < 2)
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 Recommends:     python-Pillow
@@ -45,7 +47,7 @@ BuildArch:      noarch
 BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module h5py}
 BuildRequires:  %{python_module importlib-resources >= 1.3 if %python-base < 3.9}
-BuildRequires:  %{python_module numpy >= 1.20}
+BuildRequires:  %{python_module numpy >= 1.20 with %python-numpy < 2}
 BuildRequires:  %{python_module packaging >= 17}
 BuildRequires:  %{python_module pydicom >= 1}
 BuildRequires:  %{python_module pytest-doctestplus}
@@ -67,7 +69,7 @@ FreeSurfer geometry, annotation and morphometry files. There is some
 very limited support for DICOM.
 
 %prep
-%setup -q -n nibabel-%{version}
+%autosetup -p1 -n nibabel-%{version}
 find nibabel -name .gitignore -delete
 sed -i '1{/^!#/d}' nibabel/cmdline/*.py
 chmod a-x nibabel/cmdline/*.py

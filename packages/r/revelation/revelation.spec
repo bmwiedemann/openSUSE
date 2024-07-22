@@ -1,7 +1,7 @@
 #
 # spec file for package revelation
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,13 @@
 
 
 Name:           revelation
-Version:        0.5.4
+Version:        0.5.5
 Release:        0
 Summary:        Password manager for GNOME
 License:        GPL-2.0-only
 Group:          Productivity/Security
 URL:            http://revelation.olasagasti.info
 Source:         https://github.com/mikelolasagasti/revelation/releases/download/revelation-%{version}/revelation-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM revelation-mesonfix-061.patch bjorn.lie@gmail.com -- Fix build with meson 0.61 and newer
-Patch0:         revelation-mesonfix-061.patch
 
 BuildRequires:  fdupes
 BuildRequires:  gobject-introspection
@@ -70,12 +68,13 @@ a tree structure, and stores them as AES-encrypted XML files.
 %doc AUTHORS ChangeLog README.md TODO NEWS
 %{_bindir}/revelation
 %{_datadir}/applications/info.olasagasti.revelation.desktop
-%{_datadir}/metainfo/info.olasagasti.revelation.appdata.xml
+%{_datadir}/metainfo/info.olasagasti.revelation.metainfo.xml
 %{_datadir}/revelation/
 %{_datadir}/icons/hicolor/*/apps/info.olasagasti.revelation*
 %{_datadir}/mime/packages/revelation.xml
 %{python3_sitelib}/revelation/
 %{_datadir}/glib-2.0/schemas/info.olasagasti.revelation.gschema.xml
+%{_datadir}/icons/hicolor/48x48/mimetypes/gnome-mime-application-x-revelation.png
 
 %files lang -f %{name}.lang
 

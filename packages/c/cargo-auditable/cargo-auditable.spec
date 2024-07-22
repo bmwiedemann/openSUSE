@@ -21,7 +21,7 @@
 %define __cargo_common_opts %{?_smp_mflags}
 
 Name:           cargo-auditable
-Version:        0.6.2~0
+Version:        0.6.4~0
 Release:        0
 Summary:        A tool to embed auditing information in ELF sections of rust binaries
 #               If you know the license, put it's SPDX string here.
@@ -37,7 +37,7 @@ Source1:        vendor.tar.zst
 # BuildRequires:  cargo-packaging
 BuildRequires:  cargo
 BuildRequires:  zstd
-Requires:       cargo
+Requires:       rust+cargo
 
 %description
 Know the exact crate versions used to build your Rust executable. Audit binaries for known bugs or

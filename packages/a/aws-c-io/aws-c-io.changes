@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jul 15 10:53:10 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.14.12
+  * Mark the network interface API internal by @waahm7 in (#654)
+- from version 0.14.11
+  * Fix FreeBSD CI to install default python packages
+    by @TingDaoK in (#653)
+  * Socket option for binding to a network interface by name
+    by @waahm7 in (#647)
+
+-------------------------------------------------------------------
 Thu Jul 11 10:09:51 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.14.10

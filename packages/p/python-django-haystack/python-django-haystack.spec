@@ -18,19 +18,16 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-django-haystack
-Version:        3.2.1
+Version:        3.3.0
 Release:        0
 Summary:        Pluggable search for Django
 License:        BSD-3-Clause
 URL:            https://github.com/django-haystack/django-haystack
-Source:         https://files.pythonhosted.org/packages/source/d/django-haystack/django-haystack-%{version}.tar.gz
-# pkg_resources is broken since the flufl.lock update in Factory
-# https://github.com/django-haystack/django-haystack/pull/1935
-Patch1:         gh-pr-1935_importlib.patch
-# PATCH-FIX-UPSTREAM https://github.com/django-haystack/django-haystack/commit/3a566a50e4963bed4fb8853eca60bc894b0b7fc5 Fix unittest assert calls for Python 3.12
-Patch2:         unittest312.patch
+Source:         https://files.pythonhosted.org/packages/source/d/django-haystack/django_haystack-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Django >= 2.2
@@ -57,18 +54,17 @@ BuildRequires:  python3-GDAL
 Pluggable search for Django.
 
 %prep
-%autosetup -n django-haystack-%{version} -p1
-sed -i 's:==:>=:' setup.py
+%autosetup -n django_haystack-%{version} -p1
 
 # This causes errors with pytest
 sed -i '/django.setup()/d' test_haystack/__init__.py
 echo 'import django; django.setup()' > conftest.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check

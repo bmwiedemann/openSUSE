@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package python-sphinxcontrib-qthelp
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -27,13 +27,14 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-sphinxcontrib-qthelp%{psuffix}
-Version:        1.0.7
+Version:        1.0.8
 Release:        0
 Summary:        Sphinx extension which outputs QtHelp
 License:        BSD-2-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/sphinx-doc/sphinxcontrib-qthelp
-Source:         https://files.pythonhosted.org/packages/source/s/sphinxcontrib_qthelp/sphinxcontrib_qthelp-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/s/sphinxcontrib_qthelp/sphinxcontrib_qthelp-%{version}.tar.gz
+Source99:       python-sphinxcontrib-qthelp.rpmlintrc
 BuildRequires:  %{python_module flit-core}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module wheel}

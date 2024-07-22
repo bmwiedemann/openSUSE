@@ -29,6 +29,7 @@ BuildRequires:  %{python_module django-crispy-forms}
 BuildRequires:  %{python_module djangorestframework}
 BuildRequires:  %{python_module flit-core}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pytz}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Django >= 3.2

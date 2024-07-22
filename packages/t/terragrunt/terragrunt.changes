@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Jul 19 05:46:22 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.63.2:
+  * fix: getting dynamic credentials before parsing locals block
+    (#3279)
+
+-------------------------------------------------------------------
+Thu Jul 18 18:57:24 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.63.1:
+  * chore: add log before executing external command (#3276)
+
+-------------------------------------------------------------------
+Thu Jul 18 18:53:03 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.63.0:
+  * fix: Reducing the number of Rs in
+    `TERRRAGRUNT_IAM_ASSUME_ROLE_WEB_IDENTITY_TOKEN` (#3272)
+
+-------------------------------------------------------------------
 Wed Jul 17 04:58:01 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.62.3:
