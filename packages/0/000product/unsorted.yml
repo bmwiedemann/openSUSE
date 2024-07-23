@@ -1064,6 +1064,8 @@ unsorted:
   - audiofile 
   - audiofile-devel 
   - audiofile-doc 
+  - audiotube 
+  - audiotube-lang 
   - audiowmark 
   - audit-audispd-plugins 
   - audit-devel 
@@ -2055,6 +2057,7 @@ unsorted:
   - cephfs-top 
   - cereal-devel 
   - certbot-systemd-timer 
+  - certgen 
   - certstrap 
   - cervisia 
   - cervisia-lang 
@@ -7400,6 +7403,9 @@ unsorted:
   - go-md2man 
   - go-mod-upgrade 
   - go-passbolt-cli 
+  - go-passbolt-cli-bash-completion 
+  - go-passbolt-cli-fish-completion 
+  - go-passbolt-cli-zsh-completion 
   - go-race 
   - go-sendxmpp 
   - go1.13 
@@ -7845,6 +7851,10 @@ unsorted:
   - granite-demo 
   - granite-devel 
   - granite-lang 
+  - grant 
+  - grant-bash-completion 
+  - grant-fish-completion 
+  - grant-zsh-completion 
   - grantlee-editor 
   - grantlee-editor-lang 
   - grantlee5-devel 
@@ -10044,6 +10054,7 @@ unsorted:
   - kitty 
   - kitty-shell-integration 
   - kitty-terminfo 
+  - kiwi-bash-completion 
   - kiwi-man-pages 
   - kiwi-systemdeps 
   - kiwi-systemdeps-bootloaders 
@@ -16050,8 +16061,8 @@ unsorted:
   - libspooles2_2-openmpi 
   - libspqr4 
   - libspread-sheet-widget0 
-  - libsqlcipher-3_44_2-0 
-  - libsqlcipher-3_44_2-0-x86-64-v3 
+  - libsqlcipher-3_45_3-0 
+  - libsqlcipher-3_45_3-0-x86-64-v3 
   - libsqlite3-0-32bit 
   - libsqlitecpp0 
   - libsqlparser1 
@@ -17819,6 +17830,7 @@ unsorted:
   - lxtask-lang 
   - lxterminal 
   - lxterminal-lang 
+  - lychee 
   - lynis 
   - lynx 
   - lyx 
@@ -17947,6 +17959,7 @@ unsorted:
   - mariadb-tools 
   - marisa 
   - marisa-devel 
+  - markdown-oxide 
   - marknote 
   - marknote-lang 
   - massif-visualizer 
@@ -20157,6 +20170,14 @@ unsorted:
   - openbabel 
   - openbabel-devel 
   - openbabel-gui 
+  - openbao 
+  - openbao-agent 
+  - openbao-cassandra-database-plugin 
+  - openbao-influxdb-database-plugin 
+  - openbao-mysql-database-plugin 
+  - openbao-mysql-legacy-database-plugin 
+  - openbao-postgresql-database-plugin 
+  - openbao-server 
   - openblas-common-devel 
   - openblas-pthreads_0_3_27-gnu-hpc-devel-static 
   - openblas_0_3_27-gnu-hpc-devel-static 
@@ -22769,6 +22790,10 @@ unsorted:
   - pnglite-devel 
   - pngtoico 
   - pnm2ppa 
+  - pnpm 
+  - pnpm-bash-completion 
+  - pnpm-fish-completion 
+  - pnpm-zsh-completion 
   - po4a 
   - po4a-lang 
   - pocketsphinx 
@@ -23880,6 +23905,7 @@ unsorted:
   - python310-Parsley 
   - python310-Paste 
   - python310-PasteDeploy 
+  - python310-PeachPy 
   - python310-PeakUtils 
   - python310-Pebble 
   - python310-Pillow 
@@ -27340,6 +27366,7 @@ unsorted:
   - python310-yq 
   - python310-yt 
   - python310-yt-dlp 
+  - python310-ytmusicapi 
   - python310-zarr 
   - python310-zc.buildout 
   - python310-zc.customdoctests 
@@ -27485,6 +27512,7 @@ unsorted:
   - python311-Parsley 
   - python311-Paste 
   - python311-PasteDeploy 
+  - python311-PeachPy 
   - python311-PeakUtils 
   - python311-Pebble 
   - python311-Pillow-tk 
@@ -30829,6 +30857,7 @@ unsorted:
   - python311-yq 
   - python311-yt 
   - python311-yt-dlp 
+  - python311-ytmusicapi 
   - python311-zarr 
   - python311-zc.buildout 
   - python311-zc.customdoctests 
@@ -30978,6 +31007,7 @@ unsorted:
   - python312-Parsley 
   - python312-Paste 
   - python312-PasteDeploy 
+  - python312-PeachPy 
   - python312-PeakUtils 
   - python312-Pebble 
   - python312-Pillow 
@@ -34431,6 +34461,7 @@ unsorted:
   - python312-yq 
   - python312-yt 
   - python312-yt-dlp 
+  - python312-ytmusicapi 
   - python312-zarr 
   - python312-zc.buildout 
   - python312-zc.customdoctests 
@@ -37130,6 +37161,7 @@ unsorted:
   - tamago 
   - tamil-gtk2im 
   - tango-icon-theme 
+  - taplo 
   - tar-backup-scripts 
   - tar-doc 
   - tar-tests 
@@ -46598,6 +46630,8 @@ unsorted:
   - tntdb-postgresql 
   - tntdb-replicate 
   - tntdb-sqlite 
+  - tofi 
+  - tofi-bash-completion 
   - toilet 
   - toipe 
   - tokei 
@@ -47536,6 +47570,7 @@ unsorted:
   - vim-plugin-zoomwin 
   - vim-poke 
   - vimb 
+  - vimiv-qt 
   - vinci 
   - vino 
   - vino-lang 
