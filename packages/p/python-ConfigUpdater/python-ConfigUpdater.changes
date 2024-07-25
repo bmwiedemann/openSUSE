@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jul 25 10:17:03 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- remove obsolete python2 constructs
+- use version macro in sources
+
+-------------------------------------------------------------------
+Wed Jul 24 08:27:23 UTC 2024 - Angel Yankov <angel.yankov@suse.com>
+
+- Update to v3.2
+  * Fix square brackets not parsed in section names, github issue #123
+- Remove macro definition from spec as rpmlint check marked it as redundant.
+
+-------------------------------------------------------------------
 Wed Jul 13 15:27:09 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Initial specfile for v3.1.1

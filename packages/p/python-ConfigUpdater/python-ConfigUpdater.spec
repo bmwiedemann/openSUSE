@@ -1,7 +1,7 @@
 #
 # spec file for package python-ConfigUpdater
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,22 +16,20 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
-%define skip_python2 1
 Name:           python-ConfigUpdater
-Version:        3.1.1
+Version:        3.2
 Release:        0
 Summary:        Parser like ConfigParser but for updating configuration files
 License:        MIT
 URL:            https://github.com/pyscaffold/configupdater
-Source:         https://files.pythonhosted.org/packages/source/C/ConfigUpdater/ConfigUpdater-3.1.1.tar.gz
-BuildRequires:  python-rpm-macros
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module setuptools_scm}
-BuildRequires:  %{python_module pytest}
+Source:         https://files.pythonhosted.org/packages/source/C/ConfigUpdater/ConfigUpdater-%{version}.tar.gz
 BuildRequires:  %{python_module pytest-virtualenv}
 BuildRequires:  %{python_module pytest-xdist}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module setuptools_scm}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 Provides:       python-configupdater = %{version}-%{release}
 %if %python_version_nodots < 38
 Requires:       python-importlib-metadata
@@ -69,4 +67,3 @@ sed -i '/--cov/d' setup.cfg
 %{python_sitelib}/ConfigUpdater-%{version}*-info
 
 %changelog
-
