@@ -248,4 +248,14 @@ https://www.knot-dns.cz/</comment>
   https://www.knot-dns.cz/2024-06-25-version-337.html</comment>
     <requestid>1184939</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>16d88166628b8bc0edb70001fe38ddee</srcmd5>
+    <version>3.3.8</version>
+    <time>1721914798</time>
+    <user>dimstar_suse</user>
+    <comment>- split knot-utils with kdig and friends
+- update to version 3.3.8, see
+  https://www.knot-dns.cz/2024-07-22-version-338.html</comment>
+    <requestid>1189571</requestid>
+  </revision>
 </revisionlist>

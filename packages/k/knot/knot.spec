@@ -35,7 +35,7 @@ BuildRequires:  pkgconfig(libsystemd)
 %{?systemd_requires}
 %endif
 Name:           knot
-Version:        3.3.7
+Version:        3.3.8
 Release:        0
 Summary:        An authoritative DNS daemon
 License:        GPL-3.0-or-later
@@ -46,6 +46,7 @@ Source2:        knot-tmp.conf
 Source3:        https://secure.nic.cz/files/knot-dns/%{pkg_name}-%{version}.tar.xz.asc
 Source4:        system-user-knot.conf
 Source99:       knot.keyring
+Recommends:     knot-utils
 BuildRequires:  libcap-ng-devel
 BuildRequires:  libedit-devel
 BuildRequires:  libnghttp2-devel
@@ -102,6 +103,19 @@ implementation and can operate non-stop during zone addition or
 removal.
 
 This package contains headers for knot.
+
+%package utils
+#
+Summary:        Utilities to query and test DNS coming from Knot project
+Group:          Productivity/Networking/DNS/Utilities
+
+%description utils
+Knot DNS is a DNS server. It implements only the authoritative domain
+name service. It uses a multi-threaded and mostly lock-free
+implementation and can operate non-stop during zone addition or
+removal.
+
+This package contains tools to query and test DNS like kdig and knsupdate.
 
 %package -n %{libdnssec}
 #
@@ -186,7 +200,12 @@ This package contains a library for a zone record scanner.
 
 %install
 %make_install STRIP="/bin/true"
-find %{buildroot}
+for i in kdig khost knsec3hash knsupdate; do
+    find %{buildroot} -name "$i*" | sed 's|%{buildroot}||' | while read fl; do
+        echo "$fl*" >> utils
+        echo "%exclude $fl*" >> no-utils
+    done
+done
 install -d %{buildroot}%{_docdir}/%{pkg_name}
 install -d %{buildroot}%{_docdir}/%{pkg_name}/samples/
 rm %{buildroot}%{_sysconfdir}/%{pkg_name}/*
@@ -242,11 +261,11 @@ fi
 %postun -n %{libknot}     -p /sbin/ldconfig
 %postun -n %{libzscanner} -p /sbin/ldconfig
 
-%files
+%files -f no-utils
 %dir %attr(750,knot,knot) %{_sysconfdir}/%{pkg_name}
 %config(noreplace) %attr(640,knot,knot) %{_sysconfdir}/%{pkg_name}/%{pkg_name}.conf
-%{_sbindir}/*
 %{_bindir}/*
+%{_sbindir}/*
 %{_mandir}/man?/*
 %doc %{_docdir}/%{pkg_name}
 %if %{with systemd}
@@ -266,6 +285,8 @@ fi
 
 %files -n %{libzscanner}
 %{_libdir}/libzscanner.so.*
+
+%files utils -f utils
 
 %files devel
 %{_includedir}/knot/
