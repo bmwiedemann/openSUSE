@@ -17,7 +17,7 @@
 
 
 Name:           stripe-mock
-Version:        0.185.0
+Version:        0.186.0
 Release:        0
 Summary:        Mock HTTP server based on the real Stripe API
 License:        MIT
