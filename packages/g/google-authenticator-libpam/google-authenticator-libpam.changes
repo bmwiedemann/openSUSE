@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Jul 18 16:48:21 UTC 2024 - Jan Zerebecki <jan.suse@zerebecki.de>
+
+- Recommend current qrencode version, instead of unavailable one
+- Adapt to changing %_pam_moduledir on different distributions
+- Update to version 1.10:
+  * Remove printing QR code using Google Charts URL
+  * Fix utc-time for new everything
+  * set variable 'buffer' that in base32_decode to unsigned integer type
+  * Slight improvement in error message formatting
+  * Update config file with grace periods in all cases
+  * Fix comment on open_secret_file()
+  * Exit with code 1 only if build-rpm fails
+  * Double check the config size
+  * Add more logging for config updates
+  * Shorten syslog name to work with rsyslog
+
+-------------------------------------------------------------------
 Wed Apr 27 07:38:23 UTC 2022 - Marcus Meissner <meissner@suse.com>
 
 - added source url

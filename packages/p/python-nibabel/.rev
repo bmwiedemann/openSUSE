@@ -137,4 +137,14 @@
   * Use pytest setup/teardown methods.</comment>
     <requestid>1188927</requestid>
   </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>66eecf1ec36466a069a7a8d865d817fd</srcmd5>
+    <version>5.2.1</version>
+    <time>1721914774</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove numpy upper bound.
+- Add patch support-numpy-2.patch:
+  * Use np.asarray() to support NumPy 2 as well.</comment>
+    <requestid>1189472</requestid>
+  </revision>
 </revisionlist>

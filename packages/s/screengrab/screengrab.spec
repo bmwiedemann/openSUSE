@@ -17,7 +17,7 @@
 
 
 Name:           screengrab
-Version:        2.7.0
+Version:        2.8.0
 Release:        0
 Summary:        Qt tool for creating screenshots
 License:        GPL-2.0-only
@@ -31,15 +31,15 @@ BuildRequires:  cmake >= 3.1.0
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
-BuildRequires:  cmake(KF5WindowSystem) >= 5.36.0
-BuildRequires:  cmake(Qt5LinguistTools)
-BuildRequires:  pkgconfig(Qt5Core) >= 5.15.0
-BuildRequires:  pkgconfig(Qt5DBus)
-BuildRequires:  pkgconfig(Qt5Gui)
-BuildRequires:  pkgconfig(Qt5Network)
-BuildRequires:  pkgconfig(Qt5Widgets)
-BuildRequires:  pkgconfig(Qt5X11Extras)
+BuildRequires:  cmake(KF6WindowSystem)
+BuildRequires:  cmake(Qt6LinguistTools)
 BuildRequires:  pkgconfig(Qt5Xdg) >= 3.11.0
+BuildRequires:  pkgconfig(Qt6Core) >= 6.6
+BuildRequires:  pkgconfig(Qt6DBus)
+BuildRequires:  pkgconfig(Qt6Gui)
+BuildRequires:  pkgconfig(Qt6Network)
+BuildRequires:  pkgconfig(Qt6Widgets)
+BuildRequires:  pkgconfig(Qt6Xdg) >= 4.0.0
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(x11-xcb)

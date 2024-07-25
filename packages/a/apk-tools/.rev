@@ -7,4 +7,12 @@
     <comment>Forward the current version of apk-tools to Factory</comment>
     <requestid>1181567</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>101452c9bb8bc756a08788d0b84676cf</srcmd5>
+    <version>2.14.4</version>
+    <time>1721914719</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1189271</requestid>
+  </revision>
 </revisionlist>

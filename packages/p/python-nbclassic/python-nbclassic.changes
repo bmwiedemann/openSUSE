@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jul 24 12:13:44 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Build from source instead of use .whl from pypi.
+
+-------------------------------------------------------------------
 Tue Mar  5 18:34:12 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Skip python39: no longer supported since ipython 8.19

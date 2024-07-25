@@ -71,4 +71,19 @@
 - Add scikit-sparse-py312.patch gh#scikit-sparse/scikit-sparse#105</comment>
     <requestid>1147597</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>27856d37e7ac800850b08458d1ded89e</srcmd5>
+    <version>0.4.13</version>
+    <time>1721914787</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.4.13:
+  * Fix breaking changes in isspmatrix of scipy &gt;=1.11.0, discontinuing
+    compatibility with csc_array
+  * remove numpy build restrictions
+- Drop patches scikit-sparse-py312.patch, scipy111.patch:
+  * Included upstream.
+- Add patch support-scipy-1.14.patch:
+  * Do not call a now removed method in scipy.</comment>
+    <requestid>1189518</requestid>
+  </revision>
 </revisionlist>

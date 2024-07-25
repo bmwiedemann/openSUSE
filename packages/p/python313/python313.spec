@@ -112,8 +112,8 @@
 %define dynlib() %{sitedir}/lib-dynload/%{1}.cpython-%{abi_tag}-%{archname}-%{_os}%{?_gnu}%{?armsuffix}.so
 %bcond_without profileopt
 Name:           %{python_pkg_name}%{psuffix}
-Version:        3.13.0~b3
-%define         tarversion 3.13.0b3
+Version:        3.13.0~b4
+%define         tarversion 3.13.0b4
 %define         tarname    Python-%{tarversion}
 Release:        0
 Summary:        Python 3 Interpreter
@@ -218,7 +218,6 @@ BuildRequires:  gettext
 BuildRequires:  readline-devel
 BuildRequires:  sqlite-devel
 BuildRequires:  timezone
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(ncurses)
 BuildRequires:  pkgconfig(tk)
 BuildRequires:  pkgconfig(x11)
@@ -680,7 +679,6 @@ done
 cp %{SOURCE19} idle%{python_version}.desktop
 sed -i -e 's:idle3:idle%{python_version}:g' idle%{python_version}.desktop
 install -m 644 -D -t %{buildroot}%{_datadir}/applications idle%{python_version}.desktop
-%suse_update_desktop_file idle%{python_version}
 
 cp %{SOURCE20} idle%{python_version}.appdata.xml
 sed -i -e 's:idle3.desktop:idle%{python_version}.desktop:g' idle%{python_version}.appdata.xml
@@ -793,6 +791,7 @@ echo %{sitedir}/_import_failed > %{buildroot}/%{sitedir}/site-packages/zzzz-impo
 %files -n %{python_pkg_name}-curses
 %{sitedir}/curses
 %{dynlib _curses}
+%{dynlib _curses_panel}
 
 %files -n %{python_pkg_name}-dbm
 %{sitedir}/dbm

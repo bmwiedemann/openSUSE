@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Wed Jul 24 13:13:20 UTC 2024 - mvetter@suse.com
+
+- Update to version 0~20240722.3c379d8:
+  * tests: Fixed one issue on clang-extract
+  * tests: Add test.sh to check for known working extraction for CE
+  * templ: Fix case of IBT + upstream kernel module with dashes on its name
+  * run-kgr-test.sh: Check in more directories for VMs
+  * templ.py: Return empty string when IBT and CE
+  * extractor: Enable upstream extraction to apply patches
+  * templ.py: Replace dash by underscore when using fname on functions
+  * ce: Use -DCE_LATE_EXTERNALIZE by default
+  * ibs.py: Stop downloading kernel-default-extra
+  * ccp: Drop workarounds for different codestreams
+  * config: Fix get_sdir to always point to x86_64
+  * templ: Add IBT support for ccp
+  * extractor: Propagate needs_ibt to extractor backends
+  * ccp: Check KLP_CONVERT on fun_exts
+  * Change get_cs_boot_file to target odir instead of arch/boot dir
+  * templ: Add 15.6 codestream to fixes header
+  * extractor: Use IBT for 15.6 onwards
+  * setup: Remove s390x check since all codestreams are now supported
+  * setup: Show kernel version when file is not found
+  * extractor: Do not catch a specific error when running ccp/ce
+  * ccp: Remove more options that ccp doesn't understand
+  * extractor: Adapt the regex for SLE 15-SP6 cases
+  * extractor: Show more info when we can't get the command line
+
+-------------------------------------------------------------------
 Tue Jul 02 07:46:00 UTC 2024 - mvetter@suse.com
 
 - Update to version 0~20240701.f72b4a1:

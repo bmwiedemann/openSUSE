@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Jul 24 15:22:12 UTC 2024 - Marcus Meissner <meissner@suse.com>
+
+- update to 2.3.0 (jsc#SLE-23879)
+  * Features
+    - Add PayloadProvider interface to decouple AttestationToPayloadJSON from oci.Signature interface (#3693)
+    - add registry options to cosign save (#3645)
+    - Add debug providers command. (#3728)
+    - Make config layers in ociremote mountable (#3741)
+    - adds tsa cert chain check for env var or tuf targets. (#3600)
+    - add --ca-roots and --ca-intermediates flags to 'cosign verify' (#3464)
+    - add handling of keyless verification for all verify commands (#3761)
+
+  * Bug Fixes
+
+    - fix: close attestationFile (#3679)
+    - Set bundleVerified to true after Rekor verification (Resolves #3740) (#3745)
+
+  * Documentation
+    - Document ImportKeyPair and LoadPrivateKey functions in pkg/cosign (#3776)
+
+-------------------------------------------------------------------
 Fri May 31 07:48:36 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - add completion subpackages (bash, fish, zsh)

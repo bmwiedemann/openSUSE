@@ -180,4 +180,13 @@
       opening in an existing instance (#237).</comment>
     <requestid>1188955</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>cb69635e5fca2c73f5d6dd4b5b5e9671</srcmd5>
+    <version>0.62.1</version>
+    <time>1721914788</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.62.1:
+  * Fix crashes in x86 Windows build on older CPUs.</comment>
+    <requestid>1189494</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jul 24 12:43:29 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 3.0.0:
+  * Anonymous node "~" in (column_heading) is now named node
+  * feat: support optional arguments {arg}?
+  * Update repository and add modeline support
+  * fix: don't capture leading whitespace in modeline
+  * feat: better structured headings
+
+-------------------------------------------------------------------
 Sun Jun 23 11:33:26 UTC 2024 - Richard Rahl <rrahl0@disroot.org>
 
 - revert back to the older version 2.5.1 as that's what neovim supports

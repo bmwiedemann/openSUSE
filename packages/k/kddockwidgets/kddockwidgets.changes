@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jul 24 11:02:36 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Build kddockwidgets without spdlog until fmt 11 gets supported
+
+-------------------------------------------------------------------
 Tue May 21 13:30:23 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 2.1.0

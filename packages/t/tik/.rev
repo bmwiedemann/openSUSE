@@ -148,4 +148,12 @@
     <comment>Package update to 1.1.10</comment>
     <requestid>1185112</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>73fba65ffad8b712df73e5a96dcd25c5</srcmd5>
+    <version>1.2</version>
+    <time>1721914754</time>
+    <user>dimstar_suse</user>
+    <comment>Please stage with other Aeon submissions</comment>
+    <requestid>1189392</requestid>
+  </revision>
 </revisionlist>

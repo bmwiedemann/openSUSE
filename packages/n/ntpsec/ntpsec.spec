@@ -1,7 +1,7 @@
 #
 # spec file for package ntpsec
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2016 Malcolm J Lewis <malcolmlewis@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           ntpsec
-Version:        1.2.2a
+Version:        1.2.3
 Release:        0
 Summary:        Improved implementation of Network Time Protocol
 License:        BSD-2-Clause AND NTP AND BSD-3-Clause AND MIT
@@ -101,12 +101,14 @@ Requires:       python3-ntp
 Recommends:     python3-psutil
 # Same binaries
 Conflicts:      ntp
+BuildArch:      noarch
 
 %description utils
 The ntpsec utilities relying on the python module of ntp
 
 %package doc
 Summary:        Documentation for %{name}
+BuildArch:      noarch
 
 %description doc
 Documentation files generated from asciidoc for %{name}.
@@ -141,7 +143,6 @@ python3 ./waf configure \
     --sbindir=%{_sbindir} \
     --bindir=%{_bindir} \
     --enable-seccomp \
-    --enable-debug-gdb \
     --enable-early-droproot \
     --enable-leap-smear \
     --enable-mssntp \
@@ -150,8 +151,6 @@ python3 ./waf build --verbose %{?_smp_mflags}
 
 %install
 python3 ./waf install --destdir=%{buildroot}
-
-rm %{buildroot}/usr/bin/runtests
 
 # Use correct path in unit file
 
@@ -198,7 +197,8 @@ exit 0
 %postun -n libntpc1 -p /sbin/ldconfig
 
 %files -n python3-ntp
-%{python3_sitearch}/ntp*
+%{python3_sitearch}/ntp
+%{python3_sitearch}/ntp-1.2.3.egg-info
 
 %files utils
 %{_bindir}/ntploggps

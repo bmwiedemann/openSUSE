@@ -16,18 +16,18 @@
 #
 
 
-%define soversion 8_3_0
+%define soversion 8_4_0
 %bcond_without released
 %bcond_with    apidocs
 Name:           digikam
-Version:        8.3.0
+Version:        8.4.0
 Release:        0
 Summary:        A KDE Photo Manager
 License:        GPL-2.0-or-later
 URL:            https://www.digikam.org/
-Source0:        https://download.kde.org/stable/%{name}/%{version}/digiKam-%{version}-1.tar.xz
+Source0:        https://download.kde.org/stable/%{name}/%{version}/digiKam-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/%{name}/%{version}/digiKam-%{version}-1.tar.xz.sig
+Source1:        https://download.kde.org/stable/%{name}/%{version}/digiKam-%{version}.tar.xz.sig
 Source2:        %{name}.keyring
 %endif
 # PATCH-FIX-OPENSUSE

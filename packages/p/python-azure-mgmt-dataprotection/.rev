@@ -100,4 +100,16 @@
 - Use modern RPM macros to express version dependencies (forwarded request 1164770 from glaubitz)</comment>
     <requestid>1165167</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>e169d1773b660e2002a30c4d9cfd7f1c</srcmd5>
+    <version>1.4.0</version>
+    <time>1721914720</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.4.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 1189239 from glaubitz)</comment>
+    <requestid>1189274</requestid>
+  </revision>
 </revisionlist>

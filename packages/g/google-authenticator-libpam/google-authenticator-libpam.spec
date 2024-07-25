@@ -1,7 +1,7 @@
 #
 # spec file for package google-authenticator-libpam
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,20 +17,20 @@
 
 
 Name:           google-authenticator-libpam
-Version:        1.09
+Version:        1.10
 Release:        0
 Summary:        Google Authenticator PAM module
 License:        Apache-2.0
 Group:          Productivity/Security
 URL:            https://github.com/google/google-authenticator-libpam
-Source:         https://github.com/google/google-authenticator-libpam/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source:         %{name}-%{version}.tar.xz
 Source99:       baselibs.conf
 BuildRequires:  libtool
 BuildRequires:  pam-devel
-# libqrencode.so.[23] are dynamically loaded if present in order to show a QR code
+# libqrencode.so.[234] are dynamically loaded if present in order to show a QR code
 # As the library is not linked, it can't be auto-detected. And as it's not mandatory,
 # we recommend it only
-Recommends:     libqrencode3
+Recommends:     (libqrencode4 or libqrencode3 or libqrencode2)
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 Provides:       pam-google-authenticator = %{version}
@@ -45,7 +45,8 @@ Integrate GOOGLE Authenticator into your login process for full 2FA.
 %build
 ./bootstrap.sh
 %configure \
-    --docdir=%{_docdir}/%{name}
+    --docdir=%{_docdir}/%{name} \
+    --libdir=$(dirname %{_pam_moduledir})
 make %{?_smp_mflags}
 
 %install

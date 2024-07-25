@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<image schemaversion="7.6" name="openSUSE-Aeon-Installer" displayname="openSUSE Aeon Installer">
+<image schemaversion="7.6" name="Aeon-Installer" displayname="Aeon Installer">
     <description type="system">
         <author>Richard Brown</author>
         <contact>rbrownsuse@opensuse.org</contact>
-        <specification>openSUSE Aeon Installer</specification>
+        <specification>Aeon Installer</specification>
     </description>
     <preferences>
         <version>0.1.0</version>
@@ -52,7 +52,8 @@
         <package name="patterns-tik-base"/>
         <package name="tik-module-welcome"/>
         <package name="tik-module-mig"/>
-        <package name="tik-osimage-openSUSE-Aeon"/>
+        <package name="tik-module-encrypt"/>
+        <package name="tik-osimage-Aeon"/>
     </packages>
     <packages type="bootstrap">
         <!-- Avoid that zypper picks the busybox-foo variant for those, that would fail later -->

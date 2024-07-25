@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Mon Jul 15 17:22:18 UTC 2024 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+Important: Please read the migration guide
+https://doc.traefik.io/traefik/v3.1/migration/v3/#v30-to-v31
+
+- Update to version 3.1.0
+  - enhancements:
+    * k8s/crd,k8s
+      - Support HealthCheck for ExternalName services
+    * k8s/ingress,k8s/crd,k8s
+      - Allow to use internal Node IPs for NodePort services
+      - Change log level from Warning to Info when ExternalName services
+      is enabled
+    * k8s/ingress,k8s/crd,k8s,k8s/gatewayapi
+      - Migrate to EndpointSlices API
+    * k8s,k8s/gatewayapi
+      - Bump Gateway API to v1.1.0
+      - Compute HTTPRoute priorities
+      - Fix route attachments to gateways
+      - KubernetesGateway provider is no longer experimental
+      - Set Gateway HTTPRoute status
+      - Support HTTPRoute method and query param matching
+      - Support HTTPURLRewrite filter
+      - Support invalid HTTPRoute status
+      - Support ReferenceGrant for HTTPRoute backends
+      - Support RegularExpression for path matching
+    * middleware
+      - Add support for Zstandard to the compression middleware
+    * middleware,k8s,k8s/gatewayapi
+      - Improve HTTPRoute Redirect Filter with port and scheme
+      - Support HTTPRoute redirect port and scheme
+    * middleware
+      - Support Content-Security-Policy-Report-Only in the headers middleware
+    * plugins
+      - Add logs for plugins load
+      - Enhance wasm plugins
+    * server
+      - Support systemd socket-activation
+  - Bug fixes:
+    * healthcheck,k8s/crd,k8s
+      - Fix Healthcheck default value for ExternalName services
+    * k8s,k8s/gatewayapi
+      - Do not disable Gateway API provider if not enabled in experimental
+      - Retry on Gateway API resource status update
+    * middleware,metrics,tracing
+      - Upgrade to OpenTelemetry Semantic Conventions v1.26.0
+    * otel
+      - Bump opentelemetry-go to v1.28
+    * plugins
+      - Fix build only linux and darwin support wazergo
+
+-------------------------------------------------------------------
 Thu Jul  4 08:50:50 UTC 2024 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
 - Update to version 3.0.4

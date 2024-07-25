@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jul 19 14:27:53 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Add patch to update python-psutil dependency
+  + acc_update-psutil.patch
+- Update Requires from setup.py
+
+-------------------------------------------------------------------
 Tue Jul  9 06:58:52 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - New upstream release

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jul 24 12:34:20 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.3.1:
+  * Fix wheel build
+- update to 0.3.0:
+  * Use disperse action
+  * Migrate to pyproject.toml
+  * Enable ruff, pyupgrade
+  * Fix compatibility with Python 3.12
+  * Add python3.12 to the list of supported Python versions
+
+-------------------------------------------------------------------
 Thu Feb 16 21:10:31 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.2:
@@ -7,7 +19,7 @@ Thu Feb 16 21:10:31 UTC 2023 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Mon Nov  7 22:52:35 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to version 0.1 
+- Update to version 0.1
   * Make C extension mandatory when built in cibuildwheel
   * Rely on standard infra for optionally building extension.
   * Don't install wheel explicitly
@@ -27,10 +39,10 @@ Mon Nov  7 22:52:35 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 -------------------------------------------------------------------
 Wed Oct 12 03:14:04 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to version 1.2.2  
+- Update to version 1.2.2
   Fix import error for Python 3.6+.
 
 -------------------------------------------------------------------
 Fri Jun 17 06:06:27 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Initial package for fastbencode 0.0.9. 
+- Initial package for fastbencode 0.0.9.

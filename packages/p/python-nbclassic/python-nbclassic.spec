@@ -27,23 +27,29 @@
 %define skip_python39 1
 # this conditional is used in the python-rpm-macros, but `osc build --without libalternatives` won't work
 %bcond_without libalternatives
-# 1.0.0 gets abbreviated by pythondistdeps
-%define shortversion 1
+# 1.1.0 gets abbreviated by pythondistdeps
+%define shortversion 1.1
 Name:           python-nbclassic%{psuffix}
-Version:        1.0.0
+Version:        1.1.0
 Release:        0
 Summary:        Jupyter Notebook as a Jupyter Server Extension
 License:        BSD-3-Clause
 URL:            https://github.com/jupyterlab/nbclassic
 # The github archive has the nbclassic tests
 Source0:        https://github.com/jupyterlab/nbclassic/archive/v%{version}.tar.gz#/nbclassic-%{version}-gh.tar.gz
-# The wheel has the notebook 6 JS stuff
-Source1:        https://files.pythonhosted.org/packages/py3/n/nbclassic/nbclassic-%{version}-py3-none-any.whl
+Source1:        node_modules.tar.xz
+Source2:        create_node_modules.sh
+BuildRequires:  %{python_module Babel}
 BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module jupyter-packaging}
+BuildRequires:  %{python_module jupyter-server}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  jupyter-rpm-macros
+BuildRequires:  nodejs-common
+BuildRequires:  npm-default
 BuildRequires:  python-rpm-macros >= 20210929
 BuildRequires:  update-desktop-files
 Requires:       jupyter-nbclassic = %{version}
@@ -104,14 +110,15 @@ on top of the new Python server backend.
 This package contains the jupyterlab server configuration and desktop files
 
 %prep
-%setup -q -n nbclassic-%{version}
+%autosetup -p1 -n nbclassic-%{version} -a1
+python3 setup.py js css
 
 %build
-:
+%pyproject_wheel
 
 %if !%{with test}
 %install
-%pyproject_install %{SOURCE1}
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/jupyter-nbclassic
 %python_clone -a %{buildroot}%{_bindir}/jupyter-nbclassic-bundlerextension
 %python_clone -a %{buildroot}%{_bindir}/jupyter-nbclassic-extension

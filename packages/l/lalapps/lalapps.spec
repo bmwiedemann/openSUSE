@@ -20,7 +20,7 @@
 # NEP 29: astropy, numpy, scipy do not have a python36 flavor package in TW
 %define skip_python36 1
 Name:           lalapps
-Version:        9.2.2
+Version:        10.0.0
 Release:        0
 Summary:        LSC Algorithm Library Applications
 License:        GPL-2.0-or-later

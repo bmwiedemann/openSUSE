@@ -18,7 +18,7 @@
 
 
 Name:           fuc
-Version:        2.1.0
+Version:        2.2.0
 Release:        0
 Summary:        Modern unix commands focused on performance
 License:        Apache-2.0
@@ -27,7 +27,7 @@ Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
 # for cargo_install -p
 BuildRequires:  cargo-packaging >= 1.2.0
-BuildRequires:  rust >= 1.70
+BuildRequires:  rust >= 1.79
 ExclusiveArch:  %{rust_tier1_arches}
 
 %description

@@ -18,7 +18,7 @@
 
 %global _lto_cflags %nil
 Name:           gum
-Version:        0.14.1
+Version:        0.14.3
 Release:        0
 Summary:        Tool for glamorous shell scripts
 License:        MIT

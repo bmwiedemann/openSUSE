@@ -16,8 +16,9 @@
 #
 
 
+%bcond_with test
 Name:           swayimg
-Version:        2.4
+Version:        2.5
 Release:        0
 Summary:        Image viewer for Sway/Wayland
 License:        MIT
@@ -64,11 +65,19 @@ opening the image directly in a terminal window.
   -Dexr=disabled \
   -Djxl=disabled \
 %endif
+%if %{with test}
+  -Dtests=enabled \
+%endif
   -Dversion=%{version}
 %meson_build
 
 %install
 %meson_install
+
+%if %{with test}
+%check
+%meson_test
+%endif
 
 %files
 %license LICENSE

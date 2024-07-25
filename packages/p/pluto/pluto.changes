@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jul 24 17:41:38 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 5.20.0:
+  * fix: remove tag annotation requirement (#547)
+  * feat: add audit apiversion check (#546)
+  * Bensky/kubeconfig flag (#545)
+  * docs: update documentation from template (#544)
+  * fix #432 don't compare when object kind doesn't match kind in
+    last-applied-configuration (#542)
+
+-------------------------------------------------------------------
 Sat May 18 07:47:19 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - pluto withdrew the release 5.19.2 and 5.19.4 and re-released

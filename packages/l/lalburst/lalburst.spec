@@ -25,7 +25,7 @@
 # octave >= 6 not supported
 %bcond_with octave
 Name:           lalburst
-Version:        2.0.3
+Version:        2.0.4
 Release:        0
 Summary:        LSC Algorithm Burst Library
 License:        GPL-2.0-or-later

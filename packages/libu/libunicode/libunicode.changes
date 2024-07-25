@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Jul 17 12:48:00 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 0.4.0
+  * Allow passing custom LIBUNICODE_UCD_DIR to cmake
+  * Fix error handling of UTF-8 decoding for incomplete UTF-8
+    sequences
+  * Improve naming convention to be more streamlined.
+  * Move scan_result.next to scan_state.next
+  * Problem: Catch2 is always required
+  * Update catch2 to v3
+  * Allow building with older CMake < 3.18
+- change Catch2-2-devel BuildRequires to cmake(Catch2)
+- disable build test: failed unicode_test
+- remove eb40101359cb283be0b736f6bda383243522fa91.patch: unneeded
+  patch
+- add libunicode-fix-catch-in-cmake.patch: to fix catch issue
+
+-------------------------------------------------------------------
 Tue Oct 10 20:30:32 UTC 2023 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Initial package

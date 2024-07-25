@@ -33,6 +33,7 @@ URL:            https://github.com/Azure/azure-cli
 Source:         https://files.pythonhosted.org/packages/source/a/azure-cli-core/azure_cli_core-%{version}.tar.gz
 Source1:        LICENSE.txt
 Patch0:         acc_disable-update-check.patch
+Patch1:         acc_update-psutil.patch
 BuildRequires:  %{pythons}-azure-nspkg >= 3.0.0
 BuildRequires:  %{pythons}-pip
 BuildRequires:  %{pythons}-setuptools
@@ -62,7 +63,6 @@ Requires:       %{pythons}-paramiko < 4.0.0
 Requires:       %{pythons}-paramiko >= 2.0.8
 Requires:       %{pythons}-pip
 Requires:       %{pythons}-pkginfo >= 1.5.0.1
-Requires:       %{pythons}-psutil < 6.0
 Requires:       %{pythons}-psutil >= 5.9
 Requires:       %{pythons}-pyOpenSSL >= 17.1.0
 Requires:       %{pythons}-requests < 3.0.0

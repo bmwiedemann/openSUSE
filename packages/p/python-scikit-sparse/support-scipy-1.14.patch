@@ -1,0 +1,24 @@
+From ebbbaa4882eeac8fd4a2f4bf8c94c9e6b967cf54 Mon Sep 17 00:00:00 2001
+From: Steve Kowalik <steven@wedontsleep.org>
+Date: Thu, 25 Jul 2024 15:35:29 +1000
+Subject: [PATCH] Switch to csc_matrix.T.conjugate() from .H
+
+With scipy 1.14 csc_matrix.H has been removed, after being deprecated in
+1.12. T.conjugate() is the replacement method, switch to it.
+---
+ tests/test_cholmod.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/sksparse/test_cholmod.py b/sksparse/test_cholmod.py
+index ed2af70..95bdb18 100644
+--- a/sksparse/test_cholmod.py
++++ b/sksparse/test_cholmod.py
+@@ -94,7 +94,7 @@ def complex_matrix():
+ 
+ def factor_of(factor, matrix):
+     return np.allclose(
+-        (factor.L() * factor.L().H).todense(), matrix.todense()[factor.P()[:, np.newaxis], factor.P()[np.newaxis, :]]
++        (factor.L() * factor.L().T.conjugate()).todense(), matrix.todense()[factor.P()[:, np.newaxis], factor.P()[np.newaxis, :]]
+     )
+ 
+ 

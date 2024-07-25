@@ -25,7 +25,7 @@
 %bcond_with    octave
 
 Name:           lalmetaio
-Version:        4.0.3
+Version:        4.0.4
 Release:        0
 Summary:        LSC Algorithm MetaIO Library
 License:        GPL-2.0-or-later

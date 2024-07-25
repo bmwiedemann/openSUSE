@@ -59,7 +59,8 @@ BuildRequires:  cmake(Qt6Widgets)
 %endif
 %if 0%{?suse_version} > 1500
 # fmt is too old in 15.5/15.6, spdlog can't be used
-BuildRequires:  cmake(spdlog) >= 1.8.0
+# FIXME: 2024/07/24: disabled until https://github.com/KDAB/KDDockWidgets/issues/520 is fixed
+# BuildRequires:  cmake(spdlog) >= 1.8.0
 %else
 # Full c++-17 support needed
 BuildRequires:  gcc13-PIE

@@ -1,5 +1,5 @@
 #
-# spec file for package lal
+# spec file
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -36,7 +36,7 @@
 # No support for octave >= 6
 %bcond_with octave
 Name:           lal%{psuffix}
-Version:        7.4.1
+Version:        7.5.0
 Release:        0
 Summary:        A collection of various gravitational wave data analysis routines
 License:        GPL-2.0-only

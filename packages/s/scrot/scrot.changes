@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu Jul 25 07:12:51 UTC 2024 - ming li <mli@suse.com>
+
+- update to 1.11:
+  * New feature: zsh and bash completion
+  * Improvement: more detailed --help output and new --list-options flag
+  * Improvement: better error reporting on newer imlib2 versions
+  * Improvement: better handle mutually exclusive options
+  * Improvement: --stack no longer errors out if no compositor is running
+  * Improvement: print a warning if output file was changed
+  * Improvement: default file-name extension is now based on the format used
+  * Improvement: selection line mode will be automatically set to "edge"
+    mode if no compositors is running
+  * Improvement: rewrite autogen.sh to be simpler and more robust
+  * Document: add examples of using scrot with other utilities in manpage
+  * Document: Correct strftime section in the manual
+  * Fixes: selection borders appearing in the screenshot
+  * Fixes: reject filenames with trailing slash
+  * Fixes: incorrect line opacity mapping
+  * Fixes: don't return 0 on exec failure
+  * Fixes: bad extension detection
+  * Fixes: stricter optional argument parsing
+  * Fixes: buffer overrun due to bad x,y in imlib_create_image_from_ximage call
+  * Fixes: printing potentially truncated file-size
+  * Fixes: various memory leaks
+  * Fixes: replace dprintf() calls to fix the SmartOS port
+
+-------------------------------------------------------------------
 Mon Sep 11 12:43:34 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - update to 1.10.0:

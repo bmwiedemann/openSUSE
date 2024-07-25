@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jul 25 06:03:00 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.4.13:
+  * Fix breaking changes in isspmatrix of scipy >=1.11.0, discontinuing
+    compatibility with csc_array
+  * remove numpy build restrictions
+- Drop patches scikit-sparse-py312.patch, scipy111.patch:
+  * Included upstream.
+- Add patch support-scipy-1.14.patch:
+  * Do not call a now removed method in scipy.
+
+-------------------------------------------------------------------
 Sun Feb 18 15:19:40 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Add scikit-sparse-py312.patch gh#scikit-sparse/scikit-sparse#105

@@ -23,4 +23,12 @@
     <comment>Update to 2.1.0</comment>
     <requestid>1175587</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>e520c18c32161adb8bcdeba05664e2d9</srcmd5>
+    <version>2.1.0</version>
+    <time>1721914744</time>
+    <user>dimstar_suse</user>
+    <comment>- Build kddockwidgets without spdlog until fmt 11 gets supported</comment>
+    <requestid>1189363</requestid>
+  </revision>
 </revisionlist>

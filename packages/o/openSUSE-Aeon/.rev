@@ -50,4 +50,12 @@
     <comment>- Correct ignition partition label to 'ignition'</comment>
     <requestid>1176745</requestid>
   </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>78e4d2cbacdcd67c5456dfa5a0c1ce22</srcmd5>
+    <version>0.1.0</version>
+    <time>1721914754</time>
+    <user>dimstar_suse</user>
+    <comment>Please stage alongside tik-osimage-Aeon submission and other submissions from devel:microos:aeon</comment>
+    <requestid>1189390</requestid>
+  </revision>
 </revisionlist>

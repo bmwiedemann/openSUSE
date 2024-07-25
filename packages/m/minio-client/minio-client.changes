@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jul 24 17:50:03 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 20240722T200249Z:
+  * Allow STANDARD_IA as a AWS tier storage class (#4994)
+  * Fix incorrect bool parsing (#4991)
+  * Show a warning when the server certificate duration is expiring
+    soon (#4989)
+
+-------------------------------------------------------------------
 Tue Jul 16 06:03:39 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 20240715T174606Z:

@@ -1,7 +1,7 @@
 #
 # spec file for package qore-pgsql-module
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,7 +39,6 @@ BuildRequires:  postgresql-devel
 %endif
 BuildRequires:  qore
 BuildRequires:  qore-devel >= 1.0.0
-BuildRequires:  qore-stdlib >= 1.0.0
 Requires:       qore-module(abi)%{?_isa} = %{module_api}
 
 %description

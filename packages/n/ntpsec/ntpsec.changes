@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Wed Apr 17 09:27:12 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Updat to version 1.2.3
+  * Change mode6 alignment to four, which may break some
+    compatibility with classic NTP.
+  * Seccomp should now also yield invalid syscall names when dying.
+  * Make ntpq stop dropping output timestamp leading zeroes.
+  * Update documents in quite a few places.
+  * Reset some stats hourly, even when not logged into files.
+  * Add error logging, and stats for ms-sntp.
+  * Add spacing between multiple peer views in ntpq.
+  * We think we have fixed ms-sntp but we can’t test it.
+  * ntpd and ntpq both treat SHA-1 as an alias for SHA1 NIST
+    uses SHA-1. The crypto package from OpenSSL uses SHA1.
+  * The default crypto type for ntpq is now AES. RFC 8573
+    deprecated MD5.
+  * There are now log files with hourly statistics for NTS and
+    NTS-KE traffic: filegen ntsstats and filegen ntskestats,
+  * Update ntpsnmpd to use python built-in to get uname information.
+  * Update license file names for REUSE compliance.
+  * Fix ntploggps issue where count_used_satellites checked before
+    it is initialized.
+  * Print out OpenSSL version at configure time.
+  * Enable debug symbols by default, with only an option to disable.
+  * Add support for ecdhcurves list.
+  * Fix ntpdig crash when using 2.ntp.pool.org with a host without
+    IPv6 support.
+  * Do not install libaes_siv test anymore.
+  * Add update option to buildprep.
+  * ntpdig shows packet delay in JSON output.
+
+-------------------------------------------------------------------
 Thu Feb 22 14:01:50 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.

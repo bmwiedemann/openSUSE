@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jul 24 17:56:34 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.8.1:
+  * Bump `golang.org/x` dependencies
+  * Bump dependabot/fetch-metadata from 2.1.0 to 2.2.0
+  * Bump github.com/spf13/cobra from 1.8.0 to 1.8.1
+  * Bump goreleaser/goreleaser-action from 5 to 6
+  * Refactor single entry check
+  * Fix `gocritic` findings main entry
+  * Use Go `1.22` for builds/releases
+
+-------------------------------------------------------------------
 Fri Jun 07 19:53:22 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.8.0:

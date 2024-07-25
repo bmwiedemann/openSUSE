@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Thu Jul 25 05:01:50 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.17.0:
+  * begin a new APK client (#1218)
+  * remove the concept of Assertions (#1214)
+  * Implement client-side APK discovery in `apko` (#1216)
+  * copy annotations to config labels (#1215)
+  * build(deps): bump github.com/sigstore/cosign/v2 from 2.2.4 to
+    2.3.0 (#1213)
+  * build(deps): bump docker/setup-qemu-action from 3.1.0 to 3.2.0
+    (#1211)
+  * build(deps): bump github/codeql-action from 3.25.12 to 3.25.13
+    (#1212)
+  * build(deps): bump k8s.io/apimachinery from 0.30.2 to 0.30.3
+    (#1209)
+  * build(deps): bump github/codeql-action from 3.25.11 to 3.25.12
+    (#1203)
+  * build(deps): bump step-security/harden-runner from 2.8.1 to
+    2.9.0 (#1210)
+  * build(deps): bump github.com/google/go-containerregistry from
+    0.20.0 to 0.20.1 (#1208)
+  * build(deps): bump actions/setup-go from 5.0.1 to 5.0.2 (#1200)
+  * Remove labels from names and URLs in lockfile (#1163)
+  * Add `MergeInto` for combining `ImageConfiguration`s (#1206)
+  * Have the Authenticator support returning errors (#1205)
+  * Simplify s6 stuff further (#1204)
+  * Faster NewPkgResolver and GetRepositoryIndexes (#1202)
+  * Add build.MultiArch.BuildPackageLists (#1201)
+  * build(deps): bump github.com/google/go-containerregistry from
+    0.19.2 to 0.20.0 (#1199)
+  * build(deps): bump sigs.k8s.io/release-utils from 0.8.2 to 0.8.3
+    (#1197)
+  * fix
+  * cleanup
+  * checkout first
+  * tidy
+  * index throws nil pointer when no auth set
+  * build(deps): bump golang.org/x/sys from 0.21.0 to 0.22.0
+  * tests are broken due to incosnsistency package version of
+    openssl(riscv64) on alpine
+  * remove more unknown stuff from example, log more
+  * fail on unknown fields, remove os-release from alpine-slim
+  * set unknown version ID too
+  * remove more cruft
+  * move os-release stuff into pkg/build/sbom.go, unexport
+  * remove the example
+  * remove remote include feature
+  * remove os-release from apko config
+  * Simplify the resolution logic to use `expandapk.Split` (#1186)
+  * build(deps): bump go.opentelemetry.io/otel/trace from 1.27.0 to
+    1.28.0
+  * build(deps): bump docker/setup-qemu-action from 3.0.0 to 3.1.0
+  * build(deps): bump github/codeql-action from 3.25.10 to 3.25.11
+
+-------------------------------------------------------------------
 Wed Jul 03 19:07:59 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.16.0:

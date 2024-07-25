@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Jul 25 05:22:22 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.63.6:
+  * Fixing generation of `provider_installation` block used for
+    provider caching (#3290)
+
+-------------------------------------------------------------------
+Wed Jul 24 17:46:40 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.63.5:
+  * Add support for engine downloading (#3281)
+
+-------------------------------------------------------------------
+Wed Jul 24 17:42:19 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.63.4:
+  * 3274 - fix: Include nothing when value for
+    `terragrunt-include-dir` doesn't exist on the filesystem
+    (#3286)
+
+-------------------------------------------------------------------
 Tue Jul 23 05:36:28 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.63.3:

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul 25 05:25:48 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.62.1:
+  * Fix crashes in x86 Windows build on older CPUs.
+
+-------------------------------------------------------------------
 Mon Jul 22 08:23:38 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.62.0:

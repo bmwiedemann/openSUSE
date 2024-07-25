@@ -24,31 +24,15 @@ Co-authored-by: Miro Hrončok <miro@hroncok.cz>
 Co-authored-by: Michal Cyprian <m.cyprian@gmail.com>
 Co-authored-by: Lumír Balhar <frenzy.madness@gmail.com>
 ---
- Lib/site.py                |    9 ++++++++-
- Lib/test/test_sysconfig.py |   17 +++++++++++++++--
- 2 files changed, 23 insertions(+), 3 deletions(-)
+ Lib/site.py                |  9 ++++++-
+ Lib/sysconfig.py           | 49 +++++++++++++++++++++++++++++++++++++-
+ Lib/test/test_sysconfig.py | 17 +++++++++++--
+ 3 files changed, 71 insertions(+), 4 deletions(-)
 
---- a/Lib/site.py
-+++ b/Lib/site.py
-@@ -406,8 +406,15 @@ def getsitepackages(prefixes=None):
-     return sitepackages
- 
- def addsitepackages(known_paths, prefixes=None):
--    """Add site-packages to sys.path"""
-+    """Add site-packages to sys.path
-+
-+    '/usr/local' is included in PREFIXES if RPM build is not detected
-+    to make packages installed into this location visible.
-+
-+    """
-     _trace("Processing global site-packages")
-+    if ENABLE_USER_SITE and 'RPM_BUILD_ROOT' not in os.environ:
-+        PREFIXES.insert(0, "/usr/local")
-     for sitedir in getsitepackages(prefixes):
-         if os.path.isdir(sitedir):
-             addsitedir(sitedir, known_paths)
---- a/Lib/test/test_sysconfig.py
-+++ b/Lib/test/test_sysconfig.py
+Index: Python-3.13.0b4/Lib/test/test_sysconfig.py
+===================================================================
+--- Python-3.13.0b4.orig/Lib/test/test_sysconfig.py
++++ Python-3.13.0b4/Lib/test/test_sysconfig.py
 @@ -121,8 +121,19 @@ class TestSysConfig(unittest.TestCase):
          for scheme in _INSTALL_SCHEMES:
              for name in _INSTALL_SCHEMES[scheme]:
@@ -88,3 +72,81 @@ Co-authored-by: Lumír Balhar <frenzy.madness@gmail.com>
      def test_user_similar(self):
          # Issue #8759: make sure the posix scheme for the users
          # is similar to the global posix_prefix one
+Index: Python-3.13.0b4/Lib/sysconfig/__init__.py
+===================================================================
+--- Python-3.13.0b4.orig/Lib/sysconfig/__init__.py
++++ Python-3.13.0b4/Lib/sysconfig/__init__.py
+@@ -106,6 +106,11 @@ if os.name == 'nt':
+ else:
+     _INSTALL_SCHEMES['venv'] = _INSTALL_SCHEMES['posix_venv']
+ 
++# For a brief period of time in the Fedora 36 life cycle,
++# this installation scheme existed and was documented in the release notes.
++# For backwards compatibility, we keep it here (at least on 3.10 and 3.11).
++_INSTALL_SCHEMES['rpm_prefix'] = _INSTALL_SCHEMES['posix_prefix']
++
+ def _get_implementation():
+     return 'Python'
+ 
+@@ -167,6 +172,19 @@ if _HAS_USER_BASE:
+             },
+     }
+ 
++# This is used by distutils.command.install in the stdlib
++# as well as pypa/distutils (e.g. bundled in setuptools).
++# The self.prefix value is set to sys.prefix + /local/
++# if neither RPM build nor virtual environment is
++# detected to make distutils install packages
++# into the separate location.
++# https://fedoraproject.org/wiki/Changes/Making_sudo_pip_safe
++if (not (hasattr(sys, 'real_prefix') or
++    sys.prefix != sys.base_prefix) and
++    'RPM_BUILD_ROOT' not in os.environ):
++    _prefix_addition = '/local'
++
++
+ _SCHEME_KEYS = ('stdlib', 'platstdlib', 'purelib', 'platlib', 'include',
+                 'scripts', 'data')
+ 
+@@ -261,11 +279,40 @@ def _extend_dict(target_dict, other_dict
+         target_dict[key] = value
+ 
+ 
++_CONFIG_VARS_LOCAL = None
++
++
++def _config_vars_local():
++    # This function returns the config vars with prefixes amended to /usr/local
++    # https://fedoraproject.org/wiki/Changes/Making_sudo_pip_safe
++    global _CONFIG_VARS_LOCAL
++    if _CONFIG_VARS_LOCAL is None:
++        _CONFIG_VARS_LOCAL = dict(get_config_vars())
++        _CONFIG_VARS_LOCAL['base'] = '/usr/local'
++        _CONFIG_VARS_LOCAL['platbase'] = '/usr/local'
++    return _CONFIG_VARS_LOCAL
++
++
+ def _expand_vars(scheme, vars):
+     res = {}
+     if vars is None:
+         vars = {}
+-    _extend_dict(vars, get_config_vars())
++
++    # when we are not in a virtual environment or an RPM build
++    # we change '/usr' to '/usr/local'
++    # to avoid surprises, we explicitly check for the /usr/ prefix
++    # Python virtual environments have different prefixes
++    # we only do this for posix_prefix, not to mangle the venv scheme
++    # posix_prefix is used by sudo pip install
++    # we only change the defaults here, so explicit --prefix will take precedence
++    # https://fedoraproject.org/wiki/Changes/Making_sudo_pip_safe
++    if (scheme == 'posix_prefix' and
++        _PREFIX == '/usr' and
++        'RPM_BUILD_ROOT' not in os.environ):
++            _extend_dict(vars, _config_vars_local())
++    else:
++        _extend_dict(vars, get_config_vars())
++
+     if os.name == 'nt':
+         # On Windows we want to substitute 'lib' for schemes rather
+         # than the native value (without modifying vars, in case it

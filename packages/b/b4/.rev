@@ -584,4 +584,19 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1182981</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>f15e7032bd2abfc07a2cc99175471a24</srcmd5>
+    <version>0.14.1</version>
+    <time>1721914726</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.14.1:
+  * Forward the smtpserveroption to the local command
+  * Support &quot;valueless truth&quot; in configuration parsing
+  * Exclude tests from dist files
+  * bump-version: fix path to the manpages
+  * shazam: force mboxrd mode for git-am
+  * Improve tests exclusion from the built packages
+  * When looking for the cover commit, restrict to current committer</comment>
+    <requestid>1189294</requestid>
+  </revision>
 </revisionlist>

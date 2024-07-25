@@ -1,7 +1,7 @@
 #
 # spec file for package qore-uuid-module
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,7 +33,6 @@ BuildRequires:  gcc-c++
 BuildRequires:  graphviz
 BuildRequires:  libuuid-devel
 BuildRequires:  qore >= 1.12.4
-BuildRequires:  qore-stdlib >= 1.12.4
 BuildRequires:  qore-devel >= 1.12.4
 Requires:       qore-module(abi)%{?_isa} = %{module_api}
 

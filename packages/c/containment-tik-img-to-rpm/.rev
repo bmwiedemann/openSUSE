@@ -24,4 +24,12 @@
     <comment>- Adjust for new obs-build changelog location</comment>
     <requestid>1181982</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>d11005ee51e05022d3f943c34c4bf5b7</srcmd5>
+    <version>1.0</version>
+    <time>1721914755</time>
+    <user>dimstar_suse</user>
+    <comment>- Package uncompressed images, to be used with systemd-repart</comment>
+    <requestid>1189393</requestid>
+  </revision>
 </revisionlist>

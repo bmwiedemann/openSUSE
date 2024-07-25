@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jul 23 20:23:38 UTC 2024 - James Bottomley <James.Bottomley@HansenPartnership.com>
+
+- Update to version 4.2.0
+  * doc updates: typo fix, clarify boolean parsing rules and secret parameter
+  * fix bug with no visible effect in the handling of wrapped secrets
+  * SECURITY fix to salt all sessions
+  * add ability to import RSA wrapped keys and sealed objects
+
+-------------------------------------------------------------------
 Fri Apr 19 15:50:29 UTC 2024 - James Bottomley <James.Bottomley@HansenPartnership.com>
 
 - Update to version 4.1.2

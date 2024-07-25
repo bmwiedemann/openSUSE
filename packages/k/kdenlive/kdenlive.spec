@@ -79,6 +79,7 @@ BuildRequires:  pkgconfig(x11)
 Requires:       libmlt7-module-qt6
 Requires:       melt >= 7
 # Required at runtime
+Requires:       kf6-qqc2-desktop-style >= %{kf6_version}
 Requires:       qt6-declarative-imports >= %{qt6_version}
 # Required by the composition and effects panel
 Requires:       kf6-knewstuff-imports >= %{kf6_version}

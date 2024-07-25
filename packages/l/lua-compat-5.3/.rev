@@ -103,4 +103,14 @@
     <comment></comment>
     <requestid>1180937</requestid>
   </revision>
+  <revision rev="13" vrev="11">
+    <srcmd5>1706408536677126205fdffd026e73d5</srcmd5>
+    <version>unknown</version>
+    <time>1721914741</time>
+    <user>dimstar_suse</user>
+    <comment>- Rename bit32 package to avoid the package conflicting with
+  the version prior to the merge
+</comment>
+    <requestid>1189355</requestid>
+  </revision>
 </revisionlist>

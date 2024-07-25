@@ -47,6 +47,7 @@ It is especially useful for elm users.
 %autosetup -p0 -n emil-2.1.0-beta9
 
 %build
+export CFLAGS=-fpermissive
 autoreconf -fiv
 %configure
 make %{?_smp_mflags} SENDMAILPATH=/usr/sbin/sendmail

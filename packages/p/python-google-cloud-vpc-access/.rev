@@ -39,4 +39,13 @@
     'universe_domain'</comment>
     <requestid>1173186</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>25f0f32397c557bfe5f0b2a970858bc0</srcmd5>
+    <version>1.10.4</version>
+    <time>1721914748</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.10.4:
+  * Allow Protobuf 5.x</comment>
+    <requestid>1189379</requestid>
+  </revision>
 </revisionlist>

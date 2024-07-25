@@ -2,6 +2,7 @@
 # spec file for package fossil
 #
 # Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,29 +17,27 @@
 #
 
 
-%define fossil_uuid 47362306a7dd7c6fc3cab77cebe5d25469b0a9448479d9718eb5c49c8337b29
-%if 0%{?suse_version} > 1600
-%bcond_without system_sqlite
-%else
-%bcond_with system_sqlite
-%endif
+# From https://fossil-scm.org/home/uv/releases.md
+%define fossil_uuid 8be0372c1051043761320c8ea8669c3cf320c406e5fe18ad36b7be5f844ca73b
 %bcond_without tests
 Name:           fossil
-Version:        2.23
+Version:        2.24
 Release:        0
 Summary:        Distributed software configuration management
 License:        BSD-2-Clause
 Group:          Development/Tools/Version Control
 URL:            https://fossil-scm.org/
 Source:         https://fossil-scm.org/home/tarball/%{fossil_uuid}/%{name}-%{version}.tar.gz
-BuildRequires:  fuse-devel
-BuildRequires:  gcc
-BuildRequires:  openssl-devel
+Patch0:         fossil-2.24-5ad708085a90365f.patch
+Patch1:         fossil-2.24-fb4e90b662803e47.patch
+Patch2:         fossil-2.24-17c01c549e73c6b8.patch
+BuildRequires:  pkgconfig
 BuildRequires:  tcl
-BuildRequires:  zlib-devel
-%if %{with system_sqlite}
-BuildRequires:  sqlite3-devel >= 3.43.0
-%endif
+BuildRequires:  pkgconfig(fuse)
+BuildRequires:  pkgconfig(libcrypto)
+BuildRequires:  pkgconfig(libssl)
+BuildRequires:  pkgconfig(sqlite3) >= 3.43.0
+BuildRequires:  pkgconfig(zlib)
 
 %description
 Fossil is a distributed software configuration management system with
@@ -60,13 +59,11 @@ grep -qFx %{version} VERSION
 # FIXME: you should use the %%configure macro
 ./configure \
         --prefix=%{_prefix} \
-        --with-openssl=auto \
-%if %{with system_sqlite}
+        --with-openssl=%{_prefix} \
+        --with-zlib=%{_prefix} \
         --disable-internal-sqlite \
 	--with-sqlite=%{_prefix} \
-%endif
 	%{nil}
-
 %make_build
 
 %install
@@ -75,12 +72,15 @@ install -D -m 644 -t %{buildroot}%{_mandir}/man1 fossil.1
 
 %check
 %if %{with tests}
+# Tests fail on Leap due to TCL "time value too large/small to represent"
+%if 0%{?suse_version} > 1600
 tclsh test/tester.tcl %{buildroot}%{_bindir}/%{name}
+%endif
 %endif
 
 %files
 %license COPYRIGHT-BSD2.txt
 %{_bindir}/fossil
-%{_mandir}/*/*
+%{_mandir}/man1/fossil.1%{?ext_man}
 
 %changelog

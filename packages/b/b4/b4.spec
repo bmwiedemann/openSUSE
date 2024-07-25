@@ -24,7 +24,7 @@
 %global pprefix python311
 %endif
 Name:           b4
-Version:        0.14.0
+Version:        0.14.1
 Release:        0
 Summary:        Helper scripts for kernel.org patches
 License:        GPL-2.0-or-later
@@ -73,7 +73,6 @@ sed -i.old '1{/#!.*/d}' src/b4/*.py
 %install
 %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
-%python_expand rm -rf %{buildroot}%{$python_sitelib}/{tests,b4/man}/
 install -m644 -Dt %{buildroot}%{_mandir}/man5/ src/b4/man/b4.5
 
 %check

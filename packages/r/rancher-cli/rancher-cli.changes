@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Wed Jul 24 18:01:54 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.9.0:
+  * [v2.9] Bump dependencies (#377)
+  * [v2.9] Upload CLI assets to GCS (#379)
+  * [v2.9][forwardport] Small refactor (error messages) (#375)
+  * use Rancher org FOSSA secret (#373)
+  * add codeowners file
+  * avoid recursive find and inclusion of sha256sum.txt file in
+    shasum (#368)
+  * Fix GitHub Action permission to publish assets (#367)
+  * [v2.9] Migrate from Drone to Github Actions, remove Dapper and
+    add Darwin/arm64 support (#362)
+  * GHA migration: secrets check (#365)
+  * Azuread support (#346)
+  * [v2.9] Updated `k8s.io/client-go` and `rancher/norman`
+    dependencies (#358)
+  * Added linter and removed deprecated and unused packages (#357)
+  * bump to go1.22 (#355)
+  * added test to serverLs, edded config to tabwriter
+  * added serverDelete tests, fix for delete current
+  * changed visibility of server commands funcs
+  * moved cfg to server command
+  * added parallel test
+  * updated tests
+  * validate as beforeFunc
+  * added tests
+  * fix server current panic, server commands refactor
+  * fix panic
+  * fix panics
+  * make runnable on windows
+  * Update saml auth login endpoint to dashboard endpoint
+  * Add missing packages after moving Dapper image to BCI (#339)
+  * Bump Go and Dockerfile versions
+
+-------------------------------------------------------------------
+Wed Jul 24 17:48:32 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.8.6 (no release 2.8.5):
+  * [v2.8] Bump dependencies (#376)
+  * fix for assets dfestination (#381)
+  * fix for env var (#380)
+  * upload assets to gcs (#378)
+  * [v2.8] Small refactor (error messages) (#374)
+  * [v2.8] [backport] AzureAD support (#363)
+  * use Rancher org FOSSA secret (#372)
+  * Add CODEOWNERS file (#370)
+  * [v2.8][backport] Migrate from Drone to Github Actions, remove
+    Dapper and add Darwin/arm64 support  (#366)
+  * bump of k8s.io/client-go and rancher norman (#361)
+  * [v2.8] [backport] Added linter and removed deprecated and
+    unused packages (#357) (#359)
+  * bump to go1.21 (#360)
+
+-------------------------------------------------------------------
 Sat May 18 07:28:38 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.8.4:

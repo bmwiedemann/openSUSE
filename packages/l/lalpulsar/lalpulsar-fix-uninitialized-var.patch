@@ -1,7 +1,7 @@
-Index: lalpulsar-6.0.1/bin/HoughFstat/HierarchicalSearch.c
+Index: lalpulsar-6.1.0/bin/HoughFstat/HierarchicalSearch.c
 ===================================================================
---- lalpulsar-6.0.1.orig/bin/HoughFstat/HierarchicalSearch.c
-+++ lalpulsar-6.0.1/bin/HoughFstat/HierarchicalSearch.c
+--- lalpulsar-6.1.0.orig/bin/HoughFstat/HierarchicalSearch.c
++++ lalpulsar-6.1.0/bin/HoughFstat/HierarchicalSearch.c
 @@ -1256,7 +1256,7 @@ void SetUpSFTs( LALStatus *status,			/**
    REAL8 timebase, tObs, deltaFsft;
    UINT4 k,numSFTby2;
@@ -11,16 +11,16 @@ Index: lalpulsar-6.0.1/bin/HoughFstat/HierarchicalSearch.c
  
    REAL8 doppWings, fMin, fMax;
    REAL8 startTime_freqLo, startTime_freqHi;
-Index: lalpulsar-6.0.1/bin/GCT/HierarchSearchGCT.c
+Index: lalpulsar-6.1.0/bin/GCT/HierarchSearchGCT.c
 ===================================================================
---- lalpulsar-6.0.1.orig/bin/GCT/HierarchSearchGCT.c
-+++ lalpulsar-6.0.1/bin/GCT/HierarchSearchGCT.c
-@@ -2048,7 +2048,7 @@ void SetUpSFTs( LALStatus *status,			/**
+--- lalpulsar-6.1.0.orig/bin/GCT/HierarchSearchGCT.c
++++ lalpulsar-6.1.0/bin/GCT/HierarchSearchGCT.c
+@@ -2020,7 +2020,7 @@ void SetUpSFTs( LALStatus *status,
    REAL8 timebase, tObs, deltaFsft;
-   UINT4 k,numSFT;
+   UINT4 k, numSFT;
    LIGOTimeGPS tStartGPS, tEndGPS, refTimeGPS, tMidGPS, midTstackGPS, startTstackGPS, endTstackGPS;
 -  SFTCatalogSequence catalogSeq;
 +  SFTCatalogSequence catalogSeq = {};
-   REAL8 midTseg,startTseg,endTseg;
+   REAL8 midTseg, startTseg, endTseg;
  
    BOOLEAN crc_check;

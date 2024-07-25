@@ -665,4 +665,12 @@ Bugfixes:
      * Detect used OpenGL library version (OpenGL)</comment>
     <requestid>1186733</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>65fd4143a4387cb10bc687435f6a044b</srcmd5>
+    <version>2.19.1</version>
+    <time>1721914759</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1189420</requestid>
+  </revision>
 </revisionlist>

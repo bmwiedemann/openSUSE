@@ -18,7 +18,7 @@
 
 %{!?python_sitelib: %global python_sitelib %(python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")}
 Name:           klp-build
-Version:        0~20240701.f72b4a1
+Version:        0~20240722.3c379d8
 Release:        0
 Summary:        The kernel livepatching creation tool
 License:        GPL-2.0-only

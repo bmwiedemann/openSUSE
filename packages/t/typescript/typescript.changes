@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Jul 23 09:43:12 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 5.5.4
+  * fixed Circular declarations cause infinite loops in getExportInfos since v5.5
+  * fixed the return type of Int8Array::toReversed in es2023.array.d.ts is wrong
+  * fixed Incorrect ES5 code emitted for closures in loops when noCheck is enabled
+  * fixed Regression issue with React import when using "jsx": "react" compiler
+  * fixed Scanner crash in services (TypeScript 5.5)
+  * fixed TypeError: Cannot read properties of undefined (reading 'flags') 
+    at needsNameFromDeclaration at getNameForExportedSymbol
+  * perf: Node.getChildren speed regression in ts 5.5 when used at very large scale
+
+For the full changelog see https://devblogs.microsoft.com/typescript/announcing-typescript-5-5/
+
+-------------------------------------------------------------------
 Wed Jul  3 08:21:30 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 5.5.3

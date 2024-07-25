@@ -1,4 +1,72 @@
 -------------------------------------------------------------------
+Sat Jun 22 09:12:45 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Build lua module
+- Update to version 2.14.4
+  * db: fix creation of missing directories
+  * index: do not print message if outputting file to stdout
+  * pkg: accept broken fpm generated packages with a warning
+  * pkg: allow multiple data sections with a warning
+  * pkg: fix index speed regression
+  * pkg: always use real digest, openssl-fips module crashes
+    otherwise
+- Update to version 2.14.3
+  * io: fix gunzip mpart handling regression
+- Update to version 2.14.2
+  * list: fix -P with filter
+  * verify: synchronize with git master
+  * db: refactor apk_package.filename to index
+  * pkg: clean up and simplify code
+  * io: simplify mpart and error handling
+  * io: fix apk_istream_get_max non-complete reads
+  * doc: apk(8) document environment and libfetch config
+  * doc: apk(8) add FILES section, speak of world constraints
+  * list: consider only tag appropriate versions in upgradable
+  * doc: add(8), del(8), world(5) speak of world constraints
+  * doc: apk(8) document --force-broken-world better
+  * pkg: reorder struct apk_package fields for size
+  * doc: apk-search(8) is case insensitive
+  * doc: mention /etc/apk/repositories.d/*.list
+  * doc: fix tagged package explaination
+  * doc: mention apk-world(5) in apk-del(8) and apk-add(8)
+  * doc: mention apk-repositories(5) in apk-search(8)
+  * hash: remove unused code
+  * db: remove dynamic allocations from reverse name calculation
+  * version: calculate installed column size dynamically
+  * build: require gnu11 and guarantee assert.h included from
+    apk_defines.h
+  * db, selected applets: allow --arch to override database
+    architecture
+  * commit: consider install_if chains correctly in error analysis
+  * solver: purge conflicts also via provided name
+  * audit: fix reporting of directory db details
+- Update to version 2.14.1
+  * apk: remove empty arguments for add/del/dot/fix only
+  * tar: set file mtime to package mtime in scripts.tar
+  * db: calculate cache index hash from full url
+  * doc: remove args from apk info --test and --check
+  * doc: document -t short option for apk info
+  * list: add support for --quiet to only print pkgname
+  * apk-audit: exclude busybox-extras with
+    --ignore-busybox-symlinks
+  * apk-cache(5): add missing word
+  * apk-repositories(5): fix cache path
+  * libfetch: remove a set-but-not-uswed variable
+  * libfetch: support EAI_ADDRFAMILY error, correct two error
+    messages
+  * doc/apk-policy: fix documentation about sort order
+  * db, print: describe process exit status better
+  * db: handle waitpid returning EINTR
+  * commit: properly propagate install-if status in error
+    analysis
+  * define APK_DEFAULT_ARCH for loongarch targets
+  * pkg: invalidate sorted installed packages cache on package
+    uninstall
+  * fetch: prefer fetching package with the concrete name
+  * del: fix up previous commit
+  * del: fix --rdepends
+
+-------------------------------------------------------------------
 Sun Mar 10 19:34:23 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Initial package, version 2.14.0

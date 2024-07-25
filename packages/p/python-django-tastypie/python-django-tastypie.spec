@@ -34,6 +34,7 @@ BuildRequires:  %{python_module lxml}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module python-dateutil >= 2.1}
 BuildRequires:  %{python_module python-mimeparse >= 0.1.4}
+BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes

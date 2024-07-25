@@ -17,7 +17,7 @@
 
 
 Name:           tik
-Version:        1.1.10
+Version:        1.2
 Release:        0
 Summary:        Transactional Installation Kit
 License:        MIT
@@ -91,7 +91,8 @@ install -D -m 644 usr/lib/tik/modules/pre/10-welcome %{buildroot}%{_prefix}/lib/
 install -D -m 644 usr/lib/tik/modules/pre/20-mig %{buildroot}%{_prefix}/lib/tik/modules/pre
 install -D -m 644 usr/lib/tik/modules/post/20-mig %{buildroot}%{_prefix}/lib/tik/modules/post
 
-install -D -m 644 usr/lib/tik/modules/post/10-encrypt %{buildroot}%{_prefix}/lib/tik/modules/post
+install -D -m 644 usr/lib/tik/modules/pre/15-encrypt %{buildroot}%{_prefix}/lib/tik/modules/pre
+install -D -m 644 usr/lib/tik/modules/post/15-encrypt %{buildroot}%{_prefix}/lib/tik/modules/post
 
 %files
 %license LICENSE
@@ -121,6 +122,7 @@ install -D -m 644 usr/lib/tik/modules/post/10-encrypt %{buildroot}%{_prefix}/lib
 %{_prefix}/lib/tik/modules/post/20-mig
 
 %files module-encrypt
-%{_prefix}/lib/tik/modules/post/10-encrypt
+%{_prefix}/lib/tik/modules/pre/15-encrypt
+%{_prefix}/lib/tik/modules/post/15-encrypt
 
 %changelog

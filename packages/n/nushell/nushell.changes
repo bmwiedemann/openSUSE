@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Wed Jul 24 03:14:02 UTC 2024 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.96.0:
+  * Changes to commands:
+    + Additions:
+      - `str deunicode`
+      - `chunks`
+      - `watch --quiet`
+      - `char nul`
+      - `view ir`
+    + Breaking changes:
+      - `generate`
+      - Default column numbering.
+      - `select`
+      - `std path add`
+      - `default`
+      - `window`
+      - `break` and `continue`
+    + Deprecations:
+      - `group`
+    + Removals:
+      - `register`
+      - `for --numbered`
+    + Other changes:
+      - `http` commands
+      - `metadata set --content-type`
+      - `to json`
+      - `into bits`
+    + Bug fixes:
+      - `find`
+      - `detect columns --guess`
+      - `into datetime`
+      - `from toml`
+      - `help operators`
+      - `into binary`
+      - `take until`
+  * For a full list of changes with detailed descriptions, see:
+    - https://www.nushell.sh/blog/2024-07-23-nushell_0_96_0.html.
+
+-------------------------------------------------------------------
 Wed Jun 26 03:02:25 UTC 2024 - Dead Mozay <dead_mozay@opensuse.org>
 
 - Update to version 0.95.0:

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jul 24 12:24:32 UTC 2024 - Filip Kastl <filip.kastl@suse.com>
+
+- Added -fpermissive to CFLAGS to enable build with GCC 14
+
+-------------------------------------------------------------------
 Thu Feb 22 11:33:19 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

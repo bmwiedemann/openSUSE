@@ -1,0 +1,33 @@
+-------------------------------------------------------------------
+Thu Jul 25 05:01:23 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.0.7:
+  * deps
+  * test with common build job?
+  * unconsolidate ci
+  * Revert "consolidate ci"
+  * Revert "remove old files"
+  * consolidate ci
+  * remove old files
+  * fix names, fix command to work on ubi
+
+-------------------------------------------------------------------
+Sat Jul 13 06:41:44 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.0.6:
+  * add version to release
+  * try adding commit to version for devel builds
+  * remove comments
+  * use less utilities
+  * inject script instead of baking into image
+  * remove integration tests
+  * fix release pipeline
+  * use a short sha instead
+  * remove from directory
+  * rename image, update ci
+
+-------------------------------------------------------------------
+Tue May 21 04:58:13 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- new package kubectl-browse-pvc: Kubectl plugin for browsing PVCs
+  on the command line

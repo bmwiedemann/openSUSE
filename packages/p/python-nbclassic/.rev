@@ -232,4 +232,13 @@
     <comment>- Skip python39: no longer supported since ipython 8.19</comment>
     <requestid>1155327</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>d6463efc48416fba65ebc72c699de0e5</srcmd5>
+    <version>1.1.0</version>
+    <time>1721914751</time>
+    <user>dimstar_suse</user>
+    <comment>- Build from source instead of use .whl from pypi.
+</comment>
+    <requestid>1189394</requestid>
+  </revision>
 </revisionlist>

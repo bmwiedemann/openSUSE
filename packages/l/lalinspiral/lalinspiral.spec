@@ -35,7 +35,7 @@
 # octave >= 6 not supported
 %bcond_with octave
 Name:           %{pname}%{?psuffix}
-Version:        4.0.4
+Version:        5.0.0
 Release:        0
 Summary:        LSC Algorithm Inspiral Library
 License:        GPL-2.0-or-later
@@ -192,7 +192,6 @@ find %{buildroot}%{_libdir}/ -name "*.a" -delete -print
 find %{buildroot} -type f -name "*.la" -delete -print
 # /SECTION
 
-%python_expand sed -Ei "1{/^#!\/usr\/bin\/env python/d}" %{buildroot}%{$python_sitearch}/lalinspiral/sbank/bank.py
 %python_expand %fdupes %{buildroot}%{$python_sitearch}/%{name}/
 
 %post -n %{shlib} -p /sbin/ldconfig

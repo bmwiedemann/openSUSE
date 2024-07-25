@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jul  2 14:02:02 UTC 2024 - Richard Brown <rbrown@suse.com>
+
+- Package uncompressed images, to be used with systemd-repart
+
+-------------------------------------------------------------------
 Thu Jun 20 15:13:08 UTC 2024 - Richard Brown <rbrown@suse.com>
 
 - Adjust for new obs-build changelog location 

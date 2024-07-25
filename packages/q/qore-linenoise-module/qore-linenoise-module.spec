@@ -1,7 +1,7 @@
 #
 # spec file for package qore-linenoise-module
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,7 +32,6 @@ BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  graphviz
 BuildRequires:  qore >= 1.12.4
-BuildRequires:  qore-stdlib >= 1.12.4
 BuildRequires:  qore-devel >= 1.12.4
 Requires:       qore-module(abi)%{?_isa} = %{module_api}
 Suggests:       %{name}-doc = %{version}

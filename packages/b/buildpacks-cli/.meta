@@ -1,0 +1,5 @@
+<package name="buildpacks-cli" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:tools:building" package="buildpacks-cli"/>
+</package>

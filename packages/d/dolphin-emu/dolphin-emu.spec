@@ -42,7 +42,7 @@ BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(ao)
 BuildRequires:  pkgconfig(bluez)
 BuildRequires:  pkgconfig(bzip2)
-BuildRequires:  pkgconfig(fmt) >= 10.1
+BuildRequires:  pkgconfig(fmt) = 10.2.1
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(hidapi-hidraw)
 BuildRequires:  pkgconfig(jack)

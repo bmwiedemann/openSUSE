@@ -1,0 +1,18 @@
+-------------------------------------------------------------------
+Mon Jul 22 18:46:49 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.35.0:
+  * Log a warning (once) when PACK_VOLUME_KEY is unset and running in a container
+  * Validate build image name
+  * Try to fix wcow
+  * Fix macos by not requiring real docker client for lifecycle execution unit tests
+  * Launch build containers in a separate ephemeral Docker bridge network
+  * Resolve some TODOs
+  * Initial implementation (still has TODOs)
+  * Warn if NOT --pull-policy=always in container
+
+-------------------------------------------------------------------
+Mon Jul 22 18:44:44 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- new package buildpacks-cli: CLI for building apps using Cloud
+  Native Buildpacks

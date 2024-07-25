@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jul 25 08:09:15 UTC 2024 - andrea.manzini@suse.com
+
+- Update to version 2.2.0:
+  * Stable rust patch
+  * Upgrade deps
+  * Add -L / --dereference option (#36)
+  * Add NO_UNSHARE envvar support to avoid calling unshare for default docker configs which block the syscall (closes #34)
+  * Use official cache-size version
+  * Use my own cache-size dep to fix the build
+  * Remove cargo warning about "no edition set"
+  * Clarify what rmz/cpz are
+
+-------------------------------------------------------------------
 Sun Apr 21 14:55:00 UTC 2024 - andrea.manzini@suse.com
 
 - Update to version 2.1.0:

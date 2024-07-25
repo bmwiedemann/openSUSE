@@ -1,4 +1,156 @@
 -------------------------------------------------------------------
+Wed Jul 24 08:30:54 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update F00251-change-user-install-location.patch to install packages
+  in /usr/local by default when using pip outside of a RPMBUILD
+  environment.
+
+-------------------------------------------------------------------
+Mon Jul 22 18:55:00 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 3.13.0~b4:
+  - Tests
+    - gh-121084: Fix test_typing random leaks. Clear typing ABC
+      caches when running tests for refleaks (-R option): call
+      _abc_caches_clear() on typing abstract classes and their
+      subclasses.
+    - gh-121160: Add a test for
+      readline.set_history_length(). Note that this test may fail
+      on readline libraries.
+    - gh-121200: Fix test_expanduser_pwd2() of
+      test_posixpath. Call getpwnam() to get pw_dir, since it
+      can be different than getpwall() pw_dir.
+    - gh-121188: When creating the JUnit XML file, regrtest
+      now escapes characters which are invalid in XML, such
+      as the chr(27) control character used in ANSI escape
+      sequences.
+  - Library
+    - gh-57141: The shallow argument to filecmp.dircmp (new in
+      Python 3.13) is now keyword-only.
+    - gh-121245: Simplify handling of the history file in
+      site.register_readline() helper. The CAN_USE_PYREPL
+      variable now will be initialized, when imported.
+    - gh-121332: Fix constructor of ast nodes with custom
+      _attributes. Previously, passing custom attributes would
+      raise a DeprecationWarning. Passing arguments to the
+      constructor that are not in _fields or _attributes remains
+      deprecated.
+    - gh-121279: Avoid NameError for the warnings module when
+      accessing the depracated atributes of the importlib.abc
+      module.
+    - gh-121245: Fix a bug in the handling of the command history
+      of the new REPL that caused the history file to be wiped at
+      REPL exit.
+    - gh-87744: Fix waitpid race while calling send_signal() in
+      asyncio.
+    - gh-121018: Fixed other issues where argparse.ArgumentParser
+      did not honor exit_on_error=False.
+    - gh-120678: Fix regression in the new REPL that meant that
+      globals from files passed using the -i argument would not
+      be included in the REPL’s global namespace.
+    - gh-120782: Fix wrong references of the datetime types after
+      reloading the module.
+    - gh-120713: datetime.datetime.strftime() now 0-pads years
+      with less than four digits for the format specifiers %Y and
+      %G on Linux.
+    - gh-117983: Defer the threading import in importlib.util
+      until lazy loading is used.
+    - gh-119189: When using the ** operator or pow() with
+      Fraction as the base and an exponent that is not rational,
+      a float, or a complex, the fraction is no longer converted
+      to a float.
+    - gh-118714: Allow restart in post-mortem debugging of
+      pdb. Removed restart message when the user quits pdb from
+      post-mortem mode.
+    - gh-105623: Fix performance degradation in
+      logging.handlers.RotatingFileHandler.
+  - IDLE
+    - gh-78889: Stop Shell freezes by blocking user access to
+      non-method sys.stdout.shell attributes, which are all
+      private.
+  - Documentation
+    - gh-121749: Fix documentation for PyModule_AddObjectRef().
+    - gh-120012: Clarify the behaviours of
+      multiprocessing.Queue.empty() and
+      multiprocessing.SimpleQueue.empty() on closed queues.
+  - Core and Builtins
+    - gh-121860: Fix crash when rematerializing a managed
+      dictionary after it was deleted.
+    - gh-121814: Fixed the SegFault when PyEval_SetTrace() is
+      used with no Python frame on stack.
+    - gh-121295: Fix PyREPL console getting into a blocked state
+      after interrupting a long paste
+    - gh-121794: Fix bug in free-threaded Python where a
+      resurrected object could lead to a negative ref count
+      assertion failure.
+    - gh-121657: Improve the SyntaxError message if the user
+      tries to use yield from outside a function.
+    - gh-121609: Fix pasting of characters containing unicode
+      character joiners in the new REPL. Patch by Marta Gomez
+      Macias
+    - gh-117482: Unexpected slot wrappers are no longer created
+      for builtin static types in subinterpreters.
+    - gh-121499: Fix a bug affecting how multi-line history was
+      being rendered in the new REPL after interacting with the
+      new screen cache. Patch by Pablo Galindo
+    - gh-121497: Fix a bug that was preventing the REPL to
+      correctly respect the history when an input hook was
+      set. Patch by Pablo Galindo
+    - gh-121012: Tier 2 execution now ensures that list iterators
+      remain exhausted, once they become exhausted.
+    - gh-121439: Allow tuples of length 20 in the freelist to be
+      reused.
+    - gh-121368: Fix race condition in _PyType_Lookup in the
+      free-threaded build due to a missing memory fence. This
+      could lead to _PyType_Lookup returning incorrect results on
+      arm64.
+    - gh-121130: Fix f-strings with debug expressions in format
+      specifiers. Patch by Pablo Galindo
+    - gh-121115: PyLong_AsNativeBytes() no longer
+      uses __index__() methods by default. The
+      Py_ASNATIVEBYTES_ALLOW_INDEX flag has been added to allow
+      it.
+  - C API
+    - gh-89364: Export the PySignal_SetWakeupFd()
+      function. Previously, the function was documented but
+      it couldn’t be used in 3rd party code. Patch by Victor
+      Stinner.
+    - gh-113993: PyUnicode_InternInPlace() no longer
+      Seprevents its argument from being garbage collected
+      Several functions that take char * are now documented
+      Seas possibly preventing string objects from being
+      Segarbage collected; refer to their documentation
+      Sefor details: PyUnicode_InternFromString(),
+      SePyDict_SetItemString(), PyObject_SetAttrString(),
+      SePyObject_DelAttrString(), PyUnicode_InternFromString(),
+      Seand PyModule_Add* convenience functions
+    - gh-113601: Removed debug build assertions related to
+      interning strings, which were falsely triggered by stable
+      ABI extensions.
+    - gh-112136: Restore the private _PyArg_Parser structure and
+      the private _PyArg_ParseTupleAndKeywordsFast() function,
+      previously removed in Python 3.13 alpha 1. Patch by Victor
+      Stinner.
+  - Build
+    - gh-120371: Support WASI SDK 22 by explicitly skipping
+      functions that are just stubs in wasi-libc.
+    - gh-121731: Fix mimalloc compile error on GNU/Hurd
+    - gh-121487: Fix deprecation warning for ATOMIC_VAR_INIT in
+      mimalloc.
+    - gh-121467: Fix a Makefile bug that prevented mimalloc
+      header files from being installed.
+    - gh-121103: On POSIX systems, excluding macOS framework
+      installs, the lib directory for the free-threaded build now
+      includes a “t” suffix to avoid conflicts with a co-located
+      default build installation.
+    - gh-120831: The default minimum iOS version was increased to
+      13.0.
+    - gh-113565: Improve curses and curses.panel dependency
+      checks in configure.
+- Remove %suse_update_desktop_file macro as it is not useful any
+  more.
+
+-------------------------------------------------------------------
 Thu Jul  4 16:04:05 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Stop using %%defattr, it seems to be breaking proper executable

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jul  1 10:39:51 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Remove BuildRequirement qore-stdlib after the move of qore-stdlib
+  to qore.
+
+-------------------------------------------------------------------
 Sat Feb 11 01:39:57 UTC 2023 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Add new runtime dependency

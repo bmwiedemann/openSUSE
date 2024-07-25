@@ -129,4 +129,12 @@
   * Upstream doesn't provide a ChangeLog.</comment>
     <requestid>1186494</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>edc2a884639935cd026f6469d0da66a4</srcmd5>
+    <version>2407</version>
+    <time>1721914760</time>
+    <user>dimstar_suse</user>
+    <comment>- Limited build to fmt = 10.2.1 (temporary fix for Tumbleweed).</comment>
+    <requestid>1189437</requestid>
+  </revision>
 </revisionlist>

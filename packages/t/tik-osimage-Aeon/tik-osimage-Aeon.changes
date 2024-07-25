@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jul 24 12:42:51 UTC 2024 - Richard Brown <rbrown@suse.com>
+
+- Stop populating ESP on image build, done by installer
+- Use "openSUSE-less" branding
+- Make minimal ESP size as resizing done by installer 
+
+-------------------------------------------------------------------
 Wed May 22 11:08:36 UTC 2024 - Richard Brown <rbrown@suse.com>
 
 - Remove growfs from initrd  

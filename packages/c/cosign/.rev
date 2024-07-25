@@ -548,4 +548,25 @@
     <comment>add completion subpackages (bash, fish, zsh) (forwarded request 1177857 from ojkastl_buildservice)</comment>
     <requestid>1178146</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>6d857b8a70356a173d562d0f63a96a78</srcmd5>
+    <version>2.3.0</version>
+    <time>1721914762</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.3.0 (jsc#SLE-23879)
+  * Features
+    - Add PayloadProvider interface to decouple AttestationToPayloadJSON from oci.Signature interface (#3693)
+    - add registry options to cosign save (#3645)
+    - Add debug providers command. (#3728)
+    - Make config layers in ociremote mountable (#3741)
+    - adds tsa cert chain check for env var or tuf targets. (#3600)
+    - add --ca-roots and --ca-intermediates flags to 'cosign verify' (#3464)
+    - add handling of keyless verification for all verify commands (#3761)
+  * Bug Fixes
+    - fix: close attestationFile (#3679)
+    - Set bundleVerified to true after Rekor verification (Resolves #3740) (#3745)
+  * Documentation
+    - Document ImportKeyPair and LoadPrivateKey functions in pkg/cosign (#3776) (forwarded request 1189438 from msmeissn)</comment>
+    <requestid>1189439</requestid>
+  </revision>
 </revisionlist>

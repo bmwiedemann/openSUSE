@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jul 22 17:22:41 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.2.3
+  Fixed
+  * Metrics exporter should wait for an actual request before
+    sending a response.
+
+-------------------------------------------------------------------
 Thu Jul 18 16:59:44 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.2.2

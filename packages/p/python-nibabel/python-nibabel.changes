@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jul 25 02:05:50 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Remove numpy upper bound.
+- Add patch support-numpy-2.patch:
+  * Use np.asarray() to support NumPy 2 as well.
+
+-------------------------------------------------------------------
 Mon Jul 22 05:51:49 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to autosetup macro.

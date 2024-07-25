@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jul 24 12:33:49 UTC 2024 - rbrown@suse.com
+
+- Update to version 1.2:
+  * Introduce systemd-repart modes, including image and self installation
+  * Introduce encryption module
+
+-------------------------------------------------------------------
 Wed Jul 03 11:56:04 UTC 2024 - rbrown@suse.com
 
 - Update to version 1.1.10:

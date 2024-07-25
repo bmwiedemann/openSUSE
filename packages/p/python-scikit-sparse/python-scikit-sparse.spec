@@ -19,20 +19,17 @@
 # For license file
 %define tag     c94f8418b6c36c3ff9db4f87e00fc08bd51cfb4b
 Name:           python-scikit-sparse
-Version:        0.4.12
+Version:        0.4.13
 Release:        0
 Summary:        Scikits sparse matrix package
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
-Group:          Development/Languages/Python
 URL:            https://github.com/scikit-sparse/scikit-sparse/
 Source:         https://files.pythonhosted.org/packages/source/s/scikit-sparse/scikit-sparse-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM https://github.com/scikit-sparse/scikit-sparse/pull/102 Fix breaking changes in isspmatrix of scipy >=1.11.0
-Patch0:         scipy111.patch
-# PATCH-FIX-UPSTREAM scikit-sparse-py312.patch gh#scikit-sparse/scikit-sparse#105
-Patch1:         scikit-sparse-py312.patch
+# PATCH-FIX-UPSTREAM Based on gh#scikit-sparse/scikit-sparse#123
+Patch0:         support-scipy-1.14.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module numpy-devel >= 1.13.3}
+BuildRequires:  %{python_module numpy-devel >= 1.23.3}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module scipy >= 0.19}
 BuildRequires:  %{python_module setuptools >= 18.0}
@@ -40,7 +37,7 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  suitesparse-devel
-Requires:       python-numpy >= 1.13.3
+Requires:       python-numpy >= 1.23.3
 Requires:       python-scipy >= 0.18
 ExcludeArch:    %{ix86}
 # SECTION test requirements
@@ -76,6 +73,6 @@ export CFLAGS="%{optflags}"
 %doc README.md
 %license LICENSE.txt
 %{python_sitearch}/sksparse
-%{python_sitearch}/scikit_sparse-%{version}*-info
+%{python_sitearch}/scikit_sparse-%{version}.dist-info
 
 %changelog

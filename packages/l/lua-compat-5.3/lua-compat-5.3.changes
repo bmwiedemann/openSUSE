@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul 24 10:18:22 UTC 2024 - Callum Farmer <gmbr3@opensuse.org>
+
+- Rename bit32 package to avoid the package conflicting with
+  the version prior to the merge
+
+-------------------------------------------------------------------
 Thu Jun 13 16:12:25 UTC 2024 - Gordon Leung <pirateclip@protonmail.com>
 
 - Update to 0.13:

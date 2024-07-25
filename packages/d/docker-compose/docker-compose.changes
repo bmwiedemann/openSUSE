@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jul 24 17:57:14 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.29.1:
+  * Enhance JSON progress events with more fields.
+  * bump compose-go v2.1.5
+  * bump github.com/docker/cli v27.1.0
+  * bump github.com/docker/docker v27.1.0
+  * bump github.com/containerd/containerd v1.7.20
+  * gha: add docker 27.1.0
+  * fix(containers): fix sorting logic by adding secondary sorting
+    for one-off containers
+
+-------------------------------------------------------------------
 Wed Jul 17 16:22:41 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.29.0:

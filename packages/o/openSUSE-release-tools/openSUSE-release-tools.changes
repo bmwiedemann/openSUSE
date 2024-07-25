@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Tue Jul 16 12:17:46 UTC 2024 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20240716.1a95eb1:
+  * Monitor the release of Mimimal-VM images in SLES16
+
+-------------------------------------------------------------------
+Tue Jul 16 07:25:25 UTC 2024 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20240716.f3350aa:
+  * Add Mimimal-VM images SLES16 release pipeline
+
+-------------------------------------------------------------------
+Wed Jul 10 09:52:06 UTC 2024 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20240710.b7e71a0:
+  * gocd: changes to checkers, stagings and target for SLE15SP7
+
+-------------------------------------------------------------------
+Mon Jul 08 07:55:51 UTC 2024 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20240708.a906506:
+  * Ignore patchinfo packages when checking for duplicated binaries
+
+-------------------------------------------------------------------
+Wed Jul 03 14:36:49 UTC 2024 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20240703.7797359:
+  * Install tools explicitly to avoid busybox variants being picked
+
+-------------------------------------------------------------------
 Tue Jun 25 11:09:34 UTC 2024 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20240625.9e0d0ae:

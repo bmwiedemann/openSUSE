@@ -1133,4 +1133,12 @@ I would be grateful.
     <comment>KDE Release Gear 24.05.2 (forwarded request 1184893 from krop)</comment>
     <requestid>1185532</requestid>
   </revision>
+  <revision rev="134" vrev="2">
+    <srcmd5>87bbfd84f724b9a47a804be32b745b6e</srcmd5>
+    <version>24.05.2</version>
+    <time>1721914742</time>
+    <user>dimstar_suse</user>
+    <comment>- Add kf6-qqc2-desktop-style runtime dependency (boo#1228273)</comment>
+    <requestid>1189361</requestid>
+  </revision>
 </revisionlist>

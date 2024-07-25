@@ -1,0 +1,11 @@
+<package name="gretl" project="openSUSE:Factory">
+  <title>GNU regression, econometrics and time-series library</title>
+  <description>Gretl (GNU regression, econometrics and time-series library) comprises
+libgretl, a shared library which provides various functions relating to
+econometric estimation, a command-line client program and a gui client,
+using GTK+.
+
+</description>
+  <devel project="science" package="gretl"/>
+  <url>https://gretl.sourceforge.net/</url>
+</package>

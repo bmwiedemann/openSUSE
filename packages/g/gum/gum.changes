@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Jul 25 03:27:07 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Update to 0.14.3:
+  * revert "fix: pause tea before running the sub-process"
+- Updates from 0.14.2:
+  Changed
+  * use in-house utility packages
+  Fixed
+  * drop left padding in choose
+  * fix race conditon where spinner could mis-render
+  * fix a bug where choose could crash when spacebar is pressed
+    twice
+  * fix a bug where the foreground color could not be set in choose
+  * fix a bug where foreground could not be set in write
+  * fix a bug where keypresses could crash choose
+  * restore y/n keybindings to confirm
+  * restore centering to buttons in confirm
+
+-------------------------------------------------------------------
 Thu Jul 11 00:17:31 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Switch from deprecated %setup to %autosetup

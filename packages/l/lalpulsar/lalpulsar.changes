@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jul 20 03:46:36 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 6.1.0:
+  * No release notes.
+- Add lalpulsar-scipy-1_14-compat.patch -- Account for name
+  changes of trapezoidal functions in scipy.integrate for scipy >=
+  1.14
+
+-------------------------------------------------------------------
 Mon Jan 22 08:14:24 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 6.0.6:

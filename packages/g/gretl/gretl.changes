@@ -1,0 +1,241 @@
+-------------------------------------------------------------------
+Sat Jun 15 18:40:59 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2024b:
+  * "gridplot" command: add a --title option
+  * "clear" command: add an --all option
+  * instrings() function: add optional boolean argument to get a
+    simple boolean return value
+  * typeof() function: functionality is extended to cover hansl
+    expressions in general
+  * exists() function: recommended usage is restricted to top-
+    level identifiers, but backward compatibility is preserved for
+    the present
+  * new function binperms() for binary permutations
+  * Testing for equality via "==" and "!=": extend this to cover
+    arrays and bundles
+  * help files: clarify the help for some commands and improve
+    formatting
+  * $sysinfo bundle: add "stack_size"
+  * mrw (Mankiw-Romer-Weil) dataset: rename "inv" as "i_y"
+  * Fix bug: crash on replacing a single character in a string
+    variable, when the replacement UTF-8 character takes up more
+    bytes than the original
+  * Fix bug: potential crash when using the "smpl" command on a
+    dataset that is already subject to random resampling
+  * Fix bug: possible confusion in parsing lag specifications for
+    list members, as in "list.vname(-1)"
+  * Fix bug: possible interference of options passed in "plot"
+    with those passed to "gnuplot"
+  * Fix bug: crash in 32-bit gretl for Windows when trying to read
+    gdtb data files created on a 64-bit system
+  * Function packages: validate gfn files using an XML schema
+    rather than a Document Type Definition
+  * GUI, function packages: further extensions to the "ui-maker"
+    functionality, plus minor fixes for the function-call dialog
+  * GUI: support the --preserve-panel option in the dialog box for
+    sub-sampling
+  * GUI: support the Gamma distribution under /Tools/Distribution
+    graphs
+  * GUI: fix the "Packages" entry under Help
+  * GUI: ensure that all fonts scale on zoom in/out in help
+  * GUI: add more choices for plot scaling
+  * GUI: improvements to the regls dialog
+  * Internals: economize stack usage in case of nested function
+    calls
+  * regls addon: bug fixes and improved documentation
+- Add guide and command reference PDFs as sources and install them
+  as part of a new -doc package.
+- Run checks as part of %check section.
+- Split out lang package.
+- Drop changes made to .desktop file.
+- Switch to "pkgconfig" based BuildRequires where possible.
+- Bump shared library name to keep up with soversion bump.
+- Minor specfile cleanups.
+
+-------------------------------------------------------------------
+Wed Sep 21 10:56:38 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- New upstream release 2022b
+  See included Changelog file or
+  http://gretl.sourceforge.net/ChangeLog.html
+- Drop obsolete desktop-file-fixwarning.patch
+
+-------------------------------------------------------------------
+Fri Dec  4 17:53:47 UTC 2015 - stathisagrapidis@gmail.com
+
+- Fixed error: No sufficient Category definition.
+
+-------------------------------------------------------------------
+Thu Jun 19 11:21:45 UTC 2014 - stathisagrapidis@gmail.com
+
+- New upstream release 1.9.90
+  * GUI reorganization: move the Function packages menu from
+     /Files to /Tools
+  * GUI enhancement: add News button under "/Help/About gretl"
+     to display list of changes in the current version
+  * Help menu: add item for the new "hansl primer" which covers
+     the basics of gretl's scripting language
+  * Introduce a new native binary datafile format, the gdtb file
+     (zipped XML metadata plus binary values)
+  * Add new functions: bread(), bwrite(), substr(), easterday()
+  * "summary" command: add --weights option
+  * "tabprint" command: add --csv option
+  * fdjac function: provide choice of algorithm
+  * Enable use of arrays in the SFMT random number generator
+  * Enable use of value labels (if any) in factorized boxplots
+  * Enable use of named lists in the GMM() and GMMlevel()
+     parameter-groups for the "dpanel" and "arbond" commands
+  * Print out alternative definition of R^2 in FE linear panel
+     data models
+  * Add choice of compression level when saving data in native
+     gdt format
+  * Stata dta import: handle (illegal!) non-ASCII characters in
+     variable names
+  * X-12-ARIMA interface: support the new X-13-ARIMA-SEATS as an
+     alternative
+  * Fix bug: incorrect plot header when the --radians option was
+     given with the "pergm" command
+  * Fix bug: the --test-down option to "coint" was not working
+     as advertised
+  * Fix bug (?): the final regression in "coint" (Engle-Granger
+     test) could end up using a different sample range depending
+     on whether or not the --skip-df option was given
+  * Fix bug: incorrect handling of Poisson regression when the
+     specification does not include an intercept term
+  * Fix bug: bad handing of decimal comma in context of the --by
+     option
+  * Fix bug: incorrect treatment of big-endian SPSS "sav" files
+     on data import
+  * Fix bug: the auxiliary regression for White's test should
+     contain a constant even if the model to be tested does not
+  * Fix bug: wrong starting date being sent to x12a/x13as for
+     monthly data starting in October
+  * Fix bug: score calculation for random-effects probit was
+     incorrect
+  * Fix bug: incorrect estimates when the --robust option was
+     used with the "wls" command
+  * Fix bugs 181, 182
+  * Internals: add support for multiple, independent PRNGs
+  * configure script: add an option --disable-www which drops
+     the libcurl dependency, conditional on not building the
+
+-------------------------------------------------------------------
+Tue Feb 18 10:54:13 UTC 2014 - stathisagrapidis@gmail.com
+
+- New upstream release 1.9.14
+  * Use daily dates when plotting daily/weekly data and there
+     are not too many observations
+  * Line-numbering in the script editor: make this a preference
+     which is remembered
+  * mols() function: parallelize some of the work for builds
+     with openmp enabled
+  * GUI: provide a menu item for adding a panel unit index
+  * GUI: "/File/Save data as" now switches the current dataset
+     to the name of the saved one
+  * Fix bug: the build of gnuplot included in the gretl-quartz
+     package (for Mac) did not work properly in stand-alone mode
+  * Fix bug: the importer for SAS "xport" files over-counted the
+     number of observations, leading to out-of-memory failure on
+     very big datasets
+  * Fix bug: the --show-plot option to the "freq" command was not
+     being respected
+  * Fix bug: failure parsing value-labels for "int" arguments in
+     building function packages
+  * Fix bug: "foreach" loop failing when given a single term that
+     is not a named list
+  * Fix bug: panel Hausman test producing bad output under some
+     conditions
+- Updated gtksource build requirements.
+
+-------------------------------------------------------------------
+Tue Jul  9 11:24:42 UTC 2013 - stathisagrapidis@gmail.com
+
+- Fixed warning about file permissions of the upstream tarball.
+- Added desktop-file-fixwarning.patch which fixes warning: invalid
+  desktop file missing a semicolon as trailing character.
+
+-------------------------------------------------------------------
+Fri Jul  5 19:32:35 UTC 2013 - stathisagrapidis@gmail.com
+
+- New upstream version 1.9.12 
+
+-------------------------------------------------------------------
+Mon Oct 22 21:43:14 UTC 2012 - stathisagrapidis@gmail.com
+
+- Used spaces instead of tabs.
+- Removed %clean section.
+- Removed *.la files.
+
+-------------------------------------------------------------------
+Mon Oct 22 13:48:41 UTC 2012 - stathisagrapidis@gmail.com
+
+- Fixed warning: package built without RPM_OPT_FLAGS.
+- Fixed warning: empty generic name in desktop file.
+- Fixed warning: desktop file contains absolute path in icon.
+
+-------------------------------------------------------------------
+Sat Oct 20 23:55:28 UTC 2012 - stathisagrapidis@gmail.com
+
+- Made the BuildRequires one per line.
+
+-------------------------------------------------------------------
+Sat Aug 11 15:04:42 UTC 2012 - stathisagrapidis@gmail.com
+
+- Corrected the licence header of the spec to match the guidelines
+  at http://en.opensuse.org/openSUSE:Specfile_guidelines .
+
+-------------------------------------------------------------------
+Mon Aug  6 16:39:46 UTC 2012 - stathisagrapidis@gmail.com
+
+- Cleaned the runtime requires from the explicit build requires.
+- Minimised rpmlint warnings.
+
+-------------------------------------------------------------------
+Mon Aug  6 15:29:43 UTC 2012 - stathisagrapidis@gmail.com
+
+- Added runtime requires.
+- Used suse_update_desktop_file macro for the desktop file.
+- Using fdupes for duplicate files.
+
+-------------------------------------------------------------------
+Wed Aug  1 17:06:44 UTC 2012 - stathisagrapidis@gmail.com
+
+- Added optional build requires for building the documentation
+- Categorized the BuildRequires section
+
+-------------------------------------------------------------------
+Wed Aug  1 14:22:59 UTC 2012 - stathisagrapidis@gmail.com
+
+- Added GNU R as a build dep to include R Lib into the build and
+  fix the 64-bit-portability issue.
+
+-------------------------------------------------------------------
+Wed Aug  1 10:38:04 UTC 2012 - stathisagrapidis@gmail.com
+
+- Added gnome support to the build requires section.
+- Added the extra files to the filelist section.
+
+-------------------------------------------------------------------
+Thu Jul 26 11:27:11 UTC 2012 - stathisagrapidis@gmail.com
+
+- Used macros everywhere on the filelist section.
+- Corrected the licence to be spdx compliant.
+
+-------------------------------------------------------------------
+Wed Jul 25 21:28:26 UTC 2012 - stathisagrapidis@gmail.com
+
+- First successful build.
+- Used macros on the file section.
+- Splitted some files to devel package.
+
+-------------------------------------------------------------------
+Wed Jul 25 20:11:46 UTC 2012 - stathisagrapidis@gmail.com
+
+Added Requires and Provides. Added the filelist.- 
+
+-------------------------------------------------------------------
+Wed Jul 25 16:39:29 UTC 2012 - stathisagrapidis@gmail.com
+
+Corrected the date on the header and the GPL licence version.- 
+

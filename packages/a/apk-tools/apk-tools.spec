@@ -1,6 +1,7 @@
 #
 # spec file for package apk-tools
 #
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2024, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,17 +21,20 @@
 %define soname 2_14_0
 %define libname libapk%{soname}
 Name:           apk-tools
-Version:        2.14.0
+Version:        2.14.4
 Release:        0
 Summary:        Alpine package manager
 License:        GPL-2.0-or-later
 Group:          System/Packages
 URL:            https://git.alpinelinux.org/apk-tools/
 Source:         %{name}-%{version}.tar.xz
+BuildRequires:  lua53-devel
+BuildRequires:  lua53-zlib
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  scdoc
 BuildRequires:  pkgconfig(libcrypto)
+Provides:       bundled(libfetch)
 
 %description
 Alpine Package Keeper (apk) is a package manager originally built for
@@ -45,6 +49,15 @@ Alpine Package Keeper (apk) is a package manager originally built for
 Alpine Linux, but now used by several other distributions as well.
 
 Library for the Alpine package manager.
+
+%package -n lua53-apk
+Summary:        Lua module for apk-tools
+Group:          System/Packages
+Requires:       %name = %version-%release
+Requires:       lua53
+
+%description -n lua53-apk
+Lua module for apk-tools.
 
 %package -n apk-devel
 Summary:        Development files for apk
@@ -62,19 +75,19 @@ that use libapk.
 %setup -q
 
 %build
-%make_build LUA=no
+%make_build
 
 %install
 %make_install \
-     LUA=no \
      SBINDIR=%{_sbindir} \
      LIBDIR=%{_libdir} \
+     LUA_LIBDIR=%{_libdir}/lua/5.3 \
      DOCDIR=%{_docdir}/apk-tools \
      PKGCONFIGDIR=%{_libdir}/pkgconfig
 
 rm -v %{buildroot}%{_libdir}/libapk.a
 # remove spurious exec permissions from manpages
-find %{buildroot}%{_mandir} -type f | xargs  chmod -x 
+find %{buildroot}%{_mandir} -type f | xargs  chmod -x
 
 %ldconfig_scriptlets -n %{libname}
 
@@ -87,6 +100,9 @@ find %{buildroot}%{_mandir} -type f | xargs  chmod -x
 
 %files -n %{libname}
 %{_libdir}/libapk.so.%{sover}*
+
+%files -n lua53-apk
+%{_libdir}/lua/5.3/apk.so
 
 %files -n apk-devel
 %dir %{_includedir}/apk

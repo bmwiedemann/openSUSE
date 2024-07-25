@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sun Jul 21 06:31:50 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- fossil 2.24:
+  * Work around Apache httpd mod_cgi changes for Content-Length
+  * UI skin enhancements
+  * Enhancements to the /timeline page
+  * Improved display of hash algorithm used on uv-list page
+  * If the autosync setting contains keyword "all", the automatic
+    sync occurs against all defined remote repositories, not just
+    the default.
+  * Markdown formatter: improved handling of indented fenced code
+    blocks that contain blank lines.
+  * Fix problems with one-click unsubscribe on email notifications.
+  * Detect GoogleOther crawler as a robot
+- add upstream patches addressing test failures:
+  * fossil-2.24-5ad708085a90365f.patch
+  * fossil-2.24-fb4e90b662803e47.patch
+  * fossil-2.24-17c01c549e73c6b8.patch
+
+-------------------------------------------------------------------
 Sat Nov  4 14:38:37 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - fossil 2.23:
