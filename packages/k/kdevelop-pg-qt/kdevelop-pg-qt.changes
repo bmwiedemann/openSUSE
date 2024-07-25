@@ -1,0 +1,12 @@
+-------------------------------------------------------------------
+Thu Jul 25 11:37:15 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 2.3.0
+  * code generation now also with projects based on Qt 6, next
+    to Qt 5(.15)
+  * tool's own implementation switched to use Qt6 instead of Qt5
+
+-------------------------------------------------------------------
+Sun Apr 21 09:27:08 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Init kdevelop-pg-qt. Replaces kdevelop5-pg-qt.
