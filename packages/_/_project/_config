@@ -7,7 +7,7 @@ BuildFlags: genmetaalgo:1
 # The prjconf macros have a serial to help work around issues like https://github.com/openSUSE/open-build-service/issues/4088
 # On macros having impact on dep chains, update the serial (mainly ruby, python)
 # Using a date to indicate when we set the serial
-ExpandFlags: macroserial:20240529
+ExpandFlags: macroserial:20240726
 
 ExpandFlags: kiwi-nobasepackages
 ExpandFlags: docker-nobasepackages
@@ -189,8 +189,6 @@ Prefer: %{lua_pref} lua53 lua51
 Prefer: liblua5_4-5 liblua5_3-5 liblua5_1-5
 Prefer: %{lua_pref}-devel lua53-devel lua51-devel
 Prefer: libtolua++-5_4-devel libtolua++-5_3-devel libtolua++-5_1-devel
-
-Preinstall: liblua5_4-5
 
 ExpandFlags: keepfilerequires
 
@@ -629,24 +627,26 @@ Prefer: -freerdp-devel
 Prefer: -registries-conf-suse
 
 # have choice for cmake(cmocka): libcmocka-cmake libcmocka-cmake-32bit
-Prefer: -libcmocka-cmake-32bit 
+Prefer: -libcmocka-cmake-32bit
 
 #have choice for libcurl.so.4()(64bit) needed by cargo1.79: libcurl-mini4 libcurl4
-Prefer: -libcurl-mini4 
+Prefer: -libcurl-mini4
 
 #---
 
-Preinstall: aaa_base filesystem attr bash bash-sh coreutils diffutils
-Preinstall: fillup glibc grep pam permissions rpm rpm-config-SUSE sed tar
-Preinstall: libbz2-1 libgcc_s1 libncurses6 libreadline8 libz1 libselinux1
-Preinstall: libgcrypt20 libgpg-error0 liblzma5 libcap2 libacl1 libattr1
-Preinstall: libpopt0 libelf1 libzstd1 libpcre2-8-0
+%if "%_repository" != "ports"
+ExpandFlags: preinstallexpand
+%endif
+Preinstall: rpm
 
-#Runscripts: aaa_base
-
-Prefer: libdb-4_8-devel
-VMinstall: util-linux libmount1 libeconf0 perl-base libdb-4_8 libblkid1 libuuid1 libsmartcols1 libcrypt1
+# build (obs_build) is written in perl, relies on grep and util-linux tools. Thus install them early
+VMinstall: perl-base
+VMinstall: util-linux
+VMinstall: grep
+# bootstrap-copy is an aggregate-only repository, no VMs are built up
+%if "%_repository" != "bootstrap_copy"
 VMinstall: kernel-obs-build
+%endif
 
 # Use the x86_64 kernel on i586 builds - boo#1178762 - Slow down in OBS since kernel 5.6.0 on 32bit
 ExportFilter: ^kernel-obs-build.*\.x86_64.rpm$ . i586
@@ -722,7 +722,7 @@ Required: rpm-build
 Required: gcc-PIE
 
 # the basic stuff
-Support: perl
+Required: perl
 Support: build-mkbaselibs compat-usrmerge-build
 Prefer:  build-mkbaselibs
 Support: brp-check-suse
@@ -949,7 +949,7 @@ Prefer: -python312-PyQt6
 Prefer: man
 
 # go exists in mutliple versions by now - we prefer the 'unversioned package'
-Prefer: go -go1.13
+Prefer: go -go1.13 -go1.22
 
 # have choice for kernel >= 4.1.0 needed by libbcc0: kernel-debug kernel-default kernel-default-base kernel-kvmsmall kernel-vanilla
 Prefer: kernel-default-base
