@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu Jul 25 05:27:47 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 12.92:
+  * Removed -w from exiftool shebang
+
+-------------------------------------------------------------------
+Thu Jul 25 05:27:27 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 12.91:
+  * Fixed 2 test files that were causing failed tests
+
+-------------------------------------------------------------------
+Thu Jul 25 05:26:47 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 12.90:
+  * Added support for reading Samsung trailer from PNG images
+  * Decode two more formats of timed GPS from MP4 videos
+  * Decode a few more Samung trailer tags (thanks Neal Krawetz)
+  * Decode Canon AntiFlicker tag
+  * Drop Nikon ShotInfo record when copying MakerNotes from NEF
+    to JPG if it is larger than 50000 bytes (then MakerNotes would
+    be too large for a single JPEG segment)
+  * Changed exiftool shebang from "#!/usr/bin/perl" to "#!/usr/bin/env perl"
+  * Revert change of 12.84 to iterate through sub-documents
+    with the -p option only if -ee is used
+
+-------------------------------------------------------------------
 Mon Jul 15 04:18:44 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 12.89:
