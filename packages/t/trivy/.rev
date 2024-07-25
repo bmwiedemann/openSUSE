@@ -1093,4 +1093,16 @@
 (🤖: Submission of trivy via https://src.opensuse.org/pool/trivy/pulls/3 by dirkmueller)</comment>
     <requestid>1186913</requestid>
   </revision>
+  <revision rev="67" vrev="2">
+    <srcmd5>4c088346761472c7386cf3ae6603acfa</srcmd5>
+    <version>0.53.0</version>
+    <time>1721914794</time>
+    <user>dimstar_suse</user>
+    <comment>refresh patch with latest PR state
+
+
+
+(🤖: Submission of trivy via https://src.opensuse.org/pool/trivy/pulls/4 by dirkmueller)</comment>
+    <requestid>1189570</requestid>
+  </revision>
 </revisionlist>
