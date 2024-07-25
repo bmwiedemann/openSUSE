@@ -14,4 +14,12 @@ When nothing else is possible we download tarball from GitHub,
 those often contain tests even when the PyPI’s one don’t.</comment>
     <requestid>1185433</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>d2b149e577569ed7aaacde1982bd3192</srcmd5>
+    <version>1.6.3</version>
+    <time>1721914796</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop tests/test_performance.py to fix emulated build on riscv64</comment>
+    <requestid>1189561</requestid>
+  </revision>
 </revisionlist>

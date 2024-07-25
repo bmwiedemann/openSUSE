@@ -47,6 +47,10 @@ Python module for serializing Python objects to JSON (dicts) and back.
 %autosetup -p1 -n jsons-%{version}
 # Fix line endings
 sed -i 's/\r$//' README.md
+%if 0%{?qemu_user_space_build}
+# Performance tests may fail, e.g., for riscv64 under emulation
+rm -v tests/test_performance.py
+%endif
 
 %build
 %pyproject_wheel

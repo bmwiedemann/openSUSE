@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jul 14 23:14:35 UTC 2024 - Andreas Färber <afaerber@suse.de>
+
+- Drop tests/test_performance.py to fix emulated build on riscv64
+
+-------------------------------------------------------------------
 Thu Jul  4 17:41:51 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Add gh187-test_dump_load_parameterized_collections-fails.patch
