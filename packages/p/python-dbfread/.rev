@@ -34,4 +34,12 @@ https://build.opensuse.org/request/show/605896</comment>
   suite to pass with PyTest 4.</comment>
     <requestid>744751</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>3f1510a39a420baf4ede079bd865ae9c</srcmd5>
+    <version>2.0.7</version>
+    <time>1721914802</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1189575</requestid>
+  </revision>
 </revisionlist>

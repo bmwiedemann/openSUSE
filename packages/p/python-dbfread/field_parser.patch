@@ -1,0 +1,13 @@
+Index: dbfread-2.0.7/dbfread/field_parser.py
+===================================================================
+--- dbfread-2.0.7.orig/dbfread/field_parser.py
++++ dbfread-2.0.7/dbfread/field_parser.py
+@@ -175,7 +175,7 @@ class FieldParser:
+ 
+     def parseO(self, field, data):
+         """Parse long field (O) and return float."""
+-        return struct.unpack('d', data)[0]
++        return struct.unpack('<d', data)[0]
+ 
+     def parseT(self, field, data):
+         """Parse time field (T)

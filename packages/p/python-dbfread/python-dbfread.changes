@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul 23 11:06:07 UTC 2024 - Berthold Gunreben <azouhr@opensuse.org>
+
+- Add field_parser.patch to ensure that fields are parsed with
+  little endian. Created pull request at gh#olemb/dbfread#71.
+
+-------------------------------------------------------------------
 Fri Nov  1 13:49:17 CET 2019 - Matej Cepl <mcepl@suse.com>
 
 - Add pytest4.patch from gh#olemb/dbfread#33 which makes the test

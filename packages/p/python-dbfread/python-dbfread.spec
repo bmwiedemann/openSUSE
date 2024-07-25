@@ -1,7 +1,7 @@
 #
 # spec file for package python-dbfread
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,7 @@ URL:            https://github.com/olemb/dbfread
 Source:         https://files.pythonhosted.org/packages/source/d/dbfread/dbfread-%{version}.tar.gz
 # gh#olemb/dbfread#33
 Patch0:         pytest4.patch
+Patch1:         field_parser.patch
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
