@@ -633,4 +633,20 @@
   * Add non-nix pre-commit rustfmt and clippy hooks</comment>
     <requestid>1188292</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>bc6f0c8b3d649c5d50b855c625255e9d</srcmd5>
+    <version>0.18.23+0</version>
+    <time>1721914799</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.18.23:
+  Bug Fixes:
+  * Disable broken freebsd tests
+  Documentation:
+  * Clear up confusion around ls
+  Build:
+  * Bump log from 0.4.21 to 0.4.22
+  * Bump DeterminateSystems/nix-installer-action from 12 to 13
+  * Bump plist from 1.6.1 to 1.7.0</comment>
+    <requestid>1189574</requestid>
+  </revision>
 </revisionlist>
