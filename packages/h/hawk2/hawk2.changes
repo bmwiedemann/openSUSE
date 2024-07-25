@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jul 19 13:57:14 UTC 2024 - aburlakov@suse.com
+
+- Update to version 2.6.5+git.1721396378.dfdc98db:
+  * Fix: cibtools: adjust to the new cibadmin format (bsc#1228106)
+  * Test: extend the test_check_cluster_configuration (ped#8036,ped#8016,ped#8260,ped#8249)
+  * Update the drop-down boxes in the Cluster Configuration (ped#8036,ped#8016,ped#8260,ped#8249)
+  * Increase the test delays back, as they were before
+  * Add test_check_cluster_configuration for 15aee3b2 (ped#8036,ped#8016,ped#8260,ped#8249)
+  * Use crm_attribute --list-options (ped#8036,ped#8016,ped#8260,ped#8249)
+  * Check rsc stonith is in maintenance by either of 2 keywords
+
+-------------------------------------------------------------------
 Wed Mar 06 09:53:44 UTC 2024 - aburlakov@suse.com
 
 - Update to version 2.6.4+git.1709557109.3388d243:
