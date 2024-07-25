@@ -1,0 +1,14 @@
+-------------------------------------------------------------------
+Thu Jul 25 03:18:17 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update descriptions
+- Use normal SRPM name base for devel subpackage and
+  require devel subpackage to have a matching library package
+- Ship unpackaged cpuid-dump on i586
+
+-------------------------------------------------------------------
+Fri Jul 19 11:14:42 UTC 2024 - Adrian Schröter <adrian@suse.de>
+
+- initial package.
+  We don't have any version yet upstream, so using version and soname 0
+

@@ -1,0 +1,14 @@
+<services>
+  <service name="obs_scm" mode="manual">
+    <param name="url">https://github.com/pytorch/cpuinfo</param>
+    <param name="scm">git</param>
+    <param name="versionformat">0~git%ct.%h</param>
+    <param name="revision">ca678952a9a8eaa6de112d154e8e104b22f9ab3f</param>
+  </service>
+  <service name="tar" mode="buildtime" />
+  <service name="recompress" mode="buildtime">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service name="set_version" mode="manual" />
+</services>

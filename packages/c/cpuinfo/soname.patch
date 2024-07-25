@@ -1,0 +1,12 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 4634a22..87178a9 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -259,6 +259,7 @@ ELSEIF(CPUINFO_LIBRARY_TYPE STREQUAL "static")
+ ELSE()
+   MESSAGE(FATAL_ERROR "Unsupported library type ${CPUINFO_LIBRARY_TYPE}")
+ ENDIF()
++set_target_properties(cpuinfo PROPERTIES VERSION 0.0.0 SOVERSION 0)
+ ADD_LIBRARY(cpuinfo_internals STATIC ${CPUINFO_SRCS})
+ CPUINFO_TARGET_ENABLE_C99(cpuinfo)
+ CPUINFO_TARGET_ENABLE_C99(cpuinfo_internals)
