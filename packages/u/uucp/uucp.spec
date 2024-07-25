@@ -1,7 +1,7 @@
 #
 # spec file for package uucp
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -53,6 +53,7 @@ Patch15:        option-to-not-force-hw-control.patch
 Patch16:        spelling.patch
 Patch17:        wait-for-correct-parent.patch
 Patch18:        pipe-command-hostname-not-null.patch
+Patch19:        uucp-fix-gcc14.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  makeinfo
@@ -128,6 +129,7 @@ service units.
 %patch -P 16 -p0 -b .p16
 %patch -P 17 -p0 -b .p17
 %patch -P 18 -p0 -b .p18
+%patch -P 19 -p1 -b .p19
 
 %build
 autoreconf -fvi

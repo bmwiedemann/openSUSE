@@ -1,0 +1,26 @@
+Index: uucp-1.07/configure.in
+===================================================================
+--- uucp-1.07.orig/configure.in
++++ uucp-1.07/configure.in
+@@ -285,7 +285,7 @@ fi
+ dnl
+ AC_MSG_CHECKING(for void)
+ AC_CACHE_VAL(uucp_cv_c_void,
+-[AC_TRY_COMPILE([], [extern void foo (); (void) exit (0);],
++[AC_TRY_COMPILE([], [extern void foo (); extern void exit(int); (void) exit (0);],
+ uucp_cv_c_void=yes, uucp_cv_c_void=no)])
+ AC_MSG_RESULT($uucp_cv_c_void)
+ if test $uucp_cv_c_void = yes; then
+Index: uucp-1.07/unix/pipe.c
+===================================================================
+--- uucp-1.07.orig/unix/pipe.c
++++ uucp-1.07/unix/pipe.c
+@@ -200,7 +200,7 @@ fspipe_dial (qconn, puuconf, qsys, zphon
+   struct ssysdep_conn *q;
+   int aidescs[3];
+   const char **pzprog;
+-  char **p;
++  const char **p;
+   const char *zhost;
+ 
+   q = (struct ssysdep_conn *) qconn->psysdep;

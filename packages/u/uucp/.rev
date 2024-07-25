@@ -75,4 +75,12 @@
     <comment>Prepare for RPM 4.20 (forwarded request 1148206 from dimstar)</comment>
     <requestid>1148426</requestid>
   </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>e5540551ac4e3eb0bf75cdfcb5265017</srcmd5>
+    <version>1.07</version>
+    <time>1721914815</time>
+    <user>dimstar_suse</user>
+    <comment>- uucp-fix-gcc14.patch: fix build with gcc14 (forwarded request 1189597 from msmeissn)</comment>
+    <requestid>1189601</requestid>
+  </revision>
 </revisionlist>
