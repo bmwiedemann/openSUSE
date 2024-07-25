@@ -1703,6 +1703,10 @@ unsorted:
   - buildkit 
   - buildnumber-maven-plugin 
   - buildnumber-maven-plugin-javadoc 
+  - buildpacks-cli 
+  - buildpacks-cli-bash-completion 
+  - buildpacks-cli-fish-completion 
+  - buildpacks-cli-zsh-completion 
   - buildstream 
   - bulk_extractor 
   - bumblebee 
@@ -2634,6 +2638,8 @@ unsorted:
   - cpu-x-zsh-completion 
   - cpufetch 
   - cpuid 
+  - cpuinfo 
+  - cpuinfo-devel 
   - cpulimit 
   - cpuminer 
   - cpupower-bench 
@@ -7474,7 +7480,6 @@ unsorted:
   - goffice-devel 
   - goffice-lang 
   - gojq 
-  - gojsontoyaml 
   - gokart 
   - golang-github-QubitProducts-exporter_exporter 
   - golang-github-boynux-squid_exporter 
@@ -7888,6 +7893,10 @@ unsorted:
   - greetd 
   - grepcidr 
   - grepmail 
+  - gretl 
+  - gretl-devel 
+  - gretl-doc 
+  - gretl-lang 
   - grex 
   - grfcodec 
   - gri 
@@ -9751,6 +9760,7 @@ unsorted:
   - kdesignerplugin-lang 
   - kdesu-devel 
   - kdesvn 
+  - kdevelop-pg-qt 
   - kdevelop5-pg-qt 
   - kdevelop5-plugin-php 
   - kdevelop5-plugin-php-devel 
@@ -10132,6 +10142,7 @@ unsorted:
   - knockd 
   - knot 
   - knot-devel 
+  - knot-utils 
   - knotifications-devel 
   - knotifications-imports 
   - knotifyconfig-devel 
@@ -10327,6 +10338,7 @@ unsorted:
   - kubeaudit-fish-completion 
   - kubeaudit-zsh-completion 
   - kubeconform 
+  - kubectl-browse-pvc 
   - kubectl-capacity 
   - kubectl-explore 
   - kubectl-foreach 
@@ -12390,6 +12402,7 @@ unsorted:
   - libcpuid-devel 
   - libcpuid-tools 
   - libcpuid16 
+  - libcpuinfo0 
   - libcpuset-devel 
   - libcpuset1 
   - libcrc32c-devel 
@@ -12563,7 +12576,7 @@ unsorted:
   - libdico2 
   - libdict-devel 
   - libdict1_0 
-  - libdigikamcore8_3_0 
+  - libdigikamcore8_4_0 
   - libdirac_decoder0 
   - libdirac_decoder0-32bit 
   - libdirac_encoder0 
@@ -13395,6 +13408,7 @@ unsorted:
   - libgraphene-devel 
   - libgraphite2-3-32bit 
   - libgravatar-devel 
+  - libgretl-1_0-48 
   - libgromacs9 
   - libgromacs_mpi9 
   - libgrpc++1_62 
@@ -16344,6 +16358,8 @@ unsorted:
   - libtomoe-gtk0 
   - libtool 
   - libtool-32bit 
+  - libtorch 
+  - libtorch-openmpi4 
   - libtorrent-devel 
   - libtorrent-rasterbar-devel 
   - libtorrent-rasterbar-doc 
@@ -16476,7 +16492,7 @@ unsorted:
   - libunicap2 
   - libunicode-devel 
   - libunicode-tools 
-  - libunicode0_2 
+  - libunicode0_4 
   - libuninameslist-devel 
   - libuninameslist1 
   - libunistring-devel 
@@ -17515,13 +17531,13 @@ unsorted:
   - lua51-BitOp 
   - lua51-alt-getopt 
   - lua51-argparse 
-  - lua51-bit32 
   - lua51-busted 
   - lua51-cassowary 
   - lua51-cjson 
   - lua51-cldr 
   - lua51-cliargs 
   - lua51-compat-5.3 
+  - lua51-compat-5.3-bit32 
   - lua51-copas 
   - lua51-cosmo 
   - lua51-coxpcall 
@@ -17580,6 +17596,7 @@ unsorted:
   - lua51-zlib 
   - lua53 
   - lua53-alt-getopt 
+  - lua53-apk 
   - lua53-argparse 
   - lua53-busted 
   - lua53-cassowary 
@@ -17648,13 +17665,13 @@ unsorted:
   - lua54 
   - lua54-alt-getopt 
   - lua54-argparse 
-  - lua54-bit32 
   - lua54-busted 
   - lua54-cassowary 
   - lua54-cjson 
   - lua54-cldr 
   - lua54-cliargs 
   - lua54-compat-5.3 
+  - lua54-compat-5.3-bit32 
   - lua54-copas 
   - lua54-cosmo 
   - lua54-coxpcall 
@@ -24357,6 +24374,7 @@ unsorted:
   - python310-azure-mgmt-commerce 
   - python310-azure-mgmt-communication 
   - python310-azure-mgmt-compute 
+  - python310-azure-mgmt-computefleet 
   - python310-azure-mgmt-confidentialledger 
   - python310-azure-mgmt-confluent 
   - python310-azure-mgmt-connectedvmware 
@@ -27126,6 +27144,14 @@ unsorted:
   - python310-toolz 
   - python310-toposort 
   - python310-topy 
+  - python310-torch 
+  - python310-torch-converters 
+  - python310-torch-devel 
+  - python310-torch-examples 
+  - python310-torch-openmpi4 
+  - python310-torch-openmpi4-converters 
+  - python310-torch-openmpi4-devel 
+  - python310-torch-openmpi4-examples 
   - python310-tornado 
   - python310-tornado6 
   - python310-tortilla 
@@ -27954,6 +27980,7 @@ unsorted:
   - python311-azure-mgmt-commerce 
   - python311-azure-mgmt-communication 
   - python311-azure-mgmt-compute 
+  - python311-azure-mgmt-computefleet 
   - python311-azure-mgmt-confidentialledger 
   - python311-azure-mgmt-confluent 
   - python311-azure-mgmt-connectedvmware 
@@ -30623,6 +30650,14 @@ unsorted:
   - python311-toolz 
   - python311-toposort 
   - python311-topy 
+  - python311-torch 
+  - python311-torch-converters 
+  - python311-torch-devel 
+  - python311-torch-examples 
+  - python311-torch-openmpi4 
+  - python311-torch-openmpi4-converters 
+  - python311-torch-openmpi4-devel 
+  - python311-torch-openmpi4-examples 
   - python311-tornado 
   - python311-tortilla 
   - python311-towncrier 
@@ -31466,6 +31501,7 @@ unsorted:
   - python312-azure-mgmt-commerce 
   - python312-azure-mgmt-communication 
   - python312-azure-mgmt-compute 
+  - python312-azure-mgmt-computefleet 
   - python312-azure-mgmt-confidentialledger 
   - python312-azure-mgmt-confluent 
   - python312-azure-mgmt-connectedvmware 
@@ -34226,6 +34262,14 @@ unsorted:
   - python312-toolz 
   - python312-toposort 
   - python312-topy 
+  - python312-torch 
+  - python312-torch-converters 
+  - python312-torch-devel 
+  - python312-torch-examples 
+  - python312-torch-openmpi4 
+  - python312-torch-openmpi4-converters 
+  - python312-torch-openmpi4-devel 
+  - python312-torch-openmpi4-examples 
   - python312-tornado 
   - python312-tornado6 
   - python312-tortilla 
