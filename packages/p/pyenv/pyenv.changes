@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Jul 23 10:35:09 UTC 2024 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.4.8
+
+- Spec change
+  For the %check section, don't run "make test" but use specific
+  tests. Upstream uses them in their GitHub Action workflow. What's
+  good for them, is also good for us.
+  => This simplifies the overall error and no patches are needed.
+
+-------------------------------------------------------------------
+Mon Jul 22 18:45:30 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Almost working testing.
+
+-------------------------------------------------------------------
+Mon Jul 22 08:11:10 UTC 2024 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.4.8
+
+- Update to 2.4.8:
+  - Fix pyenv-uninstall not having the debug tracing invocation in #3020
+  - Add CPython 3.13.0b4 and 3.13.0b4t in #3019
+  - README: Remove reference to Fig in #3018
+  - Fix tests failing if plugins are installed in #3022
+  - pyenv-latest: replace -q with -b and -f, document as internal in #3021
+
+Full Changelog: https://github.com/pyenv/pyenv/compare/v2.4.7...v2.4.8
+
+-------------------------------------------------------------------
 Tue Jul 16 08:44:03 UTC 2024 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.4.7
 
 - Update to 2.4.7:

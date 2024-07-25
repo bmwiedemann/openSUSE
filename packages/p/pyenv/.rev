@@ -425,4 +425,26 @@ Update to 1.1.4</comment>
     <comment></comment>
     <requestid>1188210</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>a72d476fee3d49e26a1cebb66f0ab573</srcmd5>
+    <version>2.4.8</version>
+    <time>1721914804</time>
+    <user>dimstar_suse</user>
+    <comment>- Spec change
+  For the %check section, don't run &quot;make test&quot; but use specific
+  tests. Upstream uses them in their GitHub Action workflow. What's
+  good for them, is also good for us.
+  =&gt; This simplifies the overall error and no patches are needed.
+
+- Almost working testing.
+
+- Update to 2.4.8:
+  - Fix pyenv-uninstall not having the debug tracing invocation in #3020
+  - Add CPython 3.13.0b4 and 3.13.0b4t in #3019
+  - README: Remove reference to Fig in #3018
+  - Fix tests failing if plugins are installed in #3022
+  - pyenv-latest: replace -q with -b and -f, document as internal in #3021
+Full Changelog: https://github.com/pyenv/pyenv/compare/v2.4.7...v2.4.8</comment>
+    <requestid>1189588</requestid>
+  </revision>
 </revisionlist>

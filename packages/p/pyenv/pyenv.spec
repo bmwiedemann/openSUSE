@@ -19,7 +19,7 @@
 %define pyenv_dir      %{_libexecdir}/pyenv
 #
 Name:           pyenv
-Version:        2.4.7
+Version:        2.4.8
 Release:        0
 Summary:        Python Version Management
 License:        MIT
@@ -28,6 +28,7 @@ URL:            https://github.com/pyenv/pyenv
 Source:         https://github.com/pyenv/pyenv/archive/refs/tags/v%{version}.tar.gz#/pyenv-%{version}.tar.gz
 #
 BuildRequires:  bash-completion
+BuildRequires:  bats
 BuildRequires:  fdupes
 BuildRequires:  fish
 BuildRequires:  gcc
@@ -144,6 +145,10 @@ pushd plugins/python-build
 popd
 
 %fdupes %{buildroot}%{pyenv_dir}
+
+%check
+export PATH="$PATH:%{buildroot}%{_libexecdir}/pyenv/libexec"
+bats test/{pyenv,hooks,versions}.bats
 
 %files
 %doc CHANGELOG.md COMMANDS.md README.md
