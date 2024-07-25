@@ -373,4 +373,17 @@
     CHANGELOG.md file provided with this package (forwarded request 1177051 from glaubitz)</comment>
     <requestid>1177720</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>f5a971c4629d25fcf64a44671c47b39d</srcmd5>
+    <version>26.0.0</version>
+    <time>1721914810</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 26.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Drop extra LICENSE.txt as upstream now ships its own
+- Rename LICENSE.txt to LICENSE in %files section (forwarded request 1189544 from glaubitz)</comment>
+    <requestid>1189595</requestid>
+  </revision>
 </revisionlist>
