@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jul 25 08:51:44 UTC 2024 - Marcus Meissner <meissner@suse.com>
+
+- xcb-prototype.patch: fix main() prototype for gcc14
+
+-------------------------------------------------------------------
 Mon Feb  8 11:06:35 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
 
 - Modernise spec file

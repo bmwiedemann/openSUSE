@@ -1,0 +1,12 @@
+Index: xcb-2.5/xcb.c
+===================================================================
+--- xcb-2.5.orig/xcb.c
++++ xcb-2.5/xcb.c
+@@ -1350,6 +1350,7 @@ xevents ()
+     }
+ }
+ 
++int
+ main (argc, argv)
+      int argc;
+      char **argv;

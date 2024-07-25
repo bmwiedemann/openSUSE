@@ -1,7 +1,7 @@
 #
 # spec file for package xcb
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,7 @@ License:        MIT
 Group:          System/X11/Utilities
 URL:            http://www.goof.com/pcg/marc/xcb.html
 Source:         %{name}-%{version}.tar.bz2
+Patch0:         xcb-prototype.patch
 BuildRequires:  imake
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(x11)
