@@ -1,7 +1,7 @@
 #
 # spec file for package testssl.sh
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2018 Matthias Fehring <buschmann23@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,7 +20,7 @@
 %define _data_dir_name testssl-sh
 
 Name:           testssl.sh
-Version:        3.0.8
+Version:        3.0.9
 Release:        0
 Summary:        Testing TLS/SSL Encryption Anywhere On Any Port
 License:        GPL-2.0-or-later

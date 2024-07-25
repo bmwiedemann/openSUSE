@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Jul 24 06:52:48 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.0.9
+  * Fix bash 5 issue when encountering a short server key extension
+  * Fix HTML issue when using bash 5
+  * CAA DNS records are now not being queried when nodns is set
+  * MongoDB identification fix
+  * Sanity check when user has broken umask to avoid runtime errors
+  * Fix for newer grep versions
+  * Address weird globbing in bash 3.0
+  * Fix regexp in STARTTLS detection
+  * Secure renegotiation fix: SNI
+  * Ensure control chars from HTTP header don't end up in html,csv
+    or json
+  * Add sha1WithRSA to sha1WithRSAEncryption for certificates
+  * Fix potential infinite loop in run_pfs()
+
+-------------------------------------------------------------------
 Mon Feb 26 12:52:24 UTC 2024 - pgajdos@suse.com
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
