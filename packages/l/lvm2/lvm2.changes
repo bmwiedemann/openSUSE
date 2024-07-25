@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jul 22 01:44:00 UTC 2024 - Glass Su <glass.su@suse.com>
+
+- enable devices file feature by default - see lvmdevices(8)
+  * enable '--with-default-use-devices-file=1' in lvm2.spec
+  * update commented default value of 'use_devicesfile' in lvm2.conf
+
+-------------------------------------------------------------------
 Wed Jun 26 22:59:00 UTC 2024 - Heming Zhao <heming.zhao@suse.com>
 
 - add rpm dependency in spec file for aligning new DM udev rules (bsc#1225783)

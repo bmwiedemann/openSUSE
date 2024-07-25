@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jul 22 18:43:26 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.11.6:
+  * Bump version to 2.11.6 (#19142)
+  * Merge commit from fork
+  * fix: cherry-pick #18761 (v2.11) (#19108)
+
+-------------------------------------------------------------------
 Tue Jul 16 05:50:42 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.11.5:

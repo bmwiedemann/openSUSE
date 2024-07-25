@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jul 23 06:05:14 UTC 2024 - jlee@suse.com
+
+- Update to version 10.2+git20240723.d344d91:
+  * Quote % signs in scripts
+  * Export also a VCS tag
+  * specfile: Change license to OR-LATER
+  * specfile: Update rpm constructs
+  * spec.in: Add changelog tag
+  * spec.in: Don't copy changes to OTHER
+  * spec.in: Use SPDX license
+
+-------------------------------------------------------------------
 Fri Feb 16 13:05:01 UTC 2024 - jlee@suse.com
 
 - Update to version 10.2+git20240216.1e15ef4:

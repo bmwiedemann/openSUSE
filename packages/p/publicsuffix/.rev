@@ -1564,4 +1564,41 @@ Now with build cycle removed.</comment>
   * Clean up list to fix rule sorting within orgs (#1968)</comment>
     <requestid>1178974</requestid>
   </revision>
+  <revision rev="112" vrev="1">
+    <srcmd5>5234bc5a8a519b8badb10949917caa93</srcmd5>
+    <version>20240722</version>
+    <time>1721827973</time>
+    <user>dimstar_suse</user>
+    <comment> Update to version 20240722:
+  * PSL Private Section Domains WHOIS Checker (#2014)
+  * Add servebolt.cloud to PLS (#2026)
+  * Add `p.tawk.email` and `p.tawkto.email` domains (#2016)
+  * Remove domain no longer under Supabase control. (#2037)
+  * tools/internal/parser: implement automatic reformatting (#2036)
+  * util: gTLD data autopull updates for 2024-07-12T15:14:39 UTC (#2034)
+  * Add dhosting.pl Sp. z o.o. shared domains: dfirma.pl, dkonto.pl, you2.pl (#2024)
+  * tools/internal/parser: rework metadata extraction for more accurate reformatting (#2027)
+  * AWS Submissions to the Public Suffix List - Q2 2024 (#1954)
+  * aero: remove extra word between TLD name and URL (#2029)
+  * tools/internal/parser: rewrite parser to output a syntax tree (#2025)
+  * Add removal notice to PR template (#2023)
+  * remove Rakuten Games, Inc related entries (#2022)
+  * add `hatenablog.com` etc (#1948)
+  * Add cyber_Folks S.A. shared domain - cfolks.pl (#2017)
+  * tools/internal/parser: minor parser cleanups (#2021)
+  * Add Craft Docs Domain (#2006)
+  * util: gTLD data autopull updates for 2024-06-29T15:13:33 UTC (#2020)
+  * Merge WebPros domains in the same section (#2013)
+  * Add `durumis.com` (#1978)
+  * tools/internal/parser: validate the sort order of the private section (#2012)
+  * Update comments on aland.fi (#2019)
+  * Remove instantcloud.cn (#2015)
+  * tools/internal/parser: detect and report section markers within suffix blocks (#2011)
+  * tools/internal/parser: remove workarounds for fixed PSL blocks (#2010)
+  * Add Raidboxes GmbH to the list (#2004)
+  * Add missing URL schemes to URLs (#2008)
+  * Add closing chevron to contact email address. (#2007)
+  * tool/internal/parser: sanitize input to clean, valid UTF-8 (#2005)</comment>
+    <requestid>1188969</requestid>
+  </revision>
 </revisionlist>

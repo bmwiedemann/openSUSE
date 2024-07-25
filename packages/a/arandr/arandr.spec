@@ -57,7 +57,11 @@ python3 ./setup.py install \
     --prefix="%{_prefix}" \
     --root=%{buildroot}
 
-%suse_update_desktop_file -r "%{name}" Settings DesktopSettings
+# removed obsolete suse_update_desktop_file
+#suse_update_desktop_file -r "${name}" Settings DesktopSettings
+# all it did was this, which doesn't look substantial
+#-Categories=Settings;HardwareSettings;
+#+Categories=Settings;DesktopSettings;
 
 %find_lang "%{name}"
 

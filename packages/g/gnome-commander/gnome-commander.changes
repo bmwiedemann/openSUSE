@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Tue Jul 23 05:10:36 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.18.0:
+  + New Features and Improvements:
+    - Refactoring and Modernization: Significant code refactoring,
+      including decoupling various components such as GnomeCmdDir,
+      GnomeCmdDirIndicator, GnomeCmdFileSelector, and
+      GnomeCmdCmdline for better modularity and maintainability.
+    - Event Handling Overhaul: Transition from traditional event
+      handling to modern GtkEventController, enhancing
+      responsiveness and reliability.
+    - Enhanced User Interface: Multiple UI improvements, including
+      replacing deprecated GtkMenu with GtkPopover, and updating
+      various dialogs and popups for a cleaner look.
+    - Improved Icon Handling: Shift from GdkPixbuf to GIcon for
+      icon management, optimizing resource usage and improving
+      performance.
+  + Bug fixes:
+    - Fix for double g_error_free call (Mamoru Tasaka)
+    - Improved stability
+  + Miscellaneous:
+    - Removed Redundant References: Cleaned up the codebase by
+      eliminating unnecessary references.
+  + Updated translations.
+- Drop -Dunique=disabled meson parameters: the feature has been
+  removed upstream with the switch to GTK3.
+- Replace pkgconfig(gtk+-2.0) BuildRequires with
+  pkgconfig(gtk+-3.0): follow upstreams port to GTK 3.
+- Add xvfb-run BuildRequires and run meson_test using xvfb-run: the
+  tests require a graphical display.
+
+
+-------------------------------------------------------------------
 Fri May 17 06:07:26 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.16.2:

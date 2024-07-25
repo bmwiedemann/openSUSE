@@ -18,13 +18,13 @@
 
 
 Name:           pesign-obs-integration
-Version:        10.2+git20240216.1e15ef4
+Version:        10.2+git20240723.d344d91
 Release:        0
 Summary:        Macros and scripts to sign the kernel and bootloader
-License:        GPL-2.0-only
+License:        GPL-2.0-or-later
 Group:          Development/Tools/Other
 URL:            https://en.opensuse.org/openSUSE:UEFI_Image_File_Sign_Tools
-Source:         %{name}-%{version}.tar.gz
+Source0:        %{name}-%{version}.tar.gz
 BuildRequires:  openssl
 Requires:       fipscheck
 Requires:       mozilla-nss-tools
@@ -40,8 +40,7 @@ This package provides scripts and rpm macros to automate signing of the
 boot loader, kernel and kernel modules in the openSUSE Buildservice.
 
 %prep
-%setup -q -D
-%autopatch -p1
+%autosetup -p1
 
 %build
 

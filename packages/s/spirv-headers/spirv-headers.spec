@@ -24,8 +24,8 @@
 # and the independently increasing toolchain release number (283).
 
 Name:           spirv-headers
-Version:        1.6.1+sdk283
-%define innerver 1.3.283
+Version:        1.6.1+sdk290
+%define innerver 1.3.290
 Release:        0
 Summary:        Machine-readable files from the SPIR-V registry
 License:        MIT

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Jul 23 03:52:54 UTC 2024 - mvetter@suse.com
+
+- Update to version 0~20240722.a998e91:
+  * Fix clang-extract discarding struct-partial definition in nested record
+  * Add (failing) testcase
+  * Fix clang-extract dropping complete definition of struct when a copy is necessary
+  * Fix struct being redefined if defined in variable type
+  * Extend parent RecordDecl analysis for EnumDecls
+  * Remove redundant leftmost decl from closure
+  * Avoid adding every previous decl of a global variable
+  * Force TagDecl as needing fulldefiniton if is a return type of a function
+  * Deference pointer types when searching for decomposed typedef-struct
+  * Analyze CleanupAttr
+  * Avoid adding previous declarations of typedefs into closure
+  * SymbolExternalizer: Check KLP_ macros only if there was externzalized syms
+
+-------------------------------------------------------------------
 Mon Jul 22 08:27:55 UTC 2024 - mvetter@suse.com
 
 - Update to version 0~20240721.9b2dfb6:

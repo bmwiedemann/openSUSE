@@ -24,7 +24,6 @@
 %define real_version 5.15.14
 %define so_version 5.15.14
 %define tar_version qt3d-everywhere-src-%{version}
-%global enable_assimp (0%{?suse_version} >= 1550)
 Name:           libqt5-qt3d
 Version:        5.15.14+kde0
 Release:        0
@@ -48,9 +47,7 @@ BuildRequires:  perl
 %endif
 BuildRequires:  pkgconfig
 BuildRequires:  xz
-%if %{enable_assimp}
 BuildRequires:  pkgconfig(assimp) > 3.3.1
-%endif
 BuildRequires:  pkgconfig(zlib)
 
 %description
@@ -61,6 +58,8 @@ systems with support for 2D and 3D rendering in both Qt C++ and Qt Quick applica
 
 %prep
 %autosetup -p1 -n %{tar_version}
+
+rm -r src/3rdparty/assimp/{src,unzip}
 
 %package -n %{libname}
 Summary:        Qt 5 3D Addon
@@ -401,11 +400,7 @@ the exact Qt version.
 mkdir .git
 %endif
 %qmake5 -- \
-%if %{enable_assimp}
-	-system-assimp \
-%else
-	-no-assimp \
-%endif
+  -system-assimp
 
 %make_jobs
 
@@ -415,7 +410,6 @@ mkdir .git
 # kill .la files
 rm -f %{buildroot}%{_libqt5_libdir}/lib*.la
 
-%if %{enable_assimp}
 # put all the binaries to %%_bindir and symlink them back to %%_qt5_bindir
 mkdir -p %{buildroot}%{_bindir}
 pushd %{buildroot}%{_libqt5_bindir}
@@ -424,7 +418,6 @@ for i in * ; do
       ln -s %{_libqt5_bindir}/$i %{buildroot}%{_bindir}/${i}
 done
 popd
-%endif
 
 %fdupes %{buildroot}
 
@@ -455,9 +448,7 @@ popd
 %dir %{_libqt5_libdir}/qt5/plugins/sceneparsers
 %{_libqt5_libdir}/qt5/plugins/sceneparsers/libgltfsceneimport.so
 %{_libqt5_libdir}/qt5/plugins/sceneparsers/libgltfsceneexport.so
-%if %{enable_assimp}
 %{_libqt5_libdir}/qt5/plugins/sceneparsers/libassimpsceneimport.so
-%endif
 %dir %{_libqt5_libdir}/qt5/plugins/geometryloaders
 %{_libqt5_libdir}/qt5/plugins/geometryloaders/libdefaultgeometryloader.so
 %{_libqt5_libdir}/qt5/plugins/geometryloaders/libgltfgeometryloader.so
@@ -504,11 +495,9 @@ popd
 %files tools
 %defattr(-,root,root,755)
 %license LICENSE.*
-%if %{enable_assimp}
 %{_bindir}/qgltf
 %{_bindir}/qgltf-qt5
 %{_libqt5_bindir}/qgltf
-%endif
 
 %files examples
 %defattr(-,root,root,755)

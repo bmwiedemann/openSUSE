@@ -20,9 +20,10 @@
 # If there are patches which touch autotools files, set this to 1.
 %global patches_touch_autotools 1
 # The source directory.
-%global source_directory 2.4-stable
+#%global source_directory 2.4-stable
+%global source_directory 2.5-development
 Name:           virt-v2v
-Version:        2.4.0
+Version:        2.5.5
 Release:        0
 Summary:        Tools to convert a virtual machine to run on KVM
 License:        GPL-2.0-or-later
@@ -39,6 +40,7 @@ BuildRequires:  gettext-devel
 BuildRequires:  glib2-devel
 BuildRequires:  libguestfs-devel >= 1.49
 BuildRequires:  libjansson-devel
+BuildRequires:  libnbd
 BuildRequires:  libosinfo-devel
 BuildRequires:  libvirt-devel
 BuildRequires:  libxml2-devel

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jul 19 23:00:40 UTC 2024 - RN <R_Nik_C@proton.me>
+
+- update to version 1.1.14:
+  * Implement Explicit Sync (linux-drm-syncobj-v1)
+  * Fix freezing on KDE when explicit sync is enabled under certain 
+    conditions
+  * Read compositor device from zwp_linux_dmabuf_v1 when available
+  * Properly validate and use the passed value of 
+    EGL_EXT_present_opaque
+
+-------------------------------------------------------------------
 Sun Nov 12 18:57:54 UTC 2023 - Florian "spirit" <packaging@sp1rit.anonaddy.me>
 
 - update to version 1.1.13:

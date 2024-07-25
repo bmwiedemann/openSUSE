@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jul 22 07:48:10 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Add typing_extensions to Requires as well -- Fix rpmlint error
+- Update to 0.32.0:
+  * It is now possible to bump a release in a manner similar to
+    rpmdev-bumpspec using Specfile.bump_release() method.
+
+-------------------------------------------------------------------
 Fri Jul  5 13:06:52 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Add typing_extensions to BuildRequires

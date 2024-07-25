@@ -7445,6 +7445,10 @@ unsorted:
   - go1.22-doc 
   - go1.22-libstd 
   - go1.22-race 
+  - go1.23 
+  - go1.23-doc 
+  - go1.23-libstd 
+  - go1.23-race 
   - go1.9 
   - go1.9-doc 
   - go1.9-race 
@@ -8593,6 +8597,7 @@ unsorted:
   - hyprland-wallpapers 
   - hyprland-zsh-completion 
   - hyprlang-devel 
+  - hyprlock 
   - hyprpaper 
   - hyprpicker 
   - hyprshot 
@@ -11381,7 +11386,7 @@ unsorted:
   - libSM-devel 
   - libSM-devel-32bit 
   - libSM6-32bit 
-  - libSPIRV-Tools-2024_1-32bit 
+  - libSPIRV-Tools-2024_3-32bit 
   - libSRM0 
   - libSampleICC-devel 
   - libSampleICC2 
@@ -11408,7 +11413,7 @@ unsorted:
   - libVFlib3-10 
   - libVSyntaxHighlighting1 
   - libVTextEdit1 
-  - libVulkanLayerSettings-1_3_283_0 
+  - libVulkanLayerSettings-1_3_290 
   - libWN3 
   - libWPEBackend-fdo-1_0-1 
   - libWPEBackend-fdo-1_0-1-32bit 
@@ -16663,7 +16668,7 @@ unsorted:
   - libvoikko-devel 
   - libvoikko1 
   - libvoikko1-32bit 
-  - libvolk-1_3_283_0 
+  - libvolk-1_3_290 
   - libvolk3_1 
   - libvomsapi1 
   - libvorbis-devel 
@@ -16768,8 +16773,8 @@ unsorted:
   - libwinpr2-2 
   - libwireshark17 
   - libwiretap14 
+  - libwlroots-0_18 
   - libwlroots11 
-  - libwlroots12 
   - libwmf-0_2-7-32bit 
   - libwmf-devel 
   - libwmf-gnome 
@@ -18560,6 +18565,7 @@ unsorted:
   - minio-client 
   - minisat 
   - minisat-devel 
+  - minisign 
   - minitube 
   - minitube-lang 
   - miniupnpc 
@@ -22549,6 +22555,7 @@ unsorted:
   - pinentry-efl 
   - pinentry-emacs 
   - pinentry-fltk 
+  - pinentry-rofi 
   - pinfo 
   - pingtunnel 
   - pingus 
@@ -23518,7 +23525,6 @@ unsorted:
   - python3-avocado-plugins-varianter-yaml-to-mux 
   - python3-avocado-plugins-vt 
   - python3-avogadro 
-  - python3-azuremetadata 
   - python3-babeltrace 
   - python3-babeltrace2 
   - python3-bandit 
@@ -23570,7 +23576,6 @@ unsorted:
   - python3-dnf-plugin-versionlock 
   - python3-dnf-plugins-core 
   - python3-dnf-plugins-extras-common 
-  - python3-ec2metadata 
   - python3-espressomd 
   - python3-evemu 
   - python3-fastjet 
@@ -23579,7 +23584,6 @@ unsorted:
   - python3-freezerclient 
   - python3-fritzconnection 
   - python3-futurist 
-  - python3-gcemetadata 
   - python3-gdcm 
   - python3-geis 
   - python3-genders 
@@ -24562,6 +24566,7 @@ unsorted:
   - python310-azure-synapse-nspkg 
   - python310-azure-synapse-spark 
   - python310-azure-template 
+  - python310-azuremetadata 
   - python310-babelfish 
   - python310-backcall 
   - python310-backoff 
@@ -25038,6 +25043,7 @@ unsorted:
   - python310-easywatch 
   - python310-ebcdic 
   - python310-ec2imgutils 
+  - python310-ec2metadata 
   - python310-ecdsa 
   - python310-ed25519 
   - python310-edgegrid-python 
@@ -25198,6 +25204,7 @@ unsorted:
   - python310-gTTS 
   - python310-gTTS-token 
   - python310-gast 
+  - python310-gcemetadata 
   - python310-gcsfs 
   - python310-gcsfs-fuse 
   - python310-gear 
@@ -28156,6 +28163,7 @@ unsorted:
   - python311-azure-synapse-nspkg 
   - python311-azure-synapse-spark 
   - python311-azure-template 
+  - python311-azuremetadata 
   - python311-babelfish 
   - python311-backcall 
   - python311-backoff 
@@ -28613,6 +28621,7 @@ unsorted:
   - python311-easywatch 
   - python311-ebcdic 
   - python311-ec2imgutils 
+  - python311-ec2metadata 
   - python311-ecdsa 
   - python311-ed25519 
   - python311-edgegrid-python 
@@ -28772,6 +28781,7 @@ unsorted:
   - python311-gTTS 
   - python311-gTTS-token 
   - python311-gast 
+  - python311-gcemetadata 
   - python311-gcsfs 
   - python311-gcsfs-fuse 
   - python311-gear 
@@ -31665,6 +31675,7 @@ unsorted:
   - python312-azure-synapse-nspkg 
   - python312-azure-synapse-spark 
   - python312-azure-template 
+  - python312-azuremetadata 
   - python312-babelfish 
   - python312-backcall 
   - python312-backoff 
@@ -32140,6 +32151,7 @@ unsorted:
   - python312-easywatch 
   - python312-ebcdic 
   - python312-ec2imgutils 
+  - python312-ec2metadata 
   - python312-ecdsa 
   - python312-ed25519 
   - python312-edgegrid-python 
@@ -32300,6 +32312,7 @@ unsorted:
   - python312-gTTS 
   - python312-gTTS-token 
   - python312-gast 
+  - python312-gcemetadata 
   - python312-gcsfs 
   - python312-gcsfs-fuse 
   - python312-gear 

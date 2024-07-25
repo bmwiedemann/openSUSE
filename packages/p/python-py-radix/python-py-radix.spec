@@ -26,7 +26,7 @@ Group:          Development/Languages/Python
 URL:            https://github.com/mjschultz/py-radix
 Source:         https://files.pythonhosted.org/packages/source/p/py-radix/py-radix-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM - Change incompatible pointer type from RadixNodeObject to PyObject
-Patch:          https://github.com/mjschultz/py-radix/pull/58.patch
+Patch0:         https://github.com/mjschultz/py-radix/pull/58.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -45,7 +45,7 @@ This package includes the C-extension.
 
 %prep
 %setup -q -n py-radix-%{version}
-%patch -P0 -p1
+%patch0 -p1
 
 %build
 export CFLAGS="%{optflags}"

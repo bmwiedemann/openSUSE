@@ -1,0 +1,31 @@
+-------------------------------------------------------------------
+Sun Jul 21 20:55:50 UTC 2024 - mcepl@cepl.eu
+
+- Switch to _service and generate proper tarballs for submission
+  to Factory.
+- Update to version 2.0.5+git.1721595070.65e623a:
+  * Make debugging output opt-in
+
+-------------------------------------------------------------------
+Mon Jan 29 12:35:02 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+-  Behave when gpg-agent is run as a systemd user service (not in the session).
+
+Also, PIN of the keyring should not be visible to other users on the system.
+
+-------------------------------------------------------------------
+Mon Jan 23 15:48:37 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Add missing Requires for rofi-launcher.
+- Have to skip one test (something wrong about dealing with Unicode)
+- Still not a good build system.
+
+-------------------------------------------------------------------
+Mon Sep 26 14:05:25 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Enable the check section.
+
+-------------------------------------------------------------------
+Thu Aug 18 06:51:20 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Initial packaging effort for pinentry-rofi 2.0.3.

@@ -16,7 +16,9 @@
 #
 
 
-%define libname libwlroots12
+%global ver_suffix 0.18
+%global sover      0_18
+%global libname libwlroots-%{sover}
 %bcond_without  drm_backend
 %bcond_without  libinput_backend
 %bcond_without  x11_backend
@@ -24,7 +26,7 @@
 %bcond_without  xcb_errors
 
 Name:           wlroots
-Version:        0.17.3
+Version:        %{ver_suffix}.0
 Release:        0
 Summary:        Modular Wayland compositor library
 License:        MIT
@@ -40,11 +42,13 @@ BuildRequires:  pkgconfig(egl)
 BuildRequires:  pkgconfig(gbm) >= 17.1.0
 BuildRequires:  pkgconfig(glesv2)
 BuildRequires:  pkgconfig(hwdata)
+BuildRequires:  pkgconfig(lcms2)
 BuildRequires:  pkgconfig(libavcodec)
 BuildRequires:  pkgconfig(libavformat)
 BuildRequires:  pkgconfig(libavutil)
 BuildRequires:  pkgconfig(libdisplay-info)
 BuildRequires:  pkgconfig(libdrm) >= 2.4.113
+BuildRequires:  pkgconfig(libliftoff)
 %if %{with libinput_backend}
 BuildRequires:  pkgconfig(libinput) >= 1.14.0
 %endif
@@ -118,11 +122,10 @@ export CFLAGS="%{optflags} -I/usr/include/wayland -Wno-redundant-decls"
 %files devel
 %license LICENSE
 %doc README.md CONTRIBUTING.md
-%{_includedir}/wlr/
-%{_libdir}/pkgconfig/wlroots.pc
-%{_libdir}/libwlroots.so
+%{_includedir}/%{name}-%{ver_suffix}/
+%{_libdir}/pkgconfig/%{name}-%{ver_suffix}.pc
 
 %files -n %{libname}
-%{_libdir}/libwlroots.so.*
+%{_libdir}/libwlroots-%{ver_suffix}.so
 
 %changelog

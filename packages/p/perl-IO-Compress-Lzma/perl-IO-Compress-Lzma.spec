@@ -1,7 +1,7 @@
 #
 # spec file for package perl-IO-Compress-Lzma
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,22 +18,37 @@
 
 %define cpan_name IO-Compress-Lzma
 Name:           perl-IO-Compress-Lzma
-Version:        2.204
+Version:        2.212.0
 Release:        0
+# 2.212 -> normalize -> 2.212.0
+%define cpan_version 2.212
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Write lzma files/buffers
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/P/PM/PMQS/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/P/PM/PMQS/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(Compress::Raw::Lzma) >= 2.204
-BuildRequires:  perl(IO::Compress::Base) >= 2.204
-BuildRequires:  perl(IO::Uncompress::Base) >= 2.204
-Requires:       perl(Compress::Raw::Lzma) >= 2.204
-Requires:       perl(IO::Compress::Base) >= 2.204
-Requires:       perl(IO::Uncompress::Base) >= 2.204
+BuildRequires:  perl(Compress::Raw::Lzma) >= 2.212
+BuildRequires:  perl(IO::Compress::Base) >= 2.212
+BuildRequires:  perl(IO::Uncompress::Base) >= 2.212
+Requires:       perl(Compress::Raw::Lzma) >= 2.212
+Requires:       perl(IO::Compress::Base) >= 2.212
+Requires:       perl(IO::Uncompress::Base) >= 2.212
+Provides:       perl(IO::Compress::Adapter::Lzip) = %{version}
+Provides:       perl(IO::Compress::Adapter::Lzma) = %{version}
+Provides:       perl(IO::Compress::Adapter::Xz) = %{version}
+Provides:       perl(IO::Compress::Lzip) = %{version}
+Provides:       perl(IO::Compress::Lzma) = %{version}
+Provides:       perl(IO::Compress::Xz) = %{version}
+Provides:       perl(IO::Uncompress::Adapter::UnLzip) = %{version}
+Provides:       perl(IO::Uncompress::Adapter::UnLzma) = %{version}
+Provides:       perl(IO::Uncompress::Adapter::UnXz) = %{version}
+Provides:       perl(IO::Uncompress::UnLzip) = %{version}
+Provides:       perl(IO::Uncompress::UnLzma) = %{version}
+Provides:       perl(IO::Uncompress::UnXz) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -44,9 +59,9 @@ For reading lzma files/buffers, see the companion module
 IO::Uncompress::UnLzma.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version}
 
-find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor

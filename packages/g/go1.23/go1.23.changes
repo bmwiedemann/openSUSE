@@ -1,0 +1,9 @@
+-------------------------------------------------------------------
+Fri Jun 21 16:32:19 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.23rc1 (released 2024-06-21) is a release candidate version of
+  go1.23 cut from the master branch at the revision tagged
+  go1.23rc1.
+  * go1.23 now requires the final point release of go1.20 or later
+    for bootstrap. Go upstream expects that go1.24 will require the
+    final point release of Go 1.23 or later for bootstrap.

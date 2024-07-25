@@ -18,7 +18,7 @@
 
 %define lname libglslang14
 Name:           glslang
-Version:        14.2.0
+Version:        14.3.0
 Release:        0
 Summary:        OpenGL and OpenGL ES shader front end and validator
 License:        BSD-3-Clause
@@ -31,7 +31,7 @@ BuildRequires:  bison
 BuildRequires:  cmake >= 3.14.0
 BuildRequires:  fdupes
 BuildRequires:  python3-base
-BuildRequires:  spirv-tools-devel >= 2024.1~rc1
+BuildRequires:  spirv-tools-devel >= 2024.3
 %if 0%{?suse_version} && 0%{?suse_version} < 1599
 BuildRequires:  gcc11-c++
 %else

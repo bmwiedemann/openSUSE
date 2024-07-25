@@ -1,4 +1,107 @@
 -------------------------------------------------------------------
+Mon Jul 22 10:24:31 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Upgrade to 1.4.0:
+  - Fix Literal parse error in RemoveImportsVisitor
+  - Don't reset context.scratch between files
+  - Various documentation fixes
+        Typo fix FullRepoManager
+        ✏️ Fix tiny typo in docs/source/metadata.rst
+        ✏️ Fix typo in docs/source/scope_tutorial.ipynb
+        Update CONTRIBUTING.md
+  - Add helper functions for common ways of filtering nodes
+  - Dump CST to .dot (graphviz) files
+  - Implement PEP-696
+- Upgrade to 1.3.1:
+  - ImportError due to missing mypy_extensions dependency
+- Upgrade to 1.3.0:
+  - Removed dependencies on typing_extensions and typing_inspect
+- Temporarily switch off running of the test suite (gh#Instagram/LibCST#1176)
+
+-------------------------------------------------------------------
+Fri Mar  1 00:29:21 UTC 2024 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Update to version 1.2.0
+  * Upgrade pyo3 to 0.20
+  * Remove reference to distutil
+  * Add roundtrip tests from Python
+  * Fix parsing list matchers without explicit brackets
+  * Make readme example use python syntax highlighting
+  * Upgrade rust to version 1.70 in readthedocs config
+  * Update maturin requirement from <0.16,>=0.8.3 to >=0.8.3,<1.5
+  * Allow `Element::codegen` to be used by external users
+  * installing rustc/cargo for mybinder demo
+  * Update test_fix_pyre_directives.py
+  * remove 3.8 support
+  * Update syn to v2
+  * Set repository metadata entry for Rust crates
+  * upgrade flake8
+  * Update pyproject.toml for Python 3.12 support
+  * fix filepathprovider generic type
+  * Update README.rst
+  * Fix link in type_inference_provider.py
+  * Parse multiline expressions in f-strings
+  * Upgrade pyre
+  * eliminate relative paths from Cargo.toml
+  * Parse arbitrarily nested f-strings
+  * ScopeProvider: Record Access for Attributes and Decorators
+  * AddImportsVisitor: add imports before the first non-import statement
+  * Scope provider changes for type annotations
+  * add upper bound to pyo3 dependency
+  * scope_provider: Simplify parent resolution
+  * parser: remove Regexes from whitespace parser
+  * Add crate metadata
+  * Support files with mixed newlines
+  * PEP 695 - Type Parameter Syntax
+  * Remove need for regex in TextPosition::matches
+  * Fix readme's Python version requirement
+  * Switch to using thread_local regular expressions to avoid regex mutex contention
+  * Remove criterion-cycles-per-byte dependency and related benchmark measurement
+  * drop support for Python 3.7
+  * Don't gather dirs ending .py
+  * Don't insert duplicate imports
+  * Don't swallow trailing whitespace
+  * Allow pyo3 >=0.17
+  * Do not annotate the same variable multiple times in ApplyTypeAnnotationsVisitor
+  * Update changelog to 1.0.1
+  * Codemod CLI: Print diff only when there is a change
+  * Fix parsing of code without trailing newlines
+  * Fix whitespace, fstring, walrus related parse errors
+  * Fix Sentinal typo
+  * remove quotes around charset in .editorconfig
+  * Update maturin requirement from <0.14,>=0.8.3 to >=0.8.3,<0.16
+  * Fix type of `evaluated_value` on string to allow bytes
+  * Switch default parser implementation to native
+  * exclude native/target directory from sdist
+  * update changelog
+  * relax validation rules on decorators
+  * Fix crash on escaped backslashes in rf-string
+  * Fix pyre setup link in metadata.rst
+  * Support PEP 604 in ApplyTypeAnnotationsVisitor
+  * Fix spelling and grammar in some comments
+  * Fix ApplyTypeAnnotationsVisitor behavior on attribute assignments.
+  * Allow running codemods without configuring in YAML
+  * Ensure current Python interpreter is used for subprocesses
+  * Use subprocess.DEVNULL instead of opening os.devnull by hand
+  * PEP 621 + hatch to run tests/lint/etc
+  * Fix: relative imports from '' package are not allowed
+  * Add new FilePathProvider
+  * Use new setup-python caching actions
+  * Pass root path to FullyQualifiedNameProvider
+  * Script to regenerate test fixtures
+  * Add setuptools-rust to build requirements in setup.py
+  * Ignore common virtualenv names
+  * Fix Github issue 855 - fail to parse with statement
+  * fix PEP 604 union annotations in decorators
+  * Add py3.11 classifier
+- Update _service file
+  * remove obsoleted mode "disabled" to "manual"
+  * adopt new obs-service-cargo packaging method
+- Remove patches
+  * remove-ufmt-dep.patch
+  * replace-python-call.patch
+
+-------------------------------------------------------------------
 Fri Apr 21 12:27:55 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)

@@ -157,4 +157,12 @@
 - remove pytest test, enable other test frameworks</comment>
     <requestid>1112726</requestid>
   </revision>
+  <revision rev="17" vrev="4">
+    <srcmd5>6ec7bb63c04cebc1b26989e3243f044f</srcmd5>
+    <version>0.9.0</version>
+    <time>1721827980</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1189022</requestid>
+  </revision>
 </revisionlist>

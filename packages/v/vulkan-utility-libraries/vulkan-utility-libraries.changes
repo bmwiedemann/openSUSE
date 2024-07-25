@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jul 23 05:11:55 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release SDK-1.3.290
+  * safe_struct: Make FreePnextChain() non-recursive
+  * Better declare GetObjectType()'s lack of 32-bit support
+
+-------------------------------------------------------------------
 Thu May 16 12:31:59 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release SDK-1.3.283.0

@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Tue Jul 23 06:38:43 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.0.1:
+  * feat: csvsql adds --min-col-len and --col-len-multiplier options.
+  * feat: sql2csv adds a --engine-option option.
+  * feat: Add man pages to the sdist and wheel distributions.
+  * fix: csvstat no longer errors when a column is a time delta and --json
+    is set.
+  * csvclean now writes its output to standard output and its errors to
+    standard error, instead of to basename_out.csv and basename_err.csv
+    files.
+  * csvclean no longer reports or fixes errors by default; it errors if no
+    checks or fixes are enabled.
+  * csvclean no longer omits rows with errors from the output.
+  * csvclean joins short rows using a newline by default, instead of a space.
+  * Add a lot of options to csvclean.
+  * feat: The --quoting option accepts csv.QUOTE_STRINGS and
+    csv.QUOTE_NOTNULL on Python 3.12.
+  * feat: csvformat: The --out-quoting option accepts csv.QUOTE_STRINGS
+    and csv.QUOTE_NOTNULL on Python 3.12.
+  * fix: csvformat: The --out-quoting option works with csv.QUOTE_NONUMERIC.
+  * fix: csvclean: The --join-short-rows option no longer reports length
+    mismatch errors that were fixed.
+  * feat: Add support for Zstandard files with the .zst extension, if the
+    zstandard package is installed.
+  * feat: csvformat adds a --out-asv (--A) option to use the ASCII unit
+    separator and record separator.
+  * feat: csvsort adds a --ignore-case (--i) option to perform
+    case-independent sorting.
+
+-------------------------------------------------------------------
 Sun Mar 24 17:25:07 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.4.0:

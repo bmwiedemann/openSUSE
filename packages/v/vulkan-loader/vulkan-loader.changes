@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jul 23 05:06:41 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release SDK-1.3.290
+  * Remove faulty fallback for unknown functions
+  * tests: Allow test ICD to handle NULL pApplicationInfo
+  * Fix preloaded ICDs being freed with custom allocators
+  * Fix RegCloseKey exeption when double-closing hKeys
+
+-------------------------------------------------------------------
 Thu May 16 12:13:57 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release SDK-1.3.283.0

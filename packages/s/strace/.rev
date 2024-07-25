@@ -1570,4 +1570,24 @@ http://lists.opensuse.org/opensuse-factory/2015-03/msg00391.html (forwarded requ
   * Updated lists of ioctl commands from Linux 6.9. (forwarded request 1174223 from Andreas_Schwab)</comment>
     <requestid>1174224</requestid>
   </revision>
+  <revision rev="107" vrev="1">
+    <srcmd5>7081712eb8d818e9b04d3374215c531d</srcmd5>
+    <version>6.10</version>
+    <time>1721827964</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to strace 6.10
+  * Implemented --decode-fds=eventfd option to retrieve eventfd object details
+    associated with eventfd file descriptors.
+  * Implemented decoding of NETLINK_GENERIC nlctrl protocol.
+  * Implemented decoding of F_DUPFD_QUERY fcntl.
+  * Implemented decoding of mseal syscall.
+  * Updated decoding of statx and prctl syscalls.
+  * Updated decoding of BPF_RAW_TRACEPOINT_OPEN bpf command.
+  * Updated lists of BPF_*, IORING_*, KEXEC_*, KEY_*, LANDLOCK_*, PR_*, STATX_*,
+    TCP_*, TEE_*, V4L2_*, and *_MAGIC constants.
+  * Updated lists of ioctl commands from Linux 6.10.
+  * Worked around a bug introduced in Linux 6.5 that affected system call
+    tampering on riscv64. (forwarded request 1188914 from AndreasSchwab)</comment>
+    <requestid>1188915</requestid>
+  </revision>
 </revisionlist>

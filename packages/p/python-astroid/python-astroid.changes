@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jul 22 12:43:32 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 3.2.4
+  * Avoid reporting unary/binary op type errors when inference
+    is ambiguous.
+- from version 3.2.3
+  * Fix ``AssertionError`` when inferring a property consisting
+    of a partial function.
+
+-------------------------------------------------------------------
 Sun Jun 30 22:03:18 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.2.2:

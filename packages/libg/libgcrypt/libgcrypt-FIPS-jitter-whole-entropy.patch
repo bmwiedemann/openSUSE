@@ -1,0 +1,41 @@
+Index: libgcrypt-1.10.3/random/rndgetentropy.c
+===================================================================
+--- libgcrypt-1.10.3.orig/random/rndgetentropy.c
++++ libgcrypt-1.10.3/random/rndgetentropy.c
+@@ -53,16 +53,30 @@ _gcry_rndgetentropy_gather_random (void
+ 
+   /* When using a blocking random generator try to get some entropy
+    * from the jitter based RNG.  In this case we take up to 50% of the
+-   * remaining requested bytes.  */
++   * remaining requested bytes.  In FIPS mode, we get all the entropy
++   * from the jitter RNG. */
+   if (level >= GCRY_VERY_STRONG_RANDOM)
+     {
+       size_t n;
+ 
+-      n = _gcry_rndjent_poll (add, origin, length/2);
+-      if (n > length/2)
+-        n = length/2;
+-      if (length > 1)
+-        length -= n;
++      /* In FIPS mode, use the whole length of the entropy buffer from
++       * Jitter RNG */
++      if (fips_mode ())
++        {
++          n = _gcry_rndjent_poll (add, origin, length);
++          if (n != length)
++            fips_signal_error ("jitter entropy failed");
++          else
++            length = 0;
++        }
++      else
++        {
++          n = _gcry_rndjent_poll (add, origin, length/2);
++          if (n > length/2)
++            n = length/2;
++          if (length > 1)
++            length -= n;
++        }
+     }
+ 
+   /* Enter the loop.  */

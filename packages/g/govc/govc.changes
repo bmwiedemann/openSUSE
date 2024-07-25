@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Jul 22 18:32:04 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.39.0:
+  * chore: Update version.go for v0.39.0
+  * api: use CheckTestType in compat and provisioning checkers
+  * api: add sata controller
+  * api: Exporting Unit field in MetricSeries struct for external
+    use
+  * chore: bump go version
+  * govc: add vm.check commands
+  * govc: add '-spec' flag to vm clone, migrate and create commands
+  * govc: add vm.migrate -net flag
+  * vcsim: add VmCompatibilityChecker and VmProvisioningChecker
+  * refactor: make importing templates available as a lib
+  * chore: fix codeql
+  * vcsim: Add support for DRS automation levels
+  * api: Add simulator test for GetVirtualDiskInfoByUUID
+  * api: GetVirtualDiskInfoByUUID for getting capacity/size info
+  * api: change CoresPerNumaNode to a pointer type
+  * api: Add a method for extending VMDK
+  * api: add ResolveLibraryItemStorage
+  * fix: handle base types by default in mo.LoadObjectContent
+  * vcsim: Re-enable TenantManager
+
+-------------------------------------------------------------------
 Tue Jun 25 04:58:58 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.38.0:

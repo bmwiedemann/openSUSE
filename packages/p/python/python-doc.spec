@@ -292,14 +292,12 @@ for i in Misc/* ; do
 done
 
 %files
-%defattr(644,root,root,755)
 %dir %{_docdir}/python
 %doc %{_docdir}/python/Misc
 %doc %{_docdir}/python/html
 #%%doc %%{_docdir}/python/README
 
 %files pdf
-%defattr(644,root,root,755)
 %doc %{_docdir}/python/paper-a4
 %doc %{_docdir}/python/paper-letter
 

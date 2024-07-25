@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Mon Jul 15 11:07:17 MDT 2024 - carnold@suse.com
+
+- Update to virt-v2v 2.5.5 (jsc#PED-6305)
+  * -i vmx: Remove scp -T option
+  * -i vmx: Refactor ssh/scp code into a new module
+  * -i vmx: Simplify scp wrapper
+  * -i vmx: Add the input password to vmx_source
+  * -i vmx: Remove dependency of ssh.ml on Xml.uri
+  * -i vmx: Replace external ssh/scp with nbdkit-ssh-plugin
+  * input/nbdkit_ssh: Make retry filter optional
+  * input/nbdkit_ssh: Make password parameter optional
+  * input/ssh: Use nbdinfo --can connect (instead of --size)
+  * add CircleLinux to supported distros
+  * Add support for LoongArch
+  * -o rhv-upload: fix rhv-upload function to work with keycloak
+    instead of basic auth only (#43)
+  * -o rhv-upload: Add context if parsing params fails (#47)
+  * -o rhv-upload: clarify debug message
+  * -o rhv-upload: Dump the JSON before parsing
+  * -o rhv-upload: Output outside of the with block
+  * -o rhv-upload: Improve host id logging
+  * -o rhv-upload: Don't share transfer.json (#49)
+  * -o rhv-upload: Add O_TRUNC to truncate JSON file if it exists
+  * -o kubevirt: Add os firmware field in output
+  * -o kubevirt: Add CPU model & topology when available
+  * -o kubevirt: Add network interfaces to output
+  * -o kubevirt: Add an RNG device if virtio-rng driver in the
+    guest
+  * -o kubevirt: Use virtio-transitional for ancient guests
+  * -o kubevirt: Add support for sound device
+  * -o kubevirt: Add metadata labels
+  * -o kubevirt: Create a VirtualMachine instead of a
+    VirtualMachineInstance
+  * -o libvirt: Use <os firmware='efi'> finally
+  * -i ova: Use the detected firmware type when absent rather than
+    default (#53)
+  * Fix bytecode compilation to output whole exe instead of using
+    -custom
+  * convert: windows: Install blnsvr from virtio-win
+
+-------------------------------------------------------------------
 Tue May  7 08:59:53 MDT 2024 - carnold@suse.com
 
 - bsc#1223444 - New virt-v2v dependency on btrfsprogs causes error

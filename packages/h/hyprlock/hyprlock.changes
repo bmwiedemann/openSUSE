@@ -1,0 +1,87 @@
+-------------------------------------------------------------------
+Sun Jul  7 21:04:23 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Add new BuildRequires: libjpeg, libwebp, libmagic
+- Remove always-install-pam.patch -- Fixed upstream
+- Update to version 0.4.0:
+  * core: avoid double unlocks with no_fade_out
+  * input-field: fade in when checkWaiting is true
+  * core: use --immediate for attemptRestoreOnDeath
+  * widgets: add Shape + minor image improve
+  * auth: implement a full pam conversation
+  * input-field: increase default fade_timeout
+  * label: add text_align option for multi-line text
+  * fix initialization issues in LockSurface
+  * Add support for JPEG and WEBP background images
+  * readme: add new line for clarity
+  * add libmagic dependency to README
+  * renderer: add text trim with option to disable
+  * gatherer: use absolute path in magic guess
+  * Fixed getconf command in build instructions
+  * core: add key repeat for backspace and make del clear the input
+  * add zindex option to widgets
+  * cmake: macro-prefix-map, compile_commands.json
+  * few reported leaks by asan
+  * handle null timers in destructors
+  * readme: Add Arch instructions
+  * core: move to hyprutils for utils
+  * fix second instance of hyprlock unlocking session
+  * Inproved error handling and arg parsing
+  * core: stabilize label updates and revision locking in the
+    asyncResourceGatherer
+  * core: fix sourcing config files
+  * core: improve dynamic output handling
+  * asyncResourceGatherer: add dma frames before starting the
+    asyncLoopThread
+  * Remove dupe input-field rounding from
+    listKeysForSpecialCategory
+  * label: do not error when using cmd[] for a static label cmd
+  * config: don't crash when getenv HOME returns null
+  * auth: pam fallback log message and always call pam_end after
+    pam_authenticate
+  * helpers: fix jpeg and webp OOM error
+
+-------------------------------------------------------------------
+Thu Jun  6 14:01:39 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Move PAM to /usr -- Fixes filelist-forbidden-move-to-usr badness
+- Change parts of _service to run at buildtime instead to properly
+  utilize the obscpio
+- Update to version 0.3.0:
+  * asyncResourceGatherer: skip processing screenshot paths and
+    remove initThread
+  * label: add $FAIL and $ATTEMPTS
+  * core: mmap keymap buffer with MAP_PRIVATE
+  * renderer, Nix/HM module: add fade out animation and property to
+    disable
+  * input-field: fix missing fail_text when placeholder_text is
+    empty
+  * core: fix libc++ compatibility
+  * core: fade out improvements
+  * widgets: add Image
+  * input-field: various fixes
+  * Add missing destructors causing segfaults
+  * config: add -c, --config commandline options
+  * input-field: new color features
+  * input-field: only render the current output on fade out
+    callback
+  * Use getpwuid(getuid()) instead of getlogin()
+  * label: add $LAYOUT variable
+  * Nix/HM module: empty defaults for images and labels
+  * config: add option to ignore empty input
+  * config: allow mon description for monitor value
+  * README: fix a typo
+  * Make Ctrl+u clear password input
+  * label: destroy texture
+  * Nix/HM module: add sources and extraConfig
+  * Nix/HM module: add ignore_empty_input option
+  * widgets: add rotate option to label and image
+  * Nix/HM module: fix rotate options
+  * widgets: add user description variable
+  * nix/hm-module: add shadowable to images
+  * image: add reload options
+
+-------------------------------------------------------------------
+Thu Apr  4 22:19:16 UTC 2024 - Michal Hrusecky <michal.hrusecky@opensuse.org>
+
+- Initial package of hyprlock - version 0.2.0 

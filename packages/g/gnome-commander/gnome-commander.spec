@@ -17,13 +17,13 @@
 
 
 Name:           gnome-commander
-Version:        1.16.2
+Version:        1.18.0
 Release:        0
 Summary:        A file manager for the GNOME desktop environment
 License:        GPL-2.0-or-later
 Group:          Productivity/File utilities
 URL:            http://gcmd.github.io/
-Source:         https://download.gnome.org/sources/gnome-commander/1.16/%{name}-%{version}.tar.xz
+Source:         https://download.gnome.org/sources/gnome-commander/1.18/%{name}-%{version}.tar.xz
 
 %if 0%{?suse_version} < 1550
 BuildRequires:  gcc11
@@ -39,6 +39,7 @@ BuildRequires:  flex
 BuildRequires:  itstool
 BuildRequires:  meson
 BuildRequires:  pkgconfig
+BuildRequires:  xvfb-run
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(exiv2) >= 0.14
 BuildRequires:  pkgconfig(gio-2.0)
@@ -46,7 +47,7 @@ BuildRequires:  pkgconfig(glib-2.0) >= 2.66.0
 BuildRequires:  pkgconfig(gmodule-2.0) >= 2.0.0
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(gtest)
-BuildRequires:  pkgconfig(gtk+-2.0) >= 2.24.0
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.24.0
 BuildRequires:  pkgconfig(libgsf-1) >= 1.12.0
 BuildRequires:  pkgconfig(poppler-glib) >= 0.18
 BuildRequires:  pkgconfig(taglib) >= 1.4
@@ -78,9 +79,8 @@ export CC=%{_bindir}/gcc-11
 export CXX=%{_bindir}/g++-11
 %endif
 %meson \
-	-Dsamba=disabled \
-	-Dunique=disabled \
-	%{nil}
+       -Dsamba=disabled \
+       %nil
 %meson_build
 
 %install
@@ -91,7 +91,7 @@ find %{buildroot}%{_datadir} -size 0 -delete
 %fdupes %{buildroot}%{_libdir}
 
 %check
-%meson_test
+xvfb-run %{shrink:%meson_test}
 
 %files
 %license COPYING
@@ -102,9 +102,11 @@ find %{buildroot}%{_datadir} -size 0 -delete
 %{_datadir}/applications/*.desktop
 %{_datadir}/glib-2.0/schemas/org.gnome.%{name}.enums.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.%{name}.gschema.xml
+%{_datadir}/gnome-commander/
 %{_datadir}/pixmaps/%{name}
 %{_libdir}/%{name}
 %{_mandir}/man1/%{name}.1%{ext_man}
+%{_datadir}/icons/hicolor/scalable/apps/gnome-commander-internal-viewer.svg
 %{_datadir}/icons/hicolor/scalable/apps/gnome-commander-symbolic.svg
 %{_datadir}/icons/hicolor/scalable/apps/gnome-commander.svg
 %dir %{_datadir}/%{name}

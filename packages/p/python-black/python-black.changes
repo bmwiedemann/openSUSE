@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Jul 21 16:03:44 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to 24.4.2
+  * Fix regression where certain complex f-strings failed to parse 
+  * Fix bad performance on certain complex string literals 
+- update to 24.4.1
+  * Add support for the new Python 3.12 f-string syntax introduced by PEP 701
+  * Fix crash involving indented dummy functions containing newlines 
+  * Add support for type parameter defaults, a new syntactic feature added 
+    to Python 3.13 by PEP 696 
+- update to 24.4.0
+  * Fix unwanted crashes caused by AST equivalency check 
+  * if guards in case blocks are now wrapped in parentheses when the line is too long.
+  * Stop moving multiline strings to a new line unless inside brackets 
+
+
+-------------------------------------------------------------------
 Sun Mar 17 19:11:13 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 24.3.0 (bsc#1221530, CVE-2024-21503):

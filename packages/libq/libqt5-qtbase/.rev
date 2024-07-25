@@ -2637,4 +2637,16 @@ Please copy to 13.2 if possible, as can be seen from the changelog, it contains 
     <comment> (forwarded request 1177517 from favogt)</comment>
     <requestid>1177539</requestid>
   </revision>
+  <revision rev="155" vrev="1">
+    <srcmd5>665714019aa54304e6569fed079ac719</srcmd5>
+    <version>5.15.14+kde143</version>
+    <time>1721827988</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.15.14+kde143:
+  * HTTP2: Delay any communication until encrypted() can be responded to
+    (bsc#1227426, CVE-2024-39936)
+  * Add missing line continuations for memory_resource opt-out on Apple systems
+  * a11y atspi: Add null checks in table iface methods (forwarded request 1189041 from favogt)</comment>
+    <requestid>1189048</requestid>
+  </revision>
 </revisionlist>

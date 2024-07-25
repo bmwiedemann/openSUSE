@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jul 21 18:02:34 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 2024.7:
+  + bugfix for "transient-etc" users
+  + a new ostree.prepare-root.composefs kernel option that allows
+    dynamic overrides for the composefs state
+  + new API to directly create a composefs from an ostree commit
+
+-------------------------------------------------------------------
 Sat May 18 15:38:13 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 2024.6:

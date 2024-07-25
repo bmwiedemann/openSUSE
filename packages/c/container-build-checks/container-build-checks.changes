@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Jul 22 13:43:57 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update SUSE.conf: allow dp.rancher.apps.io
+
+-------------------------------------------------------------------
+Mon Jul 22 13:08:23 UTC 2024 - Fabian Vogt <fvogt@suse.com>
+
+- Switch _service to mode="manual"
+- Update to version 1721653643.19092fe:
+  * Use generic name for the python setup step
+  * Allow specifying more than one registry
+  * Use Pathlib for resolving containerinfo
+  * Switch to test Python 3.11
+
+-------------------------------------------------------------------
 Fri Apr 28 09:23:53 UTC 2023 - Fabian Vogt <fvogt@suse.com>
 
 - Update to version 1682595397.5ce6d2f:

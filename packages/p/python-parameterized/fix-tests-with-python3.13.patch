@@ -1,0 +1,41 @@
+From b08a1f287d379d13fe51239712a4d570bd0c556d Mon Sep 17 00:00:00 2001
+From: "Benjamin A. Beasley" <code@musicinmybrain.net>
+Date: Mon, 30 Oct 2023 10:38:27 -0400
+Subject: [PATCH 1/2] Fix tests to handle Python 3.13 stripping indents from
+ docstrings
+
+https://docs.python.org/3.13/whatsnew/3.13.html#other-language-changes
+
+https://github.com/python/cpython/issues/81283
+---
+ parameterized/test.py | 14 ++++++++++----
+ 1 file changed, 10 insertions(+), 4 deletions(-)
+
+diff --git a/parameterized/test.py b/parameterized/test.py
+index 6c71f79..6419171 100644
+--- a/parameterized/test.py
++++ b/parameterized/test.py
+@@ -408,10 +408,16 @@ class TestParameterizedExpandDocstring(TestCase):
+         """Documentation.
+ 
+         More"""
+-        self._assert_docstring(
+-            "Documentation [with foo=%r].\n\n"
+-            "        More" %(foo, )
+-        )
++        if sys.version_info[:2] < (3, 13):
++            self._assert_docstring(
++                "Documentation [with foo=%r].\n\n"
++                "        More" %(foo, )
++            )
++        else:
++            self._assert_docstring(
++                "Documentation [with foo=%r].\n\n"
++                "More" %(foo, )
++            )
+ 
+     @parameterized.expand([param("foo")])
+     def test_unicode_docstring(self, foo):
+-- 
+2.45.2
+

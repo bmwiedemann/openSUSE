@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Mon Jul 22 08:52:38 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.0+git20240718:
+  * libbacktrace: use __has_attribute for fallthrough
+  * libbacktrace: add cast to avoid warning
+  * libbacktrace: better backtrace_print when no debug info
+  * libbacktrace: add notes about dl_iterate_phdr to README
+  * libbacktrace: support FDPIC
+  * libbacktrace: avoid infinite recursion
+  * libbacktrace: improve XCOFF support
+  * Libbacktrace: Fix the use of newline in sed replacement
+  * libbacktrace: fix b2test_buildid test on non-english locales
+  * libbacktrace: fix UBSAN issues
+  * Config,Darwin: Allow for configuring Darwin to use embedded runpath.
+  * libbacktrace: correct duplicate configury
+  * libbacktrace: update libtool.m4 to current GCC HEAD
+  * Handle jobserver file descriptors in btest.
+  * libbacktrace: update copyright years
+  * libbacktrace: don't fail if symbol size is unknown
+  * libbacktrace: correctly gather Mach-O symbol table
+  * libbacktrace: fix testsuite for clang
+  * libbacktrace: suggest how to fix missing debug info
+  * libbacktrace: remove trailing whitespace
+  * libbacktrace: it's OK if zstd decompressor sees no backward bits
+  * libbacktrace: add DLLS as they are loaded
+  * libbacktrace: load Windows modules
+  * libbacktrace: test --compress-debug-sections=ARG for each ARG
+  * libbacktrace: don't assume compressed section is aligned
+
+-------------------------------------------------------------------
 Mon Mar  4 10:37:57 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.0+git20240302:

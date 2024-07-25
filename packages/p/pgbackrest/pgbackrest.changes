@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Jul 23 10:00:46 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to version 2.53
+  * IMPORTANT NOTE: The log-level-stderr option default has been changed from warn to off. 
+    This makes it easier to capture errors when only redirecting stdout. 
+    To preserve the prior behavior set log-level-stderr=warn
+  * Fixed SFTP renaming failure when file already exists
+  * Allow backups to run concurrently on different repositories
+  * Support IP-based SANs for TLS certificate validation.
+  * Default log-level-stderr option to off
+  * Allow alternative WAL segment sizes for PostgreSQL ≤ 10
+  * Add hint to check SFTP authorization log
+  * Documentation Improvements: Clarify archive-push multi-repo behavior
+
+-------------------------------------------------------------------
 Wed Jun 26 07:19:48 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
 
 - update to version 2.52.1

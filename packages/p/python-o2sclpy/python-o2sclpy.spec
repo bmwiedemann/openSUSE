@@ -1,7 +1,7 @@
 #
 # spec file for package python-o2sclpy
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,12 +16,10 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
-%define skip_python36 1
 %define modname o2sclpy
+%{?sle15_python_module_pythons}
 Name:           python-o2sclpy
-Version:        0.926
+Version:        0.929
 Release:        0
 Summary:        Python extensions for O2scl
 License:        GPL-3.0-only
@@ -32,15 +30,25 @@ BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module h5py}
 BuildRequires:  %{python_module matplotlib >= 3.1}
 BuildRequires:  %{python_module numpy}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
+BuildRequires:  %{python_module yt}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+# SECTION Tests
+BuildRequires:  %{python_module scikit-learn}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module scipy}
+BuildRequires:  o2scl-devel >= %{version}
+# /SECTION
 Requires:       o2scl-devel >= %{version}
 Requires:       python-h5py
 Requires:       python-matplotlib >= 3.1
 Requires:       python-numpy
 Requires:       python-requests
+Requires:       python-yt
 Requires:       texlive-latex
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
@@ -55,12 +63,18 @@ with the O2scl C++ library and a set of python classes for convenient plotting.
 %setup -q -n %{modname}-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/o2graph
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+%check
+# TMPDIR with write permissions
+export TMPDIR=`mktemp -d -p ./`
+# test_interpm requires tensorflow, unavailable as package for oS
+%pytest -k "not test_interpm"
 
 %post
 %python_install_alternative o2graph
@@ -73,6 +87,6 @@ with the O2scl C++ library and a set of python classes for convenient plotting.
 %doc README.md
 %python_alternative %{_bindir}/o2graph
 %{python_sitelib}/%{modname}/
-%{python_sitelib}/%{modname}-%{version}-py%{python_version}.egg-info/
+%{python_sitelib}/%{modname}-%{version}*.*-info/
 
 %changelog

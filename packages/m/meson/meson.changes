@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Sat Jul 20 07:02:57 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 1.5.0:
+  + Support for bztar in meson dist
+  + Cargo dependencies names now include the API version
+  + Added support Cargo.lock file
+  + Meson now propagates its build type to CMake
+  + compiler.run() method is now available for all languages
+  + dependencies created by compiler.find_library implement the
+    name() method
+  + New version_argument kwarg for find_program
+  + Meson configure handles changes to options in more cases
+  + New meson format command
+  + Added support for GCC's null_terminated_string_arg function
+    attribute
+  + A new dependency for ObjFW is now supported
+  + Support of indexed @PLAINNAME@ and @BASENAME@
+  + Required kwarg on more compiler methods
+  + The Meson test program supports a new "--interactive" argument
+  + meson test now sets the MESON_TEST_ITERATION environment
+    variable
+  + The Meson test program supports a new "--max-lines" argument
+  + Basic support for TI Arm Clang (tiarmclang)
+  + Support for Texas Instruments C6000 C/C++ compiler
+  + Wayland stable protocols can be versioned 
+
+-------------------------------------------------------------------
+Thu Jul 11 16:36:11 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 1.4.2:
+  + cuda: avoid test failure without GPU available
+  + BUG: Use an F77 snippet for sanity testing Fortran
+  + compilers: cpp: fix header name and return value use in header
+    check
+  + nasm: Add -mms-bitfields to the list of ignored flags
+  + limit wrapped-due-to-env special case for env to only apply for
+    env.set
+
+-------------------------------------------------------------------
 Mon Jun  3 11:16:52 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.4.1:

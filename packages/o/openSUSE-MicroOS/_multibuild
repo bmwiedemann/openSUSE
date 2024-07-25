@@ -29,4 +29,5 @@
         <flavor>ContainerHost-SelfInstall</flavor>
         <flavor>DigitalOcean-Cloud</flavor>
         <flavor>kvm-and-xen-sdboot</flavor>
+        <flavor>kvm-and-xen-grub</flavor>
 </multibuild>

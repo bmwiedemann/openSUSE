@@ -1,7 +1,7 @@
 #
 # spec file for package python-Genshi
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define oldpython python
 %{?sle15_python_module_pythons}
 Name:           python-Genshi
-Version:        0.7.7
+Version:        0.7.9
 Release:        0
 Summary:        A toolkit for generation of output for the web
 License:        BSD-3-Clause
@@ -87,7 +87,7 @@ This package contains documentation and examples.
 
 %files %{python_files}
 %license COPYING
-%doc ChangeLog README.txt
+%doc ChangeLog README.md
 %{python_sitearch}/genshi/
 %{python_sitearch}/Genshi-%{version}*-info
 %if 0%{?suse_version} > 1500

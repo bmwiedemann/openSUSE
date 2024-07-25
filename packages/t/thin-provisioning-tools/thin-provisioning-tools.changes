@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Mon Jul 22 08:21:27 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.0.13:
+  * bump version to 1.0.13
+  * [io_engine] Remove duplicate code in tests
+  * [build] Update quick-xml to v0.36
+  * [build] Update dependencies
+  * [doc] Update CHANGES
+  * [thin_check] Correct the number of devices to check in logs
+  * [doc] Update TODO list
+  * [man] Update man page for thin_ls
+  * [io_engine] Add test cases for SyncIoEngine::write_many()
+  * [io_engine] Enlarge the batch size for SyncIoEngine to do vectored write
+  * [io_engine] Use vectored write in sync io
+  * [tests] Use sha256sum to avoid collision
+  * [all] Fix clippy lints
+  * [tests] Fix thin snapshot xml generator
+  * [tests] Fix the mapped_blocks for thins in generated xml
+  * [thin_check] Log the number of exclusive devices in metadata snapshot
+  * [devtools] Fix parsing subcommands through symlinks
+  * deps: bump libc from 0.2.153 to 0.2.155
+  * [thin_repair] Support repairing device details tree
+  * [tests] Replace duplicate code with utility functions
+  * [thin_repair] Remove unused code
+  * [thin_repair] Preserve the timestamp of stale superblock if needed
+  * [thin_explore] Fix missing version option
+  * Add a nix flake to provide a dev env
+  * [thin_delta] Update comments
+  * [tests] Test cache_check --auto-repair and --clear-needs-check-flag
+  * [tests] Introduce cache_generate_damage
+  * [tests] Add broken pipe tests for cache_dump and era_dump
+  * [cache_check] Extend the --clear-needs-check-flag option to have auto-repair caps
+  * [thin_ls] Support listing the highest mapped block
+  * [btree] Remove unused imports
+  * [btree] Add BTreeIterator type
+  * [*_dump] Simplify the handling of error context
+  * [cache/era_dump] Do not print error messages on BrokenPipe (EPIPE)
+  * [tests] Explicitly set the fifo capacity for triggering EPIPE
+  * [tests] Support leaving TestDir undeleted for debugging failed commands
+  * [tests] Ensure thin_dump's output in broken pipe tests
+  * [tests] Fix closing the pipe fd twice
+  * [tests] Explicitly set the pipe capacity for triggering EPIPE
+
+-------------------------------------------------------------------
 Tue Apr 23 11:19:26 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
 
 - Update vendored dependencies 

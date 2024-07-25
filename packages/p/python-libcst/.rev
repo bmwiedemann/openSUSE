@@ -92,4 +92,41 @@
     <comment></comment>
     <requestid>1082129</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>d3ddf64911511ed4d302188f3f1ef569</srcmd5>
+    <version>1.4.0</version>
+    <time>1721827983</time>
+    <user>dimstar_suse</user>
+    <comment>- Upgrade to 1.4.0:
+  - Fix Literal parse error in RemoveImportsVisitor
+  - Don't reset context.scratch between files
+  - Various documentation fixes
+        Typo fix FullRepoManager
+        ✏️ Fix tiny typo in docs/source/metadata.rst
+        ✏️ Fix typo in docs/source/scope_tutorial.ipynb
+        Update CONTRIBUTING.md
+  - Add helper functions for common ways of filtering nodes
+  - Dump CST to .dot (graphviz) files
+  - Implement PEP-696
+- Upgrade to 1.3.1:
+  - ImportError due to missing mypy_extensions dependency
+- Upgrade to 1.3.0:
+  - Removed dependencies on typing_extensions and typing_inspect
+- Temporarily switch off running of the test suite (gh#Instagram/LibCST#1176)
+
+- Update to version 1.2.0
+  * Upgrade pyo3 to 0.20
+  * Remove reference to distutil
+  * Add roundtrip tests from Python
+  * Fix parsing list matchers without explicit brackets
+  * Make readme example use python syntax highlighting
+  * Upgrade rust to version 1.70 in readthedocs config
+  * Update maturin requirement from &lt;0.16,&gt;=0.8.3 to &gt;=0.8.3,&lt;1.5
+  * Allow `Element::codegen` to be used by external users
+  * installing rustc/cargo for mybinder demo
+  * Update test_fix_pyre_directives.py
+  * remove 3.8 support
+  * Update syn to v2</comment>
+    <requestid>1189034</requestid>
+  </revision>
 </revisionlist>

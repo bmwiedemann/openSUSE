@@ -221,4 +221,12 @@
     stacklevel as a kwarg to stdlib logging.</comment>
     <requestid>1179653</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>1f91f4df74e9883a315522839dd25392</srcmd5>
+    <version>24.4.0</version>
+    <time>1721827810</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1189107</requestid>
+  </revision>
 </revisionlist>

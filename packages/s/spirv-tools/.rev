@@ -356,4 +356,12 @@ join Staging:E</comment>
     <comment>- Update to release 2024.1</comment>
     <requestid>1167486</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>c91f1c9ff1388640a450019fde6d6680</srcmd5>
+    <version>2024.3</version>
+    <time>1721827773</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2024.3</comment>
+    <requestid>1189190</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Jul 22 18:27:52 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.9.0:
+  * chore: release 2.9.0
+  * fix(compose): require arbitrary values for service values to
+    run the down command
+  * feat(compose): auto-extract used images from Docker Compose
+    file if not specified
+  * refactor(compose): add command to error
+  * refactor(compose): use imagesProcess structure
+  * fix(host-cleanup): remove invalid entries from git cache
+
+-------------------------------------------------------------------
 Wed Jul 17 16:35:00 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.8.0:

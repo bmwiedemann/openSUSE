@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jul 22 12:11:38 UTC 2024 - Fabian Vogt <fvogt@suse.com>
+
+- Update to version 5.15.14+kde143:
+  * HTTP2: Delay any communication until encrypted() can be responded to
+    (bsc#1227426, CVE-2024-39936)
+  * Add missing line continuations for memory_resource opt-out on Apple systems
+  * a11y atspi: Add null checks in table iface methods
+
+-------------------------------------------------------------------
 Wed May 29 06:25:15 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.14+kde140, rebased upstream:
@@ -48,7 +57,7 @@ Wed May 29 06:25:15 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
   * tst_qtconcurrentrun: fix UB (uninit'ed values)
   * QComboBox: Disable items marked as disabled in native popups
   * tst_QSslSocket_onDemandCertificates_member: Blacklist & debug
-  * QSQL/ODBC: fix regression (trailing NUL)
+  * QSQL/ODBC: fix regression (trailing NUL) (boo#1227513)
   * SQLite: Update SQLite to v3.41.1
   * Android: demistify the "No platform plugin" androiddeployqt error
   * QTest::WatchDog: Extract Method setExpectation()

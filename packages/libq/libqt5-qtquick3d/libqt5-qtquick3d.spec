@@ -16,14 +16,6 @@
 #
 
 
-# Available on Tumbleweed for all archs
-# TODO revisit the condition for Leap > 15.2 / jump
-%if 0%{?suse_version} > 1500
-%bcond_without system_assimp
-%else
-%bcond_with system_assimp
-%endif
-
 %define qt5_snapshot 1
 %define base_name libqt5
 %define real_version 5.15.14
@@ -40,11 +32,7 @@ Source:         %{tar_version}.tar.xz
 # PATCH-FIX-UPSTREAM
 Patch0:         qt5-quick3d-assimp-5.1.patch
 BuildRequires:  fdupes
-%if %{with system_assimp}
 BuildRequires:  pkgconfig(assimp) >= 5.0.0
-%else
-BuildRequires:  zlib-devel
-%endif
 BuildRequires:  libQt5Core-private-headers-devel >= 5.12
 BuildRequires:  libQt5Gui-private-headers-devel
 BuildRequires:  libQt5OpenGLExtensions-devel-static
@@ -138,15 +126,15 @@ Examples for the Qt Quick 3D module.
 %prep
 %autosetup -p1 -n %{tar_version}
 
+rm -r src/3rdparty/assimp/{src,unzip}
+
 %build
 %if %{qt5_snapshot}
 #force the configure script to generate the forwarding headers (it checks whether .git directory exists)
 mkdir .git
 %endif
 %qmake5 -- \
-  %if %{with system_assimp}
   -system-quick3d-assimp
-  %endif
 
 %make_jobs
 

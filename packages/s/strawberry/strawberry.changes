@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Jul 22 23:09:50 UTC 2024 - Jonas Kvinge <jonaski@opensuse.org>
+
+- Update to version 1.1.1
+
+  + Bugfixes:
+   + Fixed compilation songs being split into different albums when using album grouping.
+   + Fixed adding playlist columns not working when stretch mode is disabled (#1085).
+   + Fixed resetting playlist columns.
+   + Fixed adding songs to playlist adding all songs instead of filtered songs.
+   + Fixed collection filter matching entire text instead of individual words.
+  + Enhancements:
+   + Use same code for collection and playlist filter search. 
+
+-------------------------------------------------------------------
 Sun Jul 14 13:26:43 UTC 2024 - Jonas Kvinge <jonaski@opensuse.org>
 
 - Update to version 1.1.0

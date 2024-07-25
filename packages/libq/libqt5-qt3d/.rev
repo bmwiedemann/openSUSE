@@ -398,4 +398,12 @@
     <comment> (forwarded request 1177517 from favogt)</comment>
     <requestid>1177538</requestid>
   </revision>
+  <revision rev="45" vrev="2">
+    <srcmd5>8aec964ffaa5671abb6d9a09c9d3f907</srcmd5>
+    <version>5.15.14+kde0</version>
+    <time>1721827892</time>
+    <user>dimstar_suse</user>
+    <comment>boo#1228199 / boo#1228204 (forwarded request 1189032 from krop)</comment>
+    <requestid>1189211</requestid>
+  </revision>
 </revisionlist>

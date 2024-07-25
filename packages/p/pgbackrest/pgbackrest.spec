@@ -19,7 +19,7 @@
 
 %define services pgbackrest.target pgbackrest-diff@.service pgbackrest-full@.service pgbackrest-incr@.service pgbackrest.service pgbackrest-diff@.timer pgbackrest-full@.timer pgbackrest-incr@.timer
 Name:           pgbackrest
-Version:        2.52.1
+Version:        2.53
 Release:        0
 Summary:        Reliable PostgreSQL Backup & Restore
 License:        MIT
@@ -45,6 +45,7 @@ BuildRequires:  libyaml-devel
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(bzip2)
+BuildRequires:  pkgconfig(liblz4)
 BuildRequires:  pkgconfig(libpq)
 BuildRequires:  pkgconfig(libssh2)
 BuildRequires:  pkgconfig(libxml-2.0)

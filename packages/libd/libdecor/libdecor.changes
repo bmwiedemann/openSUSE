@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Jul 18 14:16:13 UTC 2024 - Sean Baggaley <me@drinkybird.net>
+
+- Update to version 0.2.2:
+  * gtk: fix memory leak when destroying the gtk plugin
+  * gtk: fix memory leak when freeing seats
+  * gtk: Make resize corner region larger
+  * cairo: Make resize corner region larger
+  * cursor-settings: Get theme/size from env if D-Bus call fails
+  * gtk: Use g_clear_pointer() in a couple of places
+  * gtk: Don't early out of frame free function
+
+  Includes changes from 0.2.1:
+  * gtk: Don't report errors during construction
+  * Handle NULL wl_output as argument
+  * gtk: Optionally use wl_output_release
+  * cairo: Optionally use wl_output_release
+  * libdecor: fix leak of DBusError in get_setting_sync
+  * gtk: use error notification with string formatting
+  * gtk: disable setlocale()
+  * build: Use `gnu_symbol_visibility` everywhere
+
+-------------------------------------------------------------------
 Thu Feb 15 06:32:48 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
 
 - Remove the -devel package from baselibs.conf

@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Jul 22 22:27:56 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.14.0
+  * Add the header a suitable args to the test compile (#354)
+  * Cython 3 updates and test build linker flags (#363)
+  * Add search paths for FFTW on macOS/Apple Silicon hosts (#365)
+  * Fix conflicting get_platform changes in setup.py (#369)
+  * Execute in a nogil environment (#375)
+  * Compatibility Scipy 1.12.0 (#379)
+  * Support Python 3.12 (#380)
+  * Fix segfault #346 and race condition #377 (#381)
+  * Build with Numpy 2.0 + no more Linux i689 + setup PDM (#383)
+  * Build on MacOS ARM64 (#386)
+  * Update documentation and fix readthedocs (#388)
+  * Update CI release (#389)
+- Drop patches for issues fixed upstream
+  * cython3.patch
+  * python312.patch
+
+-------------------------------------------------------------------
 Mon Feb 12 12:15:17 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add python312.patch gh#pyFFTW/pyFFTW#370

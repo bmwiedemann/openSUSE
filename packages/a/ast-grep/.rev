@@ -433,4 +433,16 @@
   * fix: update fix all lsp b760b9b</comment>
     <requestid>1188553</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>0a0cf5c0c211feeb4a7ad5ab871f3fe8</srcmd5>
+    <version>0.25.3+0</version>
+    <time>1721827902</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.25.3:
+  * feat: support custom language injection #1309
+  * feat: register embedded language 416e28e
+  * fix(deps): update dependency @babel/core to v7.24.9 8c5dd00
+  * fix(deps): update dependency @swc/core to v1.7.0 61f6a14</comment>
+    <requestid>1189217</requestid>
+  </revision>
 </revisionlist>

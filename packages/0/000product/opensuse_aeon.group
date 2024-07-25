@@ -59,6 +59,7 @@
     <package name="libgcrypt20" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:suse-module-tools-scriptlets -->
     <package name="libgmp10" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="libgpg-error0" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:suse-module-tools-scriptlets -->
+    <package name="libjitterentropy3" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:suse-module-tools-scriptlets -->
     <package name="libjson-c5" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
     <package name="libkmod2" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
     <package name="liblua5_4-5" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:suse-module-tools-scriptlets -->

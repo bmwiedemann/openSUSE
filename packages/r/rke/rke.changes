@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Jul 23 05:45:45 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.5.11:
+  * What's Changed
+    - Introduced v1.28.11 and v1.27.15 (#3620)
+    - Introduced ACI CNI v6.0.4.2 (#3625)
+    - Fixed an issue with cluster provisioning and reconciling when
+      using extra_env for kube-api (#3599)
+    - Fixed an issue with k8s >= 1.22 clusters where clusters would
+      sporadically fail to scale etcd nodes (#3536)
+  * RKE Kubernetes versions
+    - v1.25.16-rancher2-3
+    - v1.26.15-rancher1-1
+    - v1.27.15-rancher1-1
+    - v1.28.11-rancher1-1 (default)
+
+-------------------------------------------------------------------
 Tue Jun 11 05:26:02 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.5.10:

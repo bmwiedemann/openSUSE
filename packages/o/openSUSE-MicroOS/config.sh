@@ -258,15 +258,19 @@ fi
 #--------------------------------------
 # [[ "$kiwi_profiles" == *"kvm-and-xen-"* ]]
 if rpm -q sdbootutil; then
- 	for d in /usr/lib/modules/*; do
- 		test -d "$d" || continue
- 		depmod -a "${d##*/}"
- 	done
- 	ENTRY_TOKEN=$(. /usr/lib/os-release; echo $ID)
- 	mkdir -p /etc/kernel
- 	echo "$ENTRY_TOKEN" > /etc/kernel/entry-token
- 	# FIXME: kiwi needs /boot/efi to exist before syncing the disk image
- 	mkdir -p /boot/efi
+	for d in /usr/lib/modules/*; do
+		test -d "$d" || continue
+		depmod -a "${d##*/}"
+	done
+	ENTRY_TOKEN=$(. /usr/lib/os-release; echo $ID)
+	mkdir -p /etc/kernel
+	echo "$ENTRY_TOKEN" > /etc/kernel/entry-token
+	# FIXME: kiwi needs /boot/efi to exist before syncing the disk image
+	mkdir -p /boot/efi
 
-        echo "${cmdline[*]}" > /etc/kernel/cmdline
+	echo "${cmdline[*]}" > /etc/kernel/cmdline
+
+	rpm -q systemd-boot && loader_type="systemd-boot"
+	rpm -q grub2 && loader_type="grub2-bls"
+	echo "LOADER_TYPE" >> /etc/sysconfig/bootloader
 fi

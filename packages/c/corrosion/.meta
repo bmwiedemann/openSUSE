@@ -6,6 +6,6 @@ static libraries, and dynamic libraries from a workspace or package manifest
 (Cargo.toml file).
 
 </description>
-  <devel project="KDE:Applications" package="corrosion"/>
+  <devel project="devel:tools:building" package="corrosion"/>
   <url>https://corrosion-rs.github.io/corrosion/</url>
 </package>

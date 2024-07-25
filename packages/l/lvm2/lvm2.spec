@@ -40,6 +40,10 @@
   %define sanlock_version 3.3.0
 %endif
 
+%if 0%{?suse_version} >= 1600
+  %define default_use_devices_file 1
+%endif
+
 %global flavor @BUILD_FLAVOR@%{nil}
 %define psuffix %{nil}
 
@@ -180,6 +184,12 @@ extra_opts="
 %if 0%{_supportsanlock} == 1
     --enable-lvmlockd-sanlock
 %endif
+"
+%endif
+
+%if 0%{?default_use_devices_file} == 1
+extra_opts="$extra_opts
+    --with-default-use-devices-file=1
 "
 %endif
 

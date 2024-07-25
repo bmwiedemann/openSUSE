@@ -2,7 +2,7 @@
 Thu Jul 11 07:29:45 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.24.43:
-  + Stop looking for modules in cwd (CVE-2024-6655).
+  + Stop looking for modules in cwd (bsc#1228120 CVE-2024-6655).
   + Updated translations.
 
 -------------------------------------------------------------------

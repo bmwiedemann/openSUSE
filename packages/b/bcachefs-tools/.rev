@@ -119,4 +119,16 @@
     <comment>- Update to release v1.9.3</comment>
     <requestid>1187254</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>16cde820426aea364e4d4bc05fe6cd11</srcmd5>
+    <version>1.9.4</version>
+    <time>1721827805</time>
+    <user>dimstar_suse</user>
+    <comment>Update to release v1.9.4
+
+
+
+(🤖: Submission of bcachefs-tools via https://src.opensuse.org/pool/bcachefs-tools/pulls/2 by ddiss)</comment>
+    <requestid>1189095</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul 16 11:43:30 UTC 2024 - adrian@suse.de
+
+- Update to version 0.6.6:
+  * Hardcode "0" as release for PKGBUILD as well
+
+-------------------------------------------------------------------
 Thu Jun 20 07:59:18 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - expand __python3 with python3 to work outside suse rpm packaging

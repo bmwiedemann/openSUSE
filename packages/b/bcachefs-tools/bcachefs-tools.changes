@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jul 22 09:06:43 UTC 2024 - David Disseldorp <ddiss@suse.de>
+
+- Update to release v1.9.4
+  * No longer logging by default
+  * Fix undefined behavour
+
+-------------------------------------------------------------------
 Fri Jul 12 19:00:39 UTC 2024 - David Disseldorp <ddiss@suse.de>
 
 - Update to release v1.9.3

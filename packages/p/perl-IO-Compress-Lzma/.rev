@@ -36,4 +36,47 @@
    see /usr/share/doc/packages/perl-IO-Compress-Lzma/Changes</comment>
     <requestid>1104211</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>3867d9bf64aed99bd52a71a9d0b1643e</srcmd5>
+    <version>2.212.0</version>
+    <time>1721827900</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 2.212.0 (2.212)
+   see /usr/share/doc/packages/perl-IO-Compress-Lzma/Changes
+    2.212 27 April 2024
+        * no functional changes
+    2.211 6 April 2024
+      * version 2.211
+        
+        46ebf5a6ec843edfb2ba30aa28dffff0f80b4b25
+    2.207 18 February 2024
+      * No changes
+- updated to 2.206
+   see /usr/share/doc/packages/perl-IO-Compress-Lzma/Changes
+    2.206 25 July 2023
+      * 2.206
+        Tue, 25 Jul 2023 16:43:53 +0100
+        2977e50216b4da234b30472cec886fe327bde180
+      * drop rt.cpan from SUPPORT section
+        Tue, 18 Jul 2023 09:20:39 +0100
+        ddb253cab2f1940ca22f8d791327344627644751
+    2.205 16 July 2023
+      * 2.205
+        Sun, 16 Jul 2023 20:47:24 +0100
+        68ea126ed8c3a92529d52a14706a37fbd070fa99
+      * add perl 5.38
+        Thu, 13 Jul 2023 11:16:42 +0100
+        474d82b1ea064afa7ebb3a4d82bfd6cd0bb29c40
+      * add on workflow_dispatch
+        Fri, 9 Jun 2023 16:27:32 +0100
+        1fc7c26c9a3d128cd5df1a161426b5d47f2552f8
+      * Add some OO examples
+        Fri, 9 Jun 2023 16:19:13 +0100
+        f3c9c4d4e40cb0ef685b43256961037dc97f33e8
+      * Version 2.204
+        Wed, 8 Feb 2023 21:44:49 +0000
+        357d62e094f409731e98d32fa028f86826a4e801
+</comment>
+    <requestid>1189220</requestid>
+  </revision>
 </revisionlist>

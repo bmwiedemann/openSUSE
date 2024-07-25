@@ -1793,4 +1793,17 @@ Changes:
 - productcompose: fix milestone query</comment>
     <requestid>1180152</requestid>
   </revision>
+  <revision rev="164" vrev="1">
+    <srcmd5>4155d17e0000defe0c44ef9766e5fa60</srcmd5>
+    <version>20240723</version>
+    <time>1721827760</time>
+    <user>dimstar_suse</user>
+    <comment>- providing fileprovides in createdirdeps tool
+- Introduce buildflag nochecks
+
+- productcompose: support __all__ option
+- config update: tumbleweed using preinstallexpand
+- minor improvements</comment>
+    <requestid>1189210</requestid>
+  </revision>
 </revisionlist>

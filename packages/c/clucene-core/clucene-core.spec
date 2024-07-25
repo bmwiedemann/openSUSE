@@ -33,6 +33,8 @@ Patch1:         clucene-2.3.3.4-contrib-libs.patch
 Patch2:         clucene-kill-ext-includes.diff
 Patch3:         clucene-new-gcc.patch
 Patch4:         gcc12-header-files.patch
+# PATCH-FIX-UPSTREAM https://gerrit.libreoffice.org/c/core/+/158845
+Patch5:         clucene-reprobuild.patch
 BuildRequires:  cmake
 BuildRequires:  doxygen
 BuildRequires:  fdupes
@@ -56,6 +58,7 @@ Summary:        C++ implementation of the Lucene text search engine
 Group:          System/Libraries
 Obsoletes:      libclucene2 < %{version}-%{release}
 Provides:       libclucene2 = %{version}-%{release}
+Provides:       libclucene2(setStartVersion)
 
 %description -n libclucene-core1
 CLucene is a C++ port of Lucene. It is a high-performance, full-featured text

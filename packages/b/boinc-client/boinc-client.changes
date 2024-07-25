@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jul 23 03:18:35 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 8.0.4
+  * Resolve a case where the required memory for an application was
+    overestimated and caused a lower concurrent job count.
+
+-------------------------------------------------------------------
 Fri Jul 12 04:58:08 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Revert to state of 2024-05-26 due to regressions,

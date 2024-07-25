@@ -1,7 +1,7 @@
 #
 # spec file for package lz4
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define lname	liblz4-1
 Name:           lz4
-Version:        1.9.4
+Version:        1.10.0
 Release:        0
 Summary:        Hash-based Predictive Lempel–Ziv compressor
 License:        BSD-2-Clause AND GPL-2.0-or-later

@@ -526,4 +526,12 @@ replace plaintext widget with mini-html widget (forwarded request 522296 from je
   [boo#1227092]</comment>
     <requestid>1186996</requestid>
   </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>ebc21b4489c52a2917837ff488bd8511</srcmd5>
+    <version>8.0.4</version>
+    <time>1721827830</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 8.0.4</comment>
+    <requestid>1189144</requestid>
+  </revision>
 </revisionlist>

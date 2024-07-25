@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jul 23 10:03:04 UTC 2024 - Petr Vorel <pvorel@suse.cz>
+
+- Fix archive URL
+
+-------------------------------------------------------------------
+Sun Jul  7 23:21:07 UTC 2024 - Petr Vorel <pvorel@suse.cz>
+
+- Update to version 2.7:
+  https://lore.kernel.org/linux-rt-users/20240507144229.42909-1-jkacur@redhat.com/
+- Start using xz tarball (instead of gz)
+
+-------------------------------------------------------------------
 Wed Jan 31 08:20:15 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 2.6:

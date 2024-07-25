@@ -1,0 +1,58 @@
+-------------------------------------------------------------------
+Mon Jul 22 16:21:52 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Cleanup spec file
+  * Add missing %license to packaging
+  * Remove %debug_package
+
+-------------------------------------------------------------------
+Sat Jul 20 14:25:55 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Switch from deprecated %setup to %autosetup
+- Use %cmake_build
+- Update to version 0.11
+  * For non-interactive usage (CI/CD, etc), encryption of private
+    keys can be disabled with the -W switch.
+  * A new command, -C was added to change passwords, or remove them
+    (when combined with -W).
+- Updates from version 0.10
+  * Prehashing is now enabled by default, regardless of the input
+    size. Support for non-prehashed signatures will eventually be
+    removed
+  * Legacy signatures can be rejected with the addition of the -H
+    flag
+
+-------------------------------------------------------------------
+Mon Sep 21 19:16:51 UTC 2020 - Cristian Rodríguez <crrodriguez@opensuse.org>
+
+- Fix debuginfo generation (set CMAKE_STRIP to false)
+- Update to version 0.9
+ * New option: -R to recover the public key from a secret key.
+ * Error messages have been improved.
+ * Key derivation is now possible on devices with limited memory.
+
+-------------------------------------------------------------------
+Fri Jul 19 10:39:33 UTC 2019 - Jonathan Brielmaier <jbrielmaier@suse.de>
+
+- clean up spec file 
+
+-------------------------------------------------------------------
+Sat Jun  1 22:45:05 UTC 2019 - AxelKoellhofer@web.de - 0.8
+
+- added upstream.patch
+  * Add the "-R" option (re-create pubkey from secret key)
+
+-------------------------------------------------------------------
+Sat Feb  3 18:12:36 UTC 2018 - AxelKoellhofer@web.de - 0.8
+
+- updated to 0.8
+  * Multiple files can now be signed at once
+  * Support for HaikuOS was added
+  * The command-line switch to use custom file names when generating
+    key pairs didn't work properly; this has been fixed
+
+-------------------------------------------------------------------
+Sat Apr  1 13:29:31 UTC 2017 - AxelKoellhofer@web.de - 0.7
+
+- initial package, version 0.7
+

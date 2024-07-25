@@ -22,15 +22,16 @@
 #
 
 Name:           vulkan-headers
-Version:        1.3.283.0
+Version:        1.3.290
 Release:        0
 Summary:        Vulkan C and C++ API header files
 License:        Apache-2.0
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/KhronosGroup/Vulkan-Headers
-Source:         https://github.com/KhronosGroup/Vulkan-Headers/archive/refs/tags/vulkan-sdk-%version.tar.gz
+Source:         https://github.com/KhronosGroup/Vulkan-Headers/archive/refs/tags/vulkan-sdk-%version.0.tar.gz
 Source9:        %name-rpmlintrc
 BuildRequires:  cmake >= 2.8.11
+BuildRequires:  c++_compiler
 BuildArch:      noarch
 Requires:       pkgconfig(wayland-client)
 Requires:       pkgconfig(x11)
@@ -47,7 +48,7 @@ This package contains the development headers for packages wanting
 to make use of Vulkan.
 
 %prep
-%autosetup -n Vulkan-Headers-vulkan-sdk-%version -p1
+%autosetup -n Vulkan-Headers-vulkan-sdk-%version.0 -p1
 
 %build
 %cmake \
@@ -58,9 +59,9 @@ to make use of Vulkan.
 
 %install
 %cmake_install
-%if %{suse_version} >= 1600
-%python3_fix_shebang_path %{buildroot}%{_datadir}/vulkan/registry/*
-%python3_fix_shebang_path %{buildroot}%{_datadir}/vulkan/registry/spec_tools/*
+%if 0%{?suse_version} >= 1600
+%python3_fix_shebang_path %buildroot%_datadir/vulkan/registry/*
+%python3_fix_shebang_path %buildroot%_datadir/vulkan/registry/spec_tools/*
 %endif
 
 %files

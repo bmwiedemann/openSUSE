@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-msgpack
-Version:        1.0.7
+Version:        1.0.8
 Release:        0
 Summary:        MessagePack (de)serializer
 License:        Apache-2.0
@@ -51,7 +51,6 @@ export CFLAGS="%{optflags}"
 
 %install
 %python_install
-%python_expand rm -v %{buildroot}%{$python_sitearch}/msgpack/*.h
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check

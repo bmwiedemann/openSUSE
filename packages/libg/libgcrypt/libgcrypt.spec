@@ -20,7 +20,7 @@
 %define libsoname %{name}%{libsover}
 %define hmac_key orboDeJITITejsirpADONivirpUkvarP
 Name:           libgcrypt
-Version:        1.10.3
+Version:        1.11.0
 Release:        0
 Summary:        The GNU Crypto Library
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND GPL-3.0-or-later
@@ -31,14 +31,12 @@ Source1:        https://gnupg.org/ftp/gcrypt/libgcrypt/%{name}-%{version}.tar.bz
 Source2:        baselibs.conf
 Source3:        random.conf
 Source4:        hwf.deny
-# https://gnupg.org/signature_key.asc
-Source5:        libgcrypt.keyring
+# https://www.gnupg.org/signature_key.html
+Source5:        https://gnupg.org/signature_key.asc#/%{name}.keyring
 Source99:       libgcrypt.changes
 Patch1:         libgcrypt-1.10.0-allow_FSM_same_state.patch
 #PATCH-FIX-OPENSUSE Do not pull revision info from GIT when autoconf is run
 Patch2:         libgcrypt-nobetasuffix.patch
-# https://dev.gnupg.org/T6964
-Patch3:         libgcrypt-no-deprecated-grep-alias.patch
 # FIPS patches:
 #PATCH-FIX-SUSE bsc#1190700 FIPS: Provide a service-level indicator for PK
 Patch100:       libgcrypt-FIPS-SLI-pk.patch
@@ -46,15 +44,16 @@ Patch100:       libgcrypt-FIPS-SLI-pk.patch
 Patch101:       libgcrypt-FIPS-SLI-kdf-leylength.patch
 #PATCH-FIX-SUSE bsc#1190700 FIPS add indicators
 Patch102:       libgcrypt-FIPS-SLI-hash-mac.patch
-#PATCH-FIX-SUSE bsc#1202117 jsc#SLE-24941 FIPS: Port libgcrypt to use jitterentropy
-Patch103:       libgcrypt-jitterentropy-3.4.0.patch
 #PATCH-FIX-SUSE bsc#1202117 FIPS: Get most of the entropy from rndjent_poll
 Patch104:       libgcrypt-FIPS-rndjent_poll.patch
-# POWER patches [jsc#PED-5088] POWER performance enhancements for cryptography
-Patch200:       libgcrypt-Chacha20-poly1305-Optimized-chacha20-poly1305.patch
-Patch201:       libgcrypt-ppc-enable-P10-assembly-with-ENABLE_FORCE_SOF.patch
+#PATCH-FIX-SUSE bsc#1220896 FIPS: Replace the built-in jitter rng with standalone version
+Patch105:       libgcrypt-FIPS-jitter-standalone.patch
+#PATCH-FIX-SUSE bsc#1220895 FIPS: Enforce the interpretation and use of jitter rng
+Patch106:       libgcrypt-FIPS-jitter-errorcodes.patch
+#PATCH-FIX-SUSE bsc#1220893 FIPS: Use Jitter RNG for the whole length entropy buffer
+Patch107:       libgcrypt-FIPS-jitter-whole-entropy.patch
 BuildRequires:  automake >= 1.14
-BuildRequires:  libgpg-error-devel >= 1.27
+BuildRequires:  libgpg-error-devel >= 1.49
 BuildRequires:  libtool
 BuildRequires:  makeinfo
 BuildRequires:  pkgconfig
@@ -70,6 +69,8 @@ understanding of applied cryptography is required to use Libgcrypt.
 Summary:        The GNU Crypto Library
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/Libraries
+BuildRequires:  jitterentropy-devel >= 3.4.0
+Requires:       libjitterentropy3 >= 3.4.0
 Provides:       %{libsoname}-hmac = %{version}-%{release}
 Obsoletes:      %{libsoname}-hmac < %{version}-%{release}
 
@@ -83,7 +84,8 @@ License:        GFDL-1.1-only AND GPL-2.0-or-later AND LGPL-2.1-or-later AND MIT
 Group:          Development/Libraries/C and C++
 Requires:       %{libsoname} = %{version}
 Requires:       glibc-devel
-Requires:       libgpg-error-devel >= 1.27
+Requires:       jitterentropy-devel >= 3.4.0
+Requires:       libgpg-error-devel >= 1.49
 
 %description devel
 Libgcrypt is a general purpose library of cryptographic building
@@ -100,9 +102,12 @@ library.
 # Rename the internal .hmac file to include the so library version
 sed -i "s/libgcrypt\.so\.hmac/\.libgcrypt\.so\.%{libsover}\.hmac/g" src/Makefile.am src/Makefile.in
 
+# Replace the built-in jitter rng with the standalone version [bsc#1220896]
+find . -type f -name "jitterentropy*" -print -delete
+
 %build
 export PUBKEYS="dsa elgamal rsa ecc"
-export CIPHERS="arcfour blowfish cast5 des aes twofish serpent rfc2268 seed camellia idea salsa20 gost28147 chacha20 sm4"
+export CIPHERS="arcfour blowfish cast5 des aes twofish serpent rfc2268 seed camellia idea salsa20 gost28147 chacha20 sm4 aria"
 export DIGESTS="crc gostr3411-94 md4 md5 rmd160 sha1 sha256 sha512 sha3 tiger whirlpool stribog blake2 sm3"
 export KDFS="s2k pkdf2 scrypt"
 
@@ -124,6 +129,7 @@ export CFLAGS="%{optflags} $(getconf LFS_CFLAGS)"
            --disable-asm \
 %endif
            --enable-random=getentropy \
+           --enable-jent-support \
            %{nil}
 
 %make_build
@@ -140,7 +146,6 @@ LIBGCRYPT_FORCE_FIPS_MODE=1 make -k check || true
 # for a simple reason: the macro strips the binaries and thereby
 # invalidates a HMAC that may have been created earlier.
 # solution: create the hashes _after_ the macro runs.
-
 %define libpath %{buildroot}%{_libdir}/libgcrypt.so.%{libsover}.?.?
 %define __spec_install_post \
     %{?__debug_package:%{__debug_install_post}} \

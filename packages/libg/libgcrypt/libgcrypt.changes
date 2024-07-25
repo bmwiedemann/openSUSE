@@ -1,4 +1,98 @@
 -------------------------------------------------------------------
+Thu Jun 20 08:11:07 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 1.11.0:
+  * New and extended interfaces:
+    - Add an API for Key Encapsulation Mechanism (KEM). [T6755]
+    - Add Streamlined NTRU Prime sntrup761 algorithm. [rCcf9923e1a5]
+    - Add Kyber algorithm according to FIPS 203 ipd 2023-08-24. [rC18e5c0d268]
+    - Add Classic McEliece algorithm. [rC003367b912]
+    - Add One-Step KDF with hash and MAC. [T5964]
+    - Add KDF algorithm HKDF of RFC-5869. [T5964]
+    - Add KDF algorithm X963KDF for use in CMS. [rC3abac420b3]
+    - Add GMAC-SM4 and Poly1305-SM4. [rCd1ccc409d4]
+    - Add ARIA block cipher algorithm. [rC316c6d7715]
+    - Add explicit FIPS indicators for MD and MAC algorithms. [T6376]
+    - Add support for SHAKE as MGF in RSA. [T6557]
+    - Add gcry_md_read support for SHAKE algorithms. [T6539]
+    - Add gcry_md_hash_buffers_ext function. [T7035]
+    - Add cSHAKE hash algorithm. [rC065b3f4e02]
+    - Support internal generation of IV for AEAD cipher mode. [T4873]
+  * Performance:
+    - Add SM3 ARMv8/AArch64/CE assembly implementation. [rCfe891ff4a3]
+    - Add SM4 ARMv8/AArch64 assembly implementation. [rCd8825601f1]
+    - Add SM4 GFNI/AVX2 and GFI/AVX512 implementation. [rC5095d60af4,rCeaed633c16]
+    - Add SM4 ARMv9 SVE CE assembly implementation. [rC2dc2654006]
+    - Add PowerPC vector implementation of SM4. [rC0b2da804ee]
+    - Optimize ChaCha20 and Poly1305 for PPC P10 LE. [T6006]
+    - Add CTR32LE bulk acceleration for AES on PPC. [rC84f2e2d0b5]
+    - Add generic bulk acceleration for CTR32LE mode (GCM-SIV) for SM4
+      and Camellia. [rCcf956793af]
+    - Add GFNI/AVX2 implementation of Camellia. [rC4e6896eb9f]
+    - Add AVX2 and AVX512 accelerated implementations for GHASH (GCM)
+      and POLYVAL (GCM-SIV). [rCd857e85cb4, rCe6f3600193]
+    - Add AVX512 implementation for SHA512. [rC089223aa3b]
+    - Add AVX512 implementation for Serpent. [rCce95b6ec35]
+    - Add AVX512 implementation for Poly1305 and ChaCha20. [rCcd3ed49770, rC9a63cfd617]
+    - Add AVX512 accelerated implementation for SHA3 and Blake2. [rCbeaad75f46,rC909daa700e]
+    - Add VAES/AVX2 accelerated i386 implementation for AES. [rC4a42a042bc]
+    - Add bulk processing for XTS mode of Camellia and SM4. [rC32b18cdb87, rCaad3381e93]
+    - Accelerate XTS and ECB modes for Twofish and Serpent. [rCd078a928f5,rC8a1fe5f78f]
+    - Add AArch64 crypto/SHA512 extension implementation for SHA512. [rCe51d3b8330]
+    - Add AArch64 crypto-extension implementation for Camellia. [rC898c857206]
+    - Accelerate OCB authentication on AMD with AVX2. [rC6b47e85d65]
+  * Bug fixes:
+    - For PowerPC check for missing optimization level for vector register usage. [T5785]
+    - Fix EdDSA secret key check. [T6511]
+    - Fix decoding of PKCS#1-v1.5 and OAEP padding. [rC34c2042792]
+    - Allow use of PKCS#1-v1.5 with SHA3 algorithms. [T6976]
+    - Fix AESWRAP padding length check. [T7130]
+  * Other:
+    - Allow empty password for Argon2 KDF. [rCa20700c55f]
+    - Various constant time operation imporvements.
+    - Add "bp256", "bp384", "bp512" aliases for Brainpool curves.
+    - Support for the random server has been removed. [T5811]
+    - The control code GCRYCTL_ENABLE_M_GUARD is deprecated and not
+      supported any more.  Please use valgrind or other tools. [T5822]
+    - Logging is now done via the libgpg-error logging functions. [rCab0bdc72c7]
+  * Remove patches fixed upstream:
+    - libgcrypt-no-deprecated-grep-alias.patch
+    - libgcrypt-Chacha20-poly1305-Optimized-chacha20-poly1305.patch
+    - libgcrypt-ppc-enable-P10-assembly-with-ENABLE_FORCE_SOF.patch
+  * Rebase patches:
+    - libgcrypt-FIPS-jitter-errorcodes.patch
+    - libgcrypt-FIPS-jitter-whole-entropy.patch
+
+-------------------------------------------------------------------
+Wed Mar 20 20:31:40 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
+
+- FIPS: Make sure that Libgcrypt makes use of the built-in Jitter RNG
+  for the whole length entropy buffer in FIPS mode. [bsc#1220893]
+  * Add libgcrypt-FIPS-jitter-whole-entropy.patch
+
+-------------------------------------------------------------------
+Wed Mar 20 15:13:04 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
+
+- FIPS: Set the FSM into error state if Jitter RNG is returning an
+  error code to the caller when an health test error occurs when
+  random bytes are requested through the jent_read_entropy_safe()
+  function. [bsc#1220895]
+  * Add libgcrypt-FIPS-jitter-errorcodes.patch
+
+-------------------------------------------------------------------
+Mon Mar 11 16:02:55 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
+
+- FIPS: Replace the built-in jitter rng with standalone version
+  * Remove the internal jitterentropy copy [bsc#1220896]
+  * Add libgcrypt-FIPS-jitter-standalone.patch
+  * Remove not needed libgcrypt-jitterentropy-3.4.0.patch
+
+-------------------------------------------------------------------
+Mon Feb 26 12:13:56 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
+
+- Update upstream libgcrypt.keyring
+
+-------------------------------------------------------------------
 Sat Jan 27 13:37:34 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - add libgcrypt-no-deprecated-grep-alias.patch

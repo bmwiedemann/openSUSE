@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jul 23 06:33:24 UTC 2024 - dcermak@suse.com
+
+- Update to version 1.2.3:
+  * libcni: set both GC valid attachment keys
+  * SPEC: use correct GC field name.
+
+-------------------------------------------------------------------
 Tue Jun 25 07:39:41 UTC 2024 - dcermak@suse.com
 
 - Update to version 1.2.2:

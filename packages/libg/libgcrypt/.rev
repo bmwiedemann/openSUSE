@@ -898,4 +898,12 @@ This correction fixes the build failures we are currently seeing in Factory, etc
   implemented.</comment>
     <requestid>1141963</requestid>
   </revision>
+  <revision rev="103" vrev="1">
+    <srcmd5>ca7d047b7365e8bd4f7179051577494a</srcmd5>
+    <version>1.11.0</version>
+    <time>1721827759</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1183830</requestid>
+  </revision>
 </revisionlist>

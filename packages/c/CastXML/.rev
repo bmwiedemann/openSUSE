@@ -155,4 +155,16 @@
 (🤖: Submission of CastXML via https://src.opensuse.org/pool/CastXML/pulls/1 by badshah400)</comment>
     <requestid>1186105</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>c55a545927daa42d96e384989a4e6a5e</srcmd5>
+    <version>0.6.8</version>
+    <time>1721827798</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 0.6.8.
+
+test: Fix expected cc-gnu predefined macro ordering
+
+(🤖: Submission of CastXML via https://src.opensuse.org/pool/CastXML/pulls/2 by badshah400)</comment>
+    <requestid>1189090</requestid>
+  </revision>
 </revisionlist>

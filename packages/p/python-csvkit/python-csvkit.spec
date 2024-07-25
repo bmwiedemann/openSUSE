@@ -18,7 +18,7 @@
 
 %define binaries csvclean csvcut csvformat csvgrep csvjoin csvjson csvlook csvpy csvsort csvsql csvstack csvstat in2csv sql2csv
 Name:           python-csvkit
-Version:        1.4.0
+Version:        2.0.1
 Release:        0
 Summary:        A library of utilities for working with CSV
 License:        MIT
@@ -42,6 +42,7 @@ Requires:       python-agate-excel
 Requires:       python-agate-sql
 Requires:       python-openpyxl
 Requires:       python-xlrd
+Recommends:     python-zstandard
 %if %python_version_nodots < 310
 Requires:       python-importlib-metadata
 %endif
@@ -71,6 +72,7 @@ cp %{SOURCE1} examples/testdbf_converted.csv
 %pyproject_install
 for b in %{binaries}; do
   %python_clone -a %{buildroot}%{_bindir}/$b
+  %python_clone -a %{buildroot}%{_mandir}/man1/${b}.1
 done
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -81,11 +83,13 @@ export LANG=en_US.UTF-8
 %post
 %{lua:for b in rpm.expand("%{binaries}"):gmatch("%S+") do
   print(rpm.expand("%python_install_alternative " .. b .. "\n"))
+  print(rpm.expand("%python_install_alternative " .. b .. ".1%{ext_man}\n"))
 end}
 
 %postun
 %{lua:for b in rpm.expand("%{binaries}"):gmatch("%S+") do
   print(rpm.expand("%python_uninstall_alternative " .. b .. "\n"))
+  print(rpm.expand("%python_uninstall_alternative " .. b .. ".1%{ext_man}\n"))
 end}
 
 %files %{python_files}
@@ -93,8 +97,9 @@ end}
 %doc AUTHORS.rst CHANGELOG.rst README.rst
 %{lua:for b in rpm.expand("%{binaries}"):gmatch("%S+") do
   print(rpm.expand("%python_alternative %{_bindir}/" .. b .. "\n"))
+  print(rpm.expand("%python_alternative %{_mandir}/man1/" .. b .. ".1%{ext_man}" .. "\n"))
 end}
+%{python_sitelib}/csvkit
 %{python_sitelib}/csvkit-%{version}.dist-info
-%{python_sitelib}/csvkit/
 
 %changelog

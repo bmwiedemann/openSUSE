@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jul 12 06:54:46 UTC 2024 - dcermak@suse.com
+
+- Update to version 1.15.2:
+  * [release-1.15] Bump to v1.15.2
+  * [release-1.15] Fixes an interoperability issue while listing tags
+  * [skip-ci] Packit: enable c10s downstream sync
+  * Refer to registry.k8s.io instead of k8s.gcr.io
+
+-------------------------------------------------------------------
 Mon May 20 13:43:43 UTC 2024 - danish.prakash@suse.com
 
 - Update to version 1.15.1:

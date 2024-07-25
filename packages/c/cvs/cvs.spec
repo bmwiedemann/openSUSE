@@ -117,6 +117,7 @@ export CFLAGS="%{optflags} -pipe -D_GNU_SOURCE -std=gnu99"
    --with-editor=%{_bindir}/vitmp \
    --with-rsh=ssh
 cd cvslock-*
+autoreconf -fvi
 %configure
 cd -
 %make_build

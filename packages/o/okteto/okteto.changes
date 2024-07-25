@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jul 22 18:25:09 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.29.3:
+  * fix: deploy remote falback to dockerignore instead of skipping
+    it (#4406) (#4413)
+  * fix: add extra hosts in okteot test (#4410) (#4412)
+  * remove cache for test (#4409) (#4411)
+
+-------------------------------------------------------------------
 Thu Jul 18 18:56:19 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.29.2:

@@ -17,7 +17,7 @@
 
 
 Name:           bcachefs-tools
-Version:        1.9.3
+Version:        1.9.4
 Release:        0
 Summary:        Configuration utilities for bcachefs
 License:        GPL-2.0-or-later

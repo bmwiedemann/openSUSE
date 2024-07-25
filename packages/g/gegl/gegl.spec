@@ -33,6 +33,7 @@ License:        GPL-3.0-or-later AND LGPL-3.0-or-later
 Group:          Productivity/Graphics/Other
 URL:            http://gegl.org/
 Source0:        https://download.gimp.org/pub/gegl/0.4/%{name}-%{version}.tar.xz
+Source1:        normalize-gir.pl
 Source99:       baselibs.conf
 
 BuildRequires:  ImageMagick
@@ -186,6 +187,7 @@ export LD_PRELOAD="/usr/lib64/libgomp.so.1"
 
 %install
 %meson_install
+perl -i %{SOURCE1} %{buildroot}%{_datadir}/gir-1.0/Gegl-0.4.gir
 find %{buildroot} -type f -name "*.la" -delete -print
 %find_lang %{name}-0.4 %{?no_lang_C}
 

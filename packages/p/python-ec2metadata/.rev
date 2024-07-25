@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>24c9f407e5600c297bbb2d864a2bb377</srcmd5>
+    <version>5.0.0</version>
+    <time>1721827821</time>
+    <user>dimstar_suse</user>
+    <comment>replacement for python3-ec2metadata, DR 1189129</comment>
+    <requestid>1189130</requestid>
+  </revision>
+</revisionlist>

@@ -93,4 +93,12 @@
 - Use fdupes to remove duplicates</comment>
     <requestid>1146240</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>09b5b0d9827a74081f5cde0cc8007855</srcmd5>
+    <version>0.14.0</version>
+    <time>1721827905</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1189231</requestid>
+  </revision>
 </revisionlist>

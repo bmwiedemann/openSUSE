@@ -25,17 +25,13 @@
 %endif
 
 Name:           python-pyFFTW
-Version:        0.13.1
+Version:        0.14.0
 Release:        0
 Summary:        A pythonic wrapper around FFTW, the FFT library
 License:        BSD-3-Clause AND GPL-2.0-or-later
 Group:          Development/Languages/Python
 URL:            https://github.com/pyFFTW/pyFFTW
 Source:         https://github.com/pyFFTW/pyFFTW/archive/v%{version}.tar.gz
-# PATCH-FIX-UPSTREAM https://github.com/pyFFTW/pyFFTW/pull/363 Cython 3 updates and test build linker flags
-Patch0:         cython3.patch
-# PATCH-FIX-UPSTREAM python312.patch gh#pyFFTW/pyFFTW#370
-Patch1:         python312.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module dask}
 BuildRequires:  %{python_module devel}

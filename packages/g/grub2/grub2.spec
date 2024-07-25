@@ -785,12 +785,6 @@ cd ..
 %if ! 0%{?only_efi:1}
 cd build
 
-# 64-bit x86-64 machines use 32-bit boot loader
-# (We cannot just redefine _target_cpu, as we'd get i386.rpm packages then)
-%ifarch x86_64
-%define _target_platform i386-%{_vendor}-%{_target_os}%{?_gnu}
-%endif
-
 %if "%{platform}" != "emu"
 %define arch_specific --enable-device-mapper
 TLFLAGS="-static"

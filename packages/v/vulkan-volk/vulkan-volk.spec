@@ -17,14 +17,14 @@
 
 
 Name:           vulkan-volk
-%define lname libvolk-1_3_283_0
-Version:        1.3.283.0
+%define lname libvolk-1_3_290
+Version:        1.3.290
 Release:        0
 Summary:        Meta loader for the Vulkan API
 License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/zeux/volk
-Source:         https://github.com/zeux/volk/archive/refs/tags/vulkan-sdk-%version.tar.gz
+Source:         https://github.com/zeux/volk/archive/refs/tags/vulkan-sdk-%version.0.tar.gz
 Patch1:         shared.diff
 BuildRequires:  c_compiler
 BuildRequires:  cmake
@@ -59,7 +59,7 @@ Conflicts:      volk-devel
 Headers needed for programs to utilize the Vulkan VOLK meta loader.
 
 %prep
-%autosetup -p1 -n volk-vulkan-sdk-%version
+%autosetup -p1 -n volk-vulkan-sdk-%version.0
 perl -i -lpe 's{\@PACKAGE_VERSION\@}{%version}g' CMakeLists.txt
 
 %build

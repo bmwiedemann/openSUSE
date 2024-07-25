@@ -321,6 +321,7 @@ BuildRequires:  adaptec-firmware
 BuildRequires:  alsa
 BuildRequires:  alsa-utils
 BuildRequires:  arphic-uming-fonts
+BuildRequires:  attr
 BuildRequires:  audit-libs
 BuildRequires:  bc
 BuildRequires:  bcache-tools
@@ -687,7 +688,7 @@ AutoReqProv:    off
 Summary:        Installation Image Files for %theme
 License:        GPL-2.0-or-later
 Group:          Metapackages
-Version:        17.131
+Version:        17.134
 Release:        0
 Provides:       installation-images = %version-%release
 Conflicts:      otherproviders(installation-images)
@@ -783,6 +784,10 @@ export BUILD_DISTRIBUTION_NAME
 test ! -z "$BUILD_DISTRIBUTION_NAME"
 # build id (for linuxrc to start the correct instsys)
 export instsys_build_id=`bin/build_id`
+%ifarch ppc64 ppc64le
+# ppc64: optimize for minimal compressed initrd size
+export instsys_no_compression=firmware,modules,squashfs
+%endif
 # beta only: warn testers about wrong instsys
 export instsys_complain=1
 # careful: will make all non-matching initrds fail hard

@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Jul 22 10:54:50 UTC 2024 - Anthony Iliopoulos <ailiop@suse.com>
+
+- update to 6.9.0
+  - xfs_db: Fix uninicialized error variable
+  - mkfs.xfs: avoid potential overflowing expression in xfs_mkfs.c
+  - xfs_io: fix mread with length 1 mod page size
+  - xfs_repair: detect null buf passed to duration
+  - xfs_io: fix gcc complaints about potentially uninitialized variables
+  - xfs_scrub: upload clean bills of health
+  - xfs_spaceman: report health of inode link counts
+  - xfs_repair: reduce rmap bag memory usage when creating refcounts
+  - xfs_repair: log when buffers fail CRC checks even if we just recompute it
+  - xfs_scrub: use multiple threads to run scrubs that scan inodes
+  - xfs_scrub: update health status if we get a clean bill of health
+  - xfs_repair: verify on-disk rmap btrees with in-memory btree data
+  - xfs_scrub: check file link counts
+  - xfs_scrub: implement live quotacheck inode scan
+  - libxfs: provide a kernel-compatible kasprintf
+  - xfs_spaceman: report the health of quota counts
+  - libxfs: partition memfd files to avoid using too many fds
+  - libxfs: add xfile support
+  - libxfs: teach buftargs to maintain their own buffer hashtable
+  - libxfs: kernel sync
+
+ -------------------------------------------------------------------
 Fri May 17 15:34:53 UTC 2024 - Anthony Iliopoulos <ailiop@suse.com>
 
 - update to 6.8.0
@@ -2355,4 +2380,3 @@ Fri Jun 15 10:36:23 CEST 2001 - choeger@suse.de
 Mon May 21 14:30:40 CEST 2001 - choeger@suse.de
 
 - first version
-

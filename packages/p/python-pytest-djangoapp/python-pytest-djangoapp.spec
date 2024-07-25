@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-djangoapp
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,12 +22,14 @@ Version:        1.2.0
 Release:        0
 Summary:        Pytest plugin for Django pluggable application testing
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/idlesign/pytest-djangoapp
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-djangoapp/pytest-djangoapp-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+BuildRequires:  timezone
 Requires:       python-Django
 Requires:       python-pytest
 Recommends:     python-ipdb
@@ -48,10 +50,10 @@ A pytest plugin to help with Django pluggable application testing.
 mv ./pytest_djangoapp/tests/conftest.py .
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %{python_expand rm -r %{buildroot}%{$python_sitelib}/pytest_djangoapp/tests/
 %fdupes %{buildroot}%{$python_sitelib}
 }
@@ -62,6 +64,7 @@ mv ./pytest_djangoapp/tests/conftest.py .
 %files %{python_files}
 %doc AUTHORS CHANGELOG README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/pytest_djangoapp
+%{python_sitelib}/pytest_djangoapp-%{version}.dist-info
 
 %changelog

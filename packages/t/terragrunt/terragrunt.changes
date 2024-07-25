@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jul 23 05:36:28 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.63.3:
+  * Fixing generation of `provider_installation` block used for
+    provider caching (#3280)
+  * Updated links to provider caching (#3282)
+
+-------------------------------------------------------------------
 Fri Jul 19 05:46:22 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.63.2:

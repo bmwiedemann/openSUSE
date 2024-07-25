@@ -793,4 +793,12 @@ This should fix the problems reported with the previous openSUSE:Factory submiss
     <comment></comment>
     <requestid>1166812</requestid>
   </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>b7e7027c44503b943678075212b0983e</srcmd5>
+    <version>10.4.0</version>
+    <time>1721827987</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1189047</requestid>
+  </revision>
 </revisionlist>

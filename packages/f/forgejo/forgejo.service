@@ -13,7 +13,7 @@ WorkingDirectory=/var/lib/forgejo/
 ExecStart=/usr/bin/forgejo web --config /etc/forgejo/conf/app.ini
 Restart=always
 Environment=USER=forgejo
-Environemnt=HOME=/usr/share/forgejo
+Environment=HOME=/usr/share/forgejo
 Environment=GITEA_WORK_DIR=/var/lib/forgejo
 Environment=GITEA_CUSTOM=/etc/forgejo
 # added automatically, for details please see

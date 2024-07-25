@@ -137,4 +137,12 @@
     <comment> (forwarded request 1177517 from favogt)</comment>
     <requestid>1177552</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>af83ca40f89c381bff4ed43f777cca3c</srcmd5>
+    <version>5.15.14+kde1</version>
+    <time>1721827892</time>
+    <user>dimstar_suse</user>
+    <comment>boo#1228199 / boo#1228204 (forwarded request 1189032 from krop)</comment>
+    <requestid>1189212</requestid>
+  </revision>
 </revisionlist>

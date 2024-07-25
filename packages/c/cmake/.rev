@@ -2286,4 +2286,12 @@ Adjust cmake-gui.spec so it uses 2.8.12.1 (forwarded request 208241 from sumski)
   conditionally when Git is found, upstream planned for 3.30.1</comment>
     <requestid>1186108</requestid>
   </revision>
+  <revision rev="254" vrev="1">
+    <srcmd5>205d7e585e4ce983918806323cc85224</srcmd5>
+    <version>3.30.1</version>
+    <time>1721827781</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1188989</requestid>
+  </revision>
 </revisionlist>

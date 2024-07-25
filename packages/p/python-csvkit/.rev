@@ -520,4 +520,38 @@
     --datetime-format --skip-lines</comment>
     <requestid>1161151</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>196344119b5f941f0da4bad798b824e1</srcmd5>
+    <version>2.0.1</version>
+    <time>1721827881</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.0.1:
+  * feat: csvsql adds --min-col-len and --col-len-multiplier options.
+  * feat: sql2csv adds a --engine-option option.
+  * feat: Add man pages to the sdist and wheel distributions.
+  * fix: csvstat no longer errors when a column is a time delta and --json
+    is set.
+  * csvclean now writes its output to standard output and its errors to
+    standard error, instead of to basename_out.csv and basename_err.csv
+    files.
+  * csvclean no longer reports or fixes errors by default; it errors if no
+    checks or fixes are enabled.
+  * csvclean no longer omits rows with errors from the output.
+  * csvclean joins short rows using a newline by default, instead of a space.
+  * Add a lot of options to csvclean.
+  * feat: The --quoting option accepts csv.QUOTE_STRINGS and
+    csv.QUOTE_NOTNULL on Python 3.12.
+  * feat: csvformat: The --out-quoting option accepts csv.QUOTE_STRINGS
+    and csv.QUOTE_NOTNULL on Python 3.12.
+  * fix: csvformat: The --out-quoting option works with csv.QUOTE_NONUMERIC.
+  * fix: csvclean: The --join-short-rows option no longer reports length
+    mismatch errors that were fixed.
+  * feat: Add support for Zstandard files with the .zst extension, if the
+    zstandard package is installed.
+  * feat: csvformat adds a --out-asv (--A) option to use the ASCII unit
+    separator and record separator.
+  * feat: csvsort adds a --ignore-case (--i) option to perform
+    case-independent sorting.</comment>
+    <requestid>1189177</requestid>
+  </revision>
 </revisionlist>

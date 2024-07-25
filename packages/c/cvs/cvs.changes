@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jul  7 14:57:14 UTC 2024 - Friedrich Haubensak <hsk17@mail.de>
+
+- add %autoreconf in subdir cvslock-0.2 to support gcc-14
+
+-------------------------------------------------------------------
 Mon Feb 26 10:48:40 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.

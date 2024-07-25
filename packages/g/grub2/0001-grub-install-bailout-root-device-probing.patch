@@ -1,4 +1,4 @@
-From 58dcf7985b20de876a6fc44a591aa377d0a0302c Mon Sep 17 00:00:00 2001
+From db67bd0800c69f94fa3696351e7387515464d30c Mon Sep 17 00:00:00 2001
 From: Michael Chang <mchang@suse.com>
 Date: Thu, 10 Feb 2022 22:16:58 +0800
 Subject: [PATCH] grub-install: bailout root device probing
@@ -15,14 +15,26 @@ filesystem in it's own right.
 
 The command is also used by grub-mkconfig for the same purpose.
 
+v2:
+
+Test the root device first before probing to avoid encountering
+unexpected errors. If this test fails, the device is considered
+irrelevant and of no interest, as it is not useful.
+
+v2.1:
+Besides verifying that the target's canonical path can be resolved,
+ensure that the target is a block device file.
+
 Signed-off-by: Michael Chang <mchang@suse.com>
 ---
- grub-core/osdep/basic/no_platform.c |  5 +++++
- grub-core/osdep/unix/platform.c     | 34 +++++++++++++++++++++++++++++
- grub-core/osdep/windows/platform.c  |  6 +++++
- include/grub/util/install.h         |  3 +++
- util/grub-install.c                 | 31 ++++++++++++++++++--------
- 5 files changed, 70 insertions(+), 9 deletions(-)
+ grub-core/osdep/basic/no_platform.c |  5 +++
+ grub-core/osdep/unix/getroot.c      | 67 +++++++++++++++++++++++++++++
+ grub-core/osdep/unix/platform.c     | 34 +++++++++++++++
+ grub-core/osdep/windows/platform.c  |  6 +++
+ include/grub/emu/getroot.h          |  3 ++
+ include/grub/util/install.h         |  3 ++
+ util/grub-install.c                 | 45 +++++++++++++++----
+ 7 files changed, 154 insertions(+), 9 deletions(-)
 
 --- a/grub-core/osdep/basic/no_platform.c
 +++ b/grub-core/osdep/basic/no_platform.c
@@ -35,6 +47,82 @@ Signed-off-by: Michael Chang <mchang@suse.com>
 +{
 +  return NULL;
 +}
+--- a/grub-core/osdep/unix/getroot.c
++++ b/grub-core/osdep/unix/getroot.c
+@@ -489,6 +489,73 @@
+   return 0;
+ }
+ 
++#ifdef __linux__
++int
++grub_can_guess_from_mountinfo (const char *dir_in)
++{
++  char **cur;
++  char **os_dev = NULL;
++  char *dir = grub_canonicalize_file_name (dir_in);
++  int ret = 0;
++
++  if (!dir)
++    return 0;
++
++  os_dev = grub_find_root_devices_from_mountinfo (dir, NULL);
++
++  if (!os_dev)
++    os_dev = find_root_devices_from_libzfs (dir);
++
++  if (!os_dev)
++    {
++      free (dir);
++      return 0;
++    }
++
++  for (cur = os_dev; *cur; cur++)
++    {
++      if (strcmp (*cur, "/dev/root") == 0
++	  || strncmp (*cur, "/dev/dm-", sizeof ("/dev/dm-") - 1) == 0)
++	/* Assume known and good names */
++	continue;
++      else
++	{
++	  struct stat st;
++
++	  char *tmp = grub_canonicalize_file_name (*cur);
++	  if (tmp == NULL)
++	    break;
++
++	  if (strncmp (tmp, "/dev/dm-", sizeof ("/dev/dm-") - 1) == 0)
++	    continue;
++
++	  if (lstat (tmp, &st) < 0)
++	    {
++	      free (tmp);
++	      break;
++	    }
++	  free (tmp);
++	  if (! S_ISBLK (st.st_mode))
++	    /* only block device allowed */
++	    break;
++	}
++    }
++
++  if (*cur == NULL)
++    /* no bogus device left, good */
++    ret = 1;
++  else
++    grub_util_info ("`%s' is not os device", *cur);
++
++  for (cur = os_dev; *cur; cur++)
++    free (*cur);
++  free (os_dev);
++  free (dir);
++
++  return ret;
++}
++#endif /* __linux__ */
++
+ char **
+ grub_guess_root_devices (const char *dir_in)
+ {
 --- a/grub-core/osdep/unix/platform.c
 +++ b/grub-core/osdep/unix/platform.c
 @@ -250,3 +250,37 @@
@@ -87,6 +175,18 @@ Signed-off-by: Michael Chang <mchang@suse.com>
 +{
 +  return NULL;
 +}
+--- a/include/grub/emu/getroot.h
++++ b/include/grub/emu/getroot.h
+@@ -35,6 +35,9 @@
+ 
+ char *grub_find_device (const char *dir, dev_t dev);
+ void grub_util_pull_device (const char *osname);
++#ifdef __linux__
++int grub_can_guess_from_mountinfo (const char *dir);
++#endif
+ char **grub_guess_root_devices (const char *dir);
+ int grub_util_get_dev_abstraction (const char *os_dev);
+ char *grub_make_system_path_relative_to_its_root (const char *path);
 --- a/include/grub/util/install.h
 +++ b/include/grub/util/install.h
 @@ -251,6 +251,9 @@
@@ -101,7 +201,7 @@ Signed-off-by: Michael Chang <mchang@suse.com>
  int
 --- a/util/grub-install.c
 +++ b/util/grub-install.c
-@@ -887,7 +887,6 @@
+@@ -922,7 +922,6 @@
    const char *efi_file = NULL;
    char **grub_devices;
    grub_fs_t grub_fs;
@@ -109,7 +209,7 @@ Signed-off-by: Michael Chang <mchang@suse.com>
    grub_device_t grub_dev = NULL;
    enum grub_install_plat platform;
    char *grubdir, *device_map;
-@@ -1067,8 +1066,10 @@
+@@ -1102,10 +1101,22 @@
    grub_host_init ();
  
    {
@@ -121,8 +221,20 @@ Signed-off-by: Michael Chang <mchang@suse.com>
 +
      char *t = grub_util_path_concat (2, "/", rootdir);
  
++#ifdef __linux__
++    if (!grub_can_guess_from_mountinfo (t))
++      {
++	free(t);
++	/* We can safely ignore the root probe here; whichever cannot be
++	 * reliably detected is irrelevant and of no interest */
++	goto skip_root_probe;
++      }
++#endif
++
      rootdir_path = grub_canonicalize_file_name (t);
-@@ -1089,20 +1090,32 @@
+     if (!rootdir_path)
+       grub_util_error (_("failed to get canonical path of `%s'"), t);
+@@ -1124,22 +1135,38 @@
  		       rootdir_devices[0]);
  
      rootdir_grub_dev = grub_device_open (rootdir_grub_devname);
@@ -160,4 +272,10 @@ Signed-off-by: Michael Chang <mchang@suse.com>
 +      grub_device_close (rootdir_grub_dev);
    }
  
++#ifdef __linux__
++ skip_root_probe:
++#endif
++
    switch (platform)
+     {
+     case GRUB_INSTALL_PLATFORM_I386_EFI:

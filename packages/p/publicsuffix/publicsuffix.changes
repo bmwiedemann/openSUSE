@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Mon Jul 22 08:47:29 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 20240722:
+  * PSL Private Section Domains WHOIS Checker (#2014)
+  * Add servebolt.cloud to PLS (#2026)
+  * Add `p.tawk.email` and `p.tawkto.email` domains (#2016)
+  * Remove domain no longer under Supabase control. (#2037)
+  * tools/internal/parser: implement automatic reformatting (#2036)
+  * util: gTLD data autopull updates for 2024-07-12T15:14:39 UTC (#2034)
+  * Add dhosting.pl Sp. z o.o. shared domains: dfirma.pl, dkonto.pl, you2.pl (#2024)
+  * tools/internal/parser: rework metadata extraction for more accurate reformatting (#2027)
+  * AWS Submissions to the Public Suffix List - Q2 2024 (#1954)
+  * aero: remove extra word between TLD name and URL (#2029)
+  * tools/internal/parser: rewrite parser to output a syntax tree (#2025)
+  * Add removal notice to PR template (#2023)
+  * remove Rakuten Games, Inc related entries (#2022)
+  * add `hatenablog.com` etc (#1948)
+  * Add cyber_Folks S.A. shared domain - cfolks.pl (#2017)
+  * tools/internal/parser: minor parser cleanups (#2021)
+  * Add Craft Docs Domain (#2006)
+  * util: gTLD data autopull updates for 2024-06-29T15:13:33 UTC (#2020)
+  * Merge WebPros domains in the same section (#2013)
+  * Add `durumis.com` (#1978)
+  * tools/internal/parser: validate the sort order of the private section (#2012)
+  * Update comments on aland.fi (#2019)
+  * Remove instantcloud.cn (#2015)
+  * tools/internal/parser: detect and report section markers within suffix blocks (#2011)
+  * tools/internal/parser: remove workarounds for fixed PSL blocks (#2010)
+  * Add Raidboxes GmbH to the list (#2004)
+  * Add missing URL schemes to URLs (#2008)
+  * Add closing chevron to contact email address. (#2007)
+  * tool/internal/parser: sanitize input to clean, valid UTF-8 (#2005)
+  * Add `obl.ong` (#1830)
+  * Salesforce crm dev (#1941)
+  * Add wpsquared.site and wp2.host to private section (#1957) (#1957)
+  * Add netfy.app (#1991)
+  * Remove expired domains: `ro.im`, `cn.vu` (#2003)
+  * tools/internal/parser: refactor to separate text processing from parser main logic (#1999)
+  * Replace unicode fullwidth colon with a regular ascii colon. (#2001)
+  * Add missing spaces after '//' on prequalifyme.today block (#2000)
+  * Add `as.sh.cn` (#1992)
+  * tools: add a validating parser for PSL files (#1987)
+  * Clarify request to list third-party limits in PR template
+  * util: gTLD data autopull updates for 2024-06-13T15:15:16 UTC (#1994)
+  * Reattach of.by to the Belarus ccTLD block (#1995)
+  * add madethis.site (#1979)
+  * mytuleap.com, tuleap-partners.com: update contact information (#1845)
+  * Add Strapi domains (#1982)
+  * Add relay.evervault.app and relay.evervault.dev (#1959)
+  * add .ind.mom  (#1984)
+  * Add 6 new domains to Lukanet Ltd Private domains (#1977)
+  * Add heiyu.space (#1980)
+
+-------------------------------------------------------------------
 Thu Jun  6 08:50:15 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 20240603:

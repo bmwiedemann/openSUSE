@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Jul 22 08:48:22 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 24.4.0:
+  * This is just a docs / PyPI README update. No code changes whatsoever.
+
+-------------------------------------------------------------------
+Mon Jul 22 08:46:41 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 24.3.0:
+  * Restore feature parity between structlog.traceback.ExceptionDictTransformer
+    and Rich's traceback extractor #627
+    + When displaying locals, use Rich for formatting if it is available.
+    + When displaying locals, call repr() on strings, too (improves handling of
+      SecretStr implementations).
+    + Add locals_max_length config option
+    + Add locals_hide_sunder config option
+    + Add locals_hide_dunder config option
+    + Add suppress config option
+  * structlog.testing.capture_logs() now maps the exception log level to
+    error (as it's elsewhere) #628
+
+-------------------------------------------------------------------
 Mon Jun 10 08:28:13 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 24.2.0:

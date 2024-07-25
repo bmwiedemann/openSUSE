@@ -127,4 +127,12 @@
     <comment>Drop Requires on filesystem tools packages and require libguestfs only which pulls in libguestfs-appliance</comment>
     <requestid>1172600</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>16b506bf868ff817ba73719cb1f5c46b</srcmd5>
+    <version>2.5.5</version>
+    <time>1721827796</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1189089</requestid>
+  </revision>
 </revisionlist>

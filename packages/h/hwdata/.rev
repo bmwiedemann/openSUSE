@@ -717,4 +717,13 @@
     <comment></comment>
     <requestid>1181290</requestid>
   </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>8160a94716004e60bcc5ce22954745ec</srcmd5>
+    <version>0.384</version>
+    <time>1721827970</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.384:
+  * Update pci and vendor ids</comment>
+    <requestid>1188953</requestid>
+  </revision>
 </revisionlist>

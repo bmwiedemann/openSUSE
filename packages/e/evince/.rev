@@ -1393,4 +1393,18 @@ New stable release</comment>
   + Updated translations. (forwarded request 1177035 from dimstar)</comment>
     <requestid>1177059</requestid>
   </revision>
+  <revision rev="179" vrev="1">
+    <srcmd5>998c4cb08767e5cf40798762bd8e4695</srcmd5>
+    <version>46.3.1</version>
+    <time>1721827769</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 46.3.1:
+  + ev-window:
+    - Don't attempt to load non-seekable files directly
+    - Improve detection of non-seekable files
+   + libview: Revert &quot;ev-view-presentation: Simplify reset_jobs
+     calls&quot;
+   + Updated translations. (forwarded request 1189119 from iznogood)</comment>
+    <requestid>1189149</requestid>
+  </revision>
 </revisionlist>

@@ -146,4 +146,12 @@
 - Drop gnome-commander-taglib-2.0.patch: fixed upstream. (forwarded request 1174756 from dimstar)</comment>
     <requestid>1174759</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>7289149909b897255e6705a29c14aab5</srcmd5>
+    <version>1.18.0</version>
+    <time>1721827911</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1189255</requestid>
+  </revision>
 </revisionlist>

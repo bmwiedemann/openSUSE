@@ -1,0 +1,16 @@
+Index: libgcrypt-1.10.3/random/rndjent.c
+===================================================================
+--- libgcrypt-1.10.3.orig/random/rndjent.c
++++ libgcrypt-1.10.3/random/rndjent.c
+@@ -319,7 +319,10 @@ _gcry_rndjent_poll (void (*add)(const vo
+               jent_rng_totalcalls++;
+               rc = jent_read_entropy_safe (&jent_rng_collector, buffer, n);
+               if (rc < 0)
+-                break;
++                {
++                  fips_signal_error ("jitter entropy failed");
++                  break;
++                }
+               /* We need to hash the output to conform to the BSI
+                * NTG.1 specs.  */
+               _gcry_md_hash_buffer (GCRY_MD_SHA256, buffer, buffer, rc);

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jul 15 12:19:43 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Stop using %%defattr, it seems to be breaking proper executable
+  attributes on /usr/bin/ scripts (bsc#1227378).
+
+-------------------------------------------------------------------
 Wed May 22 08:59:52 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Restore _multibuild

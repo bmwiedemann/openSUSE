@@ -577,7 +577,6 @@ desktop-file-install --dir=%{buildroot}%{_datadir}/applications %{SOURCE51}
 %postun -p /sbin/ldconfig
 
 %files idle
-%defattr(644, root, root, 755)
 %dir %{_sysconfdir}/%{idle_name}
 %config %{_sysconfdir}/%{idle_name}/*
 %doc Lib/idlelib/NEWS.txt
@@ -594,34 +593,28 @@ desktop-file-install --dir=%{buildroot}%{_datadir}/applications %{SOURCE51}
 %{_datadir}/icons/hicolor/*/apps/idle.png
 
 %files demo
-%defattr(644, root, root, 755)
 %doc %{_docdir}/%{name}/Demo
 %doc %{_docdir}/%{name}/Tools
 
 %files tk
-%defattr(644, root, root, 755)
 %{_libdir}/python%{python_version}/lib-tk/
 %{_libdir}/python%{python_version}/lib-dynload/_tkinter.so
 
 %files curses
-%defattr(644, root, root, 755)
 %{_libdir}/python%{python_version}/curses
 %{_libdir}/python%{python_version}/lib-dynload/_curses.so
 %{_libdir}/python%{python_version}/lib-dynload/_curses_panel.so
 
 %files gdbm
-%defattr(644, root, root, 755)
 %{_libdir}/python%{python_version}/lib-dynload/gdbm.so
 %{_libdir}/python%{python_version}/lib-dynload/dbm.so
 
 %if %{suse_version} == 1315 && !0%{?is_opensuse}
 %files strict-tls-check
-%defattr(644, root, root, 755)
 %{_libdir}/python%{python_version}/sle_tls_checks_policy.py*
 %endif
 
 %files
-%defattr(644, root, root, 755)
 %dir %{_docdir}/%{name}
 %doc %{_docdir}/%{name}/README
 %doc %{_docdir}/%{name}/LICENSE

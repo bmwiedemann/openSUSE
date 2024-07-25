@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Jul 21 14:36:01 UTC 2024 - Andreas Schwab <schwab@linux-m68k.org>
+
+- Update to strace 6.10
+  * Implemented --decode-fds=eventfd option to retrieve eventfd object details
+    associated with eventfd file descriptors.
+  * Implemented decoding of NETLINK_GENERIC nlctrl protocol.
+  * Implemented decoding of F_DUPFD_QUERY fcntl.
+  * Implemented decoding of mseal syscall.
+  * Updated decoding of statx and prctl syscalls.
+  * Updated decoding of BPF_RAW_TRACEPOINT_OPEN bpf command.
+  * Updated lists of BPF_*, IORING_*, KEXEC_*, KEY_*, LANDLOCK_*, PR_*, STATX_*,
+    TCP_*, TEE_*, V4L2_*, and *_MAGIC constants.
+  * Updated lists of ioctl commands from Linux 6.10.
+  * Worked around a bug introduced in Linux 6.5 that affected system call
+    tampering on riscv64.
+
+-------------------------------------------------------------------
 Wed May 15 07:32:48 UTC 2024 - Andreas Schwab <schwab@suse.de>
 
 - Update to strace 6.9

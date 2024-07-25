@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jul 22 01:03:59 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Update to 0.4.0:
+  * Added client code generation with --client
+  * core: Add client code generation
+  * draft: avoid undefined behaviour in C macro
+
+-------------------------------------------------------------------
 Fri Jun 14 10:37:37 UTC 2024 - Dawid Adam <nyslay@gmail.com>
 
 - Update to 0.3.10:

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jul 16 05:15:42 UTC 2024 - Stefan Seyfried <seife+obs@b1-systems.com>
+
+- remove obsolete suse_update_desktop_file macro
+
+-------------------------------------------------------------------
 Tue Feb 20 12:15:55 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix build: autosetup -p0 for this package

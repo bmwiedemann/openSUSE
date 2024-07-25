@@ -18,7 +18,7 @@
 
 %define soname 0
 Name:           libbacktrace
-Version:        1.0+git20240302
+Version:        1.0+git20240718
 Release:        0
 Summary:        Backtrace C library
 License:        BSD-3-Clause

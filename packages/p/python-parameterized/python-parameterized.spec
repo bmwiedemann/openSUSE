@@ -1,7 +1,7 @@
 #
 # spec file for package python-parameterized
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -40,6 +40,8 @@ Patch1:         remove_nose.patch
 Patch2:         skip_failing_teardown.patch
 # PATCH-FIX-UPSTREAM gh#wolever/parameterized#169
 Patch3:         fix-assert-method.patch
+# PATCH-FIX-UPSTREAM gh#wolever/parameterized#176
+Patch4:         fix-tests-with-python3.13.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module wheel}

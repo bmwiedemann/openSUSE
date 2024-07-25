@@ -2,6 +2,7 @@
 # spec file for package meson
 #
 # Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,7 +36,7 @@
 %bcond_with     setuptools
 %bcond_without  mono
 Name:           meson%{name_ext}
-Version:        1.4.1
+Version:        1.5.0
 Release:        0
 Summary:        Python-based build system
 License:        Apache-2.0

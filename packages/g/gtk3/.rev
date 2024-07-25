@@ -1754,4 +1754,12 @@ Putting the API-docs into a separate package removes 23MByte from a gtk3-devel i
     <comment></comment>
     <requestid>1186766</requestid>
   </revision>
+  <revision rev="196" vrev="2">
+    <srcmd5>913a02665c90363b3435655b4cf808b4</srcmd5>
+    <version>3.24.43</version>
+    <time>1721827797</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1189075</requestid>
+  </revision>
 </revisionlist>

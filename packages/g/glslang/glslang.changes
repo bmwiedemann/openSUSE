@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jun 26 00:22:03 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 14.3
+  * Generate vector constructions more efficiently when sizes match
+  * Skip identity conversions for 8-bit and 16-bit types
+  * Emit debug info for buffer references
+  * Add support for OpExtInstWithForwardRefsKHR
+  * Generate SPV_EXT_replicated_compisites when requested by pragma
+  * Add back layoutLocation to public API
+
+-------------------------------------------------------------------
 Thu May  2 22:40:16 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 14.2

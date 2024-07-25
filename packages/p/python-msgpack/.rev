@@ -162,4 +162,12 @@
     into UnpackValueError. If you want to catch all exception during unpack,</comment>
     <requestid>1143992</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>a22da29897ef0a34b4d2db4b26a395b3</srcmd5>
+    <version>1.0.8</version>
+    <time>1721827981</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1189023</requestid>
+  </revision>
 </revisionlist>

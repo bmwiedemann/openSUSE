@@ -88,4 +88,24 @@
   * Fix dropped attributes from vector types</comment>
     <requestid>1188956</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>ab3b036714b6bf634f37e21f06fc7e44</srcmd5>
+    <version>0~20240722.a998e91</version>
+    <time>1721827829</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0~20240722.a998e91:
+  * Fix clang-extract discarding struct-partial definition in nested record
+  * Add (failing) testcase
+  * Fix clang-extract dropping complete definition of struct when a copy is necessary
+  * Fix struct being redefined if defined in variable type
+  * Extend parent RecordDecl analysis for EnumDecls
+  * Remove redundant leftmost decl from closure
+  * Avoid adding every previous decl of a global variable
+  * Force TagDecl as needing fulldefiniton if is a return type of a function
+  * Deference pointer types when searching for decomposed typedef-struct
+  * Analyze CleanupAttr
+  * Avoid adding previous declarations of typedefs into closure
+  * SymbolExternalizer: Check KLP_ macros only if there was externzalized syms</comment>
+    <requestid>1189140</requestid>
+  </revision>
 </revisionlist>

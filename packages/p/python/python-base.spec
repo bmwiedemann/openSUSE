@@ -508,11 +508,9 @@ cp Makefile Makefile.pre.in Makefile.pre %{buildroot}%{_libdir}/python%{python_v
 %postun -n libpython2_7-1_0 -p %{run_ldconfig}
 
 %files -n python-devel
-%defattr(-, root, root)
 %{_libdir}/python%{python_version}/config/*
 %exclude %{_libdir}/python%{python_version}/config/Setup
 %exclude %{_libdir}/python%{python_version}/config/Makefile
-%defattr(644, root, root, 755)
 %{_libdir}/libpython*.so
 %{_libdir}/pkgconfig/python-%{python_version}.pc
 %{_libdir}/pkgconfig/python.pc
@@ -520,22 +518,18 @@ cp Makefile Makefile.pre.in Makefile.pre %{buildroot}%{_libdir}/python%{python_v
 %{_includedir}/python*
 %exclude %{_includedir}/python%{python_version}/pyconfig.h
 %{_libdir}/python%{python_version}/test
-%defattr(755, root, root)
 %{_bindir}/python-config
 %{_bindir}/python2-config
 %{_bindir}/python%{python_version}-config
 
 %files -n python-xml
-%defattr(644, root, root, 755)
 %{_libdir}/python%{python_version}/xml
 %{_libdir}/python%{python_version}/lib-dynload/pyexpat.so
 
 %files -n libpython2_7-1_0
-%defattr(644, root, root)
 %{_libdir}/libpython*.so.*
 
 %files
-%defattr(644, root, root, 755)
 %{_rpmconfigdir}/macros.d/macros.python2
 %dir %{_docdir}/%{name}
 %doc %{_docdir}/%{name}/README

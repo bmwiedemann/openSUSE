@@ -1,0 +1,5 @@
+<package name="pinentry-rofi" project="openSUSE:Factory">
+  <title>Rofi frontend to pinentry</title>
+  <description></description>
+  <devel project="X11:Utilities" package="pinentry-rofi"/>
+</package>

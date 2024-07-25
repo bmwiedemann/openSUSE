@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jul 23 09:36:26 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.25.3:
+  * feat: support custom language injection #1309
+  * feat: register embedded language 416e28e
+  * fix(deps): update dependency @babel/core to v7.24.9 8c5dd00
+  * fix(deps): update dependency @swc/core to v1.7.0 61f6a14
+
+-------------------------------------------------------------------
 Fri Jul 19 07:49:18 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.25.2:

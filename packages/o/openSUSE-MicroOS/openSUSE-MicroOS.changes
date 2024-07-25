@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jul 16 08:13:01 UTC 2024 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Add /etc/sysconfig/bootloader LOADER_TYPE for grub2-bls and sd-boot
+
+-------------------------------------------------------------------
+Tue Jul  2 10:39:18 UTC 2024 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Add grub2 FDE image 
+- Remove custom bootloader for the grub2 image, and use bls="true"
+- Remove sdbootutil-scriptlets
+
+-------------------------------------------------------------------
 Wed Jun 19 09:32:16 UTC 2024 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Refactor config.sh and disk.sh

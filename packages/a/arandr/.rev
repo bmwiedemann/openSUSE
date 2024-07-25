@@ -42,4 +42,12 @@ This allows to remove desktop-data and hicolor-icon-theme buildrequires.</commen
     <comment></comment>
     <requestid>1147933</requestid>
   </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>d6b7abe681400d06ccf05104bc40c5dd</srcmd5>
+    <version>0.1.11</version>
+    <time>1721827831</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1189170</requestid>
+  </revision>
 </revisionlist>

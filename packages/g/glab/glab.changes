@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Mon Jul 22 18:24:47 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.44.1 (1.44.0 was not released):
+  * chore: CI/CD changes to fix release bug
+  * chore(deps): update module github.com/mattn/go-runewidth to
+    v0.0.16
+  * fix(ci view): pipeline creator is shown incorrectly
+  * chore(deps): update module k8s.io/client-go to v0.30.3
+  * chore(deps): update module k8s.io/apimachinery to v0.30.3
+  * fix(config): negate `HasSecurePerms` and fix workaround on
+    windows
+  * chore(deps): update golang to v1.22.5
+  * chore: use latest-available Markdown linting Docker image
+  * chore: manually update Vale and markdownlint rules from GitLab
+    project
+  * chore: Second (final) pass through docs / UI strings
+  * fix(view/list release): use url returned from API as link
+  * chore(deps): update module golang.org/x/crypto to v0.25.0
+  * fix(snippet create): use filename when path missing
+  * feat(snippets): allow creation of personal snippets
+  * chore: Updating goreleaser config to v2
+  * fix(issuable note): respect editor from config
+  * chore: finish the UI string pass
+  * chore: String fixes for project-related strings
+  * chore: fix strings related to merge requests
+  * fix: allow listening hostname to be provided
+  * feat: remove experimental wording for duo
+  * chore: Yet more string cleanup
+  * fix(config): ignore windows config file permission checks
+  * chore: ensure user's settings don't impact tests
+  * chore: Fix capitalization and punctuation in commands
+  * chore: Fix punctuation and phrasing in messages
+  * chore(deps): update dependency danger-review to v1.4.1
+  * chore: add goleak testing for goroutine leaks
+  * fix: always stop spinner to avoid to mess up the terminal
+  * chore(deps): update module github.com/zalando/go-keyring to
+    v0.2.5
+
+-------------------------------------------------------------------
 Mon Jun 24 18:53:41 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.43.0:

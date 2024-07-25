@@ -1435,4 +1435,21 @@ Fixes a critical bug in version 0.6.2, crashes when using internet services.
 </comment>
     <requestid>1187389</requestid>
   </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>c67e29217f3c494854a00bbd2feafc3b</srcmd5>
+    <version>1.1.1</version>
+    <time>1721827825</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.1
+  + Bugfixes:
+   + Fixed compilation songs being split into different albums when using album grouping.
+   + Fixed adding playlist columns not working when stretch mode is disabled (#1085).
+   + Fixed resetting playlist columns.
+   + Fixed adding songs to playlist adding all songs instead of filtered songs.
+   + Fixed collection filter matching entire text instead of individual words.
+  + Enhancements:
+   + Use same code for collection and playlist filter search. 
+</comment>
+    <requestid>1189136</requestid>
+  </revision>
 </revisionlist>

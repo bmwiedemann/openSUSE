@@ -7,7 +7,7 @@ Tue Jul 16 05:39:23 UTC 2024 - Christoph G <foss@grueninger.de>
 Fri Jul 12 18:40:00 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add CVE-2024-6655.patch: CVE-2024-6655 Stop looking for modules
-  in cwd.
+  in cwd (bsc#1228120).
 
 -------------------------------------------------------------------
 Mon Apr 29 07:09:25 UTC 2024 - pgajdos@suse.com
