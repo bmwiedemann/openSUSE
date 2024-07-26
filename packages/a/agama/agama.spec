@@ -1,7 +1,7 @@
 #
 # spec file for package agama
 #
-# Copyright (c) 2023-2024 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,8 +12,9 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 Name:           agama
 #               This will be set by osc services, that will run after this.
@@ -23,7 +24,7 @@ Summary:        Agama Installer
 #               If you know the license, put it's SPDX string here.
 #               Alternately, you can use cargo lock2rpmprovides to help generate this.
 License:        GPL-2.0-only
-Url:            https://github.com/opensuse/agama
+URL:            https://github.com/opensuse/agama
 Source0:        agama.tar
 Source1:        vendor.tar.zst
 
@@ -37,10 +38,10 @@ BuildRequires:  dbus-1-daemon
 BuildRequires:  clang-devel
 BuildRequires:  pkgconfig(pam)
 # required by autoinstallation
-Requires:       golang-github-google-jsonnet 
+Requires:       jsonnet
 Requires:       lshw
 # required by "agama logs store"
-Requires:       bzip2
+Requires:       gzip
 Requires:       tar
 # required for translating the keyboards descriptions
 BuildRequires:  xkeyboard-config-lang
@@ -68,7 +69,7 @@ Version:        0
 Release:        0
 Summary:        Agama command-line interface
 License:        GPL-2.0-only
-Url:            https://github.com/opensuse/agama
+URL:            https://github.com/opensuse/agama
 
 %description -n agama-cli
 Command line program to interact with the Agama installer.
@@ -116,6 +117,8 @@ echo $PATH
 %service_del_postun_with_restart agama-web-server.service
 
 %files
+%doc README.md
+%license LICENSE
 %{_bindir}/agama-dbus-server
 %{_bindir}/agama-web-server
 %{_datadir}/dbus-1/agama-services

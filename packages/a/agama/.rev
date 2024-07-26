@@ -12,4 +12,12 @@
 - https://code.opensuse.org/leap/features/issue/158</comment>
     <requestid>1184886</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f4da4762c93f8c57fd3c9a90a4da156f</srcmd5>
+    <version>0</version>
+    <time>1722003380</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1189755</requestid>
+  </revision>
 </revisionlist>
