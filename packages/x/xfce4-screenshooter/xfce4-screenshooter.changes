@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Jul 26 09:52:49 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Add BuildRequires to enable Wayland support.
+
+-------------------------------------------------------------------
+Thu Jul 25 12:25:22 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to 1.11.0
+  * Drop built-in support for imgur
+  * Drop jobs-related code
+  * Drop libsoup dependency
+  * Use XDG_DATA_HOME in imgur-upload.sh
+  * Make sure screenshot is copied to clipboard before closing (!56)
+  * Add more tests
+  * build: clang: Silence -Wcast-align
+  * Translation Updates
+
+-------------------------------------------------------------------
 Wed May 29 07:15:21 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to 1.10.6
