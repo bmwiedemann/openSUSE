@@ -1,0 +1,14 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>54a33458f1c33c2b4f5215ba1989cfd0</srcmd5>
+    <version>1.6.0</version>
+    <time>1722003363</time>
+    <user>dimstar_suse</user>
+    <comment>Add rdfind
+
+Rdfind is a program that finds duplicate files. It is useful for compressing
+backup directories or just finding duplicate files. It compares files based on
+their content, NOT on their file names.</comment>
+    <requestid>1189721</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,5 @@
+<package name="rdfind" project="openSUSE:Factory">
+  <title>rdfind</title>
+  <description>Find duplicate files and replace them with symlinks or hardlinks</description>
+  <devel project="utilities" package="rdfind"/>
+</package>

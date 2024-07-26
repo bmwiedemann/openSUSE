@@ -1,0 +1,324 @@
+-------------------------------------------------------------------
+Wed Jun 21 04:58:29 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.6.0:
+  * release version 1.6.0
+  * update notes on release: switch signing key
+  * remove man page section from see also
+  * update github actions to latest version
+  * add sha512 support
+  * refactor SomeByteSize to be a static const int instead of enum
+  * make checksumtypes an enum class
+  * run the ci quality script on ubuntu 22.04
+  * drop obsolete AC_HEADER_STDC from configure.ac
+  * fix self contained header check
+  * configure: Fix check for AC_CHECK_LIB
+  * configure.ac: fix C++11 support check
+  * Remove inactive URL
+  * drop lgtm analysis
+  * drop ubuntu 18.04, add ubuntu 22.04 to github actions
+  * add github workflow for gcc 13
+  * add github workflow for gcc 12
+  * add github workflow for gcc 11
+  * add missing include <cstdint>
+  * include <limits> (thanks to tastytea)
+  * put 1.5.next placeholders in version
+  * update changelog with the 1.5.0 release
+
+-------------------------------------------------------------------
+Wed Jun 21 04:40:26 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.5.0:
+  * set version to 1.5.0
+  * fix tabs and wrong email in changelog
+  * VERSION has been renamed, update the cheat sheet for making a
+    release
+  * Clarify that -makeresultsfile does not disable deletions
+  * add test building with C++23
+  * be more verbose showing the test for determinism works
+  * add CI test for determinism
+  * build fewer optimization level variants
+  * add cppcheck badge
+  * fix warning from cppcheck
+  * add cppcheck to CI
+  * drop popcon script
+  * fix spelling errors
+  * run github actions on pull requests
+  * Capitalize ChangeLog correctly in doc file
+  * fix copyright year
+  * replace appveyor with github action
+  * don't error out on compiler warnings
+  * include missing header
+  * run the quality script in github actions
+  * add mac build badge, correct devel spelling error
+  * add badges for ubuntu builds
+  * add mac os x github action (#80)
+  * drop unused script
+  * refresh github action for ubuntu default build
+  * add github action for building on ubuntu
+  * the donate url to goclimateneutral has changed name to
+    goclimate
+  * use branch main instead of master
+  * drop travis CI
+  * add info about new option -maxsize N to changelog
+  * fix spelling and garbage in changelog
+  * get rid of whitespace problems in changelog
+  * fix #77 by renaming file VERSION->VERSION.txt
+  * #78 fix typo in copyright year
+  * bump nettle from 3.4->3.7.3 in the 32 bit test
+  * reuse $me in do_quality_checks.sh
+  * try all installed clang versions when testing libc++ support
+  * fix bug in checking for a working libc++ install
+  * add note about sponsoring
+  * github bootstrap: set c++11 also for make distcheck
+  * github bootstrap: set c++11
+  * add github workflow ./bootstrap.sh
+  * github workflow install packages
+  * add github build action
+  * get make distcheck to work
+  * reduce appveyour apt verbose progress
+  * add build badges for both master and devel
+  * simplify the c++11 check, drop autoconf-archive dependency
+  * add build badges for both master and devel
+  * shell script auto format
+  * #33 refactor to let all disorderfs based tests work equally
+  * #33 verify that disorderfs works before using it
+  * refactor nested class into being private
+  * fix some gcc 8 warnings
+  * expand tabs
+  * add more warnings
+  * add error check
+  * cleanup quality script debug output a bit
+  * improve debug output by prefixing with script name
+  * delete or ignore temporary files from the quality script
+  * fix 32 bit test build
+  * fix merge mistake (reintroduced an old warning)
+  * get rid of man page extra space
+  * fix outdated nettle compile instructions
+  * appveyor: apt update before apt install
+  * fix repetition in the old min size test
+  * add testcase
+  * update man page
+  * fix bug
+  * move check to options parsing
+  * maxsize seems to work now
+  * tdd - prove missing implementation
+  * verify negative maxsize is not accepted
+  * mention autoconf-archive in INSTALL #19
+  * Added spaces between end of sentences
+  * Update README.md
+  * Update README.md
+  * 32 bit works on appveyour, restore to run last again
+  * add g++ multilib
+  * typo
+  * change path after nettle build
+  * show log files in time order
+  * add gcc-multilib to appveyour
+  * Revert "try disable the c++ version workarounds on travis"
+  * try disable the c++ version workarounds on travis
+  * get rid of obsolete packaging files
+  * apply fixes from the 1.4.1 branch
+  * add 32 bit build on amd64
+  * fix hardlink test
+  * add note about test that probably is wrong
+  * get rid of troublesome overloads on 32 bit arches
+  * set version number to 1.4.next
+  * remove obsolete debian packaging
+  * fix quality script failing at first run
+  * fix warning from PVS Studio
+  * add include guards (found by Flint++)
+  * ensure all headers are self contained
+  * clang tidy fixes for braces and closing namespace comments
+  * fix assert mistakes
+
+-------------------------------------------------------------------
+Tue Jun 20 13:57:57 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.4.1:
+  * fix formatting error in -h output
+  * set version to 1.4.1
+  * fix warning
+  * fix hardlink test
+  * get rid of troublesome overloads on 32 bit arches
+
+-------------------------------------------------------------------
+Tue Jun 20 13:16:12 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.4.0:
+  * release 1.4.0
+  * #5 improve error message when failing rename to temporary
+  * format shell script
+  * packaging works now
+  * test that packaging works (it doesn't)
+  * fix unhappy autoconf
+  * release candidate for 1.4.0 - alpha0
+  * Update README.md
+  * #11 output a readable error message on failed action
+  * #12 clarify that by default no action is taken
+  * fix some issues raised by cppcheck
+  * be explicit about dryrun in delete printouts
+  * remove unused functionality from dryrunhelper
+  * missing space causes script to fail
+  * add test to makefile
+  * misspelled asserts to configure script
+  * improve the test build script
+  * #13 #10 verify deterministic flag functionality
+  * remove compiler warning.
+  * try improving the man page formatting
+  * try to improve the language in the man page
+  * in manpage - clarify the defaults
+  * #13 describe the -deterministic option
+  * #13 fix dereferencing error
+  * clang format
+  * #13 try to fix compile warning
+  * #13 initial code for deterministic action - tests missing
+  * include config.h first
+  * add possibility to disable assert from configure
+  * get rid of complicated size calculations
+  * make enum into enum class
+  * fix typo in copyright year
+  * sort class members public, private
+  * more cleanup
+  * remove some unused code. improve in-code documentation
+  * test both in release and debug mode
+  * look for fallthrough attribute support
+  * passes do_quality_checks.sh
+  * refactor to try to get rid of algos.hh
+  * suppress error message when looking for libc++
+  * refactor from function pointers etc
+  * move fileinfo object into place
+  * dont add small files. reduce complex comparison functions.
+  * remove unused functionality
+  * remove unused functionality
+  * factor out options to a const object
+  * clean excessive endl and using directives
+  * clean away unused includes
+  * refactor the command line parser into separate file
+  * simplify the walk function
+  * optionally measure compile time
+  * refactor. reorder fields of fileinfo.
+  * refactor identity to be a 64 bit type
+  * refactor
+  * #10 do not invoke disorderfs commands unless found
+  * #10 add unit test for ranking
+  * #8 add to release notes
+  * #8 improve error message on failed test
+  * refactor and simplify argument parsing
+  * get rid of excessive endl use
+  * #8 improve error message on misuse of dryrun
+  * #8 add test case to demonstrate bad error message
+  * add build badge matrix
+  * clang format
+  * appveyour assume yes in install
+  * appveyor failed on searching for clang - try to fix it
+  * fix compile warning from gcc 8
+  * add initial appveyour support
+  * #8 add unit test for dryrun. improve the error message.
+  * add test for dryrun mode
+  * #7 change default checksum to sha1
+  * #1 fix typo in printout (using > instead of <)
+  * #7 add test for selecting checksum
+  * #7 support sha256 (not turned on by default)
+  * Update README.md
+  * fix bugs in quality build script
+  * add valgrind and clang/libc++ builds to quality script
+  * add something like a release build to the quality script
+  * add using debian buildflags to the quality test
+  * refactor old tests to use the common functionality
+  * test for -Wlifetime warning flag
+  * add sanitizers to the quality check script
+  * script for compiling and running tests on compiler/standard
+    combos
+  * #1 add documentation to man page and builtin help
+  * #1 add -minsize option
+  * disable autotools based valgrind support
+  * #1 refactor file size check
+  * add option for running checks through valgrind
+  * #1 add unit test for -ignoreempty
+  * make the builtin help text more like the man page
+  * #5 refactor and simplify symlink actions
+  * #5 expand the tests for making symlinks
+  * add missing include
+  * #5 let symlink handling be as robust as hardlink handling
+  * #5 refactor transactional making of hard link
+  * fix missing include guard found by lgtm
+  * try lgtm code analysis
+  * apply two suggestions from by cppcheck
+  * #5 refactor the undo class
+  * #5 refactor and break out class random to a separate file
+  * #6 add travis build badge on front page
+  * #6 fix syntax error
+  * #6 trying to get travis to work...
+  * #6 try workarounds for travis
+  * #6 use older version of c++11 check
+  * #6 optionally disable checking for c++11 support
+  * #6 run bootstrap on travis
+  * #6 first try at travis
+  * #5 avoid long temporary filenames
+  * clang format
+  * initial try to fix proper behaviour on failed hardlink #5
+  * #5 provoke bug in unit test
+  * #5 initial test for hardlinks - happy path
+  * Populate README.md
+  * c++ cleanup
+  * code cleanup
+  * checksum files with 4096 bytes instead of 1024 in each block
+  * clean some bad c++ and leftovers
+  * add unit test to verify a past md5 choice bug
+  * bump version number to mark it as unreleased
+  * #2 now warning clean with all warnings suggested by
+    cppbestpractices
+  * #2 fix sign conversion warnings
+  * #2 last cstyle cast warning removed
+  * #2 simplify to get rid of cstyle casts
+  * refactor from c buffer to std array
+  * #2 get rid of checksum dynamic allocation and associated cstyle
+    casts
+  * switch clang format to mozilla style, minimum configuration
+  * remove dynamic allocation of digest
+  * #2 remove cstyle cast, add const correctness
+  * #2 turn on -pedantic and switch to c++11
+  * #2 now warning free also with -Wextra
+  * #2 now compiles warning free in clang 5 and gcc 5
+  * #2 optionally turn on compiler warnings through configure
+  * add readme for github front page
+
+-------------------------------------------------------------------
+Tue Jun 20 10:42:13 UTC 2023 - kastl@b1-systems.de
+
+- Update to version releases/1.3.5:
+  * get rid of cvs keyword
+  * fix http->https link, old name
+  * get rid of old email adress
+  * get rid of obsolete portfile
+  * reformat with clang format 3.5 on debian jessie
+  * add clang format file made with clang-format-3.5 -style=GNU
+    -dump-config >.clang-format on debian jessie
+  * release version 1.3.5
+  * fix make check so it works again
+  * update the license text, add it into the source tarball
+  * add copyright on top of each source file
+
+-------------------------------------------------------------------
+Thu May  8 19:09:25 UTC 2014 - opensuse_buildservice@ojkastl.de
+
+- cleaned up the spec with spec-cleaner 
+
+-------------------------------------------------------------------
+Tue May  6 16:52:59 UTC 2014 - opensuse_buildservice@ojkastl.de
+
+- modified the spec file to comply with the packaging guidelines
+- Group is now System/Management 
+
+-------------------------------------------------------------------
+Tue May  6 16:48:48 UTC 2014 - opensuse_buildservice@ojkastl.de
+
+- created package
+- licensed as GPL 2.0 or later according to author
+- Group is missing 
+
+-------------------------------------------------------------------
+Tue May  6 10:53:39 UTC 2014 - opensuse_buildservice@ojkastl.de
+
+- first commit to include package into buildservice 
+
