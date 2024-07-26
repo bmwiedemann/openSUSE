@@ -20,7 +20,7 @@ Name:           eartag
 Version:        0.6.1
 Release:        0
 Summary:        Edit audio file tags
-License:        X11-distribute-modifications-variant
+License:        MIT
 URL:            https://gitlab.gnome.org/World/eartag
 Source:         %{name}-%{version}.tar.gz
 BuildArch:      noarch

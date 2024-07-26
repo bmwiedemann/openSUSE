@@ -27,4 +27,12 @@
 - Add forgotten set_version service.</comment>
     <requestid>1174021</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>4b11b18a9d808674562ec2615bdb97e3</srcmd5>
+    <version>0.6.1</version>
+    <time>1722003355</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1189704</requestid>
+  </revision>
 </revisionlist>
