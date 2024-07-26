@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jul 23 09:03:23 UTC 2024 - Richard Brown <rbrown@suse.com>
+
+- Restore tpm2.0-abrmd, needed by tpm2_getcap
+
+-------------------------------------------------------------------
 Fri Jul 19 15:12:27 UTC 2024 - Richard Brown <rbrown@suse.com>
 
 - Remove tpm2.0-abrmd, not longer used

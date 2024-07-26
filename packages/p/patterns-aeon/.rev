@@ -99,4 +99,13 @@
     <comment>- Remove tpm2.0-abrmd, not longer used</comment>
     <requestid>1188703</requestid>
   </revision>
+  <revision rev="13" vrev="13">
+    <srcmd5>6f2000128f77e717dd9e32cff8ed0331</srcmd5>
+    <version>5.0</version>
+    <time>1722007534</time>
+    <user>dimstar_suse</user>
+    <comment>- Restore tpm2.0-abrmd, needed by tpm2_getcap
+</comment>
+    <requestid>1189810</requestid>
+  </revision>
 </revisionlist>
