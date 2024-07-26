@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Mon Jul  8 07:30:16 UTC 2024 - Witek Bedyk <witold.bedyk@suse.com>
+
+- Migrate from `disabled` to `manual` source service type
+- Drop BuildRequires: golang-packaging
+- Upgrade to version 1.0.8 (bsc#1227341)
+  * Update prometheus/client_golang to version 1.19.1
+  * Update x/net to version 0.23.0
+- Upgrade to version 1.0.7
+  * Update protobuf to version 1.33.0
+  * Update prometheus/client_golang to version 1.19.0
+  * Update prometheus/common to version 0.46.0
+  * Standardize landing page
+- Upgrade to version 1.0.6
+  * Update prometheus/exporter-toolkit to version 0.11.0
+  * Update prometheus/client_golang to version 1.18.0
+  * Add User-Agent header
+- Upgrade to version 1.0.4
+  * Update x/crypto to version 0.17.0
+  * Update alecthomas/kingpin/v2 to version 2.4.0
+  * Update prometheus/common to version 0.45.0
+- Upgrade to version 1.0.3
+  * Update prometheus/client_golang to version 1.17.0
+  * Update x/net 0.17.0
+- Upgrade to version 1.0.2
+  * Fix security bug in x/net dependency (CVE-2023-3978)
+- Upgrade to version 1.0.1
+  * Update prometheus/exporter-toolkit to version 0.10.0
+  * Update prometheus/common to version 0.44.0
+  * Update prometheus/client_golang to version 1.16.0
+
+-------------------------------------------------------------------
 Tue Nov 21 15:05:11 UTC 2023 - Marina Latini <marina.latini@suse.com>
 
 - Do not strip if SUSE Linux Enterprise 15 SP3
