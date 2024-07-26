@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Jul 26 04:44:10 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.5.3:
+  * feat: Deduplicate exceptions workflow (#332)
+  * chore: move slack to utils directory (#327)
+  * chore(deps): bump k8s.io/apiextensions-apiserver from 0.30.2 to
+    0.30.3 (#331)
+  * feat: consider ingress and egress rules for networkpolicies
+    (#310)
+  * fix(workflow): move chart release workflow and fix fetch-depth
+    bug (#326)
+
+-------------------------------------------------------------------
 Wed Jul 03 16:36:27 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.5.2:
