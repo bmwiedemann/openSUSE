@@ -23,7 +23,7 @@
 %global __nodejs_provides %{nil}
 %global __nodejs_requires %{nil}
 Name:           pnpm
-Version:        9.5.0
+Version:        9.6.0
 Release:        0
 Summary:        Fast, disk space efficient package manager
 License:        MIT
@@ -97,7 +97,6 @@ sed -i '1!b;\|#!/|d' %{buildroot}%{nodejs_sitelib}/pnpm/dist/node_modules/glob/d
 find %{buildroot}%{nodejs_sitelib}/pnpm/dist/node_modules/node-gyp/gyp -type f \
     -exec sed -i '1!b;\|#!/|d' {} \;
 
-
 # SHELL COMPLETION
 
 mkdir -p %{buildroot}%{_datadir}/bash-completion/completions
@@ -106,7 +105,6 @@ mkdir -p %{buildroot}%{_datadir}/zsh/site-functions
 %{buildroot}%{_bindir}/pnpm completion zsh > %{buildroot}%{_datadir}/zsh/site-functions/_%{name}
 mkdir -p %{buildroot}%{_datadir}/fish/vendor_completions.d
 %{buildroot}%{_bindir}/pnpm completion fish > %{buildroot}%{_datadir}/fish/vendor_completions.d/%{name}.fish
-
 
 # CLEANUP
 
@@ -126,7 +124,6 @@ find %{buildroot}%{nodejs_sitelib}/pnpm/dist -type f \
 %fdupes %{buildroot}
 
 %check
-
 
 %files
 %license LICENSE
