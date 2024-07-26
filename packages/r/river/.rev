@@ -331,4 +331,25 @@ Fix specfile to not let river own `/usr/share/pkgconfig`</comment>
     <comment></comment>
     <requestid>1187931</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>ce047efe1cad38545d9d850b37fddb42</srcmd5>
+    <version>0.3.5</version>
+    <time>1722003352</time>
+    <user>dimstar_suse</user>
+    <comment>- Update README-suse-maintenance.md. Point to Zig page in openSUSE wiki.
+- Fix contrib file list in %prep. Contrib are not part of river's sources
+  from upstream so it makes sense to put it here.
+  * include vendor.tar.zst (so users can see what's inside)
+  * include river-run.sh (so users know if they want to edit this)
+  * include river-portals.conf
+- Update to version 0.3.5:
+  * completions: zsh click-method option fix
+  * build: bump version to 0.3.5-dev
+  * build: update to wlroots 0.18.0
+  * LayerSurface: minor style/naming tweaks
+  * river: attempt to recover from GPU resets
+  * build: bump version to 0.3.5
+  * LayerSurface: focus on_demand-interactive surfaces on map</comment>
+    <requestid>1189688</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Fri Jul 26 02:18:31 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
+
+- Update README-suse-maintenance.md. Point to Zig page in openSUSE wiki.
+
+-------------------------------------------------------------------
+Fri Jul 26 02:14:14 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
+
+- Fix contrib file list in %prep. Contrib are not part of river's sources
+  from upstream so it makes sense to put it here.
+  * include vendor.tar.zst (so users can see what's inside)
+  * include river-run.sh (so users know if they want to edit this)
+  * include river-portals.conf
+
+-------------------------------------------------------------------
+Fri Jul 26 02:08:30 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
+
+- Update to version 0.3.5:
+  * completions: zsh click-method option fix
+  * build: bump version to 0.3.5-dev
+  * build: update to wlroots 0.18.0
+  * LayerSurface: minor style/naming tweaks
+  * river: attempt to recover from GPU resets
+  * build: bump version to 0.3.5
+  * LayerSurface: focus on_demand-interactive surfaces on map
+
+-------------------------------------------------------------------
+Mon Jul 22 02:51:37 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
+
+- Revert change. Viewed wrong page. Requirements was still 0.17.2
+
+-------------------------------------------------------------------
+Mon Jul 22 02:21:36 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
+
+- Restrict wlroots requirement to >= 0.18.x. This
+  should fail if this was not met. But seems upstream has no
+  code to detect wlroots version. Allow this failure for now
+  until 0.18.0 is merged to Factory.
+
+-------------------------------------------------------------------
 Wed Jul 10 17:02:36 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Enable tests

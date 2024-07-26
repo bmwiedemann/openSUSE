@@ -17,7 +17,7 @@
 
 
 Name:           river
-Version:        0.3.4
+Version:        0.3.5
 Release:        0
 Summary:        A dynamic tiling Wayland compositor
 License:        GPL-3.0-only
@@ -50,7 +50,7 @@ BuildRequires:  pkgconfig(wayland-cursor)
 BuildRequires:  pkgconfig(wayland-egl)
 BuildRequires:  pkgconfig(wayland-protocols) >= 1.24
 BuildRequires:  pkgconfig(wayland-server) >= 1.20.0
-BuildRequires:  pkgconfig(wlroots) >= 0.17.2
+BuildRequires:  pkgconfig(wlroots-0.18) >= 0.18.0
 BuildRequires:  pkgconfig(xkbcommon)
 Recommends:     xorg-x11-server-wayland
 # To make Qt apps work somewhat okay on Wayland and auto use it
@@ -174,6 +174,8 @@ sed -i 's|Exec=river|Exec=river-run.sh|' contrib/river.desktop
 install -Dpm 0644 contrib/river.desktop %{buildroot}%{_datadir}/wayland-sessions
 cp -rv contrib %{buildroot}%{_datadir}/river/contrib
 cp -v %{SOURCE2} %{buildroot}%{_datadir}/river/contrib/
+cp -v %{SOURCE3} %{buildroot}%{_datadir}/river/contrib/
+cp -v %{SOURCE4} %{buildroot}%{_datadir}/river/contrib/
 
 # Install convenient script to run river
 install -Dpm 0755 %{SOURCE3} %{buildroot}%{_bindir}
