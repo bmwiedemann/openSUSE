@@ -17,7 +17,7 @@
 
 
 Name:           imgvtopgm
-Version:        2.0
+Version:        2.1
 Release:        0
 Summary:        Palm Pilot Image Viewer to PGM Converter
 License:        GPL-2.0-or-later
@@ -26,8 +26,6 @@ URL:            https://sf.net/projects/imgvtopgm/
 
 #SVN-Clone:	svn://svn.code.sf.net/p/imgvtopgm/code/trunk
 Source:         https://downloads.sf.net/%name/%name-%version.tar.gz
-Patch0:         %{name}-%{version}-warnings-fix.diff
-Patch1:         imgvtopgm-lib-cleanup.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  libnetpbm-devel
 Requires:       netpbm
@@ -42,9 +40,7 @@ If you are looking for a cool (and free) image viewer for your Pilot,
 you should look at TinyViewer (http://www.righto.com/pilot/tv.html).
 
 %prep
-%setup -qn %name-%version.orig
-%patch -P 0
-%patch -P 1 -p1
+%setup -qn %name-%version
 
 %build
 %configure

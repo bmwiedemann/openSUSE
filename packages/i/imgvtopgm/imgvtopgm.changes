@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jul 26 07:11:59 UTC 2024 - Frantisek Simorda <frantisek.simorda@suse.com>
+
+- Update to version 2.1:
+        - added #include <string.h> in some C files to prevent compiler
+          warnings with newer gcc
+        - update configure.in for use with libnetpbm-11 (that includes
+          libpgm now) and run 'autoreconf -i'
+- imgvtopgm-lib-cleanup.patch: removed
+- imgvtopgm-2.0-warnings-fix.diff: upstream
+
+-------------------------------------------------------------------
 Thu Feb 22 08:06:42 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Use %patch -P N instead of deprecated %patchN.
