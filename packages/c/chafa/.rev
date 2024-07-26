@@ -395,4 +395,16 @@
     #196 iTerm mode not enabled automatically.</comment>
     <requestid>1181390</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>e19a5cc213f9b246fef9c23707e34919</srcmd5>
+    <version>1.14.2</version>
+    <time>1722003360</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.14.2:
+  * #203 Chafa 1.14.1 fails to build on i686
+  * #205 Symbols mode not working since 1.14.1
+  * #206 Crash when importing more than 32767 glyphs
+  * Fix erroneous base64 encoding of final byte in some circumstances</comment>
+    <requestid>1189703</requestid>
+  </revision>
 </revisionlist>

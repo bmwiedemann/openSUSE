@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jul 26 05:54:17 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.14.2:
+  * #203 Chafa 1.14.1 fails to build on i686
+  * #205 Symbols mode not working since 1.14.1
+  * #206 Crash when importing more than 32767 glyphs
+  * Fix erroneous base64 encoding of final byte in some circumstances
+
+-------------------------------------------------------------------
 Tue Jun 18 05:52:35 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.14.1:
