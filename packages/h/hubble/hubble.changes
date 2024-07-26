@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Jul 25 17:37:50 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.16.0:
+  (no versions between 0.13.6 and this one)
+  * Align version numbers with Cilium
+  * Major Changes:
+    - Move cilium/hubble code to cilium/cilium repo
+      (cilium/cilium#31893, @michi-covalent)
+  * Minor Changes:
+    - hubble: node labels (cilium/cilium#32851, @kaworu)
+    - hubble: support drop_reason_desc in flow filter
+      (cilium/cilium#32135, @chaunceyjiang)
+  * Misc Changes:
+    - Add auto labeler for hubble-cli (cilium/cilium#32343, @aanm)
+    - hive: Rebase on cilium/hive (cilium/cilium#32020, @bimmlerd)
+    - hubble: Support --cel-expression filter in hubble observe
+      (cilium/cilium#32147, @chancez)
+
+-------------------------------------------------------------------
 Thu Jul 18 18:52:22 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.13.6:

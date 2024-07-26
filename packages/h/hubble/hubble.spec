@@ -19,7 +19,7 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           hubble
-Version:        0.13.6
+Version:        1.16.0
 Release:        0
 Summary:        Network, Service & Security Observability for Kubernetes using eBPF
 License:        Apache-2.0
@@ -99,9 +99,9 @@ go build \
    -mod=vendor \
    -buildmode=pie \
    -ldflags=" \
-   -X github.com/cilium/hubble/pkg.GitBranch=main \
-   -X github.com/cilium/hubble/pkg.GitHash=${COMMIT_HASH:0:8} \
-   -X github.com/cilium/hubble/pkg.Version=%{version}" \
+   -X github.com/cilium/cilium/hubble/pkg.GitBranch=main \
+   -X github.com/cilium/cilium/hubble/pkg.GitHash=${COMMIT_HASH:0:8} \
+   -X github.com/cilium/cilium/hubble/pkg.Version=%{version}" \
    -o bin/hubble .
 
 %install
