@@ -556,4 +556,13 @@ https://build.opensuse.org/request/show/121743 (forwarded request 121894 from va
 - Initial package (TP1)</comment>
     <requestid>1167539</requestid>
   </revision>
+  <revision rev="64" vrev="2">
+    <srcmd5>716d53cb70b75fa92970ec35946165e6</srcmd5>
+    <version>1.2.1</version>
+    <time>1722003301</time>
+    <user>dimstar_suse</user>
+    <comment>- Separate xdg-screensaver into a subpackage to isolate Perl
+  dependency (bsc#1216537).</comment>
+    <requestid>1189600</requestid>
+  </revision>
 </revisionlist>

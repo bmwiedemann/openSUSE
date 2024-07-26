@@ -19,7 +19,7 @@
 
 
 Name:           flocq
-Version:        4.1.4
+Version:        4.2.0
 Release:        0
 Summary:        Formalization of floating point numbers for Coq
 Group:          Productivity/Scientific/Math

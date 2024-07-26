@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Jul 25 17:55:52 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.64.0:
+  * Upgrade to Sops 3.9.0 (#3297)
+
+-------------------------------------------------------------------
+Thu Jul 25 17:52:08 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.63.8:
+  * fix: Fixing dynamic auth for deps (#3293)
+
+-------------------------------------------------------------------
+Thu Jul 25 17:39:40 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.63.7:
+  * Open Telemetry update (#3291)
+
+-------------------------------------------------------------------
 Thu Jul 25 05:22:22 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.63.6:

@@ -20,7 +20,7 @@
 %global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
 %{?sle15_python_module_pythons}
 Name:           python-bcrypt
-Version:        4.1.3
+Version:        4.2.0
 Release:        0
 Summary:        BSD type 2a and 2b password hashing
 License:        Apache-2.0
@@ -30,7 +30,7 @@ Source0:        https://files.pythonhosted.org/packages/source/b/bcrypt/bcrypt-%
 Source1:        vendor.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest >= 3.2.1}
-BuildRequires:  %{python_module setuptools-rust}
+BuildRequires:  %{python_module setuptools-rust >= 1.7.0}
 BuildRequires:  %{python_module wheel}
 # setuptools 40.8.0 is required by upstream only for a pip issue that doesn't
 # affect us, so we relax the requirement to build in SLE/Leap 15.2 with 40.5.0

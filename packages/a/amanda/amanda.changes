@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jul 25 08:37:48 UTC 2024 - Marcus Meissner <meissner@suse.com>
+
+- amanda-fix-proto.patch: fix build with gcc14
+
+-------------------------------------------------------------------
 Tue Feb 20 10:57:51 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.

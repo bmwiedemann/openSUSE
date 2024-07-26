@@ -34,6 +34,7 @@ Patch3:         amanda-2.6.1p1-avoid-perl-provides.patch
 Patch4:         amanda-3.3.2-returnvalues.patch
 Patch6:         amanda-3.5-no_return_in_nonvoid_fnc.patch
 Patch7:         amanda-libnsl.patch
+Patch8:         amanda-fix-proto.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison
@@ -92,6 +93,7 @@ running multiple versions of Linux or Unix.
 %patch -P 4 -p1
 %patch -P 6 -p1
 %patch -P 7 -p1
+%patch -P 8 -p1
 
 %build
 ./autogen

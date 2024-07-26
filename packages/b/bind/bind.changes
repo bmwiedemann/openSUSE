@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Wed Jul 24 09:03:08 UTC 2024 - Jorik Cronenberg <jorik.cronenberg@suse.com>
+
+- Update to new major version 9.20.0
+  For a complete list of all changes see:
+  * https://bind9.readthedocs.io/en/v9.20.0/notes.html
+  * The CHANGES file in the source RPM
+
+  Some noteworthy changes:
+  * Added new BuildRequires liburcu for lock free data structures.
+  * A new DNSSEC tool dnssec-ksr has been added to create Key
+    Signing Request (KSR) and Signed Key Response (SKR) files.
+  * /etc/bind.keys and /var/lib/named/named.root.key have been
+    removed as the correct defaults are pre-compiled and there is
+    no need to configure bind.keys manually.
+  * The functions that were in the libbind9 shared library have
+    been moved to the libisc and libisccfg libraries. The now-empty
+    libbind9 has been removed and is no longer installed.
+  * The irs_resconf module has been moved to the libdns shared
+    library. The now-empty libirs library has been removed and is
+    no longer installed.
+
+  Security Fixes:
+  * A malicious DNS client that sent many queries over TCP but
+    never read the responses could cause a server to respond slowly
+    or not at all for other clients. This has been fixed.
+    (CVE-2024-0760)
+    [bsc#1228255]
+  * It is possible to craft excessively large resource records
+    sets, which have the effect of slowing down database
+    processing. This has been addressed by adding a configurable
+    limit to the number of records that can be stored per name and
+    type in a cache or zone database. The default is 100, which can
+    be tuned with the new max-records-per-type option.
+  * It is possible to craft excessively large numbers of resource
+    record types for a given owner name, which has the effect of
+    slowing down database processing. This has been addressed by
+    adding a configurable limit to the number of records that can
+    be stored per name and type in a cache or zone database. The
+    default is 100, which can be tuned with the new
+    max-types-per-name option. (CVE-2024-1737)
+    [bsc#1228256]
+  * Validating DNS messages signed using the SIG(0) protocol (RFC
+    2931) could cause excessive CPU load, leading to a
+    denial-of-service condition. Support for SIG(0) message
+    validation was removed from this version of named.
+    (CVE-2024-1975)
+    [bsc#1228257]
+  * Due to a logic error, lookups that triggered serving stale data
+    and required lookups in local authoritative zone data could
+    have resulted in an assertion failure. This has been fixed.
+  * Potential data races were found in our DoH implementation,
+    related to HTTP/2 session object management and endpoints set
+    object management after reconfiguration. These issues have been
+    fixed.
+  * When looking up the NS records of parent zones as part of
+    looking up DS records, it was possible for named to trigger an
+    assertion failure if serve-stale was enabled. This has been
+    fixed. (CVE-2024-4076)
+    [bsc#1228258]
+
+-------------------------------------------------------------------
 Fri May 17 16:05:37 UTC 2024 - Jorik Cronenberg <jorik.cronenberg@suse.com>
 
 - Update to release 9.18.27

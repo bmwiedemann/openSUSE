@@ -158,4 +158,12 @@
     ``BCRYPT_ALLOW_RUST_163`` environment variable)</comment>
     <requestid>1172490</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>f9e7b39f360f62e4eaa9f7a5a5cb29a2</srcmd5>
+    <version>4.2.0</version>
+    <time>1722003313</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1189360</requestid>
+  </revision>
 </revisionlist>

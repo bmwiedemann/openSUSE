@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Jul 25 08:51:56 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 3.8.6:
+  * libgnutls: PBMAC1 is now supported as a MAC mechanism for PKCS#12
+    To be compliant with FIPS 140-3, PKCS#12 files with MAC based on
+    PBKDF2 (PBMAC1) is now supported, according to the specification
+    proposed in draft-ietf-lamps-pkcs12-pbmac1.
+  * libgnutls: SHA3 extendable output functions (XOF) are now supported
+    SHA3 XOF, SHAKE128 and SHAKE256, are now usable through a new
+    public API gnutls_hash_squeeze.
+  * API and ABI modifications:
+    - gnutls_pkcs12_generate_mac3: New function
+    - gnutls_pkcs12_flags_t: New enum
+    - gnutls_hash_squeeze: New function
+  * Rebase patches:
+    - gnutls-FIPS-140-3-references.patch
+    - gnutls-FIPS-jitterentropy.patch
+
+-------------------------------------------------------------------
 Fri Apr  5 07:28:14 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 3.8.5:

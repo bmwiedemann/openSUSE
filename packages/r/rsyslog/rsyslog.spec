@@ -30,7 +30,7 @@
 %define requires_file() %( readlink -f '%*' | LC_ALL=C xargs -r rpm -q --qf 'Requires: %%{name} >= %%{epoch}:%%{version}\\n' -f | sed -e 's/ (none):/ /' -e 's/ 0:/ /' | grep -v "is not")
 
 # drop this with next release when doc tarball version lines up
-%define rsyslog_major 8.2306
+%define rsyslog_major 8.2406
 %define rsyslog_patch 0
 Name:           rsyslog
 Summary:        The enhanced syslogd for Linux and Unix
@@ -218,8 +218,6 @@ Source16:       journald-rsyslog.conf
 Source17:       acpid.frule
 Source18:       firewall.frule
 Source19:       NetworkManager.frule
-
-Patch1:         0001-use-logind-instead-of-utmp-for-wall-messages-with-sy.patch
 
 # this is a dirty hack since % dir does only work for the specified directory and nothing above
 # but I want to be able to switch this to /etc/apparmor.d once the profiles received more testing

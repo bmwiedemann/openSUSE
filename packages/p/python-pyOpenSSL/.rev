@@ -581,4 +581,12 @@
     replaced by the PKCS#12 APIs in the cryptography package.</comment>
     <requestid>1158475</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>33517660b16137a5368e1e4405e343bc</srcmd5>
+    <version>24.2.1</version>
+    <time>1722003312</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1189358</requestid>
+  </revision>
 </revisionlist>

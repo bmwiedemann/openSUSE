@@ -1992,4 +1992,19 @@ Now one could consider building emacs with gsettings support (both debian and fe
   triggerin scriptlets</comment>
     <requestid>1186609</requestid>
   </revision>
+  <revision rev="189" vrev="4">
+    <srcmd5>0050614d6ff47f377d6f5fd3511267fb</srcmd5>
+    <version>29.4</version>
+    <time>1722003306</time>
+    <user>dimstar_suse</user>
+    <comment>- Use simple trusted members of the group games (boo#1228058) 
+
+- Split off the emacs-games package for score handling (boo#1227737) 
+- Implement setgid based score handling
+
+- The xauth patch should ignore any locking at read time
+  as otherwise emacs server might hang
+- Provide support of ELPA systemwide installations to OBS</comment>
+    <requestid>1189610</requestid>
+  </revision>
 </revisionlist>

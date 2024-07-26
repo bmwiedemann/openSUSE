@@ -30,10 +30,8 @@ BuildRequires:  make
 # for xmlto to be able to generate text from html
 BuildRequires:  w3m
 BuildRequires:  xmlto
-Requires:       perl
-Requires:       perl-Net-DBus
-Requires:       perl-X11-Protocol
 Requires:       which
+Recommends:     %{name}-screensaver
 BuildArch:      noarch
 
 %description
@@ -52,6 +50,22 @@ This means that:
    environment functions with all third party software, then can
    simply make sure that these utilities work properly in their
    environment.
+
+%package screensaver
+Summary:        Command line tool for controlling the screensaver
+Requires:       %{name} = %{version}-%{release}
+Provides:       xdg-utils:%{_bindir}/xdg-screensaver
+Requires:       perl
+Requires:       perl-Net-DBus
+Requires:       perl-X11-Protocol
+
+%description screensaver
+xdg-screensaver provides commands to control the screensaver.
+
+For use inside a desktop session only. It is not recommended to
+use xdg-screensaver as root.
+
+Separated from the main package to isolate Perl dependency.
 
 %prep
 %autosetup -p1 -n %{name}-v%{version}
@@ -80,7 +94,6 @@ ln -snf xdg-open %{buildroot}%{_bindir}/desktop-launch
 %{_bindir}/xdg-mime
 %{_bindir}/xdg-open
 %{_bindir}/xdg-su
-%{_bindir}/xdg-screensaver
 %{_bindir}/xdg-settings
 %{_bindir}/xdg-terminal
 %{_mandir}/man1/xdg-desktop-icon.1%{?ext_man}
@@ -90,8 +103,12 @@ ln -snf xdg-open %{buildroot}%{_bindir}/desktop-launch
 %{_mandir}/man1/xdg-mime.1%{?ext_man}
 %{_mandir}/man1/xdg-open.1%{?ext_man}
 %{_mandir}/man1/xdg-terminal.1%{?ext_man}
-%{_mandir}/man1/xdg-screensaver.1%{?ext_man}
 %{_mandir}/man1/xdg-settings.1%{?ext_man}
 %{_mandir}/man1/xdg-su.1%{?ext_man}
+
+%files screensaver
+%license LICENSE
+%{_bindir}/xdg-screensaver
+%{_mandir}/man1/xdg-screensaver.1%{?ext_man}
 
 %changelog

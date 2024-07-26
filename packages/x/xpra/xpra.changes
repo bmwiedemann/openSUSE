@@ -1,4 +1,80 @@
 -------------------------------------------------------------------
+Thu Jul 18 14:15:03 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 6.2.0+git20240718.6fcb897e:
+  * bump version
+  * more reliably detection of X11 servers
+  * update the release notes
+  * #4209 fix cairo scaling dimensions used for csc instantiation
+  * #4300 add ability to force freeze images
+  * try to stick to the same scaling value longer
+  * missing return value
+  * also handle 'screenshot' as a generic server request
+  * avoid 'unknown packet type' errors with screenshot requests
+  * refactor all hello request handlers
+  * better style and error messages
+  * forgot to send 'screenshot' request
+  * pandoc lua filters are back in Fedora
+  * cosmetic: group subcommands together
+  * speed is a signed int now
+  * cosmetic
+  * fix: Fix formatting
+  * always free images with an error context
+  * try to reduce how often quality swings cause scaling changes
+  * round score to nearest + type hint
+  * unsquash the values, so minor scoring differences still matter
+  * simplify
+  * allow negative speed score
+  * cosmetic
+  * match docstring: encoder speed is less important target speed is low
+  * remove: this term is constant for all calls
+  * simplify and use rounding
+  * add type hints
+  * function should always return a dict
+  * explicitly require RANDR and RENDER extensions
+  * missing line continuation backslash
+  * force rebuild
+  * #3376 more complete protocol close methods
+  * #3376 move websocket close to websocket connection handler
+  * #3376 quic fast open, aka 0-RTT data
+  * expose aioquic version
+  * I believe this was fixed in Python 3 a long time ago
+  * #4265 prefer keyval_to_unicode over event string
+  * #4299 make it possible to skip NM api
+  * #4265 only log warning if we don't get any key string
+  * #4299 match api change?
+  * link to the other security page
+  * more ruff warnings
+  * new ruff warnings
+  * aioquic 1.2.0
+  * #4265 add more details
+  * #4265 try to get the key string using the keyval
+  * zeroconf gives us 'text' records using byte strings
+  * add some type hints
+  * use the same spelling as the generated config
+  * simplify + hints
+  * minor type hints
+  * #4296 expand path before checking it
+  * remove redundant statement
+  * more type hints
+  * don't ask: why do we need wait longer?
+  * prefer our own icons, prevents missing icons with some themes
+  * prevent None deref
+  * #3514 hack around Gtk to get bigger window controls
+  * fix crashes on MS Windows
+  * re-use headerbar icon functions
+  * scale icons to match headerbar size
+  * ensure headerbar icons remain square
+  * add type hints
+  * simplify: index is always a number
+  * ignore win32 layouts without a valid x11 layout name
+  * don't show duplicate keyboard layout names
+  * add missing 'gdi' help text, ensure an option is selected
+  * #4294 update documentation to match new feature
+  * simplify: handle '--verbose' and '-v' debug command line options in one place
+  * #4294 add 'verify-username' authentication module option
+
+-------------------------------------------------------------------
 Mon Jul 08 18:47:53 UTC 2024 - scott.bradnick@suse.com
 
 - Update to version 6.1+git20240708.6cd739ab:

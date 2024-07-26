@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jul 21 08:08:07 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Separate xdg-screensaver into a subpackage to isolate Perl
+  dependency (bsc#1216537).
+
+-------------------------------------------------------------------
 Wed Mar 13 09:52:36 UTC 2024 - christophe@krop.fr
 
 - Update to version 1.2.1:

@@ -1,8 +1,35 @@
 -------------------------------------------------------------------
+Mon Jul 22 16:42:52 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
+
+- Build with no-afalgeng [bsc#1226463]
+
+-------------------------------------------------------------------
+Mon Jul 22 08:30:16 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
+
+- Security fix: [bsc#1227138, CVE-2024-5535]
+  * SSL_select_next_proto buffer overread
+  * Add openssl-CVE-2024-5535.patch
+
+-------------------------------------------------------------------
+Wed Jul 17 12:55:39 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
+
+- Build with enabled sm2 and sm4 support [bsc#1222899]
+
+-------------------------------------------------------------------
 Mon Jul 15 05:52:07 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Add reproducible.patch to fix bsc#1223336
   aes-gcm-avx512.pl: fix non-reproducibility issue
+
+-------------------------------------------------------------------
+Thu Jun  6 15:12:10 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Apply "openssl-CVE-2024-4741.patch" to fix a use-after-free
+  security vulnerability. Calling the function SSL_free_buffers()
+  potentially caused memory to be accessed that was previously
+  freed in some situations and a malicious attacker could attempt
+  to engineer a stituation where this occurs to facilitate a
+  denial-of-service attack. [CVE-2024-4741, bsc#1225551]
 
 -------------------------------------------------------------------
 Wed May 29 13:30:21 UTC 2024 - Martin Wilck <mwilck@suse.com>

@@ -4588,4 +4588,17 @@ Other Notable Changes
   * Improved functionality within Docker containers by respecting</comment>
     <requestid>1186980</requestid>
   </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>5d4728dffa101fed605a5a806ee8a1e2</srcmd5>
+    <version>1.46.3</version>
+    <time>1722003319</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.46.3
+  * Fixed an issue where some contexts were initially missing from
+    the dashboard on a newly installed Netdata
+    gh#netdata/netdata#18198
+  * Fixed &quot;Directory existence&quot; chart label (go.d/filecheck)
+    gh#netdata/netdata#18126</comment>
+    <requestid>1189607</requestid>
+  </revision>
 </revisionlist>

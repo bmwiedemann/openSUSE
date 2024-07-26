@@ -196,6 +196,10 @@ Patch116:       openssl-Skip_SHA1-test-in-FIPS-mode.patch
 Patch117:       openssl-CVE-2024-0727.patch
 # PATCH-FIX-UPSTREAM: bsc#1222548 CVE-2024-2511: Unbounded memory growth with session handling in TLSv1.3
 Patch118:       openssl-CVE-2024-2511.patch
+# PATCH-FIX-UPSTREAM bsc#1225551 CVE-2024-4741: use After Free with SSL_free_buffers
+Patch119:       openssl-CVE-2024-4741.patch
+# PATCH-FIX-UPSTREAM: bsc#1227138 CVE-2024-5535: SSL_select_next_proto buffer overread
+Patch120:       openssl-CVE-2024-5535.patch
 BuildRequires:  jitterentropy-devel >= 3.4.0
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(zlib)
@@ -285,6 +289,7 @@ export MACHINE=armv6l
 
 ./config \
     no-idea \
+    no-afalgeng \
     enable-rfc3779 \
 %ifarch x86_64 aarch64 ppc64le
     enable-ec_nistp_64_gcc_128 \

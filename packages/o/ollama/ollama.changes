@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Wed Jul 24 14:28:08 UTC 2024 - adrian@suse.de
+
+- Update to version 0.2.8:
+  * api embed docs (#5282)
+  * convert: capture `head_dim` for mistral (#5818)
+  * Update llama.cpp submodule commit to `d94c6e0c` (#5805)
+  * server: collect nested tool call objects when parsing (#5824)
+  * Remove no longer supported max vram var
+  * Refine error reporting for subprocess crash
+  * Remove out of space test temporarily (#5825)
+  * llm: consider `head_dim` in llama arch (#5817)
+  * Adjust windows ROCm discovery
+  * add patch for tekken (#5807)
+  * preserve last assistant message (#5802)
+  * Fix generate test flakyness (#5804)
+  * server: validate template (#5734)
+  * OpenAI: Function Based Testing (#5752)
+  * adjust openai chat msg processing (#5729)
+  * fix parsing tool calls
+  * server: check for empty tools array too (#5779)
+  * always provide content even if empty (#5778)
+  * server: only parse tool calls if tools are provided (#5771)
+  * Fix context exhaustion integration test for small gpus
+  * Refine scheduler unit tests for reliability
+
+-------------------------------------------------------------------
 Thu Jul 18 13:09:10 UTC 2024 - Eyad Issa <eyadlorenzo@gmail.com>
 
 - Fixed issue with shared libraries 

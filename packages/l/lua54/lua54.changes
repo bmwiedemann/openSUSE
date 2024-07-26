@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jul 24 11:26:59 UTC 2024 - Callum Farmer <gmbr3@opensuse.org>
+
+- Update to version 5.4.7:
+  * Fixed 11 bugs from 5.4.6
+  * Tests now run on shared libraries
+- Removed skip-tests_big-endian.patch: fixed upstream
+
+-------------------------------------------------------------------
 Thu Dec  7 15:03:40 UTC 2023 - Andreas Schwab <schwab@suse.de>
 
 - execresult.patch: Inspect errno only after failure

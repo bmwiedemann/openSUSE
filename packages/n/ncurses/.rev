@@ -4640,4 +4640,12 @@
   + widen pattern in pc/*-config scripts to disallow more linker options</comment>
     <requestid>1184207</requestid>
   </revision>
+  <revision rev="268" vrev="41">
+    <srcmd5>8547e35b695a84a51828a239d9baf4b8</srcmd5>
+    <version>unknown</version>
+    <time>1722003315</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1189039</requestid>
+  </revision>
 </revisionlist>

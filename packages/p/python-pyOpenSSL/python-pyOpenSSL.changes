@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Jul 23 11:39:23 UTC 2024 - Adrian Schröter <adrian@suse.de>
+
+- 24.2.1:
+  * Deprecated OpenSSL.crypto.X509Req,
+               OpenSSL.crypto.load_certificate_request,
+               OpenSSL.crypto.dump_certificate_request.
+    Instead, cryptography.x509.CertificateSigningRequest,s
+             cryptography.x509.CertificateSigningRequestBuilder,s
+             cryptography.x509.load_der_x509_csr,s
+             or cryptography.x509.load_pem_x509_csr should be used.
+  * Added type hints for the SSL module. #1308.
+  * Changed OpenSSL.crypto.PKey.from_cryptography_key to accept public and private EC, ED25519, ED448 keys
+
+-------------------------------------------------------------------
 Sat Mar 16 13:04:43 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 24.1.0:

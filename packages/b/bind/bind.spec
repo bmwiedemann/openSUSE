@@ -56,7 +56,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           bind
-Version:        9.18.27
+Version:        9.20.0
 Release:        0
 Summary:        Domain Name System (DNS) Server (named)
 License:        MPL-2.0
@@ -92,6 +92,7 @@ BuildRequires:  pkgconfig(krb5)
 BuildRequires:  pkgconfig(libidn2)
 BuildRequires:  pkgconfig(libmaxminddb)
 BuildRequires:  pkgconfig(libnghttp2)
+BuildRequires:  pkgconfig(liburcu)
 BuildRequires:  pkgconfig(libuv)
 BuildRequires:  pkgconfig(libxml-2.0)
 Requires:       %{name}-utils
@@ -375,7 +376,6 @@ mv vendor-files/config/rndc-access.conf %{buildroot}/%{_sysconfdir}/named.d
 	install -D -m 0644 %{SOURCE70} %{buildroot}%{_prefix}/lib/tmpfiles.d/bind.conf
 	install -D -m 0644 %{_sourcedir}/named.root %{buildroot}%{_datadir}/factory%{_localstatedir}/lib/named/root.hint
 	install -m 0644 vendor-files/config/{127.0.0,localhost}.zone %{buildroot}%{_datadir}/factory%{_localstatedir}/lib/named
-	install -m 0644 bind.keys %{buildroot}%{_datadir}/factory%{_localstatedir}/lib/named/named.root.key
 	install -d -m 0755 %{buildroot}/%{_unitdir}/named.service.d
 %else
 	for file in named; do
@@ -422,7 +422,6 @@ done
 # ---------------------------------------------------------------------------
 # remove useless Makefiles and Makefile skeletons
 find %{buildroot}/%{_defaultdocdir}/bind \( -name Makefile -o -name Makefile.in \) -exec rm {} +
-install -m 0644 bind.keys %{buildroot}%{_localstatedir}/lib/named/named.root.key
 %if %{with_systemd}
 mkdir -p %{buildroot}%{_sysusersdir}
 install -m 644 %{SOURCE72} %{buildroot}%{_sysusersdir}/
@@ -532,7 +531,6 @@ fi
 %config %{_var}/lib/named/root.hint
 %config %{_var}/lib/named/127.0.0.zone
 %config %{_var}/lib/named/localhost.zone
-%config %{_var}/lib/named/named.root.key
 %dir %{_libexecdir}/bind
 %{_libexecdir}/bind/named.prep
 %dir %{_libdir}/bind-plugins
@@ -571,7 +569,6 @@ fi
 %files utils
 %dir %{_sysconfdir}/named.d
 %config(noreplace) %{_sysconfdir}/named.d/rndc-access.conf
-%config(noreplace) %{_sysconfdir}/bind.keys
 %dir %{_sysconfdir}/openldap
 %dir %{_sysconfdir}/openldap/schema
 %attr(0444,root,root) %config %{_sysconfdir}/openldap/schema/dnszone.schema
@@ -594,20 +591,17 @@ fi
 %{_bindir}/dnssec-verify
 %{_bindir}/dnssec-cds
 %{_bindir}/dnstap-read
+%{_bindir}/dnssec-ksr
 %{_sbindir}/ddns-confgen
 %{_sbindir}/rndc
 %{_sbindir}/rndc-confgen
 %{_sbindir}/tsig-keygen
-%{_libdir}/libbind9-%{version}.so
 %{_libdir}/libdns-%{version}.so
-%{_libdir}/libirs-%{version}.so
 %{_libdir}/libisc-%{version}.so
 %{_libdir}/libisccc-%{version}.so
 %{_libdir}/libisccfg-%{version}.so
 %{_libdir}/libns-%{version}.so
-%{_libdir}/libbind9.so
 %{_libdir}/libdns.so
-%{_libdir}/libirs.so
 %{_libdir}/libisc.so
 %{_libdir}/libisccc.so
 %{_libdir}/libisccfg.so
@@ -634,6 +628,7 @@ fi
 %{_mandir}/man1/named-journalprint.1%{ext_man}
 %{_mandir}/man1/nsec3hash.1%{ext_man}
 %{_mandir}/man1/dnstap-read.1%{ext_man}
+%{_mandir}/man1/dnssec-ksr.1.gz
 %{_mandir}/man5/rndc.conf.5%{ext_man}
 %{_mandir}/man8/ddns-confgen.8%{ext_man}
 %{_mandir}/man8/rndc.8%{ext_man}

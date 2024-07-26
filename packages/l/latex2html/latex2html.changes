@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jul 19 03:30:32 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- cleanup after test to not modify the install result (boo#1227364)
+
+-------------------------------------------------------------------
 Thu Feb 29 14:00:54 UTC 2024 - pgajdos@suse.com
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

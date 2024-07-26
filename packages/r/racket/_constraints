@@ -28,4 +28,22 @@
       </cpu>
     </hardware>
   </overwrite>
+  <overwrite>
+    <conditions>
+      <arch>ppc64le</arch>
+      <arch>s390x</arch>
+    </conditions>
+    <hardware>
+      <physicalmemory>
+        <size unit="G">8</size>
+      </physicalmemory>
+      <memory>
+        <size unit="G">12</size>
+      </memory>
+      <processors>8</processors>
+      <disk>
+        <size unit="G">4</size>
+      </disk>
+    </hardware>
+  </overwrite>
 </constraints>

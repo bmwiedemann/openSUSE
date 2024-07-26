@@ -30,6 +30,14 @@
 %bcond_with     tex4pdf
 %bcond_with     memmmap
 %bcond_with     checks
+#
+# Compare with AUDIT bug boo#1228058
+# With this setup only members of the group "games" can use
+# already existing score files below /var/games/emacs/
+#
+#
+%bcond_without  games
+%define gattr   00755
 
 Name:           emacs
 %if %{with checks}
@@ -74,7 +82,7 @@ BuildRequires:  mailutils-devel
 %endif
 BuildRequires:  makeinfo
 BuildRequires:  ncurses-devel
-%if 0%{?suse_version} >= 1500
+%if %{with games}
 BuildRequires:  user(games)
 %endif
 BuildRequires:  systemd-rpm-macros
@@ -163,6 +171,7 @@ Provides:       nxml-mode = 20041004
 Obsoletes:      nxml-mode < 20041004
 Provides:       epg = 1.0.0
 Obsoletes:      epg < 1.0.0
+Provides:       emacs(ELPA)
 Requires:       emacs-info = %{version}
 Requires:       emacs_program = %{version}-%{release}
 Requires:       etags
@@ -170,9 +179,12 @@ Requires:       etags
 Requires:       mailutils
 %endif
 Requires(pre):  fileutils
-%if 0%{?suse_version} >= 1500
-Requires(pre):  group(games)
-Requires(pre):  user(games)
+%if %{with games}
+%if !0%{?is_opensuse}
+Suggests:       %{name}-games
+%else
+Recommends:     %{name}-games
+%endif
 %endif
 Source:         https://ftp.gnu.org/gnu/emacs/emacs-%{version}.tar.xz
 Source1:        app-defaults.Emacs
@@ -314,7 +326,7 @@ Summary:        Info files for GNU Emacs
 Group:          Documentation/Other
 %if 0%{?suse_version} <= 1500
 Requires(post): %install_info_prereq
-Requires(preun):%install_info_prereq
+Requires(preun): %install_info_prereq
 %endif
 BuildArch:      noarch
 
@@ -323,11 +335,26 @@ This package contains all the Info files for GNU Emacs. These files can
 be read online with GNU Emacs. They describe Emacs and some of its
 modes.
 
+%if %{with games}
+%package        games
+Requires:       emacs = %{version}-%{release}
+Requires(pre):  group(games)
+Requires(pre):  user(games)
+Requires(pre):  permissions
+Provides:       emacs:%{_localstatedir}/games/emacs
+Summary:        Provides scores for Emacs games
+Group:          Amusements/Games/Other
+
+%description    games
+This package provides capability to play games for members of the user
+group called "games".
+%endif
+
 %package     -n etags
 Summary:        Generate Tag Files for Use with Emacs
 Group:          Development/Tools/Navigators
 Requires(post): coreutils update-alternatives
-Requires(preun):coreutils update-alternatives
+Requires(preun): coreutils update-alternatives
 Provides:       ctags:/usr/bin/etags
 
 %description -n etags
@@ -520,7 +547,9 @@ DESKTOP="--with-x \
 	 --without-native-compilation \
 %endif
 	 --without-hesiod \
+%if %{with games}
 	 --with-gameuser=:games \
+%endif
 	 --with-kerberos \
 	 --with-kerberos5 \
 	 --with-file-notification=inotify \
@@ -796,13 +825,43 @@ do
 done
 %endif
 
+%if %{with games} && "%{gattr}" == "02755"
+%if 0%{?suse_version} >= 1699
+mkdir -p %{buildroot}%{_datadir}/permissions/permissions.d
+(cat > %{buildroot}%{_datadir}/permissions/permissions.d/emacs-games) <<-'EOF'
+	%{_libexecdir}/emacs/%{version}/%{_target_cpu}-suse-linux/update-game-score	games:games	02755
+	EOF
+(cat > %{buildroot}%{_datadir}/permissions/permissions.d/emacs-games.paranoid) <<-'EOF'
+	%{_libexecdir}/emacs/%{version}/%{_target_cpu}-suse-linux/update-game-score	games:games	00755
+	EOF
+%else
+mkdir -p %{buildroot}%{_sysconfdir}/permissions.d
+(cat > %{buildroot}%{_sysconfdir}/permissions.d/emacs-games) <<-'EOF'
+	%{_libexecdir}/emacs/%{version}/%{_target_cpu}-suse-linux/update-game-score	games:games	02755
+	EOF
+(cat > %{buildroot}%{_sysconfdir}/permissions.d/emacs-games.paranoid) <<-'EOF'
+	%{_libexecdir}/emacs/%{version}/%{_target_cpu}-suse-linux/update-game-score	games:games	00755
+	EOF
+%endif
+%endif
+
 %if %{with checks}
 %check
 make check
 %endif
 
+%if %{with games} && "%{gattr}" == "02755"
+%verifyscript games
+%verify_permissions -e %{_libexecdir}/emacs/%{version}/%{_target_cpu}-suse-linux/update-game-score
+%endif
+
 %pre
 test -L usr/bin/emacs && rm -f usr/bin/emacs || true
+
+%if %{with games} && "%{gattr}" == "02755"
+%post games
+%set_permissions %{_libexecdir}/emacs/%{version}/%{_target_cpu}-suse-linux/update-game-score
+%endif
 
 %post -n emacs-x11
 %glib2_gsettings_schema_post
@@ -850,17 +909,12 @@ fi
 %dir %{_libdir}/emacs/elpa/
 %dir %{_libexecdir}/emacs/
 %dir %{_libexecdir}/emacs/%{version}/
-%dir %{_libexecdir}/emacs/%{version}/*-suse-linux*/
-%{_libexecdir}/emacs/%{version}/*-suse-linux*/hexl
+%dir %{_libexecdir}/emacs/%{version}/%{_target_cpu}-suse-linux/
+%{_libexecdir}/emacs/%{version}/%{_target_cpu}-suse-linux/hexl
 %if %{without mailutils}
-%{_libexecdir}/emacs/%{version}/*-suse-linux*/movemail
+%{_libexecdir}/emacs/%{version}/%{_target_cpu}-suse-linux/movemail
 %endif
-%{_libexecdir}/emacs/%{version}/*-suse-linux*/rcs2log
-%if 0
-%attr(04755,games,games) %{_libexecdir}/emacs/%{version}/*-suse-linux*/update-game-score
-%else
-%{_libexecdir}/emacs/%{version}/*-suse-linux*/update-game-score
-%endif
+%{_libexecdir}/emacs/%{version}/%{_target_cpu}-suse-linux/rcs2log
 %{_userunitdir}/emacs.service
 %dir %{_datadir}/doc/packages/emacs/
 %{_datadir}/doc/packages/emacs/doc
@@ -3475,23 +3529,40 @@ fi
 %dir %{_datadir}/emacs/site-lisp/site-start.d/
 %{_mandir}/man1/*.1%{ext_man}
 %exclude %{_mandir}/man1/*tags.1%{ext_man}
-%dir %attr(775,games,games) %{_localstatedir}/games/emacs
-%attr(660,games,games) %{_localstatedir}/games/emacs/snake-scores
-%attr(660,games,games) %{_localstatedir}/games/emacs/tetris-scores
+
+%if %{with games}
+%files games
+%if "%{gattr}" == "02755"
+%attr(%{gattr},root,games) %{_libexecdir}/emacs/%{version}/%{_target_cpu}-suse-linux/update-game-score
+%if 0%{?suse_version} >= 1699
+%attr(0755,root,root) %{_datadir}/permissions/permissions.d/
+%attr(0644,root,root) %{_datadir}/permissions/permissions.d/emacs-games
+%attr(0644,root,root) %{_datadir}/permissions/permissions.d/emacs-games.paranoid
+%else
+%config %attr(0644,root,root) %{_sysconfdir}/permissions.d/emacs-games
+%config %attr(0644,root,root) %{_sysconfdir}/permissions.d/emacs-games.paranoid
+%endif
+%else
+%attr(%{gattr},root,root) %{_libexecdir}/emacs/%{version}/%{_target_cpu}-suse-linux/update-game-score
+%endif
+%dir %attr(0750,root,games) %{_localstatedir}/games/emacs
+%attr(0660,root,games) %{_localstatedir}/games/emacs/snake-scores
+%attr(0660,root,games) %{_localstatedir}/games/emacs/tetris-scores
+%endif
 
 %files       -n emacs-nox
 %defattr(-, root, root)
 %{_bindir}/emacs-nox
-%{_libexecdir}/emacs/%{version}/*-suse-linux*/emacs-nox*.pdmp
+%{_libexecdir}/emacs/%{version}/%{_target_cpu}-suse-linux/emacs-nox*.pdmp
 
 %files       -n emacs-x11
 %defattr(-, root, root)
 %{_bindir}/emacs-x11
 %{_bindir}/emacs-gtk
 %{_bindir}/emacs-wayland
-%{_libexecdir}/emacs/%{version}/*-suse-linux*/emacs-x11*.pdmp
-%{_libexecdir}/emacs/%{version}/*-suse-linux*/emacs-gtk*.pdmp
-%{_libexecdir}/emacs/%{version}/*-suse-linux*/emacs-wayland*.pdmp
+%{_libexecdir}/emacs/%{version}/%{_target_cpu}-suse-linux/emacs-x11*.pdmp
+%{_libexecdir}/emacs/%{version}/%{_target_cpu}-suse-linux/emacs-gtk*.pdmp
+%{_libexecdir}/emacs/%{version}/%{_target_cpu}-suse-linux/emacs-wayland*.pdmp
 %dir %{appDefaultsDir}
 %{appDefaultsFile}
 %{_datadir}/applications/emacs*.desktop

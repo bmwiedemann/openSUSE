@@ -1,4 +1,67 @@
 -------------------------------------------------------------------
+Wed Jul 24 06:48:46 UTC 2024 - Thomas Blume <Thomas.Blume@suse.com>
+
+- Upgrade to rsyslog 8.2406.0
+-patches replaced by upgrade (see details in upgrade logs below)
+    0001-use-logind-instead-of-utmp-for-wall-messages-with-sy.patch
+
+  * 2023-11-29: Revert "Update omlibdbi.c"
+  * 2023-11-21: imkmsg: add params "readMode" and "expectedBootCompleteSeconds"
+  * 2023-11-10: testbench: fix "typo" in test case
+  * 2023-11-08: omazureeventhubs: Corrected handling of transport closed failures
+  * 2023-10-31: imkmsg: add module param parseKernelTimestamp
+  * 2023-11-03: imfile: remove state file on file delete fix
+  * 2023-10-30: imklog bugfix: keepKernelTimestamp=off config param did not work
+  * 2023-10-30: Netstreamdriver: deallocate certificate related resources
+  * 2023-10-20: TLS subsystem: add remote hostname to error reporting
+  * 2023-10-21: Fix forking issue do to close_range call
+  * 2023-10-23: replace debian sample systemd service file by readme
+  * 2023-10-20: testbench: bump zookeeper version to match current offering
+  * 2023-10-20: Update rsyslog.service sample unit to the latest version used in Debian Trixie
+  * 2023-10-20: Only keep a single rsyslog.service for Debian
+  * 2023-10-20: Remove no longer used --with-systemdsystemunitdir configure switch
+  * 2023-10-18: use logind instead of utmp for wall messages with systemd
+                - replaces 0001-use-logind-instead-of-utmp-for-wall-messages-with-sy.patch
+  * 2023-10-11: Typo fixes
+  * 2023-10-11: Drop CAP_IPC_LOCK capability
+  * 2023-10-04: Add CAP_NET_RAW capability due to the omudpspoof module
+  * 2023-10-03: Add new global config option "libcapng.enable"
+  * 2023-10-02: tcp net subsystem: handle data race gracefully
+  * 2023-08-31: Avoid crash on restart in imrelp SIGTTIN handler
+  * 2023-09-26: fix startup issue on modern systemd systems
+  * 2023-09-14: Fix misspeling in message.
+  * 2023-09-13: tcpflood bugfix: plain tcp send error not properly reported
+  * 2023-09-12: omprog bugfix: Add CAP_DAC_OVERRIDE to the bounding set
+  * 2023-08-02: testbench: cleanup and improve some more imfile tests
+  * 2023-08-02: lookup tables: fix static analyzer issue
+  * 2023-08-02: lookup tables bugfix: reload on HUP did not work when backgrounded
+  * 2023-07-28: CI: fix and cleaup github workflow
+  * 2023-03-07: imjournal: Support input module
+  * 2023-07-28: testbench: make test more reliable
+  * 2023-07-28: tcpflood: add -A option to NOT abort when sending fails
+  * 2023-07-28: tcpflood: fix today's programming error
+  * 2023-07-28: openssl: Replaced depreceated method SSLv23_method with TLS_method
+  * 2023-07-27: testbench improvement: define state file directories for imfile tests
+  * 2023-07-28: testbench: cleanup a test and some nitfixes to it
+  * 2023-07-27: tcpflood bugfix: TCP sending was not implemented properly
+  * 2023-07-26: testbench: make waiting for HUP processing more reliable
+  * 2023-07-25: build system: make rsyslogd execute when --disable-inet is configured
+  * 2023-07-25: CI: update zookeper download to newer version
+  * 2023-07-10: ossl driver: Using newer INIT API for OpenSSL 1.1+ Versions
+  * 2023-07-11: ossl: Fix CRL File Expire from 1 day to 100 years.
+  * 2023-07-06: PR5175: Add TLS CRL Support for GnuTLS driver and OpenSSL 1.0.2+
+  * 2022-05-13: omazureeventhubs: Initial implementation of new output module
+  * 2023-07-03: TLS CRL Support Issue 5081
+  * 2023-06-29: action.resumeintervalmax: the parameter was not respected
+  * 2023-06-28: IMHIREDIS::FIXED:: Restore compatiblity with hiredis < v1.0.0
+  * 2023-05-15: Add the 'batchsize' parameter to imhiredis
+  * 2023-06-28: Clear undefined behavior in libgcry.c (GH #5167)
+  * 2023-06-22: Do not try to drop capabilities when we don't have any
+  * 2023-06-22: testbench: use newer zookeeper version in tests
+  * 2023-06-22: build system: more precise error message on too-old lib
+  * 2023-05-17: Fix quoting for omprog, improg, mmexternal
+
+-------------------------------------------------------------------
 Thu Mar 14 13:15:09 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix rpmlint warnings and errors:

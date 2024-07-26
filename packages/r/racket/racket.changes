@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jun 21 07:17:41 UTC 2024 - Dr. Werner Fink <werner@suse.de>
+
+- Switch over to pb (Platform without native-code Backend) for
+  architectures which do not build
+- Add patch racket-fortify.patch to make it build with latest gcc
+
+-------------------------------------------------------------------
 Fri May 24 13:46:41 UTC 2024 - Martin Schreiner <martin.schreiner@suse.com>
 
 - Update to 8.13.
@@ -65,6 +72,11 @@ Fri May 24 13:46:41 UTC 2024 - Martin Schreiner <martin.schreiner@suse.com>
   
   * The interval-map data structure supports iterator functions in the
     style of gen:ordered-dict.
+
+-------------------------------------------------------------------
+Sun Apr 21 12:57:42 UTC 2024 - Christian Boltz <suse-beta@cboltz.de>
+
+- add mzdyn3m.o which gets built on s390x (possibly replacing mzdyn3m.lo)
 
 -------------------------------------------------------------------
 Sun Apr  7 16:45:21 UTC 2024 - Christian Boltz <suse-beta@cboltz.de>
@@ -677,15 +689,15 @@ Mon Jul 25 00:10:49 UTC 2016 - kgronlund@suse.com
 - Update to Racket 6.6
 
 -------------------------------------------------------------------
-Sun Aug 11 20:59:59 UTC 2013 - schwab@suse.de
-
-- gc-aarch64.patch: add support for aarch64
-
--------------------------------------------------------------------
 Sat May  3 01:37:00 UTC 2014 - MihailJP
 
 - Spec changes
   * Collection 'config' should be included in main package
+
+-------------------------------------------------------------------
+Sun Aug 11 20:59:59 UTC 2013 - schwab@suse.de
+
+- gc-aarch64.patch: add support for aarch64
 
 -------------------------------------------------------------------
 Sat Aug 10 13:58:09 UTC 2013 - toganm@opensuse.org

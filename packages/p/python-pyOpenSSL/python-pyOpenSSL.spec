@@ -26,12 +26,12 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-pyOpenSSL%{psuffix}
-Version:        24.1.0
+Version:        24.2.1
 Release:        0
 Summary:        Python wrapper module around the OpenSSL library
 License:        Apache-2.0
 URL:            https://github.com/pyca/pyopenssl
-Source:         https://files.pythonhosted.org/packages/source/p/pyOpenSSL/pyOpenSSL-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/p/pyopenssl/pyopenssl-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM skip-networked-test.patch gh#pyca/pyopenssl#68 mcepl@suse.com
 # Mark tests requiring network access
 Patch0:         skip-networked-test.patch
@@ -40,11 +40,12 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-cffi
-Requires:       (python-cryptography >= 41.0.5 with python-cryptography < 43)
+Requires:       (python-cryptography >= 41.0.5 with python-cryptography < 44)
 Provides:       pyOpenSSL = %{version}
+Provides:       pyopenssl = %{version}-%release
 BuildArch:      noarch
 %if %{with test}
-BuildRequires:  %{python_module cryptography >= 41.0.5 with %python-cryptography < 43}
+BuildRequires:  %{python_module cryptography >= 41.0.5 with %python-cryptography < 44}
 BuildRequires:  %{python_module pretend}
 BuildRequires:  %{python_module pyOpenSSL >= %version}
 BuildRequires:  %{python_module pytest >= 3.0.1}
@@ -64,7 +65,7 @@ cryptography (<https://github.com/pyca/cryptography>), which provides (among
 other things) a cffi-based interface to OpenSSL.
 
 %prep
-%autosetup -p1 -n pyOpenSSL-%{version}
+%autosetup -p1 -n pyopenssl-%{version}
 
 %build
 %python_build

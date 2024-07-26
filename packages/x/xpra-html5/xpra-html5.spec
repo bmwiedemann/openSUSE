@@ -16,13 +16,13 @@
 #
 
 
-%define uglifyjs_version 3.18.0
+%define uglifyjs_version 3.19.0
 %define minifier uglifyjs
 %define python python3
 
 Name:           xpra-html5
 Release:        0
-Version:        15.0+git20240709.bd65758
+Version:        15.0+git20240718.bebca92
 Summary:        HTML5 client for Xpra
 License:        GPL-2.0+ AND BSD-3-Clause AND LGPL-3.0+ AND MIT
 URL:            https://xpra.org/

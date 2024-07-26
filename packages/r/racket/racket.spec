@@ -17,6 +17,7 @@
 #
 
 
+%global         _configure ../configure
 Name:           racket
 Version:        8.13
 Release:        0
@@ -28,6 +29,7 @@ Source0:        http://download.racket-lang.org/installers/%{version}/%{name}-%{
 Source2:        racket-completion.bash
 Source3:        racket-rpmlintrc
 Patch0:         racket-doc.patch
+Patch1:         racket-fortify.patch
 BuildRequires:  ImageMagick
 BuildRequires:  ca-certificates
 BuildRequires:  chrpath
@@ -126,16 +128,32 @@ cp -p %{SOURCE2} src/
 
 %build
 cd src/
-
+mkdir build
+pushd build
 %add_optflags -D_DEFAULT_SOURCE -D_XOPEN_SOURCE=500 -fno-gcse -Wno-stringop-overread
+#
+# Overwrite stack size limit (hopefully a soft limit only)
+#
+for flag in s l m
+do
+    ulimit -H$flag unlimited || true
+    ulimit -S$flag unlimited || true
+done
+echo "int main () { return !(sizeof(void*) >= 8); }" | gcc -x c -o test64 -
+echo "int main () { return !(((union {unsigned int x; unsigned char c; }){1}).c); }" | gcc -x c -o testendianess -
+./test64 && wide=64 || wide=32
+./testendianess && endianess=l || endianess=b
+rm -f test64 testendianess
+mach=tpb${wide}${endianess}
+unset wide endianess
 %configure \
     --prefix="%{_prefix}" \
     --exec-prefix="%{_prefix}" \
     --libdir=%{_libdir} \
     --docdir="%{_defaultdocdir}/%{name}" \
     --enable-shared \
-%ifarch ppc64 ppc64le s390x
-    --enable-bcdefault \
+%ifarch ppc64le s390x
+    --enable-pb --enable-mach=$mach \
 %endif
     --disable-static \
     --disable-strip \
@@ -145,9 +163,12 @@ cd src/
     --enable-liblz4 \
     --enable-pthread
 %make_build
+popd
 
 %install
+topdir=$(pwd)
 cd src/
+pushd build
 
 # use the following if setting extra plt_setup options
 # export LD_LIBRARY_PATH=%%{buildroot}%%{_libdir}
@@ -156,6 +177,8 @@ cd src/
 install -d %{buildroot}/%{_datadir}/doc/%{name}/
 
 %make_install
+
+popd
 
 # we do not need *.la and *.a files
 find %{buildroot}%{_libdir} -name "*.la" -delete
@@ -224,6 +247,14 @@ install -m 0644 ../README %{buildroot}%{_docdir}/%{name}/README
 
 %fdupes %{buildroot}%{_prefix}
 
+#
+# Dynamically determine which files gets installed
+# bc, cs, and pb builds
+#
+pushd %{buildroot}%{_libdir}
+    find \( -name '*.boot' -o -name '*.so*' -o -name '*.lo' -o -name '*.o' -o -name bootinfo \) -printf '%{_libdir}/%%P\n' > ${topdir}/file.list
+popd
+
 %post
 /sbin/ldconfig
 %desktop_database_post
@@ -232,7 +263,7 @@ install -m 0644 ../README %{buildroot}%{_docdir}/%{name}/README
 /sbin/ldconfig
 %desktop_database_postun
 
-%files
+%files -f file.list
 %doc %dir %{_docdir}/%{name}
 %doc %{_docdir}/%{name}/README
 %{_bindir}/drracket
@@ -263,18 +294,6 @@ install -m 0644 ../README %{buildroot}%{_docdir}/%{name}/README
 %verify(not md5 size mtime) %{_libdir}/%{name}/*.rktd
 %dir %{_libdir}/%{name}/compiled/
 %{_libdir}/%{name}/compiled/*
-%ifnarch ppc64 ppc64le s390x
-%{_libdir}/%{name}/petite.boot
-%{_libdir}/%{name}/racket.boot
-%{_libdir}/%{name}/scheme.boot
-%endif
-%ifarch ppc64 ppc64le s390x
-%{_libdir}/libracket3m*
-%{_libdir}/%{name}/buildinfo
-%endif
-%ifarch ppc64 ppc64le
-%{_libdir}/%{name}/mzdyn3m.lo
-%endif
 %{_mandir}/man1/mz*
 %{_mandir}/man1/racket*
 %{_mandir}/man1/raco*

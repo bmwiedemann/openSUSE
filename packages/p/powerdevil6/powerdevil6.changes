@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul 24 17:23:00 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix crash on display wake up (kde#490356, kde#490421):
+  * 0001-daemon-Don-t-leave-dangling-Action-pointers-in-idle-.patch
+
+-------------------------------------------------------------------
 Tue Jul 16 13:41:23 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.1.3:

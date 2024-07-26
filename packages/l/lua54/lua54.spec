@@ -26,7 +26,7 @@
 %define major_version 5.4
 %define libname liblua5_4-5
 Name:           lua54%{name_ext}
-Version:        5.4.6
+Version:        5.4.7
 Release:        0
 Summary:        Small Embeddable Language with Procedural Syntax
 License:        GPL-3.0-or-later
@@ -43,9 +43,6 @@ Patch1:         attrib_test.patch
 Patch2:         files_test.patch
 Patch3:         main_test.patch
 Patch6:         shared_link.patch
-# PATCH-FIX-UPSTREAM skip-tests_big-endian.patch bsc#1216930 mcepl@suse.com
-# patch out little-endian-only test
-Patch7:         skip-tests_big-endian.patch
 # PATCH-FIX-UPSTREAM inspect errno only after failure
 Patch8:         execresult.patch
 Requires(post): update-alternatives
@@ -55,6 +52,7 @@ Obsoletes:      lua < %{version}
 Provides:       Lua(API) = %{major_version}
 %if "%{flavor}" == "test"
 BuildRequires:  lua54
+BuildRequires:  lua54-devel
 %else
 BuildRequires:  libtool
 BuildRequires:  lua-macros
@@ -210,6 +208,10 @@ ln -sf %{_sysconfdir}/alternatives/lua.pc %{buildroot}%{_libdir}/pkgconfig/lua.p
 
 %check
 cd testes
+pushd libs
+make all LUA_DIR=%{_includedir}/lua%{major_version}
+cp *.so ..
+popd
 LD_LIBRARY_PATH=%{_libdir} %{_bindir}/lua%{major_version} all.lua
 %endif
 

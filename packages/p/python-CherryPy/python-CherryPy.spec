@@ -24,12 +24,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-CherryPy
-Version:        18.9.0
+Version:        18.10.0
 Release:        0
 Summary:        Object-Oriented HTTP framework
 License:        BSD-3-Clause
 URL:            https://www.cherrypy.dev
-Source:         https://files.pythonhosted.org/packages/source/C/CherryPy/CherryPy-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/C/CherryPy/cherrypy-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module wheel}
@@ -45,7 +45,7 @@ Requires:       alts
 BuildRequires:  alts
 %else
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 %endif
 Recommends:     python-Routes >= 2.3.1
 Recommends:     python-flup
@@ -82,7 +82,7 @@ to the most demanding ones.
 Oh, and most importantly: CherryPy is fun to work with :-)
 
 %prep
-%autosetup -p1 -n CherryPy-%{version}
+%autosetup -p1 -n cherrypy-%{version}
 # do not require cov/xdist/etc
 rm pytest.ini
 

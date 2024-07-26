@@ -16,7 +16,7 @@
 #
 
 Name:           sequoia-octopus-librnp
-Version:        1.9.0
+Version:        1.9.0+git.13.03113af
 Release:        0
 Summary:        librnp drop-in replacement using sequoia-pgp
 License:        LGPL-2.0-or-later

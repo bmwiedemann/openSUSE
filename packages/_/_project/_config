@@ -719,7 +719,7 @@ Required: rpm-build
 Required: gcc-PIE
 
 # the basic stuff
-Required: perl
+Support: perl
 Support: build-mkbaselibs compat-usrmerge-build
 Prefer:  build-mkbaselibs
 Support: brp-check-suse
@@ -798,6 +798,8 @@ Ignore: ffmpeg-5-mini-devel:this-is-only-for-build-envs
 Ignore: ffmpeg-5-mini-libs:this-is-only-for-build-envs
 Ignore: ffmpeg-6-mini-devel:this-is-only-for-build-envs
 Ignore: ffmpeg-6-mini-libs:this-is-only-for-build-envs
+Ignore: ffmpeg-7-mini-devel:this-is-only-for-build-envs
+Ignore: ffmpeg-7-mini-libs:this-is-only-for-build-envs
 Ignore: gettext-runtime-mini:this-is-only-for-build-envs
 Ignore: gettext-tools-mini:this-is-only-for-build-envs
 Ignore: ghc-bootstrap-helpers:this-is-only-for-build-envs

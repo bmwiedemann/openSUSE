@@ -2397,4 +2397,12 @@ New Features
 </comment>
     <requestid>1174925</requestid>
   </revision>
+  <revision rev="209" vrev="1">
+    <srcmd5>5611014a1cd1e4302729c582d8f43f18</srcmd5>
+    <version>9.20.0</version>
+    <time>1722003238</time>
+    <user>dimstar_suse</user>
+    <comment>Update to new major version 9.20.0</comment>
+    <requestid>1189415</requestid>
+  </revision>
 </revisionlist>

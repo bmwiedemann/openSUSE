@@ -1700,4 +1700,12 @@ bsc#901857 (forwarded request 493933 from AndreasStieger)</comment>
     <comment></comment>
     <requestid>1165545</requestid>
   </revision>
+  <revision rev="156" vrev="1">
+    <srcmd5>128156a3d015a861388fca001dee1ae3</srcmd5>
+    <version>3.8.6</version>
+    <time>1722003299</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1189560</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,180 @@
+From 522b2331e6584758aeaefbf2d41f0c18cd1113d9 Mon Sep 17 00:00:00 2001
+From: Marek Czernek <marek.czernek@suse.com>
+Date: Tue, 23 Jul 2024 13:01:27 +0200
+Subject: [PATCH] firewalld: normalize new rich rules before comparing
+ to old (bsc#1222684) (#648)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+* Normalize new rich rules before comparing to old
+
+Firewallcmd rich rule output quotes each
+assigned part of the rich rule, for example:
+rule family="ipv4" source port port="161" ...
+The firewalld module must first normalize
+the user defined rich rules to match the
+firewallcmd output before comparison to
+ensure idempotency.
+
+* Add changelog entry
+
+* Enhance documentation for normalization function
+
+* Add unit tests to cover rich rules normalization
+
+---------
+
+Co-authored-by: Pablo Suárez Hernández <psuarezhernandez@suse.com>
+---
+ changelog/61235.fixed.md                    |  1 +
+ salt/states/firewalld.py                    | 38 +++++++++++-
+ tests/pytests/unit/states/test_firewalld.py | 64 +++++++++++++++++++++
+ 3 files changed, 102 insertions(+), 1 deletion(-)
+ create mode 100644 changelog/61235.fixed.md
+ create mode 100644 tests/pytests/unit/states/test_firewalld.py
+
+diff --git a/changelog/61235.fixed.md b/changelog/61235.fixed.md
+new file mode 100644
+index 00000000000..7ae9bb40800
+--- /dev/null
++++ b/changelog/61235.fixed.md
+@@ -0,0 +1 @@
++- firewalld: normalize new rich rules before comparing to old ones
+diff --git a/salt/states/firewalld.py b/salt/states/firewalld.py
+index 534b9dd62df..9ce0bfc61a8 100644
+--- a/salt/states/firewalld.py
++++ b/salt/states/firewalld.py
+@@ -204,7 +204,6 @@ def present(
+     rich_rules=None,
+     prune_rich_rules=False,
+ ):
+-
+     """
+     Ensure a zone has specific attributes.
+ 
+@@ -378,6 +377,42 @@ def service(name, ports=None, protocols=None):
+     return ret
+ 
+ 
++def _normalize_rich_rules(rich_rules):
++    """
++    Make sure rich rules are normalized and attributes
++    are quoted with double quotes so it matches the output
++    from firewall-cmd
++
++    Example:
++
++    rule family="ipv4" source address="192.168.0.0/16" port port=22 protocol=tcp accept
++    rule family="ipv4" source address="192.168.0.0/16" port port='22' protocol=tcp accept
++    rule family='ipv4' source address='192.168.0.0/16' port port='22' protocol=tcp accept
++
++    normalized to:
++
++    rule family="ipv4" source address="192.168.0.0/16" port port="22" protocol="tcp" accept
++    """
++    normalized_rules = []
++    for rich_rule in rich_rules:
++        normalized_rule = ""
++        for cmd in rich_rule.split(" "):
++            cmd_components = cmd.split("=", 1)
++            if len(cmd_components) == 2:
++                assigned_component = cmd_components[1]
++                if not assigned_component.startswith(
++                    '"'
++                ) and not assigned_component.endswith('"'):
++                    if assigned_component.startswith(
++                        "'"
++                    ) and assigned_component.endswith("'"):
++                        assigned_component = assigned_component[1:-1]
++                    cmd_components[1] = f'"{assigned_component}"'
++            normalized_rule = f"{normalized_rule} {'='.join(cmd_components)}"
++        normalized_rules.append(normalized_rule.lstrip())
++    return normalized_rules
++
++
+ def _present(
+     name,
+     block_icmp=None,
+@@ -761,6 +796,7 @@ def _present(
+ 
+     if rich_rules or prune_rich_rules:
+         rich_rules = rich_rules or []
++        rich_rules = _normalize_rich_rules(rich_rules)
+         try:
+             _current_rich_rules = __salt__["firewalld.get_rich_rules"](
+                 name, permanent=True
+diff --git a/tests/pytests/unit/states/test_firewalld.py b/tests/pytests/unit/states/test_firewalld.py
+new file mode 100644
+index 00000000000..0cbc59633bf
+--- /dev/null
++++ b/tests/pytests/unit/states/test_firewalld.py
+@@ -0,0 +1,64 @@
++"""
++    :codeauthor: Hristo Voyvodov <hristo.voyvodov@redsift.io>
++"""
++
++import pytest
++
++import salt.states.firewalld as firewalld
++from tests.support.mock import MagicMock, patch
++
++
++@pytest.fixture
++def configure_loader_modules():
++    return {firewalld: {"__opts__": {"test": False}}}
++
++
++@pytest.mark.parametrize(
++    "rich_rule",
++    [
++        (
++            [
++                'rule family="ipv4" source address="192.168.0.0/16" port port=22 protocol=tcp accept'
++            ]
++        ),
++        (
++            [
++                'rule family="ipv4" source address="192.168.0.0/16" port port=\'22\' protocol=tcp accept'
++            ]
++        ),
++        (
++            [
++                "rule family='ipv4' source address='192.168.0.0/16' port port='22' protocol=tcp accept"
++            ]
++        ),
++    ],
++)
++def test_present_rich_rules_normalized(rich_rule):
++    firewalld_reload_rules = MagicMock(return_value={})
++    firewalld_rich_rules = [
++        'rule family="ipv4" source address="192.168.0.0/16" port port="22" protocol="tcp" accept',
++    ]
++
++    firewalld_get_zones = MagicMock(
++        return_value=[
++            "block",
++            "public",
++        ]
++    )
++    firewalld_get_masquerade = MagicMock(return_value=False)
++    firewalld_get_rich_rules = MagicMock(return_value=firewalld_rich_rules)
++
++    __salt__ = {
++        "firewalld.reload_rules": firewalld_reload_rules,
++        "firewalld.get_zones": firewalld_get_zones,
++        "firewalld.get_masquerade": firewalld_get_masquerade,
++        "firewalld.get_rich_rules": firewalld_get_rich_rules,
++    }
++    with patch.dict(firewalld.__dict__, {"__salt__": __salt__}):
++        ret = firewalld.present("public", rich_rules=rich_rule)
++        assert ret == {
++            "changes": {},
++            "result": True,
++            "comment": "'public' is already in the desired state.",
++            "name": "public",
++        }
+-- 
+2.45.2
+
+

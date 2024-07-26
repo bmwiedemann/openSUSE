@@ -335,4 +335,18 @@
     <comment></comment>
     <requestid>1186857</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>62cc1290c3bab66ca8bcff7401091a09</srcmd5>
+    <version>20240718.1.0</version>
+    <time>1722003293</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 20240718.1.0 (20240718.001)
+   see /usr/share/doc/packages/perl-Business-ISBN-Data/Changes
+  20240718.001 2024-07-18T17:14:53Z
+  	* data update for 2024-07-18
+  20240716.001 2024-07-16T15:45:27Z
+  	* Data update for 2024-07-16
+  	* this distribution now uses GitHub Attestions. See README.pod. (forwarded request 1188857 from tinita)</comment>
+    <requestid>1189532</requestid>
+  </revision>
 </revisionlist>

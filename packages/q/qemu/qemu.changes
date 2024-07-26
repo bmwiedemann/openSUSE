@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Jul 24 10:00:54 UTC 2024 - dfaggioli@suse.com
+
+- roms: Build ipxe with NO_WERROR=1 (bsc#1227960)
+- Update to version 9.0.2:
+  Full list of backports here:
+   https://lore.kernel.org/qemu-devel/1718081053.366429.1238758.nullmailer@tls.msk.ru/
+    
+  A selection of them is reported here too:
+   hw/nvme: fix number of PIDs for FDP RUH update
+   sphinx/qapidoc: Fix to generate doc for explicit, unboxed arguments
+   char-stdio: Restore blocking mode of stdout on exit
+   virtio: remove virtio_tswap16s() call in vring_packed_event_read()
+   virtio-pci: Fix the failure process in kvm_virtio_pci_vector_use_one()
+   tcg/optimize: Fix TCG_COND_TST* simplification of setcond2
+   block: Parse filenames only when explicitly requested
+   iotests/270: Don't store data-file with json: prefix in image
+   iotests/244: Don't store data-file with protocol in image
+   qcow2: Don't open data_file with BDRV_O_NO_IO
+   tests: add testing of parameter=3D1 for SMP topology (bsc#1228169)
+   hw/core: allow parameter=3D1 for SMP topology on any machine
+   ...
+
+-------------------------------------------------------------------
 Fri Jun 28 14:39:13 UTC 2024 - dfaggioli@suse.com
 
  - Update to latest stable release (9.0.1).

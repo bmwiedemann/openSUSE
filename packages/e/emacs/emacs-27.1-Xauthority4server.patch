@@ -119,7 +119,7 @@ even if the Xauthority file is not the default expected by XCloseDisplay()
 +			(setq xauth-file (expand-file-name "~/.Xauthority")))
 +		    (if (and (file-exists-p xauth-file) (not (file-equal-p xauth-file server-xauth-file)))
 +			(progn
-+			    (setq xauth-cmd (concat "xauth -f " xauth-file " extract - " display
++			    (setq xauth-cmd (concat "xauth -i -f " xauth-file " extract - " display
 +				"| xauth -f " server-xauth-file " merge -"))
 +			    (shell-command xauth-cmd)))))
 +

@@ -20,8 +20,8 @@
     -->
     <!-- REPLACEMENT versionrewrite-pattern
     -->
-    <param name="versionrewrite-pattern">v6.0</param>
-    <param name="versionrewrite-replacement">6.1</param>
+    <param name="versionrewrite-pattern">v6.1.0</param>
+    <param name="versionrewrite-replacement">6.2.0</param>
     <param name="changesgenerate">enable</param>
   </service>
   <service name="set_version" mode="manual"/>

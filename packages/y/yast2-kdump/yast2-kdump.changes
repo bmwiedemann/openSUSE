@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jun 19 15:36:03 UTC 2024 - Stefan Schubert <schubi@suse.com>
+
+- Do not suggest Kdump if Systemd-Boot is used. Kdump is not stable
+  if Systemd-Bootloader is used. (bsc#1226676, bsc#1228242)
+- 5.0.1
+
+-------------------------------------------------------------------
 Wed Aug 30 20:16:10 UTC 2023 - Josef Reidinger <jreidinger@suse.cz>
 
 - 5.0.0 (bsc#1185510)

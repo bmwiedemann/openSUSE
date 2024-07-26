@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Jul 25 12:23:48 UTC 2024 - Dr. Werner Fink <werner@suse.de>
+
+- Use simple trusted members of the group games (boo#1228058) 
+
+-------------------------------------------------------------------
+Wed Jul 17 09:11:18 UTC 2024 - Dr. Werner Fink <werner@suse.de>
+
+- Split off the emacs-games package for score handling (boo#1227737) 
+- Implement setgid based score handling
+
+-------------------------------------------------------------------
+Thu Jul 11 09:31:21 UTC 2024 - Dr. Werner Fink <werner@suse.de>
+
+- The xauth patch should ignore any locking at read time
+  as otherwise emacs server might hang
+- Provide support of ELPA systemwide installations to OBS
+
+-------------------------------------------------------------------
 Wed Jul 10 08:54:22 UTC 2024 - Dr. Werner Fink <werner@suse.de>
 
 - Support system wide ELPA and MELPA site lisp paths

@@ -21,9 +21,10 @@
 %endif
 %bcond_with pandoc
 # -----
-# Comes from git tarball setup.py:
-# setup.py build --verbose ...
-%define xpra_ver 6.1
+### Comes from git tarball setup.py:
+###   setup.py build --verbose ...
+%define xpra_ver %(echo %{version} | awk -F+ '{print $1}')
+#####
 %define python_ver python311
 %define python_short_ver 3.11
 %define python_bin python3.11
@@ -37,7 +38,7 @@
 # ----
 %global __requires_exclude ^typelib\\(GtkosxApplication\\)|typelib\\(GdkGLExt\\)|typelib\\(GtkGLExt\\).*$
 Name:           xpra
-Version:        6.1+git20240708.6cd739ab
+Version:        6.2.0+git20240718.6fcb897e
 Release:        0
 Summary:        Remote display server for applications and desktops
 License:        BSD-3-Clause AND GPL-2.0-or-later AND LGPL-3.0-or-later AND MIT

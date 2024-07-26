@@ -1,0 +1,15 @@
+<services>
+  <service name="obs_scm" mode="manual">
+    <param name="versionprefix">3.2.3</param>
+    <param name="url">https://github.com/httpie/cli.git</param>
+    <param name="revision">f4cf43ecdd6c5c52b5c4ba91086d5c6ccfebcd6d</param>
+    <param name="scm">git</param>
+    <param name="submodules">enable</param>
+    <param name="changesgenerate">disable</param>
+  </service>
+  <service name="tar" mode="buildtime"/>
+  <service name="recompress" mode="buildtime">
+    <param name="compression">gz</param>
+    <param name="file">*.tar</param>
+  </service>
+</services>

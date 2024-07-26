@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jul 24 10:12:25 UTC 2024 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Fix rich rule comparison in firewalld module (bsc#1222684)
+
+- Added:
+  * firewalld-normalize-new-rich-rules-before-comparing-.patch
+
+-------------------------------------------------------------------
 Tue Jul  9 11:23:20 UTC 2024 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
 
 - test_vultrpy: adjust test expectation to prevent failure after Debian 10 EOL

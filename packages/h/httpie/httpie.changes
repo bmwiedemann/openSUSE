@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jul 10 15:52:33 UTC 2024 - Simon Vogl <simon.vogl@gmx.net>
+
+- Update to version 3.2.3
+  * Fix SSL connections by pinning the requests version to 2.31.0.
+  * Make it possible to unset the User-Agent and Accept-Encoding
+    request headers.
+- Update manpage to version 3.2.3
+- Switch to generating tarball directly from git to harden package
+  against supply chain attacks
+
+-------------------------------------------------------------------
 Fri Jun 23 20:18:48 UTC 2023 - Simon Vogl <simon.vogl@gmx.net>
 
 - Temporarily disable tests that fail with python 3.11

@@ -82,7 +82,7 @@ URL:            https://www.qemu.org/
 Summary:        Machine emulator and virtualizer
 License:        BSD-2-Clause AND BSD-3-Clause AND GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later AND MIT
 Group:          System/Emulators/PC
-Version:        9.0.1
+Version:        9.0.2
 Release:        0
 Source0:        qemu-%{version}.tar.xz
 Source1:        common.inc
@@ -875,16 +875,17 @@ popd
 
 %make_build -C %srcdir/roms seavgabios-ati \
 
-%make_build -C %srcdir/roms pxerom
+%make_build -C %srcdir/roms pxerom NO_WERROR=1
 
 %make_build -C %srcdir/roms edk2-basetools EXTRA_OPTFLAGS='-fPIE'
-%make_build -C %srcdir/roms efirom
+
+%make_build -C %srcdir/roms efirom NO_WERROR=1
 
 %if %{force_fit_virtio_pxe_rom}
 pushd %srcdir
 patch -p1 < %{rpmfilesdir}/openSUSE-pcbios-stub-out-the-SAN-req-s-i.patch
 popd
-%make_build -C %srcdir/roms pxerom_variants=virtio pxerom_targets=1af41000 pxerom
+%make_build -C %srcdir/roms NO_WERROR=1 pxerom_variants=virtio pxerom_targets=1af41000 pxerom
 %endif
 
 for i in %supported_nics_large %unsupported_nics
@@ -1963,7 +1964,7 @@ wider support than qboot, but still focuses on quick boot up.
 %package seabios
 Summary:        x86 Legacy BIOS for QEMU
 Group:          System/Emulators/PC
-Version:        9.0.1%{sbver}
+Version:        9.0.2%{sbver}
 Release:        0
 BuildArch:      noarch
 Conflicts:      %name < 1.6.0
@@ -1984,7 +1985,7 @@ is the default and legacy BIOS for QEMU.
 %package vgabios
 Summary:        VGA BIOSes for QEMU
 Group:          System/Emulators/PC
-Version:        9.0.1%{sbver}
+Version:        9.0.2%{sbver}
 Release:        0
 BuildArch:      noarch
 Conflicts:      %name < 1.6.0
@@ -2010,7 +2011,7 @@ video card. For use with QEMU.
 %package ipxe
 Summary:        PXE ROMs for QEMU NICs
 Group:          System/Emulators/PC
-Version:        9.0.1
+Version:        9.0.2
 Release:        0
 BuildArch:      noarch
 Conflicts:      %name < 1.6.0

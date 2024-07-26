@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jul 25 12:11:12 UTC 2024 - Mia Herkt <mia@0x0.st>
+
+- Update to 1.46.3
+  * Fixed an issue where some contexts were initially missing from
+    the dashboard on a newly installed Netdata
+    gh#netdata/netdata#18198
+  * Fixed "Directory existence" chart label (go.d/filecheck)
+    gh#netdata/netdata#18126
+
+-------------------------------------------------------------------
 Fri Jul 12 00:04:13 UTC 2024 - Mia Herkt <mia@0x0.st>
 
 - Update to 1.46.2

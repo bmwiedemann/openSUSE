@@ -494,4 +494,12 @@ for reproducible packages even with --nocheck (forwarded request 1150775 from bm
   %patchN (forwarded request 1153250 from pgajdos)</comment>
     <requestid>1153251</requestid>
   </revision>
+  <revision rev="50" vrev="4">
+    <srcmd5>1d262d3fe1222d65b975b19d7dd4652a</srcmd5>
+    <version>2024</version>
+    <time>1722003281</time>
+    <user>dimstar_suse</user>
+    <comment>cleanup after test to not modify the install result (boo#1227364) (forwarded request 1188512 from bmwiedemann)</comment>
+    <requestid>1189530</requestid>
+  </revision>
 </revisionlist>

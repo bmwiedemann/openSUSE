@@ -1,0 +1,53 @@
+---
+ src/rktio/rktio_fs.c |    4 +++-
+ src/start/ustart.c   |    5 +++--
+ 2 files changed, 6 insertions(+), 3 deletions(-)
+
+--- src/rktio/rktio_fs.c
++++ src/rktio/rktio_fs.c	2024-06-18 12:25:03.035413375 +0000
+@@ -1,6 +1,7 @@
+ #include "rktio.h"
+ #include "rktio_private.h"
+ #include <errno.h>
++#include <limits.h>
+ #include <stdio.h>
+ #include <string.h>
+ #include <sys/stat.h>
+@@ -1092,7 +1093,8 @@ char *rktio_readlink(rktio_t *rktio, con
+     return NULL;
+   }
+ #else
+-  int len, buf_len = 256;
++  ssize_t len;
++  size_t buf_len = PATH_MAX;
+   char *buffer = malloc(buf_len);
+ 
+   while (1) {
+--- src/start/ustart.c
++++ src/start/ustart.c	2024-06-18 12:25:13.635224103 +0000
+@@ -10,6 +10,7 @@
+ #include <string.h>
+ #include <fcntl.h>
+ #include <errno.h>
++#include <limits.h>
+ #include <stdio.h>
+ 
+ #if defined(__GNUC__)
+@@ -266,7 +267,7 @@ int main(int argc, char **argv)
+   char *exe_path, *lib_path, *dll_path;
+   int start, decl_end, prog_end, end, count, fd, v, en, x11;
+   int argpos, inpos, collcount = 1, fix_argv;
+-  int bufsize = 127;
++  size_t bufsize = PATH_MAX;
+ 
+   if (config[7] == '[') {
+     write_str(2, argv[0]);
+@@ -280,7 +281,7 @@ int main(int argc, char **argv)
+ 
+   /* resolve soft links */
+   while (1) {
+-    int len;
++    ssize_t len;
+     char *buf;
+     buf = (char *)malloc(bufsize + 1);
+     len = readlink(me, buf, bufsize);

@@ -1,7 +1,7 @@
 #
 # spec file for package nuspell
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,13 +20,14 @@
 %define libname libnuspell
 # Due to std::filesystem and std::charconv used by code, at least gcc-c++ >= 10 and std=c++17 is required
 %if 0%{?suse_version} < 1550
-%define gcc_ver 10
 %bcond_with tests
 %else
 %bcond_without tests
 %endif
+# Ring1 package, avoid pandoc requirement by disabling mnan file generation
+%bcond_with man
 Name:           nuspell
-Version:        5.1.4
+Version:        5.1.6
 Release:        0
 Summary:        A spell checker library and command-line tool
 License:        LGPL-3.0-or-later
@@ -36,12 +37,19 @@ Source:         https://github.com/nuspell/nuspell/archive/v%{version}.tar.gz#/%
 BuildRequires:  cmake
 BuildRequires:  doxygen
 BuildRequires:  fdupes
-BuildRequires:  gcc%{?gcc_ver}-c++
+%if 0%{?suse_version} < 1550
+BuildRequires:  gcc10-c++
+%else
+BuildRequires:  gcc-c++
+%endif
 BuildRequires:  graphviz
 BuildRequires:  libicu-devel
 BuildRequires:  pkgconfig
 BuildRequires:  rubygem(%{rb_default_ruby_abi}:ronn)
 Requires:       hunspell
+%if %{with man}
+BuildRequires:  pandoc
+%endif
 %if %{with tests}
 BuildRequires:  pkgconfig(catch2) >= 3.3.2
 %endif
@@ -102,11 +110,13 @@ This package provides API documentation for Nuspell.
 %build
 %cmake -DBUILD_SHARED_LIBS:BOOL=ON \
 %if 0%{?suse_version} < 1550
-       -DCMAKE_CXX_COMPILER:STRING=g++-%{?gcc_ver} \
+       -DCMAKE_CXX_COMPILER:STRING=g++-10 \
        -DCMAKE_CXX_FLAGS:STRING="%{optflags} -std=c++17" \
 %endif
        -DBUILD_TESTING:BOOL=%{?with_tests:ON}%{!?with_tests:OFF}  \
-       -DCMAKE_SKIP_RPATH:BOOL=OFF
+       -DCMAKE_SKIP_RPATH:BOOL=OFF \
+       -DBUILD_DOCS=%{?with_man:ON}%{!?with_man:OFF} \
+       %{nil}
 %cmake_build
 
 cd ../
@@ -132,11 +142,16 @@ cp -pR doxygen/html %{buildroot}%{_docdir}/%{name}-doc/
 %doc README.md CHANGELOG.md AUTHORS
 %license COPYING.LESSER COPYING
 %{_bindir}/nuspell
+%if %{with man}
+%{_mandir}/man1/nuspell.1%{?ext_man}
+%endif
 
 %files -n %{libname}%{sonum}
 %license COPYING.LESSER COPYING
 %{_libdir}/%{libname}.so.*
+%if 0%{?suse_version} < 1650 && 0%{?sle_version} <= 150500
 %exclude %{_datadir}/doc/nuspell/README.md
+%endif
 
 %files devel
 %license COPYING.LESSER COPYING

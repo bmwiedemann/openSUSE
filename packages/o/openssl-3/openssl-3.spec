@@ -94,8 +94,12 @@ Patch29:        openssl-CVE-2024-4603.patch
 # PATCH-FIX-UPSTREAM: bsc#1225291 NVMe/TCP TLS connection fails due to handshake failure
 Patch30:        openssl-Fix-EVP_PKEY_CTX_add1_hkdf_info-behavior.patch
 Patch31:        openssl-Handle-empty-param-in-EVP_PKEY_CTX_add1_hkdf_info.patch
+# PATCH-FIX-UPSTREAM bsc#1225551 CVE-2024-4741: use After Free with SSL_free_buffers
+Patch32:        openssl-CVE-2024-4741.patch
 # PATCH-FIX-UPSTREAM: bsc#1223336 aes-gcm-avx512.pl: fix non-reproducibility issue
-Patch32:        reproducible.patch
+Patch33:        reproducible.patch
+# PATCH-FIX-UPSTREAM: bsc#1227138 CVE-2024-5535: SSL_select_next_proto buffer overread
+Patch34:        openssl-CVE-2024-5535.patch
 BuildRequires:  pkgconfig
 %if 0%{?sle_version} >= 150400 || 0%{?suse_version} >= 1550
 BuildRequires:  ulp-macros
@@ -194,7 +198,8 @@ export MACHINE=armv6l
 %endif
 
 ./Configure \
-    no-mdc2 no-ec2m no-sm2 no-sm4 \
+    no-mdc2 no-ec2m \
+    no-afalgeng \
     enable-rfc3779 enable-camellia enable-seed \
 %ifarch x86_64 aarch64 ppc64le
     enable-ec_nistp_64_gcc_128 \

@@ -1,0 +1,53 @@
+From 8c1686c9e97edb9a06e06e2f41cfe5351cef7986 Mon Sep 17 00:00:00 2001
+From: Jakob Petsovits <jpetso@petsovits.com>
+Date: Thu, 18 Jul 2024 17:14:06 +0000
+Subject: [PATCH] daemon: Don't leave dangling Action pointers in idle-time
+ containers
+
+If we delete the Action but don't clean up related map/set elements,
+the powerdevil daemon can crash e.g. in Core::onResumingFromIdle()
+and Core::onKIdleTimeoutReached().
+
+This has been an issue since commit 584cfdf0 (or d91bc62f on 6.1)
+which made it possible for already-created actions to get deleted
+again at a later time.
+
+BUG: 490356
+BUG: 490421
+
+
+(cherry picked from commit 7a929fa01ed036f60c5a15c72416b4e40eb03160)
+
+Co-authored-by: Jakob Petsovits <jpetso@petsovits.com>
+---
+ daemon/powerdevilcore.cpp | 14 ++++++++++----
+ 1 file changed, 10 insertions(+), 4 deletions(-)
+
+diff --git a/daemon/powerdevilcore.cpp b/daemon/powerdevilcore.cpp
+index 915ca0ad..838b5c05 100644
+--- a/daemon/powerdevilcore.cpp
++++ b/daemon/powerdevilcore.cpp
+@@ -224,10 +224,16 @@ void Core::refreshActions()
+     }
+ 
+     // Remove now-unsupported actions
+-    std::erase_if(m_actionPool, [](const auto &pair) {
+-        const auto &[name, action] = pair;
+-        return !action->isSupported();
+-    });
++    for (auto it = m_actionPool.begin(); it != m_actionPool.end();) {
++        Action *action = it->second.get();
++        if (!action->isSupported()) {
++            m_registeredActionTimeouts.remove(action);
++            m_pendingResumeFromIdleActions.remove(action);
++            it = m_actionPool.erase(it);
++        } else {
++            ++it;
++        }
++    }
+ }
+ 
+ bool Core::isActionSupported(const QString &actionName)
+-- 
+2.45.2
+

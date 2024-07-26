@@ -72,4 +72,16 @@
 </comment>
     <requestid>1142145</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>eb238ca1a97eec2f65b1030b0c06c6b6</srcmd5>
+    <version>4.2.0</version>
+    <time>1722003344</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.2.0.
+  * Added SF2B' as a proof-free variant of SF2B.
+  * Fixed installation of Pff2Flocq.
+  * Ensured compatibility from Coq 8.12 to 8.20.
+</comment>
+    <requestid>1189653</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package httpie
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,14 +16,17 @@
 #
 
 
+%define _mtime 1720621443
+%define _commit f4cf43e
+
 Name:           httpie
-Version:        3.2.2
+Version:        3.2.3
 Release:        0
 Summary:        CLI, cURL-like tool for humans
 License:        BSD-3-Clause
 Group:          Productivity/Networking/Web/Utilities
 URL:            https://httpie.org/
-Source:         https://github.com/jakubroztocil/httpie/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source:         cli-%{version}.%{_mtime}.%{_commit}.tar.gz
 Source1:        http.1
 BuildRequires:  %{primary_python}
 BuildRequires:  %{primary_python}-Jinja2
@@ -70,7 +73,7 @@ Obsoletes:      %{primary_python}-httpie < 2.3.0
 Obsoletes:      python3-httpie < 2.3.0
 BuildArch:      noarch
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 
 %description
 HTTPie consists of a single "http" command designed for debugging and
@@ -80,7 +83,7 @@ It allows for issuing arbitrary HTTP requests and displays colorized
 responses.
 
 %prep
-%setup -q
+%setup -q -n cli-%{version}.%{_mtime}.%{_commit}
 #drop shebang
 sed -i -e '/^#!\//, 1d' httpie/__main__.py
 

@@ -20,9 +20,8 @@ Name:           ulp-macros
 Version:        1.0
 Release:        0
 Summary:        Macros for enabling Userspace Live Patching into processes
-# FIXME: Select a correct license from https://github.com/openSUSE/spec-cleaner#spdx-licenses
-License:        MIT
-# FIXME: use correct group, see "https://en.opensuse.org/openSUSE:Package_group_guidelines"
+URL:            https://github.com/SUSE/libpulp
+License:        LGPL-2.1-or-later
 Group:          Development
 Source1:        ulp.macros
 BuildArch:      noarch
@@ -40,5 +39,6 @@ install -D -m 0644 %{S:1}   %{buildroot}%{_rpmmacrodir}/macros.ulp
 %files
 %{_rpmmacrodir}/macros.ulp
 
-%changelog
+%check
 
+%changelog

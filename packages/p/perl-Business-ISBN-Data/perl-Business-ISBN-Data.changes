@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Jul 19 05:29:45 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 20240718.1.0 (20240718.001)
+   see /usr/share/doc/packages/perl-Business-ISBN-Data/Changes
+
+  20240718.001 2024-07-18T17:14:53Z
+  	* data update for 2024-07-18
+
+  20240716.001 2024-07-16T15:45:27Z
+  	* Data update for 2024-07-16
+  	* this distribution now uses GitHub Attestions. See README.pod.
+
+-------------------------------------------------------------------
 Thu Jul 11 05:29:29 UTC 2024 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 20240710.1.0 (20240710.001)
