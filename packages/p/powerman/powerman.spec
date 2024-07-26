@@ -31,7 +31,7 @@
 %endif
 
 Name:           powerman
-Version:        2.4.2
+Version:        2.4.3
 Release:        0
 Summary:        Centralized Power Control for Clusters
 License:        GPL-2.0-or-later
@@ -83,8 +83,6 @@ Header files, pkg-config file and man pages for developing applications using Po
 
 %prep
 %autosetup -p1
-# git is used to set package version in AC_INIT. That fails so we manually set the version.
-sed -i "s;m4_esyscmd(\[git describe --always.*\]);\[%{version}\];" configure.ac
 
 %build
 %configure \
