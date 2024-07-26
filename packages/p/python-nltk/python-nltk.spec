@@ -63,9 +63,8 @@ Source99:       python-nltk.rpmlintrc
 Patch0:         skip-networked-test.patch
 # PATCH-FIX-UPSTREAM nltk-pr3207-py312.patch gh#nltk/nltk#3207
 Patch1:         nltk-pr3207-py312.patch
-# PATCH-FIX-UPSTREAM CVE-2024-39705-disable-download.patch bsc#1227174 mcepl@suse.com
-# this patch makes things totally awesome
-Patch2:         CVE-2024-39705-disable-download.patch
+# PATCH-FIX-UPSTREAM CVE-2024-39705.patch bsc#1227174 gh#nltk/nltk#3290
+Patch2:         CVE-2024-39705.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}

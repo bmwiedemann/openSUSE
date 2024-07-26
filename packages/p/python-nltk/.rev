@@ -200,4 +200,16 @@
   bsc#1227174).</comment>
     <requestid>1185062</requestid>
   </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>b7d88df14c02321af5db596eebd5e228</srcmd5>
+    <version>3.8.1</version>
+    <time>1722003365</time>
+    <user>dimstar_suse</user>
+    <comment>- Add CVE-2024-39705.patch upstream patch to fix unsafe pickle usage.
+  (CVE-2024-39705, gh#nltk/nltk#3266, bsc#1227174).
+- Drop CVE-2024-39705-disable-download.patch as it's not needed
+  anymore.
+</comment>
+    <requestid>1189727</requestid>
+  </revision>
 </revisionlist>

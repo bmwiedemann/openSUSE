@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jul 26 07:14:33 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add CVE-2024-39705.patch upstream patch to fix unsafe pickle usage.
+  (CVE-2024-39705, gh#nltk/nltk#3266, bsc#1227174).
+- Drop CVE-2024-39705-disable-download.patch as it's not needed
+  anymore.
+
+-------------------------------------------------------------------
 Mon Jul  1 21:02:45 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Use tarball from GitHub instead of the Zip archive from PyPI,
