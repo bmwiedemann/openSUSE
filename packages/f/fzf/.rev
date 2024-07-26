@@ -828,4 +828,14 @@ varienvironment able.
     <comment></comment>
     <requestid>1188813</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>914d938d3be93014fc7d8143be54d295</srcmd5>
+    <version>0.54.2</version>
+    <time>1722003384</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.54.2:
+  * Fixed incorrect syntax highlighting of truncated multi-line entries
+</comment>
+    <requestid>1189776</requestid>
+  </revision>
 </revisionlist>
