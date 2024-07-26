@@ -19,13 +19,12 @@
 %define apps cli server
 
 Name:           rekor
-Version:        1.3.5
+Version:        1.3.6
 Release:        0
-%define revision 488eb9782d8d95c83ac70bfb2f5049928504127e
 Summary:        Supply Chain Transparency Log
 License:        Apache-2.0
 URL:            https://github.com/sigstore/rekor
-Source:         https://github.com/sigstore/rekor/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
 Source2:        rekor-zypper-verify.sh
 BuildRequires:  golang-packaging
@@ -43,13 +42,27 @@ Rekor fulfils the signature transparency role of sigstore's software signing inf
 %autosetup -p1 -a1
 
 %build
+COMMIT_HASH="$(sed -n 's/commit: \(.*\)/\1/p' %_sourcedir/%{name}.obsinfo)"
+
 DATE_FMT="+%%Y-%%m-%%dT%%H:%%M:%%SZ"
 BUILD_DATE=$(date -u -d "@${SOURCE_DATE_EPOCH}" "${DATE_FMT}" 2>/dev/null || date -u -r "${SOURCE_DATE_EPOCH}" "${DATE_FMT}" 2>/dev/null || date -u "${DATE_FMT}")
-for app in %{apps} ; do
-CLI_PKG=sigs.k8s.io/release-utils/version
-CLI_LDFLAGS="-X ${CLI_PKG}.gitVersion=%{version} -X ${CLI_PKG}.gitCommit=%{revision} -X ${CLI_PKG}.gitTreeState=release -X ${CLI_PKG}.buildDate=${BUILD_DATE}"
-go build -mod=vendor -trimpath -buildmode=pie -ldflags "${CLI_LDFLAGS}" ./cmd/rekor-${app}
-./rekor-${app} version
+
+for app in %{apps}
+do
+    CLI_PKG=sigs.k8s.io/release-utils/version
+    CLI_LDFLAGS="-X ${CLI_PKG}.gitVersion=%{version} -X ${CLI_PKG}.gitCommit=%{COMMIT_HASH} -X ${CLI_PKG}.gitTreeState=release -X ${CLI_PKG}.buildDate=${BUILD_DATE}"
+
+    go build \
+      -mod=vendor \
+      -trimpath \
+      -buildmode=pie \
+      -ldflags "${CLI_LDFLAGS}" ./cmd/rekor-${app}
+done
+
+%check
+for app in %{apps}
+do
+    ./rekor-${app} version | grep %{version}
 done
 
 %install

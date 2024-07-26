@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://github.com/sigstore/rekor</param>
+              <param name="changesrevision">a6788566cd62facb0fb0450e9d2c2867f551e37c</param></service></servicedata>
