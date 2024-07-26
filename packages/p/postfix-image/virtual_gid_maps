@@ -1,0 +1,15 @@
+server_host = @LDAP_SERVER_URL@
+start_tls = no
+version = 3
+#tls_ca_cert_file = /etc/ldap/certs/CA/CA.pem
+tls_require_cert = yes
+
+bind = yes
+bind_dn = @LDAP_BIND_DN@
+bind_pw = @LDAP_BIND_PASSWORD@
+
+search_base = ou=mail,@LDAP_BASE_DN@
+scope = sub
+
+query_filter = maildrop=%s
+result_attribute = gidNumber

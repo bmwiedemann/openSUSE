@@ -1,0 +1,5 @@
+<package name="postfix-image" project="openSUSE:Factory">
+  <title>openSUSE Tumbleweed Postfix</title>
+  <description>Postfix container is fast and secure mail server, based on the openSUSE Tumbleweed Base Container Image.</description>
+  <devel project="devel:BCI:Tumbleweed" package="postfix-image"/>
+</package>
