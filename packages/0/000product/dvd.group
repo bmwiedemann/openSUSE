@@ -378,6 +378,7 @@
     <package name="emacs-compat" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="emacs-el" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="emacs-eln" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
+    <package name="emacs-games" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="emacs-info" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="emacs-jinx" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="emacs-nox" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
@@ -4272,6 +4273,7 @@
     <package name="xdg-user-dirs-gtk-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="xdg-user-dirs-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="xdg-utils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="xdg-utils-screensaver" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="xdm" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="xdmbgrd" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="xdpyinfo" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
