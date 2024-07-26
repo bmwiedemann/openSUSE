@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jul 19 08:47:17 UTC 2024 - Marcus Meissner <meissner@suse.com>
+
+- make the per-project inclusion optional, default off.
+
+-------------------------------------------------------------------
 Thu Jul 18 12:13:36 UTC 2024 - Marcus Meissner <meissner@suse.com>
 
 - also include the GPG key from the current build project

@@ -17,6 +17,7 @@
 # needspubkeyforbuild
 
 
+%bcond_with     build_key_include_prjkey
 
 Name:           suse-build-key
 BuildRequires:  gpg
@@ -119,6 +120,16 @@ cp %SOURCE99 .
 %install
 rm -rf $RPM_BUILD_ROOT
 mkdir -p $RPM_BUILD_ROOT%{keydir}
+
+%if %{with build_key_include_prjkey}
+if [ -e "%_sourcedir/_pubkey" ]; then
+    name="$(sh %{SOURCE1000} %_sourcedir/_pubkey).asc"
+    if [ ! -e "%_sourcedir/$name" ]; then
+        install -D -m 644 %_sourcedir/_pubkey %{buildroot}%keydir/"$name"
+    fi
+fi
+%endif
+
 for i in %sources; do
     case "$i" in
         */gpg-pubkey-*.asc|*/*ptf*.asc)
@@ -127,12 +138,6 @@ for i in %sources; do
     esac
 done
 
-if [ -e "%_sourcedir/_pubkey" ]; then
-    name="$(sh %{SOURCE1000} %_sourcedir/_pubkey).asc"
-    if [ ! -e "%_sourcedir/$name" ]; then
-        install -D -m 644 %_sourcedir/_pubkey %{buildroot}%keydir/"$name"
-    fi
-fi
 
 %if 0%{?suse_version} &&  0%{?suse_version} < 1120
 install -m 755 %{SOURCE100} $RPM_BUILD_ROOT/usr/lib/rpm/gnupg
