@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Fri Jul 26 04:41:57 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.22.1:
+  * cargo: coreos-installer release 0.22.1
+  * docs/release-notes: update for release 0.22.1
+  * cargo: update dependencies
+  * packit: downstream_package_name is not inherited by packages
+  * build(deps): bump base64 from 0.21.7 to 0.22.1
+  * build(deps): bump cpio from 0.2.2 to 0.4.0
+
+-------------------------------------------------------------------
+Wed Jul 24 18:01:31 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.22.0:
+  * cargo: coreos-installer release 0.22.0
+  * docs/release-notes: update for release 0.22.0
+  * cargo: update dependencies
+  * packit.yaml: add c9s
+  * build(deps): bump serde from 1.0.197 to 1.0.204
+  * Sync repo templates ⚙
+  * Dockerfile: rebase from f39 to f40
+  * fixtures/customize/dest: update unit to use console.cfg
+  * test/images/customize: add debug logic to give better feedback
+  * */customize/*: shorten network interface names to 15 chars
+  * rootmap: fix multipath + LUKS case
+  * rootmap: correctly join paths when looking for physical root
+  * Sync repo templates ⚙
+  * build(deps): bump reqwest from 0.12.3 to 0.12.4
+  * workflows/rust: bump lints toolchain to 1.77.2
+  * build(deps): bump clap from 4.4.18 to 4.5.4
+  * Cargo.toml: bump MSRV to 1.75.0
+  * build(deps): bump uuid from 1.7.0 to 1.8.0
+  * build(deps): bump serde_with from 3.6.1 to 3.7.0
+  * build(deps): bump regex from 1.10.3 to 1.10.4
+  * build(deps): bump bytes from 1.5.0 to 1.6.0
+  * build(deps): bump thiserror from 1.0.57 to 1.0.58
+  * build(deps): bump serde_json from 1.0.114 to 1.0.115
+  * build(deps): bump reqwest from 0.11.24 to 0.12.3
+  * build(deps): bump tempfile from 3.10.0 to 3.10.1
+  * build(deps): bump h2 from 0.3.24 to 0.3.26
+  * build(deps): bump nmstate from 2.2.25 to 2.2.27
+  * build(deps): bump serde_yaml from 0.9.32 to 0.9.34+deprecated
+  * build(deps): bump anyhow from 1.0.80 to 1.0.81
+  * build(deps): bump mio from 0.8.10 to 0.8.11
+  * packit: update dist_git_branches to target fedora-all
+
+-------------------------------------------------------------------
 Fri Apr 12 05:47:36 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - new package coreos-installer: Installer for the RedHat/Fedora

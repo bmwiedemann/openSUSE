@@ -17,7 +17,7 @@
 
 
 Name:           coreos-installer
-Version:        0.21.0
+Version:        0.22.1
 Release:        0
 Summary:        Installer for CoreOS disk images
 License:        Apache-2.0
@@ -26,9 +26,9 @@ Source0:        coreos-installer-%{version}.tar.gz
 Source1:        vendor.tar.zst
 BuildRequires:  cargo >= 1.76
 BuildRequires:  cargo-packaging
-BuildRequires:  openssl-devel
-BuildRequires:  libzstd-devel
 BuildRequires:  gnupg
+BuildRequires:  libzstd-devel
+BuildRequires:  openssl-devel
 
 %description
 coreos-installer is a program to assist with installing Fedora CoreOS (FCOS) and
@@ -55,8 +55,6 @@ for more information regarding how to download and use coreos-installer.
 
 %prep
 %autosetup -p 1 -a 1
-mkdir -p .cargo
-rm -vf .cargo/config.toml
 
 %build
 %{cargo_build} --features docgen,rdcore
