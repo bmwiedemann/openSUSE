@@ -643,10 +643,7 @@ Preinstall: rpm
 VMinstall: perl-base
 VMinstall: util-linux
 VMinstall: grep
-# bootstrap-copy is an aggregate-only repository, no VMs are built up
-%if "%_repository" != "bootstrap_copy"
 VMinstall: kernel-obs-build
-%endif
 
 # Use the x86_64 kernel on i586 builds - boo#1178762 - Slow down in OBS since kernel 5.6.0 on 32bit
 ExportFilter: ^kernel-obs-build.*\.x86_64.rpm$ . i586
