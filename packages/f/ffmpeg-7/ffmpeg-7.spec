@@ -91,10 +91,8 @@ Release:        0
 Summary:        Set of libraries for working with various multimedia formats
 License:        GPL-3.0-or-later
 Group:          Productivity/Multimedia/Video/Editors and Convertors
-URL:            https://ffmpeg.org/
-
-#Freshcode-URL:    http://freshcode.club/projects/ffmpeg
 #Git-Clone:     git://source.ffmpeg.org/ffmpeg
+URL:            https://ffmpeg.org/
 Source:         https://www.ffmpeg.org/releases/%_name-%version.tar.xz
 Source2:        https://www.ffmpeg.org/releases/%_name-%version.tar.xz.asc
 Source3:        ffmpeg-7-rpmlintrc
@@ -113,6 +111,7 @@ Patch10:        ffmpeg-chromium.patch
 Patch91:        ffmpeg-dlopen-openh264.patch
 Patch92:        ffmpeg-7-CVE-2024-32228.patch
 Patch93:        ffmpeg-7-CVE-2024-32230.patch
+Patch94:        ffmpeg-7-CVE-2024-32229.patch
 BuildRequires:  ladspa-devel
 BuildRequires:  libgsm-devel
 BuildRequires:  libmp3lame-devel >= 3.98.3
@@ -825,6 +824,9 @@ Patch4:         ffmpeg-4.2-dlopen-fdk_aac.patch
 Patch5:         work-around-abi-break.patch
 Patch10:        ffmpeg-chromium.patch
 Patch91:        ffmpeg-dlopen-openh264.patch
+Patch92:        ffmpeg-7-CVE-2024-32228.patch
+Patch93:        ffmpeg-7-CVE-2024-32230.patch
+Patch94:        ffmpeg-7-CVE-2024-32229.patch
 BuildRequires:  c_compiler
 Requires:       this-is-only-for-build-envs
 

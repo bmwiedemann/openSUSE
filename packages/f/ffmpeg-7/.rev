@@ -22,4 +22,12 @@
   (CVE-2024-32228, bsc#1227277)</comment>
     <requestid>1185067</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>5c4c16cefbd8d01ac406beac23893ab3</srcmd5>
+    <version>7.0</version>
+    <time>1722179980</time>
+    <user>dimstar_suse</user>
+    <comment>ffmpeg CVE patches</comment>
+    <requestid>1189880</requestid>
+  </revision>
 </revisionlist>
