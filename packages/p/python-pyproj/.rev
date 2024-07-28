@@ -250,4 +250,12 @@ My fault that the package failed Factory acceptance tests. I originally download
     <comment></comment>
     <requestid>1172789</requestid>
   </revision>
+  <revision rev="32" vrev="5">
+    <srcmd5>fc5d4cb29ef0edb1e998aaf37cdf21c8</srcmd5>
+    <version>3.6.1</version>
+    <time>1722180001</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1189901</requestid>
+  </revision>
 </revisionlist>

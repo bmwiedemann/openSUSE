@@ -26,6 +26,7 @@ Group:          Development/Languages/Python
 URL:            https://github.com/pyproj4/pyproj
 Source:         https://files.pythonhosted.org/packages/source/p/pyproj/pyproj-%{version}.tar.gz
 Patch0:         v3.6.1-BUG-Support-azimuthal_equidistant-coordinate-operati.patch
+Patch1:         v3.6.1-test-datum-ensemble-allowing-new-members.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel >= 3.8}
 BuildRequires:  %{python_module pip}

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jul 20 12:36:38 UTC 2024 - Libor Pechacek <lpechacek@gmx.com>
+
+- Fix test/crs/test_crs.py::test_datum__from_epsg failure
+  (upstream #1403)
+- Add upstream patch:
+  * v3.6.1-test-datum-ensemble-allowing-new-members.patch
+
+-------------------------------------------------------------------
 Wed May  8 13:31:31 UTC 2024 - Libor Pechacek <lpechacek@gmx.com>
 
 - Fix test/crs/test_crs_cf.py::test_azimuthal_equidistant failure
