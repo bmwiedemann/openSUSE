@@ -44,8 +44,7 @@ containing networks.
 This package includes the C-extension.
 
 %prep
-%setup -q -n py-radix-%{version}
-%patch0 -p1
+%autosetup -p1 -n py-radix-%{version}
 
 %build
 export CFLAGS="%{optflags}"
