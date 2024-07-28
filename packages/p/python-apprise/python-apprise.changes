@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Fri Jul 26 17:22:58 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Remove apprise-pytest-session_mocker-removal.patch -- Fixed upstream
+- Update to version 1.8.1:
+  Features:
+  * New Services:
+    - Splunk
+    - Africas Talking
+    - Microsoft Power Automate / Workflows
+    - Société Française du Radiotéléphone (SFR)
+  * Slack supports <@userid> in message body
+  * Turn large ntfy messages into a attachments
+  * Refactored the way Notifiarr Discord users are mentioned
+  * OneSignal to support custom data in payload
+  * Twilio WhatsApp support added
+  * Allow json data in OneSignal template arguments
+  Fixes:
+  * Automatically increment Matrix v3 transaction IDs
+  * Slack files upload deprecation
+  * Update token regex in ServerChan
+  * Add missing % string in import failed trace message
+  * This will fix issues with Home Assistant
+  * Fixes random matrix:// unittest failures
+  * fix: conversion html_to_text hr tags rstrip non string object
+
+- Updates from version 1.8.0:
+  Features:
+  * Custom Plugin Attachment Support Enforced + Added Testing
+  * Do not sanitize http:// attachment URLs. This allows the
+    successful fetching of very complicated http based Attachment
+    URL's where the case sensitivity of the keys matter. The side
+    effect of this change, is built in switches like cache= become
+    case sensitive too (e.g Cache= will no longer be parsed).
+  Fixes:
+  * Added JSON Content-Type header to freemobile://
+  * Fix mailto://ip.addr support
+  * clicksend:// authentication bugfix
+  * Update Apprise API (apprise//) token length
+
+-------------------------------------------------------------------
 Tue Apr 23 02:48:34 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Disable another failing test

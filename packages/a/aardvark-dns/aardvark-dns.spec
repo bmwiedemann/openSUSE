@@ -24,8 +24,8 @@ License:        Apache-2.0
 URL:            https://github.com/containers/%{name}
 Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  cargo
 BuildRequires:  cargo-packaging
+BuildRequires:  rust+cargo >= 1.70
 # Disable this line if you wish to support all platforms.
 
 %description

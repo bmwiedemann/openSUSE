@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jul 26 06:54:04 UTC 2024 - Danish Prakash <danish.prakash@suse.com>
+
+- rust >= 1.70 is required to build more recent versions of this
+  package. Also, BuildRequire cargo+rust to prevent conflicts with
+  `cargo-packaging`.
+
+-------------------------------------------------------------------
 Mon Jun 03 07:16:07 UTC 2024 - danish.prakash@suse.com
 
 - Remove redundant source: cargo_config

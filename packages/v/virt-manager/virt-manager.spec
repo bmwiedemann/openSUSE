@@ -153,6 +153,7 @@ Patch226:       virtinst-add-sle15-detection-support.patch
 Patch227:       virtinst-add-pvh-support.patch
 Patch228:       virtinst-media-detection.patch
 Patch229:       virtinst-enable-video-virtio-for-arm.patch
+Patch230:       virtinst-add-hyperv-performance-options.patch
 # Bug Fixes
 Patch251:       virtman-increase-setKeepAlive-count.patch
 Patch252:       virtman-allow-destroy-from-shutdown-menu-of-crashed-vm.patch

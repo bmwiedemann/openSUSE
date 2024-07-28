@@ -26,4 +26,17 @@
 </comment>
     <requestid>1032153</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>8b786be1a135c6932e6a9d57bf6fea4b</srcmd5>
+    <version>2.2.7.3</version>
+    <time>1722179934</time>
+    <user>dimstar_suse</user>
+    <comment>- Added gcc14.patch 
+  dont error our because of missing returns
+
+- New upstream release 2.2.7.3, no changelog found
+
+- New upstream release 2.2.7.1, no changelog found</comment>
+    <requestid>1189784</requestid>
+  </revision>
 </revisionlist>

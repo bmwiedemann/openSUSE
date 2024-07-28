@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jul 26 16:06:30 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Simplify specfile
+- Update to v1.4.0
+  * Added optional programming ligatures
+  * Added box-drawing glyphs
+  * Small bugfixes and improvements
+
+-------------------------------------------------------------------
 Tue Aug 22 19:51:44 UTC 2023 - Joshua Smith <jsmithfpv@gmail.com>
 
 - Update to v1.3.0

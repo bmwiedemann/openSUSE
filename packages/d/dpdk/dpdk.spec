@@ -60,6 +60,7 @@ Patch1:         0002-SLE15-SP3-compatibility-patch-for-kni.patch
 Patch2:         0001-kni-fix-build-with-Linux-6.3.patch
 Patch3:         0001-kni-fix-build-with-Linux-6.5.patch
 Patch4:         kni-fix-build-with-Linux-6.8.patch
+Patch100:       kni-fix-build-with-Linux-6.10.patch
 BuildRequires:  binutils
 BuildRequires:  doxygen
 BuildRequires:  fdupes
@@ -178,7 +179,13 @@ The DPDK Kernel NIC Interface (KNI) allows userspace applications access to the 
 
 %prep
 # can't use %%{name} because of dpdk-thunderx
-%autosetup -p1 -n dpdk-stable-%{version}
+%setup -n dpdk-stable-%{version}
+%if 0%{?suse_version} > 1600
+%autopatch -p1
+%else
+# grr, no fs.copyfile() in the old meson in SLE (but it has old enough kernel).
+%autopatch -p1 -M 99
+%endif
 
 # Skip not supported examples
 sed -i "/performance-thread/d" examples/meson.build

@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Jul 26 11:50:28 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 5.6.0
+  * added preliminary support for Python 3.13 (tested with beta2) (see #1017)
+  * added `apply_umask` argument to `FakeFilesystem.create_dir`
+    to allow ignoring the umask (see #1038)
+  * use real open calls for remaining `pathlib` functions so that
+    it works nice with skippedmodules (see #1012)
+- from version 5.5.0
+  * The usage of the `pathlib2` and `scandir` modules in pyfakefs
+    is now deprecated. They will now cause deprecation warnings
+    if still used. Support for patching these modules will be removed
+    in pyfakefs 6.0.
+  * `PureWindowsPath` and `PurePosixPath` now use filesystem-independent
+    path separators, and their path-parsing behaviors are now consistent
+    regardless of runtime platform and/or faked filesystem customization
+    (see #1006)
+  * fixed handling of Windows `pathlib` paths under POSIX and vice verse
+    (see #1006)
+  * correctly use real open calls in pathlib for skipped modules (see #1012)
+
+-------------------------------------------------------------------
 Sun Apr 21 08:45:26 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.4.1:

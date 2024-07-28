@@ -239,4 +239,12 @@ https://www.reddit.com/r/openSUSE/comments/11sl1a7/comment/jcg9pbh/?utm_source=s
     <comment></comment>
     <requestid>1177514</requestid>
   </revision>
+  <revision rev="27" vrev="9">
+    <srcmd5>5d513e70761167156e8c735ae4ab8c6c</srcmd5>
+    <version>5.1.4</version>
+    <time>1722179948</time>
+    <user>dimstar_suse</user>
+    <comment>ffmpeg CVE patches</comment>
+    <requestid>1189863</requestid>
+  </revision>
 </revisionlist>

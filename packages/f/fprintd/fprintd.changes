@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Apr  4 09:11:00 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.94.3:
+  * Don't try to clear storage on devices without internal
+    storage
+  * Build: Add option to use libelogind for DBus
+  * Fixed loading external storage modules
+  * Do not require bash to build (just posix sh)
+  * Tests fixes for newer python, python-dbusmock and
+    libfprint
+  * Even more translation updates
+
+-------------------------------------------------------------------
 Fri Jul  7 13:05:54 UTC 2023 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - add all supported USB devices as Supplements
@@ -241,23 +254,23 @@ Sun Nov 09 03:44:00 UTC 2014 - Led <ledest@gmail.com>
 -------------------------------------------------------------------
 Fri Sep 12 01:04:04 CEST 2014 - ro@suse.de
 
-- added baselibs.conf as source to specfile 
+- added baselibs.conf as source to specfile
 
 -------------------------------------------------------------------
 Thu Sep 11 13:40:09 CEST 2014 - ro@suse.de
 
-- drop rpmlintrc 
+- drop rpmlintrc
 
 -------------------------------------------------------------------
 Tue Feb  4 16:04:52 CET 2014 - ro@suse.de
 
-- added baselibs.conf 
+- added baselibs.conf
 
 -------------------------------------------------------------------
 Tue Feb  4 15:54:02 CET 2014 - ro@suse.de
 
 - activate obsoletes for pam_fprint as yast2-fingerprint-reader
-  (which this was waiting for) has been dropped half a year ago 
+  (which this was waiting for) has been dropped half a year ago
 
 -------------------------------------------------------------------
 Sat Nov 16 14:23:04 UTC 2013 - abonilla@suse.com
@@ -313,7 +326,7 @@ Fri Nov 30 07:57:09 UTC 2012 - dimstar@opensuse.org
 - Obsolete pam_fprint <= 0.2 (not provided, it's not a pure
   drop-in replacement).
 - Rework the BuildRequires to reflect as closely as possible what
-  configure looks for. 
+  configure looks for.
 
 -------------------------------------------------------------------
 Wed Sep 22 14:31:17 UTC 2010 - fcrozat@novell.com

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jul 26 13:26:47 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Modify patch to also apply with -p1 COPYING.patch
+- Add gcc14.patch dont enforce the check until upstream can fix the
+  code
+
+-------------------------------------------------------------------
 Tue May 21 10:27:14 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Replace %patchN with %patch -P N: %patchN is deprecated.

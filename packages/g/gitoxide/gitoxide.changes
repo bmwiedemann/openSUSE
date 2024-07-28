@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Jul 25 03:36:33 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Update to version 0.37.0:
+  New Features
+  * add mailmap check similar to git check-mailmap. That way it
+    becomes a little easier to maybe try out other special cases in
+    the wild.
+  * gix clone with --ref support. --ref is similar to --branch, but
+    was renamed as it also supports tags for example.
+  Other
+  * Make it easier to compile gitoxide as dynlib. Also optimize
+    compilation time: By making plumbing and porcelain as modules
+    the lib.rs, they can be compiled after the rmeta for the
+    dependencies are generated.
+  * For the uni.rs which uses both plumbing and porcelain, this
+    would avoid compiling these two modules twice.
+
+-------------------------------------------------------------------
 Wed May 22 12:23:37 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Update to version 0.36.0:

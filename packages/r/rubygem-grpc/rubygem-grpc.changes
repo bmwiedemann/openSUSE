@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jul 26 13:18:48 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Added gcc14.patch dont hard enforce those errors until upstream
+  has fixed them 
+
+-------------------------------------------------------------------
 Sun May 12 14:07:39 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
 
 - bump grpc-devel to 1.60.0 as we need some newer APIs in the

@@ -31,6 +31,9 @@
 # ## used by gem2rpm
  :sources:
    - rubygem-rdiscount-rpmlintrc
+   - series
+ :patches:
+   gcc14.patch: -p1
 # - foo.desktop
 # - bar.desktop
 # :gem_install_args: '....'

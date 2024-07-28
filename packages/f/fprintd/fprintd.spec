@@ -1,7 +1,7 @@
 #
 # spec file for package fprintd
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           fprintd
-Version:        1.94.2
+Version:        1.94.3
 Release:        0
 Summary:        D-Bus service for Fingerprint reader access
 License:        GPL-2.0-or-later
@@ -56,9 +56,9 @@ Summary:        PAM module for fingerprint authentication
 License:        GPL-2.0-or-later
 Group:          Productivity/Security
 Requires:       %{name} = %{version}
-Requires(postun):coreutils
-Requires(postun):pam
-Requires(postun):pam-config
+Requires(postun): coreutils
+Requires(postun): pam
+Requires(postun): pam-config
 # on biarch platforms we need to have it before the call of pam-config
 Supplements:    modalias(usb:v045Ep00BBd*dc*dsc*dp*ic*isc*ip*)
 Supplements:    modalias(usb:v045Ep00BCd*dc*dsc*dp*ic*isc*ip*)

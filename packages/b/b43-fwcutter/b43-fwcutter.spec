@@ -1,7 +1,7 @@
 #
 # spec file for package b43-fwcutter
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,8 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
+%{!?_firmwaredir: %global _firmwaredir /lib/firmware}
 
 Name:           b43-fwcutter
 Version:        019

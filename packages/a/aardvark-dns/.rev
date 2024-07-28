@@ -71,4 +71,14 @@
     <comment></comment>
     <requestid>1178326</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>ae5aac0e54f1066177a3a85a93273e83</srcmd5>
+    <version>1.11.0</version>
+    <time>1722179932</time>
+    <user>dimstar_suse</user>
+    <comment>rust &gt;= 1.70 is required to build more recent versions of this
+package. Also, BuildRequire cargo+rust to prevent conflicts with
+`cargo-packaging`. (forwarded request 1189724 from danishprakash)</comment>
+    <requestid>1189747</requestid>
+  </revision>
 </revisionlist>

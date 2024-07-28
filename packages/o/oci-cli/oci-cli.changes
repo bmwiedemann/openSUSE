@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jul 25 10:16:22 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 3.44.3
+  * Support for calling Oracle Cloud Infrastructure services in the me-abudhabi-2 region
+- Refresh patches for new version
+  * oc_relax-python-depends.patch
+- Update BuildRequires and Requires from setup.py
+
+-------------------------------------------------------------------
 Wed Jul 17 13:27:41 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 3.44.2

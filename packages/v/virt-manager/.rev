@@ -2046,4 +2046,12 @@
     <comment>Adjust detection for SUSE Linux Micro 6.0 - bsc#1227116</comment>
     <requestid>1184907</requestid>
   </revision>
+  <revision rev="259" vrev="25">
+    <srcmd5>c129629f602fc6a737b1df0b3be5227c</srcmd5>
+    <version>4.1.0</version>
+    <time>1722179929</time>
+    <user>dimstar_suse</user>
+    <comment>Fix for bsc#228227 - libvirt missing default hyperv options causes windows guest performance degredation.</comment>
+    <requestid>1189664</requestid>
+  </revision>
 </revisionlist>

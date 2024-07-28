@@ -1,6 +1,12 @@
 From: Jiri Slaby <jslaby@suse.cz>
+Date: Tue, 12 Mar 2024 09:49:14 +0100
 Subject: kni: fix build with Linux 6.8
-Patch-mainline: submitted to dev@dpdk.org, <20240312084914.92056-1-jslaby@suse.cz>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Git-repo: git://dpdk.org/dpdk-stable
+Git-commit: 15658afda05f50e69805b891ebb4d2d5c1966d44
+Patch-mainline: yes
 References: kernel 6.8
 
 strlcpy() was removed in commit d26270061ae6 (string: Remove strlcpy()), use
@@ -10,14 +16,20 @@ The patches fixes this:
 kernel/linux/kni/kni_net.c: In function ‘kni_get_drvinfo’:
 kernel/linux/kni/kni_net.c:835:9: error: implicit declaration of function ‘strlcpy’; did you mean ‘strscpy’?
 
+Intended esp. for stable/22.11. It should go wherever kni is still in
+the tree.
+
 Signed-off-by: Jiri Slaby <jslaby@suse.cz>
+Acked-by: Luca Boccassi <bluca@debian.org>
 ---
- kernel/linux/kni/kni_net.c |    4 ++--
+ kernel/linux/kni/kni_net.c | 4 ++--
  1 file changed, 2 insertions(+), 2 deletions(-)
 
+diff --git a/kernel/linux/kni/kni_net.c b/kernel/linux/kni/kni_net.c
+index 779ee345..c115a728 100644
 --- a/kernel/linux/kni/kni_net.c
 +++ b/kernel/linux/kni/kni_net.c
-@@ -832,8 +832,8 @@ static const struct net_device_ops kni_n
+@@ -832,8 +832,8 @@ static const struct net_device_ops kni_net_netdev_ops = {
  static void kni_get_drvinfo(struct net_device *dev,
  			    struct ethtool_drvinfo *info)
  {
@@ -28,3 +40,6 @@ Signed-off-by: Jiri Slaby <jslaby@suse.cz>
  }
  
  static const struct ethtool_ops kni_net_ethtool_ops = {
+-- 
+2.45.2
+

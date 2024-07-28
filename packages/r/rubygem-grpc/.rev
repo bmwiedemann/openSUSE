@@ -68,4 +68,13 @@
 - track series file to make it easier to update patches</comment>
     <requestid>1173496</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>f9993ed2923957afc28049d493e82723</srcmd5>
+    <version>1.63.0</version>
+    <time>1722179935</time>
+    <user>dimstar_suse</user>
+    <comment>- Added gcc14.patch dont hard enforce those errors until upstream
+  has fixed them</comment>
+    <requestid>1189785</requestid>
+  </revision>
 </revisionlist>

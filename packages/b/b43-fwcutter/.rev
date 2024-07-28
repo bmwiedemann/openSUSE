@@ -239,4 +239,12 @@ Kernels &gt; 3.1 with newer Broadcom hardware require this. (forwarded request 1
     <comment></comment>
     <requestid>888622</requestid>
   </revision>
+  <revision rev="33" vrev="6">
+    <srcmd5>d90ea044610e4716bef0e5602101d775</srcmd5>
+    <version>019</version>
+    <time>1722179952</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1189812</requestid>
+  </revision>
 </revisionlist>

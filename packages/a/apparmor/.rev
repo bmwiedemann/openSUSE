@@ -2852,4 +2852,31 @@ This SR adds two more fixes. Especially teardown-unconfined.diff makes this SR a
   rpcd_witness (boo#1225811) (forwarded request 1183249 from cboltz)</comment>
     <requestid>1183251</requestid>
   </revision>
+  <revision rev="214" vrev="1">
+    <srcmd5>01fac8975ef6e1b4e57c1be8cb833cd4</srcmd5>
+    <version>4.0.2</version>
+    <time>1722179931</time>
+    <user>dimstar_suse</user>
+    <comment>- update to AppArmor 4.0.2
+  - bugfix release with lots of fixes in all areas
+  - add new userns profiles for balena-etcher, chromium and wike
+  - see https://gitlab.com/apparmor/apparmor/-/wikis/Release_Notes_4.0.2
+    for the detailed upstream changelog
+- drop upstream(ed) patches:
+  - aa-remove-unknown-fix-unconfined.diff
+  - logprof-mount-empty-source.diff
+  - plasmashell.diff
+  - sampa-rpcd-witness.diff
+  - sddm-xauth.diff
+  - teardown-unconfined.diff
+  - test-aa-notify.diff
+  - tools-fix-redefinition.diff
+  - utils-relax-mount-rules-2.diff
+  - utils-relax-mount-rules.diff
+- refresh GPG key (was expired)
+
+
+Note: I checked the GPG signature with both the expired and the refreshed key, and it validated with both. (forwarded request 1189675 from cboltz)</comment>
+    <requestid>1189676</requestid>
+  </revision>
 </revisionlist>

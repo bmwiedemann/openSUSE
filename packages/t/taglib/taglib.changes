@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jul 25 09:39:42 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.1:
+  * Fix aborting when _GLIBCXX_ASSERTIONS are enabled.
+  * Fall back to utf8cpp header detection in the case that its
+    CMake configuration is removed.
+  * Improve compatibility with the SWIG interface compiler.
+  * Build system fixes for testing without bindings, Emscripten
+    and Illumos.
+  * C bindings: Fix setting UTF-8 encoded property values.
+  * Windows: Fix opening long paths.
+
+-------------------------------------------------------------------
 Wed May  8 12:02:24 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - USe %autosetup macro: allows us to eliminate usage of
@@ -186,7 +199,7 @@ Thu Mar 18 17:18:24 CET 2021 - tiwai@suse.de
 -------------------------------------------------------------------
 Fri Mar 12 22:24:46 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
-- reference download url of tarball 
+- reference download url of tarball
 
 -------------------------------------------------------------------
 Tue Feb 16 18:27:09 UTC 2021 - Jonas Kvinge <jonaski@opensuse.org>
@@ -316,7 +329,7 @@ Tue Nov 13 22:29:57 UTC 2018 - Jonas Kvinge <jonas@jkvinge.net>
 Wed Jun  6 08:38:38 UTC 2018 - kbabioch@suse.com
 
 - Added taglib-CVE-2018-11439.patch: Fix an out-of-bounds read when loading
-  invalid ogg flac files (CVE-2018-11439, bsc#1096180). 
+  invalid ogg flac files (CVE-2018-11439, bsc#1096180).
 - Applied spec-cleaner to specfile
 
 -------------------------------------------------------------------
@@ -402,22 +415,22 @@ Sat Jan  2 17:06:39 UTC 2016 - mpluskal@suse.com
   * Added new options to the tagwriter example.
   * Added support for ID3v2 ETCO and SYLT frames.
   * Added support for album artist in PropertyMap API of MP4 files.
-  * Added support for embedded frames in ID3v2 CHAP and CTOC 
+  * Added support for embedded frames in ID3v2 CHAP and CTOC
     frames.
   * Added support for AIFF-C files.
   * Better handling of duplicate ID3v2 tags in MPEG files.
   * Allowed generating taglib.pc on Windows.
   * Added ZLIB_SOURCE build option.
-  * Fixed backwards-incompatible change in TagLib::String when 
+  * Fixed backwards-incompatible change in TagLib::String when
     constructing UTF16 strings.
   * Fixed crash when parsing certain FLAC files.
   * Fixed crash when encoding empty strings.
   * Fixed saving of certain XM files on OS X.
-  * Changed Xiph and APE generic getters to return 
+  * Changed Xiph and APE generic getters to return
     space-concatenated values.
-  * Fixed possible file corruptions when removing tags from WAV 
+  * Fixed possible file corruptions when removing tags from WAV
     files.
-  * Added support for MP4 files with 64-bit atoms in certain 64-bit 
+  * Added support for MP4 files with 64-bit atoms in certain 64-bit
     environments.
   * Prevented ID3v2 padding from being too large.
   * Fixed crash when parsing corrupted APE files.
@@ -438,13 +451,13 @@ Sat Jan  2 17:06:39 UTC 2016 - mpluskal@suse.com
   * Added support for reading the encoder information of WMA files.
   * Added support for reading the codec of WAV files.
   * Added support for multi channel WavPack files.
-  * Added support for reading the nominal bitrate of Ogg Speex 
+  * Added support for reading the nominal bitrate of Ogg Speex
     files.
   * Added support for VBR headers in MPEG files.
-  * Marked FLAC::File::streamInfoData() deprecated. It returns an 
+  * Marked FLAC::File::streamInfoData() deprecated. It returns an
     empty ByteVector.
   * Marked FLAC::File::streamLength() deprecated. It returns zero.
-  * Fixed possible file corruptions when adding an ID3v1 tag to 
+  * Fixed possible file corruptions when adding an ID3v1 tag to
     FLAC files.
   * Fixed self-assignment operator in some types.
   * Fixed extraction of MP4 tag keys with an empty list.

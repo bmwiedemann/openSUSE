@@ -51,11 +51,11 @@
 %define CATALINA_HOME /usr/share/tomcat6
 %define JAR_FILE changeHatValve.jar
 
-%define tarversion v4.0.1
-%define pyeggversion 4.0.1
+%define tarversion v4.0.2
+%define pyeggversion 4.0.2
 
 Name:           apparmor
-Version:        4.0.1
+Version:        4.0.2
 Release:        0
 Summary:        AppArmor userlevel parser utility
 License:        GPL-2.0-or-later
@@ -81,34 +81,6 @@ Patch6:         apache-extra-profile-include-if-exists.diff
 
 # add path for precompiled cache (only done/applied if precompiled_cache is enabled)
 Patch7:         apparmor-enable-precompiled-cache.diff
-
-# fix redefinition of _ in tools (merged upstream 2024-04-22 https://gitlab.com/apparmor/apparmor/-/merge_requests/1218)
-Patch10:        tools-fix-redefinition.diff
-
-# make test-aa-notify a bit more relaxed to allow different argparse wording on Leap 15.5 (merged upstream 2024-05-06 (4.0 and master) https://gitlab.com/apparmor/apparmor/-/merge_requests/1226)
-Patch11:        test-aa-notify.diff
-
-# Fix aa-remove-unknown for 'unconfined' profiles (merged upstream 2024-05-28 in 4.0 and master https://gitlab.com/apparmor/apparmor/-/merge_requests/1240)
-Patch12:        aa-remove-unknown-fix-unconfined.diff
-
-# Fix aa-teardown for 'unconfined' profiles (submitted upstream 2024-05-28 https://gitlab.com/apparmor/apparmor/-/merge_requests/1242)
-Patch13:        teardown-unconfined.diff
-
-# Relax handling of mount rules in utils to avoid errors when parsing valid profiles (both patches taken from upstream 4.0 branch 2024-05-28)
-Patch14:        utils-relax-mount-rules.diff
-Patch15:        utils-relax-mount-rules-2.diff
-
-# Fix QtWebEngineProcess path in plasmashell profile (merged upstream 2024-06-04 in 4.0 and master - https://gitlab.com/apparmor/apparmor/-/merge_requests/1248)
-Patch16:        plasmashell.diff
-
-# latest sddm uses yet another path for xauth (submitted upstream 2024-06-04 https://gitlab.com/apparmor/apparmor/-/merge_requests/1249)
-Patch17:        sddm-xauth.diff
-
-# utils MountRule: add support for quoted paths and empty source (master merged upstream 2024-06-11, 4.0 branch submitted upstream 2024-06-11 https://gitlab.com/apparmor/apparmor/-/merge_requests/1259)
-Patch18:        logprof-mount-empty-source.diff
-
-#  samba-dcerpcd: allow to execute rpcd_witness (submitted upstream 2024-06-08 https://gitlab.com/apparmor/apparmor/-/merge_requests/1256, packaged patch adjusted to match the packaged samba-rpcd profile)
-Patch19:        sampa-rpcd-witness.diff
 
 PreReq:         sed
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -377,16 +349,6 @@ mv -v profiles/apparmor.d/usr.lib.apache2.mpm-prefork.apache2 profiles/apparmor/
 %if %{with precompiled_cache}
 %patch -P 7
 %endif
-%patch -P 10 -p1
-%patch -P 11 -p1
-%patch -P 12 -p1
-%patch -P 13 -p1
-%patch -P 14 -p1
-%patch -P 15 -p1
-%patch -P 16 -p1
-%patch -P 17 -p1
-%patch -P 18 -p1
-%patch -P 19 -p1
 
 %build
 export SUSE_ASNEEDED=0
@@ -636,6 +598,7 @@ rm -fv %{buildroot}%{_libdir}/libapparmor.la
 %config(noreplace) %{_sysconfdir}/apparmor.d/Discord
 %config(noreplace) %{_sysconfdir}/apparmor.d/MongoDB_Compass
 %config(noreplace) %{_sysconfdir}/apparmor.d/QtWebEngineProcess
+%config(noreplace) %{_sysconfdir}/apparmor.d/balena-etcher
 %config(noreplace) %{_sysconfdir}/apparmor.d/brave
 %config(noreplace) %{_sysconfdir}/apparmor.d/buildah
 %config(noreplace) %{_sysconfdir}/apparmor.d/busybox
@@ -643,6 +606,7 @@ rm -fv %{buildroot}%{_libdir}/libapparmor.la
 %config(noreplace) %{_sysconfdir}/apparmor.d/ch-checkns
 %config(noreplace) %{_sysconfdir}/apparmor.d/ch-run
 %config(noreplace) %{_sysconfdir}/apparmor.d/chrome
+%config(noreplace) %{_sysconfdir}/apparmor.d/chromium
 %config(noreplace) %{_sysconfdir}/apparmor.d/code
 # exclude crun, podman and runc profiles until the updated container engines (including updated profile with "signal peer=runc") has arrived
 #config(noreplace) %{_sysconfdir}/apparmor.d/crun
@@ -734,6 +698,7 @@ rm -fv %{buildroot}%{_libdir}/libapparmor.la
 %config(noreplace) %{_sysconfdir}/apparmor.d/virtiofsd
 %config(noreplace) %{_sysconfdir}/apparmor.d/vivaldi-bin
 %config(noreplace) %{_sysconfdir}/apparmor.d/vpnns
+%config(noreplace) %{_sysconfdir}/apparmor.d/wike
 %config(noreplace) %{_sysconfdir}/apparmor.d/wpcom
 %config(noreplace) %{_sysconfdir}/apparmor.d/zgrep
 

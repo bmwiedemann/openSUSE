@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jul 26 11:42:55 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.2.2
+  * Removed an ``assert`` in ``exceptiongroup._formatting``
+    that caused compatibility issues with Sentry (#123)
+
+-------------------------------------------------------------------
 Sat Apr 20 14:08:38 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.2.1:

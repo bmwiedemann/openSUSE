@@ -26,7 +26,7 @@
 %endif
 
 Name:           python-apprise
-Version:        1.7.6
+Version:        1.8.1
 Release:        0
 Group:          Development/Libraries/Python
 Summary:        A simple wrapper to many popular notification services used today
@@ -37,8 +37,6 @@ Source99:       %{name}.rpmlintrc
 # PATCH-FIX-OPENSUSE fix-test_plugin_glib.patch -- import missing dbus
 Patch0:         fix-test_plugin_glib.patch
 %if 0%{?suse_version} <= 1500
-# PATCH-FIX-UPSTREAM apprise-pytest-session_mocker-removal.patch -- based on PR 757
-Patch10:        apprise-pytest-session_mocker-removal.patch
 BuildRequires:  %{python_module dataclasses}
 Requires:       python-dataclasses
 %endif
@@ -111,7 +109,7 @@ install -D -m 0644 -t %{buildroot}%{_mandir}/man1 packaging/man/apprise.1
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest -k 'not test_plugin_matrix_attachments_api_v2 and not test_apprise_attachment_truncate'
+%pytest -k 'not test_plugin_matrix_attachments_api_v2 and not test_apprise_attachment_truncate and not test_plugin_dbus'
 
 %pre
 %python_libalternatives_reset_alternative apprise

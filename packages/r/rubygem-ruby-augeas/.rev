@@ -31,4 +31,14 @@
     <comment></comment>
     <requestid>1178699</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>4bce5652c4189ce5c942eeb2a937fdf9</srcmd5>
+    <version>0.5.0</version>
+    <time>1722179936</time>
+    <user>dimstar_suse</user>
+    <comment>- Modify patch to also apply with -p1 COPYING.patch
+- Add gcc14.patch dont enforce the check until upstream can fix the
+  code</comment>
+    <requestid>1189788</requestid>
+  </revision>
 </revisionlist>

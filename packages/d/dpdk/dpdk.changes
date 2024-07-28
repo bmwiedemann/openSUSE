@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jul 24 06:25:38 UTC 2024 - Jiri Slaby <jslaby@suse.cz>
+
+- use %autopatch even for older distros, -M *is* supported there
+
+-------------------------------------------------------------------
+Tue Jul 16 08:47:23 UTC 2024 - Jiri Slaby <jslaby@suse.cz>
+
+- add kni-fix-build-with-Linux-6.10.patch to fix build against
+  kernel 6.8.
+- update kni-fix-build-with-Linux-6.8.patch -- it is upstream now.
+
+-------------------------------------------------------------------
 Thu Jul  4 20:27:14 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Drop leftover Sphinx doctrees to make package build reproducible

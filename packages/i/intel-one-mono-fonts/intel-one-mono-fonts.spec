@@ -1,7 +1,7 @@
 #
 # spec file for package intel-one-mono-fonts
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,17 +17,18 @@
 
 
 Name:           intel-one-mono-fonts
-Version:        1.3.0
+Version:        1.4.0
 Release:        0
 Summary:        An expressive monospaced font family
-License:        OFL-1.1
+License:        OFL-1.1-RFN
 Group:          System/X11/Fonts
 URL:            https://github.com/intel/intel-one-mono
-Source:         https://github.com/intel/intel-one-mono/releases/download/V%{version}/ttf.zip
+Source:         %{url}/releases/download/V%{version}/ttf.zip#/%{name}-%{version}.zip
 Source100:      https://raw.githubusercontent.com/intel/intel-one-mono/V%{version}/README.md
 BuildRequires:  fontpackages-devel
 BuildRequires:  unzip
 BuildArch:      noarch
+
 %reconfigure_fonts_prereq
 
 %description
@@ -41,23 +42,20 @@ coding errors. A panel of low-vision and legally blind developers
 provided feedback at each stage of design.
 
 %prep
-%autosetup -cT
-unzip -qq %{SOURCE0}
-cp %{S:100} .
+%autosetup -n ttf
 
 %build
 
 %install
-install -d %{buildroot}%{_ttfontsdir} %{buildroot}%{_docdir}/%{name} %{buildroot}%{_licensedir}/%{name}
-install -m644 ttf/*.ttf %{buildroot}%{_ttfontsdir}
-install -m644 %{S:100} %{buildroot}%{_docdir}/%{name}
-install -m644 ttf/OFL.txt %{buildroot}%{_licensedir}/%{name}/LICENSE.md
+cp %{S:100} .
+mkdir -p %{buildroot}%{_ttfontsdir}
+install -m644 *.ttf %{buildroot}%{_ttfontsdir}
 
 %reconfigure_fonts_scriptlets
 
 %files
 %doc README.md
-%license LICENSE.md
+%license OFL.txt
 %{_ttfontsdir}
 
 %changelog

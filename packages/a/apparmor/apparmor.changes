@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Jul 24 16:54:18 UTC 2024 - Christian Boltz <suse-beta@cboltz.de>
+
+- update to AppArmor 4.0.2
+  - bugfix release with lots of fixes in all areas
+  - add new userns profiles for balena-etcher, chromium and wike
+  - see https://gitlab.com/apparmor/apparmor/-/wikis/Release_Notes_4.0.2
+    for the detailed upstream changelog
+- drop upstream(ed) patches:
+  - aa-remove-unknown-fix-unconfined.diff
+  - logprof-mount-empty-source.diff
+  - plasmashell.diff
+  - sampa-rpcd-witness.diff
+  - sddm-xauth.diff
+  - teardown-unconfined.diff
+  - test-aa-notify.diff
+  - tools-fix-redefinition.diff
+  - utils-relax-mount-rules-2.diff
+  - utils-relax-mount-rules.diff
+- refresh GPG key (was expired)
+
+-------------------------------------------------------------------
 Tue Jun 25 19:40:41 UTC 2024 - Christian Boltz <suse-beta@cboltz.de>
 
 - add sampa-rpcd-witness.diff: allow samba-dcerpcd to execute

@@ -27,7 +27,7 @@
 %bcond_with tests
 %endif
 Name:           taglib%{psuffix}
-Version:        2.0
+Version:        2.0.1
 Release:        0
 Summary:        Audio Meta-Data Library
 License:        LGPL-2.1-or-later AND MPL-1.1

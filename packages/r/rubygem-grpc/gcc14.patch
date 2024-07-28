@@ -1,0 +1,12 @@
+Index: grpc/src/ruby/ext/grpc/extconf.rb
+===================================================================
+--- grpc.orig/src/ruby/ext/grpc/extconf.rb
++++ grpc/src/ruby/ext/grpc/extconf.rb
+@@ -208,6 +208,7 @@ $CFLAGS << ' -std=c11 '
+ $CFLAGS << ' -Wall '
+ $CFLAGS << ' -Wextra '
+ $CFLAGS << ' -pedantic '
++$CFLAGS << ' -Wno-error=incompatible-pointer-types '
+ $LDFLAGS << ' -lgrpc '
+ 
+ output = File.join('grpc', 'grpc_c')

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Jul 26 13:11:32 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Added gcc14.patch 
+  dont error our because of missing returns
+
+-------------------------------------------------------------------
+Fri Jul 26 13:01:16 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- New upstream release 2.2.7.3, no changelog found
+
+-------------------------------------------------------------------
+Tue Nov 14 15:29:20 UTC 2023 - Dan Čermák <dan.cermak@posteo.net>
+
+- New upstream release 2.2.7.1, no changelog found
+
+-------------------------------------------------------------------
 Fri Oct 28 05:04:40 UTC 2022 - Stephan Kulow <coolo@suse.com>
 
 updated to version 2.2.7

@@ -1,7 +1,7 @@
 #
 # spec file for package python-pure-eval
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %{?sle15_python_module_pythons}
 Name:           python-pure-eval
-Version:        0.2.2
+Version:        0.2.3
 Release:        0
 Summary:        Safely evaluate AST nodes without side effects
 License:        MIT

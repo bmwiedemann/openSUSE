@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-rdiscount
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-rdiscount
-Version:        2.2.7
+Version:        2.2.7.3
 Release:        0
 %define mod_name rdiscount
 %define mod_full_name %{mod_name}-%{version}
@@ -36,31 +36,37 @@ Conflicts:      ruby = 1.9.2
 # translated by gem2rpm
 BuildRequires:  ruby-devel > 1.9.2
 # /MANUAL
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  ruby-macros >= 5
 BuildRequires:  %{rubydevel}
 BuildRequires:  %{rubygem gem2rpm}
-BuildRequires:  ruby-macros >= 5
 BuildRequires:  update-alternatives
 URL:            http://dafoster.net/projects/rdiscount/
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        rubygem-rdiscount-rpmlintrc
-Source2:        gem2rpm.yml
+Source2:        series
+Source3:        gem2rpm.yml
+# MANUAL
+Patch0:         gcc14.patch
+# /MANUAL
 Summary:        Fast Implementation of Gruber's Markdown in C
 License:        BSD-3-Clause
-Group:          Development/Languages/Ruby
 PreReq:         update-alternatives
 
 %description
 Fast Implementation of Gruber's Markdown in C.
 
 %prep
+%gem_unpack
+%patch -P 0 -p1
+find -type f -print0 | xargs -0 touch -r %{S:0}
+%gem_build
 
 %build
 
 %install
 %gem_install \
   --symlink-binaries \
-  --doc-files="COPYING README.markdown" \
+  --doc-files="CHANGELOG.md COPYING README.markdown" \
   -f
 %gem_cleanup
 

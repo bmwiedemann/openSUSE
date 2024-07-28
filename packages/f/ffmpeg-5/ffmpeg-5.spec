@@ -17,9 +17,6 @@
 
 
 %define flavor @BUILD_FLAVOR@%{nil}
-#
-# preamble is present twice, watch out
-#
 %if "%{flavor}" != "ffmpeg-5-mini"
 
 # Create proper conflicts to make sure we require all from one version
@@ -91,10 +88,8 @@ Release:        0
 Summary:        Set of libraries for working with various multimedia formats
 License:        GPL-3.0-or-later
 Group:          Productivity/Multimedia/Video/Editors and Convertors
-URL:            https://ffmpeg.org/
-
-#Freshcode-URL:    http://freshcode.club/projects/ffmpeg
 #Git-Clone:     git://source.ffmpeg.org/ffmpeg
+URL:            https://ffmpeg.org/
 Source:         https://www.ffmpeg.org/releases/%_name-%version.tar.xz
 Source2:        https://www.ffmpeg.org/releases/%_name-%version.tar.xz.asc
 Source3:        ffmpeg-5-rpmlintrc
@@ -104,7 +99,6 @@ Source6:        ffmpeg-dlopen-headers.tar.xz
 Source92:       ffmpeg_get_dlopen_headers.sh
 Source98:       http://ffmpeg.org/ffmpeg-devel.asc#/ffmpeg-5.keyring
 Source99:       baselibs.conf
-
 Patch1:         ffmpeg-arm6l.diff
 Patch2:         ffmpeg-new-coder-errors.diff
 Patch3:         ffmpeg-codec-choice.diff
@@ -129,6 +123,11 @@ Patch97:        ffmpeg-CVE-2023-51793.patch
 Patch98:        ffmpeg-Templatify-ff_gaussian_blur-and-ff-function.patch
 Patch99:        ffmpeg-CVE-2023-50009.patch
 Patch100:       ffmpeg-CVE-2023-50010.patch
+Patch101:       ffmpeg-5-CVE-2024-32228.patch
+Patch102:       ffmpeg-5-CVE-2024-32230.patch
+#
+# preamble is present twice, watch out
+#
 %if %{with amf_sdk}
 BuildRequires:  AMF-devel
 %endif
@@ -856,14 +855,15 @@ Patch17:        0001-avfilter-af_stereowiden-Check-length.patch
 Patch90:        ffmpeg-chromium.patch
 Patch91:        ffmpeg-dlopen-openh264.patch
 Patch93:        soname.diff
-# PATCH-FIX-UPSTREAM ffmpeg-CVE-2023-50007.patch CVE-2023-50007 bsc#1223253 qzhao@suse.com -- Fix crash with EOF handling.
 Patch94:        ffmpeg-CVE-2023-50007.patch
-# PATCH-FIX-UPSTREAM ffmpeg-CVE-2023-50008.patch CVE-2023-50008 bsc#1223254 qzhao@suse.com -- Fix memory leaks.
 Patch95:        ffmpeg-CVE-2023-50008.patch
-# PATCH-FIX-UPSTREAM ffmpeg-CVE-2023-49502.patch CVE-2023-49502 bsc#1223235 qzhao@suse.com -- Account for chroma sub-sampling in min size calculation.
 Patch96:        ffmpeg-CVE-2023-49502.patch
-# PATCH-FIX-UPSTREAM ffmpeg-CVE-2023-51793.patch CVE-2023-51793 bsc#1223272 qzhao@suse.com -- Fix odd height handling.
 Patch97:        ffmpeg-CVE-2023-51793.patch
+Patch98:        ffmpeg-Templatify-ff_gaussian_blur-and-ff-function.patch
+Patch99:        ffmpeg-CVE-2023-50009.patch
+Patch100:       ffmpeg-CVE-2023-50010.patch
+Patch101:       ffmpeg-5-CVE-2024-32228.patch
+Patch102:       ffmpeg-5-CVE-2024-32230.patch
 BuildRequires:  c_compiler
 Requires:       this-is-only-for-build-envs
 

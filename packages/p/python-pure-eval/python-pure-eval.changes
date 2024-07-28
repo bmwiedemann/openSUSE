@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Jul 25 14:21:50 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.2.3
+  * fix warning in test_cannot_subscript
+  * add __version__ to __all__
+  * test 3.13
+  * Specify exports in `__all__` to prevent `pyright` errors
+  * Explicitly remove the ctx attribute in copy_ast_without_context
+  * Fix compatibility of check_copy_ast_without_context with Py 3.13b1
+  * Check for __delete__ to detect data descriptors,
+    as in https://github.com/python/cpython/pull/104517/files
+  * fix job name
+  * fix main branch in GHA
+  * Update Python classifiers
+  * Update release script
+  * manual coveralls
+  * GHAs v4
+  * test 3.12
+  * 3.11
+
+-------------------------------------------------------------------
 Fri Apr 21 12:30:05 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)

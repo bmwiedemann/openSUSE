@@ -653,4 +653,19 @@
     <comment></comment>
     <requestid>1188556</requestid>
   </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>274c7802a49cb3bc5b14bf5e66fcf6b9</srcmd5>
+    <version>3.44.3</version>
+    <time>1722179960</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.44.3
+
+* Support for calling Oracle Cloud Infrastructure services in the me-abudhabi-2 region
+- Refresh patches for new version
+  * oc_relax-python-depends.patch
+- Update BuildRequires and Requires from setup.py
+
+(🤖: Submission of oci-cli via https://src.opensuse.org/pool/oci-cli/pulls/3 by glaubitz)</comment>
+    <requestid>1189831</requestid>
+  </revision>
 </revisionlist>

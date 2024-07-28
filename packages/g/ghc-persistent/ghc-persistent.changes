@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jul 19 00:45:58 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update persistent to version 2.14.6.2.
+  ## 2.14.6.2
+
+  * [#1536](https://github.com/yesodweb/persistent/pull/1536/)
+      * Build with GHC 9.10
+
+-------------------------------------------------------------------
 Tue Mar 12 15:08:38 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Drop obsolete 'drop-dependency-on-empty-attoparsec-aeson-library.patch'.
