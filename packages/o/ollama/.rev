@@ -146,4 +146,22 @@
     <comment></comment>
     <requestid>1189591</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>ccd31114e7ab10648c96270f5c2d63b4</srcmd5>
+    <version>0.3.0</version>
+    <time>1722180022</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.3.0:
+  * Ollama now supports tool calling with popular models such
+    as Llama 3.1. This enables a model to answer a given prompt
+    using tool(s) it knows about, making it possible for models to
+    perform more complex tasks or interact with the outside world.
+  * New models:
+    ~ Llama 3.1
+    ~ Mistral Large 2
+    ~ Firefunction v2
+    ~ Llama-3-Groq-Tool-Use
+  * Fixed duplicate error message when running ollama create</comment>
+    <requestid>1189982</requestid>
+  </revision>
 </revisionlist>
