@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jul 23 09:48:00 UTC 2024 - Sai Karthik Karra <kskarthik@disroot.org>
+
+- spec: Add missing runtime dependency at-spi2-core 
+
+-------------------------------------------------------------------
 Wed Jul 17 10:37:58 UTC 2024 - Sai Karthik Karra <kskarthik@disroot.org>
 
 - Add missing runtime dependency libgthread-2_0-0 which

@@ -47,6 +47,7 @@ Requires:       libfixposix4
 Requires:       libwebkit2gtk-4_1-0
 Requires:       xclip
 Requires:       libgthread-2_0-0
+Requires:       at-spi2-core
 
 %description
 Nyxt is a keyboard-oriented, extensible web-browser designed for power users.
