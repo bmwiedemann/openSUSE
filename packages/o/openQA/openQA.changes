@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Jul 27 09:14:42 UTC 2024 - okurz@suse.com
+
+- Update to version 4.6.1722030966.ff00eea0:
+  * Allow configure-web-proxy to use a custom port
+  * Revert "Allow configure-web-proxy to use a custom port"
+  * Allow configure-web-proxy to use a custom port
+  * Bump datatables.net-bs5 from 2.0.8 to 2.1.2
+  * t: Sort external+internal imports in full-stack.t
+
+-------------------------------------------------------------------
 Thu Jul 25 01:14:39 UTC 2024 - okurz@suse.com
 
 - Update to version 4.6.1721742803.51f9636c:
