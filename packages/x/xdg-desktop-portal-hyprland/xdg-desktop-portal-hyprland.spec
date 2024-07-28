@@ -19,14 +19,13 @@
 %global __builder ninja
 
 Name:           xdg-desktop-portal-hyprland
-Version:        1.3.2
+Version:        1.3.3
 Release:        0
 Summary:        Extended xdg-desktop-portal backend for Hyprland
 License:        MIT
 Group:          System/Libraries
 URL:            https://github.com/hyprwm/xdg-desktop-portal-hyprland
 Source0:        https://github.com/hyprwm/xdg-desktop-portal-hyprland/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Patch1:         https://github.com/hyprwm/xdg-desktop-portal-hyprland/commit/c5b30938710d6c599f3f5cd99a3ffac35381fb0f.patch#/fix-compilation-with-pw.patch
 BuildRequires:  cmake
 # Seems some of the C and CXX flags are CLANG specific
 BuildRequires:  clang
@@ -59,7 +58,7 @@ BuildRequires:  pkgconfig(wayland-protocols) >= 1.24
 BuildRequires:  pkgconfig(wlroots) >= 0.17.0
 
 # Screencasting won't work without pipewire, but it's not a hard dependency.
-Recommends:     pipewire >= 0.3.41
+Recommends:     pipewire >= 1.1.18
 
 # Required since the picker uses qt wayland.
 # Not a strict requirement as the portal will fallback to slurp
