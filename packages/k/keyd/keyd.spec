@@ -1,7 +1,7 @@
 #
 # spec file for package keyd
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %global libinput_overrides %{_sysconfdir}/libinput/local-overrides.quirks
 Name:           keyd
-Version:        2.4.3
+Version:        2.5.0
 Release:        0
 Summary:        A key remapping daemon for linux
 License:        MIT
@@ -26,8 +26,8 @@ URL:            https://github.com/rvaiya/keyd
 Source:         %{url}/archive/refs/tags/v%{version}.tar.gz#/%{name}-v%{version}.tar.gz
 BuildRequires:  gcc
 Requires:       python3-xlib
-Requires(postun):sed
-Requires(postun):shadow
+Requires(postun): sed
+Requires(postun): shadow
 Requires(pre):  shadow
 %systemd_ordering
 
@@ -43,13 +43,15 @@ which remaps keys using kernel level input primitives (evdev, uinput).
 %autosetup
 
 %build
-%make_build
+# fix default prefix in Makefile being /usr/local
+%make_build PREFIX=%{_prefix}
 
 %install
 install -m755 -d %{buildroot}%{_bindir} %{buildroot}%{_datadir}/%{name}/layouts %{buildroot}%{_mandir}/man1 %{buildroot}%{_unitdir}
 install -m755 bin/* %{buildroot}%{_bindir}
 install -m644 data/keyd.compose %{buildroot}%{_datadir}/%{name}
 install -m644 layouts/* %{buildroot}%{_datadir}/%{name}/layouts
+cp -r data/gnome-* %{buildroot}%{_datadir}/%{name}
 install -m644 data/*.1.gz %{buildroot}%{_mandir}/man1/
 install -m644 %{name}.service %{buildroot}%{_unitdir}
 
