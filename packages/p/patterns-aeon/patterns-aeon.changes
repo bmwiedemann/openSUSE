@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jul 27 14:40:01 UTC 2024 - Richard Brown <rbrown@suse.com>
+
+- Add libinput-udev, needed to fully support wacom tablets 
+
+-------------------------------------------------------------------
 Tue Jul 23 09:03:23 UTC 2024 - Richard Brown <rbrown@suse.com>
 
 - Restore tpm2.0-abrmd, needed by tpm2_getcap

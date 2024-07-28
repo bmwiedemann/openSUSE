@@ -401,6 +401,9 @@ Requires:       bluez-obexd
 ### Support CIFS mounting via mount boo#1216138
 Requires:       cifs-utils
 
+### Support wacom tablets
+Requires:       libinput-udev
+
 %description base
 This is the openSUSE Aeon base system. It contains only fully working immutable desktop system.
 

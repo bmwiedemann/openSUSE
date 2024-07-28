@@ -108,4 +108,12 @@
 </comment>
     <requestid>1189810</requestid>
   </revision>
+  <revision rev="14" vrev="14">
+    <srcmd5>5e7ff9bc32272be569831349e6bce4c5</srcmd5>
+    <version>5.0</version>
+    <time>1722180007</time>
+    <user>dimstar_suse</user>
+    <comment>- Add libinput-udev, needed to fully support wacom tablets</comment>
+    <requestid>1189913</requestid>
+  </revision>
 </revisionlist>
