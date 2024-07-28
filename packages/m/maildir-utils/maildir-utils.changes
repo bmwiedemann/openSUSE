@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Jul 28 06:44:23 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.12.6:
+  * improved documentation: man-pages, mu4e reference manual, README
+  * new function mu4e-save-message, to save a copy of the message at
+    point
+  * reduce logging a bit
+  * fix mu4e-compose-pre-hook which broke with the 1.12.5 changes
+  * fix bookmark support (bookmark-make-record-function)
+
+-------------------------------------------------------------------
 Fri May  3 20:52:36 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.12.5:
