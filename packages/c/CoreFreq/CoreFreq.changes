@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Sat Jul 27 11:08:30 UTC 2024 - Michael Pujos <pujos.michael@gmail.com>
+
+- update to 1.98.0
+  * [Build]
+    - Change dkms configuration to install into /usr/bin/
+    - Solved compilation with Fedora using RHEL MINOR version number 99
+    - [CR] Fixed some compilation warnings
+    - [CR] Fix memory allocation in kernel pages for the SysGate
+    - Workaround to musl change in basename (#494)
+    - aarch64: Build with Redhat RHEL version 9
+    - [CR] x86_64: Prevent array size overflow
+    - dkms and ckms configuration files upgraded to version 1.98
+  * [Intel]
+    - [Raptor Lake] Adding the HB DID of i7-14700K' IMC
+    - Mitigation mechanism: GDS_NO; RFDS_NO; MONITOR_MITG_NO
+    - Apply some SDM Documentation Changes
+    - [MTL] Fix CMD Stretch bit range width
+    - Added method CLOCK_FLEX_MAX with Xeon's Nehalem & Core 2
+        - Grants full MSR_FLEX_RATIO access to tested architectures:
+        - Alder Lake/S
+        - Tiger Lake/U
+        - Westmere/Gulftown
+    - Provides the overclocking bins with unlocked processors
+    - Query the Overclocking bit (OC) from Capabilities
+    - Adding technologies: VMD, HDCP, IPU and VPU
+        - Volume Management Device
+        - High-Bandwidth Digital Content Protection
+        - Image Processing Unit
+        - Vision Processing Unit
+    - Gaussian & Neural Accelerator - GNA technology
+    - [CR] Renamed Gemini Lake structures
+    - [Meteor Lake] Introducing memory controller decoder
+  * [AArch64]
+    - Optimizing the Vcore seek
+    - Workaround to Package discrete voltage: the highest Vcore
+    - Improving computation of Euclidean division
+    - Adjust frequency division in CNTFRQ and PMU counters
+    - Scale a frequency factor from the interval
+    - Refactoring the frequency ratios for decimal precision
+    - Compile dev_pm_opp_put if Kernel greater or equal 4.11
+    - Get the voltage core of CPUs from OPP
+  * [AMD]
+    - [Zen4][Raphael] Adding the EPYC 4004 Series
+    - [Zen4] Clarify Hawk Point and Phoenix-Refresh architectures
+    - [Family 19h] New voltage formula assigned to model 61h
+        - Vcore activated
+        - Voltage SoC deactivated
+    - [Zen] Prevent the calculation of negative temperature (issue #496)
+    - [Family 18h] Documented Hygon C86 7375
+    - [Family 19h] PStateDef specification: Adding VID[8] bit 32
+        - Specification of MSR HW_PSTATE_STATUS
+  * [CLI]
+    - aarch64: Display the state of the Memory Management Unit (MMU)
+    - aarch64: State of Instruction Cache Unit I$ and Data Cache Unit D$
+    - Added UI_RULER_MINIMUM & UI_RULER_MAXIMUM building constraints
+    - Revert "[CLI] Responsive ruler to architectural context"
+        - This reverts commit 4bc38d6.
+    - x86_64: AMD Boost and P-States redesigned
+    - [UI] Hardening missing console/terminal size
+    - Responsive ruler to architectural context
+    - x86_64: Make HDCP meaning string shorter
+  * [Driver]
+    - Created C2U_Enable as a parameter alias of C1U_Enable
+ 
+-------------------------------------------------------------------
 Fri May 17 15:14:08 UTC 2024 - Michael Pujos <pujos.michael@gmail.com>
 
 - fix dependency on kernel module that was not versioned 
