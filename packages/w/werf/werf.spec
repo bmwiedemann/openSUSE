@@ -19,7 +19,7 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           werf
-Version:        2.9.0
+Version:        2.9.1
 Release:        0
 Summary:        CLI for the Werf CI/CD system
 License:        Apache-2.0

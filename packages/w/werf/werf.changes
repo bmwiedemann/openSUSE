@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Jul 27 08:05:31 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.9.1:
+  * chore: release 2.9.1
+  * fix(deploy): panic on --synchronization=kubernetes://...
+  * chore(release): rollback 2 ea,stable
+  * chore(channels): bump 1.2, 2
+  * chore(release): 1.2 alpha, 2 alpha
+
+-------------------------------------------------------------------
 Mon Jul 22 18:27:52 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.9.0:
