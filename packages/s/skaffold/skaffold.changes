@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jul 24 17:43:15 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.13.1:
+  * New Features and Additions:
+    - feat: make ADC the default option for GCP authentication when
+      using go-containerregistry #9456
+  * Fixes:
+    - fix: send maxRetries property when it is specified by the
+      user in a cloud run job manifest #9475
+
+-------------------------------------------------------------------
 Wed Jul 10 08:04:39 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.13.0:
