@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jul 26 15:17:42 UTC 2024 - okurz@suse.com
+
+- Update to version 4.6.1722007055.0055b7d:
+  * Add support to configure sector sizes of HDD images
+  * Log output of git command
+  * Downgrade chromedriver to avoid broken version
+  * Remove obsolete check_needles.pl
+  * Rename variable "scriptdir" for clarification
+
+-------------------------------------------------------------------
 Wed Jul 17 14:29:11 UTC 2024 - okurz@suse.com
 
 - Update to version 4.6.1721226544.d45b609:
