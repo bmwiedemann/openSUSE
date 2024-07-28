@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 13.0.2
-%define short_version 13.0
+%define real_version 14.0.0
+%define short_version 14.0
 %define tar_name qt-creator-opensource-src
 %define tar_suffix %{nil}
 #
@@ -47,7 +47,7 @@ ExclusiveArch:  do_not_build
 %bcond_without docs
 
 Name:           %{pkgname_prefix}-creator
-Version:        13.0.2
+Version:        14.0.0
 Release:        0
 Summary:        Integrated Development Environment targeting Qt apps
 # src/plugins/cmakeprojectmanager/configmodelitemdelegate.* -> LGPL-2.1-only OR LGPL-3.0-only
@@ -242,6 +242,9 @@ rm -r %{buildroot}%{_datadir}/qtcreator/fonts
 %{_datadir}/qtcreator/generic-highlighter/
 %{_datadir}/qtcreator/glsl/
 %{_datadir}/qtcreator/indexer_preincludes/
+%{_datadir}/qtcreator/jsonschemas/
+%{_datadir}/qtcreator/lua/
+%{_datadir}/qtcreator/lua-plugins/
 %{_datadir}/qtcreator/modeleditor/
 %{_datadir}/qtcreator/package-manager/
 %{_datadir}/qtcreator/qml-type-descriptions/

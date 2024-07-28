@@ -1,4 +1,4 @@
-From 825a2399435bf4793f302dcffeeefd088b335655 Mon Sep 17 00:00:00 2001
+From d1ad6275b86760fe465a3f664c77db4acf1c44af Mon Sep 17 00:00:00 2001
 From: Christophe Marin <christophe@krop.fr>
 Date: Thu, 26 Oct 2023 21:03:47 +0200
 Subject: [PATCH] Disable some plugins
@@ -13,10 +13,10 @@ Subject: [PATCH] Disable some plugins
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/src/plugins/CMakeLists.txt b/src/plugins/CMakeLists.txt
-index 85de56b..9a3d7eb 100644
+index 423b17d..0d4432b 100644
 --- a/src/plugins/CMakeLists.txt
 +++ b/src/plugins/CMakeLists.txt
-@@ -9,7 +9,7 @@ add_subdirectory(helloworld)
+@@ -10,7 +10,7 @@ add_subdirectory(helloworld)
  add_subdirectory(imageviewer)
  add_subdirectory(marketplace)
  add_subdirectory(screenrecorder)
@@ -31,9 +31,9 @@ index 85de56b..9a3d7eb 100644
  add_subdirectory(python)
 -add_subdirectory(clangformat)
 +# add_subdirectory(clangformat)
+ add_subdirectory(cmakeprojectmanager)
  
  # Level 7:
- add_subdirectory(android)
 -- 
-2.44.0
+2.45.2
 
