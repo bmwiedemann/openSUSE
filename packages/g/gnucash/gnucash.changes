@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Fri Jul 26 20:32:32 UTC 2024 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- Update to 5.8
+  + Edit account to make it sub account under other account
+- Update to 5.7
+  + Bugfixes
+  + Save the Scheduled Transactions number of months
+  + Save the Scheduled Transaction divider position
+  + Move to blank transaction
+  + AutoComplete Only Considers Visible Transactions
+  + Reports calculating net worth incorrectly after stock split
+  + Failed import QIF investment
+  + option account selector fails to include appropriate hidden accounts.
+  + Cannot write a check over $1000
+  + Crashes when pasting a copied transaction
+  + Import Matcher (CSV) does not compute correctly the share amount based on
+    security price
+  + Deleting a transaction may trigger a crash
+  + Invoice register context menu issue
+  + Shortcut Ctrl-G does not work in the General Journal register for the
+    default date value
+  + Nullpointer exception in gnc_quote_source_s
+  + Crash when there is more than one unknown quote source for commodities
+  + Import Multi-split CSV can duplicate 'Notes' field from one transaction to
+    next
+  + GNUCash Immediately Exits on Startup
+  + Invalid free in gvalue_from_kvp_value()
+  + GnuCash re-opens to incorrect account window if there are transient tabs
+    present when closed.
+  + Stock Assistant closes with its New Account dialog
+  + RFE: Add Document Link for Payments to Owner Report
+- Drop gnucash-fix-qif-import.patch: merged upstream
+
+-------------------------------------------------------------------
 Tue May 21 08:58:50 UTC 2024 - Peter Conrad <conrad@quisquis.de>
 
 - Included upstream fix for broken qif import

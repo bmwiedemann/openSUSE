@@ -1076,4 +1076,12 @@
   * gnucash-fix-qif-import.patch</comment>
     <requestid>1176918</requestid>
   </revision>
+  <revision rev="107" vrev="1">
+    <srcmd5>667462ed18c2f1c7c03875ce874dc804</srcmd5>
+    <version>5.8</version>
+    <time>1722180003</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1189904</requestid>
+  </revision>
 </revisionlist>

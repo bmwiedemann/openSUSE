@@ -34,7 +34,7 @@
 %endif
 
 Name:           gnucash
-Version:        5.6
+Version:        5.8
 Release:        0
 Summary:        Personal Finance Manager
 License:        SUSE-GPL-2.0-with-openssl-exception OR SUSE-GPL-3.0-with-openssl-exception
@@ -48,7 +48,6 @@ Patch0:         gnucash-cpan-warning.patch
 # PATCH-FIX-UPSTREAM gnucash-libm.patch gh#gnucash/gnucash#632 dimstar@opensuse.org -- Link libm: gnucash uses e.g. log10 without explicitly requesting libm
 Patch1:         gnucash-libm.patch
 Patch2:         gnucash-4.1-fix-gtest-path.patch
-Patch3:         gnucash-fix-qif-import.patch
 
 BuildRequires:  cmake >= 3.14
 BuildRequires:  doxygen
@@ -212,8 +211,8 @@ rm %{buildroot}%{_docdir}/%{name}/LICENSE
 %if %{with python}
 %files -n python3-gnucash
 %{_datadir}/gnucash/python
-%dir %{python3_sitelib}/gnucash
-%{python3_sitelib}/gnucash
+%dir %{python3_sitearch}/gnucash
+%{python3_sitearch}/gnucash
 %endif
 
 %files devel
