@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jul 26 16:05:25 UTC 2024 - Martin Jambor <mjambor@suse.com>
+
+- Aded fakeroot-C99.patch to fix C99 violations which prevent building
+  with GCC 14.
+
+-------------------------------------------------------------------
 Sat Jun 29 21:06:15 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.35.1

@@ -1,0 +1,26 @@
+Index: fakeroot-1.35.1/communicate.c
+===================================================================
+--- fakeroot-1.35.1.orig/communicate.c
++++ fakeroot-1.35.1/communicate.c
+@@ -576,7 +576,7 @@ void send_get_fakem(struct fake_msg *buf
+                &fm,
+                sizeof(fm)-sizeof(fm.mtype),0,0);
+ 
+-      ptr = &fm;
++      ptr = (uint8_t*) &fm;
+       for (k=0; k<16; k++) {
+         magic_candidate = *(uint32_t*)&ptr[k];
+         if (magic_candidate == FAKEROOT_MAGIC_LE || magic_candidate == FAKEROOT_MAGIC_BE) {
+Index: fakeroot-1.35.1/faked.c
+===================================================================
+--- fakeroot-1.35.1.orig/faked.c
++++ fakeroot-1.35.1/faked.c
+@@ -1089,7 +1089,7 @@ void get_msg()
+   do {
+     r=msgrcv(msg_get,&fm,sizeof(struct fake_msg_buf),0,0);
+ 
+-    ptr = &fm;
++    ptr = (uint8_t*) &fm;
+     for (k=0; k<16; k++) {
+       magic_candidate = *(uint32_t*)&ptr[k];
+       if (magic_candidate == FAKEROOT_MAGIC_LE || magic_candidate == FAKEROOT_MAGIC_BE) {
