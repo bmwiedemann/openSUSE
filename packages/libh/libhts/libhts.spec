@@ -20,7 +20,7 @@
 %define htscodecsminversion 1.6.0
 
 Name:           libhts
-Version:        1.19
+Version:        1.20
 Release:        0
 %define   sonum 3
 Summary:        C library for high-throughput sequencing data formats

@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Mon Jul 15 12:17:55 UTC 2024 - jun wang <jgwang@suse.com>
+
+- Update to version 1.20
+  * When working on named files, bgzip now sets the modified and
+    access times of the output files it makes to match those of
+    the corresponding input
+  * It's now possible to use a -o option to specify the output
+    file name in bgzip
+  * Improved error faidx error messages
+  * Faster reading of SAM array (type "B") tags. These often turn
+    up in ONT and PacBio data
+  * Improved validity checking of base modification tags
+  * mpileup overlap removal now works where one read has a
+    deletion
+  * The S3 plugin can now find buckets via S3 access point aliases
+  * Added a --threads option (and -@ short option) to tabix
+  * tabix can now index Graph Alignment Format (GAF) files
+  * Security fix: Prevent possible heap overflow in
+    cram_encode_aux() on bad RG:Z tags
+  * Security fix: Prevent attempts to call a NULL pointer if
+    certain URL schemes are used in CRAM @SQ UR: tags
+  * Security fix: Fixed a bug where following certain AWS S3
+    redirects could downgrade the connection from TLS
+    (i.e. https://) to unencrypted http://. This could happen when
+    using path-based URLs and AWS_DEFAULT_REGION was set to a
+    region other that the one where the data was stored
+  * Fixed arithmetic overflow when loading very long references
+    for CRAM
+  * Fixed faidx and CRAM reference look-ups on compressed fasta
+    where the .fai index file was present, but the .gzi index of
+    compressed offsets was not
+  * Fixed BCF indexing on-the-fly bug which produced invalid
+    indexes when using multiple compression threads
+  * Ensure that pileup destructors are called by
+    bam_plp_destroy(), to prevent memory leaks
+  * Ensure on-the-fly index timestamps are always older than the
+    data file. Previously the files could be closed out of order,
+    leading to warnings being printed when using the index
+  * To prevent data corruption when reading (strictly invalid)
+    VCF files with duplicated FORMAT tags, all but the first copy
+    of the data associated with the tag are now dropped with a
+    warning
+  * Fixed a bug introduced in release 1.19 (PR #1689) which broke
+    variant record data if it tried to remove an over-long tag
+  * Changed error to warning when complaining about use of the CG
+    tag in SAM or CRAM files
+
+-------------------------------------------------------------------
 Wed Jan  3 01:40:50 UTC 2024 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 1.19
