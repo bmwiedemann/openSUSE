@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jul 27 08:05:55 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.64.1:
+  * Adding registry url discovery for Terragrunt Provider Cache
+    (#3299)
+
+-------------------------------------------------------------------
 Thu Jul 25 17:55:52 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.64.0:
