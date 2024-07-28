@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jul 28 08:43:11 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 2.3.1:
+  * (updated) VS Mode stronger recommendations for audio devices
+  * (fixed) Crash when JackTrip fails to connect using PLC
+  * (fixed) Sanity check for maximum UDP packet size
+
+-------------------------------------------------------------------
 Fri May 17 13:23:19 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Dropped intree library rtaudio
