@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jul 27 11:35:58 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 20240726T130844Z:
+  * trace: avoid aggregate statistics TX/RX with --all (#4998)
+  * Make trace stats more compact (#4999)
+
+-------------------------------------------------------------------
 Wed Jul 24 17:50:03 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 20240722T200249Z:
