@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Mac-PropertyList
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,14 @@
 
 %define cpan_name Mac-PropertyList
 Name:           perl-Mac-PropertyList
-Version:        1.504
+Version:        1.601.0
 Release:        0
+# 1.601 -> normalize -> 1.601.0
+%define cpan_version 1.601
 License:        Artistic-2.0
 Summary:        Work with Mac plists at a low level
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/B/BD/BDFOY/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/B/BR/BRIANDFOY/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
@@ -34,6 +36,28 @@ BuildRequires:  perl(XML::Entities)
 BuildRequires:  perl(parent)
 Requires:       perl(XML::Entities)
 Requires:       perl(parent)
+Provides:       perl(Mac::PropertyList) = %{version}
+Provides:       perl(Mac::PropertyList::Boolean)
+Provides:       perl(Mac::PropertyList::Container)
+Provides:       perl(Mac::PropertyList::Item)
+Provides:       perl(Mac::PropertyList::LineListSource)
+Provides:       perl(Mac::PropertyList::ReadBinary) = 1.505.0
+Provides:       perl(Mac::PropertyList::Scalar)
+Provides:       perl(Mac::PropertyList::Source)
+Provides:       perl(Mac::PropertyList::TextSource)
+Provides:       perl(Mac::PropertyList::WriteBinary) = 1.505.0
+Provides:       perl(Mac::PropertyList::array)
+Provides:       perl(Mac::PropertyList::data)
+Provides:       perl(Mac::PropertyList::date)
+Provides:       perl(Mac::PropertyList::dict)
+Provides:       perl(Mac::PropertyList::false)
+Provides:       perl(Mac::PropertyList::integer)
+Provides:       perl(Mac::PropertyList::real)
+Provides:       perl(Mac::PropertyList::string)
+Provides:       perl(Mac::PropertyList::true)
+Provides:       perl(Mac::PropertyList::uid)
+Provides:       perl(Mac::PropertyList::ustring)
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -58,7 +82,7 @@ Or, you can extend this module to handle those formats (and send a pull
 request).
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor

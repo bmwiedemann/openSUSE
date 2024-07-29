@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Jul 27 05:29:09 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.601.0 (1.601)
+   see /usr/share/doc/packages/perl-Mac-PropertyList/Changes
+
+  1.601 2024-07-27T00:58:50Z
+  	* changed default DTD header to use "Apple" instead of "Apple Computer"
+  	to match what XCode has been doing (Apple changed it's name in 2007).
+  	(GitHub #27).
+
+  1.505 2024-07-14T17:52:31Z
+  	* Don't read binary files in text mode, which has problems on Windows
+  	(from joz-k, GitHub #26)
+  	* Fix problem with negative integers in WriteBinary. They should
+  	always be longs.
+  	* First release to use GitHub Attestations (see README.pod)
+
+-------------------------------------------------------------------
 Sat Jul  9 03:07:07 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.504
