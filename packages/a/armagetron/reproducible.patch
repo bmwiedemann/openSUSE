@@ -1,0 +1,30 @@
+From bfdf023b82aafa258580251f4869784eb86f5f6e Mon Sep 17 00:00:00 2001
+From: "Bernhard M. Wiedemann" <bwiedemann@suse.de>
+Date: Sat, 20 Apr 2024 08:00:54 +0200
+Subject: [PATCH] Allow to override build date with SOURCE_DATE_EPOCH
+
+to make release builds reproducible.
+See https://reproducible-builds.org/ for why this is good
+and https://reproducible-builds.org/specs/source-date-epoch/
+for the definition of this variable.
+
+The previous code was added in commit b940783d0a38246fbf7326e9ccf625fd185c062f
+by Manuel Moos (@zmanuel)
+but only helped when running bootstrap.sh with a .git dir.
+However, release tarballs don't have a .git dir.
+
+This patch was done while working on reproducible builds for openSUSE.
+
+diff --git a/configure.ac b/configure.ac
+index acf8568e4..70e53c6c6 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -47,7 +47,7 @@ version=$VERSION
+ AC_SUBST(version)
+ 
+ source_date_epoch=SOURCE_DATE_EPOCH
+-test ${source_date_epoch} = SOURCE_DATE_EPOCH && source_date_epoch=`date +%s`
++test ${source_date_epoch} = SOURCE_DATE_EPOCH && source_date_epoch=${SOURCE_DATE_EPOCH:-`date +%s`}
+ AC_SUBST(source_date_epoch)
+ 
+ # determine date, following the epoch time if we can

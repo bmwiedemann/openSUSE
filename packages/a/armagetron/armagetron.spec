@@ -27,6 +27,8 @@ Group:          Amusements/Games/Action/Arcade
 URL:            https://www.armagetronad.org
 Source0:        https://launchpad.net/%{src_name}/%{series}/%{version}/+download/%{src_name}-%{version}.tbz
 Patch0:         armagetron-desktop-files-installdir.patch
+# PATCH-FIX-UPSTREAM: https://gitlab.com/armagetronad/armagetronad/-/merge_requests/162
+Patch1:         reproducible.patch
 BuildRequires:  gcc-c++
 BuildRequires:  libSDL_image-devel
 BuildRequires:  libpng-devel
