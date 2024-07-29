@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jul 29 12:54:45 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.1:
+  + Fix infinite loop when searching for available title in sync
+    conflict.
+
+-------------------------------------------------------------------
 Mon Mar 25 15:16:01 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 46.0:
