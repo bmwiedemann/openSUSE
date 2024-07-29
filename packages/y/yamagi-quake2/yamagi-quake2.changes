@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Sat Jul 27 17:10:23 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 8.40
+  * Implement `g_quick_weap`. If set to 1, both weapprev and
+    weapnext commands will count how many times they have been
+    called, making possible to skip weapons by quickly tapping one
+    of these keys.
+  * Fix `gl1_overbrightbits`, allowed values are now 0, 1, 2 and 4.
+  * Sort player skins case insensitive.
+  * Implement `cl_showspeed` to show the current player speed.
+  * Add texture filtering options to the video menu.
+  * Implement `cl_laseralpha` to control how transparent laser
+    beams are.
+  * Experimental support for SDL 3. Requires SDL 3.1.2.
+  * Reimplement multitexturing for the OpenGL 1.4 renderer.
+    Controlled by `gl1_multitexture`, enabled by default.
+  * Optimize dynamic lights and texture allocation in the
+    OpenGL 1.4 renderer.
+  * Implement gyro tightening for gamepads and joysticks.
+  * Support long player skin names.
+  - Add a very simple download filter. Files ending in .dll,
+    .dylib and .so are always filtered to prevent code injection.
+  * Don't load OpenAL and cURL libraries if thy are configured
+    with a full or relative path.
+  * Work around naggy help icons.
+  * Group draw call in GL1. This yields huge performance gains on
+    slow GPUs.
+
+-------------------------------------------------------------------
 Tue Feb 20 13:02:58 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
