@@ -191,4 +191,12 @@
     <comment>Update supermin to version 5.3.4</comment>
     <requestid>1187213</requestid>
   </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>089cd49ce98b134c709989cac582b33c</srcmd5>
+    <version>5.3.4</version>
+    <time>1722282841</time>
+    <user>dimstar_suse</user>
+    <comment>Fix for bsc#1228373 - supermin regression causes virt-inspector to fail</comment>
+    <requestid>1190315</requestid>
+  </revision>
 </revisionlist>

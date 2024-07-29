@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jul 29 10:16:35 MDT 2024 - carnold@suse.com
+
+- bsc#1228373 - supermin regression in Tumbleweed / Factory causes
+  virt-inspector to fail
+  add-rpm-database-location.patch
+- Drop disable-test-if-newer-ext2.patch
+
+-------------------------------------------------------------------
 Wed Jul 10 15:34:55 MDT 2024 - carnold@suse.com
 
 - Update to version 5.3.4 (jsc#PED-6305)

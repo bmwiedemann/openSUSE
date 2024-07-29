@@ -1,0 +1,12 @@
+References: bsc#1228373
+
+--- a/src/ph_rpm.ml
++++ b/src/ph_rpm.ml
+@@ -239,6 +239,7 @@ let rpm_package_name pkg =
+   rpm.name
+ 
+ let rpmdb_locations = [
++  "/usr/lib/sysimage/rpm/Packages.db";
+   "/usr/lib/sysimage/rpm/rpmdb.sqlite";
+   "/var/lib/rpm/rpmdb.sqlite";
+   "/var/lib/rpm/Packages"

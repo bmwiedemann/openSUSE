@@ -28,8 +28,8 @@ Source1:        https://download.libguestfs.org/supermin/5.3-development/supermi
 Source9:        supermin.keyring
 Patch30:        suse_release.patch
 Patch31:        supermin-kernel_version_compressed.patch
-Patch32:        disable-test-if-newer-ext2.patch
-Patch33:        detect-aarch64-kernel.patch
+Patch32:        detect-aarch64-kernel.patch
+Patch33:        add-rpm-database-location.patch
 BuildRequires:  augeas
 BuildRequires:  autoconf
 BuildRequires:  automake
