@@ -42,6 +42,7 @@ Patch11:        report-iface.patch
 Patch13:        arpwatch-exit.patch
 Patch14:        arp2ethers.patch
 Patch15:        arpwatch-3.4-include-time.patch
+Patch16:        arpwatch-gcc14.patch
 BuildRequires:  libpcap-devel
 BuildRequires:  postfix
 BuildRequires:  systemd-rpm-macros

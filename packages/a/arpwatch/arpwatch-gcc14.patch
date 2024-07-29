@@ -1,0 +1,13 @@
+Index: arpwatch-3.6/dns.c
+===================================================================
+--- arpwatch-3.6.orig/dns.c
++++ arpwatch-3.6/dns.c
+@@ -78,6 +78,8 @@ typedef union {
+ } querybuf;
+ #endif
+ 
++extern unsigned short _getshort(unsigned char*);
++
+ int
+ gethinfo(char *hostname, char *cpu, int cpulen, char *os, int oslen)
+ {
