@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Jul 19 05:30:08 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.1.1
+   see /usr/share/doc/packages/perl-Dancer2/Changes
+
+  1.1.1     2024-07-18 19:48:00-04:00 America/New_York
+      [ BUG FIXES ]
+      * GH #1712: Fix use of send_as in templates (Andy Beverley)
+      [ ENHANCEMENTS ]
+      * None
+      [ DOCUMENTATION ]
+      * PR #1706: Document missing logging hooks and log format option;
+        fix typo in logging test (Jason A. Crome)
+      [ DEPRECATED ]
+      * None
+      [ MISC ]
+      * None
+
+-------------------------------------------------------------------
 Thu Dec 14 03:07:50 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.1.0
