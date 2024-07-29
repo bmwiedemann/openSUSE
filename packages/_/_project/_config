@@ -1847,6 +1847,7 @@ BuildFlags: onlybuild:duktape
 BuildFlags: onlybuild:dummy-release
 BuildFlags: onlybuild:libdvdnav
 BuildFlags: onlybuild:logrotate
+BuildFlags: onlybuild:lttng-ust
 BuildFlags: onlybuild:dwz
 BuildFlags: onlybuild:dxvk
 BuildFlags: onlybuild:eglexternalplatform
@@ -1966,6 +1967,7 @@ BuildFlags: onlybuild:gssdp
 BuildFlags: onlybuild:gstreamer
 BuildFlags: onlybuild:gstreamer-plugins-bad
 BuildFlags: onlybuild:gstreamer-plugins-base
+BuildFlags: onlybuild:gstreamer-plugins-good
 BuildFlags: onlybuild:gstreamer-plugins-libav
 BuildFlags: onlybuild:gstreamer-plugins-ugly
 BuildFlags: onlybuild:gtk-doc
@@ -2100,6 +2102,7 @@ BuildFlags: onlybuild:libatomic_ops
 BuildFlags: onlybuild:libavc1394
 BuildFlags: onlybuild:libavif
 BuildFlags: onlybuild:libavtp
+BuildFlags: onlybuild:libb2
 BuildFlags: onlybuild:libbluray
 BuildFlags: onlybuild:libbpf
 BuildFlags: onlybuild:libbraille
@@ -2337,6 +2340,7 @@ BuildFlags: onlybuild:lzfse
 BuildFlags: onlybuild:lzip
 BuildFlags: onlybuild:lzo
 BuildFlags: onlybuild:m4
+BuildFlags: onlybuild:md4c
 BuildFlags: onlybuild:mailx
 BuildFlags: onlybuild:make
 BuildFlags: onlybuild:makedepend
@@ -2994,8 +2998,17 @@ BuildFlags: onlybuild:qemu
 BuildFlags: onlybuild:qhull
 BuildFlags: onlybuild:qml-autoreqprov
 BuildFlags: onlybuild:qmlpluginexports:qt5
+BuildFlags: onlybuild:qmlpluginexports:qt6
 BuildFlags: onlybuild:qrencode
 BuildFlags: onlybuild:qtdeclarative-imports-provides:qt5
+BuildFlags: onlybuild:qt6-macros
+BuildFlags: onlybuild:qt6-languageserver
+BuildFlags: onlybuild:qt6-tools
+BuildFlags: onlybuild:qt6-base
+BuildFlags: onlybuild:qt6-svg
+BuildFlags: onlybuild:qt6-declarative
+BuildFlags: onlybuild:qt6-shadertools
+BuildFlags: onlybuild:qt6-wayland
 BuildFlags: onlybuild:quota
 BuildFlags: onlybuild:rapidjson
 BuildFlags: onlybuild:raptor
@@ -3237,6 +3250,7 @@ BuildFlags: onlybuild:xauth
 BuildFlags: onlybuild:xbitmaps
 BuildFlags: onlybuild:xcb-proto
 BuildFlags: onlybuild:xcb-util
+BuildFlags: onlybuild:xcb-util-cursor
 BuildFlags: onlybuild:xcb-util-image
 BuildFlags: onlybuild:xcb-util-keysyms
 BuildFlags: onlybuild:xcb-util-renderutil
