@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jul 29 17:29:45 UTC 2024 - okurz@suse.com
+
+- Update to version 4.6.1722273351.abb9288:
+  * Avoid SVT-AV1 when FFmpeg 4 is installed
+  * video_stream: handle HID command confirmations
+  * Add support to configure sector sizes of HDD images
+  * Log output of git command
+  * Downgrade chromedriver to avoid broken version
+
+-------------------------------------------------------------------
 Fri Jul 26 15:17:42 UTC 2024 - okurz@suse.com
 
 - Update to version 4.6.1722007055.0055b7d:
