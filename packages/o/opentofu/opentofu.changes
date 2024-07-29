@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Jul 29 14:38:36 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.8.0:
+  * What's New?
+    - Early variable/locals evaluation
+    - Provider mocking in tofu test
+    - Resource overrides in tofu test
+    - Override files for OpenTofu: keeping compatibility
+    - Deprecation: use_legacy_workflow has been removed from the S3
+      backend-backend
+  See the launch post on our blog:
+  https://opentofu.org/blog/opentofu-1-8-0/
+  For all the features, see the detailed changelog:
+  https://github.com/opentofu/opentofu/blob/v1.8.0/CHANGELOG.md
+  You can find the full diff here:
+  https://github.com/opentofu/opentofu/compare/v1.7..v1.8.0
+
+-------------------------------------------------------------------
 Wed Jul 10 08:12:23 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.7.3:
