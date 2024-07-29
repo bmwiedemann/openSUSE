@@ -8000,8 +8000,11 @@ unsorted:
   - gstreamer-plugins-base-devel 
   - gstreamer-plugins-base-devel-32bit 
   - gstreamer-plugins-farstream 
+  - gstreamer-plugins-good-32bit 
   - gstreamer-plugins-good-extra 
+  - gstreamer-plugins-good-extra-32bit 
   - gstreamer-plugins-good-jack 
+  - gstreamer-plugins-good-jack-32bit 
   - gstreamer-plugins-good-qtqml 
   - gstreamer-plugins-good-qtqml6 
   - gstreamer-plugins-libav-32bit 
@@ -16949,6 +16952,7 @@ unsorted:
   - libxcam-devel 
   - libxcam1 
   - libxcb-composite0-32bit 
+  - libxcb-cursor0-32bit 
   - libxcb-damage0-32bit 
   - libxcb-dbe0 
   - libxcb-devel 
@@ -48079,6 +48083,7 @@ unsorted:
   - xcb-imdkit-devel 
   - xcb-proto-devel 
   - xcb-util-cursor-devel 
+  - xcb-util-cursor-devel-32bit 
   - xcb-util-devel 
   - xcb-util-devel-32bit 
   - xcb-util-errors-devel 
