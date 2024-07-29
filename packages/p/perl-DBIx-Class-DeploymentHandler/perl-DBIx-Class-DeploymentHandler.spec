@@ -1,7 +1,7 @@
 #
 # spec file for package perl-DBIx-Class-DeploymentHandler
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,16 @@
 #
 
 
-Name:           perl-DBIx-Class-DeploymentHandler
-Version:        0.002233
-Release:        0
 %define cpan_name DBIx-Class-DeploymentHandler
-Summary:        Extensible DBIx::Class deployment
+Name:           perl-DBIx-Class-DeploymentHandler
+Version:        0.002234
+Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
-Group:          Development/Libraries/Perl
-Url:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/M/MM/MMCCLIMON/%{cpan_name}-%{version}.tar.gz
+Summary:        Extensible DBIx::Class deployment
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/W/WE/WESM/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Carp::Clan)
@@ -40,7 +38,7 @@ BuildRequires:  perl(Moose) >= 1
 BuildRequires:  perl(MooseX::Role::Parameterized) >= 0.18
 BuildRequires:  perl(Path::Class) >= 0.26
 BuildRequires:  perl(SQL::SplitStatement) >= 1.00020
-BuildRequires:  perl(SQL::Translator) >= 0.11005
+BuildRequires:  perl(SQL::Translator) >= 1.63
 BuildRequires:  perl(Sub::Exporter::Progressive)
 BuildRequires:  perl(Test::Fatal) >= 0.006
 BuildRequires:  perl(Test::More) >= 0.88
@@ -61,7 +59,7 @@ Requires:       perl(Moose) >= 1
 Requires:       perl(MooseX::Role::Parameterized) >= 0.18
 Requires:       perl(Path::Class) >= 0.26
 Requires:       perl(SQL::SplitStatement) >= 1.00020
-Requires:       perl(SQL::Translator) >= 0.11005
+Requires:       perl(SQL::Translator) >= 1.63
 Requires:       perl(Sub::Exporter::Progressive)
 Requires:       perl(Text::Brew) >= 0.02
 Requires:       perl(Try::Tiny)
@@ -103,11 +101,11 @@ That's really just a taste of some of the differences. Check out each role
 for all the details.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
-make %{?_smp_mflags}
+%make_build
 
 %check
 make test
@@ -118,7 +116,6 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes README TODO
 %license LICENSE
 
