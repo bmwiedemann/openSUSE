@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Mon Jul 29 13:47:40 UTC 2024 - cgoll@suse.com
+
+- Update to version 1.34.2:
+  * all: release v1.34.2
+  * gofeatures: allow setting legacy_unmarshal_json_enum feature at file level
+  * reflect/protoreflect: FieldDescriptor.Kind should never be GroupKind for maps or fields of map entry
+  * types/descriptorpb: regenerate using latest protobuf v27.0 release
+  * internal/impl: fix size cache semantics with lazy decoding
+  * all: set Go language version to Go 1.20
+  * reflect/protodesc: remove obsolete JSON name check from desc validator
+  * all: replace interface{} by any now that we are on Go 1.21
+  * internal/impl: enable fully lazy extensions (over Size and Marshal)
+  * all: remove Go 1.17 build tags / workarounds
+  * all: set Go language version to Go 1.21
+  * all: start v1.34.1-devel
+  * all: release v1.34.1
+  * encoding/proto[json|text]: accept lower case names for group-like fields
+  * all: update to protobuf 27.0-rc1 and regenerate protos
+  * all: start v1.34.0-devel
+  * all: release v1.34.0
+  * all: fix deprecated
+  * types/gofeaturespb: move go_feature.proto to be consistent with out languages
+  * encoding/{protojson,prototext}: strengthen wording on stability
+  * proto: ensure MarshalOptions are plumbed to all Size calls
+  * proto: return an error instead of producing invalid wire format
+  * [proto] use the correct parent when resolving features for extensions
+  * internal/impl: pass ExtensionTypeDescriptor to extensionMap
+  * proto: CSE ProtoReflect() and TypeDescriptor() in proto.HasExtension
+  * protobuf: fix required/group bug in descriptor proto output of editions files
+  * protobuf: support gaps in edition defaults calculation
+  * protobuf: fix delimited fields under editions in go
+  * internal/cmd/generate-types: manual CSE of m.messageInfo()
+  * proto: add examples for Size, MarshalAppend (regarding allocations)
+  * internal/impl: ensure proto.HasExtension does not allocate
+  * protogen: update Options documentation. protogen.Run doesn't exist.
+  * proto: extend Unmarshal documentation, include an example
+  * proto: extend Marshal documentation, include an example
+  * proto: fix HasPresence for extensions and missing plugin response
+  * all: enable editions support
+  * reflect/protodesc: restore edition in protodesc.ToDescriptorProto
+  * all: implement proto2/proto3 as editions [2/2]
+  * all: implement proto2/proto3 as editions [1/2]
+  * all: use subtests to identify the message type
+  * all: start v1.33.0-devel
+
+-------------------------------------------------------------------
 Wed Mar 20 16:06:02 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Packaging improvements:
