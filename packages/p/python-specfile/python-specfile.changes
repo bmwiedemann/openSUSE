@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jul 29 16:25:38 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Update to 0.32.1:
+  * Fixed two issues related to condition parsing.
+
+-------------------------------------------------------------------
 Mon Jul 22 07:48:10 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Add typing_extensions to Requires as well -- Fix rpmlint error
