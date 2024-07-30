@@ -1,7 +1,7 @@
 #
 # spec file for package perl-pcsc
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,20 +12,20 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define cpan_name pcsc-perl
 Name:           perl-pcsc
-Version:        1.4.14
+Version:        1.4.16
 Release:        0
 Summary:        Perl interface to Smart Card Reader
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Development/Libraries/Perl
-Url:            http://ludovic.rousseau.free.fr/softwares/pcsc-perl/
-Source:         http://ludovic.rousseau.free.fr/softwares/pcsc-perl/%{cpan_name}-%{version}.tar.bz2
-Source1:        http://ludovic.rousseau.free.fr/softwares/pcsc-perl/%{cpan_name}-%{version}.tar.bz2.asc
+URL:            https://github.com/LudovicRousseau/%{cpan_name}
+Source:         https://pcsc-perl.apdu.fr/Chipcard-PCSC-v%{version}.tar.gz
+Source1:        https://pcsc-perl.apdu.fr/Chipcard-PCSC-v%{version}.tar.gz.asc
 Source2:        %{name}.keyring
 BuildRequires:  perl
 BuildRequires:  pkg-config
@@ -45,7 +45,7 @@ provides a communication layer with a wide variety of smart card
 readers through a standardized API.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup -n Chipcard-PCSC-v%{version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
