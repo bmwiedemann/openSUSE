@@ -2596,7 +2596,15 @@ unsorted:
   - cosmic-bg 
   - cosmic-comp 
   - cosmic-edit 
+  - cosmic-ext-2048 
+  - cosmic-ext-applet-apps-menu 
+  - cosmic-ext-applet-clipboard-manager 
+  - cosmic-ext-applet-external-monitor-brightness 
+  - cosmic-ext-applet-ollama 
+  - cosmic-ext-applet-places-status-indicator 
   - cosmic-ext-bg-theme 
+  - cosmic-ext-color-picker 
+  - cosmic-ext-dirstat 
   - cosmic-ext-tasks 
   - cosmic-files 
   - cosmic-icons 
@@ -2935,6 +2943,8 @@ unsorted:
   - ctl-devel 
   - ctl-doc 
   - ctop 
+  - ctranslate2 
+  - ctranslate2-devel 
   - ctre-devel 
   - ctris 
   - cttop 
@@ -4128,9 +4138,67 @@ unsorted:
   - felix-shell-javadoc 
   - felix-utils 
   - felix-utils-javadoc 
-  - fence-agents 
-  - fence-agents-amt_ws 
+  - fence-agents-aliyun 
+  - fence-agents-all 
+  - fence-agents-alom 
+  - fence-agents-amt 
+  - fence-agents-amt-ws 
+  - fence-agents-apc 
+  - fence-agents-apc-snmp 
+  - fence-agents-aws 
+  - fence-agents-azure-arm 
+  - fence-agents-bladecenter 
+  - fence-agents-brocade 
+  - fence-agents-cisco-mds 
+  - fence-agents-cisco-ucs 
+  - fence-agents-common 
+  - fence-agents-compute 
   - fence-agents-devel 
+  - fence-agents-docker 
+  - fence-agents-drac5 
+  - fence-agents-eaton-snmp 
+  - fence-agents-eaton-ssh 
+  - fence-agents-emerson 
+  - fence-agents-eps 
+  - fence-agents-gce 
+  - fence-agents-hds-cb 
+  - fence-agents-hpblade 
+  - fence-agents-ibm-powervs 
+  - fence-agents-ibm-vpc 
+  - fence-agents-ibmblade 
+  - fence-agents-ibmz 
+  - fence-agents-ifmib 
+  - fence-agents-ilo-moonshot 
+  - fence-agents-ilo-mp 
+  - fence-agents-ilo-ssh 
+  - fence-agents-ilo2 
+  - fence-agents-intelmodular 
+  - fence-agents-ipdu 
+  - fence-agents-ipmilan 
+  - fence-agents-ironic 
+  - fence-agents-kdump 
+  - fence-agents-ldom 
+  - fence-agents-lpar 
+  - fence-agents-mpath 
+  - fence-agents-netio 
+  - fence-agents-openstack 
+  - fence-agents-pve 
+  - fence-agents-raritan 
+  - fence-agents-rcd-serial 
+  - fence-agents-redfish 
+  - fence-agents-rhevm 
+  - fence-agents-rsa 
+  - fence-agents-rsb 
+  - fence-agents-sanbox2 
+  - fence-agents-sbd 
+  - fence-agents-scsi 
+  - fence-agents-vbox 
+  - fence-agents-virsh 
+  - fence-agents-vmware 
+  - fence-agents-vmware-rest 
+  - fence-agents-wti 
+  - fence-agents-xenapi 
+  - fence-agents-zvm 
   - fence-sanlock 
   - feroxbuster 
   - feroxbuster-bash-completion 
@@ -12478,6 +12546,7 @@ unsorted:
   - libctl-devel 
   - libctl-doc 
   - libctl7 
+  - libctranslate2-4 
   - libcuckoo-devel 
   - libcudd-3_0_0-0 
   - libcue-devel 
@@ -24180,6 +24249,8 @@ unsorted:
   - python310-anywidget 
   - python310-apache-libcloud 
   - python310-apacheconfig 
+  - python310-apeye 
+  - python310-apeye-core 
   - python310-apfel 
   - python310-apipkg 
   - python310-apiron 
@@ -24793,6 +24864,7 @@ unsorted:
   - python310-coards 
   - python310-codecov 
   - python310-cogapp 
+  - python310-coincidence 
   - python310-colander 
   - python310-colorama 
   - python310-colorcet 
@@ -24818,6 +24890,7 @@ unsorted:
   - python310-confpy 
   - python310-confusable-homoglyphs 
   - python310-confuse 
+  - python310-consolekit 
   - python310-constantly 
   - python310-construct 
   - python310-contexter 
@@ -24865,6 +24938,7 @@ unsorted:
   - python310-cssutils 
   - python310-cstruct 
   - python310-csvkit 
+  - python310-ctranslate2 
   - python310-ctypesgen 
   - python310-cu2qu 
   - python310-curlylint 
@@ -24920,6 +24994,7 @@ unsorted:
   - python310-dennis 
   - python310-dep-logic 
   - python310-deprecation 
+  - python310-deprecation-alias 
   - python310-derpconf 
   - python310-devel 
   - python310-devpi-client 
@@ -24943,6 +25018,7 @@ unsorted:
   - python310-discogs-client 
   - python310-diskcache 
   - python310-dist 
+  - python310-dist-meta 
   - python310-distlib 
   - python310-distorm3 
   - python310-distributed 
@@ -25068,6 +25144,8 @@ unsorted:
   - python310-docutils-ast-writer 
   - python310-dogpile.cache 
   - python310-dogslow 
+  - python310-dom-toml 
+  - python310-domdf-python-tools 
   - python310-dominate 
   - python310-dotmap 
   - python310-dparse 
@@ -25373,6 +25451,7 @@ unsorted:
   - python310-h5py-openmpi4 
   - python310-habanero 
   - python310-hammett 
+  - python310-handy-archives 
   - python310-hankel 
   - python310-hanzidentifier 
   - python310-happybase 
@@ -25382,6 +25461,7 @@ unsorted:
   - python310-hatch 
   - python310-hatch-fancy-pypi-readme 
   - python310-hatch-jupyter-builder 
+  - python310-hatch-requirements-txt 
   - python310-hatch_nodejs_version 
   - python310-hatch_vcs 
   - python310-hatchling 
@@ -26463,8 +26543,10 @@ unsorted:
   - python310-pyprimes 
   - python310-pyproj 
   - python310-pyproject-api 
+  - python310-pyproject-examples 
   - python310-pyproject-hooks 
   - python310-pyproject-metadata 
+  - python310-pyproject-parser 
   - python310-pypsexec 
   - python310-pypubsub 
   - python310-pypuppetdb 
@@ -26907,6 +26989,7 @@ unsorted:
   - python310-scripttest 
   - python310-scrypt 
   - python310-scspell3k 
+  - python310-sdjson 
   - python310-sdnotify 
   - python310-seaborn 
   - python310-securesystemslib 
@@ -26944,6 +27027,7 @@ unsorted:
   - python310-sherpa 
   - python310-shijian 
   - python310-shinyutils 
+  - python310-shippinglabel 
   - python310-shodan 
   - python310-shortuuid 
   - python310-show-in-file-manager 
@@ -27360,6 +27444,7 @@ unsorted:
   - python310-whatthepatch 
   - python310-wheel 
   - python310-wheezy.template 
+  - python310-whey 
   - python310-whichcraft 
   - python310-whitenoise 
   - python310-widgetsnbextension 
@@ -27790,6 +27875,8 @@ unsorted:
   - python311-anywidget 
   - python311-apache-libcloud 
   - python311-apacheconfig 
+  - python311-apeye 
+  - python311-apeye-core 
   - python311-apfel 
   - python311-apiron 
   - python311-apns2 
@@ -28391,6 +28478,7 @@ unsorted:
   - python311-coards 
   - python311-codecov 
   - python311-cogapp 
+  - python311-coincidence 
   - python311-colander 
   - python311-colorama 
   - python311-colorcet 
@@ -28415,6 +28503,7 @@ unsorted:
   - python311-confpy 
   - python311-confusable-homoglyphs 
   - python311-confuse 
+  - python311-consolekit 
   - python311-construct 
   - python311-contexter 
   - python311-contourpy 
@@ -28458,6 +28547,7 @@ unsorted:
   - python311-cssutils 
   - python311-cstruct 
   - python311-csvkit 
+  - python311-ctranslate2 
   - python311-ctypesgen 
   - python311-cu2qu 
   - python311-curlylint 
@@ -28509,6 +28599,7 @@ unsorted:
   - python311-dennis 
   - python311-dep-logic 
   - python311-deprecation 
+  - python311-deprecation-alias 
   - python311-derpconf 
   - python311-devel 
   - python311-devpi-client 
@@ -28532,6 +28623,7 @@ unsorted:
   - python311-discogs-client 
   - python311-diskcache 
   - python311-dist 
+  - python311-dist-meta 
   - python311-distlib 
   - python311-distorm3 
   - python311-distributed 
@@ -28655,6 +28747,8 @@ unsorted:
   - python311-docutils-ast-writer 
   - python311-dogpile.cache 
   - python311-dogslow 
+  - python311-dom-toml 
+  - python311-domdf-python-tools 
   - python311-dominate 
   - python311-dotmap 
   - python311-dparse 
@@ -28951,6 +29045,7 @@ unsorted:
   - python311-h5py-openmpi4 
   - python311-habanero 
   - python311-hammett 
+  - python311-handy-archives 
   - python311-hankel 
   - python311-hanzidentifier 
   - python311-happybase 
@@ -28960,6 +29055,7 @@ unsorted:
   - python311-hatch 
   - python311-hatch-fancy-pypi-readme 
   - python311-hatch-jupyter-builder 
+  - python311-hatch-requirements-txt 
   - python311-hatch_nodejs_version 
   - python311-hatch_vcs 
   - python311-hatchling 
@@ -29988,8 +30084,10 @@ unsorted:
   - python311-pyprimes 
   - python311-pyproj 
   - python311-pyproject-api 
+  - python311-pyproject-examples 
   - python311-pyproject-hooks 
   - python311-pyproject-metadata 
+  - python311-pyproject-parser 
   - python311-pypsexec 
   - python311-pypubsub 
   - python311-pypuppetdb 
@@ -30420,6 +30518,7 @@ unsorted:
   - python311-scripttest 
   - python311-scrypt 
   - python311-scspell3k 
+  - python311-sdjson 
   - python311-sdnotify 
   - python311-seaborn 
   - python311-securesystemslib 
@@ -30454,6 +30553,7 @@ unsorted:
   - python311-shiboken6-devel 
   - python311-shijian 
   - python311-shinyutils 
+  - python311-shippinglabel 
   - python311-shodan 
   - python311-shortuuid 
   - python311-show-in-file-manager 
@@ -30863,6 +30963,7 @@ unsorted:
   - python311-whatthepatch 
   - python311-wheel 
   - python311-wheezy.template 
+  - python311-whey 
   - python311-whichcraft 
   - python311-whitenoise 
   - python311-widgetsnbextension 
@@ -31307,6 +31408,8 @@ unsorted:
   - python312-anywidget 
   - python312-apache-libcloud 
   - python312-apacheconfig 
+  - python312-apeye 
+  - python312-apeye-core 
   - python312-apfel 
   - python312-apipkg 
   - python312-apiron 
@@ -31919,6 +32022,7 @@ unsorted:
   - python312-coards 
   - python312-codecov 
   - python312-cogapp 
+  - python312-coincidence 
   - python312-colander 
   - python312-colorama 
   - python312-colorcet 
@@ -31944,6 +32048,7 @@ unsorted:
   - python312-confpy 
   - python312-confusable-homoglyphs 
   - python312-confuse 
+  - python312-consolekit 
   - python312-constantly 
   - python312-construct 
   - python312-contexter 
@@ -31991,6 +32096,7 @@ unsorted:
   - python312-cssutils 
   - python312-cstruct 
   - python312-csvkit 
+  - python312-ctranslate2 
   - python312-ctypesgen 
   - python312-cu2qu 
   - python312-curlylint 
@@ -32046,6 +32152,7 @@ unsorted:
   - python312-dennis 
   - python312-dep-logic 
   - python312-deprecation 
+  - python312-deprecation-alias 
   - python312-derpconf 
   - python312-devel 
   - python312-devpi-client 
@@ -32069,6 +32176,7 @@ unsorted:
   - python312-discogs-client 
   - python312-diskcache 
   - python312-dist 
+  - python312-dist-meta 
   - python312-distlib 
   - python312-distorm3 
   - python312-distributed 
@@ -32194,6 +32302,8 @@ unsorted:
   - python312-docutils-ast-writer 
   - python312-dogpile.cache 
   - python312-dogslow 
+  - python312-dom-toml 
+  - python312-domdf-python-tools 
   - python312-dominate 
   - python312-dotmap 
   - python312-dparse 
@@ -32499,6 +32609,7 @@ unsorted:
   - python312-h5py-openmpi4 
   - python312-habanero 
   - python312-hammett 
+  - python312-handy-archives 
   - python312-hankel 
   - python312-hanzidentifier 
   - python312-happybase 
@@ -32508,6 +32619,7 @@ unsorted:
   - python312-hatch 
   - python312-hatch-fancy-pypi-readme 
   - python312-hatch-jupyter-builder 
+  - python312-hatch-requirements-txt 
   - python312-hatch_nodejs_version 
   - python312-hatch_vcs 
   - python312-hatchling 
@@ -33584,8 +33696,10 @@ unsorted:
   - python312-pyprimes 
   - python312-pyproj 
   - python312-pyproject-api 
+  - python312-pyproject-examples 
   - python312-pyproject-hooks 
   - python312-pyproject-metadata 
+  - python312-pyproject-parser 
   - python312-pypsexec 
   - python312-pypubsub 
   - python312-pypuppetdb 
@@ -34026,6 +34140,7 @@ unsorted:
   - python312-scripttest 
   - python312-scrypt 
   - python312-scspell3k 
+  - python312-sdjson 
   - python312-sdnotify 
   - python312-seaborn 
   - python312-securesystemslib 
@@ -34062,6 +34177,7 @@ unsorted:
   - python312-shellingham 
   - python312-shijian 
   - python312-shinyutils 
+  - python312-shippinglabel 
   - python312-shodan 
   - python312-shortuuid 
   - python312-show-in-file-manager 
@@ -34478,6 +34594,7 @@ unsorted:
   - python312-whatthepatch 
   - python312-wheel 
   - python312-wheezy.template 
+  - python312-whey 
   - python312-whichcraft 
   - python312-whitenoise 
   - python312-widgetsnbextension 
@@ -36421,6 +36538,7 @@ unsorted:
   - secrets 
   - secrets-lang 
   - sedutil 
+  - seergdb 
   - segment 
   - segment-javadoc 
   - seidl 
@@ -37195,6 +37313,7 @@ unsorted:
   - system-user-uuidd 
   - system-user-vault-sync 
   - system-user-velociraptor 
+  - system-user-woodpecker 
   - system-user-zabbix 
   - systemd-default-settings-branding-SLE-Micro 
   - systemd-default-settings-branding-upstream 
@@ -48000,6 +48119,9 @@ unsorted:
   - wofi-pass 
   - wol-udev-rules 
   - wondershaper 
+  - woodpecker-agent 
+  - woodpecker-cli 
+  - woodpecker-server 
   - woodstox-core 
   - woodstox-core-javadoc 
   - wordcut 
