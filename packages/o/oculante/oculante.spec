@@ -17,8 +17,9 @@
 
 
 %bcond_without test
+%define force_gcc_version 13
 Name:           oculante
-Version:        0.8.22
+Version:        0.8.23
 Release:        0
 Summary:        A minimalistic crossplatform image viewer written in rust
 License:        MIT
@@ -26,8 +27,10 @@ URL:            https://github.com/woelper/oculante
 Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
 BuildRequires:  cargo-packaging
-BuildRequires:  extra-cmake-modules
-BuildRequires:  gcc >= 13
+BuildRequires:  cmake
+BuildRequires:  desktop-file-utils
+BuildRequires:  gcc%{?force_gcc_version}
+BuildRequires:  gcc%{?force_gcc_version}-c++
 BuildRequires:  gtk3-devel
 BuildRequires:  libheif-devel
 BuildRequires:  nasm
@@ -42,7 +45,13 @@ tools.
 %autosetup -a1 -p1
 
 %build
-%{cargo_build} --features 'heif'
+export CC="gcc-%{?force_gcc_version}"
+export CXX="g++-%{?force_gcc_version}"
+%{cargo_build} \
+%if 0%{?suse_version} > 1600
+     --features 'heif' \
+%endif
+     %{nil}
 
 %install
 install -Dpm755 target/release/%{name} -t %{buildroot}%{_bindir}
@@ -51,8 +60,12 @@ install -Dpm644 res/%{name}.desktop -t %{buildroot}%{_datadir}/applications
 
 %check
 %if %{with test}
+export CC="gcc-%{?force_gcc_version}"
+export CXX="g++-%{?force_gcc_version}"
 %{cargo_test} -- --skip=tests::net --skip=bench
 %endif
+
+desktop-file-validate %{buildroot}%{_datadir}/applications/*.desktop
 
 %files
 %license LICENSE*

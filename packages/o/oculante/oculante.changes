@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Mon Jul 29 14:50:34 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 0.8.23:
+  + Bug Fixes
+    - Display image path for loading errors
+    - Prevent panic for scrubber index being out of range and
+      allow opening images without path prefic correctly
+    - update index when image in same folder is loaded
+    - Switching theme removes accent color
+    - Preserve scubber index
+    - Prevent image removal going out of bounds
+    - Clearing and deleting an image removes it from the virtual
+      scrubber and advances to the next according to the scrubber
+      direction
+    - Fix issue where SVG files were detected as XML
+    - Compare menu works without image loaded
+    - ClearImage can be assigned to a shortcut
+  + Features
+    - Allow configuring mipmaps and linear mag/min filters
+    - Allow passing multiple images on the command line
+    - Enhance scrubber experience to provide a virtual file list.
+    - Detect file types by content instead of extension. Warn if
+      mismatch happens.
+    - More love for compare mode ui, option to remove current image
+    - Allow configuring the minimum window size
+  + Chore
+    - deps: bump zerovec from 0.10.2 to 0.10.4
+    - update resvg
+    - Update Notan and Egui
+    - update deps
+- add conditional build for leap with force gcc version
+- add desktop-file-utils BuildRequires: for validate desktop file
+
+-------------------------------------------------------------------
 Mon May 20 01:52:34 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 0.8.22:
