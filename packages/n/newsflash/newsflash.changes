@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Jul 29 21:16:02 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 3.3.4:
+  * Avoid re-downloaing non-expired favicons
+  * Increase network-monitor changed signal timeout
+- update to 3.3.3:
+  * local rss: handle articles that are published with the same GUID by
+    multiple feeds (eg planet.gnome.org)
+  * local rss: use etags to skip downloading unchanged feeds
+  * local rss: avoid writing unchanged articles to the database (feed-rs fix)
+  * log running/successful database migrations
+  * improve favicon and thumbnail download logic
+  * fix drag and drop regression in feed list
+  * article list: load queue to avoid data races
+  * multiple ping urls for online checks
+  * online check: try to reach backend server before falling back to generic urls
+  * add back unread/starred database indices
+  * re-enable full text search in article plain text
+
+-------------------------------------------------------------------
 Sat Jul 13 06:16:43 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 3.3.2:

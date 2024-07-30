@@ -19,7 +19,7 @@
 %define         _lto_cflags %{nil}
 %define         appname io.gitlab.news_flash.NewsFlash
 Name:           newsflash
-Version:        3.3.2
+Version:        3.3.4
 Release:        0
 Summary:        The spiritual successor to FeedReader
 License:        GPL-3.0-only
@@ -50,7 +50,9 @@ BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(webkitgtk-6.0)
+%ifarch aarch64
 BuildRequires:  typelib(ClapperGtk)
+%endif
 
 %description
 NewsFlash is a program designed to complement an already existing web-based RSS reader account.

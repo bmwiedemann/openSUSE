@@ -63,4 +63,27 @@
     <comment></comment>
     <requestid>1187277</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>36398358dd5b044a1a34a6f8d3ca4857</srcmd5>
+    <version>3.3.4</version>
+    <time>1722333311</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.3.4:
+  * Avoid re-downloaing non-expired favicons
+  * Increase network-monitor changed signal timeout
+- update to 3.3.3:
+  * local rss: handle articles that are published with the same GUID by
+    multiple feeds (eg planet.gnome.org)
+  * local rss: use etags to skip downloading unchanged feeds
+  * local rss: avoid writing unchanged articles to the database (feed-rs fix)
+  * log running/successful database migrations
+  * improve favicon and thumbnail download logic
+  * fix drag and drop regression in feed list
+  * article list: load queue to avoid data races
+  * multiple ping urls for online checks
+  * online check: try to reach backend server before falling back to generic urls
+  * add back unread/starred database indices
+  * re-enable full text search in article plain text (forwarded request 1190348 from rrahl0)</comment>
+    <requestid>1190349</requestid>
+  </revision>
 </revisionlist>
