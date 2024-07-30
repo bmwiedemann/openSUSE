@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jul 30 04:04:10 UTC 2024 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.96.1:
+  * Fix $in in range expressions.
+  * IR: fix incorrect capturing of subexpressions.
+  * Clean up arguments added to stack after `CallDecl` engine call.
+  * Changes to commands:
+    - Bug fixes and other changes `keybindings list`.
+
+-------------------------------------------------------------------
 Wed Jul 24 03:14:02 UTC 2024 - Dead Mozay <dead_mozay@opensuse.org>
 
 - Update to version 0.96.0:
