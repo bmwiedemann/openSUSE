@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jul 30 03:59:00 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.26:
+  * Proper integration with Arch
+  * Inclusion of a vng manpage
+  * The host's /tmp is now also visible from the guest
+  * A new --configitem option that allows to quickly change specific
+    kernel config options (with --build)
+  * Bug fixes
+- Remove 0001-virtme-ng-fix-virtiofsd-search-path-on-openSUSE.patch
+
+-------------------------------------------------------------------
 Mon Jun 10 10:00:40 UTC 2024 - Johannes Thumshirn <jth@kernel.org>
 
 - Fix virtiofsd search path
