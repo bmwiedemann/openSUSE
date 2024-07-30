@@ -100,4 +100,16 @@ Switch package to be managed by SCM.
 (🤖: Submission of git-deps via https://src.opensuse.org/pool/git-deps/pulls/1 by mcepl)</comment>
     <requestid>1188586</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>ba11294ea5828cc509acae7bae02d451</srcmd5>
+    <version>1.1.0+git.1696898573.89d51e8</version>
+    <time>1722333310</time>
+    <user>dimstar_suse</user>
+    <comment>Fix dont-use-st-markdown.patch (don't list packages explicitly,
+
+generate the list)
+
+(🤖: Submission of git-deps via https://src.opensuse.org/pool/git-deps/pulls/2 by mcepl)</comment>
+    <requestid>1190347</requestid>
+  </revision>
 </revisionlist>

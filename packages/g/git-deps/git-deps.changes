@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jul 29 22:36:44 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Fix dont-use-st-markdown.patch (don't list packages explicitly,
+  generate the list)
+
+-------------------------------------------------------------------
 Thu Jul 18 14:49:09 UTC 2024 - mcepl@cepl.eu
 
 - Update to version 1.1.0+git.1696898573.89d51e8:
