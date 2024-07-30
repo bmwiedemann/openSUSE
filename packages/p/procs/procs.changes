@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jul 30 03:50:01 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.14.6:
+  * [Changed] MSRV to Rust 1.74
+  * [Added] aarch64-apple-darwin build release
+
+-------------------------------------------------------------------
 Wed Mar 20 16:23:51 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Filter dependencies for vendor tarball

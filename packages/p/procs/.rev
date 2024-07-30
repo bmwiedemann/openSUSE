@@ -104,4 +104,14 @@
     <comment>- Filter dependencies for vendor tarball</comment>
     <requestid>1159896</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>61407c6c86988704c6ff8004642231a2</srcmd5>
+    <version>0.14.6+0</version>
+    <time>1722333318</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.14.6:
+  * [Changed] MSRV to Rust 1.74
+  * [Added] aarch64-apple-darwin build release</comment>
+    <requestid>1190367</requestid>
+  </revision>
 </revisionlist>
