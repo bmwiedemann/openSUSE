@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jul 29 22:51:52 UTC 2024 - Hannes Braun <apple.hannes@gmail.com> - 0.18.2
+
+- Update to upstream version 0.18.2
+  * Fixed builtin calendar filter error with non-GNU Awk.
+  * Fixed detection of unicode width measurements on tmux 3.4.
+  * Fixed dropping of events during large pastes.
+  * Fixed Home and End key decoding for the st terminal.
+
+-------------------------------------------------------------------
 Mon Jul 15 22:56:47 UTC 2024 - Hannes Braun <apple.hannes@gmail.com> - 0.18.1
 
 - Update to upstream version 0.18.1
