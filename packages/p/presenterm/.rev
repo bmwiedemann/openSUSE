@@ -169,4 +169,41 @@
   * Remove support for uncommon image formats (#208).</comment>
     <requestid>1154566</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>35ec406f168a86df3087f03505f6ec7e</srcmd5>
+    <version>0.8.0+0</version>
+    <time>1722333320</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.8.0:
+  Breaking changes:
+  * Force users to explicitly enable snippet execution (#276) (#281).
+  New features:
+  * Code snippet execution for various programming languages (#253) (#255) (#256) (#258) (#282).
+  * Allow executing compiled snippets in windows (#303).
+  * Add support for hidden lines in code snippets (#283) (#254).
+  * Support mermaid snippet rendering to image via +render attribute (#268).
+  * Allow scaling images dynamically based on terminal size (#288) (#291).
+  * Allow scaling images generated via +render code blocks (mermaid, typst, latex) (#290).
+  * Show stderr output from code execution (#252).
+  * Wait for code execution process to exit completely (#250).
+  * Generate images in +render code snippets asynchronously (#273) (#293) (#284) (#279).
+  * Dim non highlighted code snippet lines (#287).
+  * Shrink snippet execution to match code block width (#286).
+  * Include code snippet execution output in generated PDF (#295).
+  * Cache +render block images (#270).
+  * Add kotlin script executor (#257).
+  * Add nushell code execution (#274) (#275).
+  * Add rust-script as a new code executor (#269).
+  * Allow custom themes to extend others (#265).
+  * Allow jumping fast between slides (#244).
+  * Allow explicitly disabling footer in certain slides (#239).
+  * Allow using image paths in typst (#235).
+  * Add JSON schema for validation,completion,documentation (#228) (#236).
+  * Allow having multiple authors (#227).
+  Fixes:
+  * Avoid re-rendering code output and auto rendered blocks (#280).
+  * Use unicode width to calculate execution output's line len (#261).
+  * Display background color behind '\t' in code exec output (#245).</comment>
+    <requestid>1190368</requestid>
+  </revision>
 </revisionlist>
