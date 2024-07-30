@@ -2,6 +2,7 @@
 # spec file
 #
 # Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -273,7 +274,7 @@ Patch2:         Allow-lib64-as-library-directory-for-scalapack.patch
 URL:            https://www.mcs.anl.gov/petsc/
 BuildRequires:  fdupes
 BuildRequires:  hwloc-devel
-BuildRequires:  libyaml-devel
+BuildRequires:  pkgconfig(yaml-0.1)
 BuildRequires:  pkg-config
 BuildRequires:  python3-base
 
@@ -346,6 +347,7 @@ differential equations.
 Summary:        Devel files for petsc
 Group:          Development/Libraries/C and C++
 Requires:       %{libname %_vers} = %{version}
+Requires:       pkgconfig(yaml-0.1)
 %if %{without hpc}
 Requires:       Modules
 Requires:       suitesparse-devel

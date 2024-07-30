@@ -122,4 +122,12 @@ Needs SR#1093175</comment>
     <comment></comment>
     <requestid>1164361</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>65e2f11ee6ef320dc35a21b9d58dccdf</srcmd5>
+    <version>0.17.1</version>
+    <time>1722282759</time>
+    <user>dimstar_suse</user>
+    <comment>rnp 0.17.1</comment>
+    <requestid>1190050</requestid>
+  </revision>
 </revisionlist>

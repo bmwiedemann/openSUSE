@@ -5,13 +5,41 @@
 %{_bindir}/systemd-nspawn
 %if %{without bootstrap}
 %{_datadir}/bash-completion/completions/systemd-nspawn
+%endif
+%{_datadir}/polkit-1/actions/io.systemd.mount-file-system.policy
+%if %{without bootstrap}
 %{_datadir}/zsh/site-functions/_systemd-nspawn
 %{_mandir}/man1/systemd-nspawn.1.gz
 %{_mandir}/man5/systemd.nspawn.5.gz
 %{_mandir}/man8/libnss_mymachines.so.2.8.gz
 %{_mandir}/man8/nss-mymachines.8.gz
+%{_mandir}/man8/systemd-mountfsd.8.gz
+%{_mandir}/man8/systemd-mountfsd.service.8.gz
+%{_mandir}/man8/systemd-nsresourced.8.gz
+%{_mandir}/man8/systemd-nsresourced.service.8.gz
 %endif
+%if %{with networkd}
+%{_systemd_util_dir}/network/80-container-host0.network
+%{_systemd_util_dir}/network/80-container-vb.link
+%{_systemd_util_dir}/network/80-container-vb.network
+%{_systemd_util_dir}/network/80-container-ve.link
+%{_systemd_util_dir}/network/80-container-ve.network
+%{_systemd_util_dir}/network/80-container-vz.link
+%{_systemd_util_dir}/network/80-container-vz.network
+%{_systemd_util_dir}/network/80-namespace-ns.link
+%{_systemd_util_dir}/network/80-namespace-ns.network
+%endif
+%if %{without bootstrap}
+%{_systemd_util_dir}/systemd-mountfsd
+%{_systemd_util_dir}/systemd-mountwork
+%{_systemd_util_dir}/systemd-nsresourced
+%{_systemd_util_dir}/systemd-nsresourcework
+%{_unitdir}/systemd-mountfsd.service
+%{_unitdir}/systemd-mountfsd.socket
 %{_unitdir}/systemd-nspawn@.service
+%{_unitdir}/systemd-nsresourced.service
+%{_unitdir}/systemd-nsresourced.socket
+%endif
 
 %if %{with machined}
 %dir %{_unitdir}/machines.target.wants
@@ -43,12 +71,14 @@
 %endif
 
 %if %{with importd}
+%{_bindir}/importctl
 %{_datadir}/bash-completion/completions/importctl
 %{_datadir}/dbus-1/interfaces/org.freedesktop.import1.Manager.xml
 %{_datadir}/dbus-1/interfaces/org.freedesktop.import1.Transfer.xml
 %{_datadir}/dbus-1/system-services/org.freedesktop.import1.service
 %{_datadir}/dbus-1/system.d/org.freedesktop.import1.conf
 %{_datadir}/polkit-1/actions/org.freedesktop.import1.policy
+%{_mandir}/man1/importctl.1.gz
 %{_mandir}/man5/org.freedesktop.import1.5.gz
 %{_mandir}/man8/systemd-importd.8.gz
 %{_mandir}/man8/systemd-importd.service.8.gz

@@ -19,7 +19,7 @@
 %define binary_name jj
 
 Name:           jujutsu
-Version:        0.18.0
+Version:        0.19.0
 Release:        0
 Summary:        Git-compatible DVCS that is both simple and powerful
 License:        MIT
@@ -45,8 +45,6 @@ Jujutsu is an experimental version control system. While Git compatibility is st
 
 %prep
 %autosetup -p 1 -a 1 -n jj-%{version}
-mkdir -p .cargo
-rm -vf .cargo/config.toml
 
 %build
 %{cargo_build}

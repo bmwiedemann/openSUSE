@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jul 25 19:18:20 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- fix missing libyaml requirement of -devel package boo#1228280
+
+-------------------------------------------------------------------
 Tue Jun 18 05:25:24 UTC 2024 - Egbert Eich <eich@suse.com>
 
 - Update to version 3.21:

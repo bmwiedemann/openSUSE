@@ -1,0 +1,27 @@
+-------------------------------------------------------------------
+Mon Jul 29 07:23:32 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 12.11.3:
+  * lib: use fixed IP selection function
+
+-------------------------------------------------------------------
+Sat Jul 27 15:21:02 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 12.11.2:
+  * lib: fix IP selection in DNS caching
+  * lib/prom: fix broken test after dep upgrade
+  * more dep updates
+  * update deps
+  * update ci go version to 1.22
+  * update go version to go 1.22
+  * .github/workflows/ci.yml: update outdated actions that github
+    warns need updating
+  * build(deps): bump github.com/google/go-cmp from 0.5.9 to 0.6.0
+  * build(deps): bump github.com/prometheus/client_golang
+  * build(deps): bump github.com/prometheus/prometheus from 0.47.0
+    to 0.47.2
+
+-------------------------------------------------------------------
+Sat Jan 27 08:02:45 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- new package vegeta: HTTP load testing tool and library

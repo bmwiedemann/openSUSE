@@ -26,9 +26,9 @@
 %define systemd_release    %{?release_override}%{!?release_override:0}
 %define archive_version    %{nil}
 %else
-%define systemd_version    255.8
+%define systemd_version    256.4
 %define systemd_release    0
-%define archive_version    +suse.34.g5a8eadd0c0
+%define archive_version    +suse.6.g5bba1ebe17
 %endif
 
 %define systemd_major      %{sub %systemd_version 1 3}
@@ -36,7 +36,7 @@
 %define _testsuitedir %{_systemd_util_dir}/tests
 %define xinitconfdir  %{?_distconfdir}%{!?_distconfdir:%{_sysconfdir}}/X11/xinit
 
-# Similar to %%with but return true/false. The value when the condition is
+# Similar to 'with' macro but return true/false. The value when the condition is
 # verified can be redefined when a second parameter is passed.
 %define __when_1() %{expand:%%{?with_%{1}:true}%%{!?with_%{1}:false}}
 %define __when_2() %{expand:%%{?with_%{1}:%{2}}%%{!?with_%{1}:false}}
@@ -124,7 +124,8 @@ BuildRequires:  pam-devel
 BuildRequires:  python3-Jinja2
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  pkgconfig(blkid) >= 2.26
-# The following packages are only required by the execution of the unit tests during %%check
+# The following packages are only required by the execution of the unit tests
+# during the 'check' section.
 BuildRequires:  acl
 BuildRequires:  distribution-release
 BuildRequires:  python3-pefile
@@ -174,8 +175,6 @@ Provides:       systemd-coredump = %{version}-%{release}
 Obsoletes:      systemd-coredump < %{version}-%{release}
 Provides:       systemd-logger = %{version}-%{release}
 Obsoletes:      systemd-logger < %{version}-%{release}
-Provides:       systemd-sysvinit = %{version}-%{release}
-Obsoletes:      systemd-sysvinit < %{version}-%{release}
 Provides:       systemd-analyze = %{version}-%{release}
 Obsoletes:      pm-utils <= 1.4.1
 Obsoletes:      suspend <= 1.0
@@ -190,6 +189,7 @@ Source5:        tmpfiles-suse.conf
 Source6:        baselibs.conf
 Source7:        triggers.systemd
 Source8:        pam.systemd-user
+Source9:        pam.systemd-run0
 Source14:       kbd-model-map.legacy
 
 Source100:      fixlet-container-post.sh
@@ -219,13 +219,13 @@ Source213:      files.devel-doc
 # get rid of one of them !
 #
 Patch:          0001-Drop-support-for-efivar-SystemdOptions.patch
-Patch:          0009-pid1-handle-console-specificities-weirdness-for-s390.patch
 %if %{with sysvcompat}
 Patch:          0002-rc-local-fix-ordering-startup-for-etc-init.d-boot.lo.patch
 Patch:          0008-sysv-generator-translate-Required-Start-into-a-Wants.patch
 %endif
 
 %if %{without upstream}
+Patch:          0009-pid1-handle-console-specificities-weirdness-for-s390.patch
 # Patches listed below are put in quarantine. Normally all changes must go to
 # upstream first and then are cherry-picked in the SUSE git repository. But for
 # very few cases, some stuff might be broken in upstream and need to be fixed or
@@ -233,7 +233,9 @@ Patch:          0008-sysv-generator-translate-Required-Start-into-a-Wants.patch
 # will be removed as soon as a proper fix will be merged by upstream.
 Patch:          5001-Revert-udev-update-devlink-with-the-newer-device-nod.patch
 Patch:          5002-Revert-udev-revert-workarounds-for-issues-caused-by-.patch
+Patch:          5004-disable-session-freeze.patch
 %endif
+Patch:          5003-core-when-switching-root-remove-run-systemd-before-e.patch
 
 %description
 Systemd is a system and service manager, compatible with SysV and LSB
@@ -269,8 +271,8 @@ developing and building applications linking to these libraries.
 Summary:        SySV and LSB init script support for systemd (deprecated)
 License:        LGPL-2.1-or-later
 Requires:       %{name} = %{version}-%{release}
-Provides:       systemd-sysvinit:%{_sbindir}/runlevel
-Provides:       systemd-sysvinit:%{_sbindir}/telinit
+Provides:       systemd-sysvinit = %{version}-%{release}
+Obsoletes:      systemd-sysvinit < %{version}-%{release}
 
 %description sysvcompat
 This package ships the necessary files that enable minimal SysV and LSB init
@@ -347,10 +349,12 @@ BuildRequires:  pkgconfig(libkmod) >= 15
 # these tools are not linked against the libs directly but instead are
 # dlopen()ed at runtime to avoid hard dependencies. Hence the use of soft
 # dependencies.
+BuildRequires:  pkgconfig(libarchive)
 BuildRequires:  pkgconfig(libfido2)
 BuildRequires:  pkgconfig(tss2-esys)
 BuildRequires:  pkgconfig(tss2-mu)
 BuildRequires:  pkgconfig(tss2-rc)
+Recommends:     libarchive13
 Recommends:     libfido2
 Recommends:     libtss2-esys0
 Recommends:     libtss2-mu0
@@ -367,10 +371,8 @@ Provides:       udev = %{version}-%{release}
 %if %{with upstream}
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(glib-2.0)
-BuildRequires:  pkgconfig(libarchive)
 BuildRequires:  pkgconfig(xencontrol)
 BuildRequires:  pkgconfig(xkbcommon)
-Recommends:     libarchive13
 Recommends:     libxkbcommon0
 %endif
 
@@ -616,6 +618,7 @@ Requires:       qemu
 Requires:       quota
 Requires:       socat
 Requires:       squashfs
+Requires:       stress-ng
 Requires:       systemd-container
 # System users/groups that some tests rely on.
 Requires:       group(bin)
@@ -629,8 +632,10 @@ Requires:       user(nobody)
 # The following deps on libs are for test-dlopen-so whereas the pkgconfig ones
 # are used by test-funtions to find the libs on the host and install them in the
 # image, see install_missing_libraries() for details.
+Requires:       pkgconfig(libarchive)
 Requires:       pkgconfig(libfido2)
 Requires:       pkgconfig(libidn2)
+Requires:       pkgconfig(libkmod)
 %if %{with experimental}
 Requires:       pkgconfig(libqrencode)
 Requires:       pkgconfig(pwquality)
@@ -692,15 +697,16 @@ and are provided so users can do early experiments with the new features or
 technologies without waiting for them to be fully supported by both upstream
 and openSUSE.
 
-Please note that all services should be considered in development phase and as
-such their behaviors details, unit files, option names, etc... are subject to
-change without the usual backwards-compatibility promises.
+Please note that the material shipped by this package should be considered in
+development phase and as such their behaviors, unit files, option names,
+etc... are subject to change without the usual backwards-compatibility promises.
 
 Components that turn out to be stable and considered as fully supported will be
 merged into the main package or moved into a dedicated package.
 
-Currently this package contains: bsod, oomd, measure, pcrextend, pcrlock,
-storagetm, sysupdate, tpm2-setup, userwork and ukify.
+Currently this package contains the following features : bsod, oomd, measure,
+pcrextend, pcrlock, run0, ssh-generator, storagetm, systemd-vmspawn, sysupdate,
+tpm2-setup, userwork and ukify.
 
 Have fun (at your own risk).
 %endif
@@ -757,12 +763,14 @@ for the C APIs.
         \
         -Dbump-proc-sys-fs-nr-open=false \
         -Ddbus=disabled \
+        -Ddefault-mountfsd-trusted-directories=false \
         -Ddefault-network=false \
         -Dglib=disabled \
         -Dgshadow=false \
         -Dldconfig=false \
         -Dlibidn=disabled \
         -Dsmack=false \
+        -Dvmlinux-h=disabled \
         -Dxenctrl=disabled \
         -Dxkbcommon=disabled \
         \
@@ -779,6 +787,7 @@ for the C APIs.
         -Dhtml=%{disabled_with bootstrap} \
         -Dima=%{when_not bootstrap} \
         -Dkernel-install=%{when_not bootstrap} \
+        -Dlibarchive=%{disabled_with bootstrap} \
         -Dlibfido2=%{disabled_with bootstrap} \
         -Dlibidn2=%{enabled_with resolved} \
         -Dlibiptc=%{disabled_with bootstrap} \
@@ -789,6 +798,8 @@ for the C APIs.
         -Dlibcryptsetup-plugins=%{disabled_with bootstrap} \
         -Dlibcurl=%{disabled_with bootstrap} \
         -Dman=%{disabled_with bootstrap} \
+        -Dmountfsd=%{when_not bootstrap} \
+        -Dnsresourced=%{when_not bootstrap} \
         -Dmicrohttpd=%{enabled_with journal_remote} \
         -Dnss-myhostname=%{when_not bootstrap} \
         -Dnss-mymachines=%{enabled_with machined} \
@@ -835,12 +846,17 @@ for the C APIs.
         -Dresolve=%{when resolved} \
         \
         -Doomd=%{when experimental} \
-        -Dsysupdate=%{enabled_with experimental} \
-%if %{with sd_boot}
-        -Dukify=%{enabled_with experimental} \
+%if %{with experimental}
+        -Dsshdconfdir=%{_distconfdir}/ssh/sshd_config.d \
+        -Dsshconfdir=%{_distconfdir}/ssh/ssh_config.d \
+        -Dukify=%{enabled_with sd_boot} \
 %else
+        -Dsshdconfdir=no \
+        -Dsshconfdir=no \
         -Dukify=disabled \
 %endif
+        -Dsshdprivsepdir=no \
+        -Dsysupdate=%{enabled_with experimental} \
         -Dvmspawn=%{enabled_with experimental} \
         \
         -Dtests=%{when testsuite unsafe} \
@@ -871,9 +887,6 @@ install -m0755 -D %{SOURCE3} %{buildroot}/%{_systemd_util_dir}/systemd-update-he
 install -m0755 -D %{SOURCE4} %{buildroot}/%{_systemd_util_dir}/systemd-sysv-install
 %endif
 
-# Drop-ins are currently not supported by udev.
-mv %{buildroot}%{_prefix}/lib/udev/udev.conf %{buildroot}%{_sysconfdir}/udev/
-
 # Install the fixlets
 mkdir -p %{buildroot}%{_systemd_util_dir}/rpm
 %if %{with machined}
@@ -892,6 +905,9 @@ rm -f %{buildroot}%{_sysconfdir}/systemd/system/default.target
 
 # Replace upstream PAM configuration files with openSUSE ones.
 install -m0644 -D %{SOURCE8} %{buildroot}%{_pam_vendordir}/systemd-user
+%if %{with experimental}
+install -m0644 -D %{SOURCE9} %{buildroot}%{_pam_vendordir}/systemd-run0
+%endif
 
 # Don't enable wall ask password service, it spams every console (bnc#747783).
 rm %{buildroot}%{_unitdir}/multi-user.target.wants/systemd-ask-password-wall.path
@@ -942,6 +958,7 @@ mkdir -p %{buildroot}%{_sysconfdir}/systemd/system.conf.d
 mkdir -p %{buildroot}%{_sysconfdir}/systemd/timesyncd.conf.d
 mkdir -p %{buildroot}%{_sysconfdir}/systemd/user.conf.d
 mkdir -p %{buildroot}%{_sysconfdir}/udev/iocost.conf.d
+mkdir -p %{buildroot}%{_sysconfdir}/udev/udev.conf.d
 
 mkdir -p %{buildroot}%{_sysconfdir}/systemd/network
 mkdir -p %{buildroot}%{_sysconfdir}/systemd/nspawn
@@ -1012,6 +1029,11 @@ echo 'disable *' >%{buildroot}%{_userpresetdir}/99-default.preset
 rm -f %{buildroot}%{_tmpfilesdir}/{etc,home,legacy,tmp,var}.conf
 install -m 644 %{SOURCE5} %{buildroot}%{_tmpfilesdir}/systemd-suse.conf
 
+# These 2 following file are useless because on SUSE distros ssh can parse
+# drop-ins in /usr.
+rm -f %{buildroot}%{_tmpfilesdir}/20-systemd-ssh-generator.conf
+rm -f %{buildroot}%{_tmpfilesdir}/20-systemd-userdb.conf
+
 # The content of the files shipped by systemd doesn't match the
 # defaults used by SUSE. Don't ship those files but leave the decision
 # to use the mechanism to the individual packages that actually
@@ -1040,14 +1062,19 @@ tar -cO \
 %if %{without bootstrap}
 %find_lang systemd
 %else
-rm -f  %{buildroot}%{_bindir}/varlinkctl
 rm -f  %{buildroot}%{_journalcatalogdir}/*
 rm -fr %{buildroot}%{_docdir}/systemd
+rm -f %{buildroot}%{_bindir}/run0
+rm -f %{buildroot}%{_systemdgeneratordir}/systemd-ssh-generator
+rm -f %{buildroot}%{_systemdgeneratordir}/systemd-tpm2-generator
+rm -f %{buildroot}%{_unitdir}/systemd-nspawn@.service
+rm -f %{buildroot}%{_systemd_util_dir}/systemd-ssh-proxy
 %endif
 
-# Don't drop %%pre section even if it becomes empty: the build process of
-# installation images uses a hardcoded list of packages with a %%pre that needs
-# to be run during the build and complains if it can't find one.
+# Don't drop the following 'pre' section even if it becomes empty: the build
+# process of installation images uses a hardcoded list of packages with a 'pre'
+# section that needs to be run during the build and complains if it can't find
+# one.
 %pre
 # We don't really need to enable these units explicitely since during
 # installation `systemctl preset-all` is executed at the end of the install
@@ -1060,8 +1087,10 @@ rm -fr %{buildroot}%{_docdir}/systemd
 %systemd_pre systemd-userdbd.service
 
 %check
+%if %{with upstream}
 # Run the unit tests.
 %meson_test
+%endif
 
 %post
 if [ $1 -eq 1 ]; then
@@ -1098,7 +1127,8 @@ systemd-tmpfiles --create || :
 journalctl --update-catalog || :
 %endif
 
-# See the comment in %%pre about why we need to call %%systemd_pre.
+# See the comment in the 'pre' section about why we need to call 'systemd_pre'
+# macro.
 %systemd_post remote-fs.target
 %systemd_post getty@.service
 %systemd_post systemd-journald-audit.socket
@@ -1174,14 +1204,24 @@ fi
 %ldconfig_scriptlets -n libsystemd0%{?mini}
 %ldconfig_scriptlets -n libudev%{?mini}1
 
-%if %{with machined}
 %pre container
+%systemd_pre systemd-mountfsd.socket
+%systemd_pre systemd-nsresourced.socket
+%if %{with machined}
 %systemd_pre machines.target
+%endif
 
 %preun container
+%systemd_preun systemd-mountfsd.socket
+%systemd_preun systemd-nsresourced.socket
+%if %{with machined}
 %systemd_preun machines.target
+%endif
 
 %postun container
+%systemd_postun systemd-mountfsd.socket
+%systemd_postun systemd-nsresourced.socket
+%if %{with machined}
 %ldconfig
 %systemd_postun machines.target
 %endif
@@ -1192,6 +1232,8 @@ fi
 %if %{without filetriggers}
 %tmpfiles_create systemd-nspawn.conf
 %endif
+%systemd_post systemd-mountfsd.socket
+%systemd_post systemd-nsresourced.socket
 %systemd_post machines.target
 %{_systemd_util_dir}/rpm/fixlet-container-post.sh $1 || :
 %endif

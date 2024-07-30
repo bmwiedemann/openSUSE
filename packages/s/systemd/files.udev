@@ -1,7 +1,6 @@
 #
 # Please keep the list sorted (with `LC_ALL=C sort`).
 #
-%config(noreplace) %{_sysconfdir}/udev/udev.conf
 %if %{without bootstrap}
 %dir %{_libdir}/cryptsetup
 %endif
@@ -21,6 +20,7 @@
 %dir %{_sysconfdir}/udev
 %dir %{_sysconfdir}/udev/iocost.conf.d
 %dir %{_sysconfdir}/udev/rules.d
+%dir %{_sysconfdir}/udev/udev.conf.d
 %dir %{_systemd_util_dir}/network
 %if %{without bootstrap}
 %dir %{_systemd_util_dir}/repart
@@ -87,6 +87,7 @@
 %{_mandir}/man5/timesyncd.conf.5.gz
 %{_mandir}/man5/timesyncd.conf.d.5.gz
 %{_mandir}/man5/udev.conf.5.gz
+%{_mandir}/man5/udev.conf.d.5.gz
 %{_mandir}/man5/vconsole.conf.5.gz
 %{_mandir}/man5/veritytab.5.gz
 %{_mandir}/man7/hwdb.7.gz
@@ -110,6 +111,7 @@
 %{_mandir}/man8/systemd-growfs-root.service.8.gz
 %{_mandir}/man8/systemd-growfs.8.gz
 %{_mandir}/man8/systemd-growfs@.service.8.gz
+%{_mandir}/man8/systemd-hibernate-clear.service.8.gz
 %{_mandir}/man8/systemd-hibernate-resume-generator.8.gz
 %{_mandir}/man8/systemd-hibernate-resume.8.gz
 %{_mandir}/man8/systemd-hibernate.service.8.gz
@@ -174,6 +176,7 @@
 %{_prefix}/lib/udev/iocost.conf
 %{_prefix}/lib/udev/mtd_probe
 %{_prefix}/lib/udev/scsi_id
+%{_prefix}/lib/udev/udev.conf
 %{_prefix}/lib/udev/v4l_id
 %{_systemd_util_dir}/network/99-default.link
 %{_systemd_util_dir}/ntp-units.d/80-systemd-timesync.list
@@ -260,6 +263,7 @@
 %{_udevhwdbdir}/70-analyzers.hwdb
 %{_udevhwdbdir}/70-av-production.hwdb
 %{_udevhwdbdir}/70-cameras.hwdb
+%{_udevhwdbdir}/70-hardware-wallets.hwdb
 %{_udevhwdbdir}/70-joystick.hwdb
 %{_udevhwdbdir}/70-mouse.hwdb
 %{_udevhwdbdir}/70-pda.hwdb
@@ -320,10 +324,17 @@
 %{_unitdir}/integritysetup-pre.target
 %{_unitdir}/integritysetup.target
 %{_unitdir}/kmod-static-nodes.service
+%endif
+%{_unitdir}/quotaon-root.service
+%{_unitdir}/quotaon@.service
+%if %{without bootstrap}
 %{_unitdir}/remote-cryptsetup.target
 %{_unitdir}/remote-veritysetup.target
 %endif
 %{_unitdir}/sleep.target
+%if %{with sd_boot}
+%{_unitdir}/sockets.target.wants/systemd-bootctl.socket
+%endif
 %{_unitdir}/sockets.target.wants/systemd-udevd-control.socket
 %{_unitdir}/sockets.target.wants/systemd-udevd-kernel.socket
 %{_unitdir}/suspend-then-hibernate.target
@@ -332,6 +343,7 @@
 %{_unitdir}/sysinit.target.wants/cryptsetup.target
 %{_unitdir}/sysinit.target.wants/integritysetup.target
 %{_unitdir}/sysinit.target.wants/kmod-static-nodes.service
+%{_unitdir}/sysinit.target.wants/systemd-hibernate-clear.service
 %endif
 %{_unitdir}/sysinit.target.wants/systemd-hwdb-update.service
 %if %{without bootstrap}
@@ -349,11 +361,18 @@
 %endif
 %{_unitdir}/systemd-backlight@.service
 %{_unitdir}/systemd-battery-check.service
+%if %{with sd_boot}
+%{_unitdir}/systemd-bootctl.socket
+%{_unitdir}/systemd-bootctl@.service
+%endif
 %{_unitdir}/systemd-firstboot.service
 %{_unitdir}/systemd-fsck-root.service
 %{_unitdir}/systemd-fsck@.service
 %{_unitdir}/systemd-growfs-root.service
 %{_unitdir}/systemd-growfs@.service
+%if %{without bootstrap}
+%{_unitdir}/systemd-hibernate-clear.service
+%endif
 %{_unitdir}/systemd-hibernate-resume.service
 %{_unitdir}/systemd-hibernate.service
 %{_unitdir}/systemd-hwdb-update.service
@@ -363,15 +382,8 @@
 %endif
 %{_unitdir}/systemd-network-generator.service
 %{_unitdir}/systemd-pstore.service
-%if %{with upstream}
 %{_unitdir}/systemd-quotacheck-root.service
-%endif
-%if %{without upstream}
-%{_unitdir}/systemd-quotacheck.service
-%endif
-%if %{with upstream}
 %{_unitdir}/systemd-quotacheck@.service
-%endif
 %{_unitdir}/systemd-random-seed.service
 %{_unitdir}/systemd-remount-fs.service
 %if %{without bootstrap}
@@ -384,6 +396,7 @@
 %{_unitdir}/systemd-timesyncd.service
 %{_unitdir}/systemd-tmpfiles-setup-dev-early.service
 %{_unitdir}/systemd-tmpfiles-setup-dev.service
+%{_unitdir}/systemd-udev-load-credentials.service
 %{_unitdir}/systemd-udev-settle.service
 %{_unitdir}/systemd-udev-trigger.service
 %{_unitdir}/systemd-udevd-control.socket
@@ -391,6 +404,7 @@
 %{_unitdir}/systemd-udevd.service
 %{_unitdir}/systemd-vconsole-setup.service
 %{_unitdir}/systemd-volatile-root.service
+%{_unitdir}/tpm2.target
 %if %{without bootstrap}
 %{_unitdir}/veritysetup-pre.target
 %{_unitdir}/veritysetup.target

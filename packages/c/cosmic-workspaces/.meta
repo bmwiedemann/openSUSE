@@ -1,0 +1,6 @@
+<package name="cosmic-workspaces" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="X11:COSMIC:Factory" package="cosmic-workspaces"/>
+  <url>https://github.com/pop-os/cosmic-workspaces-epoch</url>
+</package>

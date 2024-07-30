@@ -1,0 +1,6 @@
+<package name="cosmic-notifications" project="openSUSE:Factory">
+  <title></title>
+  <description>Layer Shell notifications daemon which integrates with COSMIC.</description>
+  <devel project="X11:COSMIC:Factory" package="cosmic-notifications"/>
+  <url>https://github.com/pop-os/cosmic-notifications</url>
+</package>

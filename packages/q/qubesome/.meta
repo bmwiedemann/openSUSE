@@ -1,0 +1,6 @@
+<package name="qubesome" project="openSUSE:Factory">
+  <title>qubesome</title>
+  <description>CLI to define your Window Manager and Workloads declaratively in Git and run them as containers. Just like dotfiles management, but better.</description>
+  <devel project="devel:languages:go" package="qubesome"/>
+  <url>https://github.com/qubesome/cli</url>
+</package>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jul 28 14:40:46 UTC 2024 - Hillwood Yang <hillwood@opensuse.org>
+
+- Add Requires tag for dconf-editor to workaround boo#1222583
+
+-------------------------------------------------------------------
 Wed May 22 06:51:23 UTC 2024 - ming li <mli@suse.com>
 
 - Update version to 1.28.1:

@@ -7,4 +7,14 @@
     <comment>New package zls. A language server for Zig the programming language.</comment>
     <requestid>1177196</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>197e93048361f482c40e9dd01fa89b97</srcmd5>
+    <version>0.13.0</version>
+    <time>1722282756</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.13.0:
+  * Release intended for Zig 0.13.0. No significant
+    changes</comment>
+    <requestid>1189983</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package rtl-sdr
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,16 +16,15 @@
 #
 
 
-%define sover 2
+%define sover 0
 %define libname librtlsdr%{sover}
 %define rtlsdr_group rtlsdr
 
 Name:           rtl-sdr
-Version:        2.0.1
+Version:        2.0.2
 Release:        0
 Summary:        Support programs for RTL2832
 License:        GPL-2.0-or-later
-Group:          Productivity/Hamradio/Other
 URL:            http://sdr.osmocom.org/trac/wiki/rtl-sdr
 #Git-Clone:     https://git.osmocom.org/rtl-sdr
 Source:         https://github.com/steve-m/librtlsdr/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
@@ -42,15 +41,14 @@ it can be used as a SDR receiver.
 
 %package -n %{libname}
 Summary:        SDR driver for RTL2832
-Group:          System/Libraries
 Requires:       %{name}-udev
+Conflicts:      librtlsdr2
 
 %description -n %{libname}
 Library to run Realtek RTL2832 based DVB dongle as a SDR receiver.
 
 %package udev
 Summary:        Udev rules for RTL2832
-Group:          Hardware/Other
 Requires(pre):  shadow
 
 %description udev
@@ -58,14 +56,13 @@ Udev rules for rtl-sdr driver
 
 %package devel
 Summary:        Development files for rtl-sdr
-Group:          Development/Libraries/Other
 Requires:       %{libname} = %{version}
 
 %description devel
 Library headers for rtl-sdr driver.
 
 %prep
-%autosetup -p1 -n librtlsdr-%{version}
+%autosetup -p1
 
 %build
 %cmake \
@@ -74,14 +71,13 @@ Library headers for rtl-sdr driver.
   -DUDEV_RULES_GROUP=%{rtlsdr_group} \
   -DDETACH_KERNEL_DRIVER=ON \
   -DENABLE_ZEROCOPY=ON
-%make_jobs
+%cmake_build
 
 %install
 %cmake_install
 rm %{buildroot}%{_libdir}/librtlsdr.a
 
-%post -n %{libname} -p /sbin/ldconfig
-%postun -n %{libname} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{libname}
 
 %pre udev
 getent group %{rtlsdr_group} >/dev/null || groupadd -r %{rtlsdr_group}
@@ -106,6 +102,7 @@ getent group %{rtlsdr_group} >/dev/null || groupadd -r %{rtlsdr_group}
 
 %files -n %{libname}
 %{_libdir}/librtlsdr.so.%{sover}*
+%{_libdir}/librtlsdr.so.2*
 
 %files udev
 %{_udevrulesdir}/rtl-sdr.rules

@@ -1,0 +1,6 @@
+<package name="cosmic-applets" project="openSUSE:Factory">
+  <title></title>
+  <description>Applets for the COSMIC Desktop Environment.</description>
+  <devel project="X11:COSMIC:Factory" package="cosmic-applets"/>
+  <url>https://github.com/pop-os/cosmic-applets</url>
+</package>

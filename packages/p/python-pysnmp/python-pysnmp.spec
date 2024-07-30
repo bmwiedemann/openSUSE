@@ -17,17 +17,18 @@
 
 
 Name:           python-pysnmp
-Version:        5.0.28
+Version:        6.2.4
 Release:        0
 Summary:        A pure-Python SNMPv1/v2c/v3 library
 License:        BSD-2-Clause
 URL:            https://github.com/lextudio/pysnmp
-Source:         https://github.com/lextudio/pysnmp/archive/refs/tags/v%{version}.tar.gz#/pysnmp-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM ish? Sourced from gh#pyasn1/pyasn1/issues/28
-Patch0:         support-new-pyasn1.patch
+Source:         https://files.pythonhosted.org/packages/source/p/pysnmp/pysnmp-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry-core}
+BuildRequires:  %{python_module pyasn1}
 BuildRequires:  %{python_module pysmi}
+BuildRequires:  %{python_module pytest-asyncio}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  net-snmp
@@ -70,15 +71,20 @@ find docs -name "\.*" -exec rm -Rf {} +
 chmod -x docs/net-snmptrapd.conf docs/net-snmpd.conf
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-### Disable checks since those require a running snmpd
-#%%check
-#%%python_expand PYTHONPATH=%%{buildroot}%%{$python_sitelib} ./runtests.sh
+%check
+donttest="test_addAsn1MibSource"
+
+# Running tests with python -m to make it work with the import path
+%{python_expand #
+# Not running asyncio tests that requires network
+$python -m pytest -v -m 'not asyncio' -k "not $donttest"
+}
 
 %files %{python_files}
 %license LICENSE.rst
-%doc CHANGES.txt README.md THANKS.txt TODO.txt docs examples
+%doc README.md docs examples
 %{python_sitelib}/pysnmp
-%{python_sitelib}/pysnmp_lextudio-%{version}.dist-info
+%{python_sitelib}/pysnmp-%{version}.dist-info
 
 %files -n python-pysnmp-doc
 %license LICENSE.rst

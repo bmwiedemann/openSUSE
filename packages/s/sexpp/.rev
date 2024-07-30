@@ -7,4 +7,12 @@
     <comment>renamed from sexp and replacing it</comment>
     <requestid>1095496</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>b8a1e0abac9a26c85d513cbd2c54128a</srcmd5>
+    <version>0.8.8</version>
+    <time>1722282759</time>
+    <user>dimstar_suse</user>
+    <comment>sexpp 0.8.8 (forwarded request 1190044 from AndreasStieger)</comment>
+    <requestid>1190045</requestid>
+  </revision>
 </revisionlist>

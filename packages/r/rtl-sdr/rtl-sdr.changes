@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Jul 29 07:43:09 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
+
+- Add conflict for library package with librtlsdr2 
+- Small spec file modernisation
+
+-------------------------------------------------------------------
+Sat Jun 15 09:19:48 UTC 2024 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Update to version (tag) 2.0.2
+  * lib: set SOVERSION back to 0
+  * r82xx: improve tuner precision and avoid redundant register
+    writes for speed
+  * fix: round gain input to nearest value
+  * fix: set fc0012 gain to low on init
+  * use library paths from pkg-config
+- version number set in CmakeList.txt is still 2.0.1, workaround added
+
+-------------------------------------------------------------------
 Fri Feb 23 11:57:32 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

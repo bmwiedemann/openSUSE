@@ -62,4 +62,16 @@
   * extractor: Show more info when we can't get the command line</comment>
     <requestid>1189411</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>f102f0c802a6b34f5956f3b297249f36</srcmd5>
+    <version>0~20240725.cc0513f</version>
+    <time>1722282768</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0~20240725.cc0513f:
+  * ksrc.py: Check CVE passed in get-patches
+  * extractor: lock the same src directory on which architecture the script is running on
+  * Add support for tests files in directories
+  * extractor: Add filelocking support for srcdir</comment>
+    <requestid>1190166</requestid>
+  </revision>
 </revisionlist>

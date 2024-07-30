@@ -1,0 +1,6 @@
+<package name="cosmic-randr" project="openSUSE:Factory">
+  <title></title>
+  <description>COSMIC RandR is both a library and command line utility for displaying and configuring Wayland outputs. Each display is represented as an &quot;output head&quot;, whereas all supported configurations for each display is represented as &quot;output modes&quot;.</description>
+  <devel project="X11:COSMIC:Factory" package="cosmic-randr"/>
+  <url>https://github.com/pop-os/cosmic-randr</url>
+</package>

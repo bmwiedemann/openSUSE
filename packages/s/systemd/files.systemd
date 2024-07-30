@@ -134,9 +134,13 @@
 %{_bindir}/systemd-tmpfiles
 %{_bindir}/systemd-tty-ask-password-agent
 %{_bindir}/systemd-umount
+%{_bindir}/systemd-vpick
 %{_bindir}/timedatectl
 %if %{without bootstrap}
 %{_bindir}/userdbctl
+%endif
+%{_bindir}/varlinkctl
+%if %{without bootstrap}
 %{_datadir}/bash-completion/completions/busctl
 %{_datadir}/bash-completion/completions/coredumpctl
 %{_datadir}/bash-completion/completions/hostnamectl
@@ -157,6 +161,7 @@
 %{_datadir}/bash-completion/completions/systemd-path
 %{_datadir}/bash-completion/completions/systemd-run
 %{_datadir}/bash-completion/completions/systemd-sysext
+%{_datadir}/bash-completion/completions/systemd-vpick
 %{_datadir}/bash-completion/completions/timedatectl
 %endif
 # dbus introspection data for code generators: https://github.com/systemd/systemd/pull/20294
@@ -193,7 +198,9 @@
 %{_datadir}/dbus-1/system.d/org.freedesktop.login1.conf
 %{_datadir}/dbus-1/system.d/org.freedesktop.systemd1.conf
 %{_datadir}/dbus-1/system.d/org.freedesktop.timedate1.conf
+%{_datadir}/mime/packages/io.systemd.xml
 %{_datadir}/pkgconfig/systemd.pc
+%{_datadir}/polkit-1/actions/io.systemd.credentials.policy
 %{_datadir}/polkit-1/actions/org.freedesktop.hostname1.policy
 %{_datadir}/polkit-1/actions/org.freedesktop.locale1.policy
 %{_datadir}/polkit-1/actions/org.freedesktop.login1.policy
@@ -220,6 +227,7 @@
 %{_datadir}/zsh/site-functions/_systemd-run
 %{_datadir}/zsh/site-functions/_systemd-tmpfiles
 %{_datadir}/zsh/site-functions/_timedatectl
+%{_datadir}/zsh/site-functions/_varlinkctl
 %{_journalcatalogdir}/systemd.catalog
 %{_libdir}/libnss_myhostname.so.2
 %{_libdir}/libnss_systemd.so.2
@@ -260,10 +268,13 @@
 %{_mandir}/man1/systemd-stdio-bridge.1.gz
 %{_mandir}/man1/systemd-tty-ask-password-agent.1.gz
 %{_mandir}/man1/systemd-umount.1.gz
+%{_mandir}/man1/systemd-vpick.1.gz
 %{_mandir}/man1/systemd.1.gz
 %{_mandir}/man1/timedatectl.1.gz
 %{_mandir}/man1/userdbctl.1.gz
+%{_mandir}/man1/varlinkctl.1.gz
 %{_mandir}/man5/binfmt.d.5.gz
+%{_mandir}/man5/capsule@.service.5.gz
 %{_mandir}/man5/coredump.conf.5.gz
 %{_mandir}/man5/coredump.conf.d.5.gz
 %{_mandir}/man5/dnssec-trust-anchors.d.5.gz
@@ -334,6 +345,7 @@
 %{_mandir}/man7/systemd.syntax.7.gz
 %{_mandir}/man7/systemd.system-credentials.7.gz
 %{_mandir}/man7/systemd.time.7.gz
+%{_mandir}/man7/systemd.v.7.gz
 %{_mandir}/man8/30-systemd-environment-d-generator.8.gz
 %{_mandir}/man8/halt.8.gz
 %{_mandir}/man8/libnss_myhostname.so.2.8.gz
@@ -517,6 +529,8 @@
 %{_unitdir}/blockdev@.target
 %{_unitdir}/bluetooth.target
 %{_unitdir}/boot-complete.target
+%{_unitdir}/capsule.slice
+%{_unitdir}/capsule@.service
 %{_unitdir}/console-getty.service
 %{_unitdir}/container-getty@.service
 %{_unitdir}/ctrl-alt-del.target
@@ -567,15 +581,6 @@
 %{_unitdir}/printer.target
 %{_unitdir}/proc-sys-fs-binfmt_misc.automount
 %{_unitdir}/proc-sys-fs-binfmt_misc.mount
-%if %{with upstream}
-%{_unitdir}/quotaon-root.service
-%endif
-%if %{without upstream}
-%{_unitdir}/quotaon.service
-%endif
-%if %{with upstream}
-%{_unitdir}/quotaon@.service
-%endif
 %{_unitdir}/reboot.target
 %{_unitdir}/remote-fs-pre.target
 %{_unitdir}/remote-fs.target
@@ -591,11 +596,14 @@
 %if %{without bootstrap}
 %{_unitdir}/sockets.target.wants/systemd-coredump.socket
 %endif
+%{_unitdir}/sockets.target.wants/systemd-creds.socket
+%{_unitdir}/sockets.target.wants/systemd-hostnamed.socket
 %{_unitdir}/sockets.target.wants/systemd-journald-dev-log.socket
 %{_unitdir}/sockets.target.wants/systemd-journald.socket
 %{_unitdir}/sockets.target.wants/systemd-sysext.socket
 %{_unitdir}/soft-reboot.target
 %{_unitdir}/sound.target
+%{_unitdir}/ssh-access.target
 %{_unitdir}/swap.target
 %{_unitdir}/sys-fs-fuse-connections.mount
 %{_unitdir}/sys-kernel-config.mount
@@ -638,13 +646,17 @@
 %{_unitdir}/systemd-coredump.socket
 %{_unitdir}/systemd-coredump@.service
 %endif
+%{_unitdir}/systemd-creds.socket
+%{_unitdir}/systemd-creds@.service
 %{_unitdir}/systemd-exit.service
 %{_unitdir}/systemd-halt.service
 %{_unitdir}/systemd-hostnamed.service
+%{_unitdir}/systemd-hostnamed.socket
 %{_unitdir}/systemd-journal-catalog-update.service
 %{_unitdir}/systemd-journal-flush.service
 %{_unitdir}/systemd-journald-audit.socket
 %{_unitdir}/systemd-journald-dev-log.socket
+%{_unitdir}/systemd-journald-sync@.service
 %{_unitdir}/systemd-journald-varlink@.socket
 %{_unitdir}/systemd-journald.service
 %{_unitdir}/systemd-journald.socket
@@ -689,4 +701,5 @@
 %{_unitdir}/user@.service
 %{_unitdir}/user@.service.d/10-login-barrier.conf
 %{_unitdir}/user@0.service.d/10-login-barrier.conf
+%{_userunitdir}/capsule@.target
 %{xinitconfdir}/xinitrc.d/50-systemd-user.sh

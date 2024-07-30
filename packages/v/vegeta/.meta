@@ -1,0 +1,15 @@
+<package name="vegeta" project="openSUSE:Factory">
+  <title>HTTP load testing tool and library</title>
+  <description>Vegeta is a versatile HTTP load testing tool built out of a need to drill HTTP services with a constant request rate.
+
+Features:
+
+* Usable as a command line tool and a Go library.
+* CLI designed with UNIX composability in mind.
+* Avoids nasty Coordinated Omission.
+* Extensive reporting functionality.
+* Simple to use for distributed load testing.
+* Easy to install and run (static binary, package managers, etc).</description>
+  <devel project="server:http" package="vegeta"/>
+  <url>https://github.com/tsenart/vegeta</url>
+</package>

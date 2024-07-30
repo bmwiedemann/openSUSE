@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Mon Jul 29 08:33:51 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to version 6.2.4
+  * Deleted more obsolete items.
+- Update to version 6.2.3
+  * Removed unused dependencies.
+- Enable tests
+- Get source from pypi, github tag doesn't have the latest version and
+  looks like the releases are not done in the github.
+
+-------------------------------------------------------------------
+Sat Jul 20 09:33:35 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 6.2.2
+  * Cleaned up sync API leftover.
+  * Retired temporary sync API.
+  * Removed package postfix. A helper release to enable migration.
+  * Merged changes from 4.4.13.
+  * Fixed more access descriptors.
+  * Initial work to support pysmi-lextudio 1.3.0 and above.
+  * Removed package postfix. A helper release to enable migration.
+  * Restricted pysmi-lextudio version to 1.2.0 to avoid
+    breaking changes.
+  * Fixed walkCmd bug.
+  * Fixed bulkWalkCmd bug.
+  * Added sync oneliner back.
+  * Fix annotations.
+  * Added walkCmd() and bulkWalkCmd() to hlapi.
+  * Improved Slim class to support IPv6.
+  * Added some sync API based on asyncio.
+  * Added custom socket support in openServerMode.
+  * Fixed various bugs in RFC3414 error handling.
+  * Reverted some changes in 6.0.2 on asyncio dispatch.
+  * Deleted asyncore related bits.
+  * Simplified asyncio dispatch.
+  * Added ignoreNonIncreasingOid option to nextCmd and bulkCmd.
+  * Fixed a dispatch bug related to "Slim.close".
+  * Improved asyncio "runDispatcher" method to support timeout.
+  * Changed internal defaults to asyncio.
+  * Converted asyncore samples to asyncio.
+- Update to version 5.1.0
+  * Removed package postfix. A helper release to enable migration.
+- Update to version 5.0.34
+  Changes since 5.0.28
+  * Fixed a v3 authentication issue when wrong user name is used.
+  * Fixed an import error with Python 3.12.
+  * Added timeout and retries to Slim class.
+  * Added experimental Python 3.12 support based on pyasyncore.
+    But all asyncore based API is deprecated and will be removed
+    in the next major release.
+  * Added pyasn1 0.5.1 support.
+  * Fix asyncio hlapi double awaitable returns.
+- Drop patch:
+  * support-new-pyasn1.patch (not longer needed)
+
+-------------------------------------------------------------------
 Thu Feb  1 08:12:53 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - use poetry-core for building

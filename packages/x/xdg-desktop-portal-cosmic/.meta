@@ -1,0 +1,6 @@
+<package name="xdg-desktop-portal-cosmic" project="openSUSE:Factory">
+  <title></title>
+  <description>COSMIC implementation of xdg-desktop-portal</description>
+  <devel project="X11:COSMIC:Factory" package="xdg-desktop-portal-cosmic"/>
+  <url>https://github.com/pop-os/xdg-desktop-portal-cosmic</url>
+</package>

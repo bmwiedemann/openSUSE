@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul 25 21:25:08 UTC 2024 - Georg Pfuetzenreuter <mail+rpm@georg-pfuetzenreuter.net>
+
+- Remove unused --enable-dynamic configure option
+- Add missing plugin.m4 to build AbiCommand
+
+-------------------------------------------------------------------
 Tue Jul  2 18:29:30 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add xml-inc.patch: Add missing include. Fix build in factory.

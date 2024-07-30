@@ -6682,4 +6682,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>6.10.1 + amdgpu fixed + algif enabled again; bugs: bsc#1012628 bsc#1223838 bsc#1226463 bsc#1228093</comment>
     <requestid>1189731</requestid>
   </revision>
+  <revision rev="741" vrev="1">
+    <srcmd5>0cf44c3dcecd4565d818e5059df49e82</srcmd5>
+    <version>6.10.2</version>
+    <time>1722282732</time>
+    <user>dimstar_suse</user>
+    <comment>6.10.2 + fixed qxl; bugs: bsc#1012628 bsc#1228387 bsc#1228388</comment>
+    <requestid>1190238</requestid>
+  </revision>
 </revisionlist>

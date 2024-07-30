@@ -1,0 +1,19 @@
+-------------------------------------------------------------------
+Sat Jul 06 16:50:22 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Update to version 0.1.0+git20240705.11914e9:
+  * Use `FromGlesError` instead of `OutputNoMode` placeholder
+  * screencopy: Handle error from `with_buffer_contents_mut`
+  * shell: Don't check grab-conditions for SSD grabs
+  * tiling: Don't crash when swapping with group
+  * shell: Populate focus_stack when unstacking
+  * focus: Fall back to first window, if stack is empty
+  * shell: Don't skip over Group-targets for next_focus
+  * chore: smithay update
+  * feat: runtime configurable keybindings
+  * xwayland: Fix offset x11 geometry after configure request
+
+-------------------------------------------------------------------
+Wed Mar 13 22:06:53 UTC 2024 - Richard Rahl <rrahl0@proton.me>
+
+- initial packaging

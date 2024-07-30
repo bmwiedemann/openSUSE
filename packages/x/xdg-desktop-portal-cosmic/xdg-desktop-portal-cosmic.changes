@@ -1,0 +1,19 @@
+-------------------------------------------------------------------
+Sat Jul 06 17:07:55 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Use tar_scm -- gh#openSUSE/obs-service-tar_scm#493
+- Update to version 0.1.0+git20240703.b221b3e:
+  * FileChooser portal
+  * Fix passing fd to pipewire in example.
+  * fix: Change remaining `dbus_interface` uses to `zbus`
+  * l10n(ru): Add Russian l10n
+  * fix: change color-schem on theme mode change
+  * update libcosmic
+  * fix: add clipboard scheme to handle cases with no uri
+  * feat: implement design
+  * feat: copy screenshot to clipboard
+
+-------------------------------------------------------------------
+Thu Mar 14 04:16:41 UTC 2024 - Richard Rahl <rrahl0@proton.me>
+
+- initial packaging

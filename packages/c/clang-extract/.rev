@@ -108,4 +108,13 @@
   * SymbolExternalizer: Check KLP_ macros only if there was externzalized syms</comment>
     <requestid>1189140</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>548ebb1ad8e3deed39194ef78f65aa82</srcmd5>
+    <version>0~20240726.4309abc</version>
+    <time>1722282767</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0~20240726.4309abc:
+  * Fix closure missing TypedefDecl because not being referenced by type</comment>
+    <requestid>1190165</requestid>
+  </revision>
 </revisionlist>

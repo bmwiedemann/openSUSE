@@ -1,0 +1,12 @@
+<package name="cosmic-bg" project="openSUSE:Factory">
+  <title></title>
+  <description>COSMIC session service which applies backgrounds to displays. Supports the following features:
+
+    Supports common image formats supported by image-rs
+    8 and 10-bit background surface layers
+    Use of colors and gradients for backgrounds
+    Per-display background application
+    Wallpaper slideshows that alternate between backgrounds periodically</description>
+  <devel project="X11:COSMIC:Factory" package="cosmic-bg"/>
+  <url>https://github.com/pop-os/cosmic-bg</url>
+</package>

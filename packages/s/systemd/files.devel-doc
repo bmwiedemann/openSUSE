@@ -158,6 +158,7 @@
 %{_mandir}/man3/sd_bus_creds_get_mask.3.gz
 %{_mandir}/man3/sd_bus_creds_get_owner_uid.3.gz
 %{_mandir}/man3/sd_bus_creds_get_pid.3.gz
+%{_mandir}/man3/sd_bus_creds_get_pidfd_dup.3.gz
 %{_mandir}/man3/sd_bus_creds_get_ppid.3.gz
 %{_mandir}/man3/sd_bus_creds_get_selinux_context.3.gz
 %{_mandir}/man3/sd_bus_creds_get_session.3.gz
@@ -179,6 +180,7 @@
 %{_mandir}/man3/sd_bus_creds_has_inheritable_cap.3.gz
 %{_mandir}/man3/sd_bus_creds_has_permitted_cap.3.gz
 %{_mandir}/man3/sd_bus_creds_new_from_pid.3.gz
+%{_mandir}/man3/sd_bus_creds_new_from_pidfd.3.gz
 %{_mandir}/man3/sd_bus_creds_ref.3.gz
 %{_mandir}/man3/sd_bus_creds_unref.3.gz
 %{_mandir}/man3/sd_bus_creds_unrefp.3.gz
@@ -496,6 +498,7 @@
 %{_mandir}/man3/sd_event_source_get_exit_on_failure.3.gz
 %{_mandir}/man3/sd_event_source_get_floating.3.gz
 %{_mandir}/man3/sd_event_source_get_inotify_mask.3.gz
+%{_mandir}/man3/sd_event_source_get_inotify_path.3.gz
 %{_mandir}/man3/sd_event_source_get_io_events.3.gz
 %{_mandir}/man3/sd_event_source_get_io_fd.3.gz
 %{_mandir}/man3/sd_event_source_get_io_fd_own.3.gz
@@ -636,6 +639,7 @@
 %{_mandir}/man3/sd_journal_set_data_threshold.3.gz
 %{_mandir}/man3/sd_journal_step_one.3.gz
 %{_mandir}/man3/sd_journal_stream_fd.3.gz
+%{_mandir}/man3/sd_journal_stream_fd_with_namespace.3.gz
 %{_mandir}/man3/sd_journal_test_cursor.3.gz
 %{_mandir}/man3/sd_journal_wait.3.gz
 %{_mandir}/man3/sd_listen_fds.3.gz

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jul 19 13:56:16 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Synchronize SLE-15 and openSUSE:Factory [PED-8393, bsc#1224138].
+  The following patches are now obsolete in version 3.13.0:
+  * lspci-Fixed-buffer-overflows-in-ls-tree.c.patch
+  * pciutils-Add-PCIe-5.0-data-rate-32-GT-s-support.patch
+  * pciutils-Add-PCIe-6.0-data-rate-64-GT-s-support.patch
+  * pciutils-Add-decoding-of-vendor-specific-VPD-fields.patch
+  * pciutils-VPD-Cleanup.patch
+  * pciutils-VPD-When-printing-item-IDs-escape-non-ASCII-characte.patch
+
+-------------------------------------------------------------------
 Sun Jun 30 21:38:51 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.13.0:
@@ -37,6 +49,19 @@ Sun Jun  9 14:56:50 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
     specification in $XDG_CACHE_HOME/pci-ids.
   * All source files now have SPDX license identifiers.
   * various minor bug fixes and updated pci.ids.
+
+-------------------------------------------------------------------
+Wed Oct  4 08:52:45 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Apply "lspci-Fixed-buffer-overflows-in-ls-tree.c.patch" to fix a
+  buffer overflow error that would cause lspci to crash on systems
+  with complex topologies. [bsc#1215265]
+
+- Add "pciutils.keyring" so that the tarball's signature can be
+  verified at build time.
+
+- Use "%license" tag instead of "%doc" to install the package's
+  license file.
 
 -------------------------------------------------------------------
 Thu May 11 08:20:57 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
@@ -112,6 +137,14 @@ Thu Apr 21 07:08:48 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 - Drop pciutils-add-decode-support-for-RCECs.patch
 
 -------------------------------------------------------------------
+Mon Jan 24 12:05:25 UTC 2022 - vliaskovitis@suse.com
+
+- Add "pciutils-Add-PCIe-5.0-data-rate-32-GT-s-support.patch" and
+  "pciutils-Add-PCIe-6.0-data-rate-64-GT-s-support.patch" to fix
+  LnkCap speed recognition in lspci for multi PCIe ports such as
+  the ML110 Gen11. [bsc#1192862]
+
+-------------------------------------------------------------------
 Sun Jan 23 14:56:10 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
 
 - Set sbindir to /usr/bin to fix Steam issues
@@ -124,7 +157,7 @@ Tue May 11 14:19:35 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 - prepare usrmerge (boo#1029961)
 
 -------------------------------------------------------------------
-Thu Oct 29 08:24:59 UTC 2020 - pgajdos@suse.com
+Thu Oct 29 08:36:44 UTC 2020 - pgajdos@suse.com
 
 - Add decode support for RCECs [jsc#SLE-13735]
 - added patches
@@ -145,6 +178,15 @@ Mon Jun  1 07:19:48 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
   * back-ends which do not support domains now correctly fail when
     trying to access devices outside domain 0
 - Add upstream keyging to verify source signature
+
+-------------------------------------------------------------------
+Thu May 21 15:27:52 UTC 2020 - Michal Suchanek <msuchanek@suse.com>
+
+- Fix lspci outputs few of the VPD data fields are displayed as unknown (bsc#1170554, ltc#185587).
+  Added:
+   * pciutils-VPD-When-printing-item-IDs-escape-non-ASCII-characte.patch
+   * pciutils-VPD-Cleanup.patch
+   * pciutils-Add-decoding-of-vendor-specific-VPD-fields.patch
 
 -------------------------------------------------------------------
 Thu Apr  2 07:38:52 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
@@ -1105,4 +1147,3 @@ Tue Feb 23 00:41:35 MET 1999 - ro@suse.de
 Thu Nov 26 00:29:55 MET 1998 - ro@suse.de
 
 - created package, version 1.08
-

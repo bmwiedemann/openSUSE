@@ -11,13 +11,13 @@
 # case the license is the MIT License). An "Open Source License" is a
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
-#
+
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           zls
-Version:        0.12.0
+Version:        0.13.0
 Release:        0
 Summary:        Language server implementation for Zig in Zig
 License:        MIT

@@ -1,0 +1,37 @@
+-------------------------------------------------------------------
+Fri Jul 26 15:31:55 UTC 2024 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Updating %{version} as requested in
+  https://build.opensuse.org/request/show/1189627
+
+-------------------------------------------------------------------
+Fri Jul  5 16:19:18 UTC 2024 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Updating %description as requested in
+  https://build.opensuse.org/request/show/1175614
+
+-------------------------------------------------------------------
+Tue May 14 19:43:42 UTC 2024 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Borrowed from OBS://home:darix:apps/lowdown as lowdown can be used to create
+  btop man page
+  * Adjusted to use _service file and pull from gh://kristapsdz/lowdown
+
+-------------------------------------------------------------------
+Tue May 14 19:32:52 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version VERSION_1_1_0+git20231119.1200b9f:
+  * Enable GitHub actions.
+  * Have valgrind rule return.
+  * Bring up to date with oconfigure.
+  * More typo fixes
+  * Last bits for version.
+  * Fix forced multiline blockquotes in -tgemini.
+  * In -tgemini, print newline after blockcode.
+  * Get ready for 1.1.0.
+  * Add --term-all-meta for compatibility.
+
+-------------------------------------------------------------------
+Sun Feb  4 20:11:11 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- initial package

@@ -1,0 +1,6 @@
+<package name="cosmic-launcher" project="openSUSE:Factory">
+  <title></title>
+  <description>Layer Shell frontend for pop-launcher. Currently the underlying protocol being used in the plugin for managing toplevels in wayland is defined here but it will be switched to use wlr-foreign-toplevel-management when it is ready.</description>
+  <devel project="X11:COSMIC:Factory" package="cosmic-launcher"/>
+  <url>https://github.com/pop-os/cosmic-launcher</url>
+</package>

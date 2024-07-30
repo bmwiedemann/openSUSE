@@ -1,0 +1,12 @@
+diff -rub launcher/justfile launcher-patched/justfile
+--- launcher/justfile	2024-03-20 07:47:06.134294454 +0100
++++ launcher-patched/justfile	2024-03-20 08:16:28.542472749 +0100
+@@ -67,7 +67,7 @@
+         dest={{plugin-dir}}${plugin}
+         mkdir -p ${dest}
+         install -Dm0644 plugins/src/${plugin}/*.ron ${dest}
+-        ln -sf {{bin-path}} {{plugin-dir}}${plugin}/$(echo ${plugin} | sed 's/_/-/')
++        ln -rsf {{bin-path}} {{plugin-dir}}${plugin}/$(echo ${plugin} | sed 's/_/-/')
+     done
+ 
+ # Install pop-launcher scripts

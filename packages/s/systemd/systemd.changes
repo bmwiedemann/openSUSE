@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Wed Jul 24 13:49:10 UTC 2024 - Franck Bui <fbui@suse.com>
+
+- Import commit 5bba1ebe17564b606cc5d1c07b14123c305019a7 (merge of v256.4)
+
+  For a complete list of changes, visit:
+  https://github.com/openSUSE/systemd/compare/bd8b5ee3cf0466b6b78e167967468cf6f93ec807...5bba1ebe17564b606cc5d1c07b14123c305019a7
+
+-------------------------------------------------------------------
+Wed Jul 24 12:34:13 UTC 2024 - Michal Koutný <mkoutny@suse.com>
+
+- Add 5004-disable-session-freeze.patch as a temporary workaround for
+  https://github.com/systemd/systemd/issues/33083
+
+-------------------------------------------------------------------
+Mon Jul 22 12:06:23 UTC 2024 - Franck Bui <fbui@suse.com>
+
+- Add temporarily 5003-core-when-switching-root-remove-run-systemd-before-e.patch (bsc#1227580)
+
+-------------------------------------------------------------------
+Mon Jul 22 11:53:27 UTC 2024 - Franck Bui <fbui@suse.com>
+
+- Don't mention any rpm macros inside comments, even if escaped (bsc#1228091)
+
+  Otherwise pesign-obs-integration ends up re-packaging systemd with all macros
+  inside comments unescaped leading to unpredictable behavior. Now why rpm
+  expands rpm macros inside comments is the question...
+
+-------------------------------------------------------------------
+Tue Jul 16 14:29:24 UTC 2024 - Franck Bui <fbui@suse.com>
+
+- Skip running the test units in %check for now.
+
+  Some tests don't appreciate to run inside the build environment of OBS
+  currently and some of them take an unexpected long time to execute on both
+  risc and s390x architectures.
+
+-------------------------------------------------------------------
+Thu Jul 11 10:17:06 UTC 2024 - Franck Bui <fbui@suse.com>
+
+- Make sure systemd-sysvcompat replaces systemd-sysvinit on upgrades (bsc#1218110)
+
+-------------------------------------------------------------------
+Mon Jul  8 07:56:15 UTC 2024 - Franck Bui <fbui@suse.com>
+
+- Import commit bd8b5ee3cf0466b6b78e167967468cf6f93ec807 (merge of v256.2)
+
+  For a complete list of changes, visit:
+  https://github.com/openSUSE/systemd/compare/dd15bf4f6430d8646e546ee0b980448c7d0c9699...bd8b5ee3cf0466b6b78e167967468cf6f93ec807
+
+-------------------------------------------------------------------
+Thu Jul  4 13:04:04 UTC 2024 - Franck Bui <fbui@suse.com>
+
+- varlinkctl is no more considered as experimental and has been moved to the
+  main package.
+
+-------------------------------------------------------------------
+Thu Jul  4 09:07:28 UTC 2024 - Franck Bui <fbui@suse.com>
+
+- Upgrade to v256.1 (commit dd15bf4f6430d8646e546ee0b980448c7d0c9699)
+
+  See https://github.com/openSUSE/systemd/blob/SUSE/v256/NEWS for details.
+
+  - Added pam.systemd-run0
+
+-------------------------------------------------------------------
 Mon Jul  1 08:35:26 UTC 2024 - Franck Bui <fbui@suse.com>
 
 - Import commit 5a8eadd0c021758337a020c423f25a353bdb9b3c (merge of v255.8)
@@ -1359,6 +1424,7 @@ Mon Nov 14 11:15:06 UTC 2022 - Franck Bui <fbui@suse.com>
    - upstream commit 67c3e1f63a5221b47a8fea85ae421671f29f3b7e (bsc#1200723)
    - upstream commit 9102c625a673a3246d7e73d8737f3494446bad4e (bsc#1204968 CVE-2022-3821)
    - upstream commit efbd4b3ca84c0426b6ff98d6352f82f3b7c090b2 (bsc#1213873)
+   - upstream commit f562abe2963bad241d34e0b308e48cf114672c84 (bsc#1226414)
 
   * Rebased 0001-conf-parser-introduce-early-drop-ins.patch
             1000-Revert-getty-Pass-tty-to-use-by-agetty-via-stdin.patch

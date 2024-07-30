@@ -1,0 +1,8 @@
+# SPDX-License-Identifier: LGPL-2.1-or-later
+# This file is part of systemd.
+#
+# Used by run0 session.
+
+account  include        common-account
+session  optional       pam_keyinit.so force revoke
+session  include        common-session

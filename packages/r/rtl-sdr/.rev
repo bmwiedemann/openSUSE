@@ -91,4 +91,22 @@
     <comment></comment>
     <requestid>1149954</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>524cecfbd33d8972ad9efe2a30333c04</srcmd5>
+    <version>2.0.2</version>
+    <time>1722282770</time>
+    <user>dimstar_suse</user>
+    <comment>- Add conflict for library package with librtlsdr2 
+- Small spec file modernisation
+
+- Update to version (tag) 2.0.2
+  * lib: set SOVERSION back to 0
+  * r82xx: improve tuner precision and avoid redundant register
+    writes for speed
+  * fix: round gain input to nearest value
+  * fix: set fc0012 gain to low on init
+  * use library paths from pkg-config
+- version number set in CmakeList.txt is still 2.0.1, workaround added</comment>
+    <requestid>1190177</requestid>
+  </revision>
 </revisionlist>

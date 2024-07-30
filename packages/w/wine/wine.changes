@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jul 29 09:39:31 UTC 2024 - Marcus Meissner <meissner@suse.com>
+
+- Updated to 9.14 release
+  - Mailslots reimplemented using server-side I/O.
+  - More support for ODBC Windows drivers.
+  - Still more user32 data structures in shared memory.
+  - Various bug fixes.
+- update staging to 9.14 release
+
+-------------------------------------------------------------------
 Mon Jul 15 07:20:41 UTC 2024 - Marcus Meissner <meissner@suse.com>
 
 - Updated to 9.13 release

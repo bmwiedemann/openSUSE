@@ -12,25 +12,28 @@
 # Main config files have been replaced in favor of drop-ins.
 %ghost %{_sysconfdir}/systemd/oomd.conf
 %{_bindir}/oomctl
+%{_bindir}/run0
 %{_bindir}/systemd-vmspawn
 %if %{with sd_boot}
 %{_bindir}/ukify
 %endif
-%{_bindir}/varlinkctl
 %{_datadir}/bash-completion/completions/oomctl
+%{_datadir}/bash-completion/completions/run0
+%{_datadir}/bash-completion/completions/systemd-vmspawn
 %{_datadir}/dbus-1/interfaces/org.freedesktop.oom1.Manager.xml
 %{_datadir}/dbus-1/interfaces/org.freedesktop.portable1.Image.xml
 %{_datadir}/dbus-1/interfaces/org.freedesktop.portable1.Manager.xml
 %{_datadir}/dbus-1/system-services/org.freedesktop.oom1.service
 %{_datadir}/dbus-1/system.d/org.freedesktop.oom1.conf
 %{_datadir}/zsh/site-functions/_oomctl
+%{_datadir}/zsh/site-functions/_run0
 %{_mandir}/man1/oomctl.1.gz
+%{_mandir}/man1/run0.1.gz
 %{_mandir}/man1/systemd-measure.1.gz
 %{_mandir}/man1/systemd-vmspawn.1.gz
 %if %{with sd_boot}
 %{_mandir}/man1/ukify.1.gz
 %endif
-%{_mandir}/man1/varlinkctl.1.gz
 %{_mandir}/man5/oomd.conf.5.gz
 %{_mandir}/man5/oomd.conf.d.5.gz
 %{_mandir}/man5/org.freedesktop.oom1.5.gz
@@ -45,7 +48,6 @@
 %{_mandir}/man8/systemd-pcrextend.8.gz
 %{_mandir}/man8/systemd-pcrfs-root.service.8.gz
 %{_mandir}/man8/systemd-pcrfs@.service.8.gz
-%endif
 %{_mandir}/man8/systemd-pcrlock-file-system.service.8.gz
 %{_mandir}/man8/systemd-pcrlock-firmware-code.service.8.gz
 %{_mandir}/man8/systemd-pcrlock-firmware-config.service.8.gz
@@ -54,7 +56,6 @@
 %{_mandir}/man8/systemd-pcrlock-secureboot-authority.service.8.gz
 %{_mandir}/man8/systemd-pcrlock-secureboot-policy.service.8.gz
 %{_mandir}/man8/systemd-pcrlock.8.gz
-%if %{with sd_boot}
 %{_mandir}/man8/systemd-pcrmachine.service.8.gz
 %{_mandir}/man8/systemd-pcrphase-initrd.service.8.gz
 %{_mandir}/man8/systemd-pcrphase-sysinit.service.8.gz
@@ -67,12 +68,14 @@
 %{_mandir}/man8/systemd-sysupdate.8.gz
 %{_mandir}/man8/systemd-sysupdate.service.8.gz
 %{_mandir}/man8/systemd-sysupdate.timer.8.gz
+%{_mandir}/man8/systemd-tpm2-generator.8.gz
 %if %{with sd_boot}
 %{_mandir}/man8/systemd-tpm2-setup-early.service.8.gz
 %{_mandir}/man8/systemd-tpm2-setup.8.gz
 %{_mandir}/man8/systemd-tpm2-setup.service.8.gz
 %{_prefix}/lib/kernel/install.d/60-ukify.install
 %endif
+%{_pam_vendordir}/systemd-run0
 %{_prefix}/lib/pcrlock.d/350-action-efi-application.pcrlock
 %{_prefix}/lib/pcrlock.d/400-secureboot-separator.pcrlock.d/300-0x00000000.pcrlock
 %{_prefix}/lib/pcrlock.d/400-secureboot-separator.pcrlock.d/600-0xffffffff.pcrlock
@@ -103,11 +106,13 @@
 %if %{with sd_boot}
 %{_systemd_util_dir}/ukify
 %endif
+%{_systemdgeneratordir}/systemd-tpm2-generator
 %{_sysusersdir}/systemd-oom.conf
 %{_unitdir}/initrd.target.wants/systemd-bsod.service
 %if %{with sd_boot}
 %{_unitdir}/initrd.target.wants/systemd-pcrphase-initrd.service
 %{_unitdir}/sockets.target.wants/systemd-pcrextend.socket
+%{_unitdir}/sockets.target.wants/systemd-pcrlock.socket
 %endif
 %{_unitdir}/storage-target-mode.target
 %if %{with sd_boot}
@@ -132,6 +137,8 @@
 %{_unitdir}/systemd-pcrlock-make-policy.service
 %{_unitdir}/systemd-pcrlock-secureboot-authority.service
 %{_unitdir}/systemd-pcrlock-secureboot-policy.service
+%{_unitdir}/systemd-pcrlock.socket
+%{_unitdir}/systemd-pcrlock@.service
 %{_unitdir}/systemd-pcrmachine.service
 %{_unitdir}/systemd-pcrphase-initrd.service
 %{_unitdir}/systemd-pcrphase-sysinit.service
@@ -145,4 +152,19 @@
 %if %{with sd_boot}
 %{_unitdir}/systemd-tpm2-setup-early.service
 %{_unitdir}/systemd-tpm2-setup.service
+%endif
+%{_unitdir}/systemd-vmspawn@.service
+
+# ssh-generator: in the futur to be moved to the main package
+%{_systemdgeneratordir}/systemd-ssh-generator
+%if %{without bootstrap}
+%{_mandir}/man8/systemd-ssh-generator.8.gz
+%endif
+# the ssh proxy will likely be promoted to systemd-container
+%dir %{_distconfdir}/ssh
+%dir %{_distconfdir}/ssh/ssh_config.d
+%{_distconfdir}/ssh/ssh_config.d/20-systemd-ssh-proxy.conf
+%{_systemd_util_dir}/systemd-ssh-proxy
+%if %{without bootstrap}
+%{_mandir}/man1/systemd-ssh-proxy.1.gz
 %endif

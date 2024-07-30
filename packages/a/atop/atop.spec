@@ -19,7 +19,7 @@
 
 
 Name:           atop
-Version:        2.10.0
+Version:        2.11.0
 Release:        0
 Summary:        Monitor for System Resources and Process Activity
 License:        GPL-2.0-only

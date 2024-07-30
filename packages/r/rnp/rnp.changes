@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Jul 28 18:20:34 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- rnp 0.17.1:
+  * Added support for Botan 3
+  * Updated support for OpenSSL 3
+  * Added support for mimemode in literal data packet
+  * Relaxed Base64 decoding to allow spaces after the checksum
+  * Added functions rnp_key_set_features() and
+    rnp_signature_get_features()
+- drop patches no longer needed:
+  * rnp-v0.17.0-cpp14-googletest.patch
+  * rnp-v0.17.0-disable-static.patch
+  * rnp-v0.17.0-system-sexp.patch
+  * rnp-v0.17.0-test-SHA1-cutoff.patch
+  * rnp-v0.17.0-tests.patch
+
+-------------------------------------------------------------------
 Wed Apr  3 11:14:34 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - switch to C++14 to fix build with new GoogleTest 1.14.0

@@ -2,7 +2,7 @@
 	<service name="tar_scm" mode="manual">
 		<param name="scm">git</param>
 		<param name="url">https://github.com/SUSE/klp-build</param>
-		<param name="revision">3c379d867b7279a79c44467f478b432bfe118049</param>
+		<param name="revision">cc0513fdedb78113bad1f5afc60bc37ad1c5f301</param>
 		<param name="versionformat">0~%cd.%h</param>
 		<param name="changesgenerate">enable</param>
         <param name="changesauthor">mvetter@suse.com</param>

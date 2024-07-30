@@ -1,0 +1,50 @@
+-------------------------------------------------------------------
+Sun Jul 28 04:58:35 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Packaging improvements:
+  * _service obs_scm param url add suffix .git for clarity
+  * _service obs_scm param filename to align with package name
+  * Align package name spelling with Go application binary name
+  * Remove define github project name components no longer needed
+  * Use name macro where applicable to normalize common lines
+    across Go app packages. Also makes renaming binary easier when
+    required to handle package name conflict.
+  * Use BuildRequires: golang(API) >= 1.22 instead of go >= 1.22.
+    The go metapackage points to a single go version that
+    increments at a date TBD after each go1.x major release. The
+    expression golang(API) is available immediately upon each go1.x
+    major release and is stable for expressing the minimum version
+    or a temporarily pinned version.
+  * Drop autosetup -p 1 arg only needed when package has patches
+  * Build PIE with pattern that may become recommended procedure:
+    %%ifnarch ppc64 GOFLAGS="-buildmode=pie" %%endif go build
+    A go toolchain buildmode default config would be preferable
+    but none exist at this time.
+  * Remove ldflags -s (Omit symbol table and debug info) and -w
+    (Omit DWARF symbol table). This information is used to produce
+    separate debuginfo packages and binaries are stripped for
+    reduced size by GNU strip during RPM build.
+  * Remove ldflags -X entries for build time stamp.
+    This information is embedded in binaries with go1.18+ and
+    available via go version -m or runtime/debug.ReadBuildInfo().
+  * Remove go build arg -trimpath. Since this is a packaged binary,
+    build environment paths do not leak private information. Other
+    build scenarios such as minimal container builds could have a
+    use for -trimpath. Absent a clear need, use go build defaults.
+  * Add go build -o %{name}, default binary name is pkg of main().
+    Our packaging uses a different name for the binary.
+
+-------------------------------------------------------------------
+Sat Jul 27 06:37:07 UTC 2024 - Paulo Gomes <pjbgf@linux.com>
+
+- Initial package version 0.0.2
+  * Add validation to Profiles and Workloads
+  * Refactor Workload.HostAccess
+  * Set runtime to nvidia when using gpus
+  * firecracker: Change runner name
+  * profiles: Add error message for xhost failure
+  * Refactor package locations
+  * build: Bump dependencies
+  * Error on unsupported OSes
+  * Add initial information to README
+  * Set default logLevel to INFO

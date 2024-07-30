@@ -103,6 +103,8 @@ Wed Nov 29 15:05:49 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 Fri Nov 24 09:40:38 UTC 2023 - Robert Frohl <rfrohl@suse.com>
 
 - Wireshark 4.2.0:
+  * CVE-2024-24476: Fixed buffer overflow in ws_manuf_lookup_str() (boo#1220181).
+  * CVE-2022-3725: Fixed integer overflow in the OPUS dissector (boo#1204822).
   * Packet list sorting has been improved.
   * Wireshark and TShark are now better about generating valid UTF-8 output.
   * A new display filter feature for filtering raw bytes has been added.

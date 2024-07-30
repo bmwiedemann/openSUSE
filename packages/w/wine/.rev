@@ -5247,4 +5247,17 @@ If you have any suggestions for improvement, please let me know! (forwarded requ
   by official commit 0001-mf-tests-Remove-static-specifier-on-variables-refere.patch</comment>
     <requestid>1187480</requestid>
   </revision>
+  <revision rev="445" vrev="1">
+    <srcmd5>3bb6f886984da889cb2a4069657144e1</srcmd5>
+    <version>9.14</version>
+    <time>1722282779</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to 9.14 release
+  - Mailslots reimplemented using server-side I/O.
+  - More support for ODBC Windows drivers.
+  - Still more user32 data structures in shared memory.
+  - Various bug fixes.
+- update staging to 9.14 release</comment>
+    <requestid>1190233</requestid>
+  </revision>
 </revisionlist>

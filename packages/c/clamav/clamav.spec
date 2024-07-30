@@ -55,12 +55,15 @@ Patch5:         clamav-obsolete-config.patch
 Patch12:        clamav-fips.patch
 Patch14:        clamav-document-maxsize.patch
 Patch15:        clamav-format.patch
+Patch16:        https://github.com/Cisco-Talos/clamav/pull/1305.patch
 ExcludeArch:    %{arml}
 
 BuildRequires:  cargo%{?vrust}
 BuildRequires:  cmake%{?vcmake}
 BuildRequires:  gcc%{?vgcc}
 BuildRequires:  gcc%{?vgcc}-c++
+# temp for Patch16
+BuildRequires:  git-core
 BuildRequires:  libbz2-devel
 BuildRequires:  libjson-c-devel
 BuildRequires:  libopenssl-devel >= 1.0.2
@@ -184,6 +187,7 @@ that want to make use of libclamav.
 %patch -P 12
 %patch -P 14
 %patch -P 15
+git apply %{PATCH16}
 chmod -x docs/html/images/flamegraph.svg
 
 %build

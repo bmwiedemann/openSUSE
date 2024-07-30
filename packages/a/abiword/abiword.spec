@@ -27,6 +27,8 @@ Group:          Productivity/Office/Word Processor
 URL:            http://www.abisource.com/
 Source0:        http://abisource.com/downloads/abiword/%{version}/source/%{name}-%{version}.tar.gz
 Source1:        abiword.appdata.xml
+# I don't know why this is missing in the release tarballs!
+Source2:        https://raw.githubusercontent.com/AbiWord/abiword/release-3.0.4/plugins/command/plugin.m4#/AbiCommand_plugin.m4
 # PATCH-FIX-UPSTREAM abiword-librevenge.patch fstrba@suse.com -- Fix build against librevenge-based libraries (svn revs 34461, 34462, 34463, 34464 and 34468)
 Patch5:         abiword-librevenge.patch
 # PATCH-FIX-UPSTREAM abiword-libwps-0.4.patch dimstar@opensuse.org -- Port to libwps-0.4; patch taken from Fedora.
@@ -109,6 +111,7 @@ UNIX platform.
 
 %prep
 %autosetup -p0
+cp %{SOURCE2} plugins/command/plugin.m4
 
 %build
 # We modified plugin configuration and thus we need to regenerate the whole build system
@@ -138,7 +141,6 @@ CXXFLAGS="%{optflags} -std=c++14"
 %endif
 %configure \
         --disable-static \
-        --enable-dynamic \
         --enable-plugins \
         --enable-clipart \
         --enable-templates \

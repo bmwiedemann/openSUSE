@@ -288,14 +288,14 @@ check_config_files () {
 	config_files=(systemd/journald.conf systemd/logind.conf systemd/system.conf systemd/user.conf
 		      systemd/pstore.conf systemd/sleep.conf systemd/timesyncd.conf systemd/coredump.conf
 		      systemd/journal-remote.conf systemd/journal-upload.conf systemd/networkd.conf
-		      systemd/resolved.conf systemd/oomd.conf udev/iocost.conf)
+		      systemd/resolved.conf systemd/oomd.conf udev/iocost.conf udev/udev.conf)
 
 	for f in ${config_files[*]}; do
 		[ -e /etc/$f ] || continue
 
 		cat >&2 <<EOF
 Main configuration files are deprecated in favor of drop-ins.
-Hence we suggest you to remove /etc/$f if it doesn't contain any customization or convert it into drop-in otherwise.
+Hence, we suggest that you remove /etc/$f if it doesn't contain any customization, or convert it into drop-in otherwise.
 For more details, please visit https://en.opensuse.org/Systemd#Configuration.
 EOF
 	done

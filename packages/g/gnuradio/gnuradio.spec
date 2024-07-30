@@ -16,10 +16,10 @@
 #
 
 
-%define sover  3_10_10
+%define sover  3_10_11
 %bcond_without docs
 Name:           gnuradio
-Version:        3.10.10.0
+Version:        3.10.11.0
 Release:        0
 Summary:        GNU software radio
 License:        GPL-3.0-or-later
@@ -31,8 +31,6 @@ Source4:        grc_to_37.sh
 Source99:       %{name}-rpmlintrc
 Patch0:         missing_library.patch
 Patch1:         gnuradio-not-install-freedesktop-files.patch
-Patch2:         gnuradio-fix-error-message-for-Qwt-version.patch
-Patch3:         gnuradio-remove-maximum-version-for-Qwt.patch
 BuildRequires:  alsa-devel
 BuildRequires:  cmake >= 3.16.3
 BuildRequires:  codec2-devel
@@ -182,8 +180,6 @@ This package contains some examples of using GNU Radio.
 %setup -q
 %patch -P 0 -p1
 %patch -P 1 -p1 -R
-%patch -P 2 -p1
-%patch -P 3 -p1
 
 # protect the template files from %%cmake macro magic / mangling
 find  gr-utils/modtool/templates/gr-newmod -name CMakeLists.txt -ls -exec mv '{}' '{}.tmpl' \;

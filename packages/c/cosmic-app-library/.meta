@@ -1,0 +1,6 @@
+<package name="cosmic-app-library" project="openSUSE:Factory">
+  <title></title>
+  <description>Cosmic App Library is an application launcher for the COSMIC desktop that lists all installed applications in a grid.</description>
+  <devel project="X11:COSMIC:Factory" package="cosmic-app-library"/>
+  <url>https://github.com/pop-os/cosmic-applibrary</url>
+</package>

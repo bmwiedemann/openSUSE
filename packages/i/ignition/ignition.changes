@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jul 29 12:01:10 UTC 2024 - Ignaz Forster <iforster@suse.com>
+
+- Fix order of previous change - *first* remount rw, *then* create
+  directory.
+
+-------------------------------------------------------------------
+Thu Jul 25 13:11:44 UTC 2024 - Ignaz Forster <iforster@suse.com>
+
+- Apply (temporary) upstream patch from fedora-coreos-config for
+  compatibility with systemd 256.
+
+-------------------------------------------------------------------
 Mon Jun 10 14:24:04 UTC 2024 - iforster@suse.com
 
 - Update to version 2.19.0:

@@ -389,4 +389,12 @@
     <comment></comment>
     <requestid>1176808</requestid>
   </revision>
+  <revision rev="49" vrev="2">
+    <srcmd5>c5eb9b75708588c21542566b17179a7c</srcmd5>
+    <version>1.28.1</version>
+    <time>1722282751</time>
+    <user>dimstar_suse</user>
+    <comment>- Add Requires tag for dconf-editor to workaround boo#1222583 (forwarded request 1190041 from hillwood)</comment>
+    <requestid>1190042</requestid>
+  </revision>
 </revisionlist>

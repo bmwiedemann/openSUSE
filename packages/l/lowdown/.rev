@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6d7c404e54a16f89c9c8c8562ff17093</srcmd5>
+    <version>1.1.0+git20231119.1200b9f</version>
+    <time>1722282735</time>
+    <user>dimstar_suse</user>
+    <comment>Needed to generate manpage for btop, see: https://lists.opensuse.org/archives/list/factory@lists.opensuse.org/thread/III355F5W2ZWB563Z6RJPF75ZV7LQYTK/</comment>
+    <requestid>1189836</requestid>
+  </revision>
+</revisionlist>

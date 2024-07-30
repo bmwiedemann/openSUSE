@@ -53,6 +53,7 @@ BuildRequires:  pkgconfig(sm)
 BuildRequires:  pkgconfig(wayland-client)
 BuildRequires:  pkgconfig(xi)
 BuildRequires:  pkgconfig(xrandr) >= 1.3
+Requires:       dconf-editor
 Requires:       gsettings-backend-dconf
 Requires:       gvfs-backends
 Recommends:     %{name}-branding >= %{_version}

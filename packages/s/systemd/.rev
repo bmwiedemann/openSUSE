@@ -7275,4 +7275,41 @@ handle manual pages that consist only of a .so directive such as
   28459ba1f4df.</comment>
     <requestid>1184267</requestid>
   </revision>
+  <revision rev="428" vrev="1">
+    <srcmd5>4a724885c5a205be680b45083db654fb</srcmd5>
+    <version>256.4</version>
+    <time>1722282730</time>
+    <user>dimstar_suse</user>
+    <comment>- Import commit 5bba1ebe17564b606cc5d1c07b14123c305019a7 (merge of v256.4)
+  For a complete list of changes, visit:
+  https://github.com/openSUSE/systemd/compare/bd8b5ee3cf0466b6b78e167967468cf6f93ec807...5bba1ebe17564b606cc5d1c07b14123c305019a7
+
+- Add 5004-disable-session-freeze.patch as a temporary workaround for
+  https://github.com/systemd/systemd/issues/33083
+
+- Add temporarily 5003-core-when-switching-root-remove-run-systemd-before-e.patch (bsc#1227580)
+
+- Don't mention any rpm macros inside comments, even if escaped (bsc#1228091)
+  Otherwise pesign-obs-integration ends up re-packaging systemd with all macros
+  inside comments unescaped leading to unpredictable behavior. Now why rpm
+  expands rpm macros inside comments is the question...
+
+- Skip running the test units in %check for now.
+  Some tests don't appreciate to run inside the build environment of OBS
+  currently and some of them take an unexpected long time to execute on both
+  risc and s390x architectures.
+
+- Make sure systemd-sysvcompat replaces systemd-sysvinit on upgrades (bsc#1218110)
+
+- Import commit bd8b5ee3cf0466b6b78e167967468cf6f93ec807 (merge of v256.2)
+  For a complete list of changes, visit:
+  https://github.com/openSUSE/systemd/compare/dd15bf4f6430d8646e546ee0b980448c7d0c9699...bd8b5ee3cf0466b6b78e167967468cf6f93ec807
+
+- varlinkctl is no more considered as experimental and has been moved to the
+  main package.
+
+- Upgrade to v256.1 (commit dd15bf4f6430d8646e546ee0b980448c7d0c9699)
+  See https://github.com/openSUSE/systemd/blob/SUSE/v256/NEWS for details.</comment>
+    <requestid>1189722</requestid>
+  </revision>
 </revisionlist>
