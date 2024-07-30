@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jul  4 00:00:00 CEST 2024 - dsterba@suse.cz
+
+- Add patch fix-libtracefs.patch, fix build path of libtracefs
+
+-------------------------------------------------------------------
 Fri May  5 12:22:21 UTC 2023 - Daniel Wagner <daniel.wagner@suse.com>
 
 - Add hwnoise tool which got added with Linux 6.3
