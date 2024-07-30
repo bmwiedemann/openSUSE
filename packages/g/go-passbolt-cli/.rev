@@ -16,4 +16,12 @@
 </comment>
     <requestid>1188800</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>556f66e930a31b7f771be4bc96d580be</srcmd5>
+    <version>0.3.1</version>
+    <time>1722333330</time>
+    <user>dimstar_suse</user>
+    <comment> - fix shell completions dir name</comment>
+    <requestid>1190395</requestid>
+  </revision>
 </revisionlist>

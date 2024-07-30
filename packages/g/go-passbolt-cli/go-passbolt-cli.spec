@@ -92,9 +92,9 @@ mkdir man && ./%{bin_name} gendoc --type man
 install -D -m 0755 %{bin_name} "%{buildroot}%{_bindir}/%{bin_name}"
 
 # Install the shell autocomplete files
-install -Dm 644 %{name}-autocomplete.bash %{buildroot}%{_datadir}/bash-completion/completions/%{name}
-install -Dm 644 %{name}-autocomplete.zsh %{buildroot}%{_datadir}/zsh/site-functions/_%{name}
-install -Dm 644 %{name}-autocomplete.fish %{buildroot}%{_datadir}/fish/completions/_%{name}
+install -Dm 644 %{name}-autocomplete.bash %{buildroot}%{_datadir}/bash-completion/completions/%{bin_name}
+install -Dm 644 %{name}-autocomplete.zsh %{buildroot}%{_datadir}/zsh/site-functions/_%{bin_name}
+install -Dm 644 %{name}-autocomplete.fish %{buildroot}%{_datadir}/fish/completions/_%{bin_name}
 
 # Install the man pages.
 mkdir -p "%{buildroot}%{_mandir}/man1"
