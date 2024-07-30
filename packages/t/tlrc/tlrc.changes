@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jul 30 03:54:02 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.9.3:
+  * Use native TLS certificates instead of webpki-roots
+  * ~ in the config now expands to the user's home directory (#80)
+  * Fixed wrong next automatic update time in tldr --offline --info
+  * Fixed extraction of files that contain .. in the path from zip archives
+
+-------------------------------------------------------------------
 Tue Apr 30 06:20:46 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.9.2:

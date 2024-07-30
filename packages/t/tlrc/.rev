@@ -50,4 +50,16 @@
   * Bump rustls from 0.22.3 to 0.22.4 (#72) bsc#1223243 CVE-2024-32650</comment>
     <requestid>1170911</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>469665305103a910d366ebe6db5118a1</srcmd5>
+    <version>1.9.3+0</version>
+    <time>1722333322</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.9.3:
+  * Use native TLS certificates instead of webpki-roots
+  * ~ in the config now expands to the user's home directory (#80)
+  * Fixed wrong next automatic update time in tldr --offline --info
+  * Fixed extraction of files that contain .. in the path from zip archives</comment>
+    <requestid>1190369</requestid>
+  </revision>
 </revisionlist>
