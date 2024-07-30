@@ -655,4 +655,35 @@
     <comment>New upstream release 1.55.5</comment>
     <requestid>1129558</requestid>
   </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>4b9cfb53d8daae24f590f7382fd445ac</srcmd5>
+    <version>1.16.6</version>
+    <time>1722333206</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1189926 from darix
+
+- 1.16.6:
+  - update intree libxml2 copy (unused in our build)
+  - update intree zlib copy (unused in our build)
+  - [CRuby] `XML::Reader` sets the `@encoding` instance variable
+    during reading if it is not passed into the initializer.
+    Previously, it would remain `nil`. The behavior of
+    `Reader#encoding` has not changed. This works around changes to
+    how libxml2 reports the encoding used in v2.12.6.
+  - [CRuby] `XML::Reader` defaults the encoding to UTF-8 if it's
+    not specified in either the document or as a method parameter.
+    Previously non-ASCII characters were serialized as NCRs in this
+    case. [#2891] (@flavorjones)
+  - [CRuby] Restored support for compilation by GCC versions
+    earlier than 4.6, which was broken in v1.15.0 (540e9aee).
+    [#3090] (@adfoster-r7)
+  - [CRuby] Patched upstream libxml2 to allow parsing HTML5 in the
+    context of a namespaced node (e.g., foreign content like
+    MathML). [#3112, #3116] (@flavorjones)
+  - [CRuby] Fixed a small memory leak in libgumbo (HTML5 parser)
+    when the maximum tree depth limit is hit. [#3098, #3100]
+    (@stevecheckoway)
+- Drop gcc14-allow-incompatible-pointer-types-for-now.patch</comment>
+    <requestid>1190054</requestid>
+  </revision>
 </revisionlist>

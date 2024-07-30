@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jul 26 13:19:42 UTC 2024 - Filip Kastl <filip.kastl@suse.com>
+
+- Add ffmpeg-c99.patch so that the package conforms to the C99
+  standard and builds on i586 with GCC 14.
+
+-------------------------------------------------------------------
 Tue Apr 27 11:38:35 UTC 2024 - Cliff Zhao <qzhao@suse.com>
 
 - Add ffmpeg-CVE-2023-50010.patch:

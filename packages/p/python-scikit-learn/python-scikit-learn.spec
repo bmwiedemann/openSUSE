@@ -51,6 +51,8 @@ Summary:        Python modules for machine learning and data mining
 License:        BSD-3-Clause
 URL:            https://scikit-learn.org/
 Source0:        https://files.pythonhosted.org/packages/source/s/scikit-learn/scikit_learn-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM One commit from gh#scikit-learn/scikit-learn#29486
+Patch0:         support-pytest-8.3.patch
 BuildRequires:  %{python_module Cython >= 3.0.10}
 BuildRequires:  %{python_module devel >= 3.8}
 BuildRequires:  %{python_module joblib >= 1.2.0}

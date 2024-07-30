@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jul 29 11:16:28 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Disable complete tests for non-tumbleweed to avoid python-pandas
+  requirement
+
+-------------------------------------------------------------------
 Fri Mar 15 17:17:55 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Clean up the SPEC file

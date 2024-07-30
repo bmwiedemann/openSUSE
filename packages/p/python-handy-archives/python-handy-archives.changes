@@ -1,0 +1,6 @@
+-------------------------------------------------------------------
+Fri Jul 26 07:14:29 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Initial release of 0.2.0
+- Add patch ignore-tarfile-deprecation-warning.patch:
+  * Ignore DeprecationWarning raised by tarfile.

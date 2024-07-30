@@ -963,4 +963,18 @@
     <comment>Update to 1.5.0 - GNOME:Next as smoketest rebuilt and succeeded</comment>
     <requestid>1188945</requestid>
   </revision>
+  <revision rev="113" vrev="1">
+    <srcmd5>0f03061604c0253f7a768d7995a13535</srcmd5>
+    <version>1.5.1</version>
+    <time>1722333193</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.5.1:
+  + Bug fixes for ARM build and cross-compilation
+  + rust: recursively pull proc-macro deps for rust targets
+  + fix gnome.compile_resources() install: true and no install_dir
+  + test suite fixes and bug fixes
+
+Smoketest in GNOME:Next passed</comment>
+    <requestid>1190167</requestid>
+  </revision>
 </revisionlist>

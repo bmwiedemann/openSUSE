@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jul 29 09:21:41 UTC 2024 - Egbert Eich <eich@suse.com>
+
+- Make sure the minimum CPU requirement set in the pkgconfig
+  file is the same one as used for building. This also helps
+  to maintain a reproducible build (boo#1228177).
+
+-------------------------------------------------------------------
 Thu Jun 13 07:32:23 UTC 2024 - Andreas Schwab <schwab@suse.de>
 
 - no-static.patch: do not link statically

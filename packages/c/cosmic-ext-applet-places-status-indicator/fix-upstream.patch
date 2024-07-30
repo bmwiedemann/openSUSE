@@ -1,0 +1,28 @@
+diff -rub places-status-indicator-applet-for-cosmic_tm/data/dev.dominiccgeh.CosmicAppletPlacesStatusIndicator.desktop places-status-indicator-applet-for-cosmic_tm-patched/data/dev.dominiccgeh.CosmicAppletPlacesStatusIndicator.desktop
+--- places-status-indicator-applet-for-cosmic_tm/data/dev.dominiccgeh.CosmicAppletPlacesStatusIndicator.desktop	2024-06-06 07:57:31.269602293 +0200
++++ places-status-indicator-applet-for-cosmic_tm-patched/data/dev.dominiccgeh.CosmicAppletPlacesStatusIndicator.desktop	2024-06-06 08:03:12.925602809 +0200
+@@ -2,7 +2,7 @@
+ Name=Places Status Indicator
+ Comment=A menu for quickly navigating places in the system.
+ Type=Application
+-Exec=cosmic-applet-places-status-indicator
++Exec=cosmic-ext-applet-places-status-indicator
+ Terminal=false
+ Categories=Cosmic;Iced;
+ Keywords=Cosmic;Iced;
+diff -rub places-status-indicator-applet-for-cosmic_tm/justfile places-status-indicator-applet-for-cosmic_tm-patched/justfile
+--- places-status-indicator-applet-for-cosmic_tm/justfile	2024-06-06 07:57:31.269602293 +0200
++++ places-status-indicator-applet-for-cosmic_tm-patched/justfile	2024-06-06 08:02:53.238981039 +0200
+@@ -1,7 +1,9 @@
++rootdir := ''
++prefix := '/usr'
+ 
+ # Installs files into the system
+ install: 
+-    sudo install -Dm0755 ./target/release/cosmic-applet-places-status-indicator  /usr/bin/cosmic-applet-places-status-indicator
+-    sudo install -Dm0644 data/dev.dominiccgeh.CosmicAppletPlacesStatusIndicator.desktop /usr/share/applications/dev.dominiccgeh.CosmicAppletPlacesStatusIndicator.desktop
+-    find 'data'/'icons' -type f -exec echo {} \; | rev | cut -d'/' -f-3 | rev | xargs -d '\n' -I {} sudo install -Dm0644 'data'/'icons'/{} /usr/share/icons/hicolor/{}
++    install -Dm0755 ./target/release/cosmic-applet-places-status-indicator  {{rootdir}}{{prefix}}/bin/cosmic-ext-applet-places-status-indicator
++    install -Dm0644 data/dev.dominiccgeh.CosmicAppletPlacesStatusIndicator.desktop {{rootdir}}{{prefix}}/share/applications/dev.dominiccgeh.CosmicAppletPlacesStatusIndicator.desktop
++    find 'data'/'icons' -type f -exec echo {} \; | rev | cut -d'/' -f-3 | rev | xargs -d '\n' -I {} install -Dm0644 'data'/'icons'/{} {{rootdir}}{{prefix}}/share/icons/hicolor/{}
+ 

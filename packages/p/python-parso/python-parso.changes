@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jul 22 11:38:30 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.8.4
+  * Add basic support for Python 3.13
+- Drop patches for issues fixed upstream
+  * cf5969d7a109798adbf9538d70e92138f077d700.patch
+
+-------------------------------------------------------------------
 Tue Oct  3 02:36:16 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.

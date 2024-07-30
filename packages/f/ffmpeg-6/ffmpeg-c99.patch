@@ -1,0 +1,126 @@
+From: Filip Kastl <fkastl@opensuse.org>
+Date: Fri, 26 Jul 2024 14:39:42 +0000
+
+I based the package patch on this bug report (there's a patch in
+the comments)
+https://bugs.gentoo.org/936433
+
+and on these patches
+https://ffmpeg.org/pipermail/ffmpeg-devel/2023-December/318685.html
+http://git.videolan.org/?p=ffmpeg.git;a=commitdiff;h=5860a966d2fffbbda1af0014f0a4d37a21c4f2ca
+
+Index: ffmpeg-6.1.1/libavfilter/vsrc_testsrc_vulkan.c
+===================================================================
+--- ffmpeg-6.1.1.orig/libavfilter/vsrc_testsrc_vulkan.c
++++ ffmpeg-6.1.1/libavfilter/vsrc_testsrc_vulkan.c
+@@ -231,7 +231,7 @@ static int testsrc_vulkan_activate(AVFil
+                 return AVERROR(ENOMEM);
+ 
+             err = ff_vk_filter_process_simple(&s->vkctx, &s->e, &s->pl, s->picref, NULL,
+-                                              NULL, &s->opts, sizeof(s->opts));
++                                              VK_NULL_HANDLE, &s->opts, sizeof(s->opts));
+             if (err < 0)
+                 return err;
+         }
+@@ -250,7 +250,7 @@ static int testsrc_vulkan_activate(AVFil
+     frame->sample_aspect_ratio = s->sar;
+     if (!s->draw_once) {
+         err = ff_vk_filter_process_simple(&s->vkctx, &s->e, &s->pl, frame, NULL,
+-                                          NULL, &s->opts, sizeof(s->opts));
++                                          VK_NULL_HANDLE, &s->opts, sizeof(s->opts));
+         if (err < 0) {
+             av_frame_free(&frame);
+             return err;
+Index: ffmpeg-6.1.1/libavutil/hwcontext_vaapi.c
+===================================================================
+--- ffmpeg-6.1.1.orig/libavutil/hwcontext_vaapi.c
++++ ffmpeg-6.1.1/libavutil/hwcontext_vaapi.c
+@@ -1086,7 +1086,7 @@ static int vaapi_map_from_drm(AVHWFrames
+     int err, i, j;
+ 
+ #if !VA_CHECK_VERSION(1, 1, 0)
+-    unsigned long buffer_handle;
++    uintptr_t buffer_handle;
+     VASurfaceAttribExternalBuffers buffer_desc;
+     VASurfaceAttrib attrs[2] = {
+         {
+@@ -1203,7 +1203,7 @@ static int vaapi_map_from_drm(AVHWFrames
+ 
+     if (!use_prime2 || vas != VA_STATUS_SUCCESS) {
+         int k;
+-        unsigned long buffer_handle;
++        uintptr_t buffer_handle;
+         VASurfaceAttribExternalBuffers buffer_desc;
+         VASurfaceAttrib buffer_attrs[2] = {
+             {
+Index: ffmpeg-6.1.1/libavcodec/vulkan_av1.c
+===================================================================
+--- ffmpeg-6.1.1.orig/libavcodec/vulkan_av1.c
++++ ffmpeg-6.1.1/libavcodec/vulkan_av1.c
+@@ -180,7 +180,7 @@ static int vk_av1_create_params(AVCodecC
+         .sType = VK_STRUCTURE_TYPE_VIDEO_SESSION_PARAMETERS_CREATE_INFO_KHR,
+         .pNext = &av1_params,
+         .videoSession = ctx->common.session,
+-        .videoSessionParametersTemplate = NULL,
++        .videoSessionParametersTemplate = VK_NULL_HANDLE,
+     };
+ 
+     err = ff_vk_decode_create_params(buf, avctx, ctx, &session_params_create);
+Index: ffmpeg-6.1.1/libavcodec/vulkan_decode.c
+===================================================================
+--- ffmpeg-6.1.1.orig/libavcodec/vulkan_decode.c
++++ ffmpeg-6.1.1/libavcodec/vulkan_decode.c
+@@ -187,10 +187,10 @@ int ff_vk_decode_prepare_frame(FFVulkanD
+     if (vkpic->img_view_ref)
+         return 0;
+ 
+-    vkpic->dpb_frame     = NULL;
+-    vkpic->img_view_ref  = NULL;
+-    vkpic->img_view_out  = NULL;
+-    vkpic->img_view_dest = NULL;
++    vkpic->dpb_frame     = VK_NULL_HANDLE;
++    vkpic->img_view_ref  = VK_NULL_HANDLE;
++    vkpic->img_view_out  = VK_NULL_HANDLE;
++    vkpic->img_view_dest = VK_NULL_HANDLE;
+ 
+     vkpic->destroy_image_view = vk->DestroyImageView;
+     vkpic->wait_semaphores = vk->WaitSemaphores;
+Index: ffmpeg-6.1.1/libavcodec/vulkan_h264.c
+===================================================================
+--- ffmpeg-6.1.1.orig/libavcodec/vulkan_h264.c
++++ ffmpeg-6.1.1/libavcodec/vulkan_h264.c
+@@ -315,7 +315,7 @@ static int vk_h264_create_params(AVCodec
+         .sType = VK_STRUCTURE_TYPE_VIDEO_SESSION_PARAMETERS_CREATE_INFO_KHR,
+         .pNext = &h264_params,
+         .videoSession = ctx->common.session,
+-        .videoSessionParametersTemplate = NULL,
++        .videoSessionParametersTemplate = VK_NULL_HANDLE,
+     };
+ 
+     /* SPS list */
+Index: ffmpeg-6.1.1/libavcodec/vulkan_hevc.c
+===================================================================
+--- ffmpeg-6.1.1.orig/libavcodec/vulkan_hevc.c
++++ ffmpeg-6.1.1/libavcodec/vulkan_hevc.c
+@@ -653,7 +653,7 @@ static int vk_hevc_create_params(AVCodec
+         .sType = VK_STRUCTURE_TYPE_VIDEO_SESSION_PARAMETERS_CREATE_INFO_KHR,
+         .pNext = &h265_params,
+         .videoSession = ctx->common.session,
+-        .videoSessionParametersTemplate = NULL,
++        .videoSessionParametersTemplate = VK_NULL_HANDLE,
+     };
+ 
+     HEVCHeaderSet *hdr;
+Index: ffmpeg-6.1.1/libavcodec/vulkan_video.c
+===================================================================
+--- ffmpeg-6.1.1.orig/libavcodec/vulkan_video.c
++++ ffmpeg-6.1.1/libavcodec/vulkan_video.c
+@@ -287,7 +287,7 @@ av_cold void ff_vk_video_common_uninit(F
+     if (common->session) {
+         vk->DestroyVideoSessionKHR(s->hwctx->act_dev, common->session,
+                                    s->hwctx->alloc);
+-        common->session = NULL;
++        common->session = VK_NULL_HANDLE;
+     }
+ 
+     if (common->nb_mem && common->mem)

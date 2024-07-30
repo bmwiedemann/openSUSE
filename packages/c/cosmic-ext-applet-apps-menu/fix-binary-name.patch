@@ -1,0 +1,12 @@
+diff -rub cosmic-applet-apps-menu/data/dev.dominiccgeh.CosmicAppletAppsMenu.desktop cosmic-applet-apps-menu-patched/data/dev.dominiccgeh.CosmicAppletAppsMenu.desktop
+--- cosmic-applet-apps-menu/data/dev.dominiccgeh.CosmicAppletAppsMenu.desktop	2024-06-06 03:40:17.234701351 +0200
++++ cosmic-applet-apps-menu-patched/data/dev.dominiccgeh.CosmicAppletAppsMenu.desktop	2024-06-06 05:19:32.382806903 +0200
+@@ -2,7 +2,7 @@
+ Name=Apps Menu
+ Comment=A category-based menu for apps.
+ Type=Application
+-Exec=cosmic-applet-apps-menu
++Exec=cosmic-ext-applet-apps-menu
+ Terminal=false
+ Categories=Cosmic;Iced;
+ Keywords=Cosmic;Iced;

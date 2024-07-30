@@ -2050,4 +2050,11 @@ those sources for i586 on its own.</comment>
 to ease detection of our immutable OS</comment>
     <requestid>1181985</requestid>
   </revision>
+  <revision rev="288" vrev="286">
+    <srcmd5>cef885d09b2ae1ad10aedf102641ed54</srcmd5>
+    <version>unknown</version>
+    <time>1722322988</time>
+    <user>dimstar_suse</user>
+    <comment>policycoreutils-gui is not supposed to be blocked; https://bugzilla.suse.com/show_bug.cgi?id=1228436</comment>
+  </revision>
 </revisionlist>

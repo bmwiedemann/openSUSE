@@ -1,4 +1,100 @@
 -------------------------------------------------------------------
+Sat Jul 27 18:46:12 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- 1.16.6:
+  - update intree libxml2 copy (unused in our build)
+  - update intree zlib copy (unused in our build)
+  - [CRuby] `XML::Reader` sets the `@encoding` instance variable
+    during reading if it is not passed into the initializer.
+    Previously, it would remain `nil`. The behavior of
+    `Reader#encoding` has not changed. This works around changes to
+    how libxml2 reports the encoding used in v2.12.6.
+  - [CRuby] `XML::Reader` defaults the encoding to UTF-8 if it's
+    not specified in either the document or as a method parameter.
+    Previously non-ASCII characters were serialized as NCRs in this
+    case. [#2891] (@flavorjones)
+  - [CRuby] Restored support for compilation by GCC versions
+    earlier than 4.6, which was broken in v1.15.0 (540e9aee).
+    [#3090] (@adfoster-r7)
+  - [CRuby] Patched upstream libxml2 to allow parsing HTML5 in the
+    context of a namespaced node (e.g., foreign content like
+    MathML). [#3112, #3116] (@flavorjones)
+  - [CRuby] Fixed a small memory leak in libgumbo (HTML5 parser)
+    when the maximum tree depth limit is hit. [#3098, #3100]
+    (@stevecheckoway)
+- Drop gcc14-allow-incompatible-pointer-types-for-now.patch
+
+-------------------------------------------------------------------
+Fri Jul 26 12:49:30 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Added gcc14-allow-incompatible-pointer-types-for-now.patch:
+  gcc 14 errors out on incompatible pointer types
+
+  Allow those until https://github.com/sparklemotion/nokogiri/issues/3295
+  is fixed
+
+-------------------------------------------------------------------
+Tue Jul  9 14:34:25 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Added only-complain-about-version-diff-if-it-is-older.patch
+  boo#1202053 boo#1213999 boo#1203728
+
+-------------------------------------------------------------------
+Thu Jan 18 16:00:05 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- limit ruby versions to 3.x
+
+-------------------------------------------------------------------
+Thu Jan 18 15:56:29 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- 1.16.0:
+  This release introduces native gem support for Ruby 3.3.
+
+  This release ends support for Ruby 2.7, for which
+  [upstream support ended 2023-03-31](https://www.ruby-lang.org/en/downloads/branches/).
+
+
+  #### Pattern matching
+
+  This version marks _official support_ for the pattern matching
+  API in `XML::Attr`, `XML::Document`, `XML::DocumentFragment`,
+  `XML::Namespace`, `XML::Node`, and `XML::NodeSet` (and their
+  subclasses), originally introduced as an experimental feature in
+  v1.14.0. (@flavorjones)
+
+  Documentation on what can be matched:
+
+  * [`XML::Attr#deconstruct_keys`](https://nokogiri.org/rdoc/Nokogiri/XML/Attr.html?h=deconstruct#method-i-deconstruct_keys)
+  * [`XML::Document#deconstruct_keys`](https://nokogiri.org/rdoc/Nokogiri/XML/Document.html?h=deconstruct#method-i-deconstruct_keys)
+  * [`XML::Namespace#deconstruct_keys`](https://nokogiri.org/rdoc/Nokogiri/XML/Namespace.html?h=deconstruct+namespace#method-i-deconstruct_keys)
+  * [`XML::Node#deconstruct_keys`](https://nokogiri.org/rdoc/Nokogiri/XML/Node.html?h=deconstruct#method-i-deconstruct_keys)
+  * [`XML::DocumentFragment#deconstruct`](https://nokogiri.org/rdoc/Nokogiri/XML/DocumentFragment.html?h=deconstruct#method-i-deconstruct)
+  * [`XML::NodeSet#deconstruct`](https://nokogiri.org/rdoc/Nokogiri/XML/NodeSet.html?h=deconstruct#method-i-deconstruct)
+
+
+  ### Dependencies
+
+  * [CRuby] Vendored libxml2 is updated to v2.12.3 from v2.11.6. (@flavorjones)
+    * https://gitlab.gnome.org/GNOME/libxml2/-/releases/v2.12.0
+    * https://gitlab.gnome.org/GNOME/libxml2/-/releases/v2.12.1
+    * https://gitlab.gnome.org/GNOME/libxml2/-/releases/v2.12.2
+    * https://gitlab.gnome.org/GNOME/libxml2/-/releases/v2.12.3
+
+
+  ### Fixed
+
+  * CSS `nth` pseudo-classes now handle spaces, e.g. `"2n + 1"`. [#3018] (@fusion2004)
+  * [CRuby] `libgumbo` no longer leaks memory when an incomplete tag is abandoned by the HTML5 parser. [#3036] (@flavorjones)
+
+
+  ### Removed
+
+  * Removed `Nokogiri::HTML5.get` which was deprecated in v1.12.0. [#2278] (@flavorjones)
+  * Removed the CSS-to-XPath utility modules `XPathVisitorAlwaysUseBuiltins` and `XPathVisitorOptimallyUseBuiltins`, which were deprecated in v1.13.0 in favor of `XPathVisitor` constructor args. [#2403] (@flavorjones)
+  * Removed `XML::Reader#attribute_nodes` which was deprecated in v1.13.8 in favor of `#attribute_hash`. [#2598, #2599] (@flavorjones)
+  * [CRuby] Removed the `libxml/libxml2_path` key from `VersionInfo`, used in the past for third-party library integration, in favor of the `nokogiri/cppflags` and `nokogiri/ldflags` keys. Please note that third-party library integration is not fully supported and may be deprecated soon, see #2746 for more context. [#2143] (@flavorjones)
+
+-------------------------------------------------------------------
 Tue Nov 28 08:13:47 UTC 2023 - Dan Čermák <dan.cermak@posteo.net>
 
 - 1.15.5:
@@ -661,18 +757,51 @@ Mon Oct  2 13:09:53 UTC 2023 - Martin Vidner <mvidner@suse.com>
 - Buildrequire openssl gem to fix building with Ruby 3.0
 
 -------------------------------------------------------------------
+Sat Aug 26 04:32:35 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- updated to version 1.15.4
+  see installed CHANGES.md
+
+-------------------------------------------------------------------
+Thu Jun 22 00:08:39 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- updated to version 1.15.2
+  see installed CHANGES.md
+
+-------------------------------------------------------------------
+Sun May 14 01:31:08 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- cleanup ruby version restrictions
+
+-------------------------------------------------------------------
+Fri Apr 21 13:29:16 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- updated to version 1.14.3
+  see installed CHANGES.md
+
+-------------------------------------------------------------------
+Thu Feb 23 19:12:16 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- updated to version 1.14.2
+  see installed CHANGES.md
+
+-------------------------------------------------------------------
+Thu Dec 22 10:46:21 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- updated to version 1.13.9
+  see installed CHANGES.md
+
+-------------------------------------------------------------------
 Fri Oct 28 05:01:51 UTC 2022 - Stephan Kulow <coolo@suse.com>
 
-updated to version 1.13.9
- see installed CHANGES.md
-
+- updated to version 1.13.9
+  see installed CHANGES.md
 
 -------------------------------------------------------------------
 Thu Aug  4 13:20:37 UTC 2022 - Stephan Kulow <coolo@suse.com>
 
-updated to version 1.13.8
- see installed CHANGES.md
-
+- updated to version 1.13.8
+  see installed CHANGES.md
 
 -------------------------------------------------------------------
 Mon May 30 12:28:02 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>

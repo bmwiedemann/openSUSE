@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jul 27 20:50:09 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 1.5.1:
+  + Bug fixes for ARM build and cross-compilation
+  + rust: recursively pull proc-macro deps for rust targets
+  + fix gnome.compile_resources() install: true and no install_dir
+  + test suite fixes and bug fixes
+
+-------------------------------------------------------------------
 Sat Jul 20 07:02:57 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 1.5.0:

@@ -1,7 +1,7 @@
 #
 # spec file for package python-parso
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-parso
-Version:        0.8.3
+Version:        0.8.4
 Release:        0
 Summary:        An autocompletion tool for Python
 License:        MIT AND Python-2.0
 URL:            https://github.com/davidhalter/parso
 Source0:        https://files.pythonhosted.org/packages/source/p/parso/parso-%{version}.tar.gz
-Patch1:         https://github.com/davidhalter/parso/commit/cf5969d7a109798adbf9538d70e92138f077d700.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest >= 3.0.7}
 BuildRequires:  %{python_module setuptools}

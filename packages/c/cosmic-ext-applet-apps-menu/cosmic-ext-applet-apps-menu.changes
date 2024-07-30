@@ -1,0 +1,16 @@
+-------------------------------------------------------------------
+Sat Jul 06 17:28:38 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Rebase patches fix-binary-name.patch & fix-justfile.patch
+- Update to version 0.1.6+21c3063:
+  * Revert "rename exec"
+  * Update README.md
+  * lowercase follow up
+  * case insensitve categories
+  * simplify scrolling
+  * update & icon
+
+-------------------------------------------------------------------
+Wed Mar 20 02:05:16 UTC 2024 - Richard Rahl <rrahl0@proton.me>
+
+- initial packaging

@@ -622,4 +622,22 @@
     <comment></comment>
     <requestid>1135119</requestid>
   </revision>
+  <revision rev="78" vrev="5">
+    <srcmd5>b40b70a2e30416d4ffe50988f565a4f1</srcmd5>
+    <version>1.8.0</version>
+    <time>1722333219</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove disabled patch rrdtool-tclsegfault.patch 
+- Small spec file modernisation
+
+- Added rrdtool-fix_extra_reference.patch to fix pointer type
+  incompatibility and allow the package to be built with GCC 14
+  without explicitely demoting errors to warnings. [boo#1225919]
+
+- add rrdtool-1.8.0-gcc14.patch from upstream to fix build with
+  gcc-14
+- disable rrdtool-tclsegfault.patch, does not apply and seems
+  unneccessary</comment>
+    <requestid>1190169</requestid>
+  </revision>
 </revisionlist>

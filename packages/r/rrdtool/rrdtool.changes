@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Jul 29 07:19:23 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
+
+- Remove disabled patch rrdtool-tclsegfault.patch 
+- Small spec file modernisation
+
+-------------------------------------------------------------------
+Fri Jul 12 15:12:22 UTC 2024 - Martin Jambor <mjambor@suse.com>
+
+- Added rrdtool-fix_extra_reference.patch to fix pointer type
+  incompatibility and allow the package to be built with GCC 14
+  without explicitely demoting errors to warnings. [boo#1225919]
+
+-------------------------------------------------------------------
+Fri Jul  5 20:30:43 UTC 2024 - Friedrich Haubensak <hsk17@mail.de>
+
+- add rrdtool-1.8.0-gcc14.patch from upstream to fix build with
+  gcc-14
+- disable rrdtool-tclsegfault.patch, does not apply and seems
+  unneccessary
+-------------------------------------------------------------------
 Mon Dec 25 16:26:00 UTC 2023 - Michal Suchanek <msuchanek@suse.com>
 
 - Use autosetup

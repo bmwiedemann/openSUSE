@@ -92,6 +92,8 @@ Patch6:         0001-Coerce-connectivity-LIMITED-to-NONE-when-device-is-d.patch
 Patch7:         nm-add-CAP_SYS_ADMIN-permission.patch
 # PATCH-FIX-SLE python3.6-in-sle.patch yfjiang@suse.com -- SLE still takes python 3.6 as primary runtime system, the patch makes meson find python 3.6
 Patch8:         python3.6-in-sle.patch
+# PATCH-FIX-SLE NetworkManager-dont-renew-bridge-dhcp-if-no-mac-on-wakeup.patch bsc#1225498, glfd#NetworkManager/NetworkManager#1587 -- manager: don't renew dhcp lease when software devices' MAC is empty
+Patch9:         NetworkManager-dont-renew-bridge-dhcp-if-no-mac-on-wakeup.patch
 
 BuildRequires:  c++_compiler
 BuildRequires:  dnsmasq
@@ -301,6 +303,7 @@ This tool is still experimental.
 %patch -P 7 -p1
 %if 0%{?sle_version} && 0%{?sle_version} < 160000
 %patch -P 8 -p1
+%patch -P 9 -p1
 %endif
 
 # Fix server.conf's location, to end up in %%{_defaultdocdir}/%%{name},

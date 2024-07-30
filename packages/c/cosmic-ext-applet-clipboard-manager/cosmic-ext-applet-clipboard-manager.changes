@@ -1,0 +1,12 @@
+-------------------------------------------------------------------
+Sat Jul 06 17:14:14 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Update to version 0.1.0+git20240629.0d806ec:
+  * Update README.md
+  * fix: db path
+  * fix tests
+
+-------------------------------------------------------------------
+Mon Mar 25 04:45:21 UTC 2024 - Richard Rahl <rrahl0@proton.me>
+
+- initial packaging

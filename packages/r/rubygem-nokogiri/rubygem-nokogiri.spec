@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-nokogiri
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,23 +24,21 @@
 #
 
 Name:           rubygem-nokogiri
-Version:        1.15.5
+Version:        1.16.6
 Release:        0
 %define mod_name nokogiri
 %define mod_full_name %{mod_name}-%{version}
 # MANUAL
-%if 0%{?suse_version} == 1500
-%define rb_build_versions  ruby31     ruby27
-%define rb_build_ruby_abis ruby:3.1.0 ruby:2.7.0
-%endif
-BuildRequires:  %{rubygem mini_portile2 >= 2.8}
+%define rb_build_versions     ruby33
+%define rb_build_ruby_abis    ruby:3.3.0
+BuildRequires:  %{rubygem mini_portile2 >= 2.8.2}
 BuildRequires:  %{rubygem openssl}
 BuildRequires:  %{rubygem pkg-config}
 BuildRequires:  libxml2-devel >= 2.6.21
 BuildRequires:  libxslt-devel
 # /MANUAL
 BuildRequires:  ruby-macros >= 5
-BuildRequires:  %{rubydevel >= 2.7.0}
+BuildRequires:  %{rubydevel >= 3.0.0}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  %{rubygem rdoc > 3.10}
 BuildRequires:  update-alternatives
@@ -48,6 +46,9 @@ URL:            https://nokogiri.org
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        rubygem-nokogiri-rpmlintrc
 Source2:        gem2rpm.yml
+# MANUAL
+Patch0:         only-complain-about-version-diff-if-it-is-older.patch
+# /MANUAL
 Summary:        Nokogiri (鋸) makes it easy and painless to work with XML and HTML
 License:        MIT
 PreReq:         update-alternatives
@@ -61,6 +62,10 @@ fast and standards-compliant by relying on native parsers like libxml2,
 libgumbo, or xerces.
 
 %prep
+%gem_unpack
+%patch -P 0 -p1
+find -type f -print0 | xargs -0 touch -r %{S:0}
+%gem_build
 
 %build
 

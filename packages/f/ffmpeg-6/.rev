@@ -106,4 +106,12 @@ I am sorry for the messy submission before. (forwarded request 1139042 from iDes
   (CVE-2023-50007 bsc#1223253)</comment>
     <requestid>1170119</requestid>
   </revision>
+  <revision rev="12" vrev="6">
+    <srcmd5>647eb879ee626616ae2668030c72f6f5</srcmd5>
+    <version>6.1.1</version>
+    <time>1722333199</time>
+    <user>dimstar_suse</user>
+    <comment>ffmpeg CVE patches</comment>
+    <requestid>1189878</requestid>
+  </revision>
 </revisionlist>

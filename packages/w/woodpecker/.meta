@@ -1,0 +1,6 @@
+<package name="woodpecker" project="openSUSE:Factory">
+  <title>Server, agent and CLI for the WoodpeckerCI system</title>
+  <description>Woodpecker is a simple yet powerful CI/CD engine with great extensibility.</description>
+  <devel project="devel:tools:building" package="woodpecker"/>
+  <url>https://woodpecker-ci.org/</url>
+</package>

@@ -1,4 +1,74 @@
 -------------------------------------------------------------------
+Wed Jul 24 07:07:57 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 8.9.0:
+  * Security fixes:
+    - [bsc#1227888, CVE-2024-6197] curl: freeing stack buffer
+      in utf8asn1str
+    - [bsc#1228260, CVE-2024-6874] idn: tweak buffer use when
+      converting with macidn
+  * Changes:
+    - curl: add --ip-tos (IP Type of Service / Traffic Class)
+    - curl: add --mptcp
+    - curl: add --vlan-priority
+    - curl: add -w '%{num_retries}
+    - gnutls: support CA caching
+    - mbedtls: support CURLOPT_CERTINFO
+    - noproxy: patterns need to be comma separated
+    - socket: support binding to interface *AND* IP
+    - tcpkeepalive: add CURLOPT_TCP_KEEPCNT and --keepalive-cnt
+    - urlapi: add CURLU_NO_GUESS_SCHEME
+    - wolfssl: support CA caching
+  * Bugfixes:
+    - connection: shutdown TLS (for FTP) better
+    - curl-config: revert to backticks to support old target envs
+    - curl: allow etag and content-disposition for 3xx reply
+    - curl: bsearch the --write-out variable name
+    - curl: check for --disable case *sensitively*
+    - doh: fix leak and zero-length HTTPS RR crash
+    - file: separate fake headers and body with a stand-alone CRLF
+    - ftp: remove redundant null pointer check in loop condition
+    - gnutls: improve TLS shutdown
+    - gnutls: pass in SNI name, not hostname when checking cert
+    - hostip: skip error check for infallible function call
+    - http/3: add shutdown support
+    - http/3: resume upload on ack if we have more data to send
+    - lib: add a few DEBUGASSERT(data) to aid code analyzers
+    - lib: add failure reason on bind errors
+    - lib: graceful connection shutdown
+    - lib: xfer_setup and non-blocking shutdown
+    - multi: add multi->proto_hash, a key-value store for protocol data
+    - multi: do a final progress update on connect failure
+    - multi: fix multi_wait() timeout handling
+    - multi: fix pollset during RESOLVING phase
+    - ngtcp2+quictls: fix cert-status use
+    - noproxy: test bad ipv6 net size first
+    - openssl/gnutls: rectify the TLS version checks for QUIC
+    - openssl: fix hostname handling when using ECH
+    - openssl: stop duplicate ssl key logging for legacy OpenSSL
+    - quic: enable UDP GRO
+    - quic: openssl quic, cmake and doc version update to 3.3.0
+    - quic: require at least OpenSSL 3.3 for QUIC
+    - quic: update to quiche 0.22.0
+    - smtp: for starttls, do full upgrade
+    - tool_operate: avoid explicitly setting verifypeer to 1
+    - tool_writeout: get certinfo only when needing it
+    - transfer: avoid polling socket every transfer loop
+    - transfer: conn close on paused upload
+    - transfer: do not use EXPIRE_NOW while blocked
+    - transfer: remove curl_upload_refill_watermark, no longer used
+    - transfer: set CSELECT_IN if there is data pending
+    - url: allow DoH transfers to override max connection limit
+    - x509asn1: add some common ECDSA OIDs
+    - x509asn1: ASN1tostr() should fail when 'constructed' is set
+    - x509asn1: fallback to dotted OID representation
+    - x509asn1: prevent NULL dereference
+    - x509asn1: remove superfluous free()
+    - x509asn1: remove two static variables
+  * Rebase libcurl-ocloexec.patch
+  * Remove curl-make-install-curl-config.patch upstream
+
+-------------------------------------------------------------------
 Thu Jun 20 15:22:47 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - add multibuild for minimal libcurl flavored build (useful for

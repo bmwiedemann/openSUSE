@@ -124,4 +124,14 @@
   - boot: Query systemd if soft-reboot was done</comment>
     <requestid>1172655</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>dbd5ef505866bf351075fbe8b461fd64</srcmd5>
+    <version>0.13.0+git.20240726</version>
+    <time>1722333197</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.13.0+git.20240726:
+  * Release version 0.13.0
+  * Fix variable overflow and check for it (#15)</comment>
+    <requestid>1189803</requestid>
+  </revision>
 </revisionlist>

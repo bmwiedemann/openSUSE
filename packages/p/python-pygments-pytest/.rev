@@ -105,4 +105,13 @@
 - Remove python_module macro definition</comment>
     <requestid>1137443</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>de27ca73940f9c0ff22ccc18312eedec</srcmd5>
+    <version>2.4.0</version>
+    <time>1722333209</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to pyproject macros.
+- Skip a test that fails with Pytest 8.3.</comment>
+    <requestid>1190075</requestid>
+  </revision>
 </revisionlist>

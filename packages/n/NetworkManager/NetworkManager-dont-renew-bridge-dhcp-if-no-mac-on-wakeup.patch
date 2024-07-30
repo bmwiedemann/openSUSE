@@ -1,0 +1,45 @@
+From a32094e9f8845700c6037634614863d1cee1ff55 Mon Sep 17 00:00:00 2001
+From: Jonathan Kang <jonathankang@gnome.org>
+Date: Wed, 17 Jul 2024 21:06:45 +0800
+Subject: [PATCH] manager: don't renew dhcp lease when software devices' MAC is
+ empty
+
+If a bridge device doesn't have a permanent MAC address, its MAC address
+will change based on the attached ports. When suspending the system, all
+slaves can be released, thus MAC address of the bridge interface changes
+to 00:00:00:00:00:00. In such scenarios, if you resume the system,
+NetworkManager tries to renew dhcp lease on the bridge interface with an
+empty MAC address. Because its slaved ports haven't been attached yet.
+
+Fix that in this commit.
+
+https://gitlab.freedesktop.org/NetworkManager/NetworkManager/-/issues/1587
+---
+ src/core/nm-manager.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/src/core/nm-manager.c b/src/core/nm-manager.c
+index e949ea1189..00aa58c23a 100644
+--- a/src/core/nm-manager.c
++++ b/src/core/nm-manager.c
+@@ -10,6 +10,7 @@
+ 
+ #include <fcntl.h>
+ #include <limits.h>
++#include <linux/if_ether.h>
+ #include <stdlib.h>
+ #include <sys/sendfile.h>
+ #include <sys/stat.h>
+@@ -7359,7 +7360,8 @@ do_sleep_wake(NMManager *self, gboolean sleeping_changed)
+             guint               i;
+ 
+             if (nm_device_is_software(device)
+-                && !nm_device_get_unmanaged_flags(device, NM_UNMANAGED_SLEEPING)) {
++                && !nm_device_get_unmanaged_flags(device, NM_UNMANAGED_SLEEPING)
++                && !nm_utils_hwaddr_matches(nm_device_get_hw_address(device), -1, &nm_ether_addr_zero, ETH_ALEN)) {
+                 /* DHCP leases of software devices could have gone stale
+                  * so we need to renew them. */
+                 nm_device_update_dynamic_ip_setup(device, "wake up");
+-- 
+2.45.2
+

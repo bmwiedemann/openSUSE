@@ -17,7 +17,8 @@
 
 
 %global flavor @BUILD_FLAVOR@%{nil}
-%if 0%{?suse_version} <= 1550
+# Without complete tests for SLES to avoid python-pandas requirement
+%if 0%{?suse_version} <= 1600
 %bcond_with complete_tests
 %else
 %bcond_without complete_tests

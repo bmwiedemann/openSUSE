@@ -1,5 +1,5 @@
 #
-# spec file for package openblas
+# spec file
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -239,7 +239,7 @@ BuildRequires:  gcc%{?cc_v}-fortran
 BuildRequires:  gcc-fortran
 BuildRequires:  update-alternatives
 Requires(post): update-alternatives
-Requires(preun): update-alternatives
+Requires(preun):update-alternatives
 %else
 BuildRequires:  %{compiler_family}%{?c_f_ver}-compilers-hpc-macros-devel
 BuildRequires:  lua-lmod
@@ -256,7 +256,7 @@ Group:          System/Libraries
 %if %{without hpc}
 Requires(post): update-alternatives
 Requires(post): coreutils
-Requires(preun): update-alternatives
+Requires(preun):update-alternatives
  %if "%flavor" == "serial"
 Obsoletes:      lib%{pname}%{so_v} < %{version}
 Provides:       lib%{pname}%{so_v} = %{version}
@@ -446,6 +446,7 @@ make MAKE_NB_JOBS=$jobs %{?openblas_target} %{?build_flags} \
 # Pass NUM_THREADS again, as it is not propagated from the build step
 # https://github.com/OpenMathLib/OpenBLAS/issues/4275
 %make_install  %{?build_flags} \
+    %{?openblas_target} \
     NUM_THREADS=%{num_threads} \
     OPENBLAS_LIBRARY_DIR=%{p_libdir} \
     OPENBLAS_INCLUDE_DIR=%{p_includedir} \

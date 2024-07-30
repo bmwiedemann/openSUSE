@@ -935,7 +935,7 @@ Prefer: -python310-Cython0 -python311-Cython0 -python312-Cython0
 # have choice for ntp-daemon: chrony ntp ntpsec
 Prefer: chrony
 
-Prefer: -procps4
+Prefer: -procps4 -procps4-devel
 
 # have choice for python-sqlalchemy >= 1.4: python-SQLAlchemy python-SQLAlchemy1
 Prefer: -python310-SQLAlchemy1 -python311-SQLAlchemy1 -python312-SQLAlchemy1

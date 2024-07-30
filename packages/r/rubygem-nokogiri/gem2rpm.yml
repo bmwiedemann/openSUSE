@@ -16,11 +16,9 @@
 # :disable_automatic_rdoc_dep: true
 # ## used by gem2rpm
 :preamble: |-
-  %if 0%{?suse_version} == 1500
-  %define rb_build_versions  ruby31     ruby27
-  %define rb_build_ruby_abis ruby:3.1.0 ruby:2.7.0
-  %endif
-  BuildRequires:  %{rubygem mini_portile2 >= 2.8}
+  %define rb_build_versions     ruby33
+  %define rb_build_ruby_abis    ruby:3.3.0
+  BuildRequires:  %{rubygem mini_portile2 >= 2.8.2}
   BuildRequires:  %{rubygem openssl}
   BuildRequires:  %{rubygem pkg-config}
   BuildRequires:  libxml2-devel >= 2.6.21
@@ -30,6 +28,8 @@
 # ## used by gem2rpm
 # :patches:
 #  no-more-mini_portile.patch: -p0
+:patches:
+  only-complain-about-version-diff-if-it-is-older.patch: -p1
 :sources:
   - rubygem-nokogiri-rpmlintrc
 # - foo.desktop

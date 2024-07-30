@@ -1,0 +1,6 @@
+<package name="cosmic-ext-color-picker" project="openSUSE:Factory">
+  <title></title>
+  <description>A simple color picker</description>
+  <devel project="X11:COSMIC:Apps" package="cosmic-ext-color-picker"/>
+  <url>https://github.com/PixelDoted/cosmic-color-picker</url>
+</package>

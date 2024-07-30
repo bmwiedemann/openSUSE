@@ -1,0 +1,16 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8e8bca043f411394e0f5e64d5106a8f5</srcmd5>
+    <version>2.4</version>
+    <time>1722333255</time>
+    <user>dimstar_suse</user>
+    <comment>Submitting devel:tools/seergdb to openSUSE:Factory.
+SeerGDB is a modern, beautiful, useful GUI for GNU GDB written in modern C++.
+It's quite well maintained, and I think it'd be really useful as GDB's default
+interface won't be to everyone's liking.
+
+Mailing list link:
+https://lists.opensuse.org/archives/list/factory@lists.opensuse.org/thread/DGVFIN4RLGZRUP227OSGUQUXNA24KM73/</comment>
+    <requestid>1190365</requestid>
+  </revision>
+</revisionlist>

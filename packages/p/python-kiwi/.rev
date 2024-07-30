@@ -2500,4 +2500,40 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1188893</requestid>
   </revision>
+  <revision rev="118" vrev="1">
+    <srcmd5>902ce5e5361611592268a159086878c3</srcmd5>
+    <version>10.0.27</version>
+    <time>1722333232</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump version: 10.0.26 → 10.0.27
+
+- Fix dracut-interactive with systemd 256
+  With systemd 256, /usr (and thus also /bin/) is read-only in the initrd.
+  Move dracut-interactive and its .service into /run instead.
+
+- Bump version: 10.0.25 → 10.0.26
+
+- Revise scripts_testing.rst
+
+- Revise schema_extensions.rst
+
+- Pass kernel cmdline to agama
+  In the agama integration test make sure to pass along
+  the kernel boot parameters to allow controlling the
+  behavior of agama better
+
+- Add &lt;file&gt; directive to incorporate custom files
+  Usually custom files are managed by placing them as overlay
+  files or archives. However, overlay files must be structured
+  inside of a root/ subdirectory and archive files are binary
+  data. It is therefore not straight forward to just reference
+  one or more files as source files to the image description
+  to be placed into the image. This commit adds a new &lt;file&gt;
+  element which allows to do this. This Fixes #1953
+
+- kiwi_plugin_architecture.rst
+
+- Revise kiwi_from_python.rst</comment>
+    <requestid>1190403</requestid>
+  </revision>
 </revisionlist>

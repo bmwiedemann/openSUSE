@@ -1,0 +1,20 @@
+From 7bfe120c07f9fb571ed3e6e30db99d01da52bf60 Mon Sep 17 00:00:00 2001
+From: Brad King <brad.king@kitware.com>
+Date: Thu, 25 Jul 2024 11:00:36 -0400
+Subject: Tests/RunCMake/file-DOWNLOAD: Update bad host name
+ message for curl 8.9
+
+---
+ Tests/RunCMake/file-DOWNLOAD/bad-hostname-stdout.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Tests/RunCMake/file-DOWNLOAD/bad-hostname-stdout.txt b/Tests/RunCMake/file-DOWNLOAD/bad-hostname-stdout.txt
+index 12278e0fb4..4aa7e93a9c 100644
+--- a/Tests/RunCMake/file-DOWNLOAD/bad-hostname-stdout.txt
++++ b/Tests/RunCMake/file-DOWNLOAD/bad-hostname-stdout.txt
+@@ -1 +1 @@
+--- status='6;"Couldn't resolve host name"'
++-- status='6;"(Could not resolve hostname|Couldn't resolve host name)"'
+-- 
+2.45.2
+

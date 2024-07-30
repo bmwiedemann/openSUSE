@@ -155,6 +155,9 @@ there are no users logged in.
 # chunk of RAM to put the entire B-to-A tables in.
 ulimit -Sv 2000000
 
+# Avoid boo#1228331 (incompatible pointer passed to a function)
+%global optflags %{optflags} "-D_FILE_OFFSET_BITS=64" "-D_TIME_BITS=64"
+
 %meson \
 	-Dsession_example=false \
 	-Dbash_completion=true \

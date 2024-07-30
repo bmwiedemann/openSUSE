@@ -1,0 +1,17 @@
+diff --git a/justfile b/justfile
+index c15a2e0..b4928d0 100644
+--- a/justfile
++++ b/justfile
+@@ -1,5 +1,8 @@
++rootdir := ''
++prefix := '/usr'
++
+ # Installs files into the system
+ install: 
+-    sudo install -Dm0755 ./target/release/cosmic-applet-apps-menu  /usr/bin/cosmic-applet-apps-menu
+-    sudo install -Dm0644 data/dev.dominiccgeh.CosmicAppletAppsMenu.desktop /usr/share/applications/dev.dominiccgeh.CosmicAppletAppsMenu.desktop
+-    find 'data'/'icons' -type f -exec echo {} \; | rev | cut -d'/' -f-3 | rev | xargs -d '\n' -I {} sudo install -Dm0644 'data'/'icons'/{} /usr/share/icons/hicolor/{}
+\ No newline at end of file
++    install -Dm0755 ./target/release/cosmic-applet-apps-menu  {{rootdir}}{{prefix}}/bin/cosmic-ext-applet-apps-menu
++    install -Dm0644 data/dev.dominiccgeh.CosmicAppletAppsMenu.desktop {{rootdir}}{{prefix}}/share/applications/dev.dominiccgeh.CosmicAppletAppsMenu.desktop
++    find 'data'/'icons' -type f -exec echo {} \; | rev | cut -d'/' -f-3 | rev | xargs -d '\n' -I {} install -Dm0644 'data'/'icons'/{} {{rootdir}}{{prefix}}/share/icons/hicolor/{}

@@ -1,0 +1,5 @@
+<package name="cosmic-ext-2048" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="X11:COSMIC:Apps" package="cosmic-ext-2048"/>
+</package>

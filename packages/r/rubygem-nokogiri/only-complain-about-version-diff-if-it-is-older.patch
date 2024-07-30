@@ -1,0 +1,26 @@
+diff --git a/lib/nokogiri/version/info.rb b/lib/nokogiri/version/info.rb
+index 95f29e56..427b79ad 100644
+--- a/lib/nokogiri/version/info.rb
++++ b/lib/nokogiri/version/info.rb
+@@ -2,6 +2,7 @@
+ 
+ require "singleton"
+ require "shellwords"
++require "rubygems"
+ 
+ module Nokogiri
+   class VersionInfo # :nodoc:
+@@ -73,11 +74,11 @@ module Nokogiri
+       warnings = []
+ 
+       if libxml2?
+-        if compiled_libxml_version != loaded_libxml_version
++        if Gem::Version.new(compiled_libxml_version) > Gem::Version.new(loaded_libxml_version)
+           warnings << "Nokogiri was built against libxml version #{compiled_libxml_version}, but has dynamically loaded #{loaded_libxml_version}"
+         end
+ 
+-        if compiled_libxslt_version != loaded_libxslt_version
++        if Gem::Version.new(compiled_libxslt_version) > Gem::Version.new(loaded_libxslt_version)
+           warnings << "Nokogiri was built against libxslt version #{compiled_libxslt_version}, but has dynamically loaded #{loaded_libxslt_version}"
+         end
+       end

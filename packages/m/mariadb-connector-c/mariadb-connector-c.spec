@@ -42,6 +42,7 @@ BuildRequires:  cmake
 BuildRequires:  curl-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(krb5)
+BuildRequires:  pkgconfig(libzstd)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(zlib)
 %if %{with sqlite3}
@@ -165,13 +166,14 @@ install -Dpm 0644 build/include/ma_config.h \
 %files -n %{libname}_plugins
 %dir %{_libdir}/mysql/
 %dir %{_libdir}/mysql/plugin/
-%{_libdir}/mysql/plugin/dialog.so
-%{_libdir}/mysql/plugin/mysql_clear_password.so
 %{_libdir}/mysql/plugin/auth_gssapi_client.so
-%{_libdir}/mysql/plugin/remote_io.so
-%{_libdir}/mysql/plugin/sha256_password.so
 %{_libdir}/mysql/plugin/caching_sha2_password.so
 %{_libdir}/mysql/plugin/client_ed25519.so
+%{_libdir}/mysql/plugin/dialog.so
+%{_libdir}/mysql/plugin/mysql_clear_password.so
+%{_libdir}/mysql/plugin/remote_io.so
+%{_libdir}/mysql/plugin/sha256_password.so
+%{_libdir}/mysql/plugin/zstd.so
 
 %files -n %{libname}private
 %{_libdir}/libmariadbprivate.so

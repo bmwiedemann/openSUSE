@@ -1,0 +1,6 @@
+<package name="cosmic-ext-applet-ollama" project="openSUSE:Factory">
+  <title></title>
+  <description>A neat little applet for integrating ollama into the COSMIC Desktop Environment</description>
+  <devel project="X11:COSMIC:Apps" package="cosmic-ext-applet-ollama"/>
+  <url>https://github.com/elevenhsoft/cosmic-ext-applet-ollama</url>
+</package>

@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Fri Jul 26 14:28:59 UTC 2024 - Filip Kastl <filip.kastl@suse.com>
+
+- Add ffmpeg-c99.patch so that the package conforms to the C99
+  standard and builds on i586 with GCC 14.
+
+-------------------------------------------------------------------
+Tue Jul  2 12:26:28 UTC 2024 - Cliff Zhao <qzhao@suse.com>
+
+- Add ffmpeg-6-CVE-2024-32230.patch:
+  Backporting 96449cfe from upstream, Fix 1 line and one column images.
+  (CVE-2024-32230 bsc#1227296)
+
+-------------------------------------------------------------------
+Tue Jul  2 11:57:01 UTC 2024 - Cliff Zhao <qzhao@suse.com>
+
+- Add ffmpeg-6-CVE-2024-32228.patch:
+  Backporting 45964876 from upstream, Fix segfault on invalid film
+  grain metadata.
+  (CVE-2024-32228, bsc#1227277)
+
+-------------------------------------------------------------------
+Tue Jul  2 11:56:01 UTC 2024 - Cliff Zhao <qzhao@suse.com>
+
+- Add ffmpeg-6-CVE-2024-32228-shim-5d7f234e.patch:
+  Backporting 5d7f234e from upstream, document that there can be multiple
+  complex filtergraphs to prepare dependence code for CVE-2024-32228.
+  (CVE-2024-32228, bsc#1227277)
+
+-------------------------------------------------------------------
+Tue Jul  2 11:55:01 UTC 2024 - Cliff Zhao <qzhao@suse.com>
+
+- Add ffmpeg-6-CVE-2024-32228-shim-f50382cb.patch:
+  Backporting f50382cb from upstream, implement AFGS1 parsing.
+  to prepare dependence code for CVE-2024-32228.
+  (CVE-2024-32228, bsc#1227277)
+
+-------------------------------------------------------------------
+Tue Jul  2 11:54:01 UTC 2024 - Cliff Zhao <qzhao@suse.com>
+
+- Add ffmpeg-6-CVE-2024-32228-shim-1535d338.patch:
+  Backporting 1535d338 from upstream, add AOM film grain synthesis,
+  to prepare dependence code for CVE-2024-32228.
+  (CVE-2024-32228, bsc#1227277)
+
+-------------------------------------------------------------------
 Thu Apr 23 14:05:28 UTC 2024 - Cliff Zhao <qzhao@suse.com>
 
 - Add ffmpeg-CVE-2023-50008.patch:

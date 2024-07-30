@@ -1,0 +1,6 @@
+<package name="seergdb" project="openSUSE:Factory">
+  <title>seergdb</title>
+  <description>A GUI front-end for GNU gdb written in modern C++.</description>
+  <devel project="devel:tools" package="seergdb"/>
+  <url>https://github.com/epasveer/seer</url>
+</package>

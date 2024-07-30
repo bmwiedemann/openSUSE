@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Mon Jul 29 06:17:20 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.9.22:
+  + This release fixes the following bugs:
+    - Add a PCB tag in the usi-dock GUID to distinguish different
+      revisions.
+    - Add explicit hidraw permission to fwupd.service to fix
+      several devices.
+    - Always load the flashrom plugin when using coreboot.
+    - Be explicit with the rts54hub detach retry delay to fix the
+      Acer D501.
+    - Be more careful when setting thelio-io version strings.
+    - Fix a critical warning if a device returns unexpected data
+      from DFU upload.
+    - Fix a critical warning if the DMI manufacturer is an empty
+      string.
+    - Fix several reported integer overflows from Coverity.
+    - Fix the Blackbird and Talos II baseboard details.
+    - Fix transient version number issue after flashing wacom-usb
+      devices.
+    - Increase the cros_ec acquiesce delay to manage additional
+      reboots.
+    - Only accept valid ASCII cabinet filenames.
+    - Only require udevdir when gudev support is enabled.
+    - Only show one PixArt receiver device per physical device.
+    - Set the rts54hub version in more cases.
+    - Speed up the daemon self tests by ~60%.
+    - Use the bootloader build-timestamp as the fallback HWID BIOS
+      version.
+  + This release adds support for the following hardware:
+    - Framework SD
+    - Raspberry Pi 5 (unofficial)
+
+-------------------------------------------------------------------
 Fri Jun 14 12:47:11 UTC 2024 - pgajdos@suse.com
 
 - remove dependency on /usr/bin/python3 using

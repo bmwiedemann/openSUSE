@@ -2576,16 +2576,41 @@ unsorted:
   - cosign-bash-completion 
   - cosign-fish-completion 
   - cosign-zsh-completion 
+  - cosmic-app-library 
+  - cosmic-applet-app-list 
+  - cosmic-applet-audio 
+  - cosmic-applet-battery 
+  - cosmic-applet-bluetooth 
+  - cosmic-applet-input-sources 
+  - cosmic-applet-launcher-button 
+  - cosmic-applet-minimize 
+  - cosmic-applet-network 
+  - cosmic-applet-notifications 
+  - cosmic-applet-panel-button 
+  - cosmic-applet-power 
+  - cosmic-applet-status-area 
+  - cosmic-applet-tiling 
+  - cosmic-applet-time 
+  - cosmic-applet-workspaces 
+  - cosmic-applets 
+  - cosmic-bg 
+  - cosmic-comp 
   - cosmic-edit 
   - cosmic-ext-bg-theme 
   - cosmic-ext-tasks 
   - cosmic-files 
   - cosmic-icons 
+  - cosmic-launcher 
+  - cosmic-notifications 
+  - cosmic-osd 
+  - cosmic-panel 
   - cosmic-player 
+  - cosmic-randr 
   - cosmic-reader 
   - cosmic-screenshot 
   - cosmic-store 
   - cosmic-term 
+  - cosmic-workspaces 
   - coturn 
   - coturn-devel 
   - coturn-utils 
@@ -9764,7 +9789,6 @@ unsorted:
   - kdesu-devel 
   - kdesvn 
   - kdevelop-pg-qt 
-  - kdevelop5-pg-qt 
   - kdevelop5-plugin-php 
   - kdevelop5-plugin-php-devel 
   - kdevelop5-plugin-php-lang 
@@ -13340,7 +13364,7 @@ unsorted:
   - libgnunettransportmonitor0 
   - libgnunetutil16 
   - libgnunetvpn0 
-  - libgnuradio-3_10_10 
+  - libgnuradio-3_10_11 
   - libgnuradio-funcube-devel 
   - libgnuradio-funcube3_10_0 
   - libgnuradio-iqbalance-devel 
@@ -14190,6 +14214,7 @@ unsorted:
   - liblouis-devel 
   - liblouis-doc 
   - liblouis-tools 
+  - liblowdown1 
   - liblqr-1-0-32bit 
   - liblqr-devel 
   - liblrdf-devel 
@@ -14232,7 +14257,9 @@ unsorted:
   - liblxqt-lang 
   - liblxqt2 
   - liblz1 
+  - liblz4-1-32bit 
   - liblz4-devel 
+  - liblzma5-32bit 
   - liblzo2-2-32bit 
   - libm2cor18-gcc13 
   - libm2cor18-gcc13-32bit 
@@ -15804,7 +15831,7 @@ unsorted:
   - librsync-devel 
   - librsync2 
   - librtaudio7 
-  - librtlsdr2 
+  - librtlsdr0 
   - librtmidi7 
   - librtprocess-devel 
   - librtprocess0 
@@ -17204,6 +17231,7 @@ unsorted:
   - libzstd-devel 
   - libzstd-devel-32bit 
   - libzstd-devel-static 
+  - libzstd1-32bit 
   - libzvbi-chains0 
   - libzvbi-chains0-32bit 
   - libzvbi0-32bit 
@@ -17485,6 +17513,8 @@ unsorted:
   - love-0_7_2 
   - low-memory-monitor 
   - low-memory-monitor-doc 
+  - lowdown 
+  - lowdown-devel 
   - lpairs 
   - lpe 
   - lpsolve 
@@ -22862,6 +22892,7 @@ unsorted:
   - pongix 
   - pop 
   - pop-icon-theme 
+  - pop-launcher 
   - popeye 
   - poppler-data 
   - poppler-data-devel 
@@ -35227,6 +35258,7 @@ unsorted:
   - quazip-doc 
   - quazip-qt5-devel 
   - quazip-qt6-devel 
+  - qubesome 
   - qucs-s 
   - quick-webapps 
   - quilt 
@@ -47530,6 +47562,7 @@ unsorted:
   - vectorscan-devel 
   - vectorscan-examples 
   - ved 
+  - vegeta 
   - velero 
   - velero-bash-completion 
   - velero-fish-completion 
@@ -48111,6 +48144,7 @@ unsorted:
   - xcursorgen 
   - xcwd 
   - xdbedizzy 
+  - xdg-desktop-portal-cosmic 
   - xdg-desktop-portal-devel 
   - xdg-desktop-portal-hyprland 
   - xdg-desktop-portal-lxqt 

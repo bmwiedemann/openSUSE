@@ -810,4 +810,13 @@ This version fixes the license naming issue.</comment>
 </comment>
     <requestid>1158311</requestid>
   </revision>
+  <revision rev="75" vrev="3">
+    <srcmd5>972d826a20cf56cc9887a371bd634ac3</srcmd5>
+    <version>6.98.9</version>
+    <time>1722333228</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable complete tests for non-tumbleweed to avoid python-pandas
+  requirement</comment>
+    <requestid>1190234</requestid>
+  </revision>
 </revisionlist>

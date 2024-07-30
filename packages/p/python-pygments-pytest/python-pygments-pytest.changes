@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jul 29 04:21:50 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pyproject macros.
+- Skip a test that fails with Pytest 8.3.
+
+-------------------------------------------------------------------
 Sun Jan  7 20:53:30 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.4.0:

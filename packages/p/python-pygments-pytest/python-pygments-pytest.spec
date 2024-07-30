@@ -24,10 +24,12 @@ Summary:        A pygments lexer for pytest output
 License:        MIT
 URL:            https://github.com/asottile/pygments-pytest
 Source:         https://github.com/asottile/pygments-pytest/archive/v%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pygments-ansi-color >= 0.0.3}
 BuildRequires:  %{python_module pygments}
 BuildRequires:  %{python_module pytest >= 4.0.1}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-pygments
@@ -42,20 +44,21 @@ This library provides a pygments lexer called "pytest".
 %setup -q -n pygments-pytest-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest
+# https://github.com/pytest-dev/pygments-pytest/issues/135
+%pytest -k 'not test_warnings'
 
 %files %{python_files}
 %doc README.md
 %license LICENSE
 %pycache_only %{python_sitelib}/__pycache__/*.pyc
 %{python_sitelib}/pygments_pytest.py
-%{python_sitelib}/pygments_pytest-%{version}*-info
+%{python_sitelib}/pygments_pytest-%{version}.dist-info
 
 %changelog

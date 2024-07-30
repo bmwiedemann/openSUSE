@@ -1,0 +1,6 @@
+<package name="cosmic-ext-dirstat" project="openSUSE:Factory">
+  <title></title>
+  <description>A libcosmic version of KDirstat</description>
+  <devel project="X11:COSMIC:Apps" package="cosmic-ext-dirstat"/>
+  <url>https://github.com/Koranir/cosmic-dirstat</url>
+</package>

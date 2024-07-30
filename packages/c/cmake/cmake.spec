@@ -70,6 +70,8 @@ Patch0:         cmake-fix-ruby-test.patch
 # Search for python interpreters from newest to oldest rather then picking up /usr/bin/python as first choice
 Patch1:         feature-suse-python-interp-search-order.patch
 Patch2:         cmake-zerojvm.patch
+# upstream, adjust test to process output from cURL 8.9.0
+Patch3:         curl-8.9.0-output.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig

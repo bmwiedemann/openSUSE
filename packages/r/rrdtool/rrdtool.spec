@@ -1,7 +1,7 @@
 #
 # spec file for package rrdtool
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -46,11 +46,16 @@ Source99:       %{name}.changes
 # PATCH-FIX-UPSTREAM -- Fix BUILD_DATE in rrdtool help output (fix segfault)
 # https://github.com/oetiker/rrdtool-1.x/commit/e59f703bbcc0af949ee365206426b6394c340c6f.patch
 Patch1:         e59f703bbcc0af949ee365206426b6394c340c6f.patch
-# PATCH-FIX-UPSTREAM -- Prevent possible segfault
-Patch3:         rrdtool-tclsegfault.patch
+## PATCH-FIX-UPTREAM -- https://github.com/oetiker/rrdtool-1.x/pull/1242
+Patch2:         rrdtool-1.8.0-gcc14.patch
+# PATCH-FIX-UPTREAM -- Prevent possible segfault
+## this patch against rrdtool-1.4.5 dates from 2011, seems unneccessary today,
+## never appeared upstream, and it does no longer apply
+##Patch3:         rrdtool-tclsegfault.patch
 # PATCH-FIX-UPSTREAM -- bnc#793636
 Patch12:        rrdtool-zero_vs_nothing.patch
 Patch14:        harden_rrdcached.service.patch
+Patch15:        rrdtool-fix_extra_reference.patch
 # Needed for tests
 BuildRequires:  bc
 BuildRequires:  cairo-devel >= 1.2
@@ -267,7 +272,7 @@ autoreconf -fi
         --with-gnu-ld \
         --with-systemdsystemunitdir=%{_unitdir}
 
-make %{?_smp_mflags}
+%make_build
 
 %install
 make \
@@ -315,7 +320,7 @@ ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcrrdcached
 %check
 # Follow upstream, disable the following, failing tests: rpn1
 # https://github.com/oetiker/rrdtool-1.x/blob/master/.travis.yml#L30
-make %{?_smp_mflags} check TESTS="modify1 modify2 modify3 modify4 modify5 rpn2 xport1 \
+%make_build check TESTS="modify1 modify2 modify3 modify4 modify5 rpn2 xport1 \
 tune1 tune2 graph1 rrdcreate dump-restore create-with-source-1 create-with-source-2 \
 create-with-source-3 create-with-source-4 create-with-source-and-mapping-1 \
 create-from-template-1 dcounter1 vformatter1 list1 pdp-calc1"

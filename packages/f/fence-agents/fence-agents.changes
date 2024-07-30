@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jul 24 09:38:55 UTC 2024 - Peter Varkoly <varkoly@suse.com>
+
+- Split fence-agents package (jsc#PED-8798)
+- fence-agents-common provides the common libraries for all fence agents
+  and is reuired by all fence agents.
+- fence-agents-all installs all fence agents to provide a safe update
+  for the older fence-agents version which contained all agents.
+  After update the not used agents can be uninstalled.
+
+-------------------------------------------------------------------
 Wed Jul 03 18:27:35 UTC 2024 - varkoly@suse.com
 
 - Update to version 4.15.0+git.1719822011.7a2c0a7f:

@@ -1,0 +1,69 @@
+-------------------------------------------------------------------
+Mon Jul 29 21:38:30 UTC 2024 - Martin Schreiner <martin.schreiner@suse.com>
+
+- Enable position-independent executables.
+- Use CMake macros.
+- Improve GCC-related conditionals.
+
+-------------------------------------------------------------------
+Wed May 22 19:35:21 UTC 2024 - Martin Schreiner <martin.schreiner@suse.com>
+
+- Upgrade to v2.4:
+  * Changed main icon to a more license friendly one.
+  * All icons are now GPLv3, CC3.0, or CC4.0
+  * Fixed string compares for breakpoint conditions
+  * Added '--bs' command line option to specify a breakpoint at a
+    source.cpp:lineno
+  * Fixed long tooltips text by restricting them to 100 characters.
+  * The text in the various viewing dialogs is still the full length.
+  * The 100 limit probably needs to be configurable.
+  * Added register profiles to show only interesting/relevant registers.
+  * Added UTF-8,16,32 support in the Memory Visualizer.
+  * Added an internal "dark" and "light" theme via the View->Style menu.
+  * Added option to open the current source file in an external editor.
+  * Fixed saving of RR parameters in config dialog.
+  * Sped up some visualization views.
+
+-------------------------------------------------------------------
+Sat Sep 23 17:14:11 UTC 2023 - Martin Schreiner <martin.schreiner@suse.com>
+
+- Upgrade to v2.2:
+  * Small RR release. Seer now runs 'rr replay' internally.
+  * Fixed infinite loop when starting with RR mode.
+  * Reworked RR mode to directly run 'rr replay'.
+    No need to start a 'rr server' and connect to it.
+  * Fixed Source handling in source browser.
+    Qt5 mode was broken.
+    Qt6 works. Directory paths need a tailing "/*".
+- Fix build for openSUSE 15.5.
+  Changed from the default gcc version (7) to gcc 12, since it
+  supports C++17.
+- Remove doubly declared files in the spec, removing some warnings.
+- Add missing "Group" information.
+
+-------------------------------------------------------------------
+Sat Aug 26 13:46:17 UTC 2023 - Martin Schreiner <martin.schreiner@suse.com>
+
+- Add a missing "Recommends" entry for qt6-svg.
+
+-------------------------------------------------------------------
+Wed Aug 23 21:13:06 UTC 2023 - Martin Schreiner <martin.schreiner@suse.com>
+
+- Upgrade to v2.1:
+  * Add Execution dialog to record breakpoint events. This solves the
+    problem of too many break/error dialogs to "swat away" as the
+    program is debugged.
+  * Add a method to add/change gdb commands to execute when a
+    breakpoint (breakpoint, watchpoint, catchpoint) is reached.
+  * Add a method to add/change a breakpoint's condition command.
+  * Add a method to add/change a breakpoint's ignore count.
+  * Add a method to add/change a breakpoint's command list.
+  * Debug dialog for "attach" mode now detects executable name and
+    path from /proc//exe.
+  * Commandline for "attach" mode now detects executable name and path
+    from /proc//exe.
+
+-------------------------------------------------------------------
+Mon Aug  7 17:33:46 UTC 2023 - Martin Schreiner <martin.schreiner@suse.com>
+
+- Initial submission for v2.0.

@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Jul 26 13:38:26 UTC 2024 - cathy.hu@suse.com
+
+- Update to version 20240726:
+  * Allow snapper grub plugin to manage unlabeled_t and read link files
+
+-------------------------------------------------------------------
+Thu Jul 25 07:43:52 UTC 2024 - cathy.hu@suse.com
+
+- Update to version 20240725:
+  * Initial policy for grub2 snapper plugin (bsc#1228205)
+
+-------------------------------------------------------------------
+Tue Jul 16 10:57:07 UTC 2024 - cathy.hu@suse.com
+
+- Update to version 20240716:
+  * Set microos autorelabel script to systemd_autorelabel_generator_t
+  * Allow systemd_generator to write kmsg
+  * Initial policy for systemd growpart-generator (bsc#1226824)
+
+-------------------------------------------------------------------
 Mon Jul 15 11:55:43 UTC 2024 - cathy.hu@suse.com
 
 - Update to version 20240715:

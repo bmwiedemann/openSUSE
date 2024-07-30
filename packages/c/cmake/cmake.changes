@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jul 27 05:49:03 UTC 2024 - Christoph G <foss@grueninger.de>
+
+- Add curl-8.9.0-output.patch to fix test for different output
+  with cURL 8.9.0. Part of upstream and will be part of 3.31.0.
+
+-------------------------------------------------------------------
 Fri Jul 19 16:27:30 UTC 2024 - Christoph G <foss@grueninger.de>
 
 - update to 3.30.1

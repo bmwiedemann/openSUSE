@@ -1100,4 +1100,18 @@
   * lib/all agents: use r&quot;&quot; for all regular expressions to avoid SyntaxWarning errors</comment>
     <requestid>1185211</requestid>
   </revision>
+  <revision rev="75" vrev="2">
+    <srcmd5>4480b9cf5f90d2f5a73cc640bd433ed8</srcmd5>
+    <version>4.15.0+git.1719822011.7a2c0a7f</version>
+    <time>1722333233</time>
+    <user>dimstar_suse</user>
+    <comment>Add missed fence-agents-devel package also.
+- Split fence-agents package (jsc#PED-8798)
+- fence-agents-common provides the common libraries for all fence agents
+  and is reuired by all fence agents.
+- fence-agents-all installs all fence agents to provide a safe update
+  for the older fence-agents version which contained all agents.
+  After update the not used agents can be uninstalled.</comment>
+    <requestid>1190424</requestid>
+  </revision>
 </revisionlist>

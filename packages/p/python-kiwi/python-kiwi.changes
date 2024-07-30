@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Tue Jul 30 09:45:37 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 10.0.26 → 10.0.27
+
+-------------------------------------------------------------------
+Tue Jul 30 08:16:41 CEST 2024 - Fabian Vogt <fvogt@suse.de>
+
+- Fix dracut-interactive with systemd 256
+
+  With systemd 256, /usr (and thus also /bin/) is read-only in the initrd.
+  Move dracut-interactive and its .service into /run instead.
+
+-------------------------------------------------------------------
+Sun Jul 21 19:20:23 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 10.0.25 → 10.0.26
+
+-------------------------------------------------------------------
+Fri Jul 19 09:49:01 CEST 2024 - Dmitri Popov <dpopov@suse.com>
+
+- Revise scripts_testing.rst
+
+-------------------------------------------------------------------
+Fri Jul 19 09:39:48 CEST 2024 - Dmitri Popov <dpopov@suse.com>
+
+- Revise schema_extensions.rst
+
+-------------------------------------------------------------------
+Wed Jul 17 15:58:23 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Pass kernel cmdline to agama
+
+  In the agama integration test make sure to pass along
+  the kernel boot parameters to allow controlling the
+  behavior of agama better
+
+-------------------------------------------------------------------
+Mon Jul 15 15:48:52 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add <file> directive to incorporate custom files
+
+  Usually custom files are managed by placing them as overlay
+  files or archives. However, overlay files must be structured
+  inside of a root/ subdirectory and archive files are binary
+  data. It is therefore not straight forward to just reference
+  one or more files as source files to the image description
+  to be placed into the image. This commit adds a new <file>
+  element which allows to do this. This Fixes #1953
+
+-------------------------------------------------------------------
 Sun Jul 14 11:17:33 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
 
 - Bump version: 10.0.24 → 10.0.25
@@ -82,6 +132,16 @@ Wed Jul 10 16:32:30 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
 
   Allow to produce EFI/UEFI images without hybrid CSM
   capabilities. This Fixes #2407
+
+-------------------------------------------------------------------
+Wed Jul 10 11:47:59 CEST 2024 - Dmitri Popov <dpopov@suse.com>
+
+- kiwi_plugin_architecture.rst
+
+-------------------------------------------------------------------
+Wed Jul 10 11:42:36 CEST 2024 - Dmitri Popov <dpopov@suse.com>
+
+- Revise kiwi_from_python.rst
 
 -------------------------------------------------------------------
 Wed Jul 10 11:26:45 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>

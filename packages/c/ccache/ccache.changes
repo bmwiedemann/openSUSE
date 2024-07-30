@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jul 26 15:10:37 UTC 2024 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Update to 4.10.2:
+  * Fixed detection of Fmt version 11 and newer.
+  * Made the “-fprofile-update=atomic” test only run when that
+    option is supported by the compiler.
+  * Made the color diagnostics tests work when the user running the
+    tests has a non-POSIX login shell.
+- Remove fmt_fix.patch
+  * Already included in 4.10.2 upstream release
+
+-------------------------------------------------------------------
 Thu Jul 18 09:28:12 UTC 2024 - Ana Guerrero <ana.guerrero@suse.com>
 
 -  Add patch to fix build with fmt 11: fmt_fix.patch

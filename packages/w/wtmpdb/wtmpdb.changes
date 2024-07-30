@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jul 26 13:40:32 UTC 2024 - kukuk@suse.com
+
+- Update to version 0.13.0+git.20240726:
+  * Release version 0.13.0
+  * Fix variable overflow and check for it (#15)
+
+-------------------------------------------------------------------
 Wed May 08 08:54:44 UTC 2024 - kukuk@suse.com
 
 - Update to version 0.12.0+git.20240508:

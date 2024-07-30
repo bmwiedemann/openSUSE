@@ -634,4 +634,13 @@
     <comment>- Add ffmpeg-CVE-2023-50010.patch:</comment>
     <requestid>1172481</requestid>
   </revision>
+  <revision rev="68" vrev="11">
+    <srcmd5>f6e6d7f3914d036fd5e78ce17c0f0b0c</srcmd5>
+    <version>4.4.4</version>
+    <time>1722333198</time>
+    <user>dimstar_suse</user>
+    <comment>- Add ffmpeg-c99.patch so that the package conforms to the C99
+  standard and builds on i586 with GCC 14.</comment>
+    <requestid>1189862</requestid>
+  </revision>
 </revisionlist>

@@ -349,4 +349,15 @@
   	* this distribution now uses GitHub Attestions. See README.pod. (forwarded request 1188857 from tinita)</comment>
     <requestid>1189532</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>c639ef5ae9b079fe93633f3d40dd71b7</srcmd5>
+    <version>20240725.1.0</version>
+    <time>1722333203</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 20240725.1.0 (20240725.001)
+   see /usr/share/doc/packages/perl-Business-ISBN-Data/Changes
+  20240725.001 2024-07-25T06:11:46Z
+  	* data update for 2024-07-25 (forwarded request 1189732 from tinita)</comment>
+    <requestid>1189975</requestid>
+  </revision>
 </revisionlist>

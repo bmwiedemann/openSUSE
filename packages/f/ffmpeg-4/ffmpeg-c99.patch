@@ -1,0 +1,37 @@
+From: Filip Kastl <fkastl@opensuse.org>
+Date: Fri, 26 Jul 2024 14:39:42 +0000
+
+I based the package patch on this bug report (there's a patch in
+the comments)
+https://bugs.gentoo.org/936433
+
+and on these patches
+https://ffmpeg.org/pipermail/ffmpeg-devel/2023-December/318685.html
+http://git.videolan.org/?p=ffmpeg.git;a=commitdiff;h=5860a966d2fffbbda1af0014f0a4d37a21c4f2ca
+
+Index: ffmpeg-4.4.4/libavutil/hwcontext_vaapi.c
+===================================================================
+--- ffmpeg-4.4.4.orig/libavutil/hwcontext_vaapi.c
++++ ffmpeg-4.4.4/libavutil/hwcontext_vaapi.c
+@@ -1032,7 +1032,7 @@ static int vaapi_map_from_drm(AVHWFrames
+     uint32_t va_fourcc;
+     int err, i, j, k;
+ 
+-    unsigned long buffer_handle;
++    uintptr_t buffer_handle;
+     VASurfaceAttribExternalBuffers buffer_desc;
+     VASurfaceAttrib attrs[2] = {
+         {
+Index: ffmpeg-4.4.4/libavutil/hwcontext_vulkan.c
+===================================================================
+--- ffmpeg-4.4.4.orig/libavutil/hwcontext_vulkan.c
++++ ffmpeg-4.4.4/libavutil/hwcontext_vulkan.c
+@@ -862,7 +862,7 @@ static void free_exec_ctx(AVHWFramesCont
+ 
+     av_freep(&cmd->queues);
+     av_freep(&cmd->bufs);
+-    cmd->pool = NULL;
++    cmd->pool = VK_NULL_HANDLE;
+ }
+ 
+ static VkCommandBuffer get_buf_exec_ctx(AVHWFramesContext *hwfc, VulkanExecCtx *cmd)
