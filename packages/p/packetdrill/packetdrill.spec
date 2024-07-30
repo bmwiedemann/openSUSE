@@ -1,7 +1,7 @@
 #
 # spec file for package packetdrill
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           packetdrill
-Version:        2.0+git.20230521
+Version:        2.0+git.20240726
 Release:        0
 Summary:        Testing tool for kernel networking stack
 License:        GPL-2.0-only

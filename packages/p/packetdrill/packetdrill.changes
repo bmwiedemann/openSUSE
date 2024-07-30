@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Jul 30 08:34:31 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.0+git.20240726:
+  * net-test: new behaviour change for simult TFO connect
+  * net-test: behaviour change for simultaneous TFO connect
+  * net-test: packetdrill: run_all: add --dry_run mode
+  * net-test: packetdrill: run_all: add --capture option
+  * net-test: packetdrill: run_all: extra -v are passed to pktdrill cmd
+  * net-test: packetdrill: run_all: support timeout with --serialized
+  * net-test: packetdrill: run_all: limit tests running in parallel
+  * net-test: packetdrill: ensure --wire_client and --wire_server cancel opposing flags
+  * Revert "net-test: packetdrill: bug fix: wire_server must ignore new --wire_server_at arg"
+  * net-test: packetdrill: bug fix: wire_server must ignore new --wire_server_at arg
+
+-------------------------------------------------------------------
 Tue Jun 13 14:28:58 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 2.0+git.20230521:

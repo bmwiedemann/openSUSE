@@ -7,4 +7,22 @@
     <comment>new package</comment>
     <requestid>1092896</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>dece6caf520747bf1d9824c409eee842</srcmd5>
+    <version>2.0+git.20240726</version>
+    <time>1722333341</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.0+git.20240726:
+  * net-test: new behaviour change for simult TFO connect
+  * net-test: behaviour change for simultaneous TFO connect
+  * net-test: packetdrill: run_all: add --dry_run mode
+  * net-test: packetdrill: run_all: add --capture option
+  * net-test: packetdrill: run_all: extra -v are passed to pktdrill cmd
+  * net-test: packetdrill: run_all: support timeout with --serialized
+  * net-test: packetdrill: run_all: limit tests running in parallel
+  * net-test: packetdrill: ensure --wire_client and --wire_server cancel opposing flags
+  * Revert &quot;net-test: packetdrill: bug fix: wire_server must ignore new --wire_server_at arg&quot;
+  * net-test: packetdrill: bug fix: wire_server must ignore new --wire_server_at arg</comment>
+    <requestid>1190422</requestid>
+  </revision>
 </revisionlist>
