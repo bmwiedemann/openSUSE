@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Jul 30 02:41:17 UTC 2024 - william.brown@suse.com
+
+- Update to version 20240730:
+  * Assigned RUSTSEC-2024-0360 to xmp_toolkit (#2030)
+  * Unsoundness notice for xmp_toolkit < 1.9.0 (#2029)
+  * Assigned RUSTSEC-2024-0359 to gix-attributes (#2028)
+  * Unsoundness notice for gix-attributes (kstring integration) (#2027)
+  * Assigned RUSTSEC-2024-0358 to object_store (#2026)
+  * Add advisory for object_store credentials leak via logs (#2025)
+  * Assigned RUSTSEC-2024-0357 to openssl (#2022)
+  * Added advisory for undefined behavior in openssl (#2021)
+  * Assigned RUSTSEC-2024-0356 to matrix-sdk-crypto (#2019)
+  * Add CVE-2024-40648 for matrix-sdk-crypto (#2018)
+
+-------------------------------------------------------------------
 Tue May 28 05:56:45 UTC 2024 - william.brown@suse.com
 
 - Update to version 20240528:
