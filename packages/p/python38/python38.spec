@@ -234,7 +234,6 @@ BuildRequires:  gettext
 BuildRequires:  readline-devel
 BuildRequires:  sqlite-devel
 BuildRequires:  timezone
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(ncurses)
 BuildRequires:  pkgconfig(tk)
 BuildRequires:  pkgconfig(x11)
@@ -693,7 +692,6 @@ done
 cp %{SOURCE19} idle%{python_version}.desktop
 sed -i -e 's:idle3:idle%{python_version}:g' idle%{python_version}.desktop
 install -m 644 -D -t %{buildroot}%{_datadir}/applications idle%{python_version}.desktop
-%suse_update_desktop_file idle%{python_version}
 
 cp %{SOURCE20} idle%{python_version}.appdata.xml
 sed -i -e 's:idle3.desktop:idle%{python_version}.desktop:g' idle%{python_version}.appdata.xml
