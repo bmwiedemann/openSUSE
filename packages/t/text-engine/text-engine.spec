@@ -15,23 +15,24 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define         soversion 0_1-0
 Name:           text-engine
-Version:        0.1.0
+Version:        0.1.1
 Release:        0
 Summary:        A lightweight rich text framework for GTK
-License:        MPL-2.0 OR LGPL-2.1-or-later
+License:        LGPL-2.1-or-later OR MPL-2.0
 URL:            https://github.com/mjakeman/text-engine
 Source:         %{url}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Patch0:         fix-Wreturn-type.patch
 Patch1:         add-soversion.patch
 BuildRequires:  meson
-BuildRequires:  pkgconfig(json-glib-1.0)
-BuildRequires:  pkgconfig(libxml-2.0)
-BuildRequires:  pkgconfig(gtk4)
-BuildRequires:  pkgconfig(libadwaita-1)
-BuildRequires:  pkgconfig(pango)
 BuildRequires:  pkgconfig(gio-2.0)
+BuildRequires:  pkgconfig(gtk4)
+BuildRequires:  pkgconfig(json-glib-1.0)
+BuildRequires:  pkgconfig(libadwaita-1)
+BuildRequires:  pkgconfig(libxml-2.0)
+BuildRequires:  pkgconfig(pango)
 
 %description
 Text Engine is a rich-text editing framework for GTK 4. The primary user of this
