@@ -1317,4 +1317,21 @@
   * Add hash.XxHash (forwarded request 1188233 from jfkw)</comment>
     <requestid>1188234</requestid>
   </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>156a9887d2263f57fa9c6dfd7cfb0e15</srcmd5>
+    <version>0.130.0</version>
+    <time>1722333290</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.130.0:
+  * releaser: Bump versions for release of 0.130.0
+  * math: Add trigonometric functions and some angle helper functions
+  * deps: Upgrade github.com/bep/imagemeta v0.7.3 =&gt; v0.7.4
+  * deps: Upgrade github.com/bep/imagemeta v0.7.1 =&gt; v0.7.3
+  * readme: Pull the star history down a little
+  * deps: Upgraded github.com/bep/imagemeta v0.7.0 =&gt; v0.7.1
+  * Switch EXIF library
+  * readme: Add Star History
+  * releaser: Prepare repository for 0.130.0-DEV (forwarded request 1190332 from jfkw)</comment>
+    <requestid>1190333</requestid>
+  </revision>
 </revisionlist>
