@@ -28,6 +28,7 @@ Source:         https://github.com/jopohl/urh/archive/v%{version}.tar.gz#/%{name
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
+BuildRequires:  libiio-devel
 BuildRequires:  limesuite-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
@@ -72,7 +73,8 @@ protocols.
   --with-hackrf \
   --with-limesdr \
   --with-rtlsdr \
-  --with-usrp
+  --with-usrp \
+  --with-plutosdr
 
 %install
 %python3_install
