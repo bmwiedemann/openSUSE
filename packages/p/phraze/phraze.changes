@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jul 31 08:24:02 UTC 2024 - felix.niederwanger@suse.com
+
+- Update to version 0.3.13:
+  * bumps cargo-dist version and internal version
+  * feat: add man pages and shell completions
+  * better wording of the features in readme
+
+-------------------------------------------------------------------
 Mon Jul 08 06:17:23 UTC 2024 - felix.niederwanger@suse.de
 
 - Update to version 0.3.12:
