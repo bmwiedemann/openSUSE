@@ -465,9 +465,9 @@ unsorted:
   - ads 
   - adwaita-qt5 
   - adwaita-qt6 
-  - aegisub 
   - aelfred 
   - aelfred-javadoc 
+  - aeon-check 
   - aer-inject 
   - aerc 
   - aespipe 
@@ -3696,6 +3696,8 @@ unsorted:
   - elixir 
   - elixir-doc 
   - elixir-hex 
+  - elixir115 
+  - elixir115-doc 
   - elk 
   - elk-data 
   - elk-openmpi4 
@@ -10435,6 +10437,10 @@ unsorted:
   - kubeconform 
   - kubectl-browse-pvc 
   - kubectl-capacity 
+  - kubectl-cnpg 
+  - kubectl-cnpg-bash-completion 
+  - kubectl-cnpg-fish-completion 
+  - kubectl-cnpg-zsh-completion 
   - kubectl-explore 
   - kubectl-foreach 
   - kubectl-neat 
@@ -12859,7 +12865,7 @@ unsorted:
   - libevt-devel 
   - libevt-tools 
   - libevt1 
-  - libevtlog-4_6-0 
+  - libevtlog-4_8-0 
   - libevtlog-devel 
   - libevtlog0 
   - libevtx-devel 
@@ -13289,7 +13295,7 @@ unsorted:
   - libgensiomdns6 
   - libgensioosh6 
   - libgeocode-glib0 
-  - libgeos3_12_1 
+  - libgeos3_12_2 
   - libgeos_c1 
   - libgeotiff5 
   - libgepub-devel 
@@ -14184,8 +14190,6 @@ unsorted:
   - liblc3-1-32bit 
   - liblc3-devel 
   - liblc3-tools 
-  - liblcf0 
-  - liblcf0-devel 
   - liblcms2-2-32bit 
   - liblcms2-devel 
   - liblcms2-devel-32bit 
@@ -24979,6 +24983,7 @@ unsorted:
   - python310-dbus-deviation 
   - python310-dbus-python 
   - python310-dbus-python-devel 
+  - python310-dbus_fast 
   - python310-dbus_next 
   - python310-ddg3 
   - python310-ddt 
@@ -28585,6 +28590,7 @@ unsorted:
   - python311-dbfread 
   - python311-dbus-deviation 
   - python311-dbus-python-devel 
+  - python311-dbus_fast 
   - python311-dbus_next 
   - python311-ddg3 
   - python311-ddt 
@@ -32137,6 +32143,7 @@ unsorted:
   - python312-dbus-deviation 
   - python312-dbus-python 
   - python312-dbus-python-devel 
+  - python312-dbus_fast 
   - python312-dbus_next 
   - python312-ddg3 
   - python312-ddt 
@@ -35340,6 +35347,7 @@ unsorted:
   - qt6-xml-devel 
   - qt6-xml-private-devel 
   - qt6ct 
+  - qt6gtk2 
   - qtcurve-gtk2 
   - qtcurve-qt5 
   - qtdbusextended-devel 
@@ -48124,6 +48132,7 @@ unsorted:
   - woodpecker-server 
   - woodstox-core 
   - woodstox-core-javadoc 
+  - wooting-udev-rules 
   - wordcut 
   - wordcut-devel 
   - wordnet 
