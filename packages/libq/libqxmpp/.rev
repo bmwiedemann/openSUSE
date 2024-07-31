@@ -262,4 +262,12 @@ Qt5 alternative.</comment>
   * Fix build issue with MSVC: missing export of utility functions (forwarded request 1186516 from jubalh)</comment>
     <requestid>1186567</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>881d49c6817b9a3c35d2b957f1d72531</srcmd5>
+    <version>1.8.0</version>
+    <time>1722425447</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1190606</requestid>
+  </revision>
 </revisionlist>

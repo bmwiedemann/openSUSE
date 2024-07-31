@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Jul 31 07:01:52 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.8.0:
+  * QXmpp now requires C++20
+  * Fix connection to next SRV record if connection to first address fails (#644)
+  * Implement XMPP over TLS ("direct TLS" instead of STARTTLS, XEP-0368) (#642) 
+  * New Bind 2 support (XEP-0386) (#614)
+  * Support FAST, token-based authentication (XEP-0484) (#630) 
+  * New QXmppUri for parsing XMPP URIs (XEP-0147) (#641)
+  * New AccountMigrationManager for importing and exporting account data (#623)
+  * Message: Parse all stanza IDs (XEP-0359) (#638)
+  * CSI state is automatically restored across reconnects, also without
+    Bind 2 or stream management (#622)
+  * Use smaller stream management acks instead of ping IQs if possible (#625)
+  * Moved STARTTLS handling into the core client again (was in client extension) (#627)
+  * VCardManager: New task-based API (#623)
+
+-------------------------------------------------------------------
 Wed Jul 10 06:58:56 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.7.1:
