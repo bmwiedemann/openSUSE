@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Fri Jul 26 11:20:16 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.14.18
+  * chore: Bump Rust bindings v1.4.18 (#4656)
+  * fix: Removing new usage of memcmp (#4657)
+  * Merge commit from fork
+  * Update s2n_connection_get_kem_group_name() to
+    work with ClientHelloRetries (#4652)
+  * fix: avoid cert validation on connection_set_config (#4612)
+  * ci: add merge_group event to GHA workflow. (#4646)
+  * feat: Add API to gate session tickets to TLS1.3 only (#4645)
+  * feature: reusable fingerprinting interface (#4628)
+  * refactor(bindings/s2n-tls): finish test harness refactor (#4636)
+  * test(pcap): handle pcaps with tcp fragmentation (#4643)
+  * Refactor: change is_available return type to
+    bool in s2n_cipher struct (#4630)
+  * Refactor: change init and destroy_key return type to
+    S2N_RESULT in s2n_cipher struct (#4639)
+  * Refactor: change set/get_decryption_key return type to
+    S2N_RESULT in s2n_cipher struct (#4638)
+  * chore: document why SHA1 is the only supported hash algorithm
+    for cert_id generation in OCSP response (#4625)
+  * ci(nix): Add tshark to nix devshell (#4571)
+  * refactor: use feature probe for AEAD gate logic instead of
+    AWS-LC/BoringSSL macros (#4642)
+  * api(bindings/s2n-tls)!: remove public testing feature (#4623)
+  * chore(bindings): release 0.2.8 (#4635)
+  * feat(bindings/s2n-tls): add client_hello_version (#4609)
+  * fix: remove S2N_NO_PQ option (#4622)
+  * chore: fix CBMC proof summary count (#4627)
+  * refactor: separate out ja3 specific logic (#4578)
+
+-------------------------------------------------------------------
 Tue Jul  9 06:55:17 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 1.4.17
