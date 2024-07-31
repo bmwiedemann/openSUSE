@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jul 31 06:37:11 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.27:
+  * Introduce VNG_PACKAGE to force a proper packaging version
+    virtme-ng v1.27
+
+-------------------------------------------------------------------
 Tue Jul 30 03:59:00 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.26:
