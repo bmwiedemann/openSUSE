@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Wed Jul 31 02:01:54 UTC 2024 - william.brown@suse.com
+
+- Update to version 3.1.1~git0.aef1668:
+  * Bump version to 3.1.1
+  * Issue 6256 - nsslapd-numlisteners limit is not enforced (#6257)
+  * Issue 5327 - Fix test metadata
+  * Security fix for CVE-2024-6237
+  * Security fix for CVE-2024-5953
+  * Security fix for CVE-2024-3657
+  * Security fix for CVE-2024-2199
+  * Issue 6256 - nsslapd-numlisteners limit is not enforced
+  * Issue 6265 - lmdb - missing entries in range searches (#6266)
+  * Issue 5853 - Update Cargo.lock
+  * Bump openssl from 0.10.64 to 0.10.66 in /src
+  * Issue 6245 - Revert __COVERITY__ ifndef (#6268)
+  * Issue 6248 - fix fanalyzer warnings (#6253)
+  * Issue 6238 - Fix test_audit_json_logging CI test regression (#6264)
+  * Issue 6254 - Enabling replication for a sub suffix crashes browser (#6255)
+  * Issue 6155 - ldap-agent fails to start because of permission error (#6179)
+  * Issue 6238 - RFE - add option to write audit log in JSON format
+  * Issue 6216 - CI test_fast_slow_import sometime fail (#6247)
+  * Issue 6245 - covscan fixes (#6246)
+  * Issue 6241 - Add support for CRYPT-YESCRYPT (#6242)
+  * Issue 6229 - After an initial failure, subsequent online backups fail (#6230)
+  * Issue 6236 - rpm: fix compatibility with RPM 4.20
+  * Issue 6227 - dsconf schema does not show inChain matching rule (#6228)
+  * Issue 6233 - CI test wait_for_async_feature_test sometime fails (#6234)
+  * Bump ws from 7.5.9 to 7.5.10 in /src/cockpit/389-console
+  * Issue 6224 - d2entry - Could not open id2entry err 0 - at startup when having sub-suffixes (#6225)
+  * Issue 6222 - CI test acl/test_timeofday_keyword sometime fails (#6223)
+  * Issue 6120 - /usr/lib64/dirsrv/plugins/libback-bdb.so has an invalid-looking DT_RPATH: /usr/lib/dirsrv
+  * Issue 5772 - ONE LEVEL search fails to return sub-suffixes (#6219)
+  * Issue 6183 - Slow ldif2db import on a newly created BDB backend (#6208)
+  * Issue 6207 - Random crash in test_long_rdn CI test (#6215)
+  * Bump braces from 3.0.2 to 3.0.3 in /src/cockpit/389-console
+  * Issue 6191 - Node.js 16 actions are deprecated
+  * Issue 6199 - unprotected search query during certificate based authentication (#6205)
+  * Issue 6200 - Disable WebUI CI tests
+  * Issue 6192 - Test failure: test_match_large_valueset
+  * Issue 6181 - RFE - Allow system to manage uid/gid at startup
+  * Issue 6188 - Add nsslapd-haproxy-trusted-ip to cn=schema (#6201)
+  * Issue 6181 - RFE - Allow system to manage uid/gid at startup (#6182)
+  * Issue 6170 - audit log buffering doesn't handle large updates
+  * Issue 6193 - Test failure: test_tls_command_returns_error_text
+  * Issue 6177 - Spec file cleanup
+  * Issue 6189 - CI tests fail with `[Errno 2] No such file or directory: '/var/cache/dnf/metadata_lock.pid'`
+  * Issue 6175 - Referential integrity plugin - in referint_thread_func does not handle null from ldap_utf8strtok (#6168)
+  * Change default salt sizes generated in crypt_pwd (#6185)
+  * Issue 6123 - Allow DNA plugin to reuse global config for bind method and connection protocol (#6124)
+  * Issue 6159 - Add a test to check URP add and delete conflict (#6160)
+  * Issue 6151 - Use %bcond macro for conditional builds in the spec file
+  * Issue 6172 - RFE: improve the performance of evaluation of filter component when tested against a large valueset (like group members) (#6173)
+  * Bump version to 3.1.0
+  * fix issue6165 (#6167)
+
+-------------------------------------------------------------------
 Tue May 14 01:33:16 UTC 2024 - william.brown@suse.com
 
 - Update to version 3.0.1~git39.e24615f:
