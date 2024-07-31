@@ -1,0 +1,6 @@
+<package name="wooting-udev-rules" project="openSUSE:Factory">
+  <title>Udev rules to use Wooting from normal users</title>
+  <description>udev rules to use Wooting tools from normal users.</description>
+  <devel project="hardware" package="wooting-udev-rules"/>
+  <url>https://wooting.io</url>
+</package>
