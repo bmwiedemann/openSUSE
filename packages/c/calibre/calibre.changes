@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Wed Jul 31 05:08:26 UTC 2024 - ecsos <ecsos@opensuse.org>
+
+- Update to 7.16.0
+  * New Features
+    - Add a driver for the new 2024 Tolino devices.
+      They use a modified version of the Kobo firmware, so they are
+      detected as Kobo devices.
+    - Various news recipes now have the ability to download past
+      issues, accessible via the Advanced tab in the Schedule news
+      dialog
+  * Bug Fixes
+    - ONLY if you use the calibre Content server, you should update
+      calibre as soon as possible
+    - Content server: Fix path traversal vulnerability
+    - Content server: Fix SQL injection vulnerability
+    - Content server: Fix an XSS vulnerability in one endpoint
+    - Content server: Fix an error when opening the downloaded
+      books page directly via a link and using a custom book list
+      template
+    - macOS: Fix opening multiple books from Finder with the editor
+      only opening one of the books
+    - Fix the legacy LRF format viewer not starting
+    - Fix mouse wheel not transitioning from undefined date to
+      current date in date entry controls
+
+-------------------------------------------------------------------
 Fri Jul 19 08:14:10 UTC 2024 - ecsos <ecsos@opensuse.org>
 
 - Update to 7.15.0
