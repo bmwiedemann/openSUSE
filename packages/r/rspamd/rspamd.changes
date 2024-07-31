@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jul 31 10:21:39 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 3.9.1
+  - [Test] Use actions/setup-node by @moisseev in #5058
+  - [Feature] Treat SPF +all in a special way by @vstakhov in #5059
+  - [Test] Migrate ESLint to 9.7.0 by @moisseev in #5063
+  - Some tunes and fixes for GPT by @vstakhov in #5068
+
+-------------------------------------------------------------------
 Fri Jul 12 12:57:21 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
 
 - New BR pkgconfig(libarchive) >= 3.0

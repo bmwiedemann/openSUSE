@@ -310,4 +310,16 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1188680</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>82e550f8434a8e73c5e507dd95b042d2</srcmd5>
+    <version>3.9.1</version>
+    <time>1722429710</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.9.1
+  - [Test] Use actions/setup-node by @moisseev in #5058
+  - [Feature] Treat SPF +all in a special way by @vstakhov in #5059
+  - [Test] Migrate ESLint to 9.7.0 by @moisseev in #5063
+  - Some tunes and fixes for GPT by @vstakhov in #5068</comment>
+    <requestid>1190637</requestid>
+  </revision>
 </revisionlist>

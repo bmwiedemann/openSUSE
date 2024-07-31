@@ -56,7 +56,7 @@
 %endif
 
 Name:           rspamd
-Version:        3.9.0
+Version:        3.9.1
 Release:        0
 Summary:        Spam filtering system
 License:        Apache-2.0
@@ -95,7 +95,7 @@ BuildRequires:  openblas-devel
 %endif
 BuildRequires:  pcre2-devel
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(fmt)
+BuildRequires:  pkgconfig(fmt) >= 11
 BuildRequires:  pkgconfig(glib-2.0) >= 2.28
 %if %{with ext_hiredis}
 BuildRequires:  pkgconfig(hiredis)
@@ -105,8 +105,8 @@ BuildRequires:  pkgconfig(libev)
 BuildRequires:  pkgconfig(libnsl)
 %endif
 BuildRequires:  ragel
-BuildRequires:  pkgconfig(libsodium)
 BuildRequires:  pkgconfig(libarchive) >= 3.0
+BuildRequires:  pkgconfig(libsodium)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(sqlite3)
 %if %{with systemd}
