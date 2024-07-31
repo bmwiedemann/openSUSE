@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jul 26 11:25:57 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.14.13
+  * Fix import of inttype (#656)
+
+-------------------------------------------------------------------
 Mon Jul 15 10:53:10 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.14.12
