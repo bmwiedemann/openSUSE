@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jul 26 11:27:55 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.9.24
+  * Fix FreeBSD CI to install default python packages by @TingDaoK in (#1133)
+  * Fix out variable in cmake sanitizer module by @sfod in (#1134)
+  * Update MacOS CI to Arm64 by @waahm7 in (#1136)
+  * Update builder to fix macos arm64 CI by @waahm7 in (#1137)
+  * Bump the minimum stack size to at least 1MB by @waahm7 in (#1139)
+
+-------------------------------------------------------------------
 Tue Jun 25 15:15:42 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.9.23
