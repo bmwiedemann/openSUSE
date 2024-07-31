@@ -24,4 +24,16 @@
     <comment></comment>
     <requestid>1188555</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>9ad648edaa3b9bdf065b28c1644a2f89</srcmd5>
+    <version>2024.7.1</version>
+    <time>1722425403</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 2024.7.1
+  * Add user-agent for quick-tunnel requests
+  * Add default noop logger for capnprpc
+  * cloudflared uses new PQ curve ID
+  * use -p flag to create intermediate directories (forwarded request 1190498 from hillwood)</comment>
+    <requestid>1190499</requestid>
+  </revision>
 </revisionlist>

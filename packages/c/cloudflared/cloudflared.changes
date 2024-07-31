@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jul 30 14:55:59 UTC 2024 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 2024.7.1
+  * Add user-agent for quick-tunnel requests
+  * Add default noop logger for capnprpc
+  * cloudflared uses new PQ curve ID
+  * use -p flag to create intermediate directories
+
+-------------------------------------------------------------------
 Wed Jul 17 10:30:08 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Add reproducible.patch to not include the build date (boo#1047218)
