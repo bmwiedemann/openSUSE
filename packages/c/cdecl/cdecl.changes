@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jul 31 04:17:57 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 18.2
+  * Unknown names are now always permitted as types in
+    pseudo-English. Hence, the --permissive-types option now only
+    additionally allows keywords in language versions other than
+    the current language as types.
+
+-------------------------------------------------------------------
 Sat Jul 20 14:56:44 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 18.1
