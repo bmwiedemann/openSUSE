@@ -1,0 +1,50 @@
+Index: tn5250-0.16.5/src/dbuffer.h
+===================================================================
+--- tn5250-0.16.5.orig/src/dbuffer.h
++++ tn5250-0.16.5/src/dbuffer.h
+@@ -108,6 +108,9 @@ typedef struct _Tn5250DBuffer Tn5250DBuf
+ #define tn5250_dbuffer_mdt(This) ((This)->master_mdt)
+ #define tn5250_dbuffer_set_mdt(This) ((This)->master_mdt = 1)
+ 
++void tn5250_dbuffer_prevword(Tn5250DBuffer * This);
++void tn5250_dbuffer_nextword(Tn5250DBuffer * This);
++
+ #ifdef __cplusplus
+ }
+ 
+Index: tn5250-0.16.5/src/tn5250-private.h
+===================================================================
+--- tn5250-0.16.5.orig/src/tn5250-private.h
++++ tn5250-0.16.5/src/tn5250-private.h
+@@ -58,6 +58,8 @@
+ #include <sys/wait.h>
+ #endif
+ 
++#include <sys/stat.h>
++
+ #ifdef HAVE_FCNTL_H
+ #include <fcntl.h>
+ #endif
+@@ -204,6 +206,9 @@ INT WINAPI WINSOCK_select(INT nfds, ws_f
+ 
+ /* END: of really ugly network portability layer. */
+ 
++void tn3270_stream_send_packet(Tn5250Stream * This, int length, unsigned char * data);
++
++
+ #endif				/* PRIVATE_H */
+ 
+ /* vi:set cindent sts=3 sw=3: */
+Index: tn5250-0.16.5/src/telnetstr.c
+===================================================================
+--- tn5250-0.16.5.orig/src/telnetstr.c
++++ tn5250-0.16.5/src/telnetstr.c
+@@ -116,7 +116,7 @@ static const UCHAR SB_Str_TermType[]={IA
+  #define TNSB_LOG	log_SB_buf
+  #define LOGERROR	logError
+ 
+-static char *getTelOpt(what)
++static char *getTelOpt(int what)
+ {
+    char *wcp, wbuf[10];
+ 

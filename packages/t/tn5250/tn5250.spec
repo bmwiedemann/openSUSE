@@ -1,7 +1,7 @@
 #
 # spec file for package tn5250
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,7 @@ Source1:        README.SUSE
 Patch0:         tn5250-0.16.2-terminfo.dif
 Patch1:         tn5250-0.16.5-strings.patch
 Patch2:         tn5250-0.16.5-no-build-date.patch
+Patch3:         tn5250-gcc14.patch
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
 BuildRequires:  ncurses-devel
@@ -60,6 +61,7 @@ Header files for use with the tn5250 library.
 %patch -P 0 -p1
 %patch -P 1
 %patch -P 2
+%patch -P 3 -p1
 cp -p %{SOURCE1} .
 
 %build
@@ -78,7 +80,8 @@ rm -f %{buildroot}%{_libdir}/*.la
 %postun -n lib5250-0 -p /sbin/ldconfig
 
 %files
-%doc BUGS COPYING README AUTHORS BUGS ChangeLog NEWS TODO XTerm README.SUSE
+%license COPYING
+%doc BUGS README AUTHORS BUGS ChangeLog NEWS TODO XTerm README.SUSE
 /usr/bin/*
 %{_mandir}/man1/*
 %{_mandir}/man5/*
