@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jul  1 15:01:19 UTC 2024 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Allow setting of UID:GID for as defined in sysusers.d
+
+-------------------------------------------------------------------
 Tue Nov  7 10:07:20 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix build with RPM 4.19: unnumbered patches are no longer

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jul 29 14:49:40 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.26.1
+  * Fix Surface.set_mime_data() with Python 3.13 :pr:`366`
+    This also fixes the test suite with Python 3.13b2.
+  * Update vendored Windows wheel dependencies :pr:`370`
+
+-------------------------------------------------------------------
 Fri Mar 22 20:59:59 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.26.0:

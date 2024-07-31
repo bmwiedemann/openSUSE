@@ -1,0 +1,38 @@
+From 0dfabdc07bf31da628aa3d67138ad44d98583d1f Mon Sep 17 00:00:00 2001
+From: Milan Crha <mcrha@redhat.com>
+Date: Mon, 22 Jan 2024 18:43:05 +0100
+Subject: [PATCH] build: Fix 'incompatible pointer types' warning on i686
+
+This fixes a recent Fedora build, which failed on i686 architecture
+with "incompatible pointer types" error:
+
+libpst.c: In function 'pst_read_block_size':
+libpst.c:3832:36: error: passing argument 2 of 'uncompress' from incompatible pointer type [-Wincompatible-pointer-types]
+ 3832 |     if (uncompress((Bytef *) *buf, &result_size, (Bytef *) zbuf, size) != Z_OK || result_size != inflated_size) {
+      |                                    ^~~~~~~~~~~~
+      |                                    |
+      |                                    size_t * {aka unsigned int *}
+In file included from libpst.c:9:
+/usr/include/zlib.h:1251:70: note: expected 'long unsigned int *' but argument is of type 'size_t *' {aka 'unsigned int *'}
+ 1251 | Z_EXTERN int Z_EXPORT uncompress(unsigned char *dest, unsigned long *destLen, const unsigned char *source, unsigned long sourceLen);
+      |                                                       ~~~~~~~~~~~~~~~^~~~~~~
+
+Fixes: commit a9fb0d8c21c781e679e6e93bb24da14b620ce60d
+---
+ src/libpst.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/src/libpst.c b/src/libpst.c
+@@ -3828,9 +3828,9 @@
+         return -1;
+     }
+     *buf = (char *) pst_malloc(inflated_size);
+-    size_t result_size = inflated_size;
+-    if (uncompress((Bytef *) *buf, &result_size, (Bytef *) zbuf, size) != Z_OK || result_size != inflated_size) {
+-        DEBUG_WARN(("Failed to uncompress %i bytes to %i bytes, got %i\n", size, inflated_size, result_size));
++    uLongf result_size = inflated_size;
++    if (uncompress((Bytef *) *buf, &result_size, (Bytef *) zbuf, size) != Z_OK || (size_t) result_size != inflated_size) {
++      DEBUG_WARN(("Failed to uncompress %i bytes to %i bytes, got %i\n", size, inflated_size, (size_t) result_size));
+         if (zbuf) free(zbuf);
+         DEBUG_RET();
+         return -1;

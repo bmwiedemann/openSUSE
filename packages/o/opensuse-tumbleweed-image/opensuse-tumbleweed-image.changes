@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jul 30 12:00:33 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- add org.opensuse.lifecycle-url
+- update image.url to be the expected value generated
+  by BCI-dockerfile-generator
+
+-------------------------------------------------------------------
 Mon Jun 24 11:33:25 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - pick the minified libcurl for reduced zypper footprint

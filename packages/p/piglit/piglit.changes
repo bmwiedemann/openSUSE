@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Jul 30 07:49:38 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1~20240729:
+  * arb_bindless_texture: add basic function param bindless tests
+  * generated_tests: fix numpy overflow warnings that are errors in numpy 2.0
+  * generated_tests: print mako exceptions
+  * arb_texture_buffer_object: don't leak src strings
+  * gl-1.0: Add a test for glPushAttrib/glPopAttrib
+  * ext_texture_format_bgra8888: test GL_BGRA8_EXT as well
+  * perf: port glsl-compile-time perf-test from mesa demos
+  * perf: port vertexrate perf-test from mesa demos
+  * perf: port vbo perf-test from mesa demos
+  * perf: port teximage perf-test from mesa demos
+
+-------------------------------------------------------------------
 Thu Jun  6 13:32:29 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1~20240530:

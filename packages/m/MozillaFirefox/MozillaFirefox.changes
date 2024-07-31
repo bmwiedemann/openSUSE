@@ -1,3 +1,33 @@
+------------------------------------------------------------------
+Sun Jul 28 18:08:39 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Firefox 128.0.3 Release
+  * Fixed: Fixed an issue causing some sites to not load when
+    connecting via HTTP/2. (bmo#1908161, bmo#1909666)
+  * Fixed: Fixed collapsed table rows not appearing when expected
+    in some situations. (bmo#1907789)
+  * Fixed: Fixed the Windows on-screen keyboard potentially
+    concealing the webpage when displayed. (bmo#1907766)
+
+- Firefox 128.0.2 Release
+  * Fixed: Fixed an audio echo in video calls on macOS under
+    certain conditions. (bmo#1908539)
+  * Fixed: Fixed an issue where the Adguard extension popup was
+    not displaying. (bmo#1906132)
+  * Fixed: Fixed an issue causing some screen readers to fail to
+    read when navigating by character in rich text editors. (Bug
+    1905021)
+  * Fixed: Fixed visual glitches when dark mode is enabled in
+    Windows ARM devices. (bmo#1897444)
+  * Fixed: Fixed an issue causing NTLM authentication failure.
+    (bmo#1908115)
+  * Fixed: Fixed an issue where content displayed on mouseover
+    was not captured in a screenshot. (bmo#1905468)
+  * Fixed: Various stability fixes.
+
+- renamed firefox-3781e3117706.patch to mozilla-bmo1905018.patch
+  to conform with patch structure and naming for the package
+
 -------------------------------------------------------------------
 Thu Jul 18 15:27:13 UTC 2024 - Martin Jambor <mjambor@suse.com>
 

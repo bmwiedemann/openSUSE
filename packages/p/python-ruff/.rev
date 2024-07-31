@@ -1076,4 +1076,14 @@
   * \[`pylint`\] Skip dummy variables for `PLR1704`</comment>
     <requestid>1186130</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>27b82912fa4b8e48a57d8951498cc0f8</srcmd5>
+    <version>0.5.5</version>
+    <time>1722425305</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.5.5
+ * server funcionality is now stable
+ * big list of changes: https://github.com/astral-sh/ruff/blob/main/CHANGELOG.md</comment>
+    <requestid>1190325</requestid>
+  </revision>
 </revisionlist>

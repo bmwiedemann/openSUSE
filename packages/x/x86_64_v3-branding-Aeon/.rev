@@ -7,4 +7,12 @@
     <comment>Requires transactional-update as suggested by review. Rename suggestion isn't valid, all other consumers of transactional-update opted to NOT take this approach to ensuring x86_64 libs are present, so it's an Aeon specific config, hence *-branding-Aeon</comment>
     <requestid>1172768</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>02ae93c15d6cce3c70673151a383e3bb</srcmd5>
+    <version>20240429</version>
+    <time>1722425386</time>
+    <user>dimstar_suse</user>
+    <comment>- Add missing systemd_postun</comment>
+    <requestid>1190480</requestid>
+  </revision>
 </revisionlist>

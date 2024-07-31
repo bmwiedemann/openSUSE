@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jul 30 09:54:12 UTC 2024 - Richard Brown <rbrown@suse.com>
+
+- Enable aeon-check.service (boo#1228416) 
+
+-------------------------------------------------------------------
 Tue Jun 11 10:57:48 UTC 2024 - Richard Brown <rbrown@suse.com>
 
 - Support bluetooth filetransfer (boo#1225682) 

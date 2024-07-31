@@ -27,7 +27,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-cryptography%{psuffix}
-Version:        42.0.8
+Version:        43.0.0
 Release:        0
 Summary:        Python library which exposes cryptographic recipes and primitives
 License:        Apache-2.0 OR BSD-3-Clause
@@ -37,14 +37,19 @@ Source0:        https://files.pythonhosted.org/packages/source/c/cryptography/cr
 # use `osc service manualrun` to regenerate
 Source2:        vendor.tar.zst
 Source4:        python-cryptography.keyring
+Patch1:         use-offline-build.patch
 # PATCH-FEATURE-OPENSUSE no-pytest_benchmark.patch mcepl@suse.com
 # We don't need no benchmarking and coverage measurement
 Patch4:         no-pytest_benchmark.patch
 BuildRequires:  %{python_module cffi >= 1.12}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module exceptiongroup}
+BuildRequires:  %{python_module maturin}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools-rust >= 1.7.0}
+BuildRequires:  %{python_module setuptools-rust >= 1.7.0}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  cargo >= 1.56.0

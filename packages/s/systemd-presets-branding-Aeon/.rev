@@ -31,4 +31,12 @@
     <comment>- Support bluetooth filetransfer (boo#1225682)</comment>
     <requestid>1179987</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>fbf27e7822961df8c5e88d3f478847ed</srcmd5>
+    <version>20231005</version>
+    <time>1722425386</time>
+    <user>dimstar_suse</user>
+    <comment>Fixes for TPM2 issues in Aeon RC3</comment>
+    <requestid>1190478</requestid>
+  </revision>
 </revisionlist>

@@ -1,6 +1,6 @@
 <services>
   <service mode="manual" name="obs_scm">
-    <param name="url">https://anongit.freedesktop.org/git/piglit.git/</param>
+    <param name="url">https://gitlab.freedesktop.org/mesa/piglit.git/</param>
     <param name="scm">git</param>
     <param name="changesgenerate">enable</param>
     <param name="filename">piglit</param>

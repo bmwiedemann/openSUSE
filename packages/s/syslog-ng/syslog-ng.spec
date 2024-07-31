@@ -88,7 +88,7 @@ BuildRequires:  protobuf-devel
 %bcond_with	mongodb
 %bcond_with	amqp
 Name:           syslog-ng
-Version:        4.6.0
+Version:        4.8.0
 Release:        0
 Summary:        Enhanced system logging daemon
 License:        GPL-2.0-only
@@ -191,11 +191,11 @@ Key features:
  * hand on messages for further processing using message queues (like
    AMQP), files or databases (like PostgreSQL or MongoDB).
 
-%package -n libevtlog-4_6-0
+%package -n libevtlog-4_8-0
 Summary:        Syslog-ng event logger library runtime
 Group:          System/Libraries
 
-%description -n libevtlog-4_6-0
+%description -n libevtlog-4_8-0
 The EventLog library provides an alternative to the simple syslog()
 API provided on UNIX systems. Compared to syslog, EventLog adds
 structured messages.
@@ -610,8 +610,8 @@ chmod 640 "${additional_sockets#/}"
 #
 %{service_del_postun syslog-ng.service}
 
-%post -n libevtlog-4_6-0 -p /sbin/ldconfig
-%postun -n libevtlog-4_6-0 -p /sbin/ldconfig
+%post -n libevtlog-4_8-0 -p /sbin/ldconfig
+%postun -n libevtlog-4_8-0 -p /sbin/ldconfig
 
 %files
 ##
@@ -696,6 +696,8 @@ chmod 640 "${additional_sockets#/}"
 %dir %{_datadir}/syslog-ng/include/scl/pihole/
 %dir %{_datadir}/syslog-ng/include/scl/qbittorrent/
 %dir %{_datadir}/syslog-ng/include/scl/darwinosl/
+%dir %{_datadir}/syslog-ng/include/scl/arr/
+%dir %{_datadir}/syslog-ng/include/scl/jellyfin/
 %dir %{_datadir}/syslog-ng/xsd
 %dir %{_sysconfdir}/syslog-ng
 %dir %{_sysconfdir}/syslog-ng/conf.d
@@ -807,11 +809,13 @@ chmod 640 "${additional_sockets#/}"
 %attr(644,root,root) %{_datadir}/syslog-ng/include/scl/qbittorrent/qbittorrent.conf
 %attr(644,root,root) %{_datadir}/syslog-ng/include/scl/darwinosl/darwinosl-metadata-db.csv
 %attr(644,root,root) %{_datadir}/syslog-ng/include/scl/darwinosl/plugin.conf
+%attr(644,root,root) %{_datadir}/syslog-ng/include/scl/arr/arr.conf
+%attr(644,root,root) %{_datadir}/syslog-ng/include/scl/jellyfin/jellyfin.conf
 %attr(644,root,root) %{_datadir}/syslog-ng/smart-multi-line.fsm
 %attr(644,root,root) %{_datadir}/syslog-ng/xsd/*
 %attr(644,root,root) %{_datadir}/syslog-ng/include/scl.conf
 
-%files -n libevtlog-4_6-0
+%files -n libevtlog-4_8-0
 %{_libdir}/libevtlog-*.so.*
 
 %files snmp

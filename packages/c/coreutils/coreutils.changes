@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jul 19 07:57:52 UTC 2024 - Andreas Schwab <schwab@suse.de>
+
+- Avoid empty scriptlets
+
+-------------------------------------------------------------------
 Tue Jul  9 20:22:23 UTC 2024 - Bernhard Voelker <mail@bernhard-voelker.de>
 
 - coreutils-i18n.patch: fold(1): fix exit code for non-existent file.

@@ -211,4 +211,14 @@
     <comment>- Remove rchealth-checker symlink [jsc#PED-264]</comment>
     <requestid>1181912</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>9eb8294b9764ed16a6da0897f8ce9f3c</srcmd5>
+    <version>1.11+git20240730.5dafd6a</version>
+    <time>1722425314</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.11+git20240730.5dafd6a:
+  * Add rpm db consistency plugin
+</comment>
+    <requestid>1190440</requestid>
+  </revision>
 </revisionlist>

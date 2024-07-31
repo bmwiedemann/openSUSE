@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Jul 12 08:33:22 UTC 2024 - Aleksa Sarai <asarai@suse.com>
+
+- Update to runc v1.2.0~rc2. Upstream changelog is available from
+  <https://github.com/opencontainers/runc/releases/tag/v1.2.0-rc.2>.
+- Re-allow Go 1.22 builds for >= 1.22.4.
+
+-------------------------------------------------------------------
+Thu Apr 25 08:23:43 UTC 2024 - Aleksa Sarai <asarai@suse.com>
+
+- Build with Go 1.21 until the upstream Go 1.22 compatibility issue gets fixed.
+  <https://github.com/opencontainers/runc/issues/4233>
+
+-------------------------------------------------------------------
 Fri Apr  4 05:04:27 UTC 2024 - Aleksa Sarai <asarai@suse.com>
 
 - Update to runc v1.2.0~rc1. Upstream changelog is available from

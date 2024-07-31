@@ -20,11 +20,19 @@
 %else
 %bcond_with zchunk
 %endif
-# libsolvs external references require us to link against it:
+
+# libsolvs external references might require us to link against zstd, bz2, xz
 %if 0%{?sle_version} >= 150000 || 0%{?suse_version} >= 1500
 %bcond_without zstd
 %else
 %bcond_with zstd
+%endif
+%if 0%{?sle_version} >= 120300 || 0%{?suse_version} >= 1330 || !0%{?suse_version}
+%bcond_without bz2
+%bcond_without xz
+%else
+%bcond_with bz2
+%bcond_with xz
 %endif
 
 %bcond_without mediabackend_tests
@@ -49,7 +57,7 @@
 %bcond_with enable_preview_single_rpmtrans_as_default_for_zypper
 
 Name:           libzypp
-Version:        17.35.1
+Version:        17.35.6
 Release:        0
 License:        GPL-2.0-or-later
 URL:            https://github.com/openSUSE/libzypp
@@ -60,6 +68,10 @@ Source:         %{name}-%{version}.tar.bz2
 Source1:        %{name}-rpmlintrc
 Provides:       yast2-packagemanager
 Obsoletes:      yast2-packagemanager
+
+# bsc#1227793:  python zypp-plugin < 0.6.4 rejects stomp headers including a '-'
+Conflicts:      python2-zypp-plugin < 0.6.4
+Conflicts:      python3-zypp-plugin < 0.6.4
 
 # Features we provide (update doc/autoinclude/FeatureTest.doc):
 Provides:       libzypp(plugin) = 0.1
@@ -187,8 +199,21 @@ BuildRequires:  libxslt-tools
 %if %{with zchunk}
 BuildRequires:  libzck-devel
 %endif
+
 %if %{with zstd}
 BuildRequires:  libzstd-devel
+%endif
+
+%if %{with bz2}
+%if 0%{?suse_version}
+BuildRequires:  libbz2-devel
+%else
+BuildRequires:  bzip2-devel
+%endif
+%endif
+
+%if %{with xz}
+BuildRequires:  xz-devel
 %endif
 
 %description

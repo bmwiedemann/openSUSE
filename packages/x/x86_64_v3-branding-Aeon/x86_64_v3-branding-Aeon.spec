@@ -20,12 +20,12 @@ Name:           x86_64_v3-branding-Aeon
 Version:        20240429
 Release:        0
 Summary:        Aeon configuration for x86_64_v3 support
-License:        MIT 
+License:        MIT
 URL:            https://en.opensuse.org/Portal:Aeon
 Source:         x86_64_v3-transactional-update.service
 BuildRequires:  systemd-rpm-macros
 BuildArch:      noarch
-Requires:	transactional-update
+Requires:       transactional-update
 
 %description
 Aeon configuration for ensuring x86_64_v3 binaries are installed and updated
@@ -48,8 +48,10 @@ install -D -m 644 x86_64_v3-transactional-update.service %{buildroot}%{_unitdir}
 %preun
 %systemd_preun x86_64_v3-transactional-update.service
 
+%postun
+%systemd_postun x86_64_v3-transactional-update.service
+
 %files
 %{_unitdir}/x86_64_v3-transactional-update.service
 
 %changelog
-

@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Jul 22 21:20:55 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Remove %suse_update_desktop_file macro as it is not useful any
+  more.
+
+-------------------------------------------------------------------
+Thu Jul 18 22:37:07 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Adding bso1227999-reproducible-builds.patch fixing bsc#1227999
+  adding reproducibility patches from gh#python/cpython!121872
+  and gh#python/cpython!121883.
+
+-------------------------------------------------------------------
+Mon Jul 15 12:14:05 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Stop using %%defattr, it seems to be breaking proper executable
+  attributes on /usr/bin/ scripts (bsc#1227378). 
+
+-------------------------------------------------------------------
 Tue Jul  2 10:32:58 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update F00251-change-user-install-location.patch to make pip and

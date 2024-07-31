@@ -405,4 +405,12 @@
   * Remove unused format_environ method in watchthreads APP</comment>
     <requestid>1167719</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>0c6ae2111e27c6b8a781bdb283daf81e</srcmd5>
+    <version>3.10.1</version>
+    <time>1722425303</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1190304</requestid>
+  </revision>
 </revisionlist>

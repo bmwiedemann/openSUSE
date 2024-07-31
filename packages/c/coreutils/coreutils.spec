@@ -239,18 +239,19 @@ install src/{pinky,uptime,users,who} %{buildroot}%{_bindir}/
 %endif
 
 # ================================================
-%post
 %if "%{name}" == "coreutils" || "%{name}" == "coreutils-single"
+%post
 %{?regenerate_initrd_post}
 %endif
 
-# ================================================
-%posttrans
+%dnl ================================================
 %if "%{name}" == "coreutils" || "%{name}" == "coreutils-single"
+%posttrans
 %{?regenerate_initrd_posttrans}
 %endif
 
-# ================================================
+%dnl ================================================
+
 %files
 %if "%{name}" == "coreutils" || "%{name}" == "coreutils-single"
 

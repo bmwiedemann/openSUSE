@@ -18,12 +18,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-Paste
-Version:        3.9.0
+Version:        3.10.1
 Release:        0
 Summary:        Tools for using a Web Server Gateway Interface stack
 License:        MIT
 URL:            https://github.com/cdent/paste
-Source:         https://files.pythonhosted.org/packages/source/P/Paste/Paste-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/p/paste/paste-%{version}.tar.gz
 Patch0:         test_modified-fixup.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
@@ -46,7 +46,7 @@ interface, and should be compatible with other middleware based on those
 interfaces.
 
 %prep
-%autosetup -p1 -n Paste-%{version}
+%autosetup -p1 -n paste-%{version}
 sed -i '/pytest-runner/d' setup.py
 # remove test requiring internet access
 rm tests/test_proxy.py

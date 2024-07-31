@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Jul 20 05:29:36 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.440.0 (0.44)
+   see /usr/share/doc/packages/perl-XS-Parse-Keyword/Changes
+
+  0.44    2024-07-19
+          [BUGFIXES]
+           * `boot_xs_parse_infix()` has to load `XS/Parse/Infix.pm`, the perl
+             module
+           * Fix opname check for lexical operator alises, to match Perl's
+             actual identifier rules
+           * Fix deparse logic for fully-qualified infix operator names
+           * Fix `lex_scan_packagename()` to not get confused by attribute
+             syntax
+
+-------------------------------------------------------------------
 Wed Jul  3 16:51:11 UTC 2024 - Tina Müller <tina.mueller@suse.com>
 
 - updated to 0.430.0 (0.43)

@@ -1,7 +1,7 @@
 #
 # spec file for package libpst
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2008 Bharath Acharya
 #
 # All modifications and additions to the file contributed by third parties
@@ -25,6 +25,7 @@ License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Email/Utilities
 URL:            http://www.gnome.org/projects/evolution/
 Source0:        http://www.five-ten-sg.com/libpst/packages/%{name}-%{version}.tar.gz
+Patch1:         libpst-0dfabdc07bf3.patch
 
 BuildRequires:  gcc-c++
 BuildRequires:  gd-devel

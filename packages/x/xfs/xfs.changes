@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jul 30 13:01:58 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.2.2
+  * This release fixes a number of compiler warnings, and makes
+    other code cleanups and changes to improve code maintainability
+    and analyzer output.
+
+-------------------------------------------------------------------
 Thu Aug 11 08:18:43 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - modernize spec-file, move license to licensedir

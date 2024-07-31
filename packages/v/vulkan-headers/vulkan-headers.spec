@@ -54,7 +54,8 @@ to make use of Vulkan.
 %cmake \
 	-DCMAKE_INSTALL_SYSCONFDIR="%_sysconfdir" \
 	-DBUILD_WSI_MIR_SUPPORT=OFF \
-	-DBUILD_TESTS=OFF
+	-DBUILD_TESTS=OFF \
+	-DVULKAN_HEADERS_ENABLE_MODULE=OFF
 %cmake_build
 
 %install

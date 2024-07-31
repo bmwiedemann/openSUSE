@@ -103,4 +103,30 @@
     <comment>- Update spec file</comment>
     <requestid>1072620</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>e1692d43b045c6f525cd955f183764e0</srcmd5>
+    <version>1.7.3</version>
+    <time>1722425341</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.7.3:
+  * CMake: fix typo in CMAKE_INSTALL_BINDIR install target that affects location of geotiff.dll
+- Changes for version 1.7.2:
+ * GTIFGetDatumInfoEx(): handle dynamic datums
+ * CMake: adopt GNUInstallDirs
+ * CMake: export TIFF as a public dependency
+ * Add XTIFFClientOpenExt() with re-entrant error callbacks
+ * listgeo: add a -no_corners option to avoid printing corner
+ * coordinates which might be PROJ version sensitive (refs #81)
+ * Fix test failures with PROJ 9.1.1 and 9.3
+ * Remove trailing spaces from many files.
+ * Localize variables and add const when possible in a number of files
+ * geo_normalize.c: sprintf --&gt; snprintf
+ * Add missing includes
+ * Fix -Werror=calloc-transposed-args with gcc 14
+ * FindPROJ.cmake: proj_experimental;h -&gt; proj_experimental.h
+ * CMake: add a BUILD_SHARED_LIBS option, and make it default to ON
+ * autoconf/CMake: add generation of libgeotiff.pc
+ * Remove INSTALL and install-sh autoconf-generated files</comment>
+    <requestid>1190191</requestid>
+  </revision>
 </revisionlist>

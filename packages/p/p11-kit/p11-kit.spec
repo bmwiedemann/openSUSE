@@ -1,7 +1,7 @@
 #
 # spec file for package p11-kit
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,6 +31,7 @@ Source0:        https://github.com/p11-glue/%{name}/releases/download/%{version}
 Source1:        https://github.com/p11-glue/%{name}/releases/download/%{version}/p11-kit-%{version}.tar.xz.sig
 Source98:       https://p11-glue.github.io/p11-glue/%{name}/%{name}-release-keyring.gpg#/%{name}.keyring
 Source99:       baselibs.conf
+Patch1:         p11-kit-d938f4a8a3a2.patch
 BuildRequires:  gtk-doc
 %if 0%{?suse_version} >= 1600
 BuildRequires:  libtasn1-tools

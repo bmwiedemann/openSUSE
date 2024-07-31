@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jul 26 15:15:20 UTC 2024 - Martin Jambor <mjambor@suse.com>
+
+- Added a backport of an upstream commit in p11-kit-d938f4a8a3a2.patch
+  to avoid passing an incompatible pointer type to a function which is
+  an error by default in GCC 14.
+
+-------------------------------------------------------------------
 Fri Nov 17 10:11:56 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 0.25.3:

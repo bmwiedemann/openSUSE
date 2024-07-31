@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jul 30 10:00:31 UTC 2024 - Richard Brown <rbrown@suse.com>
+
+- Add missing systemd_postun 
+
+-------------------------------------------------------------------
 Wed May  8 13:50:10 UTC 2024 - Richard Brown <rbrown@suse.com>
 
 - Require transactional-update 

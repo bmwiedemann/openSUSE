@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jul 29 14:43:27 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 3.10.1
+  * Correct packaging and testing when not in a clean virtualenv
+- from version 3.10.0
+  * Move development to https://github.com/pasteorg/paste
+  * Vendor cgi.FieldStorage and cgitb.Hook
+  * More cleaning of Python 2 style code.
+- Adjust upstream source name in spec file
+
+-------------------------------------------------------------------
 Mon Apr 15 06:11:49 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.9.0:

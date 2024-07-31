@@ -25,7 +25,7 @@
 %{!?_distconfdir:%global _distconfdir /etc}
 
 Name:           perl-Bootloader
-Version:        1.13
+Version:        1.14
 Release:        0
 Requires:       coreutils
 Obsoletes:      perl-Bootloader-YAML < %{version}

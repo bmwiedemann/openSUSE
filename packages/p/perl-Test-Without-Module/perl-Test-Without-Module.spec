@@ -18,10 +18,10 @@
 
 %define cpan_name Test-Without-Module
 Name:           perl-Test-Without-Module
-Version:        0.220.0
+Version:        0.230.0
 Release:        0
-# 0.22 -> normalize -> 0.220.0
-%define cpan_version 0.22
+# 0.23 -> normalize -> 0.230.0
+%define cpan_version 0.23
 License:        Artistic-2.0
 Summary:        Test fallback behaviour in absence of modules
 URL:            https://metacpan.org/release/%{cpan_name}

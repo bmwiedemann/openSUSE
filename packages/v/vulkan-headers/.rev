@@ -408,4 +408,13 @@
     <comment>- Update to release SDK-1.3.290</comment>
     <requestid>1189191</requestid>
   </revision>
+  <revision rev="52" vrev="2">
+    <srcmd5>ce3d8c64a5ad7907bf4227fd4e584e92</srcmd5>
+    <version>1.3.290</version>
+    <time>1722425299</time>
+    <user>dimstar_suse</user>
+    <comment>- Add option -DVULKAN_HEADERS_ENABLE_MODULE=OFF to cmake to make the
+  package build with gcc14 [boo#1228421]</comment>
+    <requestid>1190289</requestid>
+  </revision>
 </revisionlist>

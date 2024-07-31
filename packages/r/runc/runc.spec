@@ -26,8 +26,8 @@
 Name:           runc
 # RPM doesn't handle semver rc releases nicely, so for rc releases we need to
 # do something different.
-%define upstream_version 1.2.0-rc.1
-Version:        1.2.0~rc1
+%define upstream_version 1.2.0-rc.2
+Version:        1.2.0~rc2
 Release:        0
 Summary:        Tool for spawning and running OCI containers
 License:        Apache-2.0
@@ -38,7 +38,7 @@ Source1:        https://github.com/opencontainers/runc/releases/download/v%{upst
 Source2:        runc.keyring
 BuildRequires:  diffutils
 BuildRequires:  fdupes
-BuildRequires:  go
+BuildRequires:  go >= 1.22.4
 BuildRequires:  go-go-md2man
 BuildRequires:  libseccomp-devel
 BuildRequires:  libselinux-devel

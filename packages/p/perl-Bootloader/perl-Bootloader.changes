@@ -1,4 +1,22 @@
 --------------------------------------------------------------------
+Mon Jul 29 16:38:33 UTC 2024 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/perl-bootloader#169
+- support grub2-bls (bsc#1226676, bsc#1208135)
+- better config file reading
+- add check whether bootloader is supported
+- unit test output changed, adjust reference data
+- adjust GRUB_ENABLE_BLSCFG when setting grub2-bls
+- add config, install, add-kernel, remove-kernel for grub2-bls
+- support --default option for grub2*
+- unify cmdline parsing code and move to library
+- add missing options for bls conforming loaders
+- updated tests
+- unify test case names
+- adjust documentation
+- 1.14
+
+--------------------------------------------------------------------
 Mon Mar 18 15:48:56 UTC 2024 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/perl-bootloader#165

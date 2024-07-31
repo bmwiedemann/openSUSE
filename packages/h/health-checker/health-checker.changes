@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul 30 09:58:30 UTC 2024 - iforster@suse.com
+
+- Update to version 1.11+git20240730.5dafd6a:
+  * Add rpm db consistency plugin
+
+-------------------------------------------------------------------
 Thu Jun 20 12:01:36 UTC 2024 - Thorsten Kukuk <kukuk@suse.com>
 
 - Remove rchealth-checker symlink [jsc#PED-264] 

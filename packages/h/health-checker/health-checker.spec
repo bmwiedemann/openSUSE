@@ -19,7 +19,7 @@
 %define _dracutmoduledir %(pkg-config --variable=dracutmodulesdir dracut)
 
 Name:           health-checker
-Version:        1.10+git20240111.cb84209
+Version:        1.11+git20240730.5dafd6a
 Release:        0
 Summary:        Service for verifying that important services are running
 License:        GPL-2.0-only
@@ -120,6 +120,7 @@ make %{?_smp_mflags}
 %dir %{_libexecdir}/health-checker/
 %{_libexecdir}/health-checker/btrfs-subvolumes-mounted.sh
 %{_libexecdir}/health-checker/logind.sh
+%{_libexecdir}/health-checker/rpmdb-consistency.sh
 %{_libexecdir}/health-checker/tmp.sh
 %{_sbindir}/health-checker
 %{_mandir}/man8/health-checker.8%{?ext_man}

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jul 26 07:21:32 UTC 2024 - peter czanik <peter@czanik.hu>
+
+- update to version 4.8.0
+  * add new parsers
+  * improved file reading and directory monitoring
+  * new S3 authentication and encryption options
+  * new http metrics
+  * many OpenTelemetry fixes and improvements
+
+-------------------------------------------------------------------
 Thu Feb  8 08:16:12 UTC 2024 - peter czanik <peter@czanik.hu>
 
 - fix syslog-ng-devel dependencies (boo#1219672)

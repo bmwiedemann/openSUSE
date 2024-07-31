@@ -1,7 +1,5 @@
-# Disable usage of systemd-sysusers for SLE15 to stay compatible
-
---- sysusers2shadow.sh.old	2021-09-08 15:06:18.000000000 +0200
-+++ sysusers2shadow.sh	2021-11-26 10:37:20.911541368 +0100
+--- sysusers2shadow.sh.old	2024-07-04 14:24:01.013092683 +0200
++++ sysusers2shadow.sh	2024-07-04 14:28:06.701540250 +0200
 @@ -7,14 +7,6 @@
  	"$@"
  }
@@ -14,10 +12,10 @@
 -	# Use systemd-sysusers and let it read the input directly from stdin
 -	run /usr/bin/systemd-sysusers $REPLACE_ARG -
 -else
- 
  	# Absolute path to busybox, if found
  	busybox=
-@@ -115,4 +115,3 @@
+ 	for i in /bin/busybox /usr/bin/busybox; do [ -x "$i" ] && busybox=$i; done
+@@ -126,4 +118,3 @@
  		;;
  		esac
  	done

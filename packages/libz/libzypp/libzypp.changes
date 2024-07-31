@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Tue Jul 30 16:59:53 CEST 2024 - ma@suse.de
+
+- Export CredentialManager for legacy YAST versions (bsc#1228420)
+- version 17.35.6 (35)
+
+-------------------------------------------------------------------
+Tue Jul 30 15:55:38 CEST 2024 - ma@suse.de
+
+- Export asSolvable for YAST (bsc#1228420)
+- Fix 4 typos in zypp.conf.
+- version 17.35.5 (35)
+
+-------------------------------------------------------------------
+Tue Jul 23 14:19:39 CEST 2024 - ma@suse.de
+
+- Fix typo in the geoip update pipeline (bsc#1228206)
+- Export RepoVariablesStringReplacer for yast2 (bsc#1228138)
+- version 17.35.4 (35)
+
+-------------------------------------------------------------------
+Mon Jul 15 16:13:25 CEST 2024 - ma@suse.de
+
+- Translation: updated .pot file.
+- Conflict with python zypp-plugin < 0.6.4 (bsc#1227793)
+  Older zypp-plugins reject stomp headers including a '-'. Like the
+  'content-length' header we may send.
+- Fix int overflow in Provider (fixes #559)
+  This patch fixes an issue in safe_strtonum which caused
+  timestamps to overflow in the Provider message parser.
+- Fix error reporting on repoindex.xml parse error (bsc#1227625)
+- version 17.35.3 (35)
+
+-------------------------------------------------------------------
+Tue Jul  9 11:28:36 CEST 2024 - ma@suse.de
+
+- Keep UrlResolverPlugin API public (fixes #560)
+- Blacklist /snap executables for 'zypper ps' (bsc#1226014)
+- Fix handling of buddies when applying locks (bsc#1225267)
+  Buddy pairs (like -release package and product) internally share
+  the same status object. When applying locks from query results
+  the locked bit must be set if either item is locked.
+- version 17.35.2 (35)
+
+-------------------------------------------------------------------
 Tue Jul  2 12:30:20 CEST 2024 - ma@suse.de
 
 - Install zypp/APIConfig.h legacy include (fixes #557)

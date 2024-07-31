@@ -15,7 +15,6 @@ if [ -x /usr/bin/systemd-sysusers ] && [ -e /proc/version ]; then
 	# Use systemd-sysusers and let it read the input directly from stdin
 	run /usr/bin/systemd-sysusers $REPLACE_ARG -
 else
-
 	# Absolute path to busybox, if found
 	busybox=
 	for i in /bin/busybox /usr/bin/busybox; do [ -x "$i" ] && busybox=$i; done
@@ -48,9 +47,23 @@ else
 		u)
 			shift
 			ARGUMENTS="$1"
-			if [ -n "${2-}" ] && [ "$2" != "-" ]; then
-				ARGUMENTS="-u $2 $ARGUMENTS"
+			
+			# Split user and Group id			
+			userGrouArr=(${2//:/ })
+			USER_ID=${userGrouArr[0]}
+			GROUP_ID=${userGrouArr[1]}
+			
+			if [ -n "$USER_ID" ] && [ "$USER_ID" != "-" ]; then
+				ARGUMENTS="-u $USER_ID $ARGUMENTS"
 			fi
+			if [ -n "$GROUP_ID" ] && [ "$GROUP_ID" != "-" ]; then
+				ARGUMENTS="-g $GROUP_ID $ARGUMENTS"
+			else
+				if [ "$USER_ID" == "-" ]; then
+					ARGUMENTS="-U $ARGUMENTS"
+				fi
+			fi
+
 			homedir="/" # If null, empty or '-'
 			if [ "${4:--}" != "-" ]; then
 				homedir="$4"
@@ -69,7 +82,7 @@ else
 					if /usr/bin/getent group "$1" >> /dev/null; then
 						ARGUMENTS="-g $1 $ARGUMENTS"
 					else
-						ARGUMENTS="-U $ARGUMENTS"
+						ARGUMENTS="$ARGUMENTS"
 					fi
 
 					run /usr/sbin/useradd -r -c "$3" -d "${homedir}" $ARGUMENTS
