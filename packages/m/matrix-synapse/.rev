@@ -975,4 +975,13 @@ mostly-working synapse than nothing at all) and the package has been update to
 - Update to 1.111.0</comment>
     <requestid>1187924</requestid>
   </revision>
+  <revision rev="105" vrev="1">
+    <srcmd5>08c6689c933e5dc9717dfded25b3f69e</srcmd5>
+    <version>1.112.0</version>
+    <time>1722425411</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.112.0 (boo#1228596)
+  The actual security fix will be in the python3x-Twisted package:</comment>
+    <requestid>1190513</requestid>
+  </revision>
 </revisionlist>
