@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Wed Jul 31 07:41:07 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 0.167.0:
+  * Update GoReleaser configuration for version 2 by @yxxhero
+    in #1600
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.54.7 to
+    1.54.8 by @dependabot in #1602
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.54.8 to
+    1.54.10 by @dependabot in #1607
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.54.10 to
+    1.54.11 by @dependabot in #1608
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.54.11 to
+    1.54.12 by @dependabot in #1610
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.54.12 to
+    1.54.13 by @dependabot in #1611
+  * Use logger for helm output by @inteon in #1585
+  * build(deps): bump golang.org/x/term from 0.21.0 to 0.22.0
+    by @dependabot in #1616
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.54.13 to
+    1.54.14 by @dependabot in #1612
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.54.14 to
+    1.54.15 by @dependabot in #1617
+  * Fix broken links in status section of README.md by
+    @jonathanmanton in #1618
+  * build(deps): bump zipp from 3.7.0 to 3.19.1 in /docs by
+    @dependabot in #1620
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.54.15 to
+    1.54.17 by @dependabot in #1622
+  * build(deps): bump google.golang.org/grpc from 1.64.0 to
+    1.64.1 by @dependabot in #1621
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.54.17 to
+    1.54.18 by @dependabot in #1625
+  * feat: bump helm to 3.15.3 by @yxxhero in #1627
+  * fix: inject KubeVersion and ApiVersions in Chartify rendering
+    by @xabufr in #1624
+  * chore: add tests for release filters by @zhaque44 in #1629
+  * feat: add namespace info in syncRelease and diffRelease by
+    @yxxhero in #1609
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.54.18 to
+    1.54.19 by @dependabot in #1628
+  * feat: add support for OCI auth through registry-config flag
+    by @ThatsMrTalbot in #1630
+  * build(deps): bump github.com/zclconf/go-cty from 1.14.4 to
+    1.15.0 by @dependabot in #1632
+  * feat: Update sops version 3.9.0 by @zhaque44 in #1634
+  * build(deps): bump k8s.io/apimachinery from 0.30.2 to 0.30.3
+    by @dependabot in #1635
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.54.19 to
+    1.54.20 by @dependabot in #1638
+  * build(deps): bump github.com/goccy/go-yaml from 1.11.3 to
+    1.12.0 by @dependabot in #1631
+  * chore: documentation updates: grammar & rm whitespace by
+    @zhaque44 in #1639
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.54.20 to
+    1.55.2 by @dependabot in #1644
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.55.2 to
+    1.55.3 by @dependabot in #1645
+  * chore: remove unecessary check in HandleExitCoder function and
+    streamline logic by @zhaque44 in #1646
+  * feat: use helm status to find helm release by @yxxhero in #1640
+  * build(deps): bump github.com/docker/docker from
+    27.0.1+incompatible to 27.1.0+incompatible by @dependabot in #1647
+
+-------------------------------------------------------------------
 Wed Jun 26 12:57:11 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 0.166.0:
