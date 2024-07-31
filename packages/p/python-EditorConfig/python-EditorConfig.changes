@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jul 30 21:16:59 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to editorconfig-core-py-0.12.4+git.1707726233.2740dee:
+  * Bump to v0.12.4 (#50)
+  * fix: only support Python3 (#48)
+  * Move the most of metadata into `setup.cfg` supported since Dec 2015. (#44)
+  * Add additional URLs into package metadata. (#43)
+  * Fix cloning submodules (#40)
+
+-------------------------------------------------------------------
 Sat Sep 18 09:35:34 UTC 2021 - mcepl@cepl.eu
 
 - Update to version 0.12.3+git.1630438300.f43312a:

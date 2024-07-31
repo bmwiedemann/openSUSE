@@ -1,7 +1,7 @@
 #
 # spec file for package python-EditorConfig
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,16 +16,17 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define modname editorconfig-core-py
 Name:           python-EditorConfig
-Version:        0.12.3+git.1630438300.f43312a
+Version:        0.12.4+git.1707726233.2740dee
 Release:        0
 Summary:        File Locator and Interpreter for Python
 License:        BSD-2-Clause AND Python-2.0
 URL:            https://editorconfig.org
 Source0:        %{modname}-%{version}.tar.xz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -41,24 +42,25 @@ command line program or as an importable library.
 %autosetup -p1 -n %{modname}-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 # remove executable that is already supplied by the editorconfig package
 rm -rf %{buildroot}%{_bindir}
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 # Still not resolved issues with tests, gh#editorconfig/editorconfig-core-py#37
-cmake .
+%{python_expand cmake .
 export PYTHONPATH=%{buildroot}%{$python_sitelib}
 ctest -VV --output-on-failure . || /bin/true
+}
 
 %files %{python_files}
 %license LICENSE.* COPYING
 %doc README.rst
 %{python_sitelib}/editorconfig
-%{python_sitelib}/EditorConfig-*.egg-info
+%{python_sitelib}/EditorConfig-%(echo %{version}|cut -d+ -f 1)*-info
 
 %changelog

@@ -50,4 +50,18 @@
 </comment>
     <requestid>920041</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>dd9d01ef35080bdcd11fb600e45af282</srcmd5>
+    <version>0.12.4+git.1707726233.2740dee</version>
+    <time>1722425420</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to editorconfig-core-py-0.12.4+git.1707726233.2740dee:
+  * Bump to v0.12.4 (#50)
+  * fix: only support Python3 (#48)
+  * Move the most of metadata into `setup.cfg` supported since Dec 2015. (#44)
+  * Add additional URLs into package metadata. (#43)
+  * Fix cloning submodules (#40)
+</comment>
+    <requestid>1190540</requestid>
+  </revision>
 </revisionlist>
