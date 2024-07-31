@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jul 30 14:33:40 UTC 2024 - Eugenio Paolantonio <eugenio.paolantonio@suse.com>
+
+- ensure key2rpmname is called using bash.
+
+-------------------------------------------------------------------
 Fri Jul 19 08:47:17 UTC 2024 - Marcus Meissner <meissner@suse.com>
 
 - make the per-project inclusion optional, default off.
