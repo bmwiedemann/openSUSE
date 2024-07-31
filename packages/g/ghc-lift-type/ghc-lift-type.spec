@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-lift-type
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.1.1.1
+Version:        0.1.2.0
 Release:        0
 Summary:        Lift a type from a Typeable constraint to a Template Haskell type
 License:        BSD-3-Clause
@@ -33,6 +33,10 @@ BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-template-haskell-devel
 BuildRequires:  ghc-template-haskell-prof
 ExcludeArch:    %{ix86}
+%if %{with tests}
+BuildRequires:  ghc-hspec-devel
+BuildRequires:  ghc-hspec-prof
+%endif
 
 %description
 Lift your types from a Typeable constraint to a Template Haskell type.

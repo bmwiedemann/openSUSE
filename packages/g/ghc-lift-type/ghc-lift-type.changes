@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jul 23 00:03:37 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update lift-type to version 0.1.2.0.
+  ## 0.1.2.0
+
+  - Add `typeToName`, making it possible to accurately extract a `Name` from a type. [#11](https://github.com/parsonsmatt/lift-type/pull/11)
+
+-------------------------------------------------------------------
 Thu Mar 30 17:07:25 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Updated spec file to conform with ghc-rpm-macros-2.5.2.
