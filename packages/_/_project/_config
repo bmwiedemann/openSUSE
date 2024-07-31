@@ -2857,6 +2857,7 @@ BuildFlags: onlybuild:python-libcst
 BuildFlags: onlybuild:python-libevdev
 BuildFlags: onlybuild:python-lxml
 BuildFlags: onlybuild:python-matplotlib
+BuildFlags: onlybuild:python-maturin
 BuildFlags: onlybuild:python-mccabe
 BuildFlags: onlybuild:python-meson-python
 BuildFlags: onlybuild:python-mypy

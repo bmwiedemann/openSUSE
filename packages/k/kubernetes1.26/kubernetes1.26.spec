@@ -51,6 +51,8 @@ Patch4:         kubeadm-opensuse-flexvolume.patch
 Patch5:         revert-coredns-image-renaming.patch
 # Patch to advance autoscaling v2 as the preferred API version, to fix bsc#1219964, CVE-2024-0793
 Patch6:         autoscaling-advance-v2-as-the-preferred-API-version.patch
+# PATCH-FIX-UPSTREAM - make package build reproducible
+Patch7:         https://github.com/kubernetes/kubernetes/pull/122680.patch
 BuildRequires:  fdupes
 BuildRequires:  git
 BuildRequires:  go >= 1.21.8
@@ -237,6 +239,7 @@ Fish command line completion support for %{name}-client.
 %patch -P 4 -p0
 %patch -P 5 -p1
 %patch -P 6 -p1
+%patch -P 7 -p1
 
 %build
 # This is fixing bug bsc#1065972

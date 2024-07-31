@@ -1,0 +1,7 @@
+<package name="qt6gtk2" project="openSUSE:Factory">
+  <title>Qt 6 Gtk 2 Style</title>
+  <description>A Qt6 Style that uses the current GTK2 theme to Render.
+</description>
+  <devel project="KDE:Qt6" package="qt6gtk2"/>
+  <url>https://github.com/trialuser02/qt6gtk2</url>
+</package>

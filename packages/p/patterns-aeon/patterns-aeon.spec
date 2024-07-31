@@ -404,6 +404,9 @@ Requires:       cifs-utils
 ### Support wacom tablets
 Requires:       libinput-udev
 
+### Add aeon-check
+Requires:       aeon-check
+
 %description base
 This is the openSUSE Aeon base system. It contains only fully working immutable desktop system.
 

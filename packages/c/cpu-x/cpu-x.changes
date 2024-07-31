@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul 30 07:29:51 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Support libproc2 (aka procps 4): Add pkgconfig(libproc2)
+  BuildRequires.
+
+-------------------------------------------------------------------
 Sun Apr 28 17:02:32 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to release 5.0.4

@@ -39,7 +39,7 @@ Name:           hawk2
 Summary:        HA Web Konsole
 License:        GPL-2.0-only
 Group:          %{pkg_group}
-Version:        2.6.5+git.1721396378.dfdc98d
+Version:        2.6.5+git.1722332489.55c71c1
 Release:        0
 URL:            http://www.clusterlabs.org/wiki/Hawk
 Source:         %{name}-%{version}.tar.bz2

@@ -47,4 +47,14 @@
     <comment></comment>
     <requestid>904040</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>cc85e0f9e8ada1d45425ba1a8fe59a7e</srcmd5>
+    <version>0.7.2</version>
+    <time>1722425360</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.7.2:
+  * This release adds support for riscv, as provided by Mitchell Horne, as well a miscellaneous bug fixes and improvments
+- Enable building for all architectures</comment>
+    <requestid>1190430</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jul 30 06:39:19 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.64.2:
+  * Adding supply credentials for a third-party registry when using
+    Terragrunt Provider Cache (#3303)
+
+-------------------------------------------------------------------
 Sat Jul 27 08:05:55 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.64.1:

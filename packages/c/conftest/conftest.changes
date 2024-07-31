@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Jul 27 08:16:30 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.55.0:
+  * build(deps): bump github.com/moby/buildkit from 0.14.1 to
+    0.15.1 (#976)
+  * build(deps): bump github.com/open-policy-agent/opa from 0.66.0
+    to 0.67.0 (#977)
+  * fix: update regex to excape the dot in it (#975)
+  * ci: Bump golang-ci action to v6 (#974)
+  * build(deps): bump golang from 1.22.4-alpine to 1.22.5-alpine
+    (#970)
+  * ci: Pin goreleaser to v1 (#969)
+  * ci: Bump Docker login to v3 (#968)
+
+-------------------------------------------------------------------
 Thu Jul 11 18:40:42 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.54.0:

@@ -37,13 +37,13 @@ BuildRequires:  gettext-tools
 BuildRequires:  nasm
 %endif
 BuildRequires:  opencl-headers
+BuildRequires:  (pkgconfig(libproc2) or pkgconfig(libprocps))
 BuildRequires:  pkgconfig(OpenCL)
 BuildRequires:  pkgconfig(glfw3)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.12.0
 BuildRequires:  pkgconfig(gtkmm-3.0) >= 3.12.0
 BuildRequires:  pkgconfig(libcpuid) >= 0.6.0
 BuildRequires:  pkgconfig(libpci)
-BuildRequires:  pkgconfig(libprocps)
 BuildRequires:  pkgconfig(ncursesw)
 BuildRequires:  pkgconfig(vulkan)
 # https://github.com/TheTumultuousUnicornOfDarkness/CPU-X/issues/105

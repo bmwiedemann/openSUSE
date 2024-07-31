@@ -1,7 +1,7 @@
 #
 # spec file for package geos
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,13 +16,12 @@
 #
 
 
-%define uver	3_12_1
+%define uver	3_12_2
 Name:           geos
-Version:        3.12.1
+Version:        3.12.2
 Release:        0
 Summary:        Geometry Engine - Open Source
 License:        LGPL-2.1-only
-Group:          Development/Libraries/C and C++
 URL:            https://libgeos.org
 Source0:        https://download.osgeo.org/%{name}/%{name}-%{version}.tar.bz2
 BuildRequires:  cmake
@@ -38,9 +37,6 @@ functions such as IsValid().
 
 %package -n libgeos%{uver}
 Summary:        Geometry Engine library
-Group:          System/Libraries
-# Old version was not conforming to SLPP
-Conflicts:      geos <= 3.5.0
 
 %description -n libgeos%{uver}
 GEOS (Geometry Engine - Open Source) is a C++ port of the Java Topology
@@ -51,8 +47,6 @@ functions such as IsValid().
 
 %package -n libgeos_c1
 Summary:        C language interface for the GEOS library
-Group:          System/Libraries
-Conflicts:      geos <= 3.5.0
 
 %description -n libgeos_c1
 This subpackage contains a shared library providing a C linkage
@@ -60,7 +54,6 @@ interface for the (C++) GEOS library.
 
 %package devel
 Summary:        Development files for GEOS
-Group:          Development/Libraries/C and C++
 Requires:       libgeos%{uver} = %{version}-%{release}
 Requires:       libgeos_c1 = %{version}-%{release}
 Provides:       lib%{name}-devel = %{version}-%{release}
@@ -93,10 +86,8 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:%{buildroot}%{_libdir}
 %install
 %cmake_install
 
-%post   -n libgeos%{uver} -p /sbin/ldconfig
-%postun -n libgeos%{uver} -p /sbin/ldconfig
-%post   -n libgeos_c1 -p /sbin/ldconfig
-%postun -n libgeos_c1 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libgeos%{uver}
+%ldconfig_scriptlets -n libgeos_c1
 
 %files
 %license COPYING

@@ -1,7 +1,14 @@
 -------------------------------------------------------------------
+Mon Jul 29 08:19:59 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 3.12.2:
+  - See provided NEWS.md for a complete list of changes
+- Drop old conflicts from package rename that happened years ago
+
+-------------------------------------------------------------------
 Tue Nov 14 16:12:57 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
 
-- Update to verstion 3.12.1:
+- Update to version 3.12.1:
   - See provided NEWS.md for a complete list of changes
 - Drop no longer needed geos-add-missing-include.patch
 

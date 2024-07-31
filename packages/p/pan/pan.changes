@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Jul 22 13:04:18 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.159:
+  * remove autotools. Pan can only be built with cmake
+  * remove support for obsolete Status Icon
+  * pref-ui.cc: fix crash when editing twice the same shortcut
+  * pref-ui.cc: fix behavior and warnings in edit shortcut widget
+  * README.org: add instructions to clean up autotools files
+- Build application with static libs (cmake...
+  -DBUILD_STATIC_LIBS=ON) instead of shared libs (cmake...
+  -DBUILD_SHARED_LIBS=OFF) as there are linking errors when using
+  the latter (glgo#GNOME/pan#190).
+- Build with cmake and ninja.
+- Add pan-window-set-StartupWMClass.patch: Set StartupWMClass for
+  open windows (glgo#GNOME/pan#191).
+
+-------------------------------------------------------------------
 Sun Apr 28 19:08:31 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.158:

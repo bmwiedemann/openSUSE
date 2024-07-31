@@ -1,7 +1,7 @@
 #
 # spec file for package ck
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,14 +19,13 @@
 %define sover   0
 %define libname libck%{sover}
 Name:           ck
-Version:        0.7.1
+Version:        0.7.2
 Release:        0
 Summary:        Concurrency Kit
-License:        BSD-2-Clause AND Apache-2.0
+License:        Apache-2.0 AND BSD-2-Clause
 URL:            http://concurrencykit.org/
 Source:         https://github.com/concurrencykit/ck/archive/refs/tags/%{version}.tar.gz#/ck-%{version}.tar.gz
 BuildRequires:  pkgconfig
-ExcludeArch:    s390
 
 %description
 Concurrency primitives, safe memory reclamation mechanisms and non-blocking
@@ -55,7 +54,7 @@ concurrent systems.
 This package holds the development files.
 
 %prep
-%setup -q
+%autosetup
 
 %build
 # not a normal autotool configure, can't use configure macro
@@ -87,10 +86,9 @@ export CFLAGS="%{optflags}"
 rm -rv %{buildroot}%{_libdir}/libck.a
 
 %check
-make %{?_smp_mflags} check
+%make_build check
 
-%post   -n %{libname} -p /sbin/ldconfig
-%postun -n %{libname} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{libname}
 
 %files -n %{libname}
 %license LICENSE

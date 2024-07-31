@@ -279,7 +279,6 @@ done
 mkdir -p %{buildroot}%{_libqt5_plugindir}
 ln -s -t %{buildroot}%{_libqt5_plugindir}/ %{_libdir}/nextcloudsync_vfs_{suffix,xattr}.so
 
-%suse_update_desktop_file com.nextcloud.desktopclient.nextcloud
 %fdupes %{buildroot}%{_datadir}/
 
 %ldconfig_scriptlets -n %{soname}%{sover}

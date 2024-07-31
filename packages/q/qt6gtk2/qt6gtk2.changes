@@ -1,0 +1,7 @@
+-------------------------------------------------------------------
+Fri Jan 12 04:16:13 UTC 2024 - Simon Lees <sflees@suse.de>
+
+- Version 0.2
+- Create this package from the older Qt5 package
+  * qtstyleplugins-gtksettings.patch rebased
+  * qtstyleplugins-fix-deprecations.patch removed

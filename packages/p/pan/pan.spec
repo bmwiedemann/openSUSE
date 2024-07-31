@@ -16,20 +16,24 @@
 #
 
 
+%define __builder ninja
 Name:           pan
-Version:        0.158
+Version:        0.159
 Release:        0
 Summary:        A Newsreader for GNOME
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/News/Clients
 URL:            http://pan.rebelbase.com/
 Source0:        https://gitlab.gnome.org/GNOME/pan/-/archive/v%{version}/%{name}-v%{version}.tar.bz2
+# PATCH-FIX-UPSTREAM pan-window-set-StartupWMClass.patch glgo#GNOME/pan#191 badshah400@gmail.com -- Set wmclass for open windows
+Patch0:         pan-window-set-StartupWMClass.patch
+BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  gettext >= 0.21
 BuildRequires:  itstool
-BuildRequires:  libtool
 BuildRequires:  libxml2-tools
+BuildRequires:  ninja
 BuildRequires:  pkgconfig
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(enchant-2)
@@ -52,18 +56,20 @@ handling, multiple servers, and secure connections.
 %autosetup -p1 -n %{name}-v%{version}
 
 %build
-NOCONFIGURE=1 ./autogen.sh
-%configure \
-	--with-gnutls \
-	--with-dbus \
-	--enable-gkr \
-	--enable-manual \
-	--enable-libnotify \
+# Build with static libs: https://gitlab.gnome.org/GNOME/pan/-/issues/190
+%cmake \
+  -DBUILD_SHARED_LIBS=OFF \
+  -DBUILD_STATIC_LIBS=ON \
+  -DENABLE_MANUAL=ON \
+  -DWANT_GNUTLS=ON \
+  -DWANT_DBUS=ON \
+  -DWANT_GKR=ON \
+  -DWANT_NOTIFY=ON \
 	%{nil}
-%make_build
+%cmake_build
 
 %install
-%make_install
+%cmake_install
 %find_lang %{name} %{?no_lang_C}
 %fdupes %{buildroot}/%{_prefix}
 
@@ -78,6 +84,7 @@ NOCONFIGURE=1 ./autogen.sh
 %{_datadir}/applications/*.%{name}.desktop
 %{_datadir}/icons/hicolor/*/apps/*.%{name}.png
 %{_datadir}/metainfo/*.%{name}.metainfo.xml
+%{_datadir}/dbus-1/services/org.gnome.pan.service
 %{_datadir}/pan/
 
 %files lang -f %{name}.lang

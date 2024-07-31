@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jul 30 09:55:42 UTC 2024 - Richard Brown <rbrown@suse.com>
+
+- Add aeon-check (boo#1228416) 
+
+-------------------------------------------------------------------
 Sat Jul 27 14:40:01 UTC 2024 - Richard Brown <rbrown@suse.com>
 
 - Add libinput-udev, needed to fully support wacom tablets 

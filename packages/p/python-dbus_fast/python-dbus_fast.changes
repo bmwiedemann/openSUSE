@@ -1,0 +1,418 @@
+-------------------------------------------------------------------
+Mon Jul 29 18:41:48 UTC 2024 - Axel Braun <axel.braun@gmx.de>
+
+- once again-multibuild
+
+-------------------------------------------------------------------
+Thu Jul 25 06:12:42 UTC 2024 - Axel Braun <axel.braun@gmx.de>
+
+- psuffix cleaned up
+
+-------------------------------------------------------------------
+Wed Jul 17 15:50:25 UTC 2024 - Axel Braun <axel.braun@gmx.de>
+
+- some changes to spec and _service file
+
+-------------------------------------------------------------------
+Sun Jun 30 11:05:17 UTC 2024 - marec@detebe.org
+
+- Update to version 2.22.1:
+  * 2.22.1
+  * fix: wheel build exclude for pp37 (#285)
+  * 2.22.0
+  * feat: build wheels for aarch64 to allow use in embedded systems (#283)
+  * chore: drop python 3.7 support (#284)
+  * 2.21.3
+  * fix: clear exception flag on disconnect future if its also sent to handlers (#281)
+  * 2.21.2
+  * fix: introspection bogus child paths (#280)
+  * 2.21.1
+  * fix: avoid expensive runtime inspection of known callables (#277)
+  * 2.21.0
+  * feat: speed up message callbacks (#276)
+  * 2.20.0
+  * feat: speed up run time constructed method handlers (#275)
+  * 2.19.0
+  * feat: speed up ServiceInterface callbacks with cython methods (#274)
+  * 2.18.0
+  * feat: small speed up to the aio message reader (#273)
+  * 2.17.0
+  * feat: reduce duplicate code in aio MessageBus (#272)
+  * 2.16.0
+  * feat: speed up sending messages with call on the MessageBus (#271)
+  * 2.15.0
+  * feat: make ErrorType enums compare as strings (#269)
+  * 2.14.0
+  * feat: add support for tuples to the marshaller (#267)
+  * 2.13.1
+  * fix: re-release since the previous release ran out of space on PyPI (#266)
+  * 2.13.0
+  * feat: improve marshaller performance (#264)
+  * 2.12.1
+  * fix: send reply test failure with cython (#265)
+  * 2.12.0
+  * fix: reduce size of wheels by excluding generated .c files (#262)
+  * feat: update for final cpython release (#263)
+  * 2.11.1
+  * fix: marshall multi-byte strings correctly (#261)
+  * chore: add more unmarshall tests (#260)
+  * chore: add more unmarshall tests (#259)
+  * chore: add benchmark for GetValue (#258)
+  * 2.11.0
+  * feat: speed up unpacking arrays (#257)
+  * 2.10.0
+  * feat: speed up constructing Variant objects (#256)
+  * 2.9.0
+  * feat: speed up unmarshalling message body (#255)
+  * 2.8.0
+  * feat: speed up unmarshalling Variants (#254)
+  * 2.7.0
+  * feat: speed up readers in the unmarshall path (#253)
+  * 2.6.0
+  * feat: speed up first connection when using asyncio (#251)
+  * 2.5.0
+  * feat: speed up unmarshaller (#250)
+  * 2.4.0
+  * feat: add cython typing for ServiceInterface.name (#248)
+  * chore: bump cpython CI version (#249)
+  * 2.3.0
+  * feat: speed up connect and disconnect (#247)
+  * 2.2.0
+  * feat: speed up unmarshalling by skipping unused unix_fds header (#246)
+  * 2.1.0
+  * feat: reduce overhead to reset between messages (#245)
+  * 2.0.1
+  * fix: clean up address parsing and tests (#244)
+  * 2.0.0
+  * feat!: don't import backends by default (#243)
+  * 1.95.2
+  * fix: handling of None messages from notify callback (#236)
+  * 1.95.1
+  * fix: handle multiple flag bits when unmarshalling (#241)
+  * chore: add test coverage for issue 239 (#240)
+  * 1.95.0
+  * feat: small speed up to the unmarshaller (#238)
+  * 1.94.1
+  * fix: rebuild wheels with cython 3.0.2 (#235)
+  * 1.94.0
+  * feat: build cpython 3.12 wheels (#234)
+  * chore: bump cpython 3.12 version in CI (#233)
+  * 1.93.1
+  * fix: avoid cythonizing SendReply (#232)
+  * chore: add more coverage for send_reply (#231)
+  * chore: add send_reply tests (#230)
+  * 1.93.0
+  * feat: improve performance of processing incoming messages (#228)
+  * 1.92.0
+  * feat: reduce overhead to dispatch method handlers (#227)
+  * 1.91.4
+  * fix: subpath bad matching (#202)
+  * 1.91.3
+  * fix: messages could be sent out of order if they had to queue (#225)
+  * 1.91.2
+  * fix: avoid checking if a message expects a reply twice (#223)
+  * 1.91.1
+  * fix: revert changes to _expects_reply from speed up to processing bluez passive data (#222)
+  * 1.91.0
+  * feat: speed up to processing bluez passive data (#221)
+  * 1.90.2
+  * fix: spelling of `dbus_fast.auth.AuthAnnonymous` to `dbus_fast.auth.AuthAnonymous` (#220)
+  * 1.90.1
+  * fix: more cython3 optional fixes (#219)
+  * 1.90.0
+  * feat: remove async_timeout dependency (#218)
+  * 1.89.0
+  * feat: speed up Message creation and callbacks (#217)
+  * 1.88.0
+  * feat: optimize passive bluez message unmarshaller (#216)
+  * 1.87.6
+  * fix: exception handler failure when exception is not DBusError (#215)
+  * 1.87.5
+  * fix: result typing in ServiceInterface._handle_signal (#214)
+  * 1.87.4
+  * fix: avoid double buffering when using asyncio reader without negotiate_unix_fd (#213)
+  * 1.87.3
+  * fix: relax typing on _fn_result_to_body to allow Any (#212)
+  * 1.87.2
+  * fix: typing on _fn_result_to_body was incorrect which was caused an exception with cython3 (#210)
+  * 1.87.1
+  * fix: cython3 compat (#208)
+  * 1.87.0
+  * feat: initial cpython 3.12 support (#207)
+  * 1.86.0
+  * feat: improve performance of reading from the socket during unmarshall (#200)
+  * chore: update deps via poetry (#201)
+  * 1.85.0
+  * feat: improve unmarshall performance (#199)
+  * 1.84.2
+  * fix: corrects Variant documentation (#197)
+  * 1.84.1
+  * chore: bump python-semantic-release to fix CI (#196)
+  * fix: missing c extensions with newer poetry (#194)
+  * chore: bump isort to 5.12.0 to fix ci (#195)
+  * 1.84.0
+  * feat: add support for EXTERNAL auth without uid (#193)
+  * 1.83.1
+  * fix: cleanup typing in marshaller and unmarshaller (#190)
+  * 1.83.0
+  * feat: allow hardcoding uid in auth (#189)
+  * 1.82.0
+  * feat: avoid enum dunder overhead in message_bus calls (#187)
+  * 1.81.0
+  * feat: speed up processing bluez passive advertisements (#186)
+  * chore: add passive unmarshall benchmark (#185)
+  * 1.80.0
+  * feat: speed up checking if a message needs a reply (#181)
+  * 1.79.0
+  * feat: add a cython pxd for services (#180)
+  * 1.78.0
+  * feat: simplify creation of SendReply in message_bus (#178)
+  * chore: disable some more tests that segfault under py3.10 (#179)
+  * 1.77.0
+  * feat: avoid replacing unix_fds if there are no unix_fds (#176)
+  * 1.76.0
+  * feat: only construct handlers once (#175)
+  * chore: disable one more flakey glib test on py3.10 (#174)
+  * chore: disable flakey glib test on newer python (#173)
+  * 1.75.1
+  * fix: fix remaining altdesktop links (#169)
+  * 1.75.0
+  * feat: add unmarshaller cython typing for SignatureType and SignatureTree (#168)
+  * 1.74.2
+  * fix: small fixes for typing with older python versions (#167)
+  * 1.74.1
+  * fix: building via PEP 517 (#166)
+  * 1.74.0
+  * feat: improve cdef types for marshaller (#164)
+  * 1.73.1
+  * fix: allow non-string objects to be marshalled by write_string (#163)
+  * 1.73.0
+  * feat: reduce latency to process messages (#161)
+  * chore: make big endian workflow manual until we get it working properly (#157)
+  * chore: prepare marshaller to be able to generate big endian messages (#154)
+  * chore: add a test for unmarshalling a big endian message (#156)
+  * chore: add big endian github workflow (#155)
+  * 1.72.0
+  * feat: add optimized reader for GetManagedObjects (#152)
+  * chore: add benchmark and tests for GetManagedObjects (#150)
+  * 1.71.0
+  * feat: small speed up to _unpack_variants (#148)
+  * 1.70.0
+  * feat: use cimports for message marshalling (#149)
+  * 1.69.0
+  * feat: refactor message_reader to avoid python wrappers (#147)
+  * 1.68.0
+  * feat: use cimports for unmarshaller Variant and Message (#146)
+  * 1.67.0
+  * feat: optimize unmarshaller by dropping exception that was only used internally (#145)
+  * 1.66.0
+  * feat: speed up creating Variant objects (#144)
+  * 1.65.0
+  * feat: add cython def for unmarshaller read_sock for fd passing (#143)
+  * 1.64.0
+  * feat: speed up marshalling headers (#142)
+  * 1.63.0
+  * feat: speed up marshall align (#137)
+  * feat: speed up marshall write_string and write_variant (#138)
+  * 1.62.0
+  * feat: speed up marshaller by pre-packing bools (#139)
+  * chore: update pyproject.toml dependencies (#136)
+  * chore: add explicit test for workaround of python/cpython#98976 (#135)
+  * 1.61.1
+  * fix: re-release due to pypi not seeing the new version (#134)
+  * chore: adjust poetry for python 3.11 (#133)
+  * 1.61.0
+  * feat: add support and workarounds for cpython3.11 (#31)
+  * chore: drop async-timeout dependency on Python >= 3.11 (#132)
+  * 1.60.0
+  * feat: speed up auth phase (#131)
+  * 1.59.2
+  * fix: correctly fallback to pure python when cython is missing (#130)
+  * 1.59.1
+  * fix: pass return value to SendReply.__exit__ (#127)
+  * chore: add additional coverage for multiple messages in the same packet (#126)
+  * 1.59.0
+  * feat: speed up decoding headers by avoiding unicode checks (#125)
+  * 1.58.0
+  * feat: add optimized parser for properties changed messages with service data (#124)
+  * 1.57.0
+  * feat: add optimized parser for InterfacesRemoved (#123)
+  * 1.56.0
+  * feat: optimize for interfaces added messages (#122)
+  * 1.55.0
+  * feat: add optimized reader for uint16 (#121)
+  * 1.54.0
+  * feat: speed up unmarshaller with common signature trees (#120)
+  * 1.53.0
+  * feat: add additional pxd defs for message (#118)
+  * 1.52.0
+  * feat: small speed up to unpack_variants (#117)
+  * chore: fix ci (#119)
+  * 1.51.0
+  * feat: inline cast uint32 and int16 to speed up unmarshall (#115)
+  * 1.50.0
+  * feat: speed up unmarshall (#114)
+  * 1.49.0
+  * feat: speed up unmarshaller (#113)
+  * 1.48.0
+  * feat: add typing to auth module (#110)
+  * 1.47.0
+  * feat: speed up unmarshaller (#109)
+  * 1.46.0
+  * feat: speed up marshaller and add typing (#108)
+  * 1.45.0
+  * feat: optimize signature readers for most common messages (#107)
+  * 1.44.0
+  * feat: speed up unpack_variants (#105)
+  * 1.43.0
+  * feat: improve aio message reader performance (#104)
+  * 1.42.0
+  * feat: complete some more missing typing (#103)
+  * 1.41.0
+  * feat: add more typing to unmarshaller (#102)
+  * 1.40.0
+  * feat: speed up unmarshaller (#101)
+  * 1.39.0
+  * feat: add additional typing (#100)
+  * 1.38.0
+  * feat: optimize for reading a{sv} messages and headers (#98)
+  * 1.37.0
+  * feat: speed up empty array unmarshall (#96)
+  * chore: adjust unmarshall benchmarks since they are now fast enough to hit the margin of error (#97)
+  * 1.36.0
+  * feat: add cdef to unpack_variants (#95)
+  * 1.35.0
+  * feat: add unpack variants benchmark (#94)
+  * 1.34.0
+  * feat: add additional typing (#93)
+  * 1.33.0
+  * feat: improve performance of unmarshalling headers (#88)
+  * 1.32.0
+  * feat: speed up marshalling arrays (#87)
+  * 1.31.0
+  * feat: speed up marshalling variants (#86)
+  * 1.30.0
+  * feat: speed up aligning data during marshall (#85)
+  * 1.29.1
+  * fix: remove unused unmarshaller code (#83)
+  * 1.29.0
+  * feat: unpack header names as message kwargs (#82)
+  * 1.28.1
+  * fix: disconnect race in tests (#79)
+  * 1.28.0
+  * feat: speed up unmarshalling int16 types (#81)
+  * 1.27.0
+  * feat: cythonize headers in unmarshaller (#80)
+  * 1.26.0
+  * feat: add cython defs for Variant class (#74)
+  * fix: incorrect pxd typing for for _marshall (#75)
+  * 1.25.0
+  * feat: add cython extension for messages (#73)
+  * 1.24.0
+  * feat: add cython extension for signature (#72)
+  * 1.23.0
+  * feat: speed up unmarshall performance (#71)
+  * 1.22.0
+  * feat: speed up message bus matching (#70)
+  * 1.21.17
+  * fix: install python-semantic-release in wheel workflow (#68)
+  * 1.21.16
+  * fix: ensure we can get the latest version in the wheels build process (#67)
+  * 1.21.15
+  * fix: checkout main for wheels (#66)
+  * 1.21.14
+  * fix: use semantic-release to find the latest tag for wheels (#65)
+  * 1.21.13
+  * fix: build wheels from the sha saved after release (#64)
+  * 1.21.12
+  * fix: switch to on create instead of push (#63)
+  * 1.21.11
+  * fix: accept any tag to build wheels (#62)
+  * 1.21.10
+  * fix: github action tag matching (#61)
+  * 1.21.9
+  * fix: build wheels on tag instead (#60)
+  * 1.21.8
+  * fix: publish wheels when release happens (#59)
+  * 1.21.7
+  * fix: seperate wheels back out so it builds after (#58)
+  * 1.21.6
+  * fix: language_level warning when running cythonize (#57)
+  * 1.21.5
+  * fix: cython build of unpack (#56)
+  * 1.21.4
+  * fix: increase verbosity of wheel builds (#55)
+  * 1.21.3
+  * fix: make wheel build depend on release success (#54)
+  * 1.21.2
+  * fix: additional tweaks to publishing wheels (#53)
+  * 1.21.1
+  * fix: wheel builds on released (#52)
+  * 1.21.0
+  * feat: cythonize unpack_variants (#51)
+  * chore: add cibuildwheel action (#50)
+  * 1.20.0
+  * feat: add additional cython types to the unmarshaller (#45)
+  * fix: add missing closes to tests (#49)
+  * 1.19.0
+  * feat: add additional cython types to marshaller (#48)
+  * 1.18.0
+  * feat: add optional cython extension (#44)
+  * 1.17.0
+  * feat: improve unmarshaller performance (#43)
+  * 1.16.0
+  * feat: add benchmark for bluez properties messages (#42)
+  * 1.15.3
+  * fix: improve typing on proxy_object (#41)
+  * 1.15.2
+  * fix: more typing fixes (#40)
+  * 1.15.1
+  * fix: loosen async-timeout pin to 3.0.0 (#39)
+  * 1.15.0
+  * feat: use async_timeout instead of asyncio.wait_for (#38)
+  * use asyncio.run() in examples
+  * replace deprecated asyncio.get_event_loop()
+  * 1.14.0
+  * feat: speed up unmarshaller read_array (#37)
+  * 1.13.0
+  * feat: improve unmarshall performance (#35)
+  * 1.12.0
+  * feat: speed up unmarshall (#34)
+  * 1.11.0
+  * feat: speed up marshalling (#32)
+  * 1.10.0
+  * feat: improve writer performance with a deque (#30)
+  * 1.9.0
+  * feat: improve asyncio write performance (#29)
+  * 1.8.0
+  * feat: small speed ups to unmarshall message creation (#27)
+  * 1.7.0
+  * feat: handle kwargs in signal callback (#26)
+  * 1.6.0
+  * fix: disconnect connected buses at end of tests (#25)
+  * feat: add unpack variants option (#20)
+  * 1.5.1
+  * fix: marshall boolean correctly (#23)
+  * 1.5.0
+  * feat: allow varargs callback for signals (#22)
+  * chore: run gi tests in the CI (#21)
+
+-------------------------------------------------------------------
+Wed Sep 14 15:52:30 UTC 2022 - marec@detebe.org
+
+- Update to version 1.4.0:
+  * 1.4.0
+  * feat: improve unmarshalling performance (#18)
+  * 1.3.0
+  * feat: improve callback performance (#16)
+  * 1.2.0
+  * feat: improve Marshaller performance (#15)
+  * chore: add marshall benchmark (#14)
+  * 1.1.9
+  * fix: readme (#13)
+  * 1.1.8
+
+-------------------------------------------------------------------
+Wed Sep 14 15:47:38 UTC 2022 - marec <marec@detebe.org>
+
+- initial package build

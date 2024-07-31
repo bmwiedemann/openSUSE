@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jul 30 10:47:52 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add upstream 122680.patch for reproducible builds (boo#1062303)
+
+-------------------------------------------------------------------
 Mon Apr  8 10:39:33 UTC 2024 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - update .spec file to set FORCE_HOST_GO env variable,

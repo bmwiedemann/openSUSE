@@ -1,0 +1,5 @@
+<package name="aeon-check" project="openSUSE:Factory">
+  <title>Aeon Check and Repair Tool</title>
+  <description>Automatically checks and repairs Aeon installations on boot</description>
+  <devel project="devel:microos:aeon" package="aeon-check"/>
+</package>

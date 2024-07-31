@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jul 30 08:57:56 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.7.2:
+  * This release adds support for riscv, as provided by Mitchell Horne, as well a miscellaneous bug fixes and improvments
+- Enable building for all architectures
+
+-------------------------------------------------------------------
 Sun Jul  4 14:08:15 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 0.7.1

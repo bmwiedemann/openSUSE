@@ -204,4 +204,12 @@
 		* About a dozen minor memory leaks fixed</comment>
     <requestid>1170628</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>db741a3474cd12e2ff4becb5e53df62c</srcmd5>
+    <version>0.159</version>
+    <time>1722425389</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1190452</requestid>
+  </revision>
 </revisionlist>
