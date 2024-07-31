@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Jul 31 06:29:40 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 4.0.1:
+  * CHANGE: switch from PBKDF2 to Argon2id (#358).
+    This change is completely transparent to the end user, therefore no action is required.
+  * NEW: make Argon2id parameters configurable (#358)
+  * NEW: add support for importing plain Aegis txt
+  * FIX: various issues related to importing Aegis backups (#371)
+  * FIX: improving handling of json files (#369)
+  * FIX: parsing QR codes (#374)
+  * FIX: show db parameters dynamically
+  * FIX: add missing ui file to CMakeLists.txt
+
+-------------------------------------------------------------------
 Fri Jun 28 08:44:29 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 3.7.0:

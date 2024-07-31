@@ -450,4 +450,22 @@
 </comment>
     <requestid>1183834</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>7cee612f9fa15be4f123c8ae8e0200b9</srcmd5>
+    <version>4.0.1</version>
+    <time>1722425432</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.0.1:
+  * CHANGE: switch from PBKDF2 to Argon2id (#358).
+    This change is completely transparent to the end user, therefore no action is required.
+  * NEW: make Argon2id parameters configurable (#358)
+  * NEW: add support for importing plain Aegis txt
+  * FIX: various issues related to importing Aegis backups (#371)
+  * FIX: improving handling of json files (#369)
+  * FIX: parsing QR codes (#374)
+  * FIX: show db parameters dynamically
+  * FIX: add missing ui file to CMakeLists.txt
+</comment>
+    <requestid>1190587</requestid>
+  </revision>
 </revisionlist>
