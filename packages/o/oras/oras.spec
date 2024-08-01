@@ -1,7 +1,7 @@
 #
-# spec file for package trivy
+# spec file for package oras
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,41 +16,103 @@
 #
 
 
-%global git_commit 7079c468a06fb5815c99395eb4aaf46dd459d3fa
+%define __arch_install_post export NO_BRP_STRIP_DEBUG=true
+
 Name:           oras
-Version:        1.1.0
+Version:        1.2.0
 Release:        0
-Summary:        OCI registry client - managing content like artifacts, images, packages
+Summary:        OCI registry client - manage content like artifacts, images, packages
 License:        Apache-2.0
-Group:          System/Management
 URL:            https://github.com/oras-project/oras
-Source:         https://github.com/oras-project/oras/archive/refs/tags/v%{version}.tar.gz#/oras-%{version}.tar.gz
-Source1:        vendor.tar.zst
-BuildRequires:  golang(API) = 1.21
-BuildRequires:  golang-packaging
-BuildRequires:  zstd
+Source:         %{name}-%{version}.tar.gz
+Source1:        vendor.tar.gz
+BuildRequires:  go >= 1.22
 
 %description
-OCI registry client to manage registries which store container images and other artifacts
-for easy access.
-Distributing OCI artifacts means pushing them to these registries so others can
-pull them for use. ORAS helps with those tasks
+ORAS is the de facto tool for working with OCI Artifacts. It treats media types
+as a critical piece of the puzzle. Container images are never assumed to be the
+artifact in question. ORAS provides CLI and client libraries to distribute
+artifacts across OCI-compliant registries.
+
+%package -n %{name}-bash-completion
+Summary:        Bash Completion for %{name}
+Group:          System/Shells
+Requires:       %{name} = %{version}
+Requires:       bash-completion
+Supplements:    (%{name} and bash-completion)
+BuildArch:      noarch
+
+%description -n %{name}-bash-completion
+Bash command line completion support for %{name}.
+
+%package -n %{name}-fish-completion
+Summary:        Fish Completion for %{name}
+Group:          System/Shells
+Requires:       %{name} = %{version}
+Supplements:    (%{name} and fish)
+BuildArch:      noarch
+
+%description -n %{name}-fish-completion
+Fish command line completion support for %{name}.
+
+%package -n %{name}-zsh-completion
+Summary:        Zsh Completion for %{name}
+Group:          System/Shells
+Requires:       %{name} = %{version}
+Supplements:    (%{name} and zsh)
+BuildArch:      noarch
+
+%description -n %{name}-zsh-completion
+zsh command line completion support for %{name}.
 
 %prep
-%autosetup -p1 -a1
+%autosetup -p 1 -a 1
 
 %build
-CGO_ENABLED=0 go build -o oras -mod=vendor -buildmode=pie -trimpath \
-    -ldflags "-w -X oras.land/oras/internal/version.BuildMetadata=%{version} \
-             -X oras.land/internal/version.GitTreeState=clean \
-             -X oras.land/internal.version.GitCommit=%{git_commit}" cmd/oras/main.go
+COMMIT_HASH="$(sed -n 's/commit: \(.*\)/\1/p' %_sourcedir/%{name}.obsinfo)"
+
+go build \
+   -mod=vendor \
+   -buildmode=pie \
+   -ldflags=" \
+   -X oras.land/oras/internal/version.BuildMetadata= \
+   -X oras.land/oras/internal/version.gitCommit=v${COMMIT_HASH} \
+   -X oras.land/oras/internal/version.GitTreeState=clean" \
+   -o bin/%{name} oras.land/oras/cmd/oras
 
 %install
-install -D -m 755 oras %{buildroot}/%{_bindir}/%{name}
+# Install the binary.
+install -D -m 0755 bin/%{name} %{buildroot}/%{_bindir}/%{name}
+
+# create the bash completion file
+mkdir -p %{buildroot}%{_datarootdir}/bash-completion/completions/
+%{buildroot}/%{_bindir}/%{name} completion bash > %{buildroot}%{_datarootdir}/bash-completion/completions/%{name}
+
+# create the fish completion file
+mkdir -p %{buildroot}%{_datarootdir}/fish/vendor_completions.d/
+%{buildroot}/%{_bindir}/%{name} completion fish > %{buildroot}%{_datarootdir}/fish/vendor_completions.d/%{name}.fish
+
+# create the zsh completion file
+mkdir -p %{buildroot}%{_datarootdir}/zsh_completion.d/
+%{buildroot}/%{_bindir}/%{name} completion zsh > %{buildroot}%{_datarootdir}/zsh_completion.d/_%{name}
 
 %files
-%license LICENSE
 %doc README.md
+%license LICENSE
 %{_bindir}/%{name}
+
+%files -n %{name}-bash-completion
+%dir %{_datarootdir}/bash-completion/completions/
+%{_datarootdir}/bash-completion/completions/%{name}
+
+%files -n %{name}-fish-completion
+%dir %{_datarootdir}/fish
+%dir %{_datarootdir}/fish/vendor_completions.d
+%{_datarootdir}/fish/vendor_completions.d/%{name}.fish
+
+%files -n %{name}-zsh-completion
+%defattr(-,root,root)
+%dir %{_datarootdir}/zsh_completion.d/
+%{_datarootdir}/zsh_completion.d/_%{name}
 
 %changelog

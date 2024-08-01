@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Jul 11 10:58:16 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- add completion subpackages
+- Update to version 1.2.0:
+  * bump: tag and release ORAS CLI v1.2.0
+  * fix: remove call to deprecated print (#1392)
+  * doc: verify local files (#1386)
+  * chore: Remove deprecated PrintStatus method (#1389)
+  * build(deps): bump github.com/onsi/ginkgo/v2 from 2.18.0 to
+    2.19.0 in /test/e2e (#1390)
+  * build(deps): bump github.com/onsi/ginkgo/v2 from 2.17.3 to
+    2.18.0 in /test/e2e (#1388)
+  * refactor: Get rid of deprecated PrintStatus method (#1378)
+  * build(deps): bump actions/checkout from 3 to 4 (#1385)
+  * fix: oras cp documentation (#1384)
+  * fix: remove non-classic snap plugins (#1383)
+
+-------------------------------------------------------------------
 Mon Dec  4 08:35:16 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - Initial package (1.1.0)
