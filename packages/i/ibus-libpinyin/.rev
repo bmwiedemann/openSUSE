@@ -363,4 +363,12 @@
   * Fix bugs (forwarded request 1147941 from hillwood)</comment>
     <requestid>1147942</requestid>
   </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>b4dd9ed13b57a2d6940929d13c0f4d06</srcmd5>
+    <version>1.15.7</version>
+    <time>1722542737</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 1190923 from hillwood)</comment>
+    <requestid>1190924</requestid>
+  </revision>
 </revisionlist>

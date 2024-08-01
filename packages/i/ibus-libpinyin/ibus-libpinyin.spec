@@ -47,14 +47,20 @@ BuildRequires:  pkgconfig(lua)
 BuildRequires:  pkgconfig(json-glib-1.0)
 BuildRequires:  pkgconfig(libsoup-3.0)
 %endif
-%if 0%{?sle_version} >= 150600
+%if 0%{?suse_version} < 1600 && 0%{?sle_version} >= 150600
 BuildRequires:  python311-base
 Requires:       python311-base
-%else
+Requires:       python311-gobject-Gdk
+%endif
 %if 0%{?sle_version} < 150600 && 0%{?sle_version} >= 150000
 BuildRequires:  python310-base
 Requires:       python310-base
+Requires:       python310-gobject-Gdk
 %endif
+%if 0%{?suse_version} > 1500
+BuildRequires:  python3-base
+Requires:       python3-base
+Requires:       python3-gobject-Gdk
 %endif
 Provides:       locale(ibus:zh_CN;zh_SG)
 %{ibus_requires}
@@ -76,12 +82,14 @@ NOCONFIGURE=1 ./autogen.sh
 %if %{with_cloud_input}
            --enable-cloud-input-mode \
 %endif
-%if 0%{?sle_version}  >= 150600
+%if 0%{?suse_version} < 1600 && 0%{?sle_version} >= 150600
            PYTHON=python3.11
-%else
+%endif
 %if 0%{?sle_version} < 150600 && 0%{?sle_version} >= 150000
            PYTHON=python3.10
 %endif
+%if 0%{?suse_version} > 1500
+           PYTHON=python3
 %endif
 
 %make_build

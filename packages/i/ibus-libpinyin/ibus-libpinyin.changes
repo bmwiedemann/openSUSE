@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Aug  1 08:12:46 UTC 2024 - Hillwood Yang <hillwood@opensuse.org>
+
+- Fix boo#1228652
+  * Use default python3 version
+  * need python311-gobject-Gdk on Leap 15 and python3-gobject-Gdk on Tumbleweed
+
+-------------------------------------------------------------------
 Tue Feb 20 12:30:29 UTC 2024 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 1.15.7
