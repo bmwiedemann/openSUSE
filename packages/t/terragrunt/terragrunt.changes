@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Aug 01 11:20:35 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.64.5:
+  * Sorting output and fixing minor bugs in `hclvalidate` command
+    (#3309)
+  * fix: Adjusting docs for engines (#3306)
+
+-------------------------------------------------------------------
+Thu Aug 01 10:33:07 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.64.4:
+  * Fixing "dependency cycle between modules" when using
+    `hclvalidate` command with undefined `config_path` attribute
+    (#3305)
+
+-------------------------------------------------------------------
+Thu Aug 01 07:54:12 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.64.3:
+  * Engine verification (#3300)
+
+-------------------------------------------------------------------
 Tue Jul 30 06:39:19 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.64.2:
