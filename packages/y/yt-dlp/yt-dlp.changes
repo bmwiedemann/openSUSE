@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Aug  1 15:48:06 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2024.08.01
+  * youtube:
+  * Change default player clients to ios,tv
+  * Fix n function name extraction for player 20dfca59
+  * Fix age-verification workaround
+
+-------------------------------------------------------------------
 Thu Jul 25 04:08:59 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2024.07.25
