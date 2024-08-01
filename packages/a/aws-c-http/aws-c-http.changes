@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jul 31 09:20:59 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.8.5
+  * Update MacOS to arm64 by @waahm7 in (#476)
+  * Update stale issue bot permissions by @jmklix in (#478)
+  * Adapt change from "TLS deliver buffer data during shutdown"
+    by @TingDaoK in (#474)
+
+-------------------------------------------------------------------
 Mon Jul 15 10:50:26 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.8.4
