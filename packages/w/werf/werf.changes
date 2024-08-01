@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Aug 01 11:18:20 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.9.3:
+  * chore: release 2.9.3
+  * fix(build, buildah, dockerfile, staged): 'ADD / /app' not
+    working
+  * chore(release): 1.2 alpha, 2 alpha
+
+-------------------------------------------------------------------
+Thu Aug 01 11:14:42 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.9.2:
+  * chore: release 2.9.2
+  * fix(build, buildah, dockerfile, staged): fix handling of CMD
+    and ENTRYPOINT in exec format
+  * fix(build, buildah, dockerfile, staged): ensure setting
+    ENTRYPOINT correctly resets base image CMD
+  * test(e2e, build, dockerfile): test CMD and ENTRYPOINT handling
+  * chore(release): 1.2 ea,stable,rock-solid, 2 ea
+  * chore(channels): bump alpha, beta
+
+-------------------------------------------------------------------
 Sat Jul 27 08:05:31 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.9.1:
