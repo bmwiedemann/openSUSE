@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jul 30 19:37:33 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Botan 3.5.0, the latest stable release of the Botan 3 series
+  * TLS 1.3 supported
+  * large header cleanup compared to v2
+  * start support of Post Quantum Crypto
+  * removed: CAST-256, MISTY1, Kasumi, DESX, XTEA, PBKDF1, MCEIES,
+    CBC-MAC, Tiger, CECPQ1, and NewHope
+- The legacy Botan 2 series moved to Botan2 source package. It is
+  EOL at the end of 2024.
+
+-------------------------------------------------------------------
 Mon Jul 15 05:50:55 UTC 2024 - Angel Yankov <angel.yankov@suse.com>
 
 - Update to 2.19.5:

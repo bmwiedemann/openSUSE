@@ -663,4 +663,18 @@
     <comment></comment>
     <requestid>1187484</requestid>
   </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>f97a6f40f8a62bd242018a5b149786df</srcmd5>
+    <version>3.5.0</version>
+    <time>1722542738</time>
+    <user>dimstar_suse</user>
+    <comment>Bump 'Botan' src package to Botan3
+
+Botan 2 is EOL 2024. Moving this to the new version, so we can
+transition packages to depend on this instead of botan-2 before EOL
+hits.
+
+(🤖: Submission of Botan via https://src.opensuse.org/pool/Botan/pulls/6 by ayankov)</comment>
+    <requestid>1190919</requestid>
+  </revision>
 </revisionlist>

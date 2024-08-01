@@ -2,6 +2,7 @@
 # spec file for package Botan
 #
 # Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,11 +17,10 @@
 #
 
 
-%{!?make_build: %define make_build make %{?_smp_mflags}}
-%define version_suffix 2-19
-%define short_version 2
+%define version_suffix 3-5
+%define short_version 3
 Name:           Botan
-Version:        2.19.5
+Version:        3.5.0
 Release:        0
 Summary:        A C++ Crypto Library
 License:        BSD-2-Clause
@@ -31,7 +31,7 @@ Source1:        https://botan.randombit.net/releases/Botan-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
 Source3:        baselibs.conf
 BuildRequires:  bzip2 >= 1.0.2
-BuildRequires:  gcc-c++
+BuildRequires:  c++_compiler
 BuildRequires:  libbz2-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python3
@@ -39,6 +39,9 @@ BuildRequires:  trousers-devel
 BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(liblzma)
 BuildRequires:  pkgconfig(sqlite3)
+%if 0%{?suse_version} < 1600
+BuildRequires:  gcc12-c++
+%endif
 
 %description
 Botan is a C++ library that provides support for many common
@@ -89,11 +92,15 @@ BuildArch:      noarch
 Documentation of Botan package.
 
 %prep
-%setup -q -n Botan-%{version}
+%autosetup -n Botan-%{version}
 
 %build
 %define _lto_cflags %{nil}
 export RPM_OPT_FLAGS
+%if 0%{?suse_version} < 1600
+export CC=gcc-12
+export CXX=g++-12
+%endif
 python3 ./configure.py \
   --prefix=%{_prefix} \
   --bindir=%{_bindir} \
@@ -103,7 +110,6 @@ python3 ./configure.py \
   --with-bzip2 \
   --with-zlib \
   --with-lzma \
-  --with-openmp \
   --with-sqlite \
   --with-tpm \
 %ifarch %{ix86}
@@ -122,30 +128,36 @@ python3 ./configure.py \
 sed -i 's/env python/env python3/' src/scripts/install.py
 %make_install
 rm -f %{buildroot}/%{_libdir}/libbotan*.a
-chmod +x %{buildroot}%{python3_sitearch}/botan2.py
-sed -i '1s@^#!/.*@#!%{_bindir}/python3@' %{buildroot}%{python3_sitearch}/botan2.py
-
-rm %{buildroot}%{_bindir}/botan
+chmod +x %{buildroot}%{python3_sitearch}/botan3.py
+sed -i '1s@^#!/.*@#!%{_bindir}/python3@' %{buildroot}%{python3_sitearch}/botan3.py
 
 %check
 %make_build check
 
-%post -n libbotan-%{version_suffix} -p /sbin/ldconfig
-%postun -n libbotan-%{version_suffix} -p /sbin/ldconfig
+%ldconfig_scriptlets -n libbotan-%{version_suffix}
+
+%files
+%license license.txt
+%{_bindir}/botan
 
 %files doc
+%license license.txt
 %docdir %{botan_docdir}
 %{botan_docdir}
 
 %files -n libbotan-%{version_suffix}
+%license license.txt
 %{_libdir}/libbotan-%{short_version}.so.*
 
 %files -n libbotan-devel
+%license license.txt
 %{_libdir}/libbotan-%{short_version}.so
 %{_libdir}/pkgconfig/botan-%{short_version}.pc
 %{_includedir}/botan-%{short_version}
+%{_libdir}/cmake
 
 %files -n python3-botan
-%{python3_sitearch}/botan2.py
+%license license.txt
+%{python3_sitearch}/botan3.py
 
 %changelog
