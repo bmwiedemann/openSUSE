@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Aug 01 10:43:33 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.45.0:
+  * Go mod tidy
+  * fix: validate state parameter passed in OAuth2 login
+  * Address linter findings for stack save
+  * Add current timestamp to hashed data in stack save
+  * Rework stack save to make hashes without exec
+  * Fix command injection stack save, remove newline from hash gen
+
+-------------------------------------------------------------------
 Mon Jul 22 18:24:47 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.44.1 (1.44.0 was not released):
