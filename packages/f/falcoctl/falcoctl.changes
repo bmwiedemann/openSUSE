@@ -1,0 +1,155 @@
+-------------------------------------------------------------------
+Thu Aug 01 10:54:06 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.9.0:
+  * update(OWNERS): remove new line
+  * update(OWNERS): add loresuso to approvers
+  * chore(deps): Bump github.com/docker/docker
+  * chore(pkg): bump driverkit to 0.20.0
+  * chore(deps): Bump the actions group with 4 updates
+  * chore(deps): Bump goreleaser/goreleaser-action from 5.1.0 to
+    6.0.0
+  * update(.goreleaser): bump version to v2
+  * chore(deps): Bump slsa-framework/slsa-verifier in the actions
+    group
+  * chore(deps): Bump docker/build-push-action from 5.4.0 to 6.4.1
+  * fix(push): use basename for artifacts when compressed in tar.gz
+  * chore(Makefile): add .PHONY to falcoctl target
+  * Add support for S3 index storage backend
+  * fix: allow login to express registry as ref but actually
+    extract the registry
+  * chore(deps): Bump github.com/docker/cli
+  * chore(deps): Bump the actions group across 1 directory with 4
+    updates
+  * chore(deps): Bump google.golang.org/grpc from 1.64.0 to 1.64.1
+  * feat(dockerfile): use distroless image for falcoctl docker
+    image
+  * chore(go.mod): bump go version to 1.22.5
+  * chore(cmd/driver,pkg/driver): allow to disable kernel headers
+    automatic download.
+  * chore(deps): Bump google.golang.org/api from 0.185.0 to 0.186.0
+  * chore(deps): Bump github.com/hashicorp/go-retryablehttp
+  * chore(deps): Bump google.golang.org/api from 0.184.0 to 0.185.0
+  * chore(deps): Bump
+    github.com/Azure/azure-sdk-for-go/sdk/azidentity
+  * feat(auth/basic): extend auth basic command
+  * chore(deps): Bump the actions group with 2 updates
+  * chore(deps): Bump the gomod group with 4 updates
+  * chore(deps): Bump cloud.google.com/go/storage from 1.41.0 to
+    1.42.0
+  * chore(deps): Bump google.golang.org/api from 0.183.0 to 0.184.0
+  * chore(deps): Bump the gomod group with 2 updates
+  * chore(deps): Bump golang.org/x/net from 0.25.0 to 0.26.0
+  * chore(deps): Bump golang.org/x/term from 0.20.0 to 0.21.0
+  * chore(deps): Bump google.golang.org/api from 0.182.0 to 0.183.0
+  * chore(deps): Bump golang.org/x/sys from 0.20.0 to 0.21.0
+  * chore(deps): Bump the gomod group with 5 updates
+  * chore(deps): Bump docker/login-action in the actions group
+  * chore(deps): Bump google.golang.org/api from 0.181.0 to 0.182.0
+  * chore(deps): Bump github.com/spf13/viper from 1.18.2 to 1.19.0
+  * chore(deps): Bump github.com/onsi/ginkgo/v2 from 2.17.3 to
+    2.19.0
+
+-------------------------------------------------------------------
+Sat Jun 01 09:13:58 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.8.0:
+  * add dependabot config and update golangci-lint by @cpanato in
+    #385
+  * chore(cmd): fixed up some strings. by @FedeDP in #407
+  * fix: fixed go.sum entry to fix build. by @FedeDP in #415
+  * feat: adding support for KMS in cosign by @brennoo in #416
+  * fix: Dead link in PR template by @krnowak in #424
+  * pkg/driver/flatcar: Update the script by @krnowak in #425
+  * fix(pkg/driver): fixed generic kernelversion fixup method. by
+    @FedeDP in #427
+  * new(cmd/driver): support user provided headers option for
+    driver download by @toamto94 in #428
+  * fix(pusher): correctly report artifact type by @alacuku in #442
+  * Remove extra '$' character. by @thejefflarson in #458
+  * feat(cmd/push): parse requirements and deps from rulesfile by
+    @alacuku in #467
+  * update(cmd): bumped oras to v.2.4.0. by @FedeDP in #478
+  * fix(registry/push): correctly remove temporary dir by @alacuku
+    in #479
+  * update(tests/push): add new tests for push command by @alacuku
+    in #486
+  * new: driver selection logic by @FedeDP in #484
+  * new(pkg/driver): try to fetch kernel headers leveraging
+    driverkit library when building drivers by @FedeDP in #476
+  * chore(cmd,pkg,internal): switch to use oras-go credentials
+    package since oras-go-credentials is deprecated by @FedeDP in
+    #496
+  * chore(cmd/push): uniform receiver for push command by @alacuku
+    in #498
+  * fix(pkg/driver): fixup kernel headers download by @FedeDP in
+    #499
+  * fix(artifact/info): filter out signature tags by @alacuku in
+    #507
+  * vote: docs(OWNERS): add alacuku (Aldo Lacuku) to approvers by
+    @alacuku in #497
+  * cleanup(cmd/driver): drop preview tag. by @FedeDP in #506
+  * fix(install): fix missing dependency signature verification by
+    @LucaGuerra in #509
+  * chore(cmd): dropped leftover experimental for driver-loader. by
+    @FedeDP in #515
+  * fix: Add backend 'https' to default index by @QJoly in #520
+  * chore(internal): old ebpf probe must have lowest priority. by
+    @FedeDP in #521
+  * fix(pkg/driver): avoid source of crash during distro Discovery.
+    by @FedeDP in #530
+  * chore(build): bump go version to 1.22 by @alacuku in #533
+  * add new boolean arg for 'registry push' --add-floating-tags, it
+    will auto add the tags for the major and the minor versions by
+    @Issif in #543
+  * cleanup(cmd,pkg): moved enum to its own package. by @FedeDP in
+    #550
+  * new(pkg): use driverkit local build processor instead of
+    implementing drivers build by @FedeDP in #356
+  * fix(pkg/driver): create envmap if nil since driverkit expects
+    it. by @FedeDP in #551
+  * chore(cmd/driver): remove redundant log. by @FedeDP in #552
+  * chore: updated driverkit to v0.19.2 by @FedeDP in #553
+  * chore(deps): Bump google.golang.org/api from 0.178.0 to 0.180.0
+    by @dependabot in #559
+  * chore(deps): Bump the gomod group with 3 updates by @dependabot
+    in #558
+  * feat: Add --platform option to artifact/install by @kpaulisse
+    in #554
+  * chore(deps): Bump the actions group with 2 updates by
+    @dependabot in #556
+  * chore(deps): Bump golangci/golangci-lint-action from 5.3.0
+    to 6.0.1 by @dependabot in #557
+  * feat: Add file backend to fetcher by @kpaulisse in #555
+  * new(cmd/driver): driver config namespace from env variable by
+    @FedeDP in #560
+
+-------------------------------------------------------------------
+Sat Feb 24 09:20:18 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.7.3:
+  * fix(CI): add permissions to login-to-amazon-ecr job
+  * new(ci): add provenance for main tag
+  * fix(CI): properly get credentials for amazon ecr registry
+  * new(CI): add provenance for ecr image
+  * fix(ci): add permissions for AWS ecr
+  * new(CI): add ecr repository
+
+-------------------------------------------------------------------
+Mon Feb 12 19:53:46 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.7.2:
+  * bumped helper message
+  * added http-header option in driver download
+  * chore(pkg/driver): ubuntu has its own specific FixupKernel
+    logic now.
+  * fix(pkg/driver): fixed generic kernelversion fixup method.
+  * pkg/driver/flatcar: Update the script
+  * fix: Dead link in PR template
+  * chore(cmd): fixed up some strings.
+
+-------------------------------------------------------------------
+Fri Feb  2 09:00:56 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- new package falcoctl: CLI for the Falco Cloud Native Runtime
+  Security solution

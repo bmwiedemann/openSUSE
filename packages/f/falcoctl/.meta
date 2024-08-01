@@ -1,0 +1,6 @@
+<package name="falcoctl" project="openSUSE:Factory">
+  <title>CLI for the Falco Cloud Native Runtime Security</title>
+  <description>The official CLI tool for working with [Falco](https://github.com/falcosecurity/falco) and its ecosystem components.</description>
+  <devel project="security" package="falcoctl"/>
+  <url>https://github.com/falcosecurity/falcoctl</url>
+</package>
