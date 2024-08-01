@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Aug 01 10:54:55 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 3.10.0:
+  * INSIGHTS-229 Fix nova vulnerability CVE-2024-41110 (#328)
+  * docs: update documentation from template (#322)
+  * Managed by Terraform
+
+-------------------------------------------------------------------
 Wed May 08 10:34:45 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 3.9.0:
