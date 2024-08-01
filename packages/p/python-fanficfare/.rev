@@ -1431,4 +1431,20 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1186281</requestid>
   </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>76d2bc89d9a62581c9fc0515e9399af0</srcmd5>
+    <version>4.37.0</version>
+    <time>1722542768</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.37.0:
+  - Fix for paginated AO3 series, closes #1091
+  - Allow scribblehub.com story URLs w/o title and search calibre w/o title
+  - Use titlepage_entry for titlepage_wide_entry unless explicitly set.
+  - adapter_storiesonlinenet: Fix for chapter select getting cover image link.
+  - adapter_storiesonlinenet: Remove ''s Page' to '.s Page'
+  - Full OTW settings for www.adastrafanfic.com in defaults.ini
+  - Update translations
+</comment>
+    <requestid>1191025</requestid>
+  </revision>
 </revisionlist>
