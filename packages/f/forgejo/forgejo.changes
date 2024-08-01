@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Thu Aug  1 10:50:53 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 7.0.6:
+  * Two frontend features were removed because a license
+    incompatibility was discovered. Read more in the companion blog
+    post.
+    - PR (backported from): Mermaid rendering: %%{init:
+      {"flowchart": {"defaultRenderer": "elk"}} }%% will now fail
+      because ELK is no longer included.
+    - PR (backported from): Repository citation: Removed the
+      ability to export citations in APA format.
+  * User Interface bug fixes
+    - PR (backported from): Replace vue-bar-graph with chart.js
+    - PR (backported from): Show AGit label on merged PR
+    - PR (backported from): Fix mobile UI for organisation creation
+  * Bug fixes
+    - PR (backported from): fix(api): issue state change is not
+      idempotent
+    - PR (backported from): Reserve the devtest username
+    - PR (backported from): fix(actions): no edited event triggered
+      when a title is changed
+    - PR (backported from): Load attachments for
+      /issues/comments/{id}
+    - PR (backported from): When searching for users, page the
+      results by default, and respect the default paging limits
+    - PR (backported from): the "View command line instructions"
+      link in pull requests and the "Copy content" button in file
+      editor are not accessible
+    - PR (backported from): Use correct SHA in GetCommitPullRequest
+  * Localization
+    - PR (backported from): Update of translations from Weblate
+    - PR: Update of translations from Weblate
+    - PR (backported from): 3 translation updates from Weblate - PR
+      1, PR 2, PR 3
+
+-------------------------------------------------------------------
 Mon Jul 15 06:28:18 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - fix typo Environemnt in forgejo.service
