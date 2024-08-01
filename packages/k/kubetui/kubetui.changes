@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Wed Jul 24 14:05:30 UTC 2024 - ekr59uv25@gmail.com
+
+- Update to version 1.5.3:
+  * fix(deps): update rust crate kube to 0.93.0
+  * chore(deps): update rust crate mockall to 0.13.0
+  * chore(deps): lock file maintenance
+  * fix(deps): update rust crate thiserror to v1.0.63
+  * chore(deps): update rust crate tokio to v1.38.1
+  * fix(deps): update rust crate bytes to v1.6.1
+  * fix(deps): update rust crate thiserror to v1.0.62
+  * fix(deps): update rust crate clap to v4.5.9
+  * fix(deps): update rust crate async-trait to v0.1.81
+  * docs: Add keybinding for toggling split layout direction
+  * feat(ui): Add support for toggling split layout direction
+  * fix(deps): update rust crate serde to v1.0.204
+  * fix(deps): update rust crate serde_json to v1.0.120
+  * fix(kube/log): prevent removal of leading spaces in container logs
+  * fix(deps): update rust crate serde_json to v1.0.119
+  * chore(render): add error logging in window action
+  * refactor(kube/store): clippy needless borrow
+  * refactor(kube/secret): replaced with the `?` operator
+  * chore(ui): suppress warnings for unused code in widget.rs
+  * chore(apis): allow dead code in kube apis module
+  * refactor(related_resources): simplify related resource structs
+  * refactor(v1_table): replace ToString with Display for Value
+  * fix(deps): update rust crate clap to v4.5.8
+  * fix(deps): update rust crate log to v0.4.22
+  * chore(deps): lock file maintenance
+  * fix(ui): Simplify generate_spans_line generation and tests
+  * fix(ui): Update crossterm usage to ratatui's crossterm
+  * fix(deps): update rust crate ratatui to 0.27.0
+  * fix(deps): update rust crate serde_json to v1.0.118
+  * fix(deps): update rust crate strum to v0.26.3
+  * fix(deps): update rust crate kube to v0.92.1
+  * chore(deps): lock file maintenance
+  * chore(deps): update actions/checkout digest to 692973e
+  * fix(deps): update rust crate kube to 0.92.0
+  * fix(deps): update rust crate clap to v4.5.7
+  * fix(deps): update all dependencies
+  * chore(deps): lock file maintenance
+  * fix(deps): update rust crate clap to v4.5.6
+  * fix(deps): update rust crate clap to v4.5.5
+  * fix(deps): update rust crate unicode-width to v0.1.13
+  * test(network): fix kube network description tests
+  * chore(deps): update rust crate rstest to 0.21.0
+  * chore(deps): update rust crate tokio to v1.38.0
+  * chore(deps): update rust crate rstest to 0.20.0
+  * fix(deps): update rust crate serde to v1.0.203
+  * chore(deps): lock file maintenance
+  * fix(deps): update rust crate ratatui to v0.26.3
+  * chore(deps): update actions/checkout digest to a5ac7e5
+  * docs: add Chocolatey installation note
+  * fix(deps): update rust crate anyhow to v1.0.86
+  * fix(deps): update rust crate anyhow to v1.0.85
+  * fix(deps): update rust crate thiserror to v1.0.61
+
+-------------------------------------------------------------------
 Thu May 16 14:19:52 UTC 2024 - ekr59uv25@gmail.com
 
 - Update to version 1.5.2:
