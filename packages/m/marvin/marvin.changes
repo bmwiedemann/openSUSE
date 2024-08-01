@@ -1,0 +1,53 @@
+-------------------------------------------------------------------
+Thu Aug 01 07:53:28 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.2.5 (0.2.4 tag was messed up apparently):
+  * fix: update Go version in Dockerfile (#64)
+  * UD-1648: update tags to define floating tag in addition to
+    version
+  * bump Go version and k8s.io dependencies (#49)
+  * add .github/dependabot.yml (#42)
+  * run apk upgrade in Dockerfile (#43)
+  * bump k8s.io dependencies from v0.29.2 to v0.29.3 (#41)
+
+-------------------------------------------------------------------
+Thu Apr 18 07:28:09 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- do not strip aka remove -s -w ldflags
+
+-------------------------------------------------------------------
+Tue Mar 19 06:49:01 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.2.3:
+  * fix: handle compile errors (#40)
+
+-------------------------------------------------------------------
+Fri Mar 15 21:31:43 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.2.2:
+  * Bump dependencies and Go version (#36)
+  * Fix M-112 and use CEL optional values and variables in built-in
+    checks (#39)
+  * Check non-zero runAsUser in M-113 (#38)
+  * Add CEL variables support (#37)
+  * bump alpine base image to 3.19.1 (#35)
+  * create MAINTAINERS.md (#34)
+
+-------------------------------------------------------------------
+Wed Jan 31 19:40:27 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.2.1:
+  * bump k8s.io dependencies and update README.md (#33)
+  * check for restartPolicy (#30)
+  * checks for sudo in entrypoint & registry deprecated (#28)
+  * Add new check for workload in namespace default (#25) (#26)
+  * ci: bump github actions (#23)
+  * Fix: CVEs on marvin container (#22)
+  * docs: add RBAC section in README.md (#19)
+  * Add CEL Playground link in README.md (#18)
+
+-------------------------------------------------------------------
+Wed Oct 25 08:54:20 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- new package marvin: Scans a k8s cluster to report potential
+  issues, misconfigurations and vulnerabilities
