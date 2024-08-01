@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jul 31 09:10:10 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.7.23
+  * Ecforce ECS Credentials Provider IP Rules by @waahm7 in (#238)
+  * clang-format 18 by @graebm in (#242)
+  * Update MacOS to arm64 by @waahm7 in (#243)
+  * Support "external_id" in config file,
+    for STS AssumeRole by @graebm in (#244)
+
+-------------------------------------------------------------------
 Thu Jun 13 12:32:10 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.7.22
