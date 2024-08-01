@@ -19,16 +19,16 @@
 # avoid taskgroup backports
 %define skip_python310 1
 Name:           python-hypercorn
-Version:        0.16.0
+Version:        0.17.3
 Release:        0
 Summary:        A ASGI Server based on Hyper libraries and inspired by Gunicorn
 License:        MIT
 URL:            https://github.com/pgjones/hypercorn/
 Source:         https://github.com/pgjones/hypercorn/archive/refs/tags/%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.8}
-BuildRequires:  %{python_module exceptiongroup >= 1.1.0}
 BuildRequires:  %{python_module h11}
 BuildRequires:  %{python_module h2 >= 3.1.0}
+BuildRequires:  %{python_module httpx}
 BuildRequires:  %{python_module hypothesis}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry-core >= 1}
@@ -40,7 +40,6 @@ BuildRequires:  %{python_module trio >= 0.22.0}
 BuildRequires:  %{python_module wsproto >= 0.14.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-exceptiongroup >= 1.1.0
 Requires:       python-h11
 Requires:       python-h2 >= 3.1.0
 Requires:       python-priority

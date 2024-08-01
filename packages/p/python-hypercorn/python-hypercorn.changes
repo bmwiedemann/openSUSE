@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Wed Jul 31 14:12:37 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.17.3
+  * Restore set TCP_NODELAY on TCP sockets
+  * Support uvloop >= 0.18 and the loop_factory argument
+  * Bugfix ensure ExceptionGroup lifespan failures crash the server.
+- from version 0.17.2
+  * Bugfix pass the correct quic connection to the H3 Protocol.
+- from version 0.17.1
+  * Bugfix revert set TCP_NODELAY on sockets.
+- from version 0.17.0
+  * Set TCP_NODELAY on sockets.
+  * Support sending trailing headers on h2/h3.
+  * Add support for lifespan state.
+  * Allow sending of the response before body data arrives.
+  * Bugfix properly set host header to ascii string in
+    ProxyFixMiddleware.
+  * Bugfix encode headers using latin-1.
+  * Bugfix don't double-access log if the response was sent.
+  * Bugfix a statsd logging bug.
+  * Bugfix handle already-closed on StreamEnded.
+  * Bugfix send a 400 response if data is received before the websocket
+    is accepted.
+  * Bugfix ensure only a single QUIC timer task per connection.
+  * Bugfix ensure responses are sent with empty bodies for WSGI.
+- Update BuildRequires and Requires from pyproject.toml
+
+-------------------------------------------------------------------
 Tue Apr  2 02:07:15 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Reflow spec file.
