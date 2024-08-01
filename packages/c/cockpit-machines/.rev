@@ -167,4 +167,41 @@
     <comment></comment>
     <requestid>1163979</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>f0165e590a9c1738fb8a823d594a2b2b</srcmd5>
+    <version>316</version>
+    <time>1722542744</time>
+    <user>dimstar_suse</user>
+    <comment>- update_version.sh: add script for auto-updates
+- switch to upstream package-lock.json
+- do not run scripts during npm install
+- switch to source package instead of precombined upstream release
+
+- Update to 316:
+    * Bug fixes and performance improvements
+- Changes from 315:
+    * Translation updates and bug fixes
+- Changes from 314:
+    * Fix translation extraction
+    * Translation updates
+- Changes from 313:
+    * Updates to translations
+- Changes from 312:
+    * Bug fixes and performance improvements
+- Changes from 311:
+    * Allow pasting multiple SSH keys at once in Create VM dialog
+    * Fix detaching host device for running VMs
+- Changes from 310:
+    * Bug fixes and performance improvements
+- Changes from 309:
+    * bug fixes and performance improvements
+- Changes from 308:
+    * Add TPM when switching to EFI
+    * Translation updates
+    * Only use external snapshots for disks of type &quot;file&quot;
+    * Skip empty media drives for external snapshots
+    * Refresh VM after creating/reverting/deleting snapshots
+    * Don't list disks in snapshot XML</comment>
+    <requestid>1190946</requestid>
+  </revision>
 </revisionlist>

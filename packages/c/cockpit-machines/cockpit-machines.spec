@@ -17,16 +17,15 @@
 
 
 Name:           cockpit-machines
-Version:        307
+Version:        316
 Release:        0
 Summary:        Cockpit user interface for virtual machines
 License:        LGPL-2.1-or-later AND MIT
 URL:            https://github.com/cockpit-project/cockpit-machines
-# source_validator insists that if obscpio has no version then
-# tarball must neither
 Source:         https://github.com/cockpit-project/cockpit-machines/archive/refs/tags/%{version}.tar.gz#/cockpit-machines-%{version}.tar.gz
 Source10:       package-lock.json
 Source11:       node_modules.spec.inc
+Source12:       update_version.sh
 %include %_sourcedir/node_modules.spec.inc
 Patch10:        hide-docs.patch
 Patch11:        load-css-overrides.patch
@@ -58,8 +57,7 @@ If "virt-install" is installed, you can also create new virtual machines.
 
 %prep
 %autosetup -p1
-rm -f package-lock.json
-local-npm-registry %{_sourcedir} install --with=dev --legacy-peer-deps || ( find ~/.npm/_logs -name '*-debug.log' -print0 | xargs -0 cat; false)
+local-npm-registry %{_sourcedir} install --include=dev --ignore-scripts || ( find ~/.npm/_logs -name '*-debug.log' -print0 | xargs -0 cat; false)
 
 %build
 export PREFIX=%_prefix

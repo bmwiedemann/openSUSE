@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Wed Jul 31 12:39:14 UTC 2024 - Adam Majer <adam.majer@suse.de>
+
+- update_version.sh: add script for auto-updates
+- switch to upstream package-lock.json
+- do not run scripts during npm install
+- switch to source package instead of precombined upstream release
+
+-------------------------------------------------------------------
+Mon Jul 15 08:29:29 UTC 2024 - Luna D Dragon <luna.dragon@suse.com>
+
+- Update to 316:
+    * Bug fixes and performance improvements
+- Changes from 315:
+    * Translation updates and bug fixes
+- Changes from 314:
+    * Fix translation extraction
+    * Translation updates
+- Changes from 313:
+    * Updates to translations
+- Changes from 312:
+    * Bug fixes and performance improvements
+- Changes from 311:
+    * Allow pasting multiple SSH keys at once in Create VM dialog
+    * Fix detaching host device for running VMs
+- Changes from 310:
+    * Bug fixes and performance improvements
+- Changes from 309:
+    * bug fixes and performance improvements
+- Changes from 308:
+    * Add TPM when switching to EFI
+    * Translation updates
+    * Only use external snapshots for disks of type "file"
+    * Skip empty media drives for external snapshots
+    * Refresh VM after creating/reverting/deleting snapshots
+    * Don't list disks in snapshot XML
+    * Fix detaching host devices for running VMs
+
+-------------------------------------------------------------------
 Sun Feb 18 10:52:15 UTC 2024 - ecsos <ecsos@opensuse.org>
 
 - Update to 307:
