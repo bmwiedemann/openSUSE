@@ -1977,4 +1977,18 @@
     <time>1716981405</time>
     <user>dimstar_suse</user>
   </revision>
+  <revision rev="249" vrev="249">
+    <srcmd5>f5ef665d5f142a6cf7bccd74f0233f84</srcmd5>
+    <version>unknown</version>
+    <time>1722520821</time>
+    <user>dimstar_suse</user>
+    <comment>- Force remove zypp-NameReqPrv - statically linked, large binary;
+  only needed for zypp solver test cases.</comment>
+  </revision>
+  <revision rev="250" vrev="250">
+    <srcmd5>c91c56b417f8676e52a619fa8496fb58</srcmd5>
+    <version>unknown</version>
+    <time>1722521728</time>
+    <user>dimstar_suse</user>
+  </revision>
 </revisionlist>

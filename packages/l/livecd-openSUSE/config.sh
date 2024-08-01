@@ -124,6 +124,9 @@ zypper --non-interactive rm yast2-trans-{uk,sv,ru,ja,da,cs,sr,vi} || :
 # Some packages really exaggerate here
 rm -rf /usr/share/doc/packages/*
 
+# zypp solver test cases are not that common on Lives - save some MB
+rm -rf /usr/bin/zypp-*
+
 # Save more than 150 MiB by removing this, not very useful for lives
 rm -rf /lib/firmware/{liquidio,netronome,qed,mrvl,mellanox,cypress,dpaa2,bnx2x,cxgb4,intel/vsc}
 if [ "$(arch)" == "aarch64" ]; then
