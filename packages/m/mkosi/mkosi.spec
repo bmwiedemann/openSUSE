@@ -19,13 +19,14 @@
 %define pythons python3
 
 Name:           mkosi
-Version:        23.1
+Version:        24.3
 Release:        0
 Summary:        Build bespoke OS Images
 License:        LGPL-2.1-or-later
 Group:          System/Management
 URL:            https://github.com/systemd/mkosi
 Source:         https://github.com/systemd/mkosi/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source1:        mkosi-initrd.conf
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module wheel}
@@ -37,6 +38,7 @@ Requires:       bubblewrap
 Requires:       python3 >= 3.9
 Requires:       zypper
 Recommends:     btrfsprogs
+Recommends:     cpio
 Recommends:     dosfstools
 Recommends:     dpkg
 Recommends:     edk2-ovmf
@@ -61,12 +63,24 @@ logs and coredumps, and also serve an image over HTTP.
 
 See https://mkosi.systemd.io/ for documentation.
 
+%package initrd
+Summary:        Build initrds locally using mkosi
+Requires:       %{name} = %{version}-%{release}
+Requires:       coreutils
+
+%description initrd
+This package provides the mkosi-initrd wrapper and a plugin for kernel-install
+to build initrds with mkosi locally. After the package is installed, the plugin
+can be enabled by writing 'initrd_generator=mkosi-initrd' to
+'/etc/kernel/install.conf'.
+
 %prep
 %autosetup -p1
 
 %build
 tools/make-man-page.sh
 %pyproject_wheel
+sed -i '1s/^#!\/usr\/bin\/env /#!\/usr\/bin\//' kernel-install/50-mkosi.install
 
 %install
 %pyproject_install
@@ -74,6 +88,26 @@ tools/make-man-page.sh
 
 mkdir -p %{buildroot}%{_mandir}/man1
 cp %{buildroot}%{python3_sitelib}/mkosi/resources/mkosi.1* %{buildroot}%{_mandir}/man1/
+cp %{buildroot}%{python3_sitelib}/mkosi/initrd/resources/mkosi-initrd.1* %{buildroot}%{_mandir}/man1/
+
+# Install the kernel-install plugin
+install -Dt %{buildroot}%{_prefix}/lib/kernel/install.d/ \
+         kernel-install/50-mkosi.install
+mkdir -p %{buildroot}%{_prefix}/lib/mkosi-initrd
+install -m 644 %{SOURCE1} %{buildroot}%{_prefix}/lib/mkosi-initrd/mkosi.conf
+mkdir -p %{buildroot}%{_sysconfdir}/mkosi-initrd
+
+%post initrd
+if [ ! -e %{_sysconfdir}/mkosi-initrd/mkosi.conf ]; then
+    cat >> %{_sysconfdir}/mkosi-initrd/mkosi.conf<<EOF
+# Write here your own configuration.
+# See man mkosi(1) for details.
+[Content]
+#ExtraTrees=
+#KernelModulesInclude=
+#KernelModulesExclude=
+EOF
+fi
 
 %check
 %pytest
@@ -85,5 +119,15 @@ cp %{buildroot}%{python3_sitelib}/mkosi/resources/mkosi.1* %{buildroot}%{_mandir
 %{_mandir}/man1/mkosi.1*
 %{python3_sitelib}/mkosi
 %{python3_sitelib}/mkosi-%{version}.dist-info
+
+%files initrd
+%{_bindir}/mkosi-initrd
+%{_mandir}/man1/mkosi-initrd.1*
+%dir %{_prefix}/lib/kernel
+%dir %{_prefix}/lib/kernel/install.d
+%{_prefix}/lib/kernel/install.d/50-mkosi.install
+%dir %{_prefix}/lib/mkosi-initrd
+%{_prefix}/lib/mkosi-initrd/mkosi.conf
+%dir %{_sysconfdir}/mkosi-initrd
 
 %changelog

@@ -1,4 +1,95 @@
 -------------------------------------------------------------------
+Thu Aug  1 13:29:36 UTC 2024 - Sebastian Wagner <sebix@sebix.at>
+
+- remove env-shebang from /usr/lib/kernel/install.d/50-mkosi.install
+
+-------------------------------------------------------------------
+Tue Jul 30 12:16:44 UTC 2024 - Antonio Feijoo <antonio.feijoo@suse.com>
+
+- Create new subpackage mkosi-initrd
+- Add file %{_prefix}/lib/mkosi-initrd/mkosi.conf
+
+-------------------------------------------------------------------
+Sun Jul 28 21:38:24 UTC 2024 - Fredrik Lönnegren <fredrik.lonnegren@suse.com>
+
+- Update to 24.3:
+  * Check for $HOME environment variable as well.
+
+- Update to 24.2:
+  * Look for $USER for the username before reading /etc/passwd
+
+- Update to 24.1:
+  * completion: fix bash completion script
+  * Add some documentation on how to implement a new distribution
+  * Add missing init.py to mkosi/initrd/resources
+  * Handle dangling symlinks in rmtree() and run_clean()
+  * Handle failure to detect the distribution in test_parse_config()
+
+- Update to 24:
+  * The default kernel command line of console=ttyS0 (or equivalent for
+    other architectures) has been removed. The required console=
+    argument to have the kernel output to the serial console has to be
+    added manually from v24 onwards.
+  * Support for installing local packages located in directories in
+    BuildSources= was dropped. Instead, the packages can be made
+    available for installation via PackageManagerTrees=.
+  * Configuration parsing was reworked to remove the need for the @
+    specifier and to streamline building multiple images with
+    mkosi.images/. If you were building multiple images with
+    mkosi.images/, you'll need to adapt your configuration to the
+    rework. Read the Building multiple images section in the
+    documentation for more information.
+  * mkosi has gained the option to generate completion scripts for bash,
+    fish and zsh. Packagers should generate the scripts during packaging
+    and ship them in the appropriate places.
+  * Added support for CentOS Stream 10.
+  * mkosi now installs a separate mkosi-initrd script that can be used
+    to build initramfs images intended for use on the local system.
+  * We do not automatically append centos-stream or fedora anymore to
+    CentOS (and derivatives) and Fedora mirrors specified with Mirror=
+    as not all mirrors store the repository metadata under these
+    subdirectories. Users are now required to add these subdirectories
+    themselves in Mirror=. If the EPEL repositories are enabled for
+    CentOS Stream (and derivatives) and Mirror= is used, we look for the
+    EPEL repositories in ../fedora relative to the mirror specified in
+    Mirror=.
+  * We now support compressed tar archives wherever we already accept tar
+    archives as input.
+  * We now always rerun the build if Format=none and don't remove
+    previous outputs in that case (unless --force is specified). This
+    allows using mkosi -t none to rerun the build scripts without
+    removing the previous image. This can then be combined with
+    RuntimeBuildSources=yes to make the build script outputs available
+    in a booted container or virtual machine so they can be installed
+    without having to rebuild the image.
+  * We now use virtconsole to provide the serial console when booting
+    with qemu.
+  * root=PARTUUID and mount.usr=PARTUUID on the kernel command line
+    are now automatically extended with the actual PARTUUID of the
+    corresponding partition.
+  * All available OpenSUSE repositories are now supported and can be
+    enabled with Repositories=.
+  * Building OpenSUSE aarch64 images is now supported
+  * mkosi dependencies was beefed up to handle more scenarios properly
+  * The default list of kernel modules that are always added to the
+    initramfs was extended with various virtualization modules.
+  * Added a Repositories= match.
+  * Cached images are now invalidated if packages specified via
+    PackageDirectories= change.
+  * Added VolatilePackageDirectories= which can be used to provide local
+    packages that do not invalidate cached images.
+  * mkosi.pkgmngr is now used as the default path for
+    PackageManagerTrees=.
+  * The package directory that build scripts can use to make built
+    packages available for installation ($PACKAGEDIR) is now shared
+    between all image builds. This means that packages built in earlier
+    images and stored in $PACKAGEDIR become available for installation
+    in all subsequent image builds.
+  * The default tools tree distribution is now chosen based on the host
+    distribution instead of the target distribution.
+  * mkosi can now be invoked from the initramfs.
+
+-------------------------------------------------------------------
 Thu Jun 13 09:23:17 UTC 2024 - Antonio Feijoo <antonio.feijoo@suse.com>
 
 - Update package summary and description.
@@ -778,7 +869,7 @@ Sat Dec  3 22:08:17 UTC 2022 - Dirk Müller <dmueller@suse.com>
     actual directory owner on the host.
 
 -------------------------------------------------------------------
-Mon Sep 26 06:08:52 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Mon Sep 26 06:08:52 UTC 2022 - Sebastian Wagner <sebix@sebix.at>
 
 - update to version 13:
   - The `--network-veth` option has been renamed to `--netdev`. The old name made
@@ -835,13 +926,13 @@ Fri Dec  3 14:55:35 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 - Enable build on aarch64
 
 -------------------------------------------------------------------
-Fri Dec  3 06:59:38 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Fri Dec  3 06:59:38 UTC 2021 - Sebastian Wagner <sebix@sebix.at>
 
 - update to version 12:
   - Fix handling of baselayout in Gentoo installations.
 
 -------------------------------------------------------------------
-Thu Nov 25 20:29:17 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Thu Nov 25 20:29:17 UTC 2021 - Sebastian Wagner <sebix@sebix.at>
 
 - update to version 11:
   - Support for Rocky Linux, Alma Linux, and Gentoo has been added!
@@ -905,14 +996,14 @@ Fri Jan  3 09:36:40 UTC 2020 - Sven Marquardt <dev@mail.smarquardt.space>
  * merged upstream
 
 -------------------------------------------------------------------
-Mon Feb 12 19:22:30 UTC 2018 - sebix+novell.com@sebix.at
+Mon Feb 12 19:22:30 UTC 2018 - sebix@sebix.at
 
 - update to version 4
  * no changelog available
  * removed 109.patch, merged upstream
 
 -------------------------------------------------------------------
-Thu Jun 29 16:20:46 UTC 2017 - sebix+novell.com@sebix.at
+Thu Jun 29 16:20:46 UTC 2017 - sebix@sebix.at
 
 - initial package
 - Add 109.patch from pull request at upstream repository, workaround for boo#1049997 and missing support for https URLs in mkosi/zypper
