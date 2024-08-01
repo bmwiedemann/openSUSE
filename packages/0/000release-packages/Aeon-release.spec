@@ -1,5 +1,5 @@
 #
-# spec file for package openSUSE-Aeon-release.spec
+# spec file for package Aeon-release.spec
 #
 # Copyright (c) 2020 SUSE LLC
 #
@@ -17,9 +17,9 @@
 
 
 Name:           Aeon-release
-Version:        20240731
+Version:        20240801
 Release:        0
-Summary:        openSUSE Aeon 
+Summary:        Aeon 
 License:        GPL-2.0-or-later
 Group:          System/Fhs
 Source100:      weakremovers.inc
@@ -174,9 +174,9 @@ ExclusiveArch:  %ix86 x86_64 ppc64le s390x aarch64 %arm
 %include %{SOURCE100}
 Provides:       %name-%version
 Provides:       product() = Aeon
-Provides:       product(Aeon) = 20240731-0
-Provides:       product-label() = openSUSE%20Aeon
-Provides:       product-cpeid() = cpe%3A%2Fo%3Aopensuse%3Aaeon%3A20240731
+Provides:       product(Aeon) = 20240801-0
+Provides:       product-label() = Aeon
+Provides:       product-cpeid() = cpe%3A%2Fo%3Aopensuse%3Aaeon%3A20240801
 Provides:       product-url(releasenotes) = http%3A%2F%2Fdoc.opensuse.org%2Frelease%2Dnotes%2Fx86_64%2FopenSUSE%2FTumbleweed%2Frelease%2Dnotes%2DopenSUSE.rpm
 Provides:       product-endoflife()
 Requires:       product_flavor(Aeon)
@@ -184,20 +184,20 @@ Requires:       product_flavor(Aeon)
 
 
 %description
-openSUSE Aeon bundles the benefits of a rolling OS and a read-only root filesystem in a polished Desktop platform. It is a modern Linux Operating System, designed for minimal maintenance and tinkering.
-        It inherits the benefits of openSUSE Tumbleweed while redefining the operating system into a small, efficient and opinionated desktop.
+Aeon bundles the benefits of a rolling OS and a read-only root filesystem in a polished Desktop platform. It is a modern Linux Operating System, designed for minimal maintenance and tinkering.
+        It inherits the benefits of Tumbleweed while redefining the operating system into a small, efficient and opinionated desktop.
 
 %package -n Aeon-release-appliance
 License:        BSD-3-Clause
 Group:          System/Fhs
 Provides:       product_flavor()
 Provides:       flavor(appliance)
-Provides:       product_flavor(Aeon) = 20240731-0
-Summary:        openSUSE Aeon%{?betaversion: %{betaversion}}
+Provides:       product_flavor(Aeon) = 20240801-0
+Summary:        Aeon%{?betaversion: %{betaversion}}
 
 %description appliance
-openSUSE Aeon bundles the benefits of a rolling OS and a read-only root filesystem in a polished Desktop platform. It is a modern Linux Operating System, designed for minimal maintenance and tinkering.
-        It inherits the benefits of openSUSE Tumbleweed while redefining the operating system into a small, efficient and opinionated desktop.
+Aeon bundles the benefits of a rolling OS and a read-only root filesystem in a polished Desktop platform. It is a modern Linux Operating System, designed for minimal maintenance and tinkering.
+        It inherits the benefits of Tumbleweed while redefining the operating system into a small, efficient and opinionated desktop.
 
 %files appliance
 %defattr(-,root,root)
@@ -219,24 +219,24 @@ fi
 %install
 mkdir -p %{buildroot}%{_sysconfdir} %{buildroot}%{_prefix}/lib/issue.d %{buildroot}/run
 
-echo -e "\nWelcome to openSUSE Aeon (%{_target_cpu}) - Kernel \\\r (\\\l).\n" > %{buildroot}%{_prefix}/lib/issue.d/10-OS
+echo -e "\nWelcome to Aeon (%{_target_cpu}) - Kernel \\\r (\\\l).\n" > %{buildroot}%{_prefix}/lib/issue.d/10-OS
 echo -e "\n" > %{buildroot}%{_prefix}/lib/issue.d/90-OS
 
 VERSION_ID=`echo %{version}|tr '[:upper:]' '[:lower:]'|sed -e 's/ //g;'`
 # note: VERSION is an optional field and has no meaning other than informative on a rolling distro
 # We do thus not add it to the os-release file
 cat > %{buildroot}%{_prefix}/lib/os-release <<EOF
-NAME="openSUSE Aeon"
+NAME="Aeon"
 # VERSION="%{version}%{?betaversion: %{betaversion}}"
-ID="opensuse-aeon"
-ID_LIKE="suse opensuse opensuse-tumbleweed opensuse-microos microos"
+ID="aeon"
+ID_LIKE="suse opensuse opensuse-tumbleweed opensuse-microos opensuse-aeon microos"
 VERSION_ID="$VERSION_ID"
-PRETTY_NAME="openSUSE Aeon"
+PRETTY_NAME="Aeon"
 ANSI_COLOR="0;32"
 CPE_NAME="cpe:/o:opensuse:aeon:%{version}"
-BUG_REPORT_URL="https://bugzilla.opensuse.org"
-SUPPORT_URL="https://bugs.opensuse.org"
-HOME_URL="https://www.aeondesktop.org/"
+BUG_REPORT_URL="https://aeondesktop.org/reportbug"
+SUPPORT_URL="https://aeondesktop.org/bugs"
+HOME_URL="https://aeondesktop.org/"
 DOCUMENTATION_URL="https://en.opensuse.org/Portal:Aeon"
 LOGO="distributor-logo-Aeon"
 EOF
@@ -257,11 +257,11 @@ cat >%{buildroot}%{_sysconfdir}/products.d/Aeon.prod << EOF
 <product schemeversion="0">
   <vendor>openSUSE</vendor>
   <name>Aeon</name>
-  <version>20240731</version>
+  <version>20240801</version>
   <release>0</release>
   <endoflife></endoflife>
   <arch>%{_target_cpu}</arch>
-  <cpeid>cpe:/o:opensuse:aeon:20240731</cpeid>
+  <cpeid>cpe:/o:opensuse:aeon:20240801</cpeid>
   <productline>Aeon</productline>
   <register>
     <pool>
@@ -271,10 +271,10 @@ cat >%{buildroot}%{_sysconfdir}/products.d/Aeon.prod << EOF
   </register>
   <repositories>
   </repositories>
-  <summary>openSUSE Aeon</summary>
-  <shortsummary>openSUSE Aeon</shortsummary>
-  <description>openSUSE Aeon bundles the benefits of a rolling OS and a read-only root filesystem in a polished Desktop platform. It is a modern Linux Operating System, designed for minimal maintenance and tinkering.
-        It inherits the benefits of openSUSE Tumbleweed while redefining the operating system into a small, efficient and opinionated desktop.</description>
+  <summary>Aeon</summary>
+  <shortsummary>Aeon</shortsummary>
+  <description>Aeon bundles the benefits of a rolling OS and a read-only root filesystem in a polished Desktop platform. It is a modern Linux Operating System, designed for minimal maintenance and tinkering.
+        It inherits the benefits of Tumbleweed while redefining the operating system into a small, efficient and opinionated desktop.</description>
   <linguas>
     <language>en_US</language>
   </linguas>
