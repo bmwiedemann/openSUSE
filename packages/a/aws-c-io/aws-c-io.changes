@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jul 31 09:05:34 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.14.15
+  * Fix undefined type enum aws_tls_handler_state in source/windows/
+    secure_channel_tls_handler.c when building on Windows
+    by @brechtsanders in (#663)
+- from version 0.14.14
+  * Update MacOS CI by @waahm7 in (#658)
+  * Remove uv headers from CMakeLists.txt by @sbSteveK in (#660)
+  * TLS deliver buffer data during shutdown by @TingDaoK in (#650)
+
+-------------------------------------------------------------------
 Fri Jul 26 11:25:57 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.14.13
