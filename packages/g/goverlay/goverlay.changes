@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Jul 30 03:36:20 UTC 2024 - pallas wept <pallaswept@proton.me>
+
+- Update to version 1.2:
+  New:
+  * Presets (formerly known as quick layouts) are back.
+  * Custom user presets can now be saved and restored (requested feature).
+  * Added negative offset option for FPS limits, very useful for VRR screens
+    (requested feature).
+  * New FPS AVG 1% and 0.1% options.
+  * New winesync option.
+  * New compact HUD option.
+  * New Vulkan Present mode option.
+  * Added Fahrenheit temperature unit option (requested feature).
+  * Option to disable shortcut combinations (requested feature).
+  * Icons for device battery.
+
+  Fixes:
+  * Fixed missing arguments for device battery.
+  * GPU and CPU custom colors are working again.
+  * Time toggle was always checked, now fixed.
+  * Fixed invalid string used for engine_version.- 
+
+- Use Qt6Pas for build
+
+-------------------------------------------------------------------
 Sat Jun 01 20:57:04 UTC 2024 - jonatas.sgoncalves@gmail.com
 
 - Update to version 1.1.1:

@@ -17,7 +17,7 @@
 
 
 Name:           goverlay
-Version:        1.1.1
+Version:        1.2
 Release:        0
 Summary:        Graphical UI to help manage overlays
 License:        GPL-3.0-or-later
@@ -28,7 +28,7 @@ Patch0:         goverlay-enable-debuginfo-generation.patch
 BuildRequires:  appstream-glib
 BuildRequires:  desktop-file-utils
 BuildRequires:  lazarus
-BuildRequires:  libQt5Pas-devel
+BuildRequires:  libQt6Pas-devel
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(gtk+-3.0)
