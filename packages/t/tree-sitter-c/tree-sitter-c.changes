@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jul 26 19:04:48 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 0.21.4:
+  * feat: support the `alignas` type qualifier
+  * feat: support `static` in array declarations
+- Update to version 0.21.3:
+  * build: update dependencies
+- Update to version 0.21.2:
+  * fix: remove the unnecessary `seq` around variadic_parameter
+
+-------------------------------------------------------------------
 Mon Apr 29 21:49:24 UTC 2024 - Björn Bidar <bjorn.bidar@thaodan.de>
 
 - Update to version 0.21.0:

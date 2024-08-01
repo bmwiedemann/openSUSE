@@ -19,4 +19,12 @@
   * fix: asm strings can be concatenated</comment>
     <requestid>1170879</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>02936d2026db265abc97ce3eb4c548f7</srcmd5>
+    <version>0.21.4</version>
+    <time>1722542753</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1190959</requestid>
+  </revision>
 </revisionlist>

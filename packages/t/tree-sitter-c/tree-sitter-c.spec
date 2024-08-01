@@ -19,14 +19,14 @@
 %define _name c
 Summary:        C grammar for tree-sitter
 Name:           tree-sitter-%{_name}
-Version:        0.21.0
+Version:        0.21.4
 Release:        0
 License:        MIT
 Group:          Development/Tools/Other
 URL:            https://github.com/tree-sitter/tree-sitter-c
 Source0:        %{name}-%{version}.tar.gz
 BuildRequires:  filesystem
-BuildRequires:  tree-sitter
+BuildRequires:  tree-sitter >= 0.22.6
 %treesitter_grammars %{_name}
 
 %description
