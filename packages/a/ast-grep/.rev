@@ -459,4 +459,18 @@
   * test: add test for deserde tests 76796e4</comment>
     <requestid>1189720</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>62b73114d8e09bf41bf09e845f269c23</srcmd5>
+    <version>0.25.5+0</version>
+    <time>1722612438</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.25.5:
+  * feat: support using transform in rule message #1366
+  * test: add test for skipping multiple ellipsis #1365
+  * feat: Support ast-grep-ignore comment on same line as violation #1347
+  * Revert &quot;feat: add wasm engine support&quot; 78b1633
+  * feat: add wasm engine support ff77914
+  * refactor: remove old find/scan 58a3646</comment>
+    <requestid>1191105</requestid>
+  </revision>
 </revisionlist>

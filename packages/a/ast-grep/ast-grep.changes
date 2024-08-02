@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Aug  2 06:32:03 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.25.5:
+  * feat: support using transform in rule message #1366
+  * test: add test for skipping multiple ellipsis #1365
+  * feat: Support ast-grep-ignore comment on same line as violation #1347
+  * Revert "feat: add wasm engine support" 78b1633
+  * feat: add wasm engine support ff77914
+  * refactor: remove old find/scan 58a3646
+
+-------------------------------------------------------------------
 Fri Jul 26 06:00:19 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.25.4:
