@@ -18,14 +18,14 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-iminuit
-Version:        2.25.2
+Version:        2.28.0
 Release:        0
 Summary:        Python bindings for MINUIT2
 License:        MIT
 URL:            https://github.com/scikit-hep/iminuit
 Source0:        https://files.pythonhosted.org/packages/source/i/iminuit/iminuit-%{version}.tar.gz
 BuildRequires:  %{python_module Cython}
-BuildRequires:  %{python_module devel >= 3.7}
+BuildRequires:  %{python_module devel >= 3.9}
 BuildRequires:  %{python_module numpy >= 1.21.0}
 BuildRequires:  %{python_module numpy-devel}
 BuildRequires:  %{python_module pip}

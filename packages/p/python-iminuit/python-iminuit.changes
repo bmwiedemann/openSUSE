@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Aug  2 08:58:44 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.28.0:
+  * drop support for python-3.8 (gh#scikit-hep/iminuit#1015).
+  * Fix LeastSquares for functions with more than two arguments
+    (gh#scikit-hep/iminuit#1016).
+  * Add name argument to all cost functions
+    (gh#scikit-hep/iminuit#1017).
+- Bump minimum required python-devel to 3.9.
+
+-------------------------------------------------------------------
 Fri Mar 15 19:54:51 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Skip testing with ipywidgets on python39: no longer supported
