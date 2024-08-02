@@ -3435,6 +3435,7 @@ unsorted:
   - dom4j-javadoc 
   - domination 
   - domination-data 
+  - doom64ex-plus 
   - doomsday 
   - dosbox 
   - dosemu 
@@ -15646,6 +15647,8 @@ unsorted:
   - libqtermwidget6-2 
   - libqtolm-devel 
   - libquadmath0-32bit 
+  - libquadmath0-devel-gcc14 
+  - libquadmath0-devel-gcc14-32bit 
   - libquadmath0-gcc12 
   - libquadmath0-gcc12-32bit 
   - libquadmath0-gcc13 
@@ -15871,6 +15874,27 @@ unsorted:
   - libreplaygain-devel 
   - libreplaygain1 
   - librepo-devel 
+  - libreport 
+  - libreport-anaconda 
+  - libreport-centos 
+  - libreport-cli 
+  - libreport-devel 
+  - libreport-filesystem 
+  - libreport-gtk_1 
+  - libreport-gtk_1-devel 
+  - libreport-newt 
+  - libreport-opensuse-bugzilla 
+  - libreport-plugin-bugzilla 
+  - libreport-plugin-kerneloops 
+  - libreport-plugin-logger 
+  - libreport-plugin-mailx 
+  - libreport-plugin-mantisbt 
+  - libreport-plugin-reportuploader 
+  - libreport-plugin-systemd-journal 
+  - libreport-plugin-ureport 
+  - libreport-web_2 
+  - libreport-web_2-devel 
+  - libreport_2 
   - librepository-javadoc 
   - libreproc++14 
   - libreproc14 
@@ -15952,6 +15976,7 @@ unsorted:
   - libsanlock1 
   - libsass-3_6_6-1 
   - libsass-devel 
+  - libsatyr4 
   - libsbc1-32bit 
   - libsblim-cmpiutil1 
   - libscalapack2-gnu-mpich-hpc 
@@ -16841,9 +16866,9 @@ unsorted:
   - libvted-3-0 
   - libvterm-devel 
   - libvterm-tools 
-  - libvtk-m-2_1 
-  - libvtk-m-mpich-2_1 
-  - libvtk-m-openmpi4-2_1 
+  - libvtk-m-2_2 
+  - libvtk-m-mpich-2_2 
+  - libvtk-m-openmpi4-2_2 
   - libvtk1 
   - libvtk1-openmpi4 
   - libvulkan1-32bit 
@@ -23786,6 +23811,7 @@ unsorted:
   - python3-libprelude 
   - python3-libpreludedb 
   - python3-librepo 
+  - python3-libreport 
   - python3-libsoc 
   - python3-libstoragemgmt 
   - python3-libtorrent-rasterbar 
@@ -23901,6 +23927,7 @@ unsorted:
   - python3-rrdtool 
   - python3-saharaclient 
   - python3-salt-testsuite 
+  - python3-satyr 
   - python3-seccomp 
   - python3-senlinclient 
   - python3-smbus 
@@ -35713,6 +35740,7 @@ unsorted:
   - rinstall 
   - rinutils-devel 
   - rioterm 
+  - ripcalc 
   - ripgrep 
   - ripgrep-bash-completion 
   - ripgrep-fish-completion 
@@ -36367,6 +36395,8 @@ unsorted:
   - sassist 
   - sasutils 
   - sat4j 
+  - satyr 
+  - satyr-devel 
   - saweri-fonts 
   - sax3 
   - saxon10 
@@ -36590,6 +36620,10 @@ unsorted:
   - sequoia-sq-bash-completion 
   - sequoia-sq-fish-completion 
   - sequoia-sq-zsh-completion 
+  - sequoia-sqv 
+  - sequoia-sqv-bash-completion 
+  - sequoia-sqv-fish-completion 
+  - sequoia-sqv-zsh-completion 
   - ser2net 
   - serd-devel 
   - serdi 
@@ -37520,6 +37554,7 @@ unsorted:
   - termit 
   - termotp 
   - termrec 
+  - termscp 
   - termshark 
   - termsyn-bitmap-fonts 
   - terragrunt 
