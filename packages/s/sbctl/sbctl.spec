@@ -17,7 +17,7 @@
 
 
 Name:           sbctl
-Version:        0.14
+Version:        0.15.3
 Release:        0
 Summary:        Secure Boot key manager
 License:        MIT
@@ -40,10 +40,13 @@ Requires:       util-linux
 BuildRequires:  asciidoc
 BuildRequires:  binutils
 %if 0%{?suse_version}
+BuildRequires:  go >= 1.22.0
 BuildRequires:  golang-packaging
+BuildRequires:  pkgconfig(openssl) > 3.0.0
 %endif
 %if 0%{?ubuntu}
-BuildRequires:  golang
+BuildRequires:  golang >= 1.22.0
+BuildRequires:  libssl-dev > 3.0.0
 %endif
 
 %description
@@ -55,7 +58,15 @@ needs to be signed in the boot chain.
 %autosetup -a 1
 
 %build
-%make_build all
+# Remove toolchain directive as we can't download it from external and we lack a corresponding
+# macro package for deb (golang-packaging)
+%if 0%{?ubuntu}
+sed -i '/^toolchain.*/d' go.mod
+%endif
+
+# Remove upstream version set.
+sed -i 's|VERSION =.*||' Makefile
+VERSION="%{version}" %make_build all
 
 %install
 %make_install BINDIR="%{_sbindir}" PREFIX="%{_prefix}"
@@ -79,6 +90,7 @@ sed -i 's|bin/sh|bin/bash|' %{buildroot}%{_prefix}/lib/kernel/install.d/91-sbctl
 
 %{_prefix}/lib/kernel/install.d/91-sbctl.install
 %{_mandir}/man8/sbctl.8*
+%{_mandir}/man5/sbctl.conf.5*
 %{_datadir}/bash-completion/completions/sbctl
 %{_datadir}/fish/vendor_completions.d/sbctl.fish
 %{_datadir}/zsh/site-functions/_sbctl
