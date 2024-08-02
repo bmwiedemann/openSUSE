@@ -18,8 +18,12 @@
 
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
+# to be recognized as a kubectl plugin,
+# there must not be a hyphen in the plugin name
+%define executable_name kubectl-view_secret
+
 Name:           kubectl-view-secret
-Version:        0.12.0
+Version:        0.12.1
 Release:        0
 Summary:        Kubernetes CLI plugin to decode Kubernetes secrets
 License:        MIT
@@ -49,10 +53,13 @@ ls -lh
 %install
 # Install the binary.
 install -D -m 0755 bin/%{name} %{buildroot}/%{_bindir}/%{name}
+cd %{buildroot}/%{_bindir}/
+ln -s %{name} %{executable_name}
 
 %files
 %doc README.md
 %license LICENSE
 %{_bindir}/%{name}
+%{_bindir}/%{executable_name}
 
 %changelog
