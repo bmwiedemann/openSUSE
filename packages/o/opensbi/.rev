@@ -206,4 +206,17 @@
   * SBI firmware features (FWFT) extension (Experimental) (forwarded request 1184093 from Andreas_Schwab)</comment>
     <requestid>1184094</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>352ffe26ab560620b46c233350aeb67e</srcmd5>
+    <version>1.5.1</version>
+    <time>1722612442</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to opensbi 1.5.1
+  * Save/restore menvcfg only when it exists
+  * Adjust Sscofpmf mhpmevent mask for upper 8 bits
+  * Fix potential NULL pointer dereferences in SBI DBTR
+  * Fix incorrect size passed to sbi_zalloc() in SBI FWFT
+  * Check result of pmp_get() in is_pmp_entry_mapped() (forwarded request 1191136 from Andreas_Schwab)</comment>
+    <requestid>1191137</requestid>
+  </revision>
 </revisionlist>

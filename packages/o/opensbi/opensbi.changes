@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Aug  2 08:19:15 UTC 2024 - Andreas Schwab <schwab@suse.de>
+
+- Update to opensbi 1.5.1
+  * Save/restore menvcfg only when it exists
+  * Adjust Sscofpmf mhpmevent mask for upper 8 bits
+  * Fix potential NULL pointer dereferences in SBI DBTR
+  * Fix incorrect size passed to sbi_zalloc() in SBI FWFT
+  * Check result of pmp_get() in is_pmp_entry_mapped()
+
+-------------------------------------------------------------------
 Sun Jun 30 09:43:24 UTC 2024 - Andreas Schwab <schwab@suse.de>
 
 - Update to opensbi 1.5
