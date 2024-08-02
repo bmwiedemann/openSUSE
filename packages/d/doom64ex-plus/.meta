@@ -1,0 +1,14 @@
+<package name="doom64ex-plus" project="openSUSE:Factory">
+  <title>An improved modern version of Doom64EX</title>
+  <description>Doom 64 EX+ is a continuation project of Samuel &quot;Kaiser&quot; Villarreal's
+Doom 64 EX aimed to recreate DOOM 64 as closely as possible with
+additional modding features.
+
+Doom64EX is a reverse-engineering project aimed to recreate
+Doom64 as close as possible with additional modding features.
+
+You must place file DOOM.WAD (case-sensitive) from the Steam or GOG version
+of Doom 64 into either folder /usr/share/games/doom64ex-plus or ~/.local/share/doom64ex-plus</description>
+  <devel project="games" package="doom64ex-plus"/>
+  <url>https://github.com/atsb/Doom64EX-Plus</url>
+</package>

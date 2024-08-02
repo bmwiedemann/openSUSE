@@ -1,0 +1,13 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7502d43753d818b512fe1399c0d48c70</srcmd5>
+    <version>4.0.0.1</version>
+    <time>1722612454</time>
+    <user>dimstar_suse</user>
+    <comment>I'd like to add this new package to Factory.
+
+There are many Doom source ports in Factory, but none for Doom 64. 
+This Doom 64 port is well maintained and uses bleeding edge SDL3.</comment>
+    <requestid>1191193</requestid>
+  </revision>
+</revisionlist>

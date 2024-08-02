@@ -1,0 +1,45 @@
+-------------------------------------------------------------------
+Fri Aug  2 12:29:42 UTC 2024 - Michael Pujos <pujos.michael@gmail.com>
+
+- removed system-datadir.patch
+- New version 4.0.0.1:
+  * Fix wrong predefined macro used for specific Linux code for data dir
+  * Improve data dir handling on Linux and OpenBSD
+  * Minor README changes
+  * Fix segfault on crushing
+  * Fix array over run which can cause Zone corruption
+  * Fix MAP08 thing trigger bug that was stopping some code being executed,
+    inc secret total bug during game and level stats at the end of levels
+  * Fix crusher speed to make it the same speed as remaster
+
+-------------------------------------------------------------------
+Tue May  7 13:06:52 UTC 2024 - Michael Pujos <pujos.michael@gmail.com>
+
+- fixed failure for game to find its data files in /usr/share/games/doom64ex-plus
+- removed disable-arm-asm.patch
+- removed custom Makefile
+- New version 4.0.0.0:
+  * Migration to SDL3 with zero SDL2 fallback option, SDL2 is entirely
+    deprecated and the only rendering path, is the current SDL3 preview's
+  * High resolution scaled image support (similar to remaster).
+    So MDOOM's, chapter interpics, LEGAL text etc.. can all be used with
+    high resolution images. Only exception is the 'EVIL' interpic which
+    remains scaled the same as remaster. See the EX+ wad for example dimensions
+    for width x height and try not to deviate from them too much
+  * Optimisations for frame timing. EX+ should now be absolutely buttery
+    smooth at all times, with zero 'jitteriness'.
+    Tested on an ARC A580 and no issues
+  * 32bit support is deprecated entirely
+  * Bunch of other stuff here and there :D
+
+-------------------------------------------------------------------
+Sun Jan 14 21:14:52 UTC 2024 - Michael Pujos <pujos.michael@gmail.com>
+
+- better Makefile
+- remove a few unnecessary dependencies
+- added disable-arm-asm.patch to fix ARM compilation
+
+-------------------------------------------------------------------
+Tue Dec 26 15:30:44 UTC 2023 - Michael Pujos <pujos.michael@gmail.com>
+
+- Initial version 
