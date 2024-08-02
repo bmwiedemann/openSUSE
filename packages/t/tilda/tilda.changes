@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Sat Mar  2 15:34:16 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
+
+update to version 2.0.0:
+	* Extracted context menu into new file and added copy link action
+	* Include the man page from the Debian page directly with tilda,
+	  this ensures that the man page can also be shipped on other
+		distributions besides Debian and Ubuntu.
+	* Fixed an issue related to styling and transparency that could cause
+	  certain widgets to become transparent and which caused issues on dark
+		themes that led to the search box always having a white background.
+	* Further fixes related to BadWindow and BadMatch Xorg errors. In addition
+		we removed the custom XOrg errror handling in favor of error traps.
+	* Fixed related to time stamp handling with Xorg related call
+	* Added support for OSC8 hyperlinks.
+	* It is now configurable whether the terminal match activation
+	  requires the press of the CTRL key. Fixes #368 (Sebastian Geiger)
+	* We integrate code from Gnome Terminal to improve the matching
+	  functionality. As a result Tilda now supports improved matching
+		of URL and can also match file names, emails and numbers. This
+		is configurable in the preferences. Parts of the code are GPLv3
+		licensed, so the overall Tilda license becomes GPLv3. If
+		matching rules are enabled and a match is detected, then the
+		Tilda context menu will show a copy link for the match.
+	* It is now possible to unbind a hotkey in the preferences.
+	* We remove the XDG migration code, this have been part of tilda
+	  for 10 years and all tilda users should have long migrated to
+	  the new XDG config locations.
+	* This release adds D-Bus support, which makes it possible to
+	  control the pull behavior with a D-Bus action. More details
+		can be found in the updated man page.
+	* In addition to the D-Bus support Tilda also supports a new option
+	  '-T' which allows to toggle a certain tilda instance to make
+		it easier to invoke the toggle action 
+	* Tilda ships a new desktop file to start with D-Bus support
+	  enabled. We also improved the existing desktop files.
+	* Allow ergonomic use of CTRL+C for copy. If text is selected,
+	  then CTRL+C will copy, otherwise, it will abort the current
+		commands.
+	* Add option to display bold font in bright color
+	* Fixed a possible race-condition when multiple tilda processes
+	  are started in quick succession that could lead to multiple
+		processes using the same config file.
+	* Add new option to insert new tabs after the current tab.
+
+update to version 1.5.5:
+	* Fixed an out-of-bounds error that could cause a segmentation fault
+
+-------------------------------------------------------------------
 Tue Jan 12 04:49:20 UTC 2021 - Avindra Goolcharan <avindra@opensuse.org>
 
 - Update to 1.5.4

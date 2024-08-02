@@ -1,7 +1,7 @@
 #
 # spec file for package tilda
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           tilda
-Version:        1.5.4
+Version:        2.0.0
 Release:        0
 Summary:        A Gtk based drop down terminal for Linux and Unix
 License:        GPL-2.0-or-later
@@ -65,9 +65,11 @@ NOCONFIGURE=1 ./autogen.sh
 %doc AUTHORS README.md ChangeLog HACKING.md TODO.md
 %{_bindir}/%{name}
 %{_datadir}/applications/%{name}.desktop
+%{_datadir}/applications/%{name}-dbus.desktop
 %{_datadir}/pixmaps/%{name}.png
 %dir %{_datadir}/metainfo
 %{_datadir}/metainfo/%{name}.appdata.xml
+%{_mandir}/man1/%{name}.1%{?ext_man}
 
 %files lang -f %{name}.lang
 
