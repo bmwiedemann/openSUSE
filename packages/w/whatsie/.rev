@@ -37,4 +37,27 @@
   * version 4.15 (08fba4c)</comment>
     <requestid>1176896</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d5593bd298f42c9ab8e2f11e56ffa19b</srcmd5>
+    <version>4.15.3</version>
+    <time>1722612436</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.15.3:
+  * bump version 4.15.3 (5afb839)
+
+- Update to 4.15.2:
+  * chore: update svg icon text object to path
+
+- Update to 4.15.1:
+  * revert to build action Qt to version 5.15.2 (bbccc55)
+  * bump version 4.15.1 (d874692)
+  * update dist icon (d0304ad)
+  * new icon (f54e608)
+  * update notification icons (2718a85)
+  * add new keywords to appdata (4e803bf)
+  * update appstream metadata for 4.15.0 release (a535ee1)
+  * do not mark statusCode unused in desktopOpenUrl util method (51e2823)
+  * udapte CHANGELOG (5940b6e)</comment>
+    <requestid>1191098</requestid>
+  </revision>
 </revisionlist>

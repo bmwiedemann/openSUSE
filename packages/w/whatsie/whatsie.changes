@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Fri Aug  2 06:28:04 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 4.15.3:
+  * bump version 4.15.3 (5afb839)
+
+-------------------------------------------------------------------
+Fri Aug  2 06:27:48 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 4.15.2:
+  * chore: update svg icon text object to path
+
+-------------------------------------------------------------------
+Fri Aug  2 06:27:34 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 4.15.1:
+  * revert to build action Qt to version 5.15.2 (bbccc55)
+  * bump version 4.15.1 (d874692)
+  * update dist icon (d0304ad)
+  * new icon (f54e608)
+  * update notification icons (2718a85)
+  * add new keywords to appdata (4e803bf)
+  * update appstream metadata for 4.15.0 release (a535ee1)
+  * do not mark statusCode unused in desktopOpenUrl util method (51e2823)
+  * udapte CHANGELOG (5940b6e)
+
+-------------------------------------------------------------------
 Sun May 26 05:26:32 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 4.15.0:
