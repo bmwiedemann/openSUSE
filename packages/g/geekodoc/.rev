@@ -141,4 +141,12 @@ Fixes issue #41 to reduce number of files in packages
     <comment></comment>
     <requestid>1137724</requestid>
   </revision>
+  <revision rev="15" vrev="15">
+    <srcmd5>b26f1055c30004492f083a86754a54f2</srcmd5>
+    <version>unknown</version>
+    <time>1722612443</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1191163</requestid>
+  </revision>
 </revisionlist>
