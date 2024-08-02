@@ -12,7 +12,7 @@
         <profile name="ContainerHost" description="MicroOS with container runtime (podman)"/>
         <!-- Platforms -->
         <profile name="kvm-and-xen-sdboot" description="kvm-and-xen with systemd-boot" arch="x86_64,aarch64"/>
-        <profile name="kvm-and-xen-grub" description="kvm-and-xen with GRUB2 and bootctl" arch="x86_64,aarch64"/>
+        <profile name="kvm-and-xen-grub-bls" description="kvm-and-xen with GRUB2 and bootctl" arch="x86_64,aarch64"/>
         <profile name="kvm-and-xen" description="kvm-and-xen" arch="x86_64,aarch64,armv7l"/>
         <profile name="VMware" description="VMware for x86_64" arch="x86_64"/>
         <profile name="MS-HyperV" description="Hyper-V" arch="x86_64,aarch64"/>
@@ -95,7 +95,7 @@
             <size unit="G">20</size>
         </type>
     </preferences>
-    <preferences profiles="kvm-and-xen-grub">
+    <preferences profiles="kvm-and-xen-grub-bls">
         <version>16.0.0</version>
         <packagemanager>zypper</packagemanager>
         <rpm-excludedocs>true</rpm-excludedocs>
@@ -725,7 +725,7 @@
         <package name="growpart-generator"/>
         <package name="patterns-base-bootloader"/>
     </packages>
-    <packages type="image" profiles="kvm-and-xen-sdboot,kvm-and-xen-grub">
+    <packages type="image" profiles="kvm-and-xen-sdboot,kvm-and-xen-grub-bls">
         <!-- Needed for initial configuration, except on OpenStack-Cloud, where cloud-init is used -->
         <package name="ignition-dracut"/>
         <package name="combustion &gt;= 1.2"/> <!-- New firstboot mechanism -->
@@ -739,7 +739,7 @@
         <package name="efibootmgr"/>
         <package name="uefi_mbr" arch="x86_64"/>
     </packages>
-    <packages type="image" profiles="kvm-and-xen-grub">
+    <packages type="image" profiles="kvm-and-xen-grub-bls">
         <package name="patterns-base-bootloader"/>
         <package name="uefi_mbr" arch="x86_64"/>
         <package name="grub2-x86_64-efi" arch="x86_64"/>

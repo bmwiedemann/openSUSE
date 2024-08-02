@@ -1,0 +1,12 @@
+-------------------------------------------------------------------
+Mon Jul 22 10:38:57 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- add patch dfe58e6147f66b4c0c74874c954e7d101b3bf026.patch to fix
+  build errors due to tokio rt builder
+  https://github.com/veeso/termscp/commit/dfe58e6147f66b4c0c74874c954e7d101b3bf026
+
+-------------------------------------------------------------------
+Fri Jul 19 13:37:03 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- new package termscp: feature rich terminal UI file transfer and
+  explorer with support for SCP/SFTP/FTP/S3/SMB

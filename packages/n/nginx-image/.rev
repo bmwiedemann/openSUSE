@@ -95,4 +95,12 @@
     <comment>🤖: sync package with devel:BCI:Tumbleweed from OBS</comment>
     <requestid>1181269</requestid>
   </revision>
+  <revision rev="13" vrev="13">
+    <srcmd5>3926602ac0ce8936f8666abadb9c3181</srcmd5>
+    <version>unknown</version>
+    <time>1722612391</time>
+    <user>dimstar_suse</user>
+    <comment>🤖: sync package with devel:BCI:Tumbleweed from OBS</comment>
+    <requestid>1190724</requestid>
+  </revision>
 </revisionlist>

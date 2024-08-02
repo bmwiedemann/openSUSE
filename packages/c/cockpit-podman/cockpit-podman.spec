@@ -17,7 +17,7 @@
 
 
 Name:           cockpit-podman
-Version:        84
+Version:        91
 Release:        0
 Summary:        Cockpit component for Podman containers
 License:        LGPL-2.1-or-later
@@ -25,6 +25,7 @@ URL:            https://github.com/cockpit-project/cockpit-podman
 Source:         https://github.com/cockpit-project/cockpit-podman/archive/%{version}.tar.gz#/cockpit-podman-%{version}.tar.gz
 Source10:       package-lock.json
 Source11:       node_modules.spec.inc
+Source12:       update_version.sh
 %include %_sourcedir/node_modules.spec.inc
 Patch10:        load-css-overrides.patch
 BuildArch:      noarch
@@ -44,7 +45,7 @@ Cockpit component for managing Podman containers
 %autosetup -p1
 rm -r node_modules
 rm -f package-lock.json
-local-npm-registry %{_sourcedir} install --with=dev --legacy-peer-deps
+local-npm-registry %{_sourcedir} install --include=dev --ignore-scripts
 
 %build
 export PREFIX=%{_prefix}

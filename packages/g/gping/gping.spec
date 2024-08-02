@@ -17,7 +17,7 @@
 
 
 Name:           gping
-Version:        1.16.1
+Version:        1.17.3
 Release:        0
 Summary:        Ping, but with a graph
 License:        MIT
@@ -40,14 +40,19 @@ Comes with the following super-powers:
 cd gping
 %cargo_build
 
+%check
+cd gping
+%cargo_test
+
 %install
 cd gping
 %cargo_install
+install -Dpm644 ../gping.1 %{buildroot}%{_mandir}/man1/gping.1%{?ext_man}
 
 %files
 %{_bindir}/gping
-
 %license LICENSE
 %doc readme.md
+%{_mandir}/man1/gping.1%{?ext_man}
 
 %changelog

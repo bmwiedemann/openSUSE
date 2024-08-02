@@ -1,7 +1,7 @@
 #
 # spec file for package patch
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -40,6 +40,7 @@ Patch10:        fix-swapping-fake-lines-in-pch_swap.patch
 Patch11:        abort-when-cleaning-up-fails.patch
 Patch12:        dont-follow-symlinks-unless-asked.patch
 Patch13:        pass-the-correct-stat-to-backup-files.patch
+Patch14:        CVE-2019-20633.patch
 # See bnc#662957. The fix for CVE-2010-4651 breaks the way interdiff was
 # invoking patch, so interdiff had to be fixed too.
 Conflicts:      patchutils < 0.3.2

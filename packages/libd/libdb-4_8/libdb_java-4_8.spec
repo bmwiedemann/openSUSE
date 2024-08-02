@@ -33,6 +33,7 @@ Patch0:         db-%{version}.patch
 Patch1:         libdb_java-4_8-fix-java10-comp.patch
 # PATCH-FIX-OPENSUSE Fix build with GCC8, conflict with reserved builtin name
 Patch2:         libdb-fix-atomic.patch
+Patch3:         reproducible.patch
 BuildRequires:  autoconf
 BuildRequires:  gcc-c++
 BuildRequires:  java-sdk >= 1.8
@@ -64,6 +65,10 @@ These are the development files.
 %patch -P 0
 %patch -P 1 -p1
 %patch -P 2
+# the Leap build happens with an old jar version that does not know the --date option, so we need to test for that
+if jar --help|grep -q -- --date=TIMESTAMP ; then
+%patch -P 3 -p1
+fi
 
 %build
 cd dist

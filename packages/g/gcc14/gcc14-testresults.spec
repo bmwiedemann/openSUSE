@@ -52,14 +52,10 @@
 
 # Ada currently fails to build on a few platforms, enable it only
 # on those that work
-%if %{suse_version} >= 1310
 %if %{suse_version} >= 1330
 %define ada_arch %ix86 x86_64 ppc ppc64 ppc64le s390 s390x ia64 aarch64 riscv64
 %else
 %define ada_arch %ix86 x86_64 ppc ppc64 s390 ia64
-%endif
-%else
-%define ada_arch %ix86 x86_64 ppc s390 ia64
 %endif
 
 %ifarch %ada_arch
@@ -218,16 +214,10 @@
 # libFOO-devel package suffix
 %define libdevel_suffix -gcc14
 
-%if %{suse_version} >= 1220
-%define selfconflict() %1
-%else
-%define selfconflict() otherproviders(%1)
-%endif
-
 %define biarch_targets x86_64 s390x powerpc64 powerpc sparc sparc64
 
 URL:            https://gcc.gnu.org/
-Version:        14.1.1+git10335
+Version:        14.2.0+git10526
 Release:        0
 %define gcc_dir_version %(echo %version |  sed 's/+.*//' | cut -d '.' -f 1)
 %define gcc_snapshot_revision %(echo %version | sed 's/[3-9]\.[0-9]\.[0-6]//' | sed 's/+/-/')
@@ -242,11 +232,7 @@ BuildRequires:  libzstd-devel
 BuildRequires:  bison
 BuildRequires:  flex
 BuildRequires:  gettext-devel
-%if %{suse_version} > 1220
 BuildRequires:  makeinfo
-%else
-BuildRequires:  texinfo
-%endif
 # until here, but at least renaming and patching info files breaks this
 BuildRequires:  gcc-c++
 BuildRequires:  glibc-devel-32bit
@@ -261,9 +247,7 @@ BuildRequires:  zlib-devel
 # for SDT markers in the C++ unwinder and gdb breakpoints on exceptions
 BuildRequires:  systemtap-headers
 %endif
-%if %{suse_version} >= 1230
 BuildRequires:  isl-devel
-%endif
 %define hostsuffix %{nil}
 %if %{build_ada}
 %if 0%{?gcc_version:%{gcc_version}} > 14
@@ -288,11 +272,6 @@ BuildRequires:  libstdc++6-devel-gcc11
 %else
 BuildRequires:  gcc-d
 %endif
-%endif
-# We now require a C++ 11 capable compiler for bootstrapping
-%if %{suse_version} < 1220
-%define hostsuffix -4.8
-BuildRequires:  gcc48-c++
 %endif
 %ifarch ia64
 BuildRequires:  libunwind-devel
@@ -386,9 +365,6 @@ Requires:       libvtv%{libvtv_sover} >= %{version}-%{release}
 Suggests:       gcc14-info gcc14-locale
 %endif
 
-%if %{suse_version} < 1310
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-%endif
 Group:          Development/Languages/C and C++
 Source:         gcc-%{version}.tar.xz
 Source1:        change_spec
@@ -554,11 +530,6 @@ ln -s newlib-4.4.0.20231231/newlib .
 %define _lto_cflags %{nil}
 # Avoid rebuilding of generated files
 contrib/gcc_update --touch
-
-# SLE11 does not allow empty rpms
-%if %{suse_version} < 1310
-echo "This is a dummy package to provide a dependency." > README
-%endif
 
 rm -rf obj-%{GCCDIST}
 mkdir obj-%{GCCDIST}
@@ -756,10 +727,8 @@ amdgcn-amdhsa,\
 %endif
 %endif
 	--enable-linux-futex \
-%if %{suse_version} >= 1315
 %ifarch %ix86 x86_64 ppc ppc64 ppc64le %arm aarch64 s390 s390x %sparc
 	--enable-gnu-indirect-function \
-%endif
 %endif
 	--program-suffix=%{binsuffix} \
 %ifarch %{disable_multilib_arch}
@@ -866,13 +835,8 @@ amdgcn-amdhsa,\
 	--with-cpu=power8 \
 	--with-tune=power9 \
 %else
-%if %{suse_version} >= 1315 && %{suse_version} != 1320
 	--with-cpu=power8 \
 	--with-tune=power8 \
-%else
-	--with-cpu=power7 \
-	--with-tune=power7 \
-%endif
 %endif
 %endif
 %if %{suse_version} > 1500
@@ -931,11 +895,7 @@ amdgcn-amdhsa,\
 %if %{suse_version} >= 1600 && !0%{?is_opensuse}
         --with-tune=z14 --with-arch=z14 \
 %else
-%if %{suse_version} >= 1310
         --with-tune=zEC12 --with-arch=z196 \
-%else
-	--with-tune=z9-109 --with-arch=z900 \
-%endif
 %endif
 	--with-long-double-128 \
 	--enable-decimal-float \

@@ -16,10 +16,10 @@
 #
 
 
-%bcond_with     warp
+%bcond_without  warp
 %bcond_without  xwayland
 %define sname   wlroots
-%define sver    0.17.0
+%define sver    0.17.4
 Name:           labwc
 Version:        0.7.4
 Release:        0
@@ -40,6 +40,7 @@ BuildRequires:  pkgconfig(libliftoff)
 BuildRequires:  pkgconfig(vulkan)
 BuildRequires:  pkgconfig(x11-xcb)
 BuildRequires:  pkgconfig(xcb)
+BuildRequires:  pkgconfig(xcb-errors)
 BuildRequires:  pkgconfig(xcb-composite)
 BuildRequires:  pkgconfig(xcb-icccm)
 BuildRequires:  pkgconfig(xcb-image)
@@ -47,9 +48,10 @@ BuildRequires:  pkgconfig(xcb-render)
 BuildRequires:  pkgconfig(xcb-renderutil)
 BuildRequires:  pkgconfig(xcb-xfixes)
 BuildRequires:  pkgconfig(xcb-xkb)
+BuildRequires:  pkgconfig(xwayland)
 BuildRequires:  pkgconfig(xwaylandproto)
 %else
-BuildRequires:  wlroots-devel >= 0.17.3
+BuildRequires:  wlroots-devel >= 0.17.4
 %endif
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  meson

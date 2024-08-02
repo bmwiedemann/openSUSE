@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Thu Aug  1 00:00:00 UTC 2024 - Vicente Adolfo Bolea Sanchez <vicente.bolea@gmail.com> - 2.2.0-0
+
+- Updated spec to vtk-m 2.2.0.
+- Find the release notes at
+  <https://gitlab.kitware.com/vtk/vtk-m/-/tags/v2.2.0>.
+- New features and bugfixes:
+  * Enable non-finite values with Intel compiler.
+  * Add GetNumberOfComponentsFlat method to ArrayHandle.
+  * Support Fill for ArrayHandleStride.
+  * Added component extraction support from ArrayHandleConstant.
+  * Store constant AMR arrays with less memory.
+  * Improved = operators in VecFromPortal.
+  * Deprecate the GetCounts() method in Keys objects.
+  * Enable new instances of unknown arrays with dynamic sizes.
+  * Consolidate WarpScalar and WarpVector filter.
+  * Adding MergeDataSets filter.
+  * Fix bug with ExtractGeometry filter.
+  * New Isosurface Uncertainty Visualization Analysis filter.
+  * Deprecated vtkm::filter::FilterField.
+  * Adding SliceMultiple filter.
+  * Constructors for mesh info classes updated to other filters.
+  * Allow floating-point isovalues for contours of integer fields.
+  * AtomicArrayExecutionObject: Allow order of atomic operations.
+  * Disable Thrust patch that is no longer needed in modern Thrust.
+  * Add hints to device adapter scheduler.
+  * Support backward compatibility in CMake package.
+  * Fix issue with union placeholder on Intel compiler.
+  * Fix old cuda atomics.
+  * Avoid floating point exceptions in rendering code.
+  * Added VTK-m's user guide into the source code.
+  * Fix crash when CUDA device is disabled.
+
+-------------------------------------------------------------------
 Wed Nov 29 00:00:00 UTC 2023 - Vicente Adolfo Bolea Sanchez <vicente.bolea@gmail.com> - 2.1.0-0
 
 - Updated spec to vtk-m 2.1.0.

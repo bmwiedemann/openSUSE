@@ -121,4 +121,12 @@
   * Add CI tests</comment>
     <requestid>1114060</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>1a24133859dde389ec975bb7d3903f14</srcmd5>
+    <version>1.2.3</version>
+    <time>1722612334</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1190940</requestid>
+  </revision>
 </revisionlist>

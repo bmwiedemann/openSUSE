@@ -135,6 +135,9 @@ sed -i 's/.*solver.onlyRequires.*/solver.onlyRequires = true/g' /etc/zypp/zypp.c
 #--------------------------------------
 sed -i 's/.*rpm.install.excludedocs.*/rpm.install.excludedocs = yes/g' /etc/zypp/zypp.conf
 
+# # we need this for trans file triggers
+# echo "techpreview.ZYPP_SINGLE_RPMTRANS = 1" >> /etc/zypp/zypp.conf
+
 #======================================
 # Add default kernel boot options
 #--------------------------------------
@@ -272,5 +275,5 @@ if rpm -q sdbootutil; then
 
 	rpm -q systemd-boot && loader_type="systemd-boot"
 	rpm -q grub2 && loader_type="grub2-bls"
-	echo "LOADER_TYPE" >> /etc/sysconfig/bootloader
+	echo "LOADER_TYPE=\"${loader_type}\"" >> /etc/sysconfig/bootloader
 fi

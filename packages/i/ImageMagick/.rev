@@ -3917,4 +3917,12 @@ Use SUSE- proprietary prefix until SPDX upstream accepts ImageMagick as license 
   - ImageMagick-update-image-signature.patch (forwarded request 1182933 from adkorte)</comment>
     <requestid>1182962</requestid>
   </revision>
+  <revision rev="299" vrev="1">
+    <srcmd5>b6ab6919e178ec5939eced9301163f30</srcmd5>
+    <version>7.1.1.35</version>
+    <time>1722612331</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1190930</requestid>
+  </revision>
 </revisionlist>

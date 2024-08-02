@@ -24,6 +24,7 @@ License:        MIT
 Group:          System/X11/Utilities
 URL:            https://xorg.freedesktop.org/
 Source0:        https://xorg.freedesktop.org/releases/individual/app/%{name}-%{version}.tar.xz
+Patch0:         https://gitlab.freedesktop.org/xorg/app/fonttosfnt/-/merge_requests/22.patch#/reproducible.patch
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(fontenc)
 BuildRequires:  pkgconfig(freetype2)
@@ -37,7 +38,7 @@ Wrap a bitmap font or a set of bitmap fonts in a sfnt (TrueType or
 OpenType) wrapper.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %configure

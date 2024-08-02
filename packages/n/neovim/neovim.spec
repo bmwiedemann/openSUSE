@@ -27,7 +27,7 @@
 %endif
 
 Name:           neovim
-Version:        0.10.0
+Version:        0.10.1
 Release:        0
 Summary:        Vim-fork focused on extensibility and agility
 License:        Apache-2.0 AND Vim AND GPL-3.0-or-later AND CC-BY-3.0
@@ -58,13 +58,13 @@ BuildRequires:  make
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  tree-sitter
-BuildRequires:  tree-sitter-c
+BuildRequires:  tree-sitter-c >= 0.21.3
 BuildRequires:  tree-sitter-lua
 BuildRequires:  tree-sitter-markdown
 BuildRequires:  tree-sitter-python
-BuildRequires:  tree-sitter-query
+BuildRequires:  tree-sitter-query >= 0.4.0
 BuildRequires:  tree-sitter-vim
-BuildRequires:  tree-sitter-vimdoc
+BuildRequires:  tree-sitter-vimdoc >= 3.0.0
 BuildRequires:  unzip
 BuildRequires:  pkgconfig(libluv)
 BuildRequires:  pkgconfig(libutf8proc)
@@ -89,13 +89,13 @@ Requires:       lua51-luarocks
 Requires:       lua51-luv
 Requires:       lua51-mpack
 Requires:       tree-sitter
-Requires:       tree-sitter-c
+Requires:       tree-sitter-c >= 0.21.3
 Requires:       tree-sitter-lua
 Requires:       tree-sitter-markdown
 Requires:       tree-sitter-python
-Requires:       tree-sitter-query
+Requires:       tree-sitter-query >= 0.4.0
 Requires:       tree-sitter-vim
-Requires:       tree-sitter-vimdoc
+Requires:       tree-sitter-vimdoc >= 3.0.0
 Requires:       xdg-utils
 Recommends:     python3-neovim
 Recommends:     wl-clipboard

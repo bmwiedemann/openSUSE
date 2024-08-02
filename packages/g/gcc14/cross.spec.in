@@ -75,12 +75,6 @@
 %endif
 %endif
 
-%if %{suse_version} >= 1220
-%define selfconflict() %1
-%else
-%define selfconflict() otherproviders(%1)
-%endif
-
 Name:         %{pkgname}
 # SRC-COMMON-BEGIN
 # SRC-COMMON-END
@@ -91,12 +85,7 @@ Requires: cross-%{binutils_target}-binutils
 %endif
 %endif
 %define hostsuffix %{nil}
-%if 0%{suse_version} < 1220
-%define hostsuffix -4.8
-BuildRequires: gcc48-c++
-%else
 BuildRequires: gcc-c++
-%endif
 %if %{suse_version} > 1500
 BuildRequires: libzstd-devel
 %endif
@@ -110,15 +99,9 @@ BuildRequires: memory-constraints
 BuildRequires: mpc-devel
 BuildRequires: mpfr-devel
 BuildRequires: perl
-%if %{suse_version} > 1220
 BuildRequires: makeinfo
-%else
-BuildRequires: texinfo
-%endif
 BuildRequires: zlib-devel
-%if %{suse_version} >= 1230
 BuildRequires: isl-devel
-%endif
 %ifarch ia64
 BuildRequires: libunwind-devel
 %endif
@@ -193,7 +176,7 @@ Obsoletes: cross-ppc-gcc49 <= 4.9.0+r209354
 # Generally only one cross for the same target triplet can be installed
 # at the same time as we are populating a non-version-specific sysroot
 Provides: %{gcc_target_arch}-gcc
-Conflicts: %selfconflict %{gcc_target_arch}-gcc
+Conflicts: %{gcc_target_arch}-gcc
 %endif
 %if 0%{?gcc_libc_bootstrap:1}
 # The -bootstrap packages file-conflict with the non-bootstrap variants.

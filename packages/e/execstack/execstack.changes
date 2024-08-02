@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Aug  1 18:57:10 UTC 2024 - Marcus Meissner <meissner@suse.com>
+
+- prelink-gcc14.patch: fix build with gcc14
+- added auto tools for fixing build
+
+-------------------------------------------------------------------
 Thu Feb 22 11:39:44 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.

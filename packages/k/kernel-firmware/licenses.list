@@ -176,6 +176,7 @@ mt7996e:	mediatek	LICENCE.mediatek
 nfp:		nfp		LICENCE.Netronome
 wil6210:	atheros		LICENSE.QualcommAtheros_ath10k
 venus:		media		LICENSE.qcom qcom/NOTICE.txt
+iris:		media		LICENSE.qcom qcom/NOTICE.txt
 imx-sdma:	platform	LICENSE.sdma_firmware
 adreno:		qcom		LICENSE.qcom qcom/NOTICE.txt
 qcom_q6v5_pas:	qcom		LICENSE.qcom qcom/NOTICE.txt

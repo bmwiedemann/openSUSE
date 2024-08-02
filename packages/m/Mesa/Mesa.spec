@@ -1,5 +1,5 @@
 #
-# spec file for package Mesa
+# spec file
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -42,7 +42,7 @@
 
 %define glamor 1
 %define _name_archive mesa
-%define _version 24.1.3
+%define _version 24.1.5
 %define with_opencl 0
 %define with_rusticl 0
 %define with_vulkan 0
@@ -145,7 +145,7 @@
 %global _paste_crate_ver 1.0.14
 
 Name:           Mesa%{psuffix}
-Version:        24.1.3
+Version:        24.1.5
 Release:        0
 Summary:        System for rendering 3-D graphics
 License:        MIT

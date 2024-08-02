@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Wed Jul 31 13:40:55 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.24.6:
+  + Highlighted bugfixes:
+    - Fix compatibility with FFmpeg 7.0.
+    - qmlglsink: Fix failure to display content on recent Android
+      devices.
+    - adaptivedemux: Fix handling of closed caption streams.
+    - cuda: Fix runtime compiler loading with old CUDA tookit.
+    - decodebin3 stream selection handling fixes.
+    - d3d11compositor, d3d12compositor: Fix transparent background
+      mode with YUV output.
+    - d3d12converter: Make gamma remap work as intended.
+    - h264decoder: Update output frame duration for interlaced
+      video when second field frame is discarded.
+    - macOS audio device provider now listens to audio devices
+      being added/removed at runtime.
+    - Rust plugins: audioloudnorm, s3hlssink, gtk4paintablesink,
+      livesync and webrtcsink fixes.
+    - videoaggregator: preserve features in non-alpha caps for
+      subclasses with non-system memory sink caps.
+    - vtenc: Fix redistribute latency spam.
+    - v4l2: fixes for complex video formats.
+    - va: Fix strides when importing DMABUFs, dmabuf handle leaks,
+      and blocklist unmaintained Intel i965 driver for encoding.
+    - waylandsink: Fix surface cropping for rotated streams.
+    - webrtcdsp: Enable multi_channel processing to fix handling of
+      stereo streams.
+    - Various bug fixes, memory leak fixes, and other stability and
+      reliability improvements.
+
+-------------------------------------------------------------------
 Thu Jun 27 17:23:35 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.24.5:

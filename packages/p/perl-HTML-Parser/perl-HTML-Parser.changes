@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jul 31 05:28:00 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 3.830.0 (3.83)
+   see /usr/share/doc/packages/perl-HTML-Parser/Changes
+
+  3.83      2024-07-30
+      - fix '$\/]' in HTML::Entities::encode_entities (GH#45) (mauke)
+
+-------------------------------------------------------------------
 Fri Mar 22 16:11:10 UTC 2024 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 3.82

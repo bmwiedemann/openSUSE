@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jul 29 13:37:47 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add reproducible.patch to override build date in font files
+  for reproducible builds of xorg-x11-fonts (boo#1173396)
+
+-------------------------------------------------------------------
 Thu Sep 28 10:47:13 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
 
 - update to 1.2.3

@@ -31,14 +31,10 @@
 
 # Ada currently fails to build on a few platforms, enable it only
 # on those that work
-%if %{suse_version} >= 1310
 %if %{suse_version} >= 1330
 %define ada_arch %ix86 x86_64 ppc ppc64 ppc64le s390 s390x ia64 aarch64 riscv64
 %else
 %define ada_arch %ix86 x86_64 ppc ppc64 s390 ia64
-%endif
-%else
-%define ada_arch %ix86 x86_64 ppc s390 ia64
 %endif
 
 %ifarch %ada_arch
@@ -197,16 +193,10 @@
 # libFOO-devel package suffix
 %define libdevel_suffix -gcc14
 
-%if %{suse_version} >= 1220
-%define selfconflict() %1
-%else
-%define selfconflict() otherproviders(%1)
-%endif
-
 %define biarch_targets x86_64 s390x powerpc64 powerpc sparc sparc64
 
 URL:            https://gcc.gnu.org/
-Version:        14.1.1+git10335
+Version:        14.2.0+git10526
 Release:        0
 %define gcc_dir_version %(echo %version |  sed 's/+.*//' | cut -d '.' -f 1)
 %define gcc_snapshot_revision %(echo %version | sed 's/[3-9]\.[0-9]\.[0-6]//' | sed 's/+/-/')
@@ -221,11 +211,7 @@ BuildRequires:  libzstd-devel
 BuildRequires:  bison
 BuildRequires:  flex
 BuildRequires:  gettext-devel
-%if %{suse_version} > 1220
 BuildRequires:  makeinfo
-%else
-BuildRequires:  texinfo
-%endif
 # until here, but at least renaming and patching info files breaks this
 BuildRequires:  gcc-c++
 BuildRequires:  glibc-devel-32bit
@@ -240,9 +226,7 @@ BuildRequires:  zlib-devel
 # for SDT markers in the C++ unwinder and gdb breakpoints on exceptions
 BuildRequires:  systemtap-headers
 %endif
-%if %{suse_version} >= 1230
 BuildRequires:  isl-devel
-%endif
 %define hostsuffix %{nil}
 %if %{build_ada}
 %if 0%{?gcc_version:%{gcc_version}} > 14
@@ -267,11 +251,6 @@ BuildRequires:  libstdc++6-devel-gcc11
 %else
 BuildRequires:  gcc-d
 %endif
-%endif
-# We now require a C++ 11 capable compiler for bootstrapping
-%if %{suse_version} < 1220
-%define hostsuffix -4.8
-BuildRequires:  gcc48-c++
 %endif
 %ifarch ia64
 BuildRequires:  libunwind-devel
@@ -365,9 +344,6 @@ Requires:       libvtv%{libvtv_sover} >= %{version}-%{release}
 Suggests:       gcc14-info gcc14-locale
 %endif
 
-%if %{suse_version} < 1310
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-%endif
 Group:          Development/Languages/C and C++
 Source:         gcc-%{version}.tar.xz
 Source1:        change_spec
@@ -591,7 +567,7 @@ Provides:       libstdc++6-pp-gcc11
 Provides:       libstdc++6-pp-gcc9
 # Only one package may provide this - allows multiple gcc versions
 # to co-exist without an overly large list of provides/obsoletes
-Conflicts:      %selfconflict libstdc++%{libstdcxx_sover}-pp
+Conflicts:      libstdc++%{libstdcxx_sover}-pp
 # packageand() does not work with versioned specifications so the fallback
 # is a Requires from libstdc++-devel to preserve previous behavior.
 %if %{suse_version} >= 1500
@@ -620,7 +596,7 @@ Provides:       libstdc++6-pp-gcc11-32bit
 Provides:       libstdc++6-pp-gcc9-32bit
 # Only one package may provide this - allows multiple gcc versions
 # to co-exist without an overly large list of provides/obsoletes
-Conflicts:      %selfconflict libstdc++%{libstdcxx_sover}-pp-32bit
+Conflicts:      libstdc++%{libstdcxx_sover}-pp-32bit
 # packageand() does not work with versioned specifications so the fallback
 # is a Requires from libstdc++-devel to preserve previous behavior.
 %if %{suse_version} >= 1500
@@ -649,7 +625,7 @@ Provides:       libstdc++6-pp-gcc11-64bit
 Provides:       libstdc++6-pp-gcc9-64bit
 # Only one package may provide this - allows multiple gcc versions
 # to co-exist without an overly large list of provides/obsoletes
-Conflicts:      %selfconflict libstdc++%{libstdcxx_sover}-pp-64bit
+Conflicts:      libstdc++%{libstdcxx_sover}-pp-64bit
 # packageand() does not work with versioned specifications so the fallback
 # is a Requires from libstdc++-devel to preserve previous behavior.
 %if %{suse_version} >= 1500
@@ -667,7 +643,7 @@ Group:          System/Base
 Provides:       libgcc_s%{libgcc_s} = %{version}-%{release}
 # Only one package may provide this - allows multiple gcc versions
 # to co-exist without an overly large list of provides/obsoletes
-Conflicts:      %selfconflict libgcc_s%{libgcc_s}
+Conflicts:      libgcc_s%{libgcc_s}
 
 %description -n libgcc_s%{libgcc_s}%{libgcc_s_suffix}
 Libgcc is needed for dynamically linked C programs.
@@ -683,7 +659,7 @@ Group:          System/Base
 Provides:       libgcc_s%{libgcc_s}-32bit = %{version}-%{release}
 # Only one package may provide this - allows multiple gcc versions
 # to co-exist without an overly large list of provides/obsoletes
-Conflicts:      %selfconflict libgcc_s%{libgcc_s}-32bit
+Conflicts:      libgcc_s%{libgcc_s}-32bit
 
 %description -n libgcc_s%{libgcc_s}%{libgcc_s_suffix}-32bit
 Libgcc is needed for dynamically linked C programs.
@@ -699,7 +675,7 @@ Group:          System/Base
 Provides:       libgcc_s%{libgcc_s}-64bit = %{version}-%{release}
 # Only one package may provide this - allows multiple gcc versions
 # to co-exist without an overly large list of provides/obsoletes
-Conflicts:      %selfconflict libgcc_s%{libgcc_s}-64bit
+Conflicts:      libgcc_s%{libgcc_s}-64bit
 
 %description -n libgcc_s%{libgcc_s}%{libgcc_s_suffix}-64bit
 Libgcc is needed for dynamically linked C programs.
@@ -715,7 +691,7 @@ Group:          System/Base
 Provides:       libgomp%{libgomp_sover} = %{version}-%{release}
 # Only one package may provide this - allows multiple gcc versions
 # to co-exist without an overly large list of provides/obsoletes
-Conflicts:      %selfconflict libgomp%{libgomp_sover}
+Conflicts:      libgomp%{libgomp_sover}
 
 %description -n libgomp%{libgomp_sover}%{libgomp_suffix}
 This is the OpenMP runtime library needed by OpenMP enabled programs
@@ -735,7 +711,7 @@ Group:          System/Base
 Provides:       libgomp%{libgomp_sover}-32bit = %{version}-%{release}
 # Only one package may provide this - allows multiple gcc versions
 # to co-exist without an overly large list of provides/obsoletes
-Conflicts:      %selfconflict libgomp%{libgomp_sover}-32bit
+Conflicts:      libgomp%{libgomp_sover}-32bit
 
 %description -n libgomp%{libgomp_sover}%{libgomp_suffix}-32bit
 This is the OpenMP runtime library needed by OpenMP enabled programs
@@ -755,7 +731,7 @@ Group:          System/Base
 Provides:       libgomp%{libgomp_sover}-64bit = %{version}-%{release}
 # Only one package may provide this - allows multiple gcc versions
 # to co-exist without an overly large list of provides/obsoletes
-Conflicts:      %selfconflict libgomp%{libgomp_sover}-64bit
+Conflicts:      libgomp%{libgomp_sover}-64bit
 
 %description -n libgomp%{libgomp_sover}%{libgomp_suffix}-64bit
 This is the OpenMP runtime library needed by OpenMP enabled programs
@@ -776,7 +752,7 @@ Suggests:       libstdc++%{libstdcxx_sover}-locale
 Provides:       libstdc++%{libstdcxx_sover} = %{version}-%{release}
 # Only one package may provide this - allows multiple gcc versions
 # to co-exist without an overly large list of provides/obsoletes
-Conflicts:      %selfconflict libstdc++%{libstdcxx_sover}
+Conflicts:      libstdc++%{libstdcxx_sover}
 # Fallback for non-existing Supplements support
 %if %{suse_version} < 1500
 Recommends:     libstdc++%{libstdcxx_sover}-pp = %{version}-%{release}
@@ -802,7 +778,7 @@ Suggests:       libstdc++%{libstdcxx_sover}-locale
 Provides:       libstdc++%{libstdcxx_sover}-32bit = %{version}-%{release}
 # Only one package may provide this - allows multiple gcc versions
 # to co-exist without an overly large list of provides/obsoletes
-Conflicts:      %selfconflict libstdc++%{libstdcxx_sover}-32bit
+Conflicts:      libstdc++%{libstdcxx_sover}-32bit
 # Fallback for non-existing Supplements support
 %if %{suse_version} < 1500
 Recommends:     libstdc++%{libstdcxx_sover}-pp-32bit = %{version}-%{release}
@@ -828,7 +804,7 @@ Suggests:       libstdc++%{libstdcxx_sover}-locale
 Provides:       libstdc++%{libstdcxx_sover}-64bit = %{version}-%{release}
 # Only one package may provide this - allows multiple gcc versions
 # to co-exist without an overly large list of provides/obsoletes
-Conflicts:      %selfconflict libstdc++%{libstdcxx_sover}-64bit
+Conflicts:      libstdc++%{libstdcxx_sover}-64bit
 # Fallback for non-existing Supplements support
 %if %{suse_version} < 1500
 Recommends:     libstdc++%{libstdcxx_sover}-pp-64bit = %{version}-%{release}
@@ -853,7 +829,7 @@ Group:          System/Libraries
 Provides:       libstdc++%{libstdcxx_sover}-locale = %{version}-%{release}
 # Only one package may provide this - allows multiple gcc versions
 # to co-exist without an overly large list of provides/obsoletes
-Conflicts:      %selfconflict libstdc++%{libstdcxx_sover}-locale
+Conflicts:      libstdc++%{libstdcxx_sover}-locale
 
 %description -n libstdc++%{libstdcxx_sover}%{libstdcxx_suffix}-locale
 The standard C++ library locale data.
@@ -863,9 +839,7 @@ Summary:        Documentation for the GNU compiler collection
 License:        GFDL-1.2-only
 Group:          Documentation/Other
 PreReq:         %{install_info_prereq}
-%if 0%{?suse_version} >= 1120
 BuildArch:      noarch
-%endif
 
 %description info
 GNU info-pages for the GNU compiler collection covering both user-level
@@ -917,7 +891,7 @@ Group:          Development/Libraries/Other
 Provides:       libobjc%{libobjc_sover} = %{version}-%{release}
 # Only one package may provide this - allows multiple gcc versions
 # to co-exist without an overly large list of provides/obsoletes
-Conflicts:      %selfconflict libobjc%{libobjc_sover}
+Conflicts:      libobjc%{libobjc_sover}
 
 %description -n libobjc%{libobjc_sover}%{libobjc_suffix}
 The library for the GNU Objective C compiler.
@@ -933,7 +907,7 @@ Group:          Development/Libraries/Other
 Provides:       libobjc%{libobjc_sover}-32bit = %{version}-%{release}
 # Only one package may provide this - allows multiple gcc versions
 # to co-exist without an overly large list of provides/obsoletes
-Conflicts:      %selfconflict libobjc%{libobjc_sover}-32bit
+Conflicts:      libobjc%{libobjc_sover}-32bit
 
 %description -n libobjc%{libobjc_sover}%{libobjc_suffix}-32bit
 The library for the GNU Objective C compiler.
@@ -949,7 +923,7 @@ Group:          Development/Libraries/Other
 Provides:       libobjc%{libobjc_sover}-64bit = %{version}-%{release}
 # Only one package may provide this - allows multiple gcc versions
 # to co-exist without an overly large list of provides/obsoletes
-Conflicts:      %selfconflict libobjc%{libobjc_sover}-64bit
+Conflicts:      libobjc%{libobjc_sover}-64bit
 
 %description -n libobjc%{libobjc_sover}%{libobjc_suffix}-64bit
 The library for the GNU Objective C compiler.
@@ -1047,9 +1021,9 @@ Summary:        GNU Ada Runtime Libraries
 License:        GPL-3.0-or-later WITH GCC-exception-3.1
 Group:          System/Libraries
 Provides:       libgnarl-14 = %{version}-%{release}
-Conflicts:      %selfconflict libgnarl-14
+Conflicts:      libgnarl-14
 Provides:       libgnat-14 = %{version}-%{release}
-Conflicts:      %selfconflict libgnat-14
+Conflicts:      libgnat-14
 
 %description -n libada14
 This package contains the shared libraries required to run programs
@@ -1068,9 +1042,9 @@ Summary:        GNU Ada Runtime Libraries
 License:        GPL-3.0-or-later WITH GCC-exception-3.1
 Group:          System/Libraries
 Provides:       libgnarl-14-32bit = %{version}-%{release}
-Conflicts:      %selfconflict libgnarl-14-32bit
+Conflicts:      libgnarl-14-32bit
 Provides:       libgnat-14-32bit = %{version}-%{release}
-Conflicts:      %selfconflict libgnat-14-32bit
+Conflicts:      libgnat-14-32bit
 
 %description -n libada14-32bit
 This package contains the shared libraries required to run programs
@@ -1089,9 +1063,9 @@ Summary:        GNU Ada Runtime Libraries
 License:        GPL-3.0-or-later WITH GCC-exception-3.1
 Group:          System/Libraries
 Provides:       libgnarl-14-64bit = %{version}-%{release}
-Conflicts:      %selfconflict libgnarl-14-64bit
+Conflicts:      libgnarl-14-64bit
 Provides:       libgnat-14-64bit = %{version}-%{release}
-Conflicts:      %selfconflict libgnat-14-64bit
+Conflicts:      libgnat-14-64bit
 
 %description -n libada14-64bit
 This package contains the shared libraries required to run programs
@@ -1113,7 +1087,7 @@ Requires:       gcc14 = %{version}-%{release}
 Requires:       gcc14-fortran = %{version}-%{release}
 Requires:       libgfortran%{libgfortran_sover} >= %{version}-%{release}
 %ifarch %quadmath_arch
-Requires:       libquadmath%{libquadmath_sover} >= %{version}-%{release}
+Requires:       libquadmath%{libquadmath_sover}-devel%{libdevel_suffix} = %{version}-%{release}
 %endif
 
 %description fortran
@@ -1127,7 +1101,7 @@ Requires:       gcc14-32bit = %{version}-%{release}
 Requires:       gcc14-fortran = %{version}-%{release}
 Requires:       libgfortran%{libgfortran_sover}-32bit >= %{version}-%{release}
 %ifarch %quadmath_arch
-Requires:       libquadmath%{libquadmath_sover}-32bit >= %{version}-%{release}
+Requires:       libquadmath%{libquadmath_sover}-devel%{libdevel_suffix}-32bit = %{version}-%{release}
 %endif
 
 %description fortran-32bit
@@ -1141,7 +1115,7 @@ Requires:       gcc14-64bit = %{version}-%{release}
 Requires:       gcc14-fortran = %{version}-%{release}
 Requires:       libgfortran%{libgfortran_sover}-64bit >= %{version}-%{release}
 %ifarch %quadmath_arch
-Requires:       libquadmath%{libquadmath_sover}-64bit >= %{version}-%{release}
+Requires:       libquadmath%{libquadmath_sover}-devel%{libdevel_suffix}-64bit = %{version}-%{release}
 %endif
 
 %description fortran-64bit
@@ -1157,7 +1131,7 @@ Requires:       libquadmath%{libquadmath_sover} >= %{version}-%{release}
 Provides:       libgfortran%{libgfortran_sover} = %{version}-%{release}
 # Only one package may provide this - allows multiple gcc versions
 # to co-exist without an overly large list of provides/obsoletes
-Conflicts:      %selfconflict libgfortran%{libgfortran_sover}
+Conflicts:      libgfortran%{libgfortran_sover}
 
 %description -n libgfortran%{libgfortran_sover}%{libgfortran_suffix}
 The runtime library needed to run programs compiled with the Fortran compiler
@@ -1177,7 +1151,7 @@ Requires:       libquadmath%{libquadmath_sover}-32bit >= %{version}-%{release}
 Provides:       libgfortran%{libgfortran_sover}-32bit = %{version}-%{release}
 # Only one package may provide this - allows multiple gcc versions
 # to co-exist without an overly large list of provides/obsoletes
-Conflicts:      %selfconflict libgfortran%{libgfortran_sover}-32bit
+Conflicts:      libgfortran%{libgfortran_sover}-32bit
 
 %description -n libgfortran%{libgfortran_sover}%{libgfortran_suffix}-32bit
 The runtime library needed to run programs compiled with the Fortran compiler
@@ -1197,7 +1171,7 @@ Requires:       libquadmath%{libquadmath_sover}-64bit >= %{version}-%{release}
 Provides:       libgfortran%{libgfortran_sover}-64bit = %{version}-%{release}
 # Only one package may provide this - allows multiple gcc versions
 # to co-exist without an overly large list of provides/obsoletes
-Conflicts:      %selfconflict libgfortran%{libgfortran_sover}-64bit
+Conflicts:      libgfortran%{libgfortran_sover}-64bit
 
 %description -n libgfortran%{libgfortran_sover}%{libgfortran_suffix}-64bit
 The runtime library needed to run programs compiled with the Fortran compiler
@@ -1214,7 +1188,7 @@ Group:          Development/Languages/Fortran
 Provides:       libquadmath%{libquadmath_sover} = %{version}-%{release}
 # Only one package may provide this - allows multiple gcc versions
 # to co-exist without an overly large list of provides/obsoletes
-Conflicts:      %selfconflict libquadmath%{libquadmath_sover}
+Conflicts:      libquadmath%{libquadmath_sover}
 
 %description -n libquadmath%{libquadmath_sover}%{libquadmath_suffix}
 The runtime library needed to run programs compiled with the Fortran compiler
@@ -1232,7 +1206,7 @@ Group:          Development/Languages/Fortran
 Provides:       libquadmath%{libquadmath_sover}-32bit = %{version}-%{release}
 # Only one package may provide this - allows multiple gcc versions
 # to co-exist without an overly large list of provides/obsoletes
-Conflicts:      %selfconflict libquadmath%{libquadmath_sover}-32bit
+Conflicts:      libquadmath%{libquadmath_sover}-32bit
 
 %description -n libquadmath%{libquadmath_sover}%{libquadmath_suffix}-32bit
 The runtime library needed to run programs compiled with the Fortran compiler
@@ -1250,7 +1224,7 @@ Group:          Development/Languages/Fortran
 Provides:       libquadmath%{libquadmath_sover}-64bit = %{version}-%{release}
 # Only one package may provide this - allows multiple gcc versions
 # to co-exist without an overly large list of provides/obsoletes
-Conflicts:      %selfconflict libquadmath%{libquadmath_sover}-64bit
+Conflicts:      libquadmath%{libquadmath_sover}-64bit
 
 %description -n libquadmath%{libquadmath_sover}%{libquadmath_suffix}-64bit
 The runtime library needed to run programs compiled with the Fortran compiler
@@ -1261,6 +1235,33 @@ operations.
 
 %postun -n libquadmath%{libquadmath_sover}%{libquadmath_suffix}-64bit -p /sbin/ldconfig
 
+%package -n libquadmath%{libquadmath_sover}-devel%{libdevel_suffix}
+Summary:        The GNU Fortran Compiler Quadmath Runtime Library Development Files
+License:        LGPL-2.1-only
+Group:          Development/Languages/Fortran
+Requires:       libquadmath%{libquadmath_sover} >= %{version}-%{release}
+
+%description -n libquadmath%{libquadmath_sover}-devel%{libdevel_suffix}
+The libquadmatah runtime library development files.
+
+%package -n libquadmath%{libquadmath_sover}-devel%{libdevel_suffix}-32bit
+Summary:        The GNU Fortran Compiler Quadmath Runtime Library Development Files
+License:        LGPL-2.1-only
+Group:          Development/Languages/Fortran
+Requires:       libquadmath%{libquadmath_sover}-32bit >= %{version}-%{release}
+
+%description -n libquadmath%{libquadmath_sover}-devel%{libdevel_suffix}-32bit
+The libquadmatah runtime library development files.
+
+%package -n libquadmath%{libquadmath_sover}-devel%{libdevel_suffix}-64bit
+Summary:        The GNU Fortran Compiler Quadmath Runtime Library Development Files
+License:        LGPL-2.1-only
+Group:          Development/Languages/Fortran
+Requires:       libquadmath%{libquadmath_sover}-64bit >= %{version}-%{release}
+
+%description -n libquadmath%{libquadmath_sover}-devel%{libdevel_suffix}-64bit
+The libquadmatah runtime library development files.
+
 %package -n libitm%{libitm_sover}%{libitm_suffix}
 Summary:        The GNU Compiler Transactional Memory Runtime Library
 License:        MIT
@@ -1268,7 +1269,7 @@ Group:          Development/Languages/C and C++
 Provides:       libitm%{libitm_sover} = %{version}-%{release}
 # Only one package may provide this - allows multiple gcc versions
 # to co-exist without an overly large list of provides/obsoletes
-Conflicts:      %selfconflict libitm%{libitm_sover}
+Conflicts:      libitm%{libitm_sover}
 
 %description -n libitm%{libitm_sover}%{libitm_suffix}
 The runtime library needed to run programs compiled with the
@@ -1285,7 +1286,7 @@ Group:          Development/Languages/C and C++
 Provides:       libitm%{libitm_sover}-32bit = %{version}-%{release}
 # Only one package may provide this - allows multiple gcc versions
 # to co-exist without an overly large list of provides/obsoletes
-Conflicts:      %selfconflict libitm%{libitm_sover}-32bit
+Conflicts:      libitm%{libitm_sover}-32bit
 
 %description -n libitm%{libitm_sover}%{libitm_suffix}-32bit
 The runtime library needed to run programs compiled with the
@@ -1302,7 +1303,7 @@ Group:          Development/Languages/C and C++
 Provides:       libitm%{libitm_sover}-64bit = %{version}-%{release}
 # Only one package may provide this - allows multiple gcc versions
 # to co-exist without an overly large list of provides/obsoletes
-Conflicts:      %selfconflict libitm%{libitm_sover}-64bit
+Conflicts:      libitm%{libitm_sover}-64bit
 
 %description -n libitm%{libitm_sover}%{libitm_suffix}-64bit
 The runtime library needed to run programs compiled with the
@@ -1319,7 +1320,7 @@ Group:          Development/Languages/C and C++
 Provides:       libasan%{libasan_sover} = %{version}-%{release}
 # Only one package may provide this - allows multiple gcc versions
 # to co-exist without an overly large list of provides/obsoletes
-Conflicts:      %selfconflict libasan%{libasan_sover}
+Conflicts:      libasan%{libasan_sover}
 
 %description -n libasan%{libasan_sover}%{libasan_suffix}
 The runtime library needed to run programs compiled with the
@@ -1336,7 +1337,7 @@ Group:          Development/Languages/C and C++
 Provides:       libasan%{libasan_sover}-32bit = %{version}-%{release}
 # Only one package may provide this - allows multiple gcc versions
 # to co-exist without an overly large list of provides/obsoletes
-Conflicts:      %selfconflict libasan%{libasan_sover}-32bit
+Conflicts:      libasan%{libasan_sover}-32bit
 
 %description -n libasan%{libasan_sover}%{libasan_suffix}-32bit
 The runtime library needed to run programs compiled with the
@@ -1353,7 +1354,7 @@ Group:          Development/Languages/C and C++
 Provides:       libasan%{libasan_sover}-64bit = %{version}-%{release}
 # Only one package may provide this - allows multiple gcc versions
 # to co-exist without an overly large list of provides/obsoletes
-Conflicts:      %selfconflict libasan%{libasan_sover}-64bit
+Conflicts:      libasan%{libasan_sover}-64bit
 
 %description -n libasan%{libasan_sover}%{libasan_suffix}-64bit
 The runtime library needed to run programs compiled with the
@@ -1370,7 +1371,7 @@ Group:          Development/Languages/C and C++
 Provides:       libtsan%{libtsan_sover} = %{version}-%{release}
 # Only one package may provide this - allows multiple gcc versions
 # to co-exist without an overly large list of provides/obsoletes
-Conflicts:      %selfconflict libtsan%{libtsan_sover}
+Conflicts:      libtsan%{libtsan_sover}
 
 %description -n libtsan%{libtsan_sover}%{libtsan_suffix}
 The runtime library needed to run programs compiled with the
@@ -1387,7 +1388,7 @@ Group:          Development/Languages/C and C++
 Provides:       libtsan%{libtsan_sover}-32bit = %{version}-%{release}
 # Only one package may provide this - allows multiple gcc versions
 # to co-exist without an overly large list of provides/obsoletes
-Conflicts:      %selfconflict libtsan%{libtsan_sover}-32bit
+Conflicts:      libtsan%{libtsan_sover}-32bit
 
 %description -n libtsan%{libtsan_sover}%{libtsan_suffix}-32bit
 The runtime library needed to run programs compiled with the
@@ -1404,7 +1405,7 @@ Group:          Development/Languages/C and C++
 Provides:       libtsan%{libtsan_sover}-64bit = %{version}-%{release}
 # Only one package may provide this - allows multiple gcc versions
 # to co-exist without an overly large list of provides/obsoletes
-Conflicts:      %selfconflict libtsan%{libtsan_sover}-64bit
+Conflicts:      libtsan%{libtsan_sover}-64bit
 
 %description -n libtsan%{libtsan_sover}%{libtsan_suffix}-64bit
 The runtime library needed to run programs compiled with the
@@ -1421,7 +1422,7 @@ Group:          Development/Languages/C and C++
 Provides:       libhwasan%{libhwasan_sover} = %{version}-%{release}
 # Only one package may provide this - allows multiple gcc versions
 # to co-exist without an overly large list of provides/obsoletes
-Conflicts:      %selfconflict libhwasan%{libhwasan_sover}
+Conflicts:      libhwasan%{libhwasan_sover}
 
 %description -n libhwasan%{libhwasan_sover}%{libhwasan_suffix}
 The runtime library needed to run programs compiled with the
@@ -1438,7 +1439,7 @@ Group:          Development/Languages/C and C++
 Provides:       libhwasan%{libhwasan_sover}-32bit = %{version}-%{release}
 # Only one package may provide this - allows multiple gcc versions
 # to co-exist without an overly large list of provides/obsoletes
-Conflicts:      %selfconflict libhwasan%{libhwasan_sover}-32bit
+Conflicts:      libhwasan%{libhwasan_sover}-32bit
 
 %description -n libhwasan%{libhwasan_sover}%{libhwasan_suffix}-32bit
 The runtime library needed to run programs compiled with the
@@ -1455,7 +1456,7 @@ Group:          Development/Languages/C and C++
 Provides:       libhwasan%{libhwasan_sover}-64bit = %{version}-%{release}
 # Only one package may provide this - allows multiple gcc versions
 # to co-exist without an overly large list of provides/obsoletes
-Conflicts:      %selfconflict libhwasan%{libhwasan_sover}-64bit
+Conflicts:      libhwasan%{libhwasan_sover}-64bit
 
 %description -n libhwasan%{libhwasan_sover}%{libhwasan_suffix}-64bit
 The runtime library needed to run programs compiled with the
@@ -1472,7 +1473,7 @@ Group:          Development/Languages/C and C++
 Provides:       libatomic%{libatomic_sover} = %{version}-%{release}
 # Only one package may provide this - allows multiple gcc versions
 # to co-exist without an overly large list of provides/obsoletes
-Conflicts:      %selfconflict libatomic%{libatomic_sover}
+Conflicts:      libatomic%{libatomic_sover}
 
 %description -n libatomic%{libatomic_sover}%{libatomic_suffix}
 The runtime library for atomic operations of the GNU Compiler Collection (GCC).
@@ -1488,7 +1489,7 @@ Group:          Development/Languages/C and C++
 Provides:       libatomic%{libatomic_sover}-32bit = %{version}-%{release}
 # Only one package may provide this - allows multiple gcc versions
 # to co-exist without an overly large list of provides/obsoletes
-Conflicts:      %selfconflict libatomic%{libatomic_sover}-32bit
+Conflicts:      libatomic%{libatomic_sover}-32bit
 
 %description -n libatomic%{libatomic_sover}%{libatomic_suffix}-32bit
 The runtime library for atomic operations of the GNU Compiler Collection (GCC).
@@ -1504,7 +1505,7 @@ Group:          Development/Languages/C and C++
 Provides:       libatomic%{libatomic_sover}-64bit = %{version}-%{release}
 # Only one package may provide this - allows multiple gcc versions
 # to co-exist without an overly large list of provides/obsoletes
-Conflicts:      %selfconflict libatomic%{libatomic_sover}-64bit
+Conflicts:      libatomic%{libatomic_sover}-64bit
 
 %description -n libatomic%{libatomic_sover}%{libatomic_suffix}-64bit
 The runtime library for atomic operations of the GNU Compiler Collection (GCC).
@@ -1520,7 +1521,7 @@ Group:          Development/Languages/C and C++
 Provides:       liblsan%{liblsan_sover} = %{version}-%{release}
 # Only one package may provide this - allows multiple gcc versions
 # to co-exist without an overly large list of provides/obsoletes
-Conflicts:      %selfconflict liblsan%{liblsan_sover}
+Conflicts:      liblsan%{liblsan_sover}
 
 %description -n liblsan%{liblsan_sover}%{liblsan_suffix}
 The runtime library needed to run programs compiled with the
@@ -1537,7 +1538,7 @@ Group:          Development/Languages/C and C++
 Provides:       liblsan%{liblsan_sover}-32bit = %{version}-%{release}
 # Only one package may provide this - allows multiple gcc versions
 # to co-exist without an overly large list of provides/obsoletes
-Conflicts:      %selfconflict liblsan%{liblsan_sover}-32bit
+Conflicts:      liblsan%{liblsan_sover}-32bit
 
 %description -n liblsan%{liblsan_sover}%{liblsan_suffix}-32bit
 The runtime library needed to run programs compiled with the
@@ -1554,7 +1555,7 @@ Group:          Development/Languages/C and C++
 Provides:       liblsan%{liblsan_sover}-64bit = %{version}-%{release}
 # Only one package may provide this - allows multiple gcc versions
 # to co-exist without an overly large list of provides/obsoletes
-Conflicts:      %selfconflict liblsan%{liblsan_sover}-64bit
+Conflicts:      liblsan%{liblsan_sover}-64bit
 
 %description -n liblsan%{liblsan_sover}%{liblsan_suffix}-64bit
 The runtime library needed to run programs compiled with the
@@ -1571,7 +1572,7 @@ Group:          Development/Languages/C and C++
 Provides:       libubsan%{libubsan_sover} = %{version}-%{release}
 # Only one package may provide this - allows multiple gcc versions
 # to co-exist without an overly large list of provides/obsoletes
-Conflicts:      %selfconflict libubsan%{libubsan_sover}
+Conflicts:      libubsan%{libubsan_sover}
 
 %description -n libubsan%{libubsan_sover}%{libubsan_suffix}
 The runtime library needed to run programs compiled with the
@@ -1588,7 +1589,7 @@ Group:          Development/Languages/C and C++
 Provides:       libubsan%{libubsan_sover}-32bit = %{version}-%{release}
 # Only one package may provide this - allows multiple gcc versions
 # to co-exist without an overly large list of provides/obsoletes
-Conflicts:      %selfconflict libubsan%{libubsan_sover}-32bit
+Conflicts:      libubsan%{libubsan_sover}-32bit
 
 %description -n libubsan%{libubsan_sover}%{libubsan_suffix}-32bit
 The runtime library needed to run programs compiled with the
@@ -1605,7 +1606,7 @@ Group:          Development/Languages/C and C++
 Provides:       libubsan%{libubsan_sover}-64bit = %{version}-%{release}
 # Only one package may provide this - allows multiple gcc versions
 # to co-exist without an overly large list of provides/obsoletes
-Conflicts:      %selfconflict libubsan%{libubsan_sover}-64bit
+Conflicts:      libubsan%{libubsan_sover}-64bit
 
 %description -n libubsan%{libubsan_sover}%{libubsan_suffix}-64bit
 The runtime library needed to run programs compiled with the
@@ -1622,7 +1623,7 @@ Group:          Development/Languages/C and C++
 Provides:       libvtv%{libvtv_sover} = %{version}-%{release}
 # Only one package may provide this - allows multiple gcc versions
 # to co-exist without an overly large list of provides/obsoletes
-Conflicts:      %selfconflict libvtv%{libvtv_sover}
+Conflicts:      libvtv%{libvtv_sover}
 
 %description -n libvtv%{libvtv_sover}%{libvtv_suffix}
 The runtime library needed to run programs compiled with the
@@ -1639,7 +1640,7 @@ Group:          Development/Languages/C and C++
 Provides:       libvtv%{libvtv_sover}-32bit = %{version}-%{release}
 # Only one package may provide this - allows multiple gcc versions
 # to co-exist without an overly large list of provides/obsoletes
-Conflicts:      %selfconflict libvtv%{libvtv_sover}-32bit
+Conflicts:      libvtv%{libvtv_sover}-32bit
 
 %description -n libvtv%{libvtv_sover}%{libvtv_suffix}-32bit
 The runtime library needed to run programs compiled with the
@@ -1656,7 +1657,7 @@ Group:          Development/Languages/C and C++
 Provides:       libvtv%{libvtv_sover}-64bit = %{version}-%{release}
 # Only one package may provide this - allows multiple gcc versions
 # to co-exist without an overly large list of provides/obsoletes
-Conflicts:      %selfconflict libvtv%{libvtv_sover}-64bit
+Conflicts:      libvtv%{libvtv_sover}-64bit
 
 %description -n libvtv%{libvtv_sover}%{libvtv_suffix}-64bit
 The runtime library needed to run programs compiled with the
@@ -1709,7 +1710,7 @@ Group:          Development/Languages/Other
 Provides:       libgo%{libgo_sover} = %{version}-%{release}
 # Only one package may provide this - allows multiple gcc versions
 # to co-exist without an overly large list of provides/obsoletes
-Conflicts:      %selfconflict libgo%{libgo_sover}
+Conflicts:      libgo%{libgo_sover}
 
 %description -n libgo%{libgo_sover}%{libgo_suffix}
 Runtime library for the GNU Go language.
@@ -1725,7 +1726,7 @@ Group:          Development/Languages/Other
 Provides:       libgo%{libgo_sover}-32bit = %{version}-%{release}
 # Only one package may provide this - allows multiple gcc versions
 # to co-exist without an overly large list of provides/obsoletes
-Conflicts:      %selfconflict libgo%{libgo_sover}-32bit
+Conflicts:      libgo%{libgo_sover}-32bit
 
 %description -n libgo%{libgo_sover}%{libgo_suffix}-32bit
 Runtime library for the GNU Go language.
@@ -1741,7 +1742,7 @@ Group:          Development/Languages/Other
 Provides:       libgo%{libgo_sover}-64bit = %{version}-%{release}
 # Only one package may provide this - allows multiple gcc versions
 # to co-exist without an overly large list of provides/obsoletes
-Conflicts:      %selfconflict libgo%{libgo_sover}-64bit
+Conflicts:      libgo%{libgo_sover}-64bit
 
 %description -n libgo%{libgo_sover}%{libgo_suffix}-64bit
 Runtime library for the GNU Go language.
@@ -1796,7 +1797,7 @@ Group:          Development/Languages/Other
 Provides:       libgphobos%{libgphobos_sover} = %{version}-%{release}
 # Only one package may provide this - allows multiple gcc versions
 # to co-exist without an overly large list of provides/obsoletes
-Conflicts:      %selfconflict libgphobos%{libgphobos_sover}
+Conflicts:      libgphobos%{libgphobos_sover}
 
 %description -n libgphobos%{libgphobos_sover}%{libgphobos_suffix}
 Runtime library for the GNU D language.
@@ -1812,7 +1813,7 @@ Group:          Development/Languages/Other
 Provides:       libgphobos%{libgphobos_sover}-32bit = %{version}-%{release}
 # Only one package may provide this - allows multiple gcc versions
 # to co-exist without an overly large list of provides/obsoletes
-Conflicts:      %selfconflict libgphobos%{libgphobos_sover}-32bit
+Conflicts:      libgphobos%{libgphobos_sover}-32bit
 
 %description -n libgphobos%{libgphobos_sover}%{libgphobos_suffix}-32bit
 Runtime library for the GNU D language.
@@ -1828,7 +1829,7 @@ Group:          Development/Languages/Other
 Provides:       libgphobos%{libgphobos_sover}-64bit = %{version}-%{release}
 # Only one package may provide this - allows multiple gcc versions
 # to co-exist without an overly large list of provides/obsoletes
-Conflicts:      %selfconflict libgphobos%{libgphobos_sover}-64bit
+Conflicts:      libgphobos%{libgphobos_sover}-64bit
 
 %description -n libgphobos%{libgphobos_sover}%{libgphobos_suffix}-64bit
 Runtime library for the GNU D language.
@@ -1844,7 +1845,7 @@ Group:          Development/Languages/Other
 Provides:       libgdruntime%{libgdruntime_sover} = %{version}-%{release}
 # Only one package may provide this - allows multiple gcc versions
 # to co-exist without an overly large list of provides/obsoletes
-Conflicts:      %selfconflict libgdruntime%{libgdruntime_sover}
+Conflicts:      libgdruntime%{libgdruntime_sover}
 
 %description -n libgdruntime%{libgdruntime_sover}%{libgdruntime_suffix}
 Runtime library for the GNU D language.
@@ -1860,7 +1861,7 @@ Group:          Development/Languages/Other
 Provides:       libgdruntime%{libgdruntime_sover}-32bit = %{version}-%{release}
 # Only one package may provide this - allows multiple gcc versions
 # to co-exist without an overly large list of provides/obsoletes
-Conflicts:      %selfconflict libgdruntime%{libgdruntime_sover}-32bit
+Conflicts:      libgdruntime%{libgdruntime_sover}-32bit
 
 %description -n libgdruntime%{libgdruntime_sover}%{libgdruntime_suffix}-32bit
 Runtime library for the GNU D language.
@@ -1876,7 +1877,7 @@ Group:          Development/Languages/Other
 Provides:       libgdruntime%{libgdruntime_sover}-64bit = %{version}-%{release}
 # Only one package may provide this - allows multiple gcc versions
 # to co-exist without an overly large list of provides/obsoletes
-Conflicts:      %selfconflict libgdruntime%{libgdruntime_sover}-64bit
+Conflicts:      libgdruntime%{libgdruntime_sover}-64bit
 
 %description -n libgdruntime%{libgdruntime_sover}%{libgdruntime_suffix}-64bit
 Runtime library for the GNU D language.
@@ -1892,7 +1893,7 @@ Group:          Development/Languages/C and C++
 Provides:       libgccjit%{libgccjit_sover} = %{version}-%{release}
 # Only one package may provide this - allows multiple gcc versions
 # to co-exist without an overly large list of provides/obsoletes
-Conflicts:      %selfconflict libgccjit%{libgccjit_sover}
+Conflicts:      libgccjit%{libgccjit_sover}
 # At runtime the JIT needs to be able to invoke the assembler and
 # linker and find startfiles and libgcc.  The built-in driver knows
 # the compilers version install directory only so we require the
@@ -1913,7 +1914,7 @@ Group:          Development/Languages/C and C++
 Provides:       libgccjit%{libgccjit_sover}-devel = %{version}-%{release}
 # Only one gccjit package can be installed at the same time since
 # header files conflict
-Conflicts:      %selfconflict libgccjit%{libgccjit_sover}-devel
+Conflicts:      libgccjit%{libgccjit_sover}-devel
 Requires:       libgccjit%{libgccjit_sover} >= %{version}-%{release}
 
 %description -n libgccjit%{libgccjit_sover}-devel%{libdevel_suffix}
@@ -2004,7 +2005,7 @@ Group:          Development/Languages/Other
 Provides:       libm2log%{libm2_sover} = %{version}-%{release}
 # Only one package may provide this - allows multiple gcc versions
 # to co-exist without an overly large list of provides/obsoletes
-Conflicts:      %selfconflict libm2log%{libm2_sover}
+Conflicts:      libm2log%{libm2_sover}
 
 %description -n libm2log%{libm2_sover}%{libm2_suffix}
 Runtime library for the GNU Modula-2 language.
@@ -2020,7 +2021,7 @@ Group:          Development/Languages/Other
 Provides:       libm2log%{libm2_sover}-32bit = %{version}-%{release}
 # Only one package may provide this - allows multiple gcc versions
 # to co-exist without an overly large list of provides/obsoletes
-Conflicts:      %selfconflict libm2log%{libm2_sover}-32bit
+Conflicts:      libm2log%{libm2_sover}-32bit
 
 %description -n libm2log%{libm2_sover}%{libm2_suffix}-32bit
 Runtime library for the GNU Modula-2 language.
@@ -2036,7 +2037,7 @@ Group:          Development/Languages/Other
 Provides:       libm2log%{libm2_sover}-64bit = %{version}-%{release}
 # Only one package may provide this - allows multiple gcc versions
 # to co-exist without an overly large list of provides/obsoletes
-Conflicts:      %selfconflict libm2log%{libm2_sover}-64bit
+Conflicts:      libm2log%{libm2_sover}-64bit
 
 %description -n libm2log%{libm2_sover}%{libm2_suffix}-64bit
 Runtime library for the GNU Modula-2 language.
@@ -2052,7 +2053,7 @@ Group:          Development/Languages/Other
 Provides:       libm2cor%{libm2_sover} = %{version}-%{release}
 # Only one package may provide this - allows multiple gcc versions
 # to co-exist without an overly large list of provides/obsoletes
-Conflicts:      %selfconflict libm2cor%{libm2_sover}
+Conflicts:      libm2cor%{libm2_sover}
 
 %description -n libm2cor%{libm2_sover}%{libm2_suffix}
 Runtime library for the GNU Modula-2 language.
@@ -2068,7 +2069,7 @@ Group:          Development/Languages/Other
 Provides:       libm2cor%{libm2_sover}-32bit = %{version}-%{release}
 # Only one package may provide this - allows multiple gcc versions
 # to co-exist without an overly large list of provides/obsoletes
-Conflicts:      %selfconflict libm2cor%{libm2_sover}-32bit
+Conflicts:      libm2cor%{libm2_sover}-32bit
 
 %description -n libm2cor%{libm2_sover}%{libm2_suffix}-32bit
 Runtime library for the GNU Modula-2 language.
@@ -2084,7 +2085,7 @@ Group:          Development/Languages/Other
 Provides:       libm2cor%{libm2_sover}-64bit = %{version}-%{release}
 # Only one package may provide this - allows multiple gcc versions
 # to co-exist without an overly large list of provides/obsoletes
-Conflicts:      %selfconflict libm2cor%{libm2_sover}-64bit
+Conflicts:      libm2cor%{libm2_sover}-64bit
 
 %description -n libm2cor%{libm2_sover}%{libm2_suffix}-64bit
 Runtime library for the GNU Modula-2 language.
@@ -2100,7 +2101,7 @@ Group:          Development/Languages/Other
 Provides:       libm2iso%{libm2_sover} = %{version}-%{release}
 # Only one package may provide this - allows multiple gcc versions
 # to co-exist without an overly large list of provides/obsoletes
-Conflicts:      %selfconflict libm2iso%{libm2_sover}
+Conflicts:      libm2iso%{libm2_sover}
 
 %description -n libm2iso%{libm2_sover}%{libm2_suffix}
 Runtime library for the GNU Modula-2 language.
@@ -2116,7 +2117,7 @@ Group:          Development/Languages/Other
 Provides:       libm2iso%{libm2_sover}-32bit = %{version}-%{release}
 # Only one package may provide this - allows multiple gcc versions
 # to co-exist without an overly large list of provides/obsoletes
-Conflicts:      %selfconflict libm2iso%{libm2_sover}-32bit
+Conflicts:      libm2iso%{libm2_sover}-32bit
 
 %description -n libm2iso%{libm2_sover}%{libm2_suffix}-32bit
 Runtime library for the GNU Modula-2 language.
@@ -2132,7 +2133,7 @@ Group:          Development/Languages/Other
 Provides:       libm2iso%{libm2_sover}-64bit = %{version}-%{release}
 # Only one package may provide this - allows multiple gcc versions
 # to co-exist without an overly large list of provides/obsoletes
-Conflicts:      %selfconflict libm2iso%{libm2_sover}-64bit
+Conflicts:      libm2iso%{libm2_sover}-64bit
 
 %description -n libm2iso%{libm2_sover}%{libm2_suffix}-64bit
 Runtime library for the GNU Modula-2 language.
@@ -2148,7 +2149,7 @@ Group:          Development/Languages/Other
 Provides:       libm2pim%{libm2_sover} = %{version}-%{release}
 # Only one package may provide this - allows multiple gcc versions
 # to co-exist without an overly large list of provides/obsoletes
-Conflicts:      %selfconflict libm2pim%{libm2_sover}
+Conflicts:      libm2pim%{libm2_sover}
 
 %description -n libm2pim%{libm2_sover}%{libm2_suffix}
 Runtime library for the GNU Modula-2 language.
@@ -2164,7 +2165,7 @@ Group:          Development/Languages/Other
 Provides:       libm2pim%{libm2_sover}-32bit = %{version}-%{release}
 # Only one package may provide this - allows multiple gcc versions
 # to co-exist without an overly large list of provides/obsoletes
-Conflicts:      %selfconflict libm2pim%{libm2_sover}-32bit
+Conflicts:      libm2pim%{libm2_sover}-32bit
 
 %description -n libm2pim%{libm2_sover}%{libm2_suffix}-32bit
 Runtime library for the GNU Modula-2 language.
@@ -2180,7 +2181,7 @@ Group:          Development/Languages/Other
 Provides:       libm2pim%{libm2_sover}-64bit = %{version}-%{release}
 # Only one package may provide this - allows multiple gcc versions
 # to co-exist without an overly large list of provides/obsoletes
-Conflicts:      %selfconflict libm2pim%{libm2_sover}-64bit
+Conflicts:      libm2pim%{libm2_sover}-64bit
 
 %description -n libm2pim%{libm2_sover}%{libm2_suffix}-64bit
 Runtime library for the GNU Modula-2 language.
@@ -2196,7 +2197,7 @@ Group:          Development/Languages/Other
 Provides:       libm2min%{libm2_sover} = %{version}-%{release}
 # Only one package may provide this - allows multiple gcc versions
 # to co-exist without an overly large list of provides/obsoletes
-Conflicts:      %selfconflict libm2min%{libm2_sover}
+Conflicts:      libm2min%{libm2_sover}
 
 %description -n libm2min%{libm2_sover}%{libm2_suffix}
 Runtime library for the GNU Modula-2 language.
@@ -2212,7 +2213,7 @@ Group:          Development/Languages/Other
 Provides:       libm2min%{libm2_sover}-32bit = %{version}-%{release}
 # Only one package may provide this - allows multiple gcc versions
 # to co-exist without an overly large list of provides/obsoletes
-Conflicts:      %selfconflict libm2min%{libm2_sover}-32bit
+Conflicts:      libm2min%{libm2_sover}-32bit
 
 %description -n libm2min%{libm2_sover}%{libm2_suffix}-32bit
 Runtime library for the GNU Modula-2 language.
@@ -2228,7 +2229,7 @@ Group:          Development/Languages/Other
 Provides:       libm2min%{libm2_sover}-64bit = %{version}-%{release}
 # Only one package may provide this - allows multiple gcc versions
 # to co-exist without an overly large list of provides/obsoletes
-Conflicts:      %selfconflict libm2min%{libm2_sover}-64bit
+Conflicts:      libm2min%{libm2_sover}-64bit
 
 %description -n libm2min%{libm2_sover}%{libm2_suffix}-64bit
 Runtime library for the GNU Modula-2 language.
@@ -2378,11 +2379,6 @@ ln -s newlib-4.4.0.20231231/newlib .
 %define _lto_cflags %{nil}
 # Avoid rebuilding of generated files
 contrib/gcc_update --touch
-
-# SLE11 does not allow empty rpms
-%if %{suse_version} < 1310
-echo "This is a dummy package to provide a dependency." > README
-%endif
 
 rm -rf obj-%{GCCDIST}
 mkdir obj-%{GCCDIST}
@@ -2580,10 +2576,8 @@ amdgcn-amdhsa,\
 %endif
 %endif
 	--enable-linux-futex \
-%if %{suse_version} >= 1315
 %ifarch %ix86 x86_64 ppc ppc64 ppc64le %arm aarch64 s390 s390x %sparc
 	--enable-gnu-indirect-function \
-%endif
 %endif
 	--program-suffix=%{binsuffix} \
 %ifarch %{disable_multilib_arch}
@@ -2690,13 +2684,8 @@ amdgcn-amdhsa,\
 	--with-cpu=power8 \
 	--with-tune=power9 \
 %else
-%if %{suse_version} >= 1315 && %{suse_version} != 1320
 	--with-cpu=power8 \
 	--with-tune=power8 \
-%else
-	--with-cpu=power7 \
-	--with-tune=power7 \
-%endif
 %endif
 %endif
 %if %{suse_version} > 1500
@@ -2755,11 +2744,7 @@ amdgcn-amdhsa,\
 %if %{suse_version} >= 1600 && !0%{?is_opensuse}
         --with-tune=z14 --with-arch=z14 \
 %else
-%if %{suse_version} >= 1310
         --with-tune=zEC12 --with-arch=z196 \
-%else
-	--with-tune=z9-109 --with-arch=z900 \
-%endif
 %endif
 	--with-long-double-128 \
 	--enable-decimal-float \
@@ -3611,9 +3596,6 @@ cat cpplib%{binsuffix}.lang gcc%{binsuffix}.lang > gcc14-locale.lang
 %files c++%{separate_biarch_suffix}
 %defattr(-,root,root)
 # empty - only for the dependency
-%if %{suse_version} < 1310
-%doc README
-%endif
 %endif
 
 %files -n libstdc++%{libstdcxx_sover}%{libstdcxx_suffix}
@@ -3816,12 +3798,6 @@ cat cpplib%{binsuffix}.lang gcc%{binsuffix}.lang > gcc14-locale.lang
 %versmainlib libgfortran.so
 %versmainlib libgfortran.spec
 %versmainlib libcaf_single.a
-%ifarch %quadmath_arch
-%{libsubdir}/include/quadmath.h
-%{libsubdir}/include/quadmath_weak.h
-%versmainlib libquadmath.a
-%versmainlib libquadmath.so
-%endif
 %doc %{_mandir}/man1/gfortran%{binsuffix}.1.gz
 
 %if %{separate_biarch}
@@ -3833,10 +3809,6 @@ cat cpplib%{binsuffix}.lang gcc%{binsuffix}.lang > gcc14-locale.lang
 %versbiarchlib libgfortran.so
 %versbiarchlib libgfortran.spec
 %versbiarchlib libcaf_single.a
-%ifarch %quadmath_arch
-%versbiarchlib libquadmath.a
-%versbiarchlib libquadmath.so
-%endif
 %endif
 
 %files -n libgfortran%{libgfortran_sover}%{libgfortran_suffix}
@@ -3858,6 +3830,20 @@ cat cpplib%{binsuffix}.lang gcc%{binsuffix}.lang > gcc14-locale.lang
 %files -n libquadmath%{libquadmath_sover}%{libquadmath_suffix}%{separate_biarch_suffix}
 %defattr(-,root,root)
 %biarchlib libquadmath.so.%{libquadmath_sover}*
+%endif
+
+%files -n libquadmath%{libquadmath_sover}-devel%{libdevel_suffix}
+%defattr(-,root,root)
+%{libsubdir}/include/quadmath.h
+%{libsubdir}/include/quadmath_weak.h
+%versmainlib libquadmath.a
+%versmainlib libquadmath.so
+
+%if %{separate_biarch}
+%files -n libquadmath%{libquadmath_sover}-devel%{libdevel_suffix}%{separate_biarch_suffix}
+%defattr(-,root,root)
+%versbiarchlib libquadmath.a
+%versbiarchlib libquadmath.so
 %endif
 %endif
 %endif
@@ -3935,9 +3921,6 @@ cat cpplib%{binsuffix}.lang gcc%{binsuffix}.lang > gcc14-locale.lang
 %files obj-c++%{separate_biarch_suffix}
 %defattr(-,root,root)
 # empty - only for the dependency
-%if %{suse_version} < 1310
-%doc README
-%endif
 %endif
 %endif
 

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Aug  1 09:39:15 UTC 2024 - Johannes Segitz <jsegitz@suse.com>
+
+- Update harden_tpm2-abrmd.service.patch to contain necessary SELinux
+  changes (bsc#1209831)
+
+-------------------------------------------------------------------
 Tue May 23 12:31:21 UTC 2023 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Cover ALP via the %{suse_version} macro

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Aug  1 16:04:20 UTC 2024 - Michael Pujos <pujos.michael@gmail.com>
+
+- removed cl-gobject-introspection-sb-int.patch and fset-sb-int.patch
+- Update to version 3.11.8:
+  * Bug fixes
+    - Fix fullscreen and maximized window logic. 
+  * UI/UX
+    - Review UI of bookmarks-panel (unbound)
+    - Fix mode menu bar
+    - Fix echo message when invoking command describe-key (f1 k)
+    - Review docstrings 
+
+-------------------------------------------------------------------
 Tue Jul 23 09:48:00 UTC 2024 - Sai Karthik Karra <kskarthik@disroot.org>
 
 - spec: Add missing runtime dependency at-spi2-core 

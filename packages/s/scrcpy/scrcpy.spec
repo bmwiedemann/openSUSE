@@ -17,7 +17,7 @@
 
 
 Name:           scrcpy
-Version:        2.5
+Version:        2.6
 Release:        0
 Summary:        Display and control your Android device
 License:        Apache-2.0
@@ -35,7 +35,7 @@ BuildRequires:  pkgconfig(libavformat)
 BuildRequires:  pkgconfig(libusb-1.0)
 BuildRequires:  pkgconfig(sdl2)
 Requires:       android-tools
-%if 0%{?suse_version} <= 1500
+%if 0%{?suse_version} < 1600
 BuildRequires:  gcc11
 BuildRequires:  gcc11-PIE
 %else
@@ -72,7 +72,7 @@ Optional dependency offering zsh completion for scrcpy.
 %autosetup -p1
 
 %build
-%if 0%{?suse_version} <= 1500
+%if 0%{?suse_version} < 1600
 export CC=gcc-11
 %endif
 

@@ -1,0 +1,5 @@
+<package name="libreport" project="openSUSE:Factory">
+  <title> Libraries providing API for reporting different problems in applications </title>
+  <description>Libraries providing API for reporting different problems in applications to different bug targets like Bugzilla, ftp, trac, etc...</description>
+  <devel project="devel:libraries:c_c++" package="libreport"/>
+</package>

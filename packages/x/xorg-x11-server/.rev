@@ -4124,4 +4124,13 @@ to build this: &quot;Prefer: libatomic1-gcc5&quot;</comment>
     remain stable (gitlab xserver issue#1714)</comment>
     <requestid>1188381</requestid>
   </revision>
+  <revision rev="433" vrev="5">
+    <srcmd5>9af1f69cf16e01044e24aea98ac9b260</srcmd5>
+    <version>21.1.12</version>
+    <time>1722612334</time>
+    <user>dimstar_suse</user>
+    <comment>- Added U_xorg-xserver-e89edec497ba.patch to fix incompatible pointer
+  type error with GCC 14.</comment>
+    <requestid>1190943</requestid>
+  </revision>
 </revisionlist>

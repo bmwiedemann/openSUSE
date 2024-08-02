@@ -184,6 +184,7 @@ mt7996e:	mediatek
 nfp:		nfp
 wil6210:	atheros
 venus:		media
+iris:		media
 imx-sdma:	platform
 adreno:		qcom		msm
 mlxsw_spectrum:	mellanox

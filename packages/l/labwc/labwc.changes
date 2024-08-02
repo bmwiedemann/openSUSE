@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Fri Aug  2 03:19:38 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to wlroots version 0.17.4
+  - render/pixman: Improve transform performance
+  - render/pixman: Fix non-uniform scale with rotation
+  - wlr_surface: update get_root_surface() docs
+  - output: reset hardware_cursor on failure
+  - scene: fix double scaling of opaque region for blend mode
+    optimization
+  - xdg-toplevel: allow edge_none for resizing
+  - output: extract hardware cursor disabling logic
+  - output: disable hardware cursor when falling back to software
+  - render/vulkan: fix texture clip region leak
+  - render/vulkan: free pipeline layouts on destroy
+  - render/vulkan: free render format setups on destroy
+  - backend/x11: send correct keyboard layout
+  - xdg-popup: don't emit parent's new_popup signal too early
+  - xdg-popup: validate positioner on reposition request
+  - input-method: unmap popup surfaces on deactivate
+  - backend/wayland: destroy ignored tablet proxies
+  - backend/drm: add support for libliftoff v0.5.0
+  - render/vulkan: don't use UNDEFINED layout for imported DMA-BUFs
+  - wlr_pointer_gestures_v1: init destroy signal
+  - wlr_pointer_gestures_v1: emit destroy signal in destroy function
+  - backend/libinput: Fix call of handle_libinput_readable() when
+    WLR_LIBINPUT_NO_DEVICES is set
+- Build under submodule wlroots v0.17.4
+- add pkgconfig(xwayland) BuildRequires: enable xwayland on wlroots
+- add pkgconfig(xcb-errors) BuildRequires: enable xcb-errors util
+  library on wlroots
+
+-------------------------------------------------------------------
 Fri Jul 19 22:59:18 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 0.7.4

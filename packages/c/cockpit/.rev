@@ -509,4 +509,16 @@
 - fix suse_docs.patch causing invalid json against the storaged manifest bsc#1227299</comment>
     <requestid>1185171</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>f73981b24319c40e4fd9699d13ec4c43</srcmd5>
+    <version>321</version>
+    <time>1722612335</time>
+    <user>dimstar_suse</user>
+    <comment>- new version 321:
+  * Bug fixes and performance improvements
+- vendor.tar.gz: dropped. Bundling now part of main tarball.
+- update_version.sh: use instead of `osc service mr` to do version
+  updates. updated README.packaging</comment>
+    <requestid>1190945</requestid>
+  </revision>
 </revisionlist>

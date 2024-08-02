@@ -686,4 +686,13 @@
 - Drop gcc14-allow-incompatible-pointer-types-for-now.patch</comment>
     <requestid>1190054</requestid>
   </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>b30806ba0939d1243588cdf08168f9e7</srcmd5>
+    <version>1.16.7</version>
+    <time>1722612341</time>
+    <user>dimstar_suse</user>
+    <comment>- 1.16.7:
+  - update intree libxml2 copy (unused in our build) (forwarded request 1190495 from darix)</comment>
+    <requestid>1190956</requestid>
+  </revision>
 </revisionlist>

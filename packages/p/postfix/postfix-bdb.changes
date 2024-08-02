@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Aug  1 08:36:10 UTC 2024 - Peter Varkoly <varkoly@suse.com>
+
+- postfix gives warnings about deprecated parameters (bsc#1225397)
+
+-------------------------------------------------------------------
 Tue Jun 18 18:15:47 UTC 2024 - chris@computersalat.de
 
 - fix for Invalid cross-device link

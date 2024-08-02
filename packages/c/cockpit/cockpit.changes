@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jul 31 08:23:43 UTC 2024 - Adam Majer <adam.majer@suse.de>
+
+- new version 321:
+  * Bug fixes and performance improvements
+
+- vendor.tar.gz: dropped. Bundling now part of main tarball.
+- update_version.sh: use instead of `osc service mr` to do version
+  updates. updated README.packaging
+
+-------------------------------------------------------------------
 Wed Jul  3 13:31:38 UTC 2024 - Luna D Dragon <luna.dragon@suse.com>
 
 - new version 320:

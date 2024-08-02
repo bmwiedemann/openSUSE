@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Aug 01 18:36:07 UTC 2024 - antonio.teixeira@suse.com
+
+- Update to version 3.14.26:
+  * wlserver, backend: Fix explicit sync release not accounting for backend fb referencing
+  * wlserver: Add cv_drm_debug_syncobj_force_wait_on_commit
+  * wlserver: Filter wp_linux_drm_syncobj_manager_v1 if explicit sync is disabled by convar
+  * steamcompmgr: Remove "launch".
+  * subprojects: Bump to wlroots 0.18 + some very minor build changes
+  * wlserver, rendervulkan: Update to wlroots 0.18 release
+  * rendervulkan: Fix flipping shm textures
+  * DRMBackend: Fix parsing chromaticity coords
+  * DRMBackend: Change DeckHD check to be more specific
+  * modegen: DeckHD Support (#1281)
+
+-------------------------------------------------------------------
 Thu Jul 18 14:42:51 UTC 2024 - antonio.teixeira@suse.com
 
 - Update to version 3.14.24:

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jul 31 12:42:45 UTC 2024 - Adam Majer <adam.majer@suse.de>
+
+- New version 91. Changes since 84:
+  * Implement pull option for existing images
+  * Use binary http channel for podman socket for non-UTF-8 robustness
+  * Stop using obsolete cockpit.utf8_{de,en}coder() API
+  * Translation updates
+  * Bug fixes and performance improvements
+
+- update_version.sh: fetch package-lock.json from upstream
+  instead of regenerating.
+
+-------------------------------------------------------------------
 Sun Feb 18 10:58:36 UTC 2024 - ecsos <ecsos@opensuse.org>
 
 - New version 84:

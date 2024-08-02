@@ -20,7 +20,7 @@
 # and possibly prone to security issues.
 %bcond_with webextensions
 Name:           nyxt
-Version:        3.11.7
+Version:        3.11.8
 Release:        0
 Summary:        Keyboard-oriented, Common Lisp extensible web-browser
 License:        BSD-3-Clause
@@ -29,8 +29,6 @@ URL:            https://nyxt.atlas.engineer
 Source:         nyxt-%{version}-source-with-submodules.tar.xz
 Source1:        nyxt-rpmlintrc
 Patch0:         so_ver_fix.patch
-Patch1:         cl-gobject-introspection-sb-int.patch
-Patch2:         fset-sb-int.patch
 BuildRequires:  gcc-c++
 BuildRequires:  git
 BuildRequires:  libfixposix-devel
@@ -40,14 +38,14 @@ BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(libcrypto)
 BuildRequires:  pkgconfig(libfixposix)
 BuildRequires:  pkgconfig(webkit2gtk-4.1)
+Requires:       at-spi2-core
 Requires:       enchant-tools
 Requires:       glib-networking
 Requires:       gsettings-desktop-schemas
 Requires:       libfixposix4
+Requires:       libgthread-2_0-0
 Requires:       libwebkit2gtk-4_1-0
 Requires:       xclip
-Requires:       libgthread-2_0-0
-Requires:       at-spi2-core
 
 %description
 Nyxt is a keyboard-oriented, extensible web-browser designed for power users.
@@ -59,13 +57,13 @@ extensible in Lisp, and has powerful features for productive professionals.
 
 %build
 %if %{with webextensions}
-make all web-extensions PREFIX=/usr LIBDIR=%{_libdir} NASDF_COMPRESS=T
+make all web-extensions PREFIX=%{_prefix} LIBDIR=%{_libdir} NASDF_COMPRESS=T
 %else
-make all PREFIX=/usr LIBDIR=%{_libdir} NASDF_COMPRESS=T
+make all PREFIX=%{_prefix} LIBDIR=%{_libdir} NASDF_COMPRESS=T
 %endif
 
 %install
-%make_install PREFIX=/usr LIBDIR=%{buildroot}/%{_libdir}
+%make_install PREFIX=%{_prefix} LIBDIR=%{buildroot}/%{_libdir}
 %if %{with webextensions}
 strip -s %{buildroot}/%{_libdir}/nyxt/libnyxt.so
 %endif
@@ -77,7 +75,7 @@ cat > "%{buildroot}%{_bindir}/nyxt" << EOF
 # partial work-around for WebKitGTK gstreamer issue running nyxt sandboxed:
 # https://bugs.webkit.org/show_bug.cgi?id=268759
 
-GST_PLUGIN_SCANNER=/usr/libexec/gstreamer-1.0/gst-plugin-scanner-%{_target_cpu} exec -a nyxt nyxt.bin "\$@"
+GST_PLUGIN_SCANNER=%{_libexecdir}/gstreamer-1.0/gst-plugin-scanner-%{_target_cpu} exec -a nyxt nyxt.bin "\$@"
 EOF
 chmod +x "%{buildroot}%{_bindir}/nyxt"
 

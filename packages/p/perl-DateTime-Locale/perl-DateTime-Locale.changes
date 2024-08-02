@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Jul 28 05:29:51 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.43
+   see /usr/share/doc/packages/perl-DateTime-Locale/Changes
+
+  1.43     2024-07-27
+
+  - Fixed the prefers_24_hour_time method. This was incorrectly returning false when the locale's
+    time_format_short method contained a quote string with "h" or "K" in it. For example, the fr-CA
+    locale's time_format_short is `HH 'h' mm`. The quoted 'h' caused this method to return
+    false. Fixed by Jacques Deguest (@jackdeguest). PR #39.
+
+-------------------------------------------------------------------
 Fri Apr 19 03:06:36 UTC 2024 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.42

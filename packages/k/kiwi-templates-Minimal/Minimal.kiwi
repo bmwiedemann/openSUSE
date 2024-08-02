@@ -10,6 +10,7 @@
     </description>
     <profiles>
         <profile name="kvm-and-xen-sdboot" description="Minimal Image for KVM and Xen with systemd-boot" arch="aarch64,x86_64"/>
+        <profile name="kvm-and-xen-grub-bls" description="Minimal Image for KVM and Xen GRUB2 and bootctl" arch="aarch64,x86_64"/>
         <profile name="kvm-and-xen" description="Minimal Image for KVM and Xen" arch="aarch64,x86_64"/>
         <profile name="VMware" description="Minimal Image for VMware" arch="x86_64"/>
         <profile name="MS-HyperV" description="Minimal Image for Hyper-V" arch="aarch64,x86_64"/>
@@ -73,6 +74,41 @@
                 <oem-resize>false</oem-resize>
             </oemconfig>
             <bootloader name="custom"/>
+            <systemdisk>
+                <volume name="home"/>
+                <volume name="root"/>
+                <volume name="opt"/>
+                <volume name="srv"/>
+                <volume name="usr/local"/>
+                <volume name="var" copy_on_write="false"/>
+            </systemdisk>
+            <size unit="G">24</size>
+        </type>
+    </preferences>
+
+    <preferences profiles="kvm-and-xen-grub-bls">
+        <version>1.0.0</version>
+        <packagemanager>zypper</packagemanager>
+        <rpm-excludedocs>true</rpm-excludedocs>
+        <type
+            image="oem"
+            filesystem="btrfs"
+            format="qcow2"
+            firmware="uefi"
+            efipartsize="500"
+            bootpartition="false"
+            bootkernel="custom"
+            initrd_system="none"
+            editbootinstall="editbootinstall_mbr.sh"
+            devicepersistency="by-uuid"
+            btrfs_quota_groups="true"
+            btrfs_root_is_snapshot="true"
+            bundle_format="%N-VM.%A-%M.%m.%p-%I"
+        >
+            <oemconfig>
+                <oem-resize>false</oem-resize>
+            </oemconfig>
+            <bootloader name="grub2" bls="true" />
             <systemdisk>
                 <volume name="home"/>
                 <volume name="root"/>
@@ -331,7 +367,7 @@
     </packages>
 
     <!-- Not needed in Cloud as it uses XFS and cloud-init -->
-    <packages type="image" profiles="kvm-and-xen,kvm-and-xen-sdboot,VMware,MS-HyperV,RaspberryPi">
+    <packages type="image" profiles="kvm-and-xen,kvm-and-xen-sdboot,kvm-and-xen-grub-bls,VMware,MS-HyperV,RaspberryPi">
         <!-- Only for btrfs -->
         <package name="btrfsprogs"/>
         <package name="btrfsmaintenance"/>
@@ -350,7 +386,7 @@
         <package name="grub2-snapper-plugin"/>  <!-- snapper - grub2 - integration, "small" -->
     </packages>
 
-    <packages type="image" profiles="kvm-and-xen,kvm-and-xen-sdboot,VMware,MS-HyperV,Cloud">
+    <packages type="image" profiles="kvm-and-xen,kvm-and-xen-sdboot,kvm-and-xen-grub-bls,VMware,MS-HyperV,Cloud">
         <!-- Shim for secure boot everywhere except for RPi -->
         <package name="shim" arch="aarch64,x86_64"/>
     </packages>
@@ -364,12 +400,11 @@
         <package name="qemu-guest-agent"/>
     </packages>
 
-    <packages type="image" profiles="kvm-and-xen-sdboot">
+    <packages type="image" profiles="kvm-and-xen-sdboot,kvm-and-xen-grub-bls">
         <!-- kernel-default-base lacks dm-crypt -->
         <package name="kernel-default-base"/>
 
         <package name="sdbootutil-snapper"/>
-        <package name="sdbootutil-rpm-scriptlets"/>
         <package name="efibootmgr"/>
         <package name="uefi_mbr" arch="x86_64"/>
 
@@ -377,6 +412,11 @@
 
         <package name="disk-encryption-tool"/>
         <package name="dracut-pcr-signature"/>
+    </packages>
+
+    <packages type="image" profiles="kvm-and-xen-grub-bls">
+        <package name="grub2-x86_64-efi" arch="x86_64"/>
+        <package name="grub2-arm-efi" arch="aarch64"/>
     </packages>
 
     <packages type="image" profiles="VMware">
@@ -425,7 +465,7 @@
         <package name="gzip"/>
     </packages>
 
-    <packages type="bootstrap" profiles="kvm-and-xen,kvm-and-xen-sdboot">
+    <packages type="bootstrap" profiles="kvm-and-xen,kvm-and-xen-sdboot,kvm-and-xen-grub-bls">
         <package name="openSUSE-release-appliance-kvm"/>
     </packages>
     <packages type="bootstrap" profiles="Cloud">

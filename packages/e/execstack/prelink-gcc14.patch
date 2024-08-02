@@ -1,0 +1,12 @@
+Index: prelink-4c79120bcdbde0616f592458ccde7035e92ca3d8/m4/libelf.m4
+===================================================================
+--- prelink-4c79120bcdbde0616f592458ccde7035e92ca3d8.orig/m4/libelf.m4
++++ prelink-4c79120bcdbde0616f592458ccde7035e92ca3d8/m4/libelf.m4
+@@ -14,6 +14,7 @@ AC_DEFUN(AC_LIBELF_SXWORD,
+ #include <stdlib.h>
+ #include <stdio.h>
+ #include <string.h>
++#include <unistd.h>
+ 
+ static unsigned char sparc64_elf[] = {
+ 0x7f,0x45,0x4c,0x46,0x02,0x02,0x01,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,

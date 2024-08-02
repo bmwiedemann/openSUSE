@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jul 28 00:31:14 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Enable tests and install manpage
+- Update to 1.17.3:
+  * Disable shadow-rs default features
+  * Specify Flex::Legacy for Layout.
+
+-------------------------------------------------------------------
 Fri Apr 26 23:46:07 UTC 2024 - Dominik Heidler <dheidler@suse.de>
 
 - Initial Checkin

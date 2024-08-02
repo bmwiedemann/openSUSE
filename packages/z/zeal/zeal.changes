@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jul 27 11:45:35 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add zeal-cmake-find-qt-components.patch -- Explicitly find
+  necessary Qt6 components to fix build with Qt 6.7.2
+  (gh#zealdocs/zeal#1643).
+
+-------------------------------------------------------------------
 Sat Jun 08 09:14:14 UTC 2024 - andrea.manzini@suse.com
 
 - Update to version 0.7.1:

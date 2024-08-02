@@ -18,10 +18,10 @@
 
 %define cpan_name HTML-Parser
 Name:           perl-HTML-Parser
-Version:        3.820.0
+Version:        3.830.0
 Release:        0
-# 3.82 -> normalize -> 3.820.0
-%define cpan_version 3.82
+# 3.83 -> normalize -> 3.830.0
+%define cpan_version 3.83
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        HTML parser class
 URL:            https://metacpan.org/release/%{cpan_name}

@@ -24,7 +24,7 @@ Name:           sof-firmware
 Summary:        Firmware data files for SOF Drivers
 License:        BSD-3-Clause
 Group:          Hardware/Other
-Version:        2024.03
+Version:        2024.06
 Release:        0
 URL:            https://www.sofproject.org/
 BuildRequires:  fdupes

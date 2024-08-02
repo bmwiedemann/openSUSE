@@ -34,7 +34,7 @@ LABEL org.opencontainers.image.vendor="openSUSE Project"
 LABEL org.opencontainers.image.source="%SOURCEURL%"
 LABEL org.opensuse.reference="registry.opensuse.org/opensuse/bci/rust:1.78-2.%RELEASE%"
 LABEL org.openbuildservice.disturl="%DISTURL%"
-LABEL org.opensuse.lifecycle-url="https://en.opensuse.org/Lifetime"
+LABEL org.opensuse.lifecycle-url="https://en.opensuse.org/Lifetime#openSUSE_BCI"
 LABEL org.opensuse.release-stage="released"
 # endlabelprefix
 LABEL io.artifacthub.package.readme-url="https://raw.githubusercontent.com/SUSE/BCI-dockerfile-generator/Tumbleweed/rust-oldstable-image/README.md"

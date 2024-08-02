@@ -3,7 +3,7 @@ contain information we need though, such as the bundled node
 modules. Therefore the package reuses the upstream spec file and
 applies openSUSE specifics that upstream doesn't accept on top. For
 that purpose a git repo tracks the spec file changes:
-https://github.com/lnussel/cockpit
+https://github.com/openSUSE/cockpit
 
 There' an opensuse-$VERSION branch for each release
 
@@ -32,6 +32,9 @@ version:
 - If any further spec file changes were needed, copy the spec back
   into the git tree and commit there. Amend and reorder as needed.
 - When done, push the git repo.
+
+Updates are now mostly automated with the update_version.sh script.
+You still need to follow last 3 steps manually.
 
 Sending fixes upstream:
 

@@ -1,0 +1,11 @@
+<package name="satyr" project="openSUSE:Factory">
+  <title>Satyr is a library that can be used to create and process microreports.</title>
+  <description>Satyr is a library that can be used to create and process microreports.
+Microreports consist of structured data suitable to be analyzed in a fully
+automated manner, though they do not necessarily contain sufficient information
+to fix the underlying problem. The reports are designed not to contain any
+potentially sensitive data to eliminate the need for review before submission.
+Included is a tool that can create microreports and perform some basic
+operations on them.</description>
+  <devel project="devel:libraries:c_c++" package="satyr"/>
+</package>

@@ -17,7 +17,7 @@
 
 
 Name:           goxel
-Version:        0.14.0
+Version:        0.15.0
 Release:        0
 Summary:        Voxel graphics editor
 License:        GPL-3.0-only
@@ -57,13 +57,7 @@ scons mode=release
 %install
 %make_install PREFIX=%{_prefix}
 
-# PATCH-FIX-UPSTREAM https://github.com/guillaumechereau/goxel/pull/229
-chmod +x %{buildroot}%{_bindir}/%{name}
-
 sed -i 's/\${SNAP}\/icon.png/%{name}/g' %{buildroot}%{_datadir}/applications/%{name}.desktop
-
-# PATCH-FIX-UPSTREAM https://github.com/guillaumechereau/goxel/pull/228
-%suse_update_desktop_file -r %{name} Graphics 3DGraphics
 
 %files
 %license COPYING

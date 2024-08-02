@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-nethsm
-Version:        1.2.0
+Version:        1.2.1
 Release:        0
 Summary:        Python Library to manage NetHSM(s)
 License:        Apache-2.0

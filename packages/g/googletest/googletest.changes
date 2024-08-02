@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jul 29 08:33:13 UTC 2024 - Andreas Schwab <schwab@suse.de>
+
+- avoid extra '--' which newer ctests don't like anymore
+
+-------------------------------------------------------------------
 Fri Jul  5 09:31:26 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - avoid extra '--' which newer ctests don't like anymore

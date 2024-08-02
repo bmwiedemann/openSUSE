@@ -26,7 +26,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-FontTools%{psuffix}
-Version:        4.47.2
+Version:        4.53.1
 Release:        0
 Summary:        Suite of Tools and Libraries for Manipulating Fonts
 License:        MIT AND OFL-1.1
@@ -47,7 +47,7 @@ Requires(post): update-alternatives
 Requires(postun): update-alternatives
 Recommends:     python-Brotli >= 1.1.0
 Recommends:     python-freetype-py >= 2.4.0
-Recommends:     python-lxml >= 4.9.3
+Recommends:     python-lxml
 Recommends:     python-munkres >= 1.1.4
 Recommends:     python-reportlab
 Recommends:     python-scipy >= 1.11.4

@@ -445,13 +445,15 @@ make MAKE_NB_JOBS=$jobs %{?openblas_target} %{?build_flags} \
 # Install library and headers
 # Pass NUM_THREADS again, as it is not propagated from the build step
 # https://github.com/OpenMathLib/OpenBLAS/issues/4275
-%make_install  %{?build_flags} \
-    %{?openblas_target} \
+%make_install  %{?openblas_target} %{?build_flags} \
+    %{?openblas_opt} \
     NUM_THREADS=%{num_threads} \
     OPENBLAS_LIBRARY_DIR=%{p_libdir} \
     OPENBLAS_INCLUDE_DIR=%{p_includedir} \
     OPENBLAS_CMAKE_DIR=%{p_cmakedir} \
-    %{?libnamesuffix} \
+    %{!?with_hpc:%{?libnamesuffix} FC=gfortran CC=gcc%{?cc_v:-%{cc_v}} %{?cc_v:CEXTRALIB=""}} \
+    %{?ldflags_tests:LDFLAGS_TESTS=%{ldflags_tests}} \
+    %{?with_hpc:%{?cc_v:CC=gcc-%{cc_v} FC=gfortran-%{cc_v} CEXTRALIB=""}} \
     PREFIX=%{p_prefix}
 
 # Delete info about OBS host cpu

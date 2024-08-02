@@ -87,4 +87,25 @@
   * picks first batch of post-release fixes</comment>
     <requestid>1182478</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>9977cb272c4b11d8d1529f0e094cf513</srcmd5>
+    <version>14.2.0+git10526</version>
+    <time>1722612372</time>
+    <user>dimstar_suse</user>
+    <comment>
+This can go to Factory given I intend to push it to SLFO from there
+next week.  Gcc7 can pick it up from there.
+
+---
+
+- Update to GCC 14.2.0 release, c035a7c30c310ff928988cbcf, git10526 
+- Add libquadmath0-devel-gcc14 sub-package to allow installing
+  quadmath.h and SO link without installing the fortran frontend
+- Drop SLE11 compatibility %selfconflict wrapper, drop various
+  conditions gating SLE11 build support
+
+- Update to gcc-14 branch head, a544898f6dd6a1689bb25abfd, git10504
+  * GCC 14.2 release candidate.</comment>
+    <requestid>1190981</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,19 @@
+Date: 2024-07-16
+Author: Bernhard M. Wiedemann
+
+make .jar build reproducible
+by setting the build date to a constant.
+
+Index: db-4.8.30/dist/Makefile.in
+===================================================================
+--- db-4.8.30.orig/dist/Makefile.in
++++ db-4.8.30/dist/Makefile.in
+@@ -830,7 +830,7 @@ $(libj_jarfile): $(JAVA_DBSRCS)
+ 	$(JAVA) -classpath $(JAVA_CLASSTOP) \
+ 	    com.sleepycat.persist.model.ClassEnhancer $(JAVA_CLASSTOP)
+ 	cd $(JAVA_CLASSTOP) && \
+-	     $(JAR) cfm ../$(libj_jarfile) ../$(JAVA_MANIFEST) ./com/sleepycat
++	     $(JAR) --date=2000-01-01T00:00:00+00:00 -c -f ../$(libj_jarfile) -m ../$(JAVA_MANIFEST) ./com/sleepycat
+ 
+ $(libj_exjarfile): $(libj_jarfile) $(JAVA_EXSRCS)
+ 	@test -d $(JAVA_EXCLASSTOP) || \

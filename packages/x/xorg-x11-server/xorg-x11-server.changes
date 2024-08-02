@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul 25 16:04:30 UTC 2024 - Martin Jambor <mjambor@suse.com>
+
+- Added U_xorg-xserver-e89edec497ba.patch to fix incompatible pointer
+  type error with GCC 14.
+
+-------------------------------------------------------------------
 Thu Jul 18 10:44:59 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - u_fbdevhw_kernel6.9_break_fbdev_open.patch

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul 30 14:24:17 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- 1.16.7:
+  - update intree libxml2 copy (unused in our build)
+
+-------------------------------------------------------------------
 Sat Jul 27 18:46:12 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
 
 - 1.16.6:

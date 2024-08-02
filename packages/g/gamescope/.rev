@@ -130,4 +130,16 @@ Popular video game compositor, also allows spoofing a virtual screen for compati
     <comment></comment>
     <requestid>1188488</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>fa14348a2784e7337c43670963a5186c</srcmd5>
+    <version>3.14.26</version>
+    <time>1722612415</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 3.14.26
+
+
+
+(🤖: Submission of gamescope via https://src.opensuse.org/pool/gamescope/pulls/2 by ateixeira)</comment>
+    <requestid>1191044</requestid>
+  </revision>
 </revisionlist>

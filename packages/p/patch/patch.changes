@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jul 30 12:19:54 UTC 2024 - Wolfgang Frisch <wolfgang.frisch@suse.com>
+
+- CVE-2019-20633.patch: Fix double-free/OOB read in pch.c (bsc#1167721)
+
+-------------------------------------------------------------------
 Thu Feb 29 14:53:57 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

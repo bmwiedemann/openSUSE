@@ -1,7 +1,7 @@
-Index: tpm2-abrmd-2.4.0/dist/tpm2-abrmd.service.in
+Index: tpm2-abrmd-3.0.0/dist/tpm2-abrmd.service.in
 ===================================================================
---- tpm2-abrmd-2.4.0.orig/dist/tpm2-abrmd.service.in
-+++ tpm2-abrmd-2.4.0/dist/tpm2-abrmd.service.in
+--- tpm2-abrmd-3.0.0.orig/dist/tpm2-abrmd.service.in
++++ tpm2-abrmd-3.0.0/dist/tpm2-abrmd.service.in
 @@ -6,6 +6,17 @@ After=dev-tpm0.device
  Requires=dev-tpm0.device
  
@@ -20,3 +20,16 @@ Index: tpm2-abrmd-2.4.0/dist/tpm2-abrmd.service.in
  Type=dbus
  BusName=com.intel.tss2.Tabrmd
  ExecStart=@SBINDIR@/tpm2-abrmd
+Index: tpm2-abrmd-3.0.0/selinux/tabrmd.te
+===================================================================
+--- tpm2-abrmd-3.0.0.orig/selinux/tabrmd.te
++++ tpm2-abrmd-3.0.0/selinux/tabrmd.te
+@@ -9,7 +9,7 @@ gen_tunable(`tabrmd_connect_all_unreserv
+ 
+ type tabrmd_t;
+ type tabrmd_exec_t;
+-init_daemon_domain(tabrmd_t, tabrmd_exec_t)
++init_nnp_daemon_domain(tabrmd_t, tabrmd_exec_t)
+ 
+ allow tabrmd_t self:unix_dgram_socket { create_socket_perms };
+ 

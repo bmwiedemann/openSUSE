@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Aug  1 19:27:50 UTC 2024 - Marcus Meissner <meissner@suse.com>
+
+- libmicro-gcc14.patch: fix build with gcc14
+
+-------------------------------------------------------------------
 Thu Dec 19 15:15:30 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
 
 - Do not ship .o files - boo#1159556

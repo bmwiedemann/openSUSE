@@ -4,7 +4,6 @@ endif
 let loaded_spec = 1 
 
 function! SKEL_spec()
-        0r /usr/share/vim/current/skeletons/skeleton.spec
         language time en_US
         if $USER != ''
             let login = $USER

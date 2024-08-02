@@ -137,4 +137,12 @@ ship any actual functionality. ImGui suppose to be used as sources</comment>
   * Demo: Custom Rendering: better demonstrate PathArcTo(),</comment>
     <requestid>1161169</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>65ba5cb3d3f318df7a81cf65c73df1bb</srcmd5>
+    <version>1.90.9</version>
+    <time>1722612423</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1191047</requestid>
+  </revision>
 </revisionlist>

@@ -50,13 +50,13 @@ Summary:        Web Console for Linux servers
 License:        LGPL-2.1-or-later
 URL:            https://cockpit-project.org/
 
-Version:        320
+Version:        321
 Release:        0
 Source0:        cockpit-%{version}.tar
 Source1:        cockpit.pam
 Source2:        cockpit-rpmlintrc
 Source3:        cockpit-suse-theme.tar
-Source10:       vendor.tar.gz
+Source10:       update_version.sh
 Source99:       README.packaging
 Source98:       package-lock.json
 Source97:       node_modules.spec.inc
@@ -92,13 +92,26 @@ Patch104:       selinux_libdir.patch
 %if 0%{?build_optional} && 0%{?suse_version} == 0
 %define build_tests 1
 %endif
-# pcp stopped building on ix86
+
+# Allow root login in Cockpit on RHEL 8 and lower as it also allows password login over SSH.
+%if 0%{?rhel} && 0%{?rhel} <= 8
+%define disallow_root 0
+%else
+%define disallow_root 1
+%endif
+
+%if 0%{?fedora} >= 41 || 0%{?rhel}
+ExcludeArch: %{ix86}
+%endif
+
+# pcp stopped building on ix86 in Fedora 40+, and broke hard on 39: https://bugzilla.redhat.com/show_bug.cgi?id=2284431
 %define build_pcp 1
 %if 0%{?fedora} >= 40 || 0%{?rhel} >= 10 || 0%{?suse_version} > 1500
 %ifarch %ix86
 %define build_pcp 0
 %endif
 %endif
+
 %if 0%{?suse_version} == 0 || 0%{?suse_version} > 1500
 # Ship custom SELinux policy
 %define selinuxtype targeted
@@ -226,9 +239,7 @@ BuildRequires:  python3-tox-current-env
 
 cp %SOURCE1 tools/cockpit.pam
 #
-rm -rf node_modules package-lock.json
-local-npm-registry %{_sourcedir} install --also=dev --legacy-peer-deps
-cd vendor; tar zxfO %SOURCE10 | tar xvi; cd ..
+local-npm-registry %{_sourcedir} install --include=dev --ignore-scripts
 
 %build
 find node_modules -name \*.node -print -delete
@@ -241,8 +252,6 @@ autoreconf -fvi -I tools
 #
 %configure \
     %{?selinux_configure_arg} \
-    --with-cockpit-user=cockpit-ws \
-    --with-cockpit-ws-instance-user=cockpit-wsinstance \
 %if 0%{?suse_version}
     --docdir=%_defaultdocdir/%{name} \
     --libexecdir=%_libexecdir \
@@ -514,6 +523,7 @@ Requires: sos
 Requires: sudo
 Recommends: PackageKit
 Recommends: setroubleshoot-server >= 3.3.3
+Recommends: /usr/bin/kdumpctl
 Suggests: NetworkManager-team
 Provides: cockpit-kdump = %{version}-%{release}
 Provides: cockpit-networkmanager = %{version}-%{release}
@@ -602,7 +612,7 @@ authentication via sssd/FreeIPA.
 %{_unitdir}/cockpit-wsinstance-https@.service
 %{_unitdir}/system-cockpithttps.slice
 %{_prefix}/%{__lib}/tmpfiles.d/cockpit-ws.conf
-%{_sysusersdir}/cockpit-wsinstance.conf 
+%{_sysusersdir}/cockpit-wsinstance.conf
 %{pamdir}/pam_ssh_add.so
 %{pamdir}/pam_cockpit_cert.so
 %{_libexecdir}/cockpit-ws
@@ -623,8 +633,8 @@ authentication via sssd/FreeIPA.
 %endif
 
 %pre ws
-getent group cockpit-ws >/dev/null || groupadd -r cockpit-ws
-getent passwd cockpit-ws >/dev/null || useradd -r -g cockpit-ws -d /nonexisting -s /sbin/nologin -c "User for cockpit web service" cockpit-ws
+# HACK: old RPM and even Fedora's current RPM don't properly support sysusers
+# https://github.com/rpm-software-management/rpm/issues/3073
 getent group cockpit-wsinstance >/dev/null || groupadd -r cockpit-wsinstance
 getent passwd cockpit-wsinstance >/dev/null || useradd -r -g cockpit-wsinstance -d /nonexisting -s /sbin/nologin -c "User for cockpit-ws instances" cockpit-wsinstance
 
@@ -663,7 +673,7 @@ fi
 %if 0%{?suse_version}
 %set_permissions %{_libexecdir}/cockpit-session
 %endif
-%tmpfiles_create cockpit-ws.conf
+%tmpfiles_create cockpit-tempfiles.conf
 %systemd_post cockpit.socket cockpit.service
 # firewalld only partially picks up changes to its services files without this
 test -f %{_bindir}/firewall-cmd && firewall-cmd --reload --quiet || true

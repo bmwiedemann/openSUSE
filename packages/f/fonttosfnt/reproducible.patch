@@ -1,0 +1,70 @@
+From 6e3754966240b62819e9ea4ba4c461ba3c719a2b Mon Sep 17 00:00:00 2001
+From: "Bernhard M. Wiedemann" <bwiedemann@suse.de>
+Date: Wed, 24 Jul 2024 16:27:35 +0200
+Subject: [PATCH 1/2] Use long long for timestamp diff
+
+to avoid integer overflows in the future
+---
+ util.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/util.c b/util.c
+index a393e55..a810c87 100644
+--- a/util.c
++++ b/util.c
+@@ -181,7 +181,7 @@ mktime_gmt(struct tm *tm)
+ int
+ macTime(int *hi, unsigned *lo)
+ {
+-    unsigned long diff;		/* Not time_t */
++    unsigned long long diff;		/* Not time_t */
+     time_t macEpoch, current;
+     struct tm tm;
+     tm.tm_sec = 0;
+-- 
+GitLab
+
+
+From 910868fc95546cd16522c0a4ca67887e783329e7 Mon Sep 17 00:00:00 2001
+From: "Bernhard M. Wiedemann" <bwiedemann@suse.de>
+Date: Wed, 24 Jul 2024 16:28:43 +0200
+Subject: [PATCH 2/2] Allow to override build date with SOURCE_DATE_EPOCH
+
+to make builds reproducible.
+See https://reproducible-builds.org/ for why this is good
+and https://reproducible-builds.org/specs/source-date-epoch/
+for the definition of this variable.
+
+This patch was done while working on reproducible builds for openSUSE, sponsored by the NLnet NGI0 fund.
+---
+ util.c | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/util.c b/util.c
+index a810c87..a7207f8 100644
+--- a/util.c
++++ b/util.c
+@@ -182,6 +182,7 @@ int
+ macTime(int *hi, unsigned *lo)
+ {
+     unsigned long long diff;		/* Not time_t */
++    char *source_date_epoch;
+     time_t macEpoch, current;
+     struct tm tm;
+     tm.tm_sec = 0;
+@@ -195,7 +196,11 @@ macTime(int *hi, unsigned *lo)
+     macEpoch = mktime_gmt(&tm);
+     if(macEpoch == -1) return -1;
+ 
+-    current = time(NULL);
++    /* This assumes that the SOURCE_DATE_EPOCH environment variable will contain
++       a correct, positive integer in the time_t range */
++    if ((source_date_epoch = getenv("SOURCE_DATE_EPOCH")) == NULL ||
++        (current = (time_t)strtoll(source_date_epoch, NULL, 10)) <= 0)
++            current = time(NULL);
+     if(current == -1)
+         return -1;
+ 
+-- 
+GitLab
+

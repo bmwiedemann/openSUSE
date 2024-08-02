@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Aug  1 07:48:18 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.4.50:
+  * nethsm: Improve namespace handling in add-user by
+    @robin-nitrokey in #555
+  * And random generator and config failures to init status bytes
+    by @sosthene-nitrokey in #556
+  * Require authentication for partial restore by @mmerklinger in
+    #554
+
+-------------------------------------------------------------------
 Wed Jul 17 16:36:06 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.4.49:

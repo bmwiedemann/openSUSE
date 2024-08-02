@@ -34,4 +34,12 @@ with or without executable stack.
     <comment>Prepare for RPM 4.20 (forwarded request 1149263 from dimstar)</comment>
     <requestid>1149303</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>998dc9fc59251b523578ca3b5988e716</srcmd5>
+    <version>0.5.0</version>
+    <time>1722612430</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1191071</requestid>
+  </revision>
 </revisionlist>

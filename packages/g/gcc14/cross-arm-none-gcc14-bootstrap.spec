@@ -98,24 +98,15 @@
 %endif
 %endif
 
-%if %{suse_version} >= 1220
-%define selfconflict() %1
-%else
-%define selfconflict() otherproviders(%1)
-%endif
-
 Name:           %{pkgname}
 %define biarch_targets x86_64 s390x powerpc64 powerpc sparc sparc64
 
 URL:            https://gcc.gnu.org/
-Version:        14.1.1+git10335
+Version:        14.2.0+git10526
 Release:        0
 %define gcc_dir_version %(echo %version |  sed 's/+.*//' | cut -d '.' -f 1)
 %define gcc_snapshot_revision %(echo %version | sed 's/[3-9]\.[0-9]\.[0-6]//' | sed 's/+/-/')
 %define binsuffix -14
-%if %{suse_version} < 1310
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-%endif
 Group:          Development/Languages/C and C++
 Source:         gcc-%{version}.tar.xz
 Source1:        change_spec
@@ -182,12 +173,7 @@ Requires:       cross-%{binutils_target}-binutils
 %endif
 %endif
 %define hostsuffix %{nil}
-%if 0%{suse_version} < 1220
-%define hostsuffix -4.8
-BuildRequires:  gcc48-c++
-%else
 BuildRequires:  gcc-c++
-%endif
 %if %{suse_version} > 1500
 BuildRequires:  libzstd-devel
 %endif
@@ -198,18 +184,12 @@ BuildRequires:  glibc-devel-32bit
 %if %{with limitbuild}
 BuildRequires:  memory-constraints
 %endif
+BuildRequires:  isl-devel
+BuildRequires:  makeinfo
 BuildRequires:  mpc-devel
 BuildRequires:  mpfr-devel
 BuildRequires:  perl
-%if %{suse_version} > 1220
-BuildRequires:  makeinfo
-%else
-BuildRequires:  texinfo
-%endif
 BuildRequires:  zlib-devel
-%if %{suse_version} >= 1230
-BuildRequires:  isl-devel
-%endif
 %ifarch ia64
 BuildRequires:  libunwind-devel
 %endif
@@ -284,7 +264,7 @@ Obsoletes:      cross-ppc-gcc49 <= 4.9.0+r209354
 # Generally only one cross for the same target triplet can be installed
 # at the same time as we are populating a non-version-specific sysroot
 Provides:       %{gcc_target_arch}-gcc
-Conflicts:      %selfconflict %{gcc_target_arch}-gcc
+Conflicts:      %{gcc_target_arch}-gcc
 %endif
 %if 0%{?gcc_libc_bootstrap:1}
 # The -bootstrap packages file-conflict with the non-bootstrap variants.
@@ -358,11 +338,6 @@ ln -s newlib-4.4.0.20231231/newlib .
 %define _lto_cflags %{nil}
 # Avoid rebuilding of generated files
 contrib/gcc_update --touch
-
-# SLE11 does not allow empty rpms
-%if %{suse_version} < 1310
-echo "This is a dummy package to provide a dependency." > README
-%endif
 
 rm -rf obj-%{GCCDIST}
 mkdir obj-%{GCCDIST}
@@ -560,10 +535,8 @@ amdgcn-amdhsa,\
 %endif
 %endif
 	--enable-linux-futex \
-%if %{suse_version} >= 1315
 %ifarch %ix86 x86_64 ppc ppc64 ppc64le %arm aarch64 s390 s390x %sparc
 	--enable-gnu-indirect-function \
-%endif
 %endif
 	--program-suffix=%{binsuffix} \
 %ifarch %{disable_multilib_arch}
@@ -670,13 +643,8 @@ amdgcn-amdhsa,\
 	--with-cpu=power8 \
 	--with-tune=power9 \
 %else
-%if %{suse_version} >= 1315 && %{suse_version} != 1320
 	--with-cpu=power8 \
 	--with-tune=power8 \
-%else
-	--with-cpu=power7 \
-	--with-tune=power7 \
-%endif
 %endif
 %endif
 %if %{suse_version} > 1500
@@ -735,11 +703,7 @@ amdgcn-amdhsa,\
 %if %{suse_version} >= 1600 && !0%{?is_opensuse}
         --with-tune=z14 --with-arch=z14 \
 %else
-%if %{suse_version} >= 1310
         --with-tune=zEC12 --with-arch=z196 \
-%else
-	--with-tune=z9-109 --with-arch=z900 \
-%endif
 %endif
 	--with-long-double-128 \
 	--enable-decimal-float \

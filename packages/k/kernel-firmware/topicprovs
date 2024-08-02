@@ -25,3 +25,5 @@ mediatek:       Provides:       ralink-firmware = %{version}
 mediatek:       Obsoletes:      ralink-firmware < %{version}
 qlogic:         Provides:       qlogic-firmware = %{version}
 qlogic:         Obsoletes:      qlogic-firmware < %{version}
+sound:          Provides:       avs-topology-firmware = %{version}
+sound:          Obsoletes:      avs-topology-firmware <= 2024.02

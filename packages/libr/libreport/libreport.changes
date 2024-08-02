@@ -1,0 +1,9 @@
+-------------------------------------------------------------------
+Mon Jul 15 08:52:25 UTC 2024 - Zdenek Kubala <zkubala@suse.cz>
+
+- Release version 2.17.15 (Michal Srb)
+  * reporter-bugzilla: Make the supplementary bugs easily identifiable (Michal Srb)
+  * reporter-bugzilla: Fix formatting in the supplementary bugs (Michal Srb)
+  * reporter-bugzilla: Fix code comment (Michal Srb)
+
+- Add workflow_openSUSEBugzillaPython and build separate package libreport-opensuse-bugzilla

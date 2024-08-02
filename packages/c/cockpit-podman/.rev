@@ -178,4 +178,19 @@
     <comment></comment>
     <requestid>1163977</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>b9b76d1e7932168c08279029b329499a</srcmd5>
+    <version>91</version>
+    <time>1722612337</time>
+    <user>dimstar_suse</user>
+    <comment>- New version 91. Changes since 84:
+  * Implement pull option for existing images
+  * Use binary http channel for podman socket for non-UTF-8 robustness
+  * Stop using obsolete cockpit.utf8_{de,en}coder() API
+  * Translation updates
+  * Bug fixes and performance improvements
+- update_version.sh: fetch package-lock.json from upstream
+  instead of regenerating.</comment>
+    <requestid>1190948</requestid>
+  </revision>
 </revisionlist>

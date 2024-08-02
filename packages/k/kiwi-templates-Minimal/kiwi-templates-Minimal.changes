@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Jul 31 13:38:18 UTC 2024 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Fix LOADER_TYPE population
+- Rename *-grub image to *-grub-bls
+
+-------------------------------------------------------------------
+Tue Jul 16 08:14:08 UTC 2024 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Add /etc/sysconfig/bootloader LOADER_TYPE for grub2-bls and sd-boot
+- Remove some dead code
+
+-------------------------------------------------------------------
+Thu Jun 20 12:06:15 UTC 2024 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Add grub2 FDE image
+
+-------------------------------------------------------------------
 Tue May 14 07:53:59 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - add procps into the image (previously pulled in by zypper,

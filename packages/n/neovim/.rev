@@ -1297,4 +1297,103 @@ FIXES (LSP):
     <comment></comment>
     <requestid>1182975</requestid>
   </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>9697d3efe86b3ee5f25def83a3d40e52</srcmd5>
+    <version>0.10.1</version>
+    <time>1722612410</time>
+    <user>dimstar_suse</user>
+    <comment>- add versioning to some dependencies, as neovim is quite picky
+- fix template.spec so when creating a new spec file, it doesn't pull in
+  vims skeleton.spec
+- Update to 0.10.1
+- Features
+  * lsp: Update LSP healthcheck format
+- Build System
+  * deps: Bump tree-sitter-query to v0.4.0
+  * deps: Bump tree-sitter-c to v0.21.3
+  * deps: Bump tree-sitter-vimdoc to v3.0.0
+  * deps: Drop unused bundled bash, python parsers and queries
+  * macos: Disable deduplication in link step
+  * &quot;popcount&quot; name conflict on NetBSD
+  * Remove -O2 from gen_cflags
+  * Reuse code for deps.txt for both deps and main build
+- Bug Fixes
+  * Show swapfile warning as a warning
+  * Assert failure in VimL expression parser
+  * api: Alloc and draw cursor window in nvim__redraw
+  * colorscheme: Underline StatusLineNC with 'notermguicolors'
+  * column: Crash with 'signcolumn' set to &quot;number&quot;
+  * column: Clamp line number for legacy signs
+  * column: Modifying a sign should update placed signs
+  * comment: Fall back to using trimmed comment markers
+  * defaults: Default @/Q broken when 'ignorecase' is set
+  * drawline: Don't draw beyond end of window
+  * drawline: Don't draw beyond end of window with 'rnu'
+  * extmarks: Issues with revalidating marks
+  * filetype: Fix typos in filetype detection
+  * float: Handle error in win_float_create()
+  * fs: Make vim.fs.root work for relative paths and unnamed buffers
+  * health: Broken ruby detect
+  * health: Fix fetching url with python in provider health
+  * input: Handle vim.on_key() properly with ALT and K_SPECIAL
+  * lsp: Add textDocument/documentLink to capability map
+  * lsp: Hide layout in codelenses in virtual text
+  * lsp: Detach all clients on_reload to force buf_state reload
+  * lsp: Trigger LspDetach on buffer delete
+  * lsp: Check if buffer was detached in on_init callback
+  * lsp: Handle nil root_dir in health check
+  * lsp: Do not detach from buffer if there are uninitialized clients
+  * lsp: Clear lsp client diagnostics
+  * lsp: Remove superfluous on_detach callback from semantic tokens module
+  * lsp: Do not reset buf version when detaching client
+  * lsp: Avoid vim.keymap.del error when stopping a client
+  * lsp: Don't show codelens for buffers that don't support it
+  * lsp: Inlay hints are rendered in the correct order
+  * lua: Change some vim.fn.expand() to vim.fs.normalize()
+  * marks: Revalidate marks whose position did not change
+  * mouse: Early return when clicking in padded 'statuscolumn'
+  * move: Half-page scrolling with resized grid at eob
+  * path: Avoid chdir() when resolving path
+  * quickfix: Make shortmess+=O work with cmdheight=0 
+  * runtime: Source c ftplugin properly for cpp on Windows
+  * runtime: Add commentstring for glsl ftplugin
+  * snippet: Don't override unnamed register on tabstop select
+  * snippet: Cancel snippet session when leaving the buffer
+  * snippet: Modify base indentation when there's actually whitespace
+  * tohtml: Replace ipairs with pairs
+  * tohtml: Ignore lsp inlay hints
+  * tohtml: Show how many warnings are hidden
+  * tohtml: Properly handle multiple hl groups
+  * tohtml: Extmark text may be out of bounds
+  * tohtml: Support ranges again
+  * treesitter: Do not modify highlight state for _on_spell_nav
+  * treesitter: Ensure syntaxset augroup exists
+  * treesitter: Display fields for anonymous nodes in :InspectTree
+  * treesitter: Recognize aliased parsers in omnifunc, query linter
+  * tui: Remove duplicate disabling of synchronized output
+  * tui: Move $COLORTERM check to _defaults.lua
+  * tui: Skip TUI in ui_rgb_attached
+  * ui: Flush ext_cmdline events before doing cmdpreview
+  * ui: Superfluous showmode / excessive grid_cursor_goto
+  * ui: Avoid ambiguity about last chunk when flushing halfway
+  * version: Fix vim.version().prerelease
+  * vim.text: Remove assert from vim.text.hexdecode
+  * win-msi: Add bin to PATH per-machine after installation
+- Documentation
+  * Update LSP quickstart
+  * Misc
+  * Document 'list' behavior when 'listchars' excludes &quot;tab&quot;
+  * Fix more treesitter parsing errors
+  * Misc
+  * lpeg: Merge upstream changes
+  * lsp: Format the handwritten part
+* Refactor
+  * Replace deprecated vim.loop with vim.uv
+  * lsp: Reuse buf_detach_client logic in on_detach
+  * path.c: Add nonnull attributes
+  * tests: Use more global highlight definitions
+  * tests: More global highlight definitions
+</comment>
+    <requestid>1191018</requestid>
+  </revision>
 </revisionlist>

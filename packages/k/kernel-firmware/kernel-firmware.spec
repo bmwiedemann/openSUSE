@@ -21,11 +21,11 @@
 %define _firmwaredir /lib/firmware
 %endif
 %define __ksyms_path ^%{_firmwaredir}
-%define version_unconverted 20240712
+%define version_unconverted 20240728
 # Force bzip2 instead of lzma compression (bsc#1176981)
 %define _binary_payload w9.bzdio
 Name:           kernel-firmware
-Version:        20240712
+Version:        20240728
 Release:        0
 Summary:        Linux kernel firmware files
 License:        GPL-2.0-only AND SUSE-Firmware AND GPL-2.0-or-later AND MIT
@@ -109,6 +109,8 @@ Provides:       ralink-firmware = %{version}
 Obsoletes:      ralink-firmware < %{version}
 Provides:       qlogic-firmware = %{version}
 Obsoletes:      qlogic-firmware < %{version}
+Provides:       avs-topology-firmware = %{version}
+Obsoletes:      avs-topology-firmware <= 2024.02
 %if 0%{?suse_version} >= 1550
 # make sure we have post-usrmerge filesystem package on TW
 Conflicts:      filesystem < 84
@@ -1803,6 +1805,11 @@ Supplements:    modalias(pci:v00008086d0000A7AAsv*sd*bc03sc*i*)
 Supplements:    modalias(pci:v00008086d0000A7ABsv*sd*bc03sc*i*)
 Supplements:    modalias(pci:v00008086d0000A7ACsv*sd*bc03sc*i*)
 Supplements:    modalias(pci:v00008086d0000A7ADsv*sd*bc03sc*i*)
+Supplements:    modalias(pci:v00008086d0000E202sv*sd*bc03sc*i*)
+Supplements:    modalias(pci:v00008086d0000E20Bsv*sd*bc03sc*i*)
+Supplements:    modalias(pci:v00008086d0000E20Csv*sd*bc03sc*i*)
+Supplements:    modalias(pci:v00008086d0000E20Dsv*sd*bc03sc*i*)
+Supplements:    modalias(pci:v00008086d0000E212sv*sd*bc03sc*i*)
 
 %description i915
 This package contains compressed kernel firmware files for
@@ -2817,6 +2824,37 @@ Supplements:    modalias(pci:v00008086d0000A370sv*sd000040A4bc*sc*i*)
 Supplements:    modalias(pci:v00008086d0000A370sv*sd00004234bc*sc*i*)
 Supplements:    modalias(pci:v00008086d0000A370sv*sd000042A4bc*sc*i*)
 Supplements:    modalias(pci:v00008086d0000A840sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000A840sv*sd00000000bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000A840sv*sd00000090bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000A840sv*sd00000094bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000A840sv*sd00000098bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000A840sv*sd0000009Cbc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000A840sv*sd000000C0bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000A840sv*sd000000C4bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000A840sv*sd000000E0bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000A840sv*sd000000E4bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000A840sv*sd000000E8bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000A840sv*sd000000ECbc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000A840sv*sd00000100bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000A840sv*sd00000110bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000A840sv*sd00000114bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000A840sv*sd00000118bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000A840sv*sd0000011Cbc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000A840sv*sd00000310bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000A840sv*sd00000314bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000A840sv*sd00000510bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000A840sv*sd00000A10bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000A840sv*sd00001671bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000A840sv*sd00001672bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000A840sv*sd00001771bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000A840sv*sd00001772bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000A840sv*sd00001791bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000A840sv*sd00001792bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000A840sv*sd00004090bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000A840sv*sd000040C4bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000A840sv*sd000040E0bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000A840sv*sd00004110bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000A840sv*sd00004314bc*sc*i*)
 Supplements:    modalias(pci:v00008086d0000D340sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00008086d0000E340sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00008086d0000E440sv*sd*bc*sc*i*)
@@ -6375,6 +6413,8 @@ Conflicts:      kernel-firmware-uncompressed
 # make sure we have post-usrmerge filesystem package on TW
 Conflicts:      filesystem < 84
 %endif
+Provides:       avs-topology-firmware = %{version}
+Obsoletes:      avs-topology-firmware <= 2024.02
 Supplements:    modalias(acpi*:80860F28%3A*)
 Supplements:    modalias(acpi*:808622A8%3A*)
 Supplements:    modalias(acpi*:CLSA0100%3A*)

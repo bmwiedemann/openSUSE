@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jul 26 01:56:34 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
+
+- Reverted "Add pkgconfig(wlroots) to provides to allow this to be a drop-in
+  replacement from wlroots 0.17.0 and prior"
+
+-------------------------------------------------------------------
+Thu Jul 25 03:41:26 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Add pkgconfig(wlroots) to provides to allow this to be a drop-in
+  replacement from wlroots 0.17.0 and prior.
+
+-------------------------------------------------------------------
 Sun Jul 21 15:57:18 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
 
 - Update to version 0.18.0:

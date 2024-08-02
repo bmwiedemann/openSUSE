@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Aug  1 09:33:39 UTC 2024 - Richard Biener <rguenther@suse.com>
+
+- Update to GCC 14.2.0 release, c035a7c30c310ff928988cbcf, git10526 
+- Add libquadmath0-devel-gcc14 sub-package to allow installing
+  quadmath.h and SO link without installing the fortran frontend
+- Drop SLE11 compatibility %selfconflict wrapper, drop various
+  conditions gating SLE11 build support
+
+-------------------------------------------------------------------
+Tue Jul 23 13:59:35 UTC 2024 - Richard Biener <rguenther@suse.com>
+
+- Update to gcc-14 branch head, a544898f6dd6a1689bb25abfd, git10504
+  * GCC 14.2 release candidate.
+
+-------------------------------------------------------------------
 Fri Jun 21 12:18:10 UTC 2024 - Richard Biener <rguenther@suse.com>
 
 - Update to gcc-14 branch head, 272e8c90af527fc1d0055ad0f, git10335

@@ -1,0 +1,162 @@
+--- /dev/null
++++ b/src/workflows/workflow_openSUSEBugzillaPython.xml.in
+@@ -0,0 +1,12 @@
++<?xml version="1.0" encoding="UTF-8" ?>
++<workflow>
++    <_name>Report to openSUSE Bugzilla</_name>
++    <_description>Process the python exception using the openSUSE infrastructure</_description>
++
++    <events>
++        <event>report_uReport</event>
++        <event>collect_*</event>
++        <event>report_Bugzilla</event>
++        <event>post_report</event>
++    </events>
++</workflow>
+--- a/src/workflows/Makefile.am
++++ b/src/workflows/Makefile.am
+@@ -43,7 +43,8 @@
+     workflow_RHELBugzillaXorg.xml \
+     workflow_RHELBugzillaLibreport.xml \
+     workflow_RHELBugzillaJava.xml \
+-    workflow_RHELBugzillaJavaScript.xml
++    workflow_RHELBugzillaJavaScript.xml \
++    workflow_openSUSEBugzillaPython.xml
+ endif
+ 
+ workflowsdefdir = $(WORKFLOWS_DEFINITION_DIR)
+@@ -59,7 +60,8 @@
+ if BUILD_BUGZILLA
+ dist_workflowsdef_DATA += \
+     anaconda_event.conf \
+-    report_rhel_bugzilla.conf
++    report_rhel_bugzilla.conf \
++    report_opensuse_bugzilla.conf
+ endif
+ 
+ @INTLTOOL_XML_RULE@
+@@ -95,7 +97,8 @@
+     workflow_RHELBugzillaXorg.xml.in \
+     workflow_RHELBugzillaLibreport.xml.in \
+     workflow_RHELBugzillaJava.xml.in \
+-    workflow_RHELBugzillaJavaScript.xml.in
++    workflow_RHELBugzillaJavaScript.xml.in \
++    workflow_openSUSEBugzillaPython.xml.in
+ endif
+ 
+ if BUILD_MANTISBT
+--- /dev/null
++++ b/src/workflows/report_opensuse_bugzilla.conf
+@@ -0,0 +1,27 @@
++EVENT=workflow_openSUSEBugzillaLibreport analyzer=libreport
++# this is just a meta event which consists of other events
++# the list is defined in the xml file
++
++#EVENT=workflow_openSUSEBugzillaCCpp type=CCpp
++# this is just a meta event which consists of other events
++# the list is defined in the xml file
++
++EVENT=workflow_openSUSEBugzillaPython type=Python component!=anaconda
++# this is just a meta event which consists of other events
++# the list is defined in the xml file
++
++#EVENT=workflow_openSUSEBugzillaKerneloops type=Kerneloops
++# this is just a meta event which consists of other events
++# the list is defined in the xml file
++
++#EVENT=workflow_openSUSEBugzillaVmcore type=vmcore
++# this is just a meta event which consists of other events
++# the list is defined in the xml file
++
++#EVENT=workflow_openSUSEBugzillaXorg type=xorg
++# this is just a meta event which consists of other events
++# the list is defined in the xml file
++
++#EVENT=workflow_openSUSEBugzillaJava type=Java
++# this is just a meta event which consists of other events
++# the list is defined in the xml file
+--- /dev/null
++++ b/doc/report_opensuse_bugzilla.conf.txt
+@@ -0,0 +1,40 @@
++report_opensuse_bugzilla.conf(5)
++================================
++
++NAME
++----
++report_opensuse_bugzilla.conf - configuration file for libreport.
++
++DESCRIPTION
++-----------
++This configuration file specifies which of the reporting work flow definitions
++are applicable for all problems types on openSUSE.
++
++All applicable reporting work flows are presented to users in User Interface as
++possibilities for processing of all problem types.
++
++This configuration file consists from one condition per line.
++
++Each condition line must start with EVENT=workflow_NAME where "workflow_" is
++constant prefix and "workflow_NAME" is base name of path to reporting work flow
++configuration file.
++
++The rest of condition line has form VAR=VAL, VAR!=VAL or VAL~=REGEX, where VAR
++is a name of problem directory element to be checked (for example,
++"executable", "package", hostname" etc). The condition may consist
++of as many element checks as it is necessary.
++
++EXAMPLES
++--------
++Condition line::
++    EVENT=workflow_openSUSEBugzillaCCpp analyzer=Python
++
++The condition line above expects existence of /usr/share/libreport/workflows/workflow_openSUSEBugzillaPython.xml
++
++SEE ALSO
++--------
++report-gtk(1)
++
++AUTHOR
++------
++* ABRT team
+--- a/doc/Makefile.am
++++ b/doc/Makefile.am
+@@ -15,6 +15,7 @@
+ 	bugzilla_format_analyzer_libreport.conf.txt \
+ 	bugzilla_formatdup_analyzer_libreport.conf.txt \
+ 	report_rhel_bugzilla.conf.txt \
++	report_opensuse_bugzilla.conf.txt \
+ 	report_Bugzilla.conf.txt
+ 
+ # silent rules for ASCIIDOC and XMLTO
+--- a/src/client-python/reportclient/internal/dump_dir.py
++++ b/src/client-python/reportclient/internal/dump_dir.py
+@@ -1193,6 +1193,9 @@
+             if not release:
+                 release = self.load_text_file("/etc/SuSE-release", DD_OPEN_FOLLOW)
+ 
++            if not release:
++                release = self.load_text_file("/etc/os-release", DD_OPEN_FOLLOW)
++
+             # rstrip would probably be enough but that wasn't strictly
+             # what the C code was doing
+             if release.find('\n') > -1:
+--- a/src/lib/dump_dir.c
++++ b/src/lib/dump_dir.c
+@@ -1383,6 +1383,7 @@
+      * if it doesn't
+      * i.e: anaconda doesn't have /etc/{fedora,redhat}-release and trying to load it
+      * results in errors: rhbz#725857
++     * openSUSE has generic /etc/os-release
+      */
+     release = dd_load_text_ext(dd, FILENAME_OS_RELEASE,
+                     DD_FAIL_QUIETLY_ENOENT | DD_LOAD_TEXT_RETURN_NULL_ON_FAILURE);
+@@ -1397,6 +1398,9 @@
+         if (!release)
+             release = load_text_file("/etc/SuSE-release", DD_OPEN_FOLLOW);
+ 
++        if (!release)
++            release = load_text_file("/etc/os-release", DD_OPEN_FOLLOW);
++
+         char *newline = strchr(release, '\n');
+         if (newline)
+             *newline = '\0';

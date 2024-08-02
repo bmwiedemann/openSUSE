@@ -28,6 +28,8 @@ URL:            https://zealdocs.org
 Source0:        %{name}-%{version}.tar.xz
 # `help2man zeal > zeal.1` can't be run without X started.
 Source9:        zeal.1
+# PATCH-FIX-UPSTREAM zeal-cmake-find-qt-components.patch gh#zealdocs/zeal#1643 badshah400@gmail.com -- Explicitly find necessary Qt6 components to fix build with Qt 6.7.2
+Patch0:         zeal-cmake-find-qt-components.patch
 BuildRequires:  cmake
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
@@ -47,8 +49,8 @@ BuildRequires:  pkgconfig(xcb-keysyms)
 Requires:       libQt6Sql6 >= 6.2.0
 Requires(post): hicolor-icon-theme
 Requires(post): update-desktop-files
-Requires(postun): hicolor-icon-theme
-Requires(postun): update-desktop-files
+Requires(postun):hicolor-icon-theme
+Requires(postun):update-desktop-files
 
 %description
 Zeal is an offline API documentation browser inspired by Dash

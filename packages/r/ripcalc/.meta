@@ -1,0 +1,7 @@
+<package name="ripcalc" project="openSUSE:Factory">
+  <title>Tool for network addresses</title>
+  <description>Ripcalc is a tool for calculate or looking up network addresses. Supports CSV
+file formats for network information lists.</description>
+  <devel project="network:utilities" package="ripcalc"/>
+  <url>https://www.usenix.org.uk/content/ripcalc.html</url>
+</package>

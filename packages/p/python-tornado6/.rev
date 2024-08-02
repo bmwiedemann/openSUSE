@@ -193,4 +193,12 @@
   * Support pytest &gt;= 8.2 changes.</comment>
     <requestid>1174712</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>64c9d0814f35d80a23e89deba22a1d9b</srcmd5>
+    <version>6.4.1</version>
+    <time>1722612369</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1190823</requestid>
+  </revision>
 </revisionlist>

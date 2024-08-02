@@ -18,7 +18,7 @@
 
 %bcond_without  intree_libs
 Name:           gamescope
-Version:        3.14.24
+Version:        3.14.26
 Release:        0
 Summary:        Micro-compositor optimized for running video games on Wayland
 License:        BSD-2-Clause
@@ -71,6 +71,7 @@ BuildRequires:  pkgconfig(egl)
 BuildRequires:  pkgconfig(freerdp2)
 BuildRequires:  pkgconfig(gbm) >= 17.1.0
 BuildRequires:  pkgconfig(glesv2)
+BuildRequires:  pkgconfig(lcms2)
 BuildRequires:  pkgconfig(libavcodec)
 BuildRequires:  pkgconfig(libavformat)
 BuildRequires:  pkgconfig(libavutil)

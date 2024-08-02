@@ -778,4 +778,18 @@ Currently, openSUSE:Factory:Staging:E.
     <comment>- Make sure the minimum CPU requirement set in the pkgconfig (forwarded request 1190319 from eeich)</comment>
     <requestid>1190320</requestid>
   </revision>
+  <revision rev="65" vrev="4">
+    <srcmd5>ca70c667651b425f6b037e2548303d46</srcmd5>
+    <version>0.3.27</version>
+    <time>1722612325</time>
+    <user>dimstar_suse</user>
+    <comment>- Duplicate all options passed to `make` also to `make install`:
+  The openblas build output suggests this: 'Note that any flags
+  passed to make during build should also be passed to make install
+  to circumvent any install errors'.
+  This also makes sure that minimum CPU requirement is set in
+  the pkgconfig file is the same one as used for building.
+  This helps to maintain a reproducible build (boo#1228177). (forwarded request 1190850 from eeich)</comment>
+    <requestid>1190851</requestid>
+  </revision>
 </revisionlist>

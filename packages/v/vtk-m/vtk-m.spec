@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define flavor @BUILD_FLAVOR@%{nil}
 %define major_ver 2
-%define minor_ver 1
+%define minor_ver 2
 %define patch_ver 0
 %define short_ver %{major_ver}.%{minor_ver}
 

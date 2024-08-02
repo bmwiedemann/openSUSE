@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jul 27 19:29:36 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.18.1:
+  * Fix libbrotlidec pkg-config requires
+  * tiff: Fix wrong type for "seekTIFF" function. 
+  * fix 32bit compiler warnings in box.cc
+  * fix memory leaks in Brotli decoder
+
+-------------------------------------------------------------------
 Wed Jul 10 16:13:42 UTC 2024 - Arjen de Korte <suse+build@de-korte.org>
 
 - update to 1.18.0:

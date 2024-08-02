@@ -1,0 +1,12 @@
+Index: libmicro-0.4.2+hg.20120726/cascade_flock.c
+===================================================================
+--- libmicro-0.4.2+hg.20120726.orig/cascade_flock.c
++++ libmicro-0.4.2+hg.20120726/cascade_flock.c
+@@ -46,6 +46,7 @@
+ #include <stdlib.h>
+ #include <stdio.h>
+ #include <fcntl.h>
++#include <sys/file.h>
+ 
+ #include "libmicro.h"
+ 

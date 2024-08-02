@@ -7,4 +7,12 @@
     <comment>🤖: initial submission of apache-tomcat-10-java-17-image</comment>
     <requestid>1188388</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>ccaad4f08e9b719b36b5f83b654efc5e</srcmd5>
+    <version>unknown</version>
+    <time>1722612378</time>
+    <user>dimstar_suse</user>
+    <comment>🤖: sync package with devel:BCI:Tumbleweed from OBS</comment>
+    <requestid>1190702</requestid>
+  </revision>
 </revisionlist>

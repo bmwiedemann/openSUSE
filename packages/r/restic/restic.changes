@@ -1,4 +1,77 @@
 -------------------------------------------------------------------
+Fri Jul 26 10:09:23 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 0.17.0
+  - Fix #3600: Handle unreadable xattrs in folders above backup
+    source
+  - Fix #4209: Fix slow SFTP upload performance
+  - Fix #4503: Correct hardlink handling in stats command
+  - Fix #4568: Prevent forget --keep-tags <invalid> from deleting
+    all snapshots
+  - Fix #4615: Make find not sometimes ignore directories
+  - Fix #4656: Properly report ID of newly added keys
+  - Fix #4703: Shutdown cleanly when receiving SIGTERM
+  - Fix #4709: Correct --no-lock handling of ls and tag commands
+  - Fix #4760: Fix possible error on concurrent cache cleanup
+  - Fix #4850: Handle UTF-16 password files in key command
+    correctly
+  - Fix #4902: Update snapshot summary on rewrite
+  - Chg #956: Return exit code 10 and 11 for non-existing and
+    locked repository
+  - Chg #4540: Require at least ARMv6 for ARM binaries
+  - Chg #4602: Deprecate legacy index format and s3legacy
+    repository layout
+  - Chg #4627: Redesign backend error handling to improve
+    reliability
+  - Chg #4707: Disable S3 anonymous authentication by default
+  - Chg #4744: Include full key ID in JSON output of key list
+  - Enh #662: Optionally skip snapshot creation if nothing changed
+  - Enh #693: Include snapshot size in snapshots output
+  - Enh #805: Add bitrot detection to diff command
+  - Enh #828: Improve features of the repair packs command
+  - Enh #1786: Support repositories with empty password
+  - Enh #2348: Add --delete option to restore command
+  - Enh #3067: Add extended options to configure Windows Shadow
+    Copy Service
+  - Enh #3406: Improve dump performance for large files
+  - Enh #3806: Optimize and make prune command resumable
+  - Enh #4006: (alpha) Store deviceID only for hardlinks
+  - Enh #4048: Add support for FUSE-T with mount on macOS
+  - Enh #4251: Support reading backup from a command's standard
+    output
+  - Enh #4287: Support connection to rest-server using unix socket
+  - Enh #4354: Significantly reduce prune memory usage
+  - Enh #4437: Make check command create non-existent cache
+    directory
+  - Enh #4472: Support AWS Assume Role for S3 backend
+  - Enh #4547: Add --json option to version command
+  - Enh #4549: Add --ncdu option to ls command
+  - Enh #4573: Support rewriting host and time metadata in
+    snapshots
+  - Enh #4583: Ignore s3.storage-class archive tiers for metadata
+  - Enh #4590: Speed up mount command's error detection
+  - Enh #4601: Add support for feature flags
+  - Enh #4611: Back up more file metadata on Windows
+  - Enh #4664: Make ls use message_type field in JSON output
+  - Enh #4676: Make key command's actions separate sub-commands
+  - Enh #4678: Add --target option to the dump command
+  - Enh #4708: Back up and restore SecurityDescriptors on Windows
+  - Enh #4733: Allow specifying --host via environment variable
+  - Enh #4737: Include snapshot ID in reason field of forget JSON
+    output
+  - Enh #4764: Support forgetting all snapshots
+  - Enh #4768: Allow specifying custom User-Agent for outgoing
+    requests
+  - Enh #4781: Add restore options to read include/exclude patterns
+    from files
+  - Enh #4807: Support Extended Attributes on Windows NTFS
+  - Enh #4817: Make overwrite behavior of restore customizable
+  - Enh #4839: Add dry-run support to restore command
+
+  for all the details see https://github.com/restic/restic/releases/tag/v0.17.0
+  or /usr/share/doc/packages/restic/CHANGELOG.md
+
+-------------------------------------------------------------------
 Mon Jul  1 20:00:38 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to version 0.16.5
