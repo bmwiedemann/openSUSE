@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Aug  2 06:29:16 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.5.1:
+  * Added usage example for an ElligatorSwift key exchange.
+  * The default size of the precomputed table for signing was changed
+    from 22 KiB to 86 KiB. The size can be changed with the configure
+    option --ecmult-gen-kb (SECP256K1_ECMULT_GEN_KB for CMake).
+  * "auto" is no longer an accepted value for the --with-ecmult-window
+    and --with-ecmult-gen-kb configure options (this also applies to
+    SECP256K1_ECMULT_WINDOW_SIZE and SECP256K1_ECMULT_GEN_KB in CMake).
+    To achieve the same configuration as previously provided by the
+    "auto" value, omit setting the configure option explicitly.
+  * Fixed compilation when the extrakeys module is disabled.
+  * The ABI is backward compatible with versions 0.5.0, 0.4.x and 0.3.x.
+
+-------------------------------------------------------------------
 Tue May  7 06:34:33 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.5.0:
