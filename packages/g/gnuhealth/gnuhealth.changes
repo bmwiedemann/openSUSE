@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Aug  2 11:47:44 UTC 2024 - Axel Braun <axel.braun@gmx.de>
+
+- version 4.4.1
+  * Issue #15: readfp on setup.py no longer supported since python 3.12
+  * Issue #33: health orthanc: Errors on imaging request when worklist
+    template set on imaging test type
+
+-------------------------------------------------------------------
 Tue Feb 27 11:01:43 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.

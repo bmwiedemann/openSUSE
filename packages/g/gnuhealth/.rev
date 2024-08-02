@@ -554,4 +554,16 @@
     <comment></comment>
     <requestid>1152165</requestid>
   </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>5ed4a4fbab7f0820bb6a9261b5bc0886</srcmd5>
+    <version>4.4.1</version>
+    <time>1722612451</time>
+    <user>dimstar_suse</user>
+    <comment>- version 4.4.1
+  * Issue #15: readfp on setup.py no longer supported since python 3.12
+  * Issue #33: health orthanc: Errors on imaging request when worklist
+    template set on imaging test type
+</comment>
+    <requestid>1191189</requestid>
+  </revision>
 </revisionlist>
