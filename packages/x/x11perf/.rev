@@ -95,4 +95,22 @@
   * Stop casting return value of malloc() and calloc()</comment>
     <requestid>1032414</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>99968912bbabeb673b7eb880cc202d11</srcmd5>
+    <version>1.7.0</version>
+    <time>1722612441</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.7.0
+  * This release adds support for the -version option, splits up the output
+    of -help into several subsections (&quot;-help [options|tests|all]&quot;), and
+    adds several new tests, which are included under the -v1.7 option:
+    -tileftext              Char in 80-char line tiled (6x13)
+    -putimagexybitmap10     PutImage XYBitmap 10x10 square
+    -putimagexybitmap100    PutImage XYBitmap 100x100 square
+    -putimagexybitmap500    PutImage XYBitmap 500x500 square
+    -shmputxybitmap10       ShmPutImage XYBitmap 10x10 square
+    -shmputxybitmap100      ShmPutImage XYBitmap 100x100 square
+    -shmputxybitmap500      ShmPutImage XYBitmap 500x500 square</comment>
+    <requestid>1191131</requestid>
+  </revision>
 </revisionlist>

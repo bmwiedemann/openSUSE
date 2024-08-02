@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Aug  2 08:54:16 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.7.0
+  * This release adds support for the -version option, splits up the output
+    of -help into several subsections ("-help [options|tests|all]"), and
+    adds several new tests, which are included under the -v1.7 option:
+    -tileftext              Char in 80-char line tiled (6x13)
+    -putimagexybitmap10     PutImage XYBitmap 10x10 square
+    -putimagexybitmap100    PutImage XYBitmap 100x100 square
+    -putimagexybitmap500    PutImage XYBitmap 500x500 square
+    -shmputxybitmap10       ShmPutImage XYBitmap 10x10 square
+    -shmputxybitmap100      ShmPutImage XYBitmap 100x100 square
+    -shmputxybitmap500      ShmPutImage XYBitmap 500x500 square
+
+-------------------------------------------------------------------
 Mon Oct 31 09:42:02 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - fixed URL for tarball in specfile 

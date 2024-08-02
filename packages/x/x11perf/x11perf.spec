@@ -1,7 +1,7 @@
 #
 # spec file for package x11perf
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           x11perf
-Version:        1.6.2
+Version:        1.7.0
 Release:        0
 Summary:        Utility to test X11 server performance
 License:        HPND
@@ -53,12 +53,12 @@ fast an X server can execute the tests.
 %doc ChangeLog README.md
 %{_bindir}/x11perf
 %{_bindir}/x11perfcomp
-%{_libdir}/X11/x11perfcomp/
+%{_datadir}/X11/x11perfcomp/
 %{_mandir}/man1/Xmark.1%{?ext_man}
 %{_mandir}/man1/x11perf.1%{?ext_man}
 %{_mandir}/man1/x11perfcomp.1%{?ext_man}
 %ifnarch %ix86
-%dir %{_libdir}/X11
+%dir %{_datadir}/X11
 %endif
 
 %changelog
