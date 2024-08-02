@@ -3,8 +3,6 @@
   <packagelist relationship="recommends">
     <package name="Aeon-release" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="Aeon-release-appliance" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
-    <package name="MicroOS-release" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
-    <package name="MicroOS-release-appliance" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
     <package name="aaa_base" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
     <package name="alts" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
     <package name="bash" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
@@ -86,6 +84,8 @@
     <package name="libzstd1" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:suse-module-tools-scriptlets -->
     <package name="ncurses-utils" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
     <package name="netcfg" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
+    <package name="openSUSE-release" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
+    <package name="openSUSE-release-appliance" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
     <package name="pam" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
     <package name="pam-config" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
     <package name="perl-Bootloader" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->

@@ -27,6 +27,7 @@ unsorted:
   - AppStream-lang 
   - AusweisApp 
   - Bear 
+  - Botan 
   - Botan-doc 
   - Bottles 
   - Bottles-lang 
@@ -2282,6 +2283,10 @@ unsorted:
   - cluster-glue 
   - cluster-glue-devel 
   - cluster-glue-libs 
+  - clusterctl 
+  - clusterctl-bash-completion 
+  - clusterctl-fish-completion 
+  - clusterctl-zsh-completion 
   - clustershell 
   - clusterssh 
   - clutter-devel 
@@ -3977,6 +3982,10 @@ unsorted:
   - fake-hwclock 
   - fakechroot 
   - fakeroot 
+  - falcoctl 
+  - falcoctl-bash-completion 
+  - falcoctl-fish-completion 
+  - falcoctl-zsh-completion 
   - falkon 
   - falkon-kde 
   - falkon-lang 
@@ -10441,6 +10450,8 @@ unsorted:
   - kubectl-cnpg-bash-completion 
   - kubectl-cnpg-fish-completion 
   - kubectl-cnpg-zsh-completion 
+  - kubectl-directpv 
+  - kubectl-dup 
   - kubectl-explore 
   - kubectl-foreach 
   - kubectl-neat 
@@ -11875,9 +11886,9 @@ unsorted:
   - libattr1-32bit 
   - libaubio-devel 
   - libaubio5 
-  - libaudaspace-c1_4 
-  - libaudaspace-py1_4 
-  - libaudaspace1_4 
+  - libaudaspace-c1_5 
+  - libaudaspace-py1_5 
+  - libaudaspace1_5 
   - libaudcore5 
   - libaudgui5 
   - libaudiofile1 
@@ -12200,7 +12211,7 @@ unsorted:
   - libboost_wave1_85_0-devel 
   - libboost_wave1_85_0-x86-64-v3 
   - libboringssl1 
-  - libbotan-2-19 
+  - libbotan-3-5 
   - libbotan-devel 
   - libbox2d-devel 
   - libbpf-devel 
@@ -17144,7 +17155,7 @@ unsorted:
   - libxls-tools 
   - libxlsreader8 
   - libxlsxwriter-devel 
-  - libxlsxwriter6 
+  - libxlsxwriter7 
   - libxmi0 
   - libxml++-2_6-2 
   - libxml++-3_0-1-32bit 
@@ -17611,6 +17622,7 @@ unsorted:
   - lswt 
   - lsyncd 
   - ltrace 
+  - ltris 
   - lttng-tools 
   - lttng-tools-devel 
   - lttng-ust-devel 
@@ -18092,6 +18104,10 @@ unsorted:
   - markdown-oxide 
   - marknote 
   - marknote-lang 
+  - marvin 
+  - marvin-bash-completion 
+  - marvin-fish-completion 
+  - marvin-zsh-completion 
   - massif-visualizer 
   - massif-visualizer-lang 
   - mate-applet-appmenu 
@@ -18722,6 +18738,7 @@ unsorted:
   - mkdud 
   - mkelfImage 
   - mkosi 
+  - mkosi-initrd 
   - mksh 
   - mksusecd 
   - mktorrent 
@@ -20243,7 +20260,6 @@ unsorted:
   - openSUSE-e-X-Icons 
   - openSUSE-e-X-Neon-Icons 
   - openSUSE-e-X-Oliveleaf-Icons 
-  - openSUSE-release-appliance 
   - openSUSE-release-appliance-docker 
   - openSUSE-release-appliance-hyperv 
   - openSUSE-release-appliance-kvm 
@@ -20541,6 +20557,9 @@ unsorted:
   - orage 
   - orage-lang 
   - oras 
+  - oras-bash-completion 
+  - oras-fish-completion 
+  - oras-zsh-completion 
   - orc 
   - orc-doc 
   - orcania-devel 
@@ -24404,6 +24423,7 @@ unsorted:
   - python310-azure-communication-email 
   - python310-azure-communication-identity 
   - python310-azure-communication-jobrouter 
+  - python310-azure-communication-messages 
   - python310-azure-communication-networktraversal 
   - python310-azure-communication-nspkg 
   - python310-azure-communication-phonenumbers 
@@ -28027,6 +28047,7 @@ unsorted:
   - python311-azure-communication-email 
   - python311-azure-communication-identity 
   - python311-azure-communication-jobrouter 
+  - python311-azure-communication-messages 
   - python311-azure-communication-networktraversal 
   - python311-azure-communication-nspkg 
   - python311-azure-communication-phonenumbers 
@@ -31565,6 +31586,7 @@ unsorted:
   - python312-azure-communication-email 
   - python312-azure-communication-identity 
   - python312-azure-communication-jobrouter 
+  - python312-azure-communication-messages 
   - python312-azure-communication-networktraversal 
   - python312-azure-communication-nspkg 
   - python312-azure-communication-phonenumbers 
@@ -37371,6 +37393,10 @@ unsorted:
   - tailscale-zsh-completion 
   - taisei 
   - taisei-data 
+  - talhelper 
+  - talhelper-bash-completion 
+  - talhelper-fish-completion 
+  - talhelper-zsh-completion 
   - tali 
   - tali-lang 
   - talk 

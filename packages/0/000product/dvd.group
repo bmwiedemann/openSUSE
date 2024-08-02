@@ -1525,6 +1525,7 @@
     <package name="libKUserFeedbackWidgets1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
     <package name="libKWaylandClient6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKasten4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
+    <package name="libKirigamiAddonsStatefulApp6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKirigamiPlatform6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libLLVM18" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libLayerShellQtInterface6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->

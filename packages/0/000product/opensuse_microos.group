@@ -614,6 +614,7 @@
     <package name="libKScreenLocker6" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="libKSysGuardSystemStats2" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="libKWaylandClient6" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
+    <package name="libKirigamiAddonsStatefulApp6" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="libKirigamiPlatform6" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="libLLVM18" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="libLayerShellQtInterface6" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->

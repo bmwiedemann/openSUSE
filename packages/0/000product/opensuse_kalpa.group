@@ -10,8 +10,6 @@
     <package name="Mesa-libEGL1" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="Mesa-libGL1" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="Mesa-libglapi0" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
-    <package name="MicroOS-release" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
-    <package name="MicroOS-release-appliance" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
     <package name="NetworkManager" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="NetworkManager-branding-openSUSE" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="NetworkManager-openconnect" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
@@ -473,6 +471,7 @@
     <package name="libKScreenLocker6" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="libKSysGuardSystemStats2" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="libKWaylandClient6" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
+    <package name="libKirigamiAddonsStatefulApp6" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="libKirigamiPlatform6" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="libLLVM18" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="libLayerShellQtInterface6" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
@@ -1199,6 +1198,8 @@
     <package name="ocean-sound-theme6" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="open-lldp" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="openSUSE-build-key" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
+    <package name="openSUSE-release" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
+    <package name="openSUSE-release-appliance" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
     <package name="openconnect" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="openssh" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="openssh-clients" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
