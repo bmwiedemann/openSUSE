@@ -1,0 +1,6 @@
+<package name="sequoia-sqv" project="openSUSE:Factory">
+  <title>sequoia-sqv - A simple signature verification program.</title>
+  <description>sqv verifies detached OpenPGP signatures.  It is a replacement for gpgv.</description>
+  <devel project="security:privacy" package="sequoia-sqv"/>
+  <url>https://sequoia-pgp.org/</url>
+</package>
