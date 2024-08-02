@@ -1441,6 +1441,7 @@ Prefer: -clutter-gst-devel
 Prefer: %{ffmpeg_pref}-mini-libs
 Prefer: %{ffmpeg_pref}-mini-devel
 Prefer: %{ffmpeg_pref} %{ffmpeg_pref}-libavcodec-devel %{ffmpeg_pref}-libavformat-devel %{ffmpeg_pref}-libavutil-devel %{ffmpeg_pref}-libswscale-devel %{ffmpeg_pref}-libavdevice-devel %{ffmpeg_pref}-libavfilter-devel
+Prefer: -ffmpeg-7-libavcodec-devel -ffmpeg-7-libavformat-devel -ffmpeg-7-libavutil-devel
 Macros:
 %ffmpeg_pref ffmpeg-6
 :Macros
