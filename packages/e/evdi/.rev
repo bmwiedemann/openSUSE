@@ -75,4 +75,18 @@
     <comment></comment>
     <requestid>1187960</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>1d37ebbc5c0a463457b507fb8684441a</srcmd5>
+    <version>1.14.5</version>
+    <time>1722612446</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix adding uefi cert for the kernel module
+- Update patch evdi-Enable-compilation-against-15.5.patch
+- Update to version 1.14.5
+  * This allows building against the 6.10 kernel
+  * Added fix-v1.14.5-build.patch that adds a missing parameter when 
+    building the module.
+</comment>
+    <requestid>1191169</requestid>
+  </revision>
 </revisionlist>

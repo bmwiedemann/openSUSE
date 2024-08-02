@@ -4,10 +4,14 @@ Subject: [PATCH] Enable compilation against 15.5
 
 Signed-off-by: Joan Torres <joan.torres@suse.com>
 ---
-Index: evdi-1.14.2/module/evdi_drm_drv.h
-===================================================================
---- evdi-1.14.2.orig/module/evdi_drm_drv.h
-+++ evdi-1.14.2/module/evdi_drm_drv.h
+ module/evdi_drm_drv.h | 2 +-
+ module/evdi_gem.c     | 7 ++++---
+ 2 files changed, 5 insertions(+), 4 deletions(-)
+
+diff --git a/module/evdi_drm_drv.h b/module/evdi_drm_drv.h
+index 5eea878..cd69cbf 100644
+--- a/module/evdi_drm_drv.h
++++ b/module/evdi_drm_drv.h
 @@ -26,7 +26,7 @@
  #else
  #include <drm/drmP.h>
@@ -17,10 +21,10 @@ Index: evdi-1.14.2/module/evdi_drm_drv.h
  #include <drm/drm_framebuffer.h>
  #else
  #include <drm/drm_irq.h>
-Index: evdi-1.14.2/module/evdi_gem.c
-===================================================================
---- evdi-1.14.2.orig/module/evdi_gem.c
-+++ evdi-1.14.2/module/evdi_gem.c
+diff --git a/module/evdi_gem.c b/module/evdi_gem.c
+index 06a032c..5c60bbf 100644
+--- a/module/evdi_gem.c
++++ b/module/evdi_gem.c
 @@ -11,6 +11,7 @@
  #include <linux/sched.h>
  #include <linux/version.h>
@@ -29,16 +33,16 @@ Index: evdi-1.14.2/module/evdi_gem.c
  #elif KERNEL_VERSION(5, 11, 0) <= LINUX_VERSION_CODE
  #include <linux/dma-buf-map.h>
  #endif
-@@ -27,7 +28,7 @@
- #include <linux/dma-buf.h>
+@@ -28,7 +29,7 @@
  #include <drm/drm_cache.h>
+ #include <linux/vmalloc.h>
  
 -#if KERNEL_VERSION(5, 16, 0) <= LINUX_VERSION_CODE || defined(EL9)
 +#if KERNEL_VERSION(5, 14, 0) <= LINUX_VERSION_CODE || defined(EL9)
  MODULE_IMPORT_NS(DMA_BUF);
  #endif
  
-@@ -292,7 +293,7 @@ int evdi_gem_vmap(struct evdi_gem_object
+@@ -293,7 +294,7 @@ int evdi_gem_vmap(struct evdi_gem_object *obj)
  	int ret;
  
  	if (evdi_drm_gem_object_use_import_attach(&obj->base)) {
@@ -47,7 +51,7 @@ Index: evdi-1.14.2/module/evdi_gem.c
  		struct iosys_map map = IOSYS_MAP_INIT_VADDR(NULL);
  #elif KERNEL_VERSION(5, 11, 0) <= LINUX_VERSION_CODE
  		struct dma_buf_map map = DMA_BUF_MAP_INIT_VADDR(NULL);
-@@ -325,7 +326,7 @@ int evdi_gem_vmap(struct evdi_gem_object
+@@ -326,7 +327,7 @@ int evdi_gem_vmap(struct evdi_gem_object *obj)
  void evdi_gem_vunmap(struct evdi_gem_object *obj)
  {
  	if (evdi_drm_gem_object_use_import_attach(&obj->base)) {
@@ -56,3 +60,6 @@ Index: evdi-1.14.2/module/evdi_gem.c
  		struct iosys_map map = IOSYS_MAP_INIT_VADDR(NULL);
  
  		if (obj->vmap_is_iomem)
+-- 
+2.45.2
+
