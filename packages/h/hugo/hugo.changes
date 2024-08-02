@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Fri Aug 02 14:34:51 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.131.0:
+  * releaser: Bump versions for release of 0.131.0
+  * Fix images.AutoOrient regression
+  * revamp pagegroup tests with quicktest
+  * allow nested params when using Pages.GroupByParam and Pages.GroupByParamDate
+  * build(deps): bump github.com/bep/godartsass/v2 from 2.0.0 to 2.1.0
+  * build(deps): bump google.golang.org/api from 0.152.0 to 0.189.0
+  * build(deps): bump github.com/spf13/cobra from 1.8.0 to 1.8.1
+  * build(deps): bump gocloud.dev from 0.36.0 to 0.38.0
+  * build(deps): bump github.com/gorilla/websocket from 1.5.1 to 1.5.3
+  * build(deps): bump github.com/kyokomi/emoji/v2 from 2.2.12 to 2.2.13
+  * deps: Upgrade github.com/hairyhenderson/go-codeowners v0.4.0 => v0.5.0
+  * build(deps): bump github.com/fatih/color from 1.16.0 to 1.17.0
+  * build(deps): bump github.com/evanw/esbuild from 0.21.4 to 0.23.0
+  * build(deps): bump github.com/tdewolff/minify/v2 from 2.20.36 to 2.20.37
+  * Revert "deps: Set toolchain go1.21.0 in go.mod"
+  * Run go mod tidy
+  * resources/page: Expand parmalinks tokens in `url`
+  * Bump to go 1.21 in go.mod
+  * tpl: Sync Go template packages with the Go 1.22.5 source
+  * Upgrade to Go 1.22.5
+  * deps: Set toolchain go1.21.0 in go.mod
+  * deps: Upgrade golang.org/x/tools v0.21.1-0.20240508182429-e35e4ccd0d2d => v0.23.0
+  * Shorten processed image filenames
+  * Consolidate all hashing to the common/hashing package
+  * Replace the MD5 hashing of images with xxHash
+  * resources: Add BenchmarkHashImage
+  * deps: Replace github.com/mitchellh/hashstructure/v2 with github.com/gohugoio/hashstructure
+  * identity: Use xxHash in hashstructure (note)
+  * identity: Upgrade to github.com/mitchellh/hashstructure/v2 v2.0.2
+  * identity: Add BenchmarkHashString
+  * deps: Upgrade github.com/bep/imagemeta v0.7.4 => v0.7.5
+  * deps: Upgrade github.com/aws/aws-sdk-go-v2 v1.26.1 => v1.30.3
+  * deps: Upgrade to github.com/Azure/azure-sdk-for-go/sdk/azidentity v1.7.0
+  * releaser: Prepare repository for 0.131.0-DEV
+- Packaging improvements:
+  * Update to BuildRequires: golang(API) >= 1.21 matching go.mod
+
+-------------------------------------------------------------------
 Mon Jul 29 17:43:54 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 0.130.0:

@@ -1334,4 +1334,14 @@
   * releaser: Prepare repository for 0.130.0-DEV (forwarded request 1190332 from jfkw)</comment>
     <requestid>1190333</requestid>
   </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>359fe930b9c9a34e7d3832b2fe2d2c9d</srcmd5>
+    <version>0.131.0</version>
+    <time>1722612456</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.131.0:
+- Packaging improvements:
+  * Update to BuildRequires: golang(API) &gt;= 1.21 matching go.mod (forwarded request 1191224 from jfkw)</comment>
+    <requestid>1191225</requestid>
+  </revision>
 </revisionlist>
