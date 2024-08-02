@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul 24 21:57:36 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update wai-logger to version 2.4.1.
+  Upstream does not provide a change log file.
+
+-------------------------------------------------------------------
 Thu Mar 30 17:09:00 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Updated spec file to conform with ghc-rpm-macros-2.5.2.

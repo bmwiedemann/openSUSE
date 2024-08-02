@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul 30 12:03:04 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Cherry-pick upstream patch to fix tests with Python 3.13.
+  * remove-old-unittest-functions.patch
+
+-------------------------------------------------------------------
 Fri Apr 21 12:30:03 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)

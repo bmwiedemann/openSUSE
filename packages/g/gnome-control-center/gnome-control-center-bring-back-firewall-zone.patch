@@ -1,26 +1,6 @@
-From c7e0b3b8d993c2edaaafa54cd40da9378d641263 Mon Sep 17 00:00:00 2001
-From: Jonathan Kang <jonathankang@gnome.org>
-Date: Fri, 27 Oct 2023 16:51:26 +0800
-Subject: [PATCH] gnome-control-center-bring-back-firewall-zone.patch
-
----
- .../connection-editor/ce-page-ethernet.c      |  27 ++++
- .../connection-editor/ce-page-security.c      |  15 +++
- .../network/connection-editor/ce-page-vpn.c   |   8 ++
- .../connection-editor/ethernet-page.ui        |  26 ++++
- .../connection-editor/firewall-helpers.c      | 125 ++++++++++++++++++
- .../connection-editor/firewall-helpers.h      |  33 +++++
- panels/network/connection-editor/meson.build  |   1 +
- .../connection-editor/security-page.ui        |  27 ++++
- panels/network/connection-editor/vpn-page.ui  |  24 ++++
- 9 files changed, 286 insertions(+)
- create mode 100644 panels/network/connection-editor/firewall-helpers.c
- create mode 100644 panels/network/connection-editor/firewall-helpers.h
-
-diff --git a/panels/network/connection-editor/ce-page-ethernet.c b/panels/network/connection-editor/ce-page-ethernet.c
-index dce05a3..bba438f 100644
---- a/panels/network/connection-editor/ce-page-ethernet.c
-+++ b/panels/network/connection-editor/ce-page-ethernet.c
+diff -urpN gnome-control-center-46.3.orig/panels/network/connection-editor/ce-page-ethernet.c gnome-control-center-46.3/panels/network/connection-editor/ce-page-ethernet.c
+--- gnome-control-center-46.3.orig/panels/network/connection-editor/ce-page-ethernet.c	2024-07-30 14:27:24.406647244 -0500
++++ gnome-control-center-46.3/panels/network/connection-editor/ce-page-ethernet.c	2024-07-30 14:43:34.541519398 -0500
 @@ -27,6 +27,7 @@
  
  #include "ce-page.h"
@@ -49,7 +29,7 @@ index dce05a3..bba438f 100644
          char **mac_list;
          const char *s_mac_str;
          const gchar *name;
-@@ -107,6 +112,10 @@ connect_ethernet_page (CEPageEthernet *self)
+@@ -107,6 +112,10 @@ connect_ethernet_page (CEPageEthernet *s
  
          g_signal_connect_object (self->name_entry, "changed", G_CALLBACK (ce_page_changed), self, G_CONNECT_SWAPPED);
          g_signal_connect_object (self->mtu_spin, "value-changed", G_CALLBACK (ce_page_changed), self, G_CONNECT_SWAPPED);
@@ -69,11 +49,10 @@ index dce05a3..bba438f 100644
  }
  
  static const gchar *
-@@ -177,6 +188,16 @@ ce_page_ethernet_validate (CEPage        *page,
-                nm_setting_verify (NM_SETTING (self->setting_wired), NULL, error);
+@@ -178,6 +189,16 @@ ce_page_ethernet_validate (CEPage
  }
  
-+static void
+ static void
 +ce_page_ethernet_dispose (GObject *object)
 +{
 +        CEPageEthernet *self = CE_PAGE_ETHERNET (object);
@@ -83,10 +62,11 @@ index dce05a3..bba438f 100644
 +        G_OBJECT_CLASS (ce_page_ethernet_parent_class)->dispose (object);
 +}
 +
- static void
++static void
  ce_page_ethernet_init (CEPageEthernet *self)
  {
-@@ -186,8 +207,11 @@ ce_page_ethernet_init (CEPageEthernet *self)
+         gtk_widget_init_template (GTK_WIDGET (self));
+@@ -186,8 +207,11 @@ ce_page_ethernet_init (CEPageEthernet *s
  static void
  ce_page_ethernet_class_init (CEPageEthernetClass *klass)
  {
@@ -98,7 +78,7 @@ index dce05a3..bba438f 100644
          gtk_widget_class_set_template_from_resource (widget_class, "/org/gnome/control-center/network/ethernet-page.ui");
  
          gtk_widget_class_bind_template_child (widget_class, CEPageEthernet, cloned_mac_combo);
-@@ -195,6 +219,8 @@ ce_page_ethernet_class_init (CEPageEthernetClass *klass)
+@@ -195,6 +219,8 @@ ce_page_ethernet_class_init (CEPageEther
          gtk_widget_class_bind_template_child (widget_class, CEPageEthernet, mtu_spin);
          gtk_widget_class_bind_template_child (widget_class, CEPageEthernet, mtu_label);
          gtk_widget_class_bind_template_child (widget_class, CEPageEthernet, name_entry);
@@ -107,7 +87,7 @@ index dce05a3..bba438f 100644
  }
  
  static void
-@@ -213,6 +239,7 @@ ce_page_ethernet_new (NMConnection     *connection,
+@@ -213,6 +239,7 @@ ce_page_ethernet_new (NMConnection     *
          self = CE_PAGE_ETHERNET (g_object_new (ce_page_ethernet_get_type (), NULL));
  
          self->client = client;
@@ -115,10 +95,9 @@ index dce05a3..bba438f 100644
          self->setting_connection = nm_connection_get_setting_connection (connection);
          self->setting_wired = nm_connection_get_setting_wired (connection);
  
-diff --git a/panels/network/connection-editor/ce-page-security.c b/panels/network/connection-editor/ce-page-security.c
-index ae6fbd4..b8a1b83 100644
---- a/panels/network/connection-editor/ce-page-security.c
-+++ b/panels/network/connection-editor/ce-page-security.c
+diff -urpN gnome-control-center-46.3.orig/panels/network/connection-editor/ce-page-security.c gnome-control-center-46.3/panels/network/connection-editor/ce-page-security.c
+--- gnome-control-center-46.3.orig/panels/network/connection-editor/ce-page-security.c	2024-07-30 14:27:24.406647244 -0500
++++ gnome-control-center-46.3/panels/network/connection-editor/ce-page-security.c	2024-07-30 14:43:34.541519398 -0500
 @@ -27,6 +27,7 @@
  
  #include "ce-page.h"
@@ -136,7 +115,7 @@ index ae6fbd4..b8a1b83 100644
  
          NMConnection *connection;
          const gchar  *security_setting;
-@@ -165,6 +168,7 @@ security_combo_changed (CEPageSecurity *self)
+@@ -164,6 +167,7 @@ security_combo_changed (CEPageSecurity *
                          gtk_box_remove (self->box, GTK_WIDGET (sec));
  
                  gtk_size_group_add_widget (self->group, GTK_WIDGET (self->security_label));
@@ -144,7 +123,7 @@ index ae6fbd4..b8a1b83 100644
                  nma_ws_add_to_size_group (sec, self->group);
  
                  gtk_box_append (self->box, g_object_ref (GTK_WIDGET (sec)));
-@@ -222,6 +226,7 @@ finish_setup (CEPageSecurity *self)
+@@ -221,6 +225,7 @@ finish_setup (CEPageSecurity *self)
  {
          NMSettingWireless *sw;
          NMSettingWirelessSecurity *sws;
@@ -152,7 +131,7 @@ index ae6fbd4..b8a1b83 100644
          gboolean is_adhoc = FALSE;
          g_autoptr(GtkListStore) sec_model = NULL;
          GtkTreeIter iter;
-@@ -388,6 +393,10 @@ finish_setup (CEPageSecurity *self)
+@@ -387,6 +392,10 @@ finish_setup (CEPageSecurity *self)
  
          gtk_combo_box_set_active (self->security_combo, active < 0 ? 0 : (guint32) active);
  
@@ -163,7 +142,7 @@ index ae6fbd4..b8a1b83 100644
          security_combo_changed (self);
          g_signal_connect_object (self->security_combo, "changed",
                                   G_CALLBACK (security_combo_changed), self, G_CONNECT_SWAPPED);
-@@ -423,6 +432,7 @@ ce_page_security_validate (CEPage        *page,
+@@ -422,6 +431,7 @@ ce_page_security_validate (CEPage
  {
          CEPageSecurity *self = CE_PAGE_SECURITY (page);
          NMSettingWireless *sw;
@@ -171,7 +150,7 @@ index ae6fbd4..b8a1b83 100644
          NMAWs *sec;
          gboolean valid = FALSE;
          const char *mode;
-@@ -479,6 +489,9 @@ ce_page_security_validate (CEPage        *page,
+@@ -478,6 +488,9 @@ ce_page_security_validate (CEPage
  
          }
  
@@ -181,7 +160,7 @@ index ae6fbd4..b8a1b83 100644
          return valid;
  }
  
-@@ -501,6 +514,8 @@ ce_page_security_class_init (CEPageSecurityClass *klass)
+@@ -500,6 +513,8 @@ ce_page_security_class_init (CEPageSecur
          gtk_widget_class_bind_template_child (widget_class, CEPageSecurity, box);
          gtk_widget_class_bind_template_child (widget_class, CEPageSecurity, security_label);
          gtk_widget_class_bind_template_child (widget_class, CEPageSecurity, security_combo);
@@ -190,12 +169,11 @@ index ae6fbd4..b8a1b83 100644
  }
  
  static void
-diff --git a/panels/network/connection-editor/ce-page-vpn.c b/panels/network/connection-editor/ce-page-vpn.c
-index 36afde5..edbf331 100644
---- a/panels/network/connection-editor/ce-page-vpn.c
-+++ b/panels/network/connection-editor/ce-page-vpn.c
-@@ -35,6 +35,8 @@ struct _CEPageVpn
- 
+diff -urpN gnome-control-center-46.3.orig/panels/network/connection-editor/ce-page-vpn.c gnome-control-center-46.3/panels/network/connection-editor/ce-page-vpn.c
+--- gnome-control-center-46.3.orig/panels/network/connection-editor/ce-page-vpn.c	2024-07-30 14:27:24.406647244 -0500
++++ gnome-control-center-46.3/panels/network/connection-editor/ce-page-vpn.c	2024-07-30 14:43:34.541519398 -0500
+@@ -36,6 +36,8 @@ struct _CEPageVpn
+         GtkBox     *box;
          GtkLabel   *failure_label;
          GtkEntry   *name_entry;
 +        GtkLabel   *firewall_heading;
@@ -203,7 +181,7 @@ index 36afde5..edbf331 100644
  
          NMConnection *connection;
          NMSettingConnection *setting_connection;
-@@ -123,6 +125,9 @@ connect_vpn_page (CEPageVpn *self)
+@@ -124,6 +126,9 @@ connect_vpn_page (CEPageVpn *self)
          name = nm_setting_connection_get_id (self->setting_connection);
          gtk_editable_set_text (GTK_EDITABLE (self->name_entry), name);
          g_signal_connect_object (self->name_entry, "changed", G_CALLBACK (ce_page_changed), self, G_CONNECT_SWAPPED);
@@ -213,7 +191,7 @@ index 36afde5..edbf331 100644
  }
  
  static void
-@@ -158,6 +163,7 @@ ce_page_vpn_validate (CEPage        *page,
+@@ -159,6 +164,7 @@ ce_page_vpn_validate (CEPage        *pag
          g_object_set (self->setting_connection,
                        NM_SETTING_CONNECTION_ID, gtk_editable_get_text (GTK_EDITABLE (self->name_entry)),
                        NULL);
@@ -221,8 +199,8 @@ index 36afde5..edbf331 100644
  
          if (!nm_setting_verify (NM_SETTING (self->setting_connection), NULL, error))
                  return FALSE;
-@@ -186,6 +192,8 @@ ce_page_vpn_class_init (CEPageVpnClass *class)
- 
+@@ -188,6 +194,8 @@ ce_page_vpn_class_init (CEPageVpnClass *
+         gtk_widget_class_bind_template_child (widget_class, CEPageVpn, box);
          gtk_widget_class_bind_template_child (widget_class, CEPageVpn, failure_label);
          gtk_widget_class_bind_template_child (widget_class, CEPageVpn, name_entry);
 +        gtk_widget_class_bind_template_child (widget_class, CEPageVpn, firewall_heading);
@@ -230,12 +208,11 @@ index 36afde5..edbf331 100644
  }
  
  static void
-diff --git a/panels/network/connection-editor/ethernet-page.ui b/panels/network/connection-editor/ethernet-page.ui
-index e35a18a..c3618a9 100644
---- a/panels/network/connection-editor/ethernet-page.ui
-+++ b/panels/network/connection-editor/ethernet-page.ui
-@@ -117,5 +117,31 @@
-         </layout>
+diff -urpN gnome-control-center-46.3.orig/panels/network/connection-editor/ethernet-page.ui gnome-control-center-46.3/panels/network/connection-editor/ethernet-page.ui
+--- gnome-control-center-46.3.orig/panels/network/connection-editor/ethernet-page.ui	2024-07-30 14:27:24.406647244 -0500
++++ gnome-control-center-46.3/panels/network/connection-editor/ethernet-page.ui	2024-07-30 14:43:34.541519398 -0500
+@@ -127,5 +127,31 @@
+         </child>
        </object>
      </child>
 +    <child>
@@ -266,11 +243,9 @@ index e35a18a..c3618a9 100644
 +    </child>
    </template>
  </interface>
-diff --git a/panels/network/connection-editor/firewall-helpers.c b/panels/network/connection-editor/firewall-helpers.c
-new file mode 100644
-index 0000000..2e2c29f
---- /dev/null
-+++ b/panels/network/connection-editor/firewall-helpers.c
+diff -urpN gnome-control-center-46.3.orig/panels/network/connection-editor/firewall-helpers.c gnome-control-center-46.3/panels/network/connection-editor/firewall-helpers.c
+--- gnome-control-center-46.3.orig/panels/network/connection-editor/firewall-helpers.c	1969-12-31 18:00:00.000000000 -0600
++++ gnome-control-center-46.3/panels/network/connection-editor/firewall-helpers.c	2024-07-30 14:43:34.541519398 -0500
 @@ -0,0 +1,125 @@
 +/* -*- Mode: C; tab-width: 8; indent-tabs-mode: nil; c-basic-offset: 8 -*-
 + *
@@ -397,11 +372,9 @@ index 0000000..2e2c29f
 +        g_object_set (setting, NM_SETTING_CONNECTION_ZONE, zone, NULL);
 +        g_free (zone);
 +}
-diff --git a/panels/network/connection-editor/firewall-helpers.h b/panels/network/connection-editor/firewall-helpers.h
-new file mode 100644
-index 0000000..213c515
---- /dev/null
-+++ b/panels/network/connection-editor/firewall-helpers.h
+diff -urpN gnome-control-center-46.3.orig/panels/network/connection-editor/firewall-helpers.h gnome-control-center-46.3/panels/network/connection-editor/firewall-helpers.h
+--- gnome-control-center-46.3.orig/panels/network/connection-editor/firewall-helpers.h	1969-12-31 18:00:00.000000000 -0600
++++ gnome-control-center-46.3/panels/network/connection-editor/firewall-helpers.h	2024-07-30 14:43:34.541519398 -0500
 @@ -0,0 +1,33 @@
 +/*
 + * This program is free software; you can redistribute it and/or modify
@@ -436,11 +409,10 @@ index 0000000..213c515
 +
 +
 +#endif  /* _FIREWALL_HELPERS_H_ */
-diff --git a/panels/network/connection-editor/meson.build b/panels/network/connection-editor/meson.build
-index c544b21..7377fc0 100644
---- a/panels/network/connection-editor/meson.build
-+++ b/panels/network/connection-editor/meson.build
-@@ -13,6 +13,7 @@ sources = files(
+diff -urpN gnome-control-center-46.3.orig/panels/network/connection-editor/meson.build gnome-control-center-46.3/panels/network/connection-editor/meson.build
+--- gnome-control-center-46.3.orig/panels/network/connection-editor/meson.build	2024-07-30 14:27:24.406647244 -0500
++++ gnome-control-center-46.3/panels/network/connection-editor/meson.build	2024-07-30 14:43:34.541519398 -0500
+@@ -14,6 +14,7 @@ sources = files(
    'ce-page-wireguard.c',
    'ce-page-wifi.c',
    'ce-page.c',
@@ -448,12 +420,11 @@ index c544b21..7377fc0 100644
    'net-connection-editor.c',
    'vpn-helpers.c'
  )
-diff --git a/panels/network/connection-editor/security-page.ui b/panels/network/connection-editor/security-page.ui
-index 9a1c0de..ba31a81 100644
---- a/panels/network/connection-editor/security-page.ui
-+++ b/panels/network/connection-editor/security-page.ui
-@@ -41,5 +41,32 @@
-         </layout>
+diff -urpN gnome-control-center-46.3.orig/panels/network/connection-editor/security-page.ui gnome-control-center-46.3/panels/network/connection-editor/security-page.ui
+--- gnome-control-center-46.3.orig/panels/network/connection-editor/security-page.ui	2024-07-30 14:27:24.406647244 -0500
++++ gnome-control-center-46.3/panels/network/connection-editor/security-page.ui	2024-07-30 14:43:34.541519398 -0500
+@@ -51,5 +51,32 @@
+         </child>
        </object>
      </child>
 +    <child>
@@ -485,41 +456,37 @@ index 9a1c0de..ba31a81 100644
 +    </child>
    </template>
  </interface>
-diff --git a/panels/network/connection-editor/vpn-page.ui b/panels/network/connection-editor/vpn-page.ui
-index 98f801b..73bbef8 100644
---- a/panels/network/connection-editor/vpn-page.ui
-+++ b/panels/network/connection-editor/vpn-page.ui
-@@ -28,6 +28,30 @@
-         </child>
-       </object>
-     </child>
-+    <child>
-+      <object class="GtkBox" id="box1">
-+        <property name="visible">True</property>
-+        <property name="can_focus">False</property>
-+        <property name="spacing">6</property>
-+        <child>
-+          <object class="GtkLabel" id="firewall_heading">
-+            <property name="visible">True</property>
-+            <property name="can_focus">False</property>
-+            <property name="label" translatable="yes">Firewall _Zone</property>
-+            <property name="use_underline">True</property>
-+            <property name="mnemonic_widget">firewall_combo</property>
-+          </object>
-+        </child>
-+        <child>
-+          <object class="GtkComboBoxText" id="firewall_combo">
-+            <property name="visible">True</property>
-+            <property name="can_focus">False</property>
-+            <property name="entry_text_column">0</property>
-+            <property name="id_column">1</property>
-+          </object>
-+        </child>
-+      </object>
-+    </child>
-     <child>
-       <object class="GtkLabel" id="failure_label">
-         <property name="xalign">0</property>
--- 
-2.42.0
-
+diff -urpN gnome-control-center-46.3.orig/panels/network/connection-editor/vpn-page.ui gnome-control-center-46.3/panels/network/connection-editor/vpn-page.ui
+--- gnome-control-center-46.3.orig/panels/network/connection-editor/vpn-page.ui	2024-07-30 14:27:24.406647244 -0500
++++ gnome-control-center-46.3/panels/network/connection-editor/vpn-page.ui	2024-07-30 16:41:59.561246367 -0500
+@@ -35,6 +35,30 @@
+               </object>
+             </child>
+             <child>
++              <object class="GtkBox" id="box1">
++                <property name="visible">True</property>
++                <property name="can_focus">False</property>
++                <property name="spacing">6</property>
++                <child>
++                  <object class="GtkLabel" id="firewall_heading">
++                    <property name="visible">True</property>
++                    <property name="can_focus">False</property>
++                    <property name="label" translatable="yes">Firewall _Zone</property>
++                    <property name="use_underline">True</property>
++                    <property name="mnemonic_widget">firewall_combo</property>
++                  </object>
++                </child>
++                <child>
++                  <object class="GtkComboBoxText" id="firewall_combo">
++                    <property name="visible">True</property>
++                    <property name="can_focus">False</property>
++                    <property name="entry_text_column">0</property>
++                    <property name="id_column">1</property>
++                  </object>
++                </child>
++              </object>
++            </child>
++            <child>
+               <object class="GtkLabel" id="failure_label">
+                 <property name="xalign">0</property>
+                 <property name="label" translatable="yes">(Error: unable to load VPN connection editor)</property>

@@ -160,7 +160,7 @@ BuildRequires:  liburing-devel
 %endif
 BuildRequires:  sysuser-tools
 
-Version:        4.20.2+git.348.4fb6af61307
+Version:        4.20.2+git.350.4cfcde9cdb
 Release:        0
 URL:            https://www.samba.org/
 Obsoletes:      samba-32bit < %{version}
@@ -548,7 +548,7 @@ Group:          Productivity/Networking/Samba
 Requires:       samba = %{version}
 Requires:       samba-ldb-ldap = %{version}
 Requires:       samba-python3 = %{version}
-%if %{with_mit_dc}
+%if %{with_dc}
 Requires:       python3-Markdown
 %endif
 

@@ -20,7 +20,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-redis
-Version:        5.0.1
+Version:        5.0.8
 Release:        0
 Summary:        Python client for Redis key-value store
 License:        MIT
@@ -28,10 +28,9 @@ URL:            https://github.com/redis/redis-py
 Source0:        https://files.pythonhosted.org/packages/source/r/redis/redis-%{version}.tar.gz
 Source1:        https://raw.githubusercontent.com/redis/redis-py/5.0/pytest.ini
 Patch0:         increase-test-timeout.patch
-# PATCH-FIX-UPSTREAM https://github.com/redis/redis-py/pull/3005
-Patch1:         Close-various-objects-created-during-asyncio-tests.patch
 BuildRequires:  %{python_module async-timeout >= 4.0.2}
 BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest-asyncio}
@@ -61,7 +60,6 @@ cp %SOURCE1 .
 %ifarch s390x
 %patch -P 0 -p1
 %endif
-%patch -P 1 -p1
 
 # This test passes locally but fails in obs with different
 # environment, like ALP build...

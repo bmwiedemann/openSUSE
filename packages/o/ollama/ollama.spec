@@ -17,7 +17,7 @@
 
 
 Name:           ollama
-Version:        0.3.0
+Version:        0.3.1
 Release:        0
 Summary:        Tool for running AI models on-premise
 License:        MIT
@@ -35,9 +35,12 @@ BuildRequires:  golang(API) >= 1.22
 %sysusers_requires
 %if 0%{?sle_version} == 150600
 BuildRequires:  gcc12-c++
+BuildRequires:  libstdc++6-gcc12
 %else
 BuildRequires:  gcc-c++ >= 11.4.0
 %endif
+# 32bit seems not to be supported anymore
+ExcludeArch:    %ix86 %arm
 
 %description
 Ollama is a tool for running AI models on one's own hardware.
@@ -78,6 +81,12 @@ mkdir -p "%{buildroot}/%{_docdir}/%{name}"
 cp -Ra docs/* "%{buildroot}/%{_docdir}/%{name}"
 
 %check
+%if 0%{?sle_version} == 150600
+export CXX=g++-12
+export CC=gcc-12
+# pie doesn't work with gcc12 on leap
+export GOFLAGS="-mod=vendor"
+%endif
 go test ./...
 
 %pre -f %{name}.pre

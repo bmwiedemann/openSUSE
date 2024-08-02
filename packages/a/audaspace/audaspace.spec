@@ -1,7 +1,7 @@
 #
 # spec file for package audaspace
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,18 +18,17 @@
 
 # See also http://en.opensuse.org/openSUSE:Shared_library_packaging_policy
 # NOTE: sover follows version.
-%define sover 1_4
-%define soversion 1.4
+%define sover 1_5
+%define soversion 1.5
 
 Name:           audaspace
-Version:        1.4.0
+Version:        1.5.0
 Release:        0
 Summary:        A High-Level Audio Library
 License:        Apache-2.0
 Group:          Development/Libraries/C and C++
 URL:            https://audaspace.github.io/
 Source0:        https://github.com/audaspace/audaspace/archive/refs/tags/v%{version}.tar.gz#/audaspace-%{version}.tar.gz
-Patch0:         audaspace-animated-sequence.patch
 BuildRequires:  cmake > 3
 BuildRequires:  doxygen
 BuildRequires:  fdupes
@@ -41,9 +40,9 @@ BuildRequires:  python3-devel
 BuildRequires:  python3-numpy-devel
 BuildRequires:  pkgconfig(fftw3)
 BuildRequires:  pkgconfig(jack)
-BuildRequires:  pkgconfig(libavcodec)
-BuildRequires:  pkgconfig(libavformat)
-BuildRequires:  pkgconfig(libavutil)
+BuildRequires:  pkgconfig(libavcodec) >= 61.3.100
+BuildRequires:  pkgconfig(libavformat) >= 61.1.100
+BuildRequires:  pkgconfig(libavutil) >= 59.8.100
 BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(openal)
 BuildRequires:  pkgconfig(sdl2)

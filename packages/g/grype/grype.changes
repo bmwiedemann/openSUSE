@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Thu Aug 01 07:21:37 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.79.4:
+  * chore(deps): bump ossf/scorecard-action from 2.3.3 to 2.4.0
+    (#2016)
+  * chore(deps): update Syft to v1.10.0 (#2019)
+  * chore(deps): bump github/codeql-action from 3.25.14 to 3.25.15
+    (#2011)
+  * chore(deps): bump github.com/gabriel-vasile/mimetype from 1.4.4
+    to 1.4.5 (#2012)
+  * chore(deps): update tools to latest versions (#2015)
+  * chore(deps): bump github/codeql-action from 3.25.13 to 3.25.14
+    (#2010)
+  * disable ui before run function on db status (#2008)
+  * chore(deps): bump github.com/docker/docker (#2007)
+  * chore(deps): update tools to latest versions (#2003)
+  * chore(deps): bump github.com/docker/docker (#2000)
+  * chore(deps): bump github.com/gkampitakis/go-snaps from 0.5.4 to
+    0.5.5 (#2001)
+  * chore(deps): bump docker/login-action from 3.2.0 to 3.3.0
+    (#2002)
+  * chore(deps): bump github/codeql-action from 3.25.12 to 3.25.13
+    (#1999)
+  * chore: request artifact in issue template (#1996)
+  * chore(deps): update tools to latest versions (#1998)
+  * docs: CODE_OF_CONDUCT.md (#1994)
+  * chore(deps): bump github.com/google/go-containerregistry
+    (#1997)
+  * chore(deps): bump anchore/sbom-action from 0.16.1 to 0.17.0
+    (#1992)
+  * chore(deps): update tools to latest versions (#1989)
+  * chore(deps): bump github/codeql-action from 3.25.11 to 3.25.12
+    (#1990)
+  * chore(deps): bump github.com/charmbracelet/lipgloss (#1991)
+
+-------------------------------------------------------------------
 Tue Jul 16 05:52:51 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.79.3:

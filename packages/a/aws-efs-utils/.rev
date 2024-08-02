@@ -173,4 +173,32 @@
     <comment></comment>
     <requestid>1147905</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>d84a00c0ae0bb92fe089c5485101ca48</srcmd5>
+    <version>2.0.3</version>
+    <time>1722542658</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.0.3
+  * Upgrade py version
+  * Replace deprecated usage of datetime
+- from version 2.0.2
+  * Check for efs-proxy PIDs when cleaning tunnel state files
+  * Add PID to log entries
+- from version 2.0.1
+  * Disable Nagle's algorithm for efs-proxy TLS mounts to improve latencies
+- from version 2.0.0
+  * Replace stunnel, which provides TLS encryptions for mounts, with efs-proxy,
+    a component built in-house at AWS. Efs-proxy lays the foundation for upcoming
+    feature launches at EFS.
+- from version 1.36.0
+  * Support new mount option: crossaccount, conduct cross account mounts via ip address.
+    Use client AZ-ID to choose mount target.
+- from version 1.35.2
+  * Revert &quot;Add warning if using older Version&quot;
+  * Support MacOS Sonoma
+- Switch package to modern Python Stack on SLE-15
+  * Use Python 3.11 on SLE-15 by default
+  * Use primary Python version on Tumbleweed (forwarded request 1190644 from glaubitz)</comment>
+    <requestid>1190670</requestid>
+  </revision>
 </revisionlist>

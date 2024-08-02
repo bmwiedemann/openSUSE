@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Jul 22 09:49:36 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.6.0
+  * Harmonize gast.dump behavior across versions, following py3.13 behavior
+- from version 0.5.5
+  * Provide a bug and security bug section in the README
+  * Upgrade to py3.13 support
+  * Slightly speedup gast node creation
+  * Document ExceptHandler.name change
+  * Optimize node constructors
+  * Update unparser for py 3.12 and setup minimal testing
+  * Reflect AST changes to README
+  * Support py 3.12 type parameters
+  * Update CI configuration for python 3.12 (and 2.7!)
+  * Support Type aliases from Python 3.12
+
+-------------------------------------------------------------------
 Sun Jun 30 20:51:12 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - add comment on interdependency with pythran

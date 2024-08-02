@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Thu Aug  1 13:26:21 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Import Arch linux patch for building with ffmpeg-7
+  https://gitlab.archlinux.org/archlinux/packaging/packages/blender/-/blob/main/ffmpeg-7-1.patch?ref_type=heads
+  We do not need the 2nd patch as we are not using the intree copy
+  of audaspace on distros with ffmpeg-7
+
+-------------------------------------------------------------------
+Thu Jul 18 13:10:15 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- switch to autosetup
+
+-------------------------------------------------------------------
+Thu Jul 18 13:07:20 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- The blender contrib repository was archived in May.
+  Probably in favor of https://extensions.blender.org/
+  
+  If you want to get those extensions/addons back install them via
+  the new extensions manager.
+
+  Remove all code for injecting more addons/extensions from the
+  build.
+
+-------------------------------------------------------------------
+Thu Jul 18 12:22:34 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- put the contrib addons into addons_core
+
+-------------------------------------------------------------------
+Wed Jul 17 23:04:23 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 4.2.0
+  https://www.blender.org/download/releases/4-2/
+  https://developer.blender.org/docs/release_notes/4.2/
+- bump BuildRequires for audaspace to 1.5
+
+-------------------------------------------------------------------
 Thu May  2 13:19:16 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
 
 - drop the blender-addons-4.1.1.tar.xz tarball again as it is

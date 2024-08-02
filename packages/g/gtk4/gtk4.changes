@@ -1,4 +1,142 @@
 -------------------------------------------------------------------
+Thu Aug  1 04:33:31 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add missed optflags to CFLAGS.
+
+-------------------------------------------------------------------
+Wed Jul 31 13:29:25 UTC 2024 - Filip Kastl <filip.kastl@suse.com>
+
+- Add -Wno-int-conversion to CFLAGS to enable compilation with
+  GCC 14.
+
+-------------------------------------------------------------------
+Tue Jul 30 19:42:09 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 4.15.4:
+  + GtkPopover: Fix size allocation with wrapping labels
+  + GtkColumnView: Check column visibility when measuring
+  + CSS:
+    - Fix fallout from recent changes
+    - Make implementation of currentcolor inheritance match browsers
+  + Gdk:
+    - Introduce GdkColorState for encoding color space information.
+      Currently, we support srgb, srgb-linear, rec2100-pq and
+      rec2100-linear
+    - Add color states to GdkTexture, as well as to the texture
+      builder and downloader objects, and convert as necessary
+    - Add GdkMemoryTextureBuilder
+    - Attach color states when loading or saving textures
+    - Add GdkCicpParams to create color state objects for cicp
+      tuples
+    - Drop GDK_DEBUG=vulkan-validate. Use
+      VK_INSTEANCE_LAYERS=VK_LAYER_KHRONOS_validation instead
+  + Gsk:
+    - Improve caching of glyphs and textures
+    - Remove the uber shader
+    - Numerous bug fixes
+    - Fix corner cases in offload handling
+    - Implement occlusion culling for opaque content
+    - Allow offloading (some) transformed textures
+    - Take colorstate into account when compositing
+    - Add GDK_DEBUG=linear to opt into linear compositing
+    - Implement tiling for large textures
+    - Stop using descriptors and go back to simpler texture
+      management that should work better with older GL
+    - Use correct shader clip mode for glyphs
+    - Improve shadow rendering
+  + Media: Attach color states to textures obtained from gstreamer
+  + Wayland:
+    - Allow offloading GL textures via dmabuf export
+    - Suppot the xx-color-management-v4 protocol
+  + Deprecations: GskGLShader and the render node
+  + Tools:
+    - Improve the rendernode tool extract command
+    - Add an image tool that is about manipulating textures
+  + Build: GTK now requires a C11 compiler
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Jul  1 10:45:41 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 4.15.3:
+  + Accessibility:
+    - Only emit notifications when cursor positions change in
+      GtkText.
+    - Fix handling of help text properties.
+  + CSS: Fix some crashes introduced in recent currentcolor
+    changes.
+  + DND: Avoid a critical.
+  + Documentation: Fix many oversights and missing docs.
+- Changes from version 4.15.2:
+  + GtkFileChooserWidget:
+    - Plug some memory leaks.
+    - Make Ctrl-Shift-N create a new folder.
+  + GtkPopover: Handle resizing and position changes better.
+  + CSS:
+    - Support color(), oklab().
+    - Support color-mix() (https://www.w3.org/TR/css-color-5/).
+    - Support relative colors (https://www.w3.org/TR/css-color-5/).
+    - Support more colorspaces in color().
+    - Allow percentages for opacity.
+    - Handle currentcolor more correctly.
+  + Accessibility: Avoid markup when reading labels.
+  + GSK:
+    - Subset fonts when serializing node trees.
+    - Make ngl export render_texture results as dmabufs.
+  + Wayland: Use xdg-dialog protocol for attached dialogs.
+  + Documentation: Widget shortcuts and actions are now described
+    in the docs.
+  + Debugging: Add GTK_DEBUG=css for warning about deprecated css
+    syntax.
+  + Tools: rendernode-tool: Add an extract command for data urls.
+  + Deprecations:
+    - CSS Color functions shade(), lighter(), darker(), alpha(),
+      mix().
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Jun 21 14:50:55 UTC 2024 - joan.torres@suse.com
+
+- Update to version 4.15.1:
+  + GtkGraphicsOffload: Don't crash without a child.
+  + GtkSpinner: Don't animate when unmapped.
+  + CSS:
+    - Support the :root selector.
+    - Support variables and custom properties.
+    - Implement math functions.
+    - Support modern syntax and calc in rgb() and hsl().
+  + Icontheme:
+    - Make symbolic svg loading more efficient.
+    - Handle color-free symbolics more efficiently.
+  + Accessibility:
+    - Make the gtk-demo sidebar search more accessible.
+    - Stop emitting focus events.
+    - Realize child contexts when necessary.
+  + GDK:
+    - Support XDG_ACTIVATION_TOKEN.
+    - dmabuf: Be more defensive when importing unknown formats to
+      GL.
+    - dmabuf: Use narrow range for YUV.
+    - vulkan: Recreate swapchains when necessary or beneficial.
+  + GSK:
+    - Improve logging for GDK_DEBUG=offload.
+    - Improve logging for GSK_DEBUG=renderer.
+    - gpu: Warn about inefficient texture import.
+    - gpu: Handle tiny offscreens correctly.
+    - vulkan: Add profiler marks in various places.
+    - vulkan: Fix a problem with imported dmabufs showing up black.
+    - cairo: Speed up mask nodes, since we use them for symbolic
+      icons.
+  + Wayland: Use wl_compositor version 6.
+  + X11: Implement a missing method.
+  + Build: Fix many ubsan warnings.
+  + Debugging:
+    - Show more texture details in the recorder.
+    - Use GTK_DEBUG=css to see CSS deprecations.
+  + Deprecations: Use of @name colors in CSS.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri May  3 14:40:14 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 4.14.4:

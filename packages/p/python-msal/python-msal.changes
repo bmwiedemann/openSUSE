@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Jul 31 12:50:17 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.30.0
+  * New feature: Support Subject Name/Issuer authentication when using
+    .pfx certificate file. Documentation available in one of the recent
+    purple boxes here. (#718)
+  * New feature: Automatically use SHA256 and PSS padding when using
+    .pfx certificate on non-ADFS, non-OIDC authorities. (#722)
+  * New feature: Expose refresh_on (if any) to fresh or cached response,
+    so that caller may choose to proactively call acquire_token_silent()
+    early. (#723)
+  * Bugfix for token cache search. MSAL 1.27+ customers please upgrade
+    to MSAL 1.30+. (#717)
+
+-------------------------------------------------------------------
 Tue Jul  9 07:02:22 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 1.29.0

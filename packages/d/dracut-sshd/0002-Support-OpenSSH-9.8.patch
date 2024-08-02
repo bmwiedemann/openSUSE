@@ -1,0 +1,49 @@
+From 70e5062427a5da3732721ea6d3064d5936d0f0e9 Mon Sep 17 00:00:00 2001
+From: Ellison Patterson <3533001+ellisonpatterson@users.noreply.github.com>
+Date: Mon, 1 Jul 2024 11:39:29 -0400
+Subject: [PATCH 2/3] Support OpenSSH 9.8
+
+Reason for why we need these executables:
+
+https://www.openssh.com/releasenotes.html#9.8p1
+
+ * sshd(8): the server has been split into a listener binary, sshd(8),
+   and a per-session binary "sshd-session". This allows for a much
+   smaller listener binary, as it no longer needs to support the SSH
+   protocol. As part of this work, support for disabling privilege
+   separation (which previously required code changes to disable) and
+   disabling re-execution of sshd(8) has been removed. Further
+   separation of sshd-session into additional, minimal binaries is
+   planned for the future.
+
+fixes #80
+---
+ 46sshd/module-setup.sh | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
+
+diff --git a/46sshd/module-setup.sh b/46sshd/module-setup.sh
+index eb9da8d..7f26087 100755
+--- a/46sshd/module-setup.sh
++++ b/46sshd/module-setup.sh
+@@ -58,6 +58,18 @@ install() {
+     inst_multiple -o /etc/sysconfig/sshd /etc/sysconfig/ssh \
+             /etc/sysconfig/dracut-sshd
+ 
++    # Copy ssh helper executables for OpenSSH 9.8+
++    # /usr/lib/ssh          -> Arch
++    # /usr/lib(64)/misc     -> Gentoo
++    # /usr/libexec/openssh  -> Fedora (possibly)
++    local d
++    for d in /usr/lib/ssh /usr/lib64/misc /usr/lib/misc /usr/libexec/openssh ; do
++        if [ -f "$d"/sshd-session ]; then
++            inst_multiple "$d"/{sshd-session,sftp-server}
++            break
++        fi
++    done
++
+     # First entry for Fedora 28, second for Fedora 27
+     inst_multiple -o /etc/crypto-policies/back-ends/opensshserver.config \
+             /etc/crypto-policies/back-ends/openssh-server.config
+-- 
+2.35.3
+

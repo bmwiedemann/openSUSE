@@ -32,4 +32,12 @@
     <comment>Please stage alongside openSUSE-Aeon submission and other submissions from devel:microos:aeon</comment>
     <requestid>1189389</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>dceffb5d102af409a0e62b2988a98b29</srcmd5>
+    <version>0.1.0</version>
+    <time>1722542663</time>
+    <user>dimstar_suse</user>
+    <comment>- Populate /etc/sysconfig/bootloader (boo#1228659)</comment>
+    <requestid>1190689</requestid>
+  </revision>
 </revisionlist>

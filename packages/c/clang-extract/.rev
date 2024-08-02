@@ -117,4 +117,16 @@
   * Fix closure missing TypedefDecl because not being referenced by type</comment>
     <requestid>1190165</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>ea5aad2dd17066cc171aaa8a36e7fbd0</srcmd5>
+    <version>0~20240731.94276b7</version>
+    <time>1722542713</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0~20240731.94276b7:
+  * Remove functions body from Closure.hh
+  * Analyze Decls with same BeginLoc
+  * LLVMMisc.cpp: Check if identifier exists in SymbolTable
+  * Fix failing testcase if system compiler is gcc-14</comment>
+    <requestid>1190857</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,50 @@
+-------------------------------------------------------------------
+Wed Jul 10 19:37:13 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.7.4:
+  * Extend ControlPlane/Deployment/Pool builtin to include metadata
+  * [release-1.7] ✨ Allow CAPBK to generate JoinConfiguration
+    discovery kubeconfig (#10842)
+  * bug: Patch helper should be able to patch non-spec objects
+  * Extend cluster builtin to include UID
+  * Bump to Go 1.22.5
+  * [release-1.7] 🌱 Allow control plane provider to set endpoint
+    (#10800)
+  * bump cert-manager to 1.15.1
+  * Bump to Go 1.22.4
+  * docs: fix dead link in
+    proposals/20210222-kubelet-authentication.md
+  * 🐛 Correctly handle concurrent updates to
+    ClusterResourceSetBinding
+  * MD/MS topo reconciler: only add finalizer for owned MD/MS
+  * Update quick-start.md
+  * Update Proxmox quick-start docs
+  * ✨ Add kubeadm v1beta4 types (#10709)
+  * Deprioritize unknown NodeHealthy conditions for deletion
+  * [release-1.7] :seedling: Add ionoscloud provider (#10769)
+  * fix: delayed MHC replacement of unreachable nodes
+  * fix(10661): volumes don't block deletion of unreachable nodes
+  * Improve logs when machine is waiting for node
+  * Ensure unhealthy machines get deletion priority
+  * book: Fix comment on NodeStartupTimeout
+  * :sparkles: Add remediation strategy support for MachineSet
+  * seedling: MachineHealthCheck should take Machine's InfraReady
+    condition for startup time
+  * [release-1.7] 🌱 Improvements to ownerReferences and finalizers
+    test (#10747)
+
+-------------------------------------------------------------------
+Sun Jun 16 11:20:24 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.7.3:
+  * Bump to Go 1.21.11
+  * update cert-manager to v1.15.0
+  * fix broken kubebuilder link in old docs
+  * Support ControlPlane variable overrides
+  * docs: fix dead links
+
+-------------------------------------------------------------------
+Sun Jun 16 11:20:03 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- new package clusterctl: tool that handles the lifecycle of a
+  Cluster API management cluster

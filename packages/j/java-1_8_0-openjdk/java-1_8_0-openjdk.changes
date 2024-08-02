@@ -1,4 +1,96 @@
 -------------------------------------------------------------------
+Thu Aug  1 06:21:31 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Update to version jdk8u422 (icedtea-3.32.0)
+  * Security fixes
+    + JDK-8314794, CVE-2024-21131, bsc#1228046: Improve UTF8 String
+      supports
+    + JDK-8319859, CVE-2024-21138, bsc#1228047: Better symbol
+      storage
+    + JDK-8320097: Improve Image transformations
+    + JDK-8320548, CVE-2024-21140, bsc#1228048: Improved loop
+      handling
+    + JDK-8322106, CVE-2024-21144, bsc#1228050: Enhance Pack 200
+      loading
+    + JDK-8323231, CVE-2024-21147, bsc#1228052: Improve array
+      management
+    + JDK-8323390: Enhance mask blit functionality
+    + JDK-8324559, CVE-2024-21145, bsc#1228051, : Improve 2D image
+      handling
+    + JDK-8325600: Better symbol storage
+  * Import of OpenJDK 8 u422 build 05
+    + JDK-8025439: [TEST BUG] [macosx]
+      PrintServiceLookup.lookupPrintServices doesn't work properly
+      since jdk8b105
+    + JDK-8069389: CompilerOracle prefix wildcarding is broken for
+      long strings
+    + JDK-8159454: [TEST_BUG] javax/swing/ToolTipManager/7123767/
+      /bug7123767.java: number of checked graphics configurations
+      should be limited
+    + JDK-8198321: javax/swing/JEditorPane/5076514/bug5076514.java
+      fails
+    + JDK-8203691: [TESTBUG] Test
+      /runtime/containers/cgroup/PlainRead.java fails
+    + JDK-8205407: [windows, vs<2017] C4800 after 8203197
+    + JDK-8235834: IBM-943 charset encoder needs updating
+    + JDK-8239965: XMLEncoder/Test4625418.java fails due to "Error:
+      Cp943 - can't read properly"
+    + JDK-8240756: [macos] SwingSet2:TableDemo:Printed Japanese
+      characters were garbled
+    + JDK-8256152: tests fail because of ambiguous method resolution
+    + JDK-8258855: Two tests sun/security/krb5/auto/
+      /ReplayCacheTestProc.java and ReplayCacheTestProcWithMD5.java
+      failed on OL8.3
+    + JDK-8262017: C2: assert(n != __null) failed: Bad immediate
+      dominator info.
+    + JDK-8268916: Tests for AffirmTrust roots
+    + JDK-8278067: Make HttpURLConnection default keep alive
+      timeout configurable
+    + JDK-8291226: Create Test Cases to cover scenarios for
+      JDK-8278067
+    + JDK-8291637: HttpClient default keep alive timeout not
+      followed if server sends invalid value
+    + JDK-8291638: Keep-Alive timeout of 0 should close connection
+      immediately
+    + JDK-8293562: KeepAliveCache Blocks Threads while Closing
+      Connections
+    + JDK-8303466: C2: failed: malformed control flow. Limit type
+      made precise with MaxL/MinL
+    + JDK-8304074: [JMX] Add an approximation of total bytes
+      allocated on the Java heap by the JVM
+    + JDK-8313081: MonitoringSupport_lock should be unconditionally
+      initialized after 8304074
+    + JDK-8315020: The macro definition for LoongArch64 zero build
+      is not accurate.
+    + JDK-8316138: Add GlobalSign 2 TLS root certificates
+    + JDK-8318410: jdk/java/lang/instrument/BootClassPath/
+      /BootClassPathTest.sh fails on Japanese Windows
+    + JDK-8320005: Allow loading of shared objects with .a
+      extension on AIX
+    + JDK-8324185: [8u] Accept Xcode 12+ builds on macOS
+    + JDK-8325096: Test java/security/cert/CertPathBuilder/akiExt/
+      /AKISerialNumber.java is failing
+    + JDK-8325927: [8u] Backport of JDK-8170552 missed part of the
+      test
+    + JDK-8326686: Bump update version of OpenJDK: 8u422
+    + JDK-8327440: Fix "bad source file" error during beaninfo
+      generation
+    + JDK-8328809: [8u] Problem list some CA tests
+    + JDK-8328825: Google CAInterop test failures
+    + JDK-8329544: [8u] sun/security/krb5/auto/
+      /ReplayCacheTestProc.java cannot find the testlibrary
+    + JDK-8331791: [8u] AIX build break from JDK-8320005 backport
+    + JDK-8331980: [8u] Problem list CAInterop.java#certignarootca
+      test
+    + JDK-8335552: [8u] JDK-8303466 backport to 8u requires 3
+      ::Identity signature fixes
+  * Bug fixes
+    + JDK-8331730: [8u] GHA: update sysroot for cross builds to
+      Debian bullseye
+    + JDK-8333669: [8u] GHA: Dead VS2010 download link
+    + JDK-8318039: GHA: Bump macOS and Xcode versions
+
+-------------------------------------------------------------------
 Fri Jun 14 13:31:41 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Fix condition enabling shenandoah GC only for Factory. It was by

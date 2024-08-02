@@ -520,4 +520,12 @@
 - use debian/ubuntu rng-tools_mt which is under active development</comment>
     <requestid>1184075</requestid>
   </revision>
+  <revision rev="53" vrev="2">
+    <srcmd5>602dcac4dbc9ccf51ae3846596be92ad</srcmd5>
+    <version>6.17</version>
+    <time>1722542699</time>
+    <user>dimstar_suse</user>
+    <comment>boo#1228245 (forwarded request 1190786 from AndreasStieger)</comment>
+    <requestid>1190829</requestid>
+  </revision>
 </revisionlist>

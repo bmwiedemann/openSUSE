@@ -18,10 +18,10 @@
 
 %define so_ver 12
 Name:           cryptsetup
-Version:        2.7.2
+Version:        2.7.4
 Release:        0
 Summary:        Setup program for dm-crypt Based Encrypted Block Devices
-License:        CC-BY-SA-4.0 AND LGPL-2.0-or-later AND SUSE-GPL-2.0-with-openssl-exception
+License:        CC-BY-SA-4.0 AND LGPL-2.0-or-later WITH cryptsetup-OpenSSL-exception
 Group:          System/Base
 URL:            https://gitlab.com/cryptsetup/cryptsetup/
 Source0:        https://www.kernel.org/pub/linux/utils/cryptsetup/v2.7/cryptsetup-%{version}.tar.xz
@@ -33,6 +33,7 @@ Source3:        cryptsetup.keyring
 Source4:        https://creativecommons.org/licenses/by-sa/4.0/legalcode.txt#/cc-by-sa-4.0.txt
 # 2.6.38 has the required if_alg.h
 BuildRequires:  linux-glibc-devel >= 2.6.38
+BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  suse-module-tools
 BuildRequires:  pkgconfig(blkid)
@@ -66,7 +67,7 @@ time via the config file %{_sysconfdir}/crypttab.
 
 %package ssh
 Summary:        Cryptsetup LUKS2 SSH token
-License:        LGPL-2.0-or-later AND SUSE-GPL-2.0-with-openssl-exception
+License:        LGPL-2.0-or-later WITH cryptsetup-OpenSSL-exception
 Group:          System/Base
 
 %description ssh
@@ -75,7 +76,7 @@ token connected to an SSH server.
 
 %package doc
 Summary:        Cryptsetup Documentation
-License:        CC-BY-SA-4.0 AND LGPL-2.0-or-later AND SUSE-GPL-2.0-with-openssl-exception
+License:        CC-BY-SA-4.0 AND LGPL-2.0-or-later WITH cryptsetup-OpenSSL-exception
 Group:          Documentation/Man
 Supplements:    (cryptsetup and man)
 Supplements:    (cryptsetup and patterns-base-documentation)
@@ -86,7 +87,7 @@ Documentation and man pages for cryptsetup
 
 %package -n libcryptsetup%{so_ver}
 Summary:        Library for setting up dm-crypt Based Encrypted Block Devices
-License:        LGPL-2.0-or-later AND SUSE-GPL-2.0-with-openssl-exception
+License:        LGPL-2.0-or-later WITH cryptsetup-OpenSSL-exception
 Group:          System/Libraries
 Provides:       libcryptsetup%{so_ver}-hmac = %{version}
 Obsoletes:      libcryptsetup%{so_ver}-hmac < %{version}
@@ -101,7 +102,7 @@ time via the config file %{_sysconfdir}/crypttab.
 %package -n lib%{name}-devel
 Summary:        Header files for libcryptsetup
 # cryptsetup-devel last used 11.1
-License:        LGPL-2.0-or-later AND SUSE-GPL-2.0-with-openssl-exception
+License:        LGPL-2.0-or-later WITH cryptsetup-OpenSSL-exception
 Group:          Development/Libraries/C and C++
 Requires:       glibc-devel
 Requires:       libcryptsetup%{so_ver} = %{version}
@@ -147,6 +148,8 @@ ln -s ..%{_sbindir}/cryptsetup %{buildroot}/sbin
 find %{buildroot} -type f -name "*.la" -delete -print
 
 %find_lang %{name} --all-name
+
+%fdupes -s %{buildroot}%{_mandir}/man8
 
 %check
 %make_build check

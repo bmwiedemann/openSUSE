@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul 31 04:32:03 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-gast-0.6.patch:
+  * Support gast 0.6.0 changes, change Requires appropriately.
+
+-------------------------------------------------------------------
 Sun Jun 30 20:49:58 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - limit to gast < 0.6.0

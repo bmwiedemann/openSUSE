@@ -1609,4 +1609,16 @@
     older.</comment>
     <requestid>1184937</requestid>
   </revision>
+  <revision rev="70" vrev="2">
+    <srcmd5>802ba959007571a4690a0d8363c46412</srcmd5>
+    <version>24.3.0</version>
+    <time>1722542623</time>
+    <user>dimstar_suse</user>
+    <comment>- Add a couple of upstream patches to fix http process information
+  disclosure (CVE-2024-41671, bsc#1228549) and XSS via html injection
+  (CVE-2024-41810, bsc#1228552):
+  * CVE-2024-41671.patch gh#twisted/twisted@4a930de12fb6
+  * CVE-2024-41810.patch gh#twisted/twisted@046a164f89a0</comment>
+    <requestid>1190585</requestid>
+  </revision>
 </revisionlist>

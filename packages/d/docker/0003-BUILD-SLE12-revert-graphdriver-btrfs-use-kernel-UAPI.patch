@@ -1,4 +1,4 @@
-From 5baf9eee37fccd7099c14e5da705a6d105500278 Mon Sep 17 00:00:00 2001
+From 983a57fd37dc8e42e9c4e4dfc72eb346a4385948 Mon Sep 17 00:00:00 2001
 From: Aleksa Sarai <asarai@suse.de>
 Date: Mon, 22 May 2023 15:44:54 +1000
 Subject: [PATCH 3/7] BUILD: SLE12: revert "graphdriver/btrfs: use kernel UAPI

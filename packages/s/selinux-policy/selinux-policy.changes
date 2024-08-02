@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jul 31 12:55:19 UTC 2024 - cathy.hu@suse.com
+
+- Update to version 20240731:
+  * Fix labels for bind/named (bsc#1228372)
+
+-------------------------------------------------------------------
+Mon Jul 29 15:50:11 UTC 2024 - cathy.hu@suse.com
+
+- Update to version 20240729:
+  * Label /usr/libexec/netconfig/ppp/ip-up pppd_initrc_exec_t (bsc#1228385)
+  * Allow pppd to manage sysnet directories (bsc#1228385)
+
+-------------------------------------------------------------------
 Fri Jul 26 13:38:26 UTC 2024 - cathy.hu@suse.com
 
 - Update to version 20240726:

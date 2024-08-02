@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jul 31 20:22:31 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 6.3.0:
+  * option --index always enables --recursive
+  * new bash, fish and zsh ugrep-indexer completions
+  * option --hyperlink outputs absolute search paths
+  * update regex DFA cut optimization that was too agressive for
+    some patterns
+  * option -o (--only-matching) with -ABC context now also
+    supports multi-line pattern matching with \n (newline) in regex
+    patterns
+
+-------------------------------------------------------------------
 Wed Jul 10 19:12:15 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 6.2.0:

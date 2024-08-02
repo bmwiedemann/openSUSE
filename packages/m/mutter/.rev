@@ -2080,4 +2080,12 @@ New stable rel</comment>
     <comment></comment>
     <requestid>1185283</requestid>
   </revision>
+  <revision rev="232" vrev="2">
+    <srcmd5>0a526629a427ecd6fba3ab2d3023ef72</srcmd5>
+    <version>46.3.1</version>
+    <time>1722542614</time>
+    <user>dimstar_suse</user>
+    <comment>- Rebase mutter-SLE-relax-some-constraints-on-CSD-windows.patch. (forwarded request 1190517 from mgorse)</comment>
+    <requestid>1190561</requestid>
+  </revision>
 </revisionlist>

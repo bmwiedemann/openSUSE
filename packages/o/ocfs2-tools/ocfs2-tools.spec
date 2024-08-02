@@ -74,7 +74,7 @@ BuildRequires:  autoconf
 BuildRequires:  e2fsprogs-devel
 BuildRequires:  libaio-devel
 BuildRequires:  libbz2-devel
-BuildRequires:  libcorosync-devel
+BuildRequires:  pkgconfig(corosync)
 BuildRequires:  libdlm-devel
 BuildRequires:  libxslt-devel
 BuildRequires:  libz1

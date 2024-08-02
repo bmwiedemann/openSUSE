@@ -2191,4 +2191,15 @@ New stable rel</comment>
 - Refresh patches with quilt. (forwarded request 1183892 from iznogood)</comment>
     <requestid>1184242</requestid>
   </revision>
+  <revision rev="251" vrev="2">
+    <srcmd5>f0027a1cf5f850a4a3043c79e473f597</srcmd5>
+    <version>46.3</version>
+    <time>1722542617</time>
+    <user>dimstar_suse</user>
+    <comment>- Rebase gnome-control-center-info-never-use-gnome-software.patch
+  and rename to
+  gnome-control-center-system-never-use-gnome-software.patch
+- Rebase gnome-control-center-bring-back-firewall-zone.patch. (forwarded request 1190543 from mgorse)</comment>
+    <requestid>1190564</requestid>
+  </revision>
 </revisionlist>

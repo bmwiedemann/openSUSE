@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Aug 01 05:37:35 UTC 2024 - mvetter@suse.com
+
+- Update to version 0~20240731.94276b7:
+  * Remove functions body from Closure.hh
+  * Analyze Decls with same BeginLoc
+  * LLVMMisc.cpp: Check if identifier exists in SymbolTable
+  * Fix failing testcase if system compiler is gcc-14
+
+-------------------------------------------------------------------
 Mon Jul 29 07:08:20 UTC 2024 - mvetter@suse.com
 
 - Update to version 0~20240726.4309abc:

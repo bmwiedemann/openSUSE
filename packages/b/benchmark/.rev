@@ -277,4 +277,212 @@
     <comment></comment>
     <requestid>1141438</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>8694554142ced3895674f14e9ba7aa5f</srcmd5>
+    <version>1.8.5</version>
+    <time>1722542594</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.8.5:
+  * preparing for v1.8.5
+  * clang format yet again
+  * update actions/checkout to v4
+  * another reversal of something that breaks on wasm
+  * clang format header fixes
+  * clang-format fixes
+  * roll back fatal error that breaks some platform (wasm) expectations
+  * revert perf counters change until we can do the full version
+  * remove old travis config
+  * [FR] Add API to provide custom profilers #1807 (#1809)
+  * Clarify the difference between `BENCHMARK_TEMPLATE_F` and `BENCHMARK_TEMPLATE_DEFINE_F` + `BENCHMARK_REGISTER_F` (#1815)
+  * add PERF_FORMAT_TOTAL_TIME_{ENABLED,RUNNING} to support multiplexing (#1814)
+  * Add -lkstat to the .pc for Solaris (#1801)
+  * Find libpfm dependency in installed CMake configs (#1806)
+  * [bazel] Use `includes` instead of `strip_include_prefix` (#1803)
+  * cycleclock: Fix type conversion to match function return type on riscv64 (#1802)
+  * Bump minimum required C++ version from C++11 to C++14 (#1800)
+  * bump standard to C++14 (#1799)
+  * cycleclock: Fix type conversion to match function return type (#1794)
+  * CMake: unbreak version handling for tarballs (#1793)
+  * hotfix: Correct pypi-publishing action tag to v1.8.14 (#1791)
+  * Improve compatibility with Hexagon hardware (#1785)
+  * preparing for v1.8.4 (#1788)
+  * Modernize wheel building job config (#1783)
+  * Switch git override to stable BCR tag for nanobind_bazel (#1778)
+  * Add `benchmark_main.pc` to link `main()` containing library (#1779)
+  * Refactor: Return frequency as double (#1782)
+  * Remove COMPILER_IBMXL macro for z/OS (#1777)
+  * Fix OpenBSD build (#1772)
+  * allow BENCHMARK_VERSION to be undefined (#1769)
+  * clang-tidy broke the world (#1766)
+  * Fix implicit conversion changes signess warning in perf_counters.cc (#1765)
+  * Add Python bindings build using bzlmod (#1764)
+  * mitigate clang build warnings -Wconversion (#1763)
+  * Fixed LTO issue on no discard variable (#1761)
+  * Revert &quot;fix some warnings&quot; (#1762)
+  * fix some warnings
+  * Rewrite complexity_test to use (hardcoded) manual time (#1757)
+  * sysinfo.cc: Always abort on GetNumCPUs failure (#1756)
+  * CycleClock: Add support for Alpha architecture (#1753)
+  * fix typo in GetBenchmarkVersion() (#1755)
+  * Deflake CI (#1751)
+  * Add `BENCHMARK_TEMPLATE[12]_CAPTURE`, fusion of `BENCHMARK_CAPTURE` and `BENCHMARK_TEMPLATE` (#1747)
+  * set library version in bazel (#1746)
+  * Output library / schema versions in JSON context block (#1742)
+  * ignore new bzlmod lock file
+  * changes to run bazel migration scripts
+  * Bump pre-commit dependencies (#1740)
+  * Fix C-style typecasting in QNX-specific code (#1739)
+  * Docs: `reducing_variance.md`: proofreading, fix typos (#1736)
+  * fix(cmakelists.txt): enforce CMake to find PFM or fail when BENCHMARK_ENABLE_LIBPFM is ON (#1705)
+  * Issue 1734: Streams not flushed if not running actual benchmarks (#1735)
+  * tools/compare: don't actually discard valid (but zero) `pvalue` (#1733)
+  * Issue1731 created console does not receive output (#1732)
+  * Change Fixture to use non-const SetUp and TearDown in example (#1723)
+  * Avoid leaking LFS flags to reverse dependencies (#1730)
+  * style: re-format BUILD file with buildifier.
+  * fix per-thread timing error on z/OS (#1719)
+  * Enable Large-file Support (#1726)
+  * CycleClock: use RDTIME instead of RDCYCLE on RISC-V (#1727)
+  * Update perf_counters_gtest.cc (#1728)
+  * Fix division by zero for low frequency timers for CV statistics (#1724)
+  * fix: fail to import gbench in bazel and python3.12
+  * define HOST_NAME_MAX for z/oS (#1717)
+  * Fix mis-matching argument in closing tag for cmake macro (#1714) (#1715)
+  * Check out repo at depth 0 for Python tests, bump Python and PyPI actions (#1713)
+  * Run `pre-commit autoupdate`, fix stale pyproject.toml comments (#1712)
+  * Upgrade core bazel dependencies (#1711)
+  * Fix editable install by unsetting `build_ext.copy_extensions_to_source` (#1710)
+  * [NFC] `complexity_n` is not of `IterationCount` type (#1709)
+  * Fix `pre-commit` GitHub Actions job (#1708)
+  * Support windows MSYS2 environments (#1704)
+  * [CI] Try to fix sanitizer builds by pinning the LLVM revision (#1703)
+  * Fix CMakeLists.txt for perf_counters_test (#1701)
+  * Add missing `\n` character at end of error log string (#1700)
+  * Switch out black for ruff format (#1698)
+  * Fixed compiler warnings (#1697)
+  * Fix unit tests compilation with non-gnu / non-msvc compilers with c++11 support. (#1691)
+  * Add `setuptools_scm` for dynamic zero-config Python versioning (#1690)
+  * Drop isort hook for ruff builtin import sorting (#1689)
+  * Add pre-commit config and GitHub Actions job (#1688)
+  * [bindings] Add LTO builds on Windows+MSVC (#1687)
+  * Reapply size optimizations for clang &amp; MSVC, LTO for Mac+Linux (#1685)
+  * Change nanobind linkage to response file approach on macOS (#1638)
+  * Add Python 3.12 support (#1676)
+  * Add no-unititialized to tests (#1683)
+  * Set -Wno-unused-variable for tests (#1682)
+  * Increase the kMaxIterations limit (#1668)
+  * fix format in src/sysinfo
+  * add name to clang format job
+  * Fix building on MinGW: default `WINVER` is too old (#1681)
+  * Update bazel.yml (#1671)
+  * correct cli param in docs
+  * Make json and csv output consistent. (#1662)
+  * Audit MSVC references in cmake files to consider clang++ (#1669)
+  * bump version to 1.8.3
+  * tweak comment wording
+  * StatisticsMedian: Fix bug
+  * test: Use gtest_main only when needed  (#1657)
+  * perf_counters: Initialize once only when needed (#1656)
+  * State: Initialize counters with kAvgIteration in constructor (#1652)
+  * perf-counters: Make tests pass on Android (#1653)
+  * add logo to github pages
+  * add black icon
+  * remove logo from generated docs
+  * remove icon from main README
+  * update logo path
+  * adding a logo to the docs
+  * benchmark.cc: Fix benchmarks_with_threads condition (#1651)
+  * sysinfo.cc: Call getloadavg for Android API &gt;= 29 (#1) (#1649)
+  * [perf-counters] Fix pause/resume (#1643)
+  * fix: added benchmark_counters_tabular for file (#1645)
+  * Fix IntelLLVM compiler error (#1644)
+  * bug: Inconsistent suffixes console reporter 1009 (#1631)
+  * Mark internal deps as dev_depenencies so that downstream modules don't require those. (#1640)
+  * Fix `-Werror,-Wold-style-cast` build failure on Windows. (#1637)
+  * Re-enable windows-latest tests for newer Bazel (#1641)
+  * Update bzlmod support to new rules_python extension API (#1633)
+  * Delete unused requirements file, simplify nanobind build file (#1635)
+  * Add tests for Human Readable functionality (#1632)
+  * Downgrade bazel to windows-2019 (#1629)
+  * Bump scipy from 1.5.4 to 1.10.0 in /tools (#1630)
+  * Bump `nanobind` to stable v1.4.0 tag (#1626)
+  * missing cmake include
+  * add back package properties for PFM
+  * pfm: Use a more standard CMake approach for finding libpfm (#1628)
+  * Add pyproject.toml file for PEP518 compliance (#1625)
+  * Update tools.md for missing color meaning issue #1491 (#1624)
+  * Fix broken PFM-enabled tests (#1623)
+  * bump version to 1.8.2 ready for release
+  * Fix passing non-const lvalue refs to DoNotOptimize (#1622)
+  * Add more terminals with color support (#1621)
+  * Add discord server link to README
+  * bump version to 1.8.1 pre release
+  * Suppress intentional potential memory leak as detected by clang static analysis (#1618)
+  * Add a CI test for the new bzlmod integration (#1617)
+  * Add support for bzlmod (excluding Python bindings) (#1615)
+  * remove old-style (C-style) casts (#1614)
+  * Fix a typo in regex choice (#1610)
+  * Fix pass rvalue to DoNotOptimize (#1608)
+  * Add project name to version message
+  * Fixed a typo in docs (#1600)
+  * Update Python version to PY3, as indicated by the actual source file. (#1598)
+  * Fix code triggering -Wsign-conversion (#1596)
+  * Disable debug-only test in release builds to avoid expected failures. (#1595)
+  * update version to v1.8.0
+  * reenable msan sanitizer workflow (#1589)
+  * Guard NOMINMAX to prevent redefinition error (#1581) (#1582)
+  * Correct libpfm dep for integrators. (#1579)
+  * Fix compile warnings about ignoring a [[nodiscard]] type. (#1577)
+  * make libpfm dep work for integrators
+  * use 'new_git_repository' in external deps call to work with older bazel versions
+  * link to benchmark directly for tests that aren't link_main_test (#1576)
+  * Convert uses of `const char*` to `std::string` (#1567)
+  * add '@' to correctly reference build file for libpfm (#1575)
+  * Address warnings on NVIDIA nvc++ (#1573)
+  * simplify setting C++ standard
+  * [FR] Provide public accessors to benchmark name and arguments #1551 (#1563)
+  * use std::string for skip messages (#1571)
+  * [FR] state.SkipWithMessage #963 (#1564)
+  * Fix build break with nvc++ when -Werror is ON (#1569)
+  * Fix examples in user guide using deprecated `DoNotOptimize`-API (#1568)
+  * Bump nanobind to stable v0.2.0, change linker options (#1565)
+  * Refactoring of PerfCounters infrastructure (#1559)
+  * get rid of  warnings in tests (#1562)
+  * Filter performance counter names, not invalidate all (#1554)
+  * Implement unlimited number of performance counters (#1552)
+  * add compiler to build-and-test and create min-cmake CI bot (#1550)
+  * Fix CPU frequency estimation on riscv (#1549)
+  * cleanup: support CMake &gt;= 3.10 (#1544)
+  * Werror all the time (#1546)
+  * Add missing parentheses in ParseBenchMinTime() (#1545)
+  * Removing warnings appearing with C++20 / CLang 15 (#1542)
+  * update github actions to latest versions (#1541)
+  * replace complexity with simplicity for faster libc++ setup (#1539)
+  * Refactor links which include &quot;master&quot; and change it to &quot;main&quot; (#1540)
+  * Allow specifying number of iterations via --benchmark_min_time. (#1525)
+  * Support --benchmarks_filter in the compare.py 'benchmarks' command (#1486)
+  * get rid of some deprecation warnings from tests
+  * fix #1446 by removing the address operator (#1538)
+  * Fixing issue with ARM64EC and MSVC (#1514)
+  * Deprecate constant reference API to DoNotOptimize. (#1493)
+  * remove best effort support for ubuntu 18.04 (#1537)
+  * try disabling liquid for jekyll to fix curly braces (#1536)
+  * Switch bindings implementation to `nanobind` (#1526)
+  * Modernize setup.py, extend Python bindings CI (#1535)
+  * Add quick instructions on how to enable sans checks (#1529)
+  * Fix Clang-Tidy warnings readability-else-after-return (#1528)
+  * Include the benchmark's family-name in State (#1511)
+  * Fix typos found by codespell (#1519)
+  * Fix Clang-Tidy warnings related to modernize-use-override (#1523)
+  * Bug fix variable 'actual_iterations' set but not used (#1517)
+  * add more docs to index
+  * Add a `benchmark_deps.bzl` function to Google Benchmark (#1520)
+  * Try removing attempt to set the C++ standard (#1464)
+  * Fixes incorrect wide string conversion on win32 (#1516)
+  * Return option benchmark_perf_counters to help output (#1508)
+  * Removed deprecated function (#1506)
+- Drop no longer needed gcc12-disable-Werror=maybe-uninitialized.patch
+</comment>
+    <requestid>1190505</requestid>
+  </revision>
 </revisionlist>

@@ -1443,4 +1443,12 @@ Enable cycles-osl in build</comment>
 - bump oidn dependency to &gt;= 2 for the new API</comment>
     <requestid>1171364</requestid>
   </revision>
+  <revision rev="181" vrev="1">
+    <srcmd5>3e5f02a3c1f44532c4c63b940a4a81e1</srcmd5>
+    <version>4.2.0</version>
+    <time>1722542642</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1191023</requestid>
+  </revision>
 </revisionlist>

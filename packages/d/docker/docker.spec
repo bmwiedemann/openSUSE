@@ -32,9 +32,9 @@
 # helpfully injects into our build environment from the changelog). If you want
 # to generate a new git_commit_epoch, use this:
 #  $ date --date="$(git show --format=fuller --date=iso $COMMIT_ID | grep -oP '(?<=^CommitDate: ).*')" '+%s'
-%define real_version 26.1.4
-%define git_version de5c9cf0b96e
-%define git_commit_epoch 1717583601
+%define real_version 26.1.5
+%define git_version 411e817ddf71
+%define git_commit_epoch 1721763388
 
 Name:           docker
 Version:        %{real_version}_ce

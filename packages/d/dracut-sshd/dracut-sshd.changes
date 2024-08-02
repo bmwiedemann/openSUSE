@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jul 31 07:00:49 UTC 2024 - Antonio Feijoo <antonio.feijoo@suse.com>
+
+- Support OpenSSH 9.8
+  * Adds 0002-Support-OpenSSH-9.8.patch
+  * Adds 0003-Support-OpenSSH-9.8-for-openSUSE.patch
+
+-------------------------------------------------------------------
 Sat Nov 14 13:07:02 UTC 2020 - Daniel Molkentin <daniel.molkentin@suse.com>
 
 - Update patch for log-in hints to final upstream version

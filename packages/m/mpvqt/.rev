@@ -7,4 +7,12 @@
     <comment>Add mpvqt to factory, required by tokodon and plasmatube</comment>
     <requestid>1151227</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>4866ce3caed01943be3a8f26d2b465fd</srcmd5>
+    <version>1.0.1</version>
+    <time>1722542676</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1190793</requestid>
+  </revision>
 </revisionlist>

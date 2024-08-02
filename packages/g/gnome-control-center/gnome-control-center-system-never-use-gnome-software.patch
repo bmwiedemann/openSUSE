@@ -1,0 +1,14 @@
+diff -urp gnome-control-center-46.3.orig/panels/system/cc-system-panel.c gnome-control-center-46.3/panels/system/cc-system-panel.c
+--- gnome-control-center-46.3.orig/panels/system/cc-system-panel.c	2024-07-30 14:27:24.426647687 -0500
++++ gnome-control-center-46.3/panels/system/cc-system-panel.c	2024-07-30 14:36:02.188142991 -0500
+@@ -77,8 +77,8 @@ gnome_software_allows_updates (void)
+ static gboolean
+ gnome_software_exists (void)
+ {
+-  g_autofree gchar *path = g_find_program_in_path ("gnome-software");
+-  return path != NULL;
++  /* Don't use gnome-software in SLE. */
++  return FALSE;
+ }
+ 
+ static gboolean

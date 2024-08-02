@@ -131,7 +131,8 @@ Patch17:        ffmpeg-CVE-2023-49502.patch
 Patch18:        ffmpeg-CVE-2023-51793.patch
 Patch19:        0001-avfilter-af_stereowiden-Check-length.patch
 Patch20:        ffmpeg-CVE-2023-50010.patch
-Patch21:        ffmpeg-c99.patch
+Patch21:        ffmpeg-4-CVE-2024-32230.patch
+Patch22:        ffmpeg-c99.patch
 BuildRequires:  ladspa-devel
 BuildRequires:  libgsm-devel
 BuildRequires:  libmp3lame-devel

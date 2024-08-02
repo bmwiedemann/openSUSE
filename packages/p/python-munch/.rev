@@ -73,4 +73,12 @@
 - drop python-munch-no-six.patch (upstream)</comment>
     <requestid>1133681</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>1efd945ed96da7bdc597deb41607b074</srcmd5>
+    <version>4.0.0</version>
+    <time>1722542597</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1190528</requestid>
+  </revision>
 </revisionlist>

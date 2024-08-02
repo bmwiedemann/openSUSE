@@ -1580,4 +1580,12 @@ Removal of SuSEfirewall2 service.
     <comment>- Add gcc14.patch</comment>
     <requestid>1176814</requestid>
   </revision>
+  <revision rev="185" vrev="1">
+    <srcmd5>160222525f941d3dfd79ec34834e556f</srcmd5>
+    <version>2.6.8</version>
+    <time>1722542627</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to relese 2.6.8</comment>
+    <requestid>1190628</requestid>
+  </revision>
 </revisionlist>

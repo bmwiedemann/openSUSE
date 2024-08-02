@@ -86,7 +86,7 @@ export NO_NET=1
 
 # Broken test in s390x, gh#Unidata/netcdf4-python#1124
 %ifarch s390x
-rm tst_compoundvar.py
+rm test_compoundvar.py
 %endif
 
 %{python_expand export PYTHONPATH=%{buildroot}%{$python_sitearch}

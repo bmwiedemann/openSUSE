@@ -720,4 +720,12 @@
     <comment></comment>
     <requestid>1181199</requestid>
   </revision>
+  <revision rev="91" vrev="6">
+    <srcmd5>3e616aea18e1805de820b88a3b5db661</srcmd5>
+    <version>1.8.8</version>
+    <time>1722542708</time>
+    <user>dimstar_suse</user>
+    <comment>fix build error</comment>
+    <requestid>1190837</requestid>
+  </revision>
 </revisionlist>

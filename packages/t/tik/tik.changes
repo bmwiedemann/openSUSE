@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Jul 31 12:30:38 UTC 2024 - rbrown@suse.com
+
+- Update to version 1.2.3:
+  * encrypt: recoverykey is now always slot #2
+
+-------------------------------------------------------------------
+Wed Jul 31 12:27:03 UTC 2024 - rbrown@suse.com
+
+- Update to version 1.2.2:
+  * encrypt: create passphrase before recoverykey to keep key slot alignment with Default Mode
+
+-------------------------------------------------------------------
+Wed Jul 31 12:05:50 UTC 2024 - rbrown@suse.com
+
+- Update to version 1.2.1:
+  * mig: Actually check if /@/home mount fails (boo#1227714)
+  * encrypt: Fix boo#1228416 by doing enrolment in correct order
+
+-------------------------------------------------------------------
 Wed Jul 24 12:33:49 UTC 2024 - rbrown@suse.com
 
 - Update to version 1.2:

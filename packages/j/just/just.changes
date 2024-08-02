@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Jul 31 20:15:39 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.33.0:
+  * Use correct backtick and shell() expression working directory in submodules
+  * Add working-directory setting
+  * Allow [group] attribute on submodules
+  * Allow empty [script] attribute and add set script-interpreter
+  * Document which attributes apply to which items
+  * Add missing productions
+  * Fix Rust 1.80.0 warnings
+  * Remove (no group) header before ungrouped recipes
+  * Document script-interpreter setting
+  * set dotenv-path does not override set dotenv-filename
+
+-------------------------------------------------------------------
 Thu Jul 18 20:58:39 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 1.32.0:

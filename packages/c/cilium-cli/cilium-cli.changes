@@ -1,4 +1,77 @@
 -------------------------------------------------------------------
+Thu Aug 01 07:19:44 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.16.14:
+  * Prepare for v0.16.14 release
+  * externalworkloads: Set cluster.id
+  * {externalworkloads,multicluster}: Shorten cluster names
+  * chore(deps): update dependency cilium/cilium to v1.16.0
+  * chore(deps): update docker/setup-buildx-action action to v3.6.1
+  * chore(deps): update golangci/golangci-lint-action action to
+    v6.1.0
+  * connectivity: use TestNamespace and ExternalDeploymentPort
+    params
+  * connectivity: Support multiple conditions
+  * chore(deps): update docker.io/coredns/coredns docker tag to
+    v1.11.3
+  * chore(deps): update docker/setup-buildx-action action to v3.6.0
+  * kind: Pick up the latest kindest/node image
+  * Adding multicast subcommand
+  * sysdump: Gather gops from cilium-operator
+  * junit: collector fix
+  * Pick up kindest/node:v1.21.10
+  * fix(deps): update github.com/cilium/charts digest to 2a1e5b8
+  * fix(deps): update module github.com/cilium/cilium to v1.16.0
+  * chore(deps): update all github action dependencies
+  * chore(deps): update golang:1.22.5-alpine3.19 docker digest to
+    48aac60
+  * chore(deps): update docker.io/library/golang:1.22.5-alpine3.19
+    docker digest to 48aac60
+  * connectivity: Fix ineffective version check in BGP tests
+  * Assign release-related files to cilium-cli-maintainers
+  * connectivity: single JUnit report
+  * chore(deps): update golang:1.22.5-alpine3.19 docker digest to
+    653cab0
+  * chore(deps): update softprops/action-gh-release action to
+    v2.0.8
+  * Update CONTRIBUTING.md
+  * sysdump: fix file separator
+  * chore(deps): update docker/build-push-action action to v6.4.1
+  * fix(deps): update github.com/cilium/charts digest to 2c16e87
+  * fix(deps): update module github.com/cilium/cilium to
+    v1.16.0-rc.2
+  * connectivity: Assert BGP timer intervals in BGP connectivity
+    tests
+  * connectivity: skip local-redirect-policy-with-node-dns
+  * connectivity: add local-redirect-policy-with-node-dns test
+  * connectivity: add LRP with node-local-dns test scenario
+  * connectivity: add node local DNS feature detection
+  * connectivity: use ExternalDeploymentPort for echoExternalNode
+    headless svc
+  * connectivity: run LRP test with 1.16.0 or higher
+  * connectivity: skip LRP test resources creation if already
+    exists
+  * ci: Set up node local DNS in the kind workflow
+  * connectivity: test namespace suffix
+  * connectivity: perf deployment improved
+  * chore(deps): update docker/build-push-action action to v6.4.0
+  * golangci-lint: Add errorlint
+  * Replace io.ReadAll with safeio.ReadAllLimit
+  * Replace timer.After with inctimer.After
+  * Replace sync with github.com/cilium/cilium/pkg/lock
+  * chore(deps): update docker/dockerfile docker tag to v1.9
+  * flags: Use option.NewNamedMapOptions
+  * connectivity: echo-ingress-l7-via-hostport-with-encryption only
+    runs with cilium 1.16.0 or newer.
+  * vendor: Remove gopkg.in/check.v1 dependency
+  * connectivity: disrupt deployment improved
+  * connectivity: Add echo-ingress-l7-via-hostport-with-encryption
+  * connectivity/echo-ingress-l7: Make expectation a function
+  * chore(deps): update dependency cilium/cilium to v1.15.7
+  * fix(deps): update github.com/cilium/charts digest to 3eef298
+  * Update stable release to v0.16.13
+
+-------------------------------------------------------------------
 Thu Jul 11 18:44:15 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.16.13:

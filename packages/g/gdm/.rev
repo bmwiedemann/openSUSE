@@ -2085,4 +2085,12 @@
   (bsc#1222978). (forwarded request 1181625 from xiaoguang_wang)</comment>
     <requestid>1181710</requestid>
   </revision>
+  <revision rev="269" vrev="3">
+    <srcmd5>c08c2a17cef5388b6a8fec708bd50fc8</srcmd5>
+    <version>46.2</version>
+    <time>1722542613</time>
+    <user>dimstar_suse</user>
+    <comment>- Rebase gdm-restart-session-when-X-server-restart.patch. (forwarded request 1190516 from mgorse)</comment>
+    <requestid>1190560</requestid>
+  </revision>
 </revisionlist>

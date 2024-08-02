@@ -7,4 +7,29 @@
     <comment>I want to add wayprompt to openSUSE:Factory</comment>
     <requestid>1159710</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c64efe0286d47749dbfa9ed32847859d</srcmd5>
+    <version>0.1.0+g14</version>
+    <time>1722542649</time>
+    <user>dimstar_suse</user>
+    <comment>- Added new prompt to support ssh askpass
+- Update to version 0.1.0+14:
+  * handle wl_touch.cancel events
+  * implement touch support
+  * do not vendor zig-ini
+  * replace FlagIt with std.process.ArgIteratorPosix
+  * options: add strip and llvm options
+  * gitignore: add .zig-cache to ignore
+  * build: cleanup migration to Zig 0.13.0
+  * build: update to Zig 0.13.0
+  * build: update to Zig 0.12.0
+  * doc/wayprompt.5: Fix typo
+  * build: install wayprompt-ssh-askpass.1
+  * README: add wayprompt-ssh-askpass
+  * add wayprompt-ssh-askpass
+  * wayprompt-cli: return value based on user-action
+- Add fix-zig-spoon-hash.patch
+</comment>
+    <requestid>1190643</requestid>
+  </revision>
 </revisionlist>

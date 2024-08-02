@@ -77,7 +77,7 @@
 %bcond_with openxr
 
 Name:           blender
-Version:        4.1.1
+Version:        4.2.0
 Release:        0
 Summary:        A 3D Modelling And Rendering Package
 License:        GPL-2.0-or-later
@@ -86,13 +86,6 @@ URL:            https://www.blender.org/
 # Please leave the source url intact
 Source0:        https://download.blender.org/source/%{name}-%{version}.tar.xz
 Source1:        https://download.blender.org/source/%{name}-%{version}.tar.xz.md5sum
-# if you have to comment in Source2 again, then you also have to fix the _service file to create the tarball again
-# addons are included again in the source tarball
-# https://projects.blender.org/blender/blender-addons.git
-#Source2:        %{name}-addons-%{version}.tar.xz
-# addon contrib is not included in the source tarball
-# https://projects.blender.org/blender/blender-addons-contrib.git
-Source3:        %{name}-addons-contrib-%{version}.tar.xz
 Source4:        geeko.blend
 Source5:        geeko.README
 Source6:        geeko_example_scene.blend
@@ -107,6 +100,8 @@ Patch0:         reproducible.patch
 Patch1:         Add_missing_system_error_handler.patch
 # PATCH-FIX-UPSTREAM https://projects.blender.org/blender/blender/pulls/115320
 Patch2:         cmake_manpage_fix.patch
+# PATCH-FIX-UPSTREAM https://gitlab.archlinux.org/archlinux/packaging/packages/blender/-/blob/main/ffmpeg-7-1.patch?ref_type=heads
+Patch3:         ffmpeg-7-1.patch
 BuildRequires:  %{py3pkg}-devel
 BuildRequires:  %{py3pkg}-numpy-devel
 BuildRequires:  %{py3pkg}-requests
@@ -258,7 +253,7 @@ BuildRequires:  nvidia-optix-headers
 BuildRequires:  OpenShadingLanguage-devel
 %endif
 %if %{with system_audaspace}
-BuildRequires:  pkgconfig(audaspace) >= 1.3
+BuildRequires:  pkgconfig(audaspace) >= 1.5
 Requires:       audaspace-deviceplugin
 Requires:       audaspace-fileplugin
 %endif
@@ -310,16 +305,7 @@ pushd "%{_sourcedir}"
 md5sum -c %{SOURCE1}
 popd
 
-%setup -q -a3
-%autopatch -p1
-
-# integrate addons in source tree
-#mkdir scripts/addons
-for d in addons-contrib; do
-    mv blender-$d-%{version}/* scripts/addons
-    # wipe .gitea and .github
-    rm -r blender-$d-%{version}
-done
+%autosetup -p1
 
 rm -rf extern/libopenjpeg
 %if %{with system_glew}
@@ -505,7 +491,6 @@ echo "release version = %{_version}"
 %cmake_install
 
 # tidy some .dot {files,dirs} installation
-rm %{buildroot}%{_datadir}/%{name}/%{_version}/scripts/addons/rigify/.pep8
 # Fix any .py files with shebangs and wrong permissions.
 find %{buildroot} -name "*.py" -perm 0644 -print0 | \
 	xargs -0r grep -l '^#!' | xargs -d'\n' chmod -f 0755;
@@ -558,6 +543,7 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
 %dir %{_datadir}/%{name}/%{_version}/datafiles
 %exclude %{_datadir}/%{name}/%{_version}/datafiles/locale
 %exclude %{_docdir}/%{name}/geeko_example_scene.*
+%{_datadir}/%{name}/%{_version}/extensions/
 %{_datadir}/%{name}/%{_version}/scripts/
 %{_datadir}/%{name}/%{_version}/datafiles/
 %{_datadir}/applications/%{name}.desktop

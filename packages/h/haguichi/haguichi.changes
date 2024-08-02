@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Sun Jul 21 14:51:53 UTC 2024 - Stephen Brandt <stephen@stephenbrandt.com>
+
+- update to 1.5.0
+  * Redesigned user interface using GTK 4 and libadwaita:
+    - Implemented AdwOverlaySplitView to display the network list and sidebar side by side or as an overlay.
+    - Added support for color schemes offering dark, light or system preferred scheme.
+    - Ported the network list from deprecated GtkTreeView to GtkListView
+    - Rearranged "Add Network" and "Refresh" buttons as floating overlay buttons above the network list.
+    - Created new "Change Access" dialog for networks to set lock and approval mode combined.
+    - Improved sidebar layout based on AdwActionRows.
+    - Implemented AdwPreferencesWindow making all preferences searchable.
+    - Moved configuration and nickname settings to preferences window.
+    - Added support for drag and drop to reorder configured commands in preferences window.
+    - Added info button to the "Add Command" and "Edit Command" dialogs to show all available command variables in a popover.
+    - Now making use of Toasts for any in-app notifications.
+    - Utilized GtkBuilder UI definitions to describe nearly all interface objects and eliminate lots of boilerplate code.
+  * Improved network list search:
+    - Added support for multiple search terms by separating them using a "⎵" (space) or "+" (plus) to find only results matching both terms and by using a "," (comma) to find results matching either term.
+    - Now displays a message if there are no results found instead of showing an empty network list.
+  * Some miscellaneous quality of life enhancements:
+    - Online and total member count in sidebar now includes the client itself.
+    - Networks are now automatically selected immediately after you create or join them.
+    - Hamachi is now automatically restarted if the hamachi set-pass command hangs when changing the network password.
+  * Reimplemented indicator to communicate with the SNI D-Bus interface directly and drop dependency on appindicator libraries that don't support GTK 4.
+  * Implemented XdpPortal to request permission to run in the background and to set background status when doing so.
+  * Renamed --hidden command line option to --background or -b for short.
+  * Changed accelerator to open preferences to Control+, following the GNOME standard for keyboard shortcuts.
+  * Changed default network list update interval to 30 seconds.
+  * Added support for zstd compressed tar archives when saving and restoring configuration backups.
+  * Added line "StartupNotify=true" to .desktop file so that a spinning cursor is shown on launch.
+  * Now using standard GLib functions for message logging so that important errors are written to the system logs.
+  * Updated Brazilian Portuguese, Dutch, Japanese, Lithuanian, Spanish and Ukrainian translations.
+
+-------------------------------------------------------------------
 Sun Apr 30 18:47:43 UTC 2023 - Stephen Brandt <stephen@stephenbrandt.com>
 
 - update to 1.4.6

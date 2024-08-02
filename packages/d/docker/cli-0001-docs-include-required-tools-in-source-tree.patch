@@ -1,4 +1,4 @@
-From 17d56160e3b74d0378f071f538e2741dbf5372b6 Mon Sep 17 00:00:00 2001
+From 3701285f1cf678dda730e3f9a4860d74ca54057d Mon Sep 17 00:00:00 2001
 From: danishprakash <danish.prakash@suse.com>
 Date: Mon, 12 Feb 2024 18:07:06 +0530
 Subject: [PATCH] docs: include required tools in source tree
@@ -23378,5 +23378,5 @@ index 4e0448570ce9..577e9de880c6 100644
  ## explicit; go 1.17
  gotest.tools/v3/assert
 -- 
-2.45.1
+2.45.2
 

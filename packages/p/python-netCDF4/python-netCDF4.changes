@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jul 27 19:26:42 UTC 2024 - Christian Boltz <suse-beta@cboltz.de>
+
+- broken test tst_compoundvar.py was renamed to test_compoundvar.py
+
+-------------------------------------------------------------------
 Mon Jul  8 07:19:47 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 1.7.1.post1:

@@ -227,4 +227,19 @@
 - not all filesystems supported yet</comment>
     <requestid>1128821</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>8199ca66517cc0c81f73ac88503c6f5d</srcmd5>
+    <version>0.3.32</version>
+    <time>1722542715</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.3.32:
+  * update hfsplus log
+  * fix ntfs error for ' read error: Success' 
+  * add option prog_second to display in seconds
+  * Fix tiny resource leak. by @TMR5454 in #248
+  * Add missing return in libvmfs_version(). by @TMR5454 in #249
+  * Fix get_exec_name(): when partclone in installed, there is no '/' in argv0 by @pfrouleau in #55
+  * Include the NTFS Boot Record backup in the cloned image by @pfrouleau in #54</comment>
+    <requestid>1190855</requestid>
+  </revision>
 </revisionlist>

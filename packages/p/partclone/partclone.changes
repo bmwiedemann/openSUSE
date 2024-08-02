@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Aug  1 05:26:11 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.3.32:
+  * update hfsplus log
+  * fix ntfs error for ' read error: Success' 
+  * add option prog_second to display in seconds
+  * Fix tiny resource leak. by @TMR5454 in #248
+  * Add missing return in libvmfs_version(). by @TMR5454 in #249
+  * Fix get_exec_name(): when partclone in installed, there is no '/' in argv0 by @pfrouleau in #55
+  * Include the NTFS Boot Record backup in the cloned image by @pfrouleau in #54
+
+-------------------------------------------------------------------
 Sat Nov 25 22:26:53 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.3.27:

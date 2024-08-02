@@ -1,4 +1,4 @@
-From deb42984d58de574bc2ca5857905ff68b57235c0 Mon Sep 17 00:00:00 2001
+From 24173cd6a2643e5e680e84920864f42ed43b6f28 Mon Sep 17 00:00:00 2001
 From: Aleksa Sarai <asarai@suse.de>
 Date: Wed, 11 Oct 2023 21:19:12 +1100
 Subject: [PATCH 5/7] SLE12: revert "apparmor: remove version-conditionals from

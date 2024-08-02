@@ -1,0 +1,20 @@
+-------------------------------------------------------------------
+Mon Jul 15 07:00:45 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.2.0:
+  * chore(release): goreleaser-config
+  * chore(release): goreleaser setup
+  * chore(readme): indentation
+  * feat: rewrite to allow duplication of all resources, prepare for krew
+  * feat: disable probes by default
+  * feat: usage, validation bug: fix justfile creation
+  * feat: usage, validation
+  * feat: beginning to work on input validation
+  * feat: working
+  * feat: wip
+
+-------------------------------------------------------------------
+Mon Jul 15 06:59:25 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- new package kubectl-dup: kubectl plugin for duplication of
+  existing kubernetes resources, especially pods

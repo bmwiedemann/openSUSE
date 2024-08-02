@@ -1235,4 +1235,17 @@
   * fix(deps): update module cloud.google.com/go/secretmanager to v1.13.3 (#3037) (forwarded request 1188717 from ph03nix)</comment>
     <requestid>1188721</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>31f777e97e5035f8d6144f8df8f28f79</srcmd5>
+    <version>3.80.5</version>
+    <time>1722542682</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.80.5:
+  * move concurrency (#3135)
+  * [chore] - address linter (#3133)
+  * [chore] - Set GOMAXPROCS (#3136)
+  * Export maps from permission generation (#3137)
+  * Add permissions lookup tables (#3125) (forwarded request 1190971 from ph03nix)</comment>
+    <requestid>1190994</requestid>
+  </revision>
 </revisionlist>

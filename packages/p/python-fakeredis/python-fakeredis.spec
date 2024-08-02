@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-fakeredis
-Version:        2.21.0
+Version:        2.23.4
 Release:        0
 Summary:        Fake implementation of redis API for testing purposes
 License:        BSD-3-Clause AND MIT
@@ -29,9 +29,9 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry-core}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-packaging >= 23.1
 Requires:       python-redis >= 4
 Requires:       python-sortedcontainers >= 2.4.0
+Requires:       python-typing_extensions >= 4.7
 Suggests:       python-lupa >= 1.14
 BuildArch:      noarch
 # SECTION test requirements
@@ -42,6 +42,7 @@ BuildRequires:  %{python_module pytest-asyncio >= 0.19.0}
 BuildRequires:  %{python_module pytest-mock >= 3.7.0}
 BuildRequires:  %{python_module redis >= 4}
 BuildRequires:  %{python_module sortedcontainers >= 2.4.0}
+BuildRequires:  %{python_module typing_extensions >= 4.7}
 # /SECTION
 %python_subpackages
 
@@ -60,7 +61,6 @@ Fake implementation of redis API for testing purposes.
 
 %check
 export LANG="en_US.UTF8"
-rm -v test/test_redis_asyncio.py
 %pytest -m "not slow"
 
 %files %{python_files}

@@ -7706,4 +7706,12 @@ always built-in because vim has direct perl dependencies anyway.
     runtime(doc): remove obsolete Ex insert behavior (forwarded request 1187635 from mschreiner)</comment>
     <requestid>1187636</requestid>
   </revision>
+  <revision rev="372" vrev="1">
+    <srcmd5>8e775ef7827637192d234f039cbe7aa1</srcmd5>
+    <version>9.1.0636</version>
+    <time>1722542600</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1190542</requestid>
+  </revision>
 </revisionlist>

@@ -34,6 +34,10 @@ License:        MIT
 URL:            https://github.com/scikit-build/scikit-build
 Source:         https://files.pythonhosted.org/packages/source/s/scikit-build/scikit_build-%{version}.tar.gz
 Source99:       sample-setup.cfg
+# PATCH-FIX-UPSTREAM gh#scikit-build/scikit-build#1103
+Patch0:         support-setuptools-72-distutils.patch
+# PATCH-FIX-UPSTREAM gh#scikit-build/scikit-build#1108
+Patch1:         support-setuptools-72-test-directives.patch
 BuildRequires:  %{python_module devel >= 3.8}
 BuildRequires:  %{python_module hatch-fancy-pypi-readme}
 BuildRequires:  %{python_module hatch-vcs}
@@ -58,6 +62,7 @@ Requires:       python-tomli
 BuildRequires:  %{python_module Cython >= 0.25.1}
 BuildRequires:  %{python_module build >= 0.7}
 BuildRequires:  %{python_module importlib-metadata if %python-base < 3.8}
+BuildRequires:  %{python_module numpy-devel >= 1.21}
 BuildRequires:  %{python_module pytest >= 6.0.0}
 BuildRequires:  %{python_module pytest-mock >= 1.10.4}
 BuildRequires:  %{python_module requests}

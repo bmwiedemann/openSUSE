@@ -1425,4 +1425,12 @@ This set of changes is not suitable for direct copy to currently released produc
     <comment>- update to 6.9.2 (forwarded request 1185693 from dsterba)</comment>
     <requestid>1185694</requestid>
   </revision>
+  <revision rev="160" vrev="1">
+    <srcmd5>a0e9665cc614d16c240e9dc079794849</srcmd5>
+    <version>6.10</version>
+    <time>1722542605</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 6.10 (forwarded request 1190549 from dsterba)</comment>
+    <requestid>1190550</requestid>
+  </revision>
 </revisionlist>

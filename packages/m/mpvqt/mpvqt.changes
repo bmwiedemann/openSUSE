@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jul 31 11:58:55 UTC 2024 - Javier Llorente <javier@opensuse.org>
+
+- Update to 1.0.1
+  * It is Qt 6 only now
+  * Include KDECompilerSettings
+  * Cmake: require ecm version 6.0.0
+  * Several fixes
+
+-------------------------------------------------------------------
 Sun Nov 12 14:27:02 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Init mpvqt

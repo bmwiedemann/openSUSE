@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul 31 10:26:00 UTC 2024 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- Bring back the label "System Role" to the left pane (bsc#1228171)
+- 20240731
+
+-------------------------------------------------------------------
 Thu May 16 08:46:56 UTC 2024 - Ludwig Nussel <lnussel@suse.com>
 
 - Enable LUKS2 and PBKDF2 by default for compat with grub (boo#1185291)

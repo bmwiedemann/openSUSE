@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Jul 31 10:02:13 UTC 2024 - Michal Suchanek <msuchanek@suse.com>
+
+- ofpathname: skip devices with no devspec when coorelating FC OF paths (bsc#1228597 ltc#206391).
+  * 0005-ofpathname-skip-devices-with-no-devspec-when-coorela.patch
+- lparstat output fixes (bsc#1228637).
+  * 0002-lparstat-Fix-Idle-and-busy-PURR-SPURR.patch
+  * 0003-lparstat-app-Use-pic-value-at-boot-for-accurate-boot.patch
+  * 0004-lparstat-Use-CLOCK_BOOTTIME-for-get_time-interface-a.patch
+- drmgr: Free nodes returned from configure_connector (bsc#1228637).
+  * 0006-drmgr-Free-nodes-returned-from-configure_connector.patch
+- drmgr: Return from get_node_by_name() if matched DRC index (bsc#1228637).
+  * 0001-drmgr-Return-from-get_node_by_name-if-matched-DRC-in.patch
+
+-------------------------------------------------------------------
 Tue Apr  2 08:25:42 UTC 2024 - Michal Suchanek <msuchanek@suse.com>
 
 - Fix SMT control on powernv with the new kernel interface (bsc#1222163)

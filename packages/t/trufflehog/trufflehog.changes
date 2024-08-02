@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Thu Aug 01 11:37:08 UTC 2024 - felix.niederwanger@suse.com
+
+- Update to version 3.80.5:
+  * move concurrency (#3135)
+  * [chore] - address linter (#3133)
+  * [chore] - Set GOMAXPROCS (#3136)
+  * Export maps from permission generation (#3137)
+  * Add permissions lookup tables (#3125)
+
+-------------------------------------------------------------------
+Wed Jul 31 19:33:22 UTC 2024 - felix.niederwanger@suse.com
+
+- Update to version 3.80.4:
+  * Separate out printing statements with anlayzer logic for SourceGraph (#3119)
+  * nitro detector was removed and needed to be deprecated (#3102)
+  * Separate out printing statements with anlayzer logic for Stripe (#3120)
+  * Separate out printing statements with anlayzer logic for Slack (#3121)
+  * Update GitHub integration tests (#3124)
+
+-------------------------------------------------------------------
+Wed Jul 31 08:21:51 UTC 2024 - felix.niederwanger@suse.com
+
+- Update to version 3.80.3:
+  * Add new canary ID (#3117)
+  * Separated printing and analyzes functionality for twilio (#3118)
+  * Separated printing and analyzes functionality for square (#3122)
+  * Separated printing and analyzes functionality for shopify (#3123)
+  * fix(deps): update module github.com/aws/aws-sdk-go to v1.55.5 (#3116)
+  * Analyzer partial implementations (#3114)
+  * Include default detectors when using a config that contains detectors (#3115)
+  * Use non-canary credentials for AWS tests (#3109)
+  * fix dep versions (#3106)
+  * [analyze] Add description and user to openai metadata (#3111)
+  * Support openai project and fine grained tokens (#3112)
+  * [analyze] Implement Analyzer interface for github (#3110)
+  * fix(deps): update module github.com/aws/aws-sdk-go to v1.55.3 (#3107)
+  * [chore] Move openai log message to proper function (#3105)
+  * fix(deps): update module github.com/gabriel-vasile/mimetype to v1.4.5 (#3108)
+  * Implement Analyzer interface for openai (#3101)
+  * [chore] Fix Versioner interface for twitter (#3104)
+  * fix(deps): update module cloud.google.com/go/secretmanager to v1.13.5 (#3096)
+  * Analyze (#3099)
+  * chore: fix some comments (#3098)
+  * [bug]-  Invalid Seek for Non-Seekable Readers (#3095)
+  * remove deps from docker image (#3097)
+  * fix(deps): update module github.com/aws/aws-sdk-go to v1.55.2 (#3094)
+  * fix(deps): update module github.com/aws/aws-sdk-go to v1.55.1 (#3087)
+  * fixed crash issue if data array is empty (#3091)
+  * Remove onwater detector (#3088)
+  * implemented a netsuite detector (#3068)
+  * fix(deps): update module google.golang.org/api to v0.189.0 (#3086)
+  * fix(deps): update module github.com/googleapis/gax-go/v2 to v2.13.0 (#3085)
+  * fix(deps): update golang.org/x/exp digest to 8a7402a (#3083)
+  * fix(deps): update module github.com/couchbase/gocb/v2 to v2.9.1 (#3078)
+  * [chore] - Reduce `VerificationOverlapWorker`s (#3082)
+  * add verify check (#3079)
+
+-------------------------------------------------------------------
 Fri Jul 19 17:58:34 UTC 2024 - felix.niederwanger@suse.com
 
 - Update to version 3.80.1:

@@ -1,0 +1,60 @@
+From ed6387e8110cd78e4097dbbcf698660738ab05a4 Mon Sep 17 00:00:00 2001
+From: Steve Kowalik <steven@wedontsleep.org>
+Date: Wed, 31 Jul 2024 16:01:32 +1000
+Subject: [PATCH] test: remove test directives
+
+setuptools 72 and above now raise warnings for test_suite and
+tests_require directives in setup.py as support for setup.py test is
+preparing to be removed. These directives have been deprecated for quite
+some time, so just remove them from the sample setup.py files.
+---
+ tests/samples/issue-274-support-default-package-dir/setup.py     | 1 -
+ .../issue-274-support-one-package-without-package-dir/setup.py   | 1 -
+ .../issue-335-support-cmake-source-dir/wrapping/python/setup.py  | 1 -
+ tests/samples/test-filter-manifest/wrapping/python/setup.py      | 1 -
+ 4 files changed, 4 deletions(-)
+
+diff --git a/tests/samples/issue-274-support-default-package-dir/setup.py b/tests/samples/issue-274-support-default-package-dir/setup.py
+index 99f4c361..b880122f 100644
+--- a/tests/samples/issue-274-support-default-package-dir/setup.py
++++ b/tests/samples/issue-274-support-default-package-dir/setup.py
+@@ -10,5 +10,4 @@
+     license="MIT",
+     packages=["hello"],
+     package_dir={"": "src"},
+-    test_suite="hello_tests",
+ )
+diff --git a/tests/samples/issue-274-support-one-package-without-package-dir/setup.py b/tests/samples/issue-274-support-one-package-without-package-dir/setup.py
+index 59864c15..5946573d 100644
+--- a/tests/samples/issue-274-support-one-package-without-package-dir/setup.py
++++ b/tests/samples/issue-274-support-one-package-without-package-dir/setup.py
+@@ -9,5 +9,4 @@
+     author="The scikit-build team",
+     license="MIT",
+     packages=["hello"],
+-    test_suite="hello_tests",
+ )
+diff --git a/tests/samples/issue-335-support-cmake-source-dir/wrapping/python/setup.py b/tests/samples/issue-335-support-cmake-source-dir/wrapping/python/setup.py
+index cb5b9d19..09b23405 100644
+--- a/tests/samples/issue-335-support-cmake-source-dir/wrapping/python/setup.py
++++ b/tests/samples/issue-335-support-cmake-source-dir/wrapping/python/setup.py
+@@ -9,7 +9,6 @@
+     author="The scikit-build team",
+     license="MIT",
+     packages=["hello"],
+-    tests_require=[],
+     setup_requires=[],
+     cmake_source_dir="../../",
+ )
+diff --git a/tests/samples/test-filter-manifest/wrapping/python/setup.py b/tests/samples/test-filter-manifest/wrapping/python/setup.py
+index 642620f8..e1bbb440 100644
+--- a/tests/samples/test-filter-manifest/wrapping/python/setup.py
++++ b/tests/samples/test-filter-manifest/wrapping/python/setup.py
+@@ -14,7 +14,6 @@ def exclude_dev_files(cmake_manifest):
+     author="The scikit-build team",
+     license="MIT",
+     packages=["hello"],
+-    tests_require=[],
+     setup_requires=[],
+     cmake_source_dir="../../",
+     cmake_process_manifest_hook=exclude_dev_files,

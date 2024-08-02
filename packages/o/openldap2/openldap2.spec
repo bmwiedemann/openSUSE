@@ -26,9 +26,9 @@
 %endif
 
 Name:           openldap2%{name_suffix}
-Version:        2.6.7
+Version:        2.6.8
 Release:        0
-Summary:        An open source implementation of the Lightweight Directory Access Protocol
+Summary:        An implementation of the Lightweight Directory Access Protocol
 License:        OLDAP-2.8
 Group:          Productivity/Networking/LDAP/Servers
 URL:            https://www.openldap.org
@@ -56,7 +56,6 @@ Patch3:         0003-LDAPI-socket-location.dif
 Patch5:         0005-pie-compile.dif
 Patch8:         0008-In-monitor-backend-do-not-return-Connection0-entries.patch
 Patch16:        0016-Clear-shared-key-only-in-close-function.patch
-Patch17:        gcc14.patch
 BuildRequires:  argon2-devel
 BuildRequires:  cyrus-sasl-devel
 BuildRequires:  db-devel
@@ -92,7 +91,7 @@ Lightweight Directory Access Protocol v3 (LDAPv3).
 The server provides several database backends and overlays.
 
 %package back-perl
-Summary:        OpenLDAP Perl Back-End
+Summary:        OpenLDAP Perl backend
 Group:          Productivity/Networking/LDAP/Servers
 Requires:       openldap2 = %{version}
 Requires:       perl = %{perl_version}
@@ -102,7 +101,7 @@ The OpenLDAP Perl back-end allows you to execute Perl code specific to
 different LDAP operations.
 
 %package back-sock
-Summary:        OpenLDAP Socket Back-End
+Summary:        OpenLDAP Socket backend
 Group:          Productivity/Networking/LDAP/Servers
 Requires:       openldap2 = %{version}
 Provides:       openldap2:/usr/share/man/man5/slapd-sock.5.gz
@@ -112,7 +111,7 @@ The OpenLDAP socket back-end allows you to handle LDAP requests and
 results with an external process listening on a Unix domain socket.
 
 %package back-meta
-Summary:        OpenLDAP Meta Back-End
+Summary:        OpenLDAP Meta backend
 Group:          Productivity/Networking/LDAP/Servers
 Requires:       openldap2 = %{version}
 Provides:       openldap2:/usr/share/man/man5/slapd-meta.5.gz
@@ -124,7 +123,7 @@ these servers can be presented as belonging to a single Directory
 Information Tree (DIT).
 
 %package back-sql
-Summary:        OpenLDAP SQL Back-End
+Summary:        OpenLDAP SQL backend
 Group:          Productivity/Networking/LDAP/Servers
 Requires:       openldap2 = %{version}
 
@@ -185,12 +184,11 @@ OpenLDAP client utilities such as ldapadd, ldapsearch, ldapmodify.
 
 %package devel
 Summary:        Libraries, Header Files and Documentation for OpenLDAP
-# bug437293
 Group:          Development/Libraries/C and C++
 %ifarch ppc64
+# bug437293
 Obsoletes:      openldap2-devel-64bit
 %endif
-#
 Conflicts:      openldap-devel
 Requires:       libldap2 = %{version}
 Recommends:     cyrus-sasl-devel
@@ -391,11 +389,8 @@ rm -f %{buildroot}/etc/openldap/schema/README
 rm -f %{buildroot}/etc/openldap/slapd.ldif*
 mv servers/slapd/back-sql/rdbms_depend servers/slapd/back-sql/examples
 
-ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcslapd
-
 rm -f %{buildroot}%{_libdir}/openldap/*.a
 rm -f %{buildroot}/usr/share/man/man5/slapd-dnssrv.5
-rm -f %{buildroot}/usr/share/man/man5/slapd-ndb.5
 rm -f %{buildroot}/usr/share/man/man5/slapd-null.5
 rm -f %{buildroot}/usr/share/man/man5/slapd-passwd.5
 rm -f %{buildroot}/usr/share/man/man5/slapd-shell.5
@@ -455,7 +450,6 @@ ln -fs libldap.so "%{buildroot}%{_libdir}/libldap_r.so"
 %dir %{_sysconfdir}/openldap/schema
 %{_fillupdir}/sysconfig.openldap
 %{_sbindir}/slap*
-%{_sbindir}/rcslapd
 %{_libdir}/openldap/back_ldap*
 %{_libdir}/openldap/back_mdb*
 %{_libdir}/openldap/back_relay*
@@ -470,6 +464,7 @@ ln -fs libldap.so "%{buildroot}%{_libdir}/libldap_r.so"
 %{_libdir}/openldap/dynlist*
 %{_libdir}/openldap/homedir*
 %{_libdir}/openldap/memberof*
+%{_libdir}/openldap/nestgroup*
 %{_libdir}/openldap/otp*
 %{_libdir}/openldap/pcache*
 %{_libdir}/openldap/ppolicy*

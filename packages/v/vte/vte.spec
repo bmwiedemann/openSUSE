@@ -180,7 +180,7 @@ widgets in Glade.
 %prep
 %autosetup -n %{_name}-%{version} -N
 %patch -P 0 -p1
-%if 0%{?sle_version}
+%if 0%{?sle_version} && 0%{?sle_version} < 160000
 %patch -P 100 -p1
 %endif
 

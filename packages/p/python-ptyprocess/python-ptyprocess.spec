@@ -1,7 +1,7 @@
 #
 # spec file for package python-ptyprocess
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,8 @@ License:        ISC
 Group:          Development/Languages/Python
 URL:            https://github.com/pexpect/ptyprocess
 Source:         https://files.pythonhosted.org/packages/source/p/ptyprocess/ptyprocess-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM - gh/pexpect/ptyprocess#75 - Remove unittest.makeSuite, gone from Python 3.13
+Patch:          https://github.com/pexpect/ptyprocess/pull/75.patch#/remove-old-unittest-functions.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -44,6 +46,7 @@ If you need to automate these things, running the process in a pseudo terminal
 
 %prep
 %setup -q -n ptyprocess-%{version}
+%patch -P0 -p1
 
 %build
 %python_build

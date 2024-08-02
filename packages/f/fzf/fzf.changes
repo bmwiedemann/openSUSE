@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jul 31 14:07:56 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Update to 0.54.3:
+  * Fixed incompatibility of adaptive height specification and
+    'start:reload'
+  * Environment variables are now available to $FZF_DEFAULT_COMMAND
+
+-------------------------------------------------------------------
 Fri Jul 26 10:29:49 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to 0.54.2:

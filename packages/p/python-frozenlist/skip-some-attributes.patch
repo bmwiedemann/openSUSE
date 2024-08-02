@@ -1,0 +1,25 @@
+From c6e8550ff462a6e299df35a935d2ffbf2777894e Mon Sep 17 00:00:00 2001
+From: Karolina Surma <ksurma@redhat.com>
+Date: Thu, 30 May 2024 10:46:25 +0200
+Subject: [PATCH] Skip some attributes when testing
+
+---
+ tests/test_frozenlist.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tests/test_frozenlist.py b/tests/test_frozenlist.py
+index 403d3ec..90ea84b 100644
+--- a/tests/test_frozenlist.py
++++ b/tests/test_frozenlist.py
+@@ -11,7 +11,7 @@ from frozenlist import FrozenList, PyFrozenList
+ class FrozenListMixin:
+     FrozenList = NotImplemented
+ 
+-    SKIP_METHODS = {"__abstractmethods__", "__slots__"}
++    SKIP_METHODS = {"__abstractmethods__", "__slots__", "__static_attributes__", "__firstlineno__"}
+ 
+     def test_subclass(self) -> None:
+         assert issubclass(self.FrozenList, MutableSequence)
+-- 
+2.44.0
+

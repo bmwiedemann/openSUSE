@@ -1,7 +1,7 @@
 #
 # spec file for package thunar
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define libname libthunarx-3-0
 %bcond_with git
 Name:           thunar
-Version:        4.18.10
+Version:        4.18.11
 Release:        0
 Summary:        File Manager for the Xfce Desktop Environment
 License:        GPL-2.0-or-later
@@ -43,6 +43,7 @@ BuildRequires:  pkgconfig(gdk-pixbuf-2.0) >= 2.40.0
 BuildRequires:  pkgconfig(gio-2.0) >= 2.66.0
 BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.66.0
 BuildRequires:  pkgconfig(glib-2.0) >= 2.66.0
+BuildRequires:  pkgconfig(gmodule-2.0) >= 2.66.0
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.30.0
 BuildRequires:  pkgconfig(gthread-2.0) >= 2.66.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.24.0

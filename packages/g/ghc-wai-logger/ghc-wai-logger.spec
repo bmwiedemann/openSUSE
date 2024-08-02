@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-wai-logger
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,24 +18,20 @@
 
 %global pkg_name wai-logger
 %global pkgver %{pkg_name}-%{version}
-%bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        2.4.0
+Version:        2.4.1
 Release:        0
 Summary:        A logging system for WAI
 License:        MIT
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
 BuildRequires:  ghc-Cabal-devel
-BuildRequires:  ghc-Cabal-prof
 BuildRequires:  ghc-base-devel
 BuildRequires:  ghc-base-prof
 BuildRequires:  ghc-byteorder-devel
 BuildRequires:  ghc-byteorder-prof
 BuildRequires:  ghc-bytestring-devel
 BuildRequires:  ghc-bytestring-prof
-BuildRequires:  ghc-cabal-doctest-devel
-BuildRequires:  ghc-cabal-doctest-prof
 BuildRequires:  ghc-fast-logger-devel
 BuildRequires:  ghc-fast-logger-prof
 BuildRequires:  ghc-http-types-devel
@@ -46,13 +42,9 @@ BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-wai-devel
 BuildRequires:  ghc-wai-prof
 ExcludeArch:    %{ix86}
-%if %{with tests}
-BuildRequires:  ghc-doctest-devel
-BuildRequires:  ghc-doctest-prof
-%endif
 
 %description
-A logging system for WAI.
+A logging system for WAI(Web Application Interface).
 
 %package devel
 Summary:        Haskell %{pkg_name} library development files
@@ -88,9 +80,6 @@ This package provides the Haskell %{pkg_name} profiling library.
 
 %install
 %ghc_lib_install
-
-%check
-%cabal_test
 
 %post devel
 %ghc_pkg_recache

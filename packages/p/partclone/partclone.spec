@@ -1,7 +1,7 @@
 #
 # spec file for package partclone
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2012 Mariusz Fik <fisiu@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,26 +17,20 @@
 #
 
 
-%if 0%{?suse_version} && 0%{?suse_version} < 1590
-%global force_gcc_version 12
-%endif
-
 Name:           partclone
-Version:        0.3.27
+Version:        0.3.32
 Release:        0
 Summary:        File System Clone Utilities
 License:        GPL-2.0-or-later
-Group:          System/Filesystems
 URL:            https://partclone.org/
 Source:         https://github.com/Thomas-Tsai/partclone/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  e2fsprogs-devel
 BuildRequires:  fdupes
-BuildRequires:  gcc%{?force_gcc_version}-c++ >= 12
-BuildRequires:  libbtrfs-devel
 BuildRequires:  nilfs-utils-devel
 BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(bash-completion)
 BuildRequires:  pkgconfig(fuse)
 BuildRequires:  pkgconfig(libntfs-3g)
 BuildRequires:  pkgconfig(mount)
@@ -54,10 +48,6 @@ ext2/3, reiserfs, reiser4, xfs, hfs+ file systems
 %autosetup
 
 %build
-%if 0%{?force_gcc_version}
-  export CC=gcc-%{?force_gcc_version}
-  export CXX=g++-%{?force_gcc_version}
-%endif
 export CFLAGS="%{optflags} -fcommon"
 autoreconf -fiv
 %configure \
@@ -82,11 +72,14 @@ autoreconf -fiv
 %install
 %make_install INSTLIBDIR=%{buildroot}%{_datadir}/%{name}
 %fdupes -s %{buildroot}%{_datadir}
+#mv %{buildroot}%{_sysconfdir}/bash_completion.d/partclone-prompt \
+#  %{buildroot}%{_datadir}/bash-completion/completions/
 %find_lang %{name}
 
 %files
 %license COPYING
 %doc ChangeLog README.md
+%{_datadir}/bash-completion/completions/partclone-prompt
 %{_sbindir}/partclone.apfs
 %{_sbindir}/partclone.btrfs
 %{_sbindir}/partclone.chkimg

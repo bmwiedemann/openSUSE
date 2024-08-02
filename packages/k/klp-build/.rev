@@ -74,4 +74,16 @@
   * extractor: Add filelocking support for srcdir</comment>
     <requestid>1190166</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>0cff846c1fec83e573c9a705d200f31b</srcmd5>
+    <version>0~20240731.edfe0bf</version>
+    <time>1722542714</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0~20240731.edfe0bf:
+  * Add new test for CVE-2021-47402
+  * test.sh: Simplify call to setup_extract_count
+  * klpbuild: Copy the .config from the right place
+  * templ: Add spaces between KLP_RELOC_SYMBOL macro arguments</comment>
+    <requestid>1190859</requestid>
+  </revision>
 </revisionlist>

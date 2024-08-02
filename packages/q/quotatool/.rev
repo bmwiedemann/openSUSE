@@ -23,4 +23,13 @@
     <comment></comment>
     <requestid>1181295</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ca321239dc69e9996e237f9a26c686e4</srcmd5>
+    <version>1.6.5</version>
+    <time>1722542716</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.6.5:
+  * Fix issue #28: 'fix missing __P definition for musl compile'</comment>
+    <requestid>1190860</requestid>
+  </revision>
 </revisionlist>

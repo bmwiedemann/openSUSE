@@ -1,0 +1,47 @@
+diff -Nur ltris-1.2/src/chart.c new/src/chart.c
+--- ltris-1.2/src/chart.c	2020-06-10 20:31:43.000000000 +0200
++++ new/src/chart.c	2020-07-05 11:03:15.635480526 +0200
+@@ -202,14 +202,10 @@
+ 	charts = 0;
+ 	charts = list_create( LIST_AUTO_DELETE, chart_set_delete );
+     /* load highscore */
+-    if ( !chart_load_from_path( HI_DIR ) ) {
+-        fprintf( stderr, "Unable to access highscore chart in '%s'.\n", HI_DIR );
+-        fprintf( stderr, "Trying to use config directory '%s'.\n", config.dir_name );
+-        if ( !chart_load_from_path( config.dir_name ) ) {
++    if ( !chart_load_from_path( config.dir_name ) ) {
+             fprintf( stderr, "Unable to access highscore chart in config directory... won't be "
+                              "able to save any results. Sorry.\n" );
+             return;
+-        }
+     }
+     printf( "Saving highscore chart in: %s\n", chart_path );
+     /* load resources */
+diff -Nur ltris-1.2/src/Makefile.am new/src/Makefile.am
+--- ltris-1.2/src/Makefile.am	2018-11-02 20:56:25.000000000 +0100
++++ new/src/Makefile.am	2020-07-05 11:04:50.122838050 +0200
+@@ -18,10 +18,6 @@
+ install-data-local:
+ 	$(mkinstalldirs) $(DESTDIR)$(inst_dir)
+ 	$(INSTALL_DATA) figures $(DESTDIR)$(inst_dir)/figures
+-	$(mkinstalldirs) $(DESTDIR)$(hi_dir)
+-	if ! test -f $(DESTDIR)$(hi_dir)/ltris.hscr; then \
+-	  $(INSTALL_DATA) --mode=666 empty.hscr $(DESTDIR)$(hi_dir)/ltris.hscr; \
+-	fi;
+ 
+ uninstall-local:
+ 	-rm -fr $(DESTDIR)$(inst_dir)
+diff -Nur ltris-1.2/src/Makefile.in new/src/Makefile.in
+--- ltris-1.2/src/Makefile.in	2020-06-28 20:24:49.000000000 +0200
++++ new/src/Makefile.in	2020-07-05 11:03:57.439196277 +0200
+@@ -780,10 +780,6 @@
+ install-data-local:
+ 	$(mkinstalldirs) $(DESTDIR)$(inst_dir)
+ 	$(INSTALL_DATA) figures $(DESTDIR)$(inst_dir)/figures
+-	$(mkinstalldirs) $(DESTDIR)$(hi_dir)
+-	if ! test -f $(DESTDIR)$(hi_dir)/ltris.hscr; then \
+-	  $(INSTALL_DATA) --mode=666 empty.hscr $(DESTDIR)$(hi_dir)/ltris.hscr; \
+-	fi;
+ 
+ uninstall-local:
+ 	-rm -fr $(DESTDIR)$(inst_dir)

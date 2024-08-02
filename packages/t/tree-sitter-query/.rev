@@ -7,4 +7,12 @@
     <comment>new dependency for neovim</comment>
     <requestid>1183068</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>512d711172975e97e4f3435155d05917</srcmd5>
+    <version>0.4.0</version>
+    <time>1722542664</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1190668</requestid>
+  </revision>
 </revisionlist>

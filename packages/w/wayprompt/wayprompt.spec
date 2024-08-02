@@ -17,7 +17,7 @@
 
 
 Name:           wayprompt
-Version:        0.1.0
+Version:        0.1.0+g14
 Release:        0
 Summary:        Multi-purpose prompt tool for Wayland
 License:        GPL-3.0-only
@@ -25,10 +25,13 @@ URL:            https://git.sr.ht/~leon_plickat/wayprompt/
 # We use OBS Tar SCM to also pull the git submodules
 # Original source tarball does not have that and is done manually
 Source0:        %{name}-%{version}.tar.zst
+Source1:        vendor.tar.zst
+# Upstream forgot to update the hash
+Patch1:         fix-zig-spoon-hash.patch
 BuildRequires:  fdupes
 BuildRequires:  scdoc
-BuildRequires:  zig = 0.11.0
-BuildRequires:  zig-rpm-macros = 0.11.0
+BuildRequires:  zig = 0.13.0
+BuildRequires:  zig-rpm-macros = 0.13.0
 BuildRequires:  zstd
 BuildRequires:  pkgconfig(fcft)
 BuildRequires:  pkgconfig(pixman-1)
@@ -49,22 +52,24 @@ To use as a himitsu prompter, run as 'hiprompt-wayprompt'. (TODO)
 To use as a generic prompter for scripts, run as 'wayprompt-cli'.
 
 %prep
-%setup -q
+%autosetup -a1 -p1
 
 %build
-%zig_build -Dpie
+%zig_build -Dpie --global-cache-dir vendor/
 
 %install
-%zig_install -Dpie
+%zig_install -Dpie --global-cache-dir vendor/
 %fdupes %{buildroot}
 
 %files
 %{_bindir}/%{name}
 %{_bindir}/pinentry-%{name}
-%license LICENSE
+%{_bindir}/%{name}-ssh-askpass
 %{_mandir}/man1/%{name}.1%{?ext_man}
+%{_mandir}/man1/%{name}-ssh-askpass.1%{?ext_man}
 %{_mandir}/man1/pinentry-%{name}.1%{?ext_man}
 %{_mandir}/man5/%{name}.5%{?ext_man}
 %doc README.md
+%license LICENSE
 
 %changelog

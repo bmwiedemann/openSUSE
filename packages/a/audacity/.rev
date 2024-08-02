@@ -1196,4 +1196,12 @@ Remove spurious text from changes
     <comment></comment>
     <requestid>1189206</requestid>
   </revision>
+  <revision rev="122" vrev="1">
+    <srcmd5>ae86aeb09dbe69e0497215b15b01ecb6</srcmd5>
+    <version>3.6.2</version>
+    <time>1722542667</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1190768</requestid>
+  </revision>
 </revisionlist>

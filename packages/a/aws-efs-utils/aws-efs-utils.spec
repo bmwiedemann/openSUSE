@@ -16,8 +16,14 @@
 #
 
 
+%if 0%{?suse_version} >= 1600
+%define pythons %{primary_python}
+%else
+%define pythons python311
+%endif
+%global _sitelibdir %{%{pythons}_sitelib}
 Name:           aws-efs-utils
-Version:        1.35.1
+Version:        2.0.3
 Release:        0
 Summary:        Utilities for using the EFS file systems
 License:        MIT
@@ -28,23 +34,23 @@ Patch0:         disable_mount_efs_test.patch
 Patch1:         harden_amazon-efs-mount-watchdog.service.patch
 Patch2:         skip-styletest.patch
 Patch3:         use_mock_from_unittest.patch
+BuildRequires:  %{pythons}-attrs >= 17.4.0
+BuildRequires:  %{pythons}-botocore >= 1.17.53
+BuildRequires:  %{pythons}-coverage >= 4.5.4
 BuildRequires:  openssl
-BuildRequires:  python3-attrs >= 17.4.0
-BuildRequires:  python3-botocore >= 1.17.53
-BuildRequires:  python3-coverage >= 4.5.4
-#BuildRequires:  python3-flake8 >= 3.7.9
-BuildRequires:  python3-flake8
-BuildRequires:  python3-mccabe >= 0.6.1
-BuildRequires:  python3-pbr >= 3.1.1
-BuildRequires:  python3-pluggy >= 0.13.0
-BuildRequires:  python3-py >= 1.10.0
-BuildRequires:  python3-pycodestyle >= 2.5.0
-BuildRequires:  python3-pyflakes >= 2.1.1
-BuildRequires:  python3-pytest >= 4.6.7
-BuildRequires:  python3-pytest-cov >= 2.8.1
-BuildRequires:  python3-pytest-html >= 1.19.0
-BuildRequires:  python3-pytest-metadata >= 1.7.0
-BuildRequires:  python3-pytest-mock >= 1.11.2
+#BuildRequires:  %{pythons}-flake8 >= 3.7.9
+BuildRequires:  %{pythons}-flake8
+BuildRequires:  %{pythons}-mccabe >= 0.6.1
+BuildRequires:  %{pythons}-pbr >= 3.1.1
+BuildRequires:  %{pythons}-pluggy >= 0.13.0
+BuildRequires:  %{pythons}-py >= 1.11.0
+BuildRequires:  %{pythons}-pycodestyle >= 2.5.0
+BuildRequires:  %{pythons}-pyflakes >= 2.1.1
+BuildRequires:  %{pythons}-pytest >= 4.6.7
+BuildRequires:  %{pythons}-pytest-cov >= 2.8.1
+BuildRequires:  %{pythons}-pytest-html >= 1.19.0
+BuildRequires:  %{pythons}-pytest-metadata >= 1.7.0
+BuildRequires:  %{pythons}-pytest-mock >= 1.11.2
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  pkgconfig(systemd)
 Requires:       nfs-utils

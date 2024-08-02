@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Jul 25 09:32:24 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 24.5:
+  * in s7, added (settable) symbol-initial-value (the #_...
+    value)
+  * changed invalid-escape-function to invalid-exit-
+    function
+  * new *s7* fields: symbol-quote?, symbol-printer, and
+    make-function
+  * added function-arglist in sublet, varlet and
+    s7_load_with_environment, () is no longer an abbreviation for
+    (rootlet)
+
+-------------------------------------------------------------------
 Thu May  9 09:12:04 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 24.3:

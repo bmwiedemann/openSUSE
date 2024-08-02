@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Jul 31 11:04:49 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 2.0.3
+  * Upgrade py version
+  * Replace deprecated usage of datetime
+- from version 2.0.2
+  * Check for efs-proxy PIDs when cleaning tunnel state files
+  * Add PID to log entries
+- from version 2.0.1
+  * Disable Nagle's algorithm for efs-proxy TLS mounts to improve latencies
+- from version 2.0.0
+  * Replace stunnel, which provides TLS encryptions for mounts, with efs-proxy,
+    a component built in-house at AWS. Efs-proxy lays the foundation for upcoming
+    feature launches at EFS.
+- from version 1.36.0
+  * Support new mount option: crossaccount, conduct cross account mounts via ip address.
+    Use client AZ-ID to choose mount target.
+- from version 1.35.2
+  * Revert "Add warning if using older Version"
+  * Support MacOS Sonoma
+- Switch package to modern Python Stack on SLE-15
+  * Use Python 3.11 on SLE-15 by default
+  * Use primary Python version on Tumbleweed
+
+-------------------------------------------------------------------
 Tue Feb 20 11:16:23 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.

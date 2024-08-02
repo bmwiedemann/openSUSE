@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Jul 25 07:40:38 UTC 2024 - Andrii Nikitin <andrii.nikitin@suse.com>
+
+- Update to version 1.079:
+  * Show size of projects (#502)
+
+-------------------------------------------------------------------
+Thu Jul 18 08:23:40 UTC 2024 - Andrii Nikitin <andrii.nikitin@suse.com>
+
+- Update to version 1.078:
+  * Respect If-Modified-Since header (#501)
+  * Add content-disposition header in torrent responses (#497)
+  * Reuse file extention instead of url parameter in redirects (#497)
+  * Allow caches to serve files while re-checking (#492)
+
+-------------------------------------------------------------------
 Thu Jun 20 05:47:14 UTC 2024 - Andrii Nikitin <andrii.nikitin@suse.com>
 
 - Update to version 1.077:

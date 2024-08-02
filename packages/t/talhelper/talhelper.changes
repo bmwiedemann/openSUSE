@@ -1,0 +1,20 @@
+-------------------------------------------------------------------
+Mon Jul 22 18:20:46 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 3.0.4:
+  * chore(schema): update talconfig.yaml JSON schema (#539)
+  * feat(config): add `noSchematicValidate` to skip schematic validation
+  * feat(validate): don't validate on selfhosted image factory
+  * chore(github-action)!: Update docker/build-push-action action to v6 (#511)
+  * fix: Dockerfile base image and Docker Workflow (#536)
+  * fix(deps): update module github.com/budimanjojo/talhelper/v3 to v3.0.3
+  * feat: update Scoop for talhelper version v3.0.3
+  * feat: update flake (#533)
+  * chore: bump flake to upstream go 1.22.5
+  * feat(validate): give information about docs on config file not found
+
+-------------------------------------------------------------------
+Mon Jul 22 18:20:13 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- new package talhelper: tool to help creating Talos kubernetes
+  cluster

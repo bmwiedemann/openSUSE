@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Mon Jul 29 06:42:27 UTC 2024 - danish.prakash@suse.com
+
+- Update to version 0.7.4:
+  * build(deps): bump golang.org/x/crypto from 0.24.0 to 0.25.0
+  * go.mod: Update go to 1.21
+  * go.mod: Update github.com/insomniacslk/dhcp to latest git main
+  * Fix OS specific url handling for unix:// scheme in transport
+  * test: fix broken dns TXT lookup test
+  * handle ENOBUFS when writing to VM socket
+  * build(deps): bump github.com/miekg/dns from 1.1.59 to 1.1.61
+  * build(deps): bump golang.org/x/sys from 0.20.0 to 0.21.0
+  * test: Specify path to EFI firmware for aarch64
+  * test: Use 'virt' machine type on aarch64
+  * test: Pick correct qemu-system-$arch binary
+  * test: Make getFCOSDownload less arch-dependent
+  * test: Fix expected wikipedia.org TXT record
+  * build(deps): bump golang.org/x/crypto from 0.22.0 to 0.23.0
+  * Packit: remove EL8 and enable C10S downstream update
+  * ghactions: Use ubuntu runner for tests
+  * ghactions: setup-go: Use go version from go.mod
+  * test: Always set QEMU machine type and accel
+  * test: Rework qemuExecutable
+  * ghactions: Don't use pre-release golang 1.22
+  * build(deps): bump github.com/onsi/gomega from 1.32.0 to 1.33.1
+  * build(deps): bump github.com/miekg/dns from 1.1.58 to 1.1.59
+  * build(deps): bump golangci/golangci-lint-action from 4 to 6
+  * build(deps): bump github.com/Microsoft/go-winio from 0.6.1 to 0.6.2
+  * build(deps): bump golang.org/x/net from 0.21.0 to 0.23.0
+  * README: Clarify that the host HTTP API is not always there
+  * build(deps): bump golang.org/x/sync from 0.6.0 to 0.7.0
+  * build(deps): bump golang.org/x/crypto from 0.21.0 to 0.22.0
+  * build: Build arm64 Windows binaries
+  * go.mod: Change inet.af/tcpproxy to github.com/inetaf/tcpproxy
+  * build(deps): bump github.com/onsi/gomega from 1.31.1 to 1.32.0
+  * build(deps): bump google.golang.org/protobuf in /tools
+  * build(deps): bump golang.org/x/crypto from 0.19.0 to 0.21.0
+  * build(deps): bump github.com/stretchr/testify from 1.8.4 to 1.9.0
+  * build(deps): bump golang.org/x/sys from 0.17.0 to 0.18.0
+  * build(deps): bump golangci/golangci-lint-action from 3 to 4
+  * Add DNS '8.8.8.8' server to use in test
+  * Fix lint errors
+  * build(deps): bump golang.org/x/crypto from 0.18.0 to 0.19.0
+  * OWNERS: Add jakecorrenti to reviewers
+  * gh: Fix 'if:' statement to avoid multiple uploads
+  * build(deps): bump actions/setup-go from 3 to 5
+  * build(deps): bump actions/checkout from 3 to 4
+  * build(deps): bump actions/upload-artifact from 3 to 4
+  * build(deps): bump github.com/onsi/gomega from 1.30.0 to 1.31.1
+  * test: Increase `go test` timeout
+  * ghactions: Don't upload artifacts multiple times
+  * Add log-file to proxy builder
+  * ghactions: Fix version generation for ghactions builds
+  * Improve versioning from shallow git clones
+  * gvproxy: Add more context to errors
+  * build(deps): bump github.com/miekg/dns from 1.1.57 to 1.1.58
+  * ghactions: Build release artifacts on tag push
+  * dependabot: Enable automatic github actions updates
+
+-------------------------------------------------------------------
 Tue Jan 23 06:56:11 UTC 2024 - danish.prakash@suse.com
 
 - Update to version 0.7.2:

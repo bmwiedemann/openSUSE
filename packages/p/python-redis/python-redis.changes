@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Jul 30 15:22:51 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- replace with pypi tarball again
+
+-------------------------------------------------------------------
+Tue Jul 30 11:13:47 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Fix filelist
+
+-------------------------------------------------------------------
+Mon Jul 29 18:55:58 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 5.0.8
+  Required update to support Redis 7.4.0
+  https://github.com/redis/redis-py/releases/tag/v5.0.8
+  https://github.com/redis/redis-py/releases/tag/v5.0.7
+  https://github.com/redis/redis-py/releases/tag/v5.0.6
+  https://github.com/redis/redis-py/releases/tag/v5.0.5
+  https://github.com/redis/redis-py/releases/tag/v5.0.4
+  https://github.com/redis/redis-py/releases/tag/v5.0.3
+  https://github.com/redis/redis-py/releases/tag/v5.0.2
+- drop Close-various-objects-created-during-asyncio-tests.patch
+  included in update
+- New BR numpy for the testsuite
+
+-------------------------------------------------------------------
 Tue Mar 26 13:46:39 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Switch build system from setuptools to pyproject.toml

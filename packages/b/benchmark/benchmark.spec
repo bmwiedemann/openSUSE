@@ -19,13 +19,12 @@
 %define soname  lib%{name}
 %define sover   1
 Name:           benchmark
-Version:        1.7.1
+Version:        1.8.5
 Release:        0
 Summary:        A microbenchmark support library
 License:        Apache-2.0
 URL:            https://github.com/google/benchmark
 Source:         %{name}-%{version}.tar.gz
-Patch0:         gcc12-disable-Werror=maybe-uninitialized.patch
 BuildRequires:  cmake >= 3.5.1
 BuildRequires:  gcc-c++
 BuildRequires:  git-core
@@ -80,8 +79,7 @@ rm -rf %{buildroot}%{_datadir}/doc/packages/benchmark
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:%{_builddir}/%{name}-%{version}/build/src/
 %ctest
 
-%post -n %{soname}%{sover} -p /sbin/ldconfig
-%postun -n %{soname}%{sover} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{soname}%{sover}
 
 %files -n %{soname}%{sover}
 %license LICENSE
@@ -95,6 +93,7 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:%{_builddir}/%{name}-%{version}/build/sr
 %dir %{_libdir}/cmake/%{name}
 %{_libdir}/cmake/%{name}/*.cmake
 %{_libdir}/pkgconfig/%{name}.pc
+%{_libdir}/pkgconfig/%{name}_main.pc
 %{_libdir}/%{soname}.so
 %{_libdir}/%{soname}_main.so
 %{_includedir}/%{name}

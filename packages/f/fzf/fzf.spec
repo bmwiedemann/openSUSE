@@ -18,7 +18,7 @@
 
 %global _lto_cflags %{nil}
 Name:           fzf
-Version:        0.54.2
+Version:        0.54.3
 Release:        0
 Summary:        A command-line fuzzy finder
 License:        MIT

@@ -1,7 +1,7 @@
 #
 # spec file for package python-munch
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,8 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/Infinidat/munch
 Source:         https://files.pythonhosted.org/packages/source/m/munch/munch-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM - gh/Infinidat/munch#104 - Adjust tests for Python 3.13
+Patch:          https://patch-diff.githubusercontent.com/raw/Infinidat/munch/pull/104.patch#/adjust-tests-for-python3.13.patch
 BuildRequires:  %{python_module pbr}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes

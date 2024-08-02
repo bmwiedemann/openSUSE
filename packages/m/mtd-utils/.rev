@@ -147,4 +147,21 @@ kernel)</comment>
   * See news at http://www.linux-mtd.infradead.org for full list of changes</comment>
     <requestid>1134150</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>b9d4a3c94a2de2afb47192735abea685</srcmd5>
+    <version>2.2.0</version>
+    <time>1722542715</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.2.0:
+  * flashcp: Add write last option
+  * flash_erase: Add an option for JFFS2 cleanmarker size
+  * ubiattach: Add disable fastmap option
+  * ubiattach: Add option to reserve peb pool for fastmap
+  * support building without zlib
+  * jffs2dump: check return value of lseek
+  * mkfs.ubifs: fix xattr scanning for builds with selinux support
+  * overhaul dependency handling in the build system
+- Enable SELinux support</comment>
+    <requestid>1190853</requestid>
+  </revision>
 </revisionlist>

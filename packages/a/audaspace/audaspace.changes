@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Jul 17 22:57:38 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to release 1.5.0
+  Audaspace 1.5.0 is a release with not many changes but big enough
+  to warrant a new release after a year since the last one.
+
+  - Performance improvements and two more quality presets for the
+    JOS resampler.
+  - Bugfixes for PulseAudio.
+  - CoreAudio device is only opened on demand.
+  - FFMPEG 7 support and dropped support for FFMPEG older than 6.
+  - Various minor fixes and improvements.
+- drop audaspace-animated-sequence.patch
+
+-------------------------------------------------------------------
 Sun Nov 26 13:47:56 UTC 2023 - draskmont@protonmail.com
 
 - Added upstream patch audaspace-animated-sequence.patch:

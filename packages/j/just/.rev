@@ -200,4 +200,22 @@
     <comment></comment>
     <requestid>1188501</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>578095018326baffc3f589f360a9c803</srcmd5>
+    <version>1.33.0</version>
+    <time>1722542678</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.33.0:
+  * Use correct backtick and shell() expression working directory in submodules
+  * Add working-directory setting
+  * Allow [group] attribute on submodules
+  * Allow empty [script] attribute and add set script-interpreter
+  * Document which attributes apply to which items
+  * Add missing productions
+  * Fix Rust 1.80.0 warnings
+  * Remove (no group) header before ungrouped recipes
+  * Document script-interpreter setting
+  * set dotenv-path does not override set dotenv-filename (forwarded request 1190805 from rrahl0)</comment>
+    <requestid>1190806</requestid>
+  </revision>
 </revisionlist>

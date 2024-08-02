@@ -164,4 +164,12 @@
   * Fixed duplicate error message when running ollama create</comment>
     <requestid>1189982</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>c5a64b16c4973dd44cd2d4a3ca0f3493</srcmd5>
+    <version>0.3.1</version>
+    <time>1722542687</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1190824</requestid>
+  </revision>
 </revisionlist>

@@ -220,4 +220,12 @@
     of standard output (pull request #90) supplied by xmort (forwarded request 1184158 from dirkmueller)</comment>
     <requestid>1184170</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>722a2ddd52b31132f3f094fbe8cebd7d</srcmd5>
+    <version>1.8.12</version>
+    <time>1722542629</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.8.12:</comment>
+    <requestid>1190636</requestid>
+  </revision>
 </revisionlist>

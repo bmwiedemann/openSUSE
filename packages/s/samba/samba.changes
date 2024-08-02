@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul 17 11:18:52 UTC 2024 - Samuel Cabrero <scabrero@suse.de>
+
+- Update samba-tool package to require python3-Markdown also in
+  the Heimdal ADDC build.
+
+-------------------------------------------------------------------
 Thu Jul  4 10:34:20 UTC 2024 - Samuel Cabrero <scabrero@suse.de>
 
 - Fix named crash when using samba's DLZ plugin; (bsc#1224003);

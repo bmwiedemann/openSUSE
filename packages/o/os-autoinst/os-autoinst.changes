@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Aug 01 01:30:34 UTC 2024 - okurz@suse.com
+
+- Update to version 4.6.1722429185.3b017a7:
+  * Isotovideo/Utils: Fix "Use of uninitialized value $name"
+  * Reliably locate top directory of isotovideo
+  * testapi: Keep the positional mode for script_run and alike
+  * Avoid SVT-AV1 when FFmpeg 4 is installed
+  * Add support to configure sector sizes of HDD images
+
+-------------------------------------------------------------------
 Mon Jul 29 17:29:45 UTC 2024 - okurz@suse.com
 
 - Update to version 4.6.1722273351.abb9288:

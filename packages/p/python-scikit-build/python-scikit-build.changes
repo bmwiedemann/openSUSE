@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jul 31 06:14:00 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-setuptools-72-distutils.patch:
+  * Don't monkey patch distutils incorrectly.
+- Add patch support-setuptools-72-test-directives.patch:
+  * Remove test{_suite,s_require} directives.
+
+-------------------------------------------------------------------
 Thu Jul 11 09:01:25 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.18.0

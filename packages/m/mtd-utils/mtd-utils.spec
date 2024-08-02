@@ -1,7 +1,7 @@
 #
 # spec file for package mtd-utils
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           mtd-utils
-Version:        2.1.6
+Version:        2.2.0
 Release:        0
 Summary:        Tools for maintaining Memory Technology Devices
 License:        GPL-2.0-or-later
@@ -27,6 +27,7 @@ Source1:        ftp://ftp.infradead.org/pub/mtd-utils/mtd-utils-%{version}.tar.b
 Source2:        %{name}.keyring
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libacl)
+BuildRequires:  pkgconfig(libselinux)
 BuildRequires:  pkgconfig(libzstd)
 BuildRequires:  pkgconfig(lzo2)
 BuildRequires:  pkgconfig(openssl)

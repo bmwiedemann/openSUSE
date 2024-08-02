@@ -1,0 +1,63 @@
+From b5ef2a580e28f80fc1634b32ebf7377b5c4ed40b Mon Sep 17 00:00:00 2001
+From: Gary Lin <glin@suse.com>
+Date: Fri, 26 Jul 2024 16:27:20 +0800
+Subject: [PATCH] firstboot: replace the key file path in crypttab
+
+The key file path in crypttab is not necessary after the system
+completes re-encryption since it becomes only a reference for GRUB2 when
+generating the synthesized initrd to forward the disk key. Specifying a
+key file path in the directory other than '/' could introduce the extra
+dependency when unmounting the LUKS partitions and lead to the
+unexpected error/warning. Unfortunately, the root partition is read-only
+in SL-Micro, so KIWI has to create the key file in "/root".
+
+To avoid the unexpected error/warning, this commit replace the key file
+path with "/.virtual-root.key" after the firstboot script removes the
+default key file. This makes dracut/systemd believe that the key file is
+in the root partition, so there is no extra dependency when unmounting
+the LUKS partitions.
+
+The initrd also needs to be re-generated at the end to reflect the
+change in /etc/crypttab.
+
+FIXES: bsc#1218181
+
+Signed-off-by: Gary Lin <glin@suse.com>
+---
+ firstboot/fde | 10 ++++++++--
+ 1 file changed, 8 insertions(+), 2 deletions(-)
+
+diff --git a/firstboot/fde b/firstboot/fde
+index 59fdb92..b917a35 100755
+--- a/firstboot/fde
++++ b/firstboot/fde
+@@ -112,6 +112,11 @@ function fde_setup_encrypted {
+ 	    return 1
+ 	fi
+ 	rm -f "${luks_keyfile}"
++
++	# Replace the key file path in /etc/crypttab with "/.virtual-root.key"
++	# to avoid errors when unmounting the LUKS partition (bsc#1218181)
++	sed -i "s,${luks_keyfile},/.virtual-root.key,g" /etc/crypttab
++
+ 	luks_keyfile=""
+     fi
+ 
+@@ -152,11 +157,12 @@ function fde_setup_encrypted {
+     # Remove the password file
+     rm -f ${pass_keyfile}
+ 
+-    # Update /boot/grub2/grub.cfg
++    # Update initrd and /boot/grub2/grub.cfg
+     if test -d "/boot/writable"; then
+-	transactional-update grub.cfg
++	transactional-update initrd grub.cfg
+ 	transactional-update apply
+     else
++	dracut -f
+ 	grub2-mkconfig -o /boot/grub2/grub.cfg
+     fi
+ 
+-- 
+2.35.3
+

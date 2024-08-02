@@ -26,6 +26,7 @@ URL:            https://github.com/tree-sitter-grammars/tree-sitter-query
 Source:         %{name}-%{version}.tar.xz
 BuildRequires:  tree-sitter
 %treesitter_grammars %{_name}
+
 %description
 A tree-sitter parser for tree-sitter query files (scheme-like).
 

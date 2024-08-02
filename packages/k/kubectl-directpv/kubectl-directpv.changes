@@ -1,0 +1,32 @@
+-------------------------------------------------------------------
+Thu Aug 01 07:26:41 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 4.0.12:
+  * Add drive repair support (#880)
+  * upgrade dependencies (#917)
+  * Export DirectPV client and admin API package (#889)
+
+-------------------------------------------------------------------
+Mon Jun 24 05:22:20 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 4.0.11:
+  * upgrade dependencies (#914)
+  * Upgrade UBI 8.10 and dependencies (#911)
+  * fix: handle Add event in node event listener (#906)
+  * Bump golang.org/x/net from 0.22.0 to 0.23.0 (#905)
+  * Update dependencies (#899)
+  * fix link to create-storage-class.sh (#896)
+  * update max_retries in XFS error condition config to 0 (#893)
+  * Update operator bundle for v4.0.10
+  * Update Helm charts for v4.0.10
+
+-------------------------------------------------------------------
+Thu Apr 18 07:56:53 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- do not strip aka remove -s -w ldflags
+
+-------------------------------------------------------------------
+Wed Apr  3 18:03:31 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- new package kubectl-directpv: Kubectl plugin for the MinIO CSI
+  driver for Direct Attached Storage

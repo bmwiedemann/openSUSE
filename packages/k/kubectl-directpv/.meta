@@ -1,0 +1,8 @@
+<package name="kubectl-directpv" project="openSUSE:Factory">
+  <title>Kubectl plugin for the MinIO CSI driver for Direct Attached Storage</title>
+  <description>DirectPV is a CSI driver for Direct Attached Storage. In a simpler sense, it is a distributed persistent volume manager, and not a storage system like SAN or NAS. It is useful to discover, format, mount, schedule and monitor drives across servers.
+
+This package contains the Kubectl plugin to manage the DirectPV CSI driver.</description>
+  <devel project="devel:kubic" package="kubectl-directpv"/>
+  <url>https://github.com/minio/directpv</url>
+</package>

@@ -893,4 +893,12 @@ New upstream release</comment>
     <comment></comment>
     <requestid>1171914</requestid>
   </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>e3a4f0f72ec39a70fd394b24820dbe5e</srcmd5>
+    <version>4.15.4</version>
+    <time>1722542633</time>
+    <user>dimstar_suse</user>
+    <comment>- Add missed optflags to CFLAGS. (forwarded request 1190845 from dimstar)</comment>
+    <requestid>1190846</requestid>
+  </revision>
 </revisionlist>

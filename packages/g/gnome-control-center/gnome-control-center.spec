@@ -41,8 +41,8 @@ Patch1:         gnome-control-center-disable-error-message-for-NM.patch
 Patch2:         gnome-control-center-users-page-Don-t-show-the-system-accounts.patch
 
 ### patches for Leap >= 15 plus SLE >= 15, but not TW
-# PATCH-FEATURE-SLE gnome-control-center-info-never-use-gnome-software.patch bsc#999336 fezhang@suse.com -- info: Never search for gnome-software as an option when checking for updates on SLE and Leap 42.2, because we use gpk-update-viewer.
-Patch1001:      gnome-control-center-info-never-use-gnome-software.patch
+# PATCH-FEATURE-SLE gnome-control-center-system-never-use-gnome-software.patch bsc#999336 fezhang@suse.com -- info: Never search for gnome-software as an option when checking for updates on SLE and Leap 42.2, because we use gpk-update-viewer.
+Patch1001:      gnome-control-center-system-never-use-gnome-software.patch
 # PATCH-FEATURE-SLE gnome-control-center-more-power-button-actions.patch bsc#993381 fezhang@suse.com -- power: Bring back the "shutdown" and "interactive" power button actions.
 Patch1002:      gnome-control-center-more-power-button-actions.patch
 # PATCH-FEATURE-SLE gnome-control-center-bring-back-firewall-zone.patch fate#316719 sckang@suse.com -- network: Bring back the firewall zone combo box to select proper firewall zone for each connection.

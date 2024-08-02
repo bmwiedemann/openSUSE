@@ -1,7 +1,7 @@
 #
 # spec file for package csound
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -44,6 +44,7 @@ Patch2:         csound-6.08-default-pulse.patch
 Patch4:         csound-6.08-xdg-open.patch
 Patch5:         csound-rename-sndinfo.patch
 Patch6:         csound-rename-extract.patch
+Patch7:         csound-gcc14.patch
 BuildRequires:  alsa-devel
 BuildRequires:  bison
 BuildRequires:  cmake

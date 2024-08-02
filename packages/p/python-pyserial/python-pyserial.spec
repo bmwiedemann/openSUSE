@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyserial
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,12 +25,14 @@ License:        Python-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/pyserial/pyserial
 Source:         https://files.pythonhosted.org/packages/source/p/pyserial/pyserial-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM - pyserial/pyserial#757 - Replace deprecated unittest.findTestCases function
+Patch:          https://github.com/pyserial/pyserial/pull/757.patch#/replace-deprecated-unittest-function.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-Sphinx
 Requires(post): update-alternatives
-Requires(preun):update-alternatives
+Requires(preun): update-alternatives
 Provides:       python-serial = %{version}
 Obsoletes:      python-serial < %{version}
 BuildArch:      noarch
@@ -52,6 +54,7 @@ Documentation, examples, and help files for %{name}.
 
 %prep
 %setup -q -n pyserial-%{version}
+%patch -P0 -p1
 
 # Unnecessary
 rm serial/tools/list_ports_windows.py \

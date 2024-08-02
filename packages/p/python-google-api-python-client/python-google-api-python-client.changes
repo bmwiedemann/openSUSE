@@ -1,4 +1,121 @@
 -------------------------------------------------------------------
+Wed Jul 31 10:12:45 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.139.0
+  * **appengine:** Update the api
+  * **bigquery:** Update the api
+  * **bigtableadmin:** Update the api
+  * **cloudbuild:** Update the api
+  * **contactcenterinsights:** Update the api
+  * **contentwarehouse:** Update the api
+  * **datamigration:** Update the api
+  * **dataplex:** Update the api
+  * **dialogflow:** Update the api
+  * **discovery:** Update the api
+  * **dlp:** Update the api
+  * **dns:** Update the api
+  * **file:** Update the api
+  * **firebaseappdistribution:** Update the api
+  * **firebaseml:** Update the api
+  * **merchantapi:** Update the api
+  * **monitoring:** Update the api
+  * **networkmanagement:** Update the api
+  * **networksecurity:** Update the api
+  * **playintegrity:** Update the api
+  * **recaptchaenterprise:** Update the api
+  * **walletobjects:** Update the api
+  * **workloadmanager:** Update the api
+- from version 2.138.0
+  * Add support for reading apiVersion in discovery artifacts (#2380)
+  * **aiplatform:** Update the api
+  * **aiplatform:** Update the api
+  * **analyticsadmin:** Update the api
+  * **analyticsadmin:** Update the api
+  * **androidpublisher:** Update the api
+  * **androidpublisher:** Update the api
+  * **apim:** Update the api
+  * **artifactregistry:** Update the api
+  * **artifactregistry:** Update the api
+  * **artifactregistry:** Update the api
+  * **backupdr:** Update the api
+  * **cloudbuild:** Update the api
+  * **cloudbuild:** Update the api
+  * **cloudcontrolspartner:** Update the api
+  * **cloudsearch:** Update the api
+  * **composer:** Update the api
+  * **compute:** Update the api
+  * **compute:** Update the api
+  * **compute:** Update the api
+  * **connectors:** Update the api
+  * **connectors:** Update the api
+  * **connectors:** Update the api
+  * **container:** Update the api
+  * **content:** Update the api
+  * **dialogflow:** Update the api
+  * **dialogflow:** Update the api
+  * **discoveryengine:** Update the api
+  * **discoveryengine:** Update the api
+  * **discoveryengine:** Update the api
+  * **discovery:** Update the api
+  * **displayvideo:** Update the api
+  * **docs:** Update the api
+  * **documentai:** Update the api
+  * **essentialcontacts:** Update the api
+  * **essentialcontacts:** Update the api
+  * **file:** Update the api
+  * **file:** Update the api
+  * **firebaseappdistribution:** Update the api
+  * **firebaseappdistribution:** Update the api
+  * **firebaseml:** Update the api
+  * **firestore:** Update the api
+  * **gkehub:** Update the api
+  * **gkehub:** Update the api
+  * **healthcare:** Update the api
+  * **iam:** Update the api
+  * **iam:** Update the api
+  * **integrations:** Update the api
+  * **integrations:** Update the api
+  * **logging:** Update the api
+  * **logging:** Update the api
+  * **manufacturers:** Update the api
+  * **merchantapi:** Update the api
+  * **merchantapi:** Update the api
+  * **merchantapi:** Update the api
+  * **metastore:** Update the api
+  * **metastore:** Update the api
+  * **migrationcenter:** Update the api
+  * **networkservices:** Update the api
+  * **networkservices:** Update the api
+  * **ondemandscanning:** Update the api
+  * **ondemandscanning:** Update the api
+  * **playintegrity:** Update the api
+  * **playintegrity:** Update the api
+  * **recaptchaenterprise:** Update the api
+  * **retail:** Update the api
+  * **retail:** Update the api
+  * **retail:** Update the api
+  * **sheets:** Update the api
+  * **spanner:** Update the api
+  * **spanner:** Update the api
+  * **spanner:** Update the api
+  * **sqladmin:** Update the api
+  * **sqladmin:** Update the api
+  * **sts:** Update the api
+  * **sts:** Update the api
+  * **translate:** Update the api
+  * **vmmigration:** Update the api
+  * **walletobjects:** Update the api
+  * **workflowexecutions:** Update the api
+  * **workloadmanager:** Update the api
+  * **workloadmanager:** Update the api
+  * **workstations:** Update the api
+  * **workstations:** Update the api
+  * **workstations:** Update the api
+  * **dataflow:** Update the api
+  * **dlp:** Update the api
+  * **dlp:** Update the api
+
+-------------------------------------------------------------------
 Mon Jul 15 13:11:18 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 2.137.0

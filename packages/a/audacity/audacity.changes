@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Jul 27 10:01:46 UTC 2024 - Stephan Hemeier <Sauerlandlinux@gmx.de>
+
+- Update to 3.6.2
+  * #6955 Fix out of bound access in waveform cache
+  * #6857 fix: pitch-shift value not showing on Linux
+  * #6883 Fix for labeled audio operations don't work in certain cases
+  * Fix for TCP UI Breaks when dragging waveform splitter
+  * Undo stack is cleared before project is compacted
+  * Call SetBypass at the right time
+  * Clear clipboard also before cutting
+  * Prepare a set of tracks to apply labeled audio operations depending
+  * Extend Join Region by one sample, to ensure that Split-Join operation
+  * Envelope display fix: pass absolute time value when querying envelope
+
+-------------------------------------------------------------------
 Mon Jul 22 09:16:50 UTC 2024 - Konstantin Voinov <kv@kott.no-ip.biz>
 
 - Update to 3.6.1

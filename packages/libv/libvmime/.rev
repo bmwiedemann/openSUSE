@@ -267,4 +267,12 @@
     <comment>- Update to snapshot 0.9.2+git203 (43b262bd)</comment>
     <requestid>1181792</requestid>
   </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>70927817e5e849b8baca8682c470b2de</srcmd5>
+    <version>0.9.2+g203</version>
+    <time>1722542651</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1190650</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,4 @@
-From 7159c13ee349a2e2edb5ed8b6793794bae9025fd Mon Sep 17 00:00:00 2001
+From 62035ba22a45bde6bed2da321e7ad954f5b461b4 Mon Sep 17 00:00:00 2001
 From: Aleksa Sarai <cyphar@cyphar.com>
 Date: Wed, 19 Jun 2024 16:30:49 +1000
 Subject: [PATCH 7/7] bsc1214855: volume: use AtomicWriteFile to save volume

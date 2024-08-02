@@ -1,5 +1,5 @@
 #
-# spec file for package openSUSE-Aeon-release.spec
+# spec file for package Aeon-release.spec
 #
 # Copyright (c) 2020 SUSE LLC
 #
@@ -201,17 +201,17 @@ VERSION_ID=`echo %{version}|tr '[:upper:]' '[:lower:]'|sed -e 's/ //g;'`
 # note: VERSION is an optional field and has no meaning other than informative on a rolling distro
 # We do thus not add it to the os-release file
 cat > %{buildroot}%{_prefix}/lib/os-release <<EOF
-NAME="openSUSE Aeon"
+NAME="Aeon"
 # VERSION="%{version}%{?betaversion: %{betaversion}}"
-ID="opensuse-aeon"
-ID_LIKE="suse opensuse opensuse-tumbleweed opensuse-microos microos"
+ID="aeon"
+ID_LIKE="suse opensuse opensuse-tumbleweed opensuse-microos opensuse-aeon microos"
 VERSION_ID="$VERSION_ID"
-PRETTY_NAME="openSUSE Aeon"
+PRETTY_NAME="Aeon"
 ANSI_COLOR="0;32"
 CPE_NAME="cpe:/o:opensuse:aeon:%{version}"
-BUG_REPORT_URL="https://bugzilla.opensuse.org"
-SUPPORT_URL="https://bugs.opensuse.org"
-HOME_URL="https://www.aeondesktop.org/"
+BUG_REPORT_URL="https://aeondesktop.org/reportbug"
+SUPPORT_URL="https://aeondesktop.org/bugs"
+HOME_URL="https://aeondesktop.org/"
 DOCUMENTATION_URL="https://en.opensuse.org/Portal:Aeon"
 LOGO="distributor-logo-Aeon"
 EOF

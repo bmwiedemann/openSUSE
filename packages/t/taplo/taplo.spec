@@ -15,8 +15,9 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           taplo
-Version:        0.9.2
+Version:        0.9.3
 Release:        0
 Summary:        A TOML toolkit written in Rust
 License:        MIT

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jul 24 13:13:46 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Migrate from tar_scm to obs_scm: be more storage efficient.
+- Add tar service (buildtime) and change recompress from manual to
+  buildtime: only generate tar.xz during build time to have valid
+  .src.rpm.
+
+-------------------------------------------------------------------
 Thu Jul 18 16:48:21 UTC 2024 - Jan Zerebecki <jan.suse@zerebecki.de>
 
 - Recommend current qrencode version, instead of unavailable one

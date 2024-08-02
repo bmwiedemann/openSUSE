@@ -1,7 +1,7 @@
 #
 # spec file for package mpvqt
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           mpvqt
-Version:        1.0.0
+Version:        1.0.1
 Release:        0
 Summary:        Libmpv wrapper for QtQuick2 and QML
 License:        LGPL-2.1-or-later
@@ -60,7 +60,7 @@ This package provides development files needed to use mpvqt in your applications
 %autosetup -p1
 
 %build
-%cmake_kf6 -DBUILD_WITH_QT6:BOOL=TRUE
+%cmake_kf6
 
 %kf6_build
 

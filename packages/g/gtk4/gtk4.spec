@@ -28,7 +28,7 @@
 %endif
 
 Name:           gtk4
-Version:        4.14.4
+Version:        4.15.4
 Release:        0
 Summary:        The GTK+ toolkit library (version 4)
 License:        LGPL-2.1-or-later
@@ -99,7 +99,7 @@ BuildRequires:  pkgconfig(tracker-sparql-3.0)
 BuildRequires:  pkgconfig(wayland-client) >= 1.21.0
 BuildRequires:  pkgconfig(wayland-cursor) >= 1.9.91
 BuildRequires:  pkgconfig(wayland-egl)
-BuildRequires:  pkgconfig(wayland-protocols) >= 1.25
+BuildRequires:  pkgconfig(wayland-protocols) >= 1.36
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xcomposite)
 BuildRequires:  pkgconfig(xcursor)
@@ -257,6 +257,7 @@ This package enhances gettext with an International Tag Set for GTK+ 4
 %autosetup -p1 -n %{_name}-%{version}
 
 %build
+export CFLAGS="%{optflags} -Wno-int-conversion"
 %meson \
 	-Ddocumentation=true \
 	-Dbroadway-backend=true \
@@ -352,6 +353,7 @@ cp %{SOURCE3} %{buildroot}%{_rpmmacrodir}
 %{_bindir}/gtk4-demo-application
 %{_bindir}/gtk4-encode-symbolic-svg
 %{_bindir}/gtk4-icon-browser
+%{_bindir}/gtk4-image-tool
 %{_bindir}/gtk4-node-editor
 %{_bindir}/gtk4-print-editor
 %{_bindir}/gtk4-rendernode-tool
@@ -387,6 +389,7 @@ cp %{SOURCE3} %{buildroot}%{_rpmmacrodir}
 %{_mandir}/man1/gtk4-demo.1%{?ext_man}
 %{_mandir}/man1/gtk4-encode-symbolic-svg.1%{?ext_man}
 %{_mandir}/man1/gtk4-icon-browser.1%{?ext_man}
+%{_mandir}/man1/gtk4-image-tool.1%{?ext_man}
 %{_mandir}/man1/gtk4-node-editor.1%{?ext_man}
 %{_mandir}/man1/gtk4-path-tool.1%{?ext_man}
 %{_mandir}/man1/gtk4-rendernode-tool.1%{?ext_man}

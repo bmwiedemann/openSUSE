@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jul 31 04:48:17 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.8.12:
+  * fix detection of output block device size
+  * do not treat a zero/interrupted write as an end of file
+
+-------------------------------------------------------------------
 Sun Jun 30 21:38:22 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.8.10:

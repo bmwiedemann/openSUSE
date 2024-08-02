@@ -29,11 +29,14 @@ Summary:        A template engine written in pure Python
 License:        BSD-3-Clause
 URL:            https://jinja.palletsprojects.com
 Source:         https://files.pythonhosted.org/packages/source/J/Jinja2/jinja2-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM - gh/pallets/jinja#1960 and gh/pallets/jinja#1977 - Fix FTBFS with Python 3.13
+Patch:          https://src.fedoraproject.org/rpms/python-jinja2/raw/rawhide/f/python3.13.patch#/fix-ftbfs-with-python313.patch
 BuildRequires:  %{python_module MarkupSafe >= 0.23}
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module flit-core}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module trio}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
@@ -53,6 +56,7 @@ sandboxed environment.
 
 %prep
 %setup -q -n jinja2-%{version}
+%patch -P0 -p1
 
 %build
 %pyproject_wheel

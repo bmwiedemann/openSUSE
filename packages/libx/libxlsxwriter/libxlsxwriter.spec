@@ -16,16 +16,16 @@
 #
 
 
-%define libname libxlsxwriter6
+%define libname libxlsxwriter7
 
 Name:           libxlsxwriter
-Version:        1.1.7
+Version:        1.1.8
 Release:        0
 Summary:        A C library for creating Excel XLSX files
 License:        BSD-2-Clause
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/jmcnamara/libxlsxwriter
-Source:         %{url}/archive/refs/tags/RELEASE_%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source:         %{url}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig(minizip)
@@ -56,7 +56,7 @@ Libxlsxwriter is a C library for creating Excel XLSX files.
 This package holds the development files.
 
 %prep
-%autosetup -p1 -n %{name}-RELEASE_%{version}
+%autosetup -p1
 
 %build
 %cmake -DUSE_SYSTEM_MINIZIP=ON -DBUILD_TESTS=ON

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Aug 01 07:18:44 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.188.0:
+  * Add release notes for v0.188.0 (#7889)
+  * Bump github.com/docker/docker from 24.0.9+incompatible to
+    26.1.4+incompatible (#7909)
+  * Update nvidia-device-plugin to v0.16.0 (#7900)
+  * Add support for Kuala Lumpur region (ap-southeast-5) (#7910)
+  * Add GH workflow for automatically updating nvidia device plugin
+    static manifest (#7898)
+  * Prepare for next development iteration (#7890)
+
+-------------------------------------------------------------------
 Tue Jul 16 09:27:08 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.187.0:

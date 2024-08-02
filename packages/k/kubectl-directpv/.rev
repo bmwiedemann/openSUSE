@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f20227c92dfd32c021da6eea0e0e6159</srcmd5>
+    <version>4.0.12</version>
+    <time>1722542735</time>
+    <user>dimstar_suse</user>
+    <comment>new package kubectl-directpv: Kubectl plugin for the MinIO CSI driver for Direct Attached Storage</comment>
+    <requestid>1190898</requestid>
+  </revision>
+</revisionlist>

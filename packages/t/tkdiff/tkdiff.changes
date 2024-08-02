@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jul 31 08:53:17 UTC 2024 - ming li <mli@suse.com>
+
+- Update to 5.7
+  * Allows implied "null content" files (eg. UNIX /dev/null) as valid Filespecs
+  * Inline hilites now respond immediately after a OFF to ON request
+  * Bookmark annotation prompt now relates current hunk ID on 2nd and more usage
+  * Inline hilites no longer randomly ignores the last possible line of hunk
+
+-------------------------------------------------------------------
 Mon Nov 14 07:58:38 UTC 2022  - hsk17@mail.de
 
 - for release info see also https://sourceforge.net/p/tkdiff/news/

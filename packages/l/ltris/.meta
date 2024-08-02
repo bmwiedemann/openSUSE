@@ -1,0 +1,10 @@
+<package name="ltris" project="openSUSE:Factory">
+  <title>Tetris Clone with Multiplayer and CPU Opponents</title>
+  <description>LTris is a very polished Tetris clone. It is highly configurable due to
+its menu. It offers the well-known game type Classic, a funny game type
+Figures (a new figure each level, suddenly appearing tiles and lines),
+and multiplayer with up to three players either human or CPU
+controlled.
+</description>
+  <devel project="games" package="ltris"/>
+</package>

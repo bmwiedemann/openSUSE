@@ -17,16 +17,17 @@
 
 
 Name:           uv
-Version:        0.1.42
+Version:        0.2.30
 Release:        0
-Summary:        A Python package installer and resolver, written in Rust 
-License:        Apache-2.0 or MIT
+Summary:        A Python package installer and resolver, written in Rust
+License:        Apache-2.0 OR MIT
 URL:            https://github.com/astral-sh/uv
-Source0:        %{name}-%{version}.tar.zst
+Source0:        https://github.com/astral-sh/uv/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
 BuildRequires:  cargo-packaging
 BuildRequires:  cmake
 BuildRequires:  rust >= 1.77
+BuildRequires:  zstd
 Requires:       python3
 
 %description
@@ -41,7 +42,7 @@ drop-in replacement for common pip and pip-tools workflows.
 
 %install
 install -D -d -m 0755 %{buildroot}%{_bindir}
-install -m 0755 -t %{buildroot}%{_bindir}/ %{_builddir}/%{name}-%{version}/target/release/uv{,-dev} 
+install -m 0755 -t %{buildroot}%{_bindir}/ %{_builddir}/%{name}-%{version}/target/release/uv{,-dev}
 
 # Tests require network
 #%%check
@@ -54,4 +55,3 @@ install -m 0755 -t %{buildroot}%{_bindir}/ %{_builddir}/%{name}-%{version}/targe
 %{_bindir}/uv-dev
 
 %changelog
-

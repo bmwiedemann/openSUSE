@@ -1,7 +1,7 @@
 #
 # spec file for package tkdiff
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,8 @@
 
 
 Name:           tkdiff
-Version:        5.6
-%define _version 5-6
+Version:        5.7
+%define _version 5-7
 Release:        0
 Summary:        2 and 3-way diff/merge tool
 License:        GPL-2.0-or-later

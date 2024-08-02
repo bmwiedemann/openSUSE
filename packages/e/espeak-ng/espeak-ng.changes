@@ -1,5 +1,36 @@
 -------------------------------------------------------------------
-Sun Apr 24 17:25:17 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Wed Jul 31 05:59:52 UTC 2024 - Sebastian Wagner <sebix@sebix.at>
+
+- Update patch fix-configure-1171.patch from upstream (just a minor change in revision numbers)
+
+-------------------------------------------------------------------
+Tue Jul 16 15:10:28 UTC 2024 - Cliff Zhao <qzhao@suse.com>
+
+- Add espeak-ng-CVE-2023-49990-49991-49992-49993-49994.patch:
+  Backporting 58f1e0b6 from upstream,
+  * Add crash test and vectors provided by @SEU-SSL
+  * Disallow dummy/null voice load (that causes incorrect translator
+    initialization)
+  * Fix empty `phondata` file load (that causes unitialized memory access)
+  * Limit max word length for RemoveEnding (causes buffer overflow)
+  * Limit punctlist initialization from embedded commands (buffer
+    overflow)
+  * Fix unitialized pitch in wavegen (DBZ and indexing problems)
+  * Properly zeroize stack variables before use in TranslateClause and
+    SetWordStress
+  (CVE-2023-49990, bsc#1218010; CVE-2023-49991, bsc#1218006
+   CVE-2023-49992, bsc#1218007; CVE-2023-49993, bsc#1218008
+   CVE-2023-49994, bsc#1218009)
+
+-------------------------------------------------------------------
+Wed Aug 31 19:03:54 UTC 2022 - Sebastian Wagner <sebix@sebix.at>
+
+- Update to 1.51.1:
+ - no changes
+
+-------------------------------------------------------------------
+Sun Apr 24 17:25:17 UTC 2022 - Sebastian Wagner <sebix@sebix.at>
+
 - added fix-configure-1171.patch to fix configure step
 - remove no longer needed patches:
   - espeak-ng-1.49.2-fix_no_return_nonvoid-in-configure.patch

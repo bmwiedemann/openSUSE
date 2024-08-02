@@ -16,7 +16,7 @@ ProtectControlGroups=true
 RestrictRealtime=true
 # end of automatic additions 
 CapabilityBoundingSet=CAP_SYS_ADMIN
-ExecStart=/usr/sbin/rngd --foreground --fill-watermark=3700
+ExecStart=/usr/sbin/rngd --foreground
 
 [Install]
 WantedBy=multi-user.target

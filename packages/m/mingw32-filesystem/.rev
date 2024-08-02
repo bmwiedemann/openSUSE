@@ -207,4 +207,14 @@
     <comment></comment>
     <requestid>1092982</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>911f7b187dc996f9259037b11021dd63</srcmd5>
+    <version>20240801</version>
+    <time>1722542698</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 20240801
+- Add missing man language ca@valencia required by KDE Frameworks 5.103
+</comment>
+    <requestid>1190828</requestid>
+  </revision>
 </revisionlist>

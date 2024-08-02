@@ -9,7 +9,7 @@ fixes #1171
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/configure.ac b/configure.ac
-index 7af4dc971..05a4a4024 100644
+index 7af4dc9716..05a4a40243 100644
 --- a/configure.ac
 +++ b/configure.ac
 @@ -97,7 +97,7 @@ AC_LANG_PUSH(C)

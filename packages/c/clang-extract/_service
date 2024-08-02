@@ -2,7 +2,7 @@
 	<service name="tar_scm" mode="manual">
 		<param name="scm">git</param>
 		<param name="url">https://github.com/SUSE/clang-extract</param>
-		<param name="revision">4309abcfa899db4ada43550620bdfb226a9393f6</param>
+		<param name="revision">94276b701c40beb0edd4cac490d8ac74e53d86fb</param>
 		<param name="versionformat">0~%cd.%h</param>
 		<param name="changesgenerate">enable</param>
         <param name="changesauthor">mvetter@suse.com</param>

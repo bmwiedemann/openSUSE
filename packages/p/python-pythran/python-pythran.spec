@@ -52,6 +52,8 @@ URL:            https://github.com/serge-sans-paille/pythran
 # Tests are only availble from the github archive
 Source0:        https://github.com/serge-sans-paille/pythran/archive/refs/tags/%{version}.tar.gz#/pythran-%{version}-gh.tar.gz
 Source99:       python-pythran-rpmlintrc
+# PATCH-FIX-UPSTREAM gh#serge-sans-paille/pythran#840a0e706ec39963aec6bcd1f118bf33177c20b4
+Patch0:         support-gast-0.6.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -61,7 +63,7 @@ Requires:       python-beniget >= 0.4.0
 Requires:       python-numpy
 Requires:       python-ply >= 3.4
 Requires:       python-setuptools
-Requires:       (python-gast >= 0.5.0 with python-gast < 0.6.0)
+Requires:       (python-gast >= 0.6.0 with python-gast < 0.7.0)
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 # SECTION This is a package that compiles code, the runtime requires devel packages

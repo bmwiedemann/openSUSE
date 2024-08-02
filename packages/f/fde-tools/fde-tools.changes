@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jul 31 06:40:52 UTC 2024 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Add fde-tools-bsc1218181-replace-crypttab-key-path.patch to
+  change the key path in crypttab to avoid the unexpected error
+  (bsc#1218181)
+
+-------------------------------------------------------------------
 Fri Jun  7 07:52:30 UTC 2024 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Update fde-tools-bsc1220160-conditional-requires.patch to

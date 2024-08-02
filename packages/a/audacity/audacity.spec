@@ -24,7 +24,7 @@
 %endif
 
 Name:           audacity
-Version:        3.6.1
+Version:        3.6.2
 Release:        0
 Summary:        A Multi Track Digital Audio Editor
 License:        CC-BY-3.0 AND GPL-2.0-or-later AND GPL-3.0-only
@@ -40,6 +40,7 @@ Patch0:         audacity-no_buildstamp.patch
 Patch1:         audacity-no_return_in_nonvoid.patch
 # PATCH-FIX-OPENSUSE vst-system-path.patch - search fo vsts in /usr/lib64 in x86_64 and ARM system
 Patch3:         lib64-plugins-default-path.patch
+
 BuildRequires:  cmake >= 3.16
 BuildRequires:  desktop-file-utils
 %if 0%{?suse_version} <= 1600

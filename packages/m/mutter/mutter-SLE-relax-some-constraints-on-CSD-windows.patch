@@ -1,8 +1,7 @@
-Index: mutter-3.23.2/src/core/constraints.c
-===================================================================
---- mutter-3.23.2.orig/src/core/constraints.c
-+++ mutter-3.23.2/src/core/constraints.c
-@@ -1466,6 +1466,12 @@ constrain_to_single_monitor (MetaWindow
+diff -urp mutter-46.3.1.orig/src/core/constraints.c mutter-46.3.1/src/core/constraints.c
+--- mutter-46.3.1.orig/src/core/constraints.c	2024-07-30 13:54:28.842797794 -0500
++++ mutter-46.3.1/src/core/constraints.c	2024-07-30 14:02:54.984030220 -0500
+@@ -1730,6 +1730,12 @@ constrain_to_single_monitor (MetaWindow
  }
  
  static gboolean
@@ -15,7 +14,7 @@ Index: mutter-3.23.2/src/core/constraints.c
  constrain_fully_onscreen (MetaWindow         *window,
                            ConstraintInfo     *info,
                            ConstraintPriority  priority,
-@@ -1481,6 +1487,11 @@ constrain_fully_onscreen (MetaWindow
+@@ -1745,6 +1751,11 @@ constrain_fully_onscreen (MetaWindow
    if (window->type == META_WINDOW_DESKTOP ||
        window->type == META_WINDOW_DOCK    ||
        window->fullscreen                  ||
@@ -27,7 +26,7 @@ Index: mutter-3.23.2/src/core/constraints.c
        !window->require_fully_onscreen     ||
        info->is_user_action                ||
        meta_window_get_placement_rule (window))
-@@ -1518,11 +1529,12 @@ constrain_titlebar_visible (MetaWindow
+@@ -1802,12 +1813,13 @@ constrain_titlebar_visible (MetaWindow
     * is only meant for normal windows (e.g. we don't want docks to be shoved
     * "onscreen" by their own strut).
     */
@@ -36,12 +35,14 @@ Index: mutter-3.23.2/src/core/constraints.c
 -      window->fullscreen                  ||
 -      !window->require_titlebar_visible   ||
 -      unconstrained_user_action           ||
+-      user_nonnorthern_resize             ||
 +  if (window->type == META_WINDOW_DESKTOP                 ||
 +      window->type == META_WINDOW_DOCK                    ||
 +      window->fullscreen                                  ||
-+      (constraint_is_sle_classic() && !window->decorated) ||
 +      !window->require_titlebar_visible                   ||
++      (constraint_is_sle_classic() && !window->decorated) ||
 +      unconstrained_user_action                           ||
++      user_nonnorthern_resize                             ||
        meta_window_get_placement_rule (window))
      return TRUE;
  

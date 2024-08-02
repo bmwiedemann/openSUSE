@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Aug 01 01:14:51 UTC 2024 - okurz@suse.com
+
+- Update to version 4.6.1722436893.4726870f:
+  * Fix sporadic failures in test of candidates menu
+  * Lower the log level of livestream related problem considering low impact
+  * Consistently skip RETRY on all aborted results
+  * Improve error messages in `git_clone` tasks
+  * Avoid incomplete jobs when Git cloning fails
+  * Bump eslint from 9.7.0 to 9.8.0
+  * Bump @floating-ui/dom from 1.6.7 to 1.6.8
+  * Bump debug from 4.3.5 to 4.3.6
+  * Bump @floating-ui/core from 1.6.4 to 1.6.5
+  * Bump @floating-ui/utils from 0.2.4 to 0.2.5
+  * Bump ace-builds from 1.35.2 to 1.35.4
+  * Bump @eslint/config-array from 0.17.0 to 0.17.1
+  * doc: Clarify notes about setting `CASEDIR`/`NEEDLES_DIR`
+  * doc: Shorten the paragraph about triggering tests bases on Git refspec
+  * CI: Cover repo errors with exponential retries
+  * Dependency cron 2024-07-30
+  * Do not retry jobs that were obsoleted
+
+-------------------------------------------------------------------
 Mon Jul 29 17:14:50 UTC 2024 - okurz@suse.com
 
 - Update to version 4.6.1722253340.d5cf7898:

@@ -306,4 +306,22 @@
     <comment></comment>
     <requestid>1186394</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>fee6c6748505f479758df9f4865f8e1a</srcmd5>
+    <version>1.30.0</version>
+    <time>1722542661</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.30.0
+  * New feature: Support Subject Name/Issuer authentication when using
+    .pfx certificate file. Documentation available in one of the recent
+    purple boxes here. (#718)
+  * New feature: Automatically use SHA256 and PSS padding when using
+    .pfx certificate on non-ADFS, non-OIDC authorities. (#722)
+  * New feature: Expose refresh_on (if any) to fresh or cached response,
+    so that caller may choose to proactively call acquire_token_silent()
+    early. (#723)
+  * Bugfix for token cache search. MSAL 1.27+ customers please upgrade
+    to MSAL 1.30+. (#717) (forwarded request 1190661 from glaubitz)</comment>
+    <requestid>1190666</requestid>
+  </revision>
 </revisionlist>

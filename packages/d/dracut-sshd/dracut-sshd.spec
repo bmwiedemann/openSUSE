@@ -1,7 +1,7 @@
 #
 # spec file for package dracut-sshd
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,8 @@ Group:          System/Boot
 URL:            https://github.com/gsauthof/dracut-sshd
 Source:         https://github.com/gsauthof/dracut-sshd/archive/%{version}%{pkg_rel}/%{name}-%{version}%{pkg_rel}.tar.gz
 Patch1:         0001-Give-some-guidance-through-motd-prompt.patch
+Patch2:         0002-Support-OpenSSH-9.8.patch
+Patch3:         0003-Support-OpenSSH-9.8-for-openSUSE.patch
 BuildRequires:  dracut
 Requires:       dracut
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -53,7 +55,7 @@ cp -r 46sshd %{buildroot}%{_prefix}/lib/dracut/modules.d/
 %{_prefix}/lib/dracut/modules.d/46sshd/motd
 %{_prefix}/lib/dracut/modules.d/46sshd/profile
 %{_prefix}/lib/dracut/modules.d/46sshd/sshd.service
-%config(noreplace) 	
+%config(noreplace)
 %{_prefix}/lib/dracut/modules.d/46sshd/sshd_config
 %doc README.md
 %doc example/20-wired.network

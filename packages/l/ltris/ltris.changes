@@ -1,0 +1,356 @@
+-------------------------------------------------------------------
+Thu Jun 20 12:12:26 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add ltris-gamepad-pause-exit.patch: Interpret pause button from
+  gamepad (https://sourceforge.net/p/lgames/patches/35/).
+
+-------------------------------------------------------------------
+Sun Jun  9 05:11:55 UTC 2024 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 1.3.2
+  * use AM_PATH_SDL and SDL_CONFIG again
+  * updated icon location
+
+-------------------------------------------------------------------
+Wed Apr 24 07:08:24 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.3.1
+  * updated german translation.
+  * show stats for all players after game finished.
+  * properly increase level in game mode Figures.
+  * fixed bug in creating new figures in game mode Figures.
+  * leave game over screen only with ESC, SPACE or RETURN.
+  * removed AC_CANONICAL_TARGET from configure.ac.
+  * updated icon location.
+  * updated LTris appstream metadata.
+
+-------------------------------------------------------------------
+Fri Mar 22 19:16:09 UTC 2024 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 1.3
+  * cpu algorithm uses hold option
+  * tweaked cpu algorithm
+
+-------------------------------------------------------------------
+Sat Feb 17 15:46:30 UTC 2024 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 1.2.8
+  * fixed bug in sending lines in multiplayer
+  * tweaked multiplayer defaults
+  * added option to customize cpu drop speed
+  * do not show special piece on lock delay if soft drop pressed
+  * properly insert/lock pieces if dropping more than one tile
+
+-------------------------------------------------------------------
+Sat Sep  9 17:02:04 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.2.7
+  * Some minor fixes for the configuration process
+  * Icons are installed properly and the obsolete intl directory
+    has been removed.
+
+-------------------------------------------------------------------
+Tue Oct  4 19:53:00 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.2.6:
+  * reset lock delay on hold.
+
+-------------------------------------------------------------------
+Sun Jun 19 09:01:10 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.2.5:
+  * added hold feature.
+  * updated german translation.
+  * fixed crash with odd resolutions.
+
+-------------------------------------------------------------------
+Sat Apr 16 14:19:23 UTC 2022 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 1.2.4:
+  - replaced DAS option with auto shift delay/speed options
+  - allow q key for controls
+- Switched from pkgconfig(sdl) to SDL-devel to solve have choice
+  for pkgconfig(sdl): SDL-devel libSDL-devel
+
+-------------------------------------------------------------------
+Sun Apr 11 10:18:02 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.2.3:
+  * added gamepad support (not configurable via menu yet).
+  * show three pieces as preview for modern style.
+  * updated some menu hints.
+  * added configure option --with-configdir.
+  * added ltris.appdata.xml.
+  * show stats only for game modes with one bowl.
+
+-------------------------------------------------------------------
+Mon Dec 28 19:36:16 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.2.2:
+  * don't redraw stack in pause after animation
+  * avoid odd resolutions like 1366x768
+  * console option for fullscreen
+  * cleaned up configure
+  * improved wall kicks
+  * added lock delay
+  * allow more keys for controls
+  * added hyper DAS option
+
+-------------------------------------------------------------------
+Mon Aug  3 11:28:16 UTC 2020 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 1.2.1:
+  * fixed build failure with gcc 4.8 (2020/07/27 Fabrice Fontaine)
+  * added training mode with optional zero gravity (2020/07/01 MS)
+
+-------------------------------------------------------------------
+Sun Jul  5 08:55:08 UTC 2020 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 1.2:
+  * added classic game style: no wall-kicks, random pieces,
+    no shadow piece, ...
+  * added auto-delay shift (das) and are (entry delay) 
+  * menu simplified
+  * code cleanups
+  * statistics for single player mode
+  * fixed compiler warnings
+- Rebase ltris-no_system_wide_hiscore_file.patch
+
+-------------------------------------------------------------------
+Sat Jun 20 18:36:26 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.0.20:
+  * updated configure.in to configure.ac
+  * added wide screen support
+  * removed all inline keywords to work with GCC 5
+- Remove not longer needed patch:
+  * ltris-fix-with-gcc5.patch
+- Specfile cleanup
+
+-------------------------------------------------------------------
+Sat Jan  2 12:30:35 UTC 2016 - rpm@fthiessen.de
+
+- Update to 1.0.19:
+  * removed link to lib math as not needed
+  * reset key states when unpausing to prevent unwanted movement
+- Added ltris-fix-with-gcc5.patch to fix build with gcc 5 -- changed
+  inline function handling.
+
+-------------------------------------------------------------------
+Thu Apr 18 06:45:11 UTC 2013 - joop.boonen@opensuse.org
+
+- Adapted the License according to the spdx standard
+
+-------------------------------------------------------------------
+Mon Oct 31 11:06:53 UTC 2011 - pascal.bleser@opensuse.org
+
+- moved binary to %{_bindir} instead of %{_prefix}/games
+- patched ltris to prevent it from trying to save the highscores to a
+  system-wide file
+- ltris no longer runs as SUID/GUID games, but as the regular user, as
+  highscores are now only stored in the home directory
+
+-------------------------------------------------------------------
+Mon Oct 31 10:12:17 UTC 2011 - pascal.bleser@opensuse.org
+
+- update to 1.0.18:
+  * adds an option to configure vertical speed for moving blocks down by key,
+    as they drop too quickly on fast computers
+
+-------------------------------------------------------------------
+Thu Sep 01 05:11:41 UTC 2011 - pascal.bleser@opensuse.org
+
+- update to 1.0.17:
+  * the key for pausing the game, previously fixed to P, is now configurable
+  * if rotation of a block would fail because of a left or right boundary, the
+    block is shifted instead of not rotating at all
+  * the "Game Over" screen can be exited via any key, not just Escape
+
+-------------------------------------------------------------------
+Sat Jul  2 16:21:52 UTC 2011 - jengelh@medozas.de
+
+- Use %_smp_mflags for parallel building
+- Strip %clean section (not needed on BS)
+
+-------------------------------------------------------------------
+Thu Mar  3 20:06:53 UTC 2011 - pascal.bleser@opensuse.org
+
+- update to 1.0.16
+  * improved random number generator
+  * generate pieces according to official Tetris guidelines
+  * always deal same sequence of pieces to all players
+  * in expert mode deal most unsuitable piece out of current bag instead of
+    random piece
+
+- changes from 1.0.15:
+  * added italian localization
+
+- changes from 1.0.14:
+  * increased range for horizontal block delay to 9
+  * fixed incorrect english (penalty instead of malus)
+  * added XDG support
+
+-------------------------------------------------------------------
+Sat Nov  7 23:04:04 CET 2009 - dimstar@opensuse.org
+
+- Verify the permissions set by the permissions package
+  (verfiy_permissions and run_permissions)
+
+-------------------------------------------------------------------
+Sat Nov  7 17:00:41 UTC 2009 - pascal.bleser@opensuse.org
+
+- update to 1.0.13:
+  * block drop shadow is now enabled by default
+  * Swedish and French translations were added
+  * translation-independent chart IDs are now used
+
+-------------------------------------------------------------------
+Wed Apr  2 13:58:58 CEST 2008 - prusnak@suse.cz
+
+- updated to 1.0.12
+  * added portugese translation
+  * l10n of yes/no keys
+
+-------------------------------------------------------------------
+Sun Mar 16 05:51:15 CET 2008 - crrodriguez@suse.de
+
+- fix file-not-in-lang problems 
+
+-------------------------------------------------------------------
+Fri Mar  9 15:11:33 CET 2007 - ltinkl@suse.cz
+
+- fix #252072 - ltris installs locales into the wrong directory
+
+-------------------------------------------------------------------
+Wed Mar  7 08:39:20 CET 2007 - ltinkl@suse.cz
+
+- update to 1.0.11, fix build
+
+-------------------------------------------------------------------
+Wed Jan 25 21:38:04 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Sep 21 12:02:49 CEST 2005 - pnemec@suse.cz
+
+- fixed icon and desktop file #113656
+
+-------------------------------------------------------------------
+Mon Feb 21 16:09:59 CET 2005 - mcihar@suse.cz
+
+- update to 1.0.10
+
+-------------------------------------------------------------------
+Mon Feb  7 20:05:02 CET 2005 - mcihar@suse.cz
+
+- update to 1.0.9
+
+-------------------------------------------------------------------
+Wed Aug 04 14:46:00 CEST 2004 - mcihar@suse.cz
+
+- update to 1.0.7
+
+-------------------------------------------------------------------
+Tue Feb 24 11:32:16 CET 2004 - mcihar@suse.cz
+
+- update to 1.0.6
+
+-------------------------------------------------------------------
+Wed Oct 29 15:03:01 CET 2003 - mcihar@suse.cz
+
+- added the missing Prereq for "permissions"
+- added the missing verifyscript
+
+-------------------------------------------------------------------
+Wed Oct 29 13:57:20 CET 2003 - mcihar@suse.cz
+
+- no root for build
+
+-------------------------------------------------------------------
+Mon Oct 27 18:15:21 CET 2003 - ro@suse.de
+
+- package according to permissions.secure and add %run_permissions 
+
+-------------------------------------------------------------------
+Tue Oct 14 14:11:56 CEST 2003 - mcihar@suse.cz
+
+- moved to /usr/games
+- updated to 1.0.5:
+    - windows manager's close button works
+    - expert mode with unbalanced properties for next block to make it
+    difficult to fit
+
+-------------------------------------------------------------------
+Sun Aug 10 15:45:22 CEST 2003 - sndirsch@suse.de
+
+- added desktop file
+
+-------------------------------------------------------------------
+Thu May 29 14:42:33 CEST 2003 - mcihar@suse.cz
+
+- hiscores don't need to be executable
+
+-------------------------------------------------------------------
+Wed Jan 22 16:02:55 CET 2003 - mcihar@suse.cz
+
+- updated to 1.0.4 (bugfix release)
+
+-------------------------------------------------------------------
+Tue Aug  6 14:00:25 MEST 2002 - mcihar@suse.cz
+
+- updated to 1.0.3:
+    * fixed some two-player bug
+    * fixed typos
+    * support for other audio buffer size
+    * optional asynchron collision check
+
+-------------------------------------------------------------------
+Tue Jul 30 14:47:17 CEST 2002 - kukuk@suse.de
+
+- use group games instead of game
+
+-------------------------------------------------------------------
+Tue Jan 22 18:23:53 CET 2002 - ro@suse.de
+
+- changed neededforbuild <kdelibs-artsd> to <kdelibs3-artsd>
+
+-------------------------------------------------------------------
+Fri Jan 18 14:29:48 CET 2002 - cihlar@suse.cz
+
+- update to version 1.0.1
+
+-------------------------------------------------------------------
+Tue Nov  6 09:39:23 CET 2001 - cihlar@suse.cz
+
+- fixed to compile with automake 1.5
+
+-------------------------------------------------------------------
+Wed Aug  8 17:56:28 CEST 2001 - ro@suse.de
+
+- updated neededforbuild
+
+-------------------------------------------------------------------
+Wed Jun 20 07:22:25 CEST 2001 - cihlar@suse.cz
+
+- added kdelibs and kdelibs-devel to neededforbuild
+
+-------------------------------------------------------------------
+Mon Apr  9 16:15:51 CEST 2001 - cihlar@suse.cz
+
+- updated to version 010310
+
+-------------------------------------------------------------------
+Tue Mar 27 00:54:04 CEST 2001 - ro@suse.de
+
+- added sdl-devel to neededforbuild 
+
+-------------------------------------------------------------------
+Wed Feb 21 08:23:31 CET 2001 - cihlar@suse.cz
+
+- added alsa, esound and audiofile to neededforbuild
+
+-------------------------------------------------------------------
+Mon Dec  4 13:30:01 CET 2000 - cihlar@suse.cz
+
+- package created

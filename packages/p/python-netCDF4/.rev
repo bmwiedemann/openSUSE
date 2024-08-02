@@ -430,4 +430,12 @@
 - Drop patch 1322.patch, included upstream.</comment>
     <requestid>1186092</requestid>
   </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>0b6bcb282b2ecd37f43fa4bd3cd4f02a</srcmd5>
+    <version>1.7.1.post1</version>
+    <time>1722542686</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1190822</requestid>
+  </revision>
 </revisionlist>

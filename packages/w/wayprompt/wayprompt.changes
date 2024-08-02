@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Jul 30 13:16:23 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
+
+- Added new prompt to support ssh askpass
+
+-------------------------------------------------------------------
+Tue Jul 30 13:12:23 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
+
+- Update to version 0.1.0+14:
+  * handle wl_touch.cancel events
+  * implement touch support
+  * do not vendor zig-ini
+  * replace FlagIt with std.process.ArgIteratorPosix
+  * options: add strip and llvm options
+  * gitignore: add .zig-cache to ignore
+  * build: cleanup migration to Zig 0.13.0
+  * build: update to Zig 0.13.0
+  * build: update to Zig 0.12.0
+  * doc/wayprompt.5: Fix typo
+  * build: install wayprompt-ssh-askpass.1
+  * README: add wayprompt-ssh-askpass
+  * add wayprompt-ssh-askpass
+  * wayprompt-cli: return value based on user-action
+- Add fix-zig-spoon-hash.patch
+
+-------------------------------------------------------------------
 Wed Mar 20 03:59:40 UTC 2024 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
 
 - Updated listed file in specfile: 

@@ -190,4 +190,13 @@ now with fixed empty debuginfo extraction</comment>
     <comment>- limit to gast &lt; 0.6.0</comment>
     <requestid>1184144</requestid>
   </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>bb221dbc684b7d33b69c35c1ab5f8601</srcmd5>
+    <version>0.16.1</version>
+    <time>1722542606</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch support-gast-0.6.patch:
+  * Support gast 0.6.0 changes, change Requires appropriately.</comment>
+    <requestid>1190557</requestid>
+  </revision>
 </revisionlist>

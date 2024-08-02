@@ -1,0 +1,31 @@
+Index: csound-6.18.1/Opcodes/OSC.c
+===================================================================
+--- csound-6.18.1.orig/Opcodes/OSC.c
++++ csound-6.18.1/Opcodes/OSC.c
+@@ -548,7 +548,7 @@ static int32_t OSC_handler(const char *p
+             case 'b':
+               {
+                 int32_t len =
+-                  lo_blobsize((lo_blob*)argv[i]);
++                  lo_blobsize((lo_blob)argv[i]);
+                 m->args[i].blob =
+                   csound->Malloc(csound,len);
+                 memcpy(m->args[i].blob, argv[i], len);
+@@ -787,7 +787,7 @@ static int32_t OSC_list_init(CSOUND *cso
+     csound->UnlockMutex(p->port->mutex_);
+     p->c.method = lo_server_thread_add_method(p->port->thread,
+                                               p->c.saved_path, p->c.saved_types,
+-                                              OSC_handler, p->port);
++                                              (lo_method_handler)OSC_handler, p->port);
+     csound->RegisterDeinitCallback(csound, p,
+                                    (int32_t (*)(CSOUND *, void *)) OSC_listdeinit);
+     return OK;
+@@ -1067,7 +1067,7 @@ static int32_t OSC_alist_init(CSOUND *cs
+     csound->UnlockMutex(p->port->mutex_);
+     p->c.method = lo_server_thread_add_method(p->port->thread,
+                                               p->c.saved_path, p->c.saved_types,
+-                                              OSC_ahandler, p->port);
++                                              (lo_method_handler)OSC_ahandler, p->port);
+     csound->RegisterDeinitCallback(csound, p,
+                                    (int32_t (*)(CSOUND *, void *)) OSC_listadeinit);
+     return OK;

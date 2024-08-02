@@ -1,4 +1,288 @@
 -------------------------------------------------------------------
+Sat Jul 27 13:35:25 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
+
+- Use upstream github sources in specfile.
+- Add zstd as build requirement.
+- Update to version 0.2.30. Changelog include since 0.1.47:
+  * Infer missing `.exe` in Windows Python discovery
+  * Make `--reinstall` imply `--refresh`
+  * Add `--no-config` to replace `--isolated`
+  * Cache metadata for source tree dependencies
+  * Avoid canonicalizing executables on Windows
+  * Set standard permissions for temporary files
+  * Add `--ci` mode to `uv cache prune`
+  * Display Python installation key for discovered interpreters
+  * Allow symlinks to files in scripts directory
+  * Always accept already-installed pre-releases
+  * Validate successful metadata fetch for direct dependencies
+  * Add warning to `--link-mode=symlink` documentation
+  * Output stable ordering to `requirements.txt` in universal mode
+  * Allow symlinks with `--find-links`
+  * Add support for variations of `pythonw.exe`
+  * Stylize `Requires-Python` consistently in CLI output
+  * Add `--show-version-specifiers` to `tree`
+  * Avoid always rebuilding dynamic metadata
+  * Avoid URL parsing when deserializing wheels
+  * Avoid cache prune failure due to removed interpreter
+  * Avoid including empty extras in resolution
+  * If multiple indices contain the same version, use the first index
+  * Include URLs on graph edges
+  * Match wheel tags against `Requires-Python` major-minor
+  * Remove Simple API cache files for alternative indexes in `cache clean`
+  * Remove extraneous `are` from wheel tag error messages
+  * Allow conflicting prerelease strategies when forking
+  * Use tag error rather than requires-python error for ABI filtering
+  * Add GraalPy support
+  * Add a `--verify-hashes` hash-checking mode
+  * Discover all `python3.x` executables in the `PATH`
+  * Support  `--link-mode=symlink`
+  * Warn about unconstrained direct deps in lowest resolution
+  * Log origin of version selection
+  * Key hash policy on version, rather than package
+  * Make missing project table a tracing warning
+  * Remove trailing period from user-facing messages
+  * Make entrypoint writes atomic to avoid overwriting symlinks
+  * Use `which`-retrieved path directly when spawning pager
+  * Don't apply irrelevant constraints when validating site-packages
+  * Respect local versions for all user requirements
+  * Add `--no-progress` global option to hide all progress animations
+  * Cache downloaded wheel when range requests aren't supported
+  * Download wheel to disk when streaming unzip failed with HTTP streaming error
+  * Filter out invalid wheels based on `requires-python`
+  * Filter out none ABI wheels with mismatched Python versions
+  * Lock Git cache on resolve
+  * Change order of `pip compile` command checks to handle exact argument first
+  * Document that `--universal` implies `--no-strip-markers`
+  * Include PyPy-specific executables when creating virtual environments with `uv venv`
+  * Add a custom error message for `--no-build-isolation` `torch` dependencies
+  * Improve missing `wheel` error message with `--no-build-isolation`
+  * Add `--no-pager` option in `help` command
+  * Unhide `--isolated` global argument
+  * Warn when unused `pyproject.toml` configuration is detected
+  * Fall back to streaming wheel when `Content-Length` header is absent
+  * Fix substring marker expression disjointness checks
+  * Lock directories to synchronize wheel-install copies
+  * Normalize out complementary == or != markers
+  * Retry on permission errors when persisting extracted source distributions to the cache
+  * Set absolute URLs prior to uploading to PyPI
+  * Exclude `--upgrade-package` from the `pip compile` header
+  * Exclude `--upgrade-package` when option and value are passed as a single argument
+  * Add split to cover marker universe when existing splits are incomplete
+  * Use correct `pyproject.toml` path in warnings
+  * Fix `CONTRIBUTING.md` instructions to install multiple Python versions
+  * Use versioned badges when uploading to PyPI
+  * Add support for 'any' Python requests
+  * Allow constraints to be provided in `--upgrade-package`
+  * Add `manylinux_2_31` to supported `--python-platform`
+  * Improve marker simplification
+  * Display short help menu when `--help` is used
+  * Allow `uv help` global options during `uv help`
+  * Use paging for `uv help` display when available
+  * Switch to single threaded async runtime
+  * Avoid AND-ing multi-term specifiers in marker normalization
+  * Avoid inferring package name for GitHub Archives
+  * Retry on connection reset network errors
+  * Apply extra to overrides and constraints
+  * Allow `uv` crate to be used as a library
+  * Update Windows trampoline binaries
+  * Show user-facing warning when falling back to copy installs
+  * Initialize all `--prefix` subdirectories
+  * Respect `requires-python` when prefetching
+  * Partially revert `Requires-Python` version narrowing
+  * Add `--exclude-newer` to installer arguments
+  * Bold durations in CLI messages
+  * Drop crate description from the `uv` help menu
+  * Update "about" in help menu
+  * Add `UV_OVERRIDE` environment variable for `--override`
+  * Always use release-only comparisons for `requires-python`
+  * Avoid hangs before exiting CLI
+  * Preserve verbatim URLs for `--find-links`
+  * Fix issue where standalone installer failed to due missing `uvx.exe` binary on Windows
+  * Differentiate `freeze` and `list` help text
+  * Fix issue where the standalone installer failed due to a missing `uvx` binary
+  * Indicate when we retried requests during network errors
+  * Add `--disable-pip-version-check` to compatibility arguments
+  * Allow `uv pip sync` to clear an environment with opt-in
+  * Add `--invert` to `uv pip tree`
+  * Omit `(*)` in `uv pip tree` for empty packages
+  * Add `--package` to `uv pip tree`
+  * Fix bug where git cache did not validate commits correctly
+  * Narrow `requires-python` requirement in resolver forks
+  * Fix bug when pruning the last package in `uv pip tree`
+  * Make `--universal` and `--python-platform` mutually exclusive
+  * Add `--depth` and `--prune` support to `pip tree`
+  * Handle cycles when propagating markers
+  * Ignore `py` not found errors during interpreter discovery
+  * Merge markers when applying constraints
+  * Retry on spurious failures when caching built wheels
+  * Sort indexes during graph edge removal
+  * Treat Python version as a lower bound in `--universal`
+  * Fix the incorrect handling of markers in `pip tree`
+  * Improve toolchain and environment missing error messages
+  * Explicitly mention use of seed packages during `uv venv --seed`
+  * Avoid enforcing extra-only constraints
+  * Add a universal resolution mode to `uv pip compile` with `--universal`
+  * Add support for `--no-strip-markers` in `uv pip compile` output
+  * Add `--no-dedupe` support to `uv pip tree`
+  * Enable more precise environment locking with `--prefix`
+  * Allow local index references in `requirements.txt` files
+  * Allow non-`file://` paths to serve as `--index-url` values
+  * Make `.egg-info` filename parsing spec compliant
+  * Gracefully handle non-existent packages in local indexes
+  * Read content length from response rather than request
+  * Read persistent configuration from non-workspace `pyproject.toml`
+  * Avoid panic for invalid, non-base index URLs
+  * Skip submodule update for fresh clones
+  * Use shared client in Git fetch implementation
+  * Add `--emit-build-options` flag to `uv pip compile` interface
+  * Add `pythonw` support for gui scripts on Windows
+  * Add `uv pip tree`
+  * Adjust the docs for the pip CLI commands
+  * Fix casing of `--no-compile` alias
+  * Fix ordering of prefer-system toolchain preference
+  * Respect index strategy in source distribution builds
+  * Add documentation for using uv in a Docker image
+  * Support toolchain requests with platform-tag style Python implementations and version
+  * Use "Prepared" instead of "Downloaded" in logs
+  * Treat mismatched directory and file urls as unsatisfied requirements
+  * Add resolver tracing logs for when we filter requirements
+  * Allow specific `--only-binary` and `--no-binary` packages to override `:all:`
+  * Flatten ORs and ANDs in marker construction
+  * Skip invalid interpreters when searching for requested interpreter executable name
+  * Display keyring stderr during queries
+  * Allow discovery of uv binary relative to package root
+  * Use relative path for `lib64` symlink
+  * Add uv version to debug output
+  * Allow `--no-binary` with `uv pip compile`
+  * Hide `--no-system` from the CLI
+  * Make `--reinstall`, `--upgrade`, and `--refresh` shared arguments
+  * Add `UV_EXCLUDE_NEWER` environment variable
+  * Allow normalization to completely eliminate markers
+  * Avoid treating direct path archives as always dynamic
+  * De-duplicate markers during normalization
+  * Fix incorrect parsing of requested Python version as empty version specifiers
+  * Suggest correct command to create a virtual environment when encountering externally managed interpreters
+  * Use consistent order for extra groups in lockfile
+  * Add `pip-compile` defaults to `PIP_COMPATIBILITY.md`
+  * Expand on `pip-compile` default differences
+  * Tweak copy on some command-line arguments
+  * Move the preview changelog so the GitHub Release shows stable changes
+  * Add support for local directories with `--index-url`
+  * Add mTLS support
+  * Allow version specifiers to be used in Python version requests
+  * Always install as editable when duplicate dependencies are requested
+  * Avoid crash with `XDG_CONFIG_HOME=/dev/null`
+  * Improve handling of missing interpreters during discovery
+  * Make missing `METADATA` file a recoverable error
+  * Represent build tag as `u64`
+  * Document Windows 10 requirement
+  * Re-add `aarch64-unknown-linux-gnu` binary to release assets
+  * Accept `file://` URLs for `requirements.txt` et all references
+  * Add support for `--prefix`
+  * Add `pyproject.toml` to CLI help
+  * Drop "registry" prefix from request timeout log
+  * Allow transitive URLs via recursive extras
+  * Avoid pre-fetching for unbounded minimum versions
+  * Avoid showing dev hints for Python requirements
+  * Include non-standard ports in keyring host queries
+  * Omit URL dependencies from pre-release hints
+  * Improve static metadata extraction for Poetry projects
+  * Document bytecode compilation in pip compatibility guide
+  * Fix PEP 508 link in preview doc `specifying_dependencies`
+  * Clarify role of `--system` flag
+  * Respect existing `.egg-link` files in site packages
+  * Avoid extra-only filtering for constraints
+  * Add install link for specific version to README
+  * Fix `uv venv` handling when `VIRTUAL_ENV` refers to an non-existent environment
+  * Support `NO_COLOR` and `FORCE_COLOR` environment variables
+  * Avoid building packages with dynamic versions
+  * Avoid work-stealing in bytecode compilation
+  * Avoid dropping `pip sync` requirements with markers
+  * Bias towards local directories for bare editable requirements
+  * Preserve fragments when applying verbatim redirects
+  * Avoid 'are incompatible' for singular bounded versions
+  * Support PEP 508 requirements for editables
+  * Discard fragments when parsing unnamed URLs
+  * Port all Git functionality to use Git CLI
+  * Use statically linked C runtime on Windows
+  * Disable concurrent progress bars in Jupyter Notebooks
+  * Initialize multi-progress state before individual bars
+  * Add missing `i686` alias for `x86`
+  * Add missing `ppc64le` alias for `powerpc64le`
+  * Fix reference to `--python-version` patch behavior
+  * Avoid race condition in `OnceMap`
+  * Add support for x86 Windows
+  * Add support for `prepare_metadata_for_build_editable` hook
+  * Add concurrent progress bars for downloads
+  * Update bundled Python URLs and add `"arm"` architecture variant
+  * Allow `--system` and `--python` to be passed together
+  * Ignore `libc` on other platforms
+  * Incorporate build tag into wheel prioritization
+  * Avoid displaying log for satisfied editables if none are requested
+  * Improve logging during interpreter discovery
+  * Improve logging for environment locking
+  * Improve logging of interpreter implementation
+  * Remove extra details from interpreter query traces
+  * Use colon more consistently in error messages
+  * Add JSON alias for `unsafe-any-match`
+  * Remove redundant dynamically linked Linux binary again (#3762)"
+  * Remove `aarch64-unknown-linux-gnu` from list of expected binaries
+  * Always include package names for Git and HTTPS dependencies
+  * Fix interpreter cache collisions for relative virtualenv paths
+  * Ignore unnamed requirements in preferences
+  * Search for `python3` in unix virtual environments
+  * Use a cross-platform representation for relative paths in `pip compile`
+  * Report yanks for cached and resolved packages
+  * Improve error message when default Python is not found
+  * Do not treat interpereters discovered via `CONDA_PREFIX` as system interpreters
+  * Re-added the dynamically-linked Linux binary
+  * Rewrite Python interpreter discovery
+  * Add support for requesting `pypy` interpreters by implementation name
+  * Discover and prefer the parent interpreter when invoked with `python -m uv` [#3736](https://github.com/astral-sh/uv/pull/3736)
+  * Add PEP 714 support for HTML API client
+  * Add PEP 714 support for JSON API client
+  * Write relative paths with unnamed requirement syntax
+  * Allow relative Python executable paths in Windows trampoline
+  * Add support for clang and msvc in missing header error
+  * Allow `--constraint` files in `pip sync`
+  * Allow `--config-file` to be passed before or after command name
+  * Make `--offline` a global argument
+  * Improve performance in complex resolutions by reducing cost of PubGrub package clones
+  * Evaluate arbitrary markers to `false`
+  * Improve `DirWithoutEntrypoint` error message
+  * Improve display of root package in range errors
+  * Propagate URL errors in verbatim parsing
+  * Report yanked packages in `--dry-run`
+  * Drop native `manylinux` wheel in favor of dual-tagged wheel
+  * The `python-patch` test feature is no longer on by default and must be manually enabled to test patch version behavior
+  * Add `--prefix` link to compatibility guide
+  * Add `--only-binary` to compatibility guide
+  * Add instructions for building and updating `uv-trampolines`
+  * Add notes for testing on Windows
+  * Parse and store extras on editable requirements
+  * Allow local versions in wheel filenames
+  * Create lib64 symlink for 64-bit, non-macOS, POSIX environments
+  * Add `UV_CONCURRENT_INSTALLS` variable in favor of `RAYON_NUM_THREADS`
+  * Add serialization and deserialization for `--find-links`
+  * Apply combination logic to merge CLI and persistent configuration
+  * Parallelize resolver
+  * Reduce sensitivity of unknown option error to discard Python 2 interpreters
+  * Respect installed packages in `uv run`
+  * Separate cache construction from initialization
+  * Add missing `"directory"` branch in source match
+  * Fix source annotation in pip compile `annotation-style=line` output
+  * Run cargo update to pull in h2
+  * URL-decode hashes in HTML fragments
+  * Always print JSON output with `--format` json
+  * Add `UV_CONFIG_FILE` environment variable to documentation
+  * Explicitly mention `--user` in compatibility guide
+  * Add musl ppc64le support
+  * Retag musl aarch64 for manylinux2014
+  * Reverts "Use manylinux: auto to enable `musllinux_1_2` aarch64 builds
+    The manylinux change appeared to introduce SSL errors when building aarch64 Docker images, e.g.,
+    > invalid peer certificate: BadSignature
+
+-------------------------------------------------------------------
 Sun May 12 16:21:29 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Initial package.

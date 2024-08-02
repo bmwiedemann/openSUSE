@@ -1281,4 +1281,12 @@ New upstream release</comment>
   * build: Post release version bump (forwarded request 1179625 from dimstar)</comment>
     <requestid>1180001</requestid>
   </revision>
+  <revision rev="159" vrev="2">
+    <srcmd5>fefb7c0ead86f90e51fc1e8768cca675</srcmd5>
+    <version>0.76.3</version>
+    <time>1722542617</time>
+    <user>dimstar_suse</user>
+    <comment>- Only apply vte-revert-back-to-c++17.patch for SLE &lt;= 15. (forwarded request 1190518 from mgorse)</comment>
+    <requestid>1190562</requestid>
+  </revision>
 </revisionlist>

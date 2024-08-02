@@ -256,6 +256,8 @@ Mon Jan 15 20:33:03 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 Mon Jan 15 20:26:09 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 2.49.0:
+  * [SECURITY BUGFIX]: Fix DoS vulnerability in OpenTelemetry
+    library (CVE-2023-45142, bsc#1228556)
   * [FEATURE] Promtool: Add --run flag promtool test rules command.
     #12206
   * [FEATURE] SD: Add support for NS records to DNS SD. #13219

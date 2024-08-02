@@ -25,6 +25,8 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            http://github.com/tobgu/pyrsistent/
 Source:         https://files.pythonhosted.org/packages/source/p/pyrsistent/pyrsistent-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM - gh/tobgu/pyrsistent#284 - Replace _PyList_Extend with PyList_SetSlice
+Patch:          https://patch-diff.githubusercontent.com/raw/tobgu/pyrsistent/pull/284.patch#/replace-private-function.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module hypothesis}
 BuildRequires:  %{python_module pip}
@@ -47,6 +49,7 @@ is left untouched.
 
 %prep
 %setup -q -n pyrsistent-%{version}
+%patch -P0 -p1
 
 %build
 export CFLAGS="%{optflags}"

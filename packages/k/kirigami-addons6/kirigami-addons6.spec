@@ -23,7 +23,7 @@
 
 %define rname kirigami-addons
 Name:           kirigami-addons6
-Version:        1.3.0
+Version:        1.4.0
 Release:        0
 Summary:        Add-ons for the Kirigami framework
 License:        LGPL-3.0-only
@@ -33,9 +33,11 @@ Source:         https://download.kde.org/stable/%{rname}/%{rname}-%{version}.tar
 Source1:        https://download.kde.org/stable/%{rname}/%{rname}-%{version}.tar.xz.sig
 Source2:        kirigami-addons.keyring
 %endif
-BuildRequires:  fdupes
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  cmake(KF6Config) >= %{kf6_version}
+BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6GlobalAccel) >= %{kf6_version}
+BuildRequires:  cmake(KF6GuiAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
 BuildRequires:  cmake(KF6KirigamiPlatform) >= %{kf6_version}
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
@@ -43,6 +45,7 @@ BuildRequires:  cmake(Qt6Quick) >= %{qt6_version}
 BuildRequires:  cmake(Qt6QuickControls2) >= %{qt6_version}
 Requires:       kf6-kirigami-imports >= %{kf6_version}
 Requires:       libKF6Svg6 >= %{kf6_version}
+Requires:       libKirigamiAddonsStatefulApp6 >= %{version}
 Requires:       qt6-qt5compat-imports >= %{qt6_version}
 
 %description
@@ -52,9 +55,21 @@ desktop experiences providing a native experience on both, and
 look native with any QQC2 style (qqc2-desktop-theme, Material
 or Plasma).
 
+%package -n libKirigamiAddonsStatefulApp6
+Summary: Stateful application suppport library for kirigami-addons
+ 
+%description -n libKirigamiAddonsStatefulApp6
+A set of "widgets" i.e visual end user components along with a
+code to support them. Components are usable by both touch and
+desktop experiences providing a native experience on both, and
+look native with any QQC2 style (qqc2-desktop-theme, Material
+or Plasma). This package provides a library to add standard
+stateful functionality to applications using kirigami-addons.
+
 %package devel
 Summary:        Development files for kirigami-addons6
 Requires:       kirigami-addons6 = %{version}
+Requires:       libKirigamiAddonsStatefulApp6 >= %{version}
 
 %description devel
 A set of "widgets" i.e visual end user components along with a
@@ -87,16 +102,24 @@ Provides translations for %{name}.
 %install
 %kf6_install
 
-%fdupes %{buildroot}%{_kf6_qmldir}
-
 %find_lang %{name} --all-name
+
+%ldconfig_scriptlets -n libKirigamiAddonsStatefulApp6
 
 %files
 %license LICENSES/*
 %{_kf6_qmldir}/org/kde/kirigamiaddons/
 
+%files -n libKirigamiAddonsStatefulApp6
+%{_kf6_libdir}/libKirigamiAddonsStatefulApp.so.*
+
 %files devel
 %{_kf6_cmakedir}/KF6KirigamiAddons/
+%{_includedir}/KirigamiAddonsStatefulApp/
+%{_kf6_libdir}/libKirigamiAddonsStatefulApp.so
+%dir %{_kf6_sharedir}/kdevappwizard/
+%dir %{_kf6_sharedir}/kdevappwizard/templates/
+%{_kf6_sharedir}/kdevappwizard/templates/kirigamiaddons6.tar.bz2
 
 %files lang -f %{name}.lang
 

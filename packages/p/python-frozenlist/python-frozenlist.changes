@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jul 29 14:27:41 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Cherry-pick patch from Fedora to fix testsuite with Python 3.13
+  * skip-some-attributes.patch
+
+-------------------------------------------------------------------
 Tue Jan 16 08:30:56 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Add reproducible.patch to avoid embedding a random tmp dir (boo#1062303)

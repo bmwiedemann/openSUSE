@@ -17,11 +17,10 @@
 
 
 Name:           quotatool
-Version:        1.6.4
+Version:        1.6.5
 Release:        0
 Summary:        A utility for setting and manipulating filesystem quotas from the command line
 License:        GPL-2.0-only
-Group:          System/Filesystems
 URL:            https://quotatool.ekenberg.se
 Source0:        https://github.com/ekenberg/quotatool/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 
@@ -31,7 +30,7 @@ the command line. It supports quota on Linux (versions 2.6, 2.4, and 2.2,
 with ext2, ext3, ReiserFS, and XFS), Solaris, and AIX.
 
 %prep
-%setup -q
+%autosetup
 
 %build
 %configure

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Aug 01 05:39:12 UTC 2024 - mvetter@suse.com
+
+- Update to version 0~20240731.edfe0bf:
+  * Add new test for CVE-2021-47402
+  * test.sh: Simplify call to setup_extract_count
+  * klpbuild: Copy the .config from the right place
+  * templ: Add spaces between KLP_RELOC_SYMBOL macro arguments
+
+-------------------------------------------------------------------
 Mon Jul 29 07:09:22 UTC 2024 - mvetter@suse.com
 
 - Update to version 0~20240725.cc0513f:

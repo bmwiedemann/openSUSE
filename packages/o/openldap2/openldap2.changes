@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Jul 31 05:11:48 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to relese 2.6.8
+  * slapd: ability to log directly to a file bypassing syslog
+  * back-ndb has been retired
+  * back-sql and back-perl have been deprecated
+  * lloadd enhancments:
+  * Additional load balancing strategies
+  * Additional options to improve coherence with certain
+    controls and extended operations
+  * Ability to log directly to a file bypassing syslog
+- Delete gcc14.patch, openldap2-fb9e6a81bbee.patch (merged)
+- Drop rcslapd symlink
+
+-------------------------------------------------------------------
+Mon Jul 29 17:06:34 UTC 2024 - Martin Jambor <mjambor@suse.com>
+
+- Backported one hunk from upstream commit fb9e6a81bbee as
+  openldap2-fb9e6a81bbee.patch to fix incompatible pointer type being
+  passed to a function which is diagnosed as an error by GCC 14.
+
+-------------------------------------------------------------------
 Sat May 25 07:46:05 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Add gcc14.patch

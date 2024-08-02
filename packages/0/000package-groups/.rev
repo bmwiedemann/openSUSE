@@ -2057,4 +2057,12 @@ to ease detection of our immutable OS</comment>
     <user>dimstar_suse</user>
     <comment>policycoreutils-gui is not supposed to be blocked; https://bugzilla.suse.com/show_bug.cgi?id=1228436</comment>
   </revision>
+  <revision rev="289" vrev="287">
+    <srcmd5>6e79baef72f19e645cc8e3dfcf3954e1</srcmd5>
+    <version>unknown</version>
+    <time>1722542627</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1190612</requestid>
+  </revision>
 </revisionlist>
