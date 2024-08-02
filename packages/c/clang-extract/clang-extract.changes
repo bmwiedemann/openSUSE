@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Aug 02 06:34:40 UTC 2024 - mvetter@suse.com
+
+- Update to version 0~20240801.6cf5b73:
+  * libcextract: Passes: Drop attributes when creating the KLP_RELOC entries
+  * SymbolExternalizer: Drop initializer from expanded macros
+  * libcextract: ArgvParser: Use vmlinux on PatchObject when DEBUGINFO is different
+  * libcextract: Passes.cpp: Use vmlinux if sym_mod is empty
+  * Drop klpe_ prefix for extern function symbols
+
+-------------------------------------------------------------------
 Thu Aug 01 05:37:35 UTC 2024 - mvetter@suse.com
 
 - Update to version 0~20240731.94276b7:

@@ -129,4 +129,17 @@
   * Fix failing testcase if system compiler is gcc-14</comment>
     <requestid>1190857</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>f30c88144ab7d29763122c9fef403f53</srcmd5>
+    <version>0~20240801.6cf5b73</version>
+    <time>1722612438</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0~20240801.6cf5b73:
+  * libcextract: Passes: Drop attributes when creating the KLP_RELOC entries
+  * SymbolExternalizer: Drop initializer from expanded macros
+  * libcextract: ArgvParser: Use vmlinux on PatchObject when DEBUGINFO is different
+  * libcextract: Passes.cpp: Use vmlinux if sym_mod is empty
+  * Drop klpe_ prefix for extern function symbols</comment>
+    <requestid>1191106</requestid>
+  </revision>
 </revisionlist>
