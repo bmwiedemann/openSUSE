@@ -501,4 +501,12 @@ update to 9.5.26</comment>
     <comment></comment>
     <requestid>1189577</requestid>
   </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>dae6096303a960fe5010ebe094466946</srcmd5>
+    <version>9.5.31</version>
+    <time>1722612455</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1191201</requestid>
+  </revision>
 </revisionlist>

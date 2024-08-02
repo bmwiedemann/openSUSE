@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Aug  2 10:32:22 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 9.5.31:
+  * Fixed #7405: DockerHub missing images > 9.5.27 due to change in
+    Alpine/APK
+
+-------------------------------------------------------------------
 Wed Jul 24 17:50:27 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 9.5.30:
