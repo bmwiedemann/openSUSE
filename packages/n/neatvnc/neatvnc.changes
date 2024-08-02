@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Aug  2 06:25:29 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- bsc#1228777 (CVE-2024-42458)
+  Update to 0.8.1:
+  * Add sanity check for chosen security type
+
+-------------------------------------------------------------------
 Mon Feb 26 07:10:51 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.8.0:
