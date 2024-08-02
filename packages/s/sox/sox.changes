@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Aug  1 18:04:11 UTC 2024 - Marcus Meissner <meissner@suse.com>
+
+- sox-gcc14.patch: fixed build with gcc14
+
+-------------------------------------------------------------------
 Wed Oct 25 11:26:52 UTC 2023 - Takashi Iwai <tiwai@suse.com>
 
 - Apply various fix patches taken from Debian package;

@@ -1,7 +1,7 @@
 #
 # spec file for package sox
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -40,6 +40,7 @@ Patch12:        CVE-2021-40426.patch
 Patch13:        CVE-2022-31650.patch
 Patch14:        CVE-2022-31651.patch
 Patch15:        CVE-2023-32627.patch
+Patch16:        sox-gcc14.patch
 BuildRequires:  file-devel
 BuildRequires:  ladspa-devel
 BuildRequires:  libgsm-devel
