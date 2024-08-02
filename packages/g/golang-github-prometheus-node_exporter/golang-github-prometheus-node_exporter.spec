@@ -20,7 +20,7 @@
 %{go_nostrip}
 
 Name:           golang-github-prometheus-node_exporter
-Version:        1.8.1
+Version:        1.8.2
 Release:        0
 Summary:        Prometheus exporter for machine metrics
 License:        Apache-2.0
@@ -34,7 +34,7 @@ Source4:        prometheus-node_exporter.sysconfig
 BuildRequires:  fdupes
 BuildRequires:  golang-github-prometheus-promu >= 0.12.0
 BuildRequires:  golang-packaging
-BuildRequires:  golang(API) >= 1.20
+BuildRequires:  golang(API) >= 1.21
 %{?systemd_ordering}
 Requires(post): %fillup_prereq
 Requires(pre):  shadow

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jul 14 15:22:00 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.8.2:
+  * [BUGFIX] Fix CPU pressure metric collection #3054
+
+-------------------------------------------------------------------
 Tue May 21 20:07:43 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 1.8.1:
