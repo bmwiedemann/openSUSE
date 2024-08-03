@@ -22,10 +22,9 @@
 
 FROM opensuse/tumbleweed:latest
 
-MAINTAINER openSUSE (https://www.opensuse.org/)
-
 # Define labels according to https://en.opensuse.org/Building_derived_containers
 # labelprefix=org.opensuse.bci.spack
+LABEL org.opencontainers.image.authors="openSUSE (https://www.opensuse.org/)"
 LABEL org.opencontainers.image.title="openSUSE Tumbleweed BCI Spack development"
 LABEL org.opencontainers.image.description="Spack development container for building containerized HPC solution stacks, based on the openSUSE Tumbleweed Base Container Image."
 LABEL org.opencontainers.image.version="0.22"
