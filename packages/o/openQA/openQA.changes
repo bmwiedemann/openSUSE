@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Aug 03 09:14:45 UTC 2024 - okurz@suse.com
+
+- Update to version 4.6.1722606094.a0f3ca50:
+  * Bump datatables.net-bs5 from 2.1.2 to 2.1.3
+  * Allow openqa-bootstrap to clone job in non-systemd environments
+  * Ease setup for Git-based workflows
+  * Revert "Remove unused 'dsn' function and its usage"
+  * Remove unused 'dsn' function and its usage
+  * Simplify error handling of downloader, avoid confusing error codes
+
+-------------------------------------------------------------------
 Thu Aug 01 01:14:51 UTC 2024 - okurz@suse.com
 
 - Update to version 4.6.1722436893.4726870f:
