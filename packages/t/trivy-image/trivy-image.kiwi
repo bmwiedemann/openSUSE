@@ -28,10 +28,10 @@ You can contact the BCI team via https://github.com/SUSE/bci/discussions
       <containerconfig
           name="opensuse/trivy"
           tag="%%trivy_version%%"
-          additionaltags="%%trivy_version%%-%RELEASE%,latest"
-          maintainer="openSUSE (https://www.opensuse.org/)">
+          additionaltags="%%trivy_version%%-%RELEASE%,latest">
         <labels>
           <suse_label_helper:add_prefix prefix="org.opensuse.application.trivy">
+            <label name="org.opencontainers.image.authors" value="openSUSE (https://www.opensuse.org/)"/>
             <label name="org.opencontainers.image.title" value="openSUSE Tumbleweed Container Vulnerability Scanner"/>
             <label name="org.opencontainers.image.description" value="Container Vulnerability Scanner container based on the openSUSE Tumbleweed Base Container Image."/>
             <label name="org.opencontainers.image.version" value="%%trivy_version%%"/>
