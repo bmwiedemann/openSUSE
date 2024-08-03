@@ -24,10 +24,9 @@
 
 FROM opensuse/bci/bci-init:latest
 
-MAINTAINER openSUSE (https://www.opensuse.org/)
-
 # Define labels according to https://en.opensuse.org/Building_derived_containers
 # labelprefix=org.opensuse.application.pcp
+LABEL org.opencontainers.image.authors="openSUSE (https://www.opensuse.org/)"
 LABEL org.opencontainers.image.title="openSUSE Tumbleweed Performance Co-Pilot (pcp)"
 LABEL org.opencontainers.image.description="Performance Co-Pilot (pcp) container based on the openSUSE Tumbleweed Base Container Image. This container is only supported with podman."
 LABEL org.opencontainers.image.version="6.2.1"
