@@ -172,4 +172,25 @@
     <comment></comment>
     <requestid>1190824</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>a53a6b587b797f8b660aeec85032e96c</srcmd5>
+    <version>0.3.3</version>
+    <time>1722708415</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.3.3:
+  * The /api/embed endpoint now returns statistics: total_duration,
+    load_duration, and prompt_eval_count
+  * Added usage metrics to the /v1/embeddings OpenAI compatibility
+    API
+  * Fixed issue where /api/generate would respond with an empty 
+    string if provided a context
+  * Fixed issue where /api/generate would return an incorrect 
+    value for context
+  * /show modefile will now render MESSAGE commands correctly
+- Update to version 0.3.2:
+  * Fixed issue where ollama pull would not resume download 
+    progress
+  * Fixed issue where phi3 would report an error on older versions</comment>
+    <requestid>1191409</requestid>
+  </revision>
 </revisionlist>
