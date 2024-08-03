@@ -20,10 +20,9 @@
 
 FROM opensuse/tumbleweed:latest
 
-MAINTAINER openSUSE (https://www.opensuse.org/)
-
 # Define labels according to https://en.opensuse.org/Building_derived_containers
 # labelprefix=org.opensuse.application.postfix
+LABEL org.opencontainers.image.authors="openSUSE (https://www.opensuse.org/)"
 LABEL org.opencontainers.image.title="openSUSE Tumbleweed Postfix"
 LABEL org.opencontainers.image.description="Postfix container is fast and secure mail server, based on the openSUSE Tumbleweed Base Container Image."
 LABEL org.opencontainers.image.version="%%postfix_version%%"
