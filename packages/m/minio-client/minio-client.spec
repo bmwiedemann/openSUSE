@@ -22,7 +22,7 @@
 %define binary_name minio-client
 
 Name:           minio-client
-Version:        20240726T130844Z
+Version:        20240731T155833Z
 Release:        0
 Summary:        Client for MinIO
 License:        AGPL-3.0-only

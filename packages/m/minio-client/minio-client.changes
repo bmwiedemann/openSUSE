@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Aug 03 07:58:55 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 20240731T155833Z:
+  * Rework `mc idp ldap accesskey list` to use new API endpoint
+    (#4946)
+  * #4988 fixed prometheus metrics usage message (#5000)
+
+-------------------------------------------------------------------
 Sat Jul 27 11:35:58 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 20240726T130844Z:
