@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Aug  3 08:56:51 UTC 2024 - Dirk Mueller <dmueller@suse.com>
+
+- set OCI.authors attribute instead of deprecated MAINTAINER
+
+-------------------------------------------------------------------
 Wed Jul 31 12:06:44 UTC 2024 - Dirk Mueller <dmueller@suse.com>
 
 - set specific lifecycle url for openSUSE BCI

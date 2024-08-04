@@ -28,10 +28,10 @@ You can contact the BCI team via https://github.com/SUSE/bci/discussions
       <containerconfig
           name="opensuse/git"
           tag="%%git_version%%"
-          additionaltags="%%git_version%%-%RELEASE%,latest"
-          maintainer="openSUSE (https://www.opensuse.org/)">
+          additionaltags="%%git_version%%-%RELEASE%,latest">
         <labels>
           <suse_label_helper:add_prefix prefix="org.opensuse.application.git">
+            <label name="org.opencontainers.image.authors" value="openSUSE (https://www.opensuse.org/)"/>
             <label name="org.opencontainers.image.title" value="openSUSE Tumbleweed with Git"/>
             <label name="org.opencontainers.image.description" value="A micro environment with Git based on the openSUSE Tumbleweed Base Container Image."/>
             <label name="org.opencontainers.image.version" value="%%git_version%%"/>

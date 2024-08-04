@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sat Aug 03 07:52:13 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.66.1:
+  * Adding resolving relative urls to Terragrunt Provider Cache
+    (#3318)
+  * Fixing interpreting empty list as null value (#3317)
+
+-------------------------------------------------------------------
+Fri Aug 02 14:19:29 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.66.0:
+  * chore: Bumping OpenTofu to `v1.8.0` (#3315)
+
+-------------------------------------------------------------------
+Fri Aug 02 14:11:28 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.65.0:
+  * `sops_decrypt_file()`: resolve path argument relative to
+    `terragrunt.hcl` (#2752)
+  * chore: Bumping `gruntwork-io/pre-commit` to `v0.1.23` (#3311)
+
+-------------------------------------------------------------------
 Thu Aug 01 11:20:35 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.64.5:

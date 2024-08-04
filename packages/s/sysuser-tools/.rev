@@ -220,4 +220,14 @@
     <comment></comment>
     <requestid>1190493</requestid>
   </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>93f3a57c575384bc91160a8d88bb1349</srcmd5>
+    <version>3.3</version>
+    <time>1722708271</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable UID:GID support for now 
+
+- UID:GID: don't create group with GID if it does not exist (forwarded request 1191330 from kukuk)</comment>
+    <requestid>1191331</requestid>
+  </revision>
 </revisionlist>

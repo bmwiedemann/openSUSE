@@ -1,7 +1,7 @@
 #
 # spec file for package gn
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,18 +17,19 @@
 
 
 Name:           gn
-Version:        0.20231023
+Version:        0.20240730
 Release:        0
 Summary:        A meta-build system that generates build files for Ninja
 License:        BSD-3-Clause
 URL:            https://gn.googlesource.com/
 Source0:        %{name}-%{version}.tar.xz
 Patch0:         redundant-move.patch
+Patch1:         subprocess-python36.patch
 BuildRequires:  ninja
 BuildRequires:  python3-base
 ExcludeArch:    ppc
 %if %{?suse_version} < 1550
-BuildRequires:  gcc12-c++
+BuildRequires:  gcc13-c++
 %else
 BuildRequires:  gcc-c++
 %endif
@@ -41,11 +42,14 @@ GN is a meta-build system that generates build files for Ninja.
 %if 0%{?suse_version} > 1550
 %patch -P 0 -p1
 %endif
+if test $(readlink /usr/bin/python3) = "python3.6" ; then
+%patch -P 1 -p1
+fi
 
 %build
 ARCH_FLAGS="`echo %{optflags} | sed -e 's/-O2//g'`"
 %if 0%{?suse_version} < 1550
-export CXX=g++-12
+export CXX=g++-13
 %else
 export CXX=g++
 %endif

@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Fri Aug  2 14:04:13 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 5.2.0:
+  * Fix the TypeError exception in the images.prune method by
+    @milanbalazs in #412
+  * Bump version to 5.2.0 by @inknos in #414
+
+-------------------------------------------------------------------
+Fri Aug  2 13:53:22 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 5.1.0:
+  * Fix dns_option typo by @robbmanes in #386
+  * Fixes encoding of X-Registry-auth HTTP Header value from Base64
+    to url_safe Base64 by @apozsuse in #385
+  * Include py.typed marker file. by @jonded94 in #381
+  * [skip-ci] Packit: enable c10s downstream sync by @lsm5 in #388
+  * ignore proxies from the env vars when using UNIX Domain Sockets
+    by @eighthave in #391
+  * Fix Pylint E0606 for undefined variable after else by @inknos
+    in #392
+  * [skip-ci] Packit: use default update_release behavior by @lsm5
+    in #393
+  * Update OWNERS by @jwhonce in #394
+  * Fix README TypeError when one container is running by @inknos
+    in #395
+  * Remove Fedora release number from task names by @cevich in #396
+  * Add python 3.12 support and remove python xdg by @inknos in
+    #401
+  * Update index.rst Client -> PodmanClient by @jwoehr in #405
+  * Implementing the functionality of the 'named' argument of the
+    'Image.save' method by @milanbalazs in #406
+  * Fix the locally non-existent image fails with AttributeError by
+    @milanbalazs in #408
+  * Enable demux option in exec_run by @inknos in #410
+  * Bump version to 5.1.0 by @inknos in #409
+
+-------------------------------------------------------------------
 Sat Mar 23 09:36:30 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 5.0.0:

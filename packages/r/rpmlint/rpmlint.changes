@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Fri Aug 02 06:25:53 UTC 2024 - daniel.garcia@suse.com
+
+- Update to version 2.6.1+git20240802.da40b67:
+  * Release 2.6.1
+  * FilesCheck: Fix zero perm check with binaries
+  * FilesCheck: Fix zero permission check with folder
+  * Update openSUSE's licenses.toml
+
+-------------------------------------------------------------------
+Thu Aug 01 13:37:28 UTC 2024 - filippo.bonazzi@suse.com
+
+- Update to version 2.6.0+git20240801.f3e815d:
+  * sysctl-whitelist: kernel.pid_max entry moved (bsc#1228731)
+  * Update openSUSE's licenses.toml
+  * configs/openSUSE/users-groups.toml: add user and group woodpecker
+  * configs/openSUSE/users-groups.toml: add user and group vault-sync
+  * configs/openSUSE/users-groups.toml: add user and group openbao
+  * configs/openSUSE/users-groups.toml: add user and group alloy
+  * Release 2.6.0
+  * Test: Fix test_config error raised by new ruff
+  * CI: Fix ruff call with modern syntax
+  * Update main.yml
+  * FilesCheck: Remove trailing slashes
+  * FilesCheck: zero-perms differentiate between ghost and normal files
+  * FilesCheck: warn about files with zero perms
+  * Create Mock packages for tests in config_files, i18n, tmp_file and zypp_syntax (#1235)
+  * users-groups.toml: add caddy
+  * PythonCheck: simplify requirement check using metadata
+
+-------------------------------------------------------------------
 Mon Jun 24 14:18:13 UTC 2024 - filippo.bonazzi@suse.com
 
 - Update to version 2.5.0+git20240624.609e1aa:

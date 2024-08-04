@@ -1,4 +1,66 @@
 -------------------------------------------------------------------
+Thu Aug 01 07:20:34 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.10.0:
+  * fix: improve determinism in java archive identification (#3085)
+  * chore(deps): update stereoscope to
+    50ce3be7aa1fb8829234ae648215e7907196bfa5 (#3075)
+  * chore(deps): update CPE dictionary index (#3079)
+  * chore(deps): bump github.com/gkampitakis/go-snaps from 0.5.5 to
+    0.5.6 (#3082)
+  * chore(deps): bump github/codeql-action from 3.25.14 to 3.25.15
+    (#3083)
+  * fix: traefik classifier (#3077)
+  * python-cataloger: fix normalization test (#3073)
+  * Only match ldflag version if it matches the main module or
+    targets main.version (#3062)
+  * python cataloger: allow dots in python package names (#3070)
+  * python-cataloger: normalize package names (#3069)
+  * chore(deps): bump github.com/docker/docker (#3066)
+  * chore(deps): bump github/codeql-action from 3.25.13 to 3.25.14
+    (#3072)
+  * fix: SPDX output performance with many relationships (#3053)
+  * better go mod detection from partial package builds (#3060)
+  * chore(deps): update tools to latest versions (#3061)
+  * chore(deps): bump github.com/charmbracelet/lipgloss from 0.11.1
+    to 0.12.1 (#3040)
+  * chore: add debug logging for errors reading RPM files (#3051)
+  * chore(deps): update CPE dictionary index (#3035)
+  * chore(deps): bump github.com/docker/docker (#3055)
+  * chore(deps): bump github.com/gkampitakis/go-snaps from 0.5.4 to
+    0.5.5 (#3056)
+  * chore(deps): bump modernc.org/sqlite from 1.30.2 to 1.31.1
+    (#3057)
+  * chore(deps): bump docker/login-action from 3.2.0 to 3.3.0
+    (#3058)
+  * chore(deps): bump github/codeql-action from 3.25.12 to 3.25.13
+    (#3059)
+  * chore(deps): update stereoscope to
+    487b11e5ba2622d976acda10c605da63b4fbbb0a (#3032)
+  * chore(deps): update tools to latest versions (#3050)
+  * docs: CODE_OF_CONDUCT.md (#3046)
+  * fix: include CPEs with Maven groupId as vendor (#3045)
+  * chore(deps): bump github.com/google/go-containerregistry
+    (#3047)
+  * chore(deps): bump github.com/moby/sys/mountinfo from 0.7.1 to
+    0.7.2 (#3048)
+  * chore(deps): bump modernc.org/sqlite from 1.30.1 to 1.30.2
+    (#3039)
+  * docs: link to contrib/dev docs in readme (#3029)
+  * chore: Fix apache shield in readme (#3021)
+  * chore(deps): update tools to latest versions (#3031)
+  * chore(deps): bump github/codeql-action from 3.25.11 to 3.25.12
+    (#3034)
+  * chore(deps): bump anchore/sbom-action from 0.16.1 to 0.17.0
+    (#3044)
+  * fix: stop panicking on "devel" version go stdlib (#3043)
+  * chore: pin fedora image for elf binary test (#3041)
+  * chore(deps): bump anchore/sbom-action from 0.16.0 to 0.16.1
+    (#3023)
+  * chore(deps): update stereoscope to
+    27b66b76fc6686fcf6bde656aa09e1f0e047fec1 (#3026)
+
+-------------------------------------------------------------------
 Thu Jul 11 18:41:11 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.9.0:

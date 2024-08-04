@@ -29,10 +29,10 @@ You can contact the BCI team via https://github.com/SUSE/bci/discussions
           name="opensuse/registry"
           tag="%%registry_version%%"
           additionaltags="%%registry_version%%-%RELEASE%,latest"
-          user="registry"
-          maintainer="openSUSE (https://www.opensuse.org/)">
+          user="registry">
         <labels>
           <suse_label_helper:add_prefix prefix="org.opensuse.application.registry">
+            <label name="org.opencontainers.image.authors" value="openSUSE (https://www.opensuse.org/)"/>
             <label name="org.opencontainers.image.title" value="openSUSE Tumbleweed OCI Container Registry (Distribution)"/>
             <label name="org.opencontainers.image.description" value="OCI Container Registry (Distribution) container based on the openSUSE Tumbleweed Base Container Image."/>
             <label name="org.opencontainers.image.version" value="%%registry_version%%"/>

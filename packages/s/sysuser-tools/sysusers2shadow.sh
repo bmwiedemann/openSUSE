@@ -47,21 +47,20 @@ else
 		u)
 			shift
 			ARGUMENTS="$1"
-			
-			# Split user and Group id			
-			userGrouArr=(${2//:/ })
-			USER_ID=${userGrouArr[0]}
-			GROUP_ID=${userGrouArr[1]}
-			
+
+			if /usr/bin/getent passwd "$1" >> /dev/null; then
+			    continue
+			fi
+
+			# Split user and Group id
+			#userGrouArr=(${2//:/ })
+			#USER_ID=${userGrouArr[0]}
+			#GROUP_ID=${userGrouArr[1]}
+			USER_ID=$2
+			GROUP_ID=""
+
 			if [ -n "$USER_ID" ] && [ "$USER_ID" != "-" ]; then
 				ARGUMENTS="-u $USER_ID $ARGUMENTS"
-			fi
-			if [ -n "$GROUP_ID" ] && [ "$GROUP_ID" != "-" ]; then
-				ARGUMENTS="-g $GROUP_ID $ARGUMENTS"
-			else
-				if [ "$USER_ID" == "-" ]; then
-					ARGUMENTS="-U $ARGUMENTS"
-				fi
 			fi
 
 			homedir="/" # If null, empty or '-'
@@ -77,30 +76,22 @@ else
 			fi
 
 			if [ -x /usr/sbin/useradd ]; then
-				if ! /usr/bin/getent passwd "$1" >> /dev/null; then
-					# this is useradd/shadow specific
-					if /usr/bin/getent group "$1" >> /dev/null; then
-						ARGUMENTS="-g $1 $ARGUMENTS"
-					else
-						ARGUMENTS="$ARGUMENTS"
-					fi
+			    if [ -n "$GROUP_ID" ] && [ "$GROUP_ID" != "-" ]; then
+				ARGUMENTS="-g $GROUP_ID $ARGUMENTS"
+			    else
+				# this is useradd/shadow specific
+				if /usr/bin/getent group "$1" >> /dev/null; then
+				    ARGUMENTS="-g $1 $ARGUMENTS"
+				else
+				    ARGUMENTS="-U $ARGUMENTS"
+				fi
+			    fi
 
-					run /usr/sbin/useradd -r -c "$3" -d "${homedir}" $ARGUMENTS
-				fi
-				if ! /usr/bin/getent group "$1" >> /dev/null; then
-					if [ -x /usr/sbin/groupadd ]; then
-						run /usr/sbin/groupadd -r "$1"
-					else
-						echo "ERROR: groupadd not found!"
-						exit 1
-					fi
-				fi
+			    run /usr/sbin/useradd -r -c "$3" -d "${homedir}" $ARGUMENTS
 			elif [ -x "$busybox" ]; then
 				/usr/bin/getent group "$1" >> /dev/null || $busybox addgroup -S "$1"
 
-				if ! /usr/bin/getent passwd "$1" >> /dev/null; then
-					run $busybox adduser -S -H -g "$3" -G "$1" -h "${homedir}" $ARGUMENTS
-				fi
+				run $busybox adduser -S -H -g "$3" -G "$1" -h "${homedir}" $ARGUMENTS
 			else
 				echo "ERROR: neither useradd nor busybox found!"
 				exit 1
@@ -109,9 +100,9 @@ else
 		m)
 			shift
 			if [ -x /usr/sbin/usermod ] ; then
-				run /usr/sbin/usermod -a -G $2 $1
+				run /usr/sbin/usermod -a -G "$2" "$1"
 			elif [ -x "$busybox" ]; then
-				run $busybox addgroup $1 $2
+				run $busybox addgroup "$1" "$2"
 			else
 				echo "ERROR: neither usermod nor busybox found!"
 				exit 1

@@ -20,10 +20,9 @@
 
 FROM opensuse/bci/openjdk:22
 
-MAINTAINER openSUSE (https://www.opensuse.org/)
-
 # Define labels according to https://en.opensuse.org/Building_derived_containers
 # labelprefix=org.opensuse.bci.openjdk.devel
+LABEL org.opencontainers.image.authors="openSUSE (https://www.opensuse.org/)"
 LABEL org.opencontainers.image.title="openSUSE Tumbleweed BCI OpenJDK 22 development"
 LABEL org.opencontainers.image.description="OpenJDK 22 development container based on the openSUSE Tumbleweed Base Container Image."
 LABEL org.opencontainers.image.version="22"

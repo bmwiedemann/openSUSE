@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-knack
-Version:        0.11.0
+Version:        0.12.0
 Release:        0
 Summary:        A Command-Line Interface framework
 License:        MIT
@@ -28,11 +28,13 @@ Source:         https://files.pythonhosted.org/packages/source/k/knack/knack-%{v
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module argcomplete}
 BuildRequires:  %{python_module jmespath}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pygments}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module tabulate}
 BuildRequires:  %{python_module vcrpy}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-PyYAML
@@ -50,10 +52,10 @@ A Command-Line Interface framework
 %setup -q -n knack-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -62,6 +64,7 @@ A Command-Line Interface framework
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/knack
+%{python_sitelib}/knack-*.dist-info
 
 %changelog

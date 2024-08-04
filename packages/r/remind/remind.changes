@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Fri Jul 26 17:00:43 UTC 2024 - Detlef Steuer <detlef.steuer@gmx.de>
+
+- VERSION 5.0 Patch 2 - 2024-07-26
+
+* IMPROVEMENT: Remind: Revamp how ONCE works.  You can now set a
+  special variable $OnceFile to be the path to a timestamp file.  The
+  ONCE directive uses this timestamp file to track when it was last
+  run rather than the access date of the main reminder script.  This
+  is more reliable because it doesn't rely on the atime of a file
+  (which might not be maintained accurately) and is not affected if
+  you edit your reminder script.
+
+* CHANGE: Taking input from stdin no longer implies the "-o" option; ONCE can
+  work if you set $OnceFile
+
+* CHANGE: Any of the -c, -n, -p and -s options implicitly enable the
+  -o option.  As before, specifying a repeat factor *N or a date that
+  is not today on the command-line also implies -o.
+
+* MINOR NEW FEATURE: Rem2PDF: Add the "--svg" command-line option to produce
+  SVG output rather than PDF.
+
+* MINOR IMPROVEMENT: Remind: Improve the storage efficiency of short
+  string constants in compiled expression trees.
+
+* MINOR IMPROVEMENT: Remind: Remove some obsolete macro definitions 
+
+-------------------------------------------------------------------
 Mon Jun 10 09:44:53 UTC 2024 - Detlef Steuer <detlef.steuer@gmx.de>
 
 - VERSION 5.0 Patch 1 - 2024-06-08

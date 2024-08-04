@@ -82,4 +82,39 @@
   * Systemd unit file</comment>
     <requestid>1187955</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>4cb0fd6f2d1336a2b88f8eb99a9db79d</srcmd5>
+    <version>1.7.0</version>
+    <time>1722708278</time>
+    <user>dimstar_suse</user>
+    <comment>- Specfile cleanup
+  * %config macro for config file
+- Set c11 to leap only. confusing workaround
+- Update to version 1.7.0:
+  * Log output now respects the [`NO_COLOR`](http://no-color.org/)
+    environment variable.
+  * `border-radius` configuration option (yes, this means fnott now
+    supports rounded corners).
+  * Support for linking against a system provided nanosvg library. See
+    the new `-Dsystem-nanosvg` meson option. Defaults to `disabled`
+    (i.e. use the bundled version).
+  * Support for the `x-canonical-private-synchronous` hint.
+  * XDG activation support; when triggering an action, fnott attempts to
+    retrieve an XDG activation token. This will only succeed if the
+    cursor is inside the notification window. The token is then
+    signaled over the D-Bus _Notifications_ interface.
+  * `fnottctl dismiss-with-default-action`.
+  * Implemented the `org.freedesktop.DBus.Introspectable`
+    interface. This fixes an issue where e.g. `gdbus` was not able to
+    create, or close, notifications.
+  * Left clicking a notification now triggers the default action, if
+    any, in addition to dismissing the notification. Right click to
+    dismiss the notification without trigger the default action.
+  * `STRING:image-path` hint that points to either a non-existing file,
+    or an invalid image, will now be ignored (instead of removing the
+    notification's icon).
+  * All notifications are now dismissed
+    (i.e. `org.freedesktop.Notifications.NotificationClosed` is</comment>
+    <requestid>1191228</requestid>
+  </revision>
 </revisionlist>

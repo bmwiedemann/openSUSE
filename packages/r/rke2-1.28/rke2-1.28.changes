@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Aug  2 06:11:05 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.28.12+rke2r1:
+  * This release updates Kubernetes to v1.28.12, and fixes a number
+    of issues.
+  * Details see
+    https://github.com/rancher/rke2/releases/tag/v1.28.12+rke2r1
+
+-------------------------------------------------------------------
+Wed Jul  3 18:58:03 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.28.11+rke2r1:
+  * This release updates Kubernetes to v1.28.11, and fixes a number
+    of issues.
+  * Details see
+    https://github.com/rancher/rke2/releases/tag/v1.28.11+rke2r1
+
+-------------------------------------------------------------------
 Sat May 25 14:08:26 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.28.10+rke2r1:

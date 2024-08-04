@@ -20,7 +20,7 @@
 
 %define directory_name rke2
 %define binary_name rke2
-%define kubernetes_version v1.29.5
+%define kubernetes_version v1.29.7
 %define kubernetes_version_major_minor 1.29
 %define kubernetes_version_next 1.30
 # check the upstream dependency file and adapt according to the 'golang: upstream version'
@@ -29,11 +29,14 @@
 # example:
 # result of the command 1.21.8 => golang_version go1.21 (including go prefix, without patch version)
 # result of the command 1.21.8 => min_required_golang_minor_version 1.21.8
-%define golang_version go1.21
-%define min_required_golang_minor_version 1.21.9
+%define golang_version go1.22
+%define min_required_golang_minor_version 1.22.5
+
+#
+%define hardened_etcd_version build20240531
 
 Name:           rke2-1.29
-Version:        1.29.5+rke2r1
+Version:        1.29.7+rke2r1
 Release:        0
 Summary:        Rancher Kubernetes Engine
 License:        Apache-2.0
@@ -106,7 +109,7 @@ go build \
     -X github.com/k3s-io/k3s/pkg/version.Version=%{version} \
     -X github.com/k3s-io/k3s/pkg/version.UpstreamGolang=${VERSION_GOLANG} \
     -X github.com/rancher/rke2/pkg/images.DefaultRegistry=docker.io \
-    -X github.com/rancher/rke2/pkg/images.DefaultEtcdImage=rancher/hardened-etcd:${ETCD_VERSION}-build20230802 \
+    -X github.com/rancher/rke2/pkg/images.DefaultEtcdImage=rancher/hardened-etcd:${ETCD_VERSION}-%{hardened_etcd_version} \
     -X github.com/rancher/rke2/pkg/images.DefaultKubernetesImage=rancher/hardened-kubernetes:${KUBERNETES_IMAGE_TAG} \
     -X github.com/rancher/rke2/pkg/images.DefaultPauseImage=rancher/mirrored-pause:${PAUSE_VERSION} \
     -X github.com/rancher/rke2/pkg/images.DefaultRuntimeImage=${REPO}/${PROG}-runtime:${DOCKERIZED_VERSION} \

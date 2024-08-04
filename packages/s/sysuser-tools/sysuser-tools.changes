@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Aug  3 06:09:03 UTC 2024 - Thorsten Kukuk <kukuk@suse.com>
+
+- Disable UID:GID support for now 
+
+-------------------------------------------------------------------
+Fri Aug  2 12:18:53 UTC 2024 - Thorsten Kukuk <kukuk@suse.com>
+
+- UID:GID: don't create group with GID if it does not exist
+
+-------------------------------------------------------------------
+Fri Aug  2 08:24:06 UTC 2024 - Thorsten Kukuk <kukuk@suse.com>
+
+- Rewrite UID:GID support to work with busybox and fix it for useradd
+
+-------------------------------------------------------------------
 Mon Jul  1 15:01:19 UTC 2024 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
 - Allow setting of UID:GID for as defined in sysusers.d

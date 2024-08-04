@@ -165,4 +165,12 @@
     <comment>update to 5.0.0 (forwarded request 1160916 from ojkastl_buildservice)</comment>
     <requestid>1161336</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>75ec230b6d17be3956e6b6720adc2b4b</srcmd5>
+    <version>5.2.0</version>
+    <time>1722708283</time>
+    <user>dimstar_suse</user>
+    <comment>update to 5.2.0 (forwarded request 1191218 from ojkastl_buildservice)</comment>
+    <requestid>1191231</requestid>
+  </revision>
 </revisionlist>

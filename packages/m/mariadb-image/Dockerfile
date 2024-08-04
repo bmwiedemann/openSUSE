@@ -20,10 +20,9 @@
 
 FROM opensuse/tumbleweed:latest
 
-MAINTAINER openSUSE (https://www.opensuse.org/)
-
 # Define labels according to https://en.opensuse.org/Building_derived_containers
 # labelprefix=org.opensuse.application.mariadb
+LABEL org.opencontainers.image.authors="openSUSE (https://www.opensuse.org/)"
 LABEL org.opencontainers.image.title="openSUSE Tumbleweed MariaDB Server"
 LABEL org.opencontainers.image.description="MariaDB Server container based on the openSUSE Tumbleweed Base Container Image."
 LABEL org.opencontainers.image.version="11.4"

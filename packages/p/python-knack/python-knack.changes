@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Aug  2 11:56:05 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.12.0
+  * Declare support for Python 3.12 (#279)
+- Switch build system from setuptools to pyproject.toml
+  * Add python-pip and python-wheel to BuildRequires
+  * Replace %python_build with %pyproject_wheel
+  * Replace %python_install with %pyproject_install
+- Limit Python files matched in %files section
+
+-------------------------------------------------------------------
 Wed Mar  6 14:07:45 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Switch package to modern Python Stack on SLE-15

@@ -1,4 +1,66 @@
 -------------------------------------------------------------------
+Fri Aug 02 14:25:16 UTC 2024 - ro@suse.com
+
+- Update to version 0.20240730:
+  * Rust: link_output, depend_output and runtime_outputs for dylibs
+  * Add missing reference section to function_toolchain.cc
+  * Do not cleanup args.gn imports located in the output directory.
+  * Fix expectations in NinjaRustBinaryTargetWriterTest.SwiftModule
+  * Do not add native dependencies to the library search path
+  * Support linking frameworks and swiftmodules in Rust targets
+  * [desc] Silence print() statements when outputing json
+  * infra: Move CI/try builds to Ubuntu-22.04
+  * [MinGW] Fix mingw building issues
+  * [gn] Fix "link" in the //examples/simple_build/build/toolchain/BUILD.gn
+  * [template] Fix "rule alink_thin" in the //build/build_linux.ninja.template
+  * Allow multiple --ide switches
+  * [src] Add "#include <limits>" in the //src/base/files/file_enumerator_win.cc
+  * Get updates to infra/recipes.py from upstream
+  * Revert "Teach gn to handle systems with > 64 processors"
+  * [apple] Rename the code-signing properties of create_bundle
+  * Fix a typo in "gn help refs" output
+  * Revert "[bundle] Use "phony" builtin tool for create_bundle targets"
+  * [bundle] Use "phony" builtin tool for create_bundle targets
+  * [ios] Simplify handling of assets catalog
+  * [swift] List all outputs as deps of "source_set" stamp file
+  * [swift] Update `gn check ...` to consider the generated header
+  * [swift] Set `restat = 1` to swift build rules
+  * Fix build with gcc12
+  * [label_matches] Add new functions label_matches(), filter_labels_include() and filter_labels_exclude()
+  * [swift] Remove problematic use of "stamp" tool
+  * Implement new --ninja-outputs-file option.
+  * Add NinjaOutputsWriter class
+  * Move InvokePython() function to its own source file.
+  * zos: build with -DZOSLIB_OVERRIDE_CLIB to override creat
+  * Enable C++ runtime assertions in debug mode.
+  * Fix regression in MakeRelativePath()
+  * fix: Fix Windows MakeRelativePath.
+  * Add long path support for windows
+  * Ensure read_file() files are considered by "gn analyze"
+  * apply 2to3 to for some Python scripts
+  * Add rustflags to desc and help output
+  * strings: support case insensitive check only in StartsWith/EndsWith
+  * add .git-blame-ignore-revs
+  * use std::{string,string_view}::{starts_with,ends_with}
+  * apply clang-format to all C++ sources
+  * add forward declaration in rust_values.h
+  * Add `root_patterns` list to build configuration.
+  * Use c++20 in GN build
+  * update windows sdk to 2024-01-11
+  * update windows sdk
+  * Add linux-riscv64.
+  * Update OWNERS list.
+  * remove unused function
+  * Ignore build warning -Werror=redundant-move
+  * Fix --as=buildfile `gn desc deps` output.
+  * Update recipe engine to 9dea1246.
+  * treewide: Fix spelling mistakes
+- add subprocess-python36.patch
+  to build with python3.6 on sle15
+- use gcc-13 instead of gcc-12
+  to work around maybe uninitialized error
+
+-------------------------------------------------------------------
 Tue Feb 27 11:04:35 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.

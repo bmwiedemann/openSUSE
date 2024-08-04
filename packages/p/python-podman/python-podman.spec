@@ -26,7 +26,7 @@
 %bcond_with test
 %endif
 Name:           python-podman%{psuffix}
-Version:        5.0.0
+Version:        5.2.0
 Release:        0
 Summary:        A library to interact with a Podman server
 License:        Apache-2.0
@@ -35,7 +35,6 @@ URL:            https://github.com/containers/podman-py
 Source:         https://github.com/containers/podman-py/archive/refs/tags/v%{version}.tar.gz#./podman-%{version}.tar.gz
 BuildRequires:  %{python_module pbr}
 BuildRequires:  %{python_module tomli >= 1.2.3 if python-base < 3.11}
-BuildRequires:  %{python_module pyxdg >= 0.26}
 BuildRequires:  %{python_module requests >= 2.24}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module pip}
@@ -43,7 +42,6 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       (python-tomli >= 1.2.3 if python-base < 3.11)
-Requires:       python-pyxdg
 Requires:       python-requests
 Requires:       python-urllib3
 BuildArch:      noarch

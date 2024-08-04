@@ -64,4 +64,14 @@
    (Ameen Radwan)</comment>
     <requestid>1186922</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>af1ba8f556969848735d42347660568a</srcmd5>
+    <version>1.4.0</version>
+    <time>1722708293</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.4.0:
+ * Changelog: https://gleam.run/news/supercharged-labels/
+ * Gleam now requires Rust 1.79 to build</comment>
+    <requestid>1191253</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Aug  1 16:28:28 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to version 8:
+  * Mentions are sent intentionally
+  * Authenticated media are supported
+  * Draft messages are kept per-room and persisted across restarts
+  * More links are detected in messages and room descriptions
+  * Collapsed categories in the sidebar are remembered between restarts
+  * A banner appears when synchronization with the homeserver fails
+    too many times in a row
+  * The verification and account recovery processes have been polished
+  * HTML rendering has been improved, with the support of new
+    elements and attributes
+
+-------------------------------------------------------------------
 Fri May  3 01:32:44 UTC 2024 - Richard Rahl <rrahl0@disroot.org>
 
 - update to version 7:

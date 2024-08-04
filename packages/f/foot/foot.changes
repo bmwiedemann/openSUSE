@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Fri Aug  2 15:42:37 UTC 2024 - Arnav Singh <opensuse@arnavion.dev>
+
+- Update to v1.18.0:
+  * foot.ini options:
+    * Added cursor.blink-rate option to configure the rate the cursor
+      blinks with.
+    * Deprecated main.notify and main.notify-focus-when-inhibit options
+      and added new desktop-notifications option group.
+      desktop-notifications.command option replaces main.notify option,
+      and also takes some new templated parameters.
+      desktop-notifications.inhibit-when-focused option replaces
+      main.notify-focus-inhibit option.
+  * Changed scrollback to respect high-resolution mousewheel scroll events
+    on compositors that send them. scrollback.multiplier config option
+    may need to be adjusted for users of mice that emit such events.
+  * Mouse wheel events now generate BTN_WHEEL_BACK and BTN_WHEEL_FORWARD
+    instead of BTN_BACK and BTN_FORWARD. The defaults of
+    mouse-bindings.scrollback-up-mouse, .scrollback-down-mouse,
+    .font-increase and .font-decrease have been updated accordingly.
+    This means dedicated mouse buttons that do generate BTN_BACK and
+    BTN_FORWARD can now be bound independently from the scroll wheel.
+  * Added support for rendering colored and styled (wavy) underlines
+    ala Kitty, double underlines, color palette stack,
+    in-band resize notifications to applications and
+    Kitty desktop notifications protocol.
+  * Added new themes: catppuccin-frappe, catppuccin-latte,
+    catppuccin-macchiato, catppuccin-mocha, nvim-dark, nvim-light.
+  * Fixed various crashes, compatibility issues with terminal codes
+    and other bugs.
+  * See https://codeberg.org/dnkl/foot/releases/tag/1.18.0 for more details.
+
+-------------------------------------------------------------------
 Mon Apr 22 22:17:31 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Add package sig and developer keyring
