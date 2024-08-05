@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Aug  5 13:18:59 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.23.1:
+  * Use `__contains__` to avoid `KeyError` with
+    importlib_metadata==8.0.0
+  * Use is_missing property in ReqPackage.is_conflicting() for
+    DRYness
+  * Readd `# noqa: S603` to _detect_env to resolve Ruff error
+  * Allow pre-releases when detecting version conflicts
+
+-------------------------------------------------------------------
 Sun Jun 30 19:27:17 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.23.0:

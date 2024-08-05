@@ -181,4 +181,18 @@
   * replace pkg_resources with importlib.metadata and packaging</comment>
     <requestid>1184126</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>62585cb36ad7119d6c520794f5facdff</srcmd5>
+    <version>2.23.1</version>
+    <time>1722871450</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.23.1:
+  * Use `__contains__` to avoid `KeyError` with
+    importlib_metadata==8.0.0
+  * Use is_missing property in ReqPackage.is_conflicting() for
+    DRYness
+  * Readd `# noqa: S603` to _detect_env to resolve Ruff error
+  * Allow pre-releases when detecting version conflicts</comment>
+    <requestid>1191716</requestid>
+  </revision>
 </revisionlist>
