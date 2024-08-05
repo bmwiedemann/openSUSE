@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Aug  3 06:38:13 UTC 2024 - Ralf Habacker <ralf.habacker@freenet.de>
+
+- Update version to 20240803
+- Do not block adding native debug package when using
+  mingw32-cross-filesystem (boo#1228778)
+
+-------------------------------------------------------------------
 Wed Jul 31 23:24:10 UTC 2024 - Ralf Habacker <ralf.habacker@freenet.de>
 
 - Update version to 20240801

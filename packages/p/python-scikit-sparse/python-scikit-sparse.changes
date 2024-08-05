@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Aug  5 02:43:30 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.4.15:
+  * add publishing with a trusted publisher
+  * Bump up numpy requirement
+  * Autofind homebrew installation path
+  * add publishing with a trusted publisher
+  * Bump up numpy requirement
+  * Autofind homebrew installation path
+- Drop patch support-scipy-1.14.patch, included upstream.
+- Move test_data under the tests directory and run tests there.
+
+-------------------------------------------------------------------
 Thu Jul 25 06:03:00 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.4.13:

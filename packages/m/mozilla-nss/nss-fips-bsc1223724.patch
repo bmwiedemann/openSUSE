@@ -2,7 +2,7 @@ Index: nss/lib/pk11wrap/pk11skey.c
 ===================================================================
 --- nss.orig/lib/pk11wrap/pk11skey.c
 +++ nss/lib/pk11wrap/pk11skey.c
-@@ -520,6 +520,14 @@ PK11_ImportDataKey(PK11SlotInfo *slot, C
+@@ -521,6 +521,14 @@ PK11_ImportDataKey(PK11SlotInfo *slot, C
      CK_OBJECT_HANDLE handle;
      PK11GenericObject *genObject;
  

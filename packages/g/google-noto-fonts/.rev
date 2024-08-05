@@ -289,4 +289,15 @@ add: README.FAQ to answer some questions about Noto Fonts packaging
    and Sans Marchen have all received updates</comment>
     <requestid>1184766</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>c9298f0be6db57613f886ce94adb4192</srcmd5>
+    <version>20240801</version>
+    <time>1722871223</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 20240801
+ * Sans Mongolian has its shaping rules updated to match UTN#57
+ * Serif Balinese fixed some overlaps
+ * Nastaliq Urdu has most of its issues fixed</comment>
+    <requestid>1191247</requestid>
+  </revision>
 </revisionlist>

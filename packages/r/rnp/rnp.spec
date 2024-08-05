@@ -31,12 +31,16 @@ BuildRequires:  cmake >= 3.18
 BuildRequires:  gpg2 >= 2.2
 BuildRequires:  gtest
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(botan-2) >= 2.14.0
 BuildRequires:  pkgconfig(bzip2)
 BuildRequires:  pkgconfig(json-c) >= 0.11
 BuildRequires:  pkgconfig(sexpp) >= 0.8.7
 BuildRequires:  pkgconfig(zlib)
 BuildRequires:  rubygem(asciidoctor)
+%if 0%{?suse_version} > 1600
+BuildRequires:  pkgconfig(botan-3) >= 3.0.0
+%else
+BuildRequires:  pkgconfig(botan-2) >= 2.14.0
+%endif
 
 %description
 RNP is a set of OpenPGP (RFC4880) tools, an alternative to GnuPG.

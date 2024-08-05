@@ -473,4 +473,16 @@
   * refactor: remove old find/scan 58a3646</comment>
     <requestid>1191105</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>0cac532fc094b76b40e72cd0fb40bb79</srcmd5>
+    <version>0.25.6+0</version>
+    <time>1722871327</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.25.6:
+  * feat: add --selector in sg run #1378
+  * fix: fix clippy new complaints a4cc793
+  * fix(deps): update dependency @swc/core to v1.7.5 d3ee100
+  * chore(deps): update rust crate tree-sitter to v0.22.2 93d684a</comment>
+    <requestid>1191590</requestid>
+  </revision>
 </revisionlist>

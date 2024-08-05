@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jul 23 03:27:56 UTC 2024 - Dennis Tseng <dennis.tseng@suse.com>
+
+- Update to shim to 15.8-shim-15.8-lp155.8.2.x86_64.rpm from 
+  openSUSE secure-boot 15.5
+  + Version: 15.8, "Jan 23 2024"
+  + Align the outside shim-install with the one in RPM file.
+    This is because all important fixes in outside shim-install are
+    also fixed in shim-install of RPM file. For consistency purposes,
+    the outside shim-install is updated in this version.
+  + Include the bug fixes for bsc#1215099,bsc#1215098,bsc#1215100,bsc#1215101,
+    bsc#1215102, and bsc#1215103.
+
+-------------------------------------------------------------------
 Thu Mar 14 05:58:13 UTC 2024 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Update shim-install to set the SRK algorithm for grub2 TPM2

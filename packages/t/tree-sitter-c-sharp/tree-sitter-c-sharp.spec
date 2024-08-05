@@ -19,7 +19,7 @@
 %define _name c-sharp
 Summary:        C# grammar for tree-sitter
 Name:           tree-sitter-%{_name}
-Version:        0.21.2
+Version:        0.21.3
 Release:        0
 License:        MIT
 Group:          Development/Tools/Other

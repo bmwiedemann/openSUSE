@@ -1925,4 +1925,14 @@ General : Update internal Libraw to snapshot 202110
     <comment></comment>
     <requestid>1189497</requestid>
   </revision>
+  <revision rev="223" vrev="2">
+    <srcmd5>100648d4ac188e932f41a50ebd94013d</srcmd5>
+    <version>8.4.0</version>
+    <time>1722871322</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove obsolete SSE CMake options remove QtAV build dependency,
+  explicit libpulse dependency (QtAV removed in 8.3.0),
+- Add libjxl build dependency, required for DNG.</comment>
+    <requestid>1191570</requestid>
+  </revision>
 </revisionlist>

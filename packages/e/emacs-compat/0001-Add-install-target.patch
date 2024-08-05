@@ -8,14 +8,14 @@ Content-Transfer-Encoding: 8bit
 
 Signed-off-by: Björn Bidar <bjorn.bidar@thaodan.de>
 ---
- Makefile | 35 ++++++++++++++++++++++++++++++++---
- 1 file changed, 32 insertions(+), 3 deletions(-)
+ Makefile | 34 ++++++++++++++++++++++++++++++++--
+ 1 file changed, 32 insertions(+), 2 deletions(-)
 
 diff --git a/Makefile b/Makefile
-index 3c5949418789b1525c8df26cfad02876730b8c53..5c07efcef76313e645ecb97e153cc28023cb9846 100644
+index 3f298c9cd5f991fa394749215e4ec3665434ad9a..9d368d669d3f1d21486ed93bf3ac77c1625adde8 100644
 --- a/Makefile
 +++ b/Makefile
-@@ -29,19 +29,32 @@
+@@ -29,20 +29,34 @@
  ### Code:
  
  .POSIX:
@@ -39,7 +39,8 @@ index 3c5949418789b1525c8df26cfad02876730b8c53..5c07efcef76313e645ecb97e153cc280
  	compat-27.elc \
  	compat-28.elc \
  	compat-29.elc \
--	compat.elc \
+ 	compat-30.elc \
+ 	compat.elc \
 +	compat.elc
 +DEVELOPMENT = \
  	compat-macs.elc \
@@ -51,7 +52,7 @@ index 3c5949418789b1525c8df26cfad02876730b8c53..5c07efcef76313e645ecb97e153cc280
  
  all: compile
  
-@@ -73,6 +86,22 @@ check:
+@@ -74,6 +88,22 @@ check:
  		sort | uniq > /tmp/compat-links
  	@ (diff /tmp/compat-defs /tmp/compat-defs)
  

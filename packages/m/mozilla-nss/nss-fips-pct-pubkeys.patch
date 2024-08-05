@@ -5,15 +5,7 @@ Index: nss/lib/softoken/pkcs11c.c
 ===================================================================
 --- nss.orig/lib/softoken/pkcs11c.c
 +++ nss/lib/softoken/pkcs11c.c
-@@ -20,6 +20,7 @@
- 
- #include <limits.h> /* for UINT_MAX and ULONG_MAX */
- 
-+#include "lowkeyti.h"
- #include "seccomon.h"
- #include "secitem.h"
- #include "secport.h"
-@@ -4965,6 +4966,88 @@ pairwise_signverify_mech (CK_SESSION_HAN
+@@ -5020,6 +5020,88 @@ pairwise_signverify_mech (CK_SESSION_HAN
      return crv;
  }
  
@@ -102,7 +94,7 @@ Index: nss/lib/softoken/pkcs11c.c
  /*
   * FIPS 140-2 pairwise consistency check utilized to validate key pair.
   *
-@@ -5311,6 +5394,30 @@ sftk_PairwiseConsistencyCheck(CK_SESSION
+@@ -5370,6 +5452,30 @@ sftk_PairwiseConsistencyCheck(CK_SESSION
          }
      }
  

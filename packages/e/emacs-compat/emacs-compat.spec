@@ -20,7 +20,7 @@
 %global _name    compat
 
 Name:           emacs-%{_name}
-Version:        29.1.4.5
+Version:        30.0.0.0
 Release:        0
 Summary:        COMPATibility Library for Emacs Lisp
 License:        GPL-3.0-or-later
@@ -35,10 +35,14 @@ BuildRequires:  make
 BuildRequires:  makeinfo
 Requires:       emacs
 Supplements:    emacs
-Requires(post): %{install_info_prereq}
-Requires(preun): %{install_info_prereq}
+%if 0%{?suse_version} <= 1600
+Requires(post): %install_info_prereq
+Requires(preun): %install_info_prereq
+%endif
 # PATCH-FEATURE-UPSTREAM install targets PR 30
 Patch1:         0001-Add-install-target.patch
+# # PATCH-FEATURE-UPSTREAM Fix Texinfo references PR 49
+Patch2:         0002-compat.texi-Fix-references-to-Emacs-30.1-in-Support-.patch
 
 %description
 compat.el, the forwards-compatibility library for (GNU) Emacs Lisp, versions 24.4 and newer. The intended audience are package developers that are interested in using newer developments, without having to break compatibility.
@@ -52,11 +56,15 @@ compat.el, the forwards-compatibility library for (GNU) Emacs Lisp, versions 24.
 %install
 %make_install
 
+%check
+
+%if 0%{?suse_version} >= 1600
 %post
 %install_info --info-dir=%{_infodir} %{_infodir}/%{_name}.info.gz
 
 %preun
 %install_info_delete --info-dir=%{_infodir} %{_infodir}/%{_name}.info.gz
+%endif
 
 %files
 %doc README.md

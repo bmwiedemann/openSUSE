@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Sat Aug 03 08:26:20 UTC 2024 - pdostal@suse.com
+
+- Reenable TestGetTrustedRoot test
+- Update to version 2.54.0:
+  * update test and remove logic to check SourceRepositoryOwnerURI is empty string
+  * update test
+  * minor fix
+  * update test
+  * added
+  * handle attest case insensitivity
+  * Fix missing variable
+  * Use closure-scoped variable to catch `--remove-milestone` option
+  * Use closure-scoped variable to catch `--remove-milestone` option
+  * build(deps): bump github.com/google/go-containerregistry
+  * Verify `--milestone` and `--remove-milestone` are not assignable at the same time
+  * Assert correct parsing of `--remove-milestone` option
+  * Verify `--body` and `--body-file` are not assignable at the same time
+  * Add `--remove-milestone` option
+  * Improve `--remove-milestone` option description
+  * Point to `Editable.MilestoneId` method
+  * build(deps): bump github.com/gabriel-vasile/mimetype from 1.4.4 to 1.4.5
+  * Update sigstore-go in gh CLI to v0.5.1 (#9366)
+  * Handle `--bare` clone targets (#9271)
+  * Slightly clarify when CLI will exit with 4
+  * Export databaseId for releases
+  * Alphabetise release json fields
+  * Add test for release view json export fields
+  * Expose fullDatabaseId for PR json export
+  * Add examples for template usage in PR and issue creation
+  * document exit code behavior
+  * Update documentation for gh api PATCH
+  * Exit with 1 on authentication failure
+  * Verify `--milestone` and `--remove-milestone` are not assignable at the same time
+  * Assert correct parsing of `--remove-milestone` option
+  * Add `--remove-milestone` option
+  * Remove unused expected `output` from test case (with `wantsErr: true`)
+  * Verify `--body` and `--body-file` are not assignable at the same time
+  * Remove attestation test that requires being online (#9340)
+  * Remove redundant whitespace
+
+-------------------------------------------------------------------
 Thu Jul 18 14:05:15 UTC 2024 - pdostal@suse.com
 
 - Update to version 2.53.0:

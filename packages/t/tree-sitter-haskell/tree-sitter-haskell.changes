@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Aug 03 16:06:12 UTC 2024 - Björn Bidar <bjorn.bidar@thaodan.de>
+
+- Update to version 0.21.0:
+  * refactor(scanner): use alloc and array header, and rely on `TREE_SITTER_DEBUG` for debugging
+  * fix: allow imports after the first declaration for resilience
+  * Rewrite the grammar once again.
+
+-------------------------------------------------------------------
 Mon Feb 26 16:03:35 UTC 2024 - Björn Bidar <bjorn.bidar@thaodan.de>
 
 - Update to version 0.15.0:

@@ -208,4 +208,16 @@
   * Introducing thumbview context-menu.</comment>
     <requestid>1183918</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>78d1c93ee226d73d3f35c7f96aa36a16</srcmd5>
+    <version>0.7.5</version>
+    <time>1722871295</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.7.5:
+  * Implement patchbay node search functionality: adds a floating
+    text-entry field, which appears when typing in the canvas,
+    selecting nodes that contains the typed text (maybe regular
+    expression).</comment>
+    <requestid>1191535</requestid>
+  </revision>
 </revisionlist>

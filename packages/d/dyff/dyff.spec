@@ -19,7 +19,7 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           dyff
-Version:        1.8.1
+Version:        1.9.0
 Release:        0
 Summary:        Diff tool for YAML files, and sometimes JSON
 License:        MIT

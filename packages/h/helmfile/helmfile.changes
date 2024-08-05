@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Aug  4 06:42:45 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 0.167.1:
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.55.3 to
+    1.55.4 by @dependabot in #1649
+  * fix(oci): use output-dir-template in path if specified by
+    @henkka in #1648
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.55.4 to
+    1.55.5 by @dependabot in #1651
+  * build(deps): helm-s3: v0.16.0 -> v0.16.2 by @yxxhero in #1652
+
+-------------------------------------------------------------------
 Wed Jul 31 07:41:07 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 0.167.0:

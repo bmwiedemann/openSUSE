@@ -449,7 +449,7 @@ Index: nss/lib/freebl/fips.h
 ===================================================================
 --- /dev/null
 +++ nss/lib/freebl/fips.h
-@@ -0,0 +1,16 @@
+@@ -0,0 +1,15 @@
 +/*
 + * PKCS #11 FIPS Power-Up Self Test.
 + *
@@ -462,7 +462,6 @@ Index: nss/lib/freebl/fips.h
 +
 +int	FIPS_mode(void);
 +int	FIPS_mode_allow_tests(void);
-+char*	FIPS_rngDev(void);
 +
 +#endif
 +
@@ -484,7 +483,94 @@ Index: nss/lib/freebl/fipsfreebl.c
  /*
   * different platforms have different ways of calling and initial entry point
   * when the dll/.so is loaded. Most platforms support either a posix pragma
-@@ -1807,17 +1814,19 @@ freebl_fips_RNG_PowerUpSelfTest(void)
+@@ -1663,38 +1670,39 @@ freebl_fips_DH_PowerUpSelfTest(void)
+ {
+     /* DH Known P (2048-bits) */
+     static const PRUint8 dh_known_P[] = {
+-        0xc2, 0x79, 0xbb, 0x76, 0x32, 0x0d, 0x43, 0xfd,
+-        0x1b, 0x8c, 0xa2, 0x3c, 0x00, 0xdd, 0x6d, 0xef,
+-        0xf8, 0x1a, 0xd9, 0xc1, 0xa2, 0xf5, 0x73, 0x2b,
+-        0xdb, 0x1a, 0x3e, 0x84, 0x90, 0xeb, 0xe7, 0x8e,
+-        0x5f, 0x5c, 0x6b, 0xb6, 0x61, 0x89, 0xd1, 0x03,
+-        0xb0, 0x5f, 0x91, 0xe4, 0xd2, 0x82, 0x90, 0xfc,
+-        0x3c, 0x49, 0x69, 0x59, 0xc1, 0x51, 0x6a, 0x85,
+-        0x71, 0xe7, 0x5d, 0x72, 0x5a, 0x45, 0xad, 0x01,
+-        0x6f, 0x82, 0xae, 0xec, 0x91, 0x08, 0x2e, 0x7c,
+-        0x64, 0x93, 0x46, 0x1c, 0x68, 0xef, 0xc2, 0x03,
+-        0x28, 0x1d, 0x75, 0x3a, 0xeb, 0x9c, 0x46, 0xf0,
+-        0xc9, 0xdb, 0x99, 0x95, 0x13, 0x66, 0x4d, 0xd5,
+-        0x1a, 0x78, 0x92, 0x51, 0x89, 0x72, 0x28, 0x7f,
+-        0x20, 0x70, 0x41, 0x49, 0xa2, 0x86, 0xe9, 0xf9,
+-        0x78, 0x5f, 0x8d, 0x2e, 0x5d, 0xfa, 0xdb, 0x57,
+-        0xd4, 0x71, 0xdf, 0x66, 0xe3, 0x9e, 0x88, 0x70,
+-        0xa4, 0x21, 0x44, 0x6a, 0xc7, 0xae, 0x30, 0x2c,
+-        0x9c, 0x1f, 0x91, 0x57, 0xc8, 0x24, 0x34, 0x2d,
+-        0x7a, 0x4a, 0x43, 0xc2, 0x5f, 0xab, 0x64, 0x2e,
+-        0xaa, 0x28, 0x32, 0x95, 0x42, 0x7b, 0xa0, 0xcc,
+-        0xdf, 0xfd, 0x22, 0xc8, 0x56, 0x84, 0xc1, 0x62,
+-        0x15, 0xb2, 0x77, 0x86, 0x81, 0xfc, 0xa5, 0x12,
+-        0x3c, 0xca, 0x28, 0x17, 0x8f, 0x03, 0x16, 0x6e,
+-        0xb8, 0x24, 0xfa, 0x1b, 0x15, 0x02, 0xfd, 0x8b,
+-        0xb6, 0x0a, 0x1a, 0xf7, 0x47, 0x41, 0xc5, 0x2b,
+-        0x37, 0x3e, 0xa1, 0xbf, 0x68, 0xda, 0x1c, 0x55,
+-        0x44, 0xc3, 0xee, 0xa1, 0x63, 0x07, 0x11, 0x3b,
+-        0x5f, 0x00, 0x84, 0xb4, 0xc4, 0xe4, 0xa7, 0x97,
+-        0x29, 0xf8, 0xce, 0xab, 0xfc, 0x27, 0x3e, 0x34,
+-        0xe4, 0xc7, 0x81, 0x52, 0x32, 0x0e, 0x27, 0x3c,
+-        0xa6, 0x70, 0x3f, 0x4a, 0x54, 0xda, 0xdd, 0x60,
+-        0x26, 0xb3, 0x6e, 0x45, 0x26, 0x19, 0x41, 0x6f
++        0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
++        0xAD, 0xF8, 0x54, 0x58, 0xA2, 0xBB, 0x4A, 0x9A,
++        0xAF, 0xDC, 0x56, 0x20, 0x27, 0x3D, 0x3C, 0xF1,
++        0xD8, 0xB9, 0xC5, 0x83, 0xCE, 0x2D, 0x36, 0x95,
++        0xA9, 0xE1, 0x36, 0x41, 0x14, 0x64, 0x33, 0xFB,
++        0xCC, 0x93, 0x9D, 0xCE, 0x24, 0x9B, 0x3E, 0xF9,
++        0x7D, 0x2F, 0xE3, 0x63, 0x63, 0x0C, 0x75, 0xD8,
++        0xF6, 0x81, 0xB2, 0x02, 0xAE, 0xC4, 0x61, 0x7A,
++        0xD3, 0xDF, 0x1E, 0xD5, 0xD5, 0xFD, 0x65, 0x61,
++        0x24, 0x33, 0xF5, 0x1F, 0x5F, 0x06, 0x6E, 0xD0,
++        0x85, 0x63, 0x65, 0x55, 0x3D, 0xED, 0x1A, 0xF3,
++        0xB5, 0x57, 0x13, 0x5E, 0x7F, 0x57, 0xC9, 0x35,
++        0x98, 0x4F, 0x0C, 0x70, 0xE0, 0xE6, 0x8B, 0x77,
++        0xE2, 0xA6, 0x89, 0xDA, 0xF3, 0xEF, 0xE8, 0x72,
++        0x1D, 0xF1, 0x58, 0xA1, 0x36, 0xAD, 0xE7, 0x35,
++        0x30, 0xAC, 0xCA, 0x4F, 0x48, 0x3A, 0x79, 0x7A,
++        0xBC, 0x0A, 0xB1, 0x82, 0xB3, 0x24, 0xFB, 0x61,
++        0xD1, 0x08, 0xA9, 0x4B, 0xB2, 0xC8, 0xE3, 0xFB,
++        0xB9, 0x6A, 0xDA, 0xB7, 0x60, 0xD7, 0xF4, 0x68,
++        0x1D, 0x4F, 0x42, 0xA3, 0xDE, 0x39, 0x4D, 0xF4,
++        0xAE, 0x56, 0xED, 0xE7, 0x63, 0x72, 0xBB, 0x19,
++        0x0B, 0x07, 0xA7, 0xC8, 0xEE, 0x0A, 0x6D, 0x70,
++        0x9E, 0x02, 0xFC, 0xE1, 0xCD, 0xF7, 0xE2, 0xEC,
++        0xC0, 0x34, 0x04, 0xCD, 0x28, 0x34, 0x2F, 0x61,
++        0x91, 0x72, 0xFE, 0x9C, 0xE9, 0x85, 0x83, 0xFF,
++        0x8E, 0x4F, 0x12, 0x32, 0xEE, 0xF2, 0x81, 0x83,
++        0xC3, 0xFE, 0x3B, 0x1B, 0x4C, 0x6F, 0xAD, 0x73,
++        0x3B, 0xB5, 0xFC, 0xBC, 0x2E, 0xC2, 0x20, 0x05,
++        0xC5, 0x8E, 0xF1, 0x83, 0x7D, 0x16, 0x83, 0xB2,
++        0xC6, 0xF3, 0x4A, 0x26, 0xC1, 0xB2, 0xEF, 0xFA,
++        0x88, 0x6B, 0x42, 0x38, 0x61, 0x28, 0x5C, 0x97,
++        0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF
++
+     };
+ 
+     static const PRUint8 dh_known_Y_1[] = {
+@@ -1740,10 +1748,10 @@ freebl_fips_DH_PowerUpSelfTest(void)
+     };
+ 
+     static const PRUint8 dh_known_hash_result[] = {
+-        0x93, 0xa2, 0x89, 0x1c, 0x8a, 0xc3, 0x70, 0xbf,
+-        0xa7, 0xdf, 0xb6, 0xd7, 0x82, 0xfb, 0x87, 0x81,
+-        0x09, 0x47, 0xf3, 0x9f, 0x5a, 0xbf, 0x4f, 0x3f,
+-        0x8e, 0x5e, 0x06, 0xca, 0x30, 0xa7, 0xaf, 0x10
++        0x40, 0xe3, 0x7a, 0x34, 0x83, 0x2d, 0x94, 0x57,
++        0x99, 0x3d, 0x66, 0xec, 0x54, 0xdf, 0x82, 0x4a,
++        0x37, 0x0d, 0xf9, 0x01, 0xb3, 0xbc, 0x54, 0xe5,
++        0x5e, 0x63, 0xd3, 0x46, 0x4e, 0xa3, 0xe2, 0x8a
+     };
+ 
+     /* DH variables. */
+@@ -1807,17 +1815,19 @@ freebl_fips_RNG_PowerUpSelfTest(void)
      return (SECSuccess);
  }
  
@@ -505,7 +591,7 @@ Index: nss/lib/freebl/fipsfreebl.c
  
  #define DO_FREEBL 1
  #define DO_REST 2
-@@ -1929,11 +1938,13 @@ static PRBool self_tests_ran = PR_FALSE;
+@@ -1929,11 +1939,13 @@ static PRBool self_tests_ran = PR_FALSE;
  static PRBool self_tests_freebl_success = PR_FALSE;
  static PRBool self_tests_success = PR_FALSE;
  
@@ -520,7 +606,7 @@ Index: nss/lib/freebl/fipsfreebl.c
  {
      SECStatus rv;
      /* if the freebl self tests didn't run, there is something wrong with
-@@ -1946,7 +1957,7 @@ BL_POSTRan(PRBool freebl_only)
+@@ -1946,7 +1958,7 @@ BL_POSTRan(PRBool freebl_only)
          return PR_TRUE;
      }
      /* if we only care about the freebl tests, we are good */
@@ -529,7 +615,7 @@ Index: nss/lib/freebl/fipsfreebl.c
          return PR_TRUE;
      }
      /* run the rest of the self tests */
-@@ -1965,32 +1976,16 @@ BL_POSTRan(PRBool freebl_only)
+@@ -1965,32 +1977,16 @@ BL_POSTRan(PRBool freebl_only)
      return PR_TRUE;
  }
  
@@ -567,7 +653,7 @@ Index: nss/lib/freebl/fipsfreebl.c
      self_tests_freebl_ran = PR_TRUE; /* we are running the tests */
  
      if (!freebl_only) {
-@@ -2002,20 +1997,55 @@ bl_startup_tests(void)
+@@ -2002,20 +1998,55 @@ bl_startup_tests(void)
      /* always run the post tests */
      rv = freebl_fipsPowerUpSelfTest(freebl_only ? DO_FREEBL : DO_FREEBL | DO_REST);
      if (rv != SECSuccess) {
@@ -625,7 +711,7 @@ Index: nss/lib/freebl/fipsfreebl.c
  }
  
  /*
-@@ -2024,19 +2054,12 @@ bl_startup_tests(void)
+@@ -2024,19 +2055,12 @@ bl_startup_tests(void)
   * power on selftest failed.
   */
  SECStatus
@@ -647,7 +733,7 @@ Index: nss/lib/freebl/fipsfreebl.c
      if (rerun) {
          /* reset the flags */
          self_tests_freebl_ran = PR_FALSE;
-@@ -2050,10 +2073,104 @@ BL_FIPSEntryOK(PRBool freebl_only, PRBoo
+@@ -2050,10 +2074,89 @@ BL_FIPSEntryOK(PRBool freebl_only, PRBoo
          return SECSuccess;
      }
      /* standalone freebl can initialize */
@@ -705,21 +791,6 @@ Index: nss/lib/freebl/fipsfreebl.c
 +    fips = (-1 != fips_state) ? fips_state : 0;
 +
 +    return fips;
-+}
-+
-+/* returns string specifying what system RNG file to use for seeding */
-+char *
-+FIPS_rngDev(void)
-+{
-+    switch (FIPS_mode()) {
-+	case 0:
-+            return RNG_DEV_FIPS0;
-+	case 1:
-+            return RNG_DEV_FIPS1;
-+	default:
-+	    fatal("Fatal error: internal error at %s:%u"
-+		, __FILE__, __LINE__);
-+    }
 +}
 +
 +/* either returns the input or aborts if in FIPS and the algorithm is not
@@ -861,7 +932,7 @@ Index: nss/lib/freebl/manifest.mn
  	$(NULL)
  
  MPI_HDRS = mpi-config.h mpi.h mpi-priv.h mplogic.h mpprime.h logtab.h mp_gf2m.h
-@@ -198,6 +199,7 @@ ALL_HDRS =  \
+@@ -194,6 +195,7 @@ ALL_HDRS =  \
  	shsign.h \
  	vis_proto.h \
  	seed.h \
@@ -1110,7 +1181,7 @@ Index: nss/lib/softoken/fipstest.c
 ===================================================================
 --- nss.orig/lib/softoken/fipstest.c
 +++ nss/lib/softoken/fipstest.c
-@@ -683,6 +683,327 @@ sftk_fips_HKDF_PowerUpSelfTest(void)
+@@ -683,6 +683,175 @@ sftk_fips_HKDF_PowerUpSelfTest(void)
      return (SECSuccess);
  }
  
@@ -1283,162 +1354,10 @@ Index: nss/lib/softoken/fipstest.c
 +    return (SECSuccess);
 +}
 +
-+#define FIPS_ECDSA_DIGEST_LENGTH 28    /*  224-bits */
-+#define FIPS_ECDSA_SIGNATURE_LENGTH 64 /*  512-bits */
-+
-+/* Similar to freebl_fips_ECDSA_PowerUpSelfTest, but using ECDSA_HashSign() */
-+static SECStatus
-+sftk_fips_ECDSA_PowerUpSelfTest(void)
-+{
-+    /* EC Known curve nistp256 == ECCCurve_X9_62_PRIME_256V1 params */
-+    static const unsigned char p256_prime[] = {
-+        0xFF, 0xFF, 0xFF, 0xFF, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00,
-+        0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
-+        0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF
-+    };
-+    static const unsigned char p256_a[] = {
-+        0xFF, 0xFF, 0xFF, 0xFF, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00,
-+        0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
-+        0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFC
-+    };
-+    static const unsigned char p256_b[] = {
-+        0x5A, 0xC6, 0x35, 0xD8, 0xAA, 0x3A, 0x93, 0xE7, 0xB3, 0xEB, 0xBD, 0x55, 0x76,
-+        0x98, 0x86, 0xBC, 0x65, 0x1D, 0x06, 0xB0, 0xCC, 0x53, 0xB0, 0xF6, 0x3B, 0xCE,
-+        0x3C, 0x3E, 0x27, 0xD2, 0x60, 0x4B
-+    };
-+    static const unsigned char p256_base[] = {
-+        0x04,
-+        0x6B, 0x17, 0xD1, 0xF2, 0xE1, 0x2C, 0x42, 0x47, 0xF8, 0xBC, 0xE6, 0xE5, 0x63,
-+        0xA4, 0x40, 0xF2, 0x77, 0x03, 0x7D, 0x81, 0x2D, 0xEB, 0x33, 0xA0, 0xF4, 0xA1,
-+        0x39, 0x45, 0xD8, 0x98, 0xC2, 0x96,
-+        0x4F, 0xE3, 0x42, 0xE2, 0xFE, 0x1A, 0x7F, 0x9B, 0x8E, 0xE7, 0xEB, 0x4A, 0x7C,
-+        0x0F, 0x9E, 0x16, 0x2B, 0xCE, 0x33, 0x57, 0x6B, 0x31, 0x5E, 0xCE, 0xCB, 0xB6,
-+        0x40, 0x68, 0x37, 0xBF, 0x51, 0xF5
-+    };
-+    static const unsigned char p256_order[] = {
-+        0xFF, 0xFF, 0xFF, 0xFF, 0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
-+        0xFF, 0xFF, 0xFF, 0xBC, 0xE6, 0xFA, 0xAD, 0xA7, 0x17, 0x9E, 0x84, 0xF3, 0xB9,
-+        0xCA, 0xC2, 0xFC, 0x63, 0x25, 0x51
-+    };
-+    static const unsigned char p256_encoding[] = {
-+        0x06, 0x08, 0x2a, 0x86, 0x48, 0xce, 0x3d, 0x03, 0x01, 0x07
-+    };
-+    static ECParams ec_known_P256_Params = {
-+        NULL, ec_params_named,                                               /* arena, type */
-+                                                                             /* fieldID */
-+        { 256, ec_field_plain,                                               /* size and type */
-+          { { siBuffer, (unsigned char *)p256_prime, sizeof(p256_prime) } }, /* u.prime */
-+          0,
-+          0,
-+          0 },
-+        /* curve */
-+        { /* a = curvea b = curveb */
-+          /* curve.a */
-+          { siBuffer, (unsigned char *)p256_a, sizeof(p256_a) },
-+          /* curve.b */
-+          { siBuffer, (unsigned char *)p256_b, sizeof(p256_b) },
-+          /* curve.seed */
-+          { siBuffer, NULL, 0 } },
-+        /* base  = 04xy*/
-+        { siBuffer, (unsigned char *)p256_base, sizeof(p256_base) },
-+        /* order */
-+        { siBuffer, (unsigned char *)p256_order, sizeof(p256_order) },
-+        1, /* cofactor */
-+        /* DEREncoding */
-+        { siBuffer, (unsigned char *)p256_encoding, sizeof(p256_encoding) },
-+        ECCurve_X9_62_PRIME_256V1,
-+        /* curveOID */
-+        { siBuffer, (unsigned char *)(p256_encoding) + 2, sizeof(p256_encoding) - 2 },
-+    };
-+    /* ECDSA Known Seed info for curves nistp256 and nistk283  */
-+    static const PRUint8 ecdsa_Known_Seed[] = {
-+        0x6a, 0x9b, 0xf6, 0xf7, 0xce, 0xed, 0x79, 0x11,
-+        0xf0, 0xc7, 0xc8, 0x9a, 0xa5, 0xd1, 0x57, 0xb1,
-+        0x7b, 0x5a, 0x3b, 0x76, 0x4e, 0x7b, 0x7c, 0xbc,
-+        0xf2, 0x76, 0x1c, 0x1c, 0x7f, 0xc5, 0x53, 0x2f
-+    };
-+    /* ECDSA Known Digest (224-bits) */
-+    static const PRUint8 ecdsa_known_digest[] = { "ECDSA Signature Digest, Longer" };
-+    /* ECDSA variables. */
-+    ECPrivateKey *ecdsa_private_key;
-+    SECStatus ecdsa_status;
-+    SECItem ecdsa_signature_item;
-+    SECItem ecdsa_digest_item;
-+    ECPublicKey ecdsa_public_key;
-+    PRUint8 ecdsa_computed_signature[2 * MAX_ECKEY_LEN];
-+    NSSLOWKEYPrivateKey lowkey_priv;
-+
-+    /*********************************************/
-+    /* Generate an ECDSA public/private key pair */
-+    /*********************************************/
-+
-+    ecdsa_status = EC_NewKeyFromSeed(&ec_known_P256_Params,
-+                                     &ecdsa_private_key,
-+                                     ecdsa_Known_Seed,
-+                                     sizeof (ecdsa_Known_Seed));
-+
-+    if (ecdsa_status != SECSuccess) {
-+        PORT_SetError(SEC_ERROR_NO_MEMORY);
-+        return (SECFailure);
-+    }
-+
-+    /* Construct public key from private key. */
-+    ecdsa_public_key.ecParams = ecdsa_private_key->ecParams;
-+    ecdsa_public_key.publicValue = ecdsa_private_key->publicValue;
-+
-+    /* Validate public key value. */
-+    ecdsa_status = EC_ValidatePublicKey(&ecdsa_public_key.ecParams,
-+                                        &ecdsa_public_key.publicValue);
-+    if (ecdsa_status != SECSuccess) {
-+        goto loser;
-+    }
-+
-+    /***********************************/
-+    /* ECDSA pairwise consistency test */
-+    /***********************************/
-+
-+    ecdsa_signature_item.data = ecdsa_computed_signature;
-+    ecdsa_signature_item.len = sizeof ecdsa_computed_signature;
-+
-+    ecdsa_digest_item.data = (unsigned char *)ecdsa_known_digest;
-+    ecdsa_digest_item.len = SHA224_LENGTH;
-+
-+    /* Perform ECDSA signature process. */
-+    lowkey_priv.u.ec = *ecdsa_private_key;
-+    ecdsa_status = ECDSA_HashSign (SEC_OID_SHA224, &lowkey_priv,
-+                                   ecdsa_signature_item.data, &ecdsa_signature_item.len,
-+                                   sizeof ecdsa_computed_signature,
-+                                   ecdsa_digest_item.data, SHA224_LENGTH);
-+
-+    /* Check that operation succeeded and that signature is different from hash */
-+    if ((ecdsa_status != SECSuccess) ||
-+        (ecdsa_signature_item.len != FIPS_ECDSA_SIGNATURE_LENGTH) ||
-+        (PORT_Memcmp(ecdsa_computed_signature, ecdsa_known_digest,
-+                     PR_MIN (FIPS_ECDSA_SIGNATURE_LENGTH, FIPS_ECDSA_DIGEST_LENGTH)) == 0)) {
-+        ecdsa_status = SECFailure;
-+    } else {
-+        /* Perform ECDSA verification process. */
-+        ecdsa_status = ECDSA_VerifyDigest(&ecdsa_public_key,
-+                                          &ecdsa_signature_item,
-+                                          &ecdsa_digest_item);
-+    }
-+
-+loser:
-+    /* Free the memory for the private key arena */
-+    PORT_FreeArena(ecdsa_private_key->ecParams.arena, PR_FALSE);
-+
-+    if (ecdsa_status != SECSuccess) {
-+        PORT_SetError(SEC_ERROR_LIBRARY_FAILURE);
-+        return SECFailure;
-+    }
-+
-+    return (SECSuccess);
-+}
-+
  static PRBool sftk_self_tests_ran = PR_FALSE;
  static PRBool sftk_self_tests_success = PR_FALSE;
  
-@@ -694,7 +1015,6 @@ void
+@@ -694,7 +863,6 @@ void
  sftk_startup_tests_with_rerun(PRBool rerun)
  {
      SECStatus rv;
@@ -1446,7 +1365,7 @@ Index: nss/lib/softoken/fipstest.c
  
      PORT_Assert(!sftk_self_tests_ran);
      PORT_Assert(!sftk_self_tests_success);
-@@ -706,6 +1026,7 @@ sftk_startup_tests_with_rerun(PRBool rer
+@@ -706,6 +874,7 @@ sftk_startup_tests_with_rerun(PRBool rer
      if (rv != SECSuccess) {
          return;
      }
@@ -1454,7 +1373,7 @@ Index: nss/lib/softoken/fipstest.c
      /* make sure freebl is initialized, or our RSA check
       * may fail. This is normally done at freebl load time, but it's
       * possible we may have shut freebl down without unloading it. */
-@@ -723,12 +1044,21 @@ sftk_startup_tests_with_rerun(PRBool rer
+@@ -723,12 +892,15 @@ sftk_startup_tests_with_rerun(PRBool rer
      if (rv != SECSuccess) {
          return;
      }
@@ -1469,18 +1388,12 @@ Index: nss/lib/softoken/fipstest.c
          return;
      }
 +
-+    /* check the ECDSA combined functions in softoken */
-+    rv = sftk_fips_ECDSA_PowerUpSelfTest();
-+    if (rv != SECSuccess) {
-+        return;
-+    }
-+
 +    /* Checksum is done by fips_initTestSoftoken() in fips.c */
 +
      rv = sftk_fips_IKE_PowerUpSelfTests();
      if (rv != SECSuccess) {
          return;
-@@ -766,17 +1096,10 @@ sftk_startup_tests(void)
+@@ -766,17 +938,10 @@ sftk_startup_tests(void)
  CK_RV
  sftk_FIPSEntryOK(PRBool rerun)
  {
@@ -1499,7 +1412,7 @@ Index: nss/lib/softoken/fipstest.c
      if (rerun) {
          sftk_self_tests_ran = PR_FALSE;
          sftk_self_tests_success = PR_FALSE;
-@@ -787,6 +1110,17 @@ sftk_FIPSEntryOK(PRBool rerun)
+@@ -787,6 +952,17 @@ sftk_FIPSEntryOK(PRBool rerun)
      }
      return CKR_OK;
  }
@@ -1632,7 +1545,7 @@ Index: nss/lib/freebl/ldvector.c
      ED_VerifyMessage,
      ED_DerivePublicKey,
      /* End of version 3.028 */
-+    
++
 +    /* SUSE patch: Goes last */
 +    BL_FIPSRepeatIntegrityCheck
  };

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jul 29 00:00:00 UTC 2024 - Gordon Leung <pirateclip@protonmail.com>
+
+- Bump constraints, zsystems still keeps failing due to OOM
+
+-------------------------------------------------------------------
 Tue Jun 25 19:47:54 UTC 2024 - Gordon Leung <pirateclip@protonmail.com>
 
 - Add _constraints to stop s390x out of memory build fails

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Aug  1 20:25:14 UTC 2024 - Michael Gorse <mgorse@suse.com>
+
+- Add CVE fixes:
+  + webkit2gtk3-CVE-2024-40776.patch (boo#1228613 CVE-2024-40776)
+  + webkit2gtk3-CVE-2024-40779.patch (boo#1228693 CVE-2024-40779)
+  + webkit2gtk3-CVE-2024-40780.patch (boo#1228694 CVE-2024-40780)
+  + webkit2gtk3-CVE-2024-40782.patch (boo#1228695 CVE-2024-40782)
+
+-------------------------------------------------------------------
 Tue Jul  2 21:39:04 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add 9d5844679af8f84036f1b800307e799bd7ab73ba.patch VA+DMABuf

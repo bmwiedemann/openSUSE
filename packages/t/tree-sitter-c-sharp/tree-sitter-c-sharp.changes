@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Aug 03 15:55:02 UTC 2024 - Björn Bidar <bjorn.bidar@thaodan.de>
+
+- Update to version 0.21.3:
+  * fix(scanner): correct max serialization size check
+  * fix: don't push verbatim interpolations to the stack early
+  * fix: allow optional trailing commands in bracketed_argument_list
+  * fix: verbatim content with double quotes
+
+-------------------------------------------------------------------
 Sun Jul 07 13:56:35 UTC 2024 - Björn Bidar <bjorn.bidar@thaodan.de>
 
 - Update to version 0.21.2:

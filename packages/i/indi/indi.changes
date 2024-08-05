@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Aug  2 12:30:08 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 2.0.9:
+  * Minor buffer boundary fixes
+  * Weather watcher dynamic labels
+  * PegasusAstro FalconV2 Driver
+  * Add Terrans PowerBoxPro V2 Driver
+  * Waveshare Modbus Relay Drive
+  * Universal Roll off roof driver
+  * ZWO AM5 Save home position in the mount
+
+-------------------------------------------------------------------
 Mon Jun 10 07:05:24 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 2.0.8:

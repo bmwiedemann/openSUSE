@@ -239,4 +239,12 @@ Sorry - I missed that on the previous fixup. Now we should be good for sysusers 
     <comment></comment>
     <requestid>1173063</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>39e269f34636a2d6d32ff7885ab1f4e8</srcmd5>
+    <version>2.2.0</version>
+    <time>1722871324</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1191591</requestid>
+  </revision>
 </revisionlist>

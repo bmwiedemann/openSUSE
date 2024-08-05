@@ -130,4 +130,13 @@ Needs SR#1093175</comment>
     <comment>rnp 0.17.1</comment>
     <requestid>1190050</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>fbecaaecd3a31fd8e1380b16df533f06</srcmd5>
+    <version>0.17.1</version>
+    <time>1722871268</time>
+    <user>dimstar_suse</user>
+    <comment>- Build with Botan 3 on Tumbleweed
+</comment>
+    <requestid>1191411</requestid>
+  </revision>
 </revisionlist>

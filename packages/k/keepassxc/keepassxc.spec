@@ -2,6 +2,7 @@
 # spec file for package keepassxc
 #
 # Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -67,7 +68,6 @@ BuildRequires:  pkgconfig(Qt5Test)
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(Qt5X11Extras)
 BuildRequires:  pkgconfig(bash-completion)
-BuildRequires:  pkgconfig(botan-2) >= 2.11.0
 BuildRequires:  pkgconfig(libargon2)
 BuildRequires:  pkgconfig(libpcsclite)
 BuildRequires:  pkgconfig(libqrencode)
@@ -76,6 +76,11 @@ BuildRequires:  pkgconfig(xi)
 BuildRequires:  pkgconfig(xtst)
 BuildRequires:  pkgconfig(zlib) >= 1.2.0
 BuildRequires:  readline-devel
+%if 0%{?suse_version} > 1600
+BuildRequires:  pkgconfig(botan-3)
+%else
+BuildRequires:  pkgconfig(botan-2) >= 2.11.0
+%endif
 
 %if %{with keepassxc_cr_recovery}
 BuildRequires:  golang(API)
@@ -152,11 +157,13 @@ for i in $(find %{buildroot} -type f -name \*.svgz) ; do
 done
 %if 0%{?suse_version}
 %fdupes -s %{buildroot}/%{_prefix}
+%endif
 
 %check
 # gh#keepassxreboot/keepassxc#667
 export LANG=en_US.UTF-8
-%ctest -- -E 'test(cli|gui)'
+%if %{with cmake_macros}
+%ctest --exclude-regex 'test(cli|gui)'
 %endif
 
 %if 0%{?suse_version}

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Aug  3 07:23:10 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 3.30.2:
+  * Swift: Fix INSTALL_NAME_DIR under CMP0157 NEW behavior
+  * ExternalProject: Don't add SVN auth args if not set
+  * bug fixes, developer visible fixes and updates to tests
+- drop curl-8.9.0-output.patch
+
+-------------------------------------------------------------------
 Sat Jul 27 05:49:03 UTC 2024 - Christoph G <foss@grueninger.de>
 
 - Add curl-8.9.0-output.patch to fix test for different output

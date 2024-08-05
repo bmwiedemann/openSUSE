@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul 30 13:50:21 UTC 2024 - pgajdos@suse.com
+
+- remove dependency on /usr/bin/python3 using
+  %python3_fix_shebang_path macro, [bsc#1212476]
+
+-------------------------------------------------------------------
 Tue Jun  4 09:48:39 UTC 2024 - Martin Jambor <mjambor@suse.com>
 
 - GCC 14 started to advertise c_atomic extension, older versions

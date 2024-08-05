@@ -7,4 +7,15 @@
     <comment>New package for tree-sitter grammar haskell</comment>
     <requestid>1162323</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>41d2db68036ef84af80eeb81f3fcac45</srcmd5>
+    <version>0.21.0</version>
+    <time>1722871273</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.21.0:
+  * refactor(scanner): use alloc and array header, and rely on `TREE_SITTER_DEBUG` for debugging
+  * fix: allow imports after the first declaration for resilience
+  * Rewrite the grammar once again.</comment>
+    <requestid>1191440</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sat Aug  3 13:53:03 UTC 2024 - hui <sturm-fr@web.de>
+
+- update to 2.2.0:
+  NEW
+    * Configuration for case sensitive media tags (allow making them insensitive)
+    * Configuration options for playlist layout
+    * Configuration option to activate IN_ATTRIB event for, e.g. permission changes on disk incl. retry if that fails
+    * WebUI: New design for home page and login screen
+    * Allow metadata handler to be disabled, add charset support
+    * UPnP specification files (description.xml, cds.xml) now reflect client quirks
+    * Search for upnp:lastPlaybackTime, upnp:playbackCount and play_group
+    * Additional command line options for logging (--syslog and --rotatelog)
+    * TagLib messages are logged with gerbera now. They also show up with debug-mode="taglib".
+    * LibExiv2 messages are logged with gerbera now. They also show up with debug-mode="exiv2".
+    * LibExif messages are logged with gerbera now. They also show up with debug-mode="exif".
+    * ffmpeg messages are logged with gerbera now. They also show up with debug-mode="ffmpeg".
+  FIXES
+    * Album artist handling in default js layout
+    * Build with ffmpegthumbnailer but without ffmpeg
+    * Changed repository for ubuntu and debian to https://pkg.gerbera.io/
+    * Autologout from UI
+    * Finally SIGHUP can be used to reload gerbera without restarting
+
+-------------------------------------------------------------------
 Thu May  9 19:55:55 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.1.0:

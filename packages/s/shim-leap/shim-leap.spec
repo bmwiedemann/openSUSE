@@ -25,12 +25,12 @@
 %endif
 
 Name:           shim-leap
-Version:        15.4
+Version:        15.8
 Release:        0
 Summary:        UEFI shim loader
 License:        BSD-2-Clause
 Group:          System/Boot
-Source:         shim-15.4-lp152.4.17.1.x86_64.rpm
+Source:         shim-15.8-lp155.8.2.x86_64.rpm
 Source1:        README
 Source2:        shim-install
 BuildRequires:  fde-tpm-helper-rpm-macros

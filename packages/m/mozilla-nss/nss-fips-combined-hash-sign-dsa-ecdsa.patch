@@ -68,16 +68,7 @@ Index: nss/lib/softoken/pkcs11c.c
 ===================================================================
 --- nss.orig/lib/softoken/pkcs11c.c
 +++ nss/lib/softoken/pkcs11c.c
-@@ -2677,7 +2677,7 @@ nsc_DSA_Verify_Stub(void *ctx, void *sig
- static SECStatus
- nsc_DSA_Sign_Stub(void *ctx, void *sigBuf,
-                   unsigned int *sigLen, unsigned int maxSigLen,
--                  void *dataBuf, unsigned int dataLen)
-+                  const void *dataBuf, unsigned int dataLen)
- {
-     NSSLOWKEYPrivateKey *key = (NSSLOWKEYPrivateKey *)ctx;
-     SECItem signature = { siBuffer, (unsigned char *)sigBuf, maxSigLen };
-@@ -2690,6 +2690,22 @@ nsc_DSA_Sign_Stub(void *ctx, void *sigBu
+@@ -2744,6 +2744,38 @@ nsc_EDDSASignStub(void *ctx, void *sigBu
      return rv;
  }
  
@@ -97,22 +88,6 @@ Index: nss/lib/softoken/pkcs11c.c
 +    return rv;
 +}
 +
- static SECStatus
- nsc_ECDSAVerifyStub(void *ctx, void *sigBuf, unsigned int sigLen,
-                     void *dataBuf, unsigned int dataLen)
-@@ -2703,7 +2719,7 @@ nsc_ECDSAVerifyStub(void *ctx, void *sig
- static SECStatus
- nsc_ECDSASignStub(void *ctx, void *sigBuf,
-                   unsigned int *sigLen, unsigned int maxSigLen,
--                  void *dataBuf, unsigned int dataLen)
-+                  const void *dataBuf, unsigned int dataLen)
- {
-     NSSLOWKEYPrivateKey *key = (NSSLOWKEYPrivateKey *)ctx;
-     SECItem signature = { siBuffer, (unsigned char *)sigBuf, maxSigLen };
-@@ -2744,6 +2760,22 @@ nsc_EDDSASignStub(void *ctx, void *sigBu
-     return rv;
- }
- 
 +SECStatus
 +ECDSA_HashSign(SECOidTag hashOid, NSSLOWKEYPrivateKey *key,
 +               unsigned char *sig, unsigned int *sigLen, unsigned int maxLen,
@@ -155,7 +130,7 @@ Index: nss/lib/softoken/pkcs11c.c
      switch (pMechanism->mechanism) {
          INIT_RSA_VFY_MECH(MD5)
          INIT_RSA_VFY_MECH(MD2)
-@@ -4904,6 +4952,73 @@ loser:
+@@ -4905,6 +4953,73 @@ loser:
  #define PAIRWISE_DIGEST_LENGTH SHA224_LENGTH /* 224-bits */
  #define PAIRWISE_MESSAGE_LENGTH 20           /* 160-bits */
  
@@ -229,7 +204,7 @@ Index: nss/lib/softoken/pkcs11c.c
  /*
   * FIPS 140-2 pairwise consistency check utilized to validate key pair.
   *
-@@ -4957,8 +5072,6 @@ sftk_PairwiseConsistencyCheck(CK_SESSION
+@@ -4958,8 +5073,6 @@ sftk_PairwiseConsistencyCheck(CK_SESSION
  
      /* Variables used for Signature/Verification functions. */
      /* Must be at least 256 bits for DSA2 digest */
@@ -238,7 +213,7 @@ Index: nss/lib/softoken/pkcs11c.c
      CK_ULONG signature_length;
  
      if (keyType == CKK_RSA) {
-@@ -5112,80 +5225,36 @@ sftk_PairwiseConsistencyCheck(CK_SESSION
+@@ -5113,80 +5226,36 @@ sftk_PairwiseConsistencyCheck(CK_SESSION
          }
      }
  

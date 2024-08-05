@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Fri Aug  2 08:04:51 UTC 2024 - Martin Sirringhaus <martin.sirringhaus@suse.com>
+
+- update to NSS 3.102.1
+  * bmo#1905691 - ChaChaXor to return after the function
+
+- update to NSS 3.102
+  * bmo#1880351 - Add Valgrind annotations to freebl Chacha20-Poly1305.
+  * bmo#1901932 - missing sqlite header.
+  * bmo#1901080 - GLOBALTRUST 2020: Set Distrust After for TLS and S/MIME.
+  * bmo#1615298 - improve certutil keyUsage, extKeyUsage, and nsCertType keyword handling.
+  * bmo#1660676 - correct length of raw SPKI data before printing in pp utility.
+
+-------------------------------------------------------------------
+Mon Jul 29 12:44:11 UTC 2024 - Martin Sirringhaus <martin.sirringhaus@suse.com>
+
+- Require `sed` for mozilla-nss-sysinit, as setup-nsssysinit.sh 
+  depends on it and will create a broken, empty config, if sed is
+  missing (bsc#1227918)
+
+-------------------------------------------------------------------
+Wed Jul 10 13:21:13 UTC 2024 - Hans Petter Jansson <hpj@suse.com>
+
+- Added nss-fips-safe-memset.patch, fixing bsc#1222811.
+- Removed some dead code from nss-fips-constructor-self-tests.patch.
+- Rebased nss-fips-approved-crypto-non-ec.patch on above changes.
+
+- Added nss-fips-aes-gcm-restrict.patch, fixing bsc#1222830.
+- Updated nss-fips-approved-crypto-non-ec.patch, fixing bsc#1222813,
+  bsc#1222814, bsc#1222821, bsc#1222822, bsc#1224118.
+
+- Updated nss-fips-approved-crypto-non-ec.patch and
+  nss-fips-constructor-self-tests.patch, fixing bsc#1222807,
+  bsc#1222828, bsc#1222834.
+
+- Updated nss-fips-approved-crypto-non-ec.patch, fixing bsc#1222804,
+  bsc#1222826, bsc#1222833, bsc#1224113, bsc#1224115, bsc#1224116.
+
+-------------------------------------------------------------------
 Mon Jul  1 09:50:57 UTC 2024 - Martin Sirringhaus <martin.sirringhaus@suse.com>
 
 - update to NSS 3.101.1 

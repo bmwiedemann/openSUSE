@@ -88,4 +88,15 @@
   * correct link to enchant manual (#185)</comment>
     <requestid>1186010</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>c49f0f7825e8934687cb9d31faf615b4</srcmd5>
+    <version>1.10</version>
+    <time>1722871274</time>
+    <user>dimstar_suse</user>
+    <comment>- Rebase p0001-Only-export-necessary-symbols.-Fixes-105.patch
+  against version 1.10
+- Update to version 1.10:
+  * Add jinx--syntax-overrides to override syntax table</comment>
+    <requestid>1191443</requestid>
+  </revision>
 </revisionlist>

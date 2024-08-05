@@ -1,0 +1,6 @@
+<package name="fyi" project="openSUSE:Factory">
+  <title>notify-send alternative</title>
+  <description>FYI (for your information) is a command line utility to send desktop notifications to the user via a notification daemon implementing XDG desktop notifications.</description>
+  <devel project="X11:Utilities" package="fyi"/>
+  <url>https://codeberg.org/dnkl/fyi</url>
+</package>

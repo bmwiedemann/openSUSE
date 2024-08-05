@@ -22,27 +22,29 @@
 %global _lto_cflags %{?_lto_cflags} -ffat-lto-objects
 
 Name:           lsp-plugins
-Version:        1.2.16
+Version:        1.2.17
 Release:        0
 Summary:        Linux Studio Plugins Project (Stand-alone)
 License:        LGPL-3.0-or-later
 Group:          Productivity/Multimedia/Sound/Utilities
 URL:            https://lsp-plug.in/
-Source0:        https://github.com/sadko4u/lsp-plugins/releases/download/%{version}/%{name}-src-%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        https://github.com/sadko4u/lsp-plugins/releases/download/%{version}/%{name}-src-%{version}.7z#/%{name}-%{version}.7z
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  ladspa
 BuildRequires:  ladspa-devel
-%if 0%{?suse_version} >= 1550
-BuildRequires:  php8
+%if 0%{?suse_version} > 1600
+BuildRequires:  7zip
 %else
-BuildRequires:  php7
+BuildRequires:  p7zip-full
 %endif
+BuildRequires:  php8
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(expat)
 BuildRequires:  pkgconfig(gl)
+BuildRequires:  pkgconfig(gstreamer-audio-1.0)
 BuildRequires:  pkgconfig(jack)
 BuildRequires:  pkgconfig(lv2)
 BuildRequires:  pkgconfig(sndfile)
@@ -142,6 +144,20 @@ the GNU/Linux platform.
 
 This is the VST3 version of the plugins.
 
+%package -n     gstreamer-%{name}
+Summary:        Linux Studio Plugins (GStreamer)
+Group:          Productivity/Multimedia/Sound/Utilities
+Requires:       %{name}-common = %{version}
+
+%description -n gstreamer-%{name}
+LSP (Linux Studio Plugins) is a collection of open-source plugins
+currently compatible with LADSPA, LV2, CLAP and LinuxVST formats.
+
+The basic idea is to fill the lack of good and useful plugins under
+the GNU/Linux platform.
+
+This is the GStreamer version of the plugins.
+
 %package devel
 Summary:        Linux Studio Plugins Development files
 Group:          Productivity/Multimedia/Sound/Utilities
@@ -152,11 +168,11 @@ Requires:       %{name}-common = %{version}
 Development files for Linux Studio Plugins
 
 %prep
-%setup -qn %{name}
+%setup -qn %{name}-src-%{version}
 
 %build
 export CFLAGS="%{optflags}" CXXFLAGS="%{optflags}"
-make config PREFIX="%{_prefix}" LIBDIR="%{_libdir}" SHAREDDIR=%{_datadir} FEATURES='vst3 lv2 vst2 clap doc jack ladspa xdg'
+make config PREFIX="%{_prefix}" LIBDIR="%{_libdir}" SHAREDDIR=%{_datadir} FEATURES='vst3 lv2 vst2 clap doc jack ladspa xdg gst ui'
 %make_build
 
 %install
@@ -173,7 +189,7 @@ mv %{buildroot}/%{_datadir}/doc/%{name} %{buildroot}/%{_docdir}/
 %files
 %{_bindir}/%{name}-*
 %dir %{_libdir}/%{name}
-%{_libdir}/%{name}/liblsp*
+%{_libdir}/%{name}/liblsp-plugins-jack*.so
 %dir %{_datadir}/desktop-directories
 %dir %{_sysconfdir}/xdg
 %dir %{_sysconfdir}/xdg/menus
@@ -184,8 +200,8 @@ mv %{buildroot}/%{_datadir}/doc/%{name} %{buildroot}/%{_docdir}/
 %config %{_sysconfdir}/xdg/menus/applications-merged/lsp-plugins.menu
 
 %files common
-%license COPYING COPYING.LESSER
-%{_libdir}/liblsp-*.so
+%license COPYING COPYING.LESSER modules/lsp-plugins-shared/LICENSE_OFL.txt
+%{_libdir}/liblsp-r3d-glx-lib*.so
 
 %files devel
 %{_libdir}/pkgconfig/*.pc
@@ -200,15 +216,20 @@ mv %{buildroot}/%{_datadir}/doc/%{name} %{buildroot}/%{_docdir}/
 
 %files -n vst-%{name}
 %dir %{_libdir}/vst
-%{_libdir}/vst/%{name}
+%{_libdir}/vst/%{name}.vst
 
 %files -n clap-%{name}
 %dir %{_libdir}/clap
-%{_libdir}/clap/
+%{_libdir}/clap/*
 
 %files -n vst3-%{name}
 %dir %{_libdir}/vst3
-%{_libdir}/vst3/
+%{_libdir}/vst3/*
+
+%files -n gstreamer-%{name}
+%dir %{_libdir}/gstreamer-1.0
+%{_libdir}/gstreamer-1.0/*
+%{_libdir}/%{name}/liblsp-plugins-gstreamer*.so
 
 %files doc
 %{_docdir}/%{name}

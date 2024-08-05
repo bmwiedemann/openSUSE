@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jul 29 15:29:29 MDT 2024 - carnold@suse.com
+
+- bsc#1228384 - virt-install generates unwanted libvirt storage
+  pools when running with --dry-run --print-xml
+  virtinst-dont-create-storage-pool-for-dryrun.patch
+
+-------------------------------------------------------------------
 Tue Jul 23 14:12:20 MDT 2024 - carnold@suse.com
 
 - bsc#1228227 - libvirt missing default hyperv options causes

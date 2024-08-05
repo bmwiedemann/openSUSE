@@ -1,0 +1,37 @@
+From 3d802177be2f2e5fb95fdb988108dd1b048c5579 Mon Sep 17 00:00:00 2001
+From: Matthias Clasen <mclasen@redhat.com>
+Date: Wed, 31 Jul 2024 07:29:37 -0400
+Subject: [PATCH] wayland: No viewporter for cursors
+
+The outlook for mutter supporting this in GNOME 47 are cloudy,
+so lets flip the switch back. You can still set
+USE_POINTER_VIEWPORT in the environment to try this code.
+---
+ gdk/wayland/gdkdevice-wayland.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/gdk/wayland/gdkdevice-wayland.c b/gdk/wayland/gdkdevice-wayland.c
+index 1070d7f9e1d..139c22cd39b 100644
+--- a/gdk/wayland/gdkdevice-wayland.c
++++ b/gdk/wayland/gdkdevice-wayland.c
+@@ -265,13 +265,13 @@ gdk_wayland_device_update_surface_cursor (GdkDevice *device)
+   guint next_image_index, next_image_delay;
+   gboolean retval = G_SOURCE_REMOVE;
+   GdkWaylandTabletData *tablet;
+-  gboolean use_viewport;
++  gboolean use_viewport = FALSE;
+ 
+   tablet = gdk_wayland_seat_find_tablet (seat, device);
+ 
+-  use_viewport = pointer->pointer_surface_viewport != NULL;
+-  if (g_getenv ("NO_POINTER_VIEWPORT"))
+-    use_viewport = FALSE;
++  if (pointer->pointer_surface_viewport &&
++      g_getenv ("USE_POINTER_VIEWPORT"))
++    use_viewport = TRUE;
+ 
+   if (pointer->cursor)
+     {
+-- 
+GitLab
+

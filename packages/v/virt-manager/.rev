@@ -2054,4 +2054,12 @@
     <comment>Fix for bsc#228227 - libvirt missing default hyperv options causes windows guest performance degredation.</comment>
     <requestid>1189664</requestid>
   </revision>
+  <revision rev="260" vrev="26">
+    <srcmd5>055b4b14556f76f1295104e9d8a15766</srcmd5>
+    <version>4.1.0</version>
+    <time>1722871243</time>
+    <user>dimstar_suse</user>
+    <comment>Fix for bsc#1228384 - virt-install generates unwanted libvirt storagepools when running with --dry-run --print-xml</comment>
+    <requestid>1191255</requestid>
+  </revision>
 </revisionlist>

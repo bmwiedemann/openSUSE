@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jul 29 04:55:32 UTC 2024 - Simon Lees <sflees@suse.de>
+
+- A quick note that bsc#1227574 is expected behavior in this
+  version of sudo. It was a regression in 15.6 which doesn't have
+  the /etc/ split for pam.d yet.
+
+-------------------------------------------------------------------
 Tue Jan  2 07:18:04 UTC 2024 - Otto Hollmann <otto.hollmann@suse.com>
 
 - Update to 1.9.15p5:

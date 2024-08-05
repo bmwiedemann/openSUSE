@@ -649,4 +649,13 @@
   * Bump plist from 1.6.1 to 1.7.0</comment>
     <requestid>1189574</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>a9dff6d52b943f5ffe77a4f999a43cac</srcmd5>
+    <version>0.18.24+0</version>
+    <time>1722871319</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.18.24:
+  * Fix 1.80 breakage from time crate</comment>
+    <requestid>1191589</requestid>
+  </revision>
 </revisionlist>

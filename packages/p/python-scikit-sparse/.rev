@@ -86,4 +86,20 @@
   * Do not call a now removed method in scipy.</comment>
     <requestid>1189518</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>a510ddf43167543215f23d39fc9d5fd9</srcmd5>
+    <version>0.4.15</version>
+    <time>1722871309</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.4.15:
+  * add publishing with a trusted publisher
+  * Bump up numpy requirement
+  * Autofind homebrew installation path
+  * add publishing with a trusted publisher
+  * Bump up numpy requirement
+  * Autofind homebrew installation path
+- Drop patch support-scipy-1.14.patch, included upstream.
+- Move test_data under the tests directory and run tests there.</comment>
+    <requestid>1191565</requestid>
+  </revision>
 </revisionlist>

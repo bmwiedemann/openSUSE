@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Aug  5 05:52:57 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.25.6:
+  * feat: add --selector in sg run #1378
+  * fix: fix clippy new complaints a4cc793
+  * fix(deps): update dependency @swc/core to v1.7.5 d3ee100
+  * chore(deps): update rust crate tree-sitter to v0.22.2 93d684a
+
+-------------------------------------------------------------------
 Fri Aug  2 06:32:03 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.25.5:

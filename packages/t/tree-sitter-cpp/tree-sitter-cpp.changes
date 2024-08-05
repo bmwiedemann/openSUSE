@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Aug 01 21:52:23 UTC 2024 - Björn Bidar <bjorn.bidar@thaodan.de>
+
+- Update to version 0.22.3:
+  * Add tests for template/comparison ambiguities
+  * Fix ambiguity between template and comparison
+  * fix: remove `choice` wrapper around 'virtual'
+  * fix(query): remove duplicate rule
+
+-------------------------------------------------------------------
 Mon Apr 29 21:52:37 UTC 2024 - Björn Bidar <bjorn.bidar@thaodan.de>
 
 - Update to version 0.22.0:

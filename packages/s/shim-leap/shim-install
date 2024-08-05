@@ -60,7 +60,6 @@ fi
 if [ x"${GRUB_DISTRIBUTOR}" = x ] && [ -f "${sysconfdir}/os-release" ] ; then
     . "${sysconfdir}/os-release"
     GRUB_DISTRIBUTOR="${NAME} ${VERSION}"
-    OS_ID="${ID}"
 fi
 
 bootloader_id="$(echo "$GRUB_DISTRIBUTOR" | tr 'A-Z' 'a-z' | cut -d' ' -f1)"
@@ -77,11 +76,6 @@ case "$bootloader_id" in
     "opensuse"*)
         ca_string='openSUSE Secure Boot CA1';;
     *) ca_string="";;
-esac
-
-case "$OS_ID" in
-    "opensuse-leap")
-        ca_string='SUSE Linux Enterprise Secure Boot CA1';;
 esac
 
 is_azure () {
@@ -431,8 +425,19 @@ if [ x$GRUB_ENABLE_CRYPTODISK = xy ]; then
   done
 fi
 
+hints="`"${grub_probe}" --target=hints_string "${grub_cfg_dirname}" 2> /dev/null`"
+
+if [ "x$hints" != x ]; then
+  echo "if [ x\$feature_platform_search_hint = xy ]; then"
+  echo "  search --no-floppy --fs-uuid --set=root ${hints} ${cfg_fs_uuid}"
+  echo "else"
+  echo "  search --no-floppy --fs-uuid --set=root ${cfg_fs_uuid}"
+  echo "fi"
+else
+  echo "search --no-floppy --fs-uuid --set=root ${cfg_fs_uuid}"
+fi
+
 cat <<EOF
-search --fs-uuid --set=root ${cfg_fs_uuid}
 set prefix=(\${root})`${grub_mkrelpath} ${grub_cfg_dirname}`
 source "\${prefix}/${grub_cfg_basename}"
 EOF

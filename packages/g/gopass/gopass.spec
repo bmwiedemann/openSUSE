@@ -18,7 +18,7 @@
 
 %global make_args PREFIX=%{_prefix} GOPASS_REVISION=v%{version}
 Name:           gopass
-Version:        1.15.13
+Version:        1.15.14
 Release:        0
 Summary:        The slightly more awesome standard unix password manager for teams
 License:        MIT
@@ -28,13 +28,13 @@ Source1:        vendor.tar.xz
 Source2:        system_config
 Source9:        series
 Patch0:         do-not-strip.patch
+BuildRequires:  fish
 BuildRequires:  golang-packaging
-BuildRequires:  golang(API) >= 1.22
 BuildRequires:  gpg2
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(bash-completion)
 BuildRequires:  zsh
-BuildRequires:  fish
+BuildRequires:  golang(API) >= 1.22
+BuildRequires:  pkgconfig(bash-completion)
 Requires:       git-core
 %{go_nostrip}
 

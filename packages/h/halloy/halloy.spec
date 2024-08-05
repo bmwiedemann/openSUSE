@@ -18,7 +18,7 @@
 
 %define appid   org.squidowl.halloy
 Name:           halloy
-Version:        2024.9
+Version:        2024.10
 Release:        0
 Summary:        IRC application written in Rust
 License:        GPL-3.0-or-later
@@ -26,6 +26,7 @@ URL:            https://github.com/squidowl/halloy
 Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
 BuildRequires:  alsa-devel
+BuildRequires:  appstream-glib
 BuildRequires:  cargo-packaging
 BuildRequires:  desktop-file-utils
 BuildRequires:  hicolor-icon-theme
@@ -45,12 +46,16 @@ and Linux platforms.
 
 %install
 install -Dm755 target/release/%{name} -t %{buildroot}%{_bindir}
-install -Dm644 assets/linux/%{appid}.appdata.xml -t %{buildroot}%{_datadir}/metainfo
-install -Dm644 assets/linux/%{appid}.desktop -t %{buildroot}%{_datadir}/applications
+install -Dm644 assets/linux/%{appid}.appdata.xml -t \
+      %{buildroot}%{_datadir}/metainfo
+install -Dm644 assets/linux/%{appid}.desktop -t \
+      %{buildroot}%{_datadir}/applications
 cp -r assets/linux/icons %{buildroot}%{_datadir}
 
 %check
 desktop-file-validate %{buildroot}%{_datadir}/applications/*.desktop
+appstream-util validate-relax --nonet \
+      %{buildroot}%{_datadir}/metainfo/%{appid}.appdata.xml 
 
 %files
 %license LICEN*

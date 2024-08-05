@@ -154,6 +154,7 @@ Patch227:       virtinst-add-pvh-support.patch
 Patch228:       virtinst-media-detection.patch
 Patch229:       virtinst-enable-video-virtio-for-arm.patch
 Patch230:       virtinst-add-hyperv-performance-options.patch
+Patch231:       virtinst-dont-create-storage-pool-for-dryrun.patch
 # Bug Fixes
 Patch251:       virtman-increase-setKeepAlive-count.patch
 Patch252:       virtman-allow-destroy-from-shutdown-menu-of-crashed-vm.patch
@@ -331,6 +332,10 @@ donttest="$donttest or testCLI0401virt_clone or testCLI0402virt_clone"
 donttest="$donttest or testCLI0416virt_clone or testCLI0417virt_clone"
 donttest="$donttest or testCLI0419virt_clone or testCLI0420virt_clone"
 donttest="$donttest or testCLI0428virt_clone"
+# bsc#1228384: --dry-run no longer creates a storage pool when used
+donttest="$donttest or testCLI0007virt_install_storage_creation"
+donttest="$donttest or testCLI0132virt_install_remote_storage"
+donttest="$donttest or testCLI0350virt_xml_edit_clear_disk"
 #
 pytest -v -rfEs -k "not ($donttest)"
 %endif

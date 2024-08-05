@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Jul 31 06:54:32 UTC 2024 - XLiang@suse.com
+
+- Update to version 5.0.0+20240731.2abacf27:
+  * Dev: crm_rpmcheck: use ansible to get package versions
+  * Fix: ui_context: enter_level() should not check requirements for non-functional subcommands
+
+-------------------------------------------------------------------
+Tue Jul 23 00:59:47 UTC 2024 - XLiang@suse.com
+
+- Update to version 5.0.0+20240723.68039940:
+  * Dev: prun: replace deprecated stdlib API asyncio.get_event_loop()
+  * unused code removal
+  * Dev: ui_cluster: refactor Cluster._wait_for_dc()
+  * Dev: utils: revert previous changes to get_dc()
+  * Dev: utils: rename wait4dc to wait_dc_stable
+  * DC lost during wait
+
+-------------------------------------------------------------------
 Thu Jul 18 09:31:54 UTC 2024 - XLiang@suse.com
 
 - Update to version 5.0.0+20240718.3877db63:

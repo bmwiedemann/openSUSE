@@ -1,5 +1,0 @@
-<package name="scrcpy" project="openSUSE:Factory">
-  <title>Display and control your Android device</title>
-  <description>This application provides display and control of Android devices connected on USB. It does not require any root access.</description>
-  <devel project="hardware" package="scrcpy"/>
-</package>

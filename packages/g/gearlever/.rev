@@ -28,4 +28,37 @@
 </comment>
     <requestid>1178722</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>5f923ca768e5030356fa0bc52af29d4b</srcmd5>
+    <version>2.0.4</version>
+    <time>1722871266</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.0.4
+  * Improved checking for static update url
+  * Do not append md5 hashes to filenames anymore
+- Update to 2.0.3
+  * Added support for apps that do not specify icons in their desktop file
+- Update to 2.0.1
+  * Accept globe characters in the release names of custom Github update links
+  * Fixed an issue causing crashes on systems that do not support gtk-launch
+  * Fixed an issue causing crashes when attempting to open apps with non-ascii characters in their names
+  * Fixed an issue causing some appimages to be considered invalid because of the lack of an AppRun file
+- Update to 2.0.0
+  * Gear Lever can now fetch updates from embedded or custom sources and update your apps automaticallyo
+- Update to 1.6.5
+  * Improved support for NixOS
+- Update to 1.6.4
+  * Fixed an issue causing the app to crash if the &quot;strings&quot; util is not available
+- Update to 1.6.3
+  * Keep environment variables when updating an app with the &quot;Replace&quot; option
+  * Fixed an issue causing app to override themself when updating with &quot;Keep&quot; option
+- Update to 1.6.2
+  * Fixed bugs introduced with 1.6.1 causing the app to crash at startup
+  * Fixed an issue causing multi-install to fail
+- Update to 1.6.1
+  * Added Appimage Type 3 detection
+  * Added error warning when libfuse is missing on the host system
+</comment>
+    <requestid>1191401</requestid>
+  </revision>
 </revisionlist>

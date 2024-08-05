@@ -109,4 +109,16 @@
   * First stab at raw string literals (#240)</comment>
     <requestid>1186014</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>3d8a0cd65fb76f1b4c79968746029b12</srcmd5>
+    <version>0.21.3</version>
+    <time>1722871271</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.21.3:
+  * fix(scanner): correct max serialization size check
+  * fix: don't push verbatim interpolations to the stack early
+  * fix: allow optional trailing commands in bracketed_argument_list
+  * fix: verbatim content with double quotes</comment>
+    <requestid>1191439</requestid>
+  </revision>
 </revisionlist>

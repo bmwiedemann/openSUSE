@@ -19,14 +19,12 @@
 # For license file
 %define tag     c94f8418b6c36c3ff9db4f87e00fc08bd51cfb4b
 Name:           python-scikit-sparse
-Version:        0.4.13
+Version:        0.4.15
 Release:        0
 Summary:        Scikits sparse matrix package
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 URL:            https://github.com/scikit-sparse/scikit-sparse/
-Source:         https://files.pythonhosted.org/packages/source/s/scikit-sparse/scikit-sparse-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM Based on gh#scikit-sparse/scikit-sparse#123
-Patch0:         support-scipy-1.14.patch
+Source:         https://files.pythonhosted.org/packages/source/s/scikit-sparse/scikit_sparse-%{version}.tar.gz
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy-devel >= 1.23.3}
@@ -56,7 +54,9 @@ There is a wrapper for the CHOLMOD library for sparse Cholesky
 decomposition.
 
 %prep
-%autosetup -p1 -n scikit-sparse-%{version}
+%autosetup -p1 -n scikit_sparse-%{version}
+# Move the test data to tests
+mv sksparse/test_data tests
 
 %build
 export CFLAGS="%{optflags}"
@@ -67,7 +67,7 @@ export CFLAGS="%{optflags}"
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
-%pytest_arch -ra --pyargs sksparse
+%pytest_arch -ra --pyargs tests
 
 %files %{python_files}
 %doc README.md

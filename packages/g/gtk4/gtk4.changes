@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Aug  2 20:17:08 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Add 0002-Revert-no-pointer-viewport.patch --
+  Fixes https://gitlab.gnome.org/GNOME/gtk/-/issues/6620
+
+-------------------------------------------------------------------
 Thu Aug  1 04:33:31 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add missed optflags to CFLAGS.

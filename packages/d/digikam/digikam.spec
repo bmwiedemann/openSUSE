@@ -34,7 +34,6 @@ Source2:        %{name}.keyring
 Patch0:         0001-Look-for-each-akonadi-component-separately.patch
 # QtWebEngine is not available on ppc and zSystems
 ExclusiveArch:  %{arm} aarch64 %{ix86} x86_64 %{riscv}
-BuildRequires:  QtAV-devel >= 1.12
 BuildRequires:  bison
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
@@ -101,8 +100,8 @@ BuildRequires:  pkgconfig(libavformat)
 BuildRequires:  pkgconfig(libavutil)
 BuildRequires:  pkgconfig(libgphoto2) >= 2.4.0
 BuildRequires:  pkgconfig(libjpeg)
+BuildRequires:  pkgconfig(libjxl)
 BuildRequires:  pkgconfig(libpng)
-BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(libswresample)
 BuildRequires:  pkgconfig(libswscale)
 BuildRequires:  pkgconfig(libxml-2.0)
@@ -171,14 +170,13 @@ The main digikam libraries that are being shared between showfoto and digikam
 %autosetup -p1
 
 %build
-%{cmake_kf5 -d build -- -DENABLE_APPSTYLES=ON -DENABLE_MEDIAPLAYER=ON -DENABLE_KFILEMETADATASUPPORT=ON -DENABLE_AKONADICONTACTSUPPORT=OFF \
--DSSE3_FOUND=OFF -DSSSE3_FOUND=OFF -DSSE4_1_FOUND=OFF -DSSE4_2_FOUND=OFF \
-%ifarch x86_64 %{?x86_64}
--DSSE2_FOUND=ON
-%else
--DSSE2_FOUND=OFF
-%endif
+%{cmake_kf5 -d build -- \
+  -DENABLE_APPSTYLES=ON \
+  -DENABLE_MEDIAPLAYER=ON \
+  -DENABLE_KFILEMETADATASUPPORT=ON \
+  -DENABLE_AKONADICONTACTSUPPORT=OFF
 }
+
 %cmake_build
 
 %if %{with apidocs}

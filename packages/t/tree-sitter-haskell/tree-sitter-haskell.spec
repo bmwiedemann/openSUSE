@@ -19,7 +19,7 @@
 %define _name haskell
 Summary:        Haskell grammar for tree-sitter
 Name:           tree-sitter-%{_name}
-Version:        0.15.0
+Version:        0.21.0
 Release:        0
 License:        MIT
 Group:          Development/Tools/Other
@@ -40,6 +40,8 @@ BuildRequires:  tree-sitter
 
 %install
 %treesitter_install
+
+%check
 
 %files
 %{treesitter_files}

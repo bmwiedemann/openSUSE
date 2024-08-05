@@ -23,4 +23,25 @@
     <comment></comment>
     <requestid>1166732</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>5ff7a0332526983b3edafaf9c2c2bee9</srcmd5>
+    <version>1.15.14</version>
+    <time>1722871276</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.15.14:
+  - 4d3d95ed chore: More logging when gpg operations fails (#2914)
+  - 51c2bdc8 cli/decrypt: improve debugging of gpg command (#2913)
+  - e302ae75 [bugfix] Fix parsing of key-value pairs according to
+    the gitconfig (#2911)
+  - 70dbabe0 gpg: Log gpg output to LogWriter (#2869)
+  - 2a190edb updating our linter and fixing the current linter
+    issues (#2907)
+  - 2761beaa feat: on pinentry request, allow password to be cached
+    in os keyring (#2881)
+  - d6669e15 chore: Switch to static list of linters (#2882)
+  - 0fc2ad27 Reduce dependabot frequency (#2868)
+  - 3acb20e5 chore: fix function names in comment (#2861)
+  - adaae659 Fix postrel helper</comment>
+    <requestid>1191446</requestid>
+  </revision>
 </revisionlist>

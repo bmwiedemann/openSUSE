@@ -36,4 +36,13 @@
   * use -p flag to create intermediate directories (forwarded request 1190498 from hillwood)</comment>
     <requestid>1190499</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c7d99a8a0c2c3dee9803016b92558b28</srcmd5>
+    <version>2024.7.3</version>
+    <time>1722871339</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 2024.7.3
+  * TUN-8546: Fix final artifacts paths (forwarded request 1191621 from hillwood)</comment>
+    <requestid>1191622</requestid>
+  </revision>
 </revisionlist>

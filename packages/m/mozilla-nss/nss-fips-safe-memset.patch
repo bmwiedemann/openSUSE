@@ -1,0 +1,510 @@
+Index: nss/lib/freebl/aeskeywrap.c
+===================================================================
+--- nss.orig/lib/freebl/aeskeywrap.c
++++ nss/lib/freebl/aeskeywrap.c
+@@ -513,7 +513,7 @@ AESKeyWrap_EncryptKWP(AESKeyWrapContext
+         PORT_Memcpy(iv + AES_KEY_WRAP_BLOCK_SIZE, input, inputLen);
+         rv = AES_Encrypt(&cx->aescx, output, pOutputLen, maxOutputLen, iv,
+                          outLen);
+-        PORT_Memset(iv, 0, sizeof(iv));
++        PORT_SafeZero(iv, sizeof(iv));
+         return rv;
+     }
+ 
+@@ -529,7 +529,7 @@ AESKeyWrap_EncryptKWP(AESKeyWrapContext
+     PORT_ZFree(newBuf, paddedInputLen);
+     /* a little overkill, we only need to clear out the length, but this
+      * is easier to verify we got it all */
+-    PORT_Memset(iv, 0, sizeof(iv));
++    PORT_SafeZero(iv, sizeof(iv));
+     return rv;
+ }
+ 
+@@ -632,12 +632,12 @@ AESKeyWrap_DecryptKWP(AESKeyWrapContext
+ loser:
+     /* if we failed, make sure we don't return any data to the user */
+     if ((rv != SECSuccess) && (output == newBuf)) {
+-        PORT_Memset(newBuf, 0, paddedLen);
++        PORT_SafeZero(newBuf, paddedLen);
+     }
+     /* clear out CSP sensitive data from the heap and stack */
+     if (allocBuf) {
+         PORT_ZFree(allocBuf, paddedLen);
+     }
+-    PORT_Memset(iv, 0, sizeof(iv));
++    PORT_SafeZero(iv, sizeof(iv));
+     return rv;
+ }
+Index: nss/lib/freebl/blapii.h
+===================================================================
+--- nss.orig/lib/freebl/blapii.h
++++ nss/lib/freebl/blapii.h
+@@ -113,10 +113,10 @@ PRBool ppc_crypto_support();
+ #ifdef NSS_FIPS_DISABLED
+ #define BLAPI_CLEAR_STACK(stack_size)
+ #else
+-#define BLAPI_CLEAR_STACK(stack_size)                    \
+-    {                                                    \
+-        volatile char _stkclr[stack_size];               \
+-        PORT_Memset((void *)&_stkclr[0], 0, stack_size); \
++#define BLAPI_CLEAR_STACK(stack_size)                   \
++    {                                                   \
++        volatile char _stkclr[stack_size];              \
++        PORT_SafeZero((void *)&_stkclr[0], stack_size); \
+     }
+ #endif
+ 
+Index: nss/lib/freebl/drbg.c
+===================================================================
+--- nss.orig/lib/freebl/drbg.c
++++ nss/lib/freebl/drbg.c
+@@ -259,7 +259,7 @@ prng_initEntropy(void)
+     SHA256_Update(&ctx, block, sizeof(block));
+     SHA256_End(&ctx, globalrng->previousEntropyHash, NULL,
+                sizeof(globalrng->previousEntropyHash));
+-    PORT_Memset(block, 0, sizeof(block));
++    PORT_SafeZero(block, sizeof(block));
+     SHA256_DestroyContext(&ctx, PR_FALSE);
+     coRNGInitEntropy.status = PR_SUCCESS;
+     __sync_synchronize ();
+@@ -311,8 +311,8 @@ prng_getEntropy(PRUint8 *buffer, size_t
+     }
+ 
+ out:
+-    PORT_Memset(hash, 0, sizeof hash);
+-    PORT_Memset(block, 0, sizeof block);
++    PORT_SafeZero(hash, sizeof hash);
++    PORT_SafeZero(block, sizeof block);
+     return rv;
+ }
+ 
+@@ -458,8 +458,8 @@ prng_Hashgen(RNGContext *rng, PRUint8 *r
+         PRNG_ADD_CARRY_ONLY(data, (sizeof data) - 1, carry);
+         SHA256_DestroyContext(&ctx, PR_FALSE);
+     }
+-    PORT_Memset(data, 0, sizeof data);
+-    PORT_Memset(thisHash, 0, sizeof thisHash);
++    PORT_SafeZero(data, sizeof data);
++    PORT_SafeZero(thisHash, sizeof thisHash);
+ }
+ 
+ /*
+@@ -520,7 +520,7 @@ prng_generateNewBytes(RNGContext *rng,
+     PRNG_ADD_CARRY_ONLY(rng->reseed_counter, (sizeof rng->reseed_counter) - 1, carry);
+ 
+     /* if the prng failed, don't return any output, signal softoken */
+-    PORT_Memset(H, 0, sizeof H);
++    PORT_SafeZero(H, sizeof H);
+     if (!rng->isValid) {
+         PORT_Memset(returned_bytes, 0, no_of_returned_bytes);
+         PORT_SetError(SEC_ERROR_LIBRARY_FAILURE);
+Index: nss/lib/freebl/dsa.c
+===================================================================
+--- nss.orig/lib/freebl/dsa.c
++++ nss/lib/freebl/dsa.c
+@@ -471,7 +471,7 @@ dsa_SignDigest(DSAPrivateKey *key, SECIt
+     err = MP_OKAY;
+     signature->len = dsa_signature_len;
+ cleanup:
+-    PORT_Memset(localDigestData, 0, DSA_MAX_SUBPRIME_LEN);
++    PORT_SafeZero(localDigestData, DSA_MAX_SUBPRIME_LEN);
+     mp_clear(&p);
+     mp_clear(&q);
+     mp_clear(&g);
+@@ -532,7 +532,7 @@ DSA_SignDigest(DSAPrivateKey *key, SECIt
+         rv = dsa_SignDigest(key, signature, digest, kSeed);
+     } while (rv != SECSuccess && PORT_GetError() == SEC_ERROR_NEED_RANDOM &&
+              --retries > 0);
+-    PORT_Memset(kSeed, 0, sizeof kSeed);
++    PORT_SafeZero(kSeed, sizeof kSeed);
+     return rv;
+ }
+ 
+@@ -673,7 +673,7 @@ DSA_VerifyDigest(DSAPublicKey *key, cons
+         verified = SECSuccess; /* Signature verified. */
+     }
+ cleanup:
+-    PORT_Memset(localDigestData, 0, sizeof localDigestData);
++    PORT_SafeZero(localDigestData, sizeof localDigestData);
+     mp_clear(&p);
+     mp_clear(&q);
+     mp_clear(&g);
+Index: nss/lib/freebl/gcm.c
+===================================================================
+--- nss.orig/lib/freebl/gcm.c
++++ nss/lib/freebl/gcm.c
+@@ -507,7 +507,7 @@ gcmHash_Final(gcmHashContext *ghash, uns
+     rv = SECSuccess;
+ 
+ cleanup:
+-    PORT_Memset(T, 0, sizeof(T));
++    PORT_SafeZero(T, sizeof(T));
+     return rv;
+ }
+ 
+@@ -629,15 +629,15 @@ GCM_CreateContext(void *context, freeblC
+     if (rv != SECSuccess) {
+         goto loser;
+     }
+-    PORT_Memset(H, 0, AES_BLOCK_SIZE);
++    PORT_SafeZero(H, AES_BLOCK_SIZE);
+     gcm->ctr_context_init = PR_TRUE;
+     return gcm;
+ 
+ loser:
+-    PORT_Memset(H, 0, AES_BLOCK_SIZE);
++    PORT_SafeZero(H, AES_BLOCK_SIZE);
+     if (ghash && ghash->mem) {
+         void *mem = ghash->mem;
+-        PORT_Memset(ghash, 0, sizeof(gcmHashContext));
++        PORT_SafeZero(ghash, sizeof(gcmHashContext));
+         PORT_Free(mem);
+     }
+     if (gcm) {
+@@ -717,11 +717,11 @@ gcm_InitCounter(GCMContext *gcm, const u
+         goto loser;
+     }
+ 
+-    PORT_Memset(&ctrParams, 0, sizeof ctrParams);
++    PORT_SafeZero(&ctrParams, sizeof ctrParams);
+     return SECSuccess;
+ 
+ loser:
+-    PORT_Memset(&ctrParams, 0, sizeof ctrParams);
++    PORT_SafeZero(&ctrParams, sizeof ctrParams);
+     if (freeCtr) {
+         CTR_DestroyContext(&gcm->ctr_context, PR_FALSE);
+     }
+@@ -1212,10 +1212,10 @@ GCM_DecryptAEAD(GCMContext *gcm, unsigne
+         /* force a CKR_ENCRYPTED_DATA_INVALID error at in softoken */
+         CTR_DestroyContext(&gcm->ctr_context, PR_FALSE);
+         PORT_SetError(SEC_ERROR_BAD_DATA);
+-        PORT_Memset(tag, 0, sizeof(tag));
++        PORT_SafeZero(tag, sizeof(tag));
+         return SECFailure;
+     }
+-    PORT_Memset(tag, 0, sizeof(tag));
++    PORT_SafeZero(tag, sizeof(tag));
+     /* finish the decryption */
+     rv = CTR_Update(&gcm->ctr_context, outbuf, outlen, maxout,
+                     inbuf, inlen, AES_BLOCK_SIZE);
+Index: nss/lib/freebl/hmacct.c
+===================================================================
+--- nss.orig/lib/freebl/hmacct.c
++++ nss/lib/freebl/hmacct.c
+@@ -274,10 +274,10 @@ MAC(unsigned char *mdOut,
+     hashObj->end(mdState, mdOut, mdOutLen, mdOutMax);
+     hashObj->destroy(mdState, PR_TRUE);
+ 
+-    PORT_Memset(lengthBytes, 0, sizeof lengthBytes);
+-    PORT_Memset(hmacPad, 0, sizeof hmacPad);
+-    PORT_Memset(firstBlock, 0, sizeof firstBlock);
+-    PORT_Memset(macOut, 0, sizeof macOut);
++    PORT_SafeZero(lengthBytes, sizeof lengthBytes);
++    PORT_SafeZero(hmacPad, sizeof hmacPad);
++    PORT_SafeZero(firstBlock, sizeof firstBlock);
++    PORT_SafeZero(macOut, sizeof macOut);
+ 
+     return SECSuccess;
+ }
+Index: nss/lib/freebl/intel-gcm-wrap.c
+===================================================================
+--- nss.orig/lib/freebl/intel-gcm-wrap.c
++++ nss/lib/freebl/intel-gcm-wrap.c
+@@ -195,7 +195,7 @@ intel_aes_gcmInitCounter(intel_AES_GCMCo
+ void
+ intel_AES_GCM_DestroyContext(intel_AES_GCMContext *gcm, PRBool freeit)
+ {
+-    PORT_Memset(gcm, 0, sizeof(intel_AES_GCMContext));
++    PORT_SafeZero(gcm, sizeof(intel_AES_GCMContext));
+     if (freeit) {
+         PORT_Free(gcm);
+     }
+Index: nss/lib/freebl/ppc-gcm-wrap.c
+===================================================================
+--- nss.orig/lib/freebl/ppc-gcm-wrap.c
++++ nss/lib/freebl/ppc-gcm-wrap.c
+@@ -169,7 +169,7 @@ ppc_aes_gcmInitCounter(ppc_AES_GCMContex
+ void
+ ppc_AES_GCM_DestroyContext(ppc_AES_GCMContext *gcm, PRBool freeit)
+ {
+-    PORT_Memset(gcm, 0, sizeof(ppc_AES_GCMContext));
++    PORT_SafeZero(gcm, sizeof(ppc_AES_GCMContext));
+     if (freeit) {
+         PORT_Free(gcm);
+     }
+Index: nss/lib/freebl/pqg.c
+===================================================================
+--- nss.orig/lib/freebl/pqg.c
++++ nss/lib/freebl/pqg.c
+@@ -703,7 +703,7 @@ cleanup:
+     mp_clear(&a);
+     mp_clear(&z);
+     mp_clear(&two_length_minus_1);
+-    PORT_Memset(x, 0, sizeof(x));
++    PORT_SafeZero(x, sizeof(x));
+     if (err) {
+         MP_TO_SEC_ERROR(err);
+         rv = SECFailure;
+@@ -859,7 +859,7 @@ cleanup:
+     mp_clear(&c);
+     mp_clear(&c0);
+     mp_clear(&one);
+-    PORT_Memset(x, 0, sizeof(x));
++    PORT_SafeZero(x, sizeof(x));
+     if (err) {
+         MP_TO_SEC_ERROR(err);
+         rv = SECFailure;
+@@ -1072,7 +1072,7 @@ makePfromQandSeed(
+     CHECK_MPI_OK(mp_sub_d(&c, 1, &c)); /* c -= 1       */
+     CHECK_MPI_OK(mp_sub(&X, &c, P));   /* P = X - c    */
+ cleanup:
+-    PORT_Memset(V_j, 0, sizeof V_j);
++    PORT_SafeZero(V_j, sizeof V_j);
+     mp_clear(&W);
+     mp_clear(&X);
+     mp_clear(&c);
+@@ -1221,7 +1221,7 @@ makeGfromIndex(HASH_HashType hashtype,
+ /* step 11.
+      * return valid G */
+ cleanup:
+-    PORT_Memset(data, 0, sizeof(data));
++    PORT_SafeZero(data, sizeof(data));
+     if (hashcx) {
+         hashobj->destroy(hashcx, PR_TRUE);
+     }
+Index: nss/lib/freebl/rijndael.c
+===================================================================
+--- nss.orig/lib/freebl/rijndael.c
++++ nss/lib/freebl/rijndael.c
+@@ -1114,7 +1114,7 @@ AES_DestroyContext(AESContext *cx, PRBoo
+         cx->worker_cx = NULL;
+         cx->destroy = NULL;
+     }
+-    PORT_Memset(cx, 0, sizeof(AESContext));
++    PORT_SafeZero(cx, sizeof(AESContext));
+     if (freeit) {
+         PORT_Free(mem);
+     } else {
+Index: nss/lib/freebl/rsa.c
+===================================================================
+--- nss.orig/lib/freebl/rsa.c
++++ nss/lib/freebl/rsa.c
+@@ -145,8 +145,8 @@ rsa_build_from_primes(const mp_int *p, c
+     /* 2.  Compute phi = (p-1)*(q-1) */
+     CHECK_MPI_OK(mp_sub_d(p, 1, &psub1));
+     CHECK_MPI_OK(mp_sub_d(q, 1, &qsub1));
++    CHECK_MPI_OK(mp_lcm(&psub1, &qsub1, &phi));
+     if (needPublicExponent || needPrivateExponent) {
+-        CHECK_MPI_OK(mp_lcm(&psub1, &qsub1, &phi));
+         /* 3.  Compute d = e**-1 mod(phi) */
+         /*     or      e = d**-1 mod(phi) as necessary */
+         if (needPublicExponent) {
+@@ -180,6 +180,15 @@ rsa_build_from_primes(const mp_int *p, c
+         goto cleanup;
+     }
+ 
++    /* make sure we weren't passed in a d or e = 1 mod phi */
++    /* just need to check d, because if one is = 1 mod phi, they both are */
++    CHECK_MPI_OK(mp_mod(d, &phi, &tmp));
++    if (mp_cmp_d(&tmp, 2) <= 0) {
++        PORT_SetError(SEC_ERROR_INVALID_ARGS);
++        rv = SECFailure;
++        goto cleanup;
++    }
++
+     /* 4.  Compute exponent1 = d mod (p-1) */
+     CHECK_MPI_OK(mp_mod(d, &psub1, &tmp));
+     MPINT_TO_SECITEM(&tmp, &key->exponent1, key->arena);
+@@ -1251,6 +1260,8 @@ rsa_PrivateKeyOpCRTCheckedPubKey(RSAPriv
+     /* Perform a public key operation v = m ** e mod n */
+     CHECK_MPI_OK(mp_exptmod(m, &e, &n, &v));
+     if (mp_cmp(&v, c) != 0) {
++        /* this error triggers a fips fatal error lock */
++        PORT_SetError(SEC_ERROR_LIBRARY_FAILURE);
+         rv = SECFailure;
+     }
+ cleanup:
+Index: nss/lib/freebl/rsapkcs.c
+===================================================================
+--- nss.orig/lib/freebl/rsapkcs.c
++++ nss/lib/freebl/rsapkcs.c
+@@ -978,14 +978,14 @@ rsa_GetHMACContext(const SECHashObject *
+     /* now create the hmac key */
+     hmac = HMAC_Create(hash, keyHash, keyLen, PR_TRUE);
+     if (hmac == NULL) {
+-        PORT_Memset(keyHash, 0, sizeof(keyHash));
++        PORT_SafeZero(keyHash, sizeof(keyHash));
+         return NULL;
+     }
+     HMAC_Begin(hmac);
+     HMAC_Update(hmac, input, inputLen);
+     rv = HMAC_Finish(hmac, keyHash, &keyLen, sizeof(keyHash));
+     if (rv != SECSuccess) {
+-        PORT_Memset(keyHash, 0, sizeof(keyHash));
++        PORT_SafeZero(keyHash, sizeof(keyHash));
+         HMAC_Destroy(hmac, PR_TRUE);
+         return NULL;
+     }
+@@ -993,7 +993,7 @@ rsa_GetHMACContext(const SECHashObject *
+      * reuse the original context allocated above so we don't
+      * need to allocate and free another one */
+     rv = HMAC_ReInit(hmac, hash, keyHash, keyLen, PR_TRUE);
+-    PORT_Memset(keyHash, 0, sizeof(keyHash));
++    PORT_SafeZero(keyHash, sizeof(keyHash));
+     if (rv != SECSuccess) {
+         HMAC_Destroy(hmac, PR_TRUE);
+         return NULL;
+@@ -1043,7 +1043,7 @@ rsa_HMACPrf(HMACContext *hmac, const cha
+             return rv;
+         }
+         PORT_Memcpy(output, hmacLast, left);
+-        PORT_Memset(hmacLast, 0, sizeof(hmacLast));
++        PORT_SafeZero(hmacLast, sizeof(hmacLast));
+     }
+     return rv;
+ }
+@@ -1088,7 +1088,7 @@ rsa_GetErrorLength(HMACContext *hmac, in
+         outLength = PORT_CT_SEL(PORT_CT_LT(candidate, maxLegalLen),
+                                 candidate, outLength);
+     }
+-    PORT_Memset(out, 0, sizeof(out));
++    PORT_SafeZero(out, sizeof(out));
+     return outLength;
+ }
+ 
+Index: nss/lib/freebl/shvfy.c
+===================================================================
+--- nss.orig/lib/freebl/shvfy.c
++++ nss/lib/freebl/shvfy.c
+@@ -365,7 +365,7 @@ blapi_SHVerifyDSACheck(PRFileDesc *shFD,
+ 
+     /* verify the hash against the check file */
+     rv = DSA_VerifyDigest(key, signature, &hash);
+-    PORT_Memset(hashBuf, 0, sizeof hashBuf);
++    PORT_SafeZero(hashBuf, sizeof hashBuf);
+     return (rv == SECSuccess) ? PR_TRUE : PR_FALSE;
+ }
+ #endif
+@@ -427,7 +427,7 @@ blapi_SHVerifyHMACCheck(PRFileDesc *shFD
+     if (rv == SECSuccess) {
+         result = SECITEM_ItemsAreEqual(signature, &hash);
+     }
+-    PORT_Memset(hashBuf, 0, sizeof hashBuf);
++    PORT_SafeZero(hashBuf, sizeof hashBuf);
+     return result;
+ }
+ 
+@@ -451,7 +451,7 @@ blapi_SHVerifyFile(const char *shName, P
+ #ifndef NSS_STRICT_INTEGRITY
+     DSAPublicKey key;
+ 
+-    PORT_Memset(&key, 0, sizeof(key));
++    PORT_SafeZero(&key, sizeof(key));
+ #endif
+ 
+     /* If our integrity check was never ran or failed, fail any other
+@@ -600,7 +600,7 @@ blapi_SHVerifyFile(const char *shName, P
+     shFD = NULL;
+ 
+ loser:
+-    PORT_Memset(&header, 0, sizeof header);
++    PORT_SafeZero(&header, sizeof header);
+     if (checkName != NULL) {
+         PORT_Free(checkName);
+     }
+Index: nss/lib/freebl/tlsprfalg.c
+===================================================================
+--- nss.orig/lib/freebl/tlsprfalg.c
++++ nss/lib/freebl/tlsprfalg.c
+@@ -82,8 +82,8 @@ loser:
+     /* clear out state so it's not left on the stack */
+     if (cx)
+         HMAC_Destroy(cx, PR_TRUE);
+-    PORT_Memset(state, 0, sizeof(state));
+-    PORT_Memset(outbuf, 0, sizeof(outbuf));
++    PORT_SafeZero(state, sizeof(state));
++    PORT_SafeZero(outbuf, sizeof(outbuf));
+     return rv;
+ }
+ 
+Index: nss/lib/freebl/unix_urandom.c
+===================================================================
+--- nss.orig/lib/freebl/unix_urandom.c
++++ nss/lib/freebl/unix_urandom.c
+@@ -22,7 +22,7 @@ RNG_SystemInfoForRNG(void)
+         return;
+     }
+     RNG_RandomUpdate(bytes, numBytes);
+-    PORT_Memset(bytes, 0, sizeof bytes);
++    PORT_SafeZero(bytes, sizeof bytes);
+ }
+ 
+ size_t
+Index: nss/lib/softoken/pkcs11c.c
+===================================================================
+--- nss.orig/lib/softoken/pkcs11c.c
++++ nss/lib/softoken/pkcs11c.c
+@@ -4994,7 +4994,7 @@ pairwise_signverify_mech (CK_SESSION_HAN
+     if ((signature_length >= pairwise_digest_length) &&
+         (PORT_Memcmp(known_digest, signature + (signature_length - pairwise_digest_length), pairwise_digest_length) == 0)) {
+         PORT_Free(signature);
+-        return CKR_DEVICE_ERROR;
++        return CKR_GENERAL_ERROR;
+     }
+ 
+     /* Verify the known hash using the public key. */
+Index: nss/lib/util/secport.h
+===================================================================
+--- nss.orig/lib/util/secport.h
++++ nss/lib/util/secport.h
+@@ -36,6 +36,9 @@
+ #include <sys/types.h>
+ 
+ #include <ctype.h>
++/* ask for Annex K for memset_s. will set the appropriate #define
++ * if Annex K is supported */
++#define __STDC_WANT_LIB_EXT1__ 1
+ #include <string.h>
+ #include <stddef.h>
+ #include <stdlib.h>
+@@ -182,6 +185,39 @@ SEC_END_PROTOS
+ #endif /*SUNOS4*/
+ #define PORT_Memset memset
+ 
++/* there are cases where the compiler optimizes away our attempt to clear
++ * out our stack variables. There are multiple solutions for this problem,
++ * but they aren't universally accepted on all platforms. This attempts
++ * to select the best solution available given our os, compilier, and libc */
++#ifdef __STDC_LIB_EXT1__
++/* if the os implements C11 annex K, use memset_s */
++#define PORT_SafeZero(p, n) memset_s(p, n, 0, n)
++#else
++#ifdef XP_WIN
++/* windows has a secure zero funtion */
++#define PORT_SafeZero(p, n) SecureZeroMemory(p, n)
++#else
++/* _DEFAULT_SORUCE  == BSD source in GCC based environments
++ * if other environmens support explicit_bzero, their defines
++ * should be added here */
++#if defined(_DEFAULT_SOURCE) || defined(_BSD_SOURCE)
++#define PORT_SafeZero(p, n) explicit_bzero(p, n)
++#else
++/* if the os doesn't support one of the above, but does support
++ * memset_explicit, you can add the definition for memset with the
++ * appropriate define check here */
++/* define an explicitly implementated Safe zero if the OS
++ * doesn't provide one */
++#define PORT_SafeZero(p, n)                                \
++    if (p != NULL) {                                       \
++        volatile unsigned char *__vl = (unsigned char *)p; \
++        size_t __nl = n;                                   \
++        while (__nl--) *__vl++ = 0;                        \
++    }
++#endif /* no explicit_bzero */
++#endif /* no windows SecureZeroMemory */
++#endif /* no memset_s */
++
+ #define PORT_Strcasecmp PL_strcasecmp
+ #define PORT_Strcat strcat
+ #define PORT_Strchr strchr

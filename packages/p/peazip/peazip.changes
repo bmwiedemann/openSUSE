@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Mon Aug  5 10:30:13 UTC 2024 - PragmaticLinux <info@pragmaticlinux.com>
+
+- Update to 9.9.0:
+  BACKEND
+  * 7z 24.07
+  * Pea 1.19 adds optional extra KDF rounds for triple cascaded encryption in .PEA format
+    (up to 20 millions iterations for each algorithm, total 60 M rounds)
+  * Zstd 1.5.6 (Windows, Linux)
+
+  CODE
+  * Compiled with Lazarus 3.4, sources are still compatible with Lazarus 2.x
+  * Fixes and code cleanup
+    * Fixed loading Custom format in custom compression settings
+    * Fixed browsing some special cases of archives (containing items with absolute paths
+      starting with directopry separator characters)
+  * Updated Options screen
+    * (7z/p7zip) syntax level can now be set to 21.07 and 23.01 legacy versions, form 
+      Options > Settings > Advances, Backend binaries
+    * (7z/p7zip) new option to show timestamps as UTC insead of local time, form form
+      Options > Settings > Archive manager
+    * New group for TAR -related options in Options > Settings > Archive manager
+
+  FILE MANAGER
+  * (Windows) When UAC elevation is needed (non writeable output path) the user is now
+    offered to restart the app UAC elevated.
+    * In this way it is not needed to require elevation to subsequent operations on the
+      same path, and it is possible to use all of functions of PeaZip (console mode,
+      force interactive password)
+  * Added internal drag and drop features
+    * It is now possible to perform internal drag and drop extraction from file/archive
+      manager to sidebar, both toward treeview panel and navigation panel (bookmarks,
+      filesystem, history paths).
+      * It is possible to extract either one or more entire archive(s), or selected
+        archive content while browsing archives
+      * If right mouse button is pressed, it will be possible to choese to extract with
+        or without new folder/smart new folder, overriding defaults
+    * It is now possible to use drag and drop to add items from file browser/archive
+      browser to Bookmarks panel
+  * Archives are now tested for encryption also for list/test operations, so password is
+    required in advance if needed
+  * Improved System tools menu for Linux (context menu, File manager)
+  * New "Extract here" quick link on the right of the tool bar, shown when browing an archive
+    * Extracts selected content, or entire archive if nothing is selected
+    * Extracts to new/smart folder depending on settings, link text is adjusted accordingly
+    * Shows context menu with all extraction options (here, smart, new folder) to be used
+      on the fly without changing the configuration
+  * The app now dispays if it isrunning as root (admin or UAC elevated on Windows), 
+    showing <ROOT> (or <ADMIN>) note in main menu, or dropdown main menu (if main menu is
+    hidden)
+
+  EXTRACTION and ARCHIVING
+  * Improved reading DMG, IMG, RPM, and SQUASHFS files as archives
+  * Revamped task launcher GUI
+  * Updated compression Presets files to support latest options set 
+
+-------------------------------------------------------------------
 Mon May 13 10:55:46 UTC 2024 - PragmaticLinux <info@pragmaticlinux.com>
 
 - Update to 9.8.0:

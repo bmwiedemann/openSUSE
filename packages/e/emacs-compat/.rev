@@ -32,4 +32,38 @@
   * compat--maybe-require: Rename macro to reduce churn</comment>
     <requestid>1161542</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>01f55a465bd51858ae76e049e8ddd832</srcmd5>
+    <version>30.0.0.0</version>
+    <time>1722871280</time>
+    <user>dimstar_suse</user>
+    <comment>- Add back the install_info macro's for Leap, info triggers
+  are not old enough for Leap
+- Add patch to fix Texinfo references inside the manual:
+  0002-compat.texi-Fix-references-to-Emacs-30.1-in-Support-.patch
+
+- Remove use deprecated install_info macro's
+- Rebase 0001-Add-install-target.patch against new upstream version
+- Update to version 30.0.0.0:
+  * compat-28: Mark =subr-native-elisp-p= as obsolete (renamed in Emacs 30).
+  * compat-30: New function =char-to-name=.
+  * compat-30: New function =obarray-clear=.
+  * compat-30: New function =interpreted-function-p=.
+  * compat-30: New function =primitive-function-p=.
+  * compat-30: New function =closurep=.
+  * compat-30: Add extended function =sort= with keyword arguments.
+  * compat-30: New function =value&lt;=.
+  * compat-30: Add extended =copy-tree= with support for copying records with
+               non-nil optional second argument.
+  * compat-30: New macro =static-if=.
+  * compat-30: New alias =drop=.
+  * compat-30: New function =merge-ordered-lists=.
+  * compat-30: New variables =completion-lazy-hilit= and =completion-lazy-hilit-fn=
+               and new function =completion-lazy-hilit=.
+  * compat-30: New function =require-with-check=.
+  * compat-30: New functions =find-buffer= and =get-truename-buffer=.
+  * compat-30: Add extended =completion-metadata-get= with support for
+               =completion-category-overrides= and =completion-extra-properties=.</comment>
+    <requestid>1191460</requestid>
+  </revision>
 </revisionlist>

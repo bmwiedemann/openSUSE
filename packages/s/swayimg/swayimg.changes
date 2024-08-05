@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Aug  4 10:46:04 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 3.0
+  * Added key binding configuration for gallery mode;
+  * Added info configuration for gallery mode;
+  * Added timeout for status message;
+  * Fixed thumbnail layout in gallery mode;
+  * Fixed crash opening gallery mode;
+  * Fixed memory leak when resizing windows;
+  * Fixed hangs on opening empty dir in gallery mode;
+  * Note: the configuration file is incompatible with previous
+    versions.
+
+-------------------------------------------------------------------
 Wed Jul 24 11:07:01 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 2.5

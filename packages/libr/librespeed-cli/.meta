@@ -1,0 +1,6 @@
+<package name="librespeed-cli" project="openSUSE:Factory">
+  <title></title>
+  <description>Command line interface for LibreSpeed speed test backends, written in Go.</description>
+  <devel project="benchmark" package="librespeed-cli"/>
+  <url>https://github.com/librespeed/speedtest-cli</url>
+</package>

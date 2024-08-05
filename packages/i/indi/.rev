@@ -49,4 +49,20 @@
 </comment>
     <requestid>1179620</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b577555e78db900d920f1de6979d6d99</srcmd5>
+    <version>2.0.9</version>
+    <time>1722871329</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.0.9:
+  * Minor buffer boundary fixes
+  * Weather watcher dynamic labels
+  * PegasusAstro FalconV2 Driver
+  * Add Terrans PowerBoxPro V2 Driver
+  * Waveshare Modbus Relay Drive
+  * Universal Roll off roof driver
+  * ZWO AM5 Save home position in the mount
+</comment>
+    <requestid>1191594</requestid>
+  </revision>
 </revisionlist>

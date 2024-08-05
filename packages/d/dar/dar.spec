@@ -19,7 +19,7 @@
 
 %define sover   6000
 Name:           dar
-Version:        2.7.14
+Version:        2.7.15
 Release:        0
 Summary:        Backup and Restore Application
 License:        SUSE-GPL-2.0+-with-openssl-exception
@@ -68,8 +68,8 @@ Summary:        Backup and Restore Application
 # We recommend the -lang pack from the library, as the lib itself is also gettextized. The main pack does
 # not need the Recommends, as it requires the lib anyway (thus indirectly Recommends the -lang package).
 Recommends:     %{name}-lang
-Provides:       libdar = 2.3.10
-Obsoletes:      libdar < 2.3.10
+Provides:       libdar = 2.7.15
+Obsoletes:      libdar < 2.7.15
 
 %description -n libdar64-%{sover}
 Dar stands for Disk ARchive and is a hardware independent backup

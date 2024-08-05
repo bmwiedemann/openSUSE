@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jul 28 20:33:33 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update typst to version 0.5.0.5.
+  ## 0.5.0.5
+
+    * Allow numbers like `1.` in math mode (#50).
+
+-------------------------------------------------------------------
 Mon Jun 24 18:45:46 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update typst to version 0.5.0.4.

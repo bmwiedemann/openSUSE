@@ -901,4 +901,13 @@ New upstream release</comment>
     <comment>- Add missed optflags to CFLAGS. (forwarded request 1190845 from dimstar)</comment>
     <requestid>1190846</requestid>
   </revision>
+  <revision rev="77" vrev="2">
+    <srcmd5>509964af6449302eff69f39a0ad9000c</srcmd5>
+    <version>4.15.4</version>
+    <time>1722871248</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 0002-Revert-no-pointer-viewport.patch --
+  Fixes https://gitlab.gnome.org/GNOME/gtk/-/issues/6620</comment>
+    <requestid>1191428</requestid>
+  </revision>
 </revisionlist>

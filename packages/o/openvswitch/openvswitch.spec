@@ -743,6 +743,13 @@ popd
 
 install -D -m 0644 %{SOURCE10} %{buildroot}%{_sysusersdir}/openvswitch.conf
 
+%if %{suse_version} >= 1600
+%python3_fix_shebang_path %{buildroot}%{_datadir}/%{name}/ovsdb/*
+%python3_fix_shebang_path %{buildroot}%{_datadir}/%{name}/scripts/*
+%python3_fix_shebang_path %{buildroot}%{_datadir}/%{name}/scripts/usdt/*
+%python3_fix_shebang_path %{buildroot}%{_datadir}/%{name}/scripts/ovsdb/*
+%endif
+
 %pre -f openvswitch.pre
 %if 0%{?suse_version}
     %service_add_pre ovsdb-server.service ovs-vswitchd.service openvswitch.service ovs-delete-transient-ports.service
