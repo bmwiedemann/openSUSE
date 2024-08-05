@@ -37,6 +37,7 @@ LABEL org.openbuildservice.disturl="%DISTURL%"
 LABEL org.opensuse.lifecycle-url="https://en.opensuse.org/Lifetime#openSUSE_BCI"
 LABEL org.opensuse.release-stage="released"
 # endlabelprefix
+LABEL org.opencontainers.image.revision="%DISTURL%"
 LABEL io.artifacthub.package.readme-url="https://raw.githubusercontent.com/SUSE/BCI-dockerfile-generator/Tumbleweed/spack-image/README.md"
 LABEL io.artifacthub.package.logo-url="https://spack.io/assets/images/spack-logo-white.svg"
 LABEL usage="This container is enabled and supported only on a SLE15+ host."
