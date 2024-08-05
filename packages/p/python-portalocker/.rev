@@ -134,4 +134,13 @@
     flock</comment>
     <requestid>1184135</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>4da45fec3c59494df32f01eb9afd30dd</srcmd5>
+    <version>2.10.1</version>
+    <time>1722871449</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.10.1:
+  * fixed typo thanks to @harmstyler</comment>
+    <requestid>1191713</requestid>
+  </revision>
 </revisionlist>
