@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Aug  5 11:38:13 UTC 2024 - Dirk Mueller <dmueller@suse.com>
+
+- add OCI reference annotation
+
+-------------------------------------------------------------------
 Sat Aug  3 08:56:51 UTC 2024 - Dirk Mueller <dmueller@suse.com>
 
 - set OCI.authors attribute instead of deprecated MAINTAINER

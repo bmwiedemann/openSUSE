@@ -37,6 +37,7 @@ LABEL org.openbuildservice.disturl="%DISTURL%"
 LABEL org.opensuse.lifecycle-url="https://en.opensuse.org/Lifetime#openSUSE_BCI"
 LABEL org.opensuse.release-stage="released"
 # endlabelprefix
+LABEL org.opencontainers.image.revision="%DISTURL%"
 LABEL io.artifacthub.package.readme-url="https://raw.githubusercontent.com/SUSE/BCI-dockerfile-generator/Tumbleweed/ruby-3.3-image/README.md"
 
 RUN set -euo pipefail; zypper -n in --no-recommends ruby3.3 ruby3.3-rubygem-bundler ruby3.3-devel util-linux gcc-c++ sqlite3-devel make timezone curl findutils gawk git-core procps util-linux; zypper -n clean; rm -rf /var/log/{lastlog,tallylog,zypper.log,zypp/history,YaST2}
