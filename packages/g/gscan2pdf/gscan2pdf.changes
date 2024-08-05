@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Aug  1 20:34:39 UTC 2024 - malcolmlewis@opensuse.org
+
+- Updated to 2.13.4:
+  * Fix crash on startup when /etc/upstream-release is directory,
+    Closes bug #430.
+
+-------------------------------------------------------------------
 Sun Jun 30 20:39:23 UTC 2024 - malcolmlewis@opensuse.org
 
 - Updated to 2.13.3:
