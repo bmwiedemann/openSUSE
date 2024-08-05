@@ -1,0 +1,35 @@
+From: Li Zhijian <lizhijian@fujitsu.com>
+Date: Tue, 2 Jul 2024 14:31:30 +0800
+Subject: List: enable LIST_HEAD_FORMAT for -r option
+Git-repo: https://github.com/crash-utility/crash.git
+Git-commit: ce4ddc742fbdde2fc966e79a19d6aa962e79448a
+Patch-mainline: 8.0.6
+References: bsc#1228388
+
+Currently, the LIST_HEAD_FORMAT is not set, 'list -r' will list the
+traversal results in order, not in the reverse order. This is not
+the expected behavior.
+
+Let's enable the LIST_HEAD_FORMAT for -r option by default.
+
+Signed-off-by: Li Zhijian <lizhijian@fujitsu.com>
+Signed-off-by: Jiri Slaby (SUSE) <jirislaby@kernel.org>
+---
+ tools.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/tools.c b/tools.c
+index 0f2db108838a..1022d579071a 100644
+--- a/tools.c
++++ b/tools.c
+@@ -3370,6 +3370,7 @@ cmd_list(void)
+ 			break;
+ 
+ 		case 'r':
++			ld->flags |= LIST_HEAD_FORMAT;
+ 			ld->flags |= LIST_HEAD_REVERSE;
+ 			break;
+ 
+-- 
+2.45.2
+

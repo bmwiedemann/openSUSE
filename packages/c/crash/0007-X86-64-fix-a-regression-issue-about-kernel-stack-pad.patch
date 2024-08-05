@@ -1,0 +1,73 @@
+From: Lianbo Jiang <lijiang@redhat.com>
+Date: Wed, 12 Jun 2024 11:00:00 +0800
+Subject: X86 64: fix a regression issue about kernel stack padding
+Git-repo: https://github.com/crash-utility/crash.git
+Git-commit: 196c4b79c13d1c0e6d7b21c8321eca07d3838d6a
+Patch-mainline: 8.0.6
+References: bsc#1228388
+
+The commit 48764a14bc58 may cause a regression issue when the CONFIG_X86_FRED
+is not enabled, this is because the SIZE(fred_frame) will call the
+SIZE_verify() to determine if the fred_frame is valid, otherwise it will
+emit an error:
+
+  crash> bt 1
+
+  bt: invalid structure size: fred_frame
+        FILE: x86_64.c  LINE: 4089  FUNCTION: x86_64_low_budget_back_trace_cmd()
+
+  [/home/k-hagio/bin/crash] error trace: 588df3 => 5cbc72 => 5eb3e1 => 5eb366
+  PID: 1        TASK: ffff9f94c024b980  CPU: 2    COMMAND: "systemd"
+     #0 [ffffade44001bca8] __schedule at ffffffffb948ebbb
+     #1 [ffffade44001bd10] schedule at ffffffffb948f04d
+     #2 [ffffade44001bd20] schedule_hrtimeout_range_clock at ffffffffb9494fef
+     #3 [ffffade44001bda8] ep_poll at ffffffffb8c91be8
+     #4 [ffffade44001be48] do_epoll_wait at ffffffffb8c91d11
+     #5 [ffffade44001be80] __x64_sys_epoll_wait at ffffffffb8c92590
+     #6 [ffffade44001bed0] do_syscall_64 at ffffffffb947f459
+     #7 [ffffade44001bf50] entry_SYSCALL_64_after_hwframe at ffffffffb96000ea
+
+      5eb366: SIZE_verify.part.42+70
+      5eb3e1: SIZE_verify+49
+      5cbc72: x86_64_low_budget_back_trace_cmd+3010
+      588df3: back_trace+1523
+
+  bt: invalid structure size: fred_frame
+        FILE: x86_64.c  LINE: 4089  FUNCTION: x86_64_low_budget_back_trace_cmd()
+
+Let's replace the SIZE(fred_frame) with the VALID_SIZE(fred_frame) to
+fix it.
+
+Fixes: 48764a14bc58 ("x86_64: fix for adding top_of_kernel_stack_padding for kernel stack")
+Reported-by: Kazuhito Hagio <k-hagio-ab@nec.com>
+Signed-off-by: Lianbo Jiang <lijiang@redhat.com>
+Signed-off-by: Jiri Slaby (SUSE) <jirislaby@kernel.org>
+---
+ x86_64.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/x86_64.c b/x86_64.c
+index 6777c93e6b47..469d26b05e24 100644
+--- a/x86_64.c
++++ b/x86_64.c
+@@ -4086,7 +4086,7 @@ in_exception_stack:
+ 
+         if (!irq_eframe && !is_kernel_thread(bt->tc->task) &&
+             (GET_STACKBASE(bt->tc->task) == bt->stackbase)) {
+-		long stack_padding_size = SIZE(fred_frame) > 0 ? (2*8) : 0;
++		long stack_padding_size = VALID_SIZE(fred_frame) ? (2*8) : 0;
+ 		user_mode_eframe = bt->stacktop - SIZE(pt_regs);
+ 		if (last_process_stack_eframe < user_mode_eframe)
+                 	x86_64_exception_frame(EFRAME_PRINT, 0, bt->stackbuf +
+@@ -4408,7 +4408,7 @@ in_exception_stack:
+ 
+         if (!irq_eframe && !is_kernel_thread(bt->tc->task) &&
+             (GET_STACKBASE(bt->tc->task) == bt->stackbase)) {
+-		long stack_padding_size = SIZE(fred_frame) > 0 ? (2*8) : 0;
++		long stack_padding_size = VALID_SIZE(fred_frame) ? (2*8) : 0;
+ 		user_mode_eframe = bt->stacktop - SIZE(pt_regs);
+ 		if (last_process_stack_eframe < user_mode_eframe)
+                 	x86_64_exception_frame(EFRAME_PRINT, 0, bt->stackbuf +
+-- 
+2.45.2
+

@@ -1,7 +1,7 @@
 #
 # spec file for package crash
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -61,7 +61,7 @@ URL:            https://crash-utility.github.io/
 Summary:        Crash utility for live systems; netdump, diskdump, LKCD or mcore dumpfiles
 License:        GFDL-1.2-only AND GPL-3.0-or-later
 Group:          Development/Tools/Debuggers
-Version:        8.0.4
+Version:        8.0.5
 Release:        0
 Source:         https://github.com/crash-utility/crash/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        https://ftp.gnu.org/gnu/gdb/gdb-10.2.tar.gz
@@ -95,6 +95,17 @@ Patch30:        %{name}-enable-zstd-support.patch
 Patch32:        %{name}-extensions-rule-for-defs.patch
 Patch90:        %{name}-sial-ps-2.6.29.diff
 Patch99:        %{name}-usrmerge.patch
+Patch100:       0001-arm64-section_size_bits-compatible-with-macro-defini.patch
+Patch101:       0002-Reflect-__-start-end-_init_task-kernel-symbols-renam.patch
+Patch102:       0003-x86_64-fix-for-adding-top_of_kernel_stack_padding-fo.patch
+Patch103:       0004-Fix-kmem-v-option-on-Linux-6.9-and-later-kernels.patch
+Patch104:       0005-X86-64-fix-for-crash-session-loading-failure.patch
+Patch105:       0006-Fix-for-failing-to-load-kernel-module.patch
+Patch106:       0007-X86-64-fix-a-regression-issue-about-kernel-stack-pad.patch
+Patch107:       0008-Fix-kmem-i-and-swap-commands-on-Linux-6.10-rc1-and-l.patch
+Patch108:       0009-List-enable-LIST_HEAD_FORMAT-for-r-option.patch
+Patch109:       0010-arm64-fix-a-potential-segfault-when-unwind-frame.patch
+Patch110:       0011-arm64-Fix-bt-command-show-wrong-stacktrace-on-ramdum.patch
 BuildRequires:  bison
 BuildRequires:  flex
 BuildRequires:  gcc-c++
@@ -258,6 +269,17 @@ for f in %{S:100} %{S:101}; do
 done
 
 %patch -P 32 -p1
+%patch -P 100 -p1
+%patch -P 101 -p1
+%patch -P 102 -p1
+%patch -P 103 -p1
+%patch -P 104 -p1
+%patch -P 105 -p1
+%patch -P 106 -p1
+%patch -P 107 -p1
+%patch -P 108 -p1
+%patch -P 109 -p1
+%patch -P 110 -p1
 
 ## SIAL patches
 cd sial-scripts-%{scripts_version}

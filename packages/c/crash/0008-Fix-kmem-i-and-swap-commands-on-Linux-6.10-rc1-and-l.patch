@@ -1,0 +1,130 @@
+From: =?UTF-8?q?HAGIO=20KAZUHITO=28=E8=90=A9=E5=B0=BE=E3=80=80=E4=B8=80?=
+ =?UTF-8?q?=E4=BB=81=29?= <k-hagio-ab@nec.com>
+Date: Tue, 11 Jun 2024 02:40:55 +0000
+Subject: Fix "kmem -i" and "swap" commands on Linux 6.10-rc1 and later kernels
+Git-repo: https://github.com/crash-utility/crash.git
+Git-commit: 3452fe802bf94d15879b3c5fd17c793a2b67a231
+Patch-mainline: 8.0.6
+References: bsc#1228388
+
+Kernel commit 798cb7f9aec3 ("swapon(2)/swapoff(2): don't bother with
+block size") removed swap_info_struct.old_block_size member at Linux
+6.10-rc1.  The crash-utility has used this to determine whether a swap
+is a partition or file and to determine the way to get the swap path.
+
+Withtout the patch, the "kmem -i" and "swap" commands fail with the
+following error messsage:
+
+  crash> kmem -i
+  ...
+     TOTAL HUGE  13179392      50.3 GB         ----
+      HUGE FREE  13179392      50.3 GB  100% of TOTAL HUGE
+
+  swap: invalid (optional) structure member offsets: swap_info_struct_swap_device or swap_info_struct_old_block_size
+        FILE: memory.c  LINE: 16032  FUNCTION: dump_swap_info()
+
+The swap_file member of recent swap_info_struct is a pointer to a
+struct file (once upon a time it was dentry), use this fact directly.
+
+Tested-by: Li Zhijian <lizhijian@fujitsu.com>
+Signed-off-by: Kazuhito Hagio <k-hagio-ab@nec.com>
+Signed-off-by: Jiri Slaby (SUSE) <jirislaby@kernel.org>
+---
+ defs.h    |  1 +
+ filesys.c |  1 +
+ memory.c  | 28 +++++++++++++++++++++++-----
+ symbols.c |  1 +
+ 4 files changed, 26 insertions(+), 5 deletions(-)
+
+diff --git a/defs.h b/defs.h
+index da856c08f11a..49e6923ede54 100644
+--- a/defs.h
++++ b/defs.h
+@@ -2242,6 +2242,7 @@ struct offset_table {                    /* stash of commonly-used offsets */
+ 	long log_caller_id;
+ 	long vmap_node_busy;
+ 	long rb_list_head;
++	long file_f_inode;
+ };
+ 
+ struct size_table {         /* stash of commonly-used sizes */
+diff --git a/filesys.c b/filesys.c
+index 81fe856699e1..406ebb299780 100644
+--- a/filesys.c
++++ b/filesys.c
+@@ -2038,6 +2038,7 @@ vfs_init(void)
+ 	MEMBER_OFFSET_INIT(file_f_dentry, "file", "f_dentry");
+ 	MEMBER_OFFSET_INIT(file_f_vfsmnt, "file", "f_vfsmnt");
+ 	MEMBER_OFFSET_INIT(file_f_count, "file", "f_count");
++	MEMBER_OFFSET_INIT(file_f_inode, "file", "f_inode");
+ 	MEMBER_OFFSET_INIT(path_mnt, "path", "mnt");
+ 	MEMBER_OFFSET_INIT(path_dentry, "path", "dentry");
+ 	if (INVALID_MEMBER(file_f_dentry)) {
+diff --git a/memory.c b/memory.c
+index acb8507cfb75..a74ebafe0ab5 100644
+--- a/memory.c
++++ b/memory.c
+@@ -16075,6 +16075,8 @@ dump_swap_info(ulong swapflags, ulong *totalswap_pages, ulong *totalused_pages)
+ 	char buf3[BUFSIZE];
+ 	char buf4[BUFSIZE];
+ 	char buf5[BUFSIZE];
++	int swap_file_is_file =
++		STREQ(MEMBER_TYPE_NAME("swap_info_struct", "swap_file"), "file");
+ 
+ 	if (!symbol_exists("nr_swapfiles"))
+ 		error(FATAL, "nr_swapfiles doesn't exist in this kernel!\n");
+@@ -16118,9 +16120,21 @@ dump_swap_info(ulong swapflags, ulong *totalswap_pages, ulong *totalused_pages)
+ 		swap_file = ULONG(vt->swap_info_struct + 
+ 			OFFSET(swap_info_struct_swap_file));
+ 
+-                swap_device = INT(vt->swap_info_struct +
+-                        OFFSET_OPTION(swap_info_struct_swap_device, 
+-			swap_info_struct_old_block_size));
++		/* Linux 6.10 and later */
++		if (INVALID_MEMBER(swap_info_struct_swap_device) &&
++		    INVALID_MEMBER(swap_info_struct_old_block_size) &&
++		    swap_file_is_file) {
++			ulong inode;
++			ushort mode;
++			readmem(swap_file + OFFSET(file_f_inode), KVADDR, &inode,
++				sizeof(ulong), "swap_file.f_inode", FAULT_ON_ERROR);
++			readmem(inode + OFFSET(inode_i_mode), KVADDR, &mode,
++				sizeof(ushort), "inode.i_mode", FAULT_ON_ERROR);
++			swap_device = S_ISBLK(mode);
++		} else
++			swap_device = INT(vt->swap_info_struct +
++				OFFSET_OPTION(swap_info_struct_swap_device,
++				swap_info_struct_old_block_size));
+ 
+                 pages = INT(vt->swap_info_struct +
+                         OFFSET(swap_info_struct_pages));
+@@ -16161,8 +16175,12 @@ dump_swap_info(ulong swapflags, ulong *totalswap_pages, ulong *totalused_pages)
+                         		OFFSET(swap_info_struct_swap_vfsmnt));
+ 				get_pathname(swap_file, buf, BUFSIZE, 
+ 					1, vfsmnt);
+-			} else if (VALID_MEMBER
+-				(swap_info_struct_old_block_size)) {
++			} else if (VALID_MEMBER(swap_info_struct_old_block_size) ||
++				    swap_file_is_file) {
++				/*
++				 * Linux 6.10 and later kernels do not have old_block_size,
++				 * but this still should work, if swap_file is file.
++				 */
+ 				devname = vfsmount_devname(file_to_vfsmnt(swap_file), 
+ 					buf1, BUFSIZE);
+ 				get_pathname(file_to_dentry(swap_file), 
+diff --git a/symbols.c b/symbols.c
+index f3c94b0a8588..69a1fbb2f071 100644
+--- a/symbols.c
++++ b/symbols.c
+@@ -10522,6 +10522,7 @@ dump_offset_table(char *spec, ulong makestruct)
+ 		OFFSET(file_f_count));
+         fprintf(fp, "                   file_f_path: %ld\n", 
+ 		OFFSET(file_f_path));
++        fprintf(fp, "                  file_f_inode: %ld\n", OFFSET(file_f_inode));
+         fprintf(fp, "                      path_mnt: %ld\n", 
+ 		OFFSET(path_mnt));
+         fprintf(fp, "                   path_dentry: %ld\n", 
+-- 
+2.45.2
+

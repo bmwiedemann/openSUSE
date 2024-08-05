@@ -1,0 +1,86 @@
+From: Lianbo Jiang <lijiang@redhat.com>
+Date: Wed, 5 Jun 2024 17:30:33 +0800
+Subject: Fix for failing to load kernel module
+Git-repo: https://github.com/crash-utility/crash.git
+Git-commit: a20eb05de3c1cab954d49eb8bb9dc7fe5224caa0
+Patch-mainline: 8.0.6
+References: bsc#1228388
+
+In some kernel modules such as libie.ko, the mem[MOD_TEXT].size
+may be zero, currently crash will only check its value to determine
+if the module is valid, otherwise it fails to load kernel module with
+the following warning and error:
+
+  WARNING: invalid kernel module size: 0
+        KERNEL: /lib/modules/6.10.0-rc1+/build/vmlinux
+      DUMPFILE: /proc/kcore
+          CPUS: 64
+          DATE: Wed Jun  5 12:49:02 IDT 2024
+        UPTIME: 5 days, 05:57:21
+  LOAD AVERAGE: 0.28, 0.06, 0.02
+         TASKS: 806
+      NODENAME: xxxx
+       RELEASE: 6.10.0-rc1+
+       VERSION: #1 SMP PREEMPT_DYNAMIC Fri May 31 04:56:59 IDT 2024
+       MACHINE: x86_64  (2100 Mhz)
+        MEMORY: 1.6 GB
+           PID: 203686
+       COMMAND: "crash"
+          TASK: ffff9f9bf66d0000  [THREAD_INFO: ffff9f9bf66d0000]
+           CPU: 52
+         STATE: TASK_RUNNING (ACTIVE)
+
+  crash> mod
+  mod: cannot access vmalloc'd module memory
+  crash>
+
+Lets count the module size to check if the module is valid, that will
+avoid the current failure.
+
+Signed-off-by: Lianbo Jiang <lijiang@redhat.com>
+Signed-off-by: Jiri Slaby (SUSE) <jirislaby@kernel.org>
+---
+ kernel.c | 20 ++++++++++++++++----
+ 1 file changed, 16 insertions(+), 4 deletions(-)
+
+diff --git a/kernel.c b/kernel.c
+index cd3d6044cc9a..8a9d498760bc 100644
+--- a/kernel.c
++++ b/kernel.c
+@@ -3822,9 +3822,21 @@ module_init(void)
+ 		case KALLSYMS_V2:
+ 			if (THIS_KERNEL_VERSION >= LINUX(2,6,27)) {
+ 				numksyms = UINT(modbuf + OFFSET(module_num_symtab));
+-				if (MODULE_MEMORY())
+-					/* check mem[MOD_TEXT].size only */
+-					size = UINT(modbuf + OFFSET(module_mem) + OFFSET(module_memory_size));
++				if (MODULE_MEMORY()) {
++					/*
++					 * The mem[MOD_TEXT].size may be zero, lets count
++					 * the module size as below.
++					*/
++					int t;
++					size = 0;
++					for_each_mod_mem_type(t) {
++						if (t == MOD_INIT_TEXT)
++							break;
++						size += UINT(modbuf + OFFSET(module_mem) +
++								SIZE(module_memory) * t +
++								OFFSET(module_memory_size));
++					}
++				}
+ 				else
+ 					size = UINT(modbuf + MODULE_OFFSET2(module_core_size, rx));
+ 			} else {
+@@ -3927,7 +3939,7 @@ verify_modules(void)
+ 
+                 for (i = 0, found = FALSE; i < kt->mods_installed; i++) {
+                         lm = &st->load_modules[i];
+-			if (!kvtop(NULL, lm->mod_base, &paddr, 0)) {
++			if (lm->mod_base && !kvtop(NULL, lm->mod_base, &paddr, 0)) {
+ 				irregularities++;
+                                 break;
+ 			}
+-- 
+2.45.2
+

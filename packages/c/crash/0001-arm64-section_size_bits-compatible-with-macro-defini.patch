@@ -1,0 +1,62 @@
+From: Guanyou Chen <chenguanyou9338@gmail.com>
+Date: Wed, 17 Apr 2024 19:55:40 +0800
+Subject: arm64: section_size_bits compatible with macro definitions
+Git-repo: https://github.com/crash-utility/crash.git
+Git-commit: 568c6f049ad4a20918afeb2db9bb7a15b17d9ff2
+Patch-mainline: 8.0.6
+References: bsc#1228388
+
+Compatible with google android GKI changes,
+SECTION_SIZE_BITS = 27 when defined 4K_PAGES or 16K_PAGES.
+SECTION_SIZE_BITS = 29 when defined 64K_PAGES.
+
+Before android-12-gki:
+    crash> help -m | grep section_size_bits
+       section_size_bits: 30
+
+The first PFN error, the physical address should be 0x40000000.
+    crash> kmem -p
+          PAGE        PHYSICAL      MAPPING       INDEX CNT FLAGS
+    ffffffff06e00000 200000000 ffffff80edf4fa12 ffffffff070f3640  1
+4000000000002000 private
+
+After android-12-gki:
+    crash> help -m | grep section
+       section_size_bits: 27
+
+    crash> kmem -p
+          PAGE        PHYSICAL      MAPPING       INDEX CNT FLAGS
+    fffffffeffe00000  40000000                0        0  1 1000 reserved
+
+Link: https://lore.kernel.org/lkml/15cf9a2359197fee0168f820c5c904650d07939e.1610146597.git.sudaraja@codeaurora.org
+Link: https://lore.kernel.org/all/43843c5e092bfe3ec4c41e3c8c78a7ee35b69bb0.1611206601.git.sudaraja@codeaurora.org
+Link: https://cs.android.com/android/_/android/kernel/common/+/673e9ab6b64f981159aeff3b65675bb7dbedecd8
+Signed-off-by: chenguanyou <chenguanyou@xiaomi.com>
+Signed-off-by: Jiri Slaby (SUSE) <jirislaby@kernel.org>
+---
+ arm64.c | 9 ++++++++-
+ 1 file changed, 8 insertions(+), 1 deletion(-)
+
+diff --git a/arm64.c b/arm64.c
+index af0e0d7b9f68..b3040d757946 100644
+--- a/arm64.c
++++ b/arm64.c
+@@ -1628,7 +1628,14 @@ arm64_get_section_size_bits(void)
+ 		if ((ret = get_kernel_config("CONFIG_MEMORY_HOTPLUG", NULL)) == IKCONFIG_Y) {
+ 			if ((ret = get_kernel_config("CONFIG_HOTPLUG_SIZE_BITS", &string)) == IKCONFIG_STR)
+ 				machdep->section_size_bits = atol(string);
+-		} 
++		}
++
++		/* arm64: reduce section size for sparsemem */
++		if ((ret = get_kernel_config("CONFIG_ARM64_4K_PAGES", NULL)) == IKCONFIG_Y
++			|| (ret = get_kernel_config("CONFIG_ARM64_16K_PAGES", NULL)) == IKCONFIG_Y)
++			machdep->section_size_bits = _SECTION_SIZE_BITS_5_12;
++		else if ((ret = get_kernel_config("CONFIG_ARM64_64K_PAGES", NULL)) == IKCONFIG_Y)
++			machdep->section_size_bits = _SECTION_SIZE_BITS_5_12_64K;
+ 	}
+ 
+ 	if (CRASHDEBUG(1))
+-- 
+2.45.2
+

@@ -1,0 +1,49 @@
+From: Alexander Gordeev <agordeev@linux.ibm.com>
+Date: Wed, 10 Apr 2024 14:55:35 +0200
+Subject: Reflect __{start,end}_init_task kernel symbols rename
+Git-repo: https://github.com/crash-utility/crash.git
+Git-commit: 3879e9104826d5ae14a0824ec47ab60056a249a7
+Patch-mainline: 8.0.6
+References: bsc#1228388
+
+Kernel commit 8f69cba096b5 ("x86: Rename __{start,end}_init_task to
+__{start,end}_init_stack") leads to failure when crash loading:
+
+	crash: invalid count request: 0
+
+Assume both __{start,end}_init_task and __{start,end}_init_stack
+symbols could exist for backward compatibility.
+
+Signed-off-by: Alexander Gordeev <agordeev@linux.ibm.com>
+Signed-off-by: Jiri Slaby (SUSE) <jirislaby@kernel.org>
+---
+ task.c | 11 +++++++++--
+ 1 file changed, 9 insertions(+), 2 deletions(-)
+
+diff --git a/task.c b/task.c
+index ebdb5be3786f..d52ce0becc74 100644
+--- a/task.c
++++ b/task.c
+@@ -496,10 +496,17 @@ task_init(void)
+ 	    	((len = SIZE(thread_union)) != STACKSIZE())) {
+ 		machdep->stacksize = len;
+ 	} else if (!VALID_SIZE(thread_union) && !VALID_SIZE(task_union)) {
+-		if (kernel_symbol_exists("__start_init_task") &&
+-		    kernel_symbol_exists("__end_init_task")) {
++		len = 0;
++		if (kernel_symbol_exists("__start_init_stack") &&
++		   kernel_symbol_exists("__end_init_stack")) {
++			len = symbol_value("__end_init_stack");
++			len -= symbol_value("__start_init_stack");
++		} else if (kernel_symbol_exists("__start_init_task") &&
++			kernel_symbol_exists("__end_init_task")) {
+ 			len = symbol_value("__end_init_task");
+ 			len -= symbol_value("__start_init_task");
++		}
++		if (len) {
+ 			ASSIGN_SIZE(thread_union) = len;
+ 			machdep->stacksize = len;
+ 		}
+-- 
+2.45.2
+

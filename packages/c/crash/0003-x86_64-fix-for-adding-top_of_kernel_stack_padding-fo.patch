@@ -1,0 +1,146 @@
+From: Lianbo Jiang <lijiang@redhat.com>
+Date: Fri, 7 Jun 2024 15:29:23 +0800
+Subject: x86_64: fix for adding top_of_kernel_stack_padding for kernel stack
+Git-repo: https://github.com/crash-utility/crash.git
+Git-commit: 48764a14bc5856f0b0bb30685336c68b832154fc
+Patch-mainline: 8.0.6
+References: bsc#1228388
+
+With Kernel commit 65c9cc9e2c14 ("x86/fred: Reserve space for the FRED
+stack frame") in Linux 6.9-rc1 and later, x86_64 will add extra padding
+('TOP_OF_KERNEL_STACK_PADDING (2 * 8)', see: arch/x86/include/asm\
+/thread_info.h,) for kernel stack when the CONFIG_X86_FRED is enabled.
+
+As a result, the pt_regs will be moved downwards due to the offset of
+padding, and the values of registers read from pt_regs will be incorrect
+as below.
+
+Without the patch:
+  crash> bt
+  PID: 2040     TASK: ffff969136fc4180  CPU: 16   COMMAND: "bash"
+   #0 [ffffa996409aba38] machine_kexec at ffffffff9f881eb7
+   #1 [ffffa996409aba90] __crash_kexec at ffffffff9fa1e49e
+   #2 [ffffa996409abb48] panic at ffffffff9f91a6cd
+   #3 [ffffa996409abbc8] sysrq_handle_crash at ffffffffa0015076
+   #4 [ffffa996409abbd0] __handle_sysrq at ffffffffa0015640
+   #5 [ffffa996409abc00] write_sysrq_trigger at ffffffffa0015ce5
+   #6 [ffffa996409abc28] proc_reg_write at ffffffff9fd35bf5
+   #7 [ffffa996409abc40] vfs_write at ffffffff9fc8d462
+   #8 [ffffa996409abcd0] ksys_write at ffffffff9fc8dadf
+   #9 [ffffa996409abd08] do_syscall_64 at ffffffffa0517429
+  #10 [ffffa996409abf40] entry_SYSCALL_64_after_hwframe at ffffffffa060012b
+      [exception RIP: unknown or invalid address]
+      RIP: 0000000000000246  RSP: 0000000000000000  RFLAGS: 0000002b
+      RAX: 0000000000000002  RBX: 00007f9b9f5b13e0  RCX: 000055cee7486fb0
+      RDX: 0000000000000001  RSI: 0000000000000001  RDI: 00007f9b9f4fda57
+      RBP: 0000000000000246   R8: 00007f9b9f4fda57   R9: ffffffffffffffda
+      R10: 0000000000000000  R11: 00007f9b9f5b14e0  R12: 0000000000000002
+      R13: 000055cee7486fb0  R14: 0000000000000002  R15: 00007f9b9f5fb780
+      ORIG_RAX: 0000000000000033  CS: 7ffe65327978  SS: 0000
+  bt: WARNING: possibly bogus exception frame
+  crash>
+
+With the patch:
+
+  crash> bt
+  PID: 2040     TASK: ffff969136fc4180  CPU: 16   COMMAND: "bash"
+   #0 [ffffa996409aba38] machine_kexec at ffffffff9f881eb7
+   #1 [ffffa996409aba90] __crash_kexec at ffffffff9fa1e49e
+   #2 [ffffa996409abb48] panic at ffffffff9f91a6cd
+   #3 [ffffa996409abbc8] sysrq_handle_crash at ffffffffa0015076
+   #4 [ffffa996409abbd0] __handle_sysrq at ffffffffa0015640
+   #5 [ffffa996409abc00] write_sysrq_trigger at ffffffffa0015ce5
+   #6 [ffffa996409abc28] proc_reg_write at ffffffff9fd35bf5
+   #7 [ffffa996409abc40] vfs_write at ffffffff9fc8d462
+   #8 [ffffa996409abcd0] ksys_write at ffffffff9fc8dadf
+   #9 [ffffa996409abd08] do_syscall_64 at ffffffffa0517429
+  #10 [ffffa996409abf40] entry_SYSCALL_64_after_hwframe at ffffffffa060012b
+      RIP: 00007f9b9f4fda57  RSP: 00007ffe65327978  RFLAGS: 00000246
+      RAX: ffffffffffffffda  RBX: 0000000000000002  RCX: 00007f9b9f4fda57
+      RDX: 0000000000000002  RSI: 000055cee7486fb0  RDI: 0000000000000001
+      RBP: 000055cee7486fb0   R8: 0000000000000000   R9: 00007f9b9f5b14e0
+      R10: 00007f9b9f5b13e0  R11: 0000000000000246  R12: 0000000000000002
+      R13: 00007f9b9f5fb780  R14: 0000000000000002  R15: 00007f9b9f5f69e0
+      ORIG_RAX: 0000000000000001  CS: 0033  SS: 002b
+  crash>
+
+Link: https://www.mail-archive.com/devel@lists.crash-utility.osci.io/msg00754.html
+Signed-off-by: Lianbo Jiang <lijiang@redhat.com>
+Signed-off-by: Tao Liu <ltao@redhat.com>
+Signed-off-by: Jiri Slaby (SUSE) <jirislaby@kernel.org>
+---
+ defs.h    | 1 +
+ kernel.c  | 1 +
+ symbols.c | 1 +
+ x86_64.c  | 6 ++++--
+ 4 files changed, 7 insertions(+), 2 deletions(-)
+
+diff --git a/defs.h b/defs.h
+index 01f316e67dde..42d875965256 100644
+--- a/defs.h
++++ b/defs.h
+@@ -2414,6 +2414,7 @@ struct size_table {         /* stash of commonly-used sizes */
+ 	long maple_tree;
+ 	long maple_node;
+ 	long module_memory;
++	long fred_frame;
+ };
+ 
+ struct array_table {
+diff --git a/kernel.c b/kernel.c
+index 1728b70c1b5c..cd3d6044cc9a 100644
+--- a/kernel.c
++++ b/kernel.c
+@@ -668,6 +668,7 @@ kernel_init()
+ 	STRUCT_SIZE_INIT(softirq_state, "softirq_state");
+ 	STRUCT_SIZE_INIT(softirq_action, "softirq_action");
+ 	STRUCT_SIZE_INIT(desc_struct, "desc_struct");
++	STRUCT_SIZE_INIT(fred_frame, "fred_frame");
+ 
+ 	STRUCT_SIZE_INIT(char_device_struct, "char_device_struct");
+ 	if (VALID_STRUCT(char_device_struct)) {
+diff --git a/symbols.c b/symbols.c
+index b7627a83587a..301ce3533da9 100644
+--- a/symbols.c
++++ b/symbols.c
+@@ -11847,6 +11847,7 @@ dump_offset_table(char *spec, ulong makestruct)
+         fprintf(fp, "             task_struct_flags: %ld\n", SIZE(task_struct_flags));
+         fprintf(fp, "            task_struct_policy: %ld\n", SIZE(task_struct_policy));
+         fprintf(fp, "                   thread_info: %ld\n", SIZE(thread_info));
++        fprintf(fp, "                    fred_frame: %ld\n", SIZE(fred_frame));
+         fprintf(fp, "                 softirq_state: %ld\n", 
+ 		SIZE(softirq_state));
+         fprintf(fp, "                softirq_action: %ld\n", 
+diff --git a/x86_64.c b/x86_64.c
+index 0c21eb827e4a..6777c93e6b47 100644
+--- a/x86_64.c
++++ b/x86_64.c
+@@ -4086,10 +4086,11 @@ in_exception_stack:
+ 
+         if (!irq_eframe && !is_kernel_thread(bt->tc->task) &&
+             (GET_STACKBASE(bt->tc->task) == bt->stackbase)) {
++		long stack_padding_size = SIZE(fred_frame) > 0 ? (2*8) : 0;
+ 		user_mode_eframe = bt->stacktop - SIZE(pt_regs);
+ 		if (last_process_stack_eframe < user_mode_eframe)
+                 	x86_64_exception_frame(EFRAME_PRINT, 0, bt->stackbuf +
+-                        	(bt->stacktop - bt->stackbase) - SIZE(pt_regs),
++				(bt->stacktop - stack_padding_size - bt->stackbase) - SIZE(pt_regs),
+                         	bt, ofp);
+ 	}
+ 
+@@ -4407,10 +4408,11 @@ in_exception_stack:
+ 
+         if (!irq_eframe && !is_kernel_thread(bt->tc->task) &&
+             (GET_STACKBASE(bt->tc->task) == bt->stackbase)) {
++		long stack_padding_size = SIZE(fred_frame) > 0 ? (2*8) : 0;
+ 		user_mode_eframe = bt->stacktop - SIZE(pt_regs);
+ 		if (last_process_stack_eframe < user_mode_eframe)
+                 	x86_64_exception_frame(EFRAME_PRINT, 0, bt->stackbuf +
+-                        	(bt->stacktop - bt->stackbase) - SIZE(pt_regs),
++				(bt->stacktop - stack_padding_size - bt->stackbase) - SIZE(pt_regs),
+                         	bt, ofp);
+ 	}
+ 
+-- 
+2.45.2
+
