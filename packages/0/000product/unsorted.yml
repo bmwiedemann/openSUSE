@@ -4654,6 +4654,9 @@ unsorted:
   - fwupd-fish-completion 
   - fx 
   - fxload 
+  - fyi 
+  - fyi-bash-completion 
+  - fyi-fish-completion 
   - fzf 
   - fzf-bash-integration 
   - fzf-fish-integration 
@@ -8092,6 +8095,7 @@ unsorted:
   - gstreamer-docs 
   - gstreamer-editing-services 
   - gstreamer-editing-services-devel 
+  - gstreamer-lsp-plugins 
   - gstreamer-plugin-aravis 
   - gstreamer-plugin-pocketsphinx 
   - gstreamer-plugin-python 
@@ -15899,6 +15903,7 @@ unsorted:
   - libreproc++14 
   - libreproc14 
   - librepute1 
+  - librespeed-cli 
   - libresprite 
   - libressl-devel 
   - libressl-devel-doc 
@@ -36537,9 +36542,6 @@ unsorted:
   - scotch_6_1_0-gnu-hpc-devel-static 
   - scout 
   - scout-command-not-found 
-  - scrcpy 
-  - scrcpy-bash-completion 
-  - scrcpy-zsh-completion 
   - scream 
   - screen-message 
   - screencast 
