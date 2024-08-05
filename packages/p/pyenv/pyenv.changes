@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Aug  5 08:54:35 UTC 2024 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.4.9
+
+- Update 2.4.9
+  - Add miniforge3-24.3.0-0 in #3028
+  - Add CPython 3.13.0rc1 in #3029
+
+-------------------------------------------------------------------
 Tue Jul 23 10:35:09 UTC 2024 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.4.8
 
 - Spec change
