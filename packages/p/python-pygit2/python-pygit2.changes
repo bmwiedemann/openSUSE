@@ -1,7 +1,21 @@
 -------------------------------------------------------------------
-Wed Jun 19 10:53:06 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+Mon Aug  5 11:21:06 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.15.1
+  * New `Repository.revert(...)`
+  * New optional `depth` argument in submodules `add()` and `update()` methods
+  * Now `Submodule.url` returns `None` when the submodule does not have a url
+  * Fix use after free bug in error reporting
+  * Fix `Submodule.head_id` when the submodule is not in the current HEAD tree
+  * Fix `Submodule.open()` when subclassing `Repository`
+  * Fix error in the test suite when running with address sanitizer
+  * Annotations and documentation fixes
+- Fix version number for previous changelog entry
+
+-------------------------------------------------------------------
+Wed Jun 19 10:53:06 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.15.0
   * Many deprecated features have been removed, see below
   * Upgrade to libgit2 v1.8.1
   * New `push_options` optional argument in `Repository.push(...)`
