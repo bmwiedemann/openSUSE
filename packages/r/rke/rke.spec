@@ -19,18 +19,23 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           rke
-Version:        1.5.11
+Version:        1.6.1
 Release:        0
 Summary:        Rancher Kubernetes Engine
 License:        Apache-2.0
 URL:            https://github.com/rancher/rke
 Source:         rke-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  go >= 1.20
+BuildRequires:  go >= 1.22
 
 %description
-RKE is a fast, versatile Kubernetes installer that you can use to install Kubernetes on your Linux hosts.
-Rancher Kubernetes Engine (RKE) is a CNCF-certified Kubernetes distribution that runs entirely within Docker containers. It works on bare-metal and virtualized servers. With RKE, the installation and operation of Kubernetes is both simplified and easily automated, and it’s entirely independent of the operating system and platform you’re running.
+RKE is a fast, versatile Kubernetes installer that you can use to install
+Kubernetes on your Linux hosts.
+Rancher Kubernetes Engine (RKE) is a CNCF-certified Kubernetes distribution
+that runs entirely within Docker containers. It works on bare-metal and
+virtualized servers. With RKE, the installation and operation of Kubernetes is
+both simplified and easily automated, and it’s entirely independent of the
+operating system and platform you’re running.
 
 %prep
 %setup -q
@@ -39,6 +44,7 @@ Rancher Kubernetes Engine (RKE) is a CNCF-certified Kubernetes distribution that
 %build
 go build \
    -mod=vendor \
+   -buildmode=pie \
    -ldflags="-X main.Version=%{version}"
 
 %install
@@ -46,7 +52,6 @@ go build \
 install -D -m 0755 %{name} "%{buildroot}/%{_bindir}/%{name}"
 
 %files
-%defattr(-,root,root)
 %doc README.md
 %license LICENSE
 %{_bindir}/%{name}
