@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Aug  5 06:58:39 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.18.1:
+  + Segfault at startup when none of the stored tabs points to a
+    valid directory.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Tue Jul 23 05:10:36 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.18.0:
