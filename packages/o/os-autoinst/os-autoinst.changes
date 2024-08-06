@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Aug 06 00:20:19 UTC 2024 - okurz@suse.com
+
+- Update to version 4.6.1722889373.84368e7:
+  * video_stream: Fix warning in _get_ffmpeg_cmd
+  * video_stream: Add test test for _get_ffmpeg_cmd
+  * video_stream: make FPS configurable
+  * Fix error handling when cloning a Git repository
+  * Isotovideo/Utils: Fix "Use of uninitialized value $name"
+  * testapi: Keep the positional mode for script_run and alike
+
+-------------------------------------------------------------------
 Sat Aug 03 09:27:24 UTC 2024 - okurz@suse.com
 
 - Update to version 4.6.1722607710.a0ac1e5:
