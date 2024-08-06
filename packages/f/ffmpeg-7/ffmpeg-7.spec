@@ -112,6 +112,7 @@ Patch91:        ffmpeg-dlopen-openh264.patch
 Patch92:        ffmpeg-7-CVE-2024-32228.patch
 Patch93:        ffmpeg-7-CVE-2024-32230.patch
 Patch94:        ffmpeg-7-CVE-2024-32229.patch
+Patch95:        ffmpeg-7-fix-crashes.patch
 BuildRequires:  ladspa-devel
 BuildRequires:  libgsm-devel
 BuildRequires:  libmp3lame-devel >= 3.98.3
@@ -827,6 +828,7 @@ Patch91:        ffmpeg-dlopen-openh264.patch
 Patch92:        ffmpeg-7-CVE-2024-32228.patch
 Patch93:        ffmpeg-7-CVE-2024-32230.patch
 Patch94:        ffmpeg-7-CVE-2024-32229.patch
+Patch95:        ffmpeg-7-fix-crashes.patch
 BuildRequires:  c_compiler
 Requires:       this-is-only-for-build-envs
 

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Aug  3 08:52:26 UTC 2024 - Cliff Zhao <qzhao@suse.com>
+
+- Add ffmpeg-7-fix-crashes.patch:
+  Backporting 5b87869c from upstream, fix track handling when mixing
+  IAMF and video tracks, Fixes crashes when muxing the two together.
+
+-------------------------------------------------------------------
 Tue Jul  5 14:18:52 UTC 2024 - Cliff Zhao <qzhao@suse.com>
 
 - Add ffmpeg-7-CVE-2024-32229.patch:

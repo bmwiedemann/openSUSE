@@ -38,4 +38,14 @@
     <comment>forwarded submit from qzhao; fix spellos in bug numbers</comment>
     <requestid>1190843</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>21aa4776c3022347e50e48c7adbf6370</srcmd5>
+    <version>7.0</version>
+    <time>1722928093</time>
+    <user>dimstar_suse</user>
+    <comment>- Add ffmpeg-7-fix-crashes.patch:
+  Backporting 5b87869c from upstream, fix track handling when mixing
+  IAMF and video tracks, Fixes crashes when muxing the two together.</comment>
+    <requestid>1191766</requestid>
+  </revision>
 </revisionlist>
