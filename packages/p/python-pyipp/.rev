@@ -56,4 +56,14 @@
   * Ensure uri supported fallback is string @ctalkington</comment>
     <requestid>1158436</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>57671ca1fd463eec2a96075ed8acac37</srcmd5>
+    <version>0.16.0</version>
+    <time>1722928086</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.16.0:
+  * Allow passing IPP version to IPP dataclass @ctalkington
+  * Use trusted publisher for release workflow @ctalkington</comment>
+    <requestid>1191753</requestid>
+  </revision>
 </revisionlist>

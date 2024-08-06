@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pyipp
-Version:        0.15.0
+Version:        0.16.0
 Release:        0
 Summary:        Asynchronous Python client for Internet Printing Protocol (IPP)
 License:        MIT
