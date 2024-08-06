@@ -27,7 +27,7 @@
 %global broken_test_arches %{arm} aarch64
 
 Name:           nbdkit
-Version:        1.36.5
+Version:        1.40.1
 Release:        0
 Summary:        Network Block Device server
 License:        BSD-3-Clause
@@ -186,6 +186,7 @@ This package contains example plugins for %{name}.
 
 # The plugins below have non-trivial dependencies are so are
 # packaged separately.
+
 %package cdi-plugin
 Summary:        Containerized Data Import plugin for %{name}
 
@@ -203,6 +204,20 @@ Requires:       %{name}-server = %{version}-%{release}
 
 %description curl-plugin
 This package contains cURL (HTTP/FTP) support for %{name}.
+
+# In theory this is noarch, but because plugins are placed in _libdir
+# which varies across architectures, RPM does not allow this.
+
+%package gcs-plugin
+Summary:        Gooogle Cloud Storage plugin %{name}
+Requires:       %{name}-python-plugin = %{version}-%{release}
+Requires:       %{name}-server = %{version}-%{release}
+# XXX Should not need to add this.
+Requires:       python3-google-cloud-storage
+
+%description gcs-plugin
+This package lets you open disk images stored in Google Cloud Storage
+using %{name}.
 
 %package guestfs-plugin
 Summary:        libguestfs plugin for %{name}
@@ -386,11 +401,17 @@ nbdkit-rate-filter          Limits bandwidth by connection or server.
 
 nbdkit-readahead-filter     Prefetches data when reading sequentially.
 
+nbdkit-readonly-filter     Switch a plugin between read-only and writable.
+
 nbdkit-retry-filter         Reopens connection on error.
 
 nbdkit-retry-request-filter Retries single requests if they fail.
 
+nbdkit-rotational-filter   Set if a plugin is rotational or not.
+
 nbdkit-scan-filter          Prefetch data ahead of sequential reads.
+
+nbdkit-spinning-filter     Add seek delays to simulate a spinning hard disk.
 
 nbdkit-stats-filter         Displays statistics about operations.
 
@@ -605,6 +626,10 @@ export PATH=/usr/sbin:$PATH
 %{_libdir}/%{name}/plugins/nbdkit-curl-plugin.so
 %{_mandir}/man1/nbdkit-curl-plugin.1*
 
+%files gcs-plugin
+%{_libdir}/%{name}/plugins/nbdkit-gcs-plugin
+%{_mandir}/man1/nbdkit-gcs-plugin.1*
+
 %if %{with nbdkit_libguestfs}
 %files guestfs-plugin
 %{_libdir}/%{name}/plugins/nbdkit-guestfs-plugin.so
@@ -669,9 +694,12 @@ export PATH=/usr/sbin:$PATH
 %{_libdir}/%{name}/filters/nbdkit-protect-filter.so
 %{_libdir}/%{name}/filters/nbdkit-rate-filter.so
 %{_libdir}/%{name}/filters/nbdkit-readahead-filter.so
+%{_libdir}/%{name}/filters/nbdkit-readonly-filter.so
 %{_libdir}/%{name}/filters/nbdkit-retry-filter.so
 %{_libdir}/%{name}/filters/nbdkit-retry-request-filter.so
+%{_libdir}/%{name}/filters/nbdkit-rotational-filter.so
 %{_libdir}/%{name}/filters/nbdkit-scan-filter.so
+%{_libdir}/%{name}/filters/nbdkit-spinning-filter.so
 %{_libdir}/%{name}/filters/nbdkit-stats-filter.so
 %{_libdir}/%{name}/filters/nbdkit-swab-filter.so
 %{_libdir}/%{name}/filters/nbdkit-tls-fallback-filter.so
@@ -707,9 +735,12 @@ export PATH=/usr/sbin:$PATH
 %{_mandir}/man1/nbdkit-protect-filter.1*
 %{_mandir}/man1/nbdkit-rate-filter.1*
 %{_mandir}/man1/nbdkit-readahead-filter.1*
+%{_mandir}/man1/nbdkit-readonly-filter.1*
 %{_mandir}/man1/nbdkit-retry-filter.1*
 %{_mandir}/man1/nbdkit-retry-request-filter.1*
+%{_mandir}/man1/nbdkit-rotational-filter.1*
 %{_mandir}/man1/nbdkit-scan-filter.1*
+%{_mandir}/man1/nbdkit-spinning-filter.1*
 %{_mandir}/man1/nbdkit-stats-filter.1*
 %{_mandir}/man1/nbdkit-swab-filter.1*
 %{_mandir}/man1/nbdkit-tls-fallback-filter.1*
@@ -735,6 +766,7 @@ export PATH=/usr/sbin:$PATH
 %{_includedir}/nbd-protocol.h
 %{_mandir}/man3/nbdkit-filter.3*
 %{_mandir}/man3/nbdkit-plugin.3*
+%{_mandir}/man3/nbdkit_*.3*
 %{_mandir}/man1/nbdkit-release-notes-1.*.1*
 %{_libdir}/pkgconfig/nbdkit.pc
 
