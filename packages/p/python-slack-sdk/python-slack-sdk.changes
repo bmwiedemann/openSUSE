@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Aug  6 04:12:57 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 3.31.0:
+  * feat: add new conversations.externalInvitePermissions.set API
+  * feat: add team.externalTeams.disconnect
+  * fix: redact bot_access_tokens from the debug logs of socket mode
+  * feat: add team.externalTeams.list
+  * Add canvases APIs and users.discoverableContacts.lookup API
+  * Added deprecation warnings to Steps from Apps methods
+  * Fix base url according to official documentation
+  * Fix AttributeError on SocketModeClient.is_connected (aiohttp) when
+    enabling debug-level logging
+
+-------------------------------------------------------------------
 Mon Jun 10 07:58:03 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.27.2:

@@ -161,4 +161,21 @@
   * #1459 Fix #1458 internal error within aiohttp-based socket mode</comment>
     <requestid>1179640</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>b73618dccfb94d6068d4316a75f710f7</srcmd5>
+    <version>3.31.0</version>
+    <time>1722928114</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.31.0:
+  * feat: add new conversations.externalInvitePermissions.set API
+  * feat: add team.externalTeams.disconnect
+  * fix: redact bot_access_tokens from the debug logs of socket mode
+  * feat: add team.externalTeams.list
+  * Add canvases APIs and users.discoverableContacts.lookup API
+  * Added deprecation warnings to Steps from Apps methods
+  * Fix base url according to official documentation
+  * Fix AttributeError on SocketModeClient.is_connected (aiohttp) when
+    enabling debug-level logging</comment>
+    <requestid>1191782</requestid>
+  </revision>
 </revisionlist>
