@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Aug  6 02:59:14 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Update to 1.23:
+  * updated translations: Deutsch, Francais, Maygar, Catala
+  * updated camera matrices:
+    FUJIFILM GFX 100S II, FUJIFILM X-T50, GOOGLE PIXEL 8A FRONT
+    CAMERA, GOOGLE PIXEL 8A ULTRAWIDE CAMERA, GOOGLE PIXEL 8A WIDE
+    CAMERA, IPAD14,10 BACK CAMERA, IPAD14,11 BACK CAMERA, IPAD14,8
+    BACK CAMERA, IPAD14,9 BACK CAMERA, IPAD16,3 BACK CAMERA,
+    IPAD16,4 BACK CAMERA, IPAD16,5 BACK CAMERA, IPAD16,6 BACK
+    CAMERA, PANASONIC DC-GH7, PANASONIC DC-S9, SONY XPERIA 1 VI
+    FRONT CAMERA, SONY XPERIA 1 VI ULTRAWIDE CAMERA, SONY XPERIA 1
+    VI WIDE CAMERA, SONY XPERIA 1 VI ZOOM CAMERA, SONY XPERIA 5 V
+    FRONT CAMERA, SONY XPERIA 5 V ULTRAWIDE CAMERA, SONY XPERIA 5 V
+    WIDE CAMERA
+  * more fine tuning to curve support in CTL scripts
+  * CTL scripts: started adding support for curve type parameters
+  * CTL scripts: improved GUI customizability for curve parameters
+  * metadata panel: added word wrapping for processing notes
+  * added support to saving notes in the arp sidecars
+  * adjuster: reverted "double click to reset" behaviour for spin
+    buttons as it was buggy
+  * adjuster: exclude the spin buttons from the "double-click to
+    reset" effect
+
+-------------------------------------------------------------------
 Wed Jun 19 19:24:31 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Update to 1.22.1:
