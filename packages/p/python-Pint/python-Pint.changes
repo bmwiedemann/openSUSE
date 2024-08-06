@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Aug  5 18:59:29 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.24.3:
+  * Fix the default behaviour for pint-convert (cli) for
+    importing uncertainties package (PR #2032, Issue #2016)
+  * Added mu and mc as alternatives for SI micro prefix
+  * Added ℓ as alternative for liter
+  * Support permille units and `‰` symbol (PR #2033, Issue #1963)
+
+-------------------------------------------------------------------
 Mon Jul  8 01:28:27 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.24.1:

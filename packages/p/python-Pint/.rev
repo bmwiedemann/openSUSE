@@ -283,4 +283,17 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1187422</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>e0d3498f1c2c0caece193c268eb7e6ba</srcmd5>
+    <version>0.24.3</version>
+    <time>1722928090</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.24.3:
+  * Fix the default behaviour for pint-convert (cli) for
+    importing uncertainties package (PR #2032, Issue #2016)
+  * Added mu and mc as alternatives for SI micro prefix
+  * Added ℓ as alternative for liter
+  * Support permille units and `‰` symbol (PR #2033, Issue #1963)</comment>
+    <requestid>1191755</requestid>
+  </revision>
 </revisionlist>
