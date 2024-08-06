@@ -1,10 +1,4 @@
 -------------------------------------------------------------------
-Thu Aug  1 13:59:47 UTC 2024 - Dominique Leuenberger <dleuenberger@suse.com>
-
-- Force remove zypp-NameReqPrv - statically linked, large binary;
-  only needed for zypp solver test cases.
-
--------------------------------------------------------------------
 Wed May 29 09:51:58 UTC 2024 - Dominique Leuenberger <dleuenberger@suse.com>
 
 - Drop xdg-utils from rescue CD.

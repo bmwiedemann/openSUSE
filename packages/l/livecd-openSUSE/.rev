@@ -1991,4 +1991,11 @@
     <time>1722521728</time>
     <user>dimstar_suse</user>
   </revision>
+  <revision rev="251" vrev="251">
+    <srcmd5>1af20567361d4e7f1855db7d097f819b</srcmd5>
+    <version>unknown</version>
+    <time>1722946534</time>
+    <user>dimstar_suse</user>
+    <comment>Revert zypp binary removal to save space; zypp binaries are no logner statically linked</comment>
+  </revision>
 </revisionlist>
