@@ -55,4 +55,12 @@
     <comment>Fix ghc-pandoc deps</comment>
     <requestid>1175809</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>d3fd0b1919bdef2281659024ae26aa9c</srcmd5>
+    <version>0.1.0.7</version>
+    <time>1722928098</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1191772</requestid>
+  </revision>
 </revisionlist>
