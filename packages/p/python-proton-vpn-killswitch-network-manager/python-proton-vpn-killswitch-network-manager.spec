@@ -16,10 +16,9 @@
 #
 
 
-%define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-proton-vpn-killswitch-network-manager
-Version:        0.4.5
+Version:        0.5.0
 Release:        0
 Summary:        Proton VPN kill switch interface using NetworkManager
 License:        GPL-3.0-or-later
@@ -29,7 +28,7 @@ Source:         https://github.com/ProtonVPN/python-proton-vpn-killswitch-networ
 BuildRequires:  %{python_module gobject}
 BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module proton-vpn-killswitch}
+BuildRequires:  %{python_module proton-vpn-api-core}
 BuildRequires:  %{python_module proton-vpn-logger}
 BuildRequires:  %{python_module pycairo}
 BuildRequires:  %{python_module pytest-cov}
@@ -42,7 +41,8 @@ BuildRequires:  python-rpm-macros
 Requires:       NetworkManager
 Requires:       python-gobject
 Requires:       python-packaging
-Requires:       python-proton-vpn-killswitch
+Requires:       python-proton-vpn-api-core
+Requires:       python-proton-vpn-logger
 Requires:       python-proton-vpn-logger
 Requires:       python-pycairo
 BuildArch:      noarch
