@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Mon Aug  5 09:18:46 UTC 2024 - RN <R_Nik_C@proton.me>
+
+- update to 2.21.0
+  Changes:
+     * We no longer use libnm for Wifi detection on Linux. Instead, we 
+       use libdbus to communicate with NetworkManager directly
+        - To package managers: libnm dependency should be removed
+  Features:
+     * Add module `BluetoothRadio` that prints bluetooth radios installed on 
+       the system
+        - Don't confuse with module `Bluetooth` which lists connected 
+          bluetooth devices
+     * Detect more information when `--gpu-driver-specific` is used (GPU)
+     * Detect which type of nvidia driver (open source or proprietary) is 
+       used (GPU, Linux)
+     * `--gpu-driver-specific` adds supports for Moore Threads GPU (GPU, 
+       Linux / Windows)
+     * Use SetupAPI for detecting GPUs to support GPU detection when running 
+       fastfetch as a Windows Service (GPU, Windows)
+        - See https://github.com/gpustack/gpustack/pull/97#issuecomment-2264699787 
+          for detail
+     * Detect playback status (Media, Linux)
+  Bugfixes:
+     * Don't try to connect display server in tty mode (Linux)
+     * Improve ssh detection
+     * Fix max frequency printing in custom format (CPU)
+     * Fix displaying random characters when detecting kitty term font 
+       (TerminalFont, Linux)
+     * Make sure to detect all physical memory devices 
+     * Don't detect `wl-restart` as WM (WM, Linux)
+     * Use PCI bus ID to match Nvidia cards; fix multi-GPU detection (GPU)
+     * Ignore invalid GPU (GPU, macOS)
+     * Print error when invalid color code is found 
+     * Fix invalid refresh rate detection on old macOS versions (Display, macOS)
+     * Fix disk size detection on 32-bit systems (Disk, BSD)
+     * Don't ignore disabled GPUs (GPU, Linux)
+     * Fix GPU type detection on FreeBSD (GPU, FreeBSD)
+     * Remove shell version detection for unknown shells (Shell)
+     * Don't detect hyfetch as shell on NixOS (Shell, NixOS)
+  Logos:
+     * Update EndeavourOS_small
+     * Add QTS
+
+-------------------------------------------------------------------
 Fri Jul 26 08:48:51 UTC 2024 - RN <R_Nik_C@proton.me>
 
 - updaet to 2.20.0 
