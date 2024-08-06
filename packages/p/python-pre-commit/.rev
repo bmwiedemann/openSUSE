@@ -242,4 +242,14 @@
     `rust-toolchain.toml` is present.</comment>
     <requestid>1179070</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>8190af14513e2d304a27a23ba7deb128</srcmd5>
+    <version>3.8.0</version>
+    <time>1722928086</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.8.0:
+  * Implement health checks for `language: r` so environments are
+    recreated if the system version of R changes.</comment>
+    <requestid>1191754</requestid>
+  </revision>
 </revisionlist>

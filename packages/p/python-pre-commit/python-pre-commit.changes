@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Aug  5 18:58:56 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.8.0:
+  * Implement health checks for `language: r` so environments are
+    recreated if the system version of R changes.
+
+-------------------------------------------------------------------
 Thu Jun  6 19:37:17 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.7.1:
