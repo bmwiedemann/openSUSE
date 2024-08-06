@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Aug  5 19:05:39 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.22.1:
+  * Add `pyproject.toml`.
+- update to 0.22.0.3:
+  * Rename examples	est_*.py files since they are detected by
+    pytest as a tests.
+  * Fix segfault with litelist after 0.22.0.2.
+
+-------------------------------------------------------------------
 Tue Jul  2 15:13:24 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.22.0.2:

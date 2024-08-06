@@ -18,14 +18,16 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-recordclass
-Version:        0.22.0.2
+Version:        0.22.1
 Release:        0
 Summary:        Library implementing a mutable variant of namedtuple
 License:        MIT
 URL:            https://github.com/intellimath/recordclass
 Source:         https://files.pythonhosted.org/packages/source/r/recordclass/recordclass-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # SECTION Test requirements
@@ -43,10 +45,10 @@ other memory saving variants.
 
 %build
 export CFLAGS="%{optflags}"
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
@@ -57,6 +59,6 @@ export CFLAGS="%{optflags}"
 %doc README.md
 %license LICENSE.txt
 %{python_sitearch}/recordclass/
-%{python_sitearch}/recordclass-%{version}-py%{python_version}.egg-info/
+%{python_sitearch}/recordclass-%{version}.dist-info
 
 %changelog

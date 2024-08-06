@@ -54,4 +54,17 @@
   * Fix bug with `__match_args__` (#6).</comment>
     <requestid>1184899</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>ddf27e5d9b34371aa8da9d891f67acc9</srcmd5>
+    <version>0.22.1</version>
+    <time>1722928092</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.22.1:
+  * Add `pyproject.toml`.
+- update to 0.22.0.3:
+  * Rename examples	est_*.py files since they are detected by
+    pytest as a tests.
+  * Fix segfault with litelist after 0.22.0.2.</comment>
+    <requestid>1191762</requestid>
+  </revision>
 </revisionlist>
