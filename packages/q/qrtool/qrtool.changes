@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Aug  4 22:16:07 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 0.11.4
+  * Read only the first 7,090 bytes of the input data when encoding
+  * Predict input SVG image based on file contents instead of
+    filename extension
+  * Reduce size of ANSI escaped string
+
+-------------------------------------------------------------------
 Fri Jul 12 05:20:35 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 0.11.2
