@@ -7,4 +7,16 @@
     <comment>Add python-proton-core</comment>
     <requestid>1158235</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>5ec2cfbe1d1346717017558d64491ff3</srcmd5>
+    <version>0.2.0</version>
+    <time>1722928087</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.2.0:
+  * Add dynamic module validation
+  * Sanitize DNS response
+  * Fix invalid modulus error when logging in
+  * Session forking</comment>
+    <requestid>1191756</requestid>
+  </revision>
 </revisionlist>
