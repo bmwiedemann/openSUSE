@@ -792,9 +792,6 @@ unsorted:
   - apg 
   - apiguardian 
   - apiguardian-javadoc 
-  - apitrace 
-  - apitrace-wrappers 
-  - apitrace-wrappers-32bit 
   - apk-devel 
   - apk-tools 
   - apko 
@@ -12707,7 +12704,7 @@ unsorted:
   - libdispatch1_3 
   - libdisplay-info-devel 
   - libdjvulibre-devel 
-  - libdlib19_24_4 
+  - libdlib19_24_5 
   - libdlm 
   - libdlm-devel 
   - libdlm3 
@@ -19491,6 +19488,7 @@ unsorted:
   - nbdkit-bash-completion 
   - nbdkit-devel 
   - nbdkit-example-plugins 
+  - nbdkit-gcs-plugin 
   - nbdkit-gzip-filter 
   - nbdkit-linuxdisk-plugin 
   - nbdkit-tar-filter 
@@ -23259,7 +23257,6 @@ unsorted:
   - procmeter-devel 
   - procmon 
   - procps-devel 
-  - procps4-devel 
   - procs 
   - product-builder 
   - product-builder-plugin-Tumbleweed 
