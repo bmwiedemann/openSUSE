@@ -141,4 +141,13 @@ near future.</comment>
     <comment></comment>
     <requestid>1168944</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>3588b3bd4bf5e0272b728cf9e0c5a23f</srcmd5>
+    <version>1.20.2</version>
+    <time>1722928082</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.20.2:
+  * CVE-2024-7383 (bsc#1228872)</comment>
+    <requestid>1191749</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,159 @@
 -------------------------------------------------------------------
+Mon Aug 05 16:08:37 UTC 2024 - jfehlig@suse.com
+
+- Update to version 1.20.2:
+  * CVE-2024-7383 (bsc#1228872)
+  * Version 1.20.2.
+  * docs: security: Add link to TLS server certificate checking announcement
+  * lib/uri.c: Allow tls-verify-peer to be overridden in URIs
+  * interop: Test interop with a bad system CA
+  * interop: Add -DEXPECT_FAIL=1 where we expect the test to fail
+  * interop: Pass -DCERTS and -DPSK as strings
+  * lib/crypto.c: Allow CA verification even if h->hostname is not set
+  * lib/crypto.c: Check server certificate even when using system CA
+  * build: Move to minimum gnutls >= 3.5.18
+  * nbdfuse: Can't use ?tls-certificates or ?tls-psk-file
+  * ci: Fix MacOS builds
+  * tests: Fix CI on Fedora 40
+  * Version 1.20.1.
+  * tests: Add some code quality checks (mainly for maintainers)
+  * common/utils/device-size.c: Include <stdint.h>
+  * copy: Use device_size to get size of block devices
+  * copy: Refactor the internal file_create API
+  * common/utils: Add a function to find the size of a file or block device
+  * Include <stdint.h> in code which uses standard C int types
+  * common/include, ublk: Include <inttypes.h> in code which uses PRI* or SCN*
+  * Include <stdbool.h> in code which uses bool/true/false
+  * copy: Detect <sys/ioctl.h>
+  * copy: Detect <linux/fs.h> at configure time
+  * configure.ac: Indent AC_CHECK_HEADERS consistent with nbdkit
+  * ublk/nbdublk.c: Include <errno.h>
+  * copy, lib, ublk: Include <assert.h> which was missing in a few places
+  * tests: Remove extra whitespace
+  * copy/copy-nbd-to-small-block-error.sh: Use different pidfiles
+  * copy: Use verbose nbdcopy in test
+  * copy: Fix "destination size is smaller than source size" error
+  * ci: refresh with latest 'lcitool manifest'
+  * ci: import lcitool project package list definitions
+  * podwrapper: nbd-server(1), nbd-client(8) are not local man pages
+  * Version 1.20.0.
+  * tests/connect-uri.c: Don't call strlen on each loop iteration
+  * tests/connect-uri: Remove -DPIDFILE, generate it implicitly
+  * lib/uri: Make parsing URIs more case insensitive
+  * rust: Make the struct Cookie internal field fully public
+  * interop/block-status-64.c: Fix skip path under valgrind
+  * Revert "valgrind: Add suppression for liblzma bug"
+  * docs: Add outline release notes for forthcoming libnbd 1.20
+  * lib/handle.c: Invalidate h->magic field just before freeing
+  * Version 1.19.11.
+  * ocaml: Add ocamlfind -package to ocamldoc invocation
+  * ocaml: Mention bigstring and bigstringaf libraries
+  * ocaml/tests: Add a test of the buffer lifecycle
+  * ocaml: Update META so we link programs with bigarray on OCaml < 5
+  * ocaml: Use Bigarray to link examples and tests on OCaml < 5
+  * ocaml/tests: Modify the tests to use the new NBD.Buffer.t
+  * ocaml: Add NBD.Buffer to/from string functions
+  * ocaml: Reimplement NBD.Buffer.t using Bigarray for zero-copy
+  * Version 1.19.10.
+  * info: Add --isnt & --cannot to --help output
+  * info: Implement --cannot and synonyms
+  * info/can.c: Assert that 'can' variable is set
+  * info: Fix error message
+  * info: Add note that --can/--is/--has are synonyms
+  * Version 1.19.9.
+  * info: --uri: Free URI after printing it
+  * lib/uri.c: Add better comments to nbd_get_uri function
+  * info: Add --uri parameter
+  * docs: Link from nbd_get_size to nbdinfo --size option
+  * info: Handle failure of call to file
+  * copy, fuse: Use vector_reserve_exactly in a few places
+  * common/utils: Make vector_reserve_page_aligned allocate exactly
+  * common/utils: Add vector_reserve_exactly function
+  * fuzzing: Add a comment that the libfuzzer test is unmaintained
+  * Version 1.19.8.
+  * tests/opt-info.c: Free string returned by nbd_get_export_name
+  * valgrind: Add suppression for liblzma bug
+  * info: Try harder to report contents from nbd-server
+  * copy: Add test for server without meta context support
+  * api: Fix nbd_can_meta_context for server that lacks meta contexts
+  * copy, info: Treat can_meta_context failures as unsupported
+  * configure: Copy bash-completions test from nbdkit
+  * Version 1.19.7.
+  * podwrapper: Ignore check on older versions of Perl
+  * podwrapper: Allow = (POD directive) followed by bare URL
+  * podwrapper: Check for bare URLs and suggest replacement with L<> links
+  * podwrapper: Move long lines and cross-reference checks earlier
+  * contrib: Add suggested autoconf CHECK_LIBNBD macro
+  * Version 1.19.6.
+  * tests: Missed another C test which didn't use NBDKIT
+  * tests: Use $NBDKIT instead of plain 'nbdkit'
+  * tests: Use 'source ./function.sh' consistently in this directory
+  * ocaml/tests: Add replacement for Bytes.set_int64_be
+  * ocaml/tests: Add explicit dependency on ocaml_test_config.cm{o,x}
+  * build: Define the minimum required version of OCaml as 4.05
+  * generator: Remove definition of sort_uniq
+  * configure: Annotate OCaml tests by version of OCaml
+  * ci: Skip certain deadlocking nbd-server tests on Alpine 3.19
+  * docs: Clarify description of block size constraints
+  * ocaml: tests: Compute srcdir centrally in Ocaml_test_config module
+  * ocaml: tests: Use @NBDKIT@ instead of hard coding nbdkit
+  * python: tests: Use $NBDKIT instead of hard coding nbdkit
+  * python: Various fixes to the Python tests and test wrapper
+  * Version 1.19.5.
+  * tests: Use wait_for_pidfile instead of open-coded loops
+  * tests: Define NBD_SERVER in config.h and use it for requires tests
+  * tests: Define QEMU_NBD in config.h and use it for requires tests
+  * maint: Be more consistent about using ./configure-defined @NBDKIT@
+  * maint: Be more consistent about using ./configure-defined @QEMU_NBD@
+  * interop: Prefer exporting QEMU_STORAGE_DAEMON through tests/functions.sh
+  * interop: Use nbd-server FORCEDTLS mode
+  * interop: Test write, flush and zero operations
+  * interop: Add nbd-server flush flag
+  * interop: Remove -DNEEDS_TMPFILE
+  * maint: Use @LN_S@ autoconf macro in preference to writing out 'ln -s'
+  * tests: connect-uri: Choose random port for TCP connections at runtime
+  * tests: connect-uri: Change how Unix domain sockets are generated
+  * docs: Fix accidental double line in SECURITY file
+  * Version 1.19.4.
+  * ci: Update to latest lcitool
+  * rust: Avoid compiler warning about unused import
+  * bash: Make nbdfuse and nbdublk installation conditional
+  * generator/Makefile.am: Fix missing continuation backslash
+  * Version 1.19.3.
+  * ocaml: Nullify custom block before releasing runtime lock
+  * ocaml: Use Gc.finalize instead of a C finalizer
+  * Version 1.19.2.
+  * generator: Clarify message about generated files
+  * docs: Mention CVE-2023-5871
+  * docs: Improve handle states documentation
+  * generator: Move docs generation out to a new module
+  * docs: Add comment for api_built, and formatting
+  * docs: Tighten up description of nbd_connect_uri(3)
+  * examples: Add example code for nbd_connect_uri(3)
+  * examples: Rearrange Makefile alphabetically
+  * generator: Make sure man pages are rebuilt if examples change
+  * New mailing list archives
+  * examples/userfault-map.c: Make nbd handle static
+  * example: Using userfaultfd to mmap an NBD-backed drive
+  * tests: Check behavior of nbd_set_strict_mode(STRICT_AUTO_FLAG)
+  * lib: Add dynamic validation of struct nbd_handle
+  * docs: Fix incorrect xref in libnbd-release-notes for 1.18
+  * fuzzing: Remove unnecessary NULL assignments
+  * fuzzing: Change fuzzing approach so we issue asynchronous commands
+  * generator: Fix assertion in ext-mode BLOCK_STATUS, CVE-2023-5871
+  * fuzzing: We need to disable Rust bindings when building fuzzer version
+  * Version 1.19.1.
+  * rust: Use string_starts_with instead of String.starts_with
+  * rust: Build the examples
+  * rust: Write a custom translator from POD to rustdoc
+  * rust: Add overview documentation
+  * rust: Annotate 'endif' with corresponding label
+  * info: Show human sizes for block_size values
+  * utils: Slightly simplify human_size()
+  * docs: Assign CVE-2023-5215 to nbd_get_size negative result issue
+  * info: Try harder for graceful disconnect from server
+
+-------------------------------------------------------------------
 Thu Apr 18 20:01:31 UTC 2024 - jfehlig@suse.com
 
 - Update to version 1.18.4:
