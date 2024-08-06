@@ -238,4 +238,12 @@
     <comment>- Add missing requires for certtool (forwarded request 1118747 from firstyear)</comment>
     <requestid>1118837</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>d74576ec7ec8d4bf8604d72ae8b885f1</srcmd5>
+    <version>0.9.0</version>
+    <time>1722928027</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1191034</requestid>
+  </revision>
 </revisionlist>

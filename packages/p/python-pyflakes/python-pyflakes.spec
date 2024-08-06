@@ -26,6 +26,7 @@ URL:            https://github.com/PyCQA/pyflakes
 Source:         https://files.pythonhosted.org/packages/source/p/pyflakes/pyflakes-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
@@ -33,7 +34,7 @@ BuildRequires:  python-rpm-macros
 # the pkg_resources module is required at runtime
 Requires:       python-setuptools
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -54,7 +55,10 @@ modules with side effects. It's also much faster.
 %python_clone -a %{buildroot}%{_bindir}/pyflakes
 
 %check
-%pyunittest discover -v
+# Disable test_errors_syntax test until Python 3.13 has been
+# released, see: https://github.com/PyCQA/pyflakes/issues/811
+python313_args=("-k" "not test_errors_syntax")
+%pytest "${$python_args[@]}"
 
 %post
 %python_install_alternative pyflakes

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Aug  2 09:05:03 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Cherry-pick upstream patch to fix multiple issues with Python 3.13+
+  * fix-issues-with-python3.13.patch
+
+-------------------------------------------------------------------
 Fri May 17 06:38:10 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Re-add conditionals to numpy/pandas, it is required. 

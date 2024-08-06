@@ -58,8 +58,9 @@ tree.
 %check
 # Python 3.10 has deviating exception messages -- gh#davidhalter/parso#192
 python310_args=("-k" "not test_python_exception_matches")
-# Python 3.12 also changes how f-strings are parsed
+# Python 3.12 and newer also changes how f-strings are parsed
 python312_args=("-k" "not test_python_exception_matches")
+python313_args=("-k" "not test_python_exception_matches")
 %pytest "${$python_args[@]}"
 
 %files %{python_files}

@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Aug  5 15:25:48 UTC 2024 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Swapping in pkgconfig(libcrypto) for pkgconfig(botan-3) per suggestion of
+  Andreas Stieger in https://build.opensuse.org/request/show/1191432
+
+-------------------------------------------------------------------
+Fri Aug 02 17:09:15 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 2.9.6+git20240730.415879b:
+  * Set minimum CMake version to 3.21
+  * scripts: fzf preview positioning fixed
+
+-------------------------------------------------------------------
+Fri Aug  2 17:08:22 UTC 2024 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Updating to use pkgconfig(botan-3) vs. pkgconfig(botan-2)
+
+-------------------------------------------------------------------
 Mon Jun 10 00:49:35 UTC 2024 - scott.bradnick@suse.com
 
 - Update to version 2.9.6+git20240609.7051b04:

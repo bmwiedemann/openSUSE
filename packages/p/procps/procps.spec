@@ -1,7 +1,7 @@
 #
 # spec file for package procps
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,8 @@
 #
 
 
-%define somajor 8
-%define libname libprocps%{somajor}
+%define somajor 0
+%define libname libproc2-%{somajor}
 %if 0%{?suse_version} < 1550
 %bcond_with     bin2usr
 %else
@@ -26,30 +26,28 @@
 %bcond_without  pidof
 %bcond_without  nls
 Name:           procps
-Version:        3.3.17
+Version:        4.0.4
 Release:        0
 Summary:        The ps utilities for /proc
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/Monitoring
 URL:            https://sf.net/projects/procps-ng/
 Source:         https://downloads.sourceforge.net/project/procps-ng/Production/procps-ng-%{version}.tar.xz
+Source1:        https://downloads.sourceforge.net/project/procps-ng/Production/procps-ng-%{version}.tar.xz.asc
 #Alternate:     https://gitlab.com/procps-ng/procps/-/archive/v%{version}/procps-v%{version}.tar.gz
-Source1:        procps-rpmlintrc
-Patch0:         procps-ng-3.3.9-watch.patch
+Source2:        procps-rpmlintrc
+Source3:        procps.keyring
+# PATCH-FIX-USTREAM -- w: Don't crash when using short option
+Patch0:         79042e07.patch
 Patch1:         procps-v3.3.3-ia64.diff
 Patch3:         procps-ng-3.3.9-w-notruncate.diff
 Patch7:         procps-ng-3.3.8-readeof.patch
 Patch8:         procps-ng-3.3.10-slab.patch
-Patch10:        procps-ng-3.3.8-accuracy.dif
 Patch11:        procps-ng-3.3.10-xen.dif
-Patch12:        procps-ng-3.3.10-fdleak.dif
 Patch13:        procps-v3.3.3-columns.dif
-Patch14:        procps-ng-3.3.10-integer-overflow.patch
-Patch15:        procps-ng-3.3.10-bnc634071_procstat2.diff
-Patch16:        procps-ng-3.3.8-bnc634840.patch
+Patch14:        procps-ng-4.0.0-integer-overflow.patch
 Patch17:        procps-v3.3.3-read-sysctls-also-from-boot-sysctl.conf-kernelversion.diff
 Patch18:        procps-ng-3.3.8-petabytes.patch
-Patch19:        procps-ng-3.3.10-large_pcpu.patch
 Patch20:        procps-ng-3.3.8-tinfo.dif
 Patch21:        procps-v3.3.3-pwdx.patch
 # PATCH-FIX-OPENSUSE -- trifle rest of the old terabyte patch
@@ -60,20 +58,16 @@ Patch31:        procps-ng-3.3.8-ignore-scan_unevictable_pages.patch
 Patch32:        procps-ng-3.3.10-errno.patch
 # PATCH-FEATURE-SUSE -- Let upstream pmap behave similar to old suse pmap
 Patch33:        procps-ng-3.3.11-pmap4suse.patch
-# PATCH-FIX-UPSTREAM -- bsc#1181976
-Patch34:        procps-3.3.17-bsc1181976.patch
-# PATCH-FIX-UPSTREAM -- bsc#1195468
-Patch35:        bsc1195468-23da4f40.patch
-# PATCH-FIX-UPSTREAM -- bsc#1214290
-Patch36:        CVE-2023-4016.patch
-# PATCH-BACKPORT-FROM-UPSTREAM -- bsc#1181475: 'free' command reports misleading "used" value
-Patch42:        procps-3.3.17-library-bsc1181475.patch
-Patch43:        procps-3.3.17-top-bsc1181475.patch
-Patch44:        procps-ng-3.3.17-logind.patch
-Patch45:        procps-3.3.17-ignore-sysctl_conf.patch
+# PATCH-FIX-SUSE -- Avoid float errors on 32bit architectures
+Patch37:        procps-ng-4.0.0-floats.dif
+# PATCH-FIX-SUSE -- with 4.0.4 the totals on -X option are always reset for each pid
+Patch38:        procps-ng-4.0.4-pmapX-not-twice-anymore.patch
+# PATCH-FIX-SUSE -- ignore dangling symlink to missing /etc/sysctl.conf file
+Patch39:        procps-ng-4.0.4-ignore-sysctl_conf.patch
 BuildRequires:  automake
 BuildRequires:  dejagnu
 BuildRequires:  diffutils
+BuildRequires:  libnuma-devel
 BuildRequires:  libselinux-devel
 BuildRequires:  libtool
 BuildRequires:  ncurses-devel
@@ -81,13 +75,10 @@ BuildRequires:  pkgconfig
 BuildRequires:  screen
 BuildRequires:  xz
 BuildRequires:  pkgconfig(libsystemd)
+Provides:       procps4 = %{version}
+Obsoletes:      procps4 <= 4.0.4
 Provides:       ps = %{version}-%{release}
 Obsoletes:      ps < %{version}-%{release}
-Requires:       %{libname} = %{version}-%{release}
-%ifarch ia64 x86_64 ppc64 ppc %{sparc}
-BuildRequires:  libnuma-devel
-%endif
-%lang_package
 
 %description
 The procps package contains a set of system utilities that provide
@@ -107,11 +98,23 @@ logged on and what they are running. The watch program watches a
 running program. The vmstat command displays virtual memory statistics
 about processes, memory, paging, block I/O, traps, and CPU activity.
 
+%package lang
+Summary:        Translations for package %{name}
+Group:          System/Localization
+Requires:       %{name} = %{version}
+Provides:       %{name}-lang-all = %{version}
+Obsoletes:      procps4-lang <= 4.0.4
+BuildArch:      noarch
+
+%description lang
+Provides translations for the "%{name}" package.
+
 %package devel
 Summary:        Development files for procps
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 Requires:       %{libname} = %{version}
+Obsoletes:      procps4-devel <= 4.0.4
 
 %description devel
 The procps library can be used to read informations out from /proc
@@ -129,40 +132,35 @@ The procps library can be used to read informations out from /proc
 the process information pseudo-file system.
 
 %prep
-%setup -q
-%patch -P 0
-%patch -P 1
-%patch -P 3 -b .trcate
-%patch -P 7 -b .rof
-%patch -P 8 -b .cache
-%patch -P 10 -b .acc
-%patch -P 11
-%patch -P 12
-%patch -P 13 -b .column
-%patch -P 14 -b .ovrflw
-%patch -P 15
-%patch -P 16
-%patch -P 17 -b .sysctl
-%patch -P 18
-%patch -P 19
-%patch -P 20
-%patch -P 21
-%patch -P 28
-%patch -P 31 -p1
-%patch -P 32
-%patch -P 33 -b .pmap4us
-%patch -P 34
-%patch -P 35 -p1
-%patch -P 36 -p0
-%patch -P 42
-%patch -P 43
-%patch -P 44 -p1
-%patch -P 45 -p1
+%setup -q -n procps-ng-%{version}
+%patch -P0 -p1
+%patch -P1
+%patch -P3 -p1 -b .trcate
+%patch -P7 -b .rof
+%patch -P8 -b .cache
+%patch -P11
+%patch -P13 -b .column
+%patch -P14 -b .ovrflw
+%patch -P17 -b .sysctl
+%patch -P18
+%patch -P20 -b .p20
+%patch -P21
+%patch -P28
+%patch -P31 -p1
+%patch -P32 -b .p32
+%patch -P33 -b .pmap4us
+%patch -P37
+%patch -P38
+%patch -P39
 
 %build
 test -s .tarball-version || echo %{version} > .tarball-version
-#./autogen.sh
-autoreconf -fiv
+if test -f po/Makefile.in.in
+then
+    autoreconf -fiv
+else
+    sh ./autogen.sh
+fi
 major=$(sed -rn 's/^#define\s+NCURSES_VERSION_MAJOR\s+([0-9]+)/\1/p' %{_includedir}/ncurses.h)
 export NCURSESW_CFLAGS="$(ncursesw${major}-config --cflags)"
 export NCURSESW_LIBS="$(ncursesw${major}-config --libs)"
@@ -194,7 +192,7 @@ export LFS_CFLAGS="$(getconf LFS_CFLAGS)"
 %make_build
 
 LD_LIBRARY_PATH=$PWD/proc/.libs \
-./pmap $$ || {
+./src/pmap $$ || {
     uname -a
     echo /proc/$$/maps
     cat  /proc/$$/maps
@@ -218,11 +216,11 @@ rm -f %{buildroot}%{_mandir}/*/man1/uptime.1
 find %{buildroot} -type f -name "*.la" -delete -print
 rm -rf %{buildroot}%{_datadir}/doc/procps-ng
 
-if cmp -s %{buildroot}%{_mandir}/man1/procps.1 %{buildroot}%{_mandir}/man1/ps.1
+if cmp -s %{buildroot}%{_mandir}/man1/pidwait.1 %{buildroot}%{_mandir}/man1/pkill.1
 then
-    rm -vf %{buildroot}%{_mandir}/man1/procps.1
-    (cat > %{buildroot}%{_mandir}/man1/procps.1)<<-'EOF'
-	.so man1/ps.1
+    rm -vf %{buildroot}%{_mandir}/man1/pidwait.1
+    (cat > %{buildroot}%{_mandir}/man1/pidwait.1)<<-'EOF'
+	.so man1/pkill.1
 	EOF
 fi
 
@@ -284,6 +282,10 @@ ln -s /sbin/sysctl %{buildroot}%{_sbindir}/sysctl
 %postun -n %{libname} -p /sbin/ldconfig
 
 %check
+set +x
+ls -ld /proc/[a-z]*
+cat /proc/stat
+set -x
 #
 # Skip w test as there is no valid utmp
 #
@@ -294,11 +296,13 @@ rm -rvf testsuite/w.test
 LANG=POSIX
 LC_ALL=$LANG
 unset LC_CTYPE
+TMPDIR=$(mktemp -d /tmp/bash.XXXXXXXXXX) || exit 1
 SCREENDIR=$(mktemp -d ${PWD}/screen.XXXXXX) || exit 1
 SCREENRC=${SCREENDIR}/bash
 export SCREENRC SCREENDIR
 exec 0< /dev/null
 SCREENLOG=${SCREENDIR}/log
+> $SCREENLOG
 cat > $SCREENRC<<-EOF
 	deflogin off
 	deflog on
@@ -311,17 +315,17 @@ cat > $SCREENRC<<-EOF
 	silence on
 	utf8 on
 	EOF
-TMPDIR=$(mktemp -d /tmp/bash.XXXXXXXXXX) || exit 1
-> $SCREENLOG
 tail -q -s 0.5 -f $SCREENLOG & pid=$!
 env HOME=$PWD TERM=$TERM TMPDIR=$TMPDIR SCREENRC=$SCREENRC SCREENDIR=$SCREENDIR \
   screen -D -m make check
+sleep 1
 kill -TERM $pid
 error=no
-for log in test-suite.log testsuite/*.log
+for log in testsuite/*.log test-suite.log
 do
     if grep -E '^(XFAIL|FAIL|ERROR):' $log
     then
+        echo Check $log
 	cat $log
 	error=yes
     fi
@@ -338,7 +342,7 @@ test $error = no || exit 1
 %files
 %defattr (-,root,root,755)
 %license COPYING COPYING.LIB
-%doc NEWS Documentation/bugs.md Documentation/FAQ
+%doc NEWS doc/bugs.md doc/FAQ
 %if %{with bin2usr}
 %if 0%{?suse_version} < 1550
 %verify(link) /bin/ps
@@ -365,7 +369,7 @@ test $error = no || exit 1
 %{_bindir}/pidof
 %endif
 %{_bindir}/pmap
-%{_bindir}/pwait
+%{_bindir}/pidwait
 %{_bindir}/pwdx
 %{_bindir}/skill
 %{_bindir}/slabtop
@@ -382,9 +386,8 @@ test $error = no || exit 1
 %endif
 %{_mandir}/man1/pkill.1%{?ext_man}
 %{_mandir}/man1/pmap.1%{?ext_man}
-%{_mandir}/man1/procps.1%{?ext_man}
 %{_mandir}/man1/ps.1%{?ext_man}
-%{_mandir}/man1/pwait.1%{?ext_man}
+%{_mandir}/man1/pidwait.1%{?ext_man}
 %{_mandir}/man1/pwdx.1%{?ext_man}
 %{_mandir}/man1/skill.1%{?ext_man}
 %{_mandir}/man1/slabtop.1%{?ext_man}
@@ -399,33 +402,18 @@ test $error = no || exit 1
 
 %files devel
 %defattr (-,root,root,755)
-%dir %{_includedir}/proc
-%{_includedir}/proc/alloc.h
-%{_includedir}/proc/devname.h
-%{_includedir}/proc/escape.h
-%{_includedir}/proc/numa.h
-%{_includedir}/proc/procps.h
-%{_includedir}/proc/pwcache.h
-%{_includedir}/proc/readproc.h
-%{_includedir}/proc/sig.h
-%{_includedir}/proc/slab.h
-%{_includedir}/proc/sysinfo.h
-%{_includedir}/proc/version.h
-%{_includedir}/proc/wchan.h
-%{_includedir}/proc/whattime.h
-%{_libdir}/libprocps.so
-%{_libdir}/pkgconfig/libprocps.pc
-%{_mandir}/man3/openproc.3%{?ext_man}
-%{_mandir}/man3/readproc.3%{?ext_man}
-%{_mandir}/man3/readproctab.3%{?ext_man}
+%dir %{_includedir}/libproc2/
+%{_includedir}/libproc2/*.h
+%{_libdir}/libproc2.so
+%{_libdir}/pkgconfig/libproc2.pc
+%{_mandir}/man3/procps.3%{?ext_man}
+%{_mandir}/man3/procps_misc.3%{?ext_man}
+%{_mandir}/man3/procps_pids.3%{?ext_man}
 
 %files -n %{libname}
 %defattr (-,root,root,755)
-%{_libdir}/libprocps.so.%{somajor}*
+%{_libdir}/libproc2.so.%{somajor}*
 
 %files lang -f procps-ng.lang
-%if 0%{?suse_version} < 1550
-%dir %{_mandir}/uk/
-%endif
 
 %changelog

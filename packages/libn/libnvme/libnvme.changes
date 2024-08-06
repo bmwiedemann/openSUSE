@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Fri Aug 02 08:23:49 UTC 2024 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Update to version 1.10:
+  * linux: update TLS version 1 PSK derivation (bsc#1228376)
+  * tree: fix nvme_read_config() to not set errno if return 0
+  * types: add new fields added in TP4165
+  * types: Changed the space into tap space
+  * tree: handle no address phy slot dirs
+  * linux: Remove the use of OpenSSL Engine API
+  * types: Added new controller attribute as per TP4104
+  * tree: add helper to lookup hostnqn/hostid (bsc#1226216)
+  * fabrics: extend hostnqn/hostid variable inject interface (bsc#1226216)
+  * json: filter out pcie transport (bsc#1226216)
+  * tree: preserve parsing order of a config file (bsc#1226216)
+  * types: add new field added in TP4099
+  * types: add new field added in TP4090
+  * linux: add nvme_revoke_tls_key (bsc#1226197)
+  * tree: fix segfault in nvme_free_tree()
+  * types: add PEL vendor specific and TCG defined events definitions
+  * mi-mctp: initialize the rc variable in handle_mctp_endpoint()
+  * linux: avoid potential null pointer dereference
+  * linux: add nvme_get_ana_log_len_from_id_ctrl()
+  * libnvme: export nvme_mi_admin_get_ana_log_atomic()
+  * ioctl: add support for atomic, piecewise ANA log fetch
+  * ioctl: replace nvme_ana_rsp_hdr in doc comments
+  * ioctl: respect rae in nvme_get_log_ana()
+  * ioctl: fix nvme_get_log_ana_groups() pointer type
+  * types: add new filed added in TP4141a
+  * mi: Probe quirks on first command submission
+  * tree: optionally skip namespaces during scanning
+  * ioctl: update nvme_set_var_size_tags() to properly use reftag
+  * types: add enum for Protection Information Format
+  * libnvme: Introduce functions to generate host identifier and host NQN (bsc#1226216)
+  * fabrics: Unescape URI elements
+  * tests: Add uriparser tests
+  * fabrics: Introduce simple URI parser
+  * linux: default init cleanup variable
+  * linux: Fix uninitialized variables
+  * types: add the nvme Cancel command opcode
+  * log: split log variables from root object
+  * log: keep log level logic in one place
+  * mi: restore default ep timeout during admin_passthru
+  * mi: fix the rc for nvme_mi_scan_ep
+  * ccan/endian.h: Only define __{BIG,LITTLE}_ENDIAN if undefined.
+  * Use C99 types for uint32_t
+  * mi: fix the return error code.
+
+-------------------------------------------------------------------
 Fri May 03 13:11:16 UTC 2024 - Daniel Wagner <daniel.wagner@suse.com>
 
 - Update to version 1.9+0.g80c5cf2:
@@ -25,7 +73,7 @@ Fri May 03 13:11:16 UTC 2024 - Daniel Wagner <daniel.wagner@suse.com>
   * fabrics: retry discovery log page when DNR is not set
   * ioctl: return EPROTO when an NVMe status occurred
   * linux: Allocate aligned payload for nvme_get_telemetry_log
-  * test: use diff to compare sysfs output
+  * test: use diff to compare sysfs output (bsc#1226216)
   * tree: fix lba_count size calculation
   * tree: Add NVM subsystem controller identifier
   * test: Add unit test for nvme_id_ns_flbas_to_lbaf_inuse()
@@ -36,7 +84,7 @@ Fri May 03 13:11:16 UTC 2024 - Daniel Wagner <daniel.wagner@suse.com>
   * libnvme : record the nvme pci adapter physical slot (bsc#1223208)
   * sysfs: minimize heap allocations of sysfs paths
   * json: Fix uninitialized variables
-  * libnvme: add missing symbol nvme_scan_tls_keys
+  * libnvme: add missing symbol nvme_scan_tls_keys (bsc#1226197)
   * nbft: Whitespace fixes (bsc#1222026)
   * tests: Add complex NBFT table from Dell R660 (bsc#1222026)
   * tests: Adapt to added NBFT SSNS flags (bsc#1222026)

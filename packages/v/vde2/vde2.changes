@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jul 15 12:46:00 UTC 2024 - Martin Jambor <mjambor@suse.com>
+
+- Added vde2-C99.patch to avoid a C99 violation preventing the package
+  to be built with GC 14.  [boo#1225950]
+
+-------------------------------------------------------------------
 Tue Feb 20 13:16:18 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

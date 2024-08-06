@@ -1,7 +1,7 @@
 #
 # spec file for package elilo
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,7 +33,9 @@ Group:          System/Boot
 Version:        3.16
 Release:        0
 ExclusiveArch:  ia64 %ix86 x86_64
-PreReq:         /usr/bin/perl perl(Pod::Usage) perl(Getopt::Long)
+PreReq:         /usr/bin/perl
+PreReq:         perl(Getopt::Long)
+PreReq:         perl(Pod::Usage)
 # "perl" must be in place *before* any package's 'pre' or 'post' section
 # can (directly or indirectly) run '/sbin/elilo'!  (bnc#842183)
 %ifarch ia64
@@ -58,6 +60,7 @@ Patch7:         elilo-high_base_mem.diff
 Patch10:        elilo-de-debianify.diff
 Patch11:        eliloalt-no-date.diff
 Patch12:        elilo-binutils-2.36-fix.patch
+Patch13:        elilo-c99.patch
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 

@@ -98,7 +98,7 @@ Signed-off-by: Michael Chang <mchang@suse.com>
      {
        if (!load_cfg_f)
          load_cfg_f = grub_util_fopen (load_cfg, "wb");
-@@ -1670,21 +1708,13 @@
+@@ -1670,22 +1708,14 @@
  
  #ifdef __linux__
  
@@ -108,6 +108,7 @@ Signed-off-by: Michael Chang <mchang@suse.com>
      {
        char *subvol = NULL;
        char *mount_path = NULL;
+       grub_uint64_t subvolid = 0;
 -      char **rootdir_devices = NULL;
 -      char *t = grub_util_path_concat (2, "/", rootdir);
 -      char *rootdir_path = grub_canonicalize_file_name (t);
@@ -117,10 +118,10 @@ Signed-off-by: Michael Chang <mchang@suse.com>
 -
 -      if (rootdir_devices && rootdir_devices[0])
 -	if (grub_strcmp (rootdir_devices[0], grub_devices[0]) == 0)
--	  subvol = grub_util_get_btrfs_subvol (platdir, &mount_path);
+-	  subvol = grub_util_get_btrfs_subvol (platdir, &mount_path, &subvolid);
 +
 +      if (grub_strcmp (rootdir_devices[0], grub_devices[0]) == 0)
-+	subvol = grub_util_get_btrfs_subvol (platdir, &mount_path);
++	subvol = grub_util_get_btrfs_subvol (platdir, &mount_path, &subvolid);
  
        if (subvol && mount_path)
  	{

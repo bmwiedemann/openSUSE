@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jul 25 13:05:52 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.12.9:
+  + Security: (CVE-2024-40896) Fix XXE protection in downstream
+    code.
+  + Improvements: Undeprecate xmlKeepBlanksDefault.
+
+-------------------------------------------------------------------
 Wed Jun 12 11:35:32 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 2.12.8:

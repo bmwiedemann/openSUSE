@@ -1,7 +1,7 @@
---- proc/devname.c
-+++ proc/devname.c	2012-06-01 13:35:43.452010553 +0000
-@@ -53,6 +53,10 @@
- #define minor <-- do not use -->
+--- library/devname.c
++++ library/devname.c	2012-06-01 13:35:43.452010553 +0000
+@@ -50,6 +50,10 @@
+ #define minor(d) ( ((unsigned)(d)&0xffu) | (((unsigned)(d)&0xfff00000u)>>12u) )
  #endif
  
 +#ifndef PAGE_SIZE

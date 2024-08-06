@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Aug  2 08:40:47 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 2.0.7
+  * This release cleans out remnants of support for archiac platforms,
+    improves handling of font server reconnection, fixes several issues
+    found by static analysis, and updates some build checks.
+
+-------------------------------------------------------------------
 Sat Aug 27 09:04:20 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 2.0.6

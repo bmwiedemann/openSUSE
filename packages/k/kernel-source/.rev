@@ -6690,4 +6690,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>6.10.2 + fixed qxl; bugs: bsc#1012628 bsc#1228387 bsc#1228388</comment>
     <requestid>1190238</requestid>
   </revision>
+  <revision rev="742" vrev="1">
+    <srcmd5>c0d1729293705ea7a43ff7a0277da73d</srcmd5>
+    <version>6.10.3</version>
+    <time>1722928017</time>
+    <user>dimstar_suse</user>
+    <comment>6.10.3 &amp; amdgpu re-revert &amp; apparmor fix &amp; net git-gix; bugs: bsc#1012628 bsc#1226031 bsc#1228093</comment>
+    <requestid>1191566</requestid>
+  </revision>
 </revisionlist>

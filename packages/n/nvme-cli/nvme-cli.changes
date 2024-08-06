@@ -1,4 +1,177 @@
 -------------------------------------------------------------------
+Fri Aug 02 08:27:05 UTC 2024 - Daniel Wager <daniel.wagner@suse.com>
+
+- Update to version 2.10:
+  * sed: Fix parsing of Discovery0 features
+  * fabrics: avoid potential segfault in nvmf_dim()
+  * nvme: avoid segfault in show-topology (bsc#1226197)
+  * fabrics: do not leak nvme_ctrl_t object on connect
+  * nvme: extend help message when mmap regs fails
+  * nvme: return -ENXIO value to open device if errno not set
+  * wdc: OCP 2.5 Log Page Updates
+  * fabrics: drop --quiet alias -S
+  * fabrics: drop --disable-sqflow alias -d
+  * fabrics: check if json config is existing
+  * plugins/ocp: fix UAF when printing telemetry log
+  * nvme-print-stdout: fix persistent-event-log set feature event output
+  * fabrics: do not report error when no modules are loaded when disconnecting
+  * fabrics: use cleanup helper where possible
+  * fabrics: print an error for ENOENT too
+  * plugins/virtium: use time_t for time_stamp values
+  * completions: add ocp set-error-injection command
+  * doc: add ocp set-error-injection command
+  * ocp: add set-error-injection command
+  * nvme: use argconfig_parse_seen to check conditions
+  * nvme: use proper mask to get correct lbafu value
+  * utils: fix print formatting option
+  * utils: cleanup includes in utils.h
+  * utils: add missing header
+  * nvme-print: Added print for two new fields for HMB feature
+  * plugins/micron: Move OCP internal log parsing from Micron to OCP Plugin.
+  * fabrics: remove unused _discover_from_json_config_file() argument
+  * nvme: avoid unnecessary dup() + close() in io_mgmt_send()
+  * util: remove unnecessary NULL check in cleanup_nvme_root()
+  * nvme: use argconfig_parse_comma_sep_array_u16() in attach-ns
+  * util: avoid duplication in argconfig_parse_comma_sep_array*()
+  * util: remove redundant loop condition in argconfig_parse()
+  * util: introduce is_null_or_empty() to avoid strlen()
+  * util: reduce allocation sizes in argconfig_parse()
+  * util: consolidate call paths to argconfig_parse_type()
+  * util: reduce complexity of argconfig_parse_val()
+  * util: reduce arguments passed to argconfig_parse_type()
+  * util: remove empty default case in argconfig functions
+  * util: remove unnecessary parentheses in argconfig_parse_type()
+  * util: remove redundant cast in argconfig_parse_type()
+  * util: inline argconfig_parse_byte()
+  * util: remove redundant NULL check in argconfig_print_help()
+  * util: use cleanup to avoid goto in argconfig_parse()
+  * util: make argconfig_set_opt_val() a void function
+  * util: remove argconfig_parse_val() declaration
+  * util: remove argconfig CFG_SIZE type
+  * wdc: Update and refactor the C0h log page parsing
+  * ccan: Add freed pointer checking to delete strset member
+  * fabrics: connect all hosts in config.json (bsc#1226216)
+  * fabrics: refactore discover from json config (bsc#1226216)
+  * fabrics: first read config before topology scanning (bsc#1226216)
+  * fabrics: use helper to lookup default hostnqn/hostid (bsc#1226216)
+  * fabrics: extend already connected message (bsc#1226216)
+  * fabrics: use cleanup helper to free nvme root object
+  * nvme: check MD size with PI size when PRACT set to 1
+  * nvme-print: add new field added in TP4090
+  * nvme-print-binary: add effects-log command output missed
+  * completions: add ocp get-error-injection command
+  * doc: add ocp get-error-injection command
+  * ocp: add get-error-injection command
+  * ocp: fix eol-plp-failure-mode command sel option value
+  * doc: fix ocp eol-plp-failure-mode select short option
+  * ocp: set UUID index for eol-plp-failure-mode command to get
+  * nvme: fix verbose logging
+  * doc: fix micron ocp telemetry log parse title
+  * nvme-rpmb: send RPMB_REQ_READ_RESULT for authentication key programming
+  * plugins/micron: Add support for OCP telemetry log parsing
+  * ocp: Update Plugin Version
+  * nvme: fix lbaf inuse to use 6:5 bits
+  * ocp: use NVME_ARGS macro definition by eol-plp-failure-mode command
+  * nvme: extern NVME_ARGS macro definition
+  * nvme: use _cleanup_free_ type buffer for get-feature command
+  * plugins/ocp: Update telemetry string log page (C9h)
+  * nvme-print-json: add get-feature command fahrenheit temperature output
+  * nvme: add get-feature and id-ctrl commands fahrenheit outputs
+  * nvme: delete smart-log command fahrenheit option
+  * nvme-print: check locale to use temperatures in degrees fahrenheit
+  * completion: add support for tls-key (bsc#1226197)
+  * doc: add tls-key --revoke documentation (bsc#1226197)
+  * doc: fix tls-key --keyfile shorthand (bsc#1226197)
+  * nvme: add support to revoke TLS key (bsc#1226197)
+  * nvme: return error code/message for TLS commands (bsc#1226197)
+  * nvme: factor out import key function (bsc#1226197)
+  * nvme: use cleanup helper to close file descriptor (bsc#1226216)
+  * nvme-rpmb: use cleanup helper for STREAM objects
+  * fabrics: use cleanup helper for STREAM objects
+  * nvme: use cleanup helper for STREAM objects (bsc#1226216)
+  * nvme: strip newline when parsing TLS key files (bsc#1226197)
+  * nvme: use stdout for exporting TLS keys (bsc#1226197)
+  * nvme: change _cleanup_file_ to _cleanup_fd_ (bsc#1226197)
+  * common.h: Avoid using unsupported load/store instructions in arm64 VMs
+  * ocp: OCP 2.5 Telemetry DA 1 and 2 Parsing Updates
+  * nvme-print-stdout: refactor subsys config
+  * wdc: Fix compiler warning.
+  * nvme: add flags type nvme_print_flags_t
+  * nvme-print: Use 'unsigned int' instead of 'unsigned'
+  * nvme: update parse_args() return value handling
+  * nvme-print: Fix nvme_show_smart_log indentation error
+  * nvme-print-stdout: Fix stdout_smart_log indentation error
+  * nvme-print-binary: Fix binary_smart_log indentation error
+  * completions: add smart-log command fahrenheit option
+  * doc: Add smart-log command fahrenheit option
+  * nvme: Add smart-log command fahrenheit option
+  * nvme-print: add PEL vendor specific and TCG defined events strings
+  * nvme-print: Print PEL reserved event string
+  * completions: Add timeout option bash completions
+  * completions: Add timeout option zsh completions
+  * completions: Add io-mgmt-recv/send commands zsh completions
+  * completions: Add /dev/nvme argument missed
+  * completions: Change fw-activate command name to fw-commit
+  * completions: Fix _nvme indentation errors (bsc#1226197)
+  * completions: Fix bash-nvme-completion.sh indentation errors (bsc#1226197)
+  * doc: Add nvme commands timeout option
+  * nvme: Add support for delete-ns command timeout option
+  * nvme: Change NVME_DEFAULT_IOCTL_TIMEOUT to use nvme_cfg timeout
+  * nvme: Add nvme_cfg timeout default option
+  * nvme: Add nvme_cfg global variable for NVME_ARGS default options
+  * nvme: add helper function to get pif and sts value
+  * nvme: choose PIF from QPIF if QPIFS supports and PIF is QTYPE
+  * nvme: use libnvme's atomic ANA log page fetch
+  * nvme: fix maximum ANA log page length calculation
+  * nvme-print-json: add missing va_end()
+  * fabrics: skip namespace scan for fabric commands
+  * nvme-print: print the new fields added in TP4141a
+  * plugins/ocp: underflow + index fixes for telemetry
+  * plugins/ocp: Add ocp TCG Configuration Log Page
+  * nvme-print-stdout: Add helper function to print PIF in string form
+  * doc: fix format command info
+  * nvme: telemetry: report the correct error if the ioctl() fails.
+  * nvme-print: add the cancel opcode to the nvme_cmd_to_string() list
+  * doc: fix ocp format issues
+  * nbft: Reuse existing discovery controller
+  * nbft: Skip SSNS records pointing to well-known discovery NQN
+  * nbft: Perform actual discovery
+  * util/cleanup: Add cleanup for struct nvme_fabrics_uri
+  * fabrics: Make some symbols public (bsc#1226216)
+  * nvme-print-stdout: fix format index in stdout_nvm_id_ns
+  * plugins/solidigm: Added workload-tracker command
+  * plugins/solidigm: Added extra VU fields to id-ctrl
+  * nvme-print-stdout: print MEM bit of CTRATT field
+  * nvme-print-stdout: fix to print the log line by line
+  * fabrics: Always pass hostid and hostnqn (bsc#1226216)
+  * plugins/ssstc: Replace __uint16_t with uint16_t
+  * plugins/solidigm: Added log pages to vs-internal-logs
+  * sed: perform a tper revert after lsp revert
+  * plugins/nbft: Use default library logging
+  * docs: Add missing OCP plugin docs to meson
+  * ocp: Switch OCP plugin to use semantic versioning
+  * nvme: fix fw-commit MUD result message
+  * sed: only re-read partition table after unlock.
+  * nvme-print-json: Fix LBA status DSLBA output as hexadecimal
+  * nvme-print-json: Use NVME_PMRxxx register definitions to print
+  * nvme-print-stdout: Fix PMRWBM register name
+  * nvme-print-json: Fix channel configuration descriptors pointer
+  * nvme-print-json: Fix linux kernel check patch errors
+  * nvme-print: Added "Command and Feature Lockdown" string to LID 0x14
+  * plugins/innogrit: `u_char` -> `unsigned char`
+  * nvme: Use C99 types for uint32_t
+  * nvme-print-stdout: print frl1/2/3 values for zns id-ns
+  * solidigm: Eliminate <linux/limits.h>
+  * nvme: remove double free in persistent-event-log
+  * ocp: Add Get DSSD Power State Feature (FID: C7h)
+  * nvme: initialize default library logging
+  * nvme: use cleanup helper for nvme_root_t objects (bsc#1226197)
+  * doc: add nvme connet ctrl-loss-tmo description
+  * plugins/solidigm: Automatic enabling Data Area 4 when retrieving Telemetry.
+- always build the docs
+  * add 0001-docs-rename-ocp-unsupported-req-log-file.patch
+
+-------------------------------------------------------------------
 Fri May 03 14:06:47 UTC 2024 - Daniel Wagner <daniel.wagner@suse.com>
 
 - Update to version 2.9.1:
@@ -75,7 +248,7 @@ Fri May 03 13:33:54 UTC 2024 - Daniel Wagner <daniel.wagner@suse.com>
   * nvme-print-stdout: use controller configuration definitions
   * nvme-print-stdout: use NVME_MAJOR and NVME_MINOR definitions
   * nvme-print-stdout: use FDP configuration attributes definitions
-  * nvme: add new function 'tls_key'
+  * nvme: add new function 'tls_key' (bsc#1226197)
   * nvme: use library functions for importing and exporting TLS keys (bsc#1216982)
   * nvme: extend error message for ns scan failures
   * nvme-print-json: Bugfix status json key of sanitize-log

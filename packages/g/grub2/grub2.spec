@@ -405,6 +405,7 @@ Patch214:       0007-grub-switch-to-blscfg-adapt-to-openSUSE.patch
 Patch215:       0008-blscfg-reading-bls-fragments-if-boot-present.patch
 Patch216:       0009-10_linux-Some-refinement-for-BLS.patch
 Patch217:       0001-net-drivers-ieee1275-ofnet-Remove-200-ms-timeout-in-.patch
+Patch218:       grub2-s390x-set-hostonly.patch
 
 Requires:       gettext-runtime
 %if 0%{?suse_version} >= 1140

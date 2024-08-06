@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Aug  2 07:17:06 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 19.24.5:
+  * No release notes.
+
+-------------------------------------------------------------------
 Sun Apr 21 10:19:07 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Consistently set USE_AVX_INSTRUCTIONS to ON for x86_64 archs and

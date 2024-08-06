@@ -19,7 +19,7 @@
 %define shlib libdlib%( echo %{version} | tr '.' '_' )
 %define python_subpackage_only 1
 Name:           dlib
-Version:        19.24.4
+Version:        19.24.5
 Release:        0
 Summary:        Toolkit for making machine learning and data analysis applications
 License:        BSL-1.0

@@ -3563,4 +3563,12 @@ Petr</comment>
     <comment>24.2.5 + security updates</comment>
     <requestid>1186978</requestid>
   </revision>
+  <revision rev="296" vrev="2">
+    <srcmd5>4f8b768ec283ddc2532bcdd78b8703ba</srcmd5>
+    <version>24.2.5.2</version>
+    <time>1722928037</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1191150</requestid>
+  </revision>
 </revisionlist>

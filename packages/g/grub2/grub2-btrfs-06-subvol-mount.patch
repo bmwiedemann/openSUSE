@@ -7,6 +7,10 @@ v3:
 * Fix executable stack on which function trampoline is constructed to support
   closure (nested function). The closure sematic is replaced.
 
+v4:
+* Fix btrfs subvolume for platform modules not mounting at runtime when the
+  default subvolume is the topmost root tree (bsc#1228124)
+
 --- a/grub-core/fs/btrfs.c
 +++ b/grub-core/fs/btrfs.c
 @@ -44,6 +44,7 @@
@@ -57,7 +61,7 @@ v3:
    if (err)
        return grub_error(GRUB_ERR_FILE_NOT_FOUND, "couldn't locate %s\n", path);
  
-@@ -2321,11 +2345,20 @@
+@@ -2323,11 +2347,20 @@
    grub_uint64_t tree;
    grub_uint8_t type;
    grub_size_t est_size = 0;
@@ -79,7 +83,7 @@ v3:
    if (err)
      {
        grub_btrfs_unmount (data);
-@@ -2452,11 +2485,21 @@
+@@ -2454,11 +2487,21 @@
    struct grub_btrfs_inode inode;
    grub_uint8_t type;
    struct grub_btrfs_key key_in;
@@ -102,7 +106,7 @@ v3:
    if (err)
      {
        grub_btrfs_unmount (data);
-@@ -2691,6 +2734,150 @@
+@@ -2693,6 +2736,150 @@
    return 0;
  }
  
@@ -253,7 +257,7 @@ v3:
  static grub_err_t
  get_fs_root(struct grub_btrfs_data *data, grub_uint64_t tree,
              grub_uint64_t objectid, grub_uint64_t offset,
-@@ -2903,6 +3090,7 @@
+@@ -2905,6 +3092,7 @@
  };
  
  static grub_command_t cmd_info;
@@ -261,7 +265,7 @@ v3:
  static grub_extcmd_t cmd_list_subvols;
  
  static char *
-@@ -2966,6 +3154,9 @@
+@@ -2968,6 +3156,9 @@
    cmd_info = grub_register_command("btrfs-info", grub_cmd_btrfs_info,
  				   "DEVICE",
  				   "Print BtrFS info about DEVICE.");
@@ -288,17 +292,21 @@ v3:
  struct btrfs_ioctl_search_args {
    struct btrfs_ioctl_search_key key;
    grub_uint64_t buf[(4096 - sizeof(struct btrfs_ioctl_search_key))
-@@ -375,6 +383,109 @@
+@@ -375,6 +383,117 @@
  
  int use_relative_path_on_btrfs = 0;
  
 +static char *
-+get_btrfs_subvol (const char *path)
++get_btrfs_subvol (const char *path, grub_uint64_t *subvolid)
 +{
 +  struct btrfs_ioctl_ino_lookup_args args;
 +  grub_uint64_t tree_id;
++  grub_uint64_t ret_id;
 +  int fd = -1;
 +  char *ret = NULL;
++
++  if (subvolid)
++    *subvolid = 0;
 +
 +  fd = open (path, O_RDONLY);
 +
@@ -312,6 +320,7 @@ v3:
 +    goto error;
 +
 +  tree_id = args.treeid;
++  ret_id = args.treeid;
 +
 +  while (tree_id != GRUB_BTRFS_ROOT_VOL_OBJECTID)
 +    {
@@ -380,6 +389,9 @@ v3:
 +	}
 +    }
 +
++  if (subvolid)
++    *subvolid = ret_id;
++
 +  close (fd);
 +  return ret;
 +
@@ -398,7 +410,7 @@ v3:
  char **
  grub_find_root_devices_from_mountinfo (const char *dir, char **relroot)
  {
-@@ -516,12 +627,17 @@
+@@ -516,12 +635,17 @@
        else if (grub_strcmp (entries[i].fstype, "btrfs") == 0)
  	{
  	  ret = grub_find_root_devices_from_btrfs (dir);
@@ -419,13 +431,13 @@ v3:
  	    }
  	}
        else if (!retry && grub_strcmp (entries[i].fstype, "autofs") == 0)
-@@ -1202,6 +1318,24 @@
+@@ -1202,6 +1326,24 @@
    return grub_dev;
  }
  
 +
 +char *
-+grub_util_get_btrfs_subvol (const char *path, char **mount_path)
++grub_util_get_btrfs_subvol (const char *path, char **mount_path, grub_uint64_t *subvolid)
 +{
 +  if (mount_path)
 +    *mount_path = NULL;
@@ -438,7 +450,7 @@ v3:
 +  if (mount_path)
 +    *mount_path = grub_strdup (grub_btrfs_mount_path);
 +
-+  return get_btrfs_subvol (grub_btrfs_mount_path);
++  return get_btrfs_subvol (grub_btrfs_mount_path, subvolid);
 +}
 +
  char *
@@ -446,7 +458,7 @@ v3:
  {
 --- a/util/grub-install.c
 +++ b/util/grub-install.c
-@@ -1645,6 +1645,58 @@
+@@ -1646,6 +1646,58 @@
        prefix_drive = xasprintf ("(%s)", grub_drives[0]);
      }
  
@@ -457,6 +469,7 @@ v3:
 +    {
 +      char *subvol = NULL;
 +      char *mount_path = NULL;
++      grub_uint64_t subvolid = 0;
 +      char **rootdir_devices = NULL;
 +      char *t = grub_util_path_concat (2, "/", rootdir);
 +      char *rootdir_path = grub_canonicalize_file_name (t);
@@ -466,15 +479,15 @@ v3:
 +
 +      if (rootdir_devices && rootdir_devices[0])
 +	if (grub_strcmp (rootdir_devices[0], grub_devices[0]) == 0)
-+	  subvol = grub_util_get_btrfs_subvol (platdir, &mount_path);
++	  subvol = grub_util_get_btrfs_subvol (platdir, &mount_path, &subvolid);
 +
 +      if (subvol && mount_path)
 +	{
-+	  char *def_subvol;
++	  grub_uint64_t def_subvolid = 0;
 +
-+	  def_subvol = grub_util_get_btrfs_subvol (rootdir_path, NULL);
++	  grub_free (grub_util_get_btrfs_subvol (rootdir_path, NULL, &def_subvolid));
 +
-+	  if (def_subvol)
++	  if (def_subvolid)
 +	    {
 +	      char *rootdir_mount_path = NULL;
 +	      if (!load_cfg_f)
@@ -484,10 +497,9 @@ v3:
 +	      if (grub_strncmp (rootdir_path, mount_path, grub_strlen (rootdir_path)) == 0)
 +		rootdir_mount_path = grub_util_path_concat (2, "/", mount_path + grub_strlen (rootdir_path));
 +
-+	      if (grub_strcmp (subvol, def_subvol) != 0 && rootdir_mount_path)
++	      if (subvolid != def_subvolid && rootdir_mount_path)
 +		fprintf (load_cfg_f, "btrfs-mount-subvol ($root) %s %s\n", rootdir_mount_path, subvol);
 +	      free (rootdir_mount_path);
-+	      free (def_subvol);
 +	    }
 +	}
 +
@@ -513,7 +525,7 @@ v3:
  
 +#ifdef __linux__
 +char *
-+grub_util_get_btrfs_subvol (const char *path, char **mount_path);
++grub_util_get_btrfs_subvol (const char *path, char **mount_path, grub_uint64_t *subvolid);
 +#endif
 +
  /* Devmapper functions provided by getroot_devmapper.c.  */

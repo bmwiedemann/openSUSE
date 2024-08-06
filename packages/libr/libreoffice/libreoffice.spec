@@ -151,6 +151,8 @@ Patch992:       python34-no-f-strings.patch
 Patch993:       icu-74-compatibility.patch
 # PATCH-FIX-UPSTREAM CVE-2024-5261 (bsc#1226975)
 Patch994:       cve-2024-5261.patch
+# PATCH-FIX-OPENSUSE override date in clucene files (boo#1047218)
+Patch995:       reproducible-clucene.patch
 BuildRequires:  %{name}-share-linker
 BuildRequires:  ant
 BuildRequires:  autoconf
@@ -161,6 +163,9 @@ BuildRequires:  commons-logging
 BuildRequires:  cups-devel
 BuildRequires:  fixmath-devel
 BuildRequires:  libwebp-devel
+%if 0%{?suse_version} > 1500
+BuildRequires:  strip-nondeterminism
+%endif
 BuildRequires:  zlib-devel
 BuildRequires:  zxcvbn-devel
 %if %{with system_curl}
@@ -1131,6 +1136,9 @@ sed -i -e /CppunitTest_sc_dataprovider/d sc/Module_sc.mk # https://bugs.document
 sed -i -e /CppunitTest_sc_financial_functions_test/d sc/Module_sc.mk # https://bugs.documentfoundation.org/show_bug.cgi?id=127083
 sed -i -e /CppunitTest_sc_statistical_functions_test/d sc/Module_sc.mk
 %endif
+if grep -q setSegmentInfoStartVersion /usr/include/CLucene/index/IndexWriter.h ; then
+%patch -P 995 -p1
+fi
 # fix build with icu 75.1, remove breaking test breaking rule (bsc#1224309)
 sed -i "109d" i18npool/source/breakiterator/data/sent.txt
 
@@ -1556,6 +1564,11 @@ rm %{buildroot}%{_libdir}/libreoffice/share/extensions/*/help/*.done
 rm %{buildroot}%{_libdir}/libreoffice/share/extensions/*/help/*/*.ht_
 rm %{buildroot}%{_libdir}/libreoffice/share/extensions/wiki-publisher/help/sa-IN/help.key_
 rm %{buildroot}%{_libdir}/libreoffice/share/extensions/nlpsolver/locale/NLPSolverCommon_en_US.default
+
+%if 0%{?suse_version} > 1500
+strip-all-nondeterminism %{buildroot}%{_libdir}/libreoffice
+strip-all-nondeterminism %{buildroot}%{_datadir}/%{name}
+%endif
 
 # We have ton of duped files so run over it
 %fdupes %{buildroot}%{_prefix}

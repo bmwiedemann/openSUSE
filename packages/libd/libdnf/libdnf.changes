@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jul 30 12:52:19 UTC 2024 - pgajdos@suse.com
+
+- version update to 0.73.2
+  * context: use rpmtsAddReinstallElement() when doing a reinstall by @kontura in #1650
+  * MergedTransaction: Fix invalid memory access when dropping items by @jan-kolarik in #1658
+  * ConfigParser: fix use-out-of-scope leaks by @evan-goode in #1661
+  * Since we use rpmtsAddReinstallElement rpm also uninstalls the package by @kontura in #1660
+  * Fix countme bucket calculation by @dmnks in #1662
+
+-------------------------------------------------------------------
 Wed Apr  3 07:19:28 UTC 2024 - pgajdos@suse.com
 
 - version update to 0.73.1

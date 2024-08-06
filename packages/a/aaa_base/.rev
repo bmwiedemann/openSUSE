@@ -4176,4 +4176,20 @@
   * Add subpackge to enable ptrace</comment>
     <requestid>1182048</requestid>
   </revision>
+  <revision rev="502" vrev="1">
+    <srcmd5>005040913719741078a0dd18b8b52d7a</srcmd5>
+    <version>84.87+git20240805.7513b28</version>
+    <time>1722928019</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 84.87+git20240805.7513b28:
+  * Remove obsolete resolv+ manual page
+  * Remove obsolete defaultdomain.5 manual page
+  * Move /etc/skel to /usr/etc/skel (hermetic-usr)
+  * Remove obsolete refresh_initrd
+  * Add deprecation notice for service [jsc#PED-266]
+
+- Update to version 84.87+git20240801.75f05dd:
+  * sysctl: Don't set kernel.pid_max on 32b archs (bsc#1227117)</comment>
+    <requestid>1191629</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Aug  2 08:48:22 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.2.5
+  * This release fixes issues found by Coverity & gcc -fanalyzer 
+
+-------------------------------------------------------------------
 Tue Sep 27 10:02:24 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 1.2.4

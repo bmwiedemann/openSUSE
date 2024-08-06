@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Aug  2 07:25:50 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 6.4.16:
+  * No Linux specific changes.
+- Changes from version 6.4.15:
+  * Distinguish between pitch ceiling (flat) and pitch top (curved
+    ceiling), mainly because of their different meanings.
+- Changes from version 6.4.14:
+  * Pitch menu (in e.g. Sound or TextGrid window): separate
+    settings for four pitch analysis methods.
+  * Formant analysis: faster on all systems.
+  * Pitch analysis: faster on Windows (Intel64 and Intel32).
+  * TextGrids: Concatenate: guard against some incorrect TexGrid
+    files.
+
+-------------------------------------------------------------------
 Mon Jul  8 19:14:20 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 6.4.13:

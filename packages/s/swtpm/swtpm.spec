@@ -1,7 +1,7 @@
 #
 # spec file for package swtpm
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,7 +30,7 @@
 %define modulename2 swtpm_svirt
 %define modulename3 swtpmcuse
 Name:           swtpm
-Version:        0.8.1
+Version:        0.9.0
 Release:        0
 Summary:        Software TPM emulator
 License:        BSD-3-Clause
@@ -44,6 +44,7 @@ BuildRequires:  automake
 BuildRequires:  expect
 BuildRequires:  fuse-devel
 BuildRequires:  glib2-devel
+BuildRequires:  gmp-devel
 BuildRequires:  gnutls
 BuildRequires:  iproute2
 BuildRequires:  libgnutls-devel

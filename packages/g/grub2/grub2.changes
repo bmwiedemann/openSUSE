@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Aug  2 08:44:40 UTC 2024 - Michael Chang <mchang@suse.com>
+
+- Fix btrfs subvolume for platform modules not mounting at runtime when the
+  default subvolume is the topmost root tree (bsc#1228124)
+  * grub2-btrfs-06-subvol-mount.patch
+- Rediff
+  * 0001-Unify-the-check-to-enable-btrfs-relative-path.patch
+
+-------------------------------------------------------------------
+Fri Aug  2 02:22:21 UTC 2024 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Switch to '--no-hostonly' when creating the ZIPL initrd in the
+  KIWI build environment to avoid some potential issues due to the
+  missing modules
+  * grub2-s390x-set-hostonly.patch
+
+-------------------------------------------------------------------
 Fri Jul 19 09:59:15 UTC 2024 - Michael Chang <mchang@suse.com>
 
 - Fix error in grub-install when root is on tmpfs (bsc#1226100)

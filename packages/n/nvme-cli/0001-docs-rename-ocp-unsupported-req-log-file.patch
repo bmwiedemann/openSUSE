@@ -1,0 +1,34 @@
+From 8e940c48a032831a91cbcd5b357edb90c96506af Mon Sep 17 00:00:00 2001
+From: Daniel Wagner <dwagner@suse.de>
+Date: Fri, 2 Aug 2024 11:46:49 +0200
+Subject: [PATCH] docs: rename ocp-unsupported-req-log file
+
+The filename has to match the command name, thus rename the filename.
+
+Signed-off-by: Daniel Wagner <dwagner@suse.de>
+---
+ Documentation/meson.build                                       | 2 +-
+ ...ted-reqs-log-pages.txt => nvme-ocp-unsupported-reqs-log.txt} | 0
+ 2 files changed, 1 insertion(+), 1 deletion(-)
+ rename Documentation/{nvme-ocp-unsupported-reqs-log-pages.txt => nvme-ocp-unsupported-reqs-log.txt} (100%)
+
+diff --git a/Documentation/meson.build b/Documentation/meson.build
+index 30c0efc418a4..14781341752d 100644
+--- a/Documentation/meson.build
++++ b/Documentation/meson.build
+@@ -103,7 +103,7 @@ adoc_sources = [
+   'nvme-ocp-set-telemetry-profile',
+   'nvme-ocp-smart-add-log',
+   'nvme-ocp-telemetry-string-log-page',
+-  'nvme-ocp-unsupported-reqs-log-pages',
++  'nvme-ocp-unsupported-reqs-log',
+   'nvme-ocp-internal-log',
+   'nvme-persistent-event-log',
+   'nvme-pred-lat-event-agg-log',
+diff --git a/Documentation/nvme-ocp-unsupported-reqs-log-pages.txt b/Documentation/nvme-ocp-unsupported-reqs-log.txt
+similarity index 100%
+rename from Documentation/nvme-ocp-unsupported-reqs-log-pages.txt
+rename to Documentation/nvme-ocp-unsupported-reqs-log.txt
+-- 
+2.46.0
+

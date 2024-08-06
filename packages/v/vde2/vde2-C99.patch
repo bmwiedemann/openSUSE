@@ -1,0 +1,24 @@
+From f86c725db59d0e0ec9967f7af2703328a96ac993 Mon Sep 17 00:00:00 2001
+From: Alexander Borkowski <a.borkowski@ontolinguistics.org>
+Date: Mon, 15 Jul 2019 08:09:34 +0200
+Subject: [PATCH] Silence compiler warning about implicit type.
+References: boo#1225950
+Upstream: Already committed, this is a backport.
+
+---
+ src/wirefilter.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/wirefilter.c b/src/wirefilter.c
+index c6ff9ef..ee9714d 100644
+--- a/src/wirefilter.c
++++ b/src/wirefilter.c
+@@ -133,7 +133,7 @@ static inline void markov_node_free(struct markov_node *old)
+ 	free(old);
+ }
+ 
+-static void markov_compute(i)
++static void markov_compute(int i)
+ {
+ 	int j;
+ 	ADJMAP(i,i)=100.0;

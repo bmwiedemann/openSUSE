@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul 25 15:55:33 UTC 2024 - Filip Kastl <filip.kastl@suse.com>
+
+- Add elilo-c99.patch so that the package conforms to the C99
+  standard and builds on i586 with GCC 14.
+
+-------------------------------------------------------------------
 Thu Feb 22 11:34:21 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

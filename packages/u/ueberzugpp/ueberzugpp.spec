@@ -18,7 +18,7 @@
 
 %define short_name ueberzug
 Name:           ueberzugpp
-Version:        2.9.6+git20240609.7051b04
+Version:        2.9.6+git20240730.415879b
 Release:        0
 Summary:        Utility to render images in terminals
 License:        GPL-3.0
@@ -34,9 +34,10 @@ BuildRequires:  gcc-c++
 BuildRequires:  git-core
 BuildRequires:  make
 BuildRequires:  ninja
+BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(CLI11)
-BuildRequires:  pkgconfig(botan-2)
 BuildRequires:  pkgconfig(chafa)
+BuildRequires:  pkgconfig(libcrypto)
 BuildRequires:  pkgconfig(libsixel)
 BuildRequires:  pkgconfig(nlohmann_json)
 BuildRequires:  pkgconfig(opencv4)

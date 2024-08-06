@@ -1,0 +1,15 @@
+---
+ src/sysctl.c |    2 ++
+ 1 file changed, 2 insertions(+)
+
+--- src/sysctl.c
++++ src/sysctl.c	2023-12-14 13:46:09.181625220 +0000
+@@ -772,6 +772,8 @@ static int Preload(SettingList *setlist,
+ 		fp = (globbuf.gl_pathv[j][0] == '-' && !globbuf.gl_pathv[j][1])
+ 		    ? stdin : fopen(globbuf.gl_pathv[j], "r");
+ 		if (!fp) {
++			if (strcmp ("/usr/lib/sysctl.d/99-sysctl.conf", globbuf.gl_pathv[j]) == 0)
++				continue;
+ 			xwarn(_("cannot open \"%s\""), globbuf.gl_pathv[j]);
+             return EXIT_FAILURE;
+ 		}

@@ -25,7 +25,7 @@
 %define with_qt6 0
 %endif
 Name:           qjackctl
-Version:        0.9.13
+Version:        1.0.1
 Release:        0
 Summary:        Graphical User Interface to Control JACK Servers
 License:        GPL-2.0-or-later
@@ -106,11 +106,13 @@ install -Dm 0644 src/man1/%{name}.1 %{buildroot}%{_mandir}/man1/%{name}.1
 %dir %{_datadir}/icons/hicolor/32x32/apps
 %dir %{_datadir}/icons/hicolor/scalable/apps
 %dir %{_datadir}/metainfo
+%dir %{_datadir}/%{name}/palette
 %{_bindir}/%{name}
 %{_datadir}/applications/org.rncbc.%{name}.desktop
 %{_datadir}/icons/hicolor/32x32/apps/org.rncbc.%{name}.png
 %{_datadir}/icons/hicolor/scalable/apps/org.rncbc.%{name}.svg
 %{_datadir}/metainfo/org.rncbc.%{name}.metainfo.xml
+%{_datadir}/%{name}/palette/*.conf
 %{_mandir}/man?/%{name}.*
 
 %files lang

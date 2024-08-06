@@ -1397,4 +1397,12 @@ There are also man pages translations but they doesn't get installed automatical
     <comment>Prepare for RPM 4.20 (forwarded request 1153271 from dimstar)</comment>
     <requestid>1153312</requestid>
   </revision>
+  <revision rev="137" vrev="1">
+    <srcmd5>90cf1b80923b9f8269a440e1d362954c</srcmd5>
+    <version>4.0.4</version>
+    <time>1722928032</time>
+    <user>dimstar_suse</user>
+    <comment>Typo in changelog fixed</comment>
+    <requestid>1191089</requestid>
+  </revision>
 </revisionlist>

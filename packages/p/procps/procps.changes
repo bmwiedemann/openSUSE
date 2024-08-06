@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Tue Jul 30 07:14:45 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Switch to procps 4 branch, absorbing the former procps4 package:
+  + Add provides/obsoletes procps4: make zypper replace procps4
+    with the main package for users that manually switched.
+- Aligning to the existing procps4 package, drop/add/modify
+  patches:
+  A    79042e07.patch
+  A    procps-ng-4.0.0-integer-overflow.patch
+  A    procps-ng-4.0.4-ignore-sysctl_conf.patch
+  A    procps-ng-4.0.4-pmapX-not-twice-anymore.patch
+  A    procps-ng-4.0.0-floats.dif
+  D    CVE-2023-4016.patch
+  D    bsc1195468-23da4f40.patch
+  D    procps-3.3.17-bsc1181976.patch
+  D    procps-3.3.17-ignore-sysctl_conf.patch
+  D    procps-3.3.17-library-bsc1181475.patch
+  D    procps-3.3.17-top-bsc1181475.patch
+  D    procps-ng-3.3.10-integer-overflow.patch
+  D    procps-ng-3.3.10-large_pcpu.patch
+  D    procps-ng-3.3.17-logind.patch
+  D    procps-ng-3.3.8-bnc634840.patch
+  D    procps-ng-3.3.9-watch.patch
+  D    procps-ng-3.3.8-accuracy.dif
+  D    procps-ng-3.3.10-bnc634071_procstat2.diff
+  D    procps-ng-3.3.10-fdleak.dif
+  M    procps-ng-3.3.10-errno.patch
+  M    procps-ng-3.3.10-slab.patch
+  M    procps-ng-3.3.11-pmap4suse.patch
+  M    procps-ng-3.3.8-ignore-scan_unevictable_pages.patch
+  M    procps-ng-3.3.8-petabytes.patch
+  M    procps-ng-3.3.8-readeof.patch
+  M    procps-v3.3.3-pwdx.patch
+
+-------------------------------------------------------------------
 Thu Feb 29 14:34:38 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.
@@ -19,13 +54,13 @@ Fri Aug 18 09:08:36 UTC 2023 - Dr. Werner Fink <werner@suse.de>
 
 - Modify patches
   * procps-ng-3.3.9-w-notruncate.diff
-  * procps-ng-3.3.17-logind.patch 
+  * procps-ng-3.3.17-logind.patch
   to real to not truncate output of w with option -n
 
 -------------------------------------------------------------------
 Wed Aug 16 13:50:25 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
 
-- procps-ng-3.3.17-logind.patch: Backport from 4.x git, prefer 
+- procps-ng-3.3.17-logind.patch: Backport from 4.x git, prefer
   logind over utmp (jsc#PED-3144)
 
 -------------------------------------------------------------------
@@ -42,13 +77,13 @@ Tue Dec 27 13:14:52 UTC 2022 - Ludwig Nussel <lnussel@suse.com>
 -------------------------------------------------------------------
 Thu Dec 15 09:45:46 UTC 2022 - Dr. Werner Fink <werner@suse.de>
 
-- Extend patch procps-3.3.17-library-bsc1181475.patch (bsc#1206412) 
+- Extend patch procps-3.3.17-library-bsc1181475.patch (bsc#1206412)
 - Make sure that correct library version is installed (bsc#1206412)
 
 -------------------------------------------------------------------
 Thu Jun 23 11:28:42 UTC 2022 - Dr. Werner Fink <werner@suse.de>
 
-- Some older products do not know about /usr/share/man/uk 
+- Some older products do not know about /usr/share/man/uk
 
 -------------------------------------------------------------------
 Wed Jun 22 12:12:35 UTC 2022 - Dr. Werner Fink <werner@suse.de>
@@ -56,7 +91,7 @@ Wed Jun 22 12:12:35 UTC 2022 - Dr. Werner Fink <werner@suse.de>
 - Add the patches
   * procps-3.3.17-library-bsc1181475.patch
   * procps-3.3.17-top-bsc1181475.patch
-  which are backports of current newlib tree to solve bug bsc#1181475 
+  which are backports of current newlib tree to solve bug bsc#1181475
   * 'free' command reports misleading "used" value
 
 -------------------------------------------------------------------
@@ -68,13 +103,13 @@ Fri Feb  4 09:21:59 UTC 2022 - Dr. Werner Fink <werner@suse.de>
 -------------------------------------------------------------------
 Thu Jan 20 13:17:34 UTC 2022 - Dr. Werner Fink <werner@suse.de>
 
-- Correct used URLs 
+- Correct used URLs
 
 -------------------------------------------------------------------
 Fri Jul  2 13:24:08 UTC 2021 - Dr. Werner Fink <werner@suse.de>
 
 - Skip test suite on emulated riscv64 systems as the qemu process
-  is unexpected on the command lines of processes 
+  is unexpected on the command lines of processes
 
 -------------------------------------------------------------------
 Wed Mar 31 10:18:10 UTC 2021 - Dr. Werner Fink <werner@suse.de>
@@ -98,7 +133,7 @@ Mon Feb 22 18:57:37 UTC 2021 - Antoine Belvire <antoine.belvire@opensuse.org>
 -------------------------------------------------------------------
 Thu Feb 11 08:46:36 UTC 2021 - Dr. Werner Fink <werner@suse.de>
 
-- Add /usr/share/man/uk dir to file list for lang sub package 
+- Add /usr/share/man/uk dir to file list for lang sub package
 
 -------------------------------------------------------------------
 Wed Feb 10 17:32:06 UTC 2021 - Antoine Belvire <antoine.belvire@opensuse.org>
@@ -343,7 +378,7 @@ Tue Jan 30 09:39:14 UTC 2018 - werner@suse.de
    0001-Preload-sysctl-lines-even-if-longer-than-stdio-buffe.patch
    0002-Add-flexible-buffered-I-O-based-on-fopencookie-3.patch
    0003-Use-new-standard-I-O-for-reading-writing-sysctl-valu.patch
-  from my project https://gitlab.com/bitstreamout/procps/tree/procio 
+  from my project https://gitlab.com/bitstreamout/procps/tree/procio
   which implements a flexible buffer for reading and writing values
   below /proc/sys (bsc#1039941)
 
@@ -385,7 +420,7 @@ Mon May 22 08:25:17 UTC 2017 - werner@suse.de
 -------------------------------------------------------------------
 Wed Apr 26 12:45:15 UTC 2017 - werner@suse.de
 
-- Explain option --no-truncate of command w 
+- Explain option --no-truncate of command w
 
 -------------------------------------------------------------------
 Thu Jan 19 12:20:06 UTC 2017 - werner@suse.de
@@ -403,12 +438,12 @@ Mon Dec 12 13:42:04 UTC 2016 - dimstar@opensuse.org
 -------------------------------------------------------------------
 Tue Aug  9 16:08:03 UTC 2016 - werner@suse.de
 
-- Avoid fillup and insserv on modern systems (bsc#992845) 
+- Avoid fillup and insserv on modern systems (bsc#992845)
 
 -------------------------------------------------------------------
 Tue Jul 12 16:01:19 UTC 2016 - werner@suse.de
 
-- Use test suite but avoid the w command due dummy utmp 
+- Use test suite but avoid the w command due dummy utmp
   * This requires dejagnu for the runtest command
   * This requires screen to be able to provide a tty
 - Add patch procps-ng-3.3.12-strtod.patch to fix missed extern
@@ -600,7 +635,7 @@ Fri Jan 23 15:53:29 UTC 2015 - werner@suse.de
 Tue Dec 16 15:32:40 UTC 2014 - werner@suse.de
 
 - Add upstream patch bsc901202-add-better-help-output.patch
-  which includes the commits 
+  which includes the commits
   0f649e2cd2eef94075f1975248953f8c5b85d9f4
   4ba9ff5c0df7e94d03a555ac4cec947f6fac2ba6
   b4951bfea367eef551b053e9f0240d717c353c11
@@ -778,7 +813,7 @@ Tue Mar 25 12:43:12 CET 2014 - tiwai@suse.de
 Tue Dec 17 13:17:36 UTC 2013 - werner@suse.de
 
 - Change patch procps-ng-3.3.8-accuracy.dif to really use finally
-  jiffies to calculate %CPU output (bnc#855861) 
+  jiffies to calculate %CPU output (bnc#855861)
 
 -------------------------------------------------------------------
 Mon Oct  7 13:35:36 UTC 2013 - werner@suse.de
@@ -818,7 +853,7 @@ Wed Jun 26 14:17:34 UTC 2013 - werner@suse.de
 
 - Add tow upstream patches
   0001-top-trade-two-groff_mdoc-macros-for-groff-equivalent.patch
-  0002-library-for-atexit-support-fix-fileutils-for-EPIPE.patch 
+  0002-library-for-atexit-support-fix-fileutils-for-EPIPE.patch
 
 -------------------------------------------------------------------
 Fri Jun 21 11:45:19 UTC 2013 - werner@suse.de
@@ -889,7 +924,7 @@ Sun Feb 10 21:24:36 UTC 2013 - crrodriguez@opensuse.org
 -------------------------------------------------------------------
 Tue Jan 15 11:11:48 UTC 2013 - werner@suse.de
 
-- Make rpmlint happy 
+- Make rpmlint happy
 
 -------------------------------------------------------------------
 Fri Jan 11 16:35:15 UTC 2013 - jengelh@inai.de
@@ -905,7 +940,7 @@ Tue Dec 18 17:47:48 UTC 2012 - werner@suse.de
 -------------------------------------------------------------------
 Tue Oct 30 14:34:52 UTC 2012 - werner@suse.de
 
-- Update to procps-ng-3.3.5 
+- Update to procps-ng-3.3.5
   * Stop SIGFPE on vmstat at times
   * Added debian patch for kfreebsd bug, Debian #674785
   * Bump the soname
@@ -923,7 +958,7 @@ Tue Oct 30 12:35:12 UTC 2012 - werner@suse.de
   * top can display a task's environment
   * top can display major/minor pg fault deltas, Debian #84992
   * top provides additional control over column widths
-  * top offers user controlled left/right justification 
+  * top offers user controlled left/right justification
 
 -------------------------------------------------------------------
 Thu Jul  5 08:13:42 UTC 2012 - werner@suse.de
@@ -935,7 +970,7 @@ Thu Jul  5 08:13:42 UTC 2012 - werner@suse.de
 Wed Jun  6 12:00:54 UTC 2012 - werner@suse.de
 
 - Avoid to be fooled by a former errno due not existing system
-  file as this might cause failing pwdx 
+  file as this might cause failing pwdx
 
 -------------------------------------------------------------------
 Wed Jun  6 11:43:55 UTC 2012 - werner@suse.de
@@ -951,12 +986,12 @@ Wed Jun  6 11:17:37 UTC 2012 - werner@suse.de
 -------------------------------------------------------------------
 Wed Jun  6 10:35:41 UTC 2012 - werner@suse.de
 
-- Make /bin -> /usr/bin a %bcond 
+- Make /bin -> /usr/bin a %bcond
 
 -------------------------------------------------------------------
 Wed Jun  6 09:44:35 UTC 2012 - werner@suse.de
 
-- Allow SUSE specific pmap to list results for more than one pid 
+- Allow SUSE specific pmap to list results for more than one pid
 
 -------------------------------------------------------------------
 Wed Jun  6 09:30:13 UTC 2012 - werner@suse.de
@@ -1119,7 +1154,7 @@ Fri Aug 26 09:36:03 UTC 2011 - lnussel@suse.de
 -------------------------------------------------------------------
 Wed Aug 24 10:09:36 UTC 2011 - werner@suse.de
 
-- Add large (p)cpu patch from Tony Ernst (bnc#713482) 
+- Add large (p)cpu patch from Tony Ernst (bnc#713482)
 - Add petabytes patch from Tony Ernst (bnc#713482)
 
 -------------------------------------------------------------------
@@ -1145,7 +1180,7 @@ Thu May  5 17:49:30 CEST 2011 - jeffm@suse.de
 -------------------------------------------------------------------
 Tue Mar 22 17:31:22 UTC 2011 - idoenmez@novell.com
 
-- Fix procps-3.2.8.dif: use -Wl for linker options 
+- Fix procps-3.2.8.dif: use -Wl for linker options
 
 -------------------------------------------------------------------
 Fri Dec  3 17:56:27 CET 2010 - werner@suse.de
@@ -1454,7 +1489,7 @@ Wed Mar 15 12:15:48 CET 2006 - hvogel@suse.de
 -------------------------------------------------------------------
 Mon Feb 20 11:59:10 CET 2006 - hvogel@suse.de
 
-- dont crash if a CPU is hotplugged [#151285] 
+- dont crash if a CPU is hotplugged [#151285]
 
 -------------------------------------------------------------------
 Wed Feb  8 17:04:55 CET 2006 - hvogel@suse.de
@@ -1588,7 +1623,7 @@ Tue Aug  3 22:45:52 CEST 2004 - garloff@suse.de
 -------------------------------------------------------------------
 Wed Jun  2 14:05:27 CEST 2004 - uli@suse.de
 
-- fixed crash in small terminal (bug #37651) 
+- fixed crash in small terminal (bug #37651)
 
 -------------------------------------------------------------------
 Tue Mar 30 13:19:14 CEST 2004 - stepan@suse.de
@@ -1599,9 +1634,9 @@ Tue Mar 30 13:19:14 CEST 2004 - stepan@suse.de
    * ps: STAT flags for fg process group and session leader
    * ps: STAT flags for swapped out process dropped (was broken)
    * ps: new -M and Z options for security data (SE Linux, etc.)
-   * slabtop: detect broken /proc/slabinfo -- thanks to Fabian 
+   * slabtop: detect broken /proc/slabinfo -- thanks to Fabian
      Frederick
-   * slabtop: ensure that error messages show up on the screen -- 
+   * slabtop: ensure that error messages show up on the screen --
      FF again
 
 -------------------------------------------------------------------
@@ -1737,11 +1772,11 @@ Mon Jul 14 10:15:14 CEST 2003 - stepan@suse.de
   * vmstat: -m displays slabinfo
   * vmstat: -d displays disk stats
 - update psmisc to 21.3 (has our patch included)
-  * SELinux SID selection uses -d instead of -S to stop the 
+  * SELinux SID selection uses -d instead of -S to stop the
     confusion of signal names.
   * Doesnt segfault on long cmdnames, thanks Ben Low
   * More fixes for types, also some GCC 3.2 fixes
-  * Changed a long to a long long in pstree. 
+  * Changed a long to a long long in pstree.
 
 -------------------------------------------------------------------
 Fri Jul  4 13:50:34 CEST 2003 - stepan@suse.de
@@ -1790,7 +1825,7 @@ Fri Mar 21 14:01:41 CET 2003 - stepan@suse.de
 
 - update procps to 3.1.8
 - update xcpustate to 2.6beta
-- fix build on itanium 
+- fix build on itanium
 
 -------------------------------------------------------------------
 Wed Mar  5 17:25:45 CET 2003 - stepan@suse.de
@@ -1862,7 +1897,7 @@ Fri Aug 16 13:54:35 CEST 2002 - werner@suse.de
 -------------------------------------------------------------------
 Thu Aug 15 23:24:08 CEST 2002 - ro@suse.de
 
-- modify required-start in boot.sysctl: boot.setup is gone 
+- modify required-start in boot.sysctl: boot.setup is gone
 
 -------------------------------------------------------------------
 Tue Aug  6 13:49:58 CEST 2002 - werner@suse.de
@@ -1872,14 +1907,14 @@ Tue Aug  6 13:49:58 CEST 2002 - werner@suse.de
 -------------------------------------------------------------------
 Mon Aug  5 09:38:42 CEST 2002 - kukuk@suse.de
 
-- boot.sysclt: rename serial to setserial, setserial and 
+- boot.sysclt: rename serial to setserial, setserial and
   boot.isapnp are "should-start".
 
 -------------------------------------------------------------------
 Wed Mar 20 14:57:38 CET 2002 - ro@suse.de
 
 - boot.sysctl: don't write out sysctl.conf if it doesn't exist
-  sysctl can't read the file of a complete dump 
+  sysctl can't read the file of a complete dump
 
 -------------------------------------------------------------------
 Fri Feb 22 17:03:16 CET 2002 - werner@suse.de
@@ -1891,17 +1926,17 @@ Fri Feb 22 17:03:16 CET 2002 - werner@suse.de
 -------------------------------------------------------------------
 Fri Feb  1 12:50:25 CET 2002 - ro@suse.de
 
-- added stop/status for sysctl boot script 
+- added stop/status for sysctl boot script
 
 -------------------------------------------------------------------
 Mon Jan 21 17:47:45 CET 2002 - ro@suse.de
 
-- added boot-script for sysctl (inactive by default) 
+- added boot-script for sysctl (inactive by default)
 
 -------------------------------------------------------------------
 Mon Jan  7 17:11:39 CET 2002 - ro@suse.de
 
-- fixed segfault (thanks to andreas) 
+- fixed segfault (thanks to andreas)
 
 -------------------------------------------------------------------
 Thu Dec 20 16:41:52 CET 2001 - werner@suse.de
@@ -1952,7 +1987,7 @@ Fri Apr 20 18:37:14 CEST 2001 - werner@suse.de
 -------------------------------------------------------------------
 Thu Mar 29 18:47:33 CEST 2001 - ro@suse.de
 
-- initialize page_size before first use 
+- initialize page_size before first use
 
 -------------------------------------------------------------------
 Wed Mar 28 11:40:36 CEST 2001 - schwab@suse.de
@@ -2022,7 +2057,7 @@ Wed Dec 13 15:58:47 CET 2000 - werner@suse.de
 -------------------------------------------------------------------
 Mon Dec  4 09:11:51 CET 2000 - ro@suse.de
 
-- don't try to strip man-pages 
+- don't try to strip man-pages
 
 -------------------------------------------------------------------
 Wed Nov 22 18:50:56 CET 2000 - uli@suse.de
@@ -2038,12 +2073,12 @@ Fri Nov 17 09:44:00 CET 2000 - ro@suse.de
 Sat May 27 11:56:10 CEST 2000 - kukuk@suse.de
 
 - Add Group tag
-- Use docdir macro 
+- Use docdir macro
 
 -------------------------------------------------------------------
 Mon May  8 15:16:39 CEST 2000 - ro@suse.de
 
-- procinfo fixed for smp/alpha 
+- procinfo fixed for smp/alpha
 
 -------------------------------------------------------------------
 Mon Feb 28 18:44:11 CET 2000 - werner@suse.de
@@ -2069,7 +2104,7 @@ Fri Feb  4 14:53:50 CET 2000 - kasal@suse.cz
 -------------------------------------------------------------------
 Wed Jan 19 15:06:13 MET 2000 - ro@suse.de
 
-- usr/man -> usr/share/man 
+- usr/man -> usr/share/man
 
 -------------------------------------------------------------------
 Wed Jan 19 12:52:12 CET 2000 - kasal@suse.de
@@ -2094,7 +2129,7 @@ Fri Dec  3 18:52:38 CET 1999 - kasal@suse.de
 -------------------------------------------------------------------
 Wed Nov 24 17:09:50 CET 1999 - kettner@suse.de
 
-- fixed bug in procinfo on AXP 
+- fixed bug in procinfo on AXP
 
 -------------------------------------------------------------------
 Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
@@ -2144,7 +2179,7 @@ Fri Oct 30 16:03:32 MET 1998 - ro@suse.de
 
 - update to procinfo-15 and procps-1.2.9
 - extra source for xcpustate-2.5 (no more in procps)
-- patched xcpustate to display mem,swap,net for linux 
+- patched xcpustate to display mem,swap,net for linux
 
 -------------------------------------------------------------------
 Thu May  7 09:52:22 MEST 1998 - florian@suse.de
@@ -2168,7 +2203,7 @@ Mon Mar  2 16:26:13 MET 1998 - florian@suse.de
 -------------------------------------------------------------------
 Fri Oct 17 12:57:28 MEST 1997 - ro@suse.de
 
-- ready for autobuild 
+- ready for autobuild
 
 -------------------------------------------------------------------
 Sat Jul  5 10:08:27 MEST 1997 - florian@suse.de

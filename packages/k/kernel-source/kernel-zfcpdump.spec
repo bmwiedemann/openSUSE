@@ -18,8 +18,8 @@
 
 
 %define srcversion 6.10
-%define patchversion 6.10.2
-%define git_commit 65a34e2b50710364d2085b4c3258b865dc204d62
+%define patchversion 6.10.3
+%define git_commit ba01e0e99300e32d9451fb54748dbe3f82fe94f9
 %define variant %{nil}
 %define compress_modules zstd
 %define compress_vmlinux xz
@@ -36,9 +36,9 @@
 %(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,mkspec,compute-PATCHVERSION.sh,arch-symbols,log.sh,try-disable-staging-driver,compress-vmlinux.sh,mkspec-dtb,check-module-license,klp-symbols,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
 
 Name:           kernel-zfcpdump
-Version:        6.10.2
+Version:        6.10.3
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g65a34e2
+Release:        <RELEASE>.gba01e0e
 %else
 Release:        0
 %endif

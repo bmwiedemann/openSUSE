@@ -1,0 +1,21 @@
+Date: 2024-07-18
+Author: Bernhard M. Wiedemann
+
+Use a new function in clucene-core, protected with a
+BuildRequires:  libclucene2(setStartVersion)
+
+to achieve reproducible builds for help.idxl files
+
+diff --git a/helpcompiler/source/HelpIndexer.cxx b/helpcompiler/source/HelpIndexer.cxx
+index 65e46743b..32e29c2f7 100644
+--- a/helpcompiler/source/HelpIndexer.cxx
++++ b/helpcompiler/source/HelpIndexer.cxx
+@@ -106,7 +106,7 @@ bool HelpIndexer::indexDocuments()
+                                                                    analyzer.get(), true);
+ #endif
+ 
+-#ifndef SYSTEM_CLUCENE
++#if 1
+         // avoid random values in index file, making help indices reproducible
+         writer->setSegmentInfoStartVersion(0);
+ #endif

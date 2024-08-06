@@ -511,4 +511,12 @@ update to latest version</comment>
     <comment>- Re-add conditionals to numpy/pandas, it is required.</comment>
     <requestid>1174774</requestid>
   </revision>
+  <revision rev="60" vrev="3">
+    <srcmd5>dac0f3c67cffae2f42445950e003519d</srcmd5>
+    <version>4.66.4</version>
+    <time>1722928067</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1191176</requestid>
+  </revision>
 </revisionlist>

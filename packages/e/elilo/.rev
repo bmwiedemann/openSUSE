@@ -235,4 +235,16 @@
     <comment>Prepare for RPM 4.20 (forwarded request 1149245 from dimstar)</comment>
     <requestid>1149551</requestid>
   </revision>
+  <revision rev="35" vrev="10">
+    <srcmd5>a6e92f74c460639a2002d166e387e2fb</srcmd5>
+    <version>3.16</version>
+    <time>1722928031</time>
+    <user>dimstar_suse</user>
+    <comment>- Add elilo-c99.patch so that the package conforms to the C99
+  standard and builds on i586 with GCC 14.
+
+If the request is OK, please forward it to factory soon-ish so that
+we can switch the default compiler. (forwarded request 1189763 from fkastl)</comment>
+    <requestid>1191054</requestid>
+  </revision>
 </revisionlist>

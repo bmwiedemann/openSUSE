@@ -33,7 +33,7 @@ BuildRequires:  git-core
 %endif
 
 Name:           aaa_base
-Version:        84.87+git20240620.57ee9e1%{git_version}
+Version:        84.87+git20240805.7513b28%{git_version}
 Release:        0
 Summary:        openSUSE Base Package
 License:        GPL-2.0-or-later
@@ -210,7 +210,6 @@ mkdir -p %{buildroot}%{_fillupdir}
 %ghost %config(noreplace) /etc/init.d/after.local
 %ghost %config /etc/inittab
 /usr/bin/get_kernel_version
-/usr/sbin/refresh_initrd
 /usr/sbin/service
 /usr/sbin/smart_agetty
 /usr/bin/filesize
@@ -218,23 +217,24 @@ mkdir -p %{buildroot}%{_fillupdir}
 /usr/bin/rpmlocate
 /usr/sbin/sysconf_addword
 /usr/share/man/man1/smart_agetty.1*
-/usr/share/man/man5/defaultdomain.5*
 /usr/share/man/man8/service.8*
 /usr/lib/sysctl.d/50-default.conf
+%ifnarch %ix86 %arm
+/usr/lib/sysctl.d/50-pid-max.conf
+%endif
 /usr/lib/sysctl.d/51-network.conf
 %{_fillupdir}/sysconfig.language
 %{_fillupdir}/sysconfig.proxy
 %{_fillupdir}/sysconfig.windowmanager
 
 %files extras
-/etc/skel/.emacs
-/etc/skel/.inputrc
+/usr/etc/skel/.emacs
+/usr/etc/skel/.inputrc
 %dir /usr/lib/base-scripts
 /usr/lib/base-scripts/backup-rpmdb
 /usr/lib/base-scripts/backup-sysconfig
 /usr/lib/base-scripts/check-battery
 /usr/lib/systemd/system/*
-/usr/share/man/man8/resolv+.8*
 /var/adm/backup/rpmdb
 /var/adm/backup/sysconfig
 %{_fillupdir}/sysconfig.backup

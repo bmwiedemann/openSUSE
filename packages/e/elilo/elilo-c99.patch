@@ -1,0 +1,13 @@
+Index: elilo-3.16-source/fs/netfs.c
+===================================================================
+--- elilo-3.16-source.orig/fs/netfs.c
++++ elilo-3.16-source/fs/netfs.c
+@@ -55,7 +55,7 @@ typedef struct _netfs_fd {
+ 	
+ 	CHAR8  *netbuf;
+ 	UINT64 netbuf_maxsize;	/* currently allocated buffer */
+-	UINTN  netbuf_size;	/* number of bytes currently used in the buffer */
++	UINT64 netbuf_size;	/* number of bytes currently used in the buffer */
+ 	UINT64 netbuf_pos;	/* current position in the buffer */
+ 	BOOLEAN is_valid;	/* avoid conflicting opens */
+ 	BOOLEAN netbuf_reuse;

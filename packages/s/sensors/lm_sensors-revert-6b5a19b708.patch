@@ -1,0 +1,35 @@
+From: Martin Jambor <mjambor@suse.cz>
+Date: Mon, 25 Dec 2023 18:45:35 +0100
+Subject: Revert: [PATCH] rrd: drop useless cast
+
+Revert upstream 6b5a19b70867941b3841eb879ebd33e491a67c25 
+
+The revert may look useless but prevents buildgint the package with
+GCC 14.
+
+---
+ prog/sensord/rrd.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/prog/sensord/rrd.c b/prog/sensord/rrd.c
+index a531362bd..263d89fdb 100644
+--- b/prog/sensord/rrd.c
++++ a/prog/sensord/rrd.c
+@@ -299,7 +299,7 @@
+ 		argv[argc++] = rraBuff;
+ 		argv[argc] = NULL;
+ 
+-		ret = rrd_create(argc, argv);
++		ret = rrd_create(argc, (char**) argv);
+ 		if (ret == -1) {
+ 			sensorLog(LOG_ERR, "Error creating RRD file: %s: %s",
+ 				  sensord_args.rrdFile, rrd_get_error());
+@@ -455,7 +455,7 @@
+ 		const char *argv[] = {
+ 			"sensord", sensord_args.rrdFile, rrdBuff, NULL
+ 		};
+-		if ((ret = rrd_update(3, /* WEAK */ argv))) {
++		if ((ret = rrd_update(3, (char **) /* WEAK */ argv))) {
+ 			sensorLog(LOG_ERR, "Error updating RRD file: %s: %s",
+ 				  sensord_args.rrdFile, rrd_get_error());
+ 		}

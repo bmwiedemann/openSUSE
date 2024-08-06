@@ -19,7 +19,7 @@
 %bcond_without check
 
 Name:           nvme-cli
-Version:        2.9.1
+Version:        2.10
 Release:        0
 Summary:        NVM Express user space tools
 License:        GPL-2.0-only
@@ -27,6 +27,7 @@ Group:          Hardware/Other
 URL:            https://github.com/linux-nvme/nvme-cli/
 Source0:        nvme-cli-%{version}.tar.gz
 Source1:        nvme-cli-rpmlintrc
+Patch0:         0001-docs-rename-ocp-unsupported-req-log-file.patch
 BuildRequires:  asciidoc
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
@@ -91,7 +92,7 @@ export KBUILD_BUILD_TIMESTAMP=@${SOURCE_DATE_EPOCH:-$(date +%s)}
     -Ddracutrulesdir=%{_sysconfdir}/dracut/dracut.conf.d \
     -Dsystemddir=%{_unitdir} \
     -Ddocs=man \
-    %{?_with_docs_build:-Ddocs-build=true} \
+    -Ddocs-build=true \
     -Dsystemctl=%{_bindir}/systemctl \
     -Dversion-tag=%{version}
 %meson_build

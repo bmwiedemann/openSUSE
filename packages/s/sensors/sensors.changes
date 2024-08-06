@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jul 22 15:07:44 UTC 2024 - Martin Jambor <mjambor@suse.com>
+
+- Add lm_sensors-revert-6b5a19b708.patch which reverts an upstream
+  patch, thus adding back two explicit pointer type-casts.  Code
+  without them used to generate mere warnings until this year but
+  causes compiler errors with GCC 14 by default.
+
+-------------------------------------------------------------------
 Sat Jan 13 16:09:14 UTC 2024 - Michal Suchanek <msuchanek@suse.com>
 
 - Update to version 3.6.2:

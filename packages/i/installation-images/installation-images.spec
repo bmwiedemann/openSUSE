@@ -513,6 +513,7 @@ BuildRequires:  valgrind
 BuildRequires:  vim-small
 # libproxy1 requires libpxbackend-1_0; to counter cycles, this exists also as mini (bsc#215290)
 #!BuildConflicts: libpxbackend-1_0-mini
+BuildRequires:  wget
 BuildRequires:  wicked
 BuildRequires:  wicked-nbft
 BuildRequires:  wireless-tools
@@ -688,7 +689,7 @@ AutoReqProv:    off
 Summary:        Installation Image Files for %theme
 License:        GPL-2.0-or-later
 Group:          Metapackages
-Version:        17.134
+Version:        17.136
 Release:        0
 Provides:       installation-images = %version-%release
 Conflicts:      otherproviders(installation-images)

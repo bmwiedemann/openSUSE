@@ -1,7 +1,7 @@
 #
 # spec file for package vde2
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,14 +20,16 @@ Name:           vde2
 Version:        2.3.2+svn587
 Release:        0
 Summary:        Virtual Distributed Ethernet
-License:        GPL-2.0
+License:        GPL-2.0-only
 Group:          Productivity/Networking/Other
-Url:            http://vde.sourceforge.net/
+URL:            http://vde.sourceforge.net/
 Source0:        %{name}-%{version}.tar.xz
 # PATCH-FIX-UPSTREAM: always overflows destination buffer
 Patch0:         vde2-buffer-overflow.patch
 # PATCH-FIX-UPSTREAM: openssl 1.1 compatibility
 Patch1:         vde2-openssl_1.1_compatibility.patch
+# PATCH-FIX-UPSTREAM: C99 violation fix
+Patch2:         vde2-C99.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
@@ -59,7 +61,7 @@ VDE can be used:
 
 %package cryptcab
 Summary:        VDE ecryption module
-License:        GPL-2.0
+License:        GPL-2.0-only
 Group:          Productivity/Networking/Other
 
 %description cryptcab
@@ -86,7 +88,7 @@ will be rewritten using the  LWIPv6  network stack).
 
 %package -n libvdehist0
 Summary:        VDE history library
-License:        GPL-2.0
+License:        GPL-2.0-only
 Group:          System/Libraries
 
 %description -n libvdehist0
@@ -95,7 +97,7 @@ A library to manage history and command completion for vde mgmt protocol
 
 %package -n libvdemgmt0
 Summary:        VDE management library
-License:        GPL-2.0
+License:        GPL-2.0-only
 Group:          System/Libraries
 
 %description -n libvdemgmt0
@@ -104,7 +106,7 @@ management console using pre-made unattended scripts.
 
 %package -n libvdeplug3
 Summary:        VDE plug library
-License:        GPL-2.0
+License:        GPL-2.0-only
 Group:          System/Libraries
 
 %description -n libvdeplug3
@@ -113,7 +115,7 @@ to a local VDE switch. The simplest one is vde_plug, contained in the vde2 packa
 
 %package -n libvdesnmp0
 Summary:        VDE snmp library
-License:        GPL-2.0
+License:        GPL-2.0-only
 Group:          System/Libraries
 
 %description -n libvdesnmp0
@@ -122,7 +124,7 @@ SNMP library for Virtual Distributed Ethernet
 
 %package -n libvdehist-devel
 Summary:        VDE hist header files
-License:        GPL-2.0
+License:        GPL-2.0-only
 Group:          Development/Libraries/C and C++
 Requires:       %{name} = %{version}
 Requires:       libvdehist0 = %{version}
@@ -134,7 +136,7 @@ This package contains VDE hist header files
 
 %package -n libvdemgmt-devel
 Summary:        VDE management files
-License:        GPL-2.0
+License:        GPL-2.0-only
 Group:          Development/Libraries/C and C++
 Requires:       %{name} = %{version}
 Requires:       libvdemgmt0 = %{version}
@@ -146,7 +148,7 @@ This package contains VDE management files
 
 %package -n libvdeplug-devel
 Summary:        VDE plug header files
-License:        GPL-2.0
+License:        GPL-2.0-only
 Group:          Development/Libraries/C and C++
 Requires:       %{name} = %{version}
 Requires:       libvdeplug3 = %{version}
@@ -158,7 +160,7 @@ This package contains VDE plug header files
 
 %package -n libvdesnmp-devel
 Summary:        VDE SNMP header files
-License:        GPL-2.0
+License:        GPL-2.0-only
 Group:          Development/Libraries/C and C++
 Requires:       %{name} = %{version}
 Requires:       libvdesnmp0 = %{version}

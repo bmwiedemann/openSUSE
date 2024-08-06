@@ -1,0 +1,52 @@
+diff --git a/util/s390x/zipl2grub.pl.in b/util/s390x/zipl2grub.pl.in
+index f4f997100..46b902209 100644
+--- a/util/s390x/zipl2grub.pl.in
++++ b/util/s390x/zipl2grub.pl.in
+@@ -15,6 +15,7 @@ my $zipldir = "";
+ my $running = "";
+ my $refresh = 1; # needs to default to "on" until most bugs are shaken out!
+ my $force = 0;
++my $hostonly = 1;
+ my $verbose = 0;
+ my $debug = 0;
+ my $miss = 0;
+@@ -114,8 +115,13 @@ sub BootCopy($$$$) {
+ }
+ sub MkInitrd($$$) {
+   my( $initrd, $dir, $version) = @_;
+-  my @C = ( "dracut", "--hostonly", "--force");
++  my @C = ( "dracut", "--force");
+   my $uuid;
++  if ($hostonly) {
++    push @C, "--hostonly";
++  } else {
++    push @C, "--no-hostonly";
++  }
+   push @C, "--quiet" unless ($verbose > 1);
+   if ( exists( $fsdev{"/boot"}) ) {
+   chomp( $uuid = qx{grub2-probe --target=fs_uuid /boot});
+@@ -368,6 +374,24 @@ foreach ("GRUB_EMU_CONMODE", "GRUB_CONMODE") {
+   $C{$_} = "conmode=" . $C{$_};
+ }
+ 
++if ( !exists( $C{SUSE_S390_DRACUT_HOSTONLY}) || $C{SUSE_S390_DRACUT_HOSTONLY} eq "auto" ) {
++  # Auto-detection mode
++  #
++  # Check if the root block device of the root partition is a loop device.
++  # If yes, it is the image building system, e.g. kiwi. Then, set 'hostonly' to 0.
++  my ( $dev, $lsblk );
++
++  chomp( $dev = qx{grub2-probe -t device /});
++  if ($dev) {
++    chomp( $lsblk = qx{lsblk -snrp -o NAME $dev});
++    $hostonly = 0 if ( $lsblk =~ m{\/loop} );
++  }
++} elsif ( $C{SUSE_S390_DRACUT_HOSTONLY} =~ m{^(no|false|0)$} ) {
++  $hostonly = 0;
++} else {
++  $hostonly = 1;
++}
++
+ if ( $debug && $verbose > 2 ) {
+   foreach ( sort( keys( %C)) ) {
+     printf( "%s=\"%s\"\n", $_, $C{$_});
