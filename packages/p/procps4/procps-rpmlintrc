@@ -1,2 +1,0 @@
-addFilter(".*W:.*shared-lib-calls-exit.*libproc2\.so.*")
-addFilter(".*W:.*macro-in-comment.*%{version}.*")
