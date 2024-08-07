@@ -44,7 +44,7 @@
 %endif
 
 Name:           mercurial
-Version:        6.8
+Version:        6.8.1
 Release:        0
 Summary:        Scalable Distributed SCM
 License:        GPL-2.0-or-later

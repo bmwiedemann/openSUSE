@@ -1803,4 +1803,16 @@ As usual, a lot of patches don't make it to this list since they're more interna
 Regularly scheduled major release. (forwarded request 1186324 from develop7)</comment>
     <requestid>1186325</requestid>
   </revision>
+  <revision rev="203" vrev="1">
+    <srcmd5>d3d84751295bd4ce499d024a5266b5d3</srcmd5>
+    <version>6.8.1</version>
+    <time>1723014902</time>
+    <user>dimstar_suse</user>
+    <comment>- Mercurial 6.8.1
+  * Python 3.12: fix an issue between `threading` and `demandimport`
+  * rhg: expand user and environment variable in paths to ignore in config 
+    and includes
+  * `win32mbcs` extension: fix an encoding issue (forwarded request 1191868 from develop7)</comment>
+    <requestid>1191869</requestid>
+  </revision>
 </revisionlist>

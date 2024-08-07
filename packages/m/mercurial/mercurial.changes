@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Aug  6 12:47:13 UTC 2024 - Andrei Dziahel <develop7@develop7.info>
+
+- Mercurial 6.8.1
+
+  * Python 3.12: fix an issue between `threading` and `demandimport`
+  * rhg: expand user and environment variable in paths to ignore in config 
+    and includes
+  * `win32mbcs` extension: fix an encoding issue
+
+-------------------------------------------------------------------
 Tue Jul  9 07:54:07 UTC 2024 - Andrei Dziahel <develop7@develop7.info>
 
 - Mercurial 6.8
