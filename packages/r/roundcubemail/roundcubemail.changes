@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Aug  6 15:14:35 UTC 2024 - Aeneas Jaißle <aj@ajaissle.de>
+
+- update to 1.6.8
+  This is a security update to the stable version 1.6 of Roundcube Webmail.
+  It provides fixes to recently reported security vulnerabilities:
+  * Fix XSS vulnerability in post-processing of sanitized HTML content [CVE-2024-42009] [bsc#1228900]
+  * Fix XSS vulnerability in serving of attachments other than HTML or SVG [CVE-2024-42008]
+  * Fix information leak (access to remote content) via insufficient CSS filtering [CVE-2024-42010] [bsc#1228901]
+
+- For further changes, see https://github.com/roundcube/roundcubemail/releases/tag/1.6.8
+
+-------------------------------------------------------------------
 Sun May 19 17:12:36 UTC 2024 - Lars Vogdt <lars@linux-schulserver.de>
 
 - update to 1.6.7

@@ -776,4 +776,13 @@
     <comment></comment>
     <requestid>1175254</requestid>
   </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>f25b596f0d7242c2f82d24191716c880</srcmd5>
+    <version>1.6.8</version>
+    <time>1723003860</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 1.6.8
+Security Update, [bsc#1228900]  [bsc#1228901]</comment>
+    <requestid>1191896</requestid>
+  </revision>
 </revisionlist>
