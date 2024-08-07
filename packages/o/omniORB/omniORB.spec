@@ -1,7 +1,7 @@
 #
 # spec file for package omniORB
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2012-2017 Lars Vogdt
 #
 # All modifications and additions to the file contributed by third parties
@@ -24,7 +24,7 @@ Name:           omniORB
 Summary:        A robust high performance CORBA ORB for C++ and Python
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/Libraries
-Version:        4.3.1
+Version:        4.3.2
 Release:        0
 URL:            https://omniorb.sourceforge.io
 Source0:        https://downloads.sourceforge.net/project/omniorb/%{name}/%{name}-%{version}/%{name}-%{version}.tar.bz2
