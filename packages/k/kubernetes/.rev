@@ -942,4 +942,16 @@
 * kubernetes (versionminus3) - 1.27.15</comment>
     <requestid>1183317</requestid>
   </revision>
+  <revision rev="104" vrev="44">
+    <srcmd5>43ac1a19a90d736b5643138ad27b5f1e</srcmd5>
+    <version>unknown</version>
+    <time>1723003847</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump meta package versions:
+* kubernetes (version) - 1.30.3
+* kubernetes (versionminus1) - 1.29.7
+* kubernetes (versionminus2) - 1.28.12
+* kubernetes (versionminus3) - 1.27.16</comment>
+    <requestid>1191870</requestid>
+  </revision>
 </revisionlist>
