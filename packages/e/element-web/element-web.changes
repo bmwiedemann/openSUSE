@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Tue Aug  6 12:58:12 UTC 2024 - Oliver Kurz <okurz@suse.com>
+
+- Version 1.11.73
+  Fixes for CVE-2024-42347 / GHSA-f83w-wqhc-cfp4
+  
+
+
+Version 1.11.72
+  ## ✨ Features
+
+  * Polyfill Intl.Segmenter for wider web browser compatibility (https://github.com/element-hq/element-web/pull/27803). Contributed by @dbkr.
+  * Enable audio/webaudio Modernizr rule (https://github.com/element-hq/element-web/pull/27772). Contributed by @t3chguy.
+  * Add release announcement for the new room header (https://github.com/matrix-org/matrix-react-sdk/pull/12802). Contributed by @MidhunSureshR.
+  * Default the room header to on (https://github.com/matrix-org/matrix-react-sdk/pull/12803). Contributed by @MidhunSureshR.
+  * Update Thread Panel to match latest designs (https://github.com/matrix-org/matrix-react-sdk/pull/12797). Contributed by @t3chguy.
+  * Close any open modals on logout (https://github.com/matrix-org/matrix-react-sdk/pull/12777). Contributed by @dbkr.
+  * Iterate design of right panel empty state (https://github.com/matrix-org/matrix-react-sdk/pull/12796). Contributed by @t3chguy.
+  * Update styling of UserInfo right panel card (https://github.com/matrix-org/matrix-react-sdk/pull/12788). Contributed by @t3chguy.
+  * Accessibility: Add Landmark navigation (https://github.com/matrix-org/matrix-react-sdk/pull/12190). Contributed by @akirk.
+  * Let Element Call widget receive m.room.create (https://github.com/matrix-org/matrix-react-sdk/pull/12710). Contributed by @AndrewFerr.
+  * Let Element Call widget set session memberships (https://github.com/matrix-org/matrix-react-sdk/pull/12713). Contributed by @AndrewFerr.
+  * Update right panel base card styling to match Compound (https://github.com/matrix-org/matrix-react-sdk/pull/12768). Contributed by @t3chguy.
+  * Align `widget_build_url_ignore_dm` with call behaviour switch between 1:1 and Widget (https://github.com/matrix-org/matrix-react-sdk/pull/12760). Contributed by @t3chguy.
+  * Move integrations switch (https://github.com/matrix-org/matrix-react-sdk/pull/12733). Contributed by @dbkr.
+  * Element-R: Report events with withheld keys separately to Posthog. (https://github.com/matrix-org/matrix-react-sdk/pull/12755). Contributed by @richvdh.
+
+  ## 🐛 Bug Fixes
+
+  * Add a modernizr check for WebAssembly support (https://github.com/element-hq/element-web/pull/27776). Contributed by @dbkr.
+  * Test for lack of WebAssembly support (https://github.com/matrix-org/matrix-react-sdk/pull/12792). Contributed by @dbkr.
+  * Fix stray 'account' heading (https://github.com/matrix-org/matrix-react-sdk/pull/12791). Contributed by @dbkr.
+  * Add test for the unsupported browser screen (https://github.com/matrix-org/matrix-react-sdk/pull/12787). Contributed by @dbkr.
+  * Fix HTML export test (https://github.com/matrix-org/matrix-react-sdk/pull/12778). Contributed by @dbkr.
+  * Fix HTML export missing a bunch of Compound variables (https://github.com/matrix-org/matrix-react-sdk/pull/12774). Contributed by @t3chguy.
+  * Fix inability to change accent colour consistently in custom theming (https://github.com/matrix-org/matrix-react-sdk/pull/12772). Contributed by @t3chguy.
+  * Fix edge case of landing on 3pid email link with registration disabled (https://github.com/matrix-org/matrix-react-sdk/pull/12771). Contributed by @t3chguy.
+
+-------------------------------------------------------------------
 Wed Jul 17 14:39:15 UTC 2024 - Dominik Heidler <dheidler@suse.de>
 
 - Version 1.11.71
