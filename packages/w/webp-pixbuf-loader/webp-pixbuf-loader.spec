@@ -1,7 +1,7 @@
 #
 # spec file for package webp-pixbuf-loader
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           webp-pixbuf-loader
-Version:        0.0.6
+Version:        0.2.7
 Release:        0
 Summary:        WebP GDK Pixbuf Loader library
 License:        LGPL-2.0-or-later
@@ -27,7 +27,7 @@ BuildRequires:  gdk-pixbuf-thumbnailer
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0) > 2.22.0
-BuildRequires:  pkgconfig(libwebp)
+BuildRequires:  pkgconfig(libwebp) >= 1.3.2
 Requires:       gdk-pixbuf-query-loaders
 Requires:       gdk-pixbuf-thumbnailer
 %gdk_pixbuf_loader_requires
@@ -44,6 +44,9 @@ webp-pixbuf-loader is a plugin to allow loading WebP images in GTK+ applications
 
 %install
 %meson_install
+
+%check
+%meson_test
 
 %post
 %gdk_pixbuf_loader_post
