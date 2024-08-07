@@ -230,4 +230,21 @@
 - UID:GID: don't create group with GID if it does not exist (forwarded request 1191330 from kukuk)</comment>
     <requestid>1191331</requestid>
   </revision>
+  <revision rev="28" vrev="3">
+    <srcmd5>f5b2fe3885241417213a3844c5a14e0f</srcmd5>
+    <version>3.3</version>
+    <time>1723003764</time>
+    <user>dimstar_suse</user>
+    <comment>- Implement UID:GID support for busybox
+- Reenable UID:GID support (forwarded request 1191724 from kukuk)</comment>
+    <requestid>1191725</requestid>
+  </revision>
+  <revision rev="29" vrev="4">
+    <srcmd5>93f3a57c575384bc91160a8d88bb1349</srcmd5>
+    <version>3.3</version>
+    <time>1723024977</time>
+    <user>dimstar_suse</user>
+    <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1228944</comment>
+    <requestid>1192184</requestid>
+  </revision>
 </revisionlist>
