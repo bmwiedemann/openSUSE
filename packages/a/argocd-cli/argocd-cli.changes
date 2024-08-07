@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Aug 06 07:01:12 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.12.0:
+  large update, please see
+  https://github.com/argoproj/argo-cd/releases/tag/v2.12.0
+  no apparent CLI-related changes
+
+-------------------------------------------------------------------
 Wed Jul 24 18:00:36 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.11.7:
