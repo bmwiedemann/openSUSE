@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Aug  6 15:40:20 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.16.7:
+  * Fix a possible UAF
+  * bugfix: reading segment, correctly stop on error
+  * Cleanup prepared statement during node close
+  * now uses file locking to ensure that two nodes don't run
+    concurrently using the same data directory
+
+-------------------------------------------------------------------
 Wed Feb 28 04:02:03 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 1.16.4:
