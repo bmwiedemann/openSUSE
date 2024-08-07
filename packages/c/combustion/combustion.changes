@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug 06 13:39:27 UTC 2024 - Fabian Vogt <fvogt@suse.com>
+
+- Update to version 1.4:
+  * Add support for remote config files using combustion.url (jsc#PED-8591)
+
+-------------------------------------------------------------------
 Fri Jul 12 09:35:20 UTC 2024 - Fabian Vogt <fvogt@suse.com>
 
 - Switch _service to use mode="manual"
