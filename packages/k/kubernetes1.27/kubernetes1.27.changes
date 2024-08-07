@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Aug  6 11:41:17 UTC 2024 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Follow up changes after go version bump to 1.22:
+  - For ppc64le platform: disabled `export GOLDFLAGS='-linkmode=external'`.   * to fix the build failure error:
+      `-linkmode=external requires external (cgo) linking, but cgo is not enabled`
+  - For linux/s390x platform: disabled building kubernetes binaries with `-buildmode=pie`
+    * `-buildmode=pie` with "internal linking" is not yet supported on linux/s390x platform
+    * ref: https://github.com/golang/go/blob/a63907808d14679c723e566cb83acc76fc8cafc2/src/internal/platform/supported.go#L223-L232
+    * ref: https://github.com/golang/go/issues/64875#issuecomment-1870734528
+
+-------------------------------------------------------------------
+Tue Aug  6 11:19:18 UTC 2024 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Update to version 1.27.16:
+  * Add funcs in pkg/filesystem/util that can actually set file permissiosn on Windows and update container log dir perms to 660 on Windows
+  * Bump images, dependencies and versions to go 1.22.5 and distroless iptables
+
+- Update .spec file to bump go version build requirements:
+  * `BuildRequires:  go >= 1.22.5`
+  * `BuildRequires:  golang(API) = 1.22`
+  * ref: https://github.com/kubernetes/kubernetes/blob/v1.27.16/build/dependencies.yaml#L96-L98
+
+-------------------------------------------------------------------
 Wed Jun 26 07:08:14 UTC 2024 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - Update to version 1.27.15:
@@ -50,7 +73,7 @@ Mon Apr  8 11:11:50 UTC 2024 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - update .spec file to set FORCE_HOST_GO env variable,
   to force k8s build scripts use the local GOTOOLCHAIN version from the build pipeline
-  (i.e. GOTOOLCHAIN='auto')
+  (i.e. GOTOOLCHAIN='local')
   * ref: https://github.com/kubernetes/kubernetes/blob/9791f0d1f39f3f1e0796add7833c1059325d5098/hack/lib/golang.sh#L507
 
 -------------------------------------------------------------------
