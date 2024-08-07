@@ -60,6 +60,7 @@ BuildRequires:  ffmpeg-%{ffmpeg_ver}-libavformat-devel
 BuildRequires:  ffmpeg-%{ffmpeg_ver}-libavutil-devel
 BuildRequires:  ffmpeg-%{ffmpeg_ver}-libswresample-devel
 BuildRequires:  ffmpeg-%{ffmpeg_ver}-libswscale-devel
+BuildRequires:  gcc-c++
 BuildRequires:  git-core
 BuildRequires:  hicolor-icon-theme
 # ----
@@ -75,12 +76,12 @@ BuildRequires:  pam-devel
 %if %{with pandoc}
 BuildRequires:  pandoc-cli
 %endif
-BuildRequires:  pkgconfig
 BuildRequires:  %{python_ver}-Cython
 BuildRequires:  %{python_ver}-devel
 BuildRequires:  %{python_ver}-gobject-devel
 BuildRequires:  %{python_ver}-pyxdg
 BuildRequires:  %{python_ver}-setuptools
+BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(libavcodec) >= 58
@@ -101,12 +102,12 @@ BuildRequires:  pkgconfig(vpx) >= 1.4.0
 #BuildRequires:  pkgconfig(x264)
 #BuildRequires:  pkgconfig(openh264)
 BuildRequires:  pkgconfig(xcomposite)
+BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(xdamage)
 BuildRequires:  pkgconfig(xkbfile)
 BuildRequires:  pkgconfig(xrandr)
 BuildRequires:  pkgconfig(xres)
 BuildRequires:  pkgconfig(xtst)
-BuildRequires:  python-rpm-macros
 Requires:       dbus-1-x11
 Requires:       gstreamer-plugins-base
 Requires:       gstreamer-plugins-good
@@ -116,13 +117,13 @@ Requires:       pulseaudio
 %else
 Requires:       pulseaudio-daemon
 %endif
-Requires:       pulseaudio-utils
 Requires:       %{python_ver}-Pillow
 Requires:       %{python_ver}-cairo
 Requires:       %{python_ver}-dbus-python
 Requires:       %{python_ver}-gobject
 Requires:       %{python_ver}-gobject-Gdk
 Requires:       %{python_ver}-gst
+Requires:       pulseaudio-utils
 #Requires:       python3-lz4
 #Requires:       python3-opencv
 Requires:       %{python_ver}-pycups

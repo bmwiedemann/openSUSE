@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug  6 08:17:03 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add explicit gcc-c++ BuildRequires: fix gcc: fatal error: cannot
+  execute ‘cc1plus’: execvp: No such file or directory.
+
+-------------------------------------------------------------------
 Thu Jul 18 14:15:03 UTC 2024 - scott.bradnick@suse.com
 
 - Update to version 6.2.0+git20240718.6fcb897e:
