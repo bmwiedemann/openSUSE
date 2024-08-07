@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Aug  6 05:36:59 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.9.23:
+  + Fix a regression in 1.9.22 that caused some devices not to
+    probe correctly.
+  + Try harder to get a valid response when flashing usi-dock
+    devices.
+
+-------------------------------------------------------------------
 Mon Jul 29 06:17:20 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.9.22:

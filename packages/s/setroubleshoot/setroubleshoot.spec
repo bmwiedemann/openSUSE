@@ -1,7 +1,7 @@
 #
 # spec file for package setroubleshoot
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,6 +21,7 @@
 
 Summary:        Helps troubleshoot SELinux problems
 License:        GPL-2.0-or-later
+Group:          Productivity/Security
 Name:           setroubleshoot
 Version:        3.3.32
 Release:        0
@@ -31,25 +32,26 @@ Source2:        %{name}.sysusers
 Source3:        %{name}.logrotate
 Patch0:         setroubleshoot-desktop.patch
 Patch1:         remove-pip-from-makefile.patch
+Patch2:         disable-send-bug-report-button.patch
 # git format-patch -N 3.3.30
 # i=1; for j in 00*patch; do printf "Patch%04d: %s\n" $i $j; i=$((i+1));done
 BuildRequires:  autoconf
-BuildRequires:  audit-devel >= 3.0.1
 BuildRequires:  automake
-BuildRequires:  dbus-1-glib-devel
 BuildRequires:  desktop-file-utils
 BuildRequires:  gcc
 BuildRequires:  gettext
-BuildRequires:  gtk3-devel
 BuildRequires:  intltool
 BuildRequires:  libcap-ng-devel
 BuildRequires:  libnotify-devel
 BuildRequires:  libselinux-devel
 BuildRequires:  make
 BuildRequires:  polkit-devel
-BuildRequires:  python3
 BuildRequires:  python3-dasbus
-BuildRequires:  python3-devel
+BuildRequires:  pkgconfig(audit) >= 3.0.1
+BuildRequires:  pkgconfig(dbus-glib-1)
+BuildRequires:  pkgconfig(gtk+-3.0)
+BuildRequires:  pkgconfig(python3)
+#BuildRequires:  python3-devel
 BuildRequires:  python3-gobject
 BuildRequires:  python3-pip
 BuildRequires:  python3-selinux
@@ -63,9 +65,11 @@ Requires:       gtk3
 Requires:       libnotify
 Requires:       python3-dasbus
 Requires:       python3-gobject
-# Redhat library for reporting bugs - do we have SUSE alternative?
-#Requires:       libreport-gtk >= 2.2.1-2
-#Requires:       python3-libreport
+# libreport is available only in factory for now 
+%if 0%{?suse_version} >= 1600
+Requires:       libreport-gtk_1 >= 2.2.1-2
+Requires:       python3-libreport
+%endif
 Requires(post): desktop-file-utils
 Requires(post): dbus-1
 Requires(postun):dbus-1
@@ -145,6 +149,10 @@ install -p -m644 -D %{SOURCE2} $RPM_BUILD_ROOT%{_sysusersdir}/%{name}.conf
 install -D -m644 %{SOURCE3} %{buildroot}%{_sysconfdir}/logrotate.d/%{name}-server
 
 %find_lang %{name}
+%python3_fix_shebang
+%if %{suse_version} >= 1600
+%python3_fix_shebang_path %{buildroot}/%{_datadir}/%{name}/*
+%endif
 
 %package doc
 Summary:        Setroubleshoot documentation
@@ -161,6 +169,7 @@ Setroubleshoot documentation package
 
 %package server
 Summary:        SELinux troubleshoot server
+Group:          Productivity/Security
 
 Requires:       %{name}-plugins >= 3.3.10
 Requires:       audit >= 3.0.1
@@ -175,8 +184,8 @@ Requires:       python3-six
 Requires:       python3-systemd >= 206-1
 BuildRequires:  gettext
 BuildRequires:  intltool
-BuildRequires:  python3
-BuildRequires:  python3-devel
+#BuildRequires:  python3
+BuildRequires:  pkgconfig(python3)
 Requires:       dbus-1
 Requires:       polkit
 Requires:       python3-dasbus

@@ -28,6 +28,7 @@ Source0:        https://ftp.gnu.org/gnu/libcdio/libcdio-%{version}.tar.bz2
 Source1:        https://ftp.gnu.org/gnu/libcdio/libcdio-%{version}.tar.bz2.sig
 Source2:        libcdio.keyring
 Source4:        baselibs.conf
+Patch0:         c99.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  help2man

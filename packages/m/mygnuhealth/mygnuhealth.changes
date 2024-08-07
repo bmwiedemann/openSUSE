@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jul 17 18:39:06 UTC 2024 - Axel Braun <axel.braun@gmx.de>
+
+- version 2.2.1
+  * Fix issue #34 - MyGH crashes when clicking 'Network'
+  * translation update
+
+-------------------------------------------------------------------
+Sat Jun 29 12:59:59 UTC 2024 - Axel Braun <axel.braun@gmx.de>
+
+- added dependency on bleak
+
+-------------------------------------------------------------------
 Fri Jun 21 13:53:50 UTC 2024 - Axel Braun <axel.braun@gmx.de>
 
 - version 2.2.0

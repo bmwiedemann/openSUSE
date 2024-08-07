@@ -1,0 +1,347 @@
+-------------------------------------------------------------------
+Sun Jun 02 17:55:55 UTC 2024 - marec@detebe.org
+
+- Update to version 0.22.2:
+  * v0.22.2
+  * backends/characteristic: make max_write_without_response_size dynamic (#1586)
+  * backends/winrt: don't throw exception for properly configured GUI apps (#1581)
+  * Android: fix 'Descriptor None was not found!' (#1580)
+  * backends: filter discovered devices
+  * --- updated-dependencies: - dependency-name: requests   dependency-type: indirect ...
+  * Fix UUID doc (#1574)
+  * Update uuids.py
+  * docs/troubleshooting: section on asynio.run()
+  * backends/winrt: add address acquisition process when advertising data is None (#1571)
+
+-------------------------------------------------------------------
+Wed May 08 21:27:14 UTC 2024 - marec@detebe.org
+
+- Update to version 0.22.1:
+  * v0.22.1
+  * CHANGELOG: fix wrong release date
+  * backends.winrt: add allow_sta() utility function
+  * docs/troubleshooting: fix typo
+  * build(deps-dev): bump jinja2 from 3.1.3 to 3.1.4
+  * backends/scanner: always filter by service_uuids
+  * docs: update WinRT backend PyWinRT link
+
+-------------------------------------------------------------------
+Sat May 04 18:57:11 UTC 2024 - marec@detebe.org
+
+- Update to version 0.22.0:
+  * v0.22.0
+  * backends/scanner: always filter by service_uuids
+  * doc: add winrt backend util module
+  * docs: clean up versionadded/versionchanged
+  * backends/scanner: clarify Tx Power Level
+  * backends/winrt: raise exception when trying to scan with STA
+  * pyproject: update winrt depedencies
+  * backends/winrt: fix max pdu update race
+  * backends/service: normalize UUIDs in get_characteristic()
+  * sort imports with isort
+  * backends/p4android: fix using wrong tx_power value
+  * backends/winrt: check watcher status after starting
+  * backends/winrt: protect scanner start from re-entrancy
+  * flake8: ignore E704
+  * run black after updating from v22 to v24
+  * build(deps-dev): bump black from 22.8.0 to 24.3.0
+  * build(deps-dev): bump idna from 3.3 to 3.7 (#1546)
+  * build(deps-dev): bump urllib3 from 1.26.17 to 1.26.18 (#1441)
+  * build(deps-dev): bump jinja2 from 3.1.2 to 3.1.3 (#1494)
+  * Additional typehints for bluezdbus code (#1517)
+  * Additional typehints for corebluetooth (#1518)
+  * Remove unused validate_address() (#1520)
+  * Ignore None type device address when using bdaddr (#1539)
+  * Fix _wait_removed completion on invalid object path (#1544)
+  * More typehints (#1514)
+  * Remove empty interfaces from BlueZManager._properties
+  * Improve error handling when a device is not present in BlueZ
+  * bleak/__init__.py: Partial typehints (#1512)
+  * typings/CoreBluetooth: Fix definition order in typing and remove duplicate definition (#1510)
+  * uuids: Remove duplicate UUIDs (#1509)
+  * fix: incorrect mypy diagnosis of Unpack[ExtraArgs]. (#1488)
+  * vscode: replace deprecated setting
+  * Update BlueZ documentation links (#1480)
+  * readthedocs: build pdf docs
+  * Add BleakCharacteristicNotFoundError (#1439)
+  * Updated missing Bluetooth SIG characteristics and service UUIDs.
+  * Fix missing f-string in exception message
+  * Fixed BlueZ version in passive scanning error message.
+  * build(deps-dev): bump urllib3 from 1.26.12 to 1.26.17
+  * Update PyObjC dependency on macOS to v10.x (#1427)
+
+-------------------------------------------------------------------
+Sat Sep 09 07:55:45 UTC 2023 - marec@detebe.org
+
+- Update to version 0.21.1:
+  * fix issue number
+  * v0.21.1
+  * Loosen dbus-fast pin to allow for dbus-fast 2.0 (#1416)
+  * build(deps-dev): bump certifi from 2022.12.7 to 2023.7.22
+  * docs: mock typing_extensions
+  * backends/winrt: start migration away from bleak_winrt
+  * implement PEP 692 type hints for BleakScanner kwargs
+  * update PyObjC version to 9.2
+  * drop support for Python 3.7
+  * use PEP 688 collections.abc.Buffer for type hints
+
+-------------------------------------------------------------------
+Sun Sep 03 09:34:27 UTC 2023 - marec@detebe.org
+
+- Update to version 0.21.0:
+  * v0.21.0
+  * docs: mock typing_extensions
+  * backends/winrt: start migration away from bleak_winrt
+  * implement PEP 692 type hints for BleakScanner kwargs
+  * update PyObjC version to 9.2
+  * drop support for Python 3.7
+  * use PEP 688 collections.abc.Buffer for type hints
+  * backends/winrt/client.py: drop use of pythonapi (#1407)
+  * backends/winrt/client.py: Add delay before closing services. (#1406)
+  * vsocde: add config files
+  * Update of bleak on android and the android kivy example (#1398)
+  * Optimize BlueZ device watchers and condition callbacks to avoid linear searches (#1400)
+  * backends/bluezdbus/manager: add device path to condition callbacks
+  * backends/bluezdbus/manager: race InterfaceRemoved in _wait_for_services_discovery()
+  * backends/bluezdbus/manager: normalize adapter/device arg checks
+  * CHANGELOG: cleanup unreleased section
+  * backends/bluez: Defer expensive debug logging (#1376)
+  * BleakScanner: Add async iterator scanning capability (#1361)
+  * __init__: fix mypy error about overlapping overloads
+  * BleakClient.write_gatt_char: change handling of default response
+  * CHANGELOG: normalize bullet characters
+  * uuid cleanups
+  * uuids: add normalization functions for 16/32-bit uuids
+  * examples/two_devices: fix example
+  * backends/winrt: improve error messages with enums (#1370)
+  * backends: allow multiple advertisement callbacks per scanner (#1367)
+  * build(deps-dev): bump pygments from 2.13.0 to 2.15.0
+  * backends/corebluetooth/scanner: add note about use_bdaddr compatibility
+  * Fix windows scanner crash (#1331)
+  * backends/scanner: Fix typing for callback
+  * docs/troubleshooting: fix missing await
+  * Added support for 32bit UUID's added in 4.1 of the Bluetooth spec (#1315)
+  * build(deps): bump requests from 2.28.1 to 2.31.0
+  * backends/winrt/client: handle arbitrary access denied
+  * backends/winrt/client: improve get_services() error messages
+  * pyproject: bump version for develop
+  * v0.20.2
+  * winrt/client: ignore session closed event during connect
+  * backends/bluezdbus/client: retry on InProgress
+  * pyproject: bump version for develop
+  * backends/characteristic: document linux mtu quirk
+  * Update mtu_size.py
+  * Correct spelling mistakes
+
+-------------------------------------------------------------------
+Sat Mar 25 12:22:53 UTC 2023 - marec@detebe.org
+
+- Update to version 0.20.1:
+  * v0.20.1
+  * bleak: fix leaking of ensure_future()
+
+-------------------------------------------------------------------
+Sun Mar 19 09:45:53 UTC 2023 - marec@detebe.org
+
+- Update to version 0.20.0:
+  * v0.20.0
+  * bleak: fix disconnected_callback arg
+  * bluezdbus/client: add retry on le-connection-abort-by-local
+  * CHANGELOG: minor tweaks to unreleased section
+  * bleak.uuids: add versionadded to normalize_uuid_str()
+  * bleak: add versionadded to BleakScanner.find_device_by_name() docs
+  * backends/corebluetooth/CentralManagerDelegate: fix unhandled exception in __del__
+  * backends/scanner: fix BLEDevice name not updated
+  * BleakScanner.discover: fix type hints when return_adv=True
+  * BleakClient: add optional services argument
+  * uuids: add normalize_uuid_str() function
+  * pyproject: update to pyobjc 9.x
+  * github: set SYSTEM_VERSION_COMPAT=0
+  * winrt/scanner: drop waiting for matching scan rsp
+  * winrt:client: disable retry on services changed
+  * winrt/client: move services_changed_event.clear()
+  * winrt/client: fix leaking service objects
+  * docs: Change code example for BleakClient.start_notify callback (#1201)
+  * bluezdbus: Add BLEAK_DBUS_AUTH_UID override
+  * Update poetry.lock
+  * Add return type None to some scanner methods
+  * github/workflows/build_and_test: don't fail fast
+  * build(deps): bump certifi from 2022.6.15.1 to 2022.12.7
+  * bluezdbus/client: Make sure the disconnect monitor task is properly cancelled.
+  * winrt/scanner: fix stop hanging when Bluetooth disabled
+  * bluezdbus/manager: suppress org.bluez.Error.NotReady when stopping scanner
+  * Examples: added debug flag (#1153)
+  * bleak: include %(threadName)s in BLEAK_LOGGING (#1144)
+  * Instantiate BaseBleakClient.services collection after service discovery
+  * winrt/client: fix AttributeError in _ensure_success
+  * uuids: remove invalid UTF-8
+  * examples: use argparse and logging
+  * bleak: add BleakScanner.find_device_by_name()
+  * backends/corebluetooth/scanner: add use_bdaddr option
+  * CHANGELOG: fix bad merge
+  * Reduce memory usage of BLEDevice with __slots__
+  * backends/device: deprecate BLEDevice.rssi and .metadata (#1059)
+  * pyproject: drop async-timeout dependency on Python >= 3.11
+  * bluezdbus/manager: ignore KeyError when properties removed
+  * winrt/client: fix logger.warn deprecation warning
+  * winrt/client: add FutureLike wrapper for IAsyncOperation
+  * winrt/client: change get services retry cache mode
+  * winrt/client: fix crash when getting services
+  * github: bump actions versions
+  * bump version for develop
+
+-------------------------------------------------------------------
+Sun Nov 20 16:14:46 UTC 2022 - marec@detebe.org
+
+- Update to version 0.19.5:
+  * v0.19.5
+  * winrt/client: separate service cache mode
+  * winrt/client: fix issues with getting services
+
+-------------------------------------------------------------------
+Mon Nov 07 18:40:12 UTC 2022 - marec@detebe.org
+
+- Update to version 0.19.4:
+  * v0.19.4
+  * v0.19.3
+  * winrt/client: fix TimeoutError for certain devices
+  * v0.19.2
+  * bluezdbus/manager: ignore KeyError when properties removed
+  * winrt/client: fix logger.warn deprecation warning
+  * winrt/client: add FutureLike wrapper for IAsyncOperation
+  * winrt/client: change get services retry cache mode
+  * winrt/client: fix crash when getting services
+
+-------------------------------------------------------------------
+Sun Oct 30 12:39:59 UTC 2022 - marec@detebe.org
+
+- Update to version 0.19.1:
+  * v0.19.1
+  * spelling
+  * github: drop rc.2 from Python 3.11
+  * winrt/scanner: fix AttributeError on Windows < 19041
+  * backends/bluezdbus/manager: Cancel the discovery on disconnect to avoid a timeout
+  * backends/p4android/scanner: fix crash when getting rssi
+  * version bump for develop
+
+-------------------------------------------------------------------
+Sat Oct 15 08:09:25 UTC 2022 - marec@detebe.org
+
+- Update to version 0.19.0:
+  * backends/winrt/scanner: wait for scan response for first callback
+  * backends/winrt/scanner: add type hints to private functions
+  * backends/bluezdbus/client: fix raising BleakDeviceNotFoundError in connect
+  * backends/bluezdbus/manager: fix ordering of scanner stop
+  * v0.19.0
+  * remove `__version__`
+  * backends/bluezdbus/scanner: document BlueZDiscoveryFilters
+  * backends/winrt/client: retry getting services if services changed event occurs
+  * Minimal documentation additions (#1052)
+  * bluez: Implement unpair() method
+  * Delete .pyup.yml
+  * Update ISSUE_TEMPLATE.md
+  * backends/winrt: fix _create_requester not async
+  * backends/winrt/scanner: fix incorrect arg to create_or_update_device
+  * BleakScanner: fix discover type hints
+  * docs: add scanner module type alias docs
+  * docs: use versionadded/changed since v0.15.0
+  * CHANGELOG: formatting
+  * backends/bluezdbus/manager: replace startswith in hot path
+  * A faster `unpack_variants` is now provided by dbus-fast
+  * backends/bluezdbus/manager: fix weak map type
+  * scanner: add discovered_devices_and_advertisement_data property
+  * backends/scanner: refactor common adv data code
+  * backends/scanner: Add rssi to AdvertisementData
+  * backends/scanner: improve BLEDevice creation performance
+  * docs: add async keyword to function (#1050)
+  * Update android.rst (#1045)
+  * fix deprecated discover method
+  * winrt/client: handle exception in max_pdu_size_changed_handler
+  * added BleakDeviceNotFoundError
+  * backends/corebluetooth: better error message for unauthorized
+  * bluez: Create a bluez manager instance per-event-loop
+  * add support for Python 3.11
+  * bump version for develop branch
+
+-------------------------------------------------------------------
+Mon Sep 26 09:03:55 UTC 2022 - marec@detebe.org
+
+- Update to version 0.18.1:
+  * v0.18.1
+  * revert breaking name changes
+
+-------------------------------------------------------------------
+Mon Sep 26 07:37:45 UTC 2022 - marec@detebe.org
+
+- Update to version 0.18.0:
+  * v0.18.0
+  * BleakClient: fix missing mtu_size property
+  * BREAKING: change notification callback argument
+  * backends: refactor BleakClient.start_notify
+  * bleak: fix backend kwarg type hint
+  * backends: fix implicit scanning when connecting
+  * docs: fix build when async_timeout not installed
+  * allow overriding backend
+  * docs: drop scanning page
+  * add concrete BleakScanner and BleakClient classes
+  * CHANGELOG: fix typo
+  * backends/scanner: fix tx_power missing in __repr__ when 0 (#1017)
+  * winrt: allow unpair without being connected (#1012)
+  * Relax async-timeout version (#1009)
+  * update changelog
+  * use relative imports
+  * bump version for develop
+
+-------------------------------------------------------------------
+Wed Sep 14 15:32:44 UTC 2022 - marec@detebe.org
+
+- Update to version 0.17.0:
+  * pyproject: fix classifiers
+  * v0.17.0
+  * Dynamically select default BlueZ adapter if not provided (#524)
+  * deprecate discover() function
+  * __init__: fix noqa line
+  * backends/winrt/characteristic: remove unused import
+  * Fix race with _disconnect_monitor event in BlueZ (#999)
+  * backends/winrt/client: fix crash in max_pdu_size_changed_handler
+  * updated logging to lazy version and replaced format by f-string for BleakClientWinRT
+  * Added tx_power in advertisement_data (#987)
+  * Handle device being removed before GetManagedObjects returns
+  * backends/characteristic: fix inconsistent property types
+  * Handle a device already being connected with the BlueZ Dbus backend (#994)
+  * Switch from dbus_next to dbus_fast (#988)
+  * github: fix virtual env python version
+  * Fixed use of wrong enum in unpair function of WinRT backend
+  * Cache service resolution on connect when using BlueZ/Dbus backend when requested (#923)
+  * docs: update for recent changes
+  * flake8: fix E402 and enable in CI
+  * docs: update sphinx to latest version
+  * backends/winrt: add connection check to BleakClient methods (#973)
+  * only require typing-extensions for python <3.8
+  * docs: fix mock imports
+  * use poetry for build and deps
+  * backends/corebluetooth/device: remove BLEDeviceCoreBluetooth
+  * backends/bluezdbus/version: amend battery version check
+  * backends/bluezdbus/client: fix hides_battery_characteristic
+  * exc: fix BlueZ ATT error messages
+  * backends/winrt/client: extend disconnect timeout
+  * version bump for develop
+
+-------------------------------------------------------------------
+Sun Sep 04 08:04:36 UTC 2022 - marec@detebe.org
+
+- Update to version 0.16.0:
+  * release v0.16.0
+  * backends/bluezdbus/scanner: fix removed devices included in discovered_devices
+  * backends/bluezdbus/client: fix not disconnecting if get_services() throws
+  * backends/bluezdbus/manager: add object lookup maps
+  * bluezdbus: move dbus interface dict types to defs
+  * backends/bluezdbus: remove first seen filter in scanner
+  * remove top-level Makefile
+  * backends/characteristic: add max_write_without_response_size property
+  * bluezdbus: move dbus interface dict types to defs
+
+-------------------------------------------------------------------
+Sun Sep  4 07:56:04 UTC 2022 - marec <marec@detebe.org>
+
+- initial package build

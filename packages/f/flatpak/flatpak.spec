@@ -166,8 +166,8 @@ more information.
 Summary:        Add Flathub repository to system flatpak
 Group:          System/Packages
 Requires:       flatpak
-Requires(postun): flatpak
-Requires(postun): sed
+Requires(postun):flatpak
+Requires(postun):sed
 %if 0%{?suse_version} > 1600
 Supplements:    flatpak
 %endif

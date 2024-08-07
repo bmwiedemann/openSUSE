@@ -766,4 +766,17 @@ https://build.opensuse.org/request/show/1178504 </comment>
 </comment>
     <requestid>1190665</requestid>
   </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>2a50fc52c7446a7112f6ad728867a5c1</srcmd5>
+    <version>20240802</version>
+    <time>1723003799</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20240802:
+  * Dontaudit search of snapper grub plugin to nscd socket (bsc#1228745)
+- Update to version 20240731:
+  * Initial policy for ibft-rule-generator (bsc#1228402)
+  * Initial policy for systemd-status-mail (bsc#1228402)
+</comment>
+    <requestid>1191606</requestid>
+  </revision>
 </revisionlist>

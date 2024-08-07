@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Tue Jul 30 11:00:57 UTC 2024 - pgajdos@suse.com
+
+- version update to 5.2.0
+  * Physical constants updated with CODATA 2022 values
+  * New function: allroots()
+  * New units: therm, thermie, IUNS calorie, rpm
+  * Additional names/symbols for turn unit
+  * Use symbol "cal" for thermochemical (instead of international table) calorie
+  * Change title and names/symbols of weak mixing angle (prepend "sin2" to theta variants)
+  * Return exact negative integers in log10()
+  * More conservative handling of infinity in equations
+  * Remove n from equation solution if possible using assumptions of x
+  * Fix input of scientific E-notation using lowercase e in numbers using concise interval notation, in expressions
+  * Fix "bit width" and "signed integer" arguments in setbits()
+  * Fix a^(f(x))=a^(b*g(x)) where b=2 or b=3
+  * Fix auto/dual approximation with "where" expression
+  * Fix "where" expressions with multiple inequality statements for a single variable, e.g. "where x>0 and x<10"
+  * Fix crash when a variable name/symbol with more than 20 characters is used in "where" expression
+  * Fix unnecessary parenthesis, with wrong color for closing bracket, around unit with exponent in HTML output (affects qalculate-qt)
+  * Fix qalc not exiting after factorization in non-interactive mode
+  * Minor bug fixes and feature enhancements
+
+-------------------------------------------------------------------
+Mon Jul  1 07:10:55 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.1.1.
+  Check https://github.com/Qalculate/libqalculate/releases for
+  older changes list. Changes since 5.0.0:
+  * Support for solving equations containing if() function
+  * Support for solving root(a, x)=b (requires rational value
+    for ln(a)/ln(b))
+  * New functions: powertower() and multiples()
+  * New units for solar radius, mass, and luminosity
+  * Ask for the desired interpretation the first time percent
+    addition is used (e.g. 100 + 10% equals 110 or 100.1)
+  * Use parentheses for exponent using scientific notation
+    (with power of 10)
+  * Support integer factorization of integers in matrix/vector,
+    and of numerator and denominator in rational number
+  * Relaxed conditions for (x^a)^b = x^(a × b) and
+    x^a × x^b = x^(a + b) when complex numbers are
+     deactivated (fixes segfaults)
+  * Fix (ax + n)^2 > 1, where n is even and a is not 1,
+    returning false
+  * Fix setbits() function
+  * Fix Number::equals(0, ..., true) when number is
+    infinite (affects replace() function)
+  * Add two's complement input and binary bits to
+    preferences, and preserve these settings when leaving
+    programming keypad (GTK, Qt)
+  * Download button in dialog shown when new version is
+    available, on Windows (GTK, Qt)
+  * Fix AltGr (primarily for input of operators) on Windows
+    (GTK, Qt)
+  * Option to show parsed expression in result field (GTK)
+  * Portuguese (Portugal) translation (GTK)
+  * Fix updating of self-contained GNU/Linux binaries from
+    GUI (GTK)
+  * Improved history list efficiency (Qt)
+  * Hide expression tooltip (after 300 ms) when input
+    resumes, if delayed expression status is enabled (Qt)
+  * Minor bug fixes and feature enhancements
+
+-------------------------------------------------------------------
 Wed Feb 14 15:18:07 UTC 2024 - Petr Gajdos <pgajdos@suse.com>
 
 - update to v4.9.0:

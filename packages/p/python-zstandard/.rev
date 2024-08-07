@@ -130,4 +130,12 @@
     <comment>Add fix-zstd-1.5.6.patch to work with zstd-1.5.6</comment>
     <requestid>1165428</requestid>
   </revision>
+  <revision rev="16" vrev="5">
+    <srcmd5>747dae54ed2fc4e1c9b164d52d4534cc</srcmd5>
+    <version>0.22.0</version>
+    <time>1723003786</time>
+    <user>dimstar_suse</user>
+    <comment>Remove Conflict with python-zstd - they should be co-installable</comment>
+    <requestid>1191781</requestid>
+  </revision>
 </revisionlist>

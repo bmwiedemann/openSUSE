@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Aug 06 05:47:34 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.35.1:
+  * Add retries for docker network remove
+  * Fix ephemeral bridge network name for podman
+  * Fix the helper script for testing the GitHub Action workflows
+    on forked repositories.
+  * Add ${{ matrix.suffix }} to the source tag for retagging.
+  * Fix buildpacks#2237: consider /workspace as a sensitive dir
+  * Support OCI layouts with
+    application/vnd.oci.image.manifest.v1+json media type
+  * Bump default lifecycle binary version from 0.19.6 to 0.20.0
+  * Fix variable name.
+  * Fix variable name.
+  * Update the DEVELOPMENT.md
+  * Fix variable name mismatch.
+  * Finish the helper script for testing GitHub Action workflows on
+    forked repository.
+  * Add a draft helper script for testing GitHub Action workflows
+    on forked repository.
+  * Add --trust-extra-buildpacks option
+  * Trust buildpacks in addition to those on the builder
+
+-------------------------------------------------------------------
 Mon Jul 22 18:46:49 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.35.0:

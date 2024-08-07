@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Aug  6 06:31:57 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.31.3:
+  * Fix type annotation of `errors` in `wrap_errors`
+  * fix: exposing func arg in CLI under a different name via deco
+    (fixes #224)
+  * fix: tests were failing under Python 3.13 by @neithere
+    (reported
+  * Docs update in similar.rst
+
+-------------------------------------------------------------------
 Tue Jan 30 12:20:53 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.31.2:

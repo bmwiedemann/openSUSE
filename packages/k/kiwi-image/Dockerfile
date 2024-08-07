@@ -14,8 +14,8 @@
 # You can contact the BCI team via https://github.com/SUSE/bci/discussions
 
 
-#!BuildTag: opensuse/bci/kiwi:10.0.23
-#!BuildTag: opensuse/bci/kiwi:10.0.23-%RELEASE%
+#!BuildTag: opensuse/bci/kiwi:10.0.27
+#!BuildTag: opensuse/bci/kiwi:10.0.27-%RELEASE%
 #!BuildTag: opensuse/bci/kiwi:10.0
 #!BuildTag: opensuse/bci/kiwi:10.0-%RELEASE%
 #!BuildTag: opensuse/bci/kiwi:10
@@ -29,12 +29,12 @@ FROM opensuse/tumbleweed:latest
 LABEL org.opencontainers.image.authors="openSUSE (https://www.opensuse.org/)"
 LABEL org.opencontainers.image.title="openSUSE Tumbleweed BCI KIWI Appliance Builder (kiwi)"
 LABEL org.opencontainers.image.description="KIWI Appliance Builder (kiwi) container based on the openSUSE Tumbleweed Base Container Image. This container is only supported in privileged mode."
-LABEL org.opencontainers.image.version="10.0.23"
+LABEL org.opencontainers.image.version="10.0.27"
 LABEL org.opencontainers.image.url="https://www.opensuse.org"
 LABEL org.opencontainers.image.created="%BUILDTIME%"
 LABEL org.opencontainers.image.vendor="openSUSE Project"
 LABEL org.opencontainers.image.source="%SOURCEURL%"
-LABEL org.opensuse.reference="registry.opensuse.org/opensuse/bci/kiwi:10.0.23-%RELEASE%"
+LABEL org.opensuse.reference="registry.opensuse.org/opensuse/bci/kiwi:10.0.27-%RELEASE%"
 LABEL org.openbuildservice.disturl="%DISTURL%"
 LABEL org.opensuse.lifecycle-url="https://en.opensuse.org/Lifetime#openSUSE_BCI"
 LABEL org.opensuse.release-stage="released"

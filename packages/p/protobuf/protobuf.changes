@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Aug  2 16:42:09 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 25.4:
+  * Java: Check that size is non-negative when reading string or
+    bytes in StreamDecoder
+  * Java: Add Automatic-Module-Name
+  * PHP: Regen stale files
+  * Ruby C-Extension: Regen stale files 
+ 
+-------------------------------------------------------------------
 Sat Mar  9 20:36:14 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 25.3:

@@ -455,4 +455,12 @@
 - Update clknetsim to snapshot 0a11a35.</comment>
     <requestid>1178691</requestid>
   </revision>
+  <revision rev="43" vrev="3">
+    <srcmd5>e78acf9c40cf79f352d8db697cf4b95f</srcmd5>
+    <version>4.5</version>
+    <time>1723003763</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1190847</requestid>
+  </revision>
 </revisionlist>

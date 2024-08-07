@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Aug  5 06:53:54 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.52.4:
+  + Contacts: Offline GAL not searched with "manual query" views.
+  + m365: Workaround MIME send server's reencode with forced
+    base64.
+
+-------------------------------------------------------------------
 Fri Jun 28 22:23:37 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.52.3:

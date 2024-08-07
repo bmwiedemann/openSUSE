@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-argh
-Version:        0.31.2
+Version:        0.31.3
 Release:        0
 Summary:        An argparse wrapper
 License:        LGPL-3.0-or-later

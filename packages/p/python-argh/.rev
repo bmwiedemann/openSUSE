@@ -290,4 +290,18 @@
     earlier</comment>
     <requestid>1142777</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>a6a2181a2dc3f7948370b9a0ead62c9d</srcmd5>
+    <version>0.31.3</version>
+    <time>1723003824</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.31.3:
+  * Fix type annotation of `errors` in `wrap_errors`
+  * fix: exposing func arg in CLI under a different name via deco
+    (fixes #224)
+  * fix: tests were failing under Python 3.13 by @neithere
+    (reported
+  * Docs update in similar.rst</comment>
+    <requestid>1191817</requestid>
+  </revision>
 </revisionlist>

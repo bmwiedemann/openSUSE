@@ -113,4 +113,12 @@ the _link needed to be removed as the .spec file got out of sync</comment>
     <comment>mygnuhealth 2.2</comment>
     <requestid>1183108</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>9fd4eb922a1d9c6924c641b267ecd1cc</srcmd5>
+    <version>2.2.1</version>
+    <time>1723003813</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1189464</requestid>
+  </revision>
 </revisionlist>

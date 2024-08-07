@@ -1,0 +1,5 @@
+<package name="python-bleak" project="openSUSE:Factory">
+  <title>Bleak</title>
+  <description>Bleak is a GATT client software, capable of connecting to BLE devices acting as GATT servers. It is designed to provide a asynchronous, cross-platform Python API to connect and communicate with e.g. sensors.</description>
+  <devel project="hardware" package="python-bleak"/>
+</package>

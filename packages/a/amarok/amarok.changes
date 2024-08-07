@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Aug  5 05:48:09 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 3.1.0
+  https://blogs.kde.org/2024/08/02/amarok-3.1-tricks-of-the-light-released/
+  New features:
+  * Last.fm plugin updated to use token-based authentication
+    (kde#414826, kde#327547)
+  * Reintroducing Last.fm Similar Artists context applet
+  * Remember the previous destination provider when saving
+    playlist (kde#216528)
+
+-------------------------------------------------------------------
 Sun Jun  2 19:56:14 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 3.0.1

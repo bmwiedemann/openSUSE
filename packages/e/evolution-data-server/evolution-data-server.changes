@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Aug  5 06:49:33 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.52.4:
+  + alarm-notify: Save acknowledge time without sending iTip
+    message.
+  + Calendar: Anniversaries hidden when book goes to online.
+
+-------------------------------------------------------------------
 Fri Jun 28 22:12:42 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.52.3:

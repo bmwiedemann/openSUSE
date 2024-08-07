@@ -178,10 +178,10 @@ Fri Mar 17 16:20:57 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
   + Escape special characters when displaying permissions and
     metadata, preventing malicious apps from manipulating the
     appearance of the permissions list using crafted metadata
-    (CVE-2023-28101).
+    (CVE-2023-28101, bsc#1209410).
   + If a Flatpak app is run on a Linux virtual console (tty1, tty2,
     etc.), don't allow copy/paste via the TIOCLINUX ioctl
-    (CVE-2023-28100). Note that this is specific to virtual
+    (CVE-2023-28100, bsc#1209411). Note that this is specific to virtual
     consoles: Flatpak is not vulnerable to this if run from a
     graphical terminal emulator such as xterm, gnome-terminal or
     Konsole.

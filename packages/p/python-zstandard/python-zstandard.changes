@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Aug  6 03:43:14 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Remove Conflict with python-zstd - they should be co-installable
+
+-------------------------------------------------------------------
 Fri Apr  5 06:57:08 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Add fix-zstd-1.5.6.patch to work with zstd-1.5.6

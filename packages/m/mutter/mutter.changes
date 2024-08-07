@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Aug  5 07:02:25 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.4:
+  + Fix nested popovers on wayland.
+  + Misc. bug fixes and cleanups.
+  + Updated translations.
+- Drop mutter-fix-x11-restart.patch: fixed upstream.
+
+-------------------------------------------------------------------
 Tue Jul 30 19:03:30 UTC 2024 - Michael Gorse <mgorse@suse.com>
 
 - Rebase mutter-SLE-relax-some-constraints-on-CSD-windows.patch.

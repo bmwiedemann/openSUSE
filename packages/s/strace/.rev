@@ -1590,4 +1590,12 @@ http://lists.opensuse.org/opensuse-factory/2015-03/msg00391.html (forwarded requ
     tampering on riscv64. (forwarded request 1188914 from AndreasSchwab)</comment>
     <requestid>1188915</requestid>
   </revision>
+  <revision rev="108" vrev="2">
+    <srcmd5>24e12cd88834a6aaf39ac4f625d4ac72</srcmd5>
+    <version>6.10</version>
+    <time>1723003795</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1191464</requestid>
+  </revision>
 </revisionlist>

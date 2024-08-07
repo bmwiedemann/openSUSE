@@ -1,0 +1,132 @@
+From: Kazuhito Hagio <k-hagio-ab@nec.com>
+Date: Fri, 7 Jun 2024 15:34:05 +0900
+Subject: [PATCH] Fix wrong exclusion of Slab pages on Linux 6.10-rc1 and later
+Git-repo: https://github.com/makedumpfile/makedumpfile
+Git-commit: bad2a7c4fa75d37a41578441468584963028bdda
+Patch-mainline: 1.7.6
+References: bsc#1228388
+
+* Required for kernel 6.10
+
+Kernel commit 46df8e73a4a3 ("mm: free up PG_slab") moved the PG_slab
+flag from page.flags into page._mapcount (slab.__page_type), and
+introduced NUMBER(PAGE_SLAB_MAPCOUNT_VALUE) entry into vmcoreinfo.
+
+Without the patch, "makedumpfile -d 8" option wrongly excludes Slab
+pages and crash cannot open the dumpfile with an error like this:
+
+  $ crash --kaslr auto vmlinux dumpfile
+  ...
+  please wait... (gathering task table data)
+  crash: page excluded: kernel virtual address: ffff909980440270 type: "xa_node.slots[off]"
+
+Signed-off-by: Kazuhito Hagio <k-hagio-ab@nec.com>
+Signed-off-by: Jiri Slaby (SUSE) <jirislaby@kernel.org>
+---
+ makedumpfile.c | 24 +++++++++++++++++++-----
+ makedumpfile.h |  6 +++---
+ 2 files changed, 22 insertions(+), 8 deletions(-)
+
+diff --git a/makedumpfile.c b/makedumpfile.c
+index 437ad916f816..5b347126db76 100644
+--- a/makedumpfile.c
++++ b/makedumpfile.c
+@@ -275,13 +275,26 @@ isHugetlb(unsigned long dtor)
+ 		   && (SYMBOL(free_huge_page) == dtor));
+ }
+ 
++static inline int
++isSlab(unsigned long flags, unsigned int _mapcount)
++{
++	/* Linux 6.10 and later */
++	if (NUMBER(PAGE_SLAB_MAPCOUNT_VALUE) != NOT_FOUND_NUMBER) {
++		unsigned int PG_slab = ~NUMBER(PAGE_SLAB_MAPCOUNT_VALUE);
++		if ((_mapcount & (PAGE_TYPE_BASE | PG_slab)) == PAGE_TYPE_BASE)
++			return TRUE;
++	}
++
++	return flags & (1UL << NUMBER(PG_slab));
++}
++
+ static int
+ isOffline(unsigned long flags, unsigned int _mapcount)
+ {
+ 	if (NUMBER(PAGE_OFFLINE_MAPCOUNT_VALUE) == NOT_FOUND_NUMBER)
+ 		return FALSE;
+ 
+-	if (flags & (1UL << NUMBER(PG_slab)))
++	if (isSlab(flags, _mapcount))
+ 		return FALSE;
+ 
+ 	if (_mapcount == (int)NUMBER(PAGE_OFFLINE_MAPCOUNT_VALUE))
+@@ -2977,6 +2990,7 @@ read_vmcoreinfo(void)
+ 	READ_NUMBER("PAGE_BUDDY_MAPCOUNT_VALUE", PAGE_BUDDY_MAPCOUNT_VALUE);
+ 	READ_NUMBER("PAGE_HUGETLB_MAPCOUNT_VALUE", PAGE_HUGETLB_MAPCOUNT_VALUE);
+ 	READ_NUMBER("PAGE_OFFLINE_MAPCOUNT_VALUE", PAGE_OFFLINE_MAPCOUNT_VALUE);
++	READ_NUMBER("PAGE_SLAB_MAPCOUNT_VALUE", PAGE_SLAB_MAPCOUNT_VALUE);
+ 	READ_NUMBER("phys_base", phys_base);
+ 	READ_NUMBER("KERNEL_IMAGE_SIZE", KERNEL_IMAGE_SIZE);
+ 
+@@ -6043,7 +6057,7 @@ static int
+ page_is_buddy_v3(unsigned long flags, unsigned int _mapcount,
+ 			unsigned long private, unsigned int _count)
+ {
+-	if (flags & (1UL << NUMBER(PG_slab)))
++	if (isSlab(flags, _mapcount))
+ 		return FALSE;
+ 
+ 	if (_mapcount == (int)NUMBER(PAGE_BUDDY_MAPCOUNT_VALUE))
+@@ -6618,7 +6632,7 @@ check_order:
+ 		 */
+ 		else if ((info->dump_level & DL_EXCLUDE_CACHE)
+ 		    && is_cache_page(flags)
+-		    && !isPrivate(flags) && !isAnon(mapping, flags)) {
++		    && !isPrivate(flags) && !isAnon(mapping, flags, _mapcount)) {
+ 			pfn_counter = &pfn_cache;
+ 		}
+ 		/*
+@@ -6626,7 +6640,7 @@ check_order:
+ 		 */
+ 		else if ((info->dump_level & DL_EXCLUDE_CACHE_PRI)
+ 		    && is_cache_page(flags)
+-		    && !isAnon(mapping, flags)) {
++		    && !isAnon(mapping, flags, _mapcount)) {
+ 			if (isPrivate(flags))
+ 				pfn_counter = &pfn_cache_private;
+ 			else
+@@ -6638,7 +6652,7 @@ check_order:
+ 		 *  - hugetlbfs pages
+ 		 */
+ 		else if ((info->dump_level & DL_EXCLUDE_USER_DATA)
+-			 && (isAnon(mapping, flags) || isHugetlb(compound_dtor))) {
++			 && (isAnon(mapping, flags, _mapcount) || isHugetlb(compound_dtor))) {
+ 			pfn_counter = &pfn_user;
+ 		}
+ 		/*
+diff --git a/makedumpfile.h b/makedumpfile.h
+index f08c49fc73be..6b43a8b44f93 100644
+--- a/makedumpfile.h
++++ b/makedumpfile.h
+@@ -161,9 +161,8 @@ test_bit(int nr, unsigned long addr)
+ #define isSwapBacked(flags)	test_bit(NUMBER(PG_swapbacked), flags)
+ #define isHWPOISON(flags)	(test_bit(NUMBER(PG_hwpoison), flags) \
+ 				&& (NUMBER(PG_hwpoison) != NOT_FOUND_NUMBER))
+-#define isSlab(flags)		test_bit(NUMBER(PG_slab), flags)
+-#define isAnon(mapping, flags)	(((unsigned long)mapping & PAGE_MAPPING_ANON) != 0 \
+-				&& !isSlab(flags))
++#define isAnon(mapping, flags, _mapcount) \
++	(((unsigned long)mapping & PAGE_MAPPING_ANON) != 0 && !isSlab(flags, _mapcount))
+ 
+ #define PAGE_TYPE_BASE		(0xf0000000)
+ 
+@@ -2259,6 +2258,7 @@ struct number_table {
+ 	long	PAGE_BUDDY_MAPCOUNT_VALUE;
+ 	long	PAGE_HUGETLB_MAPCOUNT_VALUE;
+ 	long	PAGE_OFFLINE_MAPCOUNT_VALUE;
++	long	PAGE_SLAB_MAPCOUNT_VALUE;
+ 	long	SECTION_SIZE_BITS;
+ 	long	MAX_PHYSMEM_BITS;
+ 	long    HUGETLB_PAGE_DTOR;
+-- 
+2.45.2
+

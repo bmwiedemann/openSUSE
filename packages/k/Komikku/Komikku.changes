@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Aug  2 19:51:58 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.52.0:
+  * [Servers] Improved webview to complete Cloudflare challenges
+  * [Servers] Improved webview to support Google ReCAPTCHA completion
+  * [Servers] ComicExtra (EN): Update
+  * [Servers] Manga-Scantrad (FR): Update
+  * [Servers] Mode Scanlator (pt_BR): Update
+  * [Servers] Read Comic Online (EN): Update
+  * [Servers] Asura Scans (EN): Disabled
+  * [Servers] Mangas Origines (FR): Disabled
+  * Updated French and Ukrainian translations
+
+-------------------------------------------------------------------
 Sat Jul 13 06:22:01 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 1.51.1:

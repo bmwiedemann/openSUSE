@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package openmpi4
 #
 # Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2004-2005 The Trustees of Indiana University and Indiana
@@ -146,6 +146,7 @@ Source4:        mpivars.sh
 Source5:        mpivars.csh
 Patch1:         orted-mpir-add-version-to-shared-library.patch
 Patch2:         btl-openib-Add-VF-support-for-ConnectX-4-5-and-6.patch
+Patch3:         openmpi4-C99.diff
 Provides:       mpi
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  autoconf
@@ -182,7 +183,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  gcc-fortran
 BuildRequires:  mpi-selector
 Requires:       mpi-selector
-Requires(preun):mpi-selector
+Requires(preun): mpi-selector
 Requires:       %{package_name}-libs = %{version}
 %else
 BuildRequires:  %{compiler_family}%{?c_f_ver}-compilers-hpc-macros-devel

@@ -16,6 +16,7 @@
 #
 
 
+%define force_gcc_version 13
 Name:           timg
 Version:        1.6.0
 Release:        0
@@ -24,7 +25,11 @@ License:        GPL-2.0-only
 URL:            https://github.com/hzeller/timg
 Source:         %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  cmake
+%if 0%{?suse_version} < 1600
+BuildRequires:  gcc%{?force_gcc_version}-c++
+%else
 BuildRequires:  gcc-c++
+%endif
 BuildRequires:  pkgconfig(GraphicsMagick++)
 BuildRequires:  pkgconfig(libavcodec)
 BuildRequires:  pkgconfig(libavdevice)
@@ -49,6 +54,9 @@ character blocks if these are not available.
 %autosetup
 
 %build
+%if 0%{?suse_version} < 1600
+export CXX="g++-%{?force_gcc_version}"
+%endif
 %cmake  \
     -DWITH_QOI_IMAGE=OFF \
     -DTIMG_VERSION_FROM_GIT=OFF

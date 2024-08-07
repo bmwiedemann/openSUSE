@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Aug  5 19:04:17 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2024.6:
+  * Add backgrounds and borders to admonitions
+  * Use different colour for 'Return value: Borrowed reference'
+  * Replace Flake8 with Ruff and add more linting for GitHub
+    Actions
+
+-------------------------------------------------------------------
 Sun Apr 21 08:35:40 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2024.4:

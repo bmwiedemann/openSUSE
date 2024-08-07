@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Aug  6 06:26:26 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Use distconfdir instead of sysconfdir for the sample config
+
+-------------------------------------------------------------------
 Sun Dec 31 09:55:37 UTC 2023 - Joshua Smith <jsmithfpv@gmail.com>
 
 - Specfile cleanup and fixes from onlyJak0b's devel project

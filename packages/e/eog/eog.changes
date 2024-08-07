@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Aug  5 06:56:22 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 45.4:
+  + Bug fixes and improvements:
+    - Regenerate thumbnails on save.
+    - Use "fast" content type as fallback if normal content type is
+      unavailable.
+  + docs: Replace dead links to developer-old.gnome.org.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sun Mar 17 09:34:06 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 45.3:

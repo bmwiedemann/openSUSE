@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package libdv
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -102,7 +102,7 @@ echo "AC_DEFUN([AM_PATH_SDL], [true])" >> m4/dummy_sdl.m4
 %endif
 
 autoreconf -fiv
-export CFLAGS="${RPM_OPT_FLAGS/O2/O3} -fomit-frame-pointer -fPIC -DPIC"
+export CFLAGS="${RPM_OPT_FLAGS/O2/O3} -fomit-frame-pointer -fPIC -DPIC -Wno-incompatible-pointer-types"
 export LDFLAGS="-pie"
 %configure \
 	--disable-static \

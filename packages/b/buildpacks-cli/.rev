@@ -7,4 +7,12 @@
     <comment>new package buildpacks-cli: CLI for building apps using Cloud Native Buildpacks</comment>
     <requestid>1189334</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>00985eac4c11c07f3d76d2be81c49e3a</srcmd5>
+    <version>0.35.1</version>
+    <time>1723003820</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1191791</requestid>
+  </revision>
 </revisionlist>

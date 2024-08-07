@@ -414,4 +414,12 @@ In home:RedDwarf:cdio it can be seen it doesn't break the build of anything.
   %patchN</comment>
     <requestid>1155481</requestid>
   </revision>
+  <revision rev="52" vrev="9">
+    <srcmd5>3238ef2461463c2848fcf8a1983b1ecd</srcmd5>
+    <version>2.1.0</version>
+    <time>1723003804</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1191627</requestid>
+  </revision>
 </revisionlist>

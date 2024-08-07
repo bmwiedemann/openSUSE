@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jul 17 16:35:21 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop obsolete update-desktop-files BuildRequires and macro.
+
+-------------------------------------------------------------------
 Fri Mar  8 14:10:22 UTC 2024 - pgajdos@suse.com
 
 - another %python3_fix_shebang_path usage [bsc#1212476]

@@ -1,4 +1,170 @@
 -------------------------------------------------------------------
+Tue Aug 06 05:39:31 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.31.0:
+  With this release, we announce the general availability of
+  image-based Gadgets (they aren't experimental anymore #3261) .
+  The documentation is available here. Stay tuned at the
+  inspektor-gadget.io website as we'll publish some blog posts with
+  more information about this release.
+  * General Improvements
+    - trace_exec: remove unused variable uid by @i-Pear in #3100
+    - GetCgroupID: read cgroup paths under host cgroup namespace by
+      @alban in #3085
+    - Artifact Hub: Update gadgets version to v0.30.0 by
+      @github-actions in #3103
+    - gadgets/trace_oomkill: Utilize new testing framework by
+      @burak-ok in #3084
+    - prometheus: Use different name for metrics config by
+      @mqasimsarfraz in #3109
+    - cmd/kubectl-gadget: Set k8s flags for runtime after parsing
+      by @mqasimsarfraz in #3104
+    - trace_tcpconnect: Add retcode by @burak-ok in #3069
+    - artifacthub: use field 'digest' instead of 'createdAt' for
+      reindexing by @alban in #3105
+    - pkg/gadgets/run/types: Test string equality rather than
+      contain to de… by @eiffel-fl in #3114
+    - cmd: Support a Configuration File by @mqasimsarfraz in #2831
+    - add otel-metrics operator for image-based gadgets by @flyth
+      in #2900
+    - gadgets: Add trace_bind by @mauriciovasquezbernal in #3067
+    - kubeinvcache: Create the cachedmaps on demand by @burak-ok in
+      #2815
+    - Update google.golang.org/grpc to v1.65.0 by
+      @mauriciovasquezbernal in #3122
+    - minikube.mk: switch minikube to use kubernetes v1.30.0 by
+      @alban in #3128
+    - [2nd attempt] container-collection: add process metadata
+      enricher by @alban in #3091
+    - Improve endpoints formatter by @mauriciovasquezbernal in
+      #3076
+    - gadgets/trace_bind: Fix trace_bind after formatters rework by
+      @mauriciovasquezbernal in #3129
+    - gadgettracermanager: Set environment to Kubernetes by
+      @mqasimsarfraz in #3136
+    - Adding docker runtime image digest enrichment for running
+      containers by @Sefi4 in #3139
+    - pkg/gadgets: Use tp_btf for top block-io. by @eiffel-fl in
+      #3146
+    - Dockerfiles: Use JSON for linter ENTRYPOINT. by @eiffel-fl in
+      #3160
+    - tree-wide: Freeze perf event array map by
+      @mauriciovasquezbernal in #3151
+    - pkg/oci: Add option to only run image-based gadgets from
+      specific registries by @eiffel-fl in #3145
+    - config: Add support for ig-k8s by @mqasimsarfraz in #3150
+    - gadgets: Forward config to datasources by
+      @mauriciovasquezbernal in #3149
+    - pkg/operators/ebpf: Allow passing field configuration as
+      annotations by @blanquicet in #3171
+    - gadgets: Add audit seccomp by @mauriciovasquezbernal in #3170
+    - Use global param for public key by @eiffel-fl in #3158
+    - Adding pcomm field by @Sefi4 in #3142
+    - Update metadata validation and generation by
+      @mauriciovasquezbernal in #3164
+    - metadata: Fix leftovers after review by
+      @mauriciovasquezbernal in #3183
+    - gadget-context: make sure cancel() is called on gadgetContext
+      by @flyth in #3186
+    - cmd/common/config: Remove line to initialize oci operator. by
+      @eiffel-fl in #3189
+    - gadgets: Uniform common info they provide by
+      @mauriciovasquezbernal in #3169
+    - pkg/operators/ebpf: make enum handling deterministic by
+      @flyth in #3190
+    - gadgets: Provide human readable version of error codes by
+      @burak-ok in #3148
+    - config/params: add support for string slices by @eiffel-fl in
+      #3192
+    - Add support to specify several public keys by @eiffel-fl in
+      #3174
+    - image-based gadgets: introduce map iterators by @flyth in
+      #3182
+    - ebpf-builder.Dockerfile: Use uppercase keyword by @burak-ok
+      in #3205
+    - container-hook: simplify sys_exit_execve logic by @alban in
+      #3138
+    - tree-wide: Pin base images on Dockerfiles by
+      @mauriciovasquezbernal in #3198
+    - container-hook: Remove unused bpf objects by
+      @mauriciovasquezbernal in #3206
+    - Dockerfiles: Fix typo for kubectl-gadget.Dockerfile hash. by
+      @eiffel-fl in #3215
+    - treewide: Remove unused verify-gadgets flag and adapt CI jobs
+      to dependabot by @eiffel-fl in #3216
+    - treewide: Fix usage of empty public keys. by @eiffel-fl in
+      #3226
+    - treewide: Add back --verify-gadgets. by @eiffel-fl in #3227
+    - Use global parameters for --allowed-digests and
+      --allowed-registries by @eiffel-fl in #3181
+    - gadgets: Update top_file to use map iterators instead of
+      toppers by @blanquicet in #3207
+    - Adding cwd field to trace_exec image-based gadget by @Sefi4
+      in #3157
+    - UidGidResolver: Make it usable in image based gadgets by
+      @burak-ok in #3200
+    - Improve insecure registries support by @mauriciovasquezbernal
+      in #3252
+    - ig/gadgetctl: add TLS support by @flyth in #2848
+    - treewide: Replace allowed-digests and allowed-registries by
+      allowed-gadgets by @eiffel-fl in #3251
+    - gadgets: Add top_tcp as image based gadget by @burak-ok in
+      #3259
+    - Finish porting trace dns to image-based gadget by
+      @mauriciovasquezbernal in #3093
+    - pkg/operators: Add combiner by @blanquicet in #3068
+    - image-based gadgets: add support for profiler gadgets by
+      @flyth in #3253
+    - tree-wide: Mark image-based gadgets as non experimental by
+      @mauriciovasquezbernal in #3261
+  * Bug Fixes
+    - Makefile: Fix how ig-debug version is set. by @eiffel-fl in
+      #3108
+    - pkg/gadgets: Fix tracepoint for top block-io. by @eiffel-fl
+      in #3272
+    - pkg/datasource: Use FullName to add field. by @eiffel-fl in
+      #3271
+    - pkg/datasource: Use FullName instead of Name. by @eiffel-fl
+      in #3293
+  * Documentation Improvements
+    - Update README.md for all image-based gadgets by @alban in
+      #3102
+    - docs: Add a link to verify instructions when ig is downloaded
+      from release by @eiffel-fl in #3147
+    - docs: point to the installation instructions on the IG
+      website instead of the TOC on the repo by @flyth in #3173
+    - docs: Rework structure and few improvements by
+      @mauriciovasquezbernal in #3279
+    - quick-start.md: run.md -> run.mdx by @burak-ok in #3297
+    - README: Fix broken links by @mauriciovasquezbernal in #3298
+  * Testing and Continue Integration
+    - gadgets/Makefile: Report failing tests again by @burak-ok in
+      #3116
+    - gadgets: Test endpoints too by @mauriciovasquezbernal in
+      #3130
+    - gadgets/trace_capabilities: Add test by @burak-ok in #3115
+    - ci: Report summaries for gadgets tests by
+      @mauriciovasquezbernal in #3152
+    - ci: Update instructions to create ARO cluster by
+      @mauriciovasquezbernal in #3119
+    - tests: Remove run top test and helpers for this by
+      @mauriciovasquezbernal in #3161
+    - gadgets: Test on containerd too by @mauriciovasquezbernal in
+      #3172
+    - CI: README: Add OpenSSF scorecard badge by @illume in #3098
+    - ci: Pin Github Actions by @mauriciovasquezbernal in #3191
+    - ci: Limit token permissions by @mauriciovasquezbernal in
+      #3197
+    - ci: Pin go install command to hash by @mauriciovasquezbernal
+      in #3199
+    - pkg/testing/ig: Support more than one flag on IG_FLAGS env
+      variable by @blanquicet in #3220
+    - ci: Verify eBPF builder image only if cosign secrets were
+      set. by @eiffel-fl in #3217
+    - ci: Remove documentation-checks from release needs. by
+      @eiffel-fl in #3296
+
+-------------------------------------------------------------------
 Wed Jul 03 15:51:22 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.30.0:

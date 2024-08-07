@@ -22,7 +22,7 @@
 %define api_minor 0
 %define libmutter libmutter-%{api_major}-%{api_minor}
 Name:           mutter
-Version:        46.3.1
+Version:        46.4
 Release:        0
 Summary:        Window and compositing manager based on Clutter
 License:        GPL-2.0-or-later
@@ -34,8 +34,6 @@ Source0:        %{name}-%{version}.tar.zst
 Patch1:         mutter-disable-cvt-s390x.patch
 # PATCH-FIX-OPENSUSE mutter-window-actor-Special-case-shaped-Java-windows.patch -- window-actor: Special-case shaped Java windows
 Patch2:         mutter-window-actor-Special-case-shaped-Java-windows.patch
-# PATCH-FIX-UPSTREAM mutter-fix-x11-restart.patch glgo#GNOME/gnome-shell#7050 glgo#GNOME/mutter!3329 alynx.zhou@suse.com -- Fix crash on restarting mutter under x11
-Patch3:         mutter-fix-x11-restart.patch
 # PATCH-FIX-OPENSUSE 0001-Revert-clutter-actor-Cache-stage-relative-instead-of.patch glgo#GNOME/mutter#3302 bsc#1219546 alynx.zhou@suse.com -- Fix partial update on VT switch
 Patch4:         0001-Revert-clutter-actor-Cache-stage-relative-instead-of.patch
 #PATCH-FEATURE-OPENSUSE mutter-implement-text-input-v1.patch glgo#GNOME/mutter!3751 bsc#1219505 alynx.zhou@suse.com -- Allow input method to work in Wayland Chromium
@@ -150,7 +148,6 @@ applications that want to make use of the mutter library.
 %patch -P 1 -p1
 %patch -P 2 -p1
 %patch -P 3 -p1
-%patch -P 4 -p1
 %patch -P 5 -p1
 %endif
 # SLE-only patches and translations.

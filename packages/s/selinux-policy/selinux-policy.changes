@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Aug 02 13:27:55 UTC 2024 - cathy.hu@suse.com
+
+- Update to version 20240802:
+  * Dontaudit search of snapper grub plugin to nscd socket (bsc#1228745)
+
+-------------------------------------------------------------------
+Wed Jul 31 16:18:29 UTC 2024 - cathy.hu@suse.com
+
+- Update to version 20240731:
+  * Initial policy for ibft-rule-generator (bsc#1228402)
+  * Initial policy for systemd-status-mail (bsc#1228402)
+
+-------------------------------------------------------------------
 Wed Jul 31 12:55:19 UTC 2024 - cathy.hu@suse.com
 
 - Update to version 20240731:

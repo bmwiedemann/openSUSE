@@ -34,7 +34,7 @@
 %endif
 
 Name:           mygnuhealth
-Version:        %{majorver}.2.0
+Version:        %{majorver}.2.1
 Release:        0
 Summary:        The personal health record for the GNU Health system
 License:        GPL-3.0-or-later
@@ -62,6 +62,7 @@ BuildRequires:  %{python_module pygal}
 BuildRequires:  %{python_module tinydb}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module CairoSVG}
+Requires:       %{mypython}-bleak
 Requires:       %{mypython}-dateutil
 Requires:       %{mypython}-bcrypt
 Requires:       %{mypython}-Kivy

@@ -2364,4 +2364,12 @@ New stable rel</comment>
   + Updated translations. (forwarded request 1183900 from iznogood)</comment>
     <requestid>1184251</requestid>
   </revision>
+  <revision rev="257" vrev="1">
+    <srcmd5>64fbc2d1e97a59ab3d3f7018bed9c032</srcmd5>
+    <version>3.52.4</version>
+    <time>1723003772</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1191744</requestid>
+  </revision>
 </revisionlist>

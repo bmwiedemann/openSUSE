@@ -51,6 +51,7 @@ rm -rf %{buildroot}%{_bindir}
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+export PYTHONDONTWRITEBYTECODE=1
 # Still not resolved issues with tests, gh#editorconfig/editorconfig-core-py#37
 %{python_expand cmake .
 export PYTHONPATH=%{buildroot}%{$python_sitelib}

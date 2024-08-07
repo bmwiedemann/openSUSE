@@ -2,6 +2,7 @@
 # spec file for package protobuf
 #
 # Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,8 +25,8 @@
 %bcond_without python3
 %{?sle15_python_module_pythons}
 Name:           protobuf
-Version:        25.3
-%global         sover 25_3_0
+Version:        25.4
+%global         sover 25_4_0
 Release:        0
 Summary:        Protocol Buffers - Google's data interchange format
 License:        BSD-3-Clause

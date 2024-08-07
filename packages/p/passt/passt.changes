@@ -1,4 +1,86 @@
 -------------------------------------------------------------------
+Thu Aug 01 05:57:09 UTC 2024 - dcermak@suse.com
+
+- Update to version 20240726.57a21d2:
+  * tap: Improve handling of partially received frames on qemu socket
+  * tap: Correctly handle frames of odd length
+  * tap: Don't use EPOLLET on Qemu sockets
+  * tap: Don't attempt to carry on if we get a bad frame length from qemu
+  * tap: Better report errors receiving from QEMU socket
+  * log: Fetch log times with CLOCK_MONOTONIC, not CLOCK_REALTIME
+  * log: Initialise timestamp for relative log time also if we use a log file
+  * log, util: Fix sub-second part in relative log time calculation
+  * test/lib/perf_report: Fix highlight
+  * test: Fix spurious test failure with systemd-resolved
+  * fwd: Broaden what we consider for DNS specific forwarding rules
+  * fwd: Refactor tests in fwd_nat_from_tap() for clarity
+  * conf: Accept addresses enclosed by square brackets in port forwarding specifiers
+  * tap: Exit if we fail to bind a UNIX domain socket with explicit path
+  * test: iperf3 3.16 introduces multiple threads, drop our own implementation of that
+  * test: Update names of symbols and slabinfo entries
+  * test: Fix memory/passt tests, --netns-only is not a valid option for passt
+  * log: Drop newlines in the middle of the perror()-like messages
+  * tcp: Change SO_PEEK_OFF support message to debug()
+  * tap: Don't quit if pasta gets EIO on writev() to tap, interface might be down
+  * tcp: Correctly update SO_PEEK_OFF when tcp_send_frames() drops frames
+  * tcp: probe for SO_PEEK_OFF both in tcpv4 and tcp6
+  * udp: Rename UDP listening sockets
+  * udp: Remove rdelta port forwarding maps
+  * udp: Remove obsolete socket tracking
+  * udp: Direct datagrams from host to guest via flow table
+  * udp: Find or create flows for datagrams from tap interface
+  * udp: Remove obsolete splice tracking
+  * udp: Handle "spliced" datagrams with per-flow sockets
+  * udp: Create flows for datagrams from originating sockets
+  * fwd: Update flow forwarding logic for UDP
+  * flow, icmp: Use general flow forwarding rules for ICMP
+  * flow, tcp: Flow based NAT and port forwarding for TCP
+  * icmp: Manage outbound socket address via flow table
+  * flow: Helper to create sockets based on flowside
+  * icmp: Eliminate icmp_id_map
+  * icmp: Look up ping flows using flow hash
+  * icmp: Obtain destination addresses from the flowsides
+  * icmp: Remove redundant id field from flow table entry
+  * tcp: Re-use flow hash for initial sequence number generation
+  * flow, tcp: Generalise TCP hash table to general flow hash table
+  * tcp, flow: Replace TCP specific hash function with general flow hash
+  * tcp_splice: Eliminate SPLICE_V6 flag
+  * tcp: Simplify endpoint validation using flowside information
+  * tcp: Manage outbound address via flow table
+  * tcp: Obtain guest address from flowside
+  * tcp, flow: Remove redundant information, repack connection structures
+  * flow: Common address information for target side
+  * flow: Common address information for initiating side
+  * doc: Extend zero-recv test with methods using msghdr
+  * doc: Test behaviour of closing duplicate UDP sockets
+  * tcp_splice: Use parameterised macros for per-side event/flag bits
+  * flow: Introduce flow_foreach_sidei() macro
+  * flow, tcp_splice: Prefer 'sidei' for variables referring to side index
+  * flow, icmp, tcp: Clean up helpers for getting flow from index
+  * udp: Handle errors on UDP sockets
+  * util: Add AF_UNSPEC support to sockaddr_ntop()
+  * udp, tcp: Tweak handling of no_udp and no_tcp flags
+  * udp: Make udp_sock_recv static
+  * conf: Don't configure port forwarding for a disabled protocol
+  * tcp: handle shrunk window advertisements from guest
+  * tcp: leverage support of SO_PEEK_OFF socket option when available
+  * doc: Trivial fix for reuseaddr-priority
+  * doc: Test behaviour of zero length datagram recv()s
+  * doc: Add program to document and test assumptions about SO_REUSEADDR
+  * udp: Consolidate datagram batching
+  * udp: Move some more of sock_handler tasks into sub-functions
+  * udp: Don't repeatedly initialise udp[46]_eth_hdr
+  * udp: Unify udp[46]_l2_iov
+  * udp: Unify udp[46]_mh_splice
+  * udp: Rename IOV and mmsghdr arrays
+  * udp: Pass full epoll reference through more of sock handler path
+  * flow: Add flow_sidx_valid() helper
+  * util: sock_l4() determine protocol from epoll type rather than the reverse
+  * conf: Use the right maximum buffer size for c->sock_path
+  * tcp_splice: Check return value of setsockopt() for SO_RCVLOWAT
+  * conf: Copy up to MAXDNSRCH - 1 bytes, not MAXDNSRCH
+
+-------------------------------------------------------------------
 Thu Jul  4 16:34:45 UTC 2024 - Danish Prakash <danish.prakash@suse.com>
 
 - BuildRequire selinux-policy-targeted explicitly to allow building

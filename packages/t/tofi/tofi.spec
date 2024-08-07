@@ -1,7 +1,7 @@
 #
 # spec file for package tofi
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,18 +21,18 @@ Version:        0.9.1
 Release:        0
 Summary:        Tiny dynamic menu for Wayland
 License:        MIT
-Url:            https://github.com/philj56/tofi
+URL:            https://github.com/philj56/tofi
 Source:         https://github.com/philj56/tofi/archive/refs/tags/v%{version}.tar.gz#$/%{name}-%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  meson
-BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(cairo)
+BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(harfbuzz)
 BuildRequires:  pkgconfig(pangocairo)
+BuildRequires:  pkgconfig(scdoc)
 BuildRequires:  pkgconfig(wayland-client)
 BuildRequires:  pkgconfig(wayland-protocols)
 BuildRequires:  pkgconfig(xkbcommon)
-BuildRequires:  pkgconfig(scdoc)
 
 %description
 A simple dmenu / rofi replacement for wlroots-based Wayland
@@ -54,7 +54,7 @@ Bash command-line completion support for %{name}.
 %autosetup
 
 %build
-%meson
+%meson --sysconfdir=%{_distconfdir}
 %meson_build
 
 %install
@@ -67,8 +67,8 @@ Bash command-line completion support for %{name}.
 %{_bindir}/tofi
 %{_bindir}/tofi-drun
 %{_bindir}/tofi-run
-%dir %{_sysconfdir}/xdg/tofi
-%config %{_sysconfdir}/xdg/tofi/config
+%dir %{_distconfdir}/xdg/tofi
+%{_distconfdir}/xdg/tofi/config
 %{_mandir}/man1/tofi*
 %{_mandir}/man5/tofi.5*
 

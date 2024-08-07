@@ -17,7 +17,7 @@
 
 
 Name:           Komikku
-Version:        1.51.1
+Version:        1.52.0
 Release:        0
 Summary:        A manga reader for GNOME
 License:        GPL-3.0-or-later
@@ -34,7 +34,7 @@ BuildRequires:  python3-devel
 BuildRequires:  python3-gobject
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gtk4)
-BuildRequires:  pkgconfig(libadwaita-1)
+BuildRequires:  pkgconfig(libadwaita-1) >= 1.5
 Requires:       python3-Brotli
 Requires:       python3-Pillow
 Requires:       python3-Unidecode

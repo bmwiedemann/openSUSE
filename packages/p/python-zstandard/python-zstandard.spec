@@ -35,7 +35,6 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  zstd = 1.5.6
 Requires:       python-cffi >= 1.11
 Requires:       zstd
-Conflicts:      python-zstd
 # SECTION test requirements
 BuildRequires:  %{python_module cffi >= 1.11}
 BuildRequires:  %{python_module exceptiongroup}

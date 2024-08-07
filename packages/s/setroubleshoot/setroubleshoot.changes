@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Jul 29 07:45:39 UTC 2024 - Zdenek Kubala <zkubala@suse.cz>
+
+- Add libreport-gtk and python3-libreport into requirements for TW
+  (fixes boo#1217042)
+
+-------------------------------------------------------------------
+Thu Apr 11 13:08:43 UTC 2024 - Zdenek Kubala <zkubala@suse.cz>
+
+- Add patch disable-send-bug-report-button.patch to remove
+  "Submit bug report" button from the gui browser. For now it returns
+  white page since reporting into Bugzilla is not working and also
+  requires an account or api access for the user.
+
+-------------------------------------------------------------------
+Fri Mar  8 11:04:43 UTC 2024 - pgajdos@suse.com
+
+- remove dependency on /usr/bin/python3 using
+  %python3_fix_shebang_path macro, [bsc#1212476]
+
+-------------------------------------------------------------------
 Fri Nov 10 15:39:45 UTC 2023 - Frederic Crozat <fcrozat@suse.com>
 
 - Update to version 3.3.32:

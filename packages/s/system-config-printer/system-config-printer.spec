@@ -50,7 +50,6 @@ BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-devel
 BuildRequires:  python3-lxml
-BuildRequires:  update-desktop-files
 BuildRequires:  xmlto
 BuildRequires:  pkgconfig(libudev) >= 172
 BuildRequires:  pkgconfig(libusb-1.0)
@@ -169,8 +168,6 @@ fi
 mkdir -p %{buildroot}/%{_datadir}/icons/hicolor/scalable/apps
 cp -a %{_datadir}/icons/%{_iconlocation}/scalable/devices/printer.svg %{buildroot}/%{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
 
-%suse_update_desktop_file print-applet
-%suse_update_desktop_file -r system-config-printer GTK System HardwareSettings
 %fdupes %{buildroot}/%{py_sitedir}
 %find_lang %{name} %{?no_lang_C}
 %if 0%{?suse_version} >= 1600

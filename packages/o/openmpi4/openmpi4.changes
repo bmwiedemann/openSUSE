@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jul 29 16:40:16 UTC 2024 - Martin Jambor <mjambor@suse.com>
+
+- Add openmpi4-C99.diff to fix the most egregious type violations that
+  not only prevent building the standard flavor with GCC 14 opn i586
+  but that are just bugs too.
+
+-------------------------------------------------------------------
 Tue Jun 25 13:24:03 UTC 2024 - Nicolas Morey <nicolas.morey@suse.com>
 
 - Disable 32b builds of hpc flavours

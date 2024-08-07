@@ -1,4 +1,75 @@
 -------------------------------------------------------------------
+Thu Aug 01 05:52:22 UTC 2024 - dcermak@suse.com
+
+- Update to version 1.16.0:
+  * Bump Skopeo to v1.16.0
+  * fix(deps): update module github.com/containers/common to v0.60.0
+  * Drop the toolchain back to 1.21.0
+  * fix(deps): update module github.com/containers/image/v5 to v5.32.0
+  * fix(deps): update module github.com/containers/storage to v1.55.0
+  * chore(deps): update module google.golang.org/grpc to v1.64.1 [security]
+  * fix(deps): update module github.com/containers/common to v0.59.2
+  * [skip-ci] RPM: spec file cleanup
+  * fix(deps): update module golang.org/x/term to v0.22.0
+  * fix(deps): update module github.com/containers/ocicrypt to v1.2.0
+  * fix(deps): update golang.org/x/exp digest to 7f521ea
+  * Bump github.com/hashicorp/go-retryablehttp from 0.7.6 to 0.7.7
+  * fix(deps): update module github.com/containers/image/v5 to v5.31.1
+  * fix(deps): update module github.com/spf13/cobra to v1.8.1
+  * Refer to registry.k8s.io instead of k8s.gcr.io
+  * [CI:DOCS] Update dependency golangci/golangci-lint to v1.59.1
+  * fix(deps): update module golang.org/x/term to v0.21.0
+  * fix(deps): update module github.com/containers/common to v0.59.1
+  * Execute cross-build task using PW pool
+  * fix(deps): update golang.org/x/exp digest to fd00a4e
+  * CI: bump VMs
+  * Don't offer the tarball: transport in completions
+  * [skip-ci] Packit: `packages: [skopeo-fedora]` for podman-next jobs
+  * [CI:DOCS] Update dependency golangci/golangci-lint to v1.59.0
+  * fix(deps): update module github.com/containers/common to v0.59.0
+  * Stop using the exclude_graphdriver_devicemapper build tag
+  * fix(deps): update module github.com/containers/image/v5 to v5.31.0
+  * Update for changed c/image error texts
+  * Update c/image after https://github.com/containers/image/pull/2408
+  * fix(deps): update module github.com/containers/common to v0.58.3
+  * hack: Support picking cc and cpp via environment variables.
+  * [CI:DOCS] Update dependency golangci/golangci-lint to v1.58.1
+  * [skip-ci] RPM: bats requirement only on Fedora
+  * fix(deps): update module golang.org/x/exp to v0.0.0-20240506185415-9bf2ced13842
+  * [skip-ci] Packit: enable c10s downstream sync
+  * [skip-ci] Packit: delete EL8 jobs
+  * fix(deps): update module golang.org/x/term to v0.20.0
+  * Add info on Skopeo image to README.md
+  * [CI:DOCS] Update dependency golangci/golangci-lint to v1.58.0
+  * fix summaries for standalone-sign and standalone-verify
+  * fix(deps): update module golang.org/x/exp to v0.0.0-20240416160154-fe59bbe5cc7f
+  * CI VMs: bump to new versions with tmpfs /tmp
+  * chore(deps): update module golang.org/x/net to v0.23.0 [security]
+  * Use "slices" from the standard library
+  * Update to Go 1.21
+  * chore: fix function names
+  * Center logo in README.md
+  * fix(deps): update module github.com/containers/common to v0.58.2
+  * Hard-code the device-mapper graph driver to disabled
+  * Fix issue/pr lock workflow
+  * feat: add `--image-parallel-copies` flag
+  * Use strings.CutSuffix
+  * Use strings.CutPrefix
+  * Update to Go 1.20
+  * fix(deps): update module golang.org/x/term to v0.19.0
+  * Freeze the fedora-minimal image reference at Fedora 38
+  * [CI:DOCS] Update dependency golangci/golangci-lint to v1.57.2
+  * fix(deps): update module github.com/containers/common to v0.58.1
+  * [CI:DOCS] Add golang 1.21 update warning
+  * chore(deps): update dependency containers/automation_images to v20240320
+  * main: return exit code `2` when an input is not found
+  * chore(deps): update module github.com/docker/docker to v25.0.5+incompatible [security]
+  * [CI:DOCS] Update dependency golangci/golangci-lint to v1.57.1
+  * [CI:DOCS] Update dependency golangci/golangci-lint to v1.57.0
+  * [skip-ci] rpm: use macro supported vendoring
+  * Bump to v1.16.0-dev
+
+-------------------------------------------------------------------
 Fri Jul 12 06:54:46 UTC 2024 - dcermak@suse.com
 
 - Update to version 1.15.2:

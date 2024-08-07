@@ -728,4 +728,12 @@
   * Add support for Nigerian Yoruba names and surnames (`yo_NG`).</comment>
     <requestid>1184016</requestid>
   </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>9916cf5b978e3d5b69950d55255032bb</srcmd5>
+    <version>26.1.0</version>
+    <time>1723003808</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1191653</requestid>
+  </revision>
 </revisionlist>

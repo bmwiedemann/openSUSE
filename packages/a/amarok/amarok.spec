@@ -16,11 +16,11 @@
 #
 
 
-%define kf5_version 5.78.0
+%define kf5_version 5.89.0
 %define qt5_version 5.15.0
 %bcond_without released
 Name:           amarok
-Version:        3.0.1
+Version:        3.1.0
 Release:        0
 Summary:        Media Player
 License:        GPL-2.0-or-later
@@ -158,12 +158,12 @@ rm %{buildroot}%{_kf5_libdir}/libamarok{core,lib,shared,-sqlcollection,-transcod
 %{_kf5_bindir}/amarok
 %{_kf5_bindir}/amarok_afttagger
 %{_kf5_bindir}/amarokcollectionscanner
-%{_kf5_bindir}/amarokpkg
-%{_kf5_configdir}/*
-%{_kf5_configkcfgdir}/
-%{_kf5_dbusinterfacesdir}/
+%{_kf5_configdir}/amarok_homerc
+%{_kf5_configkcfgdir}/amarokconfig.kcfg
+%{_kf5_dbusinterfacesdir}/org.kde.amarok.App.xml
+%{_kf5_dbusinterfacesdir}/org.kde.amarok.Collection.xml
+%{_kf5_dbusinterfacesdir}/org.kde.amarok.Mpris2Extensions.Player.xml
 %{_kf5_iconsdir}/hicolor/*/*/*
-%{_kf5_knsrcfilesdir}/amarok.knsrc
 %{_kf5_libdir}/libamarok-sqlcollection.so.*
 %{_kf5_libdir}/libamarok-transcoding.so.*
 %{_kf5_libdir}/libamarok_service_lastfm_config.so
@@ -181,9 +181,14 @@ rm %{buildroot}%{_kf5_libdir}/libamarok{core,lib,shared,-sqlcollection,-transcod
 %{_kf5_servicetypesdir}/amarok*.desktop
 %{_kf5_sharedir}/amarok/
 %{_kf5_sharedir}/dbus-1/services/org.kde.amarok.service
-%{_kf5_sharedir}/kconf_update/
-%{_kf5_sharedir}/kpackage/
-%{_kf5_sharedir}/solid/
+
+%dir %{_kf5_sharedir}/kpackage
+%{_kf5_sharedir}/kpackage/amarok/
+%dir %{_kf5_sharedir}/kpackage/genericqml
+%{_kf5_sharedir}/kpackage/genericqml/org.kde.amarok.context/
+%dir %{_kf5_sharedir}/solid
+%dir %{_kf5_sharedir}/solid/actions
+%{_kf5_sharedir}/solid/actions/amarok-play-audiocd.desktop
 
 %files lang -f %{name}.lang
 %exclude %{_kf5_htmldir}/*/amarok/

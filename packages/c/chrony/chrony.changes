@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul 31 12:13:21 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update clknetsim to snapshot 633a0be: fix missing stat/fstat with
+  latest glibc.
+
+-------------------------------------------------------------------
 Tue Jun  4 14:57:09 UTC 2024 - Reinhard Max <max@suse.com>
 
 - bsc#1225362, chrony-124-tai.patch: make 124-tai more reliable

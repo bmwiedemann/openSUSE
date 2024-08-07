@@ -1197,4 +1197,12 @@ See README.static for an explanation why static linking is preferred for some li
     <comment></comment>
     <requestid>1174380</requestid>
   </revision>
+  <revision rev="93" vrev="2">
+    <srcmd5>d856e977a53f0b6e2c7d358a1a0396e2</srcmd5>
+    <version>1.7.5</version>
+    <time>1723003810</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1191711</requestid>
+  </revision>
 </revisionlist>

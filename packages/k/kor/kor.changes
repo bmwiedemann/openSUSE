@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Aug 06 05:53:28 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.5.4:
+  * chore: update chart version pre-release (#342)
+  * Feat: Enhance unused jobs discovery (#336)
+  * docs(README): Update release badges & ClusterRole aggregation
+    (#340)
+  * revert: Update chart release workflow (#339)
+  * Update chart release workflow (#338)
+  * update chart version 0.5.3 (#337)
+
+-------------------------------------------------------------------
 Fri Jul 26 04:44:10 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.5.3:

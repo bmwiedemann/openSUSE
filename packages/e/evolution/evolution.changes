@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Aug  5 06:52:20 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.52.4:
+  + Bug Fixes:
+    - Tooltips in Month view not always shown.
+    - Mail: Print to File keeps previous file name.
+    - Tooltips only sometimes displayed in Task and Memos Pane.
+  + Miscellaneous: EWebView: Just loaded remote images may be left
+    invisible.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Jun 28 22:17:49 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.52.3:

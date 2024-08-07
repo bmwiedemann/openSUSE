@@ -33,6 +33,7 @@ Source1:        https://ftp.gnu.org/gnu/libcdio/%{name}-%{version}.tar.bz2.sig
 Source2:        %{name}.keyring
 Source3:        baselibs.conf
 Patch0:         fix-undefined-behavior-in-readlink.patch
+Patch1:         c99.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  help2man
@@ -43,7 +44,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  popt-devel
 BuildRequires:  pkgconfig(libcddb)
 Requires(post): %{install_info_prereq}
-Requires(preun):%{install_info_prereq}
+Requires(preun): %{install_info_prereq}
 
 %description
 The libcdio package contains libraries for CD-ROM and CD image
@@ -105,7 +106,7 @@ Requires:       %{iso9660_name} = %{version}
 Requires:       %{iso9660pp_name} = %{version}
 Requires:       %{udf_name} = %{version}
 Requires(post): %{install_info_prereq}
-Requires(preun):%{install_info_prereq}
+Requires(preun): %{install_info_prereq}
 
 %description devel
 The libcdio package contains libraries for CD-ROM and CD image

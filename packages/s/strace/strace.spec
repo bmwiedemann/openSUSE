@@ -20,7 +20,7 @@ Name:           strace
 Version:        6.10
 Release:        0
 Summary:        A utility to trace the system calls of a program
-License:        BSD-3-Clause
+License:        LGPL-2.1-or-later
 Group:          Development/Tools/Debuggers
 URL:            http://strace.io/
 #Freecode-URL:	http://freecode.com/projects/strace

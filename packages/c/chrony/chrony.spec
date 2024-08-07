@@ -33,7 +33,7 @@
 %bcond_without testsuite
 
 %define _systemdutildir %(pkg-config --variable systemdutildir systemd)
-%global clknetsim_ver 0a11a35
+%global clknetsim_ver 633a0be
 #Compat macro for new _fillupdir macro introduced in Nov 2017
 %if ! %{defined _fillupdir}
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
