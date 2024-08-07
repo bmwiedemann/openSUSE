@@ -1,4 +1,4 @@
-<image name="OBS__MicroOS___20240806" schemaversion="4.1">
+<image name="OBS__MicroOS___20240807" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20240806</productvar>
+      <productvar name="VERSION">20240807</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20240806,openSUSE MicroOS</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20240807,openSUSE MicroOS</productinfo>
       <productinfo name="LINGUAS">en_US </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20240806/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20240807/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -1158,8 +1158,8 @@
       <repopackage name="libproc2-0"/>
       <repopackage name="libprojectM3"/>
       <repopackage name="libprotobuf-c1"/>
-      <repopackage name="libprotobuf-lite25_3_0"/>
-      <repopackage name="libprotobuf25_3_0"/>
+      <repopackage name="libprotobuf-lite25_4_0"/>
+      <repopackage name="libprotobuf25_4_0"/>
       <repopackage name="libproxy1"/>
       <repopackage name="libpskc0"/>
       <repopackage name="libpsl5"/>
@@ -1171,7 +1171,7 @@
       <repopackage name="libpython3_11-1_0"/>
       <repopackage name="libqaccessibilityclient-qt6"/>
       <repopackage name="libqaccessibilityclient-qt6-0"/>
-      <repopackage name="libqalculate22"/>
+      <repopackage name="libqalculate23"/>
       <repopackage name="libqca-qt6-2"/>
       <repopackage name="libQCoro6Core0"/>
       <repopackage name="libQCoro6DBus0"/>

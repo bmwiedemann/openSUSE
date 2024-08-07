@@ -15355,13 +15355,13 @@ unsorted:
   - libproj25 
   - libprometheus-cpp0_12 
   - libprotobuf-c-devel 
-  - libprotobuf-lite25_3_0-32bit 
+  - libprotobuf-lite25_4_0-32bit 
   - libprotobuf-lite3_21_12 
   - libprotobuf-nanopb0 
-  - libprotobuf25_3_0-32bit 
+  - libprotobuf25_4_0-32bit 
   - libprotobuf3_21_12 
-  - libprotoc25_3_0 
-  - libprotoc25_3_0-32bit 
+  - libprotoc25_4_0 
+  - libprotoc25_4_0-32bit 
   - libprotoc3_21_12 
   - libproxy-devel 
   - libproxy-devel-doc 
@@ -23107,7 +23107,6 @@ unsorted:
   - postgresql13-server 
   - postgresql13-server-devel 
   - postgresql13-test 
-  - postgresql13-timescaledb 
   - postgresql14 
   - postgresql14-contrib 
   - postgresql14-devel 
@@ -24782,6 +24781,7 @@ unsorted:
   - python310-bjoern 
   - python310-black 
   - python310-bleach 
+  - python310-bleak 
   - python310-blessed 
   - python310-blessings 
   - python310-blinker 
@@ -28405,6 +28405,7 @@ unsorted:
   - python311-bjoern 
   - python311-black 
   - python311-bleach 
+  - python311-bleak 
   - python311-blessed 
   - python311-blessings 
   - python311-blockdiag 
@@ -31946,6 +31947,7 @@ unsorted:
   - python312-bjoern 
   - python312-black 
   - python312-bleach 
+  - python312-bleak 
   - python312-blessed 
   - python312-blessings 
   - python312-blinker 
@@ -48850,8 +48852,6 @@ unsorted:
   - ytree 
   - yubico-piv-tool 
   - yubikey-manager 
-  - yubikey-manager-qt 
-  - yubioath-desktop 
   - yudit 
   - yum 
   - yum-utils 
