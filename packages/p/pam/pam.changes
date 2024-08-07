@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jul 22 21:31:47 UTC 2024 - Stanislav Brabec <sbrabec@suse.com>
+
+- Prevent cursor escape from the login prompt [bsc#1194818]
+  * Added: pam-bsc1194818-cursor-escape.patch
+
+-------------------------------------------------------------------
 Wed Apr 10 07:12:02 UTC 2024 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to version 1.6.1

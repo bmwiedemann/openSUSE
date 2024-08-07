@@ -96,6 +96,8 @@ Source22:       postlogin-account.pamd
 Source23:       postlogin-password.pamd
 Source24:       postlogin-session.pamd
 Patch1:         pam-limit-nproc.patch
+# https://github.com/linux-pam/linux-pam/pull/816
+Patch2:         pam-bsc1194818-cursor-escape.patch
 BuildRequires:  audit-devel
 BuildRequires:  bison
 BuildRequires:  flex

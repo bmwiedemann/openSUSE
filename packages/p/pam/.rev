@@ -1268,4 +1268,12 @@
   - pam_unix-fix-password-aging-disabled.patch</comment>
     <requestid>1166585</requestid>
   </revision>
+  <revision rev="139" vrev="2">
+    <srcmd5>57759d2ba22f243b1a864f17d2d91534</srcmd5>
+    <version>1.6.1</version>
+    <time>1723014901</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1191852</requestid>
+  </revision>
 </revisionlist>
