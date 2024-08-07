@@ -29,8 +29,12 @@ Source1:        vendor.tar.zst
 BuildRequires:  cargo-packaging
 BuildRequires:  cmake
 BuildRequires:  desktop-file-utils
+%if 0%{?suse_version} < 1600
 BuildRequires:  gcc%{?force_gcc_version}
 BuildRequires:  gcc%{?force_gcc_version}-c++
+%else
+BuildRequires:  gcc-c++
+%endif
 BuildRequires:  gtk3-devel
 BuildRequires:  libheif-devel
 BuildRequires:  nasm
@@ -45,8 +49,10 @@ tools.
 %autosetup -a1 -p1
 
 %build
+%if 0%{?suse_version} < 1600
 export CC="gcc-%{?force_gcc_version}"
 export CXX="g++-%{?force_gcc_version}"
+%endif
 %{cargo_build} \
 %if 0%{?suse_version} > 1600
      --features 'heif' \
@@ -60,8 +66,10 @@ install -Dpm644 res/%{name}.desktop -t %{buildroot}%{_datadir}/applications
 
 %check
 %if %{with test}
+%if 0%{?suse_version} < 1600
 export CC="gcc-%{?force_gcc_version}"
 export CXX="g++-%{?force_gcc_version}"
+%endif
 %{cargo_test} -- --skip=tests::net --skip=bench
 %endif
 
