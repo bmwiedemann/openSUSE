@@ -22,7 +22,7 @@
 %define baseversionminus1 1.27
 
 Name:           kubernetes%{baseversion}
-Version:        1.28.11
+Version:        1.28.12
 Release:        0
 Summary:        Container Scheduling and Management
 License:        Apache-2.0
@@ -51,12 +51,12 @@ Patch4:         kubeadm-opensuse-flexvolume.patch
 Patch5:         revert-coredns-image-renaming.patch
 BuildRequires:  fdupes
 BuildRequires:  git
-BuildRequires:  go >= 1.21.11
+BuildRequires:  go >= 1.22.5
 BuildRequires:  go-go-md2man
 BuildRequires:  golang-packaging
 BuildRequires:  rsync
 BuildRequires:  systemd-rpm-macros
-BuildRequires:  golang(API) = 1.21
+BuildRequires:  golang(API) = 1.22
 BuildRequires:  golang(github.com/jteeuwen/go-bindata)
 ExcludeArch:    %{ix86} s390 ppc64
 
@@ -66,6 +66,7 @@ management of containerized applications.
 
 It groups containers that make up an application into logical units
 for management and discovery.
+
 
 
 
@@ -236,13 +237,21 @@ export KUBE_GIT_TREE_STATE="clean"
 export KUBE_GIT_VERSION=v%{version}
 
 # https://bugzilla.redhat.com/show_bug.cgi?id=1392922#c1
-%ifarch ppc64le
-export GOLDFLAGS='-linkmode=external'
-%endif
+#%ifarch ppc64le
+#export GOLDFLAGS='-linkmode=external'
+#%endif
 
 #TEST
 export FORCE_HOST_GO=y
+
+%ifarch s390x
+# `-buildmode=pie` with "internal linking" is not yet supported on linux/s390x platform
+# https://github.com/golang/go/blob/a63907808d14679c723e566cb83acc76fc8cafc2/src/internal/platform/supported.go#L223-L232
+# https://github.com/golang/go/issues/64875#issuecomment-1870734528
+make WHAT="cmd/kube-apiserver cmd/kube-controller-manager cmd/kube-scheduler cmd/kube-proxy cmd/kubelet cmd/kubectl cmd/kubeadm"
+%else
 make WHAT="cmd/kube-apiserver cmd/kube-controller-manager cmd/kube-scheduler cmd/kube-proxy cmd/kubelet cmd/kubectl cmd/kubeadm" GOFLAGS="-buildmode=pie"
+%endif
 
 # The majority of the documentation has already been moved into
 # http://kubernetes.io/docs/admin, and most of the files stored in the `docs`
