@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Aug  6 12:22:06 UTC 2024 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Update to version 1.30.3:
+  * Add funcs in pkg/filesystem/util that can actually set file permissiosn on Windows and update container log dir perms to 660 on Windows
+  * Fix pv reclaim failed due to its phase is wrongly updated to the Failed state by kcm
+  * Mark a test case which sets up a sample-apiserver as serial due to potential conflicts with other test cases which do the same.
+  * defaultMaskedPaths must be kept in sync with moby/moby.
+  * gitRepo volume: directory must be max 1 level deep
+  * Bump images, dependencies and versions to go 1.22.5 and distroless iptables
+  * Fix endpoints status out-of-sync when the pod state changes rapidly
+  * fix: skip isPodWorthRequeuing only when SchedulingGates gates the pod
+  * Clean up the featureGates during the matchSuccessPolicy unit tests
+  * Initialize terminating field in the Job controller unit tests
+  * Job: Fix a bug that the SuccessCriteriaMet condition is added to the Job with successPolicy even if the JobSuccessPolicy featureGate is disabled
+
+- Update .spec file to bump go version build requirements:
+  * `BuildRequires:  go >= 1.22.5`
+  * ref: https://github.com/kubernetes/kubernetes/blob/v1.30.3/build/dependencies.yaml#L117-L119
+
+-------------------------------------------------------------------
 Wed Jun 26 05:52:44 UTC 2024 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - Update to version 1.30.2:
