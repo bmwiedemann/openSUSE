@@ -1,4 +1,79 @@
 -------------------------------------------------------------------
+Tue Aug  6 11:06:12 UTC 2024 - Jan Kužílek <jan.kuzilek@suse.com>
+
+- Update to 1.24.8:
+  * Miscellaneous changes in support of PyMuPDF Pro.
+  * Update document handler API - better state handling, and support for files.
+  * Extend stream API to handle streams that are files, and to support autodeletion of files on close.
+  * Add "document as PDF" functionality.
+  * Changes to C# wrappers in support of MuPDF.net.
+- Update to 1.24.7:
+  * Fix bug that affected WASM builds.
+- Update to 1.24.6:
+  * Fix bug where redactions removed unrelated content.
+  * Fix Android builds.
+- Update to 1.24.5:
+  * Fix pyodide builds.
+  * Add conversions between utf16 and utf8 in language bindings.
+- Update to 1.24.4:
+  * Update to new logo/icon.
+  * Fix bugs relating to link destinations.
+  * Fix bug relating to code space ranges.
+- Update to 1.24.3:
+  * Support single page SVG in document writer.
+  * Fix undo/redo issue when deleting a page.
+  * Several bug fixes for font subsetting upon saving document.
+  * Fix bug relating to bookmarks upon interactive font size change in epub.
+  * Fix font size bug when parsing html without a font size unit.
+- Update to 1.24.2:
+  * Keep java redaction API in line with its C counterpart.
+  * Add option to remove line-art, images, etc. while keeping text by adding text option when applying redactions.
+  * Various bug fixes.
+- Update to 1.24.1:
+  * Fix bug where text moved after sanitizing PDF page contents.
+  * Fix two memory leaks in the office format parser.
+- Update to 1.24.0:
+  Error handling changes:
+    * You must call pdf_report_error in the final fz_catch. Any unreported errors will be automatically reported when a new error is raised, or when closing the fitz context.
+  New formats:
+    * Read Office (XML) files! We internally open and convert docx/pptx/xlsx documents to HTML to allow reading the plain text content. The exact layout will NOT be preserved.
+    * Optional compile time option to use libarchive for reading CBR and other archive formats.
+    * Read plain text documents.
+    * Read gzipped files directly.
+    * Open and read FDF files to support importing annotations or form data using the low-level PDF functions. There are no tools for this yet.
+    * Read CFB (Compound File Binary) format archives -- used for the Office formats.
+    * Write images as JPEG2000.
+  New tools and features:
+    * mutool bake (and associated functions) to bake appearance of annotations and forms into static content.
+    * Font subsetting flag to mutool clean (EXPERIMENTAL FEATURE).
+    * Option to use ObjStms when writing PDF files.
+    * Compression effort option when writing PDF files.
+    * Add option to control how line art is affected by redaction. Add more options to control how images are affected by redaction (remove-unless-invisible).
+    * Fix up q/Q gstate balance when cleaning content streams.
+  New functions and types:
+    * pdf_rearrange_pages to subset or re-order pages in a PDF file.
+    * fz_invert_bitmap to invert monochrome bitmaps.
+    * fz_compressed_image_type to query the format of a compressed image.
+    * fz_text_decoder to convert various legacy and CJK encodings into UTF-8.
+    * More helper functions to easily manipulate PDF objects in C.
+    * Add flag to control fz_place_story overflow behavior when the text doesn't fit into the box.
+    * New archive handlers can be added at runtime.
+  Major bug fixes and improvements:
+    * Support using Art, Bleed, Media, and Trim boxes for PDF page size.
+    * Support ActualText in PDF! No more strange text extraction when the file uses ActualText to patch over bad font encodings.
+    * Add special TrueType fallback encoding CMap for a specific flavor of broken PDF files that use an "identity" encoding without embedding the font.
+    * Limited "transfer function" support in PDF. Transfer functions are a deprecated legacy PDF feature that predates proper color management. They were intended to provide limited color management such as applying a gamma curve. Transfer functions have often been (ab)-used to invert images, and many PDF creators use them when writing softmask images. We have added support for this case only.
+    * Box drawing characters added to fonts for HTML and plain text documents.
+    * Write more compact PDF files (removed some unnecessary whitespace).
+    * Improved selection behavior for non-axis aligned text.
+    * Improved heuristics for detecting the logical and visual order of RTL text in PDF.
+    * Improved heuristics for inserting missing spaces in PDF text.
+    * Improved handling of CMYK JPEG files (which ones are inverted and which are not).
+    * Improved content type detection. Don't assume everything is PDF when we can't recognize it.
+  Removed deprecated functions:
+    * pdf_check_signature
+
+-------------------------------------------------------------------
 Thu Feb 29 07:52:14 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 1.23.11:
