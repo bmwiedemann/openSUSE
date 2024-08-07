@@ -39,7 +39,6 @@ BuildRequires:  libpng16-devel
 BuildRequires:  openldap2-devel
 BuildRequires:  pam-devel
 BuildRequires:  pkgconfig
-BuildRequires:  procps-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xcomposite)
@@ -83,11 +82,11 @@ BuildRequires:  pkgconfig(Qt5X11Extras)
 BuildRequires:  pkgconfig(Qt5Xml)
 BuildRequires:  pkgconfig(qca2-qt5)
 %endif
+BuildRequires:  (pkgconfig(libproc2) or pkgconfig(libprocps))
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(libfakekey)
 BuildRequires:  pkgconfig(libjpeg)
 BuildRequires:  pkgconfig(libpng)
-BuildRequires:  pkgconfig(libprocps)
 BuildRequires:  pkgconfig(libsasl2)
 BuildRequires:  pkgconfig(libvncclient)
 BuildRequires:  pkgconfig(libvncserver)

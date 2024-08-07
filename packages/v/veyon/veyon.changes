@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jul 30 07:41:45 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire libproc2 (procps 4.x) or procps (procps3) pkgconfig
+  symbol. Support switching to procps4.
+- Drop procps-devel BuildRequires: this is already covered by the
+  respective pkgconfig() BuildRequires.
+
+-------------------------------------------------------------------
 Sun Mar 24 21:49:20 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.8.3:
