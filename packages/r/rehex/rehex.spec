@@ -2,6 +2,7 @@
 # spec file for package rehex
 #
 # Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,10 +33,15 @@ BuildRequires:  perl-Template-GD
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  zip
-BuildRequires:  pkgconfig(botan-2)
 BuildRequires:  pkgconfig(capstone)
 BuildRequires:  pkgconfig(jansson)
 BuildRequires:  pkgconfig(lua)
+%if 0%{?suse_version} > 1600
+Patch0:         rehex-0.62.1-Build-with-Botan-3.patch
+BuildRequires:  pkgconfig(botan-3)
+%else
+BuildRequires:  pkgconfig(botan-2)
+%endif
 %if 0%{?suse_version} > 1500
 BuildRequires:  wxWidgets-3_0-devel
 %else
@@ -54,7 +60,7 @@ Current features include:
     Highlighting and annotation of ranges of bytes
 
 %prep
-%autosetup
+%autosetup -p1
 dos2unix README.md
 
 %build

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Aug  3 17:36:55 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- build with Botan 3 on Tumbleweed
+  add rehex-0.62.1-Build-with-Botan-3.patch
+
+-------------------------------------------------------------------
 Thu Jul 25 05:25:48 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.62.1:

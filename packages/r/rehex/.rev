@@ -189,4 +189,12 @@
   * Fix crashes in x86 Windows build on older CPUs.</comment>
     <requestid>1189494</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>584e113757cba2e473e9d041980d3032</srcmd5>
+    <version>0.62.1</version>
+    <time>1723015111</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1192011</requestid>
+  </revision>
 </revisionlist>
