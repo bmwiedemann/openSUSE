@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Aug  6 23:24:37 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- drop pg 13 as flavor as it is unsupported now
+
+-------------------------------------------------------------------
+Tue Aug  6 23:22:36 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 2.16.1
+  https://github.com/timescale/timescaledb/releases/tag/2.16.1
+
+-------------------------------------------------------------------
+Wed Jul 31 21:02:51 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 2.16.0
+  https://github.com/timescale/timescaledb/releases/tag/2.16.0
+
+-------------------------------------------------------------------
 Tue Jul  2 15:35:03 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to version 2.15.3
