@@ -1,6 +1,6 @@
 diff -ru old/src/simutrans/sys/simsys.cc new/src/simutrans/sys/simsys.cc
---- old/src/simutrans/sys/simsys.cc	2024-05-19 16:34:04.000000000 +0200
-+++ new/src/simutrans/sys/simsys.cc	2024-06-03 19:20:41.524515968 +0200
+--- old/src/simutrans/sys/simsys.cc
++++ new/src/simutrans/sys/simsys.cc
 @@ -554,7 +554,7 @@
  	}
  #else

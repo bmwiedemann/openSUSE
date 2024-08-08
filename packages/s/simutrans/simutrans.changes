@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Jul 31 08:13:14 UTC 2024 - Michiel van der Wulp <michiel.vanderwulp@gmail.com> - 124-2-1
+
+- update to version 124.2.1 (r11351 on 20-July-2024)
+- skipping update version 124.2
+- See for more information about the 124.2 and the 124.2.1 releases:
+https://forum.simutrans.com/index.php/topic,23153.0.html
+https://forum.simutrans.com/index.php/topic,23162.0.html
+- Summary by prissi: 
+The version 124.2 started as another bugfix as there were 
+many annoying bugs even in the 124.1. However, some additional 
+change elevates this beyond a patch. Most are GUI improvements, 
+like saving the windows now even with network games. 
+The most dramatic change for a user is the new way builder. 
+If a new way starts one tile from an existing way 
+and ends one tile from an existing way, it will now try 
+very hard to make a parallel track. 
+It works as good as it can do without terraforming. 
+It may still join at a place where it cannot pass next to it 
+but then go parallel again, greatly saving efforts 
+(especially with diagonals).
+- Only for the 124.2, there is a README file with 
+the list of changes at 
+https://sourceforge.net/projects/simutrans/files/simutrans/124-2/README.txt/download
+
+-------------------------------------------------------------------
 Mon Jun  3 16:43:23 UTC 2024 - Michiel van der Wulp <michiel.vanderwulp@gmail.com> - 124-1
 
 - update to version 124.1

@@ -16,9 +16,9 @@
 #
 
 
-%define pkgver 124-1
+%define pkgver 124-2-1
 Name:           simutrans
-Version:        124.1
+Version:        124.2.1
 Release:        0
 Summary:        Transport and Economic Simulation Game
 License:        Artistic-1.0
@@ -50,7 +50,7 @@ Requires:       fluid-soundfont-gm
 BuildRequires:  libzstd-devel
 Recommends:     %{name}-pak128 >= 2.9.1
 Suggests:       %{name}-pak128-german >= 2.2
-Suggests:       %{name}-pak64 >= 124.1
+Suggests:       %{name}-pak64 >= 124.2
 Suggests:       %{name}-makeobj
 
 %description
@@ -76,7 +76,7 @@ to simutrans .pak files.
 
 cp %{SOURCE1} .
 # files with the wrong line-endings, which give a rpmlint warning:
-dos2unix simutrans/*.txt
+#dos2unix simutrans/*.txt
 
 %build
 export CFLAGS="%{optflags}"
