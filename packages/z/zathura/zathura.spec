@@ -17,7 +17,7 @@
 
 
 Name:           zathura
-Version:        0.5.6
+Version:        0.5.8
 Release:        0
 Summary:        A customizable document viewer
 License:        Zlib
@@ -116,8 +116,10 @@ echo 'int main() { return 77; }' > tests/test_session.c
 %license LICENSE
 %doc README.md AUTHORS
 %{_bindir}/%{name}
+%{_bindir}/%{name}-sandbox
 %{_datadir}/dbus-1/interfaces/org.pwmt.%{name}.xml
 %{_mandir}/man1/%{name}.1%{?ext_man}
+%{_mandir}/man1/%{name}-sandbox.1%{?ext_man}
 %{_mandir}/man5/%{name}rc.5%{?ext_man}
 %{_datadir}/applications/org.pwmt.zathura.desktop
 %{_datadir}/icons/hicolor/*/apps/org.pwmt.zathura.*

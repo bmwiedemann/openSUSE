@@ -1,27 +1,23 @@
- tests/meson.build | 6 ++++--
- 1 file changed, 4 insertions(+), 2 deletions(-)
+ tests/meson.build | 2 ++
+ 1 file changed, 2 insertions(+)
 
 diff --git a/tests/meson.build b/tests/meson.build
-index 10531a5..85c1a67 100644
+index d2df447..f7c3e85 100644
 --- a/tests/meson.build
 +++ b/tests/meson.build
-@@ -52,7 +52,8 @@ if check.found()
-     )
+@@ -66,6 +66,7 @@ if get_option('tests').allowed()
      test('session', xvfb,
        args: xvfb_args + [session],
--      timeout: 60*60
-+      timeout: 60*60,
-+      is_parallel: false
-     )
- 
-     if seccomp.found()
-@@ -63,7 +64,8 @@ if check.found()
-       )
+       timeout: 60*60,
++      is_parallel: false,
+       protocol: 'tap',
+       env: [
+         'G_TEST_SRCDIR=@0@'.format(meson.current_source_dir()),
+@@ -86,6 +87,7 @@ if get_option('tests').allowed()
        test('sandbox', xvfb,
          args: xvfb_args + [sandbox],
--        timeout: 60*60
-+        timeout: 60*60,
-+        is_parallel: false
-       )
-     endif
-   endif
+         timeout: 60*60,
++        is_parallel: false,
+         protocol: 'tap',
+         env: [
+           'G_TEST_SRCDIR=@0@'.format(meson.current_source_dir()),

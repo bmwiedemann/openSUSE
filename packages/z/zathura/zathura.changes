@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Aug  6 11:56:44 UTC 2024 - Jan Kužílek <jan.kuzilek@suse.com>
+
+- Update no-parallel-xvfb.patch to current version
+- Update to 0.5.8:
+  * Bump plugin ABI
+- Update to 0.5.7:
+  * Split sandbox functionality into separate zathura-sandbox binary
+  * Split off new command bjump from blist
+  * Add initial landlock support to sandbox
+  * Fix repeated search
+  * Implement jumplist command
+  * Fix issues with document with multiple page sizes
+  * Various fixes and improvements
+
+-------------------------------------------------------------------
 Thu Jun 13 04:38:36 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Update no-parallel-xvfb.patch to current version
