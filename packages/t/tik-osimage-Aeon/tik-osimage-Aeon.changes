@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Aug 7 17:12:23 UTC 2024 - Richard Brown <rbrown@suse.com>
+
+- Force relabeling of /etc as part of fstab.script
+
+-------------------------------------------------------------------
 Wed Jul 31 14:09:59 UTC 2024 - Richard Brown <rbrown@suse.com>
 
 - Populate /etc/sysconfig/bootloader (boo#1228659)
