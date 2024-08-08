@@ -58,4 +58,13 @@
     <comment>Please stage alongside tik-osimage-Aeon submission and other submissions from devel:microos:aeon</comment>
     <requestid>1189390</requestid>
   </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>eb6b88616d38ee12d89e9ca6806a0b39</srcmd5>
+    <version>0.1.0</version>
+    <time>1723107511</time>
+    <user>dimstar_suse</user>
+    <comment>- Force relabeling of /etc as part of fstab.script
+</comment>
+    <requestid>1192346</requestid>
+  </revision>
 </revisionlist>

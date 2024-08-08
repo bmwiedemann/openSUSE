@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Aug 7 17:12:23 UTC 2024 - Richard Brown <rbrown@suse.com>
+
+- Force relabeling of /etc as part of fstab.script
+
+-------------------------------------------------------------------
 Wed Jul 24 12:40:41 UTC 2024 - Richard Brown <rbrown@suse.com>
 
 - Introduce tik encryption module
