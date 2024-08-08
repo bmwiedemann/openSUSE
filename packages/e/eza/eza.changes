@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Aug  8 05:22:44 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.19.0:
+  * [breaking] Implement EZA_GRID_ROWS grid details view minimum rows threshold
+    Before this change, the EZA_GRID_ROWS variable was
+    ignored, despite documentation existing. Users relying on EZA_GRID_ROW
+    not doing anything will find their output changed. For more info, see
+
+-------------------------------------------------------------------
 Mon Aug  5 05:48:51 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.18.24:
