@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Aug  7 09:20:05 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 2.63.0
+  + For detailed information about changes see the
+    HISTORY.rst file provided with this package
+- Drop extra LICENSE.txt as upstream now ships its own
+- Drop patches for issues fixed upstream
+  + acc_update-psutil.patch
+- Update Requires from setup.py
+
+-------------------------------------------------------------------
 Fri Jul 19 14:27:53 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Add patch to update python-psutil dependency

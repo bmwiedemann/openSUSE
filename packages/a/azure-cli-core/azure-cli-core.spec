@@ -24,16 +24,14 @@
 %global _sitelibdir %{%{pythons}_sitelib}
 
 Name:           azure-cli-core
-Version:        2.62.0
+Version:        2.63.0
 Release:        0
 Summary:        Microsoft Azure CLI Core Module
 License:        MIT
 Group:          System/Management
 URL:            https://github.com/Azure/azure-cli
 Source:         https://files.pythonhosted.org/packages/source/a/azure-cli-core/azure_cli_core-%{version}.tar.gz
-Source1:        LICENSE.txt
 Patch0:         acc_disable-update-check.patch
-Patch1:         acc_update-psutil.patch
 BuildRequires:  %{pythons}-azure-nspkg >= 3.0.0
 BuildRequires:  %{pythons}-pip
 BuildRequires:  %{pythons}-setuptools
@@ -53,9 +51,9 @@ Requires:       %{pythons}-jmespath
 Requires:       %{pythons}-knack < 1.0.0
 Requires:       %{pythons}-knack >= 0.11.0
 Requires:       %{pythons}-msal < 2.0.0
-Requires:       %{pythons}-msal >= 1.28.1
+Requires:       %{pythons}-msal >= 1.30.0
 Requires:       %{pythons}-msal-extensions < 2.0.0
-Requires:       %{pythons}-msal-extensions >= 1.2.0~b1
+Requires:       %{pythons}-msal-extensions >= 1.2.0
 Requires:       %{pythons}-msrestazure < 0.7.0
 Requires:       %{pythons}-msrestazure >= 0.6.4
 Requires:       %{pythons}-packaging >= 20.9
@@ -80,7 +78,6 @@ Microsoft Azure CLI Core Module
 %autosetup -p1 -n azure_cli_core-%{version}
 
 %build
-install -m 644 %{SOURCE1} %{_builddir}/azure-cli-core-%{version}
 %pyproject_wheel
 
 %install
