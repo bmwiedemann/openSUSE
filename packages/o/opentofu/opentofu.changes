@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Aug 07 15:26:35 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.8.1:
+  * Bump to 1.8.1 (#1893)
+  * Fix missing module source panic (#1888) (#1889)
+  * Backport/v1.8/1876 (#1886)
+  * 1666/tacos website docs backport to 1.8 (#1883)
+  * Fix 1.8 release workers (#1870)
+  * Switch to alternate runner group (#1868)
+  * Run releases on larger workers. (#1587) (#1867)
+
+-------------------------------------------------------------------
 Mon Jul 29 14:38:36 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.8.0:
