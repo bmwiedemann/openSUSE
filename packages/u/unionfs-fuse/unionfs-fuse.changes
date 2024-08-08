@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug  7 07:45:10 UTC 2024 - ming li <mli@suse.com>
+
+- update to 2.2:
+  * fixed timestamp precision lost on cow copy
+
+-------------------------------------------------------------------
 Sun May  9 17:35:46 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.1:
