@@ -602,9 +602,11 @@ unsorted:
   - anjuta-devel 
   - anjuta-lang 
   - ansible 
+  - ansible-9 
   - ansible-builder 
   - ansible-cmdb 
   - ansible-core 
+  - ansible-core-2.16 
   - ansible-documentation 
   - ansible-lint 
   - ansible-navigator 
@@ -1389,7 +1391,6 @@ unsorted:
   - biabam 
   - biblesync-devel 
   - bibletime 
-  - biboumi 
   - bibtool 
   - bibview 
   - bijiben 
@@ -4461,6 +4462,11 @@ unsorted:
   - forge-parent 
   - forgejo 
   - forgejo-apparmor 
+  - forgejo-cli 
+  - forgejo-runner 
+  - forgejo-runner-bash-completion 
+  - forgejo-runner-fish-completion 
+  - forgejo-runner-zsh-completion 
   - forgejo-selinux 
   - forkbomb 
   - forkstat 
@@ -12495,7 +12501,7 @@ unsorted:
   - libcontainers-sles-mounts 
   - libcorrect-devel 
   - libcorrect0_0_0 
-  - libcosmos-0_2_0 
+  - libcosmos-3 
   - libcosmos-devel 
   - libcotp-devel 
   - libcotp3 
@@ -14825,7 +14831,6 @@ unsorted:
   - libo2scl0 
   - liboaml1 
   - liboath-devel 
-  - liboath0 
   - liboauth-devel 
   - libobby-0_4-1 
   - libobjc2-devel 
@@ -18871,7 +18876,6 @@ unsorted:
   - monitoring-plugins-mailq 
   - monitoring-plugins-mailstat 
   - monitoring-plugins-mem 
-  - monitoring-plugins-metadata 
   - monitoring-plugins-mrtg 
   - monitoring-plugins-mrtgtraf 
   - monitoring-plugins-mysql 
@@ -19868,7 +19872,6 @@ unsorted:
   - o2scl-doc 
   - oaml-devel 
   - oath-toolkit 
-  - oath-toolkit-xml 
   - oauth-signpost 
   - obantoo 
   - obby 
@@ -20791,7 +20794,6 @@ unsorted:
   - pam_csync 
   - pam_krb5 
   - pam_mktemp 
-  - pam_oath 
   - pam_p11 
   - pam_passwdqc 
   - pam_pkcs11 
