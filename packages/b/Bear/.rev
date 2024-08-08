@@ -117,4 +117,13 @@
     <comment></comment>
     <requestid>1175305</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>60ae40544a7da7883993de75d749444f</srcmd5>
+    <version>3.1.4</version>
+    <time>1723107531</time>
+    <user>dimstar_suse</user>
+    <comment>- Added not-yet tagged patch 0001-Fix-FMT11-Build.patch from upstream to fix build on FMT11 
+</comment>
+    <requestid>1192525</requestid>
+  </revision>
 </revisionlist>
