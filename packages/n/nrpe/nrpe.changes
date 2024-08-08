@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Aug  7 15:26:24 UTC 2024 - Lars Vogdt <lars@linux-schulserver.de>
+
+- update to 4.1.1
+  + Use correct HUP signal for Solaris
+- introduced a simple check section
+
+-------------------------------------------------------------------
 Thu Feb 22 14:07:23 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.

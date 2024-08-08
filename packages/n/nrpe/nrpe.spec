@@ -40,7 +40,7 @@
 %endif
 
 Name:           nrpe
-Version:        4.1.0
+Version:        4.1.1
 Release:        0
 Summary:        Nagios Remote Plug-In Executor
 License:        GPL-2.0-or-later
@@ -288,6 +288,12 @@ rm %{buildroot}/%{_sbindir}/nrpe-uninstall
 # remove xinetd snipplets on newer distribution, where we do not support xinetd any longer
 rm -rf %{buildroot}%{_sysconfdir}/xinetd.d
 %endif
+
+%check
+%{buildroot}%{_sbindir}/nrpe -V || exit_code=$?
+if [ "${exit_code}" -eq 3 ]; then
+	echo "NRPE seems to run normally"
+fi
 
 %pre
 # check if the port for nrpe is already defined in /etc/services
