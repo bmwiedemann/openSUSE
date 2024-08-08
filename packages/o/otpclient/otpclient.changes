@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Aug  7 08:24:08 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 4.0.2:
+  * FIX: importing data on a first run (#376)
+  * FIX: better error handling
+  * IMPROVED: handling of memlock when too low
+
+-------------------------------------------------------------------
 Wed Jul 31 06:29:40 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 4.0.1:
