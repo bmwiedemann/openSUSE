@@ -167,4 +167,41 @@
 </comment>
     <requestid>1189339</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f8a6b8d917ff907fd4bfa25523a2d9c4</srcmd5>
+    <version>3.13.0~rc1</version>
+    <time>1723107515</time>
+    <user>dimstar_suse</user>
+    <comment>- Add CVE-2024-6923-email-hdr-inject.patch to prevent email
+  header injection due to unquoted newlines (bsc#1228780,
+  CVE-2024-6923).
+- Adding bso1227999-reproducible-builds.patch fixing bsc#1227999
+  adding reproducibility patches from gh#python/cpython!121872
+  and gh#python/cpython!121883.
+- Add skip_test_abort_clients.patch (gh#python/cpython#122136)
+  skip not yet fixed failing test
+- %{profileopt} variable is set according to the variable
+  %{do_profiling} (bsc#1227999)
+- Update bluez-devel-vendor.tar.xz
+
+- Update to 3.13.0~rc1:
+  - Tests
+    - gh-59022: Add tests for pkgutil.extend_path(). Patch by
+      Andreas Stocker.
+    - gh-99242: os.getloadavg() may throw OSError when
+      running regression tests under certain conditions (e.g.
+      chroot). This error is now caught and ignored, since
+      reporting load average is optional.
+  - Security
+    - gh-122133: Authenticate the socket connection for the
+      socket.socketpair() fallback on platforms where AF_UNIX is
+      not available like Windows.
+    - Patch by Gregory P. Smith &lt;greg@krypto.org&gt; and Seth Larson
+      &lt;seth@python.org&gt;. Reported by Ellie &lt;el@horse64.org&gt;
+    - gh-121957: Fixed missing audit events around interactive
+      use of Python, now also properly firing for python -i, as
+      well as for python -m asyncio. The events in question are
+      cpython.run_stdin and cpython.run_startup.</comment>
+    <requestid>1192376</requestid>
+  </revision>
 </revisionlist>

@@ -36,6 +36,12 @@
 %bcond_without general
 %endif
 
+%if 0%{?do_profiling}
+%bcond_without profileopt
+%else
+%bcond_with profileopt
+%endif
+
 # Currently supported architectures
 # https://peps.python.org/pep-0744/#support
 %ifarch %{x86_64} aarch64
@@ -110,10 +116,9 @@
 # pyexpat.cpython-35m-armv7-linux-gnueabihf
 # _md5.cpython-38m-x86_64-linux-gnu.so
 %define dynlib() %{sitedir}/lib-dynload/%{1}.cpython-%{abi_tag}-%{archname}-%{_os}%{?_gnu}%{?armsuffix}.so
-%bcond_without profileopt
 Name:           %{python_pkg_name}%{psuffix}
-Version:        3.13.0~b4
-%define         tarversion 3.13.0b4
+Version:        3.13.0~rc1
+%define         tarversion 3.13.0rc1
 %define         tarname    Python-%{tarversion}
 Release:        0
 Summary:        Python 3 Interpreter
@@ -172,6 +177,15 @@ Patch09:        skip-test_pyobject_freed_is_freed.patch
 # PATCH-FIX-SLE fix_configure_rst.patch bpo#43774 mcepl@suse.com
 # remove duplicate link targets and make documentation with old Sphinx in SLE
 Patch10:        fix_configure_rst.patch
+# PATCH-FIX-UPSTREAM skip_test_abort_clients.patch gh#python/cpython#122136 mcepl@suse.com
+# Not yet fixed failing test
+Patch11:        skip_test_abort_clients.patch
+# PATCH-FIX-UPSTREAM CVE-2024-6923-email-hdr-inject.patch bsc#1228780 mcepl@suse.com
+# prevent email header injection, patch from gh#python/cpython!122608
+Patch12:        CVE-2024-6923-email-hdr-inject.patch
+# PATCH-FIX-UPSTREAM bso1227999-reproducible-builds.patch bsc#1227999 mcepl@suse.com
+# reproducibility patches
+Patch13:        bso1227999-reproducible-builds.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  fdupes

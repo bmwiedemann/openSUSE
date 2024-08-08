@@ -4,7 +4,7 @@
 
 --- a/Misc/NEWS
 +++ b/Misc/NEWS
-@@ -17527,7 +17527,7 @@ C API
+@@ -17647,7 +17647,7 @@ C API
  - bpo-40939: Removed documentation for the removed ``PyParser_*`` C API.
  
  - bpo-43795: The list in :ref:`limited-api-list` now shows the public name

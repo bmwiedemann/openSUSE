@@ -1,4 +1,101 @@
 -------------------------------------------------------------------
+Wed Aug  7 13:40:44 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Add CVE-2024-6923-email-hdr-inject.patch to prevent email
+  header injection due to unquoted newlines (bsc#1228780,
+  CVE-2024-6923).
+- Adding bso1227999-reproducible-builds.patch fixing bsc#1227999
+  adding reproducibility patches from gh#python/cpython!121872
+  and gh#python/cpython!121883.
+- Add skip_test_abort_clients.patch (gh#python/cpython#122136)
+  skip not yet fixed failing test
+- %{profileopt} variable is set according to the variable
+  %{do_profiling} (bsc#1227999)
+- Update bluez-devel-vendor.tar.xz
+
+-------------------------------------------------------------------
+Thu Aug  1 10:35:25 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 3.13.0~rc1:
+  - Tests
+    - gh-59022: Add tests for pkgutil.extend_path(). Patch by
+      Andreas Stocker.
+    - gh-99242: os.getloadavg() may throw OSError when
+      running regression tests under certain conditions (e.g.
+      chroot). This error is now caught and ignored, since
+      reporting load average is optional.
+  - Security
+    - gh-122133: Authenticate the socket connection for the
+      socket.socketpair() fallback on platforms where AF_UNIX is
+      not available like Windows.
+    - Patch by Gregory P. Smith <greg@krypto.org> and Seth Larson
+      <seth@python.org>. Reported by Ellie <el@horse64.org>
+    - gh-121957: Fixed missing audit events around interactive
+      use of Python, now also properly firing for python -i, as
+      well as for python -m asyncio. The events in question are
+      cpython.run_stdin and cpython.run_startup.
+  - Library
+    - gh-122400: Handle ValueErrors raised by os.stat() in
+      filecmp.dircmp and filecmp.cmpfiles(). Patch by Bénédikt
+      Tran.
+    - gh-122311: Fix some error messages in pickle.
+    - gh-122332: Fixed segfault with asyncio.Task.get_coro() when
+      using an eager task factory.
+    - gh-105733: ctypes.ARRAY() is now soft deprecated: it no
+      longer emits deprecation warnings and is not scheduled for
+      removal.
+    - gh-122087: Restore inspect.ismethoddescriptor() and
+      inspect.isroutine() returning False for functools.partial
+      objects.
+    - gh-122170: Handle ValueErrors raised by os.stat() in
+      linecache. Patch by Bénédikt Tran.
+    - gh-82951: Serializing objects with complex __qualname__
+      (such as unbound methods and nested classes) by name no
+      longer involves serializing parent objects by value in
+      pickle protocols < 4.
+    - gh-113785: csv now correctly parses numeric fields (when
+      used with csv.QUOTE_NONNUMERIC or csv.QUOTE_STRINGS) which
+      start with an escape character.
+    - gh-122088: @warnings.deprecated now copies the
+      coroutine status of functions and methods so that
+      inspect.iscoroutinefunction() returns the correct result.
+    - gh-120930: Fixed a bug introduced by gh-92081 that added an
+      incorrect extra blank to encoded words occurring in wrapped
+      headers.
+    - gh-121474: Fix missing sanity check for parties arg in
+      threading.Barrier constructor. Patch by Clinton Christian
+      (pygeek).
+    - gh-120289: Fixed the use-after-free issue in cProfile by
+      disallowing disable() and clear() in external timers.
+  - IDLE
+    - gh-122482: Change About IDLE to direct users to
+      discuss.python.org instead of the now unused idle-dev email
+      and mailing list.
+  - Core and Builtins
+    - gh-116090: Fix an issue in JIT builds that prevented some
+      for loops from correctly firing RAISE monitoring events.
+    - gh-122208: Dictionary watchers now only deliver the
+      PyDict_EVENT_ADDED event when the insertion is in a known
+      good state to succeed.
+    - gh-122300: Preserve AST nodes for f-string with
+      single-element format specifiers. Patch by Pablo Galindo
+    - gh-122029: Emit c_call events in sys.setprofile() when a
+      PyMethodObject pointing to a PyCFunction is called.
+    - gh-122026: Fix a bug that caused the tokenizer to not
+      correctly identify mismatched parentheses inside f-strings
+      in some situations. Patch by Pablo Galindo
+    - gh-118934: Make PyEval_GetLocals return borrowed reference
+  - C API
+    - gh-116622: Make PyObject_Print work around a bug in Android
+      and OpenBSD which prevented it from throwing an exception
+      when trying to write to a read-only stream.
+    - gh-121489: Export private _PyBytes_Join() again.
+  - Build
+    - gh-120522: Added a --with-app-store-compliance option to
+      patch out known issues with macOS/iOS App Store review
+      processes.
+
+-------------------------------------------------------------------
 Wed Jul 24 08:30:54 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update F00251-change-user-install-location.patch to install packages
@@ -149,6 +246,7 @@ Mon Jul 22 18:55:00 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
       checks in configure.
 - Remove %suse_update_desktop_file macro as it is not useful any
   more.
+- Update bluez-devel-vendor.tar.xz vendored files.
 
 -------------------------------------------------------------------
 Thu Jul  4 16:04:05 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
