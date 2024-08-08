@@ -22,7 +22,7 @@
 %define rname powerdevil
 %bcond_without released
 Name:           powerdevil6
-Version:        6.1.3
+Version:        6.1.4
 Release:        0
 # Full Plasma 6 version (e.g. 6.0.0)
 %{!?_plasma6_bugfix: %define _plasma6_bugfix %{version}}
@@ -36,8 +36,6 @@ Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{ver
 Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
-# PATCH-FIX-UPSTREAM
-Patch1:         0001-daemon-Don-t-leave-dangling-Action-pointers-in-idle-.patch
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 # Needed by FindLibcap.cmake
 BuildRequires:  libcap-progs

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Aug  6 15:42:21 UTC 2024 - Martin Jambor <mjambor@suse.com>
+
+- On 32bit x86 architectures, compile with option -ffloat-store.  This
+  mitigates the unfortunate fact that the test-suite of the package
+  expects the precision of FP operations to be lower than that of
+  internal representation of 80387.
+
+-------------------------------------------------------------------
 Thu Feb 29 18:42:34 UTC 2024 - pgajdos@suse.com
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

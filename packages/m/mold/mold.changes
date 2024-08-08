@@ -1,4 +1,72 @@
 -------------------------------------------------------------------
+Wed Aug  7 06:37:53 UTC 2024 - Martin Liška <martin.liska@hey.com>
+
+- Update to version 2.33.0
+  * mold gained a new linker flag --separate-debug-info to bundle debug info
+    sections into a separate file instead of putting them into a main output file.
+    You can optionally specify a filename in the form of
+    --separate-debug-info=<filename>. By default, a debug info file is created in
+    the same directory as the main output file with the .dbg extension. mold embeds
+    the debug file's filename into the main output file so that gdb can
+    automatically follow the link to find debug info when debugging the main output
+    file.
+
+  * The main objective of this flag is to speed up the mold linker even more. By
+    default, mold creates a separate debug file in the background after creating a
+    main output file, so that you can start running the executable as soon as
+    possible while mold is still working on linking its debug info sections. For
+    example, linking clang with debug info normally takes ~1.70s on a Threadripper
+    7980X machine, while it takes only ~0.52s with --separate-debug-info. Shaving
+    off a full second in quick edit-rebuild-run cycles should improve programmers'
+    productivity. If you do not want mold to work in the background, pass the
+    --no-detach option. (596ffa9)
+
+  * mold now supports the --no-allow-shlib-undefined flag. If the option is given,
+    mold checks if all undefined symbols are resolved not only for input object
+    files but also for shared libraries passed to the linker. To use the feature,
+    you need to pass all shared libraries, including transitively dependent ones, to
+    the linker so that the linker can resolve all symbols that are available at
+    runtime. (3001f02)
+
+  * mold gained the --dynamic-list-data flag for the sake of compatibility with GNU
+    ld. If the flag is given, all data symbols are exported as dynamic symbols.
+    (dd8d971)
+
+  * [x86-64] -z x86-64-v2, -z x86-64-v3, -z x86-64-v4 flags are supported. (5606087)
+
+  * [x86-64] Recent x86-64 processors support Intel CET to protect control flow
+    integrity. When the feature is enabled, the instruction that is executed
+    immediately after an indirect branch must be endbr64 or a CPU fault will raise.
+    In other words, it restricts the locations where the control can transfer to
+    with indirect branches. Doing that makes ROP attacks harder to conduct.
+
+  * A problem with that is the compiler needs to conservatively emit an endbr64 at
+    the beginning of each global function because the compiler doesn't know whether
+    or not the function's address is taken in other translation units. As a result,
+    the resulting binary contains more endbr64s than necessary, weakening the
+    protection.
+
+  * mold supports the -z rewrite-endbr option to conduct a whole program analysis
+    and rewrite endbr64 with nop if a function's address is not actually taken
+    within the program. Previously, mold didn't take section symbols into account
+    when conducting the analysis, which resulted in culling some endbr64s that must
+    not be removed. Now, the bug has been fixed. We confirmed that mold can build
+    itself with -z rewrite-endbr, and the resulting mold executable works fine with
+    Intel CET. (ed7eec5)
+
+  * mold now creates a .eh_frame section even if it's empty. (14a4b05)
+
+  * [LoongArch] The following relocations are now supported: R_LARCH_TLS_LE_HI20_R,
+    R_LARCH_TLS_LE_ADD_R, R_LARCH_TLS_LE_LO12_R, R_LARCH_CALL36, R_LARCH_RELAX
+    (36e5b4b, 98a7cff, 2c6f379)
+
+  * [LoongArch] Some relaxations that reduce the section size are now supported.
+    (74b359f, 121f917)
+
+  * [LoongArch] Range extension thunk support has been removed in favor of
+    R_LARCH_CALL36 relocations. (47c092a)
+
+-------------------------------------------------------------------
 Thu Jun 27 06:56:15 UTC 2024 - Martin Liška <martin.liska@hey.com>
 
 - Update to version 2.32.1

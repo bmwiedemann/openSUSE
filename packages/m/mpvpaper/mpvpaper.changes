@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Aug  7 05:38:25 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.7:
+  * Allow selecting the identifier as an output
+    Identifier is also now shown more clearly with "--help-output/-d"
+  * Improve render loop communication with the Wayland compositor
+    This has fixed more issues with the Nvidia proprietary drivers
+  * Add more documentation on the options "--auto-pause/-p" and
+    "--auto-stop/-s"
+
+-------------------------------------------------------------------
 Mon May 13 06:43:42 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.6:

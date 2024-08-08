@@ -1170,4 +1170,12 @@ Update to version 4.7.1 (forwarded request 1115956 from danishprakash)</comment>
     <comment>Update to version 5.1.2 (forwarded request 1186773 from danishprakash)</comment>
     <requestid>1186811</requestid>
   </revision>
+  <revision rev="138" vrev="1">
+    <srcmd5>83b72ab01c9ffa892278617d107452ba</srcmd5>
+    <version>5.2.0</version>
+    <time>1723107422</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1192031</requestid>
+  </revision>
 </revisionlist>

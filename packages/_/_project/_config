@@ -575,6 +575,9 @@ Prefer: -cni-plugins -cni
 # have choice for suse-kernel-rpm-scriptlets: sdbootutil-rpm-scriptlets suse-module-tools-scriptlets
 Prefer: -sdbootutil-rpm-scriptlets
 
+# have choice for ansible-core >= 2.16.8 needed by ansible: ansible-core ansible-core-2.16
+Prefer: -ansible-core-2.16
+
 # have choice for pkgconfig(libmarkdown): libmarkdown-devel libmarkdown2-devel
 Prefer: -libmarkdown2-devel
 

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Aug  7 09:36:58 UTC 2024 - Jan Zerebecki <jan.suse@zerebecki.de>
+
+- load pam_oath for optional TOTP for authentication
+
+-------------------------------------------------------------------
 Wed Jul 31 08:23:43 UTC 2024 - Adam Majer <adam.majer@suse.de>
 
 - new version 321:

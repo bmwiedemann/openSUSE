@@ -16,16 +16,16 @@
 #
 
 
-%define commit a8e6f94
+%define version 0.3.1
 
 Name:           libcosmos
-Version:        0.2
+Version:        %{version}
 Release:        0
 Summary:        A library providing a modern C++ API for the Linux operating system
 License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/gerstner-hub/libcosmos
-Source0:        libcosmos-0.2.0+git%{commit}.tar.xz
+Source0:        libcosmos-v0.3.1.tar.xz
 
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
@@ -36,13 +36,16 @@ This is libcosmos, a library providing a modern C++ API for the Linux
 operating system. It is intended for low level systems programming on Linux,
 while relying on a strong C++ type model for robustness and expressiveness.
 
-%package -n libcosmos-0_2_0
+%package -n libcosmos-3
 Summary:        A library providing a modern C++ API for the Linux operating system
 Group:          System/Libraries
 Provides:       %{name} = %{version}
 Obsoletes:      %{name} < %{version}
+# renamed from broken package name that didn't follow SONAME
+Provides:       libcosmos-0_2_0 = %{version}
+Obsoletes:      libcosmos-0_2_0 < %{version}
 
-%description -n libcosmos-0_2_0
+%description -n libcosmos-3
 A library providing a modern C++ API for the Linux operating system.
 
 The runtime library files for libcosmos.
@@ -50,7 +53,7 @@ The runtime library files for libcosmos.
 %package devel
 Summary:        A library providing a modern C++ API for the Linux operating system
 Group:          Development/Libraries/C and C++
-Requires:       libcosmos-0_2_0 = %{version}
+Requires:       libcosmos-3 = %{version}
 Requires:       libstdc++-devel
 
 %description devel
@@ -59,7 +62,7 @@ A library providing a modern C++ API for the Linux operating system.
 Header and development files for libcosmos.
 
 %prep
-%setup -q -n %{name}-0.2.0+git%{commit}
+%setup -q -n %{name}-v%{version}
 
 %build
 scons libtype=shared
@@ -71,9 +74,9 @@ scons install instroot=%{buildroot}/usr
 #%%check
 #scons run_tests
 
-%ldconfig_scriptlets -n libcosmos-0_2_0
+%ldconfig_scriptlets -n libcosmos-3
 
-%files -n libcosmos-0_2_0
+%files -n libcosmos-3
 %license LICENSE
 %doc README.md
 %{_libdir}/libcosmos.so.*

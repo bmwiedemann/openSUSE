@@ -17,14 +17,13 @@
 
 
 Name:           resource-agents
-Version:        4.14.0+git15.c784b83c
+Version:        4.15.1+git0.a6ccb93a
 Release:        0
 Summary:        HA Reusable Cluster Resource Scripts
 License:        GPL-2.0-only AND LGPL-2.1-or-later AND GPL-3.0-or-later
 Group:          Productivity/Clustering/HA
 URL:            http://linux-ha.org/
 Source:         resource-agents-%{version}.tar.xz
-Source1:        monitoring-plugins-metadata.tar.bz2
 
 Patch1:         drop-deprecated-agents.patch
 # PATCH-FIX-OPENSUSE: fix path to sm-notify
@@ -33,12 +32,10 @@ Patch2:         0002-nfsserver-fix-path-to-sm-notify.patch
 Patch3:         0003-ldirectord-don-t-create-subsys-lock.patch
 # PATCH-FIX-OPENSUSE: Revert moving binaries to /usr/libexec
 Patch4:         0004-Revert-Low-build-Move-binaries-in-usr-lib-heartbeat-.patch
-%if 0%{?suse_version} < 1600
-# PATCH-FIX-OPENSUSE: Revert ocf_log: use same log format at pacemaker
-Patch6:         0006-Revert-ocf_log-use-same-log-format-as-pacemaker.patch
+## PATCH-FIX-OPENSUSE:
+%if "%{python_flavor}" == "python311"
+Patch7:         use-python-311.patch
 %endif
-# PATCH-FIX-OPENSUSE:
-Patch7:         0007-Request-to-add-gcp-vpc-move-route.patch
 
 Patch8:         nfsnotify.patch
 Patch9:         portblock.patch
@@ -46,6 +43,9 @@ Patch9:         portblock.patch
 # PATCH-FIX-OPENSUSE: Remove deprecated perl-IO-Socket-INET6 dependency
 Patch10:        resource-agents-deprecate-INET6.patch
 
+BuildRequires:  %{python_module pyroute2}
+BuildRequires:  %{python_module requests}
+BuildRequires:  %{python_module urllib3}
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  cluster-glue-devel
@@ -54,6 +54,7 @@ BuildRequires:  docbook_4
 BuildRequires:  libqb-devel
 BuildRequires:  libxslt
 BuildRequires:  pkgconfig
+BuildRequires:  python-rpm-macros
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  pkgconfig(glib-2.0)
 Requires:       /usr/bin/logger
@@ -78,6 +79,9 @@ Requires:       %{name}
 Provides:       %{name}:%{_mandir}/man7/ocf_heartbeat_ZFS.*
 Provides:       %{name}:%{_prefix}/lib/ocf/resource.d/heartbeat/ZFS
 
+%description zfs
+Containing the resource agent and documentation for ZFS support
+
 %package -n ldirectord
 Summary:        A Monitoring Daemon for Maintaining High Availability Resources
 License:        GPL-2.0-only AND LGPL-2.1-or-later
@@ -86,42 +90,24 @@ Requires:       %{name}
 Requires:       ipvsadm
 Requires:       logrotate
 Requires:       perl(IO::Socket::IP)
+Requires:       perl(LWP)
 Requires:       perl(MailTools)
 Requires:       perl(Net::SSLeay)
 Requires:       perl(Socket6)
-Requires:       perl(LWP)
 Obsoletes:      heartbeat-ldirectord
 Provides:       heartbeat-ldirectord
 %{?systemd_requires}
 
-%description zfs
-Containing the resource agent and documentation for ZFS support
-
 %description -n ldirectord
-ldirectord is a stand-alone daemon for monitoring the services on real
+The Linux Director Daemon (ldirectord) was written by Jacob Rief.
+<jacob.rief@tiscover.com>
+
+ldirectord is a stand alone daemon for monitoring the services on real
 servers. Currently, HTTP, HTTPS, and FTP services are supported.
-ldirectord works with the heartbeat code (http://www.linux-ha.org/).
+ldirectord is simple to install and works with Pacemaker
+(http://clusterlabs.org/).
 
-See `ldirectord -h` and linux-ha/doc/ldirectord for more information.
-
-%package -n monitoring-plugins-metadata
-Summary:        Metadata for Monitoring plugins
-License:        GPL-2.0-or-later AND LGPL-2.1-or-later
-Group:          Productivity/Clustering/HA
-Requires:       monitoring-plugins-fping
-Requires:       monitoring-plugins-http
-Requires:       monitoring-plugins-ldap
-Requires:       monitoring-plugins-mysql
-Requires:       monitoring-plugins-pgsql
-Requires:       monitoring-plugins-tcp
-Requires:       resource-agents
-Provides:       nagios-plugins-metadata
-BuildArch:      noarch
-
-%description -n monitoring-plugins-metadata
-XML files containing metadata which facilitates using nagios
-plugins as resource agents. These files were produced from help
-pages of individual nagios plugins.
+See 'ldirectord -h' and linux-ha/doc/ldirectord for more information.
 
 %prep
 %setup -q
@@ -129,10 +115,9 @@ pages of individual nagios plugins.
 %patch -P 2 -p1
 %patch -P 3 -p1
 %patch -P 4 -p1
-%if 0%{?suse_version} < 1600
-%patch -P 6 -p1
+%if "%{python_flavor}" == "python311"
+%patch -P 7 -p1
 %endif
-%patch -P 7 -p0
 %patch -P 8 -p0
 %patch -P 9 -p0
 %patch -P 10 -p1
@@ -172,13 +157,6 @@ do
 done
 )
 
-# install nagios plugins XML metadata
-tar -xjf %{SOURCE1}
-mkdir -p %{buildroot}%{_datadir}/nagios/plugins-metadata
-for file in $(find plugins-metadata -type f); do
-	install -m 644 $file %{buildroot}%{_datadir}/nagios/plugins-metadata
-done
-
 # Create a symlink for backward compat of suse:aws-vpc-move-ip
 (
 mkdir -p %{buildroot}%{_prefix}/lib/ocf/resource.d/suse
@@ -202,9 +180,6 @@ ln -s %{_prefix}/lib/ocf/resource.d/heartbeat/aws-vpc-move-ip aws-vpc-move-ip
 
 %pre
 %service_add_pre resource-agents-deps.target
-
-%preun -n ldirectord
-%service_del_preun ldirectord.service
 
 %postun -n ldirectord
 %service_del_postun ldirectord.service
@@ -276,11 +251,5 @@ ln -s %{_prefix}/lib/ocf/resource.d/heartbeat/aws-vpc-move-ip aws-vpc-move-ip
 %exclude %{_sysconfdir}/init.d/ldirectord
 %{_sysconfdir}/ha.d/resource.d/ldirectord
 %config(noreplace) %{_sysconfdir}/logrotate.d/ldirectord
-
-%files -n monitoring-plugins-metadata
-%defattr(-,root,root)
-%dir %{_datadir}/nagios
-%dir %{_datadir}/nagios/plugins-metadata
-%attr(0644,root,root) %{_datadir}/nagios/plugins-metadata/*
 
 %changelog

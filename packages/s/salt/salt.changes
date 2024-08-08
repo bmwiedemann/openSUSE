@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Aug  7 09:45:18 UTC 2024 - Marek Czernek <marek.czernek@suse.com>
+
+- Fix few failing tests to work with both Salt and Salt bundle
+- Skip testing unsupported OpenSSL crypto algorithms
+
+- Added:
+  * make-tests-compatible-with-venv-bundle.patch
+  * skip-more-tests-related-to-old-openssl-algorithms.patch
+
+-------------------------------------------------------------------
 Wed Jul 24 10:12:25 UTC 2024 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
 
 - Fix rich rule comparison in firewalld module (bsc#1222684)

@@ -145,7 +145,7 @@
 
 Name:           libvirt
 URL:            https://libvirt.org/
-Version:        10.5.0
+Version:        10.6.0
 Release:        0
 Summary:        Library providing a virtualization API
 License:        LGPL-2.1-or-later

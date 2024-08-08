@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Aug  6 13:29:14 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.1.4:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.1.4
+- Changes since 6.1.3:
+  * update version for new release
+  * Actually start the KAuth::ExecuteJob (kde#490507)
+  * runner: Don't match if just one query word matches (kde#488676)
+- Drop patches, now upstream:
+  * 0001-runner-Don-t-match-if-just-one-query-word-matches.patch
+
+-------------------------------------------------------------------
 Tue Jul 16 13:25:45 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.1.3:

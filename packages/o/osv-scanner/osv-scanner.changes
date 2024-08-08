@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Wed Aug 07 07:04:10 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.8.3:
+  * chore: update dependency `github.com/docker/docker` (#1166)
+  * chore(deps-dev): bump rexml from 3.3.2 to 3.3.3 in /docs in the
+    bundler group (#1158)
+  * add maven changes
+  * feat(guided remediation): add non-interactive Maven remediation
+    by override (#1136)
+  * Label closed stale issues/PRs (#1165)
+  * Fix snapshots (#1164)
+  * Refactoring Maven manifest reading (#1159)
+  * Do not attempt to remediate vulnerabilities in Maven artifacts
+    that have defined `<classifier>` or `<type>` (#1151)
+  * Handle Maven parent relative path (#1149)
+  * fix(workflow): add read permission to
+    `osv-scanner-reusable.yml` (#1157)
+  * fix(workflow): update prerelease-check.yml to the latest
+    OSV-Scanner action (#1153)
+  * fix(osv-github-action): If all vulnerabilities are not called,
+    don't return an non zero exit code in osv-reporter (#1152)
+  * update snaps
+  * fix style
+  * Add changelog for v1.8.3
+  * chore(deps): lock file maintenance (#1130)
+  * Increase frequency of staleness runs (#1148)
+  * Improve Maven manifest updater (#1147)
+  * chore(deps): update workflows (#1145)
+  * fix(deps): update osv-scanner minor (#1146)
+  * chore(deps): update golang:1.22.5-alpine3.19 docker digest to
+    48aac60 (#1144)
+  * chore(deps): update alpine:3.20 docker digest to 0a4eaa0
+    (#1143)
+  * feat: add "vertical" output format (#889)
+  * chore(deps-dev): bump rexml from 3.3.1 to 3.3.2 in /docs in the
+    bundler group (#1132)
+  * Add Maven dependency management to override client (#1140)
+  * Add original manifest to Maven ManifestPatch (#1134)
+  * Exempt backlog label from stale treatment (#1135)
+  * fix(deps): update osv-scanner minor (#1120)
+  * Reflect Go 1.21.12 change more broadly (#1133)
+  * ci: don't mark v2 wishlished issues as stale (#1131)
+  * chore(deps): update workflows (#1119)
+  * Workflow for stale issue and PR management (#1125)
+  * Bump goreleaser build version to 1.22.  (#1126)
+  * Set the original requirement in patches from suggest (#1117)
+  * fix: ensure that `semantic` is passed a valid
+    `models.Ecosystem` (#1116)
+  * Update docs: test dependencies not in the resolved graph
+    (#1114)
+  * Improved the runtime of DiffVulnerabilityResults (#1091)
+  * Start on override strategy for maven guided remediation (#1025)
+  * Sort dependencies before writing to pom.xml (#1113)
+  * Activate profiles before merging parent (#1108)
+  * Fix the wrong dependencies/dependency tags (#1112)
+  * refactor: update linter and address minor violations (#1110)
+  * Add a dependency to pom.xml if it is not from the base project
+    (#1105)
+
+-------------------------------------------------------------------
 Wed Jul 10 07:40:40 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.8.2:

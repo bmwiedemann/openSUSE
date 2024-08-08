@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Aug  6 13:29:21 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.1.4:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.1.4
+- Changes since 6.1.3:
+  * update version for new release
+  * Set up translation for FileDialog
+  * Set timeout on DBus calls to KWin
+  * Inhibit: Forward the correct inhibition flags to PolicyAgent (kde#486506)
+  * remotedesktop: Only show the restore checkbox if the app wants to persist
+
+-------------------------------------------------------------------
 Tue Jul 16 13:25:52 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.1.3:

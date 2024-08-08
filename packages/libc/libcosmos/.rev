@@ -63,4 +63,41 @@
 - this fixes a broken -debugsource package generation</comment>
     <requestid>1155512</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>23bf0ed205c3026e3ed1fe54795f0834</srcmd5>
+    <version>0.3.1</version>
+    <time>1723107436</time>
+    <user>dimstar_suse</user>
+    <comment>- Setup obsoletes/provides to cover the renaming of the library SONAME. 
+
+- update to first source tarball release v0.3.1. Drop git SCM service.
+
+- change library package name from libcosmos-0_2_0 to libcosmos-0, because it
+  needs to follow the library's SONAME which is libcosmos.so.0. 
+
+- Update to version 0.2.1+gitcb2663e:
+  * buildsystem: fix bug in passing multiple parameters via CXXFLAGS &amp; friends
+  * test/thread.cxx: fix potential race condition in isCallerThread()
+  * buildsystem: passthrough ASAN_OPTIONS
+  * tests: on unit test error cat logfile to stderr
+  * bump lib version which now contains memory mapping API
+  * github action: disable ODR iolation checks in unit tests in sanitizer build
+  * README.md: add info about recent developments
+  * check.py: support more fine tuning regarding which configs are built
+  * tests: mman: disable core dumping for expected SEGFAULT
+  * check.py: use dedicated buildroot that is cleaned before each config
+  * LinkLayerAddress: make some exotic protocols optional
+  * support older toolchains and non-x86 architectures better
+  * buildsystem.py: be prepared for TERM not existing
+  * buildsystem.py: satisfy flake8 &quot;missing whitespace after comma&quot;
+  * check.py: refer to current HEAD, not to master
+  * .github: add github action workflow file
+  * global: fix spelling errors in comments and documentation
+  * mman.hxx: fix doxygen list item indentation
+  * README: remove mention of memory mappings, which are available by now
+  * addrinfo test: switch UDP resolve from http to tftp
+  * feature: add support for memory mapping functionality
+  * FileBase: add runcate() member function</comment>
+    <requestid>1191875</requestid>
+  </revision>
 </revisionlist>

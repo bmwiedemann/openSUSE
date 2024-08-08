@@ -1,29 +1,146 @@
---- a/heartbeat/Makefile.am	2024-06-07 07:19:37.336355067 +0200
-+++ b/heartbeat/Makefile.am	2024-06-07 08:43:49.674399158 +0200
-@@ -60,10 +60,8 @@ ocf_SCRIPTS	      = AoEtarget		\
- 			Evmsd			\
+--- resource-agents/heartbeat/Makefile.am-orig	2024-07-31 09:49:35.561174274 +0200
++++ resource-agents/heartbeat/Makefile.am	2024-07-31 10:04:17.124253572 +0200
+@@ -50,94 +50,59 @@
+ send_ua_SOURCES         = send_ua.c IPv6addr_utils.c
+ send_ua_LDADD           = $(LIBNETLIBS)
+ 
+-ocf_SCRIPTS	      = AoEtarget		\
+-			AudibleAlarm		\
+-			ClusterMon		\
++ocf_SCRIPTS	      = ClusterMon		\
+ 			CTDB			\
+ 			Delay			\
+ 			Dummy			\
+-			EvmsSCC			\
+-			Evmsd			\
  			Filesystem		\
- 			ICP			\
+-			ICP			\
 -			IPaddr			\
  			IPaddr2			\
  			IPsrcaddr		\
 -			LVM			\
- 			LinuxSCSI		\
+-			LinuxSCSI		\
  			lvmlockd		\
  			LVM-activate		\
-@@ -137,7 +135,6 @@ ocf_SCRIPTS	      = AoEtarget		\
- 			minio			\
+ 			MailTo			\
+-			ManageRAID		\
+-			ManageVE		\
+ 			NodeUtilization		\
+-			Pure-FTPd		\
+ 			Raid1			\
+ 			Route			\
+ 			SAPDatabase		\
+ 			SAPInstance		\
+ 			SendArp			\
+-			ServeRAID		\
+-			SphinxSearchDaemon	\
+ 			Squid			\
+ 			Stateful		\
+-			SysInfo			\
+-			VIPArip			\
+ 			VirtualDomain		\
+ 			WAS			\
+ 			WAS6			\
+-			WinPopup		\
+-			Xen			\
+ 			Xinetd			\
+ 			ZFS			\
+ 			aliyun-vpc-move-ip	\
+-			anything		\
+ 			apache			\
+-			asterisk		\
+ 			aws-vpc-move-ip		\
+ 			aws-vpc-route53		\
+ 			awseip			\
+ 			awsvip			\
+ 			azure-lb		\
+-			clvm			\
+ 			conntrackd		\
+ 			corosync-qnetd		\
+ 			crypt			\
+ 			db2			\
+ 			dhcpd			\
+-			dnsupdate		\
+ 			dummypy			\
+ 			docker			\
+ 			docker-compose		\
+-			dovecot			\
+-			eDir88			\
+ 			ethmonitor		\
+ 			exportfs		\
+-			fio			\
+ 			galera			\
+ 			garbd			\
+ 			gcp-ilb			\
+ 			gcp-vpc-move-ip		\
+ 			iSCSILogicalUnit	\
+ 			iSCSITarget		\
+-			ids			\
+ 			iface-bridge		\
+ 			iface-macvlan		\
+ 			iface-vlan		\
+-			ipsec			\
+-			iscsi			\
+-			jboss			\
+-			jira			\
+-			kamailio		\
+-			lxc			\
+-			lxd-info		\
+-			machine-info		\
+ 			mariadb			\
+ 			mdraid			\
+-			minio			\
  			mysql			\
  			mysql-proxy		\
 -			nagios			\
  			named			\
  			nfsnotify		\
  			nfsserver		\
-@@ -166,7 +163,6 @@ ocf_SCRIPTS	      = AoEtarget		\
+@@ -145,11 +110,6 @@
+ 			nvmet-subsystem		\
+ 			nvmet-namespace		\
+ 			nvmet-port		\
+-			ocivip \
+-			openstack-cinder-volume \
+-			openstack-floating-ip   \
+-			openstack-info          \
+-			openstack-virtual-ip    \
+ 			oraasm			\
+ 			oracle			\
+ 			oralsnr			\
+@@ -157,34 +117,20 @@
+ 			ovsmonitor		\
+ 			pgagent			\
+ 			pgsql			\
+-			pingd			\
+ 			podman			\
+ 			portblock		\
+ 			postfix			\
+-			pound			\
+-			proftpd			\
  			rabbitmq-cluster	\
  			rabbitmq-server-ha	\
  			redis			\
 -			rkt			\
  			rsyncd			\
- 			rsyslog			\
- 			scsi2reservation	\
+-			rsyslog			\
+-			scsi2reservation	\
+ 			sfex			\
+ 			sg_persist              \
+ 			mpathpersist		\
+ 			slapd			\
+-			smb-share		\
+ 			storage-mon		\
+-			sybaseASE		\
+ 			symlink			\
+-			syslog-ng		\
+-			tomcat			\
+-			varnish			\
+-			vdo-vol			\
+-			vmware			\
+-			vsftpd			\
+-			zabbixserver
++			tomcat
+ 
+ if BUILD_AZURE_EVENTS
+ ocf_SCRIPTS	     += azure-events

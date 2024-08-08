@@ -87,4 +87,12 @@
     <comment></comment>
     <requestid>1189503</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>113de86453927bcd83213430d9507ff7</srcmd5>
+    <version>6.1.4</version>
+    <time>1723107413</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 6.1.4 (forwarded request 1191908 from Vogtinator)</comment>
+    <requestid>1191973</requestid>
+  </revision>
 </revisionlist>

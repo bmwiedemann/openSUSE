@@ -1,0 +1,97 @@
+From 63ff8ce775eec43b2f768b72fba4154c7832b1f7 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Yeray=20Guti=C3=A9rrez=20Cedr=C3=A9s?=
+ <yeray.gutierrez@suse.com>
+Date: Wed, 7 Aug 2024 08:54:24 +0100
+Subject: [PATCH] Skip more tests related to old OpenSSL algorithms
+
+* Skip more tests related to old OpenSSL algorithms
+
+* Check the comment from state apply ret instead of exception
+
+---------
+
+Co-authored-by: vzhestkov <vzhestkov@suse.com>
+---
+ tests/pytests/functional/modules/test_x509_v2.py | 10 ++++++++--
+ tests/pytests/functional/states/test_x509_v2.py  |  9 +++++++++
+ 2 files changed, 17 insertions(+), 2 deletions(-)
+
+diff --git a/tests/pytests/functional/modules/test_x509_v2.py b/tests/pytests/functional/modules/test_x509_v2.py
+index c060ad2971c..2e8152d04a3 100644
+--- a/tests/pytests/functional/modules/test_x509_v2.py
++++ b/tests/pytests/functional/modules/test_x509_v2.py
+@@ -1400,7 +1400,10 @@ def test_create_csr_raw(x509, rsa_privkey):
+ @pytest.mark.slow_test
+ @pytest.mark.parametrize("algo", ["rsa", "ec", "ed25519", "ed448"])
+ def test_create_private_key(x509, algo):
+-    res = x509.create_private_key(algo=algo)
++    try:
++        res = x509.create_private_key(algo=algo)
++    except UnsupportedAlgorithm:
++        pytest.skip(f"Algorithm '{algo}' is not supported on this OpenSSL version")
+     assert res.startswith("-----BEGIN PRIVATE KEY-----")
+ 
+ 
+@@ -1408,7 +1411,10 @@ def test_create_private_key(x509, algo):
+ @pytest.mark.parametrize("algo", ["rsa", "ec", "ed25519", "ed448"])
+ def test_create_private_key_with_passphrase(x509, algo):
+     passphrase = "hunter2"
+-    res = x509.create_private_key(algo=algo, passphrase=passphrase)
++    try:
++        res = x509.create_private_key(algo=algo, passphrase=passphrase)
++    except UnsupportedAlgorithm:
++        pytest.skip(f"Algorithm '{algo}' is not supported on this OpenSSL version")
+     assert res.startswith("-----BEGIN ENCRYPTED PRIVATE KEY-----")
+     # ensure it can be loaded
+     x509.get_private_key_size(res, passphrase=passphrase)
+diff --git a/tests/pytests/functional/states/test_x509_v2.py b/tests/pytests/functional/states/test_x509_v2.py
+index e74bdd73f37..929be014cdb 100644
+--- a/tests/pytests/functional/states/test_x509_v2.py
++++ b/tests/pytests/functional/states/test_x509_v2.py
+@@ -6,6 +6,7 @@ import pytest
+ try:
+     import cryptography
+     import cryptography.x509 as cx509
++    from cryptography.exceptions import UnsupportedAlgorithm
+     from cryptography.hazmat.primitives import hashes
+     from cryptography.hazmat.primitives.asymmetric import ec, ed448, ed25519, rsa
+     from cryptography.hazmat.primitives.serialization import (
+@@ -691,6 +692,8 @@ def existing_csr_exts(x509, csr_args, csr_args_exts, ca_key, rsa_privkey, reques
+ def existing_pk(x509, pk_args, request):
+     pk_args.update(request.param)
+     ret = x509.private_key_managed(**pk_args)
++    if ret.result == False and "UnsupportedAlgorithm" in ret.comment:
++        pytest.skip(f"Algorithm '{pk_args['algo']}' is not supported on this OpenSSL version")
+     _assert_pk_basic(
+         ret,
+         pk_args.get("algo", "rsa"),
+@@ -2140,6 +2143,8 @@ def test_private_key_managed(x509, pk_args, algo, encoding, passphrase):
+     pk_args["encoding"] = encoding
+     pk_args["passphrase"] = passphrase
+     ret = x509.private_key_managed(**pk_args)
++    if ret.result == False and "UnsupportedAlgorithm" in ret.comment:
++        pytest.skip(f"Algorithm '{algo}' is not supported on this OpenSSL version")
+     _assert_pk_basic(ret, algo, encoding, passphrase)
+ 
+ 
+@@ -2167,6 +2172,8 @@ def test_private_key_managed_keysize(x509, pk_args, algo, keysize):
+ )
+ def test_private_key_managed_existing(x509, pk_args):
+     ret = x509.private_key_managed(**pk_args)
++    if ret.result == False and "UnsupportedAlgorithm" in ret.comment:
++        pytest.skip(f"Algorithm '{pk_args['algo']}' is not supported on this OpenSSL version")
+     _assert_not_changed(ret)
+ 
+ 
+@@ -2194,6 +2201,8 @@ def test_private_key_managed_existing_new_with_passphrase_change(x509, pk_args):
+ def test_private_key_managed_algo_change(x509, pk_args):
+     pk_args["algo"] = "ed25519"
+     ret = x509.private_key_managed(**pk_args)
++    if ret.result == False and "UnsupportedAlgorithm" in ret.comment:
++        pytest.skip("Algorithm 'ed25519' is not supported on this OpenSSL version")
+     _assert_pk_basic(ret, "ed25519")
+ 
+ 
+-- 
+2.46.0
+

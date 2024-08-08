@@ -193,4 +193,24 @@ the go metapackage to version 1.22.</comment>
   * go#68122 cmd/link: runtime.mach_vm_region_trampoline: unsupported dynamic relocation for symbol libc_mach_task_self_ (type=29 (R_GOTPCREL) stype=46 (SDYNIMPORT)) (forwarded request 1184952 from jfkw)</comment>
     <requestid>1184954</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>356714d7b6d81fa184af64b69ed8d097</srcmd5>
+    <version>1.22.6</version>
+    <time>1723107433</time>
+    <user>dimstar_suse</user>
+    <comment>- go1.22.6 (released 2024-08-06) includes fixes to the go command,
+  the compiler, the linker, the trace command, the covdata command,
+  and the bytes, go/types, and os/exec packages.
+  Refs boo#1218424 go1.22 release tracking
+  * go#68594 cmd/compile: internal compiler error with zero-size types
+  * go#68546 cmd/trace/v2: pprof profiles always empty
+  * go#68492 cmd/covdata: too many open files due to defer f.Close() in for loop
+  * go#68475 bytes: IndexByte can return -4294967295 when memory usage is above 2^31 on js/wasm
+  * go#68370 go/types: assertion failure in recent range statement checking logic
+  * go#68331 os/exec: modifications to Path ignored when *Cmd is created using Command with an absolute path on Windows
+  * go#68230 cmd/compile: inconsistent integer arithmetic result on Go 1.22+arm64 with/without -race
+  * go#68222 cmd/go: list with -export and -covermode=atomic fails to build
+  * go#68198 cmd/link: issues with Xcode 16 beta (forwarded request 1192312 from jfkw)</comment>
+    <requestid>1192314</requestid>
+  </revision>
 </revisionlist>

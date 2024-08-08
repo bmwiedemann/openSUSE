@@ -7,4 +7,17 @@
     <comment></comment>
     <requestid>1186767</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>094b6e1fb080e9f81d0a03a64633823d</srcmd5>
+    <version>3.5.0</version>
+    <time>1723107484</time>
+    <user>dimstar_suse</user>
+    <comment>- standardize packaging with also fixes for miscellaneous hardcoding
+  filenames, using @PARENT_TAG where applicable, and be more specific
+  with files in the %files section (so no non-wanted files are getting
+  added
+
+- enable leap (thanks to vyvir)</comment>
+    <requestid>1192456</requestid>
+  </revision>
 </revisionlist>

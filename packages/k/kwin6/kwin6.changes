@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Tue Aug  6 13:25:29 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.1.4:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.1.4
+- Changes since 6.1.3:
+  * update version for new release
+  * activation: fix X11 windows being stuck in should_get_focus more properly
+  * plugins/buttonrebinds: correctly handle level 1 keys (kde#484367)
+  * backends/drm: don't block direct scanout if color profile source isn't set to ICC
+  * Fix checking whether GraphicsBufferView is null
+  * backends/drm: don't apply the brightness factor without HDR
+  * activation: don't add the active window to should_get_focus list (kde#484155)
+  * core/renderloop: don't move the target presentation timestamp back when rescheduling (kde#488843)
+  * core/renderloop: fix triple buffering hysteresis
+  * scene/itemrenderer_opengl: reset OpenGL state for YUV conversion back to RGB
+  * autotests: test placement to always put the titlebar on the screen
+  * placement: keep the titlebar in the screen with centered placement (kde#489500)
+  * placement: don't overwrite scheduled position change in cascadeIfCovering
+  * Make Workspace::desktopResized() reassign outputs of uninitialized windows
+  * wayland: Avoid klipper loop with existing but empty clipboards (kde#469644)
+  * backends/drm: Fix a crash in DrmGpu::releaseBuffers()
+  * wayland: Ignore plasma shell reposition requests during interactive move resize (kde#481829)
+  * backends/drm: limit max_bpc to 8 by default with docks
+  * compositor_wayland: count rendering time for all steps of compositing
+  * xdgshellwindow: never request clients to resize to a negative size (kde#489983)
+  * backends/libinput: Ignore redundant events for pointer buttons and keyboard keys when pressed/released on multiple devices (kde#486034)
+  * backends/x11: Fix crash that happens when toggling compositing
+  * plugins/stickykeys: Unlatch modifiers when locking
+  * Fix sticky keys for AltGr
+  * Test locking sticky keys for all modifiers
+  * Release key in sticky key test
+  * utils: Fix gaining realtime scheduling with musl (kde#487996)
+  * core/renderloop: add some hysteresis to triple buffering
+
+-------------------------------------------------------------------
 Tue Jul 16 13:22:44 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.1.3:

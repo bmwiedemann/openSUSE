@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Sat Aug  3 17:27:07 UTC 2024 - Arjen de Korte <suse+build@de-korte.org>
+
+- Update to 2.4.62
+
+  *) SECURITY: CVE-2024-40898: Apache HTTP Server: SSRF with
+     mod_rewrite in server/vhost context on Windows (cve.mitre.org)
+     [boo#1228098]
+     SSRF in Apache HTTP Server on Windows with mod_rewrite in
+     server/vhost context, allows to potentially leak NTML hashes to
+     a malicious server via SSRF and malicious requests.
+     Users are recommended to upgrade to version 2.4.62 which fixes
+     this issue.
+     Credits: Smi1e (DBAPPSecurity Ltd.)
+
+  *) SECURITY: CVE-2024-40725: Apache HTTP Server: source code
+     disclosure with handlers configured via AddType (cve.mitre.org)
+     [boo#1228097]
+     A partial fix for  CVE-2024-39884 in the core of Apache HTTP
+     Server 2.4.61 ignores some use of the legacy content-type based
+     configuration of handlers. "AddType" and similar configuration,
+     under some circumstances where files are requested indirectly,
+     result in source code disclosure of local content. For example,
+     PHP scripts may be served instead of interpreted.
+     Users are recommended to upgrade to version 2.4.62, which fixes
+     this issue.
+
+  *) mod_proxy: Fix canonicalisation and FCGI env (PATH_INFO, SCRIPT_NAME) for
+     "balancer:" URLs set via SetHandler, also allowing for "unix:" sockets
+     with BalancerMember(s).  PR 69168.  [Yann Ylavic]
+
+  *) mod_proxy: Avoid AH01059 parsing error for SetHandler "unix:" URLs.
+     PR 69160 [Yann Ylavic]
+
+  *) mod_ssl: Fix crashes in PKCS#11 ENGINE support with OpenSSL 3.2.
+     [Joe Orton]
+
+  *) mod_ssl: Add support for loading certs/keys from pkcs11: URIs
+     via OpenSSL 3.x providers.  [Ingo Franzki <ifranzki linux.ibm.com>]
+
+  *) mod_ssl: Restore SSL dumping on trace7 loglevel with OpenSSL >= 3.0.
+     [Ruediger Pluem, Yann Ylavic]
+
+  *) mpm_worker: Fix possible warning (AH00045) about children processes not
+     terminating timely.  [Yann Ylavic]
+
+-------------------------------------------------------------------
 Thu Jul  4 20:58:39 UTC 2024 - Arjen de Korte <suse+build@de-korte.org>
 
 - Update to 2.4.61

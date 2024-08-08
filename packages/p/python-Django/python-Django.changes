@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Wed Aug  7 06:07:48 UTC 2024 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to 5.0.8
+  * CVE-2024-41989: Memory exhaustion in
+    django.utils.numberformat.floatformat()
+  * CVE-2024-41990: Potential denial-of-service vulnerability in
+    django.utils.html.urlize()
+  * CVE-2024-41991: Potential denial-of-service vulnerability in
+    django.utils.html.urlize() and AdminURLFieldWidget
+  * CVE-2024-42005: Potential SQL injection in QuerySet.values() and
+    values_list()
+  * Added missing validation for
+    UniqueConstraint(nulls_distinct=False) when using *expressions
+  * Fixed a regression in Django 5.0 where ModelAdmin.action_checkbox
+    could break the admin changelist HTML page when rendering a model
+    instance with a __html__ method
+  * Fixed a crash when creating a model with a Field.db_default and a
+    Meta.constraints constraint composed of __endswith, __startswith,
+    or __contains lookups
+  * Fixed a regression in Django 5.0.7 that caused a crash in
+    LocaleMiddleware when processing a language code over 500
+    characters
+  * Fixed a bug in Django 5.0 that caused a system check crash when
+    ModelAdmin.date_hierarchy was a GeneratedField with an
+    output_field of DateField or DateTimeField
+  * Fixed a bug in Django 5.0 which caused constraint validation to
+    either crash or incorrectly raise validation errors for
+    constraints referring to fields using Field.db_default
+  * Fixed a crash in Django 5.0 when saving a model containing a
+    FileField with a db_default set
+
+-------------------------------------------------------------------
 Tue Jul  9 14:03:46 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Update to 5.0.7

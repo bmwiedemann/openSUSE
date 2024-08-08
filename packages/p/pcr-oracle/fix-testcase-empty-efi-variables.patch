@@ -1,0 +1,58 @@
+From 61f9b77634578c0bf0c3bf6c4b386057e8661a1c Mon Sep 17 00:00:00 2001
+From: Gary Lin <glin@suse.com>
+Date: Wed, 12 Jun 2024 14:41:38 +0800
+Subject: [PATCH] testcase: fix playback on empty EFI variables
+
+For systems in UEFI Setup mode, there is no PK, KEK, or db. However,
+those variables are still recorded in the TPM event log with zero
+length. To avoid failing on reading those files, this commit changes the
+file reading flag so that testcase playback won't stop on those EFI
+variables.
+
+Signed-off-by: Gary Lin <glin@suse.com>
+---
+ src/testcase.c | 17 ++++++++++++++---
+ 1 file changed, 14 insertions(+), 3 deletions(-)
+
+diff --git a/src/testcase.c b/src/testcase.c
+index f74238b..998aedd 100644
+--- a/src/testcase.c
++++ b/src/testcase.c
+@@ -224,12 +224,18 @@ testcase_write_file(const char *directory, const char *name, const buffer_t *bp)
+ }
+ 
+ static buffer_t *
+-testcase_read_file(const char *directory, const char *name)
++__testcase_read_file(const char *directory, const char *name, int flags)
+ {
+ 	char path[PATH_MAX];
+ 
+ 	snprintf(path, sizeof(path), "%s/%s", directory, name);
+-	return runtime_read_file(path, 0);
++	return runtime_read_file(path, flags);
++}
++
++static buffer_t *
++testcase_read_file(const char *directory, const char *name)
++{
++	return __testcase_read_file(directory, name, 0);
+ }
+ 
+ testcase_t *
+@@ -314,7 +320,12 @@ testcase_record_efi_variable(testcase_t *tc, const char *name, const buffer_t *d
+ buffer_t *
+ testcase_playback_efi_variable(testcase_t *tc, const char *name)
+ {
+-	return testcase_read_file(tc->efi_directory, name);
++	/* For systems in UEFI Setup mode, there is no PK, KEK, or db, but those
++	 * variables are still recorded in the TPM event log with zero length.
++	 * Set the file reading flag to skip those EFI variable files.
++	 */
++	return __testcase_read_file(tc->efi_directory, name,
++				    RUNTIME_MISSING_FILE_OKAY);
+ }
+ 
+ void
+-- 
+2.35.3
+

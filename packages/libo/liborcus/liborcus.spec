@@ -90,6 +90,14 @@ Python 3 bindings for %{name}.
 
 %build
 %global optflags %{optflags} -fexcess-precision=fast
+
+# The test-suite of the package expects the precision of FP operations
+# to be lower than that of internal representation of 80387.  Use
+# option -ffloat-store to mitigate that.
+%ifarch i386 i486 i586 i686
+%global optflags %{optflags} -ffloat-store
+%endif
+
 NOCONFIGURE=indeed ./autogen.sh
 %if 0%{?suse_version} < 1500
 export CC=gcc-7

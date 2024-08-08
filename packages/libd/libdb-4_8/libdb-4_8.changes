@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Aug  7 09:15:21 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
+
+- Security fix: [bsc#1174414, CVE-2019-2708]
+  * libdb: Data store execution leads to partial DoS
+  * Backport the upsteam commits:
+    - Fixed several possible crashes when running db_verify
+      on a corrupted database. [#27864]
+    - Fixed several possible hangs when running db_verify
+      on a corrupted database. [#27864]
+    - Added a warning message when attempting to verify a queue
+      database which has many extent files. Verification will take
+      a long time if there are many extent files. [#27864]
+  * Add libdb-4_8-CVE-2019-2708.patch
+
+-------------------------------------------------------------------
 Thu Feb 29 16:01:36 UTC 2024 - pgajdos@suse.com
 
 - Use %patch -P N instead of deprecated %patchN.

@@ -28,7 +28,7 @@
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           systemsettings6
-Version:        6.1.3
+Version:        6.1.4
 Release:        0
 Summary:        KDE's control center
 License:        GPL-2.0-or-later
@@ -38,8 +38,6 @@ Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{ver
 Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
-# PATCH-FIX-UPSTREAM
-Patch1:         0001-runner-Don-t-match-if-just-one-query-word-matches.patch
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF6Auth) >= %{kf6_version}

@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Aug  6 13:28:34 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.1.4:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.1.4
+- Changes since 6.1.3:
+  * update version for new release
+  * Watch for Look and Feel changed
+  * applets/batterymonitor: Fix property names to show the right tool-tip text
+  * applets/mediacontroller: Fix label width overflow in horizontal panel
+  * Track screen change
+  * Respect centered images size (kde#490425,kde#489250)
+  * xembed-sni-proxy: Check if descendant windows want button events
+  * freespacenotifier: Rework to not warn for read only partitions
+  * startplasma: Also set environment variable when it is not currently set (kde#490432)
+  * notifications: When doing a drag and drop, set the supported action to cpoy (kde#469644)
+  * krunner: Fix icon property name for additionalActions list
+  * kastatsfavoritesmodel: Fix a crash
+
+-------------------------------------------------------------------
 Tue Jul 16 13:25:21 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.1.3:

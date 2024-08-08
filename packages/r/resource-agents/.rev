@@ -1779,4 +1779,12 @@
     <comment></comment>
     <requestid>1183835</requestid>
   </revision>
+  <revision rev="132" vrev="1">
+    <srcmd5>db67926ef316cb4e402331c459f5893f</srcmd5>
+    <version>4.15.1+git0.a6ccb93a</version>
+    <time>1723107425</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1192174</requestid>
+  </revision>
 </revisionlist>

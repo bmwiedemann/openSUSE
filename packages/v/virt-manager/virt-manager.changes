@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Aug  6 10:13:04 MDT 2024 - carnold@suse.com
+
+- Fix test failure with libvirt version 10.6.0
+  092-cli-Use-regex-for-grep-and-nogrep-args.patch
+  093-cli-Fix-with-latest-libvirt.patch
+
+-------------------------------------------------------------------
 Mon Jul 29 15:29:29 MDT 2024 - carnold@suse.com
 
 - bsc#1228384 - virt-install generates unwanted libvirt storage

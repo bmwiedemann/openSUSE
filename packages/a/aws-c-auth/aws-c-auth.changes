@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Aug  2 10:47:41 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.7.24
+  * Fix Empty Env varibales for STSWebIdentity by @waahm7 in (#246)
+
+-------------------------------------------------------------------
 Wed Jul 31 09:10:10 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.7.23

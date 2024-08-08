@@ -18,7 +18,7 @@
 
 
 Name:           openssl_tpm2_engine
-Version:        4.2.0
+Version:        4.3.0
 Release:        0
 Summary:        OpenSSL TPM 2.0 interface engine plugin
 License:        LGPL-2.1-only
@@ -65,5 +65,6 @@ find * -name \*.so -printf "/%p\n" > $CWD/%{EXTRA_FILES}
 %doc README openssl.cnf.sample
 %{_bindir}/*
 %{_mandir}/man1/*
+%{_mandir}/man7/*
 
 %changelog

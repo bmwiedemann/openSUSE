@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Aug  6 12:29:07 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 1.8.0
+  Features:
+  * introduce exception classes
+  * get_user_videos to get full list of user videos based on
+    result of get_user
+  Fixes:
+  * get_playlist: fix title for podcast episodes
+  * get_playlist: re-add thumbnails
+  * get_podcast: fix edge case when first subtitle is missing
+  * library uploads: fix broken index after downloads rollout
+  Misc:
+  * coverage: remove code for old playlist format
+
+-------------------------------------------------------------------
 Thu Jul 18 07:37:16 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 1.7.5

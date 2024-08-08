@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Aug  5 05:50:52 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.11.4.1474:
+  * CLJ-2145 - Fix clearing of closed overs in ^:once fns
+  * CLJ-2317 - recur to head of :once fn cancels once
+
+-------------------------------------------------------------------
 Fri May  3 05:36:36 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.11.3.1463:

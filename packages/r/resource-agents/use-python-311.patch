@@ -1,0 +1,20 @@
+--- resource-agents/configure.ac-orig	2024-07-31 09:21:33.479621551 +0200
++++ resource-agents/configure.ac	2024-07-31 09:21:58.027818044 +0200
+@@ -503,7 +503,7 @@
+ AC_SUBST(RM)
+ AC_SUBST(TEST)
+ 
+-AM_PATH_PYTHON([3.6])
++AM_PATH_PYTHON([3.11])
+ if test -z "$PYTHON"; then
+     echo "*** Essential program python not found" 1>&2
+     exit 1
+@@ -522,7 +522,7 @@
+ AC_PYTHON_MODULE(requests)
+ AC_PYTHON_MODULE(urllib3)
+ 
+-AS_VERSION_COMPARE([$PYTHON_VERSION], [3.6], [BUILD_OCF_PY=0], [BUILD_OCF_PY=1], [BUILD_OCF_PY=1])
++AS_VERSION_COMPARE([$PYTHON_VERSION], [3.11], [BUILD_OCF_PY=0], [BUILD_OCF_PY=1], [BUILD_OCF_PY=1])
+ 
+ BUILD_AZURE_EVENTS=1
+ if test -z "$PYTHON" || test $BUILD_OCF_PY -eq 0; then

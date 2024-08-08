@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Wed Jul 31 08:21:14 UTC 2024 - Peter Varkoly <varkoly@suse.com>
+
+- Remove unsupported RAs from resource-agents package
+  Adapt drop-deprecated-agents.patch (jsc#PED-8737) 
+- Normalize log format from RAs with one of Pacemaker  (bsc#1217456)
+  Remove 0006-Revert-ocf_log-use-same-log-format-as-pacemaker.patch
+- Remove 0007-Request-to-add-gcp-vpc-move-route.patch adapt BuildRequires instead of:
+  Add python module requirements: pyroute2 requests urllib3
+- Adapt configure if python flavor is python311:
+  add patch: use-python-311.patch
+- Update to version 4.15.1+git0.a6ccb93a:
+  * build: update ChangeLog for 4.15.1
+  * IPaddr2: dont fail with "IPv4 does not support lvs_ipv6_addrlabel" error, as the parameter is not used in IPv4 scenarioes
+  * build: update ChangeLog for 4.15.0
+  * spec: use /usr/sbin paths for Fedora 41+
+  * build: dont build powervs-subnet if dependencies are missing
+  * build: update ChangeLog for 4.15.0-rc1
+
+-------------------------------------------------------------------
+Mon Jul 15 11:54:45 UTC 2024 - varkoly@suse.com
+
+- Update to version 4.14.0+git46.eb83df84:
+  * send_arp.libnet: use calloc() to avoid truncating pidfilename if it is more than 64 chars long
+  * configure: fix enable_ansi check
+  * powervs-subnet resource agent: improvements on virtual server status collection, and subnet - port handling.
+  * ocf-shellfuncs: dont use deprecated validate-with="none" in CIB
+  * conntrackd/galera/rabbitmq-cluster: avoid deprecated tool options
+  * IPaddr2: change default for lvs_ipv6_addrlabel to true to avoid last added IP becoming src IP
+  * IPaddr2: only set metric value for IPv6 when detected
+  * galera/mariadb/mysql/redis: remove Unpromoted monitor-action, as it's covered by the regular monitor-action
+  * apache/http-mon.sh: prefer curl due to new wget2 issues, including not being able to resolve hostnames from /etc/hosts
+  * apache/http-mon.sh: dont use -L for wget2 as it's not implemented yet
+  * Filesystem: return success during stop-action when leading or trailing whitespace is present in device or directory parameters
+  * pgsql: pgsql_status: silence ERROR: command failed: runuser ...
+  * ocf-shellfuncs: ocf_run(): add debug level error logging
+  * powervs-subnet: new resource agent (#1948)
+  * Filesystem: for "probe", silence "Expected /dev/... to exist" message
+  * IPsrcaddr: add IPv6 support
+  * IPaddr2: use metric for IPv6
+  * findif.sh: add metric for IPv6 support and fail when matching more than 1 route
+  * Filesystem: use fuser -c on FreeBSD, as -m and -M are used for other functionality
+  * Fix #1944
+
+-------------------------------------------------------------------
 Wed Jun 12 08:33:22 UTC 2024 - Dirk Stoecker <opensuse@dstoecker.de>
 
 - remove package name based perl requires

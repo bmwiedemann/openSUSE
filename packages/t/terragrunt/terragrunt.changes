@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Aug 07 07:32:56 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.66.3:
+  * Terragrunt performance improvements (#3307)
+
+-------------------------------------------------------------------
+Wed Aug 07 07:27:55 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.66.2:
+  * feat: Adding `TG_CTX_TF_PATH` to hook context (#3323)
+  * build(deps-dev): bump rexml from 3.3.1 to 3.3.3 in /docs
+    (#3316)
+  * build(deps-dev): bump nokogiri from 1.16.3 to 1.16.5 in /docs
+    (#3135)
+  * add env TERRAGRUNT_EXCLUDE_DIR to docs (#3320)
+  * fix: Reference OpenTofu Everywhere We Can (#3319)
+
+-------------------------------------------------------------------
 Sat Aug 03 07:52:13 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.66.1:

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Aug  7 16:56:04 UTC 2024 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 1.32.7
+  * Fix some laziness (func() to func(void)) for standards
+    conformance.
+
+-------------------------------------------------------------------
 Thu Apr  4 18:13:12 UTC 2024 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 1.32.6

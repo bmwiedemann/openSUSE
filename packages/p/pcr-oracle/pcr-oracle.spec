@@ -34,6 +34,10 @@ Patch1:         fix_loader_conf.patch
 Patch2:         fix_grub_bls_entry.patch
 # PATCH-FIX-UPSTREAM fix_grub_bls_cmdline.patch gh#okirch/pcr-oracle!52 (cont)
 Patch3:         fix_grub_bls_cmdline.patch
+# PATCH-FIX-UPSTREAM support-ecc-srk.patch gh#okirch/pcr-oracle!56
+Patch4:         support-ecc-srk.patch
+# PATCH-FIX-UPSTREAM fix-testcase-empty-efi-variables.patch gh#okirch/pcr-oracle!58
+Patch5:         fix-testcase-empty-efi-variables.patch
 BuildRequires:  libopenssl-devel >= 0.9.8
 BuildRequires:  tpm2-0-tss-devel >= 2.4.0
 Requires:       libtss2-tcti-device0

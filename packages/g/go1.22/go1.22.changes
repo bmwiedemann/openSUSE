@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Aug  6 17:39:11 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.22.6 (released 2024-08-06) includes fixes to the go command,
+  the compiler, the linker, the trace command, the covdata command,
+  and the bytes, go/types, and os/exec packages.
+  Refs boo#1218424 go1.22 release tracking
+  * go#68594 cmd/compile: internal compiler error with zero-size types
+  * go#68546 cmd/trace/v2: pprof profiles always empty
+  * go#68492 cmd/covdata: too many open files due to defer f.Close() in for loop
+  * go#68475 bytes: IndexByte can return -4294967295 when memory usage is above 2^31 on js/wasm
+  * go#68370 go/types: assertion failure in recent range statement checking logic
+  * go#68331 os/exec: modifications to Path ignored when *Cmd is created using Command with an absolute path on Windows
+  * go#68230 cmd/compile: inconsistent integer arithmetic result on Go 1.22+arm64 with/without -race
+  * go#68222 cmd/go: list with -export and -covermode=atomic fails to build
+  * go#68198 cmd/link: issues with Xcode 16 beta
+
+-------------------------------------------------------------------
 Tue Jul  2 18:51:45 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - go1.22.5 (released 2024-07-02) includes security fixes to the

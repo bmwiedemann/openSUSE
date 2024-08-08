@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Wed Aug 07 15:27:03 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.10.1:
+  * chore(format): reformat imports
+  * chore: release 2.10.1
+  * fix(deploy): occasional panics on logging
+  * fix(deploy): plan build error not showed and graph not saved
+  * chore(deps): switch to renamed github.com/werf/3p-helm module
+  * chore(release): 1.2 alpha, 2 alpha
+  * chore(release): 1.2 beta,stable,rock-solid 2 beta,stable
+
+-------------------------------------------------------------------
+Wed Aug 07 07:10:29 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.10.0:
+  * chore: release 2.10.0
+  * docs(cleanup): remove imagesPerReference.operator as it causes
+    confusion and offers no practical value
+  * feat(cleanup): change default from unlimited to one image per
+    reference
+  * refactor(cleanup): refactor handling config defaults
+  * feat(render): add --stub-tags option to explicitly ignore real
+    tags
+  * chore(release): 1.2 alpha, 2 alpha
+
+-------------------------------------------------------------------
 Thu Aug 01 11:18:20 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.9.3:

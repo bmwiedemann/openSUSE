@@ -22,7 +22,7 @@
 %define rname kwayland
 %bcond_without released
 Name:           kwayland6
-Version:        6.1.3
+Version:        6.1.4
 Release:        0
 Summary:        KDE Wayland library
 License:        LGPL-2.1-or-later

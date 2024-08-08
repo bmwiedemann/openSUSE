@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Aug  6 13:26:15 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.1.4:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.1.4
+- Changes since 6.1.3:
+  * update version for new release
+  * Use frameworks version number from kcrash
+  * sentry: also send qt_version in the tags
+  * support consuming the qt version from kcrash
+  * coredump: synthesize crash metadata for kwin_x11
+
+-------------------------------------------------------------------
 Tue Jul 16 13:23:13 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.1.3:

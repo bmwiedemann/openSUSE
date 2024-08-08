@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Aug  2 09:07:37 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 4.1.0.post1:
+  * [gh#libkeepass/pykeepass#389] add PyKeePassdatabase_name and
+    database_description
+  * [gh#libkeepass/pykeepass#390] fix pkg_resources dependency
+    issue
+  * [gh#libkeepass/pykeepass#391] Entry.tags returns empty list
+    instead of None
+  * [gh#libkeepass/pykeepass#395] set 'encoding' attribute when
+    exporting as XML
+  * [gh#libkeepass/pykeepass#383] parse datetimes using isoformat
+    instead of strptime
+
+-------------------------------------------------------------------
 Sun Apr 14 10:04:52 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 4.0.7.post1:

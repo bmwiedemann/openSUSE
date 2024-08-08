@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Aug 08 04:44:36 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.4.16:
+  * set next macro chart for kubefirst - 2.4.16
+  * set next macro chart for kubefirst - 2.4.16-rc2
+  * set next macro chart for kubefirst - 2.6.0-rc1
+  * chore: add devcontainer for local development (#2258)
+
+-------------------------------------------------------------------
+Wed Aug 07 05:56:42 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.4.15 (no releas 2.4.14):
+  * feat: console remote url by @CristhianF7 in #2249
+  * feat: ignore launch up install when debug is on by @CristhianF7
+    in #2250
+  * Run Go tests on commits by @patrickdappollonio in #2251
+  * Apply gofmt, golangci-lint. by @patrickdappollonio in #2253
+  * chore: add support for editorconfig by @mrsimonemms in #2242
+
+-------------------------------------------------------------------
 Thu Jul 18 19:08:31 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.4.13:

@@ -49,6 +49,6 @@ full-color stylized icons.
 %files
 %license LICENSE COPYING
 %doc README.md
-%{_iconsdir}/Pop
+%{_datadir}/icons/Pop
 
 %changelog

@@ -1236,4 +1236,12 @@
   * bsc#1227595 (CVE-2024-39614)</comment>
     <requestid>1188243</requestid>
   </revision>
+  <revision rev="119" vrev="1">
+    <srcmd5>3d308c33f6cbcf971da6d59bb2e513b0</srcmd5>
+    <version>5.0.8</version>
+    <time>1723107424</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1192060</requestid>
+  </revision>
 </revisionlist>

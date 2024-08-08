@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Aug  6 13:26:49 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.1.4:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.1.4
+- Changes since 6.1.3:
+  * update version for new release
+  * sourcestream: make resilient against pipewire restarts
+  * Add encoder using libopenh264 (kde#476187)
+- Drop patches, now upstream:
+  * 0001-Simpler-yet-more-useful-handling-of-KPIPEWIRE_FORCE_.patch
+  * 0002-Add-encoder-using-libopenh264.patch
+
+-------------------------------------------------------------------
 Tue Jul 16 13:35:56 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add patches to support libopenh264 for encoding

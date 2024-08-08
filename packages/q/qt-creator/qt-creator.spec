@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 14.0.0
+%define real_version 14.0.1
 %define short_version 14.0
 %define tar_name qt-creator-opensource-src
 %define tar_suffix %{nil}
@@ -47,7 +47,7 @@ ExclusiveArch:  do_not_build
 %bcond_without docs
 
 Name:           %{pkgname_prefix}-creator
-Version:        14.0.0
+Version:        14.0.1
 Release:        0
 Summary:        Integrated Development Environment targeting Qt apps
 # src/plugins/cmakeprojectmanager/configmodelitemdelegate.* -> LGPL-2.1-only OR LGPL-3.0-only
@@ -220,6 +220,8 @@ cp -a doc/qtcreator/* %{buildroot}%{qtc_docdir}/qtcreator/
 
 # Source Code Pro is packaged independently
 rm -r %{buildroot}%{_datadir}/qtcreator/fonts
+
+rm -r %{buildroot}%{_datadir}/qtcreator/debugger-with-python2
 
 %ldconfig_scriptlets
 

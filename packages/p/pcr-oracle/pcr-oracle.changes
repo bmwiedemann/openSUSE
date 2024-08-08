@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Aug  5 06:11:52 UTC 2024 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Add support-ecc-srk.patch to support ECC SRK
+- Add fix-testcase-empty-efi-variables.patch to fix the testcase
+  playback on empty EFI variables
+
+-------------------------------------------------------------------
 Mon Mar 25 20:16:53 UTC 2024 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Add fix_grub_bls_cmdline.patch to include the measurements of the

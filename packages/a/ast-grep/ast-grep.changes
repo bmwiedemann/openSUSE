@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Aug  8 05:24:11 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.26.0:
+  * feat: Additional impls for language types #1379
+  * feat: append note to error message if available #1384
+  * fix: LSP should skip files outside the workspace root #1382
+  * fix(deps): update dependency @babel/core to v7.25.2 3b0be88
+  * refactor: split two macros b760eb8
+  * refactor: simplify visitor 5ae03ae
+
+-------------------------------------------------------------------
+Wed Aug  7 05:33:51 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.25.7:
+  * feat: add charCount to split lines #1381
+  * chore(deps): update dependency @types/node to v20.14.14 bca7e7b
+  * fix(deps): update rust crate clap to v4.5.13 c143464
+  * fix(deps): update rust crate toml_edit to v0.22.20 170da4c
+
+-------------------------------------------------------------------
 Mon Aug  5 05:52:57 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.25.6:

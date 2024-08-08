@@ -310,4 +310,12 @@ There are 4 months worth of complicated commit, and I cannot go through them all
     <comment>Update to 1.98.0</comment>
     <requestid>1189891</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>d64e9e9e0fe30d5e3b26036da380cf3a</srcmd5>
+    <version>1.98.1</version>
+    <time>1723107487</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 1.98.1</comment>
+    <requestid>1192190</requestid>
+  </revision>
 </revisionlist>

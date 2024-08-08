@@ -16,11 +16,11 @@
 #
 
 
-%define kanidm_profile release_suse_generic
+%define kanidm_profile release_linux
 %define configdir %{_sysconfdir}/kanidm
 
 Name:           kanidm
-Version:        1.2.2~git0.c4153c9
+Version:        1.3.1~git0.eed7c07
 Release:        0
 Summary:        A identity management service and clients.
 License:        ( Apache-2.0 OR BSL-1.0 ) AND ( Apache-2.0 OR ISC OR MIT ) AND ( Apache-2.0 OR MIT ) AND ( Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT ) AND ( CC0-1.0 OR Apache-2.0 ) AND ( MIT OR Apache-2.0 OR Zlib ) AND ( Unlicense OR MIT ) AND ( Zlib OR Apache-2.0 OR MIT ) AND Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND CC0-1.0 AND ISC AND MIT AND MPL-2.0 AND MPL-2.0+

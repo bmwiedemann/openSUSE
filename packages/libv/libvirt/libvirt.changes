@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Aug  5 22:02:12 UTC 2024 - James Fehlig <jfehlig@suse.com>
+
+- Update to libvirt 10.6.0
+  - jsc#PED-8909
+  - Many incremental improvements and bug fixes, see
+    https://libvirt.org/news.html#v10-6-0-2024-08-05
+
+-------------------------------------------------------------------
 Mon Jul  1 19:28:17 UTC 2024 - James Fehlig <jfehlig@suse.com>
 
 - Update to libvirt 10.5.0

@@ -410,6 +410,11 @@ Patch124:       some-more-small-tests-fixes-enhancements-661.patch
 Patch125:       test_vultrpy-adjust-test-expectation-to-prevent-fail.patch
 # PATCH-FIX_UPSTREAM https://github.com/saltstack/salt/pull/66698
 Patch126:       firewalld-normalize-new-rich-rules-before-comparing-.patch
+# PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/669
+Patch127:       skip-more-tests-related-to-old-openssl-algorithms.patch
+# PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/662
+# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/66730
+Patch128:       make-tests-compatible-with-venv-bundle.patch
 
 ### IMPORTANT: The line below is used as a snippet marker. Do not touch it.
 ### SALT PATCHES LIST END

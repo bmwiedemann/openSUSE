@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Aug  6 13:29:05 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.1.4:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.1.4
+- Changes since 6.1.3:
+  * update version for new release
+  * daemon: Don't leave dangling Action pointers in idle-time containers (kde#490356,kde#490421)
+- Drop patches, now upstream:
+  * 0001-daemon-Don-t-leave-dangling-Action-pointers-in-idle-.patch
+
+-------------------------------------------------------------------
 Wed Jul 24 17:23:00 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add patch to fix crash on display wake up (kde#490356, kde#490421):

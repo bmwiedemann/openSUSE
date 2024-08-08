@@ -1,32 +1,78 @@
-From e484252ee7d39816c10c3a952b2e4fffd2c4967e Mon Sep 17 00:00:00 2001
-From: Andreas Stieger <Andreas.Stieger@gmx.de>
-Date: Sat, 3 Aug 2024 19:46:32 +0200
-Subject: [PATCH] Build with Botan 3
-References: https://github.com/solemnwarning/rehex/pull/240
+From 77fe9c22460caf350c9015e8e3292ff97e3493b0 Mon Sep 17 00:00:00 2001
+From: Daniel Collins <solemnwarning@solemnwarning.net>
+Date: Tue, 6 Aug 2024 22:43:31 +0100
+Subject: [PATCH] Detect whether Botan 3.x or 2.x is installed.
 
-Botan 2 is EOL EOY 2024
 ---
- Makefile | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ Makefile                        | 18 +++++++++++++++---
+ Makefile.win                    |  4 ----
+ tools/mac-build-dependencies.sh |  1 +
+ 3 files changed, 16 insertions(+), 7 deletions(-)
 
 diff --git a/Makefile b/Makefile
-index 384902c..084905f 100644
+index 384902cc..1b043dcc 100644
 --- a/Makefile
 +++ b/Makefile
-@@ -16,11 +16,11 @@
+@@ -14,13 +14,19 @@
+ # this program; if not, write to the Free Software Foundation, Inc., 51
+ # Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  
++# Returns the first of $(1) or $(2) which is defined in the pkg-config
++# database, or errors if neither are.
++pkg-select-ab = $\
++	$(if $(filter yes,$(shell pkg-config --exists $(1) && echo yes)),$(1),$\
++		$(if $(filter yes,$(shell pkg-config --exists $(2) && echo yes)),$(2),$\
++			$(error Could not find $(1) or $(2) using pkg-config)))
++
  LUA          ?= lua
  WX_CONFIG    ?= wx-config
 -BOTAN_PKG    ?= botan-2
-+BOTAN_PKG    ?= botan-3
++BOTAN_PKG    ?= $(call pkg-select-ab,botan-3,botan-2)
  CAPSTONE_PKG ?= capstone
  JANSSON_PKG  ?= jansson
- LUA_PKG      ?= $(shell pkg-config --exists lua5.3 && echo lua5.3 || echo lua)
+-LUA_PKG      ?= $(shell pkg-config --exists lua5.3 && echo lua5.3 || echo lua)
 -CXXSTD       ?= -std=c++11
-+CXXSTD       ?= -std=c++20
++LUA_PKG      ?= $(call pkg-select-ab,lua5.3,lua)
  
  EXE ?= rehex
  EMBED_EXE ?= ./tools/embed
--- 
-2.46.0
-
+@@ -82,6 +88,12 @@ ifeq ($(need_compiler_flags),1)
+ 	
+ 	GTK_CFLAGS = $$($(GTKCONFIG_EXE) --cflags)
+ 	GTK_LIBS   = $$($(GTKCONFIG_EXE) --libs)
++	
++	ifeq ($(BOTAN_PKG),botan-3)
++		CXXSTD ?= -std=c++20
++	else
++		CXXSTD ?= -std=c++11
++	endif
+ endif
+ 
+ BASE_CFLAGS := -Wall
+diff --git a/Makefile.win b/Makefile.win
+index bb4a1297..68aabea9 100644
+--- a/Makefile.win
++++ b/Makefile.win
+@@ -40,10 +40,6 @@ CXXFLAGS += -Iinclude/gcc-win-include/
+ CFLAGS   += -DREHEX_CACHE_STRING_BITMAPS
+ CXXFLAGS += -DREHEX_CACHE_STRING_BITMAPS
+ 
+-# Botan 3 requires C++20
+-BOTAN_PKG := botan-3
+-CXXSTD    := -std=c++20
+-
+ include Makefile
+ 
+ DISTDIR ?= rehex-$(VERSION)
+diff --git a/tools/mac-build-dependencies.sh b/tools/mac-build-dependencies.sh
+index 10547961..f411fa7f 100755
+--- a/tools/mac-build-dependencies.sh
++++ b/tools/mac-build-dependencies.sh
+@@ -473,6 +473,7 @@ You can now build rehex using \`make -f Makefile.osx\` in this shell.
+ The dependencies have been cached and won't be rebuilt if you source this
+ script again.
+ EOF
++	export BOTAN_PKG="botan-2" # used to determine required -std= for C++
+ 	export BOTAN_LIBS="-L${_rehex_botan_target_dir}/lib/ -lbotan-2"
+ 	export BOTAN_CFLAGS="-I${_rehex_botan_target_dir}/include/botan-2/"
+ 

@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2260f6ddbc10912fdcf6af1b171e7f0a</srcmd5>
+    <version>9.8.0</version>
+    <time>1723107486</time>
+    <user>dimstar_suse</user>
+    <comment>new package ansible-9 for the 9.x version of ansible, requiring ansible-core 2.16.x</comment>
+    <requestid>1192167</requestid>
+  </revision>
+</revisionlist>

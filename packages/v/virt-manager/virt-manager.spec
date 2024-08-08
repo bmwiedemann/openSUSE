@@ -129,6 +129,8 @@ Patch88:        088-tests-Fix-host-copy-XML-with-libvirt-10.1.0.patch
 Patch89:        089-hostdev-Fix-error-when-mdev-type_id-is-missing.patch
 Patch90:        090-db1b2fbc-Use-GtkFileChooserNative.patch
 Patch91:        091-uitests-Fix-with-GtkFileChooserNative.patch
+Patch92:        092-cli-Use-regex-for-grep-and-nogrep-args.patch
+Patch93:        093-cli-Fix-with-latest-libvirt.patch
 Patch100:       revert-363fca41-virt-install-Require-osinfo-for-non-x86-HVM-case-too.patch
 # SUSE Only
 Patch150:       virtman-desktop.patch
@@ -316,6 +318,7 @@ donttest="$donttest or testCLI0194virt_install_xen_pv"
 donttest="$donttest or testCLI0195virt_install_xen_hvm"
 donttest="$donttest or testCLI0196virt_install_xen_hvm"
 donttest="$donttest or testCLI0203virt_install_bhyve_default_f27"
+#
 donttest="$donttest or testCLI0280virt_xml_build_disk_domain"
 donttest="$donttest or testCLI0287virt_xml_edit_cpu_host_copy"
 donttest="$donttest or testCLI0288virt_xml_build_pool_logical_disk"

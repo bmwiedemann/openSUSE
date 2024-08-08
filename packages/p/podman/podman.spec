@@ -22,7 +22,7 @@
 %bcond_without  apparmor
 
 Name:           podman
-Version:        5.1.2
+Version:        5.2.0
 Release:        0
 Summary:        Daemon-less container engine for managing containers, pods and images
 License:        Apache-2.0
@@ -30,7 +30,6 @@ Group:          System/Management
 URL:            https://%{project}
 Source0:        %{name}-%{version}.tar.gz
 Source1:        podman.conf
-Patch0:         0001-Backport-fix-for-CVE-2024-6104.patch
 BuildRequires:  man
 BuildRequires:  bash-completion
 BuildRequires:  device-mapper-devel
@@ -222,6 +221,7 @@ install -m 0644 -t %{buildroot}%{_prefix}/lib/modules-load.d/ %{SOURCE1}
 %{_userunitdir}/podman-kube@.service
 %{_userunitdir}/podman-restart.service
 %{_userunitdir}/podman-auto-update.timer
+%{_userunitdir}/podman-clean-transient.service
 %{_systemdusergeneratordir}/podman-user-generator
 %{_systemdgeneratordir}/podman-system-generator
 %ghost /run/podman
@@ -263,10 +263,10 @@ install -m 0644 -t %{buildroot}%{_prefix}/lib/modules-load.d/ %{SOURCE1}
 
 %preun
 %service_del_preun podman.service podman.socket podman-auto-update.service podman-restart.service podman-auto-update.timer podman-clean-transient.service
-%systemd_user_preun podman.service podman.socket podman-auto-update.service podman-restart.service podman-auto-update.timer
+%systemd_user_preun podman.service podman.socket podman-auto-update.service podman-restart.service podman-auto-update.timer podman-clean-transient.service
 
 %postun
 %service_del_postun podman.service podman.socket podman-auto-update.service podman-restart.service podman-auto-update.timer podman-clean-transient.service
-%systemd_user_postun podman.service podman.socket podman-auto-update.service podman-restart.service podman-auto-update.timer
+%systemd_user_postun podman.service podman.socket podman-auto-update.service podman-restart.service podman-auto-update.timer podman-clean-transient.service
 
 %changelog

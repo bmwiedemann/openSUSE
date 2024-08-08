@@ -1,7 +1,7 @@
 #
 # spec file for package libdb_java-4_8
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,6 +34,8 @@ Patch1:         libdb_java-4_8-fix-java10-comp.patch
 # PATCH-FIX-OPENSUSE Fix build with GCC8, conflict with reserved builtin name
 Patch2:         libdb-fix-atomic.patch
 Patch3:         reproducible.patch
+# PATCH-FIX-UPSTREAM bsc#1174414 CVE-2019-2708 libdb: data store execution leads to partial DoS
+Patch4:         libdb-4_8-CVE-2019-2708.patch
 BuildRequires:  autoconf
 BuildRequires:  gcc-c++
 BuildRequires:  java-sdk >= 1.8
@@ -69,6 +71,7 @@ These are the development files.
 if jar --help|grep -q -- --date=TIMESTAMP ; then
 %patch -P 3 -p1
 fi
+%patch -P 4 -p1
 
 %build
 cd dist

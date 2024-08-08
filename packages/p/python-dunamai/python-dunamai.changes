@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Aug  7 04:35:52 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.22.0:
+  * Fixed: The --ignore-untracked CLI flag was ignored.
+  * Added: --commit-length option.
+
+-------------------------------------------------------------------
 Fri Jun 28 01:52:24 UTC 2024 - Richard Rahl <rrahl0@disroot.org>
 
 - update to 1.21.2:

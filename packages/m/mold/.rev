@@ -870,4 +870,41 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1185859</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>5a343c99bf4d90f55311763e5a68e9c8</srcmd5>
+    <version>2.33.0</version>
+    <time>1723107455</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.33.0
+  * mold gained a new linker flag --separate-debug-info to bundle debug info
+    sections into a separate file instead of putting them into a main output file.
+    You can optionally specify a filename in the form of
+    --separate-debug-info=&lt;filename&gt;. By default, a debug info file is created in
+    the same directory as the main output file with the .dbg extension. mold embeds
+    the debug file's filename into the main output file so that gdb can
+    automatically follow the link to find debug info when debugging the main output
+    file.
+  * The main objective of this flag is to speed up the mold linker even more. By
+    default, mold creates a separate debug file in the background after creating a
+    main output file, so that you can start running the executable as soon as
+    possible while mold is still working on linking its debug info sections. For
+    example, linking clang with debug info normally takes ~1.70s on a Threadripper
+    7980X machine, while it takes only ~0.52s with --separate-debug-info. Shaving
+    off a full second in quick edit-rebuild-run cycles should improve programmers'
+    productivity. If you do not want mold to work in the background, pass the
+    --no-detach option. (596ffa9)
+  * mold now supports the --no-allow-shlib-undefined flag. If the option is given,
+    mold checks if all undefined symbols are resolved not only for input object
+    files but also for shared libraries passed to the linker. To use the feature,
+    you need to pass all shared libraries, including transitively dependent ones, to
+    the linker so that the linker can resolve all symbols that are available at
+    runtime. (3001f02)
+  * mold gained the --dynamic-list-data flag for the sake of compatibility with GNU
+    ld. If the flag is given, all data symbols are exported as dynamic symbols.
+    (dd8d971)
+  * [x86-64] -z x86-64-v2, -z x86-64-v3, -z x86-64-v4 flags are supported. (5606087)
+  * [x86-64] Recent x86-64 processors support Intel CET to protect control flow
+    integrity. When the feature is enabled, the instruction that is executed</comment>
+    <requestid>1192095</requestid>
+  </revision>
 </revisionlist>

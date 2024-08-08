@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Aug  6 13:27:53 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.1.4:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.1.4
+- Changes since 6.1.3:
+  * update version for new release
+  * Make X-KDE-Init-Phase a proper in in JSON and remove obsolete X-KDE-Init-Symbol values
+  * Folder View: hide existing label while renaming (kde#482802)
+  * Folder View: re-transfer focus to grid view after rename (kde#491088)
+  * Use bindings for anchors (kde#489492)
+  * Restore the folderview title config
+  * applets/taskmanager: fix size of textual list popup
+  * applets/taskmanager: Fix applet's layout size with multiple rows (kde#490319)
+  * [kcms/access] Set range for visual bell duration selector
+
+-------------------------------------------------------------------
 Tue Jul 16 13:24:36 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.1.3:

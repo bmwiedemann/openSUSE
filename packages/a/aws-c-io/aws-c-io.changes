@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Aug  2 10:50:07 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.14.16
+  * Use const pointers in secure_channel_tls_handler.c by @teo-tsirpanis in (#664)
+
+-------------------------------------------------------------------
 Wed Jul 31 09:05:34 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.14.15

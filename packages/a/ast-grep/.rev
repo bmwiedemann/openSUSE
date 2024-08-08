@@ -485,4 +485,24 @@
   * chore(deps): update rust crate tree-sitter to v0.22.2 93d684a</comment>
     <requestid>1191590</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>b5d59253c2e1d65f42dbb99f62c6585c</srcmd5>
+    <version>0.26.0+0</version>
+    <time>1723107451</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.26.0:
+  * feat: Additional impls for language types #1379
+  * feat: append note to error message if available #1384
+  * fix: LSP should skip files outside the workspace root #1382
+  * fix(deps): update dependency @babel/core to v7.25.2 3b0be88
+  * refactor: split two macros b760eb8
+  * refactor: simplify visitor 5ae03ae
+
+- Update to 0.25.7:
+  * feat: add charCount to split lines #1381
+  * chore(deps): update dependency @types/node to v20.14.14 bca7e7b
+  * fix(deps): update rust crate clap to v4.5.13 c143464
+  * fix(deps): update rust crate toml_edit to v0.22.20 170da4c</comment>
+    <requestid>1192499</requestid>
+  </revision>
 </revisionlist>

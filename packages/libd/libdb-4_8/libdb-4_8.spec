@@ -1,7 +1,7 @@
 #
 # spec file for package libdb-4_8
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,6 +34,8 @@ Patch0:         db-%{version}.patch
 # PATCH-FIX-OPENSUSE Fix build with GCC8, conflict with reserved builtin name
 Patch1:         libdb-fix-atomic.patch
 Patch2:         0001-OPD-deadlock-RH-BZ-1349779.patch
+# PATCH-FIX-UPSTREAM bsc#1174414 CVE-2019-2708 libdb: data store execution leads to partial DoS
+Patch3:         libdb-4_8-CVE-2019-2708.patch
 BuildRequires:  autoconf
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -95,6 +97,7 @@ This package contains the header files and libraries.
 %patch -P 0
 %patch -P 1
 %patch -P 2 -p1
+%patch -P 3 -p1
 
 %build
 cd dist

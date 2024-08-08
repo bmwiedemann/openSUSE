@@ -190,4 +190,27 @@
   * fsck.exfat: Fix memory leak in an error path</comment>
     <requestid>1181389</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>362d2fc330e497a25593fa6f832707fb</srcmd5>
+    <version>1.2.5</version>
+    <time>1723107422</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.2.5:
+  CHANGES :
+  * exfatprogs: remove the limitation that the device
+    path length cannot exceed 254 bytes.
+  * exfatprogs: include the test images in the release
+    package.
+  NEW FEATURES :
+  * fsck.exfat: check and repair the filename which has
+    invalid characters.
+  BUG FIXES :
+  * tune.exfat: check whether the volume has invalid
+    characters correctly.
+  * fsck.exfat: check whether the filename and volume
+    has invalid characters correctly.
+  * fsck.exfat: fix endianess issues which happen
+    in the big-endian system.</comment>
+    <requestid>1192018</requestid>
+  </revision>
 </revisionlist>

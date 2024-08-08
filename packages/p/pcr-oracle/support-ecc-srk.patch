@@ -1,0 +1,413 @@
+From 60ce42dbf61ce89012d9bc71c92c5cc92759b02c Mon Sep 17 00:00:00 2001
+From: Gary Lin <glin@suse.com>
+Date: Wed, 3 Apr 2024 14:41:49 +0800
+Subject: [PATCH 1/3] Update the comment for SRK template
+
+USERWITHAUTH and NODA are set according to "TCG TPM v2.0 Provisioning
+Guidance". This commit updates the comment to add the reference.
+
+Signed-off-by: Gary Lin <glin@suse.com>
+---
+ src/pcr-policy.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/src/pcr-policy.c b/src/pcr-policy.c
+index 8f2c42c..f03b6e0 100644
+--- a/src/pcr-policy.c
++++ b/src/pcr-policy.c
+@@ -67,8 +67,9 @@ static TPM2B_PUBLIC SRK_template = {
+ 	.publicArea = {
+ 		.type = TPM2_ALG_RSA,
+ 		.nameAlg = TPM2_ALG_SHA256,
+-		/* For reasons not clear to me, grub2 derives the SRK using the NODA attribute,
+-		 * which means it is not subject to dictionary attack protections. */
++		/* Per "Storage Primary Key (SRK) Templates" in section 7.5.1 of
++		 * TCG TPM v2.0 Provisioning Guidance 1.0 Revision 1.0, the
++		 * template for shared SRKs sets USERWITHAUTH and NODA. */
+ 		.objectAttributes = TPMA_OBJECT_RESTRICTED|TPMA_OBJECT_DECRYPT \
+ 			|TPMA_OBJECT_FIXEDTPM|TPMA_OBJECT_FIXEDPARENT \
+ 			|TPMA_OBJECT_SENSITIVEDATAORIGIN|TPMA_OBJECT_USERWITHAUTH \
+-- 
+2.35.3
+
+
+From 0085c5a6a47f433dc69739c54b9db11796aff62e Mon Sep 17 00:00:00 2001
+From: Gary Lin <glin@suse.com>
+Date: Wed, 10 Apr 2024 16:20:44 +0800
+Subject: [PATCH 2/3] Support SRK template with ECC_NIST_P256
+
+When sealing data with SRK, the data is actually encrypted with the
+symmetric key, and the selection of the asymmetric algorithm is only
+a parameter for KDF to derive the symmetric key. Compared with RSA,
+ECC NIST-P256 provides the faster key generation, so it's a better
+choice for the SRK template in general.
+
+This commit adds a new option, '--ecc-srk', to switch the default SRK
+template from the RSA one to the ECC one, so that the user can specify
+the SRK template when sealing/unsealing data.
+
+Signed-off-by: Gary Lin <glin@suse.com>
+---
+ src/oracle.c     |  7 +++++++
+ src/pcr-policy.c | 44 +++++++++++++++++++++++++++++++++++++++++---
+ src/pcr.h        |  1 +
+ 3 files changed, 49 insertions(+), 3 deletions(-)
+
+diff --git a/src/oracle.c b/src/oracle.c
+index 1cafafc..f391430 100644
+--- a/src/oracle.c
++++ b/src/oracle.c
+@@ -92,6 +92,7 @@ enum {
+ 	OPT_RSA_PUBLIC_KEY,
+ 	OPT_RSA_GENERATE_KEY,
+ 	OPT_RSA_BITS,
++	OPT_ECC_SRK,
+ 	OPT_INPUT,
+ 	OPT_OUTPUT,
+ 	OPT_AUTHORIZED_POLICY,
+@@ -125,6 +126,7 @@ static struct option options[] = {
+ 	{ "public-key",		required_argument,	0,	OPT_RSA_PUBLIC_KEY },
+ 	{ "rsa-generate-key",	no_argument,		0,	OPT_RSA_GENERATE_KEY },
+ 	{ "rsa-bits",		required_argument,	0,	OPT_RSA_BITS },
++	{ "ecc-srk",		no_argument,		0,	OPT_ECC_SRK },
+ 	{ "input",		required_argument,	0,	OPT_INPUT },
+ 	{ "output",		required_argument,	0,	OPT_OUTPUT },
+ 	{ "authorized-policy",	required_argument,	0,	OPT_AUTHORIZED_POLICY },
+@@ -1042,6 +1044,8 @@ main(int argc, char **argv)
+ 	unsigned int rsa_bits = 2048;
+ 	int c, exit_code = 0;
+ 
++	set_srk_alg("RSA");
++
+ 	while ((c = getopt_long(argc, argv, "dhA:CF:LSZ", options, NULL)) != EOF) {
+ 		switch (c) {
+ 		case 'A':
+@@ -1109,6 +1113,9 @@ main(int argc, char **argv)
+ 		case OPT_RSA_BITS:
+ 			opt_rsa_bits = optarg;
+ 			break;
++		case OPT_ECC_SRK:
++			set_srk_alg("ECC");
++			break;
+ 		case OPT_INPUT:
+ 			opt_input = optarg;
+ 			break;
+diff --git a/src/pcr-policy.c b/src/pcr-policy.c
+index f03b6e0..f65becf 100644
+--- a/src/pcr-policy.c
++++ b/src/pcr-policy.c
+@@ -62,7 +62,7 @@ struct target_platform {
+ 					const stored_key_t *public_key_file);
+ };
+ 
+-static TPM2B_PUBLIC SRK_template = {
++static TPM2B_PUBLIC RSA_SRK_template = {
+ 	.size = sizeof(TPMT_PUBLIC),
+ 	.publicArea = {
+ 		.type = TPM2_ALG_RSA,
+@@ -88,6 +88,35 @@ static TPM2B_PUBLIC SRK_template = {
+ 	}
+ };
+ 
++static TPM2B_PUBLIC ECC_SRK_template = {
++	.size = sizeof(TPMT_PUBLIC),
++	.publicArea = {
++		.type = TPM2_ALG_ECC,
++		.nameAlg = TPM2_ALG_SHA256,
++		/* Per "Storage Primary Key (SRK) Templates" in section 7.5.1 of
++		 * TCG TPM v2.0 Provisioning Guidance 1.0 Revision 1.0, the
++		 * template for shared SRKs sets USERWITHAUTH and NODA. */
++		.objectAttributes = TPMA_OBJECT_RESTRICTED|TPMA_OBJECT_DECRYPT \
++			|TPMA_OBJECT_FIXEDTPM|TPMA_OBJECT_FIXEDPARENT \
++			|TPMA_OBJECT_SENSITIVEDATAORIGIN|TPMA_OBJECT_USERWITHAUTH \
++			|TPMA_OBJECT_NODA,
++		.parameters = {
++			.eccDetail = {
++				.symmetric = {
++					.algorithm = TPM2_ALG_AES,
++					.keyBits = { .sym = 128 },
++					.mode = { .sym = TPM2_ALG_CFB },
++				},
++				.scheme = { TPM2_ALG_NULL },
++				.curveID = TPM2_ECC_NIST_P256,
++				.kdf.scheme = TPM2_ALG_NULL
++			}
++		}
++	}
++};
++
++static const TPM2B_PUBLIC *SRK_template;
++
+ static const TPM2B_PUBLIC seal_public_template = {
+             .size = sizeof(TPMT_PUBLIC),
+             .publicArea = {
+@@ -107,10 +136,19 @@ static const TPM2B_PUBLIC seal_public_template = {
+             }
+         };
+ 
++void
++set_srk_alg (const char *alg)
++{
++	if (strcmp(alg, "RSA") == 0)
++		SRK_template = &RSA_SRK_template;
++	else
++		SRK_template = &ECC_SRK_template;
++}
++
+ void
+ set_srk_rsa_bits (const unsigned int rsa_bits)
+ {
+-	SRK_template.publicArea.parameters.rsaDetail.keyBits = rsa_bits;
++	RSA_SRK_template.publicArea.parameters.rsaDetail.keyBits = rsa_bits;
+ }
+ 
+ static inline const tpm_evdigest_t *
+@@ -609,7 +647,7 @@ esys_create_primary(ESYS_CONTEXT *esys_context, ESYS_TR *handle_ret)
+ 	t0 = timing_begin();
+ 	rc = Esys_CreatePrimary(esys_context, ESYS_TR_RH_OWNER,
+ 			ESYS_TR_PASSWORD,
+-			ESYS_TR_NONE, ESYS_TR_NONE, &in_sensitive, &SRK_template,
++			ESYS_TR_NONE, ESYS_TR_NONE, &in_sensitive, SRK_template,
+ 			NULL, &creation_pcr, handle_ret,
+ 			NULL, NULL,
+ 			NULL, NULL);
+diff --git a/src/pcr.h b/src/pcr.h
+index 4d8f816..f1dc9af 100644
+--- a/src/pcr.h
++++ b/src/pcr.h
+@@ -39,6 +39,7 @@ typedef struct tpm_pcr_selection {
+ 	const tpm_algo_info_t *	algo_info;
+ } tpm_pcr_selection_t;
+ 
++extern void		set_srk_alg (const char *alg);
+ extern void		set_srk_rsa_bits (const unsigned int rsa_bits);
+ extern void		pcr_bank_initialize(tpm_pcr_bank_t *bank, unsigned int pcr_mask, const tpm_algo_info_t *algo);
+ extern bool		pcr_bank_wants_pcr(tpm_pcr_bank_t *bank, unsigned int index);
+-- 
+2.35.3
+
+
+From 207bd496868d65455e63aa9586bfc6e02900a4a1 Mon Sep 17 00:00:00 2001
+From: Gary Lin <glin@suse.com>
+Date: Wed, 24 Apr 2024 14:53:25 +0800
+Subject: [PATCH 3/3] Update to conform the latest TPM 2.0 Key File
+
+For TPM 2.0 Key File, the default asymmetric algorithm of SRK is ECC
+NIST-P256, not RSA 2048. A new field 'rsaParent' is introduced to note
+the key is sealed with RSA SRK.
+
+This commit implements two new fields: description and rsaParent in
+tpm2key.c/tpm2key-asn.h and sets rsaParent when RSA SRK is used to seal
+the key. When unsealing a tpm2key, the SRK template is set to the RSA
+template if rsaParent is TRUE. Otherwise, the SRK template is switched
+to the ECC SRK template.
+
+A new testing script, test-tpm2key-ecc.sh, is also added to test the
+tpm2key file sealed with ECC SRK.
+
+Signed-off-by: Gary Lin <glin@suse.com>
+---
+ src/pcr-policy.c    |   8 +++
+ src/tpm2key-asn.h   |   4 ++
+ src/tpm2key.c       |   2 +
+ test-tpm2key-ecc.sh | 127 ++++++++++++++++++++++++++++++++++++++++++++
+ 4 files changed, 141 insertions(+)
+ create mode 100755 test-tpm2key-ecc.sh
+
+diff --git a/src/pcr-policy.c b/src/pcr-policy.c
+index f65becf..90f60ff 100644
+--- a/src/pcr-policy.c
++++ b/src/pcr-policy.c
+@@ -1505,6 +1505,11 @@ tpm2key_unseal_secret(const char *input_path, const char *output_path,
+ 	if (!tpm2key_read_file(input_path, &tpm2key))
+ 		return false;
+ 
++	if (tpm2key->rsaParent == 1)
++		SRK_template = &RSA_SRK_template;
++	else
++		SRK_template = &ECC_SRK_template;
++
+ 	buffer_init_read(&buf, tpm2key->pubkey->data, tpm2key->pubkey->length);
+ 	rc = Tss2_MU_TPM2B_PUBLIC_Unmarshal(buf.data, buf.size, &buf.rpos, &pub);
+ 	if (rc != TSS2_RC_SUCCESS)
+@@ -1634,6 +1639,9 @@ tpm2key_write_sealed_secret(const char *pathname,
+ 	if (!tpm2key_basekey(&tpm2key, TPM2_RH_OWNER, sealed_public, sealed_private))
+ 		goto cleanup;
+ 
++	if (SRK_template->publicArea.type == TPM2_ALG_RSA)
++		tpm2key->rsaParent = 1;
++
+ 	if (pcr_sel && !tpm2key_add_policy_policypcr(tpm2key, pcr_sel))
+ 		goto cleanup;
+ 
+diff --git a/src/tpm2key-asn.h b/src/tpm2key-asn.h
+index 3f1c0d7..d0cdfaa 100644
+--- a/src/tpm2key-asn.h
++++ b/src/tpm2key-asn.h
+@@ -77,6 +77,8 @@ DEFINE_STACK_OF(TSSAUTHPOLICY);
+  *	policy		[1] EXPLICIT SEQUENCE OF TPMPolicy OPTIONAL
+  *	secret		[2] EXPLICIT OCTET STRING OPTIONAL
+  *	authPolicy	[3] EXPLICIT SEQUENCE OF TPMAuthPolicy OPTIONAL
++ *	description     [4] EXPLICIT UTF8String OPTIONAL
++ *	rsaParent       [5] EXPLICIT BOOLEAN OPTIONAL
+  *	parent		INTEGER
+  *	pubkey		OCTET STRING
+  *	privkey		OCTET STRING
+@@ -89,6 +91,8 @@ typedef struct {
+ 	STACK_OF(TSSOPTPOLICY) *policy;
+ 	ASN1_OCTET_STRING *secret;
+ 	STACK_OF(TSSAUTHPOLICY) *authPolicy;
++	ASN1_UTF8STRING description;
++	ASN1_BOOLEAN rsaParent;
+ 	ASN1_INTEGER *parent;
+ 	ASN1_OCTET_STRING *pubkey;
+ 	ASN1_OCTET_STRING *privkey;
+diff --git a/src/tpm2key.c b/src/tpm2key.c
+index cabd791..af4c984 100644
+--- a/src/tpm2key.c
++++ b/src/tpm2key.c
+@@ -278,6 +278,8 @@ ASN1_SEQUENCE(TSSPRIVKEY) = {
+ 	ASN1_EXP_SEQUENCE_OF_OPT(TSSPRIVKEY, policy, TSSOPTPOLICY, 1),
+ 	ASN1_EXP_OPT(TSSPRIVKEY, secret, ASN1_OCTET_STRING, 2),
+ 	ASN1_EXP_SEQUENCE_OF_OPT(TSSPRIVKEY, authPolicy, TSSAUTHPOLICY, 3),
++	ASN1_EXP_OPT(TSSPRIVKEY, description, ASN1_UTF8STRING, 4),
++	ASN1_EXP_OPT(TSSPRIVKEY, rsaParent, ASN1_BOOLEAN, 5),
+ 	ASN1_SIMPLE(TSSPRIVKEY, parent, ASN1_INTEGER),
+ 	ASN1_SIMPLE(TSSPRIVKEY, pubkey, ASN1_OCTET_STRING),
+ 	ASN1_SIMPLE(TSSPRIVKEY, privkey, ASN1_OCTET_STRING)
+diff --git a/test-tpm2key-ecc.sh b/test-tpm2key-ecc.sh
+new file mode 100755
+index 0000000..d87acff
+--- /dev/null
++++ b/test-tpm2key-ecc.sh
+@@ -0,0 +1,127 @@
++#!/bin/bash
++#
++# This script needs to be run with root privilege
++#
++
++# TESTDIR=policy.test
++PCR_MASK=0,2,4,12
++
++pcr_oracle=pcr-oracle
++if [ -x pcr-oracle ]; then
++	pcr_oracle=$PWD/pcr-oracle
++fi
++
++function call_oracle {
++
++	echo "****************"
++	echo "pcr-oracle $*"
++	$pcr_oracle --target-platform tpm2.0 -d "$@"
++}
++
++if [ -z "$TESTDIR" ]; then
++	tmpdir=$(mktemp -d /tmp/pcrtestXXXXXX)
++	trap "cd / && rm -rf $tmpdir" 0 1 2 10 11 15
++
++	TESTDIR=$tmpdir
++fi
++
++trap "echo 'FAIL: command exited with error'; exit 1" ERR
++
++echo "This is super secret" >$TESTDIR/secret
++
++set -e
++cd $TESTDIR
++
++echo "Seal the secret with PCR policy"
++call_oracle \
++	--from current \
++	--input secret \
++	--output sealed \
++	--ecc-srk \
++	seal-secret $PCR_MASK
++
++echo "Unseal the sealed with PCR policy"
++call_oracle \
++	--input sealed \
++	--output recovered \
++	unseal-secret
++
++if ! cmp secret recovered; then
++	echo "BAD: Unable to recover original secret"
++	echo "Secret:"
++	od -tx1c secret
++	echo "Recovered:"
++	od -tx1c recovered
++	exit 1
++else
++	echo "NICE: we were able to recover the original secret"
++fi
++
++rm -f sealed recovered
++
++call_oracle \
++	--rsa-generate-key \
++	--private-key policy-key.pem \
++	--auth authorized.policy \
++	create-authorized-policy $PCR_MASK
++
++call_oracle \
++	--private-key policy-key.pem \
++	--public-key policy-pubkey \
++	store-public-key
++
++call_oracle \
++	--auth authorized.policy \
++	--input secret \
++	--output sealed \
++	--ecc-srk \
++	seal-secret
++
++for attempt in first second; do
++	echo "Sign the set of PCRs we want to authorize"
++	call_oracle \
++		--policy-name "authorized-policy-test" \
++		--private-key policy-key.pem \
++		--from current \
++		--input sealed \
++		--output sealed-signed \
++		sign $PCR_MASK
++
++	echo "$attempt attempt to unseal the secret"
++	call_oracle \
++		--input sealed-signed \
++		--output recovered \
++		unseal-secret
++
++	if ! cmp secret recovered; then
++		echo "BAD: Unable to recover original secret"
++		echo "Secret:"
++		od -tx1c secret
++		echo "Recovered:"
++		od -tx1c recovered
++		exit 1
++	else
++		echo "NICE: we were able to recover the original secret"
++	fi
++
++	if [ "$attempt" = "second" ]; then
++		break
++	fi
++
++	echo "Extend PCR 12. Unsealing should fail afterwards"
++	tpm2_pcrextend 12:sha256=21d2013e3081f1e455fdd5ba6230a8620c3cfc9a9c31981d857fe3891f79449e
++	rm -f recovered
++	call_oracle \
++		--input sealed-signed \
++		--output recovered \
++		unseal-secret || true
++
++	if [ -s recovered ] && ! cmp secret recovered; then
++		echo "BAD: We were still able to recover the original secret. Something stinks"
++		exit 1
++	else
++		echo "GOOD: After changing a PCR, the secret can no longer be unsealed"
++	fi
++
++	echo "Now recreate the signed PCR policy"
++done
+-- 
+2.35.3
+

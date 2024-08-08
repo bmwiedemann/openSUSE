@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jul 31 15:20:57 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 15.0+git20240730.c5c8cf6:
+  * #316 don't try text/html first, honour preferred format
+
+-------------------------------------------------------------------
+Mon Jul 29 19:17:53 UTC 2024 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Updating UglifyJS from 3.19.0 -> 3.19.1
+
+-------------------------------------------------------------------
 Thu Jul 18 16:56:50 UTC 2024 - scott.bradnick@suse.com
 
 - Update to version 15.0+git20240718.bebca92:

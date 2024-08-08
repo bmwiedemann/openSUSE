@@ -24,6 +24,7 @@ Summary:        Reverse Engineers' Hex Editor
 License:        GPL-2.0-only
 URL:            https://github.com/solemnwarning/rehex
 Source0:        https://github.com/solemnwarning/rehex/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Patch0:         rehex-0.62.1-Build-with-Botan-3.patch
 BuildRequires:  dos2unix
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
@@ -37,7 +38,6 @@ BuildRequires:  pkgconfig(capstone)
 BuildRequires:  pkgconfig(jansson)
 BuildRequires:  pkgconfig(lua)
 %if 0%{?suse_version} > 1600
-Patch0:         rehex-0.62.1-Build-with-Botan-3.patch
 BuildRequires:  pkgconfig(botan-3)
 %else
 BuildRequires:  pkgconfig(botan-2)

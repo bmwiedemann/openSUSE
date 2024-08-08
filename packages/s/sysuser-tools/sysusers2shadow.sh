@@ -52,12 +52,11 @@ else
 			    continue
 			fi
 
-			# Split user and Group id
-			#userGrouArr=(${2//:/ })
-			#USER_ID=${userGrouArr[0]}
-			#GROUP_ID=${userGrouArr[1]}
-			USER_ID=$2
-			GROUP_ID=""
+			# Split user and Group id. Must work with busybox sh.
+			case $2 in
+				(*:*) USER_ID=${2%:*} GROUP_ID=${2##*:};;
+				(*)   USER_ID=$2      GROUP_ID="";;
+			esac
 
 			if [ -n "$USER_ID" ] && [ "$USER_ID" != "-" ]; then
 				ARGUMENTS="-u $USER_ID $ARGUMENTS"
@@ -89,9 +88,13 @@ else
 
 			    run /usr/sbin/useradd -r -c "$3" -d "${homedir}" $ARGUMENTS
 			elif [ -x "$busybox" ]; then
+			    if [ -n "$GROUP_ID" ] && [ "$GROUP_ID" != "-" ]; then
+				run $busybox adduser -S -H -g "$3" -G "GROUP_ID" -h "${homedir}" $ARGUMENTS
+			    else
 				/usr/bin/getent group "$1" >> /dev/null || $busybox addgroup -S "$1"
 
 				run $busybox adduser -S -H -g "$3" -G "$1" -h "${homedir}" $ARGUMENTS
+			    fi
 			else
 				echo "ERROR: neither useradd nor busybox found!"
 				exit 1

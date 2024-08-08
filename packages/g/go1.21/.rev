@@ -313,4 +313,17 @@
   * go#68051 cmd/go: go list -u -m all fails loading module retractions: module requires go &gt;= 1.N+1 (running go 1.N) (forwarded request 1184951 from jfkw)</comment>
     <requestid>1184953</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>cdf03961a614b1c403f8b2a377eb4433</srcmd5>
+    <version>1.21.13</version>
+    <time>1723107432</time>
+    <user>dimstar_suse</user>
+    <comment>- go1.21.13 (released 2024-08-06) includes fixes to the go command,
+  the covdata command, and the bytes package.
+  Refs boo#1212475 go1.21 release tracking
+  * go#68491 cmd/covdata: too many open files due to defer f.Close() in for loop
+  * go#68474 bytes: IndexByte can return -4294967295 when memory usage is above 2^31 on js/wasm
+  * go#68221 cmd/go: list with -export and -covermode=atomic fails to build (forwarded request 1192310 from jfkw)</comment>
+    <requestid>1192313</requestid>
+  </revision>
 </revisionlist>

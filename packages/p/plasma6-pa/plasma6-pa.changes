@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Aug  6 13:28:09 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.1.4:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.1.4
+- Changes since 6.1.3:
+  * update version for new release
+  * volumemonitor: don't crash when there is no pa_context
+  * kcm/SpeakerTest: Fix the minimum layout for Mono channel (kde#476096)
+
+-------------------------------------------------------------------
 Tue Jul 16 13:24:59 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.1.3:

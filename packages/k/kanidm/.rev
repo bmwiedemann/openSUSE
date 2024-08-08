@@ -266,4 +266,41 @@
     <comment></comment>
     <requestid>1177656</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>fed834b1643c1003b9f6cbf7eb9cf610</srcmd5>
+    <version>1.3.1~git0.eed7c07</version>
+    <time>1723107457</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.3.1~git0.eed7c07:
+  * Fix incorrect logic in cred update flow (#2956)
+  * Resolve maintainer bikeshedding
+
+- Update to version 1.3.0~git0.e2a563f:
+  * Release 1.3.0 (#2941)
+  * New orca models (#2909)
+  * Run rust_build CI between multiple Rust versions (#2939)
+  * Bump the all group across 1 directory with 9 updates (#2938)
+  * Bump the all group in /pykanidm with 4 updates (#2937)
+  * fixing println bug (#2935)
+  * Reorganising the daemon startup so it doesn't fail with OTEL configured (#2934)
+  * clippying all the things (#2931)
+  * docs reordering and cleanup (#2932)
+  * Add scim proto to kanidm, refactor to improve serde performance. (#2933)
+  * 20240725 allow connection to older servers (#2930)
+  * Ubuntu/Debian buildy scripty tweaky things (#2928)
+  * kanidm graph graphviz unfit for scripting bc. of non-graphviz output (#2876)
+  * Improve workflow when account policy isnt satisfied (#2927)
+  * Docs rework (#2919)
+  * Bump the all group in /pykanidm with 4 updates (#2924)
+  * Bump the all group with 5 updates (#2925)
+  * Substring Indexing (#2905)
+  * Oauth2 in htmx (#2912)
+  * Strict redirect URL enforcement (#2917)
+  * Bump gix-path from 0.10.8 to 0.10.9 in the cargo group (#2918)
+  * fix typos (#2908)
+  * Add missing groups scope to Grafana example scope-map (#2914)
+  * build profiles: rename release_suse_generic to release_linux (#2907)
+  * 20240716 check mkdir (#2906)</comment>
+    <requestid>1192442</requestid>
+  </revision>
 </revisionlist>

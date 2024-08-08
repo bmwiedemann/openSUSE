@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Aug  6 17:39:08 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.21.13 (released 2024-08-06) includes fixes to the go command,
+  the covdata command, and the bytes package.
+  Refs boo#1212475 go1.21 release tracking
+  * go#68491 cmd/covdata: too many open files due to defer f.Close() in for loop
+  * go#68474 bytes: IndexByte can return -4294967295 when memory usage is above 2^31 on js/wasm
+  * go#68221 cmd/go: list with -export and -covermode=atomic fails to build
+
+-------------------------------------------------------------------
 Tue Jul  2 18:51:48 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - go1.21.12 (released 2024-07-02) includes security fixes to the

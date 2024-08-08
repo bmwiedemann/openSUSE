@@ -129,4 +129,18 @@
   * Add detection of swww to the list of conflicting wallpapers</comment>
     <requestid>1173573</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>63079acd1fb15d7c270bf8b9ba8881a1</srcmd5>
+    <version>1.7</version>
+    <time>1723107451</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.7:
+  * Allow selecting the identifier as an output
+    Identifier is also now shown more clearly with &quot;--help-output/-d&quot;
+  * Improve render loop communication with the Wayland compositor
+    This has fixed more issues with the Nvidia proprietary drivers
+  * Add more documentation on the options &quot;--auto-pause/-p&quot; and
+    &quot;--auto-stop/-s&quot;</comment>
+    <requestid>1192016</requestid>
+  </revision>
 </revisionlist>

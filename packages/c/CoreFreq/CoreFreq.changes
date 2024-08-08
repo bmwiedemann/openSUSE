@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Wed Aug  7 10:07:23 UTC 2024 - Michael Pujos <pujos.michael@gmail.com>
+
+- update to 1.98.1
+  * [AMD]
+    - [Zen] Inject threshold events when thermal is out of bounds
+    - Generic Zen architectures renamed with their Family number
+    - Added a generic entry for the 1A family
+    - Configure TjMax for multiple Ryzen and Threadripper
+    - [CR] Optimize AMD temperature filtering function
+    - [Zen5] Introducing the Eldora architecture aka "Granite Ridge"
+    - [Zen5] Adding entries for Strix Point
+  * [Intel]
+    - Feature-bits of Core Ultra architecture
+    - [TGL][ADL][RPL] New devices to probe IMC and Watchdog
+    - [Raptor Lake-E] Adding the IMC probing entries
+    - Grant full MSR_FLEX_RATIO access to Raptor Lake (06_B7)
+    - Added Host Bridge DIDs of Raptor Lake-E
+    - [ADL ... MTL] Code review of IMC decoders
+    - [ADL] Compute DIMM Bank and Columns on both channels
+    - [ADL] Process channels differently depending on DDR4 or DDR5
+    - 12th to 14th generation IMC decoder refactoring
+    - [ADL ... MTL] Adding Memory Controller Virtual Channel Count
+    - [ADL ... MTL] Channel count as a function of DDPCD DDR_TYPE
+    - [ADL ... MTL] Keep all enabled memory controllers
+    - [12th and superior] Compute tWR quantity as a function of DDR version
+  * [Build]
+    - Now leave version number in Makefile
+    - Pretty print the build and the clean of outputs
+      Allow the V=n option increase the verbose level (incl. kernel)
+    - CPU-Freq build against Linux Kernel version 6.11
+  * [Documentation]
+    - Refreshed README and Makefile
+
+-------------------------------------------------------------------
 Sat Jul 27 11:08:30 UTC 2024 - Michael Pujos <pujos.michael@gmail.com>
 
 - update to 1.98.0

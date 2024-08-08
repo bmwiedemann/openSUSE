@@ -7,4 +7,12 @@
     <comment>new package talhelper: tool to help creating Talos kubernetes clusters</comment>
     <requestid>1190884</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>e37219a43c4813eb52e327346c94fa11</srcmd5>
+    <version>3.0.5</version>
+    <time>1723107461</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1192114</requestid>
+  </revision>
 </revisionlist>
