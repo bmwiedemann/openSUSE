@@ -39,14 +39,13 @@ Name:           azure-cli
 Name:           azure-cli%{?name_ext}
 %endif
 %define         short_name azure-cli
-Version:        2.62.0
+Version:        2.63.0
 Release:        0
 Summary:        Microsoft Azure CLI 2.0
 License:        MIT
 Group:          System/Management
 URL:            https://github.com/Azure/azure-cli
 Source:         https://files.pythonhosted.org/packages/source/a/azure-cli/azure_cli-%{version}.tar.gz
-Source1:        LICENSE.txt
 Patch1:         ac_use-python3-by-default.patch
 %if 0%{?_test}
 BuildRequires:  %{short_name} = %{version}
@@ -65,7 +64,7 @@ Requires:       %{pythons}-azure-appconfiguration >= 1.1.1
 Requires:       %{pythons}-azure-batch >= 14.2.0
 Requires:       %{pythons}-azure-cosmos >= 3.0.2
 Requires:       %{pythons}-azure-data-tables >= 12.4.0
-Requires:       %{pythons}-azure-datalake-store >= 0.0.49
+Requires:       %{pythons}-azure-datalake-store >= 0.0.53
 Requires:       %{pythons}-azure-graphrbac >= 0.60.0
 Requires:       %{pythons}-azure-keyvault-administration >= 4.4.0~b2
 Requires:       %{pythons}-azure-keyvault-certificates >= 4.7.0
@@ -86,7 +85,7 @@ Requires:       %{pythons}-azure-mgmt-cognitiveservices >= 13.5.0
 Requires:       %{pythons}-azure-mgmt-compute >= 31.0.0
 Requires:       %{pythons}-azure-mgmt-containerinstance >= 10.1.0
 Requires:       %{pythons}-azure-mgmt-containerregistry >= 10.3.0
-Requires:       %{pythons}-azure-mgmt-containerservice >= 30.0.0
+Requires:       %{pythons}-azure-mgmt-containerservice >= 31.0.0
 Requires:       %{pythons}-azure-mgmt-cosmosdb >= 9.5.1
 Requires:       %{pythons}-azure-mgmt-databoxedge >= 1.0.0
 Requires:       %{pythons}-azure-mgmt-datamigration >= 10.0.0
@@ -300,7 +299,6 @@ for i in $(az | sed -n 's/\s*\([a-z,-]*\)\s\+\:.*/\1/p') ; do
 done
 set -x
 %else
-install -m 644 %{SOURCE1} %{_builddir}/azure-cli-%{version}
 %pyproject_wheel
 %endif
 

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Aug  7 10:07:41 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 2.63.0
+  + For detailed information about changes see the
+    HISTORY.rst file provided with this package
+- Drop extra LICENSE.txt as upstream now ships its own
+- Update Requires from setup.py
+
+-------------------------------------------------------------------
 Tue Jul  9 07:32:50 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - New upstream release
