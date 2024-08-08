@@ -1,7 +1,7 @@
 #
 # spec file for package streamdeck-linux-gui
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define pythons python3
 
 Name:           streamdeck-linux-gui
-Version:        4.0.0
+Version:        4.1.3
 Release:        0
 Summary:        Stream Deck tools (service, Web Interface, and UI)
 License:        MIT
@@ -33,10 +33,10 @@ BuildRequires:  python3-poetry
 BuildRequires:  python3-CairoSVG >= 2.5.2
 BuildRequires:  python3-Pillow >= 9.4.0
 BuildRequires:  python3-filetype >= 1.0.10
-BuildRequires:  python3-pynput >= 1.7.6
+#BuildRequires:  python3-pynput >= 1.7.6
 BuildRequires:  python3-pyside6 >= 6.4.2
 BuildRequires:  python3-python-xlib >= 0.33
-BuildRequires:  python3-streamdeck >= 0.9.3
+BuildRequires:  python3-streamdeck >= 0.9.5
 # /SECTION
 BuildRequires:  fdupes
 BuildRequires:  udev

@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sat Jul 27 01:45:25 UTC 2024 - Simon Lees <sflees@suse.de>
+
+- update to 4.1.3 (Combined changelog since 4.0.0):
+  * replace pynput by evdev (#103) (6424eae)
+  * Implemented @invader's PIL Patch (#227) (2461d04)
+  * Key image size bug fixes (#188) (c218dc1)
+  * add default delay of 0.5 and support floats (70db99e)
+  * resolve inability to select buttons in the ui (7451b9f)
+  * add back keyboard delay feature (14b6431)
+  * handle exception if font can't be set, use fallback (4f2e5d7)
+  * only initialize UInput when necessary (6a3beb0)
+  * try to write unicode characters using ctrl+shift+u (325a960)
+  * set deck_id properly when using streamdeckc (e127d0b)
+  * globally initialize UInput (c579687)
+  * Handle exception in ImageFilter class (0369bf9)
+  * initialize uinput with the event code int constants instead of their names (f76d03e)
+  * add fallback font key to sys fonts if missing (90048f5)
+  * prefer fallback fonts over system fonts (414e345)
+  * Shut down the CLI server on SIGTERM (3c4a2c9)
+  * allow button image to update with same selected file path (53e7c7f)
+  * Update 60-streamdeck.rules for Streamdeck XL (1101fb9)
+  * Update 60-streamdeck.rules for the Stream Deck Plus (#182) (4fb2c7c)
+  * Provide udev rules (d0cf475)
+  * Remove semaphore file once app terminates (#209) (ed06caa)
+
+-------------------------------------------------------------------
 Fri Dec 15 15:09:37 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.0.0:
