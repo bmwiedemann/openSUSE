@@ -1,0 +1,5 @@
+-------------------------------------------------------------------
+Mon Aug  5 07:59:52 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- new package forgejo-runner: a daemon that connects to a Forgejo
+  instance and runs jobs for continous integration

@@ -1,0 +1,6 @@
+<package name="forgejo-runner" project="openSUSE:Factory">
+  <title>Daemon that connects to a Forgejo instance and runs CI jobs</title>
+  <description>A daemon that connects to a Forgejo instance and runs jobs for continous integration. The installation and usage instructions are part of the Forgejo documentation (https://forgejo.org/docs/next/admin/actions/).</description>
+  <devel project="devel:tools:scm" package="forgejo-runner"/>
+  <url>https://code.forgejo.org/forgejo/runner</url>
+</package>
