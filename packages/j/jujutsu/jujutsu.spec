@@ -19,7 +19,7 @@
 %define binary_name jj
 
 Name:           jujutsu
-Version:        0.19.0
+Version:        0.20.0
 Release:        0
 Summary:        Git-compatible DVCS that is both simple and powerful
 License:        MIT
@@ -32,6 +32,10 @@ BuildRequires:  gnupg
 BuildRequires:  openssh-common
 BuildRequires:  openssl-devel
 BuildRequires:  zstd
+
+# serde_bser fails to compile on s390x
+# error[E0599]: no method named `put_f64_be` found for struct `Vec<u8>` in the current scope
+ExcludeArch:    s390x
 
 %description
 Jujutsu is a Git-compatible DVCS. It combines features from Git (data model, speed), Mercurial (anonymous branching, simple CLI free from "the index", revsets, powerful history-rewriting), and Pijul/Darcs (first-class conflicts), with features not found in most of them (working-copy-as-a-commit, undo functionality, automatic rebase, safe replication via rsync, Dropbox, or distributed file system).
