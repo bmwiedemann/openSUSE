@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Aug 07 15:26:21 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.16.15:
+  * Prepare for v0.16.15 release
+  * action: Handle multiple cilium-cli directories
+  * Lock cilium-cli repo
+  * Update stable release to v0.16.14
+
+-------------------------------------------------------------------
 Thu Aug 01 07:19:44 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.16.14:
