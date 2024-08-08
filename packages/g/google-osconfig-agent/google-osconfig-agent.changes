@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Mon Aug  5 10:43:39 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20240801.00
+  * Fix Debian-12 failing test by using gcsfuse pkg
+  * Fix fetching gpg key unit tests (#649)
+- from version 20240729.00
+  * Fix for old state file on Windows (#648)
+- from version 20240723.00
+  * Add debugging logs for repository resource config (#646)
+- from version 20240718.00
+  * Fix SLES-12 SP5 RPM package-resource e2e test (#645)
+- from version 20240715.01
+  * Fix OSPolicies e2e tests for SLES-15 SP5 by removing
+    zypper update from VMs startup script (#644)
+- from version 20240715.00
+  * Fix GuestPolicies e2e tests for SLES-15 SP5 by removing
+    zypper update from VMs startup script (#643)
+- from version 20240709.01
+  * Source package info delivery to control-plane (#639)
+- from version 20240709.00
+  * Enable gpgcheck flag for RPM e2e tests (#638)
+- from version 20240708.00
+  * Update osconfig api to v1.13.0
+  * Indirect dependency update (#637)
+- from version 20240705.01
+  * Updating Windows & Linux Chrome packages
+    to fix failing e2e tests (#636)
+- from version 20240705.00
+  * Merge pull request #635 from Gulio/patch-1
+  * Update OWNERS
+- from version 20240702.02
+  * Remove RHEL-7 and CentOS-7 images from e2e tests (#634)
+
+-------------------------------------------------------------------
 Tue Jul  2 14:09:01 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 20240702.01
