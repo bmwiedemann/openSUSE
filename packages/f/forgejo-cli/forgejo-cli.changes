@@ -1,0 +1,18 @@
+-------------------------------------------------------------------
+Thu Aug  8 01:21:09 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 0.1.0:
+  * feat: add branch guessing on pr creation
+  * fix: print message before reading in readline 
+  * fix: prioritize remote tracking branch in repo detection 
+  * fix: read detected pr from correct repo 
+  * fix: pr detection from branch 
+  * add status command
+  * add user search
+  * add list user orgs
+  * add list user repos
+
+-------------------------------------------------------------------
+Fri May 10 14:19:43 UTC 2024 - Richard Rahl <rrahl0@disroot.org>
+
+- initial packaging

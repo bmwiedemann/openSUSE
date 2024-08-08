@@ -1,0 +1,6 @@
+<package name="forgejo-cli" project="openSUSE:Factory">
+  <title></title>
+  <description>This software is a command-line tool which can interact with any forgejo server.</description>
+  <devel project="devel:tools:scm" package="forgejo-cli"/>
+  <url>https://codeberg.org/Cyborus/forgejo-cli</url>
+</package>
