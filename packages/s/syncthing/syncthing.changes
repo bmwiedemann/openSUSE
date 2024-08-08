@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Aug  6 08:22:39 UTC 2024 - Marius Kittler <marius.kittler@suse.com>
+
+- Update to 1.27.10
+  * Bugfixes:
+    #9455: lib/api tests unreliable, failing ~50% of the time on Fedora Linux
+    #9499: Data race in fakeFS (testing) 
+  * Remove resume service (and the related patch
+    harden_syncthing-resume.service.patch) as it was removed
+    upstream
+
+-------------------------------------------------------------------
 Tue Jul  2 11:45:07 UTC 2024 - Marius Kittler <marius.kittler@suse.com>
 
 - Update to 1.27.9

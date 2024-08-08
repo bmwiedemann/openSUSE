@@ -17,7 +17,7 @@
 
 
 Name:           syncthing
-Version:        1.27.9
+Version:        1.27.10
 Release:        0
 Summary:        Continuous File Synchronisation
 License:        MPL-2.0
@@ -28,8 +28,7 @@ Source1:        https://github.com/%{name}/%{name}/releases/download/v%{version}
 Source2:        %{name}.keyring
 Source3:        %{name}-relaysrv-user.conf
 Patch0:         harden_strelaysrv.service.patch
-Patch1:         harden_syncthing-resume.service.patch
-Patch2:         harden_syncthing@.service.patch
+Patch1:         harden_syncthing@.service.patch
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  sysuser-tools
 BuildRequires:  update-desktop-files
@@ -101,8 +100,6 @@ sed -i 's,^ReadWritePaths=.*,ReadWritePaths=/var/lib/syncthing-relaysrv,'    \
   %{buildroot}%{_unitdir}/strelaysrv.service
 install -Dpm 0644 etc/linux-systemd/system/%{name}@.service        \
   %{buildroot}%{_unitdir}/%{name}@.service
-install -Dpm 0644 etc/linux-systemd/system/%{name}-resume.service  \
-  %{buildroot}%{_unitdir}/%{name}-resume.service
 %if 0%{?suse_version} >= 1500 || 0%{?sle_version} > 120300
 install -Dpm 0644 etc/linux-systemd/user/%{name}.service           \
   %{buildroot}%{_userunitdir}/%{name}.service
@@ -112,13 +109,11 @@ install -D -m 0644 %{SOURCE3} %{buildroot}%{_sysusersdir}/%{name}-relaysrv.conf
 %suse_update_desktop_file -i "syncthing-ui"
 
 %pre
-%service_add_pre %{name}-resume.service
 
 %pre relaysrv -f %{name}-strelaysrv.pre
 %service_add_pre strelaysrv.service
 
 %post
-%service_add_post %{name}-resume.service
 %if 0%{?suse_version} >= 1500 || 0%{?sle_version} > 120300
 %systemd_user_post %{name}.service
 %endif
@@ -127,7 +122,7 @@ install -D -m 0644 %{SOURCE3} %{buildroot}%{_sysusersdir}/%{name}-relaysrv.conf
 %service_add_post strelaysrv.service
 
 %preun
-%service_del_preun %{name}@.service %{name}-resume.service
+%service_del_preun %{name}@.service
 %if 0%{?suse_version} >= 1500 || 0%{?sle_version} > 120300
 %systemd_user_preun %{name}.service
 %endif
@@ -136,7 +131,6 @@ install -D -m 0644 %{SOURCE3} %{buildroot}%{_sysusersdir}/%{name}-relaysrv.conf
 %service_del_preun strelaysrv.service
 
 %postun
-%service_del_postun %{name}-resume.service
 %if 0%{?suse_version} >= 1500 || 0%{?sle_version} > 120300
 %systemd_user_postun %{name}.service
 %endif
@@ -150,7 +144,6 @@ install -D -m 0644 %{SOURCE3} %{buildroot}%{_sysusersdir}/%{name}-relaysrv.conf
 %{_bindir}/%{name}
 %{_datadir}/applications/syncthing-ui.desktop
 %{_unitdir}/%{name}@.service
-%{_unitdir}/%{name}-resume.service
 %if 0%{?suse_version} >= 1500 || 0%{?sle_version} > 120300
 %{_userunitdir}/%{name}.service
 %endif
