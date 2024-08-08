@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug  5 10:33:39 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20240725.00
+  * Fix: hostnamectl command (#74)
+
+-------------------------------------------------------------------
 Fri Jun 14 09:55:48 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 20240607.00

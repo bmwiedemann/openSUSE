@@ -218,4 +218,12 @@
   * Update is_a3_platform to include A3-edge shape (#73) (forwarded request 1180856 from glaubitz)</comment>
     <requestid>1180947</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>d4b05724ced1df714a3e21990bdd861e</srcmd5>
+    <version>20240725.00</version>
+    <time>1723107523</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1192488</requestid>
+  </revision>
 </revisionlist>
