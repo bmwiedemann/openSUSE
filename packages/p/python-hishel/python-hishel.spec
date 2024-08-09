@@ -23,21 +23,20 @@ Summary:        Persistent cache implementation for httpx and httpcore
 License:        BSD-3-Clause
 URL:            https://github.com/karpetrosyan/hishel
 Source:         https://github.com/karpetrosyan/hishel/archive/refs/tags/%{version}.tar.gz#/hishel-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module hatch-fancy-pypi-readme}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module httpx >= 0.22.0}
-BuildRequires:  %{python_module typing_extensions >= 4.8.0}
+BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module redis}
-BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module trio}
+BuildRequires:  %{python_module typing_extensions >= 4.8.0}
 BuildRequires:  %{pythons}
 # /SECTION
 BuildRequires:  fdupes
-BuildRequires:  python
 Requires:       python-httpx >= 0.22.0
 Requires:       python-typing_extensions >= 4.8.0
 Suggests:       python-pyyaml == 6.0.1
