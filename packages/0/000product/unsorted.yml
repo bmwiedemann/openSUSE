@@ -606,11 +606,13 @@ unsorted:
   - ansible-builder 
   - ansible-cmdb 
   - ansible-core 
+  - ansible-core-2.16 
   - ansible-documentation 
   - ansible-lint 
   - ansible-navigator 
   - ansible-runner 
   - ansible-test 
+  - ansible-test-2.16 
   - ansible-variables 
   - ansifilter 
   - ansifilter-bash-completion 
@@ -826,6 +828,7 @@ unsorted:
   - aqbanking-ebics 
   - aqbanking-lang 
   - aqbanking-ofx 
+  - aquamarine-devel 
   - aqute-bnd 
   - aqute-bnd-javadoc 
   - aqute-bndlib 
@@ -11628,9 +11631,7 @@ unsorted:
   - libXmu6-32bit 
   - libXmuu1-32bit 
   - libXp-devel 
-  - libXp-devel-32bit 
   - libXp6 
-  - libXp6-32bit 
   - libXpm-devel 
   - libXpm-devel-32bit 
   - libXpm-tools 
@@ -11639,9 +11640,7 @@ unsorted:
   - libXprintAppUtil-devel 
   - libXprintAppUtil1 
   - libXprintUtil-devel 
-  - libXprintUtil-devel-32bit 
   - libXprintUtil1 
-  - libXprintUtil1-32bit 
   - libXrandr-devel 
   - libXrandr-devel-32bit 
   - libXrandr2-32bit 
@@ -11814,6 +11813,7 @@ unsorted:
   - libapr-util1-0-dbd-mysql 
   - libapr-util1-0-dbd-pgsql 
   - libapr-util1-0-dbd-sqlite3 
+  - libaquamarine2 
   - libaravis-0_8-0 
   - libaravis-0_8-devel 
   - libarchive-devel 
@@ -13833,7 +13833,7 @@ unsorted:
   - libhyphen0-32bit 
   - libhyprcursor0 
   - libhyprlang2 
-  - libhyprutils0 
+  - libhyprutils1 
   - libi2c0 
   - libi2c0-devel 
   - libibdm1 
@@ -15451,7 +15451,6 @@ unsorted:
   - libpython3_13-1_0-x86-64-v3 
   - libpython3_8-1_0 
   - libpython3_9-1_0 
-  - libpython3_9-1_0-32bit 
   - libqaccessibilityclient-qt5 
   - libqaccessibilityclient-qt5-0 
   - libqaccessibilityclient-qt5-devel 
@@ -15938,7 +15937,7 @@ unsorted:
   - librsb0 
   - librseq-devel 
   - librseq0 
-  - librssguard-4_7_2 
+  - librssguard-4_7_3 
   - librssguard-devel 
   - librsvg-2-2-32bit 
   - librsvg-devel 
@@ -34798,9 +34797,7 @@ unsorted:
   - python38-tk 
   - python38-tools 
   - python39 
-  - python39-32bit 
   - python39-base 
-  - python39-base-32bit 
   - python39-curses 
   - python39-dbm 
   - python39-devel 
