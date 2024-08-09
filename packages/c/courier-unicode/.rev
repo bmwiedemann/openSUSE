@@ -96,4 +96,12 @@
 - update courier-unicode.keyring with new signing key</comment>
     <requestid>1136991</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>9e76ea2a794aeec2d305d90080348212</srcmd5>
+    <version>2.3.1</version>
+    <time>1723212970</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1192811</requestid>
+  </revision>
 </revisionlist>

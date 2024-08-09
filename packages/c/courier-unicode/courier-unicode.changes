@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Aug  8 19:22:54 UTC 2024 - Arjen de Korte <suse+build@de-korte.org>
+
+- update to 2.3.1
+  * courier-debuild: implement DEBGCC=default, to help with pbuilder.
+
+-------------------------------------------------------------------
 Fri Jan  5 07:22:15 UTC 2024 - Arjen de Korte <suse+build@de-korte.org>
 
 - update to 2.3.0
