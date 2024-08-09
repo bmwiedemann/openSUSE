@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Mon Aug  5 16:05:55 UTC 2024 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- Update to release 20240716
+  * cpuid.c: For AMD Zen CPUs, overhauled uarch & synth decoding to
+    determine the CPU model from only the extended model & high bit of the
+    model field.  Also, determine the stepping (revision) mechanically
+    from the low-order 3 bits of the model and the stepping number.
+    This should correctly identify retail Zen 5 Ryzen's.  This also
+    corrects some stepping bugs from the Zen 1 era.
+- Update to release 20240709
+  * cpuid.c: Added synth decoding for Hygon Dhyana B1 & C2.  Still no
+    information on a uarch name for these.
+  * cpuid.c: Added uarch synth decoding for (0,6),(5,5),11 Cooper Lake.
+    The synth decoding was already present.  Its absence from
+    decode_uarch_intel was just an oversight.
+  * cpuid.c: Fixed division-by-zero error in decode_mp_synth Intel leaf
+    1/4 (zero fallback).  This is meant for old, incomplete cpuid -r
+    dumps, but even for hand-crafted dumps, determining 0 cores and then
+    dividing by that 0 is unacceptable.
+- Update to release 20240330
+  * cpuid.c: Added 0x23/1 sub-header: Architecture Performance Monitoring
+    Extended Counters Supported Bitmaps (0x23/1), and simplified fields.
+  * cpuid.c: Added 0x23/2 sub-header: Architecture Performance Monitoring
+    Extended Auto Counter Reload (ACR) Bitmaps (0x23/2), expanded on
+    existing field descriptions, and added "can cause reloads" fields.
+  * cpuid.c: Added uarch decoding for (11,15),(1,0), which is mentioned
+    with (11,15),(0,0) in the title of 58088 AMD 1Ah Models 00h-0Fh and
+    Models 10h-1Fh ACPI v6.5 Porting Guide.
+  * cpuid.c: Expanded br.xeon test to include brands with "XEON", and
+    br.scalable to include "BRONZE", "PLATINUM", etc. (all caps), based on
+    Emerald Rapids (engr?) sample.  I don't know if this is a change Intel
+    will use moving forward, or a quirk of engr samples, but checking for
+    it is harmless enough.
+- Update to release 20240324
+  * cpuid.c: Updated (0,6),(11,7) to include Core i*-14000.  Some CPUs
+    having this branding, and it's not clear what's different from the
+    Core i*-13000 versions.
+
+-------------------------------------------------------------------
 Wed Jun 21 09:18:20 UTC 2023 - Valentin Lefebvre <valentin.lefebvre@suse.com>
 
 - Update to release 20230614

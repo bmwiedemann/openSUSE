@@ -1,7 +1,7 @@
 #
 # spec file for package cpuid
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           cpuid
-Version:        20230614
+Version:        20240716
 Release:        0
 Summary:        x86 CPU identification tool
 License:        GPL-2.0-or-later
