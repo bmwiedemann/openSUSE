@@ -3055,6 +3055,7 @@ BuildFlags: onlybuild:rust1.76
 BuildFlags: onlybuild:rust1.77
 BuildFlags: onlybuild:rust1.78
 BuildFlags: onlybuild:rust1.79
+BuildFlags: onlybuild:rust1.80
 BuildFlags: onlybuild:samba
 BuildFlags: onlybuild:sane-backends
 BuildFlags: onlybuild:sassc
