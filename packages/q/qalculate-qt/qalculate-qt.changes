@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Mon Jul  1 07:17:39 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.1.0.
+  Check https://github.com/Qalculate/qalculate-qt/releases for
+  older changes list. Changes since 5.0.0:
+  * Improved history list efficiency
+  * Add two's complement input and binary bits to preferences
+  * Ask for the desired interpretation the first time percent
+    addition is used (e.g. 100 + 10% equals 110 or 100.1)
+  * Hide expression tooltip (after 300 ms) when input resumes,
+    if delayed expression status is enabled
+  * Download button in dialog shown when new version is
+    available, on Windows
+  * Fix AltGr for input of operators on Windows
+  * Support for solving equations containing if() function
+    (libqalculate)
+  * Support for solving root(a, x)=b (requires rational
+    value for ln(a)/ln(b)) (libqalculate)
+  * New functions: powertower() and multiples() (libqalculate)
+  * New units for solar radius, mass, and luminosity (libqalculate)
+  * Use parentheses for exponent using scientific notation (with
+    power of 10) (libqalculate)
+  * Support integer factorization of integers in matrix/vector,
+    and of numerator and denominator in rational number
+    (libqalculate)
+  * Relaxed conditions for (x^a)^b = x^(a × b) and
+    x^a × x^b = x^(a + b) when complex numbers are
+    deactivated (fixes segfaults) (libqalculate)
+  * Fix (ax + n)^2 > 1, where n is even and a is not 1,
+    returning false (libqalculate)
+  * Fix setbits() function (libqalculate)
+  * Fix Number::equals(0, ..., true) when number is infinite
+    (affects replace() function) (libqalculate)
+  * Fix a^(f(x))=a^(b*g(x)) where b=2 or b=3 (libqalculate
+    v5.1.1)
+  * Minor bug fixes and feature enhancements
+
+-------------------------------------------------------------------
 Sat May 11 00:37:16 UTC 2024 - jun wang <jgwang@suse.com>
 
 - Update to 4.9.0
