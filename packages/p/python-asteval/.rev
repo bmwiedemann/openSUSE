@@ -176,4 +176,22 @@
   * update docs.</comment>
     <requestid>1184940</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>4724a6a04b73d06dd95101f1d843c8dc</srcmd5>
+    <version>1.0.2</version>
+    <time>1723212962</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.0.2:
+  * fix NameError handling in expression code
+  * make exception messages more Python-like
+- update to 1.0.1:
+  * security fixes, based on audit by Andrew Effenhauser, Ayman
+    Hammad, and Daniel Crowley, IBM X-Force Security Research
+    division
+  * remove numpy modules polynomial, fft, linalg by default for
+    security concerns
+  * disallow string.format(), improve security of f-string
+    evaluation</comment>
+    <requestid>1192791</requestid>
+  </revision>
 </revisionlist>

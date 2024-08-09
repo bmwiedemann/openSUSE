@@ -16,25 +16,25 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
-%define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-asteval
-Version:        1.0.0
+Version:        1.0.2
 Release:        0
 Summary:        Safe, minimalistic evaluator of python expression using ast module
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/lmfit/asteval
 Source:         https://files.pythonhosted.org/packages/source/a/asteval/asteval-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytest-cov}
-BuildRequires:  %{python_module numpy if (%python-base without python36-base)}
 # /SECTION
 %python_subpackages
 
@@ -54,10 +54,10 @@ using the values in the symbol table current at evaluation time.
 sed -i -e '/^#!\//, 1d' asteval/asteval.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -66,6 +66,7 @@ sed -i -e '/^#!\//, 1d' asteval/asteval.py
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/asteval
+%{python_sitelib}/asteval-%{version}.dist-info
 
 %changelog
