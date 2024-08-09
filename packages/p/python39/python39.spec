@@ -36,6 +36,12 @@
 %bcond_without general
 %endif
 
+%if 0%{?do_profiling}
+%bcond_without profileopt
+%else
+%bcond_with profileopt
+%endif
+
 %define         python_pkg_name python39
 %if "%{python_pkg_name}" == "%{primary_python}"
 %define primary_interpreter 1
@@ -187,6 +193,15 @@ Patch44:        CVE-2024-0397-memrace_ssl.SSLContext_cert_store.patch
 # PATCH-FIX-UPSTREAM CVE-2024-4032-private-IP-addrs.patch bsc#1226448 mcepl@suse.com
 # rearrange definition of private v global IP addresses
 Patch45:        CVE-2024-4032-private-IP-addrs.patch
+# PATCH-FIX-UPSTREAM bso1227999-reproducible-builds.patch bsc#1227999 mcepl@suse.com
+# reproducibility patches
+Patch46:        bso1227999-reproducible-builds.patch
+# PATCH-FIX-UPSTREAM CVE-2024-6923-email-hdr-inject.patch bsc#1228780 mcepl@suse.com
+# prevent email header injection, patch from gh#python/cpython!122608
+Patch47:        CVE-2024-6923-email-hdr-inject.patch
+# PATCH-FIX-UPSTREAM CVE-2024-5642-OpenSSL-API-buf-overread-NPN.patch bsc#1227233 mcepl@suse.com
+# Remove for support for anything but OpenSSL 1.1.1 or newer
+Patch48:        CVE-2024-5642-OpenSSL-API-buf-overread-NPN.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -447,12 +462,15 @@ other applications.
 %patch -P 39 -p1
 %patch -P 40 -p1
 %if 0%{?sle_version} && 0%{?sle_version} <= 150500
-%patch -P 41 -p1
+%patch -p1 -P 41
 %endif
-%patch -P 42 -p1
-%patch -P 43 -p1
-%patch -P 44 -p1
-%patch -P 45 -p1
+%patch -p1 -P 42
+%patch -p1 -P 43
+%patch -p1 -P 44
+%patch -p1 -P 45
+%patch -p1 -P 46
+%patch -p1 -P 47
+%patch -p1 -P 48
 
 # drop Autoconf version requirement
 sed -i 's/^AC_PREREQ/dnl AC_PREREQ/' configure.ac

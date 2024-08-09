@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Aug  7 12:12:42 UTC 2024 - Matej Cepl <mcepl@suse.com>
+
+- Add CVE-2024-6923-email-hdr-inject.patch to prevent email
+  header injection due to unquoted newlines (bsc#1228780,
+  CVE-2024-6923).
+- Adding bso1227999-reproducible-builds.patch fixing bsc#1227999
+  adding reproducibility patches from gh#python/cpython!121872
+  and gh#python/cpython!121883.
+- Add CVE-2024-5642-OpenSSL-API-buf-overread-NPN.patch removing
+  support for anything but OpenSSL 1.1.1 or newer (bsc#1227233,
+  CVE-2024-5642).
+- %{profileopt} variable is set according to the variable
+  %{do_profiling} (bsc#1227999)
+
+-------------------------------------------------------------------
 Mon Jul 22 21:20:54 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Remove %suse_update_desktop_file macro as it is not useful any
