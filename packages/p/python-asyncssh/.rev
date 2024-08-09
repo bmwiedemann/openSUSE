@@ -493,4 +493,41 @@
     manager.</comment>
     <requestid>1133889</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>2e0eeb3e05af87642f17525f12d1b333</srcmd5>
+    <version>2.15.0</version>
+    <time>1723212960</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.15.0:
+  * Added experimental support for tunneling of TUN/TAP network
+    interfaces on Linux and macOS, allowing for either automatic
+    packet forwarding or explicit reading and writing of packets
+    sent through the tunnel by the application. Both callback and
+    stream APIs are available.
+  * Added support for forwarding terminal size and terminal size
+    changes when stdin on an SSHServerProcess is redirected to a
+    local TTY.
+  * Added support for multiple tunnel/ProxyJump hosts. Thanks go
+    to Adam Martin for suggesting this enhancement and proposing
+    a solution.
+  * Added support for OpenSSH lsetstat SFTP extension to set
+    attributes on symbolic links on platforms which support that
+    and use it to improve symlink handling in the SFTP get, put,
+    and copy methods. In addition, a follow_symlinks option has
+    been added on various SFTPClient methods which get and set
+    these attributes. Thanks go to GitHub user eyalgolan1337 for
+    reporting this issue.
+  * Added support for password and passphrase arguments to be a
+    callable or awaitable, called when performing authentication
+    or loading encrypted private keys. Thanks go to GitHub user
+    goblin for suggesting this enhancement.
+  * Added support for proper flow control when using
+    AsyncFileWriter or StreamWriter classes to do SSH process
+    redirection. Thanks go to Benjy Wiener for reporting this
+    issue and providing feedback on the fix.
+  * Added is_closed() method
+    SSHClientConnection/SSHServerConnection to return whether the
+    associated network connection is closed or not.</comment>
+    <requestid>1192788</requestid>
+  </revision>
 </revisionlist>

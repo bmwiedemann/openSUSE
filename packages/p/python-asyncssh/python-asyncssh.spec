@@ -1,7 +1,7 @@
 #
 # spec file for package python-asyncssh
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-asyncssh
-Version:        2.14.2
+Version:        2.15.0
 Release:        0
 Summary:        Asynchronous SSHv2 client and server library
 License:        EPL-2.0 OR GPL-2.0-or-later
