@@ -25,7 +25,7 @@ SCC_SYNC="${SCC_SYNC:-true}"
 # Create adjusted /etc/rmt.conf
 echo -e "database:\n  host: ${MYSQL_HOST}\n  database: ${MYSQL_DATABASE}\n  username: ${MYSQL_USER}\n  password: ${MYSQL_PASSWORD}" > /etc/rmt.conf
 echo -e "  adapter: mysql2\n  encoding: utf8\n  timeout: 5000\n  pool: 5\n" >> /etc/rmt.conf
-echo -e "scc:\n  username: ${SCC_USERNAME}\n  password:  ${SCC_PASSWORD}\n  sync_systems: ${SCC_SYNC}\n" >> /etc/rmt.conf
+echo -e "scc:\n  username: ${SCC_USERNAME}\n  password:  ${SCC_PASSWORD}\n  sync_systems: true\n scc_sync: ${SCC_SYNC}\n" >> /etc/rmt.conf
 echo -e "log_level:\n  rails: debug" >> /etc/rmt.conf
 
 if [ $# -eq 0 ]; then
@@ -37,7 +37,7 @@ if [ "$1" == "/usr/share/rmt/bin/rails" -a "$2" == "server" ]; then
   pushd /usr/share/rmt > /dev/null
 	/usr/share/rmt/bin/rails db:create db:migrate RAILS_ENV=production
   popd > /dev/null
-  if [ ${SCC_SYNC} != "false" ]; then
+  if [ ${SCC_SYNC} == "true" ]; then
     echo "Syncing product list"
     rmt-cli sync
     for PRODUCT in $SCC_PRODUCT_ENABLE
