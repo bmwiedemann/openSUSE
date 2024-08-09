@@ -17,7 +17,9 @@
 
 
 # can't use linebreaks here!
-%define openqa_services openqa-webui.service openqa-gru.service openqa-websockets.service openqa-scheduler.service openqa-enqueue-audit-event-cleanup.service openqa-enqueue-audit-event-cleanup.timer openqa-enqueue-asset-cleanup.service openqa-enqueue-asset-cleanup.timer openqa-enqueue-result-cleanup.service openqa-enqueue-result-cleanup.timer openqa-enqueue-bug-cleanup.service openqa-enqueue-bug-cleanup.timer
+%define openqa_main_service openqa-webui.service
+%define openqa_extra_services openqa-gru.service openqa-websockets.service openqa-scheduler.service openqa-enqueue-audit-event-cleanup.service openqa-enqueue-audit-event-cleanup.timer openqa-enqueue-asset-cleanup.service openqa-enqueue-asset-cleanup.timer openqa-enqueue-result-cleanup.service openqa-enqueue-result-cleanup.timer openqa-enqueue-bug-cleanup.service openqa-enqueue-bug-cleanup.timer
+%define openqa_services %{openqa_main_service} %{openqa_extra_services}
 %define openqa_worker_services openqa-worker.target openqa-slirpvde.service openqa-vde_switch.service openqa-worker-cacheservice.service openqa-worker-cacheservice-minion.service
 %if %{undefined tmpfiles_create}
 %define tmpfiles_create() \
@@ -78,7 +80,7 @@
 %define devel_requires %devel_no_selenium_requires chromedriver
 
 Name:           openQA
-Version:        4.6.1722893158.0b3a25ec
+Version:        4.6.1723039980.549ee3ba
 Release:        0
 Summary:        The openQA web-frontend, scheduler and tools
 License:        GPL-2.0-or-later
@@ -504,7 +506,12 @@ fi
 %service_del_preun openqa-continuous-update.timer
 
 %postun
-%service_del_postun %{openqa_services}
+# reload main service (but do not restart it via service_del_postun to minimize downtimes)
+if [ -x /usr/bin/systemctl ] && [ $1 -ge 1 ]; then
+    /usr/bin/systemctl reload %{openqa_main_service} || :
+fi
+# restart other services
+%service_del_postun %{openqa_extra_services}
 %restart_on_update apparmor
 
 %postun worker

@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Aug 08 18:00:55 UTC 2024 - okurz@suse.com
+
+- Update to version 4.6.1723039980.549ee3ba:
+  * Ensure valid format for HTML element ids
+  * Add validation in route for updating job priority
+  * Simplify priority handling for product scheduling
+  * Avoid including source code line number in API error message
+  * Allow specifying priority when creating a single set of jobs
+  * Use test labels in test for default prio assignment when posting jobs
+  * Bump @floating-ui/core from 1.6.6 to 1.6.7
+  * Bump @floating-ui/utils from 0.2.6 to 0.2.7
+  * Bump @floating-ui/dom from 1.6.9 to 1.6.10
+  * Bump @floating-ui/core from 1.6.5 to 1.6.6
+  * Bump @floating-ui/dom from 1.6.8 to 1.6.9
+  * Fix cancelling any pending job from /tests/overview
+  * Reload main openQA service on updates to reduce downtimes
+  * Avoid restarting `openqa-webui.service` when other units are restarted
+  * Allow restarting `openqa-webui-daemon` without downtime
+  * Make jobs running without needing to set needles URL specifically
+
+-------------------------------------------------------------------
 Tue Aug 06 10:00:43 UTC 2024 - okurz@suse.com
 
 - Update to version 4.6.1722893158.0b3a25ec:
