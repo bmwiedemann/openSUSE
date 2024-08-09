@@ -17,7 +17,7 @@
 
 
 Name:           fastfetch
-Version:        2.21.0
+Version:        2.21.1
 Release:        0
 Summary:        Neofetch-like tool written mostly in C
 License:        MIT
@@ -38,6 +38,7 @@ BuildRequires:  pkgconfig(DirectX-Headers)
 BuildRequires:  pkgconfig(ImageMagick)
 BuildRequires:  pkgconfig(chafa)
 BuildRequires:  pkgconfig(dbus-1)
+BuildRequires:  pkgconfig(libelf)
 BuildRequires:  pkgconfig(libxfconf-0)
 BuildRequires:  pkgconfig(ocl-icd)
 BuildRequires:  pkgconfig(rpm)
