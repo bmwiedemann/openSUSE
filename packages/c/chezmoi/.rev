@@ -509,4 +509,17 @@
 </comment>
     <requestid>1188035</requestid>
   </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>c8bb0f27b152ed3463a042321dec8823</srcmd5>
+    <version>2.52.0</version>
+    <time>1723212903</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.52.0:
+  - Features
+    * feat: Add gitHubRelease and gitHubReleaseAssetURL template functions
+  - Fixes
+    * fix: Don't modify ciphertext in edit command if plaintext did not change
+</comment>
+    <requestid>1192637</requestid>
+  </revision>
 </revisionlist>

@@ -1126,4 +1126,12 @@
     <comment>- do not use posix_spawn as it lacks proper job handling [bsc#1224057]</comment>
     <requestid>1173897</requestid>
   </revision>
+  <revision rev="117" vrev="10">
+    <srcmd5>9b0b68b419a0b4bb3b8e374eed016f0a</srcmd5>
+    <version>93vu</version>
+    <time>1723212897</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1192627</requestid>
+  </revision>
 </revisionlist>

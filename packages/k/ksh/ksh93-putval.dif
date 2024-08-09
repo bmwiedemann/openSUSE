@@ -1,0 +1,15 @@
+--- ./src/cmd/ksh93/sh/name.c.orig	2019-04-04 14:28:17.044667686 +0000
++++ ./src/cmd/ksh93/sh/name.c	2019-04-04 14:28:32.472629455 +0000
+@@ -1986,8 +1986,11 @@ void nv_putval(register Namval_t *np, co
+ 		up->cp = cp;
+ 		if(sp)
+ 		{
++			size_t splen = strlen(sp);
+ 			int c = cp[dot+append];
+-			memmove(cp+append,sp,dot);
++			memmove(cp+append,sp,dot>splen?splen:dot);
++			if (dot>splen)
++				memset(cp+append+splen,0,dot-splen);
+ 			cp[dot+append] = c;
+ 			if(nv_isattr(np, NV_RJUST) && nv_isattr(np, NV_ZFILL))
+ 				rightjust(cp,size,'0');

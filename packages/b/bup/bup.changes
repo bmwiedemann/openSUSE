@@ -1,8 +1,17 @@
 -------------------------------------------------------------------
+Thu Aug  8 09:53:55 UTC 2024 - ecsos <ecsos@opensuse.org>
+
+- Update to 0.33.3
+  - See https://github.com/bup/bup/blob/main/note/0.33.3-from-0.33.2.md
+- Use BuildRequire perl(Time:HiRes) instead of 
+  BuildRequire perl-Time-HiRes 
+  to fix build error under Tumbleweed.
+
+-------------------------------------------------------------------
 Fri Sep  1 13:12:21 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Update to 0.33.2
-  - See https://github.com/bup/bup/blob/main/note/0.33-from-0.32.md
+  - See https://github.com/bup/bup/blob/main/note/0.33.2-from-0.33.1.md
 - New version require python >= 3.7, 
   therefore "%define pythons python311" is needed for Leap.
 

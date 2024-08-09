@@ -3074,4 +3074,41 @@ do special case rings. (forwarded request 934053 from matz2)</comment>
   on the symbol (boo#1225809). (forwarded request 1178272 from dimstar)</comment>
     <requestid>1178284</requestid>
   </revision>
+  <revision rev="294" vrev="1">
+    <srcmd5>07cf40497d2bd1b4739968b2ad049f03</srcmd5>
+    <version>2.40</version>
+    <time>1723212830</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to glibc 2.40
+  * The &lt;stdbit.h&gt; header type-generic macros have been changed when using
+    GCC 14.1 or later to use __builtin_stdc_bit_ceil etc. built-in functions
+  * The GNU C Library now supports a feature test macro _ISOC23_SOURCE to
+    enable features from the ISO C23 standard
+  * The ISO C23 function families introduced in TS
+    18661-4:2015 are now supported in &lt;math.h&gt;
+  * A new tunable, glibc.rtld.enable_secure, can be used to run a program
+    as if it were a setuid process
+  * On Linux, the epoll header was updated to include epoll ioctl definitions
+    and the related structure added in Linux kernel 6.9
+  * The fortify functionality has been significantly enhanced for building
+    programs with clang against the GNU C Library
+  * Many functions have been added to the vector library for aarch64
+  * On x86, memset can now use non-temporal stores to improve the performance
+    of large writes
+  * Architectures which use a 32-bit seconds-since-epoch field in struct
+    lastlog, struct utmp, struct utmpx (such as i386, powerpc64le, rv32,
+    rv64, x86-64) switched from a signed to an unsigned type for that
+    field
+  * __rseq_size now denotes the size of the active rseq area (20 bytes
+    initially), not the size of struct rseq (32 bytes initially).
+- arm-dl-start-user.patch, duplocale-global-locale.patch,
+  elf-parse-tunables.patch,
+  glibc-CVE-2024-33599-nscd-Stack-based-buffer-overflow-in-n.patch,
+  glibc-CVE-2024-33600-nscd-Avoid-null-pointer-crashes-after.patch,
+  glibc-CVE-2024-33600-nscd-Do-not-send-missing-not-found-re.patch,
+  glibc-CVE-2024-33601-CVE-2024-33602-nscd-netgroup-Use-two.patch,
+  iconv-iso-2022-cn-ext.patch, nscd-netgroup-cache-timeout.patch,
+  s390-clone-error-clobber-r7.patch, sigisemptyset.patch, (forwarded request 1190420 from Andreas_Schwab)</comment>
+    <requestid>1190421</requestid>
+  </revision>
 </revisionlist>

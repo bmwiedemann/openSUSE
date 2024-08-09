@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Aug  7 13:37:56 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.1.19
+  * Lets make string array const input by @DmitriyMusatkin in (#44)
+- from version 0.1.18
+  * Switch to more efficient functions for json parsing
+    by @DmitriyMusatkin in (#43)
+- from version 0.1.17
+  * clang-format 18 by @graebm in (#40)
+  * Update MacOS to arm64 by @waahm7 in (#41)
+  * Add support for string array request parameter to
+    endpoint resolution by @DmitriyMusatkin in (#42)
+
+-------------------------------------------------------------------
 Tue Jun  4 13:17:05 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.1.16

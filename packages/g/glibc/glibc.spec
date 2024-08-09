@@ -152,7 +152,7 @@ Name:           glibc%{name_suffix}
 Summary:        Standard Shared Libraries (from the GNU C Library)
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND LGPL-2.1-or-later WITH GCC-exception-2.0
 Group:          System/Libraries
-Version:        2.39
+Version:        2.40
 Release:        0
 %if %{without snapshot}
 %define git_id ef321e23c2
@@ -303,32 +303,6 @@ Patch306:       glibc-fix-double-loopback.diff
 ###
 # Patches from upstream
 ###
-# PATCH-FIX-UPSTREAM arm: Remove wrong ldr from _dl_start_user (BZ #31339)
-Patch1000:      arm-dl-start-user.patch
-# PATCH-FIX-UPSTREAM S390: Do not clobber r7 in clone (BZ #31402)
-Patch1001:      s390-clone-error-clobber-r7.patch
-# PATCH-FIX-UPSTREAM duplocale: protect use of global locale (BZ #23970)
-Patch1002:      duplocale-global-locale.patch
-# PATCH-FIX-UPSTREAM linux/sigsetops: fix type confusion (BZ #31468)
-Patch1003:      sigisemptyset.patch
-# PATCH-FIX-UPSTREAM Use gcc __builtin_stdc_* builtins in stdbit.h if possible
-Patch1004:      stdbit-builtins.patch
-# PATCH-FIX-UPSTREAM iconv: ISO-2022-CN-EXT: fix out-of-bound writes when writing escape sequence (CVE-2024-2961)
-Patch1005:      iconv-iso-2022-cn-ext.patch
-# PATCH-FIX-UPSTREAM login: structs utmp, utmpx, lastlog _TIME_BITS independence (BZ #30701)
-Patch1006:      utmp-time-bits.patch
-# PATCH-FIX-UPSTREAM elf: Only process multiple tunable once (BZ #31686)
-Patch1007:      elf-parse-tunables.patch
-# PATCH-FIX-UPSTREAM nscd: Stack-based buffer overflow in netgroup cache (CVE-2024-33599, BZ #31677)
-Patch1008:      glibc-CVE-2024-33599-nscd-Stack-based-buffer-overflow-in-n.patch
-# PATCH-FIX-UPSTREAM nscd: Do not send missing not found response in addgetnetgrentX (CVE-2024-33600, BZ #31678)
-Patch1009:      glibc-CVE-2024-33600-nscd-Do-not-send-missing-not-found-re.patch
-# PATCH-FIX-UPSTREAM nscd: Avoid null pointer crashes after notfound response (CVE-2024-33600, BZ #31678)
-Patch1010:      glibc-CVE-2024-33600-nscd-Avoid-null-pointer-crashes-after.patch
-# PATCH-FIX-UPSTREAM nscd netgroup: Use two buffers in addgetnetgrentX (CVE-2024-33601, CVE-2024-33602, BZ #31680)
-Patch1011:      glibc-CVE-2024-33601-CVE-2024-33602-nscd-netgroup-Use-two.patch
-# PATCH-FIX-UPSTREAM nscd: Use time_t for return type of addgetnetgrentX (CVE-2024-33602)
-Patch1012:      nscd-netgroup-cache-timeout.patch
 %endif
 
 ###

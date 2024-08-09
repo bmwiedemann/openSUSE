@@ -108,7 +108,7 @@ Name:           %{pkgname}
 %define biarch_targets x86_64 s390x powerpc64 powerpc sparc sparc64
 
 URL:            https://gcc.gnu.org/
-Version:        13.3.0+git8781
+Version:        13.3.1+git8964
 Release:        0
 %define gcc_dir_version %(echo %version |  sed 's/+.*//' | cut -d '.' -f 1)
 %define gcc_snapshot_revision %(echo %version | sed 's/[3-9]\.[0-9]\.[0-6]//' | sed 's/+/-/')
@@ -146,6 +146,7 @@ Patch60:        gcc44-textdomain.patch
 Patch61:        gcc44-rename-info-files.patch
 # Feature backports
 Patch100:       gcc13-pr88345-min-func-alignment.diff
+Patch101:       gcc13-rs6000-Adjust-fpatchable-function-entry.patch
 
 # Define the canonical target and host architecture
 #   %%gcc_target_arch  is supposed to be the full target triple
@@ -372,6 +373,7 @@ ln -s newlib-4.3.0.20230120/newlib .
 %patch -P 60 -p1
 %patch -P 61 -p1
 %patch -P 100 -p1
+%patch -P 101 -p1
 
 #test patching end
 

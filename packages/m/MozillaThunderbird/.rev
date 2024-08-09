@@ -5418,4 +5418,31 @@ I cannot test locally unfortunately.
     and Thunderbird 115.13</comment>
     <requestid>1187370</requestid>
   </revision>
+  <revision rev="340" vrev="1">
+    <srcmd5>9195f706beecc6888c80f3d3a3ca0542</srcmd5>
+    <version>115.14.0</version>
+    <time>1723212845</time>
+    <user>dimstar_suse</user>
+    <comment>- Mozilla Thunderbird 115.14.0
+  * When using an external installation of GnuPG, Thunderbird
+    occassionally sent/received corrupted messages (bmo#1898832)
+  * Users of external GnuPG were unable to decrypt incorrectly
+    encoded messages (bmo#1906903)
+  MFSA 2024-38 (bsc#1228648)
+  * CVE-2024-7519 (bmo#1902307)
+    Out of bounds memory access in graphics shared memory handling
+  * CVE-2024-7521 (bmo#1904644)
+    Incomplete WebAssembly exception handing
+  * CVE-2024-7522 (bmo#1906727)
+    Out of bounds read in editor component
+  * CVE-2024-7525 (bmo#1909298)
+    Missing permission check when creating a StreamFilter
+  * CVE-2024-7526 (bmo#1910306)
+    Uninitialized memory used by WebGL
+  * CVE-2024-7527 (bmo#1871303)
+    Use-after-free in JavaScript garbage collection
+  * CVE-2024-7529 (bmo#1903187)
+    Document content could partially obscure security prompts</comment>
+    <requestid>1192519</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug  7 13:33:07 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.7.25
+  * Add ProcessProvider to ProfileProvider by @waahm7 in (#245)
+
+-------------------------------------------------------------------
 Fri Aug  2 10:47:41 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.7.24

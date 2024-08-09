@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Aug  8 07:39:55 UTC 2024 - Florian "sp1rit" <sp1rit@disroot.org>
+
+- Update to version 0.2.1:
+  + A small, ABI-compatible update to add Edges.
+  + Other:
+    - Add Edges type and Box::extent() for its bottom right corner
+
+- Changes from version 0.2.0:
+  + A major release which also breaks ABI compat, as such bumping the
+    sover.
+  + Fixes:
+    - math: avoid assert fail in std::clamp in closestPoint
+    - math/region: add expand
+    - memory: do not release pointers after emitting a signal
+    - adjust right and bottom box edges when getting closest point
+  + Other:
+    - avoid undefined behaviour from downcasting ptr implentation
+    - string: respect removeEmpty when VarList input is empty
+    - path: add findConfig and dir utils
+
+-------------------------------------------------------------------
 Wed Jun 26 12:12:54 UTC 2024 - Florian "sp1rit" <sp1rit@disroot.org>
 
 - Update to version 0.1.5:

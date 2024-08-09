@@ -1,4 +1,207 @@
 -------------------------------------------------------------------
+Thu Aug  8 07:43:20 UTC 2024 - Florian "sp1rit" <sp1rit@disroot.org>
+
+- Update to version 0.42.0:
+  + At last, a very large update 0.42.0 has finally dropped!
+  + Notable changes:
+    - Wlroots has been dropped, and is no longer a dependency.
+    - Explicit sync support has been added and will be automatically
+      turned on/off depending on your setup. For some select nvidia
+      users, this might cause glitches. In such cases, disable it
+      with render:explicit_sync = false
+    - Old protocol implementations redone in our newer, more
+      memory-safe impl style.
+    - In-house XCursor implementation for legacy themes
+    - Tons and tons of fixes and performance improvements!
+  + Breaking changes:
+    - misc:no_direct_scanout -> render:direct_scanout
+    - fakefullscreen has been dropped in favor of the new
+      fullscreenstate dispatcher
+  + New features:
+    - config: add option to exit window while retaining fullscreen
+      (#516) (#6880)
+    - core: Add missing header for libc++ after e989a0b (#7158)
+    - core: add a destructor to CHyprOpenglImpl and avoid
+      wl_container_of undefined behaviour (#7101)
+    - crashreporter: add date and flags to crash report (#7028)
+    - debug: add Nvidia driver info (#6715)
+    - hyprpm: add short error code explanations
+    - internal: Add functions to hyprctl header (#6745)
+    - keybinds: add bindp and noshortcutsinhibit (#7017)
+    - keybinds: add safeguard to mousebinds (#7034)
+    - pluginapi: Add force reload of config at the end of plugin
+      initialization (#7099)
+    - pointer: change min cursor padding to 0 (#6027)
+    - socket2: Add windowtitlev2 event which includes the window
+      address (#6856)
+    - touch: add touch swipe invert config (#6940)
+  + Fixes:
+    - border: fixup infinite recursion
+    - compositor: fix general:extend_border_grab_area (#7214)
+    - compositor: fix log typos (#7111)
+    - configmgr: fix warning
+    - core/surface/buffer: Buffer lock/release fixes (#7110)
+    - core/surface: fixup a few pointer handling edge cases
+    - core: Fix crash on opening chromium (#6932)
+    - core: fix a few ubsan issues reported at exit of hyprland
+      (#6699)
+    - decorations: fix infinite recursion on no_gaps when only (#7169)
+    - drm-syncobj: fixup fd leak with timelines
+    - hyprctl: increase hyprctl timeout to 5s to fix #6801 (#7152)
+    - ime-relay: fix crash on nullptr surface focus
+    - input: Fix hyprctl switchxkblayout not actually changing layout
+      (#7070)
+    - input: fix capabilities enum types passed
+    - input: fix invalid usage of dev in setTouchDeviceConfigs
+    - input: fix keyboard leds with multiple keyboards (#7079)
+    - input: fix leds on kb creation (#7206)
+    - internal: fix fullscreen typos (#7134)
+    - keybinds: fix NoSymbol keybinds (#7199)
+    - keybinds: fix movewindow float to 0 (#6777)
+    - layersurface: fixup focus issues in onUnmap
+    - layout: fix dynamic rules not updating after setting fullscreen
+      (#7129)
+    - meson: fix wlroots-hyprland dep checks (for libliftoff patch to
+      work) (#6736)
+    - output: minor tearing fixes
+    - pointer: fix buffer crash (#7131)
+    - presentation-feedback: fix invalid values sent after aq merge
+    - renderer: Explicit sync fixes (#7151)
+    - renderer: fix a few xray regressions (#6855)
+    - renderer: fixup crashes on inaccessible files for bg
+    - renderer: fixup nvidia driver version checks
+    - renderer: partially revert previous xray fix (#6868)
+    - session: fix activate events being always treated as on (#6696)
+    - sessionLock: fix the check for locking a locked session (#6843)
+    - shortcutsInhibit: fix crash
+    - style: fix clang-format
+    - surface: fix zero_scaling xwayland damage
+    - surface: fixup logical damage size calculations
+    - toplevelexport: fix flipped r/b channels when sharing windows
+      (#6861)
+    - touch: fix touch swipe invert config (#7014)
+    - virtual-pointer: fixup virtual pointer warp events
+    - wayland/compositor: fixup buffer damage tracking for
+      wl_shm buffers
+    - wayland/compositor: fixup double buffer releases
+    - wayland/surface: fixup self-owning surface roles
+    - xdg-shell: fix xdg-positioner y-flip (#7094)
+    - xdg-shell: fixup unassigned wl surfaces to xdg surfaces
+    - xwayland: fix high cpu idle usage
+    - xwayland: fix setting title prop (#6809)
+    - xwayland: fixup WM_SIZE_HINTS handling according to ICCCM
+    - xwm: Fix xwayland black window bug after losing focus (#6966)
+  + Other:
+    - Meson: replace props.json with VERSION
+    - Meson: install config and wallpapers to DATADIR/hypr
+    - Completions: use only awk (#6763)
+    - Core: Move to aquamarine (#6608)
+    - compositor: ignore setting surface scanout if DS is disabled
+    - compositor: implement wayland socket handover (#6930)
+    - compositor: minor cleanups for fading out layers
+    - compositor: simplify getWindowFromSurface
+    - config: avoid using initial ws tracking for exec-once
+    - config: don't crash when getenv HOME returns null
+    - config: use hyprutils helper (#6891)
+    - core/surface: drop map/unmap events in member funcs
+    - core: Improve handling of window properties (#6776)
+    - core: Properly shutdown wl display (#7018)
+    - core: avoid locking 2 wayland sockets (#6971)
+    - core: emit unmap event after unmap in surface destroy
+    - core: move to steady_clock where applicable
+    - cursor: Better xcursor implementation (#7178)
+    - cursormgr: avoid scanning ill formed inherit (#7211)
+    - cursormgr: implement inheriting themes for xcursor (#7197)
+    - debug: dont manually unlock the lock_guard (#7210)
+    - debug: get rid of useless 1s in logs (#6969)
+    - egl: attempt a 3.2 egl context first
+    - egl: avoid setting debug mode and handle legacyrenderer
+    - egl: require gles 3.0 only
+    - egl: support getting the device via platform_device
+    - ext-foreign-toplevel: Send done after title and class (#6857)
+    - hyprctl completions: Use only awk rather than grep + awk
+    - hyprctl: link to much less libraries (#7212)
+    - hyprerror: minor stylistic changes
+    - hyprpm: execute all git commands regardless of fails
+    - hyprpm: init submodules after resets
+    - input: Emulate discrete scrolling from v120 events (#6881)
+    - input: don't simulate mouse movement on focus change in
+      follow_mouse = 2/3 if no_warps is false (#7015)
+    - input: refocus last window on keyboard unfocusable surfaces
+    - input: unify removing currentlyDraggedWindow (#7071)
+    - inputmgr: ensure we dont divide by zero (#6713)
+    - internal: refactor fullscreen states (#7104)
+    - internal: some minor fd/socket cleanups and make logging thread
+      safe (#7123)
+    - keybinds: allow toggling fullscreenstate (#7128)
+    - keybinds: handle monitor change in moveWindowIntoGroup (#7030)
+    - keybinds: handle null monitor in pinActive (#7122)
+    - keybinds: improve fullscreenstate toggling (#7174)
+    - keybinds: never switch to another monitor with per_monitor
+      (#6665)
+    - keybinds: remove toggleopaque (#7024)
+    - keyboard: properly update keymap state and fd on keymap changes
+    - keyboard: update xkb state after key event
+    - layer-shell: avoid crashes on unmap (#7092)
+    - layer-shell: properly map and unmap surface and propagate unmap
+      events
+    - layer-shell: validate exclusiveEdge and don't set it as top by
+      default (#7006)
+    - layershell: don't throw misaligned error on exclusive edge 0
+    - layersurface: null check for surface validity before unmap()
+    - layout: update workspace rules on layout change (#6878)
+    - meson: install wayland.hpp header
+    - opengl: destroy cairo image surface after use
+    - output: submit damage to kms
+    - pointer-constraint: set lifetime correctly
+    - pointer/hw: extend cursor swapchain to 3
+    - pointer: round position when rendering software cursors
+    - pointer: update geometry after unplug events
+    - pointer: use preMonitorCommit for resetting render state
+    - protocols: Move globalshortcuts impl (#7102)
+    - protocols: move screencopy and toplevel export to
+      hyprwayland-scanner (#7065)
+    - protocols: move text-input-v1 to hyprwayland-scanner (#7096)
+    - renderer/layer-shell: use explicitly set exclusiveEdge (#6984)
+    - renderer: Make shader time always count from zero (#6903)
+    - renderer: don't skip back background on preBlurQueued
+    - renderer: don't use the surface counter in popup iterations
+    - renderer: drastically optimize bg texture creation
+    - renderer: drop redundant spammy trace log
+    - renderer: guard layer in renderLayer
+    - renderer: untransform textures matching display transform
+    - renderer: use session lock alpha for rendering lacking locks
+    - seat: don't send keyboard data without a keyboard cap (#6697)
+    - session-lock: send locked after the lock screen is properly
+      rendered (#6850)
+    - sessionLock: don't sendLocked when session lock has already
+      been destoyed (#7150)
+    - sessionLock: focus lock on creation based on mouse position
+      (#6658)
+    - surface: avoid crashes on fading out layers
+    - surface: emit unmap before unmapping and releasing the buffers
+    - tablet: Send .frame() on .proximity_out() (#6761)
+    - touch: set lastInputTouch on every event
+    - virtualptr: allow binding to output
+    - virtualptr: map to entire screen if no output is provided
+    - wayland/compositor: drop pending buffer ref if synchronous
+    - wayland/compositor: release buffers on unmap
+    - wayland/output: avoid sending events to dead outputs
+    - window/ls: reset core signals after destroy
+    - window: drop ack requirement for applying pending reported size
+    - window: override noMaximize if new window takes over fullscreen
+      (#6812) (#6870)
+    - wl_seat: avoid sending events to objects without caps
+    - workspaces: don't try to reopen special workspaces (#6802)
+    - xcursor: rework bootleg xcursor (#7140)
+    - xdg-shell: completely rewrite xdg-positioner (#7067)
+    - xdg-shell: make xdg-positioner flip target greatest available
+      space (#7209)
+    - xwayland: avoid unfocusing on OR child focuses
+    - xwayland: break cyclic loop of parents (#6722)
+    - xwm: drop invalid case for clearing X focus
+
+-------------------------------------------------------------------
 Wed Jun 26 07:58:46 UTC 2024 - Florian "spirit" <sp1rit@disroot.org>
 
 - Update to version 0.41.2:

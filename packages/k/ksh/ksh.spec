@@ -153,6 +153,8 @@ Patch54:        ksh93-edpredict.dif
 Patch55:        ksh93-spawnlock.dif
 Patch56:        ksh93-filedefined.dif
 Patch57:        ksh93-no-sysctl.dif
+Patch58:        ksh93-putval.dif
+Patch59:        ksh93-untrustedenv.dif
 Patch62:        ksh-locale.patch
 Patch63:        cpp.patch
 
@@ -265,6 +267,8 @@ fi
 %patch -P 55
 %patch -P 56
 %patch -P 57
+%patch -P 58
+%patch -P 59
 
 %patch -P 63 -p 1
 

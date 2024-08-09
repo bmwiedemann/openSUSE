@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Aug  7 13:24:54 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.8.6
+  * Connection Manager Acquisition Timeout by @waahm7 in (#479)
+  * Support MaxPendingConnectionAcquisitions by @waahm7 in (#481)
+
+-------------------------------------------------------------------
 Wed Jul 31 09:20:59 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.8.5

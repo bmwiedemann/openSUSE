@@ -106,12 +106,12 @@ Requires:       obs-service-obs_scm-common = %version-%release  \
 %define scm_dependencies                                        \
 Requires:       git-core                                        \
 %if 0%{?suse_version} >= 1315                                   \
-Recommends:     bzr                                             \
-Recommends:     mercurial                                       \
-Recommends:     subversion                                      \
 Recommends:     obs-service-download_files                      \
 Recommends:     %{use_python}-keyring                           \
 Recommends:     %{use_python}-keyrings.alt                      \
+Suggests:       bzr                                             \
+Suggests:       mercurial                                       \
+Suggests:       subversion                                      \
 %endif                                                          \
 %{nil}
 
@@ -119,8 +119,8 @@ Recommends:     %{use_python}-keyrings.alt                      \
 
 %define pkg_name obs-service-tar_scm
 Name:           %{pkg_name}%{nsuffix}
-%define version_unconverted 0.10.43
-Version:        0.10.43
+%define version_unconverted 0.10.46
+Version:        0.10.46
 Release:        0
 Summary:        An OBS source service: create tar ball from svn/git/hg
 License:        GPL-2.0-or-later
@@ -161,6 +161,9 @@ BuildRequires:  %{use_python}-lxml
 BuildRequires:  %{use_python}%{_pkg_base}
 # Fix missing Requires in python3-pbr in Leap42.3
 BuildRequires:  %{use_python}-setuptools
+%if 0%{?suse_version}
+BuildRequires:  python-rpm-macros
+%endif
 %else
 BuildRequires:  python >= 2.6
 %endif
@@ -261,10 +264,11 @@ source artefacts (.dsc, .origin.tar.gz and .debian.tar.gz if non-native).
 %install
 %if %{without obs_scm_testsuite}
 make install DESTDIR="%{buildroot}" PREFIX="%{_prefix}" SYSCFG="%{_sysconfdir}" PYTHON="%{python_path}" WITH_GBP="%{enable_gbp}"
+%if %{with python3}
 # Doing %%python3_fix_shebang_path old fashioned way for the backward compatibility
 sed -i "1s@#\\!.*python\S*@#\\!$(realpath %__python3)@" \
     %{buildroot}%{_prefix}/lib/obs/service/tar_scm
-
+%endif
 %else
 
 # moved conditional to the top as it helps to have it all in one place and only rely on the bcond_with here.

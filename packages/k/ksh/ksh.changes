@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Aug  1 14:04:27 CEST 2024 - mls@suse.de
+
+- fix segfault in variable substitution [bsc#1129288]
+  new patch: ksh93-putval.dif
+- fix untrusted environment execution [bsc#1160796] [CVE-2019-14868]
+  new patch: ksh93-untrustedenv.dif
+
+-------------------------------------------------------------------
 Mon May 13 16:38:57 CEST 2024 - mls@suse.de
 
 - remove no longer needed qemu workaround

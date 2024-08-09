@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Thu Aug 01 12:57:19 UTC 2024 - adrian@suse.de
+
+- Update to version 0.10.46:
+  * [dist] fix BuildRequires for older distros like SLE12
+
+-------------------------------------------------------------------
+Thu Aug 01 09:48:25 UTC 2024 - adrian@suse.de
+
+- Update to version 0.10.45:
+  * [dist] fix shebang substitution in spec for py2
+
+-------------------------------------------------------------------
+Wed Jul 31 09:20:54 UTC 2024 - adrian@suse.de
+
+- Update to version 0.10.44:
+  * import submit request change
+  * Support updating submodules to main branch
+  * do not skip "--reference" if package-meta ...
+  * cpio: Do not follow symlinks in 'touch'
+  * Support URL hostname in keyring
+  * gbp: use --git-export
+  * Update debian/changelog for 0.10.43
+  * disable compile python in debian package
+  * update dist/debian.dsc to match debian packaging
+  * Update debian debhelper dependency
+  * Fix description-synopsis-starts-with-article
+  * Fix priority-extra-is-replaced-by-priority-optional
+  * Debian compat from 8 to 10
+  * Debian X-Python version no longer needed
+  * Fix Lintian error about missing python3 dep
+  * enable the GBP service
+  * Fixed filtering of include/exclude when topdir has escape characters.
+  * Fix setting svn credentials in the command line
+
+-------------------------------------------------------------------
+Wed Jul 31 09:06:24 UTC 2024 - Adrian Schröter <adrian@suse.de>
+
+- update to version 0.10.44:
+  * Support updating submodules to main branch
+  * Debian packaging for gbp service
+  * do not skip "--reference" if package-meta is enabled and git's partial clone is used.
+  * Fixed filtering of include/exclude when topdir has escape characters.
+  * Fix setting svn credentials in the command line
+  * cpio: Do not follow symlinks in 'touch'
+  * Support URL hostname in keyring
+  * debian package updates
+
+-------------------------------------------------------------------
+Thu Jul 25 19:52:48 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- "Downgrade" bzr, mercurial and subversion Recommends to Suggests.
+
+-------------------------------------------------------------------
 Fri Jun 14 18:33:15 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Fix shebang of the script to use the explicit version of Python

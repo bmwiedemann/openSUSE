@@ -19,8 +19,10 @@
 
 %bcond_without devel
 
+%define shortname hypr
+
 Name:           hyprland
-Version:        0.41.2
+Version:        0.42.0
 Release:        0
 Summary:        Dynamic tiling Wayland compositor
 License:        BSD-3-Clause
@@ -32,23 +34,20 @@ BuildRequires:  cmake
 BuildRequires:  gcc-c++ >= 11
 BuildRequires:  git
 BuildRequires:  glslang-devel
-BuildRequires:  jq
 BuildRequires:  meson
 BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(aquamarine)
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(egl)
 BuildRequires:  pkgconfig(gbm) >= 17.1.0
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(glesv2)
-BuildRequires:  pkgconfig(hwdata)
 BuildRequires:  pkgconfig(hyprcursor) >= 0.1.9
 BuildRequires:  pkgconfig(hyprlang) >= 0.3.2
-BuildRequires:  pkgconfig(hyprutils) >= 0.1.4
+BuildRequires:  pkgconfig(hyprutils) >= 0.2.1
 BuildRequires:  pkgconfig(hyprwayland-scanner) >= 0.3.8
-BuildRequires:  pkgconfig(libdisplay-info)
 BuildRequires:  pkgconfig(libdrm) >= 2.4.118
 BuildRequires:  pkgconfig(libinput) >= 1.14.0
-BuildRequires:  pkgconfig(libseat) >= 0.2.0
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(pango)
 BuildRequires:  pkgconfig(pangocairo)
@@ -63,6 +62,7 @@ BuildRequires:  pkgconfig(wayland-server) >= 1.22
 BuildRequires:  pkgconfig(xcb)
 BuildRequires:  pkgconfig(xcb-icccm)
 BuildRequires:  pkgconfig(xcb-renderutil)
+BuildRequires:  pkgconfig(xcursor)
 BuildRequires:  pkgconfig(xkbcommon)
 BuildRequires:  pkgconfig(xwayland)
 %if 0%{?suse_version}
@@ -108,6 +108,7 @@ build plugins for hyprland.
 Summary:        Bash Completion for %{name}
 Group:          System/Shells
 Requires:       %{name}
+Requires:       awk
 Requires:       bash-completion
 Supplements:    (%{name} and bash-completion)
 BuildArch:      noarch
@@ -119,6 +120,7 @@ The official bash completion script for %{name}.
 Summary:        Fish Completion for %{name}
 Group:          System/Shells
 Requires:       %{name}
+Requires:       awk
 Requires:       fish
 Supplements:    (%{name} and fish)
 BuildArch:      noarch
@@ -130,6 +132,7 @@ The official fish completion script for %{name}.
 Summary:        ZSH Completion for %{name}
 Group:          System/Shells
 Requires:       %{name}
+Requires:       awk
 Requires:       zsh
 Supplements:    (%{name} and zsh)
 BuildArch:      noarch
@@ -161,10 +164,6 @@ sed -i 's;REPLACE_ME_WITH_PREFIX;%{_prefix};' hyprpm/src/core/DataState.cpp
 
 %install
 %meson_install --tags runtime,man%{?with_devel:,devel}
-%if %{with devel}
-rm %{buildroot}/%{_libdir}/libwlroots.a %{buildroot}/%{_datadir}/pkgconfig/wlroots.pc
-rm -rf %{buildroot}/%{_includedir}/wlr/
-%endif
 
 %files
 %license LICENSE
@@ -172,8 +171,8 @@ rm -rf %{buildroot}/%{_includedir}/wlr/
 %{_bindir}/Hyprland
 %{_bindir}/hyprctl
 %{_bindir}/hyprpm
-%dir %{_datadir}/%{name}
-%{_datadir}/%{name}/hyprland.conf
+%dir %{_datadir}/%{shortname}
+%{_datadir}/%{shortname}/hyprland.conf
 %dir %{_datadir}/wayland-sessions/
 %{_datadir}/wayland-sessions/%{name}.desktop
 %dir %{_datadir}/xdg-desktop-portal
@@ -182,7 +181,7 @@ rm -rf %{buildroot}/%{_includedir}/wlr/
 %{_mandir}/man1/hyprctl.*
 
 %files wallpapers
-%{_datadir}/%{name}/wall*
+%{_datadir}/%{shortname}/wall*
 
 %if %{with devel}
 %files devel

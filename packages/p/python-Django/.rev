@@ -1244,4 +1244,12 @@
     <comment></comment>
     <requestid>1192060</requestid>
   </revision>
+  <revision rev="120" vrev="2">
+    <srcmd5>157c8e467a00c36c71ae9e9c1ccc2a60</srcmd5>
+    <version>5.0.8</version>
+    <time>1723212906</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.0.8 (bsc#1228629, bsc#1228630, bsc#1228631, bsc#1228632)</comment>
+    <requestid>1192591</requestid>
+  </revision>
 </revisionlist>

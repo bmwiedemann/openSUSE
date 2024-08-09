@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Aug  2 07:08:03 UTC 2024 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Thunderbird 115.14.0
+  * When using an external installation of GnuPG, Thunderbird
+    occassionally sent/received corrupted messages (bmo#1898832)
+  * Users of external GnuPG were unable to decrypt incorrectly
+    encoded messages (bmo#1906903)
+  MFSA 2024-38 (bsc#1228648)
+  * CVE-2024-7519 (bmo#1902307)
+    Out of bounds memory access in graphics shared memory handling
+  * CVE-2024-7521 (bmo#1904644)
+    Incomplete WebAssembly exception handing
+  * CVE-2024-7522 (bmo#1906727)
+    Out of bounds read in editor component
+  * CVE-2024-7525 (bmo#1909298)
+    Missing permission check when creating a StreamFilter
+  * CVE-2024-7526 (bmo#1910306)
+    Uninitialized memory used by WebGL
+  * CVE-2024-7527 (bmo#1871303)
+    Use-after-free in JavaScript garbage collection
+  * CVE-2024-7529 (bmo#1903187)
+    Document content could partially obscure security prompts
+
+-------------------------------------------------------------------
 Wed Jul 10 05:23:45 UTC 2024 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Thunderbird 115.13.0

@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Wed Aug  7 06:07:48 UTC 2024 - Alberto Planas Dominguez <aplanas@suse.com>
 
-- Update to 5.0.8
+- Update to 5.0.8 (bsc#1228629, bsc#1228630, bsc#1228631, bsc#1228632)
   * CVE-2024-41989: Memory exhaustion in
     django.utils.numberformat.floatformat()
   * CVE-2024-41990: Potential denial-of-service vulnerability in

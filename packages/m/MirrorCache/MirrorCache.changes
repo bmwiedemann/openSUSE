@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Aug 01 08:59:31 UTC 2024 - Andrii Nikitin <andrii.nikitin@suse.com>
+
+- Update to version 1.080:
+  * Add /rest/project_last_modified route (#506)
+  * Display project size in human friendly format (#503)
+  * Add flag mysql_enable_utf8mb4 when connectin to MariaDB (#505)
+
+-------------------------------------------------------------------
 Thu Jul 25 07:40:38 UTC 2024 - Andrii Nikitin <andrii.nikitin@suse.com>
 
 - Update to version 1.079:

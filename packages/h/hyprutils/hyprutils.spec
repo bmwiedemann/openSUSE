@@ -17,10 +17,10 @@
 #
 
 
-%define sover 0
+%define sover 1
 
 Name:           hyprutils
-Version:        0.1.5
+Version:        0.2.1
 Release:        0
 Summary:        Utilities used across the Hypr* ecosystem
 License:        BSD-3-Clause

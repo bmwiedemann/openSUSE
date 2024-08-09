@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu Aug  8 15:56:39 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 1.11.0
+  New / improved features:
+  * Preserve outlines and links when possible
+  * Implement a GUI for hiding of margins
+  * Implement a GUI for visually setting crop
+  * Improve GUI for pasting of overlay and underlay
+  * Improve zoom-fit toggle
+  * Implement copying of text and image from PDF
+  * Add a keyboard shortcut to open the popup menu
+  * Show content loss warning on start & and link to user manual
+  * Improve visual layout of headerbar title
+  * Fix reversed file import order on Windows
+  * Use cropped page size in "Page size" dialog
+  * Drop PikePDF < 6 support
+Fixes:
+  * Fix iconview in right-to-left locale
+  * Fix too high scroll speed with high-resolution mouses
+  * Fix a "raise KeyError(key) from None" in pikepdf
+  * Fix crop white border
+  * Fix handling of scaling and rotation at printing
+  * Fix missing icon when running under Wayland
+  * Fix failure when generating booklet with pikepdf v9
+  * Fix issue when resizing a page with pikepdf v9
+
+-------------------------------------------------------------------
 Sun Dec 24 13:49:31 UTC 2023 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.10.1

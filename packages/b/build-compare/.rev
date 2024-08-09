@@ -1103,4 +1103,12 @@ In home:RedDwarf/kdenlive makes a difference. You can see the openSUSE_Factory/x
 - Fix filtering compiled Python modules to handle Python &gt;= 3.7</comment>
     <requestid>1094273</requestid>
   </revision>
+  <revision rev="127" vrev="1">
+    <srcmd5>f9ace7d5ba2223bcedc3455b215f0a1e</srcmd5>
+    <version>20240801T083050.024a3a7</version>
+    <time>1723212819</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1192562</requestid>
+  </revision>
 </revisionlist>

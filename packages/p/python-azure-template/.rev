@@ -345,4 +345,15 @@
     <comment></comment>
     <requestid>1191837</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>46ab89e10c60ad0777be787b57817265</srcmd5>
+    <version>0.1.0b4033655</version>
+    <time>1723212896</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 0.1.0b4033655
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1192522 from glaubitz)</comment>
+    <requestid>1192609</requestid>
+  </revision>
 </revisionlist>

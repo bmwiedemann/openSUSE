@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Aug  7 13:29:24 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.9.25
+  * Run proofs with CBMC 6.1.0 by @graebm in (#1140)
+  * Avoiding allocating a handle in the Windows RNG
+    by @teo-tsirpanis in (#1046)
+  * Add no copy api variants to json interface
+    by @DmitriyMusatkin in (#1138)
+  * Allocate error space for aws-crt-swift
+    by @xiazhvera in (#1129)
+
+-------------------------------------------------------------------
 Fri Jul 26 11:27:55 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.9.24

@@ -202,4 +202,12 @@ depends on 1159012</comment>
     <comment></comment>
     <requestid>1183451</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>7f247a82abacf5c176d228fe8250236e</srcmd5>
+    <version>0.42.0</version>
+    <time>1723212877</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1192550</requestid>
+  </revision>
 </revisionlist>

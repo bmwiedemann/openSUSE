@@ -1,7 +1,7 @@
 #
 # spec file for package bup
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %define pythons python311
 %endif
 Name:           bup
-Version:        0.33.2
+Version:        0.33.3
 Release:        0
 Summary:        Backup program based on git
 License:        LGPL-2.0-only
@@ -39,7 +39,7 @@ BuildRequires:  %{python_module fuse}
 BuildRequires:  %{python_module pylibacl}
 BuildRequires:  %{python_module pyxattr}
 BuildRequires:  %{python_module tornado}
-BuildRequires:  perl-Time-HiRes
+BuildRequires:  perl(Time::HiRes)
 %if %{with_test}
 BuildRequires:  %{python_module pylint}
 BuildRequires:  %{python_module pytest-xdist}

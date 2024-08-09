@@ -5,6 +5,10 @@
 #
 # Written by Michael Matz and Stephan Coolo
 # Enhanced by Andreas Jaeger
+
+# This value is a guess.
+# The real timeout is controlled by buildlog_maxidle, an internal configuration value. Default: 8 hours...
+# A prj can define "BuildFlags: logidlelimit:4321" in prjconf to override the global value.
 declare -i watchdog_host_timeout_seconds='3600'
 declare -i watchdog_touch_percent_prior_timeout='25'
 declare -i watchdog_next_touch_seconds=0
@@ -125,7 +129,7 @@ filter_png() {
     } elsif ($b eq "tEXt") {
       $d = read($f, $c, $a);
       $b = unpack("Z$a", $c);
-      if ($b eq "date:create" || $b eq "date:modify") {
+      if ($b eq "date:create" || $b eq "date:modify" || $b eq "date:timestamp") {
         $d = seek($f, -$a, 1);
         fn($f, $a);
       }

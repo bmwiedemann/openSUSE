@@ -348,4 +348,17 @@
     <comment>- Update to GCC 13.3 release</comment>
     <requestid>1175553</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>e48a38760957aa388a1298e69c800a22</srcmd5>
+    <version>13.3.1+git8964</version>
+    <time>1723212835</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to gcc-13 branch head, 9d368828bd4d04ce507e02a581, git8964 
+  * includes fix for samba build with glibc 2.40
+
+- Add gcc13-rs6000-Adjust-fpatchable-function-entry.patch to fix
+  the incorrect NOPs layout when -fpatchable-function-enry is passed
+  in ppc64le.</comment>
+    <requestid>1192633</requestid>
+  </revision>
 </revisionlist>

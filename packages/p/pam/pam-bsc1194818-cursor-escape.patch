@@ -1,6 +1,4 @@
-https://github.com/linux-pam/linux-pam/pull/816
-
-From d52c44fa6e70f3c1420feceafe48dcba10bee51e Mon Sep 17 00:00:00 2001
+From 8ae228fa76ff9ef1d8d6b2199582d9206f1830c6 Mon Sep 17 00:00:00 2001
 From: Stanislav Brabec <sbrabec@suse.cz>
 Date: Mon, 22 Jul 2024 23:18:16 +0200
 Subject: [PATCH] libpam_misc: Use ECHOCTL in the terminal input

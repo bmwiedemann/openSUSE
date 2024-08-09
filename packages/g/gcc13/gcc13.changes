@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Aug  7 09:32:00 UTC 2024 - Richard Biener <rguenther@suse.com>
+
+- Update to gcc-13 branch head, 9d368828bd4d04ce507e02a581, git8964 
+  * includes fix for samba build with glibc 2.40
+
+-------------------------------------------------------------------
+Thu Jul 25 17:29:02 UTC 2024 - Giuliano Belinassi <giuliano.belinassi@suse.com>
+
+- Add gcc13-rs6000-Adjust-fpatchable-function-entry.patch to fix
+  the incorrect NOPs layout when -fpatchable-function-enry is passed
+  in ppc64le.
+
+-------------------------------------------------------------------
 Tue May 21 08:56:28 UTC 2024 - Richard Biener <rguenther@suse.com>
 
 - Update to GCC 13.3 release
