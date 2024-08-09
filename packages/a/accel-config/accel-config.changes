@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Aug  8 15:07:51 UTC 2024 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Update to 4.1.8:
+  * Check for error return from iaa_do_crypto
+  * Clean up resource leak in accfg_wq_get_occupancy
+  * Update dsa_config_test_runner.sh
+- 4.1.7 changelog:
+  * Typo fixes
+  * Make verbose logging optional
+  * Clean up typo
+  * Don't attempt to disable non-existent devices
+  * Don't list attributes not present
+  * add required SECURITY.md file for OSSF Scorecard compliance
+
+-------------------------------------------------------------------
 Mon Mar 18 08:26:20 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.1.6:

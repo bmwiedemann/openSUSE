@@ -159,4 +159,12 @@
   * Use madvise(MADV_DONTNEED) to ummap address</comment>
     <requestid>1158910</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>e053b616dda22da386884533286537bf</srcmd5>
+    <version>4.1.8</version>
+    <time>1723212966</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1192814</requestid>
+  </revision>
 </revisionlist>
