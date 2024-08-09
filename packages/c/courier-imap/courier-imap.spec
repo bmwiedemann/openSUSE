@@ -1,7 +1,7 @@
 #
 # spec file for package courier-imap
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %bcond_with     valgrind
 
 Name:           courier-imap
-Version:        5.2.6
+Version:        5.2.9
 Release:        0
 Summary:        An IMAP and POP3 Server for Maildir MTAs
 License:        GPL-3.0-or-later
