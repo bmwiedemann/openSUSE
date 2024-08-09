@@ -119,4 +119,12 @@
     <comment></comment>
     <requestid>1173426</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>8eb0caf9b37d276cc65d0767e840c3ff</srcmd5>
+    <version>5.1.0</version>
+    <time>1723212963</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.x, sync-up with qalculate</comment>
+    <requestid>1192803</requestid>
+  </revision>
 </revisionlist>
