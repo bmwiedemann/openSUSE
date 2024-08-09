@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Aug  2 08:44:22 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.0.10
+  * configure: raise minimum autoconf requirement to 2.70
+  * Remove "All rights reserved" from Oracle copyright notices
+  * configure: Use LT_INIT from libtool 2 instead of deprecated AC_PROG_LIBTOOL
+  * unifdef __UNIXOS2__
+  * unifdef __QNX__
+  * unifdef __OSF1__
+  * Remove ifdefs for non-Solaris SVR4 systems
+  * Simplify remaining OPEN_MAX logic in FSlibos.h
+  * unifdef dirty
+  * Use autoconf-set HAVE_STDINT_H instead of platform-specific ifdefs
+  * unifdef NCD
+  * unifdef ISC
+  * unifdef SUNSYSV
+
+-------------------------------------------------------------------
 Sat Aug 27 08:53:19 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 1.0.9
