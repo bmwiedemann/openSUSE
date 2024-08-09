@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Aug  9 12:10:51 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 6.4.0:
+  * new custom output format fields for options --format and
+    --replace
+  * fix bash completions for key bindings
+
+-------------------------------------------------------------------
 Wed Jul 31 20:22:31 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 6.3.0:
