@@ -95,4 +95,12 @@
     <comment>- Enable lzma/xz compression; make `mkfs.erofs -z lzma` work.</comment>
     <requestid>1129857</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>bd2e4760e81019917f7baa3013a538d3</srcmd5>
+    <version>1.8</version>
+    <time>1723309689</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.8</comment>
+    <requestid>1193067</requestid>
+  </revision>
 </revisionlist>

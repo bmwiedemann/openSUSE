@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Aug  9 21:49:47 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.8
+  * Multi-threaded compression support with the mkfs.erofs utility.
+  * Supporting the Intel IAA hardware accelerator using the QPL
+    driver (for contemporary Xeon Scalable systems).
+  * Initial support for Zstandard (Zstd) compression.
+
+-------------------------------------------------------------------
 Wed Nov 29 16:43:32 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Enable lzma/xz compression; make `mkfs.erofs -z lzma` work.
