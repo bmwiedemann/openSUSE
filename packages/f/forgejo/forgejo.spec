@@ -30,7 +30,7 @@
 %endif
 %endif
 Name:           forgejo
-Version:        7.0.6
+Version:        7.0.7
 Release:        0
 Summary:        Self-hostable forge
 License:        MIT

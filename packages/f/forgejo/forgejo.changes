@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Aug  9 18:13:59 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 7.0.7:
+  This is a security release. See the documentation for more
+  information on the upgrade procedure.
+  * Security
+    - A change introduced in Forgejo v1.21 allows a Forgejo user
+      with write permission on a repository description to inject a
+      client-side script into the web page viewed by the visitor.
+      This XSS allows for href in anchor elements to be set to a
+      javascript: URI in the repository description, which will
+      execute the specified script upon clicking (and not upon
+      loading). AllowStandardURLs is now called for the repository
+      description policy, which ensures that URIs in anchor
+      elements are mailto:, http:// or https:// and thereby
+      disallowing the javascript: URI.
+  * Bug fixes
+    - PR (backported): disallow javascript: URI in the repository
+      description
+  * Localization
+    - PR (backported): i18n: backport of #4568 #4668 and #4783 to
+      v7
+
+-------------------------------------------------------------------
 Thu Aug  1 10:50:53 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 7.0.6:
