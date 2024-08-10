@@ -2427,6 +2427,7 @@ BuildFlags: onlybuild:orc
 BuildFlags: onlybuild:oxygen-gtk2
 BuildFlags: onlybuild:p11-kit
 BuildFlags: onlybuild:pam
+BuildFlags: onlybuild:pam_kwallet6
 BuildFlags: onlybuild:pam-config
 BuildFlags: onlybuild:pango
 BuildFlags: onlybuild:patch
