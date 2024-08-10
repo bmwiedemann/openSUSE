@@ -895,4 +895,23 @@ Core and Builtins
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1190345</requestid>
   </revision>
+  <revision rev="52" vrev="7">
+    <srcmd5>faee35a4e106dd9f185a1cc14c9fd4dd</srcmd5>
+    <version>3.8.19</version>
+    <time>1723309695</time>
+    <user>dimstar_suse</user>
+    <comment>- Adding bso1227999-reproducible-builds.patch fixing bsc#1227999
+  adding reproducibility patches from gh#python/cpython!121872
+  and gh#python/cpython!121883.
+- Add CVE-2024-6923-email-hdr-inject.patch to prevent email
+  header injection due to unquoted newlines (bsc#1228780,
+  CVE-2024-6923).
+- Add CVE-2024-5642-OpenSSL-API-buf-overread-NPN.patch removing
+  support for anything but OpenSSL 1.1.1 or newer (bsc#1227233,
+  CVE-2024-5642).
+- %{profileopt} variable is set according to the variable
+  %{do_profiling} (bsc#1227999)
+</comment>
+    <requestid>1193121</requestid>
+  </revision>
 </revisionlist>
