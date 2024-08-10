@@ -7,4 +7,12 @@
     <comment>This package is a cli tool for interacting with forgejo instances, a la gh or glab.</comment>
     <requestid>1192431</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>512d91b25cd326252bfee07c0e17570f</srcmd5>
+    <version>0.1.1</version>
+    <time>1723309687</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1193063</requestid>
+  </revision>
 </revisionlist>
