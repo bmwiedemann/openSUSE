@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Aug 10 04:37:33 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.26.1:
+  * feat: support dynamic language in pyo3 #1143
+  * test: add test for load dynamic lang in python 236f4ab
+  * feat: add py_lang registration function 43e74e7
+  * feat: add pytype for register language 8b660cf
+
+-------------------------------------------------------------------
 Thu Aug  8 05:24:11 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.26.0:

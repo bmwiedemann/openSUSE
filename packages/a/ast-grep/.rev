@@ -505,4 +505,16 @@
   * fix(deps): update rust crate toml_edit to v0.22.20 170da4c</comment>
     <requestid>1192499</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>548e4618bfc057dfe6ea38f015de9d69</srcmd5>
+    <version>0.26.1+0</version>
+    <time>1723309692</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.26.1:
+  * feat: support dynamic language in pyo3 #1143
+  * test: add test for load dynamic lang in python 236f4ab
+  * feat: add py_lang registration function 43e74e7
+  * feat: add pytype for register language 8b660cf</comment>
+    <requestid>1193093</requestid>
+  </revision>
 </revisionlist>
