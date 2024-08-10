@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Aug  9 17:04:45 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 6.4.1:
+  * fix problem with --fixed-strings and --file FILE when FILE
+    contains an \E
+
+-------------------------------------------------------------------
 Fri Aug  9 12:10:51 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 6.4.0:
