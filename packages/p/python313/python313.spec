@@ -576,7 +576,14 @@ EXCLUDE="$EXCLUDE test_faulthandler"
 %endif
 # some tests break in QEMU
 %if 0%{?qemu_user_space_build}
-EXCLUDE="$EXCLUDE test_faulthandler test_multiprocessing_forkserver test_multiprocessing_spawn test_os test_posix test_signal test_socket test_subprocess"
+# test_external_inspection: qemu does not support ptrace in test_self_trace
+# test_faulthandler: test_register_chain is racy
+# test_os: test_fork_warns_when_non_python_thread_exists fails
+# test_posix: qemu does not support fexecve with O_CLOEXEC in test_fexecve
+# test_signal: qemu crashes in test_stress_modifying_handlers
+# test_socket: many CmsgTrunc tests fail
+# test_subprocess: qemu does not support CLONE_VFORK
+EXCLUDE="$EXCLUDE test_external_inspection test_faulthandler test_os test_posix test_signal test_socket test_subprocess"
 %endif
 
 # This test (part of test_uuid) requires real network interfaces
