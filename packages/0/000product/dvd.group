@@ -3260,6 +3260,7 @@
     <package name="osinfo-db" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="ovmf" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="p11-kit" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="p11-kit-server" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="p11-kit-tools" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="pam" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="pam-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->

@@ -1091,7 +1091,6 @@
       <repopackage name="libnuma1"/>
       <repopackage name="libnvme-mi1"/>
       <repopackage name="libnvme1"/>
-      <repopackage name="liboath0"/>
       <repopackage name="libogg0"/>
       <repopackage name="libonig5"/>
       <repopackage name="libopenal1"/>
@@ -1578,7 +1577,6 @@
       <repopackage name="ntfs-3g"/>
       <repopackage name="ntfsprogs"/>
       <repopackage name="nvme-cli"/>
-      <repopackage name="oath-toolkit-xml"/>
       <repopackage name="open-iscsi"/>
       <repopackage name="open-isns"/>
       <repopackage name="open-lldp"/>
@@ -1604,7 +1602,6 @@
       <repopackage name="PackageKit-branding-openSUSE"/>
       <repopackage name="pam"/>
       <repopackage name="pam-config"/>
-      <repopackage name="pam_oath"/>
       <repopackage name="pam_pwquality"/>
       <repopackage name="partitionmanager"/>
       <repopackage name="passt"/>

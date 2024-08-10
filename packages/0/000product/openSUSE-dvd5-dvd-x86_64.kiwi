@@ -3305,6 +3305,7 @@
       <repopackage name="osinfo-db"/>
       <repopackage name="ovmf"/>
       <repopackage name="p11-kit"/>
+      <repopackage name="p11-kit-server"/>
       <repopackage name="p11-kit-tools"/>
       <repopackage name="PackageKit"/>
       <repopackage name="PackageKit-backend-zypp"/>
