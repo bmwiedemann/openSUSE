@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Aug  7 11:42:49 UTC 2024 - Filip Kastl <filip.kastl@suse.com>
+
+- Add back two hunks from gcc14.patch as gcc14-v2.patch.  Not all
+  bugs that gcc14.patch fixed were dealt with in the upstream --
+  one bug is caused by
+  0016-Clear-shared-key-only-in-close-function.patch and one bug
+  still remains in the upstream.
+
+-------------------------------------------------------------------
 Wed Jul 31 05:11:48 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to relese 2.6.8

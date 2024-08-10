@@ -74,4 +74,12 @@ Use macros to exclude 32-bit archs</comment>
     <comment></comment>
     <requestid>1156035</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>396c1aaee7f80fe73e70b765b2b27d86</srcmd5>
+    <version>1.11.1</version>
+    <time>1723309623</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1192746</requestid>
+  </revision>
 </revisionlist>

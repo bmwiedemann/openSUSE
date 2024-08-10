@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Aug  5 10:47:54 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.5.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.5.0
+- Changes since 6.4.0:
+  * Update dependency version to 6.5.0
+  * Fix drag pixmap with wrapped lines (kde#476979)
+  * Add actions to convert spaces to tabs and vice versa (kde#456736)
+  * use ktexteditor-script-tester6 for javascript tests
+  * fix -Woverflow warning with gcc
+  * templates: Remove one level of nesting
+  * Ignore buffer signals in completion on undo/redo
+  * cursorToOffset: remove unnecessary line variable
+  * Fix formatting
+  * Update version to 6.5.0
+  * src/view/kateview.cpp (KTextEditor::ViewPrivate::setupActions) : Fix typo in m_toggleShowSpace and m_toggleDynWrap whatsThis text.
+  * Treat 0x0000 to 0x001F as non-printable
+  * add action to quick toggle space visibility
+
+-------------------------------------------------------------------
 Tue Jul  9 09:41:57 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.4.0

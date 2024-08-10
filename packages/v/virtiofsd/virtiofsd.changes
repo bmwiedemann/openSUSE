@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Thu Aug  8 19:57:34 UTC 2024 - Caleb Crane <caleb.crane@suse.com>
+
+- Service: Remove deprecated cargo_config and cargo_audit services, both 
+  are now handled by the cargo_vendor service
+- Add new upstream features for the libvirt/virtiofsd interop config
+
+-------------------------------------------------------------------
+Thu Aug 08 08:13:17 UTC 2024 - Xiaoguang Wang <xiaoguang.wang@suse.com>
+
+- Fix build failure after update to Rust 1.80 (bsc#1228972)
+- Update to version 1.11.1:
+  * Changes since 1.11.0:
+  * Add "separate-options" capability
+  * Force-call DESTROY on INIT
+  * Do not require --shared-dir to print capabilities
+  * Enable notification on vring failure
+  * Bump version to v1.11.0
+  * deps: Update to the latest rust-vmm crates
+  * deps: Update to the latest libc
+  * Note migration capability
+  * README: Document new migration switches
+  * Introduce --migration-mode switch
+  * Introduce --migration-confirm-paths
+  * PassthroughFs::init: Point to NegotiatedOpts
+  * Implement device state deserialization
+  * Add get_path_by_fd()/printable_fd() functions
+  * Implement device state serialization
+  * Implement preserialization/premigration
+  * Define our serialized device state
+  * Introduce serializable file handles
+  * Introduce --migration-verify-handles
+  * Introduce --migration-on-error switch
+  * Allow explicitly invalid inodes and handles
+  * Split try_lookup() off of do_lookup()
+  * Add ReadDir::new_no_seek()
+  * Put open_root_node() into own function
+  * Add type for strong inode references
+  * Hide InodeStore locking
+  * Remove `&Inode` indirection
+  * Add device state infrastructure
+  * Add ErrorContext, ResultErrorContext traits
+  * Add other_io_error() utility function
+  * Add support for dirty memory logging
+  * opt: Introduce --allow-mmap flag
+  * fuse: Enable DIRECT_IO_ALLOW_MMAP with --allow-mmap
+  * Add '--shared-dir' as required if '-o' is missing
+  * Close the listener in the parent process
+  * Check if the socket parent directory exists
+  * Check if the shared directory exists
+  * deps: Bump syslog version
+  * Increase maximum virtqueue size to 32768
+  * Allow multiple uid/gid maps
+  * Hide clippy warning in readdir
+  * Shorten `std::result::Result` where possible
+  * Remove redundant Result imports
+  * deps: Bump vhost and vhost-user-backend versions
+  * Remove virtio-bindings feature
+  * Directly write uid/gidmap where possible
+  * Fix clippy warning: Complicated `match` condition
+  * Fix clippy warning: Skip converting to owned
+  * Fix clippy warning: Make use of `.cloned()`
+  * Fix new compiler warnings
+
+-------------------------------------------------------------------
 Thu Mar  7 14:03:20 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Fix libexecdir move: rpm cannot replace a directory with a single

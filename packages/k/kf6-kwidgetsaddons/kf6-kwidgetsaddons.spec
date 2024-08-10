@@ -19,13 +19,13 @@
 %define qt6_version 6.6.0
 
 %define rname kwidgetsaddons
-# Full KF6 version (e.g. 6.4.0)
+# Full KF6 version (e.g. 6.5.0)
 %{!?_kf6_version: %global _kf6_version %{version}}
 # Last major and minor KF6 version (e.g. 6.0)
 %{!?_kf6_bugfix_version: %define _kf6_bugfix_version %(echo %{_kf6_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kf6-kwidgetsaddons
-Version:        6.4.0
+Version:        6.5.0
 Release:        0
 Summary:        Large set of desktop widgets
 License:        LGPL-2.1-or-later
@@ -35,8 +35,6 @@ Source:         %{rname}-%{version}.tar.xz
 Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        frameworks.keyring
 %endif
-#PATCH-FIX-UPSTREAM
-Patch0:         0001-Partially-revert-cccaa8.patch
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  kf6-extra-cmake-modules >= %{_kf6_bugfix_version}

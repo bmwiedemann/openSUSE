@@ -779,4 +779,12 @@ https://build.opensuse.org/request/show/1178504 </comment>
 </comment>
     <requestid>1191606</requestid>
   </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>15617d4eb48d2328b6f01ac0878601ff</srcmd5>
+    <version>20240809</version>
+    <time>1723309572</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1192931</requestid>
+  </revision>
 </revisionlist>

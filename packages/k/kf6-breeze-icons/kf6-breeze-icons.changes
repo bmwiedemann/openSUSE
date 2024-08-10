@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Aug  5 10:47:28 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.5.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.5.0
+- Changes since 6.4.0:
+  * Update dependency version to 6.5.0
+  * Add 22px color (and monochrome, using *-symbolic) category icons. (kde#489347)
+  * Make 16px list-remove-symbolic be a link to the base icon
+  * Add symlinks for Crow Translate icons (kde#489984)
+  * Add flatpak symlink for Git Cola
+  * Add icon to indicate adding to a playlist immediately after the current track
+  * Update version to 6.5.0
+
+-------------------------------------------------------------------
 Tue Jul  9 09:41:32 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.4.0

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Aug  2 10:29:26 UTC 2024 - Antonio Feijoo <antonio.feijoo@suse.com>
+
+- Order the update of udev and systemd-boot right after systemd (bsc#1228659)
+
+-------------------------------------------------------------------
 Wed Jul 24 13:49:10 UTC 2024 - Franck Bui <fbui@suse.com>
 
 - Import commit 5bba1ebe17564b606cc5d1c07b14123c305019a7 (merge of v256.4)

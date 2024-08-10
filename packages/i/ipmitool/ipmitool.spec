@@ -34,6 +34,7 @@ Patch4:         0004-Adjust-SUSE-paths.patch
 Patch5:         0005-HPM-x-compatibility-message-is-DEBUG-only.patch
 Patch6:         Fix-time-format-for-sel-list-v.patch
 Patch7:         lanp-Fix-error-response-from-Unsupported-Parameter-lookup.patch.txt
+Patch8:         ipmitool-fix_init_from_incompat_ptr_type.patch
 BuildRequires:  libtool
 BuildRequires:  openssl-devel
 BuildRequires:  readline-devel

@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Aug  5 10:47:34 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.5.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.5.0
+- Changes since 6.4.0:
+  * Update dependency version to 6.5.0
+  * ksharedconfig: move statercs to state dir
+  * Explain what "desktop entry spec separator semantics" means
+  * Reapply "don't create root-only readable files in /etc/xdg"
+  * Make Qt6Quick dependency for QML plugin private
+  * Update version to 6.5.0
+  * Expose KWindowStateSaver in the QML interface
+  * Sync config group on KWindowStateSaver::timerEvent
+  * don't do tests in ~/.kde-unit-test
+
+-------------------------------------------------------------------
 Tue Jul  9 09:41:38 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.4.0

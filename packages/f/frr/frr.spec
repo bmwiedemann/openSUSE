@@ -30,38 +30,15 @@
 %define frr_daemondir %{_prefix}/lib/frr
 
 Name:           frr
-Version:        8.4
+Version:        10.0.1
 Release:        0
-Summary:        FRRouting Routing daemon
+Summary:        The FRRouting Protocol Suite
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Networking/System
 URL:            https://www.frrouting.org
 #Git-Clone:     https://github.com/FRRouting/frr.git
 Source:         https://github.com/FRRouting/frr/archive/refs/tags/%{name}-%{version}.tar.gz
 Source1:        %{name}-tmpfiles.d
-Patch1:         0001-disable-zmq-test.patch
-Patch2:         harden_frr.service.patch
-Patch3:         0003-tools-Run-as-FRR_USER-install-chown-commands-to-avoi.patch
-Patch4:         0004-tools-remove-backslash-from-declare-check-regex.patch
-Patch5:         0005-root-ok-in-account-frr.pam.patch
-Patch6:         0006-bgpd-Check-7-bytes-for-Long-lived-Graceful-Restart-c.patch
-Patch7:         0007-bgpd-Ensure-stream-received-has-enough-data.patch
-Patch8:         0008-bgpd-Don-t-read-the-first-byte-of-ORF-header-if-we-a.patch
-Patch9:         0009-bgpd-Do-not-process-NLRIs-if-the-attribute-length-is.patch
-Patch10:        0010-bgpd-Use-treat-as-withdraw-for-tunnel-encapsulation-.patch
-Patch11:        0011-babeld-fix-11808-to-avoid-infinite-loops.patch
-Patch12:        0012-bgpd-Limit-flowspec-to-no-attribute-means-a-implicit.patch
-Patch13:        0013-bgpd-Check-mandatory-attributes-more-carefully-for-U.patch
-Patch14:        0014-bgpd-Handle-MP_REACH_NLRI-malformed-packets-with-ses.patch
-Patch15:        0015-bgpd-Treat-EOR-as-withdrawn-to-avoid-unwanted-handli.patch
-Patch16:        0016-bgpd-Ignore-handling-NLRIs-if-we-received-MP_UNREACH.patch
-Patch17:        0017-bgpd-Fix-use-beyond-end-of-stream-of-labeled-unicast.patch
-Patch18:        0018-bgpd-Flowspec-overflow-issue.patch
-Patch19:        0019-bgpd-fix-error-handling-when-receiving-BGP-Prefix-SID-attribute.patch
-Patch20:        0020-ospfd-Solved-crash-in-OSPF-TE-parsing.patch
-Patch21:        0021-ospfd-Solved-crash-in-RI-parsing-with-OSPF-TE.patch
-Patch22:        0022-ospfd-Correct-Opaque-LSA-Extended-parser.patch
-Patch23:        0023-ospfd-protect-call-to-get_edge-in-ospf_te.c.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison >= 2.7
@@ -89,6 +66,10 @@ BuildRequires:  pkgconfig(libcares)
 BuildRequires:  pkgconfig(libelf)
 BuildRequires:  pkgconfig(libpcre)
 BuildRequires:  pkgconfig(libprotobuf-c)
+%if 0%{?sle_version} == 150500
+BuildRequires:  libprotoc25_1_0
+BuildRequires:  libyang1
+%endif
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(libyang) >= 2.0.0
 BuildRequires:  pkgconfig(libzmq) >= 4.0.0
@@ -97,7 +78,7 @@ BuildRequires:  pkgconfig(sqlite3)
 Requires(post): %{install_info_prereq}
 Requires(pre):  %{install_info_prereq}
 Requires(pre):  shadow
-Requires(preun):%{install_info_prereq}
+Requires(preun): %{install_info_prereq}
 Recommends:     logrotate
 Conflicts:      quagga
 Provides:       zebra = %{version}
@@ -107,11 +88,24 @@ Provides:       group(%{frrvty_group})
 Provides:       user(%{frr_user})
 
 %description
-FRR is free software which manages TCP/IP based routing protocols.
-It supports BGP4, BGP4+, OSPFv2, OSPFv3, IS-IS, RIPv1, RIPv2, RIPng,
-PIM and LDP as well as the IPv6 versions of these.
-
-FRR is a fork of Quagga..
+FRR is free software that implements and manages various IPv4 and IPv6 routing protocols.
+FRR currently supports the following protocols:
+- BGP
+- OSPFv2
+- OSPFv3
+- RIPv1
+- RIPv2
+- RIPng
+- IS-IS
+- PIM-SM/MSDP
+- LDP
+- BFD
+- Babel
+- PBR
+- OpenFabric
+- VRRP
+- EIGRP (alpha)
+- NHRP (alpha)
 
 %package -n libfrrfpm_pb0
 Summary:        FRRouting fpm protobuf library
@@ -174,12 +168,12 @@ Group:          System/Libraries
 This library contains various utility functions to FRRouting, such as
 data types, buffers and socket handling.
 
-%package -n libmlag_pb0
+%package -n libmgmt_be_nb0
 Summary:        FRRouting utility library
 Group:          System/Libraries
 
-%description -n libmlag_pb0
-This library contains part of the mlag implementation of FRRouting.
+%description -n libmgmt_be_nb0
+This library contains part of the mgmt_be implementation of FRRouting.
 
 %package devel
 Summary:        Header and object files for frr development
@@ -194,7 +188,7 @@ Requires:       libfrrgrpc_pb0 = %{version}
 Requires:       libfrrospfapiclient0 = %{version}
 Requires:       libfrrsnmp0 = %{version}
 Requires:       libfrrzmq0 = %{version}
-Requires:       libmlag_pb0 = %{version}
+Requires:       libmgmt_be_nb0 = %{version}
 
 %description devel
 The frr-devel package contains the header and object files necessary for
@@ -385,11 +379,11 @@ done
 %post   -n libfrrcares0 -p /sbin/ldconfig
 %postun -n libfrrcares0 -p /sbin/ldconfig
 
-%post   -n libmlag_pb0 -p /sbin/ldconfig
-%postun -n libmlag_pb0 -p /sbin/ldconfig
+%post   -n libmgmt_be_nb0 -p /sbin/ldconfig
+%postun -n libmgmt_be_nb0 -p /sbin/ldconfig
 
 %files
-%license COPYING COPYING-LGPLv2.1
+%license COPYING
 %doc README.md
 %doc doc/mpls
 %dir %attr(750,%{frr_user},%{frr_user}) %{_sysconfdir}/%{name}
@@ -433,6 +427,7 @@ done
 %{frr_daemondir}/frrinit.sh
 %{frr_daemondir}/isisd
 %{frr_daemondir}/ldpd
+%{frr_daemondir}/mgmtd
 %{frr_daemondir}/nhrpd
 %{frr_daemondir}/ospfclient.py
 %{frr_daemondir}/ospf6d
@@ -489,8 +484,8 @@ done
 %files -n libfrrcares0
 %{_libdir}/libfrrcares.so.0*
 
-%files -n libmlag_pb0
-%{_libdir}/libmlag_pb.so.0*
+%files -n libmgmt_be_nb0
+%{_libdir}/libmgmt_be_nb.so.0*
 
 %files devel
 %dir %{_includedir}/%{name}

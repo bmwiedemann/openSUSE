@@ -2093,4 +2093,12 @@
     <comment>- Rebase gdm-restart-session-when-X-server-restart.patch. (forwarded request 1190516 from mgorse)</comment>
     <requestid>1190560</requestid>
   </revision>
+  <revision rev="270" vrev="4">
+    <srcmd5>6412916ef7aed2e756f28d72d01cc196</srcmd5>
+    <version>46.2</version>
+    <time>1723309626</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1192840</requestid>
+  </revision>
 </revisionlist>

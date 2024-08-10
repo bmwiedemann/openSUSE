@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Aug  5 10:48:03 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.5.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.5.0
+- Changes since 6.4.0:
+  * Update dependency version to 6.5.0
+  * earthfile.xml: modernize highlighter to support Earthly 0.8 features
+  * C++: add floating-point literal suffixes of C++23
+  * Python: add some special variables and fix '\' line continuation after a string
+  * add .clang-format and .clang-tidy files with YAML
+  * Zig: fix range operator preceded by a number: [0..]
+  * Odin: add raw string color
+  * Update syntax highlighting for kdesrc-buildrc
+  * Update version to 6.5.0
+  * cmake.xml: update syntax for CMake 3.30
+  * inc version after done type adding
+  * hare: add done keyword
+
+-------------------------------------------------------------------
 Tue Jul  9 09:42:06 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.4.0

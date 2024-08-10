@@ -64,8 +64,6 @@ Patch0:         gdm-s390-not-require-g-s-d_wacom.patch
 Patch1:         gdm-sysconfig-settings.patch
 # PATCH-FIX-OPENSUSE gdm-suse-xsession.patch vuntz@novell.com -- Use the /etc/X11/xdm/* scripts
 Patch2:         gdm-suse-xsession.patch
-# PATCH-FIX-OPENSUSE gdm-default-wm.patch vuntz@novell.com -- Use sysconfig to know to which desktop to use by default
-Patch3:         gdm-default-wm.patch
 # PATCH-FIX-OPENSUSE gdm-xauthlocalhostname.patch bnc#538064 vuntz@novell.com -- Set XAUTHLOCALHOSTNAME to current hostname when we authenticate, for local logins, to avoid issues in the session in case the hostname changes later one. See comment 24 in the bug.
 Patch4:         gdm-xauthlocalhostname.patch
 # PATCH-FIX-OPENSUSE gdm-switch-to-tty1.patch bsc#1113700 xwang@suse.com -- switch to tty1 when stopping gdm service
@@ -251,7 +249,6 @@ running display manager.
 %patch -P 1 -p1
 %patch -P 2 -p1
 %patch -P 3 -p1
-%patch -P 4 -p1
 %patch -P 5 -p1
 %patch -P 6 -p1
 %patch -P 7 -p1

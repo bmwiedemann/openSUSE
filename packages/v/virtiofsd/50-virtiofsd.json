@@ -1,5 +1,9 @@
 {
   "description": "virtiofsd vhost-user-fs",
   "type": "fs",
-  "binary": "@@LIBEXECDIR@@/virtiofsd"
+  "binary": "@@LIBEXECDIR@@/virtiofsd",
+  "features": [
+      "migrate-precopy",
+      "separate-options"
+  ]
 }

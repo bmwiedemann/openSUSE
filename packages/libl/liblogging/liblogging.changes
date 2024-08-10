@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun 19 08:29:24 UTC 2024 - Thomas Blume <Thomas.Blume@suse.com>
+
+- fix build error with gcc14 (bsc#1221715)
+  * add  0001-support-build-with-gcc-14.patch
+
+-------------------------------------------------------------------
 Mon Mar 26 16:56:30 CEST 2018 - kukuk@suse.de
 
 - Use %license instead of %doc [bsc#1082318]

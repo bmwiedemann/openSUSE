@@ -263,4 +263,39 @@
     <comment></comment>
     <requestid>1179914</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>9e65442b2aebc7f4e55b8e3875bd927c</srcmd5>
+    <version>10.0.1</version>
+    <time>1723309632</time>
+    <user>dimstar_suse</user>
+    <comment>- Fixing Source URL/archive name.
+- Update to version 10.0.1 from official sources.
+- Clean slate: removing all previous patches.
+- The following patches were obsoleted:
+  - 0001-disable-zmq-test.patch
+  - harden_frr.service.patch
+  - 0003-tools-Run-as-FRR_USER-install-chown-commands-to-avoi.patch
+  - 0004-tools-remove-backslash-from-declare-check-regex.patch
+  - 0005-root-ok-in-account-frr.pam.patch
+  - 0006-bgpd-Check-7-bytes-for-Long-lived-Graceful-Restart-c.patch
+  - 0007-bgpd-Ensure-stream-received-has-enough-data.patch
+  - 0008-bgpd-Don-t-read-the-first-byte-of-ORF-header-if-we-a.patch
+  - 0009-bgpd-Do-not-process-NLRIs-if-the-attribute-length-is.patch
+  - 0010-bgpd-Use-treat-as-withdraw-for-tunnel-encapsulation-.patch
+  - 0011-babeld-fix-11808-to-avoid-infinite-loops.patch
+  - 0012-bgpd-Limit-flowspec-to-no-attribute-means-a-implicit.patch
+  - 0013-bgpd-Check-mandatory-attributes-more-carefully-for-U.patch
+  - 0014-bgpd-Handle-MP_REACH_NLRI-malformed-packets-with-ses.patch
+  - 0015-bgpd-Treat-EOR-as-withdrawn-to-avoid-unwanted-handli.patch
+  - 0016-bgpd-Ignore-handling-NLRIs-if-we-received-MP_UNREACH.patch
+  - 0017-bgpd-Fix-use-beyond-end-of-stream-of-labeled-unicast.patch
+  - 0018-bgpd-Flowspec-overflow-issue.patch
+  - 0019-bgpd-fix-error-handling-when-receiving-BGP-Prefix-SID-attribute.patch
+  - 0020-ospfd-Solved-crash-in-OSPF-TE-parsing.patch
+  - 0021-ospfd-Solved-crash-in-RI-parsing-with-OSPF-TE.patch
+  - 0022-ospfd-Correct-Opaque-LSA-Extended-parser.patch
+  - 0023-ospfd-protect-call-to-get_edge-in-ospf_te.c.patch
+</comment>
+    <requestid>1192960</requestid>
+  </revision>
 </revisionlist>

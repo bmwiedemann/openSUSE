@@ -23,7 +23,7 @@
 %define buildmode pie
 %endif
 Name:           traefik2
-Version:        2.11.6
+Version:        2.11.8
 Release:        0
 Summary:        The Cloud Native Application Proxy
 License:        MIT
@@ -35,12 +35,17 @@ Source0:        https://github.com/traefik/traefik/releases/download/v%{version}
 Source1:        vendor.tar.gz
 Source2:        traefik.service
 Source3:        traefik.toml
-Provides:       traefik = %{version}
+Source4:        traefik-user.conf
 BuildRequires:  go-bindata
 BuildRequires:  golang-packaging
 BuildRequires:  systemd-rpm-macros
+BuildRequires:  sysuser-tools
 BuildRequires:  (golang(API) >= 1.22)
 Recommends:     podman
+Provides:       traefik = %{version}
+Provides:       group(traefik)
+Provides:       user(traefik)
+%sysusers_requires
 %{?systemd_requires}
 %{go_provides}
 
@@ -56,6 +61,7 @@ Pointing Traefik at your orchestrator should be the only configuration step you 
 %setup -q -c %{name}-%{version} -b0 -a1
 
 %build
+%sysusers_generate_pre %{SOURCE4} %{name} traefik-user.conf
 %{goprep} %{project}
 
 # see script/generate
@@ -74,6 +80,9 @@ CGO_ENABLED=1 GOGC=off go build \
   ./cmd/traefik
 
 %install
+# system user
+install -D -m 0644 %{SOURCE4} %{buildroot}%{_sysusersdir}/traefik-user.conf
+
 install -d %{buildroot}/%{_sbindir}
 install -D -p -m 0755 traefik %{buildroot}%{_bindir}/traefik
 
@@ -88,12 +97,14 @@ mkdir -p %{buildroot}%{_sysconfdir}/traefik/conf.d
 # logging
 mkdir -p %{buildroot}%{_localstatedir}/log/traefik
 
-%pre
+%pre -f %{name}.pre
 %service_add_pre traefik.service
 
 %post
 %service_add_post traefik.service
 %{fillup_only -n traefik}
+# fix ownership for config and logging directory
+chown -R traefik: %{_sysconfdir}/traefik %{_localstatedir}/log/traefik
 
 %preun
 %service_del_preun traefik.service
@@ -102,6 +113,8 @@ mkdir -p %{buildroot}%{_localstatedir}/log/traefik
 %service_del_postun traefik.service
 
 %files
+%{_sysusersdir}/traefik-user.conf
+
 %license LICENSE.md
 %doc README.md SECURITY.md CONTRIBUTING.md
 %{_bindir}/traefik
@@ -109,10 +122,11 @@ mkdir -p %{buildroot}%{_localstatedir}/log/traefik
 %{_unitdir}/traefik.service
 %{_sbindir}/rctraefik
 
+%defattr(0660, traefik, traefik, 0750)
 %dir %{_sysconfdir}/traefik
 %dir %{_sysconfdir}/traefik/conf.d
 
 %config(noreplace) %{_sysconfdir}/traefik/traefik.toml
-%attr(750,root,root) %dir %{_localstatedir}/log/traefik
+%dir %{_localstatedir}/log/traefik
 
 %changelog

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Aug  9 09:10:52 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop gdm-default-wm.patch: patch seems obsolete. The selection of
+  default window manager happens by means of update-alternatives
+  now.
+
+-------------------------------------------------------------------
 Tue Jul 30 18:44:44 UTC 2024 - Michael Gorse <mgorse@suse.com>
 
 - Rebase gdm-restart-session-when-X-server-restart.patch.

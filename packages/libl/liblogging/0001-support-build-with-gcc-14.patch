@@ -1,0 +1,40 @@
+From 1d363d14b4a55d7100f787fba8cb8f2d934bbc4a Mon Sep 17 00:00:00 2001
+From: Thomas Blume <Thomas.Blume@suse.com>
+Date: Mon, 3 Jun 2024 15:54:00 +0200
+Subject: [PATCH] support build with gcc-14
+
+bsc1221715
+---
+ rfc3195/src/beepframe.c | 2 +-
+ rfc3195/src/sockets.h   | 4 ++++
+ 2 files changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/rfc3195/src/beepframe.c b/rfc3195/src/beepframe.c
+index f8bc307..d1798a6 100644
+--- a/rfc3195/src/beepframe.c
++++ b/rfc3195/src/beepframe.c
+@@ -167,7 +167,7 @@ srRetVal sbFramActualRecvFramCommonHdr(sbFramObj* pThis,sbChanObj *pChan)
+  *                       The channel object is updated, e.g. with a
+  *                       new seqno.
+  */
+-sbFramActualRecvFramCommonBody(sbFramObj* pThis,sbChanObj *pChan)
++int sbFramActualRecvFramCommonBody(sbFramObj* pThis,sbChanObj *pChan)
+ {
+ 	unsigned iToRcv;
+ 	char szTrailer[6];
+diff --git a/rfc3195/src/sockets.h b/rfc3195/src/sockets.h
+index 406e6d5..506beaa 100644
+--- a/rfc3195/src/sockets.h
++++ b/rfc3195/src/sockets.h
+@@ -340,4 +340,8 @@ srRetVal sbSockRecvFrom(sbSockObj *pThis, char* pRecvBuf, int *piBufLen, char**
+ #	define SOCKET_ERROR -1
+ #endif
+ 
++#if FEATURE_UNIX_DOMAIN_SOCKETS == 1
++srRetVal sbSock_InitUXDOMSOCK(sbSockObj **ppThis, char *pszSockName, int iSockType);
++#endif
++
+ #endif
+-- 
+2.45.1
+

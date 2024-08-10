@@ -8,4 +8,3 @@ password include common-password
 session required pam_loginuid.so
 session optional pam_keyinit.so force revoke
 session include common-session
-auth [user_unknown=ignore success=ok] pam_oath.so usersfile=${HOME}/.pam_oath_usersfile window=20 digits=6

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Aug  9 08:05:26 UTC 2024 - Dirk Mueller <dmueller@suse.com>
+
+- update entry point scripts from git
+
+-------------------------------------------------------------------
+Thu Aug  8 19:28:10 UTC 2024 - Dirk Mueller <dmueller@suse.com>
+
+- add oci.image.ref.name
+
+-------------------------------------------------------------------
 Thu Aug  8 16:48:44 UTC 2024 - Dirk Mueller <dmueller@suse.com>
 
 - fix PID 1 in mariadb container (patch from Daniel Black)

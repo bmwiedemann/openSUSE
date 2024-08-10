@@ -490,4 +490,12 @@
   * 0001-HTTP2-Delay-any-communication-until-encrypted-can-be.patch</comment>
     <requestid>1185879</requestid>
   </revision>
+  <revision rev="60" vrev="3">
+    <srcmd5>dc82084911ba0fe423f6301c8defbc95</srcmd5>
+    <version>6.7.2</version>
+    <time>1723309547</time>
+    <user>dimstar_suse</user>
+    <comment>- Add gcc14.patch so that the package builds for 32bit with GCC 14.</comment>
+    <requestid>1192518</requestid>
+  </revision>
 </revisionlist>

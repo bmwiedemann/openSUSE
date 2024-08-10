@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Aug  7 12:46:16 UTC 2024 - Filip Kastl <filip.kastl@suse.com>
+
+- Add gcc14.patch so that the package builds for 32bit with GCC 14.
+
+-------------------------------------------------------------------
 Sat Jul  6 11:22:52 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Add upstream change (boo#1227426, CVE-2024-39936)

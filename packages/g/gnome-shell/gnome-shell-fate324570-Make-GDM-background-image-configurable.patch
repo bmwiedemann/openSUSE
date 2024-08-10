@@ -1,7 +1,6 @@
-Index: gnome-shell-45.3/data/gnome-shell-theme.gresource.xml
-===================================================================
---- gnome-shell-45.3.orig/data/gnome-shell-theme.gresource.xml
-+++ gnome-shell-45.3/data/gnome-shell-theme.gresource.xml
+diff -urp gnome-shell-46.4.orig/data/gnome-shell-theme.gresource.xml gnome-shell-46.4/data/gnome-shell-theme.gresource.xml
+--- gnome-shell-46.4.orig/data/gnome-shell-theme.gresource.xml	2024-08-08 13:52:20.487980529 -0500
++++ gnome-shell-46.4/data/gnome-shell-theme.gresource.xml	2024-08-08 15:23:52.451210823 -0500
 @@ -13,6 +13,7 @@
      <file>gnome-shell-light.css</file>
      <file>gnome-shell-high-contrast.css</file>
@@ -10,10 +9,9 @@ Index: gnome-shell-45.3/data/gnome-shell-theme.gresource.xml
      <file>pad-osd.css</file>
      <file>process-working-light.svg</file>
      <file>process-working-dark.svg</file>
-Index: gnome-shell-45.3/js/ui/screenShield.js
-===================================================================
---- gnome-shell-45.3.orig/js/ui/screenShield.js
-+++ gnome-shell-45.3/js/ui/screenShield.js
+diff -urp gnome-shell-46.4.orig/js/ui/screenShield.js gnome-shell-46.4/js/ui/screenShield.js
+--- gnome-shell-46.4.orig/js/ui/screenShield.js	2024-08-08 13:52:20.514647416 -0500
++++ gnome-shell-46.4/js/ui/screenShield.js	2024-08-08 15:49:50.656867413 -0500
 @@ -11,6 +11,7 @@ import St from 'gi://St';
  
  import * as Signals from '../misc/signals.js';
@@ -47,7 +45,7 @@ Index: gnome-shell-45.3/js/ui/screenShield.js
  
 +        // Add background for this._lockDialogGroup
 +        this._bgLockDialogGroup = new Clutter.Actor();
-+        this._lockDialogGroup.add_actor(this._bgLockDialogGroup);
++        this._lockDialogGroup.add_child(this._bgLockDialogGroup);
 +        this._lockDialogGroup.set_child_below_sibling(this._bgLockDialogGroup, null);
 +        this._bgManagersLockDialogGroup = [];
 +
@@ -55,8 +53,8 @@ Index: gnome-shell-45.3/js/ui/screenShield.js
 +        this._monitorsChangedId =
 +            Main.layoutManager.connect('monitors-changed', this._updateBgLockDialogGroup.bind(this));
 +
-         this.actor.add_actor(this._lockScreenGroup);
-         this.actor.add_actor(this._lockDialogGroup);
+         this.actor.add_child(this._lockScreenGroup);
+         this.actor.add_child(this._lockDialogGroup);
  
 @@ -142,6 +158,15 @@ export class ScreenShield extends Signal
          this._cursorTracker = Meta.CursorTracker.get_for_display(global.display);
@@ -74,7 +72,7 @@ Index: gnome-shell-45.3/js/ui/screenShield.js
      }
  
      async _getLoginSession() {
-@@ -518,6 +543,53 @@ export class ScreenShield extends Signal
+@@ -517,6 +542,53 @@ export class ScreenShield extends Signal
          this.emit('wake-up-screen');
      }
  

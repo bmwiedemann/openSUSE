@@ -26,16 +26,7 @@
 %if !0%{?suse_version} || 0%{?is_opensuse}
 %define physics_present 1
 %endif
-# Currently we don't need to build any  plugins and theres none that make
-# sense to build
-%define generic_players_present 0
 %define xinput22_present 1
-# fedora SLEs 12 don't support xine
-%if !0%{?suse_version}
-%define xine_present 0
-%else
-%define xine_present 1
-%endif
 %ifarch %ix86 x86_64 aarch64 %{arml} ppc
 %if !0%{?suse_version} || 0%{?is_opensuse}
 %define luajit_present 1
@@ -45,15 +36,6 @@
 %define poppler_present 1
 %else
 %define poppler_present 0
-%endif
-%if 0%{?is_opensuse}
-%ifarch !aarch64
-%define vlc_present 1
-%else
-%define vlc_present 0
-%endif
-%else
-%define vlc_present 0
 %endif
 %if 0%{?suse_version} > 1500 || 0%{?fedora_version} > 27 || 0%{?mageia} > 6
 %define enable_wayland 1
@@ -235,12 +217,6 @@ BuildRequires:  valgrind
 %if 0%{?physics_present}
 BuildRequires:  pkgconfig(bullet) >= 2.80
 %endif
-%if %{vlc_present}
-BuildRequires:  pkgconfig(libvlc)
-%endif
-%if %{xine_present}
-BuildRequires:  pkgconfig(libxine)
-%endif
 %if 0%{?enable_wayland}
 BuildRequires:  pkgconfig(gbm)
 BuildRequires:  pkgconfig(libdrm) >= 2.4
@@ -340,9 +316,6 @@ Requires:       pkgconfig(luajit)
 %else
 Requires:       pkgconfig(lua5.1)
 %endif
-%if %{xine_present}
-Requires:       pkgconfig(libxine)
-%endif
 %if %{gstreamer1_present}
 Requires:       pkgconfig(gstreamer-1.0)
 Requires:       pkgconfig(gstreamer-plugins-base-1.0)
@@ -393,20 +366,6 @@ MPG/AVI/OGV/MOV/MKV/WMV.
 Useful only for evas library.
 
 This part of the Enlightenment Foundation Libraries.
-
-%if %{generic_players_present}
-%package -n emotion-generic-players
-Summary:        Set of generic players for Emotion
-License:        GPL-2.0-or-later
-
-%description -n emotion-generic-players
-Set of generic players (currently VLC is supported) allowing to open video
-files through emotion.
-
-Useful only for emotion library.
-
-This part of the Enlightenment Foundation Libraries.
-%endif
 
 %if %{build_doc}
 %if %{build_doc_man}
@@ -635,9 +594,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 #%exclude %{_datadir}/*/examples
 #%endif
 
-%if %{generic_players_present}
-%exclude %{_libdir}/emotion/generic_players/
-%endif
 # separated SCIM dependencies from the main package
 %exclude %{_libdir}/ecore_imf/modules/scim
 
@@ -763,11 +719,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %files -n evas-generic-loaders
 %{_libdir}/evas/utils/
-
-%if %{generic_players_present}
-%files -n emotion-generic-players
-%{_libdir}/emotion/generic_players/
-%endif
 
 %if %{build_doc}
 %if %{build_doc_man}

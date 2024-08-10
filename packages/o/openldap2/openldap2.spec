@@ -56,6 +56,7 @@ Patch3:         0003-LDAPI-socket-location.dif
 Patch5:         0005-pie-compile.dif
 Patch8:         0008-In-monitor-backend-do-not-return-Connection0-entries.patch
 Patch16:        0016-Clear-shared-key-only-in-close-function.patch
+Patch17:        gcc14-v2.patch
 BuildRequires:  argon2-devel
 BuildRequires:  cyrus-sasl-devel
 BuildRequires:  db-devel

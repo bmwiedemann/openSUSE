@@ -1,0 +1,48 @@
+From 39fa7e7bef90be2940c5f736935f963e3969e0bd Mon Sep 17 00:00:00 2001
+From: Dmitry Shachnev <mitya57@gmail.com>
+Date: Sat, 27 Jul 2024 23:03:07 +0300
+Subject: [PATCH] Use _Float16 only when SSE2 is enabled
+
+The GCC documentation [1] says: “On x86 targets with SSE2 enabled, GCC
+supports half-precision (16-bit) floating point via the _Float16 type”.
+
+On non-SSE2 x86 (such as Debian i386 baseline [2]), __FLT16_MAX__ is
+defined starting with GCC 14 [3], however any non-trivial use of the
+_Float16 type results in an error:
+
+error: operation not permitted on type ‘_Float16’ without option ‘-msse2’
+
+which makes some packages fail to build on i386 architecture [4].
+
+[1]: https://gcc.gnu.org/onlinedocs/gcc/Half-Precision.html
+[2]: https://wiki.debian.org/ArchitectureSpecificsMemo#i386-1
+[3]: https://gcc.gnu.org/g:9a19fa8b616f83474c35cc5b34a3865073ced829
+[4]: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1076986
+
+Pick-to: 6.8 6.7 6.5
+Change-Id: I393ee83eb8e8888f5fc9e3b349dc8b063eef6f5a
+Reviewed-by: Thiago Macieira <thiago.macieira@intel.com>
+Reviewed-by: Edward Welbourne <edward.welbourne@qt.io>
+---
+
+diff --git a/src/corelib/global/qtypes.h b/src/corelib/global/qtypes.h
+index db9ba38..28458f6 100644
+--- a/src/corelib/global/qtypes.h
++++ b/src/corelib/global/qtypes.h
+@@ -263,13 +263,12 @@
+ // disabled due to https://github.com/llvm/llvm-project/issues/56963
+ #  define QFLOAT16_IS_NATIVE        1
+ using NativeFloat16Type = decltype(__FLT16_MAX__);
+-#elif defined(Q_CC_GNU_ONLY) && defined(__FLT16_MAX__)
++#elif defined(Q_CC_GNU_ONLY) && defined(__FLT16_MAX__) && defined(__ARM_FP16_FORMAT_IEEE)
+ #  define QFLOAT16_IS_NATIVE        1
+-#  ifdef __ARM_FP16_FORMAT_IEEE
+ using NativeFloat16Type = __fp16;
+-#  else
++#elif defined(Q_CC_GNU_ONLY) && defined(__FLT16_MAX__) && defined(__SSE2__)
++#  define QFLOAT16_IS_NATIVE        1
+ using NativeFloat16Type = _Float16;
+-#  endif
+ #else
+ #  define QFLOAT16_IS_NATIVE        0
+ using NativeFloat16Type = void;

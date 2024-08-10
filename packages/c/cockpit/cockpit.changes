@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Aug  8 12:21:51 UTC 2024 - Jan Zerebecki <jan.suse@zerebecki.de>
+
+- revert load pam_oath, because it enforces the file for otp secrets to exist,
+  will try again once pam_oath can have that optional
+
+-------------------------------------------------------------------
+Wed Aug  7 20:25:34 UTC 2024 - Herbert Graeber <herbert@graeber-clan.de>
+
+- fix-libexecdir.patch: Fix libexecdir for leap and sle (bsc#1223533)
+- Fix systemd units folder for leap and sle (bsc#1226541)
+
+-------------------------------------------------------------------
+Sat Aug  7 09:37:00 UTC 2024 - pallas wept <pallaswept@proton.me>
+
+- Recommend cockpit-packagekit if zypper is installed
+
 Wed Aug  7 09:36:58 UTC 2024 - Jan Zerebecki <jan.suse@zerebecki.de>
 
 - load pam_oath for optional TOTP for authentication

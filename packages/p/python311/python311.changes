@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Aug  7 12:12:42 UTC 2024 - Matej Cepl <mcepl@suse.com>
+
+- Add CVE-2024-6923-email-hdr-inject.patch to prevent email
+  header injection due to unquoted newlines (bsc#1228780,
+  CVE-2024-6923).
+- %{profileopt} variable is set according to the variable
+  %{do_profiling} (bsc#1227999)
+
+-------------------------------------------------------------------
 Mon Jul 22 21:20:55 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Remove %suse_update_desktop_file macro as it is not useful any

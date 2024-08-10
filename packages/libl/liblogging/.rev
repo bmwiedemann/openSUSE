@@ -120,4 +120,12 @@ http://lists.adiscon.net/pipermail/rsyslog/2014-January/036117.html</comment>
     <comment>- Use %license instead of %doc [bsc#1082318] (forwarded request 591126 from kukuk)</comment>
     <requestid>591135</requestid>
   </revision>
+  <revision rev="15" vrev="5">
+    <srcmd5>d15227cafaee6f5b25ac54b11025bb4d</srcmd5>
+    <version>1.0.6</version>
+    <time>1723309550</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1192541</requestid>
+  </revision>
 </revisionlist>

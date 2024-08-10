@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Aug  5 10:47:45 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.5.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.5.0
+- Changes since 6.4.0:
+  * Update dependency version to 6.5.0
+  * Relicense MenuDialog and PromptDialog to LGPL
+  * GlobalDrawerActionItem: Fix tooltip
+  * ContextualHelpButton: make text always accessible
+  * Convert license headers to SPDX
+  * Port dialogs to pragma ComponentBehavior: Bound
+  * Dialog: Support variable base padding
+  * Dialog: Add some null safety
+  * Dialog: Fix ScrollView::contentItem management
+  * Update version to 6.5.0
+  * We can Use directly nullptr
+  * fix: install KirigamiPrivate soversion
+  * NavigationTabButton: Drop bold font workaround
+
+-------------------------------------------------------------------
 Tue Jul  9 09:41:49 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.4.0

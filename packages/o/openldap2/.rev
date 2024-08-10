@@ -1588,4 +1588,16 @@ Removal of SuSEfirewall2 service.
     <comment>- Update to relese 2.6.8</comment>
     <requestid>1190628</requestid>
   </revision>
+  <revision rev="186" vrev="2">
+    <srcmd5>247716da619509b401af6561f8a5bc4b</srcmd5>
+    <version>2.6.8</version>
+    <time>1723309565</time>
+    <user>dimstar_suse</user>
+    <comment>- Add back two hunks from gcc14.patch as gcc14-v2.patch.  Not all
+  bugs that gcc14.patch fixed were dealt with in the upstream --
+  one bug is caused by
+  0016-Clear-shared-key-only-in-close-function.patch and one bug
+  still remains in the upstream.</comment>
+    <requestid>1192647</requestid>
+  </revision>
 </revisionlist>

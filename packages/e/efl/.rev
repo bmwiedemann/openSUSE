@@ -504,4 +504,12 @@ Also includes sleep_walkers full set of changes to build wayland support for fac
 Needed for poppler 24.06 - where that requested library actually no longer exists. (forwarded request 1185069 from dimstar)</comment>
     <requestid>1185079</requestid>
   </revision>
+  <revision rev="55" vrev="33">
+    <srcmd5>53f22e05d309ae2e2d425d90d3ba28dc</srcmd5>
+    <version>unknown</version>
+    <time>1723309551</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1192545</requestid>
+  </revision>
 </revisionlist>

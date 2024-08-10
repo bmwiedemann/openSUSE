@@ -17,7 +17,7 @@
 
 
 Name:           cli11
-Version:        2.4.1
+Version:        2.4.2
 Release:        0
 Summary:        Command line parser for C++11
 License:        BSD-3-Clause
@@ -37,6 +37,7 @@ rich feature set.
 
 %package devel
 Summary:        Development files for CLI11
+BuildArch:      noarch
 
 %description devel
 CLI11 is a command line parser for C++11 and beyond that provides a
@@ -92,7 +93,7 @@ limits by choice:
 %{_includedir}/CLI/impl/*.hpp
 %dir %{_datadir}/cmake/CLI11/
 %{_datadir}/cmake/CLI11/*.cmake
-%{_libdir}/pkgconfig/CLI11.pc
+%{_datadir}/pkgconfig/CLI11.pc
 
 %files doc
 %doc build/docs/html/

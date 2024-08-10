@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Aug  6 17:16:00 UTC 2024 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 6.1:
+  * Fix translations not being correctly picked up.
+  * Fix bug where cards don't go away when unplugged.
+  * Fix app naming in desktop file (Volume Control).
+  * Fix Bluetooth codec selection alignment.
+  * Update Swedish translation.
+- Changes in version 6.0:
+  * Migrate from Gtk 3 to 4.
+  * Embed UI resources in executable.
+  * Rename "Set as fallback" to "Default" for better legibility.
+  * Support 144 Hz monitors with level bars.
+  * App icons will fallback to generic rather than missing image,
+    and this will be more common with Gtk 4.
+  * Lots of translation updates.
+  * Drop autotools build in favour of meson.
+  * Make libcanberra dependency optional.
+- Update dependencies
+
+-------------------------------------------------------------------
 Wed Aug 18 15:44:49 UTC 2021 - Robert Munteanu <rombert@apache.org>
 
 - Update to version 5.0:

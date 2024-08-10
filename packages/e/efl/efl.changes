@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Aug  8 05:52:25 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Remove obsolete xine and vlc build dependencies. Support was
+  dropped from the emotion library in 1.23.0 release.
+- Consequently drop the 'generic_players_present' condition
+
+-------------------------------------------------------------------
 Wed Jul  3 08:07:50 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop libpoppler-cpp0 BuildRequires: this was there to workaround

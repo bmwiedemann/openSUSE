@@ -101,6 +101,8 @@ Requires:       xdg-dbus-proxy >= %{xdg_dbus_proxy_version}
 Requires:       xdg-desktop-portal >= 0.10
 Requires:       (flatpak-selinux = %{version} if selinux-policy-%{selinuxtype})
 Requires:       user(flatpak)
+# as per documentation from flatpak 1.0: add weak dep on p11-kit-server for certificate transfer
+Recommends:     p11-kit-server
 # Remove after openSUSE Leap 42 is out of scope
 Provides:       xdg-app = %{version}
 Obsoletes:      xdg-app < %{version}
@@ -166,8 +168,8 @@ more information.
 Summary:        Add Flathub repository to system flatpak
 Group:          System/Packages
 Requires:       flatpak
-Requires(postun):flatpak
-Requires(postun):sed
+Requires(postun): flatpak
+Requires(postun): sed
 %if 0%{?suse_version} > 1600
 Supplements:    flatpak
 %endif

@@ -834,4 +834,20 @@
   attributes on /usr/bin/ scripts (bsc#1227378).</comment>
     <requestid>1189131</requestid>
   </revision>
+  <revision rev="47" vrev="6">
+    <srcmd5>9ffe6d61977be912d1229fd422da1d4f</srcmd5>
+    <version>3.10.14</version>
+    <time>1723309566</time>
+    <user>dimstar_suse</user>
+    <comment>- Add CVE-2024-6923-email-hdr-inject.patch to prevent email
+  header injection due to unquoted newlines (bsc#1228780,
+  CVE-2024-6923).
+- Adding bso1227999-reproducible-builds.patch fixing bsc#1227999
+  adding reproducibility patches from gh#python/cpython!121872
+  and gh#python/cpython!121883.
+- %{profileopt} variable is set according to the variable
+  %{do_profiling} (bsc#1227999)
+- Update bluez-devel-vendor.tar.xz</comment>
+    <requestid>1192675</requestid>
+  </revision>
 </revisionlist>

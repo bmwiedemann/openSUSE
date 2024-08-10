@@ -1,7 +1,7 @@
 #
 # spec file for package liblogging
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -25,9 +25,11 @@ Release:        0
 Summary:        An easy to use logging library
 License:        BSD-2-Clause
 Group:          Development/Libraries/C and C++
-Url:            http://www.liblogging.org/
+URL:            http://www.liblogging.org/
 Source0:        http://download.rsyslog.com/liblogging/%{name}-%{version}.tar.gz
+Patch0:         0001-support-build-with-gcc-14.patch
 BuildRequires:  dos2unix
+BuildRequires:  gcc14
 BuildRequires:  pkgconfig >= 0.9.0
 %if %{with_rst2man}
 %if 0%{?is_opensuse}
@@ -71,6 +73,7 @@ developing programs which use liblogging library.
 
 %prep
 %setup -q
+%autopatch -p1
 
 %build
 %configure \

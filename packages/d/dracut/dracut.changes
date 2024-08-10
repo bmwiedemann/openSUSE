@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Aug 09 12:30:07 UTC 2024 - antonio.feijoo@suse.com
+
+- Update to version 059+suse.636.g9a22b6b0:
+  * fix(dracut): ldd output borked with `--sysroot` (bsc#1228659)
+  * fix(dracut-functions.sh): only return block devices from get_persistent_dev
+  * fix(convertfs): shellcheck
+  * fix(convertfs): error in conditional expressions (bsc#1228847)
+
+-------------------------------------------------------------------
 Tue Jul 02 11:34:22 UTC 2024 - antonio.feijoo@suse.com
 
 - Update to version 059+suse.628.g20b345b4:

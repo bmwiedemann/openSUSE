@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Aug  7 08:11:10 UTC 2024 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Fixed service-file: set working directory, so that the /etc/traefik/acme.json
+  file can be written in /etc/traefik/acme.json
+
+- Update to version 2.11.8
+  - Bug fixes:
+    * docker: Update to github.com/docker/docker v27.1.1
+    * webui: Upgrade webui dependencies - fixes boo#1224308 and CVE-2024-4068
+
+-------------------------------------------------------------------
+Wed Jul 31 16:47:51 UTC 2024 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Run traefik as traefik user, fixes boo#1227226
+- Added ACME confiuration template
+
+- Update to version 2.11.7
+  * Bug fixes:
+    - [logs]: Make the log about new version more accurate
+    - [tls,k8s/crd,k8s]: Enforce default cipher suites list
+
+- Fix for CVE-2024-6104, boo#1227059
+
+-------------------------------------------------------------------
 Thu Jul  4 08:37:21 UTC 2024 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
 - Update to version 2.11.6

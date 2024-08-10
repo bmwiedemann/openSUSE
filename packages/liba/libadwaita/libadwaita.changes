@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Aug  8 08:21:23 UTC 2024 - Filip Kastl <filip.kastl@suse.com>
+
+- Fix BuildRequires minimal version of gtk4 from 4.11.3 to 4.13.4
+  as per src/meson.build.
+
+-------------------------------------------------------------------
 Fri Jun 28 20:15:09 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.5.2:

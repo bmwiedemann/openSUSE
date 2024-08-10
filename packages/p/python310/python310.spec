@@ -36,6 +36,12 @@
 %bcond_without general
 %endif
 
+%if 0%{?do_profiling}
+%bcond_without profileopt
+%else
+%bcond_with profileopt
+%endif
+
 %define         python_pkg_name python310
 %if "%{python_pkg_name}" == "%{primary_python}"
 %define primary_interpreter 1
@@ -101,7 +107,6 @@ Obsoletes:      python39%{?1:-%{1}}
 # pyexpat.cpython-35m-armv7-linux-gnueabihf
 # _md5.cpython-38m-x86_64-linux-gnu.so
 %define dynlib() %{sitedir}/lib-dynload/%{1}.cpython-%{abi_tag}-%{archname}-%{_os}%{?_gnu}%{?armsuffix}.so
-%bcond_without profileopt
 Name:           %{python_pkg_name}%{psuffix}
 Version:        3.10.14
 Release:        0
@@ -198,6 +203,12 @@ Patch22:        CVE-2023-52425-libexpat-2.6.0-backport.patch
 # PATCH-FIX-UPSTREAM CVE-2024-4032-private-IP-addrs.patch bsc#1226448 mcepl@suse.com
 # rearrange definition of private v global IP addresses
 Patch23:        CVE-2024-4032-private-IP-addrs.patch
+# PATCH-FIX-UPSTREAM bso1227999-reproducible-builds.patch bsc#1227999 mcepl@suse.com
+# reproducibility patches
+Patch24:        bso1227999-reproducible-builds.patch
+# PATCH-FIX-UPSTREAM CVE-2024-6923-email-hdr-inject.patch bsc#1228780 mcepl@suse.com
+# prevent email header injection, patch from gh#python/cpython!122608
+Patch25:        CVE-2024-6923-email-hdr-inject.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -476,6 +487,8 @@ other applications.
 %patch -p1 -P 21
 %patch -p1 -P 22
 %patch -p1 -P 23
+%patch -p1 -P 24
+%patch -p1 -P 25
 
 # drop Autoconf version requirement
 sed -i 's/^AC_PREREQ/dnl AC_PREREQ/' configure.ac

@@ -1,5 +1,5 @@
 <services>
-  <service name="tar_scm" mode="disabled">
+  <service name="tar_scm" mode="manual">
     <param name="scm">git</param>
     <param name="url">https://github.com/ofiwg/libfabric.git</param>
     <param name="package-meta">no</param>
@@ -8,9 +8,9 @@
     <param name="versionformat">@PARENT_TAG@.@TAG_OFFSET@.%h</param>
     <param name="versionrewrite-pattern">v(.*)</param>
     <param name="versionrewrite-replacement">\1</param>
-    <param name="revision">f67fad269327a1a25731d89fb94548d89ae7ae63</param>
+    <param name="revision">159219639b7fd69d140892120121bbb4d694e295</param>
   </service>
-  <service name="recompress" mode="disabled">
+  <service name="recompress" mode="manual">
     <param name="file">libfabric*.tar</param>
     <param name="compression">bz2</param>
   </service>

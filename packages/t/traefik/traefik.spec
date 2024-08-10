@@ -23,7 +23,7 @@
 %define buildmode pie
 %endif
 Name:           traefik
-Version:        3.1.0
+Version:        3.1.2
 Release:        0
 Summary:        The Cloud Native Application Proxy
 License:        MIT
@@ -33,14 +33,19 @@ URL:            https://traefik.io/
 # download the source files and create the vendor tarball with "osc service mr"
 Source0:        https://github.com/traefik/traefik/releases/download/v%{version}/%{name}-v%{version}.src.tar.gz
 Source1:        vendor.tar.gz
-Source2:        traefik.service
-Source3:        traefik.yml
+Source2:        %{name}.service
+Source3:        %{name}.yml
+Source4:        %{name}-user.conf
 BuildRequires:  go-bindata
 BuildRequires:  golang-packaging
 BuildRequires:  systemd-rpm-macros
+BuildRequires:  sysuser-tools
 BuildRequires:  (golang(API) >= 1.22)
 Recommends:     podman
 Conflicts:      traefik2
+Provides:       group(%{name})
+Provides:       user(%{name})
+%sysusers_requires
 %{?systemd_requires}
 %{go_provides}
 
@@ -57,6 +62,7 @@ Pointing Traefik at your orchestrator should be the only configuration step you 
 %autopatch -p1
 
 %build
+%sysusers_generate_pre %{SOURCE4} %{name} %{name}-user.conf
 %{goprep} %{project}
 # see script/generate
 go generate
@@ -74,6 +80,9 @@ CGO_ENABLED=1 GOGC=off go build \
   ./cmd/traefik
 
 %install
+# system user
+install -D -m 0644 %{SOURCE4} %{buildroot}%{_sysusersdir}/%{name}-user.conf
+
 install -d %{buildroot}/%{_sbindir}
 install -D -p -m 0755 %{name} %{buildroot}%{_bindir}/%{name}
 
@@ -88,12 +97,14 @@ mkdir -p %{buildroot}%{_sysconfdir}/%{name}/conf.d
 # logging
 mkdir -p %{buildroot}%{_localstatedir}/log/%{name}
 
-%pre
+%pre -f %{name}.pre
 %service_add_pre %{name}.service
 
 %post
 %service_add_post %{name}.service
 %{fillup_only -n %{name}}
+# fix ownership for config and logging directory
+chown -R traefik: %{_sysconfdir}/%{name} %{_localstatedir}/log/%{name}
 
 %preun
 %service_del_preun %{name}.service
@@ -102,6 +113,8 @@ mkdir -p %{buildroot}%{_localstatedir}/log/%{name}
 %service_del_postun %{name}.service
 
 %files
+%{_sysusersdir}/%{name}-user.conf
+
 %license LICENSE.md
 %doc README.md SECURITY.md CONTRIBUTING.md
 %{_bindir}/%{name}
@@ -109,10 +122,11 @@ mkdir -p %{buildroot}%{_localstatedir}/log/%{name}
 %{_unitdir}/%{name}.service
 %{_sbindir}/rc%{name}
 
+%defattr(0660, traefik, traefik, 0750)
 %dir %{_sysconfdir}/%{name}
 %dir %{_sysconfdir}/%{name}/conf.d
 
 %config(noreplace) %{_sysconfdir}/%{name}/%{name}.yml
-%attr(750,root,root) %dir %{_localstatedir}/log/%{name}
+%dir %{_localstatedir}/log/%{name}
 
 %changelog

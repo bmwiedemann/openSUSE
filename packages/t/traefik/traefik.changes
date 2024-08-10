@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Wed Aug  7 08:03:10 UTC 2024 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Fixed service-file: set working directory, so that the /etc/traefik/acme.json
+  file can be written in /etc/traefik/acme.json
+
+- Update to version 3.1.1
+  - Bug fixes:
+    * grpc: Bump google.golang.org/grpc to v1.64.1
+    * k8s/gatewayapi: Do not update route status when nothing changed
+    * metrics
+      - Fix grafana dashboard to work with scrape interval greater than 15s
+      - Update open connections gauge with connections count
+      - Use ServiceName in traefik_service_server_up metric
+    * docker: Update to github.com/docker/docker v27.1.1
+    * webui: Upgrade webui dependencies - fixes boo#1224308 and CVE-2024-4068
+
+-------------------------------------------------------------------
+Wed Jul 31 16:47:51 UTC 2024 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Run traefik as traefik user, fixes boo#1227226
+- Added ACME confiuration template
+
+- Update to version 3.1.1
+  - Bug fixes:
+    * k8s/gatewayapi
+      - Do not update route status when nothing changed
+    * metrics
+      - Fix grafana dashboard to work with scrape interval greater than 15s
+      - Update open connections gauge with connections count
+      - Use ServiceName in traefik_service_server_up metric
+  - Updates
+
+- Fix for CVE-2024-6104, boo#1227059
+
+-------------------------------------------------------------------
 Mon Jul 15 17:22:18 UTC 2024 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
 Important: Please read the migration guide

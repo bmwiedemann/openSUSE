@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Aug  5 10:47:35 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.5.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.5.0
+- Changes since 6.4.0:
+  * Update dependency version to 6.5.0
+  * Enable cppcheck
+  * Add missing license header
+  * Add QML Format example
+  * [qml/formats] Drop no longer needed function
+  * Remove obsolete doc comment
+  * Replace deprecated globalMatch with globalMatchView
+  * Update version to 6.5.0
+
+-------------------------------------------------------------------
 Tue Jul  9 09:41:40 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.4.0

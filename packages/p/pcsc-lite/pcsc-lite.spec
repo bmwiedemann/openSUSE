@@ -26,7 +26,7 @@
 %define PKG_USER	scard
 %define PKG_GROUP	scard
 Name:           pcsc-lite
-Version:        2.2.3
+Version:        2.3.0
 Release:        0
 Summary:        PC/SC Smart Cards Library
 License:        BSD-3-Clause AND GPL-3.0-or-later
@@ -192,6 +192,7 @@ install -Dm0644 %{SOURCE9} %{buildroot}%{_sysusersdir}/%{PKG_USER}.conf
 %{_libdir}/libpcsclite.so
 %{_libdir}/libpcsclite_real.so
 %{_datadir}/polkit-1/actions/org.debian.pcsc-lite.policy
+%{_datadir}/metainfo/fr.apdu.pcsclite.metainfo.xml
 
 %files -n libpcsclite1
 %defattr(-,root,root)

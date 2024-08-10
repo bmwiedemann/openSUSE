@@ -265,4 +265,12 @@ so this will not be available until Pulseaudio 15.0 lands in Factory
 and this package is rebuilt. (forwarded request 913021 from robert_munteanu)</comment>
     <requestid>913711</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>cd2ebb3332326a11d469916d5dbe0278</srcmd5>
+    <version>6.1</version>
+    <time>1723309642</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1192785</requestid>
+  </revision>
 </revisionlist>

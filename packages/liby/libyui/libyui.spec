@@ -19,7 +19,7 @@
 Name:           libyui
 
 # DO NOT manually bump the version here; instead, use rake version:bump
-Version:        4.6.2
+Version:        4.6.3
 Release:        0
 
 %define         so_version 16
@@ -28,6 +28,8 @@ Release:        0
 BuildRequires:  boost-devel
 BuildRequires:  cmake >= 3.17
 BuildRequires:  gcc-c++
+# Workaround for boost issue, see boo#1225861
+BuildRequires:  gcc-fortran
 BuildRequires:  libboost_test-devel
 BuildRequires:  pkg-config
 

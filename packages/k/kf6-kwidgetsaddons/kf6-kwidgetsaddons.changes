@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Aug  5 10:47:57 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.5.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.5.0
+- Changes since 6.4.0:
+  * Update dependency version to 6.5.0
+  * fix that last line in fonts list is only half visible (kde#488079)
+  * avoid the creation of toplevel widget (kde#490712)
+  * Remove unused license text
+  * Partially revert cccaa8f89897146043a535d45a276e3a57412815
+  * Deprecate KJobWidgets::setWindowHandle,windowHandle
+  * Fix tab not highlighted in some cases
+  * Fix multiple overlays being installed over tab (kde#490213)
+  * Update version to 6.5.0
+- Drop patch, merged upstream:
+  * 0001-Partially-revert-cccaa8.patch
+
+-------------------------------------------------------------------
 Fri Jul 19 16:32:37 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Add upstream fix:

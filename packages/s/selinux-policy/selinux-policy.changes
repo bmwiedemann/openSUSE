@@ -1,4 +1,95 @@
 -------------------------------------------------------------------
+Fri Aug 09 12:35:40 UTC 2024 - cathy.hu@suse.com
+
+- Update to version 20240809:
+  * Label /run/udev/rules.d as udev_rules_t
+  * Provide type for sysstat lock files (bsc#1228247)
+  * Allow snapper to delete unlabeled_t files (bsc#1228889)
+
+-------------------------------------------------------------------
+Thu Aug 08 12:24:12 UTC 2024 - cathy.hu@suse.com
+
+- Update to version 20240808:
+  * Use new kanidm interfaces
+  * Initial module for kanidm
+  * Update bootupd policy
+  * Allow rhsmcertd read/write access to /dev/papr-sysparm
+  * Label /dev/papr-sysparm and /dev/papr-vpd
+  * Allow abrt-dump-journal-core connect to winbindd
+  * Allow systemd-hostnamed shut down nscd
+  * Allow systemd-pstore send a message to syslogd over a unix domain
+  * Allow postfix_domain map postfix_etc_t files
+  * Allow microcode create /sys/devices/system/cpu/microcode/reload
+  * Allow rhsmcertd read, write, and map ica tmpfs files
+  * Support SGX devices
+  * Allow initrc_t transition to passwd_t
+  * Update fstab and cryptsetup generators policy
+  * Allow xdm_t read and write the dma device
+  * Update stalld policy for bpf usage
+  * Allow systemd_gpt_generator to getattr on DOS directories
+  * Make cgroup_memory_pressure_t a part of the file_type attribute
+  * Allow ssh_t to change role to system_r
+  * Update policy for coreos generators
+  * Allow init_t nnp domain transition to firewalld_t
+  * Label /run/modprobe.d with modules_conf_t
+  * Allow virtnodedevd run udev with a domain transition
+  * Allow virtnodedev_t create and use virtnodedev_lock_t
+  * Allow virtstoraged manage files with virt_content_t type
+  * Allow virtqemud unmount a filesystem with extended attributes
+  * Allow svirt_t connect to unconfined_t over a unix domain socket
+  * Update afterburn file transition policy
+  * Allow systemd_generator read attributes of all filesystems
+  * Allow fstab-generator read and write cryptsetup-generator unit file
+  * Allow cryptsetup-generator read and write fstab-generator unit file
+  * Allow systemd_generator map files in /etc
+  * Allow systemd_generator read init's process state
+  * Allow coreos-installer-generator read sssd public files
+  * Allow coreos-installer-generator work with partitions
+  * Label /etc/mdadm.conf.d with mdadm_conf_t
+  * Confine coreos generators
+  * Label /run/metadata with afterburn_runtime_t
+  * Allow afterburn list ssh home directory
+  * Label samba certificates with samba_cert_t
+  * Label /run/coreos-installer-reboot with coreos_installer_var_run_t
+  * Allow virtqemud read virt-dbus process state
+  * Allow staff user dbus chat with virt-dbus
+  * Allow staff use watch /run/systemd
+  * Allow systemd_generator to write kmsg
+  * Allow virtqemud connect to sanlock over a unix stream socket
+  * Allow virtqemud relabel virt_var_run_t directories
+  * Allow svirt_tcg_t read vm sysctls
+  * Allow virtnodedevd connect to systemd-userdbd over a unix socket
+  * Allow svirt read virtqemud fifo files
+  * Allow svirt attach_queue to a virtqemud tun_socket
+  * Allow virtqemud run ssh client with a transition
+  * Allow virt_dbus_t connect to virtqemud_t over a unix stream socket
+  * Update keyutils policy
+  * Allow sshd_keygen_t connect to userdbd over a unix stream socket
+  * Allow postfix-smtpd read mysql config files
+  * Allow locate stream connect to systemd-userdbd
+  * Allow the staff user use wireshark
+  * Allow updatedb connect to userdbd over a unix stream socket
+  * Allow gpg_t set attributes of public-keys.d
+  * Allow gpg_t get attributes of login_userdomain stream
+  * Allow systemd_getty_generator_t read /proc/1/environ
+  * Allow systemd_getty_generator_t to read and write to tty_device_t
+  * Drop publicfile module
+  * Remove permissive domain for systemd_nsresourced_t
+  * Change fs_dontaudit_write_cgroup_files() to apply to cgroup_t
+  * Label /usr/bin/samba-gpupdate with samba_gpupdate_exec_t
+  * Allow to create and delete socket files created by rhsm.service
+  * Allow virtnetworkd exec shell when virt_hooks_unconfined is on
+  * Allow unconfined_service_t transition to passwd_t
+  * Support /var is empty
+  * Allow abrt-dump-journal read all non_security socket files
+  * Allow timemaster write to sysfs files
+  * Dontaudit domain write cgroup files
+  * Label /usr/lib/node_modules/npm/bin with bin_t
+  * Allow ip the setexec permission
+  * Allow systemd-networkd write files in /var/lib/systemd/network
+  * Fix typo in systemd_nsresourced_prog_run_bpf()
+
+-------------------------------------------------------------------
 Fri Aug 02 13:27:55 UTC 2024 - cathy.hu@suse.com
 
 - Update to version 20240802:

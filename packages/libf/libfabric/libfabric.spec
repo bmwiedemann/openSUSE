@@ -17,7 +17,7 @@
 
 
 #
-%define git_ver .0.f67fad269327
+%define git_ver .0.159219639b7f
 
 %ifarch aarch64 %power64 x86_64 s390x
 %if 0%{?suse_version} > 1530
@@ -27,7 +27,7 @@
 %endif
 
 Name:           libfabric
-Version:        1.21.0
+Version:        1.22.0
 Release:        0
 Summary:        User-space RDMA Fabric Interfaces
 License:        BSD-2-Clause OR GPL-2.0-only
@@ -82,6 +82,7 @@ services, such as RDMA. This package contains the development files.
 %autosetup -p1 -n  %{name}-%{version}%{git_ver}
 
 %build
+export CFLAGS=-Wno-incompatible-pointer-types
 rm -f config/libtool.m4
 autoreconf -fi
 # defaults: with-dlopen and without-valgrind can be over-rode:

@@ -529,4 +529,12 @@
     <comment></comment>
     <requestid>1192178</requestid>
   </revision>
+  <revision rev="49" vrev="3">
+    <srcmd5>eb570aece02bf53e56589ef60fa84a68</srcmd5>
+    <version>321</version>
+    <time>1723309562</time>
+    <user>dimstar_suse</user>
+    <comment>fix changes file to not delete a changes entry for Factory (forwarded request 1192616 from jzerebecki)</comment>
+    <requestid>1192625</requestid>
+  </revision>
 </revisionlist>

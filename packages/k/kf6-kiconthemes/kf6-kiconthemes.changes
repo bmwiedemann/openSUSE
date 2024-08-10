@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Aug  5 10:47:43 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.5.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.5.0
+- Changes since 6.4.0:
+  * Update dependency version to 6.5.0
+  * fix icon recoloring for portable installers
+  * Overhaul KIconEngine docs
+  * Deprecate KIconLoader::drawOverlays
+  * Deprecate movie loading API
+  * Add back effect into cache key (kde#490795)
+  * Deprecate KIconEffect::apply API
+  * Refactor icon effect application
+  * [kiconeffect] Add static API for active effect
+  * [kiconeffect] Add static API for disabled effect
+  * [kiconeffects] Drop color and color2 members
+  * [kiconeffects] Don't read effect settings from kconfig
+  * [kiconeffect] Replace raw numbers with relevant enum
+  * Add note to prefer QIcon::fromTheme over KIconLoader
+  * Update version to 6.5.0
+
+-------------------------------------------------------------------
 Tue Jul  9 09:41:47 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.4.0

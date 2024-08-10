@@ -399,4 +399,17 @@
     <comment></comment>
     <requestid>1124192</requestid>
   </revision>
+  <revision rev="49" vrev="3">
+    <srcmd5>8786dcbe1276b01255aff94c2e8f42f5</srcmd5>
+    <version>1.8.19.13.gbe11d94</version>
+    <time>1723309549</time>
+    <user>dimstar_suse</user>
+    <comment>- Added ipmitool-fix_init_from_incompat_ptr_type.patch fixing a type
+  which led to assignment from incompatible pointer type which is an
+  error in GCC 14 [boo#1225992]
+
+Please (assuming the request is OK), forward the fix to Factory
+soonish so that we can switch the default compiler. (forwarded request 1186610 from jamborm)</comment>
+    <requestid>1192527</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Aug  5 10:47:44 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.5.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.5.0
+- Too many changes since 6.4.0, only listing bugfixes:
+  * kfileitem: show relative path for rel symlink (kde#456198)
+  * KFilePlacesView: Show label in tooltip if it is elided (kde#454436)
+  * Remove parent for DropMenu (kde#490183)
+- Drop patch, merged upstream:
+  * 0001-Remove-parent-for-DropMenu.patch
+
+-------------------------------------------------------------------
 Wed Jul 17 13:03:27 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add patch to fix issues with dropping files

@@ -969,4 +969,20 @@ Pushing GNOME 45.rc packages</comment>
     <comment></comment>
     <requestid>1191785</requestid>
   </revision>
+  <revision rev="87" vrev="4">
+    <srcmd5>d05c0f883c09291cd99d9afd1bc93457</srcmd5>
+    <version>1.15.8</version>
+    <time>1723309561</time>
+    <user>dimstar_suse</user>
+    <comment>- Added p11-kit-server to fix boo#1221557
+
+After OBS Studio flatpak updating to KDE Runtime 6.6 it was revealed that it no longer could verify SSL certificates. The root cause turned out to be a missing p11-kit-server which on most distributions is installed as recommended along side flatpak (see Fedora).
+
+With this little addition I hope to fix random SSL errors for KDE Runtime 6.6 and newer also for openSUSE Tumbleweed.
+
+As a side note Leap is affected as well by this. Might be worth back porting this patch?
+- As per documentation from flatpak 1.0: add weak dep on
+  p11-kit-server for certificate transfer (boo#1188902) (forwarded request 1192619 from dimstar)</comment>
+    <requestid>1192622</requestid>
+  </revision>
 </revisionlist>

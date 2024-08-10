@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Aug  8 12:33:34 UTC 2024 - Imo Hester <vortex@z-ray.de>
+
+- As per documentation from flatpak 1.0: add weak dep on
+  p11-kit-server for certificate transfer (boo#1188902)
+
+-------------------------------------------------------------------
 Fri Jun 14 13:51:38 UTC 2024 - pgajdos@suse.com
 
 - remove dependency on /usr/bin/python3 using

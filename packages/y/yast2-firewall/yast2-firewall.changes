@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Aug  6 11:29:06 UTC 2024 - Knut Anderssen <kanderssen@suse.com>
+
+- In case of autoinstallation keep the firewall service state in
+  the Installation::SecuritySettings for not conflicting with the
+  proposal (bsc#1216615)
+- 5.0.1
+
+-------------------------------------------------------------------
 Wed Aug 30 20:16:10 UTC 2023 - Josef Reidinger <jreidinger@suse.cz>
 
 - 5.0.0 (bsc#1185510)

@@ -34,7 +34,7 @@ BuildRequires:  pkgconfig(fribidi)
 BuildRequires:  pkgconfig(gi-docgen)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.72
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
-BuildRequires:  pkgconfig(gtk4) >= 4.11.3
+BuildRequires:  pkgconfig(gtk4) >= 4.13.4
 %lang_package
 
 %description

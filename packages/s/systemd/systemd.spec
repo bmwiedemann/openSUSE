@@ -156,6 +156,9 @@ Requires(post): coreutils
 Requires(post): findutils
 Requires(post): systemd-presets-branding
 Requires(post): pam-config >= 0.79-5
+# See bsc#1228659
+OrderWithRequires(post): udev
+OrderWithRequires(post): systemd-boot
 # These weak dependencies because some features are optional and enabled at
 # runtime with the presence of the relevant libs.
 Recommends:     libpcre2-8-0

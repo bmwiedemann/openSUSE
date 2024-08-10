@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Aug  4 05:00:35 UTC 2024 - Axel Braun <axel.braun@gmx.de>
+
+- version 2.3.0
+  - SCardGetStatusChange(): add the number of reader events
+  - Add Appstream metainfo announcing HW support
+  - meson: specify minimum meson version to use
+  - fix formats under musl libc
+  - Send libpcsclite.so logs to stderr instead of stdout
+  - Some other minor improvements
+
+-------------------------------------------------------------------
 Fri Jun  7 10:15:11 UTC 2024 - Axel Braun <axel.braun@gmx.de>
 
 - version 2.2.3

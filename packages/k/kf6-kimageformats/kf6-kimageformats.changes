@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Aug  5 10:47:44 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.5.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.5.0
+- Changes since 6.4.0:
+  * Update dependency version to 6.5.0
+  * JXL: added ImageTransformation option
+  * xcf: Fix crash on malformed files
+  * pcx: Fix crash in broken files
+  * xcf: Fix crash on broken files
+  * pcx: fix crash on invalid files
+  * pcx: fix crash on invalid files
+  * exr: added some usefull attributes
+  * pcx: Read 16 color images that are 4bpp and 1 plane
+  * Full range HDR support
+  * Prepare gitlab for files that are coming int the next commit
+  * avif: check return values
+  * raw: Fix compiler warning with macro redefinition in Windows
+  * Update version to 6.5.0
+
+-------------------------------------------------------------------
 Tue Jul  9 09:41:48 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.4.0

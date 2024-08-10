@@ -36,6 +36,12 @@
 %bcond_without general
 %endif
 
+%if 0%{?do_profiling}
+%bcond_without profileopt
+%else
+%bcond_with profileopt
+%endif
+
 %define         python_pkg_name python311
 %if "%{python_pkg_name}" == "%{primary_python}"
 %define primary_interpreter 1
@@ -177,6 +183,9 @@ Patch18:        CVE-2024-4032-private-IP-addrs.patch
 # PATCH-FIX-UPSTREAM bso1227999-reproducible-builds.patch bsc#1227999 mcepl@suse.com
 # reproducibility patches
 Patch19:        bso1227999-reproducible-builds.patch
+# PATCH-FIX-UPSTREAM CVE-2024-6923-email-hdr-inject.patch bsc#1228780 mcepl@suse.com
+# prevent email header injection, patch from gh#python/cpython!122608
+Patch20:        CVE-2024-6923-email-hdr-inject.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -440,6 +449,7 @@ other applications.
 %patch -p1 -P 17
 %patch -p1 -P 18
 %patch -p1 -P 19
+%patch -p1 -P 20
 
 # drop Autoconf version requirement
 sed -i 's/^AC_PREREQ/dnl AC_PREREQ/' configure.ac

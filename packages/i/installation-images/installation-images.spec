@@ -355,6 +355,7 @@ BuildRequires:  dosfstools
 BuildRequires:  dump
 BuildRequires:  e2fsprogs
 BuildRequires:  ed
+BuildRequires:  efont-unicode-bitmap-fonts
 BuildRequires:  elfutils
 BuildRequires:  ethtool
 BuildRequires:  google-noto-naskharabic-fonts
@@ -689,7 +690,7 @@ AutoReqProv:    off
 Summary:        Installation Image Files for %theme
 License:        GPL-2.0-or-later
 Group:          Metapackages
-Version:        17.136
+Version:        17.137
 Release:        0
 Provides:       installation-images = %version-%release
 Conflicts:      otherproviders(installation-images)

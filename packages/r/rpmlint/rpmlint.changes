@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Aug 09 09:23:19 UTC 2024 - filippo.bonazzi@suse.com
+
+- Update to version 2.6.1+git20240807.9387990:
+  * dbus-services: systemd: remove outdated hashes (bsc#1225317)
+
+-------------------------------------------------------------------
 Fri Aug 02 06:25:53 UTC 2024 - daniel.garcia@suse.com
 
 - Update to version 2.6.1+git20240802.da40b67:

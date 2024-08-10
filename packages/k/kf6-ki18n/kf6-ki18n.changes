@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Aug  5 10:47:42 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.5.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.5.0
+- Changes since 6.4.0:
+  * Update dependency version to 6.5.0
+  * Use more specific names for the functions
+  * Add comment for translators in example code
+  * Code cleanup
+  * Minor Doxygen change
+  * Build with older clang versions too
+  * Test also retranslateFormatString
+  * Make retranslateFormatString() call function from correct namespace and adjust code documentation
+  * Add helper method for setting a plural-aware spin box prefix/suffix
+  * Update version to 6.5.0
+
+-------------------------------------------------------------------
 Tue Jul  9 09:41:46 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.4.0

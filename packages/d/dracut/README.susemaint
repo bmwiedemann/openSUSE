@@ -12,6 +12,7 @@ branch. Currently, these active maintenance branches are:
 - SLE-15-SP5_Update     -> SLE 15 SP5 (based on SUSE/055 plus some specific patches)
 - SLE-15-SP6_Update     -> SLE 15 SP6
 - SL-Micro-6.0_Update   -> SL Micro 6.0
+- SLFO_Main             -> SUSE Linux Framework One
 - SUSE/059              -> Tumbleweed
 
 Rules:
@@ -373,4 +374,4 @@ b5a35f9d feat(zfcp_rules): remove zfcp handling consolidated in s390-tools
 457e66e6 feat(ifcfg): minimize s390-specific network configuration aspects
 3fd43858 fix(mdraid): try to assemble the missing raid device
 61ab3386 feat(crypt): force the inclusion of crypttab entries with x-initrd.attach
-
+6611c6e4 fix(dracut-functions.sh): only return block devices from get_persistent_dev

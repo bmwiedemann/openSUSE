@@ -728,4 +728,12 @@
     <comment>submit new version 5.0.0</comment>
     <requestid>1119046</requestid>
   </revision>
+  <revision rev="98" vrev="1">
+    <srcmd5>dfda8abef33ae4d7af4b97b070cdbff4</srcmd5>
+    <version>5.0.1</version>
+    <time>1723309571</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 5.0.1</comment>
+    <requestid>1192826</requestid>
+  </revision>
 </revisionlist>

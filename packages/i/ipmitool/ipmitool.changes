@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jul 10 13:07:32 UTC 2024 - Martin Jambor <mjambor@suse.com>
+
+- Added ipmitool-fix_init_from_incompat_ptr_type.patch fixing a type
+  which led to assignment from incompatible pointer type which is an
+  error in GCC 14 [boo#1225992]
+
+-------------------------------------------------------------------
 Tue Oct 31 15:55:01 UTC 2023 - Thomas Renninger <trenn@suse.de>
 
 - bsc#1216556 L3: ipmitool: Unsupported LAN Parameter

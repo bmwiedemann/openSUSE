@@ -72,6 +72,7 @@ Patch102:       0002-selinux-temporary-remove-setroubleshoot-section.patch
 # For anything based on SLES 15 codebase (including Leap, SLE Micro)
 Patch103:       0004-leap-gnu18-removal.patch
 Patch104:       selinux_libdir.patch
+Patch105:       fix-libexecdir.patch
 
 %define build_all 1
 %if 0%{?rhel} == 8 && 0%{?epel} == 0 && !0%{?build_all}
@@ -190,7 +191,7 @@ Requires: cockpit-system
 
 # Optional components
 Recommends: (cockpit-storaged if udisks2)
-Recommends: (cockpit-packagekit if dnf)
+Recommends: (cockpit-packagekit if (dnf or zypper))
 Suggests: cockpit-pcp
 
 %if 0%{?rhel} == 0
@@ -235,6 +236,7 @@ BuildRequires:  python3-tox-current-env
 %if 0%{?suse_version} == 1500
 %patch -P 103 -p1
 %patch -P 104 -p0
+%patch -P 105 -p1
 %endif
 
 cp %SOURCE1 tools/cockpit.pam
@@ -305,6 +307,12 @@ cp src/css-overrides.css %{buildroot}%{_datadir}/cockpit/branding/suse
 cp src/fonts.css %{buildroot}%{_datadir}/cockpit/branding/suse
 cp -a src/fonts %{buildroot}%{_datadir}/cockpit/branding/suse
 popd
+
+%if 0%{?suse_version} == 1500
+sed -i -e 's#"/lib/systemd/system#"%{_unitdir}#' \
+  %{buildroot}%{_datadir}/cockpit/packagekit/manifest.json \
+  %{buildroot}%{_datadir}/cockpit/pcp/manifest.json
+%endif
 
 # Build the package lists for resource packages
 # cockpit-bridge is the basic dependency for all cockpit-* packages, so centrally own the page directory
@@ -558,7 +566,6 @@ Suggests: sssd-dbus >= 2.6.2
 %if 0%{?suse_version}
 Requires(pre): permissions
 Requires: distribution-logos
-Requires: pam_oath
 Requires: wallpaper-branding
 %endif
 # for cockpit-desktop

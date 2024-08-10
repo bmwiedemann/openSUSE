@@ -9,6 +9,8 @@ AssertPathExists=/etc/traefik/traefik.toml
 [Service]
 Type=notify
 ExecStart=/usr/bin/traefik --configFile=/etc/traefik/traefik.toml
+User=traefik
+WorkingDirectory=~
 Restart=always
 WatchdogSec=1s
 PrivateTmp=true

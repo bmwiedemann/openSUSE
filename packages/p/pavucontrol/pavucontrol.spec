@@ -1,7 +1,7 @@
 #
 # spec file for package pavucontrol
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           pavucontrol
-Version:        5.0
+Version:        6.1
 Release:        0
 Summary:        PulseAudio Volume Control
 License:        GPL-2.0-or-later
@@ -26,18 +26,14 @@ URL:            https://freedesktop.org/software/pulseaudio/pavucontrol/
 Source:         https://freedesktop.org/software/pulseaudio/pavucontrol/%{name}-%{version}.tar.xz
 BuildRequires:  gcc-c++
 BuildRequires:  intltool
+BuildRequires:  meson
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(gtkmm-3.0) >= 3.22
+BuildRequires:  pkgconfig(gtkmm-4.0) >= 4.0
 BuildRequires:  pkgconfig(json-glib-1.0)
-BuildRequires:  pkgconfig(libcanberra-gtk3) >= 0.16
-BuildRequires:  pkgconfig(libpulse) >= 0.9.16
+BuildRequires:  pkgconfig(libpulse) >= 5.0
 BuildRequires:  pkgconfig(libpulse-mainloop-glib) >= 0.9.16
-BuildRequires:  pkgconfig(sigc++-2.0)
-%if 0%{?sle_version} && 0%{?sle_version} < 150300
-Requires:       pulseaudio
-%else
+BuildRequires:  pkgconfig(sigc++-3.0)
 Requires:       pulseaudio-daemon
-%endif
 
 %description
 PulseAudio Volume Control (pavucontrol) is a simple GTK based volume
@@ -48,25 +44,29 @@ hardware devices and of each playback stream separately.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
-%configure --disable-lynx
-make %{?_smp_mflags}
+%meson \
+    -Dlynx=false
+%meson_build
 
 %install
-%make_install
-%find_lang %{name} %{?no_lang_C}
+%meson_install
 
 # This is documentation we prefer to have in the package doc directory
+mkdir -p %{buildroot}%{_datadir}/doc/packages/%{name}/
+mv %{buildroot}%{_datadir}/doc/%{name}/* %{buildroot}%{_datadir}/doc/packages/%{name}/
 rm -r %{buildroot}%{_datadir}/doc/%{name}
+
+%find_lang %{name} %{?no_lang_C}
 
 %files
 %license LICENSE
-%doc doc/README doc/README.html doc/style.css
-%{_bindir}/%{name}
-%{_datadir}/%{name}
-%{_datadir}/applications/%{name}.desktop
+%doc README.html style.css
+%{_bindir}/pavucontrol
+%{_datadir}/applications/org.pulseaudio.pavucontrol.desktop
+%{_datadir}/metainfo/org.pulseaudio.pavucontrol.metainfo.xml
 
 %files lang -f %{name}.lang
 

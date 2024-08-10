@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Aug  6 09:29:26 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 3.3.0
+  * Add support for Python 3.13.
+  * Remove support for Python 3.8 (and constants `PY38`,
+    `PY39_PLUS`, and `PYPY_7_3_11_PLUS`).
+  * Add the ``__annotations__`` attribute to the ``ClassDef`` object model.
+  * Implement inference for JoinedStr and FormattedValue
+  * Add support for ``ssl.OP_LEGACY_SERVER_CONNECT`` (new in Python 3.12).
+
+-------------------------------------------------------------------
 Mon Jul 22 12:43:32 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 3.2.4

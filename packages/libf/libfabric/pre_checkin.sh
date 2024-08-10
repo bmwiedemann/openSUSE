@@ -4,5 +4,5 @@
 GIT_VER=$(grep "%define git_ver" libfabric.spec)
 VERSION=$(egrep "^Version:" libfabric.spec)
 sed -i -e 's/^%define git_ver.*$/'"$GIT_VER/"  -e 's/^Version:.*$/'"$VERSION/" fabtests.spec
-osc service localrun format_spec_file
+osc service run format_spec_file
 

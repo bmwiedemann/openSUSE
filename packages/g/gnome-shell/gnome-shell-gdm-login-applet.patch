@@ -1,8 +1,7 @@
-Index: gnome-shell-45.3/js/js-resources.gresource.xml
-===================================================================
---- gnome-shell-45.3.orig/js/js-resources.gresource.xml
-+++ gnome-shell-45.3/js/js-resources.gresource.xml
-@@ -42,6 +42,7 @@
+diff -urpN gnome-shell-46.4.orig/js/js-resources.gresource.xml gnome-shell-46.4/js/js-resources.gresource.xml
+--- gnome-shell-46.4.orig/js/js-resources.gresource.xml	2024-08-08 16:03:02.309824096 -0500
++++ gnome-shell-46.4/js/js-resources.gresource.xml	2024-08-08 16:04:00.523595099 -0500
+@@ -43,6 +43,7 @@
      <file>misc/util.js</file>
      <file>misc/weather.js</file>
  
@@ -10,43 +9,9 @@ Index: gnome-shell-45.3/js/js-resources.gresource.xml
      <file>ui/accessDialog.js</file>
      <file>ui/altTab.js</file>
      <file>ui/animation.js</file>
-Index: gnome-shell-45.3/js/ui/panel.js
-===================================================================
---- gnome-shell-45.3.orig/js/ui/panel.js
-+++ gnome-shell-45.3/js/ui/panel.js
-@@ -36,6 +36,7 @@ import * as ThunderboltStatus from './st
- import * as AutoRotateStatus from './status/autoRotate.js';
- import * as BackgroundAppsStatus from './status/backgroundApps.js';
- 
-+import {AboutMenuButton} from './aboutMenu.js';
- import {DateMenuButton} from './dateMenu.js';
- import {ATIndicator} from './status/accessibility.js';
- import {InputSourceIndicator} from './status/keyboard.js';
-@@ -633,6 +634,7 @@ class QuickSettings extends PanelMenu.Bu
- });
- 
- const PANEL_ITEM_IMPLEMENTATIONS = {
-+    'aboutMenu': AboutMenuButton,
-     'activities': ActivitiesButton,
-     'appMenu': AppMenuButton,
-     'quickSettings': QuickSettings,
-Index: gnome-shell-45.3/js/ui/sessionMode.js
-===================================================================
---- gnome-shell-45.3.orig/js/ui/sessionMode.js
-+++ gnome-shell-45.3/js/ui/sessionMode.js
-@@ -60,7 +60,7 @@ const _modes = {
-             ? ['networkAgent', 'polkitAgent']
-             : ['polkitAgent'],
-         panel: {
--            left: [],
-+            left: ['aboutMenu'],
-             center: ['dateMenu'],
-             right: ['dwellClick', 'a11y', 'keyboard', 'quickSettings'],
-         },
-Index: gnome-shell-45.3/js/ui/aboutMenu.js
-===================================================================
---- /dev/null
-+++ gnome-shell-45.3/js/ui/aboutMenu.js
+diff -urpN gnome-shell-46.4.orig/js/ui/aboutMenu.js gnome-shell-46.4/js/ui/aboutMenu.js
+--- gnome-shell-46.4.orig/js/ui/aboutMenu.js	1969-12-31 18:00:00.000000000 -0600
++++ gnome-shell-46.4/js/ui/aboutMenu.js	2024-08-08 16:04:32.667170062 -0500
 @@ -0,0 +1,144 @@
 +// -*- mode: js; js-indent-level: 4; indent-tabs-mode: nil -*-
 +
@@ -79,7 +44,7 @@ Index: gnome-shell-45.3/js/ui/aboutMenu.js
 +        this.menu.box.add_child(hbox);
 +
 +        vbox = new St.BoxLayout({vertical: true});
-+        hbox.add(vbox);
++        hbox.add_child(vbox);
 +
 +        ///// Section: read '/etc/os-release' to get pretty name
 +        //
@@ -106,7 +71,7 @@ Index: gnome-shell-45.3/js/ui/aboutMenu.js
 +        }
 +
 +        this._sysinfo = new St.Label({ text: sysinfo_text, can_focus: true });
-+        vbox.add(this._sysinfo);
++        vbox.add_child(this._sysinfo);
 +        this.hide();
 +
 +        this._updateHostnameId = GLib.timeout_add(GLib.PRIORITY_DEFAULT,
@@ -192,3 +157,34 @@ Index: gnome-shell-45.3/js/ui/aboutMenu.js
 +
 +    return hostname;
 +}
+diff -urpN gnome-shell-46.4.orig/js/ui/panel.js gnome-shell-46.4/js/ui/panel.js
+--- gnome-shell-46.4.orig/js/ui/panel.js	2024-08-08 16:03:02.319824171 -0500
++++ gnome-shell-46.4/js/ui/panel.js	2024-08-08 16:04:00.523595099 -0500
+@@ -36,6 +36,7 @@ import * as ThunderboltStatus from './st
+ import * as AutoRotateStatus from './status/autoRotate.js';
+ import * as BackgroundAppsStatus from './status/backgroundApps.js';
+ 
++import {AboutMenuButton} from './aboutMenu.js';
+ import {DateMenuButton} from './dateMenu.js';
+ import {ATIndicator} from './status/accessibility.js';
+ import {InputSourceIndicator} from './status/keyboard.js';
+@@ -631,6 +632,7 @@ class QuickSettings extends PanelMenu.Bu
+ });
+ 
+ const PANEL_ITEM_IMPLEMENTATIONS = {
++    'aboutMenu': AboutMenuButton,
+     'activities': ActivitiesButton,
+     'appMenu': AppMenuButton,
+     'quickSettings': QuickSettings,
+diff -urpN gnome-shell-46.4.orig/js/ui/sessionMode.js gnome-shell-46.4/js/ui/sessionMode.js
+--- gnome-shell-46.4.orig/js/ui/sessionMode.js	2024-08-08 16:03:02.323157529 -0500
++++ gnome-shell-46.4/js/ui/sessionMode.js	2024-08-08 16:04:00.523595099 -0500
+@@ -59,7 +59,7 @@ const _modes = {
+             ? ['networkAgent', 'polkitAgent']
+             : ['polkitAgent'],
+         panel: {
+-            left: [],
++            left: ['aboutMenu'],
+             center: ['dateMenu'],
+             right: ['dwellClick', 'a11y', 'keyboard', 'quickSettings'],
+         },
