@@ -358,7 +358,7 @@ configure_postfix() {
 
 terminate() {
     base=$(basename "$1")
-    pid=$(/bin/pidof "$base")
+    pid=$(/usr/bin/ps -aux | /usr/bin/grep "$base" | /usr/bin/grep -v grep | /usr/bin/awk '{print $2}' | /usr/bin/tr '\n' ' ')
 
     if [ -n "$pid" ]; then
 	echo "Terminating $base..."
@@ -379,15 +379,15 @@ stop_postfix() {
     typeset -i sec=$1
     typeset -i ms=$((sec*100))
 
-    (   while ! pidof qmgr > /dev/null 2>&1 ; do
+    (   while ! (ps -aux | grep qmgr | grep -v grep | awk '{print $2}' | tr '\n' ' ') > /dev/null 2>&1; do
             ((ms-- <= 0)) && break
             usleep 10000
-	done
-	exec postfix flush
-    ) > /dev/null 2>&1 &
+        done
+        exec postfix flush
+    ) > /dev/null 2>&1 & 
 
     postfix stop
-    terminate /usr/sbin/syslogd
+    terminate /usr/sbin/rsyslogd
 }
 
 stop_daemons() {
@@ -397,7 +397,13 @@ stop_daemons() {
 start_daemons() {
     # Don't start syslogd in background while starting it in the background...
     # Logging to stdout does not work else.
-    /usr/sbin/syslogd -n -S -O - "$@"
+    echo '# rsyslog configuration file to log to stdout
+    module(load="imuxsock")  # provides support for local system logging (e.g. via logger command)
+
+    *.*                         action(type="omfile" file="/var/log/rsyslog.log")' > /entrypoint/rsyslog-stdout.conf
+    /usr/sbin/rsyslogd -f /entrypoint/rsyslog-stdout.conf -i /var/run/rsyslogd-stdout.pid
+
+    "$@"
 }
 
 #
