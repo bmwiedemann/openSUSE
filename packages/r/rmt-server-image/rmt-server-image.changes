@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Aug  8 19:28:10 UTC 2024 - Dirk Mueller <dmueller@suse.com>
+
+- add oci.image.ref.name
+
+-------------------------------------------------------------------
 Thu Aug  8 16:52:23 UTC 2024 - Natnael Getahun <natnael.getahun@suse.com>
 
 - update rmt.conf to store airgap state in a separate config var.
