@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Aug 09 13:44:32 UTC 2024 - kukuk@suse.com
+
+- Update to version 84.87+git20240809.5d13eb4:
+  * cleanup aaa_base.post and fold back into specfile
+
+-------------------------------------------------------------------
 Mon Aug 05 09:15:00 UTC 2024 - ro@suse.com
 
 - Update to version 84.87+git20240805.7513b28:

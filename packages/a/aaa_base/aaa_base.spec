@@ -33,7 +33,7 @@ BuildRequires:  git-core
 %endif
 
 Name:           aaa_base
-Version:        84.87+git20240805.7513b28%{git_version}
+Version:        84.87+git20240809.5d13eb4%{git_version}
 Release:        0
 Summary:        openSUSE Base Package
 License:        GPL-2.0-or-later
@@ -154,7 +154,21 @@ mkdir -p %{buildroot}%{_fillupdir}
   rm -vrf %{buildroot}/usr/share/fillup-templates
 %endif
 
-%post -f aaa_base.post
+%post
+export LC_ALL=C
+
+#XXX Fix /etc/nsswitch.conf to include usrfiles [bsc#1162916]
+if [ -e /etc/nsswitch.conf ]; then
+    for key in services protocols rpc ; do
+	if ! grep -q ^${key}.*usrfiles /etc/nsswitch.conf ; then
+	    cp /etc/nsswitch.conf /etc/nsswitch.conf.pre-usrfiles.${key}
+	    sed -i -e "s|^\(${key}:.*[[:space:]]\)files\([[:space:]].*\)*$|\1files usrfiles\2|" /etc/nsswitch.conf
+	fi
+    done
+fi
+
+%{fillup_only -n language}
+%{fillup_only -n proxy}
 
 %pre extras
 %service_add_pre backup-rpmdb.service backup-rpmdb.timer backup-sysconfig.service backup-sysconfig.timer check-battery.service check-battery.timer
@@ -225,7 +239,6 @@ mkdir -p %{buildroot}%{_fillupdir}
 /usr/lib/sysctl.d/51-network.conf
 %{_fillupdir}/sysconfig.language
 %{_fillupdir}/sysconfig.proxy
-%{_fillupdir}/sysconfig.windowmanager
 
 %files extras
 /usr/etc/skel/.emacs

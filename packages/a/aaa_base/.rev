@@ -4192,4 +4192,13 @@
   * sysctl: Don't set kernel.pid_max on 32b archs (bsc#1227117)</comment>
     <requestid>1191629</requestid>
   </revision>
+  <revision rev="503" vrev="1">
+    <srcmd5>fa2af68868e3dbc61e60f96ed777f711</srcmd5>
+    <version>84.87+git20240809.5d13eb4</version>
+    <time>1723388128</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 84.87+git20240809.5d13eb4:
+  * cleanup aaa_base.post and fold back into specfile (forwarded request 1192950 from kukuk)</comment>
+    <requestid>1192951</requestid>
+  </revision>
 </revisionlist>
