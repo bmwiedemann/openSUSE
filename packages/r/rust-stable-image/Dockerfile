@@ -16,8 +16,8 @@
 
 #!BuildTag: opensuse/bci/rust:stable
 #!BuildTag: opensuse/bci/rust:stable-1.%RELEASE%
-#!BuildTag: opensuse/bci/rust:1.79
-#!BuildTag: opensuse/bci/rust:1.79-1.%RELEASE%
+#!BuildTag: opensuse/bci/rust:1.80
+#!BuildTag: opensuse/bci/rust:1.80-1.%RELEASE%
 #!BuildTag: opensuse/bci/rust:latest
 
 FROM opensuse/tumbleweed:latest
@@ -25,22 +25,21 @@ FROM opensuse/tumbleweed:latest
 # Define labels according to https://en.opensuse.org/Building_derived_containers
 # labelprefix=org.opensuse.bci.rust
 LABEL org.opencontainers.image.authors="openSUSE (https://www.opensuse.org/)"
-LABEL org.opencontainers.image.title="openSUSE Tumbleweed BCI Rust 1.79"
-LABEL org.opencontainers.image.description="Rust 1.79 container based on the openSUSE Tumbleweed Base Container Image."
-LABEL org.opencontainers.image.version="1.79"
+LABEL org.opencontainers.image.title="openSUSE Tumbleweed BCI Rust 1.80"
+LABEL org.opencontainers.image.description="Rust 1.80 container based on the openSUSE Tumbleweed Base Container Image."
+LABEL org.opencontainers.image.version="1.80"
 LABEL org.opencontainers.image.url="https://www.opensuse.org"
 LABEL org.opencontainers.image.created="%BUILDTIME%"
 LABEL org.opencontainers.image.vendor="openSUSE Project"
 LABEL org.opencontainers.image.source="%SOURCEURL%"
-LABEL org.opensuse.reference="registry.opensuse.org/opensuse/bci/rust:1.79-1.%RELEASE%"
+LABEL org.opensuse.reference="registry.opensuse.org/opensuse/bci/rust:1.80-1.%RELEASE%"
 LABEL org.openbuildservice.disturl="%DISTURL%"
 LABEL org.opensuse.lifecycle-url="https://en.opensuse.org/Lifetime#openSUSE_BCI"
 LABEL org.opensuse.release-stage="released"
 # endlabelprefix
-LABEL org.opencontainers.image.revision="%DISTURL%"
 LABEL io.artifacthub.package.readme-url="https://raw.githubusercontent.com/SUSE/BCI-dockerfile-generator/Tumbleweed/rust-stable-image/README.md"
 
-RUN set -euo pipefail; zypper -n in --no-recommends rust1.79 cargo1.79; zypper -n clean; rm -rf /var/log/{lastlog,tallylog,zypper.log,zypp/history,YaST2}
+RUN set -euo pipefail; zypper -n in --no-recommends rust1.80 cargo1.80; zypper -n clean; rm -rf /var/log/{lastlog,tallylog,zypper.log,zypp/history,YaST2}
 ENV RUST_VERSION="%%RUST_VERSION%%"
 ENV CARGO_VERSION="%%CARGO_VERSION%%"
 ENV CC="/usr/local/bin/gcc"
