@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Fri Aug 09 17:01:07 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.11.19:
+  * Change upgradeable logic based on feedback
+  * fix clusterawsadm after file pattern change
+  * Move upgradeable check to using semVer/pre
+  * Update deps in go.mod
+
+-------------------------------------------------------------------
+Fri Aug 09 17:00:25 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.11.18:
+  * Revert "fix flyctl release name"
+
+-------------------------------------------------------------------
+Fri Aug 09 16:59:41 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.11.17:
+  * Remove old apps and update to Go 1.22
+  * Bump github.com/docker/docker
+  * Bump golang.org/x/mod from 0.18.0 to 0.19.0
+  * Bump github.com/sethvargo/go-password from 0.3.0 to 0.3.1
+  * Bump golang.org/x/crypto from 0.24.0 to 0.25.0
+  * Bump github.com/google/go-containerregistry from 0.19.2 to
+    0.20.0
+  * fix flyctl release name
+  * Bump github.com/spf13/cobra from 1.8.0 to 1.8.1
+  * Bump github.com/google/go-containerregistry from 0.19.1 to
+    0.19.2
+
+-------------------------------------------------------------------
 Fri Jun 14 18:31:21 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.11.16:
