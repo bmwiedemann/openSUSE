@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Aug 11 03:13:01 UTC 2024 - okurz@suse.com
+
+- Update to version 4.6.1723228512.e404d966:
+  * openqa-bootstrap: Refresh and retry in case of package changes
+  * Add help on how to exclude groupless jobs from WebUI
+  * Use new perltidy wrapper tools/tidyall
+  * git subrepo pull (merge) external/os-autoinst-common
+
+-------------------------------------------------------------------
 Thu Aug 08 18:00:55 UTC 2024 - okurz@suse.com
 
 - Update to version 4.6.1723039980.549ee3ba:
