@@ -18,7 +18,7 @@
 
 %define lname   libzzip-0-13
 Name:           zziplib
-Version:        0.13.72
+Version:        0.13.78
 Release:        0
 Summary:        ZIP Compression Library
 License:        LGPL-2.1-or-later
@@ -26,9 +26,6 @@ Group:          Development/Libraries/C and C++
 URL:            http://zziplib.sourceforge.net
 Source0:        https://github.com/gdraheim/zziplib/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source2:        baselibs.conf
-Patch0:         zziplib-0.13.62.patch
-Patch1:         bsc1154002-prevent-unnecessary-perror.patch
-Patch2:         CVE-2020-18770.patch
 BuildRequires:  cmake
 BuildRequires:  pkgconfig
 BuildRequires:  xmlto
@@ -74,6 +71,8 @@ sed -i -e 's:docs ::g' Makefile.am
 %cmake_install
 rm -f docs/Make* docs/zziplib-manpages.ar
 find %{buildroot} -type f -name "*.la" -delete -print
+# Remove uneeded .cmake files
+rm -rf %{buildroot}%{_libdir}/cmake
 
 %post -n %{lname} -p /sbin/ldconfig
 %postun -n %{lname} -p /sbin/ldconfig
