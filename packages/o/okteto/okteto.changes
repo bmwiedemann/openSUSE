@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Aug 09 17:05:32 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.30.0:
+  * feat: add last okteto up branch on cmap (#4415) (#4419)
+  * account for groups in repo urls in dependencies (#4416) (#4417)
+  * refactor: remove destroy.destroyInsideDeployConfigMapHandler
+    (#4400)
+  * fix: add extra hosts in okteot test (#4410)
+  * fix: deploy remote falback to dockerignore instead of skipping
+    it (#4406)
+  * Split integration tests into jobs (#4391)
+  * remove cache for test (#4409)
+  * DEV-494: Handling an special error from the registry when an
+    image digest is malformed (#4405)
+  * DEV-520: Scan image on release (#4407)
+  * Bump kubectl and other binaries. Fix CVEs (#4401)
+  * fix: okteto test can export artifact dirs (#4385)
+  * Allow remote deploy inside remote deploy (#4379)
+  * Remove remote check when running build inside deploy remote
+    (#4370)
+  * Migrate circleci deploy to run (#4381)
+  * fix: global image clone (#4377)
+  * up: skip refresh token for vanilla clusters (#4373)
+
+-------------------------------------------------------------------
 Mon Jul 22 18:25:09 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.29.3:
