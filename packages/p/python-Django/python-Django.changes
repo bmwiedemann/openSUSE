@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Aug  9 12:09:27 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Update to 5.1
+  * Supports Python >= 3.10.
+  * Easier guardrails for authentication: the new and shiny 
+    LoginRequiredMiddleware, when added to MIDDLEWARE, enforces 
+    authentication for all views by default.
+  * A more inclusive framework: Django 5.1 includes several accessibility 
+    enhancements, such as improved screen reader support in the admin 
+    interface, more semantic HTML elements, and better association of 
+    help text and labels with form fieldsets.
+  * The second oldest ticket fixed in this release provides the long awaited 
+    querystring template tag, which greatly simplifies the handling of query 
+    strings when building URLs in templates.
+  * For a detailed list of changes see https://docs.djangoproject.com/en/5.1/releases/5.1/
+- Refreshed python-Django.keyring
+
+-------------------------------------------------------------------
 Wed Aug  7 06:07:48 UTC 2024 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Update to 5.0.8 (bsc#1228629, bsc#1228630, bsc#1228631, bsc#1228632)

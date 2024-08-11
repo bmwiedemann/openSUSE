@@ -23,12 +23,12 @@
 %bcond_with memcached
 %{?sle15_python_module_pythons}
 Name:           python-Django
-Version:        5.0.8
+Version:        5.1
 Release:        0
 Summary:        A high-level Python Web framework
 License:        BSD-3-Clause
 URL:            https://www.djangoproject.com
-Source:         https://www.djangoproject.com/m/releases/5.0/Django-%{version}.tar.gz
+Source:         https://www.djangoproject.com/m/releases/5.1/Django-%{version}.tar.gz
 Source1:        https://media.djangoproject.com/pgp/Django-%{version}.checksum.txt
 Source2:        %{name}.keyring
 Source99:       python-Django-rpmlintrc
@@ -42,10 +42,12 @@ BuildRequires:  %{python_module bcrypt}
 BuildRequires:  %{python_module docutils}
 BuildRequires:  %{python_module geoip2}
 BuildRequires:  %{python_module numpy}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module sqlparse >= 0.3.1}
 BuildRequires:  %{python_module tblib >= 1.5.0}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  %{pythons}
 BuildRequires:  fdupes
 BuildRequires:  gpg2
@@ -101,10 +103,10 @@ echo "`grep -e '^[0-9a-f]\{64\}  Django-%{version}.tar.gz' %{SOURCE1} | cut -c1-
 %autosetup -p1 -n Django-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 
 %python_clone -a %{buildroot}%{_bindir}/django-admin
 
@@ -141,6 +143,6 @@ export PATH=%{_libdir}/chromium:$PATH
 %python_alternative %{_bindir}/django-admin
 %{_datadir}/bash-completion/completions/django_bash_completion-%{python_bin_suffix}.sh
 %{python_sitelib}/django
-%{python_sitelib}/Django-%{version}-py*.egg-info
+%{python_sitelib}/Django-%{version}*-info
 
 %changelog
