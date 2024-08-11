@@ -3,7 +3,7 @@
     <param name="url">https://github.com/meshery/meshery</param>
     <param name="scm">git</param>
     <param name="exclude">.git</param>
-    <param name="revision">v0.7.87</param>
+    <param name="revision">v0.7.88</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="changesgenerate">disable</param>
     <param name="versionrewrite-pattern">v(.*)</param>
@@ -12,7 +12,7 @@
     <param name="basename">meshery</param>
   </service>
   <service name="go_modules" mode="manual">
-    <param name="archive">meshery-0.7.87.obscpio</param>
+    <param name="archive">meshery-0.7.88.obscpio</param>
   </service>
   <!-- services below are running at buildtime -->
   <service name="tar" mode="buildtime">
