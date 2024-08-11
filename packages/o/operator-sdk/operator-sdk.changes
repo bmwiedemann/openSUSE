@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Aug 09 17:56:07 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.36.1:
+  * Release v1.36.1 (#6807)
+  * fixing syslist.go link in website (#6808)
+  * Bump controller-runtime version to 0.17.4 (#6803)
+  * fixing test make files post release (#6804)
+  * Fix formatting (#6797)
+
+-------------------------------------------------------------------
 Tue Jul 30 06:39:32 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.36.0:
