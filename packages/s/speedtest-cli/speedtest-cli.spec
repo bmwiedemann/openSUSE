@@ -1,7 +1,7 @@
 #
 # spec file for package speedtest-cli
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,8 @@ License:        Apache-2.0
 Group:          System/Benchmark
 URL:            https://github.com/sivel/speedtest-cli
 Source0:        https://github.com/sivel/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM set-secure-default.patch -- Set secure connection as default
+Patch0:         set-secure-default.patch
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-base
 BuildRequires:  python3-setuptools
@@ -35,7 +37,7 @@ Command line interface for testing internet bandwidth using
 speedtest.net
 
 %prep
-%autosetup
+%autosetup -p1
 sed -i -e '/^#!\//, 1d' *.py
 
 %build

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Aug 11 14:09:21 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add set-secure-default.patch: Set secure connection as default.
+  Speedtest servers don't support HTTP connections anymore so I
+  renamed the `--secure` parameter to `--insecure` and set it to
+  False by default.
+  https://github.com/sivel/speedtest-cli/pull/800
+
+-------------------------------------------------------------------
 Wed Apr  3 14:49:35 UTC 2024 - Stefan Seyfried <seife+obs@b1-systems.com>
 
 - do not require setuptools, it is not needed anymore
