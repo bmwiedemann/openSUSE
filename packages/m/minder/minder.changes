@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sun Aug 11 07:43:44 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- fix build by including the correct directory in %files
+
+-------------------------------------------------------------------
+Wed Jun 12 03:00:20 UTC 2024 - gmg 137 <gmg137@live.com>
+
+- Update to 1.16.4
+  * Added ability to search group notes in search UI.
+  * Removed executable permissions from SVG (thanks to @yangfl).
+  * Removing node summary menu option when a single node is selected (unsupported feature). 
+
+-------------------------------------------------------------------
+Wed Mar 20 02:09:19 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Require pkgconfig(libmarkdown) >= 3.0 for oS >= 1650, since we
+  now maintain two versions of discount providing
+  pkgconfig(libmarkdown): 3.x and 2.x.
+
+-------------------------------------------------------------------
 Tue Jun 20 17:34:34 UTC 2023 - Michał Szczepaniak <m.szczepaniak.000@gmail.com>
 
 - Update to 1.15.2:
