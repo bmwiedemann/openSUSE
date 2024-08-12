@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Aug  9 18:26:17 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 16.1.4:
+  * Improved tsh ssh performance for concurrent execs. #45162
+  * Fixed issue with loading cluster features when agents are
+    upgraded prior to auth. #45226
+  * Updated Go to 1.22.6. #45194
+
+-------------------------------------------------------------------
 Wed Aug  7 07:16:37 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 16.1.3 (not release 16.1.2):
