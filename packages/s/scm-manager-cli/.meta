@@ -1,0 +1,5 @@
+<package name="scm-manager-cli" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:tools:scm" package="scm-manager-cli"/>
+</package>
