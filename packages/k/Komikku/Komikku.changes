@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Aug 10 00:32:38 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.53.0:
+  * [Card] Disabled Resume on empty chapters list
+  * [Reader] Changed interpolation method used to resize images
+  * [Reader] Improved Resume
+  * [Servers] Asura Scans (EN): Re-enabled
+  * [Servers] Colored Manga (EN): Re-enabled
+  * [Servers] Asura Scans (EN): Update
+  * [Servers] Hunlight Scans (EN): Update
+  * [Servers] Manga Scan (FR): Update
+  * [Servers] Reaper Scans (EN): Update
+  * [Servers] Team-X (AR): Update
+  * [Servers] Komga: Fixed synchronization
+
+-------------------------------------------------------------------
 Fri Aug  2 19:51:58 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 1.52.0:
