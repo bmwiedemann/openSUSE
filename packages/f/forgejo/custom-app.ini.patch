@@ -1,9 +1,8 @@
-Index: gitea-1.21.3/custom/conf/app.example.ini
-===================================================================
---- gitea-1.21.3.orig/custom/conf/app.example.ini
-+++ gitea-1.21.3/custom/conf/app.example.ini
-@@ -44,7 +44,7 @@
- APP_NAME = ; Gitea: Git with a cup of tea
+diff -rub forgejo-src-8.0.0/custom/conf/app.example.ini forgejo-src-8.0.0-patched/custom/conf/app.example.ini
+--- forgejo-src-8.0.0/custom/conf/app.example.ini	2024-07-30 06:40:03.000000000 +0200
++++ forgejo-src-8.0.0-patched/custom/conf/app.example.ini	2024-08-01 20:24:55.972480197 +0200
+@@ -51,7 +51,7 @@
+ ;APP_DISPLAY_NAME_FORMAT = {APP_NAME}: {APP_SLOGAN}
  ;;
  ;; RUN_USER will automatically detect the current user - but you can set it here change it if you run locally
 -RUN_USER = ; git
@@ -11,7 +10,7 @@ Index: gitea-1.21.3/custom/conf/app.example.ini
  ;;
  ;; Application run mode, affects performance and debugging: "dev" or "prod", default is "prod"
  ;; Mode "dev" makes Gitea easier to develop and debug, values other than "dev" are treated as "prod" which is for production use.
-@@ -273,15 +273,17 @@ RUN_USER = ; git
+@@ -284,15 +284,17 @@
  ;; $ openssl pkcs12 -in cert.pfx -out cert.pem -nokeys
  ;; $ openssl pkcs12 -in cert.pfx -out key.pem -nocerts -nodes
  ;; Paths are relative to CUSTOM_PATH
@@ -31,7 +30,7 @@ Index: gitea-1.21.3/custom/conf/app.example.ini
  ;;
  ;; Enable gzip compression for runtime-generated content, static resources excluded
  ;ENABLE_GZIP = false
-@@ -293,6 +295,7 @@ RUN_USER = ; git
+@@ -304,6 +306,7 @@
  ;;
  ;; PPROF_DATA_PATH, use an absolute path when you start gitea as service
  ;PPROF_DATA_PATH = data/tmp/pprof ; Path is relative to _`AppWorkPath`_
@@ -39,16 +38,57 @@ Index: gitea-1.21.3/custom/conf/app.example.ini
  ;;
  ;; Landing page, can be "home", "explore", "organizations", "login", or any URL such as "/org/repo" or even "https://anotherwebsite.com"
  ;; The "login" choice is not a security measure but just a UI flow change, use REQUIRE_SIGNIN_VIEW to force users to log in.
-@@ -368,7 +371,7 @@ USER = root
+@@ -355,10 +358,10 @@
+ ;;
+ ;; MySQL Configuration
+ ;;
+-DB_TYPE = mysql
+-HOST = 127.0.0.1:3306 ; can use socket e.g. /var/run/mysqld/mysqld.sock
+-NAME = gitea
+-USER = root
++;DB_TYPE = mysql
++;HOST = 127.0.0.1:3306 ; can use socket e.g. /var/run/mysqld/mysqld.sock
++;NAME = forgejo
++;USER = root
+ ;PASSWD = ;Use PASSWD = `your password` for quoting if you use special characters in the password.
+ ;SSL_MODE = false ; either "false" (default), "true", or "skip-verify"
+ ;CHARSET_COLLATION = ; Empty as default, Gitea will try to find a case-sensitive collation. Don't change it unless you clearly know what you need.
+@@ -369,7 +372,7 @@
+ ;;
+ ;DB_TYPE = postgres
+ ;HOST = 127.0.0.1:5432 ; can use socket e.g. /var/run/postgresql/
+-;NAME = gitea
++;NAME = forgejo
+ ;USER = root
+ ;PASSWD =
+ ;SCHEMA =
+@@ -379,21 +382,10 @@
+ ;;
  ;; SQLite Configuration
  ;;
- ;DB_TYPE = sqlite3
+-;DB_TYPE = sqlite3
 -;PATH= ; defaults to data/forgejo.db
-+;PATH= /var/lib/forgejo/data/gitea.db ; defaults to data/forgejo.db
- ;SQLITE_TIMEOUT = ; Query timeout defaults to: 500
- ;SQLITE_JOURNAL_MODE = ; defaults to sqlite database default (often DELETE), can be used to enable WAL mode. https://www.sqlite.org/pragma.html#pragma_journal_mode
+-;SQLITE_TIMEOUT = ; Query timeout defaults to: 500
+-;SQLITE_JOURNAL_MODE = ; defaults to sqlite database default (often DELETE), can be used to enable WAL mode. https://www.sqlite.org/pragma.html#pragma_journal_mode
+-;;
+-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+-;;
+-;; MSSQL Configuration
+-;;
+-;DB_TYPE = mssql
+-;HOST = 172.17.0.2:1433
+-;NAME = gitea
+-;USER = SA
+-;PASSWD = MwantsaSecurePassword1
+-;CHARSET_COLLATION = ; Empty as default, Gitea will try to find a case-sensitive collation. Don't change it unless you clearly know what you need.
++DB_TYPE = sqlite3
++PATH= /var/lib/forgejo/data/forgejo.db ; defaults to data/forgejo.db
++SQLITE_TIMEOUT = ; Query timeout defaults to: 500
++SQLITE_JOURNAL_MODE = ; defaults to sqlite database default (often DELETE), can be used to enable WAL mode. https://www.sqlite.org/pragma.html#pragma_journal_mode
  ;;
-@@ -561,14 +564,14 @@ ENABLE = true
+ ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+ ;;
+@@ -579,14 +571,14 @@
  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
  ;; Root path for the log files - defaults to %(GITEA_WORK_DIR)/log
@@ -65,7 +105,7 @@ Index: gitea-1.21.3/custom/conf/app.example.ini
  ;;
  ;; Either "Trace", "Debug", "Info", "Warn", "Error" or "None", default is "Info"
  LEVEL = Info
-@@ -904,7 +907,7 @@ LEVEL = Info
+@@ -946,7 +938,7 @@
  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
  ;; Root path for storing all repository data. By default, it is set to %(APP_DATA_PATH)s/gitea-repositories.
  ;; A relative path is interpreted as _`AppWorkPath`_/%(ROOT)s
@@ -74,7 +114,7 @@ Index: gitea-1.21.3/custom/conf/app.example.ini
  ;;
  ;; The script type this server supports. Usually this is `bash`, but some users report that only `sh` is available.
  ;SCRIPT_TYPE = bash
-@@ -1014,7 +1017,7 @@ LEVEL = Info
+@@ -1065,7 +1057,7 @@
  ;ENABLED = true
  ;;
  ;; Path for uploads. Defaults to `data/tmp/uploads` (content gets deleted on gitea restart)
@@ -83,7 +123,7 @@ Index: gitea-1.21.3/custom/conf/app.example.ini
  ;;
  ;; Comma-separated list of allowed file extensions (`.zip`), mime types (`text/plain`) or wildcard type (`image/*`, `audio/*`, `video/*`). Empty value or `*/*` allows all types.
  ;ALLOWED_TYPES =
-@@ -1368,7 +1371,7 @@ LEVEL = Info
+@@ -1444,7 +1436,7 @@
  ;ISSUE_INDEXER_TYPE = bleve
  ;;
  ;; Issue indexer storage path, available when ISSUE_INDEXER_TYPE is bleve
@@ -92,7 +132,7 @@ Index: gitea-1.21.3/custom/conf/app.example.ini
  ;;
  ;; Issue indexer connection string, available when ISSUE_INDEXER_TYPE is elasticsearch (e.g. http://elastic:password@localhost:9200) or meilisearch (e.g. http://:apikey@localhost:7700)
  ;ISSUE_INDEXER_CONN_STR =
-@@ -1395,7 +1398,7 @@ LEVEL = Info
+@@ -1471,7 +1463,7 @@
  ;REPO_INDEXER_TYPE = bleve
  ;;
  ;; Index file used for code search. available when `REPO_INDEXER_TYPE` is bleve
@@ -101,7 +141,7 @@ Index: gitea-1.21.3/custom/conf/app.example.ini
  ;;
  ;; Code indexer connection string, available when `REPO_INDEXER_TYPE` is elasticsearch. i.e. http://elastic:changeme@localhost:9200
  ;REPO_INDEXER_CONN_STR =
-@@ -1429,6 +1432,7 @@ LEVEL = Info
+@@ -1510,6 +1502,7 @@
  ;;
  ;; data-dir for storing persistable queues and level queues, individual queues will default to `queues/common` meaning the queue is shared.
  ;DATADIR = queues/ ; Relative paths will be made absolute against `%(APP_DATA_PATH)s`.
@@ -109,16 +149,16 @@ Index: gitea-1.21.3/custom/conf/app.example.ini
  ;;
  ;; Default queue length before a channel queue will block
  ;LENGTH = 100000
-@@ -1752,7 +1756,7 @@ LEVEL = Info
- ;; redis: `redis://127.0.0.1:6379/0?pool_size=100&idle_timeout=180s`
- ;; redis-cluster: `redis+cluster://127.0.0.1:6379/0?pool_size=100&idle_timeout=180s`
+@@ -1852,7 +1845,7 @@
+ ;; file: session file path, e.g. `data/sessions`
+ ;; redis: `redis://127.0.0.1:6379/0?pool_size=100&idle_timeout=180s` (or `redis+cluster://127.0.0.1:6379/0?pool_size=100&idle_timeout=180s` for a Redis cluster)
  ;; mysql: go-sql-driver/mysql dsn config string, e.g. `root:password@/session_table`
 -;PROVIDER_CONFIG = data/sessions ; Relative paths will be made absolute against _`AppWorkPath`_.
 +;PROVIDER_CONFIG = /var/lib/forgejo/data/sessions ; Relative paths will be made absolute against _`AppWorkPath`_.
  ;;
  ;; Session cookie name
  ;COOKIE_NAME = i_like_gitea
-@@ -1839,7 +1843,7 @@ LEVEL = Info
+@@ -1939,7 +1932,7 @@
  ;;
  ;; Path for attachments. Defaults to `attachments`. Only available when STORAGE_TYPE is `local`
  ;; Relative paths will be resolved to `${AppDataPath}/${attachment.PATH}`
@@ -127,7 +167,7 @@ Index: gitea-1.21.3/custom/conf/app.example.ini
  ;;
  ;; Minio endpoint to connect only available when STORAGE_TYPE is `minio`
  ;MINIO_ENDPOINT = localhost:9000
-@@ -1857,7 +1861,7 @@ LEVEL = Info
+@@ -1965,7 +1958,7 @@
  ;MINIO_LOCATION = us-east-1
  ;;
  ;; Minio base path on the bucket only available when STORAGE_TYPE is `minio`
@@ -136,7 +176,7 @@ Index: gitea-1.21.3/custom/conf/app.example.ini
  ;;
  ;; Minio enabled ssl only available when STORAGE_TYPE is `minio`
  ;MINIO_USE_SSL = false
-@@ -2428,10 +2432,10 @@ LEVEL = Info
+@@ -2548,10 +2541,10 @@
  ;;
  ;STORAGE_TYPE = local
  ;; override the minio base path if storage type is minio
@@ -149,7 +189,7 @@ Index: gitea-1.21.3/custom/conf/app.example.ini
  ;;
  ;; Maximum count of package versions a single owner can have (`-1` means no limits)
  ;LIMIT_TOTAL_OWNER_COUNT = -1
-@@ -2498,10 +2502,10 @@ LEVEL = Info
+@@ -2618,10 +2611,10 @@
  ;STORAGE_TYPE = local
  ;;
  ;; Where your lfs files reside, default is data/lfs.
@@ -162,7 +202,7 @@ Index: gitea-1.21.3/custom/conf/app.example.ini
  
  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-@@ -2521,10 +2525,10 @@ LEVEL = Info
+@@ -2641,10 +2634,10 @@
  ;STORAGE_TYPE = local
  ;;
  ;; Where your lfs files reside, default is data/lfs.

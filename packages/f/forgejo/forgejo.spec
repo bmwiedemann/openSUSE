@@ -30,7 +30,7 @@
 %endif
 %endif
 Name:           forgejo
-Version:        7.0.7
+Version:        8.0.1
 Release:        0
 Summary:        Self-hostable forge
 License:        MIT
@@ -42,14 +42,13 @@ Source2:        http://keyserver.ubuntu.com/pks/lookup?op=get&search=0xeb114f5e6
 Source3:        package-lock.json
 Source4:        node_modules.spec.inc
 %include        %{_sourcedir}/node_modules.spec.inc
-Source5:        node_modules.sums
-Source6:        %{name}.service
-Source7:        %{name}.sysusers
-Source8:        %{name}.fc
-Source9:        %{name}.if
-Source10:       %{name}.sh
-Source11:       %{name}.te
-Source12:       apparmor-usr.bin.%{name}
+Source5:        %{name}.service
+Source6:        %{name}.sysusers
+Source7:        %{name}.fc
+Source8:        %{name}.if
+Source9:        %{name}.te
+Source10:       %{name}.apparmor
+Source11:       %{name}.firewalld
 Source99:       get-sources.sh
 Patch0:         custom-app.ini.patch
 BuildRequires:  golang-packaging
@@ -61,6 +60,8 @@ BuildRequires:  npm-default
 %else
 BuildRequires:  nodejs-packaging
 %endif
+BuildRequires:  firewall-macros
+BuildRequires:  firewalld
 BuildRequires:  local-npm-registry
 BuildRequires:  make
 BuildRequires:  systemd-rpm-macros
@@ -68,6 +69,7 @@ BuildRequires:  sysuser-tools
 Requires:       git-core
 Requires:       git-lfs
 Requires:       (%{name}-apparmor if apparmor-abstractions)
+Requires:       (%{name}-firewalld if firewalld)
 Requires:       (%{name}-selinux if selinux-policy-targeted)
 %if %{with apparmor}
 BuildRequires:  apparmor-abstractions
@@ -80,6 +82,13 @@ BuildRequires:  selinux-policy-devel
 %endif
 %{systemd_requires}
 %{sysusers_requires}
+
+%package firewalld
+Summary:        Firewalld profile for %{name}
+BuildArch:      noarch
+
+%description firewalld
+This package adds a firewalld service profile to %{name}
 
 %if %{with apparmor}
 %package apparmor
@@ -111,7 +120,7 @@ Providing Git hosting for your project, friends, company or community? Forgejo (
 local-npm-registry %{_sourcedir} install --also=dev
 
 %build
-%sysusers_generate_pre %{SOURCE7} %{name} %{name}.conf
+%sysusers_generate_pre %{SOURCE6} %{name} %{name}.conf
 export EXTRA_GOFLAGS="-buildmode=pie -mod=vendor"
 export TAGS="bindata timetzdata sqlite sqlite_unlock_notify"
 %make_build build
@@ -126,12 +135,12 @@ install -d %{buildroot}%{_sysconfdir}/%{name}
 install -d %{buildroot}%{_localstatedir}/log/%{name}
 install -D -m 0644 %{_builddir}/%{name}-src-%{version}/custom/conf/app.example.ini %{buildroot}%{_sysconfdir}/%{name}/conf/app.ini
 install -D -m 0755 %{_builddir}/%{name}-src-%{version}/gitea %{buildroot}%{_bindir}/%{name}
-install -D -m 0644 %{SOURCE6} %{buildroot}%{_unitdir}/%{name}.service
-install -D -m 0644 %{SOURCE7} %{buildroot}%{_sysusersdir}/%{name}.conf
+install -D -m 0644 %{SOURCE5} %{buildroot}%{_unitdir}/%{name}.service
+install -D -m 0644 %{SOURCE6} %{buildroot}%{_sysusersdir}/%{name}.conf
 
 %if %{with apparmor}
 install -d %{buildroot}%{_sysconfdir}/apparmor.d
-install -Dm0644 %{SOURCE12} %{buildroot}%{_sysconfdir}/apparmor.d/usr.bin.%{name}
+install -Dm0644 %{SOURCE10} %{buildroot}%{_sysconfdir}/apparmor.d/usr.bin.%{name}
 %endif
 
 %if %{with selinux}
@@ -141,11 +150,17 @@ install -Dm0644 %{name}.pp %{buildroot}%{_datadir}/selinux/packages/%{name}/%{na
 install -Dm0644 %{name}.if %{buildroot}%{_datadir}/selinux/devel/include/distributed/%{name}.if
 %endif
 
+#firewalld service file
+install -D -m 0644 %{SOURCE11} %{buildroot}%{_prefix}/lib/firewalld/services/%{name}.xml
+
 %pre -f %{name}.pre
 %service_add_pre %{name}.service
 
 %post
 %service_add_post %{name}.service
+
+%post firewalld
+%firewalld_reload
 
 %if %{with apparmor}
 %post apparmor
@@ -197,5 +212,8 @@ semodule -r %{name} 2>/dev/null || :
 %{_datadir}/selinux/packages/%{name}
 %{_datadir}/selinux/devel/include/distributed/%{name}.if
 %endif
+
+%files firewalld
+%config(noreplace) %{_prefix}/lib/firewalld/services/%{name}.xml
 
 %changelog

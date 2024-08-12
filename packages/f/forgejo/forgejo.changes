@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Fri Aug  9 21:25:45 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 8.0.1:
+  * A change introduced in Forgejo v1.21 allows a Forgejo user with write
+    permission on a repository description to inject a client-side script into
+    the web page viewed by the visitor. This XSS allows for href in anchor
+    elements to be set to a javascript: URI in the repository description,
+    which will execute the specified script upon clicking (and not upon
+    loading). AllowStandardURLs is now called for the repository description
+    policy, which ensures that URIs in anchor elements are mailto:, http:// 
+    or https:// and thereby disallowing the javascript: URI.
+  * Do not include trailing EOL character when counting lines
+  * Add background to reactions on hover
+  * Prevent uppercase in header of dashboard context selector
+  * Fix page layout in admin settings
+  * Ensure all filters are persistent in issue filters
+  * Allow 4 charachter SHA in /src/commit
+- update to 8.0.0:
+  full changelog at https://codeberg.org/forgejo/forgejo/src/branch/forgejo/RELEASE-NOTES.md#8-0-0
+
+  Highlights:
+    * remove Microsoft SQL Server support
+    * introduce a branch/tag dropdown in the code search page
+    * added support for fuzzy searching in /user/repo/issues and /user/repo/pulls
+    * API endpoints for managing tag protection.
+    * add Reviewed-on and Reviewed-by variables to the merge template
+    * display an error when an issue comment is edited simultaneously by
+      two users instead of silently overriding one of them
+    * when installing Forgejo through the built-in installer, open
+      (self-) registration is now disabled by default
+    * add support for the reddit and Hubspot OAuth providers.
+    * CERT management was improved when ENABLE_ACME=true
+    * language detection in the repository got additional languages
+    * add an immutable tarball link to archive download headers for Nix
+    * Show the AGit label on merged pull requests
+- fix apparmor profile
+- set sqlite3 as the default installation database
+- add a rule for firewalld
+
+
+-------------------------------------------------------------------
 Fri Aug  9 18:13:59 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 7.0.7:

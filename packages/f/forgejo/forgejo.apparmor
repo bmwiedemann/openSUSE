@@ -1,0 +1,64 @@
+abi <abi/3.0>,
+
+include <tunables/global>
+
+profile forgejo /usr/bin/forgejo flags=(attach_disconnected) {
+  include <abstractions/base>
+  include <abstractions/mysql>
+  include <abstractions/nameservice>
+  include <abstractions/opencl-pocl>
+  include <abstractions/openssl>
+  include <abstractions/user-tmp>
+  include if exists <local/usr.bin.forgejo>
+
+  network inet stream,
+  network inet6 stream,
+
+  /etc/forgejo/ r,
+  /etc/forgejo/conf/app.ini r,
+  /etc/forgejo/public/ r,
+  /etc/forgejo/public/** r,
+  /etc/forgejo/{conf,https,mailer}/ r,
+  /etc/gitconfig r,
+  /etc/mime.types r,
+  /sys/kernel/mm/transparent_hugepage/hpage_pmd_size r,
+  /usr/bin/forgejo mr,
+  /usr/bin/git mr,
+  /usr/bin/gzip mr,
+  /usr/bin/{basename,env,git,git-lfs,forgejo,ssh-keygen,gzip} ix,
+  /usr/libexec/git/git-write-tree mrix,
+  /usr/share/forgejo/** r,
+  /usr/share/forgejo/.gitconfig rw,
+  /usr/share/forgejo/.gitconfig.lock rw,
+  /usr/share/git-core/templates/ r,
+  /usr/share/git-core/templates/** r,
+  /usr/share/mime/globs2 r,
+  /usr/{lib,libexec}/git/git ix,
+  /usr/{lib,libexec}/git/git-remote-http ix,
+  /var/ r,
+  /var/lib/ r,
+  /var/lib/forgejo/ r,
+  /var/lib/forgejo/.local/** rw,
+  /var/lib/forgejo/.ssh/ rw,
+  /var/lib/forgejo/.ssh/* rw,
+  /var/log/forgejo/ rw,
+  /var/log/forgejo/access.log rw,
+  /var/log/forgejo/access.log.* w,
+  /var/log/forgejo/doctors-* rw,
+  @{PROC}/sys/net/core/somaxconn r,
+  owner /etc/forgejo/conf/app.ini w,
+  owner /tmp/forgejo** rwl,
+  owner /tmp/index* rw,
+  owner /tmp/patch* rw,
+  owner /usr/share/forgejo/** rw,
+  owner /var/lib/forgejo/backups/forgejo-dump-*.{zip,tar.gz,tar.xz} rw,
+  owner /var/lib/forgejo/data/forgejo-repositories/** rwlk,
+  owner /var/lib/forgejo/data/forgejo-repositories/**.git/hooks/** ix,
+  owner /var/lib/forgejo/https/** rwlk,
+  owner /var/lib/forgejo/{data,indexers,queues,repositories,backups}/ r,
+  owner /var/lib/forgejo/{data,indexers,queues,repositories}/** rwk,
+  owner /var/log/forgejo/gitea.log w,
+  owner @{PROC}/@{pid}/fd/ r,
+  owner @{PROC}/@{pid}/{cgroup,cpuset,status,stat,limits} r,
+
+}
