@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Aug 12 06:25:09 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.79.5:
+  * feat: update to Syft 1.11.0 (#2047)
+  * fix: higher default timeout for database download (#2033)
+  * chore(deps): bump sigstore/cosign-installer from 3.5.0 to 3.6.0
+    (#2045)
+  * chore(deps): bump actions/upload-artifact from 4.3.5 to 4.3.6
+    (#2035)
+  * chore(deps): update tools to latest versions (#2038)
+  * chore(deps): bump github.com/google/go-containerregistry
+    (#2043)
+  * chore(deps): bump github/codeql-action from 3.25.15 to 3.26.0
+    (#2044)
+  * test: update quality gate db to latest version (#2034)
+  * chore(deps): update tools to latest versions (#2027)
+  * chore(deps): bump actions/upload-artifact from 4.3.4 to 4.3.5
+    (#2028)
+  * chore: add grype version to application update check headers
+    (#2021)
+  * test: update quality gate db to latest version (#2026)
+  * chore: use the .tool/gh for release script (#2022)
+
+-------------------------------------------------------------------
 Thu Aug 01 07:21:37 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.79.4:
