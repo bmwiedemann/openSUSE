@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Sat Aug 10 18:57:10 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 0.1.8
+  * Add gradient border color spaces
+  * Add Screenshot UI pointer toggle
+  * Improvements key repeat for all binds
+  * Improvements Focus-follows-mouse 
+  * Implemented the wlr-output-management protocol
+  * Add supported wlr-screencopy version 3
+  * Implemented a small change to allow strut config values to go
+    negative
+  * Implemented the full DMA-BUF modifier negotiation procedure for
+    PipeWire screencasts
+  * Implemented on-demand keyboard focus mode for layer-shell
+    surfaces, which is used by some newer bar applications
+  * Added focus-window-or-monitor-{up,down} actions
+  * Added move-column-left-or-to-monitor-left and
+    move-column-right-or-to-monitor-right actions
+  * Added a middle-emulation flag to touchpad, mouse, and
+    trackpoint settings
+  * Added a background-color option to outputs that sets the color
+    of the default niri solid background.
+  * Added Mod3/ISO_Level5_Shift modifier support to key bindings
+  * Enabled sub-pixel glyph positioning for better kerning in
+    niri panels
+  * Added a profile-with-tracy-ondemand build feature that
+    produces a build with on-demand Tracy profiler integration,
+    which you can run as your main compositor and only attach the
+    profiler when needed
+  * VRR state (whether VRR is on or off for an output) is now
+    correctly restored upon TTY switch into niri
+  * Fixed view scroll animation sometimes restarting on switching
+    focus when the target view position does not change
+  * Fixed a rare crash that could happen when reconnecting monitors
+    with a KVM switch
+  * Removed the enable-color-transformations-capability debug
+    config flag
+  * Powered-off monitors no longer turn on upon connecting a new
+    monitor
+  * added optional JSON schema generation to the niri-ipc crate
+    using schemars.
+
+-------------------------------------------------------------------
 Sat Jun 29 07:23:35 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 0.1.7

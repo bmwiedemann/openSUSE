@@ -18,7 +18,7 @@
 
 %bcond_without test
 Name:           niri
-Version:        0.1.7
+Version:        0.1.8
 Release:        0
 Summary:        Scrollable-tiling Wayland compositor
 License:        GPL-3.0-or-later
@@ -31,7 +31,7 @@ BuildRequires:  clang
 BuildRequires:  pango-devel
 BuildRequires:  pipewire-devel
 BuildRequires:  pkgconfig
-BuildRequires:  rust >= 1.70.0
+BuildRequires:  rust >= 1.77.0
 BuildRequires:  wayland-devel
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(cairo-gobject)

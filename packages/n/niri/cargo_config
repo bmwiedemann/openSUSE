@@ -5,5 +5,9 @@ replace-with = "vendored-sources"
 git = "https://github.com/Smithay/smithay.git"
 replace-with = "vendored-sources"
 
+[source."git+https://gitlab.freedesktop.org/pipewire/pipewire-rs.git"]
+git = "https://gitlab.freedesktop.org/pipewire/pipewire-rs.git"
+replace-with = "vendored-sources"
+
 [source.vendored-sources]
 directory = "vendor"
