@@ -17,7 +17,7 @@
 
 
 Name:           cosmic-comp
-Version:        0.1.0+git20240726.fdde46f
+Version:        1.0.0~alpha1
 Release:        0
 Summary:        Compositor for the COSMIC DE
 License:        GPL-3.0-only
@@ -27,6 +27,7 @@ Source1:        vendor.tar.zst
 BuildRequires:  cargo-packaging
 BuildRequires:  make
 BuildRequires:  pkgconfig
+BuildRequires:  rust >= 1.80
 BuildRequires:  pkgconfig(egl)
 BuildRequires:  pkgconfig(fontconfig)
 BuildRequires:  pkgconfig(gbm)

@@ -7,4 +7,19 @@
     <comment></comment>
     <requestid>1190022</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>bda8eb1e1edbb040504455089fed3b80</srcmd5>
+    <version>1.0.0~alpha1</version>
+    <time>1723458610</time>
+    <user>dimstar_suse</user>
+    <comment>- standardize packaging with also fixes for miscellaneous hardcoding
+  filenames, using @PARENT_TAG where applicable, and be more specific
+  with files in the %files section (so no non-wanted files are getting
+  added
+
+- update to 1.0.0~alpha1:
+  * update dependencies
+- enable leap (thanks to vyvir)</comment>
+    <requestid>1192450</requestid>
+  </revision>
 </revisionlist>

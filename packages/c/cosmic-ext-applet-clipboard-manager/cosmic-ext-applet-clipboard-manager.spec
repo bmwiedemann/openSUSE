@@ -18,10 +18,10 @@
 
 %define         appname io.github.wiiznokes.cosmic-ext-applet-clipboard-manager
 Name:           cosmic-ext-applet-clipboard-manager
-Version:        0.1.0+git20240724.1893132
+Version:        0.1.0+git20240730.b204500
 Release:        0
 Summary:        Clipboard manager for COSMIC
-License:        MIT
+License:        GPL-3.0-only
 URL:            https://github.com/wiiznokes/clipboard-manager
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
@@ -29,6 +29,7 @@ BuildRequires:  cargo-packaging
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  just
 BuildRequires:  pkgconfig
+BuildRequires:  rust >= 1.80
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(xkbcommon)
@@ -57,8 +58,12 @@ just rootdir=%{buildroot} prefix=%{_prefix} install
 %doc README.md
 %{_bindir}/%{name}
 %{_datadir}/applications/%{appname}.desktop
-%{_iconsdir}/hicolor/scalable/apps/%{appname}-symbolic.svg
+%{_datadir}/icons/hicolor/scalable/apps/%{appname}-symbolic.svg
 %{_prefix}/lib/environment.d/%{name}.conf
 %{_datadir}/%{name}
+
+%if %{?suse_version} < 1600
+%{_prefix}/lib/environment.d
+%endif
 
 %changelog

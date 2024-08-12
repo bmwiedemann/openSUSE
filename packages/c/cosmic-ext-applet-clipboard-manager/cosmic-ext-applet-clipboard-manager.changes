@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Aug  8 00:59:02 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- standardize packaging with also fixes for miscellaneous hardcoding
+  filenames, using @PARENT_TAG where applicable, and be more specific
+  with files in the %files section (so no non-wanted files are getting
+  added
+
+-------------------------------------------------------------------
+Wed Aug  7 05:33:47 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 0.1.0+git20240730.b204500:
+  * rust >= 1.80
+  * split at cjecked
+  * fix justfile
+
+-------------------------------------------------------------------
 Sat Jul 06 17:14:14 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Update to version 0.1.0+git20240629.0d806ec:

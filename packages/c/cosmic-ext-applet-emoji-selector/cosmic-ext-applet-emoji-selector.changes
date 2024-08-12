@@ -1,0 +1,27 @@
+-------------------------------------------------------------------
+Thu Aug  8 00:59:05 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- standardize packaging with also fixes for miscellaneous hardcoding
+  filenames, using @PARENT_TAG where applicable, and be more specific
+  with files in the %files section (so no non-wanted files are getting
+  added
+
+-------------------------------------------------------------------
+Wed Aug  7 22:14:14 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 0.1.5+git20240807.21a8a17:
+  * Update documentation
+
+-------------------------------------------------------------------
+Wed Aug  7 05:35:50 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 0.1.4+git20240805.8fc5690:
+  * remove fix-naming.patch as upstream fixed it
+  * remove fix-justfile, upstreamed
+- enable leap (thanks to vyvir)
+- switch to tar_scm (obs_scm has a bug)
+
+-------------------------------------------------------------------
+Wed May  8 10:22:57 UTC 2024 - Richard Rahl <rrahl0@disroot.org>
+
+- initial packaging

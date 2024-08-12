@@ -28,10 +28,10 @@ URL:            https://github.com/PixelDoted/cosmic-color-picker
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
 BuildRequires:  cargo-packaging
-BuildRequires:  just
 BuildRequires:  git-core
-BuildRequires:  pkgconfig
 BuildRequires:  hicolor-icon-theme
+BuildRequires:  just
+BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(xkbcommon)
 
@@ -56,8 +56,8 @@ just rootdir=%{buildroot} prefix=%{_prefix} install
 %doc README.md
 %{_bindir}/%{name}
 %{_datadir}/applications/%{appname}.desktop
-%{_iconsdir}/hicolor/??x??/apps/%{appname}.svg
-%{_iconsdir}/hicolor/???x???/apps/%{appname}.svg
+%{_datadir}/icons/hicolor/??x??/apps/%{appname}.svg
+%{_datadir}/icons/hicolor/???x???/apps/%{appname}.svg
 %{_datadir}/metainfo/%{appname}.metainfo.xml
 
 %changelog

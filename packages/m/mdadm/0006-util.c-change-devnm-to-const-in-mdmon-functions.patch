@@ -1,0 +1,59 @@
+From b0f4e8e30f38d83f7e3f53d01d72d4cb3b4d42d7 Mon Sep 17 00:00:00 2001
+From: Kinga Stefaniuk <kinga.stefaniuk@intel.com>
+Date: Tue, 7 May 2024 05:38:55 +0200
+Subject: [PATCH] util.c: change devnm to const in mdmon functions
+Git-commit: b0f4e8e30f38d83f7e3f53d01d72d4cb3b4d42d7
+Patch-mainline: mdadm-4.3+
+References: bsc#1225307
+
+Devnm shall not be changed inside mdmon_running()
+and mdmon_pid() functions, change this parameter to const.
+
+Signed-off-by: Kinga Stefaniuk <kinga.stefaniuk@intel.com>
+Signed-off-by: Mariusz Tkaczyk <mariusz.tkaczyk@linux.intel.com>
+Signed-off-by: Coly Li <colyli@suse.de>
+---
+ mdadm.h | 4 ++--
+ util.c  | 4 ++--
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/mdadm.h b/mdadm.h
+index 2ff3e463..1ba541fc 100644
+--- a/mdadm.h
++++ b/mdadm.h
+@@ -1768,8 +1768,8 @@ extern int is_subarray_active(char *subarray, char *devname);
+ extern int open_subarray(char *dev, char *subarray, struct supertype *st, int quiet);
+ extern struct superswitch *version_to_superswitch(char *vers);
+ 
+-extern int mdmon_running(char *devnm);
+-extern int mdmon_pid(char *devnm);
++extern int mdmon_running(const char *devnm);
++extern int mdmon_pid(const char *devnm);
+ extern int check_env(char *name);
+ extern __u32 random32(void);
+ extern void random_uuid(__u8 *buf);
+diff --git a/util.c b/util.c
+index 4fbf11c4..e2b490e1 100644
+--- a/util.c
++++ b/util.c
+@@ -1902,7 +1902,7 @@ unsigned long long min_recovery_start(struct mdinfo *array)
+ 	return recovery_start;
+ }
+ 
+-int mdmon_pid(char *devnm)
++int mdmon_pid(const char *devnm)
+ {
+ 	char path[100];
+ 	char pid[10];
+@@ -1922,7 +1922,7 @@ int mdmon_pid(char *devnm)
+ 	return atoi(pid);
+ }
+ 
+-int mdmon_running(char *devnm)
++int mdmon_running(const char *devnm)
+ {
+ 	int pid = mdmon_pid(devnm);
+ 	if (pid <= 0)
+-- 
+2.35.3
+

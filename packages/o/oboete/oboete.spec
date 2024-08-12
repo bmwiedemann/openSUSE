@@ -18,7 +18,7 @@
 
 %define         appname dev.mariinkys.Oboete
 Name:           oboete
-Version:        0.1.4+git20240709.0e05eb4
+Version:        0.1.5+git20240730.6acd325
 Release:        0
 Summary:        A simple flashcards application for the COSMIC desktop
 License:        GPL-3.0-only
@@ -26,10 +26,10 @@ URL:            https://github.com/mariinkys/oboete
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
 BuildRequires:  cargo-packaging
-BuildRequires:  just
-BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig
 BuildRequires:  hicolor-icon-theme
+BuildRequires:  just
+BuildRequires:  pkgconfig
+BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(xkbcommon)
 
 %description
@@ -53,8 +53,8 @@ just rootdir=%{buildroot} prefix=%{_prefix} install
 %doc README.md
 %{_bindir}/%{name}
 %{_datadir}/applications/%{appname}.desktop
-%{_iconsdir}/hicolor/??x??/apps/%{appname}.svg
-%{_iconsdir}/hicolor/???x???/apps/%{appname}.svg
+%{_datadir}/icons/hicolor/??x??/apps/%{appname}.svg
+%{_datadir}/icons/hicolor/???x???/apps/%{appname}.svg
 %{_datadir}/metainfo/%{appname}.metainfo.xml
 
 %changelog

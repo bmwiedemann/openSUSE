@@ -7,4 +7,16 @@
     <comment></comment>
     <requestid>1190031</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>1bf0c23f69896456741ae45199c20175</srcmd5>
+    <version>0.1.0+git20240802.b8c9457</version>
+    <time>1723458658</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.1.0+git20240802.b8c9457:
+  * center instead of align center
+  * update Application ID
+  * fix icons
+  * documentation updates (forwarded request 1192755 from rrahl0)</comment>
+    <requestid>1192756</requestid>
+  </revision>
 </revisionlist>

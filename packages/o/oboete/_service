@@ -6,6 +6,7 @@
     <param name="revision">main</param>
     <param name="versionformat">@PARENT_TAG@+git%cd.%h</param>
     <param name="package-meta">yes</param>
+    <param name="filename">oboete</param>
   </service>
   <service name="recompress" mode="manual">
     <param name="file">*.tar</param>

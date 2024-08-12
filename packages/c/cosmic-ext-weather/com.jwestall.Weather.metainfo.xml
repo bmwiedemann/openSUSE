@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>com.jwestall.Weather</id>
+  <developer id="com.jwestall">
+    <name>Jacob Westall</name>
+  </developer>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-3.0-only</project_license>
+  <project_group>COSMIC</project_group>
+  <content_rating type="oars-1.1" />
+  <update_contact>none@available.com</update_contact>
+  <url type="homepage">https://github.com/jwestall/cosmic-weather</url>
+  <url type="bugtracker">https://github.com/jwestall/cosmic-weather</url>
+  <name>COSMIC Ext Weather</name>
+  <summary>Simple Weather App in libcosmic</summary>
+  <description>
+    <p>A simple weather app, which uses rust and libcosmic.</p>
+  </description>
+  <branding>
+    <color type="primary" scheme_preference="light">#eaeaff</color>
+    <color type="primary" scheme_preference="dark">#280c4b</color>
+  </branding>
+  <icon type="remote" height="256" width="256">https://github.com/jwestall/cosmic-weather/blob/main/res/icons/hicolor/scalable/apps/com.jwestall.Weather.svg</icon>
+  <launchable type="desktop-id">com.jwestall.Weather.desktop</launchable>
+  <releases>
+    <release version="0.1.0" date="2024-07-02">
+        <description>
+            <p>Initial release! 🎉</p>
+        </description>
+    </release>
+  </releases>
+  <screenshots>
+    <screenshot type="default">
+      <image>https://github.com/jwestall/cosmic-weather/blob/main/screenshots/window.png</image>
+      <caption>Light mode</caption>
+    </screenshot>
+  </screenshots>
+  <provides>
+    <id>com.jwestall.Weather.desktop</id>
+    <binary>cosmic-ext-weather</binary>
+  </provides>
+</component>

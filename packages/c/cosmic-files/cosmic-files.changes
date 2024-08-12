@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Aug  8 00:59:47 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- standardize packaging with also fixes for miscellaneous hardcoding
+  filenames, using @PARENT_TAG where applicable, and be more specific
+  with files in the %files section (so no non-wanted files are getting
+  added
+
+-------------------------------------------------------------------
+Wed Aug  7 01:28:16 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.0.0~alpha1:
+  * fix: don't scroll sorting headings
+  * undo toaster
+  * update translations
+- enable leap (thanks to vyvir)
+
+-------------------------------------------------------------------
+Sun Jul 14 07:26:54 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- disable tests for now, as they get killed on OBS
+
+-------------------------------------------------------------------
 Wed Mar 13 22:51:58 UTC 2024 - Richard Rahl <rrahl0@proton.me>
 
 - initial packaging

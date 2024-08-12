@@ -17,15 +17,15 @@
 
 
 Name:           cosmic-icons
-Version:        0.1.0+git20240521.9aad1ab
+Version:        1.0.0~alpha1
 Release:        0
 Summary:        System76 Cosmic icon theme for Linux
 License:        CC-BY-SA-4.0 AND GPL-3.0-only
 URL:            https://github.com/pop-os/cosmic-icons
 Source0:        %{name}-%{version}.tar.zst
+BuildRequires:  fdupes
 BuildRequires:  just
 BuildRequires:  zstd
-BuildRequires:  fdupes
 BuildArch:      noarch
 Requires:       pop-icon-theme
 
@@ -45,6 +45,6 @@ just rootdir=%{buildroot} prefix=%{_prefix} install
 %files
 %license LICENSE COPYING
 %doc README.md
-%{_iconsdir}/Cosmic
+%{_datadir}/icons/Cosmic
 
 %changelog

@@ -7,4 +7,24 @@
     <comment></comment>
     <requestid>1190024</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>e2de9f962c1f28ae10f5e3c8a1b9cd4d</srcmd5>
+    <version>1.0.0~alpha1</version>
+    <time>1723458613</time>
+    <user>dimstar_suse</user>
+    <comment>- standardize packaging with also fixes for miscellaneous hardcoding
+  filenames, using @PARENT_TAG where applicable, and be more specific
+  with files in the %files section (so no non-wanted files are getting
+  added
+
+- update to 1.0.0~alpha1:
+  * fix: force resize and relayout after scaling change
+  * fix: hide after popup closed and hover lost
+  * fix: request new dimensions after output update, and clear the surface
+  * fix: don't wait for configure after resize
+  * fix: unscale margin offset for buttons
+  * fix: create dnd egl surface with size of first commit from applet
+- enable leap (thanks to vyvir)</comment>
+    <requestid>1192452</requestid>
+  </revision>
 </revisionlist>

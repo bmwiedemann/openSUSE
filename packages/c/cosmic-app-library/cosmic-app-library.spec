@@ -18,7 +18,7 @@
 
 %define         appname com.system76.CosmicAppLibrary
 Name:           cosmic-app-library
-Version:        0.1.0+git20240726.feb9cbe
+Version:        1.0.0~alpha1
 Release:        0
 Summary:        A template for getting started with COSMIC
 License:        GPL-3.0-only
@@ -55,7 +55,7 @@ just rootdir=%{buildroot} prefix=%{_prefix} install
 %doc README.md
 %{_bindir}/%{name}
 %{_datadir}/applications/%{appname}.desktop
-%{_iconsdir}/hicolor/scalable/apps/%{appname}.svg
+%{_datadir}/icons/hicolor/scalable/apps/%{appname}.svg
 %{_datadir}/metainfo/%{appname}.metainfo.xml
 
 %changelog

@@ -5,6 +5,7 @@
     <param name="scm">git</param>
     <param name="revision">master</param>
     <param name="versionformat">1.2.3+git%cd.%h</param>
+    <param name="package-meta">yes</param>
     <param name="filename">pop-launcher</param>
   </service>
   <service name="recompress" mode="manual">

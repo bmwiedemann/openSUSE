@@ -4,7 +4,7 @@
     <param name="url">https://github.com/edfloreshz/tasks.git</param>
     <param name="scm">git</param>
     <param name="revision">main</param>
-    <param name="versionformat">0.1.0+git%cd.%h</param>
+    <param name="versionformat">@PARENT_TAG@+git%cd.%h</param>
     <param name="package-meta">yes</param>
     <param name="filename">cosmic-ext-tasks</param>
   </service>

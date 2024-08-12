@@ -18,7 +18,7 @@
 
 %define         appname dev.edfloreshz.Tasks
 Name:           cosmic-ext-tasks
-Version:        0.1.0+git20240702.0e8c728
+Version:        0.1.0+git20240802.4d827d3
 Release:        0
 Summary:        Task Management app for COSMIC DE
 License:        GPL-3.0-only
@@ -60,7 +60,7 @@ just rootdir=%{buildroot} prefix=%{_prefix} install
 %doc README.md
 %{_bindir}/tasks
 %{_datadir}/applications/%{appname}.desktop
-%{_iconsdir}/hicolor/*/apps/%{appname}.svg
+%{_datadir}/icons/hicolor/*/apps/%{appname}.svg
 %{_datadir}/metainfo/%{appname}.metainfo.xml
 
 %changelog

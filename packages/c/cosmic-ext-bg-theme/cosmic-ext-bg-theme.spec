@@ -21,10 +21,10 @@ Version:        0.1.0+git20240603.9945b3d
 Release:        0
 Summary:        COSMIC daemon for adapting theme to the wallpaper
 License:        GPL-3.0-only
-URL:            https://github.com/wash2/cosmic_bg_theme
+URL:            https://github.com/wash2/cosmic_ext_bg_theme
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
-Source2:        %{name}.service
+Patch0:         rename-binary-in-unit-file.patch
 BuildRequires:  cargo-packaging
 BuildRequires:  make
 
@@ -39,15 +39,7 @@ Unofficial service for syncing COSMIC theme with the active wallpaper.
 
 %install
 install -Dm0755 ./target/release/%{name} %{buildroot}%{_bindir}/%{name}
-install -Dm0644 %{SOURCE2} %{buildroot}%{_userunitdir}/%{name}.service
-
-%preun %service_del_preun %{name}.service
-
-%postun %service_del_postun %{name}.service
-
-%pre %service_add_pre %{name}.service
-
-%post %service_add_post %{name}.service
+install -Dm0644 %{name}.service %{buildroot}%{_userunitdir}/%{name}.service
 
 %check
 %{cargo_test}

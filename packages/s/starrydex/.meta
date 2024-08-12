@@ -1,0 +1,6 @@
+<package name="starrydex" project="openSUSE:Factory">
+  <title></title>
+  <description>A simple Pokedex built with libcosmic</description>
+  <devel project="X11:COSMIC:Apps" package="starrydex"/>
+  <url>https://github.com/mariinkys/starrydex</url>
+</package>

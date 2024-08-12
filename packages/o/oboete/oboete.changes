@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Aug  8 01:00:50 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- standardize packaging with also fixes for miscellaneous hardcoding
+  filenames, using @PARENT_TAG where applicable, and be more specific
+  with files in the %files section (so no non-wanted files are getting
+  added
+
+-------------------------------------------------------------------
 Thu Jul 11 09:41:06 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - initial packaging

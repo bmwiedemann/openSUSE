@@ -17,7 +17,7 @@
 
 
 Name:           cosmic-panel
-Version:        0.1.0+git20240725.d5fc4dd
+Version:        1.0.0~alpha1
 Release:        0
 Summary:        A panel for COSMIC DE
 License:        GPL-3.0-only

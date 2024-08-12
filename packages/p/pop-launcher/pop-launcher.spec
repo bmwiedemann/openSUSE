@@ -17,7 +17,7 @@
 
 
 Name:           pop-launcher
-Version:        1.2.3+git20240719.e44d6cd
+Version:        1.2.3+git20240806.c994240
 Release:        0
 Summary:        Modular IPC-based desktop launcher service
 License:        MPL-2.0
@@ -49,10 +49,11 @@ parallel, on demand.
 %autosetup -p1 -a1
 
 %build
+export RUSTFLAGS="-C codegen-units=1"
 just build-release
 
 %install
-just rootdir=%{buildroot} install
+just rootdir=%{buildroot} prefix=%{_prefix} install
 
 %check
 %{cargo_test}

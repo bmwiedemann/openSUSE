@@ -86,7 +86,7 @@
 %define _major_expected 8
 
 Name:           ffmpeg-7
-Version:        7.0
+Version:        7.0.2
 Release:        0
 Summary:        Set of libraries for working with various multimedia formats
 License:        GPL-3.0-or-later
@@ -109,9 +109,6 @@ Patch4:         ffmpeg-4.2-dlopen-fdk_aac.patch
 Patch5:         work-around-abi-break.patch
 Patch10:        ffmpeg-chromium.patch
 Patch91:        ffmpeg-dlopen-openh264.patch
-Patch92:        ffmpeg-7-CVE-2024-32228.patch
-Patch93:        ffmpeg-7-CVE-2024-32230.patch
-Patch94:        ffmpeg-7-CVE-2024-32229.patch
 Patch95:        ffmpeg-7-fix-crashes.patch
 BuildRequires:  ladspa-devel
 BuildRequires:  libgsm-devel
@@ -809,7 +806,7 @@ done
 %else
 %define _name ffmpeg
 Name:           ffmpeg-7-mini
-Version:        7.0
+Version:        7.0.2
 Release:        0
 Summary:        Set of libraries for working with various multimedia formats
 License:        GPL-3.0-or-later
@@ -825,9 +822,6 @@ Patch4:         ffmpeg-4.2-dlopen-fdk_aac.patch
 Patch5:         work-around-abi-break.patch
 Patch10:        ffmpeg-chromium.patch
 Patch91:        ffmpeg-dlopen-openh264.patch
-Patch92:        ffmpeg-7-CVE-2024-32228.patch
-Patch93:        ffmpeg-7-CVE-2024-32230.patch
-Patch94:        ffmpeg-7-CVE-2024-32229.patch
 Patch95:        ffmpeg-7-fix-crashes.patch
 BuildRequires:  c_compiler
 Requires:       this-is-only-for-build-envs

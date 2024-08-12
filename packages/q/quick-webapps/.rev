@@ -7,4 +7,20 @@
     <comment></comment>
     <requestid>1186709</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>1152c8ea5461cf131dc353d0738a9096</srcmd5>
+    <version>0.4.6+git20240803.6598d33</version>
+    <time>1723458653</time>
+    <user>dimstar_suse</user>
+    <comment>- standardize packaging with also fixes for miscellaneous hardcoding
+  filenames, using @PARENT_TAG where applicable, and be more specific
+  with files in the %files section (so no non-wanted files are getting
+  added
+
+- update to 0.4.6+git20240803.6598d33:
+  * remove dead code
+  * update dependencies
+- enable leap (thanks to vyvir)</comment>
+    <requestid>1192479</requestid>
+  </revision>
 </revisionlist>

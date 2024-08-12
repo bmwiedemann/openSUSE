@@ -17,7 +17,7 @@
 
 
 Name:           dpkg
-Version:        1.22.6
+Version:        1.22.11
 Release:        0
 Summary:        Debian package management system
 License:        GPL-2.0-or-later

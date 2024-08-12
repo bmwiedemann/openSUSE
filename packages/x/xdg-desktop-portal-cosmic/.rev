@@ -7,4 +7,29 @@
     <comment></comment>
     <requestid>1190030</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c66f7674f0f2a1b283dff8fa6636e14e</srcmd5>
+    <version>1.0.0~alpha1</version>
+    <time>1723458620</time>
+    <user>dimstar_suse</user>
+    <comment>- standardize packaging with also fixes for miscellaneous hardcoding
+  filenames, using @PARENT_TAG where applicable, and be more specific
+  with files in the %files section (so no non-wanted files are getting
+  added
+
+- update to 1.0.0~alpha1:
+  * Fix compile warnings
+  * Add scrolling for list of toplevels
+  * Hover and selected styles for outputs in screencast dialog
+  * Use custom widget instead of global subscription for keybindings
+  * screencopy: Respect source_type option
+  * Allow multiple select for screencast only when requested
+  * Arrange screen capture outputs horiozontally
+  * Display name of application requiring screen capture
+  * Show preview of outputs in screencast dialog
+  * Show toplevel icons in screencast dialog
+  * Fix button text color
+- enable leap with patch leap-fix-libexec.patch (thanks to vyvir)</comment>
+    <requestid>1192458</requestid>
+  </revision>
 </revisionlist>

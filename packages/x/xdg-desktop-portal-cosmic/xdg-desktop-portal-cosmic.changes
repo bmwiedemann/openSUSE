@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Aug  8 01:01:29 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- standardize packaging with also fixes for miscellaneous hardcoding
+  filenames, using @PARENT_TAG where applicable, and be more specific
+  with files in the %files section (so no non-wanted files are getting
+  added
+
+-------------------------------------------------------------------
+Wed Aug  7 02:12:58 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.0.0~alpha1:
+  * Fix compile warnings
+  * Add scrolling for list of toplevels
+  * Hover and selected styles for outputs in screencast dialog
+  * Use custom widget instead of global subscription for keybindings
+  * screencopy: Respect source_type option
+  * Allow multiple select for screencast only when requested
+  * Arrange screen capture outputs horiozontally
+  * Display name of application requiring screen capture
+  * Show preview of outputs in screencast dialog
+  * Show toplevel icons in screencast dialog
+  * Fix button text color
+- enable leap with patch leap-fix-libexec.patch (thanks to vyvir)
+
+-------------------------------------------------------------------
 Sat Jul 06 17:07:55 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Use tar_scm -- gh#openSUSE/obs-service-tar_scm#493

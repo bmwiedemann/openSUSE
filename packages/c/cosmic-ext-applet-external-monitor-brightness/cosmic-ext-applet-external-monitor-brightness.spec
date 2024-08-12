@@ -27,10 +27,10 @@ Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
 BuildRequires:  cargo-packaging
 BuildRequires:  just
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(xkbcommon)
+BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(libudev)
+BuildRequires:  pkgconfig(xkbcommon)
 
 %description
 A small applet for adjusting external monitors. Utilising the DDC/CI protocol.
@@ -55,4 +55,3 @@ just rootdir=%{buildroot} prefix=%{_prefix} install
 %{_datadir}/applications/%{appname}.desktop
 
 %changelog
-

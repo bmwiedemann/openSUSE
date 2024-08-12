@@ -1,0 +1,6 @@
+<package name="cosmic-session" project="openSUSE:Factory">
+  <title></title>
+  <description>Session manager for the COSMIC DE.</description>
+  <devel project="X11:COSMIC:Factory" package="cosmic-session"/>
+  <url>https://github.com/pop-os/cosmic-session</url>
+</package>

@@ -17,13 +17,14 @@
 
 
 Name:           xdg-desktop-portal-cosmic
-Version:        0.1.0+git20240717.813352e
+Version:        1.0.0~alpha1
 Release:        0
 Summary:        COSMIC xdg portal
 License:        GPL-3.0-only
 URL:            https://github.com/pop-os/xdg-desktop-portal-cosmic
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
+Patch0:         leap-fix-libexec.patch
 BuildRequires:  cargo-packaging
 BuildRequires:  clang-devel
 BuildRequires:  git-core
@@ -43,13 +44,16 @@ BuildRequires:  pkgconfig(xkbcommon)
 This package contains the xdg portal implementation for COSMIC DE.
 
 %prep
-%autosetup -a1
+%autosetup -N -a1
+%if 0%{?suse_version} < 1600
+%autopatch -p0
+%endif
 
 %build
 %make_build
 
 %install
-%make_install prefix=%{_prefix}
+%make_install DESTDIR=%{buildroot} prefix=%{_prefix}
 
 %check
 %{cargo_test}
@@ -57,7 +61,7 @@ This package contains the xdg portal implementation for COSMIC DE.
 %files
 %license LICENSE
 %{_libexecdir}/%{name}
-%{_iconsdir}/hicolor/scalable/actions/*.svg
+%{_datadir}/icons/hicolor/scalable/actions/{screenshot-screen-symbolic,screenshot-selection-symbolic,screenshot-window-symbolic}.svg
 %{_datadir}/dbus-1/services/org.freedesktop.impl.portal.desktop.cosmic.service
 %{_datadir}/xdg-desktop-portal/cosmic-portals.conf
 %{_datadir}/xdg-desktop-portal/portals/cosmic.portal

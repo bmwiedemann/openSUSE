@@ -18,7 +18,7 @@
 
 %define         appname com.system76.CosmicScreenshot
 Name:           cosmic-screenshot
-Version:        0.1.0+git20240510.a8130eb
+Version:        1.0.0~alpha1
 Release:        0
 Summary:        Utility for capturing screenshots via XDG Desktop Portal
 License:        GPL-3.0-only
@@ -26,6 +26,7 @@ URL:            https://github.com/pop-os/cosmic-screenshot
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
 BuildRequires:  cargo-packaging
+BuildRequires:  hicolor-icon-theme
 BuildRequires:  just
 BuildRequires:  update-desktop-files
 
@@ -50,5 +51,7 @@ just rootdir=%{buildroot} prefix=%{_prefix} install
 %doc README.md
 %{_bindir}/%{name}
 %{_datadir}/applications/%{appname}.desktop
+%{_datadir}/icons/hicolor/??x??/apps/%{appname}.svg
+%{_datadir}/icons/hicolor/???x???/apps/%{appname}.svg
 
 %changelog

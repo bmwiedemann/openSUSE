@@ -17,7 +17,7 @@
 
 
 Name:           cosmic-osd
-Version:        0.1.0+git20240715.27fc5e5
+Version:        1.0.0~alpha1
 Release:        0
 Summary:        COSMIC OSD
 License:        GPL-3.0-only
@@ -42,7 +42,7 @@ BuildRequires:  pkgconfig(xkbcommon)
 %make_build
 
 %install
-%make_install prefix=%{_prefix}
+%make_install DESTDIR=%{buildroot} prefix=%{_prefix}
 
 %check
 %{cargo_test}

@@ -1,0 +1,10 @@
+<package name="mousam" project="openSUSE:Factory">
+  <title>A lightweight weather app</title>
+  <description>Mousam is a lightweight weather app. It has the following features:
+*	Real-time temperature, humidity, wind speed, UV index, pressure and more
+*	Provide hourly forecasts for the next 24 hours
+*	Also shows tomorrow and 7-day forcasts
+*	Supports metric or imperial systems</description>
+  <devel project="GNOME:Apps" package="mousam"/>
+  <url>https://github.com/amit9838/mousam</url>
+</package>

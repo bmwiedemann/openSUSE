@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Aug  8 01:00:47 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- standardize packaging with also fixes for miscellaneous hardcoding
+  filenames, using @PARENT_TAG where applicable, and be more specific
+  with files in the %files section (so no non-wanted files are getting
+  added
+
+-------------------------------------------------------------------
+Wed Aug  7 01:59:57 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.0.0~alpha1:
+  * Close workspaces view if window spawns while open
+  * Correctly restrict modifiers in screencopy
+  * chore(desktop-file): remove ICED category
+  * Don't show background; rely on cosmic-comp for that
+- enable leap (thanks to vyvir)
+
+-------------------------------------------------------------------
 Thu Mar 14 05:23:33 UTC 2024 - Richard Rahl <rrahl0@proton.me>
 
 - initial packaging

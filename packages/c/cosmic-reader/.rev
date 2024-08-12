@@ -7,4 +7,15 @@
     <comment></comment>
     <requestid>1186705</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f9a7db07a8bbcb3c86dfa8da2b4aa86c</srcmd5>
+    <version>0.1.0+git20240616.c54e8ec</version>
+    <time>1723458643</time>
+    <user>dimstar_suse</user>
+    <comment>- standardize packaging with also fixes for miscellaneous hardcoding
+  filenames, using @PARENT_TAG where applicable, and be more specific
+  with files in the %files section (so no non-wanted files are getting
+  added</comment>
+    <requestid>1192474</requestid>
+  </revision>
 </revisionlist>

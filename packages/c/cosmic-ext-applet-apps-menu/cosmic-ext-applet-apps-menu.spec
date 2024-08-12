@@ -61,6 +61,6 @@ just rootdir=%{buildroot} prefix=%{_prefix} install
 %doc README.md
 %{_bindir}/%{name}
 %{_datadir}/applications/%{appname}.desktop
-%{_iconsdir}/hicolor/scalable/apps/%{appname}.svg
+%{_datadir}/icons/hicolor/scalable/apps/%{appname}.svg
 
 %changelog

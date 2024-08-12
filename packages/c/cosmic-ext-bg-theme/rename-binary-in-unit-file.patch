@@ -1,0 +1,12 @@
+diff -rub cosmic_ext_bg_theme/cosmic-ext-bg-theme.service cosmic_ext_bg_theme-patched/cosmic-ext-bg-theme.service
+--- cosmic_ext_bg_theme/cosmic-ext-bg-theme.service	2024-08-08 00:26:59.747847385 +0200
++++ cosmic_ext_bg_theme-patched/cosmic-ext-bg-theme.service	2024-08-08 00:47:03.282348085 +0200
+@@ -4,7 +4,7 @@
+ 
+ [Service]
+ Type=simple
+-ExecStart=/path/to/your/executable
++ExecStart=/usr/bin/cosmic-ext-bg-theme
+ Restart=always
+ RestartSec=300
+ 

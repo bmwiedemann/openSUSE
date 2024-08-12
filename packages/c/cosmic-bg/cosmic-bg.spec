@@ -18,7 +18,7 @@
 
 %define         appname com.system76.CosmicBackground
 Name:           cosmic-bg
-Version:        0.1.0+git20240704.343410f
+Version:        1.0.0~alpha1
 Release:        0
 Summary:        COSMIC service for backgrounds
 License:        MPL-2.0
@@ -45,7 +45,6 @@ Supports the following features:
     Per-display background application
     Wallpaper slideshows that alternate between backgrounds periodically
 
-
 %prep
 %autosetup -a1
 
@@ -65,8 +64,8 @@ just rootdir=%{buildroot} prefix=%{_prefix} install
 %{_bindir}/%{name}
 %{_datadir}/applications/%{appname}.desktop
 %{_datadir}/cosmic
-%{_iconsdir}/hicolor/scalable/apps/%{appname}.svg
-%{_iconsdir}/hicolor/symbolic/apps/%{appname}-symbolic.svg
+%{_datadir}/icons/hicolor/scalable/apps/%{appname}.svg
+%{_datadir}/icons/hicolor/symbolic/apps/%{appname}-symbolic.svg
 %{_datadir}/metainfo/%{appname}.metainfo.xml
 
 %changelog

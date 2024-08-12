@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Aug  8 00:58:57 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- standardize packaging with also fixes for miscellaneous hardcoding
+  filenames, using @PARENT_TAG where applicable, and be more specific
+  with files in the %files section (so no non-wanted files are getting
+  added
+
+-------------------------------------------------------------------
 Sat Jul 06 17:28:38 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Rebase patches fix-binary-name.patch & fix-justfile.patch

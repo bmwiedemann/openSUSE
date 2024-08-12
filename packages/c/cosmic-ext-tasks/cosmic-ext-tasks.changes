@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Aug  8 00:59:36 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- standardize packaging with also fixes for miscellaneous hardcoding
+  filenames, using @PARENT_TAG where applicable, and be more specific
+  with files in the %files section (so no non-wanted files are getting
+  added
+
+-------------------------------------------------------------------
+Wed Aug  7 05:43:01 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 0.1.0+git20240802.4d827d3:
+  * update translations
+  * update dependencies
+- enable leap (thanks to vyvir)
+
+-------------------------------------------------------------------
 Wed Mar 20 01:00:57 UTC 2024 - Richard Rahl <rrahl0@proton.me>
 
 - initial packaging

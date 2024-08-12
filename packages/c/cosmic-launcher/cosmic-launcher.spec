@@ -18,7 +18,7 @@
 
 %define         appname com.system76.CosmicLauncher
 Name:           cosmic-launcher
-Version:        0.1.0+git20240725.03fa390
+Version:        1.0.0~alpha1
 Release:        0
 Summary:        Layer Shell frontend
 License:        GPL-3.0-only
@@ -60,7 +60,7 @@ just rootdir=%{buildroot} prefix=%{_prefix} install
 %doc README.md
 %{_bindir}/%{name}
 %{_datadir}/applications/%{appname}.desktop
-%{_iconsdir}/hicolor/scalable/apps/%{appname}.svg
+%{_datadir}/icons/hicolor/scalable/apps/%{appname}.svg
 %{_datadir}/metainfo/%{appname}.metainfo.xml
 
 %changelog

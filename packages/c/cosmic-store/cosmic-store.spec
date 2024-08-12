@@ -18,7 +18,7 @@
 
 %define         appname com.system76.CosmicStore
 Name:           cosmic-store
-Version:        0.1.0+git20240703.f323ff2
+Version:        1.0.0~alpha1
 Release:        0
 Summary:        COSMIC app store
 License:        GPL-3.0-only
@@ -56,7 +56,8 @@ just rootdir=%{buildroot} prefix=%{_prefix} install
 %doc README.md
 %{_bindir}/%{name}
 %{_datadir}/applications/%{appname}.desktop
-%{_iconsdir}/hicolor/*/apps/%{appname}.svg
+%{_datadir}/icons/hicolor/??x??/apps/%{appname}.svg
+%{_datadir}/icons/hicolor/???x???/apps/%{appname}.svg
 %{_datadir}/metainfo/%{appname}.metainfo.xml
 
 %changelog

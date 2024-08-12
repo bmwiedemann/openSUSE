@@ -7,4 +7,20 @@
     <comment></comment>
     <requestid>1186707</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>834243197a0d280a2b226d60ebb51aab</srcmd5>
+    <version>1.0.0~alpha1</version>
+    <time>1723458646</time>
+    <user>dimstar_suse</user>
+    <comment>- standardize packaging with also fixes for miscellaneous hardcoding
+  filenames, using @PARENT_TAG where applicable, and be more specific
+  with files in the %files section (so no non-wanted files are getting
+  added
+
+- update to 1.0.0~alpha1:
+  * fix(libcosmic): double-click to maximize
+  * update translations
+- enable leap (thanks to vyvir)</comment>
+    <requestid>1192476</requestid>
+  </revision>
 </revisionlist>

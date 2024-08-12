@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jul  6 15:43:04 UTC 2024 - Coly Li <colyli@suse.de>
+
+- util.c: change devnm to const in mdmon functions (bsc#1225307)
+  0006-util.c-change-devnm-to-const-in-mdmon-functions.patch
+- Wait for mdmon when it is stared via systemd (bsc#1225307)
+  0007-Wait-for-mdmon-when-it-is-stared-via-systemd.patch
+
+-------------------------------------------------------------------
 Fri Feb 23 10:46:16 UTC 2024 - pgajdos@suse.com
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

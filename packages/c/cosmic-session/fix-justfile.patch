@@ -1,0 +1,24 @@
+diff -rub cosmic-session-1.0.0~alpha1/Justfile cosmic-session-1.0.0~alpha1-patched/Justfile
+--- cosmic-session-1.0.0~alpha1/Justfile	2024-07-31 20:17:20.000000000 +0200
++++ cosmic-session-1.0.0~alpha1-patched/Justfile	2024-08-08 01:33:35.218115522 +0200
+@@ -11,14 +11,14 @@
+ cargo_args := vendor_args + ' ' + debug_args
+ xdp_cosmic := '/usr/libexec/xdg-desktop-portal-cosmic'
+ 
+-bindir := prefix + '/bin'
+-systemddir := prefix + '/lib/systemd/user'
+-sessiondir := prefix + '/share/wayland-sessions'
+-applicationdir := prefix + '/share/applications'
++bindir := rootdir + prefix + '/bin'
++systemddir := rootdir + prefix + '/lib/systemd/user'
++sessiondir := rootdir + prefix + '/share/wayland-sessions'
++applicationdir := rootdir + prefix + '/share/applications'
+ 
+-all: _extract_vendor build
++all: _extract_vendor build-release
+ 
+-build:
++build-release:
+         XDP_COSMIC={{xdp_cosmic}} cargo build {{cargo_args}}
+ 
+ # Installs files into the system

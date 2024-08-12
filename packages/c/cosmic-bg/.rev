@@ -7,4 +7,22 @@
     <comment></comment>
     <requestid>1190019</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>8555139fee0d6a3011d0dd5fb0718c29</srcmd5>
+    <version>1.0.0~alpha1</version>
+    <time>1723458601</time>
+    <user>dimstar_suse</user>
+    <comment>- standardize packaging with also fixes for miscellaneous hardcoding
+  filenames, using @PARENT_TAG where applicable, and be more specific
+  with files in the %files section (so no non-wanted files are getting
+  added
+
+- update to 1.0.0~alpha1:
+  * fix malloc_trim
+  * fix gradient match preview
+  * reduce memory usage
+  * add translations
+- enable leap (thanks to vyvir)</comment>
+    <requestid>1192445</requestid>
+  </revision>
 </revisionlist>

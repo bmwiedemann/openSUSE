@@ -6,6 +6,7 @@
     <param name="revision">master</param>
     <param name="versionformat">0.1.0+git%cd.%h</param>
     <param name="package-meta">yes</param>
+    <param name="filename">cosmic-ext-applet-external-monitor-brightness</param>
   </service>
   <service name="recompress" mode="manual">
     <param name="file">*.tar</param>

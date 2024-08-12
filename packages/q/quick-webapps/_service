@@ -4,7 +4,7 @@
     <param name="url">https://github.com/elevenhsoft/WebApps.git</param>
     <param name="scm">git</param>
     <param name="revision">master</param>
-    <param name="versionformat">0.4.6+git%cd.%h</param>
+    <param name="versionformat">@PARENT_TAG@+git%cd.%h</param>
     <param name="package-meta">yes</param>
     <param name="filename">quick-webapps</param>
   </service>

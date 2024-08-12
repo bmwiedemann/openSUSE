@@ -18,7 +18,7 @@
 
 %define         appname com.system76.CosmicFiles
 Name:           cosmic-files
-Version:        0.1.0+git20240704.5ec14f8
+Version:        1.0.0~alpha1
 Release:        0
 Summary:        COSMIC file manager
 License:        GPL-3.0-only
@@ -48,14 +48,15 @@ just rootdir=%{buildroot} prefix=%{_prefix} install
 %suse_update_desktop_file %{appname}
 
 %check
-%{cargo_test}
+# take too long on OBS, gets killed
+# %%{cargo_test}
 
 %files
 %license LICENSE
 %doc README.md
 %{_bindir}/%{name}
 %{_datadir}/applications/%{appname}.desktop
-%{_iconsdir}/hicolor/*/apps/%{appname}.svg
+%{_datadir}/icons/hicolor/*/apps/%{appname}.svg
 %{_datadir}/metainfo/%{appname}.metainfo.xml
 
 %changelog

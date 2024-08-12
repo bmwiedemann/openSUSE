@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Aug  9 12:22:33 UTC 2024 - Adam Majer <adam.majer@suse.de>
+
+- 38.patch: pending build fixes against newer cockpit
+
+-------------------------------------------------------------------
 Mon Feb 26 10:58:42 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

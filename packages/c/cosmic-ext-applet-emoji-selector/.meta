@@ -1,0 +1,6 @@
+<package name="cosmic-ext-applet-emoji-selector" project="openSUSE:Factory">
+  <title></title>
+  <description> Emoji Selector for COSMIC DE.</description>
+  <devel project="X11:COSMIC:Apps" package="cosmic-ext-applet-emoji-selector"/>
+  <url>https://github.com/leb-kuchen/emoji-selector-applet-for-cosmic_tm</url>
+</package>

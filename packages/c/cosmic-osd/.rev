@@ -7,4 +7,25 @@
     <comment></comment>
     <requestid>1190023</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>73f391d2fe1cf730d9631dc9823de02f</srcmd5>
+    <version>1.0.0~alpha1</version>
+    <time>1723458612</time>
+    <user>dimstar_suse</user>
+    <comment>- standardize packaging with also fixes for miscellaneous hardcoding
+  filenames, using @PARENT_TAG where applicable, and be more specific
+  with files in the %files section (so no non-wanted files are getting
+  added
+
+- update to 1.0.0~alpha1:
+  * Show volume as muted if mute is active
+  * Update cosmic-settings-subscription for integer keyboard brightness
+  * Divide display brighness by maximum
+  * Move settings_daemon subscription to cosmic-settings-subscriptions
+  * Use power for keyboard brightness
+  * Use cosmic-settings-subscriptions for some iced subscriptions
+  * Change OSD close timer to be 3 secs
+- enable leap (thanks to vyvir)</comment>
+    <requestid>1192451</requestid>
+  </revision>
 </revisionlist>

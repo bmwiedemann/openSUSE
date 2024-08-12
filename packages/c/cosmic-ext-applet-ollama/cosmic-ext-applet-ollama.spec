@@ -26,12 +26,12 @@ URL:            https://github.com/elevenhsoft/cosmic-ext-applet-ollama
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
 BuildRequires:  cargo-packaging
-BuildRequires:  just
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  update-desktop-files
+BuildRequires:  just
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(xkbcommon)
+BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(openssl)
+BuildRequires:  pkgconfig(xkbcommon)
 Requires:       ollama
 
 %description
@@ -47,11 +47,11 @@ just build-release
 %install
 install -Dm0755 ./target/release/%{name} %{buildroot}%{_bindir}/%{name}
 install -Dm0755 data/%{appname}.desktop %{buildroot}%{_datadir}/applications/%{appname}.desktop
-install -Dm0755 data/icons/scalable/apps/%{appname}-symbolic.svg %{buildroot}%{_iconsdir}/hicolor/scalable/apps/%{appname}-symbolic.svg
+install -Dm0755 data/icons/scalable/apps/%{appname}-symbolic.svg %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/%{appname}-symbolic.svg
 %suse_update_desktop_file %{appname}
 
 #fix upstream
-chmod -x %{buildroot}%{_iconsdir}/hicolor/scalable/apps/%{appname}-symbolic.svg
+chmod -x %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/%{appname}-symbolic.svg
 
 %check
 %{cargo_test}
@@ -61,6 +61,6 @@ chmod -x %{buildroot}%{_iconsdir}/hicolor/scalable/apps/%{appname}-symbolic.svg
 %doc README.md
 %{_bindir}/%{name}
 %{_datadir}/applications/%{appname}.desktop
-%{_iconsdir}/hicolor/scalable/apps/%{appname}-symbolic.svg
+%{_datadir}/icons/hicolor/scalable/apps/%{appname}-symbolic.svg
 
 %changelog

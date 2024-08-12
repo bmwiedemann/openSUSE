@@ -7,4 +7,24 @@
     <comment></comment>
     <requestid>1190029</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>7488b627c8001b069ff1aebcd9830b68</srcmd5>
+    <version>1.2.3+git20240806.c994240</version>
+    <time>1723458619</time>
+    <user>dimstar_suse</user>
+    <comment>- standardize packaging with also fixes for miscellaneous hardcoding
+  filenames, using @PARENT_TAG where applicable, and be more specific
+  with files in the %files section (so no non-wanted files are getting
+  added
+
+- update to 1.2.3+git20240806.c994240:
+  * fix: use more generic shell script shebang
+  * feat: prefer cosmic-term in terminal plugin
+  * desktop_entries: Fix activate context
+- enable leap (thanks to vyvir)
+
+- build with 1 codegen-unit for reproducible builds
+  https://github.com/pop-os/launcher/issues/230</comment>
+    <requestid>1192457</requestid>
+  </revision>
 </revisionlist>

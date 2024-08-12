@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Aug  8 01:00:08 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- standardize packaging with also fixes for miscellaneous hardcoding
+  filenames, using @PARENT_TAG where applicable, and be more specific
+  with files in the %files section (so no non-wanted files are getting
+  added
+
+-------------------------------------------------------------------
+Wed Aug  7 01:38:01 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.0.0~alpha1:
+  * Show volume as muted if mute is active
+  * Update cosmic-settings-subscription for integer keyboard brightness
+  * Divide display brighness by maximum
+  * Move settings_daemon subscription to cosmic-settings-subscriptions
+  * Use power for keyboard brightness
+  * Use cosmic-settings-subscriptions for some iced subscriptions
+  * Change OSD close timer to be 3 secs
+- enable leap (thanks to vyvir)
+
+-------------------------------------------------------------------
 Thu Mar 14 01:35:21 UTC 2024 - Richard Rahl <rrahl0@proton.me>
 
 - initial packaging

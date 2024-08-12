@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Aug  8 01:00:18 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- standardize packaging with also fixes for miscellaneous hardcoding
+  filenames, using @PARENT_TAG where applicable, and be more specific
+  with files in the %files section (so no non-wanted files are getting
+  added
+
+-------------------------------------------------------------------
+Wed Aug  7 01:48:05 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.0.0~alpha1:
+  * fix(shell): lingering cosmic-randr process
+  * fix: display arrangement gaps and offsets
+  * improv: fix positioning of scaled and vertical displays
+  * improv: fix adjustment of displays when repositioning
+  * improv: use min_by_key for refresh rate fallback
+- enable leap (thanks to vyvir)
+
+-------------------------------------------------------------------
 Thu Mar 14 02:14:36 UTC 2024 - Richard Rahl <rrahl0@proton.me>
 
 - initial packaging

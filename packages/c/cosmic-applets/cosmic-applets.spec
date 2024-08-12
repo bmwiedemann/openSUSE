@@ -36,7 +36,7 @@
 %define         workspacesbutton PanelWorkspacesButton
 %define         launcherbutton PanelLauncherButton
 Name:           cosmic-applets
-Version:        0.1.1+git20240726.5be5d5d
+Version:        1.0.0~alpha1
 Release:        0
 Summary:        Applets for COSMIC DE
 License:        GPL-3.0-only
@@ -227,81 +227,81 @@ just rootdir=%{buildroot} prefix=%{_prefix} install
 %files -n %{pkgname}-app-list
 %{_bindir}/cosmic-app-list
 %{_datadir}/applications/%{appname}%{applist}.desktop
-%{_iconsdir}/hicolor/scalable/apps/%{appname}%{applist}.svg
+%{_datadir}/icons/hicolor/scalable/apps/%{appname}%{applist}.svg
 
 %files -n %{pkgname}-audio
 %{_bindir}/%{bin}-audio
 %{_datadir}/applications/%{appname}%{audio}.desktop
-%{_iconsdir}/hicolor/scalable/apps/%{appname}%{audio}-symbolic.svg
+%{_datadir}/icons/hicolor/scalable/apps/%{appname}%{audio}-symbolic.svg
 
 %files -n %{pkgname}-battery
 %{_bindir}/%{bin}-battery
 %{_datadir}/applications/%{appname}%{battery}.desktop
-%{_iconsdir}/hicolor/scalable/apps/%{appname}%{battery}-symbolic.svg
-%{_iconsdir}/hicolor/scalable/status/cosmic-applet-battery-*.svg
+%{_datadir}/icons/hicolor/scalable/apps/%{appname}%{battery}-symbolic.svg
+%{_datadir}/icons/hicolor/scalable/status/cosmic-applet-battery-*.svg
 
 %files -n %{pkgname}-bluetooth
 %{_bindir}/%{bin}-bluetooth
 %{_datadir}/applications/%{appname}%{bluetooth}.desktop
-%{_iconsdir}/hicolor/scalable/apps/%{appname}%{bluetooth}-symbolic.svg
-%{_iconsdir}/hicolor/scalable/status/cosmic-applet-bluetooth-*.svg
+%{_datadir}/icons/hicolor/scalable/apps/%{appname}%{bluetooth}-symbolic.svg
+%{_datadir}/icons/hicolor/scalable/status/cosmic-applet-bluetooth-*.svg
 
 %files -n %{pkgname}-input-sources
 %{_bindir}/%{bin}-input-sources
 %{_datadir}/applications/%{appname}%{inputsources}.desktop
-%{_iconsdir}/hicolor/scalable/apps/%{appname}%{inputsources}-symbolic.svg
+%{_datadir}/icons/hicolor/scalable/apps/%{appname}%{inputsources}-symbolic.svg
 
 %files -n %{pkgname}-minimize
 %{_bindir}/%{bin}-minimize
 %{_datadir}/applications/%{appname}%{minimize}.desktop
-%{_iconsdir}/hicolor/scalable/apps/%{appname}%{minimize}.svg
+%{_datadir}/icons/hicolor/scalable/apps/%{appname}%{minimize}.svg
 
 %files -n %{pkgname}-network
 %{_bindir}/%{bin}-network
 %{_datadir}/applications/%{appname}%{network}.desktop
-%{_iconsdir}/hicolor/scalable/apps/%{appname}%{network}-symbolic.svg
+%{_datadir}/icons/hicolor/scalable/apps/%{appname}%{network}-symbolic.svg
 
 %files -n %{pkgname}-notifications
 %{_bindir}/%{bin}-notifications
 %{_datadir}/applications/%{appname}%{notifications}.desktop
-%{_iconsdir}/hicolor/scalable/apps/%{appname}%{notifications}-symbolic.svg
-%{_iconsdir}/hicolor/scalable/status/cosmic-applet-notification-*.svg
+%{_datadir}/icons/hicolor/scalable/apps/%{appname}%{notifications}-symbolic.svg
+%{_datadir}/icons/hicolor/scalable/status/cosmic-applet-notification-*.svg
 
 %files -n %{pkgname}-power
 %{_bindir}/%{bin}-power
 %{_datadir}/applications/%{appname}%{power}.desktop
-%{_iconsdir}/hicolor/scalable/apps/%{appname}%{power}-symbolic.svg
+%{_datadir}/icons/hicolor/scalable/apps/%{appname}%{power}-symbolic.svg
 
 %files -n %{pkgname}-status-area
 %{_bindir}/%{bin}-status-area
 %{_datadir}/applications/%{appname}%{status}.desktop
-%{_iconsdir}/hicolor/scalable/apps/%{appname}%{status}.svg
+%{_datadir}/icons/hicolor/scalable/apps/%{appname}%{status}.svg
 
 %files -n %{pkgname}-tiling
 %{_bindir}/%{bin}-tiling
 %{_datadir}/applications/%{appname}%{tiling}.desktop
-%{_iconsdir}/hicolor/scalable/apps/%{appname}%{tiling}-symbolic.svg
-%{_iconsdir}/hicolor/scalable/apps/%{appname}%{tiling}.*.svg
+%{_datadir}/icons/hicolor/scalable/apps/%{appname}%{tiling}-symbolic.svg
+%{_datadir}/icons/hicolor/scalable/apps/%{appname}%{tiling}.*.svg
 
 %files -n %{pkgname}-time
 %{_bindir}/%{bin}-time
 %{_datadir}/applications/%{appname}%{time}.desktop
-%{_iconsdir}/hicolor/scalable/apps/%{appname}%{time}-symbolic.svg
+%{_datadir}/icons/hicolor/scalable/apps/%{appname}%{time}-symbolic.svg
 
 %files -n %{pkgname}-workspaces
 %{_bindir}/%{bin}-workspaces
 %{_datadir}/applications/%{appname}%{workspaces}.desktop
 %{_datadir}/applications/%{appname}%{workspacesbutton}.desktop
-%{_iconsdir}/hicolor/scalable/apps/%{appname}%{workspaces}-symbolic.svg
-%{_iconsdir}/hicolor/scalable/apps/%{appname}%{workspacesbutton}.svg
+%{_datadir}/icons/hicolor/scalable/apps/%{appname}%{workspaces}-symbolic.svg
+%{_datadir}/icons/hicolor/scalable/apps/%{appname}%{workspacesbutton}.svg
 
 %files -n %{pkgname}-panel-button
 %{_bindir}/cosmic-panel-button
 %{_datadir}/applications/%{appname}%{appbutton}.desktop
-%{_iconsdir}/hicolor/scalable/apps/%{appname}%{appbutton}.svg
+%{_datadir}/icons/hicolor/scalable/apps/%{appname}%{appbutton}.svg
 
 %files -n %{pkgname}-launcher-button
 %{_datadir}/applications/%{appname}%{launcherbutton}.desktop
-%{_iconsdir}/hicolor/scalable/apps/%{appname}%{launcherbutton}.svg
+%{_datadir}/icons/hicolor/scalable/apps/%{appname}%{launcherbutton}.svg
 
 %changelog

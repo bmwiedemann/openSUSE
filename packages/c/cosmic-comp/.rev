@@ -7,4 +7,22 @@
     <comment></comment>
     <requestid>1190020</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>e56e26770d69c924ae96ce7e8ff0a04f</srcmd5>
+    <version>1.0.0~alpha1</version>
+    <time>1723458603</time>
+    <user>dimstar_suse</user>
+    <comment>- standardize packaging with also fixes for miscellaneous hardcoding
+  filenames, using @PARENT_TAG where applicable, and be more specific
+  with files in the %files section (so no non-wanted files are getting
+  added
+
+- update to 1.0.0~alpha1:
+  * reduce duplication
+  * add PlayPause/Prev/Next shortcuts
+  * fix round corners
+  * add translations
+- enable leap (thanks to vyvir)</comment>
+    <requestid>1192446</requestid>
+  </revision>
 </revisionlist>

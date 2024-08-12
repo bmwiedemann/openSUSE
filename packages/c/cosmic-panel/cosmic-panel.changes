@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Aug  8 01:00:11 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- standardize packaging with also fixes for miscellaneous hardcoding
+  filenames, using @PARENT_TAG where applicable, and be more specific
+  with files in the %files section (so no non-wanted files are getting
+  added
+
+-------------------------------------------------------------------
+Wed Aug  7 01:39:35 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.0.0~alpha1:
+  * fix: force resize and relayout after scaling change
+  * fix: hide after popup closed and hover lost
+  * fix: request new dimensions after output update, and clear the surface
+  * fix: don't wait for configure after resize
+  * fix: unscale margin offset for buttons
+  * fix: create dnd egl surface with size of first commit from applet
+- enable leap (thanks to vyvir)
+
+-------------------------------------------------------------------
 Wed Mar 13 18:12:45 UTC 2024 - Richard Rahl <rrahl0@proton.me>
 
 - initial packaging

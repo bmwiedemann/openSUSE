@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Aug  8 00:58:53 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 0.1.0+git20240802.b8c9457:
+  * center instead of align center
+  * update Application ID
+  * fix icons
+  * documentation updates
+- standardize packaging with also fixes for miscellaneous hardcoding
+  filenames, using @PARENT_TAG where applicable, and be more specific
+  with files in the %files section (so no non-wanted files are getting
+  added
+
+-------------------------------------------------------------------
 Tue Jul 23 22:08:00 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - initial packaging

@@ -1,8 +1,8 @@
-Index: dpkg-1.22.5/configure.ac
+Index: dpkg-1.22.11/configure.ac
 ===================================================================
---- dpkg-1.22.5.orig/configure.ac
-+++ dpkg-1.22.5/configure.ac
-@@ -111,6 +111,13 @@ AC_SYS_LARGEFILE
+--- dpkg-1.22.11.orig/configure.ac
++++ dpkg-1.22.11/configure.ac
+@@ -112,6 +112,13 @@ AC_SYS_LARGEFILE
  # Checks for libraries.
  DPKG_LIB_RT
  DPKG_LIB_MD
@@ -16,7 +16,7 @@ Index: dpkg-1.22.5/configure.ac
  DPKG_LIB_Z
  DPKG_LIB_BZ2
  DPKG_LIB_LZMA
-@@ -335,6 +342,7 @@ Configuration:
+@@ -338,6 +345,7 @@ Configuration:
      libkvm  . . . . . . . . . . . : ${have_libkvm:-no}
      libselinux  . . . . . . . . . : $have_libselinux
      libmd . . . . . . . . . . . . : $have_libmd
@@ -24,10 +24,10 @@ Index: dpkg-1.22.5/configure.ac
      libz  . . . . . . . . . . . . : $have_libz_impl
      liblzma . . . . . . . . . . . : $have_liblzma
      libzstd . . . . . . . . . . . : $have_libzstd
-Index: dpkg-1.22.5/lib/dpkg/buffer.c
+Index: dpkg-1.22.11/lib/dpkg/buffer.c
 ===================================================================
---- dpkg-1.22.5.orig/lib/dpkg/buffer.c
-+++ dpkg-1.22.5/lib/dpkg/buffer.c
+--- dpkg-1.22.11.orig/lib/dpkg/buffer.c
++++ dpkg-1.22.11/lib/dpkg/buffer.c
 @@ -23,10 +23,18 @@
  #include <config.h>
  #include <compat.h>
@@ -48,10 +48,10 @@ Index: dpkg-1.22.5/lib/dpkg/buffer.c
  #include <string.h>
  #include <unistd.h>
  #include <stdlib.h>
-Index: dpkg-1.22.5/m4/dpkg-libs.m4
+Index: dpkg-1.22.11/m4/dpkg-libs.m4
 ===================================================================
---- dpkg-1.22.5.orig/m4/dpkg-libs.m4
-+++ dpkg-1.22.5/m4/dpkg-libs.m4
+--- dpkg-1.22.11.orig/m4/dpkg-libs.m4
++++ dpkg-1.22.11/m4/dpkg-libs.m4
 @@ -20,11 +20,26 @@ AC_DEFUN([DPKG_LIB_MD], [
        MD_LIBS="$ac_cv_search_MD5Init"
      ])
@@ -80,13 +80,13 @@ Index: dpkg-1.22.5/m4/dpkg-libs.m4
 +
 +
  # DPKG_WITH_COMPRESS_LIB(NAME, HEADER, FUNC)
- # -------------------------------------------------
+ # ----------------------
  # Check for availability of a compression library.
-Index: dpkg-1.22.5/lib/dpkg/Makefile.am
+Index: dpkg-1.22.11/lib/dpkg/Makefile.am
 ===================================================================
---- dpkg-1.22.5.orig/lib/dpkg/Makefile.am
-+++ dpkg-1.22.5/lib/dpkg/Makefile.am
-@@ -53,6 +53,7 @@ libdpkg_la_LIBADD = \
+--- dpkg-1.22.11.orig/lib/dpkg/Makefile.am
++++ dpkg-1.22.11/lib/dpkg/Makefile.am
+@@ -54,6 +54,7 @@ libdpkg_la_LIBADD = \
  	$(ZSTD_LIBS) \
  	$(BZ2_LIBS) \
  	$(MD_LIBS) \

@@ -28,7 +28,8 @@ Source10:       package-lock.json
 Source11:       node_modules.spec.inc
 Source12:       node_modules.sums
 %include %_sourcedir/node_modules.spec.inc
-Patch0:         load-css-overrides.patch
+Patch1:         38.patch
+Patch2:         load-css-overrides.patch
 BuildArch:      noarch
 BuildRequires:  appstream-glib
 BuildRequires:  cockpit-devel >= 293
@@ -50,11 +51,12 @@ Cockpit module for Transactional Update
 
 rm -f package-lock.json
 rm -rf node_modules
-local-npm-registry %{_sourcedir} install --with=dev || ( find ~/.npm/_logs -name '*-debug.log' -print0 | xargs -0 cat; false)
+local-npm-registry %{_sourcedir} install --include=dev --ignore-scripts|| ( find ~/.npm/_logs -name '*-debug.log' -print0 | xargs -0 cat; false)
 
 %build
 mkdir -p pkg
 cp -r %{_datadir}/cockpit/devel/lib pkg/lib
+npx patch-package
 NODE_ENV=production npm run build
 
 %install

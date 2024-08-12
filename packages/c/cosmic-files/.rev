@@ -7,4 +7,23 @@
     <comment></comment>
     <requestid>1186769</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>b0f979b8f7171a86f38fdabca5c89788</srcmd5>
+    <version>1.0.0~alpha1</version>
+    <time>1723458605</time>
+    <user>dimstar_suse</user>
+    <comment>- standardize packaging with also fixes for miscellaneous hardcoding
+  filenames, using @PARENT_TAG where applicable, and be more specific
+  with files in the %files section (so no non-wanted files are getting
+  added
+
+- update to 1.0.0~alpha1:
+  * fix: don't scroll sorting headings
+  * undo toaster
+  * update translations
+- enable leap (thanks to vyvir)
+
+- disable tests for now, as they get killed on OBS</comment>
+    <requestid>1192447</requestid>
+  </revision>
 </revisionlist>

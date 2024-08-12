@@ -46,6 +46,8 @@ Patch2:         0002-monitor-refactor-checkpoint-update.patch
 Patch3:         0003-Super-intel-Fix-first-checkpoint-restart.patch
 Patch4:         0004-Grow-Move-update_tail-assign-to-Grow_reshape.patch
 Patch5:         0005-Add-understanding-output-section-in-man.patch
+Patch6:         0006-util.c-change-devnm-to-const-in-mdmon-functions.patch
+Patch7:         0007-Wait-for-mdmon-when-it-is-stared-via-systemd.patch
 Patch1001:      1001-display-timeout-status.patch
 Patch1002:      1002-OnCalendar-format-fix-of-mdcheck_start-timer.patch
 Patch1003:      1003-mdadm-treat-the-Dell-softraid-array-as-local-array.patch

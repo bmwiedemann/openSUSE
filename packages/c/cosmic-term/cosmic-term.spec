@@ -18,7 +18,7 @@
 
 %define         appname com.system76.CosmicTerm
 Name:           cosmic-term
-Version:        0.1.0+git20240620.09e2073
+Version:        1.0.0~alpha1
 Release:        0
 Summary:        COSMIC terminal emulator
 License:        GPL-3.0-only
@@ -33,7 +33,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(xkbcommon)
 Requires:       mozilla-fira-fonts
-Requires:       google-noto-coloremoji-fonts
+Recommends:     google-noto-coloremoji-fonts
 
 %description
 COSMIC terminal emulator, built using alacritty_terminal that is provided by the
@@ -58,7 +58,8 @@ just rootdir=%{buildroot} prefix=%{_prefix} install
 %doc README.md
 %{_bindir}/%{name}
 %{_datadir}/applications/%{appname}.desktop
-%{_iconsdir}/hicolor/*/apps/%{appname}.svg
+%{_datadir}/icons/hicolor/??x??/apps/%{appname}.svg
+%{_datadir}/icons/hicolor/???x???/apps/%{appname}.svg
 %{_datadir}/metainfo/%{appname}.metainfo.xml
 
 %changelog

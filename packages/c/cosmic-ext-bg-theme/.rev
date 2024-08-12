@@ -7,4 +7,13 @@
     <comment></comment>
     <requestid>1186702</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>36eacdf9da53a3c256bc2e64478c6df2</srcmd5>
+    <version>0.1.0+git20240603.9945b3d</version>
+    <time>1723458656</time>
+    <user>dimstar_suse</user>
+    <comment>- add patch rename-binary-in-unit-file.patch, so we can use upstream service
+  file (forwarded request 1192482 from rrahl0)</comment>
+    <requestid>1192483</requestid>
+  </revision>
 </revisionlist>

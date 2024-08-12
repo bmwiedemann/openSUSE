@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Aug 11 14:16:59 UTC 2024 - Martin Schreiner <martin.schreiner@suse.com>
+
+- Update to version 1.22.11.
+  The full changelog is very large. Please check it here:
+  https://git.dpkg.org/cgit/dpkg/dpkg.git/tree/debian/changelog?h=1.22.11
+- Changes from 1.22.10:
+  https://git.dpkg.org/cgit/dpkg/dpkg.git/tree/debian/changelog?h=1.22.10
+- Changes from 1.22.9:
+  https://git.dpkg.org/cgit/dpkg/dpkg.git/tree/debian/changelog?h=1.22.9
+- Changes from 1.22.8:
+  https://git.dpkg.org/cgit/dpkg/dpkg.git/tree/debian/changelog?h=1.22.8
+- Changes from 1.22.7:
+  https://git.dpkg.org/cgit/dpkg/dpkg.git/tree/debian/changelog?h=1.22.7
+- Refresh patch:
+  * openssl.patch
+
+-------------------------------------------------------------------
 Wed Apr 10 02:52:20 UTC 2024 - Martin Schreiner <martin.schreiner@suse.com>
 
 - Update to version 1.22.6.

@@ -7,4 +7,20 @@
     <comment></comment>
     <requestid>1190033</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>62e4fe2d003692b2a8c090413d2f58e9</srcmd5>
+    <version>0.1.0+git20240730.b204500</version>
+    <time>1723458627</time>
+    <user>dimstar_suse</user>
+    <comment>- standardize packaging with also fixes for miscellaneous hardcoding
+  filenames, using @PARENT_TAG where applicable, and be more specific
+  with files in the %files section (so no non-wanted files are getting
+  added
+
+- update to 0.1.0+git20240730.b204500:
+  * rust &gt;= 1.80
+  * split at cjecked
+  * fix justfile</comment>
+    <requestid>1192462</requestid>
+  </revision>
 </revisionlist>

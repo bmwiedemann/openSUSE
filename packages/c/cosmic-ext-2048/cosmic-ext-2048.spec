@@ -18,7 +18,7 @@
 
 %define         appname io.github.Kartonrealista.cosmic-ext-2048
 Name:           cosmic-ext-2048
-Version:        0.1.0+git20240719.2942585
+Version:        0.1.0+git20240802.b8c9457
 Release:        0
 Summary:        2048 application for the Cosmic desktop
 License:        GPL-3.0-only
@@ -26,11 +26,11 @@ URL:            https://github.com/Kartonrealista/cosmic-ext-2048
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
 BuildRequires:  cargo-packaging
+BuildRequires:  hicolor-icon-theme
 BuildRequires:  just
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(xkbcommon)
 BuildRequires:  update-desktop-files
-BuildRequires:  hicolor-icon-theme
+BuildRequires:  pkgconfig(xkbcommon)
 
 %description
 A 2048 game written in libcosmic and Rust.
@@ -53,7 +53,7 @@ just rootdir=%{buildroot} prefix=%{_prefix} install
 %doc README.md
 %{_bindir}/%{name}
 %{_datadir}/applications/%{appname}.desktop
-%{_iconsdir}/hicolor/scalable/apps/%{appname}.svg
+%{_datadir}/icons/hicolor/scalable/apps/%{appname}.svg
 %{_datadir}/metainfo/%{appname}.metainfo.xml
 
 %changelog
