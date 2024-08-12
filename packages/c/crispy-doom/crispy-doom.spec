@@ -1,7 +1,7 @@
 #
 # spec file for package crispy-doom
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           crispy-doom
-Version:        6.0
+Version:        7.0
 Release:        0
 Summary:        Higher resolution DOOM/Heretic/Hexen/Strife source port
 License:        GPL-2.0-or-later
@@ -67,10 +67,6 @@ b="%buildroot"
 	docdir="%_docdir/%name"
 mkdir -p "$b/%_bindir"
 rm -f "$b/%_docdir/%name/INSTALL"
-pushd "$b/%_mandir/man5"
-for i in default heretic hexen; do
-        mv "$i.cfg.5" "crispy-doom-$i.cfg.5"
-done
 %fdupes %buildroot/%_prefix
 
 %post
