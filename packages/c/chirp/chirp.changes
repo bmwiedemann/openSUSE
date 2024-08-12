@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Aug 10 15:55:30 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 20240806:
+  * ksun_m6: Fix initialization of new memories
+  * retevis_rt21.py: Add Retevis RB89
+  * retevis_rt21.py: fix incorrect DTCS mask
+  * Add AppStream metadata
+  * Add Bulgarian translation
+  * Fix URL in README.md
+  * Fix linux bugreport menu item failure
+  * Update Italian Translation
+  * Updated Spanish Translation
+  * Add ability to report new bugs from within CHIRP
+- package now build from git / source service
+
+-------------------------------------------------------------------
 Mon Jun 17 20:25:36 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - drop chirp-backport-to-python36.patch, no longer needed

@@ -19,13 +19,13 @@
 
 %define pythons python3
 Name:           chirp
-Version:        20240614
+Version:        20240806
 Release:        0
 Summary:        Tool for programming amateur radio sets
 License:        GPL-3.0-only
 Group:          Productivity/Hamradio/Other
 URL:            https://chirpmyradio.com/projects/chirp/
-Source:         https://archive.chirpmyradio.com/chirp_next/next-%{version}/%{name}-%{version}.tar.gz
+Source:         %{name}-%{version}.tar.gz
 Patch0:         chirp-no-phone-home.patch
 BuildRequires:  %{python_module pyserial}
 BuildRequires:  %{python_module requests}
@@ -53,6 +53,10 @@ a way to interface with multiple data sources and formats.
 # remove shebang from lib files
 sed -i '1{/^#!\//d}' %{name}/cli/experttune.py
 sed -i '1{/^#!\//d}' %{name}/cli/main.py
+# building from git snapshot - build translations
+pushd chirp/locale
+%make_build
+popd
 
 %build
 %python_build
@@ -68,7 +72,6 @@ install -Dpm 0644 chirp/share/chirp.png %{buildroot}/%{_datadir}/pixmaps/%{name}
 
 %files -f CHIRP.lang
 %license COPYING
-%doc PKG-INFO
 %{_bindir}/*
 %{_datadir}/applications/%{name}.desktop
 %{python_sitelib}/*.egg-info

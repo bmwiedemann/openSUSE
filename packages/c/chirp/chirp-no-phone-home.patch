@@ -20,11 +20,11 @@ Additionaly it reported the following items during interactive use:
 
 This patch disables this functionality.
 
-Index: chirp-20240614/chirp/wxui/main.py
+Index: chirp-20240807/chirp/wxui/main.py
 ===================================================================
---- chirp-20240614/chirp/wxui/main.py	2024-05-24 11:10:24.000000000 +0200
-+++ chirp-20240614/chirp/wxui/main.py	2024-06-17 12:24:59.214869060 +0200
-@@ -920,6 +920,7 @@
+--- chirp-20240807.orig/chirp/wxui/main.py
++++ chirp-20240807/chirp/wxui/main.py
+@@ -925,6 +925,7 @@ class ChirpMain(wx.Frame):
          self.Bind(wx.EVT_MENU, self._menu_about, about_item)
          help_menu.Append(about_item)
  
@@ -32,19 +32,19 @@ Index: chirp-20240614/chirp/wxui/main.py
          developer_menu = wx.MenuItem(help_menu, wx.NewId(),
                                       _('Developer Mode'),
                                       kind=wx.ITEM_CHECK)
-@@ -961,6 +962,7 @@
+@@ -966,6 +967,7 @@ class ChirpMain(wx.Frame):
                                  _('Load module from issue...'))
          self.Bind(wx.EVT_MENU, self._menu_load_from_issue, lmfi_menu)
          help_menu.Append(lmfi_menu)
 +        '''
  
-         menu_bar = wx.MenuBar()
-         menu_bar.Append(file_menu, wx.GetStockLabel(wx.ID_FILE))
-Index: chirp-20240614/chirp/wxui/report.py
+         self.bug_report_item = wx.MenuItem(
+             help_menu, wx.NewId(),
+Index: chirp-20240807/chirp/wxui/report.py
 ===================================================================
---- chirp-20240614/chirp/wxui/report.py	2024-03-06 11:09:53.000000000 +0100
-+++ chirp-20240614/chirp/wxui/report.py	2024-06-17 12:24:59.214869060 +0200
-@@ -32,7 +32,7 @@
+--- chirp-20240807.orig/chirp/wxui/report.py
++++ chirp-20240807/chirp/wxui/report.py
+@@ -32,7 +32,7 @@ CONF = config.get()
  LOG = logging.getLogger(__name__)
  logging.getLogger('urllib3.connectionpool').setLevel(logging.INFO)
  SESSION = None
