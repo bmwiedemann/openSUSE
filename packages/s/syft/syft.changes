@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Fri Aug 09 18:12:40 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.11.0:
+  * test: increase java purl generation test coverage (#3110)
+  * chore(deps): bump modernc.org/sqlite from 1.31.1 to 1.32.0
+    (#3106)
+  * chore(deps): bump sigstore/cosign-installer from 3.5.0 to 3.6.0
+    (#3107)
+  * chore(deps): update tools to latest versions (#3099)
+  * chore(deps): bump github/codeql-action from 3.25.15 to 3.26.0
+    (#3101)
+  * chore(deps): bump actions/upload-artifact from 4.3.5 to 4.3.6
+    (#3102)
+  * chore(deps): bump github.com/google/go-containerregistry
+    (#3103)
+  * chore(deps): bump golang.org/x/net from 0.27.0 to 0.28.0
+    (#3104)
+  * chore(deps): bump actions/upload-artifact from 4.3.4 to 4.3.5
+    (#3095)
+  * chore(deps): update CPE dictionary index (#3094)
+  * chore(deps): bump golang.org/x/mod from 0.19.0 to 0.20.0
+    (#3096)
+  * chore(deps): bump github.com/gkampitakis/go-snaps from 0.5.6 to
+    0.5.7 (#3097)
+  * feat: improved java maven property resolution (#2769)
+  * fix: use organization for package supplier when reading Java
+    vendor fields  (#3093)
+  * chore(deps): update tools to latest versions (#3091)
+  * fix: update 'guessMainPackageNameAndVersionFromPomInfo' and
+    'artifactIDMatchesFilename' (#3054)
+  * fix: update mainModuleVersion function to always prefix `v` to
+    findings (#3087)
+  * chore: update release script to use gh from binny (#3084)
+  * Added the SWI Prolog (swipl) ecosystem (#3076)
+
+-------------------------------------------------------------------
 Thu Aug 01 07:20:34 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.10.0:
