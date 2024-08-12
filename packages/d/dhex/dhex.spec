@@ -1,7 +1,7 @@
 #
 # spec file for package dhex
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -35,7 +35,7 @@ heavy use of colors and is themeable.
 %setup -qn %{name}_%{version} -a1
 
 %build
-make %{?_smp_mflags} CFLAGS="%{optflags} -std=c99"
+make %{?_smp_mflags} CFLAGS="%{optflags} -std=c99 -D_DEFAULT_SOURCE"
 
 %install
 install -Dm 0755 %{name} %{buildroot}%{_bindir}/%{name}

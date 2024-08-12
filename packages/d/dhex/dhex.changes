@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Aug  9 15:00:37 UTC 2024 - Martin Jambor <mjambor@suse.com>
+
+- Define feature macro _DEFAULT_SOURCE via a compiler option so that
+  functions like usleep are properly declared by glibc and GCC 14 does
+  not error out because of calling undeclared functions.
+
+-------------------------------------------------------------------
 Sat Jan 19 20:43:42 UTC 2019 - mardnh@gmx.de
 
 - Update to 0.69:
