@@ -1,7 +1,7 @@
 #
 # spec file for package trng
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %global shlib libtrng4-25
 Name:           trng
-Version:        4.25
+Version:        4.26
 Release:        0
 Summary:        A Random Number Generator Library
 License:        BSD-3-Clause
@@ -32,6 +32,8 @@ BuildRequires:  libboost_headers-devel
 BuildRequires:  libboost_test-devel
 BuildRequires:  tbb-devel
 BuildRequires:  cmake(Catch2) < 3.0
+# Fails at %%check: see https://github.com/rabauke/trng4/issues/32
+ExcludeArch:    aarch64 %{power64}
 
 %description
 TRNG is a pseudo random number generator C++ library.
@@ -74,8 +76,7 @@ applications against TRNG.
 %check
 %ctest
 
-%post -n %{shlib} -p /sbin/ldconfig
-%postun -n %{shlib} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{shlib}
 
 %files -n %{shlib}
 %license COPYING

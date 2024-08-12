@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jul 22 11:56:18 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 4.26:
+  * Many changes, but no release notes.
+- Disable builds for aarch64, ppc64*, test fails
+  (gh#rabauke/trng4#32).
+
+-------------------------------------------------------------------
 Fri Oct 20 13:43:52 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 4.25:
