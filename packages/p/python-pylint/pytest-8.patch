@@ -1,7 +1,7 @@
-Index: pylint-3.2.5/pylint/testutils/configuration_test.py
+Index: pylint-3.2.6/pylint/testutils/configuration_test.py
 ===================================================================
---- pylint-3.2.5.orig/pylint/testutils/configuration_test.py
-+++ pylint-3.2.5/pylint/testutils/configuration_test.py
+--- pylint-3.2.6.orig/pylint/testutils/configuration_test.py
++++ pylint-3.2.6/pylint/testutils/configuration_test.py
 @@ -12,7 +12,6 @@ import logging
  import unittest
  from pathlib import Path
@@ -38,12 +38,12 @@ Index: pylint-3.2.5/pylint/testutils/configuration_test.py
 +    with unittest.mock.patch(check):
 +        runner = Run(args, exit=False)
 +    return runner
-Index: pylint-3.2.5/requirements_test_min.txt
+Index: pylint-3.2.6/requirements_test_min.txt
 ===================================================================
---- pylint-3.2.5.orig/requirements_test_min.txt
-+++ pylint-3.2.5/requirements_test_min.txt
+--- pylint-3.2.6.orig/requirements_test_min.txt
++++ pylint-3.2.6/requirements_test_min.txt
 @@ -3,7 +3,7 @@
- astroid==3.2.2  # Pinned to a specific version for tests
+ astroid==3.2.4  # Pinned to a specific version for tests
  typing-extensions~=4.11
  py~=1.11.0
 -pytest~=7.4
@@ -51,10 +51,10 @@ Index: pylint-3.2.5/requirements_test_min.txt
  pytest-benchmark~=4.0
  pytest-timeout~=2.3
  towncrier~=23.11
-Index: pylint-3.2.5/tests/config/test_config.py
+Index: pylint-3.2.6/tests/config/test_config.py
 ===================================================================
---- pylint-3.2.5.orig/tests/config/test_config.py
-+++ pylint-3.2.5/tests/config/test_config.py
+--- pylint-3.2.6.orig/tests/config/test_config.py
++++ pylint-3.2.6/tests/config/test_config.py
 @@ -55,10 +55,8 @@ reports = "yes"
      )
      env_var = "tmp_path_env"
@@ -86,10 +86,10 @@ Index: pylint-3.2.5/tests/config/test_config.py
          HERE
          / "functional"
          / "toml"
-Index: pylint-3.2.5/tests/config/test_functional_config_loading.py
+Index: pylint-3.2.6/tests/config/test_functional_config_loading.py
 ===================================================================
---- pylint-3.2.5.orig/tests/config/test_functional_config_loading.py
-+++ pylint-3.2.5/tests/config/test_functional_config_loading.py
+--- pylint-3.2.6.orig/tests/config/test_functional_config_loading.py
++++ pylint-3.2.6/tests/config/test_functional_config_loading.py
 @@ -57,10 +57,8 @@ def default_configuration(
  ) -> PylintConfiguration:
      empty_pylintrc = tmp_path / "pylintrc"
@@ -116,10 +116,10 @@ Index: pylint-3.2.5/tests/config/test_functional_config_loading.py
      out, err = capsys.readouterr()
      # 'rstrip()' applied, so we can have a final newline in the expected test file
      assert expected_output.rstrip() == out.rstrip(), msg
-Index: pylint-3.2.5/tests/lint/unittest_lint.py
+Index: pylint-3.2.6/tests/lint/unittest_lint.py
 ===================================================================
---- pylint-3.2.5.orig/tests/lint/unittest_lint.py
-+++ pylint-3.2.5/tests/lint/unittest_lint.py
+--- pylint-3.2.6.orig/tests/lint/unittest_lint.py
++++ pylint-3.2.6/tests/lint/unittest_lint.py
 @@ -20,6 +20,7 @@ from pathlib import Path
  from shutil import copy, rmtree
  from unittest import mock
@@ -160,29 +160,29 @@ Index: pylint-3.2.5/tests/lint/unittest_lint.py
  
  
  def test_source_roots_globbing() -> None:
-Index: pylint-3.2.5/tests/regrtest_data/pyi/a_module_that_we_definitely_dont_use_in_the_functional_tests.pyi
+Index: pylint-3.2.6/tests/regrtest_data/pyi/a_module_that_we_definitely_dont_use_in_the_functional_tests.pyi
 ===================================================================
 --- /dev/null
-+++ pylint-3.2.5/tests/regrtest_data/pyi/a_module_that_we_definitely_dont_use_in_the_functional_tests.pyi
++++ pylint-3.2.6/tests/regrtest_data/pyi/a_module_that_we_definitely_dont_use_in_the_functional_tests.pyi
 @@ -0,0 +1,5 @@
 +# This module is named in a particular way to prevent test pollution. It was previously named 'foo' and
 +# all mentions of 'foo' were wrongly resolved to this stub file.
 +foo = 1
 +
 +def three_item_iterable(): ...
-Index: pylint-3.2.5/tests/regrtest_data/pyi/foo.pyi
+Index: pylint-3.2.6/tests/regrtest_data/pyi/foo.pyi
 ===================================================================
---- pylint-3.2.5.orig/tests/regrtest_data/pyi/foo.pyi
+--- pylint-3.2.6.orig/tests/regrtest_data/pyi/foo.pyi
 +++ /dev/null
 @@ -1,4 +0,0 @@
 -foo = 1
 -
 -def three_item_iterable():
 -    ...
-Index: pylint-3.2.5/tests/regrtest_data/uses_module_with_stub.py
+Index: pylint-3.2.6/tests/regrtest_data/uses_module_with_stub.py
 ===================================================================
---- pylint-3.2.5.orig/tests/regrtest_data/uses_module_with_stub.py
-+++ pylint-3.2.5/tests/regrtest_data/uses_module_with_stub.py
+--- pylint-3.2.6.orig/tests/regrtest_data/uses_module_with_stub.py
++++ pylint-3.2.6/tests/regrtest_data/uses_module_with_stub.py
 @@ -1,5 +1,5 @@
  """If the stub is preferred over the .py, this might emit not-an-iterable"""
 -from pyi.foo import three_item_iterable
@@ -190,16 +190,16 @@ Index: pylint-3.2.5/tests/regrtest_data/uses_module_with_stub.py
  
  for val in three_item_iterable():
      print(val)
-Index: pylint-3.2.5/tests/regrtest_data/pyi/a_module_that_we_definitely_dont_use_in_the_functional_tests.py
+Index: pylint-3.2.6/tests/regrtest_data/pyi/a_module_that_we_definitely_dont_use_in_the_functional_tests.py
 ===================================================================
 --- /dev/null
-+++ pylint-3.2.5/tests/regrtest_data/pyi/a_module_that_we_definitely_dont_use_in_the_functional_tests.py
++++ pylint-3.2.6/tests/regrtest_data/pyi/a_module_that_we_definitely_dont_use_in_the_functional_tests.py
 @@ -0,0 +1,2 @@
 +def three_item_iterable():
 +    return [1, 2, 3]
-Index: pylint-3.2.5/tests/regrtest_data/pyi/foo.py
+Index: pylint-3.2.6/tests/regrtest_data/pyi/foo.py
 ===================================================================
---- pylint-3.2.5.orig/tests/regrtest_data/pyi/foo.py
+--- pylint-3.2.6.orig/tests/regrtest_data/pyi/foo.py
 +++ /dev/null
 @@ -1,2 +0,0 @@
 -def three_item_iterable():

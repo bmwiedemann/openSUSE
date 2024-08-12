@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Aug 12 06:12:36 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 3.2.6:
+  * Quiet false positives for unexpected-keyword-arg when pylint cannot
+    determine which of two or more dynamically defined classes is being
+    instantiated.
+  * Fix a false positive for missing-param-doc where a method which is
+    decorated with typing.overload was expected to have a docstring
+    specifying its parameters.
+  * Fix a regression that raised invalid-name on class attributes merely
+    overriding invalid names from an ancestor.
+  * Treat assert_never() the same way when imported from typing_extensions.
+  * Fix a false positive for consider-using-min-max-builtin when the
+    assignment target is an attribute.
+  * Fix an AssertionError arising from properties that return partial
+    functions.
+  * Fix a crash when a subclass extends __slots__.
+- Refresh pytest-8.patch.
+- Add patch support-astroid-3.3.patch:
+  * Support astroid >= 3.3.0.
+
+-------------------------------------------------------------------
 Tue Jul  9 11:59:18 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add new patch to fix failing tests with pytest 8, pytest-8.patch
