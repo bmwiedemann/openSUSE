@@ -66,6 +66,7 @@ Patch0026:   0026-compat-gate-blkdev_-patches-behind-bdev_open_by_path.patch
 Patch1001:   bsc-1025089_fix-resync-finished-with-syncs-have-bits-set.patch
 Patch1002:   suse-coccinelle.patch
 Patch1003:   bsc1226510-fix-build-err-against-6.9.3.patch
+Patch1004:   boo1229062-re-enable-blk_queue_max_hw_sectors.patch
 ########################
 
 #https://github.com/openSUSE/rpmlint-checks/blob/master/KMPPolicyCheck.py
