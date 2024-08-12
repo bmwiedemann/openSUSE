@@ -254,4 +254,21 @@
     <comment></comment>
     <requestid>1152447</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>b1e17908dcab7a4f980546398238428b</srcmd5>
+    <version>43</version>
+    <time>1723458684</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 43:
+  
+  * Configure options KLU, OSDI, readline, OpenMP, and XSPICE have
+    been defined as standard.
+  * The VBIC bipolar model has bee significantly updated.
+  * JFET and diode models have been updated as well.
+  * Improved error message, trying to find the location of
+    the error.
+  * For additional new features see the included NEWS file.
+</comment>
+    <requestid>1193146</requestid>
+  </revision>
 </revisionlist>

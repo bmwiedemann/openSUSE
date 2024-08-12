@@ -27,7 +27,7 @@
 
 Name:           %pname%{?build_shared:-shared}
 %define so_ver 0
-Version:        42
+Version:        43
 Release:        0
 Summary:        Mixed-level, Mixed-signal Circuit Simulator Based on spice3f5
 License:        BSD-2-Clause

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Aug  9 23:20:41 UTC 2024 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 43:
+  
+  * Configure options KLU, OSDI, readline, OpenMP, and XSPICE have
+    been defined as standard.
+  * The VBIC bipolar model has bee significantly updated.
+  * JFET and diode models have been updated as well.
+  * Improved error message, trying to find the location of
+    the error.
+  * For additional new features see the included NEWS file.
+
+-------------------------------------------------------------------
 Mon Jan  1 07:58:35 UTC 2024 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 42:
