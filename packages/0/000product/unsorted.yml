@@ -2605,6 +2605,7 @@ unsorted:
   - cosmic-ext-2048 
   - cosmic-ext-applet-apps-menu 
   - cosmic-ext-applet-clipboard-manager 
+  - cosmic-ext-applet-emoji-selector 
   - cosmic-ext-applet-external-monitor-brightness 
   - cosmic-ext-applet-ollama 
   - cosmic-ext-applet-places-status-indicator 
@@ -2612,6 +2613,8 @@ unsorted:
   - cosmic-ext-color-picker 
   - cosmic-ext-dirstat 
   - cosmic-ext-tasks 
+  - cosmic-ext-tweaks 
+  - cosmic-ext-weather 
   - cosmic-files 
   - cosmic-icons 
   - cosmic-launcher 
@@ -2622,6 +2625,7 @@ unsorted:
   - cosmic-randr 
   - cosmic-reader 
   - cosmic-screenshot 
+  - cosmic-session 
   - cosmic-store 
   - cosmic-term 
   - cosmic-workspaces 
@@ -4466,6 +4470,7 @@ unsorted:
   - forgejo 
   - forgejo-apparmor 
   - forgejo-cli 
+  - forgejo-firewalld 
   - forgejo-runner 
   - forgejo-runner-bash-completion 
   - forgejo-runner-fish-completion 
@@ -13929,7 +13934,7 @@ unsorted:
   - libinsane1 
   - libinsane_gobject-devel 
   - libinsane_gobject1 
-  - libinsighttoolkit5_3-1 
+  - libinsighttoolkit5_4-1 
   - libinstpatch-1_0-2 
   - libinstpatch-1_0-2-32bit 
   - libinstpatch-devel 
@@ -18960,6 +18965,8 @@ unsorted:
   - motoya-lcedar-fonts 
   - motoya-lmaru-fonts 
   - motv 
+  - mousam 
+  - mousam-lang 
   - mousepad-devel 
   - mousetweaks 
   - mousetweaks-lang 
@@ -36531,6 +36538,7 @@ unsorted:
   - scirenderer-javadoc 
   - scite 
   - scitokens-cpp-devel 
+  - scm-manager-cli 
   - scmon 
   - scons 
   - scotch 
@@ -37101,6 +37109,7 @@ unsorted:
   - stardict-tools 
   - starfighter 
   - starfighter-lang 
+  - starrydex 
   - starship 
   - startup-notification-devel 
   - statgrab 
