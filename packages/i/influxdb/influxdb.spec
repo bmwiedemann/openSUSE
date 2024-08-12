@@ -26,7 +26,7 @@ Name:           influxdb
 Summary:        Scalable datastore for metrics, events, and real-time analytics
 License:        MIT
 Group:          Productivity/Databases/Servers
-Version:        1.11.5
+Version:        1.11.6
 Release:        0
 URL:            https://github.com/influxdata/influxdb
 Source:         %{name}-%{version}.tar.gz
