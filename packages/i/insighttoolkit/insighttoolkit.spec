@@ -1,7 +1,7 @@
 #
 # spec file for package insighttoolkit
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2016 Angelos Tzotsos <tzotsos@opensuse.org>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %global __builder ninja
 %define tarname ITK
-%define libname lib%{name}5_3-1
+%define libname lib%{name}5_4-1
 
 # Do not use system eigen on aarch64 until fixed upstream:
 # https://github.com/InsightSoftwareConsortium/ITK/issues/2903
@@ -29,23 +29,21 @@
 %bcond_without system_eigen
 %endif
 
-# Python bindings must be turned off until https://github.com/InsightSoftwareConsortium/ITK/issues/3782 is resolved
-%if 0%{?suse_version} >= 1550
+# Python >= 3.8 is required
+%if 0%{?suse_version} > 1650
 %bcond_with python
 %else
-%bcond_without python
+# Unreleased master branch of swig required <https://github.com/InsightSoftwareConsortium/ITK/issues/4746>
+%bcond_with python
 %endif
 
 Name:           insighttoolkit
-Version:        5.3.0
+Version:        5.4.0
 Release:        0
 Summary:        Toolkit for scientific image processing, segmentation, and registration
 License:        Apache-2.0
 URL:            https://www.itk.org
-Source:         https://github.com/InsightSoftwareConsortium/ITK/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM add-missing-includes.patch -- Add missing #include <cstdint>
-Patch0:         add-missing-includes.patch
-
+Source0:        https://github.com/InsightSoftwareConsortium/ITK/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  CastXML-devel
 BuildRequires:  bison
 BuildRequires:  cmake
@@ -71,8 +69,8 @@ BuildRequires:  pkgconfig(libtiff-4)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(zlib)
 %if %{with python}
-BuildRequires:  python3-devel
-BuildRequires:  swig >= 4.0
+BuildRequires:  python3-devel >= 3.8
+BuildRequires:  swig >= 4.3
 %endif
 %if %{with system_eigen}
 BuildRequires:  pkgconfig(eigen3)
@@ -152,7 +150,6 @@ This package provides the modules for ITK's python bindings.
   -DITK_USE_SYSTEM_SWIG:BOOL=ON \
   -DITK_USE_SYSTEM_VXL:BOOL=OFF \
   -DVXL_BUILD_CORE_NUMERICS:BOOL=OFF \
-  -DVCL_INCLUDE_CXX_0X:BOOL=ON \
   -DITK_FORBID_DOWNLOADS=ON \
   -DITK_WRAP_PYTHON:BOOL=%{?with_python:ON}%{!?with_python:OFF}
 

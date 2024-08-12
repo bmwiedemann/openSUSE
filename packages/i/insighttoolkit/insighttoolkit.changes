@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Jul  8 06:30:25 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 5.4.0:
+  * No release notes.
+- Drop patches incorporated upstream:
+  * insighttoolkit-swig4_1-compat.patch
+  * add-missing-includes.patch
+- Disable python bindings for openSUSE < 1650 as python >= 3.8 is
+  required and also for openSUSE >= 1650 as an unreleased version
+  of swig is required.
+
+-------------------------------------------------------------------
+Fri Jan 19 12:53:49 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add insighttoolkit-swig4_1-compat.patch -- Add swig 4.1+
+  compatibility by defining SWIGPY_SLICEOBJECT; patch picked from
+  upstream commit [gh#InsightSoftwareConsortium/ITK#3782].
+
+-------------------------------------------------------------------
 Mon Nov  6 16:15:38 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix build with RPM 4.19: unnumbered patches are no longer

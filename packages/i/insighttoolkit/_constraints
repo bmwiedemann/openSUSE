@@ -2,10 +2,10 @@
 <constraints>
   <hardware>
     <disk>
-      <size unit="G">24</size>
+      <size unit="G">28</size>
     </disk>
     <physicalmemory>
-      <size unit="G">6</size>
+      <size unit="G">12</size>
     </physicalmemory>
   </hardware>
   <overwrite>
@@ -14,7 +14,7 @@
     </conditions>
     <hardware>
       <memoryperjob>
-        <size unit="M">2000</size>
+        <size unit="M">5000</size>
       </memoryperjob>
     </hardware>
   </overwrite>
