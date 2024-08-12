@@ -18,7 +18,7 @@
 
 %bcond_with test
 Name:           swayimg
-Version:        3.0
+Version:        3.1
 Release:        0
 Summary:        Image viewer for Sway/Wayland
 License:        MIT
@@ -87,7 +87,7 @@ opening the image directly in a terminal window.
 %{_datadir}/swayimg/swayimgrc
 %{_datadir}/applications/swayimg.desktop
 %{_datadir}/bash-completion/completions/swayimg
-%{_datadir}/icons/hicolor/64x64/apps/swayimg.png
+%{_datadir}/icons/hicolor/*/apps/swayimg.png
 %{_mandir}/man1/swayimg.1%{?ext_man}
 %{_mandir}/man5/swayimgrc.5%{?ext_man}
 %{_datadir}/zsh/site-functions/_swayimg

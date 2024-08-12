@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Aug 11 18:10:29 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 3.1
+  * Added SIGUSR1 and SIGUSR2 signal support;
+  * gallery: Fixed reload action;
+  * gallery: Added border/shadow configuration;
+  * gallery: Fixed thumbnail position (center);
+  * gallery: Added help screen;
+  * gallery: Added prev_file, next_file, page_up, page_down
+    actions;
+  * Added default binding Shift+Del to delete files;
+  * Changed app icon.
+
+-------------------------------------------------------------------
 Sun Aug  4 10:46:04 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 3.0
