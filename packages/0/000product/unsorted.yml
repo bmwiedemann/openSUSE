@@ -478,6 +478,7 @@ unsorted:
   - agama 
   - agama-auto 
   - agama-cli 
+  - agama-integration-tests 
   - agama-playwright 
   - agama-products-opensuse 
   - agama-web-ui 
@@ -1852,6 +1853,7 @@ unsorted:
   - cadsondemak-fonts 
   - cadvisor 
   - cage 
+  - cagebreak 
   - cairo-clock 
   - cairo-clock-lang 
   - cairo-devel 
@@ -2551,12 +2553,6 @@ unsorted:
   - coreboot-utils 
   - coredns 
   - coredns-extras 
-  - coredns-for-k8s1.24 
-  - coredns-for-k8s1.24-extras 
-  - coredns-for-k8s1.25 
-  - coredns-for-k8s1.25-extras 
-  - coredns-for-k8s1.26 
-  - coredns-for-k8s1.26-extras 
   - coredns-for-k8s1.27 
   - coredns-for-k8s1.27-extras 
   - coredns-for-k8s1.28 
@@ -3873,9 +3869,6 @@ unsorted:
   - espeakedit 
   - etc-update 
   - etcd 
-  - etcd-for-k8s1.24 
-  - etcd-for-k8s1.25 
-  - etcd-for-k8s1.26 
   - etcd-for-k8s1.27 
   - etcd-for-k8s1.28 
   - etcd-for-k8s1.29 
@@ -8888,9 +8881,9 @@ unsorted:
   - imb-mpich 
   - imb-mvapich2 
   - imb-openmpi4 
-  - imb_2021_7-gnu-mpich-hpc 
-  - imb_2021_7-gnu-mvapich2-hpc 
-  - imb_2021_7-gnu-openmpi4-hpc 
+  - imb_2021_8-gnu-mpich-hpc 
+  - imb_2021_8-gnu-mvapich2-hpc 
+  - imb_2021_8-gnu-openmpi4-hpc 
   - imgp 
   - imgp-bash-completion 
   - imgp-fish-completion 
@@ -10521,39 +10514,6 @@ unsorted:
   - kubernetes-scheduler-minus1 
   - kubernetes-scheduler-minus2 
   - kubernetes-scheduler-minus3 
-  - kubernetes1.24-apiserver 
-  - kubernetes1.24-client 
-  - kubernetes1.24-client-bash-completion 
-  - kubernetes1.24-client-common 
-  - kubernetes1.24-client-fish-completion 
-  - kubernetes1.24-controller-manager 
-  - kubernetes1.24-kubeadm 
-  - kubernetes1.24-kubelet 
-  - kubernetes1.24-kubelet-common 
-  - kubernetes1.24-proxy 
-  - kubernetes1.24-scheduler 
-  - kubernetes1.25-apiserver 
-  - kubernetes1.25-client 
-  - kubernetes1.25-client-bash-completion 
-  - kubernetes1.25-client-common 
-  - kubernetes1.25-client-fish-completion 
-  - kubernetes1.25-controller-manager 
-  - kubernetes1.25-kubeadm 
-  - kubernetes1.25-kubelet 
-  - kubernetes1.25-kubelet-common 
-  - kubernetes1.25-proxy 
-  - kubernetes1.25-scheduler 
-  - kubernetes1.26-apiserver 
-  - kubernetes1.26-client 
-  - kubernetes1.26-client-bash-completion 
-  - kubernetes1.26-client-common 
-  - kubernetes1.26-client-fish-completion 
-  - kubernetes1.26-controller-manager 
-  - kubernetes1.26-kubeadm 
-  - kubernetes1.26-kubelet 
-  - kubernetes1.26-kubelet-common 
-  - kubernetes1.26-proxy 
-  - kubernetes1.26-scheduler 
   - kubernetes1.27-apiserver 
   - kubernetes1.27-client 
   - kubernetes1.27-client-bash-completion 
@@ -11929,7 +11889,7 @@ unsorted:
   - libavcodec59 
   - libavcodec59-32bit 
   - libavcodec60-32bit 
-  - libavcodec61 
+  - libavcodec61-32bit 
   - libavdevice58_13 
   - libavdevice58_13-32bit 
   - libavdevice59 
@@ -11937,7 +11897,8 @@ unsorted:
   - libavdevice60 
   - libavdevice60-32bit 
   - libavdevice61 
-  - libavfilter10 
+  - libavdevice61-32bit 
+  - libavfilter10-32bit 
   - libavfilter7_110 
   - libavfilter7_110-32bit 
   - libavfilter8 
@@ -11947,7 +11908,7 @@ unsorted:
   - libavformat59 
   - libavformat59-32bit 
   - libavformat60-32bit 
-  - libavformat61 
+  - libavformat61-32bit 
   - libavfs0 
   - libavif-devel 
   - libavif16-32bit 
@@ -11960,7 +11921,7 @@ unsorted:
   - libavutil57 
   - libavutil57-32bit 
   - libavutil58-32bit 
-  - libavutil59 
+  - libavutil59-32bit 
   - libaws-c-auth1_0_0 
   - libaws-c-cal0unstable 
   - libaws-c-common1 
@@ -14957,7 +14918,7 @@ unsorted:
   - libopenmpi4-gnu-hpc 
   - libopenmpi5-gnu-hpc 
   - libopenmpi_4_1_6-gnu-hpc 
-  - libopenmpi_5_0_3-gnu-hpc 
+  - libopenmpi_5_0_5-gnu-hpc 
   - libopenmpt-devel 
   - libopenmpt-modplug-devel 
   - libopenmpt0-32bit 
@@ -15331,7 +15292,7 @@ unsorted:
   - libpostproc56 
   - libpostproc56-32bit 
   - libpostproc57-32bit 
-  - libpostproc58 
+  - libpostproc58-32bit 
   - libpostquantumcryptoengine1 
   - libpowerman0 
   - libppl14 
@@ -16364,12 +16325,12 @@ unsorted:
   - libswresample4-32bit 
   - libswresample4_ff5 
   - libswresample4_ff5-32bit 
-  - libswresample5 
+  - libswresample5-32bit 
   - libswscale5_9-32bit 
   - libswscale6 
   - libswscale6-32bit 
   - libswscale7-32bit 
-  - libswscale8 
+  - libswscale8-32bit 
   - libsybdb5 
   - libsybdb5-32bit 
   - libsymmetrica2 
@@ -16596,7 +16557,6 @@ unsorted:
   - libubsan1-gcc13 
   - libubsan1-gcc13-32bit 
   - libuchardet-devel 
-  - libuchardet0 
   - libuchardet0-32bit 
   - libucl1 
   - libucm-devel 
@@ -17235,7 +17195,7 @@ unsorted:
   - libxosd2 
   - libxplayer-plparser-mini18 
   - libxplayer-plparser18 
-  - libxpp-0_2_0 
+  - libxpp-3 
   - libxpp-devel 
   - libxreaderdocument3 
   - libxreaderview3 
@@ -19058,14 +19018,14 @@ unsorted:
   - mpich-ofi-gnu-hpc-devel 
   - mpich-ofi-gnu-hpc-devel-static 
   - mpich-ofi-gnu-hpc-macros-devel 
-  - mpich-ofi_4_1_2-gnu-hpc 
-  - mpich-ofi_4_1_2-gnu-hpc-devel 
-  - mpich-ofi_4_1_2-gnu-hpc-devel-static 
-  - mpich-ofi_4_1_2-gnu-hpc-macros-devel 
-  - mpich_4_1_2-gnu-hpc 
-  - mpich_4_1_2-gnu-hpc-devel 
-  - mpich_4_1_2-gnu-hpc-devel-static 
-  - mpich_4_1_2-gnu-hpc-macros-devel 
+  - mpich-ofi_4_2_2-gnu-hpc 
+  - mpich-ofi_4_2_2-gnu-hpc-devel 
+  - mpich-ofi_4_2_2-gnu-hpc-devel-static 
+  - mpich-ofi_4_2_2-gnu-hpc-macros-devel 
+  - mpich_4_2_2-gnu-hpc 
+  - mpich_4_2_2-gnu-hpc-devel 
+  - mpich_4_2_2-gnu-hpc-devel-static 
+  - mpich_4_2_2-gnu-hpc-macros-devel 
   - mpitests 
   - mpitests-mpich 
   - mpitests-mpich-gnu-hpc 
@@ -20467,12 +20427,12 @@ unsorted:
   - openmpi_4_1_6-gnu-hpc-docs 
   - openmpi_4_1_6-gnu-hpc-macros-devel 
   - openmpi_4_1_6-gnu-hpc-testsuite 
-  - openmpi_5_0_3-gnu-hpc 
-  - openmpi_5_0_3-gnu-hpc-devel 
-  - openmpi_5_0_3-gnu-hpc-devel-static 
-  - openmpi_5_0_3-gnu-hpc-docs 
-  - openmpi_5_0_3-gnu-hpc-macros-devel 
-  - openmpi_5_0_3-gnu-hpc-testsuite 
+  - openmpi_5_0_5-gnu-hpc 
+  - openmpi_5_0_5-gnu-hpc-devel 
+  - openmpi_5_0_5-gnu-hpc-devel-static 
+  - openmpi_5_0_5-gnu-hpc-docs 
+  - openmpi_5_0_5-gnu-hpc-macros-devel 
+  - openmpi_5_0_5-gnu-hpc-testsuite 
   - openmpt123 
   - openmw 
   - opennlp 
