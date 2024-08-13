@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Aug  9 17:11:09 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- add 566.patch: fixed VAAPI Wayland on libva v2.22.0
+
+-------------------------------------------------------------------
 Mon Oct  4 15:06:05 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
 
 - fixed JIRA number in previous changelog

@@ -17,7 +17,7 @@
 
 
 Name:           gom
-Version:        0.5.2
+Version:        0.5.3
 Release:        0
 Summary:        GObject Data Mapper
 License:        LGPL-2.1-or-later

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Aug 11 13:04:05 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 46.3:
+  + New Window should always open a non-incognito window.
+  + Disable Firefox Sync.
+  + Fix application mode when always start in incognito mode
+    setting is enabled.
+  + Fix multiple crashes when destroying window.
+  + Miscellaneous robustness improvements.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sat Jun 29 16:07:07 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 46.2:

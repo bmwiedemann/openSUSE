@@ -316,4 +316,13 @@
     <comment></comment>
     <requestid>1081851</requestid>
   </revision>
+  <revision rev="35" vrev="3">
+    <srcmd5>e862461426dd6be828c8fa6ee51ff00f</srcmd5>
+    <version>3.2.2</version>
+    <time>1723548173</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip failing test with jwt 2.9.0
+  gh#oauthlib/oauthlib#877</comment>
+    <requestid>1193372</requestid>
+  </revision>
 </revisionlist>

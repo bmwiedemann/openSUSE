@@ -28,18 +28,18 @@
 %global abs2rel perl -e %{script}
 %global syslibdir       %{_libdir}
 # Standard JPackage naming and versioning defines.
-%global updatever       412
-%global buildver        b08
+%global updatever       422
+%global buildver        b05
 %global root_repository https://github.com/ibmruntimes/openj9-openjdk-jdk8/archive
-%global root_revision   3f438d726eabae33b2687e565530272909ff37ad
-%global root_branch     v0.44.0-release
+%global root_revision   a75ff73ce586d4105f89e83f0b3a80ca922e0d6f
+%global root_branch     v0.46.0-release
 %global omr_repository  https://github.com/eclipse/openj9-omr/archive
-%global omr_revision    254af5a0452934f62e3253c5565b183c682d3495
-%global omr_branch      v0.44.0-release
+%global omr_revision    840a9adba4548aa546e36c97a1150b7306a7e07b
+%global omr_branch      v0.46.0-release
 %global openj9_repository https://github.com/eclipse/openj9/archive
-%global openj9_revision b0699311c7d9341f3d0ebf9a7a4b5546a7ca7004
-%global openj9_branch   v0.44.0-release
-%global openj9_tag      openj9-0.44.0
+%global openj9_revision 1a6f6128aa2f639de1e33cae77a31f474ba6b1a9
+%global openj9_branch   v0.46.0-release
+%global openj9_tag      openj9-0.46.0
 # priority must be 6 digits in total
 %global priority        1801
 %global javaver         1.8.0
@@ -112,8 +112,6 @@ Patch2:         multiple-pkcs11-library-init.patch
 Patch3:         disable-doclint-by-default.patch
 # Allow building with newer libdwarf
 Patch4:         libdwarf-fix.patch
-# Fix narrowing conversion error
-Patch5:         openj9-no-narrowing.patch
 # Fix build with gcc 13
 Patch31:        stringop-overflow.patch
 # Fix build with gcc 14
@@ -360,7 +358,6 @@ rm -rvf jdk/src/share/native/sun/java2d/cmm/lcms/lcms2*
 %patch -P 2 -p1
 %patch -P 3 -p1
 %patch -P 4 -p1
-%patch -P 5 -p1
 
 %patch -P 31 -p1
 %patch -P 32 -p1

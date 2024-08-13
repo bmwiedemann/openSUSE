@@ -1,10 +1,10 @@
 commit 4d2c1fa08842cf8d60cc3dc1dde30ecff585103c
-Author: Nicolas Morey-Chaisemartin <NMoreyChaisemartin@suse.com>
+Author: Nicolas Morey-Chaisemartin <NMorey@suse.com>
 Date:   Thu Jun 8 11:11:01 2017 +0200
 
     eth-ff suse build fixes
     
-    Signed-off-by: Nicolas Morey-Chaisemartin <NMoreyChaisemartin@suse.com>
+    Signed-off-by: Nicolas Morey-Chaisemartin <NMorey@suse.com>
 
 diff --git Makerules/Defs.Flags Makerules/Defs.Flags
 index e84324356f0a..9e34eafb8bad 100755

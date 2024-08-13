@@ -125,6 +125,7 @@ export CFLAGS="%{optflags} -fpie"
 export LDFLAGS="-pie"
 
 autoreconf -fvi
+# SSSD files provider is deprecated since 2.9.0, but still enabled in openSUSE Leap 15.6 and SLE 15 SP6
 %configure \
   --enable-shadowgrp \
   --enable-account-tools-setuid \
@@ -137,6 +138,9 @@ autoreconf -fvi
   --with-selinux \
   --without-libcrack \
   --without-libbsd \
+%if 0%{?suse_version} >= 1600
+  --without-sssd \
+%endif
   --with-group-name-max-length=32 \
   --enable-vendordir=%{_distconfdir}
 %make_build

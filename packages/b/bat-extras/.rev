@@ -53,4 +53,14 @@ Update to version 2023-09-19</comment>
 Update to version 2024.02.12</comment>
     <requestid>1146961</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>56fba2d1ab1ead8fbeff14ae9962a881</srcmd5>
+    <version>2024.07.10</version>
+    <time>1723548274</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1193513 from jlkDE
+
+Update to version 2024.07.10</comment>
+    <requestid>1193515</requestid>
+  </revision>
 </revisionlist>

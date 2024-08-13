@@ -1,7 +1,7 @@
 #
 # spec file for package zathura-plugin-ps
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,18 +18,18 @@
 
 %define realname zathura-ps
 Name:           zathura-plugin-ps
-Version:        0.2.7
+Version:        0.2.8
 Release:        0
 Summary:        PS support for zathura via libspectre
 License:        Zlib
 Group:          Productivity/Office/Other
 URL:            https://pwmt.org/projects/%{realname}/
 Source:         https://pwmt.org/projects/%{realname}/download/%{realname}-%{version}.tar.xz
-BuildRequires:  meson >= 0.43
+BuildRequires:  meson >= 0.61
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(girara-gtk3)
 BuildRequires:  pkgconfig(libspectre)
-BuildRequires:  pkgconfig(zathura)
+BuildRequires:  pkgconfig(zathura) >= 0.3.8
 Requires:       zathura
 Provides:       zathura-ps-plugin
 
@@ -40,7 +40,7 @@ The zathura-ps plugin adds PostScript support to zathura by using the libspectre
 %setup -q -n %{realname}-%{version}
 
 %build
-%meson
+%meson -Dtests=disabled
 %meson_build
 
 %install

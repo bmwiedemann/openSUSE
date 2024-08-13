@@ -2364,4 +2364,12 @@ New stable release</comment>
     <comment>New stable release (forwarded request 1190511 from iznogood)</comment>
     <requestid>1190559</requestid>
   </revision>
+  <revision rev="273" vrev="1">
+    <srcmd5>642357b7da3ac03245f8e488b9a2513c</srcmd5>
+    <version>1.48.8</version>
+    <time>1723548157</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1193423</requestid>
+  </revision>
 </revisionlist>

@@ -42,6 +42,7 @@ Patch1:         %{name}-ppc64-VA-range-SUSE.patch
 Patch2:         %{name}-PN_XNUM.patch
 Patch3:         0001-PATCH-Fix-failure-of-hugetlb-pages-exclusion-on-Linu.patch
 Patch4:         0002-PATCH-Fix-wrong-exclusion-of-Slab-pages-on-Linux-6.1.patch
+Patch5:         make-reserve_diskspace-do-nothing-for-flattened-form.patch
 BuildRequires:  libbz2-devel
 BuildRequires:  libdw-devel
 BuildRequires:  libelf-devel

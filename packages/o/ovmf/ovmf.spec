@@ -63,8 +63,6 @@ Patch7:         %{name}-Revert-OvmfPkg-PlatformInitLib-dynamic-mmio-window-s.pat
 Patch8:         %{name}-Revert-ArmVirtPkg-make-EFI_LOADER_DATA-non-executabl.patch
 # Bug 1205613 - L3: win 2k22 UEFI xen VMs cannot boot in xen after upgrade
 Patch9:         %{name}-Revert-OvmfPkg-OvmfXen-Set-PcdFSBClock.patch
-# Bug 1209266 - OVMF firmware hangs when booting SEV or SEV-ES guest
-Patch10:        %{name}-Revert-OvmfPkg-PlatformPei-Update-ReserveEmuVariable.patch
 # Bug 1219024 - SVVP test Check SMBIOS Table Specific Requirements fails
 Patch11:        %{name}-OvmfPkg-SmbiosPlatformDxe-tweak-fallback-release-dat.patch
 # Bug 1217704 - ovmf: reproducible builds problem in ovmf-riscv64-code.bin
@@ -231,7 +229,6 @@ export PYTHON_COMMAND=python3
 
 # For some reason ARM still uses TPM2_CONFIG_ENABLE
 OVMF_FLAGS=" \
-	-D SECURE_BOOT_ENABLE \
 	-D TPM2_ENABLE \
 	-D TPM2_CONFIG_ENABLE \
 	-D NETWORK_IP6_ENABLE \
@@ -250,6 +247,7 @@ FLAVORS_X86=("ovmf-ia32")
 BUILD_OPTIONS_X86=" \
 	$OVMF_FLAGS \
 	-D FD_SIZE_2MB \
+	-D SECURE_BOOT_ENABLE \
 	-D BUILD_SHELL=FALSE \
 	-a IA32 \
 	-p OvmfPkg/OvmfPkgIa32.dsc \
@@ -257,8 +255,10 @@ BUILD_OPTIONS_X86=" \
 	-t $TOOL_CHAIN \
 "
 
-# Flavors for x86_64: 2MB, 4MB, and 4MB+SMM
-FLAVORS_X64=("ovmf-x86_64" "ovmf-x86_64-4m" "ovmf-x86_64-smm")
+# Flavors for x86_64: 2MB, 4MB, 4MB+SMM and AMD SEV
+FLAVORS_X64=("ovmf-x86_64" "ovmf-x86_64-4m" "ovmf-x86_64-smm" "ovmf-x86_64-sev")
+# Flavors will NOT enroll default kek/db keys
+FLAVORS_X64_SKIP_SB_KEY=("ovmf-x86_64-sev")
 BUILD_OPTIONS_X64=" \
 	$OVMF_FLAGS \
 	-D BUILD_SHELL=FALSE \
@@ -271,6 +271,7 @@ BUILD_OPTIONS_X64=" \
 FLAVORS_AA64=("aavmf-aarch64")
 BUILD_OPTIONS_AA64=" \
 	$OVMF_FLAGS \
+	-D SECURE_BOOT_ENABLE \
 	-D NETWORK_TLS_ENABLE \
 	-a AARCH64 \
 	-p ArmVirtPkg/ArmVirtQemu.dsc \
@@ -291,6 +292,7 @@ BUILD_OPTIONS_AA32=" \
 FLAVORS_RV64=("riscv")
 BUILD_OPTIONS_RV64=" \
 	$OVMF_FLAGS \
+	-D SECURE_BOOT_ENABLE \
 	-a RISCV64 \
 	-p OvmfPkg/RiscVVirt/RiscVVirtQemu.dsc \
 	-b DEBUG \
@@ -352,15 +354,17 @@ collect_x86_64_debug_files()
 
 declare -A EXTRA_FLAGS_X64
 EXTRA_FLAGS_X64=(
-	[ovmf-x86_64]="-p OvmfPkg/OvmfPkgX64.dsc -D FD_SIZE_2MB"
-	[ovmf-x86_64-4m]="-p OvmfPkg/OvmfPkgX64.dsc -D FD_SIZE_4MB -D NETWORK_TLS_ENABLE"
-	[ovmf-x86_64-smm]="-a IA32 -p OvmfPkg/OvmfPkgIa32X64.dsc -D FD_SIZE_4MB -D NETWORK_TLS_ENABLE -D SMM_REQUIRE"
+	[ovmf-x86_64]="-p OvmfPkg/OvmfPkgX64.dsc -D FD_SIZE_2MB -D SECURE_BOOT_ENABLE"
+	[ovmf-x86_64-4m]="-p OvmfPkg/OvmfPkgX64.dsc -D FD_SIZE_4MB -D NETWORK_TLS_ENABLE -D SECURE_BOOT_ENABLE"
+	[ovmf-x86_64-smm]="-a IA32 -p OvmfPkg/OvmfPkgIa32X64.dsc -D FD_SIZE_4MB -D NETWORK_TLS_ENABLE -D SMM_REQUIRE -D SECURE_BOOT_ENABLE"
+	[ovmf-x86_64-sev]="-p OvmfPkg/OvmfPkgX64.dsc -D FD_SIZE_4MB -D NETWORK_TLS_ENABLE"
 )
 declare -A OUTDIR_X64
 OUTDIR_X64=(
 	[ovmf-x86_64]="OvmfX64"
 	[ovmf-x86_64-4m]="OvmfX64"
 	[ovmf-x86_64-smm]="Ovmf3264"
+	[ovmf-x86_64-sev]="OvmfX64"
 )
 
 %ifnarch x86_64
@@ -491,6 +495,10 @@ generate_sb_var_templates()
 	# We only build the variable templates for X64 and AARCH64
 	if [ "$ARCH" == "X64" ]; then
 		FLAVORS=${FLAVORS_X64[@]}
+		# some flavors should NOT enroll default keys
+		for skip in ${FLAVORS_X64_SKIP_SB_KEY[@]}; do
+   			FLAVORS=("${FLAVORS[@]/$skip}")
+		done
 	elif [ "$ARCH" == "AARCH64" ]; then
 		FLAVORS=${FLAVORS_AA64[@]}
 	fi

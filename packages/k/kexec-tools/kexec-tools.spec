@@ -18,7 +18,7 @@
 
 # Temporarily bump version to aid package split
 Name:           kexec-tools
-Version:        2.0.28
+Version:        2.0.29
 Release:        0
 Summary:        Tools for loading replacement kernels into memory
 License:        GPL-2.0-or-later
@@ -34,8 +34,7 @@ Patch4:         %{name}-vmcoreinfo-in-xen.patch
 # https://patchwork.kernel.org/project/linux-riscv/patch/20190416123233.4779-1-mick@ics.forth.gr/
 Patch5:         %{name}-riscv64.patch
 Patch10:        %{name}-SYS_getrandom.patch
-Patch11:        kexec-dont-use-kexec_file_load-on-xen.patch
-Patch12:        fix-building-on-x86_64-with-binutils-2.41.patch
+Patch11:        %{name}-riscv-hotplug.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  systemd-rpm-macros
@@ -44,7 +43,7 @@ BuildRequires:  zlib-devel
 #!BuildIgnore:  gcc-PIE
 Requires:       perl-Bootloader >= 1.6
 Requires(post): suse-module-tools
-Requires(postun):suse-module-tools
+Requires(postun): suse-module-tools
 %{?systemd_requires}
 %if 0%{?suse_version} == 1600
 # No Xen

@@ -42,7 +42,7 @@
 # % define build_static_devel 1
 
 %define pname openmpi
-%define _vers 5_0_3
+%define _vers 5_0_5
 %define m_f_ver 5
 %bcond_with ringdisabled
 
@@ -113,7 +113,7 @@ ExclusiveArch:  do_not_build
 %global hpc_openmpi_pack_version %{hpc_openmpi_dep_version}
 %endif
 
-%define git_ver .0.9cc951b192bf
+%define git_ver .0.ca64c52a8227
 
 #############################################################################
 #
@@ -122,7 +122,7 @@ ExclusiveArch:  do_not_build
 #############################################################################
 
 Name:           %{package_name}%{?testsuite:-testsuite}
-Version:        5.0.3
+Version:        5.0.5
 Release:        0
 Summary:        An implementation of MPI/SHMEM (Version %{m_f_ver})
 License:        BSD-3-Clause

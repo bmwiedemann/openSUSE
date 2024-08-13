@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Aug 11 13:23:33 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.44.1:
+  + Update testsuite to work with stricter json-glib.
+
+-------------------------------------------------------------------
 Fri Mar 17 19:02:07 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.44.0:

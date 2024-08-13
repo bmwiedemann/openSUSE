@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Wed Aug 07 06:36:52 UTC 2024 - danish.prakash@suse.com
+
+- Update to version 1.12.1:
+  * Release v1.12.1
+  * Updated release notes for 1.12.1
+  * Change av cargo categories
+  * Bump to 1.13.0-dev
+  * Release 1.12.0
+  * Release notes for 1.12
+  * config: ignore enoent errors while reading configs
+  * run cargo update
+  * update upsteam resolvers on each refresh
+  * fix(deps): update rust crate syslog to v7
+  * fix(deps): update rust crate tokio to 1.39.2
+  * add tcp support for forwarding
+  * add tcp listening support
+  * test: add new test to check for startup error
+  * return bind error to caller on first start
+  * add our own error type and use it over anyhow
+  * server: use anyhow to wrap parse_configs error
+  * server: split out main loop into new function
+  * main: remove aardvark-dns error prefix
+  * coredns: remove unnecessary try_join! call
+  * coredns: drop pointless name var
+  * serve: read nameservers once
+  * replace signal-hook with tokio::signal
+  * serve: fix broken error logging
+  * server: improve parent <-> child error handling
+  * add some basic perf check script
+  * fix(deps): update rust crate tokio to 1.39.0
+  * coredns: create reply_ip() function
+  * coredns: match dns type explicitly
+  * server: use only one tokio runtime
+  * coredns: improve indentation for process_message()
+  * coredns: move upstream resolvers detection later
+  * coredns: do not clone sender
+  * read AARDVARK_NO_PROXY once
+  * coredns: move main code out of select!
+  * coredns: fix "name" naming
+  * coredns: remove unused forward_addr/port
+  * coredns: fix handling of dns search domain
+  * coredns: rework PTR lookup flow
+  * fix(deps): update rust crate tokio to 1.38.1
+  * [skip-ci] TMT: Reorg upstream tests for downstream reusability
+  * [skip-ci] Packit: use `packages: [aardvark-dns-fedora]` for podman-next builds
+  * Be sure to have at least Epoch 2 to preserve upgrade path in c10s.
+  * fix(deps): update rust crate log to 0.4.22
+  * [CI:BUILD] rpm: Update Rust macro usage
+  * fix(deps): update rust crate tokio to 1.38.0
+  * Bump to 1.12.0-dev
+
+-------------------------------------------------------------------
 Fri Jul 26 06:54:04 UTC 2024 - Danish Prakash <danish.prakash@suse.com>
 
 - rust >= 1.70 is required to build more recent versions of this

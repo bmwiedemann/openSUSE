@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Aug  9 18:19:48 UTC 2024 - Michael Gorse <mgorse@suse.com>
+
+- Fix build if sle_version is defined: Patch3 no longer exists, and
+  add back Patch4 for SLE builds that was mistakenly removed in
+  last change.
+
+-------------------------------------------------------------------
 Mon Aug  5 07:02:25 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 46.4:

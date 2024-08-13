@@ -1,4 +1,96 @@
 -------------------------------------------------------------------
+Thu Aug  8 11:20:24 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add new patch to fix tests: fix-tests.patch
+- Remove upstreamed patch: support-hatchling-1.22.patch
+- update to 1.12.0:
+  - The run/env run and test commands now treat inclusion variable
+    options as an intersection rather than a union to allow for
+    specific targeting of environments
+  - Add ability to control the source of Python distributions
+  - Upgrade Ruff to 0.4.5
+  - Upgrade PyApp to 0.22.0 for binary builds
+  - The fmt command no longer hides the commands that are being
+    executed
+  - Add default timeout for network requests, useful when installing
+    Python distributions
+  - Fix syntax highlighting contrast for the config show command
+- 1.11.1:
+  - Add official GitHub Action for installing Hatch
+  - Fix terminal.styles.spinner configuration
+  - Fix entry points in the pre-built distributions that binaries use
+- 1.11.0:
+  - Upgrade PyApp to 0.21.1 for binary builds
+  - On Linux, install the highest compatible Python distribution
+    variant based on CPU architecture rather than assuming recent
+    hardware
+- 1.10.0:
+  - The run/env run, fmt and shell commands now only change the
+    current working directory to the project root if not already
+    inside the project
+  - The shell command now accepts a single argument to specify the
+    environment to enter which overrides the standard choice
+    mechanisms. The arguments determining shell options have been
+    converted to flags.
+  - Add test command
+  - The run command can now execute scripts that define inline
+    metadata for dependencies and Python version constraints
+  - The virtual environment type now supports the ability to use UV in
+    place of pip & virtualenv
+  - Add self report command for submitting pre-populated bug reports
+    to GitHub
+  - The reserved environment used for static analysis is now
+    completely configurable
+  - Add the following methods to the environment interface for
+    complete control over output during life cycle management:
+    app_status_creation, app_status_pre_installation,
+    app_status_post_installation, app_status_project_installation,
+    app_status_dependency_state_check,
+    app_status_dependency_installation_check,
+    app_status_dependency_synchronization
+  - Add binaries for 32-bit versions of Windows
+  - Read configuration from any ~/.pypirc file for the index publisher
+  - Use the Git user as the default username for new project URL
+    metadata
+  - Add HATCH_DEBUG environment variable that when enabled will show
+    local variables in the case of unhandled tracebacks
+  - The env show command now outputs data about all internal
+    environments when using the --json flag
+  - Upgrade default CPython distributions to 20240415
+  - Upgrade default PyPy distributions to 7.3.15
+  - Upgrade Ruff to 0.4.2
+  - Upgrade PyApp to 0.19.0 for binary builds
+  - Bump the minimum supported version of Hatchling to 1.24.2
+  - Bump the minimum supported version of virtualenv to 20.26.1
+  - Maintain consistent data paths for case insensitive file systems
+  - When projects derive dependencies from metadata hooks, there is
+    now by default a status indicator for when the hooks are executed
+    for better responsiveness
+  - Properly support projects with a pyproject.toml file but no
+    project table e.g. applications
+  - Fix the fmt command when automatically installing plugin
+    dependencies
+  - Fix dependency inheritance for the template of the types
+    environment for new projects
+  - Fix warnings related to tar file extraction on Python 3.12+ when
+    unpacking Python distributions for installation
+  - De-select Ruff rule E501 for the fmt command by default since it
+    conflicts with the formatter
+  - Fix colored output from build targets on the first run (build
+    environment creation status indicator issue)
+  - Set the packaging dependency version as >=23.2 to avoid its URL
+    validation which can conflict with context formatting
+  - Fix the exit code when there happens to be an unhandled exception
+  - No longer capture both stdout and stderr streams when parsing
+    metadata payloads from build environments
+  - Fix the README.md file template for new projects to avoid Markdown
+    linting issues
+- 1.9.7:
+  - Limit the maximum version of virtualenv due to a backward
+    incompatible change
+  - Upgrade PyApp to 0.12.0 for binary builds
+
+-------------------------------------------------------------------
 Wed Mar 27 02:59:47 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch support-hatchling-1.22.patch:

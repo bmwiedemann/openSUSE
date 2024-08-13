@@ -116,4 +116,12 @@
   + Allow building with G_DISABLE_ASSERT. (forwarded request 1177032 from dimstar)</comment>
     <requestid>1177056</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>da05130733420d5950958aa647e5c612</srcmd5>
+    <version>1.2.3</version>
+    <time>1723548147</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1193412</requestid>
+  </revision>
 </revisionlist>

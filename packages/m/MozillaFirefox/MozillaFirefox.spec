@@ -28,9 +28,9 @@
 # orig_suffix b3
 # major 69
 # mainver %%major.99
-%define major          128
-%define mainver        %major.0.3
-%define orig_version   128.0.3
+%define major          129
+%define mainver        %major.0
+%define orig_version   129.0
 %define orig_suffix    %{nil}
 %define update_channel release
 %define branding       1
@@ -114,7 +114,7 @@ BuildRequires:  libiw-devel
 BuildRequires:  libproxy-devel
 BuildRequires:  makeinfo
 BuildRequires:  mozilla-nspr-devel >= 4.35
-BuildRequires:  mozilla-nss-devel >= 3.101.1
+BuildRequires:  mozilla-nss-devel >= 3.102.1
 BuildRequires:  nasm >= 2.14
 BuildRequires:  nodejs >= 12.22.12
 %if 0%{?sle_version} >= 120000 && 0%{?sle_version} < 150000
@@ -211,13 +211,10 @@ Patch1:         mozilla-nongnome-proxies.patch
 Patch2:         mozilla-kde.patch
 Patch3:         mozilla-ntlm-full-path.patch
 Patch4:         mozilla-aarch64-startup-crash.patch
-Patch5:         mozilla-fix-aarch64-libopus.patch
 Patch6:         mozilla-s390-context.patch
 Patch7:         mozilla-pgo.patch
 Patch8:         mozilla-reduce-rust-debuginfo.patch
 Patch10:        mozilla-bmo1504834-part1.patch
-Patch11:        mozilla-bmo1504834-part3.patch
-Patch12:        mozilla-bmo1512162.patch
 Patch14:        mozilla-bmo849632.patch
 Patch15:        mozilla-bmo998749.patch
 Patch17:        mozilla-libavcodec58_91.patch
@@ -225,12 +222,9 @@ Patch18:        mozilla-silence-no-return-type.patch
 Patch19:        mozilla-bmo531915.patch
 Patch20:        one_swizzle_to_rule_them_all.patch
 Patch21:        svg-rendering.patch
-Patch22:        mozilla-partial-revert-1768632.patch
 Patch23:        mozilla-rust-disable-future-incompat.patch
-Patch24:        mozilla-bmo1822730.patch
 Patch25:        mozilla-bmo1898476.patch
 Patch26:        mozilla-bmo1907511.patch
-Patch27:        mozilla-bmo1905018.patch
 # Firefox/browser
 Patch101:       firefox-kde.patch
 Patch102:       firefox-branded-icons.patch

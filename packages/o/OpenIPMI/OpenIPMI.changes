@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Jun 18 12:31:39 UTC 2024 - Martin Jambor <mjambor@suse.com>
+
+- Add OpenIPMI-c99.patch in order to make the package buildable with
+  GCC 14.  Patch comes from upstream
+  https://sourceforge.net/p/openipmi/patches/38/ [[boo#1225871]] 
+
+-------------------------------------------------------------------
+Tue May 10 13:34:05 UTC 2022 - trenn@suse.de
+
+- Update to version 2.0.32.3+git.05faa36e:
+  * entity: Handle NULL entity in internal_fru_fetch_done()
+  * entity: Keep the entity around duringa FRU fetch
+  * Move to version 2.0.32
+  * Fix readline and python support
+  * sol: Fix multiple flush queuing issue
+- Patches that are mainline:
+D    fix-conversions.patch
+D    unix_thread-Remove-the-fd-handler-sets-before-it-s-set-up.patch
+D    lanserv-Add-the-judgment-on-the-validity-of-length-in-emu_cmd.c-and-session-in-lanserv_ipmi.c.patch
+D    OpenIPMI-no-return-in-nonvoid-function.patch
+- Refreshed patches not yet mainline:
+M    openipmi-tinfo.patch
+M    fix_dia_version_detection.patch
+
+
+-------------------------------------------------------------------
 Mon May  9 16:41:24 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Add OpenIPMI-autoconf-m4-ax-python-devel-serial25.patch

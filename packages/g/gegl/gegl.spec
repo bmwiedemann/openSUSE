@@ -35,6 +35,8 @@ URL:            http://gegl.org/
 Source0:        https://download.gimp.org/pub/gegl/0.4/%{name}-%{version}.tar.xz
 Source1:        normalize-gir.pl
 Source99:       baselibs.conf
+# PATCH-FIX-UPSTREAM
+Patch0:         https://gitlab.gnome.org/GNOME/gegl/-/commit/66de8124.patch
 
 BuildRequires:  ImageMagick
 BuildRequires:  asciidoc

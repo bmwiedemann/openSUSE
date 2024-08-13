@@ -1,7 +1,7 @@
 #
 # spec file for package zathura-plugin-cb
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,18 +18,18 @@
 
 %define realname zathura-cb
 Name:           zathura-plugin-cb
-Version:        0.1.10
+Version:        0.1.11
 Release:        0
 Summary:        Comic book support for zathura
 License:        Zlib
 Group:          Productivity/Office/Other
 URL:            http://pwmt.org/projects/zathura/plugins/zathura-cb/
 Source:         https://pwmt.org/projects/zathura-cb/download/%{realname}-%{version}.tar.xz
-BuildRequires:  meson > 0.43
+BuildRequires:  meson >= 0.61
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(girara-gtk3)
 BuildRequires:  pkgconfig(libarchive)
-BuildRequires:  pkgconfig(zathura)
+BuildRequires:  pkgconfig(zathura) >= 0.3.8
 Requires:       zathura
 Provides:       zathura-cb-plugin
 
@@ -41,7 +41,7 @@ The zathura-cb plugin adds comic book support to zathura.
 
 %build
 export CFLAGS="%{optflags}"
-%meson
+%meson -Dtests=disabled
 %meson_build
 
 %install

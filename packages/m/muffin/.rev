@@ -1810,4 +1810,12 @@ Sat Jul  15 12:00:38 UTC 2023 - sb56637 &lt;mxoo28j7@duck.com&gt;
   * Don't apply snapping rules to maximized windows when they're in a different workspace.</comment>
     <requestid>1173676</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>82b47ec403ab7bc2cc86969b763cb0e1</srcmd5>
+    <version>6.2.0</version>
+    <time>1723548228</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1193351</requestid>
+  </revision>
 </revisionlist>

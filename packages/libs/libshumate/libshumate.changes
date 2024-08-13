@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Aug 11 13:28:55 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.2.3:
+  + Fix build with -Dvector_renderer=false
+
+-------------------------------------------------------------------
 Mon May 27 06:43:31 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.2.2:

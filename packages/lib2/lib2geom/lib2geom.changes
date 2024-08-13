@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Aug  9 11:24:22 UTC 2024 - Filip Kastl <filip.kastl@suse.com>
+
+- Add skip_failing_tests_gcc14.diff to fix more instable
+  intersection tests. This allows the 32bit version of the package
+  to be built with GCC14.
+
+-------------------------------------------------------------------
 Wed Aug 23 13:38:04 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Add -DNDEBUG to CFLAGS explicitly, since the i586 build depends

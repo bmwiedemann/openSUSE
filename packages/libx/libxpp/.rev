@@ -50,4 +50,18 @@
   * keyboard: add helper function to turn strings into KeySymID and InputModifier</comment>
     <requestid>1157907</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>30434b681025a98c0954298d3959ca0c</srcmd5>
+    <version>0.3.1</version>
+    <time>1723548230</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.3.1:
+  * replace Git tarball by upstream release tarball
+  * use proper SONAME (libxpp-0_2_0 wasn't the SONAME, now it is libxpp-3)
+  * minor changes in the code:
+    - consistently marm move ctors and operators as noexcept
+    - improvements in the build system
+    - use new libcosmos dependency</comment>
+    <requestid>1193376</requestid>
+  </revision>
 </revisionlist>

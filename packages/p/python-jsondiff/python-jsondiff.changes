@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Aug 13 03:18:20 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.2.0:
+  * Exclude a list of paths from diff.
+  * really drop python<=3.7 support
+  * remove last bits of python2 support
+  * Fix pypi release readme formatting
+  * Minimal conversion to pytest+hypothesis
+  * Added simple equality operator for class Symbol
+  * jsondiff: fix symbol equality
+  * setup.py: migrate to pyproject.toml
+  * fix: better diffing of empty containers
+  * add rightonly jsondiff syntax
+  * Introduce YAML support
+  * packaging: revert to requirements files
+- Switch back to PyPi tarball. (required for setuptools_scm)
+- Drop patch remove_nose.patch, no longer required.
+
+-------------------------------------------------------------------
 Tue Mar 26 12:08:46 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Switch build system from setuptools to pyproject.toml

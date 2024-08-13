@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Tue Aug 06 08:48:44 UTC 2024 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20240806.376cbb3:
+  * Use f-strings everywhere
+  * Improve decline message (openSUSE/scm-staging#51)
+
+-------------------------------------------------------------------
+Tue Aug 06 08:47:39 UTC 2024 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20240806.82c53af:
+  * Install docker-compose before running it
+  * Add Leap 16.0 to the products regex
+  * Add openSUSE Slowroll access metrics
+  * pkglistgen: add sort reasonings in product_composer mode
+  * pkglistgen: use f-strings in Group.tocompose()
+
+-------------------------------------------------------------------
+Tue Jul 30 14:28:52 UTC 2024 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20240730.7caf9a6:
+  * osclib: freeze_command: handle 'product' repositories if used
+  * osclib: project_has_repo: allow specifying the project to look at
+
+-------------------------------------------------------------------
+Tue Jul 30 10:17:15 UTC 2024 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20240730.5194d43:
+  * gocd: sle15: Split publish pipelines
+
+-------------------------------------------------------------------
 Tue Jul 16 12:17:46 UTC 2024 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20240716.1a95eb1:

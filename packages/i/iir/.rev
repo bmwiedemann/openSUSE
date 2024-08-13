@@ -16,4 +16,13 @@
   * Fixed broken copy-constructor and a lot of smaller fixes.</comment>
     <requestid>1056756</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8b6cff9f2fc5cb84ec4263da906ffdbb</srcmd5>
+    <version>1.9.5</version>
+    <time>1723548232</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to 1.9.5
+  * Fixed phase inversal in the pole/zero to coefficient conversion.</comment>
+    <requestid>1193393</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug 12 04:30:42 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Remove explicit runtime library dependency, pick ease of
+  maintenance in Tumbleweed over mixed project use runtime bugs.
+
+-------------------------------------------------------------------
 Fri Mar  8 13:14:00 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 2.4.5:

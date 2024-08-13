@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Aug  8 16:56:07 UTC 2024 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Update to 1.9.0:
+  * For the list of changes, please have a look here:
+    https://github.com/oetiker/rrdtool-1.x/blob/v1.9.0/CHANGES
+- Removed upstreamed patches:
+  * e59f703bbcc0af949ee365206426b6394c340c6f.patch
+  * rrdtool-1.8.0-gcc14.patch
+  * rrdtool-fix_extra_reference.patch
+
+-------------------------------------------------------------------
 Mon Jul 29 07:19:23 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
 
 - Remove disabled patch rrdtool-tclsegfault.patch 

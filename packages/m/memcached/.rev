@@ -607,4 +607,12 @@ bsc#1007869) (CVE-2016-8706)</comment>
     <comment></comment>
     <requestid>1175703</requestid>
   </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>679a7be58363c49181bf1127d4f5e920</srcmd5>
+    <version>1.6.29</version>
+    <time>1723548130</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1193352</requestid>
+  </revision>
 </revisionlist>

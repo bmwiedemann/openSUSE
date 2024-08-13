@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Mon Aug 12 10:02:11 UTC 2024 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Update to v11.7.0.0
+  - Improved to support RHEL 9.4/8.10 and SLES 15.6
+  - Merged duplicate OS prereq files for major OS versions where possible
+  - Added ability to compile IMB-MPI1-GPU with cuda support
+  - Cleaned up not needed files
+  - Added config on unprivileged access to UserFaultFD
+  - Added GPU auto-detection feature
+  - Fixed permission and enumeration issues on dsa_setup
+  - Improved ethudstress stability to handle unmatched client/server config
+  - Improved MpiApps to allow concurrent mpi_apps runs with SLURM
+  - Fixed FI_PROVIDER_PATH overrode issue on mpi_apps
+  - Updated host verification to check UD QPs, and skip VT-d disabled
+    check by default
+  - Updated compiler options to enhance security of FastFabric
+  - Improved MpiApps README file
+  - Improved help for tools ethbw and ethextract*
+  - Fixed HPL build for newer version oneAPI
+  - Enhanced MpiApps scripts for easier use with SLURM
+  - Introduced PSM3_PRINT_STATS_PREFIX to specify PSM3 stats files location
+  - Improved MpiApps to support oneCCL benchmark
+  - Easy of use improvement on MpiApps
+    - Improved parameter files and scripts description
+    - Reorganized PSM3 parameter files
+    - Improved script printout to include system env
+    - Moved MpiApps parameter settings mostly into env vs on MPI cmd line
+  - Improved to support RHEL 8.9 and RHEL 9.3
+  - Added dsa_setup man page
+  - Improved help text and man page for all tools
+
+-------------------------------------------------------------------
 Thu Feb 22 11:32:36 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

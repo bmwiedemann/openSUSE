@@ -1182,4 +1182,12 @@ New stable release</comment>
   + Updated translations. (forwarded request 1183899 from iznogood)</comment>
     <requestid>1184249</requestid>
   </revision>
+  <revision rev="122" vrev="1">
+    <srcmd5>c72f7cedafc8928e8564a21a1bb1ad1f</srcmd5>
+    <version>46.4</version>
+    <time>1723548152</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1193418</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Aug 12 09:12:23 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add upstream patch to fix tests with pytest >= 8.1:
+  0001-Use-reason-instead-of-msg-for-pytest.skip.patch
+  gh#domdfcoding/handy-archives#35
+
+-------------------------------------------------------------------
 Fri Jul 26 07:14:29 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Initial release of 0.2.0

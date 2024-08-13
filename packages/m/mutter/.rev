@@ -2096,4 +2096,12 @@ New stable rel</comment>
     <comment></comment>
     <requestid>1191742</requestid>
   </revision>
+  <revision rev="234" vrev="2">
+    <srcmd5>eef233fcf2cccf822a1685220b6b4b76</srcmd5>
+    <version>46.4</version>
+    <time>1723548160</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1193424</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,40 @@
+From 2eaae5c45d441b4a36c1dc3a76cb028063d8e414 Mon Sep 17 00:00:00 2001
+From: Y <julia.roznova@intel.com>
+Date: Thu, 11 Jul 2024 04:57:19 -0500
+Subject: [PATCH 1/1] remove -Werror flag
+
+---
+ src_cpp/Makefile | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src_cpp/Makefile b/src_cpp/Makefile
+index 15fbe2ae1178..0007e237c398 100644
+--- a/src_cpp/Makefile
++++ b/src_cpp/Makefile
+@@ -60,8 +60,8 @@ ifeq ($(origin CXX),default)
+ CXX=mpiicpx
+ endif
+ override CPPFLAGS += -I.
+-override CFLAGS += -g -O0 -Wall -Werror
+-override CXXFLAGS += -g -O0 -Wall -Wextra -Werror
++override CFLAGS += -g -O0 -Wall
++override CXXFLAGS += -g -O0 -Wall -Wextra
+ ifdef WITH_OPENMP
+ ifeq ("$(CXX)",$(filter "$(CXX)", "mpiicpx" "icpx"))
+ override CXXFLAGS += -qopenmp
+diff --git a/src_c/P2P/Makefile b/src_c/P2P/Makefile
+index 108dd1a6bec3..22cf3e744c1e 100644
+--- a/src_c/P2P/Makefile
++++ b/src_c/P2P/Makefile
+@@ -33,7 +33,7 @@
+ TARGET=P2P
+ BINARY:=IMB-P2P
+ 
+-override CFLAGS += -O3 -Wall -Wextra -Werror
++override CFLAGS += -O3 -Wall -Wextra
+ override LDFLAGS += -lm
+ 
+ ifeq ($(origin CC),default)
+-- 
+2.45.2.1.g5c866cf9507b
+

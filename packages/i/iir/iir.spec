@@ -1,7 +1,7 @@
 #
 # spec file for package iir
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define sover   1
 %define sname   %{name}%{sover}
 Name:           iir
-Version:        1.9.4
+Version:        1.9.5
 Release:        0
 Summary:        DSP infinite impulse response realtime C++ filter library
 License:        MIT

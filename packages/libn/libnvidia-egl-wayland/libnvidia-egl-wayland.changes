@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Aug 10 13:56:34 UTC 2024 - RN <R_Nik_C@proton.me>
+
+- update to version 1.1.15:
+  * Significant stability fixes for explicit sync which prevents 
+    crashes with Firefox/moonlight/more
+  * Added the `__NV_DISABLE_EXPLICIT_SYNC` environment variable. 
+    Specifying `__NV_DISABLE_EXPLICIT_SYNC=1` disables the use of 
+    the linux-drm-syncobj-v1 protocol
+  * Fix an issue causing KDE crashes, which also caused excessive 
+    VRAM usage when resizing
+  * Fix race condition in damage_thread
+
+-------------------------------------------------------------------
 Fri Jul 19 23:00:40 UTC 2024 - RN <R_Nik_C@proton.me>
 
 - update to version 1.1.14:

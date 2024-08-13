@@ -47,6 +47,7 @@ Source99:       qt6-webengine-rpmlintrc
 # Patches 0-100 are upstream patches #
 # Patches 100-200 are openSUSE and/or non-upstream(able) patches #
 Patch100:       rtc-dont-use-h264.patch
+Patch101:       qtwebengine-ffmpeg-7.patch
 #
 # Chromium/blink don't support PowerPC and zSystems and build fails on
 # 32 bits archs (https://bugreports.qt.io/browse/QTBUG-102143)
@@ -344,6 +345,11 @@ ABI or API guarantees.
 
 %prep
 %autosetup -p1 -n %{tar_name}-%{real_version}%{tar_suffix}
+
+%if %{pkg_vcmp pkgconfig(libavcodec) <= 5}
+# The ffmpeg 7 compatibility patch would break build with older ffmpeg
+%patch -P101 -p1 -R
+%endif
 
 %build
 %if %{no_flavor}

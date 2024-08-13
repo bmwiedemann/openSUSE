@@ -16,17 +16,23 @@
 #
 
 
+%define testsuite_version 6b97e0a531f77d2e1f10f48ebb68d4033d69e04d
+
 Name:           bat-extras
-Version:        2024.02.12
+Version:        2024.07.10
 Release:        0
 Summary:        Extra scripts for bat
 License:        MIT
 BuildArch:      noarch
 Group:          Productivity/File utilities
 URL:            https://github.com/eth-p/bat-extras
-Source:         https://github.com/eth-p/bat-extras/archive/v%{version}.tar.gz
+Source0:        https://github.com/eth-p/bat-extras/archive/v%{version}.tar.gz
+Source1:        https://github.com/eth-p/best/archive/%{testsuite_version}.tar.gz
 Requires:       bash
 Requires:       bat
+BuildRequires:  bat
+BuildRequires:  ripgrep
+BuildRequires:  shfmt
 Recommends:     delta
 Recommends:     entr
 Recommends:     ripgrep
@@ -35,14 +41,19 @@ Recommends:     ripgrep
 Bash scripts that integrate bat with various command line tools.
 
 %prep
-%setup -q -n %{name}-%{version}
+%setup -q -a 1
+rm -r '.test-framework'
+mv best-%{testsuite_version}/ '.test-framework'
 
 %build
 
 %install
-./build.sh --install --manuals --prefix=%{buildroot}%{_prefix}
+./build.sh --install --manuals --no-verify --minify=lib --prefix=%{buildroot}%{_prefix}
 sed -i "s@/usr/bin/env bash@/bin/bash@" %{buildroot}%{_bindir}/*
 install -Dm 0644 -t %{buildroot}%{_mandir}/man1 man/*
+
+%check
+./test.sh
 
 %files
 %defattr(-, root, root)

@@ -33,6 +33,8 @@ URL:            https://github.com/domdfcoding/handy-archives
 Source:         https://github.com/domdfcoding/handy-archives/archive/refs/tags/v%{version}.tar.gz#/handy_archives-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM gh#domdfcoding/handy-archives#3bc48dda6a06545ba53a829c6efb0f1a1b95349e
 Patch0:         ignore-tarfile-deprecation-warning.patch
+# PATCH-FIX-UPSTREAM: 0001-Use-reason-instead-of-msg-for-pytest.skip.patch gh#domdfcoding/handy-archives#35
+Patch1:         0001-Use-reason-instead-of-msg-for-pytest.skip.patch
 BuildRequires:  %{python_module flit-core >= 3.2}
 BuildRequires:  %{python_module pip}
 %if %{with test}

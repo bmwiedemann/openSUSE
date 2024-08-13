@@ -1,5 +1,5 @@
 <services>
-  <service name="tar_scm" mode="disabled">
+  <service name="tar_scm" mode="manual">
     <param name="scm">git</param>
     <param name="url">https://github.com/intel/eth-fast-fabric.git</param>
     <param name="package-meta">no</param>
@@ -8,9 +8,9 @@
     <param name="versionformat">@PARENT_TAG@.@TAG_OFFSET@.%h</param>
     <param name="versionrewrite-pattern">v(.*)</param>
     <param name="versionrewrite-replacement">\1</param>
-    <param name="revision">7188a97b9a397defdab503a02de0f6f3a9806947</param>
+    <param name="revision">10e93dd3630c77e8e4dc6d39981ce3122830f64e</param>
   </service>
-  <service name="recompress" mode="disabled">
+  <service name="recompress" mode="manual">
     <param name="file">eth-ff*.tar</param>
     <param name="compression">gz</param>
   </service>

@@ -18,7 +18,7 @@
 
 %define realname zathura-pdf-mupdf
 Name:           zathura-plugin-pdf-mupdf
-Version:        0.4.3
+Version:        0.4.4
 Release:        0
 Summary:        Zathura PDF support through MuPDF
 License:        Zlib
@@ -28,8 +28,8 @@ Source:         https://pwmt.org/projects/%{realname}/download/%{realname}-%{ver
 Patch1:         0001-Don-t-link-against-gumbo.patch
 Patch2:         0002-Revert-Rework-detection-of-mupdf.patch
 BuildRequires:  cmake
-BuildRequires:  meson
-BuildRequires:  mupdf-devel-static >= 1.20
+BuildRequires:  meson >= 0.61
+BuildRequires:  mupdf-devel-static >= 1.24
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(girara-gtk3)
@@ -45,7 +45,7 @@ BuildRequires:  pkgconfig(libopenjp2)
 BuildRequires:  pkgconfig(mujs)
 BuildRequires:  pkgconfig(tesseract)
 BuildRequires:  pkgconfig(zathura) >= 0.5.2
-Requires:       mupdf >= 1.20
+Requires:       mupdf >= 1.24
 Requires:       zathura >= 0.5.2
 Conflicts:      zathura-plugin-pdf-poppler
 Provides:       zathura-pdf-mupdf-plugin
@@ -58,7 +58,7 @@ Zathura-plugin-MupDF extends the document viewing support of Zathura to PDF, EPU
 
 %build
 export CFLAGS="%{optflags}"
-%meson -Dlink-external=true
+%meson -Dlink-external=true -Dtests=disabled
 %meson_build
 
 %install

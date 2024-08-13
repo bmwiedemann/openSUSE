@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Aug 12 12:59:27 UTC 2024 - aplanas@suse.com
+
+- Update to version 1+git20240812.fd4668d:
+  * Add %pre(un)/%post(un) calls
+
+-------------------------------------------------------------------
+Mon Aug 12 11:20:56 UTC 2024 - aplanas@suse.com
+
+- Update to version 1+git20240812.9dc5b0c:
+  * Create initrd if only enrolled by password
+  * Add enrollment systemd service
+  * Add initial component with tpm2+pin
+  * Rename rd.encrypt credential
+  * Add 'force' in rd.encrypt creds
+  * Read the password when resizing
+  * Add .dir-locals.el
+  * Revert "Start the module after ignition is done"
+  * Use sdbootutil enroll
+  * Start the module after ignition is done
+
+-------------------------------------------------------------------
 Thu Jul 04 06:39:14 UTC 2024 - aplanas@suse.com
 
 - Update to version 1+git20240704.5a6539c:

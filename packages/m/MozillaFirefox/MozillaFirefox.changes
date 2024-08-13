@@ -1,3 +1,48 @@
+-------------------------------------------------------------------
+Thu Aug  8 06:06:13 UTC 2024 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Firefox 129.0
+  https://www.mozilla.org/en-US/firefox/129.0/releasenotes
+  MFSA 2024-33 (bsc#1228648))
+  * CVE-2024-7518 (bmo#1875354)
+    Fullscreen notification dialog can be obscured by document content
+  * CVE-2024-7519 (bmo#1902307)
+    Out of bounds memory access in graphics shared memory handling
+  * CVE-2024-7520 (bmo#1903041)
+    Type confusion in WebAssembly
+  * CVE-2024-7521 (bmo#1904644)
+    Incomplete WebAssembly exception handing
+  * CVE-2024-7522 (bmo#1906727)
+    Out of bounds read in editor component
+  * CVE-2024-7523 (bmo#1908344)
+    Document content could partially obscure security prompts
+  * CVE-2024-7524 (bmo#1909241)
+    CSP strict-dynamic bypass using web-compatibility shims
+  * CVE-2024-7525 (bmo#1909298)
+    Missing permission check when creating a StreamFilter
+  * CVE-2024-7526 (bmo#1910306)
+    Uninitialized memory used by WebGL
+  * CVE-2024-7527 (bmo#1871303)
+    Use-after-free in JavaScript garbage collection
+  * CVE-2024-7528 (bmo#1895951)
+    Use-after-free in IndexedDB
+  * CVE-2024-7529 (bmo#1903187)
+    Document content could partially obscure security prompts
+  * CVE-2024-7530 (bmo#1904011)
+    Use-after-free in JavaScript code coverage collection
+  * CVE-2024-7531 (bmo#1905691)
+    PK11_Encrypt using CKM_CHACHA20 can reveal plaintext on Intel
+    Sandy Bridge machines
+- removed obsolete patches
+  mozilla-bmo1905018.patch
+  mozilla-bmo1504834-part3.patch
+  mozilla-bmo1512162.patch
+  mozilla-bmo1822730.patch
+  mozilla-fix-aarch64-libopus.patch
+  mozilla-partial-revert-1768632.patch
+- requires NSS 3.102.1
+- extended mozilla-silence-no-return-type.patch
+
 ------------------------------------------------------------------
 Sun Jul 28 18:08:39 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
 

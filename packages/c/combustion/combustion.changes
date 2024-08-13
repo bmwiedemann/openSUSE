@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Aug 12 12:52:38 UTC 2024 - Fabian Vogt <fvogt@suse.com>
+
+- Update to version 1.4+git4:
+  * Add basic automated testing
+  * Don't wait for other config sources if combustion.url is set
+  * Improve documentation for config sources a bit
+  * Stop gpg-agent before umounting /sysroot
+
+-------------------------------------------------------------------
 Tue Aug 06 13:39:27 UTC 2024 - Fabian Vogt <fvogt@suse.com>
 
 - Update to version 1.4:

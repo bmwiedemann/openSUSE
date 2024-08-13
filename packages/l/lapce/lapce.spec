@@ -16,8 +16,22 @@
 #
 
 
+%if 0%{?suse_version} && 0%{?suse_version} < 1550
+%global force_gcc_version 13
+%endif
+
+%if 0%{?suse_version} > 1600
+%bcond_without mold
+%else
+%bcond_with    mold
+%endif
+
+%if %{with mold}
+%global build_rustflags "-C" "linker=clang" "-C" "link-arg='-fuse-ld=/usr/bin/mold -Wl,-z,relro,-z,now'" "-C" "debuginfo=2" "-C" "incremental=false" "-C" "strip=none"
+%endif
+
 Name:           lapce
-Version:        0.4.0
+Version:        0.4.1
 Release:        0
 Summary:        Lightning-fast and Powerful Code Editor written in Rust
 URL:            https://github.com/lapce/lapce
@@ -64,20 +78,14 @@ Wgpu Graphics API for rendering.
 %autosetup -a1
 
 %build
+%if 0%{?force_gcc_version}
+export CC="gcc-%{?force_gcc_version}"
+export CXX="g++-%{?force_gcc_version}"
+%endif
 # We disable default feature as they include auto-update.
 # For reference:
 # https://github.com/lapce/lapce/blob/0ded46c988d72b563bd78b29cc11107d4e2248bc/lapce-ui/Cargo.toml#L48
-%if 0%{?suse_version} <= 1600
-export CC=gcc-13
-export CXX=g++-13
-%{cargo_build} --no-default-features -p lapce-app --features all-languages
-%else
-unset LIBSSH2_SYS_USE_PKG_CONFIG
-export RUSTFLAGS="-C linker=clang -C link-arg=-fuse-ld=/usr/bin/mold -C debuginfo=2 -C incremental=false -C strip=none"
-export CARGO_AUDITABLE=auditable
-export CARGO_FEATURE_VENDORED=1
-cargo build --no-default-features -p lapce-app --features all-languages --offline --release
-%endif
+%{cargo_build} --no-default-features -p lapce-app
 
 %install
 install -Dm 0755 %{_builddir}/%{name}-%{version}/target/release/%{name} %{buildroot}%{_bindir}/%{name}

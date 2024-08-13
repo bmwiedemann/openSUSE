@@ -1,0 +1,12 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>bd87725d6347c552c8954971717092bf</srcmd5>
+    <version>0</version>
+    <time>1723548193</time>
+    <user>dimstar_suse</user>
+    <comment>Add to Factory, needed by agama-installer
+
+(https://build.opensuse.org/request/show/1188610)</comment>
+    <requestid>1189587</requestid>
+  </revision>
+</revisionlist>

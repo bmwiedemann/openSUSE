@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Aug 12 09:53:54 UTC 2024 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Update to rdma-core v53.0
+  - No release notes available
+- Remove Added-suffix-libdrm-to-CMakeLists.txt-for-drm.patch
+  as it was merged upstream.
+
+-------------------------------------------------------------------
 Tue Jun 25 12:53:30 UTC 2024 - Nicolas Morey <nicolas.morey@suse.com>
 
 - Update to rdma-core v52.0

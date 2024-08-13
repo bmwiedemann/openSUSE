@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Wed Jul 17 05:42:54 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 10.2.0:
+  Ansible 10.2.0 includes ansible-core 2.17.2 as well as a curated
+  set of Ansible collections that provide a vast number of modules
+  and plugins.
+  Collections which have opted-in to being a part of the Ansible 10
+  unified changelog will have an entry on this page:
+  https://github.com/ansible-community/ansible-build-data/blob/main/10/CHANGELOG-v10.rst
+
+-------------------------------------------------------------------
+Sun Jul 14 15:45:28 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 10.1.0:
+  Ansible 10.1.0 includes ansible-core 2.17.1 as well as a curated
+  set of Ansible collections that provide a vast number of modules
+  and plugins.
+  Collections which have opted-in to being a part of the Ansible 10
+  unified changelog will have an entry on this page:
+  https://github.com/ansible-community/ansible-build-data/blob/main/10/CHANGELOG-v10.rst
+
+-------------------------------------------------------------------
+Sun Jul 14 15:44:02 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 10.0.1:
+  Ansible 10.0.1 includes ansible-core 2.17.0 as well as a curated
+  set of Ansible collections that provide a vast number of modules
+  and plugins.
+  Collections which have opted-in to being a part of the Ansible 10
+  unified changelog will have an entry on this page:
+  https://github.com/ansible-community/ansible-build-data/blob/main/10/CHANGELOG-v10.rst
+
+-------------------------------------------------------------------
+Sun Jul 14 15:38:48 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 10.0.0:
+  Ansible 10.0.0 includes ansible-core 2.17.0 as well as a curated
+  set of Ansible collections that provide a vast number of modules
+  and plugins.
+  Collections which have opted-in to being a part of the Ansible 10
+  unified changelog will have an entry on this page:
+  https://github.com/ansible-community/ansible-build-data/blob/main/10/CHANGELOG-v10.rst
+
+-------------------------------------------------------------------
 Wed Jun 19 05:09:38 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 9.7.0:

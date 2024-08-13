@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Aug 12 10:29:34 UTC 2024 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Update to version 2021.8
+  - Migration to icx,icpx compiler
+  - IMB-MPI1: FP16/BF16 data_type support
+  - Bug fixes
+- Backport upstream patch imb-remove-Werror-flag.patch
+  to fix compilation issues.
+- Add src_c-Fix-multiple-size_t-issues-on-32b-systems.patch to fix
+  compilation errors on 32b systems.
+
+-------------------------------------------------------------------
 Tue Jun 25 12:39:58 UTC 2024 - Nicolas Morey <nicolas.morey@suse.com>
 
 - Do not build hpc flavours on 32b systems.

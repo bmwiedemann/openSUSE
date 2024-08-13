@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Aug  9 13:27:19 UTC 2024 - Michal Kubecek <mkubecek@suse.cz>
+
+- update to upstream release 6.10
+  * Feature: suport for PoE in PSE (--show-pse and --set-pse)
+  * Feature: add statistics support to tsinfo (-T)
+  * Feature: add JSON output to base command (no option)
+  * Feature: add JSON output to EEE info (--show-eee)
+  * Fix: qsfp: better handling on page 03h read failure (-m)
+  * Fix: handle zero arguments for module eeprom dump (-m)
+  * Fix: check for missing arguments in do_srxfh() (-X)
+  * Misc: more descriptive error when JSON output is not available
+
+-------------------------------------------------------------------
 Thu May 23 15:25:40 UTC 2024 - Michal Kubecek <mkubecek@suse.cz>
 
 - update to upstream release 6.9

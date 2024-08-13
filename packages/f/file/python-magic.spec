@@ -60,9 +60,7 @@ popd
 export LC_ALL=C.UTF-8
 pushd python
 %python_flavored_alternatives
-%{python_expand # indicate a writeable .pth directory for tests
-python%{$python_version} setup.py test
-}
+%pyunittest -v tests
 popd
 
 %files %{python_files}

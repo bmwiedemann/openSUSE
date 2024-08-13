@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Aug 13 05:14:47 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pyproject and autosetup macros.
+- No more greedy globs in %files.
+- Add patch use-correct-test-method.patch:
+  * Use setup_method() to work with Pytest 8.
+
+-------------------------------------------------------------------
 Mon Nov 27 20:09:58 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.1.0:

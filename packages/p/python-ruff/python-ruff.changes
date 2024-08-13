@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Aug  5 13:09:56 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
+
+- update to 0.5.6:
+  * Ruff 0.5.6 automatically enables linting and formatting of notebooks in preview mode.
+  * Enable notebooks by default in preview mode
+  * [flake8-builtins] Implement import, lambda, and module shadowing
+  * [pydoclint] Add docstring-missing-returns (DOC201) and docstring-extraneous-returns (DOC202)
+  * [flake8-return] Exempt cached properties and other property-like decorators from explicit return rule (RET501)
+  * Make server panic hook more error resilient
+  * Use $/logTrace for server trace logs in Zed and VS Code
+  * Keep track of deleted cells for reorder change request
+  * [flake8-implicit-str-concat] Always allow explicit multi-line concatenations when implicit concatenations are banned
+  * [flake8-async] Avoid flagging asyncio.timeouts as unused when the context manager includes asyncio.TaskGroup
+  * [flake8-slots] Avoid recommending __slots__ for classes that inherit from more than namedtuple
+  * [isort] Avoid marking required imports as unused
+  * [isort] Preserve trailing inline comments on import-from statements
+  * [pycodestyle] Add newlines before comments (E305)
+  * [pycodestyle] Don't attach comments with mismatched indents
+  * [pyflakes] Fix preview-mode bugs in F401 when attempting to autofix unused first-party submodule imports in an __init__.py file
+  * [pylint] Respect start index in unnecessary-list-index-lookup
+  * [pyupgrade] Avoid recommending no-argument super in slots=True dataclasses
+  * [pyupgrade] Use colon rather than dot formatting for integer-only types
+  * Fix NFKC normalization bug when removing unused imports
+  * Consider more stdlib decorators to be property-like
+  * Improve handling of metaclasses in various linter rules
+  * Improve consistency between linter rules in determining whether a function is property
+
+-------------------------------------------------------------------
 Mon Jul 29 18:08:59 UTC 2024 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.5.5

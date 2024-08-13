@@ -7,4 +7,12 @@
     <comment>new package clusterctl: tool that handles the lifecycle of a Cluster API management cluster</comment>
     <requestid>1190885</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c857ea78734bb06d27628a0e2e1262f2</srcmd5>
+    <version>1.8.0</version>
+    <time>1723548296</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1193595</requestid>
+  </revision>
 </revisionlist>

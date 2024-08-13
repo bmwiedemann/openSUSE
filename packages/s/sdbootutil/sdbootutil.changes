@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Aug 12 11:19:51 UTC 2024 - aplanas@suse.com
+
+- Update to version 1+git20240812.ee2298f:
+  * Use arg_no_reuse_initrd as update_initrd
+  * Reorder PIN and PW search
+  * fix portable installation The fallback.efi should not be added when installing in portable mode
+  * Use /run for tmpfiles instead of /etc
+
+-------------------------------------------------------------------
 Mon Jul 22 09:25:21 UTC 2024 - aplanas@suse.com
 
 - Update to version 1+git20240722.e6d7c91:

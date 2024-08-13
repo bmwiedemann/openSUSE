@@ -64,6 +64,7 @@ Patch8:         0001-Use-default-constructor-in-place-of-self-delegation-.patch
 ### Patch 50-99 are applied conditionally
 # PATCH-FIX-OPENSUSE -- allow building qtwebengine with ffmpeg5
 Patch50:        qtwebengine-ffmpeg5.patch
+Patch51:        qt5-webengine-ffmpeg7.patch
 ###
 # http://www.chromium.org/blink is not ported to PowerPC & s390
 ExcludeArch:    ppc ppc64 ppc64le s390 s390x
@@ -305,6 +306,7 @@ Examples for the libqt5-qtpdf module.
 %if %{with system_ffmpeg}
 %if %{pkg_vcmp pkgconfig(libavcodec) >= 5}
 %patch -P50 -p1
+%patch -P51 -p1
 %endif
 %endif
 

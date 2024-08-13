@@ -33,7 +33,7 @@
 %bcond_with    tmpfiles
 %endif
 Name:           memcached
-Version:        1.6.23
+Version:        1.6.29
 Release:        0
 Summary:        A high-performance, distributed memory object caching system
 License:        BSD-3-Clause

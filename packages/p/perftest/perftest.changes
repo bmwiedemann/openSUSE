@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Mon Aug 12 10:20:18 UTC 2024 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Update to v24.04-00.41
+  - Perftest: Add condition to force stop polling in write_with_imm
+  - Perftest: Version increase to 6.21
+  - Both the server and client call rdma_disconnect() synchronously, When the ...
+  - add support for ROCm6.0 API changes
+  - Add support for loongarch64.
+  - perftest: Add Broadcom gen p7 adapter device ids
+  - Perftest: define use_write_with_imm_flag outside HAVE_AES_XTS ifdef
+  - Display a warning if BW peak measurement was disabled implicitly
+  - Make output JSON standard
+  - Fix Neuron dmabuf uninitialized offset
+  - feat: add more valid RATE_VALUES
+  - Perftest: fix completion count with special combination of tx_depth/cq_mod/iterations bug
+  - Fix wrong-result bug in write_bw-with-imm duration mode
+  - Add write-with-immediate option for write_bw test
+  - Add option for write-with-immediate verb for write_lat test
+  - Minor update to error log
+  - Error out if CuDeviceGetByPCIBusId fails
+  - perftest: support set flow_label in GRH
+  - Fix race in non-rdmacm ctx_close_connection()
+  - Add missing HW accelerator flags to perftest's man
+  - Add support for DMA-buffers in Neuron devices
+  - Perftest: Fix limit_bw in ib_send_bw bidir traffic duration mode
+
+-------------------------------------------------------------------
 Thu Feb 29 15:08:35 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

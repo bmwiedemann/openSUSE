@@ -20,7 +20,7 @@
 %ifarch aarch64
 %endif
 Name:           bowtie2
-Version:        2.5.3
+Version:        2.5.4
 Release:        0
 Summary:        Fast and memory-efficient short read aligner
 License:        GPL-3.0-only

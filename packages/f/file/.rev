@@ -1662,4 +1662,12 @@ SPDX format (forwarded request 126065 from babelworx)</comment>
     <comment>- Prepare for RPM 4.20</comment>
     <requestid>1150751</requestid>
   </revision>
+  <revision rev="137" vrev="3">
+    <srcmd5>af158706a4c73a6528abbb437f4bcc03</srcmd5>
+    <version>5.45</version>
+    <time>1723548191</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1193353</requestid>
+  </revision>
 </revisionlist>

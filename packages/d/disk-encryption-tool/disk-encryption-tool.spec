@@ -28,12 +28,13 @@ BuildRequires:  git-core
 %endif
 
 Name:           disk-encryption-tool
-Version:        1+git20240704.5a6539c%{git_version}
+Version:        1+git20240812.fd4668d%{git_version}
 Release:        0
 Summary:        Tool to reencrypt kiwi raw images
 License:        MIT
 URL:            https://github.com/lnussel/disk-encryption-tool
 Source:         disk-encryption-tool-%{version}.tar
+BuildRequires:  systemd-rpm-macros
 Requires:       cryptsetup
 Requires:       keyutils
 Requires:       pcr-oracle
@@ -41,6 +42,8 @@ Requires:       pcr-oracle
 Requires:       tpm2.0-tools
 Requires:       qrencode
 ExclusiveArch:  aarch64 ppc64le riscv64 x86_64
+BuildArch:      noarch
+%{?systemd_requires}
 
 %description
 Convert a plain text kiwi image into one with LUKS full disk
@@ -56,7 +59,7 @@ created as well as the grub2 config adjusted.
 
 %install
 mkdir -p %buildroot/usr/lib/dracut/modules.d/95disk-encryption-tool
-for i in disk-encryption-tool{,-dracut,-dracut.service}  module-setup.sh generate-recovery-key; do
+for i in disk-encryption-tool{,-dracut,-dracut.service} module-setup.sh generate-recovery-key; do
   cp "$i" %buildroot/usr/lib/dracut/modules.d/95disk-encryption-tool/"$i"
 done
 mkdir -p %buildroot/usr/bin
@@ -65,10 +68,25 @@ ln -s ../lib/dracut/modules.d/95disk-encryption-tool/generate-recovery-key %buil
 install -D -m 644 jeos-firstboot-diskencrypt-override.conf \
 	%{buildroot}/usr/lib/systemd/system/jeos-firstboot.service.d/jeos-firstboot-diskencrypt-override.conf
 install -D -m 644 jeos-firstboot-enroll %buildroot/usr/share/jeos-firstboot/modules/enroll
+install -m 755 disk-encryption-tool-enroll %buildroot/usr/bin/disk-encryption-tool-enroll
+install -D -m 644 disk-encryption-tool-enroll.service %buildroot/%{_unitdir}/disk-encryption-tool-enroll.service
+
+%preun
+%service_del_preun disk-encryption-tool-enroll.service
+
+%postun
+%service_del_postun disk-encryption-tool-enroll.service
+
+%pre
+%service_add_pre disk-encryption-tool-enroll.service
+
+%post
+%service_add_post disk-encryption-tool-enroll.service
 
 %files
 %license LICENSE
 /usr/bin/disk-encryption-tool
+/usr/bin/disk-encryption-tool-enroll
 /usr/bin/generate-recovery-key
 %dir /usr/lib/dracut
 %dir /usr/lib/dracut/modules.d
@@ -78,5 +96,6 @@ install -D -m 644 jeos-firstboot-enroll %buildroot/usr/share/jeos-firstboot/modu
 /usr/share/jeos-firstboot/modules/enroll
 %dir /usr/lib/systemd/system/jeos-firstboot.service.d
 /usr/lib/systemd/system/jeos-firstboot.service.d/jeos-firstboot-diskencrypt-override.conf
+%{_unitdir}/disk-encryption-tool-enroll.service
 
 %changelog

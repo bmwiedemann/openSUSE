@@ -71,7 +71,7 @@ diff --git a/modules/libpref/Preferences.cpp b/modules/libpref/Preferences.cpp
 diff --git a/modules/libpref/moz.build b/modules/libpref/moz.build
 --- a/modules/libpref/moz.build
 +++ b/modules/libpref/moz.build
-@@ -121,16 +121,20 @@ EXPORTS.mozilla += [
+@@ -122,16 +122,20 @@ EXPORTS.mozilla += [
  ]
  EXPORTS.mozilla += sorted(["!" + g for g in gen_h])
  
@@ -1303,7 +1303,7 @@ diff --git a/widget/gtk/nsFilePicker.cpp b/widget/gtk/nsFilePicker.cpp
    GtkFileChooserAction action = GetGtkFileChooserAction(mMode);
  
    const gchar* accept_button;
-@@ -707,16 +734,215 @@ void nsFilePicker::Done(void* file_choos
+@@ -697,16 +724,215 @@ void nsFilePicker::Done(void* file_choos
      mCallback->Done(result);
      mCallback = nullptr;
    } else {
@@ -1522,7 +1522,7 @@ diff --git a/widget/gtk/nsFilePicker.cpp b/widget/gtk/nsFilePicker.cpp
 diff --git a/widget/gtk/nsFilePicker.h b/widget/gtk/nsFilePicker.h
 --- a/widget/gtk/nsFilePicker.h
 +++ b/widget/gtk/nsFilePicker.h
-@@ -71,16 +71,22 @@ class nsFilePicker : public nsBaseFilePi
+@@ -70,16 +70,22 @@ class nsFilePicker : public nsBaseFilePi
    nsString mDefaultExtension;
  
    nsTArray<nsCString> mFilters;
@@ -1699,7 +1699,7 @@ diff --git a/xpcom/components/moz.build b/xpcom/components/moz.build
 diff --git a/xpcom/io/nsLocalFileUnix.cpp b/xpcom/io/nsLocalFileUnix.cpp
 --- a/xpcom/io/nsLocalFileUnix.cpp
 +++ b/xpcom/io/nsLocalFileUnix.cpp
-@@ -46,16 +46,17 @@
+@@ -47,16 +47,17 @@
  #include "nsString.h"
  #include "nsIDirectoryEnumerator.h"
  #include "nsSimpleEnumerator.h"
@@ -1709,15 +1709,15 @@ diff --git a/xpcom/io/nsLocalFileUnix.cpp b/xpcom/io/nsLocalFileUnix.cpp
  #ifdef MOZ_WIDGET_GTK
  #  include "nsIGIOService.h"
 +#  include "nsKDEUtils.h"
+ #  ifdef MOZ_ENABLE_DBUS
+ #    include "mozilla/widget/AsyncDBus.h"
+ #    include "mozilla/WidgetUtilsGtk.h"
+ #    include <map>
+ #  endif
  #endif
  
  #ifdef MOZ_WIDGET_COCOA
- #  include <Carbon/Carbon.h>
- #  include "CocoaFileUtils.h"
- #  include "prmem.h"
- #  include "plbase64.h"
- 
-@@ -2205,20 +2206,28 @@ nsLocalFile::SetPersistentDescriptor(con
+@@ -2366,20 +2367,28 @@ nsLocalFile::SetPersistentDescriptor(con
  
  NS_IMETHODIMP
  nsLocalFile::Reveal() {
@@ -1748,7 +1748,7 @@ diff --git a/xpcom/io/nsLocalFileUnix.cpp b/xpcom/io/nsLocalFileUnix.cpp
      ::CFRelease(url);
      return rv;
    }
-@@ -2230,16 +2239,23 @@ nsLocalFile::Reveal() {
+@@ -2391,16 +2400,23 @@ nsLocalFile::Reveal() {
  
  NS_IMETHODIMP
  nsLocalFile::Launch() {

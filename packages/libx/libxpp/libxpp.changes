@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Aug 12 09:07:26 UTC 2024 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- update to version 0.3.1:
+  * replace Git tarball by upstream release tarball
+  * use proper SONAME (libxpp-0_2_0 wasn't the SONAME, now it is libxpp-3)
+  * minor changes in the code:
+    - consistently marm move ctors and operators as noexcept
+    - improvements in the build system
+    - use new libcosmos dependency
+
+-------------------------------------------------------------------
 Thu Mar 14 08:57:13 UTC 2024 - matthias.gerstner@suse.com
 
 - Update to version 0.2.0+git84fb050:

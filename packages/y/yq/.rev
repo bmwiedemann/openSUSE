@@ -141,4 +141,12 @@ IMO the Conflicts tag is unavoidable, hence adding.
     <comment></comment>
     <requestid>1181316</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>b743ace63e8c2270c3c5ea31e7dfac55</srcmd5>
+    <version>4.44.3</version>
+    <time>1723548239</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1193440</requestid>
+  </revision>
 </revisionlist>

@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %if 0%{?suse_version} >= 1550
   %define _pam_confdir %{_pam_vendordir}
   %define _config_norepl %nil
@@ -24,7 +25,7 @@
 %endif
 
 Name:           hyprlock
-Version:        0.4.0
+Version:        0.4.1
 Release:        0
 Summary:        Hyprland's screen locking utility
 License:        BSD-3-Clause
@@ -35,20 +36,20 @@ BuildRequires:  Mesa-devel
 BuildRequires:  Mesa-libGLESv3-devel
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
+BuildRequires:  pam-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(hyprlang) >= 0.4.2
 BuildRequires:  pkgconfig(hyprutils)
 BuildRequires:  pkgconfig(libdrm)
+BuildRequires:  pkgconfig(libjpeg)
+BuildRequires:  pkgconfig(libmagic)
+BuildRequires:  pkgconfig(libwebp)
 BuildRequires:  pkgconfig(pam)
 BuildRequires:  pkgconfig(pango)
 BuildRequires:  pkgconfig(wayland-client)
 BuildRequires:  pkgconfig(wayland-protocols)
 BuildRequires:  pkgconfig(xkbcommon)
-BuildRequires:  pkgconfig(libjpeg)
-BuildRequires:  pkgconfig(libwebp)
-BuildRequires:  pkgconfig(libmagic)
-BuildRequires:  pam-devel
 
 %description
 Hyprland's simple, yet multi-threaded and GPU-accelerated screen locking utility.

@@ -786,4 +786,12 @@ New stable release</comment>
   + Updated translations. (forwarded request 1171233 from dimstar)</comment>
     <requestid>1171390</requestid>
   </revision>
+  <revision rev="98" vrev="1">
+    <srcmd5>925d4d8c49c2ad4b4efe3a5700c52fb8</srcmd5>
+    <version>46.4</version>
+    <time>1723548150</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1193417</requestid>
+  </revision>
 </revisionlist>

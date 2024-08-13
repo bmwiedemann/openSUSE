@@ -1,7 +1,7 @@
 #
 # spec file for package python-jaraco.packaging
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,16 +18,15 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-jaraco.packaging
-Version:        9.2.0
+Version:        10.2.2
 Release:        0
 Summary:        Supplement packaging Python releases
 License:        MIT
 URL:            https://github.com/jaraco/jaraco.packaging
-Source:         https://files.pythonhosted.org/packages/source/j/jaraco.packaging/jaraco.packaging-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/j/jaraco.packaging/jaraco_packaging-%{version}.tar.gz
 Source10:       https://files.pythonhosted.org/packages/py3/s/sampleproject/sampleproject-3.0.0-py3-none-any.whl
-BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module build}
-BuildRequires:  %{python_module importlib-metadata if %python-version < 3.8}
 BuildRequires:  %{python_module jaraco.context}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 56}
@@ -37,16 +36,18 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # SECTION test
+BuildRequires:  %{python_module domdf-python-tools}
+BuildRequires:  %{python_module Sphinx}
+BuildRequires:  %{python_module docutils}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  ca-certificates
 # /SECTION
+Requires:       python-Sphinx
 Requires:       python-build
+Requires:       python-domdf-python-tools
 Requires:       python-jaraco.context
 # From build[virtualenv]
 Requires:       python-virtualenv >= 20
-%if 0%{?python_version_nodots} < 38
-Requires:       python-importlib-metadata
-%endif
 BuildArch:      noarch
 %python_subpackages
 
@@ -54,7 +55,7 @@ BuildArch:      noarch
 Tools to supplement packaging Python releases.
 
 %prep
-%autosetup -p1 -n jaraco.packaging-%{version}
+%autosetup -p1 -n jaraco_packaging-%{version}
 rm -rf jaraco.packaging.egg-info
 
 %build
@@ -66,12 +67,13 @@ rm -rf jaraco.packaging.egg-info
 
 %check
 export PIP_FIND_LINKS=$(dirname %{SOURCE10})
-%pytest
+# Broken by https://github.com/pytest-dev/pytest/issues/12303
+%pytest -k 'not (packaging.metadata.hunt_down_url or packaging.print-metadata.main)'
 
 %files %{python_files}
 %license LICENSE
-%doc docs/*.rst CHANGES.rst README.rst
-%{python_sitelib}/jaraco.packaging-%{version}*-info
+%doc docs/*.rst NEWS.rst README.rst
+%{python_sitelib}/jaraco.packaging-%{version}.dist-info
 %dir %{python_sitelib}/jaraco
 %{python_sitelib}/jaraco/packaging/
 

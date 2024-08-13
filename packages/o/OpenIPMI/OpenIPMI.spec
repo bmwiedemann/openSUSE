@@ -31,37 +31,30 @@
 %endif
 
 Name:           OpenIPMI
-Version:        2.0.31
+Version:        2.0.32.3+git.05faa36e
 Release:        0
 Summary:        Service processor access via IPMI
 License:        LGPL-2.1-or-later
 Group:          System/Monitoring
 URL:            http://openipmi.sourceforge.net
-Source0:        http://prdownloads.sourceforge.net/openipmi/%{name}-%{version}.tar.gz
+Source0:        openipmi-%{version}.tar.gz
 Source1:        sysconfig.ipmi
 Source2:        ipmi.service
 Source3:        openipmi-helper
 Source4:        bootstrap
 Source99:       OpenIPMI-rpmlintrc
-# Patch0:         OpenIPMI-2.0.25..HEAD_git.diff
 Patch1:         OpenIPMI-prefer_perl_vendor.patch
-Patch2:         fix-conversions.patch
-# PATCH-FIX-UPSTREAM do not use bundled libedit
-# Patch3:         0003-Apply-OpenIPMI-2.0.21-nobundle.patch.patch
-# PATCH-FIX-UPSTREAM detect tinfo from ncurses properly
-Patch4:         openipmi-tinfo.patch
+Patch2:         openipmi-tinfo.patch
 # link with ncurses
-Patch5:         OpenIMPI-add-libncurses.patch
-# some int functions do not return a value
-Patch6:         OpenIPMI-no-return-in-nonvoid-function.patch
-Patch7:         fix_dia_version_detection.patch
-Patch8:         use_python3_shebang
-Patch9:         lanserv-Add-the-judgment-on-the-validity-of-length-in-emu_cmd.c-and-session-in-lanserv_ipmi.c.patch
-Patch10:        unix_thread-Remove-the-fd-handler-sets-before-it-s-set-up.patch
+Patch3:         OpenIMPI-add-libncurses.patch
+Patch4:         fix_dia_version_detection.patch
+Patch5:         use_python3_shebang
 # PATCH-FIX-UPSTREAM OpenIPMI-autoconf-m4-ax-python-devel-serial25.patch
 # replace autoconf script serial18 addtion by serial 25 capable of finding python3.10
 # retains upstream change https://sourceforge.net/p/openipmi/code/ci/53d2b36b58383d155e2410cae3b30975a92f417d
-Patch11:        OpenIPMI-autoconf-m4-ax-python-devel-serial25.patch
+Patch6:         OpenIPMI-autoconf-m4-ax-python-devel-serial25.patch
+# Backport of upstream https://sourceforge.net/p/openipmi/patches/38/ to fix boo#1225871
+Patch7:         OpenIPMI-c99.patch
 
 BuildRequires:  autoconf-archive
 BuildRequires:  gd-devel
@@ -152,7 +145,7 @@ The Python parts provide an OpenIPMI Python library and a GUI, openipmigui,
 that makes use of it.
 
 %prep
-%autosetup -p1
+%autosetup -n openipmi-%{version} -p1
 
 rm -rf ./libedit
 

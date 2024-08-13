@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Aug 12 18:29:35 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.79.6:
+  * do not fail when inflating DB records (#2049)
+  * chore: remove quality gate Makefile db age check (#2036)
+  * doc: Updates for the Slack to Discourse migration (#2046)
+
+-------------------------------------------------------------------
 Mon Aug 12 06:25:09 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.79.5:

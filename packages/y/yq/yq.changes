@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Aug 12 13:18:36 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.44.3:
+  * Fixed upper-case file extension detection
+  * Log printing follow no-colors flag
+  * Skip and warn when interpolating strings and theres a
+    unclosed bracket
+  * Fixed CSV content starting with # issue #2076
+  * Bumped dependencies
+
+-------------------------------------------------------------------
 Mon Jun 17 09:38:16 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.44.2:

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug 12 11:41:03 UTC 2024 - Nathan Cutler <ncutler@suse.com>
+
+- Add patch perl-DBD-MariaDB-fix_ssl_connection_test.patch to reflect
+  change in text of "self-signed certificate" SSL connection error
+
+-------------------------------------------------------------------
 Fri Mar  8 22:15:11 UTC 2024 - Tina Müller <tina.mueller@suse.com>
 
 - Fix disabling of __perllib_provides

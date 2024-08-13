@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Aug  8 19:14:34 UTC 2024 - Arjen de Korte <suse+build@de-korte.org>
+
+- update to 0.72.3
+  * courier-debuild: implement DEBGCC=default, to help with pbuilder.
+  * courier-authlib.spec.in: Update dependencies to build against
+    mariadb-devel instead of mysql-devel.
+  * courier-authlib.spec.in: Packaging fixes.
+
+- update to 0.72.2
+  * courier-authlib.spec.in: Fedora 40 fixes.
+
+-------------------------------------------------------------------
 Wed Feb 21 16:52:33 UTC 2024 - Arjen de Korte <suse+build@de-korte.org>
 
 - Change to %autosetup as RPM 4.20 will no longer support %patchN

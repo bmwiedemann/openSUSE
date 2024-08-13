@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Aug 13 01:18:24 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 1.6.0
+  + Features
+    - cli: document contents argument
+    - languages: Add galician
+  + Documentation
+    - add discord server to readme and update badges
+    - readme: specify that rounded is the default border type
+  + Code Refactoring
+    - cli: migrate from structopt to clap-derive
+  + Commits
+    - wordlists of portuguese with 200, 1000 lines and advanced
+    - Bumps libc from 0.2.153 to 0.2.155
+    - Added border type functionality inside the 'config.toml'
+      file. 
+
+-------------------------------------------------------------------
 Wed Dec 13 20:39:02 UTC 2023 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Initial package

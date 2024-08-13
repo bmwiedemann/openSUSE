@@ -26,6 +26,8 @@ Group:          Development/Libraries/C and C++
 URL:            https://git.kernel.dk/cgit/liburing
 Source:         https://git.kernel.dk/cgit/liburing/snapshot/%{name}-%{version}.tar.bz2
 Patch0:         test-buf-ring-nommap-zero-the-ringbuf-memory.patch
+# PATCH-FIX-UPSTREAM f11c1ab393185aecedc3f1445b0dff5b187f58c1
+Patch1:         test-buf-ring-nommap-skip-the-test-on-queue-init-ENO.patch
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  procps

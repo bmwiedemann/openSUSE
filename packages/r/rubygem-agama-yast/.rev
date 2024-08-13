@@ -9,4 +9,26 @@
 * https://code.opensuse.org/leap/features/issue/158</comment>
     <requestid>1184823</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>61eebb8ce26317b86f49579c0308eb48</srcmd5>
+    <version>9.devel441</version>
+    <time>1723548197</time>
+    <user>dimstar_suse</user>
+    <comment>- Use exfatprogs instead of exfat-utils (gh#openSUSE/agama#1520).
+- Update nokogiri dependency to version 1.16
+  (gh#openSUSE/agama#1518)
+- AutoYaST convert script: use Agama questions to report errors
+  and ask when encrypted profile is used (gh#openSUSE/agama#1476)
+- Stop trying to set up Cockpit (gh#openSUSE/agama#1459).
+- Change storage D-Bus API to provide more accurate information
+  about resizing devices (gh#openSUSE/agama#1428).
+- Always generate storage config including all the proposal
+  settings (gh#openSUSE/agama#1422).
+- Add yet another fix to avoid error when generating the storage
+  actions (gh#openSUSE/agama#1419).
+- Proper solution to avoid error in storage actions
+  (gh#openSUSE/agama#1410).
+</comment>
+    <requestid>1193385</requestid>
+  </revision>
 </revisionlist>

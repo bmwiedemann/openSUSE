@@ -1,8 +1,8 @@
 Index: ld/lexsup.c
 ===================================================================
---- ld/lexsup.c.orig	2014-10-14 17:43:07.000000000 +0200
-+++ ld/lexsup.c	2014-10-14 17:43:26.000000000 +0200
-@@ -623,6 +623,9 @@ parse_args (unsigned argc, char **argv)
+--- ld/lexsup.c.orig	2024-08-04 01:00:00.000000000 +0200
++++ ld/lexsup.c	2024-08-06 16:02:35.554864901 +0200
+@@ -772,6 +772,9 @@ parse_args (unsigned argc, char **argv)
  	}
      }
  
@@ -14,10 +14,10 @@ Index: ld/lexsup.c
      {
 Index: ld/testsuite/config/default.exp
 ===================================================================
---- ld/testsuite/config/default.exp.orig	2014-10-14 17:43:07.000000000 +0200
-+++ ld/testsuite/config/default.exp	2014-10-14 17:44:58.000000000 +0200
-@@ -22,7 +22,7 @@
- #
+--- ld/testsuite/config/default.exp.orig	2024-08-04 01:00:00.000000000 +0200
++++ ld/testsuite/config/default.exp	2024-08-06 16:05:13.860859897 +0200
+@@ -39,7 +39,7 @@ if [info exists env(LD_UNDER_TEST)] {
+ }
  
  if ![info exists ld] then {
 -    set ld [findfile $base_dir/ld-new $base_dir/ld-new [transform ld]]
@@ -25,16 +25,16 @@ Index: ld/testsuite/config/default.exp
  }
  
  if ![info exists as] then {
-@@ -70,7 +70,7 @@ if {[info exists ld_testsuite_bindir]} {
- 	catch "exec ln -s ld tmpdir/ld/collect-ld" status
- 	catch "exec ln -s ../../../gas/as-new tmpdir/ld/as" status
+@@ -92,7 +92,7 @@ if {[info exists ld_testsuite_bindir]} {
      }
+     catch "exec ln -s ld tmpdir/ld/collect-ld" status
+     catch "exec ln -s ../../../gas/as-new tmpdir/ld/as" status
 -    set gcc_B_opt "-B[pwd]/tmpdir/ld/"
 +    set gcc_B_opt "-B[pwd]/tmpdir/ld/ -Wl,-z,norelro"
  }
  
  # load the linker path
-@@ -272,7 +272,7 @@ if ![info exists READELFFLAGS] then {
+@@ -343,7 +343,7 @@ if ![info exists ELFEDIT] then {
  }
  
  if ![info exists LD] then {
@@ -45,9 +45,9 @@ Index: ld/testsuite/config/default.exp
  if ![info exists LDFLAGS] then {
 Index: ld/testsuite/ld-bootstrap/bootstrap.exp
 ===================================================================
---- ld/testsuite/ld-bootstrap/bootstrap.exp.orig	2014-10-14 17:43:07.000000000 +0200
-+++ ld/testsuite/ld-bootstrap/bootstrap.exp	2014-10-14 17:43:26.000000000 +0200
-@@ -106,7 +106,12 @@ foreach flags $test_flags {
+--- ld/testsuite/ld-bootstrap/bootstrap.exp.orig	2024-08-04 01:00:00.000000000 +0200
++++ ld/testsuite/ld-bootstrap/bootstrap.exp	2024-08-06 16:02:35.554864901 +0200
+@@ -112,7 +112,12 @@ foreach flags $test_flags {
  
      # This test can only be run if we have the ld build directory,
      # since we need the object files.

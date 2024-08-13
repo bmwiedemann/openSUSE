@@ -6943,4 +6943,41 @@
   to conform with patch structure and naming for the package</comment>
     <requestid>1190457</requestid>
   </revision>
+  <revision rev="434" vrev="1">
+    <srcmd5>23b0c4bf8966d56da657f8c316e701b0</srcmd5>
+    <version>129.0</version>
+    <time>1723548108</time>
+    <user>dimstar_suse</user>
+    <comment>
+- Mozilla Firefox 129.0
+  https://www.mozilla.org/en-US/firefox/129.0/releasenotes
+  MFSA 2024-33 (bsc#1228648))
+  * CVE-2024-7518 (bmo#1875354)
+    Fullscreen notification dialog can be obscured by document content
+  * CVE-2024-7519 (bmo#1902307)
+    Out of bounds memory access in graphics shared memory handling
+  * CVE-2024-7520 (bmo#1903041)
+    Type confusion in WebAssembly
+  * CVE-2024-7521 (bmo#1904644)
+    Incomplete WebAssembly exception handing
+  * CVE-2024-7522 (bmo#1906727)
+    Out of bounds read in editor component
+  * CVE-2024-7523 (bmo#1908344)
+    Document content could partially obscure security prompts
+  * CVE-2024-7524 (bmo#1909241)
+    CSP strict-dynamic bypass using web-compatibility shims
+  * CVE-2024-7525 (bmo#1909298)
+    Missing permission check when creating a StreamFilter
+  * CVE-2024-7526 (bmo#1910306)
+    Uninitialized memory used by WebGL
+  * CVE-2024-7527 (bmo#1871303)
+    Use-after-free in JavaScript garbage collection
+  * CVE-2024-7528 (bmo#1895951)
+    Use-after-free in IndexedDB
+  * CVE-2024-7529 (bmo#1903187)
+    Document content could partially obscure security prompts
+  * CVE-2024-7530 (bmo#1904011)
+    Use-after-free in JavaScript code coverage collection</comment>
+    <requestid>1193124</requestid>
+  </revision>
 </revisionlist>

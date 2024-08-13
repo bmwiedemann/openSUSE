@@ -114,6 +114,8 @@ Patch1:         xine-lib-v4l-2.6.38.patch
 Patch4:         xine-lib-theora.patch
 # PATCH-FIX-UPSTREAM xine-lib-configure-c99.patch - boo#1225957
 Patch5:         xine-lib-configure-c99.patch
+# PATCH-FIX-UPSTREAM ffmpeg-7 compatibility
+Patch6:         xine-lib-ffmpeg-7.patch
 
 %description
 <p>Great video and multimediaplayer, supports DVD, MPEG, AVI, DivX, VCD, Quicktime ...</p><p>You need a frontend for xine-lib like <a href=http://packman.links2linux.de/package/xine-ui>xine-ui</a>, <a href=http://packman.links2linux.de/package/gxine>gxine</a>, <a href=http://packman.links2linux.de/package/kaffeine>kaffeine</a> or <a href=http://packman.links2linux.de/package/totem>totem</a>.</p><p>Since 1-rc6 the package number is reduced, all you may miss, is in the base package</p><p>If you want to play css encrypted Video-DVD's, you need to install <a href=http://packman.links2linux.de/package/libdvdcss2>libdvdcss</a>.</p>

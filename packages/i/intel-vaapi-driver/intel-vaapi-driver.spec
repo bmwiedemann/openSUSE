@@ -1,7 +1,7 @@
 #
 # spec file for package intel-vaapi-driver
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,7 @@ URL:            https://github.com/intel/%{name}/
 Source0:        %{name}-%{version}.tar.bz2
 Source1:        %{name}-%{version}.tar.bz2.sha1sum
 Source2:        baselibs.conf
+Patch0:         https://patch-diff.githubusercontent.com/raw/intel/%{name}/pull/566.patch
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(egl)

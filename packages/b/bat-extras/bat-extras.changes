@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Aug  6 20:56:41 UTC 2024 - Jan-Luca Kiok <opensuse-packages@jlk.one>
+
+- Update to version 2024.07.10
+  * batman: Provide way to use BATMAN as MANPAGER
+  * prettybat: Add basic support for tsv files
+  * prettybat: Don't add extra newlines to tsv for gnu
+- Run tests in check stage
+
+-------------------------------------------------------------------
 Thu Feb 15 20:07:12 UTC 2024 - Jan-Luca Kiok <opensuse-packages@jlk.one>
 
 - Update to version 2024.02.12

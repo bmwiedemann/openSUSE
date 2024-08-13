@@ -57,7 +57,7 @@
 
 # Older SLE releases and debbuild don't support uppercase VERSION macro
 %if "%{_vendor}" == "debbuild" || 0%{?sle_version} < 150000
-%define VERSION %{version}
+%global VERSION %{version}
 %endif
 
 #Compat macro for new _fillupdir macro introduced in Nov 2017
@@ -163,16 +163,20 @@ BuildRequires:  zlib-devel
 %endif
 %endif
 %if %{build_server}
-BuildRequires:  sysuser-tools
+BuildRequires:  group(velociraptor)
 Requires:       group(velociraptor)
 Requires:       user(velociraptor)
 Obsoletes:      velociraptor-kafka-humio-gateway < %{version}
+%else
+%if 0%{?suse_version}
+BuildRequires:  sysuser-tools
 %{?sysusers_requires}
+%endif
 %endif
 
 %if 0%{?suse_version}
-# SLE12 doesn't support sysusers and releases lower than SP4 don't build the server flavor which includes the system-user-velociraptor package.
-%if 0%{?sle_version} >= 120000 && 0%{?sle_version} < 150400
+# SLE12 doesn't support sysusers
+%if 0%{?sle_version} >= 120000 && 0%{?sle_version} < 150000
 Requires(pre):  pwdutils
 %define pre_create_group 1
 %else
@@ -219,20 +223,7 @@ https://docs.velociraptor.app/
 This package contains the velociraptor server and full console GUI.
 For just the endpoint agent, please install the 'velociraptor-client' package.
 
-%package -n system-user-velociraptor
-Summary:        System user and group 'velociraptor'
-Version:        1.0.0
-License:        Apache-2.0
-Group:          System/Monitoring
-Provides:       group(velociraptor)
-Provides:       user(velociraptor)
-BuildArch:      noarch
-
-%description -n system-user-velociraptor
-This package provides a shared system user for all velociraptor components
-
 %endif
-
 %if %{build_client}
 %description
 Velociraptor is a tool for collecting host based state information
@@ -244,6 +235,20 @@ https://docs.velociraptor.app/
 
 This package contains only the endpoint agent.  For the full server and GUI
 console, please install the 'velociraptor' package.
+
+%if 0%{?suse_version}
+%package -n system-user-velociraptor
+Summary:        System user and group 'velociraptor'
+Version:        1.0.0
+License:        Apache-2.0
+Group:          System/Monitoring
+Provides:       group(velociraptor)
+Provides:       user(velociraptor)
+BuildArch:      noarch
+
+%description -n system-user-velociraptor
+This package provides a shared system user for all velociraptor components
+%endif
 %endif
 
 %prep
@@ -291,7 +296,10 @@ export VELOCIRAPTOR_GIT_HEAD=$git_commit
 
 %if %{build_server}
 (cd gui/velociraptor ; npm run build)
+%else
+%if 0%{?suse_version}
 %sysusers_generate_pre %{SOURCE10} velociraptor-user
+%endif
 %endif
 
 %if 0%{?suse_version}
@@ -316,8 +324,10 @@ config_file_source=%{SOURCE4}
 sysconfig_file_source=%{SOURCE7}
 config_file=server.config
 
-install -D -m 0644 %{SOURCE10} %{buildroot}%{_sysusersdir}/system-user-velociraptor.conf
 %else
+%if 0%{?suse_version}
+install -D -m 0644 %{SOURCE10} %{buildroot}%{_sysusersdir}/system-user-velociraptor.conf
+%endif
 service_file_source=%{SOURCE5}
 config_file_source=%{SOURCE6}
 sysconfig_file_source=%{SOURCE8}
@@ -356,12 +366,14 @@ install -D -m 0755 output/velociraptor-v%{VERSION}-linux-* %buildroot/%{_bindir}
 %dir %attr(%{state_dir_perms}) %{_sharedstatedir}/%{name}/logs
 %dir %attr(%{state_dir_perms}) %{_sharedstatedir}/%{name}/tmp
 
-%if %{build_server}
+%if %{build_client}
+%if 0%{?suse_version}
 %files -n system-user-velociraptor
 %defattr(-, root, root)
 %{_sysusersdir}/system-user-velociraptor.conf
 
 %pre -n system-user-velociraptor -f velociraptor-user.pre
+%endif
 %endif
 
 %if 0%{?suse_version}

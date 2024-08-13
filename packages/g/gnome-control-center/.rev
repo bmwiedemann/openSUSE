@@ -2202,4 +2202,12 @@ New stable rel</comment>
 - Rebase gnome-control-center-bring-back-firewall-zone.patch. (forwarded request 1190543 from mgorse)</comment>
     <requestid>1190564</requestid>
   </revision>
+  <revision rev="252" vrev="1">
+    <srcmd5>fe947321980b37e5e58e09c8233f3b41</srcmd5>
+    <version>46.4</version>
+    <time>1723548154</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1193420</requestid>
+  </revision>
 </revisionlist>

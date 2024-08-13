@@ -26,6 +26,7 @@ License:        Zlib
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/adah1972/libunibreak
 Source0:        https://github.com/adah1972/libunibreak/releases/download/libunibreak_%{altver}/%{name}-%{version}.tar.gz
+Source1:        baselibs.conf
 # PATCH-FIX-UPSTREAM libunibreak-include-test-data.patch gh#adah1972/libunibreak#41 badshah400@gmail.com -- Include working unicode data for tests, as tests fail against upstream unicode 15 data files; upstream commits b992362 and 839f06f
 Patch0:         libunibreak-include-test-data.patch
 # Needed because Patch0 modifies Makefile.am files

@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Sat Aug 10 16:59:23 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to 1.6.29:
+  * Speeds up displaying stats proxy when many user defined counters are used.
+  * If a user counter changes name, it will be reset to zero.
+  * Allows overriding commands either by key prefix or specific command.
+  * see details at https://github.com/memcached/memcached/wiki/ReleaseNotes1629
+- update to 1.6.28:
+  * Fixes unfortunate potentially critical use-after-free bug in the proxy mode 
+    that was introduced in 1.6.27. The bug is difficult to trigger but if you 
+    are on 1.6.27 upgrading is strongly recommended.
+  * Also adds experimental support for TLS to proxy backends. Please let us know 
+    if you intend to use this feature as it has only received limited testing; 
+    we will prioritize further work if folks are interested in using it.
+  * memcached-tool: add -u flag to unescape special chars in keys names
+  * proxy: add counters for VM memory and GC runs
+  * see details at https://github.com/memcached/memcached/wiki/ReleaseNotes1628
+- update to 1.6.27:
+  * Many proxy updates, including a critical stability fix for users of the newer 
+    style request API.
+  * Adds new meta protocol extensions:
+    + Ecas: If specified and request succeeds, uses supplied number for the CAS 
+      value of the item. This allows using external versioning for cache data 
+      (ie; row versions, crc's, etc).
+    + x flag for md: This flag causes md to atomically replace the value with the 
+      same meta data, but 0 byte value. Can be combined with I to make an empty 
+      item that is marked stale.
+  * see details at https://github.com/memcached/memcached/wiki/ReleaseNotes1627
+- update to 1.6.26:
+  * Fixes a crash when lru_crawler metadump is used and the client connection 
+    is closed early. Requires closing the client exactly before the last few 
+    kilobytes of a dump are about to be flushed.
+  * Also improves the ergonomics of proxy configurations via start arguments.
+  * see details at https://github.com/memcached/memcached/wiki/ReleaseNotes1626
+
+- update to 1.6.25:
+  * Main focus of this release is an overhaul of extstore's space compaction system, 
+    and addition of disk specialization and basic tiering support. 
+    This optimization can greatly reduce write amplification and improve general performance.
+  * see details at https://github.com/memcached/memcached/wiki/ReleaseNotes1625
+
+- update to 1.6.24:
+  * Mostly fixes from the fix backlog and proxy updates.
+  * see details at https://github.com/memcached/memcached/wiki/ReleaseNotes1624
+
+
+-------------------------------------------------------------------
 Fri Feb 23 10:22:55 UTC 2024 - pgajdos@suse.com
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

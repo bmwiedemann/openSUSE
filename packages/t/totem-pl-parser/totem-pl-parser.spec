@@ -1,7 +1,7 @@
 #
 # spec file for package totem-pl-parser
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,14 +19,13 @@
 %define sover   18
 
 Name:           totem-pl-parser
-Version:        3.26.6
+Version:        3.26.6+30
 Release:        0
 Summary:        A GObject-based library to parse playlist formats
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later
 Group:          Productivity/Multimedia/Video/Players
 URL:            http://www.gnome.org/projects/totem/
-#Source0:       http://download.gnome.org/sources/totem-pl-parser/3.26/%%{name}-%%{version}.tar.xz
-Source:         %{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.zst
 
 BuildRequires:  gtk-doc
 BuildRequires:  intltool
@@ -37,6 +36,7 @@ BuildRequires:  pkgconfig(glib-2.0) >= 2.56.0
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(libarchive) >= 3.0
 BuildRequires:  pkgconfig(libxml-2.0)
+BuildRequires:  pkgconfig(uchardet)
 
 %description
 totem-pl-parser is a GObject-based library to parse a host of
@@ -89,13 +89,14 @@ playlist formats, to save them too.
 %lang_package
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 %meson \
 	-Denable-libarchive=yes \
 	-Denable-libgcrypt=yes \
 	-Denable-gtk-doc=true \
+	-Denable-uchardet=yes \
 	%{nil}
 %meson_build
 
@@ -103,11 +104,8 @@ playlist formats, to save them too.
 %meson_install
 %find_lang %{name}
 
-%post   -n libtotem-plparser%{sover} -p /sbin/ldconfig
-%postun -n libtotem-plparser%{sover} -p /sbin/ldconfig
-
-%post   -n libtotem-plparser-mini%{sover} -p /sbin/ldconfig
-%postun -n libtotem-plparser-mini%{sover} -p /sbin/ldconfig
+%ldconfig_scriptlets -n libtotem-plparser%{sover}
+%ldconfig_scriptlets -n libtotem-plparser-mini%{sover}
 
 %files
 %dir %{_libexecdir}/totem-pl-parser/

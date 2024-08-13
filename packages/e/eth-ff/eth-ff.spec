@@ -1,7 +1,7 @@
 #
 # spec file for package eth-ff
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,13 +16,13 @@
 #
 
 
-%define git_ver .0.7188a97b9a39
+%define git_ver .0.10e93dd3630c
 
 %define pseudo_opt %{_prefix}/lib/eth-tools/
 %define ethsysconfdir %{_sysconfdir}/eth-tools/
 
 Name:           eth-ff
-Version:        11.5.1.0
+Version:        11.7.0.0
 Release:        0
 Summary:        Intel Ethernet Fabric Suite basic tools and libraries for fabric management
 License:        BSD-3-Clause OR GPL-2.0-only

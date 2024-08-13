@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Aug 13 07:09:23 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Skip failing test gh#jpadilla/pyjwt#802
+
+-------------------------------------------------------------------
+Mon Aug  5 11:16:57 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 2.9.0
+  * Drop support for Python 3.7 (EOL) by @hugovk in #910
+  * Allow JWT issuer claim validation to accept a list of
+    strings too by @mattpollak in #913
+  * Fix unnecessary string concatenation by @sirosen in #904
+  * Fix docs for ``jwt.decode_complete`` to include ``strict_aud``
+    option by @woodruffw in #923
+  * Fix docs step by @jpadilla in #950
+  * Fix: Remove an unused variable from example code block
+    by @kenkoooo in #958
+  * Add support for Python 3.12 by @hugovk in #910
+  * Improve performance of ``is_ssh_key`` + add unit test by @bdraco in #940
+  * Allow ``jwt.decode()`` to accept a PyJWK object by @luhn in #886
+  * Make ``algorithm_name`` attribute available on PyJWK by @luhn in #886
+  * Raise ``InvalidKeyError`` on invalid PEM keys to be compatible
+    with cryptography 42.x.x by @CollinEMac in #952
+  * Raise an exception when required cryptography dependency
+    is missing by @tobloef in #963
+
+-------------------------------------------------------------------
 Mon Sep  4 17:36:39 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 2.8.0

@@ -1,0 +1,7 @@
+<package name="cagebreak" project="openSUSE:Factory">
+  <title>Cagebreak</title>
+  <description>Cagebreak provides a ratpoison-inspired, cage-based, tiling Wayland
+compositor.</description>
+  <devel project="X11:Wayland" package="cagebreak"/>
+  <url>https://github.com/project-repo/cagebreak</url>
+</package>

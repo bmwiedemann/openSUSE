@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug 12 08:42:35 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Skip failing test with jwt 2.9.0
+  gh#oauthlib/oauthlib#877
+
+-------------------------------------------------------------------
 Fri Apr 21 12:28:37 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)

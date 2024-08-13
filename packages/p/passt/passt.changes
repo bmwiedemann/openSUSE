@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Aug 06 16:58:22 UTC 2024 - dcermak@suse.com
+
+- Update to version 20240806.ee36266:
+  * log, passt: Keep printing to stderr when passt is running in foreground
+  * tcp_splice: Fix side in OUT_WAIT flag setting
+  * util: Use unsigned (size_t) value for iov length
+  * udp_flow: move all udp_flow functions to udp_flow.c
+  * udp_flow: Remove udp_meta_t from the parameters of udp_flow_from_sock()
+  * log: Make logfile_write() private
+  * pasta: Save errno on signal handler entry, restore on return when needed
+  * pasta: modify hostname when detaching new namespace
+  * Fix typo in README file
+  * fedora/rpkg: List myself as author for changelog entries
+
+-------------------------------------------------------------------
 Thu Aug 01 05:57:09 UTC 2024 - dcermak@suse.com
 
 - Update to version 20240726.57a21d2:

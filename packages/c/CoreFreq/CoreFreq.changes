@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Aug 12 15:07:52 UTC 2024 - Michael Pujos <pujos.michael@gmail.com>
+
+- Update to 1.98.2
+  * [Intel]
+    - [WDT] Adding multiple devices to probe TCO
+        C620 Series Chipset Production SKUs (0xa1a3)
+        C620 Series Chipset Super SKUs (0xa223)
+        Sunrise Point/H (0xa123)
+        Cannon Lake/LP (0x9da3)
+        Comet Lake/H (0x06a3)
+        Ice Lake/LP (0x34a3)
+        Tiger Lake/H (0x43a3)
+        Elkhart Lake (0x4b23)
+        Kaby Lake/H (0xa2a3)
+        Cannon Lake (0xa323)
+        Comet Lake/V (0xa3a3)
+        Ice Lake/NG (0x38a3)
+        Alder lake/M (0x54a3)
+        Arrow Lake/S (0x7f23)
+        Jasper Lake SMBus (0x4da3)
+        Sunrise Point-LP SMBus (0x9d23)
+        Comet Lake PCH-LP SMBus (0x02a3)
+    - MSR_FLEX_RATIO register
+        Grant access to Alder Lake/H (06_9A)
+        Deny access to Nehalem/Bloomfield (06_1A)
+        Removed a condition in access function
+
+-------------------------------------------------------------------
 Wed Aug  7 10:07:23 UTC 2024 - Michael Pujos <pujos.michael@gmail.com>
 
 - update to 1.98.1

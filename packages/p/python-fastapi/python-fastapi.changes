@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Aug  8 09:01:36 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- update to 0.112.0:
+  * Add support for pip install "fastapi[standard]" with standard
+    dependencies and python -m fastapi
+- version 0.111.1:
+  * Remove orjson and ujson from default dependencies. These
+    dependencies are still installed when you install with pip install
+    "fastapi[all]"
+  * Restored Swagger-UI links to use the latest version possible
+- version 0.111.0:
+  * Add FastAPI CLI, the new fastapi command
+  * Add configs and setup for fastapi-slim including optional extras
+    fastapi-slim[standard], and fastapi including by default the same
+    standard extras
+
+-------------------------------------------------------------------
 Sat Apr 20 20:50:12 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.110.2:

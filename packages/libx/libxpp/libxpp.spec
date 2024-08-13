@@ -16,16 +16,16 @@
 #
 
 
-%define commit 84fb050
+%define version 0.3.1
 
 Name:           libxpp
-Version:        0.2
+Version:        %{version}
 Release:        0
 Summary:        An object oriented C++ wrapper for parts of the X11 API
 License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/gerstner-hub/libxpp
-Source0:        libxpp-0.2.0+git%{commit}.tar.xz
+Source0:        libxpp-v0.3.1.tar.xz
 
 BuildRequires:  gcc-c++
 BuildRequires:  libX11-devel
@@ -38,16 +38,17 @@ This is *libxpp*, a library providing an object oriented C++ API wrapper for
 parts of the X11 API. It is intended for low level programming against the X
 server on Linux systems.
 
-%package -n libxpp-0_2_0
+%package -n libxpp-3
 Summary:        An object oriented C++ wrapper for parts of the X11 API
 Group:          System/Libraries
-#this is the initial version of the library that is packaged, these are
-#unnecessary at the moment
-#Provides:       %{name} = %{version}
-#Obsoletes:      %{name} < %{version}
+Provides:       %{name} = %{version}
+Obsoletes:      %{name} < %{version}
+# renamed from broken package name that didn't follow SONAME
+Provides:       libxpp-0_2_0 = %{version}
+Obsoletes:      libxpp-0_2_0 < %{version}
 
-%description -n libxpp-0_2_0
-A library providing an object oriented C++ API wrapper for 37 parts of the X11
+%description -n libxpp-3
+A library providing an object oriented C++ API wrapper for parts of the X11
 API.
 
 The runtime library files for libxpp.
@@ -56,16 +57,16 @@ The runtime library files for libxpp.
 Summary:        A library providing a modern C++ API for the Linux operating system
 Group:          Development/Libraries/C and C++
 Requires:       libstdc++-devel
-Requires:       libxpp-0_2_0 = %{version}
+Requires:       libxpp-3 = %{version}
 
 %description devel
-A library providing an object oriented C++ API wrapper for 37 parts of the X11
+A library providing an object oriented C++ API wrapper for parts of the X11
 API.
 
 Header and development files for libxpp.
 
 %prep
-%setup -q -n libxpp-0.2.0+git%{commit}
+%setup -q -n %{name}-v%{version}
 
 %build
 scons libtype=shared use-system-pkgs=1
@@ -77,9 +78,9 @@ scons install instroot=%{buildroot}/usr use-system-pkgs=1
 #%%check
 #scons run_tests
 
-%ldconfig_scriptlets -n libxpp-0_2_0
+%ldconfig_scriptlets -n libxpp-3
 
-%files -n libxpp-0_2_0
+%files -n libxpp-3
 %license LICENSE
 %doc README.md
 %{_libdir}/libxpp.so.*

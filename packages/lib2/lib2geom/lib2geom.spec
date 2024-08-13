@@ -1,7 +1,7 @@
 #
 # spec file for package lib2geom
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,6 +34,7 @@ Source0:        %{url}/-/archive/%{short_version}/%{name}-%{short_version}.tar.g
 Patch1:         fix-pkgconfig-libdir-path.patch
 # PATCH-FIX-UPSTREAM fix instable tests, https://gitlab.com/inkscape/lib2geom/-/issues/67
 Patch2:         skip_failing_tests.diff
+Patch3:         skip_failing_tests_gcc14.diff
 BuildRequires:  cmake >= 2.6
 BuildRequires:  gcc-c++
 BuildRequires:  glib2

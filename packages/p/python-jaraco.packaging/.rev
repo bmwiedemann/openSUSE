@@ -84,4 +84,30 @@
     <comment></comment>
     <requestid>1086860</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>405d59ca2ff26576f4d682126d40ccb4</srcmd5>
+    <version>10.2.2</version>
+    <time>1723548169</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 10.2.2:
+  * Fixed DeprecationWarning in metadata.hunt_down_url.
+  * Fixed issue in rendering non-unique keys in print-metadata.
+  * Add script for printing metadata.
+  * Add metadata.extract_email helper.
+  * Moved metadata helpers to metadata module.
+  * In extract_author, expand the logic to support multiple authors in
+    pyproject.toml form.
+  * Configure Sphinx earlier in 'config-inited', allowing other etxensions
+    to rely on the produced values.
+  * Add support for other metadata fields since pyproject.toml shuffles
+    things around.
+  * Add metadata.load for loading metadata from a source dir with support
+    for a BUILD_ENVIRONMENT setting. Set BUILD_ENVIRONMENT=current to bypass
+    isolation when loading metadata.
+  * Deprecated use of environment variable for isolated builds.
+  * Add sidebar-links directive.
+  * Require Python 3.8 or later.
+- Skip two tests that are impacted by a Pytest bug.</comment>
+    <requestid>1190159</requestid>
+  </revision>
 </revisionlist>

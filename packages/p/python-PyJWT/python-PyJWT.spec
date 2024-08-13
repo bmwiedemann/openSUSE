@@ -1,7 +1,7 @@
 #
 # spec file for package python-PyJWT
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,13 +19,13 @@
 %global skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-PyJWT
-Version:        2.8.0
+Version:        2.9.0
 Release:        0
 Summary:        JSON Web Token implementation in Python
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/progrium/pyjwt
-Source:         https://files.pythonhosted.org/packages/source/P/PyJWT/PyJWT-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/p/pyjwt/pyjwt-%{version}.tar.gz
 BuildRequires:  %{python_module cryptography >= 3.3.1}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
@@ -36,7 +36,7 @@ BuildRequires:  python-rpm-macros
 Requires:       python-cryptography >= 3.3.1
 Requires:       python-typing-extensions
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -44,7 +44,7 @@ BuildArch:      noarch
 A Python implementation of JSON Web Token draft 01.
 
 %prep
-%setup -q -n PyJWT-%{version}
+%setup -q -n pyjwt-%{version}
 
 %build
 %pyproject_wheel
@@ -57,7 +57,10 @@ find ./ -type f -name "*.py" -perm 644 -exec sed -i -e '1{\@^#!%{_bindir}/env py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest -k "not test_verify_false_deprecated" -k "not test_get_jwt_set_sslcontext_default"
+donttest="test_verify_false_deprecated or test_get_jwt_set_sslcontext_default"
+# Failing test: gh#jpadilla/pyjwt#802
+donttest+=" or test_ec_to_jwk_with_invalid_curve"
+%pytest -k "not ($donttest)"
 
 %files %{python_files}
 %license LICENSE

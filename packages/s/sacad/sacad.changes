@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Aug 13 06:12:30 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.8.0:
+  * remove Amazon sources
+  * fix: remove use of imhdr
+  * boost exact album matches ranking for Deezer source
+  * fix: path sanitization removing spaces
+  * feat: add option to convert progressive JPEG to baseline
+
+-------------------------------------------------------------------
 Wed Oct 25 05:04:37 UTC 2023 - ming li <mli@suse.com>
 
 - update to 2.7.5:
@@ -17,7 +27,7 @@ Mon Jan  2 13:47:26 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.7.3:
   * fix error logs when closing eventloop
-  * exclude non-CD covers 
+  * exclude non-CD covers
 
 -------------------------------------------------------------------
 Sun Dec  4 12:04:08 UTC 2022 - Dirk Müller <dmueller@suse.com>
@@ -25,7 +35,7 @@ Sun Dec  4 12:04:08 UTC 2022 - Dirk Müller <dmueller@suse.com>
 - update to 2.7.2:
   * fix: remove fake-useragent dependency because of lack of API stability
   * fix: version fake-useragent cache file
-  * fix: pre-commit URL 
+  * fix: pre-commit URL
 
 -------------------------------------------------------------------
 Mon Nov 14 15:24:02 UTC 2022 - Andrea Manzini <andrea.manzini@suse.com>
@@ -57,7 +67,7 @@ Sat Oct 24 08:24:06 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 Fri Aug 21 17:29:20 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 2.3.3:
-  * Fix tqdm_logging thread safety 
+  * Fix tqdm_logging thread safety
 
 -------------------------------------------------------------------
 Wed Jul 29 20:29:21 UTC 2020 - Martin Hauke <mardnh@gmx.de>

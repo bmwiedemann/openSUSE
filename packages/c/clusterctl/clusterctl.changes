@@ -1,4 +1,82 @@
 -------------------------------------------------------------------
+Tue Aug 13 04:53:00 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.8.0:
+  Changelog too big to include in toto, please check it here
+  https://github.com/kubernetes-sigs/cluster-api/releases/tag/v1.8.0
+  * Breaking Changes
+    - ClusterClass: Adjust CC & Cluster controller to block on
+      variable conflicts, deprecate definitionFrom (#10841)
+  * Highlights
+    - New providers in clusterctl: IONOS Cloud (#10767), Linode
+      (#10471), Tinkerbell (#10487)
+  * Bug fixes
+    - clusterctl: Ensure cert-manager objects get applied before
+      other provider objects (#10469)
+    - clusterctl: Ensure move uses mutated metadata when updating a
+      target object (#10982)
+    - clusterctl: Fix log in clusterctl move (#10540)
+    - clusterctl: Handle a nil mutator by returning an error, not
+      panicking (#10981)
+    - clusterctl: Verify that there is a release for the tag
+      (#10220)
+  * Others
+    - clusterctl: Add ionoscloud provider (#10767)
+    - clusterctl: Add support for the linode-linode infrastructure
+      provider to clusterctl (#10471)
+    - clusterctl: Add Tinkerbell to the providers list (#10487)
+    - clusterctl: Always run crd migration if possible to reduce
+      conversion webhook usage (#10513)
+    - clusterctl: Bump cert-manager to 1.14.5 (#10514)
+    - clusterctl: Bump cert-manager to v1.15.0 (#10727)
+    - clusterctl: Bump cert-manager to v1.15.1 (#10807)
+    - clusterctl: Bump cert-manager to v1.15.2 (#10992)
+    - clusterctl: Improve cert-manager shouldUpgrade (#10407)
+    - clusterctl: Update Config generation to use inClusterConfig
+      (#11006)
+    - Testing: Allow control plane count to be configurable in
+      clusterctl upgrade test. (#10584)
+    - Testing: Support MachinePools without MachinePoolMachines in
+      clusterctl upgrade test (#10498)
+
+-------------------------------------------------------------------
+Mon Aug 12 18:34:26 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.7.5:
+  * Machine Controller should try to retrieve node on delete - fix
+    unit test
+  * bug: Machine Controller should try to retrieve node on delete
+  * MachineSet should allow scale down operations to proceed
+    when templates don't exist
+  * Bump docker/docker to v25.0.6
+  * test/framework: scale up should use allocatable memory
+  * Ensure DockerMachinePool providerIDList is deterministic
+  * test: prevent using Consistently for rollout checks
+  * test/framework: Allow ScaleUp Deployment image to be customized
+  * bump cert-manager to 1.15.2
+  * Drop caBundle from CRDs
+  * Allow ClusterCacheTracker to set CacheByObject
+  * bug: When infrastructureRef is nil, set
+    InfrastructureReadyCondition to true
+  * Partially revert changes for ":bug: Cluster should be
+    provisoned when cpRef and endpoint is set"
+  * :seedling: Make ClusterResourceSet controller more predictable
+  * :sparkles: Add QPS & burst options & flags for
+    ClusterCacheTracker
+  * Address comments
+  * Fix race conditions
+  * Address comments
+  * Ensure CRS controller always add ownerReference to resources
+  * test: use pause instead of nginx
+  * test: use pause image for autoscaler tests
+  * bug: Cluster should be provisoned when cpRef and endpoint is
+    set
+  * capd: fix nil pointer in dockermachinepool controller
+  * book: Add missing kubeconfig file to deploy
+    cloud-controller-manager on workload cluster
+  * book: update Azure quick start for CAPZ v1.16
+
+-------------------------------------------------------------------
 Wed Jul 10 19:37:13 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.7.4:

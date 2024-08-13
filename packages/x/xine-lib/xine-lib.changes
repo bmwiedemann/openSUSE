@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Aug  8 05:29:06 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Add ffmpeg-7 compatibility patch:
+  * xine-lib-ffmpeg-7.patch
+
+-------------------------------------------------------------------
 Mon Jul 15 13:17:26 UTC 2024 - Martin Jambor <mjambor@suse.com>
 
 - Add xine-lib-configure-c99.patch to avoid C99 violations during

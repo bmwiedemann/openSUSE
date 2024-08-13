@@ -1,7 +1,7 @@
 #
 # spec file for package jsonrpc-glib
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define sover    1_0-1
 
 Name:           jsonrpc-glib
-Version:        3.44.0
+Version:        3.44.1
 Release:        0
 Summary:        Library to communicate with JSON-RPC based peers
 License:        LGPL-2.1-or-later

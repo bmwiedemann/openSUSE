@@ -340,4 +340,41 @@
   * Fix the default token variable name for publishing to PyPI</comment>
     <requestid>1162483</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>1192a06618af1727d0dfa57ce235900e</srcmd5>
+    <version>1.12.0</version>
+    <time>1723548325</time>
+    <user>dimstar_suse</user>
+    <comment>- Add new patch to fix tests: fix-tests.patch
+- Remove upstreamed patch: support-hatchling-1.22.patch
+- update to 1.12.0:
+  - The run/env run and test commands now treat inclusion variable
+    options as an intersection rather than a union to allow for
+    specific targeting of environments
+  - Add ability to control the source of Python distributions
+  - Upgrade Ruff to 0.4.5
+  - Upgrade PyApp to 0.22.0 for binary builds
+  - The fmt command no longer hides the commands that are being
+    executed
+  - Add default timeout for network requests, useful when installing
+    Python distributions
+  - Fix syntax highlighting contrast for the config show command
+- 1.11.1:
+  - Add official GitHub Action for installing Hatch
+  - Fix terminal.styles.spinner configuration
+  - Fix entry points in the pre-built distributions that binaries use
+- 1.11.0:
+  - Upgrade PyApp to 0.21.1 for binary builds
+  - On Linux, install the highest compatible Python distribution
+    variant based on CPU architecture rather than assuming recent
+    hardware
+- 1.10.0:
+  - The run/env run, fmt and shell commands now only change the
+    current working directory to the project root if not already
+    inside the project
+  - The shell command now accepts a single argument to specify the
+    environment to enter which overrides the standard choice
+    mechanisms. The arguments determining shell options have been</comment>
+    <requestid>1193629</requestid>
+  </revision>
 </revisionlist>

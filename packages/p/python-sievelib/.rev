@@ -64,4 +64,14 @@
   * Added annotations</comment>
     <requestid>1169323</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>01e267b09382f0d4f7e59a897b8495c2</srcmd5>
+    <version>1.4.1</version>
+    <time>1723548293</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.4.1:
+  * fix starttls
+- Add typing-extensions to BuildRequires.</comment>
+    <requestid>1193583</requestid>
+  </revision>
 </revisionlist>

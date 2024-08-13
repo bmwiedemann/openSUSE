@@ -70,4 +70,12 @@ as the default openmpi implementation is still openmpi4.</comment>
     <comment></comment>
     <requestid>1183457</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>0daeb4981796cd1b2354d43792488d50</srcmd5>
+    <version>5.0.5</version>
+    <time>1723548243</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1193453</requestid>
+  </revision>
 </revisionlist>

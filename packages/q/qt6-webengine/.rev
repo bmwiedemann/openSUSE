@@ -270,4 +270,13 @@
     <comment>Qt 6.7.1 + pyside 6.7.1 (forwarded request 1181766 from krop)</comment>
     <requestid>1182620</requestid>
   </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>287e31e8e65586cfe85e16608597309f</srcmd5>
+    <version>6.7.2</version>
+    <time>1723548180</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to build qtwebengine with ffmpeg 7 (picked from Arch)
+  * qtwebengine-ffmpeg-7.patch</comment>
+    <requestid>1192339</requestid>
+  </revision>
 </revisionlist>

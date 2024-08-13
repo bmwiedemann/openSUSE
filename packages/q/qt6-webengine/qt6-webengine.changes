@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug  7 12:39:11 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Add patch to build qtwebengine with ffmpeg 7 (picked from Arch)
+  * qtwebengine-ffmpeg-7.patch
+
+-------------------------------------------------------------------
 Wed Jun 19 07:26:07 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.7.2:

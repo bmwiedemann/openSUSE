@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Sun Aug 11 13:20:22 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Update to version 0.11.0:
+  Added
+  * Added NAT detection for IPv4/udp/dublin
+  * Added support for NAT detection (N) column
+  * Added support for last icmp packet type (T) column
+  * Added support for last icmp packet code (C) column
+  * Added support for the probe failure count (f) column
+  * Added settings dialog tab hotkeys
+  * Added --dns-ttl flag to allow refreshing the reverse DNS
+    results
+  * Added --generate-man flag for generating ROFF man page
+  Changed
+  * [BREAKING CHANGE] Changed initial sequence to be 33434
+  * [BREAKING CHANGE] Renamed tui-max-[samples|flows] as
+    max-[samples|flows]
+  * Separated library and binary crates
+  * Record icmp packet code
+  * Transient error handling for IPv4 on macOS, Linux & Windows
+  * Improved error messages
+  * Revamp the help dialog
+  Fixed
+  * Fixed DestinationUnreachable incorrectly assumed to come from
+    target host
+  * Fixed incorrect target hop calculation
+  * Do not conflate AddressInUse and AddrNotAvailable errors
+
+-------------------------------------------------------------------
 Wed Apr 03 15:57:37 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Remove deprecated cargo_config

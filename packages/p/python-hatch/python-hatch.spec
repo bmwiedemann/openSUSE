@@ -26,17 +26,15 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-hatch%{psuffix}
-Version:        1.9.4
+Version:        1.12.0
 Release:        0
 Summary:        Modern, extensible Python project management
 License:        MIT
 URL:            https://hatch.pypa.io/latest/
 # SourceRepository: https://github.com/pypa/hatch
 Source:         https://github.com/pypa/hatch/archive/refs/tags/hatch-v%{version}.tar.gz
-# PATCH-FIX-UPSTREAM Based on parts of the following commits:
-# gh#pypa/hatch#9a80ffc2567bb09160e97f1ade1dd4c768004089
-# gh#pypa/hatch#f3b2159a8c4221062692881774bc58dfed5aaa76
-Patch0:         support-hatchling-1.22.patch
+# PATCH-FIX-OPENSUSE fix-tests.patch
+Patch0:         fix-tests.patch
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module hatch-vcs >= 0.3}
 BuildRequires:  %{python_module hatchling >= 1.19}
@@ -59,17 +57,20 @@ Requires:       python-tomli-w >= 1.0
 Requires:       python-tomlkit >= 0.11.1
 Requires:       python-virtualenv >= 20.16.2
 Requires:       python-zstandard < 1
+Requires:       uv
 Requires:       (python-pexpect >= 4.8 with python-pexpect < 5)
 Requires:       (python-userpath >= 1.7 with python-userpath < 2)
 %if %{with test}
 BuildRequires:  %{python_module editables}
 BuildRequires:  %{python_module filelock >= 3.7.1}
 BuildRequires:  %{python_module hatch = %{version}}
+BuildRequires:  %{python_module pyfakefs}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module trustme}
 BuildRequires:  cargo
+BuildRequires:  uv
 %else
 BuildArch:      noarch
 %endif
@@ -114,11 +115,18 @@ donttest="$donttest or (test_install and test_all)"
 # platform distribution selection errors: https://github.com/pypa/hatch/issues/1145
 %ifnarch x86_64
 donttest="$donttest or (test_resolve and test_resolution_error)"
+donttest+=" or test_custom_source or test_pypy_custom"
 %endif
 %ifarch s390x
 # Console width different
 donttest="$donttest or test_context_formatting"
 %endif
+
+# Requires network
+donttest+=" or test_uv_env"
+# Fails with python 3.12
+donttest+=" or test_pyenv or test_no_open or test_open"
+
 %pytest -v -k "not ($donttest)"
 %endif
 

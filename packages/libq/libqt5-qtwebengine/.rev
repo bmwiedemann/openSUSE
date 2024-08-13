@@ -969,4 +969,13 @@ of the last blockers as we're still waiting for an upstream fix. (forwarded requ
     <comment>- use bundled re2 (boo#1226119)</comment>
     <requestid>1179641</requestid>
   </revision>
+  <revision rev="100" vrev="3">
+    <srcmd5>b64a8bd675c0b4c575e5b7f831c5fc97</srcmd5>
+    <version>5.15.17</version>
+    <time>1723548190</time>
+    <user>dimstar_suse</user>
+    <comment>- Add ffmpeg 7 compatibility patch (Picked from Arch):
+  * qt5-webengine-ffmpeg7.patch</comment>
+    <requestid>1192344</requestid>
+  </revision>
 </revisionlist>

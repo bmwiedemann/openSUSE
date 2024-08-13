@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Aug 12 11:33:57 UTC 2024 - Fabian Vogt <fvogt@suse.com>
+
+- Update to version 1723452932.412e7f6:
+  * add test for missing substitutions
+  * Reject labels that are missing a substitution
+
+-------------------------------------------------------------------
 Mon Jul 22 13:43:57 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update SUSE.conf: allow dp.rancher.apps.io

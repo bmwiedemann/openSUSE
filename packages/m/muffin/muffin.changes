@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Aug 11 05:02:00 UTC 2024 - sb56637 <mxoo28j7@duck.com>
+
+- update to 6.2.0:
+  * packaging: Forbid compilation if the symbols file is outdated
+  * packaging: Update symbols file
+  * Fix compile issue
+  * meta-input-settings-x11.c: Don't warn about receiving more values than expected from libinput.
+  * Fix segfault during Alt-Tab when window focus mode is either 'Sloppy' or 'Mouse'
+  * meta-crtc-xrandr.c: use nearest neighbor filter for integer randr scales
+  * meta-monitor-manager-xrandr.c: DeleteMonitor before SetMonitor
+  * meta-monitor-manager-xrandr.c: fix crtc disabling
+  * meta-monitor-manager-xrandr.c: fix screen size
+  * meta-monitor-manager-xrandr.c: screen size fixes
+
+- update to 6.0.1:
+  * meta-compositor-x11.c: Don't disable fractional scaling when unredirecting a fullscreen window
+
+-------------------------------------------------------------------
 Mon May 13 13:41:43 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.0.1:

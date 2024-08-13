@@ -1,4 +1,86 @@
 -------------------------------------------------------------------
+Tue Jul 16 20:20:06 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.17.2:
+  * restore anchor in communication guide (#1692) (#1694)
+  * collection_requirements: fix typo (#1684) (#1687)
+  * [WIP, needs vote before merging] collection_requirements.rst:
+    update (#1422) (#1664)
+  * ci: refresh dev dependencies (#1675) (#1680)
+  * ci: refresh dev dependencies (#1671)
+  * communication guide: overhaul (#1667) (#1668)
+  * docs/docsite/rst/dev_guide/developing_program_flow_modules.rst:
+    avoid using aliases (#1539) (#1660)
+  * Remove references to archived ansible/ansible-examples
+    repository (#1653) (#1656)
+  * Remove reference of scp_if_ssh option (#1346) (#1652)
+  * Integrate the `alls-green` action into the main GHA CI workflow
+    (#1639) (#1647)
+  * fix Ansible architecture docs (#1637) (#1646)
+  * fix Validate data against set criteria with Ansible doc (#1636)
+    (#1642)
+  * Revert "Add example /usr/bin/env python as Python interpreter
+    (#280)" (#1629) (#1631)
+  * Replace WG list with a pointer to the forum groups . (#1596)
+    (#1625)
+  * developing_collections_migrating.rst: update (#1605) (#1628)
+  * Update unit test document (#1597) (#1624)
+  * Update playbooks_loops.rst (#1617) (#1620)
+  * Add porting guide for 9.7.0. (#1609) (#1613)
+  * Add porting guide for Ansible 10.1.0. (#1610) (#1612)
+  * Fix typo in communication.rst (#1598) (#1608)
+
+-------------------------------------------------------------------
+Sun Jul 14 15:36:53 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.17.1:
+  * Merge pull request #1585 from ansible/pip-compile/devel/dev
+  * clarify how to verify collection-level docs (#1589) (#1595)
+  * Fix up PowerShell and Windows support lifecycle (#1587) (#1588)
+  * cause people keep doing this (#1567) (#1584)
+  * Update uptime.py (#1524) (#1581)
+  * Update playbooks_loops.rst (#1569) (#1578)
+  * Merge pull request #1568 from samccann/bullhorn-edit
+  * Merge pull request #1566 from samccann/intersphinx
+  * Update the Ansible 10 porting guide. (#1570)
+  * Merge pull request #1562 from M15terHyde/patch-1
+  * Merge pull request #1523 from
+    oraNod/issue-1491/porting-guide-217
+  * Update release table for Ansible 10 and 9 (#1543) (#1558)
+  * update conf.py for Ansible 10 (#1544) (#1559)
+  * Update playbooks_blocks.rst (#1546) (#1554)
+  * Add Ansible community 10.0.0 porting guide (#1555) (#1556)
+  * update to version 10 (#1551)
+  * Merge pull request #1527 from ansible/pip-compile/devel/dev
+  * Python collection requirements: restructure (#1459) (#1542)
+  * Merge pull request #1529 from
+    Andersson007/update_overview_links
+  * Merge pull request #1530 from oraNod/fix-spelling
+  * release_and_maintenance: mark 8.x unmaintained as 8.7.0
+    released (#1522) (#1526)
+  *  mark 2.14 EOL in the release table (#1502) (#1521)
+  * update backport instructions for 2.17 (#1504) (#1518)
+  * Merge pull request #1321 from vojtam/feature/#357
+  * Update collection_checklist.md links to point to new location
+    (#1505) (#1506)
+  * Move Ansible package collection removal process to
+    docs.ansible.com (#1492) (#1508)
+  * Add Ansible community 10.0.0b1 porting guide (#1494)
+  * Add Ansible community 9.6.0 porting guide (#1493)
+  * Merge pull request #1477 from ansible/pip-compile/devel/dev
+  * update version switcher to suppor 2.17 (#1464) (#1486)
+  * collection_requirements: update community topic links (#1421)
+    (#1484)
+
+-------------------------------------------------------------------
+Sun Jul 14 15:24:51 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.17.0:
+  major update to 2.17.0, no changelog.
+  Full list of commits/changes see
+  https://github.com/ansible/ansible-documentation/compare/v2.16.8...v2.17.0
+
+-------------------------------------------------------------------
 Wed Jun 19 05:07:45 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.16.8:

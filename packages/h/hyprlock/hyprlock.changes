@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Aug 12 09:24:26 UTC 2024 - Krzysztof Wiktorczyk <magu44@gmail.com>
+
+- Update to version 0.4.0:
+  * hyprlock: ensure members are accessed direct
+  * "LockSurface: Some bug fixing
+  * core: add option to render solid background immediatly when bg
+    assets are not ready
+  * core: handle missing wayland protocol support
+  * readme: add official repo package to arch install
+  * [Draft] auth: don't start pam conversation before the initial
+    input happens
+  * Label exception handling + Frambuffer checks + headers
+  * config: add input-field fail_timeout option
+  * asyncResourceGatherer: trace logs and exit behaviour
+  * core: handle ext_session_lock_v1::finished as defined by the
+    protocol
+  * core: immediately create session lock surfaces
+  * Config: use hyprutils helper
+  * core: grace unlock improvements and auth fixes for grace/SIGUSR1
+    unlocks
+  * core: make sure m_sLockState.lock is present in onLockFinished and
+    releaseSessionLock
+  * asyncResourceGatherer: deduplicate image rendering code
+
+-------------------------------------------------------------------
 Sun Jul  7 21:04:23 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Add new BuildRequires: libjpeg, libwebp, libmagic

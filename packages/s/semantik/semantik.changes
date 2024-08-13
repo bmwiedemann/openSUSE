@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jul 25 09:36:54 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.2.11:
+  * Fix a Sonnet-related crash
+  * Cosmetic changes
+
+-------------------------------------------------------------------
 Thu Feb 29 09:48:47 UTC 2024 - Max Lin <mlin@suse.com>
 
 - BuildRequire kf5-filesystem on Leap 15
@@ -13,8 +20,8 @@ Fri Jan  5 10:48:20 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 Thu Sep  7 15:51:56 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
 
 - update to 1.2.10:
-  * Install the missing markdown template file 
-  * Disable the fullscreen toggle due to incompatibilities 
+  * Install the missing markdown template file
+  * Disable the fullscreen toggle due to incompatibilities
   * Fix a bug in diagram creation
 
 -------------------------------------------------------------------
@@ -101,7 +108,7 @@ Sun Jan  6 23:55:56 UTC 2019 - lars@linux-schulserver.de
   * Display picture and diagram thumbnails on the main map
   * Add a touchpad mode for laptop users
   From Semantik 1.0.8:
-  * Add new formatting actions to the Rich Text editor: text color, 
+  * Add new formatting actions to the Rich Text editor: text color,
     hyperlink, list, clear formatting
   * Position diagram boundary captions to top or bottom
   * Improve the odt template styles
@@ -149,7 +156,7 @@ Sat Apr 28 01:44:21 UTC 2018 - i@marguerite.su
 
 - add patch semantik-filetree-qtdbus.patch
   * Fix leap adn factory build.
-    QDBusAbstractInterface not found 
+    QDBusAbstractInterface not found
 
 -------------------------------------------------------------------
 Sat Dec  9 19:38:20 UTC 2017 - fabian@ritter-vogt.de
@@ -283,13 +290,13 @@ Sat Sep  8 11:26:11 UTC 2012 - dmitry@roshchin.org
 -------------------------------------------------------------------
 Mon Apr 27 22:06:11 IRKST 2009 - highwaystar.ru@gmail.com
 - update to 0.7.2
-- removed some unnecasary hacks from spec 
+- removed some unnecasary hacks from spec
 
 -------------------------------------------------------------------
 Wed Mar 19 14:31:50 CET 2008 - lars@linux-schulserver.de
 
 - fix BuildRequires
-- added rpmlintrc 
+- added rpmlintrc
 
 -------------------------------------------------------------------
 Tue Mar 18 18:54:50 CET 2008 - lars@linux-schulserver.de

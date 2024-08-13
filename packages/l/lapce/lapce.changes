@@ -1,4 +1,145 @@
 -------------------------------------------------------------------
+Fri Aug 09 18:01:57 UTC 2024 - pirateclip@protonmail.com
+
+- They also removed the all-languages feature from lapce-app
+
+- Update to version 0.4.1:
+  * Implement feature "Run in Terminal" (#3419)
+  * Avoid overflow. (#3420)
+  * just language configurations
+  * add markup syntax color for markdown
+  * relase 0.4.1
+  * Update CHANGELOG.md
+  * panel order default fix
+  * after reset highlight configs
+  * clippy fix
+  * editor gutter refactor
+  * Implement the drag-and-drop to open file feature. (#3415)
+  * bump floem
+  * Add error message display for plugins and LSP server. (#3414)
+  * Add proxy and retry count to all HTTPS GET requests. (#3413)
+  * show call hierarchy and jump to location (#3403)
+  * load_available_volts: 1. Add proxy and retry count. (#3401)
+  * Optimize "Reveal in File Tree". (#3404)
+  * Optimize double click Terminal. (#3405)
+  * tree sitter nightly version detection change
+  * update deps, fix msrv and clippy lints
+  * fix: upgrade locale_config to non-panic version (#3395)
+  * fix crash
+  * add more languages, cleanup code (#3396)
+  * show code lens (#3387)
+  * 1. editor: Right-click add command "Show Call Hierarchy" (#3389)
+  * support to click hint (#3388)
+  * Improve editor tab header (#3322)
+  * support rust-analyzer's notification "experimental/serverStatus". (#3381)
+  * show file status for scratch documents
+  * fix git commit char length in version
+  * Fix head's path (#3380)
+  * update version matching
+  * fix lapce-proxy build (#3379)
+  * fix terminal on mac keeps fires PTY_READ_WRITE_TOKEN
+  * Avoid receiving the terminal disconnection event before the terminal has finished reading, which leads to incorrect display. (#3355)
+  * update wgpu
+  * editor: Right-click add command "Select in File Explorer" (#3375)
+  * get code lens and store in doc (#3370)
+  * fix release.yml publish
+  * fix proxy download for nightly, fix linux updater
+  * fix: dont use git2 for linux, since it fails when cross-compiling
+  * fix: update wgpu{,-hal} to mitigate issues on Windows
+  * terminal: double-click to maximize bottom (#3376)
+  * Terminal ctrl + click to jump: Support path contains '-' and toml file (#3367)
+  * ci: disable aarch64 proxy
+  * Terminal: right-click to add "clear all" function (#3368)
+  * add open grammars/queries directory command
+  * fix grammars fetching, log errors for queries, add zstd
+  * update dependencies (#3366)
+  * re-implement grammar/queries update system (#3341)
+  * fix terminal key handling
+  * 1. terminal: The default number of jump columns is 0 (#3358)
+  * terminal: added support for Alt+ some character input (#3357)
+  * 1. add right-click function for the tab of editor (#3346)
+  * Terminal file jump: change the judgment point to Ctrl + left mouse click. (#3342)
+  * chore(deps): bump open from 5.1.2 to 5.1.4
+  * chore(deps): bump tar from 0.4.40 to 0.4.41
+  * chore(deps): bump flate2 from 1.0.28 to 1.0.30
+  * chore(deps): bump git2 from 0.18.2 to 0.19.0
+  * chore(deps): bump unicode-width from 0.1.12 to 0.1.13
+  * chore(deps): bump regex from 1.10.4 to 1.10.5
+  * format imports
+  * update time
+  * update tree-sitter
+  * handle keypress properly when failing back to windowtab
+  * update linux dockerfile
+  * load tree sitter quries from folder
+  * Fix lanaguage from path
+  * code action lightbulb position fix
+  * fix environment loading, add windows support, add show env command (#3326)
+  * fix progress view overflow (#3324)
+  * fix file language detection from path
+  * fix panel picker drag
+  * fix file explorer
+  * remove println
+  * bump floem to fix clear_focus
+  * Make editor tab separator height configurable (#3313)
+  * disable selection on editor tabs (#3309)
+  * Remove containers (#3312)
+  * bump floem to fix emoji in tinyskia renderer
+  * stop pointerdown event propogation for keyboard shortcut picker
+  * Add debug names, trim extra containers (#3310)
+  * fix CI paths
+  * paint cursor caret after indent guide
+  * reorder editor cursor painting order
+  * implement gotodefinition on cmd/ctrl+click
+  * use macos-14, use xcode 15.4, retain artefacts for 3 days
+  * switch to macos-12
+  * ci: run only on code changes
+  * use macos-13 for release
+  * fix: separate binary and package in dockerfile
+  * remove coverage
+  * clean-up ci jobs, fix codecov
+  * switch to upstream for import-codesign-certs action
+  * use macos-14 for release (#3303)
+  * update structdesc, format code
+  * save scale configuration
+  * fix error_modal import
+  * fix status to align with viewport gutter line count
+  * fix scoping for error_modal
+  * use logical key for numpad key location
+  * log issues when not running with -w, return with exitcode 1, cleanup tracing
+  * derive std::fmt::Debug for most structures
+  * update floem
+  * cargo-deny: init (#3295)
+  * format code
+  * vendor dejavu fonts
+  * remove unused dependencies (#3296)
+  * format code
+  * fixup! upgrade softbuffer, wayland-*
+  * upgrade softbuffer, wayland-*
+  * upgrade tempfile
+  * upgrade include_dir
+  * remove patch version lock for ripgrep crates
+  * update grep-regex
+  * update grep-searcher
+  * update fontconfig-parser
+  * update blocking
+  * update hyper, tokio, etc.; remove duplicate socket2
+  * add placeholder for ssh input
+  * upgrade stretto and wg
+  * ignore newline in extension search, add placeholder
+  * upgrade pulldown-cmark to 0.11
+  * update lsp-types patch comment
+  * decode percent-encoded URLs, move path_from_url to own module
+  * fix formatting
+  * fix parsing URLs for LSPs that send it URL encoded
+  * fix: update schannel
+  * chore(deps): bump serde_json from 1.0.107 to 1.0.117
+  * chore(deps): bump parking_lot from 0.12.1 to 0.12.3
+  * chore(deps): bump libc from 0.2.153 to 0.2.155
+  * chore(deps): bump thiserror from 1.0.58 to 1.0.61
+  * chore(deps): bump chrono from 0.4.34 to 0.4.38
+  * fix launching default terminal profile when showing panel
+
+-------------------------------------------------------------------
 Tue Jun 25 22:54:19 UTC 2024 - Gordon Leung <pirateclip@protonmail.com>
 
 - Use mold to link for faster compilation

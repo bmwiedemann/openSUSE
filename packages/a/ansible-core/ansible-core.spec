@@ -38,7 +38,7 @@
 %endif
 
 Name:           ansible-core
-Version:        2.16.8
+Version:        2.17.2
 Release:        0
 Summary:        Radically simple IT automation
 License:        GPL-3.0-or-later
@@ -51,10 +51,10 @@ BuildArch:      noarch
 Conflicts:      ansible < 3
 Conflicts:      ansible-base
 
-# https://github.com/ansible/ansible/blob/stable-2.16/setup.cfg#L40
+# https://github.com/ansible/ansible/blob/stable-2.17/setup.cfg#L40
 BuildRequires:  %{ansible_python}-base >= 3.10
 BuildRequires:  %{ansible_python}-setuptools
-# https://github.com/ansible/ansible/blob/stable-2.16/requirements.txt
+# https://github.com/ansible/ansible/blob/stable-2.17/requirements.txt
 BuildRequires:  %{ansible_python}-Jinja2 >= 3.0.0
 BuildRequires:  %{ansible_python}-PyYAML >= 5.1
 BuildRequires:  %{ansible_python}-cryptography
@@ -185,7 +185,7 @@ cp -v ./man1/*.1 %{buildroot}/%{_mandir}/man1/
 #python3 bin/ansible-test units -v --python %%{python3_version}
 
 %files
-%doc changelogs/CHANGELOG-v2.16.rst changelogs/changelog.yaml
+%doc changelogs/CHANGELOG-v2.17.rst changelogs/changelog.yaml
 %license COPYING licenses/Apache-License.txt licenses/MIT-license.txt licenses/PSF-license.txt licenses/simplified_bsd.txt
 %{_bindir}/ansible
 %{_bindir}/ansible-config

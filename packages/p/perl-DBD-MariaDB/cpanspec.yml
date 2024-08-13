@@ -14,6 +14,7 @@ sources:
  - test-clean.sh
 patches:
   perl-DBD-MariaDB-fix_c_32x_test.patch: -p1
+  perl-DBD-MariaDB-fix_ssl_connection_test.patch: -p1 PATCH-FIX-OPENSUSE https://github.com/perl5-dbi/DBD-MariaDB/issues/209
 preamble: |-
  BuildRequires:  libmariadb-devel
  BuildRequires:  mariadb

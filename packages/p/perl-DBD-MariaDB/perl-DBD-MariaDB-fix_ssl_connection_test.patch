@@ -1,0 +1,11 @@
+--- a/t/92ssl_connection.t	2023-09-10 16:18:55.000000000 +0200
++++ b/t/92ssl_connection.t	2024-08-12 13:32:17.172199902 +0200
+@@ -29,6 +29,6 @@
+     ok(defined $cipher, 'SSL connection was established') and diag("mariadb_ssl_cipher is: $cipher");
+   }
+ } else {
+-  like($DBI::errstr, qr/^SSL connection error: /, 'DBD::MariaDB supports mariadb_ssl=1 without mariadb_ssl_optional=1 and fail because cannot enforce SSL encryption') or diag('Error message: ' . ($DBI::errstr || 'unknown'));
++  like($DBI::errstr, qr/^TLS\/SSL error: /, 'DBD::MariaDB supports mariadb_ssl=1 without mariadb_ssl_optional=1 and fail because cannot enforce SSL encryption') or diag('Error message: ' . ($DBI::errstr || 'unknown'));
+   is($DBI::err, 2026, 'DBD::MariaDB error code is SSL related') or diag('Error code: ' . ($DBI::err || 'unknown'));
+ }
+

@@ -147,7 +147,7 @@ applications that want to make use of the mutter library.
 %else
 %patch -P 1 -p1
 %patch -P 2 -p1
-%patch -P 3 -p1
+%patch -P 4 -p1
 %patch -P 5 -p1
 %endif
 # SLE-only patches and translations.

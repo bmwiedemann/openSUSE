@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jul 31 06:02:54 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add backported 66de8124.patch: Fix build against ffmpeg-7.
+
+-------------------------------------------------------------------
 Fri Jul 19 07:40:24 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Add normalize-gir.pl to strip details about build machines

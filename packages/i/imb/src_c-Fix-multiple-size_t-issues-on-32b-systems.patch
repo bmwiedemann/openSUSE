@@ -1,0 +1,181 @@
+From be572ea07a91a5d500d8f9ebf942a9d3169b5f35 Mon Sep 17 00:00:00 2001
+From: Nicolas Morey <nmorey@suse.com>
+Date: Mon, 12 Aug 2024 14:48:58 +0200
+Subject: [PATCH 1/1] src_c: Fix multiple size_t issues on 32b systems
+
+- Use %zu to printf size_t. %PRIu64 is the wrong size on 32b systems
+- Reduce IMB_P2P_MAX_MSG_LOG on 32b system to not overflow size_t
+
+Signed-off-by: Nicolas Morey <nmorey@suse.com>
+---
+ src_c/IMB_chk_diff.c          | 16 ++++++++--------
+ src_c/IMB_mem_manager.c       |  2 +-
+ src_c/P2P/imb_p2p.c           | 10 +++++-----
+ src_c/P2P/imb_p2p.h           |  5 +++++
+ src_c/P2P/imb_p2p_pingping.c  |  2 +-
+ src_c/P2P/imb_p2p_pingpong.c  |  2 +-
+ src_c/P2P/imb_p2p_unirandom.c |  2 +-
+ 7 files changed, 22 insertions(+), 17 deletions(-)
+
+diff --git a/src_c/IMB_chk_diff.c b/src_c/IMB_chk_diff.c
+index 899cf7700f68..80e716ee33ef 100644
+--- a/src_c/IMB_chk_diff.c
++++ b/src_c/IMB_chk_diff.c
+@@ -245,8 +245,8 @@ Input variables:
+             "Overall size = %I64u,"
+             " Portion = %I64u,"
+ #else
+-            "Overall size = %lu,"
+-            " Portion = %lu,"
++            "Overall size = %zu,"
++            " Portion = %zu,"
+ #endif /* WIN_IMB*/
+             " #sample= %d\n",
+             totlen, loclen, j_sample);
+@@ -256,8 +256,8 @@ Input variables:
+             "Overall size = %I64u,"
+             " Portion = %I64u,"
+ #else
+-            "Overall size = %lu,"
+-            " Portion = %lu,"
++            "Overall size = %zu,"
++            " Portion = %zu,"
+ #endif /* WIN_IMB*/
+             " Startpos = %ld\n",
+             totlen, loclen, (long)Offset);
+@@ -269,8 +269,8 @@ Input variables:
+             "Overall size = %I64u,"
+             " Portion = %I64u,"
+ #else
+-            "Overall size = %lu,"
+-            " Portion = %lu,"
++            "Overall size = %zu,"
++            " Portion = %zu,"
+ #endif /*WIN_IMB*/
+             " #sample= %d\n",
+             totlen, loclen, j_sample);
+@@ -280,8 +280,8 @@ Input variables:
+             "Overall size = %I64u,"
+             " Portion = %I64u,"
+ #else
+-            "Overall size = %lu,"
+-            " Portion = %lu,"
++            "Overall size = %zu,"
++            " Portion = %zu,"
+ #endif /*WIN_IMB*/
+             " Startpos = %ld\n",
+             totlen, loclen, (long)Offset);
+diff --git a/src_c/IMB_mem_manager.c b/src_c/IMB_mem_manager.c
+index fb8b535b61f0..e62c0a838bed 100644
+--- a/src_c/IMB_mem_manager.c
++++ b/src_c/IMB_mem_manager.c
+@@ -149,7 +149,7 @@ Return value          (type void*)
+ #ifdef WIN_IMB
+                " %I64u bytes\n",
+ #else
+-               " %lu bytes\n",
++               " %zu bytes\n",
+ #endif
+         where, size);
+     }
+diff --git a/src_c/P2P/imb_p2p.c b/src_c/P2P/imb_p2p.c
+index ab872e1888d2..f7f4dffd9566 100644
+--- a/src_c/P2P/imb_p2p.c
++++ b/src_c/P2P/imb_p2p.c
+@@ -66,7 +66,7 @@ void* imb_p2p_alloc_mem(size_t size) {
+     void *ptr = NULL;
+     int mpi_error = MPI_Alloc_mem(size, MPI_INFO_NULL, (void *)&ptr);
+     if ((mpi_error != MPI_SUCCESS) || (ptr == NULL)) {
+-        fprintf(unit, "[%d] MPI_Alloc_mem(%" PRIu64 ") error %d, ptr=%p\n",
++        fprintf(unit, "[%d] MPI_Alloc_mem(%zu) error %d, ptr=%p\n",
+                 imb_p2p_config.rank, size, mpi_error, ptr);
+         fflush(unit);
+         exit(10);
+@@ -247,8 +247,8 @@ static void print_main_header(int argc, char **argv) {
+         fprintf(unit, "# %s\n", imb_p2p_config.benchmarks.array[j].name);
+     }
+     fprintf(unit, "#\n");
+-    fprintf(unit, "# Minimum message length in bytes:   %" PRIu64 "\n", imb_p2p_config.messages.min_size);
+-    fprintf(unit, "# Maximum message length in bytes:   %" PRIu64 "\n", imb_p2p_config.messages.max_size);
++    fprintf(unit, "# Minimum message length in bytes:   %zu\n", imb_p2p_config.messages.min_size);
++    fprintf(unit, "# Maximum message length in bytes:   %zu\n", imb_p2p_config.messages.max_size);
+     fprintf(unit, "#\n");
+     fflush(unit);
+ }
+@@ -302,7 +302,7 @@ static void free_messages(void) {
+ 
+ static void add_message(size_t size) {
+     if (!imb_p2p_config.messages.array) {
+-        imb_p2p_config.messages.min_size = ((size_t)1) << IMB_P2P_MAX_MSG_LOG;
++        imb_p2p_config.messages.min_size = (1ULL) << IMB_P2P_MAX_MSG_LOG;
+         imb_p2p_config.messages.max_size = 0;
+         imb_p2p_config.messages.length = 0;
+         imb_p2p_config.messages.capacity = 512;
+@@ -665,7 +665,7 @@ static void loading(int argc, char **argv) {
+                     fprintf(unit, "# number_of_iterations = (numerator * 1024 * 1024) / size\n");
+                     fprintf(unit, "# number_of_iterations <= max\n");
+                     fprintf(unit, "# number_of_iterations >= 1\n");
+-                    fprintf(unit, "# Default -iter %" PRIu64 ",%" PRIu64 "\n", imb_p2p_config.iter.max, (imb_p2p_config.iter.numerator / (1024 * 1024)));
++                    fprintf(unit, "# Default -iter %zu,%zu\n", imb_p2p_config.iter.max, (imb_p2p_config.iter.numerator / (1024 * 1024)));
+                     fprintf(unit, "#\n");
+                     exit(0);
+                 } else if (!STRCASECMP(argv[i], "msglen") || !STRCASECMP(argv[i], "-msglen")) {
+diff --git a/src_c/P2P/imb_p2p.h b/src_c/P2P/imb_p2p.h
+index 98d54653c7ec..e9e4254ff125 100644
+--- a/src_c/P2P/imb_p2p.h
++++ b/src_c/P2P/imb_p2p.h
+@@ -54,7 +54,12 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ #define IMB_P2P_CACHE_LINE_LEN (64)
+ #define IMB_P2P_DEFAULT_MAX_MESSAGE_SIZE (4 * 1024 * 1024)
+ #define IMB_P2P_BARRIER_TAG 1000
++#if __SIZEOF_SIZE_T__ == 8
+ #define IMB_P2P_MAX_MSG_LOG 47
++#else
++#define IMB_P2P_MAX_MSG_LOG 31
++#endif
++
+ #define IMB_P2P_PINGPONG "PingPong"
+ #define IMB_P2P_PINGPING "PingPing"
+ #define IMB_P2P_UNIRANDOM "Unirandom"
+diff --git a/src_c/P2P/imb_p2p_pingping.c b/src_c/P2P/imb_p2p_pingping.c
+index a8a9a9892b0e..d24dc5f2a61d 100644
+--- a/src_c/P2P/imb_p2p_pingping.c
++++ b/src_c/P2P/imb_p2p_pingping.c
+@@ -100,7 +100,7 @@ void imb_p2p_pingping(void) {
+             bandwidth = ((number_of_iterations * nranks * size) / (1000000.0 * max_time));
+             message_rate = ((number_of_iterations * nranks) / max_time);
+             latency = (1000000.0 * aggregate_time) / (number_of_iterations * nranks);
+-            fprintf(unit, " %12" PRIu64 " %12" PRIu64 " %12.2f %12.2f %12.0f\n", size, number_of_iterations, latency, bandwidth, message_rate);
++            fprintf(unit, " %12zu %12zu %12.2f %12.2f %12.0f\n", size, number_of_iterations, latency, bandwidth, message_rate);
+             fflush(unit);
+         }
+     }
+diff --git a/src_c/P2P/imb_p2p_pingpong.c b/src_c/P2P/imb_p2p_pingpong.c
+index f36926ed6ec7..a86288d22877 100644
+--- a/src_c/P2P/imb_p2p_pingpong.c
++++ b/src_c/P2P/imb_p2p_pingpong.c
+@@ -120,7 +120,7 @@ void imb_p2p_pingpong(void) {
+             bandwidth = ((number_of_iterations * nranks * size) / (1000000.0 * max_time));
+             message_rate = ((number_of_iterations * nranks) / (max_time));
+             latency = (1000000.0 * aggregate_time) / (2 * number_of_iterations * nranks);
+-            fprintf(unit, " %12" PRIu64 " %12" PRIu64 " %12.2f %12.2f %12.0f\n", size, number_of_iterations, latency, bandwidth, message_rate);
++            fprintf(unit, " %12zu %12zu %12.2f %12.2f %12.0f\n", size, number_of_iterations, latency, bandwidth, message_rate);
+             fflush(unit);
+         }
+     }
+diff --git a/src_c/P2P/imb_p2p_unirandom.c b/src_c/P2P/imb_p2p_unirandom.c
+index 310933cd275c..2381d593b10f 100644
+--- a/src_c/P2P/imb_p2p_unirandom.c
++++ b/src_c/P2P/imb_p2p_unirandom.c
+@@ -123,7 +123,7 @@ void imb_p2p_unirandom(void) {
+             message_rate = (aggregate_number_of_messages / max_time);
+             bandwidth = ((aggregate_number_of_messages * size) / (1000000.0 * max_time));
+             latency = (1000000.0 * aggregate_time) / aggregate_number_of_messages;
+-            fprintf(unit, " %12" PRIu64 " %12" PRIu64 " %12.2f %12.2f %12.0f\n", size, number_of_iterations, latency, bandwidth, message_rate);
++            fprintf(unit, " %12zu %12zu %12.2f %12.2f %12.0f\n", size, number_of_iterations, latency, bandwidth, message_rate);
+             fflush(unit);
+         }
+     }
+-- 
+2.45.2.1.g5c866cf9507b
+

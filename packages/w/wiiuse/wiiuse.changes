@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Aug 12 09:21:56 UTC 2024 - ming li <mli@suse.com>
+
+- Update to version 0.15.6
+  * Linux - Fixed hang with kernels 6.6.x and newer
+  * Corrected historical record about Wiiuse origins
+  * Require CMake > 3.6.x to avoid deprecation warnings
+  * Support for Balance Board calibration
+  Remove wiiuse-soname.patch
+
+-------------------------------------------------------------------
 Tue Feb 20 15:21:02 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

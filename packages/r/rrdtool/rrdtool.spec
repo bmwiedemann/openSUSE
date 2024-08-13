@@ -32,7 +32,7 @@
 %bcond_without  libwrap
 %bcond_with     rados
 Name:           rrdtool
-Version:        1.8.0
+Version:        1.9.0
 Release:        0
 Summary:        Round Robin Database Tool to store and display time-series data
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later
@@ -43,19 +43,13 @@ Source2:        sysconfig.rrdcached
 Source4:        rrdcached-systemd-pre
 Source5:        rrdcached.service
 Source99:       %{name}.changes
-# PATCH-FIX-UPSTREAM -- Fix BUILD_DATE in rrdtool help output (fix segfault)
-# https://github.com/oetiker/rrdtool-1.x/commit/e59f703bbcc0af949ee365206426b6394c340c6f.patch
-Patch1:         e59f703bbcc0af949ee365206426b6394c340c6f.patch
-## PATCH-FIX-UPTREAM -- https://github.com/oetiker/rrdtool-1.x/pull/1242
-Patch2:         rrdtool-1.8.0-gcc14.patch
 # PATCH-FIX-UPTREAM -- Prevent possible segfault
 ## this patch against rrdtool-1.4.5 dates from 2011, seems unneccessary today,
 ## never appeared upstream, and it does no longer apply
 ##Patch3:         rrdtool-tclsegfault.patch
 # PATCH-FIX-UPSTREAM -- bnc#793636
-Patch12:        rrdtool-zero_vs_nothing.patch
-Patch14:        harden_rrdcached.service.patch
-Patch15:        rrdtool-fix_extra_reference.patch
+Patch1:         rrdtool-zero_vs_nothing.patch
+Patch2:         harden_rrdcached.service.patch
 # Needed for tests
 BuildRequires:  bc
 BuildRequires:  cairo-devel >= 1.2

@@ -1,0 +1,32 @@
+From 51c1bad2af2a9bfd65f3543d5548ffbd218ee6a3 Mon Sep 17 00:00:00 2001
+From: Daniel Garcia Moreno <daniel.garcia@suse.com>
+Date: Mon, 12 Aug 2024 11:05:45 +0200
+Subject: [PATCH] Use reason instead of msg for pytest.skip
+
+msg argument is removed since version 8.1.0
+https://github.com/pytest-dev/pytest/commit/0591569b4ba9bfb12e5b5307da621a83c4ceced6
+---
+ tests/test_zipfile.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/tests/test_zipfile.py b/tests/test_zipfile.py
+index 3e5e0b1..da81e75 100644
+--- a/tests/test_zipfile.py
++++ b/tests/test_zipfile.py
+@@ -761,11 +761,11 @@ class TestStoredTestsWithSourceFile(AbstractTestsWithSourceFile):
+ 		try:
+ 			time.localtime(ts)
+ 		except OverflowError:
+-			pytest.skip(msg=f'time.localtime({ts}) raises OverflowError')
++			pytest.skip(reason=f'time.localtime({ts}) raises OverflowError')
+ 		try:
+ 			os.utime(testfn, (ts, ts))
+ 		except OverflowError:
+-			pytest.skip(msg="Host fs cannot set timestamp to required value.")
++			pytest.skip(reason="Host fs cannot set timestamp to required value.")
+ 
+ 		mtime_ns = os.stat(tmp_pathplus / TESTFN).st_mtime_ns
+ 		if mtime_ns != (4386268800 * 10**9):
+-- 
+2.45.2
+

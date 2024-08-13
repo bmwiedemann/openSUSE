@@ -19,7 +19,7 @@
 %define version_suffix 1
 
 Name:           grandorgue
-Version:        3.14.2
+Version:        3.15.0
 Release:        0
 Summary:        Virtual Pipe Organ Software
 License:        GPL-2.0-or-later
@@ -67,7 +67,7 @@ This package contains the demo sampleset for GrandOrgue.
 
 %build
 %cmake -DDOC_INSTALL_DIR=%{_docdir} \
-       -DLIBINSTDIR=%{_lib} \
+       -DUSE_BUILD_SYSTEM_LIBDIR=ON \
        -DUSE_INTERNAL_RTAUDIO=OFF \
        -DUSE_INTERNAL_PORTAUDIO=OFF \
        -DUSE_INTERNAL_ZITACONVOLVER=OFF

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Aug  9 14:51:00 UTC 2024 - Jiri Bohac <jbohac@suse.com>
+
+- add (bsc#1226183)
+  * make-reserve_diskspace-do-nothing-for-flattened-form.patch
+
+-------------------------------------------------------------------
 Thu Aug  1 06:57:56 UTC 2024 - Jiri Slaby <jslaby@suse.cz>
 
 - add (bsc#1228388):

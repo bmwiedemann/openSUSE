@@ -64,7 +64,7 @@ BuildRequires:  zlib-devel
 %if %{suse_version} > 1500
 BuildRequires:  libzstd-devel
 %endif
-Version:        2.42
+Version:        2.43
 Release:        0
 
 # disable libalternatives for now until it's changed to not
@@ -131,7 +131,7 @@ Source:         binutils-%{version}.tar.bz2
 Source2:        binutils-%{version}.tar.bz2.sig
 Source3:        binutils.keyring
 Source4:        baselibs.conf
-Patch1:         binutils-2.42-branch.diff.gz
+Patch1:         binutils-2.43-branch.diff.gz
 Patch3:         binutils-skip-rpaths.patch
 Patch4:         s390-biarch.diff
 Patch5:         x86-64-biarch.patch
@@ -153,7 +153,6 @@ Patch42:        binutils-compat-old-behaviour.diff
 Patch43:        binutils-revert-hlasm-insns.diff
 Patch44:        binutils-revert-rela.diff
 Patch60:        binutils-disable-code-arch-error.diff
-Patch61:        riscv-no-relax.patch
 Patch90:        cross-avr-nesc-as.patch
 Patch92:        cross-avr-omit_section_dynsym.patch
 Patch93:        cross-avr-size.patch
@@ -279,7 +278,6 @@ cp ld/ldgram.y ld/ldgram.y.orig
 %patch -P 44 -p1
 %endif
 %patch -P 60 -p1
-%patch -P 61 -p1
 %if "%{TARGET}" == "avr"
 cp gas/config/tc-avr.h gas/config/tc-avr-nesc.h
 %patch -P 90

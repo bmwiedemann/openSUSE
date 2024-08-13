@@ -1,7 +1,7 @@
 #
 # spec file for package zathura-plugin-djvu
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,17 +18,17 @@
 
 %define realname zathura-djvu
 Name:           zathura-plugin-djvu
-Version:        0.2.9
+Version:        0.2.10
 Release:        0
 Summary:        DjVu support for zathura using the djvulibre library
 License:        Zlib
 URL:            https://pwmt.org/projects/zathura-djvu/
 Source:         https://pwmt.org/projects/zathura-djvu/download/%{realname}-%{version}.tar.xz
-BuildRequires:  meson >= 0.43
+BuildRequires:  meson >= 0.61
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(ddjvuapi)
 BuildRequires:  pkgconfig(girara-gtk3)
-BuildRequires:  pkgconfig(zathura)
+BuildRequires:  pkgconfig(zathura) >= 0.3.8
 Requires:       zathura
 Provides:       zathura-djvu-plugin
 
@@ -39,7 +39,7 @@ The zathura-djvu plugin adds DjVu support to zathura by using the djvulibre libr
 %setup -q -n %{realname}-%{version}
 
 %build
-%meson
+%meson -Dtests=disabled
 %meson_build
 
 %install

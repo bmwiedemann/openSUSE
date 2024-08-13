@@ -2277,4 +2277,41 @@ that rarely could lead to variations in optimized finaly binaries (forwarded req
 - Undefine _FORTIFY_SOURCE when running checks (forwarded request 1180350 from Andreas_Schwab)</comment>
     <requestid>1183197</requestid>
   </revision>
+  <revision rev="172" vrev="1">
+    <srcmd5>7a46bee3d2ce2e355e2e21862b8cada0</srcmd5>
+    <version>2.43</version>
+    <time>1723548101</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.43: 
+  * new .base64 pseudo-op, allowing base64 encoded data as strings
+  * Intel APX: add support for CFCMOV, CCMP, CTEST, zero-upper, NF
+    (APX_F now fully supported)
+  * x86 Intel syntax now warns about more mnemonic suffixes
+  * macros and .irp/.irpc/.rept bodies can use \+ to get at number
+    of times the macro/body was executed
+  * aarch64: support 'armv9.5-a' for -march, add support for LUT
+    and LUT2
+  * s390: base register operand in D(X,B) and D(L,B) can now be
+    omitted (ala 'D(X,)'); warn when register type doesn't match
+    operand type (use option
+    'warn-regtype-mismatch=[strict|relaxed|no]' to adjust)
+  * riscv: support various extensions: Zacas, Zcmp, Zfbfmin,
+    Zvfbfmin, Zvfbfwma, Smcsrind/Sscsrind, XCvMem, XCvBi, XCvElw,
+    XSfCease, all at version 1.0;
+    remove support for assembly of privileged spec 1.9.1 (linking
+    support remains)
+  * arm: remove support for some old co-processors: Maverick and FPA
+  * mips: '--trap' now causes either trap or breakpoint instructions
+    to be emitted as per current ISA, instead of always using trap
+    insn and failing when current ISA was incompatible with that
+  * LoongArch: accept .option pseudo-op for fine-grained control
+    of assembly code options; add support for DT_RELR
+  * readelf: now displays RELR relocations in full detail;
+    add -j/--display-section to show just those section(s) content
+    according to their type
+  * objdump/readelf now dump also .eh_frame_hdr (when present) when
+    dumping .eh_frame
+  * gprofng: add event types for AMD Zen3/Zen4 and Intel Ice Lake</comment>
+    <requestid>1193447</requestid>
+  </revision>
 </revisionlist>

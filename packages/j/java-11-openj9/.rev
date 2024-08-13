@@ -191,4 +191,12 @@
     <comment>April 2024 security fixes</comment>
     <requestid>1176632</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>836b376ecf36db451c7c4a48cf8d4bc3</srcmd5>
+    <version>11.0.24.0</version>
+    <time>1723548306</time>
+    <user>dimstar_suse</user>
+    <comment>July 2024 CPU</comment>
+    <requestid>1193635</requestid>
+  </revision>
 </revisionlist>

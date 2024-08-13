@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug 12 20:47:33 UTC 2024 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Move system-user-velociraptor to the client flavor build in order
+  to build it on all architectures.
+
+-------------------------------------------------------------------
 Wed Jul 03 17:01:54 UTC 2024 - antonio.teixeira@suse.com
 
 - Update to version 0.7.0.4.git97.675e45f9:

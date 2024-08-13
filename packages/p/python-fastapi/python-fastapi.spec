@@ -20,7 +20,7 @@
 %bcond_with ringdisabled
 %{?sle15_python_module_pythons}
 Name:           python-fastapi
-Version:        0.110.2
+Version:        0.112.0
 Release:        0
 Summary:        FastAPI framework
 License:        MIT
@@ -38,14 +38,19 @@ BuildRequires:  python-rpm-macros
 Requires:       python-pydantic >= 1.8.2
 Requires:       python-typing_extensions >= 4.8.0
 Requires:       (python-starlette >= 0.37.2 with python-starlette < 0.38)
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module pdm-backend}
 BuildRequires:  %{python_module Flask >= 1.1.2}
+BuildRequires:  %{python_module PyJWT}
 BuildRequires:  %{python_module PyYAML >= 5.3.1}
 BuildRequires:  %{python_module anyio >= 3.2.1}
+BuildRequires:  %{python_module coverage}
 BuildRequires:  %{python_module dirty-equals}
 BuildRequires:  %{python_module httpx >= 0.23.0}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-multipart >= 0.0.7}
 BuildRequires:  %{python_module sqlalchemy < 2.0}
 BuildRequires:  %{python_module trio}
@@ -73,13 +78,17 @@ Python FastAPI framework.
 
 %install
 %pyproject_install
+%python_clone -a %{buildroot}/%{_bindir}/fastapi
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 # more warnings as expected
 donttest="test_warn_duplicate_operation_id"
 # https://github.com/tiangolo/fastapi/discussions/9934
-donttest="$donttest or test_dependency_gets_exception"
+donttest+=" or test_dependency_gets_exception"
+# python-fastapi-cli packages doesn't exists in openSUSE
+donttest+=" or test_fastapi_cli"
+donttest+=" or test_openapi"
 %if %{with ringdisabled}
 ignorefiles="$ignorefiles --ignore tests/test_default_response_class.py"
 ignorefiles="$ignorefiles --ignore tests/test_tutorial/test_async_sql_databases/test_tutorial001.py"
@@ -99,12 +108,19 @@ ignorefiles="$ignorefiles --ignore tests/test_tutorial/test_response_model/test_
 donttest="$donttest or test_orjson_response_class"
 donttest="$donttest or (test_tutorial001 and test_get_custom_response)"
 %endif
-%pytest -W ignore::DeprecationWarning $ignorefiles -k "not ($donttest)" tests
+%pytest -W ignore::DeprecationWarning -W ignore::ResourceWarning $ignorefiles -k "not ($donttest)" tests
+
+%post
+%python_install_alternative fastapi
+
+%postun
+%python_uninstall_alternative fastapi
 
 %files %{python_files}
 %doc README.md
 %license LICENSE
 %{python_sitelib}/fastapi
 %{python_sitelib}/fastapi-%{version}.dist-info
+%python_alternative %{_bindir}/fastapi
 
 %changelog

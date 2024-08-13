@@ -1114,4 +1114,12 @@
   After update the not used agents can be uninstalled.</comment>
     <requestid>1190424</requestid>
   </revision>
+  <revision rev="76" vrev="3">
+    <srcmd5>6da7dae08508eb20c093813f4638df62</srcmd5>
+    <version>4.15.0+git.1719822011.7a2c0a7f</version>
+    <time>1723548231</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1193384</requestid>
+  </revision>
 </revisionlist>

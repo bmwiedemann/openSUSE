@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Aug 12 08:41:26 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
+
+- Fix regression introduced in version 8.9.1:
+  * sigpipe: init the struct so that first apply ignores
+  * Add curl-sigpipe.patch
+
+-------------------------------------------------------------------
+Wed Jul 31 08:20:44 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 8.9.1:
+  * Security fixes:
+    - curl: ASN.1 date parser overread [bsc#1228535, CVE-2024-7264]
+  * Bugfixes:
+    - cmake: detect 'libssh' via 'pkg-config'
+    - cmake: detect 'nettle' when building with GnuTLS
+    - connect: fix connection shutdown for event based processing
+    - curl: more defensive socket code for --ip-tos
+    - CURLOPT_SSL_CTX_FUNCTION.md: mention CA caching
+    - CURLSHOPT_SHARE.md: mention sessions/cookies as not thread-safe
+    - ftpserver.pl: make POP3 LIST serve content from the test file
+    - lib: survive some NULL input args
+    - os400: build cli manual.
+    - os400: workaround an IBM ASCII run-time library bug
+    - transfer: speed limiting fix for 32bit systems
+    - vtls: avoid forward declaration in MultiSSL builds
+    - x509asn1: unittests and fixes for gtime2str
+
+-------------------------------------------------------------------
 Wed Jul 24 07:07:57 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 8.9.0:

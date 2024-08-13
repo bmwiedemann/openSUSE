@@ -140,4 +140,12 @@ This patch is applied during compilation as perftest-license.patch</comment>
     <comment></comment>
     <requestid>1155779</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>3a9c2c199a90325563c4dc34c1eb100a</srcmd5>
+    <version>24.04.0</version>
+    <time>1723548242</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1193452</requestid>
+  </revision>
 </revisionlist>

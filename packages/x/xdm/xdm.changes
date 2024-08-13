@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Aug  9 09:40:13 UTC 2024 - Thorsten Kukuk <kukuk@suse.com>
+
+- sysconfig/windowmanager is deprecated since 7 years, don't 
+  read it if it does not exist.
+
+-------------------------------------------------------------------
 Fri Apr  5 00:54:48 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to release 1.1.16

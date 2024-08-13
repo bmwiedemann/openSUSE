@@ -420,4 +420,17 @@
     <comment></comment>
     <requestid>976023</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>405b153edc238ac62fd0d11e1ac9a9fc</srcmd5>
+    <version>2.0.32.3+git.05faa36e</version>
+    <time>1723548133</time>
+    <user>dimstar_suse</user>
+    <comment>D    OpenIPMI-no-return-in-nonvoid-function.patch
+
+Cleanup diff from 2 years ago: the patch was removed from the spec file, but
+was not mentioned in changelog as being removed, nor was the actual file
+being deleted. This was the reason why, for the last two years, this package
+could not be forwarded to Factory (incl. the recent gcc14 fixes) (forwarded request 1193361 from dimstar)</comment>
+    <requestid>1193362</requestid>
+  </revision>
 </revisionlist>

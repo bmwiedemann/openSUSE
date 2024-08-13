@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Wed Aug 07 06:36:53 UTC 2024 - danish.prakash@suse.com
+
+- Update to version 1.12.1:
+  * Release v1.12.1
+  * Update release notes for v1.12.1
+  * Change nv cargo categories
+  * Bump to 1.13.0-dev
+  * Release 1.12
+  * Release Notes for 1.12
+  * run cargo update
+  * rpm: use nftables as default for f41
+  * fix(deps): update rust crate serde_json to 1.0.121
+  * fix(deps): update rust crate tokio to 1.39.2
+  * aardvark-dns: trim whitespaces from error text
+  * fix(deps): update rust crate env_logger to 0.11.5
+  * [skip-ci] RPM: handle iptables/nftables dependencies
+  * fix aardvark-dns error handling
+  * fix(deps): update rust crate tokio to 1.39.1
+  * fix(deps): update rust crate env_logger to 0.11.4
+  * fix(deps): update rust crate tokio to 1.38.1
+  * update mozim to 0.2.4
+  * fix(deps): update rust crate serde_json to 1.0.120
+  * netavark: dhcp_proxy: use dns servers from dhcp lease
+  * fix(deps): update rust crate serde_json to 1.0.119
+  * fix(deps): update rust crate netlink-packet-route to 0.20.1
+  * fix(deps): update rust crate log to 0.4.22
+  * Fix Epoch so upgrade path is preserved from Fedora/RHEL.
+  * test: add macvlan metric test
+  * fix(deps): update rust crate serde_json to 1.0.118
+  * fix(deps): update rust crate url to 2.5.2
+  * fix(deps): update rust crate prost to 0.12.6
+  * fix(deps): update rust crate url to 2.5.1
+  * fix(deps): update rust crate iptables to 0.5.2
+  * [CI:BUILD] rpm: Update Rust macro usage
+  * fix(deps): update rust crate nftables to 0.4.1
+  * fix(deps): update rust crate tokio to 1.38.0
+  * Bump to 1.12.0-dev
+
+-------------------------------------------------------------------
 Mon Jun 03 06:42:43 UTC 2024 - danish.prakash@suse.com
 
 - Remove redundant source: cargo_config

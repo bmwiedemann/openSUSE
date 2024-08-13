@@ -18,7 +18,7 @@
 
 %define sdlver 2
 Name:           tuxpaint
-Version:        0.9.32
+Version:        0.9.33
 Release:        0
 Summary:        Drawing Program for Young Children
 License:        GPL-2.0-or-later
@@ -39,7 +39,7 @@ BuildRequires:  pkgconfig(SDL%{?sdlver}_mixer)
 BuildRequires:  pkgconfig(SDL%{?sdlver}_ttf)
 BuildRequires:  pkgconfig(fribidi)
 BuildRequires:  gperf
-BuildRequires:  pkgconfig(imagequant)
+BuildRequires:  (libimagequant-devel or pkgconfig(imagequant))
 BuildRequires:  libpaper-devel
 BuildRequires:  libpng-devel
 BuildRequires:  xdg-utils
@@ -53,7 +53,7 @@ BuildRequires:  gettext-devel
 BuildRequires:  pkgconfig(SDL%{?sdlver}_gfx)
 BuildRequires:  pkgconfig(librsvg-2.0)
 BuildRequires:  update-desktop-files
-Requires:       freefont
+Requires:       gnu-free-fonts
 Requires:       netpbm
 Recommends:     tuxpaint-config
 Recommends:     tuxpaint-stamps
@@ -160,10 +160,9 @@ rm -rf %{buildroot}/%{_docdir}/%{name}
 # remove unneeded scripts
 rm %{buildroot}/%{_datadir}/%{name}/fonts/locale/zh_tw_docs/*.{sh,py,pe}
 
-# move bash-completion to new home
 mkdir -p %{buildroot}/%{_datadir}/bash-completion/completions/
-mv 	%{buildroot}%{_sysconfdir}/bash_completion.d/tuxpaint-completion.bash \
-	%{buildroot}%{_datadir}/bash-completion/completions/
+mv 	%{buildroot}%{_sysconfdir}/bash_completion.d/010_tuxpaint-completion.bash \
+	%{buildroot}%{_datadir}/bash-completion/completions/tuxpaint
 rmdir %{buildroot}%{_sysconfdir}/bash_completion.d
 
 # find lang
@@ -178,7 +177,7 @@ rmdir %{buildroot}%{_sysconfdir}/bash_completion.d
 %exclude %{_mandir}/man1/tp-magic-config*
 %dir %{_sysconfdir}/%{name}
 %config(noreplace) %{_sysconfdir}/%{name}/%{name}.conf
-%{_datadir}/bash-completion/completions/tuxpaint-completion.bash
+%{_datadir}/bash-completion/completions/tuxpaint
 %{_bindir}/%{name}
 %{_bindir}/tuxpaint-import
 %{_libdir}/%{name}

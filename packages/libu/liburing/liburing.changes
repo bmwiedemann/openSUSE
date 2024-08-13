@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Aug  8 10:21:50 UTC 2024 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- Skip test buf-ring-nommap.t if ENOMEM appears (happens in ppc64le arch).
+  * test-buf-ring-nommap-skip-the-test-on-queue-init-ENO.patch
+
+-------------------------------------------------------------------
 Fri Jul 12 16:49:22 UTC 2024 - David Disseldorp <ddiss@suse.com>
 
 - Fix buf-ring-nommap.t test failure

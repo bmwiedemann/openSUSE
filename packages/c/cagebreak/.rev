@@ -1,0 +1,11 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b6309697b988f099c7a12fc529c5a6fe</srcmd5>
+    <version>2.3.1</version>
+    <time>1723548208</time>
+    <user>dimstar_suse</user>
+    <comment>I want to maintain cagebreak in Factory as well.
+This should fix all the previous issues by pulling the correct keyring. I've triple checked with the source_validator that wasn't running for some reason. Thanks again, and sorry for the supersedes!</comment>
+    <requestid>1193222</requestid>
+  </revision>
+</revisionlist>

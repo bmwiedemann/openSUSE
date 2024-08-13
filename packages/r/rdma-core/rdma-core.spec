@@ -30,9 +30,9 @@
 %define _modprobedir /lib/modprobe.d
 %endif
 
-%define         git_ver .0.aa4e3a80d4b3
+%define         git_ver .0.6cc2b99ccce2
 Name:           rdma-core
-Version:        52.0
+Version:        53.0
 Release:        0
 Summary:        RDMA core userspace libraries and daemons
 License:        BSD-2-Clause OR GPL-2.0-only
@@ -78,7 +78,6 @@ Source5:        gen-pandoc.sh
 Source6:        get_build.py
 Patch0:         disable-rdma-interface-renaming.patch
 Patch1:         kernel-boot-do-not-load-module-unsupported-on-s390.patch
-Patch2:         Added-suffix-libdrm-to-CMakeLists.txt-for-drm.patch
 BuildRequires:  binutils
 BuildRequires:  cmake >= 2.8.11
 BuildRequires:  gcc
@@ -444,7 +443,6 @@ easy, object-oriented access to IB verbs.
 %ifarch s390 s390x
 %patch -P 1
 %endif
-%patch -P 2
 
 %build
 

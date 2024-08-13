@@ -81,4 +81,12 @@ package. Also, BuildRequire cargo+rust to prevent conflicts with
 `cargo-packaging`. (forwarded request 1189724 from danishprakash)</comment>
     <requestid>1189747</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>fefea56675ba5b1b62d62a1c348e03dd</srcmd5>
+    <version>1.12.1</version>
+    <time>1723548127</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1193336</requestid>
+  </revision>
 </revisionlist>

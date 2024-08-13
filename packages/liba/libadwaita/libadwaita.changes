@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Aug 11 13:25:57 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.5.3:
+  + AdwAlertDialog: Expose body text as a11y description
+  + AdwDialog:
+    - Fix a memory leak
+    - Speed up switching presentation
+  + AdwPreferencesPage: Add an a11y relation to the description
+  + AdwSpinRow: Set accessible role to presentation
+  + AdwSwitchRow: Set accessible role to switch
+  + AdwTabBar/Overview: Fix a use after free when closing tabs
+  + Stylesheet: Fix a specificity issue with scrolled windows in
+    popovers
+  + Docs:
+    - Don't annotate user_data params with closure
+    - Fix typos in migrating to breakpoints page
+  + Updated translations.
+
+-------------------------------------------------------------------
 Thu Aug  8 08:21:23 UTC 2024 - Filip Kastl <filip.kastl@suse.com>
 
 - Fix BuildRequires minimal version of gtk4 from 4.11.3 to 4.13.4

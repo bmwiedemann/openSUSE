@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Aug 11 13:21:26 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.5.3:
+  + Automatically ignore read-only properties
+  + Add support for GParamSpec which are GBytes
+
+-------------------------------------------------------------------
 Tue Jul  9 19:55:32 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.5.2:

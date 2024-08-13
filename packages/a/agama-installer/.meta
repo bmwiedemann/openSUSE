@@ -1,0 +1,5 @@
+<package name="agama-installer" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="systemsmanagement:Agama:Devel" package="agama-installer"/>
+</package>

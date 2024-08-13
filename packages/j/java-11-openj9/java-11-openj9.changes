@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Aug  6 08:09:09 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Update to OpenJDK 11.0.24 with OpenJ9 0.46.0 virtual machine
+- Including Oracle July 2024 CPU changes
+  * CVE-2024-21131 (bsc#1228046), CVE-2024-21138 (bsc#1228047),
+    CVE-2024-21140 (bsc#1228048), CVE-2024-21144 (bsc#1228050),
+    CVE-2024-21147 (bsc#1228052), CVE-2024-21145 (bsc#1228051)
+  * OpenJ9 changes, see 
+    https://www.eclipse.org/openj9/docs/version0.46/
+- Removed patch:
+  * openj9-no-narrowing.patch
+    + fixed in upstream code
+
+-------------------------------------------------------------------
 Thu May 23 17:35:17 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Update to OpenJDK 11.0.23 with OpenJ9 0.44.0 virtual machine

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Aug 12 15:25:02 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patch from upstream to fix a segfault when filtering genres
+  results in empty list of genres:
+  * 0001-Fix-exception-when-genre-filtering-results-in.patch
+
+-------------------------------------------------------------------
 Thu Jun 27 09:17:16 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.12:

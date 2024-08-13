@@ -1,0 +1,44 @@
+From b1a8b2c85c0615c2018de3c054d59f2a0b5315bd Mon Sep 17 00:00:00 2001
+From: Philipp Wolfer <ph.wolfer@gmail.com>
+Date: Sat, 13 Jul 2024 11:05:31 +0200
+Subject: [PATCH] PICARD-2939: Fix exception when genre filtering results in
+ empty genre list
+
+---
+ picard/track.py             |  2 ++
+ test/test_taggenrefilter.py | 12 ++++++++++++
+ 2 files changed, 14 insertions(+)
+
+diff --git a/picard/track.py b/picard/track.py
+index 3da608de7f..025ebb8b55 100644
+--- a/picard/track.py
++++ b/picard/track.py
+@@ -115,6 +115,8 @@ def filter(self, counter: Counter, minusage=0) -> Counter:
+         for name, count in counter.items():
+             if not self.skip(name):
+                 result[name] = count
++        if not result:
++            return result
+         topcount = result.most_common(1)[0][1]
+         for name, count in counter.items():
+             percent = 100 * count // topcount
+diff --git a/test/test_taggenrefilter.py b/test/test_taggenrefilter.py
+index 01a54c383d..46cb5a5a52 100644
+--- a/test/test_taggenrefilter.py
++++ b/test/test_taggenrefilter.py
+@@ -178,3 +178,15 @@ def test_filter_method_minusage(self):
+         genres = Counter(ax=4, bx=5, ay=20, by=10, bz=4)
+         result = tag_filter.filter(genres, minusage=50)
+         self.assertEqual([('bx', 5), ('by', 10)], list(result.items()))
++
++    def test_filter_method_empty_input(self):
++        tag_filter = TagGenreFilter("")
++        genres = Counter()
++        result = tag_filter.filter(genres)
++        self.assertEqual([], list(result.items()))
++
++    def test_filter_method_empty_result(self):
++        tag_filter = TagGenreFilter("-*")
++        genres = Counter(ax=1, bx=2, ay=3, by=4)
++        result = tag_filter.filter(genres)
++        self.assertEqual([], list(result.items()))

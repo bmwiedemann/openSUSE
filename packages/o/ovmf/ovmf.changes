@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Aug 12 05:46:00 UTC 2024 - Joey Lee <jlee@suse.com>
+
+- Add ovmf-x86_64-sev flavor to X64 against AMD SEV.
+    - Moved "-D SECURE_BOOT_ENABLE" from OVMF_FLAGS to EXTRA_FLAGS_X64,
+      , BUILD_OPTIONS_X86, BUILD_OPTIONS_AA64 and BUILD_OPTIONS_RV64
+      because SEV can NOT work with secure boot.
+- Removed ovmf-Revert-OvmfPkg-PlatformPei-Update-ReserveEmuVariable.patch
+  because the SEV ovmf be separated from X64 ovmf as an independent flavor.
+    - The original patch reverts "58eb8517ad OvmfPkg/PlatformPei: Update 
+      ReserveEmuVariableNvStore" which affects all ovmf flavor.
+    - The secure boot be disabled in SEV flavor, so we do not need revert
+      58eb8517ad anymore. (bsc#1209266)
+- Add 50-ovmf-x86_64-sev.json to descriptors.tar.xz for SEV flavor
+    - Removed features tag:
+      "acpi-s3", "requires-smm", "secure-boot", "enrolled-keys"
+    - Add features tag:
+      "amd-sev", "amd-sev-es", "amd-sev-snp"
+
+-------------------------------------------------------------------
 Tue Jul 16 04:42:23 UTC 2024 - Joey Lee <jlee@suse.com>
 
 - Update to edk2-stable202402

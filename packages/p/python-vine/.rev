@@ -66,4 +66,15 @@
   * Added slots support and impproved dynamic assignment.</comment>
     <requestid>1129241</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>ead3ba94932731e70dd74dfff1989de2</srcmd5>
+    <version>5.1.0</version>
+    <time>1723548299</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to pyproject and autosetup macros.
+- No more greedy globs in %files.
+- Add patch use-correct-test-method.patch:
+  * Use setup_method() to work with Pytest 8.</comment>
+    <requestid>1193590</requestid>
+  </revision>
 </revisionlist>

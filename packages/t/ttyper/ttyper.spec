@@ -18,7 +18,7 @@
 
 %bcond_without test
 Name:           ttyper
-Version:        1.5.0
+Version:        1.6.0
 Release:        0
 Summary:        Terminal-based typing test
 License:        MIT
@@ -39,8 +39,8 @@ ttyper is a terminal-based typing test built with Rust and tui-rs.
 %install
 install -Dm755 target/release/%{name} -t %{buildroot}%{_bindir}
 
-%check
 %if %{with test}
+%check
 %{cargo_test}
 %endif
 

@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Aug  2 06:18:46 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.9.33:
+  * A new Filled Polygon magic tool offers a way to create
+    arbitrary filled polygonal shapes.
+  * A pair of Dither tools transform a drawing into a pattern of
+    dots reminiscent of classic computer displays or other devices
+    which can only show black and white.
+  * Add a set of fully transparent erasers to allow partially
+    exposing a background Starter or Template image (including
+    those created within Tux Paint) for subtle fading or ghost
+    effects.
+  * New Brushes have been added to the "Paint" and "Lines" tools.
+  * Brushes may have unique, localized descriptions.
+  * The "3D Glasses" Magic tool now offers multiple anaglyphic
+    color separation options.
+  * Magic tools may be upgrouped, appearing as one long list.
+  * Documentation improvements.
+- Switch Requires: freefonts -> gnu-free-fonts.
+
+-------------------------------------------------------------------
 Fri Feb  2 17:01:26 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 0.9.32:

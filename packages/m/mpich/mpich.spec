@@ -24,8 +24,8 @@
 # % define build_static_devel 1
 
 %define pname mpich
-%define vers  4.1.2
-%define _vers 4_1_2
+%define vers  4.2.2
+%define _vers 4_2_2
 
 %if "%{flavor}" == ""
 ExclusiveArch:  do_not_build

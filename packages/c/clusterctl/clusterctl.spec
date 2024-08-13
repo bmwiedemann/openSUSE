@@ -18,17 +18,16 @@
 
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
-%define repo_name cluster-api
 %define version_git_major 1
-%define version_git_minor 7
+%define version_git_minor 8
 
 Name:           clusterctl
-Version:        1.7.4
+Version:        1.8.0
 Release:        0
 Summary:        CLI tool to handle the lifecycle of a Cluster API management cluster
 License:        Apache-2.0
 URL:            https://github.com/kubernetes-sigs/cluster-api
-Source:         cluster-api-%{version}.tar.gz
+Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  go >= 1.22
 
@@ -104,10 +103,10 @@ BuildArch:      noarch
 zsh command line completion support for %{name}.
 
 %prep
-%autosetup -p 1 -a 1 -n %{repo_name}-%{version}
+%autosetup -p 1 -a 1
 
 %build
-COMMIT_HASH="$(sed -n 's/commit: \(.*\)/\1/p' %_sourcedir/%{repo_name}.obsinfo)"
+COMMIT_HASH="$(sed -n 's/commit: \(.*\)/\1/p' %_sourcedir/%{name}.obsinfo)"
 
 DATE_FMT="+%%Y-%%m-%%dT%%H:%%M:%%SZ"
 BUILD_DATE=$(date -u -d "@${SOURCE_DATE_EPOCH}" "${DATE_FMT}" 2>/dev/null || date -u -r "${SOURCE_DATE_EPOCH}" "${DATE_FMT}" 2>/dev/null || date -u "${DATE_FMT}")

@@ -2,6 +2,7 @@
 # spec file for package gpg2
 #
 # Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -64,11 +65,6 @@ BuildRequires:  pkgconfig(gnutls) >= 3.2
 BuildRequires:  pkgconfig(libusb-1.0)
 BuildRequires:  pkgconfig(sqlite3) >= 3.27
 BuildRequires:  pkgconfig(zlib)
-# runtime dependency to support devel repository users - boo#955982
-Requires:       libassuan0 >= 2.5.0
-Requires:       libgcrypt20 >= 1.9.1
-Requires:       libgpg-error >= 1.46
-Requires:       libksba >= 1.6.3
 Requires:       pinentry
 Recommends:     dirmngr = %{version}
 Provides:       gnupg = %{version}

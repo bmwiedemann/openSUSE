@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Aug  9 15:39:55 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.48.8:
+  + ovs: fix triggering stage3 activation without DHCP client
+    initialized
+  + config: parse autoconnect-ports value on config
+  + ndisc: preserve router preferences
+
+-------------------------------------------------------------------
 Mon Jul 29 06:41:28 UTC 2024 - Jonathan Kang <songchuan.kang@suse.com>
 
 - Add NetworkManager-dont-renew-bridge-dhcp-if-no-mac-on-wakeup.patch:

@@ -88,4 +88,12 @@
 - Update to version 1.11.0 (forwarded request 1178239 from danishprakash)</comment>
     <requestid>1178256</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>fccfcd2f686e5f48a94afd5714844379</srcmd5>
+    <version>1.12.1</version>
+    <time>1723548125</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1193335</requestid>
+  </revision>
 </revisionlist>

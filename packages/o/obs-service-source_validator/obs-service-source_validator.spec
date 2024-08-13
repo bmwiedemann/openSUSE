@@ -36,6 +36,7 @@ BuildRequires:  zstd
 Requires:       %{_bindir}/cpio
 Requires:       %{_bindir}/xmllint
 Requires:       %{build_pkg_name}
+Requires:       diffutils
 Requires:       patch
 Requires:       perl-TimeDate
 Requires:       unzip

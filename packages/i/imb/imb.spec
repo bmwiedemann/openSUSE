@@ -21,8 +21,8 @@
 # Base package name
 %define pname imb
 %define PNAME IMB
-%define ver 2021.7
-%define _ver 2021_7
+%define ver 2021.8
+%define _ver 2021_8
 
 %if 0%{?sle_version} >= 150200
 %define DisOMPI1 ExclusiveArch:  do_not_build
@@ -363,6 +363,8 @@ License:        BSD-3-Clause
 Group:          Development/Tools/Other
 URL:            https://software.intel.com/en-us/articles/intel-mpi-benchmarks
 Source0:        https://github.com/intel/mpi-benchmarks/archive/IMB-v%{version}.tar.gz#/%{pname}_%{version}.tar.gz
+Patch0:         imb-remove-Werror-flag.patch
+Patch1:         src_c-Fix-multiple-size_t-issues-on-32b-systems.patch
 %if %{without hpc}
 BuildRequires:  %{flavor}-devel
 BuildRequires:  gcc
@@ -387,7 +389,7 @@ a range of message sizes.
 %endif
 
 %prep
-%setup -n mpi-benchmarks-IMB-v%{version}
+%autosetup -p1 -n mpi-benchmarks-IMB-v%{version}
 
 %build
 

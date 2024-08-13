@@ -162,4 +162,12 @@ vaapi-intel-driver needs to be dropped then.</comment>
     <comment>- fixed JIRA number in previous changelog</comment>
     <requestid>923061</requestid>
   </revision>
+  <revision rev="17" vrev="6">
+    <srcmd5>25d90fe6036c1956dc88db3837486dc0</srcmd5>
+    <version>2.4.1</version>
+    <time>1723548229</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1193367</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Tue Aug 13 04:50:06 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.40.0:
+  * chore: Update version.go for v0.40.0
+  * examples: add ExampleCollector_WaitForUpdatesEx_pagination
+  * vcsim: add SessionManager.ImpersonateUser method
+  * govc: add session.login '-as' flag to impersonate user
+  * api: add session.Manager.ImpersonateUser method
+  * fix: govc object.collect truncation
+  * vcsim: implement WaitForUpdatesEx pagination support
+  * vcsim: add AlarmManager
+  * govc: add alarm commands
+  * api: add alarm package with helpers for AlarmManager and Alarms
+  * govc: add event.post command
+  * fix: govc: output Message field for 'EventEx' types
+  * build(deps): bump golang.org/x/text from 0.16.0 to 0.17.0
+  * vcsim: fix panic in CancelTask
+  * govc: add library.sync '-f' flag to force sync file content
+  * fix: restore govc import.spec DiskProvisioning default value
+  * vcsim: add ovf DiskProvisioning validation
+  * api: convert vSAN directory name to uuid in
+    ResolveLibraryItemStorage
+  * vcsim: add DatastoreNamespaceManager
+  * govc: add library.info -S flag
+  * review feedback
+  * review feedback
+  * implement capacityAllocationUnits parser
+
+-------------------------------------------------------------------
 Mon Jul 22 18:32:04 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.39.0:

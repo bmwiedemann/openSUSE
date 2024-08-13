@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Aug 12 14:40:54 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.66.4:
+  * chore: Bumping `golangci-lint` to `v1.59.1` (#3333)
+  * Fix CICD tests for mocks (#3335)
+  * chore: Hiding Mocks Tests (#3331)
+  * fix: Fixing stale action (#3332)
+  * fix: Fixing command not found error (#3330)
+  * Add configuration options for AWS S3 server access logging
+    (#3006)
+  * feat: Add stale issue workflow (#3329)
+
+-------------------------------------------------------------------
 Wed Aug 07 07:32:56 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.66.3:

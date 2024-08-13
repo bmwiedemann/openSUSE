@@ -296,7 +296,7 @@ Conflicts:      %{name} < %{version}-%{release}
 Summary:        Fence Agents for High Availability
 License:        GPL-2.0-only AND LGPL-2.1-only
 Group:          Development/Tools/Other
-Requires:       %{name} = %{version}-%{release}
+Requires:       fence-agents-common = %{version}-%{release}
 
 %description devel
 Fence agents are device drivers able to prevent computers from

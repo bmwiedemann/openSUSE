@@ -379,4 +379,24 @@
     filterwarning for internal tests. PR #11266 by @nothielf.</comment>
     <requestid>1169416</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>008b3cd29102e1cb92336f96ede4650f</srcmd5>
+    <version>0.112.0</version>
+    <time>1723548171</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.112.0:
+  * Add support for pip install &quot;fastapi[standard]&quot; with standard
+    dependencies and python -m fastapi
+- version 0.111.1:
+  * Remove orjson and ujson from default dependencies. These
+    dependencies are still installed when you install with pip install
+    &quot;fastapi[all]&quot;
+  * Restored Swagger-UI links to use the latest version possible
+- version 0.111.0:
+  * Add FastAPI CLI, the new fastapi command
+  * Add configs and setup for fastapi-slim including optional extras
+    fastapi-slim[standard], and fastapi including by default the same
+    standard extras</comment>
+    <requestid>1192578</requestid>
+  </revision>
 </revisionlist>

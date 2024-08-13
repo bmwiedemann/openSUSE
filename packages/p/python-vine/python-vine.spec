@@ -1,7 +1,7 @@
 #
 # spec file for package python-vine
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,11 @@ Summary:        Python Promises
 License:        BSD-3-Clause
 URL:            https://github.com/celery/vine/
 Source:         https://files.pythonhosted.org/packages/source/v/vine/vine-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM gh#celery/vine#105
+Patch0:         use-correct-test-method.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -38,13 +42,13 @@ BuildRequires:  %{python_module pytest}
 Promises implementation for python.
 
 %prep
-%setup -q -n vine-%{version}
+%autosetup -p1 -n vine-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -53,6 +57,7 @@ Promises implementation for python.
 %files %{python_files}
 %doc Changelog README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/vine
+%{python_sitelib}/vine-%{version}.dist-info
 
 %changelog

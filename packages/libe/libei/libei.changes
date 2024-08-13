@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Aug  9 22:37:39 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.3.0
+  * Devices without regions or with multiple regions previously
+    failed region checks for touch events and absolute pointer
+    events (now fixed).
+  * liboeffis's ConnectToEIS dbus call is now async to avoid stalling
+    the client.
+  * many clarifications for ambiguity in the protocol documentation.
+
+-------------------------------------------------------------------
 Wed Jun  5 18:28:34 UTC 2024 - Callum Farmer <gmbr3@opensuse.org>
 
 - Remove explicit includedir as it already installs to a

@@ -87,4 +87,26 @@
     <comment></comment>
     <requestid>1161732</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>2f1127ea80f4617e8d50ef10af7c34a9</srcmd5>
+    <version>2.2.0</version>
+    <time>1723548292</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.2.0:
+  * Exclude a list of paths from diff.
+  * really drop python&lt;=3.7 support
+  * remove last bits of python2 support
+  * Fix pypi release readme formatting
+  * Minimal conversion to pytest+hypothesis
+  * Added simple equality operator for class Symbol
+  * jsondiff: fix symbol equality
+  * setup.py: migrate to pyproject.toml
+  * fix: better diffing of empty containers
+  * add rightonly jsondiff syntax
+  * Introduce YAML support
+  * packaging: revert to requirements files
+- Switch back to PyPi tarball. (required for setuptools_scm)
+- Drop patch remove_nose.patch, no longer required.</comment>
+    <requestid>1193580</requestid>
+  </revision>
 </revisionlist>

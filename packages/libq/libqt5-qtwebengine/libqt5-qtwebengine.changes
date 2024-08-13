@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug  7 13:10:01 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Add ffmpeg 7 compatibility patch (Picked from Arch):
+  * qt5-webengine-ffmpeg7.patch
+
+-------------------------------------------------------------------
 Sun Jun  9 17:46:23 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - use bundled re2 (boo#1226119)

@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Aug  7 06:09:40 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.5.4:
+  * Added --sam-opt-config command line option for toggling SAM
+    Opt flags.
+  * Fixed an issue causing bowtie2’s memory usage to increase over
+    time when aligning BAM files.
+  * Changed bowtie2 to continue flushing output in the event of a
+    partial write.
+  * Changed the behavior of bowtie2-build to throw an exception if
+    it is unable to write the BWT (.1.bt2, .1.rev.bt2). In prior
+    versions bowtie2-build, would silently ignore the error which
+    has led some to report the absence of the BWT files in a
+    “completed” index build.
+  * Reverted the changes made in v2.5.0 that sometimes caused
+    unique concordant alignments to be overcounted.
+
+-------------------------------------------------------------------
 Sat Feb 24 17:35:38 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 2.5.3:

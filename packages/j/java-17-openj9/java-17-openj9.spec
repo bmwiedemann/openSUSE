@@ -31,18 +31,18 @@
 # Standard JPackage naming and versioning defines.
 %global featurever      17
 %global interimver      0
-%global updatever       11
-%global buildver        9
+%global updatever       12
+%global buildver        7
 %global root_repository https://github.com/ibmruntimes/openj9-openjdk-jdk17/archive
-%global root_revision   5d7d758b682a0b0f3fd0ee54713abc8f749fc86d
-%global root_branch     v0.44.0-release
+%global root_revision   784bd66222d3a9569eff3335f33b48b5e611b518
+%global root_branch     v0.46.0-release
 %global omr_repository  https://github.com/eclipse/openj9-omr/archive
-%global omr_revision    254af5a0452934f62e3253c5565b183c682d3495
-%global omr_branch      v0.44.0-release
+%global omr_revision    840a9adba4548aa546e36c97a1150b7306a7e07b
+%global omr_branch      v0.46.0-release
 %global openj9_repository https://github.com/eclipse/openj9/archive
-%global openj9_revision b0699311c7d9341f3d0ebf9a7a4b5546a7ca7004
-%global openj9_branch   v0.44.0-release
-%global openj9_tag      openj9-0.44.0
+%global openj9_revision 1a6f6128aa2f639de1e33cae77a31f474ba6b1a9
+%global openj9_branch   v0.46.0-release
+%global openj9_tag      openj9-0.46.0
 # priority must be 6 digits in total
 %if 0%{?suse_version} > 1500 || 0%{?java_bootstrap}
 %global priority        2701
@@ -110,8 +110,6 @@ Patch3:         java-atk-wrapper-security.patch
 Patch4:         libdwarf-fix.patch
 # Allow multiple initialization of PKCS11 libraries
 Patch5:         multiple-pkcs11-library-init.patch
-# Fix narrowing conversion error
-Patch6:         openj9-no-narrowing.patch
 # Fix build with older version of openssl
 Patch7:         openj9-openssl.patch
 # Fix: implicit-pointer-decl
@@ -365,7 +363,6 @@ rm -rvf src/java.desktop/share/native/liblcms/lcms2*
 %patch -P 3 -p1
 %patch -P 4 -p1
 %patch -P 5 -p1
-%patch -P 6 -p1
 %patch -P 7 -p1
 %patch -P 13 -p1
 
@@ -841,9 +838,6 @@ fi
 %{_jvmdir}/%{sdkdir}/lib/libprefs.so
 %{_jvmdir}/%{sdkdir}/lib/librmi.so
 %{_jvmdir}/%{sdkdir}/lib/libsctp.so
-%ifarch x86_64
-%{_jvmdir}/%{sdkdir}/lib/libjsvml.so
-%endif
 %{_jvmdir}/%{sdkdir}/lib/libsyslookup.so
 %{_jvmdir}/%{sdkdir}/lib/libverify.so
 %{_jvmdir}/%{sdkdir}/lib/libzip.so

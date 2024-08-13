@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Aug 12 11:15:32 UTC 2024 - Petr Tesařík <ptesarik@suse.com>
+
+- update to 2.0.29:
+  * update man and --help
+  * powerpc/kexec_load: add hotplug support
+  * kexec_load: Use new kexec flag for hotplug support
+  * x86-linux-setup.c: Use POSIX basename API
+  * LoongArch: fix load command line segment error
+  * LoongArch: add multi crash kernel segment support
+  * LoongArch: fix kernel image size error
+  * Arm: Fix add_buffer_phys_virt() align issue
+  * Fix incorrect Free Software Foundation address in the license
+  * util_lib/elf_info.c: fix a warning
+  * kexec_file: add kexec_file flag to support debug printing
+  * workflow: update to use checkout@v4
+- drop kexec-dont-use-kexec_file_load-on-xen.patch, upstream
+- drop fix-building-on-x86_64-with-binutils-2.41.patch, upstream
+- kexec-tools-riscv-hotplug.patch: Fix build for riscv64.
+
+-------------------------------------------------------------------
 Wed Mar  6 16:46:15 UTC 2024 - Jiri Bohac <jbohac@suse.com>
 
 - update to 2.0.28:

@@ -1,7 +1,7 @@
 #
 # spec file for package python-oauthlib
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,6 +30,7 @@ BuildRequires:  %{python_module PyJWT >= 2.0.0}
 BuildRequires:  %{python_module blinker >= 1.4}
 BuildRequires:  %{python_module cryptography >= 3.0.0 }
 BuildRequires:  %{python_module pyasn1}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -67,7 +68,9 @@ veneer on top of OAuthLib and get OAuth support for very little effort.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pyunittest discover -v
+# Failing test with JWT 2.9.0 gh#oauthlib/oauthlib#877
+donttest="test_rsa_bad_keys"
+%pytest -k "not $donttest"
 
 %files %{python_files}
 %license LICENSE

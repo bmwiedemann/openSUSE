@@ -1086,4 +1086,12 @@
   Drop shadow-4.16.0-econf.patch</comment>
     <requestid>1183021</requestid>
   </revision>
+  <revision rev="70" vrev="3">
+    <srcmd5>000e6bc9ee737b39a5f38a2373ce52ff</srcmd5>
+    <version>4.16.0</version>
+    <time>1723548107</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1193090</requestid>
+  </revision>
 </revisionlist>

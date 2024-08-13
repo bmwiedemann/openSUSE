@@ -20,6 +20,7 @@
 Name:           perl-DBD-MariaDB
 Version:        1.230.0
 Release:        0
+# 1.23 -> normalize -> 1.230.0
 %define cpan_version 1.23
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        MariaDB and MySQL driver for the Perl5 Database Interface (DBI)
@@ -29,6 +30,8 @@ Source1:        test-setup.sh
 Source2:        test-clean.sh
 Source3:        cpanspec.yml
 Patch0:         perl-DBD-MariaDB-fix_c_32x_test.patch
+# PATCH-FIX-OPENSUSE https://github.com/perl5-dbi/DBD-MariaDB/issues/209
+Patch1:         perl-DBD-MariaDB-fix_ssl_connection_test.patch
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(DBI) >= 1.608
@@ -37,7 +40,7 @@ BuildRequires:  perl(Devel::CheckLib) >= 1.12
 BuildRequires:  perl(Test::Deep)
 BuildRequires:  perl(Test::More) >= 0.90
 Requires:       perl(DBI) >= 1.608
-Provides:       perl(DBD::MariaDB) = 1.230.0
+Provides:       perl(DBD::MariaDB) = %{version}
 %undefine       __perllib_provides
 %{perl_requires}
 # MANUAL BEGIN
