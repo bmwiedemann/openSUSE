@@ -7,7 +7,7 @@ BuildFlags: genmetaalgo:1
 # The prjconf macros have a serial to help work around issues like https://github.com/openSUSE/open-build-service/issues/4088
 # On macros having impact on dep chains, update the serial (mainly ruby, python)
 # Using a date to indicate when we set the serial
-ExpandFlags: macroserial:20240811
+ExpandFlags: macroserial:20240813
 
 ExpandFlags: kiwi-nobasepackages
 ExpandFlags: docker-nobasepackages
@@ -125,13 +125,13 @@ Substitute: kiwi-packagemanager:instsource product-builder-plugin-Tumbleweed
 Substitute: system-packages:kiwi-product product-builder
 
 # allow builds using docker tool
-Substitute: build-packages:docker !cmake-mini !dummy-release !gettext-runtime-mini !gettext-tools-mini !ghostscript-mini !ffmpeg-5-mini-libs !ffmpeg-6-mini-libs !gio-branding-upstream !krb5-mini !krb5-mini-devel !libsystemd0-mini !systemd-mini-container !libudev-mini-devel !libudev-mini1 !libuna-mini-devel !libuna1-mini !libunbound-devel-mini !postgresql16-devel-mini !systemd-mini !systemd-mini-devel !systemd-mini-sysvinit !udev-mini !libpxbackend-1_0-mini !libgarcon-branding-upstream patterns-base-fips
+Substitute: build-packages:docker !cmake-mini !dummy-release !gettext-runtime-mini !gettext-tools-mini !ghostscript-mini !ffmpeg-5-mini-libs !ffmpeg-6-mini-libs !ffmpeg-7-mini-libs !gio-branding-upstream !krb5-mini !krb5-mini-devel !libsystemd0-mini !systemd-mini-container !libudev-mini-devel !libudev-mini1 !libuna-mini-devel !libuna1-mini !libunbound-devel-mini !postgresql16-devel-mini !systemd-mini !systemd-mini-devel !systemd-mini-sysvinit !udev-mini !libpxbackend-1_0-mini !libgarcon-branding-upstream patterns-base-fips
 
 # Podman based image building
-Substitute: build-packages:kiwi !cmake-mini !dummy-release !gettext-runtime-mini !gettext-tools-mini !ghostscript-mini !ffmpeg-5-mini-libs !ffmpeg-6-mini-libs !gio-branding-upstream !krb5-mini !krb5-mini-devel !libsystemd0-mini !systemd-mini-container !libudev-mini-devel !libudev-mini1 !libuna-mini-devel !libuna1-mini !libunbound-devel-mini !log4j12-mini !postgresql16-devel-mini !systemd-mini !systemd-mini-devel !systemd-mini-sysvinit !udev-mini !libpxbackend-1_0-mini !libgarcon-branding-upstream patterns-base-fips
+Substitute: build-packages:kiwi !cmake-mini !dummy-release !gettext-runtime-mini !gettext-tools-mini !ghostscript-mini !ffmpeg-5-mini-libs !ffmpeg-6-mini-libs !ffmpeg-7-mini-libs !gio-branding-upstream !krb5-mini !krb5-mini-devel !libsystemd0-mini !systemd-mini-container !libudev-mini-devel !libudev-mini1 !libuna-mini-devel !libuna1-mini !libunbound-devel-mini !log4j12-mini !postgresql16-devel-mini !systemd-mini !systemd-mini-devel !systemd-mini-sysvinit !udev-mini !libpxbackend-1_0-mini !libgarcon-branding-upstream patterns-base-fips
 
 # To build ISO images
-Substitute: build-packages:iso !cmake-mini !dummy-release !gettext-runtime-mini !gettext-tools-mini !ghostscript-mini !ffmpeg-5-mini-libs !ffmpeg-6-mini-libs !gio-branding-upstream !krb5-mini !krb5-mini-devel !libsystemd0-mini !systemd-mini-container !libudev-mini-devel !libudev-mini1 !libuna-mini-devel !libuna1-mini !libunbound-devel-mini !log4j12-mini !postgresql16-devel-mini !systemd-mini !systemd-mini-devel !systemd-mini-sysvinit !udev-mini !libpxbackend-1_0-mini !libgarcon-branding-upstream
+Substitute: build-packages:iso !cmake-mini !dummy-release !gettext-runtime-mini !gettext-tools-mini !ghostscript-mini !ffmpeg-5-mini-libs !ffmpeg-6-mini-libs !ffmpeg-7-mini-libs !gio-branding-upstream !krb5-mini !krb5-mini-devel !libsystemd0-mini !systemd-mini-container !libudev-mini-devel !libudev-mini1 !libuna-mini-devel !libuna1-mini !libunbound-devel-mini !log4j12-mini !postgresql16-devel-mini !systemd-mini !systemd-mini-devel !systemd-mini-sysvinit !udev-mini !libpxbackend-1_0-mini !libgarcon-branding-upstream
 
 # create conflicts for packages installed into the target image
 Substitute: kiwi python3-kiwi
@@ -1444,6 +1444,7 @@ Prefer: -clutter-gst-devel
 Prefer: %{ffmpeg_pref}-mini-libs
 Prefer: %{ffmpeg_pref}-mini-devel
 Prefer: %{ffmpeg_pref} %{ffmpeg_pref}-libavcodec-devel %{ffmpeg_pref}-libavformat-devel %{ffmpeg_pref}-libavutil-devel %{ffmpeg_pref}-libswscale-devel %{ffmpeg_pref}-libavdevice-devel %{ffmpeg_pref}-libavfilter-devel
+Prefer: -ffmpeg-6-mini-libs
 Macros:
 %ffmpeg_pref ffmpeg-7
 :Macros
@@ -1868,6 +1869,8 @@ BuildFlags: onlybuild:ffmpeg-5
 BuildFlags: onlybuild:ffmpeg-5:ffmpeg-5-mini
 BuildFlags: onlybuild:ffmpeg-6
 BuildFlags: onlybuild:ffmpeg-6:ffmpeg-6-mini
+BuildFlags: onlybuild:ffmpeg-7
+BuildFlags: onlybuild:ffmpeg-7:ffmpeg-7-mini
 BuildFlags: onlybuild:ffnvcodec
 BuildFlags: onlybuild:fftw3:standard
 BuildFlags: onlybuild:file
@@ -1876,6 +1879,7 @@ BuildFlags: onlybuild:fillup
 BuildFlags: onlybuild:findutils
 BuildFlags: onlybuild:fipscheck
 BuildFlags: onlybuild:firewalld
+BuildFlags: onlybuild:fish
 BuildFlags: onlybuild:flac
 BuildFlags: onlybuild:flex
 BuildFlags: onlybuild:fltk
