@@ -1,7 +1,7 @@
 #
 # spec file for package cage
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,10 +27,10 @@ Source:         %{name}-%{version}.tar.gz
 BuildRequires:  meson >= 0.43.0
 BuildRequires:  pkgconfig
 BuildRequires:  scdoc
-BuildRequires:  wlroots-devel >= 0.17.0
 BuildRequires:  pkgconfig(pixman-1)
 BuildRequires:  pkgconfig(wayland-protocols) >= 1.14
 BuildRequires:  pkgconfig(wayland-server)
+BuildRequires:  pkgconfig(wlroots) >= 0.17.0
 BuildRequires:  pkgconfig(xkbcommon)
 
 %description
