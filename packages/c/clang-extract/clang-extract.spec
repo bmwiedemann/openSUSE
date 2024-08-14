@@ -17,7 +17,7 @@
 
 
 Name:           clang-extract
-Version:        0~20240801.6cf5b73
+Version:        0~20240813.82f77f7
 Release:        0
 Summary:        A tool to extract code content from source files
 License:        Apache-2.0 WITH LLVM-exception AND NCSA
@@ -28,6 +28,8 @@ BuildRequires:  clang-devel
 BuildRequires:  clang-tools
 BuildRequires:  cmake
 BuildRequires:  libelf-devel
+BuildRequires:  libzstd-devel
+BuildRequires:  zlib-devel
 # At least 16 is needed but 18 has some fixes that we like.
 # Leap 15.6 has only 17.
 BuildRequires:  llvm-devel >= 17

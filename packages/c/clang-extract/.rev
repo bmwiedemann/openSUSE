@@ -142,4 +142,17 @@
   * Drop klpe_ prefix for extern function symbols</comment>
     <requestid>1191106</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>03a108559a04a34eb55504ca328bfc20</srcmd5>
+    <version>0~20240813.82f77f7</version>
+    <time>1723637763</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0~20240813.82f77f7:
+  * libcextract: Add support to zstd
+  * Add support to read zlib compressed files, like vmlinux.gz
+  * NonLLVMMisc: Add FileHandling class
+  * Passes: Drop comments about ibt tail content
+- Add new BuildRequires: zlib-devel libzstd-devel</comment>
+    <requestid>1193817</requestid>
+  </revision>
 </revisionlist>

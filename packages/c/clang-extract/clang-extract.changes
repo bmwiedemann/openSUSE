@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Aug 14 06:09:40 UTC 2024 - mvetter@suse.com
+
+- Update to version 0~20240813.82f77f7:
+  * libcextract: Add support to zstd
+  * Add support to read zlib compressed files, like vmlinux.gz
+  * NonLLVMMisc: Add FileHandling class
+  * Passes: Drop comments about ibt tail content
+- Add new BuildRequires: zlib-devel libzstd-devel
+
+-------------------------------------------------------------------
 Fri Aug 02 06:34:40 UTC 2024 - mvetter@suse.com
 
 - Update to version 0~20240801.6cf5b73:
