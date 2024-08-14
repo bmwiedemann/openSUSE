@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Wed Aug 14 06:12:41 UTC 2024 - mvetter@suse.com
+
+- Update to version 0~20240812.ad9f0e0:
+  * setup: Ignore cs_is_affected if CVE is empty
+  * Rename and fix user_path config names for kgraft-patches
+  * ibs: Move kgraft_path to where it's being used
+  * ibs: Do not remove extracted vmlinux and modules
+  * config: Support 'kgraft-patches' in config file
+  * config: Support 'patches-tests' in config file
+  * klp-ccp: Remove KLP_CCP_PATH env variable
+  * config: Support 'ccp-pol-scripts' in config file
+  * config: Support 'kernel-source' in config file
+  * config: Support per-user configuration file
+  * config.py: Check for supported attribute on modinfo by using startswith
+  * setup: Skip codestreams missing backports (not affected)
+  * ksrc: Add 15.6 RT to get the backports
+  * config: Skip symbols with empty names
+  * ibs: Fix typo when validating the livepatch
+  * ksrc: Check if all branch patches are present to mark as not affected
+  * ksrc: Simplify getting patched codestreams
+  * test.sh: Add new test for CVE-2024-40909
+  * Add zstd support
+  * Use pyelftools to parse .modinfo
+  * config: Add support to read gzipped files, like vmlinux
+  * Replace all invocations of nm binary with pyelftools
+  * Use PyElfTools in order to read object symbols
+  * test.sh: Adjust LoC count with recent clang-extract changes
+
+-------------------------------------------------------------------
 Thu Aug 01 05:39:12 UTC 2024 - mvetter@suse.com
 
 - Update to version 0~20240731.edfe0bf:
