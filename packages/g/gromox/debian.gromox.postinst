@@ -17,38 +17,37 @@ set_perms()
 
 xpostinst()
 {
-set_perms grommunio gromoxcf 0755 /etc/gromox || :
-for i in /var/lib/gromox \
-	/var/lib/gromox/domain \
-	/var/lib/gromox/user \
-	/var/lib/gromox/queue \
-	/var/lib/gromox/queue/cache \
-	/var/lib/gromox/queue/mess \
-	/var/lib/gromox/queue/save \
-	/var/lib/gromox/queue/timer; do
-	set_perms gromox gromox 0770 "$i" || :
-done
-set_perms gromox gromox 0750 /var/log/gromox || :
+	set_perms grommunio gromoxcf 0755 /etc/gromox || :
+	for i in /var/lib/gromox \
+		/var/lib/gromox/domain \
+		/var/lib/gromox/user \
+		/var/lib/gromox/queue \
+		/var/lib/gromox/queue/cache \
+		/var/lib/gromox/queue/mess \
+		/var/lib/gromox/queue/save \
+		/var/lib/gromox/queue/timer; do
+		set_perms gromox gromox 0770 "$i" || :
+	done
+	set_perms gromox gromox 0750 /var/log/gromox || :
 
-# %post
-if test -x /usr/bin/systemd-tmpfiles; then
-	systemd-tmpfiles --create tmpfiles-gromox.conf || :
-else
-	echo "There is no systemd-tmpfiles present in the system. /run/gromox may not have been created."
-fi
-if test -x /usr/bin/systemctl; then
-	systemctl daemon-reload || :
-	systemctl try-restart gromox-delivery.service \
-		gromox-delivery-queue.service gromox-event.service \
-		gromox-http.service gromox-imap.service gromox-midb.service \
-		gromox-pop3.service gromox-timer.service gromox-zcore.service \
-		grommunio-chat.service \
-		php7.4-fpm.service php8.0-fpm.service php8.1-fpm.service \
-		php8.2-fpm.service php8.3-fpm.service \
-		saslauthd.service 2>/dev/null || :
-fi
+	# %post
+	if test -x /usr/bin/systemd-tmpfiles; then
+		systemd-tmpfiles --create tmpfiles-gromox.conf || :
+	else
+		echo "There is no systemd-tmpfiles present in the system. /run/gromox may not have been created."
+	fi
+	if test -x /usr/bin/systemctl; then
+		systemctl daemon-reload || :
+		systemctl try-restart gromox-delivery.service \
+			gromox-delivery-queue.service gromox-event.service \
+			gromox-http.service gromox-imap.service gromox-midb.service \
+			gromox-pop3.service gromox-timer.service gromox-zcore.service \
+			grommunio-chat.service \
+			php7.4-fpm.service php8.0-fpm.service php8.1-fpm.service \
+			php8.2-fpm.service php8.3-fpm.service \
+			saslauthd.service 2>/dev/null || :
+	fi
 }
-
 
 case "$1" in
 configure|reconfigure)

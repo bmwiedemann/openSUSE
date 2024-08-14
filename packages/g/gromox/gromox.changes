@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Aug 14 07:50:17 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.31
+  * freebusy: get_freebusy erroneously underreported occurrences
+    for yearly occurrences
+  * freebusy: the get_freebusy routine erroneously landed in an
+    infinite loop if a yearly-recurring February 29 appointment
+    was originally created in a year not divisible by 12.
+  * oxcmail: take /etc/mime.types under consideration when adding
+    extensions to attachments
+  * oxcmail: priorities for MIME parts have been rectified for
+    multipart/alternative and non-alternative containers; the
+    conversion routine is no longer making picks across multiple
+    container siblings.
+
+-------------------------------------------------------------------
 Fri Jun 21 14:09:43 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.30
