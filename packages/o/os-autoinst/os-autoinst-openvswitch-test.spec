@@ -19,7 +19,7 @@
 %define name_ext -test
 %define         short_name os-autoinst-openvswitch
 Name:           %{short_name}%{?name_ext}
-Version:        4.6.1722889373.84368e7
+Version:        4.6.1723465309.cf7b098
 Release:        0
 Summary:        test package for %{short_name}
 License:        GPL-2.0-or-later
@@ -37,7 +37,7 @@ touch %{_sourcedir}/%{short_name}
 %build
 # call one of the components but not openqa itself which would need a valid
 # configuration
-/usr/lib/os-autoinst/os-autoinst-openvswitch --help
+/usr/lib/os-autoinst/script/os-autoinst-openvswitch --help
 
 %install
 # disable debug packages in package test to prevent error about missing files

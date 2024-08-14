@@ -17,7 +17,7 @@
 
 
 Name:           os-autoinst
-Version:        4.6.1722889373.84368e7
+Version:        4.6.1723465309.cf7b098
 Release:        0
 Summary:        OS-level test automation
 License:        GPL-2.0-or-later
@@ -303,16 +303,19 @@ fi
 %{_prefix}/lib/os-autoinst/consoles
 %{_prefix}/lib/os-autoinst/autotest.pm
 %{_prefix}/lib/os-autoinst/*.py
-%{_prefix}/lib/os-autoinst/check_qemu_oom
-%{_prefix}/lib/os-autoinst/dewebsockify
-%{_prefix}/lib/os-autoinst/vnctest
+%dir %{_prefix}/lib/os-autoinst/script
+%{_prefix}/lib/os-autoinst/script/check_qemu_oom
+%{_prefix}/lib/os-autoinst/script/dewebsockify
+%{_prefix}/lib/os-autoinst/script/vnctest
+%{_prefix}/lib/os-autoinst/script/crop.py
 
 %dir %{_prefix}/lib/os-autoinst/schema
 %{_prefix}/lib/os-autoinst/schema/Wheels-01.yaml
 
 %files openvswitch
 %defattr(-,root,root)
-%{_prefix}/lib/os-autoinst/os-autoinst-openvswitch
+%dir %{_prefix}/lib/os-autoinst/script
+%{_prefix}/lib/os-autoinst/script/os-autoinst-openvswitch
 %{_unitdir}/os-autoinst-openvswitch.service
 %config /etc/dbus-1/system.d/org.opensuse.os_autoinst.switch.conf
 %{_sbindir}/rcos-autoinst-openvswitch
