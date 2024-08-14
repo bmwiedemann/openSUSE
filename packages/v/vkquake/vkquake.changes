@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Aug  2 17:46:31 UTC 2024 - Michael Pujos <pujos.michael@gmail.com>
+
+- Update to version 1.31.1.1
+  * Improvements
+    -  Removed option Game > Load last save = fast, replaced by the addition
+       of Game > Fast loading = on/off applicable to all loading actions:
+       With Fast loading = on, loading the same level over and over become
+       almost instantaneous, even for monster levels, like The Immortal Lock
+    - Library updates
+    - Code cleanups
+  * Fixes
+    - Various Linux build fixes (makefile)
+    - Moving Elevators hurting player and monsters, with fixes by @andrei-drexler
+      (sv_gamefix_elevators CVAR) and others
+    - Remove Sky_ClipPoly: MAX_CLIP_VERTS hardcoded limit
+    - Sound resample compute can overflow with very big sounds
+    - Host_error: ed_alloc: no free edicts due to edicts "leak", showing up on big levels in particular
+
+-------------------------------------------------------------------
 Sat Jun 22 14:31:43 UTC 2024 - Michael Pujos <pujos.michael@gmail.com>
 
 - updated build to use meson rather than plain Makefiles
