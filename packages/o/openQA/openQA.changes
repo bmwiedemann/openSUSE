@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Aug 14 08:49:19 UTC 2024 - okurz@suse.com
+
+- Update to version 4.6.1723625349.2972cfd0:
+  * Move simulating load to a function
+  * ci: Ensure tests pass even under high load
+  * Make exceptions for perlcritic RedundantStrictWarning
+  * Use perlcritic wrapper and plugins from common repo
+  * git subrepo pull (merge) external/os-autoinst-common
+  * Makefile: Extract separate make target "setup-database" for convenience
+  * Bump eslint from 9.8.0 to 9.9.0
+  * Remove duplicated use
+  * Bump ignore from 5.3.1 to 5.3.2
+  * Fix some perlcritic complaints
+  * Add filter excluding groupless jobs to API/V1
+
+-------------------------------------------------------------------
 Sun Aug 11 03:13:01 UTC 2024 - okurz@suse.com
 
 - Update to version 4.6.1723228512.e404d966:
