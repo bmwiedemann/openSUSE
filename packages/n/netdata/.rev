@@ -4601,4 +4601,16 @@ Other Notable Changes
     gh#netdata/netdata#18126</comment>
     <requestid>1189607</requestid>
   </revision>
+  <revision rev="58" vrev="2">
+    <srcmd5>1a9b5bdc5f44f2c0e1abd55725c2f308</srcmd5>
+    <version>1.46.3</version>
+    <time>1723637748</time>
+    <user>dimstar_suse</user>
+    <comment>- Add netdata_disable_v2_dashboard.patch
+  Drop v2 dashboard due to non-free license, serve v1 by default
+  bsc#1229119
+- Actually disable xenstat for unsupported architectures
+- Disable PIE for unsupported architectures</comment>
+    <requestid>1193785</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,20 @@
+diff -ru netdata-v1.46.3.orig/CMakeLists.txt netdata-v1.46.3/CMakeLists.txt
+--- netdata-v1.46.3.orig/CMakeLists.txt	2024-07-23 14:50:37.195784642 +0200
++++ netdata-v1.46.3/CMakeLists.txt	2024-08-13 23:09:44.668170234 +0200
+@@ -2960,7 +2960,6 @@
+ #
+ 
+ include(src/web/gui/v1/dashboard_v1.cmake)
+-include(src/web/gui/v2/dashboard_v2.cmake)
+ include(src/web/gui/gui.cmake)
+ 
+ function(cat IN_FILE OUT_FILE)
+@@ -2983,7 +2982,7 @@
+ install(FILES
+         src/web/gui/dashboard_info_custom_example.js
+         src/web/gui/dashboard_info.js
+-        src/web/gui/index.html
++        src/web/gui/v1/index.html
+         src/web/gui/main.css
+         src/web/gui/main.js
+         src/web/gui/registry-access.html

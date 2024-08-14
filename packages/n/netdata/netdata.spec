@@ -29,10 +29,12 @@ Summary:        A system for distributed real-time performance and health monito
 License:        Apache-2.0 AND BSD-2-Clause AND GPL-3.0-or-later AND MIT AND BSD-3-Clause AND LGPL-2.1-or-later AND OFL-1.1 AND CC-BY-4.0 AND WTFPL
 Group:          System/Monitoring
 URL:            http://my-netdata.io/
-Source0:        https://github.com/netdata/%{name}/releases/download/v%{version}/%{name}-v%{version}.tar.gz
+Source:         %{name}-%{version}.tar.xz
 Source1:        vendor.tar.gz
 Source2:        netdata-rpmlintrc
 Patch0:         netdata-logrotate-su.patch
+# PATCH-FIX-OPENSUSE netdata_disable_v2_dashboard.patch bsc#1229119
+Patch1:         netdata_disable_v2_dashboard.patch
 BuildRequires:  c++_compiler
 BuildRequires:  cmake
 BuildRequires:  cups-devel
@@ -326,7 +328,7 @@ journal on Netdata Cloud or the local Agent Dashboard.
 %caps(cap_dac_read_search=ep) %attr(0750,root,%{netdata_user}) %{_libexecdir}/%{name}/plugins.d/systemd-journal.plugin
 
 %prep
-%autosetup -n %{name}-v%{version} -p1
+%autosetup -p1
 sed -i 's,%{_bindir}/env bash,/bin/bash,' src/claim/%{name}-claim.sh.in
 
 %if 0%{?sle_version} >= 150200 || 0%{?suse_version} > 1500
@@ -341,7 +343,7 @@ tar -xf %{SOURCE1} -C src/go/collectors/go.d.plugin
 
 %build
 export GOFLAGS=-mod=vendor
-%ifnarch ppc64
+%ifarch x86_64 aarch64
     export GOFLAGS="$GOFLAGS -buildmode=pie"
 %endif
 
@@ -354,6 +356,9 @@ export GOFLAGS=-mod=vendor
     -DENABLE_PLUGIN_EBPF=False \
     -DENABLE_ACLK=False -DENABLE_EXPORTER_PROMETHEUS_REMOTE_WRITE=False \
     -DNETDATA_USER=%{netdata_user} \
+%ifnarch %ix86 x86_64 aarch64
+    -DENABLE_PLUGIN_XENSTAT=False \
+%endif
     -DCMAKE_INSTALL_PREFIX=/
 %cmake_build
 

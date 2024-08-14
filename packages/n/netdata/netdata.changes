@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Aug 13 22:55:13 UTC 2024 - Mia Herkt <mia@0x0.st>
+
+- Disable PIE for unsupported architectures
+
+-------------------------------------------------------------------
+Tue Aug 13 22:29:21 UTC 2024 - Mia Herkt <mia@0x0.st>
+
+- Actually disable xenstat for unsupported architectures
+
+-------------------------------------------------------------------
+Tue Aug 13 22:05:22 UTC 2024 - Mia Herkt <mia@0x0.st>
+
+- Add netdata_disable_v2_dashboard.patch
+  Drop v2 dashboard due to non-free license, serve v1 by default
+  bsc#1229119
+
+-------------------------------------------------------------------
 Thu Jul 25 12:11:12 UTC 2024 - Mia Herkt <mia@0x0.st>
 
 - Update to 1.46.3

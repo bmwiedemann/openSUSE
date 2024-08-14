@@ -1,5 +1,20 @@
 <services>
-	<service name="download_files" mode="manual" />
+	<service name="obs_scm" mode="manual">
+		<param name="url">https://github.com/netdata/netdata.git</param>
+		<param name="scm">git</param>
+		<param name="versionformat">@PARENT_TAG@</param>
+		<param name="revision">v1.46.3</param>
+		<param name="versionrewrite-pattern">v(.*)</param>
+	</service>
+	<service name="set_version" mode="manual"/>
+	<service name="tar" mode="buildtime">
+		<!-- discard non-free v2 dashboard -->
+		<param name="exclude">src/web/gui/v2</param>
+	</service>
+	<service name="recompress" mode="buildtime">
+		<param name="file">*.tar</param>
+		<param name="compression">xz</param>
+	</service>
 	<service name="go_modules" mode="manual">
 		<param name="subdir">src/go/collectors/go.d.plugin</param>
 	</service>
