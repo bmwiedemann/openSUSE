@@ -1,7 +1,7 @@
 #
-# spec file for package ukit
+# spec file for package uki-tool
 #
-# Copyright (c) 2022 Valentin LEFEBVRE
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,43 +12,50 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
+
+
 %define archive_name unified-kernel-image-tool
-%define bin_name ukit
+%define bin_name uki-tool
 
 Name:           uki-tool
-Version:        1.2.0+0.g87efdd2
+Version:        1.3.0+0.g23696fa
 Release:        0
 Summary:        Tool for the UKI project
 License:        MIT
 URL:            https://github.com/keentux/unified-kernel-image-tool.git
 Source:         %{archive_name}-%{version}.tar.xz
 BuildArch:      noarch
-BuildRequires:  coreutils
 BuildRequires:  ShellCheck
 BuildRequires:  bash-sh
-Requires:       zypper
-Requires:       rpm
+BuildRequires:  coreutils
+Requires:       awk
+Requires:       bash-sh
+Requires:       bind-utils
+Requires:       binutils
+Requires:       coreutils
 Requires:       e2fsprogs
-Requires:       bash-sh, awk, coreutils, bind-utils, binutils
+Requires:       rpm
 Requires:       squashfs
 # Require to have lsinitrd
 Requires:       dracut
 
-BuildRoot:      %{_tmppath}/%{archive_name}-%{version}-build
+BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Tool that regroup useful command dealing with the Unified Kernel Image (UKI)
-project. Write in Bash script, and adapted to the packaging.
+project. Write in Shell script, and adapted for the packaging.
 
 %package doc
-Summary:        Documentation for the package ukit
+Summary:        Documentation for the package uki-tool
 Group:          Documentation/Man
 BuildRequires:  gzip
 Requires:       %{name} = %{version}-%{release}
 BuildArch:      noarch
 
 %description doc
-This package contains the documentation for the ukit tool.
+This package contains the documentation for the uki-tool.
 
 %prep
 %autosetup -n %{archive_name}-%{version}
