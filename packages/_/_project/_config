@@ -3136,6 +3136,7 @@ BuildFlags: onlybuild:uchardet
 BuildFlags: onlybuild:ulp-macros
 BuildFlags: onlybuild:umockdev
 BuildFlags: onlybuild:unbound
+BuildFlags: onlybuild:unbound:libunbound-devel-mini
 BuildFlags: onlybuild:unicode-emoji
 BuildFlags: onlybuild:unicode-ucd
 BuildFlags: onlybuild:unifdef
