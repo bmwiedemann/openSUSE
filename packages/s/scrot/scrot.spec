@@ -17,7 +17,7 @@
 
 
 Name:           scrot
-Version:        1.11
+Version:        1.11.1
 Release:        0
 Summary:        Screenshot Capture Utility
 License:        SUSE-Scrot
