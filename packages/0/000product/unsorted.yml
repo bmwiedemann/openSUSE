@@ -7972,6 +7972,10 @@ unsorted:
   - granite-demo 
   - granite-devel 
   - granite-lang 
+  - granite6-common 
+  - granite6-demo 
+  - granite6-devel 
+  - granite6-lang 
   - grant 
   - grant-bash-completion 
   - grant-fish-completion 
@@ -9917,9 +9921,11 @@ unsorted:
   - kemoticons-devel 
   - kernel-debug 
   - kernel-debug-devel 
+  - kernel-debug-livepatch-devel 
   - kernel-debug-vdso 
   - kernel-default-base-rebuild 
   - kernel-default-devel 
+  - kernel-default-livepatch-devel 
   - kernel-default-vdso 
   - kernel-devel 
   - kernel-devel-longterm 
@@ -9931,6 +9937,7 @@ unsorted:
   - kernel-install-tools 
   - kernel-kvmsmall 
   - kernel-kvmsmall-devel 
+  - kernel-kvmsmall-livepatch-devel 
   - kernel-kvmsmall-vdso 
   - kernel-longterm 
   - kernel-longterm-devel 
@@ -9945,6 +9952,7 @@ unsorted:
   - kernel-syms-longterm 
   - kernel-vanilla 
   - kernel-vanilla-devel 
+  - kernel-vanilla-livepatch-devel 
   - kernel-vanilla-vdso 
   - kernelshark 
   - kernelshark-devel 
@@ -13489,6 +13497,7 @@ unsorted:
   - libgpod-devel 
   - libgpod-doc 
   - libgrail6 
+  - libgranite-7-7 
   - libgranite6 
   - libgraphblas9 
   - libgraphene-1_0-0-32bit 
@@ -16739,7 +16748,7 @@ unsorted:
   - libvhdi-tools 
   - libvhdi1 
   - libvidstab-devel 
-  - libvidstab1_1-32bit 
+  - libvidstab1_2-32bit 
   - libvigraimpex11 
   - libvips-devel 
   - libvips42 
@@ -47268,6 +47277,7 @@ unsorted:
   - typelib-1_0-GooCanvas-2_0 
   - typelib-1_0-GooCanvas-3_0 
   - typelib-1_0-Granite-1_0 
+  - typelib-1_0-Granite-7_0 
   - typelib-1_0-GrlNet-0_3 
   - typelib-1_0-GrlPls-0_3 
   - typelib-1_0-Gsf-1 

@@ -2896,7 +2896,7 @@
     <package name="libvdpau1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libverto1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libverto1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="libvidstab1_1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libvidstab1_2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libvirglrenderer1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="libvirt-client" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="libvirt-daemon-common" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
