@@ -42,7 +42,7 @@ constexpr std::array<std::string_view, 8> STTY_ARGS{{
 const std::vector<std::string> EXTERNAL_PIPE_CMDLINE{"gvim", "--not-a-term", "-"};
 
 /*
- * What program is executeed by nst depends on these precedence rules:
+ * What program is executed by nst depends on these precedence rules:
  * 1: program passed with -e
  * 2: scroll and/or utmp
  * 3: SHELL environment variable
@@ -116,9 +116,9 @@ constexpr bool LINE_PASTE_KEEP_NEWLINE = false;
 /*
  * Time from new content/keypress/etc until drawing.
  *
- * Within this range, nst draws when content stops arriving (idle). mostly
+ * Within this range, nst draws when content stops arriving (idle). Mostly
  * it's near MINLATENCY, but it waits longer for slow updates to avoid partial
- * draw.  low MINLATENCY Will tear/flicker more, as it can "detect" idle too
+ * draw. Low MINLATENCY Will tear/flicker more, as it can "detect" idle too
  * early.
  */
 constexpr std::chrono::milliseconds MIN_LATENCY{8};
@@ -202,9 +202,14 @@ constexpr ColorIndex DEFAULT_ATTR{11};
 
 /// Input modifier mask which forces mouse select/shortcuts in WinMode::MOUSE.
 /**
- * Force mouse select/shortcuts while mask is active (when MODE_MOUSE is set).
- * Note that if you want to use ShiftMask with selmasks, set this to an other
- * modifier, set to InputModifier::NONE to not use it.
+ * Force mouse select/shortcuts while mask is active (when WinMode::MOUSE is
+ * set). Some terminal applications may interpret mouse events and prevent you
+ * from performing select operations on nst level. For still being able to
+ * perform nst operations, this modifier can be pressed to bypass the
+ * application.
+ *
+ * Note that if this modifier will have priority over the same modifiers used
+ * in SEL_MASKS. The latter will become unusable, if the modifiers conflict.
  **/
 constexpr xpp::InputMask FORCE_MOUSE_MOD{xpp::InputModifier::SHIFT};
 

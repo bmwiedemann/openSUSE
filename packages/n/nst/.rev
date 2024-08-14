@@ -52,4 +52,22 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1186356</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>baf073f2f959ea23aa6683fa93c18ca5</srcmd5>
+    <version>1.1</version>
+    <time>1723637783</time>
+    <user>dimstar_suse</user>
+    <comment>- switch to using the now available upstream source tarball instead of a Git
+  tarball created via the OSC service.
+- Update to upstream version 1.1:
+  - when using a blinking cursor style, then the blinking was always turned off
+    once X11 input occurs. This was confusing when continously inputting
+    characters. In this release this no longer happens.
+  - performance improvement in the URL snap selection algorithm, which wrongly
+    copied the entire screen content in its algorithm.
+  - when doing a snap selection that spans multiple lines (e.g. extending a
+    long http:// URL), then excess newlines occured, when pasting the selection.
+    This no longer happens.</comment>
+    <requestid>1193853</requestid>
+  </revision>
 </revisionlist>

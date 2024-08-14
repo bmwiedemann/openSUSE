@@ -16,16 +16,16 @@
 #
 
 
-%define commit 56dd2cb
+%define version 1.1
 
 Name:           nst
-Version:        1.0
+Version:        %{version}
 Release:        0
 Summary:        C++ port of suckless.org st (simple-terminal) emulator
 License:        MIT
 Group:          System/X11/Terminals
 URL:            https://github.com/gerstner-hub/nst
-Source0:        nst-1.0+git%{commit}.tar.xz
+Source0:        nst-v1.1.tar.xz
 Source1:        nst_config.cxx
 Source2:        nst_config.hxx
 Patch0:         usr_etc_lookup.patch
@@ -48,7 +48,7 @@ features and the possibility to process the terminal buffer history in
 external tools for searching.
 
 %prep
-%setup -q -n nst-1.0+git%{commit}
+%setup -q -n %{name}-v%{version}
 %autopatch -p1
 # copy compile time configuration from package sources into source tree
 cp %{SOURCE1} src
