@@ -7,4 +7,20 @@
     <comment>New package go1.23 version 1.23rc2 is the next stable version of the Go toolchain.</comment>
     <requestid>1188074</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>83cabbd24dc801e4da15153620abd7c5</srcmd5>
+    <version>1.23.0</version>
+    <time>1723637743</time>
+    <user>dimstar_suse</user>
+    <comment>- go1.23 (released 2024-08-13) is a major release of Go.
+  go1.23.x minor releases will be provided through August 2025.
+  https://github.com/golang/go/wiki/Go-Release-Cycle
+  go1.23 arrives six months after go1.22. Most of its changes are
+  in the implementation of the toolchain, runtime, and libraries.
+  As always, the release maintains the Go 1 promise of
+  compatibility. We expect almost all Go programs to continue to
+  compile and run as before.
+  Refs boo#1229122 go1.23 release tracking (forwarded request 1193774 from jfkw)</comment>
+    <requestid>1193775</requestid>
+  </revision>
 </revisionlist>

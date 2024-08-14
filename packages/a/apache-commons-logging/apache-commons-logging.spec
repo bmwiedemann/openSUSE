@@ -20,23 +20,22 @@
 %define base_name  logging
 %define short_name commons-%{base_name}
 Name:           apache-%{short_name}
-Version:        1.2
+Version:        1.3.3
 Release:        0
 Summary:        Apache Commons Logging
 License:        Apache-2.0
-URL:            http://commons.apache.org/%{base_name}
-Source0:        http://www.apache.org/dist/commons/%{base_name}/source/%{short_name}-%{version}-src.tar.gz
-Source1:        http://www.apache.org/dist/commons/%{base_name}/source/%{short_name}-%{version}-src.tar.gz.asc
+URL:            https://commons.apache.org/%{base_name}
+Source0:        https://archive.apache.org/dist/commons/%{base_name}/source/%{short_name}-%{version}-src.tar.gz
+Source1:        https://archive.apache.org/dist/commons/%{base_name}/source/%{short_name}-%{version}-src.tar.gz.asc
 Source2:        apache-commons-logging.keyring
 Source4:        http://central.maven.org/maven2/%{short_name}/%{short_name}-api/1.1/%{short_name}-api-1.1.pom
-Patch0:         commons-logging-1.1.3-src-junit.diff
-Patch1:         commons-logging-1.2-sourcetarget.patch
-Patch2:         commons-logging-manifests.patch
-Patch3:         no-tests.patch
+Source5:        build.xml
+Source6:        build.properties
+Patch0:         commons-logging-1.3.3-dependencies.patch
 BuildRequires:  ant
 BuildRequires:  glassfish-servlet-api
 BuildRequires:  java-devel >= 1.8
-BuildRequires:  javapackages-local
+BuildRequires:  javapackages-local >= 6
 BuildRequires:  reload4j
 Requires:       java >= 1.8
 Provides:       jakarta-%{short_name} = %{version}-%{release}
@@ -59,10 +58,10 @@ logging implementation.
 %prep
 %autosetup -p1 -n %{short_name}-%{version}-src
 
-sed -i 's/\r//' RELEASE-NOTES.txt LICENSE.txt
+cp %{SOURCE5} build.xml
+cp %{SOURCE6} build.properties
 
-#FIXME
-rm ./src/test/java/org/apache/commons/logging/servlet/BasicServletTestCase.java
+sed -i 's/\r//' RELEASE-NOTES.txt LICENSE.txt
 
 %pom_remove_parent .
 
@@ -93,11 +92,11 @@ popd
 
 # pom
 install -d -m 755 %{buildroot}%{_mavenpomdir}
-install -pm 644 pom.xml %{buildroot}/%{_mavenpomdir}/%{short_name}-%{version}.pom
+%mvn_install_pom pom.xml %{buildroot}/%{_mavenpomdir}/%{short_name}-%{version}.pom
 sed 's#<version>1.1</version>#<version>1.2</version>#g' < %{SOURCE4} > tmp.pom
-install -pm 644 tmp.pom %{buildroot}/%{_mavenpomdir}/%{short_name}-api-%{version}.pom
+%mvn_install_pom tmp.pom %{buildroot}/%{_mavenpomdir}/%{short_name}-api-%{version}.pom
 sed -e 's#<version>1.1</version>#<version>1.2</version>#g' -e "s#%{short_name}-api#%{short_name}-adapters#g" < %{SOURCE4} > tmp.pom
-install -pm 644 tmp.pom %{buildroot}/%{_mavenpomdir}/%{short_name}-adapters-%{version}.pom
+%mvn_install_pom tmp.pom %{buildroot}/%{_mavenpomdir}/%{short_name}-adapters-%{version}.pom
 %add_maven_depmap %{short_name}-%{version}.pom %{short_name}.jar -a "org.apache.commons:%{short_name}","apache:%{short_name}"
 %add_maven_depmap %{short_name}-api-%{version}.pom %{short_name}-api.jar -a "org.apache.commons:%{short_name}-api","apache:%{short_name}-api"
 %add_maven_depmap %{short_name}-adapters-%{version}.pom %{short_name}-adapters.jar -a "org.apache.commons:%{short_name}-adapters","apache:%{short_name}-adapters"

@@ -1,0 +1,20 @@
+Index: openssl-3.1.4/providers/fips/fipsprov.c
+===================================================================
+--- openssl-3.1.4.orig/providers/fips/fipsprov.c
++++ openssl-3.1.4/providers/fips/fipsprov.c
+@@ -805,6 +805,7 @@ int OSSL_provider_init_int(const OSSL_CO
+         /* Error already raised */
+         goto err;
+     }
++#if 0 /* Don't allow to skip the error state */
+     /*
+      * Disable the conditional error check if it's disabled in the fips config
+      * file.
+@@ -812,6 +813,7 @@ int OSSL_provider_init_int(const OSSL_CO
+     if (fgbl->selftest_params.conditional_error_check != NULL
+         && strcmp(fgbl->selftest_params.conditional_error_check, "0") == 0)
+         SELF_TEST_disable_conditional_error_state();
++#endif
+ 
+     /* Enable or disable FIPS provider options */
+ #define FIPS_SET_OPTION(fgbl, field)                                            \

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Aug 13 17:59:42 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.29.2:
+  * initial sync files that modified after image creation
+  * initial sync for root directory
+  * Removes redundant condition from toAPIBuildOptions in build.go
+  * docs: Update docker compose kill usage
+  * Fix stop on file chane for sync-restart action
+  * bump engine and cli to v27.1.1, buildx to v0.16.1
+  * remove all dependabot update PRs for OTel dependencies
+  * gp.mod: github.com/gofrs/flock v0.12.1
+  * go.mod: golang.org/x/sys v0.22.0
+  * update to go1.21.12
+
+-------------------------------------------------------------------
 Wed Jul 24 17:57:14 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.29.1:

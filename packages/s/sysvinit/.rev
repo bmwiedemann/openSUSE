@@ -1536,4 +1536,32 @@ So just for consistency. (forwarded request 875922 from lnussel)</comment>
     <comment>Prepare for RPM 4.20 (forwarded request 1151549 from dimstar)</comment>
     <requestid>1151698</requestid>
   </revision>
+  <revision rev="184" vrev="1">
+    <srcmd5>6a28c1f680b6129c998cbccde9fd4aaa</srcmd5>
+    <version>3.10</version>
+    <time>1723637665</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch killproc-2.23.dif
+  * Fix shell command in Makefile to get detection statx declaration correct 
+
+- Update to sysvinit 3.10
+  *  When the user executes &quot;machinectl stop&quot;, systemd sends SIGRTMIN+4 to PID 1 
+     in the container, and expects that to initiate a graceful shutdown (power-off).
+     SysV init now catches this signal and initiates a shutdown (shutdown -hP now).
+     - floppym provided patch to accomplish this.
+  * Fix issue in bootlogd which could cause the service to enter an endless loop
+    (and use too much CPU) when it is able to open a device for writing, but not actually
+    able to write to it. This resulted in bootlogd closing and re-opening the device over
+    and over. Now bootlogd should simply fail gracefully when it cannot write to an open
+    file/device.
+  * Fix formatting in shutdown.8 manual page. Cleaned up whitespace and special characters.
+  * Patch for man/Makefile to fix the clean recipe.
+    Provided by Lucas Nussabaum and Mark Hindley
+  * On Linux systems, allow reboot command to pass a message
+    to the system firmware during the restart. This is
+    accomplished with the -m flag.
+  * Patch from kraj which allows hddown to compile
+    when musl is the C library.</comment>
+    <requestid>1193645</requestid>
+  </revision>
 </revisionlist>

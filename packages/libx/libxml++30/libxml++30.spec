@@ -1,7 +1,7 @@
 #
 # spec file for package libxml++30
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define so_ver  3_0-1
 
 Name:           libxml++30
-Version:        3.2.4
+Version:        3.2.5
 Release:        0
 Summary:        C++ Interface for XML Files
 License:        LGPL-2.1-or-later
@@ -76,9 +76,12 @@ chmod -x NEWS libxml++config.h.in libxml++config.h.meson
 
 %ldconfig_scriptlets -n libxml++-%{so_ver}
 
+%check
+%meson_test
+
 %files -n libxml++-%{so_ver}
 %license COPYING
-%doc AUTHORS ChangeLog NEWS README
+%doc ChangeLog NEWS README.md
 %{_libdir}/*.so.*
 
 %files devel

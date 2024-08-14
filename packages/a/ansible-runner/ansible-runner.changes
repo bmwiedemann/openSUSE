@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Aug 13 11:21:40 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- ignore test_get_role_list test
+
+-------------------------------------------------------------------
 Sun Jun  9 16:25:46 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Use pytest-xdist in order to avoid non-terminating processes in

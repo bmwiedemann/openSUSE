@@ -20,13 +20,13 @@
 %define base_ver 5.0
 
 Name:           libxml++
-Version:        5.0.3
+Version:        5.2.1
 Release:        0
 Summary:        C++ Interface for XML Files
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://libxmlplusplus.github.io/libxmlplusplus
-Source0:        https://download.gnome.org/sources/libxml++/%{base_ver}/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/libxml++/5.2/%{name}-%{version}.tar.xz
 
 BuildRequires:  c++_compiler
 BuildRequires:  fdupes
@@ -73,12 +73,15 @@ chmod -x NEWS libxml++config.h.in libxml++config.h.meson
 
 %ldconfig_scriptlets -n libxml++-%{so_ver}
 
+%check
+%meson_test
+
 %files -n libxml++-%{so_ver}
 %license COPYING
 %{_libdir}/*.so.*
 
 %files devel
-%doc AUTHORS ChangeLog NEWS README.md
+%doc ChangeLog NEWS README.md
 %{_includedir}/libxml++-%{base_ver}
 %dir %{_libdir}/libxml++-%{base_ver}
 %dir %{_libdir}/libxml++-%{base_ver}/include

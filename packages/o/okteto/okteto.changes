@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Aug 13 18:02:16 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.30.1:
+  * DEV-575: Fix UpdateEnvs function to allow variable values with
+    '=' (#4426) (#4427)
+
+-------------------------------------------------------------------
 Fri Aug 09 17:05:32 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.30.0:

@@ -1,0 +1,22 @@
+Index: openssl-3.1.4/providers/fips/fipsprov.c
+===================================================================
+--- openssl-3.1.4.orig/providers/fips/fipsprov.c
++++ openssl-3.1.4/providers/fips/fipsprov.c
+@@ -107,7 +107,7 @@ void *ossl_fips_prov_ossl_ctx_new(OSSL_L
+         return NULL;
+     init_fips_option(&fgbl->fips_security_checks, 1);
+     init_fips_option(&fgbl->fips_tls1_prf_ems_check, 1); /* Enabled by default */
+-    init_fips_option(&fgbl->fips_restricted_drgb_digests, 0);
++    init_fips_option(&fgbl->fips_restricted_drgb_digests, 1); /* Enabled by default */
+     return fgbl;
+ }
+ 
+@@ -820,8 +820,6 @@ int OSSL_provider_init_int(const OSSL_CO
+     if (fgbl->field.option != NULL) {                                       \
+         if (strcmp(fgbl->field.option, "1") == 0)                           \
+             fgbl->field.enabled = 1;                                        \
+-        else if (strcmp(fgbl->field.option, "0") == 0)                      \
+-            fgbl->field.enabled = 0;                                        \
+         else                                                                \
+             goto err;                                                       \
+     }

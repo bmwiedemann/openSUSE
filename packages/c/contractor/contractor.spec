@@ -1,7 +1,7 @@
 #
 # spec file for package contractor
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,14 +16,14 @@
 #
 
 
+%define         appid org.elementary.contractor
 Name:           contractor
 Version:        0.3.5
 Release:        0
 Summary:        A desktop-wide extension service
 License:        GPL-3.0-or-later
-Group:          System/Daemons
-URL:            https://elementary.io/
-Source:         https://github.com/elementary/contractor/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+URL:            https://github.com/elementary/contractor
+Source:         %{url}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  meson >= 0.44.4
 BuildRequires:  pkgconfig
 BuildRequires:  vala >= 0.28.0
@@ -39,7 +39,7 @@ hard coded into them.
 Designed for Elementary OS.
 
 %prep
-%setup -q
+%autosetup
 
 %build
 %meson
@@ -50,8 +50,8 @@ Designed for Elementary OS.
 
 %files
 %license COPYING
-%doc README.md
-%{_bindir}/contractor
-%{_datadir}/dbus-1/services/org.elementary.contractor.service
+%doc README.md CODE_OF_CONDUCT.md
+%{_bindir}/%{name}
+%{_datadir}/dbus-1/services/%{appid}.service
 
 %changelog

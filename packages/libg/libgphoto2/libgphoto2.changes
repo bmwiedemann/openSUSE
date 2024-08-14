@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Aug  5 12:07:01 UTC 2024 - Filip Kastl <filip.kastl@suse.com>
+
+- Adding libgphoto2-c99.patch so that the package builds for 32bit
+  with GCC 14.
+- Using %autosetup -p1 because this is the prefered way to apply
+  patches.
+
+-------------------------------------------------------------------
 Sat Sep  2 09:59:49 UTC 2023 - Marcus Meissner <meissner@suse.com>
 
 - updated to 2.5.31 release

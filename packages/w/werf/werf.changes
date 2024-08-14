@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Aug 13 18:04:48 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.10.2:
+  * chore: release 2.10.2
+  * fix(compose): detect werf environment variables when extends
+    functionality used
+  * chore(ci): enable docs unit test
+  * chore(ci): remove senseless profiling for e2e/integrations
+    tests
+  * test: update coverage profiling for integration tests
+  * chore(ci): enable coverage for all daily tests
+  * test(e2e, build, dockerfile): fix fixtures
+  * test(e2e, build, dockerfile): test only
+    WERF_STAGED_DOCKERFILE_VERSION=v2
+  * chore(ci): uncomment complex e2e tests
+  * fix(build, buildah, dockerfile, staged): fix panic when another
+    image is used as a base image (through dependencies)
+  * chore(channels): bump alpha
+
+-------------------------------------------------------------------
 Wed Aug 07 15:27:03 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.10.1:

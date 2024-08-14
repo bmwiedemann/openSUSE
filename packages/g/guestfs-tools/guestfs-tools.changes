@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Aug  6 10:26:14 MDT 2024 - carnold@suse.com
+
+- Update to version 1.53.2 (jsc#PED-6305)
+  * Implement --inject-blnsvr operation
+  * mlcustomize: firstboot: Use Linux path for Powershell script path
+  * mlcustomize: firstboot: Use powershell.exe instead of path
+  * mlcustomize: firstboot: Use Powershell -NoProfile flag
+  * mlcustomize: Revert delay installation of qemu-ga MSI
+  * mldrivers/linux_kernels.ml: Prefix general information with ^info:
+  * mlcustomize: Use Start-Process -Wait to run qemu-ga installer
+  * mlcustomize: Add Firstboot.firstboot_dir function
+  * mlcustomize: Place powershell scripts into <firstboot_dir>\Temp
+  * mlcustomize: Inject qemu-ga & blnsvr into <firstboot_dir>/Temp
+  * mlcustomize: Write qemu-ga log file name to log.txt
+
+-------------------------------------------------------------------
 Tue Jul 16 12:58:56 MDT 2024 - carnold@suse.com
 
 - Update to version 1.53.1 (jsc#PED-6305)

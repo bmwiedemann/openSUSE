@@ -100,6 +100,71 @@ Patch32:        openssl-CVE-2024-4741.patch
 Patch33:        reproducible.patch
 # PATCH-FIX-UPSTREAM: bsc#1227138 CVE-2024-5535: SSL_select_next_proto buffer overread
 Patch34:        openssl-CVE-2024-5535.patch
+# PATCH-FIX-FEDORA bsc#1221786 FIPS: Use of non-Approved Elliptic Curves
+Patch35:        openssl-Add-changes-to-ectest-and-eccurve.patch
+Patch36:        openssl-Remove-EC-curves.patch
+Patch37:        openssl-Disable-explicit-ec.patch
+Patch38:        openssl-skipped-tests-EC-curves.patch
+# PATCH-FIX-FEDORA bsc#1221753 bsc#1221760 bsc#1221822 FIPS: Extra public/private key checks required by FIPS-140-3
+Patch39:        openssl-FIPS-140-3-keychecks.patch
+# PATCH-FIX-FEDORA bsc#1221365 bsc#1221786 bsc#1221787 FIPS: Minimize fips services
+Patch40:        openssl-FIPS-services-minimize.patch
+# PATCH-FIX-SUSE bsc#1221751 FIPS: Add release number to version string
+Patch41:        openssl-FIPS-release_num_in_version_string.patch
+# PATCH-FIX-FEDORA bsc#1221760 FIPS: Execute KATS before HMAC verification
+Patch42:        openssl-FIPS-early-KATS.patch
+# PATCH-FIX-SUSE bsc#1221787 FIPS: Approved Modulus Sizes for RSA Digital Signature for FIPS 186-4
+Patch43:        openssl-Revert-Improve-FIPS-RSA-keygen-performance.patch
+# PATCH-FIX-FEDORA bsc#1221787 FIPS: Selectively disallow SHA1 signatures
+Patch44:        openssl-Allow-disabling-of-SHA1-signatures.patch
+Patch45:        openssl-Allow-SHA1-in-seclevel-2-if-rh-allow-sha1-signatures.patch
+# PATCH-FIX-FEDORA bsc#1221365 bsc#1221824 FIPS: Service Level Indicator is needed
+Patch46:        openssl-FIPS-limit-rsa-encrypt.patch
+Patch47:        openssl-FIPS-Expose-a-FIPS-indicator.patch
+# PATCH-FIX-FEDORA bsc#1221760 FIPS: Execute KATS before HMAC verification
+Patch48:        openssl-FIPS-Use-OAEP-in-KATs-support-fixed-OAEP-seed.patch
+# PATCH-FIX-FEDORA bsc#1221365 bsc#1221760 FIPS: Selftests are required
+Patch49:        openssl-FIPS-Use-digest_sign-digest_verify-in-self-test.patch
+# PATCH-FIX-FEDORA bsc#1221760 FIPS: Selftests are required
+Patch50:        openssl-FIPS-Use-FFDHE2048-in-self-test.patch
+# PATCH-FIX-FEDORA bsc#1220690 bsc#1220693 bsc#1220696 FIPS: Reseed DRBG
+Patch51:        openssl-FIPS-140-3-DRBG.patch
+# PATCH-FIX-FEDORA bsc#1221752 FIPS: Zeroisation is required
+Patch52:        openssl-FIPS-140-3-zeroization.patch
+# PATCH-FIX-FEDORA bsc#1221365 FIPS: Service Level Indicator is needed
+Patch53:        openssl-Add-FIPS-indicator-parameter-to-HKDF.patch
+Patch54:        openssl-rand-Forbid-truncated-hashes-SHA-3-in-FIPS-prov.patch
+# PATCH-FIX-FEDORA bsc#1221365 bsc#1221365 FIPS: Service Level Indicator is needed
+Patch55:        openssl-FIPS-Remove-X9.31-padding-from-FIPS-prov.patch
+# PATCH-FIX-FEDORA bsc#1221365 FIPS: Service Level Indicator is needed
+Patch56:        openssl-FIPS-Add-explicit-indicator-for-key-length.patch
+# PATCH-FIX-FEDORA bsc#1221827 FIPS: Recommendation for Password-Based Key Derivation
+Patch57:        openssl-pbkdf2-Set-minimum-password-length-of-8-bytes.patch
+# PATCH-FIX-FEDORA bsc#1221365 FIPS: Service Level Indicator is needed
+Patch58:        openssl-FIPS-RSA-disable-shake.patch
+Patch59:        openssl-FIPS-signature-Add-indicator-for-PSS-salt-length.patch
+# PATCH-FIX-FEDORA bsc#1221824 FIPS: NIST SP 800-56Brev2 Section 6.4.1.2.1
+Patch60:        openssl-FIPS-RSA-encapsulate.patch
+# PATCH-FIX-FEDORA bsc#1221821 FIPS: Disable FIPS 186-4 Domain Parameters
+Patch61:        openssl-DH-Disable-FIPS-186-4-type-parameters-in-FIPS-mode.patch
+# PATCH-FIX-SUSE bsc#1221365 FIPS: Service Level Indicator is needed
+Patch62:        openssl-3-FIPS-GCM-Implement-explicit-indicator-for-IV-gen.patch
+# PATCH-FIX-FEDORA bsc#1221827 FIPS: Recommendation for Password-Based Key Derivation
+Patch63:        openssl-pbkdf2-Set-indicator-if-pkcs5-param-disabled-checks.patch
+# PATCH-FIX-FEDORA bsc#1221365 FIPS: Service Level Indicator is needed
+Patch64:        openssl-FIPS-enforce-EMS-support.patch
+# PATCH-FIX-SUSE bsc#1221824 FIPS: Add check for SP 800-56Brev2 Section 6.4.1.2.1
+Patch65:        openssl-FIPS-Add-SP800-56Br2-6.4.1.2.1-3.c-check.patch
+# PATCH-FIX-SUSE bsc#1220523 FIPS: Port openssl to use jitterentropy
+Patch66:        openssl-3-jitterentropy-3.4.0.patch
+# PATCH-FIX-SUSE bsc#1221753 FIPS: Enforce error state
+Patch67:        openssl-FIPS-Enforce-error-state.patch
+# PATCH-FIX-SUSE bsc#1221365 FIPS: Service Level Indicator is needed
+Patch68:        openssl-FIPS-enforce-security-checks-during-initialization.patch
+# PATCH-FIX-SUSE bsc#1221753 bsc#1221760 FIPS: RSA keygen PCT requirements
+Patch69:        openssl-3-FIPS-PCT_rsa_keygen.patch
+# PATCH-FIX-FEDORA bsc#1221365 FIPS: Deny SHA-1 signature verification in FIPS provider
+Patch70:        openssl-3-FIPS-Deny-SHA-1-sigver-in-FIPS-provider.patch
 BuildRequires:  pkgconfig
 %if 0%{?sle_version} >= 150400 || 0%{?suse_version} >= 1550
 BuildRequires:  ulp-macros
@@ -108,6 +173,7 @@ BuildRequires:  ulp-macros
 %define cflags_livepatching ""
 %define pack_ipa_dumps      echo "Livepatching is disabled in this build"
 %endif
+BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(zlib)
 Requires:       libopenssl3 = %{version}-%{release}
 Requires:       openssl
@@ -152,6 +218,7 @@ OpenSSL contains an implementation of the SSL and TLS protocols.
 
 %package -n libopenssl-3-devel
 Summary:        Development files for OpenSSL
+Requires:       jitterentropy-devel >= 3.4.0
 Requires:       libopenssl3 = %{version}
 Requires:       pkgconfig(zlib)
 Recommends:     %{name} = %{version}
@@ -168,8 +235,10 @@ that want to make use of the OpenSSL C API.
 
 %package -n libopenssl-3-fips-provider
 Summary:        OpenSSL FIPS provider
+Requires:       libjitterentropy3 >= 3.4.0
 Requires:       libopenssl3 >= %{version}
 BuildRequires:  fipscheck
+BuildRequires:  jitterentropy-devel >= 3.4.0
 
 %description -n libopenssl-3-fips-provider
 This package contains the OpenSSL FIPS provider.
@@ -205,6 +274,7 @@ export MACHINE=armv6l
     enable-ec_nistp_64_gcc_128 \
 %endif
     enable-fips \
+    enable-jitterentropy \
     enable-ktls \
     zlib \
     --prefix=%{_prefix} \
@@ -218,10 +288,11 @@ export MACHINE=armv6l
     -DTERMIO \
     -DPURIFY \
     -D_GNU_SOURCE \
+    '-DSUSE_OPENSSL_RELEASE="\"%{release}\""' \
     -DOPENSSL_NO_BUF_FREELISTS \
     $(getconf LFS_CFLAGS) \
     -Wall \
-    --with-rand-seed=getrandom \
+    --with-rand-seed=getrandom,jitterentropy \
     --system-ciphers-file=%{_sysconfdir}/crypto-policies/back-ends/openssl.config
 
 # Show build configuration
@@ -265,10 +336,10 @@ LD_LIBRARY_PATH="$PWD" make test -j16
     %{?__debug_package:%{__debug_install_post}} \
     %{__arch_install_post} \
     %{__os_install_post} \
-    OPENSSL_CONF=/dev/null LD_LIBRARY_PATH=. apps/openssl dgst -binary -sha256 -mac HMAC -macopt hexkey:f4556650ac31d35461610bac4ed81b1a181b2d8a43ea2854cbae22ca74560813 < $RPM_BUILD_ROOT%{_libdir}/ossl-modules/fips.so > $RPM_BUILD_ROOT%{_libdir}/ossl-modules/fips.so.hmac \
-    objcopy --update-section .rodata1=$RPM_BUILD_ROOT%{_libdir}/ossl-modules/fips.so.hmac $RPM_BUILD_ROOT%{_libdir}/ossl-modules/fips.so $RPM_BUILD_ROOT%{_libdir}/ossl-modules/fips.so.mac \
-    mv $RPM_BUILD_ROOT%{_libdir}/ossl-modules/fips.so.mac $RPM_BUILD_ROOT%{_libdir}/ossl-modules/fips.so \
-    rm $RPM_BUILD_ROOT%{_libdir}/ossl-modules/fips.so.hmac \
+    OPENSSL_CONF=/dev/null LD_LIBRARY_PATH=. apps/openssl dgst -binary -sha256 -mac HMAC -macopt hexkey:f4556650ac31d35461610bac4ed81b1a181b2d8a43ea2854cbae22ca74560813 < %{buildroot}%{_libdir}/ossl-modules/fips.so > %{buildroot}%{_libdir}/ossl-modules/fips.so.hmac \
+    objcopy --update-section .rodata1=%{buildroot}%{_libdir}/ossl-modules/fips.so.hmac %{buildroot}%{_libdir}/ossl-modules/fips.so %{buildroot}%{_libdir}/ossl-modules/fips.so.mac \
+    mv %{buildroot}%{_libdir}/ossl-modules/fips.so.mac %{buildroot}%{_libdir}/ossl-modules/fips.so \
+    rm %{buildroot}%{_libdir}/ossl-modules/fips.so.hmac \
 %{nil}
 
 # show ciphers
@@ -314,6 +385,11 @@ mkdir %{buildroot}/%{sslengdef}
 # Create unversioned symbolic links to above directories
 ln -s %{sslengcnf} %{buildroot}/%{ssletcdir}/engines.d
 ln -s %{sslengdef} %{buildroot}/%{ssletcdir}/engdef.d
+
+# Add the FIPS module configuration from crypto-policies since SP6
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150600
+ln -s %{_sysconfdir}/crypto-policies/back-ends/openssl_fips.config %{buildroot}%{ssletcdir}/fips_local.cnf
+%endif
 
 # Avoid file conflicts with man pages from other packages
 pushd %{buildroot}/%{_mandir}
@@ -394,6 +470,9 @@ fi
 %config %{ssletcdir}/openssl-orig.cnf
 %config (noreplace) %{ssletcdir}/openssl.cnf
 %config (noreplace) %{ssletcdir}/ct_log_list.cnf
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150600
+%config %{ssletcdir}/fips_local.cnf
+%endif
 %attr(700,root,root) %{ssletcdir}/private
 %dir %{sslengcnf}
 %dir %{sslengdef}

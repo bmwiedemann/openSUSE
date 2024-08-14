@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Aug 13 18:13:31 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 20240813T053317Z:
+  * chore: update all deps (#5018)
+  * Import bucket metadata must show CORS and general errors if any
+    are found (#5001)
+  * conditionally disallow list() when object does not exist
+    (#5016)
+  * stat: print information about all buckets when only alias are
+    set (#5002)
+  * Update admin-service.go (#5010)
+  * Fixing invalid help menu for s3 type encryption (#5008)
+  * add global `--resolve HOST[:PORT]=IP` flag (#5013)
+  * docs: explain scanner bucket quota check process (#5011)
+  * Normalize metadata values for compare (#5006)
+  * Fix wrong message shown when upload to SUBNET fails (#5005)
+
+-------------------------------------------------------------------
 Sat Aug 03 07:58:55 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 20240731T155833Z:

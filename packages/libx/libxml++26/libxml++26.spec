@@ -1,7 +1,7 @@
 #
 # spec file for package libxml++26
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define _name   libxml++
 Name:           libxml++26
 
-Version:        2.42.2
+Version:        2.42.3
 Release:        0
 Summary:        C++ Interface for XML Files
 License:        LGPL-2.1-or-later
@@ -70,9 +70,12 @@ chmod -x NEWS libxml++config.h.in libxml++config.h.meson
 
 %ldconfig_scriptlets -n libxml++-2_6-2
 
+%check
+%meson_test
+
 %files -n libxml++-2_6-2
 %license COPYING
-%doc AUTHORS ChangeLog NEWS README
+%doc ChangeLog NEWS README.md
 %{_libdir}/*.so.*
 
 %files devel

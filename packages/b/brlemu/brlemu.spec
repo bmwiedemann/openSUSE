@@ -1,7 +1,7 @@
 #
 # spec file for package brlemu
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,7 +38,7 @@ support without needing to acquire expensive hardware devices.
 %autopatch -p1
 
 %build
-%make_build CFLAGS="%{optflags}" CC="gcc"
+%make_build CFLAGS="%{optflags} -I/usr/include/ncurses" CC="gcc"
 
 %install
 mkdir -p %{buildroot}%{_bindir}

@@ -10,4 +10,13 @@ New package which is a dependency for setroubleshoot gui (together with librepor
 </comment>
     <requestid>1191114</requestid>
   </revision>
+  <revision rev="2" vrev="4">
+    <srcmd5>18664df1c7ef448f53975450f9724322</srcmd5>
+    <version>0.43</version>
+    <time>1723637664</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.43:
+  * Fix test failure when using clang (Thanks to Alex)</comment>
+    <requestid>1193636</requestid>
+  </revision>
 </revisionlist>

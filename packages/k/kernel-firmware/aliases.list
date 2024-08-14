@@ -28,6 +28,7 @@ amd_pmf: acpi*:AMDI0100%3A*
 amd_pmf: acpi*:AMDI0102%3A*
 amd_pmf: acpi*:AMDI0103%3A*
 amd_pmf: acpi*:AMDI0105%3A*
+amd_pmf: acpi*:AMDI0107%3A*
 amdgpu: pci:v00001002d*sv*sd*bc03sc00i00*
 amdgpu: pci:v00001002d*sv*sd*bc03sc80i00*
 amdgpu: pci:v00001002d*sv*sd*bc12sc00i00*

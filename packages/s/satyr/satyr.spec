@@ -1,8 +1,8 @@
 #
 # spec file for package satyr
 #
-# Copyright (c) 2019-2024 Red Hat, Inc.
 # Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2019-2024 Red Hat, Inc.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,15 +34,12 @@
   %define _libname %{name}
 %endif
 Name:           satyr
-Version:        0.42
+Version:        0.43
 Release:        4%{?dist}
 Summary:        Tools to create anonymous, machine-friendly problem reports
 License:        GPL-2.0-or-later
 URL:            https://github.com/abrt/satyr
 Source0:        https://github.com/abrt/%{name}/releases/download/%{version}/%{name}-%{version}.tar.gz
-BuildRequires:  pkgconfig(json-c)
-BuildRequires:  pkgconfig(libdw)
-BuildRequires:  pkgconfig(libelf)
 BuildRequires:  automake
 BuildRequires:  binutils-devel
 BuildRequires:  doxygen
@@ -54,6 +51,9 @@ BuildRequires:  libtool
 BuildRequires:  make
 BuildRequires:  pkgconfig
 BuildRequires:  rpm-devel
+BuildRequires:  pkgconfig(json-c)
+BuildRequires:  pkgconfig(libdw)
+BuildRequires:  pkgconfig(libelf)
 Requires:       glib2-tools%{?_isa} >= %{glib_ver}
 %if %{with python3}
 BuildRequires:  python3-devel

@@ -7,4 +7,12 @@
     <comment>new package kubectl-directpv: Kubectl plugin for the MinIO CSI driver for Direct Attached Storage</comment>
     <requestid>1190898</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>92f176c3b80f14d870b1ee960d4f66d3</srcmd5>
+    <version>4.1.0</version>
+    <time>1723637734</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1193752</requestid>
+  </revision>
 </revisionlist>

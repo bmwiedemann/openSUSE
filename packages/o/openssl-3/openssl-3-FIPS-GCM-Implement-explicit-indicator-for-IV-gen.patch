@@ -1,0 +1,98 @@
+From 589eb3898896c1ac916bc20069ecd5adb8534850 Mon Sep 17 00:00:00 2001
+From: Clemens Lang <cllang@redhat.com>
+Date: Fri, 17 Feb 2023 15:31:08 +0100
+Subject: [PATCH] GCM: Implement explicit FIPS indicator for IV gen
+
+Implementation Guidance for FIPS 140-3 and the Cryptographic Module
+Verification Program, Section C.H requires guarantees about the
+uniqueness of key/iv pairs, and proposes a few approaches to ensure
+this. Provide an indicator for option 2 "The IV may be generated
+internally at its entirety randomly."
+
+Resolves: rhbz#2168289
+Signed-off-by: Clemens Lang <cllang@redhat.com>
+---
+ include/openssl/core_names.h                  |  1 +
+ include/openssl/evp.h                         |  4 +++
+ .../implementations/ciphers/ciphercommon.c    |  4 +++
+ .../ciphers/ciphercommon_gcm.c                | 25 +++++++++++++++++++
+ 4 files changed, 34 insertions(+)
+
+Index: openssl-3.1.4/include/openssl/core_names.h
+===================================================================
+--- openssl-3.1.4.orig/include/openssl/core_names.h
++++ openssl-3.1.4/include/openssl/core_names.h
+@@ -99,6 +99,7 @@ extern "C" {
+ #define OSSL_CIPHER_PARAM_CTS_MODE             "cts_mode"     /* utf8_string */
+ /* For passing the AlgorithmIdentifier parameter in DER form */
+ #define OSSL_CIPHER_PARAM_ALGORITHM_ID_PARAMS  "alg_id_param" /* octet_string */
++#define OSSL_CIPHER_PARAM_SUSE_FIPS_INDICATOR  "suse-fips-indicator" /* int */
+ 
+ #define OSSL_CIPHER_PARAM_TLS1_MULTIBLOCK_MAX_SEND_FRAGMENT                    \
+     "tls1multi_maxsndfrag" /* uint */
+Index: openssl-3.1.4/include/openssl/evp.h
+===================================================================
+--- openssl-3.1.4.orig/include/openssl/evp.h
++++ openssl-3.1.4/include/openssl/evp.h
+@@ -750,6 +750,10 @@ void EVP_CIPHER_CTX_set_flags(EVP_CIPHER
+ void EVP_CIPHER_CTX_clear_flags(EVP_CIPHER_CTX *ctx, int flags);
+ int EVP_CIPHER_CTX_test_flags(const EVP_CIPHER_CTX *ctx, int flags);
+ 
++# define EVP_CIPHER_SUSE_FIPS_INDICATOR_UNDETERMINED 0
++# define EVP_CIPHER_SUSE_FIPS_INDICATOR_APPROVED     1
++# define EVP_CIPHER_SUSE_FIPS_INDICATOR_NOT_APPROVED 2
++
+ __owur int EVP_EncryptInit(EVP_CIPHER_CTX *ctx, const EVP_CIPHER *cipher,
+                            const unsigned char *key, const unsigned char *iv);
+ /*__owur*/ int EVP_EncryptInit_ex(EVP_CIPHER_CTX *ctx,
+Index: openssl-3.1.4/providers/implementations/ciphers/ciphercommon.c
+===================================================================
+--- openssl-3.1.4.orig/providers/implementations/ciphers/ciphercommon.c
++++ openssl-3.1.4/providers/implementations/ciphers/ciphercommon.c
+@@ -149,6 +149,10 @@ static const OSSL_PARAM cipher_aead_know
+     OSSL_PARAM_octet_string(OSSL_CIPHER_PARAM_AEAD_TAG, NULL, 0),
+     OSSL_PARAM_size_t(OSSL_CIPHER_PARAM_AEAD_TLS1_AAD_PAD, NULL),
+     OSSL_PARAM_octet_string(OSSL_CIPHER_PARAM_AEAD_TLS1_GET_IV_GEN, NULL, 0),
++    /* normally we would hide this under an #ifdef FIPS_MODULE, but that does
++     * not work in ciphercommon.c because it is compiled only once into
++     * libcommon.a */
++    OSSL_PARAM_int(OSSL_CIPHER_PARAM_SUSE_FIPS_INDICATOR, NULL),
+     OSSL_PARAM_END
+ };
+ const OSSL_PARAM *ossl_cipher_aead_gettable_ctx_params(
+Index: openssl-3.1.4/providers/implementations/ciphers/ciphercommon_gcm.c
+===================================================================
+--- openssl-3.1.4.orig/providers/implementations/ciphers/ciphercommon_gcm.c
++++ openssl-3.1.4/providers/implementations/ciphers/ciphercommon_gcm.c
+@@ -224,6 +224,31 @@ int ossl_gcm_get_ctx_params(void *vctx,
+             || !getivgen(ctx, p->data, p->data_size))
+             return 0;
+     }
++
++    /* We would usually hide this under #ifdef FIPS_MODULE, but
++     * ciphercommon_gcm.c is only compiled once into libcommon.a, so ifdefs do
++     * not work here. */
++    p = OSSL_PARAM_locate(params, OSSL_CIPHER_PARAM_SUSE_FIPS_INDICATOR);
++    if (p != NULL) {
++        int fips_indicator = EVP_CIPHER_SUSE_FIPS_INDICATOR_APPROVED;
++
++        /* Implementation Guidance for FIPS 140-3 and the Cryptographic Module
++         * Verification Program, Section C.H requires guarantees about the
++         * uniqueness of key/iv pairs, and proposes a few approaches to ensure
++         * this. This provides an indicator for option 2 "The IV may be
++         * generated internally at its entirety randomly." Note that one of the
++         * conditions of this option is that "The IV length shall be at least
++         * 96 bits (per SP 800-38D)." We do not specically check for this
++         * condition here, because gcm_iv_generate will fail in this case. */
++        if (ctx->enc && !ctx->iv_gen_rand)
++            fips_indicator = EVP_CIPHER_SUSE_FIPS_INDICATOR_NOT_APPROVED;
++
++        if (!OSSL_PARAM_set_int(p, fips_indicator)) {
++            ERR_raise(ERR_LIB_PROV, PROV_R_FAILED_TO_SET_PARAMETER);
++            return 0;
++        }
++    }
++
+     return 1;
+ }
+ 

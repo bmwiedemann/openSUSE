@@ -1,7 +1,7 @@
 #
 # spec file for package sysvinit
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 
 Name:           sysvinit
 %define KPVER  2.23
-%define SIVER  3.08
+%define SIVER  3.10
 %define START  0.65
 Version:        %{SIVER}
 Release:        0
@@ -34,6 +34,7 @@ Summary:        SysV-Style init
 License:        GPL-2.0-or-later
 Group:          System/Base
 BuildRequires:  blog-devel
+BuildRequires:  po4a
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 #!BuildIgnore:  sysvinit-tools
 URL:            https://savannah.nongnu.org/projects/sysvinit/
@@ -46,6 +47,7 @@ Source5:        %{name}.keyring
 Patch0:         %{name}-2.90.dif
 Patch2:         %{name}-2.88dsf-suse.patch
 Patch9:         %{name}-2.90-no-kill.patch
+Patch20:        killproc-2.23.dif
 Patch50:        startpar-0.58.dif
 
 %description
@@ -92,6 +94,7 @@ pushd doc
   mkdir killproc
 popd
 pushd ../killproc-%{KPVER}
+%patch -P 20
 ln -t../%{name}-%{SIVER}/doc/killproc README.md
 popd
 pushd ../startpar-%{START}

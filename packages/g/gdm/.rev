@@ -2101,4 +2101,12 @@
     <comment></comment>
     <requestid>1192840</requestid>
   </revision>
+  <revision rev="271" vrev="5">
+    <srcmd5>d842b2b755c31b8b8cabec9c8ab3cd2d</srcmd5>
+    <version>46.2</version>
+    <time>1723637652</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix applying patches when sle_version is defined (forwarded request 1193497 from mgorse)</comment>
+    <requestid>1193508</requestid>
+  </revision>
 </revisionlist>

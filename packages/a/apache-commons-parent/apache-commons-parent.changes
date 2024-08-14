@@ -1,4 +1,116 @@
 -------------------------------------------------------------------
+Thu Jul 11 12:54:13 UTC 2024 - Gus Kenion <gus.kenion@suse.com>
+
+- Upgrade to version 71
+  * Maintenance and update dependencies
+    + Full list of updated dependencies for all versions can be
+      found in RELEASE-NOTES.txt in source archive
+- Update upstream source to GitHub
+- Includes changes from version 70
+  * New features:
+    + Add profile benchmark for JMH benchmarks.
+    + Add JMH to dependency management section.
+  * Fixed Bugs:
+    + Set Javadoc link to latest Java API LTS version.
+    + Set Jacoco defaults to 1.00.
+  * Update dependencies
+- Includes changes from version 69
+  * Maintenance and update dependencies
+- Includes changes from version 68
+  * Maintenance and update dependencies
+- Includes changes from version 67
+  * Maintenance and update dependencies
+- Includes changes from version 66
+  * New features:
+    + Add property commons.javadoc21.java.link.
+    + Add artifact:check-buildplan to the validate phase.
+  * Fixed Bugs:
+    + Drop markmail from mailingList section
+  * Update dependencies
+- Includes changes from version 65
+  * New features:
+    + Add exec-maven-plugin to plugin management section.
+  * Fixed Bugs:
+    + s/commons.surefire-report.version/commons.surefire.version/
+      incorrectly added in 714c3a9
+  * Update dependencies
+- Includes changes from version 64
+  * New features:
+    + Restore building on Java 8 (com.puppycrawl.tools:checkstyle
+      10.x requires Java 11).
+    + Rename profile 'moditect' to 'java-9-up'.
+    + Merge profile 'jdk9-compiler' into 'java-9-up' and remove
+      'jdk9-compiler'.
+  * Changes:
+    + Use Checkstyle 9.x on Java less than 11 and Checkstyle 10.x
+      on Java 11 and up.
+  * Removed:
+    + Remove 'javasvn' profile.
+    + Remove '.svn'-activated profile.
+    + Remove 'jdk9-compiler.' profile.
+- Includes changes from version 63
+  * New features:
+    + Add commons.conf.dir property defaulting to src/conf.
+  * Update dependencies
+  * Removed:
+    + Remove obsolete Travis CI profiles.
+- Includes changes from version 62
+  * Fixed Bugs:
+    + Use addServiceUses when generating JPMS module info.
+- Includes changes from version 61
+  * Fixed Bugs:
+    + Always use version.maven-source-plugin 3.2.1 (workaround
+      MSOURCES-143).
+- Includes changes from version 60
+  * New features:
+    + Add SPDX SBOM in the package phase.
+  * Fixed Bugs:
+    + Reuse the parent POM's maven-enforcer-plugin configuration
+    + Workaround MSOURCES-143 by using version.maven-source-plugin
+      3.2.1 on Java 8.
+    + Remove property commons.source-plugin.version and reuse the
+      parent POM's version.maven-source-plugin.
+  * Update dependencies
+- Includes changes from version 59
+  * New features:
+    + Add moditect profile for JPMS on Java >= 9.
+    + Add POM property commons.javadoc.javaee8.link.
+    + Add POM property commons.javadoc.javaee9.link.
+    + Add POM property commons.javadoc.javaee9.1.link.
+    + Add POM property commons.javadoc.javaee10.link.
+    + Don't use the animal sniffer plugin on Java >=9, use the
+      release flag instead.
+  * Update dependencies
+- Includes changes from version 58
+  * New features:
+    + Add commons.javadoc20.java.link.
+  * Update dependencies
+- Includes changes from version 57
+  * Fixed Bugs:
+    + Fix cyclonedx-maven-plugin configuration for multi-module
+      projects.
+    + Drop non-reproducible Implementation-Build in jar #242.
+    + Use Java compiler release flag when compiling with Java >= 9.
+  * Update dependencies
+- Includes changes from version 56
+  * Fixed Bugs:
+    + Add Privacy link to site.xml
+  * Update dependencies
+- Includes changes from version 55
+  * Changes:
+    + Make CycloneDX work better with multi-module projects.
+    + New interface methods must be default methods to maintain BC.
+    + Add property commons.javadoc19.java.link.
+  * Update dependencies
+- Includes changes from version 54
+  * New features:
+    + Add .vscode/* to RAT excludes.
+    + Add property commons.javadoc18.java.link.
+    + Add JUnit BOM to dependency management.
+    + Add CycloneDX SBOM generation #122.
+    + Add SPDX SBOM generation.
+  * Update dependencies
+-------------------------------------------------------------------
 Wed Aug 10 10:30:31 UTC 2022 - David Anes <david.anes@suse.com>
 
 - Upgrade to version 53

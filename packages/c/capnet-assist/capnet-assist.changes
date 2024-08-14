@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Aug  9 01:31:44 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 8.0.0:
+  * Update to elementary runtime 8
+  * Performance improvements
+  * Updated translations
+- update to 2.4.4:
+  * Metainfo improvements
+  * Update translation files
+- update to 2.4.3:
+  * Update to elementary runtime 7.1
+  * Updated translations
+- change url to github, as we don't want to link to their own OS
+
+-------------------------------------------------------------------
 Sat Jun 25 19:02:55 UTC 2022 - Antoine Belvire <antoine.belvire@opensuse.org>
 
 - Update to 2.4.2:

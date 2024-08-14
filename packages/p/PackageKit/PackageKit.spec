@@ -57,6 +57,8 @@ Patch7:         PackageKit-zypp-disable-upgrade-system-in-sle.patch
 Patch15:        PackageKit-fix-pkcon-permission.patch
 # PATCH-FIX-UPSTREAM PackageKit-dynamic-export.patch boo#1213309 dimstar@opensuse.org -- Fix loading modules when built with glib 2.70
 Patch16:        PackageKit-dynamic-export.patch
+# PATCH-FIX-UPSTREAM PackageKit-mark-as-compulsory.patch bsc#1226269 alynx.zhou@suse.com -- Prevent PackageKit from user uninstallable
+Patch17:        PackageKit-mark-as-compulsory.patch
 
 # PATCH-FIX-SLE PackageKit-find-python-3-6.patch alynx.zhou@suse.com -- Build PackageKit with Python 3.6
 Patch1001:      PackageKit-find-python-3-6.patch
@@ -284,6 +286,7 @@ This package provides the upstream default configuration for PackageKit.
 %patch -P 7 -p1
 %patch -P 15 -p1
 %patch -P 16 -p1
+%patch -P 17 -p1
 %if 0%{?sle_version} && 0%{?sle_version} < 160000
 %patch -P 1001 -p1
 %endif

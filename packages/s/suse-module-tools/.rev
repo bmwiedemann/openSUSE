@@ -817,4 +817,13 @@ source service setup which messed up my spec file.
     builds to fail (forwarded request 1188377 from mwilck)</comment>
     <requestid>1188378</requestid>
   </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>edd1d9013d3e22e66def94508e704bb4</srcmd5>
+    <version>16.0.49</version>
+    <time>1723637637</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 16.0.49:
+  * Require sdbootutil if already installed (forwarded request 1193718 from mwilck)</comment>
+    <requestid>1193719</requestid>
+  </revision>
 </revisionlist>

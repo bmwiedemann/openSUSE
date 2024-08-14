@@ -1,0 +1,116 @@
+Index: openssl-3.1.4/providers/implementations/rands/drbg.c
+===================================================================
+--- openssl-3.1.4.orig/providers/implementations/rands/drbg.c
++++ openssl-3.1.4/providers/implementations/rands/drbg.c
+@@ -570,6 +570,9 @@ int ossl_prov_drbg_reseed(PROV_DRBG *drb
+ #endif
+     }
+ 
++#ifdef FIPS_MODULE
++    prediction_resistance = 1;
++#endif
+     /* Reseed using our sources in addition */
+     entropylen = get_entropy(drbg, &entropy, drbg->strength,
+                              drbg->min_entropylen, drbg->max_entropylen,
+@@ -662,8 +665,14 @@ int ossl_prov_drbg_generate(PROV_DRBG *d
+             reseed_required = 1;
+     }
+     if (drbg->parent != NULL
+-            && get_parent_reseed_count(drbg) != drbg->parent_reseed_counter)
++            && get_parent_reseed_count(drbg) != drbg->parent_reseed_counter) {
++#ifdef FIPS_MODULE
++        /* SUSE patches provide chain reseeding when necessary so just sync counters*/
++        drbg->parent_reseed_counter = get_parent_reseed_count(drbg);
++#else
+         reseed_required = 1;
++#endif
++        }
+ 
+     if (reseed_required || prediction_resistance) {
+         if (!ossl_prov_drbg_reseed(drbg, prediction_resistance, NULL, 0,
+Index: openssl-3.1.4/crypto/rand/prov_seed.c
+===================================================================
+--- openssl-3.1.4.orig/crypto/rand/prov_seed.c
++++ openssl-3.1.4/crypto/rand/prov_seed.c
+@@ -23,7 +23,14 @@ size_t ossl_rand_get_entropy(ossl_unused
+     size_t entropy_available;
+     RAND_POOL *pool;
+ 
+-    pool = ossl_rand_pool_new(entropy, 1, min_len, max_len);
++    /*
++     * OpenSSL still implements an internal entropy pool of
++     * some size that is hashed to get seed data.
++     * Note that this is a conditioning step for which SP800-90C requires
++     * 64 additional bits from the entropy source to claim the requested
++     * amount of entropy.
++     */
++    pool = ossl_rand_pool_new(entropy + 64, 1, min_len, max_len);
+     if (pool == NULL) {
+         ERR_raise(ERR_LIB_RAND, ERR_R_MALLOC_FAILURE);
+         return 0;
+Index: openssl-3.1.4/providers/implementations/rands/crngt.c
+===================================================================
+--- openssl-3.1.4.orig/providers/implementations/rands/crngt.c
++++ openssl-3.1.4/providers/implementations/rands/crngt.c
+@@ -133,7 +133,11 @@ size_t ossl_crngt_get_entropy(PROV_DRBG
+      * to the nearest byte.  If the entropy is of less than full quality,
+      * the amount required should be scaled up appropriately here.
+      */
+-    bytes_needed = (entropy + 7) / 8;
++    /*
++     * FIPS 140-3: the yet draft SP800-90C requires requested entropy
++     * + 128 bits during initial seeding
++     */
++    bytes_needed = (entropy + 128 + 7) / 8;
+     if (bytes_needed < min_len)
+         bytes_needed = min_len;
+     if (bytes_needed > max_len)
+Index: openssl-3.1.4/providers/implementations/rands/drbg_local.h
+===================================================================
+--- openssl-3.1.4.orig/providers/implementations/rands/drbg_local.h
++++ openssl-3.1.4/providers/implementations/rands/drbg_local.h
+@@ -38,7 +38,7 @@
+  *
+  * The value is in bytes.
+  */
+-#define CRNGT_BUFSIZ    16
++#define CRNGT_BUFSIZ   32
+ 
+ /*
+  * Maximum input size for the DRBG (entropy, nonce, personalization string)
+Index: openssl-3.1.4/providers/implementations/rands/seed_src.c
+===================================================================
+--- openssl-3.1.4.orig/providers/implementations/rands/seed_src.c
++++ openssl-3.1.4/providers/implementations/rands/seed_src.c
+@@ -104,7 +104,14 @@ static int seed_src_generate(void *vseed
+         return 0;
+     }
+ 
+-    pool = ossl_rand_pool_new(strength, 1, outlen, outlen);
++    /*
++     * OpenSSL still implements an internal entropy pool of
++     * some size that is hashed to get seed data.
++     * Note that this is a conditioning step for which SP800-90C requires
++     * 64 additional bits from the entropy source to claim the requested
++     * amount of entropy.
++     */
++    pool = ossl_rand_pool_new(strength + 64, 1, outlen, outlen);
+     if (pool == NULL) {
+         ERR_raise(ERR_LIB_PROV, ERR_R_MALLOC_FAILURE);
+         return 0;
+@@ -184,7 +191,14 @@ static size_t seed_get_seed(void *vseed,
+     size_t i;
+     RAND_POOL *pool;
+ 
+-    pool = ossl_rand_pool_new(entropy, 1, min_len, max_len);
++    /*
++     * OpenSSL still implements an internal entropy pool of
++     * some size that is hashed to get seed data.
++     * Note that this is a conditioning step for which SP800-90C requires
++     * 64 additional bits from the entropy source to claim the requested
++     * amount of entropy.
++     */
++    pool = ossl_rand_pool_new(entropy + 64, 1, min_len, max_len);
+     if (pool == NULL) {
+         ERR_raise(ERR_LIB_PROV, ERR_R_RAND_LIB);
+         return 0;

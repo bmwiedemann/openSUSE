@@ -135,4 +135,12 @@ http://lists.opensuse.org/opensuse-factory/2014-04/msg00309.html</comment>
     <comment>1.7.0</comment>
     <requestid>1171382</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>7aefd2ed3d329063a2b029fa33596fbd</srcmd5>
+    <version>1.8.0</version>
+    <time>1723637685</time>
+    <user>dimstar_suse</user>
+    <comment>1.8.0</comment>
+    <requestid>1193659</requestid>
+  </revision>
 </revisionlist>

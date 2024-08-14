@@ -43,6 +43,7 @@ Source2:        tpm2-abrmd.keyring
 Source3:        tpm2.0-abrmd.rpmlintrc
 Source4:        README.SUSE
 Patch0:         harden_tpm2-abrmd.service.patch
+Patch1:         1229047-fix-bin-sbin-selinux.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  checkpolicy

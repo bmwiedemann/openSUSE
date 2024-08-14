@@ -686,6 +686,12 @@ cat << EOF > %{buildroot}/%{_emacs_sitestartdir}/archsitedir.el
 (add-to-list 'load-path "%{_emacs_archsitelispdir}")
 EOF
 
+cat <<EOF > %{buildroot}/%{_emacs_sitestartdir}/function-c-source-directory.el
+;; Set function c source directory to the path of debugsource
+;; so it can be found without user invention
+(setq find-function-C-source-directory "%{_usrsrc}/debug/%{name}-%{version}/src")
+EOF
+
 popd
 (cd %{buildroot}
  find usr/share/emacs/site-lisp/ -type f	\

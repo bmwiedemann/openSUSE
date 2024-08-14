@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Aug 13 18:04:24 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.66.5:
+  * chore: Adding `performance` Lint Preset (#3336)
+  * chore: Adding `bugs` Lint Preset (#3334)
+
+-------------------------------------------------------------------
 Mon Aug 12 14:40:54 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.66.4:

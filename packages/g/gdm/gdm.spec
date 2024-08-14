@@ -248,7 +248,7 @@ running display manager.
 %else
 %patch -P 1 -p1
 %patch -P 2 -p1
-%patch -P 3 -p1
+%patch -P 4 -p1
 %patch -P 5 -p1
 %patch -P 6 -p1
 %patch -P 7 -p1

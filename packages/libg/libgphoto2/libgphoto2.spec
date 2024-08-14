@@ -1,7 +1,7 @@
 #
 # spec file for package libgphoto2
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -61,6 +61,7 @@ Source0:        https://downloads.sourceforge.net/project/gphoto/libgphoto/%vers
 Source1:        https://downloads.sourceforge.net/project/gphoto/libgphoto/%version/%name-%version.tar.xz.asc
 Source2:        %name.keyring
 Source3:        baselibs.conf
+Patch0:         libgphoto2-c99.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %package -n libgphoto2-%major
@@ -69,7 +70,7 @@ Group:          System/Libraries
 Requires(pre):  /sbin/ldconfig
 Requires(post): /sbin/ldconfig
 Requires(post): udev
-Requires(postun):udev
+Requires(postun): udev
 
 %package -n libgphoto2_port12
 Summary:        Port drivers for the libgphoto2 digital camera library
@@ -157,7 +158,7 @@ This is its API documentation in HTML format.
 %lang_package -n libgphoto2-%major
 
 %prep
-%setup -q
+%autosetup -p1
 (cd doc && tar -xaf libgphoto2-api.html.tar.gz)
 
 %build

@@ -1,4 +1,163 @@
 -------------------------------------------------------------------
+Fri Aug  9 09:54:03 UTC 2024 - Gus Kenion <gus.kenion@suse.com>
+
+- Update to 3.16.0:
+  * New features:
+    + Add StopWatch.getSplitDuration() and deprecate
+      getSplitTime().
+    + Add StopWatch.getStartInstant() and deprecate getStartTime().
+    + Add StopWatch.getStopInstant() and deprecate getStopTime().
+    + Add StopWatch.getDuration() and deprecate getTime().
+    + Add Javadoc links from StopWatch to DurationUtils #1249.
+    + Add LangCollectors.collect(Collector, T...).
+    + Add RandomStringUtils.secure().
+    + Add RandomStringUtils.insecure().
+  * Fixed bugs:
+    + Reimplement StopWatch internals to use java.time.
+    + RandomStringUtils.random() with a negative character index
+      should throw IllegalArgumentException. Fixes LANG-1745.
+    + LocaleUtils.toLocale(String) cannot parse four segments.
+      Fixes LANG-1741.
+    + Use fewer intermediary strings in
+      DefaultExceptionContext.getFormattedExceptionMessage(String).
+    + Fix Javadoc in StringUtils.splitPreserveAllTokens() #1251.
+    + Deprecate ArraySort constructor for removal.
+    + Deprecate CharEncoding constructor for removal.
+    + Deprecate Conversion constructor for removal.
+    + Deprecate Conversion constructor for removal.
+    + Deprecate EntityArrays constructor for removal.
+    + Deprecate ObjectToStringComparator constructor for removal.
+    + Deprecate RuntimeEnvironment constructor for removal.
+- Includes changes from 3.15.0:
+  * New features:
+    + Customize text pattern in DiffResult#toString(). Fixes
+      LANG-1724.
+    + Add DiffBuilder.Builder.
+    + Add DiffBuilder.builder().
+    + Add ReflectionDiffBuilder.Builder.
+    + Add ReflectionDiffBuilder.builder().
+    + Add test in TypeUtilsTest #1151.
+    + Add Streams.failableStream(T), non-varargs variant.
+    + Add Streams.nonNull(T), non-varargs variant.
+    + Add ArrayUtils.nullTo(T[], T[]).
+    + Add T ArrayUtils.arraycopy(T, int, T, int, int) fluent style.
+    + Add T ArrayUtils.arraycopy(T, int, int, int, Function) fluent
+      style.
+    + Add SystemUtils.IS_JAVA_22.
+    + Add JavaVersion.JAVA_22.
+    + Add SystemProperties.getUserName(Supplier<String>).
+    + Add SystemProperties.getLineSeparator(Supplier<String>).
+    + Add
+    + SystemProperties.getJavaSpecificationVersion(Supplier<String>).
+    + Add SystemProperties constants and methods for system
+      properties as of Java 22.
+    + Add MethodUtils.getMethodObject(Class, String, Class...).
+    + Add null-safe Consumers.accept() and Functions.apply() #1215.
+      Fixes LANG-1733.
+    + Add SystemUtils.IS_OS_ANDROID.
+    + Add SystemUtils.IS_OS_MAC_OSX_SONOMA.
+    + Add RuntimeEnvironment.inContainer() #1241.
+    + Add AppendableJoiner and refactor string joining #1244.
+  * Fixed bugs:
+    + Improve Javadoc in ExceptionUtils #1136.
+    + Fixed two non-deterministic tests in EnumUtilsTest.java
+      #1131.
+    + Fix wrong number check that cause
+      StringIndexOutOfBoundsException #1140. Fixes LANG-1721.
+    + Rethrow NegativeArraySizeException as SerializationException
+      in SerializationUtils.deserialize(InputStream) #1141. Fixes
+      LANG-1722.
+    + Throw NumberFormatException instead of
+      IndexOutOfBoundsException in NumberUtils.getMantissa(String,
+      int) #1145. Fixes LANG-1723.
+    + Minor grammar fixes #1143.
+    + ArrayUtils will return null when adding two null arrays, but
+      undocumented. Fixes LANG-1713.
+    + Let parent POM figure out commons.spdx.version.
+    + Undeprecate ExceptionUtils.rethrow(Throwable). Fixes
+      LANG-1726.
+    + Test the Conversion class #1155. Fixes LANG-1702.
+    + Address minor redundancies after code inspection #1148.
+    + Allow EventListenerSupport to handle (and ignore) exception
+      from listeners allowing invocation of all listeners #1167.
+    + Deprecate AnnotationUtils 0-argument constructor.
+    + Deprecate ArchUtils 0-argument constructor.
+    + Deprecate ArrayUtils 0-argument constructor.
+    + Deprecate BooleanUtils 0-argument constructor.
+    + Deprecate CharSequenceUtils 0-argument constructor.
+    + Deprecate CharSetUtils 0-argument constructor.
+    + Deprecate CharUtils 0-argument constructor.
+    + Deprecate ClassLoaderUtils 0-argument constructor.
+    + Deprecate ClassPathUtils 0-argument constructor.
+    + Deprecate ClassUtils 0-argument constructor.
+    + Deprecate ConstructorUtils 0-argument constructor.
+    + Deprecate DateFormatUtils 0-argument constructor.
+    + Deprecate DateUtils 0-argument constructor.
+    + Deprecate Diff.getType().
+    + Deprecate DiffBuilder.DiffBuilder(T, T, ToStringStyle).
+    + Deprecate DiffBuilder.DiffBuilder(T, T, ToStringStyle,
+      boolean).
+    + Deprecate DurationFormatUtils 0-argument constructor.
+    + Deprecate DurationUtils 0-argument constructor.
+    + Deprecate EnumUtils 0-argument constructor.
+    + Deprecate EventUtils 0-argument constructor.
+    + Deprecate FieldUtils 0-argument constructor.
+    + Deprecate IEEE754rUtils 0-argument constructor.
+    + Deprecate InheritanceUtils 0-argument constructor.
+    + Deprecate IntStreams 0-argument constructor.
+    + Deprecate LocaleUtils 0-argument constructor.
+    + Deprecate LockingVisitors 0-argument constructor.
+    + Deprecate MemberUtils 0-argument constructor.
+    + Deprecate MethodUtils 0-argument constructor.
+    + Deprecate NumberUtils 0-argument constructor.
+    + Deprecate ObjectUtils 0-argument constructor.
+    + Deprecate RandomStringUtils 0-argument constructor.
+    + Deprecate RandomUtils 0-argument constructor.
+    + Deprecate ReflectionDiffBuilder.ReflectionDiffBuilder(T, T,
+      ToStringStyle).
+    + Deprecate RegExUtils 0-argument constructor.
+    + Deprecate SerializationUtils 0-argument constructor.
+    + Deprecate Streams 0-argument constructor.
+    + Deprecate StringEscapeUtils 0-argument constructor.
+    + Deprecate StringUtils 0-argument constructor.
+    + Deprecate Suppliers 0-argument constructor.
+    + Deprecate SystemProperties 0-argument constructor.
+    + Deprecate ThreadUtils 0-argument constructor.
+    + Deprecate TypeUtils 0-argument constructor.
+    + Make ArrayFill null-safe.
+    + Make ArraySorter null-safe.
+    + Make ArrayUtils.removeAll() null-safe.
+    + Fix Java version in README.md #1170.
+    + StringUtils.stripAccents() should handle ligatures, UTF32
+      math blocks, etc. #1201.
+    + TypeUtils.toString(Type) StackOverflowError for an inner
+      class in the inner class parameterized enclosing class #657.
+      Fixes LANG-1524.
+    + Deprecate SystemUtils.getUserName(String) in favor of
+      SystemProperties.getUserName(Supplier).
+    + Make LockVisitor.acceptReadLocked(FailableConsumer)
+      null-safe.
+    + Make LockVisitor.applyWriteLocked(FailableConsumer)
+      null-safe.
+    + Make ObjectUtils.getFirstNonNull(Supplier...) null-safe.
+    + Make SystemProperties.getLineSeparator(Supplier).
+    + StringUtils.stripAccents(String) doesn't handle "\u0111" and
+      "\u0110" (Vietnamese) #1216.
+    + StringUtils.stripAccents(String) doesn't handle I with bar.
+    + StringUtils.stripAccents(String) doesn't handle U with bar.
+    + StringUtils.stripAccents(String) doesn't handle T with
+      stroke.
+    + Fix Javadoc for FluentBitSet.setInclusive(int, int) #1222.
+      Fixes LANG-1735.
+    + Same Javadoc changes as [TEXT-234] #1223.
+    + Remove duplicate static data in
+      SerializationUtils.ClassLoaderAwareObjectInputStream.
+    + Reimplement RandomUtils and RandomStringUtils on top of
+      SecureRandom#getInstanceStrong() #1235.
+    + DiffBuilder: Type constraint for method append(...,
+      DiffResult) too strict #786. Fixes LANG-1657.
+
+-------------------------------------------------------------------
 Tue May 14 12:36:22 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Update to 3.14.0:

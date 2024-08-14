@@ -129,4 +129,12 @@
     <comment>modernize spec file, so that it builds with current rpm</comment>
     <requestid>1117491</requestid>
   </revision>
+  <revision rev="20" vrev="63">
+    <srcmd5>52d73e952538d3cca8a04b5bf6d377d8</srcmd5>
+    <version>0.1</version>
+    <time>1723637716</time>
+    <user>dimstar_suse</user>
+    <comment>add &quot;-I/usr/include/ncurses&quot; to work around ncurses breakage</comment>
+    <requestid>1193726</requestid>
+  </revision>
 </revisionlist>

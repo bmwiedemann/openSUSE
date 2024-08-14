@@ -2364,4 +2364,13 @@ Upstream applied and then reverted gnome-shell-animations-speedup.patch for the 
     <comment></comment>
     <requestid>1192805</requestid>
   </revision>
+  <revision rev="260" vrev="3">
+    <srcmd5>d6261c530df6f7ae231af1866f142f1b</srcmd5>
+    <version>46.4</version>
+    <time>1723637653</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop gs-fate318433-prevent-same-account-multi-logins.patch.
+  Upstream now does this. (forwarded request 1193496 from mgorse)</comment>
+    <requestid>1193509</requestid>
+  </revision>
 </revisionlist>

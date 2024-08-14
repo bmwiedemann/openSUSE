@@ -55,4 +55,12 @@
     <comment>Reproducible builds improvement</comment>
     <requestid>1109940</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>036ee85a650e8491e1b0f4ca3cdba526</srcmd5>
+    <version>1.11.0</version>
+    <time>1723637687</time>
+    <user>dimstar_suse</user>
+    <comment>1.11.0</comment>
+    <requestid>1193661</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Aug 12 17:34:38 UTC 2024 - Michael Gorse <mgorse@suse.com>
+
+- Fix applying patches when sle_version is defined
+
+-------------------------------------------------------------------
 Fri Aug  9 09:10:52 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop gdm-default-wm.patch: patch seems obsolete. The selection of

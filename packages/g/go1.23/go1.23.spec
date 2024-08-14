@@ -122,7 +122,7 @@
 %endif
 
 Name:           go1.23
-Version:        1.23rc1
+Version:        1.23.0
 Release:        0
 Summary:        A compiled, garbage-collected, concurrent programming language
 License:        BSD-3-Clause
@@ -410,7 +410,7 @@ ln -sf %{_sysconfdir}/alternatives/go.gdb %{buildroot}%{_sysconfdir}/gdbinit.d/g
 # documentation and examples
 # fix documetation permissions (rpmlint warning)
 find doc/ misc/ -type f -exec chmod 0644 '{}' +
-# remove markdown doc source templates new in go1.23rc1
+# remove markdown doc source templates new in go1.23
 # templates do not appear to be rendered markdown content
 rm -rf doc/{initial,next}
 # remove unwanted arch-dependant binaries (rpmlint warning)

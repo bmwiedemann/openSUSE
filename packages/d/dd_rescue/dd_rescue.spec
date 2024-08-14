@@ -1,7 +1,7 @@
 #
 # spec file for package dd_rescue
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,8 +31,9 @@ Source0:        http://garloff.de/kurt/linux/ddrescue/%{name}-%{version}.tar.bz2
 Source1:        http://garloff.de/kurt/linux/ddrescue/%{name}-%{version}.tar.bz2.asc
 Source2:        %{name}.keyring
 Source99:       %{name}.changes
-Patch1:		dd_rescue-ossl3-evpcipherctx.diff
-Patch2:		dd_rescue-md5-unaligned-armv7.diff
+Patch1:         dd_rescue-ossl3-evpcipherctx.diff
+Patch2:         dd_rescue-md5-unaligned-armv7.diff
+Patch3:         dd_rescue-u-emptyout-segfault.diff
 # PATCH-FIX-UPSTREAM no-python2.patch sf#ddrescue#4 mcepl@suse.com
 # Remove dependency on python2
 BuildRequires:  autoconf

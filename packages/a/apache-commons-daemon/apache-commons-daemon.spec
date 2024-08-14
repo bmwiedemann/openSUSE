@@ -20,7 +20,7 @@
 %define short_name commons-daemon
 %define _lto_cflags %{nil}
 Name:           apache-%{short_name}
-Version:        1.3.4
+Version:        1.4.0
 Release:        0
 Summary:        Commons Daemon - Controlling of Java Daemons
 License:        Apache-2.0

@@ -18,8 +18,8 @@
 
 
 %define srcversion 6.10
-%define patchversion 6.10.3
-%define git_commit ba01e0e99300e32d9451fb54748dbe3f82fe94f9
+%define patchversion 6.10.4
+%define git_commit 0363a35c72d0822713d4a9b778a5c9b63b7e8ad2
 %define variant %{nil}
 %define compress_modules zstd
 %define compress_vmlinux xz
@@ -30,15 +30,16 @@
 %define split_optional 0
 %define supported_modules_check 0
 %define build_flavor zfcpdump
+%define generate_compile_commands 1
 
 %include %_sourcedir/kernel-spec-macros
 
 %(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,mkspec,compute-PATCHVERSION.sh,arch-symbols,log.sh,try-disable-staging-driver,compress-vmlinux.sh,mkspec-dtb,check-module-license,klp-symbols,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
 
 Name:           kernel-zfcpdump
-Version:        6.10.3
+Version:        6.10.4
 %if 0%{?is_kotd}
-Release:        <RELEASE>.gba01e0e
+Release:        <RELEASE>.g0363a35
 %else
 Release:        0
 %endif
@@ -133,7 +134,7 @@ ExclusiveArch:  do_not_build
 %global cpu_arch %(%_sourcedir/arch-symbols %_target_cpu)
 %define cpu_arch_flavor %cpu_arch/%build_flavor
 
-%if 0%{?_project:1} && ( %(echo %_project | grep -Ex -f %_sourcedir/release-projects | grep -v ^PTF | grep -vc openSUSE) || %(echo %_project | grep -Ec "^(Devel:)?Kernel:") )
+%if 0%{?_project:1} && ( %(echo %_project | grep -Ex -f %_sourcedir/release-projects | grep -vc ^PTF) || %(echo %_project | grep -Ec "^(Devel:)?Kernel:") )
 	%define klp_symbols 1
 %endif
 
@@ -808,6 +809,9 @@ relink ../../linux-%{kernelrelease}%{variant}-obj/"%cpu_arch_flavor" /usr/src/li
 %dir /usr/src/linux-obj/%cpu_arch
 %ghost /usr/src/linux-obj/%cpu_arch_flavor
 %exclude %obj_install_dir/%cpu_arch_flavor/Symbols.list
+%if %generate_compile_commands
+%exclude %obj_install_dir/%cpu_arch_flavor/compile_commands.json
+%endif
 %if "%kmp_target_cpu" != "%cpu_arch"
 %obj_install_dir/%kmp_target_cpu
 /usr/src/linux-obj/%kmp_target_cpu
@@ -1467,6 +1471,11 @@ done
 # Generate list of symbols that are used to create kernel livepatches
 %if 0%{?klp_symbols}
 	%_sourcedir/klp-symbols . Symbols.list
+
+    %if %generate_compile_commands
+        # Generate compile_commands.json
+        make compile_commands.json
+    %endif
 %endif
 
 %install
@@ -1659,6 +1668,11 @@ if [ %CONFIG_MODULES = y ]; then
     %if 0%{?klp_symbols}
         cp Symbols.list %rpm_install_dir/%cpu_arch/%build_flavor
         echo %obj_install_dir/%cpu_arch/%build_flavor/Symbols.list > %my_builddir/livepatch-files.no_dir
+
+        %if %generate_compile_commands
+		    cp compile_commands.json %rpm_install_dir/%cpu_arch/%build_flavor
+		    echo %obj_install_dir/%cpu_arch/%build_flavor/compile_commands.json >> %my_builddir/livepatch-files.no_dir
+        %endif
 
         %if "%CONFIG_LIVEPATCH_IPA_CLONES" == "y"
             find %kernel_build_dir -name "*.ipa-clones" ! -size 0 | sed -e 's|^%kernel_build_dir/||' | sort > ipa-clones.list

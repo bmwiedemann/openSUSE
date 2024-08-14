@@ -22,6 +22,121 @@ Mon Jul 15 05:52:07 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
   aes-gcm-avx512.pl: fix non-reproducibility issue
 
 -------------------------------------------------------------------
+Tue Jul  2 13:20:21 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
+
+- FIPS: Deny SHA-1 signature verification in FIPS provider [bsc#1221365]
+  * SHA-1 is not allowed anymore in FIPS 186-5 for signature
+    verification operations. After 12/31/2030, NIST will disallow
+    SHA-1 for all of its usages.
+  * Add openssl-3-FIPS-Deny-SHA-1-sigver-in-FIPS-provider.patch
+
+-------------------------------------------------------------------
+Mon Jul  1 09:41:11 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
+
+- FIPS: RSA keygen PCT requirements.
+  * Skip the rsa_keygen_pairwise_test() PCT in rsa_keygen() as the
+    self-test requirements are covered by do_rsa_pct() for both
+    RSA-OAEP and RSA signatures [bsc#1221760]
+  * Enforce error state if rsa_keygen PCT is run and fails [bsc#1221753]
+  * Add openssl-3-FIPS-PCT_rsa_keygen.patch
+
+-------------------------------------------------------------------
+Wed Jun 19 15:51:52 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
+
+- FIPS: Check that the fips provider is available before setting
+  it as the default provider in FIPS mode. [bsc#1220523]
+  * Rebase openssl-Force-FIPS.patch
+
+-------------------------------------------------------------------
+Thu Jun 10 20:50:41 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
+
+- FIPS: Port openssl to use jitterentropy [bsc#1220523]
+  * Set the module in error state if the jitter RNG fails either on
+    initialization or entropy gathering because health tests failed.
+  * Add jitterentropy as a seeding source output also in crypto/info.c
+  * Move the jitter entropy collector and the associated lock out
+    of the header file to avoid redefinitions.
+  * Add the fips_local.cnf symlink to the spec file. This simlink
+    points to the openssl_fips.config file that is provided by the
+    crypto-policies package.
+  * Rebase openssl-3-jitterentropy-3.4.0.patch
+  * Rebase openssl-FIPS-enforce-EMS-support.patch
+
+-------------------------------------------------------------------
+Fri Jun  7 14:51:08 UTC 2024 - Otto Hollmann <otto.hollmann@suse.com>
+
+- FIPS: Block non-Approved Elliptic Curves [bsc#1221786]
+  * Add patches
+    - openssl-Add-changes-to-ectest-and-eccurve.patch
+    - openssl-Remove-EC-curves.patch
+    - openssl-Disable-explicit-ec.patch
+    - openssl-skipped-tests-EC-curves.patch
+    - openssl-FIPS-services-minimize.patch
+- FIPS: Service Level Indicator [bsc#1221365]
+  * Add patches:
+    - openssl-FIPS-Expose-a-FIPS-indicator.patch
+    - openssl-FIPS-Remove-X9.31-padding-from-FIPS-prov.patch
+    - openssl-FIPS-Use-digest_sign-digest_verify-in-self-test.patch
+    - openssl-FIPS-RSA-disable-shake.patch
+    - openssl-FIPS-signature-Add-indicator-for-PSS-salt-length.patch
+    - openssl-FIPS-Add-explicit-indicator-for-key-length.patch
+    - openssl-FIPS-limit-rsa-encrypt.patch
+    - openssl-FIPS-enforce-EMS-support.patch
+    - openssl-3-FIPS-GCM-Implement-explicit-indicator-for-IV-gen.patch
+    - openssl-FIPS-services-minimize.patch
+    - openssl-Add-FIPS-indicator-parameter-to-HKDF.patch
+    - openssl-rand-Forbid-truncated-hashes-SHA-3-in-FIPS-prov.patch
+    - openssl-FIPS-enforce-security-checks-during-initialization.patch
+    - TODO: incomplete
+- FIPS: Output the FIPS-validation name and module version which uniquely
+  identify the FIPS validated module. [bsc#1221751]
+  * Add openssl-FIPS-release_num_in_version_string.patch
+- FIPS: Add required selftests: [bsc#1221760]
+  * Add patches
+    - openssl-FIPS-Use-digest_sign-digest_verify-in-self-test.patch
+    - openssl-FIPS-Use-FFDHE2048-in-self-test.patch
+    - openssl-FIPS-early-KATS.patch
+    - openssl-FIPS-Use-OAEP-in-KATs-support-fixed-OAEP-seed.patch
+    - openssl-FIPS-140-3-keychecks.patch
+- FIPS: DH: Disable FIPS 186-4 Domain Parameters [bsc#1221821]
+  Add openssl-DH-Disable-FIPS-186-4-type-parameters-in-FIPS-mode.patch
+- FIPS: Recommendation for Password-Based Key Derivation [bsc#1221827]
+  * Add additional check required by FIPS 140-3. Minimum value for
+    PBKDF2 password is 20 characters.
+  * Add patches:
+    - openssl-pbkdf2-Set-minimum-password-length-of-8-bytes.patch
+    - openssl-pbkdf2-Set-indicator-if-pkcs5-param-disabled-checks.patch
+- FIPS: Zeroization is required [bsc#1221752]
+  * Add openssl-FIPS-140-3-zeroization.patch
+- FIPS: Reseed DRBG [bsc#1220690, bsc#1220693, bsc#1220696]
+  * Enable prediction resistance for primary DRBG
+  * Add oversampling of the noise source to comply with requirements of
+    NIST SP 800-90C
+  * Change CRNG buf size to align with output size of the Jitter RNG
+  * Add openssl-FIPS-140-3-DRBG.patch
+- FIPS: NIST SP 800-56Brev2 [bsc#1221824]
+  * Add patches:
+    - openssl-FIPS-limit-rsa-encrypt.patch
+    - openssl-FIPS-RSA-encapsulate.patch
+    - openssl-FIPS-Add-SP800-56Br2-6.4.1.2.1-3.c-check.patch
+- FIPS: Approved Modulus Sizes for RSA Digital Signature for FIPS 186-4 [bsc#1221787]
+  * Add patches:
+    - openssl-FIPS-services-minimize.patch
+    - openssl-Revert-Improve-FIPS-RSA-keygen-performance.patch
+    - openssl-Allow-disabling-of-SHA1-signatures.patch
+    - openssl-Allow-SHA1-in-seclevel-2-if-rh-allow-sha1-signatures.patch
+- FIPS: Port openssl to use jitterentropy [bsc#1220523]
+  * Add openssl-3-jitterentropy-3.4.0.patch
+  * Add build dependency on jitterentropy-devel >= 3.4.0 and
+    libjitterentropy3 >= 3.4.0
+- FIPS: NIST SP 800-56Arev3 [bsc#1221822]
+  * Add openssl-FIPS-140-3-keychecks.patch
+- FIPS: Error state has to be enforced [bsc#1221753]
+  * Add patches:
+    - openssl-FIPS-140-3-keychecks.patch
+    - openssl-FIPS-Enforce-error-state.patch
+
+-------------------------------------------------------------------
 Thu Jun  6 15:12:10 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Apply "openssl-CVE-2024-4741.patch" to fix a use-after-free

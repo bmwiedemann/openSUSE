@@ -23,4 +23,12 @@
     <comment></comment>
     <requestid>974084</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>754adfb4ce0b679c5cd69cfe8e0c4667</srcmd5>
+    <version>1.0~alpha2</version>
+    <time>1723637690</time>
+    <user>dimstar_suse</user>
+    <comment>fix build with parent 71</comment>
+    <requestid>1193664</requestid>
+  </revision>
 </revisionlist>

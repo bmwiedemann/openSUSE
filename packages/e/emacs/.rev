@@ -2007,4 +2007,14 @@ Now one could consider building emacs with gsettings support (both debian and fe
 - Provide support of ELPA systemwide installations to OBS</comment>
     <requestid>1189610</requestid>
   </revision>
+  <revision rev="190" vrev="5">
+    <srcmd5>125b099a175007c24a043422a83c8441</srcmd5>
+    <version>29.4</version>
+    <time>1723637661</time>
+    <user>dimstar_suse</user>
+    <comment>- Set find-function-C-source-directory in site-start so sources
+  provided by the debugsource package can be found user intervention
+  inside Emacs (forwarded request 1191553 from Thaodan)</comment>
+    <requestid>1193628</requestid>
+  </revision>
 </revisionlist>

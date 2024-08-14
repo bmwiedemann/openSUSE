@@ -40,10 +40,6 @@ Patch2:         accountsservice-filter-suse-accounts.patch
 # PATCH-FIX-OPENSUSE harden_accounts-daemon.service.patch jsegitz@suse.com -- For details please see https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
 Patch3:         harden_accounts-daemon.service.patch
 
-## SLE and Leap only patches start at 1000
-# PATCH-FEATURE-SLE as-fate318433-prevent-same-account-multi-logins.patch fate#318433 cxiong@suse.com -- prevent multiple simultaneous login.
-Patch1000:      as-fate318433-prevent-same-account-multi-logins.patch
-
 BuildRequires:  gtk-doc
 BuildRequires:  meson
 BuildRequires:  pkgconfig
@@ -118,15 +114,7 @@ This package contains the Vala bindings for accountservice.
 %setup -q
 # inject patched mocklibc tarball into package cache
 cp %{SOURCE1} subprojects/packagecache/
-%patch -P 0 -p1
-%patch -P 1 -p1
-%patch -P 2 -p1
-%patch -P 3 -p1
-
-# SLE and Leap patches start at 1000
-%if 0%{?sle_version}
-%patch -P 1000 -p1
-%endif
+%autopatch -p1
 
 %build
 %meson \

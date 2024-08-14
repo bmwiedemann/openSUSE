@@ -1663,4 +1663,18 @@
     we are not hex dumping the whole data and immediately discard the result)</comment>
     <requestid>1108555</requestid>
   </revision>
+  <revision rev="138" vrev="2">
+    <srcmd5>6191d773790f888c7831a1f8d2092903</srcmd5>
+    <version>2.5.31</version>
+    <time>1723637643</time>
+    <user>dimstar_suse</user>
+    <comment>- Adding libgphoto2-c99.patch so that the package builds for 32bit
+  with GCC 14.
+- Using %autosetup -p1 because this is the prefered way to apply
+  patches.
+
+If the request is ok, please forward it to factory soon so that it
+is ready when the default compiler is switched. (forwarded request 1191710 from fkastl)</comment>
+    <requestid>1193735</requestid>
+  </revision>
 </revisionlist>

@@ -19,7 +19,7 @@
 %define base_name lang3
 %define short_name commons-%{base_name}
 Name:           apache-%{short_name}
-Version:        3.14.0
+Version:        3.16.0
 Release:        0
 Summary:        Apache Commons Lang Package
 License:        Apache-2.0

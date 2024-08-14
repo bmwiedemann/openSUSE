@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Aug 13 14:27:48 UTC 2024 - Martin Winter <me@letsfindaway.de>
+
+- compatibility with ffmpeg-7
+  * add 1017-ffmpeg7.patch
+  * patch is already merged and will be part of the next release
+
+-------------------------------------------------------------------
 Thu Jul  4 06:31:52 UTC 2024 - Martin Winter <me@letsfindaway.de>
 
 - compatibility with poppler >= 24.05

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug 12 15:52:05 CEST 2024 - kurt@garloff.de
+
+- dd_rescue-u-emptyout-segfault.diff: Prevent (cosmetic) segfault
+  in cleanup path with option -u and empty output file name.
+
+-------------------------------------------------------------------
 Sun Mar  3 22:47:17 CET 2024 - kurt@garloff.de
 
 - dd_rescue-md5-unaligned-armv7.diff: gcc-12 does make unaligned

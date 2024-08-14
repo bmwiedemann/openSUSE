@@ -36,6 +36,8 @@ Patch961:       0961-use-cpp20.patch
 Patch962:       0962-fix-cpp20-compatibility.patch
 # https://github.com/OpenBoard-org/OpenBoard/pull/1010
 Patch1010:      1010-fix-qapp-cast.patch
+# https://github.com/OpenBoard-org/OpenBoard/pull/1017
+Patch1017:      1017-ffmpeg7.patch
 # https://github.com/letsfindaway/OpenBoard/pull/117
 Patch9117:      9117-disable-software-update.patch
 BuildRequires:  desktop-file-utils

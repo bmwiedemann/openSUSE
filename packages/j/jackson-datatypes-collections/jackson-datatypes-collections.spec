@@ -17,7 +17,7 @@
 
 
 Name:           jackson-datatypes-collections
-Version:        2.17.1
+Version:        2.17.2
 Release:        0
 Summary:        Jackson datatypes: collections
 License:        Apache-2.0

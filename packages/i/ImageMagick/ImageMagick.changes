@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Aug  3 18:26:29 UTC 2024 - Arjen de Korte <suse+build@de-korte.org>
+
+- version update to 7.1.1.36
+  * uhdr.c: default initialize range field for hdr/sdr intent inputs to
+    enc by @aayushsoni111 in #7482
+  * Fixed typo in documentation of MagickAdaptiveBlurImage by @JonahEMorgan
+    in #7500
+  * Silence warning when freetype delegate is disabled. by @niclet in #7515
+
+-------------------------------------------------------------------
 Thu Jul 25 08:23:31 UTC 2024 - pgajdos@suse.com
 
 - version update to 7.1.1.35

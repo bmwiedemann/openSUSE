@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Aug 13 06:57:12 UTC 2024 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Update to version 1.0.17193.4
+  * No changelog was made available
+- Update opencl_clang to 66a54cbef6726c4e791986779a60d7a45b09c9c9
+- Update spirv_llvm_translator to 62f5b09b11b1da42274371b1f7535f6f2ab11485 
+
+-------------------------------------------------------------------
 Thu May 16 07:45:58 UTC 2024 - Patrik Jakobsson <patrik.jakobsson@suse.com>
 
 - Make package build with GCC14 

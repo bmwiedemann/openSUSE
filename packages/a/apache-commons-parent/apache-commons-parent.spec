@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package apache-commons-parent
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,13 +19,13 @@
 %define base_name       parent
 %define short_name      commons-%{base_name}
 Name:           apache-%{short_name}
-Version:        53
+Version:        71
 Release:        0
 Summary:        Apache Commons Parent Pom
 License:        Apache-2.0
 Group:          Development/Libraries/Java
 URL:            https://commons.apache.org/commons-parent-pom.html
-Source0:        https://archive.apache.org/dist/commons/%{short_name}/%{short_name}-%{version}-src.tar.gz
+Source0:        https://github.com/apache/%{short_name}/archive/refs/tags/rel/%{short_name}-%{version}.tar.gz
 BuildRequires:  javapackages-local
 BuildRequires:  xmvn-resolve
 BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
@@ -39,30 +39,34 @@ BuildRequires:  mvn(org.apache:apache:pom:)
 BuildRequires:  mvn(org.codehaus.mojo:build-helper-maven-plugin)
 Requires:       mvn(org.apache:apache:pom:)
 Requires:       mvn(org.codehaus.mojo:build-helper-maven-plugin)
-# BuildRequires:  mvn(org.codehaus.mojo:version-maven-plugin)
-# Requires:       mvn(org.codehaus.mojo:version-maven-plugin)
 BuildArch:      noarch
 
 %description
 The Project Object Model files for the apache-commons packages.
 
 %prep
-%setup -q -n %{short_name}-%{version}-src
+%setup -q -n %{short_name}-rel-%{short_name}-%{version}
 
 # Plugin is not in suse
 %pom_remove_plugin org.apache.commons:commons-build-plugin
 %pom_remove_plugin org.apache.maven.plugins:maven-scm-publish-plugin
+%pom_remove_plugin :maven-artifact-plugin
+%pom_remove_plugin :cyclonedx-maven-plugin
+%pom_remove_plugin :spdx-maven-plugin
+%pom_remove_plugin :moditect-maven-plugin
 
 # Plugins useless in package builds
 %pom_remove_plugin :apache-rat-plugin
 %pom_remove_plugin :buildnumber-maven-plugin
-%pom_remove_plugin :maven-enforcer-plugin
 %pom_remove_plugin :maven-site-plugin
 %pom_remove_plugin :maven-source-plugin
 %pom_remove_plugin :versions-maven-plugin
 
+# Unused dependencies
+%pom_remove_dep -r :junit-bom
+
 # Remove profiles for plugins that are useless in package builds
-for profile in animal-sniffer japicmp jacoco cobertura clirr; do
+for profile in animal-sniffer japicmp jacoco cobertura ; do
     %pom_xpath_remove "pom:profile[pom:id='$profile']"
 done
 

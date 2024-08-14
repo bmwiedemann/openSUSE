@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Aug 12 11:42:00 UTC 2024 - Gus Kenion <gus.kenion@suse.com>
+
+- Upgrade to 1.4.0
+  * Fixes:
+    + [StepSecurity] ci: Harden GitHub Actions #95.
+    + Procrun. Enable Control Flow Guard for Windows binaries.
+      Fixes DAEMON-429.
+    + Procrun. Better label for command used to start service shown
+      in Prunmgr.exe. Fixes DAEMON-461.
+    + jsvc. Fix warnings when running support/buildconf.sh
+    + jsvc. Fix compilation issue with newer compilers. Fixes
+    + Procrun. Refactor UAC support so that elevation is only
+      requested for actions that require administrator privileges.
+  * New Features:
+    + Procrun. Add support for hybrid CRT builds.
+    + jsvc. Add support for LoongArch64 support #92.
+  * Update dependencies:
+    + Bump commons-parent from 57 to 69 #155.
+    + The minimum support Java version has been upgraded from Java
+      7 to Java 8.
+    + Bump commons-parent from 69 to 70.
+- Revise apache-commons-daemon-gcc14-compat.patch for compatibility
+  with version 1.4.0
+
+-------------------------------------------------------------------
 Mon May  6 11:08:35 UTC 2024 - Gus Kenion <gus.kenion@suse.com>
 
 - Add apache-commons-daemon-gcc14-compat.patch for GCC 14

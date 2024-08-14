@@ -835,4 +835,32 @@ Update to 0.36.0:
 </comment>
     <requestid>1164400</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>027fb6efce44f53218defd5b2bd56733</srcmd5>
+    <version>0.42.0</version>
+    <time>1723637678</time>
+    <user>dimstar_suse</user>
+    <comment>- Update 0.42.0:
+  - allow ASN1_{Integer,String} be initialized directly
+  - minimal infrastructure for type hints for a C extension and
+    some type hints for some basic modules
+  - time_t on 32bit Linux is 32bit (integer) not 64bit (long)
+  - EOS for CentOS 7
+  - correct checking for OpenSSL version number on Windows
+  - make compatible with Python 3.13 (replace PyEval_CallObject
+    with PyObject_CallObject)
+  - fix typo in extern function signature (and proper type of
+    engine_ctrl_cmd_string())
+  - move the package to Sorucehut
+  - setup CI to use Sourcehut CI
+  - setup CI on GitLab for Windows as well (remove Appveyor)
+  - initial draft of documentation for migration to
+    pyca/cryptography
+  - fix Read the Docs configuration (contributed kindly by Facundo
+    Tuesca)
+- Remove upstreamed 32bit_ASN1_Time.patch 
+- Remove python-M2Crypto.keyring, because PyPI broke GPG support
+</comment>
+    <requestid>1193147</requestid>
+  </revision>
 </revisionlist>

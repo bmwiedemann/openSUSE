@@ -1,0 +1,40 @@
+Index: openssl-3.1.4/providers/fips/self_test.c
+===================================================================
+--- openssl-3.1.4.orig/providers/fips/self_test.c
++++ openssl-3.1.4/providers/fips/self_test.c
+@@ -401,6 +401,16 @@ int SELF_TEST_post(SELF_TEST_POST_PARAMS
+     if (ev == NULL)
+         goto end;
+ 
++    /*
++     * Run the KAT's before HMAC verification according to FIPS-140-3 requirements
++     */
++    if (kats_already_passed == 0) {
++        if (!SELF_TEST_kats(ev, st->libctx)) {
++            ERR_raise(ERR_LIB_PROV, PROV_R_SELF_TEST_KAT_FAILURE);
++            goto end;
++        }
++    }
++
+     module_checksum = fips_hmac_container;
+     checksum_len = sizeof(fips_hmac_container);
+ 
+@@ -451,18 +461,6 @@ int SELF_TEST_post(SELF_TEST_POST_PARAMS
+         }
+     }
+ 
+-    /*
+-     * Only runs the KAT's during installation OR on_demand().
+-     * NOTE: If the installation option 'self_test_onload' is chosen then this
+-     * path will always be run, since kats_already_passed will always be 0.
+-     */
+-    if (on_demand_test || kats_already_passed == 0) {
+-        if (!SELF_TEST_kats(ev, st->libctx)) {
+-            ERR_raise(ERR_LIB_PROV, PROV_R_SELF_TEST_KAT_FAILURE);
+-            goto end;
+-        }
+-    }
+-
+     /* Verify that the RNG has been restored properly */
+     rng = ossl_rand_get0_private_noncreating(st->libctx);
+     if (rng != NULL)

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Aug 13 08:51:05 UTC 2024 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.10.0
+  * Notable fixes
+    - We now properly destroy background threads when a library context
+      is freed.  Previously, this lead to thread and resource leaks for
+      the ephemeral contexts created by Thunderbird.
+  * Notable changes
+    - If we don't support the RNP API version that Thunderbird
+      requires, we now print a log message to stderr, which should be
+      easier to discover than the message Thunderbird writes to the
+      error console.
+    - We use a more compact time representation in log messages now.
+  * New functionality
+    - rnp_dearmor
+
+-------------------------------------------------------------------
 Thu Jul 25 11:45:24 UTC 2024 - Adam Mizerski <adam@mizerski.pl>
 
 - update to 1.9.0+git.13.g03113af

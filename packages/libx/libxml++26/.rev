@@ -66,4 +66,12 @@
     <comment></comment>
     <requestid>1043382</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>af59940a68a6c32897afacdeda933140</srcmd5>
+    <version>2.42.3</version>
+    <time>1723637720</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 1193466 from iznogood)</comment>
+    <requestid>1193731</requestid>
+  </revision>
 </revisionlist>

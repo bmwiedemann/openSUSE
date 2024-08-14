@@ -417,4 +417,12 @@
   i586 only enabled in LegacyX86). (forwarded request 1155232 from dimstar)</comment>
     <requestid>1155248</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>f4314b70e889f8feb2296780698ca5d4</srcmd5>
+    <version>5.2.1</version>
+    <time>1723637639</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 1193465 from iznogood)</comment>
+    <requestid>1193730</requestid>
+  </revision>
 </revisionlist>

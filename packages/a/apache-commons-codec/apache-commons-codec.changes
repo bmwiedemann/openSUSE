@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Aug 12 12:19:01 UTC 2024 - Gus Kenion <gus.kenion@suse.com>
+
+- Update to 1.17.1
+  * Bug fixes:
+    + Md5Crypt now throws IllegalArgumentException on an invalid
+      prefix.
+  * Dependency Updates:
+    + Bump org.apache.commons:commons-parent from 69 to 71 #286.
+    + Bump org.codehaus.mojo:animal-sniffer-maven-plugin from 1.23
+      to 1.24 #293.
+    + Bump org.codehaus.mojo:taglist-maven-plugin from 3.0.0 to
+      3.1.0 #292.
+
+-------------------------------------------------------------------
 Thu May  2 11:19:15 UTC 2024 - Gus Kenion <gus.kenion@suse.com>
 
 - Update to 1.17.0

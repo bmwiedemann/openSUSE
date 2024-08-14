@@ -1,0 +1,171 @@
+Subject: [PATCH] Revert "Improve FIPS RSA keygen performance."
+
+This reverts commit 3431dd4b3ee7933822586aab62972de4d8c0e9e5.
+---
+ crypto/bn/bn_prime.c         | 11 --------
+ crypto/bn/bn_rsa_fips186_4.c | 49 ++++++------------------------------
+ include/crypto/bn.h          |  2 --
+ 3 files changed, 8 insertions(+), 54 deletions(-)
+
+diff --git a/crypto/bn/bn_prime.c b/crypto/bn/bn_prime.c
+index 79776f1ce5..ddd31a0252 100644
+--- a/crypto/bn/bn_prime.c
++++ b/crypto/bn/bn_prime.c
+@@ -252,17 +252,6 @@ int ossl_bn_check_prime(const BIGNUM *w, int checks, BN_CTX *ctx,
+     return bn_is_prime_int(w, checks, ctx, do_trial_division, cb);
+ }
+ 
+-/*
+- * Use this only for key generation.
+- * It always uses trial division. The number of checks
+- * (MR rounds) passed in is used without being clamped to a minimum value.
+- */
+-int ossl_bn_check_generated_prime(const BIGNUM *w, int checks, BN_CTX *ctx,
+-                                  BN_GENCB *cb)
+-{
+-    return bn_is_prime_int(w, checks, ctx, 1, cb);
+-}
+-
+ int BN_check_prime(const BIGNUM *p, BN_CTX *ctx, BN_GENCB *cb)
+ {
+     return ossl_bn_check_prime(p, 0, ctx, 1, cb);
+diff --git a/crypto/bn/bn_rsa_fips186_4.c b/crypto/bn/bn_rsa_fips186_4.c
+index e9f0d4038c..8a7b2ecf2f 100644
+--- a/crypto/bn/bn_rsa_fips186_4.c
++++ b/crypto/bn/bn_rsa_fips186_4.c
+@@ -48,34 +48,6 @@ const BIGNUM ossl_bn_inv_sqrt_2 = {
+     BN_FLG_STATIC_DATA
+ };
+ 
+-/*
+- * Refer to FIPS 186-5 Table B.1 for minimum rounds of Miller Rabin
+- * required for generation of RSA aux primes (p1, p2, q1 and q2).
+- */
+-static int bn_rsa_fips186_5_aux_prime_MR_rounds(int nbits)
+-{
+-    if (nbits >= 4096)
+-        return 44;
+-    if (nbits >= 3072)
+-        return 41;
+-    if (nbits >= 2048)
+-        return 38;
+-    return 0; /* Error */
+-}
+-
+-/*
+- * Refer to FIPS 186-5 Table B.1 for minimum rounds of Miller Rabin
+- * required for generation of RSA primes (p and q)
+- */
+-static int bn_rsa_fips186_5_prime_MR_rounds(int nbits)
+-{
+-    if (nbits >= 3072)
+-        return 4;
+-    if (nbits >= 2048)
+-        return 5;
+-    return 0; /* Error */
+-}
+-
+ /*
+  * FIPS 186-5 Table A.1. "Min length of auxiliary primes p1, p2, q1, q2".
+  * (FIPS 186-5 has an entry for >= 4096 bits).
+@@ -125,13 +97,11 @@ static int bn_rsa_fips186_5_aux_prime_max_sum_size_for_prob_primes(int nbits)
+  *     Xp1 The passed in starting point to find a probably prime.
+  *     p1 The returned probable prime (first odd integer >= Xp1)
+  *     ctx A BN_CTX object.
+- *     rounds The number of Miller Rabin rounds
+  *     cb An optional BIGNUM callback.
+  * Returns: 1 on success otherwise it returns 0.
+  */
+ static int bn_rsa_fips186_4_find_aux_prob_prime(const BIGNUM *Xp1,
+                                                 BIGNUM *p1, BN_CTX *ctx,
+-                                                int rounds,
+                                                 BN_GENCB *cb)
+ {
+     int ret = 0;
+@@ -147,7 +117,7 @@ static int bn_rsa_fips186_4_find_aux_prob_prime(const BIGNUM *Xp1,
+         i++;
+         BN_GENCB_call(cb, 0, i);
+         /* MR test with trial division */
+-        tmp = ossl_bn_check_generated_prime(p1, rounds, ctx, cb);
++        tmp = BN_check_prime(p1, ctx, cb);
+         if (tmp > 0)
+             break;
+         if (tmp < 0)
+@@ -190,7 +160,7 @@ int ossl_bn_rsa_fips186_4_gen_prob_primes(BIGNUM *p, BIGNUM *Xpout,
+ {
+     int ret = 0;
+     BIGNUM *p1i = NULL, *p2i = NULL, *Xp1i = NULL, *Xp2i = NULL;
+-    int bitlen, rounds;
++    int bitlen;
+ 
+     if (p == NULL || Xpout == NULL)
+         return 0;
+@@ -207,7 +177,6 @@ int ossl_bn_rsa_fips186_4_gen_prob_primes(BIGNUM *p, BIGNUM *Xpout,
+     bitlen = bn_rsa_fips186_5_aux_prime_min_size(nlen);
+     if (bitlen == 0)
+         goto err;
+-    rounds = bn_rsa_fips186_5_aux_prime_MR_rounds(nlen);
+ 
+     /* (Steps 4.1/5.1): Randomly generate Xp1 if it is not passed in */
+     if (Xp1 == NULL) {
+@@ -225,8 +194,8 @@ int ossl_bn_rsa_fips186_4_gen_prob_primes(BIGNUM *p, BIGNUM *Xpout,
+     }
+ 
+     /* (Steps 4.2/5.2) - find first auxiliary probable primes */
+-    if (!bn_rsa_fips186_4_find_aux_prob_prime(Xp1i, p1i, ctx, rounds, cb)
+-            || !bn_rsa_fips186_4_find_aux_prob_prime(Xp2i, p2i, ctx, rounds, cb))
++    if (!bn_rsa_fips186_4_find_aux_prob_prime(Xp1i, p1i, ctx, cb)
++            || !bn_rsa_fips186_4_find_aux_prob_prime(Xp2i, p2i, ctx, cb))
+         goto err;
+     /* (Table B.1) auxiliary prime Max length check */
+     if ((BN_num_bits(p1i) + BN_num_bits(p2i)) >=
+@@ -274,11 +243,11 @@ err:
+  */
+ int ossl_bn_rsa_fips186_4_derive_prime(BIGNUM *Y, BIGNUM *X, const BIGNUM *Xin,
+                                        const BIGNUM *r1, const BIGNUM *r2,
+-                                       int nlen, const BIGNUM *e,
+-                                       BN_CTX *ctx, BN_GENCB *cb)
++                                       int nlen, const BIGNUM *e, BN_CTX *ctx,
++                                       BN_GENCB *cb)
+ {
+     int ret = 0;
+-    int i, imax, rounds;
++    int i, imax;
+     int bits = nlen >> 1;
+     BIGNUM *tmp, *R, *r1r2x2, *y1, *r1x2;
+     BIGNUM *base, *range;
+@@ -348,7 +317,6 @@ int ossl_bn_rsa_fips186_4_derive_prime(BIGNUM *Y, BIGNUM *X, const BIGNUM *Xin,
+      * The number has been updated to 20 * nlen/2 as used in
+      * FIPS186-5 Appendix B.9 Step 9.
+      */
+-    rounds = bn_rsa_fips186_5_prime_MR_rounds(nlen);
+     imax = 20 * bits; /* max = 20/2 * nbits */
+     for (;;) {
+         if (Xin == NULL) {
+@@ -378,9 +346,8 @@ int ossl_bn_rsa_fips186_4_derive_prime(BIGNUM *Y, BIGNUM *X, const BIGNUM *Xin,
+             if (BN_copy(y1, Y) == NULL
+                     || !BN_sub_word(y1, 1))
+                 goto err;
+-
+             if (BN_are_coprime(y1, e, ctx)) {
+-                int rv = ossl_bn_check_generated_prime(Y, rounds, ctx, cb);
++                int rv = BN_check_prime(Y, ctx, cb);
+ 
+                 if (rv > 0)
+                     goto end;
+diff --git a/include/crypto/bn.h b/include/crypto/bn.h
+index 4d11e0e4b1..cf69bea848 100644
+--- a/include/crypto/bn.h
++++ b/include/crypto/bn.h
+@@ -95,8 +95,6 @@ int bn_div_fixed_top(BIGNUM *dv, BIGNUM *rem, const BIGNUM *m,
+ 
+ int ossl_bn_miller_rabin_is_prime(const BIGNUM *w, int iterations, BN_CTX *ctx,
+                                   BN_GENCB *cb, int enhanced, int *status);
+-int ossl_bn_check_generated_prime(const BIGNUM *w, int checks, BN_CTX *ctx,
+-                                  BN_GENCB *cb);
+ 
+ const BIGNUM *ossl_bn_get0_small_factors(void);
+ 
+-- 
+2.44.0
+

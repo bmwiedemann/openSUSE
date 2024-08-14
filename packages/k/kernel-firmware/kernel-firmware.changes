@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Aug 13 05:18:12 UTC 2024 - tiwai@suse.com
+
+- Update to version 20240809 (git commit 36db650dae03):
+  * qcom: update path for video firmware for vpu-1/2/3.0
+  * QCA: Update Bluetooth WCN685x 2.1 firmware to 2.1.0-00642
+  * rtw89: 8852c: add fw format-1 v0.27.97.0
+  * rtw89: 8852bt: add firmware 0.29.91.0
+  * amdgpu: Update ISP FW for isp v4.1.1
+  * mediatek: Update mt8195 SOF firmware
+  * amdgpu: DMCUB updates for DCN314
+  * xe: First GuC release v70.29.2 for BMG
+  * xe: Add GuC v70.29.2 for LNL
+  * i915: Add GuC v70.29.2 for ADL-P, DG1, DG2, MTL, and TGL
+  * i915: Update MTL DMC v2.22
+  * i915: update MTL GSC to v102.0.10.1878
+  * xe: Add BMG HuC 8.2.10
+  * xe: Add GSC 104.0.0.1161 for LNL
+  * xe: Add LNL HuC 9.4.13
+  * i915: update DG2 HuC to v7.10.16
+  * amdgpu: Update ISP FW for isp v4.1.1
+  * QCA: Update Bluetooth QCA2066 firmware to 2.1.0-00641
+
+-------------------------------------------------------------------
 Wed Jul 31 14:59:44 UTC 2024 - tiwai@suse.com
 
 - Update to version 20240728 (git commit bcd040c21dc9):
@@ -44,6 +67,7 @@ Wed Jul 31 14:59:44 UTC 2024 - tiwai@suse.com
 Sat Jul 13 09:49:21 UTC 2024 - tiwai@suse.com
 
 - Update to version 20240712 (git commit ed874ed83cac):
+  (bsc#1229069, CVE-2023-31315)
   * amdgpu: update DMCUB to v0.0.225.0 for Various AMDGPU Asics
   * qcom: add gpu firmwares for x1e80100 chipset (bsc#1219458)
   * linux-firmware: add firmware for qat_402xx devices

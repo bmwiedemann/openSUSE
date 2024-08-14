@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Aug  7 08:55:44 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Update to 2.17.2
+  * #1308: Relax validation by 'NumberInput.looksLikeValidNumber()'
+    to allow trailing dot (like '3.')
+
+-------------------------------------------------------------------
 Wed Jul 17 12:47:49 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Reproducible builds: generate javadoc without timestamps

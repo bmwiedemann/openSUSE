@@ -96,7 +96,8 @@ IGNORED_TESTS+='test_playbook_on_stats_summary_fields or '
 IGNORED_TESTS+='test_multiline_blank_write[pexpect] or '
 # flaky tests
 IGNORED_TESTS+='test_run_command_long_running or '
-IGNORED_TESTS+='test_run_command_long_running_children'
+IGNORED_TESTS+='test_run_command_long_running_children or '
+IGNORED_TESTS+='test_get_role_list'
 export PATH=%{buildroot}%{_bindir}:$PATH
 %pytest -n auto -k "not ($IGNORED_TESTS)"
 

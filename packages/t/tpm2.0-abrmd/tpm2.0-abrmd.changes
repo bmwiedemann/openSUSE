@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Aug 13 08:52:59 UTC 2024 - Cathy Hu <cathy.hu@suse.com>
+
+- Fix SELinux sbin/bin merge (bsc#1229047)
+  1229047-fix-bin-sbin-selinux.patch
+  Can be dropped once https://github.com/tpm2-software/tpm2-abrmd/pull/846
+  is merged upstream
+
+-------------------------------------------------------------------
 Thu Aug  1 09:39:15 UTC 2024 - Johannes Segitz <jsegitz@suse.com>
 
 - Update harden_tpm2-abrmd.service.patch to contain necessary SELinux

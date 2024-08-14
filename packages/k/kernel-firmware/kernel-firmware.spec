@@ -21,11 +21,11 @@
 %define _firmwaredir /lib/firmware
 %endif
 %define __ksyms_path ^%{_firmwaredir}
-%define version_unconverted 20240728
+%define version_unconverted 20240809
 # Force bzip2 instead of lzma compression (bsc#1176981)
 %define _binary_payload w9.bzdio
 Name:           kernel-firmware
-Version:        20240728
+Version:        20240809
 Release:        0
 Summary:        Linux kernel firmware files
 License:        GPL-2.0-only AND SUSE-Firmware AND GPL-2.0-or-later AND MIT
@@ -3727,6 +3727,7 @@ Supplements:    modalias(acpi*:AMDI0100%3A*)
 Supplements:    modalias(acpi*:AMDI0102%3A*)
 Supplements:    modalias(acpi*:AMDI0103%3A*)
 Supplements:    modalias(acpi*:AMDI0105%3A*)
+Supplements:    modalias(acpi*:AMDI0107%3A*)
 Supplements:    modalias(acpi*:AMDI0C00%3A*)
 Supplements:    modalias(eisa:sABP7401*)
 Supplements:    modalias(eisa:sABP7501*)

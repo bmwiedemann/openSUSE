@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug 13 09:17:52 UTC 2024 - Alynx Zhou <alynx.zhou@suse.com>
+
+- Add PackageKit-mark-as-compulsory.patch: Prevent PackageKit from
+  user uninstallable for most desktops (bsc#1226269).
+
+-------------------------------------------------------------------
 Tue Mar  5 14:14:09 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop baselibs.conf: the -32bit packages are no longer needed and

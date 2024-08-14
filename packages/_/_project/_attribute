@@ -227,7 +227,7 @@ rebuildpacs-leafs = branding-openSUSE PackageKit-branding-openSUSE xfce4-brandin
     <value>s/openSUSE-/openSUSE-Staging:$LETTER-/</value>
   </attribute>
   <attribute namespace="OSRT" name="ProductVersion">
-    <value>20240813</value>
+    <value>20240814</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerConfig">
     <value>arch: x86_64
@@ -353,8 +353,6 @@ products:
   - opensuse-nfs-server-image:
     - x86_64
   - opensuse-openldap-image:
-    - x86_64
-  - opensuse-postfix-image:
     - x86_64
 #  - opensuse-redis-image:
 #    - x86_64

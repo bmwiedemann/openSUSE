@@ -1,0 +1,20 @@
+From: Martin Jambor <mjambor@suse.de>
+Date: 2024-08-09
+
+The pre-existing type-cast is OK for 64bit targets but not for 32 bit
+targets, so this patch swaps it with what is actually used in the
+corresponding data type definition.
+
+Index: ptools-0.1/src/pbuildid.c
+===================================================================
+--- ptools-0.1.orig/src/pbuildid.c
++++ ptools-0.1/src/pbuildid.c
+@@ -751,7 +751,7 @@ out:
+ 
+ 		mmap->l_addr = lmap->l_addr;
+ 		mmap->l_name = strdup(l_name);
+-		mmap->l_ld = (GElf_Dyn *)lmap->l_ld;
++		mmap->l_ld = (ElfW(Dyn) *)lmap->l_ld;
+ 		mmap->l_next = core_link_map;
+ 		mmap->l_prev = NULL;
+ 		if (core_link_map)

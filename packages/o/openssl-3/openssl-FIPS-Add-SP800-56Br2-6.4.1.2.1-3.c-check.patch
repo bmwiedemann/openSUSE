@@ -1,0 +1,16 @@
+Index: openssl-3.1.4/crypto/rsa/rsa_sp800_56b_check.c
+===================================================================
+--- openssl-3.1.4.orig/crypto/rsa/rsa_sp800_56b_check.c
++++ openssl-3.1.4/crypto/rsa/rsa_sp800_56b_check.c
+@@ -405,7 +405,10 @@ int ossl_rsa_sp800_56b_check_keypair(con
+         return 0;
+     }
+     /* (Step 3.b): check the modulus */
+-    if (nbits != BN_num_bits(rsa->n)) {
++    /* If nBits is not a positive even integer, output an indication of an
++     * invalid key pair, and exit without further processing.
++     */
++    if (nbits <= 0 || nbits % 2 || nbits != BN_num_bits(rsa->n)) {
+         ERR_raise(ERR_LIB_RSA, RSA_R_INVALID_KEYPAIR);
+         return 0;
+     }

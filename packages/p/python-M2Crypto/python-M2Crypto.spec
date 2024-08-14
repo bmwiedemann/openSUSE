@@ -19,18 +19,13 @@
 %define oldpython python
 %{?sle15_python_module_pythons}
 Name:           python-M2Crypto
-Version:        0.40.0
+Version:        0.42.0
 Release:        0
 Summary:        Crypto and SSL toolkit for Python
 License:        MIT
 Group:          Development/Languages/Python
-URL:            https://gitlab.com/m2crypto/m2crypto
-Source0:        https://files.pythonhosted.org/packages/source/M/M2Crypto/M2Crypto-%{version}.tar.gz
-Source1:        M2Crypto-%{version}.tar.gz.asc
-Source99:       python-M2Crypto.keyring
-# PATCH-FIX-UPSTREAM 32bit_ASN1_Time.patch gl#m2crypto/m2crypto/-#341 mcepl@suse.com
-# Not only Windows but all 32bit archs have fouled ASN1_Time.
-Patch0:         32bit_ASN1_Time.patch
+URL:            https://sr.ht/~mcepl/m2crypto/
+Source0:        https://files.pythonhosted.org/packages/source/M/M2crypto/m2crypto-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
@@ -83,7 +78,7 @@ messenger for Zope.
 Documentation for the Crypto and SSL toolkit for Python
 
 %prep
-%autosetup -p1 -n M2Crypto-%{version}
+%autosetup -p1 -n m2crypto-%{version}
 
 %build
 export CFLAGS="%{optflags}"

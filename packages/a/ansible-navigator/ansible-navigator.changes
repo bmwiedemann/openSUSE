@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Aug 13 18:18:03 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 24.8.0:
+  * Bump coactions/dynamic-matrix from 1 to 2 (#1833)
+  * [pre-commit.ci] pre-commit autoupdate (#1835)
+  * Bump the dependencies group in /.config with 10 updates (#1832)
+  * Fix CI test failures: Remove unused `bindep.txt` (#1834)
+  * [pre-commit.ci] pre-commit autoupdate (#1831)
+  * Bump the dependencies group in /.config with 6 updates (#1830)
+  * [pre-commit.ci] pre-commit autoupdate (#1829)
+  * Bump the dependencies group in /.config with 9 updates (#1827)
+  * Update to match common extensions. (#1826)
+  * Update codeowners (#1825)
+  * Update CoC to match other repositories. (#1824)
+  * Add sonarcloud config (#1823)
+  * [pre-commit.ci] pre-commit autoupdate (#1822)
+  * Bump the dependencies group in /.config with 5 updates (#1821)
+  * [pre-commit.ci] pre-commit autoupdate (#1812)
+  * Adopt community-ansible-dev-tools image (#1819)
+  * Bump the dependencies group in /.config with 10 updates (#1820)
+
+-------------------------------------------------------------------
 Thu Jul 11 19:01:51 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 24.7.0:

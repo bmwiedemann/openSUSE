@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Aug 12 14:10:16 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 5.2.1:
+  + Parser: Ignore deprecation of xmlParserCtxt members.
+  + Documentation: Don't link to removed developer-old.gnome.org.
+  + Meson build:
+    - Use libxml2 meson build when libxml2 is built as a subproject
+    - Require python3 >= 3.7. That's what Meson requires
+- Changes from version 5.2.0:
+  + Use callback functions with C linkage
+  + Documentation:
+    - Update Visual Studio build docs
+    - Remove AUTHORS and add general information to README.md
+    - Parser docs: Add a link to parser options
+    - README.md: Add info about building the documentation
+  + Meson build:
+    - Cleanup and fix libxml2 dep search
+    - Don't fail if warning_level=everything
+    - Add bcrypt dependency when libxml2 is a subproject
+    - Don't require the 'dot' command to build the documentation
+    - Add the build-manual option
+  + Build: Make it compatible with libxml2 >= 2.12.0 by modifying
+    #include directives
+- Add check section and run meson_test macro.
+
+-------------------------------------------------------------------
 Tue Mar  5 14:15:40 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop baselibs.conf: the -32bit packages are no longer needed and

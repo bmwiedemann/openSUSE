@@ -11,10 +11,10 @@ Patch-status: |
  crypto/provider_conf.c | 28 +++++++++++++++++++++++++++-
  1 file changed, 27 insertions(+), 1 deletion(-)
 
-diff --git a/crypto/provider_conf.c b/crypto/provider_conf.c
-index 058fb58837..5274265a70 100644
---- a/crypto/provider_conf.c
-+++ b/crypto/provider_conf.c
+Index: openssl-3.1.4/crypto/provider_conf.c
+===================================================================
+--- openssl-3.1.4.orig/crypto/provider_conf.c
++++ openssl-3.1.4/crypto/provider_conf.c
 @@ -10,6 +10,8 @@
  #include <string.h>
  #include <openssl/trace.h>
@@ -24,7 +24,7 @@ index 058fb58837..5274265a70 100644
  #include <openssl/conf.h>
  #include <openssl/safestack.h>
  #include <openssl/provider.h>
-@@ -169,7 +171,7 @@ static int provider_conf_activate(OSSL_LIB_CTX *libctx, const char *name,
+@@ -169,7 +171,7 @@ static int provider_conf_activate(OSSL_L
          if (path != NULL)
              ossl_provider_set_module_path(prov, path);
  
@@ -33,7 +33,16 @@ index 058fb58837..5274265a70 100644
  
          if (ok) {
              if (!ossl_provider_activate(prov, 1, 0)) {
-@@ -309,6 +311,30 @@ static int provider_conf_init(CONF_IMODULE *md, const CONF *cnf)
+@@ -197,6 +199,8 @@ static int provider_conf_activate(OSSL_L
+         }
+         if (!ok)
+             ossl_provider_free(prov);
++    } else {
++        ok = 1;
+     }
+     CRYPTO_THREAD_unlock(pcgbl->lock);
+ 
+@@ -309,6 +313,33 @@ static int provider_conf_init(CONF_IMODU
              return 0;
      }
  
@@ -55,6 +64,9 @@ index 058fb58837..5274265a70 100644
 +            if (provider_conf_activate(libctx, "fips", NULL, NULL, 0, NULL) != 1)
 +                return 0;
 +        }
++        /* provider_conf_load can return 1 even when the test is failed so check explicitly */
++        if (OSSL_PROVIDER_available(libctx, "fips") != 1)
++            return 0;
 +        if (provider_conf_activate(libctx, "base", NULL, NULL, 0, NULL) != 1)
 +            return 0;
 +        if (EVP_default_properties_enable_fips(libctx, 1) != 1)
@@ -64,5 +76,3 @@ index 058fb58837..5274265a70 100644
      return 1;
  }
  
--- 
-2.41.0

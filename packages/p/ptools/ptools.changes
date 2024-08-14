@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Aug  9 14:19:31 UTC 2024 - Martin Jambor <mjambor@suse.com>
+
+- Added fix-32bit-cast.diff which replaces a cast which is OK for
+  64bit targets but not for 32 bit targets to make the package
+  buildable with GCC 14 on i586.
+
+-------------------------------------------------------------------
 Thu Feb 29 15:03:43 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

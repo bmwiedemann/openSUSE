@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Aug 13 14:50:27 UTC 2024 - seife+obs@b1-systems.com
+
+- add "-I/usr/include/ncurses" to work around ncurses breakage
+
+-------------------------------------------------------------------
 Thu Oct 12 15:51:44 UTC 2023 - seife+obs@b1-systems.com
 
 - fix patch application with newer rpm

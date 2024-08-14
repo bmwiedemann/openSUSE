@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug 12 17:28:18 UTC 2024 - Michael Gorse <mgorse@suse.com>
+
+- Drop gs-fate318433-prevent-same-account-multi-logins.patch.
+  Upstream now does this.
+
+-------------------------------------------------------------------
 Thu Aug  8 20:16:23 UTC 2024 - Michael Gorse <mgorse@suse.com>
 
 - Rebase SLE patches:

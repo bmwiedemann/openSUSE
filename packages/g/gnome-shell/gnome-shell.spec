@@ -55,8 +55,6 @@ Patch1002:      gnome-shell-domain.patch
 Patch1003:      gnome-shell-screen-disappear.patch
 # PATCH-FIX-SLE endSession-dialog-update-time-label-every-sec.patch bnc#886132 cxiong@suse.com -- update time label every second in end session dialog
 Patch1004:      endSession-dialog-update-time-label-every-sec.patch
-# PATCH-NEEDS-REBASE gs-fate318433-prevent-same-account-multi-logins.patch fate#318433 cxiong@suse.com -- prevent multiple simultaneous login.
-Patch1007:      gs-fate318433-prevent-same-account-multi-logins.patch
 # PATCH-FIX-SLE gnome-shell-disable-ibus-when-not-installed.patch bsc#987360 qzhao@suse.com -- disable ibus start when outof Chinese, Japanese, Korean area
 Patch1008:      gnome-shell-disable-ibus-when-not-installed.patch
 # PATCH-FEATURE-SLE gnome-shell-fate324570-Make-GDM-background-image-configurable.patch fate#324570, glgo#GNOME/gnome-shell#680, boo#1172826 qkzhu@suse.com -- make GDM background image configurable
@@ -203,7 +201,6 @@ popd
 %patch -P 1002 -p1
 %patch -P 1003 -p1
 %patch -P 1004 -p1
-#%%patch -P 1007 -p1
 %patch -P 1008 -p1
 %patch -P 1009 -p1
 %if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150300

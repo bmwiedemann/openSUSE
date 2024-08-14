@@ -20,7 +20,7 @@
 %define base_name  codec
 %define short_name commons-%{base_name}
 Name:           apache-commons-codec
-Version:        1.17.0
+Version:        1.17.1
 Release:        0
 Summary:        Apache Commons Codec Package
 License:        Apache-2.0

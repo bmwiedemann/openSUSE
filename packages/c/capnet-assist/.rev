@@ -49,4 +49,22 @@
     <comment></comment>
     <requestid>990040</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>821c0f8e45da314e3636401b4c45e5a3</srcmd5>
+    <version>8.0.0</version>
+    <time>1723637682</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 8.0.0:
+  * Update to elementary runtime 8
+  * Performance improvements
+  * Updated translations
+- update to 2.4.4:
+  * Metainfo improvements
+  * Update translation files
+- update to 2.4.3:
+  * Update to elementary runtime 7.1
+  * Updated translations
+- change url to github, as we don't want to link to their own OS</comment>
+    <requestid>1192934</requestid>
+  </revision>
 </revisionlist>

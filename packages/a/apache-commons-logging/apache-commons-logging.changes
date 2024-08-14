@@ -1,4 +1,87 @@
 -------------------------------------------------------------------
+Fri Aug  9 08:05:34 UTC 2024 - Gus Kenion <gus.kenion@suse.com>
+
+- Upgrade to 1.3.3
+  * Bug Fixes:
+    + * LOGGING-193: Update Log4j 2 OSGi imports #268.
+    + * Fix PMD UnnecessaryFullyQualifiedName in SimpleLog.
+    + * Fix NullPointerException in SimpleLog#write(Object) on null
+      input.
+    + Fix NullPointerException in SimpleLog#write(StringBuffer) on
+      null input.
+- Includes changes from 1.3.2
+  * Fixed Bugs
+    + LOGGING-190: Add OSGi metadata to enable Service Loader
+      Mediator #234.
+    + LOGGING-191: Apache commons logging shows 1.4 as latest
+      release instead of 1.3.1.
+    + Deprecate
+      org.apache.commons.logging.LogSource.jdk14IsAvailable.
+- Includes changes from 1.3.1
+  * New features
+    + Add Maven property project.build.outputTimestamp for build
+      reproducibility.
+  * Fixed Bugs
+    + Remove references to very old JDK and Commons Logging
+      versions #201.
+    + Update from Logj 1 to the Log4j 2 API compatibility layer
+      #231.
+    + Allow Servlet 4 in OSGi environment #191.
+    + Fix generics warnings #213.
+    + LOGGING-189: Fix Import-Package entry for org.slf4j #188.
+- Includes changes from 1.3.0
+  * New Features:
+    + Add support for Log4j API and SLF4J #177.
+    + Deprecate org.apache.commons.logging.impl.WeakHashtable
+      without replacement.  LOGGING-188: Deprecate and disable
+      `Jdk13LumberjackLogger` and `Log4JLogger`.  LOGGING-173:
+    + Deprecate and disable `AvalonLogger` and `LogKitLogger`.
+    + LOGGING-165: Add Automatic-Module-Name Manifest Header for
+      Java 9 compatibility.
+  * Fixed Bugs:
+    + LOGGING-163: BufferedReader is not closed properly.
+    + LOGGING-177: Remove redundant initializer #46
+    + Use a weak reference for the cached class loader #71.
+    + Add more entries to .gitignore file #25.
+    + Minor Improvements #34.
+    + [StepSecurity] ci: Harden GitHub Actions #145.
+    + LOGGING-185: Replace custom code with `ServiceLoader` call.
+    + Fix possible NPEs in LogFactoryImpl.
+    + LOGGING-185: Fix failing tests #180.
+    + Deprecate LogConfigurationException.cause in favor of
+      getCause().
+    + Fix SpotBugs [ERROR] High: Found reliance on default encoding
+      in org.apache.commons.logging.LogFactory.initDiagnostics():
+      new java.io.PrintStream(OutputStream)
+      [org.apache.commons.logging.LogFactory] At
+      LogFactory.java:[line 1205] DM_DEFAULT_ENCODING.
+    + Fix SpotBugs [ERROR] Medium: Class
+      org.apache.commons.logging.impl.WeakHashtable defines
+      non-transient non-serializable instance field queue
+      [org.apache.commons.logging.impl.WeakHashtable] In
+      WeakHashtable.java SE_BAD_FIELD.
+    + Set java.logging as optional module #183.
+    + Fix SpotBugs [ERROR] Medium: Switch statement found in
+      org.apache.commons.logging.impl.SimpleLog.log(int, Object,
+      Throwable) where default case is missing
+      [org.apache.commons.logging.impl.SimpleLog] At
+      SimpleLog.java:[lines 505-522] SF_SWITCH_NO_DEFAULT.
+    + Deprecate
+      org.apache.commons.logging.impl.Jdk13LumberjackLogger.dummyLevel
+      without replacement.
+- Remove deprecated patch files:
+  * commons-logging-1.1.3-src-junit.diff
+  * commons-logging-1.2-sourcetarget.patch
+  * commons-logging-manifests.patch
+  * no-tests.patch
+- Reinstate ant build (removed upstream)
+  * add build.xml
+  * add build.properties
+- Remove unnecessary dependencies
+  * add commons-logging-1.3.3-dependencies.patch
+- Add upstream dev's public key to apache-commons-logging.keyring
+
+-------------------------------------------------------------------
 Tue Feb 20 10:19:08 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

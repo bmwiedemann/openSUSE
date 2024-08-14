@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Aug 13 18:08:46 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 4.1.0:
+  * Upgrade sidecar images (#920)
+  * Remove unsupported PodSecurityPolicy (#918)
+
+-------------------------------------------------------------------
+Tue Aug 13 18:00:58 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 4.0.13:
+  * Upgrade sidecar images (#922)
+
+-------------------------------------------------------------------
 Thu Aug 01 07:26:41 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 4.0.12:

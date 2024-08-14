@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Mon Aug 12 23:17:56 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 7.5.0:
+  * Toast: add a new dismissed signal that includes the reason for dismissal
+  * Add STYLE_CLASS_SUCCESS
+  * HeaderLabel: allow secondary text to use markup
+  * Make building Demo optional
+  * Demo now uses a modern split-pane design
+  * DateTime: handle relative datetime when epoch
+  * MessageDialog: Set last button as focus widget
+  * SwitchModelButton: Remove redundant switch keyboard focusing
+  * Load fallback styles for widgets when using Granite.init
+  * Updated translations
+  * SettingsPage and SettingsSidebar: these widgets have moved to LibSwitchboard
+- update to 7.4.0:
+  * Add a withdraw method for Granite.Toast
+  * Updated translations
+- update to 7.3.0:
+  * Fix build with newer Vala
+  * settings: remove inappropriate ownership annotation
+  * Add granite styles as a gresource
+  * Init: load gresourced styles if present
+  * Fix demo desktop file
+  * Metainfo improvements
+- update to 7.2.0:
+  * Add icon and use it
+  * Init: add ensure type
+  * Add 'since' annotations to things added in 7.1
+  * Add since annotation to new public init method
+- update to 7.1.0:
+  * Granite.STYLE_CLASS_RICH_LIST for standard Gtk.ListBox row padding
+  * Granite.STYLE_CLASS_FRAME for adding a border to Gtk.LisBox, Gtk.InfoBar, and others
+  * Granite.STYLE_CLASS_SIDEBAR for styling application sidebars
+  * Granite.STYLE_CLASS_BACKGROUND to use the default background color for a widget
+  * Add optional secondary text to Granite.HeaderLabel
+  * Allow text in Granite.Toast to wrap
+  * SimpleSettingsPage: Wrap titles and allow description text to go under switches
+  * Updated translations
+- update to 7.0.0:
+  * Ported to gtk4
+  * Granite.Placeholder: replaces AlertView and Welcome
+  * SimpleSettingsPage: Allow markup in description
+  * Application: use Gtk.Application instead
+  * Drawing: Use Gtk.CSS
+  * DynamicNotebook: use Adw.TabBar instead
+  * Logger: use GLib.log instead
+  * ModeButton: Use Gtk.ToggleButton with the "group" property and "linked" style class instead
+  * Paths: use GLib.Environment instead
+  * Seekbar
+  * Services.Settings: use GLib.Settings instead
+  * SimpleCommand: use GLib.AppInfo.create_from_commandline instead
+  * SourceList: use Gtk.ListBox with the "sidebar" style class instead
+  * StorageBar
+  * TextStyle: use style class constants instead
+  * Several functions in System were replaced by GLib.AppInfo
+  * Updated translations
+- switch url to github, as we don't want to link to a different OS
+
+-------------------------------------------------------------------
 Sun Feb 20 15:35:14 UTC 2022 - Alexei Podvalsky <avvissu@yandex.by>
 
 - Update to 6.2.0:
