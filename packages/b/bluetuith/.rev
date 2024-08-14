@@ -105,4 +105,17 @@
   * go: Update dependencies</comment>
     <requestid>1165538</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>7eb52026eab41462818f9acbec54fddd</srcmd5>
+    <version>0.2.3</version>
+    <time>1723637766</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.2.3:
+  * README: Update project status and features
+  * goreleaser: Update version and change format
+  * go: Update dependencies
+  * ui/help: Mark toggleable device actions properly
+  * ui: help: Clarify connect keybinding toggle functionality</comment>
+    <requestid>1193820</requestid>
+  </revision>
 </revisionlist>
