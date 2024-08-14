@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Aug 14 04:30:20 UTC 2024 - Gordon Leung <pirateclip@protonmail.com>
+
+- update to 2.21.2
+  Features:
+    * Support --stat <num_in_ms> to display long running modules in yellow or red
+  Bugfixes:
+    * Fix bad Intel Arc GPU name and type detection (GPU, Linux)
+    * Fix uninited struct fields (GPU, Linux)
+    * Skip cpu model smbios detection on ARM platforms (CPU, Linux)
+    * Fixing detection of pthread_timedjoin_np (Linux)
+
+-------------------------------------------------------------------
 Fri Aug  9 03:21:10 UTC 2024 - Gordon Leung <pirateclip@protonmail.com>
 
 - update to 2.21.1

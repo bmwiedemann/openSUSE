@@ -714,4 +714,19 @@ Bugfixes:
     - Increase timeout of DBus calls (Linux)</comment>
     <requestid>1192765</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>f220f1759bcef91d71f4dc496df8d85f</srcmd5>
+    <version>2.21.2</version>
+    <time>1723637757</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.21.2
+  Features:
+    * Support --stat &lt;num_in_ms&gt; to display long running modules in yellow or red
+  Bugfixes:
+    * Fix bad Intel Arc GPU name and type detection (GPU, Linux)
+    * Fix uninited struct fields (GPU, Linux)
+    * Skip cpu model smbios detection on ARM platforms (CPU, Linux)
+    * Fixing detection of pthread_timedjoin_np (Linux)</comment>
+    <requestid>1193796</requestid>
+  </revision>
 </revisionlist>
