@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Aug  9 18:26:30 UTC 2024 - Frank Schreiner <FSchreiner@suse.com>
+
+- Add 0001_fix_bashcompletion_with_subcommands.patch
+  * Fixes: (#72) https://github.com/maros/MooseX-App/issues/72 
+  * UPSTREAM PR: https://github.com/maros/MooseX-App/pull/73
+
+-------------------------------------------------------------------
 Fri Mar  8 22:44:05 UTC 2024 - Tina Müller <tina.mueller@suse.com>
 
 - Fix disabling of __perllib_provides

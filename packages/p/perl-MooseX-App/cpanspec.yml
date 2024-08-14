@@ -7,8 +7,8 @@ description_paragraphs: 1
 #sources:
 #  - source1
 #  - source2
-#patches:
-#  bar.patch:
+patches:
+    0001_fix_bashcompletion_with_subcommands.patch: -p1 PATCH-FIX-UPSTREAM M0ses https://github.com/maros/MooseX-App/issues/72
 preamble: |-
   BuildRequires: perl(Config::Any)
 #post_prep: |-

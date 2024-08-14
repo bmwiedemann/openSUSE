@@ -18,7 +18,7 @@
 
 %define cpan_name MooseX-App
 Name:           perl-MooseX-App
-Version:        1.430.0
+Version:        1.430.1
 Release:        0
 %define cpan_version 1.43
 License:        Artistic-1.0 OR GPL-1.0-or-later
@@ -26,6 +26,8 @@ Summary:        Write user-friendly command line apps with even less suffering
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/M/MA/MAROS/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+# PATCH-FIX-UPSTREAM M0ses https://github.com/maros/MooseX-App/issues/72
+Patch0:         0001_fix_bashcompletion_with_subcommands.patch
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
@@ -111,7 +113,7 @@ be defined as simple Moose accessors using the 'option' and 'parameter'
 keywords respectively.
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version}
+%autosetup  -n %{cpan_name}-%{cpan_version} -p 1
 
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
