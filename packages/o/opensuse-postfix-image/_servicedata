@@ -1,7 +1,0 @@
-<servicedata>
- <service name="tar_scm">
-    <param name="url">https://github.com/thkukuk/container-mailserver.git</param>
- </service>
-<service name="tar_scm">
-                <param name="url">https://github.com/thkukuk/containers-mailserver.git</param>
-              <param name="changesrevision">6a78d47e390a8a72210e808a8ba8458d280eba40</param></service></servicedata>
