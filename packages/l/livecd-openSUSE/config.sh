@@ -125,7 +125,7 @@ zypper --non-interactive rm yast2-trans-{uk,sv,ru,ja,da,cs,sr,vi} || :
 rm -rf /usr/share/doc/packages/*
 
 # Save more than 150 MiB by removing this, not very useful for lives
-rm -rf /lib/firmware/{liquidio,netronome,qed,mrvl,mellanox,cypress,dpaa2,bnx2x,cxgb4,intel/vsc}
+rm -rf /lib/firmware/{liquidio,netronome,qed,mrvl,mellanox,cypress,dpaa2,bnx2x,cxgb4,intel/vsc,intel/ipu,xe}
 if [ "$(arch)" == "aarch64" ]; then
 	# Keep some qcom firmware for Lenovo X13s and delete others (save ~50MiB)
 	rm -rf /lib/firmware/qcom/{apq8016,apq8096,qcm2290,qrb4210,sdm845,sm8250,venus*,vpu*}
@@ -214,9 +214,6 @@ baseUpdateSysConfig /etc/sysconfig/console CONSOLE_ENCODING "UTF-8"
 [ "$desktop" = "xfce" ] && displaymanager=lightdm
 [ "$desktop" = "x11" ] && displaymanager=lightdm
 baseUpdateSysConfig /etc/sysconfig/displaymanager DISPLAYMANAGER $displaymanager
-
-# boo#1039756
-[ "$desktop" = "gnome" ] && baseUpdateSysConfig /etc/sysconfig/windowmanager DEFAULT_WM gnome
 
 # Disable journal write to disk in live mode, bug 950999
 echo "Storage=volatile" >> /etc/systemd/journald.conf

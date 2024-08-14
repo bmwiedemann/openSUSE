@@ -1998,4 +1998,20 @@
     <user>dimstar_suse</user>
     <comment>Revert zypp binary removal to save space; zypp binaries are no logner statically linked</comment>
   </revision>
+  <revision rev="252" vrev="252">
+    <srcmd5>2acf7c4130246eb9a2495549e28411a6</srcmd5>
+    <version>unknown</version>
+    <time>1723637780</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1193841</requestid>
+  </revision>
+  <revision rev="253" vrev="253">
+    <srcmd5>f9c9d041212346841f0ebf23a013be05</srcmd5>
+    <version>unknown</version>
+    <time>1723650546</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop intel/ipu firmware: the live images being used in on clowd
+  infra host is kinda useless.</comment>
+  </revision>
 </revisionlist>
