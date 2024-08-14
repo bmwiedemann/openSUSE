@@ -23,4 +23,17 @@
     <comment></comment>
     <requestid>1155034</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d8ee1625cb7a68d97e97b62409036aa5</srcmd5>
+    <version>0.9.1</version>
+    <time>1723637746</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.9.1:
+  * Fixed an issue for CPython 3.13 where `ssl.SSLSocket` and `ssl.SSLObject`
+    certificate chain APIs would return different types.
+  * Added support for Python 3.13.
+  * Fixed loading additional certificates on macOS.
+- Drop patch no-network-testing.patch, not required.</comment>
+    <requestid>1193797</requestid>
+  </revision>
 </revisionlist>

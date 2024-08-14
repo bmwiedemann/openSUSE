@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Aug 14 05:38:45 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.9.1:
+  * Fixed an issue for CPython 3.13 where `ssl.SSLSocket` and `ssl.SSLObject`
+    certificate chain APIs would return different types.
+  * Added support for Python 3.13.
+  * Fixed loading additional certificates on macOS.
+- Drop patch no-network-testing.patch, not required.
+
+-------------------------------------------------------------------
 Sat Mar  2 08:02:57 UTC 2024 - Andreas Schneider <asn@cryptomilk.org>
 
 - Use sle15_python_module_pythons

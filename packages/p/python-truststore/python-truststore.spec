@@ -17,17 +17,13 @@
 
 
 %{?sle15_python_module_pythons}
-%define skip_python39 1
 Name:           python-truststore
-Version:        0.8.0
+Version:        0.9.1
 Release:        0
 Summary:        Verify certificates using OS trust stores
 License:        MIT
 URL:            https://github.com/sethmlarson/truststore
 Source:         https://github.com/sethmlarson/truststore/archive/refs/tags/v%{version}.tar.gz#/truststore-%{version}.tar.gz
-# PATCH-FEATURE-UPSTREAM no-network-testing.patch bsc#[0-9]+ mcepl@suse.com
-# skip tests requiring network access
-Patch0:         no-network-testing.patch
 BuildRequires:  %{python_module aiohttp}
 BuildRequires:  %{python_module flaky}
 BuildRequires:  %{python_module flit-core}
@@ -61,12 +57,12 @@ considered experimental.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest -s -k 'not network'
+%pytest -s -k 'not internet'
 
 %files %{python_files}
 %doc README.md
 %license LICENSE
 %{python_sitelib}/truststore
-%{python_sitelib}/truststore-%{version}*-info
+%{python_sitelib}/truststore-%{version}.dist-info
 
 %changelog
