@@ -18,13 +18,15 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-PeakUtils
-Version:        1.3.4
+Version:        1.3.5
 Release:        0
 Summary:        Peak detection utilities for 1D data
 License:        MIT
 URL:            https://bitbucket.org/lucashnegri/peakutils
-Source:         https://files.pythonhosted.org/packages/source/P/PeakUtils/PeakUtils-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/p/peakutils/peakutils-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-numpy
@@ -45,13 +47,13 @@ centroid computation to further increase the resolution of the peak
 detection.
 
 %prep
-%autosetup -p1 -n PeakUtils-%{version}
+%autosetup -p1 -n peakutils-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -61,6 +63,6 @@ detection.
 %doc README.rst
 %license LICENSE.txt
 %{python_sitelib}/peakutils
-%{python_sitelib}/PeakUtils-%{version}-*.egg-info
+%{python_sitelib}/PeakUtils-%{version}.dist-info
 
 %changelog
