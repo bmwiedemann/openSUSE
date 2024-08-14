@@ -1,7 +1,7 @@
 #
 # spec file for package abi-compliance-checker
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@ Version:        2.3
 Release:        0
 Summary:        A Compliance Checker For library ABIs
 License:        LGPL-2.1-only
-Url:            https://lvc.github.io/abi-compliance-checker
+URL:            https://lvc.github.io/abi-compliance-checker
 Source0:        https://github.com/lvc/abi-compliance-checker/archive/%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -73,7 +73,7 @@ install -m 0644 %{name}.1 %{buildroot}%{_mandir}/man1
 %check
 # aarch64 needs -fPIC option and noarch package cannot use %%ifarch
 ./%{name} \
-  -gcc-options -fPIC \
+  -gcc-options "-fPIC -fpermissive" \
   -test
 
 %files

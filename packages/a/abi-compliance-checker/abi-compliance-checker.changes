@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Aug 12 17:09:26 UTC 2024 - Martin Jambor <mjambor@suse.com>
+
+- Add -fpermissive to compiler flags invoked byt the testsuite because
+  the generated files there do not have proper includes and so cause
+  compiler errors with GCC 14.
+
+-------------------------------------------------------------------
 Thu Oct 17 12:47:48 UTC 2019 - Richard Brown <rbrown@suse.com>
 
 - Remove obsolete Groups tag (fate#326485)
