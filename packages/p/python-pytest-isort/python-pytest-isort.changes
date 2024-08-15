@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Aug 14 14:54:50 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- switch to modern python for sle15
+
+-------------------------------------------------------------------
 Sat Mar 16 13:06:56 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.0.0:
@@ -39,7 +44,7 @@ Tue Aug 25 11:53:40 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 Sat Jul 11 23:13:19 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Update to 1.1.0:
-  * Add support for isort >= 5 
+  * Add support for isort >= 5
 
 -------------------------------------------------------------------
 Sun May  3 07:31:24 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>

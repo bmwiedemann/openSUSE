@@ -83,4 +83,14 @@
   * Add support for pytest 8</comment>
     <requestid>1158476</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>84a08b05afeb793c6e536cf7b86ffaca</srcmd5>
+    <version>4.0.0</version>
+    <time>1723708692</time>
+    <user>dimstar_suse</user>
+    <comment>- switch to modern python for sle15
+
+  * Add support for isort &gt;= 5</comment>
+    <requestid>1193899</requestid>
+  </revision>
 </revisionlist>
