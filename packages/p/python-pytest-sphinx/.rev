@@ -63,4 +63,12 @@
   * Drop support for python 3.7 #59</comment>
     <requestid>1172301</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>0937024ccb95f63a793ccd2254412a4d</srcmd5>
+    <version>0.6.3</version>
+    <time>1723708692</time>
+    <user>dimstar_suse</user>
+    <comment>- switch to modern python for sle15</comment>
+    <requestid>1193898</requestid>
+  </revision>
 </revisionlist>
