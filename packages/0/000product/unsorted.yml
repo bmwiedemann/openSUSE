@@ -16607,7 +16607,7 @@ unsorted:
   - libunbound-devel-mini 
   - libunibilium4 
   - libunibreak-devel 
-  - libunibreak5 
+  - libunibreak5-32bit 
   - libunicap-devel 
   - libunicap2 
   - libunicode-devel 
@@ -20797,6 +20797,8 @@ unsorted:
   - pangomm-doc 
   - pangomm1_4-devel 
   - panini 
+  - pantheon-agent-polkit 
+  - pantheon-agent-polkit-lang 
   - pantheon-wallpapers-branding-upstream 
   - paper-icon-theme 
   - paperclips 
@@ -48828,9 +48830,7 @@ unsorted:
   - yq-fish-completion 
   - yq-zsh-completion 
   - yt-dlp 
-  - yt-dlp-bash-completion 
-  - yt-dlp-fish-completion 
-  - yt-dlp-zsh-completion 
+  - yt-dlp-youtube-dl 
   - ytree 
   - yubico-piv-tool 
   - yubikey-manager 

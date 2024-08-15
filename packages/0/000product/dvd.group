@@ -2867,6 +2867,7 @@
     <package name="libudisks2-0_btrfs" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="libumfpack6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libunbound8" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
+    <package name="libunibreak5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libunistring5" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libunistring5-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libunwind8" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
