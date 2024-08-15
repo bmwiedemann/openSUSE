@@ -1,7 +1,7 @@
 #
 # spec file for package ansible-9
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,17 +38,17 @@
 %endif
 
 Name:           ansible-9
-Version:        9.8.0
+Version:        9.9.0
 Release:        0
 Summary:        Radically simple IT automation
-License:        GPL-3.0+
+License:        GPL-3.0-or-later
 URL:            https://ansible.com/
 Source:         https://files.pythonhosted.org/packages/source/a/ansible/ansible-%{version}.tar.gz
 Source99:       ansible-rpmlintrc
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{ansible_python}-base >= 3.10
 BuildRequires:  %{ansible_python}-setuptools
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 
 # required to fix the azure collection line endings
 BuildRequires:  dos2unix
