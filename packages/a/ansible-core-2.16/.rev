@@ -7,4 +7,12 @@
     <comment>also make ansible-test a versioned subpackage</comment>
     <requestid>1192669</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>4dfc642fe8922b697956578ac9d6c0d3</srcmd5>
+    <version>2.16.10</version>
+    <time>1723708696</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1193976</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Aug 13 17:48:11 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 2.16.10:
+  https://github.com/ansible/ansible/blob/v2.16.10/changelogs/CHANGELOG-v2.16.rst
+  * Minor Changes
+    - ansible-test - Improve the error message shown when an
+      unknown --remote or --docker option is given.
+    - ansible-test - Removed the vyos/1.1.8 network remote as it is
+      no longer functional.
+  * Bugfixes
+    - config, restored the ability to set module compression via a
+      variable
+    - linear strategy: fix handlers included via include_tasks
+      handler to be executed in lockstep (#83019)
+
+-------------------------------------------------------------------
 Thu Aug  8 17:08:41 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - also make ansible-test a versioned subpackage
