@@ -28,7 +28,7 @@
 %endif
 
 Name:           gtk4
-Version:        4.15.5
+Version:        4.15.4
 Release:        0
 Summary:        The GTK+ toolkit library (version 4)
 License:        LGPL-2.1-or-later
@@ -45,6 +45,10 @@ Source99:       gtk4-rpmlintrc
 # https://gitlab.gnome.org/GNOME/gtk/-/merge_requests/4756
 # PATCH-FIX-OPENSUSE 0001-Revert-Meson-Simplify-pkgconfig-file-generator.patch -- Revert "Meson: Simplify pkgconfig file generator"
 Patch0:         0001-Revert-Meson-Simplify-pkgconfig-file-generator.patch
+
+# https://gitlab.gnome.org/GNOME/gtk/-/issues/6620
+# PATCH-FIX-UPSTREAM 0002-Revert-no-pointer-viewport.patch -- Fix the gigantic cursor issue pulled in latest version
+Patch1:         0002-Revert-no-pointer-viewport.patch
 
 BuildRequires:  cups-devel >= 2.0
 # We do not support building against cups 2.3 betas

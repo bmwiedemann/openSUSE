@@ -1,32 +1,7 @@
 -------------------------------------------------------------------
-Mon Aug 12 07:06:16 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
-
-- Update to version 4.15.5:
-  + GtkTextView: ADd GtkTextBufferCommitNotify
-  + CSS: Propagate color state information to GSK for many
-    features: colors, borders, shadows, text
-  + Gdk:
-    - Fix an fd leak in the Vulkan code
-    - Fix a leak of EGLSurfaces and DMA buffers
-    - Set the opaque region of surfaces automatically based on
-      their content
-  + Gsk:
-    - Fix Emoji rendering in Vulkan
-    - Rework color handling to take color states into account
-    - Implement more powerful occlusion culling
-    - Minimize our use of renderpasses
-  + Debugging: The inspector shows details about color states
-  + Deprecations:
-    - gdk_draw_context_begin/end_frame
-    - gdk_surface_set_opaque_region
-  + Build: Require gstreamer 1.24
-  + Updated translations.
-- Drop 0002-Revert-no-pointer-viewport.patch: Fixed upstream.
-
--------------------------------------------------------------------
 Fri Aug  2 20:17:08 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
-- Add 0002-Revert-no-pointer-viewport.patch:
+- Add 0002-Revert-no-pointer-viewport.patch --
   Fixes https://gitlab.gnome.org/GNOME/gtk/-/issues/6620
 
 -------------------------------------------------------------------
