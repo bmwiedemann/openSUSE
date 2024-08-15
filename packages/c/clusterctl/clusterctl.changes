@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Aug 14 16:54:58 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.8.1:
+  * Bump Kubernetes in tests to v1.31.0 and claim support for v1.31
+  * Improve clusterctl client config logic & error message
+  * Update controller-runtime dependency to v0.18.5
+
+-------------------------------------------------------------------
 Tue Aug 13 04:53:00 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.8.0:
