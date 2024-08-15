@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Aug 13 17:47:57 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.17.3:
+  * Update integration test guide docker flag usage (#1731) (#1737)
+  * ci: refresh dev dependencies (#1730) (#1735)
+  * ci: refresh dev dependencies (#1722) (#1726)
+  * add vault password file example (#1696) (#1721)
+  * Be more explicit about registering with a loop (#1709) (#1717)
+  * [PR #1707/141ca118 backport][stable-2.17] ci: refresh dev
+    dependencies (#1711)
+  * Move community_topics_workflow to docs.ansible.com (#1028)
+    (#1704)
+  * Add porting guide for Ansible 9.8.0. (#1698) (#1701)
+  * Add porting guide for Ansible 10.2.0. (#1697) (#1699)
+
+-------------------------------------------------------------------
 Tue Jul 16 20:20:06 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.17.2:
