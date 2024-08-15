@@ -20,6 +20,8 @@
 
 FROM opensuse/tumbleweed:latest
 
+RUN set -euo pipefail; zypper -n in --no-recommends 389-ds timezone openssl nss_synth; zypper -n clean; rm -rf /var/log/{lastlog,tallylog,zypper.log,zypp/history,YaST2}
+
 # Define labels according to https://en.opensuse.org/Building_derived_containers
 # labelprefix=org.opensuse.application.389-ds
 LABEL org.opencontainers.image.authors="william.brown@suse.com"
@@ -37,8 +39,6 @@ LABEL org.opensuse.lifecycle-url="https://en.opensuse.org/Lifetime#openSUSE_BCI"
 LABEL org.opensuse.release-stage="released"
 # endlabelprefix
 LABEL io.artifacthub.package.readme-url="https://raw.githubusercontent.com/SUSE/BCI-dockerfile-generator/Tumbleweed/389-ds-container/README.md"
-
-RUN set -euo pipefail; zypper -n in --no-recommends 389-ds timezone openssl nss_synth; zypper -n clean; rm -rf /var/log/{lastlog,tallylog,zypper.log,zypp/history,YaST2}
 CMD ["/usr/lib/dirsrv/dscontainer", "-r"]
 EXPOSE 3389 3636
 

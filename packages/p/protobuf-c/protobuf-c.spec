@@ -3,6 +3,7 @@
 #
 # Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2011 Pascal Bleser
+# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +29,7 @@ URL:            https://github.com/protobuf-c/protobuf-c
 Source:         https://github.com/protobuf-c/protobuf-c/releases/download/v%version/%name-%version.tar.gz
 BuildRequires:  autoconf
 BuildRequires:  automake
-BuildRequires:  gcc
+BuildRequires:  c++_compiler
 BuildRequires:  glibc-devel
 BuildRequires:  libtool
 BuildRequires:  make
@@ -79,8 +80,7 @@ rm %buildroot/%_libdir/*.la
 %check
 make check
 
-%post   -n libprotobuf-c%sover -p /sbin/ldconfig
-%postun -n libprotobuf-c%sover -p /sbin/ldconfig
+%ldconfig_scriptlets -n libprotobuf-c%sover
 
 %files -n libprotobuf-c%sover
 %license LICENSE
@@ -88,6 +88,7 @@ make check
 %_libdir/libprotobuf-c.so.%sover.*
 
 %files -n libprotobuf-c-devel
+%license LICENSE
 %dir %_includedir/protobuf-c
 %dir %_includedir/google
 %dir %_includedir/google/protobuf-c

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Aug 13 20:43:17 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2024.08.06
+  * youtube: Fix `n` function name extraction for player `b12cc44b`
+
+-------------------------------------------------------------------
+Tue Aug 13 18:34:37 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Merge sh completion packages into main package
+- Add yt-dlp-youtube-dl subpackage
+
+-------------------------------------------------------------------
 Thu Aug  1 15:48:06 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2024.08.01

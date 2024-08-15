@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Aug 14 09:06:33 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * explicit-httpcore-bundle.patch
+    + require the org.apache.httpcomponents.httpcore explicitely,
+      since it is not pulled in transitively any more
+
+-------------------------------------------------------------------
 Thu Jun 13 10:29:02 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Adapt to change maven-plugin-build-helper

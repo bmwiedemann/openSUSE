@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Aug  2 05:51:26 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- export CGOFLAGS="CGO_ENABLED=1" before building: fixes build with
+  go 1.22 on i586 without breaking the other builds.
+
+-------------------------------------------------------------------
 Mon Feb 13 16:09:05 UTC 2023 - Richard Brown <rbrown@suse.com>
 
 - v1.1.0.2

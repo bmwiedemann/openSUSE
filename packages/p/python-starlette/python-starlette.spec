@@ -27,7 +27,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-starlette%{psuffix}
-Version:        0.37.2
+Version:        0.38.2
 Release:        0
 Summary:        Lightweight ASGI framework/toolkit
 License:        BSD-3-Clause

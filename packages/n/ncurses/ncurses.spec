@@ -105,6 +105,7 @@ Patch0:         ncurses-6.4.dif
 Patch1:         ncurses-5.9-ibm327x.dif
 Patch2:         ncurses-5.7-tack.dif
 Patch3:         FORTIFY_SOURCE_3-fix.patch
+Patch4:         fix-20240810.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %global         _miscdir    %{_datadir}/misc
 %global         _incdir     %{_includedir}
@@ -366,6 +367,7 @@ mv tack-* tack
 %patch -P2 -p0 -b .hs
 %patch -P0 -p0 -b .p0
 %patch -P3 -p1
+%patch -P4 -p0
 
 %build
 #
@@ -672,7 +674,7 @@ export CFLAGS_SHARED
 %endif
     # must not use %jobs here (would lead to: ln: ncurses.h already exists)
     find man/ -name '*.[1-8]x.*' -print -delete
-    make install DESTDIR=%{root} includedir=%{_incdir} includesubdir=/ncursesw libdir=%{_libdir}
+    make install DESTDIR=%{root} includedir=%{_incdir}/ includesubdir=/ncursesw libdir=%{_libdir}
 %if %{with onlytinfo}
     # This ensures that we get the libtinfo *with* _nc_read_entry2 symbol as well
     gcc $CFLAGS $LDFLAGS -fPIC -shared -Wl,--auxiliary=libtinfo.so.6,-soname,libtinfow.so.6,-stats,-lc \
@@ -793,7 +795,7 @@ export CFLAGS_SHARED
 	     s@^(libdir=).show_libdir@\1%{_libdir}/ncurses5@
 	     s@^(includedir=).show_includedir@\1%{_incdir}/ncurses5@' misc/gen-pkgconfig
     # must not use %jobs here (would lead to: ln: ncurses.h already exists)
-    make install.libs install.includes DESTDIR=%{root} includedir=%{_incdir}/ncurses5 includesubdir=/ncurses libdir=%{_libdir}/ncurses5
+    make install.libs install.includes DESTDIR=%{root} includedir=%{_incdir}/ncurses5/ includesubdir=/ncurses libdir=%{_libdir}/ncurses5
     ln -sf %{_incdir}/ncurses5/ncurses/{curses,ncurses,term}.h %{root}%{_incdir}/ncurses5/
     pushd man
 	bash ../edit_man.sh normal installing %{root}%{_mandir} . ncurses5-config.1
@@ -857,7 +859,7 @@ includedir5=%{_incdir}/ncurses5' "$pc"
     make -C c++ etip.h
     make %{?_smp_mflags}
     # must not use %jobs here (would lead to: ln: ncurses.h already exists)
-    make install.libs install.includes DESTDIR=%{root} includedir=%{_incdir} includesubdir=/ncurses libdir=%{_libdir}
+    make install.libs install.includes DESTDIR=%{root} includedir=%{_incdir}/ includesubdir=/ncurses libdir=%{_libdir}
 %if %{with onlytinfo}
     # This ensures that we get the libtinfo *with* _nc_read_entry2 symbol as well
     cp -p libtinfo.so.%{basevers}.back  %{root}%{_libdir}/libtinfo.so.%{basevers}
@@ -949,7 +951,7 @@ includedir5=%{_incdir}/ncurses5' "$pc"
 	     s@^(libdir=).show_libdir@\1%{_libdir}/ncurses5@
 	     s@^(includedir=).show_includedir@\1%{_incdir}/ncurses5/ncursesw@' misc/gen-pkgconfig
     # must not use %jobs here (would lead to: ln: ncurses.h already exists)
-    make install.libs install.includes DESTDIR=%{root} includedir=%{_incdir}/ncurses5 includesubdir=/ncursesw libdir=%{_libdir}/ncurses5
+    make install.libs install.includes DESTDIR=%{root} includedir=%{_incdir}/ncurses5/ includesubdir=/ncursesw libdir=%{_libdir}/ncurses5
 %if %{with onlytinfo}
     gcc $CFLAGS $LDFLAGS -fPIC -shared -Wl,--auxiliary=libtinfo.so.5,-soname,libtinfow.so.5,-stats,-lc \
 	-Wl,--version-script,package/ncursesw.map -o %{root}%{_libdir}/libtinfow.so.5.9

@@ -82,8 +82,8 @@
   boo#1228242: '20240814'
   boo#1228388: '20240806'
   boo#1228438: '20240730'
-  boo#1228862: '20240813'
-  boo#1228864: '20240813'
+  boo#1228862: '20240814'
+  boo#1228864: '20240814'
   boo#1228981: '20240813'
   boo#1229051: '20240812'
   bsc#1223381: '20240514'
@@ -159,7 +159,7 @@
   poo#162776: '20240622'
   poo#162914: '20240709'
   poo#162980: '20240814'
-  poo#163196: '20240813'
+  poo#163196: '20240814'
   poo#163205: '20240705'
   poo#163208: '20240813'
   poo#163358: '20240714'
@@ -175,6 +175,7 @@
   poo#164919: '20240805'
   poo#165006: '20240814'
   poo#165201: '20240812'
+  poo#165318: '20240814'
   poo#63397: '20240524'
 </value>
   </attribute>
@@ -227,7 +228,7 @@ rebuildpacs-leafs = branding-openSUSE PackageKit-branding-openSUSE xfce4-brandin
     <value>s/openSUSE-/openSUSE-Staging:$LETTER-/</value>
   </attribute>
   <attribute namespace="OSRT" name="ProductVersion">
-    <value>20240814</value>
+    <value>20240815</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerConfig">
     <value>arch: x86_64

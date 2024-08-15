@@ -134,4 +134,13 @@
   * Fix variable overflow and check for it (#15)</comment>
     <requestid>1189803</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>60238d3c987cfb84ee127df1d9cb2f94</srcmd5>
+    <version>0.13.0+git.20240814</version>
+    <time>1723708655</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.13.0+git.20240814:
+  * wtmpdb-update-boot service requires dbus</comment>
+    <requestid>1193868</requestid>
+  </revision>
 </revisionlist>

@@ -32,7 +32,7 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 67.2}
 BuildRequires:  %{python_module setuptools_scm >= 6.2}
 BuildRequires:  %{python_module wheel}
-BuildRequires:  ca-certificates
+BuildRequires:  ca-certificates-mozilla
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  zsh

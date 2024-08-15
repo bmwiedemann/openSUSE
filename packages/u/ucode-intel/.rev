@@ -1162,4 +1162,41 @@
     <comment></comment>
     <requestid>1188843</requestid>
   </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>2a3f8c9226debf11aef93dcbe0ed0536</srcmd5>
+    <version>20240813</version>
+    <time>1723708649</time>
+    <user>dimstar_suse</user>
+    <comment>- Intel CPU Microcode was updated to the 20240813 release (bsc#1229129)
+  - CVE-2024-24853: Security updates for [INTEL-SA-01083](https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-01083.html)
+  - CVE-2024-25939: Security updates for [INTEL-SA-01118](https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-01118.html)
+  - CVE-2024-24980: Security updates for [INTEL-SA-01100](https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-01100.html)
+  - CVE-2023-42667: Security updates for [INTEL-SA-01038](https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-01038.html)
+  - CVE-2023-49141: Security updates for [INTEL-SA-01046](https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-01046.html)
+  Other issues fixed:
+  - Update for functional issues. Refer to [Intel® Core™ Ultra Processor](https://cdrdv2.intel.com/v1/dl/getContent/792254) for details.
+  - Update for functional issues. Refer to [3rd Generation Intel® Xeon® Processor Scalable Family Specification Update](https://cdrdv2.intel.com/v1/dl/getContent/637780) for details.
+  - Update for functional issues. Refer to [3rd Generation Intel® Xeon® Scalable Processors Specification Update](https://cdrdv2.intel.com/v1/dl/getContent/634897) for details.
+  - Update for functional issues. Refer to [2nd Generation Intel® Xeon® Processor Scalable Family Specification Update](https://cdrdv2.intel.com/v1/dl/getContent/338848) for details
+  - Update for functional issues. Refer to [Intel® Xeon® D-2700 Processor Specification Update](https://cdrdv2.intel.com/v1/dl/getContent/714071) for details.
+  - Update for functional issues. Refer to [Intel® Xeon® E-2300 Processor Specification Update ](https://cdrdv2.intel.com/v1/dl/getContent/709192) for details.
+  - Update for functional issues. Refer to [13th Generation Intel® Core™ Processor Specification Update](https://cdrdv2.intel.com/v1/dl/getContent/740518) for details.
+  - Update for functional issues. Refer to [12th Generation Intel® Core™ Processor Family](https://cdrdv2.intel.com/v1/dl/getContent/682436) for details.
+  - Update for functional issues. Refer to [11th Gen Intel® Core™ Processor Specification Update](https://cdrdv2.intel.com/v1/dl/getContent/631123) for details.
+  - Update for functional issues. Refer to [10th Gen Intel® Core™ Processor Families Specification Update](https://cdrdv2.intel.com/v1/dl/getContent/341079) for details.
+  - Update for functional issues. Refer to [10th Generation Intel® Core™ Processor Specification Update](https://cdrdv2.intel.com/v1/dl/getContent/615213) for details.
+  - Update for functional issues. Refer to [8th and 9th Generation Intel® Core™ Processor Family Spec Update](https://cdrdv2.intel.com/v1/dl/getContent/337346) for details.
+  - Update for functional issues. Refer to [8th Generation Intel® Core™ Processor Families Specification Update](https://cdrdv2.intel.com/v1/dl/getContent/338025) for details.
+  - Update for functional issues. Refer to [7th and 8th Generation Intel® Core™ Processor Specification Update](https://cdrdv2.intel.com/v1/dl/getContent/334663) for details.
+  - Update for functional issues. Refer to [Intel® Processors and Intel® Core™ i3 N-Series](https://cdrdv2.intel.com/v1/dl/getContent/764616) for details.
+  - Update for functional issues. Refer to [Intel® Atom® x6000E Series, and Intel® Pentium® and Celeron® N and J Series Processors for Internet of Things (IoT) Applications](https://cdrdv2.intel.com/v1/dl/getContent/636674) for details.
+ Updated Platforms:
+  | Processor      | Stepping | F-M-S/PI    | Old Ver  | New Ver  | Products
+  |:---------------|:---------|:------------|:---------|:---------|:---------
+  | AML-Y22        | H0       | 06-8e-09/10 | 000000f4 | 000000f6 | Core Gen8 Mobile
+  | AML-Y42        | V0       | 06-8e-0c/94 | 000000fa | 000000fc | Core Gen10 Mobile
+  | CFL-H          | R0       | 06-9e-0d/22 | 000000fc | 00000100 | Core Gen9 Mobile
+  | CFL-H/S        | P0       | 06-9e-0c/22 | 000000f6 | 000000f8 | Core Gen9</comment>
+    <requestid>1193814</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug 14 12:33:37 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire gettext-devel instead of gettext: Allows OBS to
+  shortcut throught gettext-runtime-mini.
+
+-------------------------------------------------------------------
 Fri Jul 12 12:53:13 UTC 2024 - Martin Jambor <mjambor@suse.com>
 
 - Add -Wno-error=implicit-function-declaration to %optflags to

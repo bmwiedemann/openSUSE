@@ -282,4 +282,41 @@ SR for python stack proposal</comment>
 - Add exceptiongroup to {Build,}Requires.</comment>
     <requestid>1157062</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>e268938253e1734717a310c4376b342a</srcmd5>
+    <version>4.4.0</version>
+    <time>1723708654</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.4.0:
+  * Added the BlockingPortalProvider class to aid with
+    constructing synchronous counterparts to asynchronous
+    interfaces that would otherwise require multiple blocking
+    portals
+  * Added __slots__ to AsyncResource so that child classes can
+    use __slots__
+  * Added the TaskInfo.has_pending_cancellation() method
+  * Fixed erroneous RuntimeError: called 'started' twice on the
+    same task status when cancelling a task in a TaskGroup
+    created with the start() method before the first checkpoint
+    is reached after calling task_status.started()
+  * Fixed two bugs with TaskGroup.start() on asyncio: Fixed
+    erroneous RuntimeError: called 'started' twice on the same
+    task status when cancelling a task in a TaskGroup created
+    with the start() method before the first checkpoint is
+    reached after calling task_status.started() (#706; PR by
+    Dominik Schwabe) Fixed the entire task group being cancelled
+    if a TaskGroup.start() call gets cancelled (#685, #710)
+  * Fixed erroneous RuntimeError: called 'started' twice on the
+    same task status when cancelling a task in a TaskGroup
+    created with the start() method before the first checkpoint
+    is reached after calling task_status.started()
+  * Fixed the entire task group being cancelled if a
+    TaskGroup.start() call gets cancelled
+  * Fixed a race condition that caused crashes when multiple
+    event loops of the same backend were running in separate
+    threads and simultaneously attempted to use AnyIO for their
+    first time
+  * Fixed cancellation delivery on asyncio incrementing the wrong</comment>
+    <requestid>1193842</requestid>
+  </revision>
 </revisionlist>

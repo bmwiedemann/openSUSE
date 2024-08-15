@@ -21,7 +21,7 @@
 %define skip_python37 1
 %{?sle15_python_module_pythons}
 Name:           yt-dlp
-Version:        2024.08.01
+Version:        2024.08.06
 Release:        0
 Summary:        Enhanced fork of youtube-dl, a video site downloader for offline watching
 License:        CC-BY-SA-3.0 AND SUSE-Public-Domain
@@ -35,6 +35,12 @@ BuildRequires:  make >= 4
 BuildRequires:  python-rpm-macros
 BuildRequires:  zip
 BuildArch:      noarch
+Obsoletes:      yt-dlp-bash-completion < %version-%release
+Provides:       yt-dlp-bash-completion = %version-%release
+Obsoletes:      yt-dlp-fish-completion < %version-%release
+Provides:       yt-dlp-fish-completion = %version-%release
+Obsoletes:      yt-dlp-zsh-completion < %version-%release
+Provides:       yt-dlp-zsh-completion = %version-%release
 # %%primary_python not available in Leap yet
 Requires:       %(echo %{python_module yt-dlp} | perl -pe 's{.* }{}g')
 %define python_subpackage_only 1
@@ -44,32 +50,14 @@ Requires:       %(echo %{python_module yt-dlp} | perl -pe 's{.* }{}g')
 yt-dlp is a command-line program to retrieve videos from
 YouTube.com and other video sites for later watching.
 
-%package -n yt-dlp-bash-completion
-Summary:        Bash completion for yt-dlp
-Group:          System/Shells
-Requires:       bash-completion
-Supplements:    (yt-dlp and bash-completion)
+%package -n yt-dlp-youtube-dl
+Summary:        Compat symlinks for youtube-dl
+Requires:       yt-dlp
+Provides:       youtube-dl
+Conflicts:      youtube-dl
 
-%description -n yt-dlp-bash-completion
-Bash command line completion support for yt-dlp.
-
-%package -n yt-dlp-fish-completion
-Summary:        Fish completion for yt-dlp
-Group:          System/Shells
-Requires:       fish
-Supplements:    (yt-dlp and fish)
-
-%description -n yt-dlp-fish-completion
-Fish command line completion support for yt-dlp.
-
-%package -n yt-dlp-zsh-completion
-Summary:        Zsh Completion for yt-dlp
-Group:          System/Shells
-Requires:       zsh
-Supplements:    (yt-dlp and zsh)
-
-%description -n yt-dlp-zsh-completion
-ZSH command line completion support for yt-dlp.
+%description -n yt-dlp-youtube-dl
+This package installs "youtube-dl" as a symlink to yt-dlp.
 
 %package -n python-yt-dlp
 Summary:        yt-dlp Python library
@@ -99,6 +87,7 @@ rm -f youtube-dl yt-dlp
 %install
 b="%buildroot"
 %pyproject_install
+ln -s yt-dlp "$b/%_bindir/youtube-dl"
 %fdupes %buildroot/usr
 rm -Rf "$b/%_datadir/doc"
 
@@ -107,15 +96,12 @@ rm -Rf "$b/%_datadir/doc"
 %doc README.md
 %_bindir/%name
 %_mandir/man1/%name.1%ext_man
-
-%files -n yt-dlp-bash-completion
 %_datadir/bash-completion/
-
-%files -n yt-dlp-fish-completion
 %_datadir/fish/
-
-%files -n yt-dlp-zsh-completion
 %_datadir/zsh/
+
+%files -n yt-dlp-youtube-dl
+%_bindir/youtube-dl
 
 %files %{python_files yt-dlp}
 %python_sitelib/y*

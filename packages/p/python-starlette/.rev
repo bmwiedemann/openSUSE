@@ -314,4 +314,23 @@ https://build.opensuse.org/request/show/1126958
     `Config` is not valid #2422.</comment>
     <requestid>1170764</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>9b2983830d7dbdc7e5eb6089db83d5a4</srcmd5>
+    <version>0.38.2</version>
+    <time>1723708641</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.38.2:
+  * Fix routing.get_name() not to assume all routines have __name__ #2648
+- 0.38.1:
+  * Revert &quot;Add support for ASGI pathsend extension&quot; #2649.
+- 0.38.0:
+  * Allow use of memoryview in StreamingResponse and Response #2576
+    and #2577.
+  * Send 404 instead of 500 when filename requested is too long on
+    StaticFiles #2583.
+  * Fail fast on invalid Jinja2Template instantiation parameters #2568.
+  * Check endpoint handler is async only once #2536.
+  * Add proper synchronization to WebSocketTestSession #2597.</comment>
+    <requestid>1193696</requestid>
+  </revision>
 </revisionlist>

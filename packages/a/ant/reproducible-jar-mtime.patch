@@ -1,5 +1,17 @@
---- apache-ant-1.10.14/src/main/org/apache/tools/ant/taskdefs/Jar.java	2024-07-16 14:41:00.996055227 +0200
-+++ apache-ant-1.10.14/src/main/org/apache/tools/ant/taskdefs/Jar.java	2024-07-16 14:52:07.583866195 +0200
+--- apache-ant-1.10.14/src/main/org/apache/tools/ant/taskdefs/condition/IsLastModified.java	2024-07-22 09:18:51.385562681 +0200
++++ apache-ant-1.10.14/src/main/org/apache/tools/ant/taskdefs/condition/IsLastModified.java	2024-07-22 10:01:32.218061839 +0200
+@@ -128,6 +128,9 @@
+             return millis;
+         }
+         if ("now".equalsIgnoreCase(dateTime)) {
++            if ( System.getenv("SOURCE_DATE_EPOCH") != null ) {
++                return 1000 * Long.parseLong(System.getenv("SOURCE_DATE_EPOCH"));
++            }
+             return System.currentTimeMillis();
+         }
+         DateFormat df = dfFactory.getPrimaryFormat();
+--- apache-ant-1.10.14/src/main/org/apache/tools/ant/taskdefs/Jar.java	2024-07-22 09:18:51.382229324 +0200
++++ apache-ant-1.10.14/src/main/org/apache/tools/ant/taskdefs/Jar.java	2024-07-22 09:19:09.242362668 +0200
 @@ -450,6 +450,13 @@
          serviceList.add(service);
      }
@@ -41,8 +53,8 @@
                            null, ZipFileSet.DEFAULT_FILE_MODE);
          }
      }
---- apache-ant-1.10.14/src/main/org/apache/tools/ant/taskdefs/Zip.java	2024-07-16 14:41:00.999388566 +0200
-+++ apache-ant-1.10.14/src/main/org/apache/tools/ant/taskdefs/Zip.java	2024-07-17 14:27:00.917945219 +0200
+--- apache-ant-1.10.14/src/main/org/apache/tools/ant/taskdefs/Zip.java	2024-07-22 09:18:51.385562681 +0200
++++ apache-ant-1.10.14/src/main/org/apache/tools/ant/taskdefs/Zip.java	2024-07-22 09:19:09.242362668 +0200
 @@ -682,6 +682,7 @@
                      "Failed to create missing parent directory for %s",
                      zipFile);
@@ -87,3 +99,15 @@
              ze.setMethod(doCompress ? ZipEntry.DEFLATED : ZipEntry.STORED);
              // if the input stream doesn't support mark/reset ability, we wrap it in a
              // stream that adds that support.
+--- apache-ant-1.10.14/src/main/org/apache/tools/zip/ZipOutputStream.java	2024-07-22 09:18:51.405562831 +0200
++++ apache-ant-1.10.14/src/main/org/apache/tools/zip/ZipOutputStream.java	2024-07-22 10:00:20.874193063 +0200
+@@ -791,6 +791,9 @@
+ 
+         if (entry.getTime() == -1) { // not specified
+             entry.setTime(System.currentTimeMillis());
++            if ( System.getenv("SOURCE_DATE_EPOCH") != null ) {
++                entry.setTime(1000 * Long.parseLong(System.getenv("SOURCE_DATE_EPOCH")));
++            }
+         }
+     }
+ 

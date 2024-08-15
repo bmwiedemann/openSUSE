@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Aug 13 20:18:47 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- require ca-certificates-mozilla for the pip >= 24.2
+
+-------------------------------------------------------------------
 Mon Jul 15 11:25:31 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 3.4.0

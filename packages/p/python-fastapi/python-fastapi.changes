@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug 14 02:13:46 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch allow-starlette-0.38.patch:
+  * Allow starlette 0.38.
+
+-------------------------------------------------------------------
 Thu Aug  8 09:01:36 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - update to 0.112.0:

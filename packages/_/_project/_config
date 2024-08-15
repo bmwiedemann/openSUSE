@@ -2273,6 +2273,7 @@ BuildFlags: onlybuild:libthai
 BuildFlags: onlybuild:libtheora
 BuildFlags: onlybuild:libtirpc
 BuildFlags: onlybuild:libtool
+BuildFlags: onlybuild:libunibreak
 BuildFlags: onlybuild:libunistring
 BuildFlags: onlybuild:libunwind
 BuildFlags: onlybuild:liburing

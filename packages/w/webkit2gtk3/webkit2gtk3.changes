@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Aug 13 16:48:56 UTC 2024 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 2.44.3:
+  + Fix web process cache suspend/resume when sandbox is enabled.
+  + Fix accelerated images dissapearing after scrolling.
+  + Fix video flickering with DMA-BUF sink.
+  + Fix pointer lock on X11.
+  + Fix movement delta on mouse events in GTK3.
+  + Undeprecate console message API and make it available in 2022
+    API.
+  + Fix several crashes and rendering issues.
+- Drop patches now upstream:
+  9d5844679af8f84036f1b800307e799bd7ab73ba.patch
+  webkit2gtk3-CVE-2024-40776.patch
+  webkit2gtk3-CVE-2024-40779.patch
+  webkit2gtk3-CVE-2024-40780.patch
+  webkit2gtk3-CVE-2024-40782.patch
+
+-------------------------------------------------------------------
 Thu Aug  1 20:25:14 UTC 2024 - Michael Gorse <mgorse@suse.com>
 
 - Add CVE fixes:

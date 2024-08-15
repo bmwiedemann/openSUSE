@@ -874,4 +874,12 @@ SPDX format (note that it should CDDL-1.1 if the (c) owner and license steward i
     <comment>Reproducible mar mtimes and javadoc generation</comment>
     <requestid>1188402</requestid>
   </revision>
+  <revision rev="98" vrev="8">
+    <srcmd5>815779d1733d7dc5448c52dbbc7d13d2</srcmd5>
+    <version>1.10.14</version>
+    <time>1723708658</time>
+    <user>dimstar_suse</user>
+    <comment>more reproducible changes</comment>
+    <requestid>1193876</requestid>
+  </revision>
 </revisionlist>

@@ -52,6 +52,7 @@ BuildRequires:  %{python_module build}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools_scm = %{version}}
 BuildRequires:  %{python_module typing-extensions if %python-base < 3.11}
+BuildRequires:  ca-certificates-mozilla
 BuildRequires:  git-core
 BuildRequires:  mercurial
 %endif

@@ -1,7 +1,7 @@
 #
 # spec file for package liblc3
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,12 +19,12 @@
 %define lc3soname liblc3-1
 
 Name:           liblc3
-Version:        1.0.4
+Version:        1.1.1
 Release:        0
 Summary:        Low Complexity Communication Codec (LC3)
 License:        Apache-2.0
 URL:            https://github.com/google/liblc3
-Source:         %{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.zst
 Source99:       baselibs.conf
 BuildRequires:  c_compiler
 BuildRequires:  meson

@@ -76,7 +76,7 @@ ExclusiveArch:  do-not-build
 Name:           webkit2%{_gtknamesuffix}
 ### FIXME ### Drop the disabling of LTO on next release/versionbump
 %define _lto_cflags %{nil}
-Version:        2.44.2
+Version:        2.44.3
 Release:        0
 Summary:        Library for rendering web content, GTK+ Port
 License:        BSD-3-Clause AND LGPL-2.0-or-later
@@ -91,16 +91,6 @@ Source99:       webkit2gtk3.keyring
 Patch0:         reproducibility.patch
 # PATCH-FIX-UPSTREAM webkit2gtk3-disable-dmabuf-nvidia.patch boo#1216778 mgorse@suse.com -- disable the DMABuf renderer for NVIDIA proprietary drivers.
 Patch2:         webkit2gtk3-disable-dmabuf-nvidia.patch
-# PATCH-FIX-UPSTREAM 9d5844679af8f84036f1b800307e799bd7ab73ba -- VA+DMABuf videos flicker
-Patch3:         https://github.com/WebKit/WebKit/commit/9d5844679af8f84036f1b800307e799bd7ab73ba.patch
-# PATCH-FIX-UPSTREAM webkit2gtk3-CVE-2024-40776.patch boo#1228613 mgorse@suse.com -- fix a use after free.
-Patch4:         webkit2gtk3-CVE-2024-40776.patch
-# PATCH-FIX-UPSTREAM webkit2gtk3-CVE-2024-40779.patch boo#1228693 mgorse@suse.com -- fix a buffer overflow.
-Patch5:         webkit2gtk3-CVE-2024-40779.patch
-# PATCH-FIX-UPSTREAM webkit2gtk3-CVE-2024-40780.patch boo#1228694 mgorse@suse.com -- fix an out-of-bounds read.
-Patch6:         webkit2gtk3-CVE-2024-40780.patch
-# PATCH-FIX-UPSTREAM webkit2gtk3-CVE-2024-40782.patch boo#1228695 mgorse@suse.com -- fix a NULL pointer dereference.
-Patch7:         webkit2gtk3-CVE-2024-40782.patch
 
 BuildRequires:  Mesa-libEGL-devel
 BuildRequires:  Mesa-libGL-devel

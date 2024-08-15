@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Wed Jul  3 09:50:35 UTC 2024 - llyyr <llyyr@yukari.in>
+
+- Update to 0.17.3:
+  * Fix 0.17.2 regression in the fontconfig fontprovider leading to
+    undesirable widths being chosen from large typographic families
+  * Fix configure generated with slibtool-provided autoconf macros
+  * Fix make check for shared-only builds
+  * Constify some API parameters in a backwards-compatible manner
+  * Add new ass_malloc and ass_free API functions
+  * Tweak default optimization flags
+  * Speed up parsing of events with very long override blocks
+  * Improve handling of HarfBuzz-related failures
+- reintroduce 'make check' as the issue has been fixed upstream
+
+-------------------------------------------------------------------
+Tue May 28 03:41:41 UTC 2024 - llyyr <llyyr@yukari.in>
+
+- Update to 0.17.2:
+  * This release brings optimized assembly routines for aarch64,
+    as well as numerous individual improvements and fixes.
+  * Detailed Changes:
+    - Fix rendering of \h in certain cases
+    - Fix a minor memory leak in the CoreText and DirectWrite font provider
+    - Fix wrong ASS_Image dimensions for huge BorderStyle=4 backgrounds
+      potentially leading to out of bound reads by API users
+    - Improve quality of animated rectangular clips
+    - Improve accuracy of cache limits
+    - Full-Unicode cmaps are now always preferred
+    - Improve font selection compatibility in the DirectWrite font provider
+    - Improved documentation
+    - Updating selective overrides now forces a cache clear to avoid issues
+      with outdated caches
+    - Frame and storage resolutions are now limited to what a single ASS_Image
+      can represent
+    - make check now runs checkasm if assembly is enabled
+    - CoreText can now be used on Mac OS X 10.5
+    - Meson/muon is now offered as a secondary build system bringing back
+      first-party MSVC support
+    - Note however it is not at feature parity with autotools in all cases
+    - aarch64: add optimized assembly routines covering the same set as on x86;
+      they work on both little and big endian systems
+    - x86: add SSSE3 versions of some assembly routines to help CPUs without
+      AVX2
+    - x86: it is now possible to build binaries with optimized assembly an
+      SHSTK support
+    - Improve VSFilter compatibility
+- 'make check' is broken for --disable-static builds because checkasm needs to
+  access symbols that aren't part of the public API, so just disable it.
+
+-------------------------------------------------------------------
+Mon Nov 27 12:52:35 UTC 2023 - llyyr <llyyr.public@gmail.com>
+
+- Require libunibreak during build for better linebreaking of
+  unicode text.
+
+-------------------------------------------------------------------
 Sun Mar 19 12:08:09 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.17.1:

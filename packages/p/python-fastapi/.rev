@@ -399,4 +399,13 @@
     standard extras</comment>
     <requestid>1192578</requestid>
   </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>59a10fe8f50fd3b28a5383fba12ba5ab</srcmd5>
+    <version>0.112.0</version>
+    <time>1723708649</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch allow-starlette-0.38.patch:
+  * Allow starlette 0.38.</comment>
+    <requestid>1193792</requestid>
+  </revision>
 </revisionlist>

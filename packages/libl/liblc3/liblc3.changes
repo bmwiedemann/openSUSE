@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Aug 13 19:55:33 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.1.1:
+  + Wasm Compilation cleanup
+  + build: fix rpath issue
+  + Add build-macos-meson job
+  + Bluetooth Conformance test updated for LC3
+- Changes from version 1.1.0:
+  + LC3 Plus features
+  + Python library wrapper
+  + Add WASM compilation target
+
+-------------------------------------------------------------------
 Fri Aug  4 09:24:21 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.0.4:

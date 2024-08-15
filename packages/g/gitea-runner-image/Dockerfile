@@ -20,6 +20,8 @@
 
 FROM opensuse/tumbleweed:latest
 
+RUN set -euo pipefail; zypper -n in --no-recommends osc expect obs-service-format_spec_file obs-service-source_validator typescript git openSUSE-release openSUSE-release-appliance-docker; zypper -n clean; rm -rf /var/log/{lastlog,tallylog,zypper.log,zypp/history,YaST2}
+
 # Define labels according to https://en.opensuse.org/Building_derived_containers
 # labelprefix=org.opensuse.bci.gitea-runner
 LABEL org.opencontainers.image.authors="openSUSE (https://www.opensuse.org/)"
@@ -37,7 +39,5 @@ LABEL org.opensuse.lifecycle-url="https://en.opensuse.org/Lifetime#openSUSE_BCI"
 LABEL org.opensuse.release-stage="released"
 # endlabelprefix
 LABEL io.artifacthub.package.readme-url="https://raw.githubusercontent.com/SUSE/BCI-dockerfile-generator/Tumbleweed/gitea-runner-image/README.md"
-
-RUN set -euo pipefail; zypper -n in --no-recommends osc expect obs-service-format_spec_file obs-service-source_validator typescript git openSUSE-release openSUSE-release-appliance-docker; zypper -n clean; rm -rf /var/log/{lastlog,tallylog,zypper.log,zypp/history,YaST2}
 COPY osc_checkout /usr/bin/osc_checkout
 RUN set -euo pipefail; chmod +x /usr/bin/osc_checkout

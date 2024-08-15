@@ -1735,4 +1735,12 @@
     <comment></comment>
     <requestid>1191197</requestid>
   </revision>
+  <revision rev="198" vrev="1">
+    <srcmd5>f27b738808d2afd0c411250d6b08b4cf</srcmd5>
+    <version>2.44.3</version>
+    <time>1723708657</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.44.3 (forwarded request 1193740 from mgorse)</comment>
+    <requestid>1193872</requestid>
+  </revision>
 </revisionlist>

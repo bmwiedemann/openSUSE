@@ -690,4 +690,31 @@
   * v6.21.3-dev</comment>
     <requestid>1174236</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>83b4b4a9e369bc58b275fef6a76cacdd</srcmd5>
+    <version>6.22.0</version>
+    <time>1723708664</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 6.22.0:
+  * docs: update ghostrider/README.md
+  * v6.22.0
+  * v6.22.0-dev
+  * Added rx/yada OpenCL support
+  * Sync changes with the proxy.
+  * Don't generate &quot;rx/yada&quot; profile, use the &quot;rx&quot; profile by default.
+  * More clean target parse.
+  * Added Zen5 detection
+  * Fixed ARMv8 compilation
+  * fix yada nonce offset
+  * finish updating for yadacoin
+  * update constants for yadacoin
+  * add yada constants
+  * Removed rx/keva
+  * Make Json::normalize more strict
+  * #3515 Update build scripts for OpenSSL.
+  * Remove chdir call after fork.
+  * Create signal handles after fork() call, replace #3492.
+  * v6.21.4-dev</comment>
+    <requestid>1193865</requestid>
+  </revision>
 </revisionlist>

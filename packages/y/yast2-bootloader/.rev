@@ -2570,4 +2570,12 @@
     <comment>submit new version 5.0.10</comment>
     <requestid>1171823</requestid>
   </revision>
+  <revision rev="339" vrev="1">
+    <srcmd5>1161e30e3915ebb294e4e648db5dfc9d</srcmd5>
+    <version>5.0.11</version>
+    <time>1723708660</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 5.0.11</comment>
+    <requestid>1193885</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Wed Jun 12 09:21:08 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.4.0:
+  * Added the BlockingPortalProvider class to aid with
+    constructing synchronous counterparts to asynchronous
+    interfaces that would otherwise require multiple blocking
+    portals
+  * Added __slots__ to AsyncResource so that child classes can
+    use __slots__
+  * Added the TaskInfo.has_pending_cancellation() method
+  * Fixed erroneous RuntimeError: called 'started' twice on the
+    same task status when cancelling a task in a TaskGroup
+    created with the start() method before the first checkpoint
+    is reached after calling task_status.started()
+  * Fixed two bugs with TaskGroup.start() on asyncio: Fixed
+    erroneous RuntimeError: called 'started' twice on the same
+    task status when cancelling a task in a TaskGroup created
+    with the start() method before the first checkpoint is
+    reached after calling task_status.started() (#706; PR by
+    Dominik Schwabe) Fixed the entire task group being cancelled
+    if a TaskGroup.start() call gets cancelled (#685, #710)
+  * Fixed erroneous RuntimeError: called 'started' twice on the
+    same task status when cancelling a task in a TaskGroup
+    created with the start() method before the first checkpoint
+    is reached after calling task_status.started()
+  * Fixed the entire task group being cancelled if a
+    TaskGroup.start() call gets cancelled
+  * Fixed a race condition that caused crashes when multiple
+    event loops of the same backend were running in separate
+    threads and simultaneously attempted to use AnyIO for their
+    first time
+  * Fixed cancellation delivery on asyncio incrementing the wrong
+    cancel scope's cancellation counter when cascading a cancel
+    operation to a child scope, thus failing to uncancel the host
+    task
+  * Fixed erroneous TypedAttributeLookupError if a typed
+    attribute getter raises KeyError
+  * Fixed the asyncio backend not respecting the
+    PYTHONASYNCIODEBUG environment variable when setting the
+    debug flag in anyio.run()
+  * Fixed SocketStream.receive() not detecting EOF on asyncio if
+    there is also data in the read buffer
+  * Fixed MemoryObjectStream dropping an item if the item is
+    delivered to a recipient that is waiting to receive an item
+    but has a cancellation pending
+  * Emit a ResourceWarning for MemoryObjectReceiveStream and
+    MemoryObjectSendStream that were garbage collected without
+    being closed (PR by Andrey Kazantcev)
+  * Fixed MemoryObjectSendStream.send() not raising
+    BrokenResourceError when the last corresponding
+    MemoryObjectReceiveStream is closed while waiting to send a
+    falsey item
+
+-------------------------------------------------------------------
 Mon Mar 11 23:36:15 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 4.3.0:

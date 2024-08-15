@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Aug 14 11:08:23 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 6.22.0:
+  * docs: update ghostrider/README.md
+  * v6.22.0
+  * v6.22.0-dev
+  * Added rx/yada OpenCL support
+  * Sync changes with the proxy.
+  * Don't generate "rx/yada" profile, use the "rx" profile by default.
+  * More clean target parse.
+  * Added Zen5 detection
+  * Fixed ARMv8 compilation
+  * fix yada nonce offset
+  * finish updating for yadacoin
+  * update constants for yadacoin
+  * add yada constants
+  * Removed rx/keva
+  * Make Json::normalize more strict
+  * #3515 Update build scripts for OpenSSL.
+  * Remove chdir call after fork.
+  * Create signal handles after fork() call, replace #3492.
+  * v6.21.4-dev
+
+-------------------------------------------------------------------
 Wed May 15 12:04:33 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 6.21.3:

@@ -65,7 +65,7 @@ Requires:       python-importlib-metadata
 BuildRequires:  %{python_module Pygments}
 BuildRequires:  %{python_module pip-run = %{version}}
 BuildRequires:  %{python_module pytest >= 6}
-BuildRequires:  ca-certificates
+BuildRequires:  ca-certificates-mozilla
 %if %{without ringdisabled}
 BuildRequires:  %{python_module nbformat}
 %endif

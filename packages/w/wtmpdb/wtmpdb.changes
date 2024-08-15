@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug 14 09:59:01 UTC 2024 - kukuk@suse.com
+
+- Update to version 0.13.0+git.20240814:
+  * wtmpdb-update-boot service requires dbus
+
+-------------------------------------------------------------------
 Fri Jul 26 13:40:32 UTC 2024 - kukuk@suse.com
 
 - Update to version 0.13.0+git.20240726:

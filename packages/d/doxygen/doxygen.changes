@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Aug  7 20:44:05 UTC 2024 - Christoph G <foss@grueninger.de>
+
+- Update to Doxygen 1.12.0
+  * Adding "engine" chen and chronology for plantuml
+  * Also allow backticks to be combined with emphasis in Markdown
+
+-------------------------------------------------------------------
 Wed May 22 21:28:25 UTC 2024 - Christoph G <foss@grueninger.de>
 
 - Update to Doxygen 1.11.0

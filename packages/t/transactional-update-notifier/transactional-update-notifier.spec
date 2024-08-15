@@ -1,7 +1,7 @@
 #
 # spec file for package transactional-update-notifier
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2022 Luciano Santos <luc14n0@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -43,6 +43,7 @@ for it to be used as a reboot method through transactional-updates.conf(5).
 
 %build
 export GOFLAGS='-mod=vendor -buildmode=pie'
+export CGOFLAGS="CGO_ENABLED=1"
 %make_build
 
 %install

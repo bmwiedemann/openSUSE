@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Sat Aug  3 17:49:33 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.5.4
+  * dhewm3-mods now contains game libs for several new mods:
+    * Blood Mod v1.5
+    * Perfected Doom3 (ROE) v7
+    * Sikkmod v1.2 and Sikkmod RoE v1.1
+  * A brand new settings menu that uses Dear ImGui.
+  * "Soft" Particles (that don't "cut" into geometry but fade
+    smoothly), based on code from The Dark Mod 2.04.
+  * r_enableDepthCapture: Enable capturing depth buffer to texture,
+    needed for the soft particles.
+  * Replaced dependency on (external) zlib with integrated miniz.
+  * HighDPI/Retina support.
+  * Allow inverted mouse look (horizontally, vertically or both)
+    with m_invertLook.
+  * CVar to allow always run in single player (still drains
+    stamina though!): in_allowAlwaysRunInSP.
+  * VSync can be enabled/disabled on the fly, without restarting
+    the renderer (still with r_swapInterval or in the menu, of
+    course; needs SDL2).
+  * Allow enabling/disabling HRTF with s_alHRTF.
+  * s_alOutputLimiter: Configure OpenAL's output-limiter which
+    temporarily reduces the overall volume when too many too loud
+    sounds play at once, to avoid issues like clipping.
+  * s_scaleDownAndClamp: Clamp and reduce volume of all sound to
+    prevent clipping or temporary downscaling by OpenAL's output
+    limiter.
+  * If r_windowResizable is set, the dhewm3 window (when in
+    windowed mode..) can be freely resized.
+  * Fixed screenshots when using native Wayland
+    (SDL_VIDEODRIVER=wayland).
+  * If you enter the map command in the console, without any
+    arguments, the current map name is printed.
+  * Support OpenGL debug contexts and messages.
+    (GL_ARB_debug_output). Can be enabled with r_glDebugContext 1.
+  * Changing that CVar requires a vid_restart
+    (or set it as startup argument).
+- Remove Patch:
+  * dhewm3-fix-desktop-files.patch (fixed upstream)
+
+-------------------------------------------------------------------
 Fri Mar 29 11:10:26 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.5.3

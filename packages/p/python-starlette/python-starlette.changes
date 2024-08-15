@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Aug 13 09:41:53 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 0.38.2:
+  * Fix routing.get_name() not to assume all routines have __name__ #2648
+- 0.38.1:
+  * Revert "Add support for ASGI pathsend extension" #2649.
+- 0.38.0:
+  * Allow use of memoryview in StreamingResponse and Response #2576
+    and #2577.
+  * Send 404 instead of 500 when filename requested is too long on
+    StaticFiles #2583.
+  * Fail fast on invalid Jinja2Template instantiation parameters #2568.
+  * Check endpoint handler is async only once #2536.
+  * Add proper synchronization to WebSocketTestSession #2597.
+
+-------------------------------------------------------------------
 Sat Apr 20 08:10:00 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.37.2:

@@ -1,22 +1,6 @@
---- apache-ant-1.10.14/src/main/org/apache/tools/ant/taskdefs/Javadoc.java	2024-07-17 15:06:13.718343866 +0200
-+++ apache-ant-1.10.14/src/main/org/apache/tools/ant/taskdefs/Javadoc.java	2024-07-18 14:51:50.362329096 +0200
-@@ -1297,6 +1297,15 @@
-     }
- 
-     /**
-+     * Control generation of timestamps.
-+     *
-+     * @param b if true, don't generate timestamps.
-+     */
-+    public void setNoTimestamp(final boolean b) {
-+        addArgIf(b, "-notimestamp");
-+    }
-+
-+    /**
-      * Create link to Javadoc output at the given URL.
-      *
-      * @return link argument to configure
-@@ -1807,6 +1816,19 @@
+--- apache-ant-1.10.14/src/main/org/apache/tools/ant/taskdefs/Javadoc.java	2024-08-13 16:34:16.694518372 +0200
++++ apache-ant-1.10.14/src/main/org/apache/tools/ant/taskdefs/Javadoc.java	2024-08-13 16:36:49.825656246 +0200
+@@ -1807,6 +1807,16 @@
       */
      @Override
      public void execute() throws BuildException {
@@ -28,11 +12,19 @@
 +            if (!arguments.contains("-encoding")) {
 +                setEncoding("UTF-8");
 +            }
-+            if (!arguments.contains("-notimestamp")) {
-+                setNoTimestamp(true);
-+            }
 +        }
 +
          checkTaskName();
  
          final List<String> packagesToDoc = new Vector<>();
+@@ -2013,6 +2023,10 @@
+             toExecute.createArgument().setValue("-author");
+         }
+ 
++        if (System.getenv("SOURCE_DATE_EPOCH") != null && doclet == null) {
++            toExecute.createArgument().setValue("-notimestamp");
++        }
++
+         if (doclet == null && destDir == null) {
+             throw new BuildException("destdir attribute must be set!");
+         }

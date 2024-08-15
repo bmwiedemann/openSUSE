@@ -358,4 +358,12 @@
     <comment>- Update to release 2024.08.01</comment>
     <requestid>1191016</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>1e80a922167763e688800f9dc8336ab8</srcmd5>
+    <version>2024.08.06</version>
+    <time>1723708662</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2024.08.06</comment>
+    <requestid>1193851</requestid>
+  </revision>
 </revisionlist>

@@ -87,4 +87,12 @@
     <comment>Adapt to change maven-plugin-build-helper -&gt; build-helper-maven-plugin</comment>
     <requestid>1180379</requestid>
   </revision>
+  <revision rev="12" vrev="7">
+    <srcmd5>dc77c5d167a9d2476c8f453cc5d69c92</srcmd5>
+    <version>3.14.8</version>
+    <time>1723708665</time>
+    <user>dimstar_suse</user>
+    <comment>fix build breakages</comment>
+    <requestid>1193877</requestid>
+  </revision>
 </revisionlist>

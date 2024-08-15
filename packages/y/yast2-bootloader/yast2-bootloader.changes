@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Aug 14 13:36:03 UTC 2024 - Josef Reidinger <jreidinger@suse.com>
+
+- add arm and riscv64 as not supported for secure boot
+  (bsc#1229070)
+- 5.0.11
+
+-------------------------------------------------------------------
+Fri Jul 19 11:46:46 UTC 2024 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Rename menue_timeout (menü) to menu_timeout
+- Reference in text messages to menu
+
+-------------------------------------------------------------------
 Fri May  3 13:07:26 UTC 2024 - Stefan Schubert <schubi@localhost>
 
 - Writing "root" entry into /etc/kernel/cmdline which is needed by

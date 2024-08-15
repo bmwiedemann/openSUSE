@@ -20,6 +20,8 @@
 
 FROM opensuse/tumbleweed:latest
 
+RUN set -euo pipefail; zypper -n in --no-recommends systemd gzip; zypper -n clean; rm -rf /var/log/{lastlog,tallylog,zypper.log,zypp/history,YaST2}
+
 # Define labels according to https://en.opensuse.org/Building_derived_containers
 # labelprefix=org.opensuse.bci.init
 LABEL org.opencontainers.image.authors="openSUSE (https://www.opensuse.org/)"
@@ -39,8 +41,6 @@ LABEL org.opensuse.release-stage="released"
 LABEL io.artifacthub.package.readme-url="https://raw.githubusercontent.com/SUSE/BCI-dockerfile-generator/Tumbleweed/init-image/README.md"
 LABEL io.artifacthub.package.logo-url="https://opensource.suse.com/bci/SLE_BCI_logomark_green.svg"
 LABEL usage="This container should only be used to build containers for daemons. Add your packages and enable services using systemctl."
-
-RUN set -euo pipefail; zypper -n in --no-recommends systemd gzip; zypper -n clean; rm -rf /var/log/{lastlog,tallylog,zypper.log,zypp/history,YaST2}
 CMD ["/usr/lib/systemd/systemd"]
 
 RUN mkdir -p /etc/systemd/system.conf.d/ && \

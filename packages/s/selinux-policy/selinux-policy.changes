@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Wed Aug 14 12:11:13 UTC 2024 - cathy.hu@suse.com
+
+- Update to version 20240814:
+  * Dontaudit dac_override of fstab generator (bsc#1229127)
+
+-------------------------------------------------------------------
+Wed Aug 14 07:00:34 UTC 2024 - Cathy Hu <cathy.hu@suse.com>
+
+- Drop varrun-convert.sh script as it causes issues with
+  container-selinux update (bsc#1228951)
+
+-------------------------------------------------------------------
+Mon Aug 12 15:30:47 UTC 2024 - cathy.hu@suse.com
+
+- Update to version 20240812:
+  * Update libvirt policy
+  * Add port 80/udp and 443/udp to http_port_t definition
+  * Additional updates stalld policy for bpf usage
+  * Label systemd-pcrextend and systemd-pcrlock properly
+  * Allow coreos_installer_t work with partitions
+  * Revert "Allow coreos-installer-generator work with partitions"
+  * Add policy for systemd-pcrextend
+  * Update policy for systemd-getty-generator
+  * Allow ip command write to ipsec's logs
+  * Allow virt_driver_domain read virtd-lxc files in /proc
+  * Revert "Allow svirt read virtqemud fifo files"
+  * Update virtqemud policy for libguestfs usage
+  * Allow virtproxyd create and use its private tmp files
+  * Allow virtproxyd read network state
+  * Allow virt_driver_domain create and use log files in /var/log
+  * Allow samba-dcerpcd work with ctdb cluster
+  * Allow NetworkManager_dispatcher_t send SIGKILL to plugins
+  * Allow setroubleshootd execute sendmail with a domain transition
+  * Allow key.dns_resolve set attributes on the kernel key ring
+  * Update qatlib policy for v24.02 with new features
+  * Label /var/lib/systemd/sleep with systemd_sleep_var_lib_t
+  * Allow tlp status power services
+  * Allow virtqemud domain transition on passt execution
+  * Allow virt_driver_domain connect to systemd-userdbd over a unix socket
+  * Allow boothd connect to systemd-userdbd over a unix socket
+  * Update policy for awstats scripts
+  * Allow bitlbee execute generic programs in system bin directories
+  * Allow login_userdomain read aliases file
+  * Allow login_userdomain read ipsec config files
+  * Allow login_userdomain read all pid files
+  * Allow rsyslog read systemd-logind session files
+  * Allow libvirt-dbus stream connect to virtlxcd
+
+-------------------------------------------------------------------
 Fri Aug 09 12:35:40 UTC 2024 - cathy.hu@suse.com
 
 - Update to version 20240809:

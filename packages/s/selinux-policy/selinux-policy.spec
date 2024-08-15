@@ -33,7 +33,7 @@ Summary:        SELinux policy configuration
 License:        GPL-2.0-or-later
 Group:          System/Management
 Name:           selinux-policy
-Version:        20240809
+Version:        20240814
 Release:        0
 Source0:        %{name}-%{version}.tar.xz
 Source1:        container.fc
@@ -60,9 +60,6 @@ Source23:       booleans.subs_dist
 Source30:       setrans-targeted.conf
 Source31:       setrans-mls.conf
 Source32:       setrans-minimum.conf
-
-# Script to convert /var/run file context entries to /run
-Source37:       varrun-convert.sh
 
 Source40:       securetty_types-targeted
 Source41:       securetty_types-mls
@@ -221,7 +218,6 @@ rm -f %{buildroot}%{_sharedstatedir}/selinux/%1/active/*.linked \
 %ghost %{_sharedstatedir}/selinux/%1/active/policy.linked \
 %ghost %{_sharedstatedir}/selinux/%1/active/seusers.linked \
 %ghost %{_sharedstatedir}/selinux/%1/active/users_extra.linked \
-%ghost %{_sharedstatedir}/selinux/%1/active/modules/400/extra_varrun \
 %verify(not md5 size mtime) %{_sharedstatedir}/selinux/%1/active/file_contexts.homedirs \
 %nil
 
@@ -258,7 +254,6 @@ fi;
 
 %define postInstall() \
 . %{_sysconfdir}/selinux/config; \
-%{_libexecdir}/selinux/varrun-convert.sh %2; \
 if [ -e %{_sysconfdir}/selinux/%2/.rebuild ]; then \
   rm %{_sysconfdir}/selinux/%2/.rebuild; \
   /usr/sbin/semodule -B -n -s %2; \
@@ -315,7 +310,6 @@ of systems and used as the basis for creating other policies.
 %ghost %config(noreplace) %{_sysconfdir}/selinux/config
 %{_tmpfilesdir}/selinux-policy.conf
 %{_rpmconfigdir}/macros.d/macros.selinux-policy
-%{_libexecdir}/selinux/varrun-convert.sh
 
 %package sandbox
 Summary:        SELinux policy sandbox
@@ -382,9 +376,6 @@ mkdir selinux_config
 for i in %{SOURCE10} %{SOURCE11} %{SOURCE12} %{SOURCE13} %{SOURCE14} %{SOURCE15} %{SOURCE20} %{SOURCE21} %{SOURCE22} %{SOURCE30} %{SOURCE31} %{SOURCE32} %{SOURCE40} %{SOURCE41} %{SOURCE42} %{SOURCE50} %{SOURCE51} %{SOURCE52} %{SOURCE91} %{SOURCE92} %{SOURCE94};do
  cp $i selinux_config
 done
-
-mkdir -p %{buildroot}%{_libexecdir}/selinux
-install -m 755  %{SOURCE37} %{buildroot}%{_libexecdir}/selinux
 
 make clean
 %if %{BUILD_TARGETED}

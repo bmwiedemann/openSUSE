@@ -21,6 +21,8 @@
 
 FROM opensuse/tumbleweed:latest
 
+RUN set -euo pipefail; zypper -n in --no-recommends go1.21 go1.21-doc make curl findutils gawk git-core procps util-linux; zypper -n clean; rm -rf /var/log/{lastlog,tallylog,zypper.log,zypp/history,YaST2}
+
 # Define labels according to https://en.opensuse.org/Building_derived_containers
 # labelprefix=org.opensuse.bci.golang
 LABEL org.opencontainers.image.authors="openSUSE (https://www.opensuse.org/)"
@@ -38,8 +40,6 @@ LABEL org.opensuse.lifecycle-url="https://en.opensuse.org/Lifetime#openSUSE_BCI"
 LABEL org.opensuse.release-stage="released"
 # endlabelprefix
 LABEL io.artifacthub.package.readme-url="https://raw.githubusercontent.com/SUSE/BCI-dockerfile-generator/Tumbleweed/golang-oldstable-image/README.md"
-
-RUN set -euo pipefail; zypper -n in --no-recommends go1.21 go1.21-doc make curl findutils gawk git-core procps util-linux; zypper -n clean; rm -rf /var/log/{lastlog,tallylog,zypper.log,zypp/history,YaST2}
 ENV GOLANG_VERSION="%%golang_version%%"
 ENV GOPATH="/go"
 ENV GOTOOLCHAIN="local"

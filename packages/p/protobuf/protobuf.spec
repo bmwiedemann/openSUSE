@@ -19,6 +19,8 @@
 
 %define tarname protobuf
 %define extra_java_flags -source 8 -target 8
+# see cmake/abseil-cpp.cmake and src/google/protobuf/port_def.inc
+%define abseil_min_version 20230125.3
 # requires gmock, which is not yet in the distribution
 %bcond_with    check
 %bcond_without java
@@ -39,12 +41,46 @@ BuildRequires:  %{python_module abseil}
 BuildRequires:  %{python_module devel >= 3.7}
 BuildRequires:  %{python_module python-dateutil}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  abseil-cpp-devel >= 20230125
+BuildRequires:  c++_compiler
 BuildRequires:  cmake
 BuildRequires:  fdupes
-BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
+# see cmake/abseil-cpp.cmake
+BuildRequires:  pkgconfig(absl_absl_check) >= %{abseil_min_version}
+BuildRequires:  pkgconfig(absl_absl_log) >= %{abseil_min_version}
+BuildRequires:  pkgconfig(absl_algorithm) >= %{abseil_min_version}
+BuildRequires:  pkgconfig(absl_base) >= %{abseil_min_version}
+BuildRequires:  pkgconfig(absl_bind_front) >= %{abseil_min_version}
+BuildRequires:  pkgconfig(absl_bits) >= %{abseil_min_version}
+BuildRequires:  pkgconfig(absl_btree) >= %{abseil_min_version}
+BuildRequires:  pkgconfig(absl_cleanup) >= %{abseil_min_version}
+BuildRequires:  pkgconfig(absl_cord) >= %{abseil_min_version}
+BuildRequires:  pkgconfig(absl_core_headers) >= %{abseil_min_version}
+BuildRequires:  pkgconfig(absl_debugging) >= %{abseil_min_version}
+BuildRequires:  pkgconfig(absl_die_if_null) >= %{abseil_min_version}
+BuildRequires:  pkgconfig(absl_dynamic_annotations) >= %{abseil_min_version}
+BuildRequires:  pkgconfig(absl_flags) >= %{abseil_min_version}
+BuildRequires:  pkgconfig(absl_flat_hash_map) >= %{abseil_min_version}
+BuildRequires:  pkgconfig(absl_flat_hash_set) >= %{abseil_min_version}
+BuildRequires:  pkgconfig(absl_function_ref) >= %{abseil_min_version}
+BuildRequires:  pkgconfig(absl_hash) >= %{abseil_min_version}
+BuildRequires:  pkgconfig(absl_layout) >= %{abseil_min_version}
+BuildRequires:  pkgconfig(absl_log_initialize) >= %{abseil_min_version}
+BuildRequires:  pkgconfig(absl_log_severity) >= %{abseil_min_version}
+BuildRequires:  pkgconfig(absl_memory) >= %{abseil_min_version}
+BuildRequires:  pkgconfig(absl_node_hash_map) >= %{abseil_min_version}
+BuildRequires:  pkgconfig(absl_node_hash_set) >= %{abseil_min_version}
+BuildRequires:  pkgconfig(absl_optional) >= %{abseil_min_version}
+BuildRequires:  pkgconfig(absl_span) >= %{abseil_min_version}
+BuildRequires:  pkgconfig(absl_status) >= %{abseil_min_version}
+BuildRequires:  pkgconfig(absl_statusor) >= %{abseil_min_version}
+BuildRequires:  pkgconfig(absl_strings) >= %{abseil_min_version}
+BuildRequires:  pkgconfig(absl_synchronization) >= %{abseil_min_version}
+BuildRequires:  pkgconfig(absl_time) >= %{abseil_min_version}
+BuildRequires:  pkgconfig(absl_type_traits) >= %{abseil_min_version}
+BuildRequires:  pkgconfig(absl_utility) >= %{abseil_min_version}
+BuildRequires:  pkgconfig(absl_variant) >= %{abseil_min_version}
 BuildRequires:  pkgconfig(zlib)
 %if %{with check}
 BuildRequires:  libgmock-devel >= 1.7.0
@@ -99,11 +135,8 @@ RPC protocols and file formats.
 %package devel
 Summary:        Header files, libraries and development documentation for %{name}
 Group:          Development/Libraries/C and C++
-Requires:       abseil-cpp-devel >= 20230125
-Requires:       gcc-c++
 Requires:       libprotobuf%{sover} = %{VERSION}
 Requires:       libprotobuf-lite%{sover}
-Requires:       pkgconfig(zlib)
 Conflicts:      protobuf2-devel
 Conflicts:      protobuf21-devel
 Provides:       libprotobuf-devel = %{VERSION}

@@ -52,10 +52,10 @@
 %endif
 # ********* If the VB version exceeds 6.1.x, notify the libvirt maintainer!!
 Name:           virtualbox%{?dash}%{?name_suffix}
-Version:        7.0.18
+Version:        7.0.20
 Release:        0
 Summary:        %{package_summary}
-License:        GPL-2.0-or-later
+License:        GPL-3.0-or-later
 %if %{kmp_package}
 Group:          System/Kernel
 %else
@@ -97,71 +97,22 @@ Source99:       virtualbox-patch-source.sh
 #rework init scripts to fit suse needs
 Patch1:         vbox-vboxdrv-init-script.diff
 Patch2:         vbox-vboxadd-init-script.diff
-#fix build : "Error 4001 - String must be entirely alphanumeric"
-#with renaming we probably break some macosx functionality however ths is just quick fix
-#see thread : http://lists.freebsd.org/pipermail/freebsd-acpi/2010-October/006795.html
-Patch3:         vbox-smc-napa.diff
-#deprecated old-style C++ service proxies and objects,we have to use soapcpp2 -z1 flag
-Patch4:         vbox-deprec-gsoap-service-proxies.diff
-#fix failed linking process during build - this patch is just quick workaround
-Patch5:         vbox-gsoapssl-deps.diff
-#PATCH-FIX-OPENSUSE implement messagebox (VBoxPermissionMessage app), which is displayed, when user
-#try to start VirtualBox and is not member of vboxusers group
-Patch6:         vbox-permissions_warning.diff
-#PATCH-FIX-OPENSUSE Do not include build dates on binaries, makes build-compare happier
-Patch7:         vbox-no-build-dates.diff
-Patch8:         vbox-default-os-type.diff
-# Disable the distributed versions of vboxdrv.sh and vboxadd.sh for security reasons.
-Patch9:         security_fixes.patch
-#disable update in vbox gui
-Patch10:        vbox-disable-updates.diff
-#use pie/fPIE for setuid binaries (bnc#743143)
-Patch11:        vbox-fpie.diff
-#smap issues on Haswell or Broadwell (boo#931461)
-Patch12:        smap.diff
-# Patch to build with Factory gcc5
-Patch13:        gcc5-real-support.patch
-# Patch to build with gnu sed correctly
-Patch14:        virtualbox-sed-params.patch
-# Patch to add code to explain USB Passthru
-Patch16:        vbox-usb-warning.diff
-# Patch to ensure that VirtualBoxVM is SUID
-Patch17:        vbox-suid-warning.diff
-# Fix symbol conflict between host and guest kmp
-Patch18:        fix_conflict_between_host_and_guest.patch
-# Fix change in kernel API for ttm_bo_move_memcpy()
-Patch19:        modify_for_4_8_bo_move.patch
-# Disable experimental and incomplete CLOUD_NET
-Patch21:        turn_off_cloud_net.patch
-# xpcom: Support up to python 3.10 -- https://www.virtualbox.org/changeset/90537/vbox + https://www.virtualbox.org/changeset/86623/vbox, thanks to Archlinux
-Patch23:        vbox-python-py310.patch
-# fix build of Python and dev package on openSUSE 11.3 (was vbox-detection.diff)
-# use plain python3 interpreter of the distro (part of former switch_to_pyton3.4+.patch),
-Patch24:        vbox-python-selection.patch
-Patch25:        remove_vbox_video_build.patch
-# Fixes for modified kernel in Leap 42.3
-Patch26:        VirtualBox-5.2.10-xclient.patch
-# Fixes for SLE12
-Patch27:        fixes_for_sle12.patch
-# Fixes for Qt5.13 on 32-bit systems
-Patch28:        fixes_for_qt5.13.patch
-# Fixes for kernel modules Makefile used at boot time
-Patch30:        fixes_for_makefile.patch
-# Fix build for Qt 5.15
-Patch31:        fix-missing-includes-with-qt-5.15.patch
 # Fix for GCC13
-Patch36:        fixes_for_gcc13.patch
-# Fix locking problem in 7.0.6
-Patch37:        fix_7.0.6_locking_problems.patch
-# Support python 3.11
-Patch38:        python311.patch
-Patch39:        fix_sdl_build.patch
-# Fixes for openSUSE Leap 15.X
-Patch40:        fixes_for_leap.patch
-# Fixes for Leap 15.6
-Patch41:        fixes_for_leap15.6.patch
-Patch43:        fixes_for_vboxconfig.patch
-Patch45:        libxml21206.patch
+Patch3:         fixes_for_gcc13.patch
+# No Vbox Video
+Patch4:         remove_vbox_video_build.patch
+# SDL Patch
+Patch5:         fix_sdl_build.patch
+# OPENSUSE implement messagebox when user try to start VirtualBox and is not member of vboxusers group
+Patch6:         vbox-permissions_warning.diff
+# Patch to ensure that VirtualBoxVM is SUID
+Patch7:         vbox-suid-warning.diff
+# Disable experimental and incomplete CLOUD_NET
+Patch8:         turn_off_cloud_net.patch
+# Patch to add code to explain USB Passthru
+Patch9:         vbox-usb-warning.diff
+# Patch for 15.5
+Patch10:        fix_for_leap15.5.patch
 #
 # Common BuildRequires for both virtualbox and virtualbox-kmp
 BuildRequires:  %{kernel_module_package_buildreqs}
@@ -448,39 +399,6 @@ This package contains the kernel-modules that VirtualBox uses to create or run v
 %patch -P 8 -p1
 %patch -P 9 -p1
 %patch -P 10 -p1
-%patch -P 11 -p1
-%patch -P 12 -p1
-%patch -P 13 -p1
-%patch -P 14 -p1
-%patch -P 16 -p1
-%patch -P 17 -p1
-%patch -P 18 -p1
-%patch -P 19 -p1
-%patch -P 21 -p1
-%patch -P 23 -p1
-%patch -P 24 -p1
-%patch -P 25 -p1
-%patch -P 26 -p1
-# Adjustments that are version dependent
-%patch -P 27 -p1
-# Handle the 32-bit changes needed for Qt 5.13
-%ifarch %{ix86} && 0%{?qt5ver} >= 51300
-%patch -P 28 -p1
-%endif
-%patch -P 30 -p1
-%patch -P 31 -p1
-%if 0%{gcc_version} >= 13
-%patch -P 36 -p1
-%endif
-%patch -P 37 -p1
-%patch -P 38 -p1
-%patch -P 39 -p1
-%patch -P 40 -p1
-%if 0%{?sle_version} == 150600 && 0%{?is_opensuse}
-%patch -P 41 -p1
-%endif
-%patch -P 43 -p1
-%patch -P 45 -p1
 
 ### Documents for virtualbox main package ###
 %if %{main_package}

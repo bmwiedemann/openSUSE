@@ -2621,4 +2621,12 @@ Without this fix, VBox always shows &quot;VirtualBox is not currently allowed to
     <comment></comment>
     <requestid>1172513</requestid>
   </revision>
+  <revision rev="278" vrev="1">
+    <srcmd5>caeb09c996c3ecd692c891018c73e922</srcmd5>
+    <version>7.0.20</version>
+    <time>1723708645</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1193787</requestid>
+  </revision>
 </revisionlist>

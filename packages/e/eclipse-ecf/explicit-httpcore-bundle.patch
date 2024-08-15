@@ -1,0 +1,36 @@
+--- org.eclipse.ecf-1e6e8e72cbb77a0e359e409cd4d2a58d03a6428d/framework/bundles/org.eclipse.ecf.remoteservice.rest/META-INF/MANIFEST.MF	2024-08-14 10:22:46.437642999 +0200
++++ org.eclipse.ecf-1e6e8e72cbb77a0e359e409cd4d2a58d03a6428d/framework/bundles/org.eclipse.ecf.remoteservice.rest/META-INF/MANIFEST.MF	2024-08-14 11:03:29.439421526 +0200
+@@ -41,7 +41,8 @@
+  org.osgi.util.tracker
+ Require-Bundle: org.eclipse.equinox.common,
+  org.eclipse.ecf,
+- org.eclipse.ecf.identity
++ org.eclipse.ecf.identity,
++ org.apache.httpcomponents.httpcore
+ Service-Component: META-INF/dspresent.xml
+ Bundle-Localization: plugin
+ Provide-Capability: osgi.remoteserviceadmin.distribution; configs:List<String>="ecf.rest.client"; version:Version=1.1 
+--- org.eclipse.ecf-1e6e8e72cbb77a0e359e409cd4d2a58d03a6428d/providers/bundles/org.eclipse.ecf.provider.filetransfer.httpclient4/META-INF/MANIFEST.MF	2024-08-14 10:22:46.520976959 +0200
++++ org.eclipse.ecf-1e6e8e72cbb77a0e359e409cd4d2a58d03a6428d/providers/bundles/org.eclipse.ecf.provider.filetransfer.httpclient4/META-INF/MANIFEST.MF	2024-08-14 10:48:22.672602938 +0200
+@@ -9,7 +9,8 @@
+ Require-Bundle: org.eclipse.equinox.common;bundle-version="[3.0.0,4.0.0)",
+  org.eclipse.ecf.provider.filetransfer;bundle-version="[3.0.0,4.0.0)",
+  org.eclipse.ecf;bundle-version="[3.0.0,4.0.0)",
+- org.eclipse.ecf.filetransfer;bundle-version="[5.0.0,6.0.0)"
++ org.eclipse.ecf.filetransfer;bundle-version="[5.0.0,6.0.0)",
++ org.apache.httpcomponents.httpcore
+ Eclipse-LazyStart: true
+ Import-Package: org.apache.http;version="4.1.0",
+  org.apache.http.auth;version="4.1.0",
+--- org.eclipse.ecf-1e6e8e72cbb77a0e359e409cd4d2a58d03a6428d/providers/bundles/org.eclipse.ecf.provider.filetransfer.httpclient45/META-INF/MANIFEST.MF	2024-08-14 10:22:46.527643676 +0200
++++ org.eclipse.ecf-1e6e8e72cbb77a0e359e409cd4d2a58d03a6428d/providers/bundles/org.eclipse.ecf.provider.filetransfer.httpclient45/META-INF/MANIFEST.MF	2024-08-14 10:43:17.970302496 +0200
+@@ -11,7 +11,8 @@
+ Require-Bundle: org.eclipse.equinox.common;bundle-version="[3.0.0,4.0.0)",
+  org.eclipse.ecf.provider.filetransfer;bundle-version="[3.2.200,4.0.0)",
+  org.eclipse.ecf;bundle-version="[3.4.0,4.0.0)",
+- org.eclipse.ecf.filetransfer;bundle-version="[5.0.0,6.0.0)"
++ org.eclipse.ecf.filetransfer;bundle-version="[5.0.0,6.0.0)",
++ org.apache.httpcomponents.httpcore
+ Import-Package: org.apache.http;version="[4.4.0,5.0.0)",
+  org.apache.http.auth;version="[4.5.0,5.0.0)",
+  org.apache.http.client;version="[4.5.0,5.0.0)",

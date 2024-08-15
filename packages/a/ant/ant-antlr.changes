@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Aug 13 14:43:30 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Modified patches:
+  * reproducible-jar-mtime.patch
+    + attempt more normalization of mtimes in jar files
+  * reproducible-javadoc.patch
+    + fix the patch to work with custom doclets too
+
+-------------------------------------------------------------------
 Thu Jul 18 12:09:04 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Added patches:

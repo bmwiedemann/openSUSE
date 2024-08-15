@@ -16,4 +16,13 @@
   * Make notifications a little less urgent</comment>
     <requestid>1065541</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>4a1d94149635672ae693fb1f9f3acd56</srcmd5>
+    <version>1.1.0.2</version>
+    <time>1723708652</time>
+    <user>dimstar_suse</user>
+    <comment>- export CGOFLAGS=&quot;CGO_ENABLED=1&quot; before building: fixes build with
+  go 1.22 on i586 without breaking the other builds. (forwarded request 1191077 from dimstar)</comment>
+    <requestid>1193831</requestid>
+  </revision>
 </revisionlist>

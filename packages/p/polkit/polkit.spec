@@ -48,7 +48,7 @@ Patch4:         polkit-adjust-libexec-path.patch
 Patch6:         polkit-actions-in-etc.patch
 
 BuildRequires:  gcc-c++
-BuildRequires:  gettext
+BuildRequires:  gettext-devel
 BuildRequires:  gtk-doc
 BuildRequires:  libexpat-devel
 BuildRequires:  meson >= 0.50

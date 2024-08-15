@@ -41,6 +41,7 @@ Source0:        https://git.eclipse.org/c/ecf/org.eclipse.ecf.git/snapshot/org.e
 Patch0:         0001-Avoid-hard-coding-dependency-versions-by-using-featu.patch
 # Unneeded dep on JDT prevents bootstrap mode
 Patch1:         0002-Remove-unneeded-dep-on-jdt-annotations.patch
+Patch2:         explicit-httpcore-bundle.patch
 BuildRequires:  apache-commons-codec
 BuildRequires:  apache-commons-logging
 BuildRequires:  build-helper-maven-plugin
@@ -129,6 +130,7 @@ find . -type f -name "*.class" -exec rm {} \;
 
 %patch -P 0 -p1
 %patch -P 1 -p1
+%patch -P 2 -p1
 
 # Extend the objectweb-asm requirements
 sed -i -e 's/org\.objectweb\.asm;version="\[5\.0\.1,8\.0\.0)"/org\.objectweb\.asm;version="\[5\.0\.1,10\.0\.0)"/g' \

@@ -17,13 +17,12 @@
 
 
 Name:           dhewm3
-Version:        1.5.3
+Version:        1.5.4
 Release:        0
 Summary:        DOOM 3 source port
 License:        GPL-3.0-only
 URL:            https://dhewm3.org/
 Source0:        https://github.com/dhewm/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Patch0:         dhewm3-fix-desktop-files.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
@@ -31,7 +30,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  cmake(sdl2)
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(openal)
-BuildRequires:  pkgconfig(zlib)
+Provides:       bundled(miniz)
 
 %description
 dhewm3 is a DOOM 3 GPL source port.

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Aug 14 12:33:38 UTC 2024 - Dirk Mueller <dmueller@suse.com>
+
+- switch to multistage build
+
+-------------------------------------------------------------------
+Wed Aug 14 12:30:32 UTC 2024 - Dirk Mueller <dmueller@suse.com>
+
+- install packages first
+
+-------------------------------------------------------------------
+Wed Aug 14 11:58:49 UTC 2024 - Dirk Mueller <dmueller@suse.com>
+
+- Fix oci.version to be the fully qualified tomcat version
+
+-------------------------------------------------------------------
 Thu Aug  8 19:28:10 UTC 2024 - Dirk Mueller <dmueller@suse.com>
 
 - add oci.image.ref.name

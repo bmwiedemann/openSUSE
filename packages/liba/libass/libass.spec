@@ -1,7 +1,7 @@
 #
 # spec file for package libass
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define sover   9
 Name:           libass
-Version:        0.17.1
+Version:        0.17.3
 Release:        0
 Summary:        Library for SSA/ASS-formatted subtitle rendering
 License:        ISC
@@ -32,6 +32,7 @@ BuildRequires:  pkgconfig(fontconfig) >= 2.10.92
 BuildRequires:  pkgconfig(freetype2) >= 9.10.3
 BuildRequires:  pkgconfig(fribidi) >= 0.19.0
 BuildRequires:  pkgconfig(harfbuzz) >= 1.2.3
+BuildRequires:  pkgconfig(libunibreak) >= 1.1
 
 %description
 libass is a subtitle renderer for the ASS/SSA
@@ -56,6 +57,7 @@ Requires:       pkgconfig(fontconfig) >= 2.10.92
 Requires:       pkgconfig(freetype2) >= 9.10.3
 Requires:       pkgconfig(fribidi) >= 0.19.0
 Requires:       pkgconfig(harfbuzz) >= 1.2.3
+Requires:       pkgconfig(libunibreak) >= 1.1
 
 %description devel
 This package is needed if you want to develop / compile against libass.

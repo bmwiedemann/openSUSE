@@ -22,6 +22,8 @@
 
 FROM opensuse/tumbleweed:latest
 
+RUN set -euo pipefail; zypper -n in --no-recommends golang-github-prometheus-alertmanager curl; zypper -n clean; rm -rf /var/log/{lastlog,tallylog,zypper.log,zypp/history,YaST2}
+
 # Define labels according to https://en.opensuse.org/Building_derived_containers
 # labelprefix=org.opensuse.application.alertmanager
 LABEL org.opencontainers.image.authors="openSUSE (https://www.opensuse.org/)"
@@ -39,8 +41,6 @@ LABEL org.opensuse.lifecycle-url="https://en.opensuse.org/Lifetime#openSUSE_BCI"
 LABEL org.opensuse.release-stage="released"
 # endlabelprefix
 LABEL io.artifacthub.package.readme-url="https://raw.githubusercontent.com/SUSE/BCI-dockerfile-generator/Tumbleweed/alertmanager-image/README.md"
-
-RUN set -euo pipefail; zypper -n in --no-recommends golang-github-prometheus-alertmanager curl; zypper -n clean; rm -rf /var/log/{lastlog,tallylog,zypper.log,zypp/history,YaST2}
 ENTRYPOINT ["/usr/bin/prometheus-alertmanager"]
 EXPOSE 9093
 HEALTHCHECK --interval=5s --timeout=5s --retries=5 \

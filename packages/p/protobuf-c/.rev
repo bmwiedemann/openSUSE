@@ -223,4 +223,12 @@
     variables in generated output. (forwarded request 1135293 from dirkmueller)</comment>
     <requestid>1135298</requestid>
   </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>13621ae1ecf242e7648a3aeb21258ba4</srcmd5>
+    <version>1.5.0</version>
+    <time>1723708642</time>
+    <user>dimstar_suse</user>
+    <comment>BuildRequire a C++ compiler, previously pulled in via protobuf (forwarded request 1193529 from AndreasStieger)</comment>
+    <requestid>1193754</requestid>
+  </revision>
 </revisionlist>

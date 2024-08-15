@@ -18,12 +18,12 @@
 
 %define lname   libwtmpdb0
 Name:           wtmpdb
-Version:        0.13.0+git.20240726
+Version:        0.13.0+git.20240814
 Release:        0
 Summary:        Database for recording the last logged in users and system reboots
 License:        BSD-2-Clause
 URL:            https://github.com/thkukuk/wtmpdb
-Source:         https://github.com/thkukuk/wtmpdb/releases/download/v0.10.0/%{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.xz
 BuildRequires:  docbook5-xsl-stylesheets
 BuildRequires:  meson
 BuildRequires:  pkgconfig
