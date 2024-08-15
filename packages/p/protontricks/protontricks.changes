@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Aug 14 14:20:55 UTC 2024 - Ralf Habacker <ralf.habacker@freenet.de>
+
+- Update to version 1.11.1:
+  * Fix Protontricks crash when custom Proton has an invalid or
+    empty compatibilitytool.vdf manifest
+  * Fix Protontricks GUI crash when Proton installation is
+    incomplete
+  * Check if Steam Runtime launcher service launched correctly
+    instead of always assuming successful launch
+
+-------------------------------------------------------------------
 Fri Jan  5 22:51:47 UTC 2024 - Ralf Habacker <ralf.habacker@freenet.de>
 
 - Update to version 1.11.0:

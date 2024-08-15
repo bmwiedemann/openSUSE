@@ -19,7 +19,7 @@
 
 %{!?python_sitelib: %global python_sitelib %(python -c "from distutils.sysconfig import get_python_lib; print get_python_lib()")}
 Name:           protontricks
-Version:        1.11.0
+Version:        1.11.1
 Release:        0
 Summary:        Winetricks for Proton-enabled Games
 License:        GPL-3.0-only
