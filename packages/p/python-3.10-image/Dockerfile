@@ -21,6 +21,8 @@
 
 FROM opensuse/tumbleweed:latest
 
+RUN set -euo pipefail; zypper -n in --no-recommends python310-devel python310 python310-pip curl findutils gawk git-core procps util-linux python310-wheel python310-pipx; zypper -n clean; rm -rf /var/log/{lastlog,tallylog,zypper.log,zypp/history,YaST2}
+
 # Define labels according to https://en.opensuse.org/Building_derived_containers
 # labelprefix=org.opensuse.bci.python
 LABEL org.opencontainers.image.authors="openSUSE (https://www.opensuse.org/)"
@@ -38,8 +40,6 @@ LABEL org.opensuse.lifecycle-url="https://en.opensuse.org/Lifetime#openSUSE_BCI"
 LABEL org.opensuse.release-stage="released"
 # endlabelprefix
 LABEL io.artifacthub.package.readme-url="https://raw.githubusercontent.com/SUSE/BCI-dockerfile-generator/Tumbleweed/python-3.10-image/README.md"
-
-RUN set -euo pipefail; zypper -n in --no-recommends python310-devel python310 python310-pip curl findutils gawk git-core procps util-linux python310-wheel python310-pipx; zypper -n clean; rm -rf /var/log/{lastlog,tallylog,zypper.log,zypp/history,YaST2}
 ENV PYTHON_VERSION="%%py310_ver%%"
 ENV PATH="$PATH:/root/.local/bin"
 ENV PIP_VERSION="%%pip_ver%%"
