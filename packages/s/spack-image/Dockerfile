@@ -22,6 +22,8 @@
 
 FROM opensuse/tumbleweed:latest
 
+RUN set -euo pipefail; zypper -n in spack bison cmake-full flex libtool makeinfo patchelf lsb-release zstd libzip-devel libcurl-devel libopenssl-devel ncurses-devel tack xz-devel; zypper -n clean; rm -rf /var/log/{lastlog,tallylog,zypper.log,zypp/history,YaST2}
+
 # Define labels according to https://en.opensuse.org/Building_derived_containers
 # labelprefix=org.opensuse.bci.spack
 LABEL org.opencontainers.image.authors="openSUSE (https://www.opensuse.org/)"
@@ -41,8 +43,6 @@ LABEL org.opensuse.release-stage="released"
 LABEL io.artifacthub.package.readme-url="https://raw.githubusercontent.com/SUSE/BCI-dockerfile-generator/Tumbleweed/spack-image/README.md"
 LABEL io.artifacthub.package.logo-url="https://spack.io/assets/images/spack-logo-white.svg"
 LABEL usage="This container is enabled and supported only on a SLE15+ host."
-
-RUN set -euo pipefail; zypper -n in spack bison cmake-full flex libtool makeinfo patchelf lsb-release zstd libzip-devel libcurl-devel libopenssl-devel ncurses-devel tack xz-devel; zypper -n clean; rm -rf /var/log/{lastlog,tallylog,zypper.log,zypp/history,YaST2}
 ENV SPACK_ROOT="/usr"
 ENV CURRENTLY_BUILDING_DOCKER_IMAGE="1"
 ENV container="docker"
