@@ -27,6 +27,8 @@ Source0:        https://github.com/hexchat/hexchat/releases/download/v%{version}
 Source1:        hexchat-migrate-sh
 # PATCH-FEATURE-SLE migrate-configuration-from-xchat.patch tyang@suse.com fate#318480 -- replace xchat with hexchat
 Patch1:         migrate-configuration-from-xchat.patch
+# PATCH-FIX-OPENSUSE hexchat-disable-tray-icon-by-default.patch bsc#1225688 alynx.zhou@suse.com -- Workaround for X error
+Patch2:         hexchat-disable-tray-icon-by-default.patch
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  intltool
 BuildRequires:  lua-devel

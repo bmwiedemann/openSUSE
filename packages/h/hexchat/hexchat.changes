@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Aug 16 07:15:47 UTC 2024 - Alynx Zhou <alynx.zhou@suse.com>
+
+- Add hexchat-disable-tray-icon-by-default.patch: Workaround to
+  prevent X BadWindow error (bsc#1225688).
+
+-------------------------------------------------------------------
 Thu Feb  8 11:04:15 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 2.16.2:

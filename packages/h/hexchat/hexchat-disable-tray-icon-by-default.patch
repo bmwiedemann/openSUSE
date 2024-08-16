@@ -1,0 +1,12 @@
+diff -ur a/src/common/cfgfiles.c b/src/common/cfgfiles.c
+--- a/src/common/cfgfiles.c	2016-07-12 05:17:07.727885051 +0200
++++ b/src/common/cfgfiles.c	2016-07-12 05:16:10.107354592 +0200
+@@ -769,7 +769,7 @@
+ 	prefs.hex_gui_tab_sort = 1;
+ 	prefs.hex_gui_topicbar = 1;
+ 	prefs.hex_gui_transparency = 255;
+-	prefs.hex_gui_tray = 1;
++	prefs.hex_gui_tray = 0;
+ 	prefs.hex_gui_tray_blink = 1;
+ 	prefs.hex_gui_ulist_count = 1;
+ 	prefs.hex_gui_ulist_icons = 1;
