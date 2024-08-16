@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Aug 09 09:48:52 UTC 2024 - Andrii Nikitin <andrii.nikitin@suse.com>
+
+- Update to version 1.081:
+  * Add /rest/project_disk_usage route (#510)
+  * fix redirect of unversioned files when accept has zsync (#509)
+
+-------------------------------------------------------------------
 Thu Aug 01 08:59:31 UTC 2024 - Andrii Nikitin <andrii.nikitin@suse.com>
 
 - Update to version 1.080:
