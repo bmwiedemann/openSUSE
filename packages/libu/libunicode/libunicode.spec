@@ -20,6 +20,7 @@
 %define mayor   4
 %define lname   libunicode%{ver}_%{mayor}
 %define sover   %{ver}.%{mayor}
+%define force_gcc_version 13
 Name:           libunicode
 Version:        0.4.0
 Release:        0
@@ -31,7 +32,12 @@ Patch0:         libunicode-fix-catch-in-cmake.patch
 BuildRequires:  ccache
 BuildRequires:  cmake
 BuildRequires:  fmt-devel
-BuildRequires:  gcc-c++ >= 8
+%if 0%{?suse_version} < 1600
+BuildRequires:  gcc%{?force_gcc_version}
+BuildRequires:  gcc%{?force_gcc_version}-c++
+%else
+BuildRequires:  gcc-c++
+%endif
 BuildRequires:  range-v3-devel
 BuildRequires:  unicode-ucd
 BuildRequires:  cmake(Catch2) >= 3.3.0
@@ -68,7 +74,15 @@ The %{name}-tools package contains tools about %{name}.
 %autosetup -p1
 
 %build
-%cmake -DLIBUNICODE_UCD_DIR=%{_datadir}/unicode/ucd
+%if 0%{?suse_version} < 1600
+export CC="gcc-%{?force_gcc_version}"
+export CXX="g++-%{?force_gcc_version}"
+%endif
+%cmake \
+%if 0%{?suse_version} < 1600
+    -DLIBUNICODE_TESTING=OFF \
+%endif
+    -DLIBUNICODE_UCD_DIR=%{_datadir}/unicode/ucd
 %cmake_build
 
 %install
