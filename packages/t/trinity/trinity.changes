@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Aug 16 06:25:53 UTC 2024 - jslaby@suse.cz
+
+- Update to version 1.9+git.20240614:
+  * Remove unused kcov stuff
+  * Remove TODO
+  * fix memfd_create compile issue (#51)
+
+-------------------------------------------------------------------
 Wed May 22 05:32:21 UTC 2024 - jslaby@suse.cz
 
 - Update to version 1.9+git.20240521:

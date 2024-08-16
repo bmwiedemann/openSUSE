@@ -791,4 +791,16 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1177450</requestid>
   </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>cbbe12282ed3376a74dec5a011b1fefb</srcmd5>
+    <version>1.9+git.20240614</version>
+    <time>1723803849</time>
+    <user>dimstar_suse</user>
+    <comment>Fix gcc14 build by:
+- Update to version 1.9+git.20240614:
+  * Remove unused kcov stuff
+  * Remove TODO
+  * fix memfd_create compile issue (#51)</comment>
+    <requestid>1194233</requestid>
+  </revision>
 </revisionlist>
