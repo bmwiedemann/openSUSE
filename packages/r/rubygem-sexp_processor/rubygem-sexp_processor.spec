@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-sexp_processor
-Version:        4.17.1
+Version:        4.17.2
 Release:        0
 %define mod_name sexp_processor
 %define mod_full_name %{mod_name}-%{version}
