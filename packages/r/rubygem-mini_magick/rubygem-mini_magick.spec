@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-mini_magick
-Version:        4.13.1
+Version:        5.0.0
 Release:        0
 %define mod_name mini_magick
 %define mod_full_name %{mod_name}-%{version}
@@ -34,11 +34,11 @@ BuildRequires:  ruby-macros >= 5
 URL:            https://github.com/minimagick/minimagick
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
-Summary:        Manipulate images with minimal use of memory via ImageMagick /
+Summary:        Manipulate images with minimal use of memory via ImageMagick
 License:        MIT
 
 %description
-Manipulate images with minimal use of memory via ImageMagick / GraphicsMagick.
+Manipulate images with minimal use of memory via ImageMagick.
 
 %prep
 
