@@ -1,0 +1,62 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0c6e5d8f7ec06cec8d3e9be4a8f7dcb9</srcmd5>
+    <version>1.5.2</version>
+    <time>1723803847</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.5.2:
+  * Bug Fixes
+    + Avoid Astropy Time error for SIAResult.dateobs when VOX:Image_MJDateObs
+      or ssa:DataID.Date is nan.
+    + More robust handling of SIA1 FORMAT
+    + Fix pyvo.registry.Author to allow registry searches with author
+      constraints.
+    + Backing out of having alt_identifier in RegistryResource throughout.
+      Use get_alt_identifier() instead
+    + Fix maxrec=0 special case for SIA2 queries.
+    + Fixed TapResults to inherit session.
+    + Fix handling of nan values for Time properties in SIA2 records.
+    + Fix SIA2 search to accept SkyCoord position inputs.
+    + Favouring VOX:Image_AccessReference for data url for SIA1 queries.
+  * Enhancements and Fixes
+    + registry.search now allows programmatic selection of the registry TAP
+      service endpoint with the choose_RegTAP_service function.
+    + registry.search now introspects the TAP service's capabilities and only
+      offers extended functionality or optimisations if the required features
+      are present
+    + Registry search now finds SIA v2 services.
+    + Made SIA2Service accept access urls without finding them in the service
+      capabilities.
+    + Fix session inheritance in SIA2.
+    + Add intersect modes for the spatial constraint in the registry module
+      pyvo.registry.Spatial.
+    + Added alt_identifier, created, updated and rights to the attributes of
+      pyvo.registry.regtap.RegistryResource
+    + Added the source_value and alt_identifier information to the verbose
+      output of describe() in regtap.
+    + Added convenience method DALResults.to_qtable() that returns an
+      astropy.table.QTable object.
+    + TAP examples now support the continuation property.
+    + Fix poor polling behavior when running an async query against a
+      TAP v1.1 service with unsupported WAIT parameter.
+    + Adding python version to User-Agent.
+    + Output of repr for DALResults instance now clearly shows it is a
+      DALResultsTable and not a generic astropy Table.
+    + Adding support for the VODataService 1.2 nrows attribute on table
+      elements.
+  * Deprecations and Removals
+    + Classes SIAService, SIAQuery, SIAResults for SIA v2 have been renamed
+      to SIA2Service, SIA2Query, SIA2Results respectively as well as the
+      variable SIA_PARAMETERS_DESC to SIA2_PARAMETERS_DESC.
+    + Class pyvo.vosi.vodataservice.Table has been renamed to
+      VODataServiceTable to avoid sharing the name with a more generic
+      astropy.table.Table while having different API.
+    + Deprecate VOSI AvailabilityMixin, this mean the deprecation of the
+      inherited availability, available, and up_since properties of DAL
+      service classes, too.
+    + Deprecating ivoid2service because it is ill-defined.
+- Switch to pyproject macros.
+- Initial version</comment>
+    <requestid>1194204</requestid>
+  </revision>
+</revisionlist>
