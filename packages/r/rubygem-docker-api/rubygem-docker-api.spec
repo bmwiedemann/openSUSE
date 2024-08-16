@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-docker-api
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,23 +24,21 @@
 #
 
 Name:           rubygem-docker-api
-Version:        2.2.0
+Version:        2.3.0
 Release:        0
 %define mod_name docker-api
 %define mod_full_name %{mod_name}-%{version}
 # MANUAL
-Requires:       %{rubygem excon} >= 0.46.0
+Requires: %{rubygem excon} >= 0.46.0
 # /MANUAL
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  %{rubygem gem2rpm}
-BuildRequires:  %{ruby}
 BuildRequires:  ruby-macros >= 5
-URL:            https://github.com/swipely/docker-api
+BuildRequires:  %{ruby}
+BuildRequires:  %{rubygem gem2rpm}
+Url:            https://github.com/upserve/docker-api
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        A simple REST client for the Docker Remote API
 License:        MIT
-Group:          Development/Languages/Ruby
 
 %description
 A simple REST client for the Docker Remote API.
