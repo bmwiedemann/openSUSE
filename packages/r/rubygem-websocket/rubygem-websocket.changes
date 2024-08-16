@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jul 16 10:02:27 UTC 2024 - Dan Čermák <dan.cermak@posteo.net>
+
+- ## 1.2.11
+
+- remove unused base64 require that would cause issues in Ruby 3.4
+
+
+-------------------------------------------------------------------
 Fri Nov  3 08:02:35 UTC 2023 - Dan Čermák <dan.cermak@posteo.net>
 
 - ## Edge
