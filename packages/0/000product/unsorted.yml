@@ -7486,6 +7486,8 @@ unsorted:
   - gnucash-docs 
   - gnucash-lang 
   - gnuchess 
+  - gnudos 
+  - gnudos-devel 
   - gnugo 
   - gnuhealth 
   - gnuhealth-client 
@@ -7591,6 +7593,7 @@ unsorted:
   - godot3-server 
   - goffice-devel 
   - goffice-lang 
+  - goipp 
   - gojq 
   - gokart 
   - golang-github-QubitProducts-exporter_exporter 
@@ -9048,6 +9051,7 @@ unsorted:
   - ipmiutil 
   - ipmiutil-devel 
   - ipmiutil-static 
+  - ipp-usb 
   - iprange 
   - iproute2-arpd 
   - ipset 
@@ -11811,11 +11815,11 @@ unsorted:
   - libarmnnTfLiteParser24-opencl 
   - libarpack2 
   - libarprec0 
-  - libarrow1600 
-  - libarrow_acero1600 
-  - libarrow_dataset1600 
-  - libarrow_flight1600 
-  - libarrow_flight_sql1600 
+  - libarrow1700 
+  - libarrow_acero1700 
+  - libarrow_dataset1700 
+  - libarrow_flight1700 
+  - libarrow_flight_sql1700 
   - libart_lgpl-devel 
   - libart_lgpl_2-2 
   - libasan4 
@@ -11871,9 +11875,9 @@ unsorted:
   - libaudaspace-py1_5 
   - libaudaspace1_5 
   - libaudcore5 
-  - libaudgui5 
+  - libaudgui6 
   - libaudiofile1 
-  - libaudqt2 
+  - libaudqt3 
   - libaudtag3 
   - libaugeas0-32bit 
   - libauparse0-32bit 
@@ -13380,6 +13384,7 @@ unsorted:
   - libgnt-devel 
   - libgnt0 
   - libgnuastro20 
+  - libgnudos2 
   - libgnunetarm2 
   - libgnunetblock0 
   - libgnunetblockgroup0 
@@ -15124,7 +15129,7 @@ unsorted:
   - libparlatype7 
   - libparpack2-openmpi4 
   - libparpack2-openmpi5 
-  - libparquet1600 
+  - libparquet1700 
   - libparserutils-devel 
   - libparserutils0 
   - libpartio1 
@@ -26833,6 +26838,7 @@ unsorted:
   - python310-pyvips 
   - python310-pyviz-comms 
   - python310-pyvmomi 
+  - python310-pyvo 
   - python310-pywal 
   - python310-pywayland 
   - python310-pywbem 
@@ -30372,6 +30378,7 @@ unsorted:
   - python311-pyvips 
   - python311-pyviz-comms 
   - python311-pyvmomi 
+  - python311-pyvo 
   - python311-pywal 
   - python311-pywayland 
   - python311-pywbem 
@@ -33991,6 +33998,7 @@ unsorted:
   - python312-pyvdr 
   - python312-pyvips 
   - python312-pyviz-comms 
+  - python312-pyvo 
   - python312-pywal 
   - python312-pywayland 
   - python312-pywbem 
@@ -35537,6 +35545,8 @@ unsorted:
   - rds-tools-devel 
   - rdtk0-devel 
   - re-devel 
+  - re-flex 
+  - re-flex-devel 
   - re2-devel 
   - read-edid 
   - read-only-root-fs-volatile 
@@ -36085,7 +36095,6 @@ unsorted:
   - ruby3.3-rubygem-mixlib-authentication 
   - ruby3.3-rubygem-mixlib-cli 
   - ruby3.3-rubygem-mixlib-config 
-  - ruby3.3-rubygem-mixlib-log 
   - ruby3.3-rubygem-mixlib-shellout 
   - ruby3.3-rubygem-mocha 
   - ruby3.3-rubygem-moneta 
@@ -48154,6 +48163,7 @@ unsorted:
   - wl-screenrec 
   - wlgreet 
   - wlopm 
+  - wlprop 
   - wlr-randr 
   - wlr-sunclock 
   - wlrctl 
