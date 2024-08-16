@@ -52,4 +52,12 @@
   * Split out test into multibuild flavor since it takes a long time to run (about an hour).</comment>
     <requestid>1147605</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>2bce0385b9f02bc51f73ac84f5d59152</srcmd5>
+    <version>2.8.1</version>
+    <time>1723803793</time>
+    <user>dimstar_suse</user>
+    <comment>- use modern python on sle15</comment>
+    <requestid>1193956</requestid>
+  </revision>
 </revisionlist>

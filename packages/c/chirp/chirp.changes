@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Aug 15 17:25:12 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 20240813:
+  * ga510v2: Fix power level handling
+  * tdh3: Fix VFO power level settings
+  * uv17Pro: Note the A/B selection byte
+  * Add Radioddity DB50 model alias
+  * btech: Handle out-of-range reset time setting
+  * thd8: Fix ham model RX-bands
+  * Add padding support to icf.warp_byte_size
+
+-------------------------------------------------------------------
 Sat Aug 10 15:55:30 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 20240806:

@@ -1,4 +1,175 @@
 -------------------------------------------------------------------
+Thu Aug 08 15:55:18 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 10.1.1 → 10.1.2
+
+-------------------------------------------------------------------
+Thu Aug 08 15:15:32 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Improve error reporting for remote deployment
+
+  Add new method called show_log_and_quit which displays
+  the written error log file as a file box to the user
+
+-------------------------------------------------------------------
+Thu Aug 08 15:14:18 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update test-image-orthos integration test
+
+  Update the test such that you can also build it locally.
+  Change the remote installation target to be a ramdisk
+  for easy testing of remote deployments
+
+-------------------------------------------------------------------
+Thu Aug 08 10:22:22 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Setup default minimum volume size per filesystem
+
+  The former method provided a static value but there are huge
+  differences for the minimum size requirement of a filesystem.
+  For example extX is fine with 30MB whereas XFS requires 300MB.
+  This commit adds a more dynamic default value based on the
+  used filesystem.
+
+-------------------------------------------------------------------
+Wed Aug 07 18:30:13 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Increase default volume size
+
+  So far 30MB was set as default volume size which is by far
+  too small for a number of filesystems, e.g btrfs and also XFS.
+  This commit increases the default volume size such that all
+  modern filesystems builds if the default volume size is used.
+
+-------------------------------------------------------------------
+Wed Aug 07 18:19:41 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update test-image-raid
+
+  Apart from testing raid this integration test also tests
+  a certain LVM volume setup. The test has been updated
+  to use the btrfs filesystem because it has the most strict
+  size requirements.
+
+-------------------------------------------------------------------
+Tue Aug 06 12:07:33 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 10.1.0 → 10.1.1
+
+-------------------------------------------------------------------
+Mon Aug 05 18:02:34 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Mandatory package scripts for Debian bootstrap
+
+  Make sure to run some mandatory package pre/post scripts
+  such that settings like /etc/passwd, a root user, etc..
+  exists. This action can also be done in post_bootstrap.sh
+  but I think it's better to do this in the core code
+
+-------------------------------------------------------------------
+Mon Aug 05 09:55:53 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 10.0.28 → 10.1.0
+
+-------------------------------------------------------------------
+Mon Aug 05 09:47:53 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- kiwi no longer uses debootstrap
+
+  For building Debian based images we used debootstrap to
+  bootstrap an empty root until apt-get could be used to
+  complete the job. This has now changed such hat apt-get
+  is also used for bootstrapping a new system. The concept
+  and also potential alternatives to the way kiwi bootstraps
+  Debian based systems can be found here:
+
+  * https://osinside.github.io/kiwi/working_with_images/build_without_debianbootstrap.html
+
+  Due to the drop of debootstrap it might happen that
+  package lists of existing image descriptions needs to be
+  extended with packages that were formerly pulled in by
+  debootstrap but did not get properly pulled in with the
+  new apt based bootstrap. As reference please check out the
+  integration tests from here:
+
+  * https://github.com/OSInside/kiwi/tree/main/build-tests/x86/ubuntu
+  * https://github.com/OSInside/kiwi/tree/main/build-tests/x86/debian
+
+  Thanks
+
+-------------------------------------------------------------------
+Mon Aug 05 09:47:12 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 10.0.27 → 10.0.28
+
+-------------------------------------------------------------------
+Sat Aug 03 14:13:07 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update documentation
+
+  kiwi no longer uses debootstrap
+
+-------------------------------------------------------------------
+Fri Aug 02 20:59:19 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix test_process_result_bundle_as_rpm
+
+-------------------------------------------------------------------
+Fri Aug 02 18:02:25 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix Debian/Ubuntu integration tests
+
+  Remove package hacks for debootstrap, explicitly add
+  required packages and or configurations.
+
+-------------------------------------------------------------------
+Fri Aug 02 17:06:52 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Drop types-pkg_resources
+
+  Got removed from PyPI
+
+-------------------------------------------------------------------
+Wed Jul 31 16:57:30 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix test_process_result_bundle_as_rpm
+
+  os.path.basename was called on a MagicMock object which
+  sometimes confused pytest
+
+-------------------------------------------------------------------
+Wed Jul 31 12:09:20 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix kiwi-repart restrictions
+
+  The kiwi repart dracut module reads a profile file and if it
+  does not exists it dies in the initrd. However, that profile
+  file is not mandatory for the main resize functionality. Thus
+  this commit turns this into a warning message. In addition
+  the module-setup for 90kiwi-repart makes sure to include
+  the required and optional profile files.
+  This Fixes bsc#1228118
+
+-------------------------------------------------------------------
+Tue Jul 30 18:16:54 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Do not exclude the .profile env file by default
+
+  kiwi's initrd modules read a .profile file which gets included
+  into the initrd produced at build time. To allow rebuild of a
+  host-only initrd from the booted system this information should
+  be present such that it is possible to re-use kiwi initrd code.
+
+-------------------------------------------------------------------
+Tue Jul 30 12:50:54 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Get rid of debootstrap
+
+  Replace debootstrap with an apt-get based pre-download of
+  packages followed by a dpkg-deb extraction.
+  This Fixes #2599
+
+-------------------------------------------------------------------
 Tue Jul 30 09:45:37 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
 
 - Bump version: 10.0.26 → 10.0.27

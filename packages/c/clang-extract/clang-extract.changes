@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Aug 15 04:21:56 UTC 2024 - mvetter@suse.com
+
+- Update to version 0~20240814.272ac2e:
+  * Drop VectorRef in favor of ArrayRef
+  * Fix copyright headers
+  * Drop use of `dynamic_cast` in favor of `dyn_cast`
+  * ElfCXX: Convert decompress_gz to use DecompressedObj attribute
+  * ElfCXX: Make decompress methods access ElfFd directly
+
+-------------------------------------------------------------------
 Wed Aug 14 06:09:40 UTC 2024 - mvetter@suse.com
 
 - Update to version 0~20240813.82f77f7:

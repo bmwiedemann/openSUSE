@@ -2536,4 +2536,12 @@
 - Revise kiwi_from_python.rst</comment>
     <requestid>1190403</requestid>
   </revision>
+  <revision rev="119" vrev="1">
+    <srcmd5>5fec58b58316ef1dc756bf970e1a0d9f</srcmd5>
+    <version>10.1.2</version>
+    <time>1723803779</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1194146</requestid>
+  </revision>
 </revisionlist>

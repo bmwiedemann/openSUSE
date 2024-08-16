@@ -329,4 +329,12 @@
 - Add fix-c++17.patch, ICU 75 needs c++17 (forwarded request 1177948 from hillwood)</comment>
     <requestid>1177949</requestid>
   </revision>
+  <revision rev="35" vrev="4">
+    <srcmd5>225ecf241e82a9ec30e0f7256deb34ef</srcmd5>
+    <version>6.2.18</version>
+    <time>1723803832</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build on Tumbleweed: don't use ffmpeg 7 and later (forwarded request 1194127 from hillwood)</comment>
+    <requestid>1194128</requestid>
+  </revision>
 </revisionlist>

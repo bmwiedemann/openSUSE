@@ -17,7 +17,7 @@
 
 
 Name:           neonmodem
-Version:        1.0.5+git0.b2e8808
+Version:        1.0.6+git0.63db4bd
 Release:        0
 Summary:        BBS-style command line client for Discourse, Lemmy, Lobsters and Hacker News
 License:        GPL-3.0-only

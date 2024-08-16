@@ -1,0 +1,21 @@
+-------------------------------------------------------------------
+Thu Jul 25 21:41:05 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to version 0.9.27:
+  * HTTP port allocation takes into consideration /var/ipp-usb/dev/*
+  * If quirk's init-delay is high enough, initialization always times out
+  * Device USB port added to logged device info
+  * Pantum BM5100ADN series quirks: disable-fax = true
+  * inifile.go: removed excessive break statements
+  * UID authentication instrumented
+  * auth: fixed possible race in access to UID lookup cache
+  * auth: don't attempt to resolve UID, if UID is not known
+  * auth: don't try to obtain client UID, if we don't actually use it
+  * TCPClientUID better instrumented
+  * uid auth: fixed to run on systems with disabled IPv6 support
+- fix service file (missing Install section)
+
+-------------------------------------------------------------------
+Thu Mar 14 06:36:56 UTC 2024 - Richard Rahl <rrahl0@proton.me>
+
+- initial packaging

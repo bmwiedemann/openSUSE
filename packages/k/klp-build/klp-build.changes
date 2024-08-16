@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Aug 15 04:24:32 UTC 2024 - mvetter@suse.com
+
+- Update to version 0~20240814.5dae2ec:
+  * setup: More information being logged
+  * ibs: Optimize extraction of vmlinux and modules
+  * config.py: Show error code when quilt fails
+
+-------------------------------------------------------------------
 Wed Aug 14 06:12:41 UTC 2024 - mvetter@suse.com
 
 - Update to version 0~20240812.ad9f0e0:

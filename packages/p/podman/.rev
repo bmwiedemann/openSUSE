@@ -1178,4 +1178,12 @@ Update to version 4.7.1 (forwarded request 1115956 from danishprakash)</comment>
     <comment></comment>
     <requestid>1192031</requestid>
   </revision>
+  <revision rev="139" vrev="1">
+    <srcmd5>3f83c5c1450fc5ce71c9e976bd6aabbe</srcmd5>
+    <version>5.2.1</version>
+    <time>1723803773</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1194066</requestid>
+  </revision>
 </revisionlist>

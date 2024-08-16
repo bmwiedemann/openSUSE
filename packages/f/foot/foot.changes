@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Aug 14 16:27:10 UTC 2024 - Arnav Singh <opensuse@arnavion.dev>
+
+- Update to v1.18.1:
+  * foot.ini options:
+    * desktop-notifications.command config can now also use "${muted}"
+      and "${sound-name}" in its template value.
+  * CSD buttons now activate on mouse button release, rather than press.
+  * Desktop notifications via OSC-99 sequence can now choose to play
+    a particular sound or mute the sound.
+  * Fixed bug in OSC-111 sequence used to reset background color not handling
+    alpha changes correctly, causing visual glitches.
+  * See https://codeberg.org/dnkl/foot/releases/tag/1.18.1 for more details.
+
+-------------------------------------------------------------------
 Fri Aug  2 15:42:37 UTC 2024 - Arnav Singh <opensuse@arnavion.dev>
 
 - Update to v1.18.0:

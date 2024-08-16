@@ -1,4 +1,201 @@
 -------------------------------------------------------------------
+Thu Aug 15 09:24:29 UTC 2024 - Jorik Cronenberg <jorik.cronenberg@suse.com>
+
+- Update to 1.21.0:
+  Security Fixes:
+  * Merge #1073: fix null pointer dereference issue in function
+    ub_ctx_set_fwd.
+    [CVE-2024-43167, bsc#1229068]
+
+  Features:
+  * Fix #1071: [FR] Clear both in-memory and cachedb module cache
+    with `unbound-control flush*` commands.
+  * Fix #144: Port ipset to BSD pf tables.
+  * Add dnstap-sample-rate that logs only 1/N messages, for high
+    volume server environments. Thanks Dan Luther.
+  * Add root key 38696 from 2024 for DNSSEC validation. It is added
+    to the default root keys in unbound-anchor. The content can be
+    inspected with `unbound-anchor -l`.
+  * Merge #1090: Cookie secret file. Adds `cookie-secret-file:
+    "unbound_cookiesecrets.txt"` option to store cookie secrets for
+    EDNS COOKIE secret rollover. The remote control
+    add_cookie_secret, activate_cookie_secret and
+    drop_cookie_secret commands can be used for rollover, the
+    command print_cookie_secrets shows the values in use.
+
+  Bug Fixes:
+  * Fix CAMP issues with global quota. Thanks to Huayi
+    Duan, Marco Bearzi, Jodok Vieli, and Cagin Tanir from NetSec
+    group, ETH Zurich.
+  * Fix CacheFlush issues with limit on NS RRs. Thanks to Yehuda
+    Afek, Anat Bremler-Barr, Shoham Danino and Yuval Shavitt
+    (Tel-Aviv University and Reichman University).
+  * Merge #1062: Fix potential overflow bug while parsing port in
+    function cfg_mark_ports.
+  * Fix for #1062: declaration before statement, avoid print of
+    null, and redundant check for array size.
+  * Fix to squelch udp connect errors in the log at low verbosity
+    about invalid argument for IPv6 link local addresses.
+  * Fix when the mesh jostle is exceeded that nameserver targets
+    are marked as resolved, so that the lookup is not stuck on the
+    requestlist.
+  * Add missing common functions to tdir tests.
+  * Merge #1070: Fix rtt assignement for low values of
+    infra-cache-max-rtt.
+  * Merge #1069: Fix unbound-control stdin commands for
+    multi-process Unbounds.
+  * Fix unbound-control commands that read stdin in multi-process
+    operation (local_zones_remove, local_zones, local_datas_remove,
+    local_datas, view_local_datas_remove, view_local_datas). They
+    will be properly distributed to all processes. dump_cache and
+    load_cache are no longer supported in multi-process operation.
+  * Remove testdata/remote-threaded.tdir.
+    testdata/09-unbound-control.tdir now checks both single and
+    multi process/thread operation.
+  * Fix to print a parse error when config is read with no name for
+    a forward-zone, stub-zone or view.
+  * Fix for parse end of forward-zone, stub-zone and view.
+  * Fix for #1064: Fix that cachedb expired messages are considered
+    insecure, and thus can be served to clients when dnssec is
+    enabled.
+  * Fix #1059: Intermittent DNS blocking failure with local-zone
+    and always_nxdomain. Addition of local_zones dynamically via
+    unbound-control was not finding the zone's parent correctly.
+  * Fix #1064: Unbound 1.20 Cachedb broken?
+  * Fix unused variable warning on compilation with no thread
+    support.
+  * unbound-control-setup: check openssl availability before doing
+    anything, patch from Michael Tokarev.
+  * Update patch to remove 'command' shell builtin and update error
+    text.
+  * Fix to enable that SERVFAIL is cached, for a short period, for
+    more cases. In the cases where limits are exceeded.
+  * Fix spelling of tcp-idle-timeout docs, from Michael Tokarev.
+  * Merge #1078: Only check old pid if no username.
+  * Fix #1079: tags from tagged rpz zones are no longer honored
+    after upgrade from 1.19.3 to 1.20.0.
+  * Fix for #1079: fix RPZ taglist in iterator callback that no
+    client info is like no taglist intersection.
+  * Fix to squelch connection reset by peer errors from log. And
+    fix that the tcp read errors are labeled as initial for the
+    first calls.
+  * Merge #1080: AddressSanitizer detection in tdir tests and
+    memory leak fixes.
+  * Fix memory leak when reload_keep_cache is used and num-threads
+    changes.
+  * Fix memory leak on exit for unbound-dnstap-socket; creates
+    false negatives during testing.
+  * Fix memory leak in setup of dsa sig.
+  * Fix typos for 'the the' in text.
+  * Fix validation for repeated use of a DNAME record.
+  * Add unit test for validation of repeated use of a DNAME record.
+  * Fix #1091: Build fails with OpenSSL >= 3.0 built with
+    OPENSSL_NO_DEPRECATED.
+  * Fix #1092: Ubuntu 22.04 Jammy fails to compile unbound 1.20.0;
+    by adding helpful text for the Python interpreter version and
+    allowing the default pkg-config unavailability error message to
+    be shown.
+  * Fix pkg-config availability check in dnstap/dnstap.m4 and
+    systemd.m4.
+  * Explicitly set the RD bit for the mesh query flags when
+    prefetching. These queries have no waiting client but they need
+    to be treated as recursive.
+  * Fix ip-ratelimit-cookie setting, it was not applied.
+  * Fix to remove unused include from the readzone test program.
+  * Fix unused variable warning in do_cache_remove.
+  * Fix compile warning in worker pthread id printout.
+  * Add unit test skip files and bison and flex output to
+    gitignore.
+  * Fix to use modstack_init in zonemd unit test.
+  * Fix to remove unneeded linebreak in fptr_wlist.c.
+  * Fix compile warnings in fptr_wlist.c.
+  * Fix for repeated use of a DNAME record: first overallocate and
+    then move the exact size of the init value to avoid false
+    positive heap overflow reads from address sanitizers.
+  * Fix to print details about the failure to lookup a DNSKEY
+    record when validation fails due to the missing DNSKEY. Also
+    for key prime and DS lookups.
+  * Fix for neater printout for error for missing DS response.
+  * Fix neater printout.
+  * Fix #1099: Unbound core dump on SIGSEGV.
+  * Fix for #1099: Fix to check for deleted RRset when the contents
+    is updated and fetched after it is stored, and also check for a
+    changed RRset.
+  * Don't check for message TTL changes if the RRsets remain the
+    same.
+  * Fix that validation reason failure that uses string print uses
+    separate buffer that is passed, from the scratch validation
+    buffer.
+  * Fixup algo_needs_reason string buffer length.
+  * Fix shadowed error string variable in validator dnskey
+    handling.
+  * Update list of known EDE codes.
+  * For #773: In contrib/unbound.service.in set unbound to start
+    after network-online.target. Also for
+    contrib/unbound_portable.service.in.
+  * Fix #1103: unbound 1.20.0 segmentation fault with nghttp2.
+  * For #1103: fix to also drop mesh state reference when a h2
+    reply is dropped.
+  * Add RPZ tag tests in acl_interface.tdir.
+  * For #1102: clearer text for using interface-* options for the
+    loopback interface.
+  * For #1103: fix to also drop mesh state reference when the
+    discard limit is reached, when there is an error making a new
+    recursion state and when the connection is dropped with
+    is_drop.
+  * For #1103: Fix to drop mesh state reference for the http2
+    stream associated with the reply, not the currently active
+    stream. And it does not remove it twice on a mesh_send_reply
+    call. The reply h2_stream is NULL when not in use, for more
+    initialisation.
+  * Fix dnstap wakeup, a running wakeup timer is left to expire and
+    not increased, a timer is started when the dtio thread is
+    sleeping, the timer set disabled when the dtio thread goes to
+    sleep, and after sleep the thread checks to see if there are
+    messages to log immediately.
+  * Merge #1110: Make fallthrough explicit for libworker.c.
+  * For #1110: Test for fallthrough attribute in configure and add
+    fallthrough attribute annotations.
+  * Fix compile when the compiler does not support the noreturn
+    attribute.
+  * Fix to have empty definition when not supported for weak
+    attribute.
+  * Fix uninitialized variable warning in create_tcp_accept_sock.
+  * Fix link of dnstap without openssl.
+  * Fix link of unbound-dnstap-socket without openssl.
+  * Fix #1106: ratelimit-below-domain logs the wrong FROM address.
+  * Cleanup ede.tdir test.
+  * For #935 and #1104, clarify RPZ order and semantics.
+  * Fix to document parameters of auth_zone_verify_zonemd_with_key.
+  * Fix for #1114: Fix that cache fill for forward-host names is
+    performed, so that with nonzero target-fetch-policy it fetches
+    forwarder addresses and uses them from cache. Also updated that
+    delegation point cache fill routines use CDflag for AAAA
+    message lookups, so that its negative lookup stops a recursion
+    since the cache uses the bit for disambiguation for dns64 but
+    the recursion uses CDflag for the AAAA target lookups, so the
+    check correctly stops a useless recursion by its cache lookup.
+  * Fix dnstap test program, cleans up to have clean memory on
+    exit, for tap_data_free, does not delete NULL items. Also it
+    does not try to free the tail, specifically in the free of the
+    list since that picked up the next item in the list for its
+    loop causing invalid free. Added internal unit test to
+    unbound-dnstap-socket for that.
+  * Fix that the worker mem report with alloc stats does not
+    attempt to print memory use of forwards and hints if they have
+    been deleted already.
+  * Fix that alloc stats has strdup checks, it stops debuggers from
+    complaining about mismatch at free time.
+  * Fix testbound for alloc stats strdup in util/alloc.c.
+  * Fix that alloc stats for forwards and hints are printed, and
+    when alloc stats is enabled, the unit test for unbound control
+    waits for reloads to complete.
+  * Fix that for windows the module startup is called and sets up
+    the module-config.
+  * Fix spelling for the cache-min-negative-ttl entry in the
+    example.conf.
+
+-------------------------------------------------------------------
 Wed May  8 09:15:01 UTC 2024 - Jorik Cronenberg <jorik.cronenberg@suse.com>
 
 - Update to 1.20.0:

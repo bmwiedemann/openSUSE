@@ -1,0 +1,36 @@
+From 3ef8ec8eb6a8ccde2ca4db53fcac224eedaf4a28 Mon Sep 17 00:00:00 2001
+From: Su Yue <glass.su@suse.com>
+Date: Tue, 13 Aug 2024 20:57:53 +0800
+Subject: [PATCH] lvm2-monitor.service: start after system fully booted
+
+This patch is for 'bsc#1228854 - lvm2-monitor.service fails to start'.
+All verions with system.devices enabled should contain this patch.
+
+Signed-off-by: Su Yue <glass.su@suse.com>
+---
+ scripts/lvm2_monitoring_systemd_red_hat.service.in | 5 +----
+ 1 file changed, 1 insertion(+), 4 deletions(-)
+
+diff --git a/scripts/lvm2_monitoring_systemd_red_hat.service.in b/scripts/lvm2_monitoring_systemd_red_hat.service.in
+index c0c96e316b67..b50007cd8bd2 100644
+--- a/scripts/lvm2_monitoring_systemd_red_hat.service.in
++++ b/scripts/lvm2_monitoring_systemd_red_hat.service.in
+@@ -3,9 +3,6 @@ Description=Monitoring of LVM2 mirrors, snapshots etc. using dmeventd or progres
+ Documentation=man:dmeventd(8) man:lvcreate(8) man:lvchange(8) man:vgchange(8)
+ Requires=dm-event.socket
+ After=dm-event.socket dm-event.service
+-Before=local-fs-pre.target shutdown.target
+-DefaultDependencies=no
+-Conflicts=shutdown.target
+ 
+ [Service]
+ Type=oneshot
+@@ -15,4 +12,4 @@ ExecStop=@SBINDIR@/lvm vgchange --monitor n
+ RemainAfterExit=yes
+ 
+ [Install]
+-WantedBy=sysinit.target
++WantedBy=multi-user.target
+-- 
+2.45.2
+

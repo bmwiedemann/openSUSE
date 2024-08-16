@@ -16,27 +16,28 @@
 #
 
 
-%{?!python3_pkgversion:%define python3_pkgversion 3}
-
-%define vimplugin_dir %{_datadir}/vim/site
-# Luajit not available on all platforms
-%ifarch %{arm} %{ix86} x86_64 aarch64
-%bcond_without luajit
-%else
-%bcond_with luajit
+%ifarch s390x
+%bcond_without  make_optional
 %endif
-
+%ifarch ppc64le
+%bcond_with luajit
+%else
+%bcond_without luajit
+%endif
+%define         vimplugin_dir %{_datadir}/vim/site
 Name:           neovim
 Version:        0.10.1
 Release:        0
 Summary:        Vim-fork focused on extensibility and agility
 License:        Apache-2.0 AND Vim AND GPL-3.0-or-later AND CC-BY-3.0
-Group:          Productivity/Text/Editors
 URL:            https://neovim.io/
 Source0:        https://github.com/neovim/neovim/archive/v%{version}/%{name}-%{version}.tar.gz
 Source1:        sysinit.vim
 Source3:        suse-spec-template
 Source4:        spec.vim
+# This patch is from AlpineLinux, which enables us to reenable neovim on s390x or as an optional flag to build
+# This patch only makes the tree-sitter plugins optional, not tree-sitter in itself
+Patch0:         make-tree-sitter-optional.patch
 BuildRequires:  cmake
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
@@ -57,7 +58,22 @@ BuildRequires:  lua51-mpack
 BuildRequires:  make
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
-BuildRequires:  tree-sitter
+BuildRequires:  unzip
+BuildRequires:  pkgconfig(libluv)
+BuildRequires:  pkgconfig(libutf8proc)
+BuildRequires:  pkgconfig(libuv) >= 1.42.0
+BuildRequires:  pkgconfig(tree-sitter) >= 0.20.9
+%if %{with luajit}
+BuildRequires:  pkgconfig(luajit)
+%else
+BuildRequires:  lua51-BitOp
+BuildRequires:  pkgconfig(lua5.1)
+%endif
+BuildRequires:  pkgconfig(msgpack-c)
+BuildRequires:  pkgconfig(termkey)
+BuildRequires:  pkgconfig(unibilium) >= 2.0.0
+BuildRequires:  pkgconfig(vterm) >= 0.3.3
+%if %{without make_optional}
 BuildRequires:  tree-sitter-c >= 0.21.3
 BuildRequires:  tree-sitter-lua
 BuildRequires:  tree-sitter-markdown
@@ -65,20 +81,6 @@ BuildRequires:  tree-sitter-python
 BuildRequires:  tree-sitter-query >= 0.4.0
 BuildRequires:  tree-sitter-vim
 BuildRequires:  tree-sitter-vimdoc >= 3.0.0
-BuildRequires:  unzip
-BuildRequires:  pkgconfig(libluv)
-BuildRequires:  pkgconfig(libutf8proc)
-BuildRequires:  pkgconfig(libuv) >= 1.42.0
-BuildRequires:  pkgconfig(msgpack-c)
-BuildRequires:  pkgconfig(termkey)
-BuildRequires:  pkgconfig(tree-sitter) >= 0.20.9
-BuildRequires:  pkgconfig(unibilium) >= 2.0.0
-BuildRequires:  pkgconfig(vterm) >= 0.3.3
-%if %{with luajit}
-BuildRequires:  pkgconfig(luajit)
-%else
-BuildRequires:  lua51-BitOp
-BuildRequires:  lua51-devel
 %endif
 Requires:       gperf
 Requires:       libvterm0 >= 0.3
@@ -88,7 +90,8 @@ Requires:       lua51-lpeg
 Requires:       lua51-luarocks
 Requires:       lua51-luv
 Requires:       lua51-mpack
-Requires:       tree-sitter
+Requires:       xdg-utils
+%if %{without make_optional}
 Requires:       tree-sitter-c >= 0.21.3
 Requires:       tree-sitter-lua
 Requires:       tree-sitter-markdown
@@ -96,7 +99,7 @@ Requires:       tree-sitter-python
 Requires:       tree-sitter-query >= 0.4.0
 Requires:       tree-sitter-vim
 Requires:       tree-sitter-vimdoc >= 3.0.0
-Requires:       xdg-utils
+%endif
 Recommends:     python3-neovim
 Recommends:     wl-clipboard
 Recommends:     xsel
@@ -115,7 +118,10 @@ excisions, Neovim is Vim. It is built for users who want the good
 parts of Vim, without compromise, and more.
 
 %prep
-%autosetup -p1
+%autosetup -N
+%if %{with make_optional}
+%patch -P0 -p1
+%endif
 
 # Remove __DATE__ and __TIME__.
 BUILD_TIME=$(LC_ALL=C date -ur %{_sourcedir}/%{name}.changes +'%{H}:%{M}')
@@ -127,8 +133,6 @@ sed -i "s/__DATE__/\"$BUILD_DATE\"/" $(grep -rl '__DATE__')
 # set vars to make build reproducible in spite of config/CMakeLists.txt
 HOSTNAME=OBS
 USERNAME=OBS
-export CFLAGS="%{optflags} -fcommon"
-export CXXFLAGS="%{optflags} -fcommon"
 %cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo \
        -DPREFER_LUA=%{?with_luajit:OFF}%{!?with_luajit:ON} \
        -DLUA_PRG=%{_bindir}/%{?with_luajit:luajit}%{!?with_luajit:lua} \
@@ -170,12 +174,14 @@ mkdir -p %{buildroot}%{vimplugin_dir}/{after,after/syntax,autoload,colors,doc,ft
 %fdupes %{buildroot}%{_datadir}/
 %find_lang nvim
 
+%if %{without make_optional}
 # let's make tree-sitter grammars visible to neovim
 install -d %{buildroot}%{_datadir}/nvim/runtime/parser
 for i in c lua markdown python query vim vimdoc; do
    ln -s %{_libdir}/libtree-sitter-$i.so %{buildroot}%{_datadir}/nvim/runtime/parser/$i.so;
 done
 ln -s %{_libdir}/libtree-sitter-markdown-inline.so %{buildroot}%{_datadir}/nvim/runtime/parser/markdown_inline.so
+%endif
 
 # We have to have rpath
 # https://en.opensuse.org/openSUSE:Packaging_checks

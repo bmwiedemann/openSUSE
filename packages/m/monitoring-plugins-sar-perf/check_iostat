@@ -210,6 +210,12 @@ if ($crit_util && $util >= $crit_util) {
    $status = 2;
 }
 
+if ($util == 100 && $kbread == 0 && $kbwritten == 0) {
+   $msg = "CRITICAL";
+   $reasons{'stuck'} = 2;
+   $status = 2;
+}
+
 $msg .= " (".join(",",keys(%reasons)).")" if $status != 0;
 
 my $p_tps = $tps;

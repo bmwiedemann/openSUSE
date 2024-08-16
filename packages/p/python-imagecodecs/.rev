@@ -166,4 +166,12 @@
     <comment></comment>
     <requestid>1188317</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>d2dce190ba9a2681d1fc0ba6d35ad4e1</srcmd5>
+    <version>2024.6.1</version>
+    <time>1723803787</time>
+    <user>dimstar_suse</user>
+    <comment>- switch to modern python for sle15</comment>
+    <requestid>1193894</requestid>
+  </revision>
 </revisionlist>

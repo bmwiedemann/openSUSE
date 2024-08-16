@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Aug 13 20:28:37 UTC 2024 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- Fix ftbfs with ffmpeg 7.x
+  * add backported ffmpeg-7-ffmpeg_video_decoder-reordered_opaque.patch
+  * do not revert audio_file_reader-ffmpeg-AVFrame-duration.patch when building against ffmpeg 6+
+
+-------------------------------------------------------------------
 Sat Jul 20 10:02:27 UTC 2024 - Bruno Pitrus <brunopitrus@hotmail.com>
 
 - New upstream release 30.3.0

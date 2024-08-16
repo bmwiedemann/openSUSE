@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-shakespeare
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        2.1.0.1
+Version:        2.1.1
 Release:        0
 Summary:        A toolkit for making compile-time interpolated templates
 License:        MIT

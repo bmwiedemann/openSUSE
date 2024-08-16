@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sun Aug  4 20:17:44 UTC 2024 - Martin Schreiner <martin.schreiner@suse.com>
+
+- Re-enable QT6 for Leap/SLE 15.X.
+  Requires C++17 support. 
+
+-------------------------------------------------------------------
+Tue Jul 16 03:31:59 UTC 2024 - Martin Schreiner <martin.schreiner@suse.com>
+
+- Re-enable QT5 for codestreams where QT6 isn't available: basically
+  anything that's not based on Tumbleweed.
+- Adjust sonames, as they've been changed for version 4.4.
+
+-------------------------------------------------------------------
+Mon Jul 15 08:31:28 UTC 2024 - Petr Vorel <pvorel@suse.cz>
+
+- Update to version 4.4:
+  * See https://audacious-media-player.org/news/59-audacious-4-4-released
+- Remove gtk3 and qt6 config options (upstream make them compiled as default
+  and remove these options)
+
+-------------------------------------------------------------------
 Sun Jul 23 13:02:31 UTC 2023 - Christoph G <foss@grueninger.de>
 
 - Require Qt(5/6)Svg, otherwise the Qt version does not show icons.

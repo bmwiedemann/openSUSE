@@ -1,7 +1,7 @@
 #
 # spec file for package python-bytecode
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-bytecode
 Version:        0.15.1
 Release:        0
@@ -25,12 +26,12 @@ Group:          Development/Languages/Python
 URL:            https://github.com/vstinner/bytecode
 Source:         https://files.pythonhosted.org/packages/source/b/bytecode/bytecode-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module typing_extensions if %python-base < 3.10}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       (python-typing-extensions if python-base < 3.10)
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
@@ -44,10 +45,10 @@ Python module to generate and modify bytecode
 %setup -q -n bytecode-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -57,6 +58,6 @@ Python module to generate and modify bytecode
 %doc README.rst
 %license COPYING
 %{python_sitelib}/bytecode
-%{python_sitelib}/bytecode-%{version}*-info
+%{python_sitelib}/bytecode-%{version}.dist-info
 
 %changelog

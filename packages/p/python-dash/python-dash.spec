@@ -18,8 +18,8 @@
 
 # We can't test currenty, see below.
 %bcond_with test
-%define skip_python39 1
 %define distver 2.16.1
+%{?sle15_python_module_pythons}
 Name:           python-dash
 Version:        2.16.1
 Release:        0

@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Aug 13 21:44:52 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Release 0.10.3
+  * Fixed default value for CA path
+  * Removed support for .osc data directory
+  * Handle issues due to bugs in backports of responses
+  * Auto release OBS: using osc-tiny and improved change log
+  
+-------------------------------------------------------------------
+Fri Aug 13 14:49:52 UTC 2024 - Chen Huang <chhuang@suse.com>
+
+- Release v0.10.2
+  * Replaced get_cookie_jar function with a CookieManager (#171)
+  * Use urllib3.Retry instead of custom implementation
+  * Use the latest Python version for actions
+  * Automate the release on OBS(closes #138) (#170)
+
+-------------------------------------------------------------------
 Fri Jun 28 14:49:52 UTC 2024 - Chen Huang <chhuang@suse.com>
 
 - Release 0.10.1

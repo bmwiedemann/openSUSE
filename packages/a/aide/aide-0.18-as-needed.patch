@@ -1,13 +1,11 @@
-Index: aide-0.18.3/Makefile.am
-===================================================================
---- aide-0.18.3.orig/Makefile.am
-+++ aide-0.18.3/Makefile.am
-@@ -65,7 +65,7 @@ aide_SOURCES += include/fopen.h src/fope
- endif
- 
- aide_CFLAGS = @AIDE_DEFS@ -W -Wall -g ${PTHREAD_CFLAGS}
--aide_LDADD = -lm ${PCRE2_LIBS} ${ZLIB_LIBS} ${MHASH_LIBS} ${GCRYPT_LIBS} ${POSIX_ACL_LIBS} ${SELINUX_LIBS} ${AUDIT_LIBS} ${XATTR_LIBS} ${ELF_LIBS} ${E2FSATTRS_LIBS} ${CAPABILITIES_LIBS} ${CURL_LIBS} ${PTHREAD_LIBS}
-+aide_LDADD = -lm ${LDFLAGS} ${PCRE2_LIBS} ${ZLIB_LIBS} ${MHASH_LIBS} ${GCRYPT_LIBS} ${POSIX_ACL_LIBS} ${SELINUX_LIBS} ${AUDIT_LIBS} ${XATTR_LIBS} ${ELF_LIBS} ${E2FSATTRS_LIBS} ${CAPABILITIES_LIBS} ${CURL_LIBS} ${PTHREAD_LIBS}
- 
- if HAVE_CHECK
- TESTS				= check_aide
+diff -Ppru aide-0.18.8.orig/Makefile.am aide-0.18.8/Makefile.am
+--- aide-0.18.8.orig/Makefile.am	2024-05-04 11:51:05.000000000 +0200
++++ aide-0.18.8/Makefile.am	2024-08-11 16:07:45.957348909 +0200
+@@ -79,6 +79,7 @@ aide_CFLAGS = @AIDE_DEFS@ -W -Wall -g \
+ 			${XATTR_CFLAGS} \
+ 			${ZLIB_CFLAGS}
+ aide_LDADD = -lm \
++			${LDFLAGS} \
+ 			${AUDIT_LIBS} \
+ 			${CAPABILITIES_LIBS} \
+ 			${CURL_LIBS} \

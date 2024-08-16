@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sun Aug  4 20:19:26 UTC 2024 - Martin Schreiner <martin.schreiner@suse.com>
+
+- Re-enable QT6 for Leap/SLE 15.X.
+  Requires C++17 support.
+
+-------------------------------------------------------------------
+Tue Jul 16 03:34:30 UTC 2024 - Martin Schreiner <martin.schreiner@suse.com>
+
+- Remove patch, as it's no longer required as of version 4.4:
+  * audacious-plugins-fix-qt6-qthotkey.patch
+- Add new build-time dependency: json-glib-1.0.
+- Re-enable QT5 for codestreams where QT6 isn't available: basically
+  anything that's not based on Tumbleweed.
+
+-------------------------------------------------------------------
+Mon Jul 15 08:31:28 UTC 2024 - Petr Vorel <pvorel@suse.cz>
+
+- Update to version 4.4:
+  * See https://audacious-media-player.org/news/59-audacious-4-4-released
+- Remove gtk3 and qt6 config options (upstream make them compiled as default
+  and remove these options)
+
+-------------------------------------------------------------------
 Thu Mar  7 20:06:08 UTC 2023 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 4.3:

@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-mycli
 Version:        1.27.2
 Release:        0

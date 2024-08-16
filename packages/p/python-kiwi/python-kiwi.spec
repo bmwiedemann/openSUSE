@@ -52,7 +52,7 @@
 %endif
 
 Name:           python-kiwi
-Version:        10.0.27
+Version:        10.1.2
 Provides:       kiwi-schema = 8.1
 Release:        0
 Url:            https://github.com/OSInside/kiwi
@@ -125,13 +125,11 @@ Provides:       kiwi-image:tbz
 # tools conditionally used by kiwi
 %if 0%{?fedora} || 0%{?rhel} >= 8
 Recommends:     gnupg2
-Recommends:     debootstrap
+Recommends:     apt
 Recommends:     dpkg
 %endif
 %if 0%{?suse_version}
 Recommends:     gpg2
-Recommends:     debootstrap
-Recommends:     dpkg
 %if 0%{?suse_version} >= 1650
 Recommends:     dnf
 %endif
@@ -158,7 +156,7 @@ Requires:       zypper
 Provides:       kiwi-packagemanager:zypper
 %endif
 %if 0%{?debian} || 0%{?ubuntu}
-Requires:       debootstrap
+Requires:       apt
 Requires:       dpkg
 Requires:       gnupg
 %endif

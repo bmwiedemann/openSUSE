@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Aug  5 06:15:06 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update shakespeare to version 2.1.1.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/shakespeare-2.1.1/src/ChangeLog.md
+
+-------------------------------------------------------------------
 Mon Sep 11 03:58:21 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update shakespeare to version 2.1.0.1.

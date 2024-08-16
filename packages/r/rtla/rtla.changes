@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Aug 14 09:58:51 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Replace deprecated %patchN syntax with %patch -P N.
+
+-------------------------------------------------------------------
 Thu Jul  4 00:00:00 CEST 2024 - dsterba@suse.cz
 
 - Add patch fix-libtracefs.patch, fix build path of libtracefs

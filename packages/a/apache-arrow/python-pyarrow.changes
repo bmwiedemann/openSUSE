@@ -1,4 +1,103 @@
 -------------------------------------------------------------------
+Wed Aug 14 20:27:48 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 17.0.0
+  ## Bug Fixes
+  * [C++][Python] Fix casting to extension type with fixed size
+    list storage type (#42219)
+  * [Python] Include metadata when creating pa.schema from
+    PyCapsule (#41538)
+  * [C++][Python] RecordBatch.filter() segfaults if passed a
+    ChunkedArray (#40971)
+  * [Python] pa.array: add check for byte-swapped numpy arrays
+    inside python objects (#41549)
+  * [Python] Fix read_table for encrypted parquet (#39438)
+  * [Python] RunEndEncodedArray.from_arrays: bugfix for Array
+    arguments (#40560) (#41093)
+  * [C++][Python] Map child Array constructed from keys and items
+    shouldn’t have offset (#40871)
+  * [Python] `test_numpy_array_protocol` test failures with numpy
+    2.0.0rc1
+  * [Python] Fix StructArray.sort() for by=None (#41495)
+  * [Python] Build with Python 3.13 (#42034)
+  * [Python] remove special methods related to buffers in python
+    <2.6 (#41492)
+  * [Python] Fix reading column index with decimal values (#41503)
+  * [Docs][Python] Remove duplicate contents (#41588)
+  * [C++][Python] Add optional null_bitmap to MapArray::FromArrays
+    (#41757)
+  * [Python][Parquet] Implement to_dict method on SortingColumn
+    (#41704)
+  * [Python] CMake: ignore Parquet encryption option if Parquet
+    itself is not enabled (fix Java integration build) (#41776)
+  * [Python] Disallow direct pa.RecordBatchReader() construction to
+    avoid segfaults (#41773)
+  * [Python] Fix RecordBatchReader.cast to support casting to equal
+    schema for all types (#42098)
+  * [Python] Fix tests when using NumPy 2.0 on Windows (#42099)
+  * [CI][Python] Use pip install -e instead of setup.py build_ext
+    –inplace for installing pyarrow on verification script (#42007)
+  * [CI][Python][C++] Fix utf8proc detection for wheel on Windows
+    (#42022)
+  * [Python][CI] Update expected output for numpy 2.0.0 (#42172)
+  ## New Features and Improvements
+  * [Python] Replace pandas.util.testing.rands with vendored
+    version (#42089)
+  * [Python] begin moving static settings to pyproject.toml
+    (#41041)
+  * [Python] Implement PyCapsule interface for Device data in
+    PyArrow (#40717)
+  * [Python] Expand the Arrow PyCapsule Interface with C Device
+    Data support (#40708)
+  * [Python] Let RecordBatch.filter accept a boolean expression in
+    addition to mask array (#43043)
+  * [Python] Fix pickling of LocalFileSystem for cython 2 (#41459)
+  * [Python] Expand the C Device Interface bindings to support
+    import on CUDA device (#40385)
+  * [Python] Allow passing a mapping of column names to
+    rename_columns (#40645)
+  * [Python][Packaging] Strip unnecessary symbols when building
+    wheels (#42028)
+  * [Python][Docs] Update PyArrow installation docs for conda
+    package split (#41135)
+  * [Python] Basic bindings for Device and MemoryManager classes
+    (#41685)
+  * [C++][Python] Expose recursive flatten for lists on
+    list_flatten kernel function and pyarrow bindings (#41295)
+  * [Python][Packaging] Ensure to build with released numpy 2.0
+    (instead of RC) in the wheel building workflows (#42194)
+  * [CI][Python] Add a job on ARM64 macOS (#41313)
+  * [CI][Python] Reduce CI time on macOS (#41378)
+  * [Python] Expose byte_width and bit_width of ExtensionType in
+    terms of the storage type (#41413)
+  * [Python] Update Python development guide about components being
+    enabled by default based on Arrow C++ (#41705)
+  * [Python] Building PyArrow: enable/disable python components by
+    default based on availability in Arrow C++ (#41494)
+  * [C++][Python] Extends the add_key_value to parquet::arrow and
+    PyArrow (#41633)
+  * [Python] Ensure Buffer methods don’t crash with non-CPU data
+    (#41889)
+  * [C++][Python] PrettyPrint non-cpu data by copying to default
+    CPU device (#42010)
+  * [Python][Parquet] Update BYTE_STREAM_SPLIT description in
+    write_table() docstring (#41759)
+  * [Python] Add support for Pyodide (#37822)
+  * [Python] Fix pandas tests to follow downstream datetime64 unit
+    changes (#41979)
+  * [Python] Allow Array.filter() to take general array input
+    (#42051)
+  * [Python] Expose new FLOAT16 logical type in the pyarrow.parquet
+    bindings (#42103)
+  * [Python] Array gracefully fails on non-cpu device (#42113)
+  * [Python][Parquet] Pyarrow store decimal as integer (#42169)
+  * [Python] Add CI job for Numpy 1.X (#42189)
+  * [CI][Python] Pin openjdk=17 in python substrait integration
+    (#43051)
+- Drop pyarrow-pr41319-numpy2-tests.patch
+- Add pyarrow-pr433325-extradirs.patch gh#apache/arrow/pull/43325
+
+-------------------------------------------------------------------
 Thu Apr 25 08:58:22 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 16.0.0

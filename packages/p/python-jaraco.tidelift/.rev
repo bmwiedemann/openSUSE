@@ -40,4 +40,15 @@
   * Fixed EncodingWarning in ReferralBanner.</comment>
     <requestid>1085843</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>81a268f02cd0a16129a7fa235548f48e</srcmd5>
+    <version>1.5.1</version>
+    <time>1723803788</time>
+    <user>dimstar_suse</user>
+    <comment>- switch to modern python for sle15
+
+- Remove unneeded BuildRequires as this package contains no tests.
+- initial package (1.5.0)</comment>
+    <requestid>1193896</requestid>
+  </revision>
 </revisionlist>

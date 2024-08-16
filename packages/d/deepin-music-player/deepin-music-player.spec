@@ -52,6 +52,9 @@ BuildRequires:  libqt5-qtmultimedia-devel
 BuildRequires:  libqt5-qtsvg-devel
 BuildRequires:  libqt5-qtx11extras-devel
 BuildRequires:  update-desktop-files
+BuildRequires:  (pkgconfig(libavcodec) with pkgconfig(libavcodec) < 61)
+BuildRequires:  (pkgconfig(libavformat) with pkgconfig(libavformat) < 61)
+BuildRequires:  (pkgconfig(libavutil) with pkgconfig(libavutil) < 59)
 BuildRequires:  cmake(KF5Codecs)
 BuildRequires:  cmake(Qt5LinguistTools)
 BuildRequires:  pkgconfig(dbusextended-qt5)
@@ -62,9 +65,6 @@ BuildRequires:  pkgconfig(dtkwidget)
 BuildRequires:  pkgconfig(gsettings-qt)
 BuildRequires:  pkgconfig(icu-i18n)
 BuildRequires:  pkgconfig(icu-uc)
-BuildRequires:  pkgconfig(libavcodec)
-BuildRequires:  pkgconfig(libavformat)
-BuildRequires:  pkgconfig(libavutil)
 BuildRequires:  pkgconfig(libcue)
 BuildRequires:  pkgconfig(libvlc)
 BuildRequires:  pkgconfig(mpris-qt5)
@@ -74,6 +74,8 @@ BuildRequires:  pkgconfig(xext)
 %if 0%{?suse_version} <= 1500
 BuildRequires:  qtdbusextended-devel < 3.1.2
 BuildRequires:  qtmpris-devel < 3.1.2
+%else
+BuildRequires:  ffmpeg-6-mini-devel
 %endif
 Requires:       qt5integration
 Provides:       deepin-music

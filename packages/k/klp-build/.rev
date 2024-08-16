@@ -118,4 +118,15 @@
   * test.sh: Adjust LoC count with recent clang-extract changes</comment>
     <requestid>1193818</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>8e70ae49c6257e19039813b456222b89</srcmd5>
+    <version>0~20240814.5dae2ec</version>
+    <time>1723803813</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0~20240814.5dae2ec:
+  * setup: More information being logged
+  * ibs: Optimize extraction of vmlinux and modules
+  * config.py: Show error code when quilt fails</comment>
+    <requestid>1194034</requestid>
+  </revision>
 </revisionlist>

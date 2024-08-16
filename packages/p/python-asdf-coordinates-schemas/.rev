@@ -26,4 +26,14 @@
   - Make multibuild</comment>
     <requestid>1157052</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>af9c461080c2f1189da11ef4b7b46ea2</srcmd5>
+    <version>0.3.0</version>
+    <time>1723803798</time>
+    <user>dimstar_suse</user>
+    <comment>- use modern python on sle15
+
+- Required by asdf-astropy, which is required by gwcs 0.18</comment>
+    <requestid>1193957</requestid>
+  </revision>
 </revisionlist>

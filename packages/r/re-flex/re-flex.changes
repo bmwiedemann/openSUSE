@@ -1,0 +1,17 @@
+-------------------------------------------------------------------
+Thu Aug 15 19:11:01 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 4.5.0:
+  * faster Matcher::find() with refactored SIMD
+    (SSE2/AVX2/AVX512BW/NEON/AArch64) code like ugrep 6.0 and with
+    run-time AVX2/AVX512BW detection increased default internal
+    input buffer size
+  * Improved Unicode support: respect Unicode word boundaries,
+    support Unicode [::] character classes
+  * improved FSM code generation
+  * speed and usability improvements
+
+-------------------------------------------------------------------
+Wed Apr 10 21:48:51 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- initial version

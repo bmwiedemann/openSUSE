@@ -380,4 +380,41 @@
 </comment>
     <requestid>1170664</requestid>
   </revision>
+  <revision rev="26" vrev="4">
+    <srcmd5>713984d1758faa5424efa29ccaccd982</srcmd5>
+    <version>0.10.0</version>
+    <time>1723803800</time>
+    <user>dimstar_suse</user>
+    <comment>- update to modern python on sle15
+
+  * Small docstring fixes for release by @murrayrm in #832
+- Update to version 0.9.1
+- Update to version 0.8.4
+  * Improved default time vector for time response
+  * New use_legacy_defaults function to allow compatibility
+  * Allow creation of non-proper transfer functions
+    (bnavigator, rlegnain)
+  * Added ability to set arrow head length and width option
+  * Added ability to 'prewarp' the conversion of continuous to
+  * Added rlocus capability for discrete-time systems
+  * Updated pzmap grid to be compatible with matplotlib updates
+  * Implement loadable string representation (repr) for tf, ss,
+  * Fixed margin computation for discrete time systems
+  * Fixed InterconnectedSystem naming bugs, improved
+  * Fixed LinearIOSystem output bug in output function
+  * Fixed bug in forced_response that overrode squeeze
+  * Use rad/sec for Bode plot in MATLAB bode (was erroneously
+  * Removed deprecated scipy calls and updated to latest numpy
+  * Updated unit tests + switch to pytest (bnavigator,
+  * Return type for eigenvalues in lqe changed to 1D array
+- Skip a test family on Leap because of segfaults in numpy
+- moved Pillow requirement to matplotlib package
+- add pr430-numpy119delete.patch to fix test failures with new numpy
+- remove ppc workaround
+  and matrix type during tests gh#python-control/python-control#423
+- skip mixsyn test on PowerPC boo#1172555
+  duplicated array test
+- remove python-devel from BuildRequires</comment>
+    <requestid>1193959</requestid>
+  </revision>
 </revisionlist>

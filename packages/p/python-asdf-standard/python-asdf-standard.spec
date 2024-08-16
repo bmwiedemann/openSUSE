@@ -25,6 +25,7 @@
 %bcond_with test
 %endif
 
+%{?sle15_python_module_pythons}
 Name:           python-asdf-standard%{psuffix}
 Version:        1.1.1
 Release:        0

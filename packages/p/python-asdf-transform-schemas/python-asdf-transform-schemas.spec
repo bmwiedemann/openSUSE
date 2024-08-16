@@ -25,6 +25,7 @@
 %bcond_with test
 %endif
 
+%{?sle15_python_module_pythons}
 Name:           python-asdf-transform-schemas%{psuffix}
 Version:        0.5.0
 Release:        0

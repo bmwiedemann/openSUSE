@@ -166,7 +166,6 @@ setup_submission() {
 	echo "Enable submission port"
 
 	echo "submission inet n       -       n       -       -       smtpd" >> /etc/postfix/master.cf
-	echo " -o syslog_name=postfix/submission" >> /etc/postfix/master.cf
 
 	if [ "${SMTPD_USE_TLS}" -eq "1" ]; then
 	    echo " -o smtpd_tls_security_level=encrypt" >> /etc/postfix/master.cf
@@ -180,7 +179,6 @@ setup_submission() {
 	    echo "Enable submissions port"
 
 	    echo "smtps inet n       -       n       -       -       smtpd" >> /etc/postfix/master.cf
-	    echo " -o syslog_name=postfix/smtps" >> /etc/postfix/master.cf
 	    echo " -o smtpd_tls_wrappermode=yes" >> /etc/postfix/master.cf
 	    echo " -o smtpd_sasl_auth_enable=no" >> /etc/postfix/master.cf
 	else
@@ -194,7 +192,9 @@ setup_submission() {
 	SMTPD_TLS_CRT=${SMTPD_TLS_CRT:-"/etc/postfix/ssl/certs/tls.crt"}
 	SMTPD_TLS_KEY=${SMTPD_TLS_KEY:-"/etc/postfix/ssl/certs/tls.key"}
 
+	# smtpd_use_tls is deprecated and only for compatibility
 	set_config_value "smtpd_use_tls" "yes"
+	set_config_value "smtpd_tls_security_level" "may"
 	set_config_value "smtpd_tls_CApath" "/etc/ssl/certs"
 	set_config_value "smtpd_tls_cert_file" "${SMTPD_TLS_CRT}"
 	set_config_value "smtpd_tls_key_file" "${SMTPD_TLS_KEY}"
@@ -350,6 +350,10 @@ configure_postfix() {
 	update_db "${i}"
     done
     set_config_value "smtpd_sender_restrictions" "lmdb:/etc/postfix/access"
+
+    # Log to stdout
+    set_config_value "maillog_file" "/dev/stdout"
+
     # Generate and update maps
     update_db access relay relay_recipients
 
@@ -382,28 +386,15 @@ stop_postfix() {
     (   while ! (ps -aux | grep qmgr | grep -v grep | awk '{print $2}' | tr '\n' ' ') > /dev/null 2>&1; do
             ((ms-- <= 0)) && break
             usleep 10000
-        done
-        exec postfix flush
-    ) > /dev/null 2>&1 & 
+	done
+	exec postfix flush
+    ) > /dev/null 2>&1 &
 
     postfix stop
-    terminate /usr/sbin/rsyslogd
 }
 
 stop_daemons() {
     stop_postfix "$@"
-}
-
-start_daemons() {
-    # Don't start syslogd in background while starting it in the background...
-    # Logging to stdout does not work else.
-    echo '# rsyslog configuration file to log to stdout
-    module(load="imuxsock")  # provides support for local system logging (e.g. via logger command)
-
-    *.*                         action(type="omfile" file="/var/log/rsyslog.log")' > /entrypoint/rsyslog-stdout.conf
-    /usr/sbin/rsyslogd -f /entrypoint/rsyslog-stdout.conf -i /var/run/rsyslogd-stdout.pid
-
-    "$@"
 }
 
 #
@@ -412,7 +403,7 @@ start_daemons() {
 
 # if command starts with an option, prepend postfix
 if [ "${1:0:1}" = '-' ]; then
-        set -- postfix start "$@"
+        set -- postfix start-fg "$@"
 fi
 
 init_trap
@@ -427,11 +418,5 @@ configure_postfix
 # before starting services
 rm -f /var/spool/postfix/pid/master.pid
 
-if [ "$1" = 'postfix' ]; then
-    start_daemons "$@"
-    echo "postfix running and ready"
-    echo "[info] refer to postfix manual pages at https://www.postfix.org/postfix-manuals.html"
-    sleep infinity & wait $!
-else
-    exec "$@"
-fi
+echo "[info] refer to postfix manual pages at https://www.postfix.org/postfix-manuals.html"
+exec "$@"

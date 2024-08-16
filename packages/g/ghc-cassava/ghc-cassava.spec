@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.5.3.1
+Version:        0.5.3.2
 Release:        0
 Summary:        A CSV parsing and encoding library
 License:        BSD-3-Clause

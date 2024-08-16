@@ -152,4 +152,13 @@
   * Change license (forwarded request 1188425 from hillwood)</comment>
     <requestid>1188426</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>baa8e04a86d7680ab9791a284ded89f5</srcmd5>
+    <version>6.0.10</version>
+    <time>1723803833</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 6.0.10
+  * Fix bugs (forwarded request 1194133 from hillwood)</comment>
+    <requestid>1194134</requestid>
+  </revision>
 </revisionlist>

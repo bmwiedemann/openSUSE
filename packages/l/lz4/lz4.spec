@@ -30,6 +30,8 @@ Source:         https://github.com/lz4/lz4/archive/v%version.tar.gz
 Source99:       baselibs.conf
 Patch2:         lz-export.diff
 BuildRequires:  pkgconfig
+BuildRequires:  cmake
+BuildRequires:  fdupes
 %{?suse_build_hwcaps_libs}
 
 %description
@@ -71,11 +73,14 @@ applications that want to make use of liblz4.
 %autosetup -p1
 
 %build
-V=1 %make_build CFLAGS="%optflags"
+%define __sourcedir build/cmake
+%cmake \
+  -DBUILD_STATIC_LIBS:BOOL=OFF
+%cmake_build
 
 %install
-%make_install PREFIX="%_prefix" LIBDIR="%_libdir"
-rm -f "%buildroot/%_libdir"/*.a
+%cmake_install
+%fdupes %{buildroot}/%{_mandir}
 
 %check
 LD_LIBRARY_PATH="%buildroot/%_libdir" ldd -r "%buildroot/%_bindir/lz4"
@@ -97,5 +102,6 @@ LD_LIBRARY_PATH="%buildroot/%_libdir" ldd -r "%buildroot/%_bindir/lz4"
 %_includedir/lz4*.h
 %_libdir/liblz4.so
 %_libdir/pkgconfig/*.pc
+%_libdir/cmake/lz4
 
 %changelog

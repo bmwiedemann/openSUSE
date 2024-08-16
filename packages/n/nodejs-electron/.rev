@@ -1095,4 +1095,12 @@ to Staging:F with it</comment>
     <comment>electron 30.3.0</comment>
     <requestid>1188799</requestid>
   </revision>
+  <revision rev="126" vrev="2">
+    <srcmd5>e95b2f2355d96198869f54d1182a2d2f</srcmd5>
+    <version>30.3.0</version>
+    <time>1723803809</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1194025</requestid>
+  </revision>
 </revisionlist>

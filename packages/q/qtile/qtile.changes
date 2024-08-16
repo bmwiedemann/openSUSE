@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Aug 15 13:45:50 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
+
+- Update to version 0.28.1:
+  * bugfixes
+    - fix a crash in the StatusNotifier widget #4959 #4960
+    - various bug fixes to widgets from previous releases
+    - fix xrandr commands racing with qtile startup
+
+-------------------------------------------------------------------
 Fri Jul 19 10:56:46 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
 
 - Update tov version 0.27.0:

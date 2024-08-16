@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Aug 14 21:23:07 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- add make-tree-sitter-optional.patch for making the tree-sitter plugins
+  optional (behind bcond) - this fixes s390x
+- enable luajit for riscv64, which leaves ppc64le as the lone arch
+  which uses lua
+- remove post and postun from the spec template, as most standard
+  packages don't need this (and ChangeLog file, as most projects dont use this
+  file anymore.
+- revert back to default compiler flags
+
+-------------------------------------------------------------------
 Wed Jul 24 13:11:15 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - add versioning to some dependencies, as neovim is quite picky

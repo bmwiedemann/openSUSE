@@ -40,7 +40,7 @@ LABEL org.opensuse.release-stage="released"
 # endlabelprefix
 LABEL io.artifacthub.package.readme-url="https://raw.githubusercontent.com/SUSE/BCI-dockerfile-generator/Tumbleweed/postfix-image/README.md"
 ENTRYPOINT ["/entrypoint/entrypoint.sh"]
-CMD ["postfix", "start"]
+CMD ["postfix", "start-fg"]
 EXPOSE 25 465 587
 RUN set -euo pipefail; mkdir -p /entrypoint/ldap
 COPY entrypoint.sh /entrypoint/entrypoint.sh

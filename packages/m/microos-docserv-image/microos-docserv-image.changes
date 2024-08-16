@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Aug 15 08:59:14 UTC 2024 - Thorsten Kukuk <kukuk@suse.com>
+
+- Add hostname binary to be able to create certificates [bsc#1229161]
+
+-------------------------------------------------------------------
 Wed Oct 11 08:32:28 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
 
 - Don't install bootloader pattern, as it conflicts with onlyDVD

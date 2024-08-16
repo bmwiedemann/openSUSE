@@ -1156,4 +1156,14 @@
     the image data, but had separate copies for each inclusion.</comment>
     <requestid>1167063</requestid>
   </revision>
+  <revision rev="96" vrev="99">
+    <srcmd5>6e0406876cec774410b709e1babed521</srcmd5>
+    <version>unknown</version>
+    <time>1723803783</time>
+    <user>dimstar_suse</user>
+    <comment>- Added -Wno-error=incompatible-pointer-types to optflags to work
+  around boo#1228342 and enable build with GCC 14 on 32bit
+  architectures.</comment>
+    <requestid>1194242</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,185 @@
 -------------------------------------------------------------------
+Mon Aug 12 17:11:06 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 17.0.0
+  ## Bug Fixes
+  * [C++] Add option to string ‘center’ kernel to control
+    left/right alignment on odd number of padding (#41449)
+  * [C++][Python] Fix casting to extension type with fixed size
+    list storage type (#42219)
+  * [C++] Replace null_count with MayHaveNulls in
+    ListArrayFromArray and MapArray (#41957)
+  * [C++][Python] RecordBatch.filter() segfaults if passed a
+    ChunkedArray (#40971)
+  * [C++][Parquet] Timestamp conversion from Parquet to Arrow does
+    not follow compatibility guidelines for convertedType
+  * [C++] Use LargeStringArray for casting when writing tables to
+    CSV (#40271)
+  * [C++][Python] Map child Array constructed from keys and items
+    shouldn’t have offset (#40871)
+  * [C++] Fix compile warning with ‘implicitly-defined constructor
+    does not initialize’ in encoding_benchmark (#41060)
+  * [C++] Get null_bit_id according to are_cols_in_encoding_order
+    in NullUpdateColumnToRow_avx2 (#40998)
+  * [C++] Clean up unused parameter warnings (#41111)
+  * [C++][Acero] Fix asof join race (#41614)
+  * [C++] support for single threaded joins (#41125)
+  * [C++] Fix hashjoin benchmark failed at make utf8’s random
+    batches (#41195)
+  * [C++] Check to avoid copying when NullBitmapBuffer is Null
+    (#41452)
+  * [C++] Fix crash on invalid Parquet file (#41366)
+  * [C++][Parquet] More strict Parquet level checking (#41346)
+  * [C++][Gandiva] Fix gandiva cache size env var (#41330)
+  * [C++][CMake][Windows] Remove needless .dll suffix from link
+    libraries (#41341)
+  * [C++][CMake] Remove unused ARROW_NO_DEPRECATED_API (#41345)
+  * [C++][maybe_unused] with Arrow macro (#41359)
+  * [C++][Large] ListView and Map nested types for scalar_if_else’s
+    kernel functions (#41419)
+  * [C++][Gandiva] Fix ascii_utf8 function to return same result on
+    x86 and Arm (#41434)
+  * [C++] Reuse deduplication logic for direct registration
+    (#41466)
+  * [C++] Clean up more redundant move warnings (#41487)
+  * [C++][Compute] Remove redundant logic for ArrayData as
+    ExecResults in ExecScalarCaseWhen (#41380)
+  * [C++][CMake] correctly use Protobuf_PROTOC_EXECUTABLE (#41582)
+  * [C++][CMake] Fix ARROW_USE_BOOST detect condition (#41622)
+  * [C++][Python] Add optional null_bitmap to MapArray::FromArrays
+    (#41757)
+  * [C++] macros.h: Fix ARROW_FORCE_INLINE for MSVC (#41712)
+  * [C++][Acero] Remove an useless parameter for QueryContext::Init
+    called in hash_join_benchmark (#41716)
+  * [C++] Fix the issue that temp vector stack may be under sized
+    (#41746)
+  * [C++] Check that extension metadata key is present before
+    attempting to delete it (#41763)
+  * [C++] Iterator releases its resource immediately when it reads
+    all values (#41824)
+  * [C++][Flight][Benchmark] Ensure waiting server ready (#41793)
+  * [C++] Fix avx2 gather offset larger than 2GB in
+    CompareColumnsToRows (#42188)
+  * [C++][S3] Fix potential deadlock when closing output stream
+    (#41876)
+  * [CI][C++] Clear cache for mamba on AppVeyor (#41977)
+  * [CI][Python][C++] Fix utf8proc detection for wheel on Windows
+    (#42022)
+  * [C++] Support list-views on list_slice (#42067)
+  * [C++] Fix an OTel test failure and remove needless logs
+    (#42122)
+  * [C++][FS][Azure] Ensure setting BlobSasBuilder::Protocol
+    (#42108)
+  * [C++] Support list-view typed arrays in array_take and
+    array_filter (#42117)
+  * [C++] Fix some potential uninitialized variable warnings
+    (#42207)
+  * [C++] Avoid invalid accesses in parquet-encoding-benchmark
+    (#42141)
+  * [C++] Use FetchContent for bundled ORC (#43011)
+  * [C++] Fix GetRecordBatchPayload crashes for device data
+    (#42199)
+  * [C++] Use non-stale c-ares download URL (#42250)
+  * [C++][Parquet] Check for valid ciphertext length to prevent
+    segfault (#43071)
+  * [C++][Compute] Mark KeyCompare.CompareColumnsToRowsLarge as
+    large memory test (#43128)
+  * [C++] Upgrade bundled google-cloud-cpp to 2.22.0 (#43136)
+  ## New Features and Improvements
+  * [C++][Compute] Implement Grouper::Reset (#41352)
+  * [Go][C++] Implement Flight SQL Bulk Ingestion (#38385)
+  * [C++][FS][Azure] Support azure cli auth (#41976)
+  * [C++][FS][Azure] Add support for environment credential
+    (#41715)
+  * [C++] Optimize Take for fixed-size types including nested
+    fixed-size lists (#41297)
+  * [C++][Device] Add Copy/View slice functions to a CPU pointer
+    (#41477)
+  * [C++] Add support for OpenTelemetry logging (#39905)
+  * [C++] Import/Export ArrowDeviceArrayStream (#40807)
+  * [C++] move LocalFileSystem to the registry (#40356)
+  * [C++] Make flatbuffers serialization more deterministic
+    (#40392)
+  * [C++][Gandiva] add RE2::Options set_dot_nl(true) for Like
+    function (#40970)
+  * [C++] Introduce portable compiler assumptions (#41021)
+  * [C++] Add a grouper benchmark for preventing performance
+    regression (#41036)
+  * [C++] Support flatten for combining nested list related types
+    (#41092)
+  * [C++] Clean up remaining tasks related to half float casts
+    (#41084)
+  * [C++][FS][Azure] Add support for CopyFile with hierarchical
+    namespace support (#41276)
+  * [C++] Add is_validity_defined_by_bitmap() predicate (#41115)
+  * [C++] IO: enhance boundary checking in CompressedInputStream
+    (#41117)
+  * [C++][Python] Expose recursive flatten for lists on
+    list_flatten kernel function and pyarrow bindings (#41295)
+  * [C++][Parquet][Doc] Denote PARQUET:field_id in parquet.rst
+    (#41187)
+  * [C++] Extract the kernel loops used for PrimitiveTakeExec and
+    generalize to any fixed-width type (#41373)
+  * [C++][Acero] Use per-node basis temp vector stack to mitigate
+    overflow (#41335)
+  * [C++][Parquet] Optimize DelimitRecords by batch execution when
+    max_rep_level > 1 (#41362)
+  * [C++][FS][Azure][Docs] Add AzureFileSystem to Filesystems API
+    reference (#41411)
+  * [C++] Use ASAN to poison temp vector stack memory (#41695)
+  * [C++][S3] Add a new option to check existence before CreateDir
+    (#41822)
+  * [C++][Parquet] Fix
+    DeltaLengthByteArrayEncoder::EstimatedDataEncodedSize (#41546)
+  * [C++] Thirdparty: Upgrade xsimd to 13.0.0 (#41548)
+  * [C++] Improve fixed_width_test_util.h (#41575)
+  * [C++] ChunkResolver: Implement ResolveMany and add unit tests
+    (#41561)
+  * [C++] fixed_width_internal.h: Simplify docstring and support
+    bit-sized types (BOOL) (#41597)
+  * [C++][Python] Extends the add_key_value to parquet::arrow and
+    PyArrow (#41633)
+  * [C++][CMake][Windows] Don’t build needless object libraries
+    (#41658)
+  * [C++][Python] PrettyPrint non-cpu data by copying to default
+    CPU device (#42010)
+  * [C++][Parquet] Thrift: generate template method to accelerate
+    reading thrift (#41703)
+  * [C++][Parquet] Minor: moving EncodedStats by default rather
+    than copying (#41727)
+  * [C++][ORC] Ensure setting detected ORC version (#41767)
+  * [C++][Parquet] Add file metadata read/write benchmark (#41761)
+  * [C++] Make git-dependent definitions internal (#41781)
+  * [C++][S3] Remove GetBucketRegion hack for newer AWS SDK
+    versions (#41798)
+  * [C++][Parquet] normalize dictionary encoding to use
+    RLE_DICTIONARY (#41819)
+  * [C++] IPC: Minor enhance the code of writer (#41900)
+  * [C++] Fix ExecuteScalar deduce all_scalar with chunked_array
+    (#41925)
+  * [C++] Minor enhance code style for FixedShapeTensorType
+    (#41954)
+  * [C++] Follow up of adding null_bitmap to MapArray::FromArrays
+    (#41956)
+  * [C++] Misc changes making code around list-like types and
+    list-view types behave the same way (#41971)
+  * [C++] : kernel.cc: Remove defaults on switch so that compiler
+    can check full enum coverage for us (#41995)
+  * [C++][Parquet] ParquetFilePrinter::JSONPrint print length of
+    FLBA (#41981)
+  * [C++][CMake] Add preset for Valgrind (#42110)
+  * [C++] Move TakeXXX free functions into TakeMetaFunction and
+    make them private (#42127)
+  * [C++][FS][Azure] Validate
+    AzureOptions::{blob,dfs}_storage_scheme (#42135)
+  * [C++] list_parent_indices: Add support for list-view types
+    (#42236)
+  * [C++] Reduce the recursion of many-join test (#43042)
+  * [C++] Limit buffer size in BufferedInputStream::SetBufferSize
+    with raw_read_bound (#43064)
+- Require cmake lz4 for 1.10
+
+-------------------------------------------------------------------
 Sun Apr 21 16:35:21 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 16.0.0

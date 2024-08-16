@@ -24,7 +24,7 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
-
+%{?sle15_python_module_pythons}
 Name:           python-imagecodecs%{psuffix}
 Version:        2024.6.1
 Release:        0

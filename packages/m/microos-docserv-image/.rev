@@ -48,4 +48,13 @@
     <comment></comment>
     <requestid>1116833</requestid>
   </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>3c8a24bbd4d34f6b4c686d642d031b49</srcmd5>
+    <version>unknown</version>
+    <time>1723803817</time>
+    <user>dimstar_suse</user>
+    <comment>- Add hostname binary to be able to create certificates [bsc#1229161]
+</comment>
+    <requestid>1194078</requestid>
+  </revision>
 </revisionlist>

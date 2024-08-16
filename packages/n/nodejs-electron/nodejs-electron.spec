@@ -129,17 +129,11 @@ BuildArch:      i686
 %endif
 
 %if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150700 || 0%{?fedora}
-%bcond_without ffmpeg_5
 %bcond_without system_vpx
-%else
-%bcond_with ffmpeg_5
-%bcond_with system_vpx
-%endif
-
-%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150700 || 0%{?fedora} >= 39
 %bcond_without bro_11
 %bcond_without ffmpeg_6
 %else
+%bcond_with system_vpx
 %bcond_with bro_11
 %bcond_with ffmpeg_6
 %endif
@@ -395,6 +389,7 @@ Patch3160:      async_iterable-forwarding.patch
 Patch3161:      preview_cancel_reason-missing-string.patch
 Patch3162:      script_streamer-atomic-include.patch
 Patch3163:      DesktopNativeWidgetAura-HandleActivationChanged-crash.patch
+Patch3164:      ffmpeg-7-ffmpeg_video_decoder-reordered_opaque.patch
 
 # Patches to re-enable upstream force disabled features.
 # There's no sense in submitting them but they may be reused as-is by other packagers.
@@ -545,11 +540,8 @@ Recommends: (ffmpeg-libs%{_isa} or libavcodec-freeworld%{_isa})
 %endif
 %if %{with ffmpeg_6}
 BuildRequires:  pkgconfig(libavcodec) >= 60
-%endif
-%if %{with ffmpeg_5}
-BuildRequires:  pkgconfig(libavcodec) >= 59
-BuildRequires:  pkgconfig(libavformat) >= 59
-BuildRequires:  pkgconfig(libavutil) >= 57
+BuildRequires:  pkgconfig(libavformat) >= 60
+BuildRequires:  pkgconfig(libavutil) >= 58
 %if 0%{?fedora}
 #requires av_stream_get_first_dts, see rhbz#2240127
 BuildRequires:  libavformat-free-devel >= %AVFORMAT_VER
@@ -747,14 +739,13 @@ test $(grep ^node_module_version electron/build/args/all.gn | sed 's/.* = //') =
 patch -R -p1 < %PATCH1076
 %endif
 
-%if %{without ffmpeg_6}
-patch -R -p1 < %SOURCE402
-%endif
 
-%if %{with ffmpeg_5}
+%if %{with ffmpeg_6}
 patch -R -p1 < %PATCH2012
 %else
+patch -R -p1 < %SOURCE402
 patch -R -p1 < %SOURCE400
+patch -R -p1 < %SOURCE401
 %endif
 
 
@@ -770,8 +761,7 @@ patch -R -p1 < %SOURCE450
 %endif
 
 
-# This one depends on an ffmpeg nightly, reverting unconditionally.
-patch -R -p1 < %SOURCE401
+
 
 # Link system wayland-protocols-devel into where chrome expects them
 mkdir -p third_party/wayland/src
@@ -1055,6 +1045,10 @@ export LDFLAGS="$LDFLAGS -flto=3 --param ggc-min-expand=20 --param ggc-min-heaps
 export LDFLAGS="$LDFLAGS -flto=auto"
 %endif
 %endif
+
+# Ccache is truncated to 5GB which is not enough for Electron, leading to slower rebuilds
+export CCACHE_COMPRESS=1
+ccache -o max_size=0 || true
 
 # Create the configuration for GN
 # Available options: out/Release/gn args --list out/Release/

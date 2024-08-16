@@ -176,4 +176,12 @@
     <comment>- Add fix-c++17.patch, icu 75 needs c++17 (forwarded request 1177951 from hillwood)</comment>
     <requestid>1177952</requestid>
   </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>bc178b1ee9832727bac9997990b6d816</srcmd5>
+    <version>5.8.27</version>
+    <time>1723803834</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 1194139 from hillwood)</comment>
+    <requestid>1194141</requestid>
+  </revision>
 </revisionlist>

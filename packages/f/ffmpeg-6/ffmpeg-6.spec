@@ -121,10 +121,8 @@ Patch92:        ffmpeg-CVE-2023-50007.patch
 Patch93:        ffmpeg-CVE-2023-50008.patch
 Patch94:        ffmpeg-6-CVE-2024-32228-shim-1535d338.patch
 Patch95:        ffmpeg-6-CVE-2024-32228-shim-f50382cb.patch
-Patch96:        ffmpeg-6-CVE-2024-32228-shim-5d7f234e.patch
-Patch97:        ffmpeg-6-CVE-2024-32228.patch
-Patch98:        ffmpeg-6-CVE-2024-32230.patch
-Patch99:        ffmpeg-c99.patch
+Patch96:        ffmpeg-6-CVE-2024-32230.patch
+Patch97:        ffmpeg-c99.patch
 #
 # preamble is present twice, watch out
 #
@@ -852,10 +850,8 @@ Patch92:        ffmpeg-CVE-2023-50007.patch
 Patch93:        ffmpeg-CVE-2023-50008.patch
 Patch94:        ffmpeg-6-CVE-2024-32228-shim-1535d338.patch
 Patch95:        ffmpeg-6-CVE-2024-32228-shim-f50382cb.patch
-Patch96:        ffmpeg-6-CVE-2024-32228-shim-5d7f234e.patch
-Patch97:        ffmpeg-6-CVE-2024-32228.patch
-Patch98:        ffmpeg-6-CVE-2024-32230.patch
-Patch99:        ffmpeg-c99.patch
+Patch96:        ffmpeg-6-CVE-2024-32230.patch
+Patch97:        ffmpeg-c99.patch
 BuildRequires:  c_compiler
 Requires:       this-is-only-for-build-envs
 

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Aug 15 17:15:17 UTC 2024 - RN <R_Nik_C@proton.me>
+
+- update to 2.21.3
+  Bugfixes:
+    * Fix bad Intel Arc GPU name detection, which was supposed to 
+      be fixed in the last version but the change was reverted 
+      accidentally (GPU, Linux)
+    * Fix arm32 CPU name detection no longer work. Regression of 
+      2.21.2 (CPU, Linux)
+
+-------------------------------------------------------------------
+Thu Aug 15 01:16:53 UTC 2024 - RN <R_Nik_C@proton.me>
+
+- Added some build libraries
+
+-------------------------------------------------------------------
 Wed Aug 14 04:30:20 UTC 2024 - Gordon Leung <pirateclip@protonmail.com>
 
 - update to 2.21.2

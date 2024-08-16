@@ -87,6 +87,7 @@ Patch1006:      fate-31841-01_fsadm-add-support-to-resize-check-btrfs-filesystem
 Patch1007:      fate-31841-02_man-add-support-for-btrfs.patch
 Patch1008:      fate-31841-03_tests-new-test-suite-of-fsadm-for-btrfs.patch
 Patch1009:      bug-1214071-blkdeactivate_calls_wrong_mountpoint.patch
+Patch1010:      bug-1228854_lvm2-monitor-service-start-after-system-fully-booted.patch
 # SUSE patches 2000+ for device mapper, udev rules
 Patch2001:      bug-1012973_simplify-special-case-for-md-in-69-dm-lvm-rules.patch
 # SUSE patches 3000+ for test code
@@ -148,6 +149,7 @@ Volume Manager.
 %patch -P 1007 -p1
 %patch -P 1008 -p1
 %patch -P 1009 -p1
+%patch -P 1010 -p1
 %patch -P 2001 -p1
 %patch -P 3001 -p1
 

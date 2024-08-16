@@ -356,4 +356,12 @@
     <comment>Prepare for RPM 4.20 (forwarded request 1147737 from dimstar)</comment>
     <requestid>1147742</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>15ae36010bfe26bfa30b5d71065c4c13</srcmd5>
+    <version>0.18.8</version>
+    <time>1723803838</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1194143</requestid>
+  </revision>
 </revisionlist>

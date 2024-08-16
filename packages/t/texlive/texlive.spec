@@ -19,7 +19,7 @@
 %define texlive_version  2024
 %define texlive_previous 2022
 %define texlive_release  20240311
-%define texlive_noarch   213
+%define texlive_noarch   217
 %define texlive_source   texlive-20240311-source
 %define biber_version    2.19
 
@@ -4288,6 +4288,9 @@ popd
     cp -vf %{S:4} $paths
 
 %build
+    # Work around boo#1228342
+    %global optflags %{optflags} -Wno-error=incompatible-pointer-types
+
     # Extend the options file
     echo "world=${PWD}/world" >> %{options}
     echo "prefix=${PWD}/prefix" >> %{options}

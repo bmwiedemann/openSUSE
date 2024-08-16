@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul 24 12:24:59 CEST 2024 - ro@suse.de
+
+- check_iostat: report as critical and as "stuck" if read and
+  write are at 0 and util is at 100 percent
+
+-------------------------------------------------------------------
 Fri Feb 23 08:37:18 UTC 2024 - pgajdos@suse.com
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

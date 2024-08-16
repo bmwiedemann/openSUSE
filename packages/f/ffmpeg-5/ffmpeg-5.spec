@@ -123,7 +123,6 @@ Patch97:        ffmpeg-CVE-2023-51793.patch
 Patch98:        ffmpeg-Templatify-ff_gaussian_blur-and-ff-function.patch
 Patch99:        ffmpeg-CVE-2023-50009.patch
 Patch100:       ffmpeg-CVE-2023-50010.patch
-Patch101:       ffmpeg-5-CVE-2024-32228.patch
 Patch102:       ffmpeg-5-CVE-2024-32230.patch
 #
 # preamble is present twice, watch out
@@ -862,7 +861,6 @@ Patch97:        ffmpeg-CVE-2023-51793.patch
 Patch98:        ffmpeg-Templatify-ff_gaussian_blur-and-ff-function.patch
 Patch99:        ffmpeg-CVE-2023-50009.patch
 Patch100:       ffmpeg-CVE-2023-50010.patch
-Patch101:       ffmpeg-5-CVE-2024-32228.patch
 Patch102:       ffmpeg-5-CVE-2024-32230.patch
 BuildRequires:  c_compiler
 Requires:       this-is-only-for-build-envs

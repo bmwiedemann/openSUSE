@@ -24,7 +24,7 @@
 %define sover 0_1
 
 Name:           deepin-movie
-Version:        6.0.8
+Version:        6.0.10
 Release:        0
 Summary:        Deepin Video Players
 License:        GPL-3.0-or-later
@@ -63,7 +63,7 @@ BuildRequires:  pkgconfig(dtkwidget) >= 5.0.0
 BuildRequires:  pkgconfig(dvdnav)
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(gsettings-qt)
-BuildRequires:  pkgconfig(libavcodec)
+BuildRequires:  (pkgconfig(libavcodec) with pkgconfig(libavcodec) < 61)
 BuildRequires:  pkgconfig(libffmpegthumbnailer)
 BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(libpulse-simple)
@@ -84,6 +84,8 @@ BuildRequires:  pkgconfig(dbusextended-qt5)
 %if 0%{?suse_version} <= 1500
 BuildRequires:  qtdbusextended-devel < 3.1.2
 BuildRequires:  qtmpris-devel < 3.1.2
+%else
+BuildRequires:  ffmpeg-6-libavcodec-devel
 %endif
 Recommends:     %{name}-lang
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build

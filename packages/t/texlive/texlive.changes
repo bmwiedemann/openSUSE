@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jul 26 14:15:55 UTC 2024 - Martin Jambor <mjambor@suse.com>
+
+- Added -Wno-error=incompatible-pointer-types to optflags to work
+  around boo#1228342 and enable build with GCC 14 on 32bit
+  architectures.
+
+-------------------------------------------------------------------
 Fri Apr 12 13:10:45 UTC 2024 - Dr. Werner Fink <werner@suse.de>
 
 - Add patch source-dvipdfm-x.dif

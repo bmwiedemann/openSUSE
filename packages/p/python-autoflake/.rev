@@ -138,4 +138,12 @@
     <comment>- Add upstream support-python312.patch gh#PyCQA/autoflake#280</comment>
     <requestid>1144710</requestid>
   </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>ba11c3ad54452ff120c06cef7581f1d0</srcmd5>
+    <version>2.2.1</version>
+    <time>1723803786</time>
+    <user>dimstar_suse</user>
+    <comment>- switch to modern python on sle15</comment>
+    <requestid>1193890</requestid>
+  </revision>
 </revisionlist>

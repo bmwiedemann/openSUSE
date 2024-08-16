@@ -1,7 +1,12 @@
 -------------------------------------------------------------------
+Wed Aug 14 14:50:44 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- switch to modern python for sle15
+
+-------------------------------------------------------------------
 Mon Jul  8 04:34:30 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Update to 2024.6.2: 
+- Update to 2024.6.2:
   * profile._f_lineno: handle next_line being None in Python 3.13
   * Cache global query-planning config
   * Python 3.13 fixes

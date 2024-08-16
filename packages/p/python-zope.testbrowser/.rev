@@ -146,4 +146,12 @@
   * It seems to me that Google has changed the robot policy again</comment>
     <requestid>1179663</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>19d8ef0b49adaab236758f25c84164fa</srcmd5>
+    <version>7.0</version>
+    <time>1723803789</time>
+    <user>dimstar_suse</user>
+    <comment>- switch to modern python for sle15</comment>
+    <requestid>1193900</requestid>
+  </revision>
 </revisionlist>

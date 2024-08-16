@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Aug 15 11:46:38 UTC 2024 - Hillwood Yang <hillwood@opensuse.org>
+
+- Fix build on Tumbleweed: don't use ffmpeg 7 and later
+
+-------------------------------------------------------------------
 Fri Aug 26 08:47:08 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 5.11.6

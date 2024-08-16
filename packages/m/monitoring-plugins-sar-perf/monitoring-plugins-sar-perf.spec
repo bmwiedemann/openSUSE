@@ -1,7 +1,7 @@
 #
 # spec file for package monitoring-plugins-sar-perf
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           monitoring-plugins-sar-perf
-Summary:        Get performance data from sar 
+Summary:        Get performance data from sar
 License:        BSD-2-Clause
 Group:          System/Monitoring
 Version:        0.1
 Release:        0
-URL:            https://github.com/nickanderson/check-sar-perf 
-Source0:        nickanderson-check-sar-perf-4878d0c.tar.gz 
+URL:            https://github.com/nickanderson/check-sar-perf
+Source0:        nickanderson-check-sar-perf-4878d0c.tar.gz
 Source1:        check_iostat
 Source2:        usr.lib.nagios.plugins.check_iostat
 Patch0:         monitoring-plugins-sar-perf-output.patch
@@ -53,7 +53,6 @@ check_sar_perf disk sda
 sar OK| DEV=sda tps=0.00 rd_sec/s=0.00 wr_sec/s=0.00 avgrq-sz=0.00
   avgqu-sz=0.00 await=0.00 svctm=0.00 util=0.00
 
-
 %prep
 %autosetup -p0 -n nickanderson-check-sar-perf-4878d0c
 
@@ -78,7 +77,7 @@ fi
 %clean
 rm -rf %{buildroot}
 
-%files 
+%files
 %defattr(-,root,root)
 # avoid build dependecy of nagios - own the dirs
 %dir %{nagios_libdir}

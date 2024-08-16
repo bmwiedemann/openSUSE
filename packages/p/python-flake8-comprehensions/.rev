@@ -154,4 +154,12 @@
 - drop unmaintained and unused pytest-flake8dir</comment>
     <requestid>1184214</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>2d7bfc7de968681d154814c4689c3e0b</srcmd5>
+    <version>3.15.0</version>
+    <time>1723803794</time>
+    <user>dimstar_suse</user>
+    <comment>- switch to modern python on sle15</comment>
+    <requestid>1193961</requestid>
+  </revision>
 </revisionlist>

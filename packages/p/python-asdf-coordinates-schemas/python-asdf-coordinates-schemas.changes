@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Aug 14 15:11:41 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- use modern python on sle15
+
+-------------------------------------------------------------------
 Sun Mar 10 11:51:31 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.3.0
@@ -15,4 +20,4 @@ Sun Mar 10 11:51:31 UTC 2024 - Ben Greiner <code@bnavigator.de>
 Tue Dec 28 15:15:56 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Initial specfile for v0.1.0
-- Required by asdf-astropy, which is required by gwcs 0.18 
+- Required by asdf-astropy, which is required by gwcs 0.18

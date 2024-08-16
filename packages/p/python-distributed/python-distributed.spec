@@ -45,6 +45,7 @@
 # use this to run tests with xdist in parallel, unfortunately fails server side
 %bcond_with paralleltests
 
+%{?sle15_python_module_pythons}
 Name:           python-distributed%{psuffix}
 # ===> Note: python-dask MUST be updated in sync with python-distributed! <===
 Version:        2024.6.2

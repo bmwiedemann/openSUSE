@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Aug 15 09:05:18 UTC 2024 - felix.niederwanger@suse.de
+
+- Update to version 1.0.6+git0.63db4bd:
+  * Fix goreleaser
+  * Remove `q` for quit, add config file info
+  * Fix #50, implementation of nested replies
+  * Fix #31, bugfix for missing comments in Lemmy
+  * Fix #57, introduce null.* types
+  * Fix #32, forum filter implementation for Lemmy
+  * Fix #52 pt 2, move tea.Quit to view
+  * Fix #52, ignore `n` shortcut when filtering
+  * Fix #42, rm `q` key for closing Having the `q` key in addition to the `Esc` key for closing windows and quitting the app just adds unnecessary complexity and breaks the UX flow.
+  * Update dependencies
+  * Fix #63, rm panic for loadSystems, add log info
+  * Bump golang.org/x/image from 0.16.0 to 0.18.0
+  * Bump github.com/hashicorp/go-retryablehttp from 0.7.6 to 0.7.7
+
+-------------------------------------------------------------------
 Wed May 29 06:48:42 UTC 2024 - felix.niederwanger@suse.de
 
 - Update to version 1.0.5+git0.b2e8808:

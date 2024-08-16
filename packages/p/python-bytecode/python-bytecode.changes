@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug 14 15:03:42 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- use modern python on sle15
+- switch to PEP517 build
+
+-------------------------------------------------------------------
 Tue Nov 14 15:47:28 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.15.1:

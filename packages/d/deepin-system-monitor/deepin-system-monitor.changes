@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Aug 15 13:16:03 UTC 2024 - Hillwood Yang <hillwood@opensuse.org>
+
+- Add fix-procps-link.patch, backport support for procps 4.0 
+
+-------------------------------------------------------------------
 Fri May 31 13:44:36 UTC 2024 - Hillwood Yang <hillwood@opensuse.org>
 
 - Add fix-c++17.patch, icu 75 needs c++17 

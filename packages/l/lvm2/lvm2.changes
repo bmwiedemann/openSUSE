@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug 13 13:08:00 UTC 2024 - Glass Su <glass.su@suse.com>
+
+- lvm2-monitor.service fails to start (boo#1228854)
+  + bug-1228854_lvm2-monitor-service-start-after-system-fully-booted.patch
+  
+-------------------------------------------------------------------
 Tue Jul 22 01:44:00 UTC 2024 - Glass Su <glass.su@suse.com>
 
 - enable devices file feature by default - see lvmdevices(8)

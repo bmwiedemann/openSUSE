@@ -1,7 +1,7 @@
 #
 # spec file for package deepin-screen-recorder
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -66,12 +66,13 @@ BuildRequires:  pkgconfig(dtkwidget) >= 5.0.0
 BuildRequires:  pkgconfig(dtkwm)
 BuildRequires:  pkgconfig(gstreamer-plugins-base-1.0)
 %if 0%{?suse_version} > 1500
+BuildRequires:  ffmpeg-6-mini-devel
 BuildRequires:  pkgconfig(opencv4)
 %else
 BuildRequires:  pkgconfig(opencv)
 %endif
-BuildRequires:  pkgconfig(libavcodec)
-BuildRequires:  pkgconfig(libavformat)
+BuildRequires:  (pkgconfig(libavcodec) with pkgconfig(libavcodec) < 61)
+BuildRequires:  (pkgconfig(libavformat) with pkgconfig(libavformat) < 61)
 BuildRequires:  pkgconfig(libffmpegthumbnailer)
 BuildRequires:  pkgconfig(libimagevisualresult)
 BuildRequires:  pkgconfig(libswscale)

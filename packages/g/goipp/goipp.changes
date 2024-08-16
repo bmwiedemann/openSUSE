@@ -1,0 +1,17 @@
+-------------------------------------------------------------------
+Thu Jul 25 22:00:29 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- since we moved to gz compression, we can remove zstd from BuildRequires
+- switch to noarch, as it actually doesn't include any binaries
+
+-------------------------------------------------------------------
+Wed Apr 24 14:13:35 UTC 2024 - Johannes Meixner <jsmeix@suse.com>
+
+- in _service change 'recompress' compression from 'zst' to 'gz'
+  and use '...tar.gz' in goipp.spec because 'zst' seems to be
+  not supported in the build environments for 15.4 and 15.5
+
+-------------------------------------------------------------------
+Wed Apr  3 15:02:41 UTC 2024 - Richard Rahl <rrahl0@proton.me>
+
+- initial packaging

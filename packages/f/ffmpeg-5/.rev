@@ -247,4 +247,13 @@ https://www.reddit.com/r/openSUSE/comments/11sl1a7/comment/jcg9pbh/?utm_source=s
     <comment>ffmpeg CVE patches</comment>
     <requestid>1189863</requestid>
   </revision>
+  <revision rev="28" vrev="10">
+    <srcmd5>61075602314cc9331beafd52af2944a9</srcmd5>
+    <version>5.1.4</version>
+    <time>1723803822</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove ffmpeg-5-CVE-2024-32228.patch as it adds/modifies code
+  which fails to build with BUILD_ORIG=1.</comment>
+    <requestid>1194095</requestid>
+  </revision>
 </revisionlist>

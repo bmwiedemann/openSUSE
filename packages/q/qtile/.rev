@@ -390,4 +390,17 @@
 </comment>
     <requestid>1188676</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>ef3302df514282094acd393c32eefc76</srcmd5>
+    <version>0.28.1</version>
+    <time>1723803839</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.28.1:
+  * bugfixes
+    - fix a crash in the StatusNotifier widget #4959 #4960
+    - various bug fixes to widgets from previous releases
+    - fix xrandr commands racing with qtile startup
+</comment>
+    <requestid>1194150</requestid>
+  </revision>
 </revisionlist>

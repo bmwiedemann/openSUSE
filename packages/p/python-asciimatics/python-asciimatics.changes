@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Aug 14 15:05:13 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- use modern python for sle15
+
+-------------------------------------------------------------------
 Thu Oct 26 00:25:39 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 1.15.0:
@@ -24,7 +29,7 @@ Mon Sep 11 04:59:40 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 -------------------------------------------------------------------
 Mon Aug 29 16:38:23 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- update to 1.14.0 
+- update to 1.14.0
   - Added AnsiArtPlayer and AsciinemaPlayer
   - Added dynamically sized, animated sprites to ray caster demo.
   - Added fit parameter to DropdownList.

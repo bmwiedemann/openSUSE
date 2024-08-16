@@ -1,7 +1,12 @@
 -------------------------------------------------------------------
+Wed Aug 14 14:51:54 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- switch to modern python for sle15
+
+-------------------------------------------------------------------
 Fri Jul 12 02:15:10 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Restrict numpy to < 2. 
+- Restrict numpy to < 2.
 
 -------------------------------------------------------------------
 Fri Mar 22 20:58:56 UTC 2024 - Dirk Müller <dmueller@suse.com>

@@ -308,4 +308,23 @@
     <comment></comment>
     <requestid>1183868</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>40d0fc4e21ed839524960ef7e662b5ec</srcmd5>
+    <version>0.10.3</version>
+    <time>1723803792</time>
+    <user>dimstar_suse</user>
+    <comment>- Release 0.10.3
+  * Fixed default value for CA path
+  * Removed support for .osc data directory
+  * Handle issues due to bugs in backports of responses
+  * Auto release OBS: using osc-tiny and improved change log
+  
+- Release v0.10.2
+  * Replaced get_cookie_jar function with a CookieManager (#171)
+  * Use urllib3.Retry instead of custom implementation
+  * Use the latest Python version for actions
+  * Automate the release on OBS(closes #138) (#170)
+</comment>
+    <requestid>1193953</requestid>
+  </revision>
 </revisionlist>

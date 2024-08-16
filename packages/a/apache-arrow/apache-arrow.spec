@@ -22,13 +22,13 @@
 # Required for runtime dispatch, not yet packaged
 %bcond_with xsimd
 
-%define sonum   1600
+%define sonum   1700
 # See git submodule /testing pointing to the correct revision
-%define arrow_testing_commit 25d16511e8d42c2744a1d94d90169e3a36e92631
+%define arrow_testing_commit 735ae7128d571398dd798d7ff004adebeb342883
 # See git submodule /cpp/submodules/parquet-testing pointing to the correct revision
 %define parquet_testing_commit 74278bc4a1122d74945969e6dec405abd1533ec3
 Name:           apache-arrow
-Version:        16.0.0
+Version:        17.0.0
 Release:        0
 Summary:        A development platform for in-memory data
 License:        Apache-2.0 AND BSD-3-Clause AND BSD-2-Clause AND MIT
@@ -51,6 +51,7 @@ BuildRequires:  libzstd-devel-static
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-base
+BuildRequires:  (cmake(lz4) >= 1.10 or (pkgconfig(liblz4) >= 1.8.3 with pkgconfig(liblz4) < 1.10))
 BuildRequires:  cmake(Snappy) >= 1.1.7
 BuildRequires:  cmake(absl)
 BuildRequires:  cmake(double-conversion) >= 3.1.5
@@ -64,7 +65,6 @@ BuildRequires:  pkgconfig(libbrotlidec) >= 1.0.7
 BuildRequires:  pkgconfig(libbrotlienc) >= 1.0.7
 BuildRequires:  pkgconfig(libcares) >= 1.15.0
 BuildRequires:  pkgconfig(libglog) >= 0.3.5
-BuildRequires:  pkgconfig(liblz4) >= 1.8.3
 BuildRequires:  pkgconfig(libopenssl)
 BuildRequires:  pkgconfig(liburiparser) >= 0.9.3
 BuildRequires:  pkgconfig(libutf8proc)

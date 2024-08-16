@@ -87,4 +87,12 @@
     <comment>version update</comment>
     <requestid>1127099</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>67ad5a60cbcd5cf6e751dfa1f690bf04</srcmd5>
+    <version>2.1.1</version>
+    <time>1723803806</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1194019</requestid>
+  </revision>
 </revisionlist>

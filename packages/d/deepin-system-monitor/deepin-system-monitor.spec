@@ -38,6 +38,10 @@ Source2:        %{name}.svg
 Patch0:         fix-return-type-errors.patch
 # PATCH-FIX-UPSTREAN fix-c++17.patch hillwood@opensuse.org - ICU 75 needs c++17
 Patch1:         fix-c++17.patch
+%if 0%{?suse_version} > 1500
+# PATCH-FOR-OPENSUSE fix-procps-link.patch hillwood@opensuse.org - Backport support for procps 4.0
+Patch2:         fix-procps-link.patch
+%endif
 %ifarch ppc ppc64 ppc64le s390 s390x
 BuildRequires:  deepin-desktop-base
 %else

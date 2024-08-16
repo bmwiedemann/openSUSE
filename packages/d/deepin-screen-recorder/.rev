@@ -78,4 +78,12 @@
 - Update version to 5.11.2 (forwarded request 1000280 from hillwood)</comment>
     <requestid>1000281</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>2ac30ce45c2a3578d040f2db2763c7ee</srcmd5>
+    <version>5.11.6</version>
+    <time>1723803830</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build on Tumbleweed: don't use ffmpeg 7 and later (forwarded request 1194122 from hillwood)</comment>
+    <requestid>1194123</requestid>
+  </revision>
 </revisionlist>

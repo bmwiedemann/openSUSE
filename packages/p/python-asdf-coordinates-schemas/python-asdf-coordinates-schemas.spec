@@ -25,6 +25,7 @@
 %bcond_with test
 %endif
 
+%{?sle15_python_module_pythons}
 Name:           python-asdf-coordinates-schemas%{psuffix}
 Version:        0.3.0
 Release:        0

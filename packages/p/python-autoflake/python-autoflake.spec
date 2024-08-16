@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-autoflake
 Version:        2.2.1
 Release:        0

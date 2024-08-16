@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-flake8-comprehensions
 Version:        3.15.0
 Release:        0

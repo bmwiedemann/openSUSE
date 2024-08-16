@@ -16,20 +16,18 @@
 #
 
 
-%define skip_python39 1
-
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
 %bcond_without test
-%define skip_python39 1
 %else
 %define psuffix %{nil}
 %bcond_with test
 %endif
 
+%{?sle15_python_module_pythons}
 Name:           python-intake%{psuffix}
-Version:        2.0.4
+Version:        2.0.5
 Release:        0
 Summary:        Data loading and cataloging system
 License:        BSD-2-Clause

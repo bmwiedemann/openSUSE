@@ -114,4 +114,14 @@ I am sorry for the messy submission before. (forwarded request 1139042 from iDes
     <comment>ffmpeg CVE patches</comment>
     <requestid>1189878</requestid>
   </revision>
+  <revision rev="13" vrev="7">
+    <srcmd5>e122d1d62b00a3cddd2c853af3988908</srcmd5>
+    <version>6.1.1</version>
+    <time>1723803770</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove ffmpeg-6-CVE-2024-32228-shim-5d7f234e.patch and
+  ffmpeg-6-CVE-2024-32228.patch to make the bot happy.
+- Renumber patches. (forwarded request 1193889 from manfred-h)</comment>
+    <requestid>1193997</requestid>
+  </revision>
 </revisionlist>

@@ -1360,4 +1360,15 @@
     <comment></comment>
     <requestid>1188923</requestid>
   </revision>
+  <revision rev="169" vrev="5">
+    <srcmd5>42f8e0d0e0aa36aeef03d660e8adc934</srcmd5>
+    <version>2.03.24</version>
+    <time>1723803778</time>
+    <user>dimstar_suse</user>
+    <comment>- lvm2-monitor.service fails to start (boo#1228854)
+  + bug-1228854_lvm2-monitor-service-start-after-system-fully-booted.patch
+  
+</comment>
+    <requestid>1194106</requestid>
+  </revision>
 </revisionlist>

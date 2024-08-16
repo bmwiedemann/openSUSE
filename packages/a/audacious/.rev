@@ -127,4 +127,22 @@
     <comment></comment>
     <requestid>1100179</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>d9af2e9d58e02884d6cdfa7fc173c82f</srcmd5>
+    <version>4.4</version>
+    <time>1723803801</time>
+    <user>dimstar_suse</user>
+    <comment>- Re-enable QT6 for Leap/SLE 15.X.
+  Requires C++17 support. 
+
+- Re-enable QT5 for codestreams where QT6 isn't available: basically
+  anything that's not based on Tumbleweed.
+- Adjust sonames, as they've been changed for version 4.4.
+
+- Update to version 4.4:
+  * See https://audacious-media-player.org/news/59-audacious-4-4-released
+- Remove gtk3 and qt6 config options (upstream make them compiled as default
+  and remove these options)</comment>
+    <requestid>1193995</requestid>
+  </revision>
 </revisionlist>

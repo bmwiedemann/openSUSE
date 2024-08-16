@@ -38,11 +38,8 @@ BuildRequires:
 %install
 %make_install
 
-%post
-%postun
-
 %files
 %license LICENSE
-%doc README.md ChangeLog
+%doc README.md
 
 %changelog

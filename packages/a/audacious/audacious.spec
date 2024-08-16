@@ -1,7 +1,7 @@
 #
 # spec file for package audacious
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,14 +16,20 @@
 #
 
 
-%define aud_plugin_ver_min 4.3
-%define aud_plugin_ver_max 4.3.99
+%define aud_plugin_ver_min 4.4
+%define aud_plugin_ver_max 4.4.99
 %define core_soname 5
-%define qt_soname 2
-%define gtk_soname 5
+%define gtk_soname 6
+%define qt_soname 3
 %define tag_soname 3
+
+%if 0%{?suse_version} < 1600
+# on Leap/SLE 15 force gcc-13 as QT6 requires C++17 compatibility
+%define force_gcc_version 13
+%endif
+
 Name:           audacious
-Version:        4.3.1
+Version:        4.4
 Release:        0
 Summary:        Audio player with graphical UI and library functionality
 License:        BSD-2-Clause
@@ -31,27 +37,20 @@ URL:            https://audacious-media-player.org/
 Source:         https://distfiles.audacious-media-player.org/%{name}-%{version}.tar.bz2
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
-BuildRequires:  gcc-c++
+BuildRequires:  gcc%{?force_gcc_version}-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  meson >= 0.57
 BuildRequires:  pkgconfig
+BuildRequires:  cmake(Qt6Core)
+BuildRequires:  cmake(Qt6Gui)
+BuildRequires:  cmake(Qt6Svg)
+BuildRequires:  cmake(Qt6Widgets)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(libarchive)
 Requires:       %{name}-plugins%{?_isa} <= %{aud_plugin_ver_max}
 Requires:       %{name}-plugins%{?_isa} >= %{aud_plugin_ver_min}
 Recommends:     %{name}-plugins-extra >= %{aud_plugin_ver_min}
-%if 0%{?suse_version} > 1500
-BuildRequires:  cmake(Qt6Core)
-BuildRequires:  cmake(Qt6Gui)
-BuildRequires:  cmake(Qt6Widgets)
-Requires:       cmake(Qt6Svg)
-%else
-BuildRequires:  cmake(Qt5Core)
-BuildRequires:  cmake(Qt5Gui)
-BuildRequires:  cmake(Qt5Widgets)
-Requires:       cmake(Qt5Svg)
-%endif
 
 %description
 Audacious is an audio player. It is based on Qt and supports a wide
@@ -103,15 +102,17 @@ Development files for Audacious audio player.
 %setup -q
 
 %build
-%meson \
-  -Dqt=true   \
-%if 0%{?suse_version} > 1500
-  -Dqt6=true  \
-%else
-  -Dqt6=false \
+%if 0%{?force_gcc_version}
+export CC="gcc-%{?force_gcc_version}"
+export CXX="g++-%{?force_gcc_version}"
 %endif
+
+# append this to $PATH as Leap/SLE 15 have the QT6 binaries there
+export PATH="%{_libdir}/qt6/libexec:$PATH"
+
+%meson \
+  -Dqt=true  \
   -Dgtk=true  \
-  -Dgtk3=true
 %meson_build
 
 %install

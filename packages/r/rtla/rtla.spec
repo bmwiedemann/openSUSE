@@ -52,7 +52,7 @@ There is no reason to install this package.
 (cd %{_prefix}/src/linux ; tar -cf - COPYING CREDITS README tools include scripts Kbuild Makefile arch/*/{include,lib,Makefile} lib Documentation/tools/rtla) | tar -xf -
 # Workaround for missing lib dependency
 sed -i 's/--libs libtracefs/--libs libtracefs libtraceevent/' tools/tracing/rtla/Makefile
-%patch1 -p1
+%patch -P 1 -p1
 
 %build
 cd tools/tracing/rtla

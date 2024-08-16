@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Jul 16 14:29:11 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.2.7
+  * Avoid potential use-after-free when clearing set's expression
+    list
+  * Avoid misc buffer overflows in attribute setters
+  * Implement nftnl_obj_unset symbol already exported in
+    libnftnl.map
+  * Remove unimplemented symbols from libnftnl.map
+  * Validate per-expression and per-object attribute value and
+    data length
+  * Fix synproxy object setter with unaligned data
+
+-------------------------------------------------------------------
 Tue Jul 11 20:15:50 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.2.6

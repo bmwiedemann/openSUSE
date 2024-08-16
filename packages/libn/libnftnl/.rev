@@ -215,4 +215,14 @@
     <comment>- Update to release 1.2.6</comment>
     <requestid>1098266</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>f69bb9ae53c100cfa2a3cc4679b2c147</srcmd5>
+    <version>1.2.7</version>
+    <time>1723803774</time>
+    <user>dimstar_suse</user>
+    <comment>libnftnl alone hopefully should not regress in openqa
+
+- Update to release 1.2.7</comment>
+    <requestid>1194083</requestid>
+  </revision>
 </revisionlist>

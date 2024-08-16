@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Aug 11 12:55:40 UTC 2024 - Aeneas Jaißle <aj@ajaissle.de>
+
+-  Update to 0.18.8:
+    * Fix concurrent reading of extended attributes (xattrs)
+    * Raise warning if both input databases are the same
+
+-  Update to 0.18.7:
+    * Add missing library CFLAGS
+    * Fix typo in aide.conf manual page
+    * Fix 64-bit time_t on 32-bit architectures
+    * Fix debug logging for returned attributes
+    * Fix condition for error message of failing to open gzipped files
+
+- rebased aide-0.18-as-needed.patch
+
+-------------------------------------------------------------------
 Tue Feb 20 10:03:59 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

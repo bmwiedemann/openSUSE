@@ -619,4 +619,13 @@ Features
     <comment>Update to 1.20.0</comment>
     <requestid>1172666</requestid>
   </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>ae59cbc72d99ca268ce1f67684c94b4f</srcmd5>
+    <version>1.21.0</version>
+    <time>1723803775</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.21.0:
+  [CVE-2024-43167, bsc#1229068]</comment>
+    <requestid>1194091</requestid>
+  </revision>
 </revisionlist>

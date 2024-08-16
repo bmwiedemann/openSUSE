@@ -27,6 +27,7 @@
 
 # Adjust the version in _service and use `rm -rf cramjam; osc service runall` in order to update
 %define modname cramjam
+%{?sle15_python_module_pythons}
 Name:           python-cramjam%{psuffix}
 Version:        2.8.1
 Release:        0

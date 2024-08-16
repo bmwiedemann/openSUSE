@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Aug 14 14:48:53 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- switch to modern python on sle15
+
+-------------------------------------------------------------------
 Tue Feb  6 18:28:40 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add upstream support-python312.patch gh#PyCQA/autoflake#280

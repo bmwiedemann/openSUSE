@@ -729,4 +729,12 @@ Bugfixes:
     * Fixing detection of pthread_timedjoin_np (Linux)</comment>
     <requestid>1193796</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>8d1ac39aa1a0bfbb1dd451c1f44e476b</srcmd5>
+    <version>2.21.3</version>
+    <time>1723803823</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1194194</requestid>
+  </revision>
 </revisionlist>

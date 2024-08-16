@@ -22,4 +22,25 @@
   * Fix for lemmy 0.19.0 (forwarded request 1177449 from ph03nix)</comment>
     <requestid>1177602</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>2d28b509856d31b5dcd03ab79d9c0d57</srcmd5>
+    <version>1.0.6+git0.63db4bd</version>
+    <time>1723803828</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.6+git0.63db4bd:
+  * Fix goreleaser
+  * Remove `q` for quit, add config file info
+  * Fix #50, implementation of nested replies
+  * Fix #31, bugfix for missing comments in Lemmy
+  * Fix #57, introduce null.* types
+  * Fix #32, forum filter implementation for Lemmy
+  * Fix #52 pt 2, move tea.Quit to view
+  * Fix #52, ignore `n` shortcut when filtering
+  * Fix #42, rm `q` key for closing Having the `q` key in addition to the `Esc` key for closing windows and quitting the app just adds unnecessary complexity and breaks the UX flow.
+  * Update dependencies
+  * Fix #63, rm panic for loadSystems, add log info
+  * Bump golang.org/x/image from 0.16.0 to 0.18.0
+  * Bump github.com/hashicorp/go-retryablehttp from 0.7.6 to 0.7.7 (forwarded request 1194079 from ph03nix)</comment>
+    <requestid>1194109</requestid>
+  </revision>
 </revisionlist>
