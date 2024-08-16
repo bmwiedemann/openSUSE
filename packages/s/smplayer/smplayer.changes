@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Aug 16 06:05:23 UTC 2024 - Alynx Zhou <alynx.zhou@suse.com>
+
+- Add 0001-Adapt-MPV-s-renaming-sub-forced-only-to-sub-forced-e.patch:
+  Adapt MPV's option change to fix error (bsc#1227841,
+  gh#smplayer-dev/smplayer!1029).
+
+-------------------------------------------------------------------
 Wed Jun 28 12:44:00 UTC 2024 - hlavki <miso@hlavki.eu>
 
 - Update to 24.5.0:

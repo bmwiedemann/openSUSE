@@ -1,7 +1,7 @@
 #
 # spec file for package smplayer
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,6 +29,8 @@ Patch0:         %{name}-makeflags.patch
 Patch1:         %{name}-defaults.patch
 # PATCH-FIX-UPSTREAM smplayer-add_kde_protocols_to_desktop_file.patch -- To play network shared video correctly: #PM-48.
 Patch2:         %{name}-add_kde_protocols_to_desktop_file.patch
+# PATCH-FIX-UPSTREAM 0001-Adapt-MPV-s-renaming-sub-forced-only-to-sub-forced-e.patch bsc#1227841, gh#smplayer-dev/smplayer!1029 alynx.zhou@suse.com -- Adapt MPV's option renaming.
+Patch3:         0001-Adapt-MPV-s-renaming-sub-forced-only-to-sub-forced-e.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme

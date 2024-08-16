@@ -1,0 +1,46 @@
+From a35524d8f58e5efec42a3f00e4d5de5446f7abb4 Mon Sep 17 00:00:00 2001
+From: Alynx Zhou <alynx.zhou@gmail.com>
+Date: Fri, 16 Aug 2024 13:49:44 +0800
+Subject: [PATCH] Adapt MPV's renaming --sub-forced-only to
+ --sub-forced-events-only
+
+See <https://github.com/mpv-player/mpv/commit/9b9475e21809fbb4736b4290c2648900d9c49e2e>.
+---
+ src/mpvoptions.cpp | 14 ++++++++++++--
+ 1 file changed, 12 insertions(+), 2 deletions(-)
+
+diff --git a/src/mpvoptions.cpp b/src/mpvoptions.cpp
+index 4cbdfd564..7a1265cca 100644
+--- a/src/mpvoptions.cpp
++++ b/src/mpvoptions.cpp
+@@ -398,7 +398,12 @@ void MPVProcess::setOption(const QString & option_name, const QVariant & value)
+ 	}
+ 	else
+ 	if (option_name == "forcedsubsonly") {
+-		arg << "--sub-forced-only";
++		// See <https://github.com/mpv-player/mpv/commit/9b9475e21809fbb4736b4290c2648900d9c49e2e>.
++		if (isOptionAvailable("--sub-forced-events-only")) {
++			arg << "--sub-forced-events-only";
++		} else {
++			arg << "--sub-forced-only";
++		}
+ 	}
+ 	else
+ 	if (option_name == "prefer-ipv4" || option_name == "prefer-ipv6" ||
+@@ -1065,7 +1070,12 @@ void MPVProcess::seekSub(int value) {
+ }
+ 
+ void MPVProcess::setSubForcedOnly(bool b) {
+-	sendCommand(QString("set sub-forced-only %1").arg(b ? "yes" : "no"));
++	// See <https://github.com/mpv-player/mpv/commit/9b9475e21809fbb4736b4290c2648900d9c49e2e>.
++	if (isOptionAvailable("--sub-forced-events-only")) {
++		sendCommand(QString("set sub-forced-events-only %1").arg(b ? "yes" : "no"));
++	} else {
++		sendCommand(QString("set sub-forced-only %1").arg(b ? "yes" : "no"));
++	}
+ }
+ 
+ void MPVProcess::setSpeed(double value) {
+-- 
+2.45.2
+
