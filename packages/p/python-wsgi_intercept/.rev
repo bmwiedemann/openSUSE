@@ -268,4 +268,13 @@
   * Fix pep8 errors in doc string</comment>
     <requestid>1137248</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>83477df718f5a12519d97ce6cf4511a6</srcmd5>
+    <version>1.13.1</version>
+    <time>1723803851</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.13.1:
+  * Update argument processing for modern requests</comment>
+    <requestid>1194237</requestid>
+  </revision>
 </revisionlist>

@@ -17,7 +17,7 @@
 
 
 Name:           python-wsgi_intercept
-Version:        1.13.0
+Version:        1.13.1
 Release:        0
 Summary:        Library for installing a WSGI application in place of a real URI for testing
 License:        MIT
@@ -35,7 +35,6 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-six
-Requires:       python-urllib3 < 2
 Recommends:     python-requests >= 2.0.1
 BuildArch:      noarch
 %python_subpackages
