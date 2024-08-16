@@ -1,0 +1,9 @@
+<package name="gnudos" project="openSUSE:Factory">
+  <title>Library and utilities for DOS look-and-feel</title>
+  <description>GnuDOS is a library designed to help new users of the GNU system, who are
+coming from a DOS background, fit into the picture and start using the GNU
+system with ease. It also addresses the console programmers of such programs
+that have the look and feel of old DOS system.</description>
+  <devel project="Emulators" package="gnudos"/>
+  <url>https://www.gnu.org/software/gnudos/</url>
+</package>
