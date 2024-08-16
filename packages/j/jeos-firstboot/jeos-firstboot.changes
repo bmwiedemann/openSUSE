@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Aug 07 15:04:27 UTC 2024 - Fabian Vogt <fvogt@suse.com>
+
+- Update to version 1.5.0:
+  * Add module for TOTP setup (jsc#CPT-84)
+  * Add module for user creation
+  * Set LC_COLLATE=C.UTF-8
+  * Document module API in README.md
+  * Let modules specify title, description and priority
+  * jeos-firstboot-functions: Simplify _find_modules
+  * Use tabs for indentation everywhere
+  * Drop stale README file
+
+-------------------------------------------------------------------
 Fri May 24 13:08:13 UTC 2024 - Fabian Vogt <fvogt@suse.com>
 
 - Update to version 1.4.3:

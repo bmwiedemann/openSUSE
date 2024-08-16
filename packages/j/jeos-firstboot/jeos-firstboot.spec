@@ -23,7 +23,7 @@
 %endif
 
 Name:           jeos-firstboot
-Version:        1.4.3
+Version:        1.5.0
 Release:        0
 Summary:        Simple text based JeOS first boot wizard
 License:        MIT
@@ -39,6 +39,7 @@ Requires:       timezone
 %if 0%{?suse_version} >= 1550
 Requires:       ssh-pairing
 %endif
+Requires:       ((/usr/bin/qrencode and /usr/bin/oathtool) if pam_oath)
 Requires:       (/usr/bin/nmtui if NetworkManager)
 BuildArch:      noarch
 %{?systemd_requires}
@@ -83,7 +84,7 @@ rm %{buildroot}%{_datadir}/jeos-firstboot/modules/raspberrywifi
 %service_add_post jeos-firstboot.service
 
 %files
-%doc README
+%doc README.md
 %license LICENSE
 %{_unitdir}/jeos-firstboot.service
 %{_unitdir}/jeos-firstboot-snapshot.service
@@ -95,8 +96,7 @@ rm %{buildroot}%{_datadir}/jeos-firstboot/modules/raspberrywifi
 %dir %{_datadir}/jeos-firstboot/modules/network-modules/
 %{_datadir}/jeos-firstboot/modules/network-modules/NetworkManager
 %{_datadir}/jeos-firstboot/modules/network-modules/wicked
-%{_datadir}/jeos-firstboot/modules/ssh_enroll
-%{_datadir}/jeos-firstboot/modules/status_mail
+%{_datadir}/jeos-firstboot/modules/{ssh_enroll,status_mail,otp,user}
 %{_sbindir}/jeos-config
 %{_sbindir}/jeos-firstboot
 %{_sbindir}/jeos-firstboot-snapshot
