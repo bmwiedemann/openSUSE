@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Aug 16 17:04:40 UTC 2024 - okurz@suse.com
+
+- Update to version 4.6.1723815752.458533ee:
+  * Bump datatables.net-bs5 from 2.1.3 to 2.1.4
+  * Add better help on menu items after removing obtrusive tour
+  * Remove tour as it was rather obtrusive
+  * openqa.ini: Move comment on template setting
+  * Update codecov.yml with current coverage in t/
+  * Extend test coverage of OpenQA::Git
+  * Immediately search when clearing search field
+  * Stop openQA worker processes gracefully to avoid 5xx responses
+  * Add interactive log viewer
+  * t: Remove duplication from test labels
+  * t: Avoid tampering with git checkout
+  * Fix link in live dev mode to docs
+  * Mention the possibility to specify a URL via `SCENARIO_DEF…S_YAML_FILE`
+
+-------------------------------------------------------------------
 Wed Aug 14 08:49:19 UTC 2024 - okurz@suse.com
 
 - Update to version 4.6.1723625349.2972cfd0:
