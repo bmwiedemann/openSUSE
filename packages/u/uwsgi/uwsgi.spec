@@ -58,6 +58,8 @@ Patch3:         uwsgi-1.9.11-systemd_logger-old_systemd.patch
 Patch4:         uwsgi-2.0.18-postgresql-config.patch
 # PATCH-FIX-UPSTREAM uwsgi-ld-noexecstack.patch - Do not create executable stack
 Patch5:         uwsgi-ld-noexecstack.patch
+# PATCH-FIX-UPSTREAM uwsgi-93d07ec38b31.patch - Fix build with GCC 14 on 32bit platforms
+Patch6:         uwsgi-93d07ec38b31.patch
 BuildRequires:  apache-rpm-macros
 %if 0%{suse_version} < 1500
 BuildRequires:  apache2-devel

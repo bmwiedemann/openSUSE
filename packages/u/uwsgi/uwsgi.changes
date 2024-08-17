@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul 25 16:31:34 UTC 2024 - Martin Jambor <mjambor@suse.com>
+
+- Added a backport of uwsgi-93d07ec38b31.patch to fix a type
+  incompatibility problem to enable build with GCC 14.
+
+-------------------------------------------------------------------
 Tue May 14 07:07:42 UTC 2024 - pgajdos@suse.com
 
 - version update to 2.0.25.1

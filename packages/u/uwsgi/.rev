@@ -498,4 +498,16 @@
     <comment></comment>
     <requestid>1173928</requestid>
   </revision>
+  <revision rev="55" vrev="2">
+    <srcmd5>b9d7044d2214a5a95992a8ffbcc30309</srcmd5>
+    <version>2.0.25.1</version>
+    <time>1723891256</time>
+    <user>dimstar_suse</user>
+    <comment>- Added a backport of uwsgi-93d07ec38b31.patch to fix a type
+  incompatibility problem to enable build with GCC 14.
+
+If the request is OK, please forward it to Factory soon too so that we
+can switch the default compiler.  Thanks! (forwarded request 1189638 from jamborm)</comment>
+    <requestid>1194296</requestid>
+  </revision>
 </revisionlist>
