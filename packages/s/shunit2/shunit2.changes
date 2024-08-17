@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Jul 12 13:03:50 UTC 2024 - Manfred Schwarb <manfred99@gmx.ch>
+
+- Update to version 2.1.7:
+  * Colorized output
+  * shUnit2 no longer exits with an 'OK' result if there were syntax errors
+  * changed license to Apache 2.0
+- Update to version 2.1.8:
+  * Users can now define a custom prefix for test function names (SHUNIT_TEST_PREFIX)
+  * Syntax errors in functions are now treated as test failures
+  * Test now fail when setup() or tearDown() fail
+  * Add assertContains, assertNotContains, failFound and failNotFound functions
+- delete patches shunit2-examples.diff and shunit2-gen_test_results.sh.diff, not needed
+- delete source file lgpl-2.1.txt
+- do not install test scripts
+- enable package testing with script test_runner
+- provide compat symlink from /usr/share/shunit2/shunit2 to /usr/share/shunit2/src/shunit2
+- source /usr/bin/shunit2 in examples, so no additional path settings are needed to use it
+
+-------------------------------------------------------------------
 Mon Feb 26 13:17:36 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
