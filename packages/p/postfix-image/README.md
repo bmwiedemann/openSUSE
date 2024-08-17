@@ -200,9 +200,9 @@ podman run -d --rm --name postfix -p 25:25 -e MYDESTINATION=example.com -e LMTP=
 
 ## Licensing
 
-`SPDX-License-Identifier: MIT`
+`SPDX-License-Identifier: (EPL-2.0 OR IPL-1.0) AND MIT`
 
-This documentation and the build recipe are licensed as MIT.
+This documentation and the build recipe are licensed as (EPL-2.0 OR IPL-1.0) AND MIT.
 The container itself contains various software components under various open source licenses listed in the associated
 Software Bill of Materials (SBOM).
 

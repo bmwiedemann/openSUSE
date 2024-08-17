@@ -1,4 +1,4 @@
-# SPDX-License-Identifier: MIT
+# SPDX-License-Identifier: (EPL-2.0 OR IPL-1.0) AND MIT
 
 #     Copyright (c) 2024 SUSE LLC
 
