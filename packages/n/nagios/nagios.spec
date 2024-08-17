@@ -32,7 +32,7 @@
 %endif
 
 Name:           nagios
-Version:        4.5.3
+Version:        4.5.4
 Release:        0
 Summary:        The Nagios Network Monitor
 License:        GPL-2.0-or-later

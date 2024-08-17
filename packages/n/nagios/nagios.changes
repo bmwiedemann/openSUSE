@@ -1,11 +1,19 @@
 -------------------------------------------------------------------
+Thu Aug 15 15:46:33 UTC 2024 - Lars Vogdt <lars@linux-schulserver.de>
+
+- update to 4.5.4
+* Fix inconsistent links for 'View {Trends,Alert Histogram} For 
+  This {Host,Service}' (Mauricio Faria de Oliveira)
+* Fix broken links from removing AngularJS pages in 4.5.3 (Dylan Anderson)
+
+-------------------------------------------------------------------
 Wed Jun 19 13:07:14 UTC 2024 - Lars Vogdt <lars@linux-schulserver.de>
 
 - update to 4.5.3
-* Update jQuery (#960) (Dylan Anderson)
-* Remove pages using outdated AngularJS framework (#960) (Dylan Anderson)
-* Fix html encoding of some ascii characters (#813) (Dylan Anderson)
-* Updated several page links to use 'nofollow' (#965) - (Griffin Westerman)
+  * Update jQuery (#960) (Dylan Anderson)
+  * Remove pages using outdated AngularJS framework (#960) (Dylan Anderson)
+  * Fix html encoding of some ascii characters (#813) (Dylan Anderson)
+  * Updated several page links to use 'nofollow' (#965) - (Griffin Westerman)
 
 -------------------------------------------------------------------
 Mon May 13 09:05:44 UTC 2024 - Lars Vogdt <lars@linux-schulserver.de>
