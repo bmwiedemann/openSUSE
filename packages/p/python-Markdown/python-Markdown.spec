@@ -17,7 +17,16 @@
 
 
 %{?sle15_python_module_pythons}
-Name:           python-Markdown
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define psuffix -test
+%bcond_without test
+%endif
+%if "%{flavor}" == ""
+%define psuffix %{nil}
+%bcond_with test
+%endif
+Name:           python-Markdown%{psuffix}
 Version:        3.6
 Release:        0
 Summary:        Python implementation of Markdown
@@ -26,7 +35,6 @@ Group:          Development/Languages/Python
 URL:            https://python-markdown.github.io/
 Source:         https://files.pythonhosted.org/packages/source/M/Markdown/Markdown-%{version}.tar.gz
 Patch0:         markdown-3.0-python37.patch
-BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module importlib-metadata >= 4.4 if %python-base < 3.10}
 BuildRequires:  %{python_module pip}
@@ -34,9 +42,11 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-%if 0%{?python_version_nodots} < 310
-Requires:       python-importlib-metadata >= 4.4
+%if %{with test}
+BuildRequires:  %{python_module Markdown = %{version}}
+BuildRequires:  %{python_module PyYAML}
 %endif
+Requires:       (python-importlib-metadata >= 4.4 if python-base < 3.10)
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch
@@ -53,17 +63,24 @@ supported by the [Available Extensions][].
 %autosetup -p1 -n Markdown-%{version}
 
 %build
+%if %{without test}
 %pyproject_wheel
+%endif
 
 %install
+%if %{without test}
 %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %python_clone -a %{buildroot}%{_bindir}/markdown_py
+%endif
 
 %check
+%if %{with test}
 %pyunittest discover -v
+%endif
 
+%if %{without test}
 %post
 %python_install_alternative markdown_py
 
@@ -76,5 +93,6 @@ supported by the [Available Extensions][].
 %python_alternative %{_bindir}/markdown_py
 %{python_sitelib}/Markdown-%{version}*-info
 %{python_sitelib}/markdown
+%endif
 
 %changelog

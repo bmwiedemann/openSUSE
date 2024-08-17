@@ -420,4 +420,14 @@
     <comment></comment>
     <requestid>1159075</requestid>
   </revision>
+  <revision rev="47" vrev="2">
+    <srcmd5>e82d3b4bca6756c346dcd9994e746981</srcmd5>
+    <version>3.6</version>
+    <time>1723891257</time>
+    <user>dimstar_suse</user>
+    <comment>- Split the package into multibuild with tests separate (to
+  separate PyYAML dependency).
+</comment>
+    <requestid>1193472</requestid>
+  </revision>
 </revisionlist>

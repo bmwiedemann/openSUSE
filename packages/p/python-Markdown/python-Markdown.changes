@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug 12 14:47:54 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Split the package into multibuild with tests separate (to
+  separate PyYAML dependency).
+
+-------------------------------------------------------------------
 Fri Mar 15 19:46:03 UTC 2024 - Benoît Monin <benoit.monin@gmx.fr>
 
 - update to version 3.6:

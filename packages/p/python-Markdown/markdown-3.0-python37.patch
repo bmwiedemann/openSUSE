@@ -1,6 +1,10 @@
---- Markdown-3.0/tests/test_legacy.py.orig	2018-10-18 20:59:01.521952070 +0200
-+++ Markdown-3.0/tests/test_legacy.py	2018-10-18 20:59:20.746395446 +0200
-@@ -29,6 +29,7 @@
+---
+ tests/test_legacy.py |    1 +
+ 1 file changed, 1 insertion(+)
+
+--- a/tests/test_legacy.py
++++ b/tests/test_legacy.py
+@@ -28,6 +28,7 @@ warnings.simplefilter('error')
  # Except for the warnings that shouldn't
  warnings.filterwarnings('default', category=PendingDeprecationWarning)
  warnings.filterwarnings('default', category=DeprecationWarning, module='markdown')
