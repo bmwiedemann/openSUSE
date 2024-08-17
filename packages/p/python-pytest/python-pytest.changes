@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Mon Aug 12 17:34:45 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 8.3.2:
+  * Resolve regression where `conda` environments where no longer
+    being automatically detected
+
+-------------------------------------------------------------------
+Tue Jul 23 04:34:06 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 8.3.1:
+  * New features
+    + Added `--xfail-tb` flag, which turns on traceback output for XFAIL
+      results.
+    + Added support for keyword matching in marker expressions.
+    + Added ``--no-fold-skipped`` command line option.
+  * Improvements
+    + The console output now uses the "third-party plugins" terminology.
+    + Python virtual environment detection was improved by checking for a
+      pyvenv.cfg file
+    + Do not truncate arguments to functions in output when running with -vvv.
+    + The readability of assertion introspection of bound methods has been
+      enhanced.
+    + Added timezone information to the testsuite timestamp in the JUnit XML
+      report.
+  * Bug Fixes
+    + Fixed reporting of teardown errors in higher-scoped fixtures when
+      using `--maxfail` or `--stepwise`.
+    + pytest.approx now correctly handles Sequence-like objects.
+    + Fixed a regression in pytest 8.0 where tracebacks get longer and
+      longer when multiple tests fail due to a shared higher-scope fixture
+      which raised
+    + Fixed collection error upon encountering an abstract class, including
+      abstract unittest.TestCase subclasses.
+    + Fixed a regression in pytest 8.0.0 where package-scoped parameterized
+      items were not correctly reordered to minimize setups/teardowns in
+      some cases.
+    + Fixed crash with `assert testcase is not None` assertion failure when
+      re-running unittest tests using plugins like pytest-rerunfailures.
+    + Fixed a crash when returning category ``"error"`` or ``"failed"`` with
+      a custom test status from :hook:`pytest_report_teststatus` hook.
+    + Improved handling of invalid regex patterns in
+      pytest.raises(match=r'...') by providing a clear error message.
+    + Parametrization parameters are now compared using == instead of is
+      (is is still used as a fallback if the parameter does not support ==).
+    + Fixed progress percentages sometimes not aligning correctly when
+      running with pytest-xdist -n.
+- Drop patch allow-re-run-regression.patch: Included.
+
+-------------------------------------------------------------------
 Tue Jun 11 03:03:23 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch allow-re-run-regression.patch:
@@ -9,20 +58,20 @@ Thu Jun  6 11:48:38 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Update to 8.2.2
   * Support for Python 3.13 (beta1 at the time of writing).
-  * Fix `PermissionError` crashes arising from directories which are not 
+  * Fix `PermissionError` crashes arising from directories which are not
     selected on the command-line.
-  * Keyboard interrupts and system exits are now properly handled during 
+  * Keyboard interrupts and system exits are now properly handled during
     the test collection.
-  * Fixed handling of 'Function not implemented' error under squashfuse_ll, 
+  * Fixed handling of 'Function not implemented' error under squashfuse_ll,
     which is a different way to say that the mountpoint is read-only.
-  * Fix a regression in pytest 8.2.0 where the permissions of 
-    automatically-created .pytest_cache directories became rwx------ 
+  * Fix a regression in pytest 8.2.0 where the permissions of
+    automatically-created .pytest_cache directories became rwx------
     instead of the expected rwxr-xr-x.
-  * Fix possible catastrophic performance slowdown on a certain 
+  * Fix possible catastrophic performance slowdown on a certain
     parametrization pattern involving many higher-scoped parameters.
-  * Fix a regression in pytest 8.2.0 where unittest class instances were 
+  * Fix a regression in pytest 8.2.0 where unittest class instances were
     not released promptly on test teardown but only on session teardown.
-  * Fix possible “Directory not empty” crashes arising from concurent cache 
+  * Fix possible “Directory not empty” crashes arising from concurent cache
     dir (.pytest_cache) creation. Regressed in pytest 8.2.0.
 
 -------------------------------------------------------------------

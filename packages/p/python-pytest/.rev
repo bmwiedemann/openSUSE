@@ -1352,4 +1352,41 @@ Add python version constraints to Requires &amp; BuildRequires</comment>
   * pluggy&gt;=1.5.0 is now required.</comment>
     <requestid>1179873</requestid>
   </revision>
+  <revision rev="86" vrev="1">
+    <srcmd5>45fd748faa6f4545a6aa9e713f6a9428</srcmd5>
+    <version>8.3.2</version>
+    <time>1723891258</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 8.3.2:
+  * Resolve regression where `conda` environments where no longer
+    being automatically detected
+
+- Update to 8.3.1:
+  * New features
+    + Added `--xfail-tb` flag, which turns on traceback output for XFAIL
+      results.
+    + Added support for keyword matching in marker expressions.
+    + Added ``--no-fold-skipped`` command line option.
+  * Improvements
+    + The console output now uses the &quot;third-party plugins&quot; terminology.
+    + Python virtual environment detection was improved by checking for a
+      pyvenv.cfg file
+    + Do not truncate arguments to functions in output when running with -vvv.
+    + The readability of assertion introspection of bound methods has been
+      enhanced.
+    + Added timezone information to the testsuite timestamp in the JUnit XML
+      report.
+  * Bug Fixes
+    + Fixed reporting of teardown errors in higher-scoped fixtures when
+      using `--maxfail` or `--stepwise`.
+    + pytest.approx now correctly handles Sequence-like objects.
+    + Fixed a regression in pytest 8.0 where tracebacks get longer and
+      longer when multiple tests fail due to a shared higher-scope fixture
+      which raised
+    + Fixed collection error upon encountering an abstract class, including
+      abstract unittest.TestCase subclasses.
+    + Fixed a regression in pytest 8.0.0 where package-scoped parameterized
+      items were not correctly reordered to minimize setups/teardowns in</comment>
+    <requestid>1193499</requestid>
+  </revision>
 </revisionlist>

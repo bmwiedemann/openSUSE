@@ -33,15 +33,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pytest%{psuffix}
-Version:        8.2.2
+Version:        8.3.2
 Release:        0
 Summary:        Simple powerful testing with Python
 License:        MIT
 URL:            https://github.com/pytest-dev/pytest
 Source:         https://files.pythonhosted.org/packages/source/p/pytest/pytest-%{version}.tar.gz
-# FIX-PATCH-UPSTREAM gh#pytest-dev/pytest#12438
-Patch0:         allow-re-run-regression.patch
-BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm >= 6}
 BuildRequires:  %{python_module setuptools}
@@ -52,12 +50,12 @@ BuildRequires:  python-rpm-macros >= 20210929
 Requires:       python-attrs >= 19.2.0
 %if 0%{?python_version_nodots} < 311
 Requires:       python-exceptiongroup >= 1.0.0
-Requires:       python-tomli >= 1
 %endif
 Requires:       python-iniconfig
 Requires:       python-packaging
 Requires:       python-pluggy >= 1.5
 Requires:       python-setuptools
+Requires:       (python-tomli >= 1 if python-base < 3.11)
 %if %{with libalternatives}
 Requires:       alts
 BuildRequires:  alts
@@ -73,11 +71,8 @@ BuildRequires:  %{python_module Twisted}
 BuildRequires:  %{python_module attrs >= 19.2.0}
 BuildRequires:  %{python_module decorator}
 BuildRequires:  %{python_module hypothesis >= 3.56}
-# nose is really not REQUIRED, the test suite skips over particular
-# tests, when the package is not available.
-# BuildRequires:  %%{python_module nose}
-BuildRequires:  %{python_module pexpect}
 BuildRequires:  %{python_module numpy}
+BuildRequires:  %{python_module pexpect}
 BuildRequires:  %{python_module pygments-pytest}
 BuildRequires:  %{python_module pytest >= %{version}}
 BuildRequires:  %{python_module pytest-xdist}
@@ -95,8 +90,6 @@ complex functional testing for applications and libraries.
 %autosetup -p1 -n pytest-%{version}
 # fix gh#pytest-dev/pytest#7891 still happening for Leap
 sed -i '/^\[metadata\]/ a version = %{version}' setup.cfg
-# Tests not failing with our current version of packages gh#pytest-dev/pytest#10042
-sed -i '/pytest.mark.xfail(reason="#10042")/d' testing/test_debugging.py
 
 %build
 %pyproject_wheel
