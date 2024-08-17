@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Mon Aug 12 04:32:18 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.5.2:
+  *  Fix simplification of pow nodes.
+  *  Make ExNode iterators skip nodes hidden by zoom.
+  *  Fix canonicalise acting on expressions with
+     self-anticommuting objects and derivatives.
+  *  Fix crash when comparing with empty expressions.
+  *  Make zoom accept a list of patterns.
+  *  Fix bugs in getting Weight values from Python, and setting
+     multipliers in Python.
+  *  Add LaTeXString object to display LaTeX formatted strings on
+     capable frontends.
+  *  Fix a bug with canonicalise acting on vector-spinor objects.
+  *  Enable the use of Unicode greek characters as input (which
+     will get converted to LaTeX automatically) to enable
+     cut-n-paste in the terminal.
+  *  Fix handling of multi-line expressions (newlines now count as
+     a whitespace).
+  *  Fix canonicalise to allow for factors which are sums, as long
+     as these do not have indices.
+  *  Ability to use builtin MicroTeX for typesetting (the default
+     in 2.5.x), which removes the requirement to have a LaTeX
+     installation.
+  *  Experimental AppImages now available for Linux on both x86-64
+     and aarch64 architectures.
+  *  Removed deprecated GTK-3 features and cleaned up the UI.
+  *  Fix bug in code to interrupt a running computation.
+  *  Added dynamical cell updates, e.g. to create animations.
+- Add _service file to fetch sources from git to allow submodules
+  to be included in tarball.
+- Add patches to fix build:
+  * cadabra2-cmake-correct-python-variable.patch: Use correct
+    variable from FindPython, i.e. Python_EXECUTABLE, not
+    PYTHON_EXECUTABLE (gh#kpeeters/cadabra2#309).
+  * cadabra2-use-system-pybind11.patch: Allow use of system
+    pybind11 (gh#kpeeters/cadabra2#310).
+  * cadabra2-link-gmp.patch: Explicitly link to gmp library.
+- Drop cadabra2-link-python.patch: upstreamed.
+- Drop use of %suse_update_desktop_file: no longer needed.
+- Drop appdata file included as Source1, bundled files are now
+  installed correctly.
+- Use python-rpm-macros and setup to build with newer pythons on
+  Leap 15.X (does not yet work due to unavailability of
+  python311-sympy and python311-ipykernel on these distros).
+
+-------------------------------------------------------------------
 Thu Apr 18 19:37:14 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 2.4.5.6:

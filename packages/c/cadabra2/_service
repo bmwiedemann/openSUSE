@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<services>
+  <service name="obs_scm" mode="manual">
+		<param name="url">https://github.com/kpeeters/cadabra2.git</param>
+    <param name="scm">git</param>
+		<param name="revision">2.5.4</param>
+		<param name="versionformat">@PARENT_TAG@</param>
+    <param name="filename">cadabra2</param>
+    <param name="submodules">enable</param>
+  </service>
+  <service name="tar" mode="buildtime"/>
+  <service name="recompress" mode="buildtime">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service name="set_version" mode="buildtime"/>
+</services>
+

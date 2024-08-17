@@ -1,0 +1,20 @@
+---
+ CMakeLists.txt |    7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+Index: cadabra2-2.5.4/CMakeLists.txt
+===================================================================
+--- cadabra2-2.5.4.orig/CMakeLists.txt
++++ cadabra2-2.5.4/CMakeLists.txt
+@@ -297,7 +297,10 @@ set(PYTHON_POSTFIX "3")
+ # message(STATUS "Building for use with Python 3 (good!)")
+ 
+ find_package(Python COMPONENTS Interpreter Development)
+-add_subdirectory(libs/pybind11)
++find_package(pybind11 CONFIG)
++if (NOT pybind11_FOUND)
++  add_subdirectory(libs/pybind11)
++endif()
+ 
+ message(STATUS "Found python ${PYTHON_LIBRARIES}")
+ #find_package (Python COMPONENTS Interpreter)

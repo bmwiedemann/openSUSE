@@ -16,20 +16,38 @@
 #
 
 
+# Disable testing for 32-bit due to invalid free issue in test canonicalise: https://github.com/kpeeters/cadabra2/issues/280
+%ifarch %ix86
+%bcond_with tests
+%else
 %bcond_without tests
+%endif
+%{?sle15_python_module_pythons}
+%if 0%{?suse_version} > 1650
+%global pythons python3
+%endif
 Name:           cadabra2
-Version:        2.4.5.6
+Version:        2.5.4
 Release:        0
 Summary:        A computer algebra system for solving problems in field theory
 License:        GPL-3.0-or-later
 Group:          Productivity/Scientific/Math
 URL:            https://cadabra.science/
-Source0:        https://github.com/kpeeters/cadabra2/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Source1:        %{name}-gtk.appdata.xml
+Source0:        %{name}-%{version}.tar.xz
 # PATCH-FIX-UPSTREAM cadabra2-disable-components-test.patch gh#kpeeters/cadabra2#212 badshah400@gmail.com -- Disable a test that crashes for unknown reasons
 Patch0:         cadabra2-disable-components-test.patch
-# PATCH-FIX-UPSTREAM cadabra2-link-python.patch badshah400@gmail.com -- Link against python shared lib explicitly
-Patch1:         cadabra2-link-python.patch
+# PATCH-FIX-UPSTREAM cadabra2-link-gmp.patch badshah400@gmail.com -- Link against gmp shared lib explicitly
+Patch1:         cadabra2-link-gmp.patch
+# PATCH-FIX-UPSTREAM cadabra2-use-system-pybind11.patch gh#kpeeters/cadabra2#310 badshah400@gmail.com -- Allow use of system pybind11, fall back to bundled sources if not found
+Patch2:         cadabra2-use-system-pybind11.patch
+# PATCH-FIX-UPSTREAM cadabra2-cmake-correct-python-variable.patch gh#kpeeters/cadabra2#309 badshah400@gmail.com -- Use correct variable set by cmake FindPython, i.e. Python_EXECUTABLE, not PYTHON_EXECUTABLE
+Patch3:         cadabra2-cmake-correct-python-variable.patch
+BuildRequires:  %{python_module devel >= 3.9}
+BuildRequires:  %{python_module gobject-devel}
+BuildRequires:  %{python_module ipykernel}
+BuildRequires:  %{python_module matplotlib}
+BuildRequires:  %{python_module pybind11-devel}
+BuildRequires:  %{python_module sympy}
 BuildRequires:  appstream-glib
 BuildRequires:  cmake
 BuildRequires:  doxygen
@@ -46,11 +64,7 @@ BuildRequires:  libboost_system-devel
 BuildRequires:  libuuid-devel
 BuildRequires:  pcre-devel
 BuildRequires:  pkgconfig
-BuildRequires:  python3-devel >= 3.9
-BuildRequires:  python3-gobject-devel
-BuildRequires:  python3-ipykernel
-BuildRequires:  python3-matplotlib
-BuildRequires:  python3-sympy
+BuildRequires:  python-rpm-macros
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(gtkmm-3.0)
@@ -63,7 +77,7 @@ BuildRequires:  jupyter-jupyter_core-filesystem
 %endif
 # SECTION For test
 %if %{with tests}
-BuildRequires:  python3-gmpy2
+BuildRequires:  %{python_module gmpy2}
 %endif
 # /SECTION
 Recommends:     %{name}-examples
@@ -150,13 +164,17 @@ echo "HTML_TIMESTAMP = NO" >> config/Doxyfile
 sed -i "1{/#!\/usr\/bin\/env python/d}" libs/appdirs/cdb_appdirs.py
 
 %build
+%{python_expand #
 %cmake \
   -DCMAKE_MANDIR:PATH=%{_mandir} \
   -DINSTALL_LATEX_DIR:PATH=%{_datadir}/texmf \
   -DENABLE_FRONTEND:BOOL=ON \
   -DENABLE_SYSTEM_JSONCPP:BOOL=ON \
   -DENABLE_MATHEMATICA:BOOL=OFF \
-  -DBUILD_TESTS:BOOL=%{?with_tests:ON}%{!?with_tests:OFF}
+  -DBUILD_TESTS:BOOL=%{?with_tests:ON}%{!?with_tests:OFF} \
+  -DPython_EXECUTABLE=%{_bindir}/$python \
+  %{nil}
+}
 
 %cmake_build
 cd ..
@@ -165,19 +183,9 @@ cd ..
 %install
 %cmake_install
 
-%suse_update_desktop_file cadabra2-gtk
-
-# INSTALL APPDATA TO /usr/share/metainfo
-install -D -m0644 %{S:1} %{buildroot}%{_datadir}/metainfo/%{name}-gtk.appdata.xml
-
-# Replace "/usr/bin/env python3" hashbang by "/usr/bin/python3"
-%python3_fix_shebang
-
 mkdir -p %{buildroot}%{_datadir}/texmf/tex/latex/cadabra2/
 ln %{buildroot}%{_datadir}/cadabra2/latex/* %{buildroot}%{_datadir}/texmf/tex/latex/cadabra2/
 
-# Disable testing for 32-bit due to tolerance issues https://github.com/kpeeters/cadabra2/issues/280
-%ifnarch %ix86
 %if %{with tests}
 %check
 export PATH=${PATH}:%{buildroot}%{_bindir}
@@ -186,7 +194,6 @@ export PYTHONDONTWRITEBYTECODE=1
 # write config files to home dir to run without perm issues
 export HOME=`pwd`
 %ctest
-%endif
 %endif
 
 %files
@@ -213,7 +220,7 @@ export HOME=`pwd`
 %license doc/license.txt
 %{_bindir}/%{name}-gtk
 %{_datadir}/icons/hicolor/*/apps/cadabra2-gtk.*
-%{_datadir}/applications/cadabra2-gtk.desktop
+%{_datadir}/applications/*.cadabra2-gtk.desktop
 %dir %{_datadir}/metainfo
 %{_datadir}/metainfo/*.appdata.xml
 
