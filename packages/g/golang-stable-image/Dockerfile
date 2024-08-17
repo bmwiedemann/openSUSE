@@ -16,26 +16,26 @@
 
 #!BuildTag: opensuse/bci/golang:stable
 #!BuildTag: opensuse/bci/golang:stable-1.%RELEASE%
-#!BuildTag: opensuse/bci/golang:1.22
-#!BuildTag: opensuse/bci/golang:1.22-1.%RELEASE%
+#!BuildTag: opensuse/bci/golang:1.23
+#!BuildTag: opensuse/bci/golang:1.23-1.%RELEASE%
 #!BuildTag: opensuse/bci/golang:latest
 
 FROM opensuse/tumbleweed:latest
 
-RUN set -euo pipefail; zypper -n in --no-recommends go1.22 go1.22-doc make curl findutils gawk git-core procps util-linux; zypper -n clean; rm -rf /var/log/{lastlog,tallylog,zypper.log,zypp/history,YaST2}
+RUN set -euo pipefail; zypper -n in --no-recommends go1.23 go1.23-doc make curl findutils gawk git-core procps util-linux; zypper -n clean; rm -rf /var/log/{lastlog,tallylog,zypper.log,zypp/history,YaST2}
 
 # Define labels according to https://en.opensuse.org/Building_derived_containers
 # labelprefix=org.opensuse.bci.golang
 LABEL org.opencontainers.image.authors="openSUSE (https://www.opensuse.org/)"
-LABEL org.opencontainers.image.title="openSUSE Tumbleweed BCI Go 1.22 development"
-LABEL org.opencontainers.image.description="Go 1.22 development container based on the openSUSE Tumbleweed Base Container Image."
-LABEL org.opencontainers.image.version="1.22"
+LABEL org.opencontainers.image.title="openSUSE Tumbleweed BCI Go 1.23 development"
+LABEL org.opencontainers.image.description="Go 1.23 development container based on the openSUSE Tumbleweed Base Container Image."
+LABEL org.opencontainers.image.version="1.23"
 LABEL org.opencontainers.image.url="https://www.opensuse.org"
 LABEL org.opencontainers.image.created="%BUILDTIME%"
 LABEL org.opencontainers.image.vendor="openSUSE Project"
 LABEL org.opencontainers.image.source="%SOURCEURL%"
-LABEL org.opencontainers.image.ref.name="1.22-1.%RELEASE%"
-LABEL org.opensuse.reference="registry.opensuse.org/opensuse/bci/golang:1.22-1.%RELEASE%"
+LABEL org.opencontainers.image.ref.name="1.23-1.%RELEASE%"
+LABEL org.opensuse.reference="registry.opensuse.org/opensuse/bci/golang:1.23-1.%RELEASE%"
 LABEL org.openbuildservice.disturl="%DISTURL%"
 LABEL org.opensuse.lifecycle-url="https://en.opensuse.org/Lifetime#openSUSE_BCI"
 LABEL org.opensuse.release-stage="released"
@@ -49,7 +49,7 @@ ENV PATH="/go/bin:/usr/local/go/bin:/root/go/bin/:/usr/local/sbin:/usr/local/bin
 
 # only available on go's tsan_arch architectures
 #!ArchExclusiveLine: x86_64 aarch64 s390x ppc64le
-RUN set -euo pipefail; if zypper -n install go1.22-race; then zypper -n clean; fi
+RUN set -euo pipefail; if zypper -n install go1.23-race; then zypper -n clean; fi
 RUN set -euo pipefail; install -m 755 -d /go/bin /go/src
 RUN set -euo pipefail; rm -rf /var/log/{lastlog,tallylog,zypper.log,zypp/history,YaST2}
 WORKDIR /go
