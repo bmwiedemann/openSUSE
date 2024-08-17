@@ -16,10 +16,10 @@
 
 #!BuildTag: opensuse/bci/kiwi:10
 #!BuildTag: opensuse/bci/kiwi:10-%RELEASE%
-#!BuildTag: opensuse/bci/kiwi:10.0
-#!BuildTag: opensuse/bci/kiwi:10.0-%RELEASE%
-#!BuildTag: opensuse/bci/kiwi:10.0.27
-#!BuildTag: opensuse/bci/kiwi:10.0.27-%RELEASE%
+#!BuildTag: opensuse/bci/kiwi:10.1
+#!BuildTag: opensuse/bci/kiwi:10.1-%RELEASE%
+#!BuildTag: opensuse/bci/kiwi:10.1.2
+#!BuildTag: opensuse/bci/kiwi:10.1.2-%RELEASE%
 #!BuildTag: opensuse/bci/kiwi:latest
 
 FROM opensuse/tumbleweed:latest
@@ -31,7 +31,7 @@ RUN set -euo pipefail; zypper -n in --no-recommends checkmedia dracut-kiwi-oem-r
 LABEL org.opencontainers.image.authors="openSUSE (https://www.opensuse.org/)"
 LABEL org.opencontainers.image.title="openSUSE Tumbleweed BCI KIWI Appliance Builder (kiwi)"
 LABEL org.opencontainers.image.description="KIWI Appliance Builder (kiwi) container based on the openSUSE Tumbleweed Base Container Image. This container is only supported in privileged mode."
-LABEL org.opencontainers.image.version="10.0.27"
+LABEL org.opencontainers.image.version="10.1.2"
 LABEL org.opencontainers.image.url="https://www.opensuse.org"
 LABEL org.opencontainers.image.created="%BUILDTIME%"
 LABEL org.opencontainers.image.vendor="openSUSE Project"
@@ -45,4 +45,4 @@ LABEL org.opensuse.release-stage="released"
 LABEL io.artifacthub.package.readme-url="https://raw.githubusercontent.com/SUSE/BCI-dockerfile-generator/Tumbleweed/kiwi-image/README.md"
 LABEL usage="This container requires an openSUSE/SUSE host kernel for full functionality."
 # sanity check that the version from the tag is equal to the version of python3-kiwi that we expect
-RUN set -euo pipefail; [ "$(rpm -q --qf '%{version}' python3-kiwi | cut -d '.' -f -2)" = "10.0" ]
+RUN set -euo pipefail; [ "$(rpm -q --qf '%{version}' python3-kiwi | cut -d '.' -f -2)" = "10.1" ]
