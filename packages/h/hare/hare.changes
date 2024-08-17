@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Aug 10 01:04:06 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
+
+- Improve build logic.
+  * fixes version string output
+  * no need to run `./scripts/version`
+  * set our own cflags and ldflags
+
+-------------------------------------------------------------------
 Tue Jul 16 15:31:19 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
 
 - Remove riscv64-correct-comments.patch

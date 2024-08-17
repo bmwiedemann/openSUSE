@@ -106,6 +106,8 @@ X86_64_CC=cc
 X86_64_LD=ld
 SH
 
+cp config.mk configs/linux.mk
+
 %build
 export CFLAGS="%optflags -fPIE -Wl,-z,noexecstack"
 export PLATFORM="linux"
