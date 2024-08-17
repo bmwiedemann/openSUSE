@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Aug 16 18:31:00 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+-  major update to 1.23.0:
+   https://istio.io/latest/news/releases/1.23.x/announcing-1.23/
+   istioctl-related changes:
+   * The istioctl proxy-status command was improved to include the
+     time since last change, and more relevant status values.
+
+-------------------------------------------------------------------
 Wed Jul 17 06:17:45 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 1.22.3:
