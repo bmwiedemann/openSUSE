@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Aug  9 01:02:15 UTC 2024 - William Brown <william.brown@suse.com>
+
+Version 1.80.1 (2024-08-08)
+===========================
+
+- [Fix miscompilation in the jump threading MIR optimization when comparing floats](https://github.com/rust-lang/rust/pull/128271)
+- [Revert changes to the `dead_code` lint from 1.80.0](https://github.com/rust-lang/rust/pull/128618)
+
+-------------------------------------------------------------------
 Fri Jul 26 01:48:52 UTC 2024 - William Brown <william.brown@suse.com>
 
 Version 1.80.0 (2024-07-25)

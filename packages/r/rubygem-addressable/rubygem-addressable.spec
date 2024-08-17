@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-addressable
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-addressable
-Version:        2.8.6
+Version:        2.8.7
 Release:        0
 %define mod_name addressable
 %define mod_full_name %{mod_name}-%{version}
@@ -33,7 +33,7 @@ BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  %{rubygem rdoc > 3.10}
 BuildRequires:  ruby-macros >= 5
 URL:            https://github.com/sporkmonger/addressable
-Source0:        https://rubygems.org/gems/%{mod_full_name}.gem
+Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        URI Implementation
 License:        Apache-2.0

@@ -924,4 +924,12 @@
     <comment></comment>
     <requestid>1191048</requestid>
   </revision>
+  <revision rev="113" vrev="3">
+    <srcmd5>4f924dcc7ccf825baeb160bca02b44fa</srcmd5>
+    <version>MACRO</version>
+    <time>1723891249</time>
+    <user>dimstar_suse</user>
+    <comment>Drop lm_sensors-revert-6b5a19b708.patch because the previously incompatible types have been changed in the callee in package rrdtool instead.</comment>
+    <requestid>1194254</requestid>
+  </revision>
 </revisionlist>

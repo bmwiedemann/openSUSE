@@ -39,7 +39,6 @@ Patch2:         lm_sensors-3.0.0-sensord-separate.patch
 Patch3:         lm_sensors-3.0.0-sysconfig_metadata.patch
 Patch4:         lm_sensors-3.0.3-hint-at-kernel-extra-package.patch
 Patch8:         lm_sensors-3.5.0-libsensors-fix-soname.patch
-Patch9:         lm_sensors-revert-6b5a19b708.patch
 BuildRequires:  bison
 BuildRequires:  flex
 BuildRequires:  perl-Test-Cmd

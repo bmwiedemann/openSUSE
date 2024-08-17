@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Aug 16 09:06:40 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 6.10
+  * ip: ipnexthop: Support dumping next hop group stats
+  * ip: Support filter links with no VF info
+  * ip: PFCP device support
+  * ip link: hsr: Add support for passing information about
+    INTERLINK device
+
+-------------------------------------------------------------------
 Thu May 16 07:42:58 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 6.9

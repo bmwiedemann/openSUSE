@@ -204,4 +204,12 @@
   * Memoize regexps for common character classes. (forwarded request 1135100 from 13ilya)</comment>
     <requestid>1137588</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>79367cf38e56b9328670ce7acefe19ac</srcmd5>
+    <version>2.8.7</version>
+    <time>1723891250</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1194267</requestid>
+  </revision>
 </revisionlist>

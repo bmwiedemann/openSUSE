@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Aug 12 15:38:13 UTC 2024 - Martin Jambor <mjambor@suse.com>
+
+- Drop lm_sensors-revert-6b5a19b708.patch because the previously
+  incompatible types have been changed in the callee in package
+  rrdtool too, which means that there is a type incompatibility again.
+  Because the other change reportedly makes more sense, I'm dropping
+  this one.
+
+-------------------------------------------------------------------
 Mon Jul 22 15:07:44 UTC 2024 - Martin Jambor <mjambor@suse.com>
 
 - Add lm_sensors-revert-6b5a19b708.patch which reverts an upstream

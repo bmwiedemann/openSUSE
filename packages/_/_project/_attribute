@@ -4,13 +4,13 @@
   <attribute namespace="OBS" name="ApprovedRequestSource"/>
   <attribute namespace="OSRT" name="IgnoredIssues">
     <value>last_seen:
-  boo#0: '20240811'
+  boo#0: '20240816'
   boo#1172073: '20240205'
-  boo#1207390: '20240815'
-  boo#1207940: '20240815'
+  boo#1207390: '20240816'
+  boo#1207940: '20240816'
   boo#1209053: '20240129'
   boo#1209728: '20240115'
-  boo#1216660: '20240815'
+  boo#1216660: '20240816'
   boo#1217029: '20240606'
   boo#1217683: '20240309'
   boo#1218131: '20240318'
@@ -43,7 +43,7 @@
   boo#1221354: '20240313'
   boo#1221367: '20240321'
   boo#1221427: '20240315'
-  boo#1221451: '20240815'
+  boo#1221451: '20240816'
   boo#1221458: '20240314'
   boo#1221508: '20240315'
   boo#1221795: '20240328'
@@ -84,15 +84,15 @@
   boo#1228438: '20240730'
   boo#1228862: '20240815'
   boo#1228864: '20240815'
-  boo#1228981: '20240813'
+  boo#1228981: '20240816'
   boo#1229051: '20240812'
   bsc#1223381: '20240514'
   bsc#1223447: '20240426'
   bsc#1224023: '20240524'
-  bsc#1225890: '20240815'
-  bsc#1225891: '20240815'
-  bsc#1225892: '20240815'
-  bsc#1225893: '20240815'
+  bsc#1225890: '20240816'
+  bsc#1225891: '20240816'
+  bsc#1225892: '20240816'
+  bsc#1225893: '20240816'
   bsc#1226888: '20240714'
   gh#OSInside/kiwi#2529: '20240416'
   gh#hexchat/hexchat#2808: '20240705'
@@ -101,14 +101,15 @@
   gh#os-autoinst/os-autoinst-distri-opensuse#18688: '20240218'
   gh#os-autoinst/os-autoinst-distri-opensuse#18910: '20240402'
   gh#os-autoinst/os-autoinst-distri-opensuse#19023: '20240411'
+  gh#os-autoinst/os-autoinst-distri-opensuse#19988: '20240816'
   gh#yast/yast-bootloader#701: '20240503'
-  poo#105271: '20240815'
+  poo#105271: '20240816'
   poo#120459: '20240110'
   poo#132191: '20240116'
   poo#133691: '20240111'
   poo#134078: '20240128'
-  poo#137423: '20240815'
-  poo#138743: '20240814'
+  poo#137423: '20240816'
+  poo#138743: '20240816'
   poo#152320: '20240226'
   poo#152551: '20240116'
   poo#152793: '20240109'
@@ -145,7 +146,7 @@
   poo#160068: '20240508'
   poo#160153: '20240524'
   poo#160260: '20240522'
-  poo#160406: '20240815'
+  poo#160406: '20240816'
   poo#160505: '20240701'
   poo#160841: '20240527'
   poo#160880: '20240531'
@@ -158,25 +159,25 @@
   poo#162368: '20240714'
   poo#162776: '20240622'
   poo#162914: '20240709'
-  poo#162980: '20240815'
-  poo#163196: '20240815'
+  poo#162980: '20240816'
+  poo#163196: '20240816'
   poo#163205: '20240705'
-  poo#163208: '20240815'
+  poo#163208: '20240816'
   poo#163358: '20240714'
-  poo#163391: '20240814'
+  poo#163391: '20240816'
   poo#163463: '20240709'
   poo#163535: '20240724'
   poo#163538: '20240708'
   poo#164054: '20240722'
   poo#164338: '20240729'
   poo#164445: '20240724'
-  poo#164652: '20240815'
-  poo#164658: '20240815'
+  poo#164652: '20240816'
+  poo#164658: '20240816'
   poo#164919: '20240805'
-  poo#165006: '20240815'
+  poo#165006: '20240816'
   poo#165201: '20240812'
-  poo#165318: '20240815'
-  poo#165336: '20240815'
+  poo#165318: '20240816'
+  poo#165336: '20240816'
   poo#63397: '20240524'
 </value>
   </attribute>
@@ -229,7 +230,7 @@ rebuildpacs-leafs = branding-openSUSE PackageKit-branding-openSUSE xfce4-brandin
     <value>s/openSUSE-/openSUSE-Staging:$LETTER-/</value>
   </attribute>
   <attribute namespace="OSRT" name="ProductVersion">
-    <value>20240816</value>
+    <value>20240817</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerConfig">
     <value>arch: x86_64
@@ -443,8 +444,8 @@ products:
     - x86_64
   - keylime-control-plane-image:
     - x86_64
-  - kiwi-image:
-    - x86_64
+#  - kiwi-image:
+#    - x86_64
   - mariadb-client-image:
     - x86_64
   - mariadb-image:
@@ -649,9 +650,9 @@ set_snapshot_number: True</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
     <value>failed: ''
-published: '20240815'
-publishing: '20240815'
-testing: '20240815'
+published: '20240816'
+publishing: '20240816'
+testing: '20240816'
 </value>
   </attribute>
   <attribute namespace="OSRT" name="OriginConfig">

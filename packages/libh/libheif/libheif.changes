@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Aug  8 19:03:34 UTC 2024 - Arjen de Korte <suse+build@de-korte.org>
+
+- update to 1.18.2:
+  * fix regression that Exif orientation was not correctly reset when
+    converting rotated HEIF (heif-dec)
+  * swap Exif width/height when rotating image by 90 degrees
+  * fix memory leak in OpenJPEG decoding plugin
+  * pay attention to DESTDIR variable when installing heif-convert symlink
+
+-------------------------------------------------------------------
 Sat Jul 27 19:29:36 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 1.18.1:

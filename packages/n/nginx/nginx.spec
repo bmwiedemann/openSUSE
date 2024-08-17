@@ -23,7 +23,7 @@
 %bcond_with    ngx_google_perftools
 #
 Name:           nginx
-Version:        1.27.0
+Version:        1.27.1
 Release:        0
 Summary:        A HTTP server and IMAP/POP3 proxy server
 License:        BSD-2-Clause
@@ -41,13 +41,14 @@ Patch0:         %{name}-1.11.2-no_Werror.patch
 # PATCH-FIX-OPENSUSE nginx-1.11.2-html.patch
 Patch1:         %{name}-1.11.2-html.patch
 # PATCH-FIX-UPSTREAM nginx-1.2.4-perl_vendor_install.patch
-Patch2:         %{name}-1.2.4-perl_vendor_install.patch
+Patch2:         %{name}-perl.patch
 # PATCH-FIX-UPSTREAM fix /etc/nginx/nginx.conf to suit Linux env
-Patch3:         %{name}-1.6.1-default_config.patch
+Patch3:         %{name}-conf.patch
 # PATCH-FIX-UPSTREAM nginx-aio.patch fix support for Linux AIO
 Patch4:         %{name}-aio.patch
 BuildRequires:  %{name}-macros
 BuildRequires:  gcc-c++
+BuildRequires:  gpg2
 BuildRequires:  libatomic-ops-devel
 BuildRequires:  pkgconfig
 BuildRequires:  sysuser-shadow
@@ -96,19 +97,13 @@ BuildArch:      noarch
 The source of %{name} [engine x] HTTP server and IMAP/POP3 proxy server.
 
 %prep
-%setup -q
-%patch -P 0 -p1
-%patch -P 1 -p1
-%patch -P 2
-%patch -P 3
-%patch -P 4 -p1
+%autosetup -p1
 
-perl -pi -e 's|\r\n|\n|g' contrib/geo2nginx.pl
-# we just use lib here because nginx loads them relative to _prefix
-perl -pi -e 's|#LIBDIR#|%{_lib}|g' conf/nginx.conf
+sed -i 's/\r//g' contrib/geo2nginx.pl
+sed -i 's|#LIBDIR#|%{_libdir}|g' conf/nginx.conf
 
 %if %{with systemd}
-sed -i "s/\/var\/run/\/run/" conf/nginx.conf
+sed -i 's/\/var\/run/\/run/' conf/nginx.conf
 %endif
 
 sed -i 's/^\(#define NGX_LISTEN_BACKLOG \).*/\1-1/' src/os/unix/ngx_linux_config.h
@@ -127,7 +122,6 @@ install -dpm0750 %{buildroot}%{ngx_home}/{,tmp,proxy,fastcgi,scgi,uwsgi}
 install -Dpm0644 %{SOURCE4} %{buildroot}%{_sysconfdir}/logrotate.d/%{name}
 install -Dpm0644 %{SOURCE5} %{buildroot}%{_unitdir}/%{name}.service
 install -Dpm0644 %{SOURCE6} %{buildroot}%{_sysusersdir}/%{name}.conf
-ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 
 rm %{buildroot}/srv/www/htdocs/index.html
 
@@ -154,6 +148,12 @@ copydocs() {
   cp -av $* %{buildroot}%{ngx_doc_dir}/$subdir/
   popd
 }
+
+%check
+GPGTMP=`mktemp -d`
+gpg --homedir $GPGTMP -q --no-default-keyring --keyring $GPGTMP/.gpg-keyring --trust-model always --import %{SOURCE2}
+gpg --homedir $GPGTMP -q --no-default-keyring --keyring $GPGTMP/.gpg-keyring --trust-model always -q --verify -- %{SOURCE1} %{SOURCE0}
+rm -r $GPGTMP
 
 %pre -f %{name}.pre
 %service_add_pre %{name}.service
@@ -198,7 +198,6 @@ copydocs() {
 %{ngx_module_dir}/ngx_stream_module.so
 %{_mandir}/man3/%{name}.3pm*
 /srv/www/htdocs/50x.html
-%{_sbindir}/rc%{name}
 %config(noreplace) %{_sysconfdir}/logrotate.d/%{name}
 %dir %attr(750,%{ngx_user_group},%{ngx_user_group}) %{_localstatedir}/log/nginx/
 %dir %attr(750,%{ngx_user_group},%{ngx_user_group}) %{ngx_home}/

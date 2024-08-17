@@ -18,7 +18,7 @@
 
 
 %global version_suffix 1.80
-%global version_current 1.80.0
+%global version_current 1.80.1
 %global version_previous 1.79.0
 # This has to be kept lock step to the rust version.
 # -- will be 18 for 1.78

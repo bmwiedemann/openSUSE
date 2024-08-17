@@ -1,0 +1,12 @@
+diff -Pdpru nginx-1.27.1.orig/auto/install nginx-1.27.1/auto/install
+--- nginx-1.27.1.orig/auto/install	2024-08-12 17:21:01.000000000 +0300
++++ nginx-1.27.1/auto/install	2024-08-16 01:34:07.040688796 +0300
+@@ -8,7 +8,7 @@ if [ $USE_PERL != NO ]; then
+     cat << END                                                >> $NGX_MAKEFILE
+ 
+ install_perl_modules:
+-	cd $NGX_OBJS/src/http/modules/perl && \$(MAKE) install
++	cd $NGX_OBJS/src/http/modules/perl && \$(MAKE) install_vendor
+ END
+ 
+     NGX_INSTALL_PERL_MODULES=install_perl_modules

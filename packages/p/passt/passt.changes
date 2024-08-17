@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Aug 15 06:18:55 UTC 2024 - dcermak@suse.com
+
+- Update to version 20240814.61c0b0d:
+  * flow: Don't crash if guest attempts to connect to port 0
+  * conf: Don't ignore -t and -u options after -D
+  * ndp.c: Turn NDP responder into more declarative implementation
+  * conf: Delay handling -D option until after addresses are configured
+  * Correct inaccurate comments on ip[46]_ctx::addr
+  * log: Don't prefix message with timestamp on --debug if it's a continuation
+  * conf: Stop parsing options at first non-option argument
+  * passt, util: Close any open file that the parent might have leaked
+  * nstool: Propagate SIGTERM to processes executed in the namespace
+  * nstool: Fix some trivial typos
+  * log: Avoid duplicate calls to logtime()
+  * log: Handle errors from clock_gettime()
+  * log: Correct formatting of timestamps
+  * util: Some corrections for timespec_diff_us
+  * conf, pasta: Make -g and -a skip route/addresses copy for matching IP version only
+
+-------------------------------------------------------------------
 Tue Aug 06 16:58:22 UTC 2024 - dcermak@suse.com
 
 - Update to version 20240806.ee36266:

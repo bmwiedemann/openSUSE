@@ -96,4 +96,12 @@ on SELinux-enabled projects e.g. SLFO. (forwarded request 1186132 from danishpra
     <comment></comment>
     <requestid>1193334</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>b13b7ce446a832d6789ec8cbeeaf7e36</srcmd5>
+    <version>20240814.61c0b0d</version>
+    <time>1723891193</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1194188</requestid>
+  </revision>
 </revisionlist>

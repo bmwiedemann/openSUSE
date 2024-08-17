@@ -1119,4 +1119,20 @@
   * Fixed building with gcc 14 with --with-atomic option.</comment>
     <requestid>1177870</requestid>
   </revision>
+  <revision rev="91" vrev="1">
+    <srcmd5>43839fb9f2478e4c36fbec554d90f6d9</srcmd5>
+    <version>1.27.1</version>
+    <time>1723891246</time>
+    <user>dimstar_suse</user>
+    <comment>- Renamed nginx-1.6.1-default_config.patch to nginx-conf.patch.
+- Renamed nginx-1.2.4-perl_vendor_install.patch to nginx-perl.patch.
+- Used atosetup -p1 macro and replaced editor from perl to sed.
+- Added %check section with gpg signature source verification.
+- Updated to 1.27.1
+  * https://nginx.org/en/CHANGES
+  * Fixed crash in ngx_http_mp4_module via specially crafted mp4 file (CVE-2024-7347).
+  * Now the stream module handler is not mandatory.
+  * Fixed new HTTP/2 connections might ignore graceful shutdown of old worker processes.</comment>
+    <requestid>1194200</requestid>
+  </revision>
 </revisionlist>
