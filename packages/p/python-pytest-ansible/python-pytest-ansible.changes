@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sat Aug 17 07:34:39 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 24.8.0:
+  * Bump the dependencies group in /.config with 11 updates (#379)
+  * chore: Update pyproject.toml (#378)
+  * chore: pre-commit autoupdate (#377)
+  * Bump the dependencies group in /.config with 8 updates (#376)
+  * Don't report coverage on `_version.py.` This is only an issue
+    when running locally but can be misleading when comparing to CI
+    results. (#375)
+  * Bump the dependencies group in /.config with 10 updates (#374)
+  * Update to match common extensions. (#373)
+  * Add initial sonarcloud configuration (#372)
+  * REmove uneeded name (#371)
+  * Update forum post (#370)
+  * Update forum post (#369)
+  * Add forum post (#368)
+  * Update release workflow (#367)
+  * Fix release workflow (#366)
+  * Update release workflow (#365)
+  * Formatting only (#363)
+  * Bump the dependencies group in /.config with 10 updates (#362)
+  * Bump the dependencies group in /.config with 10 updates (#361)
+
+-------------------------------------------------------------------
 Thu Jul 11 19:52:30 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 24.7.0:
