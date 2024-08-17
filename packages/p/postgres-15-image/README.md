@@ -126,9 +126,9 @@ For more information on how to perform backup and restore, refer to the [Postgre
 
 ## Licensing
 
-`SPDX-License-Identifier: MIT`
+`SPDX-License-Identifier: PostgreSQL`
 
-This documentation and the build recipe are licensed as MIT.
+This documentation and the build recipe are licensed as PostgreSQL.
 The container itself contains various software components under various open source licenses listed in the associated
 Software Bill of Materials (SBOM).
 
