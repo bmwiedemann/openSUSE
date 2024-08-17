@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Aug 16 18:10:11 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.10.3:
+  * chore: release 2.10.3
+  * fix(deploy): invalid labels/annotations silently remove all
+    user labels/annotations for the resource
+  * fix(build, buildah, stapel): prevent sensitive data exposure by
+    not printing user commands
+  * chore(release): 1.2 alpha,beta,ea,stable 2
+    alpha,beta,ea,rock-solid
+
+-------------------------------------------------------------------
 Tue Aug 13 18:04:48 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.10.2:
