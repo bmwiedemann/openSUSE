@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Aug 16 18:12:06 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.4.17:
+  * set next macro chart for kubefirst - 2.4.17
+  * set next macro chart for kubefirst - 2.4.17-rc5
+  * set next macro chart for kubefirst - 2.4.17-rc4
+  * set next macro chart for kubefirst - 2.4.17-rc3
+  * set next macro chart for kubefirst - 2.4.16-rc5
+  * set next macro chart for kubefirst - 2.4.16-rc4
+  * set next macro chart for kubefirst - 2.4.16-rc3
+  * set next macro chart for kubefirst - 2.4.16-rc1
+  * docs: update the local testing to reflect latest changes in the
+    process (#2263)
+
+-------------------------------------------------------------------
 Thu Aug 08 04:44:36 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.4.16:
