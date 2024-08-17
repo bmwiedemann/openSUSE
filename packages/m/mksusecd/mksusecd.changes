@@ -1,4 +1,16 @@
 --------------------------------------------------------------------
+Fri Aug 16 15:54:15 UTC 2024 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/mksusecd#76
+- make some compression settings configurable (bsc#1223982,
+  jsc#PED-8374)
+- update documentation
+- fix UEFI image rebuild detection (bsc#1227668)
+- allow updating kernel in live initrd
+- allow updating kernel in live root, support resizing live root
+- 3.0
+
+--------------------------------------------------------------------
 Wed Jul 17 19:02:32 UTC 2024 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/mksusecd#75
