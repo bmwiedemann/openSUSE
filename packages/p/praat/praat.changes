@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Aug 13 05:15:53 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 6.4.17:
+  * Spectrogram: Paint: solved a bug that could cause Praat to
+    crash if the time domain was smaller than that of the
+    Spectrogram.
+  * ScriptEditor: Run selection can call procedures outside the
+    selected text.
+  * Audio files: can open Polyphone (Shorten) files.
+
+-------------------------------------------------------------------
 Fri Aug  2 07:25:50 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 6.4.16:
