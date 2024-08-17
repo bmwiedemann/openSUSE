@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Aug 16 11:12:38 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- add Conflicts: for linkerd-cli-edge
+
+-------------------------------------------------------------------
+Fri Aug 16 09:18:34 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.16:
+  major update, see the release announcement
+  https://linkerd.io/2024/08/13/announcing-linkerd-2.16/
+
+-------------------------------------------------------------------
 Thu Jul 18 05:42:22 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.15:

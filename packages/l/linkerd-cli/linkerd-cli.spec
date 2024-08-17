@@ -19,19 +19,26 @@
 %define linkerd_executable_name linkerd
 
 Name:           linkerd-cli
-Version:        2.15
+Version:        2.16
 Release:        0
 Summary:        CLI for the linkerd service mesh for Kubernetes
 License:        Apache-2.0
 URL:            https://github.com/linkerd/linkerd2
-Source:         linkerd2-%{version}.tar.gz
+Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  go >= 1.19
+BuildRequires:  go >= 1.22
+
+# cannot be installed in parallel to the edge version
+Conflicts:      linkerd-cli-edge
 
 %description
-The Linkerd CLI is the primary way to interact with Linkerd. It can install the control plane to your cluster, add the proxy to your service and provide detailed metrics for how your service is performing.
+The Linkerd CLI is the primary way to interact with Linkerd. It can install the
+control plane to your cluster, add the proxy to your service and provide
+detailed metrics for how your service is performing.
 
-Linkerd is an ultralight, security-first service mesh for Kubernetes. Linkerd adds critical security, observability, and reliability features to your Kubernetes stack with no code change required.
+Linkerd is an ultralight, security-first service mesh for Kubernetes. Linkerd
+adds critical security, observability, and reliability features to your
+Kubernetes stack with no code change required.
 
 Linkerd is a Cloud Native Computing Foundation (CNCF) project.
 
@@ -67,8 +74,7 @@ BuildArch:      noarch
 zsh command line completion support for %{name}.
 
 %prep
-%setup -q -n linkerd2-%{version}
-%setup -q -T -D -a1 -n linkerd2-%{version}
+%autosetup -p 1 -a 1
 
 %build
 GO111MODULE=on go generate -mod=readonly ./pkg/charts/static
@@ -80,11 +86,11 @@ go build \
    -tags prod \
    -buildmode=pie \
    -ldflags="-X github.com/linkerd/linkerd2/pkg/version.Version=stable-%{version}" \
-   -o bin/linkerd-cli ./cli/
+   -o bin/%{linkerd_executable_name} ./cli/
 
 %install
 # Install the binary.
-install -D -m 0755 bin/%{name} "%{buildroot}/%{_bindir}/%{linkerd_executable_name}"
+install -D -m 0755 bin/%{linkerd_executable_name} %{buildroot}/%{_bindir}/%{linkerd_executable_name}
 
 # create the bash completion file
 mkdir -p %{buildroot}%{_datarootdir}/bash-completion/completions/
