@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Aug 16 10:46:47 UTC 2024 - Martin Jambor <mjambor@suse.com>
+
+- Add bibview-C99.dif adding missing includes so that all called
+  functions are properly declared and the package builds with
+  GCC 14.
+
+-------------------------------------------------------------------
 Thu Feb 22 10:13:20 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

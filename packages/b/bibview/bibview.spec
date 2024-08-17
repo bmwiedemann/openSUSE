@@ -1,7 +1,7 @@
 #
 # spec file for package bibview
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,6 +30,7 @@ License:        SUSE-Permissive
 Group:          Productivity/Publishing/TeX/Utilities
 Source:         bibview-2.2.tar.gz
 Patch0:         bibview-2.2.dif
+Patch1:         bibview-C99.dif
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %define _x11data    %{_datadir}/X11
 %define _appdefdir  %{_x11data}/app-defaults

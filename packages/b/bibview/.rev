@@ -139,4 +139,17 @@
     <comment>Prepare for RPM 4.20 (forwarded request 1149169 from dimstar)</comment>
     <requestid>1149205</requestid>
   </revision>
+  <revision rev="21" vrev="1011">
+    <srcmd5>7f14aa4c31b63027031387dddfd8fa01</srcmd5>
+    <version>2.2</version>
+    <time>1723891268</time>
+    <user>dimstar_suse</user>
+    <comment>- Add bibview-C99.dif adding missing includes so that all called
+  functions are properly declared and the package builds with
+  GCC 14.
+
+If the request is OK, please forward it to Factory soon too so that
+the package is ready when we switch the default compiler.  Thanks. (forwarded request 1194287 from jamborm)</comment>
+    <requestid>1194301</requestid>
+  </revision>
 </revisionlist>
