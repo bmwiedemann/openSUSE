@@ -1,0 +1,6 @@
+<package name="kind" project="openSUSE:Factory">
+  <title>Kubernetes IN Docker - local clusters for testing Kubernetes</title>
+  <description>kind is a tool for running local Kubernetes clusters using Docker container &quot;nodes&quot;. kind was primarily designed for testing Kubernetes itself, but may be used for local development or CI.</description>
+  <devel project="devel:kubic" package="kind"/>
+  <url>https://github.com/kubernetes-sigs/kind/</url>
+</package>

@@ -1,0 +1,117 @@
+-------------------------------------------------------------------
+Fri Aug 16 18:22:35 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.24.0:
+  * version v0.24.0
+  * bump node image to 1.31.0
+  * bump base image
+  * bump kindnetd image
+  * bump local path provisioner image
+  * switch to go 1.22.6
+  * Bump actions/upload-artifact from 4.3.5 to 4.3.6 in the actions
+    group
+  * Update copyright year in powershell.go
+  * Add powershell completion
+  * reword comments
+  * Bump actions/upload-artifact from 4.3.4 to 4.3.5 in the actions
+    group
+  * bump kindnetd image
+  * bump dependencies
+  * Fix Kubeadm template format
+  * Fix Ingress migration guide link error
+  * Add known issue for WSL2 and cgroupv2 support
+  * update rbac permissions for kindnet network policies
+  * bump kindnetd image
+  * implement network policies
+  * use informers and context cancellation
+  * kindnetd: update base image
+  * Clean up known issues page
+  * Mention possible pids_limit issues with rootless podman
+  * Bump the actions group across 1 directory with 2 updates
+  * bump node image
+  * update base image
+  * fix legacy env format warning
+  * normalize FROM AS casing to silence buildx warnings
+  * bump cni plugins to 1.5.1
+  * update crictl to 1.30
+  * update containerd to 1.7.18
+  * update go / runc to go 1.22 / 1.1.13
+  * Remove DOCKER_CLI_EXPERIMENTAL usage
+  * simplify ingress guide, add Gateway API note
+  * Add installation instructions for Scoop and Winget
+  * switch to currently supported fedora (39)
+  * Bump actions/checkout from 4.1.6 to 4.1.7 in the actions group
+  * Add third party package installation note
+  * e2e-k8s.sh: support --ginkgo.label-filter
+  * Clean up GitHub Action definitions
+  * cluster: drop DisableLocalStorageCapacityIsolation
+  * switch to an active mirror
+  * removed kong ingress documentation
+  * Minor updates to Design docs
+  * update comments regarding skipping preflight kubeadm phase
+  * Add cgroupns requirement to known issues
+  * update pause image to 3.10
+  * Update Go dependencies
+  * Add a new builder for tarballs and released artifacts
+  * set skipPhases in Init and JoinConfiguration
+  * Bump the actions group across 1 directory with 2 updates
+  * promote stmcginnis to reviwer
+  * update install docs for 0.23.0
+  * version v0.24.0-alpha
+  * Bump containerd to v1.7.16
+  * group dependabot updates
+  * make sure CI install the correct go
+  * enable loading multiple image archives
+
+-------------------------------------------------------------------
+Tue May 14 05:22:44 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.23.0:
+  This release introduces initial limited support for nerdctl and
+  kube-proxy nftables mode.
+  * Breaking Changes
+    - The default node image is now Kubernetes 1.30.0:
+      kindest/node:v1.30.0@sha256:047357ac0cfea04663786a612ba1eaba9702bef25227a794b52890dd8bcd692e
+    - ipFamily config field is now validated
+      - While technically a breaking change, if the value you set
+        here is now caught as invalid it was being silently ignored
+        and creating an ipv4 cluster previously and you should
+        correct your config
+    - Go 1.17+ is required for go install sigs.k8s.io/kind /
+      building the kind binary
+      - Prebuilt binaries are available as an alternative to go
+        install
+      - For local development make will automatically setup the
+        correct go version
+      - Note that the go team only supports 1.21+ and major linux
+        distros have 1.19+
+      - Future releases may increase this to a more current Go
+        release
+      - Future release may adopt toolchain in go.mod to make this
+        seamless if you have go 1.21+ installed even without our
+        makefile. We highly recommend installing go 1.21+
+  * New Features
+    - Initial support for nodes created with nerdctl
+    - Initial support for kubeProxyMode: nftables (ahead of
+      Kubernetes 1.31+, see
+      https://kind.sigs.k8s.io/docs/user/configuration/#kube-proxy-mode)
+    - Sweeping dependency updates, see commits for full details.
+      v0.22.0...v0.23.0
+
+-------------------------------------------------------------------
+Mon Mar 18 06:49:36 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.22.0:
+  * version v0.22.0
+  * update to 1.29.2 image
+  * bump node image
+  * drop creating /kind dir at node-image build time
+  * bump base image
+  * allow overriding IMAGE_NAME
+  * update Contour ingress docs
+
+-------------------------------------------------------------------
+Mon Mar 18 06:49:24 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- new package kind: Kubernetes IN Docker - local clusters for
+  testing Kubernetes

@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f3e7e0141bb18502ccb44bbd50f674d2</srcmd5>
+    <version>0.24.0</version>
+    <time>1723891305</time>
+    <user>dimstar_suse</user>
+    <comment>new package kind: Kubernetes IN Docker - local clusters for testing Kubernetes</comment>
+    <requestid>1194378</requestid>
+  </revision>
+</revisionlist>
