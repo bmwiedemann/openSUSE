@@ -1,0 +1,12 @@
+Index: asclock.c
+===================================================================
+--- asclock.c.orig
++++ asclock.c
+@@ -60,6 +60,7 @@ void InsertTime();
+ void swatch_beats(int beats_cnt);
+ 
+ static Atom wm_delete_window;
++int mytime();
+ 
+ int main(int argc,char *argv[])
+ {

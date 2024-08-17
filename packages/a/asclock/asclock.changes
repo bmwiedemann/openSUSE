@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Aug 16 09:42:31 UTC 2024 - Martin Jambor <mjambor@suse.com>
+
+- Add asclock-C99.diff which declares a function defined after use so
+  that the cource code does not violate C99 and builds with GCC 14.
+
+-------------------------------------------------------------------
 Fri Jun 12 11:49:03 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Fix building with gcc10

@@ -1,7 +1,7 @@
 #
 # spec file for package asclock
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,7 @@ Group:          Amusements/Toys/Clocks
 URL:            http://www.tigr.net/afterstep/
 Source:         asclock-%{version}.tar.bz2
 Patch0:         gcc4.diff
+Patch1:         asclock-C99.diff
 BuildRequires:  fdupes
 BuildRequires:  imake
 BuildRequires:  pkgconfig
