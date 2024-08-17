@@ -23,7 +23,7 @@
 %define executable_name kubectl-view_secret
 
 Name:           kubectl-view-secret
-Version:        0.12.1
+Version:        0.13.0
 Release:        0
 Summary:        Kubernetes CLI plugin to decode Kubernetes secrets
 License:        MIT
