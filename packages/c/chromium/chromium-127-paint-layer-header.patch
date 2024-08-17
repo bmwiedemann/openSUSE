@@ -1,0 +1,26 @@
+commit 5b37e76c6f3ac85117eb4f25afdcaa4559042ae3
+Author: Jose Dapena Paz <jdapena@igalia.com>
+Date:   Tue Jun 11 10:49:24 2024 +0000
+
+    IWYU: missing include for usage of std::optional in paint_layer_resource_info.h
+    
+    Bug: 41455655
+    Change-Id: Ic82a1d03623f2ad892571c63eabff49ad1fe3644
+    Reviewed-on: https://chromium-review.googlesource.com/c/chromium/src/+/5616451
+    Commit-Queue: José Dapena Paz <jdapena@igalia.com>
+    Reviewed-by: Chris Harrelson <chrishtr@chromium.org>
+    Cr-Commit-Position: refs/heads/main@{#1313284}
+
+diff --git a/third_party/blink/renderer/core/paint/paint_layer_resource_info.h b/third_party/blink/renderer/core/paint/paint_layer_resource_info.h
+index c8fa2190078c4..a241b7f64d2fe 100644
+--- a/third_party/blink/renderer/core/paint/paint_layer_resource_info.h
++++ b/third_party/blink/renderer/core/paint/paint_layer_resource_info.h
+@@ -30,6 +30,8 @@
+ #ifndef THIRD_PARTY_BLINK_RENDERER_CORE_PAINT_PAINT_LAYER_RESOURCE_INFO_H_
+ #define THIRD_PARTY_BLINK_RENDERER_CORE_PAINT_PAINT_LAYER_RESOURCE_INFO_H_
+ 
++#include <optional>
++
+ #include "third_party/blink/renderer/core/svg/svg_resource_client.h"
+ #include "third_party/blink/renderer/platform/heap/garbage_collected.h"
+ #include "third_party/blink/renderer/platform/heap/member.h"

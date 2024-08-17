@@ -38,9 +38,12 @@
 %bcond_without system_harfbuzz
 %bcond_without system_freetype
 %bcond_without arm_bti
-%bcond_without system_icu
+# ERROR Unresolved dependencies.
+# //chrome/browser/ui/lens:unit_tests(//build/toolchain/linux/unbundle:default)
+#   needs //third_party/icu:icuuc_public(//build/toolchain/linux/unbundle:default)
+#bcond_without system_icu
 %bcond_without ffmpeg_51
-%bcond_without qt6
+%bcond_with qt6
 %else
 %bcond_with system_harfbuzz
 %bcond_with system_freetype
@@ -65,6 +68,8 @@
 %bcond_with system_avif
 # Compiler
 %bcond_without clang
+# libstdc++ or libc++
+%bcond_with libstdcpp
 # Chromium built with GCC 11 and LTO enabled crashes (boo#1194055)
 %bcond_without lto
 %bcond_without pipewire
@@ -91,7 +96,7 @@
 %define n_suffix %{nil}
 %endif
 Name:           chromium%{n_suffix}
-Version:        126.0.6478.182
+Version:        127.0.6533.119
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -131,9 +136,7 @@ Patch98:        chromium-102-regex_pattern-array.patch
 Patch202:       chromium-prop-codecs.patch
 Patch203:       chromium-106-ffmpeg-duration.patch
 Patch205:       chromium-disable-GlobalMediaControlsCastStartStop.patch
-Patch224:       chromium-115-compiler-SkColor4f.patch
 Patch240:       chromium-117-string-convert.patch
-Patch244:       chromium-117-system-zstd.patch
 Patch248:       chromium-119-assert.patch
 Patch250:       chromium-120-emplace.patch
 Patch254:       chromium-125-emplace-struct.patch
@@ -142,22 +145,19 @@ Patch258:       chromium-121-nullptr_t-without-namespace-std.patch
 Patch261:       chromium-121-rust-clang_lib.patch
 Patch311:       chromium-125-disable-FFmpegAllowLists.patch
 Patch322:       chromium-125-lp155-typename.patch
-Patch324:       chromium-122-workaround_clang_bug-structured_binding.patch
 Patch326:       chromium-123-stats-collector.patch
 Patch336:       chromium-124-system-libxml.patch
 Patch337:       chromium-123-missing-QtGui.patch
-Patch346:       chromium-125-tabstrip-include.patch
-Patch350:       chromium-125-debian-bad-font-gc0000.patch
-Patch351:       chromium-125-debian-bad-font-gc000.patch
-Patch352:       chromium-125-debian-bad-font-gc00.patch
-Patch353:       chromium-125-debian-bad-font-gc0.patch
-Patch354:       chromium-125-debian-bad-font-gc11.patch
-Patch355:       chromium-125-debian-bad-font-gc1.patch
-Patch358:       chromium-126-missing-header-files.patch
 Patch359:       chromium-126-quiche-interator.patch
-Patch360:       chromium-126-RealTimeReportingBindings-missing-decl.patch
-Patch361:       chromium-126-no_matching_constructor.patch
-Patch362:       chromium-126-no-format.patch
+Patch360:       chromium-127-bindgen.patch
+Patch361:       chromium-127-rust-clanglib.patch
+Patch362:       chromium-127-clang17-traitors.patch
+Patch363:       chromium-127-constexpr.patch
+Patch365:       chromium-127-paint-layer-header.patch
+Patch366:       chromium-127-ninja-1.21.1-deps-part0.patch
+Patch367:       chromium-127-ninja-1.21.1-deps-part1.patch
+Patch368:       chromium-127-ninja-1.21.1-deps-part2.patch
+Patch369:       chromium-127-ninja-1.21.1-deps-part3.patch
 BuildRequires:  SDL-devel
 BuildRequires:  bison
 BuildRequires:  cups-devel
@@ -281,6 +281,7 @@ BuildRequires:  pkgconfig(xtst)
 BuildRequires:  cargo
 BuildRequires:  rust >= 1.47
 # END add rust BR
+BuildRequires:  rust-bindgen
 Requires:       xdg-utils
 Requires(pre):  permissions
 Recommends:     noto-coloremoji-fonts
@@ -362,13 +363,23 @@ BuildRequires:  pkgconfig(libzstd) >= 1.5.5
 %if 0%{?suse_version} < 1570
 BuildRequires:  clang%{llvm_version}
 BuildRequires:  gcc%{gcc_version}
+%if %{with libstdcpp}
 BuildRequires:  libstdc++6-devel-gcc%{gcc_version}
+%else
+BuildRequires:  clang%{llvm_version}-devel
+#BuildRequires:  libc++-devel
+BuildRequires:  libc++.so >= %{llvm_version}
+%endif
 BuildRequires:  lld%{llvm_version}
 BuildRequires:  llvm%{llvm_version}
 #!BuildIgnore:  gcc
 %else
 BuildRequires:  clang
+%if %{with libstdcpp}
 BuildRequires:  libstdc++-devel
+%else
+BuildRequires:  libc++-devel
+%endif
 BuildRequires:  lld
 BuildRequires:  llvm
 %endif
@@ -383,6 +394,7 @@ BuildRequires:  gcc%{gcc_version}
 BuildRequires:  gcc%{gcc_version}-c++
 %endif
 %endif
+#!BuildIgnore:  rpmlint rpmlint-Factory rpmlint-mini
 
 %description
 Chromium is the open-source project behind Google Chrome. We invite you to join us in our effort to help build a safer, faster, and more stable way for all Internet users to experience the web, and to create a powerful platform for developing a new generation of web applications.
@@ -412,6 +424,13 @@ patch -R -p1 < %{SOURCE4}
 %if %{with libxml2_2_12}
 patch -R -p1 < %{PATCH336}
 %endif
+# apply only on 15.5 and 15.6, revert for the others
+%if 0%{?sle_version} != 150600 && 0%{?sle_version} != 150500
+# chromium-106-ffmpeg-duration.patch not needed in factory/tw
+patch -R -p1 < %{PATCH203}
+# chromium-127-clang17-traitors.patch only needed for older clang
+patch -R -p1 < %{PATCH362}
+%endif
 
 %build
 # esbuild
@@ -428,6 +447,7 @@ popd
 
 # Fix the path to nodejs binary
 mkdir -p third_party/node/linux/node-linux-x64/bin
+rm -f third_party/node/linux/node-linux-x64/bin/node
 ln -s %{_bindir}/node third_party/node/linux/node-linux-x64/bin/node
 
 rm buildtools/third_party/eu-strip/bin/eu-strip
@@ -465,7 +485,6 @@ keeplibs=(
     base/third_party/nspr
     base/third_party/superfasthash
     base/third_party/symbolize
-    base/third_party/valgrind
     base/third_party/xdg_user_dirs
     buildtools/third_party/eu-strip
     buildtools/third_party/libc++
@@ -478,6 +497,13 @@ keeplibs=(
     net/third_party/quic
     net/third_party/uri_template
     third_party/abseil-cpp
+    third_party/abseil-cpp/absl
+    third_party/abseil-cpp/absl/algorithm
+    third_party/abseil-cpp/absl/base
+    third_party/abseil-cpp/absl/flags
+    third_party/abseil-cpp/absl/functional
+    third_party/abseil-cpp/absl/strings
+    third_party/abseil-cpp/absl/types
     third_party/angle
     third_party/angle/src/common/third_party/xxhash
     third_party/angle/src/third_party/ceval
@@ -516,6 +542,7 @@ keeplibs=(
     third_party/crashpad
     third_party/crashpad/crashpad/third_party/lss
     third_party/crashpad/crashpad/third_party/zlib
+    third_party/crabbyavif
     third_party/crc32c
     third_party/cros_system_api
     third_party/d3
@@ -593,8 +620,6 @@ keeplibs=(
     third_party/lss
     third_party/lzma_sdk
     third_party/mako
-    third_party/maldoca
-    third_party/maldoca/src/third_party
     third_party/markupsafe
     third_party/material_color_utilities
     third_party/mesa
@@ -618,6 +643,7 @@ keeplibs=(
     third_party/pdfium/third_party/libtiff
     third_party/perfetto
     third_party/perfetto/protos/third_party/chromium
+    third_party/perfetto/protos/third_party/simpleperf
     third_party/pffft
     third_party/ply
     third_party/polymer
@@ -643,6 +669,8 @@ keeplibs=(
     third_party/skia/include/third_party/vulkan/
     third_party/skia/third_party/vulkan
     third_party/smhasher
+    third_party/spirv-headers
+    third_party/spirv-tools
     third_party/sqlite
     third_party/swiftshader
     third_party/swiftshader/third_party/astc-encoder
@@ -673,6 +701,7 @@ keeplibs=(
     third_party/webrtc/modules/third_party/g722
     third_party/webrtc/rtc_base/third_party/base64
     third_party/webrtc/rtc_base/third_party/sigslot
+    third_party/webrtc/rtc_tools
     third_party/widevine
     third_party/woff2
     third_party/wuffs
@@ -738,6 +767,10 @@ keeplibs+=( third_party/zstd )
 keeplibs+=( third_party/lit )
 keeplibs+=( third_party/rust/chromium_crates_io )
 keeplibs+=( third_party/rust/cxx )
+
+%if %{without libstdcpp}
+keeplibs+=( third_party/snappy )
+%endif
 build/linux/unbundle/remove_bundled_libraries.py "${keeplibs[@]}" --do-remove
 
 # GN sets lto on its own and we need just ldflag options, not cflags
@@ -783,6 +816,11 @@ export CXXFLAGS="${CXXFLAGS} -I/usr/include/wayland -I/usr/include/libxkbcommon 
 export LDFLAGS="${LDFLAGS} -Wl,--build-id=sha1"
 export CXXFLAGS="${CXXFLAGS} -Wno-unused-command-line-argument -Wno-unknown-warning-option"
 %endif
+%if %{without libstdcpp}
+export LDFLAGS="${LDFLAGS} -stdlib=libc++"
+export CXXFLAGS="${CXXFLAGS} -stdlib=libc++ -I/usr/include/c++/v1"
+%endif
+
 %ifarch aarch64
 %if %{without clang}
 export CXXFLAGS="${CXXFLAGS} -flax-vector-conversions -fno-omit-frame-pointer"
@@ -829,8 +867,12 @@ gn_system_libraries=(
     libxml
     libxslt
     opus
+)
+%if %{with libstdcpp}
+gn_system_libraries+=(
     snappy
 )
+%endif
 %if %{with system_harfbuzz}
 gn_system_libraries+=(
     harfbuzz-ng
@@ -915,6 +957,7 @@ myconf_gn+=" rtc_use_h264=false"
 myconf_gn+=" use_v8_context_snapshot=true"
 myconf_gn+=" v8_use_external_startup_data=true"
 myconf_gn+=" rust_sysroot_absolute=\"%{_prefix}\""
+myconf_gn+=" rust_bindgen_root=\"%{_prefix}\""
 myconf_gn+=" rustc_version=\"$rustc_version\""
 myconf_gn+=" clang_base_path=\"$clang_base_path\""
 myconf_gn+=" clang_version=\"$clang_version\""

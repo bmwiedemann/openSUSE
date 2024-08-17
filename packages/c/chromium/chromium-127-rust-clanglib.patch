@@ -1,0 +1,22 @@
+diff -up chromium-127.0.6533.72/build/rust/rust_bindgen.gni.me chromium-127.0.6533.72/build/rust/rust_bindgen.gni
+--- chromium-127.0.6533.72/build/rust/rust_bindgen.gni.me	2024-07-25 16:11:18.754551595 +0200
++++ chromium-127.0.6533.72/build/rust/rust_bindgen.gni	2024-07-25 16:11:33.997837660 +0200
+@@ -22,7 +22,7 @@ _libclang_path = rust_bindgen_root
+ if (host_os == "win") {
+   _libclang_path += "/bin"
+ } else {
+-  _libclang_path += "/lib"
++  _libclang_path += "/lib64"
+ }
+ 
+ # Template to build Rust/C bindings with bindgen.
+@@ -195,6 +195,8 @@
+     # causes bindgen not to emit function bindings. Override it.
+     if (!is_win) {
+       args += [ "-fvisibility=default" ]
++      args += [ "-I/usr/include/c++/v1" ]
++      args += [ "-I/usr/lib64/clang/" + clang_version + "/include" ]
+     }
+ 
+     if (is_win) {
+

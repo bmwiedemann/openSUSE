@@ -67,32 +67,6 @@ Index: chromium-123.0.6312.46/chrome/browser/download/bubble/download_bubble_upd
      SortedItems<Item>& cache,
      IterMap<Id, Item>& iter_map) {
    CHECK(iter != cache.end());
-Index: chromium-123.0.6312.46/components/optimization_guide/core/model_execution/model_execution_util.h
-===================================================================
---- chromium-123.0.6312.46.orig/components/optimization_guide/core/model_execution/model_execution_util.h
-+++ chromium-123.0.6312.46/components/optimization_guide/core/model_execution/model_execution_util.h
-@@ -25,7 +25,7 @@ void SetExecutionRequestTemplate(
- 
-   // Request is set by the feature and should always be typed.
-   auto typed_request =
--      static_cast<const FeatureType::Request&>(request_metadata);
-+      static_cast<const typename FeatureType::Request&>(request_metadata);
-   *(logging_data->mutable_request_data()) = typed_request;
- }
- 
-Index: chromium-123.0.6312.46/components/optimization_guide/core/model_quality/model_quality_log_entry.h
-===================================================================
---- chromium-123.0.6312.46.orig/components/optimization_guide/core/model_quality/model_quality_log_entry.h
-+++ chromium-123.0.6312.46/components/optimization_guide/core/model_quality/model_quality_log_entry.h
-@@ -29,7 +29,7 @@ class ModelQualityLogEntry {
-   }
- 
-   template <typename FeatureType>
--  FeatureType::Quality* quality_data() {
-+  typename FeatureType::Quality* quality_data() {
-     return FeatureType::GetLoggingData(*log_ai_data_request_)
-         ->mutable_quality_data();
-   }
 Index: chromium-123.0.6312.46/components/optimization_guide/core/tflite_model_executor.h
 ===================================================================
 --- chromium-123.0.6312.46.orig/components/optimization_guide/core/tflite_model_executor.h

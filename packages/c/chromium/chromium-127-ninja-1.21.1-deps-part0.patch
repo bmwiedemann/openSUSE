@@ -1,0 +1,44 @@
+commit 4ca70656fde83d2db6ed5a8ac9ec9e7443846924
+Author: Lei Zhang <thestig@chromium.org>
+Date:   Wed Jun 26 16:35:34 2024 +0000
+
+    Move chrome/browser/ui:webui_name_variants to public_deps
+    
+    The chrome/browser/ui build target contains webui_contents_wrapper.h,
+    which included the generated webui_name_variants.h header. For this to
+    work correctly, the build system must process the webui_name_variants
+    target first and generate webui_name_variants.h. To do this reliably,
+    without having to depend on webui_name_variants in all targets that
+    transitively include webui_contents_wrapper.h, make it a public_deps.
+    
+    Bug: 40253918, 346711540, 346699817, 345645751
+    Change-Id: I6e0b573427cda1b2b408702f139b2c9e83f05045
+    Reviewed-on: https://chromium-review.googlesource.com/c/chromium/src/+/5646245
+    Reviewed-by: Anthony Vallée-Dubois <anthonyvd@chromium.org>
+    Commit-Queue: Lei Zhang <thestig@chromium.org>
+    Cr-Commit-Position: refs/heads/main@{#1319828}
+
+diff --git a/chrome/browser/ui/BUILD.gn b/chrome/browser/ui/BUILD.gn
+index 46648a4c2194e..0883714163a31 100644
+--- a/chrome/browser/ui/BUILD.gn
++++ b/chrome/browser/ui/BUILD.gn
+@@ -6436,7 +6436,6 @@ static_library("ui") {
+     sources += get_target_outputs(":webui_name_variants")
+ 
+     deps += [
+-      ":webui_name_variants",
+       "side_search:side_search_tab_data_proto",
+       "//base",
+       "//chrome/browser:main_extra_parts",
+@@ -6495,7 +6494,10 @@ static_library("ui") {
+       "//ui/lottie",
+       "//ui/views:buildflags",
+     ]
+-    public_deps += [ "//ui/base/dragdrop/mojom:mojom_headers" ]
++    public_deps += [
++      ":webui_name_variants",
++      "//ui/base/dragdrop/mojom:mojom_headers",
++    ]
+ 
+     allow_circular_includes_from += [ "//chrome/browser/ui/views" ]
+ 

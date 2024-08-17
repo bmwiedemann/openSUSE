@@ -1,4 +1,94 @@
 -------------------------------------------------------------------
+Thu Aug 15 15:35:42 CEST 2024 - ro@suse.de
+
+- Chromium 127.0.6533.119 (boo#1228941)
+  * CVE-2024-7532: Out of bounds memory access in ANGLE
+  * CVE-2024-7533: Use after free in Sharing
+  * CVE-2024-7550: Type Confusion in V8
+  * CVE-2024-7534: Heap buffer overflow in Layout
+  * CVE-2024-7535: Inappropriate implementation in V8
+  * CVE-2024-7536: Use after free in WebAudio
+
+-------------------------------------------------------------------
+Thu Aug  1 18:40:59 CEST 2024 - ro@suse.de
+
+- Chromium 127.0.6533.88 (boo#1228628, boo#1228940, boo#1228942)
+  * CVE-2024-6988: Use after free in Downloads
+  * CVE-2024-6989: Use after free in Loader
+  * CVE-2024-6991: Use after free in Dawn
+  * CVE-2024-6992: Out of bounds memory access in ANGLE
+  * CVE-2024-6993: Inappropriate implementation in Canvas
+  * CVE-2024-6994: Heap buffer overflow in Layout
+  * CVE-2024-6995: Inappropriate implementation in Fullscreen
+  * CVE-2024-6996: Race in Frames
+  * CVE-2024-6997: Use after free in Tabs
+  * CVE-2024-6998: Use after free in User Education
+  * CVE-2024-6999: Inappropriate implementation in FedCM
+  * CVE-2024-7000: Use after free in CSS. Reported by Anonymous
+  * CVE-2024-7001: Inappropriate implementation in HTML
+  * CVE-2024-7003: Inappropriate implementation in FedCM
+  * CVE-2024-7004: Insufficient validation of untrusted input
+    in Safe Browsing
+  * CVE-2024-7005: Insufficient validation of untrusted input
+    in Safe Browsing
+  * CVE-2024-6990: Uninitialized Use in Dawn
+  * CVE-2024-7255: Out of bounds read in WebTransport
+  * CVE-2024-7256: Insufficient data validation in Dawn
+- drop patches:
+  * chromium-115-compiler-SkColor4f.patch only for llvm < 16
+  * chromium-117-system-zstd.patch upstreamed
+  * chromium-122-workaround_clang_bug-structured_binding.patch
+  * chromium-125-tabstrip-include.patch upstreamed
+  * chromium-126-missing-header-files.patch
+  * chromium-126-RealTimeReportingBindings-missing-decl.patch
+    upstreamed
+  * chromium-126-no_matching_constructor.patch
+  * chromium-126-no-format.patch upstreamed
+- switch from libstdc++ to libc++
+- drop patches obsolete when using libc++
+  * chromium-126-debian-bad-font-gc00000.patch
+  * chromium-126-debian-bad-font-gc2.patch
+  * chromium-126-debian-bad-font-gc1.patch
+  * chromium-126-debian-bad-font-gc00.patch
+  * chromium-126-debian-bad-font-gc000.patch
+  * chromium-126-debian-bad-font-gc11.patch
+  * chromium-126-debian-bad-font-gc0.patch
+  * chromium-126-debian-bad-font-gc0000.patch
+  * chromium-126-debian-bad-font-gc3.patch
+- modify patches:
+  * chromium-125-lp155-typename.patch
+    - drop hunk in model_execution_util.h
+    - drop hunk in model_quality_log_entry.h
+- dropping from keeplibs: (does not exist)
+  base/third_party/valgrind
+  third_party/maldoca
+  third_party/maldoca/src/third_party
+- requires updated gn to build (newer than Feb 14 2024)
+- add patches:
+  * chromium-127-bindgen.patch (from debian/patches/fixes))
+  * chromium-127-rust-clanglib.patch (just first hunk from fedora)
+  * chromium-127-clang17-traitors.patch
+    workaround for clang < 18 from debiana (only used on 15.6)
+  * chromium-127-constexpr.patch (from debian/patches/bookworm)
+  * chromium-127-paint-layer-header.patch (from debian/patches/upstream)
+  * chromium-127-ninja-1.21.1-deps-part0.patch (from fedora)
+  * chromium-127-ninja-1.21.1-deps-part1.patch (from fedora)
+  * chromium-127-ninja-1.21.1-deps-part2.patch (from fedora)
+  * chromium-127-ninja-1.21.1-deps-part3.patch (from fedora)
+- buildrequire rust-bindgen to get proper binaries per arch
+- use qt5 for factory as well, qt6 fails with:
+  ld.lld: error: undefined symbol: QByteArray::toStdString() const
+  referenced by qt_shim.cc
+  obj/ui/qt/qt6_shim/libqt6_shim.so.lto.qt_shim.o:(qt::QtShim::GetFontDescription() const)
+- drop patches:
+  * chromium-125-debian-bad-font-gc11.patch
+  * chromium-125-debian-bad-font-gc0000.patch
+  * chromium-125-debian-bad-font-gc00.patch
+  * chromium-125-debian-bad-font-gc0.patch
+  * chromium-125-debian-bad-font-gc000.patch
+  * chromium-125-debian-bad-font-gc1.patch
+
+-------------------------------------------------------------------
 Wed Jul 17 16:11:41 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Chromium 126.0.6478.182 (boo#1227979)

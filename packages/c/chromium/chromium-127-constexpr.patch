@@ -1,0 +1,81 @@
+author: Andres Salomon <dilinger@debian.org>
+
+../../services/network/shared_dictionary/simple_url_pattern_matcher.cc:31:34: error: constexpr variable 'kDefaultOptions' must be initialized by a constant expression
+   31 | constexpr liburlpattern::Options kDefaultOptions = {.delimiter_list = "",
+      |                                  ^                 ~~~~~~~~~~~~~~~~~~~~~~
+   32 |                                                     .prefix_list = "",
+      |                                                     ~~~~~~~~~~~~~~~~~~
+   33 |                                                     .sensitive = true,
+      |                                                     ~~~~~~~~~~~~~~~~~~
+   34 |                                                     .strict = true};
+      |                                                     ~~~~~~~~~~~~~~~
+
+--- a/services/network/shared_dictionary/simple_url_pattern_matcher.cc
++++ b/services/network/shared_dictionary/simple_url_pattern_matcher.cc
+@@ -28,17 +28,17 @@ namespace network {
+ namespace {
+ 
+ // https://urlpattern.spec.whatwg.org/#default-options
+-constexpr liburlpattern::Options kDefaultOptions = {.delimiter_list = "",
++const liburlpattern::Options kDefaultOptions = {.delimiter_list = "",
+                                                     .prefix_list = "",
+                                                     .sensitive = true,
+                                                     .strict = true};
+ // https://urlpattern.spec.whatwg.org/#hostname-options
+-constexpr liburlpattern::Options kHostnameOptions = {.delimiter_list = ".",
++const liburlpattern::Options kHostnameOptions = {.delimiter_list = ".",
+                                                      .prefix_list = "",
+                                                      .sensitive = true,
+                                                      .strict = true};
+ // https://urlpattern.spec.whatwg.org/#pathname-options
+-constexpr liburlpattern::Options kPathnameOptions = {.delimiter_list = "/",
++const liburlpattern::Options kPathnameOptions = {.delimiter_list = "/",
+                                                      .prefix_list = "/",
+                                                      .sensitive = true,
+                                                      .strict = true};
+--- a/components/autofill/core/browser/data_model/autofill_i18n_api.h
++++ b/components/autofill/core/browser/data_model/autofill_i18n_api.h
+@@ -16,8 +16,8 @@ namespace autofill::i18n_model_definitio
+ // Country code that represents autofill's legacy address hierarchy model as
+ // stored `kAutofillModelRules`. As a workaround for GCC we declare the
+ // std::string constexpr first.
+-constexpr inline std::string kLegacyHierarchyCountryCodeString{"XX"};
+-constexpr AddressCountryCode kLegacyHierarchyCountryCode =
++const inline std::string kLegacyHierarchyCountryCodeString{"XX"};
++const AddressCountryCode kLegacyHierarchyCountryCode =
+     AddressCountryCode(kLegacyHierarchyCountryCodeString);
+ 
+ // Creates an instance of the address hierarchy model corresponding to the
+--- a/components/omnibox/browser/on_device_tail_model_service.cc
++++ b/components/omnibox/browser/on_device_tail_model_service.cc
+@@ -30,7 +30,7 @@ namespace {
+ // The maximum idle time before the model executor is unloaded from memory.
+ constexpr base::TimeDelta kMaxExecutorIdleSeconds = base::Seconds(60);
+ // Constants for TFlite model validation.
+-constexpr std::string kTestPrefix = "face";
++const std::string kTestPrefix = "face";
+ constexpr std::string_view kModelValidationSwitchName =
+     "omnibox-on-device-tail-model-validation";
+ 
+--- a/chrome/browser/ui/lens/lens_overlay_url_builder.cc
++++ b/chrome/browser/ui/lens/lens_overlay_url_builder.cc
+@@ -78,7 +78,7 @@ inline constexpr char kXSRFTokenQueryPar
+ inline constexpr char kSecActQueryParamKey[] = "sec_act";
+ 
+ // The list of query parameters to ignore when comparing search URLs.
+-inline constexpr std::string kIgnoredSearchUrlQueryParameters[] = {
++inline const std::string kIgnoredSearchUrlQueryParameters[] = {
+     kViewportWidthQueryParamKey, kViewportHeightQueryParamKey,
+     kXSRFTokenQueryParamKey, kSecActQueryParamKey};
+ 
+--- a/content/browser/preloading/prefetch/prefetch_test_util.h
++++ b/content/browser/preloading/prefetch/prefetch_test_util.h
+@@ -15,7 +15,7 @@ namespace content::test {
+ 
+ using PrefetchContainerIdForTesting =
+     base::StrongAlias<class PrefetchContainerIdForTestingTag, std::string>;
+-static constexpr PrefetchContainerIdForTesting
++static const PrefetchContainerIdForTesting
+     InvalidPrefetchContainerIdForTesting = PrefetchContainerIdForTesting("");
+ 
+ class TestPrefetchWatcherImpl;
