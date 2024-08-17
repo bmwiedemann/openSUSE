@@ -31,4 +31,15 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1190439</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>1faa03fde9398ce10d4015a85f38ff33</srcmd5>
+    <version>3.1.2</version>
+    <time>1723891284</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.1.2:
+  * Do not reset a one-of group with a None value
+  * Update and apply Ruff
+  * Update all non-major dependencies (forwarded request 1194351 from rrahl0)</comment>
+    <requestid>1194352</requestid>
+  </revision>
 </revisionlist>

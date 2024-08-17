@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Aug 16 16:50:05 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 3.1.2:
+  * Do not reset a one-of group with a None value
+  * Update and apply Ruff
+  * Update all non-major dependencies
+
+-------------------------------------------------------------------
 Tue Jul 23 09:22:54 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 3.1.1:
