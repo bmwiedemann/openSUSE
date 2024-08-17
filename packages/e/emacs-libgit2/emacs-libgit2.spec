@@ -40,6 +40,8 @@ This is an experimental module for libgit2 bindings to Emacs, intended to boost 
 %autosetup -p1 -n libegit2-%{version}
 
 %build
+# Work around boo#1229236 and a C99 violation that prevents building with GCC 14
+%global optflags %{optflags} -Wno-error=incompatible-pointer-types
 %cmake -DCMAKE_INSTALL_PREFIX=/usr \
        -DUSE_SYSTEM_LIBGIT2=ON
 %cmake_build

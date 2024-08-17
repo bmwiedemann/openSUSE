@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Aug 16 12:46:52 UTC 2024 - Martin Jambor <mjambor@suse.com>
+
+- Add -Wno-error=incompatible-pointer-types to optflags to work around
+  C99 violations that prevent building with GCC 14.  [boo#1229236]
+
+-------------------------------------------------------------------
 Mon Mar 25 18:21:17 UTC 2024 - Björn Bidar <bjorn.bidar@thaodan.de>
 
 - Drop the following patches as they have been accepted by upstream:
