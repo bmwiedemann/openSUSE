@@ -1,7 +1,7 @@
 #
 # spec file for package python-Mathics-Scanner
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,16 +16,19 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
+%define modname mathics_scanner
 Name:           python-Mathics-Scanner
-Version:        1.3.0
+Version:        1.3.1
 Release:        0
 Summary:        Character Tables and Tokenizer for Mathics and the Wolfram Language
 License:        GPL-3.0-only
 URL:            https://mathics.org/
-Source:         https://files.pythonhosted.org/packages/source/M/Mathics-Scanner/Mathics_Scanner-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/M/Mathics-Scanner/%{modname}-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module chardet}
@@ -47,16 +50,16 @@ BuildArch:      noarch
 Character Tables and Tokenizer for Mathics and the Wolfram Language.
 
 %prep
-%setup -q -n Mathics_Scanner-%{version}
+%setup -q -n %{modname}-%{version}
 # Fix shbang
 sed -i "s|/usr/bin/env python|/usr/bin/python3|" mathics_scanner/generate/build_tables.py
 sed -i "s|/usr/bin/env python3|/usr/bin/python3|" mathics_scanner/generate/rl_inputrc.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/mathics-generate-json-table
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 # Should be executable
@@ -73,7 +76,7 @@ sed -i "s|/usr/bin/env python3|/usr/bin/python3|" mathics_scanner/generate/rl_in
 
 %files %{python_files}
 %python_alternative %{_bindir}/mathics-generate-json-table
-%{python_sitelib}/mathics_scanner/
-%{python_sitelib}/Mathics_Scanner-%{version}-py%{python_version}.egg-info/
+%{python_sitelib}/%{modname}/
+%{python_sitelib}/Mathics_Scanner-%{version}*.*-info/
 
 %changelog
