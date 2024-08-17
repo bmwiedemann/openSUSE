@@ -1,4 +1,4 @@
-# SPDX-License-Identifier: MIT
+# SPDX-License-Identifier: PostgreSQL
 
 #     Copyright (c) 2024 SUSE LLC
 
