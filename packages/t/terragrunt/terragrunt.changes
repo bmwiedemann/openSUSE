@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Aug 16 18:21:48 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.66.8:
+  * chore: Bumping go to `1.22` (#3346)
+
+-------------------------------------------------------------------
+Fri Aug 16 18:10:54 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.66.7:
+  * fix: Fixing remote state init skip (#3345)
+  * Adding `test` Lint Presets (#3340)
+  * Updated documentation for --terragrunt-graph-root (#3344)
+  * fix: Reverting to asserts for non error checking assertions
+    (#3341)
+
+-------------------------------------------------------------------
 Wed Aug 14 16:53:36 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.66.6:
