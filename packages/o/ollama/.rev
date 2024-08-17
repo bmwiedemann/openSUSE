@@ -193,4 +193,44 @@
   * Fixed issue where phi3 would report an error on older versions</comment>
     <requestid>1191409</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>b6bdd31c3c210dd407bc2e2432b88e19</srcmd5>
+    <version>0.3.6</version>
+    <time>1723891290</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.3.6:
+  * Fixed issue where /api/embed would return an error instead of
+    loading the model when the input field was not provided.
+  * ollama create can now import Phi-3 models from Safetensors
+  * Added progress information to ollama create when importing GGUF
+    files
+  * Ollama will now import GGUF files faster by minimizing file
+    copies
+- Update to version 0.3.6:
+  * Fixed issue where temporary files would not be cleaned up
+  * Fix rare error when Ollama would start up due to invalid model
+    data
+- Update to version 0.3.4:
+ * New embedding models
+  - BGE-M3: a large embedding model from BAAI distinguished for 
+    its versatility in Multi-Functionality, Multi-Linguality, and 
+    Multi-Granularity.
+  - BGE-Large: a large embedding model trained in english.
+  - Paraphrase-Multilingual: A multilingual embedding model 
+    trained on parallel data for 50+ languages.
+ * New embedding API with batch support
+   - Ollama now supports a new API endpoint /api/embed for 
+     embedding generation:
+ * This API endpoint supports new features:
+   - Batches: generate embeddings for several documents in 
+     one request
+   - Normalized embeddings: embeddings are now normalized, 
+     improving similarity results
+   - Truncation: a new truncate parameter that will error if 
+     set to false
+   - Metrics: responses include load_duration, total_duration and 
+     prompt_eval_count metrics
+</comment>
+    <requestid>1194354</requestid>
+  </revision>
 </revisionlist>
