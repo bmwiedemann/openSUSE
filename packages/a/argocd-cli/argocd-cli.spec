@@ -21,19 +21,20 @@
 %define executable_name argocd
 
 Name:           argocd-cli
-Version:        2.12.0
+Version:        2.12.1
 Release:        0
 Summary:        CLI for the ArgoCD declarative continuous deployment tool
 License:        Apache-2.0
 URL:            https://github.com/argoproj/argo-cd
-Source:         argo-cd-%{version}.tar.gz
+Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  go >= 1.20
 
 %description
 Argo CD is a declarative, GitOps continuous delivery tool for Kubernetes.
 
-This packages contains the CLI to interact with the ArgoCD installation in a Kubernetes cluster.
+This packages contains the CLI to interact with the ArgoCD installation in a
+Kubernetes cluster.
 
 %package -n %{name}-bash-completion
 Summary:        Bash Completion for %{name}
@@ -57,10 +58,11 @@ BuildArch:      noarch
 zsh command line completion support for %{name}.
 
 %prep
-%autosetup -p 1 -a 1 -n argo-cd-%{version}
+%autosetup -p 1 -a 1
 
 %build
 KUBECTL_VERSION=$(awk '/=> k8s.io\/kubectl v/ {print $4}' go.mod)
+
 DATE_FMT="+%%Y-%%m-%%dT%%H:%%M:%%SZ"
 BUILD_DATE=$(date -u -d "@${SOURCE_DATE_EPOCH}" "${DATE_FMT}" 2>/dev/null || date -u -r "${SOURCE_DATE_EPOCH}" "${DATE_FMT}" 2>/dev/null || date -u "${DATE_FMT}")
 go build \
@@ -68,11 +70,11 @@ go build \
    -buildmode=pie \
    -ldflags="\
    -X github.com/argoproj/argo-cd/v2/common.version=%{version} \
-   -X github.com/argoproj/argo-cd/v2/common.buildDate=$BUILD_DATE \
+   -X github.com/argoproj/argo-cd/v2/common.buildDate=${BUILD_DATE} \
    -X github.com/argoproj/argo-cd/v2/common.gitCommit=v%{version} \
    -X github.com/argoproj/argo-cd/v2/common.gitTag=v%{version} \
    -X github.com/argoproj/argo-cd/v2/common.gitTreeState=clean \
-   -X github.com/argoproj/argo-cd/v2/common.kubectlVersion=$KUBECTL_VERSION" \
+   -X github.com/argoproj/argo-cd/v2/common.kubectlVersion=${KUBECTL_VERSION}" \
    -o bin/%{executable_name} ./cmd/
 
 %install

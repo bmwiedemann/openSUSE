@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Aug 16 18:34:39 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.12.1:
+  * Bump version to 2.12.1 (#19568)
+  * fix(appset): cherry-pick - fix appset-in-any-namespace issue
+    with git generators (#19558)
+  * fix: appset gpg limitation for templated project fields
+    (#19492) (#19534)
+  * fix(appset): missing permissions for cluster install (#19059)
+    (#19430) (#19435)
+  * fix: docs version regex changed (#18756) (#19352)
+
+-------------------------------------------------------------------
 Tue Aug 06 07:01:12 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.12.0:
