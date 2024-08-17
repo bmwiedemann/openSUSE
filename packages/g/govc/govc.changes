@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Aug 17 08:03:56 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.42.0:
+  * chore: Update version.go for v0.42.0
+  * api: update eam bindings to include authentication schema with
+    eam-vcenter build 24075398 Closes: 3521
+
+-------------------------------------------------------------------
+Sat Aug 17 07:57:11 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.41.0:
+  * chore: Update version.go for v0.41.0
+  * api: OptionValues IsTrue|IsFalse
+
+-------------------------------------------------------------------
 Tue Aug 13 04:50:06 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.40.0:

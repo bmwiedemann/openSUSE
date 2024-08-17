@@ -19,14 +19,14 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           govc
-Version:        0.40.0
+Version:        0.42.0
 Release:        0
 Summary:        vSphere CLI built on top of govmomi
 License:        Apache-2.0
 URL:            https://github.com/vmware/govmomi
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  go >= 1.19
+BuildRequires:  go >= 1.21
 
 %description
 The CLI is designed to be a user friendly CLI alternative to the GUI and well suited for automation tasks. It also acts as a test harness for the govmomi APIs and provides working examples of how to use the APIs.
