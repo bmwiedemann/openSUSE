@@ -37,7 +37,6 @@ Source0:        https://files.pythonhosted.org/packages/source/c/cryptography/cr
 # use `osc service manualrun` to regenerate
 Source2:        vendor.tar.zst
 Source4:        python-cryptography.keyring
-Patch1:         use-offline-build.patch
 # PATCH-FEATURE-OPENSUSE no-pytest_benchmark.patch mcepl@suse.com
 # We don't need no benchmarking and coverage measurement
 Patch4:         no-pytest_benchmark.patch
@@ -46,13 +45,11 @@ BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module exceptiongroup}
 BuildRequires:  %{python_module maturin}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools-rust >= 1.7.0}
-BuildRequires:  %{python_module setuptools-rust >= 1.7.0}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  cargo >= 1.56.0
+BuildRequires:  cargo-packaging
 BuildRequires:  fdupes
 BuildRequires:  libopenssl-devel
 BuildRequires:  pkgconfig
@@ -62,8 +59,10 @@ BuildRequires:  zstd
 BuildRequires:  pkgconfig(libffi)
 # python-base is not enough, we need the _ssl module
 Requires:       python
+Requires:       python-bcrypt
 %requires_eq    python-cffi
 %if %{with test}
+BuildRequires:  %{python_module bcrypt}
 BuildRequires:  %{python_module certifi}
 BuildRequires:  %{python_module cryptography >= %{version}}
 BuildRequires:  %{python_module cryptography-vectors = %{version}}
@@ -71,6 +70,7 @@ BuildRequires:  %{python_module hypothesis >= 1.11.4}
 BuildRequires:  %{python_module iso8601}
 BuildRequires:  %{python_module pretend}
 BuildRequires:  %{python_module pytest > 6.0}
+BuildRequires:  %{python_module pytest-benchmark}
 BuildRequires:  %{python_module pytest-subtests}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytz}
@@ -90,9 +90,17 @@ functions.
 
 %prep
 %autosetup -a2 -p1 -n cryptography-%{version}
-rm -v src/rust/Cargo.lock
 
 %build
+export CARGO_NET_OFFLINE=true
+export CARGO_PROFILE_RELEASE_DEBUG=true
+export CARGO_PROFILE_RELEASE_SPLIT_DEBUGINFO=off
+cd src/rust
+tar xfv %{S:2}
+rm -v Cargo.lock
+%cargo_build
+cd -
+
 # https://github.com/pyca/cryptography/issues/9023
 %global _lto_cflags %{nil}
 export RUSTFLAGS=%{rustflags}

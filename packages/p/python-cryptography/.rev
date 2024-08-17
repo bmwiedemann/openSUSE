@@ -1129,4 +1129,16 @@
     from the cipher module in 48.0.0.</comment>
     <requestid>1189786</requestid>
   </revision>
+  <revision rev="92" vrev="2">
+    <srcmd5>c13577828a62e49f172bc5bb1bd68554</srcmd5>
+    <version>43.0.0</version>
+    <time>1723891260</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix building optimized binaries with debuginfo.
+
+- Update building of Rust modules to use modern cargo_vendor
+  service
+- Remove unneeded use-offline-build.patch</comment>
+    <requestid>1193532</requestid>
+  </revision>
 </revisionlist>

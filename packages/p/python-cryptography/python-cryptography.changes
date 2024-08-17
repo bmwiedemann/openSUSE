@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Aug 12 20:36:00 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Fix building optimized binaries with debuginfo.
+
+-------------------------------------------------------------------
+Wed Jul 31 21:45:43 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Update building of Rust modules to use modern cargo_vendor
+  service
+- Remove unneeded use-offline-build.patch
+
+-------------------------------------------------------------------
 Fri Jul 26 10:33:45 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 43.0.0:

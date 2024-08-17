@@ -1,6 +1,5 @@
 ---
  pyproject.toml                         |   31 -------------------------
- src/cryptography.egg-info/requires.txt |    2 -
  tests/bench/test_aead.py               |   40 ++++++++++++++++-----------------
  tests/bench/test_ec_load.py            |    8 +++---
  tests/bench/test_hashes.py             |    4 +--
@@ -21,7 +20,7 @@ Index: cryptography-43.0.0/pyproject.toml
      "pytest-xdist",
      "pretend",
      "certifi",
-@@ -118,7 +116,7 @@ exclude = [
+@@ -117,7 +115,7 @@ exclude = [
  ]
  
  [tool.pytest.ini_options]
@@ -30,7 +29,7 @@ Index: cryptography-43.0.0/pyproject.toml
  console_output_style = "progress-even-when-capture-no"
  markers = [
      "skip_fips: this test is not executed in FIPS mode",
-@@ -140,33 +138,6 @@ module = [
+@@ -139,33 +137,6 @@ module = [
  ]
  ignore_missing_imports = true
  
@@ -285,16 +284,3 @@ Index: cryptography-43.0.0/tests/bench/test_x509.py
  
 -    benchmark(bench)
 +    bench
-Index: cryptography-43.0.0/tests/bench/test_fernet.py
-===================================================================
---- cryptography-43.0.0.orig/tests/bench/test_fernet.py
-+++ cryptography-43.0.0/tests/bench/test_fernet.py
-@@ -5,6 +5,6 @@
- from cryptography import fernet
- 
- 
--def test_fernet_encrypt(benchmark):
-+def test_fernet_encrypt():
-     f = fernet.Fernet(fernet.Fernet.generate_key())
--    benchmark(f.encrypt, b"\x00" * 256)
-+    f.encrypt(b"\x00" * 256)
