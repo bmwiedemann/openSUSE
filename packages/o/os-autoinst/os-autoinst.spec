@@ -17,7 +17,7 @@
 
 
 Name:           os-autoinst
-Version:        4.6.1723465309.cf7b098
+Version:        4.6.1723817204.0aff9e8
 Release:        0
 Summary:        OS-level test automation
 License:        GPL-2.0-or-later
@@ -36,7 +36,7 @@ Source0:        %{name}-%{version}.tar.xz
 # The following line is generated from dependencies.yaml
 %define build_requires %build_base_requires cmake ninja
 # The following line is generated from dependencies.yaml
-%define main_requires git-core perl(B::Deparse) perl(Carp) perl(Carp::Always) perl(Config) perl(Cpanel::JSON::XS) perl(Crypt::DES) perl(Cwd) perl(Data::Dumper) perl(Digest::MD5) perl(DynaLoader) perl(English) perl(Errno) perl(Exception::Class) perl(Exporter) perl(ExtUtils::testlib) perl(Fcntl) perl(File::Basename) perl(File::Find) perl(File::Map) perl(File::Path) perl(File::Temp) perl(File::Touch) perl(File::Which) perl(File::chdir) perl(IO::Handle) perl(IO::Scalar) perl(IO::Select) perl(IO::Socket) perl(IO::Socket::INET) perl(IO::Socket::UNIX) perl(IPC::Open3) perl(IPC::Run::Debug) perl(IPC::System::Simple) perl(JSON::Validator) perl(List::MoreUtils) perl(List::Util) perl(Mojo::IOLoop::ReadWriteProcess) >= 0.26 perl(Mojo::JSON) perl(Mojo::Log) perl(Mojo::URL) perl(Mojo::UserAgent) perl(Mojolicious) >= 9.340.0 perl(Mojolicious::Lite) perl(Net::DBus) perl(Net::Domain) perl(Net::IP) perl(Net::SNMP) perl(Net::SSH2) perl(POSIX) perl(Scalar::Util) perl(Socket) perl(Socket::MsgHdr) perl(Term::ANSIColor) perl(Thread::Queue) perl(Time::HiRes) perl(Time::Moment) perl(Time::Seconds) perl(Try::Tiny) perl(XML::LibXML) perl(XML::SemanticDiff) perl(YAML::PP) perl(YAML::XS) perl(autodie) perl(base) perl(constant) perl(integer) perl(strict) perl(version) perl(warnings) perl-base rsync sshpass
+%define main_requires git-core perl(B::Deparse) perl(Carp) perl(Carp::Always) perl(Config) perl(Cpanel::JSON::XS) perl(Crypt::DES) perl(Cwd) perl(Data::Dumper) perl(Digest::MD5) perl(DynaLoader) perl(English) perl(Errno) perl(Exception::Class) perl(Exporter) perl(ExtUtils::testlib) perl(Fcntl) perl(File::Basename) perl(File::Find) perl(File::Map) perl(File::Path) perl(File::Temp) perl(File::Which) perl(File::chdir) perl(IO::Handle) perl(IO::Scalar) perl(IO::Select) perl(IO::Socket) perl(IO::Socket::INET) perl(IO::Socket::UNIX) perl(IPC::Open3) perl(IPC::Run::Debug) perl(IPC::System::Simple) perl(JSON::Validator) perl(List::MoreUtils) perl(List::Util) perl(Mojo::IOLoop::ReadWriteProcess) >= 0.26 perl(Mojo::JSON) perl(Mojo::Log) perl(Mojo::URL) perl(Mojo::UserAgent) perl(Mojolicious) >= 9.340.0 perl(Mojolicious::Lite) perl(Net::DBus) perl(Net::Domain) perl(Net::IP) perl(Net::SNMP) perl(Net::SSH2) perl(POSIX) perl(Scalar::Util) perl(Socket) perl(Socket::MsgHdr) perl(Term::ANSIColor) perl(Thread::Queue) perl(Time::HiRes) perl(Time::Moment) perl(Time::Seconds) perl(Try::Tiny) perl(XML::LibXML) perl(XML::SemanticDiff) perl(YAML::PP) perl(YAML::XS) perl(autodie) perl(base) perl(constant) perl(integer) perl(strict) perl(version) perl(warnings) perl-base rsync sshpass
 # all requirements needed by the tests, do not require on this in the package
 # itself or any sub-packages
 # SLE is missing spell check requirements
@@ -67,6 +67,18 @@ Source0:        %{name}-%{version}.tar.xz
 %else
 %bcond_with black
 %endif
+# SLE is missing Python support requirements
+%if !0%{?is_opensuse}
+%bcond_without python_support
+%else
+%bcond_with python_support
+%endif
+%if %{with python_support}
+# The following line is generated from dependencies.yaml
+%define python_support_requires perl(Inline::Python)
+%else
+%define python_support_requires %{nil}
+%endif
 %if %{with black}
 # The following line is generated from dependencies.yaml
 %define python_style_requires python3-black
@@ -95,7 +107,7 @@ Source0:        %{name}-%{version}.tar.xz
 # The following line is generated from dependencies.yaml
 %define test_version_only_requires perl(Mojo::IOLoop::ReadWriteProcess) >= 0.28
 # The following line is generated from dependencies.yaml
-%define test_requires %build_requires %ocr_requires %spellcheck_requires %test_base_requires %test_non_s390_requires %yamllint_requires perl(Inline::Python) python3-Pillow-tk
+%define test_requires %build_requires %ocr_requires %spellcheck_requires %test_base_requires %test_non_s390_requires %yamllint_requires python3-Pillow-tk
 # The following line is generated from dependencies.yaml
 %define devel_requires %python_style_requires %test_requires ShellCheck perl(Code::TidyAll) perl(Devel::Cover) perl(Devel::Cover::Report::Codecov) perl(Module::CPANfile) perl(Perl::Tidy) perl(Template::Toolkit) shfmt
 %define s390_zvm_requires /usr/bin/xkbcomp /usr/bin/Xvnc x3270 icewm xterm xterm-console xdotool fonts-config mkfontdir mkfontscale openssh-clients
@@ -111,8 +123,10 @@ Recommends:     tesseract-ocr
 Recommends:     %qemu_requires
 Recommends:     dumponlyconsole %s390_zvm_requires
 Recommends:     qemu >= 4.0.0
+%if %{with python_support}
 # Optional dependency for Python test API support
 Recommends:     perl(Inline::Python)
+%endif
 # Optional dependency for crop.py
 Recommends:     python3-Pillow-tk
 # Optional dependency for QEMU's built-in samba service (enabled via QEMU_ENABLE_SMBD=1)
