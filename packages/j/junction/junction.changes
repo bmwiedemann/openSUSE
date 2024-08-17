@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Aug 16 08:33:59 UTC 2024 - Alynx Zhou <alynx.zhou@suse.com>
+
+- Add junction-show-in-default-app-selector.patch: Add MIME types
+  to make junction selectable in default browser selector in GNOME
+  Settings (gh#sunnyp/Junction!155, bsc#1223463).
+
+-------------------------------------------------------------------
 Sat Apr  6 15:21:56 UTC 2024 - Richard Rahl <rrahl0@proton.me>
 
 - initial packaging

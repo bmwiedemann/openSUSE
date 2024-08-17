@@ -25,6 +25,8 @@ License:        GPL-3.0-only
 URL:            https://github.com/sonnyp/Junction
 Source0:        %{name}-%{version}.tar.zst
 Source99:       junction-rpmlintrc
+# PATCH-FEATURE-UPSTREAM junction-show-in-default-app-selector.patch gh#sunnyp/Junction!155, bsc#1223463 alynx.zhou@suse.com -- Show junction in default browser selector in GNOME Settings
+Patch1:         junction-show-in-default-app-selector.patch
 BuildRequires:  blueprint-compiler
 BuildRequires:  gjs
 BuildRequires:  gobject-introspection
