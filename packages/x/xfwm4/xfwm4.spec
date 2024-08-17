@@ -26,6 +26,7 @@ Group:          System/GUI/XFCE
 URL:            https://docs.xfce.org/xfce/xfwm4/start
 Source0:        https://archive.xfce.org/src/xfce/xfwm4/4.18/%{name}-%{version}.tar.bz2
 Source1:        xfwm4.xml
+Patch1228524:   ce9f6e1187867c4fbb7935e08a9ab4d9d8dea8c3.patch
 BuildRequires:  exo-tools
 BuildRequires:  fdupes
 BuildRequires:  gdk-pixbuf-loader-rsvg
@@ -82,7 +83,7 @@ This package provides the upstream look and feel for the xfwm4 window manager.
 %lang_package
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 export CFLAGS="%{optflags} -fno-strict-aliasing"

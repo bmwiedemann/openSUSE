@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Aug  8 08:08:08 UTC 2024 - olaf@aepfle.de
+
+- Fix user-after-free in tabwinRemoveClient with
+  ce9f6e1187867c4fbb7935e08a9ab4d9d8dea8c3.patch (bsc#1228524)
+
+-------------------------------------------------------------------
 Sun Dec 18 14:08:58 UTC 2022 - Maurizio Galli <maurizio.galli@suse.com>
 
 - Update version to 4.18.0
