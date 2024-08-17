@@ -266,6 +266,8 @@ Patch19:        source-dvipng.dif
 Patch21:        source-ppc64.dif
 # PATCH-FIX-UPSTREAM
 Patch22:        source-dvipdfm-x.dif
+# PATCH-FIX-UPSTREAM
+Patch23:        source-pdftex-gcc14.patch
 # PATCH-FIX-SUSE Make biber work with our perl
 Patch42:        biblatex-encoding.dif
 Patch43:        biblatex-ms-encoding.dif
@@ -4246,6 +4248,7 @@ This package is required by the package texlive-biber-bin.
 %patch -P19 -p0 -b .dvipng
 %patch -P21 -p0 -b .ppcelf
 %patch -P22 -p0 -b .sameimg
+%patch -P23 -p0 -b .gcc14
 pushd libs/luajit/LuaJIT-src/
 #Missed patch ppc and risc
 %patch -P106 -p1 -b .arm64
@@ -4288,9 +4291,6 @@ popd
     cp -vf %{S:4} $paths
 
 %build
-    # Work around boo#1228342
-    %global optflags %{optflags} -Wno-error=incompatible-pointer-types
-
     # Extend the options file
     echo "world=${PWD}/world" >> %{options}
     echo "prefix=${PWD}/prefix" >> %{options}

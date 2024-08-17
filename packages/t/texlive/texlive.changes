@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Aug 16 11:34:24 UTC 2024 - Dr. Werner Fink <werner@suse.de>
+
+- Add patch source-pdftex-gcc14.patch
+  * Add fix in change file pdftex.ch to really fix boo#1228342
+    (Thanks goes to Andreas Scherer)
+- Remove former work around
+
+-------------------------------------------------------------------
 Fri Jul 26 14:15:55 UTC 2024 - Martin Jambor <mjambor@suse.com>
 
 - Added -Wno-error=incompatible-pointer-types to optflags to work

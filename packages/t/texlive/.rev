@@ -1166,4 +1166,15 @@
   architectures.</comment>
     <requestid>1194242</requestid>
   </revision>
+  <revision rev="97" vrev="100">
+    <srcmd5>371e1fec0859b1358b5db6257371e9a1</srcmd5>
+    <version>unknown</version>
+    <time>1723891253</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch source-pdftex-gcc14.patch
+  * Add fix in change file pdftex.ch to really fix boo#1228342
+    (Thanks goes to Andreas Scherer)
+- Remove former work around</comment>
+    <requestid>1194293</requestid>
+  </revision>
 </revisionlist>
