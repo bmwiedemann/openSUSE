@@ -1,6 +1,7 @@
 #
 # spec file for package resources
 #
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2024 mantarimay
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,9 +20,9 @@
 %bcond_without test
 %define appid net.nokyan.Resources
 Name:           resources
-Version:        1.5.0
+Version:        1.5.1
 Release:        0
-Summary:        Monitor your system processes 
+Summary:        Monitor your system processes
 License:        GPL-3.0-or-later
 URL:            https://github.com/nokyan/resources
 Source0:        %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
@@ -32,8 +33,8 @@ BuildRequires:  desktop-file-utils
 BuildRequires:  meson
 BuildRequires:  pkgconfig(gtk4)
 BuildRequires:  pkgconfig(libadwaita-1) >= 1.5.0
-Requires:       polkit
 Requires:       dmidecode
+Requires:       polkit
 
 %description
 Resources is a simple yet powerful monitor for your system resources and

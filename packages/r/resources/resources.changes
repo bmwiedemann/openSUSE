@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Aug 18 09:35:19 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 1.5.1
+  + Bug fixes:
+    - AMD GPU usage could be displayed to be higher than 100 %
+    - Resources detected HID batteries resulting in unnecessary battery 
+      pages with little to no information
+    - AMD GPU power usage couldn’t be determined sometimes
+  + Improvements:
+    - Smaller GNOME Circle related fixes and improvements
+
+-------------------------------------------------------------------
 Sun Jun 23 12:41:48 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Add meson test to validate files
