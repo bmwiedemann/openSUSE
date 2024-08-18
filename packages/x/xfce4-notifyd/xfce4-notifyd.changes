@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Thu Aug 15 07:08:19 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- update to 0.9.6:
+  * Use shared_module() for panel plugin meson build
+  * Fix menu being destroyed before item activation handlers running
+  * Translation Updates
+
+-------------------------------------------------------------------
+Wed Aug 14 05:53:01 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- update to 0.9.5:
+  * Add an option to set the minimum width of notification windows
+  * Fix include issue with meson build
+  * Only emblem the panel plugin icon when theme lacks the 'new' variant
+  * Destroy and recreate the panel menu every time it's popped up
+  * Add meson build files
+  * Fix uninitialized field warning
+  * Move NOTIFICATIONS_SPEC_VERSION out of the build system
+  * Remove redundant positioning code from Wayland path
+  * Use different layer-shell anchors on Wayland
+  * build: clang: Silence -Wcast-align
+  * common: Explicitly depend on gio-unix-2.0
+  * Fix positioning on Wayland in multi-monitor setups
+  * Set output on layer-shell surface on Wayland
+  * Fix active-monitor notification positioning on Wayland
+  * Translation Updates
+- Rebase xfce4-notifyd-relax-x11-version.patch
+
+-------------------------------------------------------------------
 Sat Feb 10 08:11:27 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
 
 - update to 0.9.4:

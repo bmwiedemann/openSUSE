@@ -1,19 +1,19 @@
 diff -rup a/configure.ac b/configure.ac
---- a/configure.ac	2023-09-24 20:34:47.000000000 +0200
-+++ b/configure.ac	2023-10-24 08:53:48.236002834 +0200
-@@ -7,7 +7,7 @@ dnl Copyright (c) 2019 Simon Steinbeiss
+--- a/configure.ac	2024-08-14 00:10:49.000000000 +0200
++++ b/configure.ac	2024-08-14 07:58:33.690596322 +0200
+@@ -6,7 +6,7 @@ dnl Copyright (c) 2008 Brian Tarricone <
+ dnl Copyright (c) 2019 Simon Steinbeiss <simon@xfce.org>
  dnl
  
- m4_define([notifications_spec_version], [1.2])
 -m4_define([libx11_minimum_version], [1.6.7])
 +m4_define([libx11_minimum_version], [1.6.5])
  m4_define([glib_minimum_version], [2.68])
  m4_define([gtk_minimum_version], [3.22])
  m4_define([canberra_minimum_version], [0.30])
 diff -rup a/configure b/configure
---- a/configure	2023-09-24 20:35:46.000000000 +0200
-+++ b/configure	2023-10-24 08:54:23.119349104 +0200
-@@ -19112,11 +19112,11 @@ fi
+--- a/configure	2024-08-14 00:13:58.000000000 +0200
++++ b/configure	2024-08-14 07:59:07.070606001 +0200
+@@ -18974,11 +18974,11 @@ fi
  
  
    if test x"$xdt_feature_deps_check_only" = x"yes"; then
@@ -28,7 +28,7 @@ diff -rup a/configure b/configure
        fi
      fi
    else
-@@ -19270,9 +19270,9 @@ fi
+@@ -19132,9 +19132,9 @@ fi
  
  
  
@@ -41,7 +41,7 @@ diff -rup a/configure b/configure
      LIBX11_VERSION=`$PKG_CONFIG --modversion "x11"`
      { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $LIBX11_VERSION" >&5
  printf "%s\n" "$LIBX11_VERSION" >&6; }
-@@ -19289,7 +19289,7 @@ printf %s "checking LIBX11_LIBS... " >&6
+@@ -19151,7 +19151,7 @@ printf %s "checking LIBX11_LIBS... " >&6
      { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $LIBX11_LIBS" >&5
  printf "%s\n" "$LIBX11_LIBS" >&6; }
  
@@ -50,7 +50,7 @@ diff -rup a/configure b/configure
  
  
  
-@@ -19318,7 +19318,7 @@ printf "%s\n" "found, but $xdt_cv_versio
+@@ -19180,7 +19180,7 @@ printf "%s\n" "found, but $xdt_cv_versio
  
        echo "*** The required package x11 was found on your system,"
        echo "*** but the installed version ($xdt_cv_version) is too old."
@@ -59,7 +59,7 @@ diff -rup a/configure b/configure
        echo "*** the PKG_CONFIG_PATH environment variable if you installed"
        echo "*** the new version of the package in a nonstandard prefix so"
        echo "*** pkg-config is able to find it."
-@@ -19330,7 +19330,7 @@ printf "%s\n" "not found" >&6; }
+@@ -19192,7 +19192,7 @@ printf "%s\n" "not found" >&6; }
  
  
        echo "*** The required package x11 was not found on your system."
@@ -68,7 +68,7 @@ diff -rup a/configure b/configure
        echo "*** the PKG_CONFIG_PATH environment variable if you"
        echo "*** installed the package in a nonstandard prefix so that"
        echo "*** pkg-config is able to find it."
-@@ -19580,11 +19580,11 @@ printf "%s\n" "not found" >&6; }
+@@ -19442,11 +19442,11 @@ printf "%s\n" "not found" >&6; }
  
  
    if test x"$xdt_feature_deps_check_only" = x"yes"; then
@@ -83,7 +83,7 @@ diff -rup a/configure b/configure
        fi
      fi
    else
-@@ -19738,9 +19738,9 @@ fi
+@@ -19600,9 +19600,9 @@ fi
  
  
  
@@ -96,7 +96,7 @@ diff -rup a/configure b/configure
      LIBX11_VERSION=`$PKG_CONFIG --modversion "x11"`
      { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $LIBX11_VERSION" >&5
  printf "%s\n" "$LIBX11_VERSION" >&6; }
-@@ -19757,7 +19757,7 @@ printf %s "checking LIBX11_LIBS... " >&6
+@@ -19619,7 +19619,7 @@ printf %s "checking LIBX11_LIBS... " >&6
      { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $LIBX11_LIBS" >&5
  printf "%s\n" "$LIBX11_LIBS" >&6; }
  
@@ -105,7 +105,7 @@ diff -rup a/configure b/configure
  
  
  
-@@ -19786,7 +19786,7 @@ printf "%s\n" "found, but $xdt_cv_versio
+@@ -19648,7 +19648,7 @@ printf "%s\n" "found, but $xdt_cv_versio
  
        echo "*** The required package x11 was found on your system,"
        echo "*** but the installed version ($xdt_cv_version) is too old."
@@ -114,7 +114,7 @@ diff -rup a/configure b/configure
        echo "*** the PKG_CONFIG_PATH environment variable if you installed"
        echo "*** the new version of the package in a nonstandard prefix so"
        echo "*** pkg-config is able to find it."
-@@ -19798,7 +19798,7 @@ printf "%s\n" "not found" >&6; }
+@@ -19660,7 +19660,7 @@ printf "%s\n" "not found" >&6; }
  
  
        echo "*** The required package x11 was not found on your system."
