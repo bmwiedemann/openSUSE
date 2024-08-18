@@ -223,4 +223,13 @@
   * SNDFILE filter: fix signalling of read errors (forwarded request 1135511 from dirkmueller)</comment>
     <requestid>1135522</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>33a29b821ce0d29839b1db92adb571f3</srcmd5>
+    <version>3.2.8</version>
+    <time>1723998016</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.2.8:
+  * crash fix in cue filter</comment>
+    <requestid>1194551</requestid>
+  </revision>
 </revisionlist>
