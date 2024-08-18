@@ -446,4 +446,41 @@
     <comment></comment>
     <requestid>1178145</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>92ae400666ac3ab6124669a51fef01c0</srcmd5>
+    <version>0.11.0</version>
+    <time>1723998019</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.11.0:
+  * Identifies git fix id now for ossfuzz 70721
+    DW202407-010
+  * Correcting use-after-free with a specific corrupted
+    DWARF section.
+  * This simplfies getting correct cooked
+    addresses for entries from .debug_ranges
+  * The new code about .debug_ranges had
+    small leaks when the library was told
+    not to record or clean-up most memory allocations.
+    Shown by -fsanitize.
+  * Fixed a mistake in examplev, .debug_ranges
+  * Added new argument to print_ranges_list_to_extra()
+    so it can print both raw and cooked values.
+  * Now calulates the cooked value of .debug_ranges
+    and prints both raw and cooked values.
+  * New date, some Dwarf_Ranges doc has been updated
+    in libdwarf.
+  * Added clarifying comment paragraphs about Dwarf_Ranges
+  * Final on the rnglists ossfuzz issues so far.
+  * ossfuzz 70246 DW202407-002 fixed.
+  * Removing esb_append_printf() which is the last use of  *sprintf()
+  * ossfuzz 70244 fixed  DW202407-001
+  * Removing esb_append_printf() as it is no
+    longer necessary.
+  * Added blank line after d=  semantic version
+  * Fixed trailing whitespace and indents.
+  * Refine the information on rnglists base with
+  * cc_rnglists_base_via_at  (similar to loclists)
+  * Added cc_loclists_base_via_at and</comment>
+    <requestid>1194555</requestid>
+  </revision>
 </revisionlist>

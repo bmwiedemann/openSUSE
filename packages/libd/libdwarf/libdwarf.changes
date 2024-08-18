@@ -1,4 +1,87 @@
 -------------------------------------------------------------------
+Sun Aug 18 13:03:01 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.11.0:
+  * Identifies git fix id now for ossfuzz 70721
+    DW202407-010
+  * Correcting use-after-free with a specific corrupted
+    DWARF section.
+  * This simplfies getting correct cooked
+    addresses for entries from .debug_ranges
+  * The new code about .debug_ranges had
+    small leaks when the library was told
+    not to record or clean-up most memory allocations.
+    Shown by -fsanitize.
+  * Fixed a mistake in examplev, .debug_ranges
+  * Added new argument to print_ranges_list_to_extra()
+    so it can print both raw and cooked values.
+  * Now calulates the cooked value of .debug_ranges
+    and prints both raw and cooked values.
+  * New date, some Dwarf_Ranges doc has been updated
+    in libdwarf.
+  * Added clarifying comment paragraphs about Dwarf_Ranges
+  * Final on the rnglists ossfuzz issues so far.
+  * ossfuzz 70246 DW202407-002 fixed.
+  * Removing esb_append_printf() which is the last use of  *sprintf()
+  * ossfuzz 70244 fixed  DW202407-001
+  * Removing esb_append_printf() as it is no
+    longer necessary.
+  * Added blank line after d=  semantic version
+  * Fixed trailing whitespace and indents.
+  * Refine the information on rnglists base with
+  * cc_rnglists_base_via_at  (similar to loclists)
+  * Added cc_loclists_base_via_at and
+  * Due to the addition of dwarf_get_locdesc_entry_e()
+    we revise the version for the next release to be
+  * Issue #247, github libdwarf-code.
+  * Fix indents and eliminate trailing whitespace.
+  * Corrected the gitfixid as there was
+    a use-after-free in new-today code, now fixed.
+  * Fixing a nasty double free that was caused a few
+    minutes ago.
+  * New oss fuzz 69639 and 69641 are fixed.
+    Here identfied as DW202406-001 and DW202406-002
+  * Remove debug printf (was #if 0 ... #endif)
+    Fixed DW202406-001  ossfuzz 69639
+    and
+    DW202406-002 ossfuzz 69641
+  * Implemented spelling change ld_kind  to ld_lkind
+  * In dwarf_formref() we correct the reading
+    of DW_FORM_loclistx and DW_FORM_rnglistx
+    to read a uleb. Been wrong since 2022 at least..
+    Another spot reading these had it right all along.
+  * Renamed ll_kind to ll_lkind as it names a DW_LKIND value
+  * Renamed ld_kind to ld_lkind as it names a DW_LKIND value
+  * Revises the dwarfdump reporting of debug_loclists to
+    clarify the dwarf 5 debug_loclists structure content.
+  * The --print-raw-loclists option is more useful now.
+  * Revises the dwarfdump reporting of debug_rnglists to
+    clarify the dwarf 5 debug_rnglists structure content.
+  * The --print-raw-rnglists option is more useful now.
+  * In certain error cases the revised rnglists code
+    was failing to dwarf_dealloc_error() where
+  * Updated the output format of --print-raw-loclists
+    to be more useful and to essentially match the rnglists
+    version.
+  * Separated out part of loclists data structs to
+    be a better match with dwarf_rnglists.h
+  * Corrected calculations related to rnglists array of
+    offsets (were calling entries address size when they are offset
+    size).
+  * Removed some lines related to merging skeleton and split,
+    they were wrong.  debug_rnglists and debug_rnglists.dwo
+  * Initialize the three new fields in Dwarf_Debug_s
+    used for DWARF5 GNU extension .debug_addr printing.
+  * Renaming  DW_DLE_PE_SECTION_SIZE_ERROR
+    to  DW_DLE_PE_SECTION_SIZE_HEURISTIC_FAIL
+    so any failure of the three such tests are
+    clearly reported.  Should never happen.
+  * A heuristic sanity check on section VirtualSize
+    was too concervative at s00MB, a PE object file had a
+    section over 200MB in size.
+  * Adding release xz name
+
+-------------------------------------------------------------------
 Wed May 29 12:41:04 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 0.9.2:
