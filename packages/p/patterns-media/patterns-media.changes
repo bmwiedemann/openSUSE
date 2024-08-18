@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Aug 17 15:21:42 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Ensure autofs is on the DVD: it is tested by openQA in staging.
+
+-------------------------------------------------------------------
 Thu Nov 16 15:11:15 UTC 2023 - Dominique Leuenberger <dleuenberger@suse.com>
 
 - Drop libpurple-meanwhile plugin from the DVD; as the

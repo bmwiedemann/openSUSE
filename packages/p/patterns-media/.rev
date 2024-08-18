@@ -425,4 +425,12 @@
     <time>1700149760</time>
     <user>dimstar_suse</user>
   </revision>
+  <revision rev="51" vrev="51">
+    <srcmd5>4f68acb3521e8c5d146970a489c61df9</srcmd5>
+    <version>20170319</version>
+    <time>1723997967</time>
+    <user>dimstar_suse</user>
+    <comment>- Ensure autofs is on the DVD: it is tested by openQA in staging. (forwarded request 1194475 from dimstar)</comment>
+    <requestid>1194476</requestid>
+  </revision>
 </revisionlist>

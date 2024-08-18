@@ -361,6 +361,8 @@ Recommends:     apport-gtk
 Recommends:     apport-qt
 # bnc#431280 (Japanese fonts)
 Recommends:     arphic-uming-fonts
+# autofs is tested by QA in staging
+Recommends:     autofs
 Recommends:     capi4hylafax
 # FAX
 Recommends:     capisuite
