@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Aug 15 09:41:11 UTC 2024 - Alynx Zhou <alynx.zhou@suse.com>
+
+- Add pam_pkcs11 as Recommends for smartcard login (bsc#1223580).
+
+-------------------------------------------------------------------
 Mon Aug 12 17:34:38 UTC 2024 - Michael Gorse <mgorse@suse.com>
 
 - Fix applying patches when sle_version is defined

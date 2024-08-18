@@ -2109,4 +2109,12 @@
     <comment>- Fix applying patches when sle_version is defined (forwarded request 1193497 from mgorse)</comment>
     <requestid>1193508</requestid>
   </revision>
+  <revision rev="272" vrev="6">
+    <srcmd5>30715d1151d334ce2adea1dab71c6d6c</srcmd5>
+    <version>46.2</version>
+    <time>1723997968</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1194505</requestid>
+  </revision>
 </revisionlist>

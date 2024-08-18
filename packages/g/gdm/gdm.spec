@@ -138,6 +138,8 @@ Requires(postun): update-alternatives
 Recommends:     iso-codes
 # accessibility
 Recommends:     orca
+# smartcard login
+Recommends:     pam_pkcs11
 Provides:       gdm2 = %{version}
 Obsoletes:      gdm2 < %{version}
 Provides:       gnome-applets-gdm = %{version}
