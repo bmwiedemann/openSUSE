@@ -1,4 +1,75 @@
 -------------------------------------------------------------------
+Sat Aug 17 19:29:13 UTC 2024 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Adding 'BuildRequires: symbols-only-nerd-fonts' as it's looked for at build
+  time
+- Explicitly setting go1.22 (Base version required to build)
+- Update to 0.36.0:
+  * Support OpenType Variable fonts (#3711)
+  * A new choose-fonts kitten that provides a UI with font previews to ease
+    selection of fonts. Also has support for font features and variable fonts
+  * Allow animating the blinking of the cursor. See cursor_blink_interval for
+    how to configure it
+  * Add NERD fonts builtin so that users don’t have to install them to use
+    NERD symbols in kitty. The builtin font is used only if the symbols are
+    not available in some system font
+  * launch command: A new launch --bias option to adjust the size of newly
+    created windows declaratively (#7634)
+  * A new option second_transparent_bg to make a second background color
+    semi-transparent via background_opacity. Useful for things like cursor
+    line highlight in editors (#7646)
+  * A new notify kitten to show desktop notifications from the command line
+    with support for icons, buttons and more.
+  * Desktop notifications protocol: Add support for icons, buttons, closing of
+    notifications, expiry of notifications, updating of notifications and
+    querying if the terminal emulator supports the
+    protocol (#7657, #7658, #7659)
+  * A new option filter_notification to filter out or perform arbitrary
+    actions on desktop notifications based on sophisticated criteria (#7670)
+  * A new protocol to allow terminal applications to change colors in the
+    terminal more robustly than with the legacy XTerm protocol (Setting and
+    querying colors)
+  * Sessions: A new command focus_matching_window to shift focus to a specific
+    window, useful when creating complex layouts with splits (#7635)
+  * Speed up loading of large background images by caching the decoded image
+    data. Also allow using images in JPEG/WEBP/TIFF/GIF/BMP formats in
+    addition to PNG
+  * Wayland: Allow fractional scales less than one (#7549)
+  * Wayland: Fix specifying the output name for the panel kitten not
+    working (#7573)
+  * icat kitten: Add an option kitty +kitten icat --no-trailing-newline to
+    leave the cursor to the right of the image (#7574)
+  * Speed up kitty --version and kitty --single-instance (for all subsequent
+    instances). They are now the fastest of all terminal emulators with
+    similar functionality
+  * macOS: Fix rendering of the unicode hyphen (U+2010) character when using
+    a font that does not include a glyph for it (#7525)
+  * macOS 15: Handle Fn modifier when detecting global shortcuts (#7582)
+  * Dispatch any clicks waiting for click_interval on key events (#7601)
+  * kitten run-shell: Automatically add the directory containing the kitten
+    binary to PATH if needed. Controlled via the --inject-self-onto-path
+    option (disc:7668`)
+  * Wayland: Fix an issue with mouse selections not being stopped when there
+    are multiple OS windows (#7381)
+  * Splits layout: Fix the move_to_screen_edge action breaking when only a
+    single window is present (#7621)
+  * Add support for in-band window resize notifications (#7642)
+  * Allow controlling the easing curves used for visual_bell_duration
+  * New special rendering for font symbols useful in drawing commit
+    graphs (#7681)
+  * diff kitten: Add bindings to jump to next and previous file (#7683)
+  * Wayland GNOME: Fix the font size in the OS Window title bar changing with
+    the size of the text in the window (#7677)
+  * Wayland GNOME: Fix a small rendering artifact when docking a window at a
+    screen edge or maximizing it (#7701)
+  * When shell is set to . respect the SHELL environment variable in the
+    environment in which kitty is launched (#7714)
+  * macOS: Bump the minimum required macOS version to Catalina released five
+    years ago.
+  * Fix a regression in notify_on_cmd_finish that caused notifications to
+    appear for every command after the first (#7725)
+
+-------------------------------------------------------------------
 Sat Jun 22 06:59:49 UTC 2024 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Update to 0.35.2:

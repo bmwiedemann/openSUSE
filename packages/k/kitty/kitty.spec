@@ -19,7 +19,7 @@
 # sphinx_copybutton not in Factory
 %bcond_with docs
 Name:           kitty
-Version:        0.35.2
+Version:        0.36.0
 Release:        0
 Summary:        A GPU-based terminal emulator
 License:        GPL-3.0-only
@@ -34,7 +34,11 @@ BuildRequires:  Mesa-libGL-devel
 BuildRequires:  fdupes
 BuildRequires:  fontconfig-devel
 BuildRequires:  freetype2-devel
-BuildRequires:  go >= 1.22
+### Avoiding any 'have choice for go' issues ...
+BuildRequires:  go1.22
+#BuildRequires:  go >= 1.22
+#BuildRequires:  golang-packaging
+#####
 BuildRequires:  harfbuzz-devel >= 1.5.0
 BuildRequires:  libXcursor-devel
 BuildRequires:  libXi-devel
@@ -49,6 +53,7 @@ BuildRequires:  libxkbcommon-x11-devel
 BuildRequires:  ncurses-devel
 BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
+BuildRequires:  symbols-only-nerd-fonts
 BuildRequires:  terminfo
 BuildRequires:  wayland-devel
 BuildRequires:  wayland-protocols-devel
