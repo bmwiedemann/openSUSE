@@ -861,4 +861,12 @@ Version 1.11.66
   * Fix `Match system theme` toggle (https://github.com/matrix-org/matrix-react-sdk/pull/12719). Contributed by @florianduros.</comment>
     <requestid>1188224</requestid>
   </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>e75ecc782333c1074f92b23c3f6a6ba0</srcmd5>
+    <version>1.11.73</version>
+    <time>1723997984</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1194487</requestid>
+  </revision>
 </revisionlist>
