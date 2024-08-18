@@ -139,4 +139,13 @@ Needs SR#1093175</comment>
 </comment>
     <requestid>1191411</requestid>
   </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>352409e8a971ce2f2b4ece4a1ba5e1a5</srcmd5>
+    <version>0.17.1</version>
+    <time>1723997982</time>
+    <user>dimstar_suse</user>
+    <comment>- Build with Botan 3 on Leap 15.7
+</comment>
+    <requestid>1194484</requestid>
+  </revision>
 </revisionlist>
