@@ -20783,7 +20783,6 @@ unsorted:
   - pam_oath 
   - pam_p11 
   - pam_passwdqc 
-  - pam_pkcs11 
   - pam_pkcs11-devel-doc 
   - pam_radius 
   - pam_saslauthd 
@@ -35846,6 +35845,7 @@ unsorted:
   - rspamd 
   - rss-glx 
   - rssguard 
+  - rsstail 
   - rstart 
   - rstudio 
   - rstudio-desktop 
@@ -36795,6 +36795,7 @@ unsorted:
   - slf4j-reload4j 
   - slf4j-sources 
   - slib 
+  - slicot-devel-static 
   - slop 
   - slop-devel 
   - slrn 

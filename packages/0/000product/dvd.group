@@ -149,7 +149,7 @@
     <package name="augeas" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
     <package name="augeas-bash-completion" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="augeas-lenses" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="autofs" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="autofs" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="autoyast2" supportstatus="unsupported"/> <!-- reason: dvd:autoyast2 -->
     <package name="autoyast2-installation" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="avahi" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -2474,8 +2474,8 @@
     <package name="libnewt0_52" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libnfnetlink0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libnfs14" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
-    <package name="libnfsidmap-sss" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
-    <package name="libnfsidmap1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="libnfsidmap-sss" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="libnfsidmap1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-file_server -->
     <package name="libnftables1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libnftnl11" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libnghttp2-14" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -2492,7 +2492,7 @@
     <package name="libnpth0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libnscd1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libnscd1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="libnsl3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="libnsl3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libnss_usrfiles2" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libntfs-3g89" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libntlm0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
@@ -3213,7 +3213,7 @@
     <package name="netcat-openbsd" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="netcfg" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="netpbm" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="nfs-client" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="nfs-client" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-file_server -->
     <package name="nfs-kernel-server" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-file_server -->
     <package name="nftables" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="nkf" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -3279,6 +3279,7 @@
     <package name="pam_kwallet6-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="pam_kwallet6-common" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="pam_mount" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="pam_pkcs11" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="pam_pwquality" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="pam_pwquality-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="paperkey" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -3823,7 +3824,7 @@
     <package name="ristretto-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="rlwrap" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
     <package name="rng-tools" supportstatus="unsupported"/> <!-- reason: dvd:rng-tools -->
-    <package name="rpcbind" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="rpcbind" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-file_server -->
     <package name="rpm" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="rpm-config-SUSE" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="rsvg-thumbnailer" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
