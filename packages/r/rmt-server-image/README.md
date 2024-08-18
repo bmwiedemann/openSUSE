@@ -10,6 +10,7 @@ It is tested on K3s but should work on any Kubernetes distribution.
 
 To deploy SUSE RMT on top of Kubernetes, each component of the stack is deployed in a dedicated container using a
 Helm chart.
+
 ### Repository Mirroring Tool (SUSE RMT) server
 
 A containerized version of the SUSE RMT application that can pass its configuration via Helm values. Because persistent storage resides on a persistent volume, you need to adjust the volume size according to the number of repositories you need to mirror.
