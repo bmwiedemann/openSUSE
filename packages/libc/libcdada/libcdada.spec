@@ -19,7 +19,7 @@
 
 %define sover 0
 Name:           libcdada
-Version:        0.5.2
+Version:        0.6.1
 Release:        0
 Summary:        Basic data structures in C (libstdc++ wrapper)
 License:        BSD-2-Clause

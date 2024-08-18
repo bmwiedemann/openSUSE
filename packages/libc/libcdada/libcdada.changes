@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Aug 18 13:11:36 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.6.1:
+  * tests: fix segfault in map_test.c
+  * Add `prev_val` to
+    `cdada_map_insert_replace()` API call to make it more useful
+  * CI: add coverage for clang11, 12 and 13.
+
+-------------------------------------------------------------------
 Sun Mar 17 09:19:55 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.5.2:

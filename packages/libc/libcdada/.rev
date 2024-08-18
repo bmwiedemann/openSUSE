@@ -42,4 +42,16 @@
   * set: minor fix in header variable name</comment>
     <requestid>1158681</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>993af5a79076907c51a4ca79f3286295</srcmd5>
+    <version>0.6.1</version>
+    <time>1723998018</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.6.1:
+  * tests: fix segfault in map_test.c
+  * Add `prev_val` to
+    `cdada_map_insert_replace()` API call to make it more useful
+  * CI: add coverage for clang11, 12 and 13.</comment>
+    <requestid>1194556</requestid>
+  </revision>
 </revisionlist>
