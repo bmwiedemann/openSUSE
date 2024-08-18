@@ -249,4 +249,41 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1170261</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>270e753b93a8999003ba7865d34e1879</srcmd5>
+    <version>1.17.25</version>
+    <time>1723998015</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.17.25:
+  * Don't exchange zet/zes DDI tables for tracing
+  * Fix OpenSSF token permissions warning
+  * Rename init functions to avoid confusion with zeInit
+  * Add missing ZE_RESULT_ERROR_UNINITIALIZED checks to
+    zesDriverGet
+  * Fix DriverGet to handle failed drivers and avoid layer init
+    during checks
+  * Fix layer init with multiple drivers and ensure init for
+    instrumentation support
+  * Change loader log file location
+  * Add update-spec.yml workflow
+  * Define FMT_HEADER_ONLY for spdlog inclusion
+  * spdlog: Use system library if requested
+  * Create scorecard.yml
+  * Support for Pluggable Validation Layer Checkers
+  * Add NPU Driver to list of known names on linux
+  * Correct casting in tracing layer sample code
+  * Bundle spdlog headers as part of build vs library build
+  * Recognize mutable command list struct types in validation
+    layer
+  * Update to support v1.9.3 of the L0 Spec
+  * Fix Tracing Layer Dynamic Enable Counter
+  * Fix loading environment strings
+  * Avoid init of Logger unless Enabled by
+    ZEL_ENABLE_LOADER_LOGGING
+  * fix Logging build to be static linked
+  * Fix code Gen scripts for zesInit Only
+  * Fix Build using IntelLLVM compiler
+  * Installation path fixes</comment>
+    <requestid>1194549</requestid>
+  </revision>
 </revisionlist>

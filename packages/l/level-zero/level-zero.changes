@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Sun Aug 18 12:59:24 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.17.25:
+  * Don't exchange zet/zes DDI tables for tracing
+  * Fix OpenSSF token permissions warning
+  * Rename init functions to avoid confusion with zeInit
+  * Add missing ZE_RESULT_ERROR_UNINITIALIZED checks to
+    zesDriverGet
+  * Fix DriverGet to handle failed drivers and avoid layer init
+    during checks
+  * Fix layer init with multiple drivers and ensure init for
+    instrumentation support
+  * Change loader log file location
+  * Add update-spec.yml workflow
+  * Define FMT_HEADER_ONLY for spdlog inclusion
+  * spdlog: Use system library if requested
+  * Create scorecard.yml
+  * Support for Pluggable Validation Layer Checkers
+  * Add NPU Driver to list of known names on linux
+  * Correct casting in tracing layer sample code
+  * Bundle spdlog headers as part of build vs library build
+  * Recognize mutable command list struct types in validation
+    layer
+  * Update to support v1.9.3 of the L0 Spec
+  * Fix Tracing Layer Dynamic Enable Counter
+  * Fix loading environment strings
+  * Avoid init of Logger unless Enabled by
+    ZEL_ENABLE_LOADER_LOGGING
+  * fix Logging build to be static linked
+  * Fix code Gen scripts for zesInit Only
+  * Fix Build using IntelLLVM compiler
+  * Installation path fixes
+  * Add USE_ASAN cmake flag for address sanitization
+
+-------------------------------------------------------------------
 Mon Mar 18 13:30:29 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.16.1:
@@ -13,7 +48,7 @@ Mon Mar 18 13:30:29 UTC 2024 - Dirk Müller <dmueller@suse.com>
 Wed Dec 27 05:08:00 UTC 2023 - Alessandro de Oliveira Faria <cabelo@opensuse.org>
 
 - Created package level-zero version 1.15.8
-  - API Headers, Loader, & Validation Layer based on oneAPI 
+  - API Headers, Loader, & Validation Layer based on oneAPI
     Level Zero Specification v1.8.0
     * oneAPI Level Zero API Headers generated from:
       - oneAPI Level Zero v1.8.0 Core API Headers
@@ -23,9 +58,9 @@ Wed Dec 27 05:08:00 UTC 2023 - Alessandro de Oliveira Faria <cabelo@opensuse.org
     * oneAPI Level Zero Validation Layer v1.15.8
     * oneAPI Level Zero Tracing Layer v1.15.8
   - Packages Included:
-    * level-zero -> Runtime package providing oneAPI 
+    * level-zero -> Runtime package providing oneAPI
       Level Zero Loader & Validation Layer
-    * level-zero-devel -> Development package providing oneAPI Level Zero 
+    * level-zero-devel -> Development package providing oneAPI Level Zero
       Loader, Validation Layer & API Headers
 
 -------------------------------------------------------------------
@@ -38,7 +73,7 @@ Thu Nov  9 09:00:27 UTC 2023 - Dirk Müller <dmueller@suse.com>
 Fri Sep  1 03:26:09 UTC 2023 - Alessandro de Oliveira Faria <cabelo@opensuse.org>
 
 - Created package level-zero version 1.14.0
-  - API Headers, Loader, & Validation Layer based on oneAPI 
+  - API Headers, Loader, & Validation Layer based on oneAPI
     Level Zero Specification v1.7.8 Contents:
     * oneAPI Level Zero API Headers generated from:
       - oneAPI Level Zero v1.7.8 Core API Headers
@@ -48,16 +83,16 @@ Fri Sep  1 03:26:09 UTC 2023 - Alessandro de Oliveira Faria <cabelo@opensuse.org
     * oneAPI Level Zero Validation Layer v1.14.0
     * oneAPI Level Zero Tracing Layer v1.14.0
   - Packages Included:
-    * level-zero -> Runtime package providing oneAPI Level Zero 
+    * level-zero -> Runtime package providing oneAPI Level Zero
       Loader & Validation Layer
-    * level-zero-devel -> Development package providing oneAPI Level Zero 
+    * level-zero-devel -> Development package providing oneAPI Level Zero
       Loader, Validation Layer & API Headers
 
 -------------------------------------------------------------------
 Mon Jul 31 21:07:49 UTC 2023 - Alessandro de Oliveira Faria <cabelo@opensuse.org>
 
 - Created package level-zero version 1.13.1
-  - API Headers, Loader, & Validation Layer based on oneAPI 
+  - API Headers, Loader, & Validation Layer based on oneAPI
     Level Zero Specification v1.6.10 Contents:
     * oneAPI Level Zero API Headers generated from:
       - oneAPI Level Zero v1.7.0 Core API Headers
@@ -67,16 +102,16 @@ Mon Jul 31 21:07:49 UTC 2023 - Alessandro de Oliveira Faria <cabelo@opensuse.org
     * oneAPI Level Zero Validation Layer v1.13.1
     * oneAPI Level Zero Tracing Layer v1.13.1
   - Packages Included:
-    * level-zero -> Runtime package providing oneAPI Level Zero 
+    * level-zero -> Runtime package providing oneAPI Level Zero
       Loader & Validation Layer
-    * level-zero-devel -> Development package providing oneAPI Level Zero 
+    * level-zero-devel -> Development package providing oneAPI Level Zero
       Loader, Validation Layer & API Headers
 
 -------------------------------------------------------------------
 Mon Jun 12 04:18:43 UTC 2023 - Alessandro de Oliveira Faria <cabelo@opensuse.org>
 
 - Created package level-zero version 1.12.0
-  - API Headers, Loader, & Validation Layer based on oneAPI Level Zero 
+  - API Headers, Loader, & Validation Layer based on oneAPI Level Zero
     Specification v1.6.10 Contents:
     * oneAPI Level Zero API Headers generated from:
       - oneAPI Level Zero v1.6.10 Core API Headers
@@ -86,15 +121,15 @@ Mon Jun 12 04:18:43 UTC 2023 - Alessandro de Oliveira Faria <cabelo@opensuse.org
     * oneAPI Level Zero Validation Layer v1.12.0
     * oneAPI Level Zero Tracing Layer v1.12.0
   - Packages Included:
-    * level-zero -> Runtime package providing oneAPI Level Zero 
+    * level-zero -> Runtime package providing oneAPI Level Zero
       Loader & Validation Layer
-    * level-zero-devel -> Development package providing oneAPI 
+    * level-zero-devel -> Development package providing oneAPI
       Level Zero Loader, Validation Layer & API Headers
 
 -------------------------------------------------------------------
 Wed Apr 19 17:05:41 UTC 2023 - Alessandro de Oliveira Faria <cabelo@opensuse.org>
 
-- API Headers, Loader, & Validation Layer based on oneAPI Level Zero 
+- API Headers, Loader, & Validation Layer based on oneAPI Level Zero
   Specification v1.6.0
 - oneAPI Level Zero API Headers generated from:
   * oneAPI Level Zero v1.6.0 Core API Headers
@@ -104,12 +139,12 @@ Wed Apr 19 17:05:41 UTC 2023 - Alessandro de Oliveira Faria <cabelo@opensuse.org
 - oneAPI Level Zero Validation Layer v1.10.0
 - oneAPI Level Zero Tracing Layer v1.10.0
 - Packages Included:
-  * level-zero -> Runtime package providing oneAPI Level Zero 
+  * level-zero -> Runtime package providing oneAPI Level Zero
     Loader & Validation Layer
-  * level-zero-devel -> Development package providing oneAPI Level Zero 
+  * level-zero-devel -> Development package providing oneAPI Level Zero
     Loader, Validation Layer & API Headers
 - Runtime Implementations Supported
-  * intel-level-zero-gpu (https://github.com/intel/compute-runtime/releases) 
+  * intel-level-zero-gpu (https://github.com/intel/compute-runtime/releases)
     Minimum required version 21.09.19150
 
 -------------------------------------------------------------------
