@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Aug 16 11:20:55 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.54.0:
+  * [Preferences] Reader: Added Scaling Filter parameter
+  * Fixed in-app notification position in fullscreen
+  * [Servers] Added Anteiku Scans (FR
+  * [Servers] Added ED Scanlation (FR)
+  * [Servers] Added EZmanga (EN)
+  * [Servers] Added Kewn Scans (EN)
+  * [Servers] Added Starbound Scans (FR)
+  * [L10n] Updated French translation
+
+-------------------------------------------------------------------
 Sat Aug 10 00:32:38 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 1.53.0:
