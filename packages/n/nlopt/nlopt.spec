@@ -1,7 +1,7 @@
 #
 # spec file for package nlopt
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,7 @@
 %define pname nlopt
 
 Name:           nlopt%{?psuffix}
-Version:        2.7.1
+Version:        2.8.0
 Release:        0
 Summary:        A library for nonlinear optimization
 License:        LGPL-2.0-only
@@ -90,6 +90,7 @@ This package contains the Octave interface for NLopt.
 %autosetup -p1 -n %{pname}-%{version}
 
 %build
+# Must be built with -D_FORTIFY_SOURCE=2 (not 3) for tests to pass, see <https://github.com/stevengj/nlopt/issues/563>
 %if %{with bindings}
 %{python_expand # Necessary to run configure with all python flavors
 export PYTHON=$python
@@ -97,6 +98,8 @@ mkdir ../${PYTHON}_build
 cp -pr ./ ../${PYTHON}_build
 pushd ../${PYTHON}_build
 %cmake \
+   -DCMAKE_C_FLAGS="%(echo %optflags | sed 's/-D_FORTIFY_SOURCE=3/-D_FORTIFY_SOURCE=2/g')" \
+   -DCMAKE_CXX_FLAGS="%(echo %optflags | sed 's/-D_FORTIFY_SOURCE=3/-D_FORTIFY_SOURCE=2/g')" \
    -DCMAKE_SKIP_RPATH:BOOL=OFF \
    -DCMAKE_SKIP_INSTALL_RPATH:BOOL=ON \
    -DNLOPT_MATLAB=OFF \
@@ -105,13 +108,15 @@ pushd ../${PYTHON}_build
    -DNLOPT_PYTHON:BOOL=ON \
    -DNLOPT_OCTAVE:BOOL=ON \
    -DNLOPT_SWIG:BOOL=ON \
-   -DPYTHON_EXECUTABLE=%{_bindir}/$python \
+   -DPython_EXECUTABLE=%{_bindir}/$python \
    %{nil}
 %cmake_build
 popd
 }
 %else
 %cmake \
+   -DCMAKE_C_FLAGS="%(echo %optflags | sed 's/-D_FORTIFY_SOURCE=3/-D_FORTIFY_SOURCE=2/g')" \
+   -DCMAKE_CXX_FLAGS="%(echo %optflags | sed 's/-D_FORTIFY_SOURCE=3/-D_FORTIFY_SOURCE=2/g')" \
    -DCMAKE_SKIP_RPATH:BOOL=OFF \
    -DCMAKE_SKIP_INSTALL_RPATH:BOOL=ON \
    -DNLOPT_MATLAB=OFF \
@@ -172,7 +177,8 @@ pushd ../${PYTHON}_build
 %if %{with bindings}
 %files %{python_files}
 %license COPYING
-%{python_sitearch}/*
+%{python_sitearch}/nlopt.py
+%{python_sitearch}/*.so
 
 %files -n octave-nlopt_optimize
 %license COPYING
