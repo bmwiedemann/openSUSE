@@ -299,4 +299,12 @@ Not source compatible. Installable in parallel with all packages.</comment>
     <comment>Revert, see https://bugzilla.suse.com/show_bug.cgi?id=1223442</comment>
     <requestid>1170573</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>d8c412e3186aeec2a94bdf9f888ef82e</srcmd5>
+    <version>10.44</version>
+    <time>1723997962</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1194362</requestid>
+  </revision>
 </revisionlist>

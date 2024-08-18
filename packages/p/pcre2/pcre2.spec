@@ -1,7 +1,7 @@
 #
 # spec file for package pcre2
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 Name:           pcre2
-Version:        10.43
+Version:        10.44
 Release:        0
 Summary:        A library for Perl-compatible regular expressions
 License:        BSD-3-Clause
@@ -29,8 +29,10 @@ Source0:        https://github.com/PhilipHazel/pcre2/releases/download/%{name}-%
 Source2:        https://github.com/PhilipHazel/pcre2/releases/download/%{name}-%{version}/%{name}-%{version}.tar.bz2.sig
 Source3:        %{name}.keyring
 Source4:        baselibs.conf
-#PATCH-FIX-OPENSUSE tchvatal@suse.cz upstream thinks it is good idea to use rpath, taken from RH
+# PATCH-FIX-OPENSUSE tchvatal@suse.cz upstream thinks it is good idea to use rpath, taken from RH
 Patch1:         pcre2-10.10-multilib.patch
+# PATCH-FIX-UPSTREAM: patch fixes issue #415 on GitHub: Test suite fails when targeting i686, fix taken from PR #418
+Patch2:         pcre2-10.44-github-issue-415.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
