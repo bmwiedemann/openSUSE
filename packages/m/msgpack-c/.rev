@@ -36,4 +36,12 @@
   * Support relative path for CMAKE_INSTALL_*DIR (#1119) (forwarded request 1182970 from jubalh)</comment>
     <requestid>1183304</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>20efe7d9d4e11e916c1bdcbe51ddb424</srcmd5>
+    <version>6.1.0</version>
+    <time>1723997978</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 6.1.0</comment>
+    <requestid>1194465</requestid>
+  </revision>
 </revisionlist>
