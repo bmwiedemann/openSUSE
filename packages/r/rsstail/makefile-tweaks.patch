@@ -1,0 +1,44 @@
+From a09dac78a2936a83fbc35aab81405783fe6fba36 Mon Sep 17 00:00:00 2001
+From: Folkert van Heusden <folkert@vanheusden.com>
+Date: Sun, 21 Jan 2024 17:38:28 +0100
+Subject: [PATCH] tweaks
+
+---
+ Makefile | 4 ++--
+ r2t.c    | 2 +-
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 4a7f6d0..5cbba93 100644
+--- a/Makefile
++++ b/Makefile
+@@ -1,6 +1,6 @@
+ VERSION=2.1
+ 
+-DEBUG=-g
++DEBUG=-ggdb3
+ LDFLAGS=-liconv_hook -lmrss $(DEBUG)
+ CFLAGS=-O3 -Wall --std=gnu11 -DVERSION=\"$(VERSION)\" $(DEBUG)
+ 
+@@ -31,7 +31,7 @@ package: clean
+ 	# source package
+ 	rm -rf rsstail-$(VERSION)*
+ 	mkdir rsstail-$(VERSION)
+-	cp *.c *.1 Makefile* README.md license.* rsstail-$(VERSION)
++	cp *.c rsstail.1 Makefile* README.md license.* rsstail-$(VERSION)
+ 	tar cf - rsstail-$(VERSION) | gzip -9 > rsstail-$(VERSION).tgz
+ 	rm -rf rsstail-$(VERSION)
+ 
+diff --git a/r2t.c b/r2t.c
+index 9a096ec..58a8a9a 100644
+--- a/r2t.c
++++ b/r2t.c
+@@ -381,7 +381,7 @@ int main(int argc, char *argv[])
+ 		mrss_item_t *item_cur = NULL;
+ 		mrss_item_t *first_item[n_url];
+ 		mrss_item_t *tmp_first_item;
+-		time_t cur_last_changed;
++		time_t cur_last_changed = 0;
+ 		int n_shown = 0;
+ 
+ 		if (verbose)

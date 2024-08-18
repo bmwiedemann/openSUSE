@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0364b8d0bc5629e93d14029cb2d67370</srcmd5>
+    <version>2.1</version>
+    <time>1723997972</time>
+    <user>dimstar_suse</user>
+    <comment>With the dependency on iconv_hook-devel removed, the package can be re-added (https://build.opensuse.org/request/show/1174876)</comment>
+    <requestid>1194448</requestid>
+  </revision>
+</revisionlist>
