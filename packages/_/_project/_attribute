@@ -444,8 +444,8 @@ products:
     - x86_64
   - keylime-control-plane-image:
     - x86_64
-#  - kiwi-image:
-#    - x86_64
+  - kiwi-image:
+    - x86_64
   - mariadb-client-image:
     - x86_64
   - mariadb-image:
