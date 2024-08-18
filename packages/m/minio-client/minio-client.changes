@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Aug 17 14:16:31 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 20240817T113350Z:
+  * policy entities now print group memberships per user (#4961)
+  * combine STS, SVC accounts into access keys with or without
+    expiration (#5004)
+  * Fix warnings (#5023)
+
+-------------------------------------------------------------------
 Tue Aug 13 18:13:31 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 20240813T053317Z:
