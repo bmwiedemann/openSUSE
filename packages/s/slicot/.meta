@@ -1,0 +1,8 @@
+<package name="slicot" project="openSUSE:Factory">
+  <title>A Fortran subroutines library for systems and control</title>
+  <description>SLICOT - Subroutine Library In COntrol Theory - is a general purpose basic
+mathematical library for control theoretical computations. The library provides
+tools to perform essential system analysis and synthesis tasks.</description>
+  <devel project="science" package="slicot"/>
+  <url>https://github.com/SLICOT/SLICOT-Reference</url>
+</package>
