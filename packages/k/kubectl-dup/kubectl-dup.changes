@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Aug 18 06:37:28 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.3.2:
+  * chore: krew original desc retag
+  * chore: description change krew
+  * feat: support for all CRDs, loop flag, adapters, release-prep
+  * docs: asciinema
+  * docs: added to krew index
+  * docs: header-bg
+  * docs: header img
+  * chore(release): goreleaser-config
+
+-------------------------------------------------------------------
 Mon Jul 15 07:00:45 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.2.0:

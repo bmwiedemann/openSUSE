@@ -19,12 +19,12 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           kubectl-dup
-Version:        0.2.0
+Version:        0.3.2
 Release:        0
 Summary:        Kubectl plugin for duplication of existing kubernetes resources
 License:        MIT
 URL:            https://github.com/vash/dup
-Source:         dup-%{version}.tar.gz
+Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  go >= 1.22
 
@@ -37,7 +37,7 @@ simplifying the administration and general interaction with Kubernetes
 clusters.
 
 %prep
-%autosetup -p 1 -a 1 -n dup-%{version}
+%autosetup -p 1 -a 1
 
 %build
 go build \
@@ -53,4 +53,5 @@ install -D -m 0755 bin/%{name} %{buildroot}/%{_bindir}/%{name}
 %doc README.md
 %license LICENSE
 %{_bindir}/%{name}
+
 %changelog
