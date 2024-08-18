@@ -81,7 +81,6 @@ Recommends:     openssh-32bit
 Recommends:     aaa_base-extras-32bit
 Recommends:     acl-32bit
 Recommends:     attr-32bit
-Recommends:     autofs-32bit
 Recommends:     bash-completion-32bit
 Recommends:     bind-utils-32bit
 Recommends:     bzip2-32bit
@@ -129,8 +128,6 @@ Recommends:     ncurses-utils-32bit
 Recommends:     net-snmp-32bit
 Recommends:     netcat-openbsd-32bit
 Recommends:     netcfg-32bit
-Recommends:     nfs-client-32bit
-Recommends:     nfsidmap-32bit
 Recommends:     nscd-32bit
 Recommends:     ntfs-3g-32bit
 Recommends:     ntfsprogs-32bit

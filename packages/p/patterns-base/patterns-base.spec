@@ -344,7 +344,6 @@ Recommends:     aaa_base-extras
 Recommends:     acl
 # getattr and setattr
 Recommends:     attr
-Recommends:     autofs
 Recommends:     bash-completion
 Recommends:     bind-utils
 # compressor is interesting
@@ -403,8 +402,6 @@ Recommends:     ncurses-utils
 Recommends:     net-snmp
 Recommends:     netcat-openbsd
 Recommends:     netcfg
-Recommends:     nfs-client
-Recommends:     nfsidmap
 # Kernel 5.15+ has an improved R/W ntfs module.
 # Use ntfs-3g anyway because udisks has issues with mount option handling:
 # https://github.com/storaged-project/udisks/issues/932
