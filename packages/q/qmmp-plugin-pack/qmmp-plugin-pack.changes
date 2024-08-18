@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Aug 18 13:52:58 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.1.2:
+  * fixed file name filters in the modplug plugin
+  * fixed issue in the modplug plugin settings
+  * disabled Qt 6.7 build warnings
+
+-------------------------------------------------------------------
 Fri Mar 31 10:11:20 UTC 2023 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 2.1.1:
@@ -8,7 +16,7 @@ Fri Mar 31 10:11:20 UTC 2023 - Alexei Sorokin <sor.alexei@meowr.ru>
 -------------------------------------------------------------------
 Thu Nov  3 18:55:45 UTC 2022 - Cristian Rodríguez <crrodriguez@opensuse.org>
 
-- Remove unused buildrequire on yasm. 
+- Remove unused buildrequire on yasm.
 
 -------------------------------------------------------------------
 Tue May 17 19:43:28 UTC 2022 - Alexei Sorokin <sor.alexei@meowr.ru>
