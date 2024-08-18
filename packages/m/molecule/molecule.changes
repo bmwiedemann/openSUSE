@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Aug 17 07:36:41 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 24.8.0:
+  * Enhancements
+    - Create instances during login if not created (#4253)
+      @cavcrosby
+  * Bugfixes
+    - Fix install from adt advice (#4275) @ziegenberg
+    - Use MOLECULE_GLOB environment variable for list command as
+      well (#4231) @ssbarnea
+
+-------------------------------------------------------------------
 Thu Jul 11 05:35:07 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 24.7.0:
