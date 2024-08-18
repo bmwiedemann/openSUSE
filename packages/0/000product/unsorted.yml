@@ -2454,9 +2454,6 @@ unsorted:
   - compiz-lang 
   - compiz-manager 
   - compiz-plugins 
-  - compiz-plugins-experimental 
-  - compiz-plugins-experimental-devel 
-  - compiz-plugins-experimental-lang 
   - compiz-plugins-extra 
   - compiz-plugins-extra-devel 
   - compiz-plugins-extra-lang 
@@ -10149,6 +10146,10 @@ unsorted:
   - kimagemapeditor 
   - kimagemapeditor-lang 
   - kimap-devel 
+  - kind 
+  - kind-bash-completion 
+  - kind-fish-completion 
+  - kind-zsh-completion 
   - kinit-devel 
   - kio-devel 
   - kio-extras5 
@@ -17388,6 +17389,10 @@ unsorted:
   - link-grammar-devel 
   - linkerd-cli 
   - linkerd-cli-bash-completion 
+  - linkerd-cli-edge 
+  - linkerd-cli-edge-bash-completion 
+  - linkerd-cli-edge-fish-completion 
+  - linkerd-cli-edge-zsh-completion 
   - linkerd-cli-fish-completion 
   - linkerd-cli-zsh-completion 
   - linkloop 
@@ -28365,7 +28370,6 @@ unsorted:
   - python311-base-32bit 
   - python311-base58 
   - python311-bashate 
-  - python311-bcrypt 
   - python311-beartype 
   - python311-beautifulsoup4 
   - python311-before-after 
