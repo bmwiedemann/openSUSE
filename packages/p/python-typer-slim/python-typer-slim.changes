@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Aug 17 08:51:10 UTC 2024 - Matthias Bach <marix@marix.org> - 0.12.4
+
+- Update to upstream version 0.12.4
+  * Fix support for UnionType (e.g. str | None) with Python 3.11.
+  * Fix zsh autocompletion installation.
+  * Fix usage of Annotated with future annotations in Python 3.7+.
+  * Fix shell_complete not working for Arguments.
+
+-------------------------------------------------------------------
 Tue Apr  9 20:00:21 UTC 2024 - Matthias Bach <marix@marix.org> - 0.12.3
 
 - Update to upstream version 0.12.3
