@@ -1,7 +1,7 @@
 #
 # spec file for package libtracefs
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 Name:           libtracefs
 %define lname   libtracefs1
-Version:        1.7.0
+Version:        1.8.1
 Release:        0
 Summary:        Linux kernel trace file system library
 License:        LGPL-2.1-only
@@ -35,7 +35,6 @@ BuildRequires:  source-highlight
 BuildRequires:  xmlto
 BuildRequires:  xz
 BuildRequires:  pkgconfig(libtraceevent) >= 1.3
-Patch1:         add-explicit-meson-thread-dependency.patch
 
 %description
 This library provides C APIs to access the kernel trace file system.

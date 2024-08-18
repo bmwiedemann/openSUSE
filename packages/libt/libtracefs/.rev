@@ -137,4 +137,12 @@
 - Drop patch 0001-libtracefs-Add-initial-support-for-meson.patch (upstream) (forwarded request 1093516 from jones_tony)</comment>
     <requestid>1093577</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>06d4fc09323abe01d90be85c363c1de5</srcmd5>
+    <version>1.8.1</version>
+    <time>1723997967</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.8.1</comment>
+    <requestid>1194474</requestid>
+  </revision>
 </revisionlist>

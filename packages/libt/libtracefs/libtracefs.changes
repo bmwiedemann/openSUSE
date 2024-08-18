@@ -1,4 +1,84 @@
 -------------------------------------------------------------------
+Sat Jul 27 17:57:36 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.8.1
+  * Plug some memory leaks
+- Delete 0001-libtracefs-meson-build-tracefs-mmap-by-default.patch
+  (merged)
+
+-------------------------------------------------------------------
+Mon 14:22:13 UTC 2024 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Update to v1.8.0
+  * remove: add-explicit-meson-thread-dependency.patch
+  * tracefs_follow_event_clear() and tracefs_follow_missed_events_clear()
+    API to clean up followers if the tracefs instance is going to be used
+    for other iterations
+  * tracefs_instance_file_write_number()
+    A simple helper function to make it easier to write numbers into the
+    tracefs files. It does the conversion from number to string, as the
+    files expect strings and not numbers.
+  * Add API to work with kbuffer, which gives more control to the application
+    and speeds it up:
+      tracefs_cpu_read_buf()
+      tracefs_cpu_buffered_read_buf()
+      tracefs_cpu_flush_buf()
+   * tracefs_instance_get_buffer_percent() and tracefs_instance_set_buffer_percent()
+     Modify the buffer_percent file that allows readers to block until the buffer
+     is filled to a given percent. This keeps the reader from causing events that
+     will add noise to the trace.
+   * tracefs_instance_clear()
+     Helper to clear the contents of the current trace instance.
+   * tep_get_sub_buffer_data_size()
+     Helper to retrieve the current sub-buffer data size. The Linux kernel tracing
+     ring buffer is broken up into smaller sub-buffers. This returns the size of
+     the data portion of those sub-buffers (does not include the sub-buffer meta
+     data).
+   * tracefs_load_headers()
+     API to just load the information about the sub-buffers and nothing more.
+   * API to extract tracing ring buffer statistics
+       tracefs_instance_get_stat()
+       tracefs_instance_put_stat()
+       tracefs_buffer_stat_entries()
+       tracefs_buffer_stat_overrun()
+       tracefs_buffer_stat_commit_overrun()
+       tracefs_buffer_stat_bytes()
+       tracefs_buffer_stat_event_timestamp()
+       tracefs_buffer_stat_timestamp()
+       tracefs_buffer_stat_dropped_events
+    * tracefs_instance_set_subbuf_size() and tracefs_instance_get_subbuf_size()
+      API to modify the sub-buffers size of the tracing ring buffer.
+    * Added TIMESTAMP_DELTA and TIMESTAMP_DELTA_USECS to tracefs_sql() as a shortcut
+      for (end.TIMESTAMP - start.TIMESTAMP) and (end.TIMESTAMP_USECS - start.TIMESTAMP_USECS)
+      respectively
+    * Add PID filtering API:
+        tracefs_filter_pid_function()
+	tracefs_filter_pid_events()
+        tracefs_filter_pid_function_clear()
+        tracefs_filter_pid_events_clear()
+    * Added tracefs_cpu_snapshot_open() to read the raw data of snapshot buffers
+    * Added snapshot functions:
+       tracefs_snapshot_snap()
+       tracefs_snapshot_clear()
+       tracefs_snapshot_free()
+    * Added ring buffer memory mapping APIs
+      tracefs_cpu_open_mapped()
+      tracefs_cpu_is_mapped()
+      tracefs_mapped_is_supported()
+      tracefs_cpu_map()
+      tracefs_cpu_unmap()
+    * Updates:
+      - Increase pipe max size to max value when using splice.
+      - Clear "max_graph_depth" on tracefs_instance_reset()
+      - Add missing headers to syscall() and SYS_* defines
+      - Add dependency fixes to meson build
+      - Fix some documentation / man page issues
+      - Fix memory leaks
+      - Fix cscope rule
+      - Fix issues in unit tests
+      - Added many more unit tests
+
+-------------------------------------------------------------------
 Thu Jun 15 18:50:11 UTC 2023 - Tony Jones <tonyj@suse.com>
 
 - Add explicit thread dependency for older versions of meson (i.e SLE-15-SP5)
