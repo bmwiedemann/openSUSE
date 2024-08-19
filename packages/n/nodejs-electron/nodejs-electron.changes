@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Aug 18 07:39:42 UTC 2024 - thod_@gmx.de
+
+- New upstream release 30.4.0
+  * Added a new property prefersReducedTransparency to nativeTheme, which indicates whether the user has chosen to reduce OS-level transparency via system accessibility settings.
+  * Aligned failure pathway in File System Access API with upstream when attempting to open a file or directory in a blocked path.
+  * Fixed an issue where navigator.serial.getPorts() incorrectly returned an empty array in some cases.
+  * Fixed an issue where the File System Access API did not remember the user's last picked directory as expected.
+  * Fixed the resource leak when using Node.js readable streams as the response body for a custom protocol handler.
+  * Resolved an issue where desktopCapturer.getSources never fulfilled its promise in some cases.
+  * Security fixes for CVE-2024-6989 CVE-2024-6991 (bsc#1228942)
+  * Security fixes for CVE-2024-6776 CVE-2024-6778 CVE-2024-6777 CVE-2024-6773 CVE-2024-6774 CVE-2024-6772 CVE-2024-6775 CVE-2024-6779 (bsc#1227979)
+
+-------------------------------------------------------------------
 Tue Aug 13 20:28:37 UTC 2024 - Bruno Pitrus <brunopitrus@hotmail.com>
 
 - Fix ftbfs with ffmpeg 7.x
