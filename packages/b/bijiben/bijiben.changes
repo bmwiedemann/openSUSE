@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug 19 11:27:11 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire gettext-devel instead of gettext: allow OBS to
+  shortcut through gettext-runtime-mini.
+
+-------------------------------------------------------------------
 Mon May 27 01:32:36 UTC 2024 - Yifan Jiang <yfjiang@suse.com>
 
 - The packages gnome-shell-search-provider-bijiben triggers

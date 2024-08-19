@@ -30,7 +30,7 @@ Patch0:         https://gitlab.gnome.org/GNOME/gnome-notes/-/merge_requests/158.
 Patch1:         bijiben-switch-to-soup3.patch
 
 BuildRequires:  fdupes
-BuildRequires:  gettext
+BuildRequires:  gettext-devel
 BuildRequires:  meson >= 0.50.0
 BuildRequires:  pkgconfig
 BuildRequires:  yelp-tools
