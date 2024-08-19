@@ -1285,4 +1285,15 @@
   * Auth GitHub in Init (#3131) (forwarded request 1194071 from ph03nix)</comment>
     <requestid>1194108</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>8b382b1a6f404ecfbcfaf10c8c31484e</srcmd5>
+    <version>3.81.9</version>
+    <time>1724103936</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.81.9:
+  * fix(deps): update module github.com/sendgrid/sendgrid-go to v3.15.0+incompatible (#3214)
+  * Improve domain / url handling in detectors (#3221)
+  * Support for kebab case and dot notation in permission generation tool (#3222) (forwarded request 1194642 from ph03nix)</comment>
+    <requestid>1194715</requestid>
+  </revision>
 </revisionlist>
