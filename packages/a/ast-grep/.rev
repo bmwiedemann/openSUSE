@@ -517,4 +517,16 @@
   * feat: add pytype for register language 8b660cf</comment>
     <requestid>1193093</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>1e2577d83899b400bd2729355f036fdb</srcmd5>
+    <version>0.26.2+0</version>
+    <time>1724103896</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.26.2:
+  * fix: readopt matched metavar in napi #1380
+  * chore: update napi definition 07e084a
+  * fix(deps): update dependency @swc/core to v1.7.11 835b06f
+  * fix(deps): update dependency @swc/core to v1.7.10 d7a3820</comment>
+    <requestid>1194639</requestid>
+  </revision>
 </revisionlist>

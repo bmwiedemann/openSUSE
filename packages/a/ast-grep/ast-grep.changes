@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Aug 19 06:00:21 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.26.2:
+  * fix: readopt matched metavar in napi #1380
+  * chore: update napi definition 07e084a
+  * fix(deps): update dependency @swc/core to v1.7.11 835b06f
+  * fix(deps): update dependency @swc/core to v1.7.10 d7a3820
+
+-------------------------------------------------------------------
 Sat Aug 10 04:37:33 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.26.1:
