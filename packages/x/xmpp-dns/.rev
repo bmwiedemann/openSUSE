@@ -112,4 +112,19 @@
   * Properly detect all stream errors.</comment>
     <requestid>1166081</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>fe07bc9437fc3301e30e2ebea640bee6</srcmd5>
+    <version>0.4.0</version>
+    <time>1724103892</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.4.0:
+  Added:
+  * Support for XEP-0487 (Host Meta 2).
+  * Support for XEP-0156 (Discovering Alternative XMPP Connection Methods).
+  * Support for connecting over websockets.
+  Changed:
+  * Only check standard ports as fallback.
+  * Simplify output.</comment>
+    <requestid>1194637</requestid>
+  </revision>
 </revisionlist>
