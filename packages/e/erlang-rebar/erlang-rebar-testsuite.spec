@@ -35,11 +35,11 @@ Patch5:         erlc_dep_graph-timeout.patch
 Patch6:         reproducible.patch
 Patch7:         rebar-0014-erl_interface-was-removed-in-Erlang-23.patch
 Patch8:         0001-Fix-rebar-xref-for-recent-Erlang.patch
-BuildRequires:  erlang >= R13B01
+BuildRequires:  erlang >= 26
 %if 0%{?suse_version} > 1320
 BuildRequires:  strip-nondeterminism
 %endif
-Requires:       erlang >= R13B01
+Requires:       erlang >= 26
 Provides:       rebar = %{version}
 Obsoletes:      rebar < %{version}
 %if %{testsuite_build}

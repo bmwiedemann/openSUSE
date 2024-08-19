@@ -98,4 +98,12 @@ for the test suite again (forwarded request 1136835 from dimstar)</comment>
   %patchN.</comment>
     <requestid>1149099</requestid>
   </revision>
+  <revision rev="12" vrev="6">
+    <srcmd5>1bdb0a17b640b278f9ad61c996e877eb</srcmd5>
+    <version>2.6.4+git20180201.b6d3094</version>
+    <time>1724103930</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1194701</requestid>
+  </revision>
 </revisionlist>
