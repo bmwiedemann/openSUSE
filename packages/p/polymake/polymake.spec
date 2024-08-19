@@ -1,7 +1,7 @@
 #
 # spec file for package polymake
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%define lname   libpolymake4_11
+%define lname   libpolymake4_12
 Name:           polymake
-Version:        4.11
+Version:        4.12
 Release:        0
 Summary:        Application for studying combinatorics and geometry of convex polytopes
 License:        GPL-2.0-or-later
@@ -28,6 +28,7 @@ URL:            https://polymake.org/
 Source:         https://github.com/polymake/polymake/archive/V%version.tar.gz
 Source9:        %name-rpmlintrc
 Patch2:         sympol-system.patch
+Patch3:         perl.patch
 BuildRequires:  bliss-devel
 BuildRequires:  cddlib-devel
 BuildRequires:  fdupes
@@ -43,16 +44,29 @@ BuildRequires:  memory-constraints
 BuildRequires:  mpfr-devel
 BuildRequires:  ninja
 BuildRequires:  normaliz-devel
-BuildRequires:  perl < 5.40
-BuildRequires:  perl(JSON)
+BuildRequires:  perl
 BuildRequires:  ppl-devel
 BuildRequires:  readline-devel >= 5
 BuildRequires:  sympol-devel
+BuildRequires:  perl(JSON)
 BuildRequires:  pkgconfig(libxml-2.0)
 Requires:       perl(JSON)
 Requires:       perl(Term::ReadKey)
 Requires:       perl(Term::ReadLine::Gnu)
 Requires:       perl(XML::SAX)
+Suggests:       4ti2
+Suggests:       azove
+Suggests:       gfan
+Suggests:       graphviz
+Suggests:       latte
+Suggests:       plantri
+Suggests:       povray
+Suggests:       qhull
+Suggests:       web_browser
+Suggests:       vinci
+Suggests:       mimehandler(application/pdf)
+#Suggests:      porta <https://porta.zib.de/>
+# web_browser used for displaying SVG
 
 %description
 polymake is a tool to study the combinatorics and the geometry of

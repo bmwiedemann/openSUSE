@@ -1,0 +1,20 @@
+From: Jan Engelhardt <jengelh@inai.de>
+Date: 2024-08-19 00:11 +0200
+
+Unconstrain perl.
+---
+ support/configure.pl |    1 -
+ 1 file changed, 1 deletion(-)
+
+Index: polymake-4.12/support/configure.pl
+===================================================================
+--- polymake-4.12.orig/support/configure.pl
++++ polymake-4.12/support/configure.pl
+@@ -47,7 +47,6 @@ command if you want to use libpolymake (
+ install all required perl modules which are listed after running configure
+ again with the new perl.
+ .
+-      exit(1);
+    }
+ }
+ 
