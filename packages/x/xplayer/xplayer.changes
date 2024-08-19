@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Aug 12 07:54:56 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- remove older Leap releases support
+- switch some dependencies to pkgconfig
+- adapt the spec file to other Cinnamon packages, as the Xapps get soon
+  an overhaul from upstream with more packages getting added
+
+-------------------------------------------------------------------
 Tue Nov  7 10:16:49 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix build with RPM 4.19: unnumbered patches are no longer

@@ -1,7 +1,7 @@
 #
 # spec file for package xplayer
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,15 +16,14 @@
 #
 
 
-%bcond_with zeitgeist
+%bcond_with     zeitgeist
 Name:           xplayer
 Version:        2.4.4
 Release:        0
 Summary:        Generic media player
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
-Group:          Productivity/Multimedia/Video/Players
 URL:            https://github.com/linuxmint/xplayer
-Source:         https://github.com/linuxmint/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source:         %{url}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM return no value in void function
 Patch0:         xplayer-2.2.1-return-no-value-in-void-function.patch
 BuildRequires:  autoconf
@@ -35,10 +34,8 @@ BuildRequires:  gcc-c++
 BuildRequires:  gstreamer-plugins-good >= 0.11.93
 # For gst-inspect tool
 BuildRequires:  gstreamer-utils >= 0.11.93
-BuildRequires:  gtk-doc
 BuildRequires:  intltool
 BuildRequires:  libtool
-BuildRequires:  lirc-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python3-base
 BuildRequires:  python3-pylint
@@ -60,38 +57,34 @@ BuildRequires:  pkgconfig(gstreamer-plugins-bad-1.0) >= 1.0.2
 BuildRequires:  pkgconfig(gstreamer-plugins-base-1.0) >= 0.11.93
 BuildRequires:  pkgconfig(gstreamer-tag-1.0)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.10.0
+BuildRequires:  pkgconfig(gtk-doc)
 BuildRequires:  pkgconfig(ice)
 BuildRequires:  pkgconfig(iso-codes)
 BuildRequires:  pkgconfig(libpeas-1.0) >= 1.1.0
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.6.0
+BuildRequires:  pkgconfig(lirc)
 BuildRequires:  pkgconfig(pygobject-3.0) >= 2.90.3
 BuildRequires:  pkgconfig(shared-mime-info)
 BuildRequires:  pkgconfig(sm)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xapp)
 BuildRequires:  pkgconfig(xkbfile)
-# Needed for scaletempo (boo#810378, boo#809854).
-Requires:       gstreamer-plugins-bad
-# We want a useful set of plugins.
-Requires:       gstreamer-plugins-base
-Requires:       gstreamer-plugins-good
-Requires:       iso-codes
-Requires:       xplayer-plugins
-Recommends:     %{name}-lang
-Recommends:     %{name}-plugins
-Suggests:       gnome-dvb-daemon
-Obsoletes:      %{name}-browser-plugin < %{version}
-Obsoletes:      %{name}-browser-plugin-gmp < %{version}
-Obsoletes:      %{name}-browser-plugin-vegas < %{version}
-%glib2_gsettings_schema_requires
 %if %{with zeitgeist}
 BuildRequires:  pkgconfig(zeitgeist-2.0) >= 0.9.12
 %else
 Obsoletes:      %{name}-plugin-zeitgeist <= %{version}
 %endif
-# Required for cluttersink.
 Requires:       gstreamer-plugin-cluttergst3
+Requires:       gstreamer-plugins-bad
+Requires:       gstreamer-plugins-base
+Requires:       gstreamer-plugins-good
+Requires:       iso-codes
 Requires:       python3-gobject-Gdk
+Recommends:     %{name}-plugins
+Suggests:       gnome-dvb-daemon
+Obsoletes:      %{name}-browser-plugin < %{version}
+Obsoletes:      %{name}-browser-plugin-gmp < %{version}
+Obsoletes:      %{name}-browser-plugin-vegas < %{version}
 
 %description
 xplayer is a media player based on GStreamer for the Cinnamon
@@ -100,16 +93,11 @@ seek and volume controls, and complete keyboard navigation.
 
 %package plugins
 Summary:        Plugins for xplayer media player
-Group:          Productivity/Multimedia/Video/Players
 Requires:       %{name} = %{version}
-# Brasero plugin.
 Recommends:     brasero
-# BBC iPlayer plugin.
 Recommends:     python3-beautifulsoup4
-# Gromit Annotation plugin.
-Suggests:       gromit
-%glib2_gsettings_schema_requires
 Recommends:     python3-httplib2
+Suggests:       gromit
 
 %description plugins
 xplayer is a media player based on GStreamer for the Cinnamon
@@ -121,9 +109,7 @@ This package includes plugins for xplayer, to add advanced features.
 %if %{with zeitgeist}
 %package plugin-zeitgeist
 Summary:        Plugins for xplayer media player -- Zeitgeist Support
-Group:          Productivity/Multimedia/Video/Players
 Requires:       %{name} = %{version}
-Supplements:    packageand(%{name}:zeitgeist)
 
 %description plugin-zeitgeist
 xplayer is a media player based on GStreamer for the Cinnamon
@@ -135,7 +121,6 @@ This package includes the Zeitgeist plugin for xplayer.
 
 %package devel
 Summary:        Development files for xplayer media player
-Group:          Development/Libraries/C and C++
 Requires:       %{name} = %{version}
 
 %description devel
@@ -152,52 +137,29 @@ This package contains files for development.
 
 %build
 NOCONFIGURE=1 ./autogen.sh
-export PYTHON=%{_bindir}/python3
-export BROWSER_PLUGIN_DIR=%{_libdir}/browser-plugins/
 %configure \
   --disable-static \
   --disable-Werror
-#make %{?_smp_mflags} V=1
-make -j1 V=1
+%make_build
 
 %install
 %make_install
-# Remove SWF (#72417) and any Real (#72985) MIME types.
-sed -i ':1;s/^\(MimeType=.*\);[^;]*\(real\|shockwave-flash\)[^;]*/\1/;t1' \
-  %{buildroot}%{_datadir}/applications/%{name}.desktop
 %suse_update_desktop_file %{name}
 %find_lang %{name} %{?no_lang_C}
-find %{buildroot} -type f -name "*.la" -delete -print
-%fdupes %{buildroot}%{_prefix}/
+%fdupes %{buildroot}%{_datadir}
+
+# delete .la file
+rm -f %{buildroot}%{_libdir}/lib%{name}.la
 
 %post
-/sbin/ldconfig
-%if 0%{?suse_version} < 1500
-%desktop_database_post
-%icon_theme_cache_post
-%glib2_gsettings_schema_post
-%endif
+%ldconfig
 
 %postun
-/sbin/ldconfig
-%if 0%{?suse_version} < 1500
-%desktop_database_postun
-%icon_theme_cache_postun
-%glib2_gsettings_schema_post
-%endif
-
-%if 0%{?suse_version} < 1500
-%post plugins
-%glib2_gsettings_schema_post
-
-%postun plugins
-%glib2_gsettings_schema_postun
-%endif
+%ldconfig
 
 %files
 %license COPYING
 %doc AUTHORS ChangeLog NEWS README
-%doc %{_datadir}/help/C/%{name}/
 %{_bindir}/%{name}*
 %{_datadir}/applications/*.desktop
 %{_datadir}/glib-2.0/schemas/org.x.player.enums.xml
@@ -220,11 +182,11 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libexecdir}/%{name}/%{name}-bugreport.py
 %{_libdir}/lib%{name}.so.*
 %{_libdir}/girepository-1.0/Xplayer-1.0.typelib
+%{_datadir}/help/C/%{name}
 
 %files lang -f %{name}.lang
 
 %files plugins
-# Explicitly list plugins.
 %{_libdir}/%{name}/plugins/apple-trailers/
 %{_libdir}/%{name}/plugins/autoload-subtitles/
 %{_libdir}/%{name}/plugins/brasero-disc-recorder/
