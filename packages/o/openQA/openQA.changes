@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug 19 01:04:23 UTC 2024 - okurz@suse.com
+
+- Update to version 4.6.1723914098.c2bbc49b:
+  * Prevent git_clone to interfere with needle tasks
+
+-------------------------------------------------------------------
 Fri Aug 16 17:04:40 UTC 2024 - okurz@suse.com
 
 - Update to version 4.6.1723815752.458533ee:
