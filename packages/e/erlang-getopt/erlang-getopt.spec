@@ -26,9 +26,9 @@ License:        BSD-3-Clause
 Group:          Development/Libraries/Other
 URL:            https://github.com/jcomellas/getopt.git
 Source:         %{app_name}-%{version}.tar.xz
-BuildRequires:  erlang
+BuildRequires:  erlang >= 26
 BuildRequires:  erlang-rebar
-Requires:       erlang
+Requires:       erlang >= 26
 
 %description
 Command-line parsing module that uses a syntax similar to that of GNU getopt.
