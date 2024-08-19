@@ -82,4 +82,14 @@
 - drop 97.patch, upstream</comment>
     <requestid>1180729</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>622aad6753ad1069275793c5711492bf</srcmd5>
+    <version>1.1.6</version>
+    <time>1724103915</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.1.6:
+  * Fixed passing of `flags` as keyword argument to `re.sub` for
+    python 3.13 compliance.</comment>
+    <requestid>1194647</requestid>
+  </revision>
 </revisionlist>

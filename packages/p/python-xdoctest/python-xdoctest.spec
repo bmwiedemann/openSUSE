@@ -17,7 +17,7 @@
 
 
 Name:           python-xdoctest
-Version:        1.1.5
+Version:        1.1.6
 Release:        0
 Summary:        Enhanced Python builtin doctest module
 License:        Apache-2.0
