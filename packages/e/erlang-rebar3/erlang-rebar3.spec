@@ -32,11 +32,11 @@ URL:            https://github.com/erlang/rebar3
 Source:         rebar3-%{version}.tar.zst
 Patch0:         add-rebar3-escript.patch
 Patch1:         erlang-rebar3-0001-Skip-deps.patch
-BuildRequires:  erlang >= 22
+BuildRequires:  erlang >= 26
 BuildRequires:  erlang-erlware_commons
 BuildRequires:  erlang-providers
 BuildRequires:  zstd
-Requires:       erlang
+Requires:       erlang >= 26
 Requires:       erlang-erlware_commons
 Requires:       erlang-providers
 
