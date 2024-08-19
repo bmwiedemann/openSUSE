@@ -28,7 +28,7 @@ BuildRequires:  appstream-glib
 BuildRequires:  dbus-1
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
-BuildRequires:  gettext-runtime
+BuildRequires:  gettext-devel
 BuildRequires:  glib2-tools
 BuildRequires:  libgpg-error-devel
 BuildRequires:  meson >= 0.64
