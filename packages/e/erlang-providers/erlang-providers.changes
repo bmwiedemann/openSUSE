@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed May 22 12:27:48 UTC 2024 - Simon Lees <sflees@suse.de>
+
+- We use a linked copy of this package in some SUSE products and
+  to do so correctly, we need to ensure a minimum of erlang 26
+  Leap will soon get a versioned copy of erlang26 as well
+
+-------------------------------------------------------------------
 Thu Feb 22 08:43:30 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

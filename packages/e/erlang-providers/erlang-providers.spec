@@ -27,10 +27,10 @@ Group:          Development/Libraries/Other
 URL:            https://github.com/tsloughter/providers
 Source:         %{app_name}-%{version}.tar.xz
 Patch0:         0001-Relax-getopt-version-requirement.patch
-BuildRequires:  erlang
+BuildRequires:  erlang >= 26
 BuildRequires:  erlang-getopt
 BuildRequires:  erlang-rebar
-Requires:       erlang
+Requires:       erlang >= 26
 Requires:       erlang-getopt
 
 %description
