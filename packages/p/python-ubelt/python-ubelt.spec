@@ -17,7 +17,7 @@
 
 
 Name:           python-ubelt
-Version:        1.3.5
+Version:        1.3.6
 Release:        0
 Summary:        Python utility belt containing simple tools
 License:        Apache-2.0
