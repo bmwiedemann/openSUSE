@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug 14 07:48:35 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Replace dependency on python3-youtube-dl by just youtube-dl.
+  There is no ``import youtube_dl`` statement in the source code.
+
+-------------------------------------------------------------------
 Tue Mar  8 21:43:57 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - downgrade python3-pympv to suggests 

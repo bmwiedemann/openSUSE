@@ -97,4 +97,13 @@
     <comment>- downgrade python3-pympv to suggests</comment>
     <requestid>960308</requestid>
   </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>5a3e05894751942deef2a87b10c5c03a</srcmd5>
+    <version>5.0.0.1</version>
+    <time>1724103928</time>
+    <user>anag+factory</user>
+    <comment>- Replace dependency on python3-youtube-dl by just youtube-dl.
+  There is no ``import youtube_dl`` statement in the source code. (forwarded request 1193850 from jengelh)</comment>
+    <requestid>1194685</requestid>
+  </revision>
 </revisionlist>
