@@ -1,7 +1,7 @@
-Index: peazip-9.9.0.src/dev/project_pea.lpi
+Index: peazip-9.9.1.src/dev/project_pea.lpi
 ===================================================================
---- peazip-9.9.0.src.orig/dev/project_pea.lpi
-+++ peazip-9.9.0.src/dev/project_pea.lpi
+--- peazip-9.9.1.src.orig/dev/project_pea.lpi
++++ peazip-9.9.1.src/dev/project_pea.lpi
 @@ -566,7 +566,7 @@
      </CodeGeneration>
      <Linking>
@@ -11,10 +11,10 @@ Index: peazip-9.9.0.src/dev/project_pea.lpi
          <DebugInfoType Value="dsDwarf3"/>
        </Debugging>
        <Options>
-Index: peazip-9.9.0.src/dev/project_peach.lpi
+Index: peazip-9.9.1.src/dev/project_peach.lpi
 ===================================================================
---- peazip-9.9.0.src.orig/dev/project_peach.lpi
-+++ peazip-9.9.0.src/dev/project_peach.lpi
+--- peazip-9.9.1.src.orig/dev/project_peach.lpi
++++ peazip-9.9.1.src/dev/project_peach.lpi
 @@ -1650,7 +1650,7 @@
      </CodeGeneration>
      <Linking>

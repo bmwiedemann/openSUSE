@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Aug 19 09:37:16 UTC 2024 - PragmaticLinux <info@pragmaticlinux.com>
+
+- Update to 9.9.1:
+  CODE
+  * Updated GitHub repository
+
+  FILE MANAGER
+  * Fixed rename bugs which prevented detecting filenames collisions in some cases
+  * Updated translations
+
+-------------------------------------------------------------------
 Mon Aug  5 10:30:13 UTC 2024 - PragmaticLinux <info@pragmaticlinux.com>
 
 - Update to 9.9.0:

@@ -19,7 +19,7 @@
 %define         _peazipinstalldir %{_libdir}/peazip
 
 Name:           peazip
-Version:        9.9.0
+Version:        9.9.1
 Release:        0
 Summary:        Graphical file archiver
 License:        LGPL-3.0-only
@@ -27,7 +27,8 @@ Group:          Productivity/Archiving/Compression
 URL:            https://peazip.github.io/
 Source0:        https://github.com/peazip/PeaZip/releases/download/%{version}/peazip-%{version}.src.zip
 Source1:        altconf.txt
-Source2:        https://github.com/peazip/PeaZip/releases/download/%{version}/peazip_help.pdf
+# The help file did not change between 9.9.0 and 9.9.1. When it does, replace version number with the version macro again.
+Source2:        https://github.com/peazip/PeaZip/releases/download/9.9.0/peazip_help.pdf
 Patch0:         peazip-desktop.patch
 # PATCH-FIX-OPENSUSE peazip-build_PIE.patch -- aloisio@gmx.com
 Patch1:         peazip-build_PIE.patch
