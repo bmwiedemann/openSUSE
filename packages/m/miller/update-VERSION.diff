@@ -1,0 +1,8 @@
+--- pkg/version/version.go.smb	2024-06-12 11:04:47.211778738 -0400
++++ pkg/version/version.go	2024-06-12 11:05:24.459167210 -0400
+@@ -4,4 +4,4 @@
+ // Nominally things like "6.0.0" for a release, then "6.0.0-dev" in between.
+ // This makes it clear that a given build is on the main dev branch, not a
+ // particular snapshot tag.
+-var STRING string = "6.12.0-dev"
++var STRING string = "6.12.0+git20240819.bdd26736a"

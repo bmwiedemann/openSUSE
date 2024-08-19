@@ -8,6 +8,13 @@
     <param name="changesgenerate">enable</param>
   </service>
   <service name="set_version" mode="manual"/>
+  <service name="replace_using_env" mode="manual">
+    <param name="file">update-VERSION.diff</param>
+    <param name="var">NEWVERSION</param>
+    <param name="eval">NEWVERSION=$(grep ^Version miller.spec | awk -F+ '{print "+"$2}')</param>
+    <param name="eval">sed -i -e 's#\([^\.]*\)+git[0-9]\{8\}\.[[:alnum:]]\{9\}#\1%%NEWVERSION%%#' update-VERSION.diff</param>
+    <param name="verbose">0</param>
+  </service>
   <service name="tar" mode="manual"/>
   <service name="recompress" mode="manual">
     <param name="compression">gz</param>

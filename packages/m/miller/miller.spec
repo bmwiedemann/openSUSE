@@ -17,7 +17,7 @@
 
 
 Name:           miller
-Version:        6.12.0+git20240316.f6e378c8
+Version:        6.12.0+git20240819.bdd26736a
 Release:        0
 Summary:        Name-indexed data processing tool
 # c/lib/netbsd_strptime.c is BSD-4-Clause
@@ -26,9 +26,12 @@ Group:          Productivity/Text/Utilities
 URL:            http://johnkerl.org/miller/doc
 Source0:        https://github.com/johnkerl/miller/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-Patch0:         buildmode-pie.diff
-#BuildRequires:  golang
+Patch0:         update-VERSION.diff
+Patch1:         buildmode-pie.diff
+### Temporary until go1.22 is default
 BuildRequires:  golang-packaging
+#BuildRequires:  go >= 1.22
+#####
 BuildRequires:  gcc
 BuildRequires:  systemd-rpm-macros
 # Switched to a golang build sometime after 5.10.3
@@ -45,8 +48,9 @@ well with pipes and can feed "tail -f".
 
 %prep
 %setup -q -a 1
-%if "%{_arch}" != "ppc64"
 %patch -P 0
+%if "%{_arch}" != "ppc64"
+%patch -P 1
 %endif
 # Not sure if this is still required
 #%%ifarch %%ix86

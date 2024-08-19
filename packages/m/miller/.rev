@@ -293,4 +293,41 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1161041</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>d00ae0ef4eb011223d39696529bcd466</srcmd5>
+    <version>6.12.0+git20240819.bdd26736a</version>
+    <time>1724103952</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit
+- Update to version 6.12.0+git20240819.bdd26736a:
+  * Bump codespell-project/actions-codespell from 2.0 to 2.1 (#1622)
+  * RS aliases for ASCII top-of-table control characters are misnamed (#1620)
+  * Bump github/codeql-action from 3.26.1 to 3.26.2 (#1617)
+  * Bump github/codeql-action from 3.26.0 to 3.26.1 (#1615)
+  * lib/regex: use string version of regexp methods to reduce allocs (#1614)
+  * Bump golang.org/x/sys from 0.23.0 to 0.24.0 (#1613)
+  * Bump golang.org/x/text from 0.16.0 to 0.17.0 (#1611)
+  * Bump github/codeql-action from 3.25.15 to 3.26.0 (#1610)
+  * Bump actions/upload-artifact from 4.3.5 to 4.3.6 (#1609)
+  * Bump golang.org/x/term from 0.22.0 to 0.23.0 (#1612)
+
+- Adding update-VERSION.diff file so 'osc service mr' updates the version
+  using 'replace_using_env'
+
+- Update to version 6.12.0+git20240805.93574580f:
+  * Bump actions/upload-artifact from 4.3.4 to 4.3.5 (#1606)
+  * Bump golang.org/x/sys from 0.22.0 to 0.23.0 (#1605)
+  * Bump github/codeql-action from 3.25.14 to 3.25.15 (#1604)
+  * Bump github/codeql-action from 3.25.13 to 3.25.14 (#1603)
+  * Bump github/codeql-action from 3.25.12 to 3.25.13 (#1602)
+  * Bump github/codeql-action from 3.25.11 to 3.25.12 (#1598)
+  * Bump actions/setup-go from 5.0.1 to 5.0.2 (#1597)
+
+- Update to version 6.12.0+git20240708.1029c960:
+  * Bump actions/upload-artifact from 4.3.3 to 4.3.4 (#1596)
+  * Bump golang.org/x/term from 0.21.0 to 0.22.0 (#1594)
+  * Bump golang.org/x/sys from 0.21.0 to 0.22.0 (#1595)
+  * Bump github/codeql-action from 3.25.10 to 3.25.11 (#1593)</comment>
+    <requestid>1194737</requestid>
+  </revision>
 </revisionlist>
