@@ -131,4 +131,12 @@
 (🤖: Submission of bcachefs-tools via https://src.opensuse.org/pool/bcachefs-tools/pulls/2 by ddiss)</comment>
     <requestid>1189095</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>4bad0ad3cea24409a9ddc0de1ac04c86</srcmd5>
+    <version>1.11.0</version>
+    <time>1724103884</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 1.11.0</comment>
+    <requestid>1194611</requestid>
+  </revision>
 </revisionlist>

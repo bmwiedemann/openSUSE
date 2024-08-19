@@ -17,7 +17,7 @@
 
 
 Name:           bcachefs-tools
-Version:        1.9.4
+Version:        1.11.0
 Release:        0
 Summary:        Configuration utilities for bcachefs
 License:        GPL-2.0-or-later
@@ -62,11 +62,18 @@ This package contains utilities for creating and mounting bcachefs.
 %autosetup -p1
 
 %build
+# The combination of -Og/-O1/-O2 + LTO produces a broken mkfs.bcachefs which
+# crashes (disabling one of the two fixes it). Given this -O+LTO scenario, if
+# -g2 is also used, the lto1-wpa process runs into memory exhaustion (>80GB)
+# and the build fails altogether.
+%define _lto_cflags %nil
 # gh/koverstreet/bcachefs-tools#237
 # bcachefs-tools uses malloc_usable_size, which is incompatible
 # with fortification level 3
 export CFLAGS="${RPM_OPT_FLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
-export CXXFLAGS="${RPM_OPT_FLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
+export CXXFLAGS="$CFLAGS"
+# Workaround antisocial Makefile that forces its own -O level
+export EXTRA_CFLAGS="$CFLAGS"
 %make_build PREFIX="%_prefix" ROOT_SBINDIR="%_sbindir"
 
 %install
