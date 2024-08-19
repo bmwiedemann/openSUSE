@@ -26,7 +26,7 @@ URL:            https://gitlab.gnome.org/GNOME/alacarte
 Source:         https://download.gnome.org/sources/alacarte/3.52/%{name}-%{version}.tar.xz
 
 BuildRequires:  fdupes
-BuildRequires:  gettext
+BuildRequires:  gettext-devel
 BuildRequires:  glib2-devel
 # Needed for the typelib() dependency parser
 BuildRequires:  gobject-introspection
