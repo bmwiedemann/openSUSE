@@ -5,7 +5,7 @@ Documentation=https://github.com/lusitaniae/apache_exporter
 [Service]
 Restart=always
 User=prometheus
-EnvironmentFile=-/etc/sysconfig/prometheus-apache_exporter
+Environment=ARGS=
 ExecStart=/usr/bin/prometheus-apache_exporter $ARGS
 ExecReload=/bin/kill -HUP $MAINPID
 TimeoutStopSec=20s

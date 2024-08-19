@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Aug 12 10:55:00 UTC 2024 - Witek Bedyk <witold.bedyk@suse.com>
+
+- Drop EnvironmentFile from the service definition
+- Explicitly unset $ARGS environment variable. Setting environment
+  variables should be done in drop-in systemd configuration files.
+
+-------------------------------------------------------------------
+Thu Aug  8 10:25:11 UTC 2024 - Witek Bedyk <witold.bedyk@suse.com>
+
+- Drop go_nostrip macro. It is not needed with current binutils and
+  Go.
+
+-------------------------------------------------------------------
 Mon Jul  8 07:30:16 UTC 2024 - Witek Bedyk <witold.bedyk@suse.com>
 
 - Migrate from `disabled` to `manual` source service type

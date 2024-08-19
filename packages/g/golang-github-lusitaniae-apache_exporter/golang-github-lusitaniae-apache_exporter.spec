@@ -25,11 +25,6 @@
 %endif
 # Fix ERROR: No build ID note found in
 %undefine _missing_build_ids_terminate_build
-%{go_nostrip}
-%endif
-
-%if 0%{?sle_version} == 150300 && !0%{?is_opensuse}
- %{go_nostrip}
 %endif
 
 %if 0%{?suse_version}
