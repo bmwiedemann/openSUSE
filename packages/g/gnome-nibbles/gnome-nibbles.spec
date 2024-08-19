@@ -27,7 +27,7 @@ Source0:        %{name}-%{version}.tar.zst
 
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
-BuildRequires:  gettext
+BuildRequires:  gettext-devel
 BuildRequires:  meson >= 0.50.1
 BuildRequires:  pkgconfig
 BuildRequires:  vala
