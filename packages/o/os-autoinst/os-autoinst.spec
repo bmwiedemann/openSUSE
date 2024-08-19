@@ -17,7 +17,7 @@
 
 
 Name:           os-autoinst
-Version:        4.6.1723817204.0aff9e8
+Version:        4.6.1723970662.b378401
 Release:        0
 Summary:        OS-level test automation
 License:        GPL-2.0-or-later
@@ -68,7 +68,7 @@ Source0:        %{name}-%{version}.tar.xz
 %bcond_with black
 %endif
 # SLE is missing Python support requirements
-%if !0%{?is_opensuse}
+%if 0%{?is_opensuse}
 %bcond_without python_support
 %else
 %bcond_with python_support
