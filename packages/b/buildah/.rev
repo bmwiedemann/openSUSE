@@ -715,4 +715,12 @@
     <comment>Update to version 1.37.0 (forwarded request 1190161 from danishprakash)</comment>
     <requestid>1190856</requestid>
   </revision>
+  <revision rev="89" vrev="1">
+    <srcmd5>938643cfb86322d355216a9f73919af2</srcmd5>
+    <version>1.37.1</version>
+    <time>1724103921</time>
+    <user>anag+factory</user>
+    <comment>new upstream release 1.37.1 (forwarded request 1193856 from dancermak)</comment>
+    <requestid>1194658</requestid>
+  </revision>
 </revisionlist>
