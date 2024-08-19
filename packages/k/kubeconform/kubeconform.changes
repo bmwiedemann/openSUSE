@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Aug 01 07:36:37 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.6.7:
+  * Update some dependencies (#283)
+  * Retry (#282)
+  * Revert "fix: retry on download errors (#274)" (#279)
+  * fix: retry on download errors (#274)
+  * fix: close resource (#272)
+
+-------------------------------------------------------------------
 Fri May 10 05:05:03 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.6.6:
