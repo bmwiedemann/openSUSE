@@ -112,4 +112,13 @@
   * datetime fixes</comment>
     <requestid>1131723</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>78fe9c3b1a395c51789fd9b65c24d854</srcmd5>
+    <version>3.17.3</version>
+    <time>1724103890</time>
+    <user>anag+factory</user>
+    <comment>- Add patch support-pytest-8.patch:
+  * Do not use pytest.warns(None).</comment>
+    <requestid>1194621</requestid>
+  </revision>
 </revisionlist>

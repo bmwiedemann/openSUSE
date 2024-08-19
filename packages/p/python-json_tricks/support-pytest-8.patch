@@ -1,0 +1,101 @@
+From 487af357083fa87cc50adcecb08c48c6c9637284 Mon Sep 17 00:00:00 2001
+From: Steve Kowalik <steven@wedontsleep.org>
+Date: Mon, 19 Aug 2024 15:39:25 +1000
+Subject: [PATCH] Do not use warns(None) to check for no warnings
+
+warns(None) is an anti-pattern, and is explicitly forbidden starting
+from pytest 8.0. Instead, we catch all warnings, and filter them to be
+errors, so they will raise an (uncaught) exception. Drive-by importing
+warns from pytest rather than the internal name.
+---
+ tests/test_bare.py | 24 ++++++++++--------------
+ tests/test_np.py   |  8 ++++----
+ 2 files changed, 14 insertions(+), 18 deletions(-)
+
+diff --git a/tests/test_bare.py b/tests/test_bare.py
+index d8ca447..a3c67c9 100644
+--- a/tests/test_bare.py
++++ b/tests/test_bare.py
+@@ -10,10 +10,10 @@
+ from math import pi, exp
+ from os.path import join
+ from tempfile import mkdtemp
++from warnings import catch_warnings, simplefilter
+ 
+ import pytest
+-from _pytest.recwarn import warns
+-from pytest import raises, fail
++from pytest import raises, fail, warns
+ 
+ from json_tricks import fallback_ignore_unknown, DuplicateJsonKeyException
+ from json_tricks.nonp import strip_comments, dump, dumps, load, loads, \
+@@ -168,33 +168,29 @@ def test_ignore_comments_deprecation():
+ 		loads(test_json_with_comments)
+ 
+ 	# Second time there should be no warning
+-	# noinspection PyTypeChecker
+-	with warns(None) as captured:
++	with catch_warnings():
++		simplefilter("error")
+ 		loaded = loads(test_json_with_comments)
+-	assert len(captured) == 0
+ 	assert loaded == test_object_for_comment_strings
+ 
+ 	# Passing a string without comments should not have a warning
+ 	loads._ignore_comments_warned_ = False
+-	# noinspection PyTypeChecker
+-	with warns(None) as captured:
++	with catch_warnings():
++		simplefilter("error")
+ 		loaded = loads(test_json_without_comments)
+-	assert len(captured) == 0
+ 
+ 	# Passing True for argument explicitly should not have a warning
+ 	loads._ignore_comments_warned_ = False
+-	# noinspection PyTypeChecker
+-	with warns(None) as captured:
++	with catch_warnings():
++		simplefilter("error")
+ 		loaded = loads(test_json_with_comments, ignore_comments=True)
+-	assert len(captured) == 0
+ 	assert loaded == test_object_for_comment_strings
+ 
+ 	# Passing False for argument explicitly should not have a warning
+ 	loads._ignore_comments_warned_ = False
+-	# noinspection PyTypeChecker
+-	with warns(None) as captured:
++	with catch_warnings():
++		simplefilter("error")
+ 		loaded = loads(test_json_without_comments, ignore_comments=False)
+-	assert len(captured) == 0
+ 	assert loaded == test_object_for_comment_strings
+ 
+ 
+diff --git a/tests/test_np.py b/tests/test_np.py
+index 29eb07b..4e28393 100644
+--- a/tests/test_np.py
++++ b/tests/test_np.py
+@@ -5,8 +5,9 @@
+ from os.path import join
+ from tempfile import mkdtemp
+ import sys
++from warnings import catch_warnings, simplefilter
+ 
+-from _pytest.recwarn import warns
++from pytest import warns
+ from numpy import arange, ones, array, array_equal, finfo, iinfo, pi
+ from numpy import int8, int16, int32, int64, uint8, uint16, uint32, uint64, \
+ 	float16, float32, float64, complex64, complex128, zeros, ndindex
+@@ -217,10 +218,9 @@ def test_compact_mode_unspecified():
+ 	data = [array([[1.0, 2.0, 3.0, 4.0], [5.0, 6.0, 7.0, 8.0]]), array([pi, exp(1)])]
+ 	with warns(JsonTricksDeprecation):
+ 		gz_json_1 = dumps(data, compression=True)
+-	# noinspection PyTypeChecker
+-	with warns(None) as captured:
++	with catch_warnings():
++		simplefilter("error")
+ 		gz_json_2 = dumps(data, compression=True)
+-	assert len(captured) == 0
+ 	assert gz_json_1 == gz_json_2
+ 	json = gzip_decompress(gz_json_1).decode('ascii')
+ 	assert json == '[{"__ndarray__": [[1.0, 2.0, 3.0, 4.0], [5.0, 6.0, 7.0, 8.0]], "dtype": "float64", "shape": [2, 4], "Corder": true}, ' \

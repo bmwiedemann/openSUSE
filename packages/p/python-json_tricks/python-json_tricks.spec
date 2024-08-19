@@ -1,7 +1,7 @@
 #
 # spec file for package python-json_tricks
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,6 +23,8 @@ Summary:        Extra features for Python's JSON
 License:        BSD-3-Clause
 URL:            https://github.com/mverleg/pyjson_tricks
 Source:         https://github.com/mverleg/pyjson_tricks/archive/v%{version}.tar.gz#/pyjson_tricks-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM gh#mverleg/pyjson_tricks#102
+Patch0:         support-pytest-8.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
@@ -69,6 +71,6 @@ As well as compression and disallowing duplicate keys.
 %doc README.md
 %license LICENSE.txt
 %{python_sitelib}/json_tricks
-%{python_sitelib}/json_tricks-%{version}*-info
+%{python_sitelib}/json_tricks-%{version}.dist-info
 
 %changelog
