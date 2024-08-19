@@ -18,7 +18,7 @@
 
 
 Name:           scamper
-Version:        20240503
+Version:        20240813
 Release:        0
 Summary:        Parallel Internet measurement utility
 License:        GPL-2.0-only
@@ -28,12 +28,12 @@ Source:         https://www.caida.org/tools/measurement/%{name}/code/%{name}-cvs
 BuildRequires:  libopenssl-devel
 # for the Python module
 BuildRequires:  python3
-BuildRequires:  python3-Cython0
+BuildRequires:  python3-Cython
 # for sc_uptime
 BuildRequires:  pkgconfig(sqlite3)
 # for sc_hoiho
 BuildRequires:  pkgconfig(libpcre2-8)
-BuildRequires:  pkgconfig(libpcre)
+#BuildRequires:  pkgconfig(libpcre)
 
 %description
 Scamper is a program that is able to conduct Internet measurement
@@ -115,9 +115,8 @@ libscamperctrl library.
 
 %build
 export PYTHON=%{_bindir}/python3
-# disable pcre2 build in 20240229 because of build failure. Reported upstream
-#%%configure --disable-static --without-debugfile --with-pcre2 --enable-sc_hoiho --enable-sc_uptime --with-python --enable-tests
-%configure --disable-static --without-debugfile --enable-sc_uptime --with-python --enable-tests
+# disabled --with-pcre2 build since 20240229 because of build failure. Reported upstream
+%configure --disable-static --disable-debug-file --enable-sc_uptime --with-python --enable-tests --enable-scamper-ring
 make %{?_smp_mflags}
 
 %install

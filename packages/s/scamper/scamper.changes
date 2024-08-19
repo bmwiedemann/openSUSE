@@ -1,12 +1,124 @@
 -------------------------------------------------------------------
+Mon Aug 19 07:05:31 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Remove upper bound on Cython, Cython 3 appears to be supported. 
+
+-------------------------------------------------------------------
+Sat Aug 17 08:16:38 UTC 2024 - Sebastian Wagner <sebix@sebix.at>
+
+- update to version 20240716:
+ * scamper
+  * add -O dl-any option to scamper, which causes scamper to open a
+    cooked datalink interface bound to "any" on Linux.  Note that
+    scamper's implementation of -O dl-any currently prevents
+    transmission of packets on the datalink socket, but this will
+    change in the future.
+  * add -O dyn-filter option to scamper, which causes scamper to
+    dynamically adjust the BPF filter that it configures on a datalink
+    socket according to TCP/UDP ports that scamper is using.  this
+    option is only available on Linux, and BSD systems with BIOCSETFNR
+    (FreeBSD and MacOS).  note that both -O dyn-filter and -O dl-any
+    cannot currently be used at the same time, but this will change in
+    the future.
+  * only raise SO_SNDBUF and SO_RCVBUF; some systems (e.g. Linux)
+    already have larger socket buffers than scamper's defaults.
+  * add -O sockrx to ping, to force ping to receive ICMP responses over
+    a regular socket, even when using -O dl (which still records datalink
+    transmit timestamps).
+  * speed up receiving on datalink sockets by avoiding unnecessary
+    memsets and removing unused fields, and adjust BSD, Linux, DLPI code
+    to follow similar code patterns.
+  * consider both directions for TCP packets on datalink sockets,
+    allowing datalink transmit timestamps to be recorded for non TCP-syn
+    packets.
+  * avoid processing duplicate copies of the same packet on Linux
+    loopback interface with datalink sockets.
+  * remove "observe" functionality from scamper control socket, as
+    signalled over a year ago.  "outfile" and "source" will be removed
+    from the control socket in the future.
+  * cleanup scamper_dlhdr.[ch], use scamper_dlhdr_t to scamper_probe_t
+    instead of its constituent parts.
+  * update tbit usage statement in scamper, and manual page, with
+    currently supported options
+ * python module:
+  * use join to assemble command strings for all ScamperCtrl.do_*()
+    for orders of magnitude faster command generation
+  * implement __richcmp__ for all classes where __eq__, __lt__, etc,
+    were previously defined individually
+  * if string passed to ScamperAddr is invalid, raise an exception
+  * implement ScamperCtrl.do_tbit method, ScamperTbit classes
+ * sc_minrtt:
+  * add sc_minrtt utility, which takes the output of sc_pinger to
+    produce a minimized RTT input file for sc_hoiho.  to build, pass
+    --enable-sc_minrtt as well as --with-pcre or --with-pcre2 to
+    configure, and have sqlite3 development headers and libraries in
+    build environment.
+ * tests:
+  * more ping and tbit command unit tests
+  * split out ARP reply parsing code into dl_parse_arp, add fuzzing cradle.
+- update to version 20240725:
+ * scamper:
+  * add dynamic BPF filters for linux "any" packet interface, allowing
+    both -O dyn-filter and -O dl-any.
+  * avoid generating debugging statements that won't be emitted, saving
+    CPU in the usual scamper operating mode.
+  * process dltx timestamps when -N > 1 and tx timestamp is available
+    after the response has already arrived
+  * don't allow TCP traceroute and -N > 1 because packet matching
+    responses from the destination is challenging.
+  * use scamper_seteuid_[raise|lower] in scamper when built without
+    privsep, rather than use a repeated code pattern.
+ * configure:
+  * add --enable-scamper-ring to configure to make -O ring the default
+ * python module:
+  * take account of stop_hop when iterating through traceroute hops,
+    add ScamperTrace.stop_hop attribute.
+  * add ScamperTrace.addrs() convenience method, which returns unique
+    addresses observed in the path
+  * add ScamperHost.ans_ptrs() convenience method, which returns the
+    text from PTR records in a response
+  * update documentation:
+    https://www.caida.org/catalog/software/scamper/python/
+ * sc_analysis_dump:
+  * drop geolocation code from utility, which was not plumbed into
+    configure.
+ * tests:
+  * add check-ifdef.pl to check for obvious #ifdef bugs
+- update to version 20240813:
+ * scamper:
+  * properly set icmp_id on ICMP probe signature in ping when -F 0.
+  * reduce code duplication in scamper_fd.c by replacing fd_udp() and
+    fd_tcp() with fd_tcpudp().
+  * process IPv6 TCP replies in dealias.
+  * simplify BPF logic, support unit testing of dl_filter_compile.
+  * fix 20240725 regression to actually call scamper_debug logic for
+    datalink packets.
+ * python module:
+  * raise exception if ScamperCtrl.do_*() is called on a ScamperInst
+    that has signalled EOF.
+  * add ScamperInst.is_eof() method.
+ * configure:
+  * check for tcp_timer.h in configure, use if found, to fix check
+    for tcp_var.h.
+ * sc_pinger, sc_minrtt:
+  * support batch probing with radargun primitive.
+  * update sc_pinger manual page with batch probing details.
+ * tests:
+  * silence benign clang static analysis warnings.
+  * add more ping command unit tests.
+  * add unit_dl_filter_compile to test bpf compiler.
+  * enhance check-ifdef.pl to find #define / #ifdef ordering issues,
+    make pass through code to adjust header ordering.
+
+-------------------------------------------------------------------
 Mon May 13 06:41:00 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix dependency of libscamperfile-devel: require the new
-  libscamperfile9. The last updated bumpted the so-version, which
+  libscamperfile9. The last updated bumped the so-version, which
   results in a different package name.
 - Drop all obsoletes of libscamperfile9: obsoleting old library
   packages is explicitly not to be done according to the packaging
-  guidelines around shared libaries.
+  guidelines around shared libraries.
 
 -------------------------------------------------------------------
 Sun May  5 14:11:00 UTC 2024 - Sebastian Wagner <sebix@sebix.at>
