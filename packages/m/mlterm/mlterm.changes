@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Aug 19 18:32:52 UTC 2024 - pgajdos@suse.com
+
+- fix build with gcc14 [bsc#1223886]
+- added patches
+  https://github.com/arakiken/mlterm/commit/08ba9859717ed27384675bd687a35f4504701f27
+  + mlterm-gcc14-08ba985.patch
+  https://github.com/arakiken/mlterm/commit/20ab931d5055dc5835154a75ca672fade478549f
+  + mlterm-gcc14-20ab931.patch
+  https://github.com/arakiken/mlterm/commit/3d38b723e0e4a6dd434af2d49aca53890982a828
+  + mlterm-gcc14-3d38b72.patch
+  https://github.com/arakiken/mlterm/commit/8aef4fae3add8e8acfafde831e0034f1b2879dea
+  + mlterm-gcc14-8aef4fa.patch
+  https://github.com/arakiken/mlterm/commit/f971955cf54a721e6a53191c3b86fbdab4bfbfd5
+  + mlterm-gcc14-f971955.patch
+- do not build with -fpermissive anymore
+
+-------------------------------------------------------------------
 Fri May  3 16:24:18 UTC 2024 - Michal Suchanek <msuchanek@suse.com>
 
 - Build with -fpermissive to make buildable with gcc14 (boo#1223886)

@@ -1,0 +1,1168 @@
+Index: mlterm-3.9.3/android/jni/ui_display.c
+===================================================================
+--- mlterm-3.9.3.orig/android/jni/ui_display.c
++++ mlterm-3.9.3/android/jni/ui_display.c
+@@ -222,7 +222,7 @@ static int process_key_event(int action,
+       xev.keycode = code;
+       xev.state = _display.button_state | _display.key_state;
+ 
+-      ui_window_receive_event(_disp.roots[0], &xev);
++      ui_window_receive_event(_disp.roots[0], (XEvent*)&xev);
+     }
+   } else if (action == AKEY_EVENT_ACTION_MULTIPLE) {
+     XKeyEvent xev;
+@@ -232,7 +232,7 @@ static int process_key_event(int action,
+     xev.keycode = 0;
+     xev.state = 0;
+ 
+-    ui_window_receive_event(_disp.roots[0], &xev);
++    ui_window_receive_event(_disp.roots[0], (XEvent*)&xev);
+   } else /* if( action == AKEY_EVENT_ACTION_UP) */
+   {
+     if (code == AKEYCODE_SHIFT_RIGHT || code == AKEYCODE_SHIFT_LEFT) {
+@@ -439,7 +439,7 @@ static int process_mouse_event(int sourc
+     xev.x -= win->x;
+     xev.y -= win->y;
+ 
+-    ui_window_receive_event(win, &xev);
++    ui_window_receive_event(win, (XEvent*)&xev);
+   }
+ 
+   return 1;
+Index: mlterm-3.9.3/baselib/src/bl_utmp_sysv.c
+===================================================================
+--- mlterm-3.9.3.orig/baselib/src/bl_utmp_sysv.c
++++ mlterm-3.9.3/baselib/src/bl_utmp_sysv.c
+@@ -62,7 +62,7 @@ bl_utmp_t bl_utmp_new(const char *tty, c
+ #endif
+   bl_utmp_t utmp;
+   const char *pw_name;
+-  char *tty_num;
++  const char *tty_num;
+   struct timeval timenow;
+ 
+   gettimeofday(&timenow, NULL);
+Index: mlterm-3.9.3/inputmethod/fcitx/im_fcitx.c
+===================================================================
+--- mlterm-3.9.3.orig/inputmethod/fcitx/im_fcitx.c
++++ mlterm-3.9.3/inputmethod/fcitx/im_fcitx.c
+@@ -448,7 +448,7 @@ static void commit_string(FcitxClient *c
+   if ((len = strlen(str)) == 0) {
+     /* do nothing */
+   } else {
+-    (*fcitx->im.listener->write_to_term)(fcitx->im.listener->self, str, len,
++    (*fcitx->im.listener->write_to_term)(fcitx->im.listener->self, (u_char*)str, len,
+                                          fcitx->term_encoding == VT_UTF8 ? NULL : parser_utf8);
+   }
+ 
+@@ -481,7 +481,7 @@ static void forward_key(FcitxClient *cli
+       ) {
+     fcitx->prev_key.state |= FcitxKeyState_IgnoredMask;
+ #ifdef USE_XLIB
+-    XPutBackEvent(fcitx->prev_key.display, &fcitx->prev_key);
++    XPutBackEvent(fcitx->prev_key.display, (XEvent*)&fcitx->prev_key);
+ #endif
+     memset(&fcitx->prev_key, 0, sizeof(XKeyEvent));
+   }
+@@ -529,7 +529,7 @@ static void update_formatted_preedit(Fci
+       }
+ 
+       (*parser_utf8->init)(parser_utf8);
+-      (*parser_utf8->set_str)(parser_utf8, item->string, str_len);
++      (*parser_utf8->set_str)(parser_utf8, (u_char*)item->string, str_len);
+ 
+       while ((*parser_utf8->next_char)(parser_utf8, &ch)) {
+         num_chars++;
+@@ -548,7 +548,7 @@ static void update_formatted_preedit(Fci
+       item = g_ptr_array_index(list, count);
+ 
+       (*parser_utf8->init)(parser_utf8);
+-      (*parser_utf8->set_str)(parser_utf8, item->string, strlen(item->string));
++      (*parser_utf8->set_str)(parser_utf8, (u_char*)item->string, strlen(item->string));
+ 
+       while ((*parser_utf8->next_char)(parser_utf8, &ch)) {
+         int is_fullwidth = 0;
+Index: mlterm-3.9.3/inputmethod/ibus/im_ibus.c
+===================================================================
+--- mlterm-3.9.3.orig/inputmethod/ibus/im_ibus.c
++++ mlterm-3.9.3/inputmethod/ibus/im_ibus.c
+@@ -151,7 +151,7 @@ static void update_preedit_text(IBusInpu
+     ibus->im.preedit.filled_len = 0;
+ 
+     (*parser_utf8->init)(parser_utf8);
+-    (*parser_utf8->set_str)(parser_utf8, text->text, strlen(text->text));
++    (*parser_utf8->set_str)(parser_utf8, (u_char*)text->text, strlen(text->text));
+ 
+     index = 0;
+     while ((*parser_utf8->next_char)(parser_utf8, &ch)) {
+@@ -159,23 +159,28 @@ static void update_preedit_text(IBusInpu
+       IBusAttribute *attr;
+       int is_fullwidth = 0;
+       int is_comb = 0;
++      /* LS_UNDERLINE_SINGLE is always used. */
++#if 0
+       int is_underlined = 0;
++#endif
+       vt_color_t fg_color = VT_FG_COLOR;
+       vt_color_t bg_color = VT_BG_COLOR;
+ 
+       for (count = 0; (attr = ibus_attr_list_get(text->attrs, count)); count++) {
+         if (attr->start_index <= index && index < attr->end_index) {
++#if 0
+           if (attr->type == IBUS_ATTR_TYPE_UNDERLINE) {
+             is_underlined = (attr->value != IBUS_ATTR_UNDERLINE_NONE);
+-          }
++          } else
++#endif
+ #if 0
+-          else if (attr->type == IBUS_ATTR_TYPE_FOREGROUND) {
++          if (attr->type == IBUS_ATTR_TYPE_FOREGROUND) {
+             fg_color = get_near_color(attr->value);
+           } else if (attr->type == IBUS_ATTR_TYPE_BACKGROUND) {
+             bg_color = get_near_color(attr->value);
+           }
+ #else
+-          else if (attr->type == IBUS_ATTR_TYPE_BACKGROUND) {
++          if (attr->type == IBUS_ATTR_TYPE_BACKGROUND) {
+             fg_color = VT_BG_COLOR;
+             bg_color = VT_FG_COLOR;
+           }
+@@ -281,7 +286,8 @@ static void commit_text(IBusInputContext
+   if (ibus_text_get_length(text) == 0) {
+     /* do nothing */
+   } else {
+-    (*ibus->im.listener->write_to_term)(ibus->im.listener->self, text->text, strlen(text->text),
++    (*ibus->im.listener->write_to_term)(ibus->im.listener->self, (u_char*)text->text,
++                                        strlen(text->text),
+                                         ibus->term_encoding == VT_UTF8 ? NULL : parser_utf8);
+   }
+ 
+@@ -308,7 +314,7 @@ static void forward_key_event(IBusInputC
+       ) {
+     ibus->prev_key.state |= IBUS_IGNORED_MASK;
+ #ifdef USE_XLIB
+-    XPutBackEvent(ibus->prev_key.display, &ibus->prev_key);
++    XPutBackEvent(ibus->prev_key.display, (XEvent*)&ibus->prev_key);
+ #endif
+     memset(&ibus->prev_key, 0, sizeof(XKeyEvent));
+   }
+@@ -438,8 +444,9 @@ static int add_event_source(void) {
+    * GIOStream returned by g_dbus_connection_get_stream() is forcibly
+    * regarded as GSocketConnection.
+    */
++  GIOStream *stream = g_dbus_connection_get_stream(ibus_bus_get_connection(ibus_bus));
+   if ((ibus_bus_fd = g_socket_get_fd(g_socket_connection_get_socket(
+-           g_dbus_connection_get_stream(ibus_bus_get_connection(ibus_bus))))) == -1) {
++                                       G_SOCKET_CONNECTION(stream)))) == -1) {
+     return 0;
+   }
+ #endif
+Index: mlterm-3.9.3/inputmethod/skk/dict.c
+===================================================================
+--- mlterm-3.9.3.orig/inputmethod/skk/dict.c
++++ mlterm-3.9.3/inputmethod/skk/dict.c
+@@ -569,7 +569,7 @@ static int connect_to_server(void) {
+ 
+   memcpy(&sa.sin_addr, host->h_addr_list[0], sizeof(sa.sin_addr));
+ 
+-  if (connect(sock, &sa, sizeof(struct sockaddr_in)) == -1) {
++  if (connect(sock, (struct sockaddr*)&sa, sizeof(struct sockaddr_in)) == -1) {
+     goto error;
+   }
+ 
+@@ -632,7 +632,7 @@ static void unconcat(char *str) {
+   }
+ }
+ 
+-static int candidate_exists(const char **cands, u_int num_cands, const char *cand) {
++static int candidate_exists(char **cands, u_int num_cands, const char *cand) {
+   u_int count;
+ 
+   for (count = 0; count < num_cands; count++) {
+@@ -927,7 +927,7 @@ u_int dict_completion(ef_char_t *caption
+       return caption_len;
+     }
+ 
+-    compl->caption_orig = (char *)(compl + 1);
++    compl->caption_orig = (ef_char_t*)(compl + 1);
+     memcpy(compl->caption_orig, caption, sizeof(*caption) * caption_len);
+     compl->caption_orig_len = caption_len;
+ 
+@@ -1072,7 +1072,7 @@ u_int dict_candidate(ef_char_t *caption,
+       return caption_len;
+     }
+ 
+-    cand->caption_orig = (char *)(cand + 1);
++    cand->caption_orig = (ef_char_t*)(cand + 1);
+     memcpy(cand->caption_orig, caption, sizeof(*caption) * caption_len);
+     cand->caption_orig_len = caption_len;
+ 
+Index: mlterm-3.9.3/inputmethod/skk/im_skk.c
+===================================================================
+--- mlterm-3.9.3.orig/inputmethod/skk/im_skk.c
++++ mlterm-3.9.3/inputmethod/skk/im_skk.c
+@@ -154,6 +154,7 @@ static void preedit_backup_visual_chars(
+   }
+ }
+ 
++/* preedit != NULL and preedit_len == 0 -> stop preediting */
+ static void preedit(im_skk_t *skk, ef_char_t *preedit, u_int preedit_len, int rev_len,
+                     char *candidateword /* already converted to term encoding */,
+                     /* 0 means the length of candidateword is 0 or necessity of strlen() */
+@@ -601,10 +602,10 @@ static int switch_mode(ui_im_t *im) {
+ 
+   if ((skk->is_enabled = (!skk->is_enabled))) {
+     skk->mode = HIRAGANA;
+-    preedit(skk, "", 0, 0, skk->status[skk->mode], 0, "");
++    preedit(skk, (ef_char_t*)"", 0, 0, skk->status[skk->mode], 0, "");
+   } else {
+     preedit_clear(skk);
+-    preedit(skk, "", 0, 0, "", 0, "");
++    preedit(skk, (ef_char_t*)"", 0, 0, "", 0, "");
+   }
+ 
+   return 1;
+@@ -733,9 +734,9 @@ static int fix(im_skk_t *skk) {
+       memcpy(skk->new_word + skk->new_word_len, skk->preedit,
+              skk->preedit_len * sizeof(skk->preedit[0]));
+       skk->new_word_len += skk->preedit_len;
+-      preedit(skk, "", 0, 0, skk->status[skk->mode], 0, "");
++      preedit(skk, (ef_char_t*)"", 0, 0, skk->status[skk->mode], 0, "");
+     } else {
+-      preedit(skk, "", 0, 0, skk->status[skk->mode], 0, "");
++      preedit(skk, (ef_char_t*)"", 0, 0, skk->status[skk->mode], 0, "");
+       commit(skk);
+     }
+     preedit_clear(skk);
+Index: mlterm-3.9.3/main/main_loop.c
+===================================================================
+--- mlterm-3.9.3.orig/main/main_loop.c
++++ mlterm-3.9.3/main/main_loop.c
+@@ -111,7 +111,7 @@ int main_loop_init(int argc, char **argv
+   u_int num_startup_screens;
+   u_int depth;
+   char *invalid_msg = "%s %s is not valid.\n";
+-  char *orig_argv;
++  char **orig_argv;
+ #if defined(USE_FRAMEBUFFER) || defined(USE_WAYLAND) || defined(USE_SDL2)
+   int use_aafont = 0;
+ #endif
+Index: mlterm-3.9.3/tool/mlconfig/main.c
+===================================================================
+--- mlterm-3.9.3.orig/tool/mlconfig/main.c
++++ mlterm-3.9.3/tool/mlconfig/main.c
+@@ -339,7 +339,7 @@ static void ssh_scp_clicked(GtkWidget *w
+ #if GTK_CHECK_VERSION(4, 0, 0)
+   vbox = gtk_vbox_new(FALSE, 0);
+   gtk_widget_show(vbox);
+-  gtk_box_append(gtk_dialog_get_content_area(GTK_DIALOG(dialog)), vbox);
++  gtk_box_append(GTK_BOX(gtk_dialog_get_content_area(GTK_DIALOG(dialog))), vbox);
+ #elif GTK_CHECK_VERSION(2, 14, 0)
+   content_area = gtk_dialog_get_content_area(GTK_DIALOG(dialog));
+ #else
+Index: mlterm-3.9.3/tool/mlconfig/mc_combo.c
+===================================================================
+--- mlterm-3.9.3.orig/tool/mlconfig/mc_combo.c
++++ mlterm-3.9.3/tool/mlconfig/mc_combo.c
+@@ -93,9 +93,10 @@ GtkWidget *mc_combo_new_with_width(const
+     }
+ 
+ #if GTK_CHECK_VERSION(4, 0, 0)
+-    gtk_entry_set_width_chars(gtk_combo_box_get_child(GTK_COMBO_BOX(combo)), width_chars);
++    gtk_entry_set_width_chars(GTK_ENTRY(gtk_combo_box_get_child(GTK_COMBO_BOX(combo))),
++                              width_chars);
+ #else
+-    gtk_entry_set_width_chars(gtk_bin_get_child(GTK_BIN(combo)), width_chars);
++    gtk_entry_set_width_chars(GTK_ENTRY(gtk_bin_get_child(GTK_BIN(combo))), width_chars);
+ #endif
+ #else
+     gtk_widget_set_size_request(gtk_bin_get_child(GTK_BIN(combo)), entry_width, -1);
+Index: mlterm-3.9.3/tool/mlconfig/mc_opentype.c
+===================================================================
+--- mlterm-3.9.3.orig/tool/mlconfig/mc_opentype.c
++++ mlterm-3.9.3/tool/mlconfig/mc_opentype.c
+@@ -199,7 +199,8 @@ static void edit_features(GtkWidget *wid
+ 
+   vbox = gtk_vbox_new(FALSE, 0);
+   gtk_widget_show(vbox);
+-  gtk_box_pack_start(gtk_dialog_get_content_area(GTK_DIALOG(dialog)), vbox, FALSE, FALSE, 0);
++  gtk_box_pack_start(GTK_BOX(gtk_dialog_get_content_area(GTK_DIALOG(dialog))),
++                     vbox, FALSE, FALSE, 0);
+ 
+   for (count = 0; count < BL_ARRAY_SIZE(features_tbl); count++) {
+     if (count % 8 == 0) {
+@@ -259,7 +260,8 @@ static void edit_script(GtkWidget *widge
+ 
+   vbox = gtk_vbox_new(FALSE, 0);
+   gtk_widget_show(vbox);
+-  gtk_box_pack_start(gtk_dialog_get_content_area(GTK_DIALOG(dialog)), vbox, FALSE, FALSE, 0);
++  gtk_box_pack_start(GTK_BOX(gtk_dialog_get_content_area(GTK_DIALOG(dialog))),
++                     vbox, FALSE, FALSE, 0);
+ 
+   for (count = 0; count < BL_ARRAY_SIZE(scripts_tbl); count++) {
+     if (count % 8 == 0) {
+Index: mlterm-3.9.3/tool/mlconfig/mc_unicode_areas.c
+===================================================================
+--- mlterm-3.9.3.orig/tool/mlconfig/mc_unicode_areas.c
++++ mlterm-3.9.3/tool/mlconfig/mc_unicode_areas.c
+@@ -190,7 +190,7 @@ char *mc_get_unicode_areas(char *areas)
+ #if GTK_CHECK_VERSION(4, 0, 0)
+   vbox = gtk_vbox_new(FALSE, 0);
+   gtk_widget_show(vbox);
+-  gtk_box_append(gtk_dialog_get_content_area(GTK_DIALOG(dialog)), vbox);
++  gtk_box_append(GTK_BOX(gtk_dialog_get_content_area(GTK_DIALOG(dialog))), vbox);
+ #else
+   vbox = gtk_dialog_get_content_area(GTK_DIALOG(dialog));
+ #endif
+Index: mlterm-3.9.3/uitoolkit/beos/ui_window.c
+===================================================================
+--- mlterm-3.9.3.orig/uitoolkit/beos/ui_window.c
++++ mlterm-3.9.3/uitoolkit/beos/ui_window.c
+@@ -23,7 +23,7 @@
+ #define BOTTOM_MARGIN(win) \
+   ((win)->height_inc ? ((win)->height - (win)->min_height) % (win)->height_inc : 0)
+ 
+-#define ParentRelative (1L)
++#define ParentRelative ((void*)1L)
+ 
+ #define IS_UILAYOUT(win) ((win)->child_window_resized)
+ #define IS_IM_WINDOW(win) ((win)->window_resized == NULL)
+Index: mlterm-3.9.3/uitoolkit/console/ui_display.c
+===================================================================
+--- mlterm-3.9.3.orig/uitoolkit/console/ui_display.c
++++ mlterm-3.9.3/uitoolkit/console/ui_display.c
+@@ -693,7 +693,7 @@ static int receive_stdin_event(ui_displa
+ #endif
+ 
+           set_blocking(fileno(disp->display->fp), 1);
+-          ui_window_receive_event(win, &bev);
++          ui_window_receive_event(win, (XEvent*)&bev);
+           set_blocking(fileno(disp->display->fp), 0);
+ 
+           continue;
+@@ -868,7 +868,7 @@ static int receive_stdin_event(ui_displa
+     }
+ 
+     set_blocking(fileno(disp->display->fp), 1);
+-    receive_event_for_multi_roots(disp, &kev);
++    receive_event_for_multi_roots(disp, (XEvent*)&kev);
+     set_blocking(fileno(disp->display->fp), 0);
+   }
+ 
+Index: mlterm-3.9.3/uitoolkit/console/ui_imagelib.c
+===================================================================
+--- mlterm-3.9.3.orig/uitoolkit/console/ui_imagelib.c
++++ mlterm-3.9.3/uitoolkit/console/ui_imagelib.c
+@@ -102,7 +102,8 @@ static void modify_pixmap(Display *displ
+     value_table = NULL;
+   }
+ 
+-  src = dst = pixmap->image;
++  dst = pixmap->image;
++  src = (u_int32_t*)dst;
+   num_pixels = pixmap->width * pixmap->height;
+ 
+   for (count = 0; count < num_pixels; count++) {
+Index: mlterm-3.9.3/uitoolkit/console/ui_window.c
+===================================================================
+--- mlterm-3.9.3.orig/uitoolkit/console/ui_window.c
++++ mlterm-3.9.3/uitoolkit/console/ui_window.c
+@@ -29,8 +29,8 @@
+ static ui_color_t black = {TP_COLOR, 0, 0, 0, 0};
+ #endif
+ 
+-#define ParentRelative (1L)
+-#define DummyPixmap (2L)
++#define ParentRelative ((void*)1L)
++#define DummyPixmap ((void*)2L)
+ 
+ #define COL_WIDTH (win->disp->display->col_width)
+ #define LINE_HEIGHT (win->disp->display->line_height)
+@@ -1309,7 +1309,7 @@ void ui_window_console_draw_string(ui_wi
+ void ui_window_console_draw_string16(ui_window_t *win, ui_font_t *font, ui_color_t *fg_color,
+                                      ui_color_t *bg_color, int x, int y, XChar2b *str, u_int len,
+                                      int line_style) {
+-  draw_string(win, font, fg_color, bg_color, x, y, str, len, 2, line_style);
++  draw_string(win, font, fg_color, bg_color, x, y, (u_char*)str, len, 2, line_style);
+ }
+ 
+ void ui_window_draw_rect_frame(ui_window_t *win, int x1, int y1, int x2, int y2) {
+Index: mlterm-3.9.3/uitoolkit/fb/ui_display.c
+===================================================================
+--- mlterm-3.9.3.orig/uitoolkit/fb/ui_display.c
++++ mlterm-3.9.3/uitoolkit/fb/ui_display.c
+@@ -652,7 +652,7 @@ static void save_hidden_region(void) {
+ static void draw_mouse_cursor_line(int y) {
+   u_char *fb;
+   ui_window_t *win;
+-  char *shape;
++  const char *shape;
+   u_char image[MAX_CURSOR_SHAPE_WIDTH * sizeof(u_int32_t)];
+   int x;
+ 
+@@ -898,7 +898,7 @@ static int check_virtual_kbd(XButtonEven
+     draw_mouse_cursor();
+ 
+     if (ret == 1) {
+-      receive_event_for_multi_roots(&kev);
++      receive_event_for_multi_roots((XEvent*)&kev);
+     }
+   }
+ 
+@@ -1061,7 +1061,7 @@ static int receive_stdin_key_event(void)
+     }
+ 
+     if (xev.ksym) {
+-      receive_event_for_multi_roots(&xev);
++      receive_event_for_multi_roots((XEvent*)&xev);
+     } else {
+       for (count = 0; count < len; count++) {
+         xev.ksym = buf[count];
+@@ -1083,7 +1083,7 @@ static int receive_stdin_key_event(void)
+           xev.state = ControlMask;
+         }
+ 
+-        receive_event_for_multi_roots(&xev);
++        receive_event_for_multi_roots((XEvent*)&xev);
+       }
+     }
+   }
+@@ -1110,7 +1110,7 @@ static fb_cmap_t *cmap_new(int num_color
+   cmap->transp = NULL;
+ #endif
+   CMAP_SIZE(cmap) = num_colors;
+-  cmap->red = cmap + 1;
++  cmap->red = (void*)(cmap + 1);
+   cmap->green = cmap->red + num_colors;
+   cmap->blue = cmap->green + num_colors;
+ 
+Index: mlterm-3.9.3/uitoolkit/fb/ui_display_freebsd.c
+===================================================================
+--- mlterm-3.9.3.orig/uitoolkit/fb/ui_display_freebsd.c
++++ mlterm-3.9.3/uitoolkit/fb/ui_display_freebsd.c
+@@ -430,7 +430,7 @@ static int receive_mouse_event(int fd) {
+         xev.x -= win->x;
+         xev.y -= win->y;
+ 
+-        ui_window_receive_event(win, &xev);
++        ui_window_receive_event(win, (XEvent*)&xev);
+       }
+ 
+       if (move) {
+@@ -625,7 +625,7 @@ static int receive_key_event(int fd) {
+                     xev.state);
+ #endif
+ 
+-    receive_event_for_multi_roots(&xev);
++    receive_event_for_multi_roots((XEvent*)&xev);
+   }
+ 
+   return 1;
+Index: mlterm-3.9.3/uitoolkit/fb/ui_display_linux.c
+===================================================================
+--- mlterm-3.9.3.orig/uitoolkit/fb/ui_display_linux.c
++++ mlterm-3.9.3/uitoolkit/fb/ui_display_linux.c
+@@ -526,7 +526,7 @@ static int open_display(u_int depth) {
+ #ifdef DEBUG
+       bl_debug_printf("MOUSE2: /dev/input/event%d\n", mouse_num[1]);
+ #endif
+-      _disp_mouse2.display = &_mouse2;
++      _disp_mouse2.display = (Display*)&_mouse2;
+       opened_disps[num_opened_displays++] = &_disp_mouse2;
+     }
+   }
+@@ -540,7 +540,7 @@ static int open_display(u_int depth) {
+       bl_debug_printf("KBD2: /dev/input/event%d\n", kbd_num[1]);
+ #endif
+       _kbd2.is_kbd = 1;
+-      _disp_kbd2.display = &_kbd2;
++      _disp_kbd2.display = (Display*)&_kbd2;
+       opened_disps[num_opened_displays++] = &_disp_kbd2;
+     }
+   }
+@@ -680,7 +680,7 @@ static int receive_mouse_event(int fd) {
+         xev.x -= win->x;
+         xev.y -= win->y;
+ 
+-        ui_window_receive_event(win, &xev);
++        ui_window_receive_event(win, (XEvent*)&xev);
+       }
+     } else if (ev.type == EV_REL) {
+       XMotionEvent xev;
+@@ -753,7 +753,7 @@ static int receive_mouse_event(int fd) {
+       xev.x -= win->x;
+       xev.y -= win->y;
+ 
+-      ui_window_receive_event(win, &xev);
++      ui_window_receive_event(win, (XEvent*)&xev);
+ 
+       save_hidden_region();
+       draw_mouse_cursor();
+@@ -827,7 +827,7 @@ static int receive_key_event(int fd) {
+             xev.keycode = ev.code;
+ 
+             if ((xev.ksym = kcode_to_ksym(ev.code, ent.kb_value, &xev.state)) > 0) {
+-              receive_event_for_multi_roots(&xev);
++              receive_event_for_multi_roots((XEvent*)&xev);
+             }
+           }
+         } else if (ev.value == 0 /* Released */) {
+Index: mlterm-3.9.3/uitoolkit/fb/ui_display_wscons.c
+===================================================================
+--- mlterm-3.9.3.orig/uitoolkit/fb/ui_display_wscons.c
++++ mlterm-3.9.3/uitoolkit/fb/ui_display_wscons.c
+@@ -244,7 +244,7 @@ static void process_wskbd_event(struct w
+         xev.state = _mouse.button_state | _display.key_state;
+         xev.type = KeyPress;
+ 
+-        receive_event_for_multi_roots(&xev);
++        receive_event_for_multi_roots((XEvent*)&xev);
+ 
+         prev_key_event = *ev;
+       }
+@@ -834,7 +834,7 @@ static int receive_mouse_event(int fd) {
+         xev.x -= win->x;
+         xev.y -= win->y;
+ 
+-        ui_window_receive_event(win, &xev);
++        ui_window_receive_event(win, (XEvent*)&xev);
+       }
+     } else if (ev.type == WSCONS_EVENT_MOUSE_DELTA_X || ev.type == WSCONS_EVENT_MOUSE_DELTA_Y ||
+                ev.type == WSCONS_EVENT_MOUSE_DELTA_Z || ev.type == WSCONS_EVENT_MOUSE_DELTA_W) {
+@@ -907,7 +907,7 @@ static int receive_mouse_event(int fd) {
+       xev.x -= win->x;
+       xev.y -= win->y;
+ 
+-      ui_window_receive_event(win, &xev);
++      ui_window_receive_event(win, (XEvent*)&xev);
+ 
+       save_hidden_region();
+       draw_mouse_cursor();
+Index: mlterm-3.9.3/uitoolkit/fb/ui_font.c
+===================================================================
+--- mlterm-3.9.3.orig/uitoolkit/fb/ui_font.c
++++ mlterm-3.9.3/uitoolkit/fb/ui_font.c
+@@ -780,7 +780,7 @@ face_found:
+     goto error;
+   }
+ 
+-  face->generic.data = ((int)face->generic.data) + 1; /* ref_count */
++  face->generic.data = (void*)(((int)face->generic.data) + 1); /* ref_count */
+ 
+   if (force_height) {
+     xfont->height = force_height;
+@@ -969,7 +969,7 @@ static void unload_ft(XFontStruct *xfont
+   free(xfont->file);
+ 
+   face = xfont->face;
+-  face->generic.data = ((int)face->generic.data) - 1;
++  face->generic.data = (void*)(((int)face->generic.data) - 1);
+   if (!face->generic.data) {
+     FT_Done_Face(xfont->face);
+   }
+@@ -1726,7 +1726,7 @@ static u_char *get_ft_bitmap(XFontStruct
+       return NULL;
+     }
+ 
+-    fc_charsets = fc_files + num_fc_files;
++    fc_charsets = (FcCharSet**)(fc_files + num_fc_files);
+   }
+ 
+   if (!xfont->compl_xfonts &&
+Index: mlterm-3.9.3/uitoolkit/fb/ui_imagelib.c
+===================================================================
+--- mlterm-3.9.3.orig/uitoolkit/fb/ui_imagelib.c
++++ mlterm-3.9.3/uitoolkit/fb/ui_imagelib.c
+@@ -116,7 +116,8 @@ static void modify_pixmap(Display *displ
+     value_table = NULL;
+   }
+ 
+-  src = dst = pixmap->image;
++  dst = pixmap->image;
++  src = (u_int32_t*)dst;
+   num_pixels = pixmap->width * pixmap->height;
+ 
+   for (count = 0; count < num_pixels; count++) {
+Index: mlterm-3.9.3/uitoolkit/fb/ui_window.c
+===================================================================
+--- mlterm-3.9.3.orig/uitoolkit/fb/ui_window.c
++++ mlterm-3.9.3/uitoolkit/fb/ui_window.c
+@@ -27,8 +27,8 @@
+ static ui_color_t black = {TP_COLOR, 0, 0, 0, 0};
+ #endif
+ 
+-#define ParentRelative (1L)
+-#define DummyPixmap (2L)
++#define ParentRelative ((void*)1L)
++#define DummyPixmap ((void*)2L)
+ 
+ /* XXX Check if win is input method window or not. */
+ #define IS_IM_WINDOW(win) ((win)->disp->num_roots >= 2 && (win) == (win)->disp->roots[1])
+@@ -313,7 +313,7 @@ static void draw_string_intern(ui_window
+       case 2:
+         for (; y_off < font_height; y_off++, y_off_bytes += xfont->glyph_width_bytes) {
+           p = (picture ? memcpy(src, (picture += picture_line_len), size)
+-                       : memset16(src, bg_pixel, size / 2));
++                       : memset16((u_int16_t*)src, bg_pixel, size / 2));
+ 
+           for (count = 0; count < len; count++) {
+             if (!ui_get_bitmap_line(xfont, bitmaps[count], y_off_bytes, bitmap_line)) {
+@@ -340,7 +340,7 @@ static void draw_string_intern(ui_window
+       default:
+         for (; y_off < font_height; y_off++, y_off_bytes += xfont->glyph_width_bytes) {
+           p = (picture ? memcpy(src, (picture += picture_line_len), size)
+-                       : memset32(src, bg_pixel, size / 4));
++                       : memset32((u_int32_t*)src, bg_pixel, size / 4));
+ 
+           for (count = 0; count < len; count++) {
+             if (!ui_get_bitmap_line(xfont, bitmaps[count], y_off_bytes, bitmap_line)) {
+@@ -379,12 +379,12 @@ static void draw_string_intern(ui_window
+             break;
+ 
+           case 2:
+-            memset16(src, bg_pixel, size / 2);
++            memset16((u_int16_t*)src, bg_pixel, size / 2);
+             break;
+ 
+           /* case  4: */
+           default:
+-            memset32(src, bg_pixel, size / 4);
++            memset32((u_int32_t*)src, bg_pixel, size / 4);
+             break;
+           }
+         }
+@@ -455,12 +455,12 @@ static void draw_string_intern(ui_window
+             break;
+ 
+           case 2:
+-            memset16(src, bg_pixel, size / 2);
++            memset16((u_int16_t*)src, bg_pixel, size / 2);
+             break;
+ 
+           /* case  4: */
+           default:
+-            memset32(src, bg_pixel, size / 4);
++            memset32((u_int32_t*)src, bg_pixel, size / 4);
+             break;
+           }
+         }
+@@ -2338,7 +2338,7 @@ void ui_window_draw_string(ui_window_t *
+ 
+ void ui_window_draw_string16(ui_window_t *win, ui_font_t *font, ui_color_t *fg_color, int x, int y,
+                              XChar2b *str, u_int len) {
+-  draw_string(win, font, fg_color, NULL, x, y, str, len, 2, 0);
++  draw_string(win, font, fg_color, NULL, x, y, (u_char*)str, len, 2, 0);
+ }
+ 
+ void ui_window_draw_image_string(ui_window_t *win, ui_font_t *font, ui_color_t *fg_color,
+@@ -2362,7 +2362,7 @@ void ui_window_draw_image_string16(ui_wi
+   }
+ #endif
+ 
+-  draw_string(win, font, fg_color, bg_color, x, y, str, len, 2, bg_color == NULL);
++  draw_string(win, font, fg_color, bg_color, x, y, (u_char*)str, len, 2, bg_color == NULL);
+ }
+ 
+ void ui_window_draw_rect_frame(ui_window_t *win, int x1, int y1, int x2, int y2) {
+Index: mlterm-3.9.3/uitoolkit/libtype/ui_window_cairo.c
+===================================================================
+--- mlterm-3.9.3.orig/uitoolkit/libtype/ui_window_cairo.c
++++ mlterm-3.9.3/uitoolkit/libtype/ui_window_cairo.c
+@@ -328,7 +328,7 @@ static int draw_string32(ui_window_t *wi
+ 
+ #ifdef USE_OT_LAYOUT
+   if (font->use_ot_layout /* && font->ot_font */) {
+-    buf = str;
++    buf = (u_char*)str;
+   } else
+ #endif
+   {
+Index: mlterm-3.9.3/uitoolkit/quartz/ui_window.c
+===================================================================
+--- mlterm-3.9.3.orig/uitoolkit/quartz/ui_window.c
++++ mlterm-3.9.3/uitoolkit/quartz/ui_window.c
+@@ -23,7 +23,7 @@
+ #define BOTTOM_MARGIN(win) \
+   ((win)->height_inc ? ((win)->height - (win)->min_height) % (win)->height_inc : 0)
+ 
+-#define ParentRelative (1L)
++#define ParentRelative ((void*)1L)
+ 
+ #define IS_UISCREEN(win) ((win)->selection_cleared)
+ #define IS_UILAYOUT(win) ((win)->child_window_resized)
+Index: mlterm-3.9.3/uitoolkit/sdl2/ui_display.c
+===================================================================
+--- mlterm-3.9.3.orig/uitoolkit/sdl2/ui_display.c
++++ mlterm-3.9.3/uitoolkit/sdl2/ui_display.c
+@@ -437,7 +437,7 @@ static int init_display(Display *display
+   SDL_SetTextureBlendMode(display->texture, SDL_BLENDMODE_BLEND);
+ #endif
+ 
+-  SDL_LockTexture(display->texture, NULL, &display->fb,
++  SDL_LockTexture(display->texture, NULL, (void**)&display->fb,
+                   &display->line_length);
+ 
+   return 1;
+@@ -560,7 +560,7 @@ static void present_displays(void) {
+       msec[3] = SDL_GetTicks();
+ #endif
+ 
+-      SDL_LockTexture(display->texture, NULL, &display->fb, &display->line_length);
++      SDL_LockTexture(display->texture, NULL, (void**)&display->fb, &display->line_length);
+ 
+ #ifdef MEASURE_TIME
+       msec[4] = SDL_GetTicks();
+@@ -591,7 +591,7 @@ static void receive_mouse_event(ui_displ
+   xev->x -= win->x;
+   xev->y -= win->y;
+ 
+-  ui_window_receive_event(win, xev);
++  ui_window_receive_event(win, (XEvent*)xev);
+ }
+ 
+ static u_int get_mod_state(SDL_Keymod mod) {
+@@ -804,7 +804,7 @@ static void poll_event(void) {
+     xev.xmotion.x = ev.motion.x;
+     xev.xmotion.y = ev.motion.y;
+ 
+-    receive_mouse_event(disp, &xev.xmotion);
++    receive_mouse_event(disp, (XButtonEvent*)&xev.xmotion);
+ 
+ #if 0 /* defined(__HAIKU__) */
+     /* If mouse cursor moves, garbage is left on HaikuOS, so damaged = 1 to redraw screen. */
+@@ -903,7 +903,7 @@ ui_display_t *ui_display_open(char *disp
+     return NULL;
+   }
+ 
+-  disp->display = disp + 1;
++  disp->display = (Display*)(disp + 1);
+ 
+   if ((p = realloc(displays, sizeof(ui_display_t*) * (num_displays + 1))) == NULL) {
+     free(disp);
+Index: mlterm-3.9.3/uitoolkit/ui_brltty.c
+===================================================================
+--- mlterm-3.9.3.orig/uitoolkit/ui_brltty.c
++++ mlterm-3.9.3/uitoolkit/ui_brltty.c
+@@ -62,7 +62,7 @@ static void write_line_to_display(vt_lin
+ 
+     if ((len = (*wconv->convert)(wconv, buf, display_cols * sizeof(wchar_t), parser)) > 0) {
+       memset(buf + len, 0, 4);
+-      brlapi_writeWText(cursor, buf);
++      brlapi_writeWText(cursor, (wchar_t*)buf);
+     }
+   }
+ }
+Index: mlterm-3.9.3/uitoolkit/ui_draw_str.c
+===================================================================
+--- mlterm-3.9.3.orig/uitoolkit/ui_draw_str.c
++++ mlterm-3.9.3/uitoolkit/ui_draw_str.c
+@@ -557,13 +557,14 @@ static int fc_draw_str(ui_window_t *wind
+ 
+   line_style = vt_char_line_style(&chars[count]);
+ 
+-  if (!(str8 = str32 = pic_glyphs = drcs_glyphs =
+-            alloca(BL_MAX(sizeof(*str8),
+-                          BL_MAX(sizeof(*str32),
+-                                 BL_MAX(sizeof(*pic_glyphs), sizeof(*drcs_glyphs)))) *
+-                   num_chars))) {
++  if (!(str8 = alloca(BL_MAX(sizeof(*str8),
++                             BL_MAX(sizeof(*str32),
++                                    BL_MAX(sizeof(*pic_glyphs), sizeof(*drcs_glyphs)))) *
++                      num_chars))) {
+     return 0;
+   }
++  str32 = pic_glyphs = (u_int32_t*)str8;
++  drcs_glyphs = (char**)str8;
+ 
+   str_len = 0;
+ 
+@@ -818,7 +819,7 @@ static int xcore_draw_combining_chars(ui
+         u_int len;
+ 
+         if (IS_ISO10646_UCS4(ch_cs)) {
+-          if ((len = ui_convert_ucs4_to_utf16(xch, ch_code) / 2) == 0) {
++          if ((len = ui_convert_ucs4_to_utf16((u_char*)xch, ch_code) / 2) == 0) {
+             continue;
+           }
+         } else {
+@@ -923,13 +924,15 @@ static int xcore_draw_str(ui_window_t *w
+   bg_color = vt_char_bg_color(&chars[count]);
+   line_style = vt_char_line_style(&chars[count]);
+ 
+-  if (!(str2b = str = pic_glyphs = drcs_glyphs =
+-            /* '* 2' is for UTF16 surrogate pair. */
+-        alloca(BL_MAX(sizeof(*str2b) * 2,
+-                      BL_MAX(sizeof(*str), BL_MAX(sizeof(*pic_glyphs), sizeof(*drcs_glyphs)))) *
+-               num_chars))) {
++  if (!(str = alloca(BL_MAX(sizeof(*str2b) * 2, /* '* 2' is for UTF16 surrogate pair. */
++                            BL_MAX(sizeof(*str),
++                                   BL_MAX(sizeof(*pic_glyphs), sizeof(*drcs_glyphs)))) *
++                     num_chars))) {
+     return 0;
+   }
++  str2b = (XChar2b*)str;
++  pic_glyphs = (u_int32_t*)str;
++  drcs_glyphs = (char**)str;
+ 
+   str_len = 0;
+ 
+@@ -949,7 +952,7 @@ static int xcore_draw_str(ui_window_t *w
+     } else {
+       /* UCS4 */
+ 
+-      str_len += (ui_convert_ucs4_to_utf16(str2b + str_len, ch_code) / 2);
++      str_len += (ui_convert_ucs4_to_utf16((u_char*)(str2b + str_len), ch_code) / 2);
+     }
+ 
+     /*
+@@ -1058,7 +1061,7 @@ static int xcore_draw_str(ui_window_t *w
+             str_len++;
+           } else {
+             /* UCS4 */
+-            str_len += (ui_convert_ucs4_to_utf16(str2b + str_len, comb_code) / 2);
++            str_len += (ui_convert_ucs4_to_utf16((u_char*)(str2b + str_len), comb_code) / 2);
+           }
+         }
+ 
+Index: mlterm-3.9.3/uitoolkit/ui_main_config.c
+===================================================================
+--- mlterm-3.9.3.orig/uitoolkit/ui_main_config.c
++++ mlterm-3.9.3/uitoolkit/ui_main_config.c
+@@ -1471,7 +1471,7 @@ void ui_main_config_init(ui_main_config_
+       argc = bl_count_char_in_str(value, ' ') + 1;
+ 
+       if ((main_config->cmd_argv = malloc(sizeof(char *) * (argc + 1) + strlen(value) + 1))) {
+-        value = strcpy(main_config->cmd_argv + argc + 1, value);
++        value = strcpy((char*)(main_config->cmd_argv + argc + 1), value);
+         bl_arg_str_to_array(main_config->cmd_argv, &argc, value);
+         main_config->cmd_path = main_config->cmd_argv[0];
+       }
+Index: mlterm-3.9.3/uitoolkit/ui_screen.c
+===================================================================
+--- mlterm-3.9.3.orig/uitoolkit/ui_screen.c
++++ mlterm-3.9.3/uitoolkit/ui_screen.c
+@@ -1249,7 +1249,7 @@ static void dummy_draw_preedit_str(void
+   /* Don't set ui_screen_t::is_preediting = 0. */
+ }
+ 
+-static void preedit(ui_window_t *win, const char *preedit_text, const char *cur_preedit_text) {
++static void preedit(ui_window_t *win, char *preedit_text, const char *cur_preedit_text) {
+   ef_parser_t *utf8_parser;
+   vt_term_t *term = ((ui_screen_t *)win)->term;
+ 
+Index: mlterm-3.9.3/uitoolkit/ui_screen_manager.c
+===================================================================
+--- mlterm-3.9.3.orig/uitoolkit/ui_screen_manager.c
++++ mlterm-3.9.3/uitoolkit/ui_screen_manager.c
+@@ -637,7 +637,8 @@ static ui_screen_t *open_screen_intern(c
+     }
+ 
+     if (!ui_display_show_root(disp, root, main_config.x, main_config.y, main_config.geom_hint,
+-                              main_config.app_name, main_config.wm_role, main_config.parent_window)) {
++                              main_config.app_name, main_config.wm_role,
++                              (Window)main_config.parent_window)) {
+ #ifdef DEBUG
+       bl_warn_printf(BL_DEBUG_TAG " ui_display_show_root() failed.\n");
+ #endif
+Index: mlterm-3.9.3/uitoolkit/ui_window.h
+===================================================================
+--- mlterm-3.9.3.orig/uitoolkit/ui_window.h
++++ mlterm-3.9.3/uitoolkit/ui_window.h
+@@ -220,7 +220,7 @@ typedef struct ui_window {
+   void (*set_xdnd_config)(struct ui_window *, char *, char *, char *);
+   void (*idling)(struct ui_window *);
+ #ifdef UIWINDOW_SUPPORTS_PREEDITING
+-  void (*preedit)(struct ui_window *, const char *, const char *);
++  void (*preedit)(struct ui_window *, char *, const char *);
+ #endif
+ 
+ } ui_window_t;
+Index: mlterm-3.9.3/uitoolkit/wayland/ui_display.c
+===================================================================
+--- mlterm-3.9.3.orig/uitoolkit/wayland/ui_display.c
++++ mlterm-3.9.3/uitoolkit/wayland/ui_display.c
+@@ -418,7 +418,7 @@ static void receive_key_event(ui_wlserv_
+ 
+     /* Key event for dead surface may be received. */
+     if (disp && (win = search_focused_window(disp->roots[0]))) {
+-      ui_window_receive_event(win, ev);
++      ui_window_receive_event(win, (XEvent*)ev);
+     }
+   }
+ }
+@@ -822,7 +822,7 @@ static void pointer_motion(void *data, s
+     bl_debug_printf("Motion event state %x x %d y %d in %p window.\n", ev.state, ev.x, ev.y, win);
+ #endif
+ 
+-    ui_window_receive_event(win, &ev);
++    ui_window_receive_event(win, (XEvent*)&ev);
+   }
+ }
+ 
+@@ -928,7 +928,7 @@ static void pointer_button(void *data, s
+ 
+     wlserv->serial = serial;
+ 
+-    ui_window_receive_event(win, &ev);
++    ui_window_receive_event(win, (XEvent*)&ev);
+ 
+ #ifdef COMPAT_LIBVTE
+     if (ev.type == ButtonPress && disp->display->parent == NULL /* Not input method */) {
+@@ -991,10 +991,10 @@ static void pointer_axis(void *data, str
+ #endif
+ 
+     ev.type = ButtonPress;
+-    ui_window_receive_event(win, &ev);
++    ui_window_receive_event(win, (XEvent*)&ev);
+ 
+     ev.type = ButtonRelease;
+-    ui_window_receive_event(win, &ev);
++    ui_window_receive_event(win, (XEvent*)&ev);
+   }
+ }
+ 
+@@ -1997,7 +1997,7 @@ static ui_wlserv_t *open_wl_display(char
+     return NULL;
+   }
+ 
+-  wlserv->xkb = wlserv + 1;
++  wlserv->xkb = (struct ui_xkb*)(wlserv + 1);
+ 
+   if ((wlserv->display = wl_display_connect(name)) == NULL) {
+     bl_error_printf("Couldn't open display %s.\n", name);
+@@ -2525,7 +2525,7 @@ ui_display_t *ui_display_open(char *disp
+     return NULL;
+   }
+ 
+-  disp->display = disp + 1;
++  disp->display = (Display*)(disp + 1);
+ 
+   if ((p = realloc(displays, sizeof(ui_display_t*) * (num_displays + 1))) == NULL) {
+     free(disp);
+Index: mlterm-3.9.3/uitoolkit/win32/ui_window.c
+===================================================================
+--- mlterm-3.9.3.orig/uitoolkit/win32/ui_window.c
++++ mlterm-3.9.3/uitoolkit/win32/ui_window.c
+@@ -57,7 +57,7 @@
+ #define BOTTOM_MARGIN(win) \
+   ((win)->height_inc ? ((win)->height - (win)->min_height) % (win)->height_inc : 0)
+ 
+-#define ParentRelative (1L)
++#define ParentRelative ((void*)1L)
+ 
+ #if 0
+ #define DEBUG_SCROLLABLE
+Index: mlterm-3.9.3/uitoolkit/xlib/ui_font.c
+===================================================================
+--- mlterm-3.9.3.orig/uitoolkit/xlib/ui_font.c
++++ mlterm-3.9.3/uitoolkit/xlib/ui_font.c
+@@ -197,7 +197,7 @@ static u_int xcore_calculate_char_width(
+   } else {
+     XChar2b c[2];
+ 
+-    width = XTextWidth16(xfont, c, ui_convert_ucs4_to_utf16(c, ch) / 2);
++    width = XTextWidth16(xfont, c, ui_convert_ucs4_to_utf16((u_char*)c, ch) / 2);
+   }
+ 
+   if (width < 0) {
+Index: mlterm-3.9.3/uitoolkit/xlib/ui_imagelib.c
+===================================================================
+--- mlterm-3.9.3.orig/uitoolkit/xlib/ui_imagelib.c
++++ mlterm-3.9.3/uitoolkit/xlib/ui_imagelib.c
+@@ -428,7 +428,7 @@ static int load_sixel(ui_display_t *disp
+   GC mask_gc;
+   int num_cells;
+ 
+-  if (disp->depth < 8 || !(data = in = load_sixel_from_file(path, &w, &h))) {
++  if (disp->depth < 8 || !(data = in = (u_int32_t*)load_sixel_from_file(path, &w, &h))) {
+     return 0;
+   }
+ 
+@@ -464,7 +464,7 @@ static int load_sixel(ui_display_t *disp
+     }
+ 
+     bytes_per_pixel = 1;
+-    out8 = data;
++    out8 = (u_char*)data;
+ 
+ #ifdef USE_FS
+     if ((diff_cur = calloc(1, w * 3)) == NULL || (diff_next = calloc(1, w * 3)) == NULL) {
+@@ -540,10 +540,10 @@ static int load_sixel(ui_display_t *disp
+ 
+     if (disp->depth == 16) {
+       bytes_per_pixel = 2;
+-      out16 = data;
++      out16 = (u_int16_t*)data;
+     } else /* if (disp->depth == 32 || disp->depth == 24) */ {
+       bytes_per_pixel = 4;
+-      out32 = data;
++      out32 = (u_int32_t*)data;
+     }
+ 
+     vinfo = ui_display_get_visual_info(disp);
+@@ -577,7 +577,7 @@ static int load_sixel(ui_display_t *disp
+     XFreeGC(disp->display, mask_gc);
+   }
+ 
+-  image = XCreateImage(disp->display, disp->visual, disp->depth, ZPixmap, 0, data, w, h,
++  image = XCreateImage(disp->display, disp->visual, disp->depth, ZPixmap, 0, (char *)data, w, h,
+                        /* in case depth isn't multiple of 8 */
+                        bytes_per_pixel * 8, w * bytes_per_pixel);
+ #ifdef WORDS_BIGENDIAN
+@@ -1406,7 +1406,7 @@ static u_int32_t *create_cardinals_from_
+     cardinal[1] = height;
+ 
+     size -= (sizeof(u_int32_t) * 2);
+-    p = &cardinal[2];
++    p = (u_char*)(&cardinal[2]);
+     while ((n_rd = read(read_fd, p, size)) > 0) {
+       p += n_rd;
+       size -= n_rd;
+Index: mlterm-3.9.3/uitoolkit/xlib/ui_window.c
+===================================================================
+--- mlterm-3.9.3.orig/uitoolkit/xlib/ui_window.c
++++ mlterm-3.9.3/uitoolkit/xlib/ui_window.c
+@@ -3179,7 +3179,7 @@ void ui_window_set_icon(ui_window_t *win
+   /* set extended window manager hint's icon */
+   if (icon->cardinal && icon->cardinal[0] && icon->cardinal[1]) {
+     int num;
+-    u_long *data;
++    u_int32_t *data;
+ 
+     /* width * height + 2 */
+     num = icon->cardinal[0] * icon->cardinal[1] + 2;
+@@ -3187,7 +3187,7 @@ void ui_window_set_icon(ui_window_t *win
+     if (sizeof(u_long) != 4) {
+       int count;
+ 
+-      if (!(data = alloca(sizeof(u_long) * num))) {
++      if (!(data = alloca(sizeof(u_int32_t) * num))) {
+         return;
+       }
+ 
+Index: mlterm-3.9.3/vtemu/libctl/vt_bidi.c
+===================================================================
+--- mlterm-3.9.3.orig/vtemu/libctl/vt_bidi.c
++++ mlterm-3.9.3/vtemu/libctl/vt_bidi.c
+@@ -15,6 +15,19 @@
+ #define DIR_LTR_MARK 0x200e
+ #define DIR_RTL_MARK 0x200f
+ 
++/*
++ * FriBidiParType is introduced in
++ * https://github.com/fribidi/fribidi/commit/5a52ab708d73f6b8929856ddf7238ecdb04a36b0
++ */
++#if defined(FRIBIDI_MAJOR_VERSION) && defined(FRIBIDI_MINOR_VERSION)
++#if FRIBIDI_MAJOR_VERSION >= 1 || FRIBIDI_MINOR_VERSION >= 19
++#define FriBidiCharType FriBidiParType
++#define FRIBIDI_TYPE_LTR FRIBIDI_PAR_LTR
++#define FRIBIDI_TYPE_RTL FRIBIDI_PAR_RTL
++#define FRIBIDI_TYPE_ON FRIBIDI_PAR_ON
++#endif
++#endif
++
+ /* --- global functions --- */
+ 
+ vt_bidi_state_t vt_bidi_new(void) {
+@@ -94,6 +107,10 @@ static void log2vis(FriBidiChar *str, u_
+       type = FRIBIDI_TYPE_LTR;
+     }
+ 
++    /*
++     * The type of the 3rd argument is changed from FriBidiCharType to FriBidiParType in
++     * https://github.com/fribidi/fribidi/commit/5a52ab708d73f6b8929856ddf7238ecdb04a36b0
++     */
+     fribidi_log2vis(str + cur_pos, size - cur_pos, &type, NULL, order + cur_pos, NULL, NULL);
+ 
+     if (*type_p == FRIBIDI_TYPE_ON) {
+Index: mlterm-3.9.3/vtemu/libctl/vt_iscii.c
+===================================================================
+--- mlterm-3.9.3.orig/vtemu/libctl/vt_iscii.c
++++ mlterm-3.9.3/vtemu/libctl/vt_iscii.c
+@@ -131,7 +131,7 @@ static void *load_symbol(char *file) {
+   return sym;
+ }
+ 
+-static struct tabl *get_iscii_table(int idx, size_t *size) {
++static struct tabl *get_iscii_table(int idx, u_int *size) {
+   if (file_not_found_flags[idx]) {
+     return NULL;
+   }
+@@ -145,7 +145,7 @@ static struct tabl *get_iscii_table(int
+   return (*get_iscii_tables[idx])(size);
+ }
+ 
+-static struct a2i_tabl *get_isciikey_table(int is_inscript, size_t *size) {
++static struct a2i_tabl *get_isciikey_table(int is_inscript, u_int *size) {
+   if (is_inscript) {
+     static int not_found;
+ 
+@@ -183,7 +183,7 @@ static struct a2i_tabl *get_isciikey_tab
+ 
+ u_int vt_iscii_shape(ef_charset_t cs, u_char *dst, size_t dst_size, u_char *src) {
+   struct tabl *table;
+-  size_t size;
++  u_int size;
+ 
+   if (!IS_ISCII(cs)) {
+     return 0;
+@@ -377,7 +377,7 @@ void vt_isciikey_state_destroy(vt_isciik
+ size_t vt_convert_ascii_to_iscii(vt_isciikey_state_t state, u_char *iscii, size_t iscii_len,
+                                  u_char *ascii, size_t ascii_len) {
+   struct a2i_tabl *table;
+-  size_t size;
++  u_int size;
+   u_char *dup;
+ 
+   /*
+Index: mlterm-3.9.3/vtemu/libptyssh/vt_pty_ssh.c
+===================================================================
+--- mlterm-3.9.3.orig/vtemu/libptyssh/vt_pty_ssh.c
++++ mlterm-3.9.3/vtemu/libptyssh/vt_pty_ssh.c
+@@ -1881,9 +1881,9 @@ static void save_data_for_reconnect(ssh_
+     char *str;
+     char **dst;
+ 
+-    session->stored->argv = session->stored + 1;
++    session->stored->argv = (char**)(session->stored + 1);
+     session->stored->env = session->stored->argv + array_size[0];
+-    str = session->stored->env + array_size[1];
++    str = (char*)(session->stored->env + array_size[1]);
+     session->stored->pass = strcpy(str, pass);
+     str += (strlen(pass) + 1);
+     if (cmd_path) {
+Index: mlterm-3.9.3/vtemu/vt_edit.c
+===================================================================
+--- mlterm-3.9.3.orig/vtemu/vt_edit.c
++++ mlterm-3.9.3/vtemu/vt_edit.c
+@@ -1542,7 +1542,7 @@ vt_protect_store_t *vt_edit_save_protect
+               return NULL;
+             }
+ 
+-            dst = save->chars = save + 1;
++            dst = save->chars = (vt_char_t*)(save + 1);
+             vt_str_init(dst, (vt_edit_get_cols(edit) + 1) * (end_row - row + 1));
+             dst += count;
+             save->beg_row = row;
+Index: mlterm-3.9.3/vtemu/vt_parser.c
+===================================================================
+--- mlterm-3.9.3.orig/vtemu/vt_parser.c
++++ mlterm-3.9.3/vtemu/vt_parser.c
+@@ -3079,7 +3079,7 @@ static void reset_color_rgb(vt_parser_t
+       }
+     }
+   } else {
+-    while ((p = bl_str_sep(&pt, ";"))) {
++    while ((p = bl_str_sep((char**)&pt, ";"))) {
+       if (is_spcolor) {
+         if ('0' <= *p && *p <= '4') {
+           config_protocol_set_simple(vt_parser, get_special_color_name(*p), "", 0);
+@@ -5746,7 +5746,7 @@ inline static int parse_vt100_escape_seq
+         } else if (ps[0] == 10) {
+           /* XXX full screen is not supported for now. */
+         } else if (ps[0] == 7) {
+-          const char cmd[] = "update_all";
++          char cmd[] = "update_all";
+           config_protocol_set(vt_parser, cmd, 0);
+         } else if (ps[0] == 11) {
+           vt_write_to_pty(vt_parser->pty, "\x1b[1t", 4); /* XXX always non-iconified */

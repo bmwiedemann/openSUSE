@@ -1,0 +1,14 @@
+index 29c6647d..2cc11900 100644
+Index: mlterm-3.9.3/uitoolkit/libtype/ui_window_cairo.c
+===================================================================
+--- mlterm-3.9.3.orig/uitoolkit/libtype/ui_window_cairo.c
++++ mlterm-3.9.3/uitoolkit/libtype/ui_window_cairo.c
+@@ -54,7 +54,7 @@ static void adjust_glyphs(ui_font_t *fon
+ 
+ static void flush_glyphs(cairo_t *cr) {
+   if (num_glyph_buf > 0) {
+-    u_long pixel = cairo_get_user_data(cr, (cairo_user_data_key_t*)2);
++    u_long pixel = (u_long)cairo_get_user_data(cr, (cairo_user_data_key_t*)2);
+ 
+     cairo_set_scaled_font(cr, cairo_get_user_data(cr, (cairo_user_data_key_t*)1));
+     cairo_set_source_rgba(cr,

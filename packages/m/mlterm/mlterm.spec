@@ -16,7 +16,6 @@
 #
 
 
-%global build_cflags %optflags -fpermissive
 %global _configure ../configure
 %if 0%{?sle_version} && 0%{?sle_version} < 150500
 %global do_wayland 0
@@ -35,6 +34,16 @@ URL:            https://mlterm.sourceforge.net/
 Source0:        http://downloads.sourceforge.net/project/mlterm/01release/%{name}-%{version}/%{name}-%{version}.tar.gz
 Source10:       %{name}.desktop
 Patch0:         etc.patch
+# https://github.com/arakiken/mlterm/commit/f971955cf54a721e6a53191c3b86fbdab4bfbfd5
+Patch1:         mlterm-gcc14-f971955.patch
+# https://github.com/arakiken/mlterm/commit/3d38b723e0e4a6dd434af2d49aca53890982a828
+Patch2:         mlterm-gcc14-3d38b72.patch
+# https://github.com/arakiken/mlterm/commit/08ba9859717ed27384675bd687a35f4504701f27
+Patch3:         mlterm-gcc14-08ba985.patch
+# https://github.com/arakiken/mlterm/commit/8aef4fae3add8e8acfafde831e0034f1b2879dea
+Patch4:         mlterm-gcc14-8aef4fa.patch
+# https://github.com/arakiken/mlterm/commit/20ab931d5055dc5835154a75ca672fade478549f
+Patch5:         mlterm-gcc14-20ab931.patch
 BuildRequires:  ccache
 BuildRequires:  coreutils
 BuildRequires:  gcc-c++
@@ -180,9 +189,7 @@ Provides:       locale(uim:ja;ko;ar;he)
 A plugin to use the uim input methods directly from mlterm.
 
 %prep
-%setup -q
-%autopatch -p1
-
+%autosetup -p1
 rm -rf doc/{en,ja}/*win32
 
 %build
