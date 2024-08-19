@@ -528,4 +528,12 @@
   * Fix trying the same filename when moving a file with</comment>
     <requestid>1130390</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>d26057b054fef16a44a26556335aaffa</srcmd5>
+    <version>6.2.8</version>
+    <time>1724103900</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1193968</requestid>
+  </revision>
 </revisionlist>

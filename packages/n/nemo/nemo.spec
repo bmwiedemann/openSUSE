@@ -1,7 +1,7 @@
 #
 # spec file for package nemo
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,27 +16,22 @@
 #
 
 
-%define soname  libnemo-extension
-%define sover   1
-%define typelib typelib-1_0-Nemo-3_0
+%define         sover   1
 Name:           nemo
-Version:        6.0.0
+Version:        6.2.8
 Release:        0
 Summary:        File browser for Cinnamon
 License:        GPL-2.0-or-later
-Group:          System/GUI/Other
 URL:            https://github.com/linuxmint/nemo
-Source:         https://github.com/linuxmint/%{name}/archive/%{version}/%{name}-%{version}.tar.gz
+Source:         %{url}/archive/%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  fdupes
-BuildRequires:  gtk-doc
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  intltool
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  python3-gobject
 BuildRequires:  shared-mime-info
-BuildRequires:  tracker-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(cinnamon-desktop)
 BuildRequires:  pkgconfig(dbus-1)
@@ -45,14 +40,18 @@ BuildRequires:  pkgconfig(gail-3.0)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.12.0
+BuildRequires:  pkgconfig(gtk+-wayland-3.0) >= 3.10.0
+BuildRequires:  pkgconfig(gtk-doc)
 BuildRequires:  pkgconfig(gtksourceview-2.0)
 BuildRequires:  pkgconfig(gtksourceview-3.0)
+BuildRequires:  pkgconfig(gtksourceview-4)
 BuildRequires:  pkgconfig(libexif)
 BuildRequires:  pkgconfig(libgsf-1)
 BuildRequires:  pkgconfig(libnotify)
 BuildRequires:  pkgconfig(libselinux)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(polkit-agent-1)
+BuildRequires:  pkgconfig(tracker-sparql-3.0)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xapp) >= 1.9.0
 Requires:       desktop-file-utils >= 0.7
@@ -60,7 +59,6 @@ Requires:       glib2-tools
 Requires:       gvfs >= 1.3.2
 Requires:       python3
 Requires:       shared-mime-info >= 0.50
-Recommends:     %{name}-lang
 Recommends:     gdk-pixbuf-loader-rsvg
 Recommends:     gvfs-backends
 Recommends:     python3dist(xlrd)
@@ -68,100 +66,80 @@ Suggests:       xdg-user-dirs
 Suggests:       xplayer
 Suggests:       xreader
 Suggests:       xviewer
-%glib2_gsettings_schema_requires
 
 %description
 Nemo is the file manager for the Cinnamon desktop environment.
 
 %package devel
 Summary:        Development files for Nemo
-Group:          Development/Libraries/C and C++
 Requires:       %{name} = %{version}
-Requires:       %{soname}%{sover} = %{version}
-Requires:       %{typelib} = %{version}
+Requires:       lib%{name}-extension%{sover} = %{version}
+Requires:       typelib-1_0-Nemo-3_0 = %{version}
 
 %description devel
 Nemo is the file manager for the Cinnamon desktop environment.
 
 This package provides the development files for Nemo.
 
-%package -n %{soname}%{sover}
+%package -n lib%{name}-extension%{sover}
 Summary:        Nemo extension shared libraries
 Group:          System/Libraries
 
-%description -n %{soname}%{sover}
+%description -n lib%{name}-extension%{sover}
 Nemo is the file manager for the Cinnamon desktop environment.
 
 This package provides Nemo's shared libraries.
 
-%package -n %{typelib}
+%package -n  typelib-1_0-Nemo-3_0
 Summary:        File Browser for Cinnamon -- Introspection Bindings
 Group:          System/Libraries
 
-%description -n %{typelib}
+%description -n typelib-1_0-Nemo-3_0
 Nemo is the file manager for the Cinnamon desktop environment.
 
 This package provides the GObject Introspection bindings for Nemo.
 
 %prep
-%setup -q
+%autosetup
+
+sed -i 's|/usr/bin/env bash|/usr/bin/bash|g' search-helpers/%{name}-epub2text
 
 %build
-export CFLAGS="%{optflags} -fcommon"
-export CXXFLAGS="%{optflags} -fcommon"
-%if 0%{?suse_version} < 1500
-mkdir -p bin
-cat > bin/g-ir-scanner << EOF
-#!/bin/sh
-# This breaks the build. There are also useless entries in shared-library= in
-# Nemo-3.0.gir but that doesn't seem to have any actual implications here.
-export SUSE_ASNEEDED=0
-exec %{_bindir}/g-ir-scanner "\$%{nil}@"
-EOF
-chmod a+x bin/g-ir-scanner
-
-export PATH="$PWD/bin:$PATH"
-%endif
 %meson \
-  --libexecdir=%{_libexecdir}/%{name} \
-  -Dgtk_doc=true
+  -Ddeprecated_warnings=true \
+  -Dexif=true \
+  -Dxmp=true \
+  -Dgtk_doc=true \
+  -Dselinux=true \
+  -Dempty_view=false \
+  -Dtracker=true \
+  --libexecdir=%{_libexecdir}/%{name}
 %meson_build
 
 %install
 %meson_install
 
-%suse_update_desktop_file %{name} System FileManager
+%suse_update_desktop_file %{name}
 %suse_update_desktop_file %{name}-autostart
 %suse_update_desktop_file %{name}-autorun-software
 
 # We need to own this directory.
 mkdir -p %{buildroot}%{_libdir}/nemo/extensions-3.0/
 
-%fdupes %{buildroot}%{_datadir}/
+%fdupes %{buildroot}%{_datadir}
 
-%if 0%{?suse_version} < 1500
-%post
-%icon_theme_cache_post
-%desktop_database_post
-%mime_database_post
-%glib2_gsettings_schema_post
+%post -n lib%{name}-extension%{sover}
+%ldconfig
 
-%postun
-%icon_theme_cache_postun
-%desktop_database_postun
-%mime_database_postun
-%glib2_gsettings_schema_postun
-%endif
-
-%post -n %{soname}%{sover} -p /sbin/ldconfig
-%postun -n %{soname}%{sover} -p /sbin/ldconfig
+%postun -n lib%{name}-extension%{sover}
+%ldconfig
 
 %files
 %license COPYING*
 %doc AUTHORS README.md debian/changelog
 %{_bindir}/%{name}*
-%{_libexecdir}/%{name}/
-%{_datadir}/%{name}/
+%{_libexecdir}/%{name}
+%{_datadir}/%{name}
 %{_datadir}/applications/%{name}*.desktop
 %{_datadir}/icons/hicolor/*/*/*
 %{_datadir}/mime/packages/%{name}.xml
@@ -169,24 +147,22 @@ mkdir -p %{buildroot}%{_libdir}/nemo/extensions-3.0/
 %{_datadir}/dbus-1/services/nemo.service
 %{_datadir}/dbus-1/services/nemo.FileManager1.service
 %{_datadir}/glib-2.0/schemas/org.nemo.gschema.xml
-%dir %{_datadir}/gtksourceview-*
-%dir %{_datadir}/gtksourceview-*/language-specs
-%{_datadir}/gtksourceview-*/language-specs/%{name}_*.lang
+%{_datadir}/gtksourceview-{2.0,3.0,4}/*
 %{_datadir}/polkit-1/actions/org.nemo.root.policy
 
-%files -n %{typelib}
+%files -n typelib-1_0-Nemo-3_0
 %{_libdir}/girepository-1.0/Nemo-3.0.typelib
 
-%files -n %{soname}%{sover}
-%dir %{_libdir}/%{name}/
-%dir %{_libdir}/%{name}/extensions-3.0/
-%{_libdir}/%{soname}.so.%{sover}*
+%files -n lib%{name}-extension%{sover}
+%dir %{_libdir}/%{name}
+%dir %{_libdir}/%{name}/extensions-3.0
+%{_libdir}/lib%{name}-extension.so.%{sover}*
 
 %files devel
 %{_includedir}/%{name}/
-%{_libdir}/%{soname}.so
-%{_libdir}/pkgconfig/%{soname}.pc
+%{_libdir}/lib%{name}-extension.so
+%{_libdir}/pkgconfig/lib%{name}-extension.pc
 %{_datadir}/gir-1.0/Nemo-3.0.gir
-%{_datadir}/gtk-doc/html/libnemo-extension/
+%{_datadir}/gtk-doc/html/libnemo-extension
 
 %changelog

@@ -1,4 +1,81 @@
 -------------------------------------------------------------------
+Tue Aug 13 03:29:04 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 6.2.8:
+  * Fix some codespell complaints.
+  * Remove gtk-layer-shell
+  * Remove .nemo_action language files from files/usr, they're already
+- update to 6.2.7:
+  * actions: Add better documentation, fix misleading warning message
+- update to 6.2.6:
+  * nemo-action-manager.c: Generate unique names for actions when
+    they are loaded
+- update to 6.2.5:
+  * action-layout-editor: Translate action names
+- update to 6.2.4:
+  * nemo-view.c: Don't create a zero-length Empty Document
+- update to 6.2.3:
+  * nemo-action-layout-editor.glade: Set a translation domain
+  * nemo-icon-container.c: Don't tie the interactive search box
+  * Fix handling of actions that are not part of the layout
+- update to 6.2.2:
+  * layout editor: Update the disabled list immediately when an action
+- update to 6.2.1:
+  * eel-gnome-extensions.c: Set GNOME Terminal to FALSE
+  * layout editor: Don't allow duplicate uuids when saving the layout
+- update to 6.2.0:
+  * nemo-action-layout-editor: Add up/down arrows as an alternative
+  * Remove Edit->Plugins
+  * layout-editor: Simplify UI/labels, center dialog
+  * layout-editor: Add a label to explain the editor
+  * nemo-action-layout-editor: Refactor to allow importing the editor
+  * eel-gnome-extensions.c: Support whitespace in execution commands
+  * nemo-desktop-main.c: Add missing include
+  * nemo-view.c: Use an actual timeout duration when updating the
+    status bar/floater
+  * Fix confusing NEMO_LIST_ICON_SIZE_ definitions
+  * nemo-view.c & nemo-window-menus.c: Add support for terminals
+  * nemo-thumbnails.c: Always respect the thumbnail thread count
+  * application: Guard a new GLib log function with a version check
+  * nemo-file.c: Update default date-time formats to adapt to GDateTime
+  * Set a log domain to allow restricting debug output to Nemo only
+  * nemo-action.c: Fix regression when processing desktop actions
+  * Revert "nemo-desktop: use app_id as .desktop file name"
+  * Revert "Rename initial desktop file to match final name, clean up some"
+  * polkit: Go back to using auth_admin_keep
+  * nemo-action-layout-editor.py: Enable save after drag-and-drop
+  * actions: Refactor some code to reduce duplication
+  * nemo-view.c: Fix a build warning
+  * file: default to not being able to trash
+  * nemo-thumbnails.c: Always have at least 1 thumbnail thread
+  * Rename initial desktop file to match final name, clean up some
+  * nemo-desktop: use app_id as .desktop file name
+  * org.nemo.root.policy.in: Allow escalation for remote users
+  * nemo-dnd: Have the drag and drop text data not be uris but plain paths
+  * Fix builds with gtk_layer_shell=false or omitted
+  * meson.build: Build even if gtk-layer-shell's version is too low
+  * Support drawing the desktop on wayland using gtk-layer-shell
+  * actions: Fix build for non-debug builds, remove a stray debug line
+  * all: Stop using g_slice, fix a leak and remove an obsolete
+  * nemo-action.c: Allow absolute path pattern matching for File and
+  * Make wayland dependency optional
+  * nemo-action.c: Add Locations and Files fields
+  * Implement submenus for actions
+  * nemo-list-view.c: Add a permanent bottom margin when overlay
+  * mimetype defs: Add missing key names
+  * nemo-action-manager.c: Do not reinvent strcmp
+  * nemo-action-manager.c: Fix order of actions
+  * packaging: Forbid compilation if the symbols file is outdated
+- update to 6.0.2:
+  * nemo-file.c: Escape tooltip text for markup before adding any
+- update to 6.0.1:
+  * nemo-icon-canvas-item.c: Fix the state check to see if a surface
+  * remove nemo-convert-metadata tool
+- remove older Leap support
+- use more pkgconfig
+- enable selinux support
+
+-------------------------------------------------------------------
 Sat Nov 25 19:02:13 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.0.0:
