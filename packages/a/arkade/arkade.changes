@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Aug 19 13:32:43 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.11.20:
+  * Add kubetrim to README
+  * Update go.mod
+  * Add kubetrim by Alex Ellis
+
+-------------------------------------------------------------------
 Fri Aug 09 17:01:07 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.11.19:
