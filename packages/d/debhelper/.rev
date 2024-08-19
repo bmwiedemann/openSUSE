@@ -202,4 +202,12 @@ Resubmit without Source URL</comment>
     <comment>Update to 13.16</comment>
     <requestid>1189006</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>1f1a8c49df76d8d717f3cafc0dbb97e3</srcmd5>
+    <version>13.19</version>
+    <time>1724103948</time>
+    <user>anag+factory</user>
+    <comment>Update to 13.19, enable test suite during build.</comment>
+    <requestid>1194724</requestid>
+  </revision>
 </revisionlist>

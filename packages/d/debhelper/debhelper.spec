@@ -17,7 +17,7 @@
 
 
 Name:           debhelper
-Version:        13.16
+Version:        13.19
 Release:        0
 Summary:        Helper programs for debian/rules
 License:        GPL-2.0-or-later
@@ -30,6 +30,8 @@ Patch0:         debhelper-no-localized-manpages.patch
 Patch1:         debhelper-pod2man-no-utf8.patch
 # PATCH-FIX-UPSTREAM debhelper-fix-perl-version-requirement.patch https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1001403
 Patch2:         debhelper-fix-perl-version-requirement.patch
+BuildRequires:  dpkg-devel >= 1.18
+BuildRequires:  perl-Test-Pod
 Requires:       dh-autoreconf >= 17
 Requires:       dpkg >= 1.18
 Requires:       strip-nondeterminism
@@ -54,12 +56,15 @@ as part of their build process.
 %if 0%{?suse_version} && 0%{?suse_version} < 1130
 %patch -P 1 -p1
 %endif
-%if 0%{?sle_version} == 150500
+%if 0%{?suse_version} < 1600
 %patch -P 2 -p0
 %endif
 
 %build
 %make_build VERSION='%{version}'
+
+%check
+%make_build test
 
 %install
 %make_install

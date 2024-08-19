@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Mon Aug 19 13:35:03 UTC 2024 - Jan Baier <jbaier@suse.com>
+
+- update to 13.19:
+  * Fix regression in pkgfile where compat 14 semantics were always active.
+    Thanks to Salvatore Bonaccorso <carnil@debian.org>
+  * dh_lintian: Reject architecture specific overrides files for M-A: same [c14]
+    Thanks to Salvatore Bonaccorso <carnil@debian.org> (Closes: #1078830)
+  * perl_makemaker: Fix missing import that broke cross-builds.
+    Thanks to Helmut Grohne <helmut@subdivi.de> (Closes: #1078707)
+  * perl-build: Set PKG_CONFIG during cross builds like perl-makemaker.
+    Thanks to gregor herrmann <gregoa@debian.org>
+  * Update on Portuguese translation of man pages
+  * Reorder default sequence around dh_fixperms and nearby tools in
+    compat 14. (Closes: #981783, #982457). This should also avoid
+    future issues like LP#1928381 where Ubuntu's modifications to
+    `dh_strip` cause differences not visible in Debian.
+  * dh_assistant: Fix bug the config introspection could be wrong.
+  * debhelper-documentation.json: Associate with `substvars` with
+    `dh_gencontrol`.
+  * Add some config hints to `dh_makeshlibs` and `dh_gencontrol`.
+  * Bump Standards-Version to 4.7.0 - no changes required
+  * Dh_Lib.pm: Change `pkgfile` lookup to have opt-in features
+    rather than always-on in compat 14. Third-party debhelper tools
+    should update their `pkgfile` calls if they need `named` or/and
+    architecture specifc configuration files.
+  * Set PKG_CONFIG when calling Makefile.pl (makemaker) if not already set
+  * Make `dh_auto_install --destdir` change a pure compat 14 change.
+    Thanks to Jeremy Bícha <jeremy.bicha@canonical.com>.
+    (Closes: #1074322)
+- enable test suite during build
+
+-------------------------------------------------------------------
+Thu Aug  8 08:23:09 UTC 2024 - Jan Baier <jbaier@suse.com>
+
+- fix perl compatibility for Leap (bsc#1228955)
+
+-------------------------------------------------------------------
 Mon Jul 22 11:04:43 UTC 2024 - Jan Baier <jbaier@suse.com>
 
 - update to 13.16:
