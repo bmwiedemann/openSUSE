@@ -1,7 +1,7 @@
 #
 # spec file for package dasher
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,7 +35,7 @@ Patch3:         0001-Remove-extern-C-warpper-around-atspi-glib-headers-in.patch
 BuildRequires:  c++_compiler
 BuildRequires:  c_compiler
 BuildRequires:  fdupes
-BuildRequires:  gettext
+BuildRequires:  gettext-devel
 BuildRequires:  gnome-common
 BuildRequires:  intltool
 BuildRequires:  libexpat-devel
