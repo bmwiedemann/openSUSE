@@ -134,4 +134,12 @@ https://nvidia.custhelp.com/app/answers/detail/a_id/5491/~/security-bulletin%3A-
   products; so do this only for sle15-sp7 or later</comment>
     <requestid>1187075</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>296001f6821ff65908438d0b60fd5033</srcmd5>
+    <version>550.107.02</version>
+    <time>1724103905</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1194708</requestid>
+  </revision>
 </revisionlist>
