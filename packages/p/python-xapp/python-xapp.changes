@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Aug 12 09:31:36 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 2.4.2:
+  * Make python installation configurable for distro packaging (meson)
+  * Revert "os.py: Add function to read the VERSION_CODENAME in /etc/os-release
+  * Revert "os.py: rename get_os_release_codename()
+  * os.py: rename get_os_release_codename() to get_os_release_info()
+  * os.py: Add function to read the VERSION_CODENAME in /etc/os-release
+- update to 2.4.1:
+  * fix lintian error and build failure
+- update to 2.4.0:
+  * Use access() to test readability of /proc/cmdline
+  * Use meson to build
+- update to 2.2.2:
+  * scale widget: Add the units to the value instead of appending it to
+- update spec file to newer standards, add the older setup.py, so we
+  can build it for multiple python versions
+
+-------------------------------------------------------------------
 Thu May 16 15:07:15 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro: allows us to eliminate usage of deprecated

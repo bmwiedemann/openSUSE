@@ -86,4 +86,12 @@ Don't change permission, leave it at 644.</comment>
   %patchN syntax. (forwarded request 1174633 from dimstar)</comment>
     <requestid>1175708</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>73ef31fff15e8e7790681bfdc66c63c4</srcmd5>
+    <version>2.4.2</version>
+    <time>1724103901</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1193969</requestid>
+  </revision>
 </revisionlist>

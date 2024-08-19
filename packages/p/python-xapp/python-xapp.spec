@@ -16,17 +16,16 @@
 #
 
 
-%define skip_python2 1
-%define _name python3-xapp
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define         skip_python2 1
+%define         _name python3-xapp
 Name:           python-xapp
-Version:        2.2.1
+Version:        2.4.2
 Release:        0
 Summary:        Python XApp library
 License:        GPL-2.0-or-later
-Group:          Development/Languages/Python
 URL:            https://github.com/linuxmint/python3-xapp
-Source:         https://github.com/linuxmint/python3-xapp/archive/%{version}.tar.gz#/%{_name}-%{version}.tar.gz
+Source0:        %{url}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source1:        setup.py
 # PATCH-FEATURE-OPENSUSE python-xapp-xdgsu.patch -- Escalate privileges using xdg-su.
 Patch0:         python-xapp-xdgsu.patch
 BuildRequires:  %{python_module devel}
@@ -45,6 +44,9 @@ desktop environments and required to implement cross-DE solutions.
 
 %prep
 %autosetup -p1 -n %{_name}-%{version}
+cp %{SOURCE1} .
+# let's change the version in setup.py
+sed -i 's|version = "0.0.0",|version = "%{version}",|g' setup.py
 
 %build
 %python_build
