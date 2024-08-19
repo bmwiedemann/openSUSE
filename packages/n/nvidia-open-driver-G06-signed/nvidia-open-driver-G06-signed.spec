@@ -16,8 +16,8 @@
 #
 
 
-%define gfx_version 550.100
-%define cuda_version 555.42.06
+%define gfx_version 550.107.02
+%define cuda_version 560.28.03
 
 %global flavor @BUILD_FLAVOR@%{?nil}
 %if "%{flavor}" == "cuda"
@@ -47,7 +47,7 @@ Version:        %{gfx_version}
 %endif
 
 Release:        0
-Summary:        NVIDIA open kernel module driver for GeForce RTX 2000 series and newer
+Summary:        NVIDIA open kernel module driver for GeForce 16 series (GTX 16xx) and newer
 License:        GPL-2.0-only AND MIT
 Group:          System/Kernel
 URL:            https://github.com/NVIDIA/open-gpu-kernel-modules/
@@ -135,7 +135,8 @@ Simply run: `zypper install --no-recommends cuda-runtime-<version> nv-prefer-sig
 
 %description
 This package provides the open-source NVIDIA kernel module driver
-for GeForce RTX 2000 series and newer GPUs.
+for GeForce 16 series (GTX 16xx) and newer GPUs, i.e. Turing GPU family
+and newer (Turing, Ampere, Ada Lavelace, Hopper, Blackwell, ...).
 
 %prep
 %autosetup -p1 -n open-gpu-kernel-modules-%{version}
