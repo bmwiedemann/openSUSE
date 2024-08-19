@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Aug 12 13:57:22 UTC 2024 - Marcus Meissner <meissner@suse.com>
+
+- Updated to 9.15 release
+  - Prototype and constructor objects in MSHTML.
+  - More support for ODBC Windows drivers.
+  - Various bug fixes.
+- update staging to 9.15 release
+
+-------------------------------------------------------------------
 Mon Jul 29 09:39:31 UTC 2024 - Marcus Meissner <meissner@suse.com>
 
 - Updated to 9.14 release

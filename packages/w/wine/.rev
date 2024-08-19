@@ -5260,4 +5260,12 @@ If you have any suggestions for improvement, please let me know! (forwarded requ
 - update staging to 9.14 release</comment>
     <requestid>1190233</requestid>
   </revision>
+  <revision rev="446" vrev="1">
+    <srcmd5>fdfca4e9507ac10f374f87b62a5bc675</srcmd5>
+    <version>9.15</version>
+    <time>1724103946</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1194722</requestid>
+  </revision>
 </revisionlist>
