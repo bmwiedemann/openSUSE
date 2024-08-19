@@ -33,7 +33,7 @@ Patch0:         fusermount3.diff
 BuildRequires:  AppStream
 BuildRequires:  AppStream-compose
 BuildRequires:  docbook-xsl-stylesheets
-BuildRequires:  gettext
+BuildRequires:  gettext-devel
 BuildRequires:  gtk-doc
 BuildRequires:  libcap-devel
 BuildRequires:  meson

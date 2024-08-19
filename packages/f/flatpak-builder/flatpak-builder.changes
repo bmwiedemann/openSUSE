@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug 19 11:28:56 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire gettext-devel instead of gettext: allow OBS to
+  shortcut through gettext-runtime-mini.
+
+-------------------------------------------------------------------
 Fri Mar 15 19:33:19 UTC 2024 - andy great <andythe_great@pm.me>
 
 - Temporary use fixed-libglnx archive provided from upsteam to fix
