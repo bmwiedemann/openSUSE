@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Aug 20 11:47:40 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.14.1:
+  * chore: add update release notes
+  * chore: simplify alpine container build
+  * chore: add schema downloader to scratch container release
+  * chore(deps): bump k8s schema version and tweak readme notes
+  * chore(deps): bump container base images
+  * chore(deps): update go dependencies
+  * chore: update goreleaser config for v2
+  * chore(deps): bump the gha group across 1 directory with 4
+    updates
+  * fix: scan entire branch with trufflehog
+  * chore(deps): bump the gha group with 3 updates
+  * chore(deps): bump google.golang.org/protobuf from 1.31.0 to
+    1.33.0
+  * chore(deps): bump the gha group with 2 updates
+  * chore(deps): bump the gha group with 6 updates
+  * chore(deps): bump the gomod group with 1 update
+  * chore: correct webhook release name and tag
+  * chore: manual workflow for releasing kubesec-workflow for now
+
+-------------------------------------------------------------------
 Thu Nov 23 06:38:57 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 2.14.0:
