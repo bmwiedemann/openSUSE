@@ -17,7 +17,7 @@
 
 
 Name:           you-get
-Version:        0.4.1718
+Version:        0.4.1730
 Release:        0
 Summary:        Dumb downloader that scrapes the web
 License:        MIT

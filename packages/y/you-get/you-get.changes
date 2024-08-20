@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Aug 19 20:18:30 UTC 2024 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.4.1730
+  * [vimeo] cleanup
+  * [tests] disable test_youtube temporarily
+  * fix "SyntaxWarning: invalid escape sequence" for Python 3.12
+  * [youtube] update self.ua (fix extraction)
+  * [youtube] add self.ua
+  * [tiktok] support short URLs (vt.tiktok.com)
+  * Add Flox as an installation option
+  * [instagram] fix extraction
+  * Add ytInitialPlayerResponse checker to let user easily know
+    problem
+  * [youtube] sloppy fix
+
+-------------------------------------------------------------------
 Sun Jul 14 07:25:37 UTC 2024 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 0.4.1718
