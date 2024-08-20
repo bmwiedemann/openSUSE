@@ -30,6 +30,7 @@ URL:            https://libsdl.org/
 #Source2:        https://libsdl.org/release/%name-%version.tar.gz.sig
 Source:         https://github.com/libsdl-org/SDL/releases/download/prerelease-%version/%name-%version.tar.xz
 Source3:        %name.keyring
+Patch1:         gcc14.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  libdecor-devel
