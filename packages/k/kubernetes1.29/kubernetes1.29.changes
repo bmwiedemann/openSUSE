@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Aug 16 13:26:00 UTC 2024 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Update to version 1.29.8:
+  * Respect controllers on PVCs for retention policy
+  * Updating kubelet on Windows to query uuid from registry
+  * Update err message before ratcheting feature enabled.
+  * Terminate restartable init containers ignoring not-started containers
+  * Hot fix for panic on schema conversion.
+  * mount-utils: treat syscall.ENODEV as corrupted mount
+  * update container ubuntu sha256
+  * update driver installer
+  * api: fix ValidatingAdmissionPolicyList json tag
+  * apiserver: fix watch namespace
+  * Fix that PodIP field is not set for terminal pod
+  * Use omitempty for optional fields in Job Pod Failure Policy
+
+-------------------------------------------------------------------
 Tue Aug  6 12:09:46 UTC 2024 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - Follow up changes after go version bump to 1.22:
