@@ -26,6 +26,8 @@ URL:            https://github.com/CDrummond/cantata/
 Source0:        https://github.com/CDrummond/cantata/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM -- taglib 2.0 support https://github.com/fenuks/cantata/commit/45bac9e
 Patch0:         0001-Update-for-tablib-2.0-compatibility.patch
+# PATCH-FIX-UPSTREAM -- ffmpeg 7 support https://github.com/OpenMandrivaAssociation/cantata/blob/master/cantata-2.5.0-ffmpeg7.patch
+Patch1:         cantata-2.5.0-ffmpeg7.patch
 BuildRequires:  fdupes
 BuildRequires:  media-player-info
 BuildRequires:  pkgconfig
@@ -94,6 +96,10 @@ information, please refer to the main README.
 %setup -q
 %if %{pkg_vcmp pkgconfig(taglib) >= 2.0}
 %patch -P0 -p1
+%endif
+# Only build with ffmpeg >= 5.1
+%if %{pkg_vcmp pkgconfig(libavcodec) >= 5.1}
+%patch -P1 -p1
 %endif
 
 %build

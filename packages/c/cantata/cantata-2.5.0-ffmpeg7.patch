@@ -1,0 +1,52 @@
+commit db99b7e3d5a87f8e65803627585ea6eebe2a108f
+Author: Crispin Boylan <cris@beebgames.com>
+Date:   Wed Apr 10 22:08:54 2024 +0100
+
+    build with ffmpeg 7
+
+diff --git a/replaygain/ffmpeginput.cpp b/replaygain/ffmpeginput.cpp
+index 80c77f58..9ad66162 100644
+--- a/replaygain/ffmpeginput.cpp
++++ b/replaygain/ffmpeginput.cpp
+@@ -253,7 +253,7 @@ FfmpegInput::~FfmpegInput()
+ {
+     if (handle) {
+         mutex.lock();
+-        avcodec_close(handle->codecContext);
++        avcodec_free_context(&handle->codecContext);
+         #if LIBAVFORMAT_VERSION_INT >= AV_VERSION_INT(53, 21, 0)
+         avformat_close_input(&handle->formatContext);
+         #else
+@@ -281,7 +281,7 @@ size_t FfmpegInput::totalFrames() const
+ 
+ unsigned int FfmpegInput::channels() const
+ {
+-    return handle ? handle->codecContext->channels : 0;
++    return handle ? handle->codecContext->ch_layout.nb_channels : 0;
+ }
+ 
+ unsigned long FfmpegInput::sampleRate() const
+@@ -296,11 +296,11 @@ float * FfmpegInput::buffer() const
+ 
+ bool FfmpegInput::setChannelMap(int *st) const
+ {
+-    if (handle && handle->codecContext->channel_layout) {
++    if (handle && handle->codecContext->ch_layout.u.mask) {
+         unsigned int mapIndex = 0;
+         int bitCounter = 0;
+-        while (mapIndex < (unsigned) handle->codecContext->channels) {
+-            if (handle->codecContext->channel_layout & (1 << bitCounter)) {
++        while (mapIndex < (unsigned) handle->codecContext->ch_layout.nb_channels) {
++            if (handle->codecContext->ch_layout.u.mask & (1 << bitCounter)) {
+                 switch (1 << bitCounter) {
+                 #if LIBAVFORMAT_VERSION_MAJOR >= 54
+                 case AV_CH_FRONT_LEFT:
+@@ -470,7 +470,7 @@ free_packet:
+ write_to_buffer: ;
+     size_t numberRead=handle->frame->nb_samples;
+     /* TODO: fix this */
+-    int numChannels = handle->codecContext->channels;
++    int numChannels = handle->codecContext->ch_layout.nb_channels;
+     // channels = handle->frame->channels;
+ 
+     if (handle->frame->nb_samples * numChannels > (int)sizeof handle->buffer) {

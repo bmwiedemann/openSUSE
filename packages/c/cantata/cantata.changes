@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug 20 07:27:03 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Add ffmpeg 7 compatibility patch:
+  * cantata-2.5.0-ffmpeg7.patch
+
+-------------------------------------------------------------------
 Tue Feb 20 15:46:42 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Remove the taglib-extras build dependency, it fails to build
