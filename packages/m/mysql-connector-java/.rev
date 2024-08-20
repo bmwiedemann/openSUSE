@@ -431,4 +431,12 @@
     <comment>8.4.0</comment>
     <requestid>1177174</requestid>
   </revision>
+  <revision rev="51" vrev="2">
+    <srcmd5>a18970bccb5acfc8cc1314e71ac0e1d1</srcmd5>
+    <version>8.4.0</version>
+    <time>1724163276</time>
+    <user>anag+factory</user>
+    <comment>bsc#1229150</comment>
+    <requestid>1194888</requestid>
+  </revision>
 </revisionlist>

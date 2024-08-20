@@ -1,6 +1,6 @@
---- a/src/main/core-impl/java/com/mysql/cj/NativeSession.java
-+++ b/src/main/core-impl/java/com/mysql/cj/NativeSession.java
-@@ -37,7 +37,6 @@ import java.util.concurrent.CopyOnWriteA
+--- mysql-connector-j-8.4.0/src/main/core-impl/java/com/mysql/cj/NativeSession.java	2024-08-20 09:40:16.912267863 +0200
++++ mysql-connector-j-8.4.0/src/main/core-impl/java/com/mysql/cj/NativeSession.java	2024-08-20 10:15:54.394893409 +0200
+@@ -37,7 +37,6 @@
  import java.util.function.Supplier;
  
  import com.mysql.cj.conf.HostInfo;
@@ -8,7 +8,7 @@
  import com.mysql.cj.conf.PropertyKey;
  import com.mysql.cj.conf.PropertySet;
  import com.mysql.cj.conf.RuntimeProperty;
-@@ -51,7 +50,6 @@ import com.mysql.cj.exceptions.MysqlErro
+@@ -51,7 +50,6 @@
  import com.mysql.cj.exceptions.OperationCancelledException;
  import com.mysql.cj.interceptors.QueryInterceptor;
  import com.mysql.cj.log.Log;
@@ -16,7 +16,7 @@
  import com.mysql.cj.protocol.ColumnDefinition;
  import com.mysql.cj.protocol.NetworkResources;
  import com.mysql.cj.protocol.ProtocolEntityFactory;
-@@ -107,24 +105,6 @@ public class NativeSession extends CoreS
+@@ -107,24 +105,7 @@
  
      public NativeSession(HostInfo hostInfo, PropertySet propSet) {
          super(hostInfo, propSet);
@@ -31,7 +31,7 @@
 -                if (openTelemetry.isExplicitlySet()) {
 -                    getLog().logInfo(Messages.getString("Connection.OtelApiNotFound"));
 -                }
--                setTelemetryHandler(NoopTelemetryHandler.getInstance());
+                 setTelemetryHandler(NoopTelemetryHandler.getInstance());
 -            } else {
 -                setTelemetryHandler(new OpenTelemetryHandler());
 -            }
