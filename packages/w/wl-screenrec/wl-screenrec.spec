@@ -17,7 +17,7 @@
 
 
 Name:           wl-screenrec
-Version:        0.1.3
+Version:        0.1.5
 License:        Apache-2.0
 Release:        0
 Summary:        High performance hardware accelerated wlroots screen recorder
@@ -37,6 +37,39 @@ BuildRequires:  wayland-devel
 BuildRequires:  wayland-protocols-devel
 BuildRequires:  wlroots-devel
 
+%package        fish-completion
+Summary:        Fish Completion for %{name}
+Group:          System/Shells
+Supplements:    (%{name} and fish)
+Requires:       %{name}
+Requires:       fish
+BuildArch:      noarch
+
+%description    fish-completion
+Fish command-line completion support for %{name}.
+
+%package        zsh-completion
+Summary:        Zsh Completion for %{name}
+Group:          System/Shells
+Supplements:    (%{name} and zsh)
+Requires:       %{name}
+Requires:       zsh
+BuildArch:      noarch
+
+%description    zsh-completion
+Zsh command-line completion support for %{name}.
+
+%package        bash-completion
+Summary:        Bash Completion for %{name}
+Group:          System/Shells
+Supplements:    (%{name} and bash-completion)
+Requires:       %{name}
+Requires:       bash-completion
+BuildArch:      noarch
+
+%description    bash-completion
+Bash command-line completion support for %{name}.
+
 %description
 High performance screen recorder for wlroots Wayland.
 
@@ -53,9 +86,32 @@ CPU, leaving it free to run your applications.
 %install
 %{cargo_install} --all-features
 
+export PATH="%{buildroot}%{_bindir}:${PATH}"
+mkdir -p %{buildroot}%{_datadir}/bash-completion/completions
+mkdir -p %{buildroot}%{_datadir}/fish/vendor_completions.d
+mkdir -p %{buildroot}%{_datadir}/zsh/site-functions
+wl-screenrec --generate-completions bash > %{buildroot}%{_datadir}/bash-completion/completions/%{name}
+wl-screenrec --generate-completions fish > %{buildroot}%{_datadir}/fish/vendor_completions.d/%{name}.fish
+wl-screenrec --generate-completions zsh  > %{buildroot}%{_datadir}/zsh/site-functions/_%{name}
+
 %files
 %{_bindir}/wl-screenrec
 %license LICENSE
 %doc *.md
+
+%files bash-completion
+%dir %{_datadir}/bash-completion
+%dir %{_datadir}/bash-completion/completions
+%{_datadir}/bash-completion/completions/%{name}
+
+%files fish-completion
+%dir %{_datadir}/fish
+%dir %{_datadir}/fish/vendor_completions.d
+%{_datadir}/fish/vendor_completions.d/%{name}.fish
+
+%files zsh-completion
+%dir %{_datadir}/zsh
+%dir %{_datadir}/zsh/site-functions
+%{_datadir}/zsh/site-functions/_%{name}
 
 %changelog
