@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Jul 29 23:41:34 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update filepath-bytestring to version 1.4.100.3.2.
+  filepath-bytestring (1.4.100.3.2) unstable; urgency=medium
+
+    * Relax bounds to allow base-4.19.
+
+   -- Joey Hess <id@joeyh.name>  Mon, 29 Jul 2024 19:40:51 -0400
+
+  filepath-bytestring (1.4.100.3.1) unstable; urgency=medium
+
+    * Updated to filepath-1.4.100.3, which fixes a regression.
+    * Allow up to filepath-1.4.200.1.
+
+   -- Joey Hess <id@joeyh.name>  Mon, 29 Jul 2024 19:27:57 -0400
+
+-------------------------------------------------------------------
 Fri May  3 13:54:40 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Forgot to update copyright header in spec file after last change.
