@@ -40,6 +40,7 @@ Group:          Productivity/Networking/Web/Servers
 URL:            https://www.mapserver.org/
 Source:         https://download.osgeo.org/mapserver/%{name}-%{version}.tar.gz
 Source9:        %{name}-rpmlintrc
+Patch1:         0001-Fix-compilation-errors-with-libxml2-2.12.patch
 BuildRequires:  FastCGI-devel
 BuildRequires:  apache2-devel
 BuildRequires:  autoconf

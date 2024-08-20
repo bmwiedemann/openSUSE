@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Aug 19 20:30:15 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Add 0001-Fix-compilation-errors-with-libxml2-2.12.patch
+
+-------------------------------------------------------------------
 Fri Mar  1 07:34:53 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire proj-devel instead of the long deprecated name

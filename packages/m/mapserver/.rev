@@ -59,4 +59,12 @@
     <comment></comment>
     <requestid>1153756</requestid>
   </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>0342c61aa2169c2527519b6d957e2e94</srcmd5>
+    <version>8.0.1</version>
+    <time>1724163214</time>
+    <user>anag+factory</user>
+    <comment>- Add 0001-Fix-compilation-errors-with-libxml2-2.12.patch</comment>
+    <requestid>1194774</requestid>
+  </revision>
 </revisionlist>
