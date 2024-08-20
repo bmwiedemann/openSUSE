@@ -479,7 +479,6 @@ unsorted:
   - agama-auto 
   - agama-cli 
   - agama-integration-tests 
-  - agama-playwright 
   - agama-products-opensuse 
   - agama-web-ui 
   - age 
@@ -2558,6 +2557,8 @@ unsorted:
   - coredns-for-k8s1.29-extras 
   - coredns-for-k8s1.30 
   - coredns-for-k8s1.30-extras 
+  - coredns-for-k8s1.31 
+  - coredns-for-k8s1.31-extras 
   - coreos-installer 
   - corepack-default 
   - corepack20 
@@ -3712,6 +3713,7 @@ unsorted:
   - emacs-auctex 
   - emacs-color-theme 
   - emacs-flim 
+  - emacs-games 
   - emacs-gnuplot-mode 
   - emacs-gnuplot-mode-doc 
   - emacs-libgit2 
@@ -3870,6 +3872,7 @@ unsorted:
   - etcd-for-k8s1.28 
   - etcd-for-k8s1.29 
   - etcd-for-k8s1.30 
+  - etcd-for-k8s1.31 
   - etcdctl 
   - etcdutl 
   - etckeeper 
@@ -10571,6 +10574,17 @@ unsorted:
   - kubernetes1.30-kubelet-common 
   - kubernetes1.30-proxy 
   - kubernetes1.30-scheduler 
+  - kubernetes1.31-apiserver 
+  - kubernetes1.31-client 
+  - kubernetes1.31-client-bash-completion 
+  - kubernetes1.31-client-common 
+  - kubernetes1.31-client-fish-completion 
+  - kubernetes1.31-controller-manager 
+  - kubernetes1.31-kubeadm 
+  - kubernetes1.31-kubelet 
+  - kubernetes1.31-kubelet-common 
+  - kubernetes1.31-proxy 
+  - kubernetes1.31-scheduler 
   - kubescape 
   - kubeseal 
   - kubesec 
@@ -13047,7 +13061,7 @@ unsorted:
   - libfluidsynth3 
   - libfluidsynth3-32bit 
   - libflux-devel 
-  - libflux0_195_1 
+  - libflux0_195_2 
   - libflxmlrpc1 
   - libfm 
   - libfm-devel 
@@ -18457,6 +18471,7 @@ unsorted:
   - md4c-devel 
   - mda-lv2 
   - mdbook 
+  - mdbook-linkcheck 
   - mdbtools 
   - mdbtools-devel 
   - mdds-2_1-devel 
@@ -25922,7 +25937,6 @@ unsorted:
   - python310-markdown-math 
   - python310-markdown2 
   - python310-marshmallow 
-  - python310-marshmallow-enum 
   - python310-material-color-utilities-python 
   - python310-mathgl 
   - python310-mathics-pygments 
@@ -27561,7 +27575,6 @@ unsorted:
   - python310-yaswfp 
   - python310-yattag 
   - python310-yg.lockfile 
-  - python310-youtube-dl 
   - python310-yq 
   - python310-yt 
   - python310-yt-dlp 
@@ -29496,7 +29509,6 @@ unsorted:
   - python311-markdown-math 
   - python311-markdown2 
   - python311-marshmallow 
-  - python311-marshmallow-enum 
   - python311-material-color-utilities-python 
   - python311-mathgl 
   - python311-mathics-pygments 
@@ -31083,7 +31095,6 @@ unsorted:
   - python311-yaswfp 
   - python311-yattag 
   - python311-yg.lockfile 
-  - python311-youtube-dl 
   - python311-yq 
   - python311-yt 
   - python311-yt-dlp 
@@ -33085,7 +33096,6 @@ unsorted:
   - python312-markdown-math 
   - python312-markdown2 
   - python312-marshmallow 
-  - python312-marshmallow-enum 
   - python312-material-color-utilities-python 
   - python312-mathgl 
   - python312-mathics-pygments 
@@ -34719,7 +34729,6 @@ unsorted:
   - python312-yaswfp 
   - python312-yattag 
   - python312-yg.lockfile 
-  - python312-youtube-dl 
   - python312-yq 
   - python312-yt 
   - python312-yt-dlp 
@@ -37350,6 +37359,7 @@ unsorted:
   - system-user-alloy 
   - system-user-bitlbee 
   - system-user-cscreen 
+  - system-user-games 
   - system-user-grafana 
   - system-user-greeter 
   - system-user-grommunio 
@@ -37380,6 +37390,7 @@ unsorted:
   - systemd-default-settings-branding-SLE-Micro 
   - systemd-default-settings-branding-upstream 
   - systemd-devel 
+  - systemd-devel-32bit 
   - systemd-doc 
   - systemd-generator-cron2timer 
   - systemd-homed 
@@ -48166,6 +48177,9 @@ unsorted:
   - wl-clipboard-rs 
   - wl-clipboard-zsh-completion 
   - wl-screenrec 
+  - wl-screenrec-bash-completion 
+  - wl-screenrec-fish-completion 
+  - wl-screenrec-zsh-completion 
   - wlgreet 
   - wlopm 
   - wlprop 
@@ -48834,10 +48848,6 @@ unsorted:
   - you-get-bash-completion 
   - you-get-fish-completion 
   - you-get-zsh-completion 
-  - youtube-dl 
-  - youtube-dl-bash-completion 
-  - youtube-dl-fish-completion 
-  - youtube-dl-zsh-completion 
   - yp-tools 
   - ypbind 
   - yq 

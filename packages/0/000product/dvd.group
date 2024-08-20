@@ -378,7 +378,6 @@
     <package name="emacs-compat" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="emacs-el" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="emacs-eln" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
-    <package name="emacs-games" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="emacs-info" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="emacs-jinx" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="emacs-nox" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
@@ -3992,7 +3991,6 @@
     <package name="system-user-daemon" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="system-user-flatpak" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="system-user-ftp" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-file_server -->
-    <package name="system-user-games" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="system-user-lp" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="system-user-mail" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="system-user-man" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
