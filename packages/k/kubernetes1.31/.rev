@@ -1,0 +1,11 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>faf608c537f71301e3b610b11a49f4d6</srcmd5>
+    <version>1.31.0</version>
+    <time>1724163297</time>
+    <user>anag+factory</user>
+    <comment>Initial package for Kubernetes v1.31.0
+* Full changelog - https://github.com/kubernetes/kubernetes/blob/v1.31.0/CHANGELOG/CHANGELOG-1.31</comment>
+    <requestid>1194868</requestid>
+  </revision>
+</revisionlist>

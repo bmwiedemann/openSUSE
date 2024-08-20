@@ -1,0 +1,11 @@
+-------------------------------------------------------------------
+Tue Aug 20 08:11:23 UTC 2024 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- refresh "revert-coredns-image-renaming.patch" patch as per release-1.31 branch:
+  * ref: https://github.com/kubernetes/kubernetes/blob/4d8e197743a6f764cdbb802e5f6d339d293a2e2e/cmd/kubeadm/app/images/images.go#L25-L54 
+
+-------------------------------------------------------------------
+Fri Aug 16 14:17:29 UTC 2024 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- initial package for Kubernetes v1.31.0 
+  * Full changelog - https://github.com/kubernetes/kubernetes/blob/v1.31.0/CHANGELOG/CHANGELOG-1.31.md
