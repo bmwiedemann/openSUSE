@@ -1,0 +1,5 @@
+-------------------------------------------------------------------
+Mon Aug 19 08:09:06 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- new package mdbook-linkcheck: backend for mdbook which will check
+  your links for you

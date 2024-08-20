@@ -1,0 +1,7 @@
+<package name="mdbook-linkcheck" project="openSUSE:Factory">
+  <title>A backend for mdbook which will check your links for you</title>
+  <description>A backend for mdbook which will check your links for you. For use alongside the
+built-in HTML renderer.</description>
+  <devel project="devel:languages:rust" package="mdbook-linkcheck"/>
+  <url>https://github.com/Michael-F-Bryan/mdbook-linkcheck</url>
+</package>
