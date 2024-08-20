@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Aug 16 13:13:52 UTC 2024 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Update to version 1.30.4:
+  * Updating kubelet on Windows to query uuid from registry
+  * Move APIServingWithRoutine to alpha and disabled by default.
+  * kubeadm: Add '--yes' flag to the list of allowed flags
+  * Terminate restartable init containers ignoring not-started containers
+  * Hot fix for panic on schema conversion.
+  * moving for easier cherry-pick
+  * Falls back to SPDY for gorilla/websocket https proxy error
+  * kubeadm: fix join bug where kubeletconfig was not patched in memory
+  * mount-utils: treat syscall.ENODEV as corrupted mount
+  * apiserver: fix watch namespace
+  * api: fix ValidatingAdmissionPolicyList json tag
+  * Fix that PodIP field is not set for terminal pod
+  * Use omitempty for optional fields in Job Pod Failure Policy
+  * Fixed metrics missing issue for metrics reference page
+  * kubeadm: fix a bug in v1beta3.JoinConfiguration.Discovery.Timeout
+  * Respect controllers on PVCs for retention policy
+
+-------------------------------------------------------------------
 Tue Aug  6 12:22:06 UTC 2024 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - Update to version 1.30.3:
