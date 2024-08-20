@@ -160,4 +160,15 @@
     AddWiFiConnection</comment>
     <requestid>1158470</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>b02cf71acf7b15ea79a8d5e27673d8b7</srcmd5>
+    <version>0.32.1</version>
+    <time>1724163148</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.32.1:
+  * ModemManager: Add initial mock
+  * bluez5: Add advertising API
+  * Fix loading of libglib on macOS</comment>
+    <requestid>1194576</requestid>
+  </revision>
 </revisionlist>

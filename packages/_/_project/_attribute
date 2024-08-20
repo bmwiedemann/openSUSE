@@ -84,7 +84,7 @@
   boo#1228438: '20240730'
   boo#1228862: '20240819'
   boo#1228864: '20240819'
-  boo#1228981: '20240818'
+  boo#1228981: '20240819'
   boo#1229051: '20240812'
   bsc#1223381: '20240514'
   bsc#1223447: '20240426'
@@ -180,6 +180,7 @@
   poo#165336: '20240818'
   poo#165437: '20240818'
   poo#165449: '20240819'
+  poo#165527: '20240819'
   poo#63397: '20240524'
 </value>
   </attribute>
@@ -232,7 +233,7 @@ rebuildpacs-leafs = branding-openSUSE PackageKit-branding-openSUSE xfce4-brandin
     <value>s/openSUSE-/openSUSE-Staging:$LETTER-/</value>
   </attribute>
   <attribute namespace="OSRT" name="ProductVersion">
-    <value>20240819</value>
+    <value>20240820</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerConfig">
     <value>arch: x86_64
@@ -560,10 +561,6 @@ products:
     - x86_64
   - agama-installer:openSUSE-PXE:
     - x86_64
-  - agama-installer-openSUSE:openSUSE:
-    - x86_64
-  - agama-installer-openSUSE:openSUSE-PXE:
-    - x86_64
   - kiwi-images-vagrant:libvirt:
     - x86_64
   - kiwi-images-vagrant:virtualbox:
@@ -651,9 +648,9 @@ test_subproject: ToTest
 set_snapshot_number: True</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
-    <value>failed: '20240819'
-published: '20240818'
-publishing: '20240818'
+    <value>failed: ''
+published: '20240819'
+publishing: '20240819'
 testing: '20240819'
 </value>
   </attribute>

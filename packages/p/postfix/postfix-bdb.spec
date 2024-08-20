@@ -126,16 +126,18 @@ Requires(pre):  group(%{mail_group})
 %else
 Requires(pre):  shadow
 %endif
+# /usr/lib/postfix/bin//postfix-script: line 400: cmp: command not found
+Requires:       /usr/bin/cmp
 # /usr/lib/postfix/bin//post-install: line 667: ed: command not found
 Requires(pre):  ed
-Requires(preun):ed
+Requires(preun): ed
 Requires(post): ed
-Requires(postun):ed
+Requires(postun): ed
 # /usr/sbin/config.postfix needs perl
 Requires(pre):  perl
-Requires(preun):perl
+Requires(preun): perl
 Requires(post): perl
-Requires(postun):perl
+Requires(postun): perl
 
 %description
 Postfix aims to be an alternative to the widely-used sendmail program with bdb support
@@ -365,7 +367,9 @@ install -m 0755 postfix-SUSE/update_chroot.systemd   %{buildroot}%{pf_shlib_dire
 install -m 0755 postfix-SUSE/update_postmaps.systemd %{buildroot}%{pf_shlib_directory}/systemd/update_postmaps
 install -m 0755 postfix-SUSE/wait_qmgr.systemd       %{buildroot}%{pf_shlib_directory}/systemd/wait_qmgr
 install -m 0755 postfix-SUSE/cond_slp.systemd        %{buildroot}%{pf_shlib_directory}/systemd/cond_slp
+%if 0%{?suse_version} < 1599
 ln -sv %{_sbindir}/service %{buildroot}%{_sbindir}/rcpostfix
+%endif
 %fdupes %{buildroot}%{pf_docdir}
 %fdupes %{buildroot}%{_mandir}
 for path in %{buildroot}%{pf_shlib_directory}/libpostfix-*.so
@@ -526,7 +530,9 @@ fi
 %attr(0755,root,root) %{_sbindir}/mkpostfixcert
 %attr(0755,root,root) %{_sbindir}/check_mail_queue
 %attr(0755,root,root) %{_sbindir}/config.postfix
+%if 0%{?suse_version} < 1599
 %{_sbindir}/rcpostfix
+%endif
 %{_libdir}/lib*
 %{_libexecdir}/sendmail
 %dir %{pf_shlib_directory}

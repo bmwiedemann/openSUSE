@@ -1,0 +1,33 @@
+From 8cf5af772cba2c94ff7cee4f052de650ff2cd14b Mon Sep 17 00:00:00 2001
+From: Zdenek Dohnal <zdohnal@redhat.com>
+Date: Fri, 26 Jul 2024 09:25:35 +0200
+Subject: [PATCH] backend/kodakio.c: Remove unnecessary Unicode character
+
+There is an bidirectional Unicode character <202d> in the comment.
+The character looks like a typo, because it does not look fitting
+there, so IMHO it can be removed.
+
+Checking tools like rpminspect are wary of Unicode characters in the
+code after CVE regarding bidirectional Unicode characters from several
+years ago, and character <202d> is for left-to-right override in
+Unicode, so tools report them as an issue.
+---
+ backend/kodakaio.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/backend/kodakaio.c b/backend/kodakaio.c
+index 0241e2a84..da3e234f4 100644
+--- a/backend/kodakaio.c
++++ b/backend/kodakaio.c
+@@ -1827,7 +1827,7 @@ k_init_parametersta(KodakAio_Scanner * s)
+ 	    SANE_UNFIX(s->val[OPT_BR_X].w), SANE_UNFIX(s->val[OPT_BR_Y].w));
+ 
+ 	/*
+-	 * The default color depth is stored in mode_params.depth:‭
++	 * The default color depth is stored in mode_params.depth:
+ 	 */
+ 	if (mode_params[s->val[OPT_MODE].w].depth == 1)
+ 		s->params.depth = 1;
+-- 
+GitLab
+

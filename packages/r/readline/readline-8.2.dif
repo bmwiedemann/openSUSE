@@ -5,10 +5,9 @@
  doc/readline.3     |   11 +++++++++++
  examples/fileman.c |    2 +-
  history.h          |    1 +
- readline.c         |    7 +++++--
  readline.h         |    3 ++-
  support/shobj-conf |    5 +++--
- 9 files changed, 28 insertions(+), 13 deletions(-)
+ 8 files changed, 23 insertions(+), 11 deletions(-)
 
 --- Makefile.in
 +++ Makefile.in	2022-04-28 12:16:56.148759888 +0000
@@ -120,22 +119,6 @@
  #  include <readline/rlstdc.h>
  #  include <readline/rltypedefs.h>
  #endif
---- readline.c
-+++ readline.c	2022-04-28 12:16:56.152759816 +0000
-@@ -906,8 +906,11 @@ _rl_dispatch_subseq (register int key, K
- 	{
- 	  /* Special case rl_do_lowercase_version (). */
- 	  if (func == rl_do_lowercase_version)
--	    /* Should we do anything special if key == ANYOTHERKEY? */
--	    return (_rl_dispatch (_rl_to_lower ((unsigned char)key), map));
-+	    {
-+	      if (key == ANYOTHERKEY)
-+		return -1;
-+	      return (_rl_dispatch (_rl_to_lower ((unsigned char)key), map));
-+	    }
- 
- 	  rl_executing_keymap = map;
- 	  rl_executing_key = key;
 --- readline.h
 +++ readline.h	2022-04-28 12:17:48.115828027 +0000
 @@ -32,6 +32,7 @@ extern "C" {

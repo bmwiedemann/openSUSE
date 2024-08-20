@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Aug 17 17:34:16 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add 85b4fbf40b1d53a4141941abf70d2d4d83eb140e.patch: msdk: replace
+  strcmp with g_strcmp0. Because strcmp doesn't handle NULL.
+
+-------------------------------------------------------------------
 Wed Jul 31 13:43:43 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.24.6:

@@ -46,6 +46,9 @@ Patch107:       readline82-007
 Patch108:       readline82-008
 Patch109:       readline82-009
 Patch110:       readline82-010
+Patch111:       readline82-011
+Patch112:       readline82-012
+Patch113:       readline82-013
 Source101:      readline82-001.sig
 Source102:      readline82-002.sig
 Source103:      readline82-003.sig
@@ -56,6 +59,9 @@ Source107:      readline82-007.sig
 Source108:      readline82-008.sig
 Source109:      readline82-009.sig
 Source110:      readline82-010.sig
+Source111:      readline82-011.sig
+Source112:      readline82-012.sig
+Source113:      readline82-013.sig
 # local patches
 Patch200:       readline-%{rversion}.dif
 Patch201:       readline-6.3-input.dif
@@ -138,6 +144,9 @@ as well as programming with the interface of the readline library.
 %patch -P108 -p0
 %patch -P109 -p0
 %patch -P110 -p0
+%patch -P111 -p0
+%patch -P112 -p0
+%patch -P113 -p0
 # local patches
 %patch -P201 -p2 -b .zerotty
 %patch -P202 -p2 -b .conf

@@ -175,4 +175,15 @@ Needed for future versions of fwupd</comment>
     <comment></comment>
     <requestid>1168793</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>03301b09b122b382476ef61a7496825d</srcmd5>
+    <version>0.3.19</version>
+    <time>1724163143</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.3.19:
+  * Add xb_version_string() to get the runtime ABI version
+  * - Add the runtime version as the default XMLb invalidation
+    GUID</comment>
+    <requestid>1194552</requestid>
+  </revision>
 </revisionlist>

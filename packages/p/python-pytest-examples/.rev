@@ -67,4 +67,14 @@
 - initial package</comment>
     <requestid>1185172</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>4e65a0ddcffb30e1317d5f9f1157aae2</srcmd5>
+    <version>0.0.13</version>
+    <time>1724163146</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.0.13:
+  * Add new module to `sys.modules` so that namespace ops are
+    sound</comment>
+    <requestid>1194569</requestid>
+  </revision>
 </revisionlist>

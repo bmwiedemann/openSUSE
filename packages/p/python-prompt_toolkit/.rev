@@ -290,4 +290,15 @@
     performance).</comment>
     <requestid>1179075</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>4904341e1257252042f815f47fd465a3</srcmd5>
+    <version>3.0.47</version>
+    <time>1724163152</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.0.47:
+  * Allow passing exception classes for `KeyboardInterrupt` and
+    `EOFError` in  `PromptSession`.
+  * Compute padding parameters for `Box` widget lazily.</comment>
+    <requestid>1194587</requestid>
+  </revision>
 </revisionlist>

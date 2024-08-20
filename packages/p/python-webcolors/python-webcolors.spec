@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-webcolors
-Version:        24.6.0
+Version:        24.8.0
 Release:        0
 Summary:        Support for color names and value formats defined by the HTML
 License:        BSD-3-Clause

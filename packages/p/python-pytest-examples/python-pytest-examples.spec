@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pytest-examples
-Version:        0.0.12
+Version:        0.0.13
 Release:        0
 Summary:        Pytest plugin for testing examples in docstrings and markdown files
 License:        MIT

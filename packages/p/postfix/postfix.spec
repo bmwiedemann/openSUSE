@@ -108,16 +108,18 @@ BuildRequires:  openldap2-devel
 %if %{with libnsl}
 BuildRequires:  libnsl-devel
 %endif
+# /usr/lib/postfix/bin//postfix-script: line 400: cmp: command not found
+Requires:       /usr/bin/cmp
 # /usr/lib/postfix/bin//post-install: line 667: ed: command not found
 Requires(pre):  /usr/bin/ed
-Requires(preun):/usr/bin/ed
+Requires(preun): /usr/bin/ed
 Requires(post): /usr/bin/ed
-Requires(postun):/usr/bin/ed
+Requires(postun): /usr/bin/ed
 # /usr/sbin/config.postfix needs perl
 Requires(pre):  perl
-Requires(preun):perl
+Requires(preun): perl
 Requires(post): perl
-Requires(postun):perl
+Requires(postun): perl
 
 %description
 Postfix aims to be an alternative to the widely-used sendmail program.
@@ -391,7 +393,9 @@ install -pm 0755 %{name}-SUSE/update_chroot.systemd   %{buildroot}%{pf_shlib_dir
 install -pm 0755 %{name}-SUSE/update_postmaps.systemd %{buildroot}%{pf_shlib_directory}/systemd/update_postmaps
 install -pm 0755 %{name}-SUSE/wait_qmgr.systemd       %{buildroot}%{pf_shlib_directory}/systemd/wait_qmgr
 install -pm 0755 %{name}-SUSE/cond_slp.systemd        %{buildroot}%{pf_shlib_directory}/systemd/cond_slp
+%if 0%{?suse_version} < 1599
 ln -sv %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
+%endif
 ln -sv %{_unitdir}/%{name}.service %{buildroot}%{_unitdir}/mail-transfer-agent.target.wants/%{name}.service
 %fdupes %{buildroot}%{pf_docdir}
 %fdupes %{buildroot}%{_mandir}
@@ -558,7 +562,9 @@ fi
 %attr(0755,root,root) %{_sbindir}/mk%{name}cert
 %attr(0755,root,root) %{_sbindir}/check_mail_queue
 %attr(0755,root,root) %{_sbindir}/config.%{name}
+%if 0%{?suse_version} < 1599
 %{_sbindir}/rc%{name}
+%endif
 %{_libdir}/lib*
 %{_libexecdir}/sendmail
 %dir %{pf_shlib_directory}

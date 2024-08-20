@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Aug 19 17:40:41 UTC 2024 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.6.1:
+ * Detect imports in src layouts by default for isort rules 
+ * The pytest rules PT001 and PT023 now default to omitting the decorator parentheses when there are no arguments .
+ * Lint and format Jupyter Notebook by default .
+ * big list of changes: https://github.com/astral-sh/ruff/blob/main/CHANGELOG.md
+
+-------------------------------------------------------------------
 Mon Aug  5 13:09:56 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
 
 - update to 0.5.6:

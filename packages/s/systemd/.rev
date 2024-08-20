@@ -7320,4 +7320,20 @@ handle manual pages that consist only of a .so directive such as
     <comment></comment>
     <requestid>1192932</requestid>
   </revision>
+  <revision rev="430" vrev="1">
+    <srcmd5>ffc6b320d0fcc3896fca9da32ad49247</srcmd5>
+    <version>256.5</version>
+    <time>1724163188</time>
+    <user>anag+factory</user>
+    <comment>- Import commit bef0958f4db1b774c23505e93537ffe16f1b3894 (merge of v256.5)
+  For a complete list of changes, visit:
+  https://github.com/openSUSE/systemd/compare/5bba1ebe17564b606cc5d1c07b14123c305019a7...bef0958f4db1b774c23505e93537ffe16f1b3894
+
+- Make the 32bit version of libudev.so available again (bsc#1228223)
+  The symlink for building 32bit applications was mistakenly dropped when the
+  content of libudev-devel was merged into systemd-devel.
+  Provide the 32bit flavor of systemd-devel again, which should restore the plug
+  and play support in Wine for 32bit windows applications.</comment>
+    <requestid>1194742</requestid>
+  </revision>
 </revisionlist>

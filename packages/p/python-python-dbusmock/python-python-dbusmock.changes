@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Aug 18 17:06:33 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.32.1:
+  * ModemManager: Add initial mock
+  * bluez5: Add advertising API
+  * Fix loading of libglib on macOS
+
+-------------------------------------------------------------------
 Sat Mar 16 12:57:12 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.31.1:

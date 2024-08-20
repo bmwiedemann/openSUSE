@@ -13,6 +13,10 @@ Sun Dec  3 03:34:31 UTC 2023 - Wang Jun <badboywj@gmail.com>
 - Update to 0.10.2
   * Security related bugfixes #76, #89, #96
   * Some compilation and test fixes
+  * Drop podofo_security-fixes-validate-more-encrypt-dictionary-parameters.patch,
+    Drop podofo_security-fixes-handling-of-invalid-XRef-stream-entries.patch,
+    All these fixes have been merged by upstream.
+    (bsc#1213720)
 
 -------------------------------------------------------------------
 Fri Jun 30 06:29:47 UTC 2023 - ecsos <ecsos@opensuse.org>
@@ -88,6 +92,11 @@ Wed May  4 08:31:13 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 - Drop patches, now upstream:
   * podofo-CVE-2019-10723.patch
   * podofo-CVE-2018-12983.patch
+- Drop patch podofo-CVE-2019-20093.patch:
+  The upstream comment consider the svn repo r2035 doesn't dereference
+  the NULL pointer, and this security issue already could ends with an
+  error. The corresponding edition in git repo merged in this release.
+  (CVE-2019-20093, bsc#1159921)
 
 -------------------------------------------------------------------
 Wed Feb 16 15:00:45 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
@@ -124,6 +133,10 @@ Wed Apr 14 17:27:44 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
   r1961-EncryptTest-Fix-buffer-overflow-in-decrypted-out-buffer-in-TestEncrypt.patch
   r1963-Fix-heap-based-buffer-overflow-vulnerability-in-PoDoFo-PdfVariant-DelayedLoad.patch
   r1969-Fix-CVE-2019-9687-heap-based-buffer-overflow.patch
+  r1950-Fix-null-pointer-dereference-in-PdfTranslator-setTarget.patch
+  (CVE-2018-19532, bsc#1117514)
+  podofo-CVE-2019-9199.patch
+  (CVE-2019-9199, bsc#1127855)
 
 -------------------------------------------------------------------
 Wed May 15 06:47:07 UTC 2019 - qzheng <qzheng@suse.com>

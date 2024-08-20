@@ -18,7 +18,7 @@
 
 Name:           libntlm
 %define lname	libntlm0
-Version:        1.7
+Version:        1.8
 Release:        0
 Summary:        Implementation of Microsoft's NTLMv1 authentication
 License:        LGPL-2.1-or-later

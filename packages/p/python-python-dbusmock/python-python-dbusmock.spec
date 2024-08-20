@@ -17,7 +17,7 @@
 
 
 Name:           python-python-dbusmock
-Version:        0.31.1
+Version:        0.32.1
 Release:        0
 Summary:        Python library for creating mock D-Bus objects
 License:        LGPL-3.0-or-later

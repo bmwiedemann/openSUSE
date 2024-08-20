@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Aug 19 08:57:30 UTC 2024 - Dr. Werner Fink <werner@suse.de>
+
+- Add upstream patches
+  * bash52-027
+    The configure test for the presence of strtoimax(3) is inverted.
+  * bash52-028
+    A DEBUG trap in an asynchronous process can steal the controlling terminal
+    away from the calling shell, causing it to exit.
+  * bash52-030
+    `wait -n' can fail to return some jobs if they exit due to signals the shell
+    does not report to the user.
+  * bash52-031
+    There is a memory leak in the code that implements the optimized $(<file)
+    expansion for some code paths.
+  * bash52-032
+    When printing functions containing coprocesses, the displayed coproc command
+    has the word COPROC inserted unconditionally, resulting in function bodies
+    that cannot be re-read as input.
+
+-------------------------------------------------------------------
 Mon Mar 25 14:20:17 UTC 2024 - Dr. Werner Fink <werner@suse.de>
 
 - Help dependcy resolver to identify package split done with bash-sh 

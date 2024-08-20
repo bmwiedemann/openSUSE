@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sun Aug 18 09:04:07 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.4.9
+  * Support compilation against musl libc.
+  * Remove build-time checks for utilities that are not used
+    (pyuic).
+  * Install the ffado-mixer appdata file only if ffado-mixer has
+    been built.
+  * Add a DATADIR option to scons and use it in line with GNU
+    conventions.
+  * Update the AppStream document with more complete information
+    and in line with current best practice.
+  * Rename XDG files to match modern standards.
+  * Install XDG files manually to simplify the build script and
+    avoid depending on xdg-utils.
+- Changes from version 2.4.8
+  * Make various mixer modules work under Python 3.10 and later:
+    Presonus Firebox, Presonus FP10, Presonus Inspire1394 and
+    Yamaha Go.
+  * Deal with the removal of SafeConfigParser in Python 3.12.
+
+-------------------------------------------------------------------
 Fri Jun 14 13:24:58 UTC 2024 - pgajdos@suse.com
 
 - remove dependency on /usr/bin/python3 using

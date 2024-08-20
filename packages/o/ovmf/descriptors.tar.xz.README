@@ -1,0 +1,10 @@
+descriptors for libvirt
+======================
+
+All descriptors be maintained in SUSE repo on github:
+
+https://github.com/SUSE/ovmf-descriptors
+
+All elements of descriptor in .json have defined here:
+
+https://gitlab.com/qemu/qemu/-/blob/master/docs/interop/firmware.json

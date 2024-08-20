@@ -85,7 +85,7 @@ the execution time of each script.
  
 --- a/tools/libs/light/libxl_create.c
 +++ b/tools/libs/light/libxl_create.c
-@@ -1323,6 +1323,7 @@ static void initiate_domain_create(libxl
+@@ -1345,6 +1345,7 @@ static void initiate_domain_create(libxl
       * build info around just to know if the domain has a device model or not.
       */
      store_libxl_entry(gc, domid, &d_config->b_info);
@@ -95,7 +95,7 @@ the execution time of each script.
          ret = libxl__disk_devtype.set_default(gc, domid, &d_config->disks[i],
 --- a/tools/libs/light/libxl_device.c
 +++ b/tools/libs/light/libxl_device.c
-@@ -1296,7 +1296,7 @@ static void device_hotplug(libxl__egc *e
+@@ -1309,7 +1309,7 @@ static void device_hotplug(libxl__egc *e
      }
  
      aes->ao = ao;
@@ -104,7 +104,7 @@ the execution time of each script.
      aes->env = env;
      aes->args = args;
      aes->callback = device_hotplug_child_death_cb;
-@@ -1305,6 +1305,15 @@ static void device_hotplug(libxl__egc *e
+@@ -1318,6 +1318,15 @@ static void device_hotplug(libxl__egc *e
      aes->stdfds[1] = 2;
      aes->stdfds[2] = -1;
  
@@ -278,7 +278,7 @@ the execution time of each script.
  
  #include <xenevtchn.h>
  #include <xenstore.h>
-@@ -1629,6 +1630,7 @@ struct libxl__xswait_state {
+@@ -1626,6 +1627,7 @@ struct libxl__xswait_state {
      const char *what; /* for error msgs: noun phrase, what we're waiting for */
      const char *path;
      int timeout_ms; /* as for poll(2) */
@@ -286,7 +286,7 @@ the execution time of each script.
      libxl__xswait_callback *callback;
      /* remaining fields are private to xswait */
      libxl__ev_time time_ev;
-@@ -2707,6 +2709,7 @@ struct libxl__async_exec_state {
+@@ -2704,6 +2706,7 @@ struct libxl__async_exec_state {
      char **args; /* execution arguments */
      char **env; /* execution environment */
  
@@ -294,7 +294,7 @@ the execution time of each script.
      /* private */
      libxl__ev_time time;
      libxl__ev_child child;
-@@ -4896,6 +4899,9 @@ _hidden int userlookup_helper_getpwuid(l
+@@ -4893,6 +4896,9 @@ _hidden int userlookup_helper_getpwuid(l
  
  #endif
  

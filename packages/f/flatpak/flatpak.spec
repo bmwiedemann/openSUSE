@@ -18,7 +18,7 @@
 
 %global selinuxtype targeted
 %define libname libflatpak0
-%define bubblewrap_version 0.8.0
+%define bubblewrap_version 0.10.0
 %define ostree_version 2020.8
 %define xdg_dbus_proxy_version 0.1.0
 
@@ -35,7 +35,7 @@
 %define support_environment_generators 1
 %endif
 Name:           flatpak
-Version:        1.15.8
+Version:        1.15.10
 Release:        0
 Summary:        OSTree based application bundles management
 License:        LGPL-2.1-or-later
@@ -343,6 +343,7 @@ fi;
 %{_mandir}/man5/flatpak-remote.5%{?ext_man}
 %{_datadir}/%{name}/
 %config %{_sysconfdir}/profile.d/flatpak.sh
+%config %{_sysconfdir}/profile.d/flatpak.csh
 %dir %{_sysconfdir}/flatpak
 %dir %{_sysconfdir}/flatpak/remotes.d
 %{_unitdir}/flatpak-system-helper.service

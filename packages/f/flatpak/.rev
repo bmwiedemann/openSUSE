@@ -985,4 +985,12 @@ As a side note Leap is affected as well by this. Might be worth back porting thi
   p11-kit-server for certificate transfer (boo#1188902) (forwarded request 1192619 from dimstar)</comment>
     <requestid>1192622</requestid>
   </revision>
+  <revision rev="88" vrev="1">
+    <srcmd5>d868215e4df4987ab0a1cdf9fe22a6a4</srcmd5>
+    <version>1.15.10</version>
+    <time>1724163172</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1194671</requestid>
+  </revision>
 </revisionlist>

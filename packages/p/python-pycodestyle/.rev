@@ -192,4 +192,14 @@
 ￼ * E204: New lint forbidding whitespace after decorator `@`.</comment>
     <requestid>1181240</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>087a4c5c22ef621b3db88bb282517d0a</srcmd5>
+    <version>2.12.1</version>
+    <time>1724163145</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.12.1:
+  * Properly preserve escaped `{` and `}` in fstrings in logical
+    lines in 3.12+.</comment>
+    <requestid>1194568</requestid>
+  </revision>
 </revisionlist>

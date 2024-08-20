@@ -20,7 +20,7 @@
 %define docs 0
 %define tname libffado
 Name:           ffado-mixer
-Version:        2.4.7
+Version:        2.4.9
 Release:        0
 Summary:        FireWire 1394 support for audio devices, svn snapshot
 License:        GPL-2.0-or-later
@@ -144,7 +144,6 @@ scons   DESTDIR=%{buildroot} install \
   CUSTOM_ENV=True \
   PYTHON_INTERPRETER="%{_bindir}/python3"
 
-mv %{buildroot}%{_datadir}/%{tname}/icons %{buildroot}%{_datadir}/
 rm %{buildroot}%{_libdir}/%tname.*
 rm -r %{buildroot}%{_includedir}/libffado
 rm -r %{buildroot}%{_libdir}/pkgconfig
@@ -184,7 +183,7 @@ find ./ -empty -delete
 %{_datadir}/pixmaps/ffadomixer.png
 %{_datadir}/applications/*
 %{python3_sitelib}/*
-%{_datadir}/metainfo/ffado-mixer.appdata.xml
+%{_datadir}/metainfo/org.ffado.FfadoMixer.metainfo.xml
 
 %if %{docs} == 1
 %files -n ffado-doc

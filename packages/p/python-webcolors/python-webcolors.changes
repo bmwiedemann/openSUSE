@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Aug 19 07:42:22 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 24.8.0:
+  * Added the :func:`~webcolors.names` function to allow
+    retrieving lists of color names. The underlying mappings of
+    color names/values still are not supported API; to obtain the
+    color value corresponding to a name, use the appropriate
+    conversion function.
+
+-------------------------------------------------------------------
 Sun Jun 30 09:14:36 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 24.6.0:

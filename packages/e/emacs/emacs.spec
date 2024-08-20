@@ -180,11 +180,7 @@ Requires:       mailutils
 %endif
 Requires(pre):  fileutils
 %if %{with games}
-%if !0%{?is_opensuse}
 Suggests:       %{name}-games
-%else
-Recommends:     %{name}-games
-%endif
 %endif
 Source:         https://ftp.gnu.org/gnu/emacs/emacs-%{version}.tar.xz
 Source1:        app-defaults.Emacs

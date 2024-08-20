@@ -111,7 +111,7 @@ BuildRequires:  pkgconfig(readline) >= %{rl_version}
 %if %{with alternatives}
 Requires(post): update-alternatives
 Requires(post): libreadline%{rl_major} >= %{rl_version}
-Requires(preun): update-alternatives
+Requires(preun):update-alternatives
 %endif
 Requires:       libreadline%{rl_major} >= %{rl_version}
 Suggests:       bash-doc = %{version}

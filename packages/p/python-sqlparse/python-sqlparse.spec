@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-sqlparse
-Version:        0.5.0
+Version:        0.5.1
 Release:        0
 Summary:        Non-validating SQL parser
 License:        BSD-3-Clause

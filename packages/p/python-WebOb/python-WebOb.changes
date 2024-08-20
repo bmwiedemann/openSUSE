@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Aug 19 03:28:33 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.8.8:
+  * The use of WebOb's Response object to redirect a request to a new location
+    can lead to an open redirect if the Location header is not a full URI.
+    (bsc#1229221, CVE-2024-42353)
+- Drop Python 2 blocks in the spec file.
+- Switch to pyproject macros.
+
+-------------------------------------------------------------------
 Wed Jul 26 07:20:55 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Drop sphinx doctrees for reproducible builds

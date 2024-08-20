@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Aug  9 08:48:52 UTC 2024 - Thorsten Kukuk <kukuk@suse.com>
+
+- Remove rcpostfix symlink [jsc#PED-266]                    
+
+-------------------------------------------------------------------
+Wed Aug  7 06:34:05 UTC 2024 - Thorsten Kukuk <kukuk@suse.com>
+
+- postfix-script requires cmp
+
+-------------------------------------------------------------------
 Thu Aug  1 08:36:10 UTC 2024 - Peter Varkoly <varkoly@suse.com>
 
 - postfix gives warnings about deprecated parameters (bsc#1225397)

@@ -34,7 +34,7 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
                      uint32_t domid)
  {
 +    int ret;
-     DECLARE_DOMCTL;
+     struct xen_domctl domctl = {};
      domctl.cmd = XEN_DOMCTL_pausedomain;
      domctl.domain = domid;
 -    return do_domctl(xch, &domctl);
@@ -49,7 +49,7 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
                        uint32_t domid)
  {
 +    int ret;
-     DECLARE_DOMCTL;
+     struct xen_domctl domctl = {};
      domctl.cmd = XEN_DOMCTL_unpausedomain;
      domctl.domain = domid;
 -    return do_domctl(xch, &domctl);

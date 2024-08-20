@@ -26,9 +26,9 @@
 %define systemd_release    %{?release_override}%{!?release_override:0}
 %define archive_version    %{nil}
 %else
-%define systemd_version    256.4
+%define systemd_version    256.5
 %define systemd_release    0
-%define archive_version    +suse.6.g5bba1ebe17
+%define archive_version    +suse.7.gbef0958f4d
 %endif
 
 %define systemd_major      %{sub %systemd_version 1 3}

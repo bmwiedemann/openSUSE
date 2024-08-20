@@ -1987,4 +1987,27 @@ Upstream declares the bash license to be GPL-3.0+ - not GPL-2.0+ (forwarded requ
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1163955</requestid>
   </revision>
+  <revision rev="192" vrev="13">
+    <srcmd5>ba1ebcb7a43a1c0e9b35242fdfc0201c</srcmd5>
+    <version>5.2.MACRO</version>
+    <time>1724163139</time>
+    <user>anag+factory</user>
+    <comment>- Add upstream patches
+  * bash52-027
+    The configure test for the presence of strtoimax(3) is inverted.
+  * bash52-028
+    A DEBUG trap in an asynchronous process can steal the controlling terminal
+    away from the calling shell, causing it to exit.
+  * bash52-030
+    `wait -n' can fail to return some jobs if they exit due to signals the shell
+    does not report to the user.
+  * bash52-031
+    There is a memory leak in the code that implements the optimized $(&lt;file)
+    expansion for some code paths.
+  * bash52-032
+    When printing functions containing coprocesses, the displayed coproc command
+    has the word COPROC inserted unconditionally, resulting in function bodies
+    that cannot be re-read as input.</comment>
+    <requestid>1194674</requestid>
+  </revision>
 </revisionlist>

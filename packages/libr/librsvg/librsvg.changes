@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Aug 16 23:28:29 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.58.3:
+  + A couple of fixes from fuzz testing:
+    - Fix assertion failures with large Hue value in hsl() or hwb()
+      colors.
+    - Limit the baseFrequency for feTurbulence to avoid integer
+      overflow.
+    - Remove an obsolete test.
+
+-------------------------------------------------------------------
 Fri Jul 12 21:21:35 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.58.2:

@@ -13,7 +13,7 @@ iterations for dirty memory, and a final copy iteration prior move.
 
 --- a/tools/libs/light/libxl_internal.h
 +++ b/tools/libs/light/libxl_internal.h
-@@ -124,7 +124,7 @@
+@@ -125,7 +125,7 @@
  #define DOMID_XS_PATH "domid"
  #define PVSHIM_BASENAME "xen-shim"
  #define PVSHIM_CMDLINE "pv-shim console=xen,pv"
@@ -21,4 +21,4 @@ iterations for dirty memory, and a final copy iteration prior move.
 +#define LIBXL_XGS_POLICY_MAX_ITERATIONS 1
  #define LIBXL_XGS_POLICY_TARGET_DIRTY_COUNT 50
  
- /* Size macros. */
+ #define DIV_ROUNDUP(n, d) (((n) + (d) - 1) / (d))

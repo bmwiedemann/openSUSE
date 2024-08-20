@@ -537,4 +537,12 @@ Features:
     * docs: List AppStreamCompose as related to AppStream (forwarded request 1173993 from dimstar)</comment>
     <requestid>1173995</requestid>
   </revision>
+  <revision rev="48" vrev="2">
+    <srcmd5>80ab02cc27bf3172884b770a0042a9c8</srcmd5>
+    <version>1.0.3</version>
+    <time>1724163179</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1194706</requestid>
+  </revision>
 </revisionlist>

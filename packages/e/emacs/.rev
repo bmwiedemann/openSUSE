@@ -2017,4 +2017,13 @@ Now one could consider building emacs with gsettings support (both debian and fe
   inside Emacs (forwarded request 1191553 from Thaodan)</comment>
     <requestid>1193628</requestid>
   </revision>
+  <revision rev="191" vrev="6">
+    <srcmd5>759b13ee22ef25ccbe73f3905fcacd66</srcmd5>
+    <version>29.4</version>
+    <time>1724163181</time>
+    <user>anag+factory</user>
+    <comment>- Only suggest emacs-games to avoid warning about
+  game dir '/var/games/emacs': Permission denied (boo#1228058)</comment>
+    <requestid>1194712</requestid>
+  </revision>
 </revisionlist>

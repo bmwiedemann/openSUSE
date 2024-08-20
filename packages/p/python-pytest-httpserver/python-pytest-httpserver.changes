@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Aug 18 17:18:13 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.1.0:
+  * Fixed an issue related to the leak of httpserver state
+    between the tests when httpserver is destructed before the
+    other fixtures. #352
+  * Fix pytest-httpserver's own tests related to log querying. No
+    functional changes in pytest-httpserver code itself. #345
+  * New methods added to query for matching requests in the log.
+  * Threading support to serve requests in parallel
+
+-------------------------------------------------------------------
 Fri Mar  1 10:19:34 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.0.10:
@@ -29,7 +41,7 @@ Mon May 22 21:17:53 UTC 2023 - Dirk Müller <dmueller@suse.com>
     order to support the latest werkzeug.
   * Type hinting for header_value_matcher has been fixed. From
     now, specifying a callable as ``Callable[[str,
-    Optional[str], str], bool]`` will be accepted also. 
+    Optional[str], str], bool]`` will be accepted also.
     Providing a ``HeaderValueMatcher`` object will be also
     accepted as before, as it provides the same callable signature
   * Fix Werkzeug deprecation warning about

@@ -1,7 +1,7 @@
 #
 # spec file for package python-WebOb
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,27 +18,21 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-WebOb
-Version:        1.8.7
+Version:        1.8.8
 Release:        0
 Summary:        WSGI request and response object
 License:        MIT
-Group:          Development/Languages/Python
 URL:            http://webob.org/
-Source:         https://files.pythonhosted.org/packages/source/W/WebOb/WebOb-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/w/webob/webob-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 # Documentation requirements:
 BuildRequires:  fdupes
 BuildRequires:  python3-Sphinx
 BuildArch:      noarch
-%ifpython2
-# We need SSL support
-BuildRequires:  python3
-Requires:       python3
-Obsoletes:      python3-webob < %{version}
-Provides:       python3-webob = %{version}
-%endif
 %python_subpackages
 
 %description
@@ -52,7 +46,6 @@ environment.
 %if 0%{?suse_version} > 1500
 %package -n python-WebOb-doc
 Summary:        WSGI request and response object - Documentation
-Group:          Documentation/HTML
 Provides:       %{python_module WebOb-doc = %{version}}
 
 %description -n python-WebOb-doc
@@ -60,16 +53,14 @@ This package contains documentation files for %{name}.
 %endif
 
 %prep
-%setup -q -n WebOb-%{version}
-# gh#Pylons/webob#390 -- Thread.is_alive is present since Python 2.6, Thread.isAlive was removed in 3.9.
-sed -i 's/worker.isAlive/worker.is_alive/' tests/conftest.py
+%setup -q -n webob-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 PYTHONPATH=./src sphinx-build -b html docs build/sphinx/html && rm -r build/sphinx/html/.{buildinfo,doctrees}
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -79,7 +70,7 @@ PYTHONPATH=./src sphinx-build -b html docs build/sphinx/html && rm -r build/sphi
 %license docs/license.txt
 %doc CHANGES.txt README.rst
 %{python_sitelib}/webob
-%{python_sitelib}/WebOb-%{version}*-info
+%{python_sitelib}/WebOb-%{version}.dist-info
 
 %if 0%{?suse_version} > 1500
 %files -n python-WebOb-doc

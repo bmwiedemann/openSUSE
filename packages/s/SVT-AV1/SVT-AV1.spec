@@ -17,7 +17,7 @@
 
 
 Name:           SVT-AV1
-Version:        2.1.2
+Version:        2.2.0
 Release:        0
 Summary:        An AV1 decoder/encoder for video streams
 License:        BSD-3-Clause-Clear

@@ -85,6 +85,8 @@ Source201:      create_sane-backends-autoconfig.rules
 # Sources 202 and 203 are files to enable socket based service activation which replaced xinetd
 Source202:      saned@.service
 Source203:      saned.socket
+# PATCH-FIX-UPSTREAM - gl/sane-project/backends#848 - backend/kodakio.c: Remove unnecessary Unicode character
+Patch0:         remove_unnecessary_unicode_character.patch
 # Patch100... is SUSE specific stuff:
 # Patch102 adapt_epkowa.desc_for_yast2-scanner.patch adapts epkowa.desc for yast2-scanner
 # (see https://bugzilla.opensuse.org/show_bug.cgi?id=788756#c14).
@@ -189,7 +191,9 @@ Saned allows access to locally attached scanners over the network.
 # Patch100... is SUSE specific stuff:
 # Patch102 adapt_epkowa.desc_for_yast2-scanner.patch adapts epkowa.desc for yast2-scanner
 # see https://bugzilla.opensuse.org/show_bug.cgi?id=788756#c14
-%autosetup -p0 -n backends-%{version}
+%setup -n backends-%{version}
+%patch -P0 -p1
+%patch -P102 -p0
 
 # Remove hpoj.desc completely to avoid confusion with its successor hpaio.desc
 # because since openSUSE 10.3 the package hp-officeJet (for hpoj.desc) is dropped.

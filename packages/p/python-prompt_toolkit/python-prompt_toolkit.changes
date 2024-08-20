@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Aug 18 17:21:48 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.0.47:
+  * Allow passing exception classes for `KeyboardInterrupt` and
+    `EOFError` in  `PromptSession`.
+  * Compute padding parameters for `Box` widget lazily.
+
+-------------------------------------------------------------------
 Thu Jun  6 20:01:57 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.0.46:

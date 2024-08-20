@@ -51,7 +51,7 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
  =item B<remus> [I<OPTIONS>] I<domain-id> I<host>
 --- a/tools/include/libxl.h
 +++ b/tools/include/libxl.h
-@@ -1820,6 +1820,7 @@ static inline int libxl_retrieve_domain_
+@@ -1859,6 +1859,7 @@ static inline int libxl_retrieve_domain_
  typedef struct {
      uint32_t flags; /* LIBXL_SUSPEND_* */
      uint32_t max_iters;
@@ -82,7 +82,7 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
      dss->checkpointed_stream = LIBXL_CHECKPOINTED_STREAM_NONE;
 --- a/tools/libs/light/libxl_internal.h
 +++ b/tools/libs/light/libxl_internal.h
-@@ -3657,6 +3657,7 @@ struct libxl__domain_save_state {
+@@ -3654,6 +3654,7 @@ struct libxl__domain_save_state {
      int debug;
      int checkpointed_stream;
      uint32_t max_iters;

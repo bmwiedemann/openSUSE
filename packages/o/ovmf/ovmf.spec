@@ -38,6 +38,7 @@ Source1:        https://www.openssl.org/source/old/3.0/openssl-%{openssl_version
 Source111:      https://www.openssl.org/source/old/3.0/openssl-%{openssl_version}.tar.gz.asc
 Source112:      openssl.keyring
 Source113:      openssl.keyring.README
+Source114:      descriptors.tar.xz.README
 Source2:        README
 Source3:        SLES-UEFI-CA-Certificate-2048.crt
 Source4:        openSUSE-UEFI-CA-Certificate-2048.crt
@@ -259,6 +260,8 @@ BUILD_OPTIONS_X86=" \
 FLAVORS_X64=("ovmf-x86_64" "ovmf-x86_64-4m" "ovmf-x86_64-smm" "ovmf-x86_64-sev")
 # Flavors will NOT enroll default kek/db keys
 FLAVORS_X64_SKIP_SB_KEY=("ovmf-x86_64-sev")
+# Flavors only support unified image (no separate *-code/-vars files)
+FLAVORS_X64_UNIFIED_ONLY=("ovmf-x86_64-sev")
 BUILD_OPTIONS_X64=" \
 	$OVMF_FLAGS \
 	-D BUILD_SHELL=FALSE \
@@ -380,6 +383,12 @@ for flavor in ${FLAVORS_X64[@]}; do
 %ifarch x86_64
 	collect_x86_64_debug_files $flavor
 %endif
+done
+
+# remove -code/-vars files for unfied only flavors
+for flavor in ${FLAVORS_X64_UNIFIED_ONLY[@]}; do
+	rm $flavor-code.bin
+	rm $flavor-vars.bin
 done
 
 %ifarch x86_64

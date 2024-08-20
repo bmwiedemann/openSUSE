@@ -107,7 +107,7 @@ autoreconf -f
 %configure \
               --enable-hardware-optimizations=yes \
 %ifarch armv6l armv6hl
-              --enable-arm-neon=no
+              --enable-arm-neon=no \
 %endif
               --disable-static
 %if %{asan_build}

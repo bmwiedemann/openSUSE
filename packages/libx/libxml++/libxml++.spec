@@ -32,7 +32,6 @@ BuildRequires:  c++_compiler
 BuildRequires:  fdupes
 BuildRequires:  meson >= 0.60.0
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(glibmm-2.68)
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.7.7
 
 %description

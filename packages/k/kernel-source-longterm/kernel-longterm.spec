@@ -18,8 +18,8 @@
 
 
 %define srcversion 6.6
-%define patchversion 6.6.46
-%define git_commit 5df2b4b174fd87546b1651beafd3f66a8cfc1fd3
+%define patchversion 6.6.47
+%define git_commit 2028bdfc1d8edf3eeccd484dbc6bbc1f5a0f627a
 %define variant -longterm%{nil}
 %define compress_modules zstd
 %define compress_vmlinux xz
@@ -113,9 +113,9 @@ Name:           kernel-longterm
 Summary:        The Linux Kernel
 License:        GPL-2.0-only
 Group:          System/Kernel
-Version:        6.6.46
+Version:        6.6.47
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g5df2b4b
+Release:        <RELEASE>.g2028bdf
 %else
 Release:        0
 %endif

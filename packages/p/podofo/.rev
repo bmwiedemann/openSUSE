@@ -394,4 +394,12 @@ drop patches upstreamed</comment>
     <comment></comment>
     <requestid>1136087</requestid>
   </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>7091b8359cd2bbba4159b6325e75f6d8</srcmd5>
+    <version>0.10.3</version>
+    <time>1724163176</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1194678</requestid>
+  </revision>
 </revisionlist>

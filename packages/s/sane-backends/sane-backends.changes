@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Aug  6 13:46:39 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Cherry-pick upstream patch to remove unnecessary Unicode character
+  * remove_unnecessary_unicode_character.patch
+- Use individual %patch statements over %autosetup to allow
+  for different levels of path stripping for both patches
+
+-------------------------------------------------------------------
 Thu May 23 15:17:34 UTC 2024 - Arnav Singh <opensuse@arnavion.dev>
 
 - Updated to sane-backends version 1.3.1

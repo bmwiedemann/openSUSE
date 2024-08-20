@@ -16,7 +16,7 @@
 #
 
 Name:           libwacom
-Version:        2.11.0
+Version:        2.12.2
 Release:        0
 Summary:        Library to identify wacom tablets
 License:        MIT
@@ -27,7 +27,7 @@ Source1:        https://github.com/linuxwacom/libwacom/releases/download/libwaco
 # Fetched from https://github.com/whot.gpg
 Source2:        %{name}.keyring
 Source99:       baselibs.conf
-BuildRequires:  meson >= 0.51.0
+BuildRequires:  meson >= 0.56.0
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(glib-2.0)

@@ -129,4 +129,17 @@
   * When a public API is to be removed, or undergo a backwards-</comment>
     <requestid>1184088</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>9318d2548aac6a4d1c43841fe5a1caa1</srcmd5>
+    <version>24.8.0</version>
+    <time>1724163167</time>
+    <user>anag+factory</user>
+    <comment>- update to 24.8.0:
+  * Added the :func:`~webcolors.names` function to allow
+    retrieving lists of color names. The underlying mappings of
+    color names/values still are not supported API; to obtain the
+    color value corresponding to a name, use the appropriate
+    conversion function.</comment>
+    <requestid>1194656</requestid>
+  </revision>
 </revisionlist>

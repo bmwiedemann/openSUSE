@@ -32,6 +32,7 @@ Source3:        baselibs.conf
 Source99:       tiff.keyring
 Patch0:         tiff-4.0.3-seek.patch
 Patch1:         tiff-CVE-2023-52356.patch
+Patch2:         tiff-CVE-2024-7006.patch
 BuildRequires:  gcc-c++
 BuildRequires:  libjbig-devel
 BuildRequires:  libjpeg-devel

@@ -1,5 +1,5 @@
---- xen-4.18.0-testing/tools/xs-clients/Makefile.orig	2023-10-02 12:51:09.364766336 -0600
-+++ xen-4.18.0-testing/tools/xs-clients/Makefile	2023-10-02 12:53:09.360769196 -0600
+--- a/tools/xs-clients/Makefile
++++ b/tools/xs-clients/Makefile
 @@ -29,7 +29,7 @@ all: $(TARGETS)
  clients: xenstore $(CLIENTS) xenstore-control
  
@@ -18,9 +18,9 @@
  	done
  
  .PHONY: uninstall
---- xen-4.18.0-testing/tools/xenstored/Makefile.orig	2023-10-02 12:51:03.364766193 -0600
-+++ xen-4.18.0-testing/tools/xenstored/Makefile	2023-10-02 12:54:09.472770628 -0600
-@@ -37,6 +37,7 @@ TAGS:
+--- a/tools/xenstored/Makefile
++++ b/tools/xenstored/Makefile
+@@ -32,6 +32,7 @@ TAGS:
  install: all
  	$(INSTALL_DIR) $(DESTDIR)$(sbindir)
  	$(INSTALL_PROG) xenstored $(DESTDIR)$(sbindir)

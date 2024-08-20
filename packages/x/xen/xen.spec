@@ -30,7 +30,7 @@
 
 Name:           xen
 ExclusiveArch:  %ix86 x86_64 aarch64
-%define xen_build_dir xen-4.18.2-testing
+%define xen_build_dir xen-4.19.0-testing
 #
 %define with_gdbsx 0
 %define with_dom0_support 0
@@ -98,6 +98,8 @@ BuildRequires:  makeinfo
 %endif
 %endif
 BuildRequires:  acpica
+BuildRequires:  libzstd-devel
+BuildRequires:  lzo-devel
 BuildRequires:  ncurses-devel
 BuildRequires:  openssl-devel
 BuildRequires:  python3-devel
@@ -122,12 +124,12 @@ BuildRequires:  pesign-obs-integration
 BuildRequires:  python-rpm-macros
 Provides:       installhint(reboot-needed)
 
-Version:        4.18.2_06
+Version:        4.19.0_02
 Release:        0
 Summary:        Xen Virtualization: Hypervisor (aka VMM aka Microkernel)
 License:        GPL-2.0-only
 Group:          System/Kernel
-Source0:        xen-4.18.2-testing-src.tar.bz2
+Source0:        xen-4.19.0-testing-src.tar.bz2
 Source1:        stubdom.tar.bz2
 Source2:        mini-os.tar.bz2
 Source9:        xen.changes
@@ -157,33 +159,10 @@ Source10183:    xen_maskcalc.py
 # For xen-libs
 Source99:       baselibs.conf
 # Upstream patches
-Patch1:         6617d62c-x86-hvm-Misra-Rule-19-1-regression.patch
-Patch2:         6627a4ee-vRTC-UIP-set-for-longer-than-expected.patch
-Patch3:         6627a5fc-x86-MTRR-inverted-WC-check.patch
-Patch4:         662a6a4c-x86-spec-reporting-of-BHB-clearing.patch
-Patch5:         662a6a8d-x86-spec-adjust-logic-to-elide-LFENCE.patch
-Patch6:         663090fd-x86-gen-cpuid-syntax.patch
-Patch7:         663a383c-libxs-open-xenbus-fds-as-O_CLOEXEC.patch
-Patch8:         663a4f3e-x86-cpu-policy-migration-IceLake-to-CascadeLake.patch
-Patch9:         663d05b5-x86-ucode-distinguish-up-to-date.patch
-Patch10:        663eaa27-libxl-XenStore-error-handling-in-device-creation.patch
-Patch11:        66450626-sched-set-all-sched_resource-data-inside-locked.patch
-Patch12:        66450627-x86-respect-mapcache_domain_init-failing.patch
-Patch13:        6646031f-x86-ucode-further-identify-already-up-to-date.patch
-Patch14:        6666ba52-x86-irq-remove-offline-CPUs-from-old-CPU-mask-when.patch
-Patch15:        666994ab-x86-SMP-no-shorthand-IPI-in-hotplug.patch
-Patch16:        666994f0-x86-IRQ-limit-interrupt-movement-in-fixup_irqs.patch
-Patch17:        666b07ee-x86-EPT-special-page-in-epte_get_entry_emt.patch
-Patch18:        666b0819-x86-EPT-avoid-marking-np-ents-for-reconfig.patch
-Patch19:        666b085a-x86-EPT-drop-questionable-mfn_valid-from-.patch
-Patch20:        667187cc-x86-Intel-unlock-CPUID-earlier.patch
-Patch21:        66718849-x86-IRQ-old_cpu_mask-in-fixup_irqs.patch
-Patch22:        6671885e-x86-IRQ-handle-moving-in-_assign_irq_vector.patch
-Patch23:        6672c846-x86-xstate-initialisation-of-XSS-cache.patch
-Patch24:        6672c847-x86-CPUID-XSAVE-dynamic-leaves.patch
-Patch25:        6673ffdc-x86-IRQ-forward-pending-to-new-dest-in-fixup_irqs.patch
+Patch1:         66a8b8ac-bunzip2-rare-failure.patch
+Patch2:         66bb6f78-x86-IOMMU-move-tracking-in-iommu_identity_mapping.patch
+Patch3:         66bb6fa5-x86-pass-through-document-as-security-unsupported.patch
 # EMBARGOED security fixes
-Patch100:       xsa458.patch
 # libxc
 Patch301:       libxc-bitmap-long.patch
 Patch302:       libxc-sr-xl-migration-debug.patch
@@ -842,11 +821,11 @@ rm -f %{buildroot}/etc/xen/README*
 mkdir -p %{buildroot}/etc/xen/{vm,examples,scripts}
 mv %{buildroot}/etc/xen/xlexample* %{buildroot}/etc/xen/examples
 rm -f %{buildroot}/etc/xen/examples/*nbd
-install -m644 tools/xentrace/formats %{buildroot}/etc/xen/examples/xentrace_formats.txt
 
 # Scripts
 rm -f %{buildroot}/etc/xen/scripts/block-*nbd
 install -m755 %SOURCE21 %SOURCE22 %SOURCE23 %SOURCE24 %{buildroot}/etc/xen/scripts/
+install -m755 tools/pygrub/src/pygrub %{buildroot}/usr/bin/pygrub
 mkdir -p %{buildroot}/usr/lib/supportconfig/plugins
 install -m 755 %SOURCE13 %{buildroot}/usr/lib/supportconfig/plugins/xen
 
@@ -1003,7 +982,6 @@ rm -f  %{buildroot}/usr/libexec/qemu-bridge-helper
 /usr/bin/pygrub
 /usr/bin/vchan-socket-proxy
 /usr/bin/xencov_split
-/usr/bin/xentrace_format
 %ifarch x86_64
 /usr/bin/xen-cpuid
 %endif

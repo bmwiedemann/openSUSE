@@ -2958,4 +2958,12 @@
     <comment>Security and Maintenance Update. Fix for bsc#1227355 CVE-2024-31143 XSA-458. Also some python adjustments.</comment>
     <requestid>1187952</requestid>
   </revision>
+  <revision rev="348" vrev="1">
+    <srcmd5>6803f025f60cf9d313354b70f19789d1</srcmd5>
+    <version>4.19.0_02</version>
+    <time>1724163185</time>
+    <user>anag+factory</user>
+    <comment>Update to Xen 4.19.0 with additional security fixes.</comment>
+    <requestid>1194735</requestid>
+  </revision>
 </revisionlist>

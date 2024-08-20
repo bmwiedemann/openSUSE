@@ -11,7 +11,7 @@ References: fate#323663 - Run Xenstore in stubdomain
  #
  # Select type of xentore service.
  #
-@@ -81,14 +81,14 @@ XENSTORED_TRACE=
+@@ -80,14 +80,14 @@ XENSTORED_TRACE=
  XENSTORE_DOMAIN_KERNEL=
  
  ## Type: integer
@@ -49,6 +49,6 @@ References: fate#323663 - Run Xenstore in stubdomain
 -	[ -z "$XENSTORE_MAX_DOMAIN_SIZE" ] || XENSTORE_DOMAIN_ARGS="$XENSTORE_DOMAIN_ARGS --maxmem $XENSTORE_MAX_DOMAIN_SIZE"
 +	[ -z "$XENSTORE_MAX_DOMAIN_SIZE" ] && XENSTORE_MAX_DOMAIN_SIZE="1/100"
 +	XENSTORE_DOMAIN_ARGS="$XENSTORE_DOMAIN_ARGS --maxmem $XENSTORE_MAX_DOMAIN_SIZE"
+ 	[ -z "$XENSTORED_TRACE" ] || XENSTORE_DOMAIN_ARGS="$XENSTORE_DOMAIN_ARGS -T xenstored-trace.log"
  
  	echo -n Starting $XENSTORE_DOMAIN_KERNEL...
- 	${LIBEXEC_BIN}/init-xenstore-domain $XENSTORE_DOMAIN_ARGS || exit 1

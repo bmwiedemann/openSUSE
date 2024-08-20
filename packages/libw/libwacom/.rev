@@ -359,4 +359,41 @@
     <comment></comment>
     <requestid>1169648</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>1f25322d5263353dd92e7573a736ad8f</srcmd5>
+    <version>2.12.2</version>
+    <time>1724163196</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.12.2
+  * Device Fixes:
+    - HUION Kamvas 16 2019
+    - Prefix the kamvas pro 13 with Huion like all other Huion
+    tablets
+    - Fix the Huion Kamvas 12 file
+  * Device Other:
+    - Don't create a default match for fallback devices
+  * Other Fixes:
+    - Fix a memory leak
+    - Set the device name in new_from_path() to override the
+    fallback name
+  * Tests:
+      test: run ruff format over test_svg.py
+      test: add support for testing new_from_path() through uinput
+- update to 2.12.1
+  * Device Fixes:
+    - Drop the firmware match from the Huion Inspiroy 2 S
+  * Features:
+    - Fix off-by-one check for stripping the quote from NAME/UNIQ
+    - Use g_clear_pointer() during libwacom_*_unref()
+- update to 2.12.0
+  * New Devices:
+    - Huion Kamvas Pro 24 (GT-240, QHD)
+    - Huion WH1409
+    - Wacom Movink
+    - Wacom HID 49A0 (Dell latitude 5320 2-in-1)
+    - Wacom HID 5334 Pen
+    - XP-PEN Deco Mini 4
+  * Device Fixes:</comment>
+    <requestid>1194757</requestid>
+  </revision>
 </revisionlist>

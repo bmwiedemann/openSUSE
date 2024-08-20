@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug 19 11:46:55 UTC 2024 - Dr. Werner Fink <werner@suse.de>
+
+- Only suggest emacs-games to avoid warning about
+  game dir '/var/games/emacs': Permission denied (boo#1228058)
+
+-------------------------------------------------------------------
 Sun Aug  4 20:20:37 UTC 2024 - Björn Bidar <bjorn.bidar@thaodan.de>
 
 - Set find-function-C-source-directory in site-start so sources

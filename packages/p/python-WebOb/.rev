@@ -410,4 +410,17 @@
 Drop sphinx doctrees for reproducible builds</comment>
     <requestid>1100879</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>3105d159e94a2bc99ef4a4aff2c139e5</srcmd5>
+    <version>1.8.8</version>
+    <time>1724163154</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.8.8:
+  * The use of WebOb's Response object to redirect a request to a new location
+    can lead to an open redirect if the Location header is not a full URI.
+    (bsc#1229221, CVE-2024-42353)
+- Drop Python 2 blocks in the spec file.
+- Switch to pyproject macros.</comment>
+    <requestid>1194616</requestid>
+  </revision>
 </revisionlist>

@@ -947,4 +947,15 @@ D    tiff-4.0.3-test-jpeg-turbo.patch</comment>
     + tiff-CVE-2023-52356.patch</comment>
     <requestid>1141711</requestid>
   </revision>
+  <revision rev="96" vrev="5">
+    <srcmd5>96e47df4af6966885171de2128d52db8</srcmd5>
+    <version>4.6.0</version>
+    <time>1724163158</time>
+    <user>anag+factory</user>
+    <comment>- security update:
+  * CVE-2024-7006 [bsc#1228924]
+    Fix pointer deref in tif_dirinfo.c
+    + tiff-CVE-2024-7006.patch</comment>
+    <requestid>1194640</requestid>
+  </revision>
 </revisionlist>

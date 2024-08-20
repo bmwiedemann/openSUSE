@@ -832,4 +832,14 @@ https://build.opensuse.org/request/show/1178504 </comment>
 </comment>
     <requestid>1193871</requestid>
   </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>c29524ec6a37c62e2eefe376703c4c17</srcmd5>
+    <version>20240816</version>
+    <time>1724163160</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 20240816:
+  * Initial policy for syslog-ng (bsc#1229153)
+</comment>
+    <requestid>1194650</requestid>
+  </revision>
 </revisionlist>

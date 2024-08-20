@@ -1,7 +1,7 @@
-Index: xen-4.18.0-testing/Config.mk
+Index: xen-4.19.0-testing/Config.mk
 ===================================================================
---- xen-4.18.0-testing.orig/Config.mk
-+++ xen-4.18.0-testing/Config.mk
+--- xen-4.19.0-testing.orig/Config.mk
++++ xen-4.19.0-testing/Config.mk
 @@ -77,7 +77,7 @@ EXTRA_INCLUDES += $(EXTRA_PREFIX)/includ
  EXTRA_LIB += $(EXTRA_PREFIX)/lib
  endif
@@ -11,47 +11,34 @@ Index: xen-4.18.0-testing/Config.mk
  PYTHON_PREFIX_ARG ?= --prefix="$(prefix)"
  # The above requires that prefix contains *no spaces*. This variable is here
  # to permit the user to set PYTHON_PREFIX_ARG to '' to workaround this bug:
-Index: xen-4.18.0-testing/tools/configure
+Index: xen-4.19.0-testing/tools/configure
 ===================================================================
---- xen-4.18.0-testing.orig/tools/configure
-+++ xen-4.18.0-testing/tools/configure
-@@ -7392,15 +7392,15 @@ if test x"${PYTHONPATH}" = x"no"
+--- xen-4.19.0-testing.orig/tools/configure
++++ xen-4.19.0-testing/tools/configure
+@@ -8297,15 +8297,15 @@ if test x"${PYTHONPATH}" = x"no"
  then
      as_fn_error $? "Unable to find $PYTHON, please install $PYTHON" "$LINENO" 5
  fi
--{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for python version >= 2.6 " >&5
--$as_echo_n "checking for python version >= 2.6 ... " >&6; }
--`$PYTHON -c 'import sys; sys.exit(eval("sys.version_info < (2, 6)"))'`
-+{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for python3 version >= 3.0 " >&5
-+$as_echo_n "checking for python3 version >= 3.0 ... " >&6; }
+-{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for python version >= 2.7 " >&5
+-printf %s "checking for python version >= 2.7 ... " >&6; }
+-`$PYTHON -c 'import sys; sys.exit(eval("sys.version_info < (2, 7)"))'`
++{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for python version >= 3.0 " >&5
++printf %s "checking for python version >= 3.0 ... " >&6; }
 +`$PYTHON -c 'import sys; sys.exit(eval("sys.version_info < (3, 0)"))'`
  if test "$?" != "0"
  then
      python_version=`$PYTHON -V 2>&1`
-     { $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
- $as_echo "no" >&6; }
--    as_fn_error $? "$python_version is too old, minimum required version is 2.6" "$LINENO" 5
+     { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: no" >&5
+ printf "%s\n" "no" >&6; }
+-    as_fn_error $? "$python_version is too old, minimum required version is 2.7" "$LINENO" 5
 +    as_fn_error $? "$python_version is too old, minimum required version is 3.0" "$LINENO" 5
  else
-     { $as_echo "$as_me:${as_lineno-$LINENO}: result: yes" >&5
- $as_echo "yes" >&6; }
-Index: xen-4.18.0-testing/tools/configure.ac
+     { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: yes" >&5
+ printf "%s\n" "yes" >&6; }
+Index: xen-4.19.0-testing/tools/libs/light/idl.py
 ===================================================================
---- xen-4.18.0-testing.orig/tools/configure.ac
-+++ xen-4.18.0-testing/tools/configure.ac
-@@ -385,7 +385,7 @@ PYTHONPATH=$PYTHON
- PYTHON=`basename $PYTHONPATH`
- 
- AX_PATH_PROG_OR_FAIL([PYTHONPATH], [$PYTHON])
--AX_CHECK_PYTHON_VERSION([2], [6])
-+AX_CHECK_PYTHON_VERSION([3], [0])
- 
- AS_IF([test "$cross_compiling" != yes], [
-     AX_CHECK_PYTHON_DEVEL()
-Index: xen-4.18.0-testing/tools/libs/light/idl.py
-===================================================================
---- xen-4.18.0-testing.orig/tools/libs/light/idl.py
-+++ xen-4.18.0-testing/tools/libs/light/idl.py
+--- xen-4.19.0-testing.orig/tools/libs/light/idl.py
++++ xen-4.19.0-testing/tools/libs/light/idl.py
 @@ -271,7 +271,7 @@ class KeyedUnion(Aggregate):
          if not isinstance(keyvar_type, Enumeration):
              raise ValueError
@@ -79,80 +66,80 @@ Index: xen-4.18.0-testing/tools/libs/light/idl.py
          if isinstance(t, Type):
              globs[n] = t
          elif isinstance(t,type(object)) and issubclass(t, Type):
-Index: xen-4.18.0-testing/tools/libs/light/gentest.py
+Index: xen-4.19.0-testing/tools/libs/light/gentest.py
 ===================================================================
---- xen-4.18.0-testing.orig/tools/libs/light/gentest.py
-+++ xen-4.18.0-testing/tools/libs/light/gentest.py
+--- xen-4.19.0-testing.orig/tools/libs/light/gentest.py
++++ xen-4.19.0-testing/tools/libs/light/gentest.py
 @@ -1,4 +1,4 @@
 -#!/usr/bin/python
 +#!/usr/bin/python3
  
  from __future__ import print_function
  
-Index: xen-4.18.0-testing/tools/libs/light/gentypes.py
+Index: xen-4.19.0-testing/tools/libs/light/gentypes.py
 ===================================================================
---- xen-4.18.0-testing.orig/tools/libs/light/gentypes.py
-+++ xen-4.18.0-testing/tools/libs/light/gentypes.py
+--- xen-4.19.0-testing.orig/tools/libs/light/gentypes.py
++++ xen-4.19.0-testing/tools/libs/light/gentypes.py
 @@ -1,4 +1,4 @@
 -#!/usr/bin/python
 +#!/usr/bin/python3
  
  from __future__ import print_function
  
-Index: xen-4.18.0-testing/tools/include/xen-foreign/mkheader.py
+Index: xen-4.19.0-testing/tools/include/xen-foreign/mkheader.py
 ===================================================================
---- xen-4.18.0-testing.orig/tools/include/xen-foreign/mkheader.py
-+++ xen-4.18.0-testing/tools/include/xen-foreign/mkheader.py
+--- xen-4.19.0-testing.orig/tools/include/xen-foreign/mkheader.py
++++ xen-4.19.0-testing/tools/include/xen-foreign/mkheader.py
 @@ -1,4 +1,4 @@
 -#!/usr/bin/python
 +#!/usr/bin/python3
  
  from __future__ import print_function
  
-Index: xen-4.18.0-testing/tools/include/xen-foreign/mkchecker.py
+Index: xen-4.19.0-testing/tools/include/xen-foreign/mkchecker.py
 ===================================================================
---- xen-4.18.0-testing.orig/tools/include/xen-foreign/mkchecker.py
-+++ xen-4.18.0-testing/tools/include/xen-foreign/mkchecker.py
+--- xen-4.19.0-testing.orig/tools/include/xen-foreign/mkchecker.py
++++ xen-4.19.0-testing/tools/include/xen-foreign/mkchecker.py
 @@ -1,4 +1,4 @@
 -#!/usr/bin/python
 +#!/usr/bin/python3
  
  import sys;
  from structs import structs, compat_arches;
-Index: xen-4.18.0-testing/xen/tools/gen-cpuid.py
+Index: xen-4.19.0-testing/xen/tools/gen-cpuid.py
 ===================================================================
---- xen-4.18.0-testing.orig/xen/tools/gen-cpuid.py
-+++ xen-4.18.0-testing/xen/tools/gen-cpuid.py
+--- xen-4.19.0-testing.orig/xen/tools/gen-cpuid.py
++++ xen-4.19.0-testing/xen/tools/gen-cpuid.py
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python
 +#!/usr/bin/python3
  # -*- coding: utf-8 -*-
  
  import sys, os, re
-Index: xen-4.18.0-testing/xen/tools/compat-build-source.py
+Index: xen-4.19.0-testing/xen/tools/compat-build-source.py
 ===================================================================
---- xen-4.18.0-testing.orig/xen/tools/compat-build-source.py
-+++ xen-4.18.0-testing/xen/tools/compat-build-source.py
+--- xen-4.19.0-testing.orig/xen/tools/compat-build-source.py
++++ xen-4.19.0-testing/xen/tools/compat-build-source.py
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python
 +#!/usr/bin/python3
  
  import re,sys
  
-Index: xen-4.18.0-testing/xen/tools/compat-build-header.py
+Index: xen-4.19.0-testing/xen/tools/compat-build-header.py
 ===================================================================
---- xen-4.18.0-testing.orig/xen/tools/compat-build-header.py
-+++ xen-4.18.0-testing/xen/tools/compat-build-header.py
+--- xen-4.19.0-testing.orig/xen/tools/compat-build-header.py
++++ xen-4.19.0-testing/xen/tools/compat-build-header.py
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python
 +#!/usr/bin/python3
  
  import re,sys
  
-Index: xen-4.18.0-testing/tools/misc/xensymoops
+Index: xen-4.19.0-testing/tools/misc/xensymoops
 ===================================================================
---- xen-4.18.0-testing.orig/tools/misc/xensymoops
-+++ xen-4.18.0-testing/tools/misc/xensymoops
+--- xen-4.19.0-testing.orig/tools/misc/xensymoops
++++ xen-4.19.0-testing/tools/misc/xensymoops
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python
 +#!/usr/bin/python3

@@ -103,4 +103,20 @@
     <comment></comment>
     <requestid>1164543</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>64da870159a31d19af256fb32ec2d2d9</srcmd5>
+    <version>1.21</version>
+    <time>1724163142</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.21:
+  * Fixed build error on x86 with gcc 8.1 and gcc 8.2.
+  * Fixed build error on x86 when gcc 11 is paired with a
+    binutils version that doesn't support AVX-VNNI
+    e.g. as it is on RHEL 9.
+  * Fixed build error on arm64 with gcc 6.
+  * Fixed build error on arm64 with gcc 13.1 and later with some
+    -mcpu options.
+  * Enabled detection of dotprod support in Windows ARM64 builds.</comment>
+    <requestid>1194548</requestid>
+  </revision>
 </revisionlist>

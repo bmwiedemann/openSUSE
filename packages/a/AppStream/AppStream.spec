@@ -53,7 +53,7 @@ BuildRequires:  gcc13
 BuildRequires:  gcc13-c++
 %endif
 BuildRequires:  gdk-pixbuf-loader-rsvg
-BuildRequires:  gettext
+BuildRequires:  gettext-devel
 BuildRequires:  gperf
 BuildRequires:  itstool
 BuildRequires:  meson >= 0.59

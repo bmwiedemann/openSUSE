@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Aug 19 09:02:51 UTC 2024 - Dr. Werner Fink <werner@suse.de>
+
+- Add upstream patches
+  * readline82-011
+   Some systems (e.g., macOS) send signals early on in interactive
+   initialization, so readline should retry a failed open of the init file.
+  * readline82-012
+    If a user happens to bind do-lowercase-version to something that isn't a
+    capital letter, so _rl_to_lower doesn't change anything and the result is
+    still bound to do-lowercase-version, readline can recurse infinitely.
+  * readline82-013
+    When readline is accumulating bytes until it reads a complete multibyte
+    character, reading a byte that makes the multibyte character invalid can
+    result in discarding the bytes in the partial character.
+- Port patch readline-8.2.dif
+
+-------------------------------------------------------------------
 Tue Jan 16 07:49:48 UTC 2024 - Dr. Werner Fink <werner@suse.de>
 
 - Add upstream patch readline82-008

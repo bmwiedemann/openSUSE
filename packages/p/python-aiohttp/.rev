@@ -545,4 +545,41 @@
     <comment></comment>
     <requestid>1177644</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>ba75aecd6b8051180d6664ea77ef56ad</srcmd5>
+    <version>3.10.5</version>
+    <time>1724163205</time>
+    <user>anag+factory</user>
+    <comment>e Update to 3.10.5:
+  * Fixed aiohttp.ClientResponse.json() not setting status when
+    aiohttp.ContentTypeError is raised
+  * Improved performance of the WebSocket reader
+  * Fixed decoding base64 chunk in BodyPartReader
+  * Fixed a race closing the server-side WebSocket where the close code would
+    not reach the client
+  * Fixed unconsumed exceptions raised by the WebSocket heartbeat
+  * Fixed an edge case in the Python parser when chunk separators happen to
+    align with network chunks
+  * Fixed multipart reading when stream buffer splits the boundary over
+    several read() calls
+  * Fixed aiohttp.TCPConnector doing blocking I/O in the event loop to create
+    the SSLContext
+  * Improved performance of aiohttp.ClientWebSocketResponse.receive and
+    aiohttp.web.WebSocketResponse.receive when there is no timeout.
+  * Improved performance of starting request handlers with Python 3.12+
+  * Improved performance of HTTP keep-alive checks
+  * Fixed server checks for circular symbolic links to be compatible with
+    Python 3.13
+  * Fixed request body not being read when ignoring an Upgrade request
+  * Fixed an edge case where shutdown would wait for timeout when the handler
+    was already completed
+  * Fixed connecting to npipe://, tcp://, and unix:// urls
+  * Fixed WebSocket ping tasks being prematurely garbage collected
+  * Fixed incorrectly following symlinks for compressed file variants
+    (bsc#1229226, CVE-2024-42367)
+  * Fixed monkey patches for Path.stat() and Path.is_dir() for Python 3.13
+    compatibility
+  * Fixed url dispatcher index not matching when a variable is preceded by a</comment>
+    <requestid>1194832</requestid>
+  </revision>
 </revisionlist>

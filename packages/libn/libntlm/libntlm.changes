@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Aug 18 13:12:52 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.8:
+  * The release tarball is now reproducible.
+  * We publish a minimal source-only tarball.
+  * This tarball does not contain any generated files, and is
+    sufficient to reproduce the full tarball
+    (assuming build dependencies are available).
+  * No changes since last version.
+
+-------------------------------------------------------------------
 Sat Jan  6 10:37:49 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.7:

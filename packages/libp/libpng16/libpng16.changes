@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Aug 11 12:11:28 UTC 2024 - Andreas Schwab <schwab@suse.de>
+
+- Fix missing backslash
+
+-------------------------------------------------------------------
 Wed Jun 12 08:07:31 UTC 2024 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Backport patch to fix PAC/BTI support on aarch64:

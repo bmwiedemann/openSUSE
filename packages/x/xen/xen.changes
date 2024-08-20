@@ -1,4 +1,94 @@
 -------------------------------------------------------------------
+Wed Aug 14 14:10:47 MDT 2024 - carnold@suse.com
+
+- bsc#1228574 - VUL-0: CVE-2024-31145: xen: error handling in x86
+  IOMMU identity mapping (XSA-460)
+  66bb6f78-x86-IOMMU-move-tracking-in-iommu_identity_mapping.patch
+- bsc#1228575 - VUL-0: CVE-2024-31146: xen: PCI device pass-through
+  with shared resources (XSA-461)
+  66bb6fa5-x86-pass-through-document-as-security-unsupported.patch
+
+-------------------------------------------------------------------
+Wed Aug  7 08:06:00 CEST 2024 - jbeulich@suse.com
+
+- Upstream bug fixes (bsc#1027519)
+  66a8b8ac-bunzip2-rare-failure.patch
+
+-------------------------------------------------------------------
+Tue Jul 30 05:58:34 MDT 2024 - carnold@suse.com
+
+- Update to Xen 4.19.0 FCS release (jsc#PED-8907)
+  xen-4.19.0-testing-src.tar.bz2
+- New Features
+  * On x86:
+    - Introduce a new x2APIC driver that uses Cluster Logical addressing mode
+      for IPIs and Physical addressing mode for external interrupts.
+  * On Arm:
+    - FF-A notification support.
+    - Introduction of dynamic node programming using overlay dtbo.
+  * Add a new 9pfs backend running as a daemon in dom0. First user is
+    Xenstore-stubdom now being able to support full Xenstore trace capability.
+  * libxl support for backendtype=tap with tapback.
+- Changed Features
+  * Changed flexible array definitions in public I/O interface headers to not
+    use "1" as the number of array elements.
+  * The minimum supported OCaml toolchain version is now 4.05
+  * On x86:
+    - HVM PIRQs are disabled by default.
+    - Reduce IOMMU setup time for hardware domain.
+    - Allow HVM/PVH domains to map foreign pages.
+    - Declare PVH dom0 supported with caveats.
+  * xl/libxl configures vkb=[] for HVM domains with priority over vkb_device.
+  * Increase the maximum number of CPUs Xen can be built for from 4095 to
+    16383.
+  * When building with Systemd support (./configure --enable-systemd), remove
+    libsystemd as a build dependency.  Systemd Notify support is retained, now
+    using a standalone library implementation.
+  * xenalyze no longer requires `--svm-mode` when analyzing traces
+    generated on AMD CPUs
+  * Code symbol annotations and MISRA compliance improvements.
+- Removed Features
+  * caml-stubdom.  It hasn't built since 2014, was pinned to Ocaml 4.02, and has
+    been superseded by the MirageOS/SOLO5 projects.
+  * /usr/bin/pygrub symlink.  This was deprecated in Xen 4.2 (2012) but left for
+    compatibility reasons.  VMs configured with bootloader="/usr/bin/pygrub"
+    should be updated to just bootloader="pygrub".
+  * The Xen gdbstub on x86.
+  * xentrace_format has been removed; use xenalyze instead.
+- Dropped patches contained in new tarball
+  6617d62c-x86-hvm-Misra-Rule-19-1-regression.patch
+  6627a4ee-vRTC-UIP-set-for-longer-than-expected.patch
+  6627a5fc-x86-MTRR-inverted-WC-check.patch
+  662a6a4c-x86-spec-reporting-of-BHB-clearing.patch
+  662a6a8d-x86-spec-adjust-logic-to-elide-LFENCE.patch
+  663090fd-x86-gen-cpuid-syntax.patch
+  663a383c-libxs-open-xenbus-fds-as-O_CLOEXEC.patch
+  663a4f3e-x86-cpu-policy-migration-IceLake-to-CascadeLake.patch
+  663d05b5-x86-ucode-distinguish-up-to-date.patch
+  663eaa27-libxl-XenStore-error-handling-in-device-creation.patch
+  66450626-sched-set-all-sched_resource-data-inside-locked.patch
+  66450627-x86-respect-mapcache_domain_init-failing.patch
+  6646031f-x86-ucode-further-identify-already-up-to-date.patch
+  6666ba52-x86-irq-remove-offline-CPUs-from-old-CPU-mask-when.patch
+  666994ab-x86-SMP-no-shorthand-IPI-in-hotplug.patch
+  666994f0-x86-IRQ-limit-interrupt-movement-in-fixup_irqs.patch
+  666b07ee-x86-EPT-special-page-in-epte_get_entry_emt.patch
+  666b0819-x86-EPT-avoid-marking-np-ents-for-reconfig.patch
+  666b085a-x86-EPT-drop-questionable-mfn_valid-from-.patch
+  667187cc-x86-Intel-unlock-CPUID-earlier.patch
+  66718849-x86-IRQ-old_cpu_mask-in-fixup_irqs.patch
+  6671885e-x86-IRQ-handle-moving-in-_assign_irq_vector.patch
+  6672c846-x86-xstate-initialisation-of-XSS-cache.patch
+  6672c847-x86-CPUID-XSAVE-dynamic-leaves.patch
+  6673ffdc-x86-IRQ-forward-pending-to-new-dest-in-fixup_irqs.patch
+  xsa458.patch
+
+-------------------------------------------------------------------
+Tue Jul 23 09:43:13 UTC 2024 - Franz Sirl <franz.sirl-obs@lauterbach.com>
+
+- Enable support for ZSTD and LZO compression formats
+
+-------------------------------------------------------------------
 Wed Jul  3 12:41:39 MDT 2024 - carnold@suse.com
 
 - bsc#1227355 - VUL-0: CVE-2024-31143: xen: double unlock in x86

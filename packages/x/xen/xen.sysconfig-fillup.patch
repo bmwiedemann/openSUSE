@@ -18,10 +18,10 @@ Basically fillup removed all comments, and also the two added key=value lines.
 
 Prevent this by defining all keys, with empty values, so that consumers
 of the values will continue to use the built-in defaults.
-Index: xen-4.16.0-testing/tools/hotplug/Linux/init.d/sysconfig.xencommons.in
+Index: xen-4.19.0-testing/tools/hotplug/Linux/init.d/sysconfig.xencommons.in
 ===================================================================
---- xen-4.16.0-testing.orig/tools/hotplug/Linux/init.d/sysconfig.xencommons.in
-+++ xen-4.16.0-testing/tools/hotplug/Linux/init.d/sysconfig.xencommons.in
+--- xen-4.19.0-testing.orig/tools/hotplug/Linux/init.d/sysconfig.xencommons.in
++++ xen-4.19.0-testing/tools/hotplug/Linux/init.d/sysconfig.xencommons.in
 @@ -3,7 +3,9 @@
  ## Default: "none"
  #
@@ -55,20 +55,19 @@ Index: xen-4.16.0-testing/tools/hotplug/Linux/init.d/sysconfig.xencommons.in
  
  ## Type: string
  ## Default: unlimited
-@@ -57,9 +59,10 @@ XENSTORED_ARGS=
+@@ -57,8 +59,9 @@ XENSTORED_ARGS=
  ## Type: string
  ## Default: Not defined, tracing off
  #
 -# Log xenstored messages
-+# Log xenstored messages if a non-empty value is assigned.
- # Only evaluated if XENSTORETYPE is "daemon".
 -#XENSTORED_TRACE=[yes|on|1]
++# Log xenstored messages if a non-empty value is assigned.
 +#
 +XENSTORED_TRACE=
  
  ## Type: integer
  ## Default: 50
-@@ -75,14 +78,14 @@ XENSTORED_ARGS=
+@@ -74,14 +77,14 @@ XENSTORED_ARGS=
  #
  # xenstore domain kernel.
  # Only evaluated if XENSTORETYPE is "domain".
@@ -85,7 +84,7 @@ Index: xen-4.16.0-testing/tools/hotplug/Linux/init.d/sysconfig.xencommons.in
  
  ## Type: string
  ## Default: not set, no autoballooning of xenstore domain
-@@ -93,7 +96,7 @@ XENSTORED_ARGS=
+@@ -92,7 +95,7 @@ XENSTORED_ARGS=
  # - combination of both in form of <val>:<frac> (e.g. 8:1/100), resulting
  #   value will be the higher of both specifications
  # Only evaluated if XENSTORETYPE is "domain".
@@ -94,7 +93,7 @@ Index: xen-4.16.0-testing/tools/hotplug/Linux/init.d/sysconfig.xencommons.in
  
  ## Type: string
  ## Default: ""
-@@ -106,4 +109,4 @@ XENSTORE_DOMAIN_ARGS=
+@@ -105,4 +108,4 @@ XENSTORE_DOMAIN_ARGS=
  #QEMU_XEN=@qemu_xen_path@
  
  # Dom0 UUID

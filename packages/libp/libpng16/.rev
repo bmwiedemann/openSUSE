@@ -809,4 +809,12 @@
   * 563.patch (forwarded request 1180119 from Guillaume_G)</comment>
     <requestid>1180336</requestid>
   </revision>
+  <revision rev="56" vrev="3">
+    <srcmd5>748ae0b7dad415f6e42fd449dc67f806</srcmd5>
+    <version>1.6.43</version>
+    <time>1724163163</time>
+    <user>anag+factory</user>
+    <comment>- Fix missing backslash (forwarded request 1193249 from Andreas_Schwab)</comment>
+    <requestid>1194654</requestid>
+  </revision>
 </revisionlist>

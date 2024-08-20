@@ -1094,4 +1094,16 @@
     <comment></comment>
     <requestid>1192842</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>03322402c7ce9ced7dfa792ad347b0e8</srcmd5>
+    <version>0.6.1</version>
+    <time>1724163190</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.6.1:
+ * Detect imports in src layouts by default for isort rules 
+ * The pytest rules PT001 and PT023 now default to omitting the decorator parentheses when there are no arguments .
+ * Lint and format Jupyter Notebook by default .
+ * big list of changes: https://github.com/astral-sh/ruff/blob/main/CHANGELOG.md</comment>
+    <requestid>1194751</requestid>
+  </revision>
 </revisionlist>
