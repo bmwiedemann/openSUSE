@@ -30,6 +30,8 @@ Source0:        https://download.kde.org/stable/heaptrack/%{version}/%{name}-%{v
 Source1:        https://download.kde.org/stable/heaptrack/%{version}/%{name}-%{version}.tar.xz.sig
 Source2:        heaptrack.keyring
 %endif
+# PATCH-FIX-UPSTREAM -- gcc14 compat
+Patch0:         0001-cmake-Fix-C-compatibility-of-libunwind-probes.patch
 BuildRequires:  extra-cmake-modules
 BuildRequires:  libboost_container-devel
 BuildRequires:  libboost_filesystem-devel

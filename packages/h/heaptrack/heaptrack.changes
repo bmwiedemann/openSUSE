@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug 20 08:55:48 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Add upstream change:
+  * 0001-cmake-Fix-C-compatibility-of-libunwind-probes.patch
+
+-------------------------------------------------------------------
 Wed Oct  4 07:50:05 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 1.5.0
