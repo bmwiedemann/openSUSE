@@ -100,10 +100,8 @@ Source12:       package-lock.json
 Patch1:         vendor-build-fixes-for-SLE12.patch
 Patch2:         sdjournal-build-fix-for-SLE12.patch
 Patch3:         velociraptor-reproducible-timestamp.diff
-# PATCH-FIX-UPSTREAM CVE-2024-28849-follow-redirects-drop-proxy-authorization.patch bsc#1221456 -- follow-redirects: Drop Proxy-Athorization across hosts
-Patch4:         CVE-2024-28849-follow-redirects-drop-proxy-authorization.patch
 # PATCH-FIX-UPSTREAM CVE-2022-25883-npm-watch-semver-deps.patch bsc#1212572 -- upgrade npm-watch
-Patch5:         CVE-2022-25883-npm-watch-semver-deps.patch
+Patch4:         CVE-2022-25883-npm-watch-semver-deps.patch
 BuildRequires:  fileb0x
 %if 0%{?suse_version}
 BuildRequires:  systemd-rpm-macros
@@ -257,7 +255,6 @@ This package provides a shared system user for all velociraptor components
 %patch -P 2 -p1
 %patch -P 3 -p1
 %patch -P 4 -p1
-%patch -P 5 -p1
 
 # Set the version to something more specific than <next-tag>-dev
 sed -ie "s/\([[:space:]]VERSION *= \).*/\1 \"%{VERSION}\"/" constants/constants.go

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Aug 19 20:45:30 UTC 2024 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Update node modules with security fixes. 
+  * Fixes CVE-2024-39338 (bsc#1229424)
+  * Remove CVE-2024-28849-follow-redirects-drop-proxy-authorization.patch
+    as the update is included.
+
+-------------------------------------------------------------------
 Mon Aug 12 20:47:33 UTC 2024 - Antonio Teixeira <antonio.teixeira@suse.com>
 
 - Move system-user-velociraptor to the client flavor build in order
