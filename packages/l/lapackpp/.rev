@@ -7,4 +7,12 @@
     <comment>LAPACK++ is a C++ wrapper around LAPACK and LAPACK-like linear algebra libraries.</comment>
     <requestid>1181638</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>45f9ce4910dbe193b8d05d77ed49ddb8</srcmd5>
+    <version>2024.05.31</version>
+    <time>1724163288</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1194858</requestid>
+  </revision>
 </revisionlist>

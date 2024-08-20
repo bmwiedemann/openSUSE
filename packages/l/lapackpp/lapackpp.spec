@@ -23,6 +23,8 @@ Summary:        C++ API for the Linear Algebra PACKage
 License:        BSD-3-Clause
 URL:            https://icl.utk.edu/slate/
 Source:         https://github.com/icl-utk-edu/lapackpp/releases/download/v%{version}/lapackpp-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM
+Patch0:         https://github.com/icl-utk-edu/lapackpp/pull/68.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  ninja
