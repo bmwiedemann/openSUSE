@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Aug 16 21:42:22 UTC 2024 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 3.0.2:
+  + Fix collection-status print.
+  + Changes in version 3.0.1:
+  + Changes
+    - Remove version limits on urllib3.
+    - Use functools.lru\_cache with limit, not unlimited.
+  + Fix
+    - Rework logging to be compatible with Python's logging.
+    - S3 glacier storage class and --concurrency.
+    - Unblock multiprocessing deadlock, ensure local disk usage not
+      exceed n+1 volumes, switch to "spawn".
+    - Add file-size query support to rclonebackend.
+    - Allow empty manifest list.
+    - Make --ignore-errors actually ignore (and recover from)
+      errors.
+    - SSLCertVerificationError despite --ssl-no-check-certificate.
+    - Instead of raise call command\_line\_error() directly.
+    - Empty exclude string results in unfriendly traceback.
+
+-------------------------------------------------------------------
 Thu Jul 18 14:57:10 UTC 2024 - Michael Gorse <mgorse@suse.com>
 
 - Update to version 3.0.0:
