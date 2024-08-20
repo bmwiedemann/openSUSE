@@ -1,7 +1,7 @@
 #
 # spec file for package pw3270
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) <2008> <Banco do Brasil S.A.>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,10 +19,15 @@
 
 %define _product %(pkg-config --variable=product_name lib3270)
 
+%define plugindir %(pkg-config --variable=plugin_path lib3270)
+%if "%{plugindir}" == ""
+	%define plugindir /usr/lib64/pw3270-plugins
+%endif
+
 #---[ Packaging ]-----------------------------------------------------------------------------------------------------
 
 Name:           pw3270
-Version:        5.4
+Version:        5.5+git20240817
 Release:        0
 Summary:        IBM 3270 Terminal emulator for GTK
 License:        GPL-2.0-only
@@ -30,7 +35,6 @@ Group:          System/X11/Terminals
 URL:            https://github.com/PerryWerneck/pw3270
 
 Source:         pw3270-%{version}.tar.xz
-Patch0:         reproducible.patch
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
@@ -52,8 +56,7 @@ Recommends:     libv3270-config
 
 BuildRequires:  glib2-devel
 BuildRequires:  gtk3-devel
-BuildRequires:  libappstream-glib
-BuildRequires:  libv3270-devel >= 5.3
+BuildRequires:  libv3270-devel >= 5.4
 
 %endif
 
@@ -61,10 +64,9 @@ BuildRequires:  libv3270-devel >= 5.3
 
 %if 0%{?fedora}
 
-BuildRequires:  libappstream-glib
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gtk+-3.0)
-BuildRequires:  pkgconfig(libv3270) >= 5.3
+BuildRequires:  pkgconfig(libv3270) >= 5.4
 
 %endif
 
@@ -76,7 +78,7 @@ BuildRequires:  appstream-glib
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gtk+-3.0)
-BuildRequires:  pkgconfig(libv3270) >= 5.3
+BuildRequires:  pkgconfig(libv3270) >= 5.4
 
 %glib2_gsettings_schema_requires
 
@@ -106,6 +108,7 @@ Based on the original x3270 code, pw3270 was originally created for Banco do Bra
 
 
 #--[ Configuration & Branding ]---------------------------------------------------------------------------------------
+
 %package branding
 Summary:        Default branding for %{name}
 Group:          System/X11/Terminals
@@ -114,7 +117,7 @@ Requires:       %{name} = %{version}
 BuildArch:      noarch
 
 Requires(post): desktop-file-utils
-Requires(postun):desktop-file-utils
+Requires(postun): desktop-file-utils
 
 %description branding
 GTK-based IBM 3270 terminal emulator with many advanced features. It can be used to communicate with any IBM host that supports 3270-style connections over TELNET.
@@ -123,33 +126,16 @@ This package contains the default branding for %{name}.
 
 
 #---[ Build & Install ]-----------------------------------------------------------------------------------------------
+
 %prep
 %autosetup -p1
 
-%build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 NOCONFIGURE=1 ./autogen.sh
 
-# Pull request #20 broke SLE-12 builds
-update_for_compatibility() {
-	sed -i -e "s|<id>@APPLICATION_ID@|<id>@APPLICATION_ID@.desktop|" branding/metainfo.xml.in
-	sed -i -e "s|<component type=\"desktop-application\">|<component type=\"desktop\">|" branding/metainfo.xml.in
-}
-
-%if 0%{?suse_version}
-	%if 0%{?suse_version} < 1500
-		update_for_compatibility
-	%endif
-%endif
-
-%if 0%{?fedora}
-	%if 0%{?fedora_version} < 27
-		update_for_compatibility
-	%endif
-%endif
-
 %configure --with-release=%{release} CFLAGS="${CFLAGS} -fpie" LDFLAGS="${LDFLAGS} -pie"
 
+%build
 make %{?_smp_mflags} clean
 
 # parallel build is broken
@@ -160,7 +146,9 @@ make all -j1
 
 %find_lang pw3270 langfiles
 
+%if 0%{?suse_version}
 appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/*.metainfo.xml
+%endif
 
 %fdupes %{buildroot}/%{_prefix}
 
@@ -172,18 +160,13 @@ appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/*.metainf
 # Main application
 %dir %{_datadir}/%{_product}
 %dir %{_datadir}/%{_product}/keypad
-%dir %{_libdir}/%{_product}-plugins
+%dir %{plugindir}
 %dir %{_datadir}/%{_product}/icons
 
 %{_bindir}/%{_product}
 
 # Desktop files
 %{_datadir}/applications/*.desktop
-
-%if 0%{?suse_version} < 1500
-%dir %{_datadir}/metainfo
-%endif
-
 %{_datadir}/metainfo/*.metainfo.xml
 
 # Icons
