@@ -26,12 +26,12 @@ License:        Apache-2.0 AND MIT
 Group:          Development/Libraries/Other
 URL:            https://github.com/erlware/erlware_commons
 Source:         %{app_name}-%{version}.tar.xz
-BuildRequires:  erlang
+BuildRequires:  erlang >= 26
 BuildRequires:  erlang-cf
 BuildRequires:  erlang-rebar
 # make the tests happy
 BuildRequires:  git
-Requires:       erlang
+Requires:       erlang >= 26
 Requires:       erlang-cf
 
 %description
