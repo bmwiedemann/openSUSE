@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Aug 16 15:24:54 UTC 2024 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Bump meta package versions:
+  * kubernetes (baseversion) - 1.31
+  * kubernetes (version) - 1.31.0
+  * kubernetes (baseversionminus1) - 1.30
+  * kubernetes (versionminus1) - 1.30.4
+  * kubernetes (baseversionminus2) - 1.29
+  * kubernetes (versionminus2) - 1.29.8
+  * kubernetes (baseversionminus3) - 1.28
+  * kubernetes (versionminus3) - 1.28.13
+  * Etcd (etcdversion) - 3.5.15
+  * CoreDNS (corednsversionminus2) - 1.11.1
+
+-------------------------------------------------------------------
 Tue Aug  6 12:27:13 UTC 2024 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - Bump meta package versions:
