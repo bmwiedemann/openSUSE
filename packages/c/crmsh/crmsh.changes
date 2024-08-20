@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Aug 12 12:58:02 UTC 2024 - XLiang@suse.com
+
+- Update to version 5.0.0+20240812.49aeacfa:
+  * Dev: Add option core.add_advised_op_values, default value is 'yes'
+  * Dev: Rename variable 'add_default_op_values' to 'add_advised_op_values'
+
+-------------------------------------------------------------------
+Tue Aug 06 08:10:09 UTC 2024 - alex_burlakov@gmx.de
+
+- Update to version 5.0.0+20240806.7e270329:
+  * Dev: scripts/health/collect: use ansible to get sysinfo
+
+-------------------------------------------------------------------
 Wed Jul 31 06:54:32 UTC 2024 - XLiang@suse.com
 
 - Update to version 5.0.0+20240731.2abacf27:
