@@ -1,5 +1,0 @@
-<package name="python-marshmallow-enum" project="openSUSE:Factory">
-  <title></title>
-  <description>Enum field for Marshmallow</description>
-  <devel project="devel:languages:python" package="python-marshmallow-enum"/>
-</package>
