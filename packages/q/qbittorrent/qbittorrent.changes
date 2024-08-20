@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Aug 19 19:59:01 UTC 2024 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 4.6.6
+  Bug fixes:
+  * Fix handling of tags containing '&' character
+  * Show scroll bar in Torrent Tags dialog
+  * Apply bulk changes to correct content widget items
+  * Hide zero status filters when torrents are removed
+  * Fix `Incomplete Save Path` cannot be changed for torrents
+    without metadata
+  Web UI:
+  * Correctly apply changed "save path" of RSS rules
+  * Clear tracker list on full update
+  Other changes:
+  * Update User-Agent string for internal downloader and search
+    engines
+
+-------------------------------------------------------------------
 Sun May 26 19:15:37 UTC 2024 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 4.6.5
