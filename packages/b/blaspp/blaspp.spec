@@ -25,6 +25,7 @@ Summary:        C++ API for the Basic Linear Algebra Subroutines
 License:        BSD-3-Clause
 URL:            https://icl.utk.edu/slate/
 Source:         https://github.com/icl-utk-edu/blaspp/releases/download/v%{version}/%{name}-%{version}.tar.gz
+Patch0:         https://github.com/icl-utk-edu/blaspp/pull/87.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  ninja

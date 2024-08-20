@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Aug 20 07:16:54 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add 87.patch for reproducible builds (boo#1084909)
+
+-------------------------------------------------------------------
 Fri Jun 14 09:52:35 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Add pkgconfig(blas) as Requires for blaspp-devel.
