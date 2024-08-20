@@ -24242,6 +24242,7 @@ unsorted:
   - python310-aioeventlet 
   - python310-aiofiles 
   - python310-aioftp 
+  - python310-aiohappyeyeballs 
   - python310-aiohttp 
   - python310-aiohttp-asgi 
   - python310-aiohttp-jinja2 
@@ -26180,7 +26181,6 @@ unsorted:
   - python310-pa-ringbuffer 
   - python310-packaging 
   - python310-padaos 
-  - python310-padatious 
   - python310-paginate 
   - python310-paho-mqtt 
   - python310-pako 
@@ -27874,6 +27874,7 @@ unsorted:
   - python311-aioeventlet 
   - python311-aiofiles 
   - python311-aioftp 
+  - python311-aiohappyeyeballs 
   - python311-aiohttp 
   - python311-aiohttp-asgi 
   - python311-aiohttp-jinja2 
@@ -29743,7 +29744,6 @@ unsorted:
   - python311-ovirt-engine-sdk 
   - python311-pa-ringbuffer 
   - python311-padaos 
-  - python311-padatious 
   - python311-paginate 
   - python311-paho-mqtt 
   - python311-pako 
@@ -31408,6 +31408,7 @@ unsorted:
   - python312-aioeventlet 
   - python312-aiofiles 
   - python312-aioftp 
+  - python312-aiohappyeyeballs 
   - python312-aiohttp 
   - python312-aiohttp-asgi 
   - python312-aiohttp-jinja2 
@@ -33342,7 +33343,6 @@ unsorted:
   - python312-pa-ringbuffer 
   - python312-packaging 
   - python312-padaos 
-  - python312-padatious 
   - python312-paginate 
   - python312-paho-mqtt 
   - python312-pako 
