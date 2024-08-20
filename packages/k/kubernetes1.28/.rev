@@ -81,4 +81,12 @@ Followed by update to latest patch release version - 1.28.2</comment>
     <comment>Monthly Patch Release – July, 2024: Update to version 1.28.12</comment>
     <requestid>1191865</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>b3599bf7a96354729e0310265beef9d8</srcmd5>
+    <version>1.28.13</version>
+    <time>1724163295</time>
+    <user>anag+factory</user>
+    <comment>Monthly Patch Release – August, 2024: Update to version 1.28.13</comment>
+    <requestid>1194866</requestid>
+  </revision>
 </revisionlist>
