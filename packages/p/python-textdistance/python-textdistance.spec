@@ -17,7 +17,7 @@
 
 
 Name:           python-textdistance
-Version:        4.6.2
+Version:        4.6.3
 Release:        0
 Summary:        Compute distance between the two texts
 License:        MIT

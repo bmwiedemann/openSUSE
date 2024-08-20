@@ -19,11 +19,11 @@ remaining life.
  prboom2/src/m_misc.c             |  1 +
  8 files changed, 24 insertions(+), 3 deletions(-)
 
-diff --git a/prboom2/src/dsda/configuration.c b/prboom2/src/dsda/configuration.c
-index e0fe40ecf..b1197ee17 100644
---- a/prboom2/src/dsda/configuration.c
-+++ b/prboom2/src/dsda/configuration.c
-@@ -597,6 +597,10 @@ dsda_config_t dsda_config[dsda_config_count] = {
+Index: dsda-doom-0.28.0/prboom2/src/dsda/configuration.c
+===================================================================
+--- dsda-doom-0.28.0.orig/prboom2/src/dsda/configuration.c
++++ dsda-doom-0.28.0/prboom2/src/dsda/configuration.c
+@@ -604,6 +604,10 @@ dsda_config_t dsda_config[dsda_config_co
      "gl_health_bar", dsda_config_gl_health_bar,
      CONF_BOOL(0), NULL, STRICT_INT(0)
    },
@@ -34,11 +34,11 @@ index e0fe40ecf..b1197ee17 100644
    [dsda_config_gl_usevbo] = {
      "gl_usevbo", dsda_config_gl_usevbo,
      CONF_BOOL(1), NULL, NOT_STRICT
-diff --git a/prboom2/src/dsda/configuration.h b/prboom2/src/dsda/configuration.h
-index 4bf8531b4..f32f4c6b2 100644
---- a/prboom2/src/dsda/configuration.h
-+++ b/prboom2/src/dsda/configuration.h
-@@ -119,6 +119,7 @@ typedef enum {
+Index: dsda-doom-0.28.0/prboom2/src/dsda/configuration.h
+===================================================================
+--- dsda-doom-0.28.0.orig/prboom2/src/dsda/configuration.h
++++ dsda-doom-0.28.0/prboom2/src/dsda/configuration.h
+@@ -121,6 +121,7 @@ typedef enum {
    dsda_config_gl_render_multisampling,
    dsda_config_gl_render_fov,
    dsda_config_gl_health_bar,
@@ -46,11 +46,11 @@ index 4bf8531b4..f32f4c6b2 100644
    dsda_config_gl_usevbo,
    dsda_config_gl_fade_mode,
    dsda_config_use_mouse,
-diff --git a/prboom2/src/dsda/settings.c b/prboom2/src/dsda/settings.c
-index c417705bd..6019ed07d 100644
---- a/prboom2/src/dsda/settings.c
-+++ b/prboom2/src/dsda/settings.c
-@@ -248,6 +248,11 @@ dboolean dsda_ShowHealthBars(void) {
+Index: dsda-doom-0.28.0/prboom2/src/dsda/settings.c
+===================================================================
+--- dsda-doom-0.28.0.orig/prboom2/src/dsda/settings.c
++++ dsda-doom-0.28.0/prboom2/src/dsda/settings.c
+@@ -251,6 +251,11 @@ dboolean dsda_ShowHealthBars(void) {
    return dsda_IntConfig(dsda_config_gl_health_bar);
  }
  
@@ -62,10 +62,10 @@ index c417705bd..6019ed07d 100644
  dboolean dsda_WipeAtFullSpeed(void) {
    return dsda_IntConfig(dsda_config_wipe_at_full_speed);
  }
-diff --git a/prboom2/src/dsda/settings.h b/prboom2/src/dsda/settings.h
-index a2fc9bf95..1988c5140 100644
---- a/prboom2/src/dsda/settings.h
-+++ b/prboom2/src/dsda/settings.h
+Index: dsda-doom-0.28.0/prboom2/src/dsda/settings.h
+===================================================================
+--- dsda-doom-0.28.0.orig/prboom2/src/dsda/settings.h
++++ dsda-doom-0.28.0/prboom2/src/dsda/settings.h
 @@ -50,6 +50,7 @@ dboolean dsda_ShowMinimap(void);
  dboolean dsda_ShowLevelSplits(void);
  dboolean dsda_ShowDemoAttempts(void);
@@ -74,11 +74,11 @@ index a2fc9bf95..1988c5140 100644
  dboolean dsda_MapCoordinates(void);
  dboolean dsda_MapTotals(void);
  dboolean dsda_MapTime(void);
-diff --git a/prboom2/src/gl_intern.h b/prboom2/src/gl_intern.h
-index 0040edd1d..f55c66049 100644
---- a/prboom2/src/gl_intern.h
-+++ b/prboom2/src/gl_intern.h
-@@ -218,6 +218,7 @@ typedef enum
+Index: dsda-doom-0.28.0/prboom2/src/gl_intern.h
+===================================================================
+--- dsda-doom-0.28.0.orig/prboom2/src/gl_intern.h
++++ dsda-doom-0.28.0/prboom2/src/gl_intern.h
+@@ -216,6 +216,7 @@ typedef enum
    health_bar_null,
    health_bar_red,
    health_bar_yellow,
@@ -86,11 +86,11 @@ index 0040edd1d..f55c66049 100644
  } health_bar_color_t;
  
  typedef struct
-diff --git a/prboom2/src/gl_main.c b/prboom2/src/gl_main.c
-index e2458fd9f..92e5a7b38 100644
---- a/prboom2/src/gl_main.c
-+++ b/prboom2/src/gl_main.c
-@@ -2033,12 +2033,18 @@ static void gld_DrawSprite(GLSprite *sprite)
+Index: dsda-doom-0.28.0/prboom2/src/gl_main.c
+===================================================================
+--- dsda-doom-0.28.0.orig/prboom2/src/gl_main.c
++++ dsda-doom-0.28.0/prboom2/src/gl_main.c
+@@ -2031,12 +2031,18 @@ static void gld_DrawSprite(GLSprite *spr
  
  static void gld_AddHealthBar(mobj_t* thing, GLSprite *sprite)
  {
@@ -111,7 +111,7 @@ index e2458fd9f..92e5a7b38 100644
      if (health_percent <= 50)
        hbar.color = health_bar_red;
      else if (health_percent <= 99)
-@@ -2065,10 +2071,11 @@ static void gld_AddHealthBar(mobj_t* thing, GLSprite *sprite)
+@@ -2063,10 +2069,11 @@ static void gld_AddHealthBar(mobj_t* thi
    }
  }
  
@@ -124,23 +124,23 @@ index e2458fd9f..92e5a7b38 100644
  };
  
  static void gld_DrawHealthBars(void)
-diff --git a/prboom2/src/m_menu.c b/prboom2/src/m_menu.c
-index fc3d22c82..7bc30508b 100644
---- a/prboom2/src/m_menu.c
-+++ b/prboom2/src/m_menu.c
-@@ -3052,6 +3052,7 @@ setup_menu_t demo_settings[] = {
-   { "Casual Play Settings", S_SKIP | S_TITLE, m_null, G_X},
+Index: dsda-doom-0.28.0/prboom2/src/m_menu.c
+===================================================================
+--- dsda-doom-0.28.0.orig/prboom2/src/m_menu.c
++++ dsda-doom-0.28.0/prboom2/src/m_menu.c
+@@ -3155,6 +3155,7 @@ setup_menu_t demo_settings[] = {
+   { "Coop Spawns", S_YESNO, m_conf, G_X, dsda_config_coop_spawns },
    { "Allow Jumping", S_YESNO, m_conf, G_X, dsda_config_allow_jumping },
    { "OpenGL Show Health Bars", S_YESNO, m_conf, G_X, dsda_config_gl_health_bar },
 +  { "All Shootables have Health Bar", S_YESNO, m_conf, G_X, dsda_config_gl_health_bar_shootables },
  
    PREV_PAGE(mapping_settings),
    NEXT_PAGE(tas_settings),
-diff --git a/prboom2/src/m_misc.c b/prboom2/src/m_misc.c
-index 62b7160a1..b7cc44a72 100644
---- a/prboom2/src/m_misc.c
-+++ b/prboom2/src/m_misc.c
-@@ -169,6 +169,7 @@ cfg_def_t cfg_defs[] =
+Index: dsda-doom-0.28.0/prboom2/src/m_misc.c
+===================================================================
+--- dsda-doom-0.28.0.orig/prboom2/src/m_misc.c
++++ dsda-doom-0.28.0/prboom2/src/m_misc.c
+@@ -171,6 +171,7 @@ cfg_def_t cfg_defs[] =
    MIGRATED_SETTING(dsda_config_gl_render_fov),
    MIGRATED_SETTING(dsda_config_gl_skymode),
    MIGRATED_SETTING(dsda_config_gl_health_bar),
@@ -148,6 +148,3 @@ index 62b7160a1..b7cc44a72 100644
    MIGRATED_SETTING(dsda_config_gl_usevbo),
    MIGRATED_SETTING(dsda_config_gl_fade_mode),
  
--- 
-2.42.1
-

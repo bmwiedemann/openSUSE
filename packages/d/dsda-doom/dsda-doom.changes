@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Aug 18 22:12:59 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.28.1
+  * Fixed freelook menu crash, fixed numlock menu crash
+
+-------------------------------------------------------------------
+Thu Aug 15 16:10:13 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to release 0.28.0
+  * Freelook aiming and projectile behavior has been rewritten
+  * Added MAPINFO flags to support finite height explosion behavior
+  * Added MAPINFO flags to support freelook
+  * improvement on Tools, Console, and many Bug Fixes
+    see https://github.com/kraflab/dsda-doom/blob/master/patch_notes/v0.28.md
+
+-------------------------------------------------------------------
 Sun Dec  3 16:22:11 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.27.5

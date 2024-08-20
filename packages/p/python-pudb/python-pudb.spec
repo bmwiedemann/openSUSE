@@ -21,12 +21,12 @@
 %define py_maj_ver %(c=%{python})
 %{?sle15_python_module_pythons}
 Name:           python-pudb
-Version:        2024.1
+Version:        2024.1.2
 Release:        0
 Summary:        A full-screen, console-based Python debugger
 License:        MIT
 Group:          Development/Tools/Debuggers
-URL:            https://mathema.tician.de/software/pudb
+URL:            https://github.com/inducer/pudb
 Source0:        https://files.pythonhosted.org/packages/source/p/%{upstream_name}/%{upstream_name}-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest-mock}

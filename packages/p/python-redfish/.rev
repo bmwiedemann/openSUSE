@@ -141,4 +141,14 @@
     strings</comment>
     <requestid>1141853</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>c29070188e9c77e8134cb2a08c701b23</srcmd5>
+    <version>3.2.4</version>
+    <time>1724103873</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.2.4:
+  * Removed clearing of username and password to allow for
+    sessions to be re-established</comment>
+    <requestid>1194586</requestid>
+  </revision>
 </revisionlist>

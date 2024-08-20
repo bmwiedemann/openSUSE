@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sun Aug 18 16:53:05 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.2.2:
+  * Leader object is correctly initialized when the force_utf8
+    option is being used
+  * fix for the behavior of Field.indicators to preserve backwards
+    compatibility when setting the indicators to a list or tuple
+    of two items
+  * Added MARCMakerReader class for reading MARC data from a
+    textual representation of a MARC record, expanding the previous
+    capability of pymarc to output MARC records in this format
+  * The Leader class is now automatically initialized for easier
+    access and updates
+  * Created Indicators type to limit indicator length and improve
+    handling
+  * Improved documentation of record status
+  * Field objects now throw a KeyError exception if you try to
+    set a subfield since they don't contain subfields
+  * Fixed issue with iterating over fields and subfields
+
+-------------------------------------------------------------------
 Sat Mar 16 12:56:42 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.1.2:

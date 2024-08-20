@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Aug 18 17:02:43 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2024.1.2:
+  * Switch to ruff, fix issues
+  * Break out of search loop after deleting watch
+  * Fix separate-terminal debugging
+  * Fix typos, add typos CI
+- update to 2024.1.1:
+  * Track some `urwid.util` deprecations
+  * ci: add dependabot updates for github actions
+  * Bump actions/checkout from 3 to 4
+  * Redirect pudb warnings to built-in console
+  * Catch IndexError on empty Variables state
+
+-------------------------------------------------------------------
 Sat Mar 16 09:56:03 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2024.1:

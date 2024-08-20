@@ -17,4 +17,13 @@
   * Add UI friendly protocol name</comment>
     <requestid>1171282</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d9c3c93c5b236240be28649d651206db</srcmd5>
+    <version>0.1.0</version>
+    <time>1724103868</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.1.0:
+  * Add proton-vpn-api-core depencency</comment>
+    <requestid>1194580</requestid>
+  </revision>
 </revisionlist>

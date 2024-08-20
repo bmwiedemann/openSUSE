@@ -4683,4 +4683,23 @@
     win_driver.c (report/patch by Eli Zaretskii).</comment>
     <requestid>1193861</requestid>
   </revision>
+  <revision rev="270" vrev="43">
+    <srcmd5>f23c638e3cd2637479f90c15b0a86b3f</srcmd5>
+    <version>unknown</version>
+    <time>1724103858</time>
+    <user>anag+factory</user>
+    <comment>- Add ncurses patch 20240817
+  + review/update foot for 1.18.1 -TD
+  + add a note about DomTerm 3.2.0 -TD
+  + add new glob-expressions variables to list in config.status script
+    (patch by Werner Fink).
+  + add --enable-install-prefix to modify behavior of $DESTDIR to merge
+    or replace the value set by --prefix (adapted from suggestion by
+    Eli Zaretskii).
+- Remove patch fix-20240810.patch as now upstream
+- Correct offsets of patches
+  * ncurses-5.9-ibm327x.dif
+  * ncurses-6.4.dif</comment>
+    <requestid>1194662</requestid>
+  </revision>
 </revisionlist>

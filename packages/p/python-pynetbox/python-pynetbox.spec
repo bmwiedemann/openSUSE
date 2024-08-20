@@ -18,7 +18,7 @@
 
 %define         skip_python2 1
 Name:           python-pynetbox
-Version:        7.3.3
+Version:        7.4.0
 Release:        0
 Summary:        NetBox API client library
 License:        Apache-2.0

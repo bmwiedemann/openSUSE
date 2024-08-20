@@ -9,11 +9,11 @@ I drew inspiration from the gradient bars from Fire Fight.
  prboom2/src/gl_main.c   | 52 ++++++++++++++++++++++++-----------------
  2 files changed, 31 insertions(+), 32 deletions(-)
 
-diff --git a/prboom2/src/gl_intern.h b/prboom2/src/gl_intern.h
-index f55c66049..b5a0d7f83 100644
---- a/prboom2/src/gl_intern.h
-+++ b/prboom2/src/gl_intern.h
-@@ -213,18 +213,9 @@ typedef struct
+Index: dsda-doom-0.28.0/prboom2/src/gl_intern.h
+===================================================================
+--- dsda-doom-0.28.0.orig/prboom2/src/gl_intern.h
++++ dsda-doom-0.28.0/prboom2/src/gl_intern.h
+@@ -211,18 +211,9 @@ typedef struct
    float light;
  } GLShadow;
  
@@ -33,11 +33,11 @@ index f55c66049..b5a0d7f83 100644
    float x1, x2, x3;
    float z1, z2, z3;
    float y;
-diff --git a/prboom2/src/gl_main.c b/prboom2/src/gl_main.c
-index 92e5a7b38..b5f023c60 100644
---- a/prboom2/src/gl_main.c
-+++ b/prboom2/src/gl_main.c
-@@ -2034,24 +2034,41 @@ static void gld_DrawSprite(GLSprite *sprite)
+Index: dsda-doom-0.28.0/prboom2/src/gl_main.c
+===================================================================
+--- dsda-doom-0.28.0.orig/prboom2/src/gl_main.c
++++ dsda-doom-0.28.0/prboom2/src/gl_main.c
+@@ -2032,24 +2032,41 @@ static void gld_DrawSprite(GLSprite *spr
  static void gld_AddHealthBar(mobj_t* thing, GLSprite *sprite)
  {
    bool all_shoot = dsda_ShowHealthBarsForShootables();
@@ -87,7 +87,7 @@ index 92e5a7b38..b5f023c60 100644
        float sx2 = (float)thing->radius / 2.0f / MAP_SCALE;
        float sx1 = sx2 - (float)health_percent * (float)thing->radius / 100.0f / MAP_SCALE;
        float sx3 = -sx2;
-@@ -2071,17 +2088,10 @@ static void gld_AddHealthBar(mobj_t* thing, GLSprite *sprite)
+@@ -2069,17 +2086,10 @@ static void gld_AddHealthBar(mobj_t* thi
    }
  }
  
@@ -106,7 +106,7 @@ index 92e5a7b38..b5f023c60 100644
  
    count = gld_drawinfo.num_items[GLDIT_HBAR];
    if (count > 0)
-@@ -2092,12 +2102,10 @@ static void gld_DrawHealthBars(void)
+@@ -2090,12 +2100,10 @@ static void gld_DrawHealthBars(void)
      for (i = count - 1; i >= 0; i--)
      {
        GLHealthBar *hbar = gld_drawinfo.items[GLDIT_HBAR][i].item.hbar;
@@ -123,6 +123,3 @@ index 92e5a7b38..b5f023c60 100644
        }
  
        glVertex3f(hbar->x1, hbar->y, hbar->z1);
--- 
-2.42.1
-

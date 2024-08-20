@@ -105,7 +105,6 @@ Patch0:         ncurses-6.4.dif
 Patch1:         ncurses-5.9-ibm327x.dif
 Patch2:         ncurses-5.7-tack.dif
 Patch3:         FORTIFY_SOURCE_3-fix.patch
-Patch4:         fix-20240810.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %global         _miscdir    %{_datadir}/misc
 %global         _incdir     %{_includedir}
@@ -367,7 +366,6 @@ mv tack-* tack
 %patch -P2 -p0 -b .hs
 %patch -P0 -p0 -b .p0
 %patch -P3 -p1
-%patch -P4 -p0
 
 %build
 #
@@ -548,6 +546,7 @@ export CFLAGS_SHARED
 %if %{with usepcre2}
 	--with-pcre2		\
 %endif
+	--with-install-prefix=%{root} \
 	--disable-stripping	\
 	--disable-root-access	\
 	--disable-root-environ	\

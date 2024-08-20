@@ -91,4 +91,13 @@
   * Levenstein: ensure the return type is int</comment>
     <requestid>1179667</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>e05246eb56c40cdf6a32b7eed16fb75f</srcmd5>
+    <version>4.6.3</version>
+    <time>1724103878</time>
+    <user>anag+factory</user>
+    <comment>- update to 4.6.3:
+  * Fix spelling and add missing import</comment>
+    <requestid>1194590</requestid>
+  </revision>
 </revisionlist>

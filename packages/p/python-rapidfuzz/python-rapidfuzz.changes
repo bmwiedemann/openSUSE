@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Aug 18 17:20:38 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.9.6:
+  * upgrade to Cython==3.0.11
+  * add python 3.13 wheels
+  * include simd binaries in pyinstaller builds
+  * fix builds with setuptools 72 by upgrading scikit-build
+
+-------------------------------------------------------------------
 Sat Jul  6 18:31:21 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.9.4:

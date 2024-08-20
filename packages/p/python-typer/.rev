@@ -152,4 +152,16 @@
   is now applied in python-typer-slim.</comment>
     <requestid>1167138</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>4620f6eb4d224bf531d35fa82fbba974</srcmd5>
+    <version>0.12.4</version>
+    <time>1724103878</time>
+    <user>anag+factory</user>
+    <comment>- Update to upstream version 0.12.4
+  * Fix support for UnionType (e.g. str | None) with Python 3.11.
+  * Fix zsh autocompletion installation.
+  * Fix usage of Annotated with future annotations in Python 3.7+.
+  * Fix shell_complete not working for Arguments.</comment>
+    <requestid>1194595</requestid>
+  </revision>
 </revisionlist>

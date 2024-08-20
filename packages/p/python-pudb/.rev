@@ -137,4 +137,22 @@
     * Use urwid.util.calc_text_pos() in make_canvas()</comment>
     <requestid>1158432</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>9161e6544a6ccb419423809f398ebcf2</srcmd5>
+    <version>2024.1.2</version>
+    <time>1724103866</time>
+    <user>anag+factory</user>
+    <comment>- update to 2024.1.2:
+  * Switch to ruff, fix issues
+  * Break out of search loop after deleting watch
+  * Fix separate-terminal debugging
+  * Fix typos, add typos CI
+- update to 2024.1.1:
+  * Track some `urwid.util` deprecations
+  * ci: add dependabot updates for github actions
+  * Bump actions/checkout from 3 to 4
+  * Redirect pudb warnings to built-in console
+  * Catch IndexError on empty Variables state</comment>
+    <requestid>1194575</requestid>
+  </revision>
 </revisionlist>

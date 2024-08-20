@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Aug 18 17:21:05 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.2.4:
+  * Removed clearing of username and password to allow for
+    sessions to be re-established
+
+-------------------------------------------------------------------
 Fri Jan 26 22:32:54 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.2.2:

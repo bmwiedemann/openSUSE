@@ -15,4 +15,14 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1133386</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d3ee6ae58e9ecf8ce88718aee6748786</srcmd5>
+    <version>1.2.0</version>
+    <time>1724103870</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.2.0:
+  * Add `check` keyword argument (default: True) to
+    `authenticate` to call PAM_ACCT_MGMT</comment>
+    <requestid>1194584</requestid>
+  </revision>
 </revisionlist>

@@ -53,4 +53,16 @@
 </comment>
     <requestid>1044204</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>21ca409ea9e92a69b2ae67a71209784e</srcmd5>
+    <version>3.1</version>
+    <time>1724103867</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.1:
+  * Python 3.10 support
+  * documentation update
+  * test fixes
+  * Better approach using jeepney</comment>
+    <requestid>1194578</requestid>
+  </revision>
 </revisionlist>

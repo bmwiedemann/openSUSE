@@ -150,4 +150,16 @@
     high prefix weights</comment>
     <requestid>1185906</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>ecc3749352c0d1989530c732f4344b30</srcmd5>
+    <version>3.9.6</version>
+    <time>1724103871</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.9.6:
+  * upgrade to Cython==3.0.11
+  * add python 3.13 wheels
+  * include simd binaries in pyinstaller builds
+  * fix builds with setuptools 72 by upgrading scikit-build</comment>
+    <requestid>1194585</requestid>
+  </revision>
 </revisionlist>

@@ -16,10 +16,9 @@
 #
 
 
-%define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-proton-vpn-network-manager-openvpn
-Version:        0.0.7
+Version:        0.1.0
 Release:        0
 Summary:        Proton VPN library for OpenVPN protocol using NetworkManager
 License:        GPL-3.0-or-later
@@ -40,7 +39,7 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
 Requires:       NetworkManager-openvpn
 Requires:       python-proton-core
-Requires:       python-proton-vpn-network-manager
+Requires:       python-proton-vpn-api-core
 BuildArch:      noarch
 %python_subpackages
 

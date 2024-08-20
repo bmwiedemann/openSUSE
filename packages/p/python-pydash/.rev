@@ -86,4 +86,22 @@
   - Fix regression introduced in ``v4.8.0`` that caused ``merge`` and ``merge_with`` to raise an exception when passing ``None``</comment>
     <requestid>1171294</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>2d014c41475873141bab6362eb60b8b1</srcmd5>
+    <version>8.0.3</version>
+    <time>1724103870</time>
+    <user>anag+factory</user>
+    <comment>- update to 8.0.3:
+  * Specify explicit type parameters for all type annotations.
+    Thanks DeviousStoat!
+  * Fix typing issue in map_ for compatability with chain. Thanks
+    DeviousStoat!
+  * Fix issue where too many arguments were passed to stdlib's
+    operator.attrgetter, operator.itemgetter, and
+    operator.methodcaller when instances of those classes were
+    used as callbacks to functions like map_, filter_, etc. due
+    to a bug introduced in Python 3.12.3 and 3.11.9 that reported
+    an incorrect signature for those operator class instances.</comment>
+    <requestid>1194583</requestid>
+  </revision>
 </revisionlist>

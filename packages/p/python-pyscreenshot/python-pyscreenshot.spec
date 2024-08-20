@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-pyscreenshot
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %bcond_with test
 %endif
 Name:           python-pyscreenshot%{psuffix}
-Version:        3.0
+Version:        3.1
 Release:        0
 Summary:        Python screenshots
 License:        BSD-3-Clause
@@ -55,6 +55,7 @@ BuildRequires:  %{python_module entrypoint2}
 BuildRequires:  %{python_module jeepney}
 BuildRequires:  %{python_module mss}
 BuildRequires:  %{python_module path.py}
+BuildRequires:  %{python_module pygame}
 BuildRequires:  %{python_module pyscreenshot >= %{version}}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-xlib}

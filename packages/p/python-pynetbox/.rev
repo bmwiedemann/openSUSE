@@ -299,4 +299,24 @@
     turned into Record objects instead of</comment>
     <requestid>1137455</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>fd7916df841fc00901c438b52e9f322d</srcmd5>
+    <version>7.4.0</version>
+    <time>1724103873</time>
+    <user>anag+factory</user>
+    <comment>- update to 7.4.0:
+  * Fix: pynetbox greater than 7.0.0 fails to insert complex
+    custom_fields. Fixes #597
+  * Fix: replace None with 'null' in query parameters.
+  * Fix: Fixes for connected endpoints.
+  * Added first support for NetBox 4.0
+  * Removed python 3.8, 3.9 from testing matrix, added python
+    3.12
+  * Removed NetBox 3.4, 3.5 from testing matrix, added NetBox 4.0
+  * Added readme compatibility matrix.
+- update to 7.3.4:
+  * Fix API version for Netbox version &gt; 4.x
+  * Fix linter errors</comment>
+    <requestid>1194589</requestid>
+  </revision>
 </revisionlist>

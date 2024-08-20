@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Aug 18 17:12:41 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.14.2:
+  * Correct a bug exposed by pytest 8.2.0+.
+
+-------------------------------------------------------------------
 Tue May  7 04:52:44 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.

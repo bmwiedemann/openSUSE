@@ -68,4 +68,13 @@
 - Skip a broken test with pytest &gt;= 8.1.</comment>
     <requestid>1172302</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>f5bf894b5223c52d707c2ea85ee761fb</srcmd5>
+    <version>1.14.2</version>
+    <time>1724103874</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.14.2:
+  * Correct a bug exposed by pytest 8.2.0+.</comment>
+    <requestid>1194579</requestid>
+  </revision>
 </revisionlist>

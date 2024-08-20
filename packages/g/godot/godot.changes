@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Aug 15 12:00:00 UTC 2024 - cunix@mail.de
+
+- Update to 4.3
+  * Interactive music
+  * 2D physics interpolation
+  * TileMapLayer nodes
+  * SkeletonModifier3D node 
+  * Splitting navigation meshes into chunks
+  * Native ufbx importer
+  * Parallax2D node
+  * Premultiplied alpha blending in 3D shaders
+  * Depth-based fog
+  * Acyclic rendering graph
+  * Wayland support
+  * Register runtime classes with GDExtension
+
+  and much more:
+  https://godotengine.github.io/godot-interactive-changelog/#4.3
+
+- delete improve_linker_detection.patch
+
+- update check mode set to "disabled" by default
+
+-------------------------------------------------------------------
 Mon Apr 22 12:00:00 UTC 2024 - cunix@mail.de
 
 - Update to 4.2.2

@@ -17,7 +17,7 @@
 
 
 Name:           python-pytest-twisted
-Version:        1.14.1
+Version:        1.14.2
 Release:        0
 Summary:        Pytest Plugin for Twisted
 License:        BSD-2-Clause

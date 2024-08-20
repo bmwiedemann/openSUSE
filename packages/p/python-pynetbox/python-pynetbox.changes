@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Aug 18 17:24:08 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.4.0:
+  * Fix: pynetbox greater than 7.0.0 fails to insert complex
+    custom_fields. Fixes #597
+  * Fix: replace None with 'null' in query parameters.
+  * Fix: Fixes for connected endpoints.
+  * Added first support for NetBox 4.0
+  * Removed python 3.8, 3.9 from testing matrix, added python
+    3.12
+  * Removed NetBox 3.4, 3.5 from testing matrix, added NetBox 4.0
+  * Added readme compatibility matrix.
+- update to 7.3.4:
+  * Fix API version for Netbox version > 4.x
+  * Fix linter errors
+
+-------------------------------------------------------------------
 Sun Jan  7 22:04:34 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 7.3.3:

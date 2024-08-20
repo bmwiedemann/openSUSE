@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Aug 18 17:19:27 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 8.0.3:
+  * Specify explicit type parameters for all type annotations.
+    Thanks DeviousStoat!
+  * Fix typing issue in map_ for compatability with chain. Thanks
+    DeviousStoat!
+  * Fix issue where too many arguments were passed to stdlib's
+    operator.attrgetter, operator.itemgetter, and
+    operator.methodcaller when instances of those classes were
+    used as callbacks to functions like map_, filter_, etc. due
+    to a bug introduced in Python 3.12.3 and 3.11.9 that reported
+    an incorrect signature for those operator class instances.
+
+-------------------------------------------------------------------
 Thu May  2 08:56:18 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 8.0.1:

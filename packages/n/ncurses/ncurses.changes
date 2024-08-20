@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Aug 19 07:33:34 UTC 2024 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20240817
+  + review/update foot for 1.18.1 -TD
+  + add a note about DomTerm 3.2.0 -TD
+  + add new glob-expressions variables to list in config.status script
+    (patch by Werner Fink).
+  + add --enable-install-prefix to modify behavior of $DESTDIR to merge
+    or replace the value set by --prefix (adapted from suggestion by
+    Eli Zaretskii).
+- Remove patch fix-20240810.patch as now upstream
+- Correct offsets of patches
+  * ncurses-5.9-ibm327x.dif
+  * ncurses-6.4.dif
+
+-------------------------------------------------------------------
 Wed Aug 14 09:34:10 UTC 2024 - Dr. Werner Fink <werner@suse.de>
 
 - Add patch fix-20240810.patch

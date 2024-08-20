@@ -29,7 +29,7 @@
 %define compiler_version_leap 10
 
 Name:           godot
-Version:        4.2.2
+Version:        4.3
 Release:        0
 Summary:        Cross-Platform Game Engine with an Integrated Editor
 License:        MIT
@@ -37,8 +37,6 @@ Group:          Development/Tools/Other
 URL:            https://godotengine.org/
 Source0:        https://downloads.tuxfamily.org/godotengine/%{version}/%{name}-%{version}-stable.tar.xz
 Source1:        https://downloads.tuxfamily.org/godotengine/%{version}/%{name}-%{version}-stable.tar.xz.sha256
-# better linker version detection for pck embedding with runner
-Patch0:         improve_linker_detection.patch
 BuildRequires:  Mesa-devel
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
@@ -97,7 +95,7 @@ BuildRequires:  pkgconfig(freetype2) >= 2.10.2
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(libbrotlicommon)
 BuildRequires:  pkgconfig(libbrotlidec)
-BuildRequires:  mbedtls-devel < 3
+BuildRequires:  mbedtls-devel
 BuildRequires:  pkgconfig(graphite2)
 BuildRequires:  pkgconfig(harfbuzz)
 BuildRequires:  pkgconfig(libwslay)
@@ -110,7 +108,7 @@ BuildRequires:  pkgconfig(zlib)
 BuildRequires:  libminiupnpc-devel
 BuildRequires:  pkgconfig(libwslay)
 %if 0%{?sle_version} >= 150200
-BuildRequires:  mbedtls-devel < 3
+BuildRequires:  mbedtls-devel
 %endif
 %endif
 %endif
@@ -128,7 +126,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 # Has some modifications for IPv6 support, upstream enet is unresponsive
 # Should not be unbundled.
-Provides:       bundled(enet) = 1.3.17
+Provides:       bundled(enet) = 1.3.18
 
 # Has custom changes to support seeking in zip archives
 # Should not be unbundled.
@@ -141,40 +139,47 @@ Provides:       bundled(Tangent_Space_Normal_Maps)
 Provides:       bundled(amd-fsr) = 1.0.2
 Provides:       bundled(amd-fsr2) = 2.2.1
 Provides:       bundled(angle)
-Provides:       bundled(astcenc) = 4.4.0
+Provides:       bundled(astcenc) = 4.8.0
 Provides:       bundled(basis_universal) = 1.16.4
-Provides:       bundled(clipper2) = 1.2.2
+Provides:       bundled(clipper2) = 1.3.0
 Provides:       bundled(cvtt)
+Provides:       bundled(d3d12ma) = 2.1.0
+Provides:       bundled(directx_headers) = 1.611.1
 Provides:       bundled(doctest) = 2.4.11
 Provides:       bundled(etcpak) = 1.0
 Provides:       bundled(glad) = 2.0.4
 # same version for glslang, spirv-reflect, volk and vulkan needed
-Provides:       bundled(glslang) = sdk-1.3.261.1
+Provides:       bundled(glslang) = sdk-1.3.283.0
 Provides:       bundled(google-droid-fonts)
-Provides:       bundled(icu4c) = 73.2
+Provides:       bundled(icu4c) = 75.1
 Provides:       bundled(ifaddrs-android)
 Provides:       bundled(jpeg-compressor) = 2.00
-Provides:       bundled(libktx) = 4.1.0
-Provides:       bundled(meshoptimizer)
+Provides:       bundled(libbacktrace)
+Provides:       bundled(libktx) = 4.3.2
+Provides:       bundled(meshoptimizer) = 0.20
 Provides:       bundled(mingw-std-threads)
 Provides:       bundled(minimp3)
-Provides:       bundled(msdfgen) = 1.10
-Provides:       bundled(noise)
+Provides:       bundled(msdfgen) = 1.11
+Provides:       bundled(noise) = 1.1.0
 Provides:       bundled(noto-sans-fonts)
 Provides:       bundled(nvapi) = R525
-Provides:       bundled(openxr) = 1.0.31
+Provides:       bundled(openxr) = 1.0.34
 Provides:       bundled(pcg)
 Provides:       bundled(polyclipping)
 Provides:       bundled(polypartition)
 Provides:       bundled(pvrtccompressor)
+Provides:       bundled(qoa)
 Provides:       bundled(smaz)
-Provides:       bundled(spirv-reflect) = sdk-1.3.261.1
+Provides:       bundled(spirv-reflect) = sdk-1.3.283.0
 Provides:       bundled(stb)
-Provides:       bundled(thorvg) = 0.12.9
+Provides:       bundled(thorvg) = 0.14.2
 Provides:       bundled(tinyexr) = 1.0.8
+Provides:       bundled(ufbx) = 0.14.0
 Provides:       bundled(vhacd)
-Provides:       bundled(volk) = sdk-1.3.261.1
-Provides:       bundled(vulkan) = sdk-1.3.261.1
+Provides:       bundled(volk) = sdk-1.3.283.0
+Provides:       bundled(vulkan) = sdk-1.3.283.0
+Provides:       bundled(wayland) = 1.22.0
+Provides:       bundled(wayland-protocols) = 1.33
 Provides:       bundled(yuv2rgb)
 
 # Can be unbundled if packaged
@@ -187,7 +192,7 @@ Provides:       bundled(xatlas)
 # Currently build fails with Distro (unbundled) embree on Tumbleweed although
 # the required version is available.
 # Perhaps because it is build with special flags (static) for blender.
-Provides:       bundled(embree) = 3.13.5
+Provides:       bundled(embree) = 4.3.1
 
 %if 0%{?suse_version} > 1500
 %else
@@ -196,17 +201,17 @@ Provides:       bundled(brotli) = 1.1.0
 # see comments for freetype2, libpng and zlib Factory BuildRequires
 Provides:       bundled(freetype2) = 2.13.2
 Provides:       bundled(graphite) = 1.3.14
-Provides:       bundled(harfbuzz) = 8.2.2
+Provides:       bundled(harfbuzz) = 8.5.0
 Provides:       bundled(libpng) = 1.6.43
-Provides:       bundled(libzstd) = 1.5.5
+Provides:       bundled(libzstd) = 1.5.6
 Provides:       bundled(zlib) = 1.3.1
 %if 0%{?sle_version} < 150200
-Provides:       bundled(mbedtls) = 2.28.8
+Provides:       bundled(mbedtls) = 3.6.0
 %endif
 %if !0%{?is_opensuse}
 # SLES seems not to have miniupnpc and wslay
 Provides:       bundled(libwslay) = 1.1.1
-Provides:       bundled(miniupnpc) = 2.2.6
+Provides:       bundled(miniupnpc) = 2.2.7
 %endif
 %endif
 
@@ -273,6 +278,10 @@ sed -i '1s/#!/##/' misc/dist/shell/godot.bash-completion
 cp misc/dist/shell/godot.bash-completion misc/dist/shell/godot-runner
 sed -i '$s/_complete_godot_bash godot/_complete_godot_bash godot-runner/' misc/dist/shell/godot-runner
 
+# set update check default to disabled
+sed -i 's/EngineUpdateLabel::UpdateMode default_update_mode = EngineUpdateLabel::UpdateMode::NEWEST_UNSTABLE;/EngineUpdateLabel::UpdateMode default_update_mode = EngineUpdateLabel::UpdateMode::DISABLED;/' editor/editor_settings.cpp
+sed -i 's/default_update_mode = EngineUpdateLabel::UpdateMode::NEWEST_STABLE;/default_update_mode = EngineUpdateLabel::UpdateMode::DISABLED;/' editor/editor_settings.cpp
+
 %build
 # Configuring build to use some distribution libraries
 unbundle_libs=('certs' 'libogg' 'libtheora' 'libvorbis' \
@@ -320,12 +329,13 @@ linkflags=""
 %else
 %define ccflags %{optflags} -fPIE
 compiler="CC=gcc-%{compiler_version_leap}  CXX=g++-%{compiler_version_leap}"
-linkflags="LINKFLAGS=-pie"
+linkflags="linkflags=-pie"
 %endif
 
 %define build_args_common %{?_smp_mflags} \\\
         progress=no verbose=yes udev=yes use_lto=1 \\\
-        use_static_cpp=no CCFLAGS='%{ccflags}' $linkflags $compiler \\\
+        use_static_cpp=no ccflags='%{ccflags}' $linkflags $compiler \\\
+        engine_update_check=no steamapi=no \\\
         system_certs_path=%{ca_bundle} $use_sowrap $system_libs
 
 %ifarch aarch64 %arm

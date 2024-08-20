@@ -104,4 +104,15 @@
   * Add standard compliant default identifier</comment>
     <requestid>1171419</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>c55b5f7ba1754854a8f33a747ae0eac5</srcmd5>
+    <version>0.11.0</version>
+    <time>1724103864</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.11.0:
+  * Remove deprecated version and identifier parameters
+  * Change some function names for consistency
+  * Allow extra operands for special colors</comment>
+    <requestid>1194572</requestid>
+  </revision>
 </revisionlist>

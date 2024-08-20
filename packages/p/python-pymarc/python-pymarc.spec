@@ -17,7 +17,7 @@
 
 
 Name:           python-pymarc
-Version:        5.1.2
+Version:        5.2.2
 Release:        0
 Summary:        MARC bibliographic data manipulation module
 License:        BSD-2-Clause
