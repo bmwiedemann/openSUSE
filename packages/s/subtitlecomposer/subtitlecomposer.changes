@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Aug 20 07:14:06 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Add upstream changes:
+  * 0001-Replaced-deprecated-FFmpeg-channel-layout-code.patch
+  * 0002-VideoPlayer-check-AVFMT_NO_BYTE_SEEK-flag-for-seek_b.patch
+  * 0003-VideoPlayer-drop-an-unused-function-argument.patch
+  * 0004-VideoPlayer-stop-using-AVFrame.pkt_pos.patch
+  * 0005-VideoPlayer-remove-usage-of-internal-AVInputFormat.r.patch
+  * 0006-VideoPlayer-stop-injecting-stream-side-data-in-packe.patch
+  * 0007-VideoPlayer-check-return-of-swr_alloc_set_opts2.patch
+  * 0008-StreamProcessor-stop-using-pkt_duration.patch
+  * 0009-StreamProcessor-stop-using-AVFrame-duration.patch
+  * 0010-Require-FFmpeg-5.1.5.patch
+
+-------------------------------------------------------------------
 Tue Jun 11 12:19:54 UTC 2024 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 0.8.1

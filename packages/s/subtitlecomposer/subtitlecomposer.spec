@@ -26,6 +26,17 @@ URL:            https://invent.kde.org/multimedia/subtitlecomposer
 Source0:        https://download.kde.org/stable/subtitlecomposer/%{name}-%{version}.tar.xz
 Source1:        https://download.kde.org/stable/subtitlecomposer/%{name}-%{version}.tar.xz.sig
 Source2:        subtitlecomposer.keyring
+# PATCH-FIX-UPSTREAM refreshment of ffmpeg related code
+Patch0:         0001-Replaced-deprecated-FFmpeg-channel-layout-code.patch
+Patch1:         0002-VideoPlayer-check-AVFMT_NO_BYTE_SEEK-flag-for-seek_b.patch
+Patch2:         0003-VideoPlayer-drop-an-unused-function-argument.patch
+Patch3:         0004-VideoPlayer-stop-using-AVFrame.pkt_pos.patch
+Patch4:         0005-VideoPlayer-remove-usage-of-internal-AVInputFormat.r.patch
+Patch5:         0006-VideoPlayer-stop-injecting-stream-side-data-in-packe.patch
+Patch6:         0007-VideoPlayer-check-return-of-swr_alloc_set_opts2.patch
+Patch7:         0008-StreamProcessor-stop-using-pkt_duration.patch
+Patch8:         0009-StreamProcessor-stop-using-AVFrame-duration.patch
+Patch9:         0010-Require-FFmpeg-5.1.5.patch
 BuildRequires:  cmake >= 3.10
 BuildRequires:  extra-cmake-modules
 BuildRequires:  libQt5Widgets-private-headers-devel
@@ -51,7 +62,7 @@ BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  pkgconfig(icu-i18n)
 BuildRequires:  pkgconfig(icu-uc)
 BuildRequires:  pkgconfig(libavcodec)
-BuildRequires:  pkgconfig(libavformat) >= 57.83.100
+BuildRequires:  pkgconfig(libavformat) >= 59.27.100
 BuildRequires:  pkgconfig(libavutil)
 BuildRequires:  pkgconfig(libswscale)
 BuildRequires:  pkgconfig(openal)
@@ -74,6 +85,7 @@ has speech Recognition using PocketSphinx.
 
 %build
 %cmake_kf5 -d build
+
 %cmake_build
 
 %install

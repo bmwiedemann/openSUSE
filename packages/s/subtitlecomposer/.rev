@@ -144,4 +144,12 @@
     <comment></comment>
     <requestid>1180114</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>77d54880da2fd22e1f5808153a329cff</srcmd5>
+    <version>0.8.1</version>
+    <time>1724163275</time>
+    <user>anag+factory</user>
+    <comment>Add build fixes for newer ffmpeg</comment>
+    <requestid>1194837</requestid>
+  </revision>
 </revisionlist>
