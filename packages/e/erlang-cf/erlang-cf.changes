@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed May 22 12:27:48 UTC 2024 - Simon Lees <sflees@suse.de>
+
+- We use a linked copy of this package in some SUSE products and
+  to do so correctly, we need to ensure a minimum of erlang 26
+  Leap will soon get a versioned copy of erlang26 as well
+
+-------------------------------------------------------------------
 Mon Feb 27 12:17:52 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - switch to disabled services for version setting to comply with

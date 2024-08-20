@@ -26,9 +26,9 @@ License:        BSD-3-Clause
 Group:          Development/Libraries/Other
 URL:            https://github.com/project-fifo/cf
 Source:         %{app_name}-%{version}.tar.xz
-BuildRequires:  erlang
+BuildRequires:  erlang >= 26
 BuildRequires:  erlang-rebar
-Requires:       erlang
+Requires:       erlang >= 26
 
 %description
 A helper library for termial colour printing extending the io:format syntax to add colours.
