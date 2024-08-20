@@ -81,4 +81,13 @@
 - Stop using greedy globs in %files.</comment>
     <requestid>1140763</requestid>
   </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>c518cdda43dfc96a1c853930971152e4</srcmd5>
+    <version>3.2.1</version>
+    <time>1724163260</time>
+    <user>anag+factory</user>
+    <comment>- Add patch migrate-to-setup-method.patch:
+  * Migrate to using setup_method().</comment>
+    <requestid>1194809</requestid>
+  </revision>
 </revisionlist>

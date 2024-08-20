@@ -24,6 +24,8 @@ Summary:        Python implementation of MikroTik RouterOS API
 License:        GPL-2.0-or-later
 URL:            https://github.com/luqasz/librouteros
 Source:         https://github.com/luqasz/librouteros/archive/%{version}.tar.gz#/librouteros-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM gh#luqasz/librouteros#a9349dfdc1d8e7a915567766e0d18b07544323dc
+Patch0:         migrate-to-setup-method.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}

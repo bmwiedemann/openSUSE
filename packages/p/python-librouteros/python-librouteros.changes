@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug 20 04:27:52 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch migrate-to-setup-method.patch:
+  * Migrate to using setup_method().
+
+-------------------------------------------------------------------
 Tue Jan 23 06:26:04 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Skip a broken test.
