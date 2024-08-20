@@ -17,7 +17,7 @@
 #
 
 Name:           lib3270
-Version:        5.4+git20230322
+Version:        5.4+git20240817
 Release:        0
 Summary:        TN3270 Access library
 Group:          Development/Libraries/C and C++

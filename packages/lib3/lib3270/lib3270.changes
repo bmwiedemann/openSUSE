@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Sat Aug 17 16:00:46 UTC 2024 - perry.werneck@gmail.com
+
+- Update to version 5.4+git20240817:
+  * Update codeql.yml
+  * Debugging publisher.
+  * Update README.md
+  * Fixing brew upgrade
+  * Reverting use of inner functions; doesnt work on macos compiler.
+  * Setting state on unexpected exit during the build of ssl_context.
+  * Fixing win32 bundler.
+  * Fix PA key mapping
+  * Updating property methods.
+  * Using nested functions.
+  * Since windows does not have version control in the system a new method was implemented to check if the lib3270 current revision can work with applications to avoid loading of an incomplete or incompatible version of lib3270.
+  * Forcing gettext path on MAC os.
+  * Setting iconv path from brew in macos.
+  * Adding field methods splitted from ctlr.c
+  * Splitting field methods out of ctlr.c, cleaning code.
+  * Implementing search for data files based on bundle *or* program path.
+  * Better libname in macos.
+  * Update README.md
+  * Updating translation.
+  * Disabling FIPS tests Fixing win32 builds
+  * Publishing zip file for msvc builds.
+  * Publish only on 'master' PRs
+  * Publishing mingw package instead of tar.xz
+  * Implementing mingw package.
+  * Searching for datafiles on all win32 possible paths.
+  * Publishing win32 & macos artifacts in the same action.
+  * Updating package control files.
+
+-------------------------------------------------------------------
 Wed Mar 22 18:14:29 UTC 2023 - perry.werneck@gmail.com
 
 - Update to version 5.4+git20230322:
