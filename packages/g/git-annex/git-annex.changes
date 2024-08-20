@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Thu Aug  8 19:27:29 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update git-annex to version 10.20240808.
+  git-annex (10.20240808) upstream; urgency=medium
+
+    * Remove debug output (to stderr) accidentially included in
+      last version.
+    * When getting from a P2P HTTP remote, prompt for credentials when
+      required, instead of failing.
+    * When proxying an upload to a special remote, verify the hash.
+    * Avoid loading cluster log at startup.
+
+   -- Joey Hess <id@joeyh.name>  Thu, 08 Aug 2024 15:26:26 -0400
+
+-------------------------------------------------------------------
+Wed Jul 31 18:05:34 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update git-annex to version 10.20240731.
+  git-annex (10.20240731) upstream; urgency=medium
+
+    * New HTTP API that is equivilant to the P2P protocol.
+    * New p2phttp command to serve the HTTP API.
+    * annex+http and annex+https urls can be configured for
+      remote.name.annexUrl to use the HTTP API to communicate with a server.
+      This supports writable repositories, as well as accessing clusters
+      and proxied remotes over HTTP.
+    * When a http remote has annex.url set to an annex+http url in
+      the git config file on the website, it will be copied into
+      remote.name.annexUrl the first time git-annex uses the remote.
+    * assistant: Fix a race condition that could cause a pointer file to
+      get ingested into the annex.
+    * Avoid potential data loss in unlikely situations where git-annex-shell
+      or git-annex remotedaemon is killed while locking a key to prevent its
+      removal.
+    * When proxying a download from a special remote, avoid unncessary hashing.
+    * When proxying an upload to a special remote, verify the hash.
+    * Propagate --force to git-annex transferrer.
+    * Added a build flag for servant, enabling annex+http urls and
+      git-annex p2phttp.
+    * Added a dependency on the haskell clock library.
+    * Updated stack.yaml to nightly-2024-07-29.
+
+   -- Joey Hess <id@joeyh.name>  Wed, 31 Jul 2024 14:02:21 -0400
+
+-------------------------------------------------------------------
 Tue Jul  2 16:31:40 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update git-annex to version 10.20240701.
