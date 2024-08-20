@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Aug 19 15:45:33 UTC 2024 - Martin Jambor <mjambor@suse.com>
+
+- Add -Wno-error=implicit-function-declaration to optflags to work
+  around a bothched configure result and allow buiding the package
+  with GCC 14. [boo#1229277]
+
+-------------------------------------------------------------------
 Tue Mar  2 18:44:36 UTC 2021 - Avindra Goolcharan <avindra@opensuse.org>
 
 - add fakechroot-glibc-233.patch to fix glibc 2.33 compatibility

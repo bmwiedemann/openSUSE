@@ -1,7 +1,7 @@
 #
 # spec file for package fakechroot
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@ Name:           fakechroot
 Version:        2.20.1
 Release:        0
 Summary:        Preloadable library for a fake chroot environment
-License:        LGPL-2.1-only AND LGPL-2.1-or-later AND GPL-2.0-or-later AND GPL-3.0-or-later
+License:        GPL-2.0-or-later AND LGPL-2.1-only AND LGPL-2.1-or-later AND GPL-3.0-or-later
 Group:          Development/Tools/Building
 URL:            https://github.com/dex4er/fakechroot/wiki
 Source0:        https://github.com/dex4er/%{name}/archive/%{version}/%{name}-%{version}.tar.gz
@@ -45,6 +45,8 @@ can be loaded through the LD_PRELOAD mechanism of the dynamic loader.
 
 %build
 %define _lto_cflags %{nil}
+# Workaround for boo#1229277:
+%global optflags %{optflags} -Wno-error=implicit-function-declaration
 %configure \
   --disable-static
 %make_build
