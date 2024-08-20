@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Sun Aug 18 15:24:29 UTC 2024 - perry.werneck@gmail.com
+
+- Update to version 5.4+git20240219:
+  * Update codeql.yml
+  * Fixing macos library name.
+  * Updating translation.
+  * Creating publish badge.
+  * Less debug messsages.
+  * Showing testpattern on debug startup.
+  * Publish only no PRs.
+  * Fixing win32 package build.
+  * Fixing gtk3 package name.
+  * Using MSYSTEM_CARCH to identify architecture.
+  * Fixing marshals.
+  * Publish only runs on 'master' pushes.
+  * New action to publish macos and windows builds.
+  * Working on macos action.
+  * Closing release 5.4
+  * Creating binary package.
+  * Adding 'changes' on windows package.
+  * Updating mingw package control files.
+  * Updating arch package control file.
+  * Removing old lgtm workflow.
+
+-------------------------------------------------------------------
+Tue Mar 14 03:15:06 UTC 2023 - perry.werneck@gmail.com
+
+- Update to version 5.4:
+  * Update README.md
+  * Adding obs badge.
+  * Scheduling msys2 rebuilds.
+  * Fixing segfault on exit with trace enabled.
+  * msys workflow runs only in master branch pull requests.
+  * Debugging msys workflow.
+
+-------------------------------------------------------------------
 Thu Apr 07 22:44:11 UTC 2022 - perry.werneck@gmail.com
 
 - Update to version 5.4:

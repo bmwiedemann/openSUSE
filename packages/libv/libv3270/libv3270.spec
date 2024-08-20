@@ -1,7 +1,7 @@
 #
 # spec file for package libv3270
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2008 Banco do Brasil S.A.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           libv3270
-Version:        5.4
+Version:        5.4+git20240219
 Release:        0
 Summary:        3270 Virtual Terminal for GTK
 License:        LGPL-3.0-only
@@ -29,9 +29,9 @@ BuildRequires:  autoconf >= 2.61
 BuildRequires:  automake
 BuildRequires:  binutils
 BuildRequires:  coreutils
-BuildRequires:  libtool
 BuildRequires:  gcc-c++
 BuildRequires:  gettext-devel
+BuildRequires:  libtool
 BuildRequires:  m4
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(lib3270) >= 5.4
@@ -51,7 +51,7 @@ For more details, see https://softwarepublico.gov.br/social/pw3270/ .
 %define _product %(pkg-config --variable=product_name lib3270)
 
 %package -n %{name}-%{_libvrs}
-Summary:    TN3270 access library
+Summary:        TN3270 access library
 
 %description -n %{name}-%{_libvrs}
 Originally designed as part of the pw3270 application, this library
@@ -60,25 +60,25 @@ provides a TN3270 virtual terminal widget for GTK 3.
 For more details, see https://softwarepublico.gov.br/social/pw3270/ .
 
 %package config
-Summary:    Configuration files for the 3270 Virtual Terminal library
-BuildArch:  noarch
-Requires:   %{name}-%{_libvrs} = %{version}
-Enhances:   %{_product}
-Conflicts:  libv3270-5_3
+Summary:        Configuration files for the 3270 Virtual Terminal library
+BuildArch:      noarch
+Requires:       %{name}-%{_libvrs} = %{version}
+Enhances:       %{_product}
+Conflicts:      libv3270-5_3
 
 %description config
 Originally designed as part of the pw3270 application, this package provides the configuration files required to %{name}.
 
 %package devel
-Summary:    Header files for the 3270 Virtual Terminal library
-Requires:   %{name}-%{_libvrs} = %{version}
+Summary:        Header files for the 3270 Virtual Terminal library
+Requires:       %{name}-%{_libvrs} = %{version}
 
 %description devel
 Originally designed as part of the pw3270 application, this package provides the development files required to %{name}.
 
 %package -n glade-catalog-v3270
-Summary:    Glade catalog for the TN3270 terminal emulator library
-Requires:   glade
+Summary:        Glade catalog for the TN3270 terminal emulator library
+Requires:       glade
 
 %description -n glade-catalog-v3270
 This package provides a catalog for Glade to allow the use of V3270

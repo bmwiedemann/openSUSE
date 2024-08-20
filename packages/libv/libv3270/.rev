@@ -31,4 +31,12 @@
     <comment>- Update to version 5.4, config package is now conflicting with version 5.3</comment>
     <requestid>969426</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>ddc1a0b9b61c8689ba223fa3aed204cb</srcmd5>
+    <version>5.4+git20240219</version>
+    <time>1724163254</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1194800</requestid>
+  </revision>
 </revisionlist>
