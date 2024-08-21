@@ -76,10 +76,13 @@ BuildRequires:  pkgconfig(xi)
 BuildRequires:  pkgconfig(xtst)
 BuildRequires:  pkgconfig(zlib) >= 1.2.0
 BuildRequires:  readline-devel
-%if 0%{?suse_version} > 1600
+%if (0%{?suse_version} > 1600) || (0%{?sle_version} >= 150700 && 0%{?is_opensuse})
 BuildRequires:  pkgconfig(botan-3)
 %else
 BuildRequires:  pkgconfig(botan-2) >= 2.11.0
+%endif
+%if 0%{?sle_version} >= 150700 && 0%{?is_opensuse}
+BuildRequires:  gcc12-c++
 %endif
 
 %if %{with keepassxc_cr_recovery}
@@ -123,6 +126,10 @@ popd
 %endif
 
 %build
+%if 0%{?sle_version} >= 150700 && 0%{?is_opensuse}
+export CC=gcc-12
+export CXX=g++-12
+%endif
 %cmake \
   -DKEEPASSXC_BUILD_TYPE="Release" \
   -DWITH_XC_UPDATECHECK=OFF        \
