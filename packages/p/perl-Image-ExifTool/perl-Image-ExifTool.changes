@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Aug 21 06:01:44 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 12.93:
+  * Added a new Nikon LensID
+  * Added a couple of new OpenEXR Compression types
+  * Added a couple of new QuickTime Keys tags
+  * Decode timed metadata from E-ACE B44 DashCam videos
+  * Make "Unrecognized" Samsung Meta warnings minor
+  * Fixed bug in -listg6 option which resulted in "uninitialized value" warnings
+  * Fixed decoding of Func1Button and Func2Button for the Nikon Z6/Z7
+  * Fixed bug reading JUMB metadata from JXL images
+
+-------------------------------------------------------------------
 Thu Jul 25 05:27:47 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 12.92:
