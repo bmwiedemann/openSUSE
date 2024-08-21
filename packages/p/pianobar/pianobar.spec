@@ -1,7 +1,7 @@
 #
 # spec file for package pianobar
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2016 Packman team: http://packman.links2linux.org/
 #
 # All modifications and additions to the file contributed by third parties
@@ -30,10 +30,17 @@ BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(ao)
 BuildRequires:  pkgconfig(gnutls)
 BuildRequires:  pkgconfig(json)
+%if 0%{?suse_version} > 1500
+BuildRequires:  pkgconfig(libavcodec) = 60.31.102
+BuildRequires:  pkgconfig(libavfilter) = 9.12.100
+BuildRequires:  pkgconfig(libavformat) = 60.16.100
+BuildRequires:  pkgconfig(libavutil) = 58.29.100
+%else
 BuildRequires:  pkgconfig(libavcodec) >= 58.7.100
 BuildRequires:  pkgconfig(libavfilter) >= 7.0.101
 BuildRequires:  pkgconfig(libavformat) >= 58.0.102
 BuildRequires:  pkgconfig(libavutil) >= 56.6.100
+%endif
 BuildRequires:  pkgconfig(libcurl)
 
 %description
