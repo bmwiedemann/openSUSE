@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Aug 21 06:33:12 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.80.0:
+  * chore(deps): bump github/codeql-action from 3.26.2 to 3.26.3
+    (#2070)
+  * chore(deps): update Syft to v1.11.1 (#2071)
+  * chore: add grype version to db network operations (#2062)
+  * fix: do not panic when given empty string arg (#2064)
+  * chore(deps): bump github.com/charmbracelet/bubbletea (#2067)
+  * fix: correctly close the db file in v4/v5 stores (#2066)
+  * Add "Alpine Linux" to IDMapping; handle no CPEs error in
+    findApkPackage. (#2040)
+  * chore(deps): update tools to latest versions (#2055)
+  * chore(deps): bump github.com/docker/docker (#2052)
+  * fix: fail when grype cant check for db update (#1247)
+  * chore(deps): bump anchore/sbom-action from 0.17.0 to 0.17.1
+    (#2053)
+  * chore(deps): bump github.com/hashicorp/go-getter from 1.7.5 to
+    1.7.6 (#2056)
+  * chore(deps): bump github/codeql-action from 3.26.0 to 3.26.2
+    (#2060)
+  * feat: add db search subcommand (#2031)
+
+-------------------------------------------------------------------
 Mon Aug 12 18:29:35 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.79.6:
