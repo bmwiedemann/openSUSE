@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug 21 12:50:20 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Rename devel package to just %name-devel, which is what most
+  openSUSE's packages do.
+
+-------------------------------------------------------------------
 Thu Jan  8 09:32:15 UTC 2015 - jengelh@inai.de
 
 - Improve package summary and description. Drop --with-pic which

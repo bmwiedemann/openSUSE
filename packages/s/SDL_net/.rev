@@ -171,4 +171,13 @@
     <comment></comment>
     <requestid>280334</requestid>
   </revision>
+  <revision rev="25" vrev="8">
+    <srcmd5>acb637a4fb294f094108c8dd38d4761d</srcmd5>
+    <version>1.2.8</version>
+    <time>1724275649</time>
+    <user>anag+factory</user>
+    <comment>- Rename devel package to just %name-devel, which is what most
+  openSUSE's packages do.</comment>
+    <requestid>1195119</requestid>
+  </revision>
 </revisionlist>
