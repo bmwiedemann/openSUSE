@@ -16,7 +16,9 @@
 #
 
 
-%global _lto_cflags %{?_lto_cflags} -ffat-lto-objects
+# Disable LTO, fails to build with GCC 14
+#%%global _lto_cflags %%{?_lto_cflags} -ffat-lto-objects
+%define _lto_cflags %{nil}
 
 Name:           Fragments
 Version:        3.0.1

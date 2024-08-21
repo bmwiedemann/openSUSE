@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug 19 19:36:17 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Disable LTO, fails to build with GCC 14.
+- Drop obsolete audit from _service, it is automatic now.
+
+-------------------------------------------------------------------
 Thu Jun 13 16:57:24 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Remove obsoleted cargo_config -- Now part of vendor source
