@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Aug 21 13:25:18 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 4.2.4
+  * Fix the identifier to download licenses in JSON format #16584
+    (@joaopalmeiro)
+  * Update JupyterLab wordmark color #16567 (@joaopalmeiro)
+  * Add customisation options to prevent inline completer resizing
+    aggressively #16507 (@krassowski)
+  * Fix license table CSS selector to apply the selected row styles
+    #16547 (@joaopalmeiro)
+
+-------------------------------------------------------------------
 Fri Jul 12 14:42:33 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 4.2.3

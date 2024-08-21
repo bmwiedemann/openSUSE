@@ -16,9 +16,9 @@
 #
 
 
-%define distversion 4.2.3
+%define distversion 4.2.4
 Name:           python-jupyterlab
-Version:        4.2.3
+Version:        4.2.4
 Release:        0
 Summary:        Environment for interactive and reproducible computing
 License:        BSD-3-Clause

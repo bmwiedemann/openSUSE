@@ -791,4 +791,19 @@
     <comment></comment>
     <requestid>1187201</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>ff3d9e655bc7009bc409da87f4b0ee81</srcmd5>
+    <version>4.2.4</version>
+    <time>1724275644</time>
+    <user>anag+factory</user>
+    <comment>- Update to 4.2.4
+  * Fix the identifier to download licenses in JSON format #16584
+    (@joaopalmeiro)
+  * Update JupyterLab wordmark color #16567 (@joaopalmeiro)
+  * Add customisation options to prevent inline completer resizing
+    aggressively #16507 (@krassowski)
+  * Fix license table CSS selector to apply the selected row styles
+    #16547 (@joaopalmeiro)</comment>
+    <requestid>1195124</requestid>
+  </revision>
 </revisionlist>
