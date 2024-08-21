@@ -452,4 +452,13 @@
   * Maintenance and upkeep improvements</comment>
     <requestid>1163580</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>879ef6f68bf66f9e3bbf9c4835e1f2b1</srcmd5>
+    <version>7.16.4</version>
+    <time>1724275646</time>
+    <user>anag+factory</user>
+    <comment>- Update to 7.16.4
+  * rst exporter: Re-enable coalescing streams #2142 (@mgeier)</comment>
+    <requestid>1195127</requestid>
+  </revision>
 </revisionlist>

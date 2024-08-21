@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug 21 13:32:58 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 7.16.4
+  * rst exporter: Re-enable coalescing streams #2142 (@mgeier)
+
+-------------------------------------------------------------------
 Fri Mar 29 18:48:56 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 7.16.3
