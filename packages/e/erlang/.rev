@@ -1088,4 +1088,12 @@ erlang 17.0 is ready for factory, now. See changes in .changes</comment>
     <comment></comment>
     <requestid>1168402</requestid>
   </revision>
+  <revision rev="135" vrev="1">
+    <srcmd5>da476a3f921d0bc6e764909f51588df7</srcmd5>
+    <version>26.2.5.2</version>
+    <time>1724275637</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1195118</requestid>
+  </revision>
 </revisionlist>

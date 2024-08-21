@@ -1,4 +1,93 @@
 -------------------------------------------------------------------
+Sat Aug 03 07:23:34 UTC 2024 - matwey.kornilov@gmail.com
+
+- Changes for 26.2.5.2:
+  * erts: When no time warp mode was enabled, a smaller Erlang
+    monotonic time could be read than a previously read time, i.e.,
+    breaking the monotonic property. The runtime system will abort
+    when detecting an issue like this since OTP 24.3.4.17 and OTP
+    25.0. Up until OTP 25 no time warp mode is the default. As of
+    OTP 26 multi time warp mode is the default.
+  * erts: A scheduler thread could get stuck when deleting a memory
+    allocator carrier when adjacent carriers were deleted and/or
+    inserted simultaneously by other schedulers. This in turn could
+    cause the other schedulers to get stuck as well.
+  * crypto: Add warning in documentation to avoid crypto:start/0 as
+    it does not work for FIPS mode. Use application:start(crypto)
+    instead.
+  * stdlib: Fixed a bug that caused the shell completion to crash
+    when keyword and tuple appeared on the same line.
+  * ssl: When the default value for signature_algs is used, default
+    the signature_algs_cert to the default value + rsa_pkcs1_sha1
+    to allow this algorithms for certificates but not for the TLS
+    protocol. This is for better interoperability. If
+    signature_algs is set explicitly signature_algs_cert must also
+    be set explicitly if they should be different.
+- Changes for 26.2.5.1:
+  * erts: A call to socket:[recv|recvfrom|recvmsg]/* with Timeout =
+    0 on Windows could cause a (case clause) crash if data is
+    immediately available.
+  * erts: When a port command crashed in the inet driver during
+    gen_tcp:send/2, a monitor 'DOWN' message could be left
+    lingering in the caller's mailbox. This has now been fixed.
+  * erts: 'DOWN' messages originating from a monitored port,
+    contained the atom process instead of the atom port as the
+    third element when the exit reason was not an immediate term.
+  * public_key: Fix bug in dnsName constraint check, could cause
+    valid cert to be considered bad during path validation.
+  * diameter: Pick peer can now also handle request of type
+    #diameter_packet{}.
+  * kernel: A call to socket:[recv|recvfrom|recvmsg]/* with Timeout
+    = 0 on Windows could cause a (case clause) crash if data is
+    immediately available.
+  * kernel: Open a disk_log file and combining head_func with
+    rotate options did not work.
+  * ssh: With this change, ssh client will automatically adjust
+    transfer window size for commands executed remotely over SSH.
+  * ssh: With this change, race condition between connection
+    closing and automatic window adjustment is fixed.
+  * ssl: Check for TLS-1.3 support should check minimum
+    requirements.
+  * ssl: If both TLS-1.3 and TLS-1.2 is supported and TLS-1.2
+    negotiated convert TLS-1.3 ECDSA schemes to TLS-1.2 hash and
+    signature pairs for increased interoperability.
+  * ssl: TLS-1.3 negotiation now uses SNI based options correctly
+    instead of ignoring them.
+  * ssl: Make it easier to distinguish between a invalid signature
+    and unsupported signature.
+  * ssl: Enhance ALERT logs to help understand what causes the
+    alert.
+- Changes for 26.2.5:
+  * erts: gen_sctp:send/3,4 now waits for the send to complete
+    instead of returning an OS result such as {error, ewouldblock}.
+  * erts: ETS functions did not properly handle keys containing
+    maps, sometimes matching too many or too few objects.
+  * erts: Fix CPU quota determination for cgroups. The bug was
+    introduced through OTP-18999.
+  * erts: Added a warning to open_port/2 regarding the BadBatBut
+    attack affecting Windows.
+  * dialyzer: Fixed an issue with bitstring type inference on
+    segments following UTF-8/16/32 segments.
+  * kernel: Fix the shell Job Control Mode to not crash when typing
+    TAB or CTRL+R.
+  * kernel: Fix calls to blocking application APIs to throw an
+    exception with reason terminating if called when the system is
+    terminating. This is done in order to avoid deadlocks during
+    shutdown or restart.
+  * stdlib: Fix shell expansion of -type a() :: $a. in the erlang
+    shell.
+  * stdlib: Fix the shell Job Control Mode to not crash when typing
+    TAB or CTRL+R.
+  * ssl: Fix certificate authorities check so that CA closest to
+    peer is not lost. It could manifest itself in a failed
+    connection as the client failed to realize it had a valid
+    certificate chain to send to the server.
+  * ssl: ssl:signature_algs/2 did not list some legacy algorithm
+    schemes correctly when listing all algorithms available.
+  * mnesia: Mnesia could crash during startup if del_table_copy/2
+    and add_table_copy/3 was invoked when the table was loading.
+
+-------------------------------------------------------------------
 Tue Apr 16 06:33:05 UTC 2024 - Simon Lees <sflees@suse.de>
 
 - Changes for 26.2.4
