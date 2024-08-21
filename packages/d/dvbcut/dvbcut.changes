@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Aug 21 05:22:04 UTC 2024 - Luigi Baldoni <aloisio@gmx.com>
+
+- Build against ffmpeg 6 on Factory
+
+-------------------------------------------------------------------
 Fri Feb 16 19:33:21 UTC 2024 - Luigi Baldoni <aloisio@gmx.com>
 
 - Use cleaner package version detection method

@@ -46,10 +46,17 @@ BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(Qt5Xml)
 BuildRequires:  pkgconfig(ao)
 BuildRequires:  pkgconfig(liba52)
+%if 0%{?suse_version} > 1500
+BuildRequires:  pkgconfig(libavcodec) = 60.31.102
+BuildRequires:  pkgconfig(libavformat) = 60.16.100
+BuildRequires:  pkgconfig(libavutil) = 58.29.100
+BuildRequires:  pkgconfig(libswscale) = 7.5.100
+%else
 BuildRequires:  pkgconfig(libavcodec) >= 58.7.100
 BuildRequires:  pkgconfig(libavformat) >= 58.0.102
 BuildRequires:  pkgconfig(libavutil) >= 56.6.100
 BuildRequires:  pkgconfig(libswscale) >= 5.0.101
+%endif
 BuildRequires:  pkgconfig(mad)
 
 %description
