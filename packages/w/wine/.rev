@@ -5268,4 +5268,12 @@ If you have any suggestions for improvement, please let me know! (forwarded requ
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1194722</requestid>
   </revision>
+  <revision rev="447" vrev="2">
+    <srcmd5>6b24dacb357ee64078c3823986ca2b32</srcmd5>
+    <version>9.15</version>
+    <time>1724275658</time>
+    <user>anag+factory</user>
+    <comment>- 6256.patch: fixes wayland backend (forwarded request 1195038 from llyyr)</comment>
+    <requestid>1195152</requestid>
+  </revision>
 </revisionlist>

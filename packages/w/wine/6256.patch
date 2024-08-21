@@ -1,0 +1,34 @@
+From 720648159bb3f7cabb4be206d15555eb6950452a Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?R=C3=A9mi=20Bernon?= <rbernon@codeweavers.com>
+Date: Mon, 12 Aug 2024 11:19:36 +0200
+Subject: [PATCH] win32u: Don't request a host window surface for child
+ windows.
+
+Fixes: b9879d5adc1cd98a6ceb7d087c4533fdd487bedb
+---
+ dlls/win32u/window.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/dlls/win32u/window.c b/dlls/win32u/window.c
+index 8e1ec0370ed..ce30b8b870e 100644
+--- a/dlls/win32u/window.c
++++ b/dlls/win32u/window.c
+@@ -1844,6 +1844,7 @@ static struct window_surface *create_window_surface( HWND hwnd, UINT swp_flags,
+                                                      RECT *visible_rect, RECT *surface_rect )
+ {
+     BOOL shaped, needs_surface, create_opaque, is_layered;
++    HWND parent = NtUserGetAncestor( hwnd, GA_PARENT );
+     struct window_surface *new_surface;
+     RECT dummy;
+     HRGN shape;
+@@ -1853,6 +1854,7 @@ static struct window_surface *create_window_surface( HWND hwnd, UINT swp_flags,
+ 
+     *visible_rect = *window_rect;
+     if (!user_driver->pWindowPosChanging( hwnd, swp_flags, shaped, window_rect, client_rect, visible_rect )) needs_surface = FALSE;
++    else if (parent && parent != NtUserGetDesktopWindow()) needs_surface = FALSE;
+     else if (swp_flags & SWP_HIDEWINDOW) needs_surface = FALSE;
+     else if (swp_flags & SWP_SHOWWINDOW) needs_surface = TRUE;
+     else needs_surface = !!(NtUserGetWindowLongW( hwnd, GWL_STYLE ) & WS_VISIBLE);
+-- 
+GitLab
+

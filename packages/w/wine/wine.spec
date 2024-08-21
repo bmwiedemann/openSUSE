@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package wine
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -177,6 +177,7 @@ Source8:        wine-rpmlintrc
 # SUSE specific patches
 # - currently none, but add them here
 #Patch0:         0001-mf-tests-Remove-static-specifier-on-variables-refere.patch
+Patch0:         https://gitlab.winehq.org/wine/wine/-/merge_requests/6256.patch
 Recommends:     wine-gecko >= 2.47.4
 Conflicts:      wine-gecko < 2.47.4
 Recommends:     wine-mono >= 9.2.0
