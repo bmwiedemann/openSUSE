@@ -1,7 +1,7 @@
 #
 # spec file for package caribou
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -164,6 +164,7 @@ of accessing a computer is a switch device.
 %build
 # Needed for patch2
 autoreconf -fi
+export CFLAGS="$CFLAGS -Wno-error=incompatible-pointer-types"
 %configure \
     --disable-static     \
     --enable-gtk3-module \

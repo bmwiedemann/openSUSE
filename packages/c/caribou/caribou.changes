@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug 20 18:51:12 UTC 2024 - Michael Gorse <mgorse@suse.com>
+
+- Pass -Wno-error=incompatible-pointer-types. Suppresses error on
+  gcc 14.
+
+-------------------------------------------------------------------
 Mon Jan 17 12:26:44 UTC 2022 - Yifan Jiang <yfjiang@suse.com>
 
 - Add python-rpm-macros BuildRequires in case some build
