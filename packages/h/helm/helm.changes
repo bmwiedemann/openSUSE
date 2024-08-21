@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Aug 14 16:54:27 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 3.15.4:
+  * Bump the k8s-io group across 1 directory with 7 updates
+  * Bump github.com/docker/docker
+
+-------------------------------------------------------------------
 Thu Jul 11 05:39:32 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 3.15.3:
