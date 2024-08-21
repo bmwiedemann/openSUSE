@@ -1,7 +1,7 @@
 #
 # spec file for package apitrace
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,10 +30,10 @@ BuildRequires:  cmake >= 2.8.11
 BuildRequires:  gcc-c++ >= 4.9
 BuildRequires:  libdwarf-devel
 BuildRequires:  pkgconfig
+BuildRequires:  (pkgconfig(libprocps) or pkgconfig(libproc2))
 BuildRequires:  pkgconfig(Qt5Network)
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(libpng)
-BuildRequires:  pkgconfig(libprocps)
 BuildRequires:  pkgconfig(python3)
 BuildRequires:  pkgconfig(snappy)
 BuildRequires:  pkgconfig(waffle-1)

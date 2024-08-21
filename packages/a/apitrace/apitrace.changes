@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Aug 19 11:13:05 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire pkgconfig(libprocps) or pkgconfig(libproc2).
+
+-------------------------------------------------------------------
 Sat Sep 25 22:29:02 UTC 2021 - Adam Mizerski <adam@mizerski.pl>
 
 - Added patch apitrace-fix-glibc-2.34.patch
