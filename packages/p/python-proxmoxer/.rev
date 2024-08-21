@@ -7,4 +7,18 @@
     <comment>Provides Proxmox API (https://www.proxmox.com virtualization platform).</comment>
     <requestid>1067198</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>5ea0b642a4dc3a171da1d6e614d5312b</srcmd5>
+    <version>2.1.0</version>
+    <time>1724275611</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.1.0:
+  * Bump version 2.1.0 and changelog
+  * Remove unneeded section in test mock
+  * Fix improper spliting of non-exec QEMU commands
+  * Remove support for py3.7; Update pre-commit deps
+  * Add 3.12 to CI matrix
+  * Update devcontainer to modern unified schema</comment>
+    <requestid>1195067</requestid>
+  </revision>
 </revisionlist>

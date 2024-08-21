@@ -1,7 +1,7 @@
 #
 # spec file for package python-proxmoxer
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,17 +15,19 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           python-proxmoxer
-Version:        2.0.1
+Version:        2.1.0
 Release:        0
 Summary:        Python Wrapper for the Proxmox 2x API (HTTP and SSH)
 License:        MIT
 URL:            https://github.com/proxmoxer/proxmoxer/
 # the Pypi tarball does not contain the tests directory
 Source:         proxmoxer-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 
 # Tests
 BuildRequires:  %{python_module paramiko}
@@ -54,7 +56,9 @@ Python Wrapper for the Proxmox 2.x API (HTTP and SSH)
 %check
 # remove tests that need the ancient openssh-wrapper module
 rm -f ./tests/test_openssh.py
-%pytest -k 'not test_timeout' --cov ./tests/
+IGNORED_CHECKS="test_timeout"
+IGNORED_CHECKS="${IGNORED_CHECKS} or test_repr_openssh"
+%pytest -k "not (${IGNORED_CHECKS})" --cov ./tests/
 
 %files %{python_files}
 %doc CHANGELOG.md README.rst

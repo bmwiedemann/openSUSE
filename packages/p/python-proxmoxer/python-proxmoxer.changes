@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Aug 17 14:33:26 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.1.0:
+  * Bump version 2.1.0 and changelog
+  * Remove unneeded section in test mock
+  * Fix improper spliting of non-exec QEMU commands
+  * Remove support for py3.7; Update pre-commit deps
+  * Add 3.12 to CI matrix
+  * Update devcontainer to modern unified schema
+
+-------------------------------------------------------------------
 Wed Feb 22 12:55:53 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - refactor %check section to not use the tests that require the
