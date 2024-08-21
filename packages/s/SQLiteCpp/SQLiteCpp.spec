@@ -18,7 +18,7 @@
 
 %define shlib libsqlitecpp0
 Name:           SQLiteCpp
-Version:        3.3.1
+Version:        3.3.2
 Release:        0
 Summary:        A C++ SQLite3 wrapper
 License:        MIT
@@ -58,7 +58,6 @@ sed -iE "s/\r$//" README.md
   -DSQLITE_ENABLE_COLUMN_METADATA=true \
   -DSQLITECPP_BUILD_TESTS=true \
   -DSQLITECPP_BUILD_EXAMPLES=true \
-  -Dcpp_std=c++14 \
 	%{nil}
 %meson_build
 

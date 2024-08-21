@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Aug 17 13:59:46 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.3.2:
+  * Explicitly =delete; Statement::bindNoCopy(..., std::string&&)
+    (gh#SRombauts/SQLiteCpp#469).
+  * Update SQLite from 3.43.0 to 3.45.3 (2024-04-15)
+    (gh#SRombauts/SQLiteCpp#461).
+  * Update SQLite from 3.45.3 to 3.46.1 (2024-08-13)
+    (gh#SRombauts/SQLiteCpp#477).
+  * Update SQLiteCpp meson wrap file to latest release 3.3.1
+    (gh#SRombauts/SQLiteCpp#447).
+  * [Meson] update meson dependencies
+    (gh#SRombauts/SQLiteCpp#448).
+  * Update meson dependencies [Meson only]
+    (gh#SRombauts/SQLiteCpp#475).
+
+-------------------------------------------------------------------
 Thu Apr 25 10:18:18 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Use c++14 standard to build, to avoid build failures against
