@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Aug 20 15:34:47 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add ucblogo-gcc14.patch: Fix compilation against GCC 14;
+  upstream commits combined into one patch
+  (gh#jrincayc/ucblogo-code#176).
+- Update ucblogo-wxString-to-c_str.patch to fix from upstream
+  commit.
+
+-------------------------------------------------------------------
 Sat Apr  1 09:25:04 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 6.2.4:
