@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Aug 21 06:33:40 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.5.5:
+  * Chart bump 0.5.5 (#352)
+  * Tests: add tests for multi functionality (#351)
+  * fix: Multi output grouping by namespace (#349)
+  * chore(deps): bump github.com/prometheus/client_golang (#345)
+  * chore(deps): bump k8s.io/apiextensions-apiserver from 0.30.3 to
+    0.31.0 (#346)
+  * Docs: update helm installation (#343)
+
+-------------------------------------------------------------------
 Tue Aug 06 05:53:28 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.5.4:
