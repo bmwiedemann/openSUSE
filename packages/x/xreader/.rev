@@ -498,4 +498,17 @@
   * pdf backend: Ignore FullScreen PageMode catalog entry (#633)</comment>
     <requestid>1179197</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>e9be6c1243f640ea564a389c79458653</srcmd5>
+    <version>4.2.2</version>
+    <time>1724275627</time>
+    <user>anag+factory</user>
+    <comment>- update to 4.2.2:
+  * Update translations
+- update to 4.2.1:
+  * Update translations
+- be more verbose with the buildflags
+- remove older support of Leap releases</comment>
+    <requestid>1195104</requestid>
+  </revision>
 </revisionlist>

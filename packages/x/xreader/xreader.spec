@@ -16,21 +16,19 @@
 #
 
 
-%define sover   3
-%define typelib1 typelib-1_0-XreaderDocument-1_5
-%define typelib2 typelib-1_0-XreaderView-1_5
+%define         sover   3
+%define         typelib1 typelib-1_0-XreaderDocument-1_5
+%define         typelib2 typelib-1_0-XreaderView-1_5
 Name:           xreader
-Version:        4.2.0
+Version:        4.2.2
 Release:        0
 Summary:        Document viewer for documents like PDF/PostScript
 License:        GPL-2.0-only AND LGPL-2.0-only
-Group:          Productivity/Office/Other
 URL:            https://github.com/linuxmint/xreader
-Source:         https://github.com/linuxmint/xreader/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source:         %{url}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  intltool
-BuildRequires:  libtiff-devel >= 3.6
 BuildRequires:  mathjax
 BuildRequires:  meson
 BuildRequires:  pkgconfig
@@ -43,9 +41,11 @@ BuildRequires:  pkgconfig(glib-2.0) >= 2.36.0
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 0.6
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.14.0
 BuildRequires:  pkgconfig(gtk+-unix-print-3.0)
+BuildRequires:  pkgconfig(gtk-doc)
 BuildRequires:  pkgconfig(libgxps) >= 0.2.0
 BuildRequires:  pkgconfig(libsecret-1) >= 0.5
 BuildRequires:  pkgconfig(libspectre) >= 0.2.0
+BuildRequires:  pkgconfig(libtiff-4) >= 3.6
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.5.0
 BuildRequires:  pkgconfig(poppler-glib) >= 0.22.0
 BuildRequires:  pkgconfig(sm) >= 1.0.0
@@ -54,14 +54,12 @@ BuildRequires:  pkgconfig(xapp) >= 1.1.0
 BuildRequires:  pkgconfig(zlib)
 # Only require pdf backend subpackage to make application more lightweight for Live media
 Requires:       %{name}-plugin-pdfdocument
-Recommends:     %{name}-lang
 Provides:       %{name}-backends = %{version}
 Provides:       caja-extension-%{name} = %{version}
 Provides:       nemo-extension-%{name} = %{version}
 Obsoletes:      %{name}-backends < %{version}
 Obsoletes:      caja-extension-%{name} < %{version}
 Obsoletes:      nemo-extension-%{name} < %{version}
-%glib2_gsettings_schema_requires
 
 %description
 Xreader is a document viewer capable of displaying multiple and
@@ -71,7 +69,6 @@ single page document formats like PDF and Postscript.
 
 %package -n libxreaderdocument%{sover}
 Summary:        X-Apps Document Reader -- System Library
-Group:          System/Libraries
 
 %description -n libxreaderdocument%{sover}
 Xreader is a document viewer capable of displaying multiple and
@@ -79,7 +76,6 @@ single page document formats like PDF and Postscript.
 
 %package -n libxreaderview%{sover}
 Summary:        X-Apps Document Reader -- System Library
-Group:          System/Libraries
 
 %description -n libxreaderview%{sover}
 Xreader is a document viewer capable of displaying multiple and
@@ -88,7 +84,6 @@ single page document formats like PDF and Postscript.
 %package -n %{typelib1}
 Summary:        XReaderDocument -- Introspection Bindings
 # typelib-1_0-XreaderDocument-1_5_0 was last used in openSUSE Leap 42.3.
-Group:          System/Libraries
 Provides:       typelib-1_0-XreaderDocument-1_5_0 = %{version}
 Obsoletes:      typelib-1_0-XreaderDocument-1_5_0 < %{version}
 
@@ -99,7 +94,6 @@ single page document formats like PDF and Postscript.
 %package -n %{typelib2}
 Summary:        XReaderView -- Introspection Bindings
 # typelib-1_0-XreaderView-1_5_0 was last used in openSUSE Leap 42.3.
-Group:          System/Libraries
 Provides:       typelib-1_0-XreaderView-1_5_0 = %{version}
 Obsoletes:      typelib-1_0-XreaderView-1_5_0 < %{version}
 
@@ -109,7 +103,6 @@ single page document formats like PDF and Postscript.
 
 %package devel
 Summary:        X-Apps Document Reader development files
-Group:          Development/Libraries/C and C++
 Requires:       %{typelib1} = %{version}
 Requires:       %{typelib2} = %{version}
 
@@ -119,106 +112,99 @@ single page document formats like PDF and Postscript.
 
 %package -n xreader-plugin-epubdocument
 Summary:        EPUB document support for Xreader
-Group:          Productivity/Office/Other
 Requires:       %{name}
-Supplements:    %{name}
 
 %description -n xreader-plugin-epubdocument
 A plugin for Xreader to read EPUB documents.
 
 %package -n xreader-plugin-pdfdocument
 Summary:        PDF document support for Xreader
-Group:          Productivity/Office/Other
 Requires:       %{name}
-Supplements:    %{name}
 
 %description -n xreader-plugin-pdfdocument
 A plugin for Xreader to read PDF documents.
 
 %package -n xreader-plugin-psdocument
 Summary:        PostScript document support for Xreader
-Group:          Productivity/Office/Other
 Requires:       %{name}
-Supplements:    %{name}
 
 %description -n xreader-plugin-psdocument
 A plugin for Xreader to read PostScript documents.
 
 %package -n xreader-plugin-tiffdocument
 Summary:        TIFF document support for Xreader
-Group:          Productivity/Office/Other
 Requires:       %{name}
-Supplements:    %{name}
 
 %description -n xreader-plugin-tiffdocument
 A plugin for Xreader to read TIFF documents.
 
 %package -n xreader-plugin-xpsdocument
 Summary:        XPS document support for Xreader
-Group:          Productivity/Office/Other
 Requires:       %{name}
-Supplements:    %{name}
 
 %description -n xreader-plugin-xpsdocument
 A plugin for Xreader to read XPS documents.
 
 %package -n xreader-plugin-comicsdocument
 Summary:        Comics document support for Xreader
-Group:          Productivity/Office/Other
 Requires:       %{name}
-Supplements:    %{name}
 
 %description -n xreader-plugin-comicsdocument
 A plugin for Xreader to read Comics documents.
 
 %package -n xreader-plugin-djvudocument
 Summary:        DjVu document support for Xreader
-Group:          Productivity/Office/Other
 Requires:       %{name}
-Supplements:    %{name}
 
 %description -n xreader-plugin-djvudocument
 A plugin for Xreader to read DjVu documents.
 
 %package -n xreader-plugin-dvidocument
 Summary:        DVI document support for Xreader
-Group:          Productivity/Office/Other
 Requires:       %{name}
-Supplements:    %{name}
 
 %description -n xreader-plugin-dvidocument
 A plugin for Xreader to read DVI documents.
 
 %package -n xreader-plugin-pixbufdocument
 Summary:        Pixbuf document support for Xreader
-Group:          Productivity/Office/Other
 Requires:       %{name}
-Supplements:    %{name}
 
 %description -n xreader-plugin-pixbufdocument
 A plugin for Xreader to read Pixbuf documents.
 
 %prep
-%autosetup -p1 -n %{name}-%{version}
+%autosetup
 
 %build
 %meson \
--Dintrospection=true \
--Ddjvu=true \
--Ddvi=true \
--Dt1lib=true \
--Dpixbuf=true \
--Dcomics=true \
--Dhelp_files=true
-
+  -Dcomics=true \
+  -Ddjvu=true \
+  -Ddvi=true \
+  -Dt1lib=true \
+  -Depub=true \
+  -Dpdf=true \
+  -Dpixbuf=true \
+  -Dps=true \
+  -Dtiff=true \
+  -Dxps=true \
+  -Dgtk_unix_print=true \
+  -Dkeyring=true \
+  -Dpreviewer=true \
+  -Dthumbnailer=true \
+  -Ddocs=false \
+  -Dhelp_files=true \
+  -Dintrospection=true \
+  -Denable_dbus=true \
+  -Ddeprecated_warnings=true \
+  -Denable_debug=false
 %meson_build
 
 %install
 %meson_install
-%find_lang %{name} %{?no_lang_C}
-find %{buildroot} -type f -name "*.la" -delete -print
-%suse_update_desktop_file -r %{name} GTK Office Viewer
-%fdupes %{buildroot}%{_datadir}/
+%find_lang %{name}
+%suse_update_desktop_file %{name}
+%fdupes %{buildroot}
 
 %post -n libxreaderview%{sover} -p /sbin/ldconfig
 
@@ -227,20 +213,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %post -n libxreaderdocument%{sover} -p /sbin/ldconfig
 
 %postun -n libxreaderdocument%{sover} -p /sbin/ldconfig
-
-%if 0%{?suse_version} < 1500
-%post
-%icon_theme_cache_post
-%desktop_database_post
-%mime_database_post
-%glib2_gsettings_schema_post
-
-%postun
-%icon_theme_cache_post
-%desktop_database_postun
-%mime_database_postun
-%glib2_gsettings_schema_post
-%endif
 
 %files
 %license COPYING
@@ -260,7 +232,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %dir %{_datadir}/metainfo/
 %{_datadir}/metainfo/xreader.appdata.xml
 %{_datadir}/icons/hicolor/*/*/*
-%{_datadir}/help/C/%{name}
 %{_mandir}/man?/*.?%{?ext_man}
 # backends directory structure - backends go to their own packages
 %dir %{_libdir}/%{name}/%{sover}/backends
