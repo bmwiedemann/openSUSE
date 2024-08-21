@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Aug 21 09:16:29 UTC 2024 - okurz@suse.com
+
+- Update to version 4.6.1724163588.6e3b56b:
+  * Explain regexp argument for wait_serial
+  * Disable building with OCR support on SLE
+  * Make Python support optional in fullstack test
+  * Fix build condition for Python support
+  * Allow package builds without `Inline::Python`
+
+-------------------------------------------------------------------
 Mon Aug 19 01:16:36 UTC 2024 - okurz@suse.com
 
 - Update to version 4.6.1723970662.b378401:
