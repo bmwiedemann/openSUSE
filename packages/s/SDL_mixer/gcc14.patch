@@ -1,0 +1,67 @@
+From: Jan Engelhardt <jengelh@inai.de>
+Date: 2024-08-21 14:26:45.530572801 +0200
+
+dynamic_ogg.c: In function ‘Mix_InitOgg’:
+dynamic_ogg.c:111:42: error: assignment to ‘int (*)(void *, OggVorbis_File *, char *, long int,  ov_callbacks)’ from incompatible pointer type ‘int (*)(void *, OggVorbis_File *, const char *, long int,  ov_callbacks)’ [-Wincompatible-pointer-types]
+  111 |                 vorbis.ov_open_callbacks = ov_open_callbacks;
+dynamic_mod.c: In function ‘Mix_InitMOD’:
+dynamic_mod.c:244:36: error: assignment to ‘BOOL (*)(CHAR *)’ {aka ‘int (*)(char *)’} from incompatible pointer type ‘int (*)(const CHAR *)’ {aka ‘int (*)(const char *)’} [-Wincompatible-pointer-types]
+  244 |                 mikmod.MikMod_Init = MikMod_Init;
+dynamic_mod.c:248:40: error: assignment to ‘char * (*)(int)’ from incompatible pointer type ‘const char * (*)(int)’ [-Wincompatible-pointer-types]
+  248 |                 mikmod.MikMod_strerror = MikMod_strerror;
+mixer.c: In function ‘Mix_Init’:
+mixer.c:153:60: error: implicit declaration of function ‘Mix_InitFluidSynth’ [-Wimplicit-function-declaration]
+  153 |                 if ((initialized & MIX_INIT_FLUIDSYNTH) || Mix_InitFluidSynth() == 0) {
+mixer.c: In function ‘Mix_Quit’:
+mixer.c:205:17: error: implicit declaration of function ‘Mix_QuitFluidSynth’ [-Wimplicit-function-declaration]
+  205 |                 Mix_QuitFluidSynth();
+
+---
+ dynamic_mod.h |    4 ++--
+ dynamic_ogg.h |    2 +-
+ mixer.c       |    1 +
+ 3 files changed, 4 insertions(+), 3 deletions(-)
+
+Index: SDL_mixer-1.2.12/dynamic_mod.h
+===================================================================
+--- SDL_mixer-1.2.12.orig/dynamic_mod.h
++++ SDL_mixer-1.2.12/dynamic_mod.h
+@@ -30,11 +30,11 @@ typedef struct {
+ 	void (*MikMod_Exit)(void);
+ 	CHAR* (*MikMod_InfoDriver)(void);
+ 	CHAR* (*MikMod_InfoLoader)(void);
+-	BOOL (*MikMod_Init)(CHAR*);
++	int (*MikMod_Init)(const char *);
+ 	void (*MikMod_RegisterAllLoaders)(void);
+ 	void (*MikMod_RegisterDriver)(struct MDRIVER*);
+ 	int* MikMod_errno;
+-	char* (*MikMod_strerror)(int);
++	const char *(*MikMod_strerror)(int);
+ 	void (*MikMod_free)(void*);
+ 	BOOL (*Player_Active)(void);
+ 	void (*Player_Free)(MODULE*);
+Index: SDL_mixer-1.2.12/dynamic_ogg.h
+===================================================================
+--- SDL_mixer-1.2.12.orig/dynamic_ogg.h
++++ SDL_mixer-1.2.12/dynamic_ogg.h
+@@ -31,7 +31,7 @@ typedef struct {
+ 	void *handle;
+ 	int (*ov_clear)(OggVorbis_File *vf);
+ 	vorbis_info *(*ov_info)(OggVorbis_File *vf,int link);
+-	int (*ov_open_callbacks)(void *datasource, OggVorbis_File *vf, char *initial, long ibytes, ov_callbacks callbacks);
++	int (*ov_open_callbacks)(void *datasource, OggVorbis_File *vf, const char *initial, long ibytes, ov_callbacks callbacks);
+ 	ogg_int64_t (*ov_pcm_total)(OggVorbis_File *vf,int i);
+ #ifdef OGG_USE_TREMOR
+ 	long (*ov_read)(OggVorbis_File *vf,char *buffer,int length, int *bitstream);
+Index: SDL_mixer-1.2.12/mixer.c
+===================================================================
+--- SDL_mixer-1.2.12.orig/mixer.c
++++ SDL_mixer-1.2.12/mixer.c
+@@ -35,6 +35,7 @@
+ #include "load_ogg.h"
+ #include "load_flac.h"
+ #include "dynamic_flac.h"
++#include "dynamic_fluidsynth.h"
+ #include "dynamic_mod.h"
+ #include "dynamic_mp3.h"
+ #include "dynamic_ogg.h"

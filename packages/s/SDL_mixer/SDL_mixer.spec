@@ -1,7 +1,7 @@
 #
 # spec file for package SDL_mixer
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,6 +30,7 @@ Source1:        baselibs.conf
 Patch1:         mikmod1.patch
 Patch2:         mikmod2.patch
 Patch3:         double-free-crash.patch
+Patch4:         gcc14.patch
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(flac)
 BuildRequires:  pkgconfig(fluidsynth)
@@ -93,8 +94,7 @@ rm -rf Xcode-iOS
 %make_install install-bin
 rm -f "%buildroot/%_libdir"/*.la
 
-%post   -n %lname -p /sbin/ldconfig
-%postun -n %lname -p /sbin/ldconfig
+%ldconfig_scriptlets -n %lname
 
 %files -n %lname
 %license COPYING
