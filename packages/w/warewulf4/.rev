@@ -279,4 +279,28 @@
   * issue like message in motd (bsc#1227478) (forwarded request 1186881 from mslacken)</comment>
     <requestid>1186882</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>aaabc53202ea6cdb3b49081938253efc</srcmd5>
+    <version>4.5.6</version>
+    <time>1724275605</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 4.5.6 with following changes:
+  * Show more information during wwctl container &lt;shell|exec&gt; about 
+    when and if the container image will be rebuilt. 
+  * Command-line completion for wwctl overlay &lt;edit|delete|chmod|chown&gt;. 
+  * Display an error during boot if no container is defined. 
+  * wwctl conaitner list --kernel shows the kernel detected for each container. 
+  *  wwctl container list --size shows the uncompressed size of each container. 
+    --compressed shows the compressed size, and --chroot shows the size of the container i
+    source on the server. 
+  * Add a logrotate config for warewulfd.log.
+- removed following patches as accepted upstream:
+  * empty-container.patch
+  * enhanced-cont-list.patch
+  * fix-overlay-built.patch
+  * issue-motd.patch
+  * oci-vars.patch
+  * verbose-exec.patch (forwarded request 1195047 from mslacken)</comment>
+    <requestid>1195048</requestid>
+  </revision>
 </revisionlist>

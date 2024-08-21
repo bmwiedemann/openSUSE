@@ -16,7 +16,6 @@
 #
 
 
-%global vers 4.5.5
 %global tftpdir /srv/tftpboot
 %global srvdir %{_sharedstatedir}
 #%%global githash 5b0de8ea5397ca42584335517fd4959d7ffe3da5
@@ -24,24 +23,18 @@
 ExclusiveArch:  x86_64 aarch64
 
 Name:           warewulf4
-Version:        %{vers}
+Version:        4.5.6
 Release:        0
 Summary:        A suite of tools for clustering
 License:        BSD-3-Clause
 Group:          Productivity/Clustering/Computing
 URL:            https://warewulf.org
-Source0:        https://github.com/warewulf/warewulf/releases/download/v%{vers}/warewulf-%{vers}.tar.gz#/warewulf4-v%{version}.tar.gz
+Source0:        warewulf-%{version}.tar
+Source1:        vendor.tar.xz
 Source5:        warewulf4-rpmlintrc
 Source10:       config-ww4.sh
 Source11:       adjust_overlays.sh
 Source20:       README.dnsmasq
-#Patch1:         wwctl-configure-all-calls-SSH-keys.patch
-Patch1:         empty-container.patch
-Patch2:         enhanced-cont-list.patch
-Patch3:         fix-overlay-built.patch
-Patch4:         oci-vars.patch
-Patch5:         issue-motd.patch
-Patch6:         verbose-exec.patch
 
 # no firewalld in sle12
 %if 0%{?sle_version} >= 150000 || 0%{?suse_version} > 1500
@@ -120,9 +113,8 @@ an initramfs that can fetch and boot a Warewulf container image from a
 Warewulf server.
 
 %prep
-%setup -q -n warewulf-%{vers}
-%autopatch -p1
-# tar xzf %{S:1}
+%autosetup -a1 -p1 -n warewulf-%{version}
+echo %{version} > VERSION
 
 %build
 export OFFLINE_BUILD=1
@@ -192,10 +184,10 @@ yq e '
   .["container mounts"] += {"source": "/etc/zypp/credentials.d/SCCcredentials", "dest": "/etc/zypp/credentials.d/SCCcredentials", "readonly": true}' \
   -i %{buildroot}%{_sysconfdir}/warewulf/warewulf.conf
 # disable suse net-naming
-yq -e '
-  .defaultnode.kernel.args="quiet crashkernel=no net.ifnames=1" |
-  del(.defaultnode.["boot method"] )' \
-  -i %{buildroot}%{_datadir}/warewulf/defaults.conf
+#yq -e '
+#  .defaultnode.kernel.args="quiet crashkernel=no net.ifnames=1" |
+#  del(.defaultnode.["boot method"] )' \
+#  -i %{buildroot}%{_datadir}/warewulf/defaults.conf
 # SUSE starts user UIDs at 1000
 sed -i -e 's@\(.* \$_UID \(>\|-ge\) \)500\(.*\)@\11000\3@' %{buildroot}%{_localstatedir}/lib/warewulf/overlays/host/rootfs/etc/profile.d/ssh_setup.*sh.ww
 # fix dhcp for SUSE
@@ -254,6 +246,7 @@ mv %{buildroot}/%{_sysconfdir}/warewulf/examples %{buildroot}%{_defaultdocdir}/%
 %config(noreplace) %{_sysconfdir}/warewulf/warewulf.conf
 %config(noreplace) %{_sysconfdir}/warewulf/grub
 %config(noreplace) %{_sysconfdir}/warewulf/ipxe
+%{_sysconfdir}/logrotate.d/warewulfd.conf
 %{_defaultdocdir}/%{name}/example-templates
 %{_prefix}/lib/firewalld/services/warewulf.xml
 %exclude %{_datadir}/warewulf/overlays

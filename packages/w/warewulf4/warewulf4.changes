@@ -1,3 +1,25 @@
+
+-------------------------------------------------------------------
+Fri Aug 09 12:39:33 UTC 2024 - cgoll@suse.com
+
+- Update to version 4.5.6 with following changes:
+  * Show more information during wwctl container <shell|exec> about 
+    when and if the container image will be rebuilt. 
+  * Command-line completion for wwctl overlay <edit|delete|chmod|chown>. 
+  * Display an error during boot if no container is defined. 
+  * wwctl conaitner list --kernel shows the kernel detected for each container. 
+  *  wwctl container list --size shows the uncompressed size of each container. 
+    --compressed shows the compressed size, and --chroot shows the size of the container i
+    source on the server. 
+  * Add a logrotate config for warewulfd.log.
+- removed following patches as accepted upstream:
+  * empty-container.patch
+  * enhanced-cont-list.patch
+  * fix-overlay-built.patch
+  * issue-motd.patch
+  * oci-vars.patch
+  * verbose-exec.patch
+
 -------------------------------------------------------------------
 Tue Jul  9 12:06:49 UTC 2024 - Christian Goll <cgoll@suse.com>
 
