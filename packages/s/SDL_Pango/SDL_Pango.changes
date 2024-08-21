@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Aug 21 12:48:49 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Add gcc14.patch
+
+-------------------------------------------------------------------
 Wed May 18 16:00:45 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Remove baselibs.conf, nothing appears to be using it.

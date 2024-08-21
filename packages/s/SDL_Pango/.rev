@@ -192,4 +192,12 @@
 - Use pkgconfig(sdl) to build with sdl12_compat.</comment>
     <requestid>977981</requestid>
   </revision>
+  <revision rev="27" vrev="241">
+    <srcmd5>53fec178206709237e102af146edea64</srcmd5>
+    <version>0.1.2</version>
+    <time>1724275633</time>
+    <user>anag+factory</user>
+    <comment>- Add gcc14.patch</comment>
+    <requestid>1195116</requestid>
+  </revision>
 </revisionlist>

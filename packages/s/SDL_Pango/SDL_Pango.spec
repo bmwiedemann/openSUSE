@@ -27,6 +27,7 @@ URL:            http://sdlpango.sourceforge.net/
 #CVS-Clone:	-d:pserver:anonymous@sdlpango.cvs.sourceforge.net:/cvsroot/sdlpango co -P SDL_Pango
 Source:         %name-%version.tar.bz2
 Patch1:         %name-%version-API-adds.patch
+Patch2:         gcc14.patch
 BuildRequires:  dos2unix
 BuildRequires:  libtool
 BuildRequires:  pkg-config
