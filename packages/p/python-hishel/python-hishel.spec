@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-hishel
 Version:        0.0.29
 Release:        0

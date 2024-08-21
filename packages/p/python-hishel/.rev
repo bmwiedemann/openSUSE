@@ -15,4 +15,12 @@
     <comment>- Remove not needed python 2 Build dependency</comment>
     <requestid>1192772</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>4a6fd27f55c0f4beaa799a3c06f30379</srcmd5>
+    <version>0.0.29</version>
+    <time>1724275635</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1195115</requestid>
+  </revision>
 </revisionlist>
