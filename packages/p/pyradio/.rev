@@ -66,4 +66,124 @@
     <comment></comment>
     <requestid>1154183</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>068a99e7432f75722c077c3002d1a23e</srcmd5>
+    <version>0.9.3.9</version>
+    <time>1724275631</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.9.3.9
+    * fixing a crash when adding a station to favorites
+- Changes from version 0.9.3.8
+    * pressing &quot;*&quot; will add the selected station to favorites
+    * adding the possibility to declare a &quot;Referer URL&quot; for a station
+    * pyradio-client: /title will actually report the song title
+    * pyradio-client: beautifying output
+    * removing more python 2 code
+    * updating docs
+- Changes from version 0.9.3.7
+    * introducing the pyradio-client program
+    * adding three more System Themes
+    * do not allow to change the Recording Directory while recording
+      is on either in this instance or a headless instance
+    * fix PyRadioOpenDir: always open dir
+    * PyRadioRecordingDir: adding key 'd' to revert to deault
+    * fixing default opener detection
+    * if a linux opener is enetered but config not saved, and opener
+      window is opened again, display the one entered instead of the
+      saved opener
+    * fix stop mkvmerge recursive execution
+    * Remote Control Server: adding a warning to the info response,
+      if PyRadio is not in Main Mode
+    * Remote Control Server: introducing the /reconfig command
+    * Desktop Notifications: stations icons are now being cached
+    * config: adding parameter remove_station_icons, to remove
+      downloaded files on program exit
+- Changes from version 0.9.3.6
+    * fixing #241 - pyradio-recordings folder keeps showing in home directory
+    * When XDG compliance is forced due to both XDG_DATA_HOME and XDG_STATE_HOME
+      directories already exist, update the local Desktop file, so that the
+      Icon point to its new location
+    * fixing typos
+- Changes from version 0.9.3.5
+    * Config Window changes:
+        * when r / d (revert to saved / default params) is typed,
+          correctly load the corresponding theme
+        * do not use hardcoded values when loading default params
+        * do not toggle transparency when repeatedly pressing r / d
+        * do not change transparency settings when themes are not being used
+        * fixing cursor positioning for PgDn
+    * XDD compliant operation changes:
+        * if both XDG_DATA_HOME and XDG_STATE_HOME directories already exist,
+          xdg_compliant will be set to True, even if not set in the
+          configuration file (it means an XDG migration has been performed
+          in the past; using the non-XDG dirs will lead to data loss)
+        * suppress list of files moved when migrating to XDG dirs
+    * Theming changes:
+        * preserve theming config options when a terminal that does not
+          support color change is used and config is saved
+        * adding &quot;Color Factor&quot; parameter to themes
+    * Linux Vistual Console
+        * adding config option console_theme; this way either the dark
+          or the light theme can be used when on the console
+        * detect execution on the Virtual Console
+        * do not open HTML help
+        * display list of directories when \o is pressed
+        * do not issue desktop notifications
+        * clear console at exit
+    * fixing #240 - AttributeError: NoneType object has no attribute page
+    * actually open playlists list ('o') or RabioBrowser ('O'), after a
+      dirty palylist save query has been performed
+    * updating Windows Media Players links
+    * updating docs
+- Changes from version 0.9.3.4 (BUG FIX)
+    * adding --no-video command line parameter for vlc
+    * removing more python 2 code
+    * updating macOS installation instructions (based on Ventura)
+    * fixing #239 - Pyradio doesn't remember warning message was already shown
+    * fixing loading saved and default config options in Config Window,
+      Recording Dir is excluded from change
+    * updating docs
+- Changes from version 0.9.3.3 (BUG FIX)
+    * adding a resource opener parameter for linux installations
+    * fixing issues #236 and #237
+    * fixing several minor bugs
+- Changes from version 0.9.3.2 (BUG FIX)
+    * fixing #233 (move .registers to state dir)
+    * fixing stations.csv (from erroneous PR #227)
+    * updating headless.md
+- Changes from version 0.9.3.1 (BUG FIX)
+    * fixing #231 - [BUG] pyradio-0.9.3 cannot be executed
+    * closing #232 - [BUG] self.xdg.xdg_compliant = False
+- Changes from version 0.9.3
+    * user config file will not be automatically created; it will be
+      created only when some parameter value is different to the one
+      set in the package config file
+    * adding -pc (--print-config) command line option
+    * adding the xdg_compliant config option (packagers option)
+      if set to True, config dir contents will be moved to XDG Base
+      dir (https://wiki.archlinux.org/title/XDG_Base_Directory)
+    * RadioBrowser: present next previous result pages
+    * RadioBrowser: adding Icon to station DB info
+    * Remote Control Server: adding commands relevant to RadioBrowser results
+      page navigation (text interface) and relevant web interface buttons
+    * Remote Control Server: adding REC button to web interface
+    * Remote Control Server: the output of the /info command will report
+      headless operation and if RadioBrowser is active, search term used and
+      page number
+    * introducing the Messaging System; most messages displayed to the user
+      have been transfered to messages_system.py
+    * moving Pyradio cache contents to ~/.cache (not on Windows)
+    * moving the recordings directory to home folder and renaming it to
+      &quot;pyradio-recordings&quot;.
+    * adding recording_dir config parameter and window to customize it
+    * titles log files will be saved in the recordings directory
+    * if netifaces module is not installed, headless operation will be aborted
+    * fixing #229: Crash when $HOME/.mplayer directory does not exist
+    * fixing escaped chars in window title and litles log file
+    * adding a Windows python 3.12 workaround to the &quot;curses silently exits&quot; bug
+    * adding two Serbian stations in station.csv - PR #227
+    * updating documentation
+</comment>
+    <requestid>1195105</requestid>
+  </revision>
 </revisionlist>

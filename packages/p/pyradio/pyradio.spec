@@ -18,7 +18,7 @@
 
 
 Name:           pyradio
-Version:        0.9.2.25
+Version:        0.9.3.9
 Release:        0
 Summary:        Curses based internet radio player
 License:        MIT
@@ -27,7 +27,7 @@ Source0:        https://github.com/coderholic/pyradio/archive/%{version}.tar.gz#
 Source99:       pyradio-rpmlintrc
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3-base >= 3.8
+BuildRequires:  python3-base >= 3.9
 BuildRequires:  python3-pip
 BuildRequires:  python3-setuptools
 BuildRequires:  python3-wheel
@@ -61,6 +61,7 @@ install -Dm0644 -t %{buildroot}%{_docdir}/%{name}/ docs/*.md
 %doc Changelog README.md
 %license LICENSE
 %{_bindir}/pyradio
+%{_bindir}/pyradio-client
 %{_docdir}/%{name}
 %{_mandir}/man1/pyradio*.1%{?ext_man}
 %{python3_sitelib}/pyradio
