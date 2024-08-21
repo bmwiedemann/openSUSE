@@ -1719,7 +1719,7 @@ BuildFlags: onlybuild:apache-rpm-macros-control
 BuildFlags: onlybuild:apache2
 BuildFlags: onlybuild:apache2:devel
 BuildFlags: onlybuild:apache2:prefork
-BuildFlags: onlybuild:apitrace
+#BuildFlags: onlybuild:apitrace
 BuildFlags: onlybuild:apparmor
 BuildFlags: onlybuild:apparmor-rpm-macros
 BuildFlags: onlybuild:apparmor:libapparmor
