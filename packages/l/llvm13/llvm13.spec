@@ -1230,17 +1230,6 @@ python3 bin/llvm-lit -sv projects/libcxxabi/test/
 %endif
 popd
 
-# Fix shebang of Python scripts
-%{python3_fix_shebang_path %{buildroot}%{python3_sitearch}/lldb/utils/*.py \
-    %{buildroot}%{python3_sitelib}/lldb/optrecord.py \
-    %{buildroot}%{_bindir}/opt-diff \
-    %{buildroot}%{_bindir}/opt-stats \
-    %{buildroot}%{_bindir}/opt-viewer \
-    %{buildroot}%{_libdir}/clang/%{_relver}/bin/hwasan_symbolize
-}
-# check the results
-grep -r "^#!.*python" %{buildroot}/ | grep -v "$(realpath %{_bindir}/python3)"
-
 # Remove files that won't be needed anymore.
 # This reduces the total amount of disk space used during build. (bnc#1074625)
 # This is meant to happen after build, install and check, but before

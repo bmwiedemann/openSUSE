@@ -1,10 +1,4 @@
 -------------------------------------------------------------------
-Tue Jun 11 19:14:57 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
-
-- Add %python3_fix_shebang_path to fix binaries dependency on
-  /usr/bin/python3 (bsc#1212476).
-
--------------------------------------------------------------------
 Wed Apr  3 20:18:07 UTC 2024 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Use old conflicts/provides for python3-clang on Leap.
