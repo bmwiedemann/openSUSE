@@ -1,4 +1,71 @@
 -------------------------------------------------------------------
+Sat Aug 17 14:16:53 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.17.0
+  ## Fixes
+  * Improve Logging Configuration: don't modify root logger by
+    @theOehrly in #182
+  * Improve error reporting when test raises an exception by
+    @ConorMacBride in #193
+  * MNT: Compat with pytest 8.1 by @pllim in #219
+  ## Exciting New Features
+  * Added support for EPS, PDF, and SVG image comparison by
+    @astrofrog in #194
+  * Started implementing support for deterministic figure output by
+    @astrofrog in #196
+  * Add missing CLI and INI options for a consistent API by
+    @astrofrog in #181
+  * Avoid using py.path by @eerovaher in #207
+  * Allow using -p no:legacypath with pytest >= 7 by @eerovaher in
+    #213
+  ## Other Changes
+  * Add initial Sphinx docs by @ConorMacBride in #174
+  * Add documentation on avoiding PytestReturnNotNoneWarning by
+    @ConorMacBride in #185
+  * Add RTD config by @ConorMacBride in #195
+  * Migrate docs from README.rst to website by @ConorMacBride in
+    #199
+  * Set deterministic to True for vector graphics and warn about
+    change to True in future for PNG by @astrofrog in #197
+  ## Infrastructure Changes
+  * Verify class-based testing configurations produce the expected
+    results by @ConorMacBride in #175
+  * Update testing and CI for Matplotlib v3.6 by @ConorMacBride in
+    #184
+  * Upgrade for tox 4 by @ConorMacBride in #191
+  * Upgrade CI package versions by @ConorMacBride in #215
+  * Test wheel with 3.11 until python-dateutil is updated for 3.12
+    by @ConorMacBride in #217
+  * Fix unclosed test files by @ConorMacBride in #222
+- Release 0.16
+  ## Fixes
+  * Make summary log message about test results in general instead
+    of failures by @neutrinoceros in #148
+  * Add support for classes with pytest 7 by @ConorMacBride in #164
+  * Note that this change necessitated a minor breaking change for
+    figure tests within classes only, and the following will need
+    to be done:
+    - Hash library test names will need to be regenerated/updated
+      to include the class name.
+    - If the undocumented mpl-use-full-test-name ini option is
+      enabled, the the baseline images will need to be regenerated,
+      or have their filename updated to include the class name.
+  ## Other Changes
+  * Improve parametrized test names in HTML summaries by
+    @ConorMacBride in #165
+  * Improve tests/subtests by @ConorMacBride in #163
+- Release 0.15
+  ## Features
+  * Remove Python 2 from package classifiers by @dopplershift in
+    #137
+  * Downloadable hash library in HTML summary by @ConorMacBride in
+    #138
+  ## Fixes
+  * No need to warn when falling back to other URL by @pllim in
+    #139
+- Not worth mentioning changes before 0.15
+
+-------------------------------------------------------------------
 Wed Feb 17 13:52:37 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.12
