@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Aug 20 11:56:05 UTC 2024 - Enno Tensing <tenno+suse@suij.in>
+
+- update to 3.38.2
+  See https://github.com/qgis/QGIS/compare/final-3_38_1%5E...final-3_38_2
+  for commits between 3.38.1 and 3.38.2 
+
+-------------------------------------------------------------------
 Tue Jul 30 12:50:56 UTC 2024 - Enno Tensing <tenno+suse@suij.in>
 
 - update to 3.38.1; Upstream does not provide a detailed changelog

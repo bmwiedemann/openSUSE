@@ -454,4 +454,15 @@
     <comment></comment>
     <requestid>1190783</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>a801ec6721502090048afdab99da2fe9</srcmd5>
+    <version>3.38.2</version>
+    <time>1724275580</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.38.2
+  See https://github.com/qgis/QGIS/compare/final-3_38_1%5E...final-3_38_2
+  for commits between 3.38.1 and 3.38.2 
+</comment>
+    <requestid>1195023</requestid>
+  </revision>
 </revisionlist>
