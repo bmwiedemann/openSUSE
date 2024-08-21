@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-affine
 Version:        2.4.0
 Release:        0
