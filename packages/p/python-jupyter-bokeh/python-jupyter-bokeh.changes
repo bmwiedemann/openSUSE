@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Aug 21 13:58:26 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Fix license: It is actually BSD-3-Clause
+
+-------------------------------------------------------------------
+Wed Aug 21 13:29:47 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 4.0.5
+  * Only serialize models not already known to a document (#202)
+  * Do not drop events while blocked (#204)
+  * Ensure messages are deduplicated based on model id (#205)
+  * fix column events (#206)
+
+-------------------------------------------------------------------
 Fri Mar 29 18:03:16 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 4.0.1

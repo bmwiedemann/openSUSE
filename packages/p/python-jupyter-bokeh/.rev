@@ -16,4 +16,18 @@
   * Javascript update and conda bump gh#bokeh/jupyter_bokeh#200</comment>
     <requestid>1163568</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>bea7cd394d5f6a8ea259bf11b84bb9b8</srcmd5>
+    <version>4.0.5</version>
+    <time>1724275648</time>
+    <user>anag+factory</user>
+    <comment>- Fix license: It is actually BSD-3-Clause
+- Update to 4.0.5
+  * Only serialize models not already known to a document (#202)
+  * Do not drop events while blocked (#204)
+  * Ensure messages are deduplicated based on model id (#205)
+  * fix column events (#206)
+</comment>
+    <requestid>1195130</requestid>
+  </revision>
 </revisionlist>

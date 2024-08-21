@@ -16,14 +16,13 @@
 #
 
 
-%define skip_python39 1
 # .0 s get truncated
-%define distver 4.0.1
+%define distver 4.0.5
 Name:           python-jupyter-bokeh
-Version:        4.0.1
+Version:        4.0.5
 Release:        0
 Summary:        A Jupyter extension for rendering Bokeh content
-License:        MIT
+License:        BSD-3-Clause
 URL:            https://github.com/bokeh/jupyter_bokeh
 Source:         https://files.pythonhosted.org/packages/source/j/jupyter_bokeh/jupyter_bokeh-%{version}.tar.gz
 BuildRequires:  %{python_module hatch-jupyter-builder}
