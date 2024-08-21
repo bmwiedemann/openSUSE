@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Aug 20 16:40:34 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.66.9:
+  * fix: make `terragrunt-fetch-dependency-output-from-state` to
+    work with not applied dependencies (#3350)
+
+-------------------------------------------------------------------
 Fri Aug 16 18:21:48 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.66.8:
