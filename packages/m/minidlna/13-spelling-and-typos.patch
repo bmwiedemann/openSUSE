@@ -1,0 +1,35 @@
+From: "Barak A. Pearlmutter" <barak+git@pearlmutter.net>
+Date: Sun, 13 Nov 2022 20:05:44 +0000
+Subject: spelling and typos
+
+---
+ minidlna.c | 2 +-
+ upnphttp.c | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/minidlna.c b/minidlna.c
+index 37462ac..6d2d06b 100644
+--- a/minidlna.c
++++ b/minidlna.c
+@@ -525,7 +525,7 @@ static void init_nls(void)
+ 	if (!messages)
+ 		messages = "unset";
+ 	locale_dir = bindtextdomain("minidlna", getenv("TEXTDOMAINDIR"));
+-	DPRINTF(E_DEBUG, L_GENERAL, "Using locale dir '%s' and locale langauge %s/%s\n", locale_dir, messages, ctype);
++	DPRINTF(E_DEBUG, L_GENERAL, "Using locale dir '%s' and locale language %s/%s\n", locale_dir, messages, ctype);
+ 	textdomain("minidlna");
+ #endif
+ }
+diff --git a/upnphttp.c b/upnphttp.c
+index 477ebef..5d230cb 100644
+--- a/upnphttp.c
++++ b/upnphttp.c
+@@ -556,7 +556,7 @@ Send500(struct upnphttp * h)
+ 		"<BODY><H1>Internal Server Error</H1>Server encountered "
+ 		"and Internal Error.</BODY></HTML>\r\n";
+ 	h->respflags = FLAG_HTML;
+-	BuildResp2_upnphttp(h, 500, "Internal Server Errror",
++	BuildResp2_upnphttp(h, 500, "Internal Server Error",
+ 	                    body500, sizeof(body500) - 1);
+ 	SendResp_upnphttp(h);
+ 	CloseSocket_upnphttp(h);

@@ -1,7 +1,7 @@
 #
 # spec file for package minidlna
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2012 by Lars Vogdt <lars@linux-schulserver.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -36,6 +36,13 @@ Source3:        minidlna_logrotate
 Source4:        %{name}-user.conf
 # VDR FIX thanks to Boris from openSuse
 Patch1:         minidlna-vdr.diff
+Patch2:         01-run-instead-of-var-run.patch
+Patch3:         07-fix-multi-artist-album-handling.patch
+Patch4:         08-Fix-testupnpdescgen-build.patch
+Patch5:         10-do-not-close-socket-on-sighup.patch
+Patch6:         13-spelling-and-typos.patch
+Patch7:         15-thumbnails.patch
+Patch8:         16-Add-compatibility-with-FFMPEG-7.0.patch
 BuildRequires:  automake
 BuildRequires:  flac-devel
 BuildRequires:  libexif-devel
@@ -49,6 +56,7 @@ BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(libavcodec)
 BuildRequires:  pkgconfig(libavformat)
 BuildRequires:  pkgconfig(libavutil)
+BuildRequires:  pkgconfig(libffmpegthumbnailer)
 Recommends:     logrotate
 Provides:       ReadyMedia = %{version}
 %sysusers_requires
@@ -72,6 +80,7 @@ CFLAGS="%{optflags} -I/usr/include/ffmpeg"
 %configure \
   --with-db-path=%{_localstatedir}/cache/%{name} \
   --with-log-path=%{_localstatedir}/log/%{name} \
+  --enable-thumbnail \
   --enable-tivo
 
 make %{?_smp_mflags}
@@ -85,7 +94,7 @@ install -D -m0644 %{SOURCE1} %{buildroot}%{_unitdir}/%{name}.service
 install -D -m0644 %{SOURCE2} %{buildroot}%{_tmpfilesdir}/%{name}.conf
 #
 install -d %{buildroot}%{_sbindir}
-ln -s /sbin/service %{buildroot}%{_sbindir}/rc%{name}
+ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 # install logrotate file
 install -D -m0644 %{SOURCE3} %{buildroot}/%{_sysconfdir}/logrotate.d/%{name}
 # install cache directory

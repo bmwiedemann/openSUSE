@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Wed Aug 21 18:06:14 CEST 2024 - ro@suse.de
+
+- add some of debian's patches and switch back to ffmpeg-7
+- added patches:
+  - 01-run-instead-of-var-run.patch
+    use /run for runtime generated files
+  - 07-fix-multi-artist-album-handling.patch
+    fix for compilation albums
+  - 08-Fix-testupnpdescgen-build.patch
+    skip unneccessary lib when linking
+  - 10-do-not-close-socket-on-sighup.patch
+    no need to restart the interfaces when we just rescan
+  - 13-spelling-and-typos.patch
+    cleanup error message
+  - 15-thumbnails.patch
+    use ffmpegthumbnailer
+  - 16-Add-compatibility-with-FFMPEG-7.0.patch
+    fix build with current ffmpeg
+- add br for pkgconfig(libffmpegthumbnailer)
+ 
+-------------------------------------------------------------------
+Wed Aug 21 07:46:03 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Don't use ffmpeg-7 as compilation of several files fails with
+  error messages like:
+  ...
+  libav.h:177:36: error: ‘AVCodecParameters’ has no member named ‘channels’
+  metadata.c:828:30: note: in expansion of macro ‘lav_channels’
+  ...
+
+-------------------------------------------------------------------
 Sat Aug 19 09:50:18 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Update to 1.3.3 (bsc#1222007)
