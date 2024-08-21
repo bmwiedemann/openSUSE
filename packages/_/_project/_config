@@ -635,6 +635,9 @@ Prefer: -libcmocka-cmake-32bit
 #have choice for libcurl.so.4()(64bit) needed by cargo1.79: libcurl-mini4 libcurl4
 Prefer: -libcurl-mini4
 
+#have choice for pkgconfig(libsystemd): systemd-devel systemd-devel-32bit
+Prefer: -systemd-devel-32bit
+
 #---
 
 %if "%_repository" != "ports"
@@ -1444,6 +1447,7 @@ Prefer: -clutter-gst-devel
 Prefer: %{ffmpeg_pref}-mini-libs
 Prefer: %{ffmpeg_pref}-mini-devel
 Prefer: %{ffmpeg_pref} %{ffmpeg_pref}-libavcodec-devel %{ffmpeg_pref}-libavformat-devel %{ffmpeg_pref}-libavutil-devel %{ffmpeg_pref}-libswscale-devel %{ffmpeg_pref}-libavdevice-devel %{ffmpeg_pref}-libavfilter-devel
+Prefer: -ffmpeg-6-libavcodec-devel -ffmpeg-6-libavformat-devel -ffmpeg-6-libavutil-devel -ffmpeg-6-libswscale-devel
 Prefer: -ffmpeg-6-mini-libs
 Macros:
 %ffmpeg_pref ffmpeg-7
@@ -2962,6 +2966,7 @@ BuildFlags: onlybuild:qt6-svg
 BuildFlags: onlybuild:qt6-tools
 BuildFlags: onlybuild:qt6-wayland
 BuildFlags: onlybuild:qtdeclarative-imports-provides:qt5
+BuildFlags: onlybuild:qtdeclarative-imports-provides:qt6
 BuildFlags: onlybuild:quota
 BuildFlags: onlybuild:rapidjson
 BuildFlags: onlybuild:raptor
