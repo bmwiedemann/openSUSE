@@ -1,0 +1,8 @@
+<package name="python-dacite" project="openSUSE:Factory">
+  <title>Simple creation of data classes from dictionaries</title>
+  <description>Simplifies creating type-hinted data transfer objects (DTOs) from dictionaries, useful for data from HTTP requests or databases. It complements Python's dataclasses and isn't a validation library. For validation, combine it with other libraries.
+
+</description>
+  <devel project="devel:languages:python" package="python-dacite"/>
+  <url>https://github.com/konradhalas/dacite</url>
+</package>
