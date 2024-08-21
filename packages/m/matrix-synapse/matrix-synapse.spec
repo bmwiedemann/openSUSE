@@ -24,7 +24,7 @@
 %global Pillow_version                10.4.0
 %global PyYAML_version                6.0.1
 %global attrs_version                 23.2.0
-%global bcrypt_version                4.1.3
+%global bcrypt_version                4.2.0
 %global bleach_version                6.1.0
 %global canonicaljson_version         2.0.0
 %global cryptography_version          42.0.8
@@ -154,7 +154,7 @@
 %define         pkgname matrix-synapse
 %define         eggname matrix_synapse
 Name:           %{pkgname}
-Version:        1.112.0
+Version:        1.113.0
 Release:        0
 Summary:        Matrix protocol reference homeserver
 License:        AGPL-3.0-or-later

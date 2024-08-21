@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Wed Aug 21 09:48:38 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 1.113.0
+  - Features
+    - Track which rooms have been sent to clients in the
+      experimental MSC3575 Sliding Sync /sync endpoint. (#17447)
+    - Add Account Data extension support to experimental MSC3575
+      Sliding Sync /sync endpoint. (#17477)
+    - Add receipts extension support to experimental MSC3575
+      Sliding Sync /sync endpoint. (#17489)
+    - Add typing notification extension support to experimental
+      MSC3575 Sliding Sync /sync endpoint. (#17505)
+  - Bugfixes
+    - Update experimental MSC3575 Sliding Sync /sync endpoint to
+      handle invite/knock rooms when filtering. (#17450)
+    - Fix a bug introduced in v1.110.0 which caused /keys/query to
+      return incomplete results, leading to high network activity
+      and CPU usage on Matrix clients. (#17499)
+    - Improved Documentation
+    - Update the allowed_local_3pids config option's msisdn address
+      to a working example. (#17476)
+  - Internal Changes
+    - Change sliding sync to use their own token format in
+      preparation for storing per-connection state. (#17452)
+    - Ensure we don't send down negative bump_stamp in experimental
+      sliding sync endpoint. (#17478)
+    - Do not send down empty room entries down experimental sliding
+      sync endpoint. (#17479)
+    - Refactor Sliding Sync tests to better utilize the
+      SlidingSyncBase. (#17481, #17482)
+    - Add some opentracing tags and logging to the experimental
+      sliding sync implementation. (#17501)
+    - Split and move Sliding Sync tests so we have some more sane
+      test file sizes. (#17504)
+    - Update the limited field description in the Sliding Sync
+      response to accurately describe what it actually represents.
+      (#17507)
+    - Easier to understand timeline assertions in Sliding Sync
+      tests. (#17511)
+    - Reset the sliding sync connection if we don't recognize the
+      per-connection state position. (#17529)
+
+-------------------------------------------------------------------
 Tue Jul 30 17:07:03 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 1.112.0 (boo#1228596)

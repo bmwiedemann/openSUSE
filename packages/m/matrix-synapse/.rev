@@ -984,4 +984,14 @@ mostly-working synapse than nothing at all) and the package has been update to
   The actual security fix will be in the python3x-Twisted package:</comment>
     <requestid>1190513</requestid>
   </revision>
+  <revision rev="106" vrev="1">
+    <srcmd5>322a3844ca13d481428b50c0656bd386</srcmd5>
+    <version>1.113.0</version>
+    <time>1724275607</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1195051 from darix
+
+- Update to 1.113.0</comment>
+    <requestid>1195052</requestid>
+  </revision>
 </revisionlist>
