@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug 21 08:58:47 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add simplescreenrecorder-ffmpeg-7-compat.patch: ffmpeg 7
+  compatibility (upstream commits) [gh#MaartenBaert/ssr#1031].
+
+-------------------------------------------------------------------
 Mon Aug  8 22:40:22 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Add 768957a8de1534f0aa91bfc5d7af3c32f222beb8.patch: fix building

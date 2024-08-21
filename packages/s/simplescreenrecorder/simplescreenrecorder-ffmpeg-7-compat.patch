@@ -1,0 +1,105 @@
+From 21ae95cb388c6c7c0218b83cf663d8b492c56c91 Mon Sep 17 00:00:00 2001
+From: grover92000 <96498785+grover92000@users.noreply.github.com>
+Date: Sat, 13 Apr 2024 15:23:38 -0400
+Subject: [PATCH 1/2] Update AudioEncoder.cpp for ffmpeg-7.0
+
+---
+ src/AV/Output/AudioEncoder.cpp | 9 +++++++++
+ 1 file changed, 9 insertions(+)
+
+diff --git a/src/AV/Output/AudioEncoder.cpp b/src/AV/Output/AudioEncoder.cpp
+index 3efde703..73f33651 100644
+--- a/src/AV/Output/AudioEncoder.cpp
++++ b/src/AV/Output/AudioEncoder.cpp
+@@ -69,7 +69,11 @@ AVSampleFormat AudioEncoder::GetSampleFormat() {
+ }
+ 
+ unsigned int AudioEncoder::GetChannels() {
++#if LIBAVCODEC_VERSION_MAJOR < 61
+ 	return GetCodecContext()->channels;
++#else
++	return GetCodecContext()->ch_layout.nb_channels;
++#endif
+ }
+ 
+ unsigned int AudioEncoder::GetSampleRate() {
+@@ -107,8 +111,13 @@ void AudioEncoder::PrepareStream(AVStream* stream, AVCodecContext* codec_context
+ 	}
+ 
+ 	codec_context->bit_rate = bit_rate;
++#if LIBAVCODEC_VERSION_MAJOR < 61
+ 	codec_context->channels = channels;
+ 	codec_context->channel_layout = (channels == 1)? AV_CH_LAYOUT_MONO : AV_CH_LAYOUT_STEREO;
++#else
++	codec_context->ch_layout.nb_channels = channels;
++	codec_context->ch_layout.u.mask = (channels == 1)? AV_CH_LAYOUT_MONO : AV_CH_LAYOUT_STEREO;
++#endif
+ 	codec_context->sample_rate = sample_rate;
+ 	codec_context->time_base.num = 1;
+ 	codec_context->time_base.den = sample_rate;
+
+From 9ea6daf7abe6f92400e373c4139749fd243de2cb Mon Sep 17 00:00:00 2001
+From: grover92000 <96498785+grover92000@users.noreply.github.com>
+Date: Sat, 13 Apr 2024 15:25:35 -0400
+Subject: [PATCH 2/2] Update Synchronizer.cpp for ffmpeg-7.0
+
+---
+ src/AV/Output/Synchronizer.cpp | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/src/AV/Output/Synchronizer.cpp b/src/AV/Output/Synchronizer.cpp
+index b109dc67..b4f91593 100644
+--- a/src/AV/Output/Synchronizer.cpp
++++ b/src/AV/Output/Synchronizer.cpp
+@@ -180,7 +180,11 @@ static std::unique_ptr<AVFrameWrapper> CreateAudioFrame(unsigned int channels, u
+ 	frame->GetFrame()->nb_samples = samples;
+ #endif
+ #if SSR_USE_AVFRAME_CHANNELS
++#if LIBAVCODEC_VERSION_MAJOR < 61
+ 	frame->GetFrame()->channels = channels;
++#else
++	frame->GetFrame()->ch_layout.nb_channels = channels;
++#endif
+ #endif
+ #if SSR_USE_AVFRAME_SAMPLE_RATE
+ 	frame->GetFrame()->sample_rate = sample_rate;
+From 26253fc52c1f184441a791571329081b00ce8f10 Mon Sep 17 00:00:00 2001
+From: Petter Reinholdtsen <pere@hungry.com>
+Date: Mon, 12 Aug 2024 23:11:59 +0200
+Subject: [PATCH] More fixes for ffmpeg 7.0
+
+Use class method GetChannels() as a wrapper to get the ffmpeg version
+dependent implementation instead of the channels method which
+disappeared with ffmpeg 7.
+
+This is needed in addiontion to the changes in https://github.com/MaartenBaert/ssr/pull/1031.
+---
+ src/AV/Output/AudioEncoder.cpp | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/src/AV/Output/AudioEncoder.cpp b/src/AV/Output/AudioEncoder.cpp
+index 73f33651..a682846d 100644
+--- a/src/AV/Output/AudioEncoder.cpp
++++ b/src/AV/Output/AudioEncoder.cpp
+@@ -42,7 +42,7 @@ AudioEncoder::AudioEncoder(Muxer* muxer, AVStream* stream, AVCodecContext *codec
+ 	if(GetCodecContext()->frame_size <= 1) {
+ 		// This is really weird, the old API uses the size of the *output* buffer to determine the number of
+ 		// input samples if the number of input samples (i.e. frame_size) is not fixed (i.e. frame_size <= 1).
+-		m_temp_buffer.resize(DEFAULT_FRAME_SAMPLES * GetCodecContext()->channels * av_get_bits_per_sample(GetCodecContext()->codec_id) / 8);
++		m_temp_buffer.resize(DEFAULT_FRAME_SAMPLES * GetChannels() * av_get_bits_per_sample(GetCodecContext()->codec_id) / 8);
+ 	} else {
+ 		m_temp_buffer.resize(std::max(FF_MIN_BUFFER_SIZE, 256 * 1024));
+ 	}
+@@ -167,7 +167,11 @@ bool AudioEncoder::EncodeFrame(AVFrameWrapper* frame) {
+ 		assert((unsigned int) frame->GetFrame()->nb_samples == GetFrameSize());
+ #endif
+ #if SSR_USE_AVFRAME_CHANNELS
+-		assert(frame->GetFrame()->channels == GetCodecContext()->channels);
++#  if LIBAVCODEC_VERSION_MAJOR < 61
++		assert(frame->GetFrame()->channels == GetChannels());
++#  else
++		assert(frame->GetFrame()->ch_layout.nb_channels == GetChannels());
++#  endif /* LIBAVCODEC_VERSION_MAJOR < 61 */
+ #endif
+ #if SSR_USE_AVFRAME_SAMPLE_RATE
+ 		assert(frame->GetFrame()->sample_rate == GetCodecContext()->sample_rate);

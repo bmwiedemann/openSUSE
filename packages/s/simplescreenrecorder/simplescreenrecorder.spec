@@ -1,7 +1,7 @@
 #
 # spec file for package simplescreenrecorder
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,8 @@ Source:         https://github.com/MaartenBaert/ssr/archive/%{version}.tar.gz
 Source9:        baselibs.conf
 # PATCH-FIX-UPSTREAM badshah400@gmail.com -- Compatibility for newer ffmpeg (>=4); patch taken from upstream git commit
 Patch0:         https://github.com/MaartenBaert/ssr/commit/768957a8de1534f0aa91bfc5d7af3c32f222beb8.patch
+# PATCH-FIX-UPSTREAM badshah499@gmail.com -- Compatibility for ffmpeg 7; patch taken from upstream commits
+Patch1:         simplescreenrecorder-ffmpeg-7-compat.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
