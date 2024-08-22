@@ -73,7 +73,7 @@ Fri May 17 03:26:48 UTC 2024 - Alynx Zhou <alynx.zhou@suse.com>
 Wed May  1 13:01:02 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 46.1:
-  + Implement linux-drm-syncobj-v1.
+  + Implement linux-drm-syncobj-v1 (bsc#1219718).
   + Fix input lag on X11 nvidia.
   + Fix scanout on secondary GPUs.
   + Don't apply max-render-time to secondary GPUs.
