@@ -135,4 +135,18 @@
   * update Google key</comment>
     <requestid>1161154</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>7fe53572eddb17ed208ca885c8ff8c5c</srcmd5>
+    <version>1.105</version>
+    <time>1724343243</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.105
+  + Add fedora 43 keys and change rawhide symlink
+  + Refresh GPG keys for Dell
+  + Add RPM-GPG-KEY-CentOS-Official-SHA256
+  + Add FFmpeg, LibreWolf, Monero, VideoLAN, and yt-dlp keys
+  + Add CentOS 10 and EPEL 10 GPG keys
+  + add Alpine Linux and postmarketOS keys</comment>
+    <requestid>1195284</requestid>
+  </revision>
 </revisionlist>

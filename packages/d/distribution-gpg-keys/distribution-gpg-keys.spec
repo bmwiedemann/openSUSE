@@ -22,12 +22,12 @@
 %global origrel 1
 
 Name:           distribution-gpg-keys
-Version:        1.102
+Version:        1.105
 Release:        0
 Summary:        GPG keys of various Linux distributions
 Group:          System/Packages
 License:        CC0-1.0
-URL:            https://github.com/xsuchy/distribution-gpg-keys
+URL:            https://github.com/rpm-software-management/distribution-gpg-keys
 Source0:        %{url}/archive/%{name}-%{version}-%{origrel}.tar.gz
 BuildArch:      noarch
 

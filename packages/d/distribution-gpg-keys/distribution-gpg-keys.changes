@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Aug 22 11:04:53 UTC 2024 - Neal Gompa <ngompa@opensuse.org>
+
+- Update to 1.105
+  + Add fedora 43 keys and change rawhide symlink
+  + Refresh GPG keys for Dell
+  + Add RPM-GPG-KEY-CentOS-Official-SHA256
+  + Add FFmpeg, LibreWolf, Monero, VideoLAN, and yt-dlp keys
+  + Add CentOS 10 and EPEL 10 GPG keys
+  + add Alpine Linux and postmarketOS keys
+
+-------------------------------------------------------------------
 Sun Mar 24 17:29:13 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.102:
