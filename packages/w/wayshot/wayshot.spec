@@ -1,7 +1,7 @@
 #
 # spec file for package wayshot
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -41,6 +41,9 @@ A screenshot tool for wlroots based compositors implementing zwlr_screencopy_v1
 %autosetup -a1
 
 %build
+export CARGO_HOME=$PWD/.cargo
+export CARGO_TARGET_DIR=$PWD/target
+ls -la $CARGO_HOME
 pushd wayshot
 %if 0%{?suse_version} >= 1500
 RUSTFLAGS=%{rustflags} %{cargo_build}
@@ -50,13 +53,9 @@ RUSTFLAGS=%{rustflags} cargo build --offline --release
 popd
 
 %install
-pushd wayshot
-%if 0%{?suse_version} >= 1500
-RUSTFLAGS=%{rustflags} %{cargo_install}
-%else
-RUSTFLAGS=%{rustflags} cargo install --root=%{buildroot}%{_prefix} --path .
-%endif
-popd
+# cargo install does not work with cached cargo home
+install -D -d -m 0755 %{buildroot}%{_bindir}
+install -m 0755 -t %{buildroot}%{_bindir}/ %{_builddir}/%{name}-%{version}/target/release/wayshot
 
 %files
 %{_bindir}/wayshot
