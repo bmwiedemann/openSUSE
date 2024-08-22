@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Aug 22 08:03:41 UTC 2024 - dcermak@suse.com
+
+- Update to version 1.37.2:
+  * [release-1.37] Bump Buildah to v1.37.2
+  * [release-1.37] Bump c/common to v0.60.2, c/image to v5.32.2
+
+-------------------------------------------------------------------
 Wed Aug 14 09:18:52 UTC 2024 - dcermak@suse.com
 
 - Update to version 1.37.1:
