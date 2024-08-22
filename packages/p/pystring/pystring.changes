@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Aug 21 11:01:09 UTC 2024 - Frantisek Simorda <frantisek.simorda@suse.com>
+
+- Update to 1.1.3:
+   * Direct return function wrappers for partition, rpartition, split, rsplit and splitlines
+   * Fix for deadlock in split_nt function
+   * Declaring global strings for performance improvement
+   * CMake build system
+   * Allow default values in make file to be overridden
+   * CI tests
+   * Updates to license file
+ 
+
+-------------------------------------------------------------------
 Mon Jul  5 13:29:11 UTC 2021 - Hans-Peter Jansen <hpj@urpla.net>
 
 - Version 1.1.3: initial build (based on Fedora)

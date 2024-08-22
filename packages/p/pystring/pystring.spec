@@ -1,7 +1,7 @@
 #
 # spec file for package pystring
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2021 LISA GmbH, Bingen, Germany
 #
 # All modifications and additions to the file contributed by third parties
@@ -16,9 +16,10 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define so_ver  0_0
 Name:           pystring
-Version:        1.1.3
+Version:        1.1.4
 Release:        0
 Summary:        Collection of C++ functions emulating Python's string class methods
 License:        BSD-2-Clause
@@ -34,7 +35,7 @@ BuildRequires:  gcc-c++
 %package devel
 Summary:        Development files for %{name}
 Requires:       lib%{name}%{so_ver} = %{version}-%{release}
-	
+
 %description devel
 %{summary}.
 
@@ -48,10 +49,10 @@ C++, it does not require or make use of a Python interpreter. It provides
 convenience and familiarity for common string operations not included in the
 standard C++ library. It's also useful in environments where both C++ and
 Python are used.
-	
+
 Overlapping functionality (such as index and slice/substr) of std::string is
 included to match Python interfaces.
-	
+
 Originally developed at Sony Pictures Imageworks.
 http://opensource.imageworks.com/
 
@@ -69,17 +70,17 @@ cp %{SOURCE100} .
 %check
 pushd build
 ./test
- 
+
 %post -n lib%{name}%{so_ver} -p /sbin/ldconfig
 %postun -n lib%{name}%{so_ver} -p /sbin/ldconfig
 
 %files -n lib%{name}%{so_ver}
 %license LICENSE
-%doc README
+%doc README.md
 %{_libdir}/lib%{name}.so.0.0
 
 %files devel
 %{_includedir}/pystring/
 %{_libdir}/lib%{name}.so
- 
+
 %changelog
