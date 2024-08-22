@@ -235,4 +235,13 @@
     <comment></comment>
     <requestid>1147873</requestid>
   </revision>
+  <revision rev="33" vrev="7">
+    <srcmd5>e8ea85c323a9ca32beb456fd284efec3</srcmd5>
+    <version>2.9.3</version>
+    <time>1724343243</time>
+    <user>anag+factory</user>
+    <comment>- Fix arithmetic on non-octal track numbers (boo#1219527)
+  * add abcde.bug.204.patch</comment>
+    <requestid>1195278</requestid>
+  </revision>
 </revisionlist>

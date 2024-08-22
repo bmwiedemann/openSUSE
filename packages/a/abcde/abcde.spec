@@ -32,6 +32,8 @@ Source1:        https://abcde.einval.com/download/%{name}-%{version}.tar.gz.sign
 Source99:       %{name}.keyring
 # PATCH-FEATURE-OPENSUSE use-cddbmethod.patch -- Use cddb instead of musicbrainz in perl module is not available
 Patch0:         use-cddbmethod.patch
+# PATCH-FIX-OPENSUSE abcde.bug.204.patch -- https://abcde.einval.com/bugzilla/show_bug.cgi?id=204
+Patch1:         abcde.bug.204.patch
 Requires:       cd-discid
 Requires:       cdparanoia
 Requires:       wget
@@ -57,6 +59,7 @@ tags to each file.
 %if !%{with musicbrainz}
 %patch -P 0 -p1
 %endif
+%patch -P 1 -p0
 
 %build
 

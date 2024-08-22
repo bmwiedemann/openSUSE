@@ -1,0 +1,11 @@
+--- abcde.2.9.4-DEV	2024-06-05 15:02:55.238567289 +1000
++++ abcde	2024-06-05 14:52:46.282446009 +1000
+@@ -465,7 +465,7 @@
+ 		# Get the trackpadding from the current track, also trim whitespace for MacOSX
+ 		CURRENTTRACKPADDING=$(echo -n "$UTRACKNUM" | wc -c | tr -d ' ')
+ 		REALTRACKNUM=$(expr $UTRACKNUM + 0) # Unpad
+-		TRACKNUM=$( printf %0.${CURRENTTRACKPADDING}d $((${REALTRACKNUM} + ${STARTTRACKNUMBER} - ${FIRSTTRACK})))
++		TRACKNUM=$( printf %0.${CURRENTTRACKPADDING}d $((10#${REALTRACKNUM} + 10#${STARTTRACKNUMBER} - 10#${FIRSTTRACK})))
+ 	else
+ 		TRACKNUM=${UTRACKNUM}
+ 	fi

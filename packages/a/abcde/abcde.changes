@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug 14 15:14:01 UTC 2024 - Martin Wilck <mwilck@suse.com>
+
+- Fix arithmetic on non-octal track numbers (boo#1219527)
+  * add abcde.bug.204.patch
+
+-------------------------------------------------------------------
 Tue Feb 20 09:55:38 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.
