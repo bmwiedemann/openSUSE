@@ -84,14 +84,13 @@ Index: openssh-9.6p1/ssh_config.5
  The list of key exchange algorithms that are offered for GSSAPI
  key exchange. Possible values are
  .Bd -literal -offset 3n
-@@ -991,10 +993,8 @@ gss-nistp256-sha256-,
+@@ -991,9 +993,8 @@ gss-nistp256-sha256-,
  gss-curve25519-sha256-
  .Ed
  .Pp
 -The default is
--.Dq gss-group14-sha256-,gss-group16-sha512-,gss-nistp256-sha256-,
--gss-curve25519-sha256-,gss-group14-sha1-,gss-gex-sha1- .
- This option only applies to connections using GSSAPI.
+-.Dq gss-gex-sha1-,gss-group14-sha1- .
+ This option only applies to protocol version 2 connections using GSSAPI.
 +.Pp
  .It Cm HashKnownHosts
  Indicates that
@@ -160,7 +159,7 @@ Index: openssh-9.6p1/ssh_config.5
  .It Cm HostKeyAlias
  Specifies an alias that should be used instead of the
  real host name when looking up or saving the host key
-@@ -1311,36 +1313,30 @@ it may be zero or more of:
+@@ -1311,31 +1313,26 @@ it may be zero or more of:
  and
  .Cm pam .
  .It Cm KexAlgorithms
@@ -170,12 +169,8 @@ Index: openssh-9.6p1/ssh_config.5
 +existing policies with sub-policies are present in manual page
 +.Xr update-crypto-policies 8 .
 +.Pp
- Specifies the permitted KEX (Key Exchange) algorithms that will be used and
- their preference order.
- The selected algorithm will the the first algorithm in this list that
- the server also supports.
+ Specifies the available KEX (Key Exchange) algorithms.
  Multiple algorithms must be comma-separated.
- .Pp
  If the specified list begins with a
  .Sq +
 -character, then the specified algorithms will be appended to the default set
@@ -191,7 +186,6 @@ Index: openssh-9.6p1/ssh_config.5
  .Sq ^
  character, then the specified algorithms will be placed at the head of the
 -default set.
--.Pp
 -The default is:
 -.Bd -literal -offset indent
 -sntrup761x25519-sha512@openssh.com,
@@ -205,7 +199,7 @@ Index: openssh-9.6p1/ssh_config.5
 -.Ed
 +built-in openssh default set.
  .Pp
- The list of supported key exchange algorithms may also be obtained using
+ The list of available key exchange algorithms may also be obtained using
  .Qq ssh -Q kex .
 @@ -1445,37 +1442,34 @@ function, and all code in the
  file.
@@ -392,7 +386,7 @@ Index: openssh-9.6p1/sshd_config.5
  The list of available ciphers may also be obtained using
  .Qq ssh -Q cipher .
  .It Cm ClientAliveCountMax
-@@ -764,53 +760,45 @@ For this to work
+@@ -764,52 +760,45 @@ For this to work
  .Cm GSSAPIKeyExchange
  needs to be enabled in the server and also used by the client.
  .It Cm GSSAPIKexAlgorithms
@@ -421,9 +415,8 @@ Index: openssh-9.6p1/sshd_config.5
  .Ed
 -.Pp
 -The default is
--.Dq gss-group14-sha256-,gss-group16-sha512-,gss-nistp256-sha256-,
--gss-curve25519-sha256-,gss-group14-sha1-,gss-gex-sha1- .
- This option only applies to connections using GSSAPI.
+-.Dq gss-gex-sha1-,gss-group14-sha1- .
+ This option only applies to protocol version 2 connections using GSSAPI.
  .It Cm HostbasedAcceptedAlgorithms
 +The default is handled system-wide by
 +.Xr crypto-policies 7 .
@@ -499,7 +492,7 @@ Index: openssh-9.6p1/sshd_config.5
  The list of available signature algorithms may also be obtained using
  .Qq ssh -Q HostKeyAlgorithms .
  .It Cm IgnoreRhosts
-@@ -1027,24 +1006,30 @@ file on logout.
+@@ -1027,20 +1006,26 @@ file on logout.
  The default is
  .Cm yes .
  .It Cm KexAlgorithms
@@ -509,13 +502,9 @@ Index: openssh-9.6p1/sshd_config.5
 +existing policies with sub-policies are present in manual page
 +.Xr update-crypto-policies 8 .
 +.Pp
- Specifies the permitted KEX (Key Exchange) algorithms that the server will
- offer to clients.
- The ordering of this list is not important, as the client specifies the
- preference order.
+ Specifies the available KEX (Key Exchange) algorithms.
  Multiple algorithms must be comma-separated.
- .Pp
- If the specified list begins with a
+ Alternately if the specified list begins with a
  .Sq +
 -character, then the specified algorithms will be appended to the default set
 -instead of replacing them.
@@ -531,9 +520,9 @@ Index: openssh-9.6p1/sshd_config.5
  character, then the specified algorithms will be placed at the head of the
 -default set.
 +built-in openssh default set.
- .Pp
  The supported algorithms are:
  .Pp
+ .Bl -item -compact -offset indent
 @@ -1072,16 +1057,6 @@ ecdh-sha2-nistp521
  sntrup761x25519-sha512@openssh.com
  .El
@@ -548,7 +537,7 @@ Index: openssh-9.6p1/sshd_config.5
 -diffie-hellman-group14-sha256,diffie-hellman-group14-sha1
 -.Ed
 -.Pp
- The list of supported key exchange algorithms may also be obtained using
+ The list of available key exchange algorithms may also be obtained using
  .Qq ssh -Q KexAlgorithms .
  .It Cm ListenAddress
 @@ -1167,21 +1142,27 @@ function, and all code in the

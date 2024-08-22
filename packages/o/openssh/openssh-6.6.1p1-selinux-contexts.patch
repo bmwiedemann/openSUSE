@@ -104,10 +104,10 @@ Index: openssh-9.6p1/openbsd-compat/port-linux.h
  #endif
  
  #ifdef LINUX_OOM_ADJUST
-Index: openssh-9.6p1/sshd-session.c
+Index: openssh-9.6p1/sshd.c
 ===================================================================
---- openssh-9.6p1.orig/sshd-session.c
-+++ openssh-9.6p1/sshd-session.c
+--- openssh-9.6p1.orig/sshd.c
++++ openssh-9.6p1/sshd.c
 @@ -511,7 +511,7 @@ privsep_preauth_child(struct ssh *ssh)
  	demote_sensitive_data(ssh);
  

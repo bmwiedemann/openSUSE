@@ -9,16 +9,16 @@ Index: openssh-9.3p2/auth2-pubkey.c
 +extern int inetd_flag;
 +extern int rexeced_flag;
 +extern Authctxt *the_authctxt;
- extern struct authmethod_cfg methodcfg_pubkey;
  
  static char *
+ format_key(const struct sshkey *key)
 @@ -459,7 +462,8 @@ match_principals_command(struct passwd *
  	if ((pid = subprocess("AuthorizedPrincipalsCommand", command,
  	    ac, av, &f,
  	    SSH_SUBPROCESS_STDOUT_CAPTURE|SSH_SUBPROCESS_STDERR_DISCARD,
 -	    runas_pw, temporarily_use_uid, restore_uid)) == 0)
 +	    runas_pw, temporarily_use_uid, restore_uid,
-+	    inetd_flag, the_authctxt)) == 0)
++	    (inetd_flag && !rexeced_flag), the_authctxt)) == 0)
  		goto out;
  
  	uid_swapped = 1;
@@ -28,7 +28,7 @@ Index: openssh-9.3p2/auth2-pubkey.c
  	    SSH_SUBPROCESS_STDOUT_CAPTURE|SSH_SUBPROCESS_STDERR_DISCARD,
 -	    runas_pw, temporarily_use_uid, restore_uid)) == 0)
 +	    runas_pw, temporarily_use_uid, restore_uid,
-+	    inetd_flag, the_authctxt)) == 0)
++	    (inetd_flag && !rexeced_flag), the_authctxt)) == 0)
  		goto out;
  
  	uid_swapped = 1;
@@ -87,13 +87,14 @@ Index: openssh-9.3p2/openbsd-compat/port-linux-sshd.c
 ===================================================================
 --- openssh-9.3p2.orig/openbsd-compat/port-linux-sshd.c
 +++ openssh-9.3p2/openbsd-compat/port-linux-sshd.c
-@@ -49,10 +49,6 @@
+@@ -49,11 +49,6 @@
  #include <unistd.h>
  #endif
  
 -extern ServerOptions options;
 -extern Authctxt *the_authctxt;
 -extern int inetd_flag;
+-extern int rexeced_flag;
 -
  /* Wrapper around is_selinux_enabled() to log its return value once only */
  int
@@ -132,7 +133,7 @@ Index: openssh-9.3p2/openbsd-compat/port-linux-sshd.c
  
  	if (r == 0) {
  		/* If launched from xinetd, we must use current level */
--		if (inetd_flag) {
+-		if (inetd_flag && !rexeced_flag) {
 +		if (inetd) {
  			security_context_t sshdsc=NULL;
  
@@ -156,7 +157,7 @@ Index: openssh-9.3p2/openbsd-compat/port-linux-sshd.c
  
  	rv = set_it("SELINUX_ROLE_REQUESTED", role ? role : "");
  
--	if (inetd_flag) {
+-	if (inetd_flag && !rexeced_flag) {
 +	if (inetd) {
  		use_current = "1";
  	} else {
@@ -221,46 +222,56 @@ Index: openssh-9.3p2/platform.c
 ===================================================================
 --- openssh-9.3p2.orig/platform.c
 +++ openssh-9.3p2/platform.c
-@@ -34,6 +34,8 @@
- #include "openbsd-compat/openbsd-compat.h"
+@@ -34,6 +34,9 @@
  
+ extern int use_privsep;
  extern ServerOptions options;
 +extern int inetd_flag;
++extern int rexeced_flag;
 +extern Authctxt *the_authctxt;
  
- /* return 1 if we are running with privilege to swap UIDs, 0 otherwise */
- int
-@@ -185,7 +187,9 @@ platform_setusercontext_post_groups(stru
+ void
+ platform_pre_listen(void)
+@@ -185,7 +188,9 @@ platform_setusercontext_post_groups(stru
  	}
  #endif /* HAVE_SETPCRED */
  #ifdef WITH_SELINUX
 -	sshd_selinux_setup_exec_context(pw->pw_name);
 +	sshd_selinux_setup_exec_context(pw->pw_name,
-+	    inetd_flag, do_pam_putenv, the_authctxt,
++	    (inetd_flag && !rexeced_flag), do_pam_putenv, the_authctxt,
 +	    options.use_pam);
  #endif
  }
  
-Index: openssh-9.3p2/sshd-session.c
+Index: openssh-9.3p2/sshd.c
 ===================================================================
---- openssh-9.3p2.orig/sshd-session.c
-+++ openssh-9.3p2/sshd-session.c
+--- openssh-9.3p2.orig/sshd.c
++++ openssh-9.3p2/sshd.c
 @@ -166,7 +166,7 @@ int debug_flag = 0;
- int debug_flag = 0;
+ static int test_flag = 0;
  
  /* Flag indicating that the daemon is being started from inetd. */
 -static int inetd_flag = 0;
 +int inetd_flag = 0;
  
- /* debug goes to stderr unless inetd_flag is set */
- static int log_stderr = 0;
+ /* Flag indicating that sshd should not detach and become a daemon. */
+ static int no_daemon_flag = 0;
+@@ -179,7 +179,7 @@ static char **saved_argv;
+ static int saved_argc;
+ 
+ /* re-exec */
+-static int rexeced_flag = 0;
++int rexeced_flag = 0;
+ static int rexec_flag = 1;
+ static int rexec_argc = 0;
+ static char **rexec_argv;
 @@ -2396,7 +2396,9 @@ main(int ac, char **av)
  	}
  #endif
  #ifdef WITH_SELINUX
 -	sshd_selinux_setup_exec_context(authctxt->pw->pw_name);
 +	sshd_selinux_setup_exec_context(authctxt->pw->pw_name,
-+	    inetd_flag, do_pam_putenv, the_authctxt,
++	    (inetd_flag && !rexeced_flag), do_pam_putenv, the_authctxt,
 +	    options.use_pam);
  #endif
  #ifdef USE_PAM

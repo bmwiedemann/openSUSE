@@ -1,7 +1,7 @@
 #
 # spec file for package openssh
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,7 +39,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           openssh
-Version:        9.8p1
+Version:        9.6p1
 Release:        0
 Summary:        Secure Shell Client and Server (Remote Login Program)
 License:        BSD-2-Clause AND MIT
@@ -61,8 +61,6 @@ Source12:       cavs_driver-ssh.pl
 Source13:       https://ftp.openbsd.org/pub/OpenBSD/OpenSSH/RELEASE_KEY.asc#/openssh.keyring
 Source14:       sysusers-sshd.conf
 Source15:       sshd-sle.pamd
-Source16:       sshd@.service
-Source17:       sshd.socket
 Patch1:         openssh-7.7p1-X11_trusted_forwarding.patch
 Patch3:         openssh-7.7p1-enable_PAM_by_default.patch
 Patch4:         openssh-7.7p1-eal3.patch
@@ -121,6 +119,7 @@ Patch50:        openssh-openssl-3.patch
 Patch51:        wtmpdb.patch
 Patch52:        logind_set_tty.patch
 Patch54:        openssh-mitigate-lingering-secrets.patch
+Patch100:       fix-missing-lz.patch
 Patch102:       openssh-7.8p1-role-mls.patch
 Patch103:       openssh-6.6p1-privsep-selinux.patch
 Patch104:       openssh-6.6p1-keycat.patch
@@ -129,15 +128,19 @@ Patch106:       openssh-7.6p1-cleanup-selinux.patch
 # PATCH-FIX-OPENSUSE bsc#1211301 Add crypto-policies support
 Patch107:       openssh-9.6p1-crypto-policies.patch
 Patch108:       openssh-9.6p1-crypto-policies-man.patch
-Patch109:       fix-memleak-in-process_server_config_line_depth.patch
+# PATCH-FIX-UPSTREAM bsc#1226642 fix CVE-2024-6387
+Patch109:       fix-CVE-2024-6387.patch
+# PATCH-FIX-UPSTREAM 
+Patch110:       0001-upstream-fix-proxy-multiplexing-mode_-broken-when-keystroke.patch
+# PATCH-FIX-UPSTREAM 
+Patch111:       0001-upstream-correctly-restore-sigprocmask-around-ppoll.patch
+# PATCH-FIX-UPSTREAM bsc#1227318 CVE-2024-39894
+Patch112:       0001-upstream-when-sending-ObscureKeystrokeTiming-chaff-packets_.patch
 %if 0%{with allow_root_password_login_by_default}
 Patch1000:      openssh-7.7p1-allow_root_password_login.patch
 %endif
 BuildRequires:  audit-devel
 BuildRequires:  automake
-%if 0%{?sle_version} >= 150500
-BuildRequires:  gcc11
-%endif
 BuildRequires:  groff
 BuildRequires:  libedit-devel
 BuildRequires:  libselinux-devel
@@ -325,9 +328,6 @@ sed -i.libexec 's,@LIBEXECDIR@,%{_libexecdir}/ssh,' \
     )
 
 %build
-%if 0%{?sle_version} >= 150500
-export CC=gcc-11
-%endif
 autoreconf -fiv
 %ifarch s390 s390x %{sparc}
 PIEFLAGS="-fPIE"
@@ -392,8 +392,6 @@ install -d -m 755 %{buildroot}%{_sysconfdir}/slp.reg.d/
 install -m 644 %{SOURCE5} %{buildroot}%{_sysconfdir}/slp.reg.d/
 %endif
 install -D -m 0644 %{SOURCE10} %{buildroot}%{_unitdir}/sshd.service
-install -D -m 0644 %{SOURCE16} %{buildroot}%{_unitdir}/sshd@.service
-install -D -m 0644 %{SOURCE17} %{buildroot}%{_unitdir}/sshd.socket
 ln -s service %{buildroot}%{_sbindir}/rcsshd
 install -d -m 755 %{buildroot}%{_fillupdir}
 install -m 644 %{SOURCE8} %{buildroot}%{_fillupdir}
@@ -473,11 +471,11 @@ test -f /etc/pam.d/sshd.rpmsave && mv -v /etc/pam.d/sshd.rpmsave /etc/pam.d/sshd
 test -f /etc/ssh/sshd_config.rpmsave && mv -v /etc/ssh/sshd_config.rpmsave /etc/ssh/sshd_config.rpmsave.old ||:
 %endif
 
-%service_add_pre sshd.service sshd.socket
+%service_add_pre sshd.service
 
 %post server
 %{fillup_only -n ssh}
-%service_add_post sshd.service sshd.socket
+%service_add_post sshd.service
 
 %if ! %{defined _distconfdir}
 test -f /etc/ssh/sshd_config && (grep -q "^Include /etc/ssh/sshd_config\.d/\*\.conf" /etc/ssh/sshd_config || ( \
@@ -489,16 +487,16 @@ test -f /etc/ssh/sshd_config && (grep -q "^Include /etc/ssh/sshd_config\.d/\*\.c
 %endif
 
 %preun server
-%service_del_preun sshd.service sshd.socket
+%service_del_preun sshd.service
 
 %postun server
 # The openssh-fips trigger script for openssh will normally restart sshd once
 # it gets installed, so only restart the service here if openssh-fips is not
 # present.
 if rpm -q openssh-fips >/dev/null 2>/dev/null; then
-%service_del_postun_without_restart sshd.service sshd.socket
+%service_del_postun_without_restart sshd.service
 else
-%service_del_postun sshd.service sshd.socket
+%service_del_postun sshd.service
 fi
 
 %if ! %{defined _distconfdir}
@@ -586,14 +584,11 @@ test -f /etc/ssh/ssh_config.rpmsave && mv -v /etc/ssh/ssh_config.rpmsave /etc/ss
 %attr(0600,root,root) %config(noreplace) %{_sysconfdir}/ssh/sshd_config.d/40-suse-crypto-policies.conf
 %endif
 %attr(0644,root,root) %{_unitdir}/sshd.service
-%attr(0644,root,root) %{_unitdir}/sshd@.service
-%attr(0644,root,root) %{_unitdir}/sshd.socket
 %attr(0644,root,root) %{_sysusersdir}/sshd.conf
 %attr(0444,root,root) %{_mandir}/man5/sshd_config*
 %attr(0444,root,root) %{_mandir}/man8/sftp-server.8*
 %attr(0444,root,root) %{_mandir}/man8/sshd.8*
 %attr(0755,root,root) %{_libexecdir}/ssh/sftp-server
-%attr(0755,root,root) %{_libexecdir}/ssh/sshd-session
 %if 0%{?suse_version} < 1600
 %dir %{_sysconfdir}/slp.reg.d
 %config %{_sysconfdir}/slp.reg.d/ssh.reg

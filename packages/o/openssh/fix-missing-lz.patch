@@ -1,0 +1,25 @@
+Index: openssh-9.3p1/Makefile.in
+===================================================================
+--- openssh-9.3p1.orig/Makefile.in
++++ openssh-9.3p1/Makefile.in
+@@ -250,17 +250,17 @@ ssh-ldap-helper$(EXEEXT): $(LIBCOMPAT) l
+ 	$(LD) -o $@ ldapconf.o ldapbody.o ldapmisc.o ldap-helper.o $(LDFLAGS) -lssh -lopenbsd-compat -lssh -lopenbsd-compat $(LIBS)
+ 
+ sftp-server$(EXEEXT): $(LIBCOMPAT) libssh.a ssh-sk.o sk-usbhid.o $(SFTPSERVER_OBJS)
+-	$(LD) -o $@ $(SFTPSERVER_OBJS) ssh-sk.o sk-usbhid.o $(LDFLAGS) -lssh -lopenbsd-compat -lssh $(LIBS) $(LIBFIDO2)
++	$(LD) -o $@ $(SFTPSERVER_OBJS) ssh-sk.o sk-usbhid.o $(LDFLAGS) -lssh -lopenbsd-compat -lssh $(LIBS) $(LIBFIDO2) -lz
+ 
+ sftp$(EXEEXT): $(LIBCOMPAT) libssh.a $(SFTP_OBJS)
+ 	$(LD) -o $@ $(SFTP_OBJS) $(LDFLAGS) -lssh -lopenbsd-compat $(LIBS) $(LIBEDIT)
+ 
+ # FIPS tests
+ cavstest-ctr$(EXEEXT): $(LIBCOMPAT) libssh.a ssh-sk.o sk-usbhid.o cavstest-ctr.o
+-	$(LD) -o $@ cavstest-ctr.o ssh-sk.o sk-usbhid.o $(LDFLAGS) -lssh -lopenbsd-compat -lssh $(LIBS) $(LIBFIDO2)
++	$(LD) -o $@ cavstest-ctr.o ssh-sk.o sk-usbhid.o $(LDFLAGS) -lssh -lopenbsd-compat -lssh $(LIBS) $(LIBFIDO2) -lz
+ 
+ cavstest-kdf$(EXEEXT): $(LIBCOMPAT) libssh.a ssh-sk.o sk-usbhid.o cavstest-kdf.o
+-	$(LD) -o $@ cavstest-kdf.o ssh-sk.o sk-usbhid.o $(LDFLAGS) -lssh -lopenbsd-compat -lssh $(LIBS) $(LIBFIDO2)
++	$(LD) -o $@ cavstest-kdf.o ssh-sk.o sk-usbhid.o $(LDFLAGS) -lssh -lopenbsd-compat -lssh $(LIBS) $(LIBFIDO2) -lz
+ 
+ # test driver for the loginrec code - not built by default
+ logintest: logintest.o $(LIBCOMPAT) libssh.a loginrec.o

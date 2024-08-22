@@ -1,0 +1,32 @@
+From 9844aa2521ccfb1a2d73745680327b79e0574445 Mon Sep 17 00:00:00 2001
+From: "djm@openbsd.org" <djm@openbsd.org>
+Date: Wed, 21 Feb 2024 05:57:34 +0000
+Subject: [PATCH] upstream: fix proxy multiplexing mode, broken when keystroke
+ timing
+
+obfuscation was added. GHPR#463 from montag451
+
+OpenBSD-Commit-ID: 4e412d59b3f557d431f1d81c715a3bc0491cc677
+---
+ clientloop.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/clientloop.c b/clientloop.c
+index eb4902905fb..8ec36af94b3 100644
+--- a/clientloop.c
++++ b/clientloop.c
+@@ -1,4 +1,4 @@
+-/* $OpenBSD: clientloop.c,v 1.402 2023/11/24 00:31:30 dtucker Exp $ */
++/* $OpenBSD: clientloop.c,v 1.403 2024/02/21 05:57:34 djm Exp $ */
+ /*
+  * Author: Tatu Ylonen <ylo@cs.hut.fi>
+  * Copyright (c) 1995 Tatu Ylonen <ylo@cs.hut.fi>, Espoo, Finland
+@@ -517,7 +517,7 @@ send_chaff(struct ssh *ssh)
+ {
+ 	int r;
+ 
+-	if ((ssh->kex->flags & KEX_HAS_PING) == 0)
++	if (ssh->kex == NULL || (ssh->kex->flags & KEX_HAS_PING) == 0)
+ 		return 0;
+ 	/* XXX probabilistically send chaff? */
+ 	/*

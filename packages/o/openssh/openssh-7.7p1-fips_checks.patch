@@ -459,13 +459,13 @@ Index: openssh-8.8p1/sshd.c
 --- openssh-8.8p1.orig/sshd.c
 +++ openssh-8.8p1/sshd.c
 @@ -1547,6 +1547,10 @@ main(int ac, char **av)
- 	struct connection_info connection_info;
+ 	struct connection_info *connection_info = NULL;
  	sigset_t sigmask;
  
 +	/* initialize fips - can go before ssh_malloc_init(), since that is a
 +	 * OpenBSD-only thing (as of OpenSSH 7.6p1) */
 +	fips_ssh_init();
 +
- 	memset(&connection_info, 0, sizeof(connection_info));
  #ifdef HAVE_SECUREWARE
  	(void)set_auth_parameters(ac, av);
+ #endif

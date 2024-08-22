@@ -61,7 +61,7 @@ Index: openssh-8.8p1/sshd.c
 +
  #include "xmalloc.h"
  #include "ssh.h"
- #include "sshpty.h"
+ #include "ssh2.h"
 @@ -308,6 +312,10 @@ sighup_handler(int sig)
  static void
  sighup_restart(void)
@@ -84,4 +84,4 @@ Index: openssh-8.8p1/sshd.c
 +
  		/* Accept a connection and return in a forked child */
  		server_accept_loop(&sock_in, &sock_out,
- 		    &newsock, config_s, log_stderr);
+ 		    &newsock, config_s);

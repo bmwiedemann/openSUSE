@@ -236,7 +236,7 @@ Index: openssh-8.9p1/audit-linux.c
  /* Below is the sshd audit API code */
  
  void
-@@ -76,49 +176,211 @@ audit_connection_from(const char *host,
+@@ -76,49 +176,210 @@ audit_connection_from(const char *host,
  	/* not implemented */
  }
  
@@ -315,7 +315,6 @@ Index: openssh-8.9p1/audit-linux.c
  	case SSH_AUTH_FAIL_PASSWD:
 +		if (options.use_pam)
 +			break;
-+	/* Fallthrough */
 +	case SSH_LOGIN_EXCEED_MAXTRIES:
  	case SSH_AUTH_FAIL_KBDINT:
  	case SSH_AUTH_FAIL_PUBKEY:
@@ -452,7 +451,7 @@ Index: openssh-8.9p1/audit-linux.c
 +	}
 +	audit_ok = audit_log_user_message(audit_fd, AUDIT_CRYPTO_KEY_USER,
 +			buf, NULL,
-+			ssh_remote_ipaddr(ssh), /*FIXME listening_for_clients() ? NULL : ssh_remote_ipaddr(ssh) */
++			listening_for_clients() ? NULL : ssh_remote_ipaddr(ssh),
 +			NULL, 1);
 +	audit_close(audit_fd);
 +	/* do not abort if the error is EPERM and sshd is run as non root user */
@@ -519,19 +518,19 @@ Index: openssh-8.9p1/audit.c
 +void
 +audit_unsupported(struct ssh *ssh, int what)
 +{
-+	mm_audit_unsupported_body(ssh, what);
++	PRIVSEP(audit_unsupported_body(ssh, what));
 +}
 +
 +void
 +audit_kex(struct ssh *ssh, int ctos, char *enc, char *mac, char *comp, char *pfs)
 +{
-+	mm_audit_kex_body(ssh, ctos, enc, mac, comp, pfs, getpid(), getuid());
++	PRIVSEP(audit_kex_body(ssh, ctos, enc, mac, comp, pfs, getpid(), getuid()));
 +}
 +
 +void
 +audit_session_key_free(struct ssh *ssh, int ctos)
 +{
-+	mm_audit_session_key_free_body(ssh, ctos, getpid(), getuid());
++	PRIVSEP(audit_session_key_free_body(ssh, ctos, getpid(), getuid()));
 +}
 +
  # ifndef CUSTOM_SSH_AUDIT_EVENTS
@@ -779,18 +778,18 @@ Index: openssh-8.9p1/auth.h
 +    const u_char *, size_t, const char *, u_int, struct sshkey_sig_details **);
  
  /* Key / cert options linkage to auth layer */
- int	 auth_activate_options(struct ssh *, struct sshauthopt *);
+ const struct sshauthopt *auth_options(struct ssh *);
 Index: openssh-8.9p1/auth2-hostbased.c
 ===================================================================
 --- openssh-8.9p1.orig/auth2-hostbased.c
 +++ openssh-8.9p1/auth2-hostbased.c
 @@ -149,7 +149,7 @@ userauth_hostbased(struct ssh *ssh, cons
  	authenticated = 0;
- 	if (mm_hostbased_key_allowed(ssh, authctxt->pw, cuser,
- 	    chost, key) &&
--	    mm_sshkey_verify(key, sig, slen,
-+	    mm_hostbased_key_verify(ssh, key, sig, slen,
- 	    sshbuf_ptr(b), sshbuf_len(b), pkalg, ssh->compat, NULL) == 0)
+ 	if (PRIVSEP(hostbased_key_allowed(ssh, authctxt->pw, cuser,
+ 	    chost, key)) &&
+-	    PRIVSEP(sshkey_verify(key, sig, slen,
++	    PRIVSEP(hostbased_key_verify(ssh, key, sig, slen,
+ 	    sshbuf_ptr(b), sshbuf_len(b), pkalg, ssh->compat, NULL)) == 0)
  		authenticated = 1;
  
 @@ -166,6 +166,19 @@ done:
@@ -820,12 +819,12 @@ Index: openssh-8.9p1/auth2-pubkey.c
 @@ -223,7 +223,7 @@ userauth_pubkey(struct ssh *ssh, const c
  		/* test for correct signature */
  		authenticated = 0;
- 		if (mm_user_key_allowed(ssh, pw, key, 1, &authopts) &&
--		    mm_sshkey_verify(key, sig, slen,
-+		    mm_user_key_verify(ssh, key, sig, slen,
+ 		if (PRIVSEP(user_key_allowed(ssh, pw, key, 1, &authopts)) &&
+-		    PRIVSEP(sshkey_verify(key, sig, slen,
++		    PRIVSEP(user_key_verify(ssh, key, sig, slen,
  		    sshbuf_ptr(b), sshbuf_len(b),
  		    (ssh->compat & SSH_BUG_SIGTYPE) == 0 ? pkalg : NULL,
- 		    ssh->compat, &sig_details) == 0) {
+ 		    ssh->compat, &sig_details)) == 0) {
 @@ -316,6 +316,19 @@ done:
  	return authenticated;
  }
@@ -855,7 +854,7 @@ Index: openssh-8.9p1/auth2.c
  			/* Invalid user, fake password information */
  			authctxt->pw = fakepw();
 -#ifdef SSH_AUDIT_EVENTS
--			mm_audit_event(ssh, SSH_INVALID_USER);
+-			PRIVSEP(audit_event(ssh, SSH_INVALID_USER));
 -#endif
  		}
  #ifdef USE_PAM
@@ -940,8 +939,8 @@ Index: openssh-8.9p1/kex.c
  #include "xmalloc.h"
 +#include "audit.h"
  
- /* prototype */
- static int kex_choose_conf(struct ssh *, uint32_t seq);
+ #ifdef GSSAPI
+ #include "ssh-gss.h"
 @@ -879,12 +880,16 @@ kex_start_rekex(struct ssh *ssh)
  }
  
@@ -1125,7 +1124,7 @@ Index: openssh-8.9p1/monitor.c
  extern struct sshbuf *loginmsg;
  extern struct sshauthopt *auth_opts; /* XXX move to permanent ssh->authctxt? */
  
-+extern void destroy_sensitive_data(struct ssh *);
++extern void destroy_sensitive_data(struct ssh *, int);
 +
  /* State exported from the child */
  static struct sshbuf *child_state;
@@ -1258,7 +1257,7 @@ Index: openssh-8.9p1/monitor.c
  		sshpam_cleanup();
  #endif
  
-+	destroy_sensitive_data(ssh);
++	destroy_sensitive_data(ssh, 0);
 +
  	while (waitpid(pmonitor->m_pid, &status, 0) == -1)
  		if (errno != EINTR)
@@ -1302,12 +1301,12 @@ Index: openssh-8.9p1/monitor.c
 +	debug3("%s entering", __func__);
 +	if ((r = sshbuf_get_u32(m, &handle)) != 0 ||
 +	    (r = sshbuf_get_string(m, &cmd, &len)) != 0)
-+		fatal_fr(r, "buffer error");
++		fatal("%s: buffer error: %s", __func__, ssh_err(r));
 +
 +	s = session_by_id(handle);
 +	if (s == NULL || s->ttyfd != -1 || s->command == NULL ||
 +	    strcmp(s->command, cmd) != 0)
-+		fatal_f("invalid handle");
++		fatal("%s: invalid handle", __func__);
 +	mm_session_close(ssh, s);
  	free(cmd);
  	return (0);
@@ -1350,7 +1349,7 @@ Index: openssh-8.9p1/monitor.c
 +	int what, r;
 +
 +	if ((r = sshbuf_get_u32(m, &what)) != 0)
-+		fatal_fr(r, "buffer error");
++		fatal("%s: buffer error: %s", __func__, ssh_err(r));
 +
 +	audit_unsupported_body(ssh, what);
 +
@@ -1375,10 +1374,10 @@ Index: openssh-8.9p1/monitor.c
 +	    (r = sshbuf_get_cstring(m, &compress, NULL)) != 0 ||
 +	    (r = sshbuf_get_cstring(m, &pfs, NULL)) != 0 ||
 +	    (r = sshbuf_get_u64(m, &tmp)) != 0)
-+		fatal_fr(r, "buffer error");
++		fatal("%s: buffer error: %s", __func__, ssh_err(r));
 +	pid = (pid_t) tmp;
 +	if ((r = sshbuf_get_u64(m, &tmp)) != 0)
-+		fatal_fr(r, "buffer error");
++		fatal("%s: buffer error: %s", __func__, ssh_err(r));
 +	uid = (pid_t) tmp;
 +
 +	audit_kex_body(ssh, ctos, cipher, mac, compress, pfs, pid, uid);
@@ -1403,10 +1402,10 @@ Index: openssh-8.9p1/monitor.c
 +
 +	if ((r = sshbuf_get_u32(m, &ctos)) != 0 ||
 +	    (r = sshbuf_get_u64(m, &tmp)) != 0)
-+		fatal_fr(r, "buffer error");
++		fatal("%s: buffer error: %s", __func__, ssh_err(r));
 +	pid = (pid_t) tmp;
 +	if ((r = sshbuf_get_u64(m, &tmp)) != 0)
-+		fatal_fr(r, "buffer error");
++		fatal("%s: buffer error: %s", __func__, ssh_err(r));
 +	uid = (uid_t) tmp;
 +
 +	audit_session_key_free_body(ssh, ctos, pid, uid);
@@ -1428,10 +1427,10 @@ Index: openssh-8.9p1/monitor.c
 +
 +	if ((r = sshbuf_get_cstring(m, &fp, &len)) != 0 ||
 +	    (r = sshbuf_get_u64(m, &tmp)) != 0)
-+		fatal_fr(r, "buffer error");
++		fatal("%s: buffer error: %s", __func__, ssh_err(r));
 +	pid = (pid_t) tmp;
 +	if ((r = sshbuf_get_u64(m, &tmp)) != 0)
-+		fatal_fr(r, "buffer error");
++		fatal("%s: buffer error: %s", __func__, ssh_err(r));
 +	uid = (uid_t) tmp;
 +
 +	audit_destroy_sensitive_data(ssh, fp, pid, uid);
@@ -1527,7 +1526,7 @@ Index: openssh-8.9p1/monitor_wrap.c
 +	mm_request_receive_expect(pmonitor->m_recvfd, MONITOR_ANS_AUDIT_COMMAND, m);
 +
 +	if ((r = sshbuf_get_u32(m, &handle)) != 0)
-+		fatal_fr(r, "buffer error");
++		fatal("%s: buffer error: %s", __func__, ssh_err(r));
 +	sshbuf_free(m);
 +
 +	return (handle);
@@ -1542,19 +1541,19 @@ Index: openssh-8.9p1/monitor_wrap.c
 +	debug3("%s entering command %s", __func__, command);
 +
 + 	if ((m = sshbuf_new()) == NULL)
-+ 		fatal_f("sshbuf_new failed");
++ 		fatal("%s: sshbuf_new failed", __func__);
 +	if ((r = sshbuf_put_u32(m, handle)) != 0 ||
 +	    (r = sshbuf_put_cstring(m, command)) != 0)
-+		fatal_fr(r, "buffer error");
++		fatal("%s: buffer error: %s", __func__, ssh_err(r));
 +
 +	mm_request_send(pmonitor->m_recvfd, MONITOR_REQ_AUDIT_END_COMMAND, m);
  	sshbuf_free(m);
  }
  #endif /* SSH_AUDIT_EVENTS */
-@@ -1217,3 +1257,83 @@ mm_ssh_gssapi_update_creds(ssh_gssapi_cc
- 	return &ci;
+@@ -1074,3 +1114,130 @@ mm_ssh_gssapi_update_creds(ssh_gssapi_cc
  }
  
+ #endif /* GSSAPI */
 +#ifdef SSH_AUDIT_EVENTS
 +void
 +mm_audit_unsupported_body(struct ssh *ssh, int what)
@@ -1563,9 +1562,9 @@ Index: openssh-8.9p1/monitor_wrap.c
 +	struct sshbuf *m;
 +
 + 	if ((m = sshbuf_new()) == NULL)
-+ 		fatal_f("sshbuf_new failed");
++ 		fatal("%s: sshbuf_new failed", __func__);
 +	if ((r = sshbuf_put_u32(m, what)) != 0)
-+		fatal_fr(r, "buffer error");
++		fatal("%s: buffer error: %s", __func__, ssh_err(r));
 +
 +	mm_request_send(pmonitor->m_recvfd, MONITOR_REQ_AUDIT_UNSUPPORTED, m);
 +	mm_request_receive_expect(pmonitor->m_recvfd, MONITOR_ANS_AUDIT_UNSUPPORTED,
@@ -1582,7 +1581,7 @@ Index: openssh-8.9p1/monitor_wrap.c
 +	struct sshbuf *m;
 +
 + 	if ((m = sshbuf_new()) == NULL)
-+ 		fatal_f("sshbuf_new failed");
++ 		fatal("%s: sshbuf_new failed", __func__);
 +	if ((r = sshbuf_put_u32(m, ctos)) != 0 ||
 +	    (r = sshbuf_put_cstring(m, cipher)) != 0 ||
 +	    (r = sshbuf_put_cstring(m, (mac ? mac : "<implicit>"))) != 0 ||
@@ -1590,7 +1589,7 @@ Index: openssh-8.9p1/monitor_wrap.c
 +	    (r = sshbuf_put_cstring(m, fps)) != 0 ||
 +	    (r = sshbuf_put_u64(m, pid)) != 0 ||
 +	    (r = sshbuf_put_u64(m, uid)) != 0)
-+		fatal_fr(r, "buffer error");
++		fatal("%s: buffer error: %s", __func__, ssh_err(r));
 +
 +	mm_request_send(pmonitor->m_recvfd, MONITOR_REQ_AUDIT_KEX, m);
 +	mm_request_receive_expect(pmonitor->m_recvfd, MONITOR_ANS_AUDIT_KEX,
@@ -1606,11 +1605,11 @@ Index: openssh-8.9p1/monitor_wrap.c
 +	struct sshbuf *m;
 +
 + 	if ((m = sshbuf_new()) == NULL)
-+ 		fatal_f("sshbuf_new failed");
++ 		fatal("%s: sshbuf_new failed", __func__);
 +	if ((r = sshbuf_put_u32(m, ctos)) != 0 ||
 +	    (r = sshbuf_put_u64(m, pid)) != 0 ||
 +	    (r = sshbuf_put_u64(m, uid)) != 0)
-+		fatal_fr(r, "buffer error");
++		fatal("%s: buffer error: %s", __func__, ssh_err(r));
 +
 +	mm_request_send(pmonitor->m_recvfd, MONITOR_REQ_AUDIT_SESSION_KEY_FREE, m);
 +	mm_request_receive_expect(pmonitor->m_recvfd, MONITOR_ANS_AUDIT_SESSION_KEY_FREE,
@@ -1625,14 +1624,61 @@ Index: openssh-8.9p1/monitor_wrap.c
 +	struct sshbuf *m;
 +
 + 	if ((m = sshbuf_new()) == NULL)
-+ 		fatal_f("sshbuf_new failed");
++ 		fatal("%s: sshbuf_new failed", __func__);
 +	if ((r = sshbuf_put_cstring(m, fp)) != 0 ||
 +	    (r = sshbuf_put_u64(m, pid)) != 0 ||
 +	    (r = sshbuf_put_u64(m, uid)) != 0)
-+		fatal_fr(r, "buffer error");
++		fatal("%s: buffer error: %s", __func__, ssh_err(r));
 +
 +	mm_request_send(pmonitor->m_recvfd, MONITOR_REQ_AUDIT_SERVER_KEY_FREE, m);
 +	sshbuf_free(m);
++}
++
++int mm_forward_audit_messages(int fdin)
++{
++	u_char buf[4];
++	u_int blen, msg_len;
++	struct sshbuf *m;
++	int ret = 0;
++
++	debug3("%s: entering", __func__);
++	m = sshbuf_new();
++	do {
++		int r;
++
++		blen = atomicio(read, fdin, buf, sizeof(buf));
++		if (blen == 0) /* closed pipe */
++			break;
++		if (blen != sizeof(buf)) {
++			error("%s: Failed to read the buffer from child", __func__);
++			ret = -1;
++			break;
++		}
++
++		msg_len = get_u32(buf);
++		if (msg_len > 256 * 1024)
++			fatal("%s: read: bad msg_len %d", __func__, msg_len);
++		sshbuf_reset(m);
++		if ((r = sshbuf_reserve(m, msg_len, NULL)) != 0)
++			fatal("%s: buffer error: %s", __func__, ssh_err(r));
++		if (atomicio(read, fdin, sshbuf_mutable_ptr(m), msg_len) != msg_len) {
++			error("%s: Failed to read the the buffer conent from the child", __func__);
++			ret = -1;
++			break;
++		}
++		if (atomicio(vwrite, pmonitor->m_recvfd, buf, blen) != blen || 
++		    atomicio(vwrite, pmonitor->m_recvfd, sshbuf_mutable_ptr(m), msg_len) != msg_len) {
++			error("%s: Failed to write the messag to the monitor", __func__);
++			ret = -1;
++			break;
++		}
++	} while (1);
++	sshbuf_free(m);
++	return ret;
++}
++void mm_set_monitor_pipe(int fd)
++{
++	pmonitor->m_recvfd = fd;
 +}
 +#endif /* SSH_AUDIT_EVENTS */
 Index: openssh-8.9p1/monitor_wrap.h
@@ -1649,8 +1695,8 @@ Index: openssh-8.9p1/monitor_wrap.h
 +int mm_user_key_verify(struct ssh *, const struct sshkey *, const u_char *, size_t,
      const u_char *, size_t, const char *, u_int, struct sshkey_sig_details **);
  
- void mm_decode_activate_server_options(struct ssh *ssh, struct sshbuf *m);
-@@ -83,7 +85,12 @@ void mm_sshpam_free_ctx(void *);
+ #ifdef GSSAPI
+@@ -83,7 +85,14 @@ void mm_sshpam_free_ctx(void *);
  #ifdef SSH_AUDIT_EVENTS
  #include "audit.h"
  void mm_audit_event(struct ssh *, ssh_audit_event_t);
@@ -1661,6 +1707,8 @@ Index: openssh-8.9p1/monitor_wrap.h
 +void mm_audit_kex_body(struct ssh *, int, char *, char *, char *, char *, pid_t, uid_t);
 +void mm_audit_session_key_free_body(struct ssh *, int, pid_t, uid_t);
 +void mm_audit_destroy_sensitive_data(struct ssh *, const char *, pid_t, uid_t);
++int mm_forward_audit_messages(int);
++void mm_set_monitor_pipe(int);
  #endif
  
  struct Session;
@@ -1690,7 +1738,12 @@ Index: openssh-8.9p1/packet.c
  /*
   * Returns the IP-address of the remote host as a string.  The returned
   * string must not be freed.
-@@ -579,22 +587,19 @@ ssh_packet_rdomain_in(struct ssh *ssh)
+@@ -579,26 +587,23 @@ ssh_packet_rdomain_in(struct ssh *ssh)
+ /* Closes the connection and clears and frees internal data structures. */
+ 
+ static void
+-ssh_packet_close_internal(struct ssh *ssh, int do_close)
++ssh_packet_close_internal(struct ssh *ssh, int do_close, int do_audit)
  {
  	struct session_state *state = ssh->state;
  	u_int mode;
@@ -1722,7 +1775,7 @@ Index: openssh-8.9p1/packet.c
  #endif	/* WITH_ZLIB */
  	cipher_free(state->send_context);
  	cipher_free(state->receive_context);
-+	if (had_keys && state->server_side) {
++	if (do_audit && had_keys && state->server_side) {
 +		/* Assuming this is called only from privsep child */
 +		audit_session_key_free(ssh, MODE_MAX);
 +	}
@@ -1737,6 +1790,28 @@ Index: openssh-8.9p1/packet.c
  		free(ssh->local_ipaddr);
  		ssh->local_ipaddr = NULL;
  		free(ssh->remote_ipaddr);
+@@ -650,13 +665,19 @@ ssh_packet_close_internal(struct ssh *ss
+ void
+ ssh_packet_close(struct ssh *ssh)
+ {
+-	ssh_packet_close_internal(ssh, 1);
++	ssh_packet_close_internal(ssh, 1, 1);
+ }
+ 
+ void
+ ssh_packet_clear_keys(struct ssh *ssh)
+ {
+-	ssh_packet_close_internal(ssh, 0);
++	ssh_packet_close_internal(ssh, 0, 1);
++}
++
++void
++ssh_packet_clear_keys_noaudit(struct ssh *ssh)
++{
++	ssh_packet_close_internal(ssh, 0, 0);
+ }
+ 
+ /* Sets remote side protocol flags. */
 @@ -892,6 +913,7 @@ ssh_set_newkeys(struct ssh *ssh, int mod
  		    (unsigned long long)state->p_send.bytes,
  		    (unsigned long long)state->p_send.blocks);
@@ -1745,7 +1820,7 @@ Index: openssh-8.9p1/packet.c
  		state->newkeys[mode] = NULL;
  	}
  	/* note that both bytes and the seqnr are not reset */
-@@ -2183,6 +2205,72 @@ ssh_packet_get_output(struct ssh *ssh)
+@@ -2183,6 +2205,73 @@ ssh_packet_get_output(struct ssh *ssh)
  	return (void *)ssh->state->output;
  }
  
@@ -1775,8 +1850,9 @@ Index: openssh-8.9p1/packet.c
 +		return;
 +
 +	cipher_free(state->receive_context);
++	state->receive_context = NULL;
 +	cipher_free(state->send_context);
-+	state->send_context = state->receive_context = NULL;
++	state->send_context = NULL;
 +
 +	sshbuf_free(state->input);
 +	state->input = NULL;
@@ -1822,6 +1898,14 @@ Index: openssh-8.9p1/packet.h
 ===================================================================
 --- openssh-8.9p1.orig/packet.h
 +++ openssh-8.9p1/packet.h
+@@ -102,6 +102,7 @@ int      ssh_packet_get_connection_out(s
+ void     ssh_packet_close(struct ssh *);
+ void	 ssh_packet_set_input_hook(struct ssh *, ssh_packet_hook_fn *, void *);
+ void	 ssh_packet_clear_keys(struct ssh *);
++void     ssh_packet_clear_keys_noaudit(struct ssh *);
+ void	 ssh_clear_newkeys(struct ssh *, int);
+ 
+ int	 ssh_packet_is_rekeying(struct ssh *);
 @@ -220,4 +221,5 @@ const u_char	*sshpkt_ptr(struct ssh *, s
  # undef EC_POINT
  #endif
@@ -1837,11 +1921,22 @@ Index: openssh-8.9p1/session.c
  extern u_int utmp_len;
  extern int startup_pipe;
 -extern void destroy_sensitive_data(void);
-+extern void destroy_sensitive_data(struct ssh *);
++extern void destroy_sensitive_data(struct ssh *, int);
  extern struct sshbuf *loginmsg;
  extern struct sshauthopt *auth_opts;
  extern char *tun_fwd_ifnames; /* serverloop.c */
-@@ -644,6 +644,14 @@ do_exec_pty(struct ssh *ssh, Session *s,
+@@ -157,6 +157,10 @@ static Session *sessions = NULL;
+ login_cap_t *lc;
+ #endif
+ 
++#ifdef SSH_AUDIT_EVENTS
++int paudit[2];
++#endif
++
+ static int is_child = 0;
+ static int in_chroot = 0;
+ 
+@@ -642,6 +646,14 @@ do_exec_pty(struct ssh *ssh, Session *s,
  	/* Parent.  Close the slave side of the pseudo tty. */
  	close(ttyfd);
  
@@ -1856,42 +1951,85 @@ Index: openssh-8.9p1/session.c
  	/* Enter interactive session. */
  	s->ptymaster = ptymaster;
  	ssh_packet_set_interactive(ssh, 1,
-@@ -736,15 +744,19 @@ do_exec(struct ssh *ssh, Session *s, con
+@@ -706,15 +718,21 @@ do_exec(struct ssh *ssh, Session *s, con
  	    s->self);
  
  #ifdef SSH_AUDIT_EVENTS
 +	if (s->command != NULL || s->command_handle != -1)
 +		fatal("do_exec: command already set");
  	if (command != NULL)
--		mm_audit_run_command(command);
+-		PRIVSEP(audit_run_command(command));
 +		s->command = xstrdup(command);
  	else if (s->ttyfd == -1) {
  		char *shell = s->pw->pw_shell;
  
  		if (shell[0] == '\0')	/* empty shell means /bin/sh */
  			shell =_PATH_BSHELL;
--		mm_audit_run_command(shell);
+-		PRIVSEP(audit_run_command(shell));
 +		s->command = xstrdup(shell);
  	}
 +	if (s->command != NULL && s->ptyfd == -1)
-+		s->command_handle = mm_audit_run_command(ssh, s->command);
++		s->command_handle = PRIVSEP(audit_run_command(ssh, s->command));
++	if (pipe(paudit) < 0)
++		fatal("pipe: %s", strerror(errno));
  #endif
  	if (s->ttyfd != -1)
  		ret = do_exec_pty(ssh, s, command);
-@@ -1550,8 +1562,11 @@ do_child(struct ssh *ssh, Session *s, co
+@@ -730,6 +748,20 @@ do_exec(struct ssh *ssh, Session *s, con
+ 	 */
+ 	sshbuf_reset(loginmsg);
+ 
++#ifdef SSH_AUDIT_EVENTS
++	close(paudit[1]);
++	if (use_privsep && ret == 0) {
++		/*
++		 * Read the audit messages from forked child and send them
++		 * back to monitor. We don't want to communicate directly,
++		 * because the messages might get mixed up.
++		 * Continue after the pipe gets closed (all messages sent).
++		 */
++		ret = mm_forward_audit_messages(paudit[0]);
++	}
++	close(paudit[0]);
++#endif /* SSH_AUDIT_EVENTS */
++
+ 	return ret;
+ }
+ 
+@@ -1530,11 +1562,30 @@ do_child(struct ssh *ssh, Session *s, co
+ 	int env_size;
+ 	int r = 0;
+ 
++#ifdef SSH_AUDIT_EVENTS
++	int pparent = paudit[1];
++	close(paudit[0]);
++	/* Hack the monitor pipe to avoid race condition with parent */
++	if (use_privsep)
++		mm_set_monitor_pipe(pparent);
++#endif
++
  	sshpkt_fmt_connection_id(ssh, remote_id, sizeof(remote_id));
  
  	/* remove hostkey from the child's memory */
 -	destroy_sensitive_data();
-+	destroy_sensitive_data(ssh);
- 	ssh_packet_clear_keys(ssh);
-+	/* Don't audit this - both us and the parent would be talking to the
-+	   monitor over a single socket, with no synchronization. */
+-	ssh_packet_clear_keys(ssh);
++	destroy_sensitive_data(ssh, use_privsep);
++	ssh_packet_clear_keys_noaudit(ssh);
++	/*
++	 * We can audit this, because we hacked the pipe to direct the
++	 * messages over postauth child. But this message requires an answer
++	 * which we can't do using a one-way pipe.
++	 */
 +	packet_destroy_all(ssh, 0, 1);
++
++#ifdef SSH_AUDIT_EVENTS
++	/* Notify parent that we are done */
++	close(pparent);
++#endif
  
  	/* Force a password change */
  	if (s->authctxt->force_pwchange) {
-@@ -1763,6 +1778,9 @@ session_unused(int id)
+@@ -1743,6 +1794,9 @@ session_unused(int id)
  	sessions[id].ttyfd = -1;
  	sessions[id].ptymaster = -1;
  	sessions[id].x11_chanids = NULL;
@@ -1901,7 +2039,7 @@ Index: openssh-8.9p1/session.c
  	sessions[id].next_unused = sessions_first_unused;
  	sessions_first_unused = id;
  }
-@@ -1843,6 +1861,19 @@ session_open(Authctxt *authctxt, int cha
+@@ -1822,6 +1876,19 @@ session_open(Authctxt *authctxt, int cha
  }
  
  Session *
@@ -1912,7 +2050,7 @@ Index: openssh-8.9p1/session.c
 +		if (s->used)
 +			return s;
 +	}
-+	debug_f("unknown id %d", id);
++	debug("%s: unknown id %d", __func__, id);
 +	session_dump();
 +	return NULL;
 +}
@@ -1921,7 +2059,7 @@ Index: openssh-8.9p1/session.c
  session_by_tty(char *tty)
  {
  	int i;
-@@ -2450,6 +2481,32 @@ session_exit_message(struct ssh *ssh, Se
+@@ -2429,6 +2496,32 @@ session_exit_message(struct ssh *ssh, Se
  		chan_write_failed(ssh, c);
  }
  
@@ -1943,7 +2081,7 @@ Index: openssh-8.9p1/session.c
 +{
 +	if (s->command != NULL) {
 +		if (s->command_handle != -1)
-+			mm_audit_end_command(ssh, s->command_handle, s->command);
++			PRIVSEP(audit_end_command(ssh, s->command_handle, s->command));
 +		free(s->command);
 +		s->command = NULL;
 +		s->command_handle = -1;
@@ -1954,7 +2092,7 @@ Index: openssh-8.9p1/session.c
  void
  session_close(struct ssh *ssh, Session *s)
  {
-@@ -2463,6 +2520,10 @@ session_close(struct ssh *ssh, Session *
+@@ -2470,6 +2563,10 @@ session_close(struct ssh *ssh, Session *
  
  	if (s->ttyfd != -1)
  		session_pty_cleanup(s);
@@ -1965,7 +2103,7 @@ Index: openssh-8.9p1/session.c
  	free(s->term);
  	free(s->display);
  	free(s->x11_chanids);
-@@ -2537,14 +2598,14 @@ session_close_by_channel(struct ssh *ssh
+@@ -2544,14 +2641,14 @@ session_close_by_channel(struct ssh *ssh
  }
  
  void
@@ -1982,7 +2120,7 @@ Index: openssh-8.9p1/session.c
  			else
  				session_close(ssh, s);
  		}
-@@ -2671,6 +2732,15 @@ do_authenticated2(struct ssh *ssh, Authc
+@@ -2677,6 +2774,15 @@ do_authenticated2(struct ssh *ssh, Authc
  	server_loop2(ssh, authctxt);
  }
  
@@ -1998,10 +2136,10 @@ Index: openssh-8.9p1/session.c
  void
  do_cleanup(struct ssh *ssh, Authctxt *authctxt)
  {
-@@ -2734,7 +2804,7 @@ do_cleanup(struct ssh *ssh, Authctxt *au
+@@ -2740,7 +2846,7 @@ do_cleanup(struct ssh *ssh, Authctxt *au
  	 * or if running in monitor.
  	 */
- 	if (mm_is_monitor())
+ 	if (!use_privsep || mm_is_monitor())
 -		session_destroy_all(ssh, session_pty_cleanup2);
 +		session_destroy_all(ssh, do_cleanup_one_session);
  }
@@ -2042,34 +2180,6 @@ Index: openssh-8.9p1/sshd.c
 ===================================================================
 --- openssh-8.9p1.orig/sshd.c
 +++ openssh-8.9p1/sshd.c
-@@ -219,6 +219,15 @@ close_listen_socks(void)
- 	num_listen_socks = 0;
- }
- 
-+/*
-+ * Is this process listening for clients (i.e. not specific to any specific
-+ * client connection?)
-+ */
-+int listening_for_clients(void)
-+{
-+	return num_listen_socks > 0;
-+}
-+
- /* Allocate and initialise the children array */
- static void
- child_alloc(void)
-@@ -897,6 +906,7 @@ server_accept_loop(int *sock_in, int *so
- 		if (received_sigterm) {
- 			logit("Received signal %d; terminating.",
- 			    (int) received_sigterm);
-+                       /* destroy_sensitive_data(ssh, 0); FIXME */
- 			close_listen_socks();
- 			if (options.pid_file != NULL)
- 				unlink(options.pid_file);
-Index: openssh-8.9p1/sshd-session.c
-===================================================================
---- openssh-8.9p1.orig/sshd-session.c
-+++ openssh-8.9p1/sshd-session.c
 @@ -125,6 +125,7 @@
  #include "ssh-gss.h"
  #endif
@@ -2079,18 +2189,34 @@ Index: openssh-8.9p1/sshd-session.c
  #include "auth-options.h"
  #include "version.h"
 @@ -265,8 +266,8 @@ struct sshbuf *loginmsg;
- struct sshbuf *loginmsg;
+ struct passwd *privsep_pw = NULL;
  
  /* Prototypes for various functions defined later in this file. */
 -void destroy_sensitive_data(void);
 -void demote_sensitive_data(void);
-+void destroy_sensitive_data(struct ssh *);
++void destroy_sensitive_data(struct ssh *, int);
 +void demote_sensitive_data(struct ssh *);
  static void do_ssh2_kex(struct ssh *);
  
- /*
-@@ -382,18 +383,40 @@ grace_alarm_handler(int sig)
- 	_exit(EXIT_LOGIN_GRACE);
+ static char *listener_proctitle;
+@@ -284,6 +285,15 @@ close_listen_socks(void)
+ 	num_listen_socks = 0;
+ }
+ 
++/*
++ * Is this process listening for clients (i.e. not specific to any specific
++ * client connection?)
++ */
++int listening_for_clients(void)
++{
++	return num_listen_socks >= 0;
++}
++
+ static void
+ close_startup_pipes(void)
+ {
+@@ -382,18 +392,45 @@ grace_alarm_handler(int sig)
+ 	    ssh_remote_port(the_active_state));
  }
  
 -/* Destroy the host and server keys.  They will no longer be needed. */
@@ -2100,7 +2226,7 @@ Index: openssh-8.9p1/sshd-session.c
 + */
  void
 -destroy_sensitive_data(void)
-+destroy_sensitive_data(struct ssh *ssh)
++destroy_sensitive_data(struct ssh *ssh, int privsep)
  {
  	u_int i;
 +#ifdef SSH_AUDIT_EVENTS
@@ -2122,7 +2248,12 @@ Index: openssh-8.9p1/sshd-session.c
  			sensitive_data.host_keys[i] = NULL;
 +			if (fp != NULL) {
 +#ifdef SSH_AUDIT_EVENTS
-+				audit_destroy_sensitive_data(ssh, fp, pid, uid);
++				if (privsep)
++					PRIVSEP(audit_destroy_sensitive_data(ssh, fp,
++						pid, uid));
++				else
++					audit_destroy_sensitive_data(ssh, fp,
++						pid, uid);
 +#endif
 +				free(fp);
 +			}
@@ -2133,7 +2264,7 @@ Index: openssh-8.9p1/sshd-session.c
  			sshkey_free(sensitive_data.host_certificates[i]);
  			sensitive_data.host_certificates[i] = NULL;
  		}
-@@ -402,20 +430,38 @@ destroy_sensitive_data(void)
+@@ -402,20 +439,38 @@ destroy_sensitive_data(void)
  
  /* Demote private to public keys for network child */
  void
@@ -2173,7 +2304,7 @@ Index: openssh-8.9p1/sshd-session.c
  		}
  		/* Certs do not need demotion */
  	}
-@@ -443,7 +489,7 @@ reseed_prngs(void)
+@@ -443,7 +498,7 @@ reseed_prngs(void)
  }
  
  static void
@@ -2182,7 +2313,7 @@ Index: openssh-8.9p1/sshd-session.c
  {
  	gid_t gidset[1];
  
-@@ -458,7 +504,7 @@ privsep_preauth_child(void)
+@@ -458,7 +513,7 @@ privsep_preauth_child(void)
  	reseed_prngs();
  
  	/* Demote the private keys to public keys. */
@@ -2191,16 +2322,16 @@ Index: openssh-8.9p1/sshd-session.c
  
  	/* Demote the child */
  	if (privsep_chroot) {
-@@ -493,7 +539,7 @@ privsep_preauth(struct ssh *ssh)
- 	pmonitor->m_pkex = &ssh->kex;
+@@ -493,7 +548,7 @@ privsep_preauth(struct ssh *ssh)
  
- 	box = ssh_sandbox_init(pmonitor);
+ 	if (use_privsep == PRIVSEP_ON)
+ 		box = ssh_sandbox_init(pmonitor);
 -	pid = fork();
 +	pmonitor->m_pid = pid = fork();
  	if (pid == -1) {
  		fatal("fork of unprivileged child failed");
  	} else if (pid != 0) {
-@@ -538,7 +584,7 @@ privsep_preauth(struct ssh *ssh)
+@@ -538,7 +593,7 @@ privsep_preauth(struct ssh *ssh)
  		/* Arrange for logging to be sent to the monitor */
  		set_log_handler(mm_log_handler, pmonitor);
  
@@ -2209,7 +2340,7 @@ Index: openssh-8.9p1/sshd-session.c
  		setproctitle("%s", "[net]");
  		if (box != NULL)
  			ssh_sandbox_child(box);
-@@ -582,7 +628,7 @@ privsep_postauth(struct ssh *ssh, Authct
+@@ -582,7 +637,7 @@ privsep_postauth(struct ssh *ssh, Authct
  	pmonitor->m_sendfd = -1;
  
  	/* Demote the private keys to public keys. */
@@ -2218,17 +2349,43 @@ Index: openssh-8.9p1/sshd-session.c
  
  	reseed_prngs();
  
-@@ -2311,6 +2358,9 @@ main(int ac, char **av)
+@@ -1136,7 +1191,7 @@ server_listen(void)
+  * from this function are in a forked subprocess.
+  */
+ static void
+-server_accept_loop(int *sock_in, int *sock_out, int *newsock, int *config_s)
++server_accept_loop(struct ssh *ssh, int *sock_in, int *sock_out, int *newsock, int *config_s)
+ {
+ 	struct pollfd *pfd = NULL;
+ 	int i, j, ret, npfd;
+@@ -1179,6 +1234,7 @@ server_accept_loop(int *sock_in, int *so
+ 		if (received_sigterm) {
+ 			logit("Received signal %d; terminating.",
+ 			    (int) received_sigterm);
++			destroy_sensitive_data(ssh, 0);
+ 			close_listen_socks();
+ 			if (options.pid_file != NULL)
+ 				unlink(options.pid_file);
+@@ -2088,7 +2144,7 @@ main(int ac, char **av)
+ #endif
+ 
+ 		/* Accept a connection and return in a forked child */
+-		server_accept_loop(&sock_in, &sock_out,
++		server_accept_loop(ssh, &sock_in, &sock_out,
+ 		    &newsock, config_s);
+ 	}
+ 
+@@ -2311,6 +2367,9 @@ main(int ac, char **av)
  	do_authenticated(ssh, authctxt);
  
  	/* The connection has been terminated. */
 +	packet_destroy_all(ssh, 1, 1);
-+	destroy_sensitive_data(ssh);
++	destroy_sensitive_data(ssh, 1);
 +
  	ssh_packet_get_bytes(ssh, &ibytes, &obytes);
  	verbose("Transferred: sent %llu, received %llu bytes",
  	    (unsigned long long)obytes, (unsigned long long)ibytes);
-@@ -2491,6 +2541,15 @@ do_ssh2_kex(struct ssh *ssh)
+@@ -2491,6 +2550,15 @@ do_ssh2_kex(struct ssh *ssh)
  void
  cleanup_exit(int i)
  {
@@ -2241,17 +2398,24 @@ Index: openssh-8.9p1/sshd-session.c
 +	if (in_cleanup)
 +		_exit(i);
 +	in_cleanup = 1;
- 	extern int auth_attempted; /* monitor.c */
- 
  	if (the_active_state != NULL && the_authctxt != NULL) {
-@@ -2525,7 +2593,9 @@ cleanup_exit(int i)
- 		_exit(EXIT_AUTH_ATTEMPTED);
+ 		do_cleanup(the_active_state, the_authctxt);
+ 		if (use_privsep && privsep_is_preauth &&
+@@ -2503,9 +2571,16 @@ cleanup_exit(int i)
+ 			}
+ 		}
+ 	}
++	is_privsep_child = use_privsep && pmonitor != NULL && pmonitor->m_pid == 0;
++	if (sensitive_data.host_keys != NULL && the_active_state != NULL)
++		destroy_sensitive_data(the_active_state, is_privsep_child);
++	if (the_active_state != NULL)
++		packet_destroy_all(the_active_state, 1, is_privsep_child);
  #ifdef SSH_AUDIT_EVENTS
  	/* done after do_cleanup so it can cancel the PAM auth 'thread' */
--	if (the_active_state != NULL && mm_is_monitor())
-+       if (the_active_state != NULL &&
-+           (the_authctxt == NULL || !the_authctxt->authenticated) &&
-+           mm_is_monitor())
+-	if (the_active_state != NULL && (!use_privsep || mm_is_monitor()))
++	if (the_active_state != NULL &&
++	    (the_authctxt == NULL || !the_authctxt->authenticated) &&
++	    (!use_privsep || mm_is_monitor()))
  		audit_event(the_active_state, SSH_CONNECTION_ABANDON);
  #endif
  	_exit(i);

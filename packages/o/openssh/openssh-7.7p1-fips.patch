@@ -389,17 +389,17 @@ Index: openssh-9.6p1/hmac.c
  	    ssh_hmac_update(ctx, m, mlen) < 0 ||
 Index: openssh-9.6p1/kex.c
 ===================================================================
---- openssh-9.6p1.orig/kex-names.c
-+++ openssh-9.6p1/kex-names.c
+--- openssh-9.6p1.orig/kex.c
++++ openssh-9.6p1/kex.c
 @@ -64,6 +64,8 @@
- #include "ssherr.h"
+ #include "digest.h"
  #include "xmalloc.h"
  
 +#include "fips.h"
 +
- struct kexalg {
- 	char *name;
- 	u_int type;
+ /* prototype */
+ static int kex_choose_conf(struct ssh *, uint32_t seq);
+ static int kex_input_newkeys(int, u_int32_t, struct ssh *);
 @@ -87,7 +89,7 @@ struct kexalg {
  	int ec_nid;
  	int hash_alg;
@@ -647,8 +647,8 @@ Index: openssh-9.6p1/servconf.c
  #include "digest.h"
 +#include "fips.h"
  
- #if !defined(SSHD_PAM_SERVICE)
- # define SSHD_PAM_SERVICE		"sshd"
+ static void add_listen_addr(ServerOptions *, const char *,
+     const char *, int);
 @@ -207,6 +208,23 @@ option_clear_or_none(const char *o)
  	return o == NULL || strcasecmp(o, "none") == 0;
  }
@@ -785,8 +785,8 @@ Index: openssh-9.6p1/sshd.c
 --- openssh-9.6p1.orig/sshd.c
 +++ openssh-9.6p1/sshd.c
 @@ -128,6 +128,8 @@
- #include "addr.h"
  #include "srclimit.h"
+ #include "dh.h"
  
 +#include "fips.h"
 +
