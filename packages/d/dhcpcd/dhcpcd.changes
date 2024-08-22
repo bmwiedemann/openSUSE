@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Aug 21 10:58:36 UTC 2024 - Jorik Cronenberg <jorik.cronenberg@suse.com>
+
+- Update to 10.0.10
+  * Option 2: Fix stdin parsing
+  * IPv4LL: Restart ARP probling on address conflict
+  * DHCP: Handle option 108 correctly when receiving 0.0.0.0 OFFER
+  * DHCP: No longer set interface mtu
+  * Update privsep-linux.c to allow statx
+
+-------------------------------------------------------------------
 Mon Jul  1 11:02:27 UTC 2024 - Jorik Cronenberg <jorik.cronenberg@suse.com>
 
 - Initial packaging @ 10.0.8

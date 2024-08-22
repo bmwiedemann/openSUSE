@@ -7,4 +7,18 @@
     <comment>New dhcp client package to allow replacing of the deprecated dhclient from dhcp-server in e.g. cloud-init.</comment>
     <requestid>1185096</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>ac3a72ec34005fec757afd974d63dd08</srcmd5>
+    <version>10.0.10</version>
+    <time>1724343181</time>
+    <user>anag+factory</user>
+    <comment>- Update to 10.0.10
+  * Option 2: Fix stdin parsing
+  * IPv4LL: Restart ARP probling on address conflict
+  * DHCP: Handle option 108 correctly when receiving 0.0.0.0 OFFER
+  * DHCP: No longer set interface mtu
+  * Update privsep-linux.c to allow statx
+</comment>
+    <requestid>1195147</requestid>
+  </revision>
 </revisionlist>
