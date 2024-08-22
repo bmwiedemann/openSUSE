@@ -311,6 +311,7 @@ unsorted:
   - SDL3-devel-doc 
   - SDL_Pango-devel 
   - SDL_mixer-devel 
+  - SDL_net-devel 
   - SDL_sound-devel 
   - SHERPA-MC-devel 
   - SQLiteCpp-devel 
@@ -795,6 +796,8 @@ unsorted:
   - apg 
   - apiguardian 
   - apiguardian-javadoc 
+  - apitrace 
+  - apitrace-wrappers 
   - apk-devel 
   - apk-tools 
   - apko 
@@ -2162,8 +2165,10 @@ unsorted:
   - cinnamon-gschemas-branding-openSUSE 
   - cinnamon-gschemas-branding-upstream 
   - cinnamon-lang 
+  - cinnamon-menus-doc 
   - cinnamon-metatheme-numix 
   - cinnamon-screensaver 
+  - cinnamon-screensaver-devel 
   - cinnamon-screensaver-lang 
   - cinnamon-session 
   - cinnamon-session-lang 
@@ -3650,6 +3655,7 @@ unsorted:
   - edge-addition-planarity-suite 
   - edge-addition-planarity-suite-devel 
   - edict 
+  - edid-decode 
   - editorconfig 
   - editres 
   - ee4j 
@@ -11501,7 +11507,6 @@ unsorted:
   - libSDL_image-devel 
   - libSDL_mixer-1_2-0 
   - libSDL_net-1_2-0 
-  - libSDL_net-devel 
   - libSDL_sound-1_0-1 
   - libSDL_ttf-2_0-0 
   - libSDL_ttf-devel 
@@ -12278,10 +12283,11 @@ unsorted:
   - libcallaudio0_1-0 
   - libcallback1 
   - libcamd-doc 
-  - libcamera-base0_2-32bit 
+  - libcamera-base0_3-32bit 
+  - libcamera-cam 
   - libcamera-devel 
   - libcamera-tools 
-  - libcamera0_2-32bit 
+  - libcamera0_3-32bit 
   - libcanberra-devel 
   - libcanberra-gtk-devel 
   - libcanberra-gtk0-32bit 
@@ -12539,6 +12545,7 @@ unsorted:
   - libcryptui-devel 
   - libcrystalhd-devel 
   - libcrystalhd3 
+  - libcscreensaver-0_0_0 
   - libcsirocsa0 
   - libcsironn0 
   - libcsnd6-6_0 
@@ -12703,7 +12710,7 @@ unsorted:
   - libdispatch1_3 
   - libdisplay-info-devel 
   - libdjvulibre-devel 
-  - libdlib19_24_5 
+  - libdlib19_24_6 
   - libdlm 
   - libdlm-devel 
   - libdlm3 
@@ -12737,7 +12744,7 @@ unsorted:
   - libdovi3-32bit 
   - libdpdk-23 
   - libdqlite0 
-  - libdraco8 
+  - libdraco9 
   - libdrm-devel 
   - libdrm-devel-32bit 
   - libdrm-tools 
@@ -18770,6 +18777,7 @@ unsorted:
   - mkelfImage 
   - mkosi 
   - mkosi-initrd 
+  - mkosi-initrd-tukit 
   - mksh 
   - mksusecd 
   - mktorrent 
@@ -20823,6 +20831,8 @@ unsorted:
   - panini 
   - pantheon-agent-polkit 
   - pantheon-agent-polkit-lang 
+  - pantheon-dock 
+  - pantheon-dock-lang 
   - pantheon-wallpapers-branding-upstream 
   - paper-icon-theme 
   - paperclips 
@@ -23800,6 +23810,7 @@ unsorted:
   - python3-ldns 
   - python3-lensfun 
   - python3-libblockdev 
+  - python3-libcamera 
   - python3-libcec 
   - python3-libcomps 
   - python3-libdnf 
@@ -25009,6 +25020,7 @@ unsorted:
   - python310-cymruwhois 
   - python310-cytoolz 
   - python310-czifile 
+  - python310-dacite 
   - python310-daemonize 
   - python310-daiquiri 
   - python310-dasbus 
@@ -25202,6 +25214,7 @@ unsorted:
   - python310-docstring-to-markdown 
   - python310-docutils 
   - python310-docutils-ast-writer 
+  - python310-docx2txt 
   - python310-dogpile.cache 
   - python310-dogslow 
   - python310-dom-toml 
@@ -27397,6 +27410,7 @@ unsorted:
   - python310-ufoLib2 
   - python310-ufoProcessor 
   - python310-ufonormalizer 
+  - python310-uharfbuzz 
   - python310-uhashring 
   - python310-ujson 
   - python310-uncertainties 
@@ -28618,6 +28632,7 @@ unsorted:
   - python311-cymruwhois 
   - python311-cytoolz 
   - python311-czifile 
+  - python311-dacite 
   - python311-daemonize 
   - python311-daiquiri 
   - python311-dasbus 
@@ -28806,6 +28821,7 @@ unsorted:
   - python311-docstring-to-markdown 
   - python311-docutils 
   - python311-docutils-ast-writer 
+  - python311-docx2txt 
   - python311-dogpile.cache 
   - python311-dogslow 
   - python311-dom-toml 
@@ -30918,6 +30934,7 @@ unsorted:
   - python311-ufoLib2 
   - python311-ufoProcessor 
   - python311-ufonormalizer 
+  - python311-uharfbuzz 
   - python311-uhashring 
   - python311-ujson 
   - python311-uncertainties 
@@ -32170,6 +32187,7 @@ unsorted:
   - python312-cymruwhois 
   - python312-cytoolz 
   - python312-czifile 
+  - python312-dacite 
   - python312-daemonize 
   - python312-daiquiri 
   - python312-dasbus 
@@ -32363,6 +32381,7 @@ unsorted:
   - python312-docstring-to-markdown 
   - python312-docutils 
   - python312-docutils-ast-writer 
+  - python312-docx2txt 
   - python312-dogpile.cache 
   - python312-dogslow 
   - python312-dom-toml 
@@ -34550,6 +34569,7 @@ unsorted:
   - python312-ufoLib2 
   - python312-ufoProcessor 
   - python312-ufonormalizer 
+  - python312-uharfbuzz 
   - python312-uhashring 
   - python312-ujson 
   - python312-uncertainties 
@@ -47208,6 +47228,7 @@ unsorted:
   - typelib-1_0-Budgie-1_0 
   - typelib-1_0-BudgieRaven-1_0 
   - typelib-1_0-CMenu-3_0 
+  - typelib-1_0-CScreensaver-1_0 
   - typelib-1_0-Caja-2_0 
   - typelib-1_0-Camel-1_2 
   - typelib-1_0-Caribou-1_0 
