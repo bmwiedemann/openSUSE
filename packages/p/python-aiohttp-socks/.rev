@@ -100,4 +100,12 @@
     <comment>- Add missing buildrequire to fix Leap build error.</comment>
     <requestid>1136310</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>84f374d521522894f5490ccd43cf41c6</srcmd5>
+    <version>0.9.0</version>
+    <time>1724343230</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1195220</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Aug 21 13:18:11 UTC 2024 - Frantisek Simorda <frantisek.simorda@suse.com>
+
+- Update to 0.9.0:
+  * Fix compatibility with aiohttp v3.10
+  * Update requirements-dev.txt 
+
+-------------------------------------------------------------------
 Fri Dec 29 18:52:05 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add missing buildrequire to fix Leap build error.
