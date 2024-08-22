@@ -1,7 +1,7 @@
 #
 # spec file for package aseqview
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,7 @@ Source2:        aseqview.png
 Patch0:         aseqview-0.2.2.dif
 Patch1:         aseqview-quote-macros.patch
 Patch2:         aseqview-piano-segfault-fix.patch
+Patch3:         aseqview-gcc14-fixes.patch
 BuildRequires:  alsa-devel
 BuildRequires:  automake
 BuildRequires:  gtk2-devel
@@ -40,10 +41,7 @@ off, controls, and pitch wheels, using bar graphs as seen in many
 sequencer applications.
 
 %prep
-%setup -q
-%patch -P 0
-%patch -P 1 -p1
-%patch -P 2 -p1
+%autosetup -p1
 
 %build
 autoreconf --force --install
