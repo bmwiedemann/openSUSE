@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Aug 22 01:21:40 UTC 2024 - Michael Hamilton <michael@actrix.gen.nz>
+
+- Version 2.0.4
+  * The About-Dialog now refreshes the ddcutil version info on each invocation. 
+  * Increased dbus timeout to 10 seconds (in case numerous VDUs or errors slow down VDU detection).
+  * Dynamically enable a scroll-area when the main-panel exceeds the available screen height. 
+
+-------------------------------------------------------------------
 Mon May  6 04:18:30 UTC 2024 - Michael Hamilton <michael@actrix.gen.nz>
 
 - Version 2.0.3
