@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Aug 21 16:05:02 UTC 2024 - rrahl0@opensuse.org
+
+- Update to version 1.72.0:
+  * posture: deduplicate MAC addresses before returning them
+  * health/dns: reduce severity of DNS unavailable warning
+  * safeweb: add Server.Close method
+  * go.mod.sri: update SRI hash for go.mod changes
+  * go.{mod,sum}: migrate from nhooyr.io/websocket to github.com/coder/websocket
+  * cmd/viewer: add support for map-like container types
+- update golang(API) to 1.23
+- export version variables, to circumvent a bug
+
+-------------------------------------------------------------------
 Thu Jul 18 06:31:58 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 1.70.0:

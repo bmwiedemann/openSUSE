@@ -71,4 +71,20 @@
     to where you run the tailscale command. (forwarded request 1188314 from rrahl0)</comment>
     <requestid>1188315</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>36eddb90b0342dfa96e62d452aa268a5</srcmd5>
+    <version>1.72.0</version>
+    <time>1724343205</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.72.0:
+  * posture: deduplicate MAC addresses before returning them
+  * health/dns: reduce severity of DNS unavailable warning
+  * safeweb: add Server.Close method
+  * go.mod.sri: update SRI hash for go.mod changes
+  * go.{mod,sum}: migrate from nhooyr.io/websocket to github.com/coder/websocket
+  * cmd/viewer: add support for map-like container types
+- update golang(API) to 1.23
+- export version variables, to circumvent a bug (forwarded request 1195168 from rrahl0)</comment>
+    <requestid>1195170</requestid>
+  </revision>
 </revisionlist>
