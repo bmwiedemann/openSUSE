@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Aug 19 13:30:31 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 9.5.32:
+  * Fixed RXSS vulnerability via deep link in search results
+  * Added support for fetching latest release from GitLab
+
+-------------------------------------------------------------------
 Fri Aug  2 10:32:22 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 9.5.31:
