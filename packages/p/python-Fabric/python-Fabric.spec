@@ -1,7 +1,7 @@
 #
 # spec file for package python-Fabric
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,13 +28,17 @@ Source:         https://files.pythonhosted.org/packages/source/f/fabric/fabric-%
 Patch0:         fix-executable.patch
 # PATCH-FIX-OPENSUSE fix-test-deps.patch - remove usage of icecream and vendored libs
 Patch1:         fix-test-deps.patch
+# PATCH-FIX-UPSTREAM gh#fabric/fabric#2249
+Patch2:         support-pytest-8.patch
 BuildRequires:  %{python_module Deprecated}
 BuildRequires:  %{python_module decorator}
 BuildRequires:  %{python_module invoke >= 2.0}
 BuildRequires:  %{python_module lexicon}
 BuildRequires:  %{python_module paramiko >= 3.2}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest-relaxed}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Deprecated
@@ -42,7 +46,7 @@ Requires:       python-decorator
 Requires:       python-invoke >= 2.0
 Requires:       python-paramiko >= 3.2
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Conflicts:      python-Fabric3
 Provides:       python-Fabric2 = %{version}
 Provides:       python-Fabric3 = %{version}
@@ -74,10 +78,10 @@ Fabric itself leverages).
 sed -i 's/from invoke.vendor\./from\ /' fabric/connection.py fabric/group.py integration/concurrency.py tests/config.py tests/transfer.py tests/_util.py tests/connection.py tests/runners.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %python_clone -a %{buildroot}%{_bindir}/fab
 
@@ -95,6 +99,6 @@ sed -i 's/from invoke.vendor\./from\ /' fabric/connection.py fabric/group.py int
 %doc README.rst
 %python_alternative %{_bindir}/fab
 %{python_sitelib}/fabric
-%{python_sitelib}/fabric-%{version}*-info
+%{python_sitelib}/fabric-%{version}.dist-info
 
 %changelog

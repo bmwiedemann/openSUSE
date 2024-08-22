@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Aug 22 06:25:46 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-pytest-8.patch:
+  * Use setup_method(), not setup().
+- Switch to pyproject macros.
+
+-------------------------------------------------------------------
 Thu Oct 19 08:51:37 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Update to 3.2.2

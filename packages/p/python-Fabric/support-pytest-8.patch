@@ -1,0 +1,142 @@
+From 0bb53464b407dde93beaca6c985d4fa86e9b3989 Mon Sep 17 00:00:00 2001
+From: "Jesse P. Johnson" <jpj6652@gmail.com>
+Date: Sat, 25 Feb 2023 15:02:01 -0500
+Subject: [PATCH] test: resolve nose deprecation warnings with pytest
+
+---
+ integration/concurrency.py | 2 +-
+ integration/connection.py  | 4 ++--
+ integration/transfer.py    | 4 ++--
+ tests/config.py            | 2 +-
+ tests/connection.py        | 6 +++---
+ tests/group.py             | 2 +-
+ tests/transfer.py          | 2 +-
+ 7 files changed, 11 insertions(+), 11 deletions(-)
+
+diff --git a/integration/concurrency.py b/integration/concurrency.py
+index c6b2d56b56..82f905000f 100644
+--- a/integration/concurrency.py
++++ b/integration/concurrency.py
+@@ -26,7 +26,7 @@ class concurrency:
+ 
+     # TODO: spin up multiple temp SSHDs / Paramiko servers / ???
+ 
+-    def setup(self):
++    def setup_method(self):
+         cxn1 = Connection("localhost")
+         cxn2 = Connection("localhost")
+         cxn3 = Connection("localhost")
+diff --git a/integration/connection.py b/integration/connection.py
+index 1fa15a8c4b..3f72741b6a 100644
+--- a/integration/connection.py
++++ b/integration/connection.py
+@@ -96,7 +96,7 @@ def mixed_use_of_local_and_run(self):
+         assert result.stdout == "foo\n"
+ 
+     class sudo:
+-        def setup(self):
++        def setup_method(self):
+             # NOTE: assumes a user configured for passworded (NOT
+             # passwordless)_sudo, whose password is 'mypass', is executing the
+             # test suite. I.e. our travis-ci setup.
+@@ -137,7 +137,7 @@ def large_remote_commands_finish_cleanly(self):
+         assert len(lines) == len(words)
+ 
+     class command_timeout:
+-        def setup(self):
++        def setup_method(self):
+             self.cxn = Connection("localhost")
+ 
+         def does_not_raise_exception_when_under_timeout(self):
+diff --git a/integration/transfer.py b/integration/transfer.py
+index f55db14c0c..f918254814 100644
+--- a/integration/transfer.py
++++ b/integration/transfer.py
+@@ -13,7 +13,7 @@ def _support(*parts):
+ 
+ class Transfer_:
+     class get:
+-        def setup(self):
++        def setup_method(self):
+             self.c = Connection("localhost")
+             self.remote = _support("file.txt")
+ 
+@@ -50,7 +50,7 @@ def mode_preservation(self, tmpdir):
+             assert stat.S_IMODE(local.stat().mode) == 0o641
+ 
+     class put:
+-        def setup(self):
++        def setup_method(self):
+             self.c = Connection("localhost")
+             self.remote = path.local.mkdtemp().join("file.txt").realpath()
+ 
+diff --git a/tests/config.py b/tests/config.py
+index 1357def268..9d1c52e5f5 100644
+--- a/tests/config.py
++++ b/tests/config.py
+@@ -65,7 +65,7 @@ def uses_Fabric_prefix(self):
+         assert Config().prefix == "fabric"
+ 
+     class from_v1:
+-        def setup(self):
++        def setup_method(self):
+             self.env = faux_v1_env()
+ 
+         def _conf(self, **kwargs):
+diff --git a/tests/connection.py b/tests/connection.py
+index 168c2b2def..a6495d93c4 100644
+--- a/tests/connection.py
++++ b/tests/connection.py
+@@ -380,7 +380,7 @@ def explicit_False_turns_off_feature(self):
+                     assert cxn.gateway is False
+ 
+             class proxy_jump:
+-                def setup(self):
++                def setup_method(self):
+                     self._expected_gw = Connection("jumpuser@jumphost:373")
+ 
+                 def wins_over_default(self):
+@@ -515,7 +515,7 @@ def may_be_given(self):
+                 assert cxn.inline_ssh_env is False
+ 
+     class from_v1:
+-        def setup(self):
++        def setup_method(self):
+             self.env = faux_v1_env()
+ 
+         def _cxn(self, **kwargs):
+@@ -1054,7 +1054,7 @@ def calls_Remote_run_with_command_and_kwargs_and_returns_its_result(
+                 assert r is remote.run.return_value
+ 
+     class shell:
+-        def setup(self):
++        def setup_method(self):
+             self.defaults = Config.global_defaults()["run"]
+ 
+         @patch(remote_shell_path)
+diff --git a/tests/group.py b/tests/group.py
+index c928a33357..56fe4159cb 100644
+--- a/tests/group.py
++++ b/tests/group.py
+@@ -180,7 +180,7 @@ def returns_results_mapping(self, method):
+ 
+ 
+ class ThreadingGroup_:
+-    def setup(self):
++    def setup_method(self):
+         self.cxns = [Connection(x) for x in ("host1", "host2", "host3")]
+ 
+     @mark.parametrize("method", ALL_METHODS)
+diff --git a/tests/transfer.py b/tests/transfer.py
+index 5233cf6768..f6398a5dfb 100644
+--- a/tests/transfer.py
++++ b/tests/transfer.py
+@@ -129,7 +129,7 @@ def result_contains_fd_for_local_path(self, sftp_objs):
+                 assert result.local is fd
+ 
+         class mode_concerns:
+-            def setup(self):
++            def setup_method(self):
+                 self.attrs = SFTPAttributes()
+                 self.attrs.st_mode = 0o100644
+ 

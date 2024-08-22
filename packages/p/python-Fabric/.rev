@@ -419,4 +419,14 @@
     <comment></comment>
     <requestid>1118991</requestid>
   </revision>
+  <revision rev="45" vrev="2">
+    <srcmd5>07b84b8767c5173c23b0455f1df8fbb5</srcmd5>
+    <version>3.2.2</version>
+    <time>1724343233</time>
+    <user>anag+factory</user>
+    <comment>- Add patch support-pytest-8.patch:
+  * Use setup_method(), not setup().
+- Switch to pyproject macros.</comment>
+    <requestid>1195241</requestid>
+  </revision>
 </revisionlist>
