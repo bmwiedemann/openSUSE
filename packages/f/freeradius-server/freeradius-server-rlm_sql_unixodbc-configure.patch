@@ -1,7 +1,7 @@
-Index: freeradius-server-3.2.3/src/modules/rlm_sql/drivers/rlm_sql_unixodbc/configure
+Index: freeradius-server-3.2.5/src/modules/rlm_sql/drivers/rlm_sql_unixodbc/configure
 ===================================================================
---- freeradius-server-3.2.3.orig/src/modules/rlm_sql/drivers/rlm_sql_unixodbc/configure
-+++ freeradius-server-3.2.3/src/modules/rlm_sql/drivers/rlm_sql_unixodbc/configure
+--- freeradius-server-3.2.5.orig/src/modules/rlm_sql/drivers/rlm_sql_unixodbc/configure
++++ freeradius-server-3.2.5/src/modules/rlm_sql/drivers/rlm_sql_unixodbc/configure
 @@ -1884,7 +1884,7 @@ if test "${with_unixodbc_dir+set}" = set
  fi
  

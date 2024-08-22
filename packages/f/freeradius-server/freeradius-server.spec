@@ -18,7 +18,7 @@
 
 %define unitname radiusd
 Name:           freeradius-server
-Version:        3.2.4
+Version:        3.2.5
 Release:        0
 
 # Disable FreeTDS on SLE12. We never shipped it enabled with FreeTDS.

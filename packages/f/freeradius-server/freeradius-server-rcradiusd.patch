@@ -1,6 +1,8 @@
---- freeradius-server-3.0.8.orig/suse/rcradiusd	2015-04-22 19:21:34.000000000 +0200
-+++ freeradius-server-3.0.8.suse/suse/rcradiusd	2015-04-23 10:02:01.393574445 +0200
-@@ -50,6 +50,10 @@
+Index: freeradius-server-3.2.5/suse/rcradiusd
+===================================================================
+--- freeradius-server-3.2.5.orig/suse/rcradiusd
++++ freeradius-server-3.2.5/suse/rcradiusd
+@@ -50,6 +50,10 @@ case "$1" in
      start)
          configtest || { rc_failed 150; rc_exit; }
          echo -n "Starting RADIUS daemon "
