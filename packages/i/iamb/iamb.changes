@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Wed Aug 21 17:18:10 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Temporarily remove failing tests.
+- Update to 0.0.10:
+  Features
+  * Support marking a room as a direct message room
+  * Add external_edit_file_suffix to config
+  * Allow typing newline with <S-Enter> and enable keyboard
+    enhancement protocol
+  * Display file sizes for attachments
+  * Implement set/unset/show for alternative and canonical aliases
+  * Allow notifications on open room if terminal not focused
+  * Add command to set per-room notification levels
+  * Add message slash commands
+  * Support reacting literally with non-Emojis
+  * Include room name in desktop notifications
+  * Add ban/unban/kick room commands
+  * Add command for setting room history visibility
+  * Add commands for viewing and clearing unreads
+  Documentation
+  * Update Welcome window to reference TOML instead of JSON
+  * Add FreeBSD installation instructions
+  * Fix openSUSE link and installation command in README
+  * Add Hombrew as install method on MacOS
+  Fixes
+  * Fix reaction count when there are duplicate reaction events
+    from a user
+  * Prevent sending duplicate reaction events
+  * Use color overrides for users when message_user_color is
+    enabled
+  * Fix image preview placement when messages are preceded by a
+    date in the timeline
+  * Trim :editor output and check if it's empty
+  * Add error for missing username on :logout
+  * Remove timeout for desktop notifications
+  * Fix underflow panics when using TextPrinter::push_span_nobreak
+  * Remove modifyOtherKeys enablement
+  * Avoid treating simple messages as Markdown
+  * Handle message marks on non-64-bit platforms
+
+-------------------------------------------------------------------
+Thu Jun  6 03:45:12 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Improve description text
+- Remove deprecated Group tag
+
+-------------------------------------------------------------------
+Sat May 25 17:23:56 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Fix Debian install by setting maintainer in output
+
+-------------------------------------------------------------------
 Fri Apr 26 02:16:06 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Enable building on more distro targets.

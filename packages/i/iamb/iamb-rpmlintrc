@@ -1,0 +1,2 @@
+# providing deb packages from this spec requires the tag to be hard coded
+addFilter("W: hardcoded-packager-tag");

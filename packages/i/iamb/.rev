@@ -15,4 +15,52 @@
     <comment></comment>
     <requestid>1170219</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>b17230039c6a675d285c7099c5958c61</srcmd5>
+    <version>0.0.10</version>
+    <time>1724343212</time>
+    <user>anag+factory</user>
+    <comment>- Temporarily remove failing tests.
+- Update to 0.0.10:
+  Features
+  * Support marking a room as a direct message room
+  * Add external_edit_file_suffix to config
+  * Allow typing newline with &lt;S-Enter&gt; and enable keyboard
+    enhancement protocol
+  * Display file sizes for attachments
+  * Implement set/unset/show for alternative and canonical aliases
+  * Allow notifications on open room if terminal not focused
+  * Add command to set per-room notification levels
+  * Add message slash commands
+  * Support reacting literally with non-Emojis
+  * Include room name in desktop notifications
+  * Add ban/unban/kick room commands
+  * Add command for setting room history visibility
+  * Add commands for viewing and clearing unreads
+  Documentation
+  * Update Welcome window to reference TOML instead of JSON
+  * Add FreeBSD installation instructions
+  * Fix openSUSE link and installation command in README
+  * Add Hombrew as install method on MacOS
+  Fixes
+  * Fix reaction count when there are duplicate reaction events
+    from a user
+  * Prevent sending duplicate reaction events
+  * Use color overrides for users when message_user_color is
+    enabled
+  * Fix image preview placement when messages are preceded by a
+    date in the timeline
+  * Trim :editor output and check if it's empty
+  * Add error for missing username on :logout
+  * Remove timeout for desktop notifications
+  * Fix underflow panics when using TextPrinter::push_span_nobreak
+  * Remove modifyOtherKeys enablement
+  * Avoid treating simple messages as Markdown
+  * Handle message marks on non-64-bit platforms
+- Improve description text
+- Remove deprecated Group tag
+- Fix Debian install by setting maintainer in output
+</comment>
+    <requestid>1195185</requestid>
+  </revision>
 </revisionlist>

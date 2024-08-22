@@ -1,7 +1,7 @@
 <services>
   <service name="download_files" mode="manual"/>
   <service name="cargo_vendor" mode="manual">
-    <param name="srcdir">iamb</param>
+    <param name="src">iamb-*.gz</param>
     <param name="compression">zst</param>
     <param name="update">false</param>
   </service>

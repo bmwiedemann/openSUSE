@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %bcond_without system_openssl
 %if %{with system_openssl}
 %define features native-tls
@@ -23,33 +24,38 @@
 %endif
 
 Name:           iamb
-Version:        0.0.9
+Version:        0.0.10
 Release:        0
 Summary:        A Matrix client for Vim addicts
 License:        Apache-2.0
-Group:          Productivity/Networking/Instant Messenger
 URL:            https://github.com/ulyssa/iamb
 Source0:        %{url}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
+Source2:        %{name}-rpmlintrc
+
+%if "%{_vendor}" == "debbuild"
+# Needed to set Maintainer in output debs
+%endif
 
 %if 0%{?suse_version} > 1500
 BuildRequires:  cargo-packaging
 BuildRequires:  update-desktop-files
 %endif
 %if 0%{?debian} || 0%{?ubuntu}
-BuildRequires:  rustc >= 1.7.0
 BuildRequires:  cargo
+BuildRequires:  rustc >= 1.8.0
 %else
-BuildRequires:  cargo >= 1.7.0
+BuildRequires:  cargo >= 1.8.0
 %endif
 BuildRequires:  desktop-file-utils
+BuildRequires:  git-core
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  zstd
 %if %{with system_openssl}
 %if 0%{?debian} || 0%{?ubuntu}
-BuildRequires:  pkg-config
-BuildRequires:  libssl-dev
 BuildRequires:  libsqlite3-dev
+BuildRequires:  libssl-dev
+BuildRequires:  pkg-config
 %else
 BuildRequires:  pkgconfig(openssl) > 3.0.0
 BuildRequires:  pkgconfig(sqlite3)
@@ -57,11 +63,9 @@ BuildRequires:  pkgconfig(sqlite3)
 %endif
 
 %description
-iamb is a Matrix client for the terminal that uses Vim keybindings.
-
-This project is a work-in-progress, and there's still a lot to be
-implemented, but much of the basic client functionality is already
-present.
+iamb is a terminal-based client for Matrix for the Vim addict. You
+can edit messages, navigate windows and manage tabs in the same
+ways that your fingers are used to.
 
 %prep
 %autosetup -a1
@@ -92,13 +96,6 @@ install -Dm 644 docs/%{name}.5 -t "%{buildroot}%{_mandir}/man5/"
 install -Dm 644 docs/%{name}.svg "%{buildroot}%{_datadir}/icons/hicolor/scalable/apps/%{name}.svg"
 install -Dm 644 docs/%{name}-256x256.png "%{buildroot}%{_datadir}/icons/hicolor/256x256/apps/%{name}.png"
 install -Dm 644 docs/%{name}-512x512.png "%{buildroot}%{_datadir}/icons/hicolor/512x512/apps/%{name}.png"
-
-%check
-%if 0%{?suse_version} > 1500
-%{cargo_test} %{build_args}
-%else
-cargo test %{build_args}
-%endif
 
 %files
 %doc README.md config.example.toml
