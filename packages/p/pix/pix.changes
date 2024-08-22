@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Aug 12 09:53:45 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 3.4.3:
+  * Update translations
+- update to 3.4.2:
+  * Remove dependency on unmaintained gtk-clutter, disable slideshow
+  * Add missing xlib dependency
+- update to 3.4.1:
+  * Update translations
+  * fix missing type cast and invalid return type gcc errors
+- update to 3.4.0:
+  * Update translations
+  * Switch to libwebkit2gtk-4.1
+- update to 3.3.0-unstable:
+  * apply jxl patch from gthumb, adds support for jxl-0.9.0
+- update spec file to newer standards, remove older Leap releases
+  and be more specific which BuildFlags are enabled
+- remove patches 205.patch and pix-3.0.2-no-return.patch
+- remove support for older openSUSE Leap releases (< 1500)
+
+
+-------------------------------------------------------------------
 Thu Feb  1 09:29:57 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 3.2.2:

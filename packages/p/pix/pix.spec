@@ -17,23 +17,18 @@
 
 
 Name:           pix
-Version:        3.2.2
+Version:        3.4.3
 Release:        0
 Summary:        Image viewer and browser utility
 License:        GPL-2.0-or-later
-Group:          Productivity/Graphics/Viewers
 URL:            https://github.com/linuxmint/pix
-Source0:        https://github.com/linuxmint/pix/archive/refs/tags/%{version}.tar.gz
-Patch0:         pix-3.0.2-no-return.patch
-Patch1:         https://patch-diff.githubusercontent.com/raw/linuxmint/pix/pull/205.patch
+Source0:        %{url}/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  bison
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  flex
 BuildRequires:  gcc-c++
 BuildRequires:  itstool
-BuildRequires:  libjpeg-devel
-BuildRequires:  libtiff-devel
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
@@ -50,19 +45,19 @@ BuildRequires:  pkgconfig(gstreamer-video-1.0)
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(libbrasero-burn3) >= 3.2.0
 BuildRequires:  pkgconfig(libheif)
+BuildRequires:  pkgconfig(libjpeg)
 BuildRequires:  pkgconfig(libjxl)
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(libraw)
 BuildRequires:  pkgconfig(librsvg-2.0) >= 2.34.0
 BuildRequires:  pkgconfig(libsecret-1)
 BuildRequires:  pkgconfig(libsoup-gnome-2.4) >= 2.36.0
+BuildRequires:  pkgconfig(libtiff-4)
 BuildRequires:  pkgconfig(libwebp) >= 0.2.0
 BuildRequires:  pkgconfig(sm) >= 1.0.0
 BuildRequires:  pkgconfig(webkit2gtk-4.0)
 BuildRequires:  pkgconfig(xapp) >= 2.5.0
 BuildRequires:  pkgconfig(zlib)
-Recommends:     %{name}-lang
-%glib2_gsettings_schema_requires
 
 %description
 pix lets you browse your hard disk, showing you thumbnails of
@@ -85,38 +80,48 @@ It also lets you view single files (including GIF animations), add
 comments to images, organise images in catalogs, print images, view
 slide shows, set your desktop background, and more.
 
+%package doc
+Summary:        Documentation for %{name}
+BuildArch:      noarch
+
+%description doc
+This package offers you extended HTML documentation for %{name}
+
 %prep
-%autosetup -p1
+%autosetup
 
 %build
-%meson
+%meson \
+  -Dwarn-deprecated=true \
+  -Drun-in-place=false \
+  -Dexiv2=true \
+  -Dclutter=true \
+  -Dgstreamer=true \
+  -Dlibchamplain=true \
+  -Dlcms2=true \
+  -Dcolord=true \
+  -Dlibtiff=true \
+  -Dlibwebp=true \
+  -Dlibjxl=true \
+  -Dlibheif=true \
+  -Dlibraw=true \
+  -Dlibrsvg=true \
+  -Dlibsecret=true \
+  -Dwebservices=true \
+  -Dlibbrasero=true
 %meson_build
 
 %install
 %meson_install
 
-find %{buildroot} -type f -name "*.la" -delete -print
 %suse_update_desktop_file %{name}
 %suse_update_desktop_file %{name}-import
 %find_lang %{name} %{?no_lang_C}
-%fdupes %{buildroot}%{_prefix}
-
-%if 0%{?suse_version} < 1500
-%post
-%desktop_database_post
-%icon_theme_cache_post
-%glib2_gsettings_schema_post
-
-%postun
-%desktop_database_postun
-%icon_theme_cache_postun
-%glib2_gsettings_schema_postun
-%endif
+%fdupes %{buildroot}
 
 %files
 %license COPYING
-%doc README.md debian/changelog
-%doc %{_datadir}/help/C/%{name}/
+%doc README.md AUTHORS MAINTAINERS PERFORMANCE
 %{_bindir}/%{name}
 %{_libdir}/%{name}/
 %{_datadir}/%{name}/
@@ -132,5 +137,8 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_includedir}/%{name}
 %{_datadir}/aclocal/%{name}.m4
 %{_libdir}/pkgconfig/%{name}.pc
+
+%files doc
+%{_datadir}/help/C/%{name}
 
 %changelog
