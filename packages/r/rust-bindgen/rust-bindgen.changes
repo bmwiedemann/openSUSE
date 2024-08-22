@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Wed Aug 21 06:48:23 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 0.70.1:
+  * Revert "Only trigger the publish workflow manually"
+  * Fix `collapsible_match` clippy warning
+  * Add `#[clippy::allow]` attribute to `const` layout tests
+  * Fix creduce example
+  * Fix creduce install link
+  * Fix create-tag.yml
+
+-------------------------------------------------------------------
+Mon Aug 19 19:03:36 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 0.70.0:
+  * Fix generation of extern "C" blocks with llvm 18
+  * Update shlex dependency (RUSTSEC-2024-0006, boo#1229375)
+  * Try to avoid repr(packed) for explicitly aligned types when not
+    needed
+  * Support Float16
+  * Fix alignment contribution from bitfields
+  * Replace peeking_take_while by itertools
+  * Add blocklist_var
+  * Stabilize thiscall_abi
+  * Allow older itertools
+  * Add target mappings for riscv64imac and riscv32imafc.
+  * Add a complex macro fallback API
+  * Add option to use DST structs for flexible arrays
+  * Add option to dynamically load variables
+  * Add option in CLI to use rustified non-exhaustive enums
+  * Remove which and lazy-static dependencies
+  * Generate compile-time layout tests
+  * Print bindgen-cli errors to stderr instead of stdout
+  * Fix --formatter=prettyplease not working in bindgen-cli by
+    adding prettyplease feature and enabling it by default for
+    bindgen-cli
+  * Fix --allowlist-item so anonymous enums are no longer ignored
+  * Use clang_getFileLocation instead of clang_getSpellingLocation
+    to fix clang-trun
+  * Fix generated constants: f64::INFINITY, f64::NEG_ INFINITY,
+    f64::NAN
+  * Update tempfile and rustix due to GHSA-c827-hfw6-qwvm (boo#1229376)
+
+-------------------------------------------------------------------
 Wed Nov 15 15:11:25 UTC 2023 - Paolo Perego <paolo.perego@suse.com>
 
 - Updated to version 0.69.1

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Aug 17 10:27:01 UTC 2024 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to version 3.7:
+  * Changed
+    + Refactor abbr Extension
+  * Fixed
+    + Fixed links to source code on GitHub from the documentation
+      (#1453).
+- rename source tarball to markdown to match upstream
+
+-------------------------------------------------------------------
 Mon Aug 12 14:47:54 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Split the package into multibuild with tests separate (to

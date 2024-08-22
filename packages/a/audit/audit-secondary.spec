@@ -1,7 +1,7 @@
 #
 # spec file for package audit-secondary
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -206,8 +206,10 @@ for prog in auditctl auditd ausearch autrace aureport augenrules; do
 done
 %endif
 #END-USR-MERGE
+%if 0%{?suse_version} < 1550
 # rcauditd symlink
 ln -s service %{buildroot}%{_sbindir}/rcauditd
+%endif
 chmod 0644 %{buildroot}%{_unitdir}/auditd.service
 chmod 0644 %{buildroot}%{_unitdir}/augenrules.service
 
@@ -294,7 +296,9 @@ fi
 %dir %attr(700,root,root) %{_localstatedir}/spool/audit
 %{_unitdir}/auditd.service
 %{_unitdir}/augenrules.service
+%if 0%{?suse_version} < 1550
 %{_sbindir}/rcauditd
+%endif
 %{_datadir}/audit/
 
 %files -n system-group-audit

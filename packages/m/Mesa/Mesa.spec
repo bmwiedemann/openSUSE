@@ -178,6 +178,7 @@ Patch11:        u_0001-intel-genxml-Drop-from-__future__-import-annotations.patc
 Patch12:        u_0002-intel-genxml-Add-a-untyped-OrderedDict-fallback-for-.patch
 Patch13:        python36-buildfix1.patch
 Patch14:        python36-buildfix2.patch
+Patch15:        u_fix_rust_bindgen.patch
 # never to be upstreamed
 Patch54:        n_drirc-disable-rgb10-for-chromium-on-amd.patch
 Patch58:        u_dep_xcb.patch
@@ -830,6 +831,7 @@ cp %{SOURCE6} subprojects/packagecache/
 %if 0%{?suse_version} < 1550
 %patch -P 14 -p1
 %endif
+%patch -P 15 -p1
 # no longer needed since gstreamer-plugins-vaapi 1.18.4
 %if 0%{?suse_version} < 1550
 %patch -P 54 -p1

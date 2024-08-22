@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Aug 21 12:25:01 UTC 2024 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.94.8
+
+- Update 2.94.8
+  * Convert variablelist into a HTML tab structure (#611)
+  * Use correct stylesheet version in Makefile
+  * Fix typo in json-ld-seriesname (Products, plural)
+
+
+-------------------------------------------------------------------
 Thu Jul  4 13:25:37 UTC 2024 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.94.7
 
 Spec file change:

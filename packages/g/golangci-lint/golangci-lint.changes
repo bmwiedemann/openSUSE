@@ -1,4 +1,91 @@
 -------------------------------------------------------------------
+Wed Aug 21 02:24:50 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 1.60.2:
+  * build(deps): bump github.com/securego/gosec/v2 from 5f0084eb01a9 to 81cda2f91fbe (#4927)
+  * dev: fix GO_VERSION in post release workflow (#4926)
+  * exportloopref: deprecation (#4916)
+  * chore: update gofmt (#4923)
+  * build(deps): bump github.com/tomarrell/wrapcheck/v2 from 2.8.3 to 2.9.0 (#4921)
+  * build(deps): bump mvdan.cc/gofumpt from 0.6.0 to 0.7.0 (#4922)
+  * staticcheck: propagate Go version (#4907)
+  * gosec: add G602 analyzer (#4906)
+  * build(deps): bump honnef.co/go/tools from 0.5.0 to 0.5.1 (#4911)
+  * docs: update documentation (#4903)
+  * docs: update documentation assets (#4901)
+  * docs: update GitHub Action assets (#4902)
+
+-------------------------------------------------------------------
+Wed Aug 14 02:57:24 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 1.60.1:
+  * chore: free skip space during release
+
+-------------------------------------------------------------------
+Wed Aug 14 02:56:34 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 1.60.0:
+  * go1.23 support (#4836)
+  * build(deps): bump golang.org/x/tools from 0.23.0 to 0.24.0 (#4898)
+  * build(deps): bump github.com/polyfloyd/go-errorlint from 1.5.2 to 1.6.0 (#4899)
+  * unused: remove exported-is-used option
+  * build(deps): bump golangci/golangci-lint-action from 6.0.1 to 6.1.0 (#4893)
+  * build(deps): bump golang.org/x/oauth2 from 0.21.0 to 0.22.0 in /scripts/gen_github_action_config (#4892)
+  * unused: remove exported-is-used option (#4890)
+  * build(deps): bump github.com/mgechev/revive from 1.3.7 to 1.3.9 (#4886)
+  * build(deps): bump github.com/gofrs/flock from 0.12.0 to 0.12.1 (#4889)
+  * build(deps): bump github.com/uudashr/gocognit from 1.1.2 to 1.1.3 (#4887)
+  * build(deps): bump github.com/Crocmagnon/fatcontext from 0.3.0 to 0.4.0 (#4888)
+  * dev: add comment to clarify using empty issues slice (#4884)
+  * feat: improve processors filtering stats (#4882)
+  * docs: improve ireturn documentation (#4881)
+  * fix: typecheck issues should never be ignored (#4870)
+  * chore: fix checklist
+  * build(deps): bump golang.org/x/tools from 0.22.0 to 0.23.0 (#4868)
+  * build(deps): bump github.com/gofrs/flock from 0.10.0 to 0.12.0 (#4863)
+  * build(deps): bump github.com/valyala/quicktemplate from 1.7.0 to 1.8.0 (#4862)
+  * dev: fix code QL warning
+  * docs: improve grammar of new linter checklist (#4861)
+  * chore: change .yaml to .yml for consistency (#4860)
+  * dev: add action to add checklist for new linter (#4855)
+  * docs: remove 'trusted by' page (#4857)
+  * docs: add link on linter without configuration (#4843)
+  * build(deps): bump github.com/ryancurrah/gomodguard from 1.3.2 to 1.3.3 (#4851)
+  * build(deps): bump github.com/gofrs/flock from 0.8.1 to 0.10.0 (#4852)
+  * build(deps): bump github.com/moricho/tparallel from 0.3.1 to 0.3.2 (#4849)
+  * dev: rewrite benchmarks (#4848)
+  * dev: clean gen_github_action_config (#4847)
+  * docs: update wsl documentation (#4846)
+  * chore: update package-lock.json
+  * build(deps): bump github.com/bombsimon/wsl/v4 from 4.4.0 to 4.4.1 (#4844)
+  * build(deps): bump github.com/Antonboom/testifylint from 1.4.2 to 1.4.3 (#4839)
+  * build(deps): bump go-simpler.org/sloglint from 0.7.1 to 0.7.2 (#4840)
+  * docs: add repology package summary (#4838)
+  * dev: improve benchmark scripts (#4826)
+  * build(deps): bump github.com/jjti/go-spancheck from 0.6.1 to 0.6.2 (#4833)
+  * fix: sanitize level property for SARIF (#4831)
+  * build(deps): bump github.com/spf13/cobra from 1.7.0 to 1.8.1 (#4822)
+  * build(deps): bump github.com/sivchari/tenv from 1.9.1 to 1.10.0 (#4823)
+  * build(deps): bump github.com/Antonboom/testifylint from 1.4.1 to 1.4.2 (#4821)
+  * build(deps): bump github.com/sashamelentyev/usestdlibvars from 1.26.0 to 1.27.0 (#4820)
+  * dev: improve revive construction (#4817)
+  * dev: fix installation script for curl v8.8.0 (#4814)
+  * docs: move whole-files near of new-from-xxx (#4815)
+  * build(deps): bump braces from 3.0.2 to 3.0.3 in /docs (#4812)
+  * build(deps): bump braces from 3.0.2 to 3.0.3 in /.github/peril (#4811)
+  * build(deps): bump golang.org/x/oauth2 from 0.20.0 to 0.21.0 in /scripts/gen_github_action_config (#4810)
+  * build(deps): bump goreleaser/goreleaser-action from 5 to 6 (#4809)
+  * build(deps): bump github.com/sivchari/tenv from 1.7.1 to 1.9.1 (#4808)
+  * build(deps): bump github.com/bombsimon/wsl/v4 from 4.3.0 to 4.4.0 (#4807)
+  * build(deps): bump github.com/Antonboom/testifylint from 1.3.1 to 1.4.1 (#4798)
+  * build(deps): bump github.com/Crocmagnon/fatcontext from 0.2.2 to 0.3.0 (#4783)
+  * lll: Advertise max line length instead of just reporting failure (#4781)
+  * build(deps): bump github.com/GaijinEntertainment/go-exhaustruct/v3 from 3.2.0 to 3.3.0 (#4760)
+  * build(deps): bump github.com/bombsimon/wsl/v4 from 4.2.1 to 4.3.0 (#4799)
+  * docs: update documentation assets (#4806)
+  * docs: update GitHub Action assets (#4805)
+
+-------------------------------------------------------------------
 Sun Jun 09 18:30:53 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 1.59.1:

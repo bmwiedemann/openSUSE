@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Aug 21 06:00:12 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.4.1:
+  * Also check connection to BOSH endpoints.
+  * Add more verbose version information to --version (requires xmppsrv >= 0.3.2).
+  * Also respect custom resolver setting for host-meta(2) (via xmppsrv 0.3.1).
+
+-------------------------------------------------------------------
 Mon Aug 19 05:51:44 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.4.0:

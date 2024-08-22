@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Aug 21 12:12:40 UTC 2024 - Fabian Vogt <fvogt@suse.com>
+
+- Update to version 1.4+git8:
+  * Avoid misleading "Application returned with exit status 1" message
+  * CI: Add an ignition config which mounts /sysroot/home
+  * Bind mount API filesystems individually
+  * Check for leftover /sysroot mounts on combustion exit
+
+-------------------------------------------------------------------
 Mon Aug 12 12:52:38 UTC 2024 - Fabian Vogt <fvogt@suse.com>
 
 - Update to version 1.4+git4:

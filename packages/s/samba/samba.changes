@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Wed Aug  7 09:47:14 UTC 2024 - Noel Power <nopower@suse.com>
+
+- Fix a crash when joining offline and 'kerberos method' includes
+  keytab; (bsc#1228732).
+
+-------------------------------------------------------------------
+Tue Aug  6 10:51:13 UTC 2024 - Noel Power <noel.power@suse.com>
+
+- Update to 4.20.4
+  * --version-* options are still not ergonomic, and they reject
+    tilde characters; (bso#15673).
+
+- Update to 4.20.3
+  * Running samba-bgqd a a standalone systemd service does not
+    work; (bso#15683).
+  * When claims enabled with heimdal kerberos, unable to log on
+    to a Windows computer when user account need to change their
+    own password; (bso#15655).
+  * Invalid client warning about command line passwords;
+    (bso#15671).
+  * Version string is truncated in manpages; (bso#15672).
+  * cmdline_burn does not always burn secrets; (bso#15674).
+  * Samba does not parse SDDL found in defaultSecurityDescriptor
+    in AD_DS_Classes_Windows_Server_v1903.ldf; (bso#15685).
+  * The images don\'t build after the git security release and
+    CentOS 8 Stream is EOL; (bso#15660).
+  * Fix clock skew error message and memory cache clock skew
+    recovery; (bso#15676).
+  * Heimdal ignores _gsskrb5_decapsulate errors in
+    init_sec_context/repl_mutual; (bso#15603).
+  * s4:ldap_server: does not support tls channel bindings for
+    sasl binds; (bso#15621).
+  * CTDB socket output queues may suffer unbounded delays under
+    some special conditions; (bso#15678).
+
+-------------------------------------------------------------------
 Wed Jul 17 11:18:52 UTC 2024 - Samuel Cabrero <scabrero@suse.de>
 
 - Update samba-tool package to require python3-Markdown also in

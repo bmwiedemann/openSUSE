@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Aug 21 09:23:42 UTC 2024 - Denys Kondratenko <stdden@opensuse.org>
+
+- Update to version 0.4.1+git11:
+  * PipeWire audio capture (#247)
+  * add -y/--overwrite (#266)
+  * ensure all status messages use stderr (#267)
+  * Add compatibility with FFMPEG 7.0 (#262)
+  * recreate buffer if format changes (#251)
+  * Allow region capture with DMA-BUF (#244)
+  * Get hw_frame_context from buffersink (#242)
+  * Set the default pixel format to yuv420p (#237)
+  * README: add NixOS, order distros alphabetically (#231)
+  * Use dmabuf feedback instead of wl-drm to get compositor device (#235)
+  * Also set buffer.drm_format with shm capture (#233)
+
+-------------------------------------------------------------------
 Thu Mar  7 09:09:22 UTC 2024 - jun wang <jgwang@suse.com>
 
 - Update to version 0.4.1

@@ -1,7 +1,7 @@
 #
 # spec file for package dynare
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,33 +17,36 @@
 
 
 %if 0%{?suse_version} < 1550
-# GCC 9 or higher required
-%define gccver 9
+# GCC 10 or higher required
+%define gccver 10
 # Sphinx in Leap 15.x is too old
 %bcond_with doc
 %else
 %bcond_without doc
 %endif
 Name:           dynare
-Version:        5.5
+Version:        6.1
 Release:        0
 Summary:        A platform for handling a wide class of economic models
 License:        GPL-3.0-or-later
 URL:            https://www.dynare.org/
-Source:         https://www.dynare.org/release/source/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM dynare-no-return-in-non-void-function.patch badshah400@gmail.com -- Return trivial value from a function that is not declared as returning void
-Patch0:         dynare-no-return-in-non-void-function.patch
+Source:         %{name}-%{version}.tar.zst
+# PATCH-FIX-UPSTREAM dynare-libdir.patch badshah400@gmail.com -- Use correct libdir instead of 'lib'
+Patch0:         dynare-libdir.patch
+BuildRequires:  bison
 BuildRequires:  fdupes
+BuildRequires:  flex
 BuildRequires:  gcc%{?gccver}-c++
 BuildRequires:  gcc%{?gccver}-fortran
 BuildRequires:  lapack-devel
 BuildRequires:  libboost_headers-devel
-BuildRequires:  libtool
+BuildRequires:  meson
 BuildRequires:  pkgconfig
+BuildRequires:  slicot-devel-static
 BuildRequires:  suitesparse-devel
 BuildRequires:  pkgconfig(gsl)
 BuildRequires:  pkgconfig(matio)
-BuildRequires:  pkgconfig(octave)
+BuildRequires:  pkgconfig(octave) >= 7.1.0
 %if %{with doc}
 # SECTION Required for docs
 BuildRequires:  python3-Sphinx-latex
@@ -83,23 +86,21 @@ This package provides documentation for %{name} in HTML format.
 %autosetup -p1
 
 %build
-autoreconf -fvi
 export CXX=g++%{?gccver:-%{gccver}}
-%configure \
-  --docdir=%{_docdir}/%{name} \
-  --disable-matlab \
-  --disable-mex-kalman-steady-state \
-  %{!?with_doc:--disable-doc} \
+%meson \
+  -Dbuild_for=octave \
   %{nil}
-%make_build
+%meson_build
 %if %{with doc}
-%make_build pdf html
+%meson_build dynare-manual.pdf dynare-manual.html
 %endif
 
 %install
-%make_install
+%meson_install
 %fdupes %{buildroot}%{_libdir}/%{name}/
 %if %{with doc}
+mkdir -p %{buildroot}%{_docdir}
+mv %{buildroot}%{_datadir}/doc/%{name} %{buildroot}%{_docdir}/
 %fdupes %{buildroot}%{_docdir}/%{name}/dynare-manual.html/
 rm %{buildroot}%{_docdir}/%{name}/dynare-manual.html/.buildinfo
 %endif
@@ -107,14 +108,12 @@ rm %{buildroot}%{_docdir}/%{name}/dynare-manual.html/.buildinfo
 %files
 %license license.txt
 %doc CONTRIBUTING.md NEWS.md README.md
-%{_bindir}/dynare++
 %{_bindir}/dynare-preprocessor
 %{_libdir}/dynare/
 
 %if %{with doc}
 %files doc-pdf
 %{_docdir}/%{name}/*.pdf
-%{_docdir}/%{name}/dynare++/
 
 %files doc-html
 %{_docdir}/%{name}/dynare-manual.html/

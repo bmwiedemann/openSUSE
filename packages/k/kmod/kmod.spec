@@ -22,7 +22,7 @@
 
 Name:           kmod
 %define lname	libkmod2
-Version:        32
+Version:        33
 Release:        0
 Summary:        Utilities to load modules into the kernel
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -41,14 +41,13 @@ Patch3:         0009-libkmod-Implement-filtering-of-unsupported-modules-o.patch
 Patch4:         0010-modprobe-Implement-allow-unsupported-modules.patch
 Patch5:         0011-Do-not-filter-unsupported-modules-when-running-a-van.patch
 Patch6:         0012-modprobe-print-unsupported-status.patch
-Patch16:        no-stylesheet-download.patch
+Patch7:         0001-testsuite-fix-path-for-test-user.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
-BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  libopenssl-devel >= 1.1.0
 BuildRequires:  libtool
-BuildRequires:  libxslt-tools
-BuildRequires:  pkgconfig >= 0.21
+BuildRequires:  pkg-config >= 0.21
+BuildRequires:  scdoc
 BuildRequires:  xz
 BuildRequires:  pkgconfig(liblzma) >= 4.99
 %if 0%{?use_zstd}
@@ -178,7 +177,7 @@ done
 %_sbindir/modprobe
 %_sbindir/rmmod
 %_mandir/man[58]/*.[58]*
-%_libdir/pkgconfig/kmod.pc
+%_datadir/pkgconfig/kmod.pc
 %if 0%{?suse_version} < 1550
 /bin/lsmod
 /sbin/depmod

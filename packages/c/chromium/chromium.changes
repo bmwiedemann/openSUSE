@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Wed Aug 21 21:10:50 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Chromium 128.0.6613.84 (boo#1229591)
+  * CVE-2024-7964: Use after free in Passwords
+  * CVE-2024-7965: Inappropriate implementation in V8
+  * CVE-2024-7966: Out of bounds memory access in Skia
+  * CVE-2024-7967: Heap buffer overflow in Fonts
+  * CVE-2024-7968: Use after free in Autofill
+  * CVE-2024-7969: Type Confusion in V8
+  * CVE-2024-7971: Type confusion in V8
+  * CVE-2024-7972: Inappropriate implementation in V8
+  * CVE-2024-7973: Heap buffer overflow in PDFium
+  * CVE-2024-7974: Insufficient data validation in V8 API
+  * CVE-2024-7975: Inappropriate implementation in Permissions
+  * CVE-2024-7976: Inappropriate implementation in FedCM
+  * CVE-2024-7977: Insufficient data validation in Installer
+  * CVE-2024-7978: Insufficient policy enforcement in Data Transfer
+  * CVE-2024-7979: Insufficient data validation in Installer
+  * CVE-2024-7980: Insufficient data validation in Installer
+  * CVE-2024-7981: Inappropriate implementation in Views
+  * CVE-2024-8033: Inappropriate implementation in WebApp Installs
+  * CVE-2024-8034: Inappropriate implementation in Custom Tabs
+  * CVE-2024-8035: Inappropriate implementation in Extensions
+  * Various fixes from internal audits, fuzzing and other initiatives
+
+-------------------------------------------------------------------
+Mon Aug 19 00:24:44 CEST 2024 - ro@suse.de
+
+- Chromium 128.0.6613.36 (boo#1229426)
+- modified patches:
+  * chromium-norar.patch drop most hunks,
+    upstream has a config for this now
+  * gcc-enable-lto.patch update context
+  * chromium-125-compiler.patch update context
+  * chromium-127-constexpr.patch update context
+- drop patches: (should be obsolete with llvm>17 and libc++)
+  chromium-120-emplace.patch
+  chromium-125-emplace-struct.patch
+- drop patches: (upstream)
+  * chromium-121-nullptr_t-without-namespace-std.patch
+  * chromium-123-stats-collector.patch
+  * chromium-127-paint-layer-header.patch
+  * chromium-127-ninja-1.21.1-deps-part0.patch
+  * chromium-127-ninja-1.21.1-deps-part1.patch
+  * chromium-127-ninja-1.21.1-deps-part2.patch
+  * chromium-127-ninja-1.21.1-deps-part3.patch
+- disable rpmlint only for factory/tw where it is broken because
+  of the large archive size of the source here
+- keeplibs add
+  third_party/devtools-frontend/src/front_end/third_party/
+  puppeteer/package/lib/esm/third_party/parsel-js
+  third_party/tflite/src/third_party/xla/xla/tsl/framework
+- buildflags add
+  safe_browsing_use_unrar=false
+
+-------------------------------------------------------------------
 Thu Aug 15 15:35:42 CEST 2024 - ro@suse.de
 
 - Chromium 127.0.6533.119 (boo#1228941)

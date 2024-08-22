@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Aug 21 04:56:34 UTC 2024 - Dave Plater <davejplater@gmail.com>
+
+- Fix build by ensuring that ffmpeg-6 libraries are pulled in.
+
+-------------------------------------------------------------------
 Tue Nov  7 10:13:40 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix build with RPM 4.19: unnumbered patches are no longer

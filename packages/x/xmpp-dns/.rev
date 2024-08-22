@@ -127,4 +127,15 @@
   * Simplify output.</comment>
     <requestid>1194637</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>faa896227db06a94df4d06af711b4541</srcmd5>
+    <version>0.4.1</version>
+    <time>1724343046</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.4.1:
+  * Also check connection to BOSH endpoints.
+  * Add more verbose version information to --version (requires xmppsrv &gt;= 0.3.2).
+  * Also respect custom resolver setting for host-meta(2) (via xmppsrv 0.3.1).</comment>
+    <requestid>1194991</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Aug 21 05:52:55 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 44.1:
+  + Fix compatibility with muslc
+  + Fix GNOME_DESKTOP_IS_THUMBNAIL_FACTORY
+  + Update default Indic input methods
+  + Use ibus-chewing as the default input source for zh_TW
+  + Updated translations.
+- Rebase gnome-desktop-switch-Japanese-default-input-to-mozc.patch
+
+-------------------------------------------------------------------
 Mon Mar 20 09:20:01 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 44.0:

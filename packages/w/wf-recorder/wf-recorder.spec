@@ -18,7 +18,7 @@
 
 
 Name:           wf-recorder
-Version:        0.4.1+git0
+Version:        0.4.1+git11
 Release:        0%{?dist}
 Summary:        Utility program for screen recording of wlroots-based compositors
 License:        MIT
@@ -35,6 +35,8 @@ BuildRequires:  pkgconfig(libavdevice)
 BuildRequires:  pkgconfig(libavfilter)
 BuildRequires:  pkgconfig(libavformat)
 BuildRequires:  pkgconfig(libavutil)
+BuildRequires:  pkgconfig(libdrm)
+BuildRequires:  pkgconfig(libpipewire-0.3)
 BuildRequires:  pkgconfig(libpulse-simple)
 BuildRequires:  pkgconfig(libswresample)
 BuildRequires:  pkgconfig(wayland-client)

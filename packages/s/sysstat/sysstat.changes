@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Aug  8 06:07:30 UTC 2024 - Johannes Segitz <jsegitz@suse.com>
+
+- Updated sysstat-8.1.6-sa1sa2lock.diff to use flock to create the
+  lockfile. Using lockfile would require additional SELinux permissions.
+  Require util-linux instead of procmail for this (bsc#1228246)
+
+-------------------------------------------------------------------
 Fri Jun  7 08:58:41 UTC 2024 - pgajdos@suse.com
 
 - version update to 12.7.5

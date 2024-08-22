@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Thu Aug 15 06:51:24 UTC 2024 - Stefan Seyfried <seife+obs@b1-systems.com>
+
+- add bluez-no-cups-devel-buildreq.patch to avoid cups-devel
+  buildrequires which results in an excessive build loop
+
+-------------------------------------------------------------------
+Mon Aug  5 12:12:11 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.77:
+  * Fix issue with storing and handling connection parameters.
+  * Fix issue with handling device that are marked as temporary.
+  * Fix issue with HID and special handling for non-keyboards.
+  * Fix issue with BR/EDR not support when discoverable is off.
+  * Add support for initial implementation of ASHA profile.
+  * Fix issue with broadcast channel location and stream
+    capabilities.
+  * Fix issue with handling BIS management and synchronization.
+  * Fix issue with handling Extended Advertising.
+  * Fix issue with UserspaceHID and replay structures.
+  * Add support for providing PPCP characteristic.
+  * Fix issue with build system and header inclusion.
+  * Fix issue with not enabling Wideband Speech when available.
+  * Fix issue with UserspaceHID and Bluetooth Classic devices.
+  * Fix issue with checking for services being connected.
+  * Fix issue with GATT client connection creation.
+  * Fix issue with OBEX and small file transfers.
+  * Fix issue with handling pairing with Apple AirPods.
+  * Fix issue with BAP and setting up broadcast source.
+  * Fix issue with BAP and register all endpoints.
+  * Fix issue with BAP and missing metadata property.
+  * Fix issue with BAP and not handling out of order responses.
+  * Fix issue with BAP and attempting to set device as
+    connectable.
+  * Add support for CCP plugin for call control profile.
+  * Fix issue with BAP and handling stream IO linking.
+  * Fix issue with BAP and setup of multiple streams per
+    endpoint.
+  * Fix issue with AVDTP and potential incorrect transaction
+    label.
+  * Fix issue with A2DP and handling crash on suspend.
+  * Fix issue with GATT database and an invalid pointer.
+  * Add support for AICS service.
+- drop bluez-test-2to3.diff, bluez-cups-libexec.patch:
+  upstream has different solutions for ages, use those instead
+- drop fix-link-key-address-type.patch,
+  fix-a2dp-suspend-crash.patch: upstream
+
+-------------------------------------------------------------------
+Mon Aug  5 00:03:24 UTC 2024 - Chang <calad0i.fill@outlook.com>
+
+- add fix-a2dp-suspend-crash.patch (Issue #701 in upstream)
+
+-------------------------------------------------------------------
 Tue Jun 11 09:15:31 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Fix python3 shebang from test files (bsc#1212476)

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Aug  5 08:50:50 UTC 2024 - Thorsten Kukuk <kukuk@suse.com>
+
+- Remove rcaudit symlink [jsc#PED-266]
+
+-------------------------------------------------------------------
 Mon Jul  3 08:34:22 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 3.1.1:

@@ -46,7 +46,7 @@
 %bcond_without tools
 #
 Name:           dpdk%{name_tag}
-Version:        22.11.1
+Version:        22.11.5
 Release:        0
 Summary:        Set of libraries and drivers for fast packet processing
 License:        BSD-3-Clause AND GPL-2.0-only AND LGPL-2.1-only
@@ -57,8 +57,6 @@ Source1:        preamble
 # PATCH-FIX-OPENSUSE PATCH-FEATURE-UPSTREAM
 Patch0:         0001-fix-cpu-compatibility.patch
 Patch1:         0002-SLE15-SP3-compatibility-patch-for-kni.patch
-Patch2:         0001-kni-fix-build-with-Linux-6.3.patch
-Patch3:         0001-kni-fix-build-with-Linux-6.5.patch
 Patch4:         kni-fix-build-with-Linux-6.8.patch
 Patch100:       kni-fix-build-with-Linux-6.10.patch
 BuildRequires:  binutils

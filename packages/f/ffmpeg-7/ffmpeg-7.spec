@@ -110,6 +110,7 @@ Patch5:         work-around-abi-break.patch
 Patch10:        ffmpeg-chromium.patch
 Patch91:        ffmpeg-dlopen-openh264.patch
 Patch95:        ffmpeg-7-fix-crashes.patch
+Patch96:        0001-libavcodec-arm-mlpdsp_armv5te-fix-label-format-to-wo.patch
 BuildRequires:  ladspa-devel
 BuildRequires:  libgsm-devel
 BuildRequires:  libmp3lame-devel >= 3.98.3
@@ -823,6 +824,7 @@ Patch5:         work-around-abi-break.patch
 Patch10:        ffmpeg-chromium.patch
 Patch91:        ffmpeg-dlopen-openh264.patch
 Patch95:        ffmpeg-7-fix-crashes.patch
+Patch96:        0001-libavcodec-arm-mlpdsp_armv5te-fix-label-format-to-wo.patch
 BuildRequires:  c_compiler
 Requires:       this-is-only-for-build-envs
 

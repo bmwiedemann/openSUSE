@@ -1,7 +1,7 @@
 #
 # spec file for package DVDStyler
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2012-2014 Mariusz Fik <fisiu@opensuse.org>
 # Copyright (c) 2011-2012 Pascal Bleser <pascal.bleser@opensuse.org>
 # Copyright (c) 2007-2011 Detlef Reichelt <detlef@links2linux.de>
@@ -46,13 +46,13 @@ BuildRequires:  flex
 BuildRequires:  gcc-c++
 #BuildRequires:  mc
 BuildRequires:  mkisofs >= 2.01
+BuildRequires:  ffmpeg-6-libavcodec-devel
 BuildRequires:  pkgconfig
 BuildRequires:  unzip
 BuildRequires:  update-desktop-files
 BuildRequires:  wxGTK3-3_2-devel
 BuildRequires:  xmlto
 BuildRequires:  zip
-BuildRequires:  pkgconfig(libavcodec)
 BuildRequires:  pkgconfig(libavfilter)
 BuildRequires:  pkgconfig(libavformat)
 BuildRequires:  pkgconfig(libavutil)
@@ -70,6 +70,7 @@ Requires:       mjpegtools
 Requires:       mkisofs
 Requires:       wxsvg = %{wxsvgver}
 Requires:       xine-ui >= 0.99.1
+ExcludeArch:    i586
 
 %description
 DVDStyler is a DVD authoring application for the creation of DVDs. It

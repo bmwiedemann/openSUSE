@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Aug 21 21:19:38 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 33
+  * Add weak dependencies
+  * Stop parsing .alias files from modprobe.d directories
+- Delete no-stylesheet-download.patch (merged)
+- Add 0001-testsuite-fix-path-for-test-user.patch
+
+-------------------------------------------------------------------
 Thu Apr  4 15:13:53 UTC 2024 - Michal Suchanek <msuchanek@suse.de>
 
 - Update to release 32

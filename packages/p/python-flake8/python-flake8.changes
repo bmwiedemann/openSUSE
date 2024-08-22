@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Aug 21 17:52:22 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.1.1:
+  * Properly preserve escaped `{` and `}` in fstrings in logical
+    lines in 3.12+.
+
+-------------------------------------------------------------------
 Mon Jun 17 06:31:31 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 7.1.0:

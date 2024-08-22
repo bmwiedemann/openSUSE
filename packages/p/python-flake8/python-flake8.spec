@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-flake8
-Version:        7.1.0
+Version:        7.1.1
 Release:        0
 Summary:        Modular source code checker: pep8, pyflakes and co
 License:        MIT

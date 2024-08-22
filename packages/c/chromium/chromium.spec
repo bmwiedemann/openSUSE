@@ -96,7 +96,7 @@
 %define n_suffix %{nil}
 %endif
 Name:           chromium%{n_suffix}
-Version:        127.0.6533.119
+Version:        128.0.6613.84
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -138,14 +138,10 @@ Patch203:       chromium-106-ffmpeg-duration.patch
 Patch205:       chromium-disable-GlobalMediaControlsCastStartStop.patch
 Patch240:       chromium-117-string-convert.patch
 Patch248:       chromium-119-assert.patch
-Patch250:       chromium-120-emplace.patch
-Patch254:       chromium-125-emplace-struct.patch
 Patch256:       chromium-120-make_unique-struct.patch
-Patch258:       chromium-121-nullptr_t-without-namespace-std.patch
 Patch261:       chromium-121-rust-clang_lib.patch
 Patch311:       chromium-125-disable-FFmpegAllowLists.patch
 Patch322:       chromium-125-lp155-typename.patch
-Patch326:       chromium-123-stats-collector.patch
 Patch336:       chromium-124-system-libxml.patch
 Patch337:       chromium-123-missing-QtGui.patch
 Patch359:       chromium-126-quiche-interator.patch
@@ -153,11 +149,6 @@ Patch360:       chromium-127-bindgen.patch
 Patch361:       chromium-127-rust-clanglib.patch
 Patch362:       chromium-127-clang17-traitors.patch
 Patch363:       chromium-127-constexpr.patch
-Patch365:       chromium-127-paint-layer-header.patch
-Patch366:       chromium-127-ninja-1.21.1-deps-part0.patch
-Patch367:       chromium-127-ninja-1.21.1-deps-part1.patch
-Patch368:       chromium-127-ninja-1.21.1-deps-part2.patch
-Patch369:       chromium-127-ninja-1.21.1-deps-part3.patch
 BuildRequires:  SDL-devel
 BuildRequires:  bison
 BuildRequires:  cups-devel
@@ -394,7 +385,9 @@ BuildRequires:  gcc%{gcc_version}
 BuildRequires:  gcc%{gcc_version}-c++
 %endif
 %endif
+%if 0%{?suse_version} >= 1699
 #!BuildIgnore:  rpmlint rpmlint-Factory rpmlint-mini
+%endif
 
 %description
 Chromium is the open-source project behind Google Chrome. We invite you to join us in our effort to help build a safer, faster, and more stable way for all Internet users to experience the web, and to create a powerful platform for developing a new generation of web applications.
@@ -565,6 +558,7 @@ keeplibs=(
     third_party/devtools-frontend/src/front_end/third_party/marked
     third_party/devtools-frontend/src/front_end/third_party/puppeteer
     third_party/devtools-frontend/src/front_end/third_party/puppeteer/package/lib/esm/third_party/mitt
+    third_party/devtools-frontend/src/front_end/third_party/puppeteer/package/lib/esm/third_party/parsel-js
     third_party/devtools-frontend/src/front_end/third_party/puppeteer/package/lib/esm/third_party/rxjs
     third_party/devtools-frontend/src/front_end/third_party/wasmparser
     third_party/devtools-frontend/src/third_party
@@ -687,6 +681,7 @@ keeplibs=(
     third_party/tflite/src/third_party/fft2d
     third_party/tflite/src/third_party/xla/third_party/tsl
     third_party/tflite/src/third_party/xla/xla/tsl/util
+    third_party/tflite/src/third_party/xla/xla/tsl/framework
     third_party/ukey2
     third_party/utf
     third_party/vulkan
@@ -961,6 +956,7 @@ myconf_gn+=" rust_bindgen_root=\"%{_prefix}\""
 myconf_gn+=" rustc_version=\"$rustc_version\""
 myconf_gn+=" clang_base_path=\"$clang_base_path\""
 myconf_gn+=" clang_version=\"$clang_version\""
+myconf_gn+=" safe_browsing_use_unrar=false"
 %if %{with gtk4}
 myconf_gn+=" gtk_version=4"
 %endif

@@ -42,7 +42,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  sed
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  update-desktop-files
-Requires:       procmail
+Requires:       util-linux
 Requires:       xz
 %{?systemd_ordering}
 %ifnarch s390 s390x

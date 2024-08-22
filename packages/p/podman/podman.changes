@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Aug 22 08:06:56 UTC 2024 - dcermak@suse.com
+
+- Update to version 5.2.2:
+
+  Bugfixes:
+  * Fixed a bug where rootless Podman could fail to validate the runtime's
+    volume path on systems with a symlinked /home (#23515).
+
+  Misc:
+  * Updated Buildah to v1.37.2
+  * Updated the containers/common library to v0.60.2
+  * Updated the containers/image library to v5.32.2
+
+-------------------------------------------------------------------
 Wed Aug 14 19:29:56 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 5.2.1:

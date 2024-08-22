@@ -56,4 +56,13 @@
     <comment>- Update to version 7.0.2:</comment>
     <requestid>1193125</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>ce3cdc34e0a0d84b65891695602549b2</srcmd5>
+    <version>7.0.2</version>
+    <time>1724343027</time>
+    <user>anag+factory</user>
+    <comment>- Add 0001-libavcodec-arm-mlpdsp_armv5te-fix-label-format-to-wo.patch
+  to resolve build failure on armv7 [boo#1229338]</comment>
+    <requestid>1195053</requestid>
+  </revision>
 </revisionlist>

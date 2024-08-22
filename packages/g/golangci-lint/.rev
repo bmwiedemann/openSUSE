@@ -358,4 +358,24 @@
   * docs: update GitHub Action assets (#4750) (forwarded request 1179579 from jfkw)</comment>
     <requestid>1179581</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>fbde3cd42d2bdc385cddc922620cb1ab</srcmd5>
+    <version>1.60.2</version>
+    <time>1724343042</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.60.2:
+  * build(deps): bump github.com/securego/gosec/v2 from 5f0084eb01a9 to 81cda2f91fbe (#4927)
+  * dev: fix GO_VERSION in post release workflow (#4926)
+  * exportloopref: deprecation (#4916)
+  * chore: update gofmt (#4923)
+  * build(deps): bump github.com/tomarrell/wrapcheck/v2 from 2.8.3 to 2.9.0 (#4921)
+  * build(deps): bump mvdan.cc/gofumpt from 0.6.0 to 0.7.0 (#4922)
+  * staticcheck: propagate Go version (#4907)
+  * gosec: add G602 analyzer (#4906)
+  * build(deps): bump honnef.co/go/tools from 0.5.0 to 0.5.1 (#4911)
+  * docs: update documentation (#4903)
+  * docs: update documentation assets (#4901)
+  * docs: update GitHub Action assets (#4902) (forwarded request 1194962 from jfkw)</comment>
+    <requestid>1194963</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Aug 22 06:07:43 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.9.24:
+  + This release fixes the following bugs:
+    - Add support for capsule on disk for Dell systems
+    - Do not re-use the connection cache to fix Redfish BMC restart
+    - Exclude known recovery partitions when choosing an ESP volume
+    - Fix the VLI usb3 private flag registration
+  + This release adds support for the following hardware:
+    - More Mediatek scaler devices
+    - Parade USB hubs
+
+-------------------------------------------------------------------
 Tue Aug  6 05:36:59 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.9.23:

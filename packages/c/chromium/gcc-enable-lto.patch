@@ -57,14 +57,14 @@ Index: chromium-120.0.6099.18/base/BUILD.gn
 ===================================================================
 --- chromium-120.0.6099.18.orig/base/BUILD.gn
 +++ chromium-120.0.6099.18/base/BUILD.gn
-@@ -3830,6 +3830,10 @@ test("base_unittests") {
-     }
+@@ -3561,6 +3561,10 @@
+     sources += [ "location_unittest.cc" ]
    }
  
 +  if (gcc_lto) {
 +    configs -= [ "//build/config/compiler:gcc_lto" ]
 +  }
 +
-   if (use_partition_alloc) {
+   if (build_rust_base_conversions) {
      sources += [
-       "allocator/partition_allocator/src/partition_alloc/address_pool_manager_unittest.cc",
+       "containers/span_rust_unittest.cc",

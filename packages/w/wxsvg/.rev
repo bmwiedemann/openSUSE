@@ -115,4 +115,13 @@
     <comment></comment>
     <requestid>1124040</requestid>
   </revision>
+  <revision rev="13" vrev="6">
+    <srcmd5>32e0035529ffdf41a2b323863af7c0ca</srcmd5>
+    <version>1.5.23</version>
+    <time>1724343043</time>
+    <user>anag+factory</user>
+    <comment>- Fix build by ensuring that ffmpeg-6 libraries are pulled in.
+</comment>
+    <requestid>1195013</requestid>
+  </revision>
 </revisionlist>

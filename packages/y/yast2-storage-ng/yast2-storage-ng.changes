@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Aug 21 12:03:30 UTC 2024 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- Tiny internal code reorganization to ease Agama development at
+  gh#openSUSE/agama#1448.
+- 5.0.16
+
+-------------------------------------------------------------------
 Fri Jun 14 12:41:07 UTC 2024 - Ancor Gonzalez Sosa <ancor@suse.com>
 
 - Fixed a problem when trying to locate a Btrfs root file-system

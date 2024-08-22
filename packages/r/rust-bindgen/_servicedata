@@ -1,0 +1,6 @@
+<servicedata>
+  <service name="tar_scm">
+    <param name="url">https://github.com/rust-lang/rust-bindgen.git</param>
+    <param name="changesrevision">21c60f473f4e824d4aa9b2b508056320d474b110</param>
+  </service>
+</servicedata>

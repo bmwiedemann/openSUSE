@@ -1,7 +1,7 @@
 #
 # spec file for package wxsvg
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2012-2019 Mariusz Fik <fisiu@opensuse.org>
 # Copyright (c) 2012 Stefan Seyfried <seife+obs@b1-systems.com>
 #
@@ -35,7 +35,7 @@ BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(expat)
 BuildRequires:  pkgconfig(pangocairo)
 # WARNING: needs to build with the same ffmpeg libraries as DVDStyler.
-BuildRequires:  pkgconfig(libavcodec)
+BuildRequires:  ffmpeg-6-libavcodec-devel
 BuildRequires:  pkgconfig(libavformat)
 BuildRequires:  pkgconfig(libavutil)
 BuildRequires:  pkgconfig(libexif)

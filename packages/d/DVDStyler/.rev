@@ -99,4 +99,14 @@
     <comment></comment>
     <requestid>1034830</requestid>
   </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>1c71062ca056d5e47c3e367f5b75a45e</srcmd5>
+    <version>3.2.1</version>
+    <time>1724343044</time>
+    <user>anag+factory</user>
+    <comment>- Fix build by requiring the same libavcodec as wxsvg
+- Exclude i586 build due to missing libMagickCore-7.Q16HDRI.so.9
+</comment>
+    <requestid>1195022</requestid>
+  </revision>
 </revisionlist>

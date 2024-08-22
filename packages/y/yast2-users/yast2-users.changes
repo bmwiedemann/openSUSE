@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Aug 21 13:21:10 UTC 2024 - Stefan Hundhammer <shundhammer@suse.com>
+
+- Relax check in GECOS field (bsc#1228149):
+  Allow any data except colons
+- 5.0.2
+
+-------------------------------------------------------------------
 Mon Sep 25 12:33:45 UTC 2023 - Stefan Hundhammer <shundhammer@suse.com>
 
 - Don't use obsolete method Dir.exists? (bsc#1215637)

@@ -2,7 +2,7 @@ Index: sysstat-12.7.5/sa1.in
 ===================================================================
 --- sysstat-12.7.5.orig/sa1.in
 +++ sysstat-12.7.5/sa1.in
-@@ -31,8 +31,14 @@ then
+@@ -31,8 +31,16 @@ then
  	LONG_NAME=y
  fi
  
@@ -11,13 +11,15 @@ Index: sysstat-12.7.5/sa1.in
  cd ${ENDIR}
 +LOCKFILE=/var/run/sysstat/sadc.LOCK
 +mkdir -p /var/run/sysstat
-+lockfile -r2 -30 "$LOCKFILE" 2>/dev/null
++touch "$LOCKFILE"
++exec 4<>"$LOCKFILE"
++flock -w 60 4
 +trap "/bin/rm -f $LOCKFILE" EXIT
 +
  [ "$1" = "--boot" ] && shift && BOOT=y || BOOT=n
  [ "$1" = "--sleep" ] && shift && SLEEP=y || SLEEP=n
  
-@@ -51,13 +57,13 @@ fi
+@@ -51,13 +59,13 @@ fi
  
  if [ "${SLEEP}" = "y" ]
  then
@@ -38,14 +40,16 @@ Index: sysstat-12.7.5/sa2.in
 ===================================================================
 --- sysstat-12.7.5.orig/sa2.in
 +++ sysstat-12.7.5/sa2.in
-@@ -59,6 +59,17 @@ fi
+@@ -59,6 +59,19 @@ fi
  
  [ -f "${DFILE}" ] || exit 0
  cd ${ENDIR}
 +
 +LOCKFILE=/var/run/sysstat/sadc.LOCK
 +mkdir -p /var/run/sysstat
-+if ! lockfile -r6 -600 $LOCKFILE 2>/dev/null; then
++touch "$LOCKFILE"
++exec 4<>"$LOCKFILE"
++if ! flock -w 3600 4; then
 +  if test `find $LOCKFILE -mmin +180 2>/dev/null`; then
 +    rm -f $LOCKFILE
 +    logger -p cron.alert "$0: detected an old lockfile \"$LOCKFILE\"."

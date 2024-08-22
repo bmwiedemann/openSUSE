@@ -628,4 +628,16 @@
     <comment></comment>
     <requestid>1189315</requestid>
   </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>68cdcb8f0d77876d16e2f3a4873f2a32</srcmd5>
+    <version>22.11.5</version>
+    <time>1724343029</time>
+    <user>anag+factory</user>
+    <comment>- Update to LTS release version v22.11.5
+  * http://doc.dpdk.org/guides-22.11/rel_notes/release_22_11.html
+- Drop patches (included upstream):
+  * 0001-kni-fix-build-with-Linux-6.3.patch (22.11.3)
+  * 0001-kni-fix-build-with-Linux-6.5.patch (22.11.3)</comment>
+    <requestid>1195103</requestid>
+  </revision>
 </revisionlist>

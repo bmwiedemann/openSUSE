@@ -1,0 +1,62 @@
+---
+ meson.build |   14 +++++++-------
+ 1 file changed, 7 insertions(+), 7 deletions(-)
+
+Index: dynare-6.1/meson.build
+===================================================================
+--- dynare-6.1.orig/meson.build
++++ dynare-6.1/meson.build
+@@ -36,19 +36,19 @@ subdir('preprocessor/src')
+ # NB: the following two symlinks my be improved if this wishlist item is done:
+ #  https://github.com/mesonbuild/meson/issues/11519
+ 
+-install_symlink('dynare-preprocessor', install_dir : 'lib/dynare/preprocessor/',
++install_symlink('dynare-preprocessor', install_dir : get_option('libdir') / 'dynare/preprocessor/',
+                 pointing_to : '../../../bin/dynare-preprocessor'
+                               + (host_machine.system() == 'windows' ? '.exe' : ''))
+ 
+ # Compatibility symlink
+ install_symlink('dynare_m' + (host_machine.system() == 'windows' ? '.exe' : ''),
+-                install_dir : 'lib/dynare/matlab/preprocessor64',
++                install_dir : get_option('libdir') / 'dynare/matlab/preprocessor64',
+                 pointing_to : '../../../../bin/dynare-preprocessor'
+                               + (host_machine.system() == 'windows' ? '.exe' : ''))
+ 
+ ### M files
+ 
+-install_subdir('matlab', install_dir : 'lib/dynare',
++install_subdir('matlab', install_dir : get_option('libdir') / 'dynare',
+                exclude_files : [ 'utilities/tests/.git' ,
+                                  'utilities/tests/.gitignore',
+                                  'dseries/.git',
+@@ -63,10 +63,10 @@ custom_target(output : 'dynare_version.m
+               command : [ sed_exe, 's/@PACKAGE_VERSION@/' + meson.project_version() + '/', '@INPUT@' ],
+               capture : true,
+               install : true,
+-              install_dir : 'lib/dynare/matlab')
++              install_dir : get_option('libdir') / 'dynare/matlab')
+ 
+ install_subdir('contrib/ms-sbvar/TZcode/MatlabFiles',
+-               install_dir : 'lib/dynare/contrib/ms-sbvar/TZcode')
++               install_dir : get_option('libdir') / 'dynare/contrib/ms-sbvar/TZcode')
+ 
+ ### MEX files
+ 
+@@ -160,7 +160,7 @@ if get_option('build_for') == 'matlab'
+                  'link_args' : [ export_link_arg, '-L' + (matlab_path / 'bin' / matlab_arch), '-lmx', '-lmex', '-lmat' ],
+                  'link_depends' : export_file,
+                  'install' : true,
+-                 'install_dir' : 'lib/dynare/mex/matlab' }
++                 'install_dir' : get_option('libdir') / 'dynare/mex/matlab' }
+ 
+   # For unit tests
+   exe_rpath = matlab_path / 'bin' / matlab_arch
+@@ -249,7 +249,7 @@ else # Octave build
+                  'c_args' : octave_incflags + octave_defs,
+                  'link_args' : octave_link_args,
+                  'install' : true,
+-                 'install_dir' : 'lib/dynare/mex/octave' }
++                 'install_dir' : get_option('libdir') / 'dynare/mex/octave' }
+ 
+   if octave_version.version_compare('>=' + octave_minimal_version_for_interleaved_api)
+     # Mimic the behaviour of mkoctfile which compiles in a similar source file

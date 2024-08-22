@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Aug 17 13:47:42 UTC 2024 - Aeneas Jaißle <aj@ajaissle.de>
+
+- Update to LTS release version v22.11.5
+  * http://doc.dpdk.org/guides-22.11/rel_notes/release_22_11.html
+
+- Drop patches (included upstream):
+  * 0001-kni-fix-build-with-Linux-6.3.patch (22.11.3)
+  * 0001-kni-fix-build-with-Linux-6.5.patch (22.11.3)
+
+-------------------------------------------------------------------
 Wed Jul 24 06:25:38 UTC 2024 - Jiri Slaby <jslaby@suse.cz>
 
 - use %autopatch even for older distros, -M *is* supported there

@@ -1,0 +1,22 @@
+Subject: avoid cups-devel buildrequires
+Author:  Stefan Seyfried <seife+obs@b1-sytems.com>
+Date:    2024-08-15
+
+The only thing required from cups-devel during build is the cups_serverbin
+variable. Unfortunately, pulling in cups-devel creates a huge dependency
+loop.
+To avoid this, just hardcode the cups_serverbin value for now.
+
+Index: b/configure.ac
+===================================================================
+--- a/configure.ac
++++ b/configure.ac
+@@ -252,7 +252,7 @@ AC_ARG_ENABLE(cups, AS_HELP_STRING([--di
+ AM_CONDITIONAL(CUPS, test "${enable_cups}" != "no")
+ if (test "${enable_cups}" != "no"); then
+ 	AC_MSG_CHECKING([cups directory])
+-	cups_serverbin=`$PKG_CONFIG cups --variable=cups_serverbin`
++	cups_serverbin="/usr/lib/cups"
+ 	AC_MSG_RESULT([${cups_serverbin}])
+ fi
+ AM_CONDITIONAL(CUPS_SERVERBIN, test "${cups_serverbin}" != "")

@@ -1289,4 +1289,12 @@ New upstream release</comment>
     <comment>- Only apply vte-revert-back-to-c++17.patch for SLE &lt;= 15. (forwarded request 1190518 from mgorse)</comment>
     <requestid>1190562</requestid>
   </revision>
+  <revision rev="160" vrev="3">
+    <srcmd5>f327d8b5a62558bdcbfd7675ed650160</srcmd5>
+    <version>0.76.3</version>
+    <time>1724343084</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1195155</requestid>
+  </revision>
 </revisionlist>

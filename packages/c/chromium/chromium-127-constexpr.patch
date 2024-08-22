@@ -48,12 +48,12 @@ author: Andres Salomon <dilinger@debian.org>
  // Creates an instance of the address hierarchy model corresponding to the
 --- a/components/omnibox/browser/on_device_tail_model_service.cc
 +++ b/components/omnibox/browser/on_device_tail_model_service.cc
-@@ -30,7 +30,7 @@ namespace {
- // The maximum idle time before the model executor is unloaded from memory.
- constexpr base::TimeDelta kMaxExecutorIdleSeconds = base::Seconds(60);
+@@ -26,7 +26,7 @@
+ 
+ namespace {
  // Constants for TFlite model validation.
--constexpr std::string kTestPrefix = "face";
-+const std::string kTestPrefix = "face";
+-constexpr std::string kTestPrefix = "google m";
++const std::string kTestPrefix = "google m";
  constexpr std::string_view kModelValidationSwitchName =
      "omnibox-on-device-tail-model-validation";
  
@@ -68,8 +68,8 @@ author: Andres Salomon <dilinger@debian.org>
      kViewportWidthQueryParamKey, kViewportHeightQueryParamKey,
      kXSRFTokenQueryParamKey, kSecActQueryParamKey};
  
---- a/content/browser/preloading/prefetch/prefetch_test_util.h
-+++ b/content/browser/preloading/prefetch/prefetch_test_util.h
+--- a/content/public/test/prefetch_test_util.h
++++ b/content/public/test/prefetch_test_util.h
 @@ -15,7 +15,7 @@ namespace content::test {
  
  using PrefetchContainerIdForTesting =
@@ -79,3 +79,15 @@ author: Andres Salomon <dilinger@debian.org>
      InvalidPrefetchContainerIdForTesting = PrefetchContainerIdForTesting("");
  
  class TestPrefetchWatcherImpl;
+--- a/components/history_embeddings/ml_answerer.cc
++++ b/components/history_embeddings/ml_answerer.cc
+@@ -24,7 +24,7 @@
+ 
+ namespace {
+ 
+-static constexpr std::string kPassageIdToken = "ID";
++static const std::string kPassageIdToken = "ID";
+ 
+ std::string GetPassageIdStr(size_t id) {
+   return base::StringPrintf("%04d", static_cast<int>(id));
+

@@ -27,13 +27,13 @@
 %bcond_with test
 %endif
 Name:           python-Markdown%{psuffix}
-Version:        3.6
+Version:        3.7
 Release:        0
 Summary:        Python implementation of Markdown
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://python-markdown.github.io/
-Source:         https://files.pythonhosted.org/packages/source/M/Markdown/Markdown-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/m/markdown/markdown-%{version}.tar.gz
 Patch0:         markdown-3.0-python37.patch
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module importlib-metadata >= 4.4 if %python-base < 3.10}
@@ -60,7 +60,7 @@ on what exactly is supported and what is not. Additional features are
 supported by the [Available Extensions][].
 
 %prep
-%autosetup -p1 -n Markdown-%{version}
+%autosetup -p1 -n markdown-%{version}
 
 %build
 %if %{without test}

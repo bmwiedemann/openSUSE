@@ -746,4 +746,14 @@ Kernel:stable/kernel-source#kernel-default succeeds with this</comment>
     <comment></comment>
     <requestid>1165374</requestid>
   </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>42ad8798381616021e21fb719ae19aeb</srcmd5>
+    <version>33</version>
+    <time>1724343036</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 33
+  * Add weak dependencies
+  * Stop parsing .alias files from modprobe.d directories</comment>
+    <requestid>1195204</requestid>
+  </revision>
 </revisionlist>
