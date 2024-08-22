@@ -1,0 +1,225 @@
+diff --git a/internal/app/wwctl/container/exec/child/main.go b/internal/app/wwctl/container/exec/child/main.go
+index 253a6ad2..ba9ad9f7 100644
+--- a/internal/app/wwctl/container/exec/child/main.go
++++ b/internal/app/wwctl/container/exec/child/main.go
+@@ -92,7 +92,7 @@ func CobraRunE(cmd *cobra.Command, args []string) (err error) {
+ 		wwlog.Debug("overlay options: %s", options)
+ 		err = syscall.Mount("overlay", containerPath, "overlay", 0, options)
+ 		if err != nil {
+-			wwlog.Warn(fmt.Sprintf("Couldn't create overlay for ephermal mount points: %s", err))
++			wwlog.Warn("Couldn't create overlay for ephermal mount points: %s", err)
+ 		}
+ 	} else if nodename != "" {
+ 		nodeDB, err := node.New()
+@@ -142,6 +142,10 @@ func CobraRunE(cmd *cobra.Command, args []string) (err error) {
+ 	}
+ 
+ 	for _, mntPnt := range mountPts {
++		if mntPnt.Cow {
++			continue
++		}
++		wwlog.Debug("bind mounting: %s -> %s", mntPnt.Source, path.Join(containerPath, mntPnt.Dest))
+ 		err = syscall.Mount(mntPnt.Source, path.Join(containerPath, mntPnt.Dest), "", syscall.MS_BIND, "")
+ 		if err != nil {
+ 			wwlog.Warn("Couldn't mount %s to %s: %s", mntPnt.Source, mntPnt.Dest, err)
+@@ -195,6 +199,9 @@ the invalid mount points. Directories always have '/' as suffix
+ func checkMountPoints(containerName string, binds []*warewulfconf.MountEntry) (overlayObjects []string) {
+ 	overlayObjects = []string{}
+ 	for _, b := range binds {
++		if b.Cow {
++			continue
++		}
+ 		_, err := os.Stat(b.Source)
+ 		if err != nil {
+ 			wwlog.Debug("Couldn't stat %s create no mount point in container", b.Source)
+diff --git a/internal/app/wwctl/container/exec/main.go b/internal/app/wwctl/container/exec/main.go
+index 60cf9d48..788adc86 100644
+--- a/internal/app/wwctl/container/exec/main.go
++++ b/internal/app/wwctl/container/exec/main.go
+@@ -54,7 +54,6 @@ func runContainedCmd(cmd *cobra.Command, containerName string, args []string) (e
+ 	}()
+ 
+ 	logStr := fmt.Sprint(wwlog.GetLogLevel())
+-
+ 	childArgs := []string{"--warewulfconf", conf.GetWarewulfConf(), "--loglevel", logStr, "container", "exec", "__child"}
+ 	childArgs = append(childArgs, containerName)
+ 	for _, b := range binds {
+@@ -64,8 +63,40 @@ func runContainedCmd(cmd *cobra.Command, containerName string, args []string) (e
+ 		childArgs = append(childArgs, "--node", nodeName)
+ 	}
+ 	childArgs = append(childArgs, args...)
++	// copy the files into the container at this stage, es in __child the
++	// command syscall.Exec which replaces the __child process with the
++	// exec command in the container. All the mounts, have to be done in
++	// __child so that the used mounts don't propagate outside on the host
++	// (see the CLONE attributes), but as for the cow copy option we need
++	// to see if a file was modified after it was copied into the container
++	// so do this here.
++	// At first read out conf, the parse commandline, as copy files has the
++	// same synatx as mount points
++	mountPts := conf.MountsContainer
++	mountPts = append(container.InitMountPnts(binds), mountPts...)
++	filesToCpy := getCopyFiles(containerName, mountPts)
++	for i, cpyFile := range filesToCpy {
++		if err = util.CopyFile(cpyFile.Src, path.Join(container.RootFsDir(containerName), cpyFile.FileName)); err != nil {
++			return fmt.Errorf("couldn't copy files into container: %w", err)
++		}
++		// we can ignore error as the file was copied
++		stat, _ := os.Stat(path.Join(container.RootFsDir(containerName), cpyFile.FileName))
++		filesToCpy[i].ModTime = stat.ModTime()
++	}
+ 	wwlog.Verbose("Running contained command: %s", childArgs)
+-	return childCommandFunc(cmd, childArgs)
++	retVal := childCommandFunc(cmd, childArgs)
++	for _, cpyFile := range filesToCpy {
++		if modStat, err := os.Stat(path.Join(container.RootFsDir(containerName), cpyFile.FileName)); err != nil {
++			wwlog.Warn("copied file was removed: %s", err)
++		} else {
++			if modStat.ModTime() == cpyFile.ModTime {
++				if err := os.Remove(path.Join(container.RootFsDir(containerName), cpyFile.FileName)); err != nil {
++					wwlog.Warn("couldn't remove copied file: %s", err)
++				}
++			}
++		}
++	}
++	return retVal
+ }
+ 
+ func CobraRunE(cmd *cobra.Command, args []string) error {
+@@ -154,3 +185,40 @@ func SetBinds(myBinds []string) {
+ func SetNode(myNode string) {
+ 	nodeName = myNode
+ }
++
++// file name and last modification time so we can remove the file if it wasn't modified
++type cowFile struct {
++	FileName string
++	Src      string
++	ModTime  time.Time
++	Cow      bool
++}
++
++/*
++Check the objects we want to copy in, instead of mounting
++*/
++func getCopyFiles(containerNamer string, binds []*warewulfconf.MountEntry) (copyObjects []cowFile) {
++	for _, bind := range binds {
++		if !bind.Cow || bind.ReadOnly {
++			continue
++		}
++		if _, err := os.Stat(path.Join(container.RootFsDir(containerNamer), path.Dir(bind.Dest))); err != nil {
++			wwlog.Warn("destination directory doesn't exist: %s", err)
++			continue
++		}
++		if _, err := os.Stat(path.Join(container.RootFsDir(containerNamer), bind.Dest)); err == nil {
++			wwlog.Verbose("file exists in container: %s", bind.Dest)
++			continue
++		}
++		if _, err := os.Stat(bind.Source); err != nil {
++			wwlog.Warn("source doesn't exist: %s", err)
++			continue
++		}
++		copyObjects = append(copyObjects, cowFile{
++			FileName: bind.Dest,
++			Src:      bind.Source,
++			Cow:      bind.Cow,
++		})
++	}
++	return
++}
+diff --git a/internal/app/wwctl/container/exec/root.go b/internal/app/wwctl/container/exec/root.go
+index 4b74c941..0b6aaf63 100644
+--- a/internal/app/wwctl/container/exec/root.go
++++ b/internal/app/wwctl/container/exec/root.go
+@@ -32,7 +32,11 @@ var (
+ 
+ func init() {
+ 	baseCmd.AddCommand(child.GetCommand())
+-	baseCmd.PersistentFlags().StringArrayVarP(&binds, "bind", "b", []string{}, "Bind a local path into the container (must exist)")
++	baseCmd.PersistentFlags().StringArrayVarP(&binds, "bind", "b", []string{}, `Bind a local path which must exist into the container. Syntax is
++source[:destination[:{ro|cow}]] If destination is not set, 
++it will the same path as source.The additional parameter is 
++ro for read only and cow, which means the file is copied into 
++the container and removed if not modified.`)
+ 	baseCmd.PersistentFlags().BoolVar(&SyncUser, "syncuser", false, "Synchronize UIDs/GIDs from host to container")
+ 	baseCmd.PersistentFlags().StringVarP(&nodeName, "node", "n", "", "Create a read only view of the container for the given node")
+ }
+diff --git a/internal/app/wwctl/container/shell/root.go b/internal/app/wwctl/container/shell/root.go
+index cceb7512..52d9825d 100644
+--- a/internal/app/wwctl/container/shell/root.go
++++ b/internal/app/wwctl/container/shell/root.go
+@@ -28,7 +28,11 @@ var (
+ )
+ 
+ func init() {
+-	baseCmd.PersistentFlags().StringArrayVarP(&binds, "bind", "b", []string{}, "Bind a local path into the container (must exist)")
++	baseCmd.PersistentFlags().StringArrayVarP(&binds, "bind", "b", []string{}, `Bind a local path which must exist into the container. Syntax is
++source[:destination[:{ro|cow}]] If destination is not set, 
++it will the same path as source.The additional parameter is 
++ro for read only and cow, which means the file is copied into 
++the container and removed if not modified.`)
+ 	baseCmd.PersistentFlags().StringVarP(&nodeName, "node", "n", "", "Create a read only view of the container for the given node")
+ }
+ 
+diff --git a/internal/pkg/config/mounts.go b/internal/pkg/config/mounts.go
+index 2eb5060b..35805202 100644
+--- a/internal/pkg/config/mounts.go
++++ b/internal/pkg/config/mounts.go
+@@ -7,4 +7,5 @@ type MountEntry struct {
+ 	Dest     string `yaml:"dest,omitempty"`
+ 	ReadOnly bool   `yaml:"readonly,omitempty"`
+ 	Options  string `yaml:"options,omitempty"` // ignored at the moment
++	Cow      bool   `yaml:"cow,omitempty"`     // copy the file into the container and don't remove if modified
+ }
+diff --git a/internal/pkg/container/mountpoints.go b/internal/pkg/container/mountpoints.go
+index 5de00c75..7c16a0a9 100644
+--- a/internal/pkg/container/mountpoints.go
++++ b/internal/pkg/container/mountpoints.go
+@@ -21,13 +21,19 @@ func InitMountPnts(binds []string) (mounts []*warewulfconf.MountEntry) {
+ 			dest = bind[1]
+ 		}
+ 		readonly := false
+-		if len(bind) >= 3 && bind[2] == "ro" {
+-			readonly = true
++		cow := false
++		if len(bind) >= 3 {
++			if bind[2] == "ro" {
++				readonly = true
++			} else if bind[2] == "cow" {
++				cow = true
++			}
+ 		}
+ 		mntPnt := warewulfconf.MountEntry{
+ 			Source:   bind[0],
+ 			Dest:     dest,
+ 			ReadOnly: readonly,
++			Cow:      cow,
+ 		}
+ 		mounts = append(mounts, &mntPnt)
+ 	}
+diff --git a/userdocs/contents/containers.rst b/userdocs/contents/containers.rst
+index aa8385eb..02e0fbc6 100644
+--- a/userdocs/contents/containers.rst
++++ b/userdocs/contents/containers.rst
+@@ -216,6 +216,21 @@ when using the exec command. This works as follows:
+    location, as it is almost always present and empty in every Linux
+    distribution (as prescribed by the LSB file hierarchy standard).
+ 
++Files which should always be present in a container image like ``resolv.conf``
++can be specified in ``warewulf.conf`` with following container_exit
++
++.. code-block:: yaml
++   container mounts:
++   - source: /etc/resolv.conf
++     dest: /etc/resolv.conf
++     readonly: true
++
++.. note::
++   Instead of the ``readonly`` setting you can set ``cow``, which 
++   has the effect, that the source file is copied to the container
++   and removed if it was modified. This useful for file used for
++   registrations.
++
+ When the command completes, if anything within the container changed,
+ the container will be rebuilt into a bootable static object
+ automatically.

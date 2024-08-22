@@ -303,4 +303,14 @@
   * verbose-exec.patch (forwarded request 1195047 from mslacken)</comment>
     <requestid>1195048</requestid>
   </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>15da6836f82df0570d5310da9ab9dffc</srcmd5>
+    <version>4.5.6</version>
+    <time>1724343249</time>
+    <user>anag+factory</user>
+    <comment>- added option which allows to copy in file on wwctl container exec
+  and keep them, if they were modified
+- added added-cow-option-to-bind.patch (forwarded request 1195554 from mslacken)</comment>
+    <requestid>1195555</requestid>
+  </revision>
 </revisionlist>

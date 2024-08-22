@@ -1,3 +1,10 @@
+-------------------------------------------------------------------
+Thu Aug 22 12:56:41 UTC 2024 - Christian Goll <cgoll@suse.com>
+
+- added option which allows to copy in file on wwctl container exec
+  and keep them, if they were modified
+- added added-cow-option-to-bind.patch
+
 
 -------------------------------------------------------------------
 Fri Aug 09 12:39:33 UTC 2024 - cgoll@suse.com
