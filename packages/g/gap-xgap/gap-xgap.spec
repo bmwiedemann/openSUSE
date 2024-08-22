@@ -25,6 +25,7 @@ Group:          Productivity/Scientific/Math
 URL:            https://gap-packages.github.io/xgap/
 #Git-Clone:     https://github.com/gap-packages/xgap
 Source:         https://github.com/gap-packages/xgap/releases/download/v%version/xgap-%version.tar.gz
+Patch1:         gcc14.patch
 BuildRequires:  c_compiler
 BuildRequires:  fdupes
 BuildRequires:  gap-devel
@@ -38,7 +39,7 @@ Requires:       gap-core >= 4.7
 The XGAP package allows to use graphics in GAP.
 
 %prep
-%autosetup -n xgap-%version
+%autosetup -n xgap-%version -p1
 
 %build
 ./configure --with-gaproot="%gapdir"

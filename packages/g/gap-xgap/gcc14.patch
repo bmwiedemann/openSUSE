@@ -1,0 +1,30 @@
+From 0c83898a23ad4c7b5b68a9fcf5899a68fa272e58 Mon Sep 17 00:00:00 2001
+From: Jan Engelhardt <jengelh@inai.de>
+Date: Wed, 21 Aug 2024 22:49:31 +0200
+Subject: [PATCH] build: resolve compile error under gcc-14
+References: https://github.com/gap-packages/xgap/pull/33
+
+xcmds.c: In function "FunChangeList":
+xcmds.c:715:36: error: passing argument 2 of "XawListChange" from
+incompatible pointer type [-Wincompatible-pointer-types]
+  715 |     XawListChange( arg->sel->list, (const char **)text, 0, 0, True );
+---
+ src.x11/xcmds.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src.x11/xcmds.c b/src.x11/xcmds.c
+index 644996b..a0242c2 100644
+--- a/src.x11/xcmds.c
++++ b/src.x11/xcmds.c
+@@ -712,7 +712,7 @@ static Boolean FunChangeList (
+     text[i] = 0;
+ 
+     /* change list */
+-    XawListChange( arg->sel->list, (const char **)text, 0, 0, True );
++    XawListChange( arg->sel->list, (String *)text, 0, 0, True );
+ 
+     /* clear old text */
+     for ( i = 0;  arg->sel->text[i];  i++ )
+-- 
+2.46.0
+

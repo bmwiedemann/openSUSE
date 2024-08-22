@@ -15,4 +15,12 @@
     <comment>- Update to release 4.32</comment>
     <requestid>1161024</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>4084b1fd3dda415efd1ace7a5a4c7265</srcmd5>
+    <version>4.32</version>
+    <time>1724343215</time>
+    <user>anag+factory</user>
+    <comment>- Add gcc14.patch</comment>
+    <requestid>1195191</requestid>
+  </revision>
 </revisionlist>
