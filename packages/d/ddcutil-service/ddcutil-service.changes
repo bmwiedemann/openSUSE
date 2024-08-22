@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Aug 22 01:18:47 UTC 2024 - Michael Hamilton <michael@actrix.gen.nz>
+
+- 1.0.11
+  - Alter the detect-function for ddcutil 2.5.1 (generates more logging/warning info).
+  - Add a DETECT_ALL option to control whether disabled/powered-off VDU's are to be included in the results from detect.
+  - Reduce the number of messages generated when polling for hotplug events.
+  - Fixes to API documentation.
+
+
+-------------------------------------------------------------------
 Thu Jun 13 23:04:48 UTC 2024 - Michael Hamilton <michael@actrix.gen.nz>
 
 - 1.0.9
