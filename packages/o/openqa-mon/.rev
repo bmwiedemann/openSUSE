@@ -127,4 +127,34 @@
   * Remove the ALP config files (forwarded request 1164532 from ph03nix)</comment>
     <requestid>1164556</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>df33ad3672500b1a6d552be9867c13c3</srcmd5>
+    <version>1.3.0</version>
+    <time>1724343207</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.3.0:
+  * Fix header when resizing
+
+- Update to version 1.3.0-rc:
+  * Prepare new release candidate
+  * Improve pagination for openqa-mon
+  * Add pagination on TUI
+  * Limit number of jobs per http request
+  * Refactor config.go
+  * Update readme image link
+  * Remove unnecessary functions
+  * Refactor utility functions
+
+- Update to version 1.2.2:
+  * Bump version to 1.2.2
+  * Refactor VERSION
+  * Update rabbitmq dependency
+  * Update dependencies
+  * Add SLE-Micro job groups
+  * Avoid single LOC function, use strings.Repeat()
+  * Add test rule to Makefile
+  * Add test for remote URI
+  * Make openqa-mon testable again (forwarded request 1195139 from ph03nix)</comment>
+    <requestid>1195174</requestid>
+  </revision>
 </revisionlist>
