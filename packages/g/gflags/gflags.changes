@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Aug 17 17:23:59 UTC 2024 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Revert previous, incorrect change. gflags_shared is a CMake
+  target name, not a filename. Unfortunately no context was
+  provided, making it impossible to know what was actually
+  wanted.
+
+-------------------------------------------------------------------
+Mon Jul 29 08:27:28 UTC 2024 - Christian Goll <cgoll@suse.com>
+
+- cmake include files want to link agains gflags_shared instead
+  of glflags only. Creating this libs the hard way.
+
+-------------------------------------------------------------------
 Sun Aug 28 19:42:22 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Fix (uncritical) libdir error in pkgconfig file.
