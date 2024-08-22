@@ -61,14 +61,14 @@ Mon May 13 14:07:04 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
       syntax of a well-known name” to glib-2-80.
 - Changes from version 2.80.1
   + Fix CVE-2024-34397: GDBus signal subscriptions for well-known
-    names are vulnerable to unicast spoofing.
+    names are vulnerable to unicast spoofing (boo#1224044).
   + Updated translations.
 
 -------------------------------------------------------------------
 Tue Apr  2 16:17:11 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - require dbus-launch only if dbus-service is wanted. This helps
-  with stripping down container-only builds
+  with stripping down container-only builds (jsc#PED-8153)
 
 -------------------------------------------------------------------
 Mon Mar 18 12:25:33 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
