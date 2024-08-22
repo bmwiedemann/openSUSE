@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Aug 12 08:02:40 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 3.6.6:
+  * Update translations
+- update to 3.6.5:
+  * Bump gmime dependency to version 3.0
+- update to 3.6.4:
+  * gtksourceview: Provide a better default style
+- update spec file to newer standards, remove support for older Leap releases
+
+-------------------------------------------------------------------
 Tue Jul  2 15:03:29 UTC 2024 - Frantisek Simorda <frantisek.simorda@suse.com>
 
 

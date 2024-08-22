@@ -17,13 +17,12 @@
 
 
 Name:           xed
-Version:        3.6.3
+Version:        3.6.6
 Release:        0
 Summary:        A text editor with highlighting
 License:        GPL-2.0-or-later
-Group:          System/GUI/Other
 URL:            https://github.com/linuxmint/xed
-Source:         https://github.com/linuxmint/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source:         %{url}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  gnome-common
 BuildRequires:  meson
@@ -41,9 +40,6 @@ BuildRequires:  pkgconfig(libpeas-gtk-1.0)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(sm)
 BuildRequires:  pkgconfig(xapp)
-Requires:       xapps-common
-Recommends:     %{name}-lang
-%glib2_gsettings_schema_requires
 
 %description
 xed is a text editor designed for the Cinnamon desktop. It has most
@@ -58,9 +54,7 @@ ChangeLogs, and adjusting indentation levels.
 
 %package devel
 Summary:        Development files for Xed, a text editor
-Group:          Development/Libraries/C and C++
 Requires:       %{name} = %{version}
-Requires:       pkgconfig
 Requires:       pkgconfig(gtksourceview-3.0)
 
 %description devel
@@ -77,7 +71,7 @@ ChangeLogs, and adjusting indentation levels.
 %lang_package
 
 %prep
-%setup -q
+%autosetup
 
 %build
 %meson
@@ -85,44 +79,29 @@ ChangeLogs, and adjusting indentation levels.
 
 %install
 %meson_install
-chmod -x %{buildroot}/%{_includedir}/%{name}/xed-searchbar.h
-find %{buildroot} -type f -name "*.la" -delete -print
 %suse_update_desktop_file %{name}
 %find_lang %{name} %{?no_lang_C}
 %fdupes %{buildroot}
 
-%post
-/sbin/ldconfig
-%if 0%{?suse_version} < 1500
-%desktop_database_post
-%glib2_gsettings_schema_post
-%endif
-
-%postun
-/sbin/ldconfig
-%if 0%{?suse_version} < 1500
-%desktop_database_postun
-%glib2_gsettings_schema_postun
-%endif
-
 %files
 %license COPYING
-%doc AUTHORS README.md debian/changelog
+%doc AUTHORS README.md
 %{_bindir}/%{name}
-%{_datadir}/%{name}/
+%{_datadir}/%{name}
 %exclude %{_datadir}/%{name}/gir-1.0/
-%{_libdir}/%{name}/
-%{_datadir}/glib-2.0/schemas/*.xml
+%{_libdir}/%{name}
+%{_datadir}/glib-2.0/schemas/org.x.editor.*.xml
 %{_datadir}/metainfo/xed.appdata.xml
 %{_datadir}/dbus-1/services/org.x.editor.service
 %{_datadir}/applications/%{name}.desktop
 %{_mandir}/man?/%{name}.?%{?ext_man}
-%{_datadir}/help/C/%{name}/
+%{_datadir}/help/C/%{name}
+%{_datadir}/gtksourceview-4/styles/xed.xml
 
 %files devel
-%{_includedir}/%{name}/
+%{_includedir}/%{name}
 %{_libdir}/pkgconfig/%{name}.pc
-%{_datadir}/%{name}/gir-1.0/
+%{_datadir}/%{name}/gir-1.0
 
 %files lang -f %{name}.lang
 
