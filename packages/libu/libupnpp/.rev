@@ -56,4 +56,14 @@
     <comment>Update to version 0.26.4</comment>
     <requestid>1173518</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>10fd8108e4cb0754c6899325b49d37e7</srcmd5>
+    <version>0.26.6</version>
+    <time>1724343240</time>
+    <user>anag+factory</user>
+    <comment>Update to version 0.26.6
+Fix compilation with GCC 14
+</comment>
+    <requestid>1195275</requestid>
+  </revision>
 </revisionlist>

@@ -1,3 +1,10 @@
+Thu Aug 22 08:54:45 UTC 2024 - Michael Pujos <pujos.michael@gmail.com>
+
+- Update to version 0.26.6:
+  * Fix the qmake build to not need special copy of includes in uninstalled npupnp.
+  * Fix gcc 14 compile (includes)
+  * Misc. small cleanups, mostly compile/build
+
 -------------------------------------------------------------------
 Sun May 12 13:17:42 UTC 2024 - Michael Pujos <pujos.michael@gmail.com>
 
