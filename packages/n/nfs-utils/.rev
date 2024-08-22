@@ -1770,4 +1770,41 @@
   (boo#1216740)</comment>
     <requestid>1169773</requestid>
   </revision>
+  <revision rev="182" vrev="43">
+    <srcmd5>87fc5c076f910dc80edf4c0c6a2d26fc</srcmd5>
+    <version>unknown</version>
+    <time>1724275489</time>
+    <user>anag+factory</user>
+    <comment>- add 0001-gssd-revert-commit-a5f3b7ccb01c.patch,
+  0002-gssd-revert-commit-513630d720bd.patch,
+  0003-gssd-switch-to-using-rpc_gss_seccreate.patch,
+  0004-gssd-handle-KRB5_AP_ERR_BAD_INTEGRITY-for-machine-cr.patch,
+  0005-gssd-handle-KRB5_AP_ERR_BAD_INTEGRITY-for-user-crede.patch,
+  0006-configure-check-for-rpc_gss_seccreate.patch: fixes for
+  libtirpc 1.3.5
+
+- drop reenable-nfsv2.patch (poo#106679)
+  Fix crash when rpc-gssd run with -v.
+- Replace references to /var/adm/fillup-templates with new
+  options.
+- do not strip the binaries
+- mkinitrd-boot.sh: allow other mkinitrd-setup
+- nfs-utils-eperm-fallback.patch:  mount.nfs
+  Includes new config file: /etc/nfsmount.conf and
+- Kill processes on NFS mounts when unmounting
+  bnc#442490
+  * fix typo in handling of &quot;init.d/nfs status&quot;
+- nfs.init:
+  * unmount rpc_pipefs
+- fix sysconfig filename for changed fillup call
+   services (gssd and idmpad have been rolled in to nfs/nfsserver).
+- remove svcinfo.d dir as it is provided now by filesystem
+- update to version 1.1.2
+- uses libgssglue instead of libgssapi
+- add rpcbind support [fate#300607]
+- added gssapi to buildrequires
+  (#116355)
+  showmount has been removed there (#309782)</comment>
+    <requestid>1194950</requestid>
+  </revision>
 </revisionlist>

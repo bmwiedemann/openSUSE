@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug 21 06:34:10 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 5.20.1:
+  * fix: update golang to 1.22 and update other dependencies (#548)
+
+-------------------------------------------------------------------
 Wed Jul 24 17:41:38 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 5.20.0:

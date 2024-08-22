@@ -17,13 +17,12 @@
 
 
 Name:           cinnamon-session
-Version:        6.0.4
+Version:        6.2.1
 Release:        0
 Summary:        The session manager for the Cinnamon Desktop
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
-Group:          System/GUI/Other
 URL:            https://github.com/linuxmint/cinnamon-session
-Source:         https://github.com/linuxmint/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source:         %{url}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        %{name}-logind.gschema.override
 BuildRequires:  docbook
 BuildRequires:  hicolor-icon-theme
@@ -51,17 +50,16 @@ Requires:       cinnamon
 Requires:       cinnamon-settings-daemon
 Requires:       dbus-1-x11
 Requires:       upower >= 0.9.0
-Recommends:     %{name}-lang
-%glib2_gsettings_schema_requires
 
 %description
 This packages contains the session manager for the Cinnamon Desktop.
 
 %prep
-%setup -q
+%autosetup
 
 %build
 %meson \
+  -Dfrequent_warnings=true \
   -Dipv6=true    \
   -Dxtrans=true
 %meson_build
@@ -81,7 +79,7 @@ install -Dpm 0644 %{SOURCE1} \
 %doc AUTHORS README README.md
 %{_bindir}/%{name}
 %{_bindir}/%{name}-quit
-%{_libexecdir}/%{name}-check-accelerated*
+%{_libexecdir}/*
 %{_datadir}/%{name}/
 %{_datadir}/glib-2.0/schemas/org.cinnamon.*
 %{_datadir}/icons/hicolor/*/apps/%{name}-properties.*

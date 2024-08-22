@@ -114,6 +114,11 @@ done
 
 %install
 %cmake_install
+%if 0%{?suse_version} == 1500 && 0%{?sle_version} > 0 && 0%{?sle_version} <= 150500
+# Work around a bug by cmake installing docs into the wrong directory:
+mkdir -p %{buildroot}%{_defaultdocdir}
+mv %{buildroot}/usr/share/doc/openjpeg %{buildroot}%{_defaultdocdir}/%{name}
+%endif
 %fdupes %{buildroot}%{_defaultdocdir}
 
 %post -n %{library_name} -p /sbin/ldconfig

@@ -1,7 +1,7 @@
 #
 # spec file for package cinnamon-menus
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,28 +16,24 @@
 #
 
 
-%define typelib typelib-1_0-CMenu-3_0
-%define soname  libcinnamon-menu-3
-%define sover   0
+%define         sover   0
 Name:           cinnamon-menus
-Version:        6.0.0
+Version:        6.2.0
 Release:        0
 Summary:        A menu system for the Cinnamon Desktop
 License:        LGPL-2.1-or-later
-Group:          System/Libraries
 URL:            https://github.com/linuxmint/cinnamon-menus
-Source:         https://github.com/linuxmint/cinnamon-menus/archive/%{version}/%{name}-%{version}.tar.gz
+Source:         %{url}/archive/%{version}/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
-BuildRequires:  autoconf
-BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  intltool
 BuildRequires:  libtool
 BuildRequires:  meson
 BuildRequires:  pkgconfig
-BuildRequires:  python3-devel
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
+BuildRequires:  pkgconfig(gtk-doc)
+BuildRequires:  pkgconfig(python3)
 
 %description
 cinnamon-menus is an implementation of the draft "Desktop Menu
@@ -46,27 +42,27 @@ the Cinnamon menu layout configuration files, .directory files and
 assorted menu related utility programs, Python bindings, and a
 simple menu editor.
 
-%package -n %{soname}-%{sover}
+%package -n libcinnamon-menu-3-%{sover}
 Summary:        A menu system for the Cinnamon desktop environment
 Group:          System/Libraries
 Provides:       %{name} = %{version}
 Obsoletes:      %{name} < %{version}
 
-%description -n %{soname}-%{sover}
+%description -n libcinnamon-menu-3-%{sover}
 cinnamon-menus is an implementation of the draft "Desktop Menu
 Specification" from freedesktop.org. This package also contains
 the Cinnamon menu layout configuration files, .directory files and
 assorted menu related utility programs, Python bindings, and a
 simple menu editor.
 
-%package -n %{typelib}
+%package -n typelib-1_0-CMenu-3_0
 Summary:        Libcinnamon-menu API -- Introspection bindings
 # typelib-1_0-CinnamonMenu-3_0 was last used in openSUSE Leap 42.2.
 Group:          System/Libraries
 Provides:       typelib-1_0-CinnamonMenu-3_0 = %{version}
 Obsoletes:      typelib-1_0-CinnamonMenu-3_0 < %{version}
 
-%description -n %{typelib}
+%description -n typelib-1_0-CMenu-3_0
 cinnamon-menus is an implementation of the draft "Desktop Menu
 Specification" from freedesktop.org. This package also contains
 the Cinnamon menu layout configuration files, .directory files and
@@ -76,42 +72,53 @@ simple menu editor.
 This package provides the GObject Introspection bindings for
 cinnamon-menus.
 
-%package -n %{soname}-devel
+%package -n libcinnamon-menu-3-devel
 Summary:        Libraries and development headers for cinnamon-menus
 Group:          Development/Libraries/Other
-Requires:       %{soname}-%{sover} = %{version}
-Requires:       %{typelib} = %{version}
+Requires:       libcinnamon-menu-3-%{sover} = %{version}
+Requires:       typelib-1_0-CMenu-3_0 = %{version}
 
-%description -n %{soname}-devel
+%description -n libcinnamon-menu-3-devel
 This package provides the necessary development libraries for
 writing applications that use the Cinnamon menu system.
 
+%package doc
+Summary:        Documentation for %{name}
+BuildArch:      noarch
+
+%description doc
+This package ships the HTML documentation for %{name}
+
 %prep
-%setup -q
+%autosetup
 
 %build
-%meson
+%meson \
+  -Ddeprecated_warnings=true \
+  -Denable_debug=false \
+  -Denable_docs=true
 %meson_build
 
 %install
 %meson_install
-find %{buildroot} -type f -name "*.la" -delete -print
 
-%post -n %{soname}-%{sover} -p /sbin/ldconfig
-%postun -n %{soname}-%{sover} -p /sbin/ldconfig
+%ldconfig_scriptlets -n libcinnamon-menu-3-%{sover}
 
-%files -n %{soname}-%{sover}
-%license COPYING*
+%files -n libcinnamon-menu-3-%{sover}
+%license COPYING COPYING.LIB
 %doc AUTHORS README debian/changelog
-%{_libdir}/%{soname}.so.%{sover}*
+%{_libdir}/libcinnamon-menu-3.so.%{sover}*
 
-%files -n %{soname}-devel
+%files -n libcinnamon-menu-3-devel
 %{_includedir}/%{name}-3.0/
-%{_libdir}/%{soname}.so
+%{_libdir}/libcinnamon-menu-3.so
 %{_libdir}/pkgconfig/libcinnamon-menu-3.0.pc
 %{_datadir}/gir-1.0/CMenu-3.0.gir
 
-%files -n %{typelib}
+%files -n typelib-1_0-CMenu-3_0
 %{_libdir}/girepository-1.0/CMenu-3.0.typelib
+
+%files doc
+%{_datadir}/gtk-doc/html/cmenu
 
 %changelog

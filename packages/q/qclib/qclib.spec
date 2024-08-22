@@ -19,7 +19,7 @@
 %global _lto_cflags %{?_lto_cflags} -ffat-lto-objects
 
 Name:           qclib
-Version:        2.4.1
+Version:        2.5.0
 Release:        0
 Summary:        Query Capacity library
 License:        BSD-3-Clause

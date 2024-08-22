@@ -1,4 +1,3 @@
-#
 # Copyright (C) 2014-2020 Red Hat, Inc.
 #
 # Cockpit is free software; you can redistribute it and/or modify it
@@ -50,9 +49,9 @@ Summary:        Web Console for Linux servers
 License:        LGPL-2.1-or-later
 URL:            https://cockpit-project.org/
 
-Version:        321
+Version:        322
 Release:        0
-Source0:        cockpit-%{version}.tar
+Source0:        cockpit-%{version}.tar.gz
 Source1:        cockpit.pam
 Source2:        cockpit-rpmlintrc
 Source3:        cockpit-suse-theme.tar
@@ -73,6 +72,7 @@ Patch102:       0002-selinux-temporary-remove-setroubleshoot-section.patch
 Patch103:       0004-leap-gnu18-removal.patch
 Patch104:       selinux_libdir.patch
 Patch105:       fix-libexecdir.patch
+Patch106:       0005-cockpit-ws-user-remove-default-deps.patch
 
 %define build_all 1
 %if 0%{?rhel} == 8 && 0%{?epel} == 0 && !0%{?build_all}
@@ -111,6 +111,11 @@ ExcludeArch: %{ix86}
 %ifarch %ix86
 %define build_pcp 0
 %endif
+%endif
+
+%define enable_multihost 1
+%if 0%{?fedora} >= 41 || 0%{?rhel} >= 10
+%define enable_multihost 0
 %endif
 
 %if 0%{?suse_version} == 0 || 0%{?suse_version} > 1500
@@ -223,6 +228,7 @@ BuildRequires:  python3-tox-current-env
 %patch -P 3 -p1
 %patch -P 4 -p1
 %patch -P 5 -p1
+%patch -P 106 -p1
 
 # SLE Micro specific patches
 %if 0%{?is_smo}
@@ -261,6 +267,9 @@ autoreconf -fvi -I tools
     --with-pamdir='%{pamdir}' \
 %if %{build_pcp} == 0
     --disable-pcp \
+%endif
+%if %{enable_multihost}
+    --enable-multihost \
 %endif
 
 %if 0%{?with_selinux}

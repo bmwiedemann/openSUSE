@@ -18,12 +18,11 @@
 
 %define minetestuser %{name}
 %define minetestgroup %{name}
-%define irrlichtmt_version 1.9.0mt13
 %bcond_without leveldb
 %bcond_without redis
 %bcond_without postgresql
 Name:           minetest
-Version:        5.8.0
+Version:        5.9.0
 Release:        0
 Summary:        A InfiniMiner/Minecraft inspired game
 License:        CC-BY-SA-3.0 AND LGPL-2.1-or-later
@@ -32,7 +31,6 @@ URL:            https://minetest.net/
 Source:         https://github.com/minetest/%{name}/archive/%{version}/%{name}-%{version}.tar.gz
 Source1:        minetest-rpmlintrc
 Source2:        minetest@.service
-Source3:        https://github.com/minetest/irrlicht/archive/%{irrlichtmt_version}/irrlicht-%{irrlichtmt_version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  doxygen
 BuildRequires:  fdupes
@@ -86,7 +84,6 @@ Requires:       opengl-games-utils
 Recommends:     %{name}-game
 Recommends:     %{name}-lang
 Provides:       %{name}-runtime = %{version}
-Provides:       bundled(irrlicht) = %{irrlichtmt_version}
 
 %description
 An infinite-world block sandbox game and a game engine, inspired by
@@ -130,11 +127,6 @@ This package contains data for minetest and minetestserver.
 %prep
 %setup -q
 
-cd lib
-tar -xzf %{SOURCE3}
-mv irrlicht-%{irrlichtmt_version} irrlichtmt
-cd ..
-
 # Purge bundled jsoncpp, lua and gmp libraries.
 rm -rf lib/jsoncpp lib/lua lib/gmp
 
@@ -174,6 +166,9 @@ rm -rf lib/jsoncpp lib/lua lib/gmp
 
 %install
 %cmake_install
+
+mkdir -p %{buildroot}%{_datadir}/minetest/irr/media
+cp -r irr/media/Shaders %{buildroot}%{_datadir}/minetest/irr/media
 
 # Install the wrapper.
 ln -s opengl-game-wrapper.sh %{buildroot}%{_bindir}/%{name}-wrapper
@@ -230,7 +225,7 @@ getent passwd %{name} > /dev/null || \
 %{_datadir}/applications/net.minetest.minetest.desktop
 %{_datadir}/icons/hicolor/*/apps/%{name}.*
 %dir %{_datadir}/metainfo/
-%{_datadir}/metainfo/*%{name}.appdata.xml
+%{_datadir}/metainfo/net.minetest.minetest.metainfo.xml
 %{_mandir}/man6/%{name}.6%{?ext_man}
 
 %files lang -f %{name}.lang

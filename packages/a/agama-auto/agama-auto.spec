@@ -12,8 +12,9 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 Name:           agama-auto
 #               This will be set by osc services, that will run after this.
@@ -21,7 +22,7 @@ Version:        0
 Release:        0
 Summary:        Agama auto-installation service
 License:        GPL-2.0-only
-Url:            https://github.com/opensuse/agama
+URL:            https://github.com/opensuse/agama
 Source0:        agama.tar
 BuildArch:      noarch
 Requires:       agama-cli

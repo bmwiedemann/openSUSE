@@ -190,4 +190,13 @@
     <comment></comment>
     <requestid>1159296</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>a0fc7520fd931c6bc2aac59b527dd2d0</srcmd5>
+    <version>0.3.1</version>
+    <time>1724275485</time>
+    <user>anag+factory</user>
+    <comment>- Split SDL/Qt-dependent tools to multibuilt subpackage
+- Update to release 0.3.1</comment>
+    <requestid>1194915</requestid>
+  </revision>
 </revisionlist>

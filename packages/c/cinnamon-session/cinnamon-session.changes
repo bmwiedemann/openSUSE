@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Aug 13 05:01:36 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 6.2.1:
+  * Fix restart and shutdown
+- update to 6.2.0:
+  * cinnamon-session-quit.py: add missing window icon
+  * csm-manager.c: Unset WAYLAND_DISPLAY during shutdown in a wayland
+  * main.c: Reset the activation environment at the end of the
+  * csm-manager.c: Stop the user dbus-daemon at the end of the session
+  * cs-presence.c: Fix CsmPresence idle handling
+  * cinnamon-session-quit.py: Set logout window to keep-above and all
+  * Remove orphaned include
+  * cinnamon-session: make sure wayland sessions get a login shell
+
+-------------------------------------------------------------------
 Sun Mar 24 18:02:33 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.0.4:

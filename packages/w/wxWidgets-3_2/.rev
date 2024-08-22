@@ -239,4 +239,13 @@
     <comment>- Update to release 3.2.5</comment>
     <requestid>1178779</requestid>
   </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>460ac20d1441a64f3ceb0ded345f829e</srcmd5>
+    <version>3.2.5</version>
+    <time>1724275493</time>
+    <user>anag+factory</user>
+    <comment>- Add textfiletest-fix-file-exists.diff to fix a wrong skip
+  condition in the test (fixes the build on s390x)</comment>
+    <requestid>1195015</requestid>
+  </revision>
 </revisionlist>

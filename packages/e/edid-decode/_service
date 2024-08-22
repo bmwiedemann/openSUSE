@@ -1,0 +1,15 @@
+<services>
+  <service mode="manual" name="tar_scm">
+    <param name="url">git://linuxtv.org/edid-decode.git</param>
+    <param name="scm">git</param>
+    <param name="revision">d6d86cb9c9e13c7bbc6854699940f2d5a73567f5</param>
+    <param name="versionformat">0.0~git%cd.%h</param>
+  </service>
+  <service mode="manual" name="set_version" />
+
+  <service mode="manual" name="recompress">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+</services>
+

@@ -1,4 +1,157 @@
 -------------------------------------------------------------------
+Mon Aug  19 15:01:03 UTC 2024 - sb56637 <mxoo28j7@duck.com>
+
+  * Changes to the RPM .spec file for proper dependency versions of other Cinnamon components at different version numbers
+  
+-------------------------------------------------------------------
+Sun Aug  11 05:21:09 UTC 2024 - sb56637 <mxoo28j7@duck.com>
+
+- update to 6.2.9:
+  * cs_default.py: Disable mousewheel selection in the default app comboboxes.
+
+- update to 6.2.8:
+  * x-cinnamon-portals.conf: Add gnome-keyring as the Secret provider.
+
+- update to 6.2.7:
+  * Dns.js: Revert bug workaround
+
+- update to 6.2.6:
+  * cinnamon-settings-users: Don't use w -hs
+  * Set clip_to_allocation to true for menu and notification applets
+
+- update to 6.2.5:
+  * ExtensionCore.py - Adds update subject
+  * Revert "cs_themes: Restrain picture button heights."
+
+- update to 6.2.4:
+  * windowMenu.js: Fix warning flood when moving a window to another workspace.
+  * cs_themes: Restrain picture button heights.
+  * user applet: Fix updating the avatar icon size when the panel height changes.
+  * cs-info: Better parsing of the graphics card lspci output
+
+- update to 6.2.3:
+  * cinnamon-settings.py: Use the nvidia icon for nvidia-settings.
+  * ExtensionCore.py: Check for display names in translations
+  * cs_themes: Frame App and Cinnamon themes, move user themes to the top.
+  * xapp status: Make sure the recording icon size is set, disconnect the recording signal when the applet is removed.
+
+- update to 6.2.2:
+  * Revert "xdg-desktop-portal: Don't ship the x-cinnamon-portals.conf file."
+
+- update to 6.2.1:
+  * Fix extensions automatically enabling on download
+
+- update to 6.2.0:
+  * sound applet: Fixes #12035
+  * Add a fix for webkit dev's failure to care about breaking online-accounts for nvidia users
+  * window lists: don't attention flash focused window
+  * Remove dynamic text direction for table
+  * cinnamon-xlet-makepot: Don't assume xgettext calls actually generate a potfile.
+  * Restore polkit agent.
+  * Fix lmde6 build.
+  * polkit-dialog: Clean up the styling a bit
+  * debian/control: Don't remove policykit-1-gnome yet.
+  * Add greeter badges for Cinnamon sessions
+  * Show search bar by default in AppChooserDialog
+  * cs_panel.py: Set the step amount to 1 for panel heights.
+  * power applet: Fix reported battery status
+  * panel.js: Don't re-declare x_mon when converting panel defs.
+  * cs_panel.py: Fix behavior when there are overlapping definitions.
+  * panel.js: Improve handling of invalid/duplicate panel definitions.
+  * notifications@cinnamon.org: Append the locale's date format to notifications
+  * cs_screensaver.py: Add screen lock delay options for 5 and 10 seconds
+  * cs_keyboard.py, cinnamon-desktop-editor.py: Fix some python 3.12- related warnings.
+  * cs_keyboard.py: Update the custom list visually as well as internally when a keybinding changes.
+  * calendar@cinnamon.org: Fix garbage collection of stale events.
+  * Fix mapping flatpak windows to flatpak app
+  * Switch to GNOME Online Accounts GTK
+  * l10n: Update POT
+  * cs_info: Add 'about' as a keyword for System Info
+  * cs_keyboard: Enable configuration of bindings for Spices
+  * cs_themes: Fix the stack switcher sensitivity
+  * inhibit@cinnamon.org: Add unique applet icons for notification toggles
+  * Show battery pending charge/discharge states in Power Management
+  * cinnamon-settings.py: Additional modules when Mint modules are absent
+  * cinnamon-settings: Forbid synaptic if mintsources is present.
+  * Fix linuxmint#11313
+  * Add userWidget.js
+  * lightbox.js: Port to Clutter animations
+  * modalDialog.js: Port to Clutter animations
+  * desklet.js: Port to Clutter animations
+  * Add interface for xdg portal requests.
+  * doc generation: Fix strings with invalid escape codes.
+  * placesManager.js: Remove "Connect to..." item.
+  * New action icon for Mint-X theme
+  * cs_themes: Blacklist Adwaita and HighContrast
+  * cs_themes: Blacklist a few more themes
+  * cs_themes: Blacklist adwaita-dark
+  * user applet: Allow to display the profile picture on the panel
+  * userWidget.js: Fix AccountsService icon changes.
+  * user@cinnamon.org: Use UserWidget.Avatar for the panel user icon.
+  * cs_user.py: Use XApp.IconChooserDialog for "Browse for more...".
+  * Update Show information on date format syntax URL to working one
+  * workspace switcher: remove the workspace the cursor is hovering on middle click
+  * cs_keyboard.py and KeybindingWidgets.py: Add support for search by binding
+  * cornerbar applet: add shift + click actions settings
+  * cornerbar: Properly filter windows not to transparentize on peek blur/opacity effects
+  * show desktop applet: Fix desktop peek
+  * Remove unused js overrides
+  * Prevent window randomization on connecting a monitor
+  * Preserve file permissions of downloaded spices
+  * cinnamon theme: fix expo-workspaces-name-entry
+  * cornerbar: Port to Clutter animations
+  * show-desktop: Port to Clutter animations
+  * gwl: Port to Clutter animations
+  * Adds toggle switch to on-screen-keyboard@cinnamon applet to enable/disable keyboard.
+  * util.js: remove unused utility function latinise()
+  * userWidget: Back to using the theme to load the face image.
+  * user applet: handle the symbolic panel icon correctly.
+  * gwl: Fix thumbnails resize on scaled monitors
+  * Show "wired with a padlock" or "wireless with a padlock" icons when a VPN is connected
+  * Add a Science category to the menu.
+  * sound@cinnamon.org: Prevent Muffin from creating sound streams in volume mixer in sound applet
+  * cinnamon-app-system.c: Don't remove an app from running_apps until after emitting the changed signal.
+  * userWidget: Simplify a bit
+  * Embed nemo's layout editor into cinnamon-settings' Actions module.
+  * Prevents Cvc.MixerControl from being loaded more than once
+  * l10n: Generate additional files
+  * l10n: Generate CS module desktop files
+  * l10n: Update POT
+  * xdg-desktop-portal: Don't ship the x-cinnamon-portals.conf file.
+  * PopupSliderMenuItem: Don't track the hover state
+  * window-list: Remove indicators for minimized and tiled windows
+
+- update to 6.0.4:
+  * Move gir files to private path
+  * fixing applet tooltips clipping out the top as well.=
+
+- update to 6.0.3:
+  * fix for applet tooltips clipping outside the screen when they're too close to the bottom.
+  * Show secure connection icon when WireGuard is active
+
+- update to 6.0.2:
+  * menu: Don't resize if the OSK is visible
+  * Check for a workarea collision during actor.show() and shrink or restore to the user size when appropriate.
+  * cs-info: increase inxi verbosity
+  * README.Debian: fix typo
+  * Update .git-blame-ignore-revs
+
+- update to 6.0.1:
+  * main.js: Don't initialize monitorLabeler in an x11 session.
+  * Update bug report template with Wayland issue tracker
+  * cinnamon-global/clipboard: use the MetaDisplay's selection object.
+  * fix: install actions from the correct folder
+  * improve xlet download and autostart run icons
+  * Fix Main.activateWindow() for windows with normal transient children
+  * actions: Ignore miscellaneous files in the install folder.
+  * l10n: Update cs modules
+  * cinnamon-settings-users: Fix special characters in pango markup
+  * Update Actions module to show non-Spice Actions
+  * Spices.py: Skip actions when they contain the 'Active' key and its value is false.
+  * Spices.py: catch some possible exceptions when loading legacy actions.
+  * ExtensionCore.py: Render spice-supplied icons correctly in hidpi.
+
+-------------------------------------------------------------------
 Mon Feb 26 10:46:03 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

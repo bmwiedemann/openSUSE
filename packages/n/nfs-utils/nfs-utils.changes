@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Aug 20 20:21:14 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- add 0001-gssd-revert-commit-a5f3b7ccb01c.patch,
+  0002-gssd-revert-commit-513630d720bd.patch,
+  0003-gssd-switch-to-using-rpc_gss_seccreate.patch,
+  0004-gssd-handle-KRB5_AP_ERR_BAD_INTEGRITY-for-machine-cr.patch,
+  0005-gssd-handle-KRB5_AP_ERR_BAD_INTEGRITY-for-user-crede.patch,
+  0006-configure-check-for-rpc_gss_seccreate.patch: fixes for
+  libtirpc 1.3.5
+
+-------------------------------------------------------------------
 Mon Apr 22 02:56:13 UTC 2024 - Neil Brown <nfbrown@suse.com>
 
 - nfs-utils.spec: Provide nfsidmap as well as obsoleting it.
@@ -144,7 +155,7 @@ Sat May  7 12:17:24 UTC 2022 - Marcus Meissner <meissner@suse.com>
 -------------------------------------------------------------------
 Mon Mar 21 14:50:21 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
-- drop reenable-nfsv2.patch (poo#106679) 
+- drop reenable-nfsv2.patch (poo#106679)
 
 -------------------------------------------------------------------
 Tue Mar  8 20:58:54 UTC 2022 - Dirk Müller <dmueller@suse.com>
@@ -186,7 +197,7 @@ Mon Oct 25 23:53:37 UTC 2021 - Neil Brown <nfbrown@suse.com>
 Thu Sep  9 23:35:04 UTC 2021 - Neil Brown <nfbrown@suse.com>
 
 - Add 0001-gssd-fix-crash-in-debug-message.patch
-  Fix crash when rpc-gssd run with -v. 
+  Fix crash when rpc-gssd run with -v.
   (boo#1190144)
 
 -------------------------------------------------------------------
@@ -366,7 +377,7 @@ Mon Feb 10 18:58:59 UTC 2020 - Petr Vorel <pvorel@suse.cz>
    Dropped patches (upstream used different solution):
    - 0009-Allow-compilation-to-succeed-with-fno-common.patch (btw this used
 	 Patch0: instead of Patch10:) (boo#1160405)
-   
+
    Add nfsdcld - NFSv4 Client Tracking Daemon, add nfsdcld.service and enable it
    for nfs-kernel-server, add man page
    Add clddb-tool - tool for downgrading the nfsdcld sqlite database schema,
@@ -515,7 +526,7 @@ Fri Jul  6 15:02:49 CEST 2018 - kukuk@suse.de
 -------------------------------------------------------------------
 Thu Nov 23 13:40:51 UTC 2017 - rbrown@suse.com
 
-- Replace references to /var/adm/fillup-templates with new 
+- Replace references to /var/adm/fillup-templates with new
   %_fillupdir macro (boo#1069468)
 
 -------------------------------------------------------------------
@@ -1020,7 +1031,7 @@ Mon May 13 15:32:55 UTC 2013 - coolo@suse.com
 Wed Mar  6 20:04:55 UTC 2013 - darin@darins.net
 
 - nfsserver.init,sysconfig.nfs - Add support for setting rpc.mountd
-  options. 
+  options.
 
 -------------------------------------------------------------------
 Wed Nov 28 00:08:55 UTC 2012 - nfbrown@suse.com
@@ -1085,7 +1096,7 @@ Sun Nov 20 06:47:14 UTC 2011 - coolo@suse.com
 -------------------------------------------------------------------
 Sun Nov  6 11:43:39 UTC 2011 - puzel@suse.com
 
-- do not strip the binaries 
+- do not strip the binaries
 
 -------------------------------------------------------------------
 Wed Oct 12 05:18:17 UTC 2011 - nfbrown@suse.com
@@ -1261,7 +1272,7 @@ Sun May  9 23:07:24 UTC 2010 - nfbrown@novell.com
 -------------------------------------------------------------------
 Mon Apr 19 23:43:45 UTC 2010 - nfbrown@novell.com
 
-- mkinitrd-boot.sh: allow other mkinitrd-setup 
+- mkinitrd-boot.sh: allow other mkinitrd-setup
   scripts to request the inclusion of nfs support
   by setting need_nfs to 1.  (bnc#572207)
 
@@ -1294,7 +1305,7 @@ Tue Feb 23 22:15:18 UTC 2010 - nfbrown@novell.com
 -------------------------------------------------------------------
 Sun Nov 29 22:03:26 UTC 2009 - nfbrown@novell.com
 
-- nfs-utils-eperm-fallback.patch:  mount.nfs 
+- nfs-utils-eperm-fallback.patch:  mount.nfs
   tries a v3 mount after a v4 mount fails with ENOENT.
   Older linux nfsd servers return EPERM, so fall
   back in that case too.  bnc#557138
@@ -1303,7 +1314,7 @@ Sun Nov 29 22:03:26 UTC 2009 - nfbrown@novell.com
 Thu Nov  5 03:16:22 UTC 2009 - nfbrown@novell.com
 
 - New upsteam release - 1.2.1
-  Includes new config file: /etc/nfsmount.conf and 
+  Includes new config file: /etc/nfsmount.conf and
   man page.
 - nfs.init
   * implement try-restart in a more gentle fashion
@@ -1320,7 +1331,7 @@ Thu Nov  5 03:16:22 UTC 2009 - nfbrown@novell.com
 -------------------------------------------------------------------
 Fri Oct 30 05:43:32 CET 2009 - nfbrown@suse.de
 
-- Kill processes on NFS mounts when unmounting 
+- Kill processes on NFS mounts when unmounting
   for shutdown.  This allows any 'sync' to happen
   before we turn off the network.
   (bnc#503640)
@@ -1361,7 +1372,7 @@ Sun Dec  7 22:20:05 CET 2008 - nfbrown@suse.de
 - gssd-mem-leak
   * set better expiry date for cached auth info
   so kernel does not run out of memory
-  bnc#442490  
+  bnc#442490
 
 -------------------------------------------------------------------
 Fri Dec  5 02:43:20 CET 2008 - nfbrown@suse.de
@@ -1389,7 +1400,7 @@ Tue Dec  2 03:15:50 CET 2008 - nfbrown@suse.de
 - nfsserver.init
   * set lockd sysctls before starting lockd.
     (bnc#443118)
- 
+
 
 -------------------------------------------------------------------
 Tue Nov 25 06:10:31 CET 2008 - nfbrown@suse.de
@@ -1412,7 +1423,7 @@ Mon Nov 24 00:01:51 CET 2008 - nfbrown@suse.de
   * Don't use 'system' to run start-statd
   as this looses our setuid bit.
   bnc#447812
- 
+
 -------------------------------------------------------------------
 Fri Nov 21 11:45:58 CET 2008 - hare@suse.de
 
@@ -1457,21 +1468,21 @@ Fri Nov 14 03:19:34 CET 2008 - nfbrown@suse.de
 Fri Nov  7 04:32:51 CET 2008 - nfbrown@suse.de
 
 - nfs.init
-  * fix typo in handling of "init.d/nfs status"  
+  * fix typo in handling of "init.d/nfs status"
       $status should have been $state
 
 -------------------------------------------------------------------
 Mon Oct 13 17:58:34 CEST 2008 - mkoenig@suse.de
 
-- nfs.init: 
+- nfs.init:
   * ensure all daemons get killed on stop (including rpc.statd)
-  * unmount rpc_pipefs 
+  * unmount rpc_pipefs
   * let close_usr do the work before the NFS filesystems get unmounted
 
 -------------------------------------------------------------------
 Mon Oct 13 10:35:13 CEST 2008 - ro@suse.de
 
-- fix sysconfig filename for changed fillup call 
+- fix sysconfig filename for changed fillup call
 
 -------------------------------------------------------------------
 Mon Oct  6 14:37:33 CEST 2008 - kukuk@suse.de
@@ -1586,7 +1597,7 @@ Fri May  2 05:22:19 CEST 2008 - nfbrown@suse.de
 - Added SM_NOTIFY_OPTIONS sysconfig - (bnc #379806)
 - Removed needless rc_status/rc_exit games in nfsserver.init (bnc #380156)
 - Fixed some sysconfig entries that asked to restart non-existent
-   services (gssd and idmpad have been rolled in to nfs/nfsserver). 
+   services (gssd and idmpad have been rolled in to nfs/nfsserver).
 
 -------------------------------------------------------------------
 Fri Apr 11 12:08:38 CEST 2008 - jsrain@suse.cz
@@ -1602,25 +1613,25 @@ Wed Apr  9 12:06:23 CEST 2008 - jsrain@suse.cz
 Tue Apr  1 16:12:22 CEST 2008 - mkoenig@suse.de
 
 - fix path srvinfo.d -> svcinfo.d
-- remove svcinfo.d dir as it is provided now by filesystem  
+- remove svcinfo.d dir as it is provided now by filesystem
 
 -------------------------------------------------------------------
 Thu Mar 27 13:53:20 CET 2008 - mkoenig@suse.de
 
-- update to version 1.1.2 
-- uses libgssglue instead of libgssapi 
+- update to version 1.1.2
+- uses libgssglue instead of libgssapi
 - remove patch
   nfs-utils-o_create-mode
 
 -------------------------------------------------------------------
 Wed Mar 26 17:11:33 CET 2008 - mkoenig@suse.de
 
-- add rpcbind support [fate#300607] 
+- add rpcbind support [fate#300607]
 
 -------------------------------------------------------------------
 Thu Feb 28 18:42:52 CET 2008 - ro@suse.de
 
-- added gssapi to buildrequires 
+- added gssapi to buildrequires
 
 -------------------------------------------------------------------
 Wed Feb 13 21:04:46 CET 2008 - jeffm@suse.com
@@ -1645,7 +1656,7 @@ Mon Dec 17 02:29:08 CET 2007 - nfbrown@suse.de
 Mon Nov 12 12:58:01 CET 2007 - ro@suse.de
 
 - use navigation icons from latex2html in nfs-utils-doc package
-  (#116355) 
+  (#116355)
 
 -------------------------------------------------------------------
 Fri Sep 14 12:22:08 CEST 2007 - ro@suse.de
@@ -1657,12 +1668,12 @@ Fri Sep 14 12:22:08 CEST 2007 - ro@suse.de
 Wed Sep 12 15:36:34 CEST 2007 - ro@suse.de
 
 - drop conflicts with nfs-server (userspace) in nfs-client package
-  showmount has been removed there (#309782) 
+  showmount has been removed there (#309782)
 
 -------------------------------------------------------------------
 Thu Jul 19 16:40:38 CEST 2007 - ro@suse.de
 
-- added README.NFSv4 (#182775) 
+- added README.NFSv4 (#182775)
 
 -------------------------------------------------------------------
 Tue Jul 17 13:32:25 CEST 2007 - meissner@suse.de
@@ -1704,7 +1715,7 @@ Tue Feb 27 08:52:29 CET 2007 - ro@suse.de
   - Fix -n option to mountd
   - Document sensitive gids
 - upstreamed patches deleted:
-  nfs-utils-anon-uid32.patch 
+  nfs-utils-anon-uid32.patch
 - added e2fsprogs-devel (for libblkid)
 - nhfsXXX binaries and manpages have been removed upstream
 
@@ -1722,7 +1733,7 @@ Mon Jan  8 18:23:44 CET 2007 - ro@suse.de
 -------------------------------------------------------------------
 Mon Dec 18 18:40:03 CET 2006 - ro@suse.de
 
-- added nfsserver.xml to /etc/omc/srvinfo.d (fate#301835) 
+- added nfsserver.xml to /etc/omc/srvinfo.d (fate#301835)
 
 -------------------------------------------------------------------
 Tue Aug  8 17:49:47 CEST 2006 - ro@suse.de
@@ -1743,7 +1754,7 @@ Tue Aug  8 17:49:47 CEST 2006 - ro@suse.de
   - nfs-utils-1.0.7-strip.patch
   - nfs-utils-64bigendian.patch
   - nfs-utils-1.0.6-quota.patch (upstream different)
-  
+
   partly upstreamed patches:
   - nfs-utils-1.0.6-anon-uid32.patch
   - nfs-utils-1.0.7-gssd-select-ccache.patch
@@ -1760,17 +1771,17 @@ Thu Jul 13 14:33:24 CEST 2006 - aj@suse.de
 -------------------------------------------------------------------
 Fri Jun 23 15:20:54 CEST 2006 - ro@suse.de
 
-- find kerberos ticket files even if /tmp on reiser (#187775) 
+- find kerberos ticket files even if /tmp on reiser (#187775)
 
 -------------------------------------------------------------------
 Wed Jun 21 12:13:00 CEST 2006 - ro@suse.de
 
-- fix /etc/gssapi_mech.conf for lib64 platforms (#186954) 
+- fix /etc/gssapi_mech.conf for lib64 platforms (#186954)
 
 -------------------------------------------------------------------
 Mon Jun 12 15:26:54 CEST 2006 - ro@suse.de
 
-- added support for type 3 filehandles to mountd (#182552) 
+- added support for type 3 filehandles to mountd (#182552)
 
 -------------------------------------------------------------------
 Fri Jun  2 12:39:10 CEST 2006 - ro@suse.de
@@ -1781,7 +1792,7 @@ Fri Jun  2 12:39:10 CEST 2006 - ro@suse.de
 -------------------------------------------------------------------
 Fri Jun  2 12:17:25 CEST 2006 - ro@suse.de
 
-- added fix for 64bit bigendian platforms in gssd (#172605) 
+- added fix for 64bit bigendian platforms in gssd (#172605)
 
 -------------------------------------------------------------------
 Tue May  2 09:39:42 CEST 2006 - okir@suse.de
@@ -1792,7 +1803,7 @@ Tue May  2 09:39:42 CEST 2006 - okir@suse.de
 Mon Apr 24 14:05:16 CEST 2006 - ro@suse.de
 
 - nfs-server rc-script: make force-reload do as reload does
-  (#167152) 
+  (#167152)
 - nfs-server rc-script: reload idmapd if NFSV4 is on (#167016)
 
 -------------------------------------------------------------------
@@ -1817,7 +1828,7 @@ Fri Jan 27 02:14:16 CET 2006 - mls@suse.de
 -------------------------------------------------------------------
 Wed Jan 25 16:20:23 CET 2006 - ro@suse.de
 
-- nfsserver rcscript: only mount nfsdfs if not mounted already 
+- nfsserver rcscript: only mount nfsdfs if not mounted already
 
 -------------------------------------------------------------------
 Tue Jan 17 00:32:02 CET 2006 - schwab@suse.de
@@ -1833,12 +1844,12 @@ Mon Dec 19 14:56:53 CET 2005 - mmj@suse.de
 Mon Nov 28 16:29:12 CET 2005 - ro@suse.de
 
 - fix init scripts: in the stop case, a not running service
-  is not an error (#134904) 
+  is not an error (#134904)
 
 -------------------------------------------------------------------
 Mon Nov 14 13:11:15 CET 2005 - ro@suse.de
 
-- packaging /var/lib/nfs/v4recovery directory (#133502) 
+- packaging /var/lib/nfs/v4recovery directory (#133502)
 
 -------------------------------------------------------------------
 Thu Sep  1 11:09:56 CEST 2005 - okir@suse.de
@@ -1861,7 +1872,7 @@ Fri Aug 19 14:23:23 CEST 2005 - okir@suse.de
 -------------------------------------------------------------------
 Mon Jun 20 15:48:17 CEST 2005 - ro@suse.de
 
-- fix in init-script (do not try unmount if not mounted) (#91460) 
+- fix in init-script (do not try unmount if not mounted) (#91460)
 
 -------------------------------------------------------------------
 Mon Jun  6 17:28:03 CEST 2005 - schwab@suse.de
@@ -1881,12 +1892,12 @@ Tue May 31 13:16:12 CEST 2005 - okir@suse.de
 -------------------------------------------------------------------
 Tue Apr 19 14:25:48 CEST 2005 - ro@suse.de
 
-- do not warn about sync/async for readonly exports (#78369) 
+- do not warn about sync/async for readonly exports (#78369)
 
 -------------------------------------------------------------------
 Mon Apr  4 01:57:06 CEST 2005 - ro@suse.de
 
-- make it build with gcc4 
+- make it build with gcc4
 
 -------------------------------------------------------------------
 Sat Feb  5 12:54:14 CET 2005 - schwab@suse.de
@@ -1898,7 +1909,7 @@ Sat Feb  5 12:54:14 CET 2005 - schwab@suse.de
 -------------------------------------------------------------------
 Mon Dec 13 14:00:35 CET 2004 - ro@suse.de
 
-- update to 1.0.7-pre2 (use 1.0.6.2 as package version) 
+- update to 1.0.7-pre2 (use 1.0.6.2 as package version)
 - disable gss and nfsv4 for now
 
 -------------------------------------------------------------------
@@ -1938,7 +1949,7 @@ Thu Jun 24 12:58:14 CEST 2004 - ro@suse.de
 Tue Jun 22 14:23:11 CEST 2004 - ro@suse.de
 
 - remove nfslock start script
-- remove nfslock dependency 
+- remove nfslock dependency
 
 -------------------------------------------------------------------
 Thu Jun 17 23:11:31 CEST 2004 - ro@suse.de
@@ -1981,34 +1992,34 @@ Mon Sep 15 09:12:00 CEST 2003 - ro@suse.de
 -------------------------------------------------------------------
 Fri Aug 29 18:47:29 CEST 2003 - ro@suse.de
 
-- fix hed/tail calling syntax (#29644) 
+- fix hed/tail calling syntax (#29644)
 
 -------------------------------------------------------------------
 Mon Aug 25 11:41:31 CEST 2003 - ro@suse.de
 
-- add restart_on_update/stop_on_removal macros 
+- add restart_on_update/stop_on_removal macros
 
 -------------------------------------------------------------------
 Fri Aug 15 15:04:43 CEST 2003 - ro@suse.de
 
-- added sysconfig metadata (#28908) 
+- added sysconfig metadata (#28908)
 
 -------------------------------------------------------------------
 Tue Aug  5 01:38:42 CEST 2003 - ro@suse.de
 
-- fix compile for rquotad (unused anyway 
+- fix compile for rquotad (unused anyway
 
 -------------------------------------------------------------------
 Thu Jul 31 14:15:43 CEST 2003 - ro@suse.de
 
-- add support for STATD_HOSTNAME (#28201) 
+- add support for STATD_HOSTNAME (#28201)
 
 -------------------------------------------------------------------
 Mon Jul 28 14:20:00 CEST 2003 - ro@suse.de
 
 - update to 1.0.5 and adapt patches
 - overflow patch already included
-- part of acl patch already included 
+- part of acl patch already included
 
 -------------------------------------------------------------------
 Mon Jul 21 17:04:00 CEST 2003 - agruen@suse.de
@@ -2035,7 +2046,7 @@ Thu Jun 12 07:19:59 CEST 2003 - kukuk@suse.de
 -------------------------------------------------------------------
 Tue May 13 00:34:35 CEST 2003 - ro@suse.de
 
-- fix file list 
+- fix file list
 
 -------------------------------------------------------------------
 Fri Mar 28 01:42:47 CET 2003 - ro@suse.de
@@ -2045,12 +2056,12 @@ Fri Mar 28 01:42:47 CET 2003 - ro@suse.de
 -------------------------------------------------------------------
 Wed Jan  8 12:56:27 CET 2003 - ro@suse.de
 
-- added sysconfig metadata (#22663) 
+- added sysconfig metadata (#22663)
 
 -------------------------------------------------------------------
 Fri Sep  6 15:07:56 CEST 2002 - ro@suse.de
 
-- rcnfsserver: moved ypbind to should-start (#18952) 
+- rcnfsserver: moved ypbind to should-start (#18952)
 - rcnfslock: fixed typo killing daemons on "status" (#19046)
 
 -------------------------------------------------------------------
@@ -2067,7 +2078,7 @@ Mon Aug 26 11:47:10 CEST 2002 - okir@suse.de
 -------------------------------------------------------------------
 Thu Aug 22 11:18:32 CEST 2002 - ro@suse.de
 
-- fixed symlink rcnfslock (#18171) 
+- fixed symlink rcnfslock (#18171)
 
 -------------------------------------------------------------------
 Wed Aug  7 17:14:21 CEST 2002 - ro@suse.de
@@ -2078,7 +2089,7 @@ Wed Aug  7 17:14:21 CEST 2002 - ro@suse.de
 Thu Aug  1 16:47:34 CEST 2002 - ro@suse.de
 
 - update to 1.0.1
-- added prereqs 
+- added prereqs
 
 -------------------------------------------------------------------
 Thu Jul 25 10:16:28 CEST 2002 - okir@suse.de
@@ -2102,7 +2113,7 @@ Tue Jul 16 18:41:22 CEST 2002 - kukuk@suse.de
 Fri Jun 14 01:55:23 CEST 2002 - ro@suse.de
 
 - run suse_update_config
- 
+
 -------------------------------------------------------------------
 Tue Feb 26 17:06:41 CET 2002 - ro@suse.de
 
@@ -2111,31 +2122,31 @@ Tue Feb 26 17:06:41 CET 2002 - ro@suse.de
 -------------------------------------------------------------------
 Wed Feb  6 14:07:06 CET 2002 - ro@suse.de
 
-- ignore returncodes from killing statd and lockd (#13072) 
+- ignore returncodes from killing statd and lockd (#13072)
 
 -------------------------------------------------------------------
 Wed Feb  6 13:33:08 CET 2002 - ro@suse.de
 
-- sysconfig/nfs-server -> sysconfig/nfs 
+- sysconfig/nfs-server -> sysconfig/nfs
 
 -------------------------------------------------------------------
 Wed Jan  9 11:44:08 CET 2002 - ro@suse.de
 
 - removed variable NFS_SERVER (#12742)
-- moved USE_KERNEL_NFSD_NUMBER to /etc/sysconfig/nfs-server 
+- moved USE_KERNEL_NFSD_NUMBER to /etc/sysconfig/nfs-server
 
 -------------------------------------------------------------------
 Wed Sep 26 15:36:25 CEST 2001 - ro@suse.de
 
 - up to 0.3.3
-  many fixes to canonicalize hostnames in exports 
+  many fixes to canonicalize hostnames in exports
 
 -------------------------------------------------------------------
 Fri Aug 24 15:31:29 CEST 2001 - ro@suse.de
 
 - removed nfs-version 3 detection in start-script, all kernels
   that have kernel nfsd support usually do have nfsd-v3 support
-  and detection would require at least a 5 sec wait in the script 
+  and detection would require at least a 5 sec wait in the script
 
 -------------------------------------------------------------------
 Tue Jul 31 09:53:20 CEST 2001 - kukuk@suse.de
@@ -2147,26 +2158,26 @@ Tue Jul 31 09:53:20 CEST 2001 - kukuk@suse.de
 -------------------------------------------------------------------
 Wed Apr 11 18:39:20 CEST 2001 - ro@suse.de
 
-- lockd only started for 2.2 kernels instead of ignoring error 
+- lockd only started for 2.2 kernels instead of ignoring error
 - completed rpc.statd to /sbin move in startscript
 
 -------------------------------------------------------------------
 Mon Mar 12 16:30:48 CET 2001 - ro@suse.de
 
-- move rpc.lockd, rpc.statd to /sbin 
+- move rpc.lockd, rpc.statd to /sbin
 
 -------------------------------------------------------------------
 Mon Mar 12 01:39:10 CET 2001 - ro@suse.de
 
 - update to 0.3.1
 - ignore lockd error messages
-- dump filedescriptors before starting kernel threads 
+- dump filedescriptors before starting kernel threads
 
 -------------------------------------------------------------------
 Tue Feb  6 12:33:46 CET 2001 - ro@suse.de
 
 - renamed package to nfs-utils
-- Obsoletes and Provides nfsutils 
+- Obsoletes and Provides nfsutils
 
 -------------------------------------------------------------------
 Fri Jan 12 01:47:05 CET 2001 - ro@suse.de
@@ -2176,7 +2187,7 @@ Fri Jan 12 01:47:05 CET 2001 - ro@suse.de
 -------------------------------------------------------------------
 Thu Jan 11 23:09:27 CET 2001 - ro@suse.de
 
-- don't fail if lockd can't be started 
+- don't fail if lockd can't be started
 
 -------------------------------------------------------------------
 Wed Dec  6 00:44:49 PST 2000 - bk@suse.de
@@ -2192,24 +2203,24 @@ Tue Nov 28 10:30:00 CET 2000 - kukuk@suse.de
 Thu Oct 12 18:13:48 CEST 2000 - ro@suse.de
 
 - exports.4 should be exports.5
-- removed k-prefix 
+- removed k-prefix
 
 -------------------------------------------------------------------
 Thu Oct 12 15:43:43 CEST 2000 - ro@suse.de
 
-- added exports.4 man-page 
+- added exports.4 man-page
 - up to 0.2.1
 
 -------------------------------------------------------------------
 Wed Sep 27 11:44:11 CEST 2000 - ro@suse.de
 
 - update to 0.2
-- fix for nfsserver.init (check for v3) 
+- fix for nfsserver.init (check for v3)
 
 -------------------------------------------------------------------
 Thu Aug 17 15:04:11 CEST 2000 - ro@suse.de
 
-- ugraded from knfsd to successor package nfs-utils (v.0.1.9.1) 
+- ugraded from knfsd to successor package nfs-utils (v.0.1.9.1)
 
 -------------------------------------------------------------------
 Fri Jul 28 18:31:24 CEST 2000 - bjacke@suse.de
@@ -2246,18 +2257,18 @@ Sat Apr 15 16:22:26 CEST 2000 - kukuk@suse.de
 Wed Feb 16 17:31:37 CET 2000 - kukuk@suse.de
 
 - Fill out Copyright and Group field
-- Remove rquotad from file list, it is already in the quota 
+- Remove rquotad from file list, it is already in the quota
   package [Bug 1571]
 
 -------------------------------------------------------------------
 Tue Jan 25 15:11:24 CET 2000 - ro@suse.de
 
-- manpages to /usr/share using macro 
+- manpages to /usr/share using macro
 
 -------------------------------------------------------------------
 Thu Oct 21 00:26:42 CEST 1999 - ro@suse.de
 
-- renamed package from linuxnfs to knfsd 
+- renamed package from linuxnfs to knfsd
 
 -------------------------------------------------------------------
 Tue Oct 12 17:56:24 CEST 1999 - garloff@suse.de
@@ -2293,7 +2304,7 @@ Mon Jun 14 10:27:36 MEST 1999 - kukuk@suse.de
 -------------------------------------------------------------------
 Sun Jun  6 15:51:15 MEST 1999 - kukuk@suse.de
 
-- update to version 1.3.3b 
+- update to version 1.3.3b
 
 -------------------------------------------------------------------
 Tue Mar 16 13:14:54 MET 1999 - ro@suse.de

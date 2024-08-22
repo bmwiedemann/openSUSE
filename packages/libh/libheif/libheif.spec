@@ -362,6 +362,7 @@ rm -f %{buildroot}%{_datadir}/thumbnailers/heif.thumbnailer
 
 %if %{with x265}
 %files -n heif-examples
+%{_bindir}/heif-convert
 %{_bindir}/heif-dec
 %{_bindir}/heif-enc
 %{_bindir}/heif-info

@@ -7,4 +7,16 @@
     <comment>For QGIS 3.34</comment>
     <requestid>1134612</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>8e3f116a9a900ef65767edcfa1d71b40</srcmd5>
+    <version>1.5.7</version>
+    <time>1724275533</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.5.7
+  * Added support for normalized attributes to Emscripten encoder API.
+  * Bug fixes.
+  * Security fixes.
+</comment>
+    <requestid>1194934</requestid>
+  </revision>
 </revisionlist>

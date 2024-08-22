@@ -7,4 +7,34 @@
     <comment>Fix the files list</comment>
     <requestid>1185066</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>9c7ce9d66e1c26847bb44c7bd5e7fb44</srcmd5>
+    <version>0</version>
+    <time>1724275516</time>
+    <user>anag+factory</user>
+    <comment>- Allow links look like buttons again (gh#openSUSE/agama#1536).
+
+- Allow reloading the page during installation
+  (gh#openSUSE/agama#1503).
+
+- Add support for generic questions with password
+  (gh#openSUSE/agama#1476)
+
+- Handle the case where there are not user selectable patterns
+  (gh#openSUSE/agama#1472).
+
+- Allow using TypeScript (gh#openSUSE/agama#1456).
+
+- Do not try to connect to the WebSocket until the user is
+  logged in (gh#openSUSE/agama#1449).
+
+- Improve storage UI for configuring the space policy actions
+  (gh#openSUSE/agama#1428).
+
+- Introduce TanStack Query for data fetching and state management
+  (gh#openSUSE/agama#1439).
+- Replace the l10n context with a solution based on TanStack
+  Query.</comment>
+    <requestid>1194879</requestid>
+  </revision>
 </revisionlist>

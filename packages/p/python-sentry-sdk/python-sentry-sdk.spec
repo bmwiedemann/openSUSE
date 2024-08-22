@@ -19,11 +19,10 @@
 # nothing provides python2-venusian >= 1.0 needed by python2-pyramid
 %{?sle15_python_module_pythons}
 Name:           python-sentry-sdk
-Version:        2.10.0
+Version:        2.13.0
 Release:        0
 Summary:        Python SDK for Sentry.io
 License:        BSD-2-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/getsentry/sentry-python
 Source0:        https://github.com/getsentry/sentry-python/archive/%{version}/sentry-python-%{version}.tar.gz
 BuildRequires:  %{python_module Django >= 2.0}
@@ -42,12 +41,14 @@ BuildRequires:  %{python_module falcon >= 1.4}
 BuildRequires:  %{python_module grpcio >= 1.39}
 BuildRequires:  %{python_module httpx >= 0.16.0}
 BuildRequires:  %{python_module loguru >= 0.5}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pymongo >= 3.1}
 BuildRequires:  %{python_module rq >= 0.6}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module starlette >= 0.19.1}
 BuildRequires:  %{python_module tornado >= 6}
 BuildRequires:  %{python_module urllib3 >= 1.26.11}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
@@ -141,14 +142,13 @@ https://sentry.io/for/python/
 %autosetup -p1 -n sentry-python-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-export PYTHONDONTWRITEBYTECODE=1
 export PYTEST_ADDOPTS="-W ignore::DeprecationWarning"
 export DJANGO_SETTINGS_MODULE=tests.conftest
 # do not test integration (many package are missing at SUSE):
@@ -159,6 +159,7 @@ rm -r tests/integrations
 %files %{python_files}
 %doc README.md CHANGELOG.md CONTRIBUTING.md CONTRIBUTING-aws-lambda.md
 %license LICENSE
-%{python_sitelib}/sentry*/
+%{python_sitelib}/sentry_sdk
+%{python_sitelib}/sentry_sdk-%{version}.dist-info
 
 %changelog

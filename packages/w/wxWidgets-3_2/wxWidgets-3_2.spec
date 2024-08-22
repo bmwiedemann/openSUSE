@@ -82,6 +82,7 @@ Source5:        wxWidgets-3_2-rpmlintrc
 Source6:        wxpython-mkdiff.sh
 Patch0:         soversion.diff
 Patch1:         autoconf-2_72.diff
+Patch2:         textfiletest-fix-file-exists.diff
 %if "%{flavor}" == "doc"
 BuildRequires:  doxygen
 BuildRequires:  fdupes

@@ -16,21 +16,20 @@
 #
 
 
+%define         appid org.cinnamon.ScreenSaver
 Name:           cinnamon-screensaver
-Version:        6.0.3
+Version:        6.2.0
 Release:        0
 Summary:        Cinnamon screensaver and locker
 License:        GPL-2.0-or-later
-Group:          System/GUI/Other
 URL:            https://github.com/linuxmint/cinnamon-screensaver
-Source:         https://github.com/linuxmint/%{name}/archive/%{version}/%{name}-%{version}.tar.gz
+Source:         %{url}/archive/%{version}/%{name}-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE cinnamon-screensaver-suse-pam.patch -- Use SUSE-specific PAM configuration.
 Patch0:         %{name}-suse-pam.patch
 BuildRequires:  fdupes
 BuildRequires:  intltool
 BuildRequires:  libtool
 BuildRequires:  meson
-BuildRequires:  pam-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python3 >= 3.4
 BuildRequires:  update-desktop-files
@@ -40,6 +39,11 @@ BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(libxdo)
+%if 0%{?suse_version} >= 1600
+BuildRequires:  pkgconfig(pam)
+%else
+BuildRequires:  pam-devel
+%endif
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xext)
 Requires:       iso-country-flags-png
@@ -49,7 +53,6 @@ Requires:       python3-gobject-Gdk
 Requires:       python3-gobject-cairo
 Requires:       python3-setproctitle
 Requires:       python3-xapp
-Recommends:     %{name}-lang
 Recommends:     xscreensaver-data
 Suggests:       xscreensaver-data-extra
 
@@ -58,37 +61,59 @@ cinnamon-screensaver is a screensaver and locker that aims to have
 simple, sane and secure defaults, and be well integrated with the
 Cinnamon Desktop.
 
+%package -n libcscreensaver-0_0_0
+Summary:        Library files for %{name}
+
+%description -n libcscreensaver-0_0_0
+%{summary}.
+
+This package ships the library files for %{name}.
+
+%package -n typelib-1_0-CScreensaver-1_0
+Summary:        Typelib for %{name}
+
+%description -n typelib-1_0-CScreensaver-1_0
+%{summary}.
+
+This package ships the typelib for %{name}.
+
+%package devel
+Summary:        Development files for %{name}
+Requires:       libcscreensaver-0_0_0
+Requires:       typelib-1_0-CScreensaver-1_0
+
+%description devel
+%{summary}.
+
+Development files for %{name}.
+
 %prep
 %autosetup -p1
 
 %build
-%meson
+%meson \
+  -Dsetres=false \
+  -Dlocking=true \
+  -Dxinerama=true \
+  -Duse-debian-pam=false \
+  -Ddeprecated-warnings=true
 %meson_build
 
 %install
-# Manually install desktop file
-mkdir -p %{buildroot}%{_datadir}/applications/
-cp -r data/org.cinnamon.ScreenSaver.desktop %{buildroot}%{_datadir}/applications/org.cinnamon.ScreenSaver.desktop
-
 %meson_install
 
-# Remove development files as they're not really there to be used.
-rm -rf %{buildroot}%{_libdir}/libcscreensaver.so \
-  %{buildroot}%{_includedir}/%{name}/                  \
-  %{buildroot}%{_libdir}/pkgconfig/cscreensaver.pc     \
-  %{buildroot}%{_datadir}/gir-1.0/CScreensaver-1.0.gir
+%fdupes %{buildroot}
+%suse_update_desktop_file %{appid}
 
-find %{buildroot} -type f -name "*.la" -delete -print
-%fdupes %{buildroot}%{_datadir}/
-%suse_update_desktop_file org.cinnamon.ScreenSaver
+mkdir -p %{buildroot}%{_pam_vendordir}
+mv %{buildroot}%{_sysconfdir}/pam.d/%{name} %{buildroot}%{_pam_vendordir}/%{name}
 
 # Fix missing shabang
-chmod a-x %{buildroot}%{_datadir}/%{name}/__init__.py
-chmod a-x %{buildroot}%{_datadir}/%{name}/*/__init__.py
+chmod a+x %{buildroot}%{_datadir}/%{name}/*.py
+chmod a+x %{buildroot}%{_datadir}/%{name}/*/*.py
 
-%if 0%{?suse_version} > 1500
-mkdir -p %{buildroot}%{_pam_vendordir}
-mv %{buildroot}%{_sysconfdir}/pam.d/cinnamon-screensaver %{buildroot}%{_pam_vendordir}
+# remove the executable bit for these files (above we add it, out of convenience)
+chmod a-x %{buildroot}%{_datadir}/%{name}/{__init__.py,config.py,dbusdepot/__init__.py,util/__init__.py,widgets/__init__.py}
 
 %pre
 # Prepare for migration to /usr/lib; save any old .rpmsave
@@ -101,41 +126,29 @@ done
 for i in pam.d/cinnamon-screensaver ; do
      test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i} ||:
 done
-%endif
 
-%post
-/sbin/ldconfig
-%if 0%{?suse_version} < 1500
-%desktop_database_post
-%icon_theme_cache_post
-%endif
-
-%postun
-/sbin/ldconfig
-%if 0%{?suse_version} < 1500
-%desktop_database_postun
-%icon_theme_cache_postun
-%endif
+%ldconfig_scriptlets -n libcscreensaver-0_0_0
 
 %files
-%license COPYING*
-%doc AUTHORS README.md debian/changelog
-%if 0%{?suse_version} > 1500
-%{_pam_vendordir}/cinnamon-screensaver
-%else
-%config %{_sysconfdir}/pam.d/cinnamon-screensaver
-%endif
-%{_bindir}/%{name}
-%{_bindir}/%{name}-command
-%{_libexecdir}/cs-backup-locker
-%{_bindir}/cinnamon-unlock-desktop
-%{_libexecdir}/%{name}-pam-helper
-%{_datadir}/%{name}/
-%{_libdir}/libcscreensaver.so*
+%license COPYING COPYING.LIB
+%doc AUTHORS README.md HACKING
+%{_bindir}/{%{name}{,-command},cinnamon-unlock-desktop}
+%{_datadir}/applications/%{appid}.desktop
+%{_libexecdir}/{%{name}-pam-helper,cs-backup-locker}
+%{_datadir}/%{name}
+%{_datadir}/dbus-1/services/%{appid}.service
+%{_datadir}/icons/hicolor/scalable/{actions,apps,status}/*.svg
+%{_pam_vendordir}/%{name}
+
+%files -n typelib-1_0-CScreensaver-1_0
 %{_libdir}/girepository-1.0/CScreensaver-1.0.typelib
-%{_datadir}/dbus-1/services/org.cinnamon.ScreenSaver.service
-%{_datadir}/applications/org.cinnamon.ScreenSaver.desktop
-%{_datadir}/icons/hicolor/*/*/screensaver-*.*
-%{_datadir}/icons/hicolor/scalable/apps/csr-backup-locker-icon.svg
+
+%files -n libcscreensaver-0_0_0
+%{_libdir}/libcscreensaver.so.*
+
+%files devel
+%{_datadir}/gir-1.0/CScreensaver-1.0.gir
+%{_libdir}/pkgconfig/cscreensaver.pc
+%{_libdir}/libcscreensaver.so
 
 %changelog

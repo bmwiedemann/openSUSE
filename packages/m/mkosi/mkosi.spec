@@ -25,8 +25,9 @@ Summary:        Build bespoke OS Images
 License:        LGPL-2.1-or-later
 Group:          System/Management
 URL:            https://github.com/systemd/mkosi
-Source:         https://github.com/systemd/mkosi/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        https://github.com/systemd/mkosi/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        mkosi-initrd.conf
+Source2:        mkosi-initrd-chroot.sh
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module wheel}
@@ -67,12 +68,21 @@ See https://mkosi.systemd.io/ for documentation.
 Summary:        Build initrds locally using mkosi
 Requires:       %{name} = %{version}-%{release}
 Requires:       coreutils
+Requires:       (%{name}-initrd-tukit if read-only-root-fs)
 
 %description initrd
-This package provides the mkosi-initrd wrapper and a plugin for kernel-install
-to build initrds with mkosi locally. After the package is installed, the plugin
-can be enabled by writing 'initrd_generator=mkosi-initrd' to
-'/etc/kernel/install.conf'.
+This package provides the mkosi-initrd wrapper to build initrds with mkosi
+locally.
+
+%package initrd-tukit
+Summary:        Build initrds locally using mkosi with transactional updates
+Requires:       %{name} = %{version}-%{release}
+Requires:       read-only-root-fs
+
+%description initrd-tukit
+mkosi calls bwrap, and that does not work with transactional updates, so this
+package provides a special mkosi-initrd wrapper to support building initrds on
+transactional systems.
 
 %prep
 %autosetup -p1
@@ -80,7 +90,6 @@ can be enabled by writing 'initrd_generator=mkosi-initrd' to
 %build
 tools/make-man-page.sh
 %pyproject_wheel
-sed -i '1s/^#!\/usr\/bin\/env /#!\/usr\/bin\//' kernel-install/50-mkosi.install
 
 %install
 %pyproject_install
@@ -90,12 +99,14 @@ mkdir -p %{buildroot}%{_mandir}/man1
 cp %{buildroot}%{python3_sitelib}/mkosi/resources/mkosi.1* %{buildroot}%{_mandir}/man1/
 cp %{buildroot}%{python3_sitelib}/mkosi/initrd/resources/mkosi-initrd.1* %{buildroot}%{_mandir}/man1/
 
-# Install the kernel-install plugin
-install -Dt %{buildroot}%{_prefix}/lib/kernel/install.d/ \
-         kernel-install/50-mkosi.install
+# Install mkosi-initrd conf
 mkdir -p %{buildroot}%{_prefix}/lib/mkosi-initrd
 install -m 644 %{SOURCE1} %{buildroot}%{_prefix}/lib/mkosi-initrd/mkosi.conf
 mkdir -p %{buildroot}%{_sysconfdir}/mkosi-initrd
+
+# Install the tukit script
+mkdir -p %{buildroot}%{_prefix}/libexec/mkosi-initrd
+install -m 744 %{SOURCE2} %{buildroot}%{_prefix}/libexec/mkosi-initrd/mkosi-initrd-chroot.sh
 
 %post initrd
 if [ ! -e %{_sysconfdir}/mkosi-initrd/mkosi.conf ]; then
@@ -108,6 +119,23 @@ if [ ! -e %{_sysconfdir}/mkosi-initrd/mkosi.conf ]; then
 #KernelModulesExclude=
 EOF
 fi
+
+%posttrans initrd-tukit
+# mkosi runs in a sandbox, and for that purpose it relies on bubblewrap. The
+# problem is transactional-update chroots to a snapshot, and bubblewrap does not
+# work there because it requires pivot_root:
+# https://github.com/containers/bubblewrap/issues/135
+# The issue is quite old, there is even a PR trying to fall back to chroot if
+# pivot_root fails (https://github.com/containers/bubblewrap/pull/595), but
+# apparently bubblewrap upstream is not trying to fix this.
+# The workaround implemented in mkosi-initrd-chroot.sh was proposed by the main
+# mkosi upstream maintainer:
+# https://github.com/containers/bubblewrap/issues/592#issuecomment-2243087731
+mv %{_bindir}/mkosi-initrd %{_prefix}/libexec/mkosi-initrd
+ln -s %{_prefix}/libexec/mkosi-initrd/mkosi-initrd-chroot.sh %{_bindir}/mkosi-initrd
+
+%preun initrd-tukit
+rm -f %{_prefix}/libexec/mkosi-initrd/mkosi-initrd
 
 %check
 %pytest
@@ -123,11 +151,12 @@ fi
 %files initrd
 %{_bindir}/mkosi-initrd
 %{_mandir}/man1/mkosi-initrd.1*
-%dir %{_prefix}/lib/kernel
-%dir %{_prefix}/lib/kernel/install.d
-%{_prefix}/lib/kernel/install.d/50-mkosi.install
 %dir %{_prefix}/lib/mkosi-initrd
 %{_prefix}/lib/mkosi-initrd/mkosi.conf
 %dir %{_sysconfdir}/mkosi-initrd
+
+%files initrd-tukit
+%dir %{_prefix}/libexec/mkosi-initrd
+%{_prefix}/libexec/mkosi-initrd/mkosi-initrd-chroot.sh
 
 %changelog

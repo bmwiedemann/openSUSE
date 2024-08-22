@@ -16,9 +16,9 @@
 #
 
 
-%define _version 6.0.0
+%define _version 6.2.9
 Name:           cinnamon
-Version:        6.0.0
+Version:        6.2.9
 Release:        0
 Summary:        GNU/Linux Desktop featuring a traditional layout
 License:        GPL-2.0-or-later AND LGPL-2.1-only
@@ -55,24 +55,24 @@ BuildRequires:  pkgconfig
 BuildRequires:  python3-devel
 BuildRequires:  python3-xml
 BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(cinnamon-desktop) >= %{_version}
-BuildRequires:  pkgconfig(cjs-1.0) >= %{_version}
+BuildRequires:  pkgconfig(cinnamon-desktop) >= 6.2.0
+BuildRequires:  pkgconfig(cjs-1.0) >= 6.0.0
 BuildRequires:  pkgconfig(dbus-glib-1)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gstreamer-1.0)
 BuildRequires:  pkgconfig(libcinnamon-menu-3.0)
-BuildRequires:  pkgconfig(libmuffin-0) >= %{_version}
+BuildRequires:  pkgconfig(libmuffin-0) >= 6.2.0
 BuildRequires:  pkgconfig(libsoup-2.4)
 BuildRequires:  pkgconfig(libstartup-notification-1.0)
 BuildRequires:  pkgconfig(polkit-agent-1)
 BuildRequires:  pkgconfig(xapp)
 Requires:       %{name}-gschemas = %{version}
 Requires:       adwaita-icon-theme
-Requires:       cinnamon-control-center-common >= %{_version}
-Requires:       cinnamon-screensaver >= %{_version}
-Requires:       cinnamon-session >= %{_version}
-Requires:       cinnamon-settings-daemon >= %{_version}
-Requires:       cjs >= %{_version}
+Requires:       cinnamon-control-center-common >= 6.2.0
+Requires:       cinnamon-screensaver >= 6.0.3
+Requires:       cinnamon-session >= 6.2.1
+Requires:       cinnamon-settings-daemon >= 6.2.0
+Requires:       cjs >= 6.0.0
 Requires:       cups-pk-helper
 Requires:       dbus-1
 Requires:       gettext-runtime
@@ -80,8 +80,8 @@ Requires:       glib2-tools
 # gkbd-capplet / gkbd-keyboard-display.
 Requires:       gnomekbd-tools
 Requires:       iso-country-flags-png
-Requires:       libcinnamon-desktop-data >= %{_version}
-Requires:       muffin >= %{_version}
+Requires:       libcinnamon-desktop-data >= 6.2.0
+Requires:       muffin >= 6.2.0
 Requires:       nemo
 Requires:       pkgconfig
 Requires:       polkit-gnome

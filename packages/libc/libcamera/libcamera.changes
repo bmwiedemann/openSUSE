@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Aug 20 07:37:45 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Split SDL/Qt-dependent tools to multibuilt subpackage
+
+-------------------------------------------------------------------
+Mon Aug 12 15:41:49 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.3.1
+  * new Soft ISP feature and enablement in the simple-pipeline
+    handler for Qualcomm based devices supporting CamSS and the
+    inclusion of a new Pipeline handler to support the Mali-C55
+    ISP which now has open source kernel drivers available.
+  * The i.MX8MP ISP is now officially supported through the
+    existing RKISP1 pipeline handler, and the Simple Pipeline
+    handler now supports the MediaTek MT8365 platform.
+  * Three additional camera sensors, IMX283, IMX335, and IMX415
+    are also now supported.
+  * The IPU6 is now supported by the SoftISP and Simple Pipeline
+    handler and the Onsemi AR0144 is now supported by libipa. A
+    new control has been added to support setting and reading of
+    Gamma, and gamma control has been added to the RKISP1 IPA.
+
+-------------------------------------------------------------------
 Tue Mar 19 07:41:24 UTC 2024 - Richard Biener <rguenther@suse.com>
 
 - Avoid %if %{pkg_vcmp gcc < 8}, instead replicate the condition

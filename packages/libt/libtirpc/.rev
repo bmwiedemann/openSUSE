@@ -522,4 +522,25 @@ Added: libtirpc-getbroadifs-crash.patch (forwarded request 220501 from okir)</co
     <comment></comment>
     <requestid>1117155</requestid>
   </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>685d1819803e130d84f8970b5b02d58d</srcmd5>
+    <version>1.3.5</version>
+    <time>1724275484</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.3.5:
+  * Try using a new abstract address when connecting to rpcbind
+  * Change local_rpcb() to take a targaddr pointer.
+  * Allow working with abstract AF_UNIX addresses.
+  * rpcb_clnt.c: memory leak in destroy_addr
+  * _rpc_dtablesize: Decrease the value of size.
+  * netconfig: remove tcp6, udp6 on --disable-ipv6
+  * gssapi: fix rpc_gss_seccreate passed in cred
+  * Revert commit f5b6e6fdb1e6 &quot;gss-api: expose gss major/minor
+    error in authgss_refresh()&quot;.
+
+- fix socket leak introduced by change-rpc-protocol-version-order patch
+  - Replace explicit_bzero.patch with
+- Add some patches to get libtirpc compiled without needing glibc</comment>
+    <requestid>1194558</requestid>
+  </revision>
 </revisionlist>

@@ -7,7 +7,7 @@ Index: openssh-8.8p1/Makefile.in
 --- openssh-8.8p1.orig/Makefile.in
 +++ openssh-8.8p1/Makefile.in
 @@ -26,6 +26,7 @@ SFTP_SERVER=$(libexecdir)/sftp-server
- SSH_KEYSIGN=$(libexecdir)/ssh-keysign
+ SSHD_SESSION=$(libexecdir)/sshd-session
  SSH_PKCS11_HELPER=$(libexecdir)/ssh-pkcs11-helper
  SSH_SK_HELPER=$(libexecdir)/ssh-sk-helper
 +CAVSTEST_CTR=$(libexecdir)/cavstest-ctr
@@ -16,7 +16,7 @@ Index: openssh-8.8p1/Makefile.in
  STRIP_OPT=@STRIP_OPT@
 @@ -69,6 +70,8 @@ MKDIR_P=@MKDIR_P@
  
- TARGETS=ssh$(EXEEXT) sshd$(EXEEXT) ssh-add$(EXEEXT) ssh-keygen$(EXEEXT) ssh-keyscan${EXEEXT} ssh-keysign${EXEEXT} ssh-pkcs11-helper$(EXEEXT) ssh-agent$(EXEEXT) scp$(EXEEXT) sftp-server$(EXEEXT) sftp$(EXEEXT) ssh-sk-helper$(EXEEXT)
+ TARGETS=ssh$(EXEEXT) sshd$(EXEEXT) sshd-session$(EXEEXT) ssh-add$(EXEEXT) ssh-keygen$(EXEEXT) ssh-keyscan${EXEEXT} ssh-keysign${EXEEXT} ssh-pkcs11-helper$(EXEEXT) ssh-agent$(EXEEXT) scp$(EXEEXT) sftp-server$(EXEEXT) sftp$(EXEEXT) ssh-sk-helper$(EXEEXT)
  
 +TARGETS += cavstest-ctr$(EXEEXT)
 +
@@ -29,7 +29,7 @@ Index: openssh-8.8p1/Makefile.in
  
 +# FIPS tests
 +cavstest-ctr$(EXEEXT): $(LIBCOMPAT) libssh.a ssh-sk.o sk-usbhid.o cavstest-ctr.o
-+	$(LD) -o $@ cavstest-ctr.o ssh-sk.o sk-usbhid.o $(LDFLAGS) -lssh -lopenbsd-compat -lssh $(LIBS) $(LIBFIDO2)
++	$(LD) -o $@ cavstest-ctr.o ssh-sk.o sk-usbhid.o $(LDFLAGS) -lssh -lopenbsd-compat -lssh $(LIBS) $(LIBFIDO2) -lz
 +
  # test driver for the loginrec code - not built by default
  logintest: logintest.o $(LIBCOMPAT) libssh.a loginrec.o

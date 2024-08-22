@@ -1,7 +1,7 @@
 #
 # spec file for package gamemode
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2020 Matthias Bach <marix@marix.org>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           gamemode
-Version:        1.8.1
+Version:        1.8.2
 Release:        0
 Summary:        Daemon/library combo for changing Linux system performance on demand
 License:        BSD-3-Clause

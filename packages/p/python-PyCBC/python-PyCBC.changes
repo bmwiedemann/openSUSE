@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Aug 17 05:29:48 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.5.1:
+  * enable checksum by default for h5py datasets
+  * use a personal branch of BBHx to allow python3.9 to run
+- Changes from version 2.5.0:
+  * Add support for python 3.12, drop support for python 3.8
+  * Standardization of logging and versioning information
+
+-------------------------------------------------------------------
 Thu Oct 19 12:40:49 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 2.4.0:

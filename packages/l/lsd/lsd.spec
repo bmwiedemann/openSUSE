@@ -17,7 +17,7 @@
 
 
 Name:           lsd
-Version:        1.1.3
+Version:        1.1.5
 Release:        0
 Summary:        Ls command with a lot of pretty colors and some other stuff
 License:        Apache-2.0

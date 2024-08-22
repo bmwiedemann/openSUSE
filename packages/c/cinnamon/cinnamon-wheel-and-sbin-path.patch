@@ -1,23 +1,19 @@
---- a/files/usr/share/cinnamon/cinnamon-settings/modules/cs_info.py
-+++ b/files/usr/share/cinnamon/cinnamon-settings/modules/cs_info.py
-@@ -40,12 +40,12 @@
+diff --color -rub a/files/usr/share/cinnamon/cinnamon-settings/modules/cs_info.py b/files/usr/share/cinnamon/cinnamon-settings/modules/cs_info.py
+--- a/files/usr/share/cinnamon/cinnamon-settings/modules/cs_info.py	2024-07-06 01:58:54.000000000 +0600
++++ b/files/usr/share/cinnamon/cinnamon-settings/modules/cs_info.py	2024-07-08 22:32:49.792309881 +0600
+@@ -41,7 +41,7 @@
      count = 0
      envpath = os.environ["PATH"]
      os.environ["PATH"] = envpath + ":/usr/local/sbin:/usr/sbin:/sbin"
 -    for card in getProcessOut("lspci"):
-+    for card in getProcessOut(("/sbin/lspci")):
-         if not "VGA" in card:
-             continue
-         cardId = card.split()[0]
-         cardName = None
--        for line in getProcessOut(("lspci", "-v", "-s", cardId)):
-+        for line in getProcessOut(("/sbin/lspci", "-v", "-s", cardId)):
-             if line.startswith(cardId):
-                 cardName = (line.split(":")[2].split("(rev")[0].strip())
- 
---- a/files/usr/share/cinnamon/cinnamon-settings-users/cinnamon-settings-users.py
-+++ b/files/usr/share/cinnamon/cinnamon-settings-users/cinnamon-settings-users.py
-@@ -182,12 +182,11 @@
++    for card in getProcessOut("/sbin/lspci"):
+         for prefix in ["VGA compatible controller:", "3D controller:"]:
+             if prefix in card:
+                 cardName = card.split(prefix)[1].split("(rev")[0].strip()
+diff --color -rub a/files/usr/share/cinnamon/cinnamon-settings-users/cinnamon-settings-users.py b/files/usr/share/cinnamon/cinnamon-settings-users/cinnamon-settings-users.py
+--- a/files/usr/share/cinnamon/cinnamon-settings-users/cinnamon-settings-users.py	2024-07-06 01:58:54.000000000 +0600
++++ b/files/usr/share/cinnamon/cinnamon-settings-users/cinnamon-settings-users.py	2024-07-08 22:38:27.693020638 +0600
+@@ -182,13 +182,11 @@
  
  class PasswordDialog(Gtk.Dialog):
  
@@ -28,10 +24,11 @@
          self.user = user
          self.password_mask = password_mask
 -        self.group_mask = group_mask
- 
+-
          self.set_modal(True)
          self.set_skip_taskbar_hint(True)
-@@ -253,14 +252,7 @@
+         self.set_skip_pager_hint(True)
+@@ -253,13 +251,6 @@
      def change_password(self):
          newpass = self.new_password.get_text()
          self.user.set_password(newpass, "")
@@ -42,12 +39,10 @@
 -            mask.remove("nopasswdlogin")
 -            mask = ", ".join(mask)
 -            self.group_mask.set_text(mask)
--            self.password_mask.set_text('\u2022\u2022\u2022\u2022\u2022\u2022')
-+        self.password_mask.set_text('\u2022\u2022\u2022\u2022\u2022\u2022')
+             self.password_mask.set_text('\u2022\u2022\u2022\u2022\u2022\u2022')
          self.destroy()
  
-     def set_passwords_visibility(self):
-@@ -613,7 +605,7 @@
+@@ -613,7 +604,7 @@
          model, treeiter = self.users_treeview.get_selection().get_selected()
          if treeiter is not None:
              user = model[treeiter][INDEX_USER_OBJECT]
@@ -56,7 +51,7 @@
              response = dialog.run()
  
      def _on_groups_button_clicked(self, widget):
-@@ -624,7 +616,7 @@
+@@ -624,7 +615,7 @@
              response = dialog.run()
              if response == Gtk.ResponseType.OK:
                  groups = dialog.get_selected_groups()
@@ -65,9 +60,9 @@
                  groups.sort()
                  self.groups_label.set_text(", ".join(groups))
              dialog.destroy()
-@@ -899,11 +891,11 @@
+@@ -902,11 +893,11 @@
              pixbuf = GdkPixbuf.Pixbuf.new_from_file_at_size("/usr/share/cinnamon/faces/user-generic.png", 48, 48)
-             description = "<b>%s</b>\n%s" % (fullname, username)
+             description = "<b>%s</b>\n%s" % (GLib.markup_escape_text(fullname), GLib.markup_escape_text(username))
              piter = self.users.append(None, [new_user, pixbuf, description])
 -            # Add the user to his/her own group and sudo if Administrator was selected
 +            # Add the user to his/her own group and wheel if Administrator was selected
@@ -80,12 +75,12 @@
              self.load_groups()
          dialog.destroy()
  
-@@ -948,7 +940,7 @@
+@@ -951,7 +942,7 @@
              d.set_default_response(Gtk.ResponseType.NO)
              r = d.run()
              if r == Gtk.ResponseType.YES:
 -                subprocess.call(["groupdel", group])
-+               subprocess.call(["/usr/sbin/groupdel", group])
++                subprocess.call(["/usr/sbin/groupdel", group])
                  self.load_groups()
              d.destroy()
  

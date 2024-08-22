@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Aug 21 04:04:14 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 6.5:
+  * unittest.TestCase.subTest support (#91).
+  * remove support for setup.py's test command. Support for this command has
+    been dropped by modern setuptools versions and correspondingly has been
+    removed from most zopefoundation packages; zope.testrunner now follows.
+  * setup.py's ftest command is now only supported when the used setuptools
+    version still supports test.
+
+-------------------------------------------------------------------
 Thu Mar 14 08:57:24 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.4:

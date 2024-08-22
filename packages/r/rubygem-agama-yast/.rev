@@ -31,4 +31,18 @@
 </comment>
     <requestid>1193385</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d0b9558460e65689a82c8769c47ebd25</srcmd5>
+    <version>9.devel579</version>
+    <time>1724275510</time>
+    <user>anag+factory</user>
+    <comment>Needed by openQA
+
+- Allow overriding of install repos which is needed by openQA
+- Override urls by using agama.install_url=https://.. boot param
+
+- Less strict nokogiri dependency as nokogiri follows semver, so do
+  not depend on patch level (gh#openSUSE/agama#1534).</comment>
+    <requestid>1194874</requestid>
+  </revision>
 </revisionlist>

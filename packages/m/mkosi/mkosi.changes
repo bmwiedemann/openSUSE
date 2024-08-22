@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Aug 20 11:26:10 UTC 2024 - Antonio Feijoo <antonio.feijoo@suse.com>
+
+- Create new subpackage mkosi-initrd-tukit.
+  * This package adds a special mkosi-initrd wrapper to support creating initrds
+    on transactional systems. I.e., with transactional-update, a transaction
+    runs on a chroot, but mkosi requires bubblewrap, which uses pivot_root, and
+    that is known to fail on a chroot environment.
+
+- Do not install 50-mkosi.install kernel-install script.
+  * Although kernel-install is provided in openSUSE, it is not run when a kernel
+    is installed or removed (this work is done by suse-module-tools). Also, even
+    calling it manually, it does not support the custom systemd-boot integration
+    in openSUSE.
+
+-------------------------------------------------------------------
 Thu Aug  1 13:29:36 UTC 2024 - Sebastian Wagner <sebix@sebix.at>
 
 - remove env-shebang from /usr/lib/kernel/install.d/50-mkosi.install

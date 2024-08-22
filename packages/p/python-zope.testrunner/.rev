@@ -207,4 +207,18 @@
   * Add support for Python 3.13a3.</comment>
     <requestid>1157896</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>2e463c52a28ba1abe0d6fc646b552478</srcmd5>
+    <version>6.5</version>
+    <time>1724275558</time>
+    <user>anag+factory</user>
+    <comment>- Update to 6.5:
+  * unittest.TestCase.subTest support (#91).
+  * remove support for setup.py's test command. Support for this command has
+    been dropped by modern setuptools versions and correspondingly has been
+    removed from most zopefoundation packages; zope.testrunner now follows.
+  * setup.py's ftest command is now only supported when the used setuptools
+    version still supports test.</comment>
+    <requestid>1194965</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Wed Aug 21 03:59:32 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.13.0:
+  * New integration: Ray
+  * New integration: Litestar
+  * Profiling: Add client SDK info to profile chunk (#3386)
+  * Serialize vars early to avoid living references (#3409)
+  * Deprecate hub-based `sessions.py` logic (#3419)
+  * Deprecate `is_auto_session_tracking_enabled` (#3428)
+  * API: `push_scope` deprecation warning (#3355) (#3355)
+  * API: Replace `push_scope` (#3353, #3354)
+  * OTel: Remove experimental autoinstrumentation (#3239)
+  * Graphene: Add span for grapqhl operation (#2788)
+  * AI: Add async support for `ai_track` decorator (#3376)
+  * CI: Workaround bug preventing Django test runs (#3371)
+  * CI: Remove Django setuptools pin (#3378)
+  * Tests: Test with Django 5.1 RC (#3370)
+  * Broaden `add_attachment` type (#3342)
+  * Add span data to the transactions trace context (#3374)
+  * Gracefully fail attachment path not found case (#3337)
+  * Document attachment parameters (#3342)
+  * Add `disabled_integrations` (#3328)
+  * Use operation name as transaction name in Strawberry (#3294)
+  * WSGI integrations respect `SCRIPT_NAME` env variable (#2622)
+  * Make Django DB spans have origin `auto.db.django` (#3319)
+  * Sort breadcrumbs by time before sending (#3307)
+  * Fix `KeyError('sentry-monitor-start-timestamp-s')` (#3278)
+  * Set MongoDB tags directly on span data (#3290)
+  * Lower logger level for some messages (#3305)
+  * Emit deprecation warnings from `Hub` API (#3280)
+  * Clarify that `instrumenter` is internal-only (#3299)
+  * Support Django 5.1 (#3207)
+  * Remove apparently unnecessary `if` (#3298)
+  * Preliminary support for Python 3.13 (#3200)
+  * Move `sentry_sdk.init` out of `hub.py` (#3276)
+  * Unhardcode integration list (#3240)
+  * Allow passing of PostgreSQL port in tests (#3281)
+  * Add tests for `@ai_track` decorator (#3325)
+  * Do not include type checking code in coverage report (#3327)
+  * Fix test_installed_modules (#3309)
+  * Fix typos and grammar in a comment (#3293)
+  * Fixed failed tests setup (#3303)
+  * Only assert warnings we are interested in (#3314)
+- Switch to pyproject macros.
+
+-------------------------------------------------------------------
 Wed Jul 17 13:51:46 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Update to 2.10.0

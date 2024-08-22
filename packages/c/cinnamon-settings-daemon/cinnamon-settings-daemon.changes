@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Aug  19 14:39:00 UTC 2024 - sb56637 <mxoo28j7@duck.com>
+
+- update to 6.2.0:
+   * Fixes and readability improvements
+   * print notifications: Don't send repeated printer-added notifications.
+   * notifications manager: Fix compiler warnings.
+   
+-------------------------------------------------------------------
 Sat Nov 25 18:53:52 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.0.0:

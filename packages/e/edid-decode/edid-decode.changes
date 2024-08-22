@@ -1,0 +1,48 @@
+-------------------------------------------------------------------
+Thu Nov 23 09:51:58 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Clean-up spec file
+- Add _service to ease updates
+- Update to latest git head d6d86cb (0.0~git20231123.d6d86cb)
+
+-------------------------------------------------------------------
+Wed Jan 27 17:09:58 UTC 2021 - Petr Vorel <pvorel@suse.cz>
+
+- Update to latest git head 770cfb9 (0.0~git20210119.770cfb9)
+- Use tar.xz compression for tarball
+- Change version semantic
+
+-------------------------------------------------------------------
+Wed Jan  8 09:44:08 UTC 2020 - Christian Prause <42@wonko.de>
+
+- Upstream Project moved to https://git.linuxtv.org/edid-decode.git/
+  Update to 2019-12-09
+  (git commit e719d04077d098eb51d9494f41060eba2419d4bc)
+
+-------------------------------------------------------------------
+Tue Jun 12 12:11:46 UTC 2018 - guillaume.gardet@opensuse.org
+
+- Update to 2018-03-07
+  (git commit dcc8b8346ee4bb541c0637f3cb38349296231616)
+
+-------------------------------------------------------------------
+Mon Oct 31 15:39:01 UTC 2016 - aloisio@gmx.com
+
+- Update to version 2016.07.15
+  (git commit c72db881557ba5d3546e9a4a0c85184ed3b4dbc1)
+
+-------------------------------------------------------------------
+Wed Mar 12 14:37:00 UTC 2014 - guillaume@opensuse.org
+
+- Update to 2014.01.29 (git dae1c4b8a34af08303ac9b551c36b16b161623e8)
+
+-------------------------------------------------------------------
+Thu Mar 21 11:22:46 UTC 2013 - guillaume@opensuse.org
+
+- Update URL
+
+-------------------------------------------------------------------
+Thu Mar  7 15:05:14 UTC 2013 - guillaume@opensuse.org
+
+- Initial release: 2012-09-26 (git d4c2df5327841dbd55bb3c9fcd6bc67a382905ae)
+

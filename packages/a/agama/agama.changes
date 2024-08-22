@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu Aug 15 08:33:02 UTC 2024 - Josef Reidinger <jreidinger@suse.com>
+
+- Use sd_notify for starting agama-web-service to notify systemd
+  when service is ready. It helps with race condition in agama-auto
+  (gh#openSUSE/agama#1539)
+- improve systemd dependencies of agama-web-service to ensure that
+  agama service runs
+
+-------------------------------------------------------------------
+Fri Aug  9 08:50:31 UTC 2024 - Martin Vidner <mvidner@suse.com>
+
+- For CLI, use HTTP clients instead of D-Bus clients,
+  for Users and Localization (gh#openSUSE/agama#1438)
+  - service clients used by CLI:
+    - added UsersHTTPClient, LocalizationHTTPClient
+    - removed LocalizationClient
+    - BaseHTTPClient API reworked:
+      - return () or deserialized objects
+      - added PUT and PATCH
+  - web service:
+    - PUT /api/users/first: do report backend errors
+    - PATCH /api/users/root: report the (potential) backend errors
+  - tests:
+    - added tests using httpmock
+    - env_logger added to dev-dependencies
+
+-------------------------------------------------------------------
 Mon Jul 22 15:27:44 UTC 2024 - Josef Reidinger <jreidinger@suse.com>
 
 - Fix `agama questions list` to list only unaswered questions and

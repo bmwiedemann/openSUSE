@@ -46,6 +46,13 @@ Patch1:         0001-exportfs-remove-warning-if-neither-subtree_check-or-.patch
 Patch2:         0002-conffile-don-t-report-error-from-conf_init_file.patch
 Patch3:         0003-conffile-allow-usr-etc-to-provide-any-config-files-e.patch
 Patch4:         0004-fsidd-call-anonymous-sockets-by-their-name-only-don-.patch
+# PATCH-FIX-UPSTREAM: fix build against libtirpc 1.3.5
+Patch5:         0001-gssd-revert-commit-a5f3b7ccb01c.patch
+Patch6:         0002-gssd-revert-commit-513630d720bd.patch
+Patch7:         0003-gssd-switch-to-using-rpc_gss_seccreate.patch
+Patch8:         0004-gssd-handle-KRB5_AP_ERR_BAD_INTEGRITY-for-machine-cr.patch
+Patch9:         0005-gssd-handle-KRB5_AP_ERR_BAD_INTEGRITY-for-user-crede.patch
+Patch10:        0006-configure-check-for-rpc_gss_seccreate.patch
 BuildRequires:  e2fsprogs-devel
 BuildRequires:  gcc-c++
 BuildRequires:  libtool

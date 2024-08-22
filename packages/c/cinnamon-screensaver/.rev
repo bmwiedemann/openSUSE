@@ -261,4 +261,12 @@
   * cinnamon-screensaver-main.py: Fix application theme provider.</comment>
     <requestid>1158904</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>27b6ed8de9159e2b50a0855ea8e315da</srcmd5>
+    <version>6.2.0</version>
+    <time>1724275506</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1195086</requestid>
+  </revision>
 </revisionlist>

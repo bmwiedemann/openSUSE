@@ -28,4 +28,31 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1192640</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>6aa46f0bf83fa8ab0d3f0de752b5c1ae</srcmd5>
+    <version>0</version>
+    <time>1724275512</time>
+    <user>anag+factory</user>
+    <comment>- Use sd_notify for starting agama-web-service to notify systemd
+  when service is ready. It helps with race condition in agama-auto
+  (gh#openSUSE/agama#1539)
+- improve systemd dependencies of agama-web-service to ensure that
+  agama service runs
+
+- For CLI, use HTTP clients instead of D-Bus clients,
+  for Users and Localization (gh#openSUSE/agama#1438)
+  - service clients used by CLI:
+    - added UsersHTTPClient, LocalizationHTTPClient
+    - removed LocalizationClient
+    - BaseHTTPClient API reworked:
+      - return () or deserialized objects
+      - added PUT and PATCH
+  - web service:
+    - PUT /api/users/first: do report backend errors
+    - PATCH /api/users/root: report the (potential) backend errors
+  - tests:
+    - added tests using httpmock
+    - env_logger added to dev-dependencies</comment>
+    <requestid>1194877</requestid>
+  </revision>
 </revisionlist>

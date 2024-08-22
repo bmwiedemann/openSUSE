@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Aug 13 17:37:05 UTC 2024 - Carsten Ziepke <kieltux@gmail.com>
+
+- update to 4.5.2
+  * General:
+    * Fix: Make "Reset Pitch" keybind consistent with initial
+      starting pitch
+    * Fix: Pending research states when loading savegames
+    * Fix: Units set to hold position don't fire
+    * Fix: Various potential crashes
+  * Graphics:
+    * Fix: Improve effects blending when fog is enabled
+    * Fix: Improvements to groups UI
+  * Campaign:
+    * Fix: Commander rank thresholds
+    * Fix: Update Fractured Kingdom addon campaign
+  * Multiplayer:
+    * Fix: UPnP compatibility with certain routers
+  * AI
+    * Fix: Use eventGameLoaded for Cobra AI group initialization
+
+-------------------------------------------------------------------
 Tue Jul  9 18:41:19 UTC 2024 - Carsten Ziepke <kieltux@gmail.com>
 
 - update to 4.5.1

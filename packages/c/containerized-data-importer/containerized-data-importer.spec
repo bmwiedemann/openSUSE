@@ -30,7 +30,7 @@
 %endif
 
 Name:           containerized-data-importer
-Version:        1.59.0
+Version:        1.60.1
 Release:        0
 Summary:        Container native virtualization
 License:        Apache-2.0
@@ -40,13 +40,12 @@ Source0:        %{name}-%{version}.tar.gz
 Source1:        cdi_containers_meta
 Source2:        cdi_containers_meta.service
 Source100:      %{name}-rpmlintrc
-Patch1:         0001-Bump-github.com-containers-image-v5-to-v5.30.1.patch
 BuildRequires:  golang-packaging
 BuildRequires:  libnbd-devel
 BuildRequires:  pkgconfig
 BuildRequires:  rsync
 BuildRequires:  sed
-BuildRequires:  golang(API) >= 1.21
+BuildRequires:  golang(API) >= 1.22
 ExclusiveArch:  %{_exclusive_arch}
 
 %description

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Aug 20 18:57:16 UTC 2024 - Matthias Bach <marix@marix.org> - 1.8.2
+
+- Update to version 1.8.2
+  * Fix idle inhibitor closing bus connection too early
+  * Fix hybrid CPU core pinning
+  * Fix unreadable process maps in gamemodelist
+  * Fixed crash if dbus is not accesible
+  * Various bugfixes and improvements to documentation
+
+-------------------------------------------------------------------
 Thu Dec 21 20:13:21 UTC 2023 - Matthias Bach <marix@marix.org>
 
 - Fix package setting a wrong mode for /etc/security/limits.d.

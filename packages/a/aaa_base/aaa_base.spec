@@ -33,7 +33,7 @@ BuildRequires:  git-core
 %endif
 
 Name:           aaa_base
-Version:        84.87+git20240809.5d13eb4%{git_version}
+Version:        84.87+git20240821.fbabe1d%{git_version}
 Release:        0
 Summary:        openSUSE Base Package
 License:        GPL-2.0-or-later
@@ -154,6 +154,12 @@ mkdir -p %{buildroot}%{_fillupdir}
   rm -vrf %{buildroot}/usr/share/fillup-templates
 %endif
 
+%pre
+%service_add_pre soft-reboot-cleanup.service
+
+%preun
+%service_del_preun soft-reboot-cleanup.service
+
 %post
 export LC_ALL=C
 
@@ -169,6 +175,10 @@ fi
 
 %{fillup_only -n language}
 %{fillup_only -n proxy}
+%service_add_post soft-reboot-cleanup.service
+
+%postun
+%service_del_postun_without_restart soft-reboot-cleanup.service
 
 %pre extras
 %service_add_pre backup-rpmdb.service backup-rpmdb.timer backup-sysconfig.service backup-sysconfig.timer check-battery.service check-battery.timer
@@ -217,6 +227,8 @@ fi
 /usr/etc/profile.d/terminal.csh
 %dir /usr/lib/environment.d
 /usr/lib/environment.d/50-xdg.conf
+/usr/lib/systemd/system/soft-reboot-cleanup.service
+/usr/libexec/soft-reboot-cleanup
 %{_tmpfilesdir}/soft-reboot-cleanup.conf
 %config /etc/shells
 %ghost %dir /etc/init.d
@@ -247,7 +259,7 @@ fi
 /usr/lib/base-scripts/backup-rpmdb
 /usr/lib/base-scripts/backup-sysconfig
 /usr/lib/base-scripts/check-battery
-/usr/lib/systemd/system/*
+/usr/lib/systemd/system/[bc]*
 /var/adm/backup/rpmdb
 /var/adm/backup/sysconfig
 %{_fillupdir}/sysconfig.backup

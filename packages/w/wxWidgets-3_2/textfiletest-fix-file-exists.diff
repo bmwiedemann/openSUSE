@@ -1,0 +1,29 @@
+https://github.com/wxWidgets/wxWidgets/pull/24768
+
+
+From 2d943fd8f34816b3ad16b532132992a2523179e2 Mon Sep 17 00:00:00 2001
+From: Christian Boltz <github-wxwidgets@cboltz.de>
+Date: Tue, 20 Aug 2024 23:28:27 +0200
+Subject: [PATCH] textfiletest: fix skip condition
+
+... so that condition and skip message match.
+
+As a side effect, it also prevents a test failure if /sys/power/state
+doesn't exist.
+---
+ tests/textfile/textfiletest.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tests/textfile/textfiletest.cpp b/tests/textfile/textfiletest.cpp
+index 646d6818c90c..1a1347e85475 100644
+--- a/tests/textfile/textfiletest.cpp
++++ b/tests/textfile/textfiletest.cpp
+@@ -342,7 +342,7 @@ TEST_CASE("wxTextFile::Special", "[textfile][linux][special-file]")
+ 
+     SECTION("/sys")
+     {
+-        if ( wxFile::Exists("/sys/power/state") )
++        if ( !wxFile::Exists("/sys/power/state") )
+         {
+             WARN("/sys/power/state doesn't exist, skipping test");
+             return;

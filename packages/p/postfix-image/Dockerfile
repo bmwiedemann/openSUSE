@@ -20,7 +20,7 @@
 
 FROM opensuse/tumbleweed:latest
 
-RUN set -euo pipefail; zypper -n in --no-recommends ca-certificates-mozilla cyrus-sasl cyrus-sasl-plain ed netcfg postfix postfix-ldap postfix-lmdb timezone mandoc spamassassin-spamc spamass-milter; zypper -n clean; rm -rf /var/log/{lastlog,tallylog,zypper.log,zypp/history,YaST2}
+RUN set -euo pipefail; zypper -n in --no-recommends ca-certificates-mozilla cyrus-sasl cyrus-sasl-plain ed gawk netcfg postfix postfix-ldap postfix-lmdb timezone mandoc spamassassin-spamc spamass-milter; zypper -n clean; rm -rf /var/log/{lastlog,tallylog,zypper.log,zypp/history,YaST2}
 
 # Define labels according to https://en.opensuse.org/Building_derived_containers
 # labelprefix=org.opensuse.application.postfix

@@ -1,7 +1,7 @@
 #
-# spec file for package cockpit-machines
+# spec file for package agama-web-ui
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,8 +30,8 @@ Source11:       node_modules.spec.inc
 Source12:       node_modules.sums
 %include %_sourcedir/node_modules.spec.inc
 BuildArch:      noarch
-BuildRequires:  local-npm-registry
 BuildRequires:  appstream-glib
+BuildRequires:  local-npm-registry
 
 %description
 Agama web UI for the experimental Agama installer.
@@ -50,6 +50,7 @@ install -D -m 0644 --target-directory=%{buildroot}%{_datadir}/agama/web_ui/fonts
 
 %files
 %doc README.md
+%license LICENSE
 %dir %{_datadir}/agama
 %{_datadir}/agama/web_ui
 

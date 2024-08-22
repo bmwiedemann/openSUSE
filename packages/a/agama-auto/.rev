@@ -10,4 +10,15 @@
 - https://code.opensuse.org/leap/features/issue/158</comment>
     <requestid>1185423</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>905a8119b5c32387397e12c04c5c72d8</srcmd5>
+    <version>0</version>
+    <time>1724275514</time>
+    <user>anag+factory</user>
+    <comment>- change agama-auto systemd service depedencies to reflect changes
+  in agama CLI communication and ensure that it runs when
+  agama-auto runs
+  (gh#openSUSE/agama#1539)</comment>
+    <requestid>1194878</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Aug 15 11:25:14 UTC 2024 - Simon Vogl <simon.vogl@gmx.net>
+
+- Update to version 5.9.0:
+  * Various bug fixes
+  * Full changes:
+    https://dev.minetest.net/Changelog#5.8.0_.E2.86.92_5.9.0
+- Remove irrlichtmt source as irrlichtmt is now included in the
+  main source tree.
+
+-------------------------------------------------------------------
 Sat Feb  3 14:58:24 UTC 2024 - Simon Vogl <simon.vogl@gmx.net>
 
 - Add explicit user and group provides to minetestserver package

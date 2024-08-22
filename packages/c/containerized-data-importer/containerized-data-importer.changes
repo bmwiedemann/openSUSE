@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Aug 19 07:45:49 UTC 2024 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Update to version 1.60.1
+  Release notes https://github.com/kubevirt/containerized-data-importer/releases/tag/v1.60.1
+- Drop upstreamed patch
+  0001-Bump-github.com-containers-image-v5-to-v5.30.1.patch
+
+-------------------------------------------------------------------
 Fri Jul 19 07:42:25 UTC 2024 - Vasily Ulyanov <vasily.ulyanov@suse.com>
 
 - Add registry path for SLE15 SP7

@@ -1,7 +1,7 @@
 #
 # spec file for package python-PyCBC
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,14 +30,14 @@
 
 %define modname PyCBC
 Name:           python-PyCBC%{psuffix}
-Version:        2.4.0
+Version:        2.5.1
 Release:        0
 Summary:        Core library to analyze gravitational-wave data
 License:        GPL-3.0-or-later
 URL:            http://www.pycbc.org/
 Source0:        https://github.com/gwastro/pycbc/archive/v%{version}.tar.gz#/%{modname}-%{version}.tar.gz
 BuildRequires:  %{python_module Cython >= 0.29}
-BuildRequires:  %{python_module devel >= 3.7}
+BuildRequires:  %{python_module devel >= 3.9}
 BuildRequires:  %{python_module numpy-devel >= 1.16.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes

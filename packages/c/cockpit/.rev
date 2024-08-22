@@ -537,4 +537,21 @@
     <comment>fix changes file to not delete a changes entry for Factory (forwarded request 1192616 from jzerebecki)</comment>
     <requestid>1192625</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>8c7e96fb7462f7ee32f157849c0e5058</srcmd5>
+    <version>322</version>
+    <time>1724275486</time>
+    <user>anag+factory</user>
+    <comment>- remove requires on pam_oath completely. It will be re-introduced
+  later when it works with optional enrollment
+
+- add 0005-cockpit-ws-user-remove-default-deps.patch (bsc#1229146)
+
+- new version 322:
+  * shell: Deprecate host switcher
+  * files: Permissions column in details view
+- suse_docs.patch: refreshed
+For details, see https://cockpit-project.org/blog/cockpit-322.html</comment>
+    <requestid>1194919</requestid>
+  </revision>
 </revisionlist>

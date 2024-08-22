@@ -133,4 +133,17 @@
 - Drop unused rpmlint filter.</comment>
     <requestid>1134551</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>078c64682d28bb0357d3a9970171bee8</srcmd5>
+    <version>1.8.2</version>
+    <time>1724275555</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.8.2
+  * Fix idle inhibitor closing bus connection too early
+  * Fix hybrid CPU core pinning
+  * Fix unreadable process maps in gamemodelist
+  * Fixed crash if dbus is not accesible
+  * Various bugfixes and improvements to documentation</comment>
+    <requestid>1194953</requestid>
+  </revision>
 </revisionlist>

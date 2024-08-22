@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Aug 18 13:16:56 UTC 2024 - Jakob Lorenz <onlyjak0b@mailbox.org>
+
+- Update to version 0.8.4:
+  * :datefmt does not remove text content anymore allowing future edition
+  * avoid changing cell's color after :format
+  * avoid blanking cell's text content after :datefmt
+  * fix configuration variable name in file.c: import_delimited_to_text
+  * added input_edit_mode setting
+  * fix: xlsx file import
+  * fix: get row number and column or cell that calls a LUA script
+  * fix: changed load_rc load_file order.
+  * fix: issue in csv import
+  * fix: assigning empty label in date field will cause segfault
+  * fix: compiler error related to missing include
+  * fix: date handling in markdown export
+  * fix: Modify Makefile to work with brew's ncurses
+
+-------------------------------------------------------------------
 Wed Jul 12 03:53:18 UTC 2023 - Joshua Smith <jsmithfpv@gmail.com>
 
 - Added gnuplot, fixed build prefix, changed package group.

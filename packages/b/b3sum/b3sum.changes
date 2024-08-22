@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Aug 19 19:13:34 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Update to version 1.5.4:
+  * Initial implementation of SIMD acceleration for the XOF (i.e.
+    blake3::Hasher::finalize_xof). This brings long output
+    performance into line with long input performance. Currently
+    AVX-512-only and Unix-only.
+  * The "zeroize" feature no longer depends on proc-macros and syn.
+
+-------------------------------------------------------------------
 Thu Jul 18 01:35:13 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Update to version 1.5.3:

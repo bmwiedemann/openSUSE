@@ -25,7 +25,7 @@ Index: openssh-8.9p1/ssh_config.5
 +diffie-hellman-group14-sha1
  .Ed
  .Pp
- The list of available key exchange algorithms may also be obtained using
+ The list of supported key exchange algorithms may also be obtained using
 Index: openssh-8.9p1/sshd_config.5
 ===================================================================
 --- openssh-8.9p1.orig/sshd_config.5
@@ -38,4 +38,4 @@ Index: openssh-8.9p1/sshd_config.5
 +diffie-hellman-group14-sha256,diffie-hellman-group14-sha1
  .Ed
  .Pp
- The list of available key exchange algorithms may also be obtained using
+ The list of supported key exchange algorithms may also be obtained using

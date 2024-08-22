@@ -17,7 +17,7 @@
 
 
 Name:           cinnamon-settings-daemon
-Version:        6.0.0
+Version:        6.2.0
 Release:        0
 Summary:        The settings Daemon for the Cinnamon Desktop
 License:        GPL-2.0-or-later AND LGPL-2.1-only

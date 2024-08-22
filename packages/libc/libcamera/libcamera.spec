@@ -16,10 +16,15 @@
 #
 
 
-%define lname       libcamera0_2
-%define lname_base  libcamera-base0_2
-Name:           libcamera
-Version:        0.2.0
+%define lname       libcamera0_3
+%define lname_base  libcamera-base0_3
+%if "@BUILD_FLAVOR@" != ""
+%define extname -@BUILD_FLAVOR@
+%else
+%define extname %nil
+%endif
+Name:           libcamera%extname
+Version:        0.3.1
 Release:        0
 Summary:        A complex camera support library in C++
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -27,20 +32,20 @@ Group:          Development/Libraries/C and C++
 URL:            https://libcamera.org/
 #Git-Web:       https://git.libcamera.org/libcamera/libcamera.git/
 
-Source:         %name-%version.tar.xz
+Source:         libcamera-%version.tar.xz
 Source1:        baselibs.conf
 
 BuildRequires:  boost-devel
 BuildRequires:  c++_compiler
 %if 0%{?suse_version} <= 1500
-BuildRequires:  gcc9
-BuildRequires:  gcc9-c++
+BuildRequires:  gcc11
+BuildRequires:  gcc11-c++
 %endif
 BuildRequires:  libQt5Core-devel
 BuildRequires:  libQt5Gui-devel
 BuildRequires:  libQt5Widgets-devel
 BuildRequires:  meson >= 0.56
-BuildRequires:  pkgconfig
+BuildRequires:  pkg-config
 BuildRequires:  python3-Jinja2
 BuildRequires:  python3-PyYAML
 BuildRequires:  python3-ply
@@ -52,7 +57,17 @@ BuildRequires:  pkgconfig(libevent_pthreads)
 BuildRequires:  pkgconfig(libtiff-4)
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(openssl)
+BuildRequires:  pkgconfig(python3)
+BuildRequires:  pkgconfig(pybind11)
 BuildRequires:  pkgconfig(yaml-0.1)
+%if "@BUILD_FLAVOR@" != ""
+BuildRequires:  pkgconfig(Qt6Core)
+BuildRequires:  pkgconfig(Qt6Gui)
+BuildRequires:  pkgconfig(Qt6OpenGL)
+BuildRequires:  pkgconfig(Qt6OpenGLWidgets)
+BuildRequires:  pkgconfig(Qt6Widgets)
+BuildRequires:  pkgconfig(sdl2)
+%endif
 
 %description
 libcamera is an experimental camera user-space API.
@@ -104,6 +119,14 @@ Group:          Development/Tools/Other
 %description tools
 libcamera is an experimental camera user-space API.
 
+%package -n libcamera-cam
+Summary:        Command-line interfaces for libcamera
+Group:          Development/Tools/Other
+# Heavy runtime deps (SDL, Qt6)
+
+%description -n libcamera-cam
+libcamera is an experimental camera user-space API.
+
 "cam" is a command-line utility to interact with cameras. The initial state is
 limited and only supports listing cameras in the system and selecting a camera
 to interact with.
@@ -116,17 +139,28 @@ Group:          Productivity/Multimedia/Other
 libcamera is an experimental camera user-space API.
 This is its integration plugin for gstreamer.
 
+%package -n python3-libcamera
+Summary:        Python bindings for libcamera
+Group:          Development/Languages/Python
+
+%description -n python3-libcamera
+Python bindings for libcamera.
+
 %prep
-%autosetup -p1
+%autosetup -p1 -n libcamera-%version
 
 %build
 %if 0%{?suse_version} <= 1500
-export CC=gcc-9
-export CXX=g++-9
+export CC=gcc-11
+export CXX=g++-11
 %endif
 %meson \
   -Ddocumentation=disabled \
+%if "@BUILD_FLAVOR@" != ""
   -Dqcam=enabled \
+%else
+  -Dqcam=disabled \
+%endif
   -Dv4l2=false -Dtracing=disabled \
   -Dpipelines=ipu3,rkisp1,simple,uvcvideo,vimc \
   -Dlc-compliance=disabled
@@ -134,10 +168,18 @@ export CXX=g++-9
 
 %install
 %meson_install
+pushd "%buildroot"
+%if "@BUILD_FLAVOR@" != ""
+find . ! -type d ! -path ./usr/bin/cam ! -path ./usr/bin/qcam -print -delete
+%else
+rm -v usr/bin/cam
+%endif
+popd
 
 %ldconfig_scriptlets -n %lname
 %ldconfig_scriptlets -n %lname_base
 
+%if "@BUILD_FLAVOR@" == ""
 %files -n %lname
 %_libdir/libcamera.so.*
 
@@ -152,13 +194,22 @@ export CXX=g++-9
 %_libdir/pkgconfig/*.pc
 
 %files tools
-%_bindir/cam
-%_bindir/qcam
 %_libexecdir/libcamera/
 %_libdir/libcamera/
 %_datadir/libcamera/
 
 %files -n gstreamer-plugins-libcamera
 %_libdir/gstreamer-1.0/
+
+%files -n python3-libcamera
+%python3_sitearch/*
+
+%else
+
+%files -n libcamera-cam
+%_bindir/cam
+%_bindir/qcam
+
+%endif
 
 %changelog

@@ -1,21 +1,21 @@
-From adadbac839dc6d549a3a9b75ae1f8c422e82fa7c Mon Sep 17 00:00:00 2001
+From a051a54e7a522e1a6f20a56d3cae5f3eacdeeff9 Mon Sep 17 00:00:00 2001
 From: Luna <luna.dragon@suse.com>
-Date: Thu, 25 Jan 2024 10:06:03 +0530
+Date: Fri, 16 Aug 2024 11:10:19 +0530
 Subject: [PATCH] replace with suse docs and move docs with out eqiv to docs-rh
-​
+
 ---
- node_modules                     |  2 +-
- pkg/networkmanager/manifest.json | 19 +++++++++++--------
- pkg/shell/manifest.json          |  4 ++--
+ pkg/kdump/manifest.json          |  2 +-
+ pkg/networkmanager/manifest.json | 12 ++++--------
+ pkg/shell/manifest.json          |  2 +-
  pkg/storaged/manifest.json       | 12 +++++++-----
  pkg/systemd/manifest.json        |  6 +++---
- pkg/users/manifest.json          |  2 +-
- 6 files changed, 25 insertions(+), 20 deletions(-)
+ pkg/users/manifest.json          |  4 ++--
+ 6 files changed, 18 insertions(+), 20 deletions(-)
 
-Index: cockpit/pkg/kdump/manifest.json
-===================================================================
---- cockpit.orig/pkg/kdump/manifest.json
-+++ cockpit/pkg/kdump/manifest.json
+diff --git a/pkg/kdump/manifest.json b/pkg/kdump/manifest.json
+index 65a03d10f..ac0ee34b9 100644
+--- a/pkg/kdump/manifest.json
++++ b/pkg/kdump/manifest.json
 @@ -5,7 +5,7 @@
      "tools": {
          "index": {
@@ -25,10 +25,10 @@ Index: cockpit/pkg/kdump/manifest.json
                  {
                      "label": "Configuring kdump",
                      "url": "https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/managing_systems_using_the_rhel_9_web_console/configuring-kdump-in-the-web-console_system-management-using-the-rhel-9-web-console"
-Index: cockpit/pkg/networkmanager/manifest.json
-===================================================================
---- cockpit.orig/pkg/networkmanager/manifest.json
-+++ cockpit/pkg/networkmanager/manifest.json
+diff --git a/pkg/networkmanager/manifest.json b/pkg/networkmanager/manifest.json
+index c7b2cc6a0..f37aa1565 100644
+--- a/pkg/networkmanager/manifest.json
++++ b/pkg/networkmanager/manifest.json
 @@ -10,23 +10,19 @@
              "docs": [
                  {
@@ -57,23 +57,23 @@ Index: cockpit/pkg/networkmanager/manifest.json
                  }
              ],
              "keywords": [
-Index: cockpit/pkg/packagekit/manifest.json
-===================================================================
---- cockpit.orig/pkg/packagekit/manifest.json
-+++ cockpit/pkg/packagekit/manifest.json
-@@ -9,7 +9,7 @@
-     "tools": {
-         "index": {
-             "label": "Software updates",
--            "docs": [
-+            "docs-rh": [
-                 {
-                     "label": "Managing software updates",
-                     "url": "https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/managing_systems_using_the_rhel_9_web_console/managing-software-updates-in-the-web-console_system-management-using-the-rhel-9-web-console"
-Index: cockpit/pkg/storaged/manifest.json
-===================================================================
---- cockpit.orig/pkg/storaged/manifest.json
-+++ cockpit/pkg/storaged/manifest.json
+diff --git a/pkg/shell/manifest.json b/pkg/shell/manifest.json
+index a252e76d9..83be922c7 100644
+--- a/pkg/shell/manifest.json
++++ b/pkg/shell/manifest.json
+@@ -26,7 +26,7 @@
+         "zh-cn": "中文（中国）",
+         "zh-tw": "中文（台灣）"
+     },
+-    "docs": [
++    "docs-rh": [
+         {
+             "label": "Web Console",
+             "url": "https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/managing_systems_using_the_rhel_9_web_console/index"
+diff --git a/pkg/storaged/manifest.json b/pkg/storaged/manifest.json
+index 8ee17324b..319204a22 100644
+--- a/pkg/storaged/manifest.json
++++ b/pkg/storaged/manifest.json
 @@ -14,20 +14,22 @@
              "docs": [
                  {
@@ -95,17 +95,17 @@ Index: cockpit/pkg/storaged/manifest.json
                      "label": "Managing LVMs",
 -		    "url": "https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/managing_systems_using_the_rhel_9_web_console/using-the-web-console-for-configuring-lvm-logical-volumes_system-management-using-the-rhel-8-web-console"
 -                },
-+                    "url": "https://documentation.suse.com/smart/systems-management/html/cockpit-slemicro/index.html#id-1.7.7"
++		            "url": "https://documentation.suse.com/smart/systems-management/html/cockpit-slemicro/index.html#id-1.7.7"
 +                }
 +            ],
 +            "docs-rh": [
                  {
                      "label": "Managing physical drives",
                      "url": "https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/managing_systems_using_the_rhel_9_web_console/using-the-web-console-for-changing-physical-drives-in-volume-groups_system-management-using-the-rhel-8-web-console"
-Index: cockpit/pkg/systemd/manifest.json
-===================================================================
---- cockpit.orig/pkg/systemd/manifest.json
-+++ cockpit/pkg/systemd/manifest.json
+diff --git a/pkg/systemd/manifest.json b/pkg/systemd/manifest.json
+index bd62a4cb3..5daf0a499 100644
+--- a/pkg/systemd/manifest.json
++++ b/pkg/systemd/manifest.json
 @@ -12,7 +12,7 @@
              "docs": [
                  {
@@ -133,36 +133,23 @@ Index: cockpit/pkg/systemd/manifest.json
                  }
              ],
              "keywords": [
-Index: cockpit/pkg/users/manifest.json
-===================================================================
---- cockpit.orig/pkg/users/manifest.json
-+++ cockpit/pkg/users/manifest.json
-@@ -6,7 +6,7 @@
-             "docs": [
+diff --git a/pkg/users/manifest.json b/pkg/users/manifest.json
+index 04295b6a4..2609d0b2c 100644
+--- a/pkg/users/manifest.json
++++ b/pkg/users/manifest.json
+@@ -3,10 +3,10 @@
+         "index": {
+             "label": "Accounts",
+             "order": 70,
+-            "docs": [
++            "docs-rh": [
                  {
                      "label": "Managing user accounts",
 -		    "url": "https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/managing_systems_using_the_rhel_9_web_console/managing-user-accounts-in-the-web-console_system-management-using-the-rhel-9-web-console"
-+                    "url": "https://documentation.suse.com/smart/systems-management/html/cockpit-slemicro/index.html#glue-managing-users"
++		            "url": "https://documentation.suse.com/sle-micro/6.0/html/Micro-6.0-cockpit/index.html#glue-managing-users"
                  }
              ],
              "keywords": [
-Index: cockpit/pkg/shell/manifest.json
-===================================================================
---- cockpit.orig/pkg/shell/manifest.json
-+++ cockpit/pkg/shell/manifest.json
-@@ -25,7 +25,7 @@
-         "uk-ua": "Українська",
-         "zh-cn": "中文（中国）"
-     },
--    "docs": [
-+    "docs-rh": [
-         {
-             "label": "Web Console",
-             "url": "https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/managing_systems_using_the_rhel_9_web_console/index"
-@@ -55,4 +55,4 @@
-             ]
-         }
-     ]
--}
-+}
-\ No newline at end of file
+-- 
+2.46.0
+

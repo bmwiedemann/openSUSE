@@ -293,4 +293,12 @@
   * cinnamon-settings-daemon (5.4.3) vanessa; urgency=medium</comment>
     <requestid>1128872</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>2f10e67845259a7690b37ce990581add</srcmd5>
+    <version>6.2.0</version>
+    <time>1724275504</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1195066</requestid>
+  </revision>
 </revisionlist>

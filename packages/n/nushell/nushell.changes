@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Wed Aug 21 04:09:45 UTC 2024 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.97.1:
+  * Changes to commands:
+    + Additions:
+      - `random binary`.
+      - `mv --update`.
+      - `print --raw`.
+      - `polars save`.
+      - multipart/form-data.
+    + Breaking changes:
+      - `ps`.
+      - `ls`.
+      - `stor`.
+      - `save`.
+      - `polars open`.
+    + Removals:
+      - `polars to-*`.
+    + Bug fixes and other changes:
+      - const math commands.
+      - `glob` accepts globs.
+      - `into datetime`.
+      - `reduce`.
+      - `split words`.
+      - `query web`.
+  * For a full list of changes with detailed descriptions, see:
+    - https://www.nushell.sh/blog/2024-08-20-nushell_0_97_1.html.
+
+-------------------------------------------------------------------
 Tue Jul 30 04:04:10 UTC 2024 - Dead Mozay <dead_mozay@opensuse.org>
 
 - Update to version 0.96.1:

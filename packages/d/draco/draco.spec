@@ -1,7 +1,7 @@
 #
 # spec file for package draco
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,10 +17,10 @@
 
 
 %define build_gtest 1
-%define commit  703bd9caab50b139428cea1aaff9974ebee5742e
-%define lname libdraco8
+%define commit ff233bdd4cac0a0bf6e5cd45bda3406814cb2796
+%define lname libdraco9
 Name:           draco
-Version:        1.5.6
+Version:        1.5.7
 Release:        0
 Summary:        Library for compressing and decompressing 3D geometric meshes and point clouds
 License:        Apache-2.0
@@ -33,8 +33,8 @@ BuildRequires:  gcc-c++
 BuildRequires:  help2man
 BuildRequires:  pkgconfig
 %if %{build_gtest}
-BuildRequires:  pkgconfig(gtest)
 BuildRequires:  unzip
+BuildRequires:  pkgconfig(gtest)
 %endif
 
 %description
@@ -55,12 +55,12 @@ and point clouds. It is intended to improve the storage and transmission of
 Summary:        Development files for %{name}
 Group:          Development/Libraries/C and C++
 Requires:       %{lname} = %{version}-%{release}
- 
+
 %description    devel
 Draco is a library for compressing and decompressing 3D geometric meshes
 and point clouds. It is intended to improve the storage and transmission of
 3D graphics.
- 
+
 %prep
 %autosetup -p1 -a1
 %if %{build_gtest}

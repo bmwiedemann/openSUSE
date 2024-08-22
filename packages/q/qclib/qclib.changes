@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Aug 19 08:12:06 UTC 2024 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Upgrade qclib to version 2.5.0
+  * Changes:
+    - Remove support for textual hypfs, as previously indicated with v1.4.0
+    - zname, zhypinfo: Add command line switch -d
+    - Removed now unused compile option CONFIG_DEBUG_TIMESTAMPS 
+
+-------------------------------------------------------------------
 Fri Apr 19 11:55:09 UTC 2024 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Applied a patch to change the _PATH_MOUNTED (bsc#1222143)

@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Aug 20 13:24:06 UTC 2024 - Adam Majer <adam.majer@suse.de>
+
+- remove requires on pam_oath completely. It will be re-introduced
+  later when it works with optional enrollment
+
+-------------------------------------------------------------------
+Mon Aug 20 11:44:33 UTC 2024 - Alice Brooks <alice.brooks@suse.com>
+
+- add 0005-cockpit-ws-user-remove-default-deps.patch (bsc#1229146)
+
+-------------------------------------------------------------------
+Mon Aug 12 13:47:26 UTC 2024 - Luna D Dragon <luna.dragon@suse.com>
+
+- new version 322:
+  * shell: Deprecate host switcher
+  * files: Permissions column in details view
+- suse_docs.patch: refreshed
+
+For details, see https://cockpit-project.org/blog/cockpit-322.html
+
+-------------------------------------------------------------------
 Thu Aug  8 12:21:51 UTC 2024 - Jan Zerebecki <jan.suse@zerebecki.de>
 
 - revert load pam_oath, because it enforces the file for otp secrets to exist,
@@ -15,6 +36,7 @@ Sat Aug  7 09:37:00 UTC 2024 - pallas wept <pallaswept@proton.me>
 
 - Recommend cockpit-packagekit if zypper is installed
 
+-------------------------------------------------------------------
 Wed Aug  7 09:36:58 UTC 2024 - Jan Zerebecki <jan.suse@zerebecki.de>
 
 - load pam_oath for optional TOTP for authentication

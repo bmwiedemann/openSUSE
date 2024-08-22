@@ -1,0 +1,5 @@
+<package name="edid-decode" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="hardware" package="edid-decode"/>
+</package>

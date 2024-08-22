@@ -4201,4 +4201,13 @@
   * cleanup aaa_base.post and fold back into specfile (forwarded request 1192950 from kukuk)</comment>
     <requestid>1192951</requestid>
   </revision>
+  <revision rev="504" vrev="1">
+    <srcmd5>88812fd9e071b7c75b5a2ec5791501ee</srcmd5>
+    <version>84.87+git20240821.fbabe1d</version>
+    <time>1724275482</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 84.87+git20240821.fbabe1d:
+  * Add helper service for soft-reboot (forwarded request 1195034 from kukuk)</comment>
+    <requestid>1195035</requestid>
+  </revision>
 </revisionlist>

@@ -17,7 +17,7 @@
 
 
 # Notice to maintainer : move this package to real lfhs
-%define	shortver 83
+%define	shortver 84
 %if 0%{?suse_version} >= 1550
 BuildRequires:  python3-wxPython
 %else
@@ -25,7 +25,7 @@ BuildRequires:  python-wxWidgets-devel >= 3.0
 %endif
 
 Name:           grass
-Version:        8.3.2
+Version:        8.4.0
 Release:        0
 Summary:        Geographic Resources Analysis Support System
 License:        GPL-2.0-or-later

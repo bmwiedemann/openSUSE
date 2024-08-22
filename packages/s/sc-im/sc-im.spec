@@ -1,7 +1,7 @@
 #
 # spec file for package sc-im
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,28 +15,29 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           sc-im
-Version:        0.8.3
+Version:        0.8.4
 Release:        0
 Summary:        An ncurses spreadsheet program for terminal
 License:        BSD-4-Clause
 Group:          Productivity/Office/Spreadsheets
-Url:            https://github.com/andmarti1424
+URL:            https://github.com/andmarti1424
 Source0:        https://github.com/andmarti1424/%{name}/archive/refs/tags/v%{version}.tar.gz
-BuildRequires:  make
 BuildRequires:  bison
 BuildRequires:  gnuplot
-BuildRequires:  pkgconfig(ncurses)
-BuildRequires:  pkgconfig(libzip)
-BuildRequires:  pkgconfig(libxml-2.0)
+BuildRequires:  make
 BuildRequires:  pkgconfig(libxls)
+BuildRequires:  pkgconfig(libxml-2.0)
+BuildRequires:  pkgconfig(libzip)
+BuildRequires:  pkgconfig(ncurses)
 BuildRequires:  pkgconfig(xlsxwriter)
 
 %description
-Spreadsheet Calculator Improvised, aka sc-im, is an ncurses based, 
+Spreadsheet Calculator Improvised, aka sc-im, is an ncurses based,
 vim-like spreadsheet calculator.
 
-sc-im is based on sc, whose original authors are James Gosling and 
+sc-im is based on sc, whose original authors are James Gosling and
 Mark Weiser, and mods were later added by Chuck Martin.
 
 %prep

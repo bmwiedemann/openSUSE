@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Aug 20 16:18:58 UTC 2024 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- update to 1.5.7
+
+  * Added support for normalized attributes to Emscripten encoder API.
+  * Bug fixes.
+  * Security fixes.
+
+-------------------------------------------------------------------
 Wed Dec 20 13:46:53 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Abide by shared library packaging guide (split to libdraco8)

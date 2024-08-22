@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Aug  19 14:46:00 UTC 2024 - sb56637 <mxoo28j7@duck.com>
+
+- update to 6.2.0:
+   * Fix optional wayland handling in cc-display-panel
+   * cc-display-panel.c: Use correct type for dbus label colors.
+   * Remove Online Accounts panel
+   * l10n: Update POT
+   * Remove gnome-online-accounts dependency
+   * Update cc-wacom-panel.c: Fix name
+   * Apply edits from Codespell
+   * network: better default settings for cellular connections
+   * network: fix crash when adding cellular connection
+   * l10n: Update files
+
+-------------------------------------------------------------------
 Fri May 17 14:25:16 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop gnome-online-accounts dependency: not compatible with GOA
