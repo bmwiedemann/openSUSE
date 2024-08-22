@@ -47,10 +47,10 @@ Source10:       pagure-README.SUSE
 Patch1000:      pagure-5.0-default-example-cfg.patch
 # PATCH-FIX-UPSTREAM 5486.patch https://pagure.io/pagure/pull-request/5486 dominik@wombacher.cc -- Use '==' instead of 'is' in template if condition because to work with older Jinja2 versions. Edge case, avoid 'KeyError' after pagure update if a cached session is used.
 Patch1001:      5486.patch
-
+# PATCH-FIX-UPSTREAM pagure-pygit2.patch -- PyGit2 renamed its files: https://github.com/libgit2/pygit2/commit/a8b2421bea55029296cc79ac7c1518b9885d8a6f
+Patch1002:      pagure-pygit2.patch
 
 BuildArch:      noarch
-
 
 BuildRequires:  apache2
 BuildRequires:  fdupes
@@ -234,7 +234,7 @@ Conflicts:      %{name}-theme-default
 Provides:       %{name}-theme-default
 Requires:       %{name}-theme-chameleon = %{version}-%{release}
 Enhances:       (%{name} and branding-openSUSE)
-Removepathpostfixes:.openSUSE
+Removepathpostfixes: .openSUSE
 
 %description        theme-default-openSUSE
 This package sets the default web interface assets used for
