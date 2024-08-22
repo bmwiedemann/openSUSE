@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Mon Aug 12 02:49:57 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 3.4.6:
+  * Update translations
+- update to 3.4.5:
+  * Update translations
+- update to 3.4.4:
+  * Update translations
+- update to 3.4.3:
+  * Update translations
+- update to 3.4.2:
+  * Fix potential infinite while loop and interpreting unsigned int as signed
+- update to 3.4.1:
+  * Update translations
+- update to 3.4.0:
+  * Add AVIF and HEIF support
+  * Add dark mode support
+- update to 3.2.12:
+  * Use upper case names for boolean constants (False -> FALSE, True -> TRUE).
+    Not all distros support not-upper case variant
+- update to 3.2.11:
+  * Handle repeated prev/next keys
+- update to 3.2.10:
+  * Fix Batch Save
+- udate to 3.2.9:
+  * Update translations
+- update to 3.2.8:
+  * add missing gio-unix-2.0 dependency
+- update to 3.2.7:
+  * Add webp support
+- update to 3.2.6:
+  * Update translations
+- update to 3.2.5:
+  * Port to meson
+  * control: capitalize Xviewer in package desc
+  * fix lintian warnings
+  * update AppStream metadata
+  * Use meson's i18n.merge_file (gettext) ... instead of intltool-merge.
+  * add install scripts for non-debian builds
+  * remove unused variables
+  * fix misleading-indentation warnings
+  * fix/add checked type casts
+  * move .typelib and .gir dirs into private dir
+  * Handle repeated prev and next keys
+- update spec file to reflect newer standards and move to the newer meson buildsystem
+- remove support for suse_version < 1500
+- add new package for the HTML docs
+
+-------------------------------------------------------------------
 Sun May  1 13:29:14 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 3.2.4

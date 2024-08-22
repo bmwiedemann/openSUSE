@@ -1,7 +1,7 @@
 #
 # spec file for package xviewer
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,42 +17,34 @@
 
 
 Name:           xviewer
-Version:        3.2.4
+Version:        3.4.6
 Release:        0
 Summary:        Fast and functional graphics viewer
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
-Group:          Productivity/Graphics/Viewers
 URL:            https://github.com/linuxmint/xviewer
-Source:         https://github.com/linuxmint/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source:         %{url}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+BuildRequires:  cmake
 BuildRequires:  fdupes
-BuildRequires:  gnome-common
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  libjpeg-devel
-BuildRequires:  libxapp-devel
+BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(cinnamon-desktop)
-BuildRequires:  pkgconfig(dbus-glib-1)
 BuildRequires:  pkgconfig(exempi-2.0)
-BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
-BuildRequires:  pkgconfig(gobject-introspection-1.0)
+BuildRequires:  pkgconfig(gio-unix-2.0)
+BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gtk+-3.0)
-BuildRequires:  pkgconfig(gtk+-unix-print-3.0)
+BuildRequires:  pkgconfig(gtk-doc)
 BuildRequires:  pkgconfig(lcms2)
 BuildRequires:  pkgconfig(libexif)
-BuildRequires:  pkgconfig(libpeas-gtk-1.0)
+BuildRequires:  pkgconfig(libjpeg)
+BuildRequires:  pkgconfig(libpeas-1.0)
 BuildRequires:  pkgconfig(librsvg-2.0)
 BuildRequires:  pkgconfig(libxml-2.0)
+BuildRequires:  pkgconfig(xapp)
 Requires:       xapps-common
-Recommends:     %{name}-lang
 Suggests:       %{name}-plugins
-%glib2_gsettings_schema_requires
-%if 0%{?suse_version} >= 1500
-BuildRequires:  python3-libxml2-python
-%else
-BuildRequires:  libxml2-python3
-%endif
 
 %description
 xviewer is a simple graphics viewer for the Cinnamon desktop and
@@ -60,12 +52,15 @@ others which uses the gdk-pixbuf library. It can deal with large
 images, and zoom and scroll with constant memory usage. Its goals
 are simplicity and standards compliance.
 
-%lang_package
+%package -n      typelib-1_0-Xviewer-3_0
+Summary:        Typelib for %{name}
+
+%description -n  typelib-1_0-Xviewer-3_0
+This package provides the typelib for %{name}
 
 %package devel
 Summary:        Fast and functional graphics viewer development files
-Group:          Development/Libraries/C and C++
-Requires:       %{name} = %{version}
+Requires:       typelib-1_0-Xviewer-3_0 = %{version}
 
 %description devel
 xviewer is a simple graphics viewer for the Cinnamon desktop and
@@ -73,57 +68,64 @@ others which uses the gdk-pixbuf library. It can deal with large
 images, and zoom and scroll with constant memory usage. Its goals
 are simplicity and standards compliance.
 
+%package doc
+Summary:        Html documentation for %{name}
+BuildArch:      noarch
+
+%description doc
+This package provides the docs for %{name}
+
+%lang_package
+
 %prep
-%setup -q
+%autosetup
 
 %build
-NOCONFIGURE=1 gnome-autogen.sh
-%configure \
-  --libexecdir=%{_libexecdir}/%{name}
-%make_build
+%meson \
+  -Dexempi=enabled \
+  -Dexif=enabled \
+  -Djpeg=enabled \
+  -Dlcms=enabled \
+  -Drsvg=enabled \
+  -Ddocs=true \
+  -Ddeprecated_warnings=true
+%meson_build
 
 %install
-%make_install
+%meson_install
 %find_lang %{name} %{?no_lang_C}
-find %{buildroot} -type f -name "*.la" -delete -print
-%suse_update_desktop_file -r %{name} GTK Graphics 2DGraphics Viewer
+%suse_update_desktop_file %{name}
 %fdupes %{buildroot}%{_datadir}
-
-if [ -d %{buildroot}%{_datadir}/GConf/ ]; then
-    rm -r %{buildroot}%{_datadir}/GConf/
-fi
-
-%if 0%{?suse_version} < 1500
-%post
-%desktop_database_post
-%icon_theme_cache_post
-%glib2_gsettings_schema_post
-
-%postun
-%desktop_database_postun
-%icon_theme_cache_postun
-%glib2_gsettings_schema_postun
-%endif
 
 %files
 %license COPYING
-%doc AUTHORS README
+%doc AUTHORS README.md MAINTAINERS THANKS
 %{_bindir}/%{name}
-%{_libdir}/%{name}/
-%{_datadir}/%{name}/
-%exclude %{_datadir}/%{name}/gir-1.0/
 %{_datadir}/applications/%{name}.desktop
-%dir %{_datadir}/appdata/
-%{_datadir}/appdata/%{name}.appdata.xml
-%{_datadir}/glib-2.0/schemas/*.xml
-%{_datadir}/help/C/%{name}/
-%{_datadir}/icons/hicolor/*/apps/%{name}.*
+%{_datadir}/icons/hicolor/*/{actions,apps}/*.{png,svg}
+%{_datadir}/metainfo/%{name}.appdata.xml
+%{_datadir}/glib-2.0/schemas/org.x.viewer.{enums,gschema}.xml
+%dir %{_datadir}/%{name}
+%{_datadir}/%{name}/{icons,pixmaps}
 
-%files lang -f %{name}.lang
+%files -n typelib-1_0-Xviewer-3_0
+%dir %{_libdir}/xviewer/girepository-1.0
+%{_libdir}/%{name}/girepository-1.0/Xviewer-3.0.typelib
 
 %files devel
-%{_includedir}/%{name}-3.0/
+%{_includedir}/%{name}
 %{_libdir}/pkgconfig/%{name}.pc
-%{_datadir}/%{name}/gir-1.0/
+%{_libdir}/%{name}/lib%{name}.so
+%{_datadir}/%{name}/gir-1.0/Xviewer-3.0.gir
+%dir %{_datadir}/%{name}/gir-1.0
+%dir %{_libdir}/%{name}
+
+%files doc
+%{_datadir}/help/*/%{name}/{,figures/}*.{png,page,xml}
+%{_datadir}/gtk-doc/html/xviewer
+%dir %{_datadir}/help/*/{%{name},%{name}/figures}
+
+%files lang
+%{_datadir}/locale/*/*/*.mo
 
 %changelog
