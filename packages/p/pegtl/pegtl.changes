@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Aug 16 18:02:46 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- fix location of CMake files to be ".../pegtl"
+
+-------------------------------------------------------------------
 Sat Jan 28 20:57:30 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.2.7:
