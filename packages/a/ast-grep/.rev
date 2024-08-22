@@ -529,4 +529,12 @@
   * fix(deps): update dependency @swc/core to v1.7.10 d7a3820</comment>
     <requestid>1194639</requestid>
   </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>d67a6010ac7a87a19e831672c6d766d0</srcmd5>
+    <version>0.26.2+0</version>
+    <time>1724343231</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1195224</requestid>
+  </revision>
 </revisionlist>
