@@ -17,7 +17,7 @@
 
 
 Name:           udns
-Version:        0.5
+Version:        0.6
 Release:        0
 Summary:        DNS resolver tools
 License:        LGPL-2.1-or-later

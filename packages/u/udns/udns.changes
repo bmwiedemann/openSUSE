@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Aug  6 08:26:41 UTC 2024 - ming li <mli@suse.com>
+
+- Update to version 0.6:
+  * udns.h: make dst size arg of dns_ntop() unsigned (was int)
+  * bugfix: udns_XtoX.c: it is dns_ntop() & dns_pton(), not udns_*
+  * bugfix: configure: fix inet_ntop() and inet_pton() checks
+    (revealed with gcc-14)
+  * bugfix: dnsget: s/AAA/AAAA/ for the record type in help output
+  * configure.lib: do not run the produced executables
+    (makes cross-building easier)
+
+-------------------------------------------------------------------
 Sun Mar 24 08:05:13 UTC 2024 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 0.5 (yes, this is a 10 years gap)
