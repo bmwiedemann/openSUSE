@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Aug 22 09:09:48 UTC 2024 - Michael Pujos <pujos.michael@gmail.com>
+
+- removed fix-version.patch
+- Update to 6.2.0:
+  * Improved multi-interface search: send M-SEARCH on all configured
+    interfaces instead of relying on routing
+  * Add interface method to set an Access-Control-Allow-Origin header
+    on webserver responses
+  * Accept unquoted values in SOAPACTION headers
+  * Fix compilation with GCC 14
+  * Misc small fixes
+
+-------------------------------------------------------------------
 Sun May 12 13:57:28 UTC 2024 - Michael Pujos <pujos.michael@gmail.com>
 
 - Update to 6.1.2

@@ -56,4 +56,14 @@
     <comment>Update to 6.1.2</comment>
     <requestid>1173517</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>675307b02dd77236ce73d922569da0e5</srcmd5>
+    <version>6.2.0</version>
+    <time>1724343239</time>
+    <user>anag+factory</user>
+    <comment>Update to 6.2.0
+Fix compilation with GCC 14
+</comment>
+    <requestid>1195274</requestid>
+  </revision>
 </revisionlist>

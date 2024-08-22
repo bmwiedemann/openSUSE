@@ -18,7 +18,7 @@
 
 %define so_ver  13
 Name:           libnpupnp
-Version:        6.1.2
+Version:        6.2.0
 Release:        0
 Summary:        A C++ base UPnP library, derived from Portable UPnP, a.k.a libupnp
 License:        GPL-2.0-or-later
@@ -55,8 +55,6 @@ developing applications that use %{name}.
 
 %prep
 %autosetup
-# fix version
-sed -i 's/  soversion:.*/  version: '\''13.1.0'\'',/' meson.build
 
 %build
 %meson
