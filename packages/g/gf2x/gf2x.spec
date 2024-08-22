@@ -1,7 +1,7 @@
 #
 # spec file for package gf2x
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,7 @@ License:        GPL-3.0-or-later
 Group:          Productivity/Scientific/Math
 URL:            https://gitlab.inria.fr/gf2x/gf2x
 Source:         https://gitlab.inria.fr/gf2x/gf2x/uploads/c46b1047ba841c20d1225ae73ad6e4cd/gf2x-1.3.0.tar.gz
+Patch1:         gcc14.patch
 BuildRequires:  automake
 BuildRequires:  libtool
 BuildRequires:  pkg-config
@@ -51,7 +52,7 @@ gf2x is a library for fast multiplication of polynomials over the
 GF(2) binary field.
 
 This package contains the interface definitions for the gf2x library.
- 
+
 %prep
 %autosetup -p1
 

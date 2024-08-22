@@ -77,4 +77,12 @@
     <comment>- Update homepage URL and build recipe.</comment>
     <requestid>858485</requestid>
   </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>753e4761a0fad15fe4a359565cc5507d</srcmd5>
+    <version>1.3.0</version>
+    <time>1724343216</time>
+    <user>anag+factory</user>
+    <comment>- Add gcc14.patch</comment>
+    <requestid>1195192</requestid>
+  </revision>
 </revisionlist>
