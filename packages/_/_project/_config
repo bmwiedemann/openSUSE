@@ -43,7 +43,7 @@ RepoType: rpm-md:sha512:filelists-ext
   Patterntype: none
   Prefer: openSUSE-release-ftp
   Support: release-compare
-  Required: containment-tik-img-to-rpm
+#  Required: containment-tik-img-to-rpm
 # BuildFlags: obsgendiff
 %endif
 
@@ -107,7 +107,7 @@ Substitute: system-packages:podman podman buildah createrepo_c release-compare c
 BuildFlags: excludebuild:openh264
 %endif
 
-Substitute: kiwi-setup:image  python3-kiwi createrepo_c
+Substitute: kiwi-setup:image  python3-kiwi createrepo_c containment-tik-img-to-rpm
 Substitute: kiwi-image:tbz    python3-kiwi
 Substitute: kiwi-image:iso    kiwi-systemdeps-iso-media qemu-tools
 Substitute: kiwi-image:oem    kiwi-systemdeps-disk-images xorriso
@@ -2862,6 +2862,7 @@ BuildFlags: onlybuild:python-pyOpenSSL
 BuildFlags: onlybuild:python-pyasn1
 BuildFlags: onlybuild:python-pyasn1-modules
 BuildFlags: onlybuild:python-pybeam
+BuildFlags: onlybuild:python-pybind11
 BuildFlags: onlybuild:python-pycairo
 BuildFlags: onlybuild:python-pycodestyle
 BuildFlags: onlybuild:python-pycparser
