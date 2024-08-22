@@ -1,0 +1,80 @@
+-------------------------------------------------------------------
+Fri Aug 16 05:43:29 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 2.6.0:
+  * chore: Update doc and digests for v2.5.1 by @laurentsimon in
+    #748
+  * fix(deps): update module google.golang.org/protobuf to v1.33.0
+    [security] by @renovate-bot in #743
+  * fix(deps): update dependency org.apache.maven:maven-core to
+    v3.9.6 by @renovate-bot in #718
+  * chore: Update @actions/github v6 by @laurentsimon in #749
+  * fix: use sigstore/pkg/fulcioroots to lessen deps by
+    @ramonpetgrave64 in #746
+  * feat: add ramonpetgrave64 as CODEOWNER by @ramonpetgrave64 in
+    #750
+  * chore(deps): update gcr.io/distroless/base:nonroot docker
+    digest to 1a8ece8 by @renovate-bot in #701
+  * chore(deps): update github-actions (major) by @renovate-bot in
+    #719
+  * fix(deps): update dependency org.apache.maven:maven-plugin-api
+    to v3.9.6 by @renovate-bot in #751
+  * chore(deps): update npm dev (major) by @ramonpetgrave64 in #753
+  * fix(deps): update dependency
+    org.apache.maven.plugin-tools:maven-plugin-annotations to
+    v3.11.0 by @renovate-bot in #752
+  * feat: fixes #547: add npm sigstore-tuf suport by
+    @ramonpetgrave64 in #731
+  * fix(deps): update module github.com/sigstore/cosign/v2 to
+    v2.2.4 [security] by @renovate-bot in #723
+  * chore(deps): update golang:1.21 docker digest to 81811f8 by
+    @renovate-bot in #693
+  * chore: slsa-framework/slsa-github-generator@v2.0.0: add
+    testdata by @ramonpetgrave64 in #758
+  * chore(deps): update golang:1.21 docker digest to d83472f by
+    @renovate-bot in #764
+  * chore(deps): update gcr.io/distroless/base:nonroot docker
+    digest to 53745e9 by @renovate-bot in #763
+  * feat: workflow to update actions dist by @ramonpetgrave64 in
+    #760
+  * fix(deps): update dependency @actions/core to v1.10.1 by
+    @renovate-bot in #717
+  * chore: fix pr-title-checker by @ianlewis in #770
+  * chore: Update Renovate config by @ianlewis in #769
+  * fix: use pr_number as env variable by @ramonpetgrave64 in #771
+  * fix: signoff commit by @ramonpetgrave64 in #767
+  * chore(deps): bump golang.org/x/net from 0.22.0 to 0.23.0 by
+    @dependabot in #781
+  * chore(deps): bump github.com/hashicorp/go-retryablehttp from
+    0.7.5 to 0.7.7 by @dependabot in #782
+  * chore(deps): bump undici from 5.28.3 to 5.28.4 in
+    /actions/installer by @dependabot in #779
+  * chore(deps-dev): bump braces from 3.0.2 to 3.0.3 in
+    /actions/installer by @dependabot in #780
+  * chore(deps): bump the npm_and_yarn group across 2 directories
+    with 2 updates by @dependabot in #784
+  * fix(deps): update golang.org/x/exp digest to 7f521ea by
+    @renovate-bot in #775
+  * fix: make download-artifacts.sh more flexible by
+    @ramonpetgrave64 in #761
+  * chore(deps): update golang:1.21 docker digest to b405b62 by
+    @renovate-bot in #774
+  * chore(deps): update npm dev by @renovate-bot in #650
+  * fix(deps): update dependency org.apache.maven:maven-core to
+    v3.9.8 by @renovate-bot in #787
+  * chore(deps): update github-actions by @renovate-bot in #786
+  * feat: vsa support by @ramonpetgrave64 in #777
+  * fix: use tag for the builder in the release workflow by
+    @ramonpetgrave64 in #788
+
+-------------------------------------------------------------------
+Thu Jun 13 07:43:07 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.5.1:
+  * feat: Add cosign registry opts for provenance registry
+  * feat: Add support for DSSE Rekor type
+
+-------------------------------------------------------------------
+Mon Mar 18 13:39:37 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- Initial packaging (2.4.1)
