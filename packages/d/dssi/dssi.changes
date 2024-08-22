@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Aug 16 11:57:20 UTC 2024 - Martin Jambor <mjambor@suse.com>
+
+- Added dssi-C99.diff which fixed a callback prototype so that the
+  source code adher to C99 and builds with GCC 14.
+
+-------------------------------------------------------------------
 Mon Feb 26 08:08:20 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.
