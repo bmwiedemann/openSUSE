@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug 21 21:27:06 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Drop glibc-devel-static build requirement, it is not exercised
+  due to scdoc-1.6.1-makefile.patch.
+
+-------------------------------------------------------------------
 Wed Feb 21 09:27:45 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

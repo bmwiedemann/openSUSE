@@ -27,8 +27,7 @@ Source:         https://git.sr.ht/~sircmpwn/scdoc/archive/%{version}.tar.gz
 Source1:        scdoc-rpmlintrc
 Patch0:         scdoc-1.6.1-makefile.patch
 BuildRequires:  autoconf
-BuildRequires:  gcc
-BuildRequires:  glibc-devel-static
+BuildRequires:  c_compiler
 BuildRequires:  make
 
 %description
