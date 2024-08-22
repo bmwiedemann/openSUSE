@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Wed Aug 21 14:21:17 UTC 2024 - antonio.teixeira@suse.com
+
+- Update to version 3.15.0:
+  * vblankmanager: Rework redzone + drawtime on VRR to be tight
+  * steamcompmgr: Don't always repaint if we cycle through and we have an ignored overlay repaint
+  * steamcompmgr: Add adaptive_sync_ignore_overlay
+  * steamcompmgr: Reset nIgnoredOverlayRepaint if we don't need to repaint overlays
+  * steamcompmgr: Make ignored overlay repaints on VRR path more clear
+  * steamcompmgr: VRR fifo/fps limiter fixes
+  * steamcompmgr: Rewrite VRR logic to make more sense and be cleaner
+  * steamcompmgr: Fix bHasOverlay check
+  * steamcompmgr: Clear upscale images if we aren't using them
+  * steamcompmgr, commit: Add support for pre-emptive upscaling for focused windows using FIFO commits
+  * rendervulkan: Allow vulkan_composite to take in a command buffer
+  * rendervulkan: Add the ability to add external dependencies/signals to submissions
+  * rendervulkan: Enable VK_KHR_external_semaphore_fd
+  * rendervulkan: Add IsInUse helper to CVulkanTexture
+  * Timeline, rendervulkan: Add ability to construct CTimeline from a device-local timeline semaphore, and vice versa
+  * Timeline: Add GetPoint
+  * shaders: Fix rendering without luts applying blend TF
+  * WaylandBackend: Enable explicit sync
+  * rendervulkan: Use correct alpha-ness DRM format for composited outputs
+  * rendervulkan: Add CreateTimelineSemaphore/ImportTimelineSemaphore
+  * WaylandServer, steamcompmgr: Implement linux_drm_syncobj ourselves
+  * Timeline: Add constructor that just takes in a syncobj fd
+  * WaylandServer: Move some legacy code to WaylandServerLegacy header
+  * WaylandServer: Add CWaylandProtocol
+  * WaylandServer: Add CWaylandResource
+  * Timeline: Add DRM timeline helpers
+  * Utils: Add NonCopyable type
+  * steamcompmgr: Set cursor to invisible when m_imageEmpty
+  * wlserver: Fix cursor clamp assertion
+  * DRMBackend: Cache requested dynamic refresh rate and compare against that
+  * build: include missing gamescope_version for color utils
+  * wlserver: fix nullptr dereference on oPoint->pTimeline
+  * DRMBackend: Fix mode fallback on connector changes
+  * DRMBackend: Track pending flip count robustly
+  * DRMBackend: Clean up flip_lock usage
+  * steamcompmgr: Add paint_debug_pause_base_plane
+  * log: Create convars to control log level
+
+-------------------------------------------------------------------
 Thu Aug 01 18:36:07 UTC 2024 - antonio.teixeira@suse.com
 
 - Update to version 3.14.26:
