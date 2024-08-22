@@ -1,7 +1,7 @@
 #
 # spec file for package xviewer-plugins
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,255 +16,164 @@
 #
 
 
-%define _name   xviewer
 Name:           xviewer-plugins
-Version:        1.4.1
+Version:        3.4.0
 Release:        0
 Summary:        A collection of plugins for xviewer
 License:        GPL-2.0-or-later
-Group:          Productivity/Graphics/Viewers
 URL:            https://github.com/linuxmint/xviewer-plugins
-Source:         https://github.com/linuxmint/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source:         %{url}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        %{name}.SUSE
 BuildRequires:  fdupes
-BuildRequires:  gnome-common
+BuildRequires:  meson
 BuildRequires:  pkgconfig
-BuildRequires:  python3
-BuildRequires:  pkgconfig(champlain-gtk-0.12) >= 0.9.0
+BuildRequires:  pkgconfig(champlain-gtk-0.12)
+BuildRequires:  pkgconfig(clutter-1.0) >= 1.9.4
 BuildRequires:  pkgconfig(clutter-gtk-1.0) >= 1.1.2
 BuildRequires:  pkgconfig(glib-2.0) >= 2.32.0
-BuildRequires:  pkgconfig(gsettings-desktop-schemas)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.10.0
 BuildRequires:  pkgconfig(libexif) >= 0.6.16
-BuildRequires:  pkgconfig(libgdata)
-BuildRequires:  pkgconfig(libpeas-1.0)
-BuildRequires:  pkgconfig(xviewer)
-Requires:       %{_name}
-Recommends:     %{name}-lang
-Suggests:       %{_name}-plugin-exif-display
-Suggests:       %{_name}-plugin-exif-export-to-folder
-Suggests:       %{_name}-plugin-exif-light-theme
-Suggests:       %{_name}-plugin-exif-map
-Suggests:       %{_name}-plugin-exif-postasa
-Suggests:       %{_name}-plugin-exif-pythonconsole
-Suggests:       %{_name}-plugin-exif-send-by-mail
-Suggests:       %{_name}-plugin-exif-slideshowshuffle
-Enhances:       %{_name}
-%glib2_gsettings_schema_requires
+BuildRequires:  pkgconfig(libgdata) >= 0.9
+BuildRequires:  pkgconfig(libpeas-1.0) >= 0.7.4
+BuildRequires:  pkgconfig(libpeas-gtk-1.0) >= 1.12.0
+BuildRequires:  pkgconfig(xviewer) >= 3.2.1
+Requires:       xviewer
+Suggests:       xviewer-plugin-exif-display
+Suggests:       xviewer-plugin-exif-export-to-folder
+Suggests:       xviewer-plugin-exif-light-theme
+Suggests:       xviewer-plugin-exif-map
+Suggests:       xviewer-plugin-exif-postasa
+Suggests:       xviewer-plugin-exif-pythonconsole
+Suggests:       xviewer-plugin-exif-send-by-mail
+Suggests:       xviewer-plugin-exif-slideshowshuffle
+Enhances:       xviewer
 
 %description
 This package contains plugins for additional features in xviewer.
 
 %package -n %{name}-data
 Summary:        Common data for xviewer-plugins
-Group:          Productivity/Graphics/Viewers
-Requires:       %{_name}
+Requires:       xviewer
 BuildArch:      noarch
 
 %description -n %{name}-data
 Common data required by all xviewer plugins
 
-%package -n %{_name}-plugin-exif-display
+%package -n xviewer-plugin-exif-display
 Summary:        Xviewer exif-display plugin
-Group:          Productivity/Graphics/Viewers
 Requires:       %{name}-data = %{version}
-Provides:       %{_name}-plugins:%{_libdir}/%{_name}/plugins/exif-display.plugin
 
-%description -n %{_name}-plugin-exif-display
+%description -n xviewer-plugin-exif-display
 xviewer exif display plugin
 
-%package -n %{_name}-plugin-export-to-folder
+%package -n xviewer-plugin-export-to-folder
 Summary:        Xviewer export to directory plugin
-Group:          Productivity/Graphics/Viewers
 Requires:       %{name}-data = %{version}
-Provides:       %{_name}-plugins:%{_libdir}/%{_name}/plugins/export-to-folder.plugin
 
-%description -n %{_name}-plugin-export-to-folder
+%description -n xviewer-plugin-export-to-folder
 xviewer export to directory plugin
 
-%package -n %{_name}-plugin-light-theme
+%package -n xviewer-plugin-light-theme
 Summary:        Xviewer light-theme plugin
-Group:          Productivity/Graphics/Viewers
 Requires:       %{name}-data = %{version}
-Provides:       %{_name}-plugins:%{_libdir}/%{_name}/plugins/light-theme.plugin
 
-%description -n %{_name}-plugin-light-theme
+%description -n xviewer-plugin-light-theme
 xviewer Light Theme plugin
 
-%package -n %{_name}-plugin-map
+%package -n xviewer-plugin-map
 Summary:        Xviewer map plugin
-Group:          Productivity/Graphics/Viewers
 Requires:       %{name}-data = %{version}
-Provides:       %{_name}-plugins:%{_libdir}/%{_name}/plugins/map.plugin
 
-%description -n %{_name}-plugin-map
+%description -n xviewer-plugin-map
 xviewer map plugin
 
-%package -n %{_name}-plugin-postasa
+%package -n xviewer-plugin-postasa
 Summary:        Xviewer postasa plugin
-Group:          Productivity/Graphics/Viewers
 Requires:       %{name}-data = %{version}
-Provides:       %{_name}-plugins:%{_libdir}/%{_name}/plugins/postasa.plugin
 
-%description -n %{_name}-plugin-postasa
+%description -n xviewer-plugin-postasa
 xviewer postasa plugin.
 
-%package -n %{_name}-plugin-pythonconsole
+%package -n xviewer-plugin-pythonconsole
 Summary:        Xviewer pythonconsole plugin
-Group:          Productivity/Graphics/Viewers
 Requires:       %{name}-data = %{version}
-Provides:       %{_name}-plugins:%{_libdir}/%{_name}/plugins/pythonconsole.plugin
 
-%description -n %{_name}-plugin-pythonconsole
+%description -n xviewer-plugin-pythonconsole
 xviewer python console plugin
 
-%package -n %{_name}-plugin-send-by-mail
+%package -n xviewer-plugin-send-by-mail
 Summary:        Xviewer send-by-mail plugin
-Group:          Productivity/Graphics/Viewers
 Requires:       %{name}-data = %{version}
-Provides:       %{_name}-plugins:%{_libdir}/%{_name}/plugins/send-by-mail.plugin
 
-%description -n %{_name}-plugin-send-by-mail
+%description -n xviewer-plugin-send-by-mail
 xviewer Send by Mail plugin
 
-%package -n %{_name}-plugin-slideshowshuffle
+%package -n xviewer-plugin-slideshowshuffle
 Summary:        Xviewer slideshowshuffle plugin
-Group:          Productivity/Graphics/Viewers
 Requires:       %{name}-data = %{version}
-Provides:       %{_name}-plugins:%{_libdir}/%{_name}/plugins/slideshowshuffle.plugin
 
-%description -n %{_name}-plugin-slideshowshuffle
+%description -n xviewer-plugin-slideshowshuffle
 xviewer Slideshow Shuffle plugin
 
 %lang_package
 
 %prep
-%setup -q
-cp -f %{SOURCE1} .
+%autosetup
+cp %{SOURCE1} .
 
 %build
-NOCONFIGURE=1 gnome-autogen.sh
-%configure \
-  --with-plugins=all \
-  --enable-python
-make %{?_smp_mflags} V=1
+%meson
+%meson_build
 
 %install
-%make_install
+%meson_install
 %find_lang %{name}
-find %{buildroot} -type f -name "*.la" -delete -print
-%fdupes %{buildroot}/%{_libdir}/%{_name}/plugins/
-
-%post -n %{_name}-plugin-exif-display
-%glib2_gsettings_schema_post
-
-%postun -n %{_name}-plugin-exif-display
-%glib2_gsettings_schema_postun
-
-%post -n %{_name}-plugin-export-to-folder
-%glib2_gsettings_schema_post
-
-%postun -n %{_name}-plugin-export-to-folder
-%glib2_gsettings_schema_post
-
-%post -n %{_name}-plugin-pythonconsole
-%glib2_gsettings_schema_post
-
-%postun -n %{_name}-plugin-pythonconsole
-%glib2_gsettings_schema_post
+%fdupes %{buildroot}
 
 %files
-%defattr(-,root,root)
-%doc %{_name}-plugins.SUSE
+%license COPYING
+%doc NEWS xviewer-plugins.SUSE
 
 %files -n %{name}-data
-%defattr(-,root,root)
-%doc COPYING
-%dir %{_datadir}/%{_name}/
-%dir %{_datadir}/%{_name}/plugins/
+%license COPYING
+%dir %{_prefix}/lib/{xviewer,xviewer/plugins}
+%dir %{_datadir}/{xviewer,xviewer/plugins}
 
 %files lang -f %{name}.lang
-%defattr(-,root,root)
 
-%files -n %{_name}-plugin-exif-display
-%defattr(-,root,root)
-%dir %{_libdir}/%{_name}/
-%dir %{_libdir}/%{_name}/plugins/
-%{_libdir}/%{_name}/plugins/exif-display.plugin
-%{_libdir}/%{_name}/plugins/libexif-display.so
-%dir %{_datadir}/appdata/
-%{_datadir}/appdata/%{_name}-exif-display.metainfo.xml
+%files -n xviewer-plugin-exif-display
+%{_datadir}/metainfo/xviewer-exif-display.metainfo.xml
 %{_datadir}/glib-2.0/schemas/org.x.viewer.plugins.exif-display.gschema.xml
+%{_prefix}/lib/xviewer/plugins/{libexif-display.so,exif-display.plugin}
 
-%files -n %{_name}-plugin-export-to-folder
-%defattr(-,root,root)
-%dir %{_libdir}/%{_name}/
-%dir %{_libdir}/%{_name}/plugins/
-%{_libdir}/%{_name}/plugins/export-to-folder.plugin
-%{_libdir}/%{_name}/plugins/export-to-folder.py
-%dir %{_libdir}/%{_name}/plugins/__pycache__/
-%{_libdir}/%{_name}/plugins/__pycache__/export-to-folder*
-%{_datadir}/%{_name}/plugins/export-to-folder/
+%files -n xviewer-plugin-export-to-folder
+%{_datadir}/xviewer/plugins/export-to-folder
+%{_datadir}/metainfo/xviewer-export-to-folder.metainfo.xml
 %{_datadir}/glib-2.0/schemas/org.x.viewer.plugins.export-to-folder.gschema.xml
-%dir %{_datadir}/appdata/
-%{_datadir}/appdata/%{_name}-export-to-folder.metainfo.xml
+%{_prefix}/lib/xviewer/plugins/export-to-folder.{py,plugin}
 
-%files -n %{_name}-plugin-light-theme
-%defattr(-,root,root)
-%dir %{_libdir}/%{_name}/
-%dir %{_libdir}/%{_name}/plugins/
-%{_libdir}/%{_name}/plugins/light-theme.plugin
-%{_libdir}/%{_name}/plugins/liblight-theme.so
-%dir %{_datadir}/appdata/
-%{_datadir}/appdata/%{_name}-light-theme.metainfo.xml
+%files -n xviewer-plugin-light-theme
 
-%files -n %{_name}-plugin-map
-%defattr(-,root,root)
-%dir %{_libdir}/%{_name}/
-%dir %{_libdir}/%{_name}/plugins/
-%{_libdir}/%{_name}/plugins/map.plugin
-%{_libdir}/%{_name}/plugins/libmap.so
-%dir %{_datadir}/appdata/
-%{_datadir}/appdata/%{_name}-map.metainfo.xml
+%files -n xviewer-plugin-map
+%{_datadir}/metainfo/xviewer-map.metainfo.xml
+%{_prefix}/lib/xviewer/plugins/{map.plugin,libmap.so}
 
-%files -n %{_name}-plugin-postasa
-%defattr(-,root,root)
-%dir %{_libdir}/%{_name}/
-%dir %{_libdir}/%{_name}/plugins/
-%{_libdir}/%{_name}/plugins/postasa.plugin
-%{_libdir}/%{_name}/plugins/libpostasa.so
-%dir %{_datadir}/appdata/
-%{_datadir}/appdata/%{_name}-postasa.metainfo.xml
+%files -n xviewer-plugin-postasa
+%{_datadir}/metainfo/xviewer-postasa.metainfo.xml
+%{_prefix}/lib/xviewer/plugins/{postasa.plugin,libpostasa.so}
 
-%files -n %{_name}-plugin-pythonconsole
-%defattr(-,root,root)
-%dir %{_libdir}/%{_name}/
-%dir %{_libdir}/%{_name}/plugins/
-%{_libdir}/%{_name}/plugins/pythonconsole.plugin
-%{_libdir}/%{_name}/plugins/pythonconsole/
-%{_datadir}/%{_name}/plugins/pythonconsole/
+%files -n xviewer-plugin-pythonconsole
+%{_datadir}/xviewer/plugins/pythonconsole
+%{_datadir}/metainfo/xviewer-pythonconsole.metainfo.xml
 %{_datadir}/glib-2.0/schemas/org.x.viewer.plugins.pythonconsole.gschema.xml
-%dir %{_datadir}/appdata/
-%{_datadir}/appdata/%{_name}-pythonconsole.metainfo.xml
+%{_prefix}/lib/xviewer/plugins/{pythonconsole,pythonconsole.plugin}
 
-%files -n %{_name}-plugin-send-by-mail
-%defattr(-,root,root)
-%dir %{_libdir}/%{_name}/
-%dir %{_libdir}/%{_name}/plugins/
-%{_libdir}/%{_name}/plugins/send-by-mail.plugin
-%{_libdir}/%{_name}/plugins/libsend-by-mail.so
-%dir %{_datadir}/appdata/
-%{_datadir}/appdata/%{_name}-send-by-mail.metainfo.xml
+%files -n xviewer-plugin-send-by-mail
+%{_datadir}/metainfo/xviewer-send-by-mail.metainfo.xml
+%{_prefix}/lib/xviewer/plugins/{send-by-mail.plugin,libsend-by-mail.so}
 
-%files -n %{_name}-plugin-slideshowshuffle
-%defattr(-,root,root)
-%dir %{_libdir}/%{_name}/
-%dir %{_libdir}/%{_name}/plugins/
-%{_libdir}/%{_name}/plugins/slideshowshuffle.plugin
-%{_libdir}/%{_name}/plugins/slideshowshuffle.py
-%dir %{_libdir}/%{_name}/plugins/__pycache__/
-%{_libdir}/%{_name}/plugins/__pycache__/slideshowshuffle*
-%dir %{_datadir}/appdata/
-%{_datadir}/appdata/%{_name}-slideshowshuffle.metainfo.xml
+%files -n xviewer-plugin-slideshowshuffle
+%{_datadir}/metainfo/xviewer-slideshowshuffle.metainfo.xml
+%{_prefix}/lib/xviewer/plugins/slideshowshuffle.{py,plugin}
 
 %changelog

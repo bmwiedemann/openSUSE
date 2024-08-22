@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Aug 12 06:30:32 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- udate to 3.4.0:
+  * Prevent EXIF plugin from changing statusbar height
+  * Remove light-theme plugin
+- update to 1.4.3:
+  * Add gir1.2-xviewer-3.0 as a runtime dependency
+- update to 1.4.2:
+  * Port to meson
+  * Build-depend on libxapp and libexempi
+  * build: migrate from intltool to gettext
+  * run glib-compile-schemas for non-debian builds
+  * fix some compiler warnings
+  * send-by-mail: fix runtime assertion error
+- update spec to newer standards
+
+-------------------------------------------------------------------
 Sun May  1 12:34:06 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 1.4.1
