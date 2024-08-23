@@ -16,19 +16,16 @@
 #
 
 
-%define typelib typelib-1_0-XApp-1_0
-%define soname  libxapp
-%define sover   1
+%define         sover   1
+%define         typelib typelib-1_0-XApp-1_0
 Name:           xapp
-Version:        2.8.2
+Version:        2.8.5
 Release:        0
-Summary:        XApp library and common files
+Summary:        Library files for the Xapp ecosystem
 License:        GPL-3.0-or-later
-Group:          System/GUI/Other
 URL:            https://github.com/linuxmint/xapp
-Source:         https://github.com/linuxmint/xapp/archive/refs/tags/%{version}.tar.gz
+Source:         %{url}/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  fdupes
-BuildRequires:  gtk-doc
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  meson
 BuildRequires:  pkgconfig
@@ -42,22 +39,21 @@ BuildRequires:  pkgconfig(gio-2.0) >= 2.37.3
 BuildRequires:  pkgconfig(glib-2.0) >= 2.37.3
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gtk+-3.0)
+BuildRequires:  pkgconfig(gtk-doc)
 BuildRequires:  pkgconfig(libgnomekbdui)
 BuildRequires:  pkgconfig(pygobject-3.0)
 BuildRequires:  pkgconfig(xkbfile)
-%glib2_gsettings_schema_requires
 
 %description
 This project gathers the components which are common to multiple
 desktop environments and required to implement cross-DE solutions.
 
-%package -n %{soname}%{sover}
+%package -n lib%{name}%{sover}
 Summary:        XApp library
 License:        GPL-2.0-or-later
-Group:          System/Libraries
 Requires:       %{name}-common
 
-%description -n %{soname}%{sover}
+%description -n lib%{name}%{sover}
 This project gathers the components which are common to multiple
 desktop environments and required to implement cross-DE solutions.
 
@@ -66,7 +62,6 @@ This library is used by several XApp applications.
 %package -n %{typelib}
 Summary:        XApp library -- Introspection bindings
 License:        GPL-2.0-or-later
-Group:          System/Libraries
 
 %description -n %{typelib}
 This project gathers the components which are common to multiple
@@ -74,15 +69,14 @@ desktop environments and required to implement cross-DE solutions.
 
 This library is used by several XApp applications.
 
-%package -n %{soname}-devel
+%package -n lib%{name}-devel
 Summary:        Development files of libxapp
 License:        GPL-2.0-or-later
-Group:          Development/Libraries/C and C++
-Requires:       %{soname}%{sover} = %{version}
 Requires:       %{typelib} = %{version}
+Requires:       lib%{name}%{sover} = %{version}
 Requires:       pkgconfig(xkbfile)
 
-%description -n %{soname}-devel
+%description -n lib%{name}-devel
 The libxapp development package includes the header files,
 libraries, development tools necessary for compiling and linking
 application which will use libxapp.
@@ -90,8 +84,6 @@ application which will use libxapp.
 %package common
 Summary:        Common files for XApp desktop applications
 License:        GPL-2.0-or-later AND GPL-3.0-only
-Group:          System/GUI/Other
-Recommends:     %{name}-common-lang
 BuildArch:      noarch
 Provides:       xapps-common = %{version}
 Obsoletes:      xapps-common < %{version}
@@ -106,8 +98,8 @@ applications (i18n files and configuration schemas).
 %package        mate
 Summary:        Mate status applet with HIDPI support
 License:        GPL-3.0-or-later
-Group:          System/GUI/Other
-Requires:       %{soname}%{sover} = %{version}
+BuildArch:      noarch
+Requires:       lib%{name}%{sover} = %{version}
 Provides:       xapps-mate = %{version}
 Obsoletes:      xapps-mate < %{version}
 
@@ -117,40 +109,42 @@ Mate status applet with HIDPI support
 %lang_package -n %{name}-common
 
 %prep
-%setup -q -n xapp-%{version}
+%autosetup
 
 %build
-python3 -c 'import gi;print(gi._overridesdir)'
 %meson \
-  -Ddocs=true
+  -Ddocs=true \
+  -Ddeprecated_warnings=true \
+  -Dstatus-notifier=true \
+  -Dapp-lib-only=false \
+  -Ddebian_derivative=false \
+  -Dmate=true \
+  -Dxfce=true
 %meson_build
 
 %install
 %meson_install
 
-rm %{buildroot}%{_bindir}/{pastebin,upload-system-info}
-%fdupes %{buildroot}%{_datadir}/icons/
-%fdupes %{buildroot}%{python_sitearch}/ %{buildroot}%{python3_sitearch}/
-%find_lang xapp
+# remove unnecessary binaries
+rm -f %{buildroot}%{_bindir}/{pastebin,upload-system-info}
 
-%post -n %{soname}%{sover} -p /sbin/ldconfig
-%postun -n %{soname}%{sover} -p /sbin/ldconfig
-
-%if 0%{?suse_version} < 1500
-%post common
-%icon_theme_cache_post
-%glib2_gsettings_schema_post
-
-%postun
-%icon_theme_cache_postun
-%glib2_gsettings_schema_postun
+%if %{?suse_version} >= 1600
+# install xdg autostart file in /usr/etc
+mkdir -p %{buildroot}%{_distconfdir}/xdg/autostart
+mv %{buildroot}%{_sysconfdir}/xdg/autostart/xapp-sn-watcher.desktop \
+   %{buildroot}%{_distconfdir}/xdg/autostart/xapp-sn-watcher.desktop
 %endif
 
-%files -n %{soname}%{sover}
-%license debian/copyright
-%doc debian/changelog
-%dir %{_libdir}/xapps
-%{_libdir}/%{soname}.so.%{sover}*
+%fdupes %{buildroot}
+%find_lang %{name}
+
+%ldconfig_scriptlets -n lib%{name}%{sover}
+
+%files -n lib%{name}%{sover}
+%license COPYING COPYING.LESSER
+%doc ChangeLog README.md
+%dir %{_libdir}/%{name}s
+%{_libdir}/lib%{name}.so.%{sover}*
 %{_libdir}/libxapp.so.%{version}
 %{_libdir}/xapps/xapp-sn-watcher
 
@@ -158,9 +152,9 @@ rm %{buildroot}%{_bindir}/{pastebin,upload-system-info}
 %{_libdir}/girepository-1.0/XApp-1.0.typelib
 %{python3_sitearch}/gi/overrides/XApp.py
 
-%files -n %{soname}-devel
+%files -n lib%{name}-devel
 %{_includedir}/xapp/
-%{_libdir}/%{soname}.so
+%{_libdir}/lib%{name}.so
 %{_libdir}/pkgconfig/xapp.pc
 %{_datadir}/gir-1.0/XApp-1.0.gir
 %dir %{_datadir}/vala/vapi/
@@ -176,16 +170,17 @@ rm %{buildroot}%{_bindir}/{pastebin,upload-system-info}
 %doc debian/changelog
 %dir %{_sysconfdir}/X11/xinit/
 %dir %{_sysconfdir}/X11/xinit/xinitrc.d/
+%if %{?suse_version} >= 1600
+%{_distconfdir}/xdg/autostart/xapp-sn-watcher.desktop
+%else
 %{_sysconfdir}/xdg/autostart/xapp-sn-watcher.desktop
+%endif
 %{_sysconfdir}/X11/xinit/xinitrc.d/80xapp-gtk3-module.sh
 %{_bindir}/xfce4-set-wallpaper
 %{_bindir}/xapp-gpu-offload
-%{_datadir}/icons/hicolor/*/actions/*.*
-%{_datadir}/icons/hicolor/*/categories/*.*
+%{_datadir}/icons/hicolor/*/*/*
 %{_datadir}/glib-2.0/schemas/org.x.apps.*.xml
 %{_datadir}/dbus-1/services/org.x.StatusNotifierWatcher.service
-%{_datadir}/icons/hicolor/scalable/emblems/emblem-xapp-favorite.svg
-%{_datadir}/icons/hicolor/scalable/*/xapp-*.svg
 
 %files mate
 %dir %{_datadir}/mate-panel/

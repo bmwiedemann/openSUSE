@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Aug 12 08:34:29 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 2.8.5:
+  * Update translations
+- update to 2.8.4:
+  * xapp-visibility-group: add missing declaration in header file
+  * visibility-group: Use a GWeakNotify instead of the destroy signal
+  * visibility-group: Use g_new instead of deprecated g_slice
+- update to 2.8.3:
+  * xapp-icon-chooser-dialog.c: Fix mimetype test for browsed images
+  * Remove accent-rgb setting
+  * gsettings: Fix a default value
+  * Add new gsettings keys for xdg Settings portal v2
+  * xapp-gpu-offload: Fix argument handling for the offload target
+- update spec file to newer standards, remove older versions of Leap
+
+-------------------------------------------------------------------
 Sun Jan 28 09:58:39 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.8.2:

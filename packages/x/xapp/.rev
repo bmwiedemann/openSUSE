@@ -44,4 +44,12 @@
   * xapp-gtk3-module.c: Don't initialize favorites until they're</comment>
     <requestid>1142070</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d9bfbe768b263f5712a96a6c8310f557</srcmd5>
+    <version>2.8.5</version>
+    <time>1724444796</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1195089</requestid>
+  </revision>
 </revisionlist>
