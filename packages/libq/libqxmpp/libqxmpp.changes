@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Aug 23 05:48:27 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.8.1:
+  * Fix other DNS records are not tried if host does not exist
+  * Fix clang build
+
+-------------------------------------------------------------------
 Wed Jul 31 07:01:52 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.8.0:

@@ -270,4 +270,14 @@ Qt5 alternative.</comment>
     <comment></comment>
     <requestid>1190606</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>017221ae27af97659cb9d114cdf47195</srcmd5>
+    <version>1.8.1</version>
+    <time>1724444815</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.8.1:
+  * Fix other DNS records are not tried if host does not exist
+  * Fix clang build (forwarded request 1195635 from jubalh)</comment>
+    <requestid>1195650</requestid>
+  </revision>
 </revisionlist>

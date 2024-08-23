@@ -32,7 +32,7 @@ ExclusiveArch:  do_not_build
 %endif
 %define sover 5
 Name:           libqxmpp%{?pkg_suffix}
-Version:        1.8.0
+Version:        1.8.1
 Release:        0
 Summary:        Qt XMPP Library
 License:        LGPL-2.1-or-later
@@ -112,6 +112,7 @@ This package provides a backward compatibility helper for CMake users.
 If 'QT_VERSION_MAJOR' is not set in the dependent package, the CMake module
 will try to determine the needed QXmpp variant based on which Qt version was
 already found by CMake.
+
 
 
 # No need to build it twice
