@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Aug 23 16:14:17 UTC 2024 - Takashi Iwai <tiwai@suse.com>
+
+- Ad hoc fix for the build error with gcc14:
+  kasumi-gcc14-fix.patch
+
+-------------------------------------------------------------------
 Thu Feb 22 12:40:02 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

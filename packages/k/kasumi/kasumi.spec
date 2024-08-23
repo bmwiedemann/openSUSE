@@ -1,7 +1,7 @@
 #
 # spec file for package kasumi
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,7 @@ Patch1:         desktop.patch
 Patch2:         kasumi-2.5-gtk3.patch
 Patch3:         kasumi-2.5-configure-gtk3.patch
 Patch4:         kasumi-2.5-c++14.patch
+Patch5:         kasumi-gcc14-fix.patch
 BuildRequires:  anthy-devel
 BuildRequires:  gcc-c++
 BuildRequires:  gtk3-devel

@@ -1,0 +1,15 @@
+---
+ cellrendererspin.c |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- a/cellrendererspin.c
++++ b/cellrendererspin.c
+@@ -157,7 +157,7 @@ gui_cell_renderer_spin_class_init (GuiCe
+   object_class->finalize = gui_cell_renderer_spin_finalize;
+ 
+   /* Override the cell renderer's edit-related methods */
+-  cell_class->start_editing = gui_cell_renderer_spin_start_editing;
++  cell_class->start_editing = (void *)gui_cell_renderer_spin_start_editing;
+ }
+ 
+ 
