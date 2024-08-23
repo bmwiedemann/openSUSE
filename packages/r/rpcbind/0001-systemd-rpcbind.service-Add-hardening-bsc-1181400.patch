@@ -1,0 +1,39 @@
+From 913dc9e39032cf8d06c8f3260ef7fcca636a9ebb Mon Sep 17 00:00:00 2001
+From: Johannes Segitz <jsegitz@suse.com>
+Date: Fri, 23 Aug 2024 00:51:43 +0200
+Subject: [PATCH] systemd/rpcbind.service: Add hardening (bsc#1181400)
+
+Signed-off-by: Johannes Segitz <jsegitz@suse.com>
+[ pvorel: Rebased for 1.2.7 ]
+Signed-off-by: Petr Vorel <pvorel@suse.cz>
+---
+ systemd/rpcbind.service.in | 13 +++++++++++++
+ 1 file changed, 13 insertions(+)
+
+diff --git a/systemd/rpcbind.service.in b/systemd/rpcbind.service.in
+index 97207e0..b03409b 100644
+--- a/systemd/rpcbind.service.in
++++ b/systemd/rpcbind.service.in
+@@ -11,6 +11,19 @@ Wants=rpcbind.target
+ After=sysinit.target
+ 
+ [Service]
++# added automatically, for details please see
++# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
++ProtectSystem=full
++ProtectHome=true
++PrivateDevices=true
++ProtectHostname=true
++ProtectClock=true
++ProtectKernelTunables=true
++ProtectKernelModules=true
++ProtectKernelLogs=true
++ProtectControlGroups=true
++RestrictRealtime=true
++# end of automatic additions
+ Type=notify
+ # distro can provide a drop-in adding EnvironmentFile=-/??? if needed.
+ EnvironmentFile=-/etc/sysconfig/rpcbind
+-- 
+2.45.2
+

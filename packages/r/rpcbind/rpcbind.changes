@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Aug 22 20:26:41 UTC 2024 - Petr Vorel <pvorel@suse.cz>
+
+- Update to rpcbind 1.2.7
+  https://sourceforge.net/projects/rpcbind/files/rpcbind/1.2.7/1.2.7-ChangeLog/download
+  * rpcinfo: try connecting using abstract address
+  * Listen on an AF_UNIX abstract address if supported
+  * autotools/systemd: call rpcbind with -w only on enabled warm starts
+  * rpcbind: fix double free in init_transport
+- Refresh and rename patches (while turning them into git patches)
+  * 0001-systemd-unit-files.patch -> 0001-systemd-rpcbind.service-Fix-ordering-add-etc-sysconf.patch
+  * harden_rpcbind.service.patch -> 0001-systemd-rpcbind.service-Add-hardening-bsc-1181400.patch
+
+-------------------------------------------------------------------
 Wed Jan 25 14:53:11 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
 
 - Remove unused libnsl build requires

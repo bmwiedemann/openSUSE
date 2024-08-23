@@ -1,0 +1,40 @@
+From e400274134c1401359ef38df34fc300e0fba2fba Mon Sep 17 00:00:00 2001
+From: Thomas Blume <thomas.blume@suse.com>
+Date: Thu, 22 Aug 2024 22:36:49 +0200
+Subject: [PATCH] systemd/rpcbind.service: Fix ordering, add
+ /etc/sysconfig/rpcbind
+
+* Add ordering dependency to rpcbind.service (bsc#1117217)
+* Add EnvironmentFile=-/etc/sysconfig/rpcbind to rpcbind.service.in
+  (bsc#824621)
+
+Link: https://bugzilla.suse.com/show_bug.cgi?id=1117217
+Link: https://bugzilla.suse.com/show_bug.cgi?id=824621
+Reviewed-by: Petr Vorel <pvorel@suse.cz>
+Signed-off-by: Thomas Blume <thomas.blume@suse.com>
+[ pvorel: rebased for 1.2.7 ]
+Signed-off-by: Petr Vorel <pvorel@suse.cz>
+---
+ systemd/rpcbind.service.in | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/systemd/rpcbind.service.in b/systemd/rpcbind.service.in
+index c892ca8..97207e0 100644
+--- a/systemd/rpcbind.service.in
++++ b/systemd/rpcbind.service.in
+@@ -8,10 +8,12 @@ RequiresMountsFor=@statedir@
+ # rpcbind.socket, no matter how this unit is started.
+ Requires=rpcbind.socket
+ Wants=rpcbind.target
++After=sysinit.target
+ 
+ [Service]
+ Type=notify
+ # distro can provide a drop-in adding EnvironmentFile=-/??? if needed.
++EnvironmentFile=-/etc/sysconfig/rpcbind
+ ExecStart=@_sbindir@/rpcbind $RPCBIND_OPTIONS @warmstarts_opt@ -f
+ 
+ [Install]
+-- 
+2.45.2
+
