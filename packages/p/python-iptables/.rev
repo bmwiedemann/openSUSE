@@ -63,4 +63,15 @@
   * https://github.com/ldx/python-iptables/compare/v0.13.0...v1.0.1</comment>
     <requestid>1131979</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>c017fce28941c35575b8d10d0b17e489</srcmd5>
+    <version>1.0.1</version>
+    <time>1724444812</time>
+    <user>anag+factory</user>
+    <comment>- Do not use setup.py test to &quot;run&quot; the testsuite, use pytest to
+  actually run it.
+- Switch to pyproject macros.
+- No more greedy globs in %files.</comment>
+    <requestid>1195631</requestid>
+  </revision>
 </revisionlist>
