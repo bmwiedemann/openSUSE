@@ -39,6 +39,9 @@ URL:            https://www.frrouting.org
 #Git-Clone:     https://github.com/FRRouting/frr.git
 Source:         https://github.com/FRRouting/frr/archive/refs/tags/%{name}-%{version}.tar.gz
 Source1:        %{name}-tmpfiles.d
+Patch0:         harden_frr.service.patch
+Patch1:         0001-disable-zmq-test.patch
+Patch2:         0002-bgpd-Check-the-actual-remaining-stream-length-before.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison >= 2.7
@@ -78,7 +81,7 @@ BuildRequires:  pkgconfig(sqlite3)
 Requires(post): %{install_info_prereq}
 Requires(pre):  %{install_info_prereq}
 Requires(pre):  shadow
-Requires(preun): %{install_info_prereq}
+Requires(preun):%{install_info_prereq}
 Recommends:     logrotate
 Conflicts:      quagga
 Provides:       zebra = %{version}
@@ -204,8 +207,8 @@ export CFLAGS="-ffat-lto-objects"
 autoreconf -fiv
 %configure \
     --disable-silent-rules \
-    --sysconfdir=%{_sysconfdir}/%{name} \
-    --localstatedir=%{frr_statedir} \
+    --sysconfdir=%{_sysconfdir}\
+    --localstatedir=%{_rundir} \
     --sbindir=%{frr_daemondir} \
     --with-moduledir=%{_libdir}/frr/modules \
     --disable-static \
@@ -259,9 +262,8 @@ autoreconf -fiv
     --with-crypto=openssl \
     --enable-config-rollbacks \
 %if %{with grpc}
-    --enable-grpc \
+    --enable-grpc
 %endif
-    --enable-systemd
 
 make %{?_smp_mflags} MAKEINFO="makeinfo --no-split"
 
