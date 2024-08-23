@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Aug 19 17:44:42 UTC 2024 - Arjen de Korte <suse+build@de-korte.org>
+
+- update to 5.8.0
+  * Changed `Phalcon\Mvc\Model`, `Phalcon\Support\Collection` and
+    `Phalcon\Support\Registry` to correctly implement `\Serializable`
+     interface. [#16591]
+  * Changed the `Phalcon\Mvc\Router\Group::getHostname()` to return
+    `null` also. [#16601]
+  * Changed `Phalcon\Mvc\View\Engine\Volt\Compiler::compileSource` to
+    also return `array` [#16608]
+  * Added events and `Phalcon\Events\Manager` for `Phalcon\Storage\Adapter\Apcu`,
+    `Phalcon\Storage\Adapter\Redis`, `Phalcon\Storage\Adapter\Memory`,
+    `Phalcon\Storage\Adapter\Libmemcached`, `Phalcon\Storage\Adapter\Stream`,
+    `Phalcon\Storage\Adapter\Weak`, `Phalcon\Cache\Adapter\Apcu`,
+    `Phalcon\Cache\Adapter\Redis`, `Phalcon\Cache\Adapter\Memory`,
+    `Phalcon\Cache\Adapter\Libmemcached`, `Phalcon\Cache\Adapter\Stream`,
+    `Phalcon\Cache\Adapter\Weak` `Phalcon\Cache\AbstractCache`. [#16606]
+  * Fixed `Phalcon\Support\Helper\PascalCase` causing memory leak by anonymous
+    function [#16593]
+  * Fixed `Phalcon\Mvc\Model\Query` to rollback failed transactions and
+    re-throw exception for data consistency [#16604]
+
+-------------------------------------------------------------------
 Sun May 26 18:02:22 UTC 2024 - Arjen de Korte <suse+build@de-korte.org>
 
 - update to 5.7.0
