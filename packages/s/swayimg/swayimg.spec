@@ -18,7 +18,7 @@
 
 %bcond_with test
 Name:           swayimg
-Version:        3.1
+Version:        3.2
 Release:        0
 Summary:        Image viewer for Sway/Wayland
 License:        MIT

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Aug 23 10:02:34 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 3.2
+  * Added configurable limit for gallery cache;
+  * Added configurable scale for thumbnails (fit/fill);
+  * Fixed segfault when using some fonts;
+  * Fixed gallery layout;
+  * Fixed skipping image in viewer mode;
+  * In Sway mode now used PID for dynamic rules.
+
+-------------------------------------------------------------------
 Sun Aug 11 18:10:29 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 3.1
