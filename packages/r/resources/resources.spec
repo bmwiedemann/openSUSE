@@ -20,7 +20,7 @@
 %bcond_without test
 %define appid net.nokyan.Resources
 Name:           resources
-Version:        1.5.1
+Version:        1.6.0
 Release:        0
 Summary:        Monitor your system processes
 License:        GPL-3.0-or-later
@@ -54,8 +54,8 @@ processes, written in Rust and using GTK 4 and libadwaita for its GUI.
 
 %find_lang %{name}
 
-%check
 %if %{with test}
+%check
 %meson_test
 %endif
 

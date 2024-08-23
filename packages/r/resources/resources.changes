@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Fri Aug 23 15:27:05 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+ Update to version 1.6.0
+  + Bug fixes
+    - Multiple dialogs (e. g. Settings dialog) could be shown at
+      the same time
+    - Resources could freeze sometimes after the device wakes up
+      from sleep
+    - Apps installed in local folders (e. g. /usr/local/share) were
+      not recognized
+    - Sidebar ordering could get messed up when a new drive or
+      network interface was detected
+    - Accessibility hints and tooltips were not translatable
+    - Resources could not detect power usage of some batteries
+  + New features
+    - Dialog for changing a process’ priority and CPU affinity
+    - Resources and resources-processes now accept commandline
+      arguments to help with debugging
+    - Context menus for items in the Apps and Processes views
+  + Improvements
+    - Graphs now have rounded corners
+    - Memory usage over time has been reduced
+    - Vastly improved debug messages
+    - Improved app detection
+    - Debug messages are disabled per default when using the
+      release profile (or just use env RUST_LOG=resources=debug)
+
+-------------------------------------------------------------------
 Sun Aug 18 09:35:19 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 1.5.1
