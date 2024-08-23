@@ -260,4 +260,14 @@
     <user>anag+factory</user>
     <comment>this wasn't ready yet</comment>
   </revision>
+  <revision rev="22" vrev="17">
+    <srcmd5>b6b735c6e95df7c623a976e4bebc81f0</srcmd5>
+    <version>13.0.1</version>
+    <time>1724444834</time>
+    <user>anag+factory</user>
+    <comment>- Add minor version to Python shebangs. (boo#1212476)
+- Remove shebang and executable bit where not needed.
+</comment>
+    <requestid>1195710</requestid>
+  </revision>
 </revisionlist>
