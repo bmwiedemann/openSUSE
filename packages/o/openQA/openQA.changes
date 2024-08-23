@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Aug 23 17:05:31 UTC 2024 - okurz@suse.com
+
+- Update to version 4.6.1724422555.bca3b3b4:
+  * Fix number of expected CI checks
+  * Fix invalid HTML leading to fullstack test failures
+  * Run OBS helper for pull_request_target
+  * Avoid having RPM build depend on packages only needed for style checks
+  * Fix directory name libexec in path
+  * Ensure AppArmor rules for Leap and TW allows git
+  * Fix missing AppArmor rule for git ls-remote
+  * ci: Add OBS helper workflow
+  * Remove git fetch with destination refspec feature
+  * Bump ace-builds from 1.35.5 to 1.36.0
+  * Remove workaround for broken chromium
+  * Revert "Refactor generic git functions into git module"
+  * Avoid array recreation with _run_cmd helper method
+  * Allow openqa-cli to export commands without an API
+  * Add line numbers with anchoring in log viewer
+  * Bump ace-builds from 1.35.4 to 1.35.5
+  * Improve git error handling and refactor $path
+  * Refactor format_git_error
+  * WIP refactor generic git functions into git module
+
+-------------------------------------------------------------------
 Wed Aug 21 09:04:26 UTC 2024 - okurz@suse.com
 
 - Update to version 4.6.1724130238.d2572ad3:
