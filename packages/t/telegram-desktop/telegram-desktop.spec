@@ -38,25 +38,26 @@
 %define qt_major_version 6
 
 Name:           telegram-desktop
-Version:        5.2.3
+Version:        5.4.1
 Release:        0
 Summary:        Messaging application with a focus on speed and security
 License:        GPL-3.0-only
 Group:          Productivity/Networking/Instant Messenger
 URL:            https://github.com/telegramdesktop/tdesktop
 Source0:        https://github.com/telegramdesktop/tdesktop/releases/download/v%{version}/tdesktop-%{version}-full.tar.gz
-# Use tg_owt-packager.py to prepare tg_owt-master.zip
-# Usage: python tg_owt-packager.py --repo-dir $PWD/tg_owt-master
-# Or use tg_owt-packager.sh to prepare tg_owt-master.zip
+# Use tg_owt-packager.sh to prepare tg_owt-master.zip
 # Usage: bash tg_owt-packager.sh
-Source1:        tg_owt-packager.py
-Source2:        tg_owt-packager.sh
-Source3:        tg_owt-master.zip
+Source1:        tg_owt-packager.sh
+Source2:        tg_owt-master.zip
+Source3:        ada-v2.9.0.zip
+# Usage: bash ads-packager.sh
+Source4:        ada-packager.sh
+Source5:        tg_owt-dlopen-headers.tar.gz
 %if %{with use_system_rnnoise}
 # PATCH-FIX-OPENSUSE
 Patch1:         0001-use-bundled-webrtc.patch
 %else
-Source4:        rnnoise-git20210122.tar.gz
+Source6:        rnnoise-git20210122.tar.gz
 # PATCH-FIX-OPENSUSE
 Patch1:         0002-use-bundled-rnnoise-expected-gsl-ranges-webrtc.patch
 %endif
@@ -64,6 +65,10 @@ Patch1:         0002-use-bundled-rnnoise-expected-gsl-ranges-webrtc.patch
 Patch3:         0003-revert-webrtc-cmake-target-file.patch
 # PATCH-FIX-OPENSUSE
 Patch4:         0004-use-dynamic-x-libraries.patch
+# PATCH-FIX-OPENSUSE
+Patch5:         0005-use-bundled-ada.patch
+# PATCH-FIX-OPENSUSE
+Patch6:         0006-tdesktop-disable-h264.patch
 # There is an (incomplete) patch available for part of the source:
 # https://github.com/desktop-app/lib_base.git 3582bca53a1e195a31760978dc41f67ce44fc7e4
 # but tdesktop itself still falls short, and it looks to be something
@@ -75,6 +80,11 @@ BuildRequires:  clang
 BuildRequires:  cmake >= 3.16
 BuildRequires:  desktop-file-utils
 BuildRequires:  enchant-devel
+BuildRequires:  ffmpeg-6-libavcodec-devel
+BuildRequires:  ffmpeg-6-libavdevice-devel
+BuildRequires:  ffmpeg-6-libavfilter-devel
+BuildRequires:  ffmpeg-6-libavformat-devel
+BuildRequires:  ffmpeg-6-libavutil-devel
 %if %{with compiler_upgrade} || %{with compiler_downgrade}
 BuildRequires:  gcc12
 BuildRequires:  gcc12-c++
@@ -88,6 +98,7 @@ BuildRequires:  libjpeg-devel
 BuildRequires:  liblz4-devel
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
+BuildRequires:  python3 >= 3.7
 BuildRequires:  unzip
 BuildRequires:  wayland-devel
 BuildRequires:  webkit2gtk3-devel
@@ -137,11 +148,6 @@ BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(harfbuzz)
 BuildRequires:  pkgconfig(hunspell)
 BuildRequires:  pkgconfig(jemalloc)
-BuildRequires:  pkgconfig(libavcodec)
-BuildRequires:  pkgconfig(libavdevice)
-BuildRequires:  pkgconfig(libavfilter)
-BuildRequires:  pkgconfig(libavformat)
-BuildRequires:  pkgconfig(libavutil)
 BuildRequires:  pkgconfig(libcrypto)
 BuildRequires:  pkgconfig(liblzma)
 BuildRequires:  pkgconfig(libmng)
@@ -219,17 +225,24 @@ The service also provides APIs to independent developers.
 
 %prep
 %setup -q -n tdesktop-%{version}-full
-%autopatch -p1
-mkdir ../Libraries
+%autopatch -p1 -M 6
+
+cd %{_builddir}
+mkdir -p %{_builddir}/Libraries
+unzip -q %{S:3}
+mv ada-v2.9.0 %{_builddir}/Libraries/ada
+
+mkdir -p %{_builddir}/Libraries/openh264/include
+tar xzf %{S:5}
+mv wels %{_builddir}/Libraries/openh264/include/
 
 # If not TW, unpack rnnoise source
 %if %{without use_system_rnnoise}
-%setup -q -T -D -b 4 -n tdesktop-%{version}-full
+%setup -q -T -D -b 6 -n tdesktop-%{version}-full
 mv ../rnnoise-git20210122 ../Libraries/rnnoise
 %endif
 
-cd ../
-unzip -q %{SOURCE3}
+unzip -q %{SOURCE2}
 mv tg_owt-master Libraries/tg_owt
 
 %build
@@ -253,6 +266,14 @@ pushd %{_builddir}/Libraries/rnnoise
 popd
 %endif
 
+# Build Ada
+pushd %{_builddir}/Libraries/ada
+cmake -GNinja -B build . \
+		-D CMAKE_BUILD_TYPE=None \
+        -D ADA_TESTING=OFF \
+        -D ADA_TOOLS=OFF
+cmake --build build --parallel
+
 cd %{_builddir}/Libraries/tg_owt
 mkdir -p out/Release
 cd out/Release
@@ -261,8 +282,10 @@ cmake -G Ninja \
 %ifarch armv7l armv7hl
        -DTG_OWT_ARCH_ARMV7_USE_NEON=OFF \
 %endif
+       -DTG_OWT_DLOPEN_H264=ON \
        -DTG_OWT_SPECIAL_TARGET=linux \
        -DTG_OWT_LIBJPEG_INCLUDE_PATH=/usr/include \
+       -DTG_OWT_OPENH264_INCLUDE_PATH=%{_builddir}/Libraries/openh264/include \
        -DTG_OWT_OPENSSL_INCLUDE_PATH=/usr/include/openssl \
        -DTG_OWT_OPUS_INCLUDE_PATH=/usr/include/opus \
        -DTG_OWT_FFMPEG_INCLUDE_PATH=/usr/include/ffmpeg \

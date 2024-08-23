@@ -1,0 +1,13 @@
+diff --git a/cmake/external/webrtc/CMakeLists.txt b/cmake/external/webrtc/CMakeLists.txt
+index 67159d6..0caf765 100644
+--- a/cmake/external/webrtc/CMakeLists.txt
++++ b/cmake/external/webrtc/CMakeLists.txt
+@@ -134,7 +134,7 @@ else()
+         Xrandr
+         Xrender
+         Xtst
+-        openh264
++	#        openh264
+     )
+     target_link_libraries(external_webrtc
+     INTERFACE

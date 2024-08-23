@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Aug 22 05:30:55 UTC 2024 - Xu Zhao <i@xuzhao.net>
+
+- Remove 0007-tg-owt-disable-h264.patch
+- Add tg_owt-dlopen-headers.tar.gz
+- Update tg_owt-packager.sh to use the forked version with dlopen.
+
+-------------------------------------------------------------------
+Wed Aug 21 22:49:40 UTC 2024 - Xu Zhao <i@xuzhao.net>
+
+- Update to version 5.4.1
+  * Fix crash when sending Star Reaction in comments.
+  * Fix loading "Send As" channels in a channel.
+  * Place Star Reaction always first in list.
+  * Removed paid Invite Links in groups.
+- Add 0005-use-bundled-ada.patch
+- Add 0006-tdesktop-disable-h264.patch
+- Add 0007-tg-owt-disable-h264.patch
+
+-------------------------------------------------------------------
 Mon Jul  8 05:56:21 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Updated to version 5.2.3
