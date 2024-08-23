@@ -3571,4 +3571,12 @@ Petr</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1191150</requestid>
   </revision>
+  <revision rev="297" vrev="1">
+    <srcmd5>94b94555b22344f00a7e750a81b9573f</srcmd5>
+    <version>24.8.0.3</version>
+    <time>1724444772</time>
+    <user>anag+factory</user>
+    <comment>24.8.0</comment>
+    <requestid>1195632</requestid>
+  </revision>
 </revisionlist>

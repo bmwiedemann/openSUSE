@@ -78,7 +78,7 @@
 %global with_gcc 12
 %endif
 Name:           libreoffice
-Version:        24.2.5.2
+Version:        24.8.0.3
 Release:        0
 Summary:        A Free Office Suite (Framework)
 License:        LGPL-3.0-or-later AND MPL-2.0+
@@ -98,32 +98,22 @@ Source99:       %{name}-rpmlintrc
 Source100:      %{name}.changes
 # prebuilt extensions
 Source402:      %{external_url}/b7cae45ad2c23551fd6ccb8ae2c1f59e-numbertext_0.9.5.oxt
-# used extensions sources
-Source450:      %{external_url}/1f467e5bb703f12cbbb09d5cf67ecf4a-converttexttonumber-1-5-0.oxt
-Source452:      %{external_url}/90401bca927835b6fbae4a707ed187c8-nlpsolver-0.9.tar.bz2
-# Internal bundled stuff we can't remove
-# To build this we would pull cygwin; not worth it
-Source2001:     https://dev-www.libreoffice.org/extern/185d60944ea767075d27247c3162b3bc-unowinreg.dll
 # hsqldb simply does not work with new system version, but luckily we migrate to firebird
 Source2002:     %{external_url}/17410483b5b5f267aa18b7e00b65e6e0-hsqldb_1_8_0.zip
 Provides:       bundled(hsqldb) = 1.8.0
-# Heavily patched and not possible to use system one
-Source2003:     %{external_url}/798b2ffdc8bcfe7bca2cf92b62caf685-rhino1_5R5.zip
-Source2004:     %{external_url}/35c94d2df8893241173de1d16b6034c0-swingExSrc.zip
-Provides:       bundled(rhino) = 1.5R5
 # Needed for wiki-published and always taken as bundled
 Source2005:     %{external_url}/a7983f859eafb2677d7ff386a023bc40-xsltml_2.1.2.zip
 # Needed for integration tests
 Source2006:     https://dev-www.libreoffice.org/extern/8249374c274932a21846fa7629c2aa9b-officeotron-0.7.4-master.jar
 Source2007:     https://dev-www.libreoffice.org/extern/odfvalidator-0.9.0-RC2-SNAPSHOT-jar-with-dependencies-2726ab578664434a545f8379a01a9faffac0ae73.jar
 # PDFium is bundled everywhere
-Source2008:     %{external_url}/pdfium-6179.tar.bz2
+Source2008:     %{external_url}/pdfium-6425.tar.bz2
 # Single C file with patches from LO
 Source2009:     %{external_url}/dtoa-20180411.tgz
 # Skia is part of chromium and bundled everywhere as by google only way is monorepo way
 Source2010:     %{external_url}/skia-m116-2ddcf183eb260f63698aa74d1bb380f247ad7ccd.tar.xz
-Source2012:     %{external_url}/libcmis-0.6.1.tar.xz
-Provides:       bundled(libcmis) = 0.6.1
+Source2012:     %{external_url}/libcmis-0.6.2.tar.xz
+Provides:       bundled(libcmis) = 0.6.2
 # change user config dir name from ~/.libreoffice/3 to ~/.libreoffice/3-suse
 # to avoid BerkleyDB incompatibility with the plain build
 Patch1:         scp2-user-config-suse.diff
@@ -131,14 +121,11 @@ Patch1:         scp2-user-config-suse.diff
 # FIXME: the right fix is to compile the help and produce the .db_, .ht_, and other files
 Patch2:         nlpsolver-no-broken-help.diff
 Patch3:         mediawiki-no-broken-help.diff
-Patch4:         pdfium-optional.patch
 # PATCH-FIX-OPENSUSE boo#1186110 fix GCC 11 error
 Patch6:         gcc11-fix-error.patch
 Patch9:         fix_math_desktop_file.patch
 Patch10:        fix_gtk_popover_on_3.20.patch
 Patch11:        fix_webp_on_sle12_sp5.patch
-# PATCH-FIX-SUSE use fixmath shared library
-Patch14:        use-fixmath-shared-library.patch
 # PATCH-FIX-SUSE Fix make distro-pack-install
 Patch15:        fix-sdk-idl.patch
 # try to save space by using hardlinks
@@ -147,10 +134,6 @@ Patch990:       install-with-hardlinks.diff
 Patch991:       libreoffice-no-destdircheck.patch
 # Fix build on sle12
 Patch992:       python34-no-f-strings.patch
-# Fix build with icu 74 (bsc#1224309)
-Patch993:       icu-74-compatibility.patch
-# PATCH-FIX-UPSTREAM CVE-2024-5261 (bsc#1226975)
-Patch994:       cve-2024-5261.patch
 # PATCH-FIX-OPENSUSE override date in clucene files (boo#1047218)
 Patch995:       reproducible-clucene.patch
 BuildRequires:  %{name}-share-linker
@@ -171,8 +154,8 @@ BuildRequires:  zxcvbn-devel
 %if %{with system_curl}
 BuildRequires:  curl-devel >= 7.68.0
 %else
-Source2013:     %{external_url}/curl-8.7.1.tar.xz
-Provides:       bundled(curl) = 8.7.1
+Source2013:     %{external_url}/curl-8.9.0.tar.xz
+Provides:       bundled(curl) = 8.9.0
 %endif
 # Needed for tests
 BuildRequires:  dejavu-fonts
@@ -191,7 +174,6 @@ BuildRequires:  gperf >= 3.1
 BuildRequires:  graphviz
 BuildRequires:  hyphen-devel
 BuildRequires:  junit4
-BuildRequires:  libassuan0
 BuildRequires:  libbase
 BuildRequires:  libcppunit-devel >= 1.14.0
 BuildRequires:  liberation-fonts
@@ -212,6 +194,7 @@ BuildRequires:  pentaho-reporting-flow-engine
 BuildRequires:  pkgconfig
 BuildRequires:  python3-lxml
 BuildRequires:  python3-xml
+BuildRequires:  rhino
 BuildRequires:  sac
 BuildRequires:  ucpp
 BuildRequires:  unixODBC-devel
@@ -241,13 +224,13 @@ BuildRequires:  pkgconfig(graphite2) >= 0.9.3
 BuildRequires:  pkgconfig(harfbuzz) >= 2.6.8
 BuildRequires:  pkgconfig(harfbuzz-icu) >= 2.6.8
 %else
-Source2025:     %{external_url}/harfbuzz-8.2.2.tar.xz
+Source2025:     %{external_url}/harfbuzz-8.5.0.tar.xz
 Source2026:     %{external_url}/graphite2-minimal-1.3.14.tgz
 Provides:       bundled(graphite2) = 1.3.14
-Provides:       bundled(harfbuzz) = 8.2.2
+Provides:       bundled(harfbuzz) = 8.5.0
 %endif
 # Java-WebSocket
-Source3000:     %{external_url}/Java-WebSocket-1.5.4.tar.gz
+Source3000:     %{external_url}/Java-WebSocket-1.5.6.tar.gz
 BuildRequires:  pkgconfig(hunspell)
 BuildRequires:  pkgconfig(krb5)
 BuildRequires:  pkgconfig(lcms2)
@@ -319,12 +302,12 @@ Provides:       %{name}-icon-theme-oxygen = %{version}
 Obsoletes:      %{name}-icon-theme-oxygen < %{version}
 %if 0%{?suse_version} < 1550
 # Too old boost on the system
-Source2020:     %{external_url}/boost_1_82_0.tar.xz
-Source2023:     %{external_url}/poppler-23.09.0.tar.xz
+Source2020:     %{external_url}/boost_1_85_0.tar.xz
+Source2023:     %{external_url}/poppler-24.06.0.tar.xz
 Source2024:     %{external_url}/poppler-data-0.4.12.tar.gz
-Source2030:     %{external_url}/tiff-4.6.0.tar.xz
-Provides:       bundled(boost) = 1.82.0
-Provides:       bundled(poppler) = 23.06.0
+Source2030:     %{external_url}/tiff-4.6.0t.tar.xz
+Provides:       bundled(boost) = 1.85.0
+Provides:       bundled(poppler) = 24.06.0
 Provides:       bundled(poppler-data) = 0.4.12
 %else
 BuildRequires:  libboost_date_time-devel
@@ -338,12 +321,12 @@ BuildRequires:  pkgconfig(poppler-cpp)
 %endif
 %if 0%{?suse_version} < 1500
 # Too old icu on the system
-Source2021:     %{external_url}/icu4c-73_2-src.tgz
-Source2022:     %{external_url}/icu4c-73_2-data.zip
+Source2021:     %{external_url}/icu4c-74_2-src.tgz
+Source2022:     %{external_url}/icu4c-74_2-data.zip
 Source2027:     %{external_url}/phc-winner-argon2-20190702.tar.gz
-Source2028:     %{external_url}/fontconfig-2.14.2.tar.xz
-Source2029:     %{external_url}/freetype-2.13.0.tar.xz
-Provides:       bundled(icu) = 73.2
+Source2028:     %{external_url}/fontconfig-2.15.0.tar.xz
+Source2029:     %{external_url}/freetype-2.13.2.tar.xz
+Provides:       bundled(icu) = 74.2
 BuildRequires:  libBox2D-devel
 BuildRequires:  libmysqlclient-devel
 Requires(post): update-desktop-files
@@ -368,11 +351,11 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  libgpgmepp-devel >= 1.14
 %else
 Source1000:     %{external_url}/gpgme-1.23.2.tar.bz2
-Source1001:     %{external_url}/libgpg-error-1.48.tar.bz2
-Source1002:     %{external_url}/libassuan-2.5.7.tar.bz2
+Source1001:     %{external_url}/libgpg-error-1.50.tar.bz2
+Source1002:     %{external_url}/libassuan-3.0.1.tar.bz2
 Provides:       bundled(gpgme) = 1.23.2
-Provides:       bundled(libassuan) = 2.5.6
-Provides:       bundled(libgpg-error) = 1.47
+Provides:       bundled(libassuan) = 3.0.1
+Provides:       bundled(libgpg-error) = 1.50
 %endif
 %if %{with firebird}
 BuildRequires:  pkgconfig(fbclient)
@@ -406,6 +389,8 @@ BuildRequires:  cmake(KF6KIO)
 BuildRequires:  cmake(KF6WindowSystem)
 BuildRequires:  pkgconfig(Qt6Core)
 BuildRequires:  pkgconfig(Qt6Gui)
+BuildRequires:  pkgconfig(Qt6Multimedia)
+BuildRequires:  pkgconfig(Qt6MultimediaWidgets)
 BuildRequires:  pkgconfig(Qt6Network)
 BuildRequires:  pkgconfig(Qt6Widgets)
 BuildRequires:  pkgconfig(xcb-icccm)
@@ -1094,22 +1079,18 @@ Provides %{langname} translations and additional resources (help files, etc.) fo
 %endif # Leap 42/SLE-12
 %patch -P 2
 %patch -P 3
-%patch -P 4
 %patch -P 6 -p1
 %patch -P 9 -p1
 %if 0%{?suse_version} < 1500
 %patch -P 10 -p1
 %patch -P 11 -p1
 %endif
-%patch -P 14 -p1
 %patch -P 15 -p1
 %patch -P 990 -p1
 %patch -P 991 -p1
 %if 0%{?suse_version} < 1550
 %patch -P 992 -p1
 %endif
-%patch -P 993 -p1
-%patch -P 994 -p1
 
 # Disable some of the failing tests (some are random)
 %if 0%{?suse_version} < 1330
@@ -1139,8 +1120,6 @@ sed -i -e /CppunitTest_sc_statistical_functions_test/d sc/Module_sc.mk
 if grep -q setSegmentInfoStartVersion /usr/include/CLucene/index/IndexWriter.h ; then
 %patch -P 995 -p1
 fi
-# fix build with icu 75.1, remove breaking test breaking rule (bsc#1224309)
-sed -i "109d" i18npool/source/breakiterator/data/sent.txt
 
 # Do not generate doxygen timestamp
 echo "HTML_TIMESTAMP = NO" >> odk/docs/cpp/Doxyfile

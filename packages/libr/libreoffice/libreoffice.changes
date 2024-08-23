@@ -1,3 +1,22 @@
+Thu Aug 22 15:14:06 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Make the libassuan requirement more generic (bsc#1229103)
+
+-------------------------------------------------------------------
+Thu Aug 22 10:23:08 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Update to 24.8.0.3 (24.8.0 final)
+  https://wiki.documentfoundation.org/Releases/24.8.0/Beta1,
+  https://wiki.documentfoundation.org/Releases/24.8.0/RC1,
+  https://wiki.documentfoundation.org/Releases/24.8.0/RC2 and
+  https://wiki.documentfoundation.org/Releases/24.8.0/RC3
+- Removed patches:
+  * cve-2024-5261.patch
+  * icu-74-compatibility.patch
+  * pdfium-optional.patch
+  * use-fixmath-shared-library.patch
+    + not needed with this version
+
 -------------------------------------------------------------------
 Thu Jul 18 16:19:37 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
 
