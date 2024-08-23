@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Aug 22 14:22:23 UTC 2024 - aplanas@suse.com
+
+- Update to version 1+git20240821.f98edd6:
+  * CI: Pass -cpu host to QEMU
+  * Fix CI
+  * Add basic automated testing
+  * Remove cat of issue file
+
+-------------------------------------------------------------------
 Fri Aug 16 16:03:54 UTC 2024 - aplanas@suse.com
 
 - Update to version 1+git20240816.42c8565:

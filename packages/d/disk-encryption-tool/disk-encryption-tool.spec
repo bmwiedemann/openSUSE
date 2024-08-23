@@ -28,7 +28,7 @@ BuildRequires:  git-core
 %endif
 
 Name:           disk-encryption-tool
-Version:        1+git20240816.42c8565%{git_version}
+Version:        1+git20240821.f98edd6%{git_version}
 Release:        0
 Summary:        Tool to reencrypt kiwi raw images
 License:        MIT
