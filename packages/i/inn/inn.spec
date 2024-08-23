@@ -1,7 +1,7 @@
 #
 # spec file for package inn
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -219,9 +219,9 @@ touch				%{buildroot}/var/log/news/innfeed.status
 #
 %{installroot} 0755	-d		%{buildroot}/etc/slp.reg.d
 %{installroot} 0644	%{SOURCE4}	%{buildroot}/etc/slp.reg.d/
-# /var/run/news
+# /run/news
 mkdir -p $RPM_BUILD_ROOT/usr/lib/tmpfiles.d/
-echo "d /var/run/news 0750 news news -" > %{buildroot}/usr/lib/tmpfiles.d/inn.conf
+echo "d /run/news 0750 news news -" > %{buildroot}/usr/lib/tmpfiles.d/inn.conf
 
 #
 # build filelist

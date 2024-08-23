@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug 19 11:58:32 UTC 2024 - Giacomo Comes <gcomes.obs@gmail.com>
+
+- replace /var/run/news with /run/news in /usr/lib/tmpfiles.d/inn.conf
+  * avoid warning: Line references path below legacy directory /var/run
+
+-------------------------------------------------------------------
 Thu Feb 22 13:45:15 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.
