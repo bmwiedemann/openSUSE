@@ -43,8 +43,8 @@ already taken.
 %package bash-completion
 Summary:        Bash Completion for Gitea's tea CLI
 BuildRequires:  bash-completion
-Requires:       bash-completion
 Requires:       %{name} = %{version}
+Requires:       bash-completion
 Supplements:    (%{name} and bash-completion)
 BuildArch:      noarch
 
@@ -54,8 +54,8 @@ Bash command line completion support for Gitea's tea CLI.
 %package zsh-completion
 Summary:        Zsh Completion for Gitea's tea CLI
 BuildRequires:  zsh
-Requires:       zsh
 Requires:       %{name} = %{version}
+Requires:       zsh
 Supplements:    (%{name} and zsh)
 BuildArch:      noarch
 
@@ -66,7 +66,10 @@ Zsh command line completion support for Gitea's tea CLI.
 %autosetup -a1
 
 %build
-CGO_ENABLED=0 go build \
+%ifnarch x86_64 aarch64
+CGO_ENABLED=1
+%endif
+go build \
    -o tea \
    -mod=vendor \
    -buildmode=pie \

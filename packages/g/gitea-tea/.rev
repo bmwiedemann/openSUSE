@@ -7,4 +7,12 @@
     <comment></comment>
     <requestid>1156052</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>e5f62e38443609213aed7c9982cd36bb</srcmd5>
+    <version>0.9.2</version>
+    <time>1724444811</time>
+    <user>anag+factory</user>
+    <comment>- fix build for non x86_64 and aarch64 (CGO_ENABLED=0 was set as default) (forwarded request 1195621 from rrahl0)</comment>
+    <requestid>1195622</requestid>
+  </revision>
 </revisionlist>

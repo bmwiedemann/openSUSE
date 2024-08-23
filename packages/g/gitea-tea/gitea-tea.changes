@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Aug 22 22:33:56 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- fix build for non x86_64 and aarch64 (CGO_ENABLED=0 was set as default)
+
+-------------------------------------------------------------------
 Thu Mar  7 03:51:49 UTC 2024 - Richard Rahl <rrahl0@proton.me>
 
 - rename binary to tea (actual name) and conflict tea text edidor
