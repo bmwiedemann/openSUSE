@@ -1,7 +1,7 @@
 #
 # spec file for package jfbterm
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -23,7 +23,7 @@ Summary:        Framebuffer Terminal to Display Japanese Characters
 License:        BSD-3-Clause
 Group:          System/Console
 # Summary(ja): Linux の framebuffer 上で漢字を表示するためのプログラムです。
-Url:            http://jfbterm.sourceforge.jp/
+URL:            http://jfbterm.sourceforge.jp/
 Source0:        http://iij.dl.sourceforge.jp/jfbterm/13501/%{name}-%{version}.tar.gz
 Source1:        terminfo.jfbterm
 Source2:        termcap.jfbterm
@@ -81,10 +81,11 @@ cp %{SOURCE1} .
 cp %{SOURCE2} .
 
 %build
+autoreconf -fi
 #aclocal
 #automake -a --gnu --include-deps
 #autoconf
-touch Makefile.in aclocal.m4 config.h.in configure stamp-h.in
+#touch Makefile.in aclocal.m4 config.h.in configure stamp-h.in
 # fix non-position-independent-executable error
 export LDFLAGS="-pie"
 export CFLAGS="%{optflags} -fPIE -fomit-frame-pointer -fgnu89-inline"
@@ -127,8 +128,9 @@ fi
 
 %files
 %defattr(-, root, root)
-%doc NEWS AUTHORS COPYING README ChangeLog
+%doc NEWS AUTHORS README ChangeLog
 %doc terminfo.jfbterm termcap.jfbterm
+%license COPYING
 %config %{_sysconfdir}/jfbterm.conf
 %{_mandir}/man1/jfbterm.1*
 %{_mandir}/man5/jfbterm.conf.5*
