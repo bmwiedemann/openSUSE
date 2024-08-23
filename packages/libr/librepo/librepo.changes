@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sun Aug 18 13:01:59 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.18.1:
+  * Use rpm-sequoia on RHEL 10+
+  * gpg: Check is_selinux_enabled() before trying to label
+  * spec: Correct setting -DENABLE_SELINUX cmake argument
+  * tests: Adapt to CURL without NTLM support
+  * Fix a memory leak in select_next_target()
+  * Fix memory leaks when using zchunk
+- update to 1.18.0:
+  * API: Add LRO_USERNAME and LRO_PASSWORD options
+- update to 1.17.2:
+  * Add a private dependency on zck to librepo.pc if zchunk
+    support is enabled
+  * Hash cache: Improved work with extended file attributes
+  * Improve performance of large number of package downloads
+  * Fix error handling, Fix examples and build them
+- update to 1.17.1:
+  * gpg_gpgme.c: fix build errors with older gcc
+  * Fix some compiler warnings
+  * Change header files to match a configured ABI regarding a
+    zchunk support
+  * Fix building zchunk code if zchunk is enabled
+
+-------------------------------------------------------------------
 Fri Oct 27 07:57:28 UTC 2023 - Wang Jun <badboywj@gmail.com>
 
 - Update to 1.17.0
@@ -29,7 +54,7 @@ Sat Oct 15 19:32:29 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 - update to 1.14.5:
   * Detailed error message when using non-existing TMPDIR
   * Make error messages about repodata and rpm mismatch more user
-    friendly 
+    friendly
 
 -------------------------------------------------------------------
 Wed Aug 25 16:46:36 UTC 2021 - Neal Gompa <ngompa13@gmail.com>
