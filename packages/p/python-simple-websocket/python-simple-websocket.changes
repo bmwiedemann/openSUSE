@@ -1,0 +1,12 @@
+-------------------------------------------------------------------
+Wed Aug 14 19:43:32 UTC 2024 - Guang Yee <gyee@suse.com>
+
+- Release 1.0.0
+  * New async client and server #28 (commit)
+  * On a closed connection, return buffered input before raising an
+    exception #30 (commit)
+  * Do not duplicate SSLSocket instances #26 (commit)
+  * Handle broken pipe errors in background thread #29 (commit)
+  * Remove unused argument (commit)
+  * Eliminate race conditions during testing #27 (commit)
+  * Remove python 3.7 from unit tests (commit) 

@@ -1,0 +1,5 @@
+<package name="python-simple-websocket" project="openSUSE:Factory">
+  <title>simple-websocket</title>
+  <description>Simple WebSocket server and client for Python.</description>
+  <devel project="devel:languages:python" package="python-simple-websocket"/>
+</package>
