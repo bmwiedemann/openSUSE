@@ -283,4 +283,18 @@
   * Fix broken images path</comment>
     <requestid>1177613</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>833ed9c19a5fc196c704568bd887fb42</srcmd5>
+    <version>1.13.0</version>
+    <time>1724444814</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.13.0:
+  * fixed SyntaxWarning for invalid escape sequence in main.py #193
+  * adjustment to the current imagemagick version (convert -&gt; magick);
+  * workaround for Hyprland 0.42.0 oddity:
+    If you use generic display names instead of output names, and your display
+    has the serial value empty, Hyprland for some reason expects a space at the
+    end of the output description (called 'Generic display name' in Azote).</comment>
+    <requestid>1195634</requestid>
+  </revision>
 </revisionlist>

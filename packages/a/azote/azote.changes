@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Aug 23 05:46:53 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.13.0:
+  * fixed SyntaxWarning for invalid escape sequence in main.py #193
+  * adjustment to the current imagemagick version (convert -> magick);
+  * workaround for Hyprland 0.42.0 oddity:
+    If you use generic display names instead of output names, and your display
+    has the serial value empty, Hyprland for some reason expects a space at the
+    end of the output description (called 'Generic display name' in Azote).
+
+-------------------------------------------------------------------
 Wed May 29 05:07:04 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.12.9:
