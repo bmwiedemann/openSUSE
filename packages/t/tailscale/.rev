@@ -87,4 +87,13 @@
 - export version variables, to circumvent a bug (forwarded request 1195168 from rrahl0)</comment>
     <requestid>1195170</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>f893d295328937fe1a9c15569893365d</srcmd5>
+    <version>1.72.1</version>
+    <time>1724444809</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.72.1:
+  * DNS over TCP failures when querying the Tailscale-internal resolver are fixed. (forwarded request 1195618 from rrahl0)</comment>
+    <requestid>1195619</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Aug 22 22:08:51 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.72.1:
+  * DNS over TCP failures when querying the Tailscale-internal resolver are fixed.
+
+-------------------------------------------------------------------
 Wed Aug 21 16:05:02 UTC 2024 - rrahl0@opensuse.org
 
 - Update to version 1.72.0:
