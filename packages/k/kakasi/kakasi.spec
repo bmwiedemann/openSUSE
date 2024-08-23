@@ -1,7 +1,7 @@
 #
 # spec file for package kakasi
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,9 @@ URL:            http://kakasi.namazu.org/
 Source:         http://kakasi.namazu.org/stable/%{name}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM marguerite@opensuse.org
 Patch0:         kakasi-2.3.6-no-return-in-nonvoid-function.patch
+Patch1:         kakasi-gcc14-fix.patch
 BuildRequires:  automake
+BuildRequires:  libtool
 Requires:       kakasi-dict = %{version}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
@@ -72,7 +74,8 @@ rm -rf doc/CVS
 rm -rf doc/README.*OS*
 
 %build
-cp %{_datadir}/automake*/config.{guess,sub} .
+autoreconf -fi
+# cp %{_datadir}/automake*/config.{guess,sub} .
 %configure --disable-static --with-pic
 make %{?_smp_mflags}
 
@@ -86,8 +89,9 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %files
 %defattr(-,root,root)
-%doc AUTHORS COPYING NEWS ONEWS README* THANKS TODO ChangeLog
+%doc AUTHORS NEWS ONEWS README* THANKS TODO ChangeLog
 %doc ./doc/*
+%license COPYING
 %{_bindir}/atoc_conv
 %{_bindir}/kakasi
 %{_bindir}/kakasi-config

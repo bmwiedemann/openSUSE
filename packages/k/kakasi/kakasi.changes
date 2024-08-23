@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Aug 23 15:39:32 UTC 2024 - Takashi Iwai <tiwai@suse.com>
+
+- Fix the build with gcc14:
+  kakasi-gcc14-fix.patch
+- Call autoreconf for regenerating the patched configure script
+- Move COPYING to %license
+
+-------------------------------------------------------------------
 Thu Feb 22 12:39:16 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
