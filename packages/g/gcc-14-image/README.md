@@ -91,7 +91,7 @@ podman run --rm -it -v $(pwd):/src/:Z --workdir /src/ \
 
 Note that the binary built using this approach are unlikely to work on a local
 machine. They only work on operating systems that are binary-compatible to
-.
+openSUSE Tumbleweed.
 
 ## Licensing
 
