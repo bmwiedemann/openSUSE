@@ -1,5 +1,5 @@
 <services>
-    <service name="obs_scm" mode="disabled">
+    <service name="obs_scm" mode="manual">
         <param name="url">https://github.com/thkukuk/containers-mailserver.git</param>
         <param name="scm">git</param>
         <param name="extract">LICENSE</param>
@@ -9,7 +9,7 @@
         <param name="revision">master</param>
         <param name="version">_none_</param>
     </service>
-    <service name="obs_scm" mode="disabled">
+    <service name="obs_scm" mode="manual">
         <param name="url">https://github.com/thkukuk/containers-mailserver.git</param>
         <param name="scm">git</param>
         <param name="subdir">openldap</param>
@@ -18,19 +18,25 @@
         <param name="version">_none_</param>
         <param name="changesgenerate">enable</param>
     </service>
-    <service name="tar" mode="disabled">
+    <service name="tar_scm" mode="manual">
+        <param name="url">https://github.com/thkukuk/containers-mailserver.git</param>
+        <param name="scm">git</param>
+        <param name="version">_none_</param>
         <param name="subdir">openldap</param>
         <param name="filename">entrypoint</param>
         <param name="include">slapd.init.ldif</param>
         <param name="include">ldif</param>
         <param name="include">tls</param>
     </service>
-    <service name="tar" mode="disabled">
+    <service name="tar_scm" mode="manual">
+        <param name="url">https://github.com/thkukuk/containers-mailserver.git</param>
+        <param name="scm">git</param>
+        <param name="version">_none_</param>
         <param name="subdir">common</param>
         <param name="filename">common-scripts</param>
         <param name="include">ssl-helper</param>
     </service>
-    <service name="recompress" mode="disabled">
+    <service name="recompress" mode="manual">
         <param name="file">*.tar</param>
         <param name="compression">gz</param>
      </service>
