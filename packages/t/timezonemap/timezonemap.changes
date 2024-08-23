@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Aug 12 08:49:04 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 0.4.6:
+  * Add a symbols file
+- update to 0.4.5:
+  * Update the SVG, and re-generated map images. Notable changes:
+    - Image for UTC-11:30 (timezone_11.5.png) is no longer needed.
+    - New image for North Korea time zone (timezone_8.5.png).
+- add configure flags, so it's more obvious whats getting compiled
+
+-------------------------------------------------------------------
 Mon Oct  4 15:02:06 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Use 'pkgconfig(libsoup-2.4)' instead of libsoup-devel.

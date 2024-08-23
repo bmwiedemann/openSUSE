@@ -1,7 +1,7 @@
 #
 # spec file for package timezonemap
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,18 +17,17 @@
 
 
 Name:           timezonemap
-Version:        0.4.4
+Version:        0.4.6
 Release:        0
 Summary:        GTK+3 timezone map widget
 License:        GPL-3.0-only
-Group:          System/Libraries
 URL:            https://launchpad.net/timezonemap
-Source:         https://launchpad.net/timezonemap/trunk/0.4.4/+download/libtimezonemap-0.4.4.tar.xz
-BuildRequires:  glib2-devel
+Source:         https://launchpad.net/ubuntu/+archive/primary/+sourcefiles/libtimezonemap/0.4.6-7/libtimezonemap_0.4.6.orig.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  gnome-common
-BuildRequires:  gobject-introspection-devel
-BuildRequires:  gtk3-devel
-BuildRequires:  json-glib-devel
+BuildRequires:  pkgconfig(glib-2.0)
+BuildRequires:  pkgconfig(gobject-introspection-1.0)
+BuildRequires:  pkgconfig(gtk+-3.0)
+BuildRequires:  pkgconfig(json-glib-1.0)
 BuildRequires:  pkgconfig(libsoup-2.4)
 
 %description
@@ -36,14 +35,12 @@ Timezone map widget for GTK+3
 
 %package -n libtimezonemap1
 Summary:        GTK+3 timezone map widget
-Group:          System/Libraries
 
 %description -n libtimezonemap1
 Timezone map widget for GTK+3.
 
 %package devel
 Summary:        Development headers for %{name}
-Group:          Development/Libraries/C and C++
 Requires:       libtimezonemap1 = %{version}
 
 %description devel
@@ -51,32 +48,34 @@ Development headers for %{name}.
 
 %package -n typelib-1_0-TimezoneMap-1_0
 Summary:        GTK+3 timezone map widget - Introspection bindings
-Group:          System/Libraries
 
 %description -n typelib-1_0-TimezoneMap-1_0
 This package contains the GObject Introspection bindings for
 %{name} library.
 
 %prep
-%setup -q -n lib%{name}-%{version}
+%autosetup -n lib%{name}-%{version}
 NOCONFIGURE=1 ./autogen.sh
 
 %build
-%configure
+%configure \
+  --with-gtk=3 \
+  --disable-static \
+  --enable-introspection
 %make_build
 
 %install
 %make_install
-find %{buildroot} -type f -name "*.la" -delete -print
 
-%post -n libtimezonemap1 -p /sbin/ldconfig
-%postun -n libtimezonemap1 -p /sbin/ldconfig
+# remove .la files
+rm -f %{buildroot}%{_libdir}/libtimezonemap.la
+
+%ldconfig_scriptlets -n libtimezonemap1
 
 %files -n libtimezonemap1
 %license COPYING
-%doc README
-%{_libdir}/libtimezonemap.so.1
-%{_libdir}/libtimezonemap.so.1.0.0
+%doc README debian/changelog
+%{_libdir}/libtimezonemap.so.*
 %{_datadir}/libtimezonemap
 
 %files devel
