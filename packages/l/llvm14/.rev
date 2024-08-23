@@ -245,4 +245,14 @@ disable the corresponding tests.
 </comment>
     <requestid>1164602</requestid>
   </revision>
+  <revision rev="20" vrev="15">
+    <srcmd5>04fbb351d6bb3e295310f98405fd4f06</srcmd5>
+    <version>14.0.6</version>
+    <time>1724444830</time>
+    <user>anag+factory</user>
+    <comment>- Add minor version to Python shebangs. (boo#1212476)
+- Remove shebang and executable bit where not needed.
+</comment>
+    <requestid>1195709</requestid>
+  </revision>
 </revisionlist>
