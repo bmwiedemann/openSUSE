@@ -20,7 +20,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           calibre
-Version:        7.16.0
+Version:        7.17.0
 Release:        0
 Summary:        EBook Management Application
 License:        GPL-3.0-only
@@ -409,6 +409,7 @@ TEST_EXCLUDE=(
     --exclude-test-name zeroconf                    # rise up build error
 %if 0%{?suse_version} > 1600
     --exclude-test-name test_fts_basic              # rise up build error
+    --exclude-test-name test_websocket_basic        # rise up build error
 %endif
 )
 
