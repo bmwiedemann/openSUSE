@@ -2609,6 +2609,7 @@ unsorted:
   - cosmic-ext-applet-ollama 
   - cosmic-ext-applet-places-status-indicator 
   - cosmic-ext-bg-theme 
+  - cosmic-ext-calculator 
   - cosmic-ext-color-picker 
   - cosmic-ext-dirstat 
   - cosmic-ext-tasks 
@@ -7113,6 +7114,7 @@ unsorted:
   - git-cliff-fish-completion 
   - git-cliff-zsh-completion 
   - git-cola 
+  - git-credential-keepassxc 
   - git-credential-libsecret 
   - git-credential-oauth 
   - git-crypt 
@@ -22768,6 +22770,7 @@ unsorted:
   - pitivi-lang 
   - pix 
   - pix-devel 
+  - pix-doc 
   - pix-lang 
   - pixd 
   - pixelorama 
@@ -36829,6 +36832,7 @@ unsorted:
   - slop-devel 
   - slrn 
   - slrn-lang 
+  - slsa-verifier 
   - sluice 
   - sluice-bash-completion 
   - slurm 
@@ -47447,6 +47451,7 @@ unsorted:
   - typelib-1_0-XplayerPlParser-1_0 
   - typelib-1_0-XreaderDocument-1_5 
   - typelib-1_0-XreaderView-1_5 
+  - typelib-1_0-Xviewer-3_0 
   - typelib-1_0-Zpj-0_0 
   - typelib-1_0-kkc-1_0 
   - typelib-1_0-libdazzle-1_0 
@@ -48722,6 +48727,7 @@ unsorted:
   - xvidtune 
   - xviewer 
   - xviewer-devel 
+  - xviewer-doc 
   - xviewer-lang 
   - xviewer-plugin-exif-display 
   - xviewer-plugin-export-to-folder 
