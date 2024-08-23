@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug 20 21:20:37 UTC 2024 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Add minor version to Python shebangs. (boo#1212476)
+- Remove shebang and executable bit where not needed.
+
+-------------------------------------------------------------------
 Wed Apr  3 20:18:07 UTC 2024 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Use old conflicts/provides for python3-clang on Leap.
