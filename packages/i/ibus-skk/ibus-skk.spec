@@ -1,7 +1,7 @@
 #
 # spec file for package ibus-skk
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,8 +22,9 @@ Release:        0
 Summary:        Japanese SKK input method for ibus
 License:        GPL-2.0-or-later
 Group:          System/I18n/Japanese
-Url:            https://github.com/ueno/ibus-skk
+URL:            https://github.com/ueno/ibus-skk
 Source0:        https://github.com/ueno/ibus-skk/releases/download/ibus-skk-%{version}/ibus-skk-%{version}.tar.xz
+Patch1:         ibus-skk-gcc14-fix.patch
 BuildRequires:  gnome-common
 BuildRequires:  intltool
 BuildRequires:  pkg-config
@@ -37,9 +38,8 @@ Requires:       ibus
 %description
 A Japanese Simple Kana Kanji Input Method Engine for ibus.
 
-
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 NOCONFIGURE=1 ./autogen.sh

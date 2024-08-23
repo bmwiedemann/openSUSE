@@ -1,0 +1,81 @@
+---
+ src/engine.c      |    6 +++---
+ src/plist.c       |    2 +-
+ src/preferences.c |    4 ++--
+ src/setup.c       |    4 ++--
+ 4 files changed, 8 insertions(+), 8 deletions(-)
+
+--- a/src/engine.c
++++ b/src/engine.c
+@@ -1009,7 +1009,7 @@ static void skk_engine_apply_preferences
+ 	_tmp6_ = g_variant_get_strv (_tmp4_, &_tmp5_);
+ 	_tmp7_ = _tmp6_;
+ 	_tmp7__length1 = _tmp5_;
+-	skk_context_set_auto_start_henkan_keywords (_tmp3_, _tmp7_, _tmp5_);
++	skk_context_set_auto_start_henkan_keywords (_tmp3_, (gchar **)_tmp7_, _tmp5_);
+ 	_tmp7_ = (g_free (_tmp7_), NULL);
+ 	_tmp8_ = skk_engine_preferences;
+ 	_tmp9_ = preferences_get (_tmp8_, "period_style");
+@@ -1930,7 +1930,7 @@ static void _skk_engine___lambda6_ (SkkE
+ 		_tmp1_ = self->priv->context;
+ 		_tmp2_ = skk_engine_dictionaries;
+ 		_tmp4_ = gee_collection_to_array ((GeeCollection*) _tmp2_, &_tmp3_);
+-		_tmp5_ = _tmp4_;
++		_tmp5_ = (SkkDict **)_tmp4_;
+ 		_tmp5__length1 = _tmp3_;
+ 		skk_context_set_dictionaries (_tmp1_, _tmp5_, _tmp3_);
+ 		_tmp5_ = (_vala_array_free (_tmp5_, _tmp5__length1, (GDestroyNotify) g_object_unref), NULL);
+@@ -2236,7 +2236,7 @@ static GObject * skk_engine_constructor
+ 	ibus_prop_list_append (_tmp46_, _tmp47_);
+ 	_tmp48_ = skk_engine_dictionaries;
+ 	_tmp50_ = gee_collection_to_array ((GeeCollection*) _tmp48_, &_tmp49_);
+-	_tmp51_ = _tmp50_;
++	_tmp51_ = (SkkDict **)_tmp50_;
+ 	_tmp51__length1 = _tmp49_;
+ 	_tmp52_ = skk_context_new (_tmp51_, _tmp49_);
+ 	_g_object_unref0 (self->priv->context);
+--- a/src/plist.c
++++ b/src/plist.c
+@@ -788,7 +788,7 @@ gchar* plist_to_string (PList* self) {
+ 	}
+ 	_tmp31_ = props;
+ 	_tmp33_ = gee_collection_to_array ((GeeCollection*) _tmp31_, &_tmp32_);
+-	_tmp34_ = _tmp33_;
++	_tmp34_ = (gchar **)_tmp33_;
+ 	_tmp34__length1 = _tmp32_;
+ 	_tmp35_ = _vala_g_strjoinv (",", _tmp34_, _tmp32_);
+ 	_tmp36_ = _tmp35_;
+--- a/src/preferences.c
++++ b/src/preferences.c
+@@ -296,9 +296,9 @@ Preferences* preferences_construct (GTyp
+ 	gee_abstract_collection_add ((GeeAbstractCollection*) dictionaries, "type=server,host=localhost,port=1178");
+ 	_tmp4_ = self->priv->_default;
+ 	_tmp6_ = gee_collection_to_array ((GeeCollection*) dictionaries, &_tmp5_);
+-	_tmp7_ = _tmp6_;
++	_tmp7_ = (gchar **)_tmp6_;
+ 	_tmp7__length1 = _tmp5_;
+-	_tmp8_ = g_variant_new_strv (_tmp7_, _tmp5_);
++	_tmp8_ = g_variant_new_strv ((const gchar* const*)_tmp7_, _tmp5_);
+ 	g_variant_ref_sink (_tmp8_);
+ 	_tmp9_ = _tmp8_;
+ 	gee_map_set (_tmp4_, "dictionaries", _tmp9_);
+--- a/src/setup.c
++++ b/src/setup.c
+@@ -2271,7 +2271,7 @@ static void setup_save_dictionaries (Set
+ 		_tmp17_ = name;
+ 		_tmp18_ = dictionaries;
+ 		_tmp20_ = gee_collection_to_array ((GeeCollection*) _tmp18_, &_tmp19_);
+-		_tmp21_ = _tmp20_;
++		_tmp21_ = (gchar **)_tmp20_;
+ 		_tmp21__length1 = _tmp19_;
+ 		_tmp25_ = _variant_new1 (_tmp21_, _tmp19_);
+ 		preferences_set (_tmp16_, _tmp17_, _tmp25_);
+@@ -2491,7 +2491,7 @@ static void setup_save (Setup* self) {
+ 	_tmp10_ = self->priv->preferences;
+ 	_tmp11_ = keywords;
+ 	_tmp13_ = gee_collection_to_array ((GeeCollection*) _tmp11_, &_tmp12_);
+-	_tmp14_ = _tmp13_;
++	_tmp14_ = (gchar **)_tmp13_;
+ 	_tmp14__length1 = _tmp12_;
+ 	_tmp18_ = _variant_new3 (_tmp14_, _tmp12_);
+ 	preferences_set (_tmp10_, "auto_start_henkan_keywords", _tmp18_);

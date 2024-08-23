@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Aug 23 16:09:56 UTC 2024 - Takashi Iwai <tiwai@suse.com>
+
+- Ad hoc fix for gcc14 build errors:
+  ibus-skk-gcc14-fix.patch
+
+-------------------------------------------------------------------
 Sat Jan 20 15:46:24 UTC 2024 - Callum Farmer <gmbr3@opensuse.org>
 
 - Fixes for %_ibus_libexecdir moving to %_libexecdir (bsc#1174075)
