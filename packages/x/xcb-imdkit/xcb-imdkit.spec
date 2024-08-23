@@ -18,7 +18,7 @@
 
 %define _suffix 1
 Name:           xcb-imdkit
-Version:        1.0.8
+Version:        1.0.9
 Release:        0
 Summary:        An implementation of xim protocol in xcb
 License:        LGPL-2.1-only
