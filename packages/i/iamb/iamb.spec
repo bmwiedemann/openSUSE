@@ -18,10 +18,11 @@
 
 %bcond_without system_openssl
 %if %{with system_openssl}
-%define features native-tls
+%define openssl native-tls
 %else
-%define features bundled
+%define openssl bundled
 %endif
+%define build_args --no-default-features --features=%{openssl},desktop
 
 Name:           iamb
 Version:        0.0.10
@@ -35,6 +36,7 @@ Source2:        %{name}-rpmlintrc
 
 %if "%{_vendor}" == "debbuild"
 # Needed to set Maintainer in output debs
+Packager:     Joshua Smith <smolsheep@opensuse.org>
 %endif
 
 %if 0%{?suse_version} > 1500
@@ -48,7 +50,6 @@ BuildRequires:  rustc >= 1.8.0
 BuildRequires:  cargo >= 1.8.0
 %endif
 BuildRequires:  desktop-file-utils
-BuildRequires:  git-core
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  zstd
 %if %{with system_openssl}
@@ -69,13 +70,19 @@ ways that your fingers are used to.
 
 %prep
 %autosetup -a1
-%define build_args --no-default-features --features=%{features}
 
 %build
 %if 0%{?suse_version} > 1500
 %{cargo_build} %{build_args}
 %else
 cargo build --release %{build_args}
+%endif
+
+%check
+%if 0%{?suse_version} > 1500
+%{cargo_test} %{build_args}
+%else
+cargo test %{build_args}
 %endif
 
 %install
