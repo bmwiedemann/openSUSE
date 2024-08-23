@@ -1,0 +1,8 @@
+<package name="rubygem-ronn-ng" project="openSUSE:Factory">
+  <title>Builds man pages from Markdown</title>
+  <description>Ronn-NG builds manuals in HTML and Unix man page format from Markdown.
+
+</description>
+  <devel project="devel:languages:ruby:extensions" package="rubygem-ronn-ng"/>
+  <url>https://github.com/apjanke/ronn-ng</url>
+</package>
