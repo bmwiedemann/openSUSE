@@ -1,0 +1,98 @@
+---
+ src/jg.c                    |    8 ++++----
+ src/vfldisol.c              |    2 +-
+ src/vfltest.c               |    1 +
+ src/zeit.c                  |    4 ++--
+ utils/vflx11-2.0.2/vflx11.c |    2 +-
+ 5 files changed, 9 insertions(+), 8 deletions(-)
+
+--- a/src/jg.c
++++ b/src/jg.c
+@@ -305,7 +305,8 @@ JG_ReadOutline(int jg_id, int code_point
+   long          size, offs;
+   unsigned int  scode;
+   VF_OUTLINE        outline;
+-  VF_OUTLINE_ELEM   *sizep, chd;
++  VF_OUTLINE_ELEM   chd;
++  long *sizep;
+   double        mx, my;
+ #define CONV_COORD_X(p)  \
+    ((unsigned int)(VF_OL_COORD_OFFSET + ((p)*mx*VF_OL_COORD_RANGE)/JG_MAX_XY))
+@@ -459,7 +460,7 @@ NEXT_CIRCLE:
+     *sizep = (long) cnt;
+ 
+   if (debug_on('o'))
+-    printf("VFlib JG:  SIZE %5d\n", *sizep);
++    printf("VFlib JG:  SIZE %5ld\n", *sizep);
+ 
+   return outline;
+ }
+@@ -531,7 +532,7 @@ jg_read_12bits(void)
+ Private int
+ jg_read_xy(int *xp, int *yp)
+ {
+-  int   x, y, fx, fy;
++  int   x, y, fx;
+ 
+   x = jg_read_12bits();
+   y = jg_read_12bits();
+@@ -541,7 +542,6 @@ jg_read_xy(int *xp, int *yp)
+   *xp  = x & JG_XY_MASK;
+   *yp  = y & JG_XY_MASK;
+   fx   = x & JG_CMD_MASK;
+-  fy   = y & JG_CMD_MASK;
+ 
+   if (*xp > (JG_MAX_XY+1)/2)
+     *xp = (JG_MAX_XY+1) - *xp;
+--- a/src/vfldisol.c
++++ b/src/vfldisol.c
+@@ -172,7 +172,7 @@ usage()
+ void
+ DisVFData(VF_OUTLINE vfdata, int fd)
+ {
+-  long          cmd, *ptr;
++  VF_OUTLINE_ELEM cmd, *ptr;
+   unsigned int  x, y;
+   int           m;
+ 
+--- a/src/vfltest.c
++++ b/src/vfltest.c
+@@ -13,6 +13,7 @@
+  *
+  */
+ 
++#include "config.h"
+ #include <stdio.h>
+ #include <stdlib.h>
+ #if defined(HAVE_STRING_H)
+--- a/src/zeit.c
++++ b/src/zeit.c
+@@ -282,7 +282,7 @@ ZEIT_ReadOutline(int zeit_id, int code_p
+   int        idx, x, y, xx, yy, max_code, space2121;
+   char       *font_file;
+   VF_OUTLINE      outline;
+-  VF_OUTLINE_ELEM *sizep;
++  long *sizep;
+   long          size, offs;
+   unsigned int  scode;
+   double        mx, my;
+@@ -376,7 +376,7 @@ ZEIT_ReadOutline(int zeit_id, int code_p
+     *sizep = (long)idx;
+ 
+   if (debug_on('i'))
+-    printf("VFlib ZEIT:      SIZE %5d\n", *sizep);
++    printf("VFlib ZEIT:      SIZE %5ld\n", *sizep);
+ 
+   outline[VF_OL_HEADER_INDEX_DATA_SIZE] 
+     = *sizep + VF_OL_OUTLINE_HEADER_SIZE_TYPE0;
+--- a/utils/vflx11-2.0.2/vflx11.c
++++ b/utils/vflx11-2.0.2/vflx11.c
+@@ -633,7 +633,7 @@ void Win_PutBitmap(bm, x, y, cw, ch)
+   free(xbitmap);
+ }
+ 
+-void Win_ChangeSize(w, h)
++void Win_ChangeSize(int w, int h)
+ {
+   WinX = w + WIN_BORDER * 2;
+   WinY = h + WIN_BORDER * 2;

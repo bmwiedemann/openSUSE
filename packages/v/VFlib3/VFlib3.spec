@@ -27,6 +27,8 @@ Summary(ja):    "Versatile" フォントライブラリ
 URL:            http://www-masu.ist.osaka-u.ac.jp/~kakugawa/VFlib/
 Source0:        http://www-masu.ist.osaka-u.ac.jp/~kakugawa/download/TypeHack/VFlib3-%{version}.tar.gz
 Patch1:         VFlib3-add-external.patch
+Patch2:         VFlib3-freetype2-fix.patch
+Patch3:         VFlib3-gcc14-fixes.patch
 Source1:        vflibcap-tex
 BuildRequires:  fdupes
 BuildRequires:  imake
@@ -37,7 +39,7 @@ BuildRequires:  pkgconfig(kpathsea)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xext)
 Requires(post): %{install_info_prereq}
-Requires(postun): %{install_info_prereq}
+Requires(postun):%{install_info_prereq}
 
 %description -l ja
 VFlib は C 言語で書かれたフォントライブラリで、指定したフォン

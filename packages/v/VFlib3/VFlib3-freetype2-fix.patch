@@ -1,0 +1,15 @@
+---
+ src/drv_otf.c |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- a/src/drv_otf.c
++++ b/src/drv_otf.c
+@@ -849,7 +849,7 @@ otf_get_xxx(int mode,
+       FT_Matrix  mat;
+       mat.xx = asp * (1<<16);  mat.xy = 0;
+       mat.yx = 0;              mat.yy = 1 * (1<<16);
+-      FT_Glyph_Transform(font_otf->ft2_face->glyph, &mat, NULL); 
++      FT_Set_Transform(font_otf->ft2_face, &mat, NULL); 
+       error = FT_Render_Glyph(font_otf->ft2_face->glyph, FT_RENDER_MODE_MONO);
+     }
+ 

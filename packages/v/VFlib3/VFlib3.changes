@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Aug 23 14:42:30 UTC 2024 - Takashi Iwai <tiwai@suse.com>
+
+- Fix the build with gcc14:
+  VFlib3-freetype2-fix.patch
+  VFlib3-gcc14-fixes.patch
+
+-------------------------------------------------------------------
 Wed May 15 08:26:46 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro: allows us to eliminate usage of deprectated
