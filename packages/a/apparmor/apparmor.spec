@@ -518,6 +518,9 @@ done
 # remove *.la files
 rm -fv %{buildroot}%{_libdir}/libapparmor.la
 
+# bsc#1212476
+%python3_fix_shebang
+
 %files docs
 %defattr(-,root,root)
 %doc parser/*.[1-9].html

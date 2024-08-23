@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Aug 22 11:52:52 UTC 2024 - pgajdos@suse.com
+
+- remove dependency on /usr/bin/python3 using
+  %python3_fix_shebang macro, [bsc#1212476]
+
+-------------------------------------------------------------------
 Wed Jul 24 16:54:18 UTC 2024 - Christian Boltz <suse-beta@cboltz.de>
 
 - update to AppArmor 4.0.2

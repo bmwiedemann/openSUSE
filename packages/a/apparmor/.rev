@@ -2879,4 +2879,13 @@ This SR adds two more fixes. Especially teardown-unconfined.diff makes this SR a
 Note: I checked the GPG signature with both the expired and the refreshed key, and it validated with both. (forwarded request 1189675 from cboltz)</comment>
     <requestid>1189676</requestid>
   </revision>
+  <revision rev="215" vrev="2">
+    <srcmd5>2de289a9a01ef0cd69b993ff201f4985</srcmd5>
+    <version>4.0.2</version>
+    <time>1724444769</time>
+    <user>anag+factory</user>
+    <comment>- remove dependency on /usr/bin/python3 using
+  %python3_fix_shebang macro, [bsc#1212476] (forwarded request 1195292 from pgajdos)</comment>
+    <requestid>1195595</requestid>
+  </revision>
 </revisionlist>
