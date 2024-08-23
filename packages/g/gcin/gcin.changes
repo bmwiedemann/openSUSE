@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Aug 23 15:14:24 UTC 2024 - Takashi Iwai <tiwai@suse.com>
+
+- Fix the build errors with gcc14:
+  gcin-gcc14-fix.patch
+
+-------------------------------------------------------------------
 Tue Feb 27 10:54:53 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

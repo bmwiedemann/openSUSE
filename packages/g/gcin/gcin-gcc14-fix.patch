@@ -1,0 +1,81 @@
+---
+ data/t2s-file.c |    5 ++++-
+ gcb.cpp         |    2 ++
+ gcin.cpp        |    2 ++
+ tray.cpp        |    4 +++-
+ win-gtab.cpp    |    2 +-
+ 5 files changed, 12 insertions(+), 3 deletions(-)
+
+--- a/data/t2s-file.c
++++ b/data/t2s-file.c
+@@ -1,5 +1,6 @@
+ #include <stdio.h>
+ #include <string.h>
++#include <stdlib.h>
+ #include <sys/types.h>
+ #include "../t2s-file.h"
+ #include "../util.h"
+@@ -7,8 +8,10 @@
+ T2S t2s[3000],s2t[3000];
+ int t2sn;
+ 
+-int qcmp(T2S *aa, T2S *bb)
++int qcmp(const void *_aa, const void *_bb)
+ {
++  const T2S *aa = _aa;
++  const T2S *bb = _bb;
+ #if 0
+   int64_t a = aa->a;
+   int64_t b = bb->a;
+--- a/gcb.cpp
++++ b/gcb.cpp
+@@ -334,6 +334,8 @@ static void mouse_button_callback( GtkWi
+   show_hist_window();
+ }
+ 
++void free_gcb();
++
+ static int old_gcb_position=-1, old_gcb_position_x=-1, old_gcb_position_y=-1, old_gcb_enabled=-1;
+ void sys_icon_fname(char *iconame, char fname[]);
+ void gcb_main()
+--- a/gcin.cpp
++++ b/gcin.cpp
+@@ -23,6 +23,8 @@ int dpy_x_ofs, dpy_y_ofs;
+ #endif
+ DUAL_XIM_ENTRY xim_arr[1];
+ 
++void p_err_no_alert(char *fmt,...);
++
+ extern char *fullchar[];
+ gboolean win_kbm_inited;
+ 
+--- a/tray.cpp
++++ b/tray.cpp
+@@ -26,13 +26,15 @@ void exec_gcin_setup();
+ void toggle_gb_output();
+ extern gboolean gb_output;
+ 
++gboolean tsin_pho_mode();
++void inmd_popup_tray();
++
+ static void get_text_w_h(char *s, int *w, int *h)
+ {
+   pango_layout_set_text(pango, s, strlen(s));
+   pango_layout_get_pixel_size(pango, w, h);
+ }
+ 
+-
+ static void draw_icon()
+ {
+ //  dbg("draw_icon\n");
+--- a/win-gtab.cpp
++++ b/win-gtab.cpp
+@@ -640,7 +640,7 @@ void create_win_gtab_gui_simple()
+   }
+ 
+   label_key_codes  = gtk_label_new(NULL);    
+-  gtk_label_set_text(label_key_codes, str_key_codes);
++  gtk_label_set_text(GTK_LABEL(label_key_codes), str_key_codes);
+   
+ #if 0
+   gtk_label_set_selectable(GTK_LABEL(label_key_codes), TRUE);
