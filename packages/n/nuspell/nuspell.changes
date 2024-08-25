@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Aug 23 15:07:59 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire /usr/bin/ronn instead of rubygem(ronn): there are
+  alternatives around and the build does not care wich one is used.
+
+-------------------------------------------------------------------
 Wed Jul 24 04:32:43 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Disable man file generation to avoid BuildRequires on pandoc

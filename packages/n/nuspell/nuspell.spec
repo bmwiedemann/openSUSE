@@ -42,10 +42,10 @@ BuildRequires:  gcc10-c++
 %else
 BuildRequires:  gcc-c++
 %endif
+BuildRequires:  /usr/bin/ronn
 BuildRequires:  graphviz
 BuildRequires:  libicu-devel
 BuildRequires:  pkgconfig
-BuildRequires:  rubygem(%{rb_default_ruby_abi}:ronn)
 Requires:       hunspell
 %if %{with man}
 BuildRequires:  pandoc

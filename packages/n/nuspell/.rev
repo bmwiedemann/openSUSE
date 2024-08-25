@@ -135,4 +135,12 @@ Drop redundant (autodetected) pkgconfig require.</comment>
     <comment></comment>
     <requestid>1189319</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>44181dc3287dc3d138c04a299da159cf</srcmd5>
+    <version>5.1.6</version>
+    <time>1724580607</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1195759</requestid>
+  </revision>
 </revisionlist>
