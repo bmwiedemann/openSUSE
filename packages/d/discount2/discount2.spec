@@ -1,5 +1,5 @@
 #
-# spec file for package markdown2
+# spec file for package discount2
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -26,6 +26,8 @@ URL:            https://github.com/Orc/discount
 Source:         https://github.com/Orc/discount/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # PATCH-FEATURE-OPENSUSE discount2-disable_ldconfig.patch badshah400@gmail.com -- Disable ldconfig from make install, post(un) scriptlets are the right place do this
 Patch0:         discount2-disable_ldconfig.patch
+# PATCH-FIX-UPSTREAM discount2-pointer-type-mismatch.patch badshah400@gmail.com -- Fix function definitions involving pointer parameters to make them GCC 14 compatible
+Patch1:         discount2-pointer-type-mismatch.patch
 BuildRequires:  gcc
 
 %description

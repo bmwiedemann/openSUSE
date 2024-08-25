@@ -7,4 +7,12 @@
     <comment>Discount is a C language implementation of the Markdown markup language. This package provides series 2.x of the libmarkdown library to allow apps, for example pdfpc, that have not yet migrated to the version 3 API to be compiled.</comment>
     <requestid>1159615</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>3161cb1e764e953fba67859fb48c61ac</srcmd5>
+    <version>2.2.7d</version>
+    <time>1724580635</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1195826</requestid>
+  </revision>
 </revisionlist>

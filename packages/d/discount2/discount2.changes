@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May  2 13:08:49 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add discount2-pointer-type-mismatch.patch to fix pointer type
+  mismatch (gh#Orc/discount#283).
+
+-------------------------------------------------------------------
 Mon Mar 18 03:42:00 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Initial package.
