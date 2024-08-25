@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Aug 12 08:28:33 UTC 2024 - ming li <mli@suse.com>
+
+- Update to release 1.8.1:
+  * Fix the meson build to avoid (over)linking against dependencies
+  * Reinstate support for wayland/wayland-scanner older than 1.20
+  * Run the clang-format CI stage as applicable, on the correct commits
+
+-------------------------------------------------------------------
 Mon Sep 25 18:44:30 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to release 1.8.0
