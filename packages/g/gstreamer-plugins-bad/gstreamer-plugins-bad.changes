@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Aug 23 07:42:34 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.24.7:
+  + aom: av1enc: restrict allowed input width and height
+  + h264parse:
+    - bypass check for length_size_minus_one
+    - Reject FD received before SPS
+  + msdk: replace strcmp with g_strcmp0
+  + msdkvc1dec crashes (segfault)
+  + rsvgoverlay: add debug category
+  + va:
+    - don't use GST_ELEMENT_WARNING in set_context() vmethod to fix
+      potential deadlock
+    - deadlock when playing two videos at once
+  + webrtc: Add missing G_BEGIN/END_DECLS in header for C++
+  + wpe: initialize threading.ready before reading it
+- Drop 85b4fbf40b1d53a4141941abf70d2d4d83eb140e.patch: Fixed
+  upstream.
+
+-------------------------------------------------------------------
 Sat Aug 17 17:34:16 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add 85b4fbf40b1d53a4141941abf70d2d4d83eb140e.patch: msdk: replace

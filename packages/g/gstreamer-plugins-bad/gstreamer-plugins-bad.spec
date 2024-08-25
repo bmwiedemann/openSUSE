@@ -83,7 +83,7 @@
 %endif
 
 Name:           gstreamer-plugins-bad
-Version:        1.24.6
+Version:        1.24.7
 Release:        0
 Summary:        GStreamer Streaming-Media Framework Plug-Ins
 License:        LGPL-2.1-or-later
@@ -96,8 +96,6 @@ Source99:       baselibs.conf
 Patch0:         fix-build-with-srt-1.3.4.patch
 # PATCH-FIX-OPENSUSE spandsp3.patch jengelh@inai.de -- Fix build against spandsp 3.x. Patch is not upstreamable in this form
 Patch2:         spandsp3.patch
-# PATCH-FIX-UPSTREAM 85b4fbf40b1d53a4141941abf70d2d4d83eb140e.patch -- msdk: replace strcmp with g_strcmp0
-Patch3:         https://gitlab.freedesktop.org/gstreamer/gstreamer/-/commit/85b4fbf40b1d53a4141941abf70d2d4d83eb140e.patch
 
 %if %{with fdk_aac}
 BuildRequires:  pkgconfig(fdk-aac) >= 0.1.4
@@ -822,7 +820,6 @@ sed -ie "/subdir('decklink')/d" sys/meson.build
 %if %{pkg_vcmp spandsp-devel >= 3}
 %patch -P 2 -p1
 %endif
-%patch -P 3 -p3
 
 %build
 %global optflags %{optflags} -fcommon
