@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Aug 24 18:17:25 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Update to 0.14.4:
+  New
+  * Add cyclic navigation
+  Fixed
+  * wrong height when using borders in the header
+  * height 0 by default
+  * use 0 as default width
+  * select all keybindings
+  * show background style help
+  Docs
+  * update install instructions
+
+-------------------------------------------------------------------
 Thu Jul 25 03:27:07 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Update to 0.14.3:
