@@ -2405,4 +2405,12 @@ New Features
     <comment>Update to new major version 9.20.0</comment>
     <requestid>1189415</requestid>
   </revision>
+  <revision rev="210" vrev="1">
+    <srcmd5>b96655e4f9e277d5db119bc92ea1a52b</srcmd5>
+    <version>9.20.1</version>
+    <time>1724580578</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 9.20.1</comment>
+    <requestid>1195688</requestid>
+  </revision>
 </revisionlist>

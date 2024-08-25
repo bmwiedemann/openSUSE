@@ -1,4 +1,85 @@
 -------------------------------------------------------------------
+Fri Aug 23 09:26:22 UTC 2024 - Jorik Cronenberg <jorik.cronenberg@suse.com>
+
+- Update to release 9.20.1
+  New Features:
+  * Implement rndc retransfer -force.
+  * A new optional argument -force has been added to the command
+    rndc retransfer. When it is specified, named aborts the ongoing
+    zone transfer (if there is one) and starts a new transfer.
+  * dig now reports a missing QUESTION section for messages with
+    opcode QUERY.
+  * Query responses should contain the QUESTION section, with some
+    exceptions. dig was not reporting this.
+
+  Feature Changes:
+  * Tighten max-recursion-queries and add max-query-restarts
+    configuration statement.
+  * There were cases when the max-recursion-queries quota was
+    ineffective. It was possible to craft zones that would cause a
+    resolver to waste resources by sending excessive queries while
+    attempting to resolve a name. This has been addressed by
+    correcting errors in the implementation of
+    max-recursion-queries and by reducing the default value from
+    100 to 32.
+  * In addition, a new max-query-restarts configuration statement
+    has been added, which limits the number of times a recursive
+    server will follow CNAME or DNAME records before terminating
+    resolution. This was previously a hard-coded limit of 16 but is
+    now configurable with a default value of 11.
+  * ISC would like to thank Huayi Duan, Marco Bearzi, Jodok Vieli,
+    and Cagin Tanir from NetSec group, ETH Zurich for discovering
+    and notifying us about the issue.
+  * Allow shorter resolver-query-timeout configuration.
+  * The minimum allowed value of resolver-query-timeout was lowered
+    from its previous value of 10 000 milliseconds (which is still
+    the default) to 301 milliseconds. Note however that values of 1
+    to 300 inclusive are interpreted as seconds before applying the
+    limit. A value of zero is interpreted as the default.
+  * Raise the log level of priming failures.
+  * When a priming query is complete, it was previously logged at
+    level DEBUG(1), regardless of success or failure. It is now
+    logged to NOTICE in the case of failure.
+
+  Bug Fixes:
+  * Fix a crash caused by valid TSIG signatures with invalid time.
+  * An assertion failure was triggered when the TSIG had a valid
+    cryptographic signature but the time was invalid. This could
+    happen when the times between the primary and secondary servers
+    were not synchronised. The crash has now been fixed.
+  * Return SERVFAIL for a too long CNAME chain.
+  * When following long CNAME chains, named was returning NOERROR
+    (along with a partial answer) instead of SERVFAIL, if the chain
+    exceeded the maximum length. This has been fixed.
+  * Reconfigure catz member zones during named reconfiguration.
+  * During a reconfiguration, named wasn’t reconfiguring catalog
+    zones’ member zones. This has been fixed.
+  * Update key lifetime and metadata after dnssec-policy
+    reconfiguration.
+  * Adjust key state and timing metadata if dnssec-policy key
+    lifetime configuration is updated, so that it also affects
+    existing keys.
+  * Fix a crash during zone modification.
+  * Fix an assertion failure that could happen when an
+    authoritative zone was modified while the server was generating
+    an answer from that zone.
+  * Fix assertion failure when executing named-checkconf -v to
+    print its version.
+  * Fix generation of 6to4-self name expansion from IPv4 address.
+  * The period between the most significant nibble of the encoded
+    IPv4 address and the 2.0.0.2.IP6.ARPA suffix was missing,
+    resulting in the wrong name being checked. This has been fixed.
+  * dig +yaml was producing unexpected and/or invalid YAML. output.
+  * SVBC ALPN text parsing failed to reject zero-length ALPN.
+  * Fix false QNAME minimisation error being reported.
+  * Remove the false positive success resolving log message when
+    QNAME minimisation is in effect and the final result is an
+    NXDOMAIN.
+  * Fix --enable-tracing build on systems without dtrace.
+  * A missing util/dtrace.sh file prevented builds on systems
+    without the dtrace utility. This has been corrected.
+
+-------------------------------------------------------------------
 Wed Jul 24 09:03:08 UTC 2024 - Jorik Cronenberg <jorik.cronenberg@suse.com>
 
 - Update to new major version 9.20.0
