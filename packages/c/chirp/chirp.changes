@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Aug 23 18:45:06 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 20240820:
+  * Update locale for recent changes
+  * uvk5: Bless 5.00.x firmware versions
+  * uvk5: Add a restricted version for unsupported firmwares
+  * Mark extra columns immutable if mem.extra is
+  * Fix setting extra comment if immutable
+  * ft70: Remove incorrect lowercase support
+  * ft4: Make a few strings translatable.
+  * uvk5 driver to reference chirp_common ctcss/dtcs codes
+  * Add welcome screen images for Bulgarian
+  * RT490: Add supported charset
+
+-------------------------------------------------------------------
 Thu Aug 15 17:25:12 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 20240813:
