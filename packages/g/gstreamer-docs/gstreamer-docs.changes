@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Aug 23 08:12:03 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.24.7:
+  + Highlighted bugfixes:
+    - Fix APE and Musepack audio file and GIF playback with FFmpeg
+      7.0
+    - playbin3: Fix potential deadlock with multiple playbin3s with
+      glimagesink used in parallel
+    - qt6: various qmlgl6src and qmlgl6sink fixes and improvements
+    - rtspsrc: expose property to force usage of non-compliant
+      setup URLs for RTSP servers where the automatic fallback
+      doesn't work
+    - urisourcebin: gapless playback and program switching fixes
+    - v4l2: various fixes
+    - va: Fix potential deadlock with multiple va elements used in
+      parallel
+    - meson: option to disable gst-full for static-library build
+      configurations that do not need this
+    - Various bug fixes, memory leak fixes, and other stability and
+      reliability improvements.
+
+-------------------------------------------------------------------
 Wed Aug 14 17:38:27 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.24.6:
