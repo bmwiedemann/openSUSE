@@ -1,7 +1,9 @@
-enable pulseaudio.socket
+enable dbus-broker.service
+enable drkonqi-coredump-launcher.socket
 enable pipewire.socket
 enable pipewire-pulse.socket
-enable wireplumber.service
-enable drkonqi-coredump-launcher.socket
+enable pulseaudio.socket
 enable spice-vdagent.service
+enable wireplumber.service
 enable xdg-user-dirs.service
+

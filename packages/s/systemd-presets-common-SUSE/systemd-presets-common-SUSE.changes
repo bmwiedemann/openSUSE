@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Apr 25 09:55:01 UTC 2024 - Simon Lees <sflees@suse.de>
+
+- Add presets to enable dbus-broker.service for both system and user
+  due to naming socket activation doesn't work directly.
+- Order .presets file alphabetically via service.
+
+-------------------------------------------------------------------
 Thu Feb  1 10:59:49 UTC 2024 - Michal Suchanek <msuchanek@suse.com>
 
 - Split hcn-init.service to hcn-init-NetworkManager and hcn-init-wicked
