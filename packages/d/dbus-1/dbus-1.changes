@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Mon Apr 29 12:41:45 UTC 2024 - Simon Lees <sflees@suse.de>
+
+- Drop feature-suse-auto-socket-target-wants.patch and use the
+  filesystem instead, this works more consistenly with dbus-broker
+
+-------------------------------------------------------------------
+Mon Jan  8 20:06:13 UTC 2024 - Callum Farmer <gmbr3@opensuse.org>
+
+- Add RH/Fedora compat provides dbus-libs to library package
+  needed by Mullvad
+
+-------------------------------------------------------------------
+Tue Dec 12 16:28:41 UTC 2023 - Callum Farmer <gmbr3@opensuse.org>
+
+- Add feature-suse-auto-socket-target-wants.patch: move
+  from static enable symlinks to systemd created symlinks otherwise
+  it can't be enabled by systemd-presets-common-SUSE
+- Update feature-suse-refuse-manual-start-stop.patch: prevent
+  killing the socket or user service aswell
+
+-------------------------------------------------------------------
+Sat Dec  2 14:13:04 UTC 2023 - Callum Farmer <gmbr3@opensuse.org>
+
+- common: dbus.socket still gets used after migration to
+  dbus-broker so keep pre/post/postun scriptlets
+
+-------------------------------------------------------------------
+Thu Sep 21 08:49:03 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Explicitly require /usr/bin/cmp for the post scripts instead of
+  diffutils: allow other implementations like busybox-diffutils to
+  be acceptable.
+
+-------------------------------------------------------------------
+Thu Sep 21 07:49:31 UTC 2023 - Simon Lees <sflees@suse.de>
+
+- No longer start or offer starting dbus as a system service
+  dbus-broker will be the only supported system dbus. Although
+  the existing daemon will stay as some things (gdm) require 
+  dbus-run-session
+
+-------------------------------------------------------------------
 Wed Sep 13 08:45:38 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.14.10:

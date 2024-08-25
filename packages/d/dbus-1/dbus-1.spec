@@ -1,7 +1,7 @@
 #
 # spec file for package dbus-1
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,8 @@
 #
 
 
-%define with_systemd 1
+# The dbus service is now provided by dbus-broker
+%define with_service 0
 %define _name   dbus
 %define _libname libdbus-1-3
 %bcond_without selinux
@@ -59,12 +60,11 @@ BuildRequires:  libselinux-devel
 Requires:       dbus-1-common >= %{version}
 # Later this should move to Recommends
 Requires:       dbus-1-tools >= %{version}
-# Later on change this to just dbus-broker
-Requires:       dbus-service >= %{version}
-Recommends:     dbus-1-daemon >= %{version}
+Requires:       dbus-broker
 
 %package -n %{_libname}
 Summary:        Library package for D-Bus
+Provides:       dbus-libs = %{version}
 Requires:       dbus-1-common >= %{version}
 
 %package common
@@ -166,6 +166,12 @@ cp %{SOURCE5} bus/sysusers.d/dbus.conf
 %install
 %make_install
 
+%if !%{with_service}
+rm -r %{buildroot}%{_unitdir}/multi-user.target.wants
+rm %{buildroot}%{_unitdir}/*.service
+rm %{buildroot}%{_userunitdir}/*.service
+%endif
+
 # dbus-launch, too
 mv -f %{buildroot}/%{_bindir}/dbus-launch %{buildroot}%{_bindir}/dbus-launch.nox11
 mkdir -p %{buildroot}%{_sbindir}
@@ -200,7 +206,9 @@ rm -Rf %{buildroot}%{_datadir}/doc/dbus
 %postun -n %{_libname} -p /sbin/ldconfig
 
 %pre
+%if %{with_service}
 %service_add_pre dbus.service
+%endif
 # removing old update-alternatives entries
 if [ "$1" -gt 0 ] && [ -f %{_sbindir}/update-alternatives ] ; then
     %{_sbindir}/update-alternatives --remove dbus-launch %{_bindir}/dbus-launch.nox11
@@ -209,6 +217,7 @@ fi
 %post
 /sbin/ldconfig
 %set_permissions %{_libexecdir}/dbus-1/dbus-daemon-launch-helper
+%if %{with_service}
 %service_add_post dbus.service
 
 %preun
@@ -216,6 +225,7 @@ fi
 
 %postun
 %service_del_postun_without_restart dbus.service
+%endif
 
 %pre common -f messagebus.pre
 %service_add_pre dbus.socket
@@ -248,11 +258,15 @@ fi
 # See doc/system-activation.txt in source tarball for the rationale
 # behind these permissions
 %attr(4750,root,messagebus) %verify(not mode) %{_libexecdir}/dbus-1/dbus-daemon-launch-helper
+%if %{with_service}
 %{_unitdir}/dbus.service
+%endif
 %{_sbindir}/rcdbus
+%if %{with_service}
 %dir %{_unitdir}/multi-user.target.wants
 %{_unitdir}/multi-user.target.wants/dbus.service
 %{_userunitdir}/dbus.service
+%endif
 %dir %{_datadir}/libalternatives
 %dir %{_datadir}/libalternatives/dbus-launch
 %{_datadir}/libalternatives/dbus-launch/10.conf
@@ -277,16 +291,14 @@ fi
 %dir %{_datadir}/dbus-1/services
 %dir %{_datadir}/dbus-1/system.d
 %dir %{_datadir}/dbus-1/system-services
-%dir %{_userunitdir}/sockets.target.wants
-%{_userunitdir}/sockets.target.wants/dbus.socket
-%dir %{_unitdir}/sockets.target.wants
-%{_unitdir}/sockets.target.wants/dbus.socket
 %{_prefix}/lib/sysusers.d/dbus.conf
 %{_prefix}/lib/tmpfiles.d/dbus.conf
 %{_datadir}/dbus-1/session.conf
 %{_datadir}/dbus-1/system.conf
 %{_unitdir}/dbus.socket
 %{_userunitdir}/dbus.socket
+%{_unitdir}/sockets.target.wants
+%{_userunitdir}/sockets.target.wants
 
 %files daemon
 %{_bindir}/dbus-cleanup-sockets

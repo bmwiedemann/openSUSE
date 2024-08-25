@@ -11,3 +11,40 @@ Index: dbus-1.14.0/bus/dbus.service.in
  
  [Service]
  Type=notify
+Index: dbus-1.14.0/bus/dbus.socket.in
+===================================================================
+--- dbus-1.14.0.orig/bus/dbus.socket.in
++++ dbus-1.14.0/bus/dbus.socket.in
+@@ -1,5 +1,7 @@
+ [Unit]
+ Description=D-Bus System Message Bus Socket
++RefuseManualStart=true
++RefuseManualStop=true
+ 
+ [Socket]
+ ListenStream=@DBUS_SYSTEM_SOCKET@
+Index: dbus-1.14.0/bus/systemd-user/dbus.socket.in
+===================================================================
+--- dbus-1.14.0.orig/bus/systemd-user/dbus.socket.in
++++ dbus-1.14.0/bus/systemd-user/dbus.socket.in
+@@ -1,5 +1,7 @@
+ [Unit]
+ Description=D-Bus User Message Bus Socket
++RefuseManualStart=true
++RefuseManualStop=true
+ 
+ [Socket]
+ ListenStream=%t/bus
+Index: dbus-1.14.0/bus/systemd-user/dbus.service.in
+===================================================================
+--- dbus-1.14.0.orig/bus/systemd-user/dbus.service.in
++++ dbus-1.14.0/bus/systemd-user/dbus.service.in
+@@ -2,6 +2,8 @@
+ Description=D-Bus User Message Bus
+ Documentation=man:dbus-daemon(1)
+ Requires=dbus.socket
++RefuseManualStart=true
++RefuseManualStop=true
+ 
+ [Service]
+ Type=notify
