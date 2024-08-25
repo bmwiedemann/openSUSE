@@ -5276,4 +5276,18 @@ If you have any suggestions for improvement, please let me know! (forwarded requ
     <comment>- 6256.patch: fixes wayland backend (forwarded request 1195038 from llyyr)</comment>
     <requestid>1195152</requestid>
   </revision>
+  <revision rev="448" vrev="1">
+    <srcmd5>0adea99f7b01b867f8dd1eda3ffb9704</srcmd5>
+    <version>9.16</version>
+    <time>1724580643</time>
+    <user>anag+factory</user>
+    <comment>- Updated to 9.16 release
+  - Initial Driver Store implementation.
+  - Pbuffer support in the Wayland driver.
+  - More prototype objects in MSHTML.
+  - Various bug fixes.
+- update staging to 9.16 release
+- 6256.patch: upstream</comment>
+    <requestid>1195842</requestid>
+  </revision>
 </revisionlist>

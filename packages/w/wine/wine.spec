@@ -1,5 +1,5 @@
 #
-# spec file for package wine
+# spec file
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -41,8 +41,8 @@
 %endif
 
 # needs to be on top due to usage of %version macro below
-%define realver 9.15
-Version:        9.15
+%define realver 9.16
+Version:        9.16
 Release:        0
 
 %if "%{flavor}" != ""
@@ -176,8 +176,6 @@ Source7:        baselibs.conf
 Source8:        wine-rpmlintrc
 # SUSE specific patches
 # - currently none, but add them here
-#Patch0:         0001-mf-tests-Remove-static-specifier-on-variables-refere.patch
-Patch0:         https://gitlab.winehq.org/wine/wine/-/merge_requests/6256.patch
 Recommends:     wine-gecko >= 2.47.4
 Conflicts:      wine-gecko < 2.47.4
 Recommends:     wine-mono >= 9.2.0
@@ -198,7 +196,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 ExclusiveArch:  %{ix86} x86_64 ppc armv7l armv7hl aarch64
 %if %{staging}
 # upstream patch target version
-%define staging_version 9.15
+%define staging_version 9.16
 Source100:      wine-staging-%{staging_version}.tar.xz
 BuildRequires:  gtk3-devel
 BuildRequires:  libOSMesa-devel
