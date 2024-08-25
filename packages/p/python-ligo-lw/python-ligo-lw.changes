@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Aug 22 17:50:15 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Disable python 3.12 builds as codebase is not ready:
+  https://git.ligo.org/kipp/python-ligo-lw/-/issues/29
+
+-------------------------------------------------------------------
 Mon Mar 13 13:06:57 UTC 2023 - pgajdos@suse.com
 
 - do not require python-six

@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-ligo-lw
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,8 @@
 
 # Dependency ligo-segments does not build for python2
 %define         skip_python2 1
+# https://git.ligo.org/kipp/python-ligo-lw/-/issues/29
+%define         skip_python312 1
 
 %define bins ligolw_add ligolw_cut ligolw_no_ilwdchar ligolw_print ligolw_segments ligolw_sqlite ligolw_run_sqlite
 %define srcname python-ligo-lw
@@ -55,10 +57,11 @@ Requires:       python-PyYAML
 Requires:       python-lal
 Requires:       python-ligo-segments
 Requires:       python-lscsoft-glue
+Requires:       python-numpy
 Requires:       python-python-dateutil
 Requires:       python-tqdm
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 # lal no longer supported for 32bit, and is a hard dependency for ligo-lw
 ExcludeArch:    %{ix86}
 # SECTION Test requirements
