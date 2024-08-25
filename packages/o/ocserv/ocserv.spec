@@ -1,7 +1,7 @@
 #
 # spec file for package ocserv
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -48,6 +48,7 @@ BuildRequires:  gpg2
 BuildRequires:  ipcalc
 BuildRequires:  libev-devel
 #!BuildIgnore:  libevent-devel
+BuildRequires:  /usr/bin/ronn
 BuildRequires:  libgnutls-devel >= 3.1.10
 BuildRequires:  liblz4-devel
 BuildRequires:  libmaxminddb-devel
@@ -62,7 +63,6 @@ BuildRequires:  protobuf-c
 BuildRequires:  readline-devel
 BuildRequires:  pkgconfig(liboath)
 BuildRequires:  pkgconfig(libsystemd)
-BuildRequires:  rubygem(ronn)
 # /usr/bin/certtool for generating certificates
 Requires:       gnutls >= 3.1.10
 %{?systemd_requires}

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Aug 23 15:09:09 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire /usr/bin/ronn instead of rubygem(ronn): there are
+  alternatives around and the build does not care wich one is used.
+
+-------------------------------------------------------------------
 Wed May 15 12:58:13 UTC 2024 - Андрей Кувшинов <m407@mail.ru>
 
 - Update to version 1.3.0
