@@ -6980,4 +6980,12 @@
     Use-after-free in JavaScript code coverage collection</comment>
     <requestid>1193124</requestid>
   </revision>
+  <revision rev="435" vrev="1">
+    <srcmd5>f3c6ade453a687c0fd7ceb2ca066b294</srcmd5>
+    <version>129.0.1</version>
+    <time>1724580579</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1195695</requestid>
+  </revision>
 </revisionlist>

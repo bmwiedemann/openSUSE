@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Aug 16 09:30:34 UTC 2024 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Firefox 129.0.1
+  * Fixed playback issues on some websites with copyrighted video
+    served via digital rights management. (bmo#1911283)
+  * Fixed a crash when dragging a video file onto some websites
+    (bmo#1910990)
+
+-------------------------------------------------------------------
 Thu Aug  8 06:06:13 UTC 2024 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Firefox 129.0
