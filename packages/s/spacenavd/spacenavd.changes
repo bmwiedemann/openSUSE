@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Aug 22 19:29:13 UTC 2024 - Herbert Graeber <herbert@graeber-clan.de>
+
+- Version 1.3
+  * Support for dominant axis mode. Dominant axis toggle can be bound as
+    a button action.
+  * Fixed device detection for some serial Spaceballs which were misdetected
+    due to spurious data arriving before the "@reset".
+  * Normalized default axis mapping/sign for CadMan USB and Spaceball 5000 USB.
+  * Linux: stop using the evdev time field, which was dropped in 32bit linux
+    for year 2038 compatibility.
+  * Protocol: added missing set/get requests for the repeat interval.
+  * Updated device blacklists to ignore 3Dconnexion keyboards/mice.
+  * Build improvements and fixes for various platforms.
+- Add libXext as a build requires
+
+-------------------------------------------------------------------
 Thu Feb 22 21:49:37 UTC 2024 - Herbert Graeber <herbert@graeber-clan.de>
 
 - Replace %patchN with %autosetup

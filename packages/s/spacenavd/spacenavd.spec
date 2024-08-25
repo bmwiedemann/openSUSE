@@ -18,7 +18,7 @@
 
 
 Name:           spacenavd
-Version:        1.2
+Version:        1.3
 Release:        0
 Summary:        Daemon for 3Dconnexion devices
 License:        GPL-3.0-or-later
@@ -33,6 +33,7 @@ Patch2:         harden_spacenavd.service.patch
 BuildRequires:  pkgconfig
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  pkgconfig(x11)
+BuildRequires:  pkgconfig(xext)
 %{?systemd_requires}
 Requires:       xdpyinfo
 Supplements:    modalias(usb:v046DpC603d*dc*dsc*dp*ic*isc*ip*)
