@@ -1,4 +1,259 @@
 -------------------------------------------------------------------
+Sun Aug 11 05:51:49 UTC 2024 - Hunter Wardlaw <wardlawhunter@gmail.com>
+
+- Update to version 0.0.32~git20240810:
+  * Enable user to change country code (#15884)
+  * input: add analog limiter
+  * evdev: simplify get_next_button_press
+  * mmjoy: simplify get_next_button_press
+  * Qt/input: make touch_threshold a member
+  * Qt/input: clear min_button_values if we want to get the blacklist
+  * Qt/input: ignore button press values unless they increase
+  * Qt/input: move preview_values into callback
+  * rsx: Fix fragment constants decoding for non-x86 platforms
+
+-------------------------------------------------------------------
+Fri Aug  9 13:13:43 UTC 2024 - Hunter Wardlaw <wardlawhunter@gmail.com>
+
+- Update to version 0.0.32~git20240808:
+  * cellGem: Only allow each button to be used for one action unless it's the combo button.
+  * input: ignore mouse handler events until initialized
+  * Input: fix initial mouse config reload
+  * input: log all config file content if used
+  * Class "llvm:StringRef" has no member 'Startswith' (#15898)
+  * PINE: Fix socket naming for Mac and Linux to match protocol specification (#15906)
+  * Address review comments
+  * Do not include arm sources by default
+  * Clear hv context
+  * Fix SPU compilation
+  * Initial SPU bringup
+  * Improve comments
+  * Fix dependency injection on terminators
+  * Bump scratch to 8k
+  * Finalize PPU migration to the frame pass system
+  * Complete PPU support
+  * Migrate PPU to post-process execution model
+  * jit: Add aarch64 JIT backend for pre-codegen transforms
+  * Silence compiler noise on non-x86 architectures
+  * Initial PPU LLVM implementation for aarch64
+
+-------------------------------------------------------------------
+Thu Aug  8 00:07:01 UTC 2024 - Hunter Wardlaw <wardlawhunter@gmail.com>
+
+- Update to version 0.0.32~git20240807:
+  * cellMic: skip alcCaptureSamples loop if num_samples is 0
+  * cellMic: only allocate temp_buf if needed
+  * cellMic: free temp_buf if on mic close
+  * cellMic: do not copy samples to intermediate buffer unless necessary
+  * cellMic: only call get_data once
+  * cellMic: simplify BE translation loop
+  * cellMic: make bit_resolution and channel_size constexpr
+  * cellMic: remove duplicate code and add size checks
+  * cellMic: check device ptr and log openal error codes
+  * sys_usbd: Default replies for Dimensions Color Commands
+  * cellMic: fix type conversion warning
+  * MSVC: Fix openal import warnings
+  * SPU LLVM: Revert store postponing restrictrictions
+  * Dimensions: default init figures
+  * Early out instead of scope
+  * Dimensions: try to fix out of bounds array access
+  * Dimensions improve locks (maybe)
+  * Dimensions: make some functions static
+  * Case-insensitive path compare for module verifier (#15889)
+  * Qt/trophies: allow to delete a game's trophy directory
+  * Qt/savedata: remove call with unreachable case
+  * Improved wayland support
+  * Improve AMD CPU detection
+  * Return zen4 for zen5+ until LLVM upgrade
+  * Improve intel and apple detection
+  * Add fallback CPU detection when llvm is not aware of the CPU model
+  * change PSMove mouse button bindings (#15860)
+  * Update MSVC redistributable URL
+  * Run platform sanity checks after creating the log and log windows path
+  * cellMic: Handle value 0 on CELLMIC_DEVATTR_CHANVOL
+  * cellMic: Fix CELLMIC_DEVATTR_CHANVOL handling
+  * Update SDL to 2.30.6
+  * Update FAudio to 24.08
+  * Update curl to 8.9.1
+  * types.hpp: Format C arrays too for assert errors
+  * gl: Fix hang on windows
+  * Video Encode: do not set the frame_number
+  * Fix ffmpeg deprecation warnings
+  * types.hpp: Add argument formatter to assert errors
+  * gl: Fixes for asahi linux
+  * Fix unused function warning
+  * Remove unused variable
+  * Fix std::move warning
+  * Silence deprecation warnings on MacOs
+  * raw_mouse: Fix button map out of bounds access
+  * DS4/DualSense/SDL: add touchpad support
+  * sys_usbd: Allow 'Moving' figure to same slot on Dimensions Toypad (#15850)
+  * sys_fs: Non-existant overflow bugfix
+  * Add SPU usage for program dump
+  * reduce logging
+  * PPU: Fix potential overflow
+  * cellMic: Fix potential overflow
+  * Remove welcome dialog shortcut
+  * cellMic: Wake up upon registering emulated SingStar microphone
+  * vk: Fix VEGA float16 workaround
+  * Paint icons into rpcn status circles
+  * Add missing QPainter::end calls
+  * Fix some msvc warnings
+  * Qt: Fix resolution dropdown if resolution flags of game are empty
+  * input: reload gui settings when the visibility or the active window changes
+  * input: log used pad config
+  * sceNp: Fix sending partial results from sceNpScoreRecordGameData
+  * Improve dimensions dialog layout
+  * Disable stereo render combobox if other resolutions than 720p are selected
+  * Rename resolutions to better convey irrelevance of aspect ratio
+  * Fixed compilation
+  * Bump mvk to 1.2.10
+  * Bump mvk to 1.2.10 in build script
+  * Fix MSVC filters
+  * Fix some warnings
+  * USB: Replace if/else with switch
+  * USB: Top Shot Fearmaster device emulation
+  * USB: Top Shot Elite device emulation
+  * USB: Move uDraw GameTablet config from IO to Pads
+  * sys_usbd: Emulate Dimensions Toypad
+  * Savestates/PPU: Ensure correct PPU state on MMIO
+  * SPU: Utilize Operating System sleep in detected RCHCNT loop
+  * sceNp: Improve SceNpCommunicationId logging
+  * Do not set the data size in sceNpBasicGetEvent for SCE_NP_BASIC_EVENT_OFFLINE
+  * Remove Alipay link from FUNDING.yml
+  * Support old sceNpScoreRankData
+  * improve CMake files
+  * Update FAudio to 24.07
+  * Update Wolfssl to 5.7.2
+  * Update SDL to 2.30.5
+  * cellGem: fix camera format conversions
+  * Qt: Fix camera id and format when default is selected
+  * Qt: Fix camera string comparison in settings_dialog
+  * Fixup compilation
+  * SPU: Make users tell what games matter for channel pattern
+  * Disable PUTLLC16 again
+  * Progress Dialog: Stabilize remaining time
+  * SPU Analyzer: Make register state evaluation shorter
+  * [WIP] SPU: Channel Loop Pattern Detection
+  * USB: GunCon3 updates
+  * Pad: Simplify is_fake_pad logic
+  * Improve error message when update cannot be installed due to version mismatch (#15773)
+  * Fix some visual studio filters
+  * Input/Overlays: show pressure intensity toggle hint
+  * input: move player_id to pad struct
+  * Qt: disable battery LED settings if the pad handler doesn't support it
+  * Qt: fix player LED groupbox label
+  * input: add battery LED flag and some getters
+  * input: allow running pad thread without emulation
+  * Camera: copy JPG and RGBA data if needed
+  * Fixup and Improve CELL reservation notifications
+  * revert pull request #15618
+  * input: implement HidDevice::close
+  * cellGem: Implement cellGemEnableMagnetometer2
+  * VS: fix MouseHandler.cpp filter
+  * Fix midi drum config loading
+  * Fix some warnings
+  *  Simplify duplicate mouse handler init code
+  * input: ignore raw mouse double click when used as move handler
+  * CELL: More efficient reservation notificatins
+  * Remove check_state() inside thread notifiatios
+  * rsx: Fix codegen when depth-conversion is enabled
+  * Fix weird new gcc namespace warning
+  * Whitespace fix
+  * rsx: Fix wrapped/clamped MSAA sampling behavior with dynamic flags
+  * input: actually initialize midi drum notes and combos
+  * cellCamera: improve error logging
+  * input: allow dynamic change of midi drum config
+  * input: allow dynamic change of mouse configs
+  * SPU LLVM: Fix LSA masking for PUTLLC16, disable RTIME checks
+  * Silence some cellGem logging
+  * SPU Analyzer: Fix support for multi-block value merge
+  * Update build script to MoltenVK 1.2.9
+  * Update MoltenVK
+  * skylander_dialog: Fix Drill Sergeant's name
+  * Fix warning: dangling pointer (construct string_view from temporary string)
+  * Fix warning: std::move of const variables
+  * input: Use same dualsense gyro values as linux kernel
+  * input: invalidate ds4/dualsense calibration instead of disabling the controller
+  * input: fix minimum turntable input
+  * input: add missing lock to keyboard handler ReleaseAllKeys
+  * input: fix ds3 gyro offset
+  * Cut scenNpDrmIsAvailable sleep time by half
+  * PPU: Fix access violation on logging
+  * input: differentiate between left and right modifier keys
+  * input: add missing control key to basic keyboard
+  * Replace sys_io log channel with cell module log channels
+  * Fix locale on linux
+  * input: try to fix macOS SDL crash
+  * Update SDL to 2.30.4
+  * Update 7zip to 24.07
+  * Savestates/Mouse: Fix Mouse handler use
+  * SPU: Notify threads on RdEventStat properly
+  * SPU: Cleanup GETLLAR
+  * SPU LLVM: Avoid sinking stores out of non-loops
+  * SPU: Better GETLLAR spin detection
+  * SPU: Notify threads if data changed in RdEventStat
+  * SPU: smart GETLLAR spin detection
+  * Fix race in sys_net select and poll
+  * LV2: Race condition fixup
+  * LV2: Optimization for timeout
+  * Minor fix of sys_lwmutex_destroy
+  * Fix sys_lwmutex_lock for SYS_SYNC_RETRY
+  * input: move pad_state_notify_state_change to pad_thread
+  * vm_ptr: return nullptr and add some nullptr deref checks
+  * rsx: Fix simple_array<T>::map
+  * sceNp: fix print_get_roomdata_external_list_resp pointer checks
+  * sceNpCommerce2: check sku_ids
+  * sceNp: add some more rpcn array pointer checks
+  * sceNp: add some more array pointer checks
+  * sceNp: add array sanity checks to print functions
+  * Qt: log error cause on shortcut icon creation
+  * rsx: make some functions const
+  * rsx: fix warnings and add missing default cases
+  * Fix yet another warning
+  * ds3: use input_report struct
+  * Dualsense/DS4: Replace buffers with human readable structs
+  * rsx: Avoid the complex remapper checks if the texture isn't in the XINT8 group
+  * rsx: Do not apply texture remapping operations to "1" overrides.
+  * rsx: Drop hard requirement for GL_EXT_shader_integer_mix
+  * Annotations
+  * rsx: Fix refactoring mess
+  * rsx: Properly implement 8-bit signed renormalization for textures
+  * Minor fs::file usage fixes
+  * Game List: Add shortcut to open cache dir
+  * SPU: Enable PUTLLC16 with RTIME checks
+  * sys_ppu_thread: Fixed up sys_ppu_thread_join()'s check for detached threads
+  * PPU Analyzer: Utilize exported functions
+  * Ensure PPU Compilation Hint is refreshed
+  * PPU LLVM: Implement OE for few instructions
+  * PPU Debug: Dump decrypted PRX
+  * PPU Analyzer: Fixes
+  * SPU: Silence some warnings
+  * Input: Implement anti deadzone
+  * openal: add headers to msvc
+  * cellGem: Fix raw mouse connection state
+  * Fix some tooltips
+  * SPU Analyzer: Fix BRA instruction targets
+  * SPU LLVM: Ensure programs are written to disk irregardless of failure
+  * SPU: Remove inaccurate GETLLAR option
+  * SPU Analyzer: Minor PUTLLC16 bugfixes
+  * Fix stb cmake build
+  * Add stb submodule
+  * Fix config_mouse.yml path on windows
+  * Use openal-soft submodule and link statically
+  * zstd: fix msvc ProjectName
+  * Update FAudio to 24.06
+  * Update 7zip to 24.06
+  * OpenAL: Fix crash when loading certain audio devices
+  * Cirrus: Update to FreeBSD 13.3
+  * USB: If a Santroller device is in use elsewhere, don't send it commands (#15655)
+  * buffer_stream.hpp: Try to fix MacOS compilation
+  * Unix/Savestates: Fix savestates destination
+  * sys_net: properly return error in sendto
+  * SPU LLVM: Disable PUTLLC16 temporarily
+  * vk: Dump diagnostic messages if device creation fails 
+
+-------------------------------------------------------------------
 Sun Jun 16 18:17:06 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - LLVM <= 18 is now supported
