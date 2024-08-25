@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Fri Aug 16 22:06:46 UTC 2024 - scott.bradnick@suse.com
+
+- Updating ROCm to v6.2.0
+- Update to version 1.3.2+git20240805.00c9088:
+  * fix: include missed out utility header.
+  * Switch macos continuous build from gcc to clang
+  * Add fix for disk used and free percent #791
+  * Beautify command line error output and help message
+  * Disable STATIC build for cmake.
+  * Fix the pkg_add command in README.
+  * Bump NetBSD to 10.0 in CI.
+  * Update README.md with NetBSD details.
+  * Ignore netbsd folder in other builds.
+  * Use kvm and ifaddr defs from shared.hpp.
+  * Simplify the CI command.
+  * Add support for reading thermal stats.
+  * Add support for reading battery stats.
+  * Get the 64 bit value of physmem.
+  * Add CMake build support for NetBSD.
+  * Attempt to fix the CI.
+  * Fix some of the memory stats.
+  * Add build files for NetBSD.
+  * Add NetBSD Support.
+
+-------------------------------------------------------------------
+Fri Jul 26 17:50:49 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 1.3.2+git20240624.e4f69cd:
+  * Updated soon to be deprecated actions to latest versions
+  * Removed macos-14 for now due to XCode bug when compiling with gcc
+  * Removed deprecated macos-11 and add macos-13 and macos-14
+  * Update spacing
+  * fix io_graph_speeds parsing
+  * fix divide 0 error when caculating disk usage percentage (#791)
+
+-------------------------------------------------------------------
+Thu Jun  6 17:20:20 UTC 2024 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Updating ROCm to v6.1.2
+  * Adding note about RSMI_STATIC=true not working for gcc-14
+  * Possibly https://github.com/ROCm/rocm_smi_lib/issues/170 has a fix?
+
+-------------------------------------------------------------------
+Sat Jun 01 15:38:07 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 1.3.2+git20240601.516979b:
+  * Fixed missing CPU core temps when too small to show core temp graphs, issues #792 #867
+  * Fixed missing IO graphs in IO mode, issue #867
+  * V1 of Phoenix Night theme
+  * Add missing linker flag for static links on FreeBSD
+  * Fix comments in theme files
+  * fix zero temp (#467)
+
+-------------------------------------------------------------------
+Tue May 14 20:01:30 UTC 2024 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Adding 'BuildRequires: lowdown' for manpage generation.
+  * Currently TW only since lowdown isn't present in Leap
+
+-------------------------------------------------------------------
 Thu May  9 13:46:48 UTC 2024 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Adding btop-rpmlintrc as Source99

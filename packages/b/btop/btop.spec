@@ -15,9 +15,9 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%define ROCm_version 6.1.0
+%define ROCm_version 6.2.0
 Name:           btop
-Version:        1.3.2+git20240501.dd4ada7
+Version:        1.3.2+git20240805.00c9088
 Release:        0
 Summary:        Usage and stats for processor, memory, disks, network and processes
 License:        Apache-2.0
@@ -43,6 +43,7 @@ BuildRequires:  gcc13-c++
 %define lddopt LDCXXFLAGS="-ldl -lpthread -DFMT_HEADER_ONLY"
 %else
 BuildRequires:  gcc-c++ >= 11
+BuildRequires:  lowdown
 %define cxxflags %{nil}
 %define cxxopt %{nil}
 %define lddopt %{nil}
@@ -59,10 +60,14 @@ mkdir -vp %{_builddir}/%{name}-%{version}/lib/rocm_smi_lib
 tar zxf %{SOURCE1} -C %{_builddir}/%{name}-%{version}/lib/rocm_smi_lib --strip-components=1
 
 %build
+###
+### RSMI_STATIC will break with gcc-14, as of <= v6.1.2 (20240606)
+###
 %make_build %{cxxflags} %{cxxopt} %{lddopt} RSMI_STATIC=true
 
 %install
 %make_install %{cxxopt} %{lddopt} PREFIX=%{_prefix}
+chmod -c 644 %{buildroot}%{_datadir}/%{name}/themes/*.theme
 
 %files
 %doc CHANGELOG.md README.md
@@ -78,6 +83,9 @@ tar zxf %{SOURCE1} -C %{_builddir}/%{name}-%{version}/lib/rocm_smi_lib --strip-c
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/48x48/apps/%{name}.png
 %{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
+%if 0%{?suse_version} > 1550
+%{_mandir}/man1/%{name}.1.gz
+%endif
 %license LICENSE
 
 %changelog
