@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Aug 24 18:32:40 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 1.60.3:
+  * build(deps): bump github.com/securego/gosec/v2 from 81cda2f91fbe to ab3f6c1c83a0 (#4943)
+  * feat: check that Go version use to build is greater or equals to the Go version of the project (#4938)
+  * docs: update documentation (#4931)
+  * docs: update documentation assets (#4930)
+  * docs: update GitHub Action assets (#4929)
+
+-------------------------------------------------------------------
 Wed Aug 21 02:24:50 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 1.60.2:

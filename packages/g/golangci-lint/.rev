@@ -378,4 +378,17 @@
   * docs: update GitHub Action assets (#4902) (forwarded request 1194962 from jfkw)</comment>
     <requestid>1194963</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>3af92e2eeef702003dad5bf60680c727</srcmd5>
+    <version>1.60.3</version>
+    <time>1724580646</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.60.3:
+  * build(deps): bump github.com/securego/gosec/v2 from 81cda2f91fbe to ab3f6c1c83a0 (#4943)
+  * feat: check that Go version use to build is greater or equals to the Go version of the project (#4938)
+  * docs: update documentation (#4931)
+  * docs: update documentation assets (#4930)
+  * docs: update GitHub Action assets (#4929) (forwarded request 1195846 from jfkw)</comment>
+    <requestid>1195847</requestid>
+  </revision>
 </revisionlist>
