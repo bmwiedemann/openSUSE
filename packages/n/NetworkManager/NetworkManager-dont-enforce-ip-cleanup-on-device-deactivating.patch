@@ -1,0 +1,34 @@
+From dd04bb04ab3ac3177574a4f9f48eb517acd56409 Mon Sep 17 00:00:00 2001
+From: Jonathan Kang <jonathankang@gnome.org>
+Date: Tue, 20 Aug 2024 15:50:13 +0800
+Subject: [PATCH] device: don't enforce IP cleanup on deactivating state
+
+Don't enforce IP cleanup when devices are in deactivating state, to
+make sure that network connection is still available for pre-down
+dispatcher phase.
+
+Fixes ac4e63ddda6f ('ip: support dhcp-send-release in NMSettingIpConfig')
+
+https://bugzilla.suse.com/show_bug.cgi?id=1228154
+---
+ src/core/devices/nm-device.c | 4 ----
+ 1 file changed, 4 deletions(-)
+
+diff --git a/src/core/devices/nm-device.c b/src/core/devices/nm-device.c
+index 82141ce005..ea6fea2b82 100644
+--- a/src/core/devices/nm-device.c
++++ b/src/core/devices/nm-device.c
+@@ -16893,10 +16893,6 @@ _set_state_full(NMDevice *self, NMDeviceState state, NMDeviceStateReason reason,
+             _cleanup_ip_pre(self, AF_INET6, CLEANUP_TYPE_DECONFIGURE, FALSE);
+         }
+         break;
+-    case NM_DEVICE_STATE_DEACTIVATING:
+-        /* If we are now deactivating we should enforce IP cleanup. */
+-        _cleanup_ip_pre(self, AF_INET, CLEANUP_TYPE_DECONFIGURE, FALSE);
+-        _cleanup_ip_pre(self, AF_INET6, CLEANUP_TYPE_DECONFIGURE, FALSE);
+     default:
+         break;
+     }
+-- 
+2.46.0
+

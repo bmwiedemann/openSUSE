@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Aug 22 06:07:45 UTC 2024 - Jonathan Kang <songchuan.kang@suse.com>
+
+- Add NetworkManager-dont-enforce-ip-cleanup-on-device-deactivating.patch:
+  device: don't enforce IP cleanup on deactivating state
+  (bsc#1228154, glfd#NetworkManager/NetworkManager!2016).
+
+-------------------------------------------------------------------
 Fri Aug  9 15:39:55 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.48.8:

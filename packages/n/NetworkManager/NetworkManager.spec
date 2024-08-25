@@ -94,6 +94,8 @@ Patch7:         nm-add-CAP_SYS_ADMIN-permission.patch
 Patch8:         python3.6-in-sle.patch
 # PATCH-FIX-SLE NetworkManager-dont-renew-bridge-dhcp-if-no-mac-on-wakeup.patch bsc#1225498, glfd#NetworkManager/NetworkManager#1587 -- manager: don't renew dhcp lease when software devices' MAC is empty
 Patch9:         NetworkManager-dont-renew-bridge-dhcp-if-no-mac-on-wakeup.patch
+# PATCH-FIX-UPSTREAM NetworkManager-dont-enforce-ip-cleanup-on-device-deactivating.patch bsc#1228154, glfd#NetworkManager/NetworkManager!2016 sckang@suse.com -- device: don't enforce IP cleanup on deactivating state
+Patch10:        NetworkManager-dont-enforce-ip-cleanup-on-device-deactivating.patch
 
 BuildRequires:  c++_compiler
 BuildRequires:  dnsmasq
@@ -305,6 +307,7 @@ This tool is still experimental.
 %patch -P 8 -p1
 %patch -P 9 -p1
 %endif
+%patch -P 10 -p1
 
 # Fix server.conf's location, to end up in %%{_defaultdocdir}/%%{name},
 # rather then %%{_datadir}/doc/%%{name}/examples:
