@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Aug 24 01:06:24 UTC 2024 - Yasuhiko Kamata <belphegor@belbel.or.jp>
+
+- Updated configure script using autoconf because it fails with
+  gcc-14 (only for Tumbleweed currently).
+
+-------------------------------------------------------------------
 Fri Aug 16 06:48:21 UTC 2024 - Yasuhiko Kamata <belphegor@belbel.or.jp>
 
 - Replace Requires(pre): "%{_sbindir}/{groupadd,useradd}" with
