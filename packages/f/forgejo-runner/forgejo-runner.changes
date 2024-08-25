@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Aug 25 00:30:50 UTC 2024 - rrahl0@opensuse.org
+
+- Update to version 3.5.1:
+  * Fix CVE-2024-24557
+  * update vendored dependencies
+
+-------------------------------------------------------------------
 Mon Aug  5 07:59:52 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - new package forgejo-runner: a daemon that connects to a Forgejo
