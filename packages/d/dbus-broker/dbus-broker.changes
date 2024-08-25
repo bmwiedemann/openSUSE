@@ -1,4 +1,82 @@
 -------------------------------------------------------------------
+Tue Aug  6 13:27:48 UTC 2024 - Simon Lees <sflees@suse.de>
+
+- Looks like we need systemd_user_ scripts for some upgrades to
+  work
+
+-------------------------------------------------------------------
+Fri Apr 12 16:21:44 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 36
+  * Fix possible file-descriptor use-after-close
+  * More verbose activation failures
+
+-------------------------------------------------------------------
+Tue Jan 16 13:07:37 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Make provides versioned
+- Ensure that not both packages can be installed at the same time
+  by adding a conflicts
+
+-------------------------------------------------------------------
+Tue Jan 16 13:06:24 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Downgrade the recommends to suggests based on suggestion from
+  dimstar
+
+-------------------------------------------------------------------
+Tue Jan 16 13:01:16 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Make restart behavior an admin decision:
+  - drop feature-suse-refuse-manual-start-stop.patch
+  - introduce 2 new subpackages:
+    dbus-broker-allow-restart
+    dbus-broker-block-restart (default to reflect the old patch
+    behavior)
+    
+    one of the 2 packages is required and leaves the admin the
+    choice if they want to be able to restart dbus-broker without
+    reboot or not.
+
+-------------------------------------------------------------------
+Wed Dec 20 14:59:15 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 35
+  * drop an error-checking remnant of old dir-iteration
+
+-------------------------------------------------------------------
+Thu Dec 14 11:20:40 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 34
+  * Use AT_RANDOM for libexpat initialization to avoid a hidden
+    dependency in libexpat-hashtables on `/dev/urandom` at
+    runtime.
+  * Check for SELinux Enforcing-mode and honor its value.
+  * Support the new `ProcessFD` key in `GetConnectionCredentials()`.
+  * Loading files from a directory will not enumerate the files
+    in a predictable order rather than the pseudo-random order
+    returned by the kernel.
+
+-------------------------------------------------------------------
+Tue Dec 12 16:31:46 UTC 2023 - Callum Farmer <gmbr3@opensuse.org>
+
+- Update feature-suse-refuse-manual-start-stop.patch: prevent
+  killing user service aswell
+
+-------------------------------------------------------------------
+Fri Sep 29 08:49:36 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- Add BuildIgnore to break cycle with dbus-1.
+
+-------------------------------------------------------------------
+Thu Sep 21 07:56:38 UTC 2023 - Simon Lees <sflees@suse.de>
+
+- Make dbus-broker start by default as it is now the only supported
+  system bus.
+- Add feature-suse-refuse-manual-start-stop.patch We don't allow
+  dbus services to be restarted as it breaks many many things.
+
+-------------------------------------------------------------------
 Fri Feb  3 11:07:22 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 33
