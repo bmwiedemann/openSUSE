@@ -134,4 +134,14 @@
 </comment>
     <requestid>1164599</requestid>
   </revision>
+  <revision rev="10" vrev="5">
+    <srcmd5>ff14780513023c896772aa5c6543c55c</srcmd5>
+    <version>17.0.6</version>
+    <time>1724580591</time>
+    <user>anag+factory</user>
+    <comment>- Add minor version to Python shebangs. (boo#1212476)
+- Remove shebang and executable bit where not needed.
+</comment>
+    <requestid>1195706</requestid>
+  </revision>
 </revisionlist>
