@@ -1,7 +1,7 @@
 #
 # spec file for package kanjipad
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,7 @@ URL:            http://fishsoup.net/software/kanjipad/
 Source0:        http://fishsoup.net/software/kanjipad/kanjipad-2.0.0.tar.bz2
 Source1:        %name.desktop
 Patch0:         kanjipad.patch
+Patch1:         kanjipad-drop-disable-deprecated.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Summary:        Japanese Handwriting Recognition
 License:        GPL-2.0-or-later
@@ -48,22 +49,19 @@ pronunciation-based input methods often fail for rarely used
 characters.
 
 %prep
-%autosetup -p0
+%autosetup -p1
 
 %build
 make PREFIX=/usr OPTIMIZE="$RPM_OPT_FLAGS"
 
 %install
-rm -rf $RPM_BUILD_ROOT;
 make PREFIX=$RPM_BUILD_ROOT/usr install
 %suse_update_desktop_file -i %name Education Languages
 
-%clean
-rm -rf $RPM_BUILD_ROOT;
-
 %files
 %defattr(-,root,root)
-%doc COPYING README TODO ChangeLog
+%doc README TODO ChangeLog
+%license COPYING
 /usr/bin/*
 /usr/share/[^a]*
 /usr/share/applications/*

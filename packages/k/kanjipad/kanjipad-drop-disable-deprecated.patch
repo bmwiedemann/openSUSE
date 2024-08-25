@@ -1,0 +1,15 @@
+---
+ Makefile |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- a/Makefile
++++ b/Makefile
+@@ -1,7 +1,7 @@
+ OPTIMIZE=-g -Wall
+ #OPTIMIZE=-O2 
+ 
+-GTKINC=$(shell pkg-config --cflags gtk+-2.0) -DG_DISABLE_DEPRECATED  -DGDK_DISABLE_DEPRECATED
++GTKINC=$(shell pkg-config --cflags gtk+-2.0) -DG_DISABLE_DEPRECATED
+ GTKLIBS=$(shell pkg-config --libs gtk+-2.0)
+ GLIBLIBS=$(shell pkg-config --libs glib-2.0)
+ 

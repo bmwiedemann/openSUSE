@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Aug 24 06:22:26 UTC 2024 - Takashi Iwai <tiwai@suse.com>
+
+- Drop GDK_DISABLE_DEPRECATED for fixing the build with gcc14:
+  kanjipad-drop-disable-deprecated.patch
+- Move COPYING to %license
+
+-------------------------------------------------------------------
 Thu Feb 22 12:39:46 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

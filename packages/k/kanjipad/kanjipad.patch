@@ -1,5 +1,9 @@
---- Makefile.orig
-+++ Makefile
+---
+ Makefile |    8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+--- a/Makefile
++++ b/Makefile
 @@ -1,7 +1,7 @@
  OPTIMIZE=-g -Wall
  #OPTIMIZE=-O2 
