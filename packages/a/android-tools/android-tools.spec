@@ -53,6 +53,7 @@ BuildRequires:  pkgconfig(libunwind-generic)
 BuildRequires:  pkgconfig(libusb-1.0)
 BuildRequires:  pkgconfig(libzstd)
 BuildRequires:  pkgconfig(protobuf)
+BuildRequires:  pkgconfig(zlib)
 Requires:       android-udev-rules
 Suggests:       %{name}-mkbootimg = %{version}
 Suggests:       %{name}-partition = %{version}

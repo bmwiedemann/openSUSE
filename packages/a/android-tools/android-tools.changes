@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Aug 17 12:27:32 UTC 2024 - munix9@googlemail.com
+
+- Fix for Factory/TW: Add 'BuildRequires: pkgconfig(zlib)'
+
+-------------------------------------------------------------------
 Sat Jun 29 12:34:56 UTC 2024 - olaf@aepfle.de
 
 - Use clang15 to fix build in SLE15
