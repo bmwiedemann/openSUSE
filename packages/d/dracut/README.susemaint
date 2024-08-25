@@ -375,3 +375,4 @@ b5a35f9d feat(zfcp_rules): remove zfcp handling consolidated in s390-tools
 3fd43858 fix(mdraid): try to assemble the missing raid device
 61ab3386 feat(crypt): force the inclusion of crypttab entries with x-initrd.attach
 6611c6e4 fix(dracut-functions.sh): only return block devices from get_persistent_dev
+6c99c073 feat(systemd*): include systemd config files from /usr/lib/systemd
