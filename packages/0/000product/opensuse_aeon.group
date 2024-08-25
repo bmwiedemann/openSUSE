@@ -18,8 +18,9 @@
     <package name="crypto-policies" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
     <package name="dbus-1" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
     <package name="dbus-1-common" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
-    <package name="dbus-1-daemon" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
     <package name="dbus-1-tools" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
+    <package name="dbus-broker" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
+    <package name="dbus-broker-block-restart" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
     <package name="dracut" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
     <package name="elfutils" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
     <package name="file" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->

@@ -3097,7 +3097,7 @@ unsorted:
   - dbus-1-glib-devel-32bit 
   - dbus-1-glib-doc 
   - dbus-1-glib-tool 
-  - dbus-broker 
+  - dbus-broker-allow-restart 
   - dbus-sharp 
   - dbus-sharp-devel 
   - dbus-sharp-glib 
@@ -33063,7 +33063,6 @@ unsorted:
   - python312-libwrc 
   - python312-libxml2 
   - python312-license-expression 
-  - python312-ligo-lw 
   - python312-ligo-segments 
   - python312-ligotimegps 
   - python312-limnoria 
