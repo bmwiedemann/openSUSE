@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Aug 23 08:06:23 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.24.7:
+  + nlecomposition: Don't leak QoS events.
+
+-------------------------------------------------------------------
 Wed Aug 14 17:43:34 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.24.6:
