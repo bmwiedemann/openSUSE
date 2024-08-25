@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Aug 23 07:38:32 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.24.7:
+  + qmlgl6src: Fix crash when use-default-fbo is not set
+  + qt6glwindow:
+    - Fallback to GL_RGB on CopyTexImage2D error, fixing usage with
+      eglfs backend
+    - Only use GL_READ_FRAMEBUFFER when we do blits
+  + qt6: glwindow: Don't leak previously rendered buffer
+  + rtspsrc: expose property for forcing usage of non-compliant
+    URLs
+  + v4l2object: fix ARIB_STD_B67 colorimetry unmatch issue
+  + v4l2: Fix colorimetry mismatch for encoded format with RGB
+    color-matrix
+
+-------------------------------------------------------------------
 Wed Jul 31 13:42:53 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.24.6:
