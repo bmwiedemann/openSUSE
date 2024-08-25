@@ -20,7 +20,7 @@
 %define gst_branch 1.0
 %define gstreamer_req_version %(echo %{version} | sed -e "s/+.*//")
 Name:           gstreamer-plugins-base
-Version:        1.24.6
+Version:        1.24.7
 Release:        0
 Summary:        GStreamer Streaming-Media Framework Plug-Ins
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -31,6 +31,7 @@ Source1:        gstreamer-plugins-base.appdata.xml
 Source2:        baselibs.conf
 Patch1:         add_wayland_dep_to_tests.patch
 Patch2:         MR-221-video-anc-add-two-new-CEA-608-caption-formats.patch
+Patch3:         gst-plugins-base-decodebin3-collection-identity-check.patch
 
 BuildRequires:  Mesa-libGLESv3-devel
 BuildRequires:  cdparanoia-devel

@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Aug 23 07:15:20 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.24.7:
+  + pbutils: descriptions: use subsampling factor to get YUV
+    subsampling
+  + rtspconnection: Handle invalid argument properly
+  + urisourcebin:
+    - Actually drop EOS on old-school pad switch
+    - Don't hold lock when emitting about-to-finish
+  + gst-launch deadlock with two playbin3s
+  + xvimagesink: Fix crash in pool on error
+
+-------------------------------------------------------------------
+Wed Aug 21 15:43:45 UTC 2024 - Jonas Kvinge <jonaski@opensuse.org>
+
+- Add gst-plugins-base-decodebin3-collection-identity-check.patch:
+  - Fixes a assertion causing crash on track change. Upstream bug:
+    https://gitlab.freedesktop.org/gstreamer/gstreamer/-/issues/3742
+
+-------------------------------------------------------------------
 Wed Jul 31 13:41:59 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.24.6:
