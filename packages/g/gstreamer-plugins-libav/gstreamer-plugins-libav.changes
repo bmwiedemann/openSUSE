@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Aug 23 07:45:26 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.24.7:
+  + avdemux: Fix deadlock with FFmpeg 7.x when serialized events
+    are received from upstream while opening, such as e.g. APE
+    files with tags
+  + libav: return EOF when stream is out of data
+  + avdemux: Never return 0 from read function, which would lead to
+    infinite loops
+
+-------------------------------------------------------------------
 Wed Jul 31 13:38:24 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.24.6:
