@@ -17,16 +17,21 @@
 #
 
 
+%if 0%{?amzn}
+%bcond_with fish
+%else
+%bcond_without fish
+%endif
 Name:           ugrep
-Version:        6.4.1
+Version:        6.5.0
 Release:        0
 Summary:        Universal grep: a feature-rich grep implementation with focus on speed
 License:        BSD-3-Clause
 Group:          Productivity/File utilities
 URL:            https://github.com/Genivia/ugrep
 Source:         https://github.com/Genivia/ugrep/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  c++_compiler
 BuildRequires:  fdupes
+BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(bzip2)
 BuildRequires:  pkgconfig(libbrotlidec)
@@ -77,6 +82,7 @@ BuildArch:      noarch
 
 This package contains the zsh completion for ugrep.
 
+%if %{with fish}
 %package fish-completion
 Summary:        Fish completion for ugrep
 BuildRequires:  fish
@@ -88,6 +94,7 @@ BuildArch:      noarch
 %description fish-completion
 
 This package contains the fish completion for ugrep.
+%endif
 
 %prep
 %autosetup -p1
@@ -97,6 +104,9 @@ This package contains the fish completion for ugrep.
 	--enable-color \
 %if 0%{?suse_version} > 1599
 	--with-bzip3 \
+%endif
+%if !%{with fish}
+	--with-fish-completion-dir=no \
 %endif
 	%{nil}
 %make_build
@@ -123,8 +133,10 @@ This package contains the fish completion for ugrep.
 %license LICENSE.txt
 %{_datadir}/zsh/site-functions/*
 
+%if %{with fish}
 %files fish-completion
 %license LICENSE.txt
 %{_datadir}/fish/vendor_completions.d/*.fish
+%endif
 
 %changelog

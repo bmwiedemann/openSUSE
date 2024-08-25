@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Aug 24 07:09:34 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 6.5.0
+  * faster binary file checking with SIMD (SSE2/AVX2/NEON) UTF-8
+    validation
+  * new option --context-separator=SEP
+  * options -W and -X now also apply to --format fields %o and %O
+    to output hex
+  * ugrep-indexer option -z (indexes compressed files and
+    zip/7z/tar/cpio/pax archives) no longer indexes hidden
+    directories and files (i.e. "dotfiles") stored in archives, to
+    save space
+- make spec build on Amazon Linux 2023
+
+-------------------------------------------------------------------
 Fri Aug  9 17:04:45 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 6.4.1:
