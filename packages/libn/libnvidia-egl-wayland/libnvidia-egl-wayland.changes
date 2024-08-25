@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Aug 22 20:33:25 UTC 2024 - RN <R_Nik_C@proton.me>
+
+- update to version 1.1.16:
+  * Fix a crash due to an assertion firing during surface 
+    destruction, which affected Qt6 webengine
+  * Add an explicit dependency on the EGL headers
+
+-------------------------------------------------------------------
 Sat Aug 10 13:56:34 UTC 2024 - RN <R_Nik_C@proton.me>
 
 - update to version 1.1.15:
