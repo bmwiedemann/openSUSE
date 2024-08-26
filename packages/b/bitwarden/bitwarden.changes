@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Aug 25 14:20:05 UTC 2024 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- New upstream release 2024.8.0
+  * Allow biometric unlock of browser extension without requiring desktop app to be unlocked
+  * Add support for users to set a master password when their organization updates member decryption options
+  * Added support for multi-thread encryption to improve performance
+  * Add support for biometric unlock on Linux
+  * Add support for vault timeout on system lock on Linux
+
+-------------------------------------------------------------------
 Fri Jul 26 08:56:45 UTC 2024 - Bruno Pitrus <brunopitrus@hotmail.com>
 
 - New upstream release 2024.7.1

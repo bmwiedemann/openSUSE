@@ -21,7 +21,7 @@
 %bcond_with test_rust
 
 Name:       bitwarden
-Version:    2024.7.1
+Version:    2024.8.0
 Release:    0
 Summary:    A secure and free password manager for all of your devices
 Group:      Productivity/Security
@@ -41,15 +41,13 @@ BuildArch:      i686
 # created by OBS service
 Source0:   bitwarden-%{version}.tar
 
-# created by prepare-node-vendor.sh
-Source1:   node-vendor.tar.zst
+# created by prepare-vendor.sh
+Source1:   vendor.tar.zst
 
 Source2:   bitwarden.sh
 Source3:   bitwarden.desktop
 
-Source4:   vendor.tar.zst
-
-Source99:  prepare-node-vendor.sh
+Source99:  prepare-vendor.sh
 
 
 
@@ -146,11 +144,10 @@ rm -rvf libs/angular/src/scss/bwicons/fonts
 
 #Rust config
 cd apps/desktop/desktop_native
-tar --zstd -xf %SOURCE4
 rm -rf vendor/wayland-protocols/protocols
 ln -svT /usr/share/wayland-protocols vendor/wayland-protocols/protocols
 # https://blogs.gnome.org/mcatanzaro/2020/05/18/patching-vendored-rust-dependencies/
-for i in wayland-protocols; do
+for i in wayland-protocols libloading system-deps; do
 pushd vendor/$i
 jq -cj '.files={}' .cargo-checksum.json >tmp && mv tmp .cargo-checksum.json && popd
 done
