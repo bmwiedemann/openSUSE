@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Aug 26 11:14:14 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.1+git.20240801:
+  * mmc-utils: create mandir during install
+  * mmc-utils: Make functions static for local scope enforcement
+  * mmc-utils: Add Read-the-Docs configuration
+  * mmc-utils: Add documentation section
+  * mmc-utils: man 1 mmc-utils
+
+-------------------------------------------------------------------
 Thu Mar 14 13:50:50 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.1+git.20240307:

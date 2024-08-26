@@ -267,4 +267,17 @@
   * mmc-utils: Change version string to git hash</comment>
     <requestid>1158012</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>05cab28a8b1d1d54dba753df3cabd467</srcmd5>
+    <version>0.1+git.20240801</version>
+    <time>1724703069</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.1+git.20240801:
+  * mmc-utils: create mandir during install
+  * mmc-utils: Make functions static for local scope enforcement
+  * mmc-utils: Add Read-the-Docs configuration
+  * mmc-utils: Add documentation section
+  * mmc-utils: man 1 mmc-utils</comment>
+    <requestid>1196052</requestid>
+  </revision>
 </revisionlist>

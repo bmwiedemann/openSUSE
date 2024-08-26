@@ -17,13 +17,14 @@
 
 
 Name:           mmc-utils
-Version:        0.1+git.20240307
+Version:        0.1+git.20240801
 Release:        0
 Summary:        Tools for MMC/SD devices
 License:        GPL-2.0-only
 URL:            https://git.kernel.org/cgit/linux/kernel/git/cjb/mmc-utils.git/
 Source0:        %{name}-%{version}.tar.gz
 Source1:        https://www.gnu.org/licenses/gpl-2.0.txt
+BuildRequires:  sparse
 
 %description
 Userspace tools for controlling and querying MMC/SD storage devices
