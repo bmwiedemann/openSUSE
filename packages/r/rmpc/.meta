@@ -1,0 +1,6 @@
+<package name="rmpc" project="openSUSE:Factory">
+  <title>Rusty Music Player Client for MPD</title>
+  <description>RMPC is a beautiful, modern and configurable terminal based Music Player Daemon client with album art support. It is heavily inspired by ncmpcpp and ranger/lf file managers.</description>
+  <devel project="multimedia:apps" package="rmpc"/>
+  <url>https://github.com/mierak/rmpc</url>
+</package>
