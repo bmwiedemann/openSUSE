@@ -1132,4 +1132,31 @@
   * dmicheck: Don't check firmware version on anything but NVDIMM devices</comment>
     <requestid>1166652</requestid>
   </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>b13a6587a80cf87ed8a44168f4932260</srcmd5>
+    <version>24.07.00</version>
+    <time>1724703066</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 24.07.00:
+  * acpi: acpipld: downgrade the severity for PLD on the not connected port
+  * configure.ac: fix the autoreconf AC_PROG_LEX warning
+  * configure.ac: fix the autoreconf AC_PROG_LIBTOOL warning
+  * lib: fwts_version.h - update to V24.07.00
+  * debian: update changelog
+  * auto-packager: mkpackage.sh: remove mantic
+  * acpi: acpipld: modify the test description to aviod misunderstanding
+  * fwts-test: add regression tests for S3PT
+  * acpi: s3pt: add tests for ACPI S3PT table
+  * aspm: Only require ASPM for devices with an actual link
+  * fwts-test: cedt: sync up with adding raw data dump
+  * fwts-test: cedt: fix the wrong value of ENIW
+  * acpi: cedt: add raw data dump for interleave target list
+  * libfwtsiasl: fix parallel build with GNU Make &gt;= 4.4
+  * tpmevlog: Ensure EV_SEPARATOR recorded for PCRs 0-7
+  * efi_runtime: don't build dkms module for those kernels with efi_test
+  * auto-packer: mkpackage.sh: add oracular
+  * lib: fwts_log_html: fix the invalid printf format string
+  * autopackager: mkpackage.sh: remove lunar</comment>
+    <requestid>1196051</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Aug 26 10:35:08 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 24.07.00:
+  * acpi: acpipld: downgrade the severity for PLD on the not connected port
+  * configure.ac: fix the autoreconf AC_PROG_LEX warning
+  * configure.ac: fix the autoreconf AC_PROG_LIBTOOL warning
+  * lib: fwts_version.h - update to V24.07.00
+  * debian: update changelog
+  * auto-packager: mkpackage.sh: remove mantic
+  * acpi: acpipld: modify the test description to aviod misunderstanding
+  * fwts-test: add regression tests for S3PT
+  * acpi: s3pt: add tests for ACPI S3PT table
+  * aspm: Only require ASPM for devices with an actual link
+  * fwts-test: cedt: sync up with adding raw data dump
+  * fwts-test: cedt: fix the wrong value of ENIW
+  * acpi: cedt: add raw data dump for interleave target list
+  * libfwtsiasl: fix parallel build with GNU Make >= 4.4
+  * tpmevlog: Ensure EV_SEPARATOR recorded for PCRs 0-7
+  * efi_runtime: don't build dkms module for those kernels with efi_test
+  * auto-packer: mkpackage.sh: add oracular
+  * lib: fwts_log_html: fix the invalid printf format string
+  * autopackager: mkpackage.sh: remove lunar
+
+-------------------------------------------------------------------
 Wed Apr 10 11:14:52 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 24.03.00:
