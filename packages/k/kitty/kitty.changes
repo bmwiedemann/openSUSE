@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Aug 25 18:01:21 UTC 2024 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to 0.36.1:
+  * Allow specifying that the `cursor shape for unfocused windows`
+    should remain unchanged (#7728)
+  * MacOS Intel: Fix a crash in the choose-fonts kitten when displaying
+    previews of variable fonts (#7734)
+  * Remote control: Fix a regression causing an escape code to leak when using
+    @ launch with `--no-response` over the TTY (#7752)
+  * OSC 52: Fix a regression in the previous release that broke handling of
+    invalid base64 encoded data in OSC 52 requests (#7757)
+  * macOS: Fix a regression in the previous release that caused
+    `kitty --single-instance` to not work when using
+    `macos-launch-services-cmdline`
+
+-------------------------------------------------------------------
 Sat Aug 17 19:29:13 UTC 2024 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Adding 'BuildRequires: symbols-only-nerd-fonts' as it's looked for at build
