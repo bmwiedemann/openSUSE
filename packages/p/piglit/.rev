@@ -380,4 +380,41 @@
   * perf: port teximage perf-test from mesa demos</comment>
     <requestid>1190408</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>5fac411bf519a15d6c77263cbf1fd806</srcmd5>
+    <version>1~20240826</version>
+    <time>1724703072</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1~20240826:
+  * enqueue-fill-buffer: fill whole buffer with zeroes
+  * enqueue-fill-buffer: improve array formatting
+  * s3tc: require float-texture support
+  * piglit-util: Add a sanity check for subtests
+  * glsl: update recently added implicit matching test
+  * glsl: test function overload resolution
+  * glsl: check for implicit conversion error in glsl 1.10
+  * Reapply &quot;arb_bindless_texture: add another function param bindless test&quot;
+  * write-after-clear: Add testcases with the zero values
+  * Python: Drop Python 3.7 support
+  * Python: Test both 1.x and 2.x of NumPy
+  * generators: Support NumPy 2.x
+  * Python: Support Python 3.12 for tox
+  * tests/replayer: Use correct Path.exists() check
+  * Python: Lock numpy to 1.x
+  * fbo-blending-formats: skip unsupported formats
+  * traces: Lock pixelmatch version to pre-ES6
+  * arb_bindless_texture: test image/sampler constructors
+  * Revert &quot;arb_bindless_texture: add another function param bindless test&quot;
+  * arb_gpu_shader5: add linker version of function overloads test
+  * arb_bindless_texture: add another function param bindless test
+  * glsl: test function linking with implicit param conversions
+
+- Update to version 1~20240729:
+  * arb_bindless_texture: add basic function param bindless tests
+  * generated_tests: fix numpy overflow warnings that are errors in numpy 2.0
+  * generated_tests: print mako exceptions
+  * arb_texture_buffer_object: don't leak src strings
+  * gl-1.0: Add a test for glPushAttrib/glPopAttrib</comment>
+    <requestid>1196059</requestid>
+  </revision>
 </revisionlist>

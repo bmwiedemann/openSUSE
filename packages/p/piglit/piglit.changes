@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Mon Aug 26 11:19:37 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1~20240826:
+  * enqueue-fill-buffer: fill whole buffer with zeroes
+  * enqueue-fill-buffer: improve array formatting
+  * s3tc: require float-texture support
+  * piglit-util: Add a sanity check for subtests
+  * glsl: update recently added implicit matching test
+  * glsl: test function overload resolution
+  * glsl: check for implicit conversion error in glsl 1.10
+  * Reapply "arb_bindless_texture: add another function param bindless test"
+  * write-after-clear: Add testcases with the zero values
+  * Python: Drop Python 3.7 support
+  * Python: Test both 1.x and 2.x of NumPy
+  * generators: Support NumPy 2.x
+  * Python: Support Python 3.12 for tox
+  * tests/replayer: Use correct Path.exists() check
+  * Python: Lock numpy to 1.x
+  * fbo-blending-formats: skip unsupported formats
+  * traces: Lock pixelmatch version to pre-ES6
+  * arb_bindless_texture: test image/sampler constructors
+  * Revert "arb_bindless_texture: add another function param bindless test"
+  * arb_gpu_shader5: add linker version of function overloads test
+  * arb_bindless_texture: add another function param bindless test
+  * glsl: test function linking with implicit param conversions
+
+-------------------------------------------------------------------
+Tue Jul 30 08:02:53 UTC 2024 - mpluskal@suse.com
+
+- Update to version 1~20240729:
+  * arb_bindless_texture: add basic function param bindless tests
+  * generated_tests: fix numpy overflow warnings that are errors in numpy 2.0
+  * generated_tests: print mako exceptions
+  * arb_texture_buffer_object: don't leak src strings
+  * gl-1.0: Add a test for glPushAttrib/glPopAttrib
+  * ext_texture_format_bgra8888: test GL_BGRA8_EXT as well
+  * perf: port glsl-compile-time perf-test from mesa demos
+  * perf: port vertexrate perf-test from mesa demos
+  * perf: port vbo perf-test from mesa demos
+  * perf: port teximage perf-test from mesa demos
+
+-------------------------------------------------------------------
 Tue Jul 30 07:49:38 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1~20240729:
