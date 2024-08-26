@@ -108,4 +108,34 @@
     <comment></comment>
     <requestid>1084094</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>e2170f8414a9acacea0a2ffb2eb6fb90</srcmd5>
+    <version>1.8.0</version>
+    <time>1724703040</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.8.0:
+  * Accept input while validating
+  * Link to manpage
+  * Synchronize highlight position between outputs
+  * Fix Wayland object leaks when outputs are destroyed
+  * Configure SIGUSR1 with sigaction() instead of signal()
+  * Make self-pipe nonblocking to prevent deadlock
+  * Fix output-specific images when output reappears
+  * Fix retry behaviour in while loop with mlock()
+  * Correct for image orientation when loading image
+  * Install pam config only if pam is enabled
+  * Check setgid too after dropping root
+  * Read password hash before fork
+  * Add --ready-fd
+  * Drop support for layer-shell
+  * Don't send READY=1 for readiness notifications
+  * Remove unnecessary wl_display_roundtrip() call
+  * Check initial wl_display_roundtrip() return value
+  * Document --ready-fd in man page
+  * build: bump version to v1.8.0
+  * Don't drop the buffer until after surface commit
+  * Show cleared state when backspacing last character
+  * Clear password on ctrl+backpace and ctrl+delete</comment>
+    <requestid>1196012</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Mon Aug 26 06:54:53 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.8.0:
+  * Accept input while validating
+  * Link to manpage
+  * Synchronize highlight position between outputs
+  * Fix Wayland object leaks when outputs are destroyed
+  * Configure SIGUSR1 with sigaction() instead of signal()
+  * Make self-pipe nonblocking to prevent deadlock
+  * Fix output-specific images when output reappears
+  * Fix retry behaviour in while loop with mlock()
+  * Correct for image orientation when loading image
+  * Install pam config only if pam is enabled
+  * Check setgid too after dropping root
+  * Read password hash before fork
+  * Add --ready-fd
+  * Drop support for layer-shell
+  * Don't send READY=1 for readiness notifications
+  * Remove unnecessary wl_display_roundtrip() call
+  * Check initial wl_display_roundtrip() return value
+  * Document --ready-fd in man page
+  * build: bump version to v1.8.0
+  * Don't drop the buffer until after surface commit
+  * Show cleared state when backspacing last character
+  * Clear password on ctrl+backpace and ctrl+delete
+
+-------------------------------------------------------------------
 Tue May  2 15:06:21 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix version information: drop "v" prefix.
