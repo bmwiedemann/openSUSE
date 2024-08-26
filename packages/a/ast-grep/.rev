@@ -537,4 +537,17 @@
     <comment></comment>
     <requestid>1195224</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>c87d22be228fd3545e920e356086176b</srcmd5>
+    <version>0.26.3+0</version>
+    <time>1724703044</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.26.3:
+  * fix: fix wrong transformation indentation #1405
+  * fix: compare only kind for unnamed nodes #1419
+  * fix(deps): update dependency @swc/core to v1.7.18 9ecb02c
+  * fix(deps): update dependency @swc/core to v1.7.14 459d20a
+  * test: add test for transformation indentation e0bfaf2</comment>
+    <requestid>1196017</requestid>
+  </revision>
 </revisionlist>

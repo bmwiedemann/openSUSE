@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Aug 26 07:06:19 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.26.3:
+  * fix: fix wrong transformation indentation #1405
+  * fix: compare only kind for unnamed nodes #1419
+  * fix(deps): update dependency @swc/core to v1.7.18 9ecb02c
+  * fix(deps): update dependency @swc/core to v1.7.14 459d20a
+  * test: add test for transformation indentation e0bfaf2
+
+-------------------------------------------------------------------
 Tue Aug 20 23:25:15 UTC 2024 - Holger Rauch <holger.rauch@posteo.de>
 
 - Added ppc64le to the list of architectures (_constraints) 
