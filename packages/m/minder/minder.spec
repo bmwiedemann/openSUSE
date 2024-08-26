@@ -52,6 +52,7 @@ A program to create, develop, visualize, organize and manage ideas.
 %autosetup -n Minder-%{version}
 
 %build
+export CFLAGS="${optflags} -std=gnu89"
 %meson
 %meson_build
 

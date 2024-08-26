@@ -256,4 +256,12 @@
     <comment>- fix build by including the correct directory in %files (forwarded request 1193226 from rrahl0)</comment>
     <requestid>1193227</requestid>
   </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>d8eb44de44c4cff3fc42aa05e2736855</srcmd5>
+    <version>1.16.4</version>
+    <time>1724703015</time>
+    <user>anag+factory</user>
+    <comment>- fix gcc14 by using -std=gnu89 (forwarded request 1195960 from rrahl0)</comment>
+    <requestid>1195961</requestid>
+  </revision>
 </revisionlist>
