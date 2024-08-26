@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sun Aug 25 09:22:46 UTC 2024 - hui <sturm-fr@web.de>
+
+- update to 1.1.1:
+  * Fixed an incredibly severe bug, introduced very recently, that deletes all MIDI files belonging to active clips, when closing and discarding a       modified session without saving.
+  * Fixed MIDI clip recording when note-off events are missing or not transmitted.
+  * Fixed a relatively old crash-bug that manifests on undoing several free-hand drawn events (Edit/Select Mode/Edit Draw) in the MIDI clip editor       (aka. piano-roll).
+
+- update to 1.1.0:
+  * Fixed MIDI clip step-input when play-head is located beyond or after the end of the active looping/cycle range.
+  * ixed whole clip selection, implied after dragging the lasso over the left and before the beginning of timeline.
+  * Clip/Unlink is now a undo/redo-able command.
+  * All sessions now honor their designated resolution property (PPQN aka. ticks-per-beat) not subordinated to former ALSA sequencer queue anymore,     which runs on a higher resolution still.
+  * Avoid removing MIDI Track/Channel tree items from the Files view (eg. via direct [Del] keyboard shortcut when in focus).
+  * Fixed a probable old issue of spilled and duplicated shortcut entries (Help/Shortcuts...) between main tracks/timeline and MIDI clip editor         (aka. piano-roll) windows.
+  * Fixed fade-in/out curve types of clips when copy-pasted over the main tracks timeline.
+  * Fixed general plugin scan/cache optimization in face of new plugins added and/or removed.
+  * Fixed VST3 Plug-in main/active buses channel count inventory; also, on updating host parameters, only save and load custom modified parameter       values from current state.
+  * Fixed a misssing display and port-name filtering issue, that was introduced recently to the MIDI Connections widget only.
+
+-------------------------------------------------------------------
 Tue Jun 25 16:18:09 UTC 2024 - Dave Plater <davejplater@gmail.com>
 
 - Happy first birthday qtractor version 1.0.0

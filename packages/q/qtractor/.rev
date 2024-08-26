@@ -534,4 +534,12 @@ Fixes build against latest qt5 with qtractor-QAction.patch.</comment>
     <comment>Recommend doc package</comment>
     <requestid>1183285</requestid>
   </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>1827d4fbe1be3261a624a69acf2576e9</srcmd5>
+    <version>1.1.1</version>
+    <time>1724703070</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1196058</requestid>
+  </revision>
 </revisionlist>
