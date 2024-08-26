@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-template
-Version:        0.1.0b4033655
+Version:        0.1.0b4047095
 Release:        0
 Summary:        Microsoft Azure Template Package Client Library for Python
 License:        MIT
