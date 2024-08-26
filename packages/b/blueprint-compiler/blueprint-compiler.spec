@@ -17,16 +17,16 @@
 
 
 Name:           blueprint-compiler
-Version:        0.12.0
+Version:        0.14.0
 Release:        0
 Summary:        A markup language for GTK user interfaces
 License:        LGPL-3.0-or-later
 URL:            https://gitlab.gnome.org/jwestman/blueprint-compiler
-Source:         https://gitlab.gnome.org/jwestman/blueprint-compiler/-/archive/v%{version}/%{name}-v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source:         %{url}/-/archive/v%{version}/%{name}-v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  meson
-# TESTS
+BuildRequires:  python3-Sphinx
 BuildRequires:  python3-gobject
-BuildRequires:  gobject-introspection-devel
+BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gtk4)
 BuildRequires:  pkgconfig(libadwaita-1)
 Requires:       python3-gobject
@@ -43,10 +43,11 @@ Requires:       blueprint-compiler = %{version}
 A markup language for GTK user interface files.
 
 %prep
-%setup -qn %{name}-v%{version}
+%autosetup -n %{name}-v%{version}
 
 %build
-%meson
+%meson \
+  -Ddocs=true
 %meson_build
 
 %install
@@ -54,7 +55,6 @@ A markup language for GTK user interface files.
 
 sed -i '1s|#!/usr/bin/env |#!/usr/bin/|' %{buildroot}%{_bindir}/blueprint-compiler
 
-# Broken tests
 #%check
 #python3 -m unittest
 
