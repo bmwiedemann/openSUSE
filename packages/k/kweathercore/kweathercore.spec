@@ -16,20 +16,20 @@
 #
 
 
-%define kf6_version 5.246.0
+%define kf6_version 6.3.0
 %define qt6_version 6.6.0
 
 %bcond_without released
 Name:           kweathercore
-Version:        0.8.0
+Version:        24.08.0
 Release:        0
 Summary:        Library to facilitate retrieval of weather information
 License:        LGPL-2.0-or-later
 URL:            https://invent.kde.org/libraries/kweathercore
-Source0:        https://download.kde.org/stable/%{name}/%{version}/%{name}-%{version}.tar.xz
+Source0:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/%{name}/%{version}/%{name}-%{version}.tar.xz.sig
-Source2:        kweathercore.keyring
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
 %endif
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  doxygen

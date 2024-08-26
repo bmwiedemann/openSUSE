@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Aug 19 07:35:38 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.08.0/
+- Changes since 0.8.0:
+  * Remove the unused alert feed handling
+  * Use automatic release service versioning
+  * Make DailyWeatherForecast read-only from QML
+  * Make daily/hourly forecast types implicitly shared
+  * Remove DailyWeatherForecast::isValid
+  * Provide localized country names for location search results
+  * Don't convert CAP alert info enums to strings
+  * Clean up value type move operations
+  * Prevent unnecessary std::vector copies
+  * Use Qt6Core_QCH instead of 5 with ecm_add_qc()
+  * Request location permissions before requesting the current location
+
+-------------------------------------------------------------------
 Sat Feb 10 15:51:17 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 0.8.0

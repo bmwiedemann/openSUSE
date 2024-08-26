@@ -16,4 +16,12 @@
   * The library now needs Qt6 to build</comment>
     <requestid>1151225</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a3c634714ecf3bfd2f73cc6d042798d7</srcmd5>
+    <version>24.08.0</version>
+    <time>1724702997</time>
+    <user>anag+factory</user>
+    <comment>KDE release gear 24.08.0</comment>
+    <requestid>1195559</requestid>
+  </revision>
 </revisionlist>
