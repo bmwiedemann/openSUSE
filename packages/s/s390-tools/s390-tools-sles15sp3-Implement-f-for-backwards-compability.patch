@@ -9,39 +9,34 @@ version of YaST we should accept this option, too.
 
 Signed-off-by: Hannes Reinecke <hare@suse.com>
 ---
- dasdfmt/dasdfmt.8 | 6 +++++-
- dasdfmt/dasdfmt.c | 8 ++++++++
- 2 files changed, 13 insertions(+), 1 deletion(-)
+ dasdfmt/dasdfmt.8 |    5 ++++-
+ dasdfmt/dasdfmt.c |   10 ++++++++++
+ 2 files changed, 14 insertions(+), 1 deletion(-)
 
-Index: s390-tools-2.30.0/dasdfmt/dasdfmt.8
-===================================================================
---- s390-tools-2.30.0.orig/dasdfmt/dasdfmt.8
-+++ s390-tools-2.30.0/dasdfmt/dasdfmt.8
-@@ -11,7 +11,7 @@ dasdfmt \- formatting of DASD (ECKD) dis
+--- a/dasdfmt/dasdfmt.8
++++ b/dasdfmt/dasdfmt.8
+@@ -11,7 +11,7 @@
  .br
-         [-r \fIcylinder\fR] [-b \fIblksize\fR] [-l \fIvolser\fR] [-d \fIlayout\fR]
+         [\-r \fIcylinder\fR] [\-b \fIblksize\fR] [\-l \fIvolser\fR] [\-d \fIlayout\fR]
  .br
--        [-L] [-V] [-F] [-k] [-C] [-M \fImode\fR] \fIdevice\fR [\fIdevice\fR]
-+        [-L] [-V] [-F] [-k] [-C] [-M \fImode\fR] [-f \fIdevice\fR] [\fIdevice\fR]
+-        [\-L] [\-V] [\-F] [\-k] [\-C] [\-M \fImode\fR] \fIdevice\fR [\fIdevice\fR]
++        [\-L] [\-V] [\-F] [\-k] [\-C] [\-M \fImode\fR] [-f \fIdevice\fR] [\fIdevice\fR]
  
  .SH DESCRIPTION
- \fBdasdfmt\fR formats one or several DASD (ECKD) disk drive to prepare it
-@@ -42,6 +42,10 @@ out, what it \fBwould\fR do.
- Increases verbosity.
- 
+ \fBdasdfmt\fR formats one or several  DASD (ECKD) disk drive(s) to prepare them
+@@ -39,6 +39,9 @@
  .TP
+ \fB\-v\fR
+ Increases verbosity.
++.TP
 +\fB-f\fR \fIdevice\fR or \fB--device\fR=\fIdevice\fR
 +Specify device to format. For backwards compability only.
-+
-+.TP
- \fB-y\fR
- Start formatting without further user-confirmation.
  
-Index: s390-tools-2.30.0/dasdfmt/dasdfmt.c
-===================================================================
---- s390-tools-2.30.0.orig/dasdfmt/dasdfmt.c
-+++ s390-tools-2.30.0/dasdfmt/dasdfmt.c
-@@ -113,6 +113,10 @@ static struct util_opt opt_vec[] = {
+ .TP
+ \fB\-y\fR
+--- a/dasdfmt/dasdfmt.c
++++ b/dasdfmt/dasdfmt.c
+@@ -113,6 +113,10 @@
  		.desc = "Format devices in parallel",
  		.flags = UTIL_OPT_FLAG_NOLONG,
  	},
@@ -52,7 +47,7 @@ Index: s390-tools-2.30.0/dasdfmt/dasdfmt.c
  	UTIL_OPT_SECTION("FORMAT OPTIONS"),
  	{
  		.option = { "blocksize", required_argument, NULL, 'b' },
-@@ -1662,6 +1666,12 @@ int main(int argc, char *argv[])
+@@ -1649,6 +1653,12 @@
  			}
  			g.layout_specified = 1;
  			break;

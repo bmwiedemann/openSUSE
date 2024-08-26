@@ -33,7 +33,7 @@
 %endif
 
 Name:           s390-tools
-Version:        2.31.0
+Version:        2.34.0
 Release:        0
 Summary:        S/390 tools like zipl and dasdfmt for s390x (plus selected tools for x86_64)
 License:        MIT
@@ -153,13 +153,8 @@ Patch910:       s390-tools-sles15sp1-11-zdev-Do-not-call-zipl-on-initrd-update.p
 Patch911:       s390-tools-sles15sp5-remove-no-pie-link-arguments.patch
 Patch912:       s390-tools-ALP-zdev-live.patch
 Patch913:       s390-tools-sles15sp6-kdump-initrd-59-zfcp-compat-rules.patch
-Patch914:       s390-tools-sles15sp6-genprotimg-makefile.patch
-Patch915:       s390-tools-slfo-01-parse-ipl-device-for-activation.patch
-### SE-tooling: New IBM host-key subject locality (s390-tools)
-Patch916:       s390-tools-sles15sp5-01-rust-pv-support-Armonk-in-IBM-signing-key-subject.patch
-Patch917:       s390-tools-sles15sp6-02-genprotimg-support-Armonk-in-IBM-signing-key-subject.patch
-Patch918:       s390-tools-sles15sp6-03-libpv-support-Armonk-in-IBM-signing-key-subject.patch
-Patch919:       s390-tools-sles15sp6-04-pvattest-Fix-root-ca-parsing.patch
+Patch914:       s390-tools-slfo-01-parse-ipl-device-for-activation.patch
+Patch915:       s390-tools-2.34-Fix-Rust-compilation-errors.patch
 ###
 
 BuildRequires:  curl-devel
@@ -184,6 +179,7 @@ BuildRequires:  zlib-devel-static
 ### s390x
 %ifarch s390x
 BuildRequires:  kernel-zfcpdump
+BuildRequires:  perl-Bootloader >= 0.4.15
 BuildRequires:  qclib-devel-static
 %endif
 ### Cargo

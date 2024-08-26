@@ -7,36 +7,32 @@ Allow the user to specify several devices as arguments to dasdfmt.
 
 Signed-off-by: Hannes Reinecke <hare@suse.com>
 ---
- dasdfmt/dasdfmt.8 |   5 +-
- dasdfmt/dasdfmt.c | 175 ++++++++++++++++++++++++++++++------------------------
- 2 files changed, 100 insertions(+), 80 deletions(-)
+ dasdfmt/dasdfmt.8 |    6 -
+ dasdfmt/dasdfmt.c |  197 +++++++++++++++++++++++++++++++-----------------------
+ 2 files changed, 119 insertions(+), 84 deletions(-)
 
-Index: s390-tools-2.30.0/dasdfmt/dasdfmt.8
-===================================================================
---- s390-tools-2.30.0.orig/dasdfmt/dasdfmt.8
-+++ s390-tools-2.30.0/dasdfmt/dasdfmt.8
-@@ -11,14 +11,15 @@ dasdfmt \- formatting of DASD (ECKD) dis
+--- a/dasdfmt/dasdfmt.8
++++ b/dasdfmt/dasdfmt.8
+@@ -11,14 +11,14 @@
  .br
-         [-r \fIcylinder\fR] [-b \fIblksize\fR] [-l \fIvolser\fR] [-d \fIlayout\fR]
+         [\-r \fIcylinder\fR] [\-b \fIblksize\fR] [\-l \fIvolser\fR] [\-d \fIlayout\fR]
  .br
--        [-L] [-V] [-F] [-k] [-C] [-M \fImode\fR] \fIdevice\fR
-+        [-L] [-V] [-F] [-k] [-C] [-M \fImode\fR] \fIdevice\fR [\fIdevice\fR]
+-        [\-L] [\-V] [\-F] [\-k] [\-C] [\-M \fImode\fR] \fIdevice\fR
++        [\-L] [\-V] [\-F] [\-k] [\-C] [\-M \fImode\fR] \fIdevice\fR [\fIdevice\fR]
  
  .SH DESCRIPTION
 -\fBdasdfmt\fR formats a DASD (ECKD) disk drive to prepare it
-+\fBdasdfmt\fR formats one or several DASD (ECKD) disk drive to prepare it
++\fBdasdfmt\fR formats one or several  DASD (ECKD) disk drive(s) to prepare them
  for usage with Linux for S/390.
  The \fIdevice\fR is the node of the device (e.g. '/dev/dasda').
  Any device node created by udev for kernel 2.6 can be used
- (e.g. '/dev/dasd/0.0.b100/disc').
-+It is possible to specify up to 512 devices.
+-(e.g. '/dev/dasd/0.0.b100/disc').
++(e.g. '/dev/dasd/0.0.b100/disc'). It is possible to specify up to 512 devices.
  .br
  
  \fBWARNING\fR: Careless usage of \fBdasdfmt\fR can result in
-Index: s390-tools-2.30.0/dasdfmt/dasdfmt.c
-===================================================================
---- s390-tools-2.30.0.orig/dasdfmt/dasdfmt.c
-+++ s390-tools-2.30.0/dasdfmt/dasdfmt.c
+--- a/dasdfmt/dasdfmt.c
++++ b/dasdfmt/dasdfmt.c
 @@ -25,6 +25,8 @@
  
  #include "dasdfmt.h"
@@ -46,7 +42,7 @@ Index: s390-tools-2.30.0/dasdfmt/dasdfmt.c
  #define BUSIDSIZE  8
  #define SEC_PER_DAY (60 * 60 * 24)
  #define SEC_PER_HOUR (60 * 60)
-@@ -57,7 +59,9 @@ static const struct util_prg prg = {
+@@ -57,7 +59,9 @@
  static struct dasdfmt_globals {
  	dasd_information2_t dasd_info;
  	char *dev_path; /* device path entered by user */
@@ -56,7 +52,7 @@ Index: s390-tools-2.30.0/dasdfmt/dasdfmt.c
  	int   verbosity;
  	int   testmode;
  	int   withoutprompt;
-@@ -484,15 +488,15 @@ static void program_interrupt_signal(int
+@@ -484,15 +488,15 @@
  	program_interrupt_in_progress = 1;
  
  	if (disk_disabled) {
@@ -75,7 +71,7 @@ Index: s390-tools-2.30.0/dasdfmt/dasdfmt.c
  	} else {
  		printf("Exiting...\n");
  	}
-@@ -512,9 +516,6 @@ static void get_device_name(int optind,
+@@ -512,9 +516,6 @@
  	unsigned int maj, min;
  	struct stat dev_stat;
  
@@ -85,7 +81,7 @@ Index: s390-tools-2.30.0/dasdfmt/dasdfmt.c
  	if (optind >= argc)
  		error("No device specified!");
  
-@@ -610,10 +611,10 @@ static void check_disk(void)
+@@ -610,10 +611,10 @@
  		error("the ioctl call to retrieve read/write status information failed: %s",
  		      strerror(err));
  	if (ro)
@@ -98,7 +94,7 @@ Index: s390-tools-2.30.0/dasdfmt/dasdfmt.c
  	}
  	if (strncmp(g.dasd_info.type, "ECKD", 4) != 0) {
  		warnx("Unsupported disk type");
-@@ -700,7 +701,7 @@ static void set_geo(unsigned int *cylind
+@@ -700,7 +701,7 @@
  	struct dasd_eckd_characteristics *characteristics;
  
  	if (g.verbosity > 0)
@@ -107,7 +103,7 @@ Index: s390-tools-2.30.0/dasdfmt/dasdfmt.c
  
  	characteristics = (struct dasd_eckd_characteristics *)
  				&g.dasd_info.characteristics;
-@@ -728,13 +729,13 @@ static void set_label(volume_label_t *vl
+@@ -728,13 +729,13 @@
  			       "Cylinders above this limit will not be"
  			       " accessible as a linux partition!\n"
  			       "Type \"yes\" to continue, no will leave"
@@ -124,7 +120,7 @@ Index: s390-tools-2.30.0/dasdfmt/dasdfmt.c
  				return;
  			}
  		}
-@@ -872,7 +873,7 @@ static void check_disk_format(unsigned i
+@@ -872,7 +873,7 @@
  	check_params->start_unit = 0;
  	check_params->stop_unit = (cylinders * heads) - 1;
  
@@ -133,7 +129,7 @@ Index: s390-tools-2.30.0/dasdfmt/dasdfmt.c
  
  	if (g.testmode) {
  		printf("Test mode active, omitting ioctl.\n");
-@@ -896,7 +897,7 @@ static void check_disk_format(unsigned i
+@@ -896,7 +897,7 @@
  	if (process_tracks(cylinders, heads, check_params))
  		error("Use --mode=full to perform a clean format.");
  
@@ -142,7 +138,7 @@ Index: s390-tools-2.30.0/dasdfmt/dasdfmt.c
  }
  
  /*
-@@ -946,8 +947,8 @@ static void dasdfmt_print_info(volume_la
+@@ -946,8 +947,8 @@
  
  	printf("Device Type: %s Provisioned\n",
  	       g.ese ? "Thinly" : "Fully");
@@ -153,7 +149,7 @@ Index: s390-tools-2.30.0/dasdfmt/dasdfmt.c
  	printf("   Device number of device : 0x%x\n", g.dasd_info.devno);
  	printf("   Labelling device        : %s\n",
  	       (g.writenolabel) ? "no" : "yes");
-@@ -1012,7 +1013,7 @@ static void dasdfmt_write_labels(volume_
+@@ -1012,7 +1013,7 @@
  	int ipl1_record_len, ipl2_record_len;
  
  	if (g.verbosity > 0)
@@ -162,7 +158,7 @@ Index: s390-tools-2.30.0/dasdfmt/dasdfmt.c
  
  	get_blocksize(&blksize);
  
-@@ -1030,7 +1031,7 @@ static void dasdfmt_write_labels(volume_
+@@ -1030,7 +1031,7 @@
  
  	/* write empty bootstrap (initial IPL records) */
  	if (g.verbosity > 0)
@@ -171,7 +167,7 @@ Index: s390-tools-2.30.0/dasdfmt/dasdfmt.c
  
  	/*
  	 * Note: ldl labels do not contain the key field
-@@ -1089,7 +1090,7 @@ static void dasdfmt_write_labels(volume_
+@@ -1089,7 +1090,7 @@
  	label_position = g.dasd_info.label_block * blksize;
  
  	if (g.verbosity > 0)
@@ -180,7 +176,7 @@ Index: s390-tools-2.30.0/dasdfmt/dasdfmt.c
  
  	rc = lseek(fd, label_position, SEEK_SET);
  	if (rc != label_position) {
-@@ -1120,7 +1121,7 @@ static void dasdfmt_write_labels(volume_
+@@ -1120,7 +1121,7 @@
  	}
  
  	if (g.verbosity > 0)
@@ -189,16 +185,16 @@ Index: s390-tools-2.30.0/dasdfmt/dasdfmt.c
  
  	label_position = (VTOC_START_CC * heads + VTOC_START_HH) *
  		geo.sectors * blksize;
-@@ -1242,7 +1243,7 @@ static int dasdfmt_release_space(void)
+@@ -1242,7 +1243,7 @@
  	if (!g.ese || g.no_discard)
- 		return 0;
+ 		return;
  
 -	printf("Releasing space for the entire device...\n");
 +	printf("Releasing space for the entire %s device...\n", g.dev_path);
  	err = dasd_release_space(g.dev_node, &r);
- 	/*
- 	 * Warn or Error on failing RAS depending on QUICK mode set explicitly or automatically
-@@ -1270,20 +1271,21 @@ static void dasdfmt_prepare_and_format(u
+ 	if (err)
+ 		error("Could not release space: %s", strerror(err));
+@@ -1261,20 +1262,21 @@
  	int err;
  
  	if (!(g.withoutprompt && g.verbosity < 1))
@@ -225,7 +221,7 @@ Index: s390-tools-2.30.0/dasdfmt/dasdfmt.c
  
  	/* except track 0 from standard formatting procss */
  	p->start_unit = 1;
-@@ -1291,19 +1293,19 @@ static void dasdfmt_prepare_and_format(u
+@@ -1282,19 +1284,19 @@
  	process_tracks(cylinders, heads, p);
  
  	if (g.verbosity > 0)
@@ -248,7 +244,7 @@ Index: s390-tools-2.30.0/dasdfmt/dasdfmt.c
  
  	disk_enable();
  }
-@@ -1315,18 +1317,18 @@ static void dasdfmt_expand_format(unsign
+@@ -1306,18 +1308,18 @@
  				  format_data_t *p)
  {
  	if (!(g.withoutprompt && g.verbosity < 1))
@@ -271,7 +267,7 @@ Index: s390-tools-2.30.0/dasdfmt/dasdfmt.c
  
  	if (g.verbosity > 0)
  		printf("Re-accessing the device...\n");
-@@ -1435,16 +1437,16 @@ static void do_format_dasd(volume_label_
+@@ -1426,16 +1428,16 @@
  		if (!g.withoutprompt) {
  			printf("\n");
  			if (mode != EXPAND)
@@ -292,7 +288,7 @@ Index: s390-tools-2.30.0/dasdfmt/dasdfmt.c
  				return;
  			}
  		}
-@@ -1466,12 +1468,12 @@ static void do_format_dasd(volume_label_
+@@ -1453,12 +1455,12 @@
  			break;
  		}
  
@@ -307,7 +303,7 @@ Index: s390-tools-2.30.0/dasdfmt/dasdfmt.c
  		err = dasd_reread_partition_table(g.dev_node, 5);
  		if (err != 0) {
  			ERRMSG("%s: error during rereading the partition "
-@@ -1485,7 +1487,7 @@ static void do_format_dasd(volume_label_
+@@ -1472,7 +1474,7 @@
  static void eval_format_mode(void)
  {
  	if (!g.force && g.mode_specified && g.ese && mode == EXPAND) {
@@ -316,7 +312,7 @@ Index: s390-tools-2.30.0/dasdfmt/dasdfmt.c
  		warnx("Format mode 'expand' is not feasible.");
  		error("Use --mode=full or --mode=quick to perform a clean format");
  	}
-@@ -1508,20 +1510,70 @@ static void set_prog_name(char *s)
+@@ -1495,20 +1497,70 @@
  		prog_name = p + 1;
  }
  
@@ -391,7 +387,7 @@ Index: s390-tools-2.30.0/dasdfmt/dasdfmt.c
  
  	/* Establish a handler for interrupt signals. */
  	signal(SIGTERM, program_interrupt_signal);
-@@ -1657,6 +1709,9 @@ int main(int argc, char *argv[])
+@@ -1644,6 +1696,9 @@
  			break; /* exit loop if finished */
  	}
  
@@ -401,7 +397,7 @@ Index: s390-tools-2.30.0/dasdfmt/dasdfmt.c
  	CHECK_SPEC_MAX_ONCE(g.blksize_specified, "blocksize");
  	CHECK_SPEC_MAX_ONCE(g.labelspec, "label");
  	CHECK_SPEC_MAX_ONCE(g.writenolabel, "omit-label-writing flag");
-@@ -1675,48 +1730,28 @@ int main(int argc, char *argv[])
+@@ -1662,48 +1717,28 @@
  	if (g.print_hashmarks)
  		PARSE_PARAM_INTO(g.hashstep, hashstep_str, 10, "hashstep");
  

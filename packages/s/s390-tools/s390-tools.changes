@@ -1,4 +1,71 @@
 -------------------------------------------------------------------
+Mon Aug 26 09:17:17 UTC 2024 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+* Applied a patch to fix Rust compilation errors (bsc#1229461)
+  - s390-tools-2.34-Fix-Rust-compilation-errors.patch
+  - Fix: s390-tools: Rust compilation errors (s390_pv_core), build fails with
+    "error: unnecessary qualification"
+* Added BuildRequieres in the .spec file
+  - perl-Bootloader >= 0.4.15 
+
+-------------------------------------------------------------------
+Mon Aug 19 08:28:34 UTC 2024 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+* Upgrade s390-tools to version 2.34 (jsc#PED-3223,jsc#PED-9591)
+*** v2.34.0
+* Changes of existing tools:
+  - ap_tools/ap-check: Add support for vfio-ap dynamic configuration
+  - dbginfo.sh: Update/Add additional DASD data collection
+  - dumpconf: Add new parameter 'SCP_DATA' for SCSI/NVMe/ECKD dump devices
+  - libutil: Make formatted meta-data configurable
+  - s390-tools: Replace 'which' with built-in 'command -v'
+  - zdump/dfi_elf: Support core dumps of vr-kernels
+* Bug Fixes:
+  - chzdev: Fix warning about failed ATTR writes by udev
+  - rust/pv: Try again if first CRL-URI is invalid
+  - rust/pvattest: Add short option for --arpk
+  - zdump: Fix 'zgetdump -i' ioctl error on s390 formatted dump file
+*** v2.33.1
+* Bug Fixes:
+  - s390-tools: Fix formatting and typos in README.md
+  - s390-tools: Fix release string
+*** v2.33.0
+* Add new tools / libraries:
+  - chpstat: New tool for displaying channel path statistics
+  - libutil: Add output format helpers(util_fmt: JSON, JSON-SEQ, CSV, text pairs)
+* Changes of existing tools / libraries:
+  - chzdev: Add --is-owner to identify files created by zdev
+  - dasdfmt: Change default mode to always use full-format (Note: affects ESE DASD)
+  - libap: Significantly reduce delay time between file lock retries
+  - pvattest: Rewrite from C to Rust
+  - pvattest: Support additional data & user-data
+  - rust/pv: Support for Attestation
+* Bug Fixes:
+  - chreipl: Improve disk type detection when running under QEMU
+  - dbginfo.sh: Use POSIX option with uname
+  - s390-tools: Fix missing hyphen escapes in the man page for many tools
+  - zipl/src: Fix bugs in disk_get_info() reproducible in corner cases
+ *** v2.32.0
+* Changes of existing tools:
+  - cpumf/lscpumf: add support for machine type 3932
+  - genprotimg, pvattest, and pvsecret accept IBM signing key with Armonk as
+    subject locality
+  - zdump/zipl: Support for List-Directed dump from ECKD DASD
+  - zkey: Detect FIPS mode and generate PBKDF for luksFormat according to it
+* Bug Fixes:
+  - dbginfo.sh: dash compatible copy sequence
+  - rust/pv_core: Fix UvDeviceInfo::get() method
+  - zipl/src: Fix leak of files if run with a broken configuration
+  - zkey: Fix convert command to accept only keys of type CCA-AESDATA
+* Revendored vendor.tar.gz
+* Removed obsolete patches
+  - s390-tools-sles15sp5-01-rust-pv-support-Armonk-in-IBM-signing-key-subject.patch
+  - s390-tools-sles15sp6-02-genprotimg-support-Armonk-in-IBM-signing-key-subject.patch
+  - s390-tools-sles15sp6-03-libpv-support-Armonk-in-IBM-signing-key-subject.patch
+  - s390-tools-sles15sp6-04-pvattest-Fix-root-ca-parsing.patch
+  - s390-tools-sles15sp6-genprotimg-makefile.patch
+
+-------------------------------------------------------------------
 Thu Jul 11 14:56:34 UTC 2024 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Applied a new patch (bsc#1227602)

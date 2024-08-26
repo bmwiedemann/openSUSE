@@ -5,12 +5,10 @@ Subject: [PATCH] parse ipl device for activation
 
 ported from dracut modules
 ---
- zdev/dracut/95zdev/parse-dasd.sh | 20 ++++++++++--
- zdev/dracut/95zdev/parse-zfcp.sh | 56 +++++++++++++++++++++-----------
+ zdev/dracut/95zdev/parse-dasd.sh |   20 +++++++++++--
+ zdev/dracut/95zdev/parse-zfcp.sh |   56 +++++++++++++++++++++++++--------------
  2 files changed, 54 insertions(+), 22 deletions(-)
 
-diff --git a/zdev/dracut/95zdev/parse-dasd.sh b/zdev/dracut/95zdev/parse-dasd.sh
-index a97801fe..cce0435a 100644
 --- a/zdev/dracut/95zdev/parse-dasd.sh
 +++ b/zdev/dracut/95zdev/parse-dasd.sh
 @@ -10,6 +10,8 @@
@@ -22,7 +20,7 @@ index a97801fe..cce0435a 100644
  # shellcheck source=/dev/null
  type zdev_parse_dasd_list > /dev/null 2>&1 || . /lib/s390-tools/zdev-from-dasd_mod.dasd
  
-@@ -27,9 +29,21 @@ zdev_vinfo() {
+@@ -27,9 +29,21 @@
  
  zdev_parse_rd_dasd() {
      local _zdev_dasd _zdev_dasd_list
@@ -47,8 +45,6 @@ index a97801fe..cce0435a 100644
      echo "$_zdev_dasd_list"
  }
  
-diff --git a/zdev/dracut/95zdev/parse-zfcp.sh b/zdev/dracut/95zdev/parse-zfcp.sh
-index 715aa009..e4fef0b9 100644
 --- a/zdev/dracut/95zdev/parse-zfcp.sh
 +++ b/zdev/dracut/95zdev/parse-zfcp.sh
 @@ -12,25 +12,43 @@

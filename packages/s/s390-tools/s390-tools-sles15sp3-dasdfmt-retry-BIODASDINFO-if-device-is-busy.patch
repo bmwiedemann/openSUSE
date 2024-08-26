@@ -16,14 +16,12 @@ References: bsc#937340
 
 Signed-off-by: Hannes Reinecke <hare@suse.de>
 ---
- dasdfmt/dasdfmt.c | 21 ++++++++++++++++++---
- 1 file changed, 18 insertions(+), 3 deletions(-)
+ dasdfmt/dasdfmt.c |   19 ++++++++++++++++++-
+ 1 file changed, 18 insertions(+), 1 deletion(-)
 
-Index: s390-tools-2.30.0/dasdfmt/dasdfmt.c
-===================================================================
---- s390-tools-2.30.0.orig/dasdfmt/dasdfmt.c
-+++ s390-tools-2.30.0/dasdfmt/dasdfmt.c
-@@ -621,7 +621,7 @@ static void check_layout(unsigned int in
+--- a/dasdfmt/dasdfmt.c
++++ b/dasdfmt/dasdfmt.c
+@@ -621,7 +621,7 @@
   */
  static void check_disk(void)
  {
@@ -32,7 +30,7 @@ Index: s390-tools-2.30.0/dasdfmt/dasdfmt.c
  	bool ro;
  
  	err = dasd_is_ro(g.dev_node, &ro);
-@@ -631,6 +631,23 @@ static void check_disk(void)
+@@ -631,6 +631,23 @@
  	if (ro)
  		error("Disk %s is read only!", g.dev_path);
  	if (!g.force) {
