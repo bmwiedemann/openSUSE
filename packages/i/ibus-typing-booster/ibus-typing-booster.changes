@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Aug 25 23:10:15 UTC 2024 - maiku.fabian@gmail.com
+
+- Update to 2.25.15
+- Also catch ValueError exception when trying to import nltk
+  (Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/527)
+- Translation update from Weblate (ru 25.1%)
+- Update emoji annotations from CLDR
+
+-------------------------------------------------------------------
 Tue Jul 23 09:59:10 UTC 2024 - maiku.fabian@gmail.com
 
 - Update to 2.25.14
