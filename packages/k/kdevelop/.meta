@@ -1,0 +1,11 @@
+<package name="kdevelop" project="openSUSE:Factory">
+  <title>Plugin-extensible IDE for C/C++ and other programming languages</title>
+  <description>KDevelop is an integrated development environment (IDE).
+It provides editing, navigation and debugging features for several programming languages,
+as well as integration with multiple build systems and version-control systems
+using a plugin-based architecture.
+KDevelop has parser backends for C, C++ and Javascript/QML,
+with further external plugins supporting e.g. PHP or Python.</description>
+  <devel project="KDE:Applications" package="kdevelop"/>
+  <url>https://www.kdevelop.org</url>
+</package>
