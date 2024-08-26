@@ -15,9 +15,13 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
+%define kf6_version 6.3.0
+%define qt6_version 6.6.0
+
 %bcond_without released
 Name:           kirigami-gallery
-Version:        24.05.2
+Version:        24.08.0
 Release:        0
 Summary:        Gallery application built using Kirigami
 License:        LGPL-2.0-or-later
@@ -27,22 +31,19 @@ Source0:        https://download.kde.org/stable/release-service/%{version}/src/%
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  extra-cmake-modules
-# For some reason needed for appstream xml installation
-BuildRequires:  kpackage
-BuildRequires:  update-desktop-files
-BuildRequires:  cmake(KF5ItemModels)
-BuildRequires:  cmake(KF5Kirigami2)
-BuildRequires:  cmake(Qt5Core)
-BuildRequires:  cmake(Qt5Gui)
-BuildRequires:  cmake(Qt5LinguistTools)
-BuildRequires:  cmake(Qt5Quick)
-BuildRequires:  cmake(Qt5QuickControls2)
-BuildRequires:  cmake(Qt5Svg)
-Requires:       kirigami2
-Requires:       kitemmodels-imports
-Requires:       libqt5-qtgraphicaleffects
-Requires:       libqt5-qtquickcontrols2
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
+BuildRequires:  cmake(KF6ItemModels) >= %{kf6_version}
+BuildRequires:  cmake(KF6Kirigami) >= %{kf6_version}
+BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
+BuildRequires:  cmake(Qt6LinguistTools) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Quick) >= %{qt6_version}
+BuildRequires:  cmake(Qt6QuickControls2) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Svg) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
+Requires:       kf6-kirigami-imports >= %{kf6_version}
+Requires:       kf6-kitemmodels-imports >= %{kf6_version}
+Requires:       qt6-declarative-imports >= %{qt6_version}
 
 %description
 Example application which uses all features from kirigami,
@@ -56,20 +57,20 @@ code examples on cgit
 %autosetup -p1
 
 %build
-%cmake_kf5 -d build
-%cmake_build
+%cmake_kf6
+
+%kf6_build
 
 %install
-%kf5_makeinstall -C build
-%suse_update_desktop_file -G "Kirigami Gallery" org.kde.kirigami2.gallery GUIDesigner
+%kf6_install
 
 %find_lang kirigamigallery %{name}.lang --with-qt
 
 %files
 %license LICENSE.LGPL-2
-%{_kf5_applicationsdir}/org.kde.kirigami2.gallery.desktop
-%{_kf5_appstreamdir}/org.kde.kirigami2.gallery.appdata.xml
-%{_kf5_bindir}/kirigami2gallery
+%{_kf6_applicationsdir}/org.kde.kirigami2.gallery.desktop
+# %%{_kf6_appstreamdir}/org.kde.kirigami2.gallery.appdata.xml
+%{_kf6_bindir}/kirigami2gallery
 
 %files lang -f %{name}.lang
 
