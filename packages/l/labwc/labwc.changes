@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Sun Aug 18 08:29:43 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- switch to GPL2-only, as thats what the src files say
+- remove Recommends: %{name}-lang, so zypper can decide if needed or
+  not
+
+-------------------------------------------------------------------
+Fri Aug 16 16:21:02 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 0.8.0
+  + The main focus in this release has been to port labwc to
+    wlroots 0.18 and to grind out associated regressions.There are
+    a couple of regression warnings when using wlroots 0.18:
+    - There appears to be an issue with increased commit failures,
+      particularly with intel drivers. If this turns out to be an
+      issue for anyone please try running with WLR_DRM_NO_ATOMIC=1.
+    - Fullscreen VRR is broken but should be fixed once wlroots
+      0.18.1 is released.
+  + Added
+    - Add options fullscreen and fullscreenForced.
+    - Optionally allow keybindings when session is locked, which
+      for example can be useful for volume settings.
+    - Add resistance when dragging tiled/maximized windows.
+    - Implement support for renderer loss recovery.
+    - Support xinitrc scripts to configure XWayland server on
+      launch. 
+    - Add theme option window.button.width to set window button
+      size.
+    - Add cascade placement policy.
+    - Support relative tablet motion.
+  + Fixed
+    - Make tablet rotation follow output rotation.
+    - Fix error when launching windowed Chromium.
+    - Fix empty XKB_DEFAULT_LAYOUT bug.
+    - Take into account CSD borders when unconstraining XDG popups.
+    - Choose xdg-popup output depending on xdg-positioner.
+    - Fix wlroots-0.18 regression causing flicker with some layer-
+      shell clients like fuzzel on launch.
+    - Fix incorrect condition in server-side-deco logic.
+    - Fix flicker of snapped windows in nested session.
+    - Fix tearing with atomic mode setting.
+    - Handle initially maximized and fullscreen xdg-shell windows
+      better.
+    - Set initial geometry of maximized and fullscreen XWayland
+      windows in the map_request handler to avoid visual glitches
+      with some apps.
+    - Disable pango glyph position rounding to avoid text geometry
+      jump around when changing scale.
+  + Changed
+    - Make windows stay fullscreen when associated output is
+      disconnected.
+- Change wlroots-devel BuildRequires to pkgconfig(wlroots-0.18)
+- Fix conditional xwayland on wlroots
+
+-------------------------------------------------------------------
 Fri Aug  2 03:19:38 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to wlroots version 0.17.4

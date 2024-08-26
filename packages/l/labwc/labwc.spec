@@ -16,15 +16,15 @@
 #
 
 
-%bcond_without  warp
+%bcond_with     warp
 %bcond_without  xwayland
 %define sname   wlroots
 %define sver    0.17.4
 Name:           labwc
-Version:        0.7.4
+Version:        0.8.0
 Release:        0
 Summary:        A Wayland window-stacking compositor
-License:        GPL-2.0-or-later
+License:        GPL-2.0-only
 URL:            https://github.com/labwc/labwc
 Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
 %if %{with warp}
@@ -40,7 +40,6 @@ BuildRequires:  pkgconfig(libliftoff)
 BuildRequires:  pkgconfig(vulkan)
 BuildRequires:  pkgconfig(x11-xcb)
 BuildRequires:  pkgconfig(xcb)
-BuildRequires:  pkgconfig(xcb-errors)
 BuildRequires:  pkgconfig(xcb-composite)
 BuildRequires:  pkgconfig(xcb-icccm)
 BuildRequires:  pkgconfig(xcb-image)
@@ -48,31 +47,33 @@ BuildRequires:  pkgconfig(xcb-render)
 BuildRequires:  pkgconfig(xcb-renderutil)
 BuildRequires:  pkgconfig(xcb-xfixes)
 BuildRequires:  pkgconfig(xcb-xkb)
+%if %{with xwayland}
+BuildRequires:  pkgconfig(xcb-errors)
 BuildRequires:  pkgconfig(xwayland)
+%endif
 BuildRequires:  pkgconfig(xwaylandproto)
 %else
-BuildRequires:  wlroots-devel >= 0.17.4
+BuildRequires:  pkgconfig(wlroots-0.18)
 %endif
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  meson
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
+BuildRequires:  scdoc
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(libdrm)
 BuildRequires:  pkgconfig(libinput) >= 1.14
-BuildRequires:  pkgconfig(librsvg-2.0) 
-BuildRequires:  pkgconfig(libseat) 
+BuildRequires:  pkgconfig(librsvg-2.0)
+BuildRequires:  pkgconfig(libseat)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(pangocairo)
 BuildRequires:  pkgconfig(pixman-1)
 BuildRequires:  pkgconfig(wayland-protocols)
 BuildRequires:  pkgconfig(wayland-server)
 BuildRequires:  pkgconfig(xkbcommon)
-BuildRequires:  scdoc
-Recommends:     xwayland
-Recommends:     %{name}-lang
 Recommends:     alacritty
+Recommends:     xwayland
 Suggests:       rofi-wayland
 Suggests:       grim
 Suggests:       swaybg
