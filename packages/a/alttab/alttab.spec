@@ -1,7 +1,7 @@
 #
 # spec file for package alttab
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,6 +23,7 @@ Summary:        Task Switcher
 License:        GPL-3.0-only
 URL:            https://github.com/sagb/alttab
 Source:         https://github.com/sagb/alttab/archive/v%{version}.tar.gz
+BuildRequires:  /usr/bin/ronn
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libXft-devel
@@ -31,7 +32,6 @@ BuildRequires:  libXrandr-devel
 BuildRequires:  libXrender-devel
 BuildRequires:  libpng-devel
 BuildRequires:  uthash-devel
-BuildRequires:  rubygem(ronn)
 
 %description
 alttab is a X11 window switcher designed for minimalistic window managers or standalone X11 session.
