@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Aug 17 14:42:24 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Revert numpy<2 restriction. It is explicitly supported.
+
+-------------------------------------------------------------------
 Sat Jul 27 19:26:42 UTC 2024 - Christian Boltz <suse-beta@cboltz.de>
 
 - broken test tst_compoundvar.py was renamed to test_compoundvar.py

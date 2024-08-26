@@ -28,7 +28,7 @@ BuildRequires:  %{python_module Cython >= 0.29}
 BuildRequires:  %{python_module certifi}
 BuildRequires:  %{python_module cftime}
 BuildRequires:  %{python_module devel >= 3.7}
-BuildRequires:  %{python_module numpy-devel >= 1.10.0 with %python-numpy-devel < 2}
+BuildRequires:  %{python_module numpy-devel >= 1.10.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 61}
 BuildRequires:  %{python_module wheel}
@@ -42,7 +42,7 @@ Requires:       hdf5 >= 1.8.4
 Requires:       netcdf >= 4.2
 Requires:       python-certifi
 Requires:       python-cftime
-Requires:       (python-numpy >= 1.10.0 with python-numpy < 2)
+Requires:       python-numpy >= 1.10.0
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 # SECTION tests
