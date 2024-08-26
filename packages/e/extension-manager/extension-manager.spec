@@ -45,7 +45,7 @@ A native tool for browsing, installing, and managing GNOME Shell Extensions.
 %autosetup
 
 %build
-export CFLAGS="$optflags -Wno-error"
+export CFLAGS="$optflags -Wno-error -Wno-unused-variable -Wno-unused-parameter -Wno-incompatible-pointer-types -Wno-return-mismatch -Wno-int-conversion"
 %meson
 %meson_build
 

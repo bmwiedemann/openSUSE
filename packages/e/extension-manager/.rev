@@ -24,4 +24,13 @@
   * Search is more reliable</comment>
     <requestid>1171541</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>bcdd77fbe4784a2eec9c6118a1dd9ba0</srcmd5>
+    <version>0.5.1</version>
+    <time>1724703017</time>
+    <user>anag+factory</user>
+    <comment>- fix gcc14 by using &quot;-Wno-error -Wno-unused-variable -Wno-unused-parameter
+  -Wno-incompatible-pointer-types -Wno-return-mismatch -Wno-int-conversion&quot; (forwarded request 1195962 from rrahl0)</comment>
+    <requestid>1195963</requestid>
+  </revision>
 </revisionlist>
