@@ -1,0 +1,7 @@
+<package name="kdevelop-plugin-python3" project="openSUSE:Factory">
+  <title>Python support for KDevelop</title>
+  <description>A KDevelop plugin which provides Python language support, including code
+completion and debugging using PDB.</description>
+  <devel project="KDE:Applications" package="kdevelop-plugin-python3"/>
+  <url>https://www.kdevelop.org</url>
+</package>
