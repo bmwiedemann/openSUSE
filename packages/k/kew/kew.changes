@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Mon Aug 26 01:27:15 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 2.7.0
+  * Proper MPRIS and PlayerCtl support. Set volume, stop, seek and
+    others now work as expected. You can also switch tracks while
+    stopped or paused now. Everything should work except openUri
+    and repeat playlist which are not available for now.
+  * New (optional) dependency: Libnotify. In practice, adding
+    libnotify as a dependency means browsing through music will no
+    longer make desktop notifications pile up, instead the one
+    visible will update itself. This looks much better. kew uses
+    libnotify only if you have it installed, so it should if
+    possible be an optional thing during installation.
+  * Allows binding of other keys for the different ui views that
+    you get with F2-F6.
+  * Removed the option to toggle covers on and off by pressing 'c'.
+  * Removed build warning on systems with ffmpeg 4.4 installed.
+  * Only run one instance of kew at a time, thanks @werdahias for
+    the suggestion.
+  * If you exit the kew with 0% volume, when you open it next time,
+    volume will be at 10%. To avoid confusion.
+  * Handle SIGHUP not only SIGINT.
+  * Prints error message instead of crashing on Fedora when
+    playing unsupported .m4a files. This problem is related to
+    ffmpeg free/non-free versions. You need the non-free version.
+  * Fixed issue where special characters in the song title could
+    cause mpris widgets to not work correctly.
+- add libnotify-devel BuildRequires: needed for v2.7.0
+
+-------------------------------------------------------------------
 Sat Jul  6 09:53:39 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 2.6.0

@@ -17,13 +17,14 @@
 
 
 Name:           kew
-Version:        2.6.0
+Version:        2.7.0
 Release:        0
 Summary:        A command-line music player
 License:        GPL-2.0-only
 URL:            https://github.com/ravachol/kew
 Source:         %{url}/archive/v%{version}/kew-%{version}.tar.gz
 BuildRequires:  freeimage-devel
+BuildRequires:  libnotify-devel
 %if 0%{?suse_version} < 1600
 BuildRequires:  clang >= 17
 %else
