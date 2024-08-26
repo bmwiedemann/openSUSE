@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Aug 19 12:17:10 UTC 2024 - Frantisek Simorda <frantisek.simorda@suse.com>
+
+- Update to 1.5:
+   * Use the specified underline color when resetting the color palette.
+   * Set the WM_CLASS atom for all the lemonbar windows.
+   * Call pledge() at startup when running on OpenBSD.
+   * Fix a silly bug where the last monitor in the list was ignored.
+   * Fix another silly bug that affected systems with mirrored outputs (Thanks @insom).
+   * Code cleanup.
+ 
+
+-------------------------------------------------------------------
 Sat Apr 17 01:03:08 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 1.4
