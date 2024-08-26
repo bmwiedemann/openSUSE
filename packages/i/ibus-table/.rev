@@ -447,4 +447,13 @@ feat: use _service files to automate fetching sources</comment>
  * Translation update from Weblate (cs 36.6%, ja 45.3%, zh_CN 92.0%)</comment>
     <requestid>1183713</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>e05f1d8453e15ae1d90876112a04c8f1</srcmd5>
+    <version>1.17.7</version>
+    <time>1724703014</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.17.7
+ * French and Russian weblate translations</comment>
+    <requestid>1195954</requestid>
+  </revision>
 </revisionlist>
