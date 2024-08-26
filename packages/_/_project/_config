@@ -422,7 +422,8 @@ FileProvides: /usr/bin/renice busybox-util-linux util-linux
 FileProvides: /usr/bin/rep librep
 FileProvides: /usr/bin/rm busybox-coreutils coreutils coreutils-single
 FileProvides: /usr/bin/rmdir busybox-coreutils coreutils coreutils-single
-FileProvides: /usr/bin/ronn ruby3.3-rubygem-ronn-ng
+#FileProvides: /usr/bin/ronn ruby3.3-rubygem-ronn-ng
+FileProvides: /usr/bin/ronn ruby3.3-rubygem-ronn
 FileProvides: /usr/bin/rsync rsync
 FileProvides: /usr/bin/ruby ruby3.3
 FileProvides: /usr/bin/ruby.ruby3.3 ruby3.3
@@ -1817,6 +1818,7 @@ BuildFlags: onlybuild:dblatex
 BuildFlags: onlybuild:dbus-1
 BuildFlags: onlybuild:dbus-1-glib
 BuildFlags: onlybuild:dbus-1:dbus-1-x11
+BuildFlags: onlybuild:dbus-broker
 BuildFlags: onlybuild:dconf
 BuildFlags: onlybuild:dcraw
 BuildFlags: onlybuild:debianutils
