@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Aug 25 11:14:24 UTC 2024 - Jan-Luca Kiok <opensuse-packages@jlk.one>
+
+- Update to version 2024.08.24
+  * prettybat: Use yq for YAML and JSON pretty formatting
+  * batdiff: Support filenames with special characters
+  * batman: Fix issues with trailing whitespace in MANPAGER
+  * batman: Fix selecting manpages with aliases
+  * batman: Allow --wrap to be passed to bat
+
+-------------------------------------------------------------------
 Tue Aug  6 20:56:41 UTC 2024 - Jan-Luca Kiok <opensuse-packages@jlk.one>
 
 - Update to version 2024.07.10

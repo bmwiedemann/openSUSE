@@ -19,7 +19,7 @@
 %define testsuite_version 6b97e0a531f77d2e1f10f48ebb68d4033d69e04d
 
 Name:           bat-extras
-Version:        2024.07.10
+Version:        2024.08.24
 Release:        0
 Summary:        Extra scripts for bat
 License:        MIT
