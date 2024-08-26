@@ -105,4 +105,12 @@
   * Hover info containing ASCII-art tables as popular in some flavors of Markdown is now rendered properly.    The default config now enables inlay hints also for recent version of Scala Metals.</comment>
     <requestid>1188340</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>6daaacf37597ac84610f5d9b96bf3c7f</srcmd5>
+    <version>17.1.2</version>
+    <time>1724703027</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1195988</requestid>
+  </revision>
 </revisionlist>

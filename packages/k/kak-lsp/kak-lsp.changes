@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Aug 19 03:18:26 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
+
+- Update to version 17.1.2:
+  * Experimental LSP client capabilities can now be enabled via kak-lsp.toml.
+  * Fix crash on multiple language servers when one server doesn't support code actions.
+  * For consistency with our root_path project detection mechanism, the default config for Julia no longer supports the JULIA_PROJECT environment variable nor falls back on the global Julia environment.
+  * Fix build on Rust 1.80.
+
+-------------------------------------------------------------------
 Thu Jul 18 04:13:32 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
 
 - Update to version 17.1.1:

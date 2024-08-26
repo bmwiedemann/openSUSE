@@ -17,7 +17,7 @@
 
 
 Name:           kak-lsp
-Version:        17.1.1
+Version:        17.1.2
 Release:        0
 Summary:        Language Server Protocol client for Kakoune
 License:        (Apache-2.0 OR BSL-1.0) AND (Apache-2.0 OR BSL-1.0 OR MIT) AND (Apache-2.0 OR MIT) AND (Apache-2.0 OR Apache-2.0 WITH LLVM-exception OR MIT) AND (Apache-2.0 OR MIT OR Zlib) AND (Apache-2.0 OR MIT OR MPL-2.0) AND (MIT OR Unlicense) AND (Apache-2.0 OR Zlib OR MIT) AND MIT AND Zlib AND Unlicense
@@ -27,7 +27,7 @@ Source1:        vendor.tar.zst
 BuildRequires:  cargo
 BuildRequires:  cargo-packaging
 BuildRequires:  zstd
-Provides:       kakoune-lsp
+Provides:       kakoune-lsp = %{version}
 
 %description
 kak-lsp is a Language Server Protocol client for Kakoune written in Rust.
