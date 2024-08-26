@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Aug 26 08:11:45 UTC 2024 - Wolfgang Frisch <wolfgang.frisch@suse.com>
+
+- update to 2.6.0:
+  * cmd: Add support for biometric verification and match policy
+  * ykcs11: Add support for PKCS11 3.0
+  * ykpiv: cmd: ykcs11: Improve error traceability
+  * ykpiv: cmd: ykcs11: Fix minor bugs
+  * build: Make building with zlib optional
+
+-------------------------------------------------------------------
 Tue May  7 09:05:14 UTC 2024 - Wolfgang Frisch <wolfgang.frisch@suse.com>
 
 - update to 2.5.2:

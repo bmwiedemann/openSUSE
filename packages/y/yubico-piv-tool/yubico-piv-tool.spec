@@ -18,7 +18,7 @@
 
 %define sover  2
 Name:           yubico-piv-tool
-Version:        2.5.2
+Version:        2.6.0
 Release:        0
 Summary:        Yubico YubiKey NEO CCID Manager
 License:        BSD-2-Clause
