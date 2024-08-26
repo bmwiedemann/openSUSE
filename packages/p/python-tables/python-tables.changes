@@ -1,4 +1,75 @@
 -------------------------------------------------------------------
+Sun Aug 25 20:55:20 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 3.10.1
+  ## Bugfixes
+  * Fix version constraints for the numpy runtime requirements
+  * (#1204).
+  * For a mistake it didn't allow to use PyTables with numpy 2.x.
+  * Fix compatibility with PyPy (:issue:1205), Thanks to Michał
+    Górny.
+  ## Improvements
+  * Upstream: Enforce numpy >= 2 as build constraint (see
+    discussion in #1200).  -- not enforced in openSUSE
+  * Use tuple of plain ints for chunk info coordinates. Thanks to
+    Ivan Vilata-i-Balaguer.
+  * Enable faulthandler in tables.tests.test_all. Thanks to Eric
+    Larson.
+- Release 3.10.0
+  * New direct chunking API which allows access to raw chunk data
+    skipping the HDF5 filter pipeline (cutting overhead, see
+    "Optimization tips" in User's Guide), as well as querying chunk
+    information (#1187). Thanks to Ivan Vilata and Francesc Alted.
+    This development was funded by a NumFOCUS grant.
+  ## Improvements
+  * This release is finally compatible with NumPy 2 with wheels
+    being built against it so that they are still binary-compatible
+    with NumPy 1 installations (#1176, #1183, #1184, #1192, #1195,
+    #1160, #1172, #1185). NumPy >= 1.20 is required now. Thanks to
+    Antonio Valentino, Maximilian Linhoff and Eric Larson.
+  * Fix compatibility with Python 3.13 (#1166), Python >= 3.10
+    required. Cython 3.0.10 is required for building. Thanks to
+    Antonio Valentino.
+  * Add type hints to atom.py (#1079). This also narrows some
+    types, only allowing bytes to be stored in VLStringAtom and
+    only str in VLUnicodeAtom. Thanks to Nils Carlson.
+  * Add type hints to (hopefully) the complete PyTables API (#1119,
+    #1120, #1121, #1123, #1124, #1125, #1125, #1126, #1128, #1129,
+    #1130, #1131, #1132, #1133, #1135, #1136, #1137, #1138, #1139,
+    #1140, #1141, #1142, #1143, #1145, #1146, #1147, #1148, #1150,
+    #1151, #1152). Thanks to Ko Stehner.
+  * Reduce impact of CPU information gathering by caching in local
+    file (#1091, #1118, #1081). Thanks to Antti Mäkinen and
+    Maximilian Linhoff.
+  ## Bugfixes
+  * Fix typos and may other language errors in docstrings (#1122).
+    Thanks to Ko Stehner.
+  * Fix Blosc2 filter not setting dparams.schunk on decompression
+    (#1110 and #1109). Thanks to Tom Birch.
+  * Fix using B2ND optimizations when Blosc2 is not the only
+    enabled filter; move Fletcher32 compression to end of pipeline
+    when enabled (#1191 and #1162). Thanks to Ivan Vilata and Alex
+    Laslavic.
+  * Fix broken internal passing of createparents argument in
+    Leaf.copy (#1127 and #1125). Thanks to Ko Stehner.
+  * Re-enable relative paths in ExternalLink class (#1095). Thanks
+    to erikdl-zeiss.
+  * Fix using prefix in heavy tests methods of test_queries
+    (#1169). Thanks to Miro Hrončok.
+  * Fix TypeError when computing Blosc2 search paths with missing
+    library (#1188 and #1100). Thanks to martinowitsch, Padraic
+    Calpin and Eric Larson.
+  * Avoid overflow RuntimeWarning on NumPy expectedrows value
+    (#1010). Thanks to wony-zheng and Ivan Vilata.
+  ## Other changes
+  * Assorted fixes to b2nd benchmark, with new results. Thanks to
+    Ivan Vilata.
+  * Point users to example code to handle "Selection lists cannot
+    have repeated values" exception (#1161 and #1149). Thanks to
+    Joshua Albert.
+  * Remove unused getLibrary C code. Thanks to Antonio Valentino.
+
+-------------------------------------------------------------------
 Fri Apr 19 12:01:41 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Pin to numpy < 2:  gh#PyTables/PyTables#1083

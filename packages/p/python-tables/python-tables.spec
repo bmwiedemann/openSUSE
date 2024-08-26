@@ -41,24 +41,24 @@ ExclusiveArch:  donotbuild
 %endif
 
 Name:           python-tables%{psuffix}
-Version:        3.9.2
+Version:        3.10.1
 Release:        0
 Summary:        Hierarchical datasets for Python
 License:        BSD-3-Clause
 URL:            https://github.com/PyTables/PyTables
 Source0:        https://files.pythonhosted.org/packages/source/t/tables/tables-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.9}
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  python-rpm-macros
 %if ! %{with test}
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numexpr >= 2.6.2}
-# See gh#PyTables/PyTables#1083
-BuildRequires:  %{python_module numpy-devel >= 1.19 with %python-numpy-devel < 2}
+BuildRequires:  %{python_module numpy-devel >= 1.20}
 BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module py-cpuinfo}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module setuptools >= 61}
+BuildRequires:  %{python_module typing-extensions >= 4.4.0}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  blosc-devel >= 1.21.1
 BuildRequires:  blosc2-devel >= 2.11
@@ -73,12 +73,13 @@ BuildRequires:  %{python_module tables = %{version}}
 # usage of pkg_resources in tests
 BuildRequires:  %{python_module setuptools}
 %endif
-Requires:       python-Cython
+Requires:       python-blosc2 >= 2.3
 Requires:       python-numexpr >= 2.6.2
 # See gh#PyTables/PyTables#1083
-Requires:       (python-numpy >= 1.19 with python-numpy < 2)
+Requires:       python-numpy >= 1.20
 Requires:       python-packaging
 Requires:       python-py-cpuinfo
+Requires:       python-typing-extensions >= 4.4.0
 # boo#1196682
 %requires_eq    hdf5
 Requires(post): update-alternatives
