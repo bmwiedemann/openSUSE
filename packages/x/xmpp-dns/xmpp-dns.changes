@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Aug 26 07:01:48 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.4.2:
+  Added:
+  * Host Meta 2: Show and test c2s Direct TLS.
+  * Host Meta 2: Show and test s2s Direct TLS.
+  * Host Meta 2: Show c2s Quic.
+  * Host Meta 2: Show s2s Quic.
+  * Host Meta 2: Show and test s2s Websocket.
+
+-------------------------------------------------------------------
 Wed Aug 21 06:00:12 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.4.1:

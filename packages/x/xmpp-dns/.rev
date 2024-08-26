@@ -138,4 +138,18 @@
   * Also respect custom resolver setting for host-meta(2) (via xmppsrv 0.3.1).</comment>
     <requestid>1194991</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>14c1196408435b7cd9300a7634d63789</srcmd5>
+    <version>0.4.2</version>
+    <time>1724703041</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.4.2:
+  Added:
+  * Host Meta 2: Show and test c2s Direct TLS.
+  * Host Meta 2: Show and test s2s Direct TLS.
+  * Host Meta 2: Show c2s Quic.
+  * Host Meta 2: Show s2s Quic.
+  * Host Meta 2: Show and test s2s Websocket.</comment>
+    <requestid>1196013</requestid>
+  </revision>
 </revisionlist>
