@@ -1,0 +1,35 @@
+From 1baed290ebcaf8356822157a7f7df7c0c94ad1d4 Mon Sep 17 00:00:00 2001
+From: Steve Kowalik <steven@wedontsleep.org>
+Date: Mon, 26 Aug 2024 13:58:53 +1000
+Subject: [PATCH] Support pytest 8
+
+Pytest 8 removes support for deprecated nose setup and teardown methods,
+add _method to fix that.
+
+Fixes #30
+---
+ test.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/test.py b/test.py
+index c709ee3..5ef9aad 100644
+--- a/test.py
++++ b/test.py
+@@ -46,7 +46,7 @@ def test_sequence(self):
+ 
+ class BaseTest(object):
+ 
+-    def setup(self):
++    def setup_method(self):
+         self.basedir = tempfile.mkdtemp()
+         self._old_cwd = os.getcwd()
+         os.chdir(self.basedir)
+@@ -56,7 +56,7 @@ def setup(self):
+     def setup_files(self):
+         pass
+ 
+-    def teardown(self):
++    def teardown_method(self):
+         os.chdir(self._old_cwd)
+         shutil.rmtree(self.basedir)
+ 

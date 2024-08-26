@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Aug 26 04:01:40 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to autosetup and pyproject macros.
+- No more greedy globs in %files.
+- Add patch support-pytest-8.patch:
+  * Use correct setup/teardown methods for Pytest 8.
+
+-------------------------------------------------------------------
 Thu Mar 26 13:54:35 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - Switch from nose to pytest 

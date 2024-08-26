@@ -45,4 +45,15 @@
     <comment></comment>
     <requestid>788602</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>d73df0968d4f7acdc1568ed5b224bdb2</srcmd5>
+    <version>0.7</version>
+    <time>1724703025</time>
+    <user>anag+factory</user>
+    <comment>- Switch to autosetup and pyproject macros.
+- No more greedy globs in %files.
+- Add patch support-pytest-8.patch:
+  * Use correct setup/teardown methods for Pytest 8.</comment>
+    <requestid>1195987</requestid>
+  </revision>
 </revisionlist>
