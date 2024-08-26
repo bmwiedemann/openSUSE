@@ -40,6 +40,8 @@ Source1:        baselibs.conf
 BuildRequires:  cmake
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
+BuildRequires:  libabigail-tools
+BuildRequires:  cmake(GTest)
 %if %{with systemtap}
 BuildRequires:  systemtap-sdt-devel
 %endif
@@ -50,9 +52,6 @@ AVX2, NEON, VSX) when available.
 
 %package -n     libz-ng%{?compat_suffix}%{soversion}
 Summary:        Zlib replacement with SIMD optimizations
-%if %{with zlib_compat}
-Conflicts:      libz%{soversion}
-%endif
 
 %description -n libz-ng%{?compat_suffix}%{soversion}
 zlib-ng is a zlib replacement with support for CPU intrinsics (SSSE3,
@@ -76,6 +75,7 @@ developing application that use %{name}.
 %build
 # zlib-ng uses a different macro for library directory.
 # 32-bit Arm requires to set soft/hard float
+export CC=gcc
 %cmake \
 %ifarch %{arm32}
   -DCMAKE_C_FLAGS="%{optflags} -mfloat-abi=hard" \
@@ -84,7 +84,7 @@ developing application that use %{name}.
   -DWITH_ARMV6:BOOL=OFF \
 %endif
 %if %{with zlib_compat}
-  -DZLIB_COMPAT=ON \
+  -DZLIB_COMPAT=ON -DWITH_NEW_STRATEGIES=OFF \
 %endif
   -DINSTALL_LIB_DIR=%{_libdir} \
   -DWITH_RVV=OFF \
@@ -93,19 +93,58 @@ developing application that use %{name}.
 
 %install
 %cmake_install
+%if %{with zlib_compat}
+mkdir -p %{buildroot}%{_sysconfdir}/ld.so.conf.d
+mkdir -p %{buildroot}%{_libdir}/zlib-ng-compat
+(cat > %{buildroot}%{_sysconfdir}/ld.so.conf.d/zlib-ng-compat.conf) <<-EOF
+	%{_libdir}/zlib-ng-compat
+	EOF
+pushd %{buildroot}%{_libdir}/
+	mv libz.so.* zlib-ng-compat/
+	ln -sf zlib-ng-compat/libz.so.1 libz.so
+popd
+%endif
 
 %check
 # Tests fail when run in parallel.
 # %%define _smp_mflags -j1
+%if %{with zlib_compat}
+export LD_LIBRARY_PATH=%{buildroot}/%{_libdir}/zlib-ng-compat
+%else
 export LD_LIBRARY_PATH=%{buildroot}/%{_libdir}
+%endif
 %ctest
+
+%ifarch ppc64le
+%global target_cpu powerpc64le
+%else
+%global target_cpu %{_target_cpu}
+%endif
+%ifarch x86_64
+%global cpu_vendor pc
+%else
+%global cpu_vendor unknown
+%endif
+
+%ifarch aarch64 ppc64le x86_64
+%global __cmake_builddir %{_vpath_builddir}
+export CC=gcc
+export CFLAGS="%{optflags} -fPIC"
+%if %{with zlib_compat}
+CHOST=%{target_cpu}-%{cpu_vendor}-linux-gnu sh test/abicheck.sh --zlib-compat
+%else
+CHOST=%{target_cpu}-%{cpu_vendor}-linux-gnu sh test/abicheck.sh
+%endif
+%endif
 
 %post -n libz-ng%{?compat_suffix}%{soversion} -p /sbin/ldconfig
 %postun -n libz-ng%{?compat_suffix}%{soversion} -p /sbin/ldconfig
 
 %files -n libz-ng%{?compat_suffix}%{soversion}
 %if %{with zlib_compat}
-%{_libdir}/libz.so.%{soversion}*
+%config %{_sysconfdir}/ld.so.conf.d/zlib-ng-compat.conf
+%dir %{_libdir}/zlib-ng-compat/
+%{_libdir}/zlib-ng-compat/libz.so.%{soversion}*
 %else
 %{_libdir}/libz-ng.so.%{soversion}*
 %endif
