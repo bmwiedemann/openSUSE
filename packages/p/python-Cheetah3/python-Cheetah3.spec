@@ -1,7 +1,7 @@
 #
 # spec file for package python-Cheetah3
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,16 +16,16 @@
 #
 
 
-%define modname Cheetah3
+%define modname cheetah3
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-Cheetah3
-Version:        3.2.6.post1
+Version:        3.3.3.post1
 Release:        0
 Summary:        Template engine and code generation tool
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://cheetahtemplate.org/
-Source:         https://files.pythonhosted.org/packages/source/C/Cheetah3/Cheetah3-%{version}.tar.gz
+Source:         https://github.com/CheetahTemplate3/cheetah3/archive/refs/tags/%{version}.tar.gz#/%{modname}-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes

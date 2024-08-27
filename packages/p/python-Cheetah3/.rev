@@ -131,4 +131,12 @@
   * Skip test_import_bootlocale() on Python 3.10</comment>
     <requestid>945513</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>eb4d6ae9778ef11bae21197140f33b31</srcmd5>
+    <version>3.3.3.post1</version>
+    <time>1724780370</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1196253</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Tue Aug 27 07:25:57 UTC 2024 - Frantisek Simorda <frantisek.simorda@suse.com>
+
+- update to 3.3.3.post1:
+  * GHActions: Build and publish wheels on Linux/aarch64.
+
+- version 3.3.3:
+  * Protect import cgi in preparation to Python 3.13.
+  * Run tests with Python 3.12.
+  * GHActions: Ensure pip only if needed
+
+- version 3.3.2:
+  * Fixed printing to stdout in CheetahWrapper.
+  * CI(GHActions): Install all Python and PyPy versions from conda-forge.
+
+- version 3.3.1:
+  * Fixed ImportHooks under PyPy3.
+  * Run tests with PyPy3.
+  * Use conda to install older Pythons
+
+- version 3.3.0.post1:
+  * Run tests with Python 3.11
+  * Fix DeprecationWarning: unittest.findTestCases() is deprecated. Use unittest.TestLoader.loadTestsFromModule() instead
+  * Publish wheels at Github Releases.
+
+- version 3.3.0:
+  * PyPI has wrongfully classified project Cheetah3 as “critical”. This puts a burden to use 2FA to manage the project at PyPI. To avoid the burden the project is renamed to CT3 at PyPI. There will be no updates for Cheetah3. Sorry for the inconvenience!
+  * Use relative imports everywhere.
+  * Run pure-python NameMapper tests in a separate process.
+  * Fixed a bug in tests with pure-python NameMapper.
+  * Add Python 3.10 to tox.ini.
+  * Migrated to GitHub Actions.
+
+- version 3.2.7b1:
+  * Load from JSON file to searchlist (similar to loading from pickle).
+  * Fix filetype for Python 2 in Template.
+  * Build wheels for aarch64 at Travis; publish them at PyPI.
+  * tox.ini: Limit VIRTUALENV_PIP version for Python 3.4.
+
+
+-------------------------------------------------------------------
 Tue Jan 11 07:29:00 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 3.2.6.post1:
