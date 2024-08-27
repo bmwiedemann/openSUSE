@@ -108,4 +108,15 @@
   * Fix typo in Changelog</comment>
     <requestid>1172202</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>a2862147903bfacd17dfe2d25abca980</srcmd5>
+    <version>5.0.0</version>
+    <time>1724780364</time>
+    <user>anag+factory</user>
+    <comment>- Update to 5.0.0:
+  * Add Ukrainian translation (pr #62)
+  * Don't create ambiguous games (#50, pr #63)
+  * Allow to pause game (#47, pr #65)</comment>
+    <requestid>1196207</requestid>
+  </revision>
 </revisionlist>

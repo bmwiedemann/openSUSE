@@ -17,7 +17,7 @@
 
 
 Name:           nudoku
-Version:        4.0.1
+Version:        5.0.0
 Release:        0
 Summary:        Ncurses based sudoku game
 License:        GPL-3.0-only
