@@ -18,14 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-appconfiguration
-Version:        1.6.0
+Version:        1.7.0
 Release:        0
 Summary:        Microsoft App Configuration Data Library for Python
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/Azure/azure-sdk-for-python
 Source:         https://files.pythonhosted.org/packages/source/a/azure-appconfiguration/azure-appconfiguration-%{version}.tar.gz
-Source1:        LICENSE.txt
 BuildRequires:  %{python_module azure-nspkg >= 3.0.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
@@ -57,7 +56,6 @@ settings for your application in one place.
 %setup -q -n azure-appconfiguration-%{version}
 
 %build
-install -m 644 %{SOURCE1} %{_builddir}/azure-appconfiguration-%{version}
 %pyproject_wheel
 
 %install
@@ -71,7 +69,7 @@ rm -rf %{buildroot}%{$python_sitelib}/tests/
 
 %files %{python_files}
 %doc CHANGELOG.md README.md
-%license LICENSE.txt
+%license LICENSE
 %{python_sitelib}/azure/appconfiguration
 %{python_sitelib}/azure_appconfiguration-*.dist-info
 
