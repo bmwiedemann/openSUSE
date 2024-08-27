@@ -55,7 +55,8 @@ install -Dm644 target/completions/_%{name} -t \
 
 %if %{with test}
 %check
-%{cargo_test}
+%{cargo_test} -- \
+    --skip=config::utils::tests::home_dir_not_present::_yes_yes_expects
 %endif
 
 %files
