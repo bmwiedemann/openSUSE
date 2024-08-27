@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Aug 27 12:14:26 UTC 2024 - Tina Müller <tina.mueller@suse.com>
+
+- Add a patch to use https instead of http
+  https://bugzilla.suse.com/show_bug.cgi?id=1229819
+  CVE-2024-45321 bsc#1229819
+
+-------------------------------------------------------------------
 Mon Jul 31 03:06:01 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.7047

@@ -1,7 +1,7 @@
 #
 # spec file for package perl-App-cpanminus
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -120,6 +120,9 @@ find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/scrip
 # MANUAL BEGIN
 # Unbundle fat-packed modules
 podselect lib/App/cpanminus.pm > lib/App/cpanminus.pod
+
+# https://bugzilla.suse.com/show_bug.cgi?id=1229819 CVE-2024-45321 bsc#1229819
+perl -pi -E 's{http://(cpan\.cpantesters\.org|www\.cpan\.org|backpan\.perl\.org|cpan\.metacpan\.org|fastapi\.metacpan\.org|cpanmetadb\.plackperl\.org)}{https://$2}g' bin/cpanm
 
 for F in bin/cpanm lib/App/cpanminus/fatscript.pm; do
    perl %{SOURCE1} --libdir lib --filter '^App/cpanminus' "$F" > "${F}.stripped"
