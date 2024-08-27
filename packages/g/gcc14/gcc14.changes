@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Aug 22 10:37:05 UTC 2024 - Richard Biener <rguenther@suse.com>
+
+- Re-enable cross compiler builds on i586.
+
+-------------------------------------------------------------------
 Thu Aug  1 09:33:39 UTC 2024 - Richard Biener <rguenther@suse.com>
 
 - Update to GCC 14.2.0 release, c035a7c30c310ff928988cbcf, git10526 

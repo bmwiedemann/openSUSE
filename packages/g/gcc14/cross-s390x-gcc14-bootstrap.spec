@@ -251,7 +251,7 @@ ExcludeArch:    %{cross_arch}
 %endif
 %endif
 %if 0%{?gcc_icecream:1}%{?gcc_libc_bootstrap:1}
-ExclusiveArch:  ppc64le x86_64  aarch64 riscv64
+ExclusiveArch:  i586 ppc64le x86_64  aarch64 riscv64
 %endif
 %define _binary_payload w.ufdio
 # Obsolete cross-ppc-gcc49 from cross-ppc64-gcc49 which has

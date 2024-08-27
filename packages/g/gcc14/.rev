@@ -108,4 +108,12 @@ next week.  Gcc7 can pick it up from there.
   * GCC 14.2 release candidate.</comment>
     <requestid>1190981</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>3ad798e4eadeca4a2cdc4f4b1e570836</srcmd5>
+    <version>14.2.0+git10526</version>
+    <time>1724780319</time>
+    <user>anag+factory</user>
+    <comment>- Re-enable cross compiler builds on i586.</comment>
+    <requestid>1195282</requestid>
+  </revision>
 </revisionlist>
