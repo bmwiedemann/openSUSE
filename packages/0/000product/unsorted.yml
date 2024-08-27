@@ -2194,6 +2194,8 @@ unsorted:
   - clFFT 
   - clFFT-devel 
   - clack 
+  - clair 
+  - clairctl 
   - clamav-devel 
   - clamav-docs-html 
   - clamav-milter 
@@ -2658,7 +2660,6 @@ unsorted:
   - cpmono_v07-fonts 
   - cpp-httplib-devel 
   - cpp12 
-  - cpp14 
   - cpp7 
   - cppcheck-gui 
   - cpphs 
@@ -3876,7 +3877,6 @@ unsorted:
   - espeakedit 
   - etc-update 
   - etcd 
-  - etcd-for-k8s1.27 
   - etcd-for-k8s1.28 
   - etcd-for-k8s1.29 
   - etcd-for-k8s1.30 
@@ -4872,6 +4872,7 @@ unsorted:
   - gcal 
   - gcal-lang 
   - gcalcli 
+  - gcc 
   - gcc-32bit 
   - gcc-PIE 
   - gcc-ada 
@@ -9900,11 +9901,6 @@ unsorted:
   - kdevelop-plugin-php-lang 
   - kdevelop-plugin-python3 
   - kdevelop-plugin-python3-lang 
-  - kdevelop5-plugin-php 
-  - kdevelop5-plugin-php-devel 
-  - kdevelop5-plugin-php-lang 
-  - kdevelop5-plugin-python3 
-  - kdevelop5-plugin-python3-lang 
   - kdevplatform-devel 
   - kdf 
   - kdf-lang 
@@ -15676,6 +15672,7 @@ unsorted:
   - libqtermwidget5-1 
   - libqtermwidget6-2 
   - libqtolm-devel 
+  - libquadmath-devel 
   - libquadmath0-32bit 
   - libquadmath0-devel-gcc14 
   - libquadmath0-devel-gcc14-32bit 
@@ -16283,8 +16280,8 @@ unsorted:
   - libstdc++-devel-32bit 
   - libstdc++6-devel-gcc12 
   - libstdc++6-devel-gcc12-32bit 
+  - libstdc++6-devel-gcc13 
   - libstdc++6-devel-gcc13-32bit 
-  - libstdc++6-devel-gcc14 
   - libstdc++6-devel-gcc14-32bit 
   - libstdc++6-devel-gcc7 
   - libstdc++6-devel-gcc7-32bit 
@@ -22754,6 +22751,7 @@ unsorted:
   - pijul-bash-completion 
   - pijul-fish-completion 
   - pijul-zsh-completion 
+  - pik 
   - pika-backup 
   - pika-backup-lang 
   - pilot 
@@ -26229,7 +26227,6 @@ unsorted:
   - python310-ovirt-engine-sdk 
   - python310-pa-ringbuffer 
   - python310-packaging 
-  - python310-padaos 
   - python310-paginate 
   - python310-paho-mqtt 
   - python310-pako 
@@ -29794,7 +29791,6 @@ unsorted:
   - python311-overrides 
   - python311-ovirt-engine-sdk 
   - python311-pa-ringbuffer 
-  - python311-padaos 
   - python311-paginate 
   - python311-paho-mqtt 
   - python311-pako 
@@ -33394,7 +33390,6 @@ unsorted:
   - python312-ovirt-engine-sdk 
   - python312-pa-ringbuffer 
   - python312-packaging 
-  - python312-padaos 
   - python312-paginate 
   - python312-paho-mqtt 
   - python312-pako 
@@ -35818,6 +35813,7 @@ unsorted:
   - rmail 
   - rmedigicontrol 
   - rmit-sansforgetica-fonts 
+  - rmpc 
   - rmt-server 
   - rmt-server-config 
   - rmt-server-pubcloud 
@@ -36230,7 +36226,6 @@ unsorted:
   - ruby3.3-rubygem-reverse_markdown 
   - ruby3.3-rubygem-rgl 
   - ruby3.3-rubygem-rice 
-  - ruby3.3-rubygem-ronn 
   - ruby3.3-rubygem-ronn-ng 
   - ruby3.3-rubygem-rouge 
   - ruby3.3-rubygem-rpm 
@@ -47161,6 +47156,7 @@ unsorted:
   - tuba 
   - tuba-lang 
   - tudu 
+  - tui-journal 
   - tuigreet 
   - tuimoji 
   - tuladha-jejeg-fonts 
