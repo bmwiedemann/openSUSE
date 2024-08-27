@@ -1,4 +1,342 @@
 -------------------------------------------------------------------
+Fri Aug 23 10:24:14 UTC 2024 - dcermak@suse.com
+
+- Update to version 0.15.2:
+  * remotecache: handle not implemented error for Info()
+  * chore: set pb.Empty on ssh and secret mounts
+  * exec: fix incorrect deps computation for special mounts
+  * snapshot/containerd: fix wrong errdefs package import
+  * vendor: bump github.com/gofrs/flock to v0.12.1
+  * llbsolver: avoid nil releaser on error
+  * Adds a rule check for copying files which match the .dockerignore patterns
+  * dockerfile: avoid frontend panic when no stages defined
+  * vendor: update go-csvvalue to ddb21b71
+  * checks: add check for constant in from platform flag
+  * llbsolver: fix possible early delete of external error
+  * testutil: fix call order in already-exists check
+  * testutil: improve initializing mirrors
+  * docs: add a multi-line ENV example
+  * docs: rewrite copy/add instruction reference
+  * llbsolver: make sure stoptrace called on bolt error
+  * ci(docs-upstream): missing path for frontend rules docs
+  * docs: fix broken link in lint docs after rule rename
+  * adds InvalidDefaultArgInFrom lint check
+  * Generate dockerfile documentation after updating SecretsUsedInArgOrEnv rule description
+  * update format string for SecretsUsedInArgOrEnv rule check
+  * Update frontend/dockerfile/linter/ruleset.go
+  * Update frontend/dockerfile/docs/rules/secrets-used-in-arg-or-env.md
+  * vendor: patch updates for some direct dependencies
+  * vendor: bump github.com/hashicorp/golang-lru/v2 to v2.0.7
+  * update CNI to v1.5.1
+  * vendor: bump github.com/gofrs/flock to v0.12.0
+  * git: add file mode verification to tests
+  * git: ensure exec option is propagated to child git clis
+  * bboltcachestorage: only delete link after releasing result
+  * Add documentation for SecretsUsedInArgOrEnv rule
+  * switch to github.com/containerd/platforms module
+  * vendor: github.com/containerd/containerd v1.7.19
+  * vendor: github.com/microsoft/hcsshim v0.11.7
+  * golangci: forbid uses of platforms.DefaultString()
+  * golangci: sort forbid rules
+  * update containerd binary to v1.7.19
+  * Always return non-nil contexts
+  * docs: dockerfile-reference: fix links
+  * solver: include vertex Description in OpError
+  * Replace manual loop looking for secret related tokens with regex
+  * Add check rule that looks at keynames in arg and env and checks for common secret names
+  * solver: allow finalizing history record traces
+  * llbsolver: move typed error to own blob in history
+  * fix incorrect usage of json.NewDecoder
+  * dockerfile: fix invalid usage of json.NewDecoder
+  * executor: fix cancellation before start signal
+  * vendor: docker/docker, docker/cli v27.0.3
+  * Update integration test for checking empty dockerfile arg behavior and move from linting tests
+  * Adds a test that checks to ensure that empty arg is passed to env
+  * linter: add redundant target platform check
+  * vendor: docker/docker, docker/cli v27.0.2
+  * Adds a deprecated flag to linter rules
+  * ociLayoutResolver.info: remove use of reference.SplitObject
+  * docs: use json args in multiple instructions example
+  * fix: dot path normalized correctly for COPY
+  * Fix typo in FromAsCasing docs
+  * vendor: docker/docker and docker/cli v27.0.1
+  * vendor: github.com/containerd/ttrpc v1.2.5
+  * vendor: github.com/docker/docker-credential-helpers v0.8.2
+  * vendor: github.com/google/uuid v1.6.0
+  * vendor: github.com/opencontainers/runtime-spec v1.2.0
+  * Refactor containerd `NewWorkerOpt` & containerdexecutor `New` parameters
+  * Disallow `ADD --checksum=<SUM> <GITSRC> <DST>`
+  * build(deps): bump github.com/hashicorp/go-retryablehttp
+  * chore: fix dockerfile linting issues for rootless image
+  * Move parseLintOptions into linter package
+  * git: fix pulling commit SHA only referenced from a tag
+  * vendor: add go-csvvalue for more efficient CSV parsing
+  * llb: convert envlist from slice to linked list
+  * dockerfile: update env replacement efficiency
+  * instructions: avoid allocating memory and processing location for nil
+  * parser: optimize memory allocation for command word parsing
+  * parser: optimize memory usage on env processing
+  * shell: avoid allocating scanner for each shellword
+  * parser: avoid excessive memory usage and bogus type conversions
+  * parser: avoid expensive heredocs evaluations early
+  * parser: avoid creating temp error string
+  * parser: remove bogus string byteslice conversion
+  * parser: remove regexp for comment matching
+  * parser: avoid reallocating memory per rune on parsing flags
+  * contenthash: add test using counter metric in scanPath
+  * contenthash: add tests to check needsScan's correctness
+  * contenthash: improve the correctness of needsScan
+  * archutil: update riscv64 to unblock CI
+  * archutil: fix build for arm64
+  * archutil: update riscv64 binary
+  * dockerfile: deduplicate and cache config resolve requests
+  * dockerfile: clarify that checksum works with HTTPS
+  * build(deps): bump softprops/action-gh-release from 2.0.5 to 2.0.6
+  * refactor: split runtime options definions by OS
+  * ci: set gha cache repository and token
+  * Update Go to 1.22
+  * vendor: update klauspost/compress to v1.17.9
+  * vendor: update testify to 1.9.0
+  * vendor: update simplelru to v2
+  * vendor: update immutable-radix to v2
+  * shell: handle empty string for var replacements
+  * build(deps): bump docker/bake-action from 4 to 5
+  * build(deps): bump docker/build-push-action from 5 to 6
+  * Initialize build args from stage base
+  * Updates lint output to print detail instead of description
+  * Consolidate instruction casing lint rules
+  * In case where build arg exists with nil value, count as unmatched arg
+  * Fix method Dockefile2Outline to Dockerfile2Outline
+  * util/resolver: Make httpFallback concurrent safe
+  * containerd: add option to set parent cgroup
+  * identity: remove pkg/errors
+  * update rootlesskit to v2.0.2
+  * update runc binary to v1.1.13
+  * Adds 'WARNING' prefix to the rule check output and update lint subrequest to return a status of 1 if an error occurred
+  * Dockerfile: update delve to v1.22.1
+  * Dockerfile: update CNI to 1.5.0
+  * ensure context.WithoutCancel in defer funcs
+  * simplify with maps pkg functions
+  * simplify to use slices.Reverse
+  * remove deprecated seed calls
+  * dockerui: use CachedGroup in dockerui context resolve
+  * llb: rewrite llb.Async with CachedGroup
+  * flightcontrol: add cached group support
+  * history: fix empty Exporters attribute
+  * ci: switch to ubuntu-24.04 runner
+  * ci: enable disable_file_fixes in codecov action
+  * lint: more testifylint fixes
+  * minor lint formatting cleanups
+  * dockerfile: fix lint rules links in index
+  * wip: tar and local exporter running with privileges
+  * flightcontrol: protect contention timeouts
+  * Fix content not found with `push=true,rewrite-timestamp=true`
+  * vendor: github.com/distribution/reference v0.6.0
+  * vendor: go.etcd.io/bbolt v1.3.10
+  * lint: add doc for UndefinedArgInFrom
+  * lint: update descriptions, test and re-generate docs
+  * lint: InvalidBaseImagePlatform does not need specific docs
+  * lint: add alias to doc rule frontmatter
+  * lint: generate _index.md docs
+  * lint: add/generate docs for build rules
+  * dockerfile: generate lint rules documentation
+  * dockerfile: only report legacy key/value format when stage is reachable
+  * Update lintTestParams to allow for different numbers of warnings between progress and unmarshal test types
+  * dockerfile: default linter to run on all stages by default
+  * contenthash: add tests for non-lexical symlinks
+  * contenthash: unify "follow" and trailing-symlink handling for Checksum
+  * contenthash: implement proper Linux symlink semantics for needsScan
+  * contenthash: implement proper Linux symlink semantics for getFollowLinks
+  * contenthash: switch recursive rootPath implementation to be iterative
+  * llbsolver: add more otel spans for export and history
+  * vendor: docker/docker, docker/cli v26.1.4
+  * vendor: golang.org/x/mod v0.17.0
+  * dockerfile/linter: check for nil linter in linter functions
+  * Dockerfile: update containerd binary to v1.7.18, v1.6.33
+  * vendor: github.com/containerd/containerd v1.7.18
+  * Adds the rulename to the output of the PrintLintViolations function
+  * dockerfile: make sure stage is reachable before validating base
+  * docs: add details for setting up CNI for windows
+  * Update tracing check for whether error has stack
+  * bboltcachestorage: mitigate corrupt boltdb cache after panic
+  * Adds controls for checking dockerfile lint rules
+  * dockerfile: fix build conflict from previous updates
+  * allow skipping backlinks where walking cache chains for provenance
+  * dockerfile: detect base image with wrong platform being used
+  * Fix http fallback
+  * Add bounds to termHeight when BUILDKIT_TTY_LOG_LINES is set
+  * vendor: update vt100 with fix for resizing height
+  * lint: fix some testifylint warnings
+  * verifier: verify platforms of the build result
+  * allow controlling detected platforms cache timeout
+  * Add thompson-shaun to curators
+  * docs: add a note for opentel/jaeger on windows
+  * linter: lint rule for using the legacy key/value format with whitespace
+  * dockerfile: improve detection of reachable stages
+  * ensure correct grpc max sizes for control API and frontends
+  * dockerfile: bump alpine to 3.20
+  * tests: remove unnecessary declaration and fix typo
+  * llbsolver: create single temp lease for exports for performance
+  * fix: 20 sec timeout for write to disc too short
+  * gitutil: preserve error type when wrapping
+  * Upgrade: github.com/containerd/containerd v1.7.17
+  * Adjusts syscall.Statfs_t for OpenBSD
+  * github: define disable_file_fixes on codecov upload
+  * codecov: exclude generated files
+  * hack: track helper process coverage in integration tests
+  * dockerfile: avoid evaluating ARG default if unused
+  * dockerfile: avoid ignoring errors global arg expansion
+  * hack: add prometheus and grafana to hack/compose
+  * vendor: update github.com/docker/docker to v26.1.3
+  * lint: enable gocritic
+  * lint: enable noctx linter
+  * lint: sort used linters
+  * docs: fix typo and tweak formatting
+  * hack: add validation for golangci config
+  * dockerfile: add hint suggestions to UndefinedVar
+  * dockerfile: add hint suggestions to UndeclaredArgInFrom
+  * dockerfile: improve error messages and add suggest to platform flag parsing
+  * linter: add rule to catch multiple conflicting instructions used in the same stage
+  * removes the extra build-arg copy pasta-ed in
+  * testutil: make sure context is canceled after test end
+  * dockerfile: fix test mirror config bullseye-slim
+  * call validateCommandVars from within the command.Expand call
+  * move validateCommandVar to happen during dispatch and add additional test cases
+  * Add undefined arg lint rule
+  * linter: add rule for relative path used in workdir
+  * buildkitd: Frontend restriction support
+  * build(deps): bump softprops/action-gh-release from 2.0.4 to 2.0.5
+  * detect: refactor the detect package
+  * stream a layer to s3 if possible, instead of getting it then sending it
+  * linter: add lint rule for required json arguments
+  * contenthash: make all paths strings when converting
+  * progress: fix leak of pipe goroutine from MultiReader
+  * updated this file docs\windows.md,
+  * update lint tests to accept a struct instead of an increasing number of parameters
+  * add linting rules for undeclared args in from
+  * update lint subrequest to return build error and warnings up to error rather than a failed grpc response
+  * solver: recursively add merge source jobs to target and ancestors
+  * Adds alpine:latest to mirrored images in dockerfile integration tests
+  * solver: use logrus fields for more scheduler debug logs
+  * solver: prevent edge merge to inactive states
+  * fix: close files in the toAgentSource func
+  * linter: add linter rule for reserved stage names and duplicate stage names
+  * docs: add documetation for --group and SecurityDescriptor config
+  * frontend: missing compat check for TestCommandSourceMapping
+  * dockerfile: add lint rule for maintainer instruction
+  * align prune with disk usage command behavior
+  * buildkitd: allow --group for windows
+  * detect: remove extraneous check for detected exporters
+  * vendor: update fsutil to 91a3fc4
+  * docs: dockerfile reference title in front matter
+  * fix: gc policy for windows to use percentage of disk space
+  * vendor: update github.com/docker/docker to v26.1.0
+  * chore: remove repetitive word
+  * vendor:  github.com/tonistiigi/fsutil @ 497d33b
+  * build(deps): bump golang.org/x/net from 0.18.0 to 0.23.0
+  * chore: fix function names in comment
+  * build(deps): bump github.com/docker/docker
+  * Update lint warning sorting to handle mssing ranges and < 1 sourceIndex.
+  * avoid appending line info in lint detail
+  * add basic warning validations so we can safely sort and print the warnings we receive from the lint subrequest
+  * sort lint warning output by file and line number, sourcemap format now consistent
+  * git: restrict definition of git ref
+  * Improve grammar in README.md
+  * dockerfile: add statuscode to lint result
+  * dockerfile: fix validation errors in linter tests
+  * fix: use unix path separator since path already normalized
+  * solver: infer builder id from user input for provenance in build record
+  * refactored opt.Warn to simplify and updated warning data
+  * Consolidate tests and update Warning output to include source data
+  * update print to include lint subcommand
+  * hack: add gopls analyzers
+  * lint: unusedparams fixes for freebsd
+  * lint: unusedparams fixes for windows
+  * lint: unusedparams fixes
+  * lint: fixes for overflows
+  * lint: stdmethods fixes
+  * vendor: github.com/docker/cli v26.0.0
+  * vendor: github.com/docker/docker v26.0.0
+  * vendor: golang.org/x/sys v0.18.0
+  * vendor: github.com/containerd/containerd v1.7.15
+  * hack: linter updates
+  * lint: unusedwrite fixes
+  * lint: nilness fixes
+  * unify ReadAt to ReadCloser conversion
+  * dockerfile: remove dependency on apitypes/container
+  * dockerfile: remove strslice dependency
+  * solver: add more debug logs to track down inconsistent graph state
+  * add support for AlwaysReplaceExistingDestPaths in llb copy
+  * chore: fix casing in containerd-alt-16 stage
+  * chore: remove impossible err check
+  * oci: fix missing release call
+  * executor: fix overlay layer limit for non-rootfs mounts
+  * rewrite-timestamp: fix incompatibility with `COPY --link`
+  * util/converter: fix diffID computation
+  * update containerd vendor and add test for OCI media type.
+  * otel: update usage of otelgrpc interceptors to use stat handlers
+  * Update file consistent cmd casing to match majority casing, not first instruction casing
+  * inline stage lint helper functions
+  * Add lint rule for consistent command casing across the dockerfile and update tests
+  * update comment where we collect empty continuation line warnings
+  * client: expose git auth header and token keys
+  * docs: call out ONBUILD COPY --from as unsupported
+  * docs: clarify that leading parent dir paths are stripped away
+  * docs: add COPY --from section
+  * tracing: refactor the trace recorder
+  * ci: update workflow artifacts retention
+  * docs: fix incorrect capitalization for "GitLab"
+  * docs: fix incorrect syntax for exec form entrypoint
+  * dockerfile: fix missing source mapping for COPY --link command
+  * inline: fix uncompressed digest importing from multiple providers
+  * refactor tests and add FROM/AS lint rule
+  * gha: add support for batch checking existing keys
+  * remotecache: replace CheckDescriptor with Info
+  * explicitly tie linter messages to linter rules
+  * improve alpine version selection per arch
+  * oci: make mounting oci socket optional
+  * add integration test to check for lint warnings
+  * fix: use default dialer for client
+  * fix integration tests for new dockerfile empty continuation warning output
+  * git: ensure file-looking git refs aren't parsed as URLs
+  * solver: stub out sysSampler close
+  * remotecache: fix missing CheckDescriptor method
+  * Remove indent so that every rawjson message is printed in one line.
+  * vendor: github.com/containerd/containerd v1.7.14
+  * refactor linting to allow better, more consistent warnings
+  * Add additional warnings for lint rules
+  * hack: configure the otel-collector for hack/compose
+  * docs: remove mention that buildkit warns about unconsumned build args
+  * build(deps): bump softprops/action-gh-release from 2.0.2 to 2.0.4
+  * detect: fix auto-detection of metric exporters to handle none correctly
+  * ci: update comment version for softprops/action-gh-release update
+  * build(deps): bump softprops/action-gh-release from 1 to 2
+  * docs: add type=tmpfs to run mounts overview
+  * testutil: add binary and extraEnv opt for dockerd worker
+  * docs: replace references to the master branch with v0.13
+  * fix(docs): add the containers feature enabling step
+  * ci: enable multi-platform lint only for upstream repo
+  * solver: comment some annotations about solver lock
+  * solver: remove unneccessary solver lock
+  * Address review feedback and slightly refactor tests
+  * dockerfile: add docs for --parents
+  * chore: remove unneccessary parameter in newSharedOp
+  * move zero-value initialization for oci indexes to separate function
+  * fix: windows getting started guide for uniformity
+  * dockerfile: allow pivot point for --parents flag
+  * util: typo fix
+  * sets the oci media type if unset in the index
+  * Remove trailing newline
+  * vendor: update github.com/tonistiigi/fsutil to 7525a1af2bb5
+  * Revert formatting change to state.go
+  * Remove input ordering logic from Marshal(), enforce ordering in to (*FileOp).Inputs() and (*ExecOp).Inputs()
+  * vendor: github.com/docker/docker v26.0.0-rc1
+  * Change output->input map name and slight formatting change
+  * Pre-convert outputs to inputs  in llb client marshaller in order to traverse input vertices in a consistent order
+  * ci(validate): temporarily disable archutil-arm64 job
+  * add loongarch support for buildkit archutil
+
+-------------------------------------------------------------------
 Mon Apr 08 06:02:50 UTC 2024 - danish.prakash@suse.com
 
 - Update to version 0.13.1:
