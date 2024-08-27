@@ -256,4 +256,12 @@ https://www.reddit.com/r/openSUSE/comments/11sl1a7/comment/jcg9pbh/?utm_source=s
   which fails to build with BUILD_ORIG=1.</comment>
     <requestid>1194095</requestid>
   </revision>
+  <revision rev="29" vrev="11">
+    <srcmd5>665516e3448e909b7b126e6c43b6bb6c</srcmd5>
+    <version>5.1.4</version>
+    <time>1724780358</time>
+    <user>anag+factory</user>
+    <comment>Add ffmpeg-5-CVE-2024-7272.patch to fix security issues.</comment>
+    <requestid>1196200</requestid>
+  </revision>
 </revisionlist>

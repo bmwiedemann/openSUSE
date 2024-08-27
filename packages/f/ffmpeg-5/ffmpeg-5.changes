@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Aug 18 01:42:12 UTC 2024 - Cliff Zhao <qzhao@suse.com>
+
+- Add ffmpeg-5-CVE-2024-7272.patch:
+  Backporting 9903ba28 from upstream, error out on invalid layouts,
+  * If it's unsupported or invalid, then there's no point trying to
+  rebuild it using a value that may have been derived from the same
+  layout to begin with.
+  * Move the checks before the attempts at copying the layout while
+  at it.
+  (CVE-2024-7272, bsc#1229261)
+
+-------------------------------------------------------------------
 Thu Aug 15 09:56:01 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Remove ffmpeg-5-CVE-2024-32228.patch as it adds/modifies code
