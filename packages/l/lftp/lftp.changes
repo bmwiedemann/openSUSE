@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jul 31 20:10:18 UTC 2024 - Marcus Meissner <meissner@suse.com>
+
+- lftp-gcc14.patch: fixed issues with gcc14
+
+-------------------------------------------------------------------
 Thu Jan 25 08:01:55 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Apply "0001-lftp_ssl-deinitialize-the-lftp_ssl_openssl_instance.patch"

@@ -36,6 +36,7 @@ Patch3:         0003-Add-content-of-lftp-completion.patch.patch
 Patch5:         0005-Add-the-wrapper-code-to-the-Makefile-in-order-to-bui.patch
 # https://github.com/lavv17/lftp/issues/716
 Patch6:         0001-lftp_ssl-deinitialize-the-lftp_ssl_openssl_instance.patch
+Patch7:         lftp-gcc14.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
@@ -54,7 +55,7 @@ BuildRequires:  pkgconfig(libidn2)
 BuildRequires:  pkgconfig(zlib)
 Requires:       less
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Conflicts:      ftp
 
 %description
@@ -102,11 +103,9 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %suse_update_desktop_file %{name} -G "FTP client" Network FileTransfer
 %find_lang %{name}
 
-%post
-/sbin/ldconfig
+%post -p /sbin/ldconfig
 
-%postun
-/sbin/ldconfig
+%postun -p /sbin/ldconfig
 
 %files -f "lftp.lang"
 %license COPYING

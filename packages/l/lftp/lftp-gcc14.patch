@@ -1,0 +1,12 @@
+Index: lftp-4.9.2/m4/needtrio.m4
+===================================================================
+--- lftp-4.9.2.orig/m4/needtrio.m4
++++ lftp-4.9.2/m4/needtrio.m4
+@@ -9,6 +9,7 @@ AC_DEFUN([LFTP_NEED_TRIO],[
+       else
+ 
+       AC_RUN_IFELSE([AC_LANG_SOURCE([[
++#include <stdio.h>
+ 	 int main()
+ 	 {
+ 	    unsigned long long x=0,x1;

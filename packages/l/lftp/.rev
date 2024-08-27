@@ -765,4 +765,12 @@ the underlying buffer would always contain a NUL-terminated string.
     <comment>Fix a crash that ocurred when lftp is run on s390x with an IBM crypto card installed. [bsc#1213984]</comment>
     <requestid>1141445</requestid>
   </revision>
+  <revision rev="81" vrev="5">
+    <srcmd5>75fffcb536538b539dddc1c7555383dc</srcmd5>
+    <version>4.9.2</version>
+    <time>1724780366</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1196224</requestid>
+  </revision>
 </revisionlist>
