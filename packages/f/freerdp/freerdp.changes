@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Aug 23 20:06:53 UTC 2024 - Michael Gorse <mgorse@suse.com>
+
+- Only use gcc 12 for SLE 15 / Leap. SLE 16 will presumably use a
+  newer gcc by default.
+
+-------------------------------------------------------------------
 Fri Aug  9 05:05:59 UTC 2024 - ecsos <ecsos@opensuse.org>
 
 - Update to 3.7.0

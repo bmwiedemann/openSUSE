@@ -51,7 +51,7 @@ BuildRequires:  cups-devel
 BuildRequires:  ed
 BuildRequires:  fdupes
 # doesn't compile correctly with older gcc's
-%if 0%{?suse_version} <= 1600
+%if 0%{?suse_version} < 1600
 BuildRequires:  gcc12-c++
 %else
 BuildRequires:  gcc-c++
@@ -254,7 +254,7 @@ if [ -z "$SOURCE_DATE_EPOCH" ]; then
 find . -type f -name "*.c" -exec perl -i -pe 's{__(DATE|TIME)__}{""}g' "{}" "+"
 fi
 
-%if 0%{?suse_version} <= 1600
+%if 0%{?suse_version} < 1600
 export CXX=g++-12
 %endif
 
