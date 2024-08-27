@@ -256,10 +256,16 @@ done
 if [ ! -e /etc/waagent.conf ]; then
     if [ -e /etc/waagent.conf.bak ]; then
         mv -Z /etc/waagent.conf.bak /etc/waagent.conf
+        #restart the waagent.service again the restert in post failed due
+        # to missing config
+        systemctl try-restart waagent.service
     # Making the assumption that the rpmsave file was generated because of
     # of the previously broken package upgrade.
     elif [ -e /etc/waagent.conf.rpmsave ]; then
         cp -Z /etc/waagent.conf.rpmsave /etc/waagent.conf
+        #restart the waagent.service again the restert in post failed due
+        # to missing config
+        systemctl try-restart waagent.service
     fi
 fi
 %if 0%{?suse_version} > 1500

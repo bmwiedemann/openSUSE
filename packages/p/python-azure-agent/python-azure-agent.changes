@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Aug 19 11:14:11 UTC 2024 - Robert Schweikert <rjschwei@suse.com>
+
+- Restart the agent (bsc#1227600)
+  + The agent service gets restarted in post but may fail due to a missing
+    config file. config files were split into their own package previously.
+    When we detect that we have to restore a config file we also need
+    to restart the agent again.
+
+-------------------------------------------------------------------
 Fri Jul 12 15:41:55 UTC 2024 - Robert Schweikert <rjschwei@suse.com>
 
 - Add agent-btrfs-use-f.patch (bsc#1227711)

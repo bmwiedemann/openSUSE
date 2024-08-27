@@ -375,4 +375,12 @@
     <comment>fix typo in patch</comment>
     <requestid>1187232</requestid>
   </revision>
+  <revision rev="37" vrev="10">
+    <srcmd5>8292f88fd857076a1868c3be59e76efe</srcmd5>
+    <version>2.9.1.1</version>
+    <time>1724780334</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1196130</requestid>
+  </revision>
 </revisionlist>
