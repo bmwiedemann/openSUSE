@@ -1,0 +1,6 @@
+<package name="pik" project="openSUSE:Factory">
+  <title>Process Interactive Kill</title>
+  <description>Process Interactive Kill is a command line tool that helps to find and kill process. It works like pkill command but search is interactive.</description>
+  <devel project="X11:Utilities" package="pik"/>
+  <url>https://github.com/jacek-kurlit/pik</url>
+</package>
