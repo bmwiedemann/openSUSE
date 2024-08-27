@@ -1,7 +1,7 @@
 #
 # spec file for package lash
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,6 +34,7 @@ Patch4:         lash-add-needed.patch
 Patch5:         lash-resource.patch
 Patch6:         lash-glibc-2.22.patch
 Patch7:         0001-Fix-detection-of-Python-3.patch
+Patch8:         lash-gcc14-fix.patch
 BuildRequires:  alsa-devel
 BuildRequires:  glibc-devel
 BuildRequires:  gtk2-devel
@@ -88,6 +89,7 @@ This package contains the development files for the LASH system.
 %patch -P 5 -p1
 %patch -P 6 -p1
 %patch -P 7 -p1
+%patch -P 8 -p1
 
 %build
 ./autogen.sh

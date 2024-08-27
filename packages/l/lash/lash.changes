@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug 27 11:29:55 UTC 2024 - Takashi Iwai <tiwai@suse.com>
+
+- Fix the build error with gcc14:
+  lash-gcc14-fix.patch
+
+-------------------------------------------------------------------
 Thu Feb 29 13:43:36 UTC 2024 - pgajdos@suse.com
 
 - Use %patch -P N instead of deprecated %patchN.
