@@ -5,7 +5,8 @@ Wed Aug 14 17:02:31 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
   * New features: Add the --[ro-]bind-fd option, which can be used
     to mount a filesystem represented by a file descriptor without
     time-of-check/time-of-use attacks. This is needed when
-    resolving CVE-2024-42472 in Flatpak.
+    resolving security issue in Flatpak.
+    (CVE-2024-42472, bsc#1229157)
   * Other changes: Fix some confusing syntax in SetupOpFlag (no
     functional change).
 
