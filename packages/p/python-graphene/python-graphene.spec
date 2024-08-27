@@ -1,7 +1,7 @@
 #
 # spec file for package python-graphene
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,15 +19,18 @@
 %{?sle15_python_module_pythons}
 Name:           python-graphene
 Version:        3.3.0
+%define onedotversion 3.3
 Release:        0
 Summary:        GraphQL Framework for Python
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/graphql-python/graphene
 Source:         https://github.com/graphql-python/graphene/archive/v%{version}.tar.gz#/graphene-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM gh#graphql-python/graphene#1540
+Patch0:         support-pytest-8.patch
 BuildRequires:  %{python_module aniso8601 >= 8}
 BuildRequires:  %{python_module graphql-core >= 3.1}
 BuildRequires:  %{python_module graphql-relay >= 3.1}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module promise}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest-benchmark}
@@ -35,6 +38,7 @@ BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-aniso8601 >= 8
@@ -47,13 +51,13 @@ BuildArch:      noarch
 Graphene is a Python library for building GraphQL schemas/types.
 
 %prep
-%setup -q -n graphene-%{version}
+%autosetup -p1 -n graphene-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -64,6 +68,7 @@ Graphene is a Python library for building GraphQL schemas/types.
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/*graphene*/
+%{python_sitelib}/graphene
+%{python_sitelib}/graphene-%{onedotversion}.dist-info
 
 %changelog

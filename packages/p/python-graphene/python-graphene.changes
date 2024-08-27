@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Aug 27 04:18:34 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to autosetup and pyproject macros.
+- Add patch support-pytest-8.patch:
+  * Use correct setup/teardown method names.
+
+-------------------------------------------------------------------
 Sun Dec 17 01:58:11 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.3.0:

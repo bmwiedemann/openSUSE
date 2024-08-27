@@ -104,4 +104,14 @@
 - Update to version 3.1.1</comment>
     <requestid>1133682</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>7b187330a6264f3007c45cc85740e35a</srcmd5>
+    <version>3.3.0</version>
+    <time>1724780347</time>
+    <user>anag+factory</user>
+    <comment>- Switch to autosetup and pyproject macros.
+- Add patch support-pytest-8.patch:
+  * Use correct setup/teardown method names.</comment>
+    <requestid>1196146</requestid>
+  </revision>
 </revisionlist>
