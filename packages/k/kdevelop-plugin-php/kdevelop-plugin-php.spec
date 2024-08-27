@@ -41,9 +41,10 @@ BuildRequires:  cmake(KF6TextEditor) >= %{kf6_version}
 BuildRequires:  cmake(KF6ThreadWeaver) >= %{kf6_version}
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
-Requires:       kdevelop
+# Package was renamed before 24.08 release
+Requires:       kdevelop >= 24.08.0
 Conflicts:      kdevelop4-plugin-php
-Obsoletes:      kdevelop5-plugin-php
+Obsoletes:      kdevelop5-plugin-php < %{version}
 # Only build on archs where Qt6WebEngine is available
 ExclusiveArch:  aarch64 x86_64 %{x86_64} riscv64
 

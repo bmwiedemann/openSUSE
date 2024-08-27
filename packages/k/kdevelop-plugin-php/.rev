@@ -7,4 +7,12 @@
     <comment>KDE release gear 24.08.0</comment>
     <requestid>1195545</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>0f448af1f1f8459bf06e781f3c588d10</srcmd5>
+    <version>24.08.0</version>
+    <time>1724780361</time>
+    <user>anag+factory</user>
+    <comment>- Add version to 'Requires' and 'Obsoletes'</comment>
+    <requestid>1196205</requestid>
+  </revision>
 </revisionlist>
