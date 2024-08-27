@@ -24,7 +24,7 @@
 %define liblcms2_name lcms2
 %endif
 Name:           rawtherapee
-Version:        5.10
+Version:        5.11
 Release:        3%{?dist}
 Summary:        Cross-platform raw image processing program
 License:        GPL-3.0-only
@@ -38,7 +38,9 @@ BuildRequires:  gtk3-devel
 BuildRequires:  lensfun-devel
 BuildRequires:  libiptcdata-devel
 BuildRequires:  libjpeg-devel
+BuildRequires:  libjxl-devel
 BuildRequires:  libpng-devel
+BuildRequires:  libraw-devel
 BuildRequires:  libtiff-devel
 BuildRequires:  pkgconfig
 BuildRequires:  zlib-devel
@@ -185,6 +187,7 @@ echo "CXXFLAGS= "$CXXFLAGS
 
 # FIXME: you should use the %%cmake macros
 cmake \
+                -DWITH_SYSTEM_LIBRAW=1 \
                 -DCMAKE_INSTALL_PREFIX=%{_prefix} \
                 -DLIBDIR=%{_libdir} \
                 -DCMAKE_BUILD_TYPE=release \
@@ -241,8 +244,6 @@ fi
 %if !(0%{?suse_version} || 0%{?sles_version})
 %{_bindir}/gtk-update-icon-cache %{_datadir}/icons/hicolor &>/dev/null || :
 %endif
-
-rm -rf %{buildroot}
 
 %files
 
