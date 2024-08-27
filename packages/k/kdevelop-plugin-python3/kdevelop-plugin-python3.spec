@@ -47,11 +47,12 @@ BuildRequires:  cmake(KF6ThreadWeaver) >= %{kf6_version}
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Test) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
-Requires:       kdevelop5
+# Package was renamed before 24.08 release
+Requires:       kdevelop >= 24.08.0
 Recommends:     %{mypython}-pep8
 Provides:       kdevelop4-plugin-python = %{version}
 Obsoletes:      kdevelop4-plugin-python < %{version}
-Obsoletes:      kdevelop5-plugin-python3
+Obsoletes:      kdevelop5-plugin-python3 < %{version}
 # Only build on archs where Qt6WebEngine is available
 ExclusiveArch:  aarch64 x86_64 %{x86_64} riscv64
 
@@ -64,7 +65,7 @@ Summary:        Translations for package %{name}
 Requires:       %{name} = %{version}
 Supplements:    (bundle-lang-other and %{name})
 Conflicts:      kdevelop4-plugin-python-lang
-Obsoletes:      kdevelop5-plugin-python3-lang
+Obsoletes:      kdevelop5-plugin-python3-lang < %{version}
 Provides:       %{name}-lang-all = %{version}
 BuildArch:      noarch
 
