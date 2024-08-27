@@ -49,4 +49,17 @@
     <comment></comment>
     <requestid>1130384</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>61332aa931c44f26b5188d4cf7ac4346</srcmd5>
+    <version>4.8.0</version>
+    <time>1724780324</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 4.8.0
+  * Return consistent responses after Websocket connection ends
+  * Migrate Python package metadata to pyproject.toml
+  * Remove Python 3.7 from builds
+  * Internal code restructure (no functional changes)
+- Drop python-311.patch as it is included upstream</comment>
+    <requestid>1196099</requestid>
+  </revision>
 </revisionlist>

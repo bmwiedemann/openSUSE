@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Aug 14 00:46:24 UTC 2024 - Guang Yee <gyee@suse.com>
+
+- Update to version 4.8.0
+  * Return consistent responses after Websocket connection ends
+  * Migrate Python package metadata to pyproject.toml
+  * Remove Python 3.7 from builds
+  * Internal code restructure (no functional changes)
+- Drop python-311.patch as it is included upstream
+
+-------------------------------------------------------------------
 Fri Dec  1 16:43:25 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
 
 - Add %{?sle15_python_module_pythons}

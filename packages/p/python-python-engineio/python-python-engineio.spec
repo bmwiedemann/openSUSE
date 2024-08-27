@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-engineio
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,16 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-python-engineio
-Version:        4.3.4
+Version:        4.8.0
 Release:        0
 Summary:        EngineIO server
 License:        MIT
 URL:            http://github.com/miguelgrinberg/python-engineio/
 Source:         https://github.com/miguelgrinberg/python-engineio/archive/v%{version}.tar.gz#/python-engineio-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM python-311.patch gh#miguelgrinberg/python-engineio@ac3911356fbe
-Patch0:         python-311.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module simple-websocket >= 0.10.0}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Recommends:     python-eventlet
@@ -51,17 +52,19 @@ Python implementation of the Engine.IO realtime server.
 %autosetup -p1 -n python-engineio-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest -rs -k 'not test_logger'
+# FIXME: disable the static files tests because the tests/async/files is missing from
+# the release tarball. Hence those tests will always fail.
+%pytest -rs -k 'not test_logger and not test_static_file_routing and not test_static_files'
 
 %files %{python_files}
-%doc README.rst
+%doc README.md
 %license LICENSE
 %{python_sitelib}/engineio
 %{python_sitelib}/python_engineio-%{version}*-info
