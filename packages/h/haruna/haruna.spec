@@ -17,7 +17,7 @@
 
 
 Name:           haruna
-Version:        1.1.2
+Version:        1.2.0
 Release:        0
 Summary:        Video player built with Qt/QML on top of libmpv
 License:        CC-BY-4.0 AND GPL-3.0-or-later AND WTFPL
@@ -76,9 +76,6 @@ Haruna is a video player built with Qt/QML on top of libmpv.
 %kf6_install
 
 %find_lang %{name}
-
-# let's remove the documentation for now
-rm -r %{buildroot}%{_datadir}/doc
 
 # remove oddly-sized icons
 rm -r %{buildroot}%{_kf6_iconsdir}/hicolor/44x44 \

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Aug 27 13:45:23 UTC 2024 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 1.2.0
+  Features:
+  * Added floating footer/bottom toolbar style
+  * Removed the docbook and moved its content to tooltips
+  * Middle clicking the playlist scrolls to the playing item
+
+-------------------------------------------------------------------
 Fri Jun 21 09:32:05 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Use the kf6-filesystem variables and macros
