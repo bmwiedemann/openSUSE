@@ -18,12 +18,12 @@
 
 %define         appname dev.geopjr.Tuba
 Name:           tuba
-Version:        0.8.2
+Version:        0.8.3
 Release:        0
 Summary:        Browse the Fediverse
 License:        GPL-3.0-only
 URL:            https://github.com/GeopJr/Tuba
-Source0:        %{url}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  appstream-glib
 BuildRequires:  cmake
 BuildRequires:  desktop-file-utils
@@ -36,6 +36,7 @@ BuildRequires:  vala >= 0.48
 BuildRequires:  pkgconfig(clapper-0.0)
 BuildRequires:  pkgconfig(gee-0.8) >= 0.8.5
 BuildRequires:  pkgconfig(gtksourceview-5)
+BuildRequires:  pkgconfig(icu-uc)
 BuildRequires:  pkgconfig(json-glib-1.0) >= 1.4.4
 BuildRequires:  pkgconfig(libadwaita-1) >= 1.5
 BuildRequires:  pkgconfig(libsecret-1) >= 0.20
@@ -53,7 +54,10 @@ BuildRequires:  pkgconfig(libxml-2.0) >= 2.9.10
 %autosetup -n Tuba-%{version}
 
 %build
-%meson -Ddistro=true -Dclapper=true -Ddevel=false
+%meson \
+  -Ddevel=false \
+  -Ddistro=true \
+  -Dclapper=true
 %meson_build
 
 %install

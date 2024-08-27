@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Aug 26 16:06:34 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 0.8.3:
+  * Caching support for Clapper 0.8
+  * On-disk cache clearing for manually downloaded media attachments on
+    non-Clapper
+  * Temporary mechanism to delete leftover cache folders from when
+    Tootle's caching was in use
+  * Missing translation context
+  * Do not use MPRIS for GIFV on Clapper
+  * Do not create unnecessary Gst elements on Clapper
+  * Do not explicitly set autoplay for GIFV on Clapper
+  * Do not set videos to paused if they are actually stopped on Clapper
+  * Missing tooltips
+  * Redesigned Search view's empty state
+  * Focus ring not matching the widget
+  * Alt window headerbar being taller than expected
+  * Only show Media Viewer 'loading' spinners after 1s to avoid
+    unnecessary friction on fast internet connections
+  * Removed back animation when going back home
+  * Own posts being hidden if caught in a filter
+
+-------------------------------------------------------------------
 Thu Jul 18 21:00:15 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 0.8.2:
