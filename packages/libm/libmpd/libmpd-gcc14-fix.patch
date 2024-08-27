@@ -1,0 +1,15 @@
+---
+ src/libmpd-playlist.c |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- a/src/libmpd-playlist.c
++++ b/src/libmpd-playlist.c
+@@ -779,7 +779,7 @@ int mpd_playlist_load(MpdObj *mi, const
+ 	if(mpd_lock_conn(mi))
+ 	{
+ 		debug_printf(DEBUG_ERROR,"lock failed\n");
+-		return NULL;
++		return MPD_LOCK_FAILED;
+ 	}
+     mpd_sendLoadCommand(mi->connection,path);
+ 	mpd_finishCommand(mi->connection);

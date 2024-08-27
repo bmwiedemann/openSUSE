@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug 27 12:08:02 UTC 2024 - Takashi Iwai <tiwai@suse.com>
+
+- Fix the build error with gcc14:
+  libmpd-gcc14-fix.patch
+
+-------------------------------------------------------------------
 Thu Feb 29 17:57:29 UTC 2024 - pgajdos@suse.com
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

@@ -27,6 +27,7 @@ Source:         http://download.sarine.nl/Programs/gmpc/11.8/libmpd-%{version}.t
 Source1:        baselibs.conf
 #PATCH-FIX-UPSTREAM libmpd-glibc-2.20.patch avvissu@yandex.ru -- Fix build with glibc-2.20
 Patch1:         libmpd-glibc-2.20.patch
+Patch2:         libmpd-gcc14-fix.patch
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  libtool
