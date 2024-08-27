@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Aug 27 10:16:09 UTC 2024 - Andrii Nikitin <andrii.nikitin@suse.com>
+
+- Update to version 0.08:
+  * Ignore recommended packages
+
+-------------------------------------------------------------------
+Tue Aug 27 10:03:51 UTC 2024 - Andrii Nikitin <andrii.nikitin@suse.com>
+
+- Update to version 0.07:
+  * Fix handling exceptions during refresh
+
+-------------------------------------------------------------------
 Mon Apr 22 14:04:51 UTC 2024 - Andrii Nikitin <andrii.nikitin@suse.com>
 
 - Update to version 0.06:

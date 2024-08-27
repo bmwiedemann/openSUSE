@@ -14,7 +14,7 @@
 # with this program; if not, see <http://www.gnu.org/licenses/>.
 
 Name:           sypper
-Version:        0.06
+Version:        0.08
 Release:        0
 License:        GPL-2.0-or-later
 Summary:        Simple perl utility emulating zypper download
@@ -26,6 +26,7 @@ Requires:       perl-base = %{perl_version}
 Requires:       perl-solv
 Requires:       perl-Mojolicious
 Requires:       perl-Config-IniFiles
+Requires:       perl-IO-Socket-SSL
 BuildRequires:  make
 BuildArch:      noarch
 
