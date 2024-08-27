@@ -1,7 +1,7 @@
 #
 # spec file for package xclipboard
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           xclipboard
-Version:        1.1.4
+Version:        1.1.5
 Release:        0
 Summary:        X clipboard client
 License:        MIT
@@ -60,7 +60,8 @@ install -m0644 -D %{SOURCE2} %{buildroot}%{_datadir}/pixmaps/xclipboard.png
 
 %files
 %defattr(-,root,root)
-%doc ChangeLog COPYING README.md
+%doc ChangeLog README.md
+%license COPYING
 %{_bindir}/xclipboard
 %{_bindir}/xcutsel
 %{_datadir}/applications/xclipboard.desktop

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Aug 27 08:01:52 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.1.5
+  * gitlab CI: stop requiring Signed-off-by in commits
+  * Fix -Wbad-function-cast warnings from casting Atom to void *
+  * Handle -Wdiscarded-qualifiers warnings for XawTextBlock ptr
+  * gitlab CI: Update build container contents
+  * NewClip: error out if failed to allocate memory for new ClipRec
+
+-------------------------------------------------------------------
 Mon Jul 11 12:07:53 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 1.1.4:

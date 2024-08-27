@@ -65,4 +65,17 @@
   * autogen.sh: use exec instead of waiting for configure to finish</comment>
     <requestid>988368</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>df4bb1a14324d66b93eb069cadd82f13</srcmd5>
+    <version>1.1.5</version>
+    <time>1724780365</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.1.5
+  * gitlab CI: stop requiring Signed-off-by in commits
+  * Fix -Wbad-function-cast warnings from casting Atom to void *
+  * Handle -Wdiscarded-qualifiers warnings for XawTextBlock ptr
+  * gitlab CI: Update build container contents
+  * NewClip: error out if failed to allocate memory for new ClipRec</comment>
+    <requestid>1196223</requestid>
+  </revision>
 </revisionlist>
