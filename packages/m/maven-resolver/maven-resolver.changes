@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Aug 27 08:51:42 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 1.9.22
+  * Bug
+    + MRESOLVER-572: Resolver-Supplier unusable in OSGi runtimes
+    + MRESOLVER-574: Invalid Cookie set under proxy conditions
+    + MRESOLVER-586: In typical setups, DefaultArtifact copies the
+      same maps over and over again
+    + MRESOLVER-587: Memory consumption improvements
+  * New Feature
+    + MRESOLVER-571: Import o.e.aether packages with the exact same
+      version in OSGi metadata
+  * Improvement
+    + MRESOLVER-570: Remove excessive strictness of OSGi dependency
+      metadata
+  * Task
+    + MRESOLVER-576: Allow co-release of Resolver 1.x and 2.x
+
+-------------------------------------------------------------------
 Wed Jun 12 10:33:43 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream version 1.9.20
