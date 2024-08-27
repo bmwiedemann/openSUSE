@@ -1037,6 +1037,7 @@ unsorted:
   - atril-doc 
   - atril-lang 
   - atril-thumbnailer 
+  - attica-qt5 
   - attica-qt5-devel 
   - atuin 
   - atuin-bash-completion 
@@ -7993,6 +7994,7 @@ unsorted:
   - grant-zsh-completion 
   - grantlee-editor 
   - grantlee-editor-lang 
+  - grantlee5 
   - grantlee5-devel 
   - grantleetheme-devel 
   - graphite2 
@@ -9893,6 +9895,11 @@ unsorted:
   - kdesu-devel 
   - kdesvn 
   - kdevelop-pg-qt 
+  - kdevelop-plugin-php 
+  - kdevelop-plugin-php-devel 
+  - kdevelop-plugin-php-lang 
+  - kdevelop-plugin-python3 
+  - kdevelop-plugin-python3-lang 
   - kdevelop5-plugin-php 
   - kdevelop5-plugin-php-devel 
   - kdevelop5-plugin-php-lang 
@@ -10271,6 +10278,7 @@ unsorted:
   - knavalbattle-lang 
   - knetwalk 
   - knetwalk-lang 
+  - knewstuff 
   - knewstuff-core-devel 
   - knewstuff-devel 
   - knewstuff-imports 
@@ -10356,6 +10364,7 @@ unsorted:
   - kpublictransport 
   - kpublictransport-devel 
   - kpublictransport-imports 
+  - kpublictransport-lang 
   - kquickcharts 
   - kquickcharts-devel 
   - kquickimageeditor-devel 
@@ -11087,6 +11096,7 @@ unsorted:
   - libKChart6-3-lang 
   - libKDb3-4 
   - libKF5ActivitiesStats1 
+  - libKF5Attica5 
   - libKF5Baloo5 
   - libKF5BalooEngine5 
   - libKF5BalooEngine5-lang 
@@ -11112,13 +11122,21 @@ unsorted:
   - libKF5ModemManagerQt6 
   - libKF5NetworkManagerQt-devel 
   - libKF5NetworkManagerQt6 
+  - libKF5NewStuff5 
+  - libKF5NewStuff5-lang 
+  - libKF5NewStuffCore5 
+  - libKF5NewStuffWidgets5 
+  - libKF5NotifyConfig5 
+  - libKF5NotifyConfig5-lang 
   - libKF5Plotting5 
   - libKF5Pty5 
   - libKF5Pty5-lang 
   - libKF5PulseAudioQt5 
+  - libKF5Runner5 
   - libKF5Sane6 
   - libKF5Su5 
   - libKF5Su5-lang 
+  - libKF5Syndication5 
   - libKF5UnitConversion5 
   - libKF5UnitConversion5-lang 
   - libKF5XmlRpcClient5 
@@ -11127,6 +11145,7 @@ unsorted:
   - libKHealthCertificate1 
   - libKOSM1 
   - libKOSMIndoorMap1 
+  - libKOSMIndoorRouting1 
   - libKOpeningHours1 
   - libKPim6AddressbookImportExport6-devel 
   - libKPim6GAPIBlogger6 
@@ -11150,6 +11169,7 @@ unsorted:
   - libKTorrent6-lang 
   - libKWeatherCore6 
   - libKWeatherCore6-lang 
+  - libKasten4 
   - libLASi-devel 
   - libLASi2 
   - libLHAPDF-6_5_4 
@@ -11210,6 +11230,7 @@ unsorted:
   - libOgreTerrain13_6 
   - libOgreVolume-devel 
   - libOgreVolume13_6 
+  - libOkteta3 
   - libOpenCL1 
   - libOpenCL1-32bit 
   - libOpenCOLLADABaseUtils0_3 
@@ -11331,6 +11352,7 @@ unsorted:
   - libQt5Gui-devel-32bit 
   - libQt5Gui-private-headers-devel 
   - libQt5Gui5-32bit 
+  - libQt5Help5 
   - libQt5Help5-32bit 
   - libQt5HunspellInputMethod-private-headers-devel 
   - libQt5HunspellInputMethod5 
@@ -11374,6 +11396,7 @@ unsorted:
   - libQt5QuickControls2-devel 
   - libQt5QuickTemplates2-devel 
   - libQt5RemoteObjects5 
+  - libQt5Script5 
   - libQt5Scxml5 
   - libQt5Scxml5-imports 
   - libQt5Sensors5 
@@ -11431,7 +11454,6 @@ unsorted:
   - libQt63DQuickRender6 
   - libQt63DQuickScene2D6 
   - libQt63DRender6 
-  - libQt6Bluetooth6 
   - libQt6Bodymovin6 
   - libQt6Charts6 
   - libQt6ChartsQml6 
@@ -11442,7 +11464,6 @@ unsorted:
   - libQt6DesignerComponents6 
   - libQt6Graphs6 
   - libQt6Grpc6 
-  - libQt6Help6 
   - libQt6HttpServer6 
   - libQt6JsonRpc6 
   - libQt6LanguageServer6 
@@ -11862,7 +11883,7 @@ unsorted:
   - libass9-32bit 
   - libassimp5 
   - libassuan-devel 
-  - libassuan0-32bit 
+  - libassuan9-32bit 
   - libastro1 
   - libastylej3 
   - libasync-devel 
@@ -14048,6 +14069,7 @@ unsorted:
   - libkadm5clnt7 
   - libkadm5srv8 
   - libkafs0 
+  - libkasten-lang 
   - libkate-devel 
   - libkate-tools 
   - libkcapi-devel 
@@ -14152,8 +14174,6 @@ unsorted:
   - libkokkos-4_3 
   - libkolabxml-devel 
   - libkomparediff2-devel 
-  - libkomparediff2-kf5 
-  - libkomparediff2-kf5-devel 
   - libkonkretcmpi0 
   - libkpathsea6 
   - libkrb5-26 
@@ -14867,6 +14887,7 @@ unsorted:
   - liboil-0_3-0 
   - liboil-devel 
   - liboil-doc 
+  - libokteta-lang 
   - liboldX-devel 
   - liboldX6 
   - libolecf-devel 
@@ -18535,10 +18556,8 @@ unsorted:
   - mesheryctl-zsh-completion 
   - meshlab 
   - meslo-lg-fonts 
-  - meson 
   - meson-test 
   - meson-tools 
-  - meson-vim 
   - messagelib-devel 
   - metacity 
   - metacity-devel 
@@ -19720,7 +19739,6 @@ unsorted:
   - nim 
   - nimbus-icon-theme 
   - nini 
-  - ninja 
   - ninja-test 
   - nintendo-gamecube-wiimote-udev-rules 
   - ninvaders 
@@ -20200,6 +20218,7 @@ unsorted:
   - ohcount 
   - oidentd 
   - okteta 
+  - okteta-data 
   - okteta-devel 
   - okteta-lang 
   - okteta-part 
@@ -23476,6 +23495,7 @@ unsorted:
   - pumpa 
   - pure-ftpd 
   - purpose-devel 
+  - purpose-lang 
   - purpose-services 
   - putty 
   - pv 
