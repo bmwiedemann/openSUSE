@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Aug 26 14:36:00 UTC 2024 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- update to bugfix release 3.9.1
+  https://github.com/OSGeo/gdal/blob/v3.9.2/NEWS.md
+  + Fix issue compiling with openssl 3.2.2 and libarchive 3.3.3
+  + Fix -Wnull-dereference warnings of gcc 14.2
+
+-------------------------------------------------------------------
 Thu Jul  4 13:30:21 UTC 2024 - Bruno Friedmann <bruno@ioda-net.ch>
 
 - update to bugfix release 3.9.1
