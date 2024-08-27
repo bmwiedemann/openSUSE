@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-hpricot
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -33,7 +33,7 @@ BuildRequires:  %{rubydevel}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  %{rubygem rdoc > 3.10}
 BuildRequires:  ruby-macros >= 5
-Url:            http://code.whytheluckystiff.net/hpricot/
+URL:            http://code.whytheluckystiff.net/hpricot/
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        A fast and flexible HTML Parser
@@ -42,12 +42,14 @@ Group:          Development/Languages/Ruby
 
 %description
 Hpricot is a flexible HTML parser written in C. It's designed to be similar to Tanaka Akira's HTree, and has a library. Hpricot can read broken XML files, since many of the same techniques can be used.
+
 %prep
 
 %build
 
 %install
 %gem_install \
+  --extconf-opts=--with-cflags="%{optflags} -Wno-error=incompatible-pointer-types" \
   --doc-files="CHANGELOG COPYING README.md" \
   -f
 %gem_cleanup

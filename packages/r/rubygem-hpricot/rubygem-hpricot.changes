@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Aug 12 14:53:24 UTC 2024 - Martin Jambor <mjambor@suse.com>
+
+- Pass -Wno-error=incompatible-pointer-types (and also all the other
+  optflags) on the command line so that use of incompatible pointers
+  does not prevent the package from building.  [boo#1225921]
+
+-------------------------------------------------------------------
 Sat Feb 10 12:10:20 UTC 2018 - jengelh@inai.de
 
 - Trim rhetorics from description.
