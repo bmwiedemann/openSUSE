@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Mon Aug 26 19:22:30 UTC 2024 - RN <R_Nik_C@proton.me>
+
+- Update to version 3.13.3:
+  * Fix permanent freeze upon opening macOS VFS settings 
+    (gh#nextcloud/desktop#6894)
+  * Remove Ubuntu Mantic, add Oracular (gh#nextcloud/desktop#6909)
+  * Optimize Ubuntu/Debian build (gh#nextcloud/desktop#6910)
+  * Fix clickable area of macOS VFS settings checkboxes 
+    (gh#nextcloud/desktop#6932)
+  * Bugfix/backport kde fix 313 (gh#nextcloud/desktop#6800)
+  * Fix visibility of info buttons and details when updater is 
+    disabled in general settings (gh#nextcloud/desktop#6931)
+  * fix doc configuration file (gh#nextcloud/desktop#6953)
+  * forward the redirected signal from QNetworkReply to detect them 
+    (gh#nextcloud/desktop#6972)
+  * Fix crash: web flow credential dialog is deleted when closing it
+    (gh#nextcloud/desktop#6976)
+  * List sync folders in the file explorer with user's username
+    (gh#nextcloud/desktop#6978)
+  * Bugfix/signup with provider page (gh#nextcloud/desktop#6977)
+  * prevent event loop reentrance when handling ENCRYPT socket 
+    requests (gh#nextcloud/desktop#6979)
+  * Make multiple notifications text translatable 
+    (gh#nextcloud/desktop#6995)
+  * Bugfix/delete readonly folders (gh#nextcloud/desktop#7014)
+  * Bugfix/hide encrypt from context menu 
+    (gh#nextcloud/desktop#7018)
+  * Bugfix/remove read only folders in read only folders 
+    (gh#nextcloud/desktop#7021)
+
+-------------------------------------------------------------------
 Mon Jul 29 05:50:03 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Drop redundant %suse_update_desktop_files usage.
