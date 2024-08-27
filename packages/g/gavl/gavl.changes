@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Aug 27 13:00:41 UTC 2024 - Takashi Iwai <tiwai@suse.com>
+
+- Fix the invalid table entry for mpeg2, which eventually leading to
+  a build error with gcc14:
+  gavl-fix-mpeg2-entry.patch
+- Move COPYING to license section
+
+-------------------------------------------------------------------
 Sun Mar  1 13:17:50 UTC 2015 - avvissu@yandex.ru
 
 - Fix build in packman 11.4:

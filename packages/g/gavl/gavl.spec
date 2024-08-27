@@ -1,7 +1,7 @@
 #
 # spec file for package gavl
 #
-# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -23,11 +23,12 @@ Name:           gavl
 Version:        1.4.0rsvn%{rev}
 Release:        0
 Summary:        Library which provides basic support for uncompressed multimedia data
-License:        GPL-3.0+
+License:        GPL-3.0-or-later
 Group:          System/Libraries
-Url:            http://gmerlin.sourceforge.net/
+URL:            http://gmerlin.sourceforge.net/
 #svn checkout http://svn.code.sf.net/p/gmerlin/code/trunk/gavl/
 Source0:        gavl-%{rev}.tar.gz
+Patch1:         gavl-fix-mpeg2-entry.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  doxygen
@@ -77,7 +78,7 @@ formats and provides some elementary operations (copying, scaling, alpha
 blending etc).
 
 %prep
-%setup -q -n %{name}
+%autosetup -p1 -n %{name}
 
 #Do not compile in DATE and TIME
 echo 'HTML_TIMESTAMP = NO' >> doc/Doxyfile.in
@@ -97,7 +98,8 @@ find %{buildroot}%{_libdir} -name '*.la' -type f -delete -print
 
 %files
 %defattr(-,root,root)
-%doc AUTHORS COPYING README TODO
+%doc AUTHORS README TODO
+%license COPYING
 %{_bindir}/gavfdump
 
 %files -n libgavl%{soname}
