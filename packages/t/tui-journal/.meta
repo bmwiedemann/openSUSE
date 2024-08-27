@@ -1,0 +1,6 @@
+<package name="tui-journal" project="openSUSE:Factory">
+  <title>Write and manage journals/notes from the terminal</title>
+  <description>TUI-Journal is a terminal-based application written in Rust that allows you to write and manage your journal/notes from within the comfort of your terminal. It provides a simple and efficient interface for creating and organizing your thoughts, ideas, and reflections. TUI-Journal supports two different local back-ends: a plain text back-end in JSON format and a database back-end using SQLite.</description>
+  <devel project="X11:Utilities" package="tui-journal"/>
+  <url>https://github.com/AmmarAbouZor/tui-journal</url>
+</package>
