@@ -15,12 +15,12 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%define kf6_version 6.0.0
+%define kf6_version 6.3.0
 %define qt6_version 6.6.0
 
 %bcond_without released
 Name:           kubrick
-Version:        24.05.2
+Version:        24.08.0
 Release:        0
 Summary:        Game based on Rubik's Cube
 License:        GPL-2.0-or-later
@@ -76,6 +76,7 @@ Cube.
 %{_kf6_appstreamdir}/org.kde.kubrick.appdata.xml
 %{_kf6_bindir}/kubrick
 %{_kf6_debugdir}/kubrick.categories
+%{_kf6_debugdir}/kubrick.renamecategories
 %{_kf6_iconsdir}/hicolor/*/*/kubrick*
 %{_kf6_sharedir}/kubrick/
 

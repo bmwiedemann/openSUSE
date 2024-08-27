@@ -16,12 +16,12 @@
 #
 
 
-%define kf6_version 6.0.0
+%define kf6_version 6.3.0
 %define qt6_version 6.6.0
 
 %bcond_without released
 Name:           libkmahjongg
-Version:        24.05.2
+Version:        24.08.0
 Release:        0
 Summary:        General Data for KDE Games
 License:        LGPL-2.1-or-later AND GPL-2.0-or-later
@@ -88,6 +88,7 @@ develop games that uses Mahjongg tiles.
 
 %files
 %{_kf6_debugdir}/libkmahjongg.categories
+%{_kf6_debugdir}/libkmahjongg.renamecategories
 %{_kf6_sharedir}/kmahjongglib/
 
 %files -n libKMahjongg6

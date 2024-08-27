@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Aug 19 07:13:05 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.08.0/
+- Changes since 24.05.2:
+  * Snapcraft: Cleanup plugs now in extension, snapd.
+  * snapcraft: Initial import for qt6.
+  * Close sidebar when tapping on an item (kde#465221)
+  * Fix "Cannot read property 'displayName' of null"
+  * Build APKs against released dependencies
+  * Update year
+  * Remove unused include
+  * AlligatorGlobalDrawer.qml import org.kde.alligator.config
+  * Register Feed as a QML type
+  * Run qmlformat
+  * Qualify property access
+  * Read sidebarCollapsed from settings directly
+  * Add dependency declaration to QML module
+  * Make settings a singleton
+  * Rename Config to AlligatorSettings
+  * Port to ecm_add_qml_module
+  * Fix EntryPage background color
+  * Ensure tooltip shows when collapsed
+  * Complement org.kde.alligator.appdata.xml
+
+-------------------------------------------------------------------
 Tue Jul  2 13:53:33 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.05.2

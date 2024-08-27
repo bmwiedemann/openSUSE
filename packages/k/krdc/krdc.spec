@@ -16,13 +16,13 @@
 #
 
 
-%define kf6_version 6.0.0
+%define kf6_version 6.3.0
 %define plasma6_version 5.27.80
 %define qt6_version 6.6.0
 
 %bcond_without released
 Name:           krdc
-Version:        24.05.2
+Version:        24.08.0
 Release:        0
 Summary:        Remote Desktop Connection
 License:        GPL-2.0-or-later
@@ -36,12 +36,14 @@ BuildRequires:  LibVNCServer-devel
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  kf6-breeze-icons
 BuildRequires:  libssh-devel
+BuildRequires:  qt6-gui-private-devel >= %{qt6_version}
 BuildRequires:  cmake(FreeRDP) >= 2.10
 BuildRequires:  cmake(FreeRDP-Client) >= 2.10
 BuildRequires:  freerdp-server
 BuildRequires:  cmake(KF6Bookmarks) >= %{kf6_version}
 BuildRequires:  cmake(KF6Completion) >= %{kf6_version}
 BuildRequires:  cmake(KF6Config) >= %{kf6_version}
+BuildRequires:  cmake(KF6Crash) >= %{kf6_version}
 BuildRequires:  cmake(KF6DNSSD) >= %{kf6_version}
 BuildRequires:  cmake(KF6DocTools) >= %{kf6_version}
 BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
@@ -57,6 +59,7 @@ BuildRequires:  cmake(KF6WindowSystem) >= %{kf6_version}
 BuildRequires:  cmake(KF6XmlGui) >= %{kf6_version}
 BuildRequires:  cmake(PlasmaActivities) >= %{plasma6_version}
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
+BuildRequires:  cmake(Qt6WaylandClient) >= %{qt6_version}
 BuildRequires:  cmake(WinPR)
 Requires:       kf6-breeze-icons
 Requires:       freerdp

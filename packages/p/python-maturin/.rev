@@ -1115,4 +1115,40 @@
     gh#PyO3/maturin#2134</comment>
     <requestid>1186052</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>3d4ed5358b86452a687e4d33378722f4</srcmd5>
+    <version>1.7.1</version>
+    <time>1724702733</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.7.1
+  * Update clap_complete_command to v0.6.1
+    gh#PyO3/maturin#2144
+  * Fix platform tags when cross-compiling universal2
+    gh#PyO3/maturin#2153
+  * Fix Typo in Migration Guide
+    gh#PyO3/maturin#2162
+  * Fix rust 1.80 clippy errors
+    gh#PyO3/maturin#2164
+  * Don't check .gitignore files in parent directories
+    gh#PyO3/maturin#2158
+  * Replace --skip-auditwheel with --auditwheel option
+    gh#PyO3/maturin#2165
+  * Remove install_requires and setup_requires from setup.py
+    gh#PyO3/maturin#2171
+  * Use modern stripping option
+    gh#PyO3/maturin#2173
+  * Move project metadata from setup.py to pyproject.toml
+    gh#PyO3/maturin#2175
+  * Update manylinux/musllinux policies to the latest main
+    gh#PyO3/maturin#2178
+  * use just licenses as the license directory in a wheel
+    gh#PyO3/maturin#2181
+  * Forward cargo package --list warnings
+    gh#PyO3/maturin#2186
+  * Add current package context to source dist error
+    gh#PyO3/maturin#2187
+  * Place source dist readmes next to Cargo.toml
+    gh#PyO3/maturin#2184</comment>
+    <requestid>1195862</requestid>
+  </revision>
 </revisionlist>

@@ -16,12 +16,12 @@
 #
 
 
-%define kf6_version 6.0.0
+%define kf6_version 6.3.0
 %define qt6_version 6.6.0
 
 %bcond_without released
 Name:           kpublictransport
-Version:        24.05.2
+Version:        24.08.0
 Release:        0
 Summary:        QML imports for querying public transport data
 License:        LGPL-2.0-or-later
@@ -86,6 +86,8 @@ Requires:       pkgconfig(zlib)
 A library for access realtime public transport data and for performing public
 ransport journey queries.Development files.
 
+%lang_package
+
 %prep
 %autosetup -p1
 
@@ -98,6 +100,8 @@ ransport journey queries.Development files.
 
 %install
 %kf6_install
+
+%find_lang %{name} --all-name
 
 %check
 %ctest
@@ -125,5 +129,7 @@ ransport journey queries.Development files.
 %{_kf6_cmakedir}/KPublicTransport/
 %{_kf6_libdir}/libKPublicTransport.so
 %{_kf6_libdir}/libKPublicTransportOnboard.so
+
+%files lang -f %{name}.lang
 
 %changelog

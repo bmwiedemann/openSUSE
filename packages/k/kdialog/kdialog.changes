@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Aug 19 07:13:44 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.08.0/
+- Changes since 24.05.2:
+  * Remove unused include
+  * KNOTIFICATIONS 5.78 is not necessary now
+  * It compiles fine without deprecated methods
+  * Use nullptr
+  * Fix cmakelint issue Extra spaces between 'if' and its () [whitespace/extra]
+  * flatpak: Use an icon that exists
+  * Fixed handling of Widgets::calendar() result - it is a bool signifying "accepted" like other functions
+  * Fixed handling of Widgets::slider() result - it is a bool signifying "accepted" like other functions
+  * Change Widgets::imgInputBox() result to be bool signifying "accepted" like other functions
+  * Change Widgets::imgBox() result to be bool signifying "accepted" like other functions
+  * Change Widgets::textbox() result to be bool signifying "accepted" like other functions
+
+-------------------------------------------------------------------
 Tue Jul  2 13:54:13 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.05.2

@@ -16,12 +16,12 @@
 #
 
 
-%define kf6_version 6.0.0
+%define kf6_version 6.3.0
 %define qt6_version 6.6.0
 
 %bcond_without released
 Name:           ksystemlog
-Version:        24.05.2
+Version:        24.08.0
 Release:        0
 Summary:        System Log Viewer Tool
 License:        GPL-2.0-only
@@ -38,6 +38,7 @@ BuildRequires:  cmake(KF6Archive) >= %{kf6_version}
 BuildRequires:  cmake(KF6Completion) >= %{kf6_version}
 BuildRequires:  cmake(KF6Config) >= %{kf6_version}
 BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6Crash) >= %{kf6_version}
 BuildRequires:  cmake(KF6DocTools) >= %{kf6_version}
 BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
 BuildRequires:  cmake(KF6ItemViews) >= %{kf6_version}

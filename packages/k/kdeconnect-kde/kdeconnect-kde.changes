@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Aug 19 07:13:36 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.08.0/
+- Too many changes since 24.05.2, only listing bugfixes:
+  * Bluetooth provider workaround for BlueZ/DBus timeouts (kde#481870)
+  * Corrected newline inserting when using shift+return while writing SMS messages (kde#488585)
+  * virtualmonitor: implemented capabilities check (kde#485829)
+  * Fixed virtualmonitorplugin url generation (kde#485830)
+
+-------------------------------------------------------------------
 Tue Jul  2 13:54:05 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.05.2

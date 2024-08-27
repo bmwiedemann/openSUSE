@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Aug 19 07:14:19 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.08.0/
+- Changes since 24.05.2:
+  * wayland: Add support for the persistence feature of the remote desktop portal
+  * Fix build with >=QtWaylandScanner-6.7.1
+  * pw: Fix build with last released KPipeWire release
+  * Enforce passing tests
+  * Fixed crash calling PWFrameBuffer::cursorPosition() (kde#472453)
+
+-------------------------------------------------------------------
 Tue Jul  2 13:54:48 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.05.2

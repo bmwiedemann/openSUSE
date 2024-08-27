@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Aug 19 07:13:11 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.08.0/
+- Changes since 24.05.2:
+  * snapcraft: add xkbcommon dependency.
+  * snapcraft: Fix name typos.
+  * snapcraft: Remove plugs now in extension/snapd.
+  * snapcraft: Initial import qt6.
+  * Fix word puzzle
+  * gitignore: Add Flatpak related stuff
+  * flatpak: Add missing `kirigami-addons`
+  * SettingsPage: Port to Kirigami Addons FormCard
+  * Enforce passing tests on all platforms
+
+-------------------------------------------------------------------
 Tue Jul  2 13:53:39 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.05.2

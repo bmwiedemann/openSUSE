@@ -17,23 +17,21 @@
 
 
 
-%define kf6_version 6.0.0
+%define kf6_version 6.3.0
 %define qt6_version 6.6.0
 
 %bcond_without released
 Name:           libkomparediff2
-Version:        24.02.2
+Version:        24.08.0
 Release:        0
 Summary:        A library to compare files and strings
 License:        GPL-2.0-or-later
 URL:            https://www.kde.org
-Source:         %{name}-%{version}.tar.xz
+Source0:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        %{name}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-# PATCH-FIX-OPENSUSE
-Patch0:         0001-Add-changes-to-allow-coinstallation.patch
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  cmake(KF6Config) >= %{kf6_version}
 BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
@@ -48,18 +46,18 @@ BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 A library to compare files and strings, used in Kompare and KDevelop.
 
 # Both libkomparediff packages will have to coexist until kdevelop is ported
-%package -n libkomparediff2-5_95
+%package -n libkomparediff2-6
 Summary:        A library to compare files and strings
 # Conflicting translations catalog
 Conflicts:      libkomparediff2-lang
 Conflicts:      libkomparediff2-5-lang
 
-%description -n libkomparediff2-5_95
+%description -n libkomparediff2-6
 A library to compare files and strings, used in Kompare and KDevelop.
 
 %package devel
 Summary:        Development package for libkomparediff2
-Requires:       libkomparediff2-5_95 = %{version}
+Requires:       libkomparediff2-6 = %{version}
 Requires:       cmake(Qt6Core) >= %{qt6_version}
 Requires:       cmake(Qt6Widgets) >= %{qt6_version}
 Requires:       cmake(KF6Config) >= %{kf6_version}
@@ -69,13 +67,13 @@ Conflicts:      libkomparediff-kf5-devel
 %description devel
 Development package for libkomparediff2.
 
-%lang_package -n libkomparediff2-5_95
+%lang_package -n libkomparediff2-6
 
 %prep
 %autosetup -p1
 
 %build
-%cmake_kf6 -DBUILD_WITH_QT6:BOOL=TRUE
+%cmake_kf6
 
 %kf6_build
 
@@ -84,9 +82,9 @@ Development package for libkomparediff2.
 
 %find_lang %{name} --all-name
 
-%ldconfig_scriptlets -n libkomparediff2-5_95
+%ldconfig_scriptlets -n libkomparediff2-6
 
-%files -n libkomparediff2-5_95
+%files -n libkomparediff2-6
 %license LICENSES/*
 %{_kf6_debugdir}/libkomparediff2.categories
 %{_kf6_libdir}/libkomparediff2.so.*
@@ -96,6 +94,6 @@ Development package for libkomparediff2.
 %{_kf6_cmakedir}/KompareDiff2/
 %{_kf6_libdir}/libkomparediff2.so
 
-%files -n libkomparediff2-5_95-lang -f %{name}.lang
+%files -n libkomparediff2-6-lang -f %{name}.lang
 
 %changelog

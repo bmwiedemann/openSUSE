@@ -18,14 +18,14 @@
 
 %global __requires_exclude qt6qmlimport\\((org\\.kde\\.merkuro|org\\.kde\\.raven).*
 
-%define kf6_version 6.0.0
+%define kf6_version 6.3.0
 %define qt6_version 6.6.0
-%define kpim6_version 6.1.2
+%define kpim6_version 6.2.0
 %define plasma6_version 5.27.80
 
 %bcond_without released
 Name:           merkuro
-Version:        24.05.2
+Version:        24.08.0
 Release:        0
 Summary:        Calendar Application
 License:        GPL-3.0-only
@@ -41,13 +41,15 @@ BuildRequires:  cmake(KF6CalendarCore) >= %{kf6_version}
 BuildRequires:  cmake(KF6ConfigWidgets) >= %{kf6_version}
 BuildRequires:  cmake(KF6Contacts) >= %{kf6_version}
 BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6Crash) >= %{kf6_version}
 BuildRequires:  cmake(KF6DBusAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
 BuildRequires:  cmake(KF6IconThemes) >= %{kf6_version}
 BuildRequires:  cmake(KF6ItemModels) >= %{kf6_version}
 BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
 BuildRequires:  cmake(KF6Kirigami) >= %{kf6_version}
-BuildRequires:  cmake(KF6KirigamiAddons)
+BuildRequires:  cmake(KF6KirigamiAddons) >= 1.2.1
+BuildRequires:  cmake(KF6Notifications) >= %{kf6_version}
 BuildRequires:  cmake(KF6QQC2DesktopStyle) >= %{kf6_version}
 BuildRequires:  cmake(KF6WindowSystem) >= %{kf6_version}
 BuildRequires:  cmake(KF6XmlGui) >= %{kf6_version}
@@ -119,6 +121,7 @@ This package provides a Plasma widget to view address book contacts.
 %{_kf6_appstreamdir}/org.kde.merkuro.calendar.metainfo.xml
 %{_kf6_appstreamdir}/org.kde.merkuro.contact.metainfo.xml
 %{_kf6_appstreamdir}/org.kde.merkuro.mail.metainfo.xml
+%{_kf6_appstreamdir}/org.kde.merkuro.metainfo.xml
 %{_kf6_bindir}/merkuro-calendar
 %{_kf6_bindir}/merkuro-contact
 %{_kf6_bindir}/merkuro-mail
@@ -128,6 +131,12 @@ This package provides a Plasma widget to view address book contacts.
 %{_kf6_iconsdir}/hicolor/*/apps/org.kde.merkuro.*.png
 %{_kf6_qmldir}/org/kde/akonadi/
 %{_kf6_qmldir}/org/kde/merkuro/
+# FIXME: Having these here is kind of broken
+%{_kf6_libdir}/libmerkuro_contact_plugin.so.*
+%{_kf6_libdir}/libmerkuro_contact_plugin.so
+%{_kf6_libdir}/libMerkuroComponents.so.*
+%{_kf6_libdir}/libMerkuroComponents.so
+%{_kf6_notificationsdir}/merkuro.mail.notifyrc
 
 %files plasmoid
 %dir %{_kf6_plasmadir}/plasmoids

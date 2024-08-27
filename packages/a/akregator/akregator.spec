@@ -16,13 +16,13 @@
 #
 
 
-%define kf6_version 6.0.0
+%define kf6_version 6.3.0
 %define qt6_version 6.6.0
-%define kpim6_version 6.1.2
+%define kpim6_version 6.2.0
 
 %bcond_without released
 Name:           akregator
-Version:        24.05.2
+Version:        24.08.0
 Release:        0
 Summary:        RSS Feed Reader
 License:        GPL-2.0-or-later
@@ -36,6 +36,7 @@ BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  cmake(KF6Codecs) >= %{kf6_version}
 BuildRequires:  cmake(KF6Crash) >= %{kf6_version}
 BuildRequires:  cmake(KF6DocTools) >= %{kf6_version}
+BuildRequires:  cmake(KF6IconThemes) >= %{kf6_version}
 BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
 BuildRequires:  cmake(KF6KCMUtils) >= %{kf6_version}
 BuildRequires:  cmake(KF6Notifications) >= %{kf6_version}
@@ -111,7 +112,6 @@ browser for news reading.
 %{_kf6_plugindir}/pim6/kontact/
 %dir %{_kf6_plugindir}/pim6/kcms
 %{_kf6_plugindir}/pim6/kcms/akregator/
-%{_kf6_sharedir}/akregator/
 
 %files lang -f %{name}.lang
 %exclude %{_kf6_htmldir}/en/akregator/

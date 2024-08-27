@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Mon Aug 19 07:13:36 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.08.0/
+- Changes since 24.05.2:
+  * Time to increase version
+  * Use @info:placeholder
+  * make filter case-insensitive
+  * Fix dependancies
+  * IconTheme is searched by default
+  * Fix cmakelint warning
+  * Add developer name to appdata
+  * Add @action:button
+  * Don't export private methods
+  * Fix warning
+  * It compiles fine without deprecated methods
+  * Fix 488354:  "Enable" and "Turn Off" buttons should act on selected entries only (kde#488354)
+  * Don't include when HAVE_DBUSADDONS is false
+  * Add missing require
+  * Disable DBusAddons on windows
+  * Add build-ftime support
+  * Add @label:textbox
+  * Use KIconThemes and KStyleManager if available during build-time
+  * Add contect
+  * Use ellipsis character instead of three dots in UI strings
+
+-------------------------------------------------------------------
 Tue Jul  2 13:54:04 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.05.2

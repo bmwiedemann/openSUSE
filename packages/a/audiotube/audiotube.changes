@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Aug 19 07:13:08 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.08.0/
+- Changes since 24.05.2:
+  * appstream: Switch summary to sentence case
+  * Update tested ytmusicapi version to 1.8.0
+  * Handle playlists without thumbnails
+  * ListHeader: Fix item width on mobile
+  * Fix adding a song to a playlist
+  * ShareMenu: Fix layout on mobile
+  * Error out if the gstreamer backend is not available
+  * Document gstreamer requirement
+  * Update ytmusicapi to 1.7.0
+
+-------------------------------------------------------------------
 Thu Jul 18 08:17:18 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Init audiotube

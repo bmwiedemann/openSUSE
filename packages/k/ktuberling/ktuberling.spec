@@ -16,12 +16,12 @@
 #
 
 
-%define kf6_version 6.0.0
+%define kf6_version 6.3.0
 %define qt6_version 6.6.0
 
 %bcond_without released
 Name:           ktuberling
-Version:        24.05.2
+Version:        24.08.0
 Release:        0
 Summary:        Potato drawing editor
 License:        GPL-2.0-or-later
@@ -84,6 +84,7 @@ face and goodies can be attached onto a potato-like guy.
 %{_kf6_appstreamdir}/org.kde.ktuberling.appdata.xml
 %{_kf6_bindir}/ktuberling
 %{_kf6_debugdir}/ktuberling.categories
+%{_kf6_debugdir}/ktuberling.renamecategories
 %{_kf6_iconsdir}/hicolor/*/*/*tuberling.png
 %{_kf6_sharedir}/ktuberling/
 

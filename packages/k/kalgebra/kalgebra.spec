@@ -19,13 +19,13 @@
 # Internal QML imports
 %global __requires_exclude qt6qmlimport\\((widgets|org\\.kde\\.kalgebra\\.mobile).*
 
-%define kf6_version 6.0.0
+%define kf6_version 6.3.0
 %define qt6_version 6.6.0
 %define plasma6_version 5.27.80
 
 %bcond_without released
 Name:           kalgebra
-Version:        24.05.2
+Version:        24.08.0
 Release:        0
 Summary:        Math Expression Solver and Plotter
 License:        GPL-2.0-or-later
@@ -61,7 +61,7 @@ BuildRequires:  cmake(Qt6Xml) >= %{qt6_version}
 Obsoletes:      kalgebra5 < %{version}
 Provides:       kalgebra5 = %{version}
 # It can only build on the same platforms as Qt Webengine
-ExclusiveArch:  x86_64 %{x86_64} aarch64 riscv64
+ExclusiveArch:  x86_64 %{x86_64} %x86_64 aarch64 riscv64
 
 %description
 KAlgebra is a math expression solver and plotter.

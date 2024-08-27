@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Aug 19 07:14:31 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.08.0/
+- Changes since 24.05.2:
+  * fix cmake lint warning
+  * USe @action:button
+  * Fix reuse lint
+  * Add build-ftime support
+  * Use context i18n
+  * It compiles fine without deprecated kf methods
+
+-------------------------------------------------------------------
 Tue Jul  2 13:55:00 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.05.2

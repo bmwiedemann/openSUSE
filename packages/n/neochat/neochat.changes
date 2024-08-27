@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Aug 19 07:14:43 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.08.0/
+- Too many changes since 24.05.2, only listing bugfixes:
+  * Re-add pending event indicator (kde#491277)
+  * Only enable taphandler for mouse clicks (kde#486545)
+  * GlobalMenu: remove shortcut for QuickSwitcher (kde#488212)
+  * Make notifications more useful (kde#475228)
+  * Use simpler and less restrictive server url regex (kde#486888)
+  * Make sure to ask before leaving a room (kde#486546)
+  * Push ImageEditorPage using pushDialogLayer (kde#486315)
+  * Fix the master show link preview setting and add back the per room setting (kde#486126)
+  * Fix Roomlist Shortcuts (kde#485949)
+
+-------------------------------------------------------------------
 Tue Jul  2 13:55:13 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.05.2

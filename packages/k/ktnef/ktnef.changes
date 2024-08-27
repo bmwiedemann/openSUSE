@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Aug 19 07:14:26 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.08.0/
+- Changes since 24.05.2:
+  * fix cmake lint warning
+  * Add build-ftime support
+  * Improve formatting
+  * Use a readme instead of a Mainpage.dox
+  * It compiles fine without deprecated kf methods
+  * Enforce passing tests
+
+-------------------------------------------------------------------
 Tue Jul  2 13:54:55 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.05.2

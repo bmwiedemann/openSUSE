@@ -2,6 +2,7 @@
 # spec file for package libassuan
 #
 # Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,36 +17,36 @@
 #
 
 
+%define soversion 9
 Name:           libassuan
-Version:        2.5.7
+Version:        3.0.1
 Release:        0
 Summary:        IPC library used by GnuPG version 2
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://www.gnupg.org/related_software/libassuan/index.en.html
-Source0:        ftp://ftp.gnupg.org/gcrypt/libassuan/%{name}-%{version}.tar.bz2
+Source0:        https://www.gnupg.org/ftp/gcrypt/libassuan/%{name}-%{version}.tar.bz2
 Source1:        baselibs.conf
-Source2:        ftp://ftp.gnupg.org/gcrypt/libassuan/%{name}-%{version}.tar.bz2.sig
+Source2:        https://www.gnupg.org/ftp/gcrypt/libassuan/%{name}-%{version}.tar.bz2.sig
 # https://www.gnupg.org/signature_key.html
 Source3:        https://gnupg.org/signature_key.asc#/%{name}.keyring
-BuildRequires:  libgpg-error-devel >= 1.17
-Requires:       %{install_info_prereq}
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(gpg-error) >= 1.17
 
 %description
 Libassuan is the IPC library used by gpg2 (GnuPG version 2)
 
-%package -n libassuan0
+%package -n libassuan%{soversion}
 Summary:        IPC library used by GnuPG version 2
 Group:          Development/Libraries/C and C++
 
-%description -n libassuan0
+%description -n libassuan%{soversion}
 Libassuan is the IPC library used by gpg2 (GnuPG version 2)
 
 %package devel
 Summary:        IPC library used by GnuPG version 2
 Group:          Development/Libraries/C and C++
-Requires:       libassuan0 = %{version}
-Requires:       libgpg-error-devel
+Requires:       libassuan%{soversion} = %{version}
 
 %description devel
 Libassuan is the IPC library used by gpg2 (GnuPG version 2)
@@ -70,21 +71,16 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %check
 %make_build check
 
-%post -n libassuan0 -p /sbin/ldconfig
-%postun -n libassuan0 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libassuan%{soversion}
 
-%post devel
-%install_info --info-dir=%{_infodir} %{_infodir}/assuan.info.gz
-
-%postun devel
-%install_info_delete --info-dir=%{_infodir} %{_infodir}/assuan.info.gz
-
-%files -n libassuan0
-%license COPYING
+%files -n libassuan%{soversion}
+%license COPYING COPYING.LIB
 %doc AUTHORS ChangeLog NEWS README THANKS
-%{_libdir}/libassuan.so.*
+%{_libdir}/libassuan.so.%{soversion}
+%{_libdir}/libassuan.so.%{soversion}.*
 
 %files devel
+%license COPYING COPYING.LIB
 %{_libdir}/pkgconfig/libassuan.pc
 %{_infodir}/assuan*
 %{_includedir}/*.h

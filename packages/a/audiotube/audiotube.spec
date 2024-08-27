@@ -16,12 +16,20 @@
 #
 
 
-%define kf6_version 6.0.0
+%define kf6_version 6.3.0
 %define qt6_version 6.6.0
+
+%{?sle15_python_module_pythons}
+%if 0%{?suse_version} == 1500
+%define pyver python311
+%else
+# latest
+%define pyver python3
+%endif
 
 %bcond_without released
 Name:           audiotube
-Version:        24.05.2
+Version:        24.08.0
 Release:        0
 Summary:        YT Music player and playlists manager
 License:        GPL-2.0-or-later
@@ -33,11 +41,11 @@ Source2:        applications.keyring
 %endif
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 # Temporary: SR#1188363
-BuildRequires:  python3-devel
-BuildRequires:  python3-ytmusicapi
-# ffmpeg and ffmpeg-mini-libs can be out of sync, leading to unresolvable conflicts
+BuildRequires:  %{pyver}-devel
+BuildRequires:  %{pyver}-ytmusicapi
+# ffmpeg and ffmpeg-mini-libs can be out of sync, leading to unresolvable conflicts
 #!BuildIgnore: ffmpeg
-BuildRequires:  python3-yt-dlp
+BuildRequires:  %{pyver}-yt-dlp
 BuildRequires:  cmake(FutureSQL6)
 BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6Crash) >= %{kf6_version}
@@ -62,7 +70,7 @@ Requires:       gstreamer-plugins-bad
 Requires:       kf6-kirigami-imports >= %{kf6_version}
 Requires:       kf6-purpose >= %{kf6_version}
 Requires:       kirigami-addons6 >= 0.11
-Requires:       python3-ytmusicapi
+Requires:       %{pyver}-ytmusicapi
 Requires:       qt6-declarative-imports >= %{qt6_version}
 Requires:       qt6-multimedia-imports >= %{qt6_version}
 Requires:       qt6-sql-sqlite >= %{qt6_version}
@@ -77,6 +85,10 @@ adapted to mobile phones and desktop computers.
 
 %prep
 %autosetup -p1
+
+# The plugins CMake config files are intentionally removed from Qt6 packages,
+# don't fail because of missing Qt6::QGstreamerMediaPlugin target
+sed -i 's#FATAL_ERROR#STATUS#' CMakeLists.txt
 
 %build
 %cmake_kf6

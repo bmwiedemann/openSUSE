@@ -16,13 +16,13 @@
 #
 
 
-%define kf6_version 6.0.0
+%define kf6_version 6.3.0
 %define qt6_version 6.6.0
 
 %define name   akonadi
 %bcond_without released
 Name:           akonadi
-Version:        24.05.2
+Version:        24.08.0
 Release:        0
 Summary:        PIM Storage Service
 License:        LGPL-2.1-or-later

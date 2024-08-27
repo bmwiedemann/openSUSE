@@ -16,12 +16,12 @@
 #
 
 
-%define kf6_version 6.0.0
+%define kf6_version 6.3.0
 %define qt6_version 6.6.0
 
 %bcond_without released
 Name:           lskat
-Version:        24.05.2
+Version:        24.08.0
 Release:        0
 Summary:        German Skat game
 License:        GPL-2.0-or-later
@@ -78,6 +78,7 @@ the players.
 %{_kf6_appstreamdir}/org.kde.lskat.appdata.xml
 %{_kf6_bindir}/lskat
 %{_kf6_debugdir}/lskat.categories
+%{_kf6_debugdir}/lskat.renamecategories
 %{_kf6_iconsdir}/hicolor/*/apps/lskat.*
 %{_kf6_sharedir}/lskat/
 

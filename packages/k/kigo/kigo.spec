@@ -16,12 +16,12 @@
 #
 
 
-%define kf6_version 6.0.0
+%define kf6_version 6.3.0
 %define qt6_version 6.6.0
 
 %bcond_without released
 Name:           kigo
-Version:        24.05.2
+Version:        24.08.0
 Release:        0
 Summary:        Traditional Chinese Boardgame by KDE
 License:        GPL-2.0-or-later
@@ -76,6 +76,7 @@ Traditional Chinese Boardgame.
 %{_kf6_appstreamdir}/org.kde.kigo.appdata.xml
 %{_kf6_configkcfgdir}/kigo.kcfg
 %{_kf6_debugdir}/kigo.categories
+%{_kf6_debugdir}/kigo.renamecategories
 %{_kf6_iconsdir}/hicolor/*/apps/kigo.*
 %{_kf6_knsrcfilesdir}/kigo*.knsrc
 %{_kf6_sharedir}/kigo/

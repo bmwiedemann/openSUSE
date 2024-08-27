@@ -158,4 +158,20 @@
 </comment>
     <requestid>1184151</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>25907e89fd69c227e7aa2e23d01a620b</srcmd5>
+    <version>18.1.8</version>
+    <time>1724702728</time>
+    <user>anag+factory</user>
+    <comment>- Split off clang shared runtime libraries into libclang_rtX, so
+  that they can be used by other packages without requiring the
+  entire compiler tool chain. This is still not ergonomical: the
+  libraries don't sit in %{_libdir}, so an RPATH or setting
+  LD_LIBRARY_PATH is required, and they don't have an SO version,
+  so zypper won't know which version to is needed. (boo#1225784)
+- Add minor version to Python shebangs. (boo#1212476)
+- Remove shebang and executable bit where not needed.
+</comment>
+    <requestid>1195858</requestid>
+  </revision>
 </revisionlist>

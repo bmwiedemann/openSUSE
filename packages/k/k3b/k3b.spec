@@ -16,7 +16,7 @@
 #
 
 
-%define kf6_version 6.0.0
+%define kf6_version 6.3.0
 %define qt6_version 6.6.0
 
 %bcond_without released
@@ -24,7 +24,7 @@
 %bcond_without lame
 %bcond_without mad
 Name:           k3b
-Version:        24.05.2
+Version:        24.08.0
 Release:        0
 Summary:        CD/DVD/Blu-ray Burning Application by KDE
 License:        GPL-2.0-or-later
@@ -62,7 +62,6 @@ BuildRequires:  cmake(KF6Solid) >= %{kf6_version}
 BuildRequires:  cmake(KF6WidgetsAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6XmlGui) >= %{kf6_version}
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
-BuildRequires:  cmake(Qt6Core5Compat) >= %{qt6_version}
 BuildRequires:  cmake(Qt6DBus) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
 %ifarch x86_64 %{x86_64} aarch64 riscv64

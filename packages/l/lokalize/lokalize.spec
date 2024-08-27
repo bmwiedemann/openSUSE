@@ -16,9 +16,12 @@
 #
 
 
+%define kf6_version 6.3.0
+%define qt6_version 6.6.0
+
 %bcond_without released
 Name:           lokalize
-Version:        24.05.2
+Version:        24.08.0
 Release:        0
 Summary:        KDE Translation Editor
 License:        GPL-2.0-or-later
@@ -28,26 +31,25 @@ Source0:        https://download.kde.org/stable/release-service/%{version}/src/%
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  extra-cmake-modules
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  fdupes
 BuildRequires:  hunspell-devel
-BuildRequires:  update-desktop-files
-BuildRequires:  cmake(KF5Config)
-BuildRequires:  cmake(KF5CoreAddons)
-BuildRequires:  cmake(KF5Crash)
-BuildRequires:  cmake(KF5DBusAddons)
-BuildRequires:  cmake(KF5DocTools)
-BuildRequires:  cmake(KF5I18n)
-BuildRequires:  cmake(KF5KIO)
-BuildRequires:  cmake(KF5Notifications)
-BuildRequires:  cmake(KF5Sonnet)
-BuildRequires:  cmake(KF5TextWidgets)
-BuildRequires:  cmake(KF5XmlGui)
-BuildRequires:  cmake(Qt5Core)
-BuildRequires:  cmake(Qt5DBus)
-BuildRequires:  cmake(Qt5Sql)
-BuildRequires:  cmake(Qt5Test)
-BuildRequires:  cmake(Qt5Widgets)
+BuildRequires:  cmake(KF6Config) >= %{kf6_version}
+BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6Crash) >= %{kf6_version}
+BuildRequires:  cmake(KF6DBusAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6DocTools) >= %{kf6_version}
+BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
+BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
+BuildRequires:  cmake(KF6Notifications) >= %{kf6_version}
+BuildRequires:  cmake(KF6Sonnet) >= %{kf6_version}
+BuildRequires:  cmake(KF6TextWidgets) >= %{kf6_version}
+BuildRequires:  cmake(KF6XmlGui) >= %{kf6_version}
+BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
+BuildRequires:  cmake(Qt6DBus) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Sql) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Test) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 Obsoletes:      %{name}5 < %{version}
 Provides:       %{name}5 = %{version}
 
@@ -65,30 +67,30 @@ RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 %endif
 export CXXFLAGS="%{optflags} -fPIC"
 export CFLAGS="%{optflags} -fPIC"
-%cmake_kf5 -d build -- -DCMAKE_CXXFLAGS="%{optflags}" -DCMAKE_CFLAGS="%{optflags}"
-%cmake_build
+%cmake_kf6 -DCMAKE_CXXFLAGS="%{optflags}" -DCMAKE_CFLAGS="%{optflags}"
+
+%kf6_build
 
 %install
-%kf5_makeinstall -C build
+%kf6_install
 
-%find_lang %{name} --with-man --all-name
-%{kf5_find_htmldocs}
+%find_lang %{name} --with-html --all-name
 
-%suse_update_desktop_file -r org.kde.lokalize Development Translation
-%fdupes -s %{buildroot}%{_kf5_sharedir}/lokalize
+%fdupes %{buildroot}%{_kf6_sharedir}/lokalize
 
 %files
 %license LICENSES/*
-%doc %lang(en) %{_kf5_htmldir}/en/lokalize/
-%{_kf5_applicationsdir}/org.kde.lokalize.desktop
-%{_kf5_appstreamdir}/org.kde.lokalize.appdata.xml
-%{_kf5_bindir}/lokalize
-%{_kf5_configkcfgdir}/lokalize.kcfg
-%{_kf5_debugdir}/lokalize.categories
-%{_kf5_iconsdir}/hicolor/*/apps/lokalize.*
-%{_kf5_notifydir}/lokalize.notifyrc
-%{_kf5_sharedir}/lokalize/
+%doc %lang(en) %{_kf6_htmldir}/en/lokalize/
+%{_kf6_applicationsdir}/org.kde.lokalize.desktop
+%{_kf6_appstreamdir}/org.kde.lokalize.appdata.xml
+%{_kf6_bindir}/lokalize
+%{_kf6_configkcfgdir}/lokalize.kcfg
+%{_kf6_debugdir}/lokalize.categories
+%{_kf6_iconsdir}/hicolor/*/apps/lokalize.*
+%{_kf6_notificationsdir}/lokalize.notifyrc
+%{_kf6_sharedir}/lokalize/
 
 %files lang -f %{name}.lang
+%exclude %{_kf6_htmldir}/en/lokalize/
 
 %changelog

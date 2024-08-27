@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Aug 19 07:14:43 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.08.0/
+- Too many changes since 24.05.2, only listing bugfixes:
+  * Fix numerical interpretation in form fields (kde#474661)
+  * When doing Ctrl+Wheel, zoom on pointer instead of the center of the screen (kde#421484)
+  * Use async signature validation (kde#446298)
+  * fix Unicode Normalization: replace NFKC to NFC (kde#466521)
+  * Fix sidebar status not being respected when opening the first file (kde#484938)
+
+-------------------------------------------------------------------
 Tue Jul  2 13:55:13 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.05.2

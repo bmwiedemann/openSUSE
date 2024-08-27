@@ -5,6 +5,6 @@ outdated Graphviz tools. Graphs are commonly used in scientific domains and
 particularly in computer science.
 
 </description>
-  <devel project="KDE:Extra" package="kgraphviewer"/>
+  <devel project="KDE:Applications" package="kgraphviewer"/>
   <url>https://apps.kde.org/kgraphviewer</url>
 </package>

@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Aug 19 07:13:33 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.08.0/
+- Changes since 24.05.2:
+  * Fix cmake lint warning
+  * Namespace QRC content
+  * Add build-ftime support
+  * Fix unit test with KF 6.3 embedded Breeze icons
+  * Fix typo
+  * Fix icon from qrc
+  * It compiles fine without deprecated kf methods
+  * Enable mandatory tests for Linux and FreeBSD
+  * Use the Breeze icons for test
+  * Force locale and timezone for the todo tooltip test
+  * Adapt test data to the removal of KEmoticons
+
+-------------------------------------------------------------------
 Tue Jul  2 13:54:02 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.05.2

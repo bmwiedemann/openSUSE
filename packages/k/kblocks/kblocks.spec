@@ -16,12 +16,12 @@
 #
 
 
-%define kf6_version 6.0.0
+%define kf6_version 6.3.0
 %define qt6_version 6.6.0
 
 %bcond_without released
 Name:           kblocks
-Version:        24.05.2
+Version:        24.08.0
 Release:        0
 Summary:        A classic falling blocks game
 License:        GPL-2.0-or-later
@@ -76,6 +76,7 @@ KBlocks is the KDE version of the classic falling blocks game.
 %{_kf6_bindir}/kblocks
 %{_kf6_configkcfgdir}/kblocks.kcfg
 %{_kf6_debugdir}/kblocks.categories
+%{_kf6_debugdir}/kblocks.renamecategories
 %{_kf6_iconsdir}/hicolor/*/*/kblocks.*
 %{_kf6_knsrcfilesdir}/kblocks.knsrc
 %{_kf6_sharedir}/kblocks/

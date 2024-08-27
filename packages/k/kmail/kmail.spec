@@ -16,13 +16,13 @@
 #
 
 
-%define kf6_version 6.0.0
+%define kf6_version 6.3.0
 %define qt6_version 6.6.0
-%define kpim6_version 6.1.2
+%define kpim6_version 6.2.0
 
 %bcond_without released
 Name:           kmail
-Version:        24.05.2
+Version:        24.08.0
 Release:        0
 Summary:        Mail Client
 License:        GPL-2.0-only
@@ -32,8 +32,6 @@ Source0:        https://download.kde.org/stable/release-service/%{version}/src/%
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-# PATCH-FIX-UPSTREAM https://invent.kde.org/pim/kmail/-/merge_requests/137
-Patch1:         0001-Fix-crash-due-to-deleteLater-nested-event-loop.patch
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  libgpgmepp-devel
 BuildRequires:  cmake(KF6Bookmarks) >= %{kf6_version}

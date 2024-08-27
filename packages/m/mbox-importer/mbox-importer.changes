@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Aug 19 07:14:41 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.08.0/
+- Changes since 24.05.2:
+  * Set up KCrash after KAboutData::setApplicationData()
+  * It's define by default
+  * Fix cmake lint warning
+  * We depend against 6.3.0
+  * Add build-ftime support
+  * Use KIconThemes and KStyleManager if available during build-time
+  * Use i18n context
+  * It compiles fine without deprecated kf methods
+
+-------------------------------------------------------------------
 Tue Jul  2 13:55:10 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.05.2

@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Aug 19 07:14:53 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.08.0/
+- Too many changes since 24.05.2, only listing bugfixes:
+  * Only print out HTTP warnings for errors we don't explicitly handle (kde#486825)
+  * Silently fail when 404'ing on featured tags (kde#484475)
+  * Allow pasting bitmap images directly, like from the Internet (kde#488629)
+  * Add an option to pop out the post composer by default (kde#489379)
+  * Do not overwrite existing text in composer (kde#489781)
+  * Let users be able to clear content warning (kde#488631)
+  * Actually propagate the spoiler text to the composer when editing a post (kde#488631)
+  * Specify that you're "saving" an edit in the composer (kde#488632)
+  * Prevent notes field on profiles from stopping keyboard navigation (kde#488236)
+  * Support PageUp/PageDown keys to quickly navigate the timeline (kde#487507)
+  * Explain why some posts can't be boosted (kde#488172)
+  * Fix wrong "%1 boosted" label on certain posts (kde#485637)
+  * Don't enforce the spellchecker even when it's disabled (kde#486465)
+  * Fix the content font not actually affecting the post text (kde#481911)
+  * Copy the spoiler text in replies (kde#486691)
+  * Improve wording of the "Discard Draft" dialog (kde#484191)
+
+-------------------------------------------------------------------
 Tue Jul  2 13:55:23 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.05.2

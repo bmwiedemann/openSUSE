@@ -16,12 +16,12 @@
 #
 
 
-%define kf6_version 6.0.0
+%define kf6_version 6.3.0
 %define qt6_version 6.6.0
 
 %bcond_without released
 Name:           tokodon
-Version:        24.05.2
+Version:        24.08.0
 Release:        0
 Summary:        Mastodon client by KDE
 License:        GPL-3.0-only
@@ -60,7 +60,7 @@ BuildRequires:  cmake(Qt6WebView) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 BuildRequires:  pkgconfig(mpv)
 # It can only build on the same platforms as Qt Webengine
-ExclusiveArch:  x86_64 %{x86_64} %x86_64 aarch64 riscv64
+ExclusiveArch:  x86_64 %{x86_64} aarch64 riscv64
 Requires:       kf6-kirigami-imports >= %{kf6_version}
 Requires:       kf6-kitemmodels-imports >= %{kf6_version}
 Requires:       kf6-sonnet-imports >= %{kf6_version}

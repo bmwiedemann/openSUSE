@@ -23,12 +23,12 @@
 %bcond_without qtwebengine
 %endif
 
-%define kf6_version 6.0.0
+%define kf6_version 6.3.0
 %define qt6_version 6.6.0
 
 %bcond_without released
 Name:           kaccounts-providers
-Version:        24.05.2
+Version:        24.08.0
 Release:        0
 Summary:        KDE Accounts Providers
 License:        GPL-2.0-or-later
@@ -43,6 +43,8 @@ BuildRequires:  cmake(KAccounts6)
 BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
 BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
 BuildRequires:  cmake(KF6Package) >= %{kf6_version}
+BuildRequires:  cmake(QCoro6Core)
+BuildRequires:  cmake(QCoro6Network)
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Qml) >= %{qt6_version}
 %if %{with qtwebengine}

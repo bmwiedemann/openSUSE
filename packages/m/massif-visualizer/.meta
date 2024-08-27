@@ -6,6 +6,6 @@ generated massif.out.pid file in the visualizer.
 Gzip or Bzip2 compressed massif files can also be opened transparently.
 
 </description>
-  <devel project="KDE:Extra" package="massif-visualizer"/>
+  <devel project="KDE:Applications" package="massif-visualizer"/>
   <url>https://apps.kde.org/massif-visualizer</url>
 </package>

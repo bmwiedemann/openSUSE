@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Aug 19 07:13:35 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.08.0/
+- Changes since 24.05.2:
+  * It compiles without deprecated methods
+  * Add developer tag to appdata
+  * Don't use the obsolete KF6 preview Flatpak runtime
+  * It compiles fine without deprecated methods
+  * Not necessary to add suffix Qt6
+  * Allow dbus processing in qt-base to enable color-picking via portal (kde#479406)
+  * Enforce passing tests
+
+-------------------------------------------------------------------
 Tue Jul  2 13:54:03 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.05.2

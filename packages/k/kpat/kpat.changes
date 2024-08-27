@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Aug 19 07:14:15 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.08.0/
+- Changes since 24.05.2:
+  * Card set selection UI: follow KNewStuff guideline for labelling the button
+  * Use KLocalizedString for dynanically storing translatable strings
+  * Help with Current Game action: use non-app icon, but reuse normal help one
+  * Card Decks config "Get New" button: use non-generic button text
+  * Fix dealer lookup by name for help and solve cmdl arg
+  * Use ellipsis character in manual strings instead of 3 periods
+  * Add icon to "Play Sounds" toggle action
+  * Set UI marker context to more action, item, label, title & tooltip strings
+  * Use executable name as qt logging category name
+  * KDE CI: require "@same" branch of libkdegames
+
+-------------------------------------------------------------------
 Tue Jul  2 13:54:44 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.05.2

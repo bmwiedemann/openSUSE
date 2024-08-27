@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Aug 19 07:13:29 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.08.0/
+- Too many changes since 24.05.2, only listing bugfixes:
+  * Fix Show sidebar shortcut not being restored properly (kde#453715)
+  * Tabs: Wrap around to first on nextTab if current is last tab (kde#476565)
+  * Diff: Allow jumping to hunks with full context (kde#488418)
+  * Diff: Forward wheel event to editor (kde#490406)
+  * try to avoid to create parent less widgets (kde#490712)
+  * fix crash if no konsole installed (kde#490957)
+  * Allow removing multiple items from welcome page (kde#490308)
+  * plugin_kategdp: When breakpoint mark changes, toggle breakpoint for it (kde#481691)
+  * ensure we restore stashed documents with right encoding (kde#489360)
+  * use session file name as stash folder name (kde#485551)
+  * Fix katesql plugin build (kde#488694)
+  * Fix crash in urlbar (kde#489931)
+  * keep track of focus for widgets, too (kde#485209)
+  * ensure plugin actions are in front of context menu (kde#488336)
+  * update clangd homepage (kde#486939)
+  * Fix ruby method parsing and nested classes parsing (kde#480756)
+  * keep track of recent used files on saveAs & close (kde#486203)
+  * use kate from the right virtual desktop (kde#486066)
+  * S&R: Improve tab handling (kde#484231)
+
+-------------------------------------------------------------------
 Tue Jul  2 13:53:57 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.05.2

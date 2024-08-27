@@ -16,12 +16,12 @@
 #
 
 
-%define kf6_version 6.0.0
+%define kf6_version 6.3.0
 %define qt6_version 6.6.0
 
 %bcond_without released
 Name:           granatier
-Version:        24.05.2
+Version:        24.08.0
 Release:        0
 Summary:        Bomberman-like game
 License:        GPL-2.0-or-later
@@ -75,6 +75,7 @@ Bomberman game.
 %{_kf6_bindir}/granatier
 %{_kf6_configkcfgdir}/granatier.kcfg
 %{_kf6_debugdir}/granatier.categories
+%{_kf6_debugdir}/granatier.renamecategories
 %{_kf6_iconsdir}/hicolor/*/apps/granatier.*
 %{_kf6_sharedir}/granatier/
 

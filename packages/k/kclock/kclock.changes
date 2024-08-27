@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Aug 19 07:13:34 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.08.0/
+- Changes since 24.05.2:
+  * Use ecm_set_disabled_deprecation_versions
+  * Improve and fix i18n
+  * Move reset button to main panel on the "Stopwatch" page (kde#487989)
+  * Don't build the Plasmoid in Flatpak
+  * snap: update to latest release
+  * Enforce passing tests on all Platforms
+
+-------------------------------------------------------------------
 Tue Jul  2 13:54:03 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.05.2

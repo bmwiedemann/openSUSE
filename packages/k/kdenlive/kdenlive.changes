@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Aug 19 07:13:40 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.08.0/
+- Too many changes since 24.05.2, only listing bugfixes:
+  * Fix some effect names not translated (kde#491438)
+  * Fix titler background is pixelated (kde#431606)
+  * Fix timeline scrolling down by a few pixels when already at the bottom when using rubberband or spacer (kde#490956)
+  * Fix crash pasting single selected clip (kde#490370)
+  * Fix color theme menu not showing active theme (kde#489958)
+  * Fix cannot restore audio after saving project with master muted (kde#489985)
+  * Fix crash trying to save effect with slash in name (kde#487224)
+  * Fix wrong FFmpeg chapter export TIMEBASE (kde#487019)
+  * JogShuttle, add note and link for installation on Windows (kde#485602)
+
+-------------------------------------------------------------------
 Wed Jul 24 10:53:44 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Add kf6-qqc2-desktop-style runtime dependency (boo#1228273)

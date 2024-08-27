@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Mon Aug 19 07:13:23 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.08.0/
+- Changes since 24.05.2:
+  * Set up KCrash after KAboutData::setApplicationData()
+  * Add missing screenshot in Appstream data
+  * Add missing launchable
+  * Clean up hamburger menu
+  * Save config
+  * Fix cmake lint warning
+  * Image url not found
+  * Add developer name to appdata
+  * We depend against 6.3.0
+  * Use @info:shell
+  * fix: remove duplicate entry
+  * Add build-ftime support
+  * Use Qt::
+  * Add AccountActivities support
+  * Add kldap version lib
+  * Activate activities support
+  * Add @info:tooltip
+  * Use KIconThemes and KStyleManager if available during build-time
+  * Prepare to activity support
+  * Use notr
+  * Use credit
+  * Add context
+  * Use ellipsis character instead of three dots in UI strings
+  * It compiles fine without deprecated kf methods
+
+-------------------------------------------------------------------
 Tue Jul  2 13:53:51 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.05.2

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Aug 19 07:14:16 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.08.0/
+- Changes since 24.05.2:
+  * Check if fileSystem pointer is nullptr before trying to read its type (kde#441916)
+  * Remove various deprecated methods and enums.
+  * Remove support for CHS alignment.
+  * Don't use --repair for btrfs check
+  * Fix detection of MBR partition table with zeroed signature. (kde#487650)
+  * Enforce passing tests on all platforms
+
+-------------------------------------------------------------------
 Tue Jul  2 13:54:46 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.05.2

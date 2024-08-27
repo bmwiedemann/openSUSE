@@ -16,12 +16,12 @@
 #
 
 
-%define kf6_version 6.0.0
+%define kf6_version 6.3.0
 %define qt6_version 6.6.0
 
 %bcond_without released
 Name:           kjumpingcube
-Version:        24.05.2
+Version:        24.08.0
 Release:        0
 Summary:        Tactical board game
 License:        GPL-2.0-or-later
@@ -76,6 +76,7 @@ this you can gain more fields and finally win the board over.
 %{_kf6_bindir}/kjumpingcube
 %{_kf6_configkcfgdir}/kjumpingcube.kcfg
 %{_kf6_debugdir}/kjumpingcube.categories
+%{_kf6_debugdir}/kjumpingcube.renamecategories
 %{_kf6_iconsdir}/hicolor/*/apps/kjumpingcube.*
 %{_kf6_sharedir}/kjumpingcube/
 

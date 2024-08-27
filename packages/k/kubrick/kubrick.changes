@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Aug 19 07:14:28 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.08.0/
+- Changes since 24.05.2:
+  * Settings dialog: fix layout parenting accidentally to child widget
+  * Set UI marker context to more action, title & tooltip strings
+  * Menu title: do not use action expression
+  * Use ellipsis character in manual strings instead of 3 periods
+  * Fix transparent rendering of the cube (kde#486085)
+  * Fix debug logging of GL Version; use categorized logging
+  * Use executable name as qt logging category name
+  * KDE CI: require "@same" branch of libkdegames
+  * Enforce passing tests
+
+-------------------------------------------------------------------
 Tue Jul  2 13:54:58 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.05.2

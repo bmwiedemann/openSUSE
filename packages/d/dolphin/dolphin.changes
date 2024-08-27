@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Aug 19 07:13:13 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.08.0/
+- Too many changes since 24.05.2, only listing bugfixes:
+  * KStandardItemListWidget: select by number of unicode chars (kde#466814)
+  * Offer installing Filelight if no disk usage analyzer was found (kde#477739)
+  * Add "Move to New Folder…" action (kde#484555)
+  * Avoid implicitly selecting items (kde#424723)
+  * Check if namejob is already being run before opening new createDirectory dialog (kde#481401)
+  * DolphinView: Update selection on newly created item(s) Adjust paste to url to new KF6 signals (kde#476670)
+
+-------------------------------------------------------------------
 Tue Jul  2 13:53:41 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.05.2

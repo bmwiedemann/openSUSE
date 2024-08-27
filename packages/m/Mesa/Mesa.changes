@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Aug 25 09:04:57 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- Fix random GPU crash with AMDGPU (bsc#1229050):
+  U_radeonsi-vcn-Add-decode-DPB-buffers-as-CS-dependency.patch
+  (credits go to Takashi Iwai!)
+
+-------------------------------------------------------------------
 Wed Aug 21 16:53:28 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - fix build with current rust-bindgen

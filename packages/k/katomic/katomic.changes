@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Aug 19 07:13:29 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.08.0/
+- Changes since 24.05.2:
+  * Levelset selection UI: follow KNewStuff guideline for labelling the button
+  * Level selection dialog: make GHNS button text follow HIG closer
+  * Set UI marker context to more action, item, title & tooltip strings
+  * Use ellipsis character in manual strings instead of 3 periods
+  * Use capitalized "By" for author attribution
+  * Use executable name as qt logging category name
+  * KDE CI: require "@same" branch of libkdegames
+  * Enforce passing tests on Windows
+
+-------------------------------------------------------------------
 Tue Jul  2 13:53:57 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.05.2

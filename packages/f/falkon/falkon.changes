@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Mon Aug 19 07:13:15 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.08.0/
+- Changes since 24.05.2:
+  * Fix image search actions
+  * BookmarksToolbar: Fix drag and drop
+  * Update CHANGELOG
+  * Enable WebInspector with disabled JavaScript (kde#462887)
+  * snapcraft: Build dep ssl.
+  * snapcraft: Add missing dependency.
+  * Fix cookies filtering with SiteSettings
+  * SiteSettings: Store more details about url
+  * Add a new line after each javaScriptConsoleMessage
+  * Remove Falkon identification from UserAgent
+  * snapcraft: Initial port to qt6.
+  * Fix QWebEngineProfile name
+  * Enable "Reading from Canvas" by default
+  * SiteInfo: Fix ForceDarkMode update after a change
+  * SiteSettings: Fix default cookies permission error
+  * Update CHANGELOG
+  * Add developer name and launchable to appdata
+  * Fix UserAgent dialog window / ComboBox sizePolicy
+  * Use faster QFileInfo::exists
+  * Use 4-arg connect with labmdas
+  * Use Q_EMIT as a keyword instead of a function
+  * Use reference in range for loops
+  * Remove outdated WebInspector close button removal
+  * Use falkon profile name for QWebEngineProfile
+  * SiteInfo: Immediately apply "Farce Dark Mode"
+  * Fix type
+  * Fix crash during migration
+  * Implement per site permissions in database (kde#409496)
+  * CI: flatpak: Increase runtime to 6.7
+
+-------------------------------------------------------------------
 Tue Jul  2 13:53:44 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.05.2

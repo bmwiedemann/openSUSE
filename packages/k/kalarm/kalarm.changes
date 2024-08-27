@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Mon Aug 19 07:13:23 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.08.0/
+- Changes since 24.05.2:
+  * Add release description
+  * Set up KCrash after KAboutData::setApplicationData()
+  * Prevent audio being stopped if not playing
+  * Code compiles fine without qt6.2 deprecated methods
+  * Close para
+  * Clean up libvlc find_package handling
+  * Remove old dependency on phonon
+  * Remove commented code
+  * Use VLC instead of libcanberra to play sounds (kde#489597, kde#489213, kde#484851)
+  * Remove utf-8 arguments (new kmime api)
+  * Fix syntax
+  * Update appdata version description
+  * Port away from KMime::ContentTransferEncoding::decoded
+  * fix cmake lint warning
+  * Add developer name to appdata
+  * Fix version number
+  * Bug 488488: Fix crash after editing new alarm if spell checking is enabled
+  * We depend against 6.3.0
+  * Use KIconThemes and KStyleManager if available during build-time
+  * Add QPushButton context
+  * Add QPushbutton i18n context
+  * Use i18n context
+  * It compiles fine without deprecated kf methods
+  * Add comment to explain icon name fallback
+  * Update systray to use symbolic icon
+  * Add release info to AppStream metadata
+
+-------------------------------------------------------------------
 Tue Jul  2 13:53:52 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.05.2

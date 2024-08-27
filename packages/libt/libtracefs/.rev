@@ -145,4 +145,12 @@
     <comment>- Update to release 1.8.1</comment>
     <requestid>1194474</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>7737abe24a8cdbbff7ca8fa19ff8cdef</srcmd5>
+    <version>1.8.1</version>
+    <time>1724702725</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1195843</requestid>
+  </revision>
 </revisionlist>

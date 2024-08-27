@@ -16,12 +16,12 @@
 #
 
 
-%define kf6_version 6.0.0
+%define kf6_version 6.3.0
 %define qt6_version 6.6.0
 
 %bcond_without released
 Name:           dolphin-plugins
-Version:        24.05.2
+Version:        24.08.0
 Release:        0
 Summary:        Version control plugins for Dolphin
 License:        GPL-2.0-or-later
@@ -80,6 +80,7 @@ RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 %{_kf6_configkcfgdir}/fileviewgitpluginsettings.kcfg
 %{_kf6_configkcfgdir}/fileviewhgpluginsettings.kcfg
 %{_kf6_configkcfgdir}/fileviewsvnpluginsettings.kcfg
+%{_kf6_debugdir}/dolphingit.categories
 %dir %{_kf6_plugindir}/dolphin
 %dir %{_kf6_plugindir}/dolphin/vcs
 %{_kf6_plugindir}/dolphin/vcs/fileviewbazaarplugin.so

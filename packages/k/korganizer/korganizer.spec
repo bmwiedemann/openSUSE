@@ -16,13 +16,13 @@
 #
 
 
-%define kf6_version 6.0.0
+%define kf6_version 6.3.0
 %define qt6_version 6.6.0
-%define kpim6_version 6.1.2
+%define kpim6_version 6.2.0
 
 %bcond_without released
 Name:           korganizer
-Version:        24.05.2
+Version:        24.08.0
 Release:        0
 Summary:        Personal Organizer
 License:        GPL-2.0-only
@@ -120,6 +120,7 @@ KOrganizer is a calendar application by KDE.
 %{_kf6_iconsdir}/hicolor/scalable/apps/korg-todo.svg
 %{_kf6_iconsdir}/hicolor/scalable/apps/korganizer.svg
 %{_kf6_iconsdir}/hicolor/scalable/apps/quickview.svgz
+%{_kf6_iconsdir}/hicolor/scalable/status/*.svg
 %{_kf6_knsrcfilesdir}/korganizer.knsrc
 %{_kf6_libdir}/libkorganizer_core.so.*
 %{_kf6_libdir}/libkorganizer_interfaces.so.*
@@ -142,6 +143,11 @@ KOrganizer is a calendar application by KDE.
 %{_kf6_plugindir}/pim6/kcms/summary/kcmtodosummary.so
 %dir %{_kf6_plugindir}/pim6/kontact
 %{_kf6_plugindir}/pim6/kontact/kontact_*.so
+%dir %{_kf6_plugindir}/pim6/korganizer
+%{_kf6_plugindir}/pim6/korganizer/datenums.so
+%{_kf6_plugindir}/pim6/korganizer/lunarphases.so
+%{_kf6_plugindir}/pim6/korganizer/picoftheday.so
+%{_kf6_plugindir}/pim6/korganizer/thisdayinhistory.so
 %dir %{_kf6_sharedir}/dbus-1/services/
 %{_kf6_sharedir}/dbus-1/services/org.kde.korganizer.service
 %{_kf6_sharedir}/korganizer/

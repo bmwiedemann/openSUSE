@@ -16,12 +16,12 @@
 #
 
 
-%define kf6_version 6.0.0
+%define kf6_version 6.3.0
 %define qt6_version 6.6.0
 
 %bcond_without released
 Name:           klines
-Version:        24.05.2
+Version:        24.08.0
 Release:        0
 Summary:        Tactical game
 License:        GPL-2.0-or-later
@@ -75,6 +75,7 @@ from the game board. Similar to tetris you fight new pieces appearing.
 %{_kf6_bindir}/klines
 %{_kf6_configkcfgdir}/klines.kcfg
 %{_kf6_debugdir}/klines.categories
+%{_kf6_debugdir}/klines.renamecategories
 %{_kf6_iconsdir}/hicolor/*/apps/klines.*
 %{_kf6_sharedir}/klines/
 

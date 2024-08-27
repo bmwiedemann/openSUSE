@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Aug 19 07:13:02 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.08.0/
+- Changes since 24.05.2:
+  * Use @info:placeholder
+  * Fix forward declaration of CustomFieldsModel
+  * fix cmake lint warning
+  * Remove KF6::ConfigCore
+  * Remove unused include
+  * USe @action:button
+  * Add build-ftime support
+  * Use context i18n
+  * Add @info:tooltip
+  * Add @action:button
+  * It compiles fine without deprecated kf methods
+
+-------------------------------------------------------------------
 Tue Jul  2 13:53:30 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.05.2

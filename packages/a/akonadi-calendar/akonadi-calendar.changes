@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Aug 19 07:13:00 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.08.0/
+- Changes since 24.05.2:
+  * Remove unused argument
+  * Use @info:placeholder
+  * Fix version
+  * Add missing change notification for initial calendar loading
+  * fix cmake lint warning
+  * Add missing [[nodiscard]]
+  * Remove duplicate private area
+  * Remove not necessary lib
+  * ETMCalendar: add signal emitted when the user is checking/unchecking a calendar
+  * Add build-ftime support
+  * Add @info:tooltip
+  * Add context i18n
+  * Add @action:button
+  * Use ellipsis character instead of three dots in UI strings
+  * IncidenceChanger: fix crash due to redundant deletion of handler
+  * It compiles fine without deprecated kf methods
+
+-------------------------------------------------------------------
 Tue Jul  2 13:53:29 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.05.2

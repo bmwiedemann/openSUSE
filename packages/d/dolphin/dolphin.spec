@@ -16,13 +16,13 @@
 #
 
 
-%define kf6_version 6.0.0
+%define kf6_version 6.3.0
 %define plasma6_version 5.27.80
 %define qt6_version 6.6.0
 
 %bcond_without released
 Name:           dolphin
-Version:        24.05.2
+Version:        24.08.0
 Release:        0
 Summary:        KDE File Manager
 License:        GPL-2.0-or-later
@@ -171,8 +171,10 @@ install -D -m 0644 %{SOURCE3} %{buildroot}%{_kf6_applicationsdir}/org.kde.dolphi
 %{_kf6_libdir}/libdolphinprivate.so.*
 %dir %{_kf6_plugindir}/dolphin
 %dir %{_kf6_plugindir}/dolphin/kcms
+%dir %{_kf6_plugindir}/kf6/kfileitemaction/
 %{_kf6_plugindir}/dolphin/kcms/kcm_dolphin*.so
 %{_kf6_plugindir}/kf6/parts/dolphinpart.so
+%{_kf6_plugindir}/kf6/kfileitemaction/movetonewfolderitemaction.so
 %dir %{_kf6_sharedir}/dolphin
 %{_kf6_sharedir}/dolphin/dolphinpartactions.desktop
 

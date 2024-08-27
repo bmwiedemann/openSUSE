@@ -16,13 +16,13 @@
 #
 
 
-%define kf6_version 6.0.0
+%define kf6_version 6.3.0
 %define qt6_version 6.6.0
-%define kpim6_version 6.1.2
+%define kpim6_version 6.2.0
 
 %bcond_without released
 Name:           akonadi-calendar
-Version:        24.05.2
+Version:        24.08.0
 Release:        0
 Summary:        Akonadi calendar integration
 License:        LGPL-2.1-or-later
@@ -36,6 +36,7 @@ BuildRequires:  doxygen
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  cmake(KF6CalendarCore) >= %{kf6_version}
 BuildRequires:  cmake(KF6Codecs) >= %{kf6_version}
+BuildRequires:  cmake(KF6Crash) >= %{kf6_version}
 BuildRequires:  cmake(KF6DBusAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
 BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
@@ -94,7 +95,6 @@ Requires:       cmake(KF6I18n) >= %{kf6_version}
 Requires:       cmake(KF6WidgetsAddons) >= %{kf6_version}
 Requires:       cmake(KPim6Akonadi) >= %{kpim6_version}
 Requires:       cmake(KPim6IdentityManagementCore) >= %{kpim6_version}
-Obsoletes:      akonadi-calendar-devel < %{version}
 Obsoletes:      akonadi5-calendar-devel < %{version}
 Provides:       akonadi5-calendar-devel = %{version}
 

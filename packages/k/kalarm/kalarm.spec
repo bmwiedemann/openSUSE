@@ -16,13 +16,13 @@
 #
 
 
-%define kf6_version 6.0.0
+%define kf6_version 6.3.0
 %define qt6_version 6.6.0
-%define kpim6_version 6.1.2
+%define kpim6_version 6.2.0
 
 %bcond_without released
 Name:           kalarm
-Version:        24.05.2
+Version:        24.08.0
 Release:        0
 Summary:        Personal Alarm Scheduler
 License:        GPL-2.0-only
@@ -74,6 +74,7 @@ BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Network) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 BuildRequires:  pkgconfig(libcanberra)
+BuildRequires:  pkgconfig(libvlc)
 BuildRequires:  pkgconfig(x11)
 Provides:       kalarm5 = %{version}
 Obsoletes:      kalarm5 < %{version}

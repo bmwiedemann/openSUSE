@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Aug 19 07:13:16 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.08.0/
+- Too many changes since 24.05.2, only listing bugfixes:
+  * make makeMap and closeURL more reliable (kde#485744)
+  * windows: force sane style, color, icons (kde#487104)
+  * disable the context menu on fake shapes (kde#487930)
+  * manually position tooltip so it's correct (kde#487339)
+  * windows: treat unpinned files as compressed (kde#486549)
+
+-------------------------------------------------------------------
 Tue Jul  2 13:53:45 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.05.2

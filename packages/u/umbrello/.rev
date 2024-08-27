@@ -1676,4 +1676,12 @@ https://www.kde.org/announcements/announce-applications-16.08.2.php
     <comment>KDE Release Gear 24.05.2 (forwarded request 1184893 from krop)</comment>
     <requestid>1185690</requestid>
   </revision>
+  <revision rev="141" vrev="1">
+    <srcmd5>54501e21b7ecdcf080cbcad6005aa629</srcmd5>
+    <version>24.08.0</version>
+    <time>1724702988</time>
+    <user>anag+factory</user>
+    <comment>KDE Release gear 24.08.0 (forwarded request 1194683 from krop)</comment>
+    <requestid>1195541</requestid>
+  </revision>
 </revisionlist>

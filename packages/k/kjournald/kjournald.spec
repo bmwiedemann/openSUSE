@@ -17,12 +17,12 @@
 
 
 %define soname  0
-%define kf6_version 6.0.0
+%define kf6_version 6.3.0
 %define qt6_version 6.6.0
 
 %bcond_without released
 Name:           kjournald
-Version:        24.05.2
+Version:        24.08.0
 Release:        0
 Summary:        Qt browser for journald database
 License:        LGPL-2.1-or-later

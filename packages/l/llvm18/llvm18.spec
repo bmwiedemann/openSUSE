@@ -531,6 +531,7 @@ This package contains documentation for the LLVM infrastructure.
 Summary:        CLANG frontend for LLVM
 Group:          Development/Languages/C and C++
 URL:            https://clang.llvm.org/
+Requires:       libclang_rt%{_sonum}
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 Recommends:     clang-tools
@@ -542,6 +543,15 @@ Suggests:       libc++-devel
 
 %description -n clang%{_sonum}
 This package contains the clang (C language) frontend for LLVM.
+
+%package -n libclang_rt%{_sonum}
+Summary:        Clang shared runtime libraries
+Group:          System/Libraries
+URL:            https://compiler-rt.llvm.org/
+
+%description -n libclang_rt%{_sonum}
+The runtime libraries needed to run programs compiled with the -shared-libsan
+of Clang. Also known as compiler-rt.
 
 %package -n clang-tools
 Summary:        Tools for Clang
@@ -1360,8 +1370,8 @@ cat > %{buildroot}%{_rpmconfigdir}/macros.d/macros.llvm <<EOF
 %_llvm_with_lldb %{with lldb}
 EOF
 
-# Don't use env in shebangs, and prefer python3. (https://www.python.org/dev/peps/pep-0394/#for-python-runtime-distributors)
-for script in %{buildroot}%{_bindir}/opt-{diff,stats,viewer} \
+# Don't use env in shebangs, and prefer python3.X. (https://www.python.org/dev/peps/pep-0394/#for-python-runtime-distributors)
+sed -i -E "1s|/usr/bin/env *|/usr/bin/|; 1s|/usr/bin/python3?\$|$(realpath /usr/bin/python3)|" \
 %if %{_plv} == %{_sonum}
         %{buildroot}%{_bindir}/{{analyze,intercept}-build,clang-{format,tidy}-diff,git-clang-format,hmaptool,run-{clang-tidy,find-all-symbols},scan-{build,build-py,view}} \
         %{buildroot}%{_libexecdir}/{{analyze,intercept}-{c++,cc},{c++,ccc}-analyzer} \
@@ -1369,13 +1379,21 @@ for script in %{buildroot}%{_bindir}/opt-{diff,stats,viewer} \
 %ifarch aarch64 x86_64
         %{buildroot}%{_libdir}/clang/%{_sonum}/bin/hwasan_symbolize \
 %endif
-        %{buildroot}%{python3_sitelib}/optrecord.py; do
-    sed -i '1s|/usr/bin/env *|%{_bindir}/|;1s|/usr/bin/python$|%{_bindir}/python3|' $script
-done
+        %{buildroot}%{_bindir}/opt-{diff,stats,viewer}
+
+# Remove shebangs where not needed.
+sed -i '1{ /^#!/d }' \
+%if %{_plv} == %{_sonum}
+    %{buildroot}%{_datadir}/scan-view/{Reporter,startfile}.py \
+%endif
+%if %{with lldb_python}
+    %{buildroot}%{python3_sitearch}/lldb/utils/{in_call_stack,symbolication}.py \
+%endif
+    %{buildroot}%{python3_sitelib}/optrecord.py
 
 # Remove executable bit where not needed.
 chmod -x \
-  %{buildroot}%{python3_sitelib}/optpmap.py \
+  %{buildroot}%{python3_sitelib}/opt{pmap,record}.py \
   %{buildroot}%{_datadir}/opt-viewer/style.css \
 %if %{_plv} == %{_sonum}
   %{buildroot}%{_datadir}/bash-completion/completions/clang \
@@ -1618,12 +1636,31 @@ fi
 %{lapply -p man_sonum_path %clang_manfiles}
 %{lapply -p ghost_ua_man_link %clang_manfiles}
 
-%dir %{_libdir}/clang/
-%dir %{_libdir}/clang/%{_sonum}/
+%dir %{_libdir}/clang
+%dir %{_libdir}/clang/%{_sonum}
+%dir %{_libdir}/clang/%{_sonum}/lib
+%dir %{_libdir}/clang/%{_sonum}/lib/linux
+%ifnarch s390x
+%{_libdir}/clang/%{_sonum}/lib/linux/clang_rt.*.o
+%endif
+%{_libdir}/clang/%{_sonum}/lib/linux/libclang_rt.*.a
+%ifnarch %{ix86}
+%{_libdir}/clang/%{_sonum}/lib/linux/libclang_rt.*.a.syms
+%endif
+%ifarch aarch64 %{arm} ppc64le x86_64
+%{_libdir}/clang/%{_sonum}/lib/linux/liborc_rt-*.a
+%endif
+
+%files -n libclang_rt%{_sonum}
+%license CREDITS.TXT LICENSE.TXT
+%dir %{_libdir}/clang
+%dir %{_libdir}/clang/%{_sonum}
 %ifarch aarch64 riscv64 x86_64
 %{_libdir}/clang/%{_sonum}/bin
 %endif
-%{_libdir}/clang/%{_sonum}/lib
+%dir %{_libdir}/clang/%{_sonum}/lib
+%dir %{_libdir}/clang/%{_sonum}/lib/linux
+%{_libdir}/clang/%{_sonum}/lib/linux/libclang_rt.*.so
 # The sanitizer runtime is not available for ppc.
 %ifnarch ppc
 %{_libdir}/clang/%{_sonum}/share

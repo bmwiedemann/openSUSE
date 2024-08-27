@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Aug 19 07:14:00 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.08.0/
+- Changes since 24.05.2:
+  * SVG app icon: drop broken <use> entries href'ing to non-existing id
+  * Layout selection UI: follow KNewStuff guideline for labelling the button
+  * Use ellipsis character in manual strings instead of 3 periods
+  * Use KStandardAction cut, copy & paste actions instead of own
+  * Avoid UI string puzzle, pass argument to i18n method
+  * Set UI marker context to more action, label, info & title strings
+  * Add icon to Board Editor menu entry
+  * Editor: remove overwrite check duplicated from QFileDialog::getSaveFileName
+  * Use executable name as qt logging category name
+  * KDE CI: require "@same" branch of libkdegames & libkmahjongg
+
+-------------------------------------------------------------------
 Tue Jul  2 13:54:30 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.05.2

@@ -16,12 +16,12 @@
 #
 
 
-%define kf6_version 6.0.0
+%define kf6_version 6.3.0
 %define qt6_version 6.6.0
 
 %bcond_without released
 Name:           kmime
-Version:        24.05.2
+Version:        24.08.0
 Release:        0
 Summary:        KDE PIM libraries MIME support
 License:        LGPL-2.1-or-later
@@ -34,9 +34,9 @@ Source2:        applications.keyring
 BuildRequires:  doxygen
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  cmake(KF6Codecs) >= %{kf6_version}
-BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Test) >= %{qt6_version}
+BuildRequires:  cmake(Qt6LinguistTools) >= %{qt6_version}
 BuildRequires:  cmake(Qt6ToolsTools) >= %{qt6_version}
 Conflicts:      libKF5Mime5 < %{version}
 
@@ -72,7 +72,7 @@ to develop KDE PIM applications.
 %install
 %kf6_install
 
-%find_lang %{name} --all-name
+%find_lang %{name} --all-name --with-qt
 
 %ldconfig_scriptlets -n libKPim6Mime6
 

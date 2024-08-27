@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Aug 19 07:13:06 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.08.0/
+- Changes since 24.05.2:
+  * snapcraft: add udisks2 plug
+  * snapcraft: Remove plugs now handled by extension/snapd.
+  * snapcraft: fix libzip package name.
+  * snapcraft: Add theme support, minor fixes.
+  * cliinterface: adapt to behavior change in QTemporaryDir (kde#487229)
+  * Logging category rename from "ARK" to "ARK_LOG"
+  * Explicitly link against Qt::DBus
+  * Fix minor typo
+  * cli7zplugin: update cmake warning message
+  * createdialogtest: fix 7z expected encryption with libarchive
+  * extracttest: skip 7z multivolume with libarchive
+  * Move 7z multivolume load test to cli7ztest
+  * libarchive: add support for unencrypted 7-zip
+  * Cleanup bits now in extension.`
+  * snapcraft: Initial port to kf6.
+- Drop patch, merged upstream:
+  * 0001-cliinterface-adapt-to-behavior-change-in-QTemporaryD.patch
+
+-------------------------------------------------------------------
 Sat Jul 13 12:50:18 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add patch to fix tmp folder cleanup (kde#487229):

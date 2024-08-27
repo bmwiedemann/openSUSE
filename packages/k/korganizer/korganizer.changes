@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Mon Aug 19 07:14:14 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.08.0/
+- Changes since 24.05.2:
+  * Set up KCrash after KAboutData::setApplicationData()
+  * It's define by default
+  * Remove stray qDebug() in my last commit
+  * Remove unused namespace
+  * Remove unused forward declaration
+  * Move EventViews plugins to Korganizer
+  * Add missing launchable
+  * Fix cmake lint warning
+  * Add developer name to appdata
+  * Save calendar selection immediately after checking/unchecking a calendar
+  * Use canonical KMime includes
+  * USe @action:button
+  * Add obviously missing '!' in if() statement
+  * We depend against 6.3.0
+  * Make it compile
+  * Add HAVE_ACTIVITY_SUPPORT
+  * Prepare to implement activities
+  * Use @info:shell
+  * Show korganizer_options.h in qtc6
+  * Add build-ftime support
+  * Add @info:tooltip
+  * Use KIconThemes and KStyleManager if available during build-time
+  * Add QPushbutton i18n context
+  * Add i18n context
+  * Use ellipsis character instead of three dots in UI strings
+  * It compiles fine without deprecated kf methods
+
+-------------------------------------------------------------------
 Tue Jul  2 13:54:43 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.05.2

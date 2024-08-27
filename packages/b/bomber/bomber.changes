@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Aug 19 07:13:10 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.08.0/
+- Changes since 24.05.2:
+  * snapcraft: Fix formatting and typo.
+  * snapcraft: Sound.. add alsa layout and packages.
+  * snapcraft: Remove symlink.
+  * snapcraft: Fix sound issues. Add pulseaudio plug.
+  * snapcraft: remove unecessary bits now in extension.
+  * snapcraft: Initial import to qt6
+  * App icon PNGs: drop unused embedded color profile, rely on default sRGB
+  * Add icon to "Play Sounds" toggle action
+  * Set UI marker context to more action, title & tooltip strings
+  * KDE CI: require "@same" branch of libkdegames
+  * Enforce passing tests on Windows
+
+-------------------------------------------------------------------
 Tue Jul  2 13:53:38 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.05.2

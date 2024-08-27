@@ -16,12 +16,12 @@
 #
 
 
-%define kf6_version 6.0.0
+%define kf6_version 6.3.0
 %define qt6_version 6.6.0
 
 %bcond_without released
 Name:           kosmindoormap
-Version:        24.05.2
+Version:        24.08.0
 Release:        0
 Summary:        OSM multi-floor indoor map renderer
 License:        LGPL-2.0-or-later AND CC0-1.0
@@ -53,7 +53,8 @@ OSM multi-floor indoor map renderer.
 
 %package imports
 Summary:      QML imports for kosmindoormap
-Requires:       libKOSM1 = %{version}
+Requires:     libKOSM1 = %{version}
+Requires:     libKOSMIndoorRouting1 = %{version}
 
 %description imports
 QML components for KOpeningHours.
@@ -71,10 +72,18 @@ Summary:        OSM multi-floor indoor map renderer
 %description -n libKOSMIndoorMap1
 OSM multi-floor indoor map renderer library.
 
+%package -n libKOSMIndoorRouting1
+Summary:        OSM multi-floor indoor map renderer
+
+%description -n libKOSMIndoorRouting1
+Indoor routing component of kosmindoormap, an OSM 
+multi-floor indoor map renderer
+
 %package devel
 Summary:        Development package for kosmindoormap
 Requires:       libKOSM1 = %{version}
 Requires:       libKOSMIndoorMap1 = %{version}
+Requires:       libKOSMIndoorRouting1 = %{version}
 
 %description devel
 Development files for the KOSM and KOSMIndoorMap libraries.
@@ -103,12 +112,14 @@ Development files for the KOSM and KOSMIndoorMap libraries.
 
 %ldconfig_scriptlets -n libKOSM1
 %ldconfig_scriptlets -n libKOSMIndoorMap1
+%ldconfig_scriptlets -n libKOSMIndoorRouting1
 
 %files
 %{_kf6_debugdir}/org_kde_kosmindoormap.categories
 
 %files imports
 %{_kf6_qmldir}/org/kde/kosmindoormap/
+%{_kf6_qmldir}/org/kde/kosmindoorrouting/
 %{_kf6_qmldir}/org/kde/osm/
 
 %files -n libKOSM1
@@ -119,15 +130,21 @@ Development files for the KOSM and KOSMIndoorMap libraries.
 %files -n libKOSMIndoorMap1
 %{_kf6_libdir}/libKOSMIndoorMap.so.*
 
+%files -n libKOSMIndoorRouting1
+%{_kf6_libdir}/libKOSMIndoorRouting.so.*
+
 %files devel
 %{_includedir}/KOSM/
 %{_includedir}/KOSMIndoorMap/
+%{_includedir}/KOSMIndoorRouting/
 %{_includedir}/kosm/
 %{_includedir}/kosmindoormap/
+%{_includedir}/kosmindoorrouting/
 %{_includedir}/kosmindoormap_version.h
 %{_kf6_cmakedir}/KOSMIndoorMap/
 %{_kf6_libdir}/libKOSM.so
 %{_kf6_libdir}/libKOSMIndoorMap.so
+%{_kf6_libdir}/libKOSMIndoorRouting.so
 
 %files lang -f %{name}.lang
 

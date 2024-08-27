@@ -17,12 +17,12 @@
 
 
 
-%define kf6_version 6.0.0
+%define kf6_version 6.3.0
 %define qt6_version 6.6.0
 
 %bcond_without released
 Name:           libkleo
-Version:        24.05.2
+Version:        24.08.0
 Release:        0
 Summary:        Base package of Kleopatra, a key manager by KDE
 License:        GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -44,7 +44,6 @@ BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
 BuildRequires:  cmake(KF6ItemModels) >= %{kf6_version}
 BuildRequires:  cmake(KF6WidgetsAddons) >= %{kf6_version}
-BuildRequires:  cmake(KF6TextCustomEditor)
 BuildRequires:  cmake(QGpgmeQt6) >= 1.16.0
 BuildRequires:  cmake(Qt6ToolsTools) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}

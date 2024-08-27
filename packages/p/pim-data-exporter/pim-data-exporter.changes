@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Aug 19 07:14:46 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.08.0/
+- Changes since 24.05.2:
+  * Set up KCrash after KAboutData::setApplicationData()
+  * Use @info:placeholder
+  * fix cmake lint warning
+  * Add developer name to appdata + launchable
+  * USe @action:button
+  * We depend against 6.3.0
+  * Add conditional kdbusaddons support
+  * Use @info:shell
+  * Add build-ftime support
+  * Use context i18n
+  * Use KIconThemes and KStyleManager if available during build-time
+  * Add QPushbutton i18n context
+  * Use i18n context
+  * It compiles fine without deprecated kf methods
+
+-------------------------------------------------------------------
 Tue Jul  2 13:55:16 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.05.2

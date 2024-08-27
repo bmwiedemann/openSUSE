@@ -16,20 +16,20 @@
 #
 
 
-%define kf6_version 6.0.0
-%define qt6_version 6.5.0
+%define kf6_version 6.3.0
+%define qt6_version 6.6.0
 
 %bcond_without released
 Name:           kgraphviewer
-Version:        2.5.0
+Version:        24.08.0
 Release:        0
 Summary:        Graphviz dot graph file viewer
 License:        GPL-2.0-only
 URL:            https://apps.kde.org/kgraphviewer
-Source:         https://download.kde.org/stable/kgraphviewer/%{version}/%{name}-%{version}.tar.xz
+Source0:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/kgraphviewer/%{version}/%{name}-%{version}.tar.xz.sig
-Source2:        kgraphviewer.keyring
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
 %endif
 BuildRequires:  boost-devel
 BuildRequires:  graphviz-devel >= 2.30

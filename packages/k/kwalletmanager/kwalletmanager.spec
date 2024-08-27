@@ -16,12 +16,12 @@
 #
 
 
-%define kf6_version 6.0.0
+%define kf6_version 6.3.0
 %define qt6_version 6.6.0
 
 %bcond_without released
 Name:           kwalletmanager
-Version:        24.05.0
+Version:        24.08.0
 Release:        0
 Summary:        Wallet Management Tool
 License:        GPL-2.0-or-later
@@ -84,7 +84,7 @@ This application allows you to manage your KDE password wallet.
 %license LICENSES/*
 %doc %lang(en) %{_kf6_htmldir}/en/*/
 %{_kf6_applicationsdir}/kwalletmanager5-kwalletd.desktop
-%{_kf6_applicationsdir}/org.kde.kwalletmanager5.desktop
+%{_kf6_applicationsdir}/org.kde.kwalletmanager.desktop
 %{_kf6_appstreamdir}/org.kde.kwalletmanager5.appdata.xml
 %{_kf6_bindir}/kwalletmanager5
 %{_kf6_debugdir}/kwalletmanager.categories

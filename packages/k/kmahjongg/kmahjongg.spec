@@ -16,12 +16,12 @@
 #
 
 
-%define kf6_version 6.0.0
+%define kf6_version 6.3.0
 %define qt6_version 6.6.0
 
 %bcond_without released
 Name:           kmahjongg
-Version:        24.05.2
+Version:        24.08.0
 Release:        0
 Summary:        Mahjongg game
 License:        GPL-2.0-or-later
@@ -76,6 +76,7 @@ by removing pieces of the same type.
 %{_kf6_bindir}/kmahjongg
 %{_kf6_configkcfgdir}/kmahjongg.kcfg
 %{_kf6_debugdir}/kmahjongg.categories
+%{_kf6_debugdir}/kmahjongg.renamecategories
 %{_kf6_iconsdir}/hicolor/*/apps/kmahjongg.*
 %{_kf6_sharedir}/kmahjongg/
 

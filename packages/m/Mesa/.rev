@@ -5866,4 +5866,14 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
     <comment></comment>
     <requestid>1195243</requestid>
   </revision>
+  <revision rev="518" vrev="390">
+    <srcmd5>1825eac302800b610b94834766b5ce93</srcmd5>
+    <version>unknown</version>
+    <time>1724702735</time>
+    <user>anag+factory</user>
+    <comment>- Fix random GPU crash with AMDGPU (bsc#1229050):
+  U_radeonsi-vcn-Add-decode-DPB-buffers-as-CS-dependency.patch
+  (credits go to Takashi Iwai!)</comment>
+    <requestid>1195891</requestid>
+  </revision>
 </revisionlist>

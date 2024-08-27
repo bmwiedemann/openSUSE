@@ -16,12 +16,12 @@
 #
 
 
-%define kf6_version 6.0.0
+%define kf6_version 6.3.0
 %define qt6_version 6.6.0
 
 %bcond_without released
 Name:           konqueror
-Version:        24.05.2
+Version:        24.08.0
 Release:        0
 Summary:        KDE File Manager and Browser
 # Note for legal: webenginepart/autotests/webengine_testutils.h is neither built nor installed in our package.
@@ -145,6 +145,7 @@ rm -r %{buildroot}%{_kf6_plugindir}/kwebkitpart
 %{_kf6_debugdir}/konqueror.categories
 %{_kf6_iconsdir}/hicolor/*/*/konqueror.*
 %{_kf6_libdir}/libKF6Konq.so.*
+%{_kf6_libdir}/libKF6KonqSettings.so.*
 %{_kf6_libdir}/libkonquerorprivate.so.*
 %dir %{_kf6_plugindir}/konqueror_kcms
 %{_kf6_plugindir}/konqueror_kcms/kcm_bookmarks.so
@@ -207,9 +208,10 @@ rm -r %{buildroot}%{_kf6_plugindir}/kwebkitpart
 
 %files devel
 %{_kf6_cmakedir}/KF6Konq/
-%{_kf6_includedir}/asyncselectorinterface.h
 %{_kf6_includedir}/*konq*.h
+%{_kf6_includedir}/selectorinterface.h
 %{_kf6_libdir}/libKF6Konq.so
+%{_kf6_libdir}/libKF6KonqSettings.so
 %{_kf6_libdir}/libkonqsidebarplugin.so
 
 %files lang -f %{name}.lang

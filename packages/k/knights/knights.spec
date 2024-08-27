@@ -16,13 +16,13 @@
 #
 
 
-%define kf6_version 6.0.0
+%define kf6_version 6.3.0
 %define plasma6_version 5.27.80
 %define qt6_version 6.6.0
 
 %bcond_without released
 Name:           knights
-Version:        24.05.2
+Version:        24.08.0
 Release:        0
 Summary:        A simple chess board
 License:        GPL-2.0-or-later
@@ -89,6 +89,7 @@ against each other.
 %{_kf6_configkcfgdir}/knights.kcfg
 %{_kf6_dbusinterfacesdir}/org.kde.Knights.xml
 %{_kf6_debugdir}/knights.categories
+%{_kf6_debugdir}/knights.renamecategories
 %{_kf6_iconsdir}/*/*/*/knights.*
 %{_kf6_knsrcfilesdir}/knights.knsrc
 %{_kf6_sharedir}/knights/

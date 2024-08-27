@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Aug 19 07:13:22 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.08.0/
+- Changes since 24.05.2:
+  * [nextcloud] Port HTTP usage away from KIO
+  * Require a released KF6 version
+  * Enforce passing tests
+  * Enabled Qt6 CI
+
+-------------------------------------------------------------------
 Tue Jul  2 13:53:50 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.05.2

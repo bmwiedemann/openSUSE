@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Aug 19 07:14:17 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.08.0/
+- Too many changes since 24.05.2, only listing bugfixes:
+  * rdp: add clipboard support BUG: 484666 (kde#484666)
+  * Move event handling from vncview to base class remoteview; reuse the same methods in rdpview BUG: 483638 (kde#483638)
+  * VNC: replace m_stopped with QThread's interruptionRequested (kde#486178)
+
+-------------------------------------------------------------------
 Tue Jul  2 13:54:47 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.05.2

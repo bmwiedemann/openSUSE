@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Aug 19 07:13:51 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.08.0/
+- Changes since 24.05.2:
+  * Qml: Fix deleting identity
+  * Qml: Close identity editor after deleting identity
+  * Qml: add field for changing identity name
+  * Fix cmake lint warning
+  * USe @action:button
+  * Add build-ftime support
+  * Use context i18n
+  * add missing [[nodiscard]]
+  * Add Q_OBJECT
+  * Improve autotests
+  * Hide ActivitiesRole column
+  * Fix typo
+  * It compiles fine without deprecated kf methods
+
+-------------------------------------------------------------------
 Tue Jul  2 13:54:19 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.05.2

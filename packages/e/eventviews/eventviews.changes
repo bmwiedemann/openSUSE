@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Aug 19 07:13:15 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.08.0/
+- Changes since 24.05.2:
+  * Fix some cmakelint warning
+  * Use tag instead of category for user facing strings
+  * Fix warning "QObject::disconnect: Unexpected nullptr parameter" on startup
+  * Fix 2 typos in a comment
+  * Use @info:shell
+  * Add build-ftime support
+  * Use context i18n
+  * Make compile with QT_NO_CONTEXTLESS_CONNECT
+  * Add @info:tooltip
+  * Use i18n context
+  * Use ellipsis character instead of three dots in UI strings
+  * It compiles fine without deprecated kf methods
+
+-------------------------------------------------------------------
 Tue Jul  2 13:53:43 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.05.2

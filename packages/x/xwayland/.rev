@@ -549,4 +549,16 @@
   * xwayland: remove includedir from pkgconfig</comment>
     <requestid>1187080</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>ada6afb1c7dc6e70566c72793799664d</srcmd5>
+    <version>24.1.2</version>
+    <time>1724702727</time>
+    <user>anag+factory</user>
+    <comment>- Update to bugfix release 24.1.2
+  * This release addresses several issues, including the first
+    events being skipped with input emulation using libEI or a fix
+    with rendering using the UYVY format with the X-Video extension
+    using GLAMOR.</comment>
+    <requestid>1195855</requestid>
+  </revision>
 </revisionlist>

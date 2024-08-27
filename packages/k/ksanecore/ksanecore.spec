@@ -16,12 +16,12 @@
 #
 
 
-%define kf6_version 6.0.0
+%define kf6_version 6.3.0
 %define qt6_version 6.6.0
 
 %bcond_without released
 Name:           ksanecore
-Version:        24.05.2
+Version:        24.08.0
 Release:        0
 Summary:        Qt interface for the SANE library for scanner hardware
 License:        LGPL-2.1-only OR LGPL-3.0-only
@@ -31,8 +31,6 @@ Source0:        https://download.kde.org/stable/release-service/%{version}/src/%
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-# PATCH-FIX-UPSTREAM
-Patch0:         fix-scanner-search-crash.patch
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  sane-backends-devel
 BuildRequires:  cmake(KF6I18n) >= %{kf6_version}

@@ -16,12 +16,12 @@
 #
 
 
-%define kf6_version 6.0.0
+%define kf6_version 6.3.0
 %define qt6_version 6.6.0
 
 %bcond_without released
 Name:           killbots
-Version:        24.05.2
+Version:        24.08.0
 Release:        0
 Summary:        Robots-like game by KDE
 License:        GPL-2.0-or-later
@@ -76,6 +76,7 @@ and can optionally use teleportation to a random location.
 %{_kf6_bindir}/killbots
 %{_kf6_configkcfgdir}/killbots.kcfg
 %{_kf6_debugdir}/killbots.categories
+%{_kf6_debugdir}/killbots.renamecategories
 %{_kf6_iconsdir}/hicolor/*/apps/killbots.*
 %{_kf6_sharedir}/killbots/
 

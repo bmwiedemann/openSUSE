@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Aug 19 07:13:24 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.08.0/
+- Changes since 24.05.2:
+  * .kde-ci.yml on "not Android", require qqc2-desktop-style
+  * CI: flatpak: Increase runtime to 6.7
+  * Revert Enforce passing tests on all platforms
+  * Fix kdeci syntax
+  * Enforce passing tests on all Platforms
+
+-------------------------------------------------------------------
 Tue Jul  2 13:53:53 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.05.2

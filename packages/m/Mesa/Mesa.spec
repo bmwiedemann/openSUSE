@@ -1,5 +1,5 @@
 #
-# spec file for package Mesa
+# spec file
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -183,6 +183,7 @@ Patch15:        u_fix_rust_bindgen.patch
 Patch54:        n_drirc-disable-rgb10-for-chromium-on-amd.patch
 Patch58:        u_dep_xcb.patch
 Patch100:       U_fix-mpeg1_2-decode-mesa-20.2.patch
+Patch101:       U_radeonsi-vcn-Add-decode-DPB-buffers-as-CS-dependency.patch
 Patch400:       n_stop-iris-flicker.patch
 %ifarch %{ix86} x86_64
 BuildRequires:  DirectX-Headers
@@ -838,6 +839,7 @@ cp %{SOURCE6} subprojects/packagecache/
 %endif
 %patch -P 58 -p1
 %patch -P 100 -p1
+%patch -P 101 -p1
 %patch -P 400 -p1
 
 # Remove requires to vulkan libs from baselibs.conf on platforms

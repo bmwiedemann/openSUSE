@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Mon Aug 19 07:13:33 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.08.0/
+- Changes since 24.05.2:
+  * Set error Index for edge cases (kde#491327)
+  * Only show base label while on "Numeral system" mode
+  * Remove unused "Repeat operation for each result" option from menu (kde#490478)
+  * Show frame at the bottom of the display field
+  * Change octal prefix from "0" to "0o" (kde#488728)
+  * Connect bit edit with new input display
+  * Remap undo and redo shortcuts to the input display (kde#488992)
+  * Add parsing support for scientific notation numbers with capital E (kde#489980)
+  * Fix display reset when changing settings (kde#488962)
+  * Better numeral system view UI
+  * Add "add/subtract percentage" functionality (kde#489027)
+  * Add parsing support for lower case hex numbers
+  * Fix bugs in Numeral system (kde#489660)
+  * Start new input on numeric entries after "equal" (kde#489043)
+  * Clear result display on single negative number (kde#489041)
+  * Add first appium test
+  * Migrate to new slot syntax
+  * Add support for decimal numbers without integer part (kde#487659)
+  * Fix segmentation fault caused by single space
+  * Chain result upon equal clicked (kde#487566)
+  * Fixed a crash when trying to calculate a single space as input
+  * Use "qCDebug" instead of "qDebug"
+  * Update files using clang-format
+  * Add locale to round functionality
+  * Add edge case handler for stack reduction (kde#487614)
+  * Add @info:tooltip as context
+  * Remove not necessary text
+  * Improve appstream summary
+  * Show result while editing input (kde#480607)
+
+-------------------------------------------------------------------
 Tue Jul  2 13:54:01 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.05.2

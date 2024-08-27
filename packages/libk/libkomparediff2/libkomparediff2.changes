@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Mon Aug 19 07:14:36 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.08.0/
+- Changes since 24.05.2:
+  * Port away from QTextCodec
+  * Bump min required KF6 to 6.0
+  * In public methods, return implicitly-shared types as non-const values
+  * DiffModelList::sort: remove unused virtual
+  * Use fully-qualified type with signal arguments
+  * Move class DiffSettings into KompareDiff2 namespace
+  * Drop class SettingsBase, make DiffSettings no longer q QObject
+  * Use pimpl for class DiffHunk, export all class methods instead of inline
+  * Use pimpl for class ModelList
+  * ModelList: remove unused name argument from constructor
+  * Use pimpl for class DiffModel
+  * Use pimpl for class DifferenceString
+  * Use pimpl for class Difference
+  * Rename KompareModelList to ModelList
+  * Rename kompare.h to global.h
+  * Remove unused Target enum
+  * Move DifferenceString definition into own header
+  * Move struct Info as class into own header
+  * Change namespace Kompare to KompareDiff2
+  * Drop "Lib" prefix from CMake config name
+  * Change C++ namespace to KompareDiff2
+  * Bump version to 6.0.0, to match new API/ABI
+  * Create dedicated Qt6/KF6 branch, drop any Qt5/KF5 support
+- Drop the KF5-compatible package
+- Drop patch, no longer needed:
+  * 0001-Add-changes-to-allow-coinstallation.patch
+
+-------------------------------------------------------------------
 Tue Apr  9 18:09:33 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.02.2

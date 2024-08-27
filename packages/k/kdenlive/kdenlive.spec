@@ -17,12 +17,12 @@
 
 
 %define mlt_version 7.14.0
-%define kf6_version 6.0.0
+%define kf6_version 6.3.0
 %define qt6_version 6.6.0
 
 %bcond_without released
 Name:           kdenlive
-Version:        24.05.2
+Version:        24.08.0
 Release:        0
 Summary:        Non-linear video editor
 License:        GPL-3.0-or-later
@@ -32,11 +32,11 @@ Source0:        https://download.kde.org/stable/release-service/%{version}/src/%
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  fdupes
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
+BuildRequires:  fdupes
 BuildRequires:  pkgconfig
-BuildRequires:  rttr-devel
 BuildRequires:  shared-mime-info
+BuildRequires:  rttr-devel
 BuildRequires:  cmake(KF6Archive) >= %{kf6_version}
 BuildRequires:  cmake(KF6Bookmarks) >= %{kf6_version}
 BuildRequires:  cmake(KF6Codecs) >= %{kf6_version}

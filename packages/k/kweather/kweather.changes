@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Aug 19 07:14:29 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.08.0/
+- Changes since 24.05.2:
+  * snap: change source
+  * snap: remove some plugs
+  * ci: reenable other ci jobs
+  * snap: remove `QML2_IMPORT_PATH` from build env
+  * snap: remove cleanup part and add some more plugs
+  * snap: add more build packages
+  * snap: added opengl related dev libraries
+  * ci: added snap build job
+  * snap: update to latest release
+  * Don't build the Plasmoid in Flatpak
+  * Build APKs against released frameworks
+  * Remove screenshots from the repository, use cdn.kde.org
+  * Run qmlformat
+  * Use typed list when exposing data to QML
+  * Qualify property lookup
+  * Mark WeatherLocation as uncreatable
+  * Specify QML module dependency
+  * Remove unused CMake file
+  * Add detailed icons to Android
+
+-------------------------------------------------------------------
 Tue Jul  2 13:54:59 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.05.2

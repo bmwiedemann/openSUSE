@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Aug 19 07:14:10 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.08.0/
+- Changes since 24.05.2:
+  * Use ellipsis character in manual strings instead of 3 periods
+  * Use ellipsis character in UI strings instead of 3 periods
+  * Set UI marker context to more action, title strings
+  * KDE CI: require "@same" branch of libkdegames
+
+-------------------------------------------------------------------
 Tue Jul  2 13:54:40 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.05.2

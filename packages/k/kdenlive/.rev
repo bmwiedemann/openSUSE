@@ -1141,4 +1141,12 @@ I would be grateful.
     <comment>- Add kf6-qqc2-desktop-style runtime dependency (boo#1228273)</comment>
     <requestid>1189361</requestid>
   </revision>
+  <revision rev="135" vrev="1">
+    <srcmd5>faef039ed210487ab8d92ef48e0ad1e5</srcmd5>
+    <version>24.08.0</version>
+    <time>1724702801</time>
+    <user>anag+factory</user>
+    <comment>KDE Release gear 24.08.0 (forwarded request 1194683 from krop)</comment>
+    <requestid>1195382</requestid>
+  </revision>
 </revisionlist>

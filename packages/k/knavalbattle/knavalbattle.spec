@@ -16,12 +16,12 @@
 #
 
 
-%define kf6_version 6.0.0
+%define kf6_version 6.3.0
 %define qt6_version 6.6.0
 
 %bcond_without released
 Name:           knavalbattle
-Version:        24.05.2
+Version:        24.08.0
 Release:        0
 Summary:        Battleship game
 License:        GPL-2.0-or-later
@@ -74,6 +74,7 @@ played with friends online via the internet.
 %{_kf6_appstreamdir}/org.kde.knavalbattle.appdata.xml
 %{_kf6_bindir}/knavalbattle
 %{_kf6_debugdir}/knavalbattle.categories
+%{_kf6_debugdir}/knavalbattle.renamecategories
 %{_kf6_iconsdir}/hicolor/*/apps/knavalbattle.*
 %{_kf6_sharedir}/knavalbattle/
 

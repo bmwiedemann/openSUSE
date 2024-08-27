@@ -15,12 +15,12 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%define kf6_version 6.0.0
+%define kf6_version 6.3.0
 %define qt6_version 6.6.0
 
 %bcond_without released
 Name:           skanlite
-Version:        24.05.2
+Version:        24.08.0
 Release:        0
 Summary:        Image Scanner Application
 License:        LGPL-2.1-or-later
@@ -65,7 +65,7 @@ Skanlite is an image scanner application by KDE.
 %{_kf6_applicationsdir}/org.kde.skanlite.desktop
 %{_kf6_appstreamdir}/org.kde.skanlite.appdata.xml
 %{_kf6_bindir}/skanlite
-%{_kf6_iconsdir}/hicolor/48x48/apps/org.kde.skanlite.svg
+%{_kf6_iconsdir}/hicolor/scalable/apps/org.kde.skanlite.svg
 
 %files lang -f %{name}.lang
 %exclude %{_kf6_htmldir}/en/skanlite/

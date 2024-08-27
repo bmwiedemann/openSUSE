@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Aug 19 07:13:14 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.08.0/
+- Changes since 24.05.2:
+  * Fix logging category for git plugin
+  * git: fix a clazy warning to avoid recreating QRegularExpression
+  * git: untracked empty dirs are no longer shown as versioned (kde#447530)
+  * git: a little code clean-up and simplification
+  * git: add to switch/checkout dialog ability to pick a commit
+  * git: if ProgressDialog cancel pressed no need of QProcess output anymore
+  * git: clone adjust branch combo to content
+  * git: add to CloneDialog ability to preload available remote branches
+  * git: fix typos in Switch/Checkout dialog signals connection
+  * hg: remove unused variables to prevent warnings
+  * svn: make SVN Checkout dialog run async
+  * git: simplify clone dialog
+  * git: move ProgressDialog to separate file
+  * git: clone dialog, validate input
+  * Enforce passing tests on all platforms
+
+-------------------------------------------------------------------
 Tue Jul  2 13:53:42 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.05.2

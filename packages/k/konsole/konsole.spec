@@ -16,12 +16,12 @@
 #
 
 
-%define kf6_version 6.0.0
+%define kf6_version 6.3.0
 %define qt6_version 6.6.0
 
 %bcond_without released
 Name:           konsole
-Version:        24.05.2
+Version:        24.08.0
 Release:        0
 Summary:        KDE Terminal
 License:        GPL-2.0-or-later
@@ -146,9 +146,7 @@ install -D -m 0644 %{SOURCE26} %{buildroot}%{_kf6_iconsdir}/hicolor/128x128/apps
 %{_kf6_appstreamdir}/org.kde.konsole.appdata.xml
 %{_kf6_bindir}/konsole
 %{_kf6_bindir}/konsoleprofile
-%{_kf6_configdir}/konsolerc
 %{_kf6_iconsdir}/hicolor/*/apps/utilities-terminal_su.png
-%{_kf6_knsrcfilesdir}/konsole.knsrc
 %dir %{_kf6_plugindir}/konsoleplugins
 %{_kf6_plugindir}/konsoleplugins/konsole_quickcommandsplugin.so
 %{_kf6_plugindir}/konsoleplugins/konsole_sshmanagerplugin.so

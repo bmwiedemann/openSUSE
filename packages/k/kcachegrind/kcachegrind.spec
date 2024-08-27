@@ -16,12 +16,12 @@
 #
 
 
-%define kf6_version 6.0.0
+%define kf6_version 6.3.0
 %define qt6_version 6.6.0
 
 %bcond_without released
 Name:           kcachegrind
-Version:        24.05.2
+Version:        24.08.0
 Release:        0
 Summary:        Frontend for Cachegrind
 License:        GPL-2.0-only AND BSD-4-Clause AND GFDL-1.2-only

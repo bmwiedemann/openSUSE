@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Mon Aug 19 07:14:21 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.08.0/
+- Changes since 24.05.2:
+  * Add launchable to appdata
+  * UI files: use consistently notr="true", not old comment="KDE::DoNotExtract"
+  * Avoid runtime warning about missing argument in strings from ui file
+  * Add icons to more actions & dialog buttons
+  * KAboutData: drop repeated app name from description text
+  * Set UI marker context to even more action, item, title & tooltip strings
+  * Use tool tips instead of status tips for actions, for global consistency
+  * Do not set caption to application name, will result in duplicate
+  * Place "Contextual Help" entry in middle of Help menu
+  * Winner dialog: fix broken player name insertion into text
+  * Do not create layouts with parent argument when explicitly set later
+  * Use ellipsis character in manual strings instead of 3 periods
+  * Use ellipsis character in UI strings instead of 3 periods
+  * Set UI marker context to more action, title & tooltip strings
+  * Remove any explicit appname prefix from window titles
+  * Use KMessageBox::error instead of information for error messages
+  * Remove explicit "Error" title argument from KMessageBox::error
+  * Remove jabber support
+  * Use executable name as qt logging category name
+  * KDE CI: require "@same" branch of libkdegames
+
+-------------------------------------------------------------------
 Tue Jul  2 13:54:51 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.05.2

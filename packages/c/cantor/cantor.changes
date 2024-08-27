@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Mon Aug 19 07:13:12 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.08.0/
+- Changes since 24.05.2:
+  * Still link the maximabackend to KF5SyntaxHighlighting
+  * [python] Write out the errors also during the initial initializion of the interpreter in PythonServer::login().
+  * Add developer name and launchable to appdata
+  * added lua example
+  * added R example
+  * restructure folders
+  * scilab plot ex added
+  * added numpy ex
+  * Matplotlib quick start example added
+  * Set the current working directory to the directory of the project file for Python, OCtave and Sage where the interanl file name is already set. Other backens will be done later.
+  * Fix build
+  * Added error handling for the case when the backend executable failed to start to all session classes (done for Maxima only previously).
+  * Added debug output to understand the failure on CI.
+  * Fixed multiple issues reported by Coverity and minor code style fixes.
+  * Fix KNS usage and QString::SplitBehavious warning
+  * Added KNS3 prefix for includes in qthelpconfig.
+  * Only search for Help, WebEngine and WebEngineWidgets modules if we need to compile with the embedded documentation and hide the documentation related tabs in the settings widgets if we're compiling without the documentation.
+  * Don't warn multiple times when deleting multiple entries and renamed "Remove" to "Delete" in all actions related to the deletion of entries.
+  * Fixed the export to LaTex. (kde#483482)
+  * Added two new example projects.
+  * [maxima] removed custom handling of keywords that are already part of KSyntaxHighlighting.
+  * Minor cleanup: * added some missing entries in CHANGELOG * removed empty initializations of QStrings in JuliaLinearAlgebraExtension * removed very noisy debug output in QalculateHighlighter * read the output of qalc in QalculateSession as UTF8 * remove a couple of obsolete includes
+  * Use the flag definition HAVE_EMBEDDED_DOCUMENTATION.
+  * Allow to compile without the dependencies to QtHelp and QtWebEngine that are requried for the embedded documentation only which can be made optional.
+  * More usage of 'auto' in worksheet.cpp and minor cleanup in the debug output.
+  * Fix incorrect removal tabs
+  * When ignoring IPhython's magic functions, don't ignore %variables that is used internally to get the list of variables.
+
+-------------------------------------------------------------------
 Tue Jul  2 13:53:40 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.05.2

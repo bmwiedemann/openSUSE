@@ -16,12 +16,12 @@
 #
 
 
-%define kf6_version 6.0.0
+%define kf6_version 6.3.0
 %define qt6_version 6.6.0
 
 %bcond_without released
 Name:           kruler
-Version:        24.05.2
+Version:        24.08.0
 Release:        0
 Summary:        Screen Ruler
 License:        GPL-2.0-or-later
@@ -35,6 +35,7 @@ BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  qt6-gui-private-devel >= %{qt6_version}
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6Crash) >= %{kf6_version}
 BuildRequires:  cmake(KF6DocTools) >= %{kf6_version}
 BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
 BuildRequires:  cmake(KF6Notifications) >= %{kf6_version}

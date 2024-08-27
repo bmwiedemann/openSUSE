@@ -17,11 +17,12 @@
 
 
 %ifarch %{arm} aarch64 %{ix86} x86_64 %{x86_64} %{riscv}
-%bcond_without kdevelop
+# 07/2024: Integration is currently broken due to kdevelop now using KF6/Qt6 and umbrello not being ported
+%bcond_with kdevelop
 %endif
 %bcond_without released
 Name:           umbrello
-Version:        24.05.2
+Version:        24.08.0
 Release:        0
 Summary:        UML Modeller
 License:        GPL-2.0-only AND GFDL-1.2-only AND GPL-3.0-or-later
@@ -81,12 +82,14 @@ export CXXFLAGS="%{optflags} -fPIC"
 export CFLAGS="%{optflags} -fPIC"
 
 %cmake_kf5 -d build -- -DBUILD_KF5=ON
+
 %cmake_build
 
 %install
 %kf5_makeinstall -C build
 
 %find_lang %{name} --with-man --all-name
+
 %{kf5_find_htmldocs}
 
 %suse_update_desktop_file org.kde.umbrello Development Design

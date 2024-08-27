@@ -16,12 +16,12 @@
 #
 
 
-%define kf6_version 6.0.0
+%define kf6_version 6.3.0
 %define qt6_version 6.6.0
 
 %bcond_without released
 Name:           ksirk
-Version:        24.05.2
+Version:        24.08.0
 Release:        0
 Summary:        Risk-like game by KDE
 License:        GPL-2.0-or-later
@@ -86,6 +86,7 @@ KsirK is a computerized version of a well known strategy game.
 %{_kf6_configkcfgdir}/ksirksettings.kcfg
 %{_kf6_configkcfgdir}/ksirkskineditorsettings.kcfg
 %{_kf6_debugdir}/ksirk.categories
+%{_kf6_debugdir}/ksirk.renamecategories
 %{_kf6_iconsdir}/hicolor/*/apps/ksirk.*
 %{_kf6_knsrcfilesdir}/ksirk.knsrc
 %{_kf6_sharedir}/ksirk/

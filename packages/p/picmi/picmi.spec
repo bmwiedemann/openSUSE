@@ -16,12 +16,12 @@
 #
 
 
-%define kf6_version 6.0.0
+%define kf6_version 6.3.0
 %define qt6_version 6.6.0
 
 %bcond_without released
 Name:           picmi
-Version:        24.05.2
+Version:        24.08.0
 Release:        0
 Summary:        Nonogram Logic game
 License:        GPL-2.0-or-later
@@ -72,6 +72,7 @@ A nonogram logic game by KDE
 %{_kf6_appstreamdir}/org.kde.picmi.appdata.xml
 %{_kf6_bindir}/picmi
 %{_kf6_debugdir}/picmi.categories
+%{_kf6_debugdir}/picmi.renamecategories
 %{_kf6_iconsdir}/hicolor/*/apps/picmi.*
 %{_kf6_sharedir}/picmi/
 

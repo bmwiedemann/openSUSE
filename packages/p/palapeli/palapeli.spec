@@ -16,12 +16,12 @@
 #
 
 
-%define kf6_version 6.0.0
+%define kf6_version 6.3.0
 %define qt6_version 6.6.0
 
 %bcond_without released
 Name:           palapeli
-Version:        24.05.2
+Version:        24.08.0
 Release:        0
 Summary:        Jigsaw puzzle game
 License:        GPL-2.0-or-later
@@ -98,6 +98,7 @@ This package contains the development files for Palapeli.
 %{_kf6_appstreamdir}/org.kde.palapeli.appdata.xml
 %{_kf6_bindir}/palapeli
 %{_kf6_debugdir}/palapeli.categories
+%{_kf6_debugdir}/palapeli.renamecategories
 %{_kf6_iconsdir}/hicolor/*/apps/palapeli.png
 %{_kf6_iconsdir}/hicolor/*/mimetypes/application-x-palapeli.png
 %{_kf6_libdir}/libpala.so.*

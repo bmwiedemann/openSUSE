@@ -16,13 +16,13 @@
 #
 
 
-%define kf6_version 6.0.0
+%define kf6_version 6.3.0
 %define qt6_version 6.6.0
-%define kpim6_version 6.1.2
+%define kpim6_version 6.2.0
 
 %bcond_without released
 Name:           kdepim-addons
-Version:        24.05.2
+Version:        24.08.0
 Release:        0
 Summary:        Addons for KDE PIM applications
 License:        GPL-2.0-only
@@ -131,7 +131,6 @@ themes, and plugins providing extra or advanced functionality.
 %{_kf6_configdir}/kmail.antivirusrc
 %{_kf6_debugdir}/kdepim-addons.categories
 %{_kf6_debugdir}/kdepim-addons.renamecategories
-%{_kf6_iconsdir}/hicolor/scalable/status/*.svg
 %{_kf6_libdir}/libadblockplugin.so.*
 %{_kf6_libdir}/libakonadidatasetools.so.*
 %{_kf6_libdir}/libdkimverifyconfigure.so.*
@@ -149,7 +148,6 @@ themes, and plugins providing extra or advanced functionality.
 %{_kf6_plugindir}/pim6/importwizard/
 %{_kf6_plugindir}/pim6/kaddressbook/
 %{_kf6_plugindir}/pim6/kmail/
-%{_kf6_plugindir}/pim6/korganizer/
 %{_kf6_plugindir}/pim6/libksieve/
 %{_kf6_plugindir}/pim6/mailtransport/
 %{_kf6_plugindir}/pim6/messageviewer/

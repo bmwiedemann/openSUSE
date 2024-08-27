@@ -16,12 +16,12 @@
 #
 
 
-%define kf6_version 6.0.0
+%define kf6_version 6.3.0
 %define qt6_version 6.6.0
 
 %bcond_without released
 Name:           kgoldrunner
-Version:        24.05.2
+Version:        24.08.0
 Release:        0
 Summary:        Action & Puzzle Solving Game
 License:        GPL-2.0-or-later
@@ -71,6 +71,7 @@ KGoldrunner is a game of action and puzzle solving
 %{_kf6_appstreamdir}/org.kde.kgoldrunner.appdata.xml
 %{_kf6_bindir}/kgoldrunner
 %{_kf6_debugdir}/kgoldrunner.categories
+%{_kf6_debugdir}/kgoldrunner.renamecategories
 %{_kf6_iconsdir}/hicolor/*/apps/kgoldrunner.*
 %{_kf6_knsrcfilesdir}/kgoldrunner.knsrc
 %{_kf6_sharedir}/kgoldrunner

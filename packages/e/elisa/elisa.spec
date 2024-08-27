@@ -16,12 +16,12 @@
 #
 
 
-%define kf6_version 6.0.0
+%define kf6_version 6.3.0
 %define qt6_version 6.6.0
 
 %bcond_without released
 Name:           elisa
-Version:        24.05.2
+Version:        24.08.0
 Release:        0
 Summary:        Music player and collection organizer
 License:        LGPL-3.0-or-later
@@ -97,7 +97,6 @@ built and played.
 %files
 %license LICENSES/*
 %doc README.md
-%doc %lang(en) %{_kf6_htmldir}/en/elisa/
 %{_kf6_applicationsdir}/org.kde.elisa.desktop
 %{_kf6_appstreamdir}/org.kde.elisa.appdata.xml
 %{_kf6_bindir}/elisa

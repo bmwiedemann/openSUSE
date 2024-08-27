@@ -18,13 +18,13 @@
 
 %global __requires_exclude qt6qmlimport\\(org\\.kde\\.pim\\.accountwizard\\.*
 
-%define kf6_version 6.0.0
+%define kf6_version 6.3.0
 %define qt6_version 6.6.0
-%define kpim6_version 6.1.2
+%define kpim6_version 6.2.0
 
 %bcond_without released
 Name:           kmail-account-wizard
-Version:        24.05.2
+Version:        24.08.0
 Release:        0
 Summary:        Account wizard for KMail
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -77,6 +77,7 @@ An application which assists you with the configuration of accounts in KMail.
 %files
 %license LICENSES/*
 %{_kf6_applicationsdir}/org.kde.accountwizard.desktop
+%{_kf6_appstreamdir}/org.kde.accountwizard.appdata.xml
 %{_kf6_bindir}/accountwizard
 
 %files lang -f %{name}.lang

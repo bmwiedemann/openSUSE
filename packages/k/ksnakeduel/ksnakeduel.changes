@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Aug 19 07:14:22 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.08.0/
+- Changes since 24.05.2:
+  * KNewStuff config: drop trailing slash from install dir, avoids warnings
+  * Use ellipsis character in manual strings instead of 3 periods
+  * UI string: fix reference to unused name "KSnake", use generic "game"
+  * Set UI marker context to more action, item, title & tooltip strings
+  * KDE CI: require "@same" branch of libkdegames
+  * Enforce passing tests on Windows
+
+-------------------------------------------------------------------
 Tue Jul  2 13:54:52 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.05.2

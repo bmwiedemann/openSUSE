@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Aug 19 07:14:09 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.08.0/
+- Changes since 24.05.2:
+  * Use 6.7 image
+  * Enforce passing tests on all platforms
+  * flatpak: switch to official 6.6 runtime
+  * Bump min required KF6 to 6.0
+  * Use kf6 branch
+  * Reenable flatpak CI support
+  * doc/index.docbook proofreading
+  * Bump patch-level & library (SO) version due to new base Qt/KF version use
+  * Create dedicated Qt6/KF6 branch, drop any Qt5/KF5 support
+- Drop patch, now unneeded:
+  * 0001-Adapt-to-Lib-prefix-removed-from-KompareDiff2-CMake-.patch
+
+-------------------------------------------------------------------
 Tue Apr  9 18:08:47 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.02.2

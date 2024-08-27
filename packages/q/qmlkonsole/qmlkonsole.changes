@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Aug 19 07:14:48 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.08.0/
+- Changes since 24.05.2:
+  * Fix tab spacing with current qqc2-desktop-style
+  * Fix warning for running task not showing up when closing window
+  * Fix terminal focus and virtual keyboard issues
+  * Fix add command dialog not having a header
+  * Enforce passing tests on all platforms
+
+-------------------------------------------------------------------
 Tue Jul  2 13:55:18 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.05.2

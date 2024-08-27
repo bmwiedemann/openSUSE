@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Aug 24 20:14:05 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to bugfix release 24.1.2
+  * This release addresses several issues, including the first
+    events being skipped with input emulation using libEI or a fix
+    with rendering using the UYVY format with the X-Video extension
+    using GLAMOR.
+
+-------------------------------------------------------------------
 Thu Jul 11 13:46:12 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - added version specific requirements for dri3proto, presentproto

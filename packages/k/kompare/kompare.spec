@@ -16,23 +16,21 @@
 #
 
 
-%define kf6_version 6.0.0
+%define kf6_version 6.3.0
 %define qt6_version 6.6.0
 
 %bcond_without released
 Name:           kompare
-Version:        24.02.2
+Version:        24.08.0
 Release:        0
 Summary:        File Comparator
 License:        GPL-2.0-or-later
 URL:            https://apps.kde.org/kompare
-Source:         %{name}-%{version}.tar.xz
+Source0:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        %{name}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-# PATCH-FIX-OPENSUSE
-Patch0:         0001-Adapt-to-Lib-prefix-removed-from-KompareDiff2-CMake-.patch
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF6Codecs) >= %{kf6_version}
@@ -45,7 +43,7 @@ BuildRequires:  cmake(KF6JobWidgets) >= %{kf6_version}
 BuildRequires:  cmake(KF6Parts) >= %{kf6_version}
 BuildRequires:  cmake(KF6TextEditor) >= %{kf6_version}
 BuildRequires:  cmake(KF6WidgetsAddons) >= %{kf6_version}
-BuildRequires:  cmake(KompareDiff2)
+BuildRequires:  cmake(KompareDiff2) >= 6
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
 BuildRequires:  cmake(Qt6PrintSupport) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
@@ -73,7 +71,7 @@ RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 %endif
 export CXXFLAGS="%{optflags} -fPIC"
 export CFLAGS="%{optflags} -fPIC"
-%cmake_kf6 -DBUILD_WITH_QT6:BOOL=TRUE
+%cmake_kf6
 
 %kf6_build
 

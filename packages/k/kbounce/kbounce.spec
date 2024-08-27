@@ -16,12 +16,12 @@
 #
 
 
-%define kf6_version 6.0.0
+%define kf6_version 6.3.0
 %define qt6_version 6.6.0
 
 %bcond_without released
 Name:           kbounce
-Version:        24.05.2
+Version:        24.08.0
 Release:        0
 Summary:        Bounce ball game
 License:        LGPL-2.0-or-later
@@ -76,6 +76,7 @@ finding new and advanced strategies to catch as many balls as possible.
 %{_kf6_appstreamdir}/org.kde.kbounce.appdata.xml
 %{_kf6_bindir}/kbounce
 %{_kf6_debugdir}/kbounce.categories
+%{_kf6_debugdir}/kbounce.renamecategories
 %{_kf6_iconsdir}/hicolor/*/apps/kbounce.*
 %{_kf6_sharedir}/kbounce/
 

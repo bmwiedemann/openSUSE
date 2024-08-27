@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Aug 19 07:13:21 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.08.0/
+- Changes since 24.05.2:
+  * Make it compatible with the Sound Naming spec
+  * AudioCdView: Port to new connect syntax
+  * AudioTrackModel: Clear CDDB data on medium change
+  * JobProgressDialog: Add icons to buttons
+  * LsofWrapperDialog: Add icons to buttons
+  * Update the CD Audio title banner after a CDDB lookup
+  * UI files: use notr="true" instead of old comment="KDE::DoNotExtract"
+  * K3b::Device::debugBitfield: Fix crash when using Qt6 (kde#486314)
+  * Enforce passing tests
+  * Switch to KF6 by default
+  * Fix Qt 5 build
+  * Port away from Qt5Compat
+
+-------------------------------------------------------------------
 Tue Jul  2 13:53:49 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.05.2

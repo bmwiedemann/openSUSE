@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Aug 19 07:14:01 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.08.0/
+- Changes since 24.05.2:
+  * Set up KCrash after KAboutData::setApplicationData()
+  * Add homepage
+  * Try to fix appstreamtest test
+  * Move reply->deleteLater(); at end of method
+  * Add description
+  * Add appdata.xml
+  * We depend against 6.3.0
+  * Not necessary
+  * Fix bug 487882: plaintext HTTP request in kmail-account-wizard (kde#487882)
+  * Use QByteArrayLiteral
+  * Add build-ftime support
+  * Use KIconThemes and KStyleManager if available during build-time
+  * Use i18n context
+  * It compiles fine without deprecated kf methods
+
+-------------------------------------------------------------------
 Tue Jul  2 13:54:31 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.05.2

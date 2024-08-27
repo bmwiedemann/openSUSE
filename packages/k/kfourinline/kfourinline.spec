@@ -16,12 +16,12 @@
 #
 
 
-%define kf6_version 6.0.0
+%define kf6_version 6.3.0
 %define qt6_version 6.6.0
 
 %bcond_without released
 Name:           kfourinline
-Version:        24.05.2
+Version:        24.08.0
 Release:        0
 Summary:        Four Wins game
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later
@@ -77,6 +77,7 @@ Four wins is a two-player board game where you have to align four
 %{_kf6_bindir}/kfourinlineproc
 %{_kf6_configkcfgdir}/kwin4.kcfg
 %{_kf6_debugdir}/kfourinline.categories
+%{_kf6_debugdir}/kfourinline.renamecategories
 %{_kf6_iconsdir}/hicolor/*/*/kfourinline.*
 %{_kf6_sharedir}/kfourinline/
 

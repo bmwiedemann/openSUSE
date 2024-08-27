@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Aug 19 07:14:37 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.08.0/
+- Changes since 24.05.2:
+  * We have only close button
+  * Use @info:placeholder
+  * Not necessary
+  * Fix https://github.com/cmake-lint/cmake-lint issues in CMakeLists.txt files
+  * Add [[nodiscard]] + coding style
+  * Remove Q_DISABLE_COPY
+  * Move BUILD_TESTING in toplevel
+  * USe @action:button
+  * Add build-ftime support
+  * Use label context
+  * Add @info:tooltip
+  * Add QPushbutton i18n context
+  * Add context
+  * Use ellipsis character instead of three dots in UI strings
+  * It compiles fine without deprecated kf methods
+
+-------------------------------------------------------------------
 Tue Jul  2 13:55:06 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.05.2
