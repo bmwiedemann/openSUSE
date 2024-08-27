@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Aug 25 16:52:01 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.9.0
+  * residfp: use c++11 threads for building filter tables.
+  * residfp: code modernization and minor performance optimizations
+  * Performance optimizations.
+
+-------------------------------------------------------------------
 Sat Jun 15 12:32:28 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.8.0
