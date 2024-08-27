@@ -1,0 +1,14 @@
+---
+ src/client.c |    1 +
+ 1 file changed, 1 insertion(+)
+
+--- a/src/client.c
++++ b/src/client.c
+@@ -46,6 +46,7 @@
+ 
+ #include "../config.h"
+ #include "common.h"
++#include "serverconfig.h"
+ 
+ #define DBUS_RETRY_INTERVAL_S 10
+ 

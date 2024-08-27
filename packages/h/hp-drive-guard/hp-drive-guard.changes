@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Aug 23 15:19:19 UTC 2024 - Takashi Iwai <tiwai@suse.com>
+
+- Fix the build with gcc14:
+  hp-drive-guard-gcc14-fix.patch
+- Move COPYING to license section
+
+-------------------------------------------------------------------
 Thu Feb 22 07:52:31 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.

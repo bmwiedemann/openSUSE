@@ -1,7 +1,7 @@
 #
 # spec file for package hp-drive-guard
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -60,7 +60,7 @@ PreReq:         %insserv_prereq
 Version:        0.3.12
 Release:        0
 Summary:        HP DriveGuard for SUSE
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Hardware/Mobile
 Source:         hp-drive-guard-%{version}.tar.bz2
 Source1:        hp-drive-guard.service
@@ -68,7 +68,8 @@ Patch1:         0001-Fix-misc-compile-warnings.patch
 Patch2:         0002-Fix-build-with-the-new-libnotify.patch
 Patch3:         use-new-polkit.diff
 Patch4:         use-gtk3.diff
-Url:            http://www.gnome.org
+Patch5:         hp-drive-guard-gcc14-fix.patch
+URL:            http://www.gnome.org
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
@@ -82,6 +83,7 @@ Authors:
     Hans Petter Jansson <hpj@suse.com>
 
 %lang_package
+
 %prep
 %setup -q
 %patch -P 1 -p1
@@ -92,6 +94,7 @@ Authors:
 %if %{use_gtk3}
 %patch -P 4 -p1
 %endif
+%patch -P 5 -p1
 
 %if %use_upower
 %define pm_method	upower
@@ -156,7 +159,8 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(-,root,root)
-%doc AUTHORS COPYING ChangeLog NEWS README
+%doc AUTHORS ChangeLog NEWS README
+%license COPYING
 %config(noreplace) /etc/*.conf
 %{_bindir}/*
 %{_sbindir}/*
