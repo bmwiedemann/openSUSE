@@ -18,14 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-cognitiveservices-language-luis
-Version:        0.7.0
+Version:        0.7.1
 Release:        0
 Summary:        Microsoft Azure Cognitive Services LUIS Client Library
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/Azure/azure-sdk-for-python
-Source:         https://files.pythonhosted.org/packages/source/a/azure-cognitiveservices-language-luis/azure-cognitiveservices-language-luis-%{version}.zip
-Source1:        LICENSE.txt
+Source:         https://files.pythonhosted.org/packages/source/a/azure-cognitiveservices-language-luis/azure-cognitiveservices-language-luis-%{version}.tar.gz
 BuildRequires:  %{python_module azure-cognitiveservices-language-nspkg >= 3.0.0}
 BuildRequires:  %{python_module azure-cognitiveservices-nspkg >= 3.0.0}
 BuildRequires:  %{python_module azure-nspkg >= 3.0.0}
@@ -34,13 +33,12 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  unzip
 Requires:       python-azure-cognitiveservices-language-nspkg >= 3.0.0
 Requires:       python-azure-cognitiveservices-nspkg >= 3.0.0
 Requires:       python-azure-nspkg >= 3.0.0
-Requires:       python-msrest >= 0.5.0
+Requires:       python-msrest >= 0.6.21
 Requires:       (python-azure-common >= 1.1 with python-azure-common < 2.0.0)
-Requires:       (python-msrestazure >= 0.4.32 with python-msrestazure < 2.0.0)
+Requires:       (python-azure-mgmt-core >= 1.2.0 with python-azure-mgmt-core < 2.0.0)
 Conflicts:      python-azure-sdk <= 2.0.0
 %if 0%{?sle_version} >= 150400
 Obsoletes:      python3-azure-cognitiveservices-language-luis <= 0.7.0
@@ -58,7 +56,6 @@ This package has been tested with Python 2.7, 3.5, 3.6 and 3.7.
 %setup -q -n azure-cognitiveservices-language-luis-%{version}
 
 %build
-install -m 644 %{SOURCE1} %{_builddir}/azure-cognitiveservices-language-luis-%{version}
 %pyproject_wheel
 
 %install
@@ -75,7 +72,7 @@ rm -rf %{buildroot}%{$python_sitelib}/azure/__pycache__
 
 %files %{python_files}
 %doc CHANGELOG.md README.md
-%license LICENSE.txt
+%license LICENSE
 %{python_sitelib}/azure/cognitiveservices/language/luis
 %{python_sitelib}/azure_cognitiveservices_language_luis-*.dist-info
 
