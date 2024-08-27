@@ -1,7 +1,7 @@
 #
 # spec file for package ucm
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -21,14 +21,15 @@ Name:           ucm
 %define xmandir    /usr/share/man
 %define xbindir    /usr/bin
 Summary:        Unicode Font Viewer
-License:        BSD-3-Clause and MIT
+License:        BSD-3-Clause AND MIT
 Group:          System/X11/Utilities
 Version:        0.3
 Release:        0
 Requires:       gnu-unifont
-Url:            http://www.pps.jussieu.fr/~jch
+URL:            http://www.pps.jussieu.fr/~jch
 Source:         http://www.pps.jussieu.fr/~jch/software/files/ucm-0.3.tar.bz2
 Patch0:         ucm-0.3.patch
+Patch1:         ucm-gcc14-fix.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  imake
 BuildRequires:  pkgconfig(x11)
@@ -47,7 +48,7 @@ arbitrary character by pasting it into ucm.
 head -n 20 ucm.c > License
 
 %build
-export CFLAGS="$RPM_OPT_FLAGS" 
+export CFLAGS="$RPM_OPT_FLAGS"
 xmkmf
 make
 
