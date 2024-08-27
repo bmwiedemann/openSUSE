@@ -46,6 +46,7 @@ Patch9:         libunicap-0.9.12-datadirname.patch
 Patch10:        libunicap-bz641623.patch
 Patch12:        libunicap-0.9.12-memerrs.patch
 Patch13:        libunicap-de-encoding.patch
+Patch14:        libunicap-gcc14-fix.patch
 BuildRequires:  alsa-lib-devel
 BuildRequires:  gettext
 BuildRequires:  gtk-doc >= 1.4

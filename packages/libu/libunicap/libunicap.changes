@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug 27 12:49:10 UTC 2024 - Takashi Iwai <tiwai@suse.com>
+
+- Fix the build errors with gcc14:
+  libunicap-gcc14-fix.patch
+
+-------------------------------------------------------------------
 Wed Apr 17 13:15:47 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add libunicap-de-encoding.patch: Fix build with recent gettext:

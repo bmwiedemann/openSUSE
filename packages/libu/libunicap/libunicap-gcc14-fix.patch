@@ -1,0 +1,35 @@
+---
+ cpi/euvccam/euvccam_cpi.c    |    1 +
+ cpi/vid21394/vid21394_base.c |    4 ++--
+ 2 files changed, 3 insertions(+), 2 deletions(-)
+
+--- a/cpi/euvccam/euvccam_cpi.c
++++ b/cpi/euvccam/euvccam_cpi.c
+@@ -33,6 +33,7 @@
+ 
+ #include "unicap_cpi.h"
+ #include "queue.h"
++#include "logging.h"
+ 
+ #include "euvccam_device.h"
+ #include "euvccam_devspec.h"
+--- a/cpi/vid21394/vid21394_base.c
++++ b/cpi/vid21394/vid21394_base.c
+@@ -113,7 +113,7 @@ static unicap_status_t _vid21394_send_fc
+ 						       void *data, 
+ 						       size_t data_length, 
+ 						       void *response, 
+-						       size_t *response_length );
++						       unsigned int *response_length );
+ 
+ static int _vid21394_find_device( unsigned long long sernum, int *port, int *node );
+ 
+@@ -490,7 +490,7 @@ static unicap_status_t _vid21394_send_fc
+ 						       void *data, 
+ 						       size_t data_length, 
+ 						       void *response, 
+-						       size_t *response_length )
++						       unsigned int *response_length )
+ {
+    unsigned long prepared_fcp_command[70];
+ 	
