@@ -139,4 +139,32 @@
     <comment></comment>
     <requestid>1156002</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>2e41e98b97e1d6f74413a26f5178385f</srcmd5>
+    <version>1.12.0</version>
+    <time>1724780351</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.12.0:
+  * Bug fixes:
+    + [AVRO-1318]: Python schema should store fingerprints
+    + [AVRO-3622]: Python compatibility check fails if record with and
+      without namespace are compared
+    + [AVRO-3659]: Typo in python example
+    + [AVRO-3667]: [Python] Python 3.10 CI test fails since a while
+    + [AVRO-3669]: Missing py.typed file
+    + [AVRO-3861]: [Build] Add RAT exclusions for python docs
+    + [AVRO-3866]: [Build][Python] Files are leftover after a build
+  * Improvements:
+    + [AVRO-312]: Generate documentation for Python with Sphinx
+    + [AVRO-1938]: Python support for generating canonical forms of schema
+    + [AVRO-3879]: [Build][Python] Fix ./build.sh clean to remove the
+      generated Python documents
+    + [AVRO-3977]: Fix failing typecheck in Python 3.12
+  * Tests:
+    + [AVRO-3696]: [Python] Replace tox-wheel with upstream tox 4
+  * Tasks:
+    + [AVRO-3808]: Drop support for Python 3.6, add Pypy 3.8-3.10
+- Switch to pyproject and pyunittest macros.</comment>
+    <requestid>1196150</requestid>
+  </revision>
 </revisionlist>

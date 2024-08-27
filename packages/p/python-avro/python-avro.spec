@@ -18,22 +18,20 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-avro
-Version:        1.11.3
+Version:        1.12.0
 Release:        0
 Summary:        A serialization and RPC framework for Python
 License:        Apache-2.0
-Group:          Development/Languages/Python
 URL:            https://avro.apache.org/
 Source:         https://files.pythonhosted.org/packages/source/a/avro/avro-%{version}.tar.gz
-BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
-Requires:       python-Twisted
-Requires:       python-zope.interface
-Suggests:       python-python-snappy
 BuildArch:      noarch
 %python_subpackages
 
@@ -46,17 +44,17 @@ This package contains the python implementation of Avro.
 sed -i '1{\@^#!/usr/bin/env python@d}' avro/*.py avro/tether/*.py avro/test/*.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/avro
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# test_server_with_path: tries to connect to apache.org
-# test_minimum_speed is not stable in OBS
-%pytest -k "not test_server_with_path and not test_minimum_speed"
+# Only contains test_server_with_path; tries to connect to apache.org
+rm avro/test/test_ipc.py
+%pyunittest discover -v
 
 %post
 %python_install_alternative avro
@@ -67,6 +65,6 @@ sed -i '1{\@^#!/usr/bin/env python@d}' avro/*.py avro/tether/*.py avro/test/*.py
 %files %{python_files}
 %python_alternative %{_bindir}/avro
 %{python_sitelib}/avro
-%{python_sitelib}/avro-%{version}-py*.egg-info
+%{python_sitelib}/avro-%{version}.dist-info
 
 %changelog
