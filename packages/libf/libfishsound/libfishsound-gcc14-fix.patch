@@ -1,0 +1,72 @@
+---
+ src/examples/fishsound-decenc.c   |    2 +-
+ src/examples/fishsound-decode.c   |    2 +-
+ src/examples/fishsound-identify.c |    2 +-
+ src/examples/fishsound-info.c     |    2 +-
+ src/libfishsound/flac.c           |    4 ++--
+ 5 files changed, 6 insertions(+), 6 deletions(-)
+
+--- a/src/examples/fishsound-decenc.c
++++ b/src/examples/fishsound-decenc.c
+@@ -155,7 +155,7 @@ fs_encdec_new (char * infilename, char *
+   ed->oggz_in = oggz_open (infilename, OGGZ_READ);
+   ed->oggz_out = oggz_open (outfilename, OGGZ_WRITE);
+ 
+-  oggz_set_read_callback (ed->oggz_in, -1, read_packet, ed);
++  oggz_set_read_callback (ed->oggz_in, -1, (OggzReadPacket)read_packet, ed);
+   ed->serialno = oggz_serialno_new (ed->oggz_out);
+ 
+   ed->decoder = fish_sound_new (FISH_SOUND_DECODE, NULL);
+--- a/src/examples/fishsound-decode.c
++++ b/src/examples/fishsound-decode.c
+@@ -136,7 +136,7 @@ main (int argc, char ** argv)
+     exit (1);
+   }
+ 
+-  oggz_set_read_callback (oggz, -1, read_packet, fsound);
++  oggz_set_read_callback (oggz, -1, (OggzReadPacket)read_packet, fsound);
+ 
+   while ((n = oggz_read (oggz, 1024)) > 0);
+ 
+--- a/src/examples/fishsound-identify.c
++++ b/src/examples/fishsound-identify.c
+@@ -98,7 +98,7 @@ main (int argc, char ** argv)
+     exit (1);
+   }
+ 
+-  oggz_set_read_callback (oggz, -1, read_packet, NULL);
++  oggz_set_read_callback (oggz, -1, (OggzReadPacket)read_packet, NULL);
+ 
+   while ((n = oggz_read (oggz, 1024)) > 0);
+ 
+--- a/src/examples/fishsound-info.c
++++ b/src/examples/fishsound-info.c
+@@ -114,7 +114,7 @@ main (int argc, char ** argv)
+     exit (1);
+   }
+ 
+-  oggz_set_read_callback (oggz, -1, read_packet, fsound);
++  oggz_set_read_callback (oggz, -1, (OggzReadPacket)read_packet, fsound);
+ 
+   while ((n = oggz_read (oggz, 1024)) > 0);
+ 
+--- a/src/libfishsound/flac.c
++++ b/src/libfishsound/flac.c
+@@ -106,7 +106,7 @@ fs_flac_command (FishSound * fsound, int
+ #if FS_DECODE
+ static FLAC__StreamDecoderReadStatus
+ fs_flac_read_callback(const FLAC__StreamDecoder *decoder,
+-                      FLAC__byte buffer[], unsigned int *bytes,
++                      FLAC__byte buffer[], unsigned long *bytes,
+                       void *client_data)
+ {
+   FishSound* fsound = (FishSound*)client_data;
+@@ -346,7 +346,7 @@ dec_err:
+ #if FS_ENCODE
+ static FLAC__StreamEncoderWriteStatus
+ fs_flac_enc_write_callback(const FLAC__StreamEncoder *encoder,
+-                           const FLAC__byte buffer[], unsigned bytes,
++                           const FLAC__byte buffer[], unsigned long bytes,
+                            unsigned samples, unsigned current_frame,
+                            void *client_data)
+ {

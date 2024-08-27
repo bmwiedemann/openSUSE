@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Aug 27 12:01:31 UTC 2024 - Takashi Iwai <tiwai@suse.com>
+
+- Fix the build errors with gcc14:
+  libfishsound-gcc14-fix.patch
+- Move COPYING to license section
+
+-------------------------------------------------------------------
 Sat Sep  2 17:01:46 UTC 2017 - jengelh@inai.de
 
 - Trim descriptions for size. RPM group fix.

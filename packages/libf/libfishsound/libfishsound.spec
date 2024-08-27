@@ -1,7 +1,7 @@
 #
 # spec file for package libfishsound
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,7 +13,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -24,8 +24,9 @@ Release:        0
 Summary:        Wrapper library for audio decoding and encoding
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
-Url:            https://www.xiph.org/fishsound/
+URL:            https://www.xiph.org/fishsound/
 Source:         https://downloads.xiph.org/releases/libfishsound/libfishsound-%{version}.tar.gz
+Patch1:         libfishsound-gcc14-fix.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
@@ -76,7 +77,7 @@ This subpackage contains libraries and header files for developing
 applications that want to make use of libfishsound.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %configure \
@@ -94,7 +95,8 @@ rm -rf "%{buildroot}%{_datadir}/doc"
 
 %files -n %{name}%{soname}
 %defattr(-,root,root,-)
-%doc AUTHORS ChangeLog COPYING README
+%doc AUTHORS ChangeLog README
+%license COPYING
 %{_libdir}/libfishsound.so.%{soname}
 %{_libdir}/libfishsound.so.%{soname}.*
 
