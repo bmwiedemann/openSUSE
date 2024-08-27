@@ -20,7 +20,7 @@
 %global homedir %{_datadir}/%{name}%{?maven_version_suffix}
 %global confdir %{_sysconfdir}/%{name}%{?maven_version_suffix}
 Name:           maven
-Version:        3.9.8
+Version:        3.9.9
 Release:        0
 Summary:        Java project management and project comprehension tool
 # maven itself is ASL 2.0
@@ -31,7 +31,7 @@ URL:            https://maven.apache.org/
 Source0:        http://archive.apache.org/dist/%{name}/%{name}-3/%{version}/source/apache-%{name}-%{version}-src.tar.gz
 Source1:        maven-bash-completion
 Source2:        mvn.1
-Source10:       apache-%{name}-%{version}-build.tar.xz
+Source10:       apache-%{name}-build.tar.xz
 Patch1:         0001-Adapt-mvn-script.patch
 # Downstream-specific, avoids dependency on logback
 Patch2:         0002-Invoke-logback-via-reflection.patch

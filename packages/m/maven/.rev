@@ -208,4 +208,12 @@ put into adi:2</comment>
     <comment>3.9.8 (rebuild also xmvn when integrated)</comment>
     <requestid>1181478</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>161f8b54ab167c6332469e0da9d682a8</srcmd5>
+    <version>3.9.9</version>
+    <time>1724780372</time>
+    <user>anag+factory</user>
+    <comment>3.9.9</comment>
+    <requestid>1196271</requestid>
+  </revision>
 </revisionlist>

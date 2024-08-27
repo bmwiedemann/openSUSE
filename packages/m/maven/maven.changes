@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Aug 27 08:46:19 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 3.9.9
+  * Bug
+    + MNG-8159: Fix search for topDirectory when using -f / --file
+    for Maven 3.9.x
+    + MNG-8165: Maven does not find extensions for -f when current
+      dir is root
+    + MNG-8177: Warning 
+      "'dependencyManagement.dependencies.dependency.systemPath' for
+      com.sun:tools:jar refers to a non-existing file
+      C:\Temp\jdk-11.0.23\..\lib\tools.jar"
+    + MNG-8178: Profile activation based on OS properties is broken
+      for "mvn site"
+    + MNG-8180: Resolver will blindly assume it is deploying a
+      plugin by presence of META-INF/maven/plugins.xml in JAR
+    + MNG-8182: Missing or mismatching Trusted Checksum for some
+      artifacts is not properly reported
+    + MNG-8188: [REGRESSION] Property not resolved in profile
+      pluginManagement
+  * Task
+    + MNG-8206: Remove Maven 2.1 (v 2.0) compatibility bits
+
+-------------------------------------------------------------------
 Tue Jun 18 08:12:47 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream version 3.9.8
