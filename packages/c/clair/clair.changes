@@ -1,0 +1,20 @@
+-------------------------------------------------------------------
+Fri May 31 12:27:45 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 4.7.4:
+  * chore: 4.7.4 changelog bump
+  * chore: Add merge step when creating release binaries
+  * chore: update go version for release
+  * chore: update claircore to v1.5.27
+  * chore: update go version
+  * Dockerfile: remove sh loop
+  * cicd: add container version skew check
+  * cicd: update testing workflow
+  * cicd: don't upload workspace on failure
+  * cicd: change version specifiers to be major-version only
+
+-------------------------------------------------------------------
+Fri May 31 12:27:30 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- new package clair: Vulnerability Static Analysis for Containers,
+  including the clairctl CLI

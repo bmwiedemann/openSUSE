@@ -1,0 +1,8 @@
+[Unit]
+Description=Clair Vulnerability Scanner
+
+[Service]
+ExecStart=clair -mode watcher -conf /etc/clair/config.yaml
+
+[Install]
+WantedBy=multi-user.target
