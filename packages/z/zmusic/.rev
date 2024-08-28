@@ -84,4 +84,12 @@
   (upstream) (forwarded request 1138814 from dirkmueller)</comment>
     <requestid>1138826</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>148aef2f3779ffc11ac85e760cc0bae6</srcmd5>
+    <version>1.1.13</version>
+    <time>1724873420</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.1.13:</comment>
+    <requestid>1196367</requestid>
+  </revision>
 </revisionlist>

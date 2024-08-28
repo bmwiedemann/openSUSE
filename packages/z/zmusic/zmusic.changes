@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Aug 28 00:51:23 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Add system-zlib.patch
+
+-------------------------------------------------------------------
+Tue Aug 27 08:16:10 UTC 2024 - ming li <mli@suse.com>
+
+- update to 1.1.13:
+  * Fixed incorrect number of bytes being reported to FluidSynth
+    when relaying a SysEx message
+  * Added a GS DT1 MODE SET SysEx message after GM System Enable
+    SysEx message to instruct the synth to switch to GS mode,
+    if one is supported.
+  * Updated fluidsynth chorus and reverb setting limits.
+
+-------------------------------------------------------------------
 Mon Jan 15 10:54:40 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.1.12:

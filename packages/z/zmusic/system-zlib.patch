@@ -1,0 +1,51 @@
+From fb399bbf345f41e385f9d864875cb0f4967ff213 Mon Sep 17 00:00:00 2001
+From: Jan Engelhardt <jengelh@inai.de>
+Date: Wed, 28 Aug 2024 02:48:15 +0200
+Subject: [PATCH] Revert to zlib
+
+---
+ source/CMakeLists.txt     |    2 +-
+ source/zmusic/zmusic.cpp  |    2 +-
+ thirdparty/CMakeLists.txt |    6 +++++-
+ 3 files changed, 7 insertions(+), 3 deletions(-)
+
+Index: source/CMakeLists.txt
+===================================================================
+--- source/CMakeLists.txt.orig
++++ source/CMakeLists.txt
+@@ -127,7 +127,7 @@ if(WIN32)
+ 	)
+ endif()
+ 
+-target_link_libraries(zmusic-obj INTERFACE dumb gme miniz ${CMAKE_DL_LIBS})
++target_link_libraries(zmusic-obj INTERFACE dumb gme ZLIB::ZLIB ${CMAKE_DL_LIBS})
+ 
+ target_include_directories(zmusic-obj
+ INTERFACE
+Index: source/zmusic/zmusic.cpp
+===================================================================
+--- source/zmusic/zmusic.cpp.orig
++++ source/zmusic/zmusic.cpp
+@@ -36,7 +36,7 @@
+ #include <stdint.h>
+ #include <vector>
+ #include <string>
+-#include <miniz.h>
++#include <zlib.h>
+ #include "m_swap.h"
+ #include "zmusic_internal.h"
+ #include "midiconfig.h"
+Index: thirdparty/CMakeLists.txt
+===================================================================
+--- thirdparty/CMakeLists.txt.orig
++++ thirdparty/CMakeLists.txt
+@@ -1,4 +1,8 @@
+-add_subdirectory(miniz)
++find_package(ZLIB QUIET)
++message(STATUS "Using system zlib, includes found at ${ZLIB_INCLUDE_DIRS}")
++set_property(TARGET ZLIB::ZLIB PROPERTY IMPORTED_GLOBAL TRUE)
++determine_package_config_dependency(ZMUSIC_PACKAGE_DEPENDENCIES TARGET ZLIB::ZLIB MODULE ZLIB)
++
+ # GME is not currently released in a way that's conducive to using as a system
+ # library. Nevertheless at least one person tried, and so the ability to use a
+ # system copy exists soley to placate people following distro guidelines to the

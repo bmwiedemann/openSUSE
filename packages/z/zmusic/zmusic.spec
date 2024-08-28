@@ -17,7 +17,7 @@
 
 
 Name:           zmusic
-Version:        1.1.12
+Version:        1.1.13
 Release:        0
 Summary:        ZDoom component library for music handling
 License:        GPL-3.0-only
@@ -28,7 +28,8 @@ URL:            https://zdoom.org/
 Source:         https://github.com/ZDoom/ZMusic/archive/%version.tar.gz
 Patch1:         system-fluidsynth.patch
 Patch2:         system-gme.patch
-Patch3:         dumb-dumb.patch
+Patch3:         system-zlib.patch
+Patch4:         dumb-dumb.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkg-config
