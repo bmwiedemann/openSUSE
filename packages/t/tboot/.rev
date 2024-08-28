@@ -701,4 +701,21 @@
   upstream tarball.</comment>
     <requestid>1183112</requestid>
   </revision>
+  <revision rev="50" vrev="3">
+    <srcmd5>1ff39e8b2aac93f83c977d0919111ef8</srcmd5>
+    <version>20210614_1.11.4</version>
+    <time>1724873545</time>
+    <user>dimstar_suse</user>
+    <comment>- add tboot-fix-alloc-size-warning.patch: newest GCC spits out this error:
+  ```
+  pconf_legacy.c: In function ‘create’:
+  pconf_legacy.c:327:16: error: allocation of insufficient size ‘20’ for type ‘tb_hash_t’ with size ‘64’ [-Werror=alloc-size]
+  327 |         digest = malloc(SHA1_DIGEST_SIZE);
+      |                ^
+  ```
+  There's a union data type behind this. It's not an actual error. To get rid
+  of the warning, the patch allocates the full union size, thereby wasting a
+  bit of memory.</comment>
+    <requestid>1196424</requestid>
+  </revision>
 </revisionlist>

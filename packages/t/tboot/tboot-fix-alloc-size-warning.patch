@@ -1,0 +1,13 @@
+Index: tboot-1.11.4/lcptools-v2/pconf_legacy.c
+===================================================================
+--- tboot-1.11.4.orig/lcptools-v2/pconf_legacy.c
++++ tboot-1.11.4/lcptools-v2/pconf_legacy.c
+@@ -324,7 +324,7 @@ static lcp_policy_element_t *create(void
+             ERROR("Error: no pcrs were selected.\n");
+             return NULL;
+         }
+-        digest = malloc(SHA1_DIGEST_SIZE);
++        digest = malloc(sizeof(*digest));
+         if (digest == NULL) {
+             ERROR("Error: failed to allocate memory for digest buffer.\n");
+             return NULL;

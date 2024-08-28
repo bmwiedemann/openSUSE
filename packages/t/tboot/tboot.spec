@@ -31,6 +31,7 @@ Patch4:         tboot-grub2-fix-xen-submenu-name.patch
 Patch7:         tboot-distributor.patch
 Patch8:         tboot-grub2-refuse-secure-boot.patch
 Patch9:         tboot-bsc#1207833-copy-mbi.patch
+Patch10:        tboot-fix-alloc-size-warning.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 ExclusiveArch:  %{ix86} x86_64
 BuildRequires:  openssl-devel

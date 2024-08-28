@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Aug 28 08:27:34 UTC 2024 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- add tboot-fix-alloc-size-warning.patch: newest GCC spits out this error:
+
+  ```
+  pconf_legacy.c: In function ‘create’:
+  pconf_legacy.c:327:16: error: allocation of insufficient size ‘20’ for type ‘tb_hash_t’ with size ‘64’ [-Werror=alloc-size]
+  327 |         digest = malloc(SHA1_DIGEST_SIZE);
+      |                ^
+  ```
+
+  There's a union data type behind this. It's not an actual error. To get rid
+  of the warning, the patch allocates the full union size, thereby wasting a
+  bit of memory.
+
+-------------------------------------------------------------------
 Tue Jun 25 07:34:57 UTC 2024 - Matthias Gerstner <matthias.gerstner@suse.com>
 
 - add tboot-bsc#1207833-copy-mbi.patch: correctly move MBI from a lower
