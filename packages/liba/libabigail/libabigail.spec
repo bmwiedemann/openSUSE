@@ -1,7 +1,7 @@
 #
 # spec file for package libabigail
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,18 +17,16 @@
 
 
 Name:           libabigail
-%define lname   libabigail3
-Version:        2.4
+%define lname   libabigail4
+Version:        2.5
 Release:        0
 Summary:        Application Binary Interface Generic Analysis and Instrumentation Library
-License:        GPL-3.0-or-later AND LGPL-2.0-or-later AND LGPL-3.0-or-later
+License:        Apache-2.0 WITH LLVM-exception
 Group:          Development/Libraries/C and C++
 URL:            https://sourceware.org/libabigail/
 
 Source:         http://mirrors.kernel.org/sourceware/libabigail/%name-%version.tar.xz
-Patch1:         no-tests.diff
-BuildRequires:  autoconf >= 2.63
-BuildRequires:  automake >= 1.11.1
+BuildRequires:  binutils-devel
 BuildRequires:  dpkg
 BuildRequires:  gcc-c++ >= 4.7
 BuildRequires:  libbpf-devel
@@ -49,7 +47,6 @@ artifacts, such as types, variable, fonctions and declarations
 
 %package -n %lname
 Summary:        Application Binary Interface Generic Analysis and Instrumentation Library
-License:        LGPL-3.0-or-later
 Group:          System/Libraries
 
 %description -n %lname
@@ -62,7 +59,6 @@ interesting conclusions about these differences.
 
 %package devel
 Summary:        Development files for the ABI-relevant artifact library
-License:        LGPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 Requires:       %lname = %version
 
@@ -77,7 +73,6 @@ This subpackage contains the files needed to build programs with ABIGAIL.
 
 %package tools
 Summary:        Utilities to inspect ABI-relevant artifacts
-License:        LGPL-3.0-or-later
 Group:          Development/Tools/Other
 
 %description tools
@@ -92,7 +87,6 @@ interesting conclusions about these differences.
 %autosetup -p1
 
 %build
-autoreconf -fiv
 # includedir intentional, cf. bugzilla.opensuse.org/795968
 %configure --includedir="%_includedir/%name" --docdir="%_docdir/%name" \
 	--disable-static --enable-cxx11 --disable-silent-rules
@@ -109,25 +103,24 @@ pushd doc/manuals
 make DESTDIR="%buildroot" install-man-and-info-doc
 popd
 
-%post   -n %lname -p /sbin/ldconfig
-%postun -n %lname -p /sbin/ldconfig
+%ldconfig_scriptlets -n %lname
 
 %files -n %lname
-%_libdir/libabigail.so.3*
+%_libdir/libabigail.so.*
 
 %files devel
 %_includedir/%name/
 %_libdir/libabigail.so
 %_libdir/pkgconfig/*.pc
 %_datadir/aclocal/
-%_mandir/man7/libabigail.7.gz
+%_mandir/man7/libabigail.7*
 
 %files tools
 %license LICENSE.txt
 %_bindir/abi*
 %_bindir/kmidiff
 %_mandir/man1/abi*.1*
-%_infodir/abigail.info.gz
+%_infodir/abigail.info*
 %_libdir/%name/
 
 %changelog

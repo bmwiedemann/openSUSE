@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Aug 28 08:08:49 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.5
+  * Resolve SIGABRT when setting TUs for unique types [#31045]
+  * Add support for pointer-to-member types [#30260]
+  * abidw: resolve SIGABRT involving removed member declarations
+    [#31236]
+  * Resolve SIGABRT involving opaque types [#31279]
+  * abidiff: stop complaining about data members moving to base
+    class [#31513]
+  * Support fn symbol aliasing a var symbol [#29160]
+  * Fix type suppression tactics for webkit2gtk3 [#31646]
+- Drop no-tests.diff (this is from a time when the source package
+  was re-constructed via pre_checkin.sh/_service)
+- Enable CTF frontend
+
+-------------------------------------------------------------------
 Mon Oct 30 04:38:53 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.4
