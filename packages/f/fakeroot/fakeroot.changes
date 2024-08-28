@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Aug 28 08:31:20 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.36
+  * Fix build with gcc-14. (Closes: #1074945)
+  * Fix FTBFS on armel, armhf, by undefining the t64 flags in communicate.h
+    Upload to experimental, for additional testing.
+    (Closes: #1065552)
+  * New fix for the previous FTBFS on armel, armhf. Work around glibc headers
+    aliasing symbols we need to redefine.
+    (Closes: #1065552)
+  * Fix ABI mismatch on i386, a 32bit arch _without_ the time_t64 ABI
+    break.
+  * Fix wrappers for fstatat64 et al missing. (Closes: #1078655)
+    Add t.perlstat test. Thanks to Johannes Schauer Marin Rodrigues
+    and Niels Thykier for help with debugging the problem.
+- Drop fakeroot-C99.patch which has been merged upstream
+
+-------------------------------------------------------------------
 Fri Jul 26 16:05:25 UTC 2024 - Martin Jambor <mjambor@suse.com>
 
 - Aded fakeroot-C99.patch to fix C99 violations which prevent building

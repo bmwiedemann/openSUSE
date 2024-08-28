@@ -17,7 +17,7 @@
 
 
 Name:           fakeroot
-Version:        1.35.1
+Version:        1.36
 Release:        0
 Summary:        Wrapper that gives a fake root environment
 License:        GPL-3.0-or-later
@@ -27,8 +27,6 @@ Source0:        http://ftp.debian.org/debian/pool/main/f/fakeroot/%{name}_%{vers
 Source99:       baselibs.conf
 # PATCH-FIX-UPSTREAM fakeroot-1.21-fix-shell-in-fakeroot.patch (deb#828810)
 Patch0:         fakeroot-1.21-fix-shell-in-fakeroot
-# PATCH-FIX-UPSTREAM fakeroot-C99.patch - fix C99 issues preventing building with gcc 14
-Patch1:         fakeroot-C99.patch
 BuildRequires:  autoconf >= 2.71
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -43,7 +41,7 @@ BuildRequires:  po4a
 BuildRequires:  sharutils
 BuildRequires:  user(daemon)
 Requires(post): update-alternatives
-Requires(preun):update-alternatives
+Requires(preun): update-alternatives
 
 %description
 fakeroot runs a command in an environment wherein it appears to have
