@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug 27 13:29:46 UTC 2024 - Dominik Heidler <dheidler@suse.de>
+
+- update to 3.99.5 Service Pack 16
+  * add REINER SCT cyberJack RFID standard EN
+
+-------------------------------------------------------------------
 Thu Feb 29 15:04:23 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.
