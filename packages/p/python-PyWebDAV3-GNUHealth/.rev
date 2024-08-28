@@ -35,4 +35,15 @@
     <comment></comment>
     <requestid>1143995</requestid>
   </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>091ae818782ee8a632f873d501e7fd12</srcmd5>
+    <version>0.12.0</version>
+    <time>1724873596</time>
+    <user>dimstar_suse</user>
+    <comment>- updated litmus to version 0.15
+  litmus_version.patch added
+  
+</comment>
+    <requestid>1196446</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug 28 07:07:09 UTC 2024 - Axel Braun <axel.braun@gmx.de>
+
+- updated litmus to version 0.15
+  litmus_version.patch added
+  
+-------------------------------------------------------------------
 Sun Feb  4 12:12:34 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Add pywebdav-server-configparser.patch: Replace long deprecated

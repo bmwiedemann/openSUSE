@@ -1,0 +1,12 @@
+diff -U 3 -dHrN -- a/test/test_litmus.py b/test/test_litmus.py
+--- a/test/test_litmus.py	2023-07-14 17:28:43.000000000 +0200
++++ b/test/test_litmus.py	2024-08-28 09:23:13.039821286 +0200
+@@ -27,7 +27,7 @@
+ 
+     def _ensure_litmus(self):
+ 
+-        litmus_dist = os.path.join(testdir, 'litmus-0.13')
++        litmus_dist = os.path.join(testdir, 'litmus-0.15')
+         self.litmus = os.path.join(litmus_dist, 'litmus')
+         if not os.path.exists(self.litmus):
+             print('Compiling litmus test suite')
