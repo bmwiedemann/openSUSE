@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Aug 28 03:47:09 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-pytest-8.patch:
+  * Support pytest 8.
+- Switch to autosetup and pyproject macros.
+- No more greedy globs in %files.
+
+-------------------------------------------------------------------
 Tue Sep 13 14:57:40 UTC 2022 - pgajdos@suse.com
 
 - version update to 2.0.0

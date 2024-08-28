@@ -43,4 +43,15 @@
     <comment></comment>
     <requestid>1003394</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>fb301ee4022270611e314fe16c492858</srcmd5>
+    <version>2.0.0</version>
+    <time>1724873434</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch support-pytest-8.patch:
+  * Support pytest 8.
+- Switch to autosetup and pyproject macros.
+- No more greedy globs in %files.</comment>
+    <requestid>1196378</requestid>
+  </revision>
 </revisionlist>

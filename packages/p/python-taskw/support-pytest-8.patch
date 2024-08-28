@@ -1,0 +1,105 @@
+From 6d5af74c29261035c95caec1c18002b2cd6195b7 Mon Sep 17 00:00:00 2001
+From: Jochen Sprickerhof <jspricke@debian.org>
+Date: Thu, 28 Mar 2024 08:17:39 +0100
+Subject: [PATCH] Fix tests with new pytest
+
+Use unittest.TestCase and __test__ to ignore test base class.
+---
+ taskw/test/test_datas.py     | 8 ++++++--
+ taskw/test/test_recursive.py | 5 +++--
+ taskw/test/test_utils.py     | 5 +++--
+ 3 files changed, 12 insertions(+), 6 deletions(-)
+
+diff --git a/taskw/test/test_datas.py b/taskw/test/test_datas.py
+index 1a3667c..21b4441 100644
+--- a/taskw/test/test_datas.py
++++ b/taskw/test/test_datas.py
+@@ -6,6 +6,7 @@
+ 
+ import pytest
+ 
++from unittest import TestCase
+ from taskw import TaskWarriorDirect, TaskWarriorShellout
+ 
+ 
+@@ -16,8 +17,9 @@
+         'uuid': "c1c431ea-f0dc-4683-9a20-e64fcfa65fd1"}
+ 
+ 
+-class _BaseTestDB(object):
+-    def setup(self):
++class _BaseTestDB(TestCase):
++    __test__ = False
++    def setUp(self):
+ 
+         # Sometimes the 'task' command line tool is not installed.
+         if self.should_skip():
+@@ -330,6 +332,7 @@ def test_load_tasks_with_one_each(self):
+ 
+ 
+ class TestDBDirect(_BaseTestDB):
++    __test__ = True
+     class_to_test = TaskWarriorDirect
+ 
+     def test_delete_completed(self):
+@@ -345,6 +348,7 @@ def should_skip(self):
+ 
+ 
+ class TestDBShellout(_BaseTestDB):
++    __test__ = True
+     class_to_test = TaskWarriorShellout
+ 
+     def should_skip(self):
+diff --git a/taskw/test/test_recursive.py b/taskw/test/test_recursive.py
+index 1ab99e1..88519b2 100644
+--- a/taskw/test/test_recursive.py
++++ b/taskw/test/test_recursive.py
+@@ -4,6 +4,7 @@
+ 
+ import pytest
+ 
++from unittest import TestCase
+ from taskw import TaskWarriorShellout
+ 
+ 
+@@ -14,8 +15,8 @@
+         'uuid': "c1c431ea-f0dc-4683-9a20-e64fcfa65fd1"}
+ 
+ 
+-class TestRecursibe(object):
+-    def setup(self):
++class TestRecursibe(TestCase):
++    def setUp(self):
+         if not TaskWarriorShellout.can_use():
+             # Sometimes the 'task' command line tool is not installed.
+             pytest.skip("taskwarrior not installed")
+diff --git a/taskw/test/test_utils.py b/taskw/test/test_utils.py
+index c57dd38..8c6c1df 100644
+--- a/taskw/test/test_utils.py
++++ b/taskw/test/test_utils.py
+@@ -4,6 +4,7 @@
+ import dateutil.tz
+ import pytz
+ 
++from unittest import TestCase
+ from taskw.utils import (
+     convert_dict_to_override_args,
+     decode_task,
+@@ -31,7 +32,7 @@ def shuffled(l):
+     return new
+ 
+ 
+-class TestUtils(object):
++class TestUtils(TestCase):
+ 
+     def test_no_side_effects(self):
+         orig = TASK.copy()
+@@ -187,7 +188,7 @@ def test_convert_dict_to_override_args(self):
+         assert set(actual_overrides) == set(expected_overrides)
+ 
+ 
+-class TestCleanExecArg(object):
++class TestCleanExecArg(TestCase):
+     def test_clean_null(self):
+         assert b"" == clean_ctrl_chars(b"\x00")
+ 
