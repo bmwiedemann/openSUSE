@@ -1,7 +1,18 @@
 -------------------------------------------------------------------
+Wed Aug 28 12:47:11 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- reverted CUDA update version to 560.x.y due to changes in CUDA
+  repository with CUDA 12.6/560.x.y drivers
+
+-------------------------------------------------------------------
+Sun Aug 25 10:16:49 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- For CUDA update version to 560.35.03
+
+-------------------------------------------------------------------
 Mon Aug 12 10:58:26 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
-- Update to 550.107.02 
+- Update to 550.107.02 (boo#1229716)
 
 -------------------------------------------------------------------
 Sat Aug 10 12:13:46 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>

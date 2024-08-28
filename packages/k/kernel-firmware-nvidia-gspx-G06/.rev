@@ -142,4 +142,17 @@ https://nvidia.custhelp.com/app/answers/detail/a_id/5491/~/security-bulletin%3A-
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1194708</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>90c40b685d56f1dd8c577311e9118820</srcmd5>
+    <version>550.107.02</version>
+    <time>1724873664</time>
+    <user>dimstar_suse</user>
+    <comment>- reverted CUDA update version to 560.x.y due to changes in CUDA
+  repository with CUDA 12.6/560.x.y drivers
+
+- For CUDA update version to 560.35.03
+
+- Update to 550.107.02 (boo#1229716)</comment>
+    <requestid>1196990</requestid>
+  </revision>
 </revisionlist>
