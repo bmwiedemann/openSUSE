@@ -132,4 +132,30 @@
   * Use non-deprecated and non-removed assertion methods.</comment>
     <requestid>1144440</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>f1c69a7edf2ef05c0d3bb685b423ee7c</srcmd5>
+    <version>1.2.1</version>
+    <time>1724873425</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.2.1:
+  * New features:
+    + Improve loading and error indicators
+    + Save URL to an individual's LinkedIn profile
+    + Link to GitHub profile
+    + Assign users to permission groups
+    + Configuration for regular expressions in CORS
+    + Dedicated queues in multi-tenancy
+    + Organization aliases
+  * Bug fixes:
+    + Consistent date format for job executions
+    + Match source parameter fixed in recommendations
+    + Organizations aliases in Python client
+    + Change password form fixed
+    + Refetch general settings after they are changed
+    + Profile view displays correct recommendations
+    + Match recommendations job fixed
+- Drop patch use-correct-assertion-methods.patch, included.
+- Refresh all other patches.</comment>
+    <requestid>1196375</requestid>
+  </revision>
 </revisionlist>

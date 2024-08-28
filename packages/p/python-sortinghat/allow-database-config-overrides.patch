@@ -1,7 +1,7 @@
-Index: grimoirelab-sortinghat-0.19.1/config/settings/testing.py
+Index: grimoirelab-sortinghat-1.2.1/config/settings/config_testing.py
 ===================================================================
---- grimoirelab-sortinghat-0.19.1.orig/config/settings/testing.py
-+++ grimoirelab-sortinghat-0.19.1/config/settings/testing.py
+--- grimoirelab-sortinghat-1.2.1.orig/config/settings/config_testing.py
++++ grimoirelab-sortinghat-1.2.1/config/settings/config_testing.py
 @@ -1,3 +1,4 @@
 +import os
  import sys
@@ -30,11 +30,11 @@ Index: grimoirelab-sortinghat-0.19.1/config/settings/testing.py
      }
  }
  
-Index: grimoirelab-sortinghat-0.19.1/config/settings/testing_tenant.py
+Index: grimoirelab-sortinghat-1.2.1/config/settings/config_testing_tenant.py
 ===================================================================
---- grimoirelab-sortinghat-0.19.1.orig/config/settings/testing_tenant.py
-+++ grimoirelab-sortinghat-0.19.1/config/settings/testing_tenant.py
-@@ -5,8 +5,8 @@ from .testing import SQL_MODE, DATABASES
+--- grimoirelab-sortinghat-1.2.1.orig/config/settings/config_testing_tenant.py
++++ grimoirelab-sortinghat-1.2.1/config/settings/config_testing_tenant.py
+@@ -15,8 +15,8 @@ TENANTS_DEDICATED_QUEUES = [t["name"] fo
  DATABASES.update({
      tenant: {
          'ENGINE': 'django.db.backends.mysql',
@@ -45,7 +45,7 @@ Index: grimoirelab-sortinghat-0.19.1/config/settings/testing_tenant.py
          'NAME': tenant,
          'OPTIONS': {
              'charset': 'utf8mb4',
-@@ -16,9 +16,10 @@ DATABASES.update({
+@@ -26,9 +26,10 @@ DATABASES.update({
              'NAME': tenant,
              'CHARSET': 'utf8mb4',
              'COLLATION': 'utf8mb4_unicode_520_ci',
@@ -55,5 +55,5 @@ Index: grimoirelab-sortinghat-0.19.1/config/settings/testing_tenant.py
 -        'PORT': 3306
 +        'PORT': os.environ.get('TEST_SORTINGHAT_DB_PORT', 3306)
      }
-     for tenant in ['tenant_1', 'tenant_2']
+     for tenant in [t["name"] for t in tenants_cfg]
  })

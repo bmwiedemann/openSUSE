@@ -17,7 +17,7 @@
 
 
 Name:           python-sortinghat
-Version:        0.19.1
+Version:        1.2.1
 Release:        0
 Summary:        A tool to manage identities
 License:        GPL-3.0-only
@@ -26,15 +26,13 @@ Source:         https://github.com/chaoss/grimoirelab-sortinghat/archive/refs/ta
 # PATCH-FIX-OPENSUSE Allow overridding the database config
 Patch0:         allow-database-config-overrides.patch
 Patch1:         add-missing-format-calls.patch
-# PATCH-FIX-UPSTREAM gh#chaoss/grimoirelab-sortinghat#855
-Patch2:         use-correct-assertion-methods.patch
 BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry-core}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Django >= 3.2
+Requires:       python-Django >= 4.2
 Requires:       python-Jinja2 >= 3.1
 Requires:       python-PyJWT
 Requires:       python-PyMySQL >= 0.7.0
@@ -62,7 +60,7 @@ Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Jinja2 >= 3.1}
-BuildRequires:  %{python_module Django >= 3.2}
+BuildRequires:  %{python_module Django >= 4.2}
 BuildRequires:  %{python_module PyMySQL >= 0.7.0}
 BuildRequires:  %{python_module PyYAML >= 3.12}
 BuildRequires:  %{python_module SQLAlchemy >= 1.2}
@@ -145,8 +143,8 @@ export TEST_SORTINGHAT_DB_USER=$user
 export TEST_SORTINGHAT_DB_PASSWORD=$pass
 # Broken tests
 rm tests/test_jobs.py
-%python_exec manage.py test --settings=config.settings.testing
-%python_exec manage.py test --settings=config.settings.testing_tenant
+%python_exec manage.py test --settings=config.settings.config_testing
+%python_exec manage.py test --settings=config.settings.config_testing_tenant
 #
 # stopping mariadb
 #

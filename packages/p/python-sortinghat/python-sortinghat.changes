@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Aug 28 03:30:10 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.2.1:
+  * New features:
+    + Improve loading and error indicators
+    + Save URL to an individual's LinkedIn profile
+    + Link to GitHub profile
+    + Assign users to permission groups
+    + Configuration for regular expressions in CORS
+    + Dedicated queues in multi-tenancy
+    + Organization aliases
+  * Bug fixes:
+    + Consistent date format for job executions
+    + Match source parameter fixed in recommendations
+    + Organizations aliases in Python client
+    + Change password form fixed
+    + Refetch general settings after they are changed
+    + Profile view displays correct recommendations
+    + Match recommendations job fixed
+- Drop patch use-correct-assertion-methods.patch, included.
+- Refresh all other patches.
+
+-------------------------------------------------------------------
 Tue Feb  6 04:49:48 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.19.1:
