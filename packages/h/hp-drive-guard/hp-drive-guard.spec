@@ -16,47 +16,9 @@
 #
 
 
-%define new_polkit	(%suse_version >= 1140)
-%define use_upower	(%suse_version > 1120)
-%define use_gtk3	(%suse_version > 1140)
-%define with_systemd	(%suse_version > 1140)
-
-%if %{new_polkit}
 %define polkitdir	%{_datadir}/polkit-1/actions
-%else
-%define polkitdir	%{_datadir}/PolicyKit/policy
-%endif
 
 Name:           hp-drive-guard
-BuildRequires:  fdupes
-BuildRequires:  gnome-common
-BuildRequires:  intltool
-%if %{use_gtk3}
-BuildRequires:  gtk3-devel
-%else
-BuildRequires:  gtk2-devel
-%endif
-BuildRequires:  dbus-1-glib-devel
-BuildRequires:  libnotify-devel
-BuildRequires:  libxslt
-%if %{new_polkit}
-BuildRequires:  polkit-devel
-%else
-BuildRequires:  PolicyKit-gnome-devel
-%endif
-%if %{use_upower}
-BuildRequires:  libupower-glib-devel
-%else
-BuildRequires:  hal-devel
-%endif
-# BuildRequires:  scrollkeeper
-BuildRequires:  update-desktop-files
-%if %{with_systemd}
-BuildRequires:  pkgconfig(systemd)
-%{?systemd_requires}
-%else
-PreReq:         %insserv_prereq
-%endif
 Version:        0.3.12
 Release:        0
 Summary:        HP DriveGuard for SUSE
@@ -70,95 +32,60 @@ Patch3:         use-new-polkit.diff
 Patch4:         use-gtk3.diff
 Patch5:         hp-drive-guard-gcc14-fix.patch
 URL:            http://www.gnome.org
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  dbus-1-glib-devel
+BuildRequires:  fdupes
+BuildRequires:  gnome-common
+BuildRequires:  gtk3-devel
+BuildRequires:  intltool
+BuildRequires:  libnotify-devel
+BuildRequires:  libupower-glib-devel
+BuildRequires:  libxslt
+BuildRequires:  polkit-devel
+BuildRequires:  update-desktop-files
+BuildRequires:  pkgconfig(systemd)
+%{?systemd_requires}
 
 %description
 HP DriveGuard for SUSE. Can protect hard disks on HP laptops by
 spinning them down when shaking or free-fall is detected.
 
-
-
-Authors:
---------
-    Hans Petter Jansson <hpj@suse.com>
-
 %lang_package
 
 %prep
-%setup -q
-%patch -P 1 -p1
-%patch -P 2 -p1
-%if %{new_polkit}
-%patch -P 3 -p1
-%endif
-%if %{use_gtk3}
-%patch -P 4 -p1
-%endif
-%patch -P 5 -p1
-
-%if %use_upower
+%autosetup -p1
 %define pm_method	upower
-%else
-%define pm_method	hal
-%endif
-
-%if %suse_version >= 1120
 %define user_setup	--enable-user-setup
-%else
-# HP requested to prohibit changing parameters in setup dialog for SLED
-%define user_setup	--disable-user-setup
-%endif
 
 %build
 autoreconf -f -i
 %configure --with-pm=%{pm_method} %user_setup \
 	--disable-schemas-install \
 	--disable-scrollkeeper
-%__make %{?jobs:-j%jobs}
+%{?make_build:%make_build}
+%{?!make_build:make %{?_smp_mflags}}
 
 %install
-%makeinstall
-%if %with_systemd
-mkdir -p $RPM_BUILD_ROOT%{_unitdir}
-install -c -m 0644 %{S:1} $RPM_BUILD_ROOT%{_unitdir}/hp-drive-guard.service
+%make_install
+mkdir -p %{buildroot}/%{_unitdir}
+install -cm 0644 %{S:1} %{buildroot}/%{_unitdir}/hp-drive-guard.service
 # do not ship the init.d script on a systemd setup
 rm %{buildroot}%{_sysconfdir}/init.d/hp-drive-guard
-%endif
 %find_lang %{name}
-%fdupes $RPM_BUILD_ROOT
-
-%clean
-rm -rf $RPM_BUILD_ROOT
+%fdupes %buildroot/%_prefix
 
 %pre
-%if %{with_systemd}
 %service_add_pre hp-drive-guard.service
-%endif
 
 %post
-%if %{with_systemd}
 %service_add_post hp-drive-guard.service
-%else
-%{fillup_and_insserv -n hp-drive-guard}
-%endif
 
 %preun
-%if %{with_systemd}
 %service_del_preun hp-drive-guard.service
-%else
-%{stop_on_removal hp-drive-guard}
-%endif
 
 %postun
-%if %{with_systemd}
 %service_del_postun hp-drive-guard.service
-%else
-%{restart_on_update hp-drive-guard}
-%insserv_cleanup
-%endif
 
 %files -f %{name}.lang
-%defattr(-,root,root)
 %doc AUTHORS ChangeLog NEWS README
 %license COPYING
 %config(noreplace) /etc/*.conf
@@ -168,10 +95,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_sysconfdir}/xdg/autostart/hp-drive-guard-client.desktop
 %{_sysconfdir}/dbus-1/system.d/hp-drive-guard-dbus.conf
 %{polkitdir}/*
-%if %{with_systemd}
 %{_unitdir}/hp-drive-guard.service
-%else
-%{_sysconfdir}/init.d/hp-drive-guard
-%endif
 
 %changelog

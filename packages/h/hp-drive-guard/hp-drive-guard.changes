@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Aug 27 15:22:51 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Remove build instructions for old unsupported SUSE releases
+
+-------------------------------------------------------------------
 Fri Aug 23 15:19:19 UTC 2024 - Takashi Iwai <tiwai@suse.com>
 
 - Fix the build with gcc14:
