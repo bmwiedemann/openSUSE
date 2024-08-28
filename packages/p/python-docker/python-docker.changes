@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Aug 23 08:13:32 UTC 2024 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 7.1.0
+  * Bumped minimum engine API version to 1.24
+  * Bumped default engine API version to 1.44 (Moby 25.0)
+  * Fixed issue with lang parsing when the registry address
+    includes ports taht resulted in `invalid tag format` errors
+  * Fixed issue preventing creating new configs (ConfigCollection),
+    which failed with a KeyError due to the name field
+  * Fixed an issue due to an update in the requests package breaking
+    docker-py by applying the suggested fix
+  * Documentation improvements
+  * Updated Ruff (linter) and fixed minor linting issues
+  * Started using hatch for packaging
+  * Stopped checking for deprecated container and image related 
+    fields (Container and ContainerConfig)
+  * Updated tests that check NetworkSettings.Networks.<network>.Aliases
+    due to engine changes
+- change source url as release tarball doesn't include tests anymore
+- drop patches which are now included upstream
+  * removed 2a059a9f19c7b37c6c71c233754c6845e325d1ec.patch
+  * removed e33e0a437ecd895158c8cb4322a0cdad79312636.patch
+
+-------------------------------------------------------------------
 Thu May 23 08:58:30 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - backport patches to fix errors with requests 2.32.x:

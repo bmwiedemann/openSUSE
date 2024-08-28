@@ -18,18 +18,14 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-docker
-Version:        7.0.0
+Version:        7.1.0
 Release:        0
 Summary:        A Python library for the Docker Engine API
 License:        Apache-2.0
 URL:            https://github.com/docker/docker-py
-Source:         https://files.pythonhosted.org/packages/source/d/docker/docker-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM e33e0a437ecd895158c8cb4322a0cdad79312636.patch -- based on commit e33e0a4
-# https://github.com/docker/docker-py/commit/e33e0a437ecd895158c8cb4322a0cdad79312636.patch
-Patch1:         e33e0a437ecd895158c8cb4322a0cdad79312636.patch
-# PATCH-FIX-UPSTREAM 2a059a9f19c7b37c6c71c233754c6845e325d1ec.patch -- based on commit 2a059a9
-# https://github.com/docker/docker-py/commit/2a059a9f19c7b37c6c71c233754c6845e325d1ec.patch
-Patch2:         2a059a9f19c7b37c6c71c233754c6845e325d1ec.patch
+Source:         https://github.com/docker/docker-py/archive/refs/tags/%{version}.tar.gz#/docker-%{version}.tar.gz
+BuildRequires:  %{python_module hatch_vcs}
+BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 45}
 BuildRequires:  %{python_module setuptools_scm >= 6.2}
@@ -59,9 +55,10 @@ BuildArch:      noarch
 A Python library for the Docker Engine API.
 
 %prep
-%autosetup -p1 -n docker-%{version}
+%autosetup -p1 -n docker-py-%{version}
 
 %build
+export SETUPTOOLS_SCM_PRETEND_VERSION=%{version}
 %pyproject_wheel
 
 %install

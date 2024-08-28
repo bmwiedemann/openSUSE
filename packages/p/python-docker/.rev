@@ -287,4 +287,29 @@ large update to 6.1.3 to fix builds; recreated spec file using py2pack</comment>
     <comment></comment>
     <requestid>1176178</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>bfb370e1f21201731aa028e8353da5cd</srcmd5>
+    <version>7.1.0</version>
+    <time>1724873674</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 7.1.0
+  * Bumped minimum engine API version to 1.24
+  * Bumped default engine API version to 1.44 (Moby 25.0)
+  * Fixed issue with lang parsing when the registry address
+    includes ports taht resulted in `invalid tag format` errors
+  * Fixed issue preventing creating new configs (ConfigCollection),
+    which failed with a KeyError due to the name field
+  * Fixed an issue due to an update in the requests package breaking
+    docker-py by applying the suggested fix
+  * Documentation improvements
+  * Updated Ruff (linter) and fixed minor linting issues
+  * Started using hatch for packaging
+  * Stopped checking for deprecated container and image related 
+    fields (Container and ContainerConfig)
+  * Updated tests that check NetworkSettings.Networks.&lt;network&gt;.Aliases
+    due to engine changes
+- change source url as release tarball doesn't include tests anymore
+- drop patches which are now included upstream</comment>
+    <requestid>1196998</requestid>
+  </revision>
 </revisionlist>
