@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Aug 27 10:58:27 UTC 2024 - okurz@suse.com
+
+- Update to version 4.6.1724756295.aa42e73c:
+  * Avoid zypper errors when using singe-instance container
+  * Dependency cron 2024-08-27
+  * openqa-cli: Document changed behavior regarding STDIN	after de2a210ce
+  * Bump tslib from 2.6.3 to 2.7.0
+  * Bump eslint from 9.9.0 to 9.9.1
+  * openqa-cli: Avoid reading unexpectedly from STDIN
+  * Use signatures in remaining helpers to start different test workers
+  * Ensure full test coverage of test code
+  * Move `python3-yamllint` from test to style-check dependencies
+  * Avoid requiring `ShellCheck` and other style-related deps for RPM build
+  * Improve git commands in git_clone job
+  * Avoid using deprecated Autoyast config for firewall
+
+-------------------------------------------------------------------
 Fri Aug 23 17:05:31 UTC 2024 - okurz@suse.com
 
 - Update to version 4.6.1724422555.bca3b3b4:
