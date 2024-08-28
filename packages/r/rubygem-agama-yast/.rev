@@ -45,4 +45,12 @@
   not depend on patch level (gh#openSUSE/agama#1534).</comment>
     <requestid>1194874</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>aee25910b0817390e4f2b6b6a4a3830e</srcmd5>
+    <version>9.devel664</version>
+    <time>1724873588</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1196438</requestid>
+  </revision>
 </revisionlist>
