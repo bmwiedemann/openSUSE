@@ -315,4 +315,21 @@
     DNS-over-QUIC upstream implementations (forwarded request 1190820 from VaiTon)</comment>
     <requestid>1190826</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>421dc35db769d2e1297540b241587b11</srcmd5>
+    <version>0.73.1</version>
+    <time>1724873415</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.73.1:
+  * Fixed the hosts-file-enabled field of the YAML configuration 
+    could not be parsed
+- Update to version 0.73.0:
+  * Added the --hosts-file-enabled and the --hosts-files options, 
+    which control the preliminary resolving A, AAAA and PTR 
+    requests from hosts (5) files before using the upstream servers
+
+- Update to version 0.72.3:
+  * Updated golibs dependency (forwarded request 1196363 from VaiTon)</comment>
+    <requestid>1196364</requestid>
+  </revision>
 </revisionlist>
