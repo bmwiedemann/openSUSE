@@ -2134,8 +2134,6 @@ unsorted:
   - chocolate-doom 
   - chocolate-doom-bash-completion 
   - choose 
-  - choqok 
-  - choqok-devel 
   - chromaprint-fpcalc 
   - chrome-uget-integrator 
   - chromedriver 
@@ -2557,8 +2555,6 @@ unsorted:
   - coreboot-utils 
   - coredns 
   - coredns-extras 
-  - coredns-for-k8s1.27 
-  - coredns-for-k8s1.27-extras 
   - coredns-for-k8s1.28 
   - coredns-for-k8s1.28-extras 
   - coredns-for-k8s1.29 
@@ -10543,17 +10539,6 @@ unsorted:
   - kubernetes-scheduler-minus1 
   - kubernetes-scheduler-minus2 
   - kubernetes-scheduler-minus3 
-  - kubernetes1.27-apiserver 
-  - kubernetes1.27-client 
-  - kubernetes1.27-client-bash-completion 
-  - kubernetes1.27-client-common 
-  - kubernetes1.27-client-fish-completion 
-  - kubernetes1.27-controller-manager 
-  - kubernetes1.27-kubeadm 
-  - kubernetes1.27-kubelet 
-  - kubernetes1.27-kubelet-common 
-  - kubernetes1.27-proxy 
-  - kubernetes1.27-scheduler 
   - kubernetes1.28-apiserver 
   - kubernetes1.28-client 
   - kubernetes1.28-client-bash-completion 
@@ -11695,7 +11680,7 @@ unsorted:
   - libaal-minimal0 
   - libabigail-devel 
   - libabigail-tools 
-  - libabigail3 
+  - libabigail4 
   - libabiword-3_0 
   - libabiword-3_0-devel 
   - libabsl_2401_0_0-32bit 
@@ -13678,10 +13663,10 @@ unsorted:
   - libgupnp-igd-devel 
   - libgusb-devel 
   - libgusb2-32bit 
-  - libgviewaudio-2_0-2 
-  - libgviewencoder-2_1-2 
-  - libgviewrender-2_1-2 
-  - libgviewv4l2core-2_1-2 
+  - libgviewaudio-2_2-2 
+  - libgviewencoder-2_2-2 
+  - libgviewrender-2_2-2 
+  - libgviewv4l2core-2_2-2 
   - libgviewv4l2core-lang 
   - libgvncpulse-1_0-0 
   - libgvpr2 
@@ -15013,14 +14998,14 @@ unsorted:
   - libopenvas_wmiclient-devel 
   - libopenvas_wmiclient1 
   - libopenvdb10_1 
-  - libopenvino2420 
-  - libopenvino_c2420 
-  - libopenvino_ir_frontend2420 
-  - libopenvino_onnx_frontend2420 
-  - libopenvino_paddle_frontend2420 
-  - libopenvino_pytorch_frontend2420 
-  - libopenvino_tensorflow_frontend2420 
-  - libopenvino_tensorflow_lite_frontend2420 
+  - libopenvino2430 
+  - libopenvino_c2430 
+  - libopenvino_ir_frontend2430 
+  - libopenvino_onnx_frontend2430 
+  - libopenvino_paddle_frontend2430 
+  - libopenvino_pytorch_frontend2430 
+  - libopenvino_tensorflow_frontend2430 
+  - libopenvino_tensorflow_lite_frontend2430 
   - libopenvswitch-3_1-0 
   - liboping-devel 
   - liboping0 
@@ -20977,9 +20962,6 @@ unsorted:
   - patterns-kde-devel_kde_frameworks6 
   - patterns-kde-devel_qt5 
   - patterns-kde-devel_qt6 
-  - patterns-kubernetes-container_runtime_kubernetes 
-  - patterns-kubernetes-kubeadm 
-  - patterns-kubernetes-kubernetes_utilities 
   - patterns-leechcraft-leechcraft 
   - patterns-leechcraft-leechcraft_browser 
   - patterns-leechcraft-leechcraft_media 
@@ -22812,7 +22794,6 @@ unsorted:
   - plasma-pass 
   - plasma-pass-lang 
   - plasma-wayland-protocols 
-  - plasma5-applet-suse-prime 
   - plasma5-pk-updates 
   - plasma5-pk-updates-lang 
   - plasma5support6-devel 
@@ -24312,7 +24293,9 @@ unsorted:
   - python310-alabaster 
   - python310-alembic 
   - python310-aliyun-python-sdk-alimt 
+  - python310-aliyun-python-sdk-buss 
   - python310-aliyun-python-sdk-core 
+  - python310-aliyun-python-sdk-governance 
   - python310-allpairspy 
   - python310-alsa 
   - python310-altair 
@@ -24626,6 +24609,7 @@ unsorted:
   - python310-azure-mgmt-hardwaresecuritymodules 
   - python310-azure-mgmt-hdinsight 
   - python310-azure-mgmt-healthcareapis 
+  - python310-azure-mgmt-healthdataaiservices 
   - python310-azure-mgmt-hybridcompute 
   - python310-azure-mgmt-hybridconnectivity 
   - python310-azure-mgmt-hybridcontainerservice 
@@ -24662,6 +24646,7 @@ unsorted:
   - python310-azure-mgmt-mobilenetwork 
   - python310-azure-mgmt-monitor 
   - python310-azure-mgmt-msi 
+  - python310-azure-mgmt-mysqlflexibleservers 
   - python310-azure-mgmt-netapp 
   - python310-azure-mgmt-network 
   - python310-azure-mgmt-networkanalytics 
@@ -24679,6 +24664,7 @@ unsorted:
   - python310-azure-mgmt-playwrighttesting 
   - python310-azure-mgmt-policyinsights 
   - python310-azure-mgmt-portal 
+  - python310-azure-mgmt-postgresqlflexibleservers 
   - python310-azure-mgmt-powerbidedicated 
   - python310-azure-mgmt-powerbiembedded 
   - python310-azure-mgmt-privatedns 
@@ -27944,7 +27930,9 @@ unsorted:
   - python311-akismet 
   - python311-alabaster 
   - python311-aliyun-python-sdk-alimt 
+  - python311-aliyun-python-sdk-buss 
   - python311-aliyun-python-sdk-core 
+  - python311-aliyun-python-sdk-governance 
   - python311-allpairspy 
   - python311-alsa 
   - python311-altair 
@@ -28253,6 +28241,7 @@ unsorted:
   - python311-azure-mgmt-hardwaresecuritymodules 
   - python311-azure-mgmt-hdinsight 
   - python311-azure-mgmt-healthcareapis 
+  - python311-azure-mgmt-healthdataaiservices 
   - python311-azure-mgmt-hybridcompute 
   - python311-azure-mgmt-hybridconnectivity 
   - python311-azure-mgmt-hybridcontainerservice 
@@ -28289,6 +28278,7 @@ unsorted:
   - python311-azure-mgmt-mobilenetwork 
   - python311-azure-mgmt-monitor 
   - python311-azure-mgmt-msi 
+  - python311-azure-mgmt-mysqlflexibleservers 
   - python311-azure-mgmt-netapp 
   - python311-azure-mgmt-network 
   - python311-azure-mgmt-networkanalytics 
@@ -28306,6 +28296,7 @@ unsorted:
   - python311-azure-mgmt-playwrighttesting 
   - python311-azure-mgmt-policyinsights 
   - python311-azure-mgmt-portal 
+  - python311-azure-mgmt-postgresqlflexibleservers 
   - python311-azure-mgmt-powerbidedicated 
   - python311-azure-mgmt-powerbiembedded 
   - python311-azure-mgmt-privatedns 
@@ -31480,7 +31471,9 @@ unsorted:
   - python312-alabaster 
   - python312-alembic 
   - python312-aliyun-python-sdk-alimt 
+  - python312-aliyun-python-sdk-buss 
   - python312-aliyun-python-sdk-core 
+  - python312-aliyun-python-sdk-governance 
   - python312-allpairspy 
   - python312-alsa 
   - python312-altair 
@@ -31794,6 +31787,7 @@ unsorted:
   - python312-azure-mgmt-hardwaresecuritymodules 
   - python312-azure-mgmt-hdinsight 
   - python312-azure-mgmt-healthcareapis 
+  - python312-azure-mgmt-healthdataaiservices 
   - python312-azure-mgmt-hybridcompute 
   - python312-azure-mgmt-hybridconnectivity 
   - python312-azure-mgmt-hybridcontainerservice 
@@ -31830,6 +31824,7 @@ unsorted:
   - python312-azure-mgmt-mobilenetwork 
   - python312-azure-mgmt-monitor 
   - python312-azure-mgmt-msi 
+  - python312-azure-mgmt-mysqlflexibleservers 
   - python312-azure-mgmt-netapp 
   - python312-azure-mgmt-network 
   - python312-azure-mgmt-networkanalytics 
@@ -31847,6 +31842,7 @@ unsorted:
   - python312-azure-mgmt-playwrighttesting 
   - python312-azure-mgmt-policyinsights 
   - python312-azure-mgmt-portal 
+  - python312-azure-mgmt-postgresqlflexibleservers 
   - python312-azure-mgmt-powerbidedicated 
   - python312-azure-mgmt-powerbiembedded 
   - python312-azure-mgmt-privatedns 
@@ -36219,7 +36215,6 @@ unsorted:
   - ruby3.3-rubygem-rb-fsevent 
   - ruby3.3-rubygem-rb-inotify 
   - ruby3.3-rubygem-rb-kqueue 
-  - ruby3.3-rubygem-rdiscount 
   - ruby3.3-rubygem-red-datasets 
   - ruby3.3-rubygem-regexp_parser 
   - ruby3.3-rubygem-responders 
