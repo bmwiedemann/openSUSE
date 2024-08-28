@@ -17,7 +17,7 @@
 
 
 %define gfx_version 550.107.02
-%define cuda_version 560.28.03
+%define cuda_version 555.42.06
 
 %global flavor @BUILD_FLAVOR@%{?nil}
 %if "%{flavor}" == "cuda"
@@ -81,6 +81,9 @@ Source11:       pesign-copy-sources
 Source12:       pesign-spec-macros
 Source14:       group-source-files.pl
 Patch0:         persistent-nvidia-id-string.patch
+%if "%{flavor}" == "cuda"
+Patch1:         kernel-6.10.patch
+%endif
 BuildRequires:  %{kernel_module_package_buildreqs}
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++

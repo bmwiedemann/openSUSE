@@ -424,4 +424,19 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1194686</requestid>
   </revision>
+  <revision rev="43" vrev="2">
+    <srcmd5>b209a0bf9a4679a90d316f7885e34a1d</srcmd5>
+    <version>550.107.02</version>
+    <time>1724873659</time>
+    <user>dimstar_suse</user>
+    <comment>- reverted CUDA update version to 560.x.y due to changes in CUDA
+  repository with CUDA 12.6/560.x.y drivers
+- kernel-6.10.patch:
+  * fixes build of 555.42.06 against Kernel 6.10
+
+- For CUDA update version to 560.35.03 
+
+- Update to 550.107.02 (boo#1229716)</comment>
+    <requestid>1196988</requestid>
+  </revision>
 </revisionlist>
