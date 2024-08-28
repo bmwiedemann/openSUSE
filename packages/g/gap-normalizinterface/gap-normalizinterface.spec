@@ -1,7 +1,7 @@
 #
 # spec file for package gap-normalizinterface
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,21 +17,21 @@
 
 
 Name:           gap-normalizinterface
-Version:        1.3.6
+Version:        1.3.7
 Release:        0
 Summary:        GAP: wrapper for Normaliz
 License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Math
 URL:            https://gap-packages.github.io/NormalizInterface/
 #Git-Clone:     https://github.com/gap-packages/NormalizInterface
-Source:         https://github.com/gap-packages/NormalizInterface/releases/download/v%{version}/NormalizInterface-%{version}.tar.bz2
+Source:         https://github.com/gap-packages/NormalizInterface/releases/download/v%version/NormalizInterface-%version.tar.bz2
 BuildRequires:  fdupes
-BuildRequires:  gap-devel >= 4.9
+BuildRequires:  gap-devel >= 4.12.1
 BuildRequires:  gap-rpm-devel
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
 BuildRequires:  normaliz-devel >= 3.5.4
-Requires:       gap-core >= 4.9
+Requires:       gap-core >= 4.12.1
 
 %description
 The NormalizInterface package provides a GAP interface to Normaliz,
