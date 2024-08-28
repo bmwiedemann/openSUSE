@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Aug 28 07:14:54 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 1.8.1
+  * search: fix playlistId on album results
+  * get_library_upload_*: fix 'v1.8.0 makes no songs to be found'
+  * get_playlist: small additions to documentation
+
+-------------------------------------------------------------------
 Tue Aug  6 12:29:07 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 1.8.0
