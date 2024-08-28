@@ -21,7 +21,7 @@
 %bcond_with test_rust
 
 Name:       bitwarden
-Version:    2024.8.0
+Version:    2024.8.1
 Release:    0
 Summary:    A secure and free password manager for all of your devices
 Group:      Productivity/Security
@@ -107,7 +107,7 @@ BuildRequires:  gnome-keyring
 %if 0%{?fedora}
 BuildRequires:  dbus-daemon
 %else
-BuildRequires:  dbus-service
+BuildRequires:  dbus-1-daemon
 %endif
 %endif
 
