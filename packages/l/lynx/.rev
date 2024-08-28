@@ -378,4 +378,12 @@
   * change defaults in configure script to use compression -TD</comment>
     <requestid>1146603</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>2085575e317511f02894fb1efef8c21c</srcmd5>
+    <version>2.9.2</version>
+    <time>1724873533</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 2.9.2 (forwarded request 1196368 from mgorse)</comment>
+    <requestid>1196418</requestid>
+  </revision>
 </revisionlist>

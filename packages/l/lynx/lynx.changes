@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Wed Aug 28 01:05:26 UTC 2024 - Michael Gorse <mgorse@suse.com>
+
+- version update to 2.9.2
+  2024-05-31 (2.9.2)
+  * modify makefile.in install-help to only remove files, leaving existing
+    directories and symbolic links -TD
+  * in POSIX environments, check paths for external programs to ensure that they
+    are executable, non-empty files -TD
+  * adapt special case of gzip decompression in 2.8.9dev.12 to brotli, to handle
+    downloads from websites which support "br" (report by Rajeev V Pillai) -TD
+  * updated configure macro CF_ANSI_CC_C, to reset flags on test-failure, to
+    keep options from accumulating. 
+  2024-04-15 (2.9.1)
+  * add samples/mhtml-tool, from
+      https://github.com/ThomasDickey/mhtml-tool
+    which can use Lynx to display an "mhtml" file, e.g., foo.mht by
+      mhtml-tool -e lynx foo.mht
+  * add --with-libintl-prefix configure option (from patch for tin by Urs
+    JanBen) -TD
+  * improve bookmark file-updates, allowing for users to add HTML markup
+    (report by TG) -TD
+  * remove obsolete option --with-included-gettext -TD
+  * override $BUILD_CPPFLAGS and $BUILD_LIBS when not cross-compiling, to help
+    build Lynx with PDCurses -TD
+  * re-order configure check for _XOPEN_SOURCE, etc., to reduce compiler warnings
+    with gcc 14 -TD
+  * fixes for saving a UTF-8 bookmark title -KH
+    + correct comparison of Windows codepage values when setting
+      DisplayCharsetMatchLocale, to handle UTF-8
+    + reset the internal state of UCTransToUni() before using it for bookmark
+      title check.
+  * update/cleanup test-packages -TD
+  * correct logic in HTMLGen.c where XMP was not treated as a preformatted
+    style, causing NNTP headers to be formatted (report by Marco Moock) -TD
+  * fix special case of main status line on a page without links, broken by fix
+    for UBSAN/ASAN issue -TG
+
+-------------------------------------------------------------------
 Wed Feb 14 14:21:38 UTC 2024 - pgajdos@suse.com
 
 - version update to 2.9.0

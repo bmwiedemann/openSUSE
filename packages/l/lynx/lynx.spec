@@ -16,9 +16,9 @@
 #
 
 
-%define tarbase 2.9.0
+%define tarbase 2.9.2
 Name:           lynx
-Version:        2.9.0
+Version:        2.9.2
 Release:        0
 Summary:        A Text-Based WWW Browser
 License:        GPL-2.0-only
