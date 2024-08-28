@@ -1,7 +1,7 @@
 #
 # spec file for package gap-patternclass
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,12 @@
 
 
 Name:           gap-patternclass
-Version:        2.4.3
+Version:        2.4.4
 Release:        0
 Summary:        GAP: Permutation pattern class
 License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Math
 URL:            https://gap-packages.github.io/PatternClass/
-
 #Git-Clone:     https://github.com/gap-packages/PatternClass
 Source:         https://github.com/gap-packages/PatternClass/releases/download/v%version/PatternClass-%version.tar.gz
 BuildArch:      noarch
