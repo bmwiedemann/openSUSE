@@ -44,6 +44,8 @@ Patch7:         xfig.3.2.5b-fixes.dif
 Patch8:         Sanitize-a-call-to-realloc-ticket-165.patch
 # PATCH-FIX-UPSTREAM
 Patch9:         Fix-exporting-only-active-layers-ticket-163.patch
+# PATCH-FIX-UPSTREAM
+Patch10:        xfig-3.2.9-gcc14.patch
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  flex
@@ -109,6 +111,7 @@ set -x
 %patch -P7 -b .fixes
 %patch -P8 -p1
 %patch -P9 -p1
+%patch -P10
 cp %{SOURCE1} .
 test ! -e Libraries/Examples/aircraft.fig || { echo forbidden file found 1>&2; exit 1; }
 

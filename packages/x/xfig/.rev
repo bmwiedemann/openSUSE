@@ -571,4 +571,12 @@ SPDX compliant license short name. MIT chosen as majority of files are under thi
   * Sanitize-a-call-to-realloc-ticket-165.patch</comment>
     <requestid>1137515</requestid>
   </revision>
+  <revision rev="57" vrev="4">
+    <srcmd5>4b748076a47c246d85e0fba25ebcbf79</srcmd5>
+    <version>3.2.9</version>
+    <time>1724873501</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch xfig-3.2.9-gcc14.patch to make it build again</comment>
+    <requestid>1196405</requestid>
+  </revision>
 </revisionlist>

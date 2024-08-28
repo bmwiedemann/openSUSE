@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Aug 28 07:01:39 UTC 2024 - Dr. Werner Fink <werner@suse.de>
+
+- Add patch xfig-3.2.9-gcc14.patch to make it build again 
+
+-------------------------------------------------------------------
 Mon Jan  8 08:53:08 UTC 2024 - Dr. Werner Fink <werner@suse.de>
 
 - Add patches from upstream alert
