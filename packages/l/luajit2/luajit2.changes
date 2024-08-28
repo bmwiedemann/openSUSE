@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Aug 28 03:54:34 UTC 2024 - Илья Индиго <ilya@ilya.top>
+
+- Updated to 2.1.20240815 (2.1.1723681758).
+  * Changed file luajit2-name.patch.
+  * Added ppc64le support.
+
+-------------------------------------------------------------------
 Fri May 10 04:09:49 UTC 2024 - Илья Индиго <ilya@ilya.top>
 
 - Changed file luajit2-name.patch and fixed package.path for modules.

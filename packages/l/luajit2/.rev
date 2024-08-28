@@ -23,4 +23,14 @@
     <comment>- Changed file luajit2-name.patch and fixed package.path for modules.</comment>
     <requestid>1173007</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ff5f6c30b42fa3b8c60cc8c923e661ae</srcmd5>
+    <version>2.1.20240815</version>
+    <time>1724873429</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to 2.1.20240815 (2.1.1723681758).
+  * Changed file luajit2-name.patch.
+  * Added ppc64le support.</comment>
+    <requestid>1196383</requestid>
+  </revision>
 </revisionlist>

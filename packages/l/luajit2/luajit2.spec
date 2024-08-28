@@ -20,8 +20,8 @@
 %define so_ver 2
 %define lib_ver 5_1-%{so_ver}
 %define major 2.1
-%define minor 20240314
-%define upstream 1710398010
+%define minor 20240815
+%define upstream 1723681758
 Name:           luajit2
 Version:        %{major}.%{minor}
 Release:        0
