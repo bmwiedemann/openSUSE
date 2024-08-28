@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Aug 27 22:06:15 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 0.6.3
+  + feature
+    - Added refresh on demand
+  + optimization
+    - cache refresh and table rendering improvement
+  + chore
+    - added integration test for searching processes
+    - added text area input from third party
+
+-------------------------------------------------------------------
 Thu Aug 15 01:25:33 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Initial package
