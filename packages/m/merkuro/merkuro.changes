@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug 28 08:22:41 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Add upstream fix (boo#1229847):
+  * 0001-Add-missing-GENERATE_PLUGIN_SOURCE-to-merkuro_contac.patch
+
+-------------------------------------------------------------------
 Mon Aug 19 07:14:41 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.08.0

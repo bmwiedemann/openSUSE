@@ -95,4 +95,13 @@
     <comment>KDE Release gear 24.08.0 (forwarded request 1194683 from krop)</comment>
     <requestid>1195514</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>0f09d54bcc9bc9145302d1e8f497308a</srcmd5>
+    <version>24.08.0</version>
+    <time>1724873527</time>
+    <user>dimstar_suse</user>
+    <comment>- Add upstream fix (boo#1229847):
+  * 0001-Add-missing-GENERATE_PLUGIN_SOURCE-to-merkuro_contac.patch</comment>
+    <requestid>1196419</requestid>
+  </revision>
 </revisionlist>
