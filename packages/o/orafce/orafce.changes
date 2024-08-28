@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Aug 28 09:33:39 UTC 2024 - emiliano.langella@suse.com
+
+- Update to version 4.11.0+git0.72e1417:
+  * - refresh sql parser - fix warning: no previous declaration for ‘orafce_sql_yynerrs’ [-Wmissing-variable-declarations]
+  * fix format doc
+  * fix format doc
+  * fix format doc
+  * fix sys_extract_utc calculation for pg12
+  * regress tests for sys_extract_utc
+  * fix another warnings related to master - after drop support for pg12, the code for pipe and alert needs refactoring
+  * fix warnings related to master build
+  * fix build pg12
+  * support of sys_extract_utc function
+
+-------------------------------------------------------------------
 Mon Jun 03 07:22:01 UTC 2024 - emiliano.langella@suse.com
 
 - Update to version 4.10.3+git0.e050dd6:
