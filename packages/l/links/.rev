@@ -436,4 +436,12 @@ bsc#1022468</comment>
     <comment></comment>
     <requestid>1153901</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>6881944253de047ea45669edda38191a</srcmd5>
+    <version>2.30</version>
+    <time>1724873631</time>
+    <user>dimstar_suse</user>
+    <comment>links 2.30 (forwarded request 1196920 from AndreasStieger)</comment>
+    <requestid>1196929</requestid>
+  </revision>
 </revisionlist>

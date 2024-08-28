@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Aug 28 11:37:48 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 2.30:
+  * Fix the configure script to work with GCC 14
+  * Fix window title on kwin
+
+-------------------------------------------------------------------
 Fri Mar  1 10:42:20 UTC 2024 - pgajdos@suse.com
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

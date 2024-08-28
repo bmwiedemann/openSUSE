@@ -2,6 +2,7 @@
 # spec file for package links
 #
 # Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +18,7 @@
 
 
 Name:           links
-Version:        2.29
+Version:        2.30
 Release:        0
 Summary:        Text-Based WWW Browser
 License:        GPL-2.0-or-later
