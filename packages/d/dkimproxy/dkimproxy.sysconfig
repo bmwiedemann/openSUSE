@@ -1,16 +1,3 @@
-## Path:        Network/Mail/DKIMProxy
-## Description: Basic configuration of the DKIMProxy
-## Type:        string
-## Default:     "dkim"
-#
-DKIMPROXY_USER=dkim
-
-## Description: Basic configuration of the DKIMProxy
-## Type:        string
-## Default:     "dkim"
-#
-DKIMPROXY_GROUP=dkim
-
 ## Description: Basic configuration of the DKIMProxy
 ## Type:        string
 ## Default:     "dkim"

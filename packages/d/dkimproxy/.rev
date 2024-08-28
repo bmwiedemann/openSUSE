@@ -202,4 +202,18 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1181905</requestid>
   </revision>
+  <revision rev="28" vrev="21">
+    <srcmd5>214f8965a0a3049c83703895c9f4850e</srcmd5>
+    <version>1.4.1</version>
+    <time>1724873601</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix VUL-1: dkimproxy: possible symlink attack in /run/dkimproxy/sysconfig
+  (bsc#1217173)
+  Remove environment variables DKIMPROXY_USER DKIMPROXY_GROUP.
+  These are hardcoded anyway in dkimproxy-tmpfiles. Changing these
+  would only lead to trouble. Now User and Group in dkimproxy-in.service
+  are set to dkim to avoid the mentioned security issue.
+  ExecStart got a '+' to execute it by root rights.</comment>
+    <requestid>1196447</requestid>
+  </revision>
 </revisionlist>

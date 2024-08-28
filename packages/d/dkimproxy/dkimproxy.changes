@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Aug 28 10:19:19 UTC 2024 - Peter Varkoly <varkoly@suse.com>
+
+- Fix VUL-1: dkimproxy: possible symlink attack in /run/dkimproxy/sysconfig
+  (bsc#1217173)
+  Remove environment variables DKIMPROXY_USER DKIMPROXY_GROUP.
+  These are hardcoded anyway in dkimproxy-tmpfiles. Changing these
+  would only lead to trouble. Now User and Group in dkimproxy-in.service
+  are set to dkim to avoid the mentioned security issue.
+  ExecStart got a '+' to execute it by root rights.
+
+-------------------------------------------------------------------
 Thu Jun 13 10:34:44 UTC 2024 - Peter Varkoly <varkoly@suse.com>
 
 - Fix ExecStartPre path. This changes depending on %_libexecdir macro. 

@@ -19,7 +19,7 @@ After=remote-fs.target
 Type=forking
 EnvironmentFile=/etc/sysconfig/dkimproxy
 PIDFile=/run/dkimproxy/dkimproxy_out.pid
-ExecStart=/usr/share/dkimproxy/bin/dkimproxy.out --conf_file=${DKIMPROXY_OUT_CFG} --user=${DKIMPROXY_USER} --group=${DKIMPROXY_GROUP} --daemonize  --pidfile=/run/dkimproxy/dkimproxy_out.pid
+ExecStart=/usr/share/dkimproxy/bin/dkimproxy.out --conf_file=${DKIMPROXY_OUT_CFG} --user=dkim --group=dkim --daemonize  --pidfile=/run/dkimproxy/dkimproxy_out.pid
 
 
 [Install]
