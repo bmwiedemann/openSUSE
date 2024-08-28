@@ -18,7 +18,7 @@
 
 %define lua_version 5.1
 Name:           lua-resty-websocket
-Version:        0.11
+Version:        0.12
 Release:        0
 Summary:        Lua WebSocket implementation for the ngx_lua module
 License:        BSD-2-Clause

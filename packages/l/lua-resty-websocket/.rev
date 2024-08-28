@@ -7,4 +7,13 @@
     <comment>Using with nginx-module-lua.</comment>
     <requestid>1173223</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>e163786341bc781fd24ce4c15da328cf</srcmd5>
+    <version>0.12</version>
+    <time>1724873437</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated yo 0.12.
+  * Upstream doesn't provide a ChangeLog.</comment>
+    <requestid>1196397</requestid>
+  </revision>
 </revisionlist>
