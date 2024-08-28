@@ -1254,4 +1254,22 @@ Also requires https://build.opensuse.org/request/show/1167142.</comment>
 </comment>
     <requestid>1188045</requestid>
   </revision>
+  <revision rev="110" vrev="1">
+    <srcmd5>7cc06720ca39cf4fbf4f165a60eed292</srcmd5>
+    <version>4.8.0</version>
+    <time>1724780295</time>
+    <user>anag+factory</user>
+    <comment>- Version 4.8.0
+  - Add sd-boot (systemd-boot) support for most commands
+  - Add support for specifying migration arguments
+    [gh#openSUSE/transactional-update#127]
+  - Support kdump setup on platforms without kdump high/low
+    settings (e.g. S/390 or PPC64le [bsc#1229138]
+  - Preserve current working directory if possible when entering
+    transactional-update environment [bsc#1227452]; also adds the
+    current path to the Bash prompt
+  - Fix plugin system to support special characters in commands
+</comment>
+    <requestid>1196137</requestid>
+  </revision>
 </revisionlist>

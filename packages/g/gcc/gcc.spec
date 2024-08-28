@@ -24,8 +24,8 @@
 %define gcc_suffix 13
 %else
 %define gccsuffix %{nil}
-%define gcc_version 13
-%define gcc_suffix 13
+%define gcc_version 14
+%define gcc_suffix 14
 %endif
 
 Name:           gcc%{gccsuffix}
@@ -53,7 +53,9 @@ Name:           gcc%{gccsuffix}
 %else
 %define build_d 0
 %endif
+%define quadmath_arch %ix86 x86_64 ia64 ppc64le
 %define libgccjit_sover 0
+
 URL:            http://gcc.gnu.org/
 Version:        %{gcc_version}
 Release:        0
@@ -61,6 +63,10 @@ Summary:        The system GNU C Compiler
 License:        GPL-3.0-or-later
 Group:          Development/Languages/C and C++
 Provides:       c_compiler
+%if "%{gccsuffix}" != ""
+Provides:       gcc = %{version}
+Conflicts:      gcc
+%endif
 Requires:       cpp%{gccsuffix}
 Requires:       gcc%{gcc_version}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -152,12 +158,7 @@ The system GNU Compiler documentation.
 
 
 
-
-
-
-
 # install / update the entries
-
 %post -n gcc%{gccsuffix}-info
 %install_info --info-dir=%{_infodir} --name=cpp --description='The GNU C preprocessor.' %{_infodir}/cpp.info.gz
 %install_info --info-dir=%{_infodir} --name=gcc --description='The GNU Compiler Collection.' %{_infodir}/gcc.info.gz
@@ -178,6 +179,10 @@ Summary:        The system GNU C++ Compiler
 License:        GPL-3.0-or-later
 Group:          Development/Languages/C and C++
 Provides:       c++_compiler
+%if "%{gccsuffix}" != ""
+Provides:       gcc-c++ = %{version}
+Conflicts:      gcc-c++
+%endif
 Requires:       gcc%{gcc_version}-c++
 Requires:       gcc%{gccsuffix} = %{version}
 
@@ -210,6 +215,10 @@ The system GNU C++ Compiler 64 bit support.
 Summary:        The system GNU C++ development files
 License:        GPL-3.0-only WITH GCC-exception-3.1
 Group:          System/Libraries
+%if "%{gccsuffix}" != ""
+Provides:       libstdc++-devel = %{version}
+Conflicts:      libstdc++-devel
+%endif
 Requires:       libstdc++6-devel-gcc%{gcc_version}
 
 %description -n libstdc++%{gccsuffix}-devel
@@ -422,6 +431,15 @@ Requires:       libgccjit%{libgccjit_sover}-devel-gcc%{gcc_version}
 
 %description -n libgccjit%{gccsuffix}-devel
 Package contains header files and documentation for GCC JIT front-end.
+
+%package -n libquadmath%{gccsuffix}-devel
+Summary:        Development files for the quadprecision math library
+License:        LGPL-2.1-only
+Group:          Development/Languages/Fortran
+Requires:       libquadmath0-devel-gcc%{gcc_version}
+
+%description -n libquadmath%{gccsuffix}-devel
+Development files for the quadprecision math library.
 
 %prep
 
@@ -691,5 +709,13 @@ fi
 %files -n libgccjit%{gccsuffix}-devel
 %defattr(-,root,root)
 # empty - only for the dependency
+
+%if %{gcc_version} >= 14
+%ifarch %quadmath_arch
+%files -n libquadmath%{gccsuffix}-devel
+%defattr(-,root,root)
+# empty - only for the dependency
+%endif
+%endif
 
 %changelog

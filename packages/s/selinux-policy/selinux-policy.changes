@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Aug 26 14:28:40 UTC 2024 - Cathy Hu <cathy.hu@suse.com>
+
+- Enable named_write_master_zones boolean by default (bsc#1229479)
+
+-------------------------------------------------------------------
 Fri Aug 23 08:42:06 UTC 2024 - cathy.hu@suse.com
 
 - Update to version 20240823:

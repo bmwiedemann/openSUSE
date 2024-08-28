@@ -11,7 +11,7 @@ Wed Aug 14 16:07:15 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
     sandbox escape where a malicious or compromised app could edit
     the symlink to point to a directory that the app should not
     have been allowed to read or write. (CVE-2024-42472,
-    GHSA-7hgv-f2j8-xw87)
+    GHSA-7hgv-f2j8-xw87, bsc#1229157)
   + Documentation: Mark the 1.12.x and 1.10.x branches as
     end-of-life
   + Other bug fixes: Fix several memory leaks

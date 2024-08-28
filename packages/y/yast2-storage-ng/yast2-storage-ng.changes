@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Aug 26 14:47:40 UTC 2024 - José Iván López González <jlopez@suse.com>
+
+- AutoYaST: small fix to ensure symbol for the drive type when
+  importing from a hash (required by gh#openSUSE/agama#1471).
+- 5.0.17
+
+-------------------------------------------------------------------
 Wed Aug 21 12:03:30 UTC 2024 - Ancor Gonzalez Sosa <ancor@suse.com>
 
 - Tiny internal code reorganization to ease Agama development at

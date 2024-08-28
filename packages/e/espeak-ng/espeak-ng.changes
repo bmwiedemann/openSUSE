@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Aug 23 11:57:25 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire /usr/bin/ronn instead of rubygem(ronn): Tumbleweed
+  is in progress of switching to ronn-ng.
+
+-------------------------------------------------------------------
 Wed Jul 31 05:59:52 UTC 2024 - Sebastian Wagner <sebix@sebix.at>
 
 - Update patch fix-configure-1171.patch from upstream (just a minor change in revision numbers)

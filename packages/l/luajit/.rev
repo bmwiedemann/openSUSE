@@ -346,4 +346,64 @@
 </comment>
     <requestid>1154166</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>cfcb32777ba37263f1840a6f04f208eb</srcmd5>
+    <version>5.1.2.1.0+git.1724512491.f725e44</version>
+    <time>1724780315</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 5.1.2.1.0+git.1724512491.f725e44:
+  * Fix limit check in narrow_conv_backprop().
+  * Always use IRT_NIL for IR_TBAR.
+  * ARM64: Use ldr literal to load FP constants.
+  * FFI: Add missing coercion when recording 64-bit bit.*().
+  * ARM64: Make tobit conversions match JIT backend behavior.
+  * ARM: Make hard-float tobit conversions match JIT backend behavior.
+  * FFI: Drop finalizer table rehash after GC cycle.
+  * Fix another potential file descriptor leak in luaL_loadfile*().
+  * MIPS32: Fix little-endian IR_RETF.
+  * Correctly close VM state after early OOM during open.
+  * Fix potential file descriptor leak in luaL_loadfile*().
+  * Reflect override of INSTALL_LJLIBD in package.path.
+  * ARM64: Use movi to materialize FP constants.
+  * Add more FOLD rules for integer conversions.
+  * Different fix for partial snapshot restore due to stack overflow.
+  * Fix IR_ABC hoisting.
+  * Limit CSE for IR_CARG to fix loop optimizations.
+  * Call math.randomseed() without arguments to seed from system entropy.
+  * Restore state when recording __concat metamethod throws an error.
+  * Add build flag LUAJIT_DISABLE_TAILCALL to disable tailcall generation.
+  * Clarify that lj_buf_shrink() does not keep any buffer data.
+  * OSX: Fix installed luajit.pc.
+  * FFI: Fix various issues in recff_cdata_arith.
+  * Fix predict_next() in parser (for real now).
+  * FFI: Fix __tostring metamethod access to enum cdata value.
+  * Fix typo.
+  * Handle partial snapshot restore due to stack overflow.
+  * Update Nintendo Switch build script.
+  * Prevent sanitizer warning in snap_restoredata().
+  * Typo.
+  * Limit number of string format elements to compile.
+  * FFI: Clarify scalar boxing behavior.
+  * Fix internal link in docs.
+  * OSX/iOS: Fix SDK incompatibility.
+  * Windows/MSVC: Cleanup msvcbuild.bat and always generate PDB.
+  * Fix segment release check in internal memory allocator.
+  * Fix compiler warning.
+  * FFI: Turn FFI finalizer table into a proper GC root.
+  * OSX/iOS: Always generate 64 bit non-FAT Mach-O object files.
+  * Show name of NYI bytecode in -jv and -jdump.
+  * Use generic trace error for OOM during trace stitching.
+  * Fix serialization format docs.
+  * Handle all types of errors during trace stitching.
+  * Fix recording of __concat metamethod.
+  * Prevent down-recursion for side traces.
+  * Check frame size limit before returning to a lower frame.
+  * FFI: Treat cdata finalizer table as a GC root.
+  * Handle stack reallocation in debug.setmetatable() and lua_setmetatable().
+- Update patches:
+  - luajit-lua-versioned.patch
+  - luajit-s390x.patch (update to the latest base code)
+</comment>
+    <requestid>1196125</requestid>
+  </revision>
 </revisionlist>

@@ -170,7 +170,7 @@ sed -i -e '/HTML_TIMESTAMP/d' doc/Doxyfile.in.in
 %if %{with as_createrepo}
 for i in createrepo mergerepo modifyrepo sqliterepo;do
   ln -s %{_bindir}/$i\_c %{buildroot}%{_bindir}/$i
-  echo ".so man8/$i\_c.8" > %{buildroot}%{_mandir}/man8/$i\.8
+  echo ".so man8/${i}_c.8" > %{buildroot}%{_mandir}/man8/$i\.8
 done
 %else
 mkdir -p %{buildroot}%{_sysconfdir}/alternatives

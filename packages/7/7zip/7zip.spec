@@ -17,9 +17,9 @@
 #
 
 
-%define stripped_version 2407
+%define stripped_version 2408
 Name:           7zip
-Version:        24.07
+Version:        24.08
 Release:        0
 Summary:        Command-line file archiver with high compression ratio
 # CPP/7zip/Compress/LzfseDecoder.cpp is under the BSD-3-Clause
@@ -117,8 +117,6 @@ install -m644 -Dt %{buildroot}%{_mandir}/man1 %{SOURCE3}
 ln -s %{_mandir}/man1/7zz.1 %{buildroot}%{_mandir}/man1/7z.1
 ln -s %{_mandir}/man1/7z.1 %{buildroot}%{_mandir}/man1/7za.1
 ln -s %{_mandir}/man1/7z.1 %{buildroot}%{_mandir}/man1/7zr.1
-
-%check
 
 %files
 %license DOC/copying.txt DOC/License.txt

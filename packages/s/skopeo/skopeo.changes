@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Aug 23 06:33:23 UTC 2024 - dcermak@suse.com
+
+- Update to version 1.16.1:
+  * [release-1.16] Bump to Skopeo v1.16.1
+  * [release-1.16] Bump c/common to v0.60.2, c/image to v5.32.2
+
+-------------------------------------------------------------------
 Thu Aug 01 05:52:22 UTC 2024 - dcermak@suse.com
 
 - Update to version 1.16.0:

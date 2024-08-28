@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Aug 11 19:31:41 UTC 2024 - Georg Pfuetzenreuter <mail+rpm@georg-pfuetzenreuter.net>
+
+- Repair manpage links by removing a spurious backslash escape
+
+-------------------------------------------------------------------
 Sun Mar 24 18:57:29 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.1.0:

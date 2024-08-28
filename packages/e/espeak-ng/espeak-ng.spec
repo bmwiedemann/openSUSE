@@ -35,7 +35,7 @@ BuildRequires:  pcaudiolib-devel
 BuildRequires:  pkgconfig
 BuildRequires:  rubygem(kramdown)
 #SECTION docs
-BuildRequires:  rubygem(ronn)
+BuildRequires:  /usr/bin/ronn
 #/SECTION
 
 %description

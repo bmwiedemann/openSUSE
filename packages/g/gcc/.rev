@@ -640,4 +640,26 @@ from GCC 6).
 - Remove obsolete obsoletes.</comment>
     <requestid>1149282</requestid>
   </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>a9d580a7b29372e27795fecf2e94e1a7</srcmd5>
+    <version>14</version>
+    <time>1724780317</time>
+    <user>anag+factory</user>
+    <comment>
+Note this is intended only for Staging:Gcc7 for now but I am pushing this
+to SUSE:SLFO:Main as well to complement gcc14 there and make that the
+user-visible compiler (but leaving packages built with gcc13).  For Factory
+this would switch building packages to gcc14.  Thus Staging:Gcc7.
+
+===
+
+- Add libquadmath-devel package for GCC 14.
+- Bump GCC version to 14, leave -build flavor at 13.
+
+- Add conflicts where -build variants provide the non-build variant.
+
+- Add gcc, gcc-c++ and libstdc++-devel Provides to the -build flavor
+  of those packages.  Should fix build of boost in ALP.</comment>
+    <requestid>1191646</requestid>
+  </revision>
 </revisionlist>

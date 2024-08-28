@@ -1,5 +1,5 @@
 Prefer: -yast2-schema-micro -yast2-schema
-%define gcc_version 13
+%define gcc_version 14
 
 # testing new cycle algorithm
 BuildFlags: genmetaalgo:1
@@ -7,7 +7,7 @@ BuildFlags: genmetaalgo:1
 # The prjconf macros have a serial to help work around issues like https://github.com/openSUSE/open-build-service/issues/4088
 # On macros having impact on dep chains, update the serial (mainly ruby, python)
 # Using a date to indicate when we set the serial
-ExpandFlags: macroserial:20240813
+ExpandFlags: macroserial:20240827
 
 ExpandFlags: kiwi-nobasepackages
 ExpandFlags: docker-nobasepackages
@@ -3595,7 +3595,7 @@ Macros:
 %product_libs_gcc_ver_libgo22 13
 %product_libs_gcc_ver_libgphobos4 13
 %product_libs_gcc_ver_libgdruntime4 13
-%gcc_version 13
+%gcc_version 14
 
 %ext_info .gz
 %ext_man .gz

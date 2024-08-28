@@ -26,6 +26,8 @@ License:        Zlib
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/leethomason/tinyxml2
 Source:         https://github.com/leethomason/tinyxml2/archive/%{version}.tar.gz
+Patch1:         0001-Make-DynArray-support-objects-larger-than-1-gigabyte.patch
+Patch2:         0001-Make-DocPrinter-support-DynArrays-larger-than-2G.patch
 BuildRequires:  cmake >= 3.15
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig

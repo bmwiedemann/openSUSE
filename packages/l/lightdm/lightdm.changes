@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Aug  25 13:51:43 UTC 2024 - sb56637 <mxoo28j7@duck.com>
+
+- Added /usr/sbin/nologin to hidden-shells to prevent "Dynamic User" from appearing in user list
+
+-------------------------------------------------------------------
 Fri Jul 12 09:30:03 UTC 2024 - Martin Jambor <mjambor@suse.com>
 
 - Add typecasts to avoid passing incompatible pointer types to

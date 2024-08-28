@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Aug 25 13:59:08 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 24.08:
+  * No longer write extra zero bytes after the end of the archive,
+    if a file included to archive cannot be compressed to a size
+    smaller than original
+  * Some optimizations for displaying file icons in 7-Zip File
+    Manager and in "Confirm File Replace" window.
+  * Some bugs were fixed
+
+-------------------------------------------------------------------
 Thu Jun 20 15:44:47 UTC 2024 - Antonio Teixeira <antonio.teixeira@suse.com>
 
 - Update to 24.07:

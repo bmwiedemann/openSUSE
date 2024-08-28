@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Aug 26 09:45:32 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.48.10:
+  + nmcli/edit: fix memory leak in extract_setting_and_property
+  + autotools: fix another filename that was renamed
+  + gitlab: fix helper scripts to support DNF5
+  + CI: update the imported templates_sha
+  + autotools: fix filename that was renamed
+  + format: run nm-code-format
+  + policy: retry hostname resolution when it fails
+  + platform: add small backoff time before resync
+  + bridge: reapply port VLANs only when necessary
+  + platform: add nmp_utils_bridge_normalized_vlans_equal()
+  + platform: support reading bridge VLANs
+  + device: support reapplying bridge-port VLANs
+  + bridge: change the signature for
+    nm_platform_link_set_bridge_vlans()
+  + platform: add define for IFLA_BOND_SLAVE_PRIO
+  + lldp: fix multiple access to argument in logging macro
+  + lldp: fix crash dereferencing NULL pointer during debug logging
+  + policy: unblock the autoconnect for children when parent is
+    available
+
+-------------------------------------------------------------------
 Thu Aug 22 06:07:45 UTC 2024 - Jonathan Kang <songchuan.kang@suse.com>
 
 - Add NetworkManager-dont-enforce-ip-cleanup-on-device-deactivating.patch:

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Aug 19 07:58:36 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Add
+  0001-Make-DocPrinter-support-DynArrays-larger-than-2G.patch
+  0001-Make-DynArray-support-objects-larger-than-1-gigabyte.patch
+  to fix crashes when working with XML documents larger than 1 GB.
+
+-------------------------------------------------------------------
 Tue May  7 12:48:07 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 10

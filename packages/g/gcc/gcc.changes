@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Aug  1 10:53:40 UTC 2024 - Richard Biener <rguenther@suse.com>
+
+- Add libquadmath-devel package for GCC 14.
+- Bump GCC version to 14, leave -build flavor at 13.
+
+-------------------------------------------------------------------
+Wed Mar 20 09:48:44 UTC 2024 - Richard Biener <rguenther@suse.com>
+
+- Add conflicts where -build variants provide the non-build variant.
+
+-------------------------------------------------------------------
+Mon Mar 18 13:47:32 UTC 2024 - Richard Biener <rguenther@suse.com>
+
+- Add gcc, gcc-c++ and libstdc++-devel Provides to the -build flavor
+  of those packages.  Should fix build of boost in ALP.
+
+-------------------------------------------------------------------
 Wed Feb 14 09:27:54 UTC 2024 - Richard Biener <rguenther@suse.com>
 
 - Add gcc-build flavor for building ALP packages, but disabled for

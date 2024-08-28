@@ -993,4 +993,12 @@ As a side note Leap is affected as well by this. Might be worth back porting thi
     <comment></comment>
     <requestid>1194671</requestid>
   </revision>
+  <revision rev="89" vrev="2">
+    <srcmd5>2b578e9ebedf32d34e0801f6ef35d024</srcmd5>
+    <version>1.15.10</version>
+    <time>1724780292</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1196015</requestid>
+  </revision>
 </revisionlist>

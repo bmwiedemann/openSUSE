@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Aug 26 08:07:19 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.6.0:
+  + Allow HTTP/2 to be used with non-HTTP proxies
+- Changes from version 3.5.2:
+  + Strictly forbid NUL bytes in headers
+  + Fix minor leaks
+- Changes from version 3.5.1:
+  + Add `SOUP_METHOD_PATCH`
+  + websocket: Add `SoupWebsocketConnection:keepalive-pong-timeout`
+    property
+  + Increase maxmimum size of HTTP headers
+  + Fix `soup_uri_copy()` in Vala
+  + Fix leak in `soup_message_new_from_encoded_form()`
+  + multipart: Improve handling of messages missing termination
+  + logger:
+    - Fix request filter function being called with response user
+      data
+    - Fix response bodies never being logged if request bodies
+      aren't
+    - Add Soup-Host to logged headers for when Host is missing
+  + cookies:
+    - Fix incorrect logic in determining same-site cookies
+    - Limit the Max-Age to 1 year
+  + cookie-jar-db: Explicitly handle old databases lacking
+    same-site column
+
+-------------------------------------------------------------------
 Thu Oct 26 19:15:00 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.4.4:

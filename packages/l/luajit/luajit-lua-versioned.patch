@@ -41,7 +41,7 @@
  FILE_A= libluajit.a
  FILE_SO= libluajit.so
  FILE_MAN= luajit.1
-@@ -136,7 +137,7 @@ install: $(INSTALL_DEP)
+@@ -137,7 +138,7 @@ install: $(INSTALL_DEP)
  	  ( $(LDCONFIG) $(INSTALL_LIB) || : ) && \
  	  $(SYMLINK) $(INSTALL_SONAME) $(INSTALL_SHORT1) && \
  	  $(SYMLINK) $(INSTALL_SONAME) $(INSTALL_SHORT2) || :
@@ -71,7 +71,7 @@
  
  ##############################################################################
  #############################  COMPILER OPTIONS  #############################
-@@ -520,7 +521,7 @@ LIB_VMDEFP= $(LIB_VMDEF)
+@@ -527,7 +528,7 @@ LIB_VMDEFP= $(LIB_VMDEF)
  LUAJIT_O= luajit.o
  LUAJIT_A= libluajit.a
  LUAJIT_SO= libluajit.so
@@ -82,12 +82,12 @@
  ALL_HDRGEN= lj_bcdef.h lj_ffdef.h lj_libdef.h lj_recdef.h lj_folddef.h \
 --- a/src/luaconf.h
 +++ b/src/luaconf.h
-@@ -37,7 +37,7 @@
+@@ -51,7 +51,7 @@
  #endif
- #define LUA_LROOT	"/usr/local"
- #define LUA_LUADIR	"/lua/5.1/"
--#define LUA_LJDIR	"/luajit-2.1/"
-+#define LUA_LJDIR	"/luajit-5_1-2.1/"
  
- #ifdef LUA_ROOT
- #define LUA_JROOT	LUA_ROOT
+ #ifndef LUA_LJDIR
+-#define LUA_LJDIR	LUA_JROOT "/share/luajit-2.1"
++#define LUA_LJDIR	"/luajit-5_1-2.1/"
+ #endif
+ 
+ #define LUA_JPATH	";" LUA_LJDIR "/?.lua"

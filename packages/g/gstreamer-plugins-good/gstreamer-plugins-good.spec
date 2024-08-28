@@ -25,6 +25,13 @@
 %define _name gst-plugins-good
 %define gst_branch 1.0
 
+# Disable Qt6 on aarch64 and %%arm since GLES is used and not compatible here
+%ifarch aarch64 %arm
+%bcond_with qt6
+%else
+%bcond_without qt6
+%endif
+
 Name:           gstreamer-plugins-good
 Version:        1.24.7
 Release:        0
@@ -69,6 +76,7 @@ BuildRequires:  pkgconfig(Qt5Quick)
 BuildRequires:  pkgconfig(Qt5WaylandClient)
 BuildRequires:  pkgconfig(Qt5X11Extras)
 
+%if %{with qt6}
 BuildRequires:  qt6-gui-private-devel
 BuildRequires:  pkgconfig(Qt6Core)
 BuildRequires:  pkgconfig(Qt6Gui)
@@ -78,6 +86,7 @@ BuildRequires:  pkgconfig(Qt6Quick)
 BuildRequires:  pkgconfig(Qt6ShaderTools)
 BuildRequires:  pkgconfig(Qt6WaylandClient)
 BuildRequires:  pkgconfig(Qt6Widgets)
+%endif
 
 BuildRequires:  pkgconfig(caca)
 BuildRequires:  pkgconfig(cairo) >= 1.10.0
@@ -173,6 +182,7 @@ Enhances:       gstreamer-plugins-good
 %description qtqml
 This package provides the qmlglsink output plugin for gstreamer-plugins-good.
 
+%if %{with qt6}
 %package qtqml6
 Summary:        Qml6glsink plugin for gstreamer-plugins-good
 Group:          Productivity/Multimedia/Other
@@ -181,6 +191,7 @@ Enhances:       gstreamer-plugins-good
 
 %description qtqml6
 This package provides the qml6glsink output plugin for gstreamer-plugins-good.
+%endif
 
 %lang_package
 
@@ -202,6 +213,11 @@ export PYTHON=%{_bindir}/python3
 	-Ddoc=disabled \
 	-Drpicamsrc=disabled \
 	-Dv4l2-probe=true \
+%if %{with qt6}
+	-Dqt6=enabled \
+%else
+	-Dqt6=disabled \
+%endif
 	-Dqt-egl=disabled \
 	%{nil}
 %meson_build
@@ -314,8 +330,10 @@ fi
 %files qtqml
 %{_libdir}/gstreamer-%{gst_branch}/libgstqmlgl.so
 
+%if %{with qt6}
 %files qtqml6
 %{_libdir}/gstreamer-%{gst_branch}/libgstqml6.so
+%endif
 
 %files lang -f %{_name}-%{gst_branch}.lang
 
