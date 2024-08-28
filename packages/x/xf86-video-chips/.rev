@@ -178,4 +178,12 @@
   * Quiet -Wredundant-decls from xorg/os.h fallbacks for new libc functions</comment>
     <requestid>1161226</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>598781c1bd969a6c3600f8a9822fa552</srcmd5>
+    <version>1.5.0</version>
+    <time>1724873650</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1196987</requestid>
+  </revision>
 </revisionlist>

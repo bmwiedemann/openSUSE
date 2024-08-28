@@ -39,7 +39,7 @@ Supplements:    modalias(xorg-x11-server:pci:v0000102Cd*sv*sd*bc03sc*i*)
 # This was part of the xorg-x11-driver-video package up to version 7.6
 Conflicts:      xorg-x11-driver-video <= 7.6
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-ExcludeArch:    s390 s390x
+ExcludeArch:    aarch64 %{arm} s390 s390x
 %x11_abi_videodrv_req
 
 %description

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug 28 08:51:18 UTC 2024 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Disable build on aarch64 and %arm as it fails to build and
+  unlikely used on those archs
+
+-------------------------------------------------------------------
 Mon Mar 25 02:31:41 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 1.5.0
