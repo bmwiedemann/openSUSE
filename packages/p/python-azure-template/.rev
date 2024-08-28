@@ -364,4 +364,15 @@
     <comment></comment>
     <requestid>1196008</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>09e029673a27af16afd86508c96cadb0</srcmd5>
+    <version>0.1.0b4077576</version>
+    <time>1724873621</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 0.1.0b4077576
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1196416 from glaubitz)</comment>
+    <requestid>1196455</requestid>
+  </revision>
 </revisionlist>
