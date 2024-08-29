@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package guvcview
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2012 Malcolm J Lewis <malcolmlewis@opensuse.org>
 # Copyright (c) 2013 Marguerite Su <marguerite@opensuse.org>
 #
@@ -18,8 +18,8 @@
 #
 
 
-%define         sover0 2_0-2
-%define         sover1 2_1-2
+%define         sover0 2_2-2
+%define         sover1 2_2-2
 %global flavor @BUILD_FLAVOR@%{nil}
 
 %define pname guvcview
@@ -32,18 +32,20 @@
 %endif
 
 Name:           guvcview%{?psuffix}
-Version:        2.0.8
+Version:        2.1.0
 Release:        0
 # Reference to GPL-2.0 in some files?
 Summary:        GTK+ UVC Viewer and Capturer
-License:        GPL-3.0-only
+License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Video/Players
-URL:            http://guvcview.sourceforge.net/
+URL:            https://guvcview.sourceforge.net/
 Source0:        https://sourceforge.net/projects/guvcview/files/source/guvcview-src-%{version}.tar.bz2
 # PATCH-FIX-OPENSUSE guvcview-SUSE.patch -- use SUSE-specific paths
 Patch0:         guvcview-SUSE.patch
 # PATCH-FIX-OPENSUSE guvcview-qt5-nolibs_qt5names.patch -- use libraries from the GTK+ package
 Patch1:         guvcview-qt5-nolibs_qt5names.patch
+# PATCH-FIX-OPENSUSE 0001-Fix-build-with-GCC-14.patch -- Upstream already has the fix (although part of bigger changeset)
+Patch2:         0001-Fix-build-with-GCC-14.patch
 BuildRequires:  alsa-devel
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -57,7 +59,7 @@ BuildRequires:  libpulse-devel
 BuildRequires:  libtool
 BuildRequires:  libusb-1_0-devel
 BuildRequires:  libv4l-devel
-BuildRequires:  pkg-config
+BuildRequires:  pkgconfig
 BuildRequires:  portaudio-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(libavcodec)
@@ -72,7 +74,6 @@ BuildRequires:  pkgconfig(libgviewrender)
 BuildRequires:  pkgconfig(libgviewv4l2core)
 %endif
 Recommends:     %{name}-lang
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 A GTK interface for capturing and viewing video from devices
@@ -160,11 +161,17 @@ Provides translations to libgviewv4l2core.
 %prep
 %setup -q -n %{pname}-src-%{version}
 %patch -P 0 -p1
+%patch -P 2 -p1
 %if %{with qt5}
 %patch -P 1 -p1
 %endif
 
 %build
+# autoconf is too old in Leap
+%if 0%{?suse_version} == 1500
+sed -i '/AC_CHECK_INCLUDES_DEFAULT/d' configure.ac
+%endif
+
 autoreconf -fiv
 %configure --disable-debian-menu \
            --disable-desktop \
@@ -190,50 +197,37 @@ mv %{buildroot}%{_datadir}/pixmaps/%{pname}.png %{buildroot}%{_datadir}/pixmaps/
 
 %fdupes %{buildroot}
 
-rm -f %{buildroot}%{_libdir}/*.{la,a}
-
 %if ! %{with qt5}
-%post -n libgviewaudio-%{sover0} -p /sbin/ldconfig
-%postun -n libgviewaudio-%{sover0} -p /sbin/ldconfig
+rm %{buildroot}%{_libdir}/*.{la,a}
 
-%post -n libgviewencoder-%{sover1} -p /sbin/ldconfig
-%postun -n libgviewencoder-%{sover1} -p /sbin/ldconfig
-
-%post -n libgviewrender-%{sover1} -p /sbin/ldconfig
-%postun -n libgviewrender-%{sover1} -p /sbin/ldconfig
-
-%post -n libgviewv4l2core-%{sover1} -p /sbin/ldconfig
-%postun -n libgviewv4l2core-%{sover1} -p /sbin/ldconfig
+%ldconfig_scriptlets -n libgviewaudio-%{sover0}
+%ldconfig_scriptlets -n libgviewencoder-%{sover1}
+%ldconfig_scriptlets -n libgviewrender-%{sover1}
+%ldconfig_scriptlets -n libgviewv4l2core-%{sover1}
 %endif
 
 %files
-%defattr(-,root,root)
 %license COPYING
 %doc AUTHORS ChangeLog README.md
 %{_bindir}/%{name}
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/pixmaps/%{name}.png
-%{_mandir}/man1/%{name}.1%{ext_man}
+%{_mandir}/man1/%{name}.1%{?ext_man}
 
 %if ! %{with qt5}
 %files -n libgviewaudio-%{sover0}
-%defattr(-,root,root)
 %{_libdir}/libgviewaudio-*.so.*
 
 %files -n libgviewencoder-%{sover1}
-%defattr(-,root,root)
 %{_libdir}/libgviewencoder-*.so.*
 
 %files -n libgviewrender-%{sover1}
-%defattr(-,root,root)
 %{_libdir}/libgviewrender-*.so.*
 
 %files -n libgviewv4l2core-%{sover1}
-%defattr(-,root,root)
 %{_libdir}/libgviewv4l2core-*.so.*
 
 %files devel
-%defattr(-,root,root)
 %dir %{_includedir}/guvcview-2
 %dir %{_includedir}/guvcview-2/libgviewaudio
 %dir %{_includedir}/guvcview-2/libgviewencoder

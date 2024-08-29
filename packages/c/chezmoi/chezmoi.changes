@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Aug 27 16:57:37 UTC 2024 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 2.52.1:
+  - Fixes
+    cba7e40 fix: Set User-Agent header to chezmoi.io/version on all HTTP requests
+- Bump go version to 1.22 as per upstream go.mod
+
+-------------------------------------------------------------------
 Thu Aug  8 08:36:43 UTC 2024 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 2.52.0:

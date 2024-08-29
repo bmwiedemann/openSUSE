@@ -1,7 +1,7 @@
 #
 # spec file for package cutterff
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,16 @@
 
 
 Name:           cutterff
-Summary:        Video cutter that uses FFmpeg and GTK+
-Version:        1.0.2
+Version:        1.3
 Release:        0
-URL:            https://cutterff.sourceforge.io/
-Source0:        %{name}-%{version}-src.tar.bz2
-Source1:        %{name}.desktop
+Summary:        Video cutter that uses FFmpeg and GTK+
 License:        GPL-3.0-only
 Group:          Productivity/Multimedia/Video/Editors and Convertors
-
+URL:            https://cutterff.sourceforge.io/
+Source0:        https://master.dl.sourceforge.net/project/cutterff/%{version}/cutterff-%{version}-src.tar.bz2
+Source1:        %{name}.desktop
 BuildRequires:  desktop-file-utils
+BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(libavcodec)
 BuildRequires:  pkgconfig(libavformat)
@@ -58,7 +58,7 @@ export CPPFLAGS="%{optflags}"
 %install
 %make_install
 install -D -m644 %{name}.xpm %{buildroot}%{_datadir}/pixmaps/%{name}.xpm
-install -D -m644 %{S:1} %{buildroot}%{_datadir}/applications/%{name}.desktop
+install -D -m644 %{SOURCE1} %{buildroot}%{_datadir}/applications/%{name}.desktop
 
 %find_lang %{name}
 

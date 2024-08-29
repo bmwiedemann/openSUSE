@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug 27 16:05:59 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.8.2
+  * Do not attempt to read non-existing files
+
+-------------------------------------------------------------------
 Sun Jun 25 09:31:43 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.8.1

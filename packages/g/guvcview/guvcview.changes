@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Tue Aug 27 18:06:06 UTC 2024 - Dave Plater <davejplater@gmail.com>
+
+- Revert to ffmpeg-7
+
+-------------------------------------------------------------------
+Tue Aug 27 10:47:09 UTC 2024 - Dave Plater <davejplater@gmail.com>
+
+- Force ffmpeg-6 library use in order to fix build
+
+-------------------------------------------------------------------
+Tue Aug 27 08:07:37 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 2.1.0
+  * Fix audio channels deprecated warning for avcodec >= 58
+  * Add button click support for certain type of digital
+    microscopes
+  * Small fixes
+  * Fix minimum version for audio channels api deprecated
+    warning for avcodec >= 59
+  * Fix COPYING to the same GPL version (v2) as the source files
+  * Add binary fx filter
+  * Make guvcview skip metadada devices
+  * Enable OSD crosshair size to be changed in config
+- Add patch to fix build failure with GCC 14:
+  * 0001-Fix-build-with-GCC-14.patch
+- Fix license. There's no GPL-3.0-only file that could impact
+  the binaries license.
+- Spec cleanup
+
+-------------------------------------------------------------------
 Tue Feb 27 11:16:13 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.

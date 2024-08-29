@@ -17,29 +17,28 @@
 
 
 Name:           gap-orb
-Version:        4.9.0
+Version:        4.9.1
 Release:        0
 Summary:        GAP: Methods to enumerate Orbits
 License:        GPL-3.0-or-later
 Group:          Productivity/Scientific/Math
 URL:            https://gap-packages.github.io/orb
-
 #Git-Clone:	https://github.com/gap-packages/orb
 Source:         https://github.com/gap-packages/orb/releases/download/v%version/orb-%version.tar.gz
 BuildRequires:  autoconf
 BuildRequires:  automake
-BuildRequires:  gap-devel >= 4.9
+BuildRequires:  gap-devel >= 4.12
 BuildRequires:  gap-rpm-devel
 BuildRequires:  gmp-devel
 BuildRequires:  libtool
-Requires:       gap-core >= 4.9
+Requires:       gap-core >= 4.12
 Suggests:       gap-io >= 3.3
 
 %description
 The orb package is about enumerating orbits in various ways.
 
 %prep
-%setup -qn orb-%version
+%autosetup -n orb-%version
 
 %build
 ./configure --with-gaproot="%gapdir"

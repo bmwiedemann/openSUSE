@@ -17,7 +17,7 @@
 
 
 Name:           chezmoi
-Version:        2.52.0
+Version:        2.52.1
 Release:        0
 Summary:        A multi-host manager for dotfiles
 License:        MIT
@@ -26,7 +26,7 @@ URL:            https://chezmoi.io
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 Recommends:     git
-BuildRequires:  golang(API) >= 1.18
+BuildRequires:  golang(API) >= 1.22
 
 %description
 chezmoi is a manager for personal preference configs and state files

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Aug 27 15:52:56 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 4.9.1
+  * More hash functions now detect invalid input and return
+    `fail` instead of returning garbage (like hashes of random
+    memory blocks, or the constant 0) or even crashing.
+
+-------------------------------------------------------------------
 Sun Feb 12 11:00:43 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 4.9.0

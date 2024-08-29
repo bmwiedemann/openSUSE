@@ -522,4 +522,16 @@
 </comment>
     <requestid>1192637</requestid>
   </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>8a4f7bb85c548d81394d571ad1363e53</srcmd5>
+    <version>2.52.1</version>
+    <time>1724873372</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.52.1:
+  - Fixes
+    cba7e40 fix: Set User-Agent header to chezmoi.io/version on all HTTP requests
+- Bump go version to 1.22 as per upstream go.mod
+</comment>
+    <requestid>1196333</requestid>
+  </revision>
 </revisionlist>
