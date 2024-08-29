@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Aug 29 13:57:22 UTC 2024 - Dominique Leuenberger <dleuenberger@suse.com>
+
+- Move suggests for libz1 from patterns-base-base to
+  patterns-base-minimal_base: be nicer with CI consumers.
+
+-------------------------------------------------------------------
 Thu Aug 15 10:03:27 UTC 2024 - Thorsten Kukuk <kukuk@suse.com>
 
 - Remove nfsidmap, package got dropped

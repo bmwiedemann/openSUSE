@@ -935,4 +935,12 @@
     <comment></comment>
     <requestid>1194238</requestid>
   </revision>
+  <revision rev="108" vrev="54">
+    <srcmd5>ea3a7c03535ca17a4e6514a674e39ab2</srcmd5>
+    <version>20200505</version>
+    <time>1724939896</time>
+    <user>dimstar_suse</user>
+    <comment>- Move suggests for libz1 from patterns-base-base to
+  patterns-base-minimal_base: be nicer with CI consumers.</comment>
+  </revision>
 </revisionlist>

@@ -165,8 +165,6 @@ Suggests:       kernel-default
 Suggests:       libjack-devel
 # We have two providers for libcurl.so.4: libcurl4 and libcurl-mini4. Prefer the fully featured one
 Suggests:       libcurl4
-# We have two providers for libz.so.1: libz1 and libz1-ng-compat1. Favor the legacy one for now
-Suggests:       libz1
 # There are multiple providers for /usr/bin/openssl and openssl(cli); defaulting to openssl
 Suggests:       openssl
 # In line with above: the default openssl version is 1.1 for now; at the moment, the meta package does not provide all symbols needed
@@ -606,6 +604,8 @@ Requires:       branding
 Requires:       build-key
 Requires:       distribution-release
 Requires:       filesystem
+# We have two providers for libz.so.1: libz1 and libz1-ng-compat1. Favor the legacy one for now
+Suggests:       libz1
 # Tell the solver to default to the main product
 Suggests:       openSUSE-release
 %{obsolete_legacy_pattern minimal_base}
