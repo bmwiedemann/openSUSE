@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Aug 29 06:43:56 UTC 2024 - adrian@suse.de
+
+- Update to version 0.38:
+  * Fix 20-files-present-and-referenced against osc 1.9.0 (osclib_version 2.0)
+
+-------------------------------------------------------------------
 Mon Aug 12 12:07:26 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
 
 - Fix runtime requires: the source validator needs cmp -> Requires

@@ -768,4 +768,13 @@ last submission had wrong tar ball for unknown reason</comment>
     <comment></comment>
     <requestid>1193481</requestid>
   </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>b82285c214a9cf0c9478269594be37b0</srcmd5>
+    <version>0.38</version>
+    <time>1724939027</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.38:
+  * Fix 20-files-present-and-referenced against osc 1.9.0 (osclib_version 2.0)</comment>
+    <requestid>1197300</requestid>
+  </revision>
 </revisionlist>
