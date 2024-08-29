@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Aug 25 16:01:43 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Add patch:
+  * RigelEngine-fix-build-with-gcc14.patch
+
+-------------------------------------------------------------------
 Wed May 15 07:51:09 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro: allows us to eliminate usage of deprecated

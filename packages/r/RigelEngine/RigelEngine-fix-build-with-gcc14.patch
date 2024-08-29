@@ -1,0 +1,41 @@
+From 48efe3e3c5774310e1e44e78b61c6c832e48cb8a Mon Sep 17 00:00:00 2001
+From: Nikolai Wuttke <lethal_guitar128@web.de>
+Date: Sat, 25 May 2024 14:26:38 +0200
+Subject: [PATCH] Add missing includes
+
+---
+ 3rd_party/imgui-filebrowser/imfilebrowser.cpp | 3 +++
+ test/test_high_score_list.cpp                 | 3 +++
+ 2 files changed, 6 insertions(+)
+
+diff --git a/3rd_party/imgui-filebrowser/imfilebrowser.cpp b/3rd_party/imgui-filebrowser/imfilebrowser.cpp
+index a2113615..1784e2eb 100644
+--- a/3rd_party/imgui-filebrowser/imfilebrowser.cpp
++++ b/3rd_party/imgui-filebrowser/imfilebrowser.cpp
+@@ -25,6 +25,9 @@
+ 
+ #include <imgui.h>
+ 
++#include <algorithm>
++
++
+ ImGui::FileBrowser::FileBrowser(ImGuiFileBrowserFlags flags)
+     : width_(700), height_(450), flags_(flags),
+       openFlag_(false), closeFlag_(false), isOpened_(false), ok_(false),
+diff --git a/test/test_high_score_list.cpp b/test/test_high_score_list.cpp
+index b44b86bd..f2155ca6 100644
+--- a/test/test_high_score_list.cpp
++++ b/test/test_high_score_list.cpp
+@@ -21,6 +21,9 @@ RIGEL_DISABLE_WARNINGS
+ #include <catch.hpp>
+ RIGEL_RESTORE_WARNINGS
+ 
++#include <algorithm>
++
++
+ using namespace rigel;
+ using namespace data;
+ using namespace std;
+-- 
+2.46.0
+

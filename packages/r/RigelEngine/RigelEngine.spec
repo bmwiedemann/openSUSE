@@ -26,6 +26,7 @@ Group:          Amusements/Games/Action/Arcade
 URL:            https://github.com/lethal-guitar/RigelEngine
 Source:         %{name}-%{version}.tar.xz
 Patch0:         RigelEngine-fix-build-with-gcc13.patch
+Patch1:         RigelEngine-fix-build-with-gcc14.patch
 BuildRequires:  cmake >= 3.12
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(SDL2_mixer)
