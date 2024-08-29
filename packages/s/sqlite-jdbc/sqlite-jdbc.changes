@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Wed Aug 28 17:09:03 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * sqlite-jdbc-no-implicit-function-declaration.patch
+    + fix build with gcc 14
+
+-------------------------------------------------------------------
+Wed Jul 31 12:32:25 UTC 2024 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to v3.46.0.1
+  * Features
+    ~ add riscv64 binaries (a4a5d48)
+  * Fixes
+    ~ jdbc
+      + generated columns with stored in SQLite are not marked as
+        generated (429bbe4), closes #1132
+    ~ unscoped
+      + never return arch as aarch64 when running in a 32-bit JVM
+        (0c3db0b), closes #1127
+      + throw java.lang.ExceptionInInitializerError when calling
+        SQLiteConfig.Pragma.values() (ec0a524), closes #1123
+  * Build
+    ~ deps
+      + bump org.apache.maven.plugins:maven-javadoc-plugin
+        (c375a40)
+      + bump org.graalvm.sdk:nativeimage from 24.0.1 to 24.0.2
+        (d50d5e6)
+      + bump org.codehaus.mojo:versions-maven-plugin (14e07d4)
+      + bump surefire.version from 3.3.0 to 3.3.1 (edac56b)
+      + bump org.codehaus.mojo:versions-maven-plugin (f411591)
+      + bump org.jreleaser:jreleaser-maven-plugin (2376d03)
+      + bump org.apache.maven.plugins:maven-jar-plugin (d5394ea)
+      + bump andymckay/cancel-action from 0.4 to 0.5 (99aa8d9)
+      + bump surefire.version from 3.2.5 to 3.3.0 (b64f8fb)
+      + bump org.apache.maven.plugins:maven-help-plugin (235143b)
+      + bump org.apache.maven.plugins:maven-javadoc-plugin
+        (50ef887)
+      + bump org.apache.maven.plugins:maven-enforcer-plugin
+        (efd5449)
+      + bump org.sonatype.plugins:nexus-staging-maven-plugin
+        (dbbf4e0)
+    ~ deps-dev
+      + bump org.assertj:assertj-core from 3.26.0 to 3.26.3
+        (7293f78)
+      + bump org.junit.jupiter:junit-jupiter (b80a294)
+      + bump org.assertj:assertj-core from 3.25.3 to 3.26.0
+        (6188b48)
+  * Documentation
+    ~ add riscv64 in the supported OS table (2b72c94)
+    ~ mention temporary databases (0035ec4)
+
+-------------------------------------------------------------------
 Mon May 27 09:31:22 UTC 2024 - Anton Shvetz <shvetz.anton@gmail.com>
 
 - Update to v3.46.0.0

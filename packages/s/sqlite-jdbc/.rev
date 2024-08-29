@@ -560,4 +560,12 @@
 </comment>
     <requestid>1177298</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>8b39ce6dc690dab7171bae5fa5e7d1e0</srcmd5>
+    <version>3.46.0.1</version>
+    <time>1724939005</time>
+    <user>dimstar_suse</user>
+    <comment>fix build with gcc 14</comment>
+    <requestid>1197131</requestid>
+  </revision>
 </revisionlist>

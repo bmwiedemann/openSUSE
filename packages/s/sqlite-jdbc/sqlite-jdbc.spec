@@ -17,7 +17,7 @@
 
 
 %{!?make_build:%global make_build make %{?_smp_mflags}}
-%global version 3.46.0.0
+%global version 3.46.0.1
 %global amalgamation_version 3460000
 %global debug_package %{nil}
 Name:           sqlite-jdbc
@@ -29,6 +29,7 @@ Group:          Development/Libraries/Java
 URL:            https://github.com/xerial/%{name}
 Source0:        %{url}/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        https://sqlite.org/2024/sqlite-amalgamation-%{amalgamation_version}.zip
+Patch0:         sqlite-jdbc-no-implicit-function-declaration.patch
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
@@ -61,6 +62,7 @@ API documentation for %{name}.
 
 %prep
 %setup -q
+%patch -P 0 -p1
 
 find src/main/resources \
 	\( -name \*.so -or -name \*.dylib -or -name \*.dll \) \
