@@ -24,6 +24,8 @@ Summary:        Python bindings for the XML Security Library
 License:        MIT
 URL:            https://github.com/mehcode/python-xmlsec
 Source:         https://files.pythonhosted.org/packages/source/x/xmlsec/xmlsec-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM gh#xmlsec/python-xmlsec#325
+Patch0:         fix-lxml-incompat.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module hypothesis}
 BuildRequires:  %{python_module lxml >= 3.8.0}
@@ -74,7 +76,7 @@ donttest="test_sign_case5"
 %doc README.rst
 %license LICENSE
 %{python_sitearch}/xmlsec
-%{python_sitearch}/xmlsec-%{version}*-info
+%{python_sitearch}/xmlsec-%{version}.dist-info
 %{python_sitearch}/xmlsec*.so
 
 %changelog
