@@ -1,0 +1,24 @@
+Index: aranym-1.1.0/configure
+===================================================================
+--- aranym-1.1.0.orig/configure
++++ aranym-1.1.0/configure
+@@ -10743,6 +10743,7 @@ else
+     #include <net/if.h>
+     #include <net/if_tun.h>
+     #endif
++    #include <string.h>
+ 
+ int
+ main ()
+Index: aranym-1.1.0/configure.ac
+===================================================================
+--- aranym-1.1.0.orig/configure.ac
++++ aranym-1.1.0/configure.ac
+@@ -539,6 +539,7 @@ AC_CACHE_CHECK([whether TUN/TAP is suppo
+     #include <net/if.h>
+     #include <net/if_tun.h>
+     #endif
++    #include <string.h>
+   ], [
+     struct ifreq ifr;
+     memset(&ifr, 0, sizeof(ifr));

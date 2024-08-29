@@ -28,6 +28,7 @@ Source1:        https://downloads.sourceforge.net/aranym/afros812.zip
 Patch0:         pow10.patch
 Patch1:         lto.patch
 Patch2:         includes.patch
+Patch3:         configure.patch
 BuildRequires:  automake
 BuildRequires:  gcc-c++
 BuildRequires:  mpfr-devel

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Aug 28 17:14:24 UTC 2024 - Andreas Schwab <schwab@linux-m68k.org>
+
+- configure.patch: fix missing header in configure test
+
+-------------------------------------------------------------------
 Fri Apr  5 16:56:56 UTC 2024 - Andreas Schwab <schwab@linux-m68k.org>
 
 - Use full URL for sources

@@ -372,4 +372,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1167155</requestid>
   </revision>
+  <revision rev="47" vrev="7">
+    <srcmd5>68201738e785cafd1f9561ffa408005e</srcmd5>
+    <version>1.1.0</version>
+    <time>1724939009</time>
+    <user>dimstar_suse</user>
+    <comment>- configure.patch: fix missing header in configure test (forwarded request 1197129 from AndreasSchwab)</comment>
+    <requestid>1197130</requestid>
+  </revision>
 </revisionlist>
