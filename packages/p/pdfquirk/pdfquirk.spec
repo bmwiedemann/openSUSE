@@ -48,6 +48,9 @@ cp %{SOURCE1} resources/
 %build
 
 %cmake_qt6 -DUSE_QT6=yes
+# First build the localization files and copy them to the resources directory
+cmake --build build -- pdfquirk_lrelease
+cp build/src/*.qm resources/
 %{qt6_build}
 
 %install
