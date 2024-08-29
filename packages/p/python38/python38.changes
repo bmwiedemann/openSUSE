@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Aug 28 16:54:34 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Add CVE-2024-8088-inf-loop-zipfile_Path.patch to prevent
+  malformed payload to cause infinite loops in zipfile.Path
+  (bsc#1229704, CVE-2024-8088).
+
+-------------------------------------------------------------------
 Thu Aug  8 19:30:36 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Adding bso1227999-reproducible-builds.patch fixing bsc#1227999

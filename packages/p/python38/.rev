@@ -914,4 +914,14 @@ Core and Builtins
 </comment>
     <requestid>1193121</requestid>
   </revision>
+  <revision rev="53" vrev="8">
+    <srcmd5>2ad38abae9c931d12e2b8c3d7204fe63</srcmd5>
+    <version>3.8.19</version>
+    <time>1724939006</time>
+    <user>dimstar_suse</user>
+    <comment>- Add CVE-2024-8088-inf-loop-zipfile_Path.patch to prevent
+  malformed payload to cause infinite loops in zipfile.Path
+  (bsc#1229704, CVE-2024-8088).</comment>
+    <requestid>1197121</requestid>
+  </revision>
 </revisionlist>
