@@ -226,4 +226,19 @@
     <comment></comment>
     <requestid>1191263</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>6534a40c002e7445a9011eca85f15164</srcmd5>
+    <version>1.35.0</version>
+    <time>1724939025</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.35.0:
+  * Allow fallback with recipes in submodules
+  * Allow [private] attribute on assignments
+  * Generate .sha256sum files for release artifacts
+  * Clarify that subsequent dependencies run immediately after recipe
+  * Remove Config::run
+  * Remove logging
+  * Group commands under dedicated heading in --help output (forwarded request 1197296 from rrahl0)</comment>
+    <requestid>1197297</requestid>
+  </revision>
 </revisionlist>

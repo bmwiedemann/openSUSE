@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Aug 29 05:59:36 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.35.0:
+  * Allow fallback with recipes in submodules
+  * Allow [private] attribute on assignments
+  * Generate .sha256sum files for release artifacts
+  * Clarify that subsequent dependencies run immediately after recipe
+  * Remove Config::run
+  * Remove logging
+  * Group commands under dedicated heading in --help output
+
+-------------------------------------------------------------------
 Fri Aug  2 21:22:11 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 1.34.0:
