@@ -1,0 +1,11 @@
+--- jfx/modules/javafx.graphics/src/main/native-prism-es2/x11/X11GLContext.c	2024-08-28 18:04:53.316706782 +0200
++++ jfx/modules/javafx.graphics/src/main/native-prism-es2/x11/X11GLContext.c	2024-08-28 18:27:44.753905337 +0200
+@@ -275,7 +275,7 @@
+                 dlsym(RTLD_DEFAULT, "glXSwapIntervalSGI");
+ 
+         if (ctxInfo->glXSwapIntervalSGI == NULL) {
+-            ctxInfo->glXSwapIntervalSGI = glXGetProcAddress("glXSwapIntervalSGI");
++            ctxInfo->glXSwapIntervalSGI = (void*)glXGetProcAddress("glXSwapIntervalSGI");
+         }
+ 
+     }

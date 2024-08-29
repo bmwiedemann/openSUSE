@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Aug 28 16:32:12 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Added patches:
+  * openjfx-freetype.patch
+  * openjfx-libprism.patch
+    + fix new errors with gcc 14
+- Modified patch:
+  * openjfx-pango.patch
+    + fix new error with gcc 14
+
+-------------------------------------------------------------------
 Tue Apr 30 12:33:40 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream tag 17.0.11+3 (April 2024 CPU)

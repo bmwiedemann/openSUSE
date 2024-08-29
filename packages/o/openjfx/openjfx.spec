@@ -63,6 +63,8 @@ Source28:       pom-web.xml
 Source29:       build.xml
 Patch0:         openjfx-pango.patch
 Patch1:         openjfx-no-return-in-nonvoid-function.patch
+Patch2:         openjfx-freetype.patch
+Patch3:         openjfx-libprism.patch
 BuildRequires:  ant
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
@@ -113,6 +115,8 @@ Requires:       %{name} = %{version}-%{release}
 %setup -q -n %{jfx_dir}
 %patch -P 0 -p1
 %patch -P 1 -p1
+%patch -P 2 -p1
+%patch -P 3 -p1
 
 #prep for javafx.graphics
 cp -a modules/javafx.graphics/src/jslc/antlr modules/javafx.graphics/src/main/antlr3

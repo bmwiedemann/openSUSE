@@ -1,0 +1,11 @@
+--- jfx/modules/javafx.graphics/src/main/native-font/freetype.c	2024-08-28 18:04:53.293373270 +0200
++++ jfx/modules/javafx.graphics/src/main/native-font/freetype.c	2024-08-28 18:05:34.693689191 +0200
+@@ -520,7 +520,7 @@
+         if (info->lenCoords > SIZE_MAX - DEFAULT_LEN_COORDS) goto fail;
+         info->lenCoords += DEFAULT_LEN_COORDS;
+ 
+-        jbyte* newPointCoords = (jfloat*)realloc(info->pointCoords, info->lenCoords * sizeof(jfloat));
++        jfloat* newPointCoords = (jfloat*)realloc(info->pointCoords, info->lenCoords * sizeof(jfloat));
+         if (newPointCoords == NULL) goto fail;
+         info->pointCoords = newPointCoords;
+     }

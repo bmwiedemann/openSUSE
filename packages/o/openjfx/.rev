@@ -31,4 +31,12 @@
     <comment>April 2024 CPU fixes</comment>
     <requestid>1170992</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>aa4d154233465ed9d0414416c5936aed</srcmd5>
+    <version>17.0.11.0</version>
+    <time>1724939003</time>
+    <user>dimstar_suse</user>
+    <comment>fix build with gcc 14</comment>
+    <requestid>1197122</requestid>
+  </revision>
 </revisionlist>
