@@ -1,0 +1,23 @@
+---
+ configure.ac           |    2 ++
+ replace/bsd-snprintf.c |    2 ++
+ 2 files changed, 4 insertions(+)
+
+--- a/configure.ac
++++ b/configure.ac
+@@ -578,6 +578,7 @@ if test "x$ac_cv_func_snprintf" = xyes;
+ 	AC_RUN_IFELSE(
+ 		[AC_LANG_SOURCE([[
+ #include <stdio.h>
++#include <stdlib.h>
+ int main(void){char b[5];snprintf(b,5,"123456789");exit(b[4]!='\0');}
+ 		]])],
+ 		[AC_MSG_RESULT(yes)],
+@@ -601,6 +602,7 @@ if test "x$ac_cv_func_asprintf" != xyes
+ 		[AC_LANG_SOURCE([[
+ #include <sys/types.h>
+ #include <stdio.h>
++#include <stdlib.h>
+ #include <stdarg.h>
+ 
+ int x_snprintf(char *str,size_t count,const char *fmt,...)
