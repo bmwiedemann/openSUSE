@@ -56,6 +56,7 @@ Requires:       lib%{name}-%{soversion} >= %{version}
 %autosetup -p1
 
 %build
+export CFLAGS="${optflags} -Wno-unused-parameter -Wno-unused-variable -Wno-deprecated-declarations -Wno-incompatible-pointer-types"
 %meson
 %meson_build
 

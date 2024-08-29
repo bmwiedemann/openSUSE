@@ -15,4 +15,13 @@
     <comment></comment>
     <requestid>1190426</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>14c3e5e6e95d257b9da3d15a6edfe1f2</srcmd5>
+    <version>0.1.1</version>
+    <time>1724939017</time>
+    <user>dimstar_suse</user>
+    <comment>- fix build by using -Wno-unused-parameter -Wno-unused-variable
+  -Wno-deprecated-declarations -Wno-incompatible-pointer-types (forwarded request 1197221 from rrahl0)</comment>
+    <requestid>1197222</requestid>
+  </revision>
 </revisionlist>

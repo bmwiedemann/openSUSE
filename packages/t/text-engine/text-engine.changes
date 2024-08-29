@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Aug 29 01:22:11 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- fix build by using -Wno-unused-parameter -Wno-unused-variable
+  -Wno-deprecated-declarations -Wno-incompatible-pointer-types
+
+-------------------------------------------------------------------
 Tue Jul 30 08:27:03 UTC 2024 - ming li <mli@suse.com>
 
 - Update to version 0.1.1
