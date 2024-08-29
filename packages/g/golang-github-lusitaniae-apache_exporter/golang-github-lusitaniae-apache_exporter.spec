@@ -59,7 +59,7 @@ Source3:        apparmor-usr.bin.%{targetname}
 BuildRequires:  fdupes
 BuildRequires:  golang-github-prometheus-promu
 %if 0%{?rhel}
-BuildRequires:  golang >= 1.18
+BuildRequires:  golang >= 1.20
 Requires(pre):  shadow-utils
 %else
 BuildRequires:  golang(API) >= 1.20
