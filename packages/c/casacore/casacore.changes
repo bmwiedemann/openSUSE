@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Wed Aug 28 13:02:09 UTC 2024 - RN <R_Nik_C@proton.me>
+
+- Update to version 3.6.1:
+  * Version 3.6.1 fixes numpy 2.0 compatibility for the binary
+    wheels of python-casacore. Otherwise it is identical to
+    version 3.6.0
+- Update to version 3.6.0:
+  * Improvements on FITS import and export
+    (gh#casacore/casacore#1215, gh#casacore/casacore#1229,
+    gh#casacore/casacore#1251, gh#casacore/casacore#1267,
+    gh#casacore/casacore#1268, gh#casacore/casacore#1304,
+    gh#casacore/casacore#1318, gh#casacore/casacore#1341)
+  * Small improvements to Dysco (gh#casacore/casacore#1305,
+    gh#casacore/casacore#1313, gh#casacore/casacore#1337,
+    gh#casacore/casacore#1343)
+  * C++ modernizations (gh#casacore/casacore#1185,
+    gh#casacore/casacore#1199, gh#casacore/casacore#1271,
+    gh#casacore/casacore#1280, gh#casacore/casacore#1284,
+    gh#casacore/casacore#1288, gh#casacore/casacore#1289,
+    gh#casacore/casacore#1294, gh#casacore/casacore#1296,
+    gh#casacore/casacore#1298, gh#casacore/casacore#1309,
+    gh#casacore/casacore#1316, gh#casacore/casacore#1353,
+    gh#casacore/casacore#1355)
+  * Build system and CI improvements (gh#casacore/casacore#1219,
+    gh#casacore/casacore#1236, gh#casacore/casacore#1252,
+    gh#casacore/casacore#1315, gh#casacore/casacore#1328,
+    gh#casacore/casacore#1330, gh#casacore/casacore#1334,
+    gh#casacore/casacore#1335, gh#casacore/casacore#1349)
+  * Code cleanup (gh#casacore/casacore#1204,
+    gh#casacore/casacore#1245, gh#casacore/casacore#1269,
+    gh#casacore/casacore#1277, gh#casacore/casacore#1279,
+    gh#casacore/casacore#1300, gh#casacore/casacore#1301,
+    gh#casacore/casacore#1302)
+  * TaQL improvements (gh#casacore/casacore#1221,
+    gh#casacore/casacore#1232, gh#casacore/casacore#1244,
+    gh#casacore/casacore#1247, gh#casacore/casacore#1259,
+    gh#casacore/casacore#1260, gh#casacore/casacore#1263,
+    gh#casacore/casacore#1270, gh#casacore/casacore#1276,
+    gh#casacore/casacore#1299)
+  * Add new SI prefixes quetta, ronna, ronto and quecto
+    (gh#casacore/casacore#1257)
+  * Fix several issues that arose in CASA use
+    (gh#casacore/casacore#1200, gh#casacore/casacore#1227,
+    gh#casacore/casacore#1246, gh#casacore/casacore#1262,
+    gh#casacore/casacore#1290, gh#casacore/casacore#1291,
+    gh#casacore/casacore#1292, gh#casacore/casacore#1329,
+    gh#casacore/casacore#1323)
+  * Fix data race in images toWord / toPixel
+    (gh#casacore/casacore#1235)
+  * Update e-mail address (gh#casacore/casacore#1339)
+- Removed casacore-mirlib-gcc14-compat.patch because no longer 
+  needed
+
+-------------------------------------------------------------------
 Wed May 22 05:19:22 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Drop casacore-drop-mirlib.patch: Superseded in favour of better

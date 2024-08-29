@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package casacore
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -26,7 +26,7 @@
 
 %global flavor @BUILD_FLAVOR@%{nil}
 
-%define sover 7
+%define sover 8
 %global shlib lib%{name}%{sover}
 %define srcname casacore
 
@@ -66,7 +66,7 @@
 # /SECTION
 
 Name:           %{pname}
-Version:        3.5.0
+Version:        3.6.1
 Release:        0
 Summary:        A suite of C++ libraries for radio astronomy data processing
 License:        LGPL-2.0-or-later
@@ -75,8 +75,6 @@ Source:         https://github.com/casacore/casacore/archive/v%{version}.tar.gz#
 Source99:       casacore-rpmlintrc
 # PATCH-FIX-UPSTREAM casacore-fitsio-header.patch badshah400@gmail.com -- Fix location of cfitsio headers used in sources
 Patch1:         casacore-fitsio-header.patch
-# PATCH-FIX-UPSTREAM casacore-mirlib-gcc14-compat.patch gh#casacore/casacore#1344 badshah400@gmail.com -- Fix builds against GCC 14; patch taken from upstream commit
-Patch2:         https://github.com/casacore/casacore/commit/a4516a86f935dea17502727c34f91955b73209ef.patch#/casacore-mirlib-gcc14-compat.patch
 BuildRequires:  bison
 BuildRequires:  blas-devel
 BuildRequires:  cmake
