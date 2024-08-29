@@ -1122,4 +1122,16 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1193384</requestid>
   </revision>
+  <revision rev="77" vrev="4">
+    <srcmd5>ff4dbad0c3ddac4680c67bdfc134ffee</srcmd5>
+    <version>4.15.0+git.1719822011.7a2c0a7f</version>
+    <time>1724939060</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove 0001-Use-Python-3-for-all-scripts-bsc-1065966.patch use
+  %python3_fix_shebang_path instead of it.
+- Use the %python_module to be able to build for the system python
+  version.
+- Remove amt-ws support as openwsman is not available on SLES16</comment>
+    <requestid>1197446</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Aug 29 07:48:56 UTC 2024 - Peter Varkoly <varkoly@suse.com>
+
+- Remove 0001-Use-Python-3-for-all-scripts-bsc-1065966.patch use
+  %python3_fix_shebang_path instead of it.
+- Use the %python_module to be able to build for the system python
+  version.
+- Remove amt-ws support as openwsman is not available on SLES16
+
+-------------------------------------------------------------------
 Mon Aug  5 09:19:27 UTC 2024 - Peter Varkoly <varkoly@suse.com>
 
 - Adapt requirements for devel package

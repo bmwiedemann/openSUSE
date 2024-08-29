@@ -16,8 +16,7 @@
 #
 
 
-%define agent_list aliyun alom amt amt_ws apc apc_snmp aws azure_arm bladecenter brocade cisco_mds cisco_ucs compute docker drac5 dummy eaton_snmp eaton_ssh emerson eps evacuate gce hds_cb hpblade ibmblade ibmz ibm_powervs ibm_vpc ifmib ilo ilo_moonshot ilo_mp ilo_ssh intelmodular ipdu ipmilan ironic kdump ldom lpar mpath netio openstack powerman pve raritan rcd_serial redfish rhevm rsa rsb sanbox2 sbd scsi vbox virsh vmware vmware_rest wti xenapi zvm
-
+%define agent_list aliyun alom amt apc apc_snmp aws azure_arm bladecenter brocade cisco_mds cisco_ucs compute docker drac5 dummy eaton_snmp eaton_ssh emerson eps evacuate gce hds_cb hpblade ibmblade ibmz ibm_powervs ibm_vpc ifmib ilo ilo_moonshot ilo_mp ilo_ssh intelmodular ipdu ipmilan ironic kdump ldom lpar mpath netio openstack powerman pve raritan rcd_serial redfish rhevm rsa rsb sanbox2 sbd scsi vbox virsh vmware vmware_rest wti xenapi zvm
 Name:           fence-agents
 Summary:        Set of unified programs capable of host isolation ("fencing")
 Version:        4.15.0+git.1719822011.7a2c0a7f
@@ -26,7 +25,6 @@ License:        GPL-2.0-or-later AND LGPL-2.0-or-later
 Group:          Productivity/Clustering/HA
 URL:            https://github.com/ClusterLabs/fence-agents
 Source0:        %{name}-%{version}.tar.xz
-Patch1:         0001-Use-Python-3-for-all-scripts-bsc-1065966.patch
 
 %define boto3_br 1
 
@@ -36,7 +34,6 @@ Patch1:         0001-Use-Python-3-for-all-scripts-bsc-1065966.patch
 %global allfenceagents %(cat <<EOF
 fence-agents-alom \\
 fence-agents-amt \\
-fence-agents-amt-ws \\
 fence-agents-apc \\
 fence-agents-apc-snmp \\
 fence-agents-aws \\
@@ -87,6 +84,7 @@ fence-agents-zvm \\
 EOF)
 
 #Agents not in sles
+#fence-agents-amt-ws \\
 #fence-agents-cdu \\
 #fence-agents-cyberpower-ssh \\
 #fence-agents-ecloud \\
@@ -118,25 +116,21 @@ BuildRequires:  gcc
 ## man pages generating
 BuildRequires:  libxslt
 ## Python dependencies
-BuildRequires:  python3-devel
-BuildRequires:  python3-httplib2
-BuildRequires:  python3-pexpect
-BuildRequires:  python3-pycurl
-BuildRequires:  python3-requests
-%if 0%{?suse_version} > 1500
-BuildRequires:  python3-suds-community
-%else
-BuildRequires:  python3-suds
-%endif
+BuildRequires:  python-rpm-macros
+BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module httplib2}
+BuildRequires:  %{python_module pexpect}
+BuildRequires:  %{python_module pycurl}
+BuildRequires:  %{python_module requests}
+BuildRequires:  %{python_module suds}
 %if 0%{?fedora} || 0%{?centos} || 0%{?rhel}
 BuildRequires:  openwsman-python3
 %if %{boto3_br}
 BuildRequires:  python3-boto3
 %endif
 %else
-BuildRequires:  python3-openwsman
 %if %{boto3_br}
-BuildRequires:  python3-boto3
+BuildRequires:  %{python_module boto3}
 %endif
 %endif
 
@@ -208,6 +202,9 @@ rm -f %{buildroot}/%{_libdir}/%{name}/*.*a
 rm -f %{buildroot}/%{_libdir}/fence-virt/*.*a
 #%fdupes %buildroot%{_sbindir}
 #%fdupes %buildroot%{_datadir}/cluster
+%if %{defined python3_fix_shebang_path}
+%python3_fix_shebang_path %{buildroot}/%{_sbindir}/*
+%endif
 
 %check
 make check
@@ -283,15 +280,6 @@ This package serves as a catch-all for all supported fence agents.
 
 %files all
 
-%ifarch x86_64
-%package aliyun
-License:        Apache-2.0 AND GPL-2.0-or-later AND LGPL-2.0-or-later AND BSD-3-Clause AND MIT
-Group:          System Environment/Base
-Summary:        Fence agent for Alibaba Cloud (Aliyun)
-Requires:       fence-agents-common >= %{version}-%{release}
-Requires:       python3-jmespath >= 0.9.0
-Conflicts:      %{name} < %{version}-%{release}
-
 %package devel
 Summary:        Fence Agents for High Availability
 License:        GPL-2.0-only AND LGPL-2.1-only
@@ -309,6 +297,15 @@ development.
 %{_datadir}/pkgconfig/%{name}.pc
 %{_sbindir}/fence_dummy
 %{_mandir}/man8/fence_dummy*
+
+%ifarch x86_64
+%package aliyun
+License:        Apache-2.0 AND GPL-2.0-or-later AND LGPL-2.0-or-later AND BSD-3-Clause AND MIT
+Group:          System Environment/Base
+Summary:        Fence agent for Alibaba Cloud (Aliyun)
+Requires:       fence-agents-common >= %{version}-%{release}
+Requires:       python3-jmespath >= 0.9.0
+Conflicts:      %{name} < %{version}-%{release}
 
 %description aliyun
 The fence-agents-aliyun package contains a fence agent for Alibaba Cloud (Aliyun) instances.
@@ -352,26 +349,6 @@ Fence agent for AMT compatibile devices that are accessed via
 %files amt
 %{_sbindir}/fence_amt
 %{_mandir}/man8/fence_amt.8*
-
-%package amt-ws
-License:        Apache-2.0
-Summary:        Fence agent for Intel AMT (WS-Man) devices
-Requires:       fence-agents-common = %{version}-%{release}
-%if 0%{?fedora} || 0%{?centos} || 0%{?rhel}
-Requires:       openwsman-python3
-%else
-Requires:       python3-openwsman
-%endif
-Provides:       %{name}-amt_ws = %{version}-%{release}
-Obsoletes:      %{name}-amt_ws < %{version}-%{release}
-BuildArch:      noarch
-
-%description amt-ws
-Fence agent for AMT (WS-Man) devices.
-
-%files amt-ws
-%{_sbindir}/fence_amt_ws
-%{_mandir}/man8/fence_amt_ws.8*
 
 %package apc
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later
