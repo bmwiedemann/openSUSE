@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Mouse
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,22 +16,22 @@
 #
 
 
-Name:           perl-Mouse
-Version:        2.5.10
-Release:        0
 %define cpan_name Mouse
-Summary:        Moose minus the antlers
+Name:           perl-Mouse
+Version:        2.5.11
+Release:        0
+# v2.5.11 -> normalize -> 2.5.11
+%define cpan_version v2.5.11
 License:        Artistic-1.0 OR GPL-1.0-or-later
-Group:          Development/Libraries/Perl
-Url:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/S/SK/SKAJI/%{cpan_name}-v%{version}.tar.gz
+Summary:        Moose minus the antlers
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/S/SK/SKAJI/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(Devel::PPPort) >= 3.42
+BuildRequires:  perl(Devel::PPPort) >= 3.59
 BuildRequires:  perl(ExtUtils::ParseXS) >= 3.22
-BuildRequires:  perl(Module::Build) >= 0.400500
+BuildRequires:  perl(Module::Build) >= 0.4005
 BuildRequires:  perl(Module::Build::XSUtil) >= 0.19
 BuildRequires:  perl(Test::Exception)
 BuildRequires:  perl(Test::Fatal)
@@ -61,22 +61,21 @@ We're also going as light on dependencies as possible. Mouse currently has
 without XS, although it has an XS backend to make it much faster.
 
 %prep
-%setup -q -n %{cpan_name}-v%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version}
 
 %build
-perl Build.PL installdirs=vendor optimize="%{optflags}"
-./Build build flags=%{?_smp_mflags}
+perl Build.PL --installdirs=vendor optimize="%{optflags}"
+./Build build --flags=%{?_smp_mflags}
 
 %check
 ./Build test
 
 %install
-./Build install destdir=%{buildroot} create_packlist=0
+./Build install --destdir=%{buildroot} --create_packlist=0
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
-%doc Changes example minil.toml README.md
+%doc Changes example README.md
 %license LICENSE
 
 %changelog
