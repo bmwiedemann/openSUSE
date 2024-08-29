@@ -18,9 +18,9 @@
 
 %define cpan_name Prima
 Name:           perl-Prima
-Version:        1.73000
+Version:        1.74000
 Release:        0
-%define cpan_version 1.73
+%define cpan_version 1.74
 #Upstream: SUSE-Public-Domain
 License:        AGPL-3.0-only AND BSD-2-Clause
 Summary:        Perl graphic toolkit
@@ -29,6 +29,8 @@ Source0:        https://cpan.metacpan.org/authors/id/K/KA/KARASIK/%{cpan_name}-%
 Source1:        cpanspec.yml
 BuildRequires:  perl
 BuildRequires:  perl-macros
+Provides:       perl(Prima) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 # MANUAL BEGIN
 BuildRequires:  giflib-devel

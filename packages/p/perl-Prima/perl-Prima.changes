@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Aug 20 05:30:44 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.74
+   see /usr/share/doc/packages/perl-Prima/Changes
+
+  1.74 2024-08-24
+   - implement antialiased polygon fill in C, use it in the
+     AA emulation in Prima::Drawable::Antialias instead of the old algorithm
+   - all AA plotting is supported internally, Prima::Drawable::Antialias is
+     not used for the emulated AA drawing
+   - add kb:: definitions for the internet keyboards
+   - fixes for Strawberry Perl 5.40
+
+-------------------------------------------------------------------
 Fri May 10 03:08:34 UTC 2024 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.73
