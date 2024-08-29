@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Aug 11 05:28:46 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.004008
+   see /usr/share/doc/packages/perl-JSON-MaybeXS/Changes
+
+  1.004008 - 2024-08-10
+   - improved boolean testing
+
+  1.004007 - 2024-08-03
+   - remove unneeded tests that fail on perls < 5.36
+
+  1.004006 - 2024-08-02
+   - is_bool() now recognizes core booleans (perl 5.36+). Note that JSON::PP
+     4.11 and Cpanel::JSON::XS 4.38 are required to properly encode them.
+
+-------------------------------------------------------------------
 Mon May  1 03:08:44 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.004005

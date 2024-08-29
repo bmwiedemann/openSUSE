@@ -1,7 +1,7 @@
 #
 # spec file for package perl-JSON-MaybeXS
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define cpan_name JSON-MaybeXS
 Name:           perl-JSON-MaybeXS
-Version:        1.004005
+Version:        1.004008
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Use Cpanel::JSON::XS with a fallback to JSON::XS and JSON::PP
@@ -28,12 +28,10 @@ Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(Cpanel::JSON::XS) >= 2.3310
-BuildRequires:  perl(JSON::PP) >= 2.27300
+BuildRequires:  perl(JSON::PP) >= 2.27
 BuildRequires:  perl(Test::More) >= 0.88
 BuildRequires:  perl(Test::Needs) >= 0.002006
-Requires:       perl(Cpanel::JSON::XS) >= 2.3310
-Requires:       perl(JSON::PP) >= 2.27300
+Requires:       perl(JSON::PP) >= 2.27
 Recommends:     perl(Cpanel::JSON::XS) >= 2.3310
 %{perl_requires}
 
