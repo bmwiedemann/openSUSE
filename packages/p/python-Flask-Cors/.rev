@@ -82,4 +82,16 @@
     <comment></comment>
     <requestid>1114847</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>95f8e97be700790895c1786be6ffa503</srcmd5>
+    <version>4.0.1</version>
+    <time>1724938994</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1194158 from yeey
+
+- version update to 4.0.1
+    * Address CVE-2024-1681 which is a log injection vulnerability
+      when the log level is set to debug by @aneshujevic in :issue:`351`</comment>
+    <requestid>1197029</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Aug 13 17:14:40 UTC 2024 - Guang Yee <gyee@suse.com>
+
+- version update to 4.0.1
+  * Address CVE-2024-1681 which is a log injection vulnerability
+    when the log level is set to debug by @aneshujevic in :issue:`351`
+
+-------------------------------------------------------------------
 Mon Oct  2 10:55:56 UTC 2023 - pgajdos@suse.com
 
 - version update to 4.0.0

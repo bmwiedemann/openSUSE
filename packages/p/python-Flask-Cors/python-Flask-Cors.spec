@@ -1,7 +1,7 @@
 #
 # spec file for package python-Flask-Cors
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-Flask-Cors
-Version:        4.0.0
+Version:        4.0.1
 Release:        0
 Summary:        A Flask extension adding a decorator for CORS support
 License:        MIT
 URL:            https://github.com/corydolphin/flask-cors
-Source:         https://files.pythonhosted.org/packages/source/F/Flask-Cors/Flask-Cors-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/F/Flask-Cors/flask_cors-%{version}.tar.gz
 BuildRequires:  %{python_module Flask >= 0.9}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
@@ -38,7 +38,7 @@ A Flask extension for handling Cross Origin Resource Sharing (CORS),
 making cross-origin AJAX possible.
 
 %prep
-%setup -q -n Flask-Cors-%{version}
+%setup -q -n flask_cors-%{version}
 
 %build
 %python_build
