@@ -1,7 +1,7 @@
 #
 # spec file for package openssh-askpass-gnome
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define _name openssh
 Name:           openssh-askpass-gnome
-Version:        9.6p1
+Version:        9.8p1
 Release:        0
 Summary:        A GNOME-Based Passphrase Dialog for OpenSSH
 License:        BSD-2-Clause

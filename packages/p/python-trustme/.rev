@@ -117,4 +117,13 @@
     <comment>- Switch to pyproject and autosetup macros.</comment>
     <requestid>1154940</requestid>
   </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>53d122f44816567782cc83c3cc2589f5</srcmd5>
+    <version>1.1.0</version>
+    <time>1724938969</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch add-aki-to-child-certs.patch
+  * Also add Authority Key Identifiers to children certs.</comment>
+    <requestid>1196403</requestid>
+  </revision>
 </revisionlist>

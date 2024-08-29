@@ -25,6 +25,8 @@ License:        Apache-2.0 OR MIT
 URL:            https://github.com/python-trio/trustme
 Source:         https://files.pythonhosted.org/packages/source/t/trustme/trustme-%{version}.tar.gz
 Patch0:         fix2038.patch
+# PATCH-FIX-UPSTREAM gh#python-trio/trustme#642
+Patch1:         add-aki-to-child-certs.patch
 BuildRequires:  %{python_module cryptography}
 BuildRequires:  %{python_module idna}
 BuildRequires:  %{python_module pip}

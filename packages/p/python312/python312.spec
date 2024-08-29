@@ -36,6 +36,12 @@
 %bcond_without general
 %endif
 
+%if 0%{?do_profiling}
+%bcond_without profileopt
+%else
+%bcond_with profileopt
+%endif
+
 %define         python_pkg_name python312
 %if "%{python_pkg_name}" == "%{primary_python}"
 %define primary_interpreter 1
@@ -103,9 +109,8 @@
 # pyexpat.cpython-35m-armv7-linux-gnueabihf
 # _md5.cpython-38m-x86_64-linux-gnu.so
 %define dynlib() %{sitedir}/lib-dynload/%{1}.cpython-%{abi_tag}-%{archname}-%{_os}%{?_gnu}%{?armsuffix}.so
-%bcond_without profileopt
 Name:           %{python_pkg_name}%{psuffix}
-Version:        3.12.3
+Version:        3.12.5
 Release:        0
 Summary:        Python 3 Interpreter
 License:        Python-2.0
@@ -136,6 +141,13 @@ Source99:       python.keyring
 # They are listed here to work around missing functionality in rpmbuild,
 # which would otherwise exclude them from distributed src.rpm files.
 Source100:      PACKAGING-NOTES
+# PATCH-FEATURE-UPSTREAM F00251-change-user-install-location.patch bsc#[0-9]+ mcepl@suse.com
+# Fix installation in /usr/local (boo#1071941), originally from Fedora
+# https://src.fedoraproject.org/rpms/python3.12/blob/rawhide/f/00251-change-user-install-location.patch
+# Set values of prefix and exec_prefix in distutils install command
+# to /usr/local if executable is /usr/bin/python* and RPM build
+# is not detected to make pip and distutils install into separate location
+Patch02:        F00251-change-user-install-location.patch
 # support finding packages in /usr/local, install to /usr/local by default
 Patch07:        python-3.3.0b1-localpath.patch
 # replace DATE, TIME and COMPILER by fixed definitions to aid reproducible builds
@@ -171,6 +183,9 @@ Patch39:        CVE-2023-52425-libexpat-2.6.0-backport-15.6.patch
 # PATCH-FIX-OPENSUSE fix-test-recursion-limit-15.6.patch gh#python/cpython#115083
 # Skip some failing tests in test_compile for i586 arch in 15.6.
 Patch40:        fix-test-recursion-limit-15.6.patch
+# PATCH-FIX-SLE docs-docutils_014-Sphinx_420.patch bsc#[0-9]+ mcepl@suse.com
+# related to gh#python/cpython#119317
+Patch41:        docs-docutils_014-Sphinx_420.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -212,7 +227,6 @@ BuildRequires:  gettext
 BuildRequires:  readline-devel
 BuildRequires:  sqlite-devel
 BuildRequires:  timezone
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(ncurses)
 BuildRequires:  pkgconfig(tk)
 BuildRequires:  pkgconfig(x11)
@@ -428,6 +442,9 @@ other applications.
 %setup -q -n %{tarname}
 %autopatch -p1
 
+# Fix devhelp doc build gh#python/cpython#120150
+echo "master_doc = 'contents'" >> Doc/conf.py
+
 # drop Autoconf version requirement
 sed -i 's/^AC_PREREQ/dnl AC_PREREQ/' configure.ac
 
@@ -551,7 +568,12 @@ EXCLUDE="$EXCLUDE test_faulthandler"
 %endif
 # some tests break in QEMU
 %if 0%{?qemu_user_space_build}
-EXCLUDE="$EXCLUDE test_faulthandler test_multiprocessing_forkserver test_multiprocessing_spawn test_os test_posix test_signal test_socket test_subprocess"
+# test_faulthandler: test_register_chain is racy
+# test_os: test_fork_warns_when_non_python_thread_exists fails
+# test_posix: qemu does not support fexecve in test_fexecve
+# test_signal: qemu crashes in test_stress_modifying_handlers
+# test_socket: many CmsgTrunc tests fail
+EXCLUDE="$EXCLUDE test_faulthandler test_os test_posix test_signal test_socket"
 %endif
 
 # This test (part of test_uuid) requires real network interfaces
@@ -663,7 +685,6 @@ done
 cp %{SOURCE19} idle%{python_version}.desktop
 sed -i -e 's:idle3:idle%{python_version}:g' idle%{python_version}.desktop
 install -m 644 -D -t %{buildroot}%{_datadir}/applications idle%{python_version}.desktop
-%suse_update_desktop_file idle%{python_version}
 
 cp %{SOURCE20} idle%{python_version}.appdata.xml
 sed -i -e 's:idle3.desktop:idle%{python_version}.desktop:g' idle%{python_version}.appdata.xml
@@ -762,6 +783,9 @@ LD_LIBRARY_PATH=. ./python -O -c "from py_compile import compile; compile('$FAIL
     cd $FAILDIR
     while read package modules; do
         for module in $modules; do
+%if 0%{?suse_version} >= 1599
+            test $module = nis && continue
+%endif
             ln import_failed.py $module.py
             pushd __pycache__
             for i in import_failed*; do
@@ -776,23 +800,19 @@ echo %{sitedir}/_import_failed > %{buildroot}/%{sitedir}/site-packages/zzzz-impo
 
 %if %{with general}
 %files -n %{python_pkg_name}-tk
-%defattr(644, root, root, 755)
 %{sitedir}/tkinter
 %{dynlib _tkinter}
 
 %files -n %{python_pkg_name}-curses
-%defattr(644, root, root, 755)
 %{sitedir}/curses
 %{dynlib _curses}
 
 %files -n %{python_pkg_name}-dbm
-%defattr(644, root, root, 755)
 %{sitedir}/dbm
 %{dynlib _dbm}
 %{dynlib _gdbm}
 
 %files -n %{python_pkg_name}
-%defattr(644, root, root, 755)
 %dir %{sitedir}
 %dir %{sitedir}/lib-dynload
 %{sitedir}/sqlite3
@@ -803,7 +823,6 @@ echo %{sitedir}/_import_failed > %{buildroot}/%{sitedir}/site-packages/zzzz-impo
 %endif
 
 %files -n %{python_pkg_name}-idle
-%defattr(644, root, root, 755)
 %{sitedir}/idlelib
 %dir %{_sysconfdir}/idle%{python_version}
 %config %{_sysconfdir}/idle%{python_version}/*
@@ -840,11 +859,9 @@ echo %{sitedir}/_import_failed > %{buildroot}/%{sitedir}/site-packages/zzzz-impo
 %postun -n libpython%{so_version} -p /sbin/ldconfig
 
 %files -n libpython%{so_version}
-%defattr(644, root,root)
 %{_libdir}/libpython%{python_abi}.so.%{so_major}.%{so_minor}
 
 %files -n %{python_pkg_name}-tools
-%defattr(644, root, root, 755)
 %{sitedir}/turtledemo
 %if %{primary_interpreter}
 %{_bindir}/2to3
@@ -853,7 +870,6 @@ echo %{sitedir}/_import_failed > %{buildroot}/%{sitedir}/site-packages/zzzz-impo
 %doc %{_docdir}/%{name}/Tools
 
 %files -n %{python_pkg_name}-devel
-%defattr(644, root, root, 755)
 %{_libdir}/libpython%{python_abi}.so
 %if %{primary_interpreter}
 %{_libdir}/libpython3.so
@@ -861,7 +877,6 @@ echo %{sitedir}/_import_failed > %{buildroot}/%{sitedir}/site-packages/zzzz-impo
 %{_libdir}/pkgconfig/*
 %{_includedir}/python%{python_abi}
 %{sitedir}/config-%{python_abi}-*
-%defattr(755, root, root)
 %{_bindir}/python%{python_abi}-config
 %if %{primary_interpreter}
 %{_bindir}/python3-config
@@ -874,7 +889,6 @@ echo %{sitedir}/_import_failed > %{buildroot}/%{sitedir}/site-packages/zzzz-impo
 %{_datadir}/gdb/auto-load/%{_libdir}/libpython%{python_abi}.so.%{so_major}.%{so_minor}-gdb.py
 
 %files -n %{python_pkg_name}-testsuite
-%defattr(644, root, root, 755)
 %{sitedir}/test
 # %%{sitedir}/*/test
 # %%{sitedir}/*/tests
@@ -893,7 +907,6 @@ echo %{sitedir}/_import_failed > %{buildroot}/%{sitedir}/site-packages/zzzz-impo
 %dir %{sitedir}/tkinter
 
 %files -n %{python_pkg_name}-base
-%defattr(644, root, root, 755)
 # docs
 %dir %{_docdir}/%{name}
 %doc %{_docdir}/%{name}/README.rst

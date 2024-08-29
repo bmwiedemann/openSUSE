@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Aug 27 14:36:48 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 3.0
+  * Breaking Changes
+    + From version 3.0, the jar distributed to Maven Central is now
+      compiled to Java 1.8 bytecode, and is not compatible with
+      previous versions of Java.
+      Developers who use Java 1.7 earlier can still depend upon
+      hamcrest-2.2.jar.
+  * Improvements
+    + FileMatchersTest simplification
+    + License cleanup
+- Removed patches:
+  * 0001-Fix-build-with-OpenJDK-11.patch
+    + not needed any more
+
+-------------------------------------------------------------------
 Wed Feb 21 09:10:46 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Use %patch -P N instead of deprecated %patchN.

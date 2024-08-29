@@ -14,11 +14,11 @@ index f0ea07e7b..35dcf45f1 100644
  	$(LD) -o $@ $(SSHOBJS) $(LDFLAGS) -lssh -lopenbsd-compat $(LIBS) $(GSSLIBS) $(CHANNELLIBS)
  
  sshd$(EXEEXT): libssh.a	$(LIBCOMPAT) $(SSHDOBJS)
--	$(LD) -o $@ $(SSHDOBJS) $(LDFLAGS) -lssh -lopenbsd-compat $(SSHDLIBS) $(LIBS) $(GSSLIBS) $(K5LIBS) $(CHANNELLIBS) $(LIBWTMPDB)
-+	$(LD) -o $@ $(SSHDOBJS) $(LDFLAGS) -lssh -lopenbsd-compat $(SSHDLIBS) $(LIBS) $(GSSLIBS) $(K5LIBS) $(CHANNELLIBS) $(LIBWTMPDB) $(LIBSYSTEMD)
+-	$(LD) -o $@ $(SSHDOBJS) $(LDFLAGS) -lssh -lopenbsd-compat $(SSHDLIBS) $(LIBS) $(CHANNELLIBS) $(LIBWTMPDB)
++	$(LD) -o $@ $(SSHDOBJS) $(LDFLAGS) -lssh -lopenbsd-compat $(SSHDLIBS) $(LIBS) $(CHANNELLIBS) $(LIBWTMPDB) $(LIBSYSTEMD)
  
- scp$(EXEEXT): $(LIBCOMPAT) libssh.a $(SCP_OBJS)
- 	$(LD) -o $@ $(SCP_OBJS) $(LDFLAGS) -lssh -lopenbsd-compat $(LIBS)
+ sshd-session$(EXEEXT): libssh.a	$(LIBCOMPAT) $(SSHD_SESSION_OBJS)
+ 	$(LD) -o $@ $(SSHD_SESSION_OBJS) $(LDFLAGS) -lssh -lopenbsd-compat $(SSHDLIBS) $(LIBS) $(GSSLIBS) $(K5LIBS) $(CHANNELLIBS) $(LIBWTMPDB)
 diff --git a/configure.ac b/configure.ac
 index a12c6f7ad..860df3379 100644
 --- a/configure.ac
@@ -106,7 +106,7 @@ index 86caf83b2..8b413190b 100644
  #ifdef CUSTOM_SYS_AUTH_RECORD_LOGIN
  	if (li->type == LTYPE_LOGIN &&
  	    !sys_auth_record_login(li->username,li->hostname,li->line,
-@@ -1476,6 +1486,88 @@ wtmpdb_write_entry(struct logininfo *li)
+@@ -1476,6 +1486,91 @@ wtmpdb_write_entry(struct logininfo *li)
  }
  #endif
  
@@ -171,9 +171,12 @@ index 86caf83b2..8b413190b 100644
 +
 +  free(dbus_path);
 +
-+  if (sd_bus_flush(bus) < 0)
++  if (sd_bus_flush(bus) < 0) {
++    sd_bus_unref(bus);
 +    return (0);
++  }
 +
++  sd_bus_unref(bus);
 +  return (1);
 +}
 +

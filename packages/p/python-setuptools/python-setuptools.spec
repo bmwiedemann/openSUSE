@@ -16,7 +16,6 @@
 #
 
 
-%define skip_python2 1
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
@@ -31,7 +30,7 @@
 %define mypython python
 %{?sle15_python_module_pythons}
 Name:           python-setuptools%{psuffix}
-Version:        70.1.1
+Version:        72.1.0
 Release:        0
 Summary:        Download, build, install, upgrade, and uninstall Python packages
 License:        Apache-2.0 AND MIT AND BSD-2-Clause AND Python-2.0
@@ -54,6 +53,7 @@ BuildRequires:  %{python_module filelock >= 3.4.0}
 BuildRequires:  %{python_module ini2toml-lite >= 0.9}
 BuildRequires:  %{python_module jaraco.develop >= 7.21}
 BuildRequires:  %{python_module jaraco.envs >= 2.2}
+BuildRequires:  %{python_module jaraco.packaging >= 10.0}
 BuildRequires:  %{python_module jaraco.path >= 3.2.0}
 BuildRequires:  %{python_module jaraco.test}
 BuildRequires:  %{python_module pip >= 19.1}
@@ -128,6 +128,8 @@ donttest="(test_apply_pyproject_equivalent_to_setupcfg and https)"
 donttest+=" or test_pbr_integration"
 # test_example_file_in_sdist wants wheel.whl
 donttest+=" or test_example_file_in_sdist"
+# looks for .exe files that we do not ship
+donttest+=" or test_wheel_includes_cli_scripts"
 %pytest -rfE -n auto -k "not ($donttest)"
 %endif
 

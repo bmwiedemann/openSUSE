@@ -602,4 +602,13 @@ Personally I would make this even &quot;required&quot; instead of
    see /usr/share/doc/packages/perl-Net-DNS/Changes (forwarded request 1173772 from tinita)</comment>
     <requestid>1174136</requestid>
   </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>bdb4c9950f5e6526dc90163408196ff7</srcmd5>
+    <version>1.460.0</version>
+    <time>1724938958</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 1.460.0 (1.46)
+   see /usr/share/doc/packages/perl-Net-DNS/Changes (forwarded request 1195929 from tinita)</comment>
+    <requestid>1196230</requestid>
+  </revision>
 </revisionlist>

@@ -2026,4 +2026,13 @@ Now one could consider building emacs with gsettings support (both debian and fe
   game dir '/var/games/emacs': Permission denied (boo#1228058)</comment>
     <requestid>1194712</requestid>
   </revision>
+  <revision rev="192" vrev="7">
+    <srcmd5>0a41e0f4a74089be8dfcdce856b37711</srcmd5>
+    <version>29.4</version>
+    <time>1724938977</time>
+    <user>dimstar_suse</user>
+    <comment>- flymake-tests fails with gcc14 on 32bit architectures ... therefore
+  use gcc13 here</comment>
+    <requestid>1196456</requestid>
+  </revision>
 </revisionlist>

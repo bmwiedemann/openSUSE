@@ -37,14 +37,14 @@ Index: openssh-9.3p2/Makefile.in
 ===================================================================
 --- openssh-9.3p2.orig/Makefile.in
 +++ openssh-9.3p2/Makefile.in
-@@ -24,6 +24,7 @@ SSH_PROGRAM=@bindir@/ssh
+@@ -27,6 +27,7 @@ SFTP_SERVER=$(libexecdir)/sftp-server
  ASKPASS_PROGRAM=$(libexecdir)/ssh-askpass
  SFTP_SERVER=$(libexecdir)/sftp-server
  SSH_KEYSIGN=$(libexecdir)/ssh-keysign
 +SSH_KEYCAT=$(libexecdir)/ssh-keycat
+ SSHD_SESSION=$(libexecdir)/sshd-session
  SSH_PKCS11_HELPER=$(libexecdir)/ssh-pkcs11-helper
  SSH_SK_HELPER=$(libexecdir)/ssh-sk-helper
- SSH_LDAP_HELPER=$(libexecdir)/ssh-ldap-helper
 @@ -57,6 +58,7 @@ CHANNELLIBS=@CHANNELLIBS@
  K5LIBS=@K5LIBS@
  GSSLIBS=@GSSLIBS@
@@ -53,12 +53,12 @@ Index: openssh-9.3p2/Makefile.in
  LIBEDIT=@LIBEDIT@
  LIBFIDO2=@LIBFIDO2@
  LIBWTMPDB=@LIBWTMPDB@
-@@ -75,7 +77,7 @@ MKDIR_P=@MKDIR_P@
+@@ -65,7 +66,7 @@ EXEEXT=@EXEEXT@
  
  .SUFFIXES: .lo
  
--TARGETS=ssh$(EXEEXT) sshd$(EXEEXT) ssh-add$(EXEEXT) ssh-keygen$(EXEEXT) ssh-keyscan${EXEEXT} ssh-keysign${EXEEXT} ssh-pkcs11-helper$(EXEEXT) ssh-agent$(EXEEXT) scp$(EXEEXT) sftp-server$(EXEEXT) sftp$(EXEEXT) ssh-sk-helper$(EXEEXT)
-+TARGETS=ssh$(EXEEXT) sshd$(EXEEXT) ssh-add$(EXEEXT) ssh-keygen$(EXEEXT) ssh-keyscan${EXEEXT} ssh-keysign${EXEEXT} ssh-pkcs11-helper$(EXEEXT) ssh-agent$(EXEEXT) scp$(EXEEXT) sftp-server$(EXEEXT) sftp$(EXEEXT) ssh-sk-helper$(EXEEXT) ssh-keycat$(EXEEXT)
+-TARGETS=ssh$(EXEEXT) sshd$(EXEEXT) sshd-session$(EXEEXT) ssh-add$(EXEEXT) ssh-keygen$(EXEEXT) ssh-keyscan${EXEEXT} ssh-keysign${EXEEXT} ssh-pkcs11-helper$(EXEEXT) ssh-agent$(EXEEXT) scp$(EXEEXT) sftp-server$(EXEEXT) sftp$(EXEEXT) ssh-sk-helper$(EXEEXT)
++TARGETS=ssh$(EXEEXT) sshd$(EXEEXT) sshd-session$(EXEEXT) ssh-add$(EXEEXT) ssh-keygen$(EXEEXT) ssh-keyscan${EXEEXT} ssh-keysign${EXEEXT} ssh-pkcs11-helper$(EXEEXT) ssh-agent$(EXEEXT) scp$(EXEEXT) sftp-server$(EXEEXT) sftp$(EXEEXT) ssh-sk-helper$(EXEEXT) ssh-keycat$(EXEEXT)
  
  TARGETS += cavstest-ctr$(EXEEXT) cavstest-kdf$(EXEEXT)
  
@@ -99,9 +99,9 @@ Index: openssh-9.3p2/openbsd-compat/port-linux-sshd.c
 ===================================================================
 --- openssh-9.3p2.orig/openbsd-compat/port-linux-sshd.c
 +++ openssh-9.3p2/openbsd-compat/port-linux-sshd.c
-@@ -53,6 +53,20 @@ extern Authctxt *the_authctxt;
+@@ -54,6 +54,20 @@ extern Authctxt *the_authctxt;
+ extern Authctxt *the_authctxt;
  extern int inetd_flag;
- extern int rexeced_flag;
  
 +/* Wrapper around is_selinux_enabled() to log its return value once only */
 +int
@@ -129,14 +129,14 @@ Index: openssh-9.3p2/openbsd-compat/port-linux-sshd.c
  {
  	const char *reqlvl;
  	char *role;
-@@ -329,16 +343,16 @@ sshd_selinux_setup_pam_variables(void)
+@@ -319,16 +333,16 @@ sshd_selinux_setup_pam_variables(void)
  
  	ssh_selinux_get_role_level(&role, &reqlvl);
  
 -	rv = do_pam_putenv("SELINUX_ROLE_REQUESTED", role ? role : "");
 +	rv = set_it("SELINUX_ROLE_REQUESTED", role ? role : "");
  
- 	if (inetd_flag && !rexeced_flag) {
+ 	if (inetd_flag) {
  		use_current = "1";
  	} else {
  		use_current = "";

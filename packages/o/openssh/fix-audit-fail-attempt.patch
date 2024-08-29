@@ -1,0 +1,23 @@
+Index: openssh-9.8p1/sshd-session.c
+===================================================================
+--- openssh-9.8p1.orig/sshd-session.c
++++ openssh-9.8p1/sshd-session.c
+@@ -1624,9 +1624,6 @@ cleanup_exit(int i)
+ 			}
+ 		}
+ 	}
+-	/* Override default fatal exit value when auth was attempted */
+-	if (i == 255 && auth_attempted)
+-		_exit(EXIT_AUTH_ATTEMPTED);
+ #ifdef SSH_AUDIT_EVENTS
+ 	/* done after do_cleanup so it can cancel the PAM auth 'thread' */
+        if (the_active_state != NULL &&
+@@ -1636,5 +1633,8 @@ cleanup_exit(int i)
+ #endif
+ 
+ 	clobber_stack();
++	/* Override default fatal exit value when auth was attempted */
++	if (i == 255 && auth_attempted)
++		_exit(EXIT_AUTH_ATTEMPTED);
+ 	_exit(i);
+ }

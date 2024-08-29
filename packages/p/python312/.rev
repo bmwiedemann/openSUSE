@@ -1051,4 +1051,41 @@
     <comment></comment>
     <requestid>1168659</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>b9d2fb63b2fb5b44f4c83a76c677706d</srcmd5>
+    <version>3.12.5</version>
+    <time>1724938947</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.12.5:
+  - Tests
+    - gh-59022: Add tests for pkgutil.extend_path(). Patch by
+      Andreas Stocker.
+    - gh-99242: os.getloadavg() may throw OSError when
+      running regression tests under certain conditions (e.g.
+      chroot). This error is now caught and ignored, since
+      reporting load average is optional.
+    - gh-121084: Fix test_typing random leaks. Clear typing ABC
+      caches when running tests for refleaks (-R option): call
+      _abc_caches_clear() on typing abstract classes and their
+      subclasses. Patch by Victor Stinner.
+    - gh-121160: Add a test for
+      readline.set_history_length(). Note that this test may fail
+      on readline libraries.
+    - gh-121200: Fix test_expanduser_pwd2() of
+      test_posixpath. Call getpwnam() to get pw_dir, since it
+      can be different than getpwall() pw_dir. Patch by Victor
+      Stinner.
+    - gh-121188: When creating the JUnit XML file, regrtest
+      now escapes characters which are invalid in XML, such
+      as the chr(27) control character used in ANSI escape
+      sequences. Patch by Victor Stinner.
+  - Security
+    - gh-121957: Fixed missing audit events around interactive
+      use of Python, now also properly firing for python -i, as
+      well as for python -m asyncio. The event in question is
+      cpython.run_stdin.
+    - gh-122133: Authenticate the socket connection for the
+      socket.socketpair() fallback on platforms where AF_UNIX is</comment>
+    <requestid>1192365</requestid>
+  </revision>
 </revisionlist>

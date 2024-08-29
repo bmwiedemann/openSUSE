@@ -1,7 +1,7 @@
 #
 # spec file for package python-executing
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,9 +22,10 @@ Version:        2.0.1
 Release:        0
 Summary:        Get the currently executing AST node of a frame, and other information
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/alexmojaki/executing
 Source:         https://files.pythonhosted.org/packages/source/e/executing/executing-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM Based on gh#alexmojaki/executing#83
+Patch0:         support-new-python-3.12.patch
 BuildRequires:  %{python_module asttokens}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module littleutils}
@@ -42,7 +43,7 @@ BuildArch:      noarch
 Get the currently executing AST node of a frame, and other information
 
 %prep
-%setup -q -n executing-%{version}
+%autosetup -p1 -n executing-%{version}
 
 %build
 %pyproject_wheel
@@ -58,6 +59,6 @@ Get the currently executing AST node of a frame, and other information
 %doc README.md
 %license LICENSE.txt
 %{python_sitelib}/executing
-%{python_sitelib}/executing-%{version}*-info
+%{python_sitelib}/executing-%{version}.dist-info
 
 %changelog

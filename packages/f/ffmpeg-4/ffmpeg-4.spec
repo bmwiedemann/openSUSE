@@ -133,6 +133,7 @@ Patch19:        0001-avfilter-af_stereowiden-Check-length.patch
 Patch20:        ffmpeg-CVE-2023-50010.patch
 Patch21:        ffmpeg-4-CVE-2024-32230.patch
 Patch22:        ffmpeg-c99.patch
+Patch23:        0001-libavcodec-arm-mlpdsp_armv5te-fix-label-format-to-wo.patch
 BuildRequires:  ladspa-devel
 BuildRequires:  libgsm-devel
 BuildRequires:  libmp3lame-devel

@@ -18,10 +18,10 @@
 
 %define cpan_name ExtUtils-Config
 Name:           perl-ExtUtils-Config
-Version:        0.9.0
+Version:        0.10.0
 Release:        0
-# 0.009 -> normalize -> 0.9.0
-%define cpan_version 0.009
+# 0.010 -> normalize -> 0.10.0
+%define cpan_version 0.010
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Wrapper for perl's configuration
 URL:            https://metacpan.org/release/%{cpan_name}

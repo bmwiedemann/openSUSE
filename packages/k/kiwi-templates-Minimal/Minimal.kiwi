@@ -416,7 +416,7 @@
 
     <packages type="image" profiles="kvm-and-xen-grub-bls">
         <package name="grub2-x86_64-efi" arch="x86_64"/>
-        <package name="grub2-arm-efi" arch="aarch64"/>
+        <package name="grub2-arm64-efi" arch="aarch64"/>
     </packages>
 
     <packages type="image" profiles="VMware">

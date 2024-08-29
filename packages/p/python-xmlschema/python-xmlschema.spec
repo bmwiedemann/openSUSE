@@ -24,6 +24,8 @@ Summary:        An XML Schema validator and decoder
 License:        MIT
 URL:            https://github.com/sissaschool/xmlschema
 Source:         https://files.pythonhosted.org/packages/source/x/xmlschema/xmlschema-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE Based on https://github.com/sissaschool/xmlschema/issues/412
+Patch0:         support-new-python-3.12.patch
 BuildRequires:  %{python_module elementpath >= 3.0.0}
 BuildRequires:  %{python_module lxml}
 BuildRequires:  %{python_module pip}

@@ -59,6 +59,7 @@ enable smartd.service
 enable smartd_generate_opts.path
 enable snapper-cleanup.timer
 enable snapper-timeline.timer
+enable soft-reboot-cleanup.service
 enable storage-fixup.service
 enable systemd-pstore.service
 enable unbound-anchor.timer

@@ -35,6 +35,8 @@ Patch2:         python-iniparse-no-six.patch
 Patch3:         python311-compat.patch
 # PATCH-FIX-UPSTREAM: python3117.patch gh#candlepin/python-iniparse#29
 Patch4:         python3117.patch
+# PATCH-FIX-UPSTREAM Based on gh#candlepin/python-iniparse#32
+Patch5:         use-load-tests.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module testsuite}
@@ -54,7 +56,6 @@ are preserved when data is updated), and is more convenient to use.
 %autosetup -p1 -n iniparse-%{version}
 
 chmod 644 html/index.html
-sed -i "/.*test_multiprocessing.*/d" tests/__init__.py # NOTE(saschpe): Doesn't work and I'm lazy
 
 %build
 %pyproject_wheel

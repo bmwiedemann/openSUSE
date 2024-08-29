@@ -3933,4 +3933,40 @@ Use SUSE- proprietary prefix until SPDX upstream accepts ImageMagick as license 
     <comment></comment>
     <requestid>1193480</requestid>
   </revision>
+  <revision rev="301" vrev="1">
+    <srcmd5>53c3e1143822109d759bfdbc88771f00</srcmd5>
+    <version>7.1.1.37</version>
+    <time>1724938960</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 7.1.1.37
+  * Bump azure/trusted-signing-action from 0.3.20 to 0.4.0 #7518
+  * Silence warning and fix HEIC_COMPUTE_NUMERIC_VERSION definition when heic delegate is disabled. #7516
+  * protect macro arguments with parens 86cb2b1
+  * eliminate compiler warnings d90d8b4
+  * correct copyright year 115271e
+  * Ignore multiple exif and xmp profiles for the same jxl frame and fix reading those profiles per frame. c301208
+  * read/write in chunks fff3058
+  * optimize fwrite() arguments ada6785
+  * Renamed Output folder to Artifacts. 2a69677
+  * cancel interactive window selection with right button press ea2a2db
+  * cosmetic 712bde4
+  * eliminate compiler warning 9a9a25c
+  * eliminate compiler warning 0bd1687
+  * Make images mandatory in the issue template. c01fd37
+  * Added extra header detection for avif files. 9fc0590
+  * allow SeekBlob() to set an offset beyond the end of the blob 27c3f99
+  * be less forgiving for invalid image indexes 25db2e5
+  * Fixed problem with empty macros (#7562) 9fda5f2
+  * Added missing null checks for RequestOpenCLDevice. f85448e
+  * Added missing null check for AcquireOpenCLCommandQueue. 295e9c8
+  * persist app1 jpeg profile (ImageMagick/ImageMagick#4713) f0357c7
+  * Fixed build error. b3dd431
+  * Remove some of the dependencies for the macos-13 build. d0bce95
+  * parentheses is the plural of parenthesis 1fac80a
+  * distribute quantization error for -dither FloydSteinberg -depth 5b2825b
+  * release 8a0da9f
+  * properly set image byte order 40f6599
+  * set max colormap size for remap 1ffe565</comment>
+    <requestid>1196236</requestid>
+  </revision>
 </revisionlist>

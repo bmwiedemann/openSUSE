@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Aug 25 17:43:03 UTC 2024 - Enrico Belleri <kilgore.trout@idesmi.eu>
+
+- Exclude third_party from obscpio
+
+-------------------------------------------------------------------
+Sat Jul  6 12:33:24 UTC 2024 - Enrico Belleri <kilgore.trout@idesmi.eu>
+
+- Update to version 3.7.2:
+  * aomedia:3520: get_cubic_kernel_dbl: Assertion `0 <= x && x < 1'
+    failed.
+  * aomedia:3526: alloc_compressor_data() is called during every
+    aom_codec_control() call on the encoder. Note that this partially
+    reverts the fix for bug aomedia:3349.
+  * b/310457427 and b/310766628: Only use rec_sse in CBR mode.
+
+-------------------------------------------------------------------
 Tue Dec  5 19:20:33 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.7.1:

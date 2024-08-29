@@ -5,7 +5,7 @@
 
 --- a/Doc/using/configure.rst
 +++ b/Doc/using/configure.rst
-@@ -631,13 +631,11 @@ macOS Options
+@@ -640,13 +640,11 @@ macOS Options
  
  See ``Mac/README.rst``.
  
@@ -21,7 +21,7 @@
     Create a Python.framework rather than a traditional Unix install. Optional
 --- a/Misc/NEWS
 +++ b/Misc/NEWS
-@@ -13428,7 +13428,7 @@ C API
+@@ -13832,7 +13832,7 @@ C API
  - bpo-40939: Removed documentation for the removed ``PyParser_*`` C API.
  
  - bpo-43795: The list in :ref:`limited-api-list` now shows the public name

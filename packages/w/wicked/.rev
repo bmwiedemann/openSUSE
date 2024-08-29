@@ -1933,4 +1933,19 @@
   [- 0002-increase-arp-retry-attempts-on-sending-bsc1218668.patch]</comment>
     <requestid>1188448</requestid>
   </revision>
+  <revision rev="105" vrev="2">
+    <srcmd5>c23ad544c7120342fbd5fa537be2ef30</srcmd5>
+    <version>0.6.76</version>
+    <time>1724938971</time>
+    <user>dimstar_suse</user>
+    <comment>- systemd: Fix wicked start failures because of dependency issue.
+  With the change to dbus-broker, wicked has to trigger dbus service start.
+  Use BindsTo= in favor of Requisite= (bsc#1229745,gh#openSUSE/wicked#1032,
+  gh#openSUSE/wicked#1033).
+  [+ 0002-systemd-use-Bindsto-in-favor-of-Requisite-bsc-1229745.patch]
+- compat-suse: fix dummy interfaces configuration with 
+  INTERFACETYPE=dummy (boo#1229555, gh#openSUSE/wicked#1031)
+  [+ 0001-compat-suse-repair-dummy-interfaces-boo-1229555.patch]</comment>
+    <requestid>1196999</requestid>
+  </revision>
 </revisionlist>

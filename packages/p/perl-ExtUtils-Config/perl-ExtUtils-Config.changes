@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Aug 17 05:30:27 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.10.0 (0.010)
+   see /usr/share/doc/packages/perl-ExtUtils-Config/Changes
+
+  0.010     2024-08-16 19:43:45+02:00 Europe/Brussels
+            Fix regression in serialize method
+
+-------------------------------------------------------------------
 Fri Apr 26 03:07:57 UTC 2024 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.009

@@ -80,4 +80,14 @@
   * handle new iphython cell code names</comment>
     <requestid>1124080</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>5a17600eff692ddfbf80c3053deefbe6</srcmd5>
+    <version>2.0.1</version>
+    <time>1724938950</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to autosetup macro.
+- Add patch support-new-python-3.12.patch:
+  * Support Python 3.13 (and backported to 3.12.5) AST changes for For.</comment>
+    <requestid>1195976</requestid>
+  </revision>
 </revisionlist>

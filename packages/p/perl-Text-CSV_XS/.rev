@@ -531,4 +531,16 @@
       * Strict won't hide previous error (issue 56) (forwarded request 1182917 from tinita)</comment>
     <requestid>1182964</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>5d553bff78943370ca88ff74b8eecf86</srcmd5>
+    <version>1.560.0</version>
+    <time>1724938956</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 1.560.0 (1.56)
+   see /usr/share/doc/packages/perl-Text-CSV_XS/ChangeLog
+  1.56	- 2024-08-09, H.Merijn Brand
+      * Yet another strict/comment_str conflict (issue 57)
+      * Strict affected by column_names (forwarded request 1195915 from tinita)</comment>
+    <requestid>1196228</requestid>
+  </revision>
 </revisionlist>

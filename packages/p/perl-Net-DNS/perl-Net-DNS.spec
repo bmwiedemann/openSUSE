@@ -18,10 +18,10 @@
 
 %define cpan_name Net-DNS
 Name:           perl-Net-DNS
-Version:        1.450.0
+Version:        1.460.0
 Release:        0
-# 1.45 -> normalize -> 1.450.0
-%define cpan_version 1.45
+# 1.46 -> normalize -> 1.460.0
+%define cpan_version 1.46
 License:        MIT
 Summary:        Perl Interface to the Domain Name System
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -52,7 +52,7 @@ BuildRequires:  perl(Time::Local) >= 1.19
 BuildRequires:  perl(base) >= 2.13
 BuildRequires:  perl(constant) >= 1.17
 BuildRequires:  perl(overload) >= 1.06
-#BuildRequires:  perl(warnings) >= 1.0501
+#BuildRequires:  perl(warnings) >= 1.05
 Requires:       perl(base) >= 2.13
 Requires:       perl(Carp) >= 1.1
 Requires:       perl(Digest::HMAC) >= 1.03
@@ -177,7 +177,7 @@ Provides:       perl(Net::DNS::ZoneFile)
 Provides:       perl(Net::DNS::ZoneFile::Generator)
 Provides:       perl(Net::DNS::ZoneFile::Text)
 %undefine       __perllib_provides
-Recommends:     perl(Digest::BubbleBabble) >= 0.02
+Recommends:     perl(Digest::BubbleBabble) >= 0.20.0
 Recommends:     perl(Net::LibIDN2) >= 1
 %{perl_requires}
 # MANUAL BEGIN

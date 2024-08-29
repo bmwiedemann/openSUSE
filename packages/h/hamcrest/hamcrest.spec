@@ -18,7 +18,7 @@
 
 %bcond_with tests
 Name:           hamcrest
-Version:        2.2
+Version:        3.0
 Release:        0
 Summary:        Library of matchers for building test expressions
 License:        BSD-3-Clause
@@ -27,9 +27,8 @@ URL:            https://github.com/hamcrest/JavaHamcrest
 Source0:        %{name}-%{version}.tar.xz
 Source1:        %{name}-build.xml
 Source2:        https://repo1.maven.org/maven2/org/hamcrest/%{name}/%{version}/%{name}-%{version}.pom
-Source3:        https://raw.githubusercontent.com/hamcrest/JavaHamcrest/v2.2/LICENSE.txt
-Source4:        https://raw.githubusercontent.com/hamcrest/JavaHamcrest/v2.2/README.md
-Patch0:         0001-Fix-build-with-OpenJDK-11.patch
+Source3:        https://raw.githubusercontent.com/hamcrest/JavaHamcrest/v%{version}/LICENSE
+Source4:        https://raw.githubusercontent.com/hamcrest/JavaHamcrest/v%{version}/README.md
 BuildRequires:  ant
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
@@ -60,8 +59,6 @@ Javadoc for %{name}.
 cp %{SOURCE1} build.xml
 cp %{SOURCE3} %{SOURCE4} .
 
-%patch -P 0 -p2
-
 %build
 %{ant} \
 %if %{without tests}
@@ -89,11 +86,11 @@ cp -pr target/site/apidocs/* %{buildroot}%{_javadocdir}/%{name}
 
 %files -f .mfiles
 %{_javadir}/%{name}
-%license LICENSE.txt
+%license LICENSE
 %doc README.md
 
 %files javadoc
-%license LICENSE.txt
+%license LICENSE
 %{_javadocdir}/%{name}
 
 %changelog

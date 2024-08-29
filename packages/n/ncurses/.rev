@@ -4702,4 +4702,17 @@
   * ncurses-6.4.dif</comment>
     <requestid>1194662</requestid>
   </revision>
+  <revision rev="271" vrev="44">
+    <srcmd5>e065028ac4c66e0c84964a7af860d524</srcmd5>
+    <version>unknown</version>
+    <time>1724938973</time>
+    <user>dimstar_suse</user>
+    <comment>- Add ncurses patch 20240824
+  + modify infocmp and tabs to use actual name in usage and header.
+  + modify test/demo_keyok.c to accept ^Q for quit, for consistency.
+
+- Break dependency cycle between libncurses6 which provides &quot;ncurses&quot;
+  by only let terminfo-base recommending &quot;ncurses&quot;</comment>
+    <requestid>1196226</requestid>
+  </revision>
 </revisionlist>

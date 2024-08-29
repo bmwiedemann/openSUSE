@@ -1846,4 +1846,41 @@ So all in all: this fixes the build failures for openSUSE Tumblewee (forwarded r
     <user>anag+factory</user>
     <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1229650</comment>
   </revision>
+  <revision rev="183" vrev="2">
+    <srcmd5>7d39071ab29ab0cf0a2ecb3c20d4b819</srcmd5>
+    <version>9.8p1</version>
+    <time>1724938975</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to openssh 9.8p1:
+  * No changes for askpass, see main package changelog for
+    details.
+
+- Add patch to fix sshd not logging in the audit failed login
+  attempts (submitted to upstream in
+  https://github.com/openssh/openssh-portable/pull/516):
+  * fix-audit-fail-attempt.patch
+- Use --enable-dsa-keys when building openssh. It's required if
+  the user sets the crypto-policy mode to LEGACY, where DSA keys
+  should be allowed. The option was added by upstream in 9.7 and
+  set to disabled by default.
+- These two changes fix 2 of the 3 issues reported in bsc#1229650.
+
+- Fix a dbus connection leaked in the logind patch that was
+  missing a sd_bus_unref call (found by Matthias Gerstner):
+  * logind_set_tty.patch
+- Add a patch that fixes a small memory leak when parsing the
+  subsystem configuration option:
+  * fix-memleak-in-process_server_config_line_depth.patch
+
+- Update to openssh 9.8p1:
+  = Security
+  * 1) Race condition in sshd(8) (bsc#1226642, CVE-2024-6387).
+    A critical vulnerability in sshd(8) was present in Portable
+    OpenSSH versions between 8.5p1 and 9.7p1 (inclusive) that may
+    allow arbitrary code execution with root privileges.
+    Successful exploitation has been demonstrated on 32-bit
+    Linux/glibc systems with ASLR. Under lab conditions, the attack
+    requires on average 6-8 hours of continuous connections up to</comment>
+    <requestid>1196434</requestid>
+  </revision>
 </revisionlist>

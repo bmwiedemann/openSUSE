@@ -282,4 +282,14 @@ It fits better in common-SUSE. I'll remove it from branding. (forwarded request 
     <comment></comment>
     <requestid>1170295</requestid>
   </revision>
+  <revision rev="34" vrev="34">
+    <srcmd5>0a77d6254df0363fe27bb17e6ff1a1b9</srcmd5>
+    <version>15</version>
+    <time>1724938963</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable soft-reboot-cleanup.service to make soft-reboot possible
+  with container and/or firewalld.
+</comment>
+    <requestid>1196244</requestid>
+  </revision>
 </revisionlist>

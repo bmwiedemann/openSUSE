@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Aug 26 06:27:00 UTC 2024 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20240824
+  + modify infocmp and tabs to use actual name in usage and header.
+  + modify test/demo_keyok.c to accept ^Q for quit, for consistency.
+
+-------------------------------------------------------------------
+Wed Aug 21 06:32:53 UTC 2024 - Dr. Werner Fink <werner@suse.de>
+
+- Break dependency cycle between libncurses6 which provides "ncurses"
+  by only let terminfo-base recommending "ncurses" 
+
+-------------------------------------------------------------------
 Mon Aug 19 07:33:34 UTC 2024 - Dr. Werner Fink <werner@suse.de>
 
 - Add ncurses patch 20240817

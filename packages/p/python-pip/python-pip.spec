@@ -29,12 +29,11 @@
 %else
 %bcond_with libalternatives
 %endif
-
 # in order to avoid rewriting for subpackage generator
 %define mypython python
 %{?sle15_python_module_pythons}
 Name:           python-pip%{psuffix}
-Version:        24.0
+Version:        24.2
 Release:        0
 Summary:        A Python package management system
 License:        MIT
@@ -46,6 +45,8 @@ Patch0:         pip-shipped-requests-cabundle.patch
 # PATCH-FIX-UPSTREAM distutils-reproducible-compile.patch gh#python/cpython#8057 mcepl@suse.com
 # To get reproducible builds, byte_compile() of distutils.util now sorts filenames.
 Patch1:         distutils-reproducible-compile.patch
+# PATCH-FIX-OPENSUSE: deal missing ca-certificates as "ssl not available"
+Patch2:         disable-ssl-context-in-buildenv.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module setuptools >= 40.8.0}
 # The rpm python-wheel build is bootstrap friendly since 0.42
@@ -64,20 +65,20 @@ Requires(post): update-alternatives
 Requires(postun): update-alternatives
 %endif
 %if %{with test}
-# Test requirements:
-BuildRequires:  %{python_module pip = %{version}}
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module Werkzeug}
 BuildRequires:  %{python_module cryptography}
-BuildRequires:  %{python_module docutils}
 BuildRequires:  %{python_module freezegun}
 BuildRequires:  %{python_module installer}
+# Test requirements:
+BuildRequires:  %{python_module pip = %{version}}
 BuildRequires:  %{python_module pretend}
+BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module scripttest}
 BuildRequires:  %{python_module setuptools-wheel}
 BuildRequires:  %{python_module virtualenv >= 1.10}
-BuildRequires:  ca-certificates
+BuildRequires:  ca-certificates-mozilla
 BuildRequires:  git-core
 %endif
 %python_subpackages
@@ -100,8 +101,6 @@ the wheel needs to be used directly in test or install setups
 # Exception: Use our own cabundle. Adapted patch from python-certifi package
 %autosetup -p1 -n pip-%{version}
 
-rm src/pip/_vendor/certifi/cacert.pem
-
 %if %{with test}
 mkdir -p tests/data/common_wheels
 %python_expand cp %{$python_sitelib}/../wheels/setuptools*.whl tests/data/common_wheels/
@@ -114,7 +113,6 @@ done
 # Remove windows executable binaries
 # bsc#1212015
 rm -v src/pip/_vendor/distlib/*.exe
-sed -i '/\.exe/d' setup.py
 
 %build
 %if !%{with test}
@@ -136,7 +134,7 @@ install -D -m 0644 -t %{buildroot}%{$python_sitelib}/../wheels dist/*.whl
 }
 
 %{python_expand # Fix shebang path for "pip3.XX" binaries
-sed -i "1s|#\!.*python.*|#\!/usr/bin/$python|" %{buildroot}%{_bindir}/pip%{$python_bin_suffix}
+sed -i "1s|#\!.*python.*|#\!%{_bindir}/$python|" %{buildroot}%{_bindir}/pip%{$python_bin_suffix}
 }
 
 %python_clone -a %{buildroot}%{_bindir}/pip

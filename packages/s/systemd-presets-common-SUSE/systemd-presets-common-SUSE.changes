@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug 26 12:12:49 UTC 2024 - Thorsten Kukuk <kukuk@suse.com>
+
+- Enable soft-reboot-cleanup.service to make soft-reboot possible
+  with container and/or firewalld.
+
+-------------------------------------------------------------------
 Thu Apr 25 09:55:01 UTC 2024 - Simon Lees <sflees@suse.de>
 
 - Add presets to enable dbus-broker.service for both system and user

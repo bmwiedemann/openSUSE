@@ -1,0 +1,150 @@
+From bba6482f285b7bbf8d29b6a607bceff1175f66a4 Mon Sep 17 00:00:00 2001
+From: Simon Lees <simon@simotek.net>
+Date: Wed, 28 Aug 2024 19:19:09 +0930
+Subject: [PATCH 1/2] systemd: use Bindto= in favor of Requisite=
+ (bsc#1229745,gh#openSUSE/wicked#1032)
+Upstream: yes
+References: bsc#1229745,gh#openSUSE/wicked#1032,gh#openSUSE/wicked#1033
+
+After the change to dbus-broker, it was possible for wickedd* to
+start before the dbus-broker service was running.
+Using `BindsTo=dbus.service` will explicitly start dbus-broker and
+fixes the dependency issue.
+
+Co-authored-by: Clemens Famulla-Conrad <cfamullaconrad@suse.de>
+
+diff --git a/etc/systemd/wickedd-auto4.service.in b/etc/systemd/wickedd-auto4.service.in
+index 9636a435..508d59c7 100644
+--- a/etc/systemd/wickedd-auto4.service.in
++++ b/etc/systemd/wickedd-auto4.service.in
+@@ -1,6 +1,6 @@
+ [Unit]
+ Description=wicked AutoIPv4 supplicant service
+-Requisite=dbus.service
++BindTo=dbus.service
+ After=local-fs.target dbus.service network-pre.target SuSEfirewall2_init.service
+ Before=wickedd.service wicked.service network.target
+ PartOf=wickedd.service
+diff --git a/etc/systemd/wickedd-dhcp4.service.in b/etc/systemd/wickedd-dhcp4.service.in
+index 5d9af3d9..5ca5655c 100644
+--- a/etc/systemd/wickedd-dhcp4.service.in
++++ b/etc/systemd/wickedd-dhcp4.service.in
+@@ -1,6 +1,6 @@
+ [Unit]
+ Description=wicked DHCPv4 supplicant service
+-Requisite=dbus.service
++BindTo=dbus.service
+ After=local-fs.target dbus.service network-pre.target SuSEfirewall2_init.service
+ Before=wickedd.service wicked.service network.target
+ PartOf=wickedd.service
+diff --git a/etc/systemd/wickedd-dhcp6.service.in b/etc/systemd/wickedd-dhcp6.service.in
+index 61e3fc93..216ee184 100644
+--- a/etc/systemd/wickedd-dhcp6.service.in
++++ b/etc/systemd/wickedd-dhcp6.service.in
+@@ -1,6 +1,6 @@
+ [Unit]
+ Description=wicked DHCPv6 supplicant service
+-Requisite=dbus.service
++BindTo=dbus.service
+ After=local-fs.target dbus.service network-pre.target SuSEfirewall2_init.service
+ Before=wickedd.service wicked.service network.target
+ PartOf=wickedd.service
+diff --git a/etc/systemd/wickedd-nanny.service.in b/etc/systemd/wickedd-nanny.service.in
+index d039ff37..eb884de6 100644
+--- a/etc/systemd/wickedd-nanny.service.in
++++ b/etc/systemd/wickedd-nanny.service.in
+@@ -1,6 +1,6 @@
+ [Unit]
+ Description=wicked network nanny service
+-Requisite=dbus.service
++BindTo=dbus.service
+ After=local-fs.target dbus.service network-pre.target SuSEfirewall2_init.service wickedd.service
+ Before=wicked.service network.target
+ PartOf=wickedd.service
+diff --git a/etc/systemd/wickedd.service.in b/etc/systemd/wickedd.service.in
+index 090f926b..4130c17c 100644
+--- a/etc/systemd/wickedd.service.in
++++ b/etc/systemd/wickedd.service.in
+@@ -1,6 +1,6 @@
+ [Unit]
+ Description=wicked network management service daemon
+-Requisite=dbus.service
++BindTo=dbus.service
+ Wants=wickedd-nanny.service wickedd-dhcp6.service wickedd-dhcp4.service wickedd-auto4.service 
+ After=local-fs.target dbus.service isdn.service rdma.service network-pre.target SuSEfirewall2_init.service openvswitch.service
+ Before=wickedd-nanny.service wicked.service network.target
+-- 
+2.43.0
+
+
+From 5b0a4fbfbbeb51e01d34c89dff5fb0b9580b15eb Mon Sep 17 00:00:00 2001
+From: Clemens Famulla-Conrad <cfamullaconrad@suse.de>
+Date: Wed, 28 Aug 2024 12:46:23 +0200
+Subject: [PATCH 2/2] systemd: fix typo to use correct BindsTo=
+Upstream: yes
+References: bsc#1229745,gh#openSUSE/wicked#1032,gh#openSUSE/wicked#1033
+
+
+diff --git a/etc/systemd/wickedd-auto4.service.in b/etc/systemd/wickedd-auto4.service.in
+index 508d59c7..aa52f327 100644
+--- a/etc/systemd/wickedd-auto4.service.in
++++ b/etc/systemd/wickedd-auto4.service.in
+@@ -1,6 +1,6 @@
+ [Unit]
+ Description=wicked AutoIPv4 supplicant service
+-BindTo=dbus.service
++BindsTo=dbus.service
+ After=local-fs.target dbus.service network-pre.target SuSEfirewall2_init.service
+ Before=wickedd.service wicked.service network.target
+ PartOf=wickedd.service
+diff --git a/etc/systemd/wickedd-dhcp4.service.in b/etc/systemd/wickedd-dhcp4.service.in
+index 5ca5655c..9866c84b 100644
+--- a/etc/systemd/wickedd-dhcp4.service.in
++++ b/etc/systemd/wickedd-dhcp4.service.in
+@@ -1,6 +1,6 @@
+ [Unit]
+ Description=wicked DHCPv4 supplicant service
+-BindTo=dbus.service
++BindsTo=dbus.service
+ After=local-fs.target dbus.service network-pre.target SuSEfirewall2_init.service
+ Before=wickedd.service wicked.service network.target
+ PartOf=wickedd.service
+diff --git a/etc/systemd/wickedd-dhcp6.service.in b/etc/systemd/wickedd-dhcp6.service.in
+index 216ee184..0268772e 100644
+--- a/etc/systemd/wickedd-dhcp6.service.in
++++ b/etc/systemd/wickedd-dhcp6.service.in
+@@ -1,6 +1,6 @@
+ [Unit]
+ Description=wicked DHCPv6 supplicant service
+-BindTo=dbus.service
++BindsTo=dbus.service
+ After=local-fs.target dbus.service network-pre.target SuSEfirewall2_init.service
+ Before=wickedd.service wicked.service network.target
+ PartOf=wickedd.service
+diff --git a/etc/systemd/wickedd-nanny.service.in b/etc/systemd/wickedd-nanny.service.in
+index eb884de6..fb435ed9 100644
+--- a/etc/systemd/wickedd-nanny.service.in
++++ b/etc/systemd/wickedd-nanny.service.in
+@@ -1,6 +1,6 @@
+ [Unit]
+ Description=wicked network nanny service
+-BindTo=dbus.service
++BindsTo=dbus.service
+ After=local-fs.target dbus.service network-pre.target SuSEfirewall2_init.service wickedd.service
+ Before=wicked.service network.target
+ PartOf=wickedd.service
+diff --git a/etc/systemd/wickedd.service.in b/etc/systemd/wickedd.service.in
+index 4130c17c..9b8ba9a7 100644
+--- a/etc/systemd/wickedd.service.in
++++ b/etc/systemd/wickedd.service.in
+@@ -1,6 +1,6 @@
+ [Unit]
+ Description=wicked network management service daemon
+-BindTo=dbus.service
++BindsTo=dbus.service
+ Wants=wickedd-nanny.service wickedd-dhcp6.service wickedd-dhcp4.service wickedd-auto4.service 
+ After=local-fs.target dbus.service isdn.service rdma.service network-pre.target SuSEfirewall2_init.service openvswitch.service
+ Before=wickedd-nanny.service wicked.service network.target
+-- 
+2.43.0
+

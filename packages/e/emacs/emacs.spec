@@ -55,6 +55,14 @@ BuildRequires:  fdupes
 BuildRequires:  fontconfig-devel
 BuildRequires:  fonts-config
 BuildRequires:  freetype2-devel
+%if 0%{?suse_version} >= 1550
+%ifarch %ix86 %arm
+BuildRequires:  gcc13
+BuildRequires:  gcc13-PIE
+#!BuildIgnore:  gcc14
+#!BuildIgnore:  gcc14-PIE
+%endif
+%endif
 BuildRequires:  gettext-devel
 BuildRequires:  giflib-devel
 BuildRequires:  git
@@ -135,7 +143,13 @@ BuildRequires:  pkgconfig(libacl)
 BuildRequires:  libacl-devel
 %endif
 %if %{with nativecomp}
+%ifarch %ix86 %arm
+BuildRequires:  gcc13
+BuildRequires:  libgccjit0-devel-gcc13
+BuildRequires:  libgccjit0-gcc13
+%else
 BuildRequires:  libgccjit-devel
+%endif
 %endif
 BuildRequires:  pkgconfig(atspi-2)
 BuildRequires:  pkgconfig(jansson)
@@ -410,6 +424,13 @@ fi
 %else
 autoreconf -fiv -I $PWD -I $PWD/m4
 %endif
+%if 0%{?suse_version} >= 1550
+%ifarch %ix86 %arm
+  export CC=gcc-13
+  export AR=gcc-ar-13
+  export RANLIB=gcc-ranlib-13
+%endif
+%endif
 
   cflags ()
   {
@@ -620,6 +641,13 @@ popd
 
 %install
 umask 022
+%if 0%{?suse_version} >= 1550
+%ifarch %ix86 %arm
+    export CC=gcc-13
+    export AR=gcc-ar-13
+    export RANLIB=gcc-ranlib-13
+%endif
+%endif
 #
 PATH=/sbin:$PATH
 ##
@@ -849,6 +877,13 @@ mkdir -p %{buildroot}%{_sysconfdir}/permissions.d
 
 %if %{with checks}
 %check
+%if 0%{?suse_version} >= 1550
+%ifarch %ix86 %arm
+export CC=gcc-13
+export AR=gcc-ar-13
+export RANLIB=gcc-ranlib-13
+%endif
+%endif
 make check
 %endif
 

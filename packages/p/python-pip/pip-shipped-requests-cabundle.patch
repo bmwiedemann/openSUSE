@@ -3,26 +3,32 @@
  tests/unit/test_options.py      |    5 +
  2 files changed, 13 insertions(+), 97 deletions(-)
 
---- a/src/pip/_vendor/certifi/core.py
-+++ b/src/pip/_vendor/certifi/core.py
-@@ -3,106 +3,17 @@ certifi.py
+Index: pip-24.1.1/src/pip/_vendor/certifi/core.py
+===================================================================
+--- pip-24.1.1.orig/src/pip/_vendor/certifi/core.py
++++ pip-24.1.1/src/pip/_vendor/certifi/core.py
+@@ -3,112 +3,15 @@ certifi.py
  ~~~~~~~~~~
  
  This module returns the installation location of cacert.pem or its contents.
 +Patched by openSUSE: return the system bundle
  """
 -import sys
+-import atexit
  
+-def exit_cacert_ctx() -> None:
+-    _CACERT_CTX.__exit__(None, None, None)  # type: ignore[union-attr]
 +def read_text(_module=None, _path=None, encoding="ascii"):
 +    with open(where(), "r", encoding=encoding) as data:
 +        return data.read()
  
--if sys.version_info >= (3, 11):
- 
--    from importlib.resources import as_file, files
 +def where() -> str:
 +    return "/etc/ssl/ca-bundle.pem"
  
+-if sys.version_info >= (3, 11):
+-
+-    from importlib.resources import as_file, files
+-
 -    _CACERT_CTX = None
 -    _CACERT_PATH = None
 -
@@ -47,6 +53,7 @@
 -            # we will also store that at the global level as well.
 -            _CACERT_CTX = as_file(files("pip._vendor.certifi").joinpath("cacert.pem"))
 -            _CACERT_PATH = str(_CACERT_CTX.__enter__())
+-            atexit.register(exit_cacert_ctx)
 -
 -        return _CACERT_PATH
 -
@@ -82,6 +89,7 @@
 -            # we will also store that at the global level as well.
 -            _CACERT_CTX = get_path("pip._vendor.certifi", "cacert.pem")
 -            _CACERT_PATH = str(_CACERT_CTX.__enter__())
+-            atexit.register(exit_cacert_ctx)
 -
 -        return _CACERT_PATH
 -
@@ -113,15 +121,17 @@
 -    # of assuming we're on the filesystem and munge the path directly.
 -    def where() -> str:
 -        f = os.path.dirname(__file__)
- 
+-
 -        return os.path.join(f, "cacert.pem")
 -
 -    def contents() -> str:
 -        return read_text("pip._vendor.certifi", "cacert.pem", encoding="ascii")
 +def contents() -> str:
 +    return read_text(encoding="ascii")
---- a/tests/unit/test_options.py
-+++ b/tests/unit/test_options.py
+Index: pip-24.1.1/tests/unit/test_options.py
+===================================================================
+--- pip-24.1.1.orig/tests/unit/test_options.py
++++ pip-24.1.1/tests/unit/test_options.py
 @@ -1,4 +1,5 @@
  import os
 +import os.path
@@ -136,7 +146,7 @@
  from tests.lib.options_helpers import AddFakeCommandMixin
  
  
-@@ -618,6 +620,9 @@ class TestOptionsConfigFiles:
+@@ -617,6 +619,9 @@ class TestOptionsConfigFiles:
          else:
              assert expect == cmd._determine_file(options, need_value=False)
  

@@ -41,4 +41,15 @@
             - Add ExtUtils::Config::MakeMaker (forwarded request 1173739 from tinita)</comment>
     <requestid>1174133</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>698db2c87b9ef4a7f95bc2e4442a9d71</srcmd5>
+    <version>0.10.0</version>
+    <time>1724938957</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 0.10.0 (0.010)
+   see /usr/share/doc/packages/perl-ExtUtils-Config/Changes
+  0.010     2024-08-16 19:43:45+02:00 Europe/Brussels
+            Fix regression in serialize method (forwarded request 1195923 from tinita)</comment>
+    <requestid>1196229</requestid>
+  </revision>
 </revisionlist>

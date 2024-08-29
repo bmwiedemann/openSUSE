@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug 28 06:23:41 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch use-load-tests.patch:
+  * Use the load tests protocol to run the testsuite.
+
+-------------------------------------------------------------------
 Fri Jun 21 03:22:35 UTC 2024 - Manuel Jacob <me@manueljacob.de>
 
 - add %{?sle15_python_module_pythons}

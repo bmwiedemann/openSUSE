@@ -1,0 +1,252 @@
+From dee4a4df2dbaa050568e0a58b1077eb8340d7244 Mon Sep 17 00:00:00 2001
+From: Steve Kowalik <steven@wedontsleep.org>
+Date: Mon, 26 Aug 2024 17:05:07 +1000
+Subject: [PATCH] Use load tests protocol to run the test suite
+
+Since we no longer require Python 2, we can make use of the load tests
+protocol and automatic discovery to find all tests we want to run,
+rather than constructing a list of TestSuites by hand. As a consequence,
+I've had to fiddle with two test classes so they are not discovered and
+run. Drive-by the tox environment list as well.
+---
+ runtests.py                   | 18 +++++++++++++++---
+ tests/__init__.py             | 26 --------------------------
+ tests/test_compat.py          | 30 ++++--------------------------
+ tests/test_fuzz.py            |  7 -------
+ tests/test_ini.py             | 11 -----------
+ tests/test_misc.py            | 14 --------------
+ tests/test_multiprocessing.py | 10 ----------
+ tests/test_tidy.py            |  7 -------
+ tests/test_unicode.py         |  7 -------
+ tox.ini                       |  2 +-
+ 10 files changed, 20 insertions(+), 112 deletions(-)
+
+Index: iniparse-0.5/runtests.py
+===================================================================
+--- iniparse-0.5.orig/runtests.py
++++ iniparse-0.5/runtests.py
+@@ -1,8 +1,20 @@
+ #!/usr/bin/env python
+ 
+-import tests
++import doctest
++import os
++import unittest
++
++from iniparse import config
++from iniparse import ini
++
++
++def load_tests(loader, tests, pattern):
++    tests_dir = os.path.join(os.path.dirname(__file__), "tests")
++    package_tests = loader.discover(start_dir=tests_dir)
++    tests.addTests(package_tests)
++    tests.addTests((doctest.DocTestSuite(config), doctest.DocTestSuite(ini)))
++    return tests
+ 
+ 
+ if __name__ == '__main__':
+-    import unittest
+-    unittest.main(defaultTest='tests.Suite')
++    unittest.main()
+Index: iniparse-0.5/tests/__init__.py
+===================================================================
+--- iniparse-0.5.orig/tests/__init__.py
++++ iniparse-0.5/tests/__init__.py
+@@ -1,26 +0,0 @@
+-import unittest, doctest
+-
+-from . import test_ini
+-from . import test_misc
+-from . import test_fuzz
+-from . import test_compat
+-from . import test_unicode
+-from . import test_tidy
+-from . import test_multiprocessing
+-from iniparse import config
+-from iniparse import ini
+-
+-
+-class Suite(unittest.TestSuite):
+-    def __init__(self):
+-        unittest.TestSuite.__init__(self, [
+-                doctest.DocTestSuite(config),
+-                doctest.DocTestSuite(ini),
+-                test_ini.Suite(),
+-                test_misc.Suite(),
+-                test_fuzz.Suite(),
+-                test_compat.Suite(),
+-                test_unicode.Suite(),
+-                test_tidy.Suite(),
+-                test_multiprocessing.Suite(),
+-        ])
+Index: iniparse-0.5/tests/test_compat.py
+===================================================================
+--- iniparse-0.5.orig/tests/test_compat.py
++++ iniparse-0.5/tests/test_compat.py
+@@ -37,7 +37,7 @@ class SortedDict(UserDict.UserDict):
+         return iter(self.values())
+ 
+ 
+-class TestCaseBase(unittest.TestCase):
++class BaseTestCase:
+     def newconfig(self, defaults=None):
+         if defaults is None:
+             self.cf = self.config_class()
+@@ -327,7 +327,7 @@ class TestCaseBase(unittest.TestCase):
+         self.assertEqual(L, expected)
+ 
+ 
+-class ConfigParserTestCase(TestCaseBase):
++class ConfigParserTestCase(BaseTestCase, unittest.TestCase):
+     config_class = ConfigParser.ConfigParser
+ 
+     def test_interpolation(self):
+@@ -378,7 +378,7 @@ class ConfigParserTestCase(TestCaseBase)
+                           'string_with_interpolation', raw=False)
+ 
+ 
+-class RawConfigParserTestCase(TestCaseBase):
++class RawConfigParserTestCase(BaseTestCase, unittest.TestCase):
+     config_class = ConfigParser.RawConfigParser
+ 
+     def test_interpolation(self):
+@@ -459,6 +459,7 @@ class SafeConfigParserTestCase(ConfigPar
+         self.assertRaises(ValueError, cf.add_section, "DEFAULT")
+ 
+ 
++@unittest.skip("Skipped for now")
+ class SortedTestCase(RawConfigParserTestCase):
+     def newconfig(self, defaults=None):
+         self.cf = self.config_class(defaults=defaults, dict_type=SortedDict)
+@@ -482,26 +483,3 @@ class SortedTestCase(RawConfigParserTest
+                           "o2 = 3\n"
+                           "o3 = 2\n"
+                           "o4 = 1\n\n")
+-
+-
+-def test_main():
+-    test_support.run_unittest(
+-        ConfigParserTestCase,
+-        RawConfigParserTestCase,
+-        SafeConfigParserTestCase,
+-        SortedTestCase
+-    )
+-
+-
+-class Suite(unittest.TestSuite):
+-    def __init__(self):
+-        unittest.TestSuite.__init__(self, [
+-                unittest.makeSuite(RawConfigParserTestCase, 'test'),
+-                unittest.makeSuite(ConfigParserTestCase, 'test'),
+-                unittest.makeSuite(SafeConfigParserTestCase, 'test'),
+-                # unittest.makeSuite(SortedTestCase, 'test')
+-        ])
+-
+-
+-if __name__ == "__main__":
+-    test_main()
+Index: iniparse-0.5/tests/test_fuzz.py
+===================================================================
+--- iniparse-0.5.orig/tests/test_fuzz.py
++++ iniparse-0.5/tests/test_fuzz.py
+@@ -130,10 +130,3 @@ class TestFuzz(unittest.TestCase):
+ 
+     def assertEqualSorted(self, l1, l2):
+         self.assertEqual(sorted(l1), sorted(l2))
+-
+-
+-class Suite(unittest.TestSuite):
+-    def __init__(self):
+-        unittest.TestSuite.__init__(self, [
+-                unittest.makeSuite(TestFuzz, 'test'),
+-        ])
+Index: iniparse-0.5/tests/test_ini.py
+===================================================================
+--- iniparse-0.5.orig/tests/test_ini.py
++++ iniparse-0.5/tests/test_ini.py
+@@ -437,14 +437,3 @@ bumble=bee
+         ip.section.option2 = 'bazz'
+         ip.section.option3 = 'spam'
+         self.assertEqual(str(ip), self.s8)
+-
+-
+-class Suite(unittest.TestSuite):
+-    def __init__(self):
+-        unittest.TestSuite.__init__(self, [
+-                unittest.makeSuite(TestSectionLine, 'test'),
+-                unittest.makeSuite(TestOptionLine, 'test'),
+-                unittest.makeSuite(TestCommentLine, 'test'),
+-                unittest.makeSuite(TestOtherLines, 'test'),
+-                unittest.makeSuite(TestIni, 'test'),
+-        ])
+Index: iniparse-0.5/tests/test_misc.py
+===================================================================
+--- iniparse-0.5.orig/tests/test_misc.py
++++ iniparse-0.5/tests/test_misc.py
+@@ -452,17 +452,3 @@ class TestCommentSyntax(unittest.TestCas
+ 
+     def tearDown(self):
+         ini.change_comment_syntax(';#', True)
+-
+-
+-class Suite(unittest.TestSuite):
+-    def __init__(self):
+-        unittest.TestSuite.__init__(self, [
+-                unittest.makeSuite(TestOptionxFormOverride, 'test'),
+-                unittest.makeSuite(TestReadline, 'test'),
+-                unittest.makeSuite(TestMultilineWithComments, 'test'),
+-                unittest.makeSuite(TestEmptyFile, 'test'),
+-                unittest.makeSuite(TestCustomDict, 'test'),
+-                unittest.makeSuite(TestCompat, 'test'),
+-                unittest.makeSuite(TestPickle, 'test'),
+-                unittest.makeSuite(TestCommentSyntax, 'test'),
+-    ])
+Index: iniparse-0.5/tests/test_multiprocessing.py
+===================================================================
+--- iniparse-0.5.orig/tests/test_multiprocessing.py
++++ iniparse-0.5/tests/test_multiprocessing.py
+@@ -26,13 +26,3 @@ class TestIni(unittest.TestCase):
+         p = Process(target=getxy, args=(q, w))
+         p.start()
+         self.assertEqual(w.get(timeout=1), '42')
+-
+-
+-class Suite(unittest.TestSuite):
+-    def __init__(self):
+-        if disabled:
+-            unittest.TestSuite.__init__(self, [])
+-        else:
+-            unittest.TestSuite.__init__(self, [
+-                    unittest.makeSuite(TestIni, 'test'),
+-            ])
+Index: iniparse-0.5/tests/test_tidy.py
+===================================================================
+--- iniparse-0.5.orig/tests/test_tidy.py
++++ iniparse-0.5/tests/test_tidy.py
+@@ -127,10 +127,3 @@ class TestTidy(unittest.TestCase):
+ 
+             c=3
+             """))
+-
+-
+-class Suite(unittest.TestSuite):
+-    def __init__(self):
+-        unittest.TestSuite.__init__(self, [
+-                unittest.makeSuite(TestTidy, 'test'),
+-    ])
+Index: iniparse-0.5/tests/test_unicode.py
+===================================================================
+--- iniparse-0.5.orig/tests/test_unicode.py
++++ iniparse-0.5/tests/test_unicode.py
+@@ -41,10 +41,3 @@ baz = Marc-Andr\202
+         i = self.basic_tests(self.s2, strable=False)
+         self.assertEqual(i.foo.bar, 'mammal')
+         self.assertEqual(i.foo.baz, u'Marc-Andr\202')
+-
+-
+-class Suite(unittest.TestSuite):
+-    def __init__(self):
+-        unittest.TestSuite.__init__(self, [
+-                unittest.makeSuite(TestUnicode, 'test'),
+-    ])

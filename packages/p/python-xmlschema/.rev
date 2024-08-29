@@ -345,4 +345,13 @@
     <comment></comment>
     <requestid>1190526</requestid>
   </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>a618d460776b57610890ee11bebd73a8</srcmd5>
+    <version>3.3.2</version>
+    <time>1724938951</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch support-new-python-3.12.patch:
+  * Support pickle exception changes in Python 3.12.5 and later.</comment>
+    <requestid>1195977</requestid>
+  </revision>
 </revisionlist>

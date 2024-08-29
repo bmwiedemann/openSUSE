@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Aug 10 05:29:38 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.560.0 (1.56)
+   see /usr/share/doc/packages/perl-Text-CSV_XS/ChangeLog
+
+  1.56	- 2024-08-09, H.Merijn Brand
+      * Yet another strict/comment_str conflict (issue 57)
+      * Strict affected by column_names
+
+-------------------------------------------------------------------
 Sun Jun 23 16:49:35 UTC 2024 - Tina Müller <tina.mueller@suse.com>
 
 - updated to 1.550.0 (1.55)

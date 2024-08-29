@@ -154,7 +154,7 @@ showing the features of the new curses libraries.
 Summary:        A terminal descriptions database
 License:        MIT
 Group:          System/Base
-Requires:       ncurses >= %{version}
+Recommends:     ncurses >= %{version}
 Recommends:     terminfo-screen = %{version}
 Provides:       ncurses:%{_datadir}/tabset
 

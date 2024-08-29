@@ -17,7 +17,7 @@
 
 
 Name:           tuxguitar
-Version:        1.6.3
+Version:        1.6.4
 Release:        0
 Summary:        A multitrack tablature editor and player written in Java-SWT
 License:        LGPL-2.1-or-later
@@ -28,7 +28,6 @@ Patch11:        0009-no-lv2.patch
 Patch12:        0010-no-fluidsynth.patch
 Patch20:        0011-default-soundfont.patch
 Patch21:        0012-startscript.patch
-Patch22:        0013-desktop.patch
 BuildRequires:  alsa-devel
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -88,7 +87,6 @@ sed -i "s/static final String RELEASE_NAME =.*/static final String RELEASE_NAME 
 
 %patch -P 20 -p1
 %patch -P 21 -p1
-%patch -P 22 -p1
 
 %pom_xpath_remove "pom:profile[pom:id[text()='platform-windows']]" desktop/pom.xml
 %pom_xpath_remove "pom:profile[pom:id[text()='platform-macos-cocoa']]" desktop/pom.xml
@@ -136,7 +134,7 @@ install -dm 755 %{buildroot}/%{_datadir}/applications
 install -pm 644 desktop/build-scripts/common-resources/common-linux/share/applications/tuxguitar.desktop %{buildroot}/%{_datadir}/applications/
 
 # icon
-install -D -m 644 desktop/build-scripts/common-resources/common-linux/share/pixmaps/tuxguitar.xpm %{buildroot}%{_datadir}/pixmaps/tuxguitar.xpm
+install -D -m 644 desktop/build-scripts/common-resources/common-linux/share/pixmaps/tuxguitar.png %{buildroot}%{_datadir}/pixmaps/tuxguitar.png
 %suse_update_desktop_file -n -i tuxguitar AudioVideo Music Java
 
 # man page
@@ -160,7 +158,7 @@ ln -sf %{_jnidir}/%{name}/%{name}-synth-lv2.jar %{buildroot}%{_javadir}/%{name}/
 %{_libdir}/%{name}
 %{_datadir}/%{name}
 %{_datadir}/applications/%{name}.desktop
-%{_datadir}/pixmaps/%{name}.xpm
+%{_datadir}/pixmaps/%{name}.png
 %{_datadir}/mime/packages/%{name}.xml
 %{_bindir}/%{name}
 %{_mandir}/man1/%{name}.1%{?ext_man}

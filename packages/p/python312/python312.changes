@@ -1,4 +1,478 @@
 -------------------------------------------------------------------
+Wed Aug  7 18:05:57 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 3.12.5:
+  - Tests
+    - gh-59022: Add tests for pkgutil.extend_path(). Patch by
+      Andreas Stocker.
+    - gh-99242: os.getloadavg() may throw OSError when
+      running regression tests under certain conditions (e.g.
+      chroot). This error is now caught and ignored, since
+      reporting load average is optional.
+    - gh-121084: Fix test_typing random leaks. Clear typing ABC
+      caches when running tests for refleaks (-R option): call
+      _abc_caches_clear() on typing abstract classes and their
+      subclasses. Patch by Victor Stinner.
+    - gh-121160: Add a test for
+      readline.set_history_length(). Note that this test may fail
+      on readline libraries.
+    - gh-121200: Fix test_expanduser_pwd2() of
+      test_posixpath. Call getpwnam() to get pw_dir, since it
+      can be different than getpwall() pw_dir. Patch by Victor
+      Stinner.
+    - gh-121188: When creating the JUnit XML file, regrtest
+      now escapes characters which are invalid in XML, such
+      as the chr(27) control character used in ANSI escape
+      sequences. Patch by Victor Stinner.
+  - Security
+    - gh-121957: Fixed missing audit events around interactive
+      use of Python, now also properly firing for python -i, as
+      well as for python -m asyncio. The event in question is
+      cpython.run_stdin.
+    - gh-122133: Authenticate the socket connection for the
+      socket.socketpair() fallback on platforms where AF_UNIX is
+      not available like Windows.
+    - Patch by Gregory P. Smith <greg@krypto.org> and Seth Larson
+      <seth@python.org>. Reported by Ellie <el@horse64.org>
+  - Library
+    - gh-122744: Bump the version of pip bundled in ensurepip to
+      version 24.2.
+    - gh-122334: Fix crash when importing ssl after the main
+      interpreter restarts.
+    - gh-87320: In code.InteractiveInterpreter, handle exceptions
+      caused by calling a non-default sys.excepthook(). Before,
+      the exception bubbled up to the caller, ending the REPL.
+    - gh-122400: Handle ValueErrors raised by os.stat() in
+      filecmp.dircmp and filecmp.cmpfiles(). Patch by Bénédikt
+      Tran.
+    - gh-122311: Fix some error messages in pickle.
+    - gh-121650: email headers with embedded newlines are
+      now quoted on output. The generator will now refuse to
+      serialize (write) headers that are unsafely folded or
+      delimited; see verify_generated_headers. (Contributed by
+      Bas Bloemsaat and Petr Viktorin in gh-121650; bsc#1228780,
+      CVE-2024-6923).
+    - gh-122332: Fixed segfault with asyncio.Task.get_coro() when
+      using an eager task factory.
+    - gh-122170: Handle ValueErrors raised by os.stat() in
+      linecache. Patch by Bénédikt Tran.
+    - gh-121723: Make logging.config.dictConfig() accept any
+      object implementing the Queue public API. See the queue
+      configuration section for details. Patch by Bénédikt Tran.
+    - gh-82951: Serializing objects with complex __qualname__
+      (such as unbound methods and nested classes) by name no
+      longer involves serializing parent objects by value in
+      pickle protocols < 4.
+    - gh-120930: Fixed a bug introduced by gh-92081 that added an
+      incorrect extra blank to encoded words occurring in wrapped
+      headers.
+    - gh-121474: Fix missing sanity check for parties arg in
+      threading.Barrier constructor. Patch by Clinton Christian
+      (pygeek).
+    - gh-121025: Improve the __repr__() of
+      functools.partialmethod. Patch by Bénédikt Tran.
+    - gh-121018: Fixed issues where
+      argparse.ArgumentParser.parse_args() did not honor
+      exit_on_error=False. Based on patch by Ben Hsing.
+    - gh-119614: Fix truncation of strings with embedded null
+      characters in some internal operations in tkinter.
+    - gh-120910: When reading installed files from an egg, use
+      relative_to(walk_up=True) to honor files installed outside
+      of the installation root.
+    - gh-101830: Accessing the tkinter object’s string
+      representation no longer converts the underlying Tcl object
+      to a string on Windows.
+    - gh-120811: Fix possible memory leak in
+      contextvars.Context.run().
+    - gh-120769: Make empty line in pdb repeats the last command
+      even when the command is from cmdqueue.
+    - gh-120732: Fix name passing to unittest.mock.Mock object
+      when using unittest.mock.create_autospec().
+    - gh-120495: Fix incorrect exception handling in Tab
+      Nanny. Patch by Wulian233.
+    - gh-120343: Fix column offset reporting for tokens that come
+      after multiline f-strings in the tokenize module.
+    - gh-119600: Fix unittest.mock.patch() to not read attributes
+      of the target when new_callable is set. Patch by Robert
+      Collins.
+    - gh-120289: Fixed the use-after-free issue in cProfile by
+      disallowing disable() and clear() in external timers.
+    - gh-114053: Fix edge-case bug where typing.get_type_hints()
+      would produce incorrect results if type parameters in a
+      class scope were overridden by assignments in a class scope
+      and from __future__ import annotations semantics were
+      enabled. Patch by Alex Waygood.
+    - gh-114053: Fix erroneous NameError when calling
+      inspect.get_annotations() with eval_str=True` on a class
+      that made use of PEP 695 type parameters in a module that
+      had from __future__ import annotations at the top of the
+      file. Patch by Alex Waygood.
+    - gh-120268: Prohibit passing None to pure-Python
+      datetime.date.fromtimestamp() to achieve consistency with
+      C-extension implementation.
+    - gh-120244: Fix memory leak in re.sub() when the replacement
+      string contains backreferences.
+    - gh-120211: Fix tkinter.ttk with Tcl/Tk 9.0.
+    - gh-71587: Fix crash in C version of
+      datetime.datetime.strptime() when called again on the
+      restarted interpreter.
+    - gh-117983: Defer the threading import in importlib.util
+      until lazy loading is used.
+    - gh-119698: Fix symtable.Class.get_methods() and document
+      its behaviour. Patch by Bénédikt Tran.
+    - gh-120121: Add concurrent.futures.InvalidStateError to
+      module’s __all__.
+    - gh-112672: Support building tkinter with Tcl 9.0.
+    - gh-65454: unittest.mock.Mock.attach_mock() no longer
+      triggers a call to a PropertyMock being attached.
+    - gh-81936: help() and showtopic() methods now respect a
+      configured output argument to pydoc.Helper and not use the
+      pager in such cases. Patch by Enrico Tröger.
+    - gh-119577: The DeprecationWarning emitted when testing
+      the truth value of an xml.etree.ElementTree.Element now
+      describes unconditionally returning True in a future
+      version rather than raising an exception in Python 3.14.
+    - gh-119506: Fix io.TextIOWrapper.write() method breaks
+      internal buffer when the method is called again during
+      flushing internal buffer.
+    - gh-119189: When using the ** operator or pow() with
+      Fraction as the base and an exponent that is not rational,
+      a float, or a complex, the fraction is no longer converted
+      to a float.
+    - gh-105623: Fix performance degradation in
+      logging.handlers.RotatingFileHandler. Patch by Craig
+      Robson.
+    - bpo-39324: Add mime type mapping for .md <-> text/markdown
+  - IDLE
+    - gh-122482: Change About IDLE to direct users to
+      discuss.python.org instead of the now unused idle-dev email
+      and mailing list.
+    - gh-78889: Stop Shell freezes by blocking user access to
+      non-method sys.stdout.shell attributes, which are all
+      private.
+    - gh-120104: Fix padding in config and search dialog windows
+      in IDLE.
+  - Documentation
+    - gh-121749: Fix documentation for PyModule_AddObjectRef().
+    - gh-120012: Clarify the behaviours of
+      multiprocessing.Queue.empty() and
+      multiprocessing.SimpleQueue.empty() on closed queues. Patch
+      by Bénédikt Tran.
+    - gh-121871: Documentation HTML varies from timestamp. Patch by
+      Bernhard M. Wiedemann (bsc#1227999).
+  - Core and Builtins
+    - gh-122208: Dictionary watchers now only deliver the
+      PyDict_EVENT_ADDED event when the insertion is in a known
+      good state to succeed.
+    - gh-122300: Preserve AST nodes for f-string with
+      single-element format specifiers. Patch by Pablo Galindo
+    - gh-122029: Emit c_call events in sys.setprofile() when a
+      PyMethodObject pointing to a PyCFunction is called.
+    - gh-122026: Fix a bug that caused the tokenizer to not
+      correctly identify mismatched parentheses inside f-strings
+      in some situations. Patch by Pablo Galindo
+    - gh-121657: Improve the SyntaxError message if the user
+      tries to use yield from outside a function.
+    - gh-117482: Unexpected slot wrappers are no longer created
+      for builtin static types in subinterpreters.
+    - gh-121439: Allow tuples of length 20 in the freelist to be
+      reused.
+    - gh-121130: Fix f-strings with debug expressions in format
+      specifiers. Patch by Pablo Galindo
+    - gh-120722: Correctly set the bytecode position on return
+      instructions within lambdas. Patch by Jelle Zijlstra.
+    - gh-120384: Fix an array out of bounds crash in
+      list_ass_subscript, which could be invoked via some
+      specificly tailored input: including concurrent
+      modification of a list object, where one thread assigns a
+      slice and another clears it.
+    - gh-120380: Fix Python implementation of pickle.Pickler for
+      bytes and bytearray objects when using protocol version
+      5. Patch by Bénédikt Tran.
+    - gh-93691: Fix source locations of instructions generated
+      for the iterator of a for statement.
+    - gh-120198: Fix a crash when multiple threads read and write
+      to the same __class__ of an object concurrently.
+    - gh-120298: Fix use-after free in list_richcompare_impl
+      which can be invoked via some specificly tailored evil
+      input.
+    - gh-119666: Fix a compiler crash in the case where two
+      comprehensions in class scope both reference __class__.
+    - bpo-24766: Fix handling of doc argument to subclasses of
+      property.
+  - Build
+    - gh-120671: Fix failing configure tests due to a missing
+      space when appending to CFLAGS.
+    - gh-115983: Skip building test modules that must be built as
+      shared under WASI.
+
+-------------------------------------------------------------------
+Wed Aug  7 13:40:44 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+ 
+- %{profileopt} variable is set according to the variable
+  %{do_profiling} (bsc#1227999)
+- Update bluez-devel-vendor.tar.xz
+
+-------------------------------------------------------------------
+Mon Jul 22 21:20:55 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Remove %suse_update_desktop_file macro as it is not useful any
+  more.
+
+-------------------------------------------------------------------
+Thu Jul  4 16:04:05 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Stop using %%defattr, it seems to be breaking proper executable
+  attributes on /usr/bin/ scripts (bsc#1227378).
+
+-------------------------------------------------------------------
+Tue Jul  2 10:33:52 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add F00251-change-user-install-location.patch to make pip and
+  modern tools install directly in /usr/local when used by the user.
+  bsc#1225660
+
+-------------------------------------------------------------------
+Wed Jun 26 20:00:38 UTC 2024 - Matej Cepl <mcepl@suse.com>
+
+- Add docs-docutils_014-Sphinx_420.patch make building docs
+  compatible with Sphinx 4_2_0 and docutils 0.14.
+
+-------------------------------------------------------------------
+Wed Jun 26 08:08:19 UTC 2024 - Andreas Schwab <schwab@suse.de>
+
+- Update import_failed.map for python 3.12
+
+-------------------------------------------------------------------
+Mon Jun 24 12:14:52 UTC 2024 - Andreas Schwab <schwab@suse.de>
+
+- Reenable test_multiprocessing_forkserver test_multiprocessing_spawn
+  test_subprocess tests in qemu build
+
+-------------------------------------------------------------------
+Fri Jun  7 10:44:55 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 3.12.4:
+  - Security
+    - gh-118486: os.mkdir() on Windows now accepts mode of 0o700
+      to restrict the new directory to the current user. This
+      fixes CVE-2024-4030 affecting tempfile.mkdtemp() in
+      scenarios where the base temporary directory is more
+      permissive than the default (bsc#1227152).
+    - gh-116741: Update bundled libexpat to 2.6.2
+    - gh-117233: Detect BLAKE2, SHA3, Shake, & truncated SHA512
+      support in the OpenSSL-ish libcrypto library at build
+      time. This allows hashlib to be used with libraries that do
+      not to support every algorithm that upstream OpenSSL does.
+  - Core and Builtins
+    - gh-119821: Fix execution of annotation scopes within
+      classes when globals is set to a non-dict. Patch by Jelle
+      Zijlstra.
+    - gh-118263: Speed up os.path.normpath() with a direct C
+      call.
+    - gh-119311: Fix bug where names are unexpectedly mangled in
+      the bases of generic classes.
+    - gh-119395: Fix bug where names appearing after a generic
+      class are mangled as if they are in the generic class.
+    - gh-118507: Fix os.path.isfile() on Windows for pipes.
+    - gh-119213: Non-builtin modules built with argument clinic
+      were crashing if used in a subinterpreter before the main
+      interpreter. The objects that were causing the problem by
+      leaking between interpreters carelessly have been fixed.
+    - gh-119011: Fixes type.__type_params__ to return an empty
+      tuple instead of a descriptor.
+    - gh-118997: Fix _Py_ClearImmortal() assertion: use
+      _Py_IsImmortal() to tolerate reference count lower than
+      _Py_IMMORTAL_REFCNT. Fix the assertion for the stable
+      ABI, when a C extension is built with Python 3.11 or
+      lower. Patch by Victor Stinner.
+    - gh-118513: Fix incorrect UnboundLocalError when two
+      comprehensions in the same function both reference the same
+      name, and in one comprehension the name is bound while in
+      the other it’s an implicit global.
+    - gh-118164: Break a loop between the Python implementation
+      of the decimal module and the Python code for integer
+      to string conversion. Also optimize integer to string
+      conversion for values in the range from 9_000 to 135_000
+      decimal digits.
+    - gh-118272: Fix bug where generator.close does not free the
+      generator frame’s locals.
+    - gh-116767: Fix crash in compiler on ‘async with’ that has
+      many context managers.
+    - gh-117894: Prevent agen.aclose() objects being re-used
+      after .throw().
+    - gh-117881: prevent concurrent access to an async generator
+      via athrow().throw() or asend().throw()
+    - gh-115874: Fixed a possible segfault during garbage
+      collection of _asyncio.FutureIter objects
+  - Library
+    - gh-119819: Fix regression to allow logging configuration
+      with multiprocessing queue types.
+    - gh-89727: Fix issue with shutil.rmtree() where a
+      RecursionError is raised on deep directory trees.
+    - gh-89727: Partially fix issue with shutil.rmtree()
+      where a RecursionError is raised on deep directory
+      trees. A recursion error is no longer raised when
+      rmtree.avoids_symlink_attacks is false.
+    - gh-119118: Fix performance regression in the tokenize
+      module by caching the line token attribute and calculating
+      the column offset more efficiently.
+    - gh-89727: Fix issue with os.fwalk() where a RecursionError
+      was raised on deep directory trees by adjusting the
+      implementation to be iterative instead of recursive.
+    - gh-113892: Now, the method sock_connect of
+      asyncio.ProactorEventLoop raises a ValueError if given
+      socket is not in non-blocking mode, as well as in other
+      loop implementations.
+    - gh-119174: Fix high DPI causes turtledemo(turtle-graphics
+      examples) windows blurry Patch by Wulian233 and Terry Jan
+      Reedy
+    - gh-118643: Fix an AttributeError in the email module
+      when re-fold a long address list. Also fix more cases of
+      incorrect encoding of the address separator in the address
+      list.
+    - gh-58933: Make pdb return to caller frame correctly when
+      f_trace of the caller frame is not set
+    - gh-118868: Fixed issue where kwargs were no longer passed
+      to the logging handler QueueHandler
+    - gh-118164: The Python implementation of the decimal
+      module could appear to hang in relatively small power
+      cases (like 2**117) if context precision was set to a
+      very high value. A different method to check for exactly
+      representable results is used now that doesn’t rely on
+      computing 10**precision (which could be effectively too
+      large to compute).
+    - gh-118404: Fix inspect.signature() for non-comparable
+      callables.
+    - gh-118314: Fix an edge case in binascii.a2b_base64() strict
+      mode, where excessive padding is not detected when no
+      padding is necessary.
+    - gh-118042: Fix an unraisable exception in
+      telnetlib.Telnet.__del__() when the __init__() method was
+      not called.
+    - gh-118221: Fix a bug where sqlite3.iterdump() could fail if
+      a custom row factory was used. Patch by Erlend Aasland.
+    - gh-118013: Fix regression introduced in gh-103193 that
+      meant that calling inspect.getattr_static() on an instance
+      would cause a strong reference to that instance’s class to
+      persist in an internal cache in the inspect module. This
+      caused unexpected memory consumption if the class was
+      dynamically created, the class held strong references to
+      other objects which took up a significant amount of memory,
+      and the cache contained the sole strong reference to the
+      class. The fix for the regression leads to a slowdown
+      in getattr_static(), but the function should still be
+      significantly faster than it was in Python 3.11. Patch by
+      Alex Waygood.
+    - gh-90848: Fixed unittest.mock.create_autospec() to
+      configure parent mock with keyword arguments.
+    - gh-118168: Fix incorrect argument substitution when
+      typing.Unpack is used with the builtin tuple. typing.Unpack
+      now raises TypeError when used with certain invalid
+      types. Patch by Jelle Zijlstra.
+    - gh-118033: Fix dataclasses.dataclass() not creating a
+      __weakref__ slot when subclassing typing.Generic.
+    - gh-117535: Do not try to get the source line for made up
+      file name “sys” in warnings.
+    - gh-114053: Fix erroneous NameError when calling
+      typing.get_type_hints() on a class that made use of PEP 695
+      type parameters in a module that had from __future__ import
+      annotations at the top of the file. Patch by Alex Waygood.
+    - gh-117995: Don’t raise DeprecationWarning when a
+      sequence of parameters is used to bind indexed, nameless
+      placeholders. See also gh-100668.
+    - gh-80361: Fix TypeError in
+      email.message.Message.get_payload() when the charset is RFC
+      2231 encoded.
+    - gh-86650: Fix IndexError when parse some emails with
+      invalid Message-ID (including one-off addresses generated
+      by Microsoft Outlook).
+    - gh-117691: Improve the error messages emitted by tarfile
+      deprecation warnings relating to PEP 706. If a filter
+      argument is not provided to extract() or extractall, the
+      deprecation warning now points to the line in the user’s
+      code where the relevant function was called. Patch by Alex
+      Waygood.
+    - gh-77102: site module now parses .pth file with UTF-8
+      first, and locale encoding if UnicodeDecodeError
+      happened. It supported only locale encoding before.
+    - gh-117692: Fixes a bug when doctest.DocTestFinder was
+      failing on wrapped builtin_function_or_method.
+    - gh-117566: ipaddress.IPv6Address.is_loopback() will now
+      return True for IPv4-mapped loopback addresses, i.e.
+      addresses in the ::ffff:127.0.0.0/104 address space.
+    - gh-117503: Fix support of non-ASCII user names in bytes
+      paths in os.path.expanduser() on Posix.
+    - gh-117313: Only treat '\n', '\r' and '\r\n' as line
+      separators in re-folding the email messages. Preserve
+      control characters '\v', '\f', '\x1c', '\x1d' and '\x1e'
+      and Unicode line separators '\x85', '\u2028' and '\u2029'
+      as is.
+    - gh-113171 (bsc#1226448, CVE-2024-4032): Fixed various false
+      positives and false negatives in
+        ipaddress.IPv4Address.is_private (see these docs for details)
+        ipaddress.IPv4Address.is_global
+        ipaddress.IPv6Address.is_private
+        ipaddress.IPv6Address.is_global
+      Also in the corresponding ipaddress.IPv4Network and
+      ipaddress.IPv6Network attributes.
+    - gh-103956: Fix lack of newline characters in trace module
+      output when line tracing is enabled but source code line
+      for current frame is not available.
+    - gh-92081: Fix missing spaces in email headers when the
+      spaces are mixed with encoded 8-bit characters.
+    - gh-103194: Prepare Tkinter for C API changes in Tcl 8.7/9.0
+      to avoid _tkinter.Tcl_Obj being unexpectedly returned
+      instead of bool, str, bytearray, or int.
+    - gh-87106: Fixed handling in inspect.Signature.bind() of
+      keyword arguments having the same name as positional-only
+      arguments when a variadic keyword argument (e.g. **kwargs)
+      is present.
+    - bpo-45767: Fix integer conversion in os.major(),
+      os.minor(), and os.makedev(). Support device numbers larger
+      than 2**63-1. Support non-existent device number (NODEV).
+    - bpo-40943: Fix several IndexError when parse emails with
+      truncated Message-ID, address, routes, etc, e.g. example@.
+    - bpo-30988: Fix parsing of emails with invalid address
+      headers having a leading or trailing dot. Patch by tsufeki.
+    - gh-67693: Fix urllib.parse.urlunparse() and
+      urllib.parse.urlunsplit() for URIs with path starting with
+      multiple slashes and no authority. Based on patch by Ashwin
+      Ramaswami.
+    - bpo-15010: unittest.TestLoader.discover() now saves the
+      original value of unittest.TestLoader._top_level_dir and
+      restores it at the end of the call.
+  - Documentation
+    - gh-117928: The minimum Sphinx version required for the
+      documentation is now 6.2.1.
+    - gh-91565: Changes to documentation files and config
+      outputs to reflect the new location for reporting bugs -
+      i.e. GitHub rather than bugs.python.org.
+  - Tests
+    - gh-119050: regrtest test runner: Add XML support to the
+      refleak checker (-R option). Patch by Victor Stinner.
+  - IDLE
+    - bpo-34774: Use user-selected color theme for Help => IDLE
+      Doc.
+  - C API
+    - gh-119585: Fix crash when a thread state that was
+      created by PyGILState_Ensure() calls a destructor that
+      during PyThreadState_Clear() that calls back into
+      PyGILState_Ensure() and PyGILState_Release(). This
+      might occur when in the free-threaded build or when
+      using thread-local variables whose destructors call
+      PyGILState_Ensure().
+    - gh-117534: Improve validation logic in the C implementation
+      of datetime.fromisoformat() to better handle invalid
+      years. Patch by Vlad Efanov.
+- Updated patches:
+  - CVE-2023-6597-TempDir-cleaning-symlink.patch
+  - bpo-31046_ensurepip_honours_prefix.patch
+  - fix_configure_rst.patch
+  - python-3.3.0b1-fix_date_time_compiler.patch
+  - subprocess-raise-timeout.patch
+
+-------------------------------------------------------------------
 Mon Apr 15 10:31:32 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add CVE-2023-52425-libexpat-2.6.0-backport-15.6.patch to fix tests with
@@ -28,7 +502,7 @@ Wed Apr 10 14:41:07 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
     - gh-114572: ssl.SSLContext.cert_store_stats() and
       ssl.SSLContext.get_ca_certs() now correctly lock access to
       the certificate store, when the ssl.SSLContext is shared
-      across multiple threads.
+      across multiple threads (bsc#1226447, CVE-2024-0397).
   - Core and Builtins
     - gh-109120: Added handle of incorrect star expressions, e.g
       f(3, *). Patch by Grigoryev Semyon

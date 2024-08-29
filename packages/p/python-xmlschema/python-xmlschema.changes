@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug 26 02:42:14 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-new-python-3.12.patch:
+  * Support pickle exception changes in Python 3.12.5 and later.
+
+-------------------------------------------------------------------
 Mon Jul 29 17:31:54 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 3.3.2

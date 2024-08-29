@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Jul 30 02:22:34 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 72.1.0:
+  * Restore the tests command and deprecate access to the module.
+  * Added return types to typed public functions.
+  * Removed lingering unused code around Distribution._patched_dist.
+  * Reset the backports module when enabling vendored packages.
+  * Include all vendored files in the sdist.
+  * Restored package data that went missing in 71.0. This change also
+    incidentally causes tests to be installed once again.
+  * Now setuptools declares its own dependencies in the core extra.
+    Dependencies are still vendored for bootstrapping purposes, but
+    setuptools will prefer installed dependencies if present. The core
+    extra is used for informational purposes and should *not* be declared
+    in package metadata (e.g. build-requires).
+  * Support for loading distutils from the standard library is now
+    deprecated, including use of SETUPTOOLS_USE_DISTUTILS=stdlib and
+    importing distutils before importing setuptools.
+  * Fix distribution name normalisation for valid versions that are not
+    canonical (e.g. 1.0-2).
+
+-------------------------------------------------------------------
 Sat Jun 29 05:45:24 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 70.1.1:
@@ -40,6 +62,8 @@ Tue May 28 05:20:31 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
     + Updated and removed obsolete Python < 3.8 code and comments.
     + Updated pkg_resources to use stdlib importlib.machinery instead of
       importlib_machinery.
+    + Modernized and refactored VCS handling in package_index.
+      (bsc#1228105, CVE-2024-6345)
   * Bugfixes
     + In install command, use super to call the superclass methods. Avoids
       race conditions when monkeypatching from _distutils_system_mod occurs

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Aug 28 10:19:49 UTC 2024 - Clemens Famulla-Conrad <cfamullaconrad@suse.com>
+
+- systemd: Fix wicked start failures because of dependency issue.
+  With the change to dbus-broker, wicked has to trigger dbus service start.
+  Use BindsTo= in favor of Requisite= (bsc#1229745,gh#openSUSE/wicked#1032,
+  gh#openSUSE/wicked#1033).
+  [+ 0002-systemd-use-Bindsto-in-favor-of-Requisite-bsc-1229745.patch]
+- compat-suse: fix dummy interfaces configuration with 
+  INTERFACETYPE=dummy (boo#1229555, gh#openSUSE/wicked#1031)
+  [+ 0001-compat-suse-repair-dummy-interfaces-boo-1229555.patch]
+
+-------------------------------------------------------------------
 Thu Jul 18 14:32:55 UTC 2024 - Clemens Famulla-Conrad <cfamullaconrad@suse.com>
 
 - Update to version 0.6.76

@@ -26,6 +26,8 @@ Group:          System/Management
 URL:            https://github.com/openSUSE/wicked
 Source0:        %{name}-%{version}.tar.bz2
 Source1:        wicked-rpmlintrc
+Patch0:         0001-compat-suse-repair-dummy-interfaces-boo-1229555.patch
+Patch1:         0002-systemd-use-Bindsto-in-favor-of-Requisite-bsc-1229745.patch
 #
 # Upstream First - openSUSE Build Service Policy:
 #
@@ -176,6 +178,7 @@ This package provides the wicked development files.
 
 %prep
 %setup
+%autopatch -p1
 
 %build
 test -x ./configure || autoreconf --force --install

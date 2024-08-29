@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Thu Aug 22 08:15:06 UTC 2024 - dcermak@suse.com
+
+- Update to version 20240821.1d6142f:
+  * README: pasta is indeed a supported back-end for rootless Docker
+  * util: Don't stop on unrelated values when looking for --fd in close_open_files()
+  * test: Update list of dependencies in README.md
+  * tcp, udp: Allow timerfd_gettime64() and recvmmsg_time64() on arm (armhf)
+  * util: Provide own version of close_range(), and no-op fallback
+  * udp_flow: Add missing unistd.h include for close()
+  * test: Duplicate existing recvfrom() valgrind suppression for recv()
+  * test/passt.mbuto: Install sshd-session OpenSSH's split process
+  * test/passt.mbuto: Run sshd from vsock proxy with absolute path
+  * test/lib/setup: Transform i686 kernel architecture name into QEMU name (i386)
+  * treewide: Allow additional system calls for i386/i686
+  * fwd, conf: Allow NAT of the guest's assigned address
+  * fwd: Distinguish translatable from untranslatable addresses on inbound
+  * conf: Allow address remapped to host to be configured
+  * test: Reconfigure IPv6 address after changing MTU
+  * conf, fwd: Split notion of gateway/router from guest-visible host address
+  * Don't take "our" MAC address from the host
+  * fwd: Split notion of "our tap address" from gateway for IPv4
+  * fwd: Helpers to clarify what host addresses aren't guest accessible
+  * Initialise our_tap_ll to ip6.gw when suitable
+  * Clarify which addresses in ip[46]_ctx are meaningful where
+  * treewide: Change misleading 'addr_ll' name
+  * util: Correct sock_l4() binding for link local addresses
+  * conf: Remove incorrect initialisation of addr_ll_seen
+  * conf: Treat --dns addresses as guest visible addresses
+  * conf: Correct setting of dns_match address in add_dns6()
+  * conf: Move adding of a nameserver from resolv.conf into subfunction
+  * conf: Move DNS array bounds checks into add_dns[46]
+  * conf: More accurately count entries added in get_dns()
+  * conf: Use array indices rather than pointers for DNS array slots
+  * treewide: Use struct assignment instead of memcpy() for IP addresses
+  * treewide: Rename MAC address fields for clarity
+  * util: Helper for formatting MAC addresses
+  * treewide: Use "our address" instead of "forwarding address"
+  * netlink: Fix typo in function comment for nl_addr_set()
+  * pasta: Disable neighbour solicitations on device up to prevent DAD
+  * netlink, pasta: Fetch link-local address from namespace interface once it's up
+  * netlink, pasta: Disable DAD for link-local addresses on namespace interface
+  * netlink, pasta: Turn nl_link_up() into a generic function to set link flags
+  * netlink, pasta: Split MTU setting functionality out of nl_link_up()
+  * netlink: Fix typo in function comment for nl_addr_get()
+  * test: Speed up by cutting on eye candy and performance test duration
+
+-------------------------------------------------------------------
 Thu Aug 15 06:18:55 UTC 2024 - dcermak@suse.com
 
 - Update to version 20240814.61c0b0d:

@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Aug 27 07:57:17 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- update to 2.4.123
+  * amdgpu: add new marketing names
+  * amdgpu: add new marketing names
+  * Convert to Android.bp
+  * libs: Tie DSO minor versions to libdrm version
+  * readdir_r is deprecated.
+  * Fix FTBS on undefined clock_gettime() and asprintf()
+  * Export include dirs with -isystem
+  * Makes libdrm available on host
+  * Adds libdrm_headers
+  * Make libdrm recovery_available
+  * add crosvm to com.android.virt
+  * Enable GPU in crosvm
+  * Android.bp: Add include exports for android dir
+  * Disable ioctl signed overload for Bionic libc
+  * build: bump version to 2.4.123
+  * Delete all Makefile.sources files
+  * tests: Make modetest and proptest cc_binary in Android.bp
+
+-------------------------------------------------------------------
 Wed Jun 26 11:10:14 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - update to 2.4.122

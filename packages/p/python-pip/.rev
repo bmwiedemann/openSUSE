@@ -948,4 +948,41 @@
     pyproject.toml file.</comment>
     <requestid>1170734</requestid>
   </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>1cf04d779a0d3ed680b9bd03c3f0ef34</srcmd5>
+    <version>24.2</version>
+    <time>1724938948</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 24.2:
+  * Deprecate pip install --editable falling back to setup.py
+    develop when using a setuptools version that does not support
+    PEP 660 (setuptools v63 and older).
+  * Check unsupported packages for the current platform. (#11054)
+  * Check unsupported packages for the current platform.
+  * Use system certificates and certifi certificates to verify
+    HTTPS connections on Python 3.10+. Python 3.9 and earlier
+    only use certifi. To revert to previous behaviour, pass the
+    flag --use-deprecated=legacy-certs. (#11647)
+  * Use system certificates and certifi certificates to verify
+    HTTPS connections on Python 3.10+. Python 3.9 and earlier
+    only use certifi.
+  * To revert to previous behaviour, pass the flag --use-
+    deprecated=legacy-certs.
+  * Improve discovery performance of installed packages when the
+    importlib.metadata backend is used to load distribution
+    metadata (used by default under Python 3.11+). (#12656)
+  * Improve discovery performance of installed packages when the
+    importlib.metadata backend is used to load distribution
+    metadata (used by default under Python 3.11+).
+  * Improve performance when the same requirement string appears
+    many times during resolution, by consistently caching the
+    parsed requirement string. (#12663)
+  * Improve performance when the same requirement string appears
+    many times during resolution, by consistently caching the
+    parsed requirement string.
+  * Minor performance improvement of finding applicable package
+    candidates by not repeatedly calculating their versions
+    (#12664)</comment>
+    <requestid>1193638</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Aug 27 09:27:20 UTC 2024 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Fix grub package name for aarch64 (grub2-arm64-efi)
+
+-------------------------------------------------------------------
 Wed Jul 31 13:38:18 UTC 2024 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Fix LOADER_TYPE population

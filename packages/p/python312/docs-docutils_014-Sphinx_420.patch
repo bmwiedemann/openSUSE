@@ -1,0 +1,56 @@
+---
+ Doc/tools/extensions/c_annotations.py   |    6 +++++-
+ Doc/tools/extensions/glossary_search.py |   12 ++++++++++--
+ Doc/tools/extensions/pyspecific.py      |    5 ++++-
+ 3 files changed, 19 insertions(+), 4 deletions(-)
+
+--- a/Doc/tools/extensions/c_annotations.py
++++ b/Doc/tools/extensions/c_annotations.py
+@@ -118,7 +118,11 @@ def add_annotations(app: Sphinx, doctree
+     state = app.env.domaindata["c_annotations"]
+     refcount_data = state["refcount_data"]
+     stable_abi_data = state["stable_abi_data"]
+-    for node in doctree.findall(addnodes.desc_content):
++    try:
++        findall = doctree.findall
++    except AttributeError:
++        findall = doctree.traverse
++    for node in findall(addnodes.desc_content):
+         par = node.parent
+         if par["domain"] != "c":
+             continue
+--- a/Doc/tools/extensions/glossary_search.py
++++ b/Doc/tools/extensions/glossary_search.py
+@@ -30,8 +30,16 @@ def process_glossary_nodes(
+     else:
+         terms = app.env.glossary_terms = {}
+ 
+-    for node in doctree.findall(glossary):
+-        for glossary_item in node.findall(nodes.definition_list_item):
++    try:
++        findall = doctree.findall
++    except AttributeError:
++        findall = doctree.traverse
++    for node in findall(glossary):
++        try:
++            node_findall = node.findall
++        except AttributeError:
++            node_findall = node.traverse
++        for glossary_item in node_findall(nodes.definition_list_item):
+             term = glossary_item[0].astext()
+             definition = glossary_item[-1]
+ 
+--- a/Doc/tools/extensions/pyspecific.py
++++ b/Doc/tools/extensions/pyspecific.py
+@@ -27,7 +27,10 @@ from sphinx.locale import _ as sphinx_ge
+ from sphinx.util import logging
+ from sphinx.util.docutils import SphinxDirective
+ from sphinx.writers.text import TextWriter, TextTranslator
+-from sphinx.util.display import status_iterator
++try:
++    from sphinx.util.display import status_iterator
++except ModuleNotFoundError:
++    from sphinx.util import status_iterator
+ 
+ 
+ ISSUE_URI = 'https://bugs.python.org/issue?@action=redirect&bpo=%s'

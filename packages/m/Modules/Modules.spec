@@ -32,6 +32,7 @@ Requires:       python3
 Requires:       tcl
 Source:         https://download.sourceforge.net/project/modules/Modules/modules-%{version}/modules-%{version}.tar.gz
 Patch1:         Remove-empty-unused-static-function.patch
+BuildRequires:  python-rpm-macros
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Provides:       environment-modules
 %if 0%{?suse_version}
@@ -126,6 +127,7 @@ make DESTDIR=%{buildroot} install
 install -d %{buildroot}/usr/bin
 mv %{buildroot}/usr/share/doc doc_dir
 %fdupes -s %{buildroot}%{_datadir}
+%python3_fix_shebang
 
 ln -sf %{_datadir}/Modules/init/profile.sh %{buildroot}%{_sysconfdir}/profile.d/modules.sh
 ln -sf %{_datadir}/Modules/init/profile.csh %{buildroot}%{_sysconfdir}/profile.d/modules.csh

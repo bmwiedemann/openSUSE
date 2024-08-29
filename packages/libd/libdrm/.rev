@@ -1840,4 +1840,29 @@ Man pages are disabled for this build, upstream disabled them for this release. 
   * Sync headers with drm-next</comment>
     <requestid>1183417</requestid>
   </revision>
+  <revision rev="178" vrev="1">
+    <srcmd5>505174ab8b2f09b1a820b33ea9630f21</srcmd5>
+    <version>2.4.123</version>
+    <time>1724938955</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.4.123
+  * amdgpu: add new marketing names
+  * amdgpu: add new marketing names
+  * Convert to Android.bp
+  * libs: Tie DSO minor versions to libdrm version
+  * readdir_r is deprecated.
+  * Fix FTBS on undefined clock_gettime() and asprintf()
+  * Export include dirs with -isystem
+  * Makes libdrm available on host
+  * Adds libdrm_headers
+  * Make libdrm recovery_available
+  * add crosvm to com.android.virt
+  * Enable GPU in crosvm
+  * Android.bp: Add include exports for android dir
+  * Disable ioctl signed overload for Bionic libc
+  * build: bump version to 2.4.123
+  * Delete all Makefile.sources files
+  * tests: Make modetest and proptest cc_binary in Android.bp</comment>
+    <requestid>1196225</requestid>
+  </revision>
 </revisionlist>
