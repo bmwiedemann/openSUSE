@@ -1,0 +1,310 @@
+Index: mando-0.7.1/docs/conf.py
+===================================================================
+--- mando-0.7.1.orig/docs/conf.py
++++ mando-0.7.1/docs/conf.py
+@@ -46,8 +46,8 @@ source_suffix = '.rst'
+ master_doc = 'index'
+ 
+ # General information about the project.
+-project = u'mando'
+-copyright = u'2013, Michele Lacchia'
++project = 'mando'
++copyright = '2013, Michele Lacchia'
+ 
+ # The version info for the project you're documenting, acts as replacement for
+ # |version| and |release|, also used in various other places throughout the
+@@ -199,8 +199,8 @@ latex_elements = {
+ # (source start file, target name, title,
+ #  author, documentclass [howto, manual, or own class]).
+ latex_documents = [
+-  ('index', 'mando.tex', u'mando Documentation',
+-   u'Michele Lacchia', 'manual'),
++  ('index', 'mando.tex', 'mando Documentation',
++   'Michele Lacchia', 'manual'),
+ ]
+ 
+ # The name of an image file (relative to this directory) to place at the top of
+@@ -229,8 +229,8 @@ latex_documents = [
+ # One entry per manual page. List of tuples
+ # (source start file, name, description, authors, manual section).
+ man_pages = [
+-    ('index', 'mando', u'mando Documentation',
+-     [u'Michele Lacchia'], 1)
++    ('index', 'mando', 'mando Documentation',
++     ['Michele Lacchia'], 1)
+ ]
+ 
+ # If true, show URL addresses after external links.
+@@ -243,8 +243,8 @@ man_pages = [
+ # (source start file, target name, title, author,
+ #  dir menu entry, description, category)
+ texinfo_documents = [
+-  ('index', 'mando', u'mando Documentation',
+-   u'Michele Lacchia', 'mando', 'One line description of project.',
++  ('index', 'mando', 'mando Documentation',
++   'Michele Lacchia', 'mando', 'One line description of project.',
+    'Miscellaneous'),
+ ]
+ 
+Index: mando-0.7.1/mando/__init__.py
+===================================================================
+--- mando-0.7.1.orig/mando/__init__.py
++++ mando-0.7.1/mando/__init__.py
+@@ -1,11 +1,6 @@
+ __version__ = '0.7.1'
+ 
+-try:
+-    from mando.core import Program
+-except ImportError as e:  # pragma: no cover
+-    # unfortunately the only workaround for Python2.6, argparse and setup.py
+-    e.version = __version__
+-    raise e
++from mando.core import Program
+ 
+ main = Program()
+ command = main.command
+Index: mando-0.7.1/mando/core.py
+===================================================================
+--- mando-0.7.1.orig/mando/core.py
++++ mando-0.7.1/mando/core.py
+@@ -5,22 +5,19 @@ ordinary Python functions into commands
+ import argparse
+ import inspect
+ import sys
++from inspect import signature
+ 
+ from mando.napoleon import Config, GoogleDocstring, NumpyDocstring
+ 
+ from mando.utils import (purify_doc, action_by_type, find_param_docs,
+                          split_doc, ensure_dashes, purify_kwargs)
+-try:
+-    from inspect import signature
+-except ImportError:
+-    from funcsigs import signature
+ 
+ 
+ _POSITIONAL = type('_positional', (object,), {})
+ _DISPATCH_TO = '_dispatch_to'
+ 
+ 
+-class SubProgram(object):
++class SubProgram:
+     def __init__(self, parser, signatures):
+         self.parser = parser
+         self._subparsers = self.parser.add_subparsers()
+Index: mando-0.7.1/mando/napoleon/__init__.py
+===================================================================
+--- mando-0.7.1.orig/mando/napoleon/__init__.py
++++ mando-0.7.1/mando/napoleon/__init__.py
+@@ -9,12 +9,10 @@
+     :license: BSD, see LICENSE for details.
+ """
+ 
+-from six import iteritems
+-
+ from mando.napoleon.docstring import GoogleDocstring, NumpyDocstring
+ 
+ 
+-class Config(object):
++class Config:
+     """Sphinx napoleon extension settings in `conf.py`.
+ 
+     Listed below are all the settings used by napoleon and their default
+@@ -252,7 +250,7 @@ class Config(object):
+ 
+     def __init__(self, **settings):
+         # type: (Any) -> None
+-        for name, (default, rebuild) in iteritems(self._config_values):
++        for name, (default, rebuild) in self._config_values.items():
+             setattr(self, name, default)
+-        for name, value in iteritems(settings):
++        for name, value in settings.items():
+             setattr(self, name, value)
+Index: mando-0.7.1/mando/napoleon/docstring.py
+===================================================================
+--- mando-0.7.1.orig/mando/napoleon/docstring.py
++++ mando-0.7.1/mando/napoleon/docstring.py
+@@ -11,16 +11,10 @@
+     :license: BSD, see LICENSE for details.
+ """
+ 
+-try:
+-    from collections.abc import Callable
+-except ImportError:
+-    from collections import Callable
++from collections.abc import Callable
+ import inspect
+ import re
+ 
+-from six import string_types, u
+-from six.moves import range
+-
+ from mando.napoleon.iterators import modify_iter
+ from mando.napoleon.pycompat import UnicodeMixin
+ 
+@@ -124,7 +118,7 @@ class GoogleDocstring(UnicodeMixin):
+         self._name = name
+         self._obj = obj
+         self._opt = options
+-        if isinstance(docstring, string_types):
++        if isinstance(docstring, str):
+             docstring = docstring.splitlines()
+         self._lines = docstring
+         self._line_iter = modify_iter(docstring, modifier=lambda s: s.rstrip())
+@@ -171,7 +165,7 @@ class GoogleDocstring(UnicodeMixin):
+             Unicode version of the docstring.
+ 
+         """
+-        return u('\n').join(self.lines())
++        return (u'\n').join(self.lines())
+ 
+     def lines(self):
+         # type: () -> List[unicode]
+@@ -323,13 +317,13 @@ class GoogleDocstring(UnicodeMixin):
+     def _fix_field_desc(self, desc):
+         # type: (List[unicode]) -> List[unicode]
+         if self._is_list(desc):
+-            desc = [u''] + desc
++            desc = [''] + desc
+         elif desc[0].endswith('::'):
+             desc_block = desc[1:]
+             indent = self._get_indent(desc[0])
+             block_indent = self._get_initial_indent(desc_block)
+             if block_indent > indent:
+-                desc = [u''] + desc
++                desc = [''] + desc
+             else:
+                 desc = ['', desc[0]] + self._indent(desc_block, 4)
+         return desc
+@@ -341,9 +335,9 @@ class GoogleDocstring(UnicodeMixin):
+             return ['.. %s:: %s' % (admonition, lines[0].strip()), '']
+         elif lines:
+             lines = self._indent(self._dedent(lines), 3)
+-            return [u'.. %s::' % admonition, u''] + lines + [u'']
++            return ['.. %s::' % admonition, ''] + lines + ['']
+         else:
+-            return [u'.. %s::' % admonition, u'']
++            return ['.. %s::' % admonition, '']
+ 
+     def _format_block(self, prefix, lines, padding=None):
+         # type: (unicode, List[unicode], unicode) -> List[unicode]
+@@ -614,7 +608,7 @@ class GoogleDocstring(UnicodeMixin):
+         for _name, _, _desc in self._consume_fields(parse_type=False):
+             lines.append('.. method:: %s' % _name)
+             if _desc:
+-                lines.extend([u''] + self._indent(_desc, 3))
++                lines.extend([''] + self._indent(_desc, 3))
+             lines.append('')
+         return lines
+ 
+@@ -924,7 +918,7 @@ class NumpyDocstring(GoogleDocstring):
+         # type: () -> bool
+         section, underline = self._line_iter.peek(2)
+         section = section.lower()
+-        if section in self._sections and isinstance(underline, string_types):
++        if section in self._sections and isinstance(underline, str):
+             return bool(_numpy_section_regex.match(underline))  # type: ignore
+         elif self._directive_sections:
+             if _directive_regex.match(section):
+Index: mando-0.7.1/mando/napoleon/iterators.py
+===================================================================
+--- mando-0.7.1.orig/mando/napoleon/iterators.py
++++ mando-0.7.1/mando/napoleon/iterators.py
+@@ -14,7 +14,7 @@
+ import collections
+ 
+ 
+-class peek_iter(object):
++class peek_iter:
+     """An iterator object that supports peeking ahead.
+ 
+     Parameters
+Index: mando-0.7.1/mando/napoleon/pycompat.py
+===================================================================
+--- mando-0.7.1.orig/mando/napoleon/pycompat.py
++++ mando-0.7.1/mando/napoleon/pycompat.py
+@@ -1,18 +1,6 @@
+-from six import PY3
++class UnicodeMixin:
++    """Mixin class to handle defining the proper __str__/__unicode__
++    methods in Python 2 or 3."""
+ 
+-
+-# UnicodeMixin
+-if PY3:
+-    class UnicodeMixin(object):
+-        """Mixin class to handle defining the proper __str__/__unicode__
+-        methods in Python 2 or 3."""
+-
+-        def __str__(self):
+-            return self.__unicode__()
+-else:
+-    class UnicodeMixin(object):
+-        """Mixin class to handle defining the proper __str__/__unicode__
+-        methods in Python 2 or 3."""
+-
+-        def __str__(self):
+-            return self.__unicode__().encode('utf8')
++    def __str__(self):
++        return self.__unicode__()
+Index: mando-0.7.1/mando/tests/capture.py
+===================================================================
+--- mando-0.7.1.orig/mando/tests/capture.py
++++ mando-0.7.1/mando/tests/capture.py
+@@ -7,12 +7,7 @@ Capture function
+ 
+ import sys
+ from contextlib import contextmanager
+-
+-try:
+-    from cStringIO import StringIO
+-except ImportError:
+-    from io import StringIO
+-
++from io import StringIO
+ 
+ @contextmanager
+ def capture_sys_output():
+Index: mando-0.7.1/mando/tests/test_unicode_docstring_on_py2.py
+===================================================================
+--- mando-0.7.1.orig/mando/tests/test_unicode_docstring_on_py2.py
++++ mando-0.7.1/mando/tests/test_unicode_docstring_on_py2.py
+@@ -1,6 +1,3 @@
+-# This is important: it will make all literals unicode under 2.x
+-from __future__ import unicode_literals
+-
+ import unittest
+ 
+ from mando import Program
+Index: mando-0.7.1/setup.py
+===================================================================
+--- mando-0.7.1.orig/setup.py
++++ mando-0.7.1/setup.py
+@@ -9,16 +9,15 @@ except ImportError as e:
+ else:
+     version = mando.__version__
+ 
+-deps = ["six"]
++deps = []
+ extras = {"restructuredText": ["rst2ansi"]}
+ 
+ 
+ sversion = tuple(setuptools.__version__.split("."))
+ 
+ if sversion > ("36", "2"):
+-    deps += ['argparse ; python_version<="2.6"', 'funcsigs ; python_version<="3.2"']
++    deps += ['funcsigs ; python_version<="3.2"']
+ elif sversion > ("18", "0"):
+-    extras[':python_version<="2.6"'] = ["argparse"]
+     extras[':python_version<="3.2"'] = ["funcsigs"]
+ 
+ 
+@@ -51,8 +50,6 @@ setuptools.setup(
+         "Natural Language :: English",
+         "Operating System :: OS Independent",
+         "Programming Language :: Python",
+-        "Programming Language :: Python :: 2",
+-        "Programming Language :: Python :: 2.7",
+         "Programming Language :: Python :: 3",
+         "Programming Language :: Python :: 3.1",
+         "Programming Language :: Python :: 3.2",

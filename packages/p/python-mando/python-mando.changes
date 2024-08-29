@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Aug 29 04:08:07 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pyproject macros. 
+
+-------------------------------------------------------------------
+Wed Aug 28 09:19:47 UTC 2024 - pgajdos@suse.com
+
+- drop python 2 support, do not require six
+- added patches
+  fix https://github.com/rubik/mando/pull/57
+  + python-mando-no-python2.patch
+
+-------------------------------------------------------------------
 Tue Jun 13 09:10:40 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Addd %{?sle15_python_module_pythons}

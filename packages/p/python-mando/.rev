@@ -66,4 +66,17 @@
     <comment></comment>
     <requestid>1093042</requestid>
   </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>d47e03d5f6a576b818773fe812c27f2a</srcmd5>
+    <version>0.7.1</version>
+    <time>1724939018</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to pyproject macros. 
+
+- drop python 2 support, do not require six
+- added patches
+  fix https://github.com/rubik/mando/pull/57
+  + python-mando-no-python2.patch</comment>
+    <requestid>1197230</requestid>
+  </revision>
 </revisionlist>

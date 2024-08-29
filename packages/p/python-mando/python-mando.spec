@@ -1,7 +1,7 @@
 #
 # spec file for package python-mando
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,15 +24,17 @@ Summary:        Python wrapper around argparse, a tool to create CLI apps
 License:        MIT
 URL:            https://mando.readthedocs.org/
 Source:         https://files.pythonhosted.org/packages/source/m/mando/mando-%{version}.tar.gz
+# https://github.com/rubik/mando/pull/57
+Patch0:         python-mando-no-python2.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-six
 Suggests:       python-rst2ansi
 BuildArch:      noarch
 # SECTION teset requirements
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module six}
 # /SECTION
 %python_subpackages
 
@@ -41,14 +43,14 @@ Mando is a wrapper around argparse, and allows writing CLI
 applications.
 
 %prep
-%setup -q -n mando-%{version}
+%autosetup -p1 -n mando-%{version}
 sed -i -e '/^#!\//, 1d' mando/tests/*.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -57,6 +59,7 @@ sed -i -e '/^#!\//, 1d' mando/tests/*.py
 %files %{python_files}
 %license LICENSE
 %doc README.rst
-%{python_sitelib}/*
+%{python_sitelib}/mando
+%{python_sitelib}/mando-%{version}.dist-info
 
 %changelog
