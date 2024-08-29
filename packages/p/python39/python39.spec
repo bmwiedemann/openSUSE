@@ -202,6 +202,9 @@ Patch47:        CVE-2024-6923-email-hdr-inject.patch
 # PATCH-FIX-UPSTREAM CVE-2024-5642-OpenSSL-API-buf-overread-NPN.patch bsc#1227233 mcepl@suse.com
 # Remove for support for anything but OpenSSL 1.1.1 or newer
 Patch48:        CVE-2024-5642-OpenSSL-API-buf-overread-NPN.patch
+# PATCH-FIX-UPSTREAM CVE-2024-8088-inf-loop-zipfile_Path.patch bsc#1229704 mcepl@suse.com
+# avoid denial of service in zipfile
+Patch49:        CVE-2024-8088-inf-loop-zipfile_Path.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -471,6 +474,7 @@ other applications.
 %patch -p1 -P 46
 %patch -p1 -P 47
 %patch -p1 -P 48
+%patch -p1 -P 49
 
 # drop Autoconf version requirement
 sed -i 's/^AC_PREREQ/dnl AC_PREREQ/' configure.ac

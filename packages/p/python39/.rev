@@ -1138,4 +1138,14 @@
   %{do_profiling} (bsc#1227999)</comment>
     <requestid>1192673</requestid>
   </revision>
+  <revision rev="62" vrev="7">
+    <srcmd5>48cdce2dbd8e6d2734600294dd8c5b9d</srcmd5>
+    <version>3.9.19</version>
+    <time>1724939057</time>
+    <user>dimstar_suse</user>
+    <comment>- Add CVE-2024-8088-inf-loop-zipfile_Path.patch to prevent
+  malformed payload to cause infinite loops in zipfile.Path
+  (bsc#1229704, CVE-2024-8088).</comment>
+    <requestid>1197416</requestid>
+  </revision>
 </revisionlist>
